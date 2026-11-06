@@ -215,7 +215,7 @@ scope:
 - [x] 說話人對 `cast.json` 的角色與路人 id。
 - [x] `shots-en.json` 格式與第 1 集 27 鏡的英文正文。
 - [x] `compile.py`：`video.json`、`brief.md`、Ref2VA manifest；中文列改了而英文沒跟上就停。
-- [ ] 第 31–60 集（第四到第六篇章）的 `shots-en.json`、`video.json`、`brief.md`。
+- [x] 第 31–60 集（第四到第六篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [x] 第 21–30 集（第三篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [x] 第 11–20 集（第二篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [x] 第 2–10 集（第一篇章）的 `shots-en.json`、`video.json`、`brief.md`。
@@ -228,6 +228,10 @@ node tools/video/cli.mjs lint --slug tai-nainai-e001
 ```
 
 ## Notes
+
+- 2026-11-06 全季 60 集完成：1,439 鏡，60 集 `lint` 都 0 錯、`--check` 都對得上、`check_en` 機械檢查 0 問題（第 31–60 集六個代理各五集）。
+  代理照劇本、不照我給的提示的地方（都對）：第 29 集沒有雨（下雨的故事第 29 天在第 38 集）；第 36 集燈 6→5 不在畫面上（福伯 c15 說出來）；第 37、39 集月棠晚上在藥局也穿白袍 `yaoju`；
+  第 45 集 c22、第 49 集 c06 劇本要的平板／手機畫面是合成的靜圖（影片模型不畫），提示詞只寫周圍。
 
 - 2026-11-06 全季台詞只有一個字典沒有的拉丁字詞：「DNA」（第 53 集 c24、第 54 集 c02），加進共用的 `docs/videos/lexicon.json`（"D N A"）。
 

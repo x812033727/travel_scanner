@@ -1,0 +1,767 @@
+{
+  "schema_version": 1,
+  "slug": "tai-nainai-e056",
+  "format": "drama",
+  "target_minutes": [
+    1.9,
+    3.4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action modern Taiwanese urban family drama, film still, natural cinematic light, realistic skin and fabric texture, soft flattering beauty light on faces, shallow depth of field; the old Shen house in warm amber wood and candlelight, the Shengtong tower in cold blue glass, the small pharmacy in warm white fluorescent light",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, letters, Chinese characters, readable signs, subtitles, watermark, logo, brand names, license plates, extra fingers, deformed hands, blood, gore, nudity, cleavage, low neckline, bare back, see-through clothing, short skirt, wet clothes, fantasy glow effects, sparkles",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces, clothes and props stay the same; her elderly manners stay slow and steady; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "meifeng",
+      "name": "林美鳳",
+      "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace and small gold earrings, bright red nails, a fitted wine-red long-sleeved knit dress with a high round neckline and a hem below the knee, black low heels",
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的二房太太，女聲，尖、快、一句話三個刺，假笑時拖長尾音；被頂撞時聲音拔高"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace, bright red nails, a plum satin house robe with a high collar, long sleeves and an ankle-length hem, tied closed at the waist and fully covering, satin slippers"
+        }
+      ]
+    },
+    {
+      "id": "yuetang-18",
+      "name": "沈月棠",
+      "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze that seems to have seen a hundred years, light natural makeup, black hair in one thick old-fashioned three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white cotton shirt with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, a thick old silver ring on her left ring finger with its small square seal face turned toward the palm, back very straight, hands folded in front of her waist like an elderly lady",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的少女嗓，說話卻是老人家的規矩：慢、短、穩，客氣而有分寸，句尾往下收；生氣時聲音更低、更慢，不尖叫；童謠用輕輕唸唱的方式"
+      },
+      "shot_looks": [
+        {
+          "id": "shouyi",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a loose plain off-white cotton burial robe with a high stand-up collar and fabric frog buttons fastened to the throat, long sleeves to the wrists and loose trousers to the ankles, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "wrinkle",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "yaoju",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, an oversized white pharmacist's coat worn open with the sleeves rolled to the wrists over a plain moon-white high-collared cotton shirt buttoned to the throat, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight"
+        },
+        {
+          "id": "faint-line",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, on the back of her right hand the old wrinkles have faded to one thin pale line, still clearly visible in close-up, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "white-strand",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder with a clearly visible streak of white hair about a finger wide from her right temple braided into it, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "huiyi-1948",
+          "appearance": "the same young woman of eighteen in 1948: an oval face, gently curved brows, calm almond eyes, black hair in two neat braids tied with plain cotton string, a pale blue cotton side-fastening blouse with a high collar and fabric frog buttons, a dark cotton skirt to the ankles, black cloth shoes, the thick silver ring on her left ring finger, standing straight with her hands folded, 1940s portrait photograph style"
+        }
+      ]
+    },
+    {
+      "id": "jianbang",
+      "name": "沈建邦",
+      "appearance": "East Asian man of fifty-eight, a kind, worried face with a furrowed brow, short black hair greying at the temples, thin black-framed glasses, a slightly worn charcoal-grey suit, a white shirt buttoned all the way to the top with no tie, black leather shoes, slightly rounded shoulders",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十八歲的家主，男聲，溫和、常嘆氣，說話慢、帶點猶豫；喊「奶奶」時聲音發抖但篤定"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian man of fifty-eight, a kind, worried face with a furrowed brow, short black hair greying at the temples, thin black-framed glasses, a grey wool cardigan over a white shirt buttoned all the way to the top, dark trousers, dark house slippers"
+        }
+      ]
+    },
+    {
+      "id": "yuqin",
+      "name": "沈玉琴",
+      "appearance": "East Asian elderly woman of seventy-eight, a gentle kind face with soft brows and smile lines, short silver-white hair, a navy wool cardigan buttoned over a light grey high-neck blouse, dark grey trousers, black flat shoes, seated in a plain black-framed manual wheelchair whose wheels she likes to push herself, a slightly faraway look that becomes sharp and clear when she looks at someone she loves",
+      "voice": {
+        "provider": "gemini",
+        "name": "Vindemiatrix",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；七十八歲的老太太，聲音輕、慢、溫柔，常說到一半停下來想；叫「媽」的時候忽然很清楚、很篤定"
+      },
+      "shot_looks": [
+        {
+          "id": "bed",
+          "appearance": "East Asian elderly woman of seventy-eight, a gentle kind face with soft brows and smile lines, short silver-white hair, a pale blue striped care-home pajama top under a navy wool cardigan, a grey blanket over her knees, seated in a plain black-framed manual wheelchair or sitting up in a care-home bed, a slightly faraway look"
+        }
+      ]
+    },
+    {
+      "id": "fubo",
+      "name": "福伯",
+      "appearance": "East Asian old man of eighty-eight, thin and very upright, very short white hair, a lean lined face with respectful steady eyes, a neatly ironed grey Chinese-style jacket with fabric frog buttons, black trousers, black cloth shoes, the silver chain of an old pocket watch running from a button to his jacket pocket",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八十八歲的老管家，男聲，蒼老、恭敬、慢，一句話常帶一個「是」；著急時聲音發抖但不拔高"
+      }
+    },
+    {
+      "id": "laochen",
+      "name": "老陳",
+      "appearance": "East Asian man of seventy, sturdy and broad, deeply tanned, a big hearty face with laugh lines, short grey hair, a dark blue canvas apron tied over a grey work shirt with rolled sleeves, dark trousers, rubber-soled shoes, rice bran dust on his hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；七十歲的米行老闆，男聲，大聲、豪氣、笑聲大；生氣時嗓門更大"
+      }
+    },
+    {
+      "id": "xiaoman",
+      "name": "沈小滿",
+      "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, a school uniform: a navy blazer one size too big, a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, white socks and black school shoes, no badge or lettering on the uniform",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十七歲的高中女生，聲音快、亮；受委屈時先笑一下再哭，哭的時候聲音壓低"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, an oversized light grey hoodie, loose black track pants, white socks"
+        },
+        {
+          "id": "damp",
+          "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, her bangs and the shoulders of her navy blazer damp and water marks on her cheeks, the blazer one size too big and buttoned over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, dry and fully covering, white socks and black school shoes, no badge or lettering"
+        }
+      ]
+    },
+    {
+      "id": "jianye",
+      "name": "沈建業",
+      "appearance": "East Asian man of fifty-five, tall and heavyset, clean-shaven, oiled black hair slicked back, a scar-like deep wrinkle between his brows, a too-wide salesman's smile, a tailored brown double-breasted suit with a cream shirt and a dark brown tie, a thin gold watch on his left wrist, polished brown shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的副董，男聲，圓滑、熱絡、愛拍人肩膀，笑著說狠話；被拆穿時聲音變急變高"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian man of fifty-five, tall and heavyset, clean-shaven, oiled black hair slicked back, a scar-like deep wrinkle between his brows, a dark brown cashmere sweater over a cream collared shirt, grey slacks, a thin gold watch on his left wrist"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "prompt": "taut strings under the quarrel in the main hall with one hard accent and a dropped beat on the word of rebuke, low tense strings in the courtyard that turn warm as the old people rise to make way, then a slow solo guzheng memory line in the ancestral hall that falls silent after the kneeling and gives way to one low hum as the lamp blazes up; restrained, no vocals"
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "跪｜恁祖媽今年18 第56集",
+    "description": "第40天傍晚，她在正廳餵玉琴喝粥，建邦捏著拼好的兩半照片站在她身後。林美鳳衝進來要建邦別被騙，建邦第一次對她說「閉嘴」，轉頭對她說「祠堂」。她說等玉琴喝完粥睡下再去；林美鳳撂話：建業今晚就帶盛通的人來搬燈。福伯聽見，打電話給老陳。夜裡八點半，老陳帶著老街十幾個老人坐滿祠堂門口的石階；建業帶盛通的三個人來搬燈，老人們一個也不讓，福伯說人是他請的，建業撂下「明天銀根一抽」退走。老人們起身讓出一條路，建邦和她走進祠堂。建邦點了香，問她七歲那年奶奶在這盞燈下說的那句話；她先說出他沒說的那一半（他哭著說爺爺怎麼還不回家），再說出那一句「燈亮著，就回得來」。建邦跪下喊「奶奶」，燈一瞬大亮，光漫過藥櫃、漫出門口照亮坐著的老人；她手背的細紋和鬢邊的白髮都不見了，她卻在哭。",
+    "tags": [
+      "恁祖媽今年18",
+      "AI短劇",
+      "家族劇",
+      "老靈魂"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "喊一聲奶奶",
+      "tag": "恁祖媽今年18",
+      "shot": "c20"
+    }
+  },
+  "scenes": [
+    {
+      "id": "c01",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056001",
+          "speaker": "meifeng",
+          "text": "建邦，別被騙！",
+          "emotion": "尖聲，短喊"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the main hall of the old Shen house at night under the warm hanging lamp, seen from the front door looking north, the back of a carved armchair at the south end in the foreground. Four people: at the back right Shen Yuqin sits in her wheelchair at the north end of the long rosewood table, a grey wool blanket over her knees; Shen Yuetang sits on the east side at Yuqin's left, back straight, a white bowl in her left hand, a white spoon in her right; Shen Jianbang stands behind her chair, a small photograph hidden in his right fist. In the first frame the west courtyard door at the back left bursts open and bangs against the wall; Lin Meifeng strides in pointing at Jianbang and stops on the west side of the table near the north end. Yuetang's spoon stops at the bowl's rim; she does not turn. Lin Meifeng shouts a short Mandarin line, her mouth wide open, lips and jaw moving clearly, shrill. Everyone else keeps their mouth closed.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "meifeng",
+          "yuetang-18",
+          "jianbang"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      },
+      "chapter": "正廳"
+    },
+    {
+      "id": "c02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056002",
+          "speaker": "jianbang",
+          "text": "閉嘴。",
+          "emotion": "低、冷，第一次這樣對林美鳳說話"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the main hall of the old Shen house at night under the warm hanging lamp, seen obliquely from the south-west side of the long table: Shen Jianbang in his charcoal suit and thin black-framed glasses; behind him only the wooden staircase on the east wall and the warm wooden wall. He is the only person in the frame, not smiling, holding his anger down. He lifts his head from looking down, turns toward screen left, takes one step forward and stops beside a chair back without touching anyone, his right hand closing tight around the small photograph at his side. Shen Jianbang speaks a short Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low and cold.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "jianbang"
+        ]
+      }
+    },
+    {
+      "id": "c03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056003",
+          "speaker": "meifeng",
+          "text": "你叫我閉嘴？為了這個來路不明的丫頭？",
+          "emotion": "拔高"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the main hall of the old Shen house at night under the warm hanging lamp: over Shen Jianbang's left shoulder, his charcoal-suited shoulder and the back of his head soft on screen right in the foreground; on screen left Lin Meifeng, stunned, her face flushed, not smiling; behind her the west courtyard door and the side of the tall clock, its face turned away. Two people. She freezes, steps back half a step and her right hand clutches her pearl necklace; then she steps forward again and her left hand points toward the lower right of the frame. Lin Meifeng speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, her voice rising high. Shen Jianbang keeps his mouth closed.",
+        "camera": "over-the-shoulder medium close-up, slow push-in",
+        "characters": [
+          "meifeng",
+          "jianbang"
+        ]
+      }
+    },
+    {
+      "id": "c04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056004",
+          "speaker": "jianbang",
+          "text": "祠堂。",
+          "emotion": "對月棠，聲音放輕"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the main hall of the old Shen house at night under the warm hanging lamp, seen from table height in front of and to the left of the seated girl, looking up; out of focus in the foreground the white porcelain bowl and spoon on the long table. Two people: in the lower part of the frame Shen Yuetang sits with her back very straight; behind her Shen Jianbang stands. Jianbang draws his gaze back from screen left and looks down at her, bending a little at the waist; she lifts her face, looks into his eyes first, then at the hand that holds the photograph. Shen Jianbang speaks a short Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, soft and quiet. Shen Yuetang keeps her mouth closed.",
+        "camera": "low-angle medium shot, slow push-in",
+        "characters": [
+          "jianbang",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      }
+    },
+    {
+      "id": "c05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056005",
+          "speaker": "yuetang-18",
+          "text": "好。等玉琴把這碗粥喝完、睡下了，我就去。",
+          "emotion": "慢、穩"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the main hall of the old Shen house at night under the warm hanging lamp: Shen Yuetang sitting with her back very straight, calm, not smiling; at the left edge of the frame only an old woman's shoulder and chin in a navy cardigan; behind her, out of focus, a man's chest in a charcoal suit with his right hand closed around a small photograph, and the wooden staircase. Three people, only Yuetang's face fully seen. Unhurried, she scoops a spoonful of porridge, lowers her head and blows on it once, and feeds it into the old woman's mouth; the old woman's mouth opens to take it, closes and chews slowly. She rests the spoon on the rim of the bowl, then lifts her face and turns to look back at the man behind her. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, slow and steady.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "yuqin",
+          "jianbang"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      }
+    },
+    {
+      "id": "c06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056006",
+          "speaker": "meifeng",
+          "text": "去啊。建業今晚就帶盛通的人來，把那盞燈搬走！",
+          "emotion": "回頭，冷笑"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the main hall of the old Shen house at night under the warm hanging lamp, a chair back on the west side of the long table in the foreground: Lin Meifeng in her wine-red knit dress and pearl necklace, behind her the west courtyard door with darkness outside. She is the only person in the frame, not smiling, a cold sneer. She turns and walks to the courtyard door, stops at the threshold, looks back with her right hand on the door frame and speaks; then she flings the door shut behind her as she goes out and it slams. Lin Meifeng speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, cold and sneering.",
+        "camera": "medium shot, tracking with her",
+        "characters": [
+          "meifeng"
+        ]
+      }
+    },
+    {
+      "id": "c07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056007",
+          "speaker": "yuqin",
+          "text": "媽，他們真要把爸的那盞燈搬走嗎？",
+          "emotion": "輕、急"
+        },
+        {
+          "id": "t056008",
+          "speaker": "yuetang-18",
+          "text": "搬不走。媽在這裡，那盞燈就在這裡。",
+          "emotion": "低、穩"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the main hall of the old Shen house at night under the warm hanging lamp, seen from the south. Two people: on screen left Shen Yuqin in her wheelchair, the grey wool blanket over her knees, worried, not smiling; on screen right Shen Yuetang, back very straight; behind them only the long side table against the north wall. Yuqin's left hand catches Yuetang's right cuff and her eyes dart to the slammed courtyard door at the back left; Yuetang slowly and steadily sets the bowl down on the table and turns her right hand over to rest it on the back of Yuqin's hand. First Shen Yuqin speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, soft and anxious, while Yuetang keeps her mouth closed; then Shen Yuetang answers with a Mandarin line, her lips, jaw and cheeks moving clearly, low and steady, while Yuqin keeps her mouth closed.",
+        "camera": "medium close-up two-shot, slow push-in",
+        "characters": [
+          "yuqin",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      }
+    },
+    {
+      "id": "c08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056009",
+          "speaker": "fubo",
+          "text": "老陳嗎？我是阿福。二太太說，今晚要搬老太太的燈。",
+          "emotion": "壓低聲音，著急但不拔高"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the main hall of the old Shen house at night under the warm hanging lamp, seen from the middle of the long table looking south: Fu Bo in his grey Chinese jacket with the silver pocket-watch chain; behind him only the frame of the front door and one carved armchair. He is the only person in the frame, anxious, not smiling. He steps in through the front door at the back, walks to the south end of the table and stops, glances once toward the west courtyard door, takes an old black phone with one cracked top corner from his jacket pocket in his right hand, presses a number and raises it to his right ear, its screen turned toward himself and never seen. Fu Bo speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low, urgent but not raised.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "fubo"
+        ]
+      }
+    },
+    {
+      "id": "c08b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056010",
+          "speaker": "laochen",
+          "text": "老太太的燈誰敢搬！我這就帶老街的人過去坐。",
+          "emotion": "電話裡，大嗓門"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the main hall of the old Shen house at night under the warm hanging lamp: Fu Bo in his grey Chinese jacket holds the old black phone to his right ear; behind him only the frame of the front door. He is the only person in the frame, not smiling. He listens with his mouth closed while a loud voice comes from the phone, nodding again and again, his eyes turned toward the courtyard; when the voice stops he lowers the phone from his ear.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "fubo"
+        ]
+      }
+    },
+    {
+      "id": "c09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056011",
+          "speaker": "laochen",
+          "text": "阿福你放心，老太太這盞燈，老街的人從小看到大。",
+          "emotion": "大嗓門，對福伯"
+        }
+      ],
+      "data": {
+        "prompt": "The stone courtyard of the old Shen house on a cold winter night, warm paper lamps along the verandas, seen from the south, a veranda pillar and a paper lamp in the foreground. The ancestral hall's closed lattice doors leak orange-gold light onto its three stone steps. About sixteen people: about twelve old people, seven men and five women in Chinese jackets and floral cotton jackets, two with canes, sit on the steps and on low stools before them, out of focus; Old Chen in his apron sits mid bottom step; Fu Bo in grey stands on the top step; on screen right a young man in an overcoat, and Shen Xiaoman in her grey hoodie, a plain steel flask in her right hand, white paper cups in her left. Xiaoman pours tea into an old woman's cup, steam rising; Old Chen looks up at Fu Bo and slaps his knee. Old Chen speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, loud and hearty. All others keep their mouths closed.",
+        "camera": "medium wide shot, slow push-in",
+        "characters": [
+          "laochen",
+          "xiaoman",
+          "fubo"
+        ],
+        "character_looks": {
+          "xiaoman": "home"
+        }
+      },
+      "chapter": "院子・祠堂門口"
+    },
+    {
+      "id": "c10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056012",
+          "speaker": "jianye",
+          "text": "福伯，叫這些老人讓開。這盞燈，盛通今晚就要。",
+          "emotion": "笑得太滿，聲音卻硬"
+        }
+      ],
+      "data": {
+        "prompt": "The stone courtyard of the old Shen house on a cold winter night, warm paper lamps along the verandas, seen from the main hall's west courtyard door looking north. In the foreground three men in plain dark suits, seen only from behind, in a row; ahead of them a heavyset man in a brown double-breasted suit with oiled hair, also from behind, strides across and stops by the round stone table. About twenty people: at the back about twelve old people sit on the ancestral hall's steps, Old Chen in his apron in the middle of the bottom step, out of focus; Fu Bo in grey on the top step; a young man and a teenage girl at the east side; orange-gold light seeps from the lattice doors onto the steps. The heavyset man points his right hand at the lattice doors; the three men stop behind him. He speaks a Mandarin line with his back to the camera, his face never seen, loud and hard. Everyone else keeps their mouth closed.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "jianye",
+          "laochen",
+          "fubo"
+        ]
+      }
+    },
+    {
+      "id": "c11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056013",
+          "speaker": "laochen",
+          "text": "要搬燈，先把我們這些老骨頭，一個一個搬走。",
+          "emotion": "大嗓門，不笑"
+        }
+      ],
+      "data": {
+        "prompt": "The stone courtyard of the old Shen house on a cold winter night, warm paper lamps along the verandas: over Shen Jianye's right shoulder, his brown-suited shoulder and the back of his oiled head on screen left in the foreground; on screen right Old Chen in his dark blue canvas apron sits in the middle of the bottom stone step of the ancestral hall, with about six old people sitting on either side, out of focus; on the top step Fu Bo in his grey Chinese jacket. About nine people. Old Chen sets his paper cup down on the step beside him, folds his arms across his chest and leans back against the step above; the old people on both sides set their cups down too and sit up straight. Old Chen speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, loud, not smiling. Shen Jianye keeps his mouth closed.",
+        "camera": "over-the-shoulder medium close-up, slow push-in",
+        "characters": [
+          "laochen",
+          "jianye",
+          "fubo"
+        ]
+      }
+    },
+    {
+      "id": "c12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056014",
+          "speaker": "jianye",
+          "text": "這是我家的院子。你們再不走，我就叫警察來趕人。",
+          "emotion": "壓著火"
+        }
+      ],
+      "data": {
+        "prompt": "The stone courtyard of the old Shen house on a cold winter night, warm paper lamps along the verandas: Shen Jianye in his brown double-breasted suit; behind him only the night courtyard and a corner of the round stone table. He is the only person in the frame; his smile drops away and the scar-like crease between his brows deepens. He takes one step forward and his left hand, with the thin gold watch, reaches out toward screen right, stops in mid-air without touching anything and pulls back. Shen Jianye speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, holding his anger down.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "jianye"
+        ]
+      }
+    },
+    {
+      "id": "c13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056015",
+          "speaker": "fubo",
+          "text": "建業先生，人是我請來的客人。作甫爺的燈，不出這個門。",
+          "emotion": "恭敬、慢，聲音發抖但不拔高"
+        }
+      ],
+      "data": {
+        "prompt": "The stone courtyard of the old Shen house on a cold winter night, warm paper lamps along the verandas, seen from the bottom stone step of the ancestral hall looking up: Fu Bo in his grey Chinese jacket and pocket-watch chain; behind him only the lattice doors with warm orange-gold light seeping through their gaps. He is the only person in the frame, not smiling, respectful. He steps down from the top step to the one below, folds his hands at his waist and bows slightly toward the lower part of the frame. Fu Bo speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, respectful and slow, his voice trembling but not raised.",
+        "camera": "low-angle medium close-up, slow push-in",
+        "characters": [
+          "fubo"
+        ]
+      }
+    },
+    {
+      "id": "c14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056016",
+          "speaker": "jianye",
+          "text": "好，你們坐。明天銀根一抽，看誰還坐得住。",
+          "emotion": "回頭撂話"
+        }
+      ],
+      "data": {
+        "prompt": "The stone courtyard of the old Shen house on a cold winter night, warm paper lamps along the verandas, seen from the ancestral hall's steps looking south, the east veranda on screen left and the main hall's west courtyard door at the back right. Four people: Shen Jianye in his brown double-breasted suit; ahead of him three men in plain dark suits with no badges have already turned away, seen only from behind. Jianye glares toward the camera, turns, waves his left hand at the three men and walks toward the courtyard door at the back right, looking back over his shoulder as he goes; the three men follow him out. Shen Jianye speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, throwing a threat back over his shoulder. The three men's faces are never seen.",
+        "camera": "medium shot, tracking with him",
+        "characters": [
+          "jianye"
+        ]
+      }
+    },
+    {
+      "id": "c15",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "The stone courtyard of the old Shen house on a cold winter night, warm paper lamps along the verandas, seen from the top of the ancestral hall's steps looking south, the east veranda on screen left; in the foreground seated old people's shoulders and a steel flask on the step. About eighteen people: on screen left Shen Jianbang in his charcoal suit and Shen Yuetang come out of the east veranda, Jianbang on her left, slowing to her pace; on the steps Old Chen in his apron, about twelve old people, an old man in grey, a young man in an overcoat and a teenage girl in a grey hoodie. The two cross the courtyard toward the steps; Old Chen stands up first, then the old people rise one after another, the two with canes pushing up on them, and step aside, opening a path up the middle of the steps; the young man draws the girl half a step aside. Yuetang walks unhurried, back straight, hands folded. Nobody speaks.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "jianbang",
+          "laochen"
+        ],
+        "motion": "The old people rise one after another and step aside, opening a path up the middle of the steps as the two walk toward them.",
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      },
+      "action_seconds": 6
+    },
+    {
+      "id": "c16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056017",
+          "speaker": "laochen",
+          "text": "小姑娘，進去吧，門口有我們。",
+          "emotion": "壓低嗓門"
+        }
+      ],
+      "data": {
+        "prompt": "At the stone steps in front of the ancestral hall of the old Shen house at night, warm orange-gold light seeping through the gaps of the lattice doors. Three people: on screen right Old Chen in his dark blue canvas apron stands at the east edge of the steps, not smiling; on screen left Shen Yuetang stands one step higher than him, back very straight, hands folded at her waist; behind her Fu Bo in his grey Chinese jacket stands beside the lattice doors. Yuetang stops, looks into Old Chen's eyes first, then at his hands dusted with rice bran, and nods to him once; Old Chen steps back half a step and lowers his big voice. Old Chen speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, hushed. Shen Yuetang keeps her mouth closed. When he finishes she turns and climbs to the top step, and Fu Bo pushes the two lattice doors open inward.",
+        "camera": "medium close-up two-shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "laochen",
+          "fubo"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      }
+    },
+    {
+      "id": "c17",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, the lattice doors standing open behind: the first frame is a man's two hands in charcoal suit cuffs over white shirt cuffs above the altar table top; at the edge of the frame one corner of the lamp's wooden base and, on the left, a red candle. Only the hands are in the frame; no face. The right hand lays two small halves of a torn black-and-white photograph side by side on the altar in front of the lamp, face up, their tiny images out of focus; then it picks up three incense sticks from beside the bronze burner and holds their tips to the flame of the red candle on the left until they catch.",
+        "camera": "close-up on the hands, slow push-in",
+        "characters": [
+          "jianbang"
+        ],
+        "motion": "The hand lays the two photograph halves side by side before the lamp, then lights three incense sticks at the red candle."
+      },
+      "chapter": "祠堂",
+      "action_seconds": 4
+    },
+    {
+      "id": "c17b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056018",
+          "speaker": "jianbang",
+          "text": "我小時候，每天晚上都跟著奶奶來這裡添油。",
+          "emotion": "低，像在對燈說"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from the doorway looking north, the lattice door frame soft and out of focus in the foreground. Two people: in the middle Shen Jianbang in his charcoal suit stands before the straw cushion, side-on to the altar, three lit incense sticks held in both hands; on screen right Shen Yuetang stands at the front right of the altar, to the right of the lamp, facing south toward the door, hands folded at her waist. On the altar the lamp, red candles, the bronze burner and the two small photograph halves, out of focus. Jianbang bows once with the incense, steps forward and plants the sticks in the burner; three threads of smoke rise. Yuetang watches his hands; her folded fingers tighten slightly. Shen Jianbang speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low, as if speaking to the lamp. Shen Yuetang keeps her mouth closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "jianbang",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      }
+    },
+    {
+      "id": "c18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056019",
+          "speaker": "jianbang",
+          "text": "我七歲那年，奶奶在這盞燈下，跟我說過一句話。　／　建邦：妳要真是我奶奶，就說得出是哪一句。",
+          "emotion": "聲音發緊"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night: over Shen Yuetang's left shoulder, her left shoulder in moon-white cotton soft on screen right in the foreground, no braid on this side; on screen left Shen Jianbang in his charcoal suit and glasses, behind him the open lattice doors; outside, out of focus, the backs of about a dozen old people sitting on the stone steps, a few figures standing beside the door frame, and the dark courtyard. Two people in focus; incense smoke drifts between them. Jianbang turns from the burner to face her and steps half a step closer; his empty right hand clenches and unclenches at his side. Shen Jianbang speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, his voice tight. Shen Yuetang keeps her mouth closed.",
+        "camera": "over-the-shoulder medium close-up, slow push-in",
+        "characters": [
+          "jianbang",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      }
+    },
+    {
+      "id": "c19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056020",
+          "speaker": "yuetang-18",
+          "text": "那年你在這盞燈前哭，說爺爺怎麼還不回家。",
+          "emotion": "慢、很輕"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night: Shen Yuetang, back very straight; behind her only the altar, the tall orange-gold lamp flame and the out-of-focus tablets. She is the only person in the frame, not smiling. She slowly turns her head to look at the lamp on screen left, watches the flame for a moment, then turns back and looks straight into the eyes of someone just beside the lens; her right hand lifts from her folded hands and rests lightly on the edge of the altar, the back of the hand toward the lamplight. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, slow and very soft.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      }
+    },
+    {
+      "id": "c20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056021",
+          "speaker": "yuetang-18",
+          "text": "我跟你說：燈亮著，就回得來。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night: Shen Yuetang's face, the lamplight falling on it from screen left; behind her only blurred candlelight. She is the only person in the frame; her eyes are glistening but she is not yet crying, not smiling. She draws one breath and holds her head still, slow and steady, her eyes never leaving the person just beside the lens. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, word by word, the end of the line falling.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      }
+    },
+    {
+      "id": "c21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056022",
+          "speaker": "jianbang",
+          "text": "那天晚上，這裡只有奶奶跟我兩個人。",
+          "emotion": "聲音發抖"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night: Shen Jianbang in his charcoal suit and thin black-framed glasses; behind him only the upper half of the open lattice doors and the night outside. He is the only person in the frame; his eyes behind the glasses are red, not smiling. His lips tremble; his right hand reaches out toward screen right, stops a palm's width short of anything, and slowly lowers. Shen Jianbang speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, his voice shaking.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "jianbang"
+        ]
+      }
+    },
+    {
+      "id": "c22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056023",
+          "speaker": "jianbang",
+          "text": "奶奶。",
+          "emotion": "跪著，聲音發抖"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, seen low from the floor beside the straw cushion, the woven straw edge of the cushion in the foreground. Two people: in the middle Shen Jianbang in his charcoal suit; at the upper right Shen Yuetang stands before the lamp, hands folded at her waist, the lamp flame behind her. Jianbang's knees give way: one knee, then the other, comes down onto the cushion; he rests both hands on his thighs and looks up at her. Shen Jianbang speaks a short Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, trembling, a single word. Shen Yuetang keeps her mouth closed.",
+        "camera": "low-angle medium shot, slow push-in",
+        "characters": [
+          "jianbang",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "white-strand"
+        }
+      }
+    },
+    {
+      "id": "c23",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night: the first frame is tight on the brass oil lamp on the altar, a small brass oil cup under a clear glass chimney, the top edge of its plain square dark red-brown wooden base. The flame is two and a half knuckles high and warm orange-gold. All at once it shoots up taller, turning from orange-gold to the brightest warm gold, and its light floods out past the edges of the frame; no sparks. Nobody is in the frame. The shot ends on the flash.",
+        "camera": "extreme close-up on the lamp, locked",
+        "characters": [],
+        "motion": "The flame shoots up all at once into the brightest warm gold and its light floods out of the frame."
+      },
+      "action_seconds": 4
+    },
+    {
+      "id": "c24",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, seen from beside the medicine cabinet behind the altar, looking south to the open doors; in the right foreground a corner of the cabinet's drawers with brass rings; the lamp at front left. About eighteen people: on screen left a young woman in a moon-white high-collared shirt and navy long skirt stands to the front right of the lamp, her back to the camera, a thick black braid; in the middle Shen Jianbang kneels on the straw cushion, facing the camera; outside about a dozen old people sit on the steps with their backs to the hall; at the door frame Fu Bo in grey, a young man and a teenage girl. Warm gold light spreads at once from the lamp across the thirty drawers, the kneeling man and her back, and out through the doors; the old people turn their heads one by one, faces lit orange-gold; Fu Bo grips the door frame; the girl grabs the young man's sleeve. Every mouth is closed.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "jianbang",
+          "yuetang-18",
+          "fubo"
+        ],
+        "motion": "Warm gold light floods out from the lamp across the hall and through the doors as the old people outside turn their heads one by one."
+      },
+      "action_seconds": 7
+    },
+    {
+      "id": "c25",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night: the first frame is a young woman's two hands folded at her waist over the hem of a moon-white cotton shirt, in warm gold lamplight. The right hand lies on top; the back of the right hand is smooth young skin with no wrinkles at all, the same as the wrist and fingers; beneath it, on the left ring finger, the thick old silver ring. Only the hands are in the frame; no face. A single tear drops onto the back of the right hand; her fingers tremble once but stay folded.",
+        "camera": "close-up on the hands, locked",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "A tear drops onto the smooth back of her right hand; her fingers tremble once but stay folded."
+      },
+      "action_seconds": 4
+    },
+    {
+      "id": "c26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t056024",
+          "speaker": "jianbang",
+          "text": "奶奶，燈都亮了，妳怎麼哭了？",
+          "emotion": "愣住"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the ancestral hall of the old Shen house at night, looking up from behind Shen Jianbang as he kneels: his right shoulder in the charcoal suit and the back of his head in the lower left foreground. On screen right Shen Yuetang stands before the lamp, her thick braid entirely black over her right shoulder, the bright lamp behind her drawing an orange-gold rim around her outline; two lines of tears on her face, not smiling, hands folded at her waist; in the middle of the frame three incense sticks smoke in the bronze burner. Two people. Jianbang raises his head toward her; he speaks a Mandarin line with his back to the camera, his face unseen, stunned. She does not wipe her tears; one tear slides down her cheek; she draws a breath, her mouth closed.",
+        "camera": "low-angle over-the-shoulder medium close-up, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "jianbang"
+        ]
+      }
+    }
+  ]
+}
