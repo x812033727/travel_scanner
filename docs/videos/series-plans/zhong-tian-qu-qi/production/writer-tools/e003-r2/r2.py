@@ -5,7 +5,7 @@ inner line and becomes a long shot; c15 draws the fan from the belt; the per-sho
 Same rules as e001-r2 and e002-r2: one visible action per shot written as a path, over-the-shoulder and reverse shots
 for dialogue, whole sentences, one line per spoken line, default face serious (smiles only where the script allows: c11
 a forced smile, c26 a deliberate smile, c30 a wry smile). State: Xu Yan dry with his sleeves rolled to the elbows and
-wood chips on his hands in scene 1, the rolled red paper in the left of his belt all episode, red ink on his right thumb
+the rolled red paper in the left of his belt all episode, red ink on his right thumb
 c14-c16 (wiped clean from c17), the clay oil lamp in his left hand c31-c34 (on the stove from c34); Qin Shuang's old
 chopping knife in the gate frame c01-c16 (her belt empty in c02, c03, c16), pulled out and back in the right of her
 belt in c16, a bundle of firewood on her right shoulder in c29; A-ling without shackles, her sleeves over the red marks,
@@ -45,7 +45,7 @@ LIGHT = {
 TANG = "her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist"
 SERV = "grey coarse cotton cross-collared short jackets, cloth head-wraps and cloth shoes, both hands empty"
 VILL = "villagers in Song-dynasty cross-collared coarse cotton jackets and cloth head-wraps"
-XU1 = "his blue-grey scholar's robe dry now, his sleeves rolled up to the elbows and wood chips on the backs of his hands"
+XU1 = "his blue-grey scholar's robe dry now, his sleeves rolled up to the elbows, a little sweat on his brow"
 BELT = "the rolled red paper tucked into the left side of his belt with its plain blank back outward"
 ALING = "no shackles, her sleeves pulled down over her wrists"
 KNIFE = "one short single-edged knife with an iron-grey blade about a hand and a half long and a wooden handle, its edge turned outward"
@@ -89,12 +89,12 @@ SHOTS = [
          motion="Qian smacks the fan down on the table, leans forward and pushes his face close to Xu Yan's",
          zh="過肩（許硯肩後拍錢員外）、慢推：錢員外把扇子往桌上一拍，身子往前傾，臉湊近許硯"),
     dict(loc="yard_late", cam="Medium close-up to close-up, slow push in", chars=["xuyan"], night="yard_late",
-         comp=f"medium close-up, closing in to a close-up by the end, of Xu Yan, his sleeves rolled up to the elbows and wood chips on the backs of his hands, {BELT}, steady and unsmiling, his eyes on Qian Yuanwai off screen right; behind him only the bamboo fence and the autumn tree of the same yard",
+         comp=f"medium close-up, closing in to a close-up by the end, of Xu Yan, his sleeves rolled up to the elbows, a little sweat on his brow, {BELT}, steady and unsmiling, his eyes on Qian Yuanwai off screen right; behind him only the bamboo fence and the autumn tree of the same yard",
          lines=[("xuyan", "不賴帳。大衡律配婚篇，她們三個的名字記在縣衙名冊上。", "慢條斯理")],
          motion="he straightens up, his right hand still pressing the paper below the frame, lifts his eyes and points his left hand out past the gate toward the county town",
          zh="近景反打、慢推（中近景推到近景）：許硯直起身，手還按著紙，抬眼直視錢員外，另一手指向院門外縣城；穩、不笑"),
     dict(loc="yard_late", cam="Medium shot, tracking", chars=["xuyan", "qianyuanwai"], night="yard_late",
-         comp=f"medium shot, Xu Yan on screen left, his sleeves rolled up to the elbows and wood chips on the backs of his hands, {BELT}, and Qian Yuanwai on screen right; behind the bamboo fence in the background about five {VILL}, showing only their upper bodies",
+         comp=f"medium shot, Xu Yan on screen left, his sleeves rolled up to the elbows, a little sweat on his brow, {BELT}, and Qian Yuanwai on screen right; behind the bamboo fence in the background about five {VILL}, showing only their upper bodies",
          lines=[("xuyan", "官府配的人，你私自押走，就是搶官府的人。", "一字一句")],
          motion="Xu Yan rounds the corner of the table and takes one step toward Qian, staying on his left; Qian leans back a little and his lips stay closed",
          zh="中景、跟拍（跟著許硯往右）：許硯繞過桌角朝錢員外走近一步（仍在他左邊），錢員外往後仰一下；背景籬笆外村民"),
@@ -109,7 +109,7 @@ SHOTS = [
          motion="he tucks the closed fan into his belt, forces a smile and jabs one finger at Xu Yan off screen left",
          zh="近景、慢推：錢員外把扇子收起插進腰帶，硬擠出一個笑（可以假笑），手指往許硯一點"),
     dict(loc="yard_late", cam="Reverse close-up, slow push in", chars=["xuyan"], night="yard_late",
-         comp="reverse close-up of Xu Yan, his sleeves rolled up to the elbows and wood chips on the backs of his hands, steady and unsmiling, his eyes on Qian Yuanwai off screen right; behind him only the bamboo fence of the same yard",
+         comp="reverse close-up of Xu Yan, his sleeves rolled up to the elbows, a little sweat on his brow, steady and unsmiling, his eyes on Qian Yuanwai off screen right; behind him only the bamboo fence of the same yard",
          lines=[("xuyan", "房子和地你先別急。給我三天，二十兩一文不少。", "穩")],
          motion="he lifts his hand off the blank sheet below the frame and holds up three fingers",
          zh="反打近景、慢推：許硯把按著紙的手收回來，伸出三根手指；穩"),
@@ -119,7 +119,7 @@ SHOTS = [
          motion="Qian bends over the sheet and writes with the brush as he reads aloud, then lays the brush on the inkstone; Xu Yan's lips stay closed",
          zh="中景、慢推、前景木桌一角：錢員外抓起毛筆彎腰寫，邊寫邊念，寫完把筆擱在硯台上；紙面虛焦、看不到字；許硯在左邊緣"),
     dict(loc="yard_late", cam="Insert close-up, slow push in", chars=["xuyan"], night="yard_late", act=3,
-         comp="insert close-up of one bottom corner of the pale yellow sheet on the wooden table, the shot opens directly on the blank paper corner and one small box of red ink paste from its very first frame: only the plain blank corner, the written part outside the frame, and Xu Yan's right hand in his rolled-up blue-grey cuff with wood chips on its back; only the hand and the paper corner are in the frame, his face out of the frame; behind them only the out-of-focus dirt ground of the same yard",
+         comp="insert close-up of one bottom corner of the pale yellow sheet on the wooden table, the shot opens directly on the blank paper corner and one small box of red ink paste from its very first frame: only the plain blank corner, the written part outside the frame, and Xu Yan's right hand in his rolled-up blue-grey cuff; only the hand and the paper corner are in the frame, his face out of the frame; behind them only the out-of-focus dirt ground of the same yard",
          lines=[],
          motion="his thumb presses into the red ink paste, then presses down hard on the blank corner, leaving one red thumbprint, and lifts away",
          zh="手部特寫、慢推（第一格就是紙角與紅印泥）：只拍空白紙角（寫字的部分在畫面外）；許硯的拇指按進紅印泥，再重重按在紙角留下紅指印，拇指抬起"),

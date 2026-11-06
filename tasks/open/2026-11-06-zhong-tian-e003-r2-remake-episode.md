@@ -71,3 +71,5 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 
 `cut-qa.py` 0 problem(s)；整片每鏡中間一格看過，面板字跟稿一致。工作分支 `claude/zt-e003-r2`，備份 `transfer/zt-e903-media`。
 - 備份 `transfer/zt-e903-media`（680 MB；第一次因磁碟滿失敗，清出空間後重推成功）。
+- 2026-11-06 站主看片：「第三集主角的手為什麼會有一顆一顆的?」——s06 許硯手背長出深色碎塊（稿子的「手背沾木屑」被畫成黏在皮膚上的碎片），s08 也有幾個小點。
+  `r2.py` 拿掉木屑（改寫額頭有汗）；`colab/runs/e903/fix2` 重抽 s06、s08（種子 9030301／302，排在第 4 集草稿後同一個 pod），挑好後精修、重剪、重送後台。
