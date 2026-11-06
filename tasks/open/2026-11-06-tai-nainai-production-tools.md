@@ -95,7 +95,7 @@ scope:
 - [x] `shots-en.json` 格式與第 1 集 27 鏡的英文正文。
 - [x] `compile.py`：`video.json`、`brief.md`、Ref2VA manifest；中文列改了而英文沒跟上就停。
 - [ ] 第 11–20 集（第二篇章）的 `shots-en.json`、`video.json`、`brief.md`。
-- [ ] 第 2–10 集（第一篇章）的 `shots-en.json`、`video.json`、`brief.md`。
+- [x] 第 2–10 集（第一篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [ ] 試鏡學到的：燈的分數各一張祠堂場景圖、景別要準的鏡走首格路線。
 
 ## How to verify
@@ -105,6 +105,9 @@ node tools/video/cli.mjs lint --slug tai-nainai-e001
 ```
 
 ## Notes
+
+- 2026-11-06 第 2–10 集：三個代理各寫三集，209 鏡；機械檢查（正文沒有中文、沒有 film still、長度、沒台詞的鏡有 motion、角色／look／場景 id）0 問題，抽查與中文對照正確；十集 `lint` 都 0 錯。
+  代理抓到兩個工具的 bug，已修：一鏡兩句台詞第 2–4 集用「／」隔開（解析器只認 `<br>`，第二句會用第一個人的聲音唸，全季 56 鏡）；兩場的集只有兩章（YouTube 要三章，最長那一場從中間再切一章，或 `chapters` 指定），章節標題不再從第一個逗號切壞。
 
 - 2026-11-06 第 1 集跑通：`compile.py 1` 產生 27 鏡、19 句、6 個角色的 `video.json`，`lint` 0 錯；`--manifest --placeholders` 兩份 Ref2VA manifest 過 `h3.sh check`。
   lint 剩 12 個 craft 警告是分鏡本身的節奏（鏡長中位數 4.6 秒、台詞中位數 16 字、78% 的鏡只有看與呼吸），跟 bible 的「台詞一句 10–24 字」（站主 2026-11-05 規格）互相衝突，交站主決定，工具不改。

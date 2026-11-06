@@ -7,6 +7,7 @@
   中文改了而英文沒跟著改，就列出哪幾鏡並以 1 停下（`--check` 只做這件事）。
 - 台詞照 script.md：說話人對 cast.json、語氣（括號）進 emotion、標記（→ 答在、← 因為、結尾、懸念）拿掉。
   shots-en.json 的 `speaker_overrides` 可以指定對不到 cast.json 的說話人（例如第 60 集「電話那頭」是顧承霖）。
+- 章節：一場一章（標題是場名去掉地點）；不到三章時把最長那一場從中間再切一章，或在 shots-en.json 寫 `chapters` {鏡: 標題}。
 - 沒有台詞的鏡用 `action_seconds`（script.md 的秒數四捨五入、夾在 1–8；shots-en.json 那一鏡可以寫 `action_seconds` 覆蓋，例如 1.5 秒的快拍寫 1）。
 - `--manifest`：每鏡的參考圖 = 畫面裡的角色定妝照（`<id>-portrait-t1.png`，換裝 `<id>-<look>-t1.png`）＋場景圖
   （`set-<場景>-t1.png`；祠堂有燈的分數時先找 `set-<場景>-lamp<N>-t1.png`），在 --refs 裡找；正文照
@@ -128,13 +129,22 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
                 data["character_looks"] = looks
             scene = {"id": s["id"], "template": "shot", "lines": lines, "data": data}
             if sc["shots"][0] is s:
-                scene["chapter"] = sc["title"].split("，")[-1]
+                scene["chapter"] = sc["title"].split("，", 1)[-1]  # 「院子，壽衣與「這個家，要散了」」只去掉地點
             if not lines and not e.get("motion"):
                 raise SystemExit(f"{s['id']}: 沒有台詞的鏡要在 shots-en.json 寫 motion（看得到的動作，一句）")
             if not lines:
                 scene["action_seconds"] = int(e.get("action_seconds") or max(1, min(8, round(s["seconds"] or 4))))
             scenes.append(scene)
             total += s["seconds"] or 0
+    # YouTube 要至少三個章節；兩場的集把最長那一場從中間的鏡再切一章（shots-en.json 的 chapters {鏡: 標題} 可以指定）
+    for shot_id, title in (en.get("chapters") or {}).items():
+        next(x for x in scenes if x["id"] == shot_id)["chapter"] = title
+    if sum(1 for x in scenes if x.get("chapter")) < 3:
+        starts = [i for i, x in enumerate(scenes) if x.get("chapter")] + [len(scenes)]
+        a, b = max(zip(starts, starts[1:]), key=lambda r: r[1] - r[0])
+        mid = a + (b - a) // 2
+        if b - a >= 4 and not scenes[mid].get("chapter"):
+            scenes[mid]["chapter"] = scenes[a]["chapter"] + "（下）"
     roster = []
     for cid in dict.fromkeys(used):
         if cid in chars:

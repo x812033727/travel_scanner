@@ -72,7 +72,8 @@ def parse_dialogue(cell: str, chars: dict, extras: dict) -> list[dict]:
     if cell in ("—", "-", "") or cell.startswith("（無台詞") or cell.startswith("—"):
         return []
     out = []
-    for part in re.split(r"<br\s*/?>", cell):
+    # 同一鏡兩個人說話：<br> 或「／」後面接「名字（語氣）：」（第 2–4 集用的是「／」）
+    for part in re.split(r"<br\s*/?>|\s*／[\s　]*(?=[^（：／|]{1,12}（[^）]*）：)", cell):
         part = part.strip()
         m = LINE.match(part)
         if not m:
