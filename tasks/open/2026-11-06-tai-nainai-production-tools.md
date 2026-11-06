@@ -33,10 +33,10 @@ scope:
 
 ## Steps
 
-- [ ] `parse_script.py`：場頭（場景圖、燈、時間）、鏡頭六欄、台詞（說話人、語氣、心裡話、畫外、答在／因為標記）。
-- [ ] 說話人對 `cast.json` 的角色與路人 id。
-- [ ] `shots-en.json` 格式與第 1 集 27 鏡的英文正文。
-- [ ] `compile.py`：`video.json`、`brief.md`、Ref2VA manifest；中文列改了而英文沒跟上就停。
+- [x] `parse_script.py`：場頭（場景圖、燈、時間）、鏡頭六欄、台詞（說話人、語氣、心裡話、畫外、答在／因為標記）。
+- [x] 說話人對 `cast.json` 的角色與路人 id。
+- [x] `shots-en.json` 格式與第 1 集 27 鏡的英文正文。
+- [x] `compile.py`：`video.json`、`brief.md`、Ref2VA manifest；中文列改了而英文沒跟上就停。
 - [ ] 試鏡學到的：燈的分數各一張祠堂場景圖、景別要準的鏡走首格路線。
 
 ## How to verify
@@ -46,5 +46,9 @@ node tools/video/cli.mjs lint --slug tai-nainai-e001
 ```
 
 ## Notes
+
+- 2026-11-06 第 1 集跑通：`compile.py 1` 產生 27 鏡、19 句、6 個角色的 `video.json`，`lint` 0 錯；`--manifest --placeholders` 兩份 Ref2VA manifest 過 `h3.sh check`。
+  lint 剩 12 個 craft 警告是分鏡本身的節奏（鏡長中位數 4.6 秒、台詞中位數 16 字、78% 的鏡只有看與呼吸），跟 bible 的「台詞一句 10–24 字」（站主 2026-11-05 規格）互相衝突，交站主決定，工具不改。
+- 參考圖的檔名規則：`<id>-portrait-t1.png`、換裝 `<id>-<look>-t1.png`、場景 `set-<場景>-t1.png`，祠堂有燈的分數時先找 `set-<場景>-lamp<N>-t1.png`。重畫定妝照時照這個名字存。
 
 - 全季六欄表 1,438 列 `cNN`、另有少數 `cNNa/b` 拆鏡；另一種三欄表（鏡｜估計秒數｜要買）是長鏡清單，不是鏡頭。
