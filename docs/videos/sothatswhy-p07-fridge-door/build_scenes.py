@@ -103,7 +103,7 @@ scene("ice-cube", "Close-up of one ice cube melting into a small puddle in a lit
 chief("chief-heat-flow", C("moving one hand slowly from high to low like something flowing downhill"),
       c("冰塊融化，是旁邊空氣的熱跑進了冰塊。"), c("熱自己走，只會從熱的地方，跑到冷的地方。"))
 kid("kid-cold-run", K("tilting her head with a puzzled frown and one finger on her chin", close=True),
-    k("那冷呢？", "追問"), k("冷不會自己跑嗎？", "句尾上揚"))
+    k("那冷呢？", "追問"), k("冰冰的空氣，不會自己跑嗎？", "句尾上揚"))
 chief("chief-cold-less", C("lowering one flat hand a little with a calm smile", close=True),
       c("我們說的冷，其實就是熱比較少。", "放慢", "P:coldthing"), c("冷不是一種會跑出來的東西。"))
 kid("kid-face-cool", K("standing at the open door of " + FRIDGE + " with her eyes closed and a small smile, cool mist on her cheeks", where=KITCHEN),
@@ -189,7 +189,7 @@ chief("chief-squeeze", C("squeezing her two hands together hard as if pressing a
 scene("condense", "Close-up cutaway of the black zigzag pipes on the back of a white refrigerator, drops of liquid forming inside the pipes, small round red balls leaving the pipes into the sunny kitchen air, " + DAY,
       c("在那裡變回液體，把帶來的熱交給廚房。"), c("然後它再流回冰箱裡面，重新跑一圈。"))
 kid("kid-train", K("pushing a little toy train around a circle of track on the kitchen floor, laughing", where=KITCHEN),
-    k("像一台搬熱的小火車！", "開心"))
+    k("像載著熱的小火車！", "開心"))
 chief("chief-train", C("nodding and laughing softly", close=True),
       c("很像。一圈又一圈，把熱從裡面載到外面。"))
 kid("kid-plug", K("crouching beside " + FRIDGE + " and pointing at its white plug in the wall socket", where=KITCHEN),
@@ -235,7 +235,7 @@ kid("kid-open-again", K("pulling open the door of " + FRIDGE + " wide and holdin
 scene("plan-loop", PLAN + ", a big dashed yellow loop around the whole kitchen, the refrigerator door standing wide open, small round red balls circling in a loop from the kitchen floor into the open door and out of the back of the refrigerator again, " + DAY,
       c("廚房的熱，從門口一直灌進冰箱，"), c("冰箱再把它們搬到背後，吐回廚房。"))
 kid("kid-circle", K("spinning one finger round and round in the air with a dizzy grin", close=True),
-    k("熱在繞圈圈！", "好笑"))
+    k("原來熱在繞圈圈！", "好笑"))
 chief("chief-zero", C("drawing a small circle in the air and then pointing at it"),
       c("對，冰箱搬出來的那兩顆熱，又從門口跑回去，"), c("廚房的熱，一顆也沒有少。"))
 scene("plan-extra", PLAN + ", a big dashed yellow loop around the whole kitchen, the refrigerator door wide open, one bright yellow lightning bolt entering the refrigerator along its power cord and turning into one extra small round red ball that joins the others on the floor, " + DAY,
@@ -287,13 +287,13 @@ scene("plan-house", "Top-down flat floor plan of a small bedroom and the balcony
 kid("kid-hot-end", K("pointing proudly out of a sunny window toward the balcony", close=True, where=BEDROOM),
     k("熱的那一頭在外面！", "想通", "P:acwhy"))
 chief("chief-out-of-circle", C("drawing a circle in the air and then flicking one hand outward past it, a calm smile"),
-      c("這次的熱吐到圈外，不會直接繞回來，"), c("圈裡的熱，才真的一顆一顆變少。"))
+      c("這次的熱吐到圈外，不會直接繞回來，"), c("圓圈裡面的熱，才真的一顆一顆變少。"))
 chief("chief-ac-bolt", C("holding up one finger, then pointing out toward the side"),
       c("冷氣吃的電，大部分也變成熱，"), c("在室外機那裡，一起吐到圈外。"))
 scene("one-to-three", "Close-up of one bright yellow lightning bolt on the left and three plump round red balls with a small fourth one on the right, all floating over a pale sky-blue background, " + DAY,
       c("一般的冷氣，用一份電，", "數字放慢"), c("大約能搬走好幾份的熱。"))
 kid("kid-bargain", K("holding up one finger on one hand and three fingers on the other, a delighted grin", close=True),
-    k("一份電搬好幾份？", "驚訝"), k("好會搬！"))
+    k("用一份電，搬好幾份熱？", "驚訝"), k("搬得好多喔！"))
 chief("chief-depends", C("tilting one hand side to side with an honest smile", close=True),
       c("確切搬多少，要看冷氣和天氣，"), c("外面越熱，通常就搬得越吃力。"))
 chief("chief-door-back", C("pressing her palms together as if closing a heavy door"),
