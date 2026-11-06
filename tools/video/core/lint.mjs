@@ -8,7 +8,7 @@ import { craftProblems } from "./craft.mjs";
 import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
 import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
-import { DEFAULT_CADENCE, isNarrated, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
+import { DEFAULT_CADENCE, isNarrated, isStorySeries, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, youtubeWarnings } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -104,6 +104,11 @@ export const SENTENCE_WARN_EN = 50;
 // questions left open, so the viewer stays to hear them answered. A drama with a cast (not a
 // brand story) keeps its hook, the first chapter within DRAMA_HOOK_SECONDS.
 export const OPENING_CHAPTER_SECONDS = [30, 60];
+// The first chapter of a 奇聞檔案局 episode or a brand story (a curio- or story- slug, or a story
+// series) is the hook and the promise instead (register.mjs STORY_OPENING_RULE; owner,
+// 2026-11-05): 黑猫研究院's four most-viewed episodes say 「今天我們就來聊聊」 between 0:43 and 1:06
+// and start the era between 1:01 and 1:21, so the chapter runs about 40 to 90 seconds.
+export const STORY_OPENING_CHAPTER_SECONDS = [40, 90];
 export const DRAMA_HOOK_SECONDS = 30;
 export const SIMILARITY_WARN = 0.8;
 // SSML markup Azure also bills for, per line (a <break/> and the sentence wrapper); an estimate.
@@ -512,13 +517,19 @@ export function lintVideo(doc, context = {}) {
   const minutes = frameToSeconds(timeline.total_frames) / 60;
   const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc) || isC08ApprovedShortStory(doc) || isC20ApprovedShortStory(doc);
   const opening = chapters[0]?.seconds;
-  // A brand story is narrated and opens on the condensation even when its pictures have a cast.
-  if (opening !== undefined && hasCast(doc) && !isStory(context.series)) {
+  // A brand story or a 奇聞檔案局 episode is narrated and opens on its hook and promise even when
+  // its pictures have a cast (the series' silent researcher).
+  if (opening !== undefined && hasCast(doc) && !isStory(context.series) && !isStorySeries(doc)) {
     if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
   } else if (opening !== undefined && !isCompilation(doc) && episodeLengthForNarrative) {
     // Read on an episode only, as episodeScriptProblems is: the examples run seconds.
-    const [shortest, longest] = OPENING_CHAPTER_SECONDS;
-    if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; it is the condensation, ${shortest} to ${longest} s before the first real chapter: one scene of the story told in order up to the first fact that makes no sense, ending on the question the whole video answers (script-writing.md §開場濃縮)`);
+    if (isStorySeries(doc) || isStory(context.series)) {
+      const [shortest, longest] = STORY_OPENING_CHAPTER_SECONDS;
+      if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; in this series it is the hook and the promise, ${shortest} to ${longest} s: a question or a situation the viewer knows, how big it ended up against how small it started, at most two climaxes named and never the plot, then 「今天我們就來聊聊…」 and the question the episode answers (script-writing.md §奇聞檔案局與品牌故事的架構)`);
+    } else {
+      const [shortest, longest] = OPENING_CHAPTER_SECONDS;
+      if (opening < shortest || opening > longest) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; it is the condensation, ${shortest} to ${longest} s before the first real chapter: one scene of the story told in order up to the first fact that makes no sense, ending on the question the whole video answers (script-writing.md §開場濃縮)`);
+    }
   }
   const [low, high] = doc.target_minutes ?? DEFAULT_TARGET_MINUTES;
   // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
