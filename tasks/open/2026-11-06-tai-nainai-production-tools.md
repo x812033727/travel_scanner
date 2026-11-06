@@ -103,6 +103,96 @@ scope:
   - docs/videos/tai-nainai-e030/shots-en.json
   - docs/videos/tai-nainai-e030/video.json
   - docs/videos/tai-nainai-e030/brief.md
+  - docs/videos/tai-nainai-e031/shots-en.json
+  - docs/videos/tai-nainai-e031/video.json
+  - docs/videos/tai-nainai-e031/brief.md
+  - docs/videos/tai-nainai-e032/shots-en.json
+  - docs/videos/tai-nainai-e032/video.json
+  - docs/videos/tai-nainai-e032/brief.md
+  - docs/videos/tai-nainai-e033/shots-en.json
+  - docs/videos/tai-nainai-e033/video.json
+  - docs/videos/tai-nainai-e033/brief.md
+  - docs/videos/tai-nainai-e034/shots-en.json
+  - docs/videos/tai-nainai-e034/video.json
+  - docs/videos/tai-nainai-e034/brief.md
+  - docs/videos/tai-nainai-e035/shots-en.json
+  - docs/videos/tai-nainai-e035/video.json
+  - docs/videos/tai-nainai-e035/brief.md
+  - docs/videos/tai-nainai-e036/shots-en.json
+  - docs/videos/tai-nainai-e036/video.json
+  - docs/videos/tai-nainai-e036/brief.md
+  - docs/videos/tai-nainai-e037/shots-en.json
+  - docs/videos/tai-nainai-e037/video.json
+  - docs/videos/tai-nainai-e037/brief.md
+  - docs/videos/tai-nainai-e038/shots-en.json
+  - docs/videos/tai-nainai-e038/video.json
+  - docs/videos/tai-nainai-e038/brief.md
+  - docs/videos/tai-nainai-e039/shots-en.json
+  - docs/videos/tai-nainai-e039/video.json
+  - docs/videos/tai-nainai-e039/brief.md
+  - docs/videos/tai-nainai-e040/shots-en.json
+  - docs/videos/tai-nainai-e040/video.json
+  - docs/videos/tai-nainai-e040/brief.md
+  - docs/videos/tai-nainai-e041/shots-en.json
+  - docs/videos/tai-nainai-e041/video.json
+  - docs/videos/tai-nainai-e041/brief.md
+  - docs/videos/tai-nainai-e042/shots-en.json
+  - docs/videos/tai-nainai-e042/video.json
+  - docs/videos/tai-nainai-e042/brief.md
+  - docs/videos/tai-nainai-e043/shots-en.json
+  - docs/videos/tai-nainai-e043/video.json
+  - docs/videos/tai-nainai-e043/brief.md
+  - docs/videos/tai-nainai-e044/shots-en.json
+  - docs/videos/tai-nainai-e044/video.json
+  - docs/videos/tai-nainai-e044/brief.md
+  - docs/videos/tai-nainai-e045/shots-en.json
+  - docs/videos/tai-nainai-e045/video.json
+  - docs/videos/tai-nainai-e045/brief.md
+  - docs/videos/tai-nainai-e046/shots-en.json
+  - docs/videos/tai-nainai-e046/video.json
+  - docs/videos/tai-nainai-e046/brief.md
+  - docs/videos/tai-nainai-e047/shots-en.json
+  - docs/videos/tai-nainai-e047/video.json
+  - docs/videos/tai-nainai-e047/brief.md
+  - docs/videos/tai-nainai-e048/shots-en.json
+  - docs/videos/tai-nainai-e048/video.json
+  - docs/videos/tai-nainai-e048/brief.md
+  - docs/videos/tai-nainai-e049/shots-en.json
+  - docs/videos/tai-nainai-e049/video.json
+  - docs/videos/tai-nainai-e049/brief.md
+  - docs/videos/tai-nainai-e050/shots-en.json
+  - docs/videos/tai-nainai-e050/video.json
+  - docs/videos/tai-nainai-e050/brief.md
+  - docs/videos/tai-nainai-e051/shots-en.json
+  - docs/videos/tai-nainai-e051/video.json
+  - docs/videos/tai-nainai-e051/brief.md
+  - docs/videos/tai-nainai-e052/shots-en.json
+  - docs/videos/tai-nainai-e052/video.json
+  - docs/videos/tai-nainai-e052/brief.md
+  - docs/videos/tai-nainai-e053/shots-en.json
+  - docs/videos/tai-nainai-e053/video.json
+  - docs/videos/tai-nainai-e053/brief.md
+  - docs/videos/tai-nainai-e054/shots-en.json
+  - docs/videos/tai-nainai-e054/video.json
+  - docs/videos/tai-nainai-e054/brief.md
+  - docs/videos/tai-nainai-e055/shots-en.json
+  - docs/videos/tai-nainai-e055/video.json
+  - docs/videos/tai-nainai-e055/brief.md
+  - docs/videos/tai-nainai-e056/shots-en.json
+  - docs/videos/tai-nainai-e056/video.json
+  - docs/videos/tai-nainai-e056/brief.md
+  - docs/videos/tai-nainai-e057/shots-en.json
+  - docs/videos/tai-nainai-e057/video.json
+  - docs/videos/tai-nainai-e057/brief.md
+  - docs/videos/tai-nainai-e058/shots-en.json
+  - docs/videos/tai-nainai-e058/video.json
+  - docs/videos/tai-nainai-e058/brief.md
+  - docs/videos/tai-nainai-e059/shots-en.json
+  - docs/videos/tai-nainai-e059/video.json
+  - docs/videos/tai-nainai-e059/brief.md
+  - docs/videos/tai-nainai-e060/shots-en.json
+  - docs/videos/tai-nainai-e060/video.json
+  - docs/videos/tai-nainai-e060/brief.md
 ---
 
 # 恁祖媽今年18 製作工具：script.md 轉 video.json 與 Colab 片段清單
@@ -124,6 +214,7 @@ scope:
 - [x] 說話人對 `cast.json` 的角色與路人 id。
 - [x] `shots-en.json` 格式與第 1 集 27 鏡的英文正文。
 - [x] `compile.py`：`video.json`、`brief.md`、Ref2VA manifest；中文列改了而英文沒跟上就停。
+- [ ] 第 31–60 集（第四到第六篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [x] 第 21–30 集（第三篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [x] 第 11–20 集（第二篇章）的 `shots-en.json`、`video.json`、`brief.md`。
 - [x] 第 2–10 集（第一篇章）的 `shots-en.json`、`video.json`、`brief.md`。
