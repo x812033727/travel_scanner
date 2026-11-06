@@ -43,7 +43,7 @@ python3 -I docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scri
 
 ## Notes
 
-- 開場 10 秒不到四鏡（`lint` 的 hook.opening）的集，寫完英文正文時記在這裡，最後一起出變更單：e015（3 鏡）、e016（2 鏡）。
+- 開場 10 秒不到四鏡（`lint` 的 hook.opening）的集，寫完英文正文時記在這裡，最後一起出變更單：e015（3 鏡）、e016（2 鏡）、e024（3）、e025（3）、e026（2）。
 
 - 決策單原本說開場加鏡「用 source 切同一支片段、不多買」是錯的：同一支片段切開是同一個構圖，是跳接；已在 decisions.md 更正。
 - 決策單原本說 B 要每集加一鏡，也錯了：分鏡本來就有。
