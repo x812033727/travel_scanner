@@ -750,9 +750,16 @@ export async function run(command, args, ctx) {
           ...asked,
         });
       } catch (error) {
-        if (error.code !== "stopped") throw error;
-        stopped = true;
-        break;
+        // The judge model refusing to answer (its safety filter, e.g. on a child character
+        // checked against her sheet) fails this take for review instead of ending the run:
+        // one refused still used to stop a whole episode (tasks: keyframe judge refuses).
+        if (error.code !== "stopped" && /拒絕回應|PROHIBITED_CONTENT/.test(String(error.message))) {
+          judge = { overall: 0, passed: false, scores: {}, problems: [`judge refused to answer: ${String(error.message).slice(0, 120)}`] };
+        } else {
+          if (error.code !== "stopped") throw error;
+          stopped = true;
+          break;
+        }
       }
       // A still under a camera move is used without its paper margin; the judge saw it whole.
       if (stillPictures && !manga) picture = await trimmed(ctx, workdir, picture, scene.id, inset);

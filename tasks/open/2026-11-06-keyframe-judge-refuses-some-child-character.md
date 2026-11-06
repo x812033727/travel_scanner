@@ -1,17 +1,18 @@
 ---
 id: 2026-11-06-keyframe-judge-refuses-some-child-character
 title: Keyframe judge refuses some child-character stills (PROHIBITED_CONTENT) since cute explainers get the cast identity check
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5.5-focused-hopper
+claimed_at: 2026-11-06T17:42:40Z
 created_at: 2026-11-06T17:41:19Z
 completed_at:
 branch:
 depends_on: []
 scope:
   - tools/video/media/keyframes.mjs
+  - tools/video/media/look-keyframes.test.mjs
 ---
 
 # Keyframe judge refuses some child-character stills (PROHIBITED_CONTENT) since cute explainers get the cast identity check
@@ -25,7 +26,8 @@ and P14 once mid-run. A refusal ends `keyframes` with exit 4, so one shot stops 
 
 ## Definition of done
 
-- [ ] A refused judge answer marks that one shot for review and the run goes on to the next shot.
+- [x] A refused judge answer fails that take (overall 0, the reason as its problem), so the shot ends up for review and the run goes on.
+- [ ] A test with a stub judge that refuses.
 - [ ] Find out whether the identity check (sheet + still of a child) is what triggers it; if so, word the
       request or the rubric so it is not refused.
 
