@@ -55,6 +55,8 @@ bash .agents/skills/minimax-h3-colab/scripts/h3.sh images-check --manifest <work
   - 片段（Ref2VA 960×544 hero，G4 每支約 2.1 分）：五支臉都守住定妝照；c14 嘴在說話；c20、c23 同一張臉；九十六歲與十八歲看得出同一家人。
     不聽話的是燈的亮度（燈 1 畫成亮的）、景別（c17 近景畫成全景）、燈的形狀（c20 無燈罩的大銅座）。
   - 手背細紋插鏡：多畫一枚戒指、細紋幾乎看不到，老化記號要改設計。
+  - 第二段（σ0.5 補到 1312×736）5 支約 14 分；第三段 SeedVR2 跑到一半停掉：**站主 2026-11-06 定片段先做到 1312×736，不放大**（剪接時整支放到 1920×1080 輸出），也為了守 15 CU 的上限。試鏡合計約 13.8 CU（68.31 → 54.51）。
+  - 送出的 manifest、提示詞與進度檔在 `screen-test/runs/`（`<W>` = 工作資料夾 `_series/tai-nainai/screen-test`）。
   - 坑：同一個 runtime 先跑 Qwen 出圖再跑 H3 會缺 `VHS_VideoCombine`（出圖的 ComfyUI 沒裝 VideoHelperSuite），片段要另開 session；
     圖片工具把 `output_name` 的 `/` 換成 `-`；監看 log 時「1429 字元」會被當成 429。
 
