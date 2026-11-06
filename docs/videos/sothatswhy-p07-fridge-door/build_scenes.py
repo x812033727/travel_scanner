@@ -287,7 +287,7 @@ scene("plan-house", "Top-down flat floor plan of a small bedroom and the balcony
 kid("kid-hot-end", K("pointing proudly out of a sunny window toward the balcony", close=True, where=BEDROOM),
     k("熱的那一頭在外面！", "想通", "P:acwhy"))
 chief("chief-out-of-circle", C("drawing a circle in the air and then flicking one hand outward past it, a calm smile"),
-      c("這次搬出去的熱，跑到圈外就回不來，"), c("圈裡的熱，才真的一顆一顆變少。"))
+      c("這次的熱吐到圈外，不會直接繞回來，"), c("圈裡的熱，才真的一顆一顆變少。"))
 chief("chief-ac-bolt", C("holding up one finger, then pointing out toward the side"),
       c("冷氣吃的電，大部分也變成熱，"), c("在室外機那裡，一起吐到圈外。"))
 scene("one-to-three", "Close-up of one bright yellow lightning bolt on the left and three plump round red balls with a small fourth one on the right, all floating over a pale sky-blue background, " + DAY,

@@ -521,7 +521,7 @@
 
 #### 104. chief-out-of-circle
 
-【所長】這次搬出去的熱，跑到圈外就回不來，
+【所長】這次的熱吐到圈外，不會直接繞回來，
 【所長】圈裡的熱，才真的一顆一顆變少。
 
 #### 105. chief-ac-bolt
@@ -613,5 +613,5 @@
 
 【所長】（誠懇）想一起找生活裡的為什麼，就訂閱原來如此事務所。
 
-narrative 52bdf0bd16ed4cfa
-speech eac062664a6780fd
+narrative f9b82fca344655ce
+speech 6220866f451d52ed
