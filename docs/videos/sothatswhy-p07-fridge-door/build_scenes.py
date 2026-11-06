@@ -151,7 +151,7 @@ kid("kid-eat-heat", K("pretending to munch with puffed cheeks beside " + FRIDGE,
 chief("chief-vanish", C("shaking her head gently with a kind smile"),
       c("熱不會憑空變不見，只會換個地方待。", None, "P:vanish"), c("不信，你繞到冰箱的後面看看。"))
 kid("kid-behind", K("holding her open palm near the back of " + FRIDGE + " pulled a little away from the wall, her eyes wide in surprise", where=KITCHEN),
-    k("咦？後面暖暖的！", "驚訝"), k("有一股熱熱的風！"), c("手靠近就好，背後有電線，別伸進去亂摸。", "叮嚀"))
+    k("咦？後面暖暖的！", "驚訝"), k("有一股溫溫的風！"), c("手靠近就好，背後有電線，別伸進去亂摸。", "叮嚀"))
 scene("coils", "Close-up of black zigzag metal pipes on the back of a white refrigerator, faint warm shimmering air rising from them, small round red balls drifting up into the sunny kitchen, " + DAY,
       c("冰箱背後這一排彎彎的管子，摸起來是溫的。"), c("冰箱裡少掉的熱，就是從這裡吐回廚房。", None, "P:back"))
 kid("kid-moved", K("pointing back and forth between the inside and the back of " + FRIDGE + " with an excited grin", where=KITCHEN),
@@ -183,7 +183,7 @@ kid("kid-cold-boil", K("with her mouth open in amazement and both hands up", clo
 kid("kid-gas-where", K("following an imaginary pipe through the air with one pointing finger", close=True),
     k("帶著熱的氣體，", "追問"), k("接著跑去哪？", "句尾上揚"))
 scene("compressor", "Close-up of a small round black metal compressor sitting low at the back corner of a white refrigerator, two thin copper pipes coming out of it, " + DAY,
-      c("它跑進一顆圓圓的馬達裡。"), c("這顆馬達叫做壓縮機。"))
+      c("它跑進一個圓圓的鐵罐裡。"), c("這個鐵罐叫做壓縮機。"))
 chief("chief-squeeze", C("squeezing her two hands together hard as if pressing a ball"),
       c("壓縮機把冷媒的氣體，擠得緊緊的。"), c("被擠緊的冷媒，流進背後那排管子，"))
 scene("condense", "Close-up cutaway of the black zigzag pipes on the back of a white refrigerator, drops of liquid forming inside the pipes, small round red balls leaving the pipes into the sunny kitchen air, " + DAY,
@@ -192,12 +192,6 @@ kid("kid-train", K("pushing a little toy train around a circle of track on the k
     k("像一台搬熱的小火車！", "開心"))
 chief("chief-train", C("nodding and laughing softly", close=True),
       c("很像。一圈又一圈，把熱從裡面載到外面。"))
-kid("kid-wall-q", K("pushing " + FRIDGE + " tight against the kitchen wall with both hands, a curious face", where=KITCHEN),
-    k("那冰箱的背後，", "追問"), k("可以緊緊貼著牆嗎？", "句尾上揚", "S:wall"))
-chief("chief-wall", C("holding her two hands a little apart, side by side, with a kind smile"),
-      c("最好別貼死。背後留一點空隙，熱才散得出去，", None, "P:wall"), c("管子上積的灰塵，也要記得清。"))
-kid("kid-wall", K("pulling " + FRIDGE + " a little away from the wall and smiling", where=KITCHEN),
-    k("熱也要有路可以走！", "想通"))
 kid("kid-plug", K("crouching beside " + FRIDGE + " and pointing at its white plug in the wall socket", where=KITCHEN),
     k("小火車要有人推吧？", "追問"))
 chief("chief-electric", C("holding up one hand with fingers spread like a little spark, a calm smile"),
@@ -217,7 +211,7 @@ chief("chief-bigger", C("spreading both arms wide as if drawing a huge circle"),
 scene("plan-room", PLAN + ", a big dashed yellow loop drawn around the whole kitchen, the refrigerator inside the loop, small round red balls and one yellow lightning bolt inside the loop, " + DAY,
       c("冰箱、冰箱背後、你站的地方，"), c("現在全在同一個圈裡。"))
 chief("chief-suppose", C("holding up two fingers with a calm smile", close=True),
-      c("我們先假設一組好算的數字："), c("冰箱從裡面搬出兩顆紅球的熱，", "數字放慢"))
+      c("先讓門關著，假設一組好算的數字："), c("冰箱從裡面搬出兩顆紅球的熱，", "數字放慢"))
 chief("chief-one-bolt", C("holding up one finger with raised eyebrows"),
       c("壓縮機做這件事，吃了一份電。"))
 kid("kid-guess-count", K("counting on her fingers with her tongue sticking out in concentration", close=True),
@@ -229,9 +223,9 @@ kid("kid-more", K("with her mouth wide open in surprise, holding up three finger
 chief("chief-energy", C("nodding slowly with her hands open"),
       c("對。電用完不會變不見，最後也變成熱。"))
 kid("kid-closed-q", K("leaning her back against the closed door of " + FRIDGE + " with a thinking face", where=KITCHEN),
-    k("那門關著的時候呢？", "追問", "S:closed"))
+    k("那門關著，廚房會變熱嗎？", "追問", "S:closed"))
 chief("chief-closed", C("sliding one hand slowly forward as if something is sneaking in"),
-      c("門關著，從牆和門邊慢慢溜進去的那些熱，"), c("冰箱照樣把它們搬出來，加上電，吐回廚房。"))
+      c("那兩顆熱，本來就是從牆和門邊，慢慢溜進冰箱的。"), c("現在被搬回廚房，還多帶了電變的那一顆。"))
 kid("kid-closed", K("holding her finger and thumb a tiny bit apart with raised eyebrows", close=True, where=KITCHEN),
     k("所以就算門關著，", "推理"), k("廚房也會熱一點點？", "句尾上揚"))
 chief("chief-closed2", C("nodding with a warm smile", close=True),
@@ -243,7 +237,7 @@ scene("plan-loop", PLAN + ", a big dashed yellow loop around the whole kitchen, 
 kid("kid-circle", K("spinning one finger round and round in the air with a dizzy grin", close=True),
     k("熱在繞圈圈！", "好笑"))
 chief("chief-zero", C("drawing a small circle in the air and then pointing at it"),
-      c("對，那兩顆熱，只是在圈裡轉來轉去，"), c("廚房的熱，一顆也沒有少。"))
+      c("對，冰箱搬出來的那兩顆熱，又從門口跑回去，"), c("廚房的熱，一顆也沒有少。"))
 scene("plan-extra", PLAN + ", a big dashed yellow loop around the whole kitchen, the refrigerator door wide open, one bright yellow lightning bolt entering the refrigerator along its power cord and turning into one extra small round red ball that joins the others on the floor, " + DAY,
       c("可是每轉一圈，那道小閃電，"), c("就在圈裡多變出一顆熱。"))
 kid("kid-answer", K("slowly lowering the door of " + FRIDGE + " with a stunned face", where=KITCHEN),
@@ -257,11 +251,11 @@ chief("chief-harder", C("wiping her brow with the back of one hand as if tired, 
 kid("kid-tired", K("patting the side of " + FRIDGE + " with a sympathetic face", where=KITCHEN),
     k("冰箱好累喔！", "心疼"))
 chief("chief-more-heat", C("raising her hand higher and higher in steps"),
-      c("吃的電越多，多變出來的熱也越多。"), c("你家的電費，也跟著一起變多。", "轉向觀眾"))
+      c("累的還有你家的電表，", "笑"), c("電費也跟著一起變多。", "轉向觀眾"))
 kid("kid-heater-q", K("rubbing her hands together in front of a small electric heater glowing orange", where=BEDROOM),
     k("那開著門的冰箱，", "推理"), k("像冬天用的電暖器？", "句尾上揚"))
 chief("chief-heater", C("smiling and giving a small thumbs up", close=True),
-      c("算起帳來很像：它吃進去的電，"), c("最後都變成熱，留在廚房裡。"))
+      c("很像。只是它繞了一大圈，"), c("還順便讓冰箱裡的東西，一起變暖。"))
 chief("chief-opinion", C("folding her arms and laughing softly"),
       c("我覺得這是冰箱最會騙人的地方：", "意見，輕鬆"), c("它是一台搬熱的機器，不是做冷的機器。"))
 kid("kid-trick", K("narrowing her eyes at " + FRIDGE + " like a detective, one finger raised", where=KITCHEN),
@@ -292,26 +286,16 @@ scene("plan-house", "Top-down flat floor plan of a small bedroom and the balcony
       c("現在把圈畫在你的房間：房間就是冰箱的裡面，"), c("而冰箱的背後，被搬到了牆外面。"))
 kid("kid-hot-end", K("pointing proudly out of a sunny window toward the balcony", close=True, where=BEDROOM),
     k("熱的那一頭在外面！", "想通", "P:acwhy"))
+chief("chief-out-of-circle", C("drawing a circle in the air and then flicking one hand outward past it, a calm smile"),
+      c("這次搬出去的熱，跑到圈外就回不來，"), c("圈裡的熱，才真的一顆一顆變少。"))
 chief("chief-ac-bolt", C("holding up one finger, then pointing out toward the side"),
       c("冷氣吃的電，大部分也變成熱，"), c("在室外機那裡，一起吐到圈外。"))
 scene("one-to-three", "Close-up of one bright yellow lightning bolt on the left and three plump round red balls with a small fourth one on the right, all floating over a pale sky-blue background, " + DAY,
-      c("一般的冷氣，用一份電，", "數字放慢"), c("大約能搬走三份以上的熱。"))
+      c("一般的冷氣，用一份電，", "數字放慢"), c("大約能搬走好幾份的熱。"))
 kid("kid-bargain", K("holding up one finger on one hand and three fingers on the other, a delighted grin", close=True),
-    k("一份電搬三份熱？", "驚訝"), k("好會搬！"))
+    k("一份電搬好幾份？", "驚訝"), k("好會搬！"))
 chief("chief-depends", C("tilting one hand side to side with an honest smile", close=True),
       c("確切搬多少，要看冷氣和天氣，"), c("外面越熱，通常就搬得越吃力。"))
-kid("kid-reverse-q", K("turning her hand upside down with a mischievous grin", close=True, where=BALCONY),
-    k("那把冷氣反過來，", "調皮"), k("從外面搬熱進來呢？", "句尾上揚", "S:reverse"))
-chief("chief-reverse", C("raising her eyebrows with a delighted smile"),
-      c("真的有。冷暖氣機在冬天可以倒過來跑，", None, "P:reverse"), c("從外面的冷空氣裡，把熱搬進房間。"))
-kid("kid-cold-heat", K("hugging herself in a thick scarf on a chilly bright winter morning, a puzzled frown", where=BALCONY),
-    k("外面那麼冷，", "不解"), k("也有熱可以搬？", "句尾上揚"))
-chief("chief-cold-heat", C("tapping her temple with one finger and a playful smile", close=True),
-      c("還記得嗎？冷只是熱比較少，", "點名回呼"), c("冬天的空氣裡，還是有熱可以搬。"))
-chief("chief-heater-vs", C("holding up one finger on one hand and three fingers on the other, eyebrows raised"),
-      c("一台電暖器，用一份電，只能給你一份熱；"), c("冷暖氣機用一份電，可以從外面搬來好幾份。"))
-kid("kid-heater-vs", K("hugging herself in a thick scarf with a delighted grin", close=True, where=BALCONY),
-    k("用搬的，比用做的划算！", "想通"))
 chief("chief-door-back", C("pressing her palms together as if closing a heavy door"),
       c("還記得冰箱那道厚厚的門嗎？", "點名回呼", "P:door"), c("開冷氣的時候，你關上窗、拉上窗簾，"))
 kid("kid-curtain", K("pulling a pale yellow curtain closed across a sunny window", where=BEDROOM),
@@ -333,9 +317,9 @@ kid("kid-close-door", K("pushing the door of " + FRIDGE + " shut with both hands
 kid("kid-got-it", K("throwing both arms up with a huge happy smile", where=KITCHEN),
     k("冰箱門開著，熱的那一頭，", "篤定"), k("還留在廚房裡！", "開心"))
 chief("chief-same-machine", C("spreading her hands to show three things in a row, a warm smile"),
-      c("冰箱和冷氣，是同一種搬熱的機器，"), c("差別只在熱的那一頭，放在圈裡還是圈外。"))
+      c("還記得冰箱和冷氣，是同一種機器嗎？", "點名回呼"), c("差別只在熱的那一頭，放在圈裡還是圈外。"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
-      c("下次你走過冰箱，可以摸摸它的背後：", "轉向觀眾，輕聲"), c("那一點溫溫的，是搬出來的熱，再加上它吃的電。"))
+      c("下次你走過冰箱，可以摸摸它的背後：", "轉向觀眾，輕聲"), c("還記得那三顆紅球嗎？你摸到的溫溫，就是它們。", "點名回呼"))
 # The outro is three pictures, no card (series README §3.2, P05).
 kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile proudly holding up a big red rubber stamp in one hand, bright morning light",
     k("原來如此！", "開心大聲"))
@@ -349,9 +333,7 @@ WHAT = {"room": "冰箱門一直開著，廚房會變涼還是變熱", "back": "
         "door": "冰箱那道厚厚的門，後面還有什麼用", "where": "冰箱裡的熱被搬去哪裡", "vanish": "冰箱是不是把熱吃掉了",
         "motor": "壓縮機吃進去的電最後去哪", "ledger": "背後吐出來的熱，跟裡面搬出來的一樣多嗎",
         "front": "站在冰箱門口明明是涼的", "acwhy": "冷氣也是搬熱，房間為什麼會變涼",
-        "outsideair": "冷氣是不是把外面的空氣變冷吹進來", "wall": "冰箱背後可不可以緊貼著牆",
-        "closed": "冰箱門關著時，廚房的熱帳怎麼算", "reverse": "把冷氣反過來，能不能從外面搬熱進來",
-        }
+        "outsideair": "冷氣是不是把外面的空氣變冷吹進來", "closed": "冰箱門關著時，廚房會不會變熱", }
 scenes, loops_s, loops_p, n = [], {}, {}, 0
 for sc in S:
     lines = []

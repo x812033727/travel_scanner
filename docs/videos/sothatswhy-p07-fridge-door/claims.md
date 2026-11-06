@@ -16,7 +16,7 @@
 ## C02 「冷」不是一種東西，是熱比較少
 
 - **主張**：冷不會從冰箱裡「跑出來」；我們說的冷，是熱比較少。冷氣（和冰箱）不「製造冷」，只搬熱。
-- **可用說法**：「我們說的冷，其實就是熱比較少。冷不是一種會跑出來的東西。」「冷只是熱比較少，冬天的空氣裡，還是有熱可以搬。」
+- **可用說法**：「我們說的冷，其實就是熱比較少。冷不是一種會跑出來的東西。」
 - **來源**：[5]
 - **可信度／注意**：高。Penn State EGEE 102：「An air conditioner does NOT: "Create cold" (cold is simply the absence of heat)」；「An AC is a heat pump, not a cold generator.」
   「冷空氣流出來，碰到你的臉，你臉上的熱就跑進那團冷空氣裡」是 C01 規則套在門口那團冷空氣上；門口前面那一小塊確實會涼一點見 C10。
@@ -48,11 +48,12 @@
 ## C06 冰箱把裡面的熱吐到背後；背後摸起來比室溫暖，有的會往腳邊吹溫風
 
 - **主張**：冰箱運轉時，背後比室溫暖；有的冰箱會往站在前面的人腳邊吹溫風；冰箱裡少掉的熱就是被吐到房間裡。熱不會憑空消失。
-- **可用說法**：「冰箱背後這一排彎彎的管子，摸起來是溫的。冰箱裡少掉的熱，就是從這裡吐回廚房。」「有的冰箱，還會從底下吹出溫溫的風，你站在它前面，腳邊就吹得到。」「熱不會憑空變不見，只會換個地方待。」
+- **可用說法**：「冰箱背後這一排彎彎的管子，摸起來是溫的。冰箱裡少掉的熱，就是從這裡吐回廚房。」「有的冰箱，還會從底下吹出溫溫的風，你站在它前面，腳邊就吹得到。」「熱不會憑空變不見，只會換個地方待。」小問的反應是「後面暖暖的！有一股溫溫的風！」
 - **來源**：[1]、[7]
 - **可信度／注意**：高。HyperPhysics Refrigerator：「If you place your hand behind an operating refrigerator, you will notice that this area is warmer than the room temperature. Or you may notice that the refrigerator blows warm air on your feet as you stand in front of it. Yet the interior of the freezing compartment is very cold! The refrigerator is taking energy from the freezing compartment, making it colder, and exhausting that heat to the room, making it warmer.」
   「熱不會憑空消失」是熱力學第一定律（能量守恆），Wikipedia COP：「According to the first law of thermodynamics, after a full cycle of the process Q_H + Q_C + W = 0」。
   不是每台冰箱的散熱管都在背後外露（有的在兩側或底部），台詞只說「這一排」（畫面上那台）與「有的冰箱」。安全提醒「手靠近就好，背後有電線，別伸進去亂摸」是一般常識，不當成查核過的主張。
+  小問的反應用「溫溫的」，不說「熱熱的」（verify-1 F04）：來源只說比室溫暖（HyperPhysics「warmer than the room temperature」、伊利諾大學「it will usually be warm if the unit is running」），外露的散熱管也沒有風扇。
 
 ## C07 冷媒：在冷的地方變成氣體吸熱，在熱的地方變回液體放熱（＝洗完澡發抖）
 
@@ -62,14 +63,16 @@
 - **可信度／注意**：高。HyperPhysics：「a refrigerant liquid is forced to evaporate and extract energy from the cold area. Then it is compressed and forced to condense in the hot area, dumping its heat of vaporization into the hot area.」
   EGEE 102（影片逐字稿）：「as a liquid evaporates into a gas, it absorbs heat … That's the reason you feel chilly getting out of the shower, and why we sweat to stay cool. The water has to absorb heat to evaporate. And it carries that heat away from you.」；「A refrigerant needs to have a pretty low boiling point」；「it uses a compressor to ramp up the pressure on the gaseous refrigerant -- so much that it can condense into a liquid again, even though it's at the warmer outside temperature. As it condenses, the refrigerant loses heat to the air around it」。
   EGEE 102 原文說的是冷氣，同頁說「Air conditioning -- and refrigeration, which is the same thing just in a slightly smaller box」，HyperPhysics 也說「The statements about refrigerators apply to air conditioners and heat pumps」。
+  壓縮機是把氣體壓緊的泵（家用冰箱是一個密封的鐵殼，馬達裝在裡面帶動它），台詞說「一個圓圓的鐵罐，叫做壓縮機」，不說它「是馬達」（verify-1 F03）。
   「被擠緊的冷媒……變回液體」不說「擠到比廚房還燙」（來源只說加壓後能在較熱的地方凝結），避免另立一個溫度主張。
 
-## C08 壓縮機吃電；溫度夠了就停；背後要留空隙、清灰塵
+## C08 壓縮機吃電；溫度夠了就停
 
-- **主張**：把冷媒擠緊要做功，壓縮機吃電；冰箱裡變暖時溫控讓它開始運轉，夠冷就停。背後留空隙、清掉散熱管上的灰塵，熱才散得出去。
-- **可用說法**：「推它的就是電。把氣體擠緊很費力，壓縮機要一直吃電，才轉得動。」「它也不是一直跑：冰箱裡一變暖，它就開工，夠冷了，就停下來休息。」「最好別貼死。背後留一點空隙，熱才散得出去，管子上積的灰塵，也要記得清。」
+- **主張**：把冷媒擠緊要做功，壓縮機吃電；冰箱裡變暖時溫控讓它開始運轉，夠冷就停。
+- **可用說法**：「推它的就是電。把氣體擠緊很費力，壓縮機要一直吃電，才轉得動。」「它也不是一直跑：冰箱裡一變暖，它就開工，夠冷了，就停下來休息。」
 - **來源**：[5]、[6]
-- **可信度／注意**：高。EGEE 102：「the compressor needs energy to do the work of compressing the refrigerant」。Wikipedia Refrigerator：「When the refrigerator gets too warm, the thermostat starts the cooling process」；「Cleaning condenser coils to remove dust impeding heat flow, and ensuring that there is space for air flow around the condenser can improve efficiency.」
+- **可信度／注意**：高。EGEE 102：「the compressor needs energy to do the work of compressing the refrigerant」。Wikipedia Refrigerator：「When the refrigerator gets too warm, the thermostat starts the cooling process」。
+  壓縮機是泵，馬達在它的鐵殼裡帶動它；台詞只說它「要一直吃電，才轉得動」，不說它是馬達（verify-1 F03）。背後留空隙、清灰塵的建議 2026-11-06 盲評 no_detour 後刪掉。
   「一直吃電」指運轉的時候；下一句就交代它會停。
 
 ## C09 熱帳：背後吐出的熱＝從裡面搬出的熱＋壓縮機吃的電
@@ -84,21 +87,21 @@
 
 ## C10 門關著、門開著，廚房的熱帳
 
-- **主張**：冰箱運轉時，即使門關著，房間也被加熱一點點（從牆和門邊溜進去的熱被搬回來，再加上電）。門開著，熱在冰箱裡外繞圈，房間的熱沒有少，電變的熱一直加進來，平均溫度上升；冰箱裡一直變暖，壓縮機停不下來、吃更多電。只有門口前面那一小塊會涼一點。
-- **可用說法**：「對，冰箱只要在跑，廚房就被它加熱了一點點。」「對，那兩顆熱，只是在圈裡轉來轉去，廚房的熱，一顆也沒有少。可是每轉一圈，那道小閃電，就在圈裡多變出一顆熱。」「沒錯，門口前面那一小塊，是會涼一點。」「而且門一開，冰箱裡面一直變暖，壓縮機就停不下來，一直吃電。」
+- **主張**：第三章的假設熱帳是門關著的情形：冰箱搬出的兩顆熱，本來就是從牆和門邊溜進去的；冰箱運轉時，即使門關著，房間也被加熱一點點（溜進去的熱被搬回來，再加上電）。門開著，熱在冰箱裡外繞圈，房間的熱沒有少，電變的熱一直加進來，平均溫度上升；冰箱裡一直變暖，壓縮機停不下來、吃更多電。只有門口前面那一小塊會涼一點。
+- **可用說法**：「那兩顆熱，本來就是從牆和門邊，慢慢溜進冰箱的。現在被搬回廚房，還多帶了電變的那一顆。」「對，冰箱只要在跑，廚房就被它加熱了一點點。」「對，冰箱搬出來的那兩顆熱，又從門口跑回去，廚房的熱，一顆也沒有少。可是每轉一圈，那道小閃電，就在圈裡多變出一顆熱。」「沒錯，門口前面那一小塊，是會涼一點。」「而且門一開，冰箱裡面一直變暖，壓縮機就停不下來，一直吃電。」
 - **來源**：[3]、[4]
 - **可信度／注意**：高。伊利諾大學 Physics Van（Q: If you leave a refrigerator open in a closed room, will it make the room cooler?）：「the answer may surprise you: NO! … when a fridge is running it is really warming up the room a little bit … even if you open the fridge door to let the cool air escape the fridge will still be heating the room more than cooling it.」追問：「The average room temperature in the room will rise. Of course there will be hotter spots and colder spots … with the door open the temperature will start to rise inside the refrigerator. The thermostat will kick in and try to cool it back down. This means the motor is running, which means heat is being added to the room.」
   雪梨大學物理系 Bar Fridge：「The nett effect of leaving the fridge door open is to make the room hotter, although it may be slightly cooler directly in front of the fridge door.」
   前提是門窗關著的房間（伊利諾大學的問題就是 closed room）；片中的廚房沒有開窗，不另說。
   雪梨大學另有一句「even if the fridge were 100% efficient, the temperature would be unchanged」，片中不用（會被聽成「完美冰箱不吃電」）。
 
-## C11 開著門的冰箱像一台繞了遠路的電暖器
+## C11 開著門的冰箱像一台繞了遠路的電暖器，還讓冰箱裡的東西變暖
 
-- **主張**：從整間廚房的帳來看，開著門的冰箱吃進去的電最後都變成熱留在廚房，跟同樣耗電的電暖器結果一樣；差別是電暖器直接把電變成熱。
-- **可用說法**：「算起帳來很像：它吃進去的電，最後都變成熱，留在廚房裡。」
+- **主張**：從整間廚房的帳來看，開著門的冰箱吃進去的電最後都變成熱留在廚房，跟同樣耗電的電暖器結果一樣；差別是它繞了一大圈，冰箱裡的東西也跟著變暖。
+- **可用說法**：（小問）「那開著門的冰箱，像冬天用的電暖器？」（所長）「很像。只是它繞了一大圈，還順便讓冰箱裡的東西，一起變暖。」
 - **來源**：[9]、[3]、[2]
 - **可信度／注意**：中高。Wikipedia Dehumidifier 對「整台在同一個房間的冷凍循環」的說法：「the electric power consumed by the dehumidifier remains in the room as heat, so the room is actually heated, just as by an electric heater that draws the same amount of power.」開著門的冰箱，冷、熱兩頭也都在同一個房間，帳一樣（C09、C10）。
-  「很像」指熱帳，不是說它發熱的位置或速度一樣；不給瓦數。
+  「很像」指熱帳，不是說它發熱的位置或速度一樣；不給瓦數。冰箱裡變暖：伊利諾大學「with the door open the temperature will start to rise inside the refrigerator」。
 
 ## C12 意見：冰箱是搬熱的機器，不是做冷的機器
 
@@ -123,17 +126,18 @@
 - **可信度／注意**：中高。第一定律同 C09；Wikipedia Dehumidifier：「A standard air conditioner transfers heat energy out of the room because its condenser coil releases heat outside」；Wikipedia Air conditioning 移動式段落與 Dehumidifier 都說冷凝器在室外。
   說「大部分」：室內機的風扇用的電留在室內，壓縮機在室外機裡；不給比例。
 
-## C15 冷氣與熱泵：一份電大約搬三份以上的熱；隨條件變；可以倒過來跑；電暖器一份電只給一份熱
+## C15 冷氣一份電大約搬好幾份的熱；隨條件變
 
-- **主張**：一般冷氣用一份電，大約能搬走三份以上的熱；確切多少看機器和天氣，外面越熱通常越吃力。冷暖氣機在冬天可以倒過來跑，從外面的冷空氣把熱搬進來；電暖器一份電只能給一份熱。
-- **可用說法**：「一般的冷氣，用一份電，大約能搬走三份以上的熱。」「確切搬多少，要看冷氣和天氣，外面越熱，通常就搬得越吃力。」「真的有。冷暖氣機在冬天可以倒過來跑，從外面的冷空氣裡，把熱搬進房間。」「一台電暖器，用一份電，只能給你一份熱；冷暖氣機用一份電，可以從外面搬來好幾份。」
-- **數字**：HyperPhysics：「A typical CP for a commercial heat pump is between 3 and 4 units transferred per unit of electric energy supplied.」；「an electric resistance heater using one kilowatt-hour of electric energy can transfer only 1 kWh of energy to heat your house at 100% efficiency. But 1 kWh of energy used in an electric heat pump could "pump" 3 kWh of energy from the cooler outside environment into your house for heating.」
+- **主張**：一般冷氣用一份電，大約能搬走好幾份的熱；確切多少看機器和天氣，外面越熱通常越吃力。
+- **可用說法**：「一般的冷氣，用一份電，大約能搬走好幾份的熱。」（小問）「一份電搬好幾份？好會搬！」「確切搬多少，要看冷氣和天氣，外面越熱，通常就搬得越吃力。」
+- **數字**：只說「好幾份」，不給倍數（verify-1 F01、F02）。依據：
+  HyperPhysics：「A typical CP for a commercial heat pump is between 3 and 4 units transferred per unit of electric energy supplied.」這是熱泵**制熱**，算的是送到熱的那頭的熱，含那份電；換成「搬走」只有 2–3 份（Wikipedia COP「COP_heating = COP_cooling + 1」）。
+  HyperPhysics 同頁冷氣 EER 段落：「The range of EER's for air conditioners is typically about 5.5 to 10.5 … This is a range of 1.6 to 3.1 in CP」（數字偏舊）。
   Wikipedia COP：「Most air conditioners have a COP of 3.5 to 5.」（引一家冷氣公司的網頁，次要）
-- **來源**：[2]、[7]、[8]
-- **可信度／注意**：中高。台詞只說「大約三份以上」與「好幾份」，不給單一倍數（P14 verify-1 F01 的教訓：倍數會被當成定值）。
-  HyperPhysics 的 3–4 是熱泵制熱；Wikipedia 的 3.5–5 是冷氣制冷；兩者都支持「大約三份以上」。
+- **來源**：[2]、[7]
+- **可信度／注意**：中高。各來源取法不同（制熱或制冷、新機或舊機），「好幾份」在每一種下都成立；畫面 one-to-three（一道閃電對三顆多的紅球）仍對得上。
   「外面越熱越吃力」：Wikipedia COP「The COP is highly dependent on operating conditions, especially absolute temperature and relative temperature between sink and system」；HyperPhysics 的 Carnot 上限也隨溫差下降。台詞加「通常」。
-  倒過來跑：Wikipedia Air conditioning（PTAC）「by reversing the refrigerant flow to heat the interior and draw heat from the exterior air, converting the air conditioner into a heat pump」。「冷暖氣機」是台灣對可制熱冷氣的慣稱。
+  冷暖氣機倒過來制熱、電暖器一份電一份熱的段落 2026-11-06 盲評 no_detour 後刪掉。
 
 ## C16 開冷氣要關窗、拉窗簾：冷氣搬熱，隔熱擋熱
 
@@ -146,7 +150,8 @@
 ## 撰稿提醒
 
 - 2026-11-06 依實測語速（兩個聲音約 3.2 字／秒）刪到約 2,500 字：除濕機、窗型冷氣、冰箱卡窗口、移動式冷氣的管子、冷氣廢熱與都市熱島、膨脹閥、保溫瓶、冰棒、兩台冰箱、洗完澡的開場預告都已刪；原 C16、C17 刪除，C18 改編號為 C16。
-- 全片數字只留：冷藏「大約三到五度」、冷凍「零下十八度，甚至更冷」（C03）；**假設**的熱帳「兩顆熱加一份電，背後吐三顆」（C09）；冷氣「一份電大約搬三份以上的熱」、電暖器「一份電一份熱」（C15）。
+- 2026-11-06 盲評後另刪：冷暖氣機冬天倒過來跑、電暖器一份電一份熱、冰箱背後留空隙與清灰塵；verify-1 F01–F04 已改。
+- 全片數字只留：冷藏「大約三到五度」、冷凍「零下十八度，甚至更冷」（C03）；**假設**的熱帳「兩顆熱加一份電，背後吐三顆」（C09）；冷氣「一份電大約搬好幾份的熱」（C15）。
 - 不使用：「冷氣」指冰箱裡流出來的冷空氣（片中一律說「冷空氣」）；「製冷」「熱泵」「蒸發器」「冷凝器」「膨脹閥」「熱力學第二定律」等名詞；任何瓦數、度數以外的耗電量、冷媒的化學名與臭氧層。
 - 「熱的那一頭／冷的那一頭」是片中自己的說法，第二章起用；「圈」是第一章所長畫的邊界，之後都叫圈。
 - 熱＝紅色小球、電＝黃色小閃電、圈＝黃色虛線圈，畫面與台詞同一套，不換比喻。
