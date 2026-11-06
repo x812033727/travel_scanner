@@ -12,6 +12,7 @@ branch: claude/intelligent-gates-9n92xm
 depends_on: []
 scope:
   - docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/screen-test
+  - .agents/skills/minimax-h3-colab/references/lessons.md
 ---
 
 # 祖奶奶今年十八 角色與試鏡：Colab 真人與 3D 試鏡、聲音試聽
@@ -38,6 +39,7 @@ scope:
 - [x] 聲音試聽已錄：月棠十八歲 Kore／Despina／Achernar、九十六歲 Gacrux／Vindemiatrix／Achernar（各 111 字），樣本已傳站主。
 - [ ] 站主聽完選聲音（站主 2026-11-06：下次再聽再確認）。
 - [x] 站主點頭開跑試鏡（約 10–12 CU，上限 15）。
+- [x] 教訓寫進 `minimax-h3-colab/references/lessons.md` 第 13 節。
 - [ ] 冷看一次，交站主。
 
 ## How to verify
