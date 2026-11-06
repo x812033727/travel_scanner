@@ -315,7 +315,7 @@ kid("kid-hug-done", "Head-and-shoulders close-up of the girl hugging " + JACKET 
 chief("chief-folder-done", "Waist-up medium shot of the chief closing a plain folder with both hands and smiling, " + WALL + ", warm lamp light",
       c("下次你穿上它，等一下下，", "轉向觀眾，輕聲"), c("那一下下，是你的熱正在把裡面填滿。", None, "P:delay"))
 # 2026-11-06 owner (A): the outro is a picture, no card (series README §3.2).
-kid("outro", "Medium shot of the girl laughing and pressing a big red rubber stamp onto the palm of her other hand, leaving a round red smiling-sun mark, bright morning light",
+kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile proudly holding up a big red rubber stamp in one hand, bright morning light",
      k("原來如此！", "開心大聲"))
 chief("outro-chief", "Waist-up medium shot of the chief tilting her head with a curious smile and one finger raised, a plain pale wall behind her, bright morning light",
       c("冰淇淋包在羽絨衣裡，會融得比較快，還是比較慢？", "問句上揚，像聊天"), c("留言告訴我們你的答案。"))

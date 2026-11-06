@@ -534,7 +534,7 @@ assert [sc["id"] for sc in S if sc["template"] != "shot"] == ["outro"]
 for sc in S:
     if sc["id"] == "outro":
         sc["template"] = "shot"
-        sc["data"] = dict(prompt="Medium shot of the girl laughing and pressing a big red rubber stamp onto the palm of her other hand, leaving a round red smiling-sun mark, bright morning light" + ", " + KIDDESC, camera=None, visual="still", characters=[K])
+        sc["data"] = dict(prompt="Head-and-shoulders close-up of the girl with a big happy smile proudly holding up a big red rubber stamp in one hand, bright morning light" + ", " + KIDDESC, camera=None, visual="still", characters=[K])
         _rest = sc["lines"][1:]; sc["lines"] = sc["lines"][:1]
 S.append(dict(id="outro-chief", chapter=None, template="shot", data=dict(prompt="Waist-up medium shot of the chief tilting her head with a curious smile and one finger raised, a plain pale wall behind her, bright morning light" + ", " + CHIEFDESC, camera=None, visual="still", characters=[C]), lines=_rest[:1]))
 S.append(dict(id="outro-wave", chapter=None, template="shot", data=dict(prompt="Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light" + ", " + CHIEFDESC, camera=None, visual="still", characters=[C]), lines=_rest[1:]))
