@@ -20,6 +20,41 @@ permissions:
   contents: read
 
 jobs:
+  # Whether a pull request changes only docs/, tasks/ or a root Markdown file (the rule is
+  # isDocsOnly in tools/selftest.mjs). Such a change still runs every unit suite, since api
+  # tests, vitest and the tools and docs-videos tests read docs/videos, but skips web-e2e,
+  # containers and full-stack-smoke: .dockerignore keeps docs out of every image and no
+  # Playwright spec reads them. About a third of pull requests are scripts and plans only.
+  # Pushes to main always run everything. If this job fails, docs_only is empty and every
+  # job runs: each `if` below is `!cancelled() && ... != 'true'`, never `== 'false'`.
+  changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      docs_only: ${{ steps.classify.outputs.docs_only }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - id: classify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          CHANGED_FILES: ${{ github.event.pull_request.changed_files }}
+        run: |
+          # The files API lists at most 3000 files; a larger pull request runs everything.
+          if [ "${{ github.event_name }}" != pull_request ] || [ "${CHANGED_FILES:-0}" -gt 3000 ]; then
+            docs_only=false
+          else
+            gh api --paginate "repos/$GH_REPO/pulls/$PR/files?per_page=100" --jq '.[].filename' > "$RUNNER_TEMP/changed.txt"
+            echo "$(wc -l < "$RUNNER_TEMP/changed.txt") changed file(s)"
+            docs_only=$(node tools/selftest.mjs --docs-only < "$RUNNER_TEMP/changed.txt")
+          fi
+          echo "docs_only=$docs_only"
+          echo "docs_only=$docs_only" >> "$GITHUB_OUTPUT"
   # Static checks and the migration tests: everything in the api gate except the main
   # pytest run, which api-tests below splits across parallel jobs.
   api-checks:
@@ -208,6 +243,8 @@ jobs:
   # Playwright places whole spec files in shards. TOTAL in the run line must match the matrix.
   web-e2e:
     name: web-e2e (${{ matrix.shard }}/3)
+    needs: changes
+    if: ${{ !cancelled() && needs.changes.outputs.docs_only != 'true' }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -294,20 +331,33 @@ jobs:
           fi
   # `web` is the required check, like `api` above: green only when the checks, every
   # shard and the video tests are, and red when one of them failed or was cancelled.
+  # On a docs-only pull request web-e2e is skipped on purpose (see `changes`), and only then
+  # does a skipped web-e2e count here.
   web:
-    needs: [web-checks, web-unit, web-e2e, video-tests]
+    needs: [changes, web-checks, web-unit, web-e2e, video-tests]
     if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Every web check, test shard and video test passed
         env:
+          CHANGES: ${{ needs.changes.result }}
+          DOCS_ONLY: ${{ needs.changes.outputs.docs_only }}
           RESULTS: ${{ join(needs.*.result, ' ') }}
+          E2E: ${{ needs.web-e2e.result }}
+          OTHERS: ${{ needs.web-checks.result }} ${{ needs.web-unit.result }} ${{ needs.video-tests.result }}
         run: |
-          echo "web-checks, web-unit, web-e2e and video-tests: $RESULTS"
-          for result in $RESULTS; do
+          echo "changes, web-checks, web-unit, web-e2e and video-tests: $RESULTS (docs only: ${DOCS_ONLY:-unknown})"
+          if [ "$CHANGES" != success ]; then exit 1; fi
+          for result in $OTHERS; do
             if [ "$result" != success ]; then exit 1; fi
           done
+          if [ "$E2E" = skipped ] && [ "$DOCS_ONLY" = true ]; then exit 0; fi
+          if [ "$E2E" != success ]; then exit 1; fi
+  # A required check. Skipped on a docs-only pull request (see `changes`), which branch
+  # protection and tools/ci/auto-update-branches.mjs both count as passing.
   containers:
+    needs: changes
+    if: ${{ !cancelled() && needs.changes.outputs.docs_only != 'true' }}
     runs-on: ubuntu-latest
     env:
       NGINX_IMAGE: nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
@@ -350,7 +400,10 @@ jobs:
           RUNTIME_ENV_FILE: .env
           DEPLOY_AGENT_GID: "10002"
           RELEASE_SHA: ci
+  # A required check, skipped on a docs-only pull request like `containers` above.
   full-stack-smoke:
+    needs: changes
+    if: ${{ !cancelled() && needs.changes.outputs.docs_only != 'true' }}
     runs-on: ubuntu-latest
     services:
       postgres:

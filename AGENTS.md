@@ -30,7 +30,12 @@ staying out of another agent's way:
 
 ## Checks before you push
 
-CI runs these; run the ones your change touches first.
+CI runs these; run the ones your change touches first. `npm run selftest` picks them for
+you from the diff against `origin/main` (`-- --dry-run` prints the plan, `-- --mark` posts a
+`selftest` commit status after a clean run) and says what only CI can run. GitHub Actions
+minutes are a budget: a pull request that changes only `docs/`, `tasks/` or a root Markdown
+file skips the browser, container and full-stack jobs on CI, so self-test before pushing
+rather than pushing to see what CI says.
 
 ```bash
 npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:web

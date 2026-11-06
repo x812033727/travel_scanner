@@ -6,7 +6,12 @@ on:
   # the duplication 2026-09-13-ci-duplicate-runs-amplify-flakes fixed in ci.yml.
   push:
     branches: [main]
+    paths-ignore: ["docs/**", "tasks/**", "*.md"]
   pull_request:
+    # A change to docs/, tasks/ or a root Markdown file only (scripts, plans, tasks) cannot
+    # change this result: no spec reads those files. Same rule as isDocsOnly in
+    # tools/selftest.mjs. Not a required check, so not starting it blocks nothing.
+    paths-ignore: ["docs/**", "tasks/**", "*.md"]
 
 # One live run per pull request: a new push cancels the run of the commit it replaced.
 # Runs on `main` are never grouped, so none of them is cancelled or left pending.

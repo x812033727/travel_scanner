@@ -14,6 +14,7 @@
     "test:docs-videos": "node --test \"docs/videos/*.test.mjs\" \"docs/videos/**/!(demo)/*.test.mjs\"",
     "check:i18n": "node tools/check-i18n.mjs",
     "check:tasks": "node tools/tasks.mjs check",
+    "selftest": "node tools/selftest.mjs",
     "tasks": "node tools/tasks.mjs",
     "tasks:board": "node tools/tasks.mjs board",
     "crawl:airlines:chrome": "node tools/airline-chrome-crawler.mjs"

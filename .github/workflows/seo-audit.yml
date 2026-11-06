@@ -11,11 +11,16 @@ name: SEO audit
 # must not sit inside the required check yet.
 on:
   pull_request:
+    # A change to docs/, tasks/ or a root Markdown file only (scripts, plans, tasks) cannot
+    # change this result: no spec reads those files. Same rule as isDocsOnly in
+    # tools/selftest.mjs. Not a required check, so not starting it blocks nothing.
+    paths-ignore: ["docs/**", "tasks/**", "*.md"]
   # Only main. A bare `push:` would run this a second time for every branch push that already
   # has a pull request open -- the duplication 2026-09-13-ci-duplicate-runs-amplify-flakes
   # already records against ci.yml. On main it tracks the trend after each merge.
   push:
     branches: [main]
+    paths-ignore: ["docs/**", "tasks/**", "*.md"]
   workflow_dispatch:
 
 permissions:
