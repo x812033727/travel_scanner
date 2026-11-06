@@ -18,8 +18,8 @@
 ## 角色
 
 - 林美鳳（meifeng）：聲音 Pulcherrima。
-- 沈建邦（jianbang）：聲音 Schedar。home＝在家的晚上。跟江慕白同框時一前一後，不並排近景。
 - 沈月棠（yuetang-18）：聲音 Kore。全劇主臉。look 參考圖 yuetang-18-<look>-t1；哪一集用哪個 look 照 bible〈燈帳與她的樣子〉。huiyi-1948 只用在照片道具。
+- 沈建邦（jianbang）：聲音 Schedar。home＝在家的晚上。跟江慕白同框時一前一後，不並排近景。
 - 福伯（fubo）：聲音 Enceladus。
 - 鄭醫師（zhengyishi）：聲音 Sadaltager。評估板是道具，字不入鏡。
 - 江慕白（jiangmubai）：聲音 Rasalgethi。深棕皮革文件夾一律夾在左臂，寫在鏡頭裡。

@@ -36,22 +36,6 @@
       ]
     },
     {
-      "id": "jianbang",
-      "name": "沈建邦",
-      "appearance": "East Asian man of fifty-eight, a kind, worried face with a furrowed brow, short black hair greying at the temples, thin black-framed glasses, a slightly worn charcoal-grey suit, a white shirt buttoned all the way to the top with no tie, black leather shoes, slightly rounded shoulders",
-      "voice": {
-        "provider": "gemini",
-        "name": "Schedar",
-        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十八歲的家主，男聲，溫和、常嘆氣，說話慢、帶點猶豫；喊「奶奶」時聲音發抖但篤定"
-      },
-      "shot_looks": [
-        {
-          "id": "home",
-          "appearance": "East Asian man of fifty-eight, a kind, worried face with a furrowed brow, short black hair greying at the temples, thin black-framed glasses, a grey wool cardigan over a white shirt buttoned all the way to the top, dark trousers, dark house slippers"
-        }
-      ]
-    },
-    {
       "id": "yuetang-18",
       "name": "沈月棠",
       "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze that seems to have seen a hundred years, light natural makeup, black hair in one thick old-fashioned three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white cotton shirt with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, a thick old silver ring on her left ring finger with its small square seal face turned toward the palm, back very straight, hands folded in front of her waist like an elderly lady",
@@ -84,6 +68,22 @@
         {
           "id": "huiyi-1948",
           "appearance": "the same young woman of eighteen in 1948: an oval face, gently curved brows, calm almond eyes, black hair in two neat braids tied with plain cotton string, a pale blue cotton side-fastening blouse with a high collar and fabric frog buttons, a dark cotton skirt to the ankles, black cloth shoes, the thick silver ring on her left ring finger, standing straight with her hands folded, 1940s portrait photograph style"
+        }
+      ]
+    },
+    {
+      "id": "jianbang",
+      "name": "沈建邦",
+      "appearance": "East Asian man of fifty-eight, a kind, worried face with a furrowed brow, short black hair greying at the temples, thin black-framed glasses, a slightly worn charcoal-grey suit, a white shirt buttoned all the way to the top with no tie, black leather shoes, slightly rounded shoulders",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十八歲的家主，男聲，溫和、常嘆氣，說話慢、帶點猶豫；喊「奶奶」時聲音發抖但篤定"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian man of fifty-eight, a kind, worried face with a furrowed brow, short black hair greying at the temples, thin black-framed glasses, a grey wool cardigan over a white shirt buttoned all the way to the top, dark trousers, dark house slippers"
         }
       ]
     },
@@ -183,6 +183,32 @@
         ]
       },
       "chapter": "櫃子不賣"
+    },
+    {
+      "id": "c01b",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the old shop hall at the front of the Shen house in the morning: the first frame is a close-up of the gloved hands of two movers, plain grey work-clothes cuffs with no lettering, resting on the side panel of a tall old wooden medicine cabinet standing tilted; the underside of the cabinet is out of frame; thin lines of daylight from the gaps of the shut door panels fall across the dark wood. Only the hands are in the frame; no face and no mouth. The four hands steady the tilted cabinet and hold it, waiting to lift; the small drawers rattle softly once.",
+        "camera": "insert, close-up on the hands, locked",
+        "characters": [],
+        "motion": "The four gloved hands steady the tilted cabinet and hold it, the drawers rattling softly once."
+      },
+      "action_seconds": 1
+    },
+    {
+      "id": "c01c",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside the old shop hall at the front of the Shen house in the morning, thin lines of daylight through the gaps of the shut door panels: Shen Yuetang in her moon-white high-collared cotton shirt, a single braid over her right shoulder, stands at the right side of the tilted medicine cabinet, her empty hands folded at her waist; behind her empty wooden shelves, soft and out of focus. She is the only person in the frame, not smiling, back straight. She does not look at the woman by the counter; she keeps her eyes on the underside of the cabinet and tucks her chin slightly. Mouth closed.",
+        "camera": "close-up, locked",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "She keeps her eyes on the underside of the cabinet and tucks her chin slightly."
+      },
+      "action_seconds": 1
     },
     {
       "id": "c02",
