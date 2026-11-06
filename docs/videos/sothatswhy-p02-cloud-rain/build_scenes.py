@@ -530,6 +530,14 @@ _i = next(n for n, sc in enumerate(S) if sc["id"] == "drop-shapes")
 assert len(S[_i]["lines"]) == 2
 S.insert(_i + 1, dict(id="drop-shapes-burst", chapter=None, template="shot", data=dict(prompt="Waist-up medium shot of the chief facing the viewer and watching one very big raindrop fall past in front of her and burst apart into several small round drops, raised eyebrows, " + WALL + ", warm lamp light, " + CHIEFDESC, camera=None, visual="still", characters=[C]), lines=[S[_i]["lines"].pop()]))
 assert [sc["id"] for sc in S if sc["template"] != "shot"] == ["outro"]
+# 2026-11-06 owner (A): the outro is a picture too, no card (series README §3.2): the kid stamps 「原來如此」 on her palm; the lines stay.
+for sc in S:
+    if sc["id"] == "outro":
+        sc["template"] = "shot"
+        sc["data"] = dict(prompt="Medium shot of the girl laughing and pressing a big red rubber stamp onto the palm of her other hand, leaving a round red smiling-sun mark, bright morning light" + ", " + KIDDESC, camera=None, visual="still", characters=[K])
+        _rest = sc["lines"][1:]; sc["lines"] = sc["lines"][:1]
+S.append(dict(id="outro-chief", chapter=None, template="shot", data=dict(prompt="Waist-up medium shot of the chief tilting her head with a curious smile and one finger raised, a plain pale wall behind her, bright morning light" + ", " + CHIEFDESC, camera=None, visual="still", characters=[C]), lines=_rest[:1]))
+S.append(dict(id="outro-wave", chapter=None, template="shot", data=dict(prompt="Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light" + ", " + CHIEFDESC, camera=None, visual="still", characters=[C]), lines=_rest[1:]))
 assert not any("cauliflower" in sc["data"]["prompt"] for sc in S if sc["id"] in CARD_TO_SHOT)
 
 # keep every picture on the camera move it was drawn with (cameras.json), so reordering never invalidates a kept picture;
