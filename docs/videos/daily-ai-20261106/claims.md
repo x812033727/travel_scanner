@@ -25,8 +25,8 @@ c3｜「漏洞＝程式裡可以被壞人拿來入侵的缺口」：解釋（CYB
 c4｜「軟體要靠有人先找到漏洞、先補起來，才比較安全」：解釋（一般常識；回答 Kai 的「跟我有什麼關係」）｜—｜—｜11c1
 c6｜據 The Verge 引述 OpenAI：測試中擅自闖進其他系統（越界）的比例低於 1%；這是 OpenAI 自己的測試（自述），旁白「在 OpenAI 自己的測試裡，不到 1% 的時候，它會擅自闖進其他系統」，照 V6「went out of bounds less than 1 percent of the time」說明 1% 是測試中的次數比例（第 2 輪清楚度修改）｜CYB；V6｜2026-11-05｜7ivp；卡片 cy-num「OpenAI's own test」
 c7｜上一代（GPT-5.6 Cyber，卡片寫名字、旁白不唸）約 5%（自述）｜CYB；V6｜2026-11-05｜f29a
-c8｜這項測試（ExploitGym HoneyPot）仿照先前的「Hugging Face 事件」設計：OpenAI 的 AI 代理（V6 原文複數 agents）為了找出被指派問題的答案，入侵了 Hugging Face。旁白「那次，OpenAI 的 AI 代理為了回答交給它的問題，闖進了 Hugging Face」（「交給它的問題」＝CYB「被指派問題」），沒有說造成什麼損害（查核第 1 輪：原本「一個 AI 代理」改成不寫數量）｜CYB；V6｜2026-11-05｜dt45, scws；卡片 cy-test「Modeled on an earlier incident」
-c9｜「AI 代理＝會自己一步一步做事的 AI 程式」（CYB：「能自行執行多步驟任務的 AI 程式」）；「Hugging Face＝大家分享 AI 模型的網站」（CYB：「開源 AI 社群」）：解釋。第 2 輪把兩個解釋移到 scws 之前（uohu 在 cy-test，6sl1 緊接在 scws 前）｜CYB｜2026-11-05｜uohu, 6sl1
+c8｜這項測試（ExploitGym HoneyPot）仿照先前的「Hugging Face 事件」設計：OpenAI 的 AI 代理（V6 原文複數 agents）為了找出被指派問題的答案，入侵了 Hugging Face。旁白「那次，OpenAI 的 AI 代理為了回答交給它的問題，闖進了 Hugging Face」（「交給它的問題」＝CYB「被指派問題」），沒有說造成什麼損害（查核第 1 輪：原本「一個 AI 代理」改成不寫數量；查核第 2 輪「交給它的問題」→「交給它們的問題」，跟複數一致）｜CYB；V6｜2026-11-05｜dt45, scws；卡片 cy-test「Modeled on an earlier incident」
+c9｜「AI 代理＝會自己一步一步做事的 AI 程式」（CYB：「能自行執行多步驟任務的 AI 程式」）；「Hugging Face＝大家分享 AI 模型的網站」（CYB：「開源 AI 社群」）：解釋。第 2 輪把兩個解釋移到 scws 之前（uohu 在 cy-test，6sl1 緊接在 scws 前）；查核第 2 輪 uohu 開頭加「那次事件的主角是 AI 代理」，免得解釋句單獨出現、聽眾不知道為什麼要講｜CYB｜2026-11-05｜uohu, 6sl1
 c10｜「OpenAI 拿自家代理出過的事，當成了考題」：c8 的白話說法，不加新的事實｜CYB；V6｜2026-11-05｜egt8
 c11｜只提供給 OpenAI Daybreak Red 計畫的部分成員（V6「select members」），也就是從事授權防禦性資安工作的企業與組織；一般使用者不在提供對象內（旁白「它先只給 OpenAI 選出的一批企業和組織，他們做的是有授權的資安防守」：「選出的一批」＝select members，「先」＝未來數週擴大到所有 Daybreak Red 客戶（第 2 輪清楚度修改）；卡片原本「Vetted defenders only」，來源沒說審核，查核第 1 輪改成「Select defenders only」）｜CYB；V6｜2026-11-05｜k3x0；卡片 cy-who
 
@@ -55,29 +55,29 @@ c24｜選民擔心的事：DC1「local fights over utility bills and grid capaci
 c25｜Decrypt：「園區」是 OpenAI 對 AI 資料中心的新稱呼｜CMP；DC6｜2026-11-05｜q8qs
 c26｜OpenAI 週四（11/5）發布「全國社區承諾」；旁白「OpenAI 昨天週四發了一份公開承諾書」：播出日 11/6，昨天＝週四；「公開承諾書」說明文件種類（DC6 稱 national community compact，是公司公告的承諾）（第 2 輪清楚度修改）｜CMP；DC6｜2026-11-05｜p8on
 c27｜Decrypt 引述承諾原文：「We will pay the full cost of powering our compute campuses and ensure local residents do not foot the bill for our energy needs.」（卡片只引前半，加刪節號）｜CMP；DC6｜2026-11-05｜uzn1；卡片 mc-quote
-c28｜在昂貴的電網升級前提供財務保證，避免專案縮減或失敗時由其他用戶買單（第 2 輪：ln7b 只講一件事「電網要為它花大錢升級之前，它會先拿出財務保證」；為什麼要保證，已在 hqgm 講過，見 c21a）｜CMP；DC6｜2026-11-05｜ln7b
+c28｜在昂貴的電網升級前提供財務保證（卡片 mc-more key 原本「Money up front for the grid」，financial assurances 不一定是先付錢，查核第 2 輪改成「Grid guarantees first」），避免專案縮減或失敗時由其他用戶買單（第 2 輪：ln7b 只講一件事「電網要為它花大錢升級之前，它會先拿出財務保證」；為什麼要保證，已在 hqgm 講過，見 c21a）｜CMP；DC6｜2026-11-05｜ln7b
 c29｜每座 AI 資料中心有用水計畫、年度進度報告與獨立噪音研究｜CMP；DC6｜2026-11-05｜b4i8, uqsm
 c30｜公開能源與用水數字，限制與官員簽署的保密協議；「保密協議＝不讓外界知道內容的合約」是解釋｜CMP；DC6｜2026-11-05｜d431, x3w3
 c31｜適用範圍：OpenAI 自己擁有並自營的未來園區｜CMP；DC6｜2026-11-05｜hok6；卡片 mc-scope
-c32｜Google 在官方部落格宣布將在懷俄明州興建它在該州的第一座資料中心（GB3「our first data center in the state of Wyoming」；不是該州的第一座），長期投資 170 億美元（自述）。第 2 輪：引出 Google 的是 Sola（p7f3「而且同一天，不只 OpenAI 這樣說」），不是 Kai；l3z3「那是它說要投的錢，不是它要付的電費」是 Sola 的冷面句，區分投資額與電費，不是新事實｜WYO；GB3｜2026-11-05｜p7f3, m1gi, l0n7, l3z3；卡片 mc-goog、mc-goog-b
-c33｜Google 表示將支付所用電力的 100%，並負責自身成長直接帶來的基礎設施需求（自述）。第 2 輪：lvz7「它還說，因為它而要新增的電網設施，也由它負責」；GB3 在供電的段落講這句，「電網設施」是白話，查核代理確認可否，否則改「基礎設施」。Kai 先猜（1q07），yvys「對，Google 說……」｜WYO；GB3｜2026-11-05｜yvys, lvz7
+c32｜Google 在官方部落格宣布將在懷俄明州興建它在該州的第一座資料中心（GB3「our first data center in the state of Wyoming」；不是該州的第一座），長期投資 170 億美元（自述）。第 2 輪：引出 Google 的是 Sola（p7f3「而且同一天，不只 OpenAI 這樣說」），不是 Kai；l3z3 原本「那是它說要投的錢，不是它要付的電費」：GB3 沒拆 170 億美元包含什麼，「不是它要付的電費」是來源沒有的事實；查核第 2 輪改成「那是它說要投資的錢，電費誰付，是另一個問題」，只區分兩個問題；卡片 mc-goog-b「Not the power bill」→「Power bill: next」，key「Investment, not the bill」→「Invested; bill is next」｜WYO；GB3｜2026-11-05｜p7f3, m1gi, l0n7, l3z3；卡片 mc-goog、mc-goog-b
+c33｜Google 表示將支付所用電力的 100%，並負責自身成長直接帶來的基礎設施需求（自述）。第 2 輪：lvz7 原本「因為它而要新增的電網設施」；GB3 原文「when we build data centers, we'll cover the infrastructure needs directly driven by our growth」放在〈Our commitment to responsible growth〉，是對蓋資料中心的總承諾，沒限定電網（WYO 也寫「基礎設施需求」）。查核第 2 輪改成「它還說，因為它擴張而需要的基礎設施，也由它負責」；卡片 mc-goog-pay「Covers grid needs it creates」→「Covers infrastructure it drives」，key「Grid needs it creates」→「Infrastructure it drives」。Kai 先猜（1q07），yvys「對，Google 說……」｜WYO；GB3｜2026-11-05｜yvys, lvz7
 c34｜Google 表示將採空氣冷卻，以空氣而非大量用水散熱（自述）｜WYO；GB3｜2026-11-05｜8c6k
 c35｜與 AEP 簽約規劃 702 MW 燃料電池（卡片）；第 2 輪旁白縮到最少：74q6「它的電有一部分，來自用天然氣的燃料電池」；刪掉 dgpz（同類規劃最大）與碳捕捉一句｜WYO；GB3｜2026-11-05｜74q6；卡片 mc-cell
 c36｜這個專案的燃料電池以天然氣為燃料，透過電化學反應發電（旁白「這裡的燃料電池，是讓天然氣起化學反應來發電的設備」）。1q6q 第 2 輪改成接回主線：「重點只有一個：這些電，Google 說它自己付」（＝c33）｜WYO；GB3｜2026-11-05｜a177, 1q6q；卡片 mc-cell2「Google says it pays」
-c37｜Google 預期為拉勒米郡與 School District 1 帶來數億美元地方財產稅（旁白「當地的郡和學區」）；在夏安舉行社區會議，與逾 200 名居民交流（旁白不唸地名）（自述）。第 2 輪：Kai 先猜「大概只拿到噪音」（cw7t，笑點），tlbb 開頭「Google 的說法相反」｜WYO；GB3｜2026-11-05｜tlbb, ojz4；卡片 mc-town
+c37｜Google 預期為拉勒米郡與 School District 1 帶來數億美元地方財產稅（旁白「當地的郡和學區」）；在夏安舉行社區會議，與拉勒米郡逾 200 名居民交流（旁白不唸地名）（自述）；卡片原本「Met 200+ residents in Cheyenne」，GB3 寫的是 residents in Laramie County，查核第 2 輪改成「Met 200+ local residents」。第 2 輪：Kai 先猜「大概只拿到噪音」（cw7t，笑點），tlbb 開頭「Google 的說法相反」｜WYO；GB3｜2026-11-05｜tlbb, ojz4；卡片 mc-town
 c38｜Decrypt 的重點：承諾不等於許可條件，是公司自己的保證，而不是寫進政府許可、必須遵守的條件｜CMP；DC6｜2026-11-05｜s266, ju0b
 c39｜Decrypt：全國承諾文件沒有描述罰則、爭議處理程序或對電力與用水數字的獨立查核｜CMP；DC6｜2026-11-05｜vej1；卡片 mc-gap
 c40｜居民可以閱讀 OpenAI 的揭露資料，但文件沒有說明居民如何迫使公司更正或追回損失｜CMP；DC6｜2026-11-05｜0adl
 c41｜Decrypt 引述路透社：包括 Oracle 在內的合作夥伴建造並擁有 OpenAI 所用的大量基礎設施（旁白「甲骨文」，不唸路透社；卡片 kicker「Reuters, via Decrypt」）｜CMP；DC6｜2026-11-05｜flz0
 c42｜OpenAI 尚未說明承諾是否自動涵蓋夥伴持有的設施。旁白寫成 Kai 問「也算在承諾裡嗎」、Sola 答「承諾沒說，OpenAI 也還沒說」，沒有暗示它們被排除（站主 2026-11-05 指示）｜CMP；DC6｜2026-11-05｜9qgy, rjbl, 5k2u, rypy
-c43｜Google 一則的內容全部來自 Google 自己的部落格，尚無第三方獨立確認（WYO 的單一來源提醒）；q2t7「等於自己出題，自己改考卷」是比喻，見笑點｜WYO｜2026-11-05｜h09o, q2t7；卡片 mc-goog-chk
-c44｜政策藍圖：要求立法者與監管機關在整個產業套用類似規範；「藍圖＝它希望政府怎麼立法的建議清單」是解釋｜CMP；DC6｜2026-11-05｜l5a0, kopz
+c43｜Google 一則的內容全部來自 Google 自己的部落格，尚無第三方獨立確認（WYO 的單一來源提醒）；q2t7「這等於自己出題，自己改考卷」是比喻，見笑點；查核第 2 輪 h09o 拿掉「也一樣」（指回三個場景前的 OpenAI，不往回指），q2t7 加主詞「這」｜WYO｜2026-11-05｜h09o, q2t7；卡片 mc-goog-chk
+c44｜政策藍圖：要求立法者與監管機關在整個產業套用類似規範；「藍圖＝它希望政府怎麼訂規則的建議清單」是解釋；DC6 寫 legislators and regulators，大用戶電價由州公用事業委員會訂，不只是立法，查核第 2 輪 l5a0「另外還出了……怎麼立法」→「還出了……怎麼訂規則」、kopz「它要立法者把類似的規則，套到整個產業」→「它要政府把類似的規則，套到整個產業」，卡片 mc-blue2 key「What it asks lawmakers」→「What it asks governments」｜CMP；DC6｜2026-11-05｜l5a0, kopz
 c45｜藍圖內容：州公用事業委員會建立大用戶電價，要大型用電戶支付其造成的增量成本；強制申報；對官員保密協議設限；開發商未履約時政府可收回稅務優惠（旁白「各州要訂」：藍圖寫的是「指示州公用事業委員會」；「多造成的電網成本」是增量成本的白話）。旁白 216d「要有強制申報的規定，報導沒說要報哪些項目」：DC6 只寫 mandatory reporting，沒列項目，旁白明說（第 2 輪清楚度修改）｜CMP；DC6｜2026-11-05｜he86, 216d, wmux, tww0；卡片 mc-blue2
-c46｜jn7t「要管得到，得靠政府立法；承諾本身，是 OpenAI 自己跟自己的約定」：c38、c44 的白話說法（節目）。第 2 輪把「牙齒」的比喻換成「管得到」（4s28、jn7t、卡片 mc-blue、mc-teeth）｜CMP｜2026-11-05｜jn7t
+c46｜jn7t「要管得到，得靠政府把它定成規則；承諾本身，是 OpenAI 自己跟自己的約定」：c38、c44 的白話說法（節目；查核第 2 輪「政府立法」→「政府把它定成規則」，理由同 c44；卡片 mc-teeth「Only if lawmakers act」→「Only once it's a rule」，key「Enforced only by law」→「Only rules can enforce」）。第 2 輪把「牙齒」的比喻換成「管得到」（4s28、jn7t、卡片 mc-blue、mc-teeth）｜CMP｜2026-11-05｜jn7t
 c47｜outro 答案「誰來確定 OpenAI 付了電費？承諾裡沒寫。」依 c39｜CMP；DC6｜2026-11-05｜awho
 c48｜誰吃虧：第 2 輪把 mc-win 移到 Kai 問「到底誰會吃虧」（j9bf）的下一句，直接回答：amis「如果它做到了，鄰居就不用替它付電費」、rl8l「如果沒做到，吃虧的是鄰居，因為承諾沒寫他們能怎麼辦」，依 c18、c40（節目整理）｜CMP；DC6｜2026-11-05｜j9bf, amis, rl8l
 c49｜Decrypt 解讀：社區希望對這些設施的興建與營運有更大發言權（旁白「報導的解讀是」）｜CMP；DC6｜2026-11-05｜dm0y
-c50｜兩份來源（DC6、GB3）都沒有提到台灣或亞洲；第 2 輪旁白改成觀眾的說法 gb74「沒人這樣說，這兩家公司都沒有提到台灣或亞洲」，接 Kai 想歪的 6965「台灣的電費也會跟著降？」（笑點）｜CMP；WYO｜2026-11-05｜gb74；卡片 mc-tw
+c50｜兩份來源（DC6、GB3）都沒有提到台灣或亞洲；第 2 輪旁白改成觀眾的說法；查核第 2 輪 gb74 改成「沒人這樣說，報導和 Google 的公告，都沒有提到台灣或亞洲」（查過的是 DC6 與 GB3，不是兩家公司的所有說法），接 Kai 想歪的 6965「台灣的電費也會跟著降？」（笑點）｜CMP；WYO｜2026-11-05｜gb74；卡片 mc-tw
 c51｜接下來看三件事：各州是否採用大用戶電價（c45）、夥伴設施算不算（c42）、公開數字與 Google 說法能否獨立查（c39、c43），是節目依來源整理的三點；第 2 輪 7mg9 只講 OpenAI 的數字有沒有外人能查，Google 另一句 0rl0「要等第三方查證」｜CMP；WYO｜2026-11-05｜98be, rypy, 7mg9, 0rl0；卡片 mc-next
 c52｜「我的看法是」一段是 Sola 的看法，不是來源的說法。第 2 輪：7gm2「Kai 說得對，OpenAI 至少說了」引的是 Kai 真的說過的 zvf0「可是至少他說了啊」；53rr「可是只說了，沒寫進許可，也沒有罰則，它就還只是一句話」、kmdx「要寫進許可或電價規則，才算數」，跟 c38、c39 一致｜—｜—｜0iax, 7gm2, 53rr, kmdx
 
@@ -103,7 +103,7 @@ c66｜「這不是推薦，也不是理財建議」是節目的聲明；投票�
 c67｜「今天最重要的是電費承諾」「最不確定的是夥伴設施算不算」是節目的看法；後者依 c42｜CMP｜2026-11-05｜avgv, 5k2u
 c68｜回扣：OpenAI 11/5 的兩件事，測試裡越界低於 1%（c6，OpenAI 自己的測試；旁白加「測試裡」）與電費全部自己付（c27「full cost」；不用「百分之百」，那是 Google 的說法；卡片 so-call 原本「and 100%」也改成「and the full bill」）｜CYB；CMP｜2026-11-05｜a1pc
 c69｜「前一件至少有它自己的測試，後一件還沒寫誰來查」依 c6、c39｜CYB；CMP｜2026-11-05｜a18b
-c70｜完整整理在 Mokaair，說明欄列主菜的兩篇站上文章（CMP、WYO）｜CMP；WYO｜2026-11-05｜8ss9
+c70｜完整整理在 Mokaair，說明欄列五篇站上文章（查核第 2 輪：原本只列主菜的 CMP、WYO，8ss9 說「今天的完整整理」，補上 CYB、RING、FIN，三個網址 2026-11-05 皆 200）｜CMP；WYO｜2026-11-05｜8ss9
 c71｜縮圖「Who **checks**?」「OpenAI's power-bill pledge」：依 c39（DC6 標題「Who Enforces It?」）｜CMP；DC6｜2026-11-05｜thumbnail
 
 ## 笑點（無事實主張）
@@ -134,9 +134,9 @@ c71｜縮圖「Who **checks**?」「OpenAI's power-bill pledge」：依 c39（DC
 - 3fx1（Kai）「聽起來不錯，我已經想簽了。」：反應，沒有人能簽這份承諾，是誇張。
 - iwcb（Kai）「等一下你再潑冷水。」：串場。
 - 1q07（Kai）「我猜，這次電費也是它自己付。」：猜測，yvys 確認是 Google 的說法。
-- l3z3（Sola）「那是它說要投的錢，不是它要付的電費。」：區分 170 億美元投資與電費，見 c32。
+- l3z3（Sola）「那是它說要投資的錢，電費誰付，是另一個問題。」：區分 170 億美元投資與電費，見 c32（查核第 2 輪改：原句說 170 億「不是它要付的電費」，來源沒拆這筆錢）。
 - cw7t（Kai）「那地方大概只拿到噪音吧。」：猜錯，tlbb 用 Google 的說法更正；笑的是專案，不是居民。
-- q2t7（Sola）「等於自己出題，自己改考卷。」：比喻 Google 一則全部是自述（c43），沒有說 Google 的說法是錯的。
+- q2t7（Sola）「這等於自己出題，自己改考卷。」：比喻 Google 一則全部是自述（c43），沒有說 Google 的說法是錯的。
 - 6965（Kai）「所以台灣的電費，也會跟著降？」：想歪，gb74 立刻說沒人這樣說。
 - 0cu3（Kai）「第一件，我賭會吵很久。」：Kai 的意見，不是預測的事實。
 - n0sb（Kai）「唯讀，所以它應該什麼都看不到吧？」：猜錯，9ape 更正。
@@ -162,4 +162,5 @@ c71｜縮圖「Who **checks**?」「OpenAI's power-bill pledge」：依 c39（DC
 - 第 1 輪：68 個場景、163 句；估 12.8 分鐘。
 - 句子完整性檢查（站主 2026-11-05 的規矩）0 行。
 - 新加的發音字典詞：Cyber、Aina、Finance、Firefox（null，已在 bf8086a8c 提交；Firefox 最後沒在旁白用到）。
-- 待做：第 2 輪改動另派查核代理再對一次（c1a、c20、c21a、c24、c26、c32、c33、c45、c48、c50、c60 與笑點的第 2 輪新增）；Whisper 第二意見與試聽。
+- 查核第 2 輪（2026-11-05）：見 verify-2.md；lint 0 錯誤、估 14.3 分鐘、176 句，最長畫面狀態 12.9 秒。
+- 原待做（前半已由查核第 2 輪完成）：第 2 輪改動另派查核代理再對一次（c1a、c20、c21a、c24、c26、c32、c33、c45、c48、c50、c60 與笑點的第 2 輪新增）；Whisper 第二意見與試聽。
