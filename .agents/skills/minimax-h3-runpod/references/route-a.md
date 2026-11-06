@@ -163,4 +163,6 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - 舊版集數的工作資料夾推上 `transfer/zt-eNNN-media` 之後，先用 `--filter=blob:none` 只抓檔案清單，逐檔比對 blob 雜湊（不可重建的檔案全部在、內容一樣）才刪本機；
   第 43–57 集比對全部一致後刪掉，清出 17 GB。各集發布包資料夾（`zhong-tian-qu-qi-eNNN/review/`，匯入工具的預覽與匯入紀錄）沒備份，留在本機。
 - 每集開工前看一次 `df -h ~`：一集的工作資料夾約 1.3–1.5 GB，推備份時暫存再要約一樣大。
+- **自己定時檢查，不要等站主問**（站主 2026-11-06）：容器一天重啟五次，每次都砍掉背景排程。用 `create_trigger` 開兩個每小時的排程（:05、:35）喚醒同一個對話，
+  每次看 `uptime`、chain 還在不在、pod 有沒有空轉，斷了就接回去，批次做完就接下一步；不用了就 `delete_trigger`。chain 腳本放在 scratchpad，容器重啟後還在。
 
