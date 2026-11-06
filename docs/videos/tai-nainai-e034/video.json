@@ -1,0 +1,651 @@
+{
+  "schema_version": 1,
+  "slug": "tai-nainai-e034",
+  "format": "drama",
+  "target_minutes": [
+    1.5,
+    3.0
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action modern Taiwanese urban family drama, film still, natural cinematic light, realistic skin and fabric texture, soft flattering beauty light on faces, shallow depth of field; the old Shen house in warm amber wood and candlelight, the Shengtong tower in cold blue glass, the small pharmacy in warm white fluorescent light",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, letters, Chinese characters, readable signs, subtitles, watermark, logo, brand names, license plates, extra fingers, deformed hands, blood, gore, nudity, cleavage, low neckline, bare back, see-through clothing, short skirt, wet clothes, fantasy glow effects, sparkles",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces, clothes and props stay the same; her elderly manners stay slow and steady; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "laochen",
+      "name": "老陳",
+      "appearance": "East Asian man of seventy, sturdy and broad, deeply tanned, a big hearty face with laugh lines, short grey hair, a dark blue canvas apron tied over a grey work shirt with rolled sleeves, dark trousers, rubber-soled shoes, rice bran dust on his hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；七十歲的米行老闆，男聲，大聲、豪氣、笑聲大；生氣時嗓門更大"
+      }
+    },
+    {
+      "id": "yuetang-18",
+      "name": "沈月棠",
+      "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze that seems to have seen a hundred years, light natural makeup, black hair in one thick old-fashioned three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white cotton shirt with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, a thick old silver ring on her left ring finger with its small square seal face turned toward the palm, back very straight, hands folded in front of her waist like an elderly lady",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的少女嗓，說話卻是老人家的規矩：慢、短、穩，客氣而有分寸，句尾往下收；生氣時聲音更低、更慢，不尖叫；童謠用輕輕唸唱的方式"
+      },
+      "shot_looks": [
+        {
+          "id": "shouyi",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a loose plain off-white cotton burial robe with a high stand-up collar and fabric frog buttons fastened to the throat, long sleeves to the wrists and loose trousers to the ankles, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "wrinkle",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "yaoju",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, an oversized white pharmacist's coat worn open with the sleeves rolled to the wrists over a plain moon-white high-collared cotton shirt buttoned to the throat, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight"
+        },
+        {
+          "id": "faint-line",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, on the back of her right hand the old wrinkles have faded to one thin pale line, still clearly visible in close-up, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "white-strand",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder with a clearly visible streak of white hair about a finger wide from her right temple braided into it, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "huiyi-1948",
+          "appearance": "the same young woman of eighteen in 1948: an oval face, gently curved brows, calm almond eyes, black hair in two neat braids tied with plain cotton string, a pale blue cotton side-fastening blouse with a high collar and fabric frog buttons, a dark cotton skirt to the ankles, black cloth shoes, the thick silver ring on her left ring finger, standing straight with her hands folded, 1940s portrait photograph style"
+        }
+      ]
+    },
+    {
+      "id": "suxiao",
+      "name": "蘇曉",
+      "appearance": "East Asian young woman of twenty-seven, sweet and lively: round eyes and dimples when she smiles, a short neat bob tucked behind one ear, a white pharmacist's coat worn open over a buttoned red-and-navy checked cotton shirt, blue jeans, white sneakers, a black digital watch on her left wrist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十七歲的藥師，女聲，快、暖、愛笑，解釋事情很有耐心"
+      },
+      "shot_looks": [
+        {
+          "id": "casual",
+          "appearance": "East Asian young woman of twenty-seven, sweet and lively: round eyes and dimples when she smiles, a short neat bob tucked behind one ear, a camel short padded jacket over a buttoned red-and-navy checked cotton shirt, blue jeans, white sneakers, a black digital watch on her left wrist"
+        }
+      ]
+    },
+    {
+      "id": "zhiyuan",
+      "name": "沈知遠",
+      "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a white pharmacist's coat worn open over a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, a calm focused look",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的藥師，男聲，低、穩、話不多但句句到位；對她說話時放軟"
+      },
+      "shot_looks": [
+        {
+          "id": "shirt",
+          "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, no coat"
+        },
+        {
+          "id": "coat",
+          "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark charcoal wool overcoat over a dark navy shirt, dark grey trousers, black sneakers"
+        }
+      ]
+    },
+    {
+      "id": "denglao",
+      "name": "鄧會長",
+      "appearance": "East Asian old man of eighty, tall, thin and very upright, white hair combed straight back, thick white brows, clear sharp eyes like an old accountant's, a dark brown Chinese-style jacket with a center opening and frog buttons, black trousers, black cloth shoes, a black ebony walking cane in his right hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八十歲的藥行公會老會長，男聲，蒼老、清亮、慢，有老帳房的分量"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "tense low strings over a heavy, measured drum at the rice shop, one hard accent on the old-debt line; then a warm guzheng and soft strings in the night kitchen, cut to near silence with only phone hiss when the old man answers, and one low suspense accent after his last line; no vocals"
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "借倉｜恁祖媽今年18 第34集",
+    "description": "第25天（十二月十日，週四）上午十點，她過大馬路走到德記米行，想借倉庫放藥材。老陳一見她就把一袋米往地上一摔，米糠飛起來：又是妳！討債的小姑娘，沈家派妳來的？她問：沈家欠你什麼？老陳吼出來——去年沈家派人拿著借據，上門討他阿公的老債，是二房的副董派來的，還說連本帶利一起算。她心裡一冷：建業連老陳阿公當年的救命錢都要討。她說自己不是來討債的：盛通月底斷貨，想借倉庫囤藥材；老陳說沈家的人一粒米都別想借，把她趕下台階。她回頭看一眼米行後牆那扇倉庫門：倉庫的事先放著，藥材的貨，她另外找人。當晚八點，藥局後廚只亮一盞吊燈。蘇曉把換好卡的黑色新手機推到她面前，再把一本淺藍封面的存摺放進她手心：帳戶用我的名字，錢是妳的。朋友就這樣。她說這輩子頭一回用別人的名字過日子，問錢是哪來的；蘇曉說是知遠付的工錢。知遠從爐邊轉過身：他打了一整天電話，沒有一家批發肯出貨，每一家都說是盛通交代的。蘇曉說今天的湯又送光了，藥材只剩兩天。她說批發不肯，就找藥行公會；蘇曉查到公會的鄧會長，八十歲了還天天到公會，替她輸好號碼、教她按下綠色那一格。她兩手捧著手機貼在耳邊：我是沈記的人。電話那頭問：沈記的誰？她慢慢說出四個字：貨到燈亮。那頭沉默了很久——妳等著，明天一早，我親自來。",
+    "tags": [
+      "恁祖媽今年18",
+      "AI短劇",
+      "家族劇",
+      "老靈魂"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "貨到燈亮",
+      "tag": "恁祖媽今年18",
+      "shot": "c22"
+    }
+  },
+  "scenes": [
+    {
+      "id": "c01",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034001",
+          "speaker": "laochen",
+          "text": "又是妳！討債的小姑娘，沈家派妳來的？",
+          "emotion": "大嗓門"
+        }
+      ],
+      "data": {
+        "prompt": "At the open wooden shopfront of an old rice shop on an old-town street in the winter morning, plain burlap rice sacks stacked shoulder-high inside with any printing turned inward, rice bran dust drifting white in the sunlight; in the foreground the empty concrete step at the door, with nothing on it. Two people: on screen left Old Chen just inside the door in a dark blue canvas apron, rice bran on his hands, one plain burlap rice sack on his right shoulder; on screen right Shen Yuetang stands below the step outside in her moon-white shirt and navy skirt, hands folded at her waist. Old Chen is furious, not smiling. He hurls the sack off his shoulder; it slams onto the step one pace in front of her feet, bran puffing up; she does not step back, only narrows her eyes once; he points at her. Old Chen speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, loud. She keeps her mouth closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "laochen",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      },
+      "chapter": "德記米行"
+    },
+    {
+      "id": "c02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034002",
+          "speaker": "yuetang-18",
+          "text": "沈家欠你什麼？讓你一看見我，就摔米袋。",
+          "emotion": "慢，穩"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the old rice shop in the winter morning: Shen Yuetang, a few specks of rice bran on her cheek; behind her only the street and the winter sunlight, out of focus. She is the only person in the frame, not smiling, her eyes deep. She raises her right hand and brushes the bran off her cheek with the backs of her fingers, looks first into the man's eyes off screen left, then at his bran-covered hands. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, slow and steady.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034003",
+          "speaker": "laochen",
+          "text": "去年沈家派人拿著借據，上門討我阿公的老債！",
+          "emotion": "吼"
+        }
+      ],
+      "data": {
+        "prompt": "At the open wooden shopfront of an old rice shop on an old-town street in the winter morning, plain burlap rice sacks stacked shoulder-high inside with any printing turned inward, rice bran dust drifting white in the sunlight: Old Chen stands inside the door, hands on his hips, his face red with anger, not smiling; behind him the high stack of rice sacks. He is the only person in the frame. He steps forward onto the threshold, puffs out his chest and jabs a finger at the sack lying on the step. Old Chen speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, shouting with his mouth wide open.",
+        "camera": "low-angle medium close-up, slow push-in",
+        "characters": [
+          "laochen"
+        ]
+      }
+    },
+    {
+      "id": "c04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034004",
+          "speaker": "yuetang-18",
+          "text": "那筆錢，老太太一輩子沒討過。是誰派的人？",
+          "emotion": "低"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the old rice shop in the winter morning: Shen Yuetang; behind her only the street, out of focus. She is the only person in the frame, not smiling, brows tightening. Her hands folded at her waist slowly tighten. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034005",
+          "speaker": "laochen",
+          "text": "沈家二房的副董派來的，還說連本帶利一起算！",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "prompt": "At the open wooden shopfront of an old rice shop on an old-town street in the winter morning, plain burlap rice sacks stacked shoulder-high inside with any printing turned inward, rice bran dust drifting white in the sunlight. Over a young woman's left shoulder: her left shoulder in a moon-white shirt soft in the right foreground, no braid visible; on screen left Old Chen in his dark blue canvas apron bends and picks up the rice sack from the step. Two people. He heaves the sack back onto his shoulder and snorts. Old Chen speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, sneering.",
+        "camera": "over-the-shoulder medium shot, slow push-in",
+        "characters": [
+          "laochen",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034006",
+          "speaker": "yuetang-18",
+          "text": "建業……連老陳阿公當年的救命錢，也要討回去。"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the old rice shop in the winter morning: Shen Yuetang's face; behind her only the street, out of focus. She is the only person in the frame; her eyes turn cold, not smiling. Her chin lifts slightly; her eyes drop once and rise again. Her mouth stays closed the whole time; her thoughts are heard as a voice-over.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034007",
+          "speaker": "yuetang-18",
+          "text": "我不是來討債的。盛通月底斷貨，想借倉庫囤藥材。",
+          "emotion": "客氣"
+        }
+      ],
+      "data": {
+        "prompt": "At the open wooden shopfront of an old rice shop on an old-town street in the winter morning, plain burlap rice sacks stacked shoulder-high inside with any printing turned inward, rice bran dust drifting white in the sunlight; in the foreground the wooden rice bins and scoops just inside the door on the right. Two people: on screen right Shen Yuetang steps up onto the step; on screen left Old Chen just inside the door, the sack on his shoulder. She steps up, folds her hands at her waist and bows slightly. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, polite. Old Chen keeps his mouth closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "laochen"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034008",
+          "speaker": "laochen",
+          "text": "沈家的人，一粒米都別想借，倉庫更不用說！",
+          "emotion": "吼"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the old rice shop in the winter morning: Old Chen in his dark blue canvas apron, the sack on his shoulder, furious, not smiling; behind him, out of focus, the closed wooden storehouse door in the middle of the back wall and, above the stacked sacks, a framed old photograph too blurred to show any face. He is the only person in the frame. He flings the sack onto the stack, turns, pulls a wooden rice scoop out of a bin and points it out the door. Old Chen speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, shouting.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "laochen"
+        ]
+      }
+    },
+    {
+      "id": "c09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034009",
+          "speaker": "laochen",
+          "text": "走走走，別站在我門口擋生意！",
+          "emotion": "揮手"
+        }
+      ],
+      "data": {
+        "prompt": "At the open wooden shopfront of an old rice shop on an old-town street in the winter morning, plain burlap rice sacks stacked shoulder-high inside with any printing turned inward, rice bran dust drifting white in the sunlight. Old Chen pushes a pile of empty rice sacks onto the step with his foot to block the doorway and waves the wooden scoop; Shen Yuetang steps back down the step slowly and steadily, never running; two passers-by on the street look back, seen from behind. Four people. He waves the scoop to shoo her off; she stops below the step, calm. Old Chen speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, waving her away. She keeps her mouth closed.",
+        "camera": "medium shot, tracking with her back down the step",
+        "characters": [
+          "laochen",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034010",
+          "speaker": "yuetang-18",
+          "text": "倉庫的事，先放著。藥材的貨，我另外找人。",
+          "emotion": "低，自語"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the old rice shop in the winter morning: Shen Yuetang stands below the step with her back to the shop; behind her the rice shop is out of focus, the storehouse door and the photograph on the back wall unreadable. She is the only person in the frame, not smiling. She looks back once at the storehouse door at the back of the shop, then turns to face the main road, hands folded, and starts walking. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low, to herself.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034011",
+          "speaker": "suxiao",
+          "text": "舊手機太老了，這支新的給妳，門號我換過來了。",
+          "emotion": "輕快"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam, seen from the shelves on the south wall; in the foreground a steaming bowl of soup on the table. Three people: on screen left Shen Yuetang sits at the table by the west window, back straight, hands folded; on screen right Su Xiao in an open white pharmacist's coat over a checked shirt sits across from her; at the back Shen Zhiyuan in his white coat tends the stove, his back to the camera. Su Xiao slides a black new phone with no logo, screen down, across to her and moves an old black phone with a cracked corner to the corner of the table. Su Xiao speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, brisk and cheerful. Yuetang keeps her mouth closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "suxiao",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      },
+      "chapter": "夜"
+    },
+    {
+      "id": "c12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034012",
+          "speaker": "suxiao",
+          "text": "帳戶用我的名字，錢是妳的。朋友就這樣。",
+          "emotion": "暖"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam. The first frame is two hands over the table: a young woman's right hand palm up in a moon-white cotton cuff, the back of the hand down; another young woman's right hand in a white coat cuff holding a closed pale blue bankbook, its edge toward the camera, nothing written visible. Only the two hands are in the frame; no face. The hand in the white cuff lays the bankbook in the open palm and rests over it for a moment. The speaking voice is off screen; no mouth is in the frame.",
+        "camera": "close-up on the hands, locked",
+        "characters": [
+          "suxiao",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034013",
+          "speaker": "yuetang-18",
+          "text": "這輩子頭一回，用別人的名字過日子。錢是哪來的？",
+          "emotion": "輕，認真"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam: Shen Yuetang sits at the table; behind her only the black west window. She is the only person in the frame, her almond eyes rarely a little wet, not smiling. She looks down at the bankbook in her hand, then up at someone on screen right, and her fingers close around the bankbook. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, soft and earnest.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034014",
+          "speaker": "suxiao",
+          "text": "知遠付的工錢，妳顧店這幾天，本來就該拿。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam. Over a young woman's right shoulder: her right shoulder in a moon-white shirt and her braid soft on screen left in the foreground; on screen right Su Xiao in an open white pharmacist's coat over a checked shirt, smiling with dimples. Two people. Su Xiao leans back and tips her chin toward the stove behind. Su Xiao speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, smiling.",
+        "camera": "over-the-shoulder medium shot, slow push-in",
+        "characters": [
+          "suxiao",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034015",
+          "speaker": "zhiyuan",
+          "text": "我打了一整天電話，沒有一家批發肯出貨給我們。",
+          "emotion": "累"
+        },
+        {
+          "id": "t034016",
+          "speaker": "zhiyuan",
+          "text": "每一家都說，是盛通交代過的。",
+          "emotion": "苦笑一下又收住"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam; in the foreground the pot on the stove. Shen Zhiyuan in his open white pharmacist's coat turns from the stove holding a phone, its screen toward himself; at the table on both sides of the frame Shen Yuetang and Su Xiao, out of focus. Three people; he is tired, not smiling. He puts the phone face down on the table, pulls a stool to the far side of the table and sits, presses both hands to his forehead and lowers them. Shen Zhiyuan speaks two Mandarin lines, his lips, jaw and cheeks moving clearly with every syllable, tired, a brief wry smile that he drops. The others keep their mouths closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "zhiyuan",
+          "yuetang-18",
+          "suxiao"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034017",
+          "speaker": "suxiao",
+          "text": "今天的湯又送光了，藥材只剩兩天的量。",
+          "emotion": "收起笑"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam. Over a young woman's right shoulder: her right shoulder in a moon-white shirt and her braid soft on screen left in the foreground; on screen right Su Xiao in an open white pharmacist's coat, in the middle Shen Zhiyuan in his white coat at the table. Three people. Su Xiao turns her head to look at Zhiyuan, then back at the pot on the stove, no longer smiling. Su Xiao speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, serious. Zhiyuan keeps his mouth closed.",
+        "camera": "over-the-shoulder medium shot, slow push-in",
+        "characters": [
+          "suxiao",
+          "zhiyuan",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034018",
+          "speaker": "yuetang-18",
+          "text": "批發不肯，就找藥行公會。從前沈記有難，公會都會來。",
+          "emotion": "想定了"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam: Shen Yuetang sits at the table; behind her only the black west window. She is the only person in the frame, not smiling, her eyes steady. She puts the bankbook into her right shirt pocket and raises her eyes. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, her mind made up.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      },
+      "chapter": "夜（下）"
+    },
+    {
+      "id": "c18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034019",
+          "speaker": "suxiao",
+          "text": "藥行公會的鄧會長，八十歲了，還天天到公會。",
+          "emotion": "唸出來"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam; in the foreground a black new phone on the table. Su Xiao in an open white pharmacist's coat over a checked shirt looks at her own phone, its screen turned away from the camera, its light on her face. She is the only person in the frame. She swipes twice, stops, and looks up toward screen left. Su Xiao speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, reading it out.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "suxiao"
+        ]
+      }
+    },
+    {
+      "id": "c19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034020",
+          "speaker": "suxiao",
+          "text": "號碼我輸好了，按這個綠色的，就打出去了。",
+          "emotion": "教她"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam, seen from the side. Two people: Shen Yuetang sits holding a black new phone in both hands, elbows tucked in, the screen out of view; Su Xiao in her white coat has come around to stand at Yuetang's right side and bends to point one finger at the phone. Su Xiao smiles; Yuetang does not smile, concentrating. Su Xiao's finger taps the phone a few times and draws back; Yuetang's thumb hovers in the air, then slowly presses down. Su Xiao speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, teaching. Yuetang keeps her mouth closed.",
+        "camera": "two-shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "suxiao"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034021",
+          "speaker": "yuetang-18",
+          "text": "我是沈記的人，想請鄧會長說句話。",
+          "emotion": "客氣，慢"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam: Shen Yuetang sits holding the black new phone to her right ear with both hands, back straight; behind her only the black west window and the hanging lamp; at the right edge of the frame only half a white coat sleeve of someone standing beside her. Hers is the only face in the frame, not smiling. She waits, eyes on the table; the moment the call connects she sits even straighter. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, polite and slow.",
+        "camera": "low-angle close-up, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "suxiao"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034022",
+          "speaker": "denglao",
+          "text": "我就是姓鄧的。沈記的誰？",
+          "emotion": "電話裡，蒼老清亮"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam: Shen Yuetang's profile and the black new phone pressed to her ear; behind her only the black west window. She is the only person in the frame. She listens to the voice on the phone with her mouth closed, and at the end draws one breath.",
+        "camera": "close-up, subtle push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t034023",
+          "speaker": "yuetang-18",
+          "text": "貨到燈亮。",
+          "emotion": "低，一字一字"
+        },
+        {
+          "id": "t034024",
+          "speaker": "denglao",
+          "text": "……妳等著。明天一早，我親自來。",
+          "emotion": "電話裡，沉默很久之後"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small back kitchen of the old pharmacy at night, lit only by the single hanging lamp over the small wooden table, the small west window pitch black, a large pot simmering on low heat on the stove with a thin line of steam: Shen Yuetang holds the black new phone to her ear in both hands; on screen right Su Xiao in her white coat beside her; at the back Shen Zhiyuan at the table, out of focus; behind them only the black west window and the hanging lamp. Three people; nobody smiles. First Shen Yuetang speaks a short Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low, word by word; then both women hold their breath, mouths closed, through a long silence on the line, Su Xiao turning her head to look at her, while a voice answers from the phone and Yuetang keeps her mouth closed.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "suxiao",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,649 @@
+{
+  "schema_version": 1,
+  "slug": "tai-nainai-e031",
+  "format": "drama",
+  "target_minutes": [
+    1.5,
+    3.0
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action modern Taiwanese urban family drama, film still, natural cinematic light, realistic skin and fabric texture, soft flattering beauty light on faces, shallow depth of field; the old Shen house in warm amber wood and candlelight, the Shengtong tower in cold blue glass, the small pharmacy in warm white fluorescent light",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, letters, Chinese characters, readable signs, subtitles, watermark, logo, brand names, license plates, extra fingers, deformed hands, blood, gore, nudity, cleavage, low neckline, bare back, see-through clothing, short skirt, wet clothes, fantasy glow effects, sparkles",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces, clothes and props stay the same; her elderly manners stay slow and steady; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "zhiyuan",
+      "name": "沈知遠",
+      "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a white pharmacist's coat worn open over a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, a calm focused look",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的藥師，男聲，低、穩、話不多但句句到位；對她說話時放軟"
+      },
+      "shot_looks": [
+        {
+          "id": "shirt",
+          "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, no coat"
+        },
+        {
+          "id": "coat",
+          "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark charcoal wool overcoat over a dark navy shirt, dark grey trousers, black sneakers"
+        }
+      ]
+    },
+    {
+      "id": "yuetang-18",
+      "name": "沈月棠",
+      "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze that seems to have seen a hundred years, light natural makeup, black hair in one thick old-fashioned three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white cotton shirt with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, a thick old silver ring on her left ring finger with its small square seal face turned toward the palm, back very straight, hands folded in front of her waist like an elderly lady",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的少女嗓，說話卻是老人家的規矩：慢、短、穩，客氣而有分寸，句尾往下收；生氣時聲音更低、更慢，不尖叫；童謠用輕輕唸唱的方式"
+      },
+      "shot_looks": [
+        {
+          "id": "shouyi",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a loose plain off-white cotton burial robe with a high stand-up collar and fabric frog buttons fastened to the throat, long sleeves to the wrists and loose trousers to the ankles, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "wrinkle",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "yaoju",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, an oversized white pharmacist's coat worn open with the sleeves rolled to the wrists over a plain moon-white high-collared cotton shirt buttoned to the throat, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight"
+        },
+        {
+          "id": "faint-line",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, on the back of her right hand the old wrinkles have faded to one thin pale line, still clearly visible in close-up, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "white-strand",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder with a clearly visible streak of white hair about a finger wide from her right temple braided into it, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "huiyi-1948",
+          "appearance": "the same young woman of eighteen in 1948: an oval face, gently curved brows, calm almond eyes, black hair in two neat braids tied with plain cotton string, a pale blue cotton side-fastening blouse with a high collar and fabric frog buttons, a dark cotton skirt to the ankles, black cloth shoes, the thick silver ring on her left ring finger, standing straight with her hands folded, 1940s portrait photograph style"
+        }
+      ]
+    },
+    {
+      "id": "suxiao",
+      "name": "蘇曉",
+      "appearance": "East Asian young woman of twenty-seven, sweet and lively: round eyes and dimples when she smiles, a short neat bob tucked behind one ear, a white pharmacist's coat worn open over a buttoned red-and-navy checked cotton shirt, blue jeans, white sneakers, a black digital watch on her left wrist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十七歲的藥師，女聲，快、暖、愛笑，解釋事情很有耐心"
+      },
+      "shot_looks": [
+        {
+          "id": "casual",
+          "appearance": "East Asian young woman of twenty-seven, sweet and lively: round eyes and dimples when she smiles, a short neat bob tucked behind one ear, a camel short padded jacket over a buttoned red-and-navy checked cotton shirt, blue jeans, white sneakers, a black digital watch on her left wrist"
+        }
+      ]
+    },
+    {
+      "id": "chuntao",
+      "name": "春桃阿婆",
+      "appearance": "East Asian old woman of seventy-five, a round kind face, short grey-white hair, eyes that crinkle into lines when she smiles, a floral cotton quilted jacket, dark trousers, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；七十五歲的老阿婆，女聲，軟、慢、親切，一激動就哽咽"
+      }
+    },
+    {
+      "id": "gaojingli",
+      "name": "高經理",
+      "appearance": "East Asian man of forty, sharp and smooth: neatly styled hair, narrow long eyes and a salesman's smile, a fitted light silver-grey two-piece suit with a white shirt and no tie, black leather shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的通路經理，男聲，業務式的客氣，笑著施壓，說數字特別清楚"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a light, warm solo guzheng with soft plucked strings in the storeroom that turns a little brisker when Su Xiao looks in; then only quiet shop ambience; then low, slow strings when Manager Gao walks in, one heavy accent on the old bookkeeper line and a second on the stolen-ledger line, the tail fading into suspense; no vocals"
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "儲藏室｜恁祖媽今年18 第31集",
+    "description": "第22天（十二月七日，週一）早上七點，她在知遠小藥局的儲藏室醒來，舉起右手：手背那道細紋還在——玉琴一走，祠堂的燈怕是暗了，她就老了一分。知遠把另一件白藥師袍蓋在她身上：早。她先問玉琴；知遠說福伯昨晚打來，奶奶吃了飯、睡下了。店裡另一個藥師蘇曉來上班，探頭就問：知遠你藏了個女生？知遠說她叫月棠，家裡的保母，先住幾天。蘇曉沒把她當怪人，替她把那件太大的白袍袖子捲上去。她說：我住在這裡，店裡的事，我也一起做。傍晚，店裡一個客人都沒有，對街連鎖藥局的紅光映在玻璃門上。春桃阿婆提著一小袋米走過門口，知遠喊她進來坐，她說剛在對街拿過藥了。盛通的高經理推門進來，把名片按在櫃台上：下月起，盛通不供貨給獨立藥局；老店老到沒客人，進貨也是賠錢。她看了名片上的倉庫地址，說出盛通的通路前身是隆昌藥材行、他老闆學帳的師父就是隆昌當年的帳房，高經理收起笑走了。她問起阿婆，知遠說阿婆來了三十年，對街開幕打對折就不進門了。她以為是半價搶人、撐不了多久，可高經理說進貨賠錢——她要了進貨帳，從傍晚翻到打烊後的九點，指尖停在最後一頁：每個月第三週，價錢都跳一截。這個帳，有人在裡面偷。知遠抬頭：誰？",
+    "tags": [
+      "恁祖媽今年18",
+      "AI短劇",
+      "家族劇",
+      "老靈魂"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "帳裡有賊",
+      "tag": "恁祖媽今年18",
+      "shot": "c22"
+    }
+  },
+  "scenes": [
+    {
+      "id": "c01",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031001",
+          "speaker": "zhiyuan",
+          "text": "早。",
+          "emotion": "放輕"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a small windowless pharmacy storeroom in the early morning, lit only by one cold fluorescent tube: metal shelves of cardboard boxes, labels turned inward, a narrow door on screen left, a camp bed along the right wall. The first frame is Shen Yuetang's right hand raised before her face under the tube, the back of the hand toward the camera, covered in a patch of fine crinkled old-woman wrinkles against her smooth young fingers; she lies on her back on the camp bed, a thin dark blue blanket to her chest, her braid slightly loose over her right shoulder; calm, a slight worry between her brows. Only her face is seen; at the top edge of the frame only a man's two hands in white coat cuffs. She slowly turns her right hand to look at its back; the two hands shake open a spare white pharmacist's coat and lay it gently over her shoulders, and as it settles her right hand stops in mid-air. Her mouth stays closed; the voice is off screen.",
+        "camera": "high-angle close-up, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      },
+      "chapter": "藥局儲藏室"
+    },
+    {
+      "id": "c02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031002",
+          "speaker": "yuetang-18",
+          "text": "玉琴一走，祠堂的燈怕是暗了，這手就老了一分。"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a small windowless pharmacy storeroom in the early morning, lit only by one cold fluorescent tube: metal shelves of cardboard boxes, labels turned inward, a narrow door on screen left, a camp bed along the right wall. Shen Yuetang lies on the camp bed, her face and her raised right hand in the frame, a white coat laid over her shoulders; behind her only the shelves of cardboard boxes. She is the only person in the frame; calm eyes, a slight worry between her brows, not smiling. She raises her eyes once to the fluorescent tube overhead, then slowly draws her right hand back under the white coat and folds it over her left hand on her chest. Her mouth stays closed the whole time; her thoughts are heard as a voice-over.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031003",
+          "speaker": "yuetang-18",
+          "text": "玉琴昨天到了那邊，有人打電話回來嗎？",
+          "emotion": "輕，穩"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a small windowless pharmacy storeroom in the early morning, lit only by one cold fluorescent tube: metal shelves of cardboard boxes, labels turned inward, a narrow door on screen left, a camp bed along the right wall; in the lower foreground a dark blue cotton bundle knotted at the four corners sits at the foot of the camp bed. Two people: on screen right Shen Yuetang on the camp bed; on screen left Shen Zhiyuan stands beside the bed in his open white pharmacist's coat over a dark navy shirt. She presses both hands on the edge of the bed and sits up slowly and steadily, back very straight, the white coat sliding from her shoulders onto her knees; she looks up into his eyes first. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, soft and steady. Zhiyuan keeps his mouth closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031004",
+          "speaker": "zhiyuan",
+          "text": "福伯昨晚打給我，說奶奶吃了飯，睡下了。",
+          "emotion": "放軟"
+        },
+        {
+          "id": "t031005",
+          "speaker": "zhiyuan",
+          "text": "是蘇曉來上班了，跟我一起顧店的藥師。",
+          "emotion": "偏頭往門口"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a small windowless pharmacy storeroom in the early morning, lit only by one cold fluorescent tube: metal shelves of cardboard boxes, labels turned inward, a narrow door on screen left, a camp bed along the right wall. Seen low from the bed, over a young woman's left shoulder: her shoulder in a moon-white shirt soft in the lower right foreground, no braid visible; on screen left Shen Zhiyuan stands beside the bed in his open white pharmacist's coat, looking down at her, his face softened, not smiling; behind him the half-open narrow door and the fluorescent tube. Two people. He answers looking down; at a sound beyond the door he turns his head toward the doorway, then back to her. Shen Zhiyuan speaks two Mandarin lines, his lips, jaw and cheeks moving clearly with every syllable, gentle. She keeps her mouth closed.",
+        "camera": "low-angle over-the-shoulder medium shot, slow push-in",
+        "characters": [
+          "zhiyuan",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031006",
+          "speaker": "suxiao",
+          "text": "知遠你藏了個女生？",
+          "emotion": "笑，打趣"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the windowless pharmacy storeroom in the early morning, seen from inside toward the narrow door, the door frame in the foreground; behind the door the shop's warm morning light. Su Xiao in a camel short padded jacket over a buttoned red-and-navy checked shirt, blue jeans, white sneakers and a black digital watch on her left wrist, her short bob tucked behind one ear. She is the only person in the frame, smiling with dimples. Holding the door frame with her left hand, she leans half her body in, her eyes sweeping from screen right to the bed, and raises one eyebrow. Su Xiao speaks a short Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, teasing and laughing.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "suxiao"
+        ],
+        "character_looks": {
+          "suxiao": "casual"
+        }
+      }
+    },
+    {
+      "id": "c06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031007",
+          "speaker": "zhiyuan",
+          "text": "她叫月棠，家裡的保母，先在這裡住幾天。",
+          "emotion": "正經"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the windowless pharmacy storeroom in the early morning, under the fluorescent tube. Over a young man's left shoulder: his left shoulder in a white pharmacist's coat soft in the right foreground; on screen left Su Xiao in her camel short padded jacket and checked shirt, still holding the door frame, smiling, looking toward screen right. Two people. The man turns to face her and lifts one hand to gesture toward the bed off screen; Su Xiao steps one step in through the door. The man speaks a Mandarin line, his face unseen, matter-of-fact. Su Xiao keeps her mouth closed.",
+        "camera": "over-the-shoulder medium shot, slow push-in",
+        "characters": [
+          "suxiao",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "suxiao": "casual"
+        }
+      }
+    },
+    {
+      "id": "c07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031008",
+          "speaker": "suxiao",
+          "text": "我叫蘇曉。這件是知遠的，太大了，袖子我幫妳捲。",
+          "emotion": "暖"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a small windowless pharmacy storeroom in the early morning, lit only by one cold fluorescent tube: metal shelves of cardboard boxes, labels turned inward, a narrow door on screen left, a camp bed along the right wall; light from the open door rims Su Xiao's short hair. Two people: on screen left Su Xiao in her camel padded jacket stands before the bed holding open in both hands a white pharmacist's coat; on screen right Shen Yuetang in her moon-white high-collared shirt and navy skirt. Su Xiao smiles with dimples; Yuetang does not smile, her eyes calm. Yuetang rises slowly from the edge of the bed; they look at each other for one second; Su Xiao swings the coat around behind her, Yuetang slides her arms into the sleeves, and Su Xiao rolls the too-long sleeves up to her wrists, one side then the other. Su Xiao speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, warm. Yuetang keeps her mouth closed.",
+        "camera": "two-shot, slow push-in",
+        "characters": [
+          "suxiao",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle",
+          "suxiao": "casual"
+        }
+      }
+    },
+    {
+      "id": "c08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031009",
+          "speaker": "yuetang-18",
+          "text": "多謝。我住在這裡，店裡的事，我也一起做。",
+          "emotion": "客氣，穩"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a small windowless pharmacy storeroom in the early morning, lit only by one cold fluorescent tube: metal shelves of cardboard boxes, labels turned inward, a narrow door on screen left, a camp bed along the right wall. Over a young woman's right shoulder: her right shoulder in a camel padded jacket soft on screen left in the foreground; on screen right Shen Yuetang in an oversized white pharmacist's coat worn open, sleeves rolled to the wrists, her moon-white shirt buttoned to the throat; behind her only shelves of cardboard boxes. Two people. Yuetang glances down at the rolled cuffs, folds both hands at her waist and gives the young woman one small nod; then she turns toward the narrow door on screen left. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, polite and steady.",
+        "camera": "over-the-shoulder medium close-up, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "suxiao"
+        ],
+        "character_looks": {
+          "yuetang-18": "yaoju",
+          "suxiao": "casual"
+        }
+      }
+    },
+    {
+      "id": "c09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031010",
+          "speaker": "zhiyuan",
+          "text": "春桃阿婆，晚上冷，進來坐一下再走？",
+          "emotion": "熱絡"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy after sunset, seen from behind the counter toward the glass door, warm white fluorescent light, red light from a sign across the street on the glass; medicine boxes on the counter in the foreground. Two people inside, one outside, no customers: on screen right Shen Yuetang behind the counter writes with a black brush pen in her right hand on a slip lying flat, only its edge visible; on screen left Shen Zhiyuan in his open white coat restocks a cabinet; outside the glass door Granny Chuntao in her floral quilted jacket walks from right to left, a small burlap rice bag in her left hand. She slows and glances in; Zhiyuan puts down a box, hurries to push the door open and leans out; Yuetang stops writing and looks up. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, warm. Both women keep their mouths closed.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "zhiyuan",
+          "chuntao"
+        ],
+        "character_looks": {
+          "yuetang-18": "yaoju"
+        }
+      },
+      "chapter": "藥局店內"
+    },
+    {
+      "id": "c10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031011",
+          "speaker": "chuntao",
+          "text": "不了，剛在對街拿過藥了，下回啦。",
+          "emotion": "不好意思"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the small old pharmacy's glass door in the evening, seen from inside the door looking out; in the foreground a young man's hand in a white coat cuff holds the glass door open. On the pavement Granny Chuntao in her floral quilted jacket, dark trousers and cloth shoes hugs a small plain burlap bag of rice to her chest; behind her the main road and red light from a shop sign across the street, the sign itself out of view. She is the only face in the frame. She gives an awkward little smile and lets it fade, shakes her head, waves her right hand twice, her feet already turning toward the lane's mouth on screen left, and walks out of the frame on screen left. Granny Chuntao speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, apologetic.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "chuntao",
+          "zhiyuan"
+        ]
+      }
+    },
+    {
+      "id": "c11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031012",
+          "speaker": "zhiyuan",
+          "text": "盛通的高經理，我們進的貨，都是他在管。",
+          "emotion": "低聲，對她"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy in the evening, the frame of the glass front door in the foreground; warm white fluorescent light, deep blue sky and red reflected light on the glass. Three people: Manager Gao in a fitted light silver-grey two-piece suit, white shirt and no tie, a black phone face down in his right hand and a business card between two fingers of his left hand, wearing a salesman's smile; Shen Zhiyuan in his open white pharmacist's coat has just walked back to the left end of the counter; Shen Yuetang behind the counter in an oversized white pharmacist's coat. Before the door has swung shut Manager Gao pushes it and strides in, his heels clicking on the tiles, and stops at the middle of the counter; Zhiyuan straightens and turns his head toward Yuetang. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low. The others keep their mouths closed.",
+        "camera": "wide shot, tracking with Manager Gao from the door to the counter",
+        "characters": [
+          "gaojingli",
+          "zhiyuan",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "yaoju"
+        }
+      }
+    },
+    {
+      "id": "c12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031013",
+          "speaker": "gaojingli",
+          "text": "下月起，盛通不供貨給獨立藥局，特地來通知。",
+          "emotion": "客氣地笑"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy in the evening, warm white fluorescent light. The first frame is the wooden counter top seen from above: a man's left hand in a light silver-grey suit sleeve and white shirt cuff presses a business card face down on the counter, nothing written visible; at the right edge of the frame a young woman's right hand rests on the counter in a white coat cuff, the back of the hand covered in fine crinkled old-woman wrinkles. Only the hands are in the frame; no face. Two fingers press the card onto the counter, push it forward and stop it just in front of her hand. The speaking voice is off screen; no mouth is in the frame.",
+        "camera": "high-angle close-up on the hands, locked",
+        "characters": [
+          "gaojingli",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "yaoju"
+        }
+      }
+    },
+    {
+      "id": "c13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031014",
+          "speaker": "zhiyuan",
+          "text": "做了這麼多年生意，說斷就斷？總要有個理由。",
+          "emotion": "壓著火"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy after sunset, seen from behind the counter toward the glass front door: glass medicine cabinets on screen left, a plain white wall on screen right, warm white fluorescent light; outside, a deep blue sky and red light from a sign across the street reflecting on the glass. Over a man's left shoulder: his left shoulder in a light silver-grey suit soft in the right foreground; on screen left Shen Zhiyuan in his open white pharmacist's coat, his face darkening, not smiling, looking toward screen right. Two people. Zhiyuan steps forward and presses one hand flat on the counter. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, holding back anger.",
+        "camera": "over-the-shoulder medium shot, slow push-in",
+        "characters": [
+          "zhiyuan",
+          "gaojingli"
+        ]
+      }
+    },
+    {
+      "id": "c14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031015",
+          "speaker": "gaojingli",
+          "text": "理由很簡單，老店老到沒客人，進貨也是賠錢。",
+          "emotion": "笑著施壓"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy in the evening, seen low from the counter: Manager Gao in his fitted light silver-grey suit and white shirt, a black phone face down in his right hand; behind him the empty shop and red light on the glass door, out of focus. He is the only person in the frame, smiling, his eyes sizing things up. He turns and sweeps the hand holding the phone across the empty shop, then turns back toward screen left. Manager Gao speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, smiling while applying pressure.",
+        "camera": "low-angle medium close-up, slow push-in",
+        "characters": [
+          "gaojingli"
+        ]
+      }
+    },
+    {
+      "id": "c15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031016",
+          "speaker": "yuetang-18",
+          "text": "碼頭三號倉……盛通的通路，前身是隆昌藥材行。",
+          "emotion": "慢，穩"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy in the evening: Shen Yuetang behind the counter in an oversized white pharmacist's coat, holding a business card between two fingers of her right hand with its blank back toward the camera; behind her only the wall of wooden medicine drawers with no labels. She is the only person in the frame; not smiling, her eyes deep and steady. She brings the card up to her eyes, looks once, sets it slowly back on the counter, then raises her eyes first to a man's eyes off screen left and then to the phone in his hand. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, slow and steady.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "yaoju"
+        }
+      }
+    },
+    {
+      "id": "c16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031017",
+          "speaker": "gaojingli",
+          "text": "隆昌早就收了。妳一個保母，怎麼會知道？",
+          "emotion": "笑容收住"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy in the evening: Manager Gao in his light silver-grey suit, his smile frozen on his face; behind him red light on the glass door, out of focus. He is the only person in the frame. His smile drops, the phone stops in mid-air, and he leans half a step toward the counter on screen right. Manager Gao speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, the smile gone.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "gaojingli"
+        ]
+      },
+      "chapter": "藥局店內（下）"
+    },
+    {
+      "id": "c17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031018",
+          "speaker": "yuetang-18",
+          "text": "你老闆學帳的師父，就是隆昌當年的帳房。",
+          "emotion": "不疾不徐"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy in the evening. Over a man's right shoulder: his right shoulder in a light silver-grey suit soft on screen left in the foreground; on screen right Shen Yuetang behind the counter in an oversized white pharmacist's coat, hands folded at her waist, back very straight; behind her only the wall of wooden medicine drawers. Two people. She does not step back but leans half a step forward and with her fingertips pushes the face-down business card back across the counter to him. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, unhurried.",
+        "camera": "over-the-shoulder medium shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "gaojingli"
+        ],
+        "character_looks": {
+          "yuetang-18": "yaoju"
+        }
+      }
+    },
+    {
+      "id": "c18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031019",
+          "speaker": "yuetang-18",
+          "text": "剛才門口那位阿婆，以前常來？",
+          "emotion": "想起來"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy in the evening; in the foreground a business card lies face down on the counter. Shen Yuetang behind the counter in an oversized white pharmacist's coat, in focus; out of focus in the background Manager Gao in a light silver-grey suit, no longer smiling, pushes the glass door open and walks out to screen left, the red light outside flickering across the glass; at the left edge of the frame Shen Zhiyuan in his white coat. Three people. Manager Gao leaves without a word; Yuetang leaves the card untouched and turns her head toward Zhiyuan on screen left. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, recalling something. The others keep their mouths closed.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "gaojingli",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "yuetang-18": "yaoju"
+        }
+      }
+    },
+    {
+      "id": "c19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031020",
+          "speaker": "zhiyuan",
+          "text": "來了三十年。對街開幕打對折，她就不進門了。",
+          "emotion": "苦笑"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy in the evening: Shen Zhiyuan in his open white pharmacist's coat leans against the counter; behind him only the glass door and the red light from across the street, out of focus. He is the only person in the frame, with a wry smile. He looks back once at the red light beyond the glass door, turns back and raps one knuckle on the counter. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, a wry smile.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "zhiyuan"
+        ]
+      }
+    },
+    {
+      "id": "c20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031021",
+          "speaker": "yuetang-18",
+          "text": "半價搶人，撐不了多久。他說進貨賠錢，把進貨帳拿給我。",
+          "emotion": "想定了"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy in the evening: Shen Yuetang behind the counter in an oversized white pharmacist's coat; behind her only the wall of wooden medicine drawers. She is the only person in the frame, not smiling. She follows a gaze out through the glass door off screen, then looks down at the business card on the counter, unfolds her hands and lays her right hand flat on the counter. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, her mind made up.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "yaoju"
+        }
+      }
+    },
+    {
+      "id": "c21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031022",
+          "speaker": "zhiyuan",
+          "text": "妳從傍晚翻到現在，帳上看出什麼了？",
+          "emotion": "輕"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy at night after closing, seen along the counter top toward the glass door: in the foreground a dark green hardback ledger lies open, only the edges of its pages visible. Two people: on screen left Shen Zhiyuan in his open white pharmacist's coat at the light switch on the wall by the door; on screen right Shen Yuetang stands behind the counter in her moon-white shirt, a white coat hung on the tall stool beside her, back straight, the fingers of her left hand tapping the counter one by one, her right index finger on the page; outside it is dark except the red light across the street. Zhiyuan switches off the lights near the door, the front half of the shop goes dark, and he walks back to the counter; she turns a page and runs her fingertip down a line. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, soft. She keeps her mouth closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "zhiyuan",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    },
+    {
+      "id": "c22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t031023",
+          "speaker": "yuetang-18",
+          "text": "每個月第三週，價錢都跳一截。這個帳，有人在裡面偷。",
+          "emotion": "低"
+        },
+        {
+          "id": "t031024",
+          "speaker": "zhiyuan",
+          "text": "誰？",
+          "emotion": "抬頭"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the small old neighborhood pharmacy at night, only the counter half of the lights on, the camera slightly low in front of the counter. Two people: Shen Yuetang stands behind the counter in her moon-white high-collared shirt, her right index finger pressed on the last page of an open dark green hardback ledger, seen from this height only as page edges, nothing written visible; on screen left Shen Zhiyuan in front of the counter, in his open white coat, looks down at the ledger. Yuetang does not smile; her eyes turn cold. Her fingertip stops on a line and taps it once; she raises her eyes to Zhiyuan and he lifts his head. First Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low, while Zhiyuan keeps his mouth closed; then Shen Zhiyuan speaks one short Mandarin word, his lips moving clearly, looking up, while she keeps her mouth closed.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "yuetang-18": "wrinkle"
+        }
+      }
+    }
+  ]
+}
