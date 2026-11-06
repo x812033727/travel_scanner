@@ -65,7 +65,7 @@ def C(action, close=False):
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 kid("roof-blue", "Waist-up medium shot of the girl " + ROOF + " looking up at a deep blue sky with her mouth open in wonder, " + DAY,
-    k("所長！中午我跑上頂樓，", "興奮，跑進來報案的語氣"), k("天空藍得好漂亮！", "開心"), chapter="中午藍天，傍晚紅太陽")
+    k("所長！今天中午，我跑上頂樓，", "興奮，跑進來報案的語氣"), k("天空藍得好漂亮！", "開心"), chapter="中午藍天，傍晚紅太陽")
 kid("roof-sunset", "Waist-up medium shot of the girl " + ROOF + " pointing at " + SUNSET + ", her eyes wide",
     k("可是傍晚再上去，", "壓低聲音"), k("太陽變成一顆紅紅的大球！", "誇張"))
 chief("chief-same-sun", C("raising one finger with a calm knowing smile"),
