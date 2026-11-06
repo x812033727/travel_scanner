@@ -184,13 +184,19 @@ function identityCheck(character) {
   return `${head}${appearance.length > room ? `${appearance.slice(0, room - 1).replace(/\s+\S*$/, "")}…` : appearance}${tail}`;
 }
 
+// A shot marked nobody keeps the look's colours and line, without the look's people: a cute
+// look's "chibi characters ..." clause otherwise draws a figure, or a face on the object, into
+// a picture that must show nobody (the nobody judge question then fails every take).
+const LOOK_PEOPLE = /chibi characters with big round heads, large expressive eyes and exaggerated comic expressions/i;
+export const lookForShot = (look, scene) => (scene?.data?.nobody === true && typeof look?.style === "string" && LOOK_PEOPLE.test(look.style) ? { ...look, style: look.style.replace(LOOK_PEOPLE, "cute rounded objects only, with no people and no faces") } : look);
+
 /**
  * What a shot is asked for: its prompt, the look's style, the camera and the cast, under the
  * image model's `limit` (prompt-budget.mjs: the scene is cut at a word boundary when the look
  * leaves it no room, the look never).
  */
 export function shotPrompt(scene, look, characters, limit = DEFAULT_IMAGE_PROMPT_LIMIT) {
-  return composeShotPrompt({ prompt: scene.data.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit }).prompt;
+  return composeShotPrompt({ prompt: scene.data.prompt, look: lookForShot(look, scene), camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit }).prompt;
 }
 
 /** The chosen sheet of each character: `{ <id>: { file, sha256 } }`, from the look manifest and the owner's choice. */
@@ -633,14 +639,14 @@ export async function run(command, args, ctx) {
   // What a shot is drawn from and what the judge is asked about it, as they stand now.
   const referencesOf = (characters) => [...characters.map((character) => ({ sha256: uploaded[character.id], role: "character" })).filter((reference) => reference.sha256), ...styleReferences].slice(-MAX_REFERENCES);
   // A shot's request as it stands, with the corrections of the takes before it, under the model's limit; its end frame's too.
-  const composeFor = (scene, characters, fixes = []) => composeShotPrompt({ prompt: scene.data.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), fixes, limit: promptLimit });
-  const endPrompt = (scene, characters) => composeShotPrompt({ prompt: scene.data.end_frame.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
+  const composeFor = (scene, characters, fixes = []) => composeShotPrompt({ prompt: scene.data.prompt, look: lookForShot(look, scene), camera: scene.data.camera, cast: shotAppearancePrompt(characters), fixes, limit: promptLimit });
+  const endPrompt = (scene, characters) => composeShotPrompt({ prompt: scene.data.end_frame.prompt, look: lookForShot(look, scene), camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const budgetOf = (scene, characters) => shotPromptBudget({ look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const question = (scene, characters) => ({
     rubric: checks
       ? keyframeChecks({ plate: Boolean(plate), ...(manga ? { characters, subtitleBand: rubricOptions.subtitleBand, craft: false } : isCuteExplainer(doc) ? { characters } : {}), wordless: wordlessLook(doc), nobody: scene.data.nobody === true })
       : keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
-    context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
+    context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: lookForShot(look, scene).style },
   });
   // A verdict answers one question at the owner's bar of the day; a take judged on another has no verdict yet.
   const stampOf = (asked) => mediaKey("keyframe-judge", { ...asked, bar: status.judge_min_score ?? null });

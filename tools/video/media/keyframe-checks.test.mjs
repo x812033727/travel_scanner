@@ -35,3 +35,13 @@ test("only the cute-mystery look is wordless, and nobody is a true-or-absent sho
   doc.scenes[index].data.nobody = false;
   assert.deepEqual(validateVideo(doc).map((error) => error.path), [`scenes[${index}].data.nobody`]);
 });
+
+test("a nobody shot asks the cute look for objects, not its chibi people", async () => {
+  const { lookForShot } = await import("./keyframes.mjs");
+  const look = { style: "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, 16:9" };
+  const nobody = lookForShot(look, { data: { nobody: true } });
+  assert.doesNotMatch(nobody.style, /chibi characters/);
+  assert.match(nobody.style, /no people and no faces/);
+  assert.match(nobody.style, /thick clean dark outlines/);
+  assert.equal(lookForShot(look, { data: {} }), look);
+});
