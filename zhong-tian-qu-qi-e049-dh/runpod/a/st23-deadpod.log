@@ -1,0 +1,77 @@
+##### try 1 10:31:42
+46 jobs
+=== refine st2-1.json 10:31:51
+[refine] /root/mokaair-work/videos/zhong-tian-qu-qi-e049-dh/runpod/a/st2/st2-1.json: 20 job(s), 0 error(s)
+[h3r] reusing pod yepmzz9vds9jtf
+[h3r] pod: ready
+[h3r] pod ready
+[h3r] s01: done in 220.4 s
+[h3r] s02: done in 119.0 s
+[h3r] s03: done in 162.7 s
+[h3r] s04: done in 164.7 s
+[h3r] s05: done in 164.4 s
+[h3r] s06: done in 164.7 s
+[h3r] s07: done in 163.6 s
+[h3r] s08: done in 163.9 s
+[h3r] s09: done in 165.8 s
+[h3r] s10: done in 164.8 s
+[h3r] s11: done in 119.4 s
+[h3r] s12: done in 118.4 s
+[h3r] s13: done in 118.0 s
+[h3r] s14: done in 164.2 s
+[h3r] s15: done in 164.1 s
+[h3r] s16: done in 119.0 s
+[h3r] s17: done in 164.1 s
+[h3r] s18: done in 165.3 s
+[h3r] s19: done in 163.3 s
+[h3r] s20: done in 118.7 s
+[h3r] pod yepmzz9vds9jtf left running: it is billing until `stop`
+=== refine st2-2.json 11:23:13
+[refine] /root/mokaair-work/videos/zhong-tian-qu-qi-e049-dh/runpod/a/st2/st2-2.json: 20 job(s), 0 error(s)
+[h3r] reusing pod yepmzz9vds9jtf
+[h3r] pod: ready
+[h3r] pod ready
+[h3r] s21: done in 163.9 s
+[h3r] s22: done in 165.0 s
+[h3r] s23: done in 163.8 s
+[h3r] s24: done in 119.0 s
+[h3r] s25: done in 163.9 s
+[h3r] s26: done in 164.6 s
+[h3r] s27: done in 118.3 s
+[h3r] s28: done in 165.4 s
+[h3r] s29: done in 166.8 s
+[h3r] s30: done in 165.3 s
+[h3r] s31: done in 118.8 s
+[h3r] s32: done in 163.6 s
+[h3r] s33: done in 164.9 s
+[h3r] s34: done in 118.8 s
+[h3r] s35: done in 163.4 s
+[h3r] s36: done in 119.5 s
+[h3r] s37: done in 163.8 s
+[h3r] s38: done in 164.6 s
+[h3r] s39: done in 163.9 s
+[h3r] s40: done in 165.0 s
+[h3r] pod yepmzz9vds9jtf left running: it is billing until `stop`
+=== refine st2-3.json 12:14:28
+[refine] /root/mokaair-work/videos/zhong-tian-qu-qi-e049-dh/runpod/a/st2/st2-3.json: 6 job(s), 0 error(s)
+[h3r] reusing pod yepmzz9vds9jtf
+[h3r] pod: ready
+[h3r] pod ready
+[h3r] s41: done in 120.3 s
+[h3r] s42: done in 164.0 s
+[h3r] s43: done in 164.7 s
+[h3r] s44: done in 118.8 s
+[h3r] s45: done in 164.2 s
+[h3r] s46: done in 164.2 s
+[h3r] pod yepmzz9vds9jtf left running: it is billing until `stop`
+=== upscale batch 1 12:29:37
+[h3r] reusing pod yepmzz9vds9jtf
+[h3r] pod: ready
+[h3r] pod ready
+[h3r] s01: no result after 3600 s; the pod may still be working on 7385cd4d-0113-4b25-99cc-8b1360552cb8
+[h3r] s02: ComfyUI failed: {"status_str": "error", "completed": false, "messages": [["execution_start", {"prompt_id": "f3cc9135-a662-404a-9f18-e5f0ecffb5bf", "timestamp": 1793712599026}], ["execution_cached", {"nodes": [], "prompt_id": "f3cc9135-a662-404a-9f18-e5f0ecffb5bf", "timestamp": 1793712599032}], ["execution_error", {"prompt_id": "f3cc9135-a662-404a-9f18-e5f0ecffb5bf", "node_id": "40", "node_type": "SeedVR2VideoUpscaler", "executed": ["20", "30", "31"], "exception_message": "[Errno 6] No such device or address\n", "exception_type": "OSError", "traceback": ["  File \"/opt/ComfyUI/execution.py\", line 548, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n", "  File \"/opt/ComfyUI/execution.py\", line 353, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[h3r] s03: ComfyUI failed: {"status_str": "error", "completed": false, "messages": [["execution_start", {"prompt_id": "fef48d8d-7ce5-4968-b94c-79cc7ee3c05e", "timestamp": 1793712749478}], ["execution_cached", {"nodes": ["30", "31"], "prompt_id": "fef48d8d-7ce5-4968-b94c-79cc7ee3c05e", "timestamp": 1793712749479}], ["execution_error", {"prompt_id": "fef48d8d-7ce5-4968-b94c-79cc7ee3c05e", "node_id": "40", "node_type": "SeedVR2VideoUpscaler", "executed": ["20"], "exception_message": "[Errno 6] No such device or address\n", "exception_type": "OSError", "traceback": ["  File \"/opt/ComfyUI/execution.py\", line 548, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n", "  File \"/opt/ComfyUI/execution.py\", line 353, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[h3r] s04: ComfyUI failed: {"status_str": "error", "completed": false, "messages": [["execution_start", {"prompt_id": "a264789c-194b-4052-a801-8e5a254a5013", "timestamp": 1793712899891}], ["execution_cached", {"nodes": ["30", "31"], "prompt_id": "a264789c-194b-4052-a801-8e5a254a5013", "timestamp": 1793712899892}], ["execution_error", {"prompt_id": "a264789c-194b-4052-a801-8e5a254a5013", "node_id": "40", "node_type": "SeedVR2VideoUpscaler", "executed": ["20"], "exception_message": "[Errno 6] No such device or address\n", "exception_type": "OSError", "traceback": ["  File \"/opt/ComfyUI/execution.py\", line 548, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n", "  File \"/opt/ComfyUI/execution.py\", line 353, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[h3r] s05: ComfyUI failed: {"status_str": "error", "completed": false, "messages": [["execution_start", {"prompt_id": "3151c9c8-dadd-4839-9f12-a8a51fb3dd6a", "timestamp": 1793713049425}], ["execution_cached", {"nodes": ["30", "31"], "prompt_id": "3151c9c8-dadd-4839-9f12-a8a51fb3dd6a", "timestamp": 1793713049427}], ["execution_error", {"prompt_id": "3151c9c8-dadd-4839-9f12-a8a51fb3dd6a", "node_id": "40", "node_type": "SeedVR2VideoUpscaler", "executed": ["20"], "exception_message": "[Errno 6] No such device or address\n", "exception_type": "OSError", "traceback": ["  File \"/opt/ComfyUI/execution.py\", line 548, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n", "  File \"/opt/ComfyUI/execution.py\", line 353, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[h3r] s06: ComfyUI failed: {"status_str": "error", "completed": false, "messages": [["execution_start", {"prompt_id": "159bdb00-3fd7-47c2-bf74-30494e835e22", "timestamp": 1793713199589}], ["execution_cached", {"nodes": ["30", "31"], "prompt_id": "159bdb00-3fd7-47c2-bf74-30494e835e22", "timestamp": 1793713199590}], ["execution_error", {"prompt_id": "159bdb00-3fd7-47c2-bf74-30494e835e22", "node_id": "40", "node_type": "SeedVR2VideoUpscaler", "executed": ["20"], "exception_message": "[Errno 6] No such device or address\n", "exception_type": "OSError", "traceback": ["  File \"/opt/ComfyUI/execution.py\", line 548, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n", "  File \"/opt/ComfyUI/execution.py\", line 353, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[h3r] s07: ComfyUI failed: {"status_str": "error", "completed": false, "messages": [["execution_start", {"prompt_id": "1e0bf8c5-d124-414e-9230-f547c8f78e84", "timestamp": 1793713349272}], ["execution_cached", {"nodes": ["30", "31"], "prompt_id": "1e0bf8c5-d124-414e-9230-f547c8f78e84", "timestamp": 1793713349273}], ["execution_error", {"prompt_id": "1e0bf8c5-d124-414e-9230-f547c8f78e84", "node_id": "40", "node_type": "SeedVR2VideoUpscaler", "executed": ["20"], "exception_message": "[Errno 6] No such device or address\n", "exception_type": "OSError", "traceback": ["  File \"/opt/ComfyUI/execution.py\", line 548, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n", "  File \"/opt/ComfyUI/execution.py\", line 353, in get_output_data\n    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, v3_data=v3_data)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
