@@ -250,7 +250,9 @@ export const STORY_OPENING_RULE = `Shape of a 奇聞檔案局 episode or a brand
 export const STORY_SERIES_SCREEN_RULE = `Pictures and names of these two series (owner, 2026-11-05; they are watched worldwide):
   - No card and no word on screen: every scene is a picture ("template": "shot"), with no title,
     chapter, big, stats, compare, steps, table, quote or outro card. A number is said aloud and
-    drawn as a picture (a jar nearly empty, a pie three quarters full, a long queue); a chapter's
+    drawn as a feeling, never as a proportion, a count, an arrow or a chart, which the image model
+    gets wrong (owner, 2026-11-06): a fat or a flat purse, a balloon rising or sagging, a seedling
+    growing or wilting, a dart in the bullseye or off the board, a gasp; a chapter's
     name lives only in the YouTube description's chapters, which the tool writes from the
     "chapter" fields. Only the thumbnail carries words.
   - Each picture is what the narration names at that moment, and it catches the line's joke,
@@ -264,8 +266,15 @@ export const STORY_SERIES_SCREEN_RULE = `Pictures and names of these two series 
     action with one or two props, in a bright daytime place (night and lamp-lit scenes come back
     as 3D renders). It never uses the words no, not, without, text or blank, nor a style word:
     it says what is there. A prop that grows lettering (a calendar, a report, a sign, a button,
-    a price tag, a laptop's logo) becomes a picture that needs none; a screen says what it shows
-    ("a phone showing a simple map with a blue route line and a red pin").
+    a price tag, a laptop's logo) becomes a picture that needs none. Things that carry writing
+    appear only in fixed safe forms (owner, 2026-11-06): a phone, navigation or laptop screen
+    shows one blue route line, one big white turn arrow or one red pin, or is dark or one solid
+    colour; a watch screen shows one red heart; a report or document is a very thick book with a
+    plain cover; a box is a smooth plain grey box, never cardboard. Never a map, a sign, a label,
+    a race bib, a badge, a uniform crest or a dial with marks.
+  - A shot with no person in it carries "nobody": true; its thing is one that does not grow a
+    face (a plain grey box, a purse, coins, a balloon, a paper airplane, a pie, a potted plant),
+    never a toy car, a satellite or a radar dish.
   - A Latin-letter name is said as it is written, with no Chinese transliteration in the line or
     in "say", unless Taiwan uses a formal Chinese name for it (三星, 華為, 維基百科); a new
     Latin-letter word goes into the lexicon as null.`;
