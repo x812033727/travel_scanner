@@ -188,6 +188,6 @@ MiniMax `image-01` 讀得懂**一個**角色參考圖，讀不懂多人互動（
 | 配音 | 時間軸一動（換鏡、改句）就 `dub` 八語重跑：沿用快取不重錄，只重對齊 | P02 把一鏡拆成兩鏡，後面全部晚 0.7 秒 |
 
 等 PR #2028（關鍵影格評審：`nobody` 標記、角色一致檢查、`wordless` 不放字的題目）合併後要補：
-- 沒有人的物件特寫（`build_scenes.py` 的 `scene()`，例如保溫瓶、雨滴、海綿）加 `nobody: true`：它們常冒出小人臉。
+- 沒有人的物件特寫（`build_scenes.py` 的 `scene()`，例如保溫瓶、雨滴、海綿）加 `nobody: true`：它們常冒出小人臉。#2028 的 `lookForShot` 會把畫風裡「chibi characters with big round heads…」那句換成「只畫圓圓的物件、沒有人和臉」，`cute-cartoon` 的畫風也有這句，所以對原來如此一樣有效。加了 `nobody` 提示詞就變了，已核准的集數不要加，從下一集起用。
 - `wordlessLook` 目前只認 `cute-mystery`；原來如此也是畫面不放字（§1），要一起認 `cute-cartoon`。
 - 兩者都會改評審題目：已核准分鏡的集數不要重跑 `keyframes`，或照 §3.1 只讓要重畫的鏡頭用新題目。
