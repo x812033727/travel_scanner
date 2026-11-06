@@ -10,7 +10,7 @@
   build.py st2   [--work DIR]
       片段第二段：草稿第 0 格 cover-crop 到 1312×736 當 keyframe，σ0.5（要 ffmpeg 與 st1/out/*.mp4）。
 
---pick 的值是 take 字母（r1 的 a、b）；沒給的角色用 a。--placeholders 在缺圖的地方先放一張灰圖，
+圖片工具把輸出檔名的「/」換成「-」，所以檔案是 r1-<id>.png。--pick 的值是 take 字母（r1 的 a、b）；沒給的角色用 a。--placeholders 在缺圖的地方先放一張灰圖，
 只給離線檢查用（check 過了不代表圖畫好了）。工作目錄預設 $VIDEO_WORKDIR/_series/tai-nainai/screen-test
 （沒設時 ~/mokaair-work/videos/...）；定妝照 manifest 的路徑相對 manifest 所在的目錄，片段的用絕對路徑。標準函式庫，用 python3 -I 跑。
 """
@@ -133,10 +133,10 @@ def r1(cast: dict, work: Path) -> dict:
     for pid, title, look, pron in people:
         for take in ("a", "b"):
             prompt = f"{BLANK} {PORTRAIT_FRAME}{pron} is: {look}. {pron} is the only person in the frame. {REAL}"
-            jobs.append(job(f"{pid}-{take}", f"{title} 真人 {take}", ["base/grey-portrait.png"], prompt, PORTRAIT, seed, f"r1/{pid}-{take}.png"))
+            jobs.append(job(f"{pid}-{take}", f"{title} 真人 {take}", ["base/grey-portrait.png"], prompt, PORTRAIT, seed, f"r1-{pid}-{take}.png"))
             seed += 1
         prompt = f"{BLANK} {PORTRAIT_FRAME}{pron} is: {look}. {pron} is the only person in the frame. {CG}"
-        jobs.append(job(f"{pid}-3d-a", f"{title} 3D", ["base/grey-portrait.png"], prompt, PORTRAIT, seed, f"r1/{pid}-3d-a.png"))
+        jobs.append(job(f"{pid}-3d-a", f"{title} 3D", ["base/grey-portrait.png"], prompt, PORTRAIT, seed, f"r1-{pid}-3d-a.png"))
         seed += 1
     citang = (sets["shenjia-citang"]
               .replace("ancestral tablets behind it out of focus", "a row of plain blank wooden ancestral tablets behind it, out of focus")
@@ -154,7 +154,7 @@ def r1(cast: dict, work: Path) -> dict:
             "image 1 is only a blank mid-grey canvas: take nothing from it. A wide shot of an empty room at night: "
             f"{text}. {NO_TEXT_SET} {style}"
         )
-        jobs.append(job(f"{sid}-{tag}", title, ["base/grey-set.png"], prompt, SET, seed, f"r1/{sid}-{tag}.png"))
+        jobs.append(job(f"{sid}-{tag}", title, ["base/grey-set.png"], prompt, SET, seed, f"r1-{sid}-{tag}.png"))
         seed += 1
     return {"jobs": jobs}
 
@@ -164,7 +164,7 @@ def r2(cast: dict, work: Path, pick: dict, placeholders: bool) -> dict:
     old = c["yuetang-96"]["appearance"]
     jobs = []
     for suffix, style, seed in (("", REAL, 612000), ("-3d", CG, 612010)):
-        young = f"r1/yuetang-18{suffix}-{pick.get('yuetang-18' + suffix, 'a')}.png"
+        young = f"r1-yuetang-18{suffix}-{pick.get('yuetang-18' + suffix, 'a')}.png"
         need(work / young, PORTRAIT, placeholders)
         takes = ("a", "b") if not suffix else ("a",)
         for n, take in enumerate(takes):
@@ -174,8 +174,8 @@ def r2(cast: dict, work: Path, pick: dict, placeholders: bool) -> dict:
                 "and keep the framing, the plain grey backdrop and the lighting of image 1. "
                 f"{PORTRAIT_FRAME}She is: {old}. She is the only person in the frame. {style}"
             )
-            jobs.append(job(f"yuetang-96{suffix}-{take}", f"沈月棠（九十六歲）{'3D' if suffix else '真人'} {take}", [young], prompt, PORTRAIT, seed + n, f"r2/yuetang-96{suffix}-{take}.png"))
-    young = f"r1/yuetang-18-{pick.get('yuetang-18', 'a')}.png"
+            jobs.append(job(f"yuetang-96{suffix}-{take}", f"沈月棠（九十六歲）{'3D' if suffix else '真人'} {take}", [young], prompt, PORTRAIT, seed + n, f"r2-yuetang-96{suffix}-{take}.png"))
+    young = f"r1-yuetang-18-{pick.get('yuetang-18', 'a')}.png"
     prompt = (
         "image 1 is the casting photo of the young woman Shen Yuetang: keep her skin tone and the moon-white cotton sleeves. "
         "An extreme close-up insert of her two hands folded in front of her waist, the right hand resting on the left, the moon-white long cotton cuffs at the wrists, "
@@ -183,7 +183,7 @@ def r2(cast: dict, work: Path, pick: dict, placeholders: bool) -> dict:
         "the back of her right hand is young and smooth except for one single fine wrinkle line across it, clearly visible in soft light; nothing else is aged. "
         f"{looks[('yuetang-18', 'wrinkle')]}. Only the hands and cuffs are in the frame, no face. {REAL}"
     )
-    jobs.append(job("insert-wrinkle-a", "手背細紋插鏡 真人", [young], prompt, INSERT, 612020, "r2/insert-wrinkle-a.png"))
+    jobs.append(job("insert-wrinkle-a", "手背細紋插鏡 真人", [young], prompt, INSERT, 612020, "r2-insert-wrinkle-a.png"))
     return {"jobs": jobs}
 
 
@@ -238,11 +238,11 @@ def st1(cast: dict, work: Path, pick: dict, placeholders: bool) -> dict:
         refs, anchors = [], []
         for pid, name in shot["who"]:
             folder = "r2" if pid == "yuetang-96" else "r1"
-            ref = work / folder / f"{pid}{suffix}-{pick.get(pid + suffix, 'a')}.png"
+            ref = work / f"{folder}-{pid}{suffix}-{pick.get(pid + suffix, 'a')}.png"
             need(ref, PORTRAIT, placeholders)
             refs.append(str(ref))
             anchors.append(f"{name} shown in <Picture {len(refs)}> keeps exactly the same face, hair and costume as the picture: {appearance(cast, pid)}")
-        set_ref = work / "r1" / f"{shot['set']}{suffix}-a.png"
+        set_ref = work / f"r1-{shot['set']}{suffix}-a.png"
         need(set_ref, SET, placeholders)
         refs.append(str(set_ref))
         tags = ", ".join(f"<Picture {i}>" for i in range(1, len(refs))) + f" and <Picture {len(refs)}>"
