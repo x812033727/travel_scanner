@@ -79,8 +79,9 @@ MiniMax `image-01` 讀得懂**一個**角色參考圖，讀不懂多人互動（
 
 ### 3.2 待站主決定（2026-11-06）
 
-- **小問的設定拿掉筆記本**：設定寫「holding a small plain blank notebook in both hands」，P02、P05 有幾十張因此被退或冒假字。
-  改了要重畫小問的設定圖（約 US$0.05），之前集數的圖不受影響，從下一集起用。
+- **小問的設定拿掉筆記本**（站主 2026-11-06 核准）：設定原本寫「holding a small plain blank notebook in both hands」，P02、P05 有幾十張因此被退或冒假字。
+  從下一集起改用 `a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free`，
+  開拍時先重畫小問的設定圖給站主選（約 US$0.05）；P02、P05 已付錢的圖不動。
 - **片尾訂閱卡**：奇聞與品牌故事 2026-11-05 起片尾也不用卡片（PR #2027，結尾檢查另開票 `2026-11-06-story-series-close-without-outro-card`）。
   原來如此的片尾卡還有「原來如此！」和一句總結的中文字；要不要也改成一張小問蓋章的插圖，由站主決定。
 
