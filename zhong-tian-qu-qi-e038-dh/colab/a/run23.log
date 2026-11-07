@@ -1,0 +1,37 @@
+start 2026-10-31T12:42:11Z
+{"ok": true, "balance": 463.94, "rate_per_hour": 10.05, "active_assignments": 1, "checked_at": "2026-10-31T12:42:13Z"}
+Colab session ready: zt38r
+refine st2-1.json try 1: s01,s02,s03,s04,s05,s06,s07,s08,s09,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20 12:42:21
+{"status": "completed", "session": "zt38r", "completed": 20, "error": null}
+refine st2-1.json left: [] 13:52:20
+refine st2-2.json try 1: s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,s31,s32,s33,s34,s35,s36,s37,s38,s39,s40 13:52:23
+{"status": "failed", "session": "zt38r", "completed": 1, "error": "launch failed: timeout after 180s: b''"}
+refine st2-2.json try 2: s22,s23,s24,s25,s26,s27,s28,s29,s30,s31,s32,s33,s34,s35,s36,s37,s38,s39,s40 14:01:08
+{"status": "completed", "session": "zt38r", "completed": 19, "error": null}
+refine st2-2.json left: [] 15:06:41
+refine st2-3.json try 1: s41,s42 15:06:44
+{"status": "completed", "session": "zt38r", "completed": 2, "error": null}
+refine st2-3.json left: [] 15:16:45
+upscale up-1 try 1 (5 left) 15:16:48
+{"status": "completed", "session": "zt38r", "seconds": {"s01.mp4": 227.0, "s02.mp4": 161.1, "s03.mp4": 152.4, "s04.mp4": 151.9, "s05.mp4": 151.9}, "error": null}
+upscale up-2 try 1 (5 left) 15:32:55
+{"status": "completed", "session": "zt38r", "seconds": {"s06.mp4": 152.6, "s07.mp4": 151.8, "s08.mp4": 151.8, "s09.mp4": 152.6, "s10.mp4": 152.0}, "error": null}
+upscale up-3 try 1 (5 left) 15:46:39
+{"status": "completed", "session": "zt38r", "seconds": {"s11.mp4": 151.6, "s12.mp4": 151.9, "s13.mp4": 152.4, "s14.mp4": 152.8, "s15.mp4": 152.4}, "error": null}
+upscale up-4 try 1 (5 left) 16:00:09
+{"status": "completed", "session": "zt38r", "seconds": {"s16.mp4": 152.2, "s17.mp4": 152.0, "s18.mp4": 151.7, "s19.mp4": 152.7, "s20.mp4": 152.1}, "error": null}
+upscale up-5 try 1 (5 left) 16:14:23
+{"status": "completed", "session": "zt38r", "seconds": {"s21.mp4": 152.3, "s22.mp4": 151.8, "s23.mp4": 151.9, "s24.mp4": 152.7, "s25.mp4": 151.7}, "error": null}
+upscale up-6 try 1 (5 left) 16:28:19
+{"status": "completed", "session": "zt38r", "seconds": {"s26.mp4": 151.6, "s27.mp4": 152.4, "s28.mp4": 152.4, "s29.mp4": 152.8, "s30.mp4": 152.0}, "error": null}
+upscale up-7 try 1 (5 left) 16:42:04
+{"status": "completed", "session": "zt38r", "seconds": {"s31.mp4": 152.6, "s32.mp4": 152.8, "s33.mp4": 151.7, "s34.mp4": 152.8, "s35.mp4": 152.5}, "error": null}
+upscale up-8 try 1 (5 left) 16:55:49
+{"status": "completed", "session": "zt38r", "seconds": {"s36.mp4": 152.5, "s37.mp4": 152.6, "s38.mp4": 152.7, "s39.mp4": 152.4, "s40.mp4": 151.9}, "error": null}
+upscale up-9 try 1 (2 left) 17:10:11
+{"status": "completed", "session": "zt38r", "seconds": {"s41.mp4": 152.5, "s42.mp4": 152.6}, "error": null}
+have 42 finals
+Stopped Colab session: zt38r
+{"ok": true, "balance": 374.57, "rate_per_hour": 10.05, "active_assignments": 1, "checked_at": "2026-10-31T17:16:01Z"}
+end 2026-10-31T17:16:01Z
+ALL_DONE
