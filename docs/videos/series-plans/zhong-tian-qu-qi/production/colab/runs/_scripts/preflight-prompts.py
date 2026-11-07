@@ -14,7 +14,11 @@ Each check is a mistake this season paid for at least once (lessons.md §11-§12
 - warn insert: an insert or extreme close-up that does not open directly on itself (opens on the empty set, e054 s03, e056 s04);
 - warn skin: small bits written onto skin (wood chips on his hands came out as dark specks stuck to the skin, e003-r2 s06);
 - warn smile: Tang Xiaotang "unsmiling" with no other expression written (she smiled anyway in both drafts, e005-r2 s39);
-- warn glow: a blue glow "from the empty air" or "no panel drawn" outside an eye extreme close-up (the model drew a glowing panel with fake text, e004-r2 s03).
+- warn glow: a blue glow "from the empty air" or "no panel drawn" outside an eye extreme close-up (the model drew a glowing panel with fake text, e004-r2 s03);
+- warn four: four or more named characters on screen in one shot. On Colab Ref2VA holds three portraits and invents the
+  fourth (《恁祖媽今年18》 e001 c12 drew a stranger, then three more); on RunPod nine pictures fit, but crowded shots drew
+  someone twice (e906-r2 s01: Qin Shuang twice in both seeds, five named). Keep three on screen; the rest from behind,
+  off screen, or in the next shot.
 Exit 1 on any ERROR; warnings are for the reviewer to accept or fix before the batch.
 """
 import json
@@ -74,9 +78,12 @@ def check(manifest):
         body = comp.split(":", 1)[-1]
         if INSERT.search(body) and "opens directly" not in text:
             found.append(("warn", "insert", "insert without 'opens directly on this ... from its very first frame'"))
-        for name, cid in NAMES.items():
-            if re.search(rf"\b{name}\b(?! off screen)(?![^.]{{0,25}}off screen)", comp) and not any(r.startswith(cid + "-") for r in refs):
+        onscreen = [name for name in NAMES if re.search(rf"\b{name}\b(?! off screen)(?![^.]{{0,25}}off screen)", comp)]
+        for name in onscreen:
+            if not any(r.startswith(NAMES[name] + "-") for r in refs):
                 found.append(("warn", "unpictured", name))
+        if len(onscreen) > 3:
+            found.append(("warn", "four", ", ".join(onscreen)))
         for level, kind, what in found:
             print(f"{level:5} {job['id']:14} {kind:10} {what}")
             errors += level == "ERROR"

@@ -245,3 +245,7 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - runner 的 `prompt_file` 是相對於「執行時所在的資料夾」，不是 manifest 所在的資料夾。在上層資料夾送出子資料夾的 manifest，會讀到上層同名的舊提示詞（報錯「references Picture [4]; it has 3 images」）。一律 `cd` 到 manifest 所在的資料夾再跑 `h3.sh batch`。
 - 容器重啟時 Colab 的 session 照樣開著，每小時約 10 CU。重啟後第一件事是看 `h3.sh usage` 的 `active_assignments`；有就馬上接上同一個 session（`--session` 沿用、`refine.py --only` 跳過已完成的鏡）。不要重開，冷開機一次約 2 CU。
 - 重抽與精修排在同一個 session 裡跑：草稿重抽、產生精修 manifest，再 `h3.sh refine`，省一次冷開機。
+
+**種田（RunPod）也用得到的兩件事**（2026-11-07 對照上面一節）
+- RunPod 一支放得下九張參考圖，第四個人不會像 Colab 那樣被模型自己編出來，但人多一樣會出事：r2 第 6 集 c01 五人同框，兩稿都多畫一個秦霜。`preflight-prompts.py` 的 `four` 對一鏡四個以上有名字的人發出警告，寫稿時就壓到三人。
+- 挑完片、精修之前，在本機（免費）跑一次 `python3 -I .agents/skills/minimax-h3-colab/scripts/cuts.py --input-dir runpod/a/st1/out --output-dir <暫存> --json <報告>`，只看報告、不用它剪出來的檔案。報告裡的切點換成 `stage-clips.sh NN sNN@SECS` 的剪點。e905 試跑 35 支，只抓到 s36 的 0.42 秒，和人工挑片排好的 `s36@0.5` 一致。
