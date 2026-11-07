@@ -18,6 +18,7 @@
 // structured, not that the picture is good. The slideshow-risk rows (risk.*) read the `prompt`
 // and `motion` for who is in the shot, where it is and whether the camera is the one acting;
 // --json shows what each shot was read as.
+import { isNarratedExplainer } from "./drama.mjs";
 import { DEFAULT_CPM, DEFAULT_PAUSE_MS, FPS, SCENE_GAP_MS as GAP_MS, spokenUnits as timelineUnits } from "./timeline.mjs";
 
 // The estimate `lint` uses (tools/video/core/timeline.mjs): a spoken character is 0.24 s, each
@@ -336,7 +337,8 @@ export function normalize(doc, { timeline = null } = {}) {
   const placed = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, (scene.end_frame - scene.start_frame) / FPS]));
   return {
     measured: false,
-    cast: Array.isArray(doc.characters) && doc.characters.length > 0,
+    // A narrator's explainer may draw characters from sheets, but it is paced as narration.
+    cast: Array.isArray(doc.characters) && doc.characters.length > 0 && !isNarratedExplainer(doc),
     words: castWords(doc),
     shots: doc.scenes.map((scene) => {
       const lines = (scene?.lines ?? []).map((line) => ({ speaker: line.speaker ?? NARRATOR, text: line.text, seconds: lineSeconds(line), inner: /^內心獨白/.test(line.emotion ?? "") }));
@@ -384,7 +386,8 @@ const setupKey = (row) => `${String(row.data.camera ?? "").trim().toLowerCase()}
  * previous shot's), `nobody` that no person, creature or cast member is in it.
  * checks: { id, label, value, target, reference, ok, hint, shots } — `shots` names the shots
  * that cause a miss, `info: true` marks a row that is only reported.
- * `applies` is false for a document without a cast (an explainer, a brand story): their pace
+ * `applies` is false for a document without a cast (an explainer, even one drawing characters
+ * from sheets, a brand story): their pace
  * and narration follow their own references, and no row is printed.
  */
 export function craftChecks(doc, { timeline = null } = {}) {
