@@ -149,7 +149,7 @@ kid("kid-overflow", K("standing at the water's edge watching the waves, scratchi
 
 # ---------- 第二章：太陽只搬走水，搬不走鹽 ----------
 chief("chief-full", C("raising her eyebrows with a curious smile, one finger on her chin"),
-      c("你說得對，河一直在倒水，", "接住上一句"), c("海卻從來沒有滿出來。"), chapter="太陽只搬走水，搬不走鹽")
+      c("河一直在倒水，這沒錯，", "接住上一句"), c("可是海從來沒有滿出來。"), chapter="太陽只搬走水，搬不走鹽")
 scene("ocean-fill", "Wide view of a calm endless blue sea meeting the sky at the far horizon under a bright sun, " + DAY,
       c("如果海是空的，光靠全世界的河來倒，"), c("大約三萬多年就倒滿了。"))
 kid("kid-drain", K("crouching and peering down into the shallow sea water as if looking for a hole", where=BEACH),
@@ -159,7 +159,7 @@ chief("chief-up", C("pointing one finger up toward the sky with a smile"),
 scene("sun-sea", "Wide view of the bright sun shining over a calm blue sea, soft wavy wisps of warm vapour rising gently from the water surface, " + DAY,
       c("太陽一曬，海面上的水，"), c("就慢慢變成看不見的水氣，飛上天空。"))
 scene("cloud-rain", "Wide view of puffy white clouds drifting from the sea over green mountains and raining softly on them, a river running back down to the sea, " + DAY,
-      c("水氣變成雲，雲飄到山上下成雨，"), c("雨又流回河裡，再倒進海。"))
+      c("水氣變成雲，下成雨，有的直接下回海上，"), c("有的下到山上，再從河裡流回海。"))
 kid("kid-circle", K("drawing a big circle in the air with one finger, a delighted face", close=True),
     k("水在繞圈圈！", "恍然"))
 kid("kid-salt-fly", K("looking up at the sky with a puzzled face, one hand shading her eyes", where=BEACH),
@@ -171,9 +171,9 @@ kid("kid-rain-fresh", K("standing in light rain catching raindrops in her open h
 chief("chief-rain-proof", C("nodding warmly with a proud smile", close=True),
       c("對，你淋到的雨，幾乎就是被太陽熬出來的淡水。"))
 kid("kid-plate", K("carefully setting a small plain white plate of water on a sunny windowsill", where=KITCHEN),
-    k("那我也可以在家曬曬看？", "句尾上揚"))
+    k("那我也可以在家曬一碟鹽水？", "句尾上揚"))
 chief("chief-plate", C("holding a small plain white plate with a thin white ring of salt on it, a pleased smile"),
-      c("可以。一小碟加了鹽的水，放在太陽下幾天，"), c("水不見了，碟子上就剩一圈鹽。"))
+      c("可以。放在太陽下幾天，"), c("水不見了，碟子上就剩一圈鹽。"))
 kid("kid-soup", K("standing on tiptoe to look into " + POT + " simmering on the stove", where=KITCHEN),
     k("就像媽媽熬湯！", "恍然"), k("湯越熬越少，也越熬越鹹！", "開心"))
 scene("soup-pot", "Close-up of " + POT + " simmering on a stove, soft steam rising away from the soup, a faint ring on the inside of the pot where the soup used to reach, " + DAY,
@@ -295,7 +295,7 @@ kid("kid-soup-again", K("tapping the lid of " + POT + " with a spoon, grinning",
 scene("beach-guess", "Wide view of a sunny Taiwan beach with gentle waves, a small river mouth at one end and green hills behind, " + DAY,
       c("你下次去海邊，也可以猜猜看。", "轉向觀眾"))
 scene("waves-opinion", "Close-up of sparkling blue waves rolling gently onto a sunny sandy beach, " + DAY,
-      c("我覺得，海最厲害的地方，", "意見，輕鬆"), c("就是它一邊收、一邊送，從來沒有停過手。"))
+      c("我覺得，海最厲害的地方，", "意見，輕鬆"), c("就是它一邊收河送來的鹽，一邊把水送上天，從來沒停過。"))
 
 # ---------- 收尾 ----------
 chief("chief-back", C("smiling warmly at the viewer with one hand open, filling the frame", close=True),
@@ -305,7 +305,7 @@ kid("kid-got1", K("throwing both arms up with a huge happy smile", where=BEACH),
 kid("kid-got2", K("pointing proudly at " + POT + " on the stove with a big grin", close=True, where=KITCHEN),
     k("海底和海邊，再慢慢把鹽收走！", "開心", "P:main"))
 chief("chief-safe", C("holding a glass of clear water with a caring smile"),
-      c("對了，你昨天喝到的那口海水，", "叮嚀"), c("可別拿來解渴。身體要用更多的水排鹽，會越喝越渴。"))
+      c("完全正確！對了，你昨天喝到的那口海水，", "先誇她，再叮嚀"), c("可別拿來解渴。身體要用更多的水排鹽，會越喝越渴。"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
       c("下次你在海邊被浪打到，嘗到那一口鹹，", "轉向觀眾，輕聲"), c("就知道那是好幾千萬年留下來的味道。", "點名回呼"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
