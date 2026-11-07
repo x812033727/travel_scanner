@@ -1,0 +1,38 @@
+start 2026-10-31T08:09:53Z
+{"ok": true, "balance": 556.53, "rate_per_hour": 10.05, "active_assignments": 1, "checked_at": "2026-10-31T08:09:54Z"}
+Colab session ready: zt36r
+refine st2-1.json try 1: s01,s02,s03,s04,s05,s06,s07,s08,s09,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20 08:10:05
+{"status": "failed", "session": "zt36r", "completed": 1, "error": "launch failed: timeout after 180s: b''"}
+refine st2-1.json try 2: s02,s03,s04,s05,s06,s07,s08,s09,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20 08:18:45
+{"status": "failed", "session": "zt36r", "completed": 4, "error": "launch failed: timeout after 180s: b''"}
+refine st2-1.json try 3: s06,s07,s08,s09,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20 08:34:01
+{"status": "completed", "session": "zt36r", "completed": 15, "error": null}
+refine st2-1.json left: [] 09:21:02
+refine st2-2.json try 1: s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,s31,s32,s33,s34,s35,s36,s37,s38,s39 09:21:05
+{"status": "failed", "session": "zt36r", "completed": 8, "error": "launch failed: timeout after 180s: b''"}
+refine st2-2.json try 2: s29,s30,s31,s32,s33,s34,s35,s36,s37,s38,s39 09:50:41
+{"status": "completed", "session": "zt36r", "completed": 11, "error": null}
+refine st2-2.json left: [] 10:25:52
+upscale up-1 try 1 (5 left) 10:25:55
+{"status": "completed", "session": "zt36r", "seconds": {"s01.mp4": 278.7, "s02.mp4": 160.5, "s03.mp4": 152.2, "s04.mp4": 152.4, "s05.mp4": 151.4}, "error": null}
+upscale up-2 try 1 (5 left) 10:42:32
+{"status": "completed", "session": "zt36r", "seconds": {"s06.mp4": 151.5, "s07.mp4": 121.0, "s08.mp4": 121.3, "s09.mp4": 121.1, "s10.mp4": 151.6}, "error": null}
+upscale up-3 try 1 (5 left) 10:54:58
+{"status": "completed", "session": "zt36r", "seconds": {"s11.mp4": 152.2, "s12.mp4": 152.1, "s13.mp4": 121.0, "s14.mp4": 121.1, "s15.mp4": 121.0}, "error": null}
+upscale up-4 try 1 (5 left) 11:06:54
+{"status": "failed", "session": "zt36r", "seconds": null, "error": "launch failed: timeout after 180s: b''"}
+upscale up-4 try 2 (5 left) 11:10:21
+{"status": "completed", "session": "zt36r", "seconds": {"s16.mp4": 152.5, "s17.mp4": 152.2, "s18.mp4": 121.0, "s19.mp4": 152.3, "s20.mp4": 151.5}, "error": null}
+upscale up-5 try 1 (5 left) 11:24:16
+{"status": "completed", "session": "zt36r", "seconds": {"s21.mp4": 152.2, "s22.mp4": 120.9, "s23.mp4": 152.2, "s24.mp4": 151.5, "s25.mp4": 152.1}, "error": null}
+upscale up-6 try 1 (5 left) 11:39:51
+{"status": "completed", "session": "zt36r", "seconds": {"s26.mp4": 151.4, "s27.mp4": 152.0, "s28.mp4": 152.2, "s29.mp4": 151.7, "s30.mp4": 151.4}, "error": null}
+upscale up-7 try 1 (5 left) 11:53:51
+{"status": "completed", "session": "zt36r", "seconds": {"s31.mp4": 152.2, "s32.mp4": 152.2, "s33.mp4": 152.3, "s34.mp4": 152.4, "s35.mp4": 152.2}, "error": null}
+upscale up-8 try 1 (4 left) 12:10:17
+{"status": "completed", "session": "zt36r", "seconds": {"s36.mp4": 152.4, "s37.mp4": 151.4, "s38.mp4": 152.3, "s39.mp4": 152.3}, "error": null}
+have 39 finals
+Stopped Colab session: zt36r
+{"ok": true, "balance": 470.57, "rate_per_hour": 10.05, "active_assignments": 1, "checked_at": "2026-10-31T12:21:56Z"}
+end 2026-10-31T12:21:56Z
+ALL_DONE
