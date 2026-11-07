@@ -27,6 +27,10 @@ LOC = {
     "yard": "In the dirt yard of the Xu farmhouse near noon on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, the house door at the back left, the yard gate in the fence on screen right, a stone well at the back right, bright sunlight from overhead and slightly right casting short shadows",
     "yard_pm": "In the dirt yard of the Xu farmhouse in the early afternoon on a clear autumn day, an autumn tree, a bamboo fence, a woodpile with a wooden chopping block on screen left, the house door at the back left, the yard gate in the fence on screen right, a stone well at the back right, warm slanting afternoon sunlight from screen right casting longer shadows",
     "yard_late": "In the dirt yard of the Xu farmhouse in the late afternoon on a clear autumn day, the sun low in the west, an autumn tree, a bamboo fence, a woodpile on screen left, the house eaves at the back left, a wooden table in the middle, the yard gate in the fence on screen right, a stone well at the back right, low golden sunlight slanting in from the gate on screen right casting long shadows",
+    # 2026-11-07 review retakes (fix2): close-ups and inserts keep the set to one line.
+    "yard_cu": "In the dirt yard of the Xu farmhouse near noon, bright sunlight from overhead",
+    "yard_pm_cu": "In the dirt yard of the Xu farmhouse in the early afternoon, warm slanting sunlight from screen right",
+    "yard_late_cu": "In the dirt yard of the Xu farmhouse in the late afternoon, low golden sunlight from screen right",
 }
 LIGHT = {
     "yard": "the bright near-noon sunlight stays unchanged",
@@ -38,6 +42,11 @@ LIGHT = {
 TANG = "her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist"
 SERV = "grey coarse cotton cross-collared short jackets, cloth head-wraps and cloth shoes, both hands empty"
 VILL = "villagers in Song-dynasty cross-collared coarse cotton jackets and cloth head-wraps"
+# 2026-11-07 independent review (fix2): each prop is one body-scale phrase, word for word the same in every shot.
+KNIFE = "one old chopping knife with a narrow foot-long iron blade as long as a forearm, a thick back, a bright edge and a black-cloth-wrapped wooden handle, not a wide square cleaver"
+LOG = "round log of pale wood with grey bark, as thick as a man's thigh and as long as a man's forearm"
+BLOCK = "the knee-high round wooden chopping block"
+SHACKLES = "old Chinese iron shackles: two thick hand-forged dark iron rings joined by a short iron chain and one square iron padlock, not modern hinged handcuffs"
 
 SHOTS = [
     # ---- scene 1: the yard, who will marry (near noon). Axis: Xu Yan left facing right; the three women right
