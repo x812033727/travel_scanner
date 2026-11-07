@@ -1,0 +1,201 @@
+{
+ "_note": "《恁祖媽今年18》第 3 集剪接表（post/assemble-v4.mjs）：不放片名卡與人名條、不裁切放大、慢放 ≤ 1.1 倍、CC 軟字幕；中文用模型原聲（own_voice）。配樂：第一場 memory、第二場 suspense。",
+ "tempo": 1.07,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "punch": false,
+ "frame_round": true,
+ "grades": {},
+ "default_grade": "indoor",
+ "finish": "vignette=angle=PI/5,noise=alls=3:allf=t,format=yuv420p",
+ "names": {},
+ "min": {
+  "c01": 4.0,
+  "c01b": 1.5,
+  "c02": 4.5,
+  "c03": 5.0,
+  "c04": 5.0,
+  "c05": 6.0,
+  "c06": 4.0,
+  "c07": 5.0,
+  "c08": 4.0,
+  "c09": 5.0,
+  "c10": 5.5,
+  "c11": 4.0,
+  "c12": 4.0,
+  "c13": 4.0,
+  "c14": 6.5,
+  "c15": 5.0,
+  "c16": 4.5,
+  "c17": 4.0,
+  "c18": 5.5,
+  "c19": 5.0,
+  "c20": 4.0,
+  "c21": 5.0,
+  "c22": 4.5,
+  "c23": 5.0,
+  "c24": 5.0,
+  "c25": 4.0,
+  "c26": 5.0
+ },
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "own_voice": "docs/videos/tai-nainai-e003/voice.json",
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/tai-nainai/sfx"
+ ],
+ "music": [
+  {
+   "cue": "memory",
+   "from": "c01",
+   "to": "c19",
+   "offset": 0,
+   "gain": -17,
+   "fade_in": 1.0,
+   "fade_out": 1.0
+  },
+  {
+   "cue": "suspense",
+   "from": "c20",
+   "to": "c26",
+   "offset": 10,
+   "gain": -16,
+   "fade_in": 1.0,
+   "fade_out": 0.6
+  }
+ ],
+ "sfx": [
+  {
+   "file": "creak2",
+   "at": "c01",
+   "off": 0.2,
+   "gain": -18
+  },
+  {
+   "file": "metalLatch",
+   "at": "c01",
+   "off": 0.9,
+   "gain": -16
+  },
+  {
+   "file": "siren-far",
+   "at": "c01",
+   "off": 0.0,
+   "gain": -28
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c04",
+   "off": 0.5,
+   "gain": -24
+  },
+  {
+   "file": "drawers-30",
+   "at": "c05",
+   "off": 0.2,
+   "gain": -12
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "c06",
+   "off": 0.8,
+   "gain": -14
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "c07",
+   "off": 0.5,
+   "gain": -18
+  },
+  {
+   "file": "deng-hum",
+   "at": "c08",
+   "off": 0.4,
+   "gain": -14
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c12",
+   "off": 0.4,
+   "gain": -22
+  },
+  {
+   "file": "pocketwatch-tick",
+   "at": "c14",
+   "off": 0.2,
+   "gain": -18
+  },
+  {
+   "file": "handleCoins",
+   "at": "c14",
+   "off": 0.4,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "c18",
+   "off": 0.6,
+   "gain": -22
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "c18",
+   "off": 2.8,
+   "gain": -22
+  },
+  {
+   "file": "creak1",
+   "at": "c19",
+   "off": 0.4,
+   "gain": -18
+  },
+  {
+   "file": "door_close_01",
+   "at": "c19",
+   "off": 2.0,
+   "gain": -20
+  },
+  {
+   "file": "match-strike",
+   "at": "c20",
+   "off": 0.4,
+   "gain": -14
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c23",
+   "off": 0.3,
+   "gain": -22
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c23",
+   "off": 1.1,
+   "gain": -22
+  },
+  {
+   "file": "metalPot1",
+   "at": "c24",
+   "off": 0.8,
+   "gain": -18
+  },
+  {
+   "file": "metalPot2",
+   "at": "c24",
+   "off": 2.4,
+   "gain": -18
+  },
+  {
+   "file": "baoxinling-muffled",
+   "at": "c25",
+   "off": 0.4,
+   "gain": -10
+  },
+  {
+   "file": "door_close_01",
+   "at": "c25",
+   "off": 2.6,
+   "gain": -20
+  }
+ ]
+}
