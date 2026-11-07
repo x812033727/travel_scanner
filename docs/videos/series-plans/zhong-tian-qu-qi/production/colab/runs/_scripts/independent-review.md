@@ -22,7 +22,7 @@ are fixed, minor ones accepted.
 3. **Eyelines and reactions**: when someone looks at something or reacts to it, it is in that direction and visible in
    the shot before or after; a reaction shot is in the place the script puts the person.
 4. **People**: the right number; nobody twice; faces, hair and clothes match the cast; nobody is missing who must be there;
-   Tang Xiaotang's garment closed to the collar; expressions as written (a "not smiling" line that smiles is a finding).
+   a low neckline on Tang Xiaotang is fine (owner 2026-11-07), only see-through or bare is a finding; expressions as written (a "not smiling" line that smiles is a finding).
 5. **Story**: each shot shows the action its row describes; the scene's ending (結尾) reads; a question is answered where
    the script says.
 6. **Look**: anything drawn that should not be — writing on paper or signs, a system panel drawn into the picture, glowing
