@@ -820,6 +820,44 @@ test("refine.py --check: a draft trimmed to a length that is not 17k+5 frames is
   assert.doesNotMatch(result.err, /c20:/);
 });
 
+test("h3.sh cuts: a draft Ref2VA cut into a second shot is trimmed to the last 17k+5 length before the cut; a draft left too short exits 3", { skip: !POSIX || !FFMPEG }, () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "h3-cuts-"));
+  const drafts = path.join(dir, "out");
+  mkdirSync(drafts);
+  // 124 frames at 24 fps: 77 dark frames, then a hard cut to a bright wide shot (e001 c19 cut at frame 78).
+  const make = (name, first, second) => {
+    const made = spawnSync("ffmpeg", ["-loglevel", "error", "-y", "-f", "lavfi", "-i", `color=c=0x302820:s=96x54:r=24:d=${first / 24}`,
+      "-f", "lavfi", "-i", `color=c=0xc0b8a8:s=96x54:r=24:d=${second / 24}`, "-filter_complex", "[0:v][1:v]concat=n=2:v=1[v]", "-map", "[v]",
+      "-frames:v", String(first + second), "-pix_fmt", "yuv420p", path.join(drafts, name)]);
+    assert.equal(made.status, 0, String(made.stderr));
+  };
+  make("c19.mp4", 77, 47);
+  make("c24.mp4", 30, 94);
+  const still = spawnSync("ffmpeg", ["-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=gray:s=96x54:r=24", "-frames:v", "124", "-pix_fmt", "yuv420p", path.join(drafts, "c20.mp4")]);
+  assert.equal(still.status, 0);
+  const manifest = path.join(dir, "st1.json");
+  writeFileSync(manifest, JSON.stringify({ jobs: [
+    { id: "c19", output_path: path.join(drafts, "c19.mp4"), duration_seconds: 5, min_seconds: 3 },
+    { id: "c20", output_path: path.join(drafts, "c20.mp4"), duration_seconds: 5, min_seconds: 4.5 },
+    { id: "c24", output_path: path.join(drafts, "c24.mp4"), duration_seconds: 5, min_seconds: 4 },
+  ] }));
+  const report = path.join(dir, "cuts.json");
+  const result = run("bash", [H3, "cuts", "--input-dir", drafts, "--output-dir", path.join(dir, "trimmed"), "--manifest", manifest, "--json", report], process.env);
+  assert.equal(result.code, 3, result.err + result.out);
+  const rows = Object.fromEntries(JSON.parse(readFileSync(report, "utf8")).map((r) => [r.file, r]));
+  assert.equal(rows["c19.mp4"].cuts[0].frame, 77);
+  assert.equal(rows["c19.mp4"].kept_frames, 73);
+  assert.equal(rows["c20.mp4"].cuts.length, 0);
+  assert.equal(rows["c20.mp4"].kept_frames, 124);
+  assert.equal(rows["c24.mp4"].kept_frames, 22);
+  assert.equal(rows["c24.mp4"].too_short, 4);
+  const frames = (name) => Number(spawnSync("ffprobe", ["-v", "error", "-count_frames", "-show_entries", "stream=nb_read_frames", "-of", "csv=p=0", path.join(dir, "trimmed", name)]).stdout.toString().trim());
+  assert.equal(frames("c19.mp4"), 73);
+  assert.equal(frames("c20.mp4"), 124);
+  assert.match(result.out, /c24\.mp4: .*TOO SHORT, needs 4 s/);
+  rmSync(dir, { recursive: true, force: true });
+});
+
 test("h3.sh refine: one G4 session without high-RAM, three uploads per job, the settings in the environment, then stop", { skip: !POSIX }, () => {
   const { env, dir, job } = stagesDir();
   const manifest = path.join(dir, "r.json");

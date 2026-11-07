@@ -37,6 +37,7 @@ TAIL = ("One continuous shot. Natural, realistic live-action human motion; faces
         "nothing written anywhere in the frame.")
 FACES_RULE = ("Besides them, only the other people the composition names are in the frame; no second copy of anyone appears. "
               "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood.")
+LAMP_SIZE = (" The lamp is small: about thirty centimetres tall including its glass chimney, about as tall as a forearm is long, small on the long altar table; it never looks bigger than a person's head.")
 EN_NAMES = {
     "yuetang-18": "Shen Yuetang", "yuetang-96": "Shen Yuetang at ninety-six", "yuqin": "Shen Yuqin", "jianbang": "Shen Jianbang",
     "zhiyuan": "Shen Zhiyuan", "xiaoman": "Shen Xiaoman", "fubo": "Fu Bo", "jianye": "Shen Jianye", "meifeng": "Lin Meifeng",
@@ -237,6 +238,8 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                 images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
                 anchors.append(f"the location shown in <Picture {len(images)}> is the set, keeping its layout and props")
             lamp_text = f" The brass oil lamp shows {cast['lamp']['levels'][str(e['lamp'])]}; the light stays as it is through the shot." if e.get("lamp") and not e.get("lamp_changes") else ""
+            if e.get("lamp") or "lamp" in e["prompt"].lower():
+                lamp_text += LAMP_SIZE  # 小樣 c19–c21：燈畫得比人頭還高（2026-11-07）
             tags = ", ".join(f"<Picture {i}>" for i in range(1, len(images))) + (f" and <Picture {len(images)}>" if len(images) > 1 else "<Picture 1>")
             body = (f"For the target video, {tags} are referenced throughout.\n\n"
                     f"integrated_multimodal_description: [Shot 1] Live-action. " + "; ".join(anchors) + ". "
@@ -249,7 +252,7 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                          "reference_images": [str(p) for p in images], "prompt_file": f"prompts/{s['id']}.txt",
                          "prompt_sha256": hashlib.sha256(pf.read_bytes()).hexdigest(), "duration_seconds": secs,
                          "width": args.width, "height": args.height, "output_path": str(work / "out" / f"{s['id']}.mp4"),
-                         "seed": 700000 + ep * 100 + len(jobs)})
+                         "seed": 700000 + ep * 100 + len(jobs), "min_seconds": s["seconds"] or 3})  # h3.sh cuts：剪完短於分鏡秒數就重買
     if missing:
         raise SystemExit("缺參考圖（先畫或加 --placeholders 做離線檢查）：" + ", ".join(sorted(set(missing))))
     out = []
