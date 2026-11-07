@@ -251,5 +251,12 @@ Qwen-Image-Edit-2509（`h3.sh images`，`lora: false`、20 步、CFG 4、空白 
 
 **換裝要同一張臉**：同一個角色的兩個 look 分開畫會是兩個人；用選定的基本款當 image 1、`latent: image1`、只寫「Change only …」（`docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/tools/refs.py looks`）。九十六歲也用十八歲那張當 image 1 畫老。
 
+**2026-11-07 補畫（`refs-r5`、`refs-r6`）**：
+- 胸像畫成全身，是外貌裡的 jeans、sneakers、wheelchair、「about 180 cm tall」把鏡頭拉遠；`refs.py` 的 `bust()` 要把這些字也濾掉（玉琴從全身變成剛好的胸像）。
+- 不寫 robe、改寫「pyjama-style house top … buttoned all the way up」之後就沒有 V 領，但畫出來是睡衣的小翻領，不是立領；要立領得另外描述領子本身。
+- 外貌改好、又明寫「no scar, no red mark」之後，兩張裡仍有一張畫出紅色刀疤：這種字一次出兩張再挑，別只出一張。
+- 手部插鏡的第二個狀態（淺紋）要以第一個狀態那張（老人紋）當 image 1、`latent: image1`、只改皮膚；從灰底重畫會多出一枚戒指、手勢也對不上。
+- 每張圖在 G4 上約 1 分鐘，冷開機（下載 20 GB 模型）約 10 分鐘；12 張用了約 4 CU。images 要先 `h3.sh start --session`，或加 `--new-session --stop-on-complete`，否則送出就是「Session not found」。
+
 **時間與點數（G4，暖機後）**：胸像 1248×1664 約 1.3 分／張；Ref2VA 960×544 `hero` 6 秒約 2.1 分／支（含冷啟動的第一支 5.2 分）；第二段 σ0.5 五支約 14 分。
 站主同一天定：片段先做到 1312×736（第二段），不跑 SeedVR2，剪接時整支放到 1920×1080。

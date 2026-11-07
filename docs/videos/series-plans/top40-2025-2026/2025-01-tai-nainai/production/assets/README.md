@@ -23,10 +23,14 @@
 | `refs/qianlaoban-`、`yuqin-`、`jiangmubai-`、`gaojingli-`、`zhiyuan-`、`zhixing-`、`hexiaoyang-`、`lindao-portrait-t1.png` | 第一章要的八個角色（bible〈先畫順序〉第 2 批） | `refs-r4`，各兩張選一（seed 626000 起）。玉琴（輪椅）、知遠、林導畫成全身、臉小，要重畫胸像 |
 | `refs/set-shenjia-fanting-`、`chufang-`、`shufang-`、`xiaomanfang-`、`set-gongche-`、`set-gaozhong-xiaomen-t1.png` | 飯廳、廚房、書房、小滿房、公車、高中側門 | `refs-r4`（seed 626100 起）；公車與校門的提示詞另寫成白天、空的，不寫乘客與學生 |
 | `refs/set-shenjia-citang-lamp4-t1.png`、`lamp5-t1.png` | 祠堂燈 4、燈 5 | 以燈 1 那張為 image 1、`latent: image1` 只改燈（seed 626200、626201），格局跟燈 1、燈 3 一樣 |
-| 還要重畫 | 林美鳳 `home`（兩次都畫成 V 領）、建業 `home`（兩次都把眉間的皺紋畫成紅色刀疤：`cast.json` 的外貌寫了「scar-like」之類的字，要改寫法）、淺紋手部插鏡（多一枚戒指）、知遠／玉琴／林導的胸像、知遠 `shirt`／`coat` | 下一輪；沒畫之前 `compile.py` 退回用基本款定妝照 |
+| `refs/zhiyuan-portrait-t1.png`、`yuqin-portrait-t1.png`、`lindao-portrait-t1.png` | 知遠、玉琴、林導重畫的胸像（取代 `refs-r4` 那三張全身） | 2026-11-07 `refs-r5`：`refs.py` 的胸像濾掉 jeans、sneakers、wheelchair、tall 等字之後重畫（知遠 t1 seed 627000、玉琴 t1 seed 627002、林導 t2 seed 627005；林導 t1 的相機背帶上有字，不用）。知遠仍是半身，臉夠大 |
+| `refs/meifeng-home-t1.png` | 林美鳳 `home` | `refs-r5` t2（seed 627101），以基本款為 image 1、`latent: image1`。寫「house robe」兩次都畫成 V 領，改寫「扣到頂的緞面睡衣式上衣＋同色寬褲」，`cast.json` 與 shots-en 跟著改；畫出來是小翻領，不是立領 |
+| `refs/jianye-home-t1.png` | 建業 `home` | `refs-r5` t2（seed 627103）。外貌改成「frown line … same colour as the rest of his skin」並明寫 no scar，兩張裡仍有一張（t1）畫成紅色刀疤 |
+| `refs/yuetang-18-hand-faintline-t1.png` | `faint-line` 的右手背淺紋插鏡參考 | `refs-r5` t2（seed 627105）：以 `hand-wrinkle-t1` 為 image 1、`latent: image1`，只把老人紋淡成一道淺紋，戒指不動；第一次（從灰底畫、`latent: empty`）多畫了一枚戒指 |
+| `refs/zhiyuan-shirt-t1.png`、`zhiyuan-coat-t1.png` | 知遠 `shirt`、`coat` | `refs-r6`（`refs.py looks`，以上面的知遠胸像為 image 1；shirt t1 seed 627200、coat t1 seed 627202）；t2 的臉偏掉 |
 
 每一輪的 manifest、提示詞與進度檔在 `production/screen-test/runs/`（`<R>`、`<W>` 是工作資料夾）。
-第 1 批（bible〈先畫順序〉）還缺的見上表最後一列。
+第 1 批（bible〈先畫順序〉）與第一章要的參考圖到 `refs-r6` 都齊了。
 
 還原到工作資料夾：
 
