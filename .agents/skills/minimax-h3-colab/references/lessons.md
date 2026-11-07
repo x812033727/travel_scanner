@@ -283,6 +283,7 @@ kernel 卡住
 - chain 一律用 `setsid nohup … & disown` 跑。
 - 重啟後先看 `h3.sh usage` 的 `active_assignments`；有在跑就用同一個 session 接回去，不重開。
 - 另外排一個 `send_later` 定時回來看。
+- 對話閒著時，容器會被收回（2026-11-07 晚上兩次：回合結束後約 20 分鐘，`uptime` 是 0 分鐘、chain 不見，Colab session 也跟著沒了，各浪費約 2 CU 與一次開機）。`setsid` 擋不住收回。所以 chain 要用 Bash 工具的背景指令跑（`run_in_background`，上限 2 小時），系統會把它當成工作中，不收回容器。超過 2 小時的批次要切成幾段，每段各自用背景指令跑。
 
 場景圖會帶進不要的東西
 - 場景圖畫了什麼，片段就照著畫，正文壓不太住：
