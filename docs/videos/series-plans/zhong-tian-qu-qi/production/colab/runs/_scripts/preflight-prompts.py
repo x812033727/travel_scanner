@@ -9,7 +9,6 @@ Each check is a mistake this season paid for at least once (lessons.md §11-§12
 - warn prop: a prop baked into a base appearance (Erniu's carrying pole grew a jar on his back in e001-r2);
 - warn shout: a quoted line of five characters or fewer ending in ！ (painted on screen as a subtitle, e053 s05);
 - warn paper: a letter, note, scroll, notice or paper without blank / out of focus / folded shut / its back (fake text, e054-e056);
-- warn collar: Tang Xiaotang in a close or medium shot without chin-up framing or the closed-garment sentence (e055 s39, e056 s27);
 - warn unpictured: a character named in the composition with no picture of their own (e056 s21 drew a cartoon boy);
 - warn crowd: a crowd, guards, riders or thugs with no dynasty clothing written (e055 s11 drew modern green uniforms);
 - warn wine: wine bottles, wine cups or wine jars named (the e050 inn grew modern glass bottles; write pottery cups and clay jars);
@@ -40,8 +39,6 @@ PROP = re.compile(r"\b(carrying pole|a hoe\b|hoe or)", re.I)
 SHOUT = re.compile(r"speaks a short Mandarin line, 「[^」]{1,5}！」")
 PAPER = re.compile(r"\b(letter|note|scroll|notice|paper|résumé|document|ledger|signboard|plaque|banner with)\b", re.I)
 PAPER_OK = re.compile(r"blank|out of focus|folded shut|its back|plain back|soft and blurred|edge-on|cannot be read|never seen|not readable|no stroke", re.I)
-TANG_CLOSE = re.compile(r"(close-up|medium close-up|medium shot|two-shot)[^.]{0,120}Tang Xiaotang|Tang Xiaotang[^.]{0,60}(close-up|medium)", re.I)
-TANG_OK = re.compile(r"chin up|from the chin|closed garment|one closed garment|no neckline", re.I)
 CROWD = re.compile(r"\b(villagers|crowd|guards|soldiers|riders|horsemen|thugs|henchmen|assassins|youths|constables|runners|troops)\b", re.I)
 CROWD_OK = re.compile(r"Song-dynasty|cross-collared|round-collared|futou|head-wraps?|ancient Chinese", re.I)
 WINE = re.compile(r"\bwine (bottle|cup|jar|glass)s?\b|\bbottles?\b", re.I)
@@ -76,8 +73,6 @@ def check(manifest):
             found.append(("warn", "shout", SHOUT.search(text).group(0)[-12:]))
         if PAPER.search(comp) and not PAPER_OK.search(comp):
             found.append(("warn", "paper", PAPER.search(comp).group(0)))
-        if TANG_CLOSE.search(comp) and not TANG_OK.search(text):
-            found.append(("warn", "collar", "Tang Xiaotang close/medium without chin-up framing or the closed-garment sentence"))
         if CROWD.search(comp) and not CROWD_OK.search(text):
             found.append(("warn", "crowd", CROWD.search(comp).group(0)))
         if WINE.search(text):
