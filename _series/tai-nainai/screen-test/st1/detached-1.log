@@ -1,0 +1,18 @@
+15:29:34 e001-c14 attempt 1: uploading and launching
+15:31:00 e001-c14 running: diffusion_models minimax_h3_ref2va_pruned_int8_convrot.safetensors 19.53 GiB
+15:32:05 e001-c14 failed: AssertionError: ComfyUI 缺少節點：['VHS_VideoCombine']。請查看 /content/comfyui_h3.log，並確認 ComfyUI / VideoHelperSuite 安裝成功。
+15:32:05 e001-c14 failed on the runtime:
+erall_soundscape: N/A
+non_diegetic_music: N/A
+
+<Picture 1>：h3_e001-c14_reference_1.img → /content/ComfyUI/input/h3_reference_01.png (1248×1664)
+<Picture 2>：h3_e001-c14_reference_2.img → /content/ComfyUI/input/h3_reference_02.png (1920×1088)
+使用已啟動的 ComfyUI
+Traceback (most recent call last):
+  File "/content/h3_e001-c14_job.py", line 351, in <module>
+    assert not missing, f"ComfyUI 缺少節點：{sorted(missing)}。請查看 {LOG_PATH}，並確認 ComfyUI / VideoHelperSuite 安裝成功。"
+           ^^^^^^^^^^^
+AssertionError: ComfyUI 缺少節點：['VHS_VideoCombine']。請查看 /content/comfyui_h3.log，並確認 ComfyUI / VideoHelperSuite 安裝成功。
+
+
+15:32:06 e001-c14 attempt 2: uploading and launching
