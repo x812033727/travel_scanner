@@ -1,0 +1,1 @@
+cd /home/user/travel_scanner && bash docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/local/dub.sh 047 $1 2>&1 | grep -v '^long?' | grep -v '^    at \|^Node\|^file:\|throw new\|^ *^$' | tail -40
