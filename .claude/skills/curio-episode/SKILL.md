@@ -49,6 +49,12 @@ metadata:
 | **重製已交付的一集**（改稿、改開場、換片頭片尾） | 本機 recut | `docs/videos/curio-five-recuts-20261012/README.md`；已付錢的插圖照舊用（提示詞逐字不動就吃快取），新景才畫新圖 |
 | **主機不能用、要在本機從零做** | 本機漫劇格式 | `format: "drama"`、`look: { "preset": "cute-mystery" }`、`characters: []`；`node tools/video/cli.mjs keyframes --slug <SLUG> --takes 3` 一次畫整集（不是一次三張） |
 
+**同一位歷史人物要在很多張圖裡長得一樣時**（站主 2026-11-04 為 S42 的皮加費塔定案）：單靠提示詞的文字鎖不住臉，
+在 `characters` 列這個人（`appearance`、`sheet_prompt`，`voice` 照填但不會用到），跑 `look` 畫設定圖、
+`review-push --gate look` 交站主挑一張，`review-pull` 後再跑 keyframes，該人物出場的景在 `data.characters` 寫他的 id。
+奇聞檔案局仍然只有旁白：任何一句的 `speaker` 寫成角色 id，`lint` 就報錯（`core/drama.mjs` `isNarratedExplainer`）。
+只列 70 年前過世、可以入畫的人；在世或 1956 年後過世的人照舊不入畫，不要為他們建角色。
+
 不要用 `format: "slides"` 從零做新集：那是 H01–L08 第一版的試片路線，系列預設與評審都要手動接，
 H04–H06 就是在這裡偏掉的。
 
