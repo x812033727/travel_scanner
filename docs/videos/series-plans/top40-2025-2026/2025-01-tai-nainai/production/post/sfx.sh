@@ -14,9 +14,14 @@ for f in footstep_wood_000 footstep_concrete_000 footstep_concrete_001 creak1 cr
   [ -f "$SRC/$f.wav" ] || { echo "sfx.sh: $SRC/$f.wav missing; rebuild the 種田 library first" >&2; exit 1; }
   cp "$SRC/$f.wav" "$OUT/"
 done
-# 報信鈴：三顆小銅鈴，C7、E7、G7 附近各自衰減，略錯開
-ffmpeg -v error -y -f lavfi -i "aevalsrc='0.32*sin(2*PI*2093*t)*exp(-4.5*t)+0.18*sin(2*PI*4186*t)*exp(-9*t)+0.26*sin(2*PI*2637*(t-0.045))*exp(-5*(t-0.045))*gte(t,0.045)+0.22*sin(2*PI*3136*(t-0.09))*exp(-5.5*(t-0.09))*gte(t,0.09)':s=48000:d=1.8" \
-  -af "aecho=0.6:0.4:40|70:0.25|0.15,afade=t=out:st=1.4:d=0.4" -ac 2 "$OUT/baoxinling.wav"
+# 報信鈴：三顆小銅鈴錯開響兩下（第一版只有高音、太短，站主 2026-11-07：「鈴鐺應該要有聲音」聽不到）
+bell() { echo "(0.30*sin(2*PI*$1*(t-$2))*exp(-2.2*(t-$2))+0.20*sin(2*PI*$1*2.76*(t-$2))*exp(-4*(t-$2))+0.12*sin(2*PI*$1*5.4*(t-$2))*exp(-7*(t-$2)))*gte(t,$2)"; }
+expr="$(bell 1318 0)+$(bell 1568 0.05)+$(bell 1760 0.09)+0.8*($(bell 1318 0.42)+$(bell 1568 0.46)+$(bell 1760 0.5))"
+ffmpeg -v error -y -f lavfi -i "aevalsrc='$expr':s=48000:d=2.6" \
+  -af "aecho=0.7:0.5:35|60:0.3|0.2,highpass=f=400,afade=t=out:st=2.0:d=0.6,volume=1.6" -ac 2 "$OUT/baoxinling.wav"
+# 跑步時書包上的鈴輕輕晃：同一組鈴、一下、短
+expr2="$(bell 1318 0)+$(bell 1568 0.03)+$(bell 1760 0.06)"
+ffmpeg -v error -y -f lavfi -i "aevalsrc='$expr2':s=48000:d=0.9" -af "highpass=f=400,afade=t=out:st=0.5:d=0.4" -ac 2 "$OUT/baoxinling-shake.wav"
 # 燈亮的低鳴：低音慢慢升起、帶一點泛音，三秒
 ffmpeg -v error -y -f lavfi -i "aevalsrc='(0.28*sin(2*PI*110*t)+0.14*sin(2*PI*165*t)+0.07*sin(2*PI*330*t))*(1-exp(-1.6*t))*exp(-0.35*t)':s=48000:d=3.2" \
   -af "lowpass=f=1200,afade=t=out:st=2.4:d=0.8" -ac 2 "$OUT/deng-hum.wav"
