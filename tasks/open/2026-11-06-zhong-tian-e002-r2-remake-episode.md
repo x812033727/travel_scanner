@@ -76,3 +76,6 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 `cut-qa.py` 0 problem(s)。整片每鏡中間一格看過；c40 柴刀在半空收尾（`stage-clips-args.txt`：`s40@2.0`）。原版第 2 集本機沒有檔，沒有並排量。
 工作分支 `claude/zt-e002-r2`，工作資料夾備份 `transfer/zt-e902-media`。
 - 2026-11-07 連戲審查補做：`cut-jumps.py` 找到鏡頭開頭閃一下別的畫面，照 `stage-clips-args.txt` 從跳完後起剪，重剪後 cut-qa 0、cut-jumps 0，`import --from --force` 重送後台（備註寫明修正版）。
+- 2026-11-07 獨立審片挑出約 22 項，嚴重的親自核對屬實：c01 鐵鐐沒打開、c19 木頭沒劈開、c40 柴刀被手拿著（不是飛）、c30 唐小棠開襟戴項圈。站主：嚴重與中等都修。
+  `r2.py` 重寫 21 鏡（加 KNIFE、LOG、BLOCK、SHACKLES 常數與近景短場景句；「modern」一字會讓 gen-dh 拿掉場景圖，改寫掉），`colab/runs/e902/fix2` 共 42 支（9020301／302），preflight 0／0。
+  排在 `scratchpad/chainQ.sh` 佇列最後。預估再花約 US$7，第 2 集累計約 US$22（上限 28）。

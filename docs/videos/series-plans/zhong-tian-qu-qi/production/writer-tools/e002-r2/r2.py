@@ -3,8 +3,8 @@
 
 Same rules as e001-r2: one visible action per shot written as a path, over-the-shoulder and reverse shots for dialogue,
 whole sentences, one line per spoken line, default face serious (smiles only where the script allows: c03, c15, c17,
-c21, c27). State: Xu Yan half-dry with wet cuffs c03-c14, dry with sleeves rolled and sweat from c15, wood chips on his
-hands from c20; the rolled red paper in the left of his belt from c03; A-ling without shackles from c01's unlocking,
+c21, c27). State: Xu Yan half-dry with wet cuffs c03-c14, dry with sleeves rolled and sweat from c15
+(no wood chips on skin, 2026-11-07 review); the rolled red paper in the left of his belt from c03; A-ling without shackles from c01's unlocking,
 her sleeves over the red marks; Qin Shuang's old chopping knife in the right of her belt (drawn c17, back c21, held
 c38, thrown c40); Tang Xiaotang always t2 (high collar, closed garment); the loan note folded into a strip, back to the
 camera; the grey-clad servants and the villagers have no picture and are never shown by the face.
@@ -30,6 +30,7 @@ LOC = {
     # 2026-11-07 review retakes (fix2): close-ups and inserts keep the set to one line.
     "yard_cu": "In the dirt yard of the Xu farmhouse near noon, bright sunlight from overhead",
     "yard_pm_cu": "In the dirt yard of the Xu farmhouse in the early afternoon, warm slanting sunlight from screen right",
+    "yard_late_s": "In the dirt yard of the Xu farmhouse in the late afternoon, an autumn tree, a bamboo fence, the house eaves at the back left, the yard gate in the fence on screen right, a stone well at the back right, low golden sunlight slanting in from the gate on screen right casting long shadows",
     "yard_late_cu": "In the dirt yard of the Xu farmhouse in the late afternoon, low golden sunlight from screen right",
 }
 LIGHT = {
@@ -46,7 +47,7 @@ VILL = "villagers in Song-dynasty cross-collared coarse cotton jackets and cloth
 KNIFE = "one old chopping knife with a narrow foot-long iron blade as long as a forearm, a thick back, a bright edge and a black-cloth-wrapped wooden handle, not a wide square cleaver"
 LOG = "round log of pale wood with grey bark, as thick as a man's thigh and as long as a man's forearm"
 BLOCK = "the knee-high round wooden chopping block"
-SHACKLES = "old Chinese iron shackles: two thick hand-forged dark iron rings joined by a short iron chain and one square iron padlock, not modern hinged handcuffs"
+SHACKLES = "old Chinese iron shackles: two thick hand-forged dark iron rings joined by a short iron chain and one square iron padlock, not hinged police handcuffs"
 
 SHOTS = [
     # ---- scene 1: the yard, who will marry (near noon). Axis: Xu Yan left facing right; the three women right
@@ -62,7 +63,7 @@ SHOTS = [
          motion="Zhao bends, picks the shackles up from the dirt and slings them over his right shoulder, his sword staying sheathed at his left hip; only then he strides out through the gate on screen right as the villagers part to both sides; Erniu waves to Xu Yan off screen left and follows him out; all lips stay closed",
          zh="全景、跟拍（往右）、前景籬笆：趙捕頭（黑捕快帽）背影彎腰撿起泥地上的鐵鐐甩上右肩，佩刀一直在左腰刀鞘裡；然後才大步出院門，籬笆外村民往兩邊讓開；二牛（兩手空空）朝左邊的許硯擺手，跟著出院門"),
     dict(loc="yard", cam="Medium shot, tracking", chars=["xuyan", "qinshuang", "tangxiaotang", "aling"], night="yard",
-         comp=f"medium shot, Xu Yan on screen left in his blue-grey scholar's robe, half-dry with the cuffs still wet, one roll of red paper rolled shut in his right hand with its plain blank back outward; on screen right the three women standing in a row: Qin Shuang nearest with her arms folded and {KNIFE} tucked in the right side of her belt, Tang Xiaotang in the middle, {TANG}, her small gold abacus at her waist, and A-ling last, her sleeves pulled down over her wrists",
+         comp=f"medium shot, Xu Yan on screen left in his blue-grey scholar's robe, half-dry with the cuffs still wet, one roll of red paper rolled shut in his right hand with its plain blank back outward; on screen right the three women standing in a row: Qin Shuang nearest with her arms folded and {KNIFE} tucked in the right side of her belt, Tang Xiaotang in the middle, {TANG}, and A-ling last, her sleeves pulled down over her wrists",
          lines=[("xuyan", "三位姑娘，配婚令來得突然，成親的事，我們能不能坐下來談？", "陪笑")],
          motion="Xu Yan tucks the rolled red paper into the left side of his belt, rubs his hands together and walks up to the three women with an awkward smile, stopping before them; the women do not move and their lips stay closed",
          zh="中景、跟拍（往右）：許硯（半乾、袖口濕）把捲紅紙塞進腰帶左邊，搓著手走到三個女子面前陪笑（笑得不自在）；秦霜抱胸，三人沒動"),
@@ -170,7 +171,7 @@ SHOTS = [
          motion="Qin Shuang bends, brushes the wood chips off Xiaohe's head, then takes the axe out of her arms and leans it, blade down, against the chopping block; Xiaohe's lips stay closed",
          zh="中景、慢推：秦霜彎腰拍掉小禾頭上的木屑，把斧頭從她懷裡拿走、刃朝下靠在木墩邊；不笑、語氣軟一點"),
     dict(loc="yard_pm", cam="Reverse close-up, slow push in", chars=["xuyan"], night="yard_pm",
-         comp="reverse close-up of Xu Yan, his sleeves rolled up and wood chips on the backs of his hands, defiant, his eyes on Qin Shuang off screen right; behind him only the woodpile and the house door of the same yard",
+         comp="reverse close-up of Xu Yan, his sleeves rolled up and sweat on his forehead, defiant, his eyes on Qin Shuang off screen right; behind him only the woodpile and the house door of the same yard",
          lines=[("xuyan", "劈柴我不行，可是讓柴多賣幾文錢，我比誰都行。", "不服氣")],
          motion="he bends and picks up half a split log, weighs it in his hand, then straightens up and looks at her",
          zh="近景反打、慢推：許硯彎腰撿起半截木柴，在手上掂一掂，直起身看秦霜；不服氣"),
@@ -182,7 +183,7 @@ SHOTS = [
     dict(loc="yard_pm", cam="Medium close-up to close-up, slow push in", chars=["xuyan"], night="yard_pm",
          comp="medium close-up, closing in to a close-up by the end, of Xu Yan, his sleeves rolled up and sweat on his forehead, serious and unsmiling, his eyes on Qin Shuang off screen right; behind him only the woodpile of the same yard",
          lines=[("xuyan", "好，一言為定。三天後，妳自己來看我賺的錢。", "認真")],
-         motion="he tosses the half log back onto the woodpile, brushes the wood chips off his hands and straightens up to face her",
+         motion="he tosses the half log back onto the woodpile, dusts off his palms and straightens up to face her",
          zh="近景反打、慢推（中近景推到近景）：許硯把半截木柴丟回柴堆，拍掉木屑，直起身看秦霜；認真、不笑"),
     # ---- scene 3: Qian Yuanwai at the gate, late afternoon, the sun low in the west (light from the gate on the right).
     # Axis: the Xu side on screen left; Qian and the four servants in from the gate, on screen right.
@@ -197,7 +198,7 @@ SHOTS = [
          motion="fanning himself, Qian Yuanwai steps over the threshold into the yard; the four servants file in behind him and fan out; the villagers at the fence shrink back",
          zh="全景、慢推、前景籬笆與村民肩膀（布包頭）：錢員外（深金色團花錦袍、三枚金戒指、素面摺扇）搖著扇跨進院門，四個家丁只露肩膀以下跟進來排開；村民往後縮（可以笑）"),
     dict(loc="yard_late", cam="Over-the-shoulder medium shot, slow push in", chars=["xuyan", "qianyuanwai", "xiaohe"], night="yard_late",
-         comp="over-the-shoulder shot from behind Qian Yuanwai's shoulder and his folding fan in the right foreground, Xu Yan facing the camera on screen left, his robe dry, his sleeves rolled up and wood chips on the backs of his hands, holding back his anger, little Xiaohe running up behind him",
+         comp="over-the-shoulder shot from behind Qian Yuanwai's shoulder and his folding fan in the right foreground, Xu Yan facing the camera on screen left, his robe dry, his sleeves rolled up, holding back his anger, little Xiaohe running up behind him",
          lines=[("xuyan", "錢員外，欠你的錢我記得，不必帶這麼多人來。", "壓著火")],
          motion="Xu Yan reaches back, pulls Xiaohe behind him and steps forward to shield her; Xiaohe grabs the hem of his robe, her lips closed",
          zh="過肩（錢員外肩後拍許硯）、慢推：許硯伸手把小禾拉到身後、往前一步擋住；小禾抓住他的衣角"),
@@ -207,7 +208,7 @@ SHOTS = [
          motion="he snaps the fan shut with his right hand and taps it twice on his left palm, then his left hand draws one loan note folded into a long strip from his right sleeve and flicks it at Xu Yan off screen left, its plain blank back facing outward",
          zh="低角度近景、慢推：錢員外右手收扇、敲兩下左手心，左手從右袖抽出摺成長條的借據一抖（背面朝鏡頭）；冷笑"),
     dict(loc="yard_late", cam="Medium shot, tracking", chars=["tangxiaotang", "xuyan"], night="yard_late",
-         comp=f"medium shot, Tang Xiaotang in {TANG}, the small gold abacus on her left palm and her right forefinger on its beads, unsmiling, and Xu Yan on screen left",
+         comp=f"medium shot, Tang Xiaotang in the t2 look: her high stand-up collar fastened at the throat, {TANG}, no necklace, covered from the collar down with no bare skin below her neck; the small gold abacus on her left palm and her right forefinger on its beads; a shrewd look: eyes narrowed, one eyebrow raised, lips closed between words, no smile the whole shot; Xu Yan on screen left",
          lines=[("tangxiaotang", "月息三分？員外這筆帳，算得也太狠了吧。", "精明")],
          motion="flicking the beads, Tang Xiaotang walks over from under the eaves, stops at Xu Yan's right and lifts her eyes to Qian Yuanwai off screen right; Xu Yan's lips stay closed",
          zh="中景、跟拍（由左往右）：唐小棠（t2）撥著算盤從屋簷下走過來，站到許硯右邊，抬眼看錢員外；不笑"),
@@ -221,13 +222,13 @@ SHOTS = [
          lines=[("tangxiaotang", "大衡律只准兩分，多收的那一分，按律全要退。", "畫外，又快又脆")],
          motion="her right forefinger clicks the beads up row after row in quick snaps, and the last bead stops with one sharp click; no mouth is in the frame",
          zh="算盤特寫、慢推（第一格就是算盤）：唐小棠右手食指噼啪撥珠，一排一排推上去，最後一顆「嗒」地停住；只拍手，沒有嘴"),
-    dict(loc="yard_late", cam="Over-the-shoulder medium shot, slow push in", chars=["qianyuanwai", "tangxiaotang"], night="yard_late",
-         comp=f"over-the-shoulder shot from behind Tang Xiaotang's shoulder and her looped bun in the left foreground, her ruqun one closed garment from the high collar to the waist, Qian Yuanwai facing the camera on screen right, gritting his teeth, the closed fan in his right hand and the folded loan note in his left with its plain blank back toward the camera; in the background {VILL} whispering behind the bamboo fence",
+    dict(loc="yard_late_s", cam="Over-the-shoulder medium shot, slow push in", chars=["qianyuanwai", "tangxiaotang"], night="yard_late",
+         comp=f"over-the-shoulder shot from behind Tang Xiaotang's shoulder and her looped bun in the left foreground, her ruqun one closed garment from the high collar to the waist; Qian Yuanwai facing the camera on screen right, teeth gritted, jaw clenched and brows drawn down, the closed fan in his right hand and the folded loan note in his left with its plain blank back toward the camera; behind him only the bamboo fence, and beyond it three {VILL} whispering to one another, only their upper bodies above the fence; the frame holds only her shoulder, Qian Yuanwai and those three villagers",
          lines=[("qianyuanwai", "好，利錢算我不要。本錢二十兩，一文都不能少。", "咬牙")],
          motion="his face darkens; he glances at the villagers watching over the fence, stops the closed fan on his left palm with a jolt and takes one step forward",
          zh="過肩（唐小棠肩後拍錢員外）、慢推：錢員外臉一沉，瞄一眼籬笆外交頭接耳的村民，扇子在左手掌心一頓，往前一步；咬牙"),
     dict(loc="yard_late", cam="Two-shot, slow push in", chars=["xuyan", "tangxiaotang"], night="yard_late",
-         comp=f"two-shot, Xu Yan on screen left, his sleeves rolled up to the elbows, sweat on his forehead and wood chips on the backs of his hands, and Tang Xiaotang on screen right framed from the chin up, her high stand-up collar closed at her throat, {TANG}, her smile gone",
+         comp=f"two-shot, Xu Yan on screen left, his sleeves rolled up to the elbows and sweat on his forehead, and Tang Xiaotang on screen right framed from the chin up, her high stand-up collar closed at her throat, {TANG}, her smile gone",
          lines=[("xuyan", "二十兩……我現在一文也拿不出來。", "咬牙"), ("tangxiaotang", "許硯，我改主意了。我嫁你，現在就嫁。", "爽快")],
          motion="first Xu Yan, jaw clenched, looks to Qian Yuanwai off screen right and spreads his empty hands while her lips stay closed; then Tang Xiaotang glances out past the gate at the road, bites her lip, hangs the abacus back at her waist and turns to face him squarely while his lips stay closed",
          zh="雙人鏡、慢推（唐小棠下巴以上，長鏡買 10 秒）：先是許硯咬牙看畫外的錢員外、攤開空手說話；接著唐小棠望一眼院門外的大路，咬嘴唇，把算盤掛回腰間，轉身正對許硯說話"),
@@ -237,37 +238,37 @@ SHOTS = [
          panel=[("唐小棠：同意成婚（待蓋印）", "panel")],
          motion="his eyes widen and he blinks once, slowly, his lips remaining closed",
          zh="眼睛大特寫、慢推（第一格就是眼睛）：瞳孔映淡藍光，眼睛睜大、眨一下（周圍的聲音變小，面板剪接時疊上）"),
-    dict(loc="yard_late", cam="Medium close-up to close-up, slow push in", chars=["tangxiaotang", "xuyan"], night="yard_late",
-         comp=f"medium close-up, closing in to a close-up by the end, of Tang Xiaotang framed from the chin up, her high stand-up collar closed at her throat, {TANG}, pale and frightened, unsmiling, and only Xu Yan's ear at the left edge of the frame; behind her only the bamboo fence and the autumn tree of the same yard",
+    dict(loc="yard_late_cu", cam="Medium close-up to close-up, slow push in", chars=["tangxiaotang", "xuyan"], night="yard_late",
+         comp=f"medium close-up, closing in to a close-up by the end, of Tang Xiaotang framed from the chin up, her high stand-up collar closed at her throat, {TANG}, frightened: face pale, eyes wide, brows lifted and drawn together, lips trembling, no smile the whole shot; at the left edge of the frame only Xu Yan's ear and a little of his hair; nobody else is in the frame; behind her only the bamboo fence",
          lines=[("tangxiaotang", "別誤會。我在躲一個人，他比錢員外可怕得多。", "很輕，第一次露出害怕")],
          motion="she rises on tiptoe to his ear and shields her mouth with one hand, her eyes darting out toward the gate and back",
          zh="近景、慢推（中近景推到近景，下巴以上）：唐小棠踮腳湊到許硯耳邊、手擋著嘴，眼神往院門外飄一下又收回；臉色發白、害怕"),
     dict(loc="yard_late", cam="Reverse close-up, slow push in", chars=["xuyan"], night="yard_late",
-         comp="reverse close-up of Xu Yan, wood chips on the backs of his hands, unsmiling, his eyes on her off screen right; behind him only the eaves of the house of the same yard",
+         comp="reverse close-up of Xu Yan, his sleeves rolled up, grave: brows drawn together, lips pressed, no smile, his eyes on her off screen right; behind him only the eaves of the house of the same yard",
          lines=[("xuyan", "好，我不問。妳嫁進許家，就是許家的人。", "低聲")],
          motion="he looks at her pale face, nods once and leans a little toward her, lowering his voice",
          zh="反打近景、慢推：許硯看著她發白的臉，點一下頭，側身壓低聲音；不笑"),
-    dict(loc="yard_late", cam="Full shot, slow push in", chars=["xuyan", "tangxiaotang", "qianyuanwai", "qinshuang", "aling"], night="yard_late",
-         comp=f"full shot past the shoulders of grey-clad servants in the foreground, seen only from the shoulders down, in {SERV}: in the middle Xu Yan with his sleeves rolled up, and Tang Xiaotang, her ruqun one closed garment from the high collar to the waist; on screen right Qian Yuanwai with the fan in his right hand and the folded loan note in his left, its plain blank back toward the camera; at the left edge only Qin Shuang's right hand on her knife handle; at the back right A-ling by the well",
+    dict(loc="yard_late_s", cam="Full shot, slow push in", chars=["xuyan", "tangxiaotang", "qianyuanwai", "qinshuang", "aling"], night="yard_late",
+         comp=f"full shot past the shoulders of servants in grey coarse cotton cross-collared short jackets in the foreground, seen only from the shoulders down: in the middle Xu Yan with his sleeves rolled up, and Tang Xiaotang, her ruqun one closed garment from the high collar to the waist; on screen right Qian Yuanwai, the fan in his right hand, the folded loan note in his left with its blank back outward; at the left edge only Qin Shuang's right hand on the handle of {KNIFE} tucked in the right side of her belt; at the back right A-ling by the well",
          lines=[("qianyuanwai", "許秀才拿不出二十兩，那就拿人來抵！", "翻臉，狠")],
          motion="Qian glares at Xu Yan, who touches his empty sleeve pocket, lips closed; Qian smirks, hands the loan note to a servant with his left hand and jabs the fan at Tang Xiaotang; Qin Shuang's hand tightens on the knife handle",
          zh="全景、慢推、前景家丁肩膀（灰短褐）：錢員外抬下巴盯許硯；許硯摸空袖袋、嘴閉著；錢員外左手把借據塞給家丁、右手扇子指唐小棠；左邊緣秦霜的手握緊刀柄；右後井邊阿令"),
     dict(loc="yard_late", cam="Medium shot, tracking", chars=["tangxiaotang"], night="yard_late",
-         comp=f"medium shot, one grey-clad servant with his back to the camera in a grey coarse cotton cross-collared short jacket, a cloth head-wrap and cloth shoes, his face never seen, and Tang Xiaotang facing the camera, {TANG}, panicked and unsmiling",
+         comp=f"medium shot, one grey-clad servant with his back to the camera in a grey coarse cotton cross-collared short jacket, a cloth head-wrap and cloth shoes, his face never seen, and Tang Xiaotang facing the camera, {TANG}, panicked: face pale, eyes wide, brows lifted and drawn together, mouth open in a cry, no smile the whole shot",
          lines=[("tangxiaotang", "放手！你這雙髒手，別碰我的袖子！", "掙扎，驚叫")],
          motion="the servant strides up, grabs her left forearm with his right hand and drags her toward the gate on screen right, her wrist never bent backward; she leans back and struggles, her heels dragging two furrows through the dirt",
          zh="中景、跟拍（往右，院門方向）：家丁背影抓住唐小棠的左前臂往院門拖（手腕不反折）；她往後掙、腳跟拖出兩道痕（剪在掙到一半）"),
-    dict(loc="yard_late", cam="Full shot, slow push in", chars=["tangxiaotang"], night="yard_late", act=3,
-         comp=f"full shot past a wooden eave post in the foreground, on screen right the wooden frame of the yard gate, the backs of grey-clad servants in {SERV}, and Tang Xiaotang among them, two servants' hands gripping her upper arms and pulling her toward the gate, her face pale and frightened, not smiling, her ruqun one closed garment from the high collar to the waist; Qin Shuang off screen left",
+    dict(loc="yard_late_s", cam="Full shot, slow push in", chars=["tangxiaotang"], night="yard_late", act=3,
+         comp=f"full shot past a wooden eave post at the left of the foreground: on screen right the wooden frame of the yard gate, and before it one grey-clad servant seen only from behind in a grey coarse cotton cross-collared short jacket, a cloth head-wrap and cloth shoes, no face seen, his right hand gripping Tang Xiaotang's left upper arm; Tang Xiaotang half-turned toward the camera, {TANG}, frightened: face pale, eyes wide, brows lifted and drawn together, mouth open in a gasp, no smile the whole shot; the left half of the frame is empty dirt yard; Qin Shuang stays off screen left",
          lines=[],
-         motion="the servants drag the struggling, frightened Tang Xiaotang a step toward the gate; then one old chopping knife with a dark iron blade and a black-wrapped handle flies in from the left edge, spinning end over end at chest height across the frame toward the gate frame; the shot ends with the knife still in midair",
-         zh="全景、慢推、前景屋簷柱子：一把舊柴刀從左邊飛進來，在半空打轉，直直飛向院門門框；收在柴刀還在半空（秦霜在左邊畫外）"),
+         motion=f"the servant drags Tang Xiaotang one step toward the gate; only then {KNIFE}, flies in alone from the left edge, no hand or arm near it, spinning through the air toward the gate frame; the shot ends with it still in mid-air",
+         zh="全景、慢推、前景屋簷柱子：右邊院門門框前一個家丁背影（看不到臉）抓住唐小棠的左上臂往門拖一步，唐小棠害怕（臉白、睜大眼、張口倒抽氣，整鏡不笑）；然後柴刀才自己從左邊飛進來（旁邊沒有手），在半空打轉飛向門框；收在柴刀還在半空（秦霜在左邊畫外）"),
 ]
 
 HEAD = [
     "- 重製版 r2：照 `docs/videos/zhong-tian-qu-qi-e002-r2/script.md`（c01–c40 對應 s01–s40，c13b 對應 s13b；含「2026-11-06 審稿後的修改」）；每鏡一個看得見的動作、對話用過肩與反打、一句一筆不拆半句、預設不笑。",
     "- 內部工作編號 902（`hailuo/*-dh-e902.json`、`colab/runs/e902/`）；發布 slug `zhong-tian-qu-qi-e002-r2`。不放集數、不放片名卡；c01 直接接第 1 集 c38。",
-    "- 狀態：許硯第一場半乾袖口濕、c03 起捲紅紙插腰帶左邊，第二場起衣服已乾、袖子捲到手肘、額頭有汗，c20 起手背沾木屑；阿令 c01 卸下鐵鐐，之後袖子蓋住手腕的紅勒痕；秦霜的舊柴刀在腰帶右邊（c17 抽出、c21 插回、c38 按住、c40 飛出）；借據摺成長條、背面朝鏡頭。",
+    "- 狀態：許硯第一場半乾袖口濕、c03 起捲紅紙插腰帶左邊，第二場起衣服已乾、袖子捲到手肘、額頭有汗；阿令 c01 卸下鐵鐐，之後袖子蓋住手腕的紅勒痕；秦霜的舊柴刀在腰帶右邊（c17 抽出、c21 插回、c38 按住、c40 飛出）；借據摺成長條、背面朝鏡頭。",
     "- 長鏡要買的秒數（`r2.py` 的 BUY）：s34 10 秒（script.md 長鏡清單）；s03 8 秒（時間線 6.8 秒，超過預設 6 秒）。其餘照 `gen-dh` 的 5／6 秒。",
 ]
 FOOT = [
