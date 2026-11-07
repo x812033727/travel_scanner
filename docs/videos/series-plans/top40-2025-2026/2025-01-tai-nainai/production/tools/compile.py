@@ -37,7 +37,7 @@ TAIL = ("One continuous shot. Natural, realistic live-action human motion; faces
         "nothing written anywhere in the frame.")
 FACES_RULE = ("Besides them, only the other people the composition names are in the frame; no second copy of anyone appears. "
               "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood.")
-LAMP_SIZE = (" The lamp is small: about thirty centimetres tall including its glass chimney, about as tall as a forearm is long, small on the long altar table; it never looks bigger than a person's head.")
+LAMP_SIZE = (" It is the same lamp in every shot: a small brass oil cup with a short wick under a round-bellied clear glass chimney, standing on a plain square dark red-brown wooden base; about thirty centimetres tall in all, about as tall as a forearm is long, small on the long altar table; it never looks bigger than a person's head, and there is only this one lamp in the hall.")  # 小樣燈太大、成片各鏡燈罩不同（2026-11-07）
 EN_NAMES = {
     "yuetang-18": "Shen Yuetang", "yuetang-96": "Shen Yuetang at ninety-six", "yuqin": "Shen Yuqin", "jianbang": "Shen Jianbang",
     "zhiyuan": "Shen Zhiyuan", "xiaoman": "Shen Xiaoman", "fubo": "Fu Bo", "jianye": "Shen Jianye", "meifeng": "Lin Meifeng",
