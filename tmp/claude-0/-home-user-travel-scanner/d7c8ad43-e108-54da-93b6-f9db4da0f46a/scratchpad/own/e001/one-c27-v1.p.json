@@ -1,24 +1,22 @@
 {
   "task": "batch",
-  "status": "running",
+  "status": "completed",
   "session": "tn-own1",
   "gpu": "G4",
   "jobs": [
     {
       "id": "c27-v1",
       "title": "tai-nainai-e001 c27 ref2va",
-      "status": "generating",
+      "status": "completed",
       "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/own/e001/out/c27-v1.mp4",
       "started_at": "2026-11-07T17:35:44Z",
       "seed": 701028,
-      "duration_seconds": 6.0
+      "duration_seconds": 6.0,
+      "finished_at": "2026-11-07T17:37:56Z",
+      "bytes": 1153227
     }
   ],
   "log_tail": [
-    "[colab] Executing cell 1/8 - 4ec34ffb...",
-    "GPU: NVIDIA RTX PRO 6000 Blackwell Server Edition",
-    "VRAM GiB: 95.0",
-    "PyTorch CUDA: 13.0",
     "Free disk GiB: 194.3",
     "重用本次 Colab session 已安裝的 ComfyUI 環境",
     "ComfyUI: /content/ComfyUI",
@@ -44,8 +42,24 @@
     "已提交推論： 134c0b3b-280d-4d08-9e4d-0ad349c7489b",
     "[colab] Executing cell 8/8 - 87cbe9aa...",
     "仍在生成影片…",
-    "仍在生成影片…"
+    "仍在生成影片…",
+    "完成： /content/ComfyUI/output/MiniMax_H3_c27-v1_00001-audio.mp4 (1.1 MiB，含影片與音訊)",
+    "COLAB_CLI_OUTPUT_PATH: /content/h3_c27-v1_output.mp4",
+    "[colab] Saving notebook with outputs to '/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/own/e001/work_82adf12b/c27-v1/MiniMax_H3_Turbo_Colab_output.ipynb'...",
+    "[colab] Downloaded '/content/h3_c27-v1_output.mp4' to '/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/own/e001/out/c27-v1.mp4'"
   ],
-  "updated_at": "2026-11-07T17:37:03Z",
-  "current_job": "c27-v1"
+  "updated_at": "2026-11-07T17:37:56Z",
+  "current_job": "c27-v1",
+  "session_status": "active",
+  "completed_count": 1,
+  "failed_count": 0,
+  "cancelled_count": 0,
+  "error": null,
+  "results": [
+    {
+      "id": "c27-v1",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/own/e001/out/c27-v1.mp4",
+      "status": "completed"
+    }
+  ]
 }
