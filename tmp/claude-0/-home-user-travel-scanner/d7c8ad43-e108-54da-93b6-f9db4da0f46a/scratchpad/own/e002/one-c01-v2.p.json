@@ -1,0 +1,51 @@
+{
+  "task": "batch",
+  "status": "running",
+  "session": "tn-own1",
+  "gpu": "G4",
+  "jobs": [
+    {
+      "id": "c01-v2",
+      "title": "tai-nainai-e002 c01 ref2va",
+      "status": "generating",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/own/e002/out/c01-v2.mp4",
+      "started_at": "2026-11-07T17:52:42Z",
+      "seed": 701102,
+      "duration_seconds": 5.0
+    }
+  ],
+  "log_tail": [
+    "[colab] Executing cell 1/8 - b4b6d703...",
+    "GPU: NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "VRAM GiB: 95.0",
+    "PyTorch CUDA: 13.0",
+    "Free disk GiB: 194.3",
+    "重用本次 Colab session 已安裝的 ComfyUI 環境",
+    "ComfyUI: /content/ComfyUI",
+    "[colab] Executing cell 2/8 - b13e7846...",
+    "Ref2VA variant: int8_convrot (CUDA 13.0 ; GPU capability (12, 0) )",
+    "diffusion_models minimax_h3_ref2va_pruned_int8_convrot.safetensors 19.53 GiB",
+    "text_encoders qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors 14.61 GiB",
+    "vae minimax_h3_video_vae_int8_convrot.safetensors 2.62 GiB",
+    "vae minimax_h3_audio_vae_fp32.safetensors 0.56 GiB",
+    "loras minimax_h3_ref2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors 1.82 GiB",
+    "[colab] Executing cell 3/8 - 14228efe...",
+    "模式：reference；要求長度：5.000 秒；排程：124 幀 / 5.167 秒（24 fps）",
+    "[colab] Executing cell 4/8 - e467f3a6...",
+    "使用 CLI 上傳的完整 prompt： /content/h3_c01-v2_prompt.txt",
+    "模型收到的完整 prompt：",
+    "overall_soundscape: N/A",
+    "non_diegetic_music: N/A",
+    "[colab] Executing cell 5/8 - f6b81f89...",
+    "[colab] Executing cell 6/8 - e5f1486e...",
+    "使用已啟動的 ComfyUI",
+    "節點檢查通過，ComfyUI 已啟動",
+    "[colab] Executing cell 7/8 - 3b51530c...",
+    "已提交推論： fb16f197-6cda-4668-a35b-33bb9487dd78",
+    "[colab] Executing cell 8/8 - 5c5e4327...",
+    "仍在生成影片…",
+    "仍在生成影片…"
+  ],
+  "updated_at": "2026-11-07T17:54:01Z",
+  "current_job": "c01-v2"
+}
