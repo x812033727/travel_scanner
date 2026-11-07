@@ -57,6 +57,36 @@ FROZEN = json.load(open(CAM_FILE, encoding="utf-8")) if os.path.exists(CAM_FILE)
 
 S = []
 EXTRA = {}
+# Picture review round 1 (2026-11-07, README §10.1): an independent reviewer zoomed every picture.
+# REWRITE replaces the prompt of shots with no usable take; FIX appends to shots with a severe fault.
+REWRITE = {
+ "river-sparkle": "Close-up of clear river water flowing over plain smooth round grey pebbles, tiny white glitter specks drifting in the water, simple flat 2D cartoon with clean ink outlines, plain smooth stone surfaces",
+ "kid-mountain-right": "Head-and-shoulders close-up of the girl with a small round surprised mouth and both eyes wide and level looking straight at the viewer, her short black bob with straight bangs neatly rounded under her ears, hood down on her shoulders, plain warm cream background",
+ "globe": "Wide empty seascape of calm blue sea stretching to the horizon with two small green islands far away, smooth empty water and a clear sky, flat 2D cartoon with clean ink outlines",
+ "kid-connected": "Flat 2D cel-shaded cartoon, back view of the girl standing on a sunny beach spreading both arms wide toward the blue sea, her short black bob and the mustard-yellow hood of her navy raincoat seen from behind",
+ "beach-guess": "Wide view of an empty sunny Taiwan beach with gentle waves, a small river mouth at one end, green hills behind, smooth clean sand and clear sky, flat 2D cartoon with clean ink outlines",
+ "kid-got2": "Close-up of a big plain smooth steel soup pot on the stove with a thin white ring of salt crust around its inner rim, warm sunny kitchen, flat 2D cartoon with clean ink outlines"
+}
+FIX = {
+ "kid-splash": "short rounded black bob with straight bangs, hair ends falling smoothly inward at jaw level, one small cowlick on top",
+ "kid-salt-mountain": "mustard-yellow hood resting down on her shoulders, short black bob with straight bangs and one thin cowlick visible on bare head",
+ "rock-dissolve": "plain smooth grey rock with soft matte texture and scattered tiny speckles, mineral grains drifting into the puddle",
+ "all-rivers": "empty grassy riverbanks with plain bushes and small wildflowers, landscape only",
+ "salt-blanket": "a flat thick white salt layer blanketing the whole countryside evenly like snow, tall as a 40-storey building beside tiny houses, flat top surface",
+ "chief-3000": "young slim woman with clean clear round glasses lenses, sleek low black ponytail, yellow pencil tucked behind ear",
+ "seafloor": "calm empty sandy seafloor with sunbeams, corals and seaweed, quiet scenery only",
+ "chief-crust": "young woman with glossy black hair swept back into a low ponytail, forehead visible, round black glasses, yellow pencil behind ear",
+ "shells-sink": "smooth plain sand surface with soft shading and a few small pebbles beside the shells",
+ "vents-all": "dark rocky hydrothermal vents, jagged black rock chimneys and cracks on the seafloor releasing shimmering hot water",
+ "chief-later": "thin round black glasses, glossy black hair in a neat low ponytail, mustard-yellow cardigan over white blouse",
+ "kid-fresh-sea-q": "both pupils looking up together in the same direction, matching small round dark pupils",
+ "baltic": "quiet empty beach and calm bay framed by pine forest, landscape only, a simple wooden rowboat resting on the sand",
+ "outro-chief": "both pupils looking toward the camera in the same direction, matching pupil size",
+ "kid-river-zero": "both round dark pupils looking at the cup together, matching eyes",
+ "balance-pot": "a bright thin white ring of salt crust clearly visible along the inner rim of the pot"
+}
+for _id, _fix in FIX.items():
+    EXTRA[_id] = EXTRA.get(_id, "") + ", " + _fix
 def _shot(id, prompt, chars, lines, chapter):
     prompt = prompt + EXTRA.get(id, "")
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
@@ -65,6 +95,7 @@ def _shot(id, prompt, chars, lines, chapter):
     S.append(dict(id=id, chapter=chapter, template="shot", data=dict(prompt=prompt, camera=cam, visual="still", characters=list(chars)), lines=list(lines)))
 def kid(id, prompt, *lines, chapter=None):
     """The kid doing one simple thing, facing the camera, waist-up or head-and-shoulders."""
+    prompt = REWRITE.get(id, prompt)
     _shot(id, prompt.rstrip(". ") + ", " + KIDDESC + KIDFIX_TAIL, ["kid"], lines, chapter)
 def chief(id, prompt, *lines, chapter=None):
     """The chief, always waist-up or head-and-shoulders, in front of a plain wall in daylight, in her `office` look."""
@@ -73,6 +104,7 @@ def chief(id, prompt, *lines, chapter=None):
     S[-1]["data"]["character_looks"] = {"chief": "office"}
 def scene(id, prompt, *lines, chapter=None):
     """No character: an object, a place or a mechanism drawn as a picture."""
+    prompt = REWRITE.get(id, prompt)
     _shot(id, prompt + FLAT, [], lines, chapter)
     S[-1]["data"]["nobody"] = True  # PR #2028: no person or face in an object-only shot
 def k(t, e=None, tag=None): return ("kid", t, e, tag)
@@ -296,7 +328,7 @@ chief("chief-back", C("smiling warmly at the viewer with one hand open, filling 
       c("還記得你一開始問我的嗎？你自己說說看。", "笑"), chapter="小問自己破案")
 kid("kid-got1", K("throwing both arms up with a huge happy smile", where=BEACH),
     k("河水帶一點點鹽進海裡，", "篤定"), k("太陽只把水熬走，", "篤定"))
-kid("kid-got2", K("pointing proudly at " + POT + " on the stove with a big grin", close=True, where=KITCHEN),
+scene("kid-got2", "PLACEHOLDER",
     k("海底和鍋邊，再慢慢把鹽收走！", "開心", "P:main"))
 chief("chief-safe", C("holding a glass of clear water with a caring smile"),
       c("完全正確！對了，你昨天喝到的那口海水，", "先誇她，再叮嚀"), c("可別拿來解渴。身體要用更多的水排鹽，會越喝越渴。"))
