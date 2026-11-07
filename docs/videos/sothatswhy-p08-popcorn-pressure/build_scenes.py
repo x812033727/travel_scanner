@@ -124,7 +124,7 @@ scene("leftover-kernels", "Close-up of a few small hard golden popcorn kernels l
       c("還有，你那碗爆米花的碗底，"), c("是不是總剩下幾顆，怎麼熱都不爆？", "賣關子", "S:unpopped"))
 kid("kid-leftover", K("holding one tiny hard golden kernel between two fingers and squinting at it", close=True, where=KITCHEN),
     k("對耶，", "想起來"), k("它們是不是比較懶？", "好笑"))
-scene("chief-promise", "Medium shot of an open steel pot with soft steam drifting freely out of its top on the left, and one golden popcorn kernel with its hard shiny shell closed tight on the right, pale cream background, " + DAY,
+scene("chief-promise", "Medium shot of an open steel pot with soft steam drifting freely out of its top on the left, and on the right one small smooth shiny orange-yellow teardrop-shaped popcorn seed with a hard glossy hull and a pale pointed tip, closed tight and smooth like a polished seed, plain pale cream background, bright daylight",
       c("答案就藏在水的身上。"), c("看它是被放開的，還是被關起來的。"))
 
 # ---------- 第一章：冒泡不代表同一溫度 ----------
@@ -222,7 +222,7 @@ kid("kid-hotter-q", K("frowning and holding her two hands together tight as if s
     k("可是你剛剛說，", "抓到問題"), k("水熱不過天花板呀？", "句尾上揚", "S:hotter"))
 scene("chief-quilt-back", "Close-up cutaway of " + KERNEL + ", its inside crowded with tight swirling white steam pressing hard on a tiny pool of water, the hard shell bulging slightly, " + DAY,
       c("還記得那床空氣棉被嗎？", "點名回呼"), c("在玉米裡面，壓住這些水的不是棉被，是越擠越多的水氣。"))
-scene("chief-higher-ceiling", "Close-up of " + KERNEL + " glowing hot orange on a hot pan, puffed tight like an overfilled balloon, soft heat shimmer around it, " + DAY,
+scene("chief-higher-ceiling", "Close-up of one large closed popcorn seed, a smooth glossy orange-yellow teardrop hull with a pale pointed tip, sliced open like a cross-section diagram: inside, tight swirling white steam presses hard down on a tiny shiny pool of clear water, the little bubbles in the water squashed flat, the hull bulging slightly, a soft orange heat glow under the seed, plain empty pale cream background, flat 2D cartoon drawing",
       c("壓得越用力，泡泡越難推開，"), c("水就得熱過平地的滾水，天花板也跟著升高。", None, "P:hotter"))
 kid("kid-mountain-flip", K("pointing at a golden kernel in her palm with an excited grin", close=True, where=KITCHEN),
     k("跟山上剛好相反！", "想通"))
@@ -232,7 +232,7 @@ scene("chief-ten-times", "Close-up of a small red balloon blown up so tight that
       c("那時殼裡的壓力，大約是外面空氣的九到十倍。", "數字放慢"))
 kid("kid-ten-times", K("puffing out her cheeks like a tight balloon and laughing", close=True),
     k("殼快被撐破了！", "好笑"))
-scene("chief-liquid", "Close-up cutaway of " + KERNEL + " on a hot pan, inside the hard shell a small shiny pool of liquid water still sitting under tight swirling steam, " + DAY,
+scene("chief-liquid", "Close-up of one large closed popcorn seed, a smooth glossy orange-yellow teardrop hull with a pale pointed tip, sliced open like a cross-section diagram: inside, soft white starch around a small shiny pool of clear blue liquid water sitting at the bottom, tight swirling white steam above it, plain smooth surfaces, plain empty pale cream background, flat 2D cartoon drawing",
       c("還有一件怪事：研究的人算過，殼破之前，"), c("裡面大部分的水，其實還是液體。"))
 kid("kid-still-water", K("tilting her head with a puzzled frown and one finger on her chin", close=True),
     k("都燙成那樣了，", "不解"), k("還沒變成水氣？", "句尾上揚"))
@@ -248,7 +248,7 @@ kid("kid-lazy-back", K("holding up one tiny hard leftover kernel with a curious 
     k("那碗底那幾顆，", "點名回呼"), k("為什麼就是不爆？", "句尾上揚"))
 scene("chief-too-dry", "Close-up cutaway of a dull shrivelled golden popcorn kernel on a hot pan, its inside dry and wrinkled with only a tiny speck of water, " + DAY,
       c("常見的原因，是它太乾了。"), c("水太少，擠不出夠大的力氣撐破殼。"))
-scene("chief-tip", "Close-up of " + KERNEL + " on a hot pan, thin wisps of steam leaking out of its small pointed tip, " + DAY,
+scene("chief-tip", "Close-up of one small smooth shiny orange-yellow teardrop-shaped popcorn seed with a hard glossy hull and a pale pointed tip lying alone on a warm round steel pan, one tiny thin wisp of white steam leaking out of its pointed tip, plain empty pale cream background, flat 2D cartoon drawing",
       c("還有，玉米尖尖那頭接著玉米棒，"), c("那裡不太擋得住水氣，加熱太慢，水氣會偷偷漏走。", None, "P:unpopped"))
 kid("kid-leak", K("making a small whoosh shape with her hand by her mouth, a knowing grin", close=True),
     k("漏氣了，", "推理"), k("就爆不起來了！", "想通", "P:lid"))
@@ -276,11 +276,11 @@ scene("chief-set", "Close-up of a few crisp fluffy white popcorn pieces cooling 
       c("那些白泡泡一離開熱鍋就變涼，"), c("馬上變硬，就是你咬的那口脆脆的。"))
 kid("kid-jump-yet", K("leaning forward eagerly with both fists clenched", close=True),
     k("那它什麼時候跳？", "追問"))
-scene("starch-leg", "Close-up of a fresh fluffy popcorn piece on a warm round pan, standing on one short stubby white leg of puffed starch squashed flat against the pan like a tiny cartoon foot, " + DAY,
+scene("starch-leg", "Close-up seen a little from above of one popped popcorn on a warm round steel pan, an irregular fluffy white puff shaped like a small torn cloud with ragged uneven edges and soft cream shading, one short stubby white starch stub on its underside squashed flat against the pan, plain empty pale cream background, flat 2D cartoon drawing",
       c("鼓出來的澱粉，有一塊壓在鍋子上，"), c("像長出一隻短短的小腳。"))
 kid("kid-leg", K("laughing and pointing at her own leg", close=True),
     k("爆米花也有腳？", "好笑，句尾上揚"))
-scene("chief-spring", "Close-up of a popcorn piece springing up off a warm round pan, its short stubby white starch leg bouncing back like a coiled spring, " + DAY,
+scene("chief-spring", "Close-up seen a little from above of one popped popcorn, an irregular fluffy white puff shaped like a small torn cloud with ragged uneven edges and soft cream shading, springing up off a warm round steel pan, the short stubby white starch stub under it bouncing back like a coiled spring, small motion lines, plain empty pale cream background, flat 2D cartoon drawing",
       c("那隻腳先被壓扁，再像彈簧一樣彈回去，"), c("就把整顆玉米踢離鍋子。", None, "P:jump"))
 chief("chief-not-rocket", C("holding a small coiled metal spring between two fingers with a kind smile"),
       c("所以讓它跳起來的主角，是那隻澱粉腳，"), c("不是水氣像火箭那樣噴。", None, "P:rocket"))
@@ -294,11 +294,11 @@ scene("chief-fast", "Close-up of a fluffy popcorn piece leaping off a hot pan as
       c("從殼裂開到跳起來，只有百分之幾秒，"), c("快到你的眼睛只看到一閃。"))
 kid("kid-flip", K("spinning one finger round in the air with a dizzy grin", close=True),
     k("眨一下眼就錯過了！", "好笑"))
-scene("chief-height", "Close-up at pan level of a fluffy popcorn piece hopping just a tiny little bit above a warm round pan, a small soft shadow right under it, " + DAY,
+scene("chief-height", "Close-up seen a little from above of one popped popcorn, an irregular fluffy white puff shaped like a small torn cloud with ragged uneven edges and soft cream shading, hovering just a tiny bit above a warm round steel pan, a small soft shadow right under it, plain empty pale cream background, flat 2D cartoon drawing",
       c("如果只靠那一踢，他們估計，"), c("大約能跳一公分左右。"))
 kid("kid-one-cm", K("holding her finger and thumb a tiny bit apart with raised eyebrows", close=True),
     k("只有一公分？", "驚訝"), k("我還以為它會飛好高！"))
-scene("chief-one-cm", "Close-up at pan level of two fluffy popcorn pieces hopping side by side to the same tiny height above a warm round pan, " + DAY,
+scene("chief-one-cm", "Close-up seen a little from above of two popped popcorn pieces, each an irregular fluffy white puff shaped like a small torn cloud with ragged uneven edges and soft cream shading, hovering side by side at the same tiny height above a warm round steel pan, small soft shadows under them, plain empty pale cream background, flat 2D cartoon drawing",
       c("研究的人說，他們看到的跳法，"), c("跟這個估計差不多是同一個大小。"))
 kid("kid-pop-q", K("cupping one hand behind her ear and listening hard", close=True, where=KITCHEN),
     k("那「啵」的一聲，", "追問"), k("是殼破掉的聲音嗎？", "章尾停住，句尾上揚", "S:sound"))
@@ -310,11 +310,11 @@ scene("mic", "Close-up of a round black microphone on a small stand beside a pla
       c("聲音和畫面對在一起，就知道每一聲是哪一步。"))
 kid("kid-how-long", K("holding her breath with puffed cheeks and wide eyes", close=True),
     k("那一聲啵，", "好奇"), k("有多長？", "句尾上揚"))
-scene("chief-50ms", "Close-up of a popcorn kernel on a dark hot iron plate giving off one quick soft round ripple in the air, a round black microphone on a small stand beside it, in a bright tidy lab, " + DAY,
+scene("chief-50ms", "Close-up seen a little from above of one small smooth shiny orange-yellow teardrop-shaped popcorn seed with a hard glossy hull and a pale pointed tip on a dark hot iron plate, its hull just splitting with a small irregular white puff like a torn cloud, one quick soft round ripple spreading in the air around it, a small round black microphone on a short stand at the edge, plain empty pale grey background, flat 2D cartoon drawing",
       c("他們錄到的，大約只有二十分之一秒。"))
 kid("kid-crack-guess", K("holding up one golden popcorn kernel with a thin crack across its shell, a confident grin", close=True),
     k("一定是殼裂開，", "很有把握的錯猜"), k("裂開的那一下！"))
-scene("chief-after", "Close-up of a popcorn kernel on a dark hot iron plate with a thin crack just opening across its shell, the air around it still calm, a round black microphone waiting beside it, in a bright tidy lab, " + DAY,
+scene("chief-after", "Close-up seen a little from above of one small smooth shiny orange-yellow teardrop-shaped popcorn seed with a hard glossy hull and a pale pointed tip on a dark hot iron plate, a fresh jagged crack just splitting across its hull, a tiny white puff of soft starch just starting to bulge out of the crack, the air around it still calm, plain empty pale grey background, flat 2D cartoon drawing",
       c("聲音沒有在殼裂開的那一瞬間出來，"), c("而是晚了千分之幾秒。"))
 kid("kid-foot-guess", K("stomping one foot with a curious face", close=True),
     k("那是小腳踢鍋子的聲音？", "再猜"))
