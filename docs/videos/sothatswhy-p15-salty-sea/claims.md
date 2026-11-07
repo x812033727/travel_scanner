@@ -2,7 +2,14 @@
 
 對應 [`brief.md`](brief.md) 的「查核清單」。每一條列出片中怎麼說、來源與注意事項；行號是 `video.json` 的台詞 id（`build_scenes.py` 產生）。
 2026-11-07 由研究代理逐頁打開來源（WebFetch）寫成筆記，撰稿只用筆記裡的數字；引文照頁面原文。標「只看到搜尋摘要」的是頁面回 403／503，查核時請再開一次。
-方括號數字對應文末〈來源〉。寫進稿子後，仍要由另一個代理逐行查核（`verify-1.md`）。
+方括號數字對應文末〈來源〉。第一版稿子由另一個代理逐行查核（[`verify-1.md`](verify-1.md)，OK 197、FIX 7 項）；第二版（盲評與評分之後重寫）的查核在 `verify-2.md`。
+
+**第二版（2026-11-07）**：依盲評、評分與 verify-1 改寫。拿掉 C08（地球的水九十六份）、C09（杯子裡的水）、C10（海冰）與極地那一句；七股不再唸二〇〇二年。行號已重新編過，下面各條的行號是第一版的，查核以 `video.json` 的文字為準。
+
+## C00 海裡的鹽大部分從陸地來（回應「海底有鹽山」）
+
+- **片中**：「海裡的鹽，大部分是從陸地來的。」
+- **來源**：[1] "Rocks on land are the major source of salts dissolved in seawater." NOAA 也寫海底有鹽丘與鹽水滲出（verify-1 F01），所以不說「海底沒有鹽山」。
 
 ## C01 海水平均大約一公斤三十五公克鹽
 
@@ -12,7 +19,7 @@
 
 ## C02 雨水帶一點點酸，慢慢侵蝕石頭，把離子溶出來，由河帶進海
 
-- **片中**：p022、p027–p032、p038–p039
+- **片中**：「那些鹽，是從山上的石頭來的。雨水帶著一點點酸，一年一年，慢慢地啃石頭。」等
 - **來源**：[1] "Rocks on land are the major source of salts dissolved in seawater. Rainwater that falls on land is slightly acidic, so it erodes rocks. This releases ions that are carried away to streams and rivers that eventually feed into the ocean."
 - **注意**：高。片中不講二氧化碳與碳酸（官方頁沒寫化學式）。「啃石頭」是比喻；「啃得非常慢」是常識性的說法，來源沒有給速度。
 
@@ -40,35 +47,17 @@
 - **來源**：[8] 全球河川年流量 "averaged 37,411 cubic kilometers … per year from 1980 to 2009"；[6] 海洋約 1,338,000,000 km³。相除 ≈ 35,800 年。
 - **注意**：**兩個官方數字相除的換算**，沒有來源直接這樣說；片中用「如果海是空的」的假設語氣、「大約三萬多年」。
 
-## C07 蒸發只帶走水、留下鹽；水氣成雲、下雨、流回河；雨是淡的
+## C07 蒸發只帶走水、留下鹽；水氣成雲、下雨、流回河；雨幾乎是淡水
 
 - **片中**：p056–p060、p069–p071、p077–p081、p093
-- **來源**：[9] 蒸發移除水、留下鹽（Residence Time 一節）；[2] 雨補充河水；[1] 鹽來自岩石與海底。
+- **來源**：[10] 蒸發移除水、留下溶解的鹽（verify-1 指出 [9] 沒有這句，改引 Gale）；[2] 雨補充河水；[1] 鹽來自岩石與海底。
 - **注意**：高。「太陽只搬得動水，搬不動鹽」是比喻。在家曬一碟鹽水留下白圈（p073–p074）是蒸發留下溶質的直接推論，安全、不用火。
 
-## C08 地球的水一百份裡大約九十六份多在海裡
-
-- **片中**：p062–p063
-- **來源**：[6] oceans hold "about 96.5 percent of all Earth's water."
-- **注意**：高。
-
-## C09 你杯子裡的水，說不定好幾千年前還在海裡
-
-- **片中**：p066–p067
-- **來源**：[9] 水在海中平均約 3,100 年後被蒸發；[6]、水循環。
-- **注意**：推論，片中用「很有可能」「說不定」。
-
-## C10 海冰結冰時把鹽排到海水裡；老海冰幾乎沒有鹽
-
-- **片中**：p084–p087
-- **來源**：[15] "Because salt doesn't freeze, the crystals expel salt into the water." "if the ice persists long enough, it loses all its salt." "Sea ice that is four or more years older is nearly free of brine."
-- **注意**：高。「冰也跟太陽一樣，只想帶走水」是比喻。新結的冰裡還有鹽水小泡，所以片中只說「放了好幾年的老海冰」。
-
-## C11 七股是台灣最大的曬鹽場，二〇〇二年停曬；曬鹽是讓太陽曬乾海水
+## C11 七股曾經是台灣最大的曬鹽場；曬鹽是讓太陽曬乾海水
 
 - **片中**：p088–p091
 - **來源**：[13] 「七股鹽場過去是臺灣最大的曬鹽場」「民國91年（西元2002年）5月廢曬，結束臺灣338年曬鹽歷史」。
-- **注意**：觀光署頁面沒有寫曬鹽的步驟；「海水引進鹽田、讓太陽曬乾」是曬鹽的通用方法（「曬鹽」一詞本身），查核時可再找一個說明頁。
+- **注意**：觀光署頁面沒有寫曬鹽的步驟；verify-1 以中文維基〈鹽田〉與英文維基 Salt evaporation pond 確認方法。第二版不唸二〇〇二年。
 
 ## C12 水在海裡平均大約三千年；鹽住幾千萬年
 
@@ -86,25 +75,25 @@
 
 - **片中**：p113–p125
 - **來源**：[10] "Certain surface-dwelling phytoplankton (e.g., coccolithophores and diatoms) remove calcium or silicon from sea water"，殼 "buried in the sediment and thus removed from sea water for many millions of years"；[4] "Many of the dissolved ions are used by organisms in the ocean and are removed from the water."；河水以鈣與碳酸氫根為主（[10] 的表；Britannica "River water is mainly a solution of calcium bicarbonate"，只看到搜尋摘要）；[1] "Two of the most prevalent ions in seawater are chloride and sodium … around 85 percent of all dissolved ions in the ocean."
-- **注意**：「被拿走得最快」是簡化（鈣的滯留時間比鈉、氯短很多；[9] 的表）。珊瑚造礁也用鈣，與貝殼同理。「做殼用不到這種鹽」指鈉與氯，片中不唸名稱。
+- **注意**：第一版「被拿走得最快」不對（鐵等微量金屬更快，verify-1 F03），第二版改成「被拿走得比鹽快很多」（Gale：鈣約一百萬年、鈉約八千萬年）。珊瑚長在海底不會「沉」，第二版說「殼就留在海底」（F02）。珊瑚造礁也用鈣，與貝殼同理。「做殼用不到這種鹽」指鈉與氯，片中不唸名稱。
 
 ## C15 海底熱泉；全世界的海水大約一千到兩千萬年從熱泉系統循環一次；熱泉會帶進、也會留下東西
 
 - **片中**：p016、p107、p127–p134
 - **來源**：[1] "Another source of salts in the ocean is hydrothermal fluids, which come from vents in the seafloor."；[4] "the entire volume of the worlds oceans could circulate through hydrothermal vent systems every 10-20 million years."；[10] 海水通過熱泉 "loses all its O2 and all its Mg"。
-- **注意**：高。小問「海底有鹽山、一直冒鹽」是錯的直覺，所長說「說對了一點點」，對應「熱泉也是鹽的來源之一」。
+- **注意**：USGS 原文是 "could"，第二版說「科學家估計」（F04）。小問「海底有鹽山、一直冒鹽」是錯的直覺，所長說「說對了一點點」，對應「熱泉也是鹽的來源之一」。
 
-## C16 很久以前淺海被曬乾，留下埋在地底的厚鹽層
+## C16 很久以前跟大海隔開的海水被曬乾，留下埋在地底的厚鹽層
 
 - **片中**：p135–p136
-- **來源**：[10] "These minerals represent dissolved salts that have been removed from sea water by evaporation"（蒸發岩）。
-- **注意**：高。
+- **來源**：[10] "These minerals represent dissolved salts that have been removed from sea water by evaporation"（蒸發岩，"isolated bodies of sea water"）。
+- **注意**：第一版的「淺淺的海」沒有來源，第二版改成「跟大海隔開的海水」（F05）。片中說這是廚房那種鹽「一條很慢的出口」，不說它是最大的出口。
 
 ## C17 進出差不多，現在的海沒有再越變越鹹；剛出現的海可能只有一點點鹹
 
 - **片中**：p139–p147
 - **來源**：[2] 海洋 "no longer getting saltier"；原始的海 "probably only slightly salty"（研究筆記，查核時請對原文）；[10] "all the processes affecting sea-water chemistry must be at steady state"。
-- **注意**：片中不說「幾億年」這種年數（只有 Gale 的推論）。「海洋學家說」對應 NOAA 的說法。p147「一直到進來和出去差不多，才停下來」是簡化。
+- **注意**：NOAA 原文兩次用 "probably"，第二版說「海洋學家認為……大概已經沒有再越變越鹹」（F06）。片中不說「幾億年」這種年數。p147「一直到進來和出去差不多，才停下來」是簡化。
 
 ## C18 海裡的鹽全部鋪在陸地上，大約四十層樓那麼厚
 
@@ -122,9 +111,9 @@
 
 - **片中**：p165–p169
 - **來源**：[11] "around 20 PSU … in the Kattegat to 1–2 PSU in the northernmost Bothnian Bay and the easternmost Gulf of Finland"；NOAA COPEPOD 時序約 2.5–4。
-- **注意**：高。「很多河流進來、雨也多、天氣涼」：河流與降水多是 HELCOM 說明的原因之一；「天氣涼」意指蒸發少，查核時確認。
+- **注意**：第一版「天氣涼」沒有來源，第二版改成「很多河流進來，下的雨也比曬走的多」（Wikipedia Baltic Sea：降水減蒸發為正，F07）。
 
-## C21 極地與冰融水讓海水較淡；河口附近較淡
+## C21 河口附近較淡（第二版拿掉極地那一句）
 
 - **片中**：p170–p174
 - **來源**：[15] "in polar regions, it may be less than 30 PSU"；[7] "significantly fresher waters appear … in the icy high latitudes"、"Rivers such as the Amazon carry tremendous amounts of fresh runoff from land and spread plumes far into the sea."
