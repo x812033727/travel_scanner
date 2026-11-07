@@ -1,0 +1,71 @@
+{
+  "ok": false,
+  "final_sha256": "f0de904e3524ce28d1b796aeff5879e259a27b0dd156ac578c5b9e19bc910ee4",
+  "items": [
+    {
+      "id": "assemble",
+      "ok": true,
+      "detail": "28329 frames, -14 LUFS, 0 frames matched their slides; every check passed"
+    },
+    {
+      "id": "render",
+      "ok": true,
+      "detail": "0 slide states drawn with no layout, glyph or font problem, thumbnail included"
+    },
+    {
+      "id": "narration",
+      "ok": true,
+      "detail": "timeline.json approved at 2026-11-06T14:18:28.449Z"
+    },
+    {
+      "id": "pace",
+      "ok": true,
+      "detail": "139 slide states, the longest 11 s; none over 15 s"
+    },
+    {
+      "id": "captions",
+      "ok": true,
+      "detail": "caption files for zh-TW, every translation current",
+      "warnings": [
+        "en: no caption file yet; it is translated in the languages step after the final cut",
+        "ja: no caption file yet; it is translated in the languages step after the final cut",
+        "ko: no caption file yet; it is translated in the languages step after the final cut"
+      ]
+    },
+    {
+      "id": "metadata",
+      "ok": true,
+      "detail": "title, description and tags within YouTube's limits for zh-TW; 6 chapters"
+    },
+    {
+      "id": "facts",
+      "ok": true,
+      "detail": "verify-3.md marks no claim NOT FOUND"
+    },
+    {
+      "id": "links",
+      "ok": true,
+      "detail": "19 links open; 1 refuse automated checks and were not opened: https://www.noaa.gov/jetstream/clouds/color-of-clouds (HTTP 403)"
+    },
+    {
+      "id": "thumbnail",
+      "ok": true,
+      "detail": "1280x720 JPEG, 100 KB; the headline is about 34 px tall at 320 px wide"
+    },
+    {
+      "id": "policy",
+      "ok": false,
+      "detail": "Jev：符合立場 0.56、有示範：不適用（解說）、建議 0.01、業配 0.08；沒過（符合立場低於 0.6）"
+    },
+    {
+      "id": "disclosure",
+      "ok": true,
+      "detail": "tick altered or synthetic content: a drama: AI-generated shots and music are always disclosed"
+    }
+  ],
+  "policy_judged": {
+    "request_sha256": "41547c5c741cb68898bc27523bbe9f73937448882d5c39302982405eded04845",
+    "ok": false,
+    "detail": "Jev：符合立場 0.56、有示範：不適用（解說）、建議 0.01、業配 0.08；沒過（符合立場低於 0.6）"
+  }
+}

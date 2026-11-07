@@ -1,0 +1,1921 @@
+{
+  "locale": "ja",
+  "slug": "sothatswhy-p07-fridge-door",
+  "parts": [
+    "metadata",
+    "captions"
+  ],
+  "note": "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are. `title.max_chars` is the most characters the title may have: the channel adds the locale's captions tag after it (「｜CC字幕」 worded per language), and a brand story's tag, and YouTube takes 100 in all. `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks. `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the narration line takes, so stay under it. `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.",
+  "title": {
+    "todo": true,
+    "source": "冰箱門打開，房間為什麼不會變涼？｜原來如此事務所",
+    "text": "冷蔵庫のドアを開けても、なぜ部屋は涼しくならないの？｜なるほど事務所",
+    "max_chars": 95
+  },
+  "description": {
+    "todo": true,
+    "source": "熱到不行的下午，小問把冰箱門一打開，臉馬上涼涼的。那冰箱門整天開著，廚房是不是就不用開冷氣了？\n\n這一集，所長和小問盯著同一台冰箱，把圈越畫越大：先只看冰箱裡面，冷到底是不是一種會跑出來的東西；再繞到冰箱背後，看冷媒和壓縮機怎麼把熱一圈一圈搬出去，壓縮機吃的電又去了哪裡；然後把整間廚房圈起來算一次熱帳；最後走到陽台，看冷氣的室外機為什麼吹熱風，冷氣又為什麼能讓房間變涼。\n\n本集插圖由 AI 生成。片中「兩顆熱加一份電」是為了好算的假設數字；冷氣搬熱的倍數是教學資料裡的大約數字，實際看機型與天氣。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-06",
+    "text": "暑くてたまらない午後、ハテナが冷蔵庫のドアを開けると、顔がすぐ涼しくなります。じゃあ冷蔵庫のドアを一日じゅう開けておけば、台所に冷房はいらないの？\n\n今回は、所長とハテナが同じ一台の冷蔵庫を見ながら、円をどんどん大きく描いていきます。まずは冷蔵庫の中だけを見て、冷たさは本当に出てくるものなのかを確かめます。次に冷蔵庫の裏に回り、冷媒と圧縮機が熱をぐるぐる外へ運ぶしくみと、圧縮機が使う電気の行き先を見ます。それから台所全体を円で囲んで熱の帳簿をつけ、最後にベランダで、冷房の室外機がなぜ熱い風を出すのか、冷房がなぜ部屋を涼しくできるのかを確かめます。\n\nこの動画のイラストはAIで生成しています。動画の「熱ふたつと電気ひとつ」は計算しやすいように置いた仮の数字です。冷房が運ぶ熱の倍率は教材にあるおおよその値で、実際は機種と天気によります。それぞれの説明の出典は下の参考資料にあります。\n\n2026年11月6日時点の情報です"
+  },
+  "tags": {
+    "todo": true,
+    "source": [
+      "冰箱",
+      "冰箱門打開",
+      "冷氣",
+      "室外機",
+      "冷媒",
+      "熱力學",
+      "科普",
+      "原來如此事務所"
+    ],
+    "text": [
+      "冷蔵庫",
+      "冷蔵庫のドアを開ける",
+      "冷房",
+      "室外機",
+      "冷媒",
+      "熱力学",
+      "科学",
+      "なるほど事務所"
+    ]
+  },
+  "thumbnail": {
+    "todo": true,
+    "source": {
+      "headline": "冰箱門開著\n**廚房更熱**",
+      "sub": "冰箱只是把熱搬到背後"
+    },
+    "text": {
+      "headline": "ドアを開けると\n**台所は暑くなる**",
+      "sub": "冷蔵庫は熱を裏へ運ぶだけ"
+    }
+  },
+  "chapters": [
+    {
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "熱天下午，冰箱門開著",
+      "text": "暑い午後、冷蔵庫のドアが開いてる"
+    },
+    {
+      "scene": "kid-cold-out",
+      "todo": true,
+      "source": "冰箱裡少掉的熱",
+      "text": "冷蔵庫の中から減った熱"
+    },
+    {
+      "scene": "kid-eat-heat",
+      "todo": true,
+      "source": "冰箱背後熱熱的",
+      "text": "冷蔵庫の裏が温かい"
+    },
+    {
+      "scene": "chief-bigger",
+      "todo": true,
+      "source": "把整間廚房圈起來",
+      "text": "台所ごと円で囲む"
+    },
+    {
+      "scene": "chief-balcony",
+      "todo": true,
+      "source": "冷氣把熱的那頭放到外面",
+      "text": "冷房は熱い側を外に置く"
+    },
+    {
+      "scene": "chief-back-kitchen",
+      "todo": true,
+      "source": "小問關上冰箱門",
+      "text": "ハテナが冷蔵庫のドアを閉める"
+    }
+  ],
+  "glossary": {
+    "terms": [
+      "AI"
+    ],
+    "sources": [
+      "HyperPhysics (Georgia State University): Refrigerator",
+      "HyperPhysics (Georgia State University): Heat Pump, Air Conditioners and Heat Pumps, Coefficient of Performance",
+      "University of Illinois Physics Van: Open Refrigerator",
+      "University of Sydney School of Physics: Bar Fridge (thermal physics activity)",
+      "Penn State EGEE 102: 10.4 How Air Conditioners Work",
+      "Wikipedia: Refrigerator",
+      "Wikipedia: Coefficient of performance",
+      "Wikipedia: Air conditioning",
+      "Wikipedia: Dehumidifier",
+      "HyperPhysics (Georgia State University): Thermal Conductivity",
+      "Electrical and Mechanical Services Department, Hong Kong: Energy Saving Tips For Home, Air Conditioner"
+    ]
+  },
+  "boundaries": {},
+  "lines": [
+    {
+      "id": "p001",
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "所長！今天熱到不行，",
+      "text": "所長！今日すごく暑い！",
+      "max_chars": 12
+    },
+    {
+      "id": "p002",
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "我把冰箱門一打開，",
+      "text": "冷蔵庫を開けたら、",
+      "max_chars": 9
+    },
+    {
+      "id": "p003",
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "臉馬上涼涼的！",
+      "text": "顔がすぐ涼しい！",
+      "max_chars": 11
+    },
+    {
+      "id": "p004",
+      "scene": "kid-idea",
+      "todo": true,
+      "source": "我想到一個好方法！",
+      "text": "名案だ！",
+      "max_chars": 6
+    },
+    {
+      "id": "p005",
+      "scene": "kid-idea",
+      "todo": true,
+      "source": "冰箱門整天開著，",
+      "text": "一日開けたら、",
+      "max_chars": 9
+    },
+    {
+      "id": "p006",
+      "scene": "kid-idea",
+      "todo": true,
+      "source": "廚房就不用開冷氣了！",
+      "text": "台所に冷房いらない！",
+      "max_chars": 15
+    },
+    {
+      "id": "p007",
+      "scene": "chief-wait",
+      "todo": true,
+      "source": "先別急著拔冷氣的插頭。",
+      "text": "まだ抜かないで。",
+      "max_chars": 10
+    },
+    {
+      "id": "p008",
+      "scene": "chief-wait",
+      "todo": true,
+      "source": "你也可以猜猜看：冰箱門一直開著，",
+      "text": "予想してみて。ドアを開けっぱなしだと、",
+      "max_chars": 19
+    },
+    {
+      "id": "p009",
+      "scene": "chief-wait",
+      "todo": true,
+      "source": "廚房會變涼，還是反而變熱？",
+      "text": "台所は涼しくなる？暑くなる？",
+      "max_chars": 20
+    },
+    {
+      "id": "p010",
+      "scene": "kid-hotter",
+      "todo": true,
+      "source": "變熱？",
+      "text": "暑く？",
+      "max_chars": 4
+    },
+    {
+      "id": "p011",
+      "scene": "kid-hotter",
+      "todo": true,
+      "source": "冰箱明明是冷的耶！",
+      "text": "冷蔵庫は冷たいのに！",
+      "max_chars": 14
+    },
+    {
+      "id": "p012",
+      "scene": "chief-back-tease",
+      "todo": true,
+      "source": "那你走過冰箱旁邊時，把手靠近它的背後。",
+      "text": "今度、冷蔵庫の裏に手を近づけてみて。",
+      "max_chars": 20
+    },
+    {
+      "id": "p013",
+      "scene": "chief-back-tease",
+      "todo": true,
+      "source": "那裡摸起來，可一點都不冷。",
+      "text": "そこは、ちっとも冷たくないの。",
+      "max_chars": 20
+    },
+    {
+      "id": "p014",
+      "scene": "kid-back-guess",
+      "todo": true,
+      "source": "冰箱後面，",
+      "text": "裏には、",
+      "max_chars": 7
+    },
+    {
+      "id": "p015",
+      "scene": "kid-back-guess",
+      "todo": true,
+      "source": "藏了什麼東西？",
+      "text": "何があるの？",
+      "max_chars": 12
+    },
+    {
+      "id": "p016",
+      "scene": "outdoor-unit",
+      "todo": true,
+      "source": "還有你家陽台上，那台嗡嗡轉的大箱子，",
+      "text": "ベランダでブーンと回る大きな箱。",
+      "max_chars": 21
+    },
+    {
+      "id": "p017",
+      "scene": "outdoor-unit",
+      "todo": true,
+      "source": "它吹出來的風，你猜是冷的還是熱的？",
+      "text": "その風は冷たい？それとも熱い？",
+      "max_chars": 26
+    },
+    {
+      "id": "p018",
+      "scene": "kid-outdoor-guess",
+      "todo": true,
+      "source": "冷氣的箱子，",
+      "text": "冷房の箱？",
+      "max_chars": 5
+    },
+    {
+      "id": "p019",
+      "scene": "kid-outdoor-guess",
+      "todo": true,
+      "source": "吹的一定是冷風吧？",
+      "text": "絶対、冷たい風でしょ？",
+      "max_chars": 17
+    },
+    {
+      "id": "p020",
+      "scene": "chief-promise",
+      "todo": true,
+      "source": "這些問題的答案，都藏在同一台冰箱裡。",
+      "text": "答えはみんな、この冷蔵庫の中にあるの。",
+      "max_chars": 19
+    },
+    {
+      "id": "p021",
+      "scene": "chief-promise",
+      "todo": true,
+      "source": "它門開著的時候，熱到底跑去了哪裡？",
+      "text": "ドアを開けたとき、熱はどこへ行くのかな？",
+      "max_chars": 27
+    },
+    {
+      "id": "p022",
+      "scene": "kid-cold-out",
+      "todo": true,
+      "source": "冰箱裡面裝滿了冷，",
+      "text": "中は冷たさでいっぱい、",
+      "max_chars": 11
+    },
+    {
+      "id": "p023",
+      "scene": "kid-cold-out",
+      "todo": true,
+      "source": "門一開，冷就跑出來了！",
+      "text": "開けたら冷たさが出てくる！",
+      "max_chars": 19
+    },
+    {
+      "id": "p024",
+      "scene": "chief-tea",
+      "todo": true,
+      "source": "你家桌上，有沒有放涼過一杯熱茶？",
+      "text": "熱いお茶を冷ましたこと、ある？",
+      "max_chars": 17
+    },
+    {
+      "id": "p025",
+      "scene": "chief-tea",
+      "todo": true,
+      "source": "你把它放在桌上，過一陣子會怎樣？",
+      "text": "机に置いておくと、どうなる？",
+      "max_chars": 18
+    },
+    {
+      "id": "p026",
+      "scene": "kid-tea",
+      "todo": true,
+      "source": "會變溫溫的。",
+      "text": "ぬるくなる。",
+      "max_chars": 7
+    },
+    {
+      "id": "p027",
+      "scene": "kid-tea",
+      "todo": true,
+      "source": "熱跑掉了！",
+      "text": "熱が逃げた！",
+      "max_chars": 8
+    },
+    {
+      "id": "p028",
+      "scene": "ice-cube",
+      "todo": true,
+      "source": "那一顆冰塊放在桌上呢？",
+      "text": "じゃあ、机の氷は？",
+      "max_chars": 12
+    },
+    {
+      "id": "p029",
+      "scene": "ice-cube",
+      "todo": true,
+      "source": "會慢慢融化。",
+      "text": "だんだん溶ける。",
+      "max_chars": 9
+    },
+    {
+      "id": "p030",
+      "scene": "chief-heat-flow",
+      "todo": true,
+      "source": "冰塊融化，是旁邊空氣的熱跑進了冰塊。",
+      "text": "氷が溶けるのは、まわりの空気の熱が入るから。",
+      "max_chars": 30
+    },
+    {
+      "id": "p031",
+      "scene": "chief-heat-flow",
+      "todo": true,
+      "source": "熱自己走，只會從熱的地方，跑到冷的地方。",
+      "text": "熱はひとりでは、熱いところから冷たいところへ行くだけ。",
+      "max_chars": 31
+    },
+    {
+      "id": "p032",
+      "scene": "kid-cold-run",
+      "todo": true,
+      "source": "那冷呢？",
+      "text": "冷たさ？",
+      "max_chars": 4
+    },
+    {
+      "id": "p033",
+      "scene": "kid-cold-run",
+      "todo": true,
+      "source": "冰冰的空氣，不會自己跑嗎？",
+      "text": "冷たい空気は動かないの？",
+      "max_chars": 18
+    },
+    {
+      "id": "p034",
+      "scene": "chief-cold-less",
+      "todo": true,
+      "source": "我們說的冷，其實就是熱比較少。",
+      "text": "冷たいって、熱が少ないことなの。",
+      "max_chars": 18
+    },
+    {
+      "id": "p035",
+      "scene": "chief-cold-less",
+      "todo": true,
+      "source": "冷不是一種會跑出來的東西。",
+      "text": "冷たさは、出てくるものじゃない。",
+      "max_chars": 19
+    },
+    {
+      "id": "p036",
+      "scene": "kid-face-cool",
+      "todo": true,
+      "source": "那我的臉，",
+      "text": "じゃあ顔は、",
+      "max_chars": 7
+    },
+    {
+      "id": "p037",
+      "scene": "kid-face-cool",
+      "todo": true,
+      "source": "怎麼會涼涼的？",
+      "text": "なんで涼しいの？",
+      "max_chars": 14
+    },
+    {
+      "id": "p038",
+      "scene": "chief-face",
+      "todo": true,
+      "source": "冰箱裡的冷空氣流出來，碰到你的臉，",
+      "text": "冷たい空気が流れ出て、顔に触れると、",
+      "max_chars": 24
+    },
+    {
+      "id": "p039",
+      "scene": "chief-face",
+      "todo": true,
+      "source": "你臉上的熱就跑進那團冷空氣裡。",
+      "text": "顔の熱がその空気に移るの。",
+      "max_chars": 21
+    },
+    {
+      "id": "p040",
+      "scene": "kid-stolen",
+      "todo": true,
+      "source": "我的熱被偷走了！",
+      "text": "熱を取られた！",
+      "max_chars": 15
+    },
+    {
+      "id": "p041",
+      "scene": "chief-circle",
+      "todo": true,
+      "source": "想知道熱被搬去哪裡，我們來畫一個圈。",
+      "text": "熱の行き先を、円を描いて見よう。",
+      "max_chars": 17
+    },
+    {
+      "id": "p042",
+      "scene": "chief-circle",
+      "todo": true,
+      "source": "圈裡面的熱，多了少了，我們都記下來。",
+      "text": "円の中の熱が増えても減っても、全部メモしておくね。",
+      "max_chars": 31
+    },
+    {
+      "id": "p043",
+      "scene": "plan-inside",
+      "todo": true,
+      "source": "我把熱畫成一顆顆紅色的小球。",
+      "text": "熱は赤い小さな玉で描くね。",
+      "max_chars": 17
+    },
+    {
+      "id": "p044",
+      "scene": "plan-inside",
+      "todo": true,
+      "source": "先圈住冰箱的裡面就好。",
+      "text": "まずは冷蔵庫の中だけ。",
+      "max_chars": 17
+    },
+    {
+      "id": "p045",
+      "scene": "fridge-shelves",
+      "todo": true,
+      "source": "冷藏的那幾層，大約只有三到五度，",
+      "text": "冷蔵室はだいたい3度から5度、",
+      "max_chars": 19
+    },
+    {
+      "id": "p046",
+      "scene": "fridge-shelves",
+      "todo": true,
+      "source": "比夏天的廚房，冷了一大截。",
+      "text": "夏の台所よりずっと冷たい。",
+      "max_chars": 19
+    },
+    {
+      "id": "p047",
+      "scene": "freezer",
+      "todo": true,
+      "source": "那下面的冷凍庫，你猜有多冷？",
+      "text": "下の冷凍室は、何度だと思う？",
+      "max_chars": 14
+    },
+    {
+      "id": "p048",
+      "scene": "freezer",
+      "todo": true,
+      "source": "多半在零下十八度，甚至更冷。",
+      "text": "たいていマイナス18度か、もっと低いの。",
+      "max_chars": 25
+    },
+    {
+      "id": "p049",
+      "scene": "kid-freezer",
+      "todo": true,
+      "source": "零下十八度！",
+      "text": "零下18度！",
+      "max_chars": 6
+    },
+    {
+      "id": "p050",
+      "scene": "kid-freezer",
+      "todo": true,
+      "source": "比台灣的冬天冷多了！",
+      "text": "台湾の冬よりずっと寒い！",
+      "max_chars": 18
+    },
+    {
+      "id": "p051",
+      "scene": "chief-gap",
+      "todo": true,
+      "source": "裡外差得越多，熱就越急著往裡面鑽。",
+      "text": "中と外の差が大きいほど、熱は中へ急ぐの。",
+      "max_chars": 23
+    },
+    {
+      "id": "p052",
+      "scene": "kid-sneak",
+      "todo": true,
+      "source": "廚房的熱，",
+      "text": "台所の熱が、",
+      "max_chars": 9
+    },
+    {
+      "id": "p053",
+      "scene": "kid-sneak",
+      "todo": true,
+      "source": "會想鑽進冰箱裡？",
+      "text": "冷蔵庫に入りたがる？",
+      "max_chars": 16
+    },
+    {
+      "id": "p054",
+      "scene": "chief-sneak",
+      "todo": true,
+      "source": "會。照剛剛那條規矩，熱一定往冷的地方跑。",
+      "text": "そう。さっきのルールで、熱は冷たいほうへ行く。",
+      "max_chars": 24
+    },
+    {
+      "id": "p055",
+      "scene": "chief-sneak",
+      "todo": true,
+      "source": "可是冰箱的門，擋了它一下。",
+      "text": "でも、冷蔵庫のドアが邪魔をするの。",
+      "max_chars": 21
+    },
+    {
+      "id": "p056",
+      "scene": "kid-door-thick",
+      "todo": true,
+      "source": "你打開冰箱門，摸摸它的邊，",
+      "text": "開けてふちを触って。",
+      "max_chars": 13
+    },
+    {
+      "id": "p057",
+      "scene": "kid-door-thick",
+      "todo": true,
+      "source": "門又厚又重，邊上還有一圈軟軟的膠條。",
+      "text": "厚くて重くて、ふちに柔らかいゴムがある。",
+      "max_chars": 26
+    },
+    {
+      "id": "p058",
+      "scene": "kid-thermos",
+      "todo": true,
+      "source": "跟保溫瓶一樣厚！",
+      "text": "水筒みたいに厚い！",
+      "max_chars": 13
+    },
+    {
+      "id": "p059",
+      "scene": "chief-insulate",
+      "todo": true,
+      "source": "對，門和牆裡都塞了擋熱的材料。",
+      "text": "そう。ドアと壁には断熱材が入ってる。",
+      "max_chars": 19
+    },
+    {
+      "id": "p060",
+      "scene": "chief-insulate",
+      "todo": true,
+      "source": "這叫做隔熱，讓熱跑得慢一點。",
+      "text": "断熱といって、熱が入るのを遅くするの。",
+      "max_chars": 21
+    },
+    {
+      "id": "p061",
+      "scene": "chief-door-later",
+      "todo": true,
+      "source": "這道厚厚的門，你先記著，等一下它會回來。",
+      "text": "この厚いドア、覚えておいて。またあとで出てくるよ。",
+      "max_chars": 25
+    },
+    {
+      "id": "p062",
+      "scene": "kid-slow",
+      "todo": true,
+      "source": "只是慢一點？",
+      "text": "遅くなるだけ？",
+      "max_chars": 7
+    },
+    {
+      "id": "p063",
+      "scene": "kid-slow",
+      "todo": true,
+      "source": "那熱還是會溜進去？",
+      "text": "熱はやっぱり入るの？",
+      "max_chars": 11
+    },
+    {
+      "id": "p064",
+      "scene": "chief-must-carry",
+      "todo": true,
+      "source": "會。冰箱裡卻一直那麼冷，",
+      "text": "入る。でも中はずっと冷たい。",
+      "max_chars": 15
+    },
+    {
+      "id": "p065",
+      "scene": "chief-must-carry",
+      "todo": true,
+      "source": "就表示有東西，一直把熱搬出去。",
+      "text": "つまり、何かが熱を外へ運んでるの。",
+      "max_chars": 20
+    },
+    {
+      "id": "p066",
+      "scene": "plan-inside-out",
+      "todo": true,
+      "source": "圈裡的熱，一顆一顆被送出圈外。",
+      "text": "円の中の熱が、ひとつずつ外へ出ていく。",
+      "max_chars": 24
+    },
+    {
+      "id": "p067",
+      "scene": "kid-where-q",
+      "todo": true,
+      "source": "那些熱，",
+      "text": "その熱、",
+      "max_chars": 4
+    },
+    {
+      "id": "p068",
+      "scene": "kid-where-q",
+      "todo": true,
+      "source": "被搬去哪裡了？",
+      "text": "どこへ行ったの？",
+      "max_chars": 11
+    },
+    {
+      "id": "p069",
+      "scene": "kid-eat-heat",
+      "todo": true,
+      "source": "會不會是冰箱，",
+      "text": "冷蔵庫が熱を",
+      "max_chars": 9
+    },
+    {
+      "id": "p070",
+      "scene": "kid-eat-heat",
+      "todo": true,
+      "source": "把熱吃掉了？",
+      "text": "食べちゃった？",
+      "max_chars": 15
+    },
+    {
+      "id": "p071",
+      "scene": "chief-vanish",
+      "todo": true,
+      "source": "熱不會憑空變不見，只會換個地方待。",
+      "text": "熱は消えない。場所を変えるだけ。",
+      "max_chars": 20
+    },
+    {
+      "id": "p072",
+      "scene": "chief-vanish",
+      "todo": true,
+      "source": "不信，你繞到冰箱的後面看看。",
+      "text": "冷蔵庫の裏に回ってみて。",
+      "max_chars": 17
+    },
+    {
+      "id": "p073",
+      "scene": "kid-behind",
+      "todo": true,
+      "source": "咦？後面暖暖的！",
+      "text": "あれ？裏が温かい！",
+      "max_chars": 10
+    },
+    {
+      "id": "p074",
+      "scene": "kid-behind",
+      "todo": true,
+      "source": "有一股溫溫的風！",
+      "text": "温かい風だ！",
+      "max_chars": 7
+    },
+    {
+      "id": "p075",
+      "scene": "kid-behind",
+      "todo": true,
+      "source": "手靠近就好，背後有電線，別伸進去亂摸。",
+      "text": "手を近づけるだけね。電線があるから触らないで。",
+      "max_chars": 26
+    },
+    {
+      "id": "p076",
+      "scene": "coils",
+      "todo": true,
+      "source": "冰箱背後這一排彎彎的管子，摸起來是溫的。",
+      "text": "裏のくねくねした管が、温かいでしょ。",
+      "max_chars": 23
+    },
+    {
+      "id": "p077",
+      "scene": "coils",
+      "todo": true,
+      "source": "冰箱裡少掉的熱，就是從這裡吐回廚房。",
+      "text": "中から減った熱は、ここから台所へ出るの。",
+      "max_chars": 25
+    },
+    {
+      "id": "p078",
+      "scene": "kid-moved",
+      "todo": true,
+      "source": "原來熱被搬到後面了！",
+      "text": "熱は裏へ運ばれてた！",
+      "max_chars": 15
+    },
+    {
+      "id": "p079",
+      "scene": "chief-feet",
+      "todo": true,
+      "source": "有的冰箱，還會從底下吹出溫溫的風，",
+      "text": "下から温かい風を出す冷蔵庫もあるの。",
+      "max_chars": 21
+    },
+    {
+      "id": "p080",
+      "scene": "chief-feet",
+      "todo": true,
+      "source": "你站在它前面，腳邊有沒有被吹過？",
+      "text": "前に立つと、足元に風を感じない？",
+      "max_chars": 23
+    },
+    {
+      "id": "p081",
+      "scene": "kid-feet",
+      "todo": true,
+      "source": "腳暖暖的，",
+      "text": "足は温か、",
+      "max_chars": 6
+    },
+    {
+      "id": "p082",
+      "scene": "kid-feet",
+      "todo": true,
+      "source": "臉涼涼的！",
+      "text": "顔は涼しい！",
+      "max_chars": 9
+    },
+    {
+      "id": "p083",
+      "scene": "kid-no-hands",
+      "todo": true,
+      "source": "可是冰箱又沒有手，",
+      "text": "でも冷蔵庫には手がない。",
+      "max_chars": 14
+    },
+    {
+      "id": "p084",
+      "scene": "kid-no-hands",
+      "todo": true,
+      "source": "它怎麼搬熱？",
+      "text": "どうやって熱を運ぶの？",
+      "max_chars": 11
+    },
+    {
+      "id": "p085",
+      "scene": "chief-refrigerant",
+      "todo": true,
+      "source": "冰箱的管子裡，有一種會繞圈子跑的東西，",
+      "text": "管の中を、ぐるぐる回るものがあって、",
+      "max_chars": 22
+    },
+    {
+      "id": "p086",
+      "scene": "chief-refrigerant",
+      "todo": true,
+      "source": "叫做冷媒。",
+      "text": "冷媒っていうの。",
+      "max_chars": 12
+    },
+    {
+      "id": "p087",
+      "scene": "kid-refrigerant-q",
+      "todo": true,
+      "source": "冷媒？",
+      "text": "冷媒",
+      "max_chars": 2
+    },
+    {
+      "id": "p088",
+      "scene": "kid-refrigerant-q",
+      "todo": true,
+      "source": "它本身是冷的嗎？",
+      "text": "それ自体が冷たいの？",
+      "max_chars": 11
+    },
+    {
+      "id": "p089",
+      "scene": "chief-shower-back",
+      "todo": true,
+      "source": "它不一定冷，但它會變身。你洗完熱水澡，",
+      "text": "冷たいとは限らないけど、姿を変える。お風呂のあと、",
+      "max_chars": 25
+    },
+    {
+      "id": "p090",
+      "scene": "chief-shower-back",
+      "todo": true,
+      "source": "濕濕地走出浴室，是不是會冷得發抖？",
+      "text": "ぬれたまま出ると、ぶるっと寒くない？",
+      "max_chars": 22
+    },
+    {
+      "id": "p091",
+      "scene": "kid-towel2",
+      "todo": true,
+      "source": "會！明明洗的是熱水！",
+      "text": "寒い！お湯だったのに！",
+      "max_chars": 12
+    },
+    {
+      "id": "p092",
+      "scene": "kid-towel2",
+      "todo": true,
+      "source": "你身上的水，變成水氣飛走的時候，",
+      "text": "体の水が水蒸気になって飛ぶとき、",
+      "max_chars": 21
+    },
+    {
+      "id": "p093",
+      "scene": "kid-towel2",
+      "todo": true,
+      "source": "會順手把你身上的熱帶走。",
+      "text": "体の熱を一緒に持っていくの。",
+      "max_chars": 16
+    },
+    {
+      "id": "p094",
+      "scene": "kid-wet-cold",
+      "todo": true,
+      "source": "所以濕濕的才會冷！",
+      "text": "だからぬれると寒いんだ！",
+      "max_chars": 16
+    },
+    {
+      "id": "p095",
+      "scene": "evaporate",
+      "todo": true,
+      "source": "冷媒在冰箱裡面，也是從液體變成氣體，",
+      "text": "冷媒も冷蔵庫の中で、液体から気体になって、",
+      "max_chars": 27
+    },
+    {
+      "id": "p096",
+      "scene": "evaporate",
+      "todo": true,
+      "source": "把裡面的熱，一起帶進管子裡。",
+      "text": "中の熱を管の中へ運ぶの。",
+      "max_chars": 23
+    },
+    {
+      "id": "p097",
+      "scene": "kid-boil-q",
+      "todo": true,
+      "source": "冰箱裡那麼冷，",
+      "text": "寒いのに、",
+      "max_chars": 7
+    },
+    {
+      "id": "p098",
+      "scene": "kid-boil-q",
+      "todo": true,
+      "source": "冷媒也能變成氣體？",
+      "text": "冷媒は気体になれるの？",
+      "max_chars": 19
+    },
+    {
+      "id": "p099",
+      "scene": "chief-low-boil",
+      "todo": true,
+      "source": "能。冷媒是特別挑過的液體，很容易沸騰，",
+      "text": "なれる。冷媒は特別に選んだ、沸きやすい液体で、",
+      "max_chars": 25
+    },
+    {
+      "id": "p100",
+      "scene": "chief-low-boil",
+      "todo": true,
+      "source": "冰箱裡那一點熱，就夠它變成氣體。",
+      "text": "冷蔵庫の中の少しの熱で気体になるの。",
+      "max_chars": 22
+    },
+    {
+      "id": "p101",
+      "scene": "kid-cold-boil",
+      "todo": true,
+      "source": "冰冰的還會沸騰？",
+      "text": "冷たいのに沸騰？",
+      "max_chars": 10
+    },
+    {
+      "id": "p102",
+      "scene": "kid-cold-boil",
+      "todo": true,
+      "source": "好奇怪的液體！",
+      "text": "不思議な液体！",
+      "max_chars": 15
+    },
+    {
+      "id": "p103",
+      "scene": "kid-gas-where",
+      "todo": true,
+      "source": "帶著熱的氣體，",
+      "text": "熱い気体は、",
+      "max_chars": 7
+    },
+    {
+      "id": "p104",
+      "scene": "kid-gas-where",
+      "todo": true,
+      "source": "接著跑去哪？",
+      "text": "次はどこへ？",
+      "max_chars": 11
+    },
+    {
+      "id": "p105",
+      "scene": "compressor",
+      "todo": true,
+      "source": "它跑進一個圓圓的鐵罐裡。",
+      "text": "丸い鉄の缶に入るの。",
+      "max_chars": 14
+    },
+    {
+      "id": "p106",
+      "scene": "compressor",
+      "todo": true,
+      "source": "這個鐵罐叫做壓縮機。",
+      "text": "この缶を圧縮機っていうの。",
+      "max_chars": 17
+    },
+    {
+      "id": "p107",
+      "scene": "chief-squeeze",
+      "todo": true,
+      "source": "壓縮機把冷媒的氣體，擠得緊緊的。",
+      "text": "圧縮機が気体をぎゅっとつぶすの。",
+      "max_chars": 16
+    },
+    {
+      "id": "p108",
+      "scene": "chief-squeeze",
+      "todo": true,
+      "source": "被擠緊的冷媒，流進背後那排管子，",
+      "text": "つぶされた冷媒は、裏の管へ流れて、",
+      "max_chars": 28
+    },
+    {
+      "id": "p109",
+      "scene": "condense",
+      "todo": true,
+      "source": "在那裡變回液體，把帶來的熱交給廚房。",
+      "text": "液体に戻って、熱を台所に渡すの。",
+      "max_chars": 22
+    },
+    {
+      "id": "p110",
+      "scene": "condense",
+      "todo": true,
+      "source": "然後它再流回冰箱裡面，重新跑一圈。",
+      "text": "それから中へ戻って、またひと回り。",
+      "max_chars": 26
+    },
+    {
+      "id": "p111",
+      "scene": "kid-train",
+      "todo": true,
+      "source": "像載著熱的小火車！",
+      "text": "熱を運ぶ小さな汽車みたい！",
+      "max_chars": 16
+    },
+    {
+      "id": "p112",
+      "scene": "chief-train",
+      "todo": true,
+      "source": "很像。一圈又一圈，把熱從裡面載到外面。",
+      "text": "そうね。ぐるぐる回って、熱を中から外へ運ぶの。",
+      "max_chars": 34
+    },
+    {
+      "id": "p113",
+      "scene": "kid-plug",
+      "todo": true,
+      "source": "小火車要有人推吧？",
+      "text": "汽車は誰かが押すの？",
+      "max_chars": 19
+    },
+    {
+      "id": "p114",
+      "scene": "chief-electric",
+      "todo": true,
+      "source": "推它的就是電。把氣體擠緊很費力，",
+      "text": "押すのは電気。気体をつぶすのは大変で、",
+      "max_chars": 25
+    },
+    {
+      "id": "p115",
+      "scene": "chief-electric",
+      "todo": true,
+      "source": "壓縮機要一直吃電，才轉得動。",
+      "text": "圧縮機は電気を使い続けるの。",
+      "max_chars": 19
+    },
+    {
+      "id": "p116",
+      "scene": "plan-bolt",
+      "todo": true,
+      "source": "電，我們就畫成黃色的小閃電。",
+      "text": "電気は黄色い稲妻で描くね。",
+      "max_chars": 23
+    },
+    {
+      "id": "p117",
+      "scene": "chief-thermostat",
+      "todo": true,
+      "source": "它也不是一直跑：冰箱裡一變暖，它就開工，",
+      "text": "ずっとは動かない。中が温まると動いて、",
+      "max_chars": 23
+    },
+    {
+      "id": "p118",
+      "scene": "chief-thermostat",
+      "todo": true,
+      "source": "夠冷了，就停下來休息。",
+      "text": "冷えたら休むの。",
+      "max_chars": 10
+    },
+    {
+      "id": "p119",
+      "scene": "chief-thermostat",
+      "todo": true,
+      "source": "難怪它有時候安安靜靜！",
+      "text": "だから静かなときがあるんだ！",
+      "max_chars": 18
+    },
+    {
+      "id": "p120",
+      "scene": "kid-motor-q",
+      "todo": true,
+      "source": "那它吃進去的電，",
+      "text": "使った電気は、",
+      "max_chars": 10
+    },
+    {
+      "id": "p121",
+      "scene": "kid-motor-q",
+      "todo": true,
+      "source": "最後跑去哪了？",
+      "text": "最後どこへ行くの？",
+      "max_chars": 11
+    },
+    {
+      "id": "p122",
+      "scene": "kid-ledger-q",
+      "todo": true,
+      "source": "還有，背後吐出來的熱，",
+      "text": "裏から出る熱と、",
+      "max_chars": 13
+    },
+    {
+      "id": "p123",
+      "scene": "kid-ledger-q",
+      "todo": true,
+      "source": "跟裡面搬出來的，",
+      "text": "運んだ熱、",
+      "max_chars": 8
+    },
+    {
+      "id": "p124",
+      "scene": "kid-ledger-q",
+      "todo": true,
+      "source": "一樣多嗎？",
+      "text": "同じ量なの？",
+      "max_chars": 9
+    },
+    {
+      "id": "p125",
+      "scene": "chief-bigger",
+      "todo": true,
+      "source": "要回答這兩個問題，圈得畫大一點，",
+      "text": "答えるには、円を大きくして、",
+      "max_chars": 17
+    },
+    {
+      "id": "p126",
+      "scene": "chief-bigger",
+      "todo": true,
+      "source": "把整間廚房都圈進來。",
+      "text": "台所ごと囲もう。",
+      "max_chars": 15
+    },
+    {
+      "id": "p127",
+      "scene": "plan-room",
+      "todo": true,
+      "source": "冰箱、冰箱背後、你站的地方，",
+      "text": "冷蔵庫も、その裏も、あなたの立つ場所も、",
+      "max_chars": 22
+    },
+    {
+      "id": "p128",
+      "scene": "plan-room",
+      "todo": true,
+      "source": "現在全在同一個圈裡。",
+      "text": "今は全部ひとつの円の中。",
+      "max_chars": 25
+    },
+    {
+      "id": "p129",
+      "scene": "chief-suppose",
+      "todo": true,
+      "source": "先讓門關著，假設一組好算的數字：",
+      "text": "ドアは閉めて、計算しやすい数で。",
+      "max_chars": 18
+    },
+    {
+      "id": "p130",
+      "scene": "chief-suppose",
+      "todo": true,
+      "source": "冰箱從裡面搬出兩顆紅球的熱，",
+      "text": "中から運ぶ熱は赤い玉ふたつ、",
+      "max_chars": 20
+    },
+    {
+      "id": "p131",
+      "scene": "chief-one-bolt",
+      "todo": true,
+      "source": "壓縮機做這件事，吃了一份電。",
+      "text": "圧縮機が使う電気はひとつ。",
+      "max_chars": 17
+    },
+    {
+      "id": "p132",
+      "scene": "kid-guess-count",
+      "todo": true,
+      "source": "背後會吐出幾顆？",
+      "text": "裏から出るのは何個？",
+      "max_chars": 11
+    },
+    {
+      "id": "p133",
+      "scene": "two-plus-one",
+      "todo": true,
+      "source": "三顆。搬出來的兩顆，加上一顆。",
+      "text": "三つ。運んだふたつと、もうひとつ。",
+      "max_chars": 19
+    },
+    {
+      "id": "p134",
+      "scene": "two-plus-one",
+      "todo": true,
+      "source": "那一顆，就是壓縮機吃進去的電變的。",
+      "text": "そのひとつは、圧縮機の電気が変わったもの。",
+      "max_chars": 23
+    },
+    {
+      "id": "p135",
+      "scene": "kid-more",
+      "todo": true,
+      "source": "吐出來的比搬出來的多！",
+      "text": "運んだより多く出てる！",
+      "max_chars": 18
+    },
+    {
+      "id": "p136",
+      "scene": "chief-energy",
+      "todo": true,
+      "source": "對。電用完不會變不見，最後也變成熱。",
+      "text": "そう。電気は消えない。最後は熱になるの。",
+      "max_chars": 31
+    },
+    {
+      "id": "p137",
+      "scene": "kid-closed-q",
+      "todo": true,
+      "source": "那門關著，廚房會變熱嗎？",
+      "text": "閉めてても、台所は暑くなる？",
+      "max_chars": 21
+    },
+    {
+      "id": "p138",
+      "scene": "chief-closed",
+      "todo": true,
+      "source": "那兩顆熱，本來就是從牆和門邊，慢慢溜進冰箱的。",
+      "text": "そのふたつは、壁やドアからゆっくり入った熱。",
+      "max_chars": 31
+    },
+    {
+      "id": "p139",
+      "scene": "chief-closed",
+      "todo": true,
+      "source": "現在被搬回廚房，還多帶了電變的那一顆。",
+      "text": "それが台所に戻って、電気のひとつも加わる。",
+      "max_chars": 25
+    },
+    {
+      "id": "p140",
+      "scene": "kid-closed",
+      "todo": true,
+      "source": "所以就算門關著，",
+      "text": "閉めていても、",
+      "max_chars": 12
+    },
+    {
+      "id": "p141",
+      "scene": "kid-closed",
+      "todo": true,
+      "source": "廚房也會熱一點點？",
+      "text": "台所は少し暑くなる？",
+      "max_chars": 14
+    },
+    {
+      "id": "p142",
+      "scene": "chief-closed2",
+      "todo": true,
+      "source": "對，冰箱只要在跑，廚房就被它加熱了一點點。",
+      "text": "そう。動いている間、台所を少し温めてるの。",
+      "max_chars": 31
+    },
+    {
+      "id": "p143",
+      "scene": "kid-open-again",
+      "todo": true,
+      "source": "那我把門打開，",
+      "text": "じゃあ開けたら、",
+      "max_chars": 8
+    },
+    {
+      "id": "p144",
+      "scene": "kid-open-again",
+      "todo": true,
+      "source": "會怎樣？",
+      "text": "どうなる？",
+      "max_chars": 6
+    },
+    {
+      "id": "p145",
+      "scene": "plan-loop",
+      "todo": true,
+      "source": "廚房的熱，從門口一直灌進冰箱，",
+      "text": "台所の熱がドアから流れこみ、",
+      "max_chars": 19
+    },
+    {
+      "id": "p146",
+      "scene": "plan-loop",
+      "todo": true,
+      "source": "冰箱再把它們搬到背後，吐回廚房。",
+      "text": "冷蔵庫が裏から台所へ戻すの。",
+      "max_chars": 20
+    },
+    {
+      "id": "p147",
+      "scene": "kid-circle",
+      "todo": true,
+      "source": "原來熱在繞圈圈！",
+      "text": "熱がぐるぐる回ってる！",
+      "max_chars": 18
+    },
+    {
+      "id": "p148",
+      "scene": "chief-zero",
+      "todo": true,
+      "source": "對，冰箱搬出來的那兩顆熱，又從門口跑回去，",
+      "text": "そう。運んだふたつは、ドアからまた入る。",
+      "max_chars": 24
+    },
+    {
+      "id": "p149",
+      "scene": "chief-zero",
+      "todo": true,
+      "source": "廚房的熱，一顆也沒有少。",
+      "text": "台所の熱は、ひとつも減らない。",
+      "max_chars": 21
+    },
+    {
+      "id": "p150",
+      "scene": "plan-extra",
+      "todo": true,
+      "source": "可是每轉一圈，那道小閃電，",
+      "text": "でも一周ごとに、稲妻が",
+      "max_chars": 14
+    },
+    {
+      "id": "p151",
+      "scene": "plan-extra",
+      "todo": true,
+      "source": "就在圈裡多變出一顆熱。",
+      "text": "熱をひとつ増やすの。",
+      "max_chars": 16
+    },
+    {
+      "id": "p152",
+      "scene": "kid-answer",
+      "todo": true,
+      "source": "所以門開著，",
+      "text": "だから開けっぱなしだと、",
+      "max_chars": 15
+    },
+    {
+      "id": "p153",
+      "scene": "kid-answer",
+      "todo": true,
+      "source": "廚房反而變熱了！",
+      "text": "台所は暑くなる！",
+      "max_chars": 12
+    },
+    {
+      "id": "p154",
+      "scene": "kid-but-cool",
+      "todo": true,
+      "source": "可是我站在門口，",
+      "text": "でも、ドアの前は",
+      "max_chars": 13
+    },
+    {
+      "id": "p155",
+      "scene": "kid-but-cool",
+      "todo": true,
+      "source": "真的涼涼的啊！",
+      "text": "本当に涼しいよ！",
+      "max_chars": 11
+    },
+    {
+      "id": "p156",
+      "scene": "chief-front",
+      "todo": true,
+      "source": "沒錯，門口前面那一小塊，是會涼一點。",
+      "text": "そうね。ドアの前のところだけは少し涼しい。",
+      "max_chars": 21
+    },
+    {
+      "id": "p157",
+      "scene": "chief-front",
+      "todo": true,
+      "source": "可是你一走開，那塊涼就跟你沒關係了。",
+      "text": "でも離れたら、その涼しさとは関係なくなる。",
+      "max_chars": 24
+    },
+    {
+      "id": "p158",
+      "scene": "chief-harder",
+      "todo": true,
+      "source": "而且門一開，冰箱裡面一直變暖，",
+      "text": "それに開けると中が温まり続けて、",
+      "max_chars": 17
+    },
+    {
+      "id": "p159",
+      "scene": "chief-harder",
+      "todo": true,
+      "source": "壓縮機就停不下來，一直吃電。",
+      "text": "圧縮機が止まらず、電気を使い続けるの。",
+      "max_chars": 26
+    },
+    {
+      "id": "p160",
+      "scene": "kid-tired",
+      "todo": true,
+      "source": "冰箱好累喔！",
+      "text": "冷蔵庫、疲れちゃう！",
+      "max_chars": 14
+    },
+    {
+      "id": "p161",
+      "scene": "chief-more-heat",
+      "todo": true,
+      "source": "累的還有你家的電表，",
+      "text": "疲れるのは電気メーターも。",
+      "max_chars": 13
+    },
+    {
+      "id": "p162",
+      "scene": "chief-more-heat",
+      "todo": true,
+      "source": "電費也跟著一起變多。",
+      "text": "電気代も増えるの。",
+      "max_chars": 14
+    },
+    {
+      "id": "p163",
+      "scene": "kid-heater-q",
+      "todo": true,
+      "source": "那開著門的冰箱，",
+      "text": "開けっぱなしの冷蔵庫は、",
+      "max_chars": 14
+    },
+    {
+      "id": "p164",
+      "scene": "kid-heater-q",
+      "todo": true,
+      "source": "像冬天用的電暖器？",
+      "text": "冬のヒーターみたい？",
+      "max_chars": 16
+    },
+    {
+      "id": "p165",
+      "scene": "chief-heater",
+      "todo": true,
+      "source": "很像。只是它繞了一大圈，",
+      "text": "そうね。遠回りして、",
+      "max_chars": 13
+    },
+    {
+      "id": "p166",
+      "scene": "chief-heater",
+      "todo": true,
+      "source": "還順便讓冰箱裡的東西，一起變暖。",
+      "text": "中の食べ物まで温めちゃうけど。",
+      "max_chars": 22
+    },
+    {
+      "id": "p167",
+      "scene": "chief-opinion",
+      "todo": true,
+      "source": "我覺得這是冰箱最會騙人的地方：",
+      "text": "これが冷蔵庫の大きな誤解。",
+      "max_chars": 13
+    },
+    {
+      "id": "p168",
+      "scene": "chief-opinion",
+      "todo": true,
+      "source": "它是一台搬熱的機器，不是做冷的機器。",
+      "text": "熱を運ぶ機械で、冷たさを作る機械じゃないの。",
+      "max_chars": 26
+    },
+    {
+      "id": "p169",
+      "scene": "kid-trick",
+      "todo": true,
+      "source": "冰箱騙了我！",
+      "text": "だまされた！",
+      "max_chars": 9
+    },
+    {
+      "id": "p170",
+      "scene": "kid-ac-q",
+      "todo": true,
+      "source": "那冷氣呢？",
+      "text": "冷房は？",
+      "max_chars": 5
+    },
+    {
+      "id": "p171",
+      "scene": "kid-ac-q",
+      "todo": true,
+      "source": "冷氣也是搬熱的機器嗎？",
+      "text": "冷房も熱を運ぶ機械なの？",
+      "max_chars": 20
+    },
+    {
+      "id": "p172",
+      "scene": "chief-ac-same",
+      "todo": true,
+      "source": "是。冷氣和冰箱，是同一種機器。",
+      "text": "そう。冷房と冷蔵庫は同じ仲間の機械。",
+      "max_chars": 21
+    },
+    {
+      "id": "p173",
+      "scene": "chief-ac-same",
+      "todo": true,
+      "source": "它也有冷媒、也有壓縮機，也一樣吃電。",
+      "text": "冷媒も圧縮機もあって、電気も使うの。",
+      "max_chars": 25
+    },
+    {
+      "id": "p174",
+      "scene": "kid-ac-why",
+      "todo": true,
+      "source": "那開冷氣，",
+      "text": "じゃあ冷房で、",
+      "max_chars": 8
+    },
+    {
+      "id": "p175",
+      "scene": "kid-ac-why",
+      "todo": true,
+      "source": "房間怎麼就會變涼？",
+      "text": "なんで部屋が涼しくなるの？",
+      "max_chars": 18
+    },
+    {
+      "id": "p176",
+      "scene": "chief-balcony",
+      "todo": true,
+      "source": "答案就在陽台上。走，我們去看那台大箱子。",
+      "text": "答えはベランダ。大きな箱を見に行こう。",
+      "max_chars": 24
+    },
+    {
+      "id": "p177",
+      "scene": "kid-hot-wind",
+      "todo": true,
+      "source": "哇，吹出來的是熱風！",
+      "text": "わあ、熱い風だ！",
+      "max_chars": 17
+    },
+    {
+      "id": "p178",
+      "scene": "chief-outdoor",
+      "todo": true,
+      "source": "這台叫做室外機，它吹的熱，",
+      "text": "これは室外機。その熱は、",
+      "max_chars": 20
+    },
+    {
+      "id": "p179",
+      "scene": "chief-outdoor",
+      "todo": true,
+      "source": "是從你的房間裡搬出來的。",
+      "text": "あなたの部屋から運んできたの。",
+      "max_chars": 21
+    },
+    {
+      "id": "p180",
+      "scene": "kid-outside-air",
+      "todo": true,
+      "source": "我知道！冷氣是把外面的空氣，",
+      "text": "わかった！外の空気を、",
+      "max_chars": 16
+    },
+    {
+      "id": "p181",
+      "scene": "kid-outside-air",
+      "todo": true,
+      "source": "變冷再吹進來的！",
+      "text": "冷やして入れてるんだ！",
+      "max_chars": 13
+    },
+    {
+      "id": "p182",
+      "scene": "chief-own-air",
+      "todo": true,
+      "source": "很多人都這樣想。其實冷氣吹的，",
+      "text": "そう思う人は多いの。でも冷房が吹くのは、",
+      "max_chars": 24
+    },
+    {
+      "id": "p183",
+      "scene": "chief-own-air",
+      "todo": true,
+      "source": "是你房間自己的空氣。",
+      "text": "あなたの部屋の空気なの。",
+      "max_chars": 21
+    },
+    {
+      "id": "p184",
+      "scene": "indoor-unit",
+      "todo": true,
+      "source": "房間牆上那台把空氣吸進去，拿走熱，再吹回來。",
+      "text": "壁の機械が空気を吸って、熱を取って、吹き戻すの。",
+      "max_chars": 30
+    },
+    {
+      "id": "p185",
+      "scene": "indoor-unit",
+      "todo": true,
+      "source": "它和陽台那台，中間連著兩條管子。",
+      "text": "ベランダの機械とは、2本の管でつながってる。",
+      "max_chars": 25
+    },
+    {
+      "id": "p186",
+      "scene": "chief-same-trick",
+      "todo": true,
+      "source": "冷媒就在這兩台之間繞圈子跑，",
+      "text": "冷媒がその間を回ってる。",
+      "max_chars": 14
+    },
+    {
+      "id": "p187",
+      "scene": "chief-same-trick",
+      "todo": true,
+      "source": "聽起來，像不像冰箱裡的什麼？",
+      "text": "何かに似てない？",
+      "max_chars": 16
+    },
+    {
+      "id": "p188",
+      "scene": "chief-same-trick",
+      "todo": true,
+      "source": "搬熱的小火車！",
+      "text": "熱を運ぶ汽車！",
+      "max_chars": 9
+    },
+    {
+      "id": "p189",
+      "scene": "plan-house",
+      "todo": true,
+      "source": "現在把圈畫在你的房間：房間就是冰箱的裡面，",
+      "text": "今度は部屋に円を描くよ。部屋が冷蔵庫の中で、",
+      "max_chars": 34
+    },
+    {
+      "id": "p190",
+      "scene": "plan-house",
+      "todo": true,
+      "source": "而冰箱的背後，被搬到了牆外面。",
+      "text": "冷蔵庫の裏が、壁の外に移ったの。",
+      "max_chars": 20
+    },
+    {
+      "id": "p191",
+      "scene": "kid-hot-end",
+      "todo": true,
+      "source": "熱的那一頭在外面！",
+      "text": "熱い側が外にある！",
+      "max_chars": 12
+    },
+    {
+      "id": "p192",
+      "scene": "chief-out-of-circle",
+      "todo": true,
+      "source": "這次的熱吐到圈外，不會直接繞回來，",
+      "text": "今度は熱が円の外に出て、戻ってこない。",
+      "max_chars": 29
+    },
+    {
+      "id": "p193",
+      "scene": "chief-out-of-circle",
+      "todo": true,
+      "source": "圓圈裡面的熱，才真的一顆一顆變少。",
+      "text": "だから円の中の熱が本当に減るの。",
+      "max_chars": 23
+    },
+    {
+      "id": "p194",
+      "scene": "chief-ac-bolt",
+      "todo": true,
+      "source": "冷氣吃的電，大部分也變成熱，",
+      "text": "冷房の電気も、ほとんど熱になって、",
+      "max_chars": 17
+    },
+    {
+      "id": "p195",
+      "scene": "chief-ac-bolt",
+      "todo": true,
+      "source": "在室外機那裡，一起吐到圈外。",
+      "text": "室外機から一緒に外へ出るの。",
+      "max_chars": 16
+    },
+    {
+      "id": "p196",
+      "scene": "one-to-three",
+      "todo": true,
+      "source": "一般的冷氣，用一份電，",
+      "text": "冷房は電気ひとつで、",
+      "max_chars": 11
+    },
+    {
+      "id": "p197",
+      "scene": "one-to-three",
+      "todo": true,
+      "source": "大約能搬走好幾份的熱。",
+      "text": "熱をいくつも運べるの。",
+      "max_chars": 15
+    },
+    {
+      "id": "p198",
+      "scene": "kid-bargain",
+      "todo": true,
+      "source": "用一份電，搬好幾份熱？",
+      "text": "電気ひとつで、熱いくつも？",
+      "max_chars": 16
+    },
+    {
+      "id": "p199",
+      "scene": "kid-bargain",
+      "todo": true,
+      "source": "搬得好多喔！",
+      "text": "たくさん運ぶね！",
+      "max_chars": 11
+    },
+    {
+      "id": "p200",
+      "scene": "chief-depends",
+      "todo": true,
+      "source": "確切搬多少，要看冷氣和天氣，",
+      "text": "どれだけかは、機種と天気しだい。",
+      "max_chars": 17
+    },
+    {
+      "id": "p201",
+      "scene": "chief-depends",
+      "todo": true,
+      "source": "外面越熱，通常就搬得越吃力。",
+      "text": "外が暑いほど、ふつうは大変なの。",
+      "max_chars": 18
+    },
+    {
+      "id": "p202",
+      "scene": "chief-door-back",
+      "todo": true,
+      "source": "還記得冰箱那道厚厚的門嗎？",
+      "text": "あの厚いドア、覚えてる？",
+      "max_chars": 12
+    },
+    {
+      "id": "p203",
+      "scene": "chief-door-back",
+      "todo": true,
+      "source": "開冷氣的時候，你關上窗、拉上窗簾，",
+      "text": "冷房のとき、窓を閉めてカーテンを引くのは、",
+      "max_chars": 25
+    },
+    {
+      "id": "p204",
+      "scene": "kid-curtain",
+      "todo": true,
+      "source": "就是幫房間關上一道厚門。",
+      "text": "厚いドアを閉めること。",
+      "max_chars": 12
+    },
+    {
+      "id": "p205",
+      "scene": "kid-curtain",
+      "todo": true,
+      "source": "所以開冷氣要關窗！",
+      "text": "だから窓を閉めるんだ！",
+      "max_chars": 16
+    },
+    {
+      "id": "p206",
+      "scene": "chief-two-jobs",
+      "todo": true,
+      "source": "冷氣負責把熱搬出去，",
+      "text": "冷房は熱を外へ運び、",
+      "max_chars": 14
+    },
+    {
+      "id": "p207",
+      "scene": "chief-two-jobs",
+      "todo": true,
+      "source": "隔熱負責讓外面的熱，慢一點溜回來。",
+      "text": "断熱は外の熱を、ゆっくりしか戻らせない。",
+      "max_chars": 29
+    },
+    {
+      "id": "p208",
+      "scene": "kid-both",
+      "todo": true,
+      "source": "一個搬，一個擋！",
+      "text": "運ぶ係と止める係！",
+      "max_chars": 11
+    },
+    {
+      "id": "p209",
+      "scene": "chief-open-window",
+      "todo": true,
+      "source": "那開著冷氣又開著窗呢？",
+      "text": "冷房をつけて窓を開けたら？",
+      "max_chars": 15
+    },
+    {
+      "id": "p210",
+      "scene": "chief-open-window",
+      "todo": true,
+      "source": "就跟開著冰箱門一樣，冷氣只好搬個不停。",
+      "text": "冷蔵庫のドアと同じ。冷房はずっと運び続けるの。",
+      "max_chars": 24
+    },
+    {
+      "id": "p211",
+      "scene": "kid-big-fridge",
+      "todo": true,
+      "source": "開冷氣的房間，",
+      "text": "冷房の部屋、",
+      "max_chars": 6
+    },
+    {
+      "id": "p212",
+      "scene": "kid-big-fridge",
+      "todo": true,
+      "source": "就是一台大冰箱！",
+      "text": "大きな冷蔵庫！",
+      "max_chars": 7
+    },
+    {
+      "id": "p213",
+      "scene": "kid-big-fridge",
+      "todo": true,
+      "source": "對，而你就住在冰箱的裡面。",
+      "text": "そう。あなたは冷蔵庫の中に住んでるの。",
+      "max_chars": 21
+    },
+    {
+      "id": "p214",
+      "scene": "chief-back-kitchen",
+      "todo": true,
+      "source": "好啦，我們回廚房吧。那扇冰箱門，還開著呢。",
+      "text": "さあ、台所に戻ろう。冷蔵庫のドア、まだ開いてるよ。",
+      "max_chars": 25
+    },
+    {
+      "id": "p215",
+      "scene": "kid-close-door",
+      "todo": true,
+      "source": "還記得我的好方法嗎？",
+      "text": "名案、覚えてる？",
+      "max_chars": 9
+    },
+    {
+      "id": "p216",
+      "scene": "kid-close-door",
+      "todo": true,
+      "source": "我要收回！",
+      "text": "取り消します！",
+      "max_chars": 13
+    },
+    {
+      "id": "p217",
+      "scene": "kid-got-it",
+      "todo": true,
+      "source": "冰箱門開著，熱的那一頭，",
+      "text": "ドアを開けたら熱い側が、",
+      "max_chars": 13
+    },
+    {
+      "id": "p218",
+      "scene": "kid-got-it",
+      "todo": true,
+      "source": "還留在廚房裡！",
+      "text": "台所に残ったまま！",
+      "max_chars": 11
+    },
+    {
+      "id": "p219",
+      "scene": "chief-same-machine",
+      "todo": true,
+      "source": "還記得冰箱和冷氣，是同一種機器嗎？",
+      "text": "冷蔵庫と冷房は、同じ機械だったよね？",
+      "max_chars": 20
+    },
+    {
+      "id": "p220",
+      "scene": "chief-same-machine",
+      "todo": true,
+      "source": "差別只在熱的那一頭，放在圈裡還是圈外。",
+      "text": "違いは、熱い側が円の中か外かだけ。",
+      "max_chars": 25
+    },
+    {
+      "id": "p221",
+      "scene": "chief-done",
+      "todo": true,
+      "source": "下次你走過冰箱，可以摸摸它的背後：",
+      "text": "今度冷蔵庫の裏を触ってみて。",
+      "max_chars": 17
+    },
+    {
+      "id": "p222",
+      "scene": "chief-done",
+      "todo": true,
+      "source": "還記得那三顆紅球嗎？你摸到的溫溫，就是它們。",
+      "text": "三つの赤い玉、覚えてる？その温かさがそれなの。",
+      "max_chars": 31
+    },
+    {
+      "id": "p223",
+      "scene": "outro",
+      "todo": true,
+      "source": "原來如此！",
+      "text": "なるほど！",
+      "max_chars": 9
+    },
+    {
+      "id": "p224",
+      "scene": "outro-chief",
+      "todo": true,
+      "source": "你家冷氣的室外機，裝在哪裡？",
+      "text": "お家の室外機はどこ？",
+      "max_chars": 12
+    },
+    {
+      "id": "p225",
+      "scene": "outro-chief",
+      "todo": true,
+      "source": "吹出來的風有多熱？留言告訴我們。",
+      "text": "風はどのくらい熱い？コメントで教えてね。",
+      "max_chars": 21
+    },
+    {
+      "id": "p226",
+      "scene": "outro-wave",
+      "todo": true,
+      "source": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
+      "text": "暮らしの「なぜ」を一緒に探すなら、なるほど事務所をチャンネル登録！",
+      "max_chars": 35
+    }
+  ]
+}

@@ -1,0 +1,1921 @@
+{
+  "locale": "pt",
+  "slug": "sothatswhy-p07-fridge-door",
+  "parts": [
+    "metadata",
+    "captions"
+  ],
+  "note": "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are. `title.max_chars` is the most characters the title may have: the channel adds the locale's captions tag after it (「｜CC字幕」 worded per language), and a brand story's tag, and YouTube takes 100 in all. `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks. `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the narration line takes, so stay under it. `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.",
+  "title": {
+    "todo": true,
+    "source": "冰箱門打開，房間為什麼不會變涼？｜原來如此事務所",
+    "text": "Geladeira aberta não esfria a cozinha. Por quê? | Escritório do Ah, É Por Isso",
+    "max_chars": 90
+  },
+  "description": {
+    "todo": true,
+    "source": "熱到不行的下午，小問把冰箱門一打開，臉馬上涼涼的。那冰箱門整天開著，廚房是不是就不用開冷氣了？\n\n這一集，所長和小問盯著同一台冰箱，把圈越畫越大：先只看冰箱裡面，冷到底是不是一種會跑出來的東西；再繞到冰箱背後，看冷媒和壓縮機怎麼把熱一圈一圈搬出去，壓縮機吃的電又去了哪裡；然後把整間廚房圈起來算一次熱帳；最後走到陽台，看冷氣的室外機為什麼吹熱風，冷氣又為什麼能讓房間變涼。\n\n本集插圖由 AI 生成。片中「兩顆熱加一份電」是為了好算的假設數字；冷氣搬熱的倍數是教學資料裡的大約數字，實際看機型與天氣。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-06",
+    "text": "Tarde de muito calor: a Wen abre a geladeira e sente na hora o rosto fresquinho. Então, se a porta ficar aberta o dia todo, a cozinha nem precisa de ar-condicionado?\n\nNeste episódio, a diretora e a Wen olham para a mesma geladeira e vão aumentando o círculo: primeiro só o lado de dentro, para ver se o frio é mesmo uma coisa que escapa; depois a parte de trás, onde o fluido refrigerante e o compressor levam o calor para fora volta após volta, e para onde vai a energia elétrica que o compressor gasta; então a cozinha inteira, fazendo a conta do calor; e, por fim, a varanda, para ver por que a unidade externa do ar-condicionado sopra vento quente e por que o ar consegue esfriar o quarto.\n\nAs ilustrações deste episódio foram geradas por IA. As \"duas bolinhas de calor mais uma de energia\" são números fáceis escolhidos para a conta; quanto calor o ar-condicionado move por energia é um valor aproximado de material didático e varia com o aparelho e o clima. A fonte de cada afirmação está nas referências abaixo.\n\nDados até 2026-11-06"
+  },
+  "tags": {
+    "todo": true,
+    "source": [
+      "冰箱",
+      "冰箱門打開",
+      "冷氣",
+      "室外機",
+      "冷媒",
+      "熱力學",
+      "科普",
+      "原來如此事務所"
+    ],
+    "text": [
+      "geladeira",
+      "geladeira aberta",
+      "ar-condicionado",
+      "unidade externa",
+      "fluido refrigerante",
+      "termodinâmica",
+      "ciência para crianças",
+      "Escritório do Ah, É Por Isso"
+    ]
+  },
+  "thumbnail": {
+    "todo": true,
+    "source": {
+      "headline": "冰箱門開著\n**廚房更熱**",
+      "sub": "冰箱只是把熱搬到背後"
+    },
+    "text": {
+      "headline": "Geladeira aberta\n**esquenta a cozinha**",
+      "sub": "Ela só leva o calor pra trás"
+    }
+  },
+  "chapters": [
+    {
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "熱天下午，冰箱門開著",
+      "text": "Tarde quente, geladeira aberta"
+    },
+    {
+      "scene": "kid-cold-out",
+      "todo": true,
+      "source": "冰箱裡少掉的熱",
+      "text": "O calor que sai de dentro"
+    },
+    {
+      "scene": "kid-eat-heat",
+      "todo": true,
+      "source": "冰箱背後熱熱的",
+      "text": "A parte de trás é quente"
+    },
+    {
+      "scene": "chief-bigger",
+      "todo": true,
+      "source": "把整間廚房圈起來",
+      "text": "Um círculo na cozinha inteira"
+    },
+    {
+      "scene": "chief-balcony",
+      "todo": true,
+      "source": "冷氣把熱的那頭放到外面",
+      "text": "O ar põe o lado quente lá fora"
+    },
+    {
+      "scene": "chief-back-kitchen",
+      "todo": true,
+      "source": "小問關上冰箱門",
+      "text": "A Wen fecha a geladeira"
+    }
+  ],
+  "glossary": {
+    "terms": [
+      "AI"
+    ],
+    "sources": [
+      "HyperPhysics (Georgia State University): Refrigerator",
+      "HyperPhysics (Georgia State University): Heat Pump, Air Conditioners and Heat Pumps, Coefficient of Performance",
+      "University of Illinois Physics Van: Open Refrigerator",
+      "University of Sydney School of Physics: Bar Fridge (thermal physics activity)",
+      "Penn State EGEE 102: 10.4 How Air Conditioners Work",
+      "Wikipedia: Refrigerator",
+      "Wikipedia: Coefficient of performance",
+      "Wikipedia: Air conditioning",
+      "Wikipedia: Dehumidifier",
+      "HyperPhysics (Georgia State University): Thermal Conductivity",
+      "Electrical and Mechanical Services Department, Hong Kong: Energy Saving Tips For Home, Air Conditioner"
+    ]
+  },
+  "boundaries": {},
+  "lines": [
+    {
+      "id": "p001",
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "所長！今天熱到不行，",
+      "text": "Diretora! Calorão!",
+      "max_chars": 18
+    },
+    {
+      "id": "p002",
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "我把冰箱門一打開，",
+      "text": "Abri a porta,",
+      "max_chars": 14
+    },
+    {
+      "id": "p003",
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "臉馬上涼涼的！",
+      "text": "e senti o frio!",
+      "max_chars": 16
+    },
+    {
+      "id": "p004",
+      "scene": "kid-idea",
+      "todo": true,
+      "source": "我想到一個好方法！",
+      "text": "Já sei!",
+      "max_chars": 9
+    },
+    {
+      "id": "p005",
+      "scene": "kid-idea",
+      "todo": true,
+      "source": "冰箱門整天開著，",
+      "text": "Deixo aberta,",
+      "max_chars": 14
+    },
+    {
+      "id": "p006",
+      "scene": "kid-idea",
+      "todo": true,
+      "source": "廚房就不用開冷氣了！",
+      "text": "e chega de ar ligado!",
+      "max_chars": 23
+    },
+    {
+      "id": "p007",
+      "scene": "chief-wait",
+      "todo": true,
+      "source": "先別急著拔冷氣的插頭。",
+      "text": "Calma, espera.",
+      "max_chars": 15
+    },
+    {
+      "id": "p008",
+      "scene": "chief-wait",
+      "todo": true,
+      "source": "你也可以猜猜看：冰箱門一直開著，",
+      "text": "Chuta: porta sempre aberta,",
+      "max_chars": 29
+    },
+    {
+      "id": "p009",
+      "scene": "chief-wait",
+      "todo": true,
+      "source": "廚房會變涼，還是反而變熱？",
+      "text": "a cozinha esfria ou esquenta?",
+      "max_chars": 31
+    },
+    {
+      "id": "p010",
+      "scene": "kid-hotter",
+      "todo": true,
+      "source": "變熱？",
+      "text": "Calor?",
+      "max_chars": 6
+    },
+    {
+      "id": "p011",
+      "scene": "kid-hotter",
+      "todo": true,
+      "source": "冰箱明明是冷的耶！",
+      "text": "A geladeira é fria!",
+      "max_chars": 22
+    },
+    {
+      "id": "p012",
+      "scene": "chief-back-tease",
+      "todo": true,
+      "source": "那你走過冰箱旁邊時，把手靠近它的背後。",
+      "text": "Põe a mão atrás da geladeira.",
+      "max_chars": 31
+    },
+    {
+      "id": "p013",
+      "scene": "chief-back-tease",
+      "todo": true,
+      "source": "那裡摸起來，可一點都不冷。",
+      "text": "Ali não tem nada de frio.",
+      "max_chars": 30
+    },
+    {
+      "id": "p014",
+      "scene": "kid-back-guess",
+      "todo": true,
+      "source": "冰箱後面，",
+      "text": "Lá atrás...",
+      "max_chars": 11
+    },
+    {
+      "id": "p015",
+      "scene": "kid-back-guess",
+      "todo": true,
+      "source": "藏了什麼東西？",
+      "text": "o que se esconde?",
+      "max_chars": 18
+    },
+    {
+      "id": "p016",
+      "scene": "outdoor-unit",
+      "todo": true,
+      "source": "還有你家陽台上，那台嗡嗡轉的大箱子，",
+      "text": "E a caixa que zumbe na varanda:",
+      "max_chars": 33
+    },
+    {
+      "id": "p017",
+      "scene": "outdoor-unit",
+      "todo": true,
+      "source": "它吹出來的風，你猜是冷的還是熱的？",
+      "text": "o vento dela é frio ou quente?",
+      "max_chars": 40
+    },
+    {
+      "id": "p018",
+      "scene": "kid-outdoor-guess",
+      "todo": true,
+      "source": "冷氣的箱子，",
+      "text": "A do ar",
+      "max_chars": 7
+    },
+    {
+      "id": "p019",
+      "scene": "kid-outdoor-guess",
+      "todo": true,
+      "source": "吹的一定是冷風吧？",
+      "text": "sopra vento frio, né?",
+      "max_chars": 25
+    },
+    {
+      "id": "p020",
+      "scene": "chief-promise",
+      "todo": true,
+      "source": "這些問題的答案，都藏在同一台冰箱裡。",
+      "text": "A resposta está na geladeira.",
+      "max_chars": 30
+    },
+    {
+      "id": "p021",
+      "scene": "chief-promise",
+      "todo": true,
+      "source": "它門開著的時候，熱到底跑去了哪裡？",
+      "text": "Com a porta aberta, pra onde vai o calor?",
+      "max_chars": 42
+    },
+    {
+      "id": "p022",
+      "scene": "kid-cold-out",
+      "todo": true,
+      "source": "冰箱裡面裝滿了冷，",
+      "text": "Tá cheia de frio,",
+      "max_chars": 18
+    },
+    {
+      "id": "p023",
+      "scene": "kid-cold-out",
+      "todo": true,
+      "source": "門一開，冷就跑出來了！",
+      "text": "abriu a porta, o frio sai!",
+      "max_chars": 29
+    },
+    {
+      "id": "p024",
+      "scene": "chief-tea",
+      "todo": true,
+      "source": "你家桌上，有沒有放涼過一杯熱茶？",
+      "text": "Pensa num chá quente.",
+      "max_chars": 26
+    },
+    {
+      "id": "p025",
+      "scene": "chief-tea",
+      "todo": true,
+      "source": "你把它放在桌上，過一陣子會怎樣？",
+      "text": "E depois de um tempinho?",
+      "max_chars": 27
+    },
+    {
+      "id": "p026",
+      "scene": "kid-tea",
+      "todo": true,
+      "source": "會變溫溫的。",
+      "text": "Fica morno.",
+      "max_chars": 11
+    },
+    {
+      "id": "p027",
+      "scene": "kid-tea",
+      "todo": true,
+      "source": "熱跑掉了！",
+      "text": "O calor foi!",
+      "max_chars": 12
+    },
+    {
+      "id": "p028",
+      "scene": "ice-cube",
+      "todo": true,
+      "source": "那一顆冰塊放在桌上呢？",
+      "text": "E um gelo na mesa?",
+      "max_chars": 18
+    },
+    {
+      "id": "p029",
+      "scene": "ice-cube",
+      "todo": true,
+      "source": "會慢慢融化。",
+      "text": "Vai derreter.",
+      "max_chars": 14
+    },
+    {
+      "id": "p030",
+      "scene": "chief-heat-flow",
+      "todo": true,
+      "source": "冰塊融化，是旁邊空氣的熱跑進了冰塊。",
+      "text": "O gelo derrete com o calor do ar em volta.",
+      "max_chars": 46
+    },
+    {
+      "id": "p031",
+      "scene": "chief-heat-flow",
+      "todo": true,
+      "source": "熱自己走，只會從熱的地方，跑到冷的地方。",
+      "text": "Sozinho, o calor só vai do quente pro frio.",
+      "max_chars": 48
+    },
+    {
+      "id": "p032",
+      "scene": "kid-cold-run",
+      "todo": true,
+      "source": "那冷呢？",
+      "text": "E frio?",
+      "max_chars": 7
+    },
+    {
+      "id": "p033",
+      "scene": "kid-cold-run",
+      "todo": true,
+      "source": "冰冰的空氣，不會自己跑嗎？",
+      "text": "O ar gelado não se mexe?",
+      "max_chars": 27
+    },
+    {
+      "id": "p034",
+      "scene": "chief-cold-less",
+      "todo": true,
+      "source": "我們說的冷，其實就是熱比較少。",
+      "text": "Frio é só ter menos calor.",
+      "max_chars": 27
+    },
+    {
+      "id": "p035",
+      "scene": "chief-cold-less",
+      "todo": true,
+      "source": "冷不是一種會跑出來的東西。",
+      "text": "Frio não é coisa que escapa.",
+      "max_chars": 28
+    },
+    {
+      "id": "p036",
+      "scene": "kid-face-cool",
+      "todo": true,
+      "source": "那我的臉，",
+      "text": "E o rosto,",
+      "max_chars": 11
+    },
+    {
+      "id": "p037",
+      "scene": "kid-face-cool",
+      "todo": true,
+      "source": "怎麼會涼涼的？",
+      "text": "por que ficou fresco?",
+      "max_chars": 21
+    },
+    {
+      "id": "p038",
+      "scene": "chief-face",
+      "todo": true,
+      "source": "冰箱裡的冷空氣流出來，碰到你的臉，",
+      "text": "O ar frio sai e toca seu rosto,",
+      "max_chars": 36
+    },
+    {
+      "id": "p039",
+      "scene": "chief-face",
+      "todo": true,
+      "source": "你臉上的熱就跑進那團冷空氣裡。",
+      "text": "e o calor do rosto vai pra ele.",
+      "max_chars": 32
+    },
+    {
+      "id": "p040",
+      "scene": "kid-stolen",
+      "todo": true,
+      "source": "我的熱被偷走了！",
+      "text": "Roubaram meu calor!",
+      "max_chars": 24
+    },
+    {
+      "id": "p041",
+      "scene": "chief-circle",
+      "todo": true,
+      "source": "想知道熱被搬去哪裡，我們來畫一個圈。",
+      "text": "Vamos desenhar um círculo.",
+      "max_chars": 26
+    },
+    {
+      "id": "p042",
+      "scene": "chief-circle",
+      "todo": true,
+      "source": "圈裡面的熱，多了少了，我們都記下來。",
+      "text": "Anotamos todo calor que entra ou sai dele.",
+      "max_chars": 47
+    },
+    {
+      "id": "p043",
+      "scene": "plan-inside",
+      "todo": true,
+      "source": "我把熱畫成一顆顆紅色的小球。",
+      "text": "Calor: bolinhas vermelhas.",
+      "max_chars": 26
+    },
+    {
+      "id": "p044",
+      "scene": "plan-inside",
+      "todo": true,
+      "source": "先圈住冰箱的裡面就好。",
+      "text": "Primeiro, só por dentro.",
+      "max_chars": 25
+    },
+    {
+      "id": "p045",
+      "scene": "fridge-shelves",
+      "todo": true,
+      "source": "冷藏的那幾層，大約只有三到五度，",
+      "text": "Em cima, de 3 a 5 graus,",
+      "max_chars": 29
+    },
+    {
+      "id": "p046",
+      "scene": "fridge-shelves",
+      "todo": true,
+      "source": "比夏天的廚房，冷了一大截。",
+      "text": "bem mais frio que a cozinha.",
+      "max_chars": 28
+    },
+    {
+      "id": "p047",
+      "scene": "freezer",
+      "todo": true,
+      "source": "那下面的冷凍庫，你猜有多冷？",
+      "text": "E o freezer, chuta?",
+      "max_chars": 21
+    },
+    {
+      "id": "p048",
+      "scene": "freezer",
+      "todo": true,
+      "source": "多半在零下十八度，甚至更冷。",
+      "text": "Uns 18 graus negativos, ou menos.",
+      "max_chars": 38
+    },
+    {
+      "id": "p049",
+      "scene": "kid-freezer",
+      "todo": true,
+      "source": "零下十八度！",
+      "text": "Menos 18!",
+      "max_chars": 9
+    },
+    {
+      "id": "p050",
+      "scene": "kid-freezer",
+      "todo": true,
+      "source": "比台灣的冬天冷多了！",
+      "text": "Mais frio que inverno!",
+      "max_chars": 27
+    },
+    {
+      "id": "p051",
+      "scene": "chief-gap",
+      "todo": true,
+      "source": "裡外差得越多，熱就越急著往裡面鑽。",
+      "text": "Mais diferença, mais calor entra.",
+      "max_chars": 36
+    },
+    {
+      "id": "p052",
+      "scene": "kid-sneak",
+      "todo": true,
+      "source": "廚房的熱，",
+      "text": "O calor daqui",
+      "max_chars": 14
+    },
+    {
+      "id": "p053",
+      "scene": "kid-sneak",
+      "todo": true,
+      "source": "會想鑽進冰箱裡？",
+      "text": "quer entrar nela?",
+      "max_chars": 24
+    },
+    {
+      "id": "p054",
+      "scene": "chief-sneak",
+      "todo": true,
+      "source": "會。照剛剛那條規矩，熱一定往冷的地方跑。",
+      "text": "Quer. O calor sempre vai pro frio.",
+      "max_chars": 36
+    },
+    {
+      "id": "p055",
+      "scene": "chief-sneak",
+      "todo": true,
+      "source": "可是冰箱的門，擋了它一下。",
+      "text": "Mas a porta segura ele um pouco.",
+      "max_chars": 32
+    },
+    {
+      "id": "p056",
+      "scene": "kid-door-thick",
+      "todo": true,
+      "source": "你打開冰箱門，摸摸它的邊，",
+      "text": "Toca a borda dela:",
+      "max_chars": 19
+    },
+    {
+      "id": "p057",
+      "scene": "kid-door-thick",
+      "todo": true,
+      "source": "門又厚又重，邊上還有一圈軟軟的膠條。",
+      "text": "grossa, pesada, com borracha macia.",
+      "max_chars": 40
+    },
+    {
+      "id": "p058",
+      "scene": "kid-thermos",
+      "todo": true,
+      "source": "跟保溫瓶一樣厚！",
+      "text": "Igual uma térmica!",
+      "max_chars": 20
+    },
+    {
+      "id": "p059",
+      "scene": "chief-insulate",
+      "todo": true,
+      "source": "對，門和牆裡都塞了擋熱的材料。",
+      "text": "É, tem isolante por dentro.",
+      "max_chars": 28
+    },
+    {
+      "id": "p060",
+      "scene": "chief-insulate",
+      "todo": true,
+      "source": "這叫做隔熱，讓熱跑得慢一點。",
+      "text": "É o isolamento: freia o calor.",
+      "max_chars": 33
+    },
+    {
+      "id": "p061",
+      "scene": "chief-door-later",
+      "todo": true,
+      "source": "這道厚厚的門，你先記著，等一下它會回來。",
+      "text": "Guarde essa porta, ela vai voltar.",
+      "max_chars": 39
+    },
+    {
+      "id": "p062",
+      "scene": "kid-slow",
+      "todo": true,
+      "source": "只是慢一點？",
+      "text": "Só freia?",
+      "max_chars": 11
+    },
+    {
+      "id": "p063",
+      "scene": "kid-slow",
+      "todo": true,
+      "source": "那熱還是會溜進去？",
+      "text": "E ainda entra?",
+      "max_chars": 17
+    },
+    {
+      "id": "p064",
+      "scene": "chief-must-carry",
+      "todo": true,
+      "source": "會。冰箱裡卻一直那麼冷，",
+      "text": "Entra. Mas segue fria,",
+      "max_chars": 22
+    },
+    {
+      "id": "p065",
+      "scene": "chief-must-carry",
+      "todo": true,
+      "source": "就表示有東西，一直把熱搬出去。",
+      "text": "então algo tira esse calor.",
+      "max_chars": 31
+    },
+    {
+      "id": "p066",
+      "scene": "plan-inside-out",
+      "todo": true,
+      "source": "圈裡的熱，一顆一顆被送出圈外。",
+      "text": "Bolinhas saem do círculo, uma a uma.",
+      "max_chars": 37
+    },
+    {
+      "id": "p067",
+      "scene": "kid-where-q",
+      "todo": true,
+      "source": "那些熱，",
+      "text": "E elas",
+      "max_chars": 6
+    },
+    {
+      "id": "p068",
+      "scene": "kid-where-q",
+      "todo": true,
+      "source": "被搬去哪裡了？",
+      "text": "vão pra onde?",
+      "max_chars": 17
+    },
+    {
+      "id": "p069",
+      "scene": "kid-eat-heat",
+      "todo": true,
+      "source": "會不會是冰箱，",
+      "text": "A geladeira",
+      "max_chars": 13
+    },
+    {
+      "id": "p070",
+      "scene": "kid-eat-heat",
+      "todo": true,
+      "source": "把熱吃掉了？",
+      "text": "come o calor?",
+      "max_chars": 23
+    },
+    {
+      "id": "p071",
+      "scene": "chief-vanish",
+      "todo": true,
+      "source": "熱不會憑空變不見，只會換個地方待。",
+      "text": "Calor não some, muda de lugar.",
+      "max_chars": 30
+    },
+    {
+      "id": "p072",
+      "scene": "chief-vanish",
+      "todo": true,
+      "source": "不信，你繞到冰箱的後面看看。",
+      "text": "Olha atrás da geladeira.",
+      "max_chars": 25
+    },
+    {
+      "id": "p073",
+      "scene": "kid-behind",
+      "todo": true,
+      "source": "咦？後面暖暖的！",
+      "text": "Ué? Tá morno!",
+      "max_chars": 15
+    },
+    {
+      "id": "p074",
+      "scene": "kid-behind",
+      "todo": true,
+      "source": "有一股溫溫的風！",
+      "text": "Ar morno!",
+      "max_chars": 11
+    },
+    {
+      "id": "p075",
+      "scene": "kid-behind",
+      "todo": true,
+      "source": "手靠近就好，背後有電線，別伸進去亂摸。",
+      "text": "Só chegue a mão; tem fios, não mexa.",
+      "max_chars": 39
+    },
+    {
+      "id": "p076",
+      "scene": "coils",
+      "todo": true,
+      "source": "冰箱背後這一排彎彎的管子，摸起來是溫的。",
+      "text": "Os canos curvos aqui tão mornos.",
+      "max_chars": 34
+    },
+    {
+      "id": "p077",
+      "scene": "coils",
+      "todo": true,
+      "source": "冰箱裡少掉的熱，就是從這裡吐回廚房。",
+      "text": "Por aqui o calor volta pra cozinha.",
+      "max_chars": 38
+    },
+    {
+      "id": "p078",
+      "scene": "kid-moved",
+      "todo": true,
+      "source": "原來熱被搬到後面了！",
+      "text": "O calor veio pra trás!",
+      "max_chars": 23
+    },
+    {
+      "id": "p079",
+      "scene": "chief-feet",
+      "todo": true,
+      "source": "有的冰箱，還會從底下吹出溫溫的風，",
+      "text": "Umas sopram ar morno por baixo.",
+      "max_chars": 32
+    },
+    {
+      "id": "p080",
+      "scene": "chief-feet",
+      "todo": true,
+      "source": "你站在它前面，腳邊有沒有被吹過？",
+      "text": "já sentiu um ventinho no pé?",
+      "max_chars": 35
+    },
+    {
+      "id": "p081",
+      "scene": "kid-feet",
+      "todo": true,
+      "source": "腳暖暖的，",
+      "text": "Pé morno,",
+      "max_chars": 9
+    },
+    {
+      "id": "p082",
+      "scene": "kid-feet",
+      "todo": true,
+      "source": "臉涼涼的！",
+      "text": "rosto fresco!",
+      "max_chars": 14
+    },
+    {
+      "id": "p083",
+      "scene": "kid-no-hands",
+      "todo": true,
+      "source": "可是冰箱又沒有手，",
+      "text": "Mas ela não tem mãos,",
+      "max_chars": 21
+    },
+    {
+      "id": "p084",
+      "scene": "kid-no-hands",
+      "todo": true,
+      "source": "它怎麼搬熱？",
+      "text": "como ela carrega?",
+      "max_chars": 17
+    },
+    {
+      "id": "p085",
+      "scene": "chief-refrigerant",
+      "todo": true,
+      "source": "冰箱的管子裡，有一種會繞圈子跑的東西，",
+      "text": "Nos canos, algo roda em círculos,",
+      "max_chars": 33
+    },
+    {
+      "id": "p086",
+      "scene": "chief-refrigerant",
+      "todo": true,
+      "source": "叫做冷媒。",
+      "text": "o gás refrigerante.",
+      "max_chars": 19
+    },
+    {
+      "id": "p087",
+      "scene": "kid-refrigerant-q",
+      "todo": true,
+      "source": "冷媒？",
+      "text": "Hã?",
+      "max_chars": 3
+    },
+    {
+      "id": "p088",
+      "scene": "kid-refrigerant-q",
+      "todo": true,
+      "source": "它本身是冷的嗎？",
+      "text": "Ele é frio?",
+      "max_chars": 17
+    },
+    {
+      "id": "p089",
+      "scene": "chief-shower-back",
+      "todo": true,
+      "source": "它不一定冷，但它會變身。你洗完熱水澡，",
+      "text": "Nem sempre, ele muda. Depois do banho,",
+      "max_chars": 38
+    },
+    {
+      "id": "p090",
+      "scene": "chief-shower-back",
+      "todo": true,
+      "source": "濕濕地走出浴室，是不是會冷得發抖？",
+      "text": "saindo molhado, você não treme?",
+      "max_chars": 34
+    },
+    {
+      "id": "p091",
+      "scene": "kid-towel2",
+      "todo": true,
+      "source": "會！明明洗的是熱水！",
+      "text": "Sim! Água quente!",
+      "max_chars": 18
+    },
+    {
+      "id": "p092",
+      "scene": "kid-towel2",
+      "todo": true,
+      "source": "你身上的水，變成水氣飛走的時候，",
+      "text": "Quando a água vira vapor e voa,",
+      "max_chars": 32
+    },
+    {
+      "id": "p093",
+      "scene": "kid-towel2",
+      "todo": true,
+      "source": "會順手把你身上的熱帶走。",
+      "text": "leva junto o seu calor.",
+      "max_chars": 25
+    },
+    {
+      "id": "p094",
+      "scene": "kid-wet-cold",
+      "todo": true,
+      "source": "所以濕濕的才會冷！",
+      "text": "Por isso dá frio!",
+      "max_chars": 24
+    },
+    {
+      "id": "p095",
+      "scene": "evaporate",
+      "todo": true,
+      "source": "冷媒在冰箱裡面，也是從液體變成氣體，",
+      "text": "O fluido também vira gás lá dentro,",
+      "max_chars": 42
+    },
+    {
+      "id": "p096",
+      "scene": "evaporate",
+      "todo": true,
+      "source": "把裡面的熱，一起帶進管子裡。",
+      "text": "levando o calor para os canos.",
+      "max_chars": 35
+    },
+    {
+      "id": "p097",
+      "scene": "kid-boil-q",
+      "todo": true,
+      "source": "冰箱裡那麼冷，",
+      "text": "Tão gelado,",
+      "max_chars": 11
+    },
+    {
+      "id": "p098",
+      "scene": "kid-boil-q",
+      "todo": true,
+      "source": "冷媒也能變成氣體？",
+      "text": "ele vira gás mesmo assim?",
+      "max_chars": 29
+    },
+    {
+      "id": "p099",
+      "scene": "chief-low-boil",
+      "todo": true,
+      "source": "能。冷媒是特別挑過的液體，很容易沸騰，",
+      "text": "Vira. É um líquido que ferve fácil,",
+      "max_chars": 37
+    },
+    {
+      "id": "p100",
+      "scene": "chief-low-boil",
+      "todo": true,
+      "source": "冰箱裡那一點熱，就夠它變成氣體。",
+      "text": "pouco calor já o faz virar gás.",
+      "max_chars": 33
+    },
+    {
+      "id": "p101",
+      "scene": "kid-cold-boil",
+      "todo": true,
+      "source": "冰冰的還會沸騰？",
+      "text": "Ferve gelado?",
+      "max_chars": 15
+    },
+    {
+      "id": "p102",
+      "scene": "kid-cold-boil",
+      "todo": true,
+      "source": "好奇怪的液體！",
+      "text": "Que líquido estranho!",
+      "max_chars": 23
+    },
+    {
+      "id": "p103",
+      "scene": "kid-gas-where",
+      "todo": true,
+      "source": "帶著熱的氣體，",
+      "text": "E esse gás",
+      "max_chars": 11
+    },
+    {
+      "id": "p104",
+      "scene": "kid-gas-where",
+      "todo": true,
+      "source": "接著跑去哪？",
+      "text": "vai pra onde?",
+      "max_chars": 17
+    },
+    {
+      "id": "p105",
+      "scene": "compressor",
+      "todo": true,
+      "source": "它跑進一個圓圓的鐵罐裡。",
+      "text": "Num tambor de metal.",
+      "max_chars": 21
+    },
+    {
+      "id": "p106",
+      "scene": "compressor",
+      "todo": true,
+      "source": "這個鐵罐叫做壓縮機。",
+      "text": "Ele se chama compressor.",
+      "max_chars": 26
+    },
+    {
+      "id": "p107",
+      "scene": "chief-squeeze",
+      "todo": true,
+      "source": "壓縮機把冷媒的氣體，擠得緊緊的。",
+      "text": "Ele aperta bem o gás.",
+      "max_chars": 24
+    },
+    {
+      "id": "p108",
+      "scene": "chief-squeeze",
+      "todo": true,
+      "source": "被擠緊的冷媒，流進背後那排管子，",
+      "text": "O gás apertado vai pros canos de trás,",
+      "max_chars": 42
+    },
+    {
+      "id": "p109",
+      "scene": "condense",
+      "todo": true,
+      "source": "在那裡變回液體，把帶來的熱交給廚房。",
+      "text": "vira líquido e solta o calor ali.",
+      "max_chars": 34
+    },
+    {
+      "id": "p110",
+      "scene": "condense",
+      "todo": true,
+      "source": "然後它再流回冰箱裡面，重新跑一圈。",
+      "text": "Depois volta pra dentro e roda de novo.",
+      "max_chars": 40
+    },
+    {
+      "id": "p111",
+      "scene": "kid-train",
+      "todo": true,
+      "source": "像載著熱的小火車！",
+      "text": "Um trenzinho de calor!",
+      "max_chars": 24
+    },
+    {
+      "id": "p112",
+      "scene": "chief-train",
+      "todo": true,
+      "source": "很像。一圈又一圈，把熱從裡面載到外面。",
+      "text": "Isso. Volta após volta, leva o calor pra fora.",
+      "max_chars": 52
+    },
+    {
+      "id": "p113",
+      "scene": "kid-plug",
+      "todo": true,
+      "source": "小火車要有人推吧？",
+      "text": "Alguém empurra o trem?",
+      "max_chars": 28
+    },
+    {
+      "id": "p114",
+      "scene": "chief-electric",
+      "todo": true,
+      "source": "推它的就是電。把氣體擠緊很費力，",
+      "text": "É a eletricidade. Apertar gás cansa,",
+      "max_chars": 37
+    },
+    {
+      "id": "p115",
+      "scene": "chief-electric",
+      "todo": true,
+      "source": "壓縮機要一直吃電，才轉得動。",
+      "text": "e o compressor gasta energia.",
+      "max_chars": 29
+    },
+    {
+      "id": "p116",
+      "scene": "plan-bolt",
+      "todo": true,
+      "source": "電，我們就畫成黃色的小閃電。",
+      "text": "Energia: um raiozinho amarelo.",
+      "max_chars": 35
+    },
+    {
+      "id": "p117",
+      "scene": "chief-thermostat",
+      "todo": true,
+      "source": "它也不是一直跑：冰箱裡一變暖，它就開工，",
+      "text": "Nem sempre roda: esquentou, liga;",
+      "max_chars": 35
+    },
+    {
+      "id": "p118",
+      "scene": "chief-thermostat",
+      "todo": true,
+      "source": "夠冷了，就停下來休息。",
+      "text": "gelou, descansa.",
+      "max_chars": 16
+    },
+    {
+      "id": "p119",
+      "scene": "chief-thermostat",
+      "todo": true,
+      "source": "難怪它有時候安安靜靜！",
+      "text": "Por isso às vezes tá quieta!",
+      "max_chars": 28
+    },
+    {
+      "id": "p120",
+      "scene": "kid-motor-q",
+      "todo": true,
+      "source": "那它吃進去的電，",
+      "text": "E essa energia,",
+      "max_chars": 15
+    },
+    {
+      "id": "p121",
+      "scene": "kid-motor-q",
+      "todo": true,
+      "source": "最後跑去哪了？",
+      "text": "vai pra onde?",
+      "max_chars": 16
+    },
+    {
+      "id": "p122",
+      "scene": "kid-ledger-q",
+      "todo": true,
+      "source": "還有，背後吐出來的熱，",
+      "text": "E o calor de trás",
+      "max_chars": 20
+    },
+    {
+      "id": "p123",
+      "scene": "kid-ledger-q",
+      "todo": true,
+      "source": "跟裡面搬出來的，",
+      "text": "é igual ao",
+      "max_chars": 12
+    },
+    {
+      "id": "p124",
+      "scene": "kid-ledger-q",
+      "todo": true,
+      "source": "一樣多嗎？",
+      "text": "que saiu?",
+      "max_chars": 14
+    },
+    {
+      "id": "p125",
+      "scene": "chief-bigger",
+      "todo": true,
+      "source": "要回答這兩個問題，圈得畫大一點，",
+      "text": "Vamos aumentar o círculo:",
+      "max_chars": 26
+    },
+    {
+      "id": "p126",
+      "scene": "chief-bigger",
+      "todo": true,
+      "source": "把整間廚房都圈進來。",
+      "text": "a cozinha toda dentro.",
+      "max_chars": 23
+    },
+    {
+      "id": "p127",
+      "scene": "plan-room",
+      "todo": true,
+      "source": "冰箱、冰箱背後、你站的地方，",
+      "text": "Geladeira, a parte de trás, você:",
+      "max_chars": 33
+    },
+    {
+      "id": "p128",
+      "scene": "plan-room",
+      "todo": true,
+      "source": "現在全在同一個圈裡。",
+      "text": "agora tudo no mesmo círculo.",
+      "max_chars": 38
+    },
+    {
+      "id": "p129",
+      "scene": "chief-suppose",
+      "todo": true,
+      "source": "先讓門關著，假設一組好算的數字：",
+      "text": "Porta fechada. Conta fácil:",
+      "max_chars": 27
+    },
+    {
+      "id": "p130",
+      "scene": "chief-suppose",
+      "todo": true,
+      "source": "冰箱從裡面搬出兩顆紅球的熱，",
+      "text": "tira duas bolinhas de dentro,",
+      "max_chars": 31
+    },
+    {
+      "id": "p131",
+      "scene": "chief-one-bolt",
+      "todo": true,
+      "source": "壓縮機做這件事，吃了一份電。",
+      "text": "e gasta um raiozinho.",
+      "max_chars": 27
+    },
+    {
+      "id": "p132",
+      "scene": "kid-guess-count",
+      "todo": true,
+      "source": "背後會吐出幾顆？",
+      "text": "Saem quantas?",
+      "max_chars": 17
+    },
+    {
+      "id": "p133",
+      "scene": "two-plus-one",
+      "todo": true,
+      "source": "三顆。搬出來的兩顆，加上一顆。",
+      "text": "Três. As duas, mais uma.",
+      "max_chars": 28
+    },
+    {
+      "id": "p134",
+      "scene": "two-plus-one",
+      "todo": true,
+      "source": "那一顆，就是壓縮機吃進去的電變的。",
+      "text": "Essa uma veio da energia gasta.",
+      "max_chars": 34
+    },
+    {
+      "id": "p135",
+      "scene": "kid-more",
+      "todo": true,
+      "source": "吐出來的比搬出來的多！",
+      "text": "Sai mais do que tirou!",
+      "max_chars": 27
+    },
+    {
+      "id": "p136",
+      "scene": "chief-energy",
+      "todo": true,
+      "source": "對。電用完不會變不見，最後也變成熱。",
+      "text": "Isso. A energia usada não some, vira calor.",
+      "max_chars": 47
+    },
+    {
+      "id": "p137",
+      "scene": "kid-closed-q",
+      "todo": true,
+      "source": "那門關著，廚房會變熱嗎？",
+      "text": "E fechada, a cozinha esquenta?",
+      "max_chars": 32
+    },
+    {
+      "id": "p138",
+      "scene": "chief-closed",
+      "todo": true,
+      "source": "那兩顆熱，本來就是從牆和門邊，慢慢溜進冰箱的。",
+      "text": "As duas entraram devagar pelas paredes.",
+      "max_chars": 48
+    },
+    {
+      "id": "p139",
+      "scene": "chief-closed",
+      "todo": true,
+      "source": "現在被搬回廚房，還多帶了電變的那一顆。",
+      "text": "Voltam à cozinha, mais uma da energia.",
+      "max_chars": 39
+    },
+    {
+      "id": "p140",
+      "scene": "kid-closed",
+      "todo": true,
+      "source": "所以就算門關著，",
+      "text": "Mesmo fechada,",
+      "max_chars": 19
+    },
+    {
+      "id": "p141",
+      "scene": "kid-closed",
+      "todo": true,
+      "source": "廚房也會熱一點點？",
+      "text": "a cozinha esquenta?",
+      "max_chars": 22
+    },
+    {
+      "id": "p142",
+      "scene": "chief-closed2",
+      "todo": true,
+      "source": "對，冰箱只要在跑，廚房就被它加熱了一點點。",
+      "text": "Sim, ligada, ela aquece um pouquinho a cozinha.",
+      "max_chars": 47
+    },
+    {
+      "id": "p143",
+      "scene": "kid-open-again",
+      "todo": true,
+      "source": "那我把門打開，",
+      "text": "E se eu abrir",
+      "max_chars": 13
+    },
+    {
+      "id": "p144",
+      "scene": "kid-open-again",
+      "todo": true,
+      "source": "會怎樣？",
+      "text": "a porta?",
+      "max_chars": 9
+    },
+    {
+      "id": "p145",
+      "scene": "plan-loop",
+      "todo": true,
+      "source": "廚房的熱，從門口一直灌進冰箱，",
+      "text": "O calor entra pela porta,",
+      "max_chars": 28
+    },
+    {
+      "id": "p146",
+      "scene": "plan-loop",
+      "todo": true,
+      "source": "冰箱再把它們搬到背後，吐回廚房。",
+      "text": "ela joga de volta lá atrás.",
+      "max_chars": 31
+    },
+    {
+      "id": "p147",
+      "scene": "kid-circle",
+      "todo": true,
+      "source": "原來熱在繞圈圈！",
+      "text": "O calor anda em círculo!",
+      "max_chars": 27
+    },
+    {
+      "id": "p148",
+      "scene": "chief-zero",
+      "todo": true,
+      "source": "對，冰箱搬出來的那兩顆熱，又從門口跑回去，",
+      "text": "As duas bolinhas voltam pela porta,",
+      "max_chars": 36
+    },
+    {
+      "id": "p149",
+      "scene": "chief-zero",
+      "todo": true,
+      "source": "廚房的熱，一顆也沒有少。",
+      "text": "e a cozinha não perde nenhuma.",
+      "max_chars": 32
+    },
+    {
+      "id": "p150",
+      "scene": "plan-extra",
+      "todo": true,
+      "source": "可是每轉一圈，那道小閃電，",
+      "text": "Mas cada volta, o raio",
+      "max_chars": 22
+    },
+    {
+      "id": "p151",
+      "scene": "plan-extra",
+      "todo": true,
+      "source": "就在圈裡多變出一顆熱。",
+      "text": "cria mais uma bolinha.",
+      "max_chars": 25
+    },
+    {
+      "id": "p152",
+      "scene": "kid-answer",
+      "todo": true,
+      "source": "所以門開著，",
+      "text": "Porta aberta",
+      "max_chars": 23
+    },
+    {
+      "id": "p153",
+      "scene": "kid-answer",
+      "todo": true,
+      "source": "廚房反而變熱了！",
+      "text": "esquenta a cozinha!",
+      "max_chars": 19
+    },
+    {
+      "id": "p154",
+      "scene": "kid-but-cool",
+      "todo": true,
+      "source": "可是我站在門口，",
+      "text": "Mas aqui na frente",
+      "max_chars": 20
+    },
+    {
+      "id": "p155",
+      "scene": "kid-but-cool",
+      "todo": true,
+      "source": "真的涼涼的啊！",
+      "text": "tá fresquinho!",
+      "max_chars": 16
+    },
+    {
+      "id": "p156",
+      "scene": "chief-front",
+      "todo": true,
+      "source": "沒錯，門口前面那一小塊，是會涼一點。",
+      "text": "Sim, bem ali esfria um pouco.",
+      "max_chars": 32
+    },
+    {
+      "id": "p157",
+      "scene": "chief-front",
+      "todo": true,
+      "source": "可是你一走開，那塊涼就跟你沒關係了。",
+      "text": "Mas saiu dali, não adianta nada.",
+      "max_chars": 36
+    },
+    {
+      "id": "p158",
+      "scene": "chief-harder",
+      "todo": true,
+      "source": "而且門一開，冰箱裡面一直變暖，",
+      "text": "E ela esquenta por dentro,",
+      "max_chars": 26
+    },
+    {
+      "id": "p159",
+      "scene": "chief-harder",
+      "todo": true,
+      "source": "壓縮機就停不下來，一直吃電。",
+      "text": "e o compressor não para de gastar.",
+      "max_chars": 40
+    },
+    {
+      "id": "p160",
+      "scene": "kid-tired",
+      "todo": true,
+      "source": "冰箱好累喔！",
+      "text": "Coitada da geladeira!",
+      "max_chars": 21
+    },
+    {
+      "id": "p161",
+      "scene": "chief-more-heat",
+      "todo": true,
+      "source": "累的還有你家的電表，",
+      "text": "E do medidor de luz:",
+      "max_chars": 20
+    },
+    {
+      "id": "p162",
+      "scene": "chief-more-heat",
+      "todo": true,
+      "source": "電費也跟著一起變多。",
+      "text": "a conta sobe junto.",
+      "max_chars": 21
+    },
+    {
+      "id": "p163",
+      "scene": "kid-heater-q",
+      "todo": true,
+      "source": "那開著門的冰箱，",
+      "text": "Aberta, a geladeira",
+      "max_chars": 21
+    },
+    {
+      "id": "p164",
+      "scene": "kid-heater-q",
+      "todo": true,
+      "source": "像冬天用的電暖器？",
+      "text": "vira um aquecedor?",
+      "max_chars": 24
+    },
+    {
+      "id": "p165",
+      "scene": "chief-heater",
+      "todo": true,
+      "source": "很像。只是它繞了一大圈，",
+      "text": "Quase, com um desvio,",
+      "max_chars": 21
+    },
+    {
+      "id": "p166",
+      "scene": "chief-heater",
+      "todo": true,
+      "source": "還順便讓冰箱裡的東西，一起變暖。",
+      "text": "e ainda esquenta a comida dentro.",
+      "max_chars": 33
+    },
+    {
+      "id": "p167",
+      "scene": "chief-opinion",
+      "todo": true,
+      "source": "我覺得這是冰箱最會騙人的地方：",
+      "text": "Eis o truque dela:",
+      "max_chars": 21
+    },
+    {
+      "id": "p168",
+      "scene": "chief-opinion",
+      "todo": true,
+      "source": "它是一台搬熱的機器，不是做冷的機器。",
+      "text": "ela move calor, não fabrica frio.",
+      "max_chars": 40
+    },
+    {
+      "id": "p169",
+      "scene": "kid-trick",
+      "todo": true,
+      "source": "冰箱騙了我！",
+      "text": "Me enganou!",
+      "max_chars": 14
+    },
+    {
+      "id": "p170",
+      "scene": "kid-ac-q",
+      "todo": true,
+      "source": "那冷氣呢？",
+      "text": "E o ar?",
+      "max_chars": 8
+    },
+    {
+      "id": "p171",
+      "scene": "kid-ac-q",
+      "todo": true,
+      "source": "冷氣也是搬熱的機器嗎？",
+      "text": "O ar também move calor?",
+      "max_chars": 31
+    },
+    {
+      "id": "p172",
+      "scene": "chief-ac-same",
+      "todo": true,
+      "source": "是。冷氣和冰箱，是同一種機器。",
+      "text": "Sim. É a mesma máquina.",
+      "max_chars": 31
+    },
+    {
+      "id": "p173",
+      "scene": "chief-ac-same",
+      "todo": true,
+      "source": "它也有冷媒、也有壓縮機，也一樣吃電。",
+      "text": "Também tem fluido e compressor.",
+      "max_chars": 37
+    },
+    {
+      "id": "p174",
+      "scene": "kid-ac-why",
+      "todo": true,
+      "source": "那開冷氣，",
+      "text": "Então ligado",
+      "max_chars": 12
+    },
+    {
+      "id": "p175",
+      "scene": "kid-ac-why",
+      "todo": true,
+      "source": "房間怎麼就會變涼？",
+      "text": "por que o quarto esfria?",
+      "max_chars": 28
+    },
+    {
+      "id": "p176",
+      "scene": "chief-balcony",
+      "todo": true,
+      "source": "答案就在陽台上。走，我們去看那台大箱子。",
+      "text": "A resposta tá na varanda. Vamos lá!",
+      "max_chars": 37
+    },
+    {
+      "id": "p177",
+      "scene": "kid-hot-wind",
+      "todo": true,
+      "source": "哇，吹出來的是熱風！",
+      "text": "Uau, sai vento quente!",
+      "max_chars": 26
+    },
+    {
+      "id": "p178",
+      "scene": "chief-outdoor",
+      "todo": true,
+      "source": "這台叫做室外機，它吹的熱，",
+      "text": "É a unidade externa. O calor",
+      "max_chars": 30
+    },
+    {
+      "id": "p179",
+      "scene": "chief-outdoor",
+      "todo": true,
+      "source": "是從你的房間裡搬出來的。",
+      "text": "veio de dentro do seu quarto.",
+      "max_chars": 32
+    },
+    {
+      "id": "p180",
+      "scene": "kid-outside-air",
+      "todo": true,
+      "source": "我知道！冷氣是把外面的空氣，",
+      "text": "Sei! Pega o ar de fora,",
+      "max_chars": 25
+    },
+    {
+      "id": "p181",
+      "scene": "kid-outside-air",
+      "todo": true,
+      "source": "變冷再吹進來的！",
+      "text": "esfria e joga aqui!",
+      "max_chars": 20
+    },
+    {
+      "id": "p182",
+      "scene": "chief-own-air",
+      "todo": true,
+      "source": "很多人都這樣想。其實冷氣吹的，",
+      "text": "Muita gente acha. Mas ele sopra",
+      "max_chars": 36
+    },
+    {
+      "id": "p183",
+      "scene": "chief-own-air",
+      "todo": true,
+      "source": "是你房間自己的空氣。",
+      "text": "o próprio ar do seu quarto.",
+      "max_chars": 31
+    },
+    {
+      "id": "p184",
+      "scene": "indoor-unit",
+      "todo": true,
+      "source": "房間牆上那台把空氣吸進去，拿走熱，再吹回來。",
+      "text": "O da parede puxa o ar, tira calor e devolve.",
+      "max_chars": 46
+    },
+    {
+      "id": "p185",
+      "scene": "indoor-unit",
+      "todo": true,
+      "source": "它和陽台那台，中間連著兩條管子。",
+      "text": "Dois canos ligam ele ao da varanda.",
+      "max_chars": 37
+    },
+    {
+      "id": "p186",
+      "scene": "chief-same-trick",
+      "todo": true,
+      "source": "冷媒就在這兩台之間繞圈子跑，",
+      "text": "Neles, o fluido",
+      "max_chars": 21
+    },
+    {
+      "id": "p187",
+      "scene": "chief-same-trick",
+      "todo": true,
+      "source": "聽起來，像不像冰箱裡的什麼？",
+      "text": "Lembra a geladeira?",
+      "max_chars": 24
+    },
+    {
+      "id": "p188",
+      "scene": "chief-same-trick",
+      "todo": true,
+      "source": "搬熱的小火車！",
+      "text": "O trenzinho!",
+      "max_chars": 14
+    },
+    {
+      "id": "p189",
+      "scene": "plan-house",
+      "todo": true,
+      "source": "現在把圈畫在你的房間：房間就是冰箱的裡面，",
+      "text": "O círculo é seu quarto: o dentro da geladeira,",
+      "max_chars": 52
+    },
+    {
+      "id": "p190",
+      "scene": "plan-house",
+      "todo": true,
+      "source": "而冰箱的背後，被搬到了牆外面。",
+      "text": "e o lado de trás foi pra fora.",
+      "max_chars": 30
+    },
+    {
+      "id": "p191",
+      "scene": "kid-hot-end",
+      "todo": true,
+      "source": "熱的那一頭在外面！",
+      "text": "O lado quente fora!",
+      "max_chars": 19
+    },
+    {
+      "id": "p192",
+      "scene": "chief-out-of-circle",
+      "todo": true,
+      "source": "這次的熱吐到圈外，不會直接繞回來，",
+      "text": "Agora o calor sai do círculo e não volta,",
+      "max_chars": 44
+    },
+    {
+      "id": "p193",
+      "scene": "chief-out-of-circle",
+      "todo": true,
+      "source": "圓圈裡面的熱，才真的一顆一顆變少。",
+      "text": "e aí o calor dentro diminui mesmo.",
+      "max_chars": 34
+    },
+    {
+      "id": "p194",
+      "scene": "chief-ac-bolt",
+      "todo": true,
+      "source": "冷氣吃的電，大部分也變成熱，",
+      "text": "A energia do ar vira calor",
+      "max_chars": 26
+    },
+    {
+      "id": "p195",
+      "scene": "chief-ac-bolt",
+      "todo": true,
+      "source": "在室外機那裡，一起吐到圈外。",
+      "text": "e sai lá fora também.",
+      "max_chars": 25
+    },
+    {
+      "id": "p196",
+      "scene": "one-to-three",
+      "todo": true,
+      "source": "一般的冷氣，用一份電，",
+      "text": "Com um raiozinho,",
+      "max_chars": 17
+    },
+    {
+      "id": "p197",
+      "scene": "one-to-three",
+      "todo": true,
+      "source": "大約能搬走好幾份的熱。",
+      "text": "move várias de calor.",
+      "max_chars": 23
+    },
+    {
+      "id": "p198",
+      "scene": "kid-bargain",
+      "todo": true,
+      "source": "用一份電，搬好幾份熱？",
+      "text": "Um raio, muito calor?",
+      "max_chars": 24
+    },
+    {
+      "id": "p199",
+      "scene": "kid-bargain",
+      "todo": true,
+      "source": "搬得好多喔！",
+      "text": "Quanto calor!",
+      "max_chars": 17
+    },
+    {
+      "id": "p200",
+      "scene": "chief-depends",
+      "todo": true,
+      "source": "確切搬多少，要看冷氣和天氣，",
+      "text": "Depende do ar e do clima;",
+      "max_chars": 26
+    },
+    {
+      "id": "p201",
+      "scene": "chief-depends",
+      "todo": true,
+      "source": "外面越熱，通常就搬得越吃力。",
+      "text": "com calorão, ele sofre mais.",
+      "max_chars": 28
+    },
+    {
+      "id": "p202",
+      "scene": "chief-door-back",
+      "todo": true,
+      "source": "還記得冰箱那道厚厚的門嗎？",
+      "text": "E a porta grossa?",
+      "max_chars": 18
+    },
+    {
+      "id": "p203",
+      "scene": "chief-door-back",
+      "todo": true,
+      "source": "開冷氣的時候，你關上窗、拉上窗簾，",
+      "text": "Com ar ligado, fechar janela e cortina",
+      "max_chars": 39
+    },
+    {
+      "id": "p204",
+      "scene": "kid-curtain",
+      "todo": true,
+      "source": "就是幫房間關上一道厚門。",
+      "text": "é fechar a porta.",
+      "max_chars": 18
+    },
+    {
+      "id": "p205",
+      "scene": "kid-curtain",
+      "todo": true,
+      "source": "所以開冷氣要關窗！",
+      "text": "Por isso fecha a janela!",
+      "max_chars": 25
+    },
+    {
+      "id": "p206",
+      "scene": "chief-two-jobs",
+      "todo": true,
+      "source": "冷氣負責把熱搬出去，",
+      "text": "O ar tira o calor,",
+      "max_chars": 22
+    },
+    {
+      "id": "p207",
+      "scene": "chief-two-jobs",
+      "todo": true,
+      "source": "隔熱負責讓外面的熱，慢一點溜回來。",
+      "text": "o isolante freia o calor que volta.",
+      "max_chars": 44
+    },
+    {
+      "id": "p208",
+      "scene": "kid-both",
+      "todo": true,
+      "source": "一個搬，一個擋！",
+      "text": "Tira e segura!",
+      "max_chars": 17
+    },
+    {
+      "id": "p209",
+      "scene": "chief-open-window",
+      "todo": true,
+      "source": "那開著冷氣又開著窗呢？",
+      "text": "E com a janela aberta?",
+      "max_chars": 22
+    },
+    {
+      "id": "p210",
+      "scene": "chief-open-window",
+      "todo": true,
+      "source": "就跟開著冰箱門一樣，冷氣只好搬個不停。",
+      "text": "Igual à geladeira aberta: não para.",
+      "max_chars": 36
+    },
+    {
+      "id": "p211",
+      "scene": "kid-big-fridge",
+      "todo": true,
+      "source": "開冷氣的房間，",
+      "text": "O quarto é",
+      "max_chars": 10
+    },
+    {
+      "id": "p212",
+      "scene": "kid-big-fridge",
+      "todo": true,
+      "source": "就是一台大冰箱！",
+      "text": "geladeirão!",
+      "max_chars": 11
+    },
+    {
+      "id": "p213",
+      "scene": "kid-big-fridge",
+      "todo": true,
+      "source": "對，而你就住在冰箱的裡面。",
+      "text": "Isso, e você mora dentro dela.",
+      "max_chars": 33
+    },
+    {
+      "id": "p214",
+      "scene": "chief-back-kitchen",
+      "todo": true,
+      "source": "好啦，我們回廚房吧。那扇冰箱門，還開著呢。",
+      "text": "Voltemos à cozinha. A porta tá aberta.",
+      "max_chars": 38
+    },
+    {
+      "id": "p215",
+      "scene": "kid-close-door",
+      "todo": true,
+      "source": "還記得我的好方法嗎？",
+      "text": "Minha ideia?",
+      "max_chars": 13
+    },
+    {
+      "id": "p216",
+      "scene": "kid-close-door",
+      "todo": true,
+      "source": "我要收回！",
+      "text": "Desisto dela!",
+      "max_chars": 21
+    },
+    {
+      "id": "p217",
+      "scene": "kid-got-it",
+      "todo": true,
+      "source": "冰箱門開著，熱的那一頭，",
+      "text": "O lado quente fica",
+      "max_chars": 20
+    },
+    {
+      "id": "p218",
+      "scene": "kid-got-it",
+      "todo": true,
+      "source": "還留在廚房裡！",
+      "text": "aqui na cozinha!",
+      "max_chars": 17
+    },
+    {
+      "id": "p219",
+      "scene": "chief-same-machine",
+      "todo": true,
+      "source": "還記得冰箱和冷氣，是同一種機器嗎？",
+      "text": "Ar e geladeira são iguais, né?",
+      "max_chars": 31
+    },
+    {
+      "id": "p220",
+      "scene": "chief-same-machine",
+      "todo": true,
+      "source": "差別只在熱的那一頭，放在圈裡還是圈外。",
+      "text": "Só muda onde fica o lado quente.",
+      "max_chars": 39
+    },
+    {
+      "id": "p221",
+      "scene": "chief-done",
+      "todo": true,
+      "source": "下次你走過冰箱，可以摸摸它的背後：",
+      "text": "Toca atrás da geladeira:",
+      "max_chars": 25
+    },
+    {
+      "id": "p222",
+      "scene": "chief-done",
+      "todo": true,
+      "source": "還記得那三顆紅球嗎？你摸到的溫溫，就是它們。",
+      "text": "Lembra das três bolinhas? Esse morno são elas.",
+      "max_chars": 48
+    },
+    {
+      "id": "p223",
+      "scene": "outro",
+      "todo": true,
+      "source": "原來如此！",
+      "text": "Entendi!",
+      "max_chars": 14
+    },
+    {
+      "id": "p224",
+      "scene": "outro-chief",
+      "todo": true,
+      "source": "你家冷氣的室外機，裝在哪裡？",
+      "text": "Cadê a do seu ar?",
+      "max_chars": 18
+    },
+    {
+      "id": "p225",
+      "scene": "outro-chief",
+      "todo": true,
+      "source": "吹出來的風有多熱？留言告訴我們。",
+      "text": "Quão quente sopra? Comenta aí!",
+      "max_chars": 32
+    },
+    {
+      "id": "p226",
+      "scene": "outro-wave",
+      "todo": true,
+      "source": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
+      "text": "Siga o Escritório do Ah, É Por Isso e ache os porquês!",
+      "max_chars": 54
+    }
+  ]
+}

@@ -1,0 +1,1921 @@
+{
+  "locale": "vi",
+  "slug": "sothatswhy-p07-fridge-door",
+  "parts": [
+    "metadata",
+    "captions"
+  ],
+  "note": "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are. `title.max_chars` is the most characters the title may have: the channel adds the locale's captions tag after it (「｜CC字幕」 worded per language), and a brand story's tag, and YouTube takes 100 in all. `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks. `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the narration line takes, so stay under it. `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.",
+  "title": {
+    "todo": true,
+    "source": "冰箱門打開，房間為什麼不會變涼？｜原來如此事務所",
+    "text": "Mở cửa tủ lạnh, sao căn phòng không mát hơn? | Văn phòng À ra thế",
+    "max_chars": 92
+  },
+  "description": {
+    "todo": true,
+    "source": "熱到不行的下午，小問把冰箱門一打開，臉馬上涼涼的。那冰箱門整天開著，廚房是不是就不用開冷氣了？\n\n這一集，所長和小問盯著同一台冰箱，把圈越畫越大：先只看冰箱裡面，冷到底是不是一種會跑出來的東西；再繞到冰箱背後，看冷媒和壓縮機怎麼把熱一圈一圈搬出去，壓縮機吃的電又去了哪裡；然後把整間廚房圈起來算一次熱帳；最後走到陽台，看冷氣的室外機為什麼吹熱風，冷氣又為什麼能讓房間變涼。\n\n本集插圖由 AI 生成。片中「兩顆熱加一份電」是為了好算的假設數字；冷氣搬熱的倍數是教學資料裡的大約數字，實際看機型與天氣。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-06",
+    "text": "Một buổi chiều nóng hầm hập, bé Wen mở cửa tủ lạnh, mặt mát rượi ngay. Vậy nếu để cửa tủ lạnh mở cả ngày, căn bếp có khỏi cần bật điều hòa không?\n\nTrong tập này, cô Trưởng phòng và bé Wen cùng nhìn một chiếc tủ lạnh và vẽ vòng tròn ngày càng to: trước hết chỉ nhìn bên trong tủ, xem lạnh có thật là một thứ chạy ra được không; rồi vòng ra sau tủ, xem môi chất lạnh và máy nén chuyển nhiệt ra ngoài hết vòng này đến vòng khác thế nào, và điện máy nén ăn vào đi đâu; sau đó khoanh cả căn bếp để tính sổ nhiệt một lần; cuối cùng ra ban công, xem vì sao cục nóng của điều hòa thổi gió nóng, và vì sao điều hòa lại làm phòng mát được.\n\nHình minh họa trong tập này do AI tạo. \"Hai quả nhiệt cộng một phần điện\" là con số giả định cho dễ tính; số lần nhiệt mà điều hòa chuyển được là con số ước chừng trong tài liệu giảng dạy, thực tế tùy loại máy và thời tiết. Nguồn của từng nhận định được liệt kê trong phần tài liệu tham khảo bên dưới.\n\nDữ liệu tính đến 2026-11-06"
+  },
+  "tags": {
+    "todo": true,
+    "source": [
+      "冰箱",
+      "冰箱門打開",
+      "冷氣",
+      "室外機",
+      "冷媒",
+      "熱力學",
+      "科普",
+      "原來如此事務所"
+    ],
+    "text": [
+      "tủ lạnh",
+      "mở cửa tủ lạnh",
+      "điều hòa",
+      "cục nóng",
+      "môi chất lạnh",
+      "nhiệt động lực học",
+      "khoa học phổ thông",
+      "Văn phòng À ra thế"
+    ]
+  },
+  "thumbnail": {
+    "todo": true,
+    "source": {
+      "headline": "冰箱門開著\n**廚房更熱**",
+      "sub": "冰箱只是把熱搬到背後"
+    },
+    "text": {
+      "headline": "Mở cửa tủ lạnh\n**bếp càng nóng**",
+      "sub": "Tủ lạnh chỉ chuyển nhiệt ra sau"
+    }
+  },
+  "chapters": [
+    {
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "熱天下午，冰箱門開著",
+      "text": "Chiều nóng, cửa tủ lạnh mở"
+    },
+    {
+      "scene": "kid-cold-out",
+      "todo": true,
+      "source": "冰箱裡少掉的熱",
+      "text": "Nhiệt mất đi trong tủ lạnh"
+    },
+    {
+      "scene": "kid-eat-heat",
+      "todo": true,
+      "source": "冰箱背後熱熱的",
+      "text": "Mặt sau tủ lạnh ấm ấm"
+    },
+    {
+      "scene": "chief-bigger",
+      "todo": true,
+      "source": "把整間廚房圈起來",
+      "text": "Khoanh cả căn bếp lại"
+    },
+    {
+      "scene": "chief-balcony",
+      "todo": true,
+      "source": "冷氣把熱的那頭放到外面",
+      "text": "Điều hòa đặt đầu nóng ra ngoài"
+    },
+    {
+      "scene": "chief-back-kitchen",
+      "todo": true,
+      "source": "小問關上冰箱門",
+      "text": "Bé Wen đóng cửa tủ lạnh"
+    }
+  ],
+  "glossary": {
+    "terms": [
+      "AI"
+    ],
+    "sources": [
+      "HyperPhysics (Georgia State University): Refrigerator",
+      "HyperPhysics (Georgia State University): Heat Pump, Air Conditioners and Heat Pumps, Coefficient of Performance",
+      "University of Illinois Physics Van: Open Refrigerator",
+      "University of Sydney School of Physics: Bar Fridge (thermal physics activity)",
+      "Penn State EGEE 102: 10.4 How Air Conditioners Work",
+      "Wikipedia: Refrigerator",
+      "Wikipedia: Coefficient of performance",
+      "Wikipedia: Air conditioning",
+      "Wikipedia: Dehumidifier",
+      "HyperPhysics (Georgia State University): Thermal Conductivity",
+      "Electrical and Mechanical Services Department, Hong Kong: Energy Saving Tips For Home, Air Conditioner"
+    ]
+  },
+  "boundaries": {},
+  "lines": [
+    {
+      "id": "p001",
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "所長！今天熱到不行，",
+      "text": "Cô ơi! Hôm nay nóng quá,",
+      "max_chars": 27
+    },
+    {
+      "id": "p002",
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "我把冰箱門一打開，",
+      "text": "cháu mở tủ lạnh ra,",
+      "max_chars": 21
+    },
+    {
+      "id": "p003",
+      "scene": "fridge-open",
+      "todo": true,
+      "source": "臉馬上涼涼的！",
+      "text": "mặt mát rượi luôn!",
+      "max_chars": 24
+    },
+    {
+      "id": "p004",
+      "scene": "kid-idea",
+      "todo": true,
+      "source": "我想到一個好方法！",
+      "text": "Có ý hay rồi!",
+      "max_chars": 13
+    },
+    {
+      "id": "p005",
+      "scene": "kid-idea",
+      "todo": true,
+      "source": "冰箱門整天開著，",
+      "text": "Mở cửa tủ cả ngày,",
+      "max_chars": 21
+    },
+    {
+      "id": "p006",
+      "scene": "kid-idea",
+      "todo": true,
+      "source": "廚房就不用開冷氣了！",
+      "text": "bếp khỏi cần bật điều hòa!",
+      "max_chars": 33
+    },
+    {
+      "id": "p007",
+      "scene": "chief-wait",
+      "todo": true,
+      "source": "先別急著拔冷氣的插頭。",
+      "text": "Khoan tắt điều hòa đã.",
+      "max_chars": 22
+    },
+    {
+      "id": "p008",
+      "scene": "chief-wait",
+      "todo": true,
+      "source": "你也可以猜猜看：冰箱門一直開著，",
+      "text": "Cháu đoán thử: cửa tủ lạnh mở mãi,",
+      "max_chars": 43
+    },
+    {
+      "id": "p009",
+      "scene": "chief-wait",
+      "todo": true,
+      "source": "廚房會變涼，還是反而變熱？",
+      "text": "bếp sẽ mát hơn, hay lại nóng hơn?",
+      "max_chars": 46
+    },
+    {
+      "id": "p010",
+      "scene": "kid-hotter",
+      "todo": true,
+      "source": "變熱？",
+      "text": "Nóng hơn?",
+      "max_chars": 10
+    },
+    {
+      "id": "p011",
+      "scene": "kid-hotter",
+      "todo": true,
+      "source": "冰箱明明是冷的耶！",
+      "text": "Tủ lạnh lạnh mà!",
+      "max_chars": 32
+    },
+    {
+      "id": "p012",
+      "scene": "chief-back-tease",
+      "todo": true,
+      "source": "那你走過冰箱旁邊時，把手靠近它的背後。",
+      "text": "Lúc đi ngang tủ lạnh, đưa tay gần mặt sau nó.",
+      "max_chars": 46
+    },
+    {
+      "id": "p013",
+      "scene": "chief-back-tease",
+      "todo": true,
+      "source": "那裡摸起來，可一點都不冷。",
+      "text": "Chỗ đó sờ vào chẳng lạnh chút nào.",
+      "max_chars": 44
+    },
+    {
+      "id": "p014",
+      "scene": "kid-back-guess",
+      "todo": true,
+      "source": "冰箱後面，",
+      "text": "Sau tủ lạnh",
+      "max_chars": 16
+    },
+    {
+      "id": "p015",
+      "scene": "kid-back-guess",
+      "todo": true,
+      "source": "藏了什麼東西？",
+      "text": "giấu cái gì vậy?",
+      "max_chars": 27
+    },
+    {
+      "id": "p016",
+      "scene": "outdoor-unit",
+      "todo": true,
+      "source": "還有你家陽台上，那台嗡嗡轉的大箱子，",
+      "text": "Còn cái hộp to kêu ù ù ngoài ban công,",
+      "max_chars": 48
+    },
+    {
+      "id": "p017",
+      "scene": "outdoor-unit",
+      "todo": true,
+      "source": "它吹出來的風，你猜是冷的還是熱的？",
+      "text": "gió nó thổi ra, cháu đoán lạnh hay nóng?",
+      "max_chars": 58
+    },
+    {
+      "id": "p018",
+      "scene": "kid-outdoor-guess",
+      "todo": true,
+      "source": "冷氣的箱子，",
+      "text": "Điều hòa à,",
+      "max_chars": 11
+    },
+    {
+      "id": "p019",
+      "scene": "kid-outdoor-guess",
+      "todo": true,
+      "source": "吹的一定是冷風吧？",
+      "text": "chắc thổi gió lạnh chứ?",
+      "max_chars": 37
+    },
+    {
+      "id": "p020",
+      "scene": "chief-promise",
+      "todo": true,
+      "source": "這些問題的答案，都藏在同一台冰箱裡。",
+      "text": "Đáp án đều nằm trong một chiếc tủ lạnh.",
+      "max_chars": 44
+    },
+    {
+      "id": "p021",
+      "scene": "chief-promise",
+      "todo": true,
+      "source": "它門開著的時候，熱到底跑去了哪裡？",
+      "text": "Khi cửa tủ mở, hơi nóng rốt cuộc đi đâu?",
+      "max_chars": 61
+    },
+    {
+      "id": "p022",
+      "scene": "kid-cold-out",
+      "todo": true,
+      "source": "冰箱裡面裝滿了冷，",
+      "text": "Tủ lạnh đầy hơi lạnh,",
+      "max_chars": 26
+    },
+    {
+      "id": "p023",
+      "scene": "kid-cold-out",
+      "todo": true,
+      "source": "門一開，冷就跑出來了！",
+      "text": "mở cửa ra là hơi lạnh chạy ra!",
+      "max_chars": 43
+    },
+    {
+      "id": "p024",
+      "scene": "chief-tea",
+      "todo": true,
+      "source": "你家桌上，有沒有放涼過一杯熱茶？",
+      "text": "Cháu từng để nguội cốc trà nóng chưa?",
+      "max_chars": 39
+    },
+    {
+      "id": "p025",
+      "scene": "chief-tea",
+      "todo": true,
+      "source": "你把它放在桌上，過一陣子會怎樣？",
+      "text": "Để trên bàn một lúc, nó sẽ thế nào?",
+      "max_chars": 40
+    },
+    {
+      "id": "p026",
+      "scene": "kid-tea",
+      "todo": true,
+      "source": "會變溫溫的。",
+      "text": "Nó âm ấm.",
+      "max_chars": 16
+    },
+    {
+      "id": "p027",
+      "scene": "kid-tea",
+      "todo": true,
+      "source": "熱跑掉了！",
+      "text": "Hơi nóng chạy mất!",
+      "max_chars": 19
+    },
+    {
+      "id": "p028",
+      "scene": "ice-cube",
+      "todo": true,
+      "source": "那一顆冰塊放在桌上呢？",
+      "text": "Thế viên đá để trên bàn?",
+      "max_chars": 27
+    },
+    {
+      "id": "p029",
+      "scene": "ice-cube",
+      "todo": true,
+      "source": "會慢慢融化。",
+      "text": "Nó tan dần.",
+      "max_chars": 21
+    },
+    {
+      "id": "p030",
+      "scene": "chief-heat-flow",
+      "todo": true,
+      "source": "冰塊融化，是旁邊空氣的熱跑進了冰塊。",
+      "text": "Đá tan là do hơi nóng của không khí xung quanh chạy vào.",
+      "max_chars": 67
+    },
+    {
+      "id": "p031",
+      "scene": "chief-heat-flow",
+      "todo": true,
+      "source": "熱自己走，只會從熱的地方，跑到冷的地方。",
+      "text": "Tự nó, hơi nóng chỉ đi từ chỗ nóng sang chỗ lạnh.",
+      "max_chars": 70
+    },
+    {
+      "id": "p032",
+      "scene": "kid-cold-run",
+      "todo": true,
+      "source": "那冷呢？",
+      "text": "Còn lạnh?",
+      "max_chars": 10
+    },
+    {
+      "id": "p033",
+      "scene": "kid-cold-run",
+      "todo": true,
+      "source": "冰冰的空氣，不會自己跑嗎？",
+      "text": "Không khí lạnh không tự chạy sao?",
+      "max_chars": 40
+    },
+    {
+      "id": "p034",
+      "scene": "chief-cold-less",
+      "todo": true,
+      "source": "我們說的冷，其實就是熱比較少。",
+      "text": "Cái ta gọi là lạnh, thật ra là ít nhiệt.",
+      "max_chars": 40
+    },
+    {
+      "id": "p035",
+      "scene": "chief-cold-less",
+      "todo": true,
+      "source": "冷不是一種會跑出來的東西。",
+      "text": "Lạnh không phải thứ chạy ra được.",
+      "max_chars": 42
+    },
+    {
+      "id": "p036",
+      "scene": "kid-face-cool",
+      "todo": true,
+      "source": "那我的臉，",
+      "text": "Vậy mặt cháu",
+      "max_chars": 16
+    },
+    {
+      "id": "p037",
+      "scene": "kid-face-cool",
+      "todo": true,
+      "source": "怎麼會涼涼的？",
+      "text": "sao lại mát?",
+      "max_chars": 31
+    },
+    {
+      "id": "p038",
+      "scene": "chief-face",
+      "todo": true,
+      "source": "冰箱裡的冷空氣流出來，碰到你的臉，",
+      "text": "Khí lạnh trong tủ chảy ra, chạm vào mặt cháu,",
+      "max_chars": 54
+    },
+    {
+      "id": "p039",
+      "scene": "chief-face",
+      "todo": true,
+      "source": "你臉上的熱就跑進那團冷空氣裡。",
+      "text": "nhiệt trên mặt cháu chạy vào khí lạnh đó.",
+      "max_chars": 47
+    },
+    {
+      "id": "p040",
+      "scene": "kid-stolen",
+      "todo": true,
+      "source": "我的熱被偷走了！",
+      "text": "Nhiệt của cháu bị trộm!",
+      "max_chars": 35
+    },
+    {
+      "id": "p041",
+      "scene": "chief-circle",
+      "todo": true,
+      "source": "想知道熱被搬去哪裡，我們來畫一個圈。",
+      "text": "Nhiệt đi đâu? Ta vẽ một vòng tròn nhé.",
+      "max_chars": 38
+    },
+    {
+      "id": "p042",
+      "scene": "chief-circle",
+      "todo": true,
+      "source": "圈裡面的熱，多了少了，我們都記下來。",
+      "text": "Nhiệt trong vòng nhiều lên hay ít đi, ta ghi hết lại.",
+      "max_chars": 69
+    },
+    {
+      "id": "p043",
+      "scene": "plan-inside",
+      "todo": true,
+      "source": "我把熱畫成一顆顆紅色的小球。",
+      "text": "Cô vẽ nhiệt thành những quả bóng đỏ.",
+      "max_chars": 39
+    },
+    {
+      "id": "p044",
+      "scene": "plan-inside",
+      "todo": true,
+      "source": "先圈住冰箱的裡面就好。",
+      "text": "Trước hết khoanh bên trong tủ thôi.",
+      "max_chars": 37
+    },
+    {
+      "id": "p045",
+      "scene": "fridge-shelves",
+      "todo": true,
+      "source": "冷藏的那幾層，大約只有三到五度，",
+      "text": "Các ngăn mát chỉ khoảng ba đến năm độ,",
+      "max_chars": 43
+    },
+    {
+      "id": "p046",
+      "scene": "fridge-shelves",
+      "todo": true,
+      "source": "比夏天的廚房，冷了一大截。",
+      "text": "lạnh hơn bếp mùa hè nhiều lắm.",
+      "max_chars": 42
+    },
+    {
+      "id": "p047",
+      "scene": "freezer",
+      "todo": true,
+      "source": "那下面的冷凍庫，你猜有多冷？",
+      "text": "Còn ngăn đá, lạnh cỡ nào?",
+      "max_chars": 31
+    },
+    {
+      "id": "p048",
+      "scene": "freezer",
+      "todo": true,
+      "source": "多半在零下十八度，甚至更冷。",
+      "text": "Thường là âm mười tám độ, có khi lạnh hơn.",
+      "max_chars": 56
+    },
+    {
+      "id": "p049",
+      "scene": "kid-freezer",
+      "todo": true,
+      "source": "零下十八度！",
+      "text": "Âm mười tám!",
+      "max_chars": 13
+    },
+    {
+      "id": "p050",
+      "scene": "kid-freezer",
+      "todo": true,
+      "source": "比台灣的冬天冷多了！",
+      "text": "Lạnh hơn mùa đông nhiều!",
+      "max_chars": 40
+    },
+    {
+      "id": "p051",
+      "scene": "chief-gap",
+      "todo": true,
+      "source": "裡外差得越多，熱就越急著往裡面鑽。",
+      "text": "Trong ngoài càng chênh, nhiệt càng nôn nóng chui vào.",
+      "max_chars": 53
+    },
+    {
+      "id": "p052",
+      "scene": "kid-sneak",
+      "todo": true,
+      "source": "廚房的熱，",
+      "text": "Nhiệt trong bếp",
+      "max_chars": 20
+    },
+    {
+      "id": "p053",
+      "scene": "kid-sneak",
+      "todo": true,
+      "source": "會想鑽進冰箱裡？",
+      "text": "muốn chui vào tủ?",
+      "max_chars": 35
+    },
+    {
+      "id": "p054",
+      "scene": "chief-sneak",
+      "todo": true,
+      "source": "會。照剛剛那條規矩，熱一定往冷的地方跑。",
+      "text": "Ừ. Theo luật vừa rồi, nhiệt luôn chạy về chỗ lạnh.",
+      "max_chars": 54
+    },
+    {
+      "id": "p055",
+      "scene": "chief-sneak",
+      "todo": true,
+      "source": "可是冰箱的門，擋了它一下。",
+      "text": "Nhưng cửa tủ lạnh chặn nó lại một chút.",
+      "max_chars": 47
+    },
+    {
+      "id": "p056",
+      "scene": "kid-door-thick",
+      "todo": true,
+      "source": "你打開冰箱門，摸摸它的邊，",
+      "text": "Cháu mở cửa tủ, sờ mép thử,",
+      "max_chars": 28
+    },
+    {
+      "id": "p057",
+      "scene": "kid-door-thick",
+      "todo": true,
+      "source": "門又厚又重，邊上還有一圈軟軟的膠條。",
+      "text": "cửa vừa dày vừa nặng, mép có một vòng gioăng cao su mềm.",
+      "max_chars": 58
+    },
+    {
+      "id": "p058",
+      "scene": "kid-thermos",
+      "todo": true,
+      "source": "跟保溫瓶一樣厚！",
+      "text": "Dày như bình giữ nhiệt!",
+      "max_chars": 29
+    },
+    {
+      "id": "p059",
+      "scene": "chief-insulate",
+      "todo": true,
+      "source": "對，門和牆裡都塞了擋熱的材料。",
+      "text": "Đúng, cửa và vách tủ có chất cản nhiệt.",
+      "max_chars": 42
+    },
+    {
+      "id": "p060",
+      "scene": "chief-insulate",
+      "todo": true,
+      "source": "這叫做隔熱，讓熱跑得慢一點。",
+      "text": "Gọi là cách nhiệt, làm nhiệt chạy chậm lại.",
+      "max_chars": 48
+    },
+    {
+      "id": "p061",
+      "scene": "chief-door-later",
+      "todo": true,
+      "source": "這道厚厚的門，你先記著，等一下它會回來。",
+      "text": "Nhớ cánh cửa dày này nhé, lát nữa nó sẽ quay lại.",
+      "max_chars": 57
+    },
+    {
+      "id": "p062",
+      "scene": "kid-slow",
+      "todo": true,
+      "source": "只是慢一點？",
+      "text": "Chỉ chậm thôi ạ?",
+      "max_chars": 17
+    },
+    {
+      "id": "p063",
+      "scene": "kid-slow",
+      "todo": true,
+      "source": "那熱還是會溜進去？",
+      "text": "Vậy nhiệt vẫn lọt vào?",
+      "max_chars": 25
+    },
+    {
+      "id": "p064",
+      "scene": "chief-must-carry",
+      "todo": true,
+      "source": "會。冰箱裡卻一直那麼冷，",
+      "text": "Vẫn lọt. Mà trong tủ vẫn lạnh,",
+      "max_chars": 33
+    },
+    {
+      "id": "p065",
+      "scene": "chief-must-carry",
+      "todo": true,
+      "source": "就表示有東西，一直把熱搬出去。",
+      "text": "nghĩa là có thứ cứ liên tục chuyển nhiệt ra.",
+      "max_chars": 45
+    },
+    {
+      "id": "p066",
+      "scene": "plan-inside-out",
+      "todo": true,
+      "source": "圈裡的熱，一顆一顆被送出圈外。",
+      "text": "Nhiệt trong vòng, từng quả bị đưa ra ngoài.",
+      "max_chars": 54
+    },
+    {
+      "id": "p067",
+      "scene": "kid-where-q",
+      "todo": true,
+      "source": "那些熱，",
+      "text": "Nhiệt đó",
+      "max_chars": 10
+    },
+    {
+      "id": "p068",
+      "scene": "kid-where-q",
+      "todo": true,
+      "source": "被搬去哪裡了？",
+      "text": "bị chuyển đi đâu?",
+      "max_chars": 25
+    },
+    {
+      "id": "p069",
+      "scene": "kid-eat-heat",
+      "todo": true,
+      "source": "會不會是冰箱，",
+      "text": "Hay là tủ lạnh",
+      "max_chars": 20
+    },
+    {
+      "id": "p070",
+      "scene": "kid-eat-heat",
+      "todo": true,
+      "source": "把熱吃掉了？",
+      "text": "ăn mất nhiệt rồi?",
+      "max_chars": 33
+    },
+    {
+      "id": "p071",
+      "scene": "chief-vanish",
+      "todo": true,
+      "source": "熱不會憑空變不見，只會換個地方待。",
+      "text": "Nhiệt không tự biến mất, chỉ đổi chỗ ở thôi.",
+      "max_chars": 44
+    },
+    {
+      "id": "p072",
+      "scene": "chief-vanish",
+      "todo": true,
+      "source": "不信，你繞到冰箱的後面看看。",
+      "text": "Không tin thì ra sau tủ lạnh xem.",
+      "max_chars": 37
+    },
+    {
+      "id": "p073",
+      "scene": "kid-behind",
+      "todo": true,
+      "source": "咦？後面暖暖的！",
+      "text": "Ơ? Đằng sau ấm ấm!",
+      "max_chars": 22
+    },
+    {
+      "id": "p074",
+      "scene": "kid-behind",
+      "todo": true,
+      "source": "有一股溫溫的風！",
+      "text": "Có gió âm ấm!",
+      "max_chars": 16
+    },
+    {
+      "id": "p075",
+      "scene": "kid-behind",
+      "todo": true,
+      "source": "手靠近就好，背後有電線，別伸進去亂摸。",
+      "text": "Đưa tay lại gần thôi, sau đó có dây điện, đừng thò vào.",
+      "max_chars": 58
+    },
+    {
+      "id": "p076",
+      "scene": "coils",
+      "todo": true,
+      "source": "冰箱背後這一排彎彎的管子，摸起來是溫的。",
+      "text": "Dãy ống cong cong sau tủ lạnh, sờ vào thấy ấm.",
+      "max_chars": 51
+    },
+    {
+      "id": "p077",
+      "scene": "coils",
+      "todo": true,
+      "source": "冰箱裡少掉的熱，就是從這裡吐回廚房。",
+      "text": "Nhiệt mất đi trong tủ, nhả lại ra bếp ở chỗ này.",
+      "max_chars": 56
+    },
+    {
+      "id": "p078",
+      "scene": "kid-moved",
+      "todo": true,
+      "source": "原來熱被搬到後面了！",
+      "text": "Hóa ra nhiệt bị chuyển ra sau!",
+      "max_chars": 33
+    },
+    {
+      "id": "p079",
+      "scene": "chief-feet",
+      "todo": true,
+      "source": "有的冰箱，還會從底下吹出溫溫的風，",
+      "text": "Có tủ lạnh còn thổi gió ấm ra từ bên dưới,",
+      "max_chars": 47
+    },
+    {
+      "id": "p080",
+      "scene": "chief-feet",
+      "todo": true,
+      "source": "你站在它前面，腳邊有沒有被吹過？",
+      "text": "đứng trước tủ, chân cháu có thấy gió không?",
+      "max_chars": 52
+    },
+    {
+      "id": "p081",
+      "scene": "kid-feet",
+      "todo": true,
+      "source": "腳暖暖的，",
+      "text": "Chân ấm ấm,",
+      "max_chars": 13
+    },
+    {
+      "id": "p082",
+      "scene": "kid-feet",
+      "todo": true,
+      "source": "臉涼涼的！",
+      "text": "mặt mát mát!",
+      "max_chars": 21
+    },
+    {
+      "id": "p083",
+      "scene": "kid-no-hands",
+      "todo": true,
+      "source": "可是冰箱又沒有手，",
+      "text": "Nhưng tủ lạnh đâu có tay,",
+      "max_chars": 31
+    },
+    {
+      "id": "p084",
+      "scene": "kid-no-hands",
+      "todo": true,
+      "source": "它怎麼搬熱？",
+      "text": "sao nó chuyển nhiệt?",
+      "max_chars": 25
+    },
+    {
+      "id": "p085",
+      "scene": "chief-refrigerant",
+      "todo": true,
+      "source": "冰箱的管子裡，有一種會繞圈子跑的東西，",
+      "text": "Trong ống tủ lạnh có một thứ chạy vòng vòng,",
+      "max_chars": 49
+    },
+    {
+      "id": "p086",
+      "scene": "chief-refrigerant",
+      "todo": true,
+      "source": "叫做冷媒。",
+      "text": "gọi là môi chất lạnh.",
+      "max_chars": 27
+    },
+    {
+      "id": "p087",
+      "scene": "kid-refrigerant-q",
+      "todo": true,
+      "source": "冷媒？",
+      "text": "Hả?",
+      "max_chars": 5
+    },
+    {
+      "id": "p088",
+      "scene": "kid-refrigerant-q",
+      "todo": true,
+      "source": "它本身是冷的嗎？",
+      "text": "Bản thân nó lạnh à?",
+      "max_chars": 25
+    },
+    {
+      "id": "p089",
+      "scene": "chief-shower-back",
+      "todo": true,
+      "source": "它不一定冷，但它會變身。你洗完熱水澡，",
+      "text": "Chưa chắc lạnh, nhưng nó biết biến hình. Tắm nóng xong,",
+      "max_chars": 56
+    },
+    {
+      "id": "p090",
+      "scene": "chief-shower-back",
+      "todo": true,
+      "source": "濕濕地走出浴室，是不是會冷得發抖？",
+      "text": "người ướt bước ra, có run cầm cập không?",
+      "max_chars": 50
+    },
+    {
+      "id": "p091",
+      "scene": "kid-towel2",
+      "todo": true,
+      "source": "會！明明洗的是熱水！",
+      "text": "Có ạ! Rõ là tắm nước nóng!",
+      "max_chars": 26
+    },
+    {
+      "id": "p092",
+      "scene": "kid-towel2",
+      "todo": true,
+      "source": "你身上的水，變成水氣飛走的時候，",
+      "text": "Nước trên người cháu bay hơi đi,",
+      "max_chars": 48
+    },
+    {
+      "id": "p093",
+      "scene": "kid-towel2",
+      "todo": true,
+      "source": "會順手把你身上的熱帶走。",
+      "text": "tiện tay mang theo nhiệt của cháu.",
+      "max_chars": 36
+    },
+    {
+      "id": "p094",
+      "scene": "kid-wet-cold",
+      "todo": true,
+      "source": "所以濕濕的才會冷！",
+      "text": "Nên ướt mới thấy lạnh!",
+      "max_chars": 35
+    },
+    {
+      "id": "p095",
+      "scene": "evaporate",
+      "todo": true,
+      "source": "冷媒在冰箱裡面，也是從液體變成氣體，",
+      "text": "Trong tủ lạnh, môi chất cũng từ lỏng hóa thành khí,",
+      "max_chars": 62
+    },
+    {
+      "id": "p096",
+      "scene": "evaporate",
+      "todo": true,
+      "source": "把裡面的熱，一起帶進管子裡。",
+      "text": "mang nhiệt bên trong theo vào ống.",
+      "max_chars": 52
+    },
+    {
+      "id": "p097",
+      "scene": "kid-boil-q",
+      "todo": true,
+      "source": "冰箱裡那麼冷，",
+      "text": "Lạnh thế mà",
+      "max_chars": 17
+    },
+    {
+      "id": "p098",
+      "scene": "kid-boil-q",
+      "todo": true,
+      "source": "冷媒也能變成氣體？",
+      "text": "môi chất vẫn hóa khí được?",
+      "max_chars": 43
+    },
+    {
+      "id": "p099",
+      "scene": "chief-low-boil",
+      "todo": true,
+      "source": "能。冷媒是特別挑過的液體，很容易沸騰，",
+      "text": "Được. Môi chất là chất lỏng chọn kỹ, rất dễ sôi,",
+      "max_chars": 55
+    },
+    {
+      "id": "p100",
+      "scene": "chief-low-boil",
+      "todo": true,
+      "source": "冰箱裡那一點熱，就夠它變成氣體。",
+      "text": "chút nhiệt trong tủ là đủ để nó hóa khí.",
+      "max_chars": 49
+    },
+    {
+      "id": "p101",
+      "scene": "kid-cold-boil",
+      "todo": true,
+      "source": "冰冰的還會沸騰？",
+      "text": "Lạnh mà vẫn sôi?",
+      "max_chars": 22
+    },
+    {
+      "id": "p102",
+      "scene": "kid-cold-boil",
+      "todo": true,
+      "source": "好奇怪的液體！",
+      "text": "Chất lỏng lạ quá!",
+      "max_chars": 34
+    },
+    {
+      "id": "p103",
+      "scene": "kid-gas-where",
+      "todo": true,
+      "source": "帶著熱的氣體，",
+      "text": "Khí mang nhiệt",
+      "max_chars": 16
+    },
+    {
+      "id": "p104",
+      "scene": "kid-gas-where",
+      "todo": true,
+      "source": "接著跑去哪？",
+      "text": "rồi chạy đi đâu?",
+      "max_chars": 25
+    },
+    {
+      "id": "p105",
+      "scene": "compressor",
+      "todo": true,
+      "source": "它跑進一個圓圓的鐵罐裡。",
+      "text": "Nó chạy vào một bình sắt tròn.",
+      "max_chars": 31
+    },
+    {
+      "id": "p106",
+      "scene": "compressor",
+      "todo": true,
+      "source": "這個鐵罐叫做壓縮機。",
+      "text": "Bình sắt này gọi là máy nén.",
+      "max_chars": 38
+    },
+    {
+      "id": "p107",
+      "scene": "chief-squeeze",
+      "todo": true,
+      "source": "壓縮機把冷媒的氣體，擠得緊緊的。",
+      "text": "Máy nén ép khí môi chất thật chặt.",
+      "max_chars": 35
+    },
+    {
+      "id": "p108",
+      "scene": "chief-squeeze",
+      "todo": true,
+      "source": "被擠緊的冷媒，流進背後那排管子，",
+      "text": "Môi chất bị ép chặt chảy vào dãy ống phía sau,",
+      "max_chars": 62
+    },
+    {
+      "id": "p109",
+      "scene": "condense",
+      "todo": true,
+      "source": "在那裡變回液體，把帶來的熱交給廚房。",
+      "text": "ở đó hóa lỏng lại, giao nhiệt mang theo cho bếp.",
+      "max_chars": 50
+    },
+    {
+      "id": "p110",
+      "scene": "condense",
+      "todo": true,
+      "source": "然後它再流回冰箱裡面，重新跑一圈。",
+      "text": "Rồi nó chảy lại vào trong tủ, chạy thêm một vòng.",
+      "max_chars": 59
+    },
+    {
+      "id": "p111",
+      "scene": "kid-train",
+      "todo": true,
+      "source": "像載著熱的小火車！",
+      "text": "Như đoàn tàu nhỏ chở nhiệt!",
+      "max_chars": 35
+    },
+    {
+      "id": "p112",
+      "scene": "chief-train",
+      "todo": true,
+      "source": "很像。一圈又一圈，把熱從裡面載到外面。",
+      "text": "Giống lắm. Hết vòng này đến vòng khác, chở nhiệt từ trong ra ngoài.",
+      "max_chars": 76
+    },
+    {
+      "id": "p113",
+      "scene": "kid-plug",
+      "todo": true,
+      "source": "小火車要有人推吧？",
+      "text": "Đoàn tàu phải có người đẩy chứ?",
+      "max_chars": 42
+    },
+    {
+      "id": "p114",
+      "scene": "chief-electric",
+      "todo": true,
+      "source": "推它的就是電。把氣體擠緊很費力，",
+      "text": "Đẩy nó chính là điện. Ép khí cho chặt rất tốn sức,",
+      "max_chars": 55
+    },
+    {
+      "id": "p115",
+      "scene": "chief-electric",
+      "todo": true,
+      "source": "壓縮機要一直吃電，才轉得動。",
+      "text": "máy nén phải ăn điện liên tục mới chạy.",
+      "max_chars": 43
+    },
+    {
+      "id": "p116",
+      "scene": "plan-bolt",
+      "todo": true,
+      "source": "電，我們就畫成黃色的小閃電。",
+      "text": "Điện thì ta vẽ thành tia chớp nhỏ màu vàng.",
+      "max_chars": 51
+    },
+    {
+      "id": "p117",
+      "scene": "chief-thermostat",
+      "todo": true,
+      "source": "它也不是一直跑：冰箱裡一變暖，它就開工，",
+      "text": "Nó không chạy mãi: trong tủ ấm lên là nó làm,",
+      "max_chars": 52
+    },
+    {
+      "id": "p118",
+      "scene": "chief-thermostat",
+      "todo": true,
+      "source": "夠冷了，就停下來休息。",
+      "text": "đủ lạnh thì nghỉ ngơi.",
+      "max_chars": 23
+    },
+    {
+      "id": "p119",
+      "scene": "chief-thermostat",
+      "todo": true,
+      "source": "難怪它有時候安安靜靜！",
+      "text": "Hèn chi có lúc nó im re!",
+      "max_chars": 41
+    },
+    {
+      "id": "p120",
+      "scene": "kid-motor-q",
+      "todo": true,
+      "source": "那它吃進去的電，",
+      "text": "Thế điện nó ăn vào,",
+      "max_chars": 22
+    },
+    {
+      "id": "p121",
+      "scene": "kid-motor-q",
+      "todo": true,
+      "source": "最後跑去哪了？",
+      "text": "cuối cùng đi đâu?",
+      "max_chars": 24
+    },
+    {
+      "id": "p122",
+      "scene": "kid-ledger-q",
+      "todo": true,
+      "source": "還有，背後吐出來的熱，",
+      "text": "Còn nhiệt nhả ra phía sau,",
+      "max_chars": 29
+    },
+    {
+      "id": "p123",
+      "scene": "kid-ledger-q",
+      "todo": true,
+      "source": "跟裡面搬出來的，",
+      "text": "có bằng số nhiệt",
+      "max_chars": 18
+    },
+    {
+      "id": "p124",
+      "scene": "kid-ledger-q",
+      "todo": true,
+      "source": "一樣多嗎？",
+      "text": "chuyển từ trong ra?",
+      "max_chars": 20
+    },
+    {
+      "id": "p125",
+      "scene": "chief-bigger",
+      "todo": true,
+      "source": "要回答這兩個問題，圈得畫大一點，",
+      "text": "Muốn trả lời, phải vẽ vòng to hơn,",
+      "max_chars": 38
+    },
+    {
+      "id": "p126",
+      "scene": "chief-bigger",
+      "todo": true,
+      "source": "把整間廚房都圈進來。",
+      "text": "khoanh cả căn bếp vào.",
+      "max_chars": 34
+    },
+    {
+      "id": "p127",
+      "scene": "plan-room",
+      "todo": true,
+      "source": "冰箱、冰箱背後、你站的地方，",
+      "text": "Tủ lạnh, mặt sau tủ, chỗ cháu đứng,",
+      "max_chars": 49
+    },
+    {
+      "id": "p128",
+      "scene": "plan-room",
+      "todo": true,
+      "source": "現在全在同一個圈裡。",
+      "text": "giờ đều nằm trong cùng một vòng.",
+      "max_chars": 56
+    },
+    {
+      "id": "p129",
+      "scene": "chief-suppose",
+      "todo": true,
+      "source": "先讓門關著，假設一組好算的數字：",
+      "text": "Cửa tủ đóng, giả sử bộ số dễ tính:",
+      "max_chars": 40
+    },
+    {
+      "id": "p130",
+      "scene": "chief-suppose",
+      "todo": true,
+      "source": "冰箱從裡面搬出兩顆紅球的熱，",
+      "text": "tủ lạnh chuyển ra hai quả bóng nhiệt,",
+      "max_chars": 45
+    },
+    {
+      "id": "p131",
+      "scene": "chief-one-bolt",
+      "todo": true,
+      "source": "壓縮機做這件事，吃了一份電。",
+      "text": "máy nén làm việc đó, ăn một phần điện.",
+      "max_chars": 39
+    },
+    {
+      "id": "p132",
+      "scene": "kid-guess-count",
+      "todo": true,
+      "source": "背後會吐出幾顆？",
+      "text": "Phía sau nhả ra mấy quả?",
+      "max_chars": 25
+    },
+    {
+      "id": "p133",
+      "scene": "two-plus-one",
+      "todo": true,
+      "source": "三顆。搬出來的兩顆，加上一顆。",
+      "text": "Ba quả. Hai quả chuyển ra, cộng thêm một.",
+      "max_chars": 42
+    },
+    {
+      "id": "p134",
+      "scene": "two-plus-one",
+      "todo": true,
+      "source": "那一顆，就是壓縮機吃進去的電變的。",
+      "text": "Quả đó do điện máy nén ăn vào biến thành.",
+      "max_chars": 51
+    },
+    {
+      "id": "p135",
+      "scene": "kid-more",
+      "todo": true,
+      "source": "吐出來的比搬出來的多！",
+      "text": "Nhả ra nhiều hơn chuyển ra!",
+      "max_chars": 40
+    },
+    {
+      "id": "p136",
+      "scene": "chief-energy",
+      "todo": true,
+      "source": "對。電用完不會變不見，最後也變成熱。",
+      "text": "Đúng. Điện dùng xong không biến mất, cuối cùng cũng thành nhiệt.",
+      "max_chars": 68
+    },
+    {
+      "id": "p137",
+      "scene": "kid-closed-q",
+      "todo": true,
+      "source": "那門關著，廚房會變熱嗎？",
+      "text": "Vậy cửa đóng, bếp có nóng lên không?",
+      "max_chars": 48
+    },
+    {
+      "id": "p138",
+      "scene": "chief-closed",
+      "todo": true,
+      "source": "那兩顆熱，本來就是從牆和門邊，慢慢溜進冰箱的。",
+      "text": "Hai quả nhiệt đó vốn lọt dần vào tủ qua vách và mép cửa.",
+      "max_chars": 70
+    },
+    {
+      "id": "p139",
+      "scene": "chief-closed",
+      "todo": true,
+      "source": "現在被搬回廚房，還多帶了電變的那一顆。",
+      "text": "Giờ bị chuyển về bếp, còn mang thêm một quả từ điện.",
+      "max_chars": 57
+    },
+    {
+      "id": "p140",
+      "scene": "kid-closed",
+      "todo": true,
+      "source": "所以就算門關著，",
+      "text": "Nên dù cửa đóng,",
+      "max_chars": 28
+    },
+    {
+      "id": "p141",
+      "scene": "kid-closed",
+      "todo": true,
+      "source": "廚房也會熱一點點？",
+      "text": "bếp cũng nóng lên chút xíu?",
+      "max_chars": 32
+    },
+    {
+      "id": "p142",
+      "scene": "chief-closed2",
+      "todo": true,
+      "source": "對，冰箱只要在跑，廚房就被它加熱了一點點。",
+      "text": "Đúng, tủ lạnh còn chạy là bếp bị nó làm nóng lên chút xíu.",
+      "max_chars": 69
+    },
+    {
+      "id": "p143",
+      "scene": "kid-open-again",
+      "todo": true,
+      "source": "那我把門打開，",
+      "text": "Vậy cháu mở cửa,",
+      "max_chars": 19
+    },
+    {
+      "id": "p144",
+      "scene": "kid-open-again",
+      "todo": true,
+      "source": "會怎樣？",
+      "text": "thì sao ạ?",
+      "max_chars": 14
+    },
+    {
+      "id": "p145",
+      "scene": "plan-loop",
+      "todo": true,
+      "source": "廚房的熱，從門口一直灌進冰箱，",
+      "text": "Nhiệt trong bếp cứ ùa vào tủ qua cửa,",
+      "max_chars": 42
+    },
+    {
+      "id": "p146",
+      "scene": "plan-loop",
+      "todo": true,
+      "source": "冰箱再把它們搬到背後，吐回廚房。",
+      "text": "tủ lại chuyển ra phía sau, nhả về bếp.",
+      "max_chars": 46
+    },
+    {
+      "id": "p147",
+      "scene": "kid-circle",
+      "todo": true,
+      "source": "原來熱在繞圈圈！",
+      "text": "Hóa ra nhiệt chạy vòng vòng!",
+      "max_chars": 40
+    },
+    {
+      "id": "p148",
+      "scene": "chief-zero",
+      "todo": true,
+      "source": "對，冰箱搬出來的那兩顆熱，又從門口跑回去，",
+      "text": "Đúng, hai quả tủ chuyển ra lại chạy vào qua cửa,",
+      "max_chars": 53
+    },
+    {
+      "id": "p149",
+      "scene": "chief-zero",
+      "todo": true,
+      "source": "廚房的熱，一顆也沒有少。",
+      "text": "nhiệt trong bếp không bớt quả nào.",
+      "max_chars": 47
+    },
+    {
+      "id": "p150",
+      "scene": "plan-extra",
+      "todo": true,
+      "source": "可是每轉一圈，那道小閃電，",
+      "text": "Nhưng mỗi vòng, tia chớp nhỏ đó",
+      "max_chars": 32
+    },
+    {
+      "id": "p151",
+      "scene": "plan-extra",
+      "todo": true,
+      "source": "就在圈裡多變出一顆熱。",
+      "text": "lại thêm một quả nhiệt trong vòng.",
+      "max_chars": 36
+    },
+    {
+      "id": "p152",
+      "scene": "kid-answer",
+      "todo": true,
+      "source": "所以門開著，",
+      "text": "Nên mở cửa tủ,",
+      "max_chars": 34
+    },
+    {
+      "id": "p153",
+      "scene": "kid-answer",
+      "todo": true,
+      "source": "廚房反而變熱了！",
+      "text": "bếp lại nóng hơn!",
+      "max_chars": 27
+    },
+    {
+      "id": "p154",
+      "scene": "kid-but-cool",
+      "todo": true,
+      "source": "可是我站在門口，",
+      "text": "Nhưng cháu đứng trước cửa",
+      "max_chars": 29
+    },
+    {
+      "id": "p155",
+      "scene": "kid-but-cool",
+      "todo": true,
+      "source": "真的涼涼的啊！",
+      "text": "thấy mát thật mà!",
+      "max_chars": 24
+    },
+    {
+      "id": "p156",
+      "scene": "chief-front",
+      "todo": true,
+      "source": "沒錯，門口前面那一小塊，是會涼一點。",
+      "text": "Đúng, ngay trước cửa tủ có mát hơn một chút.",
+      "max_chars": 47
+    },
+    {
+      "id": "p157",
+      "scene": "chief-front",
+      "todo": true,
+      "source": "可是你一走開，那塊涼就跟你沒關係了。",
+      "text": "Nhưng cháu đi chỗ khác, chỗ mát ấy chẳng giúp gì.",
+      "max_chars": 53
+    },
+    {
+      "id": "p158",
+      "scene": "chief-harder",
+      "todo": true,
+      "source": "而且門一開，冰箱裡面一直變暖，",
+      "text": "Mà cửa mở, trong tủ cứ ấm dần,",
+      "max_chars": 38
+    },
+    {
+      "id": "p159",
+      "scene": "chief-harder",
+      "todo": true,
+      "source": "壓縮機就停不下來，一直吃電。",
+      "text": "máy nén không ngừng được, cứ ăn điện mãi.",
+      "max_chars": 59
+    },
+    {
+      "id": "p160",
+      "scene": "kid-tired",
+      "todo": true,
+      "source": "冰箱好累喔！",
+      "text": "Tủ lạnh mệt quá!",
+      "max_chars": 31
+    },
+    {
+      "id": "p161",
+      "scene": "chief-more-heat",
+      "todo": true,
+      "source": "累的還有你家的電表，",
+      "text": "Mệt cả công tơ điện nhà cháu,",
+      "max_chars": 29
+    },
+    {
+      "id": "p162",
+      "scene": "chief-more-heat",
+      "todo": true,
+      "source": "電費也跟著一起變多。",
+      "text": "tiền điện cũng tăng theo.",
+      "max_chars": 31
+    },
+    {
+      "id": "p163",
+      "scene": "kid-heater-q",
+      "todo": true,
+      "source": "那開著門的冰箱，",
+      "text": "Vậy tủ lạnh mở cửa",
+      "max_chars": 31
+    },
+    {
+      "id": "p164",
+      "scene": "kid-heater-q",
+      "todo": true,
+      "source": "像冬天用的電暖器？",
+      "text": "giống máy sưởi mùa đông?",
+      "max_chars": 36
+    },
+    {
+      "id": "p165",
+      "scene": "chief-heater",
+      "todo": true,
+      "source": "很像。只是它繞了一大圈，",
+      "text": "Giống. Chỉ là đi một vòng to,",
+      "max_chars": 30
+    },
+    {
+      "id": "p166",
+      "scene": "chief-heater",
+      "todo": true,
+      "source": "還順便讓冰箱裡的東西，一起變暖。",
+      "text": "còn làm đồ trong tủ ấm lên theo.",
+      "max_chars": 49
+    },
+    {
+      "id": "p167",
+      "scene": "chief-opinion",
+      "todo": true,
+      "source": "我覺得這是冰箱最會騙人的地方：",
+      "text": "Đây là chỗ tủ lạnh lừa ta:",
+      "max_chars": 30
+    },
+    {
+      "id": "p168",
+      "scene": "chief-opinion",
+      "todo": true,
+      "source": "它是一台搬熱的機器，不是做冷的機器。",
+      "text": "nó là máy chuyển nhiệt, không phải máy làm lạnh.",
+      "max_chars": 58
+    },
+    {
+      "id": "p169",
+      "scene": "kid-trick",
+      "todo": true,
+      "source": "冰箱騙了我！",
+      "text": "Tủ lạnh lừa cháu!",
+      "max_chars": 21
+    },
+    {
+      "id": "p170",
+      "scene": "kid-ac-q",
+      "todo": true,
+      "source": "那冷氣呢？",
+      "text": "Thế điều hòa?",
+      "max_chars": 13
+    },
+    {
+      "id": "p171",
+      "scene": "kid-ac-q",
+      "todo": true,
+      "source": "冷氣也是搬熱的機器嗎？",
+      "text": "Điều hòa cũng là máy chuyển nhiệt ạ?",
+      "max_chars": 46
+    },
+    {
+      "id": "p172",
+      "scene": "chief-ac-same",
+      "todo": true,
+      "source": "是。冷氣和冰箱，是同一種機器。",
+      "text": "Đúng. Điều hòa và tủ lạnh là cùng loại máy.",
+      "max_chars": 46
+    },
+    {
+      "id": "p173",
+      "scene": "chief-ac-same",
+      "todo": true,
+      "source": "它也有冷媒、也有壓縮機，也一樣吃電。",
+      "text": "Nó cũng có môi chất, có máy nén, cũng ăn điện.",
+      "max_chars": 55
+    },
+    {
+      "id": "p174",
+      "scene": "kid-ac-why",
+      "todo": true,
+      "source": "那開冷氣，",
+      "text": "Vậy bật điều hòa,",
+      "max_chars": 19
+    },
+    {
+      "id": "p175",
+      "scene": "kid-ac-why",
+      "todo": true,
+      "source": "房間怎麼就會變涼？",
+      "text": "sao phòng lại mát được?",
+      "max_chars": 41
+    },
+    {
+      "id": "p176",
+      "scene": "chief-balcony",
+      "todo": true,
+      "source": "答案就在陽台上。走，我們去看那台大箱子。",
+      "text": "Đáp án ở ngoài ban công. Đi, ta ra xem cái hộp to ấy.",
+      "max_chars": 54
+    },
+    {
+      "id": "p177",
+      "scene": "kid-hot-wind",
+      "todo": true,
+      "source": "哇，吹出來的是熱風！",
+      "text": "Oa, thổi ra gió nóng!",
+      "max_chars": 38
+    },
+    {
+      "id": "p178",
+      "scene": "chief-outdoor",
+      "todo": true,
+      "source": "這台叫做室外機，它吹的熱，",
+      "text": "Đây là cục nóng, nhiệt nó thổi ra",
+      "max_chars": 45
+    },
+    {
+      "id": "p179",
+      "scene": "chief-outdoor",
+      "todo": true,
+      "source": "是從你的房間裡搬出來的。",
+      "text": "là chuyển từ trong phòng cháu ra đó.",
+      "max_chars": 47
+    },
+    {
+      "id": "p180",
+      "scene": "kid-outside-air",
+      "todo": true,
+      "source": "我知道！冷氣是把外面的空氣，",
+      "text": "Cháu biết! Nó lấy khí bên ngoài,",
+      "max_chars": 36
+    },
+    {
+      "id": "p181",
+      "scene": "kid-outside-air",
+      "todo": true,
+      "source": "變冷再吹進來的！",
+      "text": "làm lạnh rồi thổi vào!",
+      "max_chars": 29
+    },
+    {
+      "id": "p182",
+      "scene": "chief-own-air",
+      "todo": true,
+      "source": "很多人都這樣想。其實冷氣吹的，",
+      "text": "Nhiều người nghĩ vậy. Thật ra điều hòa thổi",
+      "max_chars": 54
+    },
+    {
+      "id": "p183",
+      "scene": "chief-own-air",
+      "todo": true,
+      "source": "是你房間自己的空氣。",
+      "text": "chính không khí trong phòng cháu.",
+      "max_chars": 46
+    },
+    {
+      "id": "p184",
+      "scene": "indoor-unit",
+      "todo": true,
+      "source": "房間牆上那台把空氣吸進去，拿走熱，再吹回來。",
+      "text": "Cục lạnh trên tường hút khí vào, lấy nhiệt đi, rồi thổi ra lại.",
+      "max_chars": 67
+    },
+    {
+      "id": "p185",
+      "scene": "indoor-unit",
+      "todo": true,
+      "source": "它和陽台那台，中間連著兩條管子。",
+      "text": "Nó và cục ngoài ban công nối với nhau bằng hai ống.",
+      "max_chars": 55
+    },
+    {
+      "id": "p186",
+      "scene": "chief-same-trick",
+      "todo": true,
+      "source": "冷媒就在這兩台之間繞圈子跑，",
+      "text": "Môi chất chạy vòng giữa chúng,",
+      "max_chars": 31
+    },
+    {
+      "id": "p187",
+      "scene": "chief-same-trick",
+      "todo": true,
+      "source": "聽起來，像不像冰箱裡的什麼？",
+      "text": "nghe giống gì trong tủ lạnh không?",
+      "max_chars": 35
+    },
+    {
+      "id": "p188",
+      "scene": "chief-same-trick",
+      "todo": true,
+      "source": "搬熱的小火車！",
+      "text": "Đoàn tàu chở nhiệt!",
+      "max_chars": 21
+    },
+    {
+      "id": "p189",
+      "scene": "plan-house",
+      "todo": true,
+      "source": "現在把圈畫在你的房間：房間就是冰箱的裡面，",
+      "text": "Giờ vẽ vòng quanh phòng cháu: căn phòng là bên trong tủ lạnh,",
+      "max_chars": 77
+    },
+    {
+      "id": "p190",
+      "scene": "plan-house",
+      "todo": true,
+      "source": "而冰箱的背後，被搬到了牆外面。",
+      "text": "còn mặt sau tủ thì được dời ra ngoài tường.",
+      "max_chars": 44
+    },
+    {
+      "id": "p191",
+      "scene": "kid-hot-end",
+      "todo": true,
+      "source": "熱的那一頭在外面！",
+      "text": "Đầu nóng ở bên ngoài!",
+      "max_chars": 28
+    },
+    {
+      "id": "p192",
+      "scene": "chief-out-of-circle",
+      "todo": true,
+      "source": "這次的熱吐到圈外，不會直接繞回來，",
+      "text": "Lần này nhiệt nhả ra ngoài vòng, không vòng ngay về,",
+      "max_chars": 65
+    },
+    {
+      "id": "p193",
+      "scene": "chief-out-of-circle",
+      "todo": true,
+      "source": "圓圈裡面的熱，才真的一顆一顆變少。",
+      "text": "nhiệt trong vòng mới thật sự bớt từng quả.",
+      "max_chars": 51
+    },
+    {
+      "id": "p194",
+      "scene": "chief-ac-bolt",
+      "todo": true,
+      "source": "冷氣吃的電，大部分也變成熱，",
+      "text": "Điện nó ăn, phần lớn cũng thành nhiệt,",
+      "max_chars": 39
+    },
+    {
+      "id": "p195",
+      "scene": "chief-ac-bolt",
+      "todo": true,
+      "source": "在室外機那裡，一起吐到圈外。",
+      "text": "cùng nhả ra ngoài ở cục nóng.",
+      "max_chars": 37
+    },
+    {
+      "id": "p196",
+      "scene": "one-to-three",
+      "todo": true,
+      "source": "一般的冷氣，用一份電，",
+      "text": "Một phần điện,",
+      "max_chars": 24
+    },
+    {
+      "id": "p197",
+      "scene": "one-to-three",
+      "todo": true,
+      "source": "大約能搬走好幾份的熱。",
+      "text": "chuyển được mấy phần nhiệt.",
+      "max_chars": 34
+    },
+    {
+      "id": "p198",
+      "scene": "kid-bargain",
+      "todo": true,
+      "source": "用一份電，搬好幾份熱？",
+      "text": "Một phần điện, mấy phần nhiệt?",
+      "max_chars": 36
+    },
+    {
+      "id": "p199",
+      "scene": "kid-bargain",
+      "todo": true,
+      "source": "搬得好多喔！",
+      "text": "Chở nhiều ghê!",
+      "max_chars": 24
+    },
+    {
+      "id": "p200",
+      "scene": "chief-depends",
+      "todo": true,
+      "source": "確切搬多少，要看冷氣和天氣，",
+      "text": "Bao nhiêu thì tùy máy và thời tiết,",
+      "max_chars": 38
+    },
+    {
+      "id": "p201",
+      "scene": "chief-depends",
+      "todo": true,
+      "source": "外面越熱，通常就搬得越吃力。",
+      "text": "trời càng nóng, thường càng chở vất vả.",
+      "max_chars": 41
+    },
+    {
+      "id": "p202",
+      "scene": "chief-door-back",
+      "todo": true,
+      "source": "還記得冰箱那道厚厚的門嗎？",
+      "text": "Nhớ cánh cửa dày không?",
+      "max_chars": 26
+    },
+    {
+      "id": "p203",
+      "scene": "chief-door-back",
+      "todo": true,
+      "source": "開冷氣的時候，你關上窗、拉上窗簾，",
+      "text": "Khi bật điều hòa, cháu đóng cửa sổ, kéo rèm lại,",
+      "max_chars": 57
+    },
+    {
+      "id": "p204",
+      "scene": "kid-curtain",
+      "todo": true,
+      "source": "就是幫房間關上一道厚門。",
+      "text": "là đóng cửa dày cho phòng.",
+      "max_chars": 26
+    },
+    {
+      "id": "p205",
+      "scene": "kid-curtain",
+      "todo": true,
+      "source": "所以開冷氣要關窗！",
+      "text": "Nên bật điều hòa phải đóng cửa!",
+      "max_chars": 36
+    },
+    {
+      "id": "p206",
+      "scene": "chief-two-jobs",
+      "todo": true,
+      "source": "冷氣負責把熱搬出去，",
+      "text": "Điều hòa lo chuyển nhiệt ra,",
+      "max_chars": 32
+    },
+    {
+      "id": "p207",
+      "scene": "chief-two-jobs",
+      "todo": true,
+      "source": "隔熱負責讓外面的熱，慢一點溜回來。",
+      "text": "cách nhiệt lo cho nhiệt bên ngoài lọt về chậm thôi.",
+      "max_chars": 64
+    },
+    {
+      "id": "p208",
+      "scene": "kid-both",
+      "todo": true,
+      "source": "一個搬，一個擋！",
+      "text": "Một bên chở, một bên chặn",
+      "max_chars": 25
+    },
+    {
+      "id": "p209",
+      "scene": "chief-open-window",
+      "todo": true,
+      "source": "那開著冷氣又開著窗呢？",
+      "text": "Thế bật điều hòa mà mở cửa sổ?",
+      "max_chars": 33
+    },
+    {
+      "id": "p210",
+      "scene": "chief-open-window",
+      "todo": true,
+      "source": "就跟開著冰箱門一樣，冷氣只好搬個不停。",
+      "text": "Thì như mở cửa tủ lạnh, điều hòa đành chở không ngừng.",
+      "max_chars": 54
+    },
+    {
+      "id": "p211",
+      "scene": "kid-big-fridge",
+      "todo": true,
+      "source": "開冷氣的房間，",
+      "text": "Phòng điều hòa",
+      "max_chars": 15
+    },
+    {
+      "id": "p212",
+      "scene": "kid-big-fridge",
+      "todo": true,
+      "source": "就是一台大冰箱！",
+      "text": "là tủ lạnh to!",
+      "max_chars": 17
+    },
+    {
+      "id": "p213",
+      "scene": "kid-big-fridge",
+      "todo": true,
+      "source": "對，而你就住在冰箱的裡面。",
+      "text": "Đúng, và cháu đang sống trong tủ lạnh đó.",
+      "max_chars": 48
+    },
+    {
+      "id": "p214",
+      "scene": "chief-back-kitchen",
+      "todo": true,
+      "source": "好啦，我們回廚房吧。那扇冰箱門，還開著呢。",
+      "text": "Thôi, ta về bếp nào. Cánh cửa tủ lạnh vẫn đang mở kìa.",
+      "max_chars": 57
+    },
+    {
+      "id": "p215",
+      "scene": "kid-close-door",
+      "todo": true,
+      "source": "還記得我的好方法嗎？",
+      "text": "Nhớ ý hay không?",
+      "max_chars": 20
+    },
+    {
+      "id": "p216",
+      "scene": "kid-close-door",
+      "todo": true,
+      "source": "我要收回！",
+      "text": "Cháu rút lại!",
+      "max_chars": 30
+    },
+    {
+      "id": "p217",
+      "scene": "kid-got-it",
+      "todo": true,
+      "source": "冰箱門開著，熱的那一頭，",
+      "text": "Mở cửa tủ, đầu nóng",
+      "max_chars": 29
+    },
+    {
+      "id": "p218",
+      "scene": "kid-got-it",
+      "todo": true,
+      "source": "還留在廚房裡！",
+      "text": "vẫn ở trong bếp!",
+      "max_chars": 25
+    },
+    {
+      "id": "p219",
+      "scene": "chief-same-machine",
+      "todo": true,
+      "source": "還記得冰箱和冷氣，是同一種機器嗎？",
+      "text": "Nhớ tủ lạnh và điều hòa là cùng loại máy chứ?",
+      "max_chars": 46
+    },
+    {
+      "id": "p220",
+      "scene": "chief-same-machine",
+      "todo": true,
+      "source": "差別只在熱的那一頭，放在圈裡還是圈外。",
+      "text": "Khác nhau chỉ ở đầu nóng đặt trong vòng hay ngoài vòng.",
+      "max_chars": 57
+    },
+    {
+      "id": "p221",
+      "scene": "chief-done",
+      "todo": true,
+      "source": "下次你走過冰箱，可以摸摸它的背後：",
+      "text": "Lần sau đi ngang, sờ thử sau tủ nhé:",
+      "max_chars": 37
+    },
+    {
+      "id": "p222",
+      "scene": "chief-done",
+      "todo": true,
+      "source": "還記得那三顆紅球嗎？你摸到的溫溫，就是它們。",
+      "text": "nhớ ba quả bóng đỏ không? Hơi ấm cháu sờ thấy chính là chúng.",
+      "max_chars": 70
+    },
+    {
+      "id": "p223",
+      "scene": "outro",
+      "todo": true,
+      "source": "原來如此！",
+      "text": "À ra thế!",
+      "max_chars": 21
+    },
+    {
+      "id": "p224",
+      "scene": "outro-chief",
+      "todo": true,
+      "source": "你家冷氣的室外機，裝在哪裡？",
+      "text": "Cục nóng nhà cháu ở đâu?",
+      "max_chars": 27
+    },
+    {
+      "id": "p225",
+      "scene": "outro-chief",
+      "todo": true,
+      "source": "吹出來的風有多熱？留言告訴我們。",
+      "text": "Gió thổi ra nóng cỡ nào? Bình luận nhé.",
+      "max_chars": 47
+    },
+    {
+      "id": "p226",
+      "scene": "outro-wave",
+      "todo": true,
+      "source": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
+      "text": "Muốn cùng tìm những câu hỏi vì sao quanh ta, hãy đăng ký Văn phòng À ra thế.",
+      "max_chars": 79
+    }
+  ]
+}

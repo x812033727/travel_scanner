@@ -1,0 +1,373 @@
+{
+  "look_hash": "326f3bacb71c7c72",
+  "look": {
+    "preset": "cute-cartoon",
+    "style": "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+    "negative": "",
+    "motion": "slow push in or gentle drift, no morphing, no cuts",
+    "candidates": 3,
+    "style_frames": []
+  },
+  "image": {
+    "provider": "minimax",
+    "model": "image-01"
+  },
+  "image_selection_version": 1,
+  "characters": {
+    "chief": {
+      "name": "所長",
+      "candidates": [
+        {
+          "n": 1,
+          "seed": 1,
+          "file": "characters/chief/001.jpg",
+          "sha256": "8bc33d2b3ac6dd617936dd290d8efd289b79bc788237e199f6446c8f6f9f2deb",
+          "key": "8616a5434ac8425e",
+          "judge": {
+            "overall": 6.5,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 6,
+              "style": 7,
+              "clean": 6,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: hair is overall grey rather than dark with a streak on the head → dark hair with a distinct streak of grey",
+              "clean: fingers on both hands are irregular and poorly defined → clearly defined simplified chibi hands"
+            ],
+            "notes": "The character design matches the explainer cartoon style well with accurate color coordination and props. Minor adjustments are needed for the hair color streak and hand clarity."
+          }
+        },
+        {
+          "n": 2,
+          "seed": 2,
+          "file": "characters/chief/002.jpg",
+          "sha256": "2eb1f5f955e58de399b2c861e6c31311f0b796cf349d08ccd340b2e20132f6bf",
+          "key": "d2dc329e4d7922ec",
+          "judge": {
+            "overall": 6.38,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 6.8,
+              "style": 7.2,
+              "clean": 6.2,
+              "no_text": 3.8
+            },
+            "problems": [
+              "no_text: red seal stamp mark in the bottom-right corner → no watermark, no seal stamp",
+              "clean: pencil is floating behind the head rather than tucked behind the ear → pencil firmly tucked behind ear",
+              "appearance: the judge found it but did not say what or where (asked: Does the character match the written appearance: age, build, hair, clothing, colours, props?) → write the correction into the prompt"
+            ],
+            "notes": "The character design and art style match the brief closely. Points were primarily deducted for the corner stamp and minor prop placement issues."
+          },
+          "fixes": [
+            "dark hair with a distinct streak of grey",
+            "clearly defined simplified chibi hands"
+          ]
+        },
+        {
+          "n": 3,
+          "seed": 3,
+          "file": "characters/chief/003.jpg",
+          "sha256": "198568916f95598297d19fac62bafa2cde487f67e93f4ea318c3ba6a626e0bec",
+          "key": "c17d9211bffcf5c2",
+          "judge": {
+            "overall": 6,
+            "passed": false,
+            "scores": {
+              "recognizable": 6,
+              "appearance": 5,
+              "style": 5,
+              "clean": 7,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: head is missing the yellow pencil behind the ear and the grey streak in the hair → yellow pencil tucked behind ear, grey streak in dark hair",
+              "style: character is drawn extremely small in the frame rather than filling the center third → medium shot occupying the center third of the frame",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt"
+            ],
+            "notes": "The chibi visual style is cute and clean, but the subject is framed much too small against the empty background. Key character details like the pencil prop and hair streak are also missing."
+          },
+          "fixes": [
+            "dark hair with a distinct streak of grey",
+            "clearly defined simplified chibi hands",
+            "no watermark, no seal stamp",
+            "pencil firmly tucked behind ear"
+          ]
+        },
+        {
+          "n": 4,
+          "seed": 101,
+          "file": "characters/chief/101.jpg",
+          "sha256": "03b3dd5869768ef509120d477c5914608e184545d179676c95bbc65a94b67832",
+          "key": "61e84a2ea2c16dab",
+          "judge": {
+            "overall": 5.62,
+            "passed": false,
+            "scores": {
+              "recognizable": 6,
+              "appearance": 6,
+              "style": 7,
+              "clean": 5,
+              "no_text": 4
+            },
+            "problems": [
+              "no_text: Red logo mark visible in bottom right corner → clean background without watermarks or corner stamps",
+              "appearance: Grey hair patch on top of head looks like an odd cap rather than an integrated streak → natural grey streak blended smoothly into shoulder-length dark hair",
+              "clean: Hands are simplified into rounded stumps lacking finger definition → clearly defined cartoon hands and fingers",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt"
+            ],
+            "notes": "The character largely follows the prompt and fits the cute explainer cartoon aesthetic. However, the grey hair is rendered awkwardly as a separate patch and a watermark appears in the bottom right corner."
+          },
+          "fixes": [
+            "dark hair with a distinct streak of grey",
+            "clearly defined simplified chibi hands",
+            "no watermark, no seal stamp",
+            "pencil firmly tucked behind ear",
+            "yellow pencil tucked behind ear, grey streak in dark hair",
+            "medium shot occupying the center third of the frame"
+          ]
+        },
+        {
+          "n": 5,
+          "seed": 103,
+          "file": "characters/chief/103.jpg",
+          "sha256": "9c2c07aee01e9c76812836372b6dd0d8e8625a66965d82700bc8bc87c04333e6",
+          "key": "c87a0ad1b6d6783a",
+          "judge": {
+            "overall": 6.5,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 6,
+              "style": 7,
+              "clean": 6,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: missing grey streak in hair and pencil resembles an earring hanging from the lobe → noticeable streak of grey in low ponytail, full yellow pencil resting behind ear",
+              "clean: fingers on clasped hands are muddled and lack separation → clearly drawn clasped fingers"
+            ],
+            "notes": "The chibi design captures the general outfit and cute explainer aesthetic well. Minor inaccuracies remain regarding the pencil placement and hand details."
+          },
+          "fixes": [
+            "dark hair with a distinct streak of grey",
+            "clearly defined simplified chibi hands",
+            "no watermark, no seal stamp",
+            "pencil firmly tucked behind ear",
+            "yellow pencil tucked behind ear, grey streak in dark hair",
+            "medium shot occupying the center third of the frame",
+            "clean background without watermarks or corner stamps",
+            "natural grey streak blended smoothly into shoulder-length dark hair",
+            "clearly defined cartoon hands and fingers"
+          ],
+          "reused_from": "sothatswhy-p05-down-jacket chief E (the owner approved it for P02)"
+        }
+      ],
+      "suggested": null,
+      "needs_review": true,
+      "prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text. Character: 所長, a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+      "fixes": [
+        "dark hair with a distinct streak of grey",
+        "clearly defined simplified chibi hands",
+        "no watermark, no seal stamp",
+        "pencil firmly tucked behind ear",
+        "yellow pencil tucked behind ear, grey streak in dark hair",
+        "medium shot occupying the center third of the frame",
+        "clean background without watermarks or corner stamps",
+        "natural grey streak blended smoothly into shoulder-length dark hair",
+        "clearly defined cartoon hands and fingers",
+        "shoulder-length hair tied in a clear low ponytail",
+        "a slender standard yellow pencil tucked behind one ear"
+      ]
+    },
+    "kid": {
+      "name": "小問",
+      "candidates": [
+        {
+          "n": 1,
+          "seed": 1,
+          "file": "characters/kid/001.jpg",
+          "sha256": "191e4a9b8092fa8c03b6ef06a34fd862ffcc669364839e1222a8ea7054740c44",
+          "key": "87fb8a81488aec3a",
+          "judge": {
+            "overall": 6.56,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 7,
+              "style": 7,
+              "clean": 6.5,
+              "no_text": 4.5
+            },
+            "problems": [
+              "no_text: red signature seal watermark near the feet on the right → no artist stamps or logos",
+              "clean: the judge found it but did not say what or where (asked: Are anatomy and clothing free of faults: correct hands and fingers, no warped face, nothing floating or duplicated?) → write the correction into the prompt"
+            ],
+            "notes": "The character design fits the requested chibi aesthetic and visual specifications closely. However, a small red stamp mark appears near the bottom."
+          }
+        },
+        {
+          "n": 2,
+          "seed": 2,
+          "file": "characters/kid/002.jpg",
+          "sha256": "caf1b76c3780ac5a102bc4d1215b65b496c8c4f935bc90bfbc247fd8fac4e4fe",
+          "key": "d7fb0e5a28643453",
+          "judge": {
+            "overall": 6.45,
+            "passed": false,
+            "scores": {
+              "recognizable": 6.8,
+              "appearance": 6.9,
+              "style": 7,
+              "clean": 6.7,
+              "no_text": 3.8
+            },
+            "problems": [
+              "no_text: red seal watermark stamp in bottom right corner → without red seal or watermark mark in bottom right corner",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt",
+              "appearance: the judge found it but did not say what or where (asked: Does the character match the written appearance: age, build, hair, clothing, colours, props?) → write the correction into the prompt",
+              "clean: the judge found it but did not say what or where (asked: Are anatomy and clothing free of faults: correct hands and fingers, no warped face, nothing floating or duplicated?) → write the correction into the prompt"
+            ],
+            "notes": "The illustration matches the chibi character description and explainer style well. However, an unwanted red seal mark appears in the bottom right corner."
+          },
+          "fixes": [
+            "no artist stamps or logos"
+          ]
+        },
+        {
+          "n": 3,
+          "seed": 3,
+          "file": "characters/kid/003.jpg",
+          "sha256": "4318ba2084fb92ef98a93490cd08bf8c91996b4821cef8c5491d7cfdbe80b0c8",
+          "key": "7e79614184650195",
+          "judge": {
+            "overall": 6.75,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 7,
+              "style": 7,
+              "clean": 6,
+              "no_text": 7
+            },
+            "problems": [
+              "clean: hands lack clear finger definition at sleeve cuffs → clearly drawn four-fingered cartoon hands"
+            ],
+            "notes": "The character design closely follows the visual prompt and stylistic requirements. Anatomy on the hands is slightly indistinct but otherwise clean and well-centered."
+          },
+          "fixes": [
+            "no artist stamps or logos",
+            "without red seal or watermark mark in bottom right corner"
+          ]
+        },
+        {
+          "n": 4,
+          "seed": 101,
+          "file": "characters/kid/101.jpg",
+          "sha256": "7001c80448dff1771f46515983ae0e4a7757f5ddf4ecf838e36304419f68f258",
+          "key": "5226c36f192d994f",
+          "judge": {
+            "overall": 6.62,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 7,
+              "style": 7,
+              "clean": 6,
+              "no_text": 6
+            },
+            "problems": [
+              "clean: indistinct hands with malformed finger nubs at sleeves → clearly rendered five-fingered hands",
+              "no_text: faint circular watermark artifact in the bottom right corner → remove watermark in corner"
+            ],
+            "notes": "The character design and color scheme fit the prompt accurately. The overall presentation is clean aside from simplified hand anatomy and a subtle corner artifact."
+          },
+          "fixes": [
+            "no artist stamps or logos",
+            "without red seal or watermark mark in bottom right corner",
+            "clearly drawn four-fingered cartoon hands"
+          ]
+        },
+        {
+          "n": 5,
+          "seed": 102,
+          "file": "characters/kid/102.jpg",
+          "sha256": "51da8a7613d2cdb9fa30884e856df712a7047e94210b5bb517205e10f62fa43f",
+          "key": "ba04043eddb4c1dc",
+          "judge": {
+            "overall": 6.62,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 7,
+              "style": 7,
+              "clean": 7,
+              "no_text": 4
+            },
+            "problems": [
+              "no_text: red artist seal watermark in bottom right corner → no watermark, no signature"
+            ],
+            "notes": "The character design and color palette match the explainer cartoon style well. However, there is a visible red stamp watermark in the bottom corner."
+          },
+          "fixes": [
+            "no artist stamps or logos",
+            "without red seal or watermark mark in bottom right corner",
+            "clearly drawn four-fingered cartoon hands",
+            "clearly rendered five-fingered hands",
+            "remove watermark in corner"
+          ]
+        },
+        {
+          "n": 6,
+          "seed": 103,
+          "file": "characters/kid/103.jpg",
+          "sha256": "0a1d7073877f1f5fa672ea1103d51d79ff3c870f8a93e9c7ab56fff0ad7599da",
+          "key": "b8fbcb29ff83d637",
+          "judge": {
+            "overall": 6.85,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 6.5,
+              "style": 7,
+              "clean": 6.8,
+              "no_text": 7.2
+            },
+            "problems": [
+              "appearance: eyes are small and half-lidded rather than large and round → large round wide-open expressive eyes",
+              "clean: fingers are indistinct nubs at the ends of the sleeves → defined cute cartoon hands with clear fingers"
+            ],
+            "notes": "The illustration matches the overall style, color scheme, and character design requirements cleanly. The character's eyes and hands could be slightly more defined to better match the prompt."
+          },
+          "fixes": [
+            "no artist stamps or logos",
+            "without red seal or watermark mark in bottom right corner",
+            "clearly drawn four-fingered cartoon hands",
+            "clearly rendered five-fingered hands",
+            "remove watermark in corner",
+            "no watermark, no signature"
+          ]
+        }
+      ],
+      "suggested": null,
+      "needs_review": true,
+      "prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text. Character: 小問, a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+      "fixes": [
+        "no artist stamps or logos",
+        "without red seal or watermark mark in bottom right corner",
+        "clearly drawn four-fingered cartoon hands",
+        "clearly rendered five-fingered hands",
+        "remove watermark in corner",
+        "no watermark, no signature",
+        "large round wide-open expressive eyes",
+        "defined cute cartoon hands with clear fingers"
+      ]
+    }
+  },
+  "contact_sheet": "characters/contact-sheet.png",
+  "generated_at": "2026-11-06T13:41:24.760Z"
+}
