@@ -23,7 +23,7 @@ import { mediaKey } from "./cache.mjs";
 import { duplicates } from "./qc.mjs";
 import { composeShotPrompt, DEFAULT_IMAGE_PROMPT_LIMIT, imagePromptLimit, shotPromptBudget } from "./prompt-budget.mjs";
 import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, mayWriteProject, pictureHashes, retakeable, sameImage, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
-import { EDGE_INSET_SHARE, trimMargins } from "./trim.mjs";
+import { EDGE_INSET_SHARE, trimMargins, zoomCrops } from "./trim.mjs";
 
 export const MAX_KEYFRAME_TAKES = 3;
 // How far `--seed-offset` may shift a shot's seeds. The server refuses a request whose hash
@@ -134,11 +134,12 @@ export function keyframeRubric(characters, { subtitleBand = true, craft = false,
  * be written into an anime still's retake prompt. These additions were not measured on
  * recorded takes; the first episodes judged with them are the measurement.
  */
-export function keyframeChecks({ plate = false, characters = [], subtitleBand = false, craft = true } = {}) {
+export function keyframeChecks({ plate = false, characters = [], subtitleBand = false, craft = true, wordless = false, nobody = false } = {}) {
   const redraw = { weight: 0.25, cost: 10 };
   return [
     ...characters.map((character) => ({ key: `identity_${character.id.replace(/-/g, "_")}`, question: identityCheck(character), ...redraw })),
-    { key: "text", question: "Can you read any letter, word or number anywhere in the picture, or see a logo or a watermark? Marks that only suggest writing without forming letters do not count.", ...redraw },
+    { key: "text", question: wordless ? WORDLESS_TEXT_QUESTION : "Can you read any letter, word or number anywhere in the picture, or see a logo or a watermark? Marks that only suggest writing without forming letters do not count.", ...redraw },
+    ...(nobody ? [{ key: "nobody", question: NOBODY_QUESTION, ...redraw }] : []),
     { key: "anatomy", question: "Count the digits of every hand drawn large, thumb included. Does any hand show more than five, or does any person or animal have an extra hand, arm or leg, or a face or body warped out of shape? A finger that is hidden or left out by the style does not count.", ...redraw },
     { key: "detached", question: "Is any part floating, cut off from what should hold it or duplicated, or is there a stray figure or object that does not belong to the scene (a tiny person, a hand with no arm, eyes in the dark)?", ...redraw },
     { key: "subject", question: "Is the main subject of the shot prompt, or the main thing it is doing, missing or clearly wrong? Secondary props, bystanders, which hand and the exact framing do not count here.", ...redraw },
@@ -159,6 +160,15 @@ export function keyframeChecks({ plate = false, characters = [], subtitleBand = 
   ];
 }
 
+// The narrated series that go to every language with no words on screen (cute-mystery: 奇聞檔案局
+// and the brand stories, owner 2026-11-05) fail made-up writing too: a sign of letter-like squiggles
+// reads as words to a viewer and as a mistake in every language.
+export const WORDLESS_TEXT_QUESTION = "Looking at the whole picture and every crop labelled \"keyframe zoom\", is there any writing anywhere: letters, words, numbers, a logo, a watermark, made-up marks that look like writing on a sign, label, paper, screen, box or cover, a floating question mark, exclamation mark or other symbol, or a badge or marks on a button, coin, sleeve, car, cap or uniform?";
+// A still marked `nobody` (its line is about someone who may not be drawn) fails when anyone is.
+export const NOBODY_QUESTION = "Looking at the whole picture and every crop labelled \"keyframe zoom\", is there any person, human face or human figure anywhere, however small, including a face or eyes drawn on an object?";
+/** Whether a video's stills must carry no writing at all: the cute-mystery look. */
+export const wordlessLook = (doc) => doc?.look?.preset === "cute-mystery";
+
 // The server takes a rubric question of at most this many characters (apps/api/app/video_media/
 // schemas.py JudgeCriterion.question); a shot look's appearance can run to 800, so the identity
 // check cuts it to fit rather than have the whole call refused.
@@ -174,13 +184,19 @@ function identityCheck(character) {
   return `${head}${appearance.length > room ? `${appearance.slice(0, room - 1).replace(/\s+\S*$/, "")}…` : appearance}${tail}`;
 }
 
+// A shot marked nobody keeps the look's colours and line, without the look's people: a cute
+// look's "chibi characters ..." clause otherwise draws a figure, or a face on the object, into
+// a picture that must show nobody (the nobody judge question then fails every take).
+const LOOK_PEOPLE = /chibi characters with big round heads, large expressive eyes and exaggerated comic expressions/i;
+export const lookForShot = (look, scene) => (scene?.data?.nobody === true && typeof look?.style === "string" && LOOK_PEOPLE.test(look.style) ? { ...look, style: look.style.replace(LOOK_PEOPLE, "cute rounded objects only, with no people and no faces") } : look);
+
 /**
  * What a shot is asked for: its prompt, the look's style, the camera and the cast, under the
  * image model's `limit` (prompt-budget.mjs: the scene is cut at a word boundary when the look
  * leaves it no room, the look never).
  */
 export function shotPrompt(scene, look, characters, limit = DEFAULT_IMAGE_PROMPT_LIMIT) {
-  return composeShotPrompt({ prompt: scene.data.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit }).prompt;
+  return composeShotPrompt({ prompt: scene.data.prompt, look: lookForShot(look, scene), camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit }).prompt;
 }
 
 /** The chosen sheet of each character: `{ <id>: { file, sha256 } }`, from the look manifest and the owner's choice. */
@@ -397,6 +413,28 @@ async function trimmed(ctx, workdir, picture, id, inset = 0) {
   const notes = [...(widest > 0 ? [`trimmed a ${widest}% paper margin`] : []), ...(cut.inset ? [`cut ${Math.round(cut.inset * 100)}% in from every edge`] : [])];
   if (notes.length) ctx.stdout.write(`${id}: ${notes.join(", ")}\n`);
   return { ...picture, file: cut.file, sha256: cut.sha256, margins: cut.margins, ...(cut.inset ? { inset: cut.inset } : {}) };
+}
+
+// The server takes at most this many files a judge call (apps/api/app/video_media/schemas.py MAX_JUDGE_FILES).
+export const MAX_JUDGE_FILES = 6;
+
+/**
+ * The four 2x quadrant crops of a picture for the judge, put in the media store, as judge files
+ * labelled "keyframe zoom: <quadrant>"; none, with a warning line, when they do not fit in `room`
+ * or cannot be made (the picture is then judged whole, as before).
+ */
+async function zoomFiles(ctx, stage, workdir, picture, id, room) {
+  if (room < 4) {
+    ctx.stdout.write(`${id}: warning: no zoomed crops for the judge (no room beside the references); judged on the whole picture\n`);
+    return [];
+  }
+  const crops = await zoomCrops(ctx, workdir, picture.file, picture.sha256);
+  if (!crops) {
+    ctx.stdout.write(`${id}: warning: zoomed crops could not be made; judged on the whole picture\n`);
+    return [];
+  }
+  for (const crop of crops) await stage.upload(path.join(workdir, crop.file));
+  return crops.map((crop) => ({ sha256: crop.sha256, label: `keyframe zoom: ${crop.quadrant}` }));
 }
 
 async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, force, trim, limit = DEFAULT_IMAGE_PROMPT_LIMIT, provider = "image model", ctx }) {
@@ -623,14 +661,14 @@ export async function run(command, args, ctx) {
   // What a shot is drawn from and what the judge is asked about it, as they stand now.
   const referencesOf = (characters) => [...characters.map((character) => ({ sha256: uploaded[character.id], role: "character" })).filter((reference) => reference.sha256), ...styleReferences].slice(-MAX_REFERENCES);
   // A shot's request as it stands, with the corrections of the takes before it, under the model's limit; its end frame's too.
-  const composeFor = (scene, characters, fixes = []) => composeShotPrompt({ prompt: scene.data.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), fixes, limit: promptLimit });
-  const endPrompt = (scene, characters) => composeShotPrompt({ prompt: scene.data.end_frame.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
+  const composeFor = (scene, characters, fixes = []) => composeShotPrompt({ prompt: scene.data.prompt, look: lookForShot(look, scene), camera: scene.data.camera, cast: shotAppearancePrompt(characters), fixes, limit: promptLimit });
+  const endPrompt = (scene, characters) => composeShotPrompt({ prompt: scene.data.end_frame.prompt, look: lookForShot(look, scene), camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const budgetOf = (scene, characters) => shotPromptBudget({ look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const question = (scene, characters) => ({
     rubric: checks
-      ? keyframeChecks({ plate: Boolean(plate), ...(manga ? { characters, subtitleBand: rubricOptions.subtitleBand, craft: false } : {}) })
+      ? keyframeChecks({ plate: Boolean(plate), ...(manga ? { characters, subtitleBand: rubricOptions.subtitleBand, craft: false } : isCuteExplainer(doc) ? { characters } : {}), wordless: wordlessLook(doc), nobody: scene.data.nobody === true })
       : keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
-    context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
+    context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: lookForShot(look, scene).style },
   });
   // A verdict answers one question at the owner's bar of the day; a take judged on another has no verdict yet.
   const stampOf = (asked) => mediaKey("keyframe-judge", { ...asked, bar: status.judge_min_score ?? null });
@@ -725,12 +763,17 @@ export async function run(command, args, ctx) {
         picture = await trimmed(ctx, workdir, picture, scene.id, inset);
         if (picture.margins) await stage.upload(path.join(workdir, picture.file));
       }
+      const shown = [{ sha256: picture.sha256, label: "keyframe" }, ...characters.filter((character) => uploaded[character.id]).map((character) => ({ sha256: uploaded[character.id], label: `sheet ${character.name}` })), ...(plate ? [{ sha256: plate.sha256, label: "style plate" }] : [])];
+      // The text and nobody checks miss small marks on the whole picture (fake letters on a
+      // button or coin, a floating "?", eyes on an object): the judge is also shown its four
+      // quadrants at 2x (trim.mjs zoomCrops), when they fit under the server's six files.
+      const zooms = asked.rubric.some((item) => item.question === WORDLESS_TEXT_QUESTION || item.question === NOBODY_QUESTION) ? await zoomFiles(ctx, stage, workdir, picture, scene.id, MAX_JUDGE_FILES - Math.min(shown.length, MAX_JUDGE_FILES)) : [];
       let judge;
       try {
         judge = await stage.judge({
           id: scene.id,
           kind: "keyframe",
-          files: [{ sha256: picture.sha256, label: "keyframe" }, ...characters.filter((character) => uploaded[character.id]).map((character) => ({ sha256: uploaded[character.id], label: `sheet ${character.name}` })), ...(plate ? [{ sha256: plate.sha256, label: "style plate" }] : [])].slice(0, 6),
+          files: [...shown, ...zooms].slice(0, MAX_JUDGE_FILES),
           ...asked,
         });
       } catch (error) {
