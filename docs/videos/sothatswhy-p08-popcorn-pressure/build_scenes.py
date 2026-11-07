@@ -64,7 +64,7 @@ CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, gloss
 FLAT = ", simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours"
 EXTRA = {
     "kid-guess-100": FLAT, "kid-popcorn-bowl": FLAT, "kid-bubble-push": FLAT + ", big round friendly cartoon eyes with dark pupils",
-    "kid-camp-pot": FLAT, "kid-any-corn": FLAT + ", plain smooth golden corn cob", "outro": FLAT + ", the same little girl as the reference sheet, black bob hair hanging free with straight bangs",
+    "kid-camp-pot": ", hand-drawn cartoon", "kid-any-corn": FLAT + ", plain smooth golden corn cob", "outro": ", hand-drawn cartoon",
     "chief-fire": FLAT, "chief-spring": FLAT + ", round black glasses", "chief-heat-kernel": FLAT + ", plain pale wall behind her, both hands out of frame",
     "thick-quilt": ", the quilt is a plain smooth pale cloud-like blanket with even soft folds, plain pot and plain stove with round plain knobs, clean empty corners of the picture" + FLAT,
     "chief-careful": FLAT,
