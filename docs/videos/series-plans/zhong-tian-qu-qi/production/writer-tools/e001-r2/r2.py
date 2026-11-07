@@ -23,6 +23,10 @@ MUSIC = "one cue per scene: a cold tense pulse in the rainy office and street; a
 # Scene headers of script.md: place, time and light, the axis (where the door, the gate, the river are).
 LOC = {
     "office": "In a glass-walled modern office meeting room at night, a long glass table under cold white lights, the night city lights blurred out of focus beyond the dark windows",
+    # inserts keep the set to one line so the wide room is not painted (e901 live fix2: s01 table top, s20 gate, s26 chain);
+    # "meeting room" still picks the modern style and no set picture, "dirt yard" still picks set-xujia-yuan-t1
+    "desk": "In a modern office meeting room at night, on a long glass table under cold white lights",
+    "yardin": "In the dirt yard of the Xu farmhouse near noon on a clear autumn day, bright sunlight from overhead and slightly right",
     "street": "On a rain-soaked modern city street at night in heavy rain, wet asphalt reflecting the streetlights, sheets of rain falling under the streetlights",
     "under": "Under the murky green-brown water of the Liuxi stream at dawn, shafts of grey light from the surface above, silt drifting",
     "river": "On the reedy mud bank of the Liuxi stream at foggy autumn dawn, the shallow brown water on screen left and the mud bank on screen right, tall reeds, mist on the water, a dirt path to the village in the distance on screen right, cool grey light from behind on the left",
@@ -53,13 +57,15 @@ KNIFE = "her old chopping knife tucked in the right side of her belt, where it s
 SHOTS = [
     # ---- opening: the interview (night, rain). Axis: the interviewer on the right (only a hand), Xu Yan on the left facing right.
     # c01: the interviewer's portrait is the shot's only picture (ref2manifest needs one; the office has no set picture); only her hand is in frame.
-    dict(chapter="面試", loc="office", cam="Insert close-up, slow push in", chars=["mianshiguan"], nospeak=["mianshiguan"],
-         # live pick (2026-11-07): one draft showed her face and body at the far end of the table and a second hand; the
-         # other only patted the résumé. The hand is the only part of anyone in the frame, and the push is the whole shot.
-         comp="insert close-up of the glass table top, the shot opens directly on this close-up from its very first frame: one résumé lying face down on the glass with its plain blank back up, and the interviewer's one right hand reaching in from screen right in a charcoal-grey suit sleeve with a white shirt cuff and a thin-strapped wristwatch, two fingers resting on the résumé; that single hand and its sleeve are the only part of any person in the frame from the first frame to the last, her face and body out of the frame above; beyond the far table edge only the dark window and the blurred city lights",
+    dict(chapter="面試", loc="desk", cam="Insert at table height, static", chars=["mianshiguan"], nospeak=["mianshiguan"],
+         # live pick (2026-11-07) and fix1: her face and chin came into the frame above the table, the sheet ended face up
+         # with printed lines, and another take only stroked the paper. Redesign (storyboard-shot-spec 同一鏡改字兩次還是錯):
+         # an insert at table height of the table top alone, the hand coming in from the top edge (her side of the table) and
+         # pushing the face-down résumé toward the camera, to the near edge, in one push. The frame ends at the table surface.
+         comp="insert shot from just above table height, angled down onto the glass table top, the shot opens directly on this insert from its very first frame: the bare glass table surface fills the whole frame from edge to edge, the top edge of the frame on the far part of the table itself; one résumé lies face down near the top of the frame with its plain blank back up, a single sheet of white paper",
          lines=[("mianshiguan", "農學碩士？我們要的是會寫程式的，種田的就別來了。", "畫外，冷淡，不耐煩")],
-         motion="the two fingers press down on the face-down résumé, draw it back a little, then push it away in one firm stroke so it slides visibly across the glass and stops at the far table edge; then the hand lifts away and leaves the frame to the right, and the résumé lies still at the edge; the interviewer speaks from above the frame, her face out of the frame the whole shot",
-         zh="桌面特寫、慢推（第一格就是桌面）：履歷背面朝上，面試官戴細錶帶的手（深灰西裝袖、白襯衫袖口）按住履歷一推，履歷滑過玻璃桌面停在遠端桌邊，手才抬起出畫（面試官在畫外；整鏡畫面裡只有這一隻手；2026-11-07 真人版挑片重寫）"),
+         motion="one right hand in a charcoal-grey suit sleeve enters from the top edge of the frame, lays its flat palm on the face-down résumé and in one firm push slides it across the glass to the near table edge at the bottom of the frame; then the hand draws back out through the top edge",
+         zh="桌面插入鏡、桌面高度、固定（第一格就是桌面；畫面上緣就是遠端桌面，桌面以上都在畫外）：履歷背面朝上、一張白紙；面試官一隻手（深灰西裝袖）從畫面上緣伸進來，手掌平按履歷一推，履歷朝鏡頭滑到近端桌邊，手從上緣收回，履歷仍背面朝上（面試官在畫外說話；2026-11-07 真人版第二輪挑片後改鏡頭設計）"),
     dict(loc="office", cam="Medium shot to medium close-up, slow push in", chars=["xuyan"], looks={"xuyan": "modern"},
          comp="medium shot, closing in to a medium close-up by the end, of Xu Yan in a dark modern suit, white shirt and dark tie, seated at the long glass table on screen left, facing right, the résumé face down on the glass in front of him with its plain back up, his eyes on the interviewer off screen right; he opens with a small polite smile that fades as he speaks, and from then on controlled anger: his jaw clenched tight, his brows drawn down and level, his eyes hard and unblinking, his lips pressed flat between words, no smile again to the end of the shot",
          lines=[("xuyan", "種田怎麼了？全世界的人，每天都要吃飯。", "壓著火，很穩")],
@@ -167,13 +173,16 @@ SHOTS = [
          motion="Xu Yan picks up the empty bowl and tips half of the porridge into it, slides one bowl back across the table toward Xiaohe off screen right, and lifts his eyes to her",
          zh="碗的特寫慢慢拉到許硯近景：許硯拿起空碗，把粥倒一半過去，推回給畫面右邊的小禾，抬頭看她"),
     # ---- scene 3: the yard, near noon. Axis: the Xu side (Xu Yan, Xiaohe, Erniu) on the left; Zhao and the brides come in by the gate on the right.
-    dict(chapter="配婚令", loc="yard", cam="Full shot, slow push in", chars=["zhaobutou", "xiaohe"], night="yard",
-    # live pick (2026-11-07): one draft walked Zhao out of the house through the gate with the villagers inside the fence,
-    # the other started him inside the yard. The gate is shut at the first frame with Zhao and the villagers outside it.
-         comp="full shot of the dirt yard from inside it, the wooden yard gate in the bamboo fence on screen right shut at the first frame, Constable Zhao outside it in the lane, his head and shoulders above the gate, in his black constable's hat and black uniform, one sword in a black scabbard on his left hip, one roll of red paper rolled shut in his right hand with its plain blank back outward; about five villagers in Song-dynasty cross-collared coarse cotton jackets and cloth head-wraps outside the fence in the lane, showing only their upper bodies above it; little Xiaohe peeking out of the house door at the back left, the earthen house wall beside the door bare",
+    dict(chapter="配婚令", loc="yardin", cam="Insert, static", chars=["zhaobutou"], nospeak=["zhaobutou"], night="yard",
+    # live pick (2026-11-07) and fix1: nobody ever kicked the gate; it was pushed open toward the camera from the yard side
+    # or left out, villagers stood inside the fence and the house sign grew writing. Redesign (同一鏡改字兩次還是錯): the
+    # beat splits. This shot is only the kick, an insert of the shut gate from inside the yard; his boot and lower leg are all
+    # of him on screen and his shout is off screen in the recorded voice (nospeak). His walk in is s21's opening; the
+    # villagers and Xiaohe at the door leave the episode with the wide shot.
+         comp="insert shot of the yard gate from inside the yard, the shot opens directly on this insert from its very first frame: the shut wooden yard gate of weathered grey planks fills the whole frame, a strip of the bamboo fence at each side, bright lane sunlight showing through the thin gaps between the planks",
          lines=[("zhaobutou", "許硯！縣太爺的配婚令，出來接令！", "粗聲")],
-         motion="the gate is kicked open from outside, swings inward and slams against the bamboo fence; Constable Zhao strides in through it from the right and walks across the yard toward the house door on the left with weighted steps; the villagers stay outside the fence, peering in over it, their lips closed; little Xiaohe ducks back into the doorway and out of sight",
-         zh="院子全景、慢推（從院子裡拍）：第一格右邊院門關著、趙捕頭在門外；院門被他從外面一腳踹開、往裡彈到籬笆上，趙捕頭（右手一卷紅紙、左腰一把佩刀）從右邊大步走進院子、往左邊屋門走；約五個村民一直在籬笆外探頭；屋門口的小禾縮回屋裡（2026-11-07 真人版挑片重寫）"),
+         motion="a hard kick from outside bursts the gate inward toward the foreground with a loud bang and it slams against the bamboo fence at the side; in the sunlit gap a black cloth boot and the hem of a black robe stamp down onto the threshold; Constable Zhao shouts from outside the gate",
+         zh="院門插入鏡、固定（從院子裡往外拍；第一格就是關著的院門填滿畫面）：院門被人從外面一腳踹開，往裡朝鏡頭彈開、撞到籬笆，門口只露出一隻黑布靴和黑袍下襬踩在門檻上；趙捕頭在門外喊（畫外、用已錄的台詞）。他走進院子交給 s21；村民與屋門口的小禾隨全景一起拿掉（2026-11-07 真人版第二輪挑片後改鏡頭設計）"),
     dict(loc="yard", cam="Low-angle medium shot, tracking", chars=["zhaobutou"], night="yard",
          comp="low-angle medium shot of Constable Zhao walking across the dirt yard from the gate on screen right, the black scabbard on his left hip, the roll of red paper in his hands with its plain blank back toward the camera",
          lines=[("zhaobutou", "凡男子二十五歲未婚者，官府配妻三名，今日成親。", "念告示")],
@@ -199,12 +208,15 @@ SHOTS = [
          lines=[("xuyan", "昨晚已經掉進去一次了，謝謝提醒。", "自嘲，乾笑")],
          motion="he lifts his still-wet sleeve and shakes it out with a flick of the wrist, a few drops of water falling, and gives a short dry laugh",
          zh="近景、慢推：許硯抬起還濕的袖子甩一甩，水滴下來，乾笑一聲"),
-    dict(loc="yard", cam="Medium shot, slow push in", chars=["aling", "zhaobutou"], night="yard",
-    # live pick (2026-11-07): one draft showed two blades for a second, one of them bare; the other left the sword hanging.
-         comp="medium shot of A-ling standing with her head bowed on screen right, iron shackles on both wrists joined by a short iron chain, and Constable Zhao beside her on screen left, exactly one sword at his left hip, sheathed in one black scabbard",
+    dict(loc="yardin", cam="Insert, static", chars=["aling", "zhaobutou"], nospeak=["zhaobutou"], night="yard",
+    # live pick (2026-11-07) and fix1: a bare blade showed in one take; in the other the hilt pointed at A-ling and never
+    # touched the chain. Redesign (同一鏡改字兩次還是錯): an insert of her wrists and the chain; only the scabbard's far tip
+    # comes in from screen left (Zhao's side, as in s23-s28) and taps the chain twice. His line is off screen in the recorded
+    # voice (nospeak); s27 still has Xu Yan look down at the shackles and back up at Zhao.
+         comp="insert shot of A-ling's two wrists in front of her waist, the shot opens directly on this insert from its very first frame: her still hands hang together against her grey-white cotton dress, iron shackles on both wrists joined by a short iron chain hanging in a slack loop between them, the frame cut at her waist above and her thighs below",
          lines=[("zhaobutou", "這個是罪奴阿令，配給你，算便宜你了。", "輕蔑")],
-         motion="with his left hand Zhao lifts the single sword from his left hip, the blade staying inside its black scabbard the whole time, points the scabbard tip at A-ling and taps it against her wrist chain so the shackles swing and the chain rattles; A-ling keeps her head bowed and her eyes on the ground, her lips closed",
-         zh="中景、慢推：趙捕頭左手把左腰唯一一把佩刀連鞘拿起來（刀一直在鞘裡），用鞘尖指著阿令、碰得鐵鐐晃一下；戴鐵鐐的阿令低著頭沒抬頭、嘴閉著（2026-11-07 真人版挑片重寫）"),
+         motion="the iron-capped tip of a dark black-lacquered wooden scabbard slides in from the left edge of the frame and taps the iron chain twice, so the chain swings and rattles between her wrists; then the tip draws back out to the left; Constable Zhao speaks from off screen left",
+         zh="阿令雙腕插入鏡、固定（第一格就是她腰前的雙手與鐵鐐鐵鍊，畫面上到腰、下到大腿）：一截深色木刀鞘（黑漆、鐵鞘尖）從畫面左邊伸進來，鞘尖在鐵鍊上點兩下，鐵鍊晃動作響，再從左邊收回；拿刀鞘的人在畫外；趙捕頭在畫面左邊外說話（畫外、用已錄的台詞）（2026-11-07 真人版第二輪挑片後改鏡頭設計）"),
     dict(loc="yard", cam="Over-the-shoulder medium close-up, slow push in", chars=["xuyan", "zhaobutou"], night="yard",
          comp="over-the-shoulder shot from behind Constable Zhao's shoulder and black hat in the right foreground, Xu Yan facing the camera on screen left, frowning, his eyes on Zhao",
          lines=[("xuyan", "她犯了什麼罪，要戴著鐵鐐來？", "皺眉，低聲")],
