@@ -63,12 +63,21 @@ CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, gloss
 # Visual review 2026-11-07: shots whose three takes all failed get one more line (photo-real, off-model, marks).
 FLAT = ", simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours"
 EXTRA = {
-    "kid-guess-100": FLAT, "kid-popcorn-bowl": FLAT, "kid-bubble-push": FLAT + ", big round friendly cartoon eyes with dark pupils",
+    "kid-guess-100": FLAT, "kid-bubble-push": FLAT + ", matching dark pupils",
     "kid-camp-pot": ", hand-drawn cartoon", "kid-any-corn": FLAT + ", plain smooth golden corn cob", "outro": ", hand-drawn cartoon",
-    "chief-fire": FLAT, "chief-spring": FLAT + ", round black glasses", "chief-heat-kernel": FLAT + ", plain pale wall behind her, both hands out of frame",
+    "chief-fire": FLAT, "chief-spring": FLAT, "chief-heat-kernel": FLAT,
     "thick-quilt": ", the quilt is a plain smooth pale cloud-like blanket with even soft folds, plain pot and plain stove with round plain knobs, clean empty corners of the picture" + FLAT,
     "chief-careful": FLAT,
 }
+# Storyboard round 4 (score 46/70): drifting character shots that stay character shots get the flat line
+# (chief) or the hood-down line (kid); keep these short, the whole prompt must stay under the minimax budget.
+HOOD = ", hood down, short black bob hanging free"
+for _id in ("chief-rule", "chief-done", "chief-back-camp", "chief-three", "chief-percent", "chief-paper", "chief-quilt",
+            "chief-flat", "chief-not-rocket", "chief-mic", "chief-safe", "outro-chief"):
+    EXTRA[_id] = EXTRA.get(_id, "") + FLAT
+for _id in ("kid-popcorn-bowl", "kid-mountain-flip", "kid-squat", "kid-one-cm", "kid-leftover", "kid-hidden-water",
+            "kid-three", "kid-same-rule", "kid-fire-up", "kid-crack-guess"):
+    EXTRA[_id] = EXTRA.get(_id, "") + HOOD
 def _shot(id, prompt, chars, lines, chapter):
     prompt = prompt + EXTRA.get(id, "")
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
@@ -103,19 +112,19 @@ kid("kid-gas-guess", K("shaking a small camping gas canister next to her ear wit
     k("我還以為是山上的瓦斯，", "很有把握的錯猜"), k("不夠力！", None, "S:gas"))
 kid("kid-popcorn-bowl", K("hugging a big bowl of fluffy white popcorn and grinning", close=True, where=KITCHEN),
     k("可是回家用微波爐爆米花，", "轉折"), k("一下子就啵啵啵全爆開了！", "開心"))
-chief("chief-same-water", C("raising one finger with a curious smile"),
+scene("chief-same-water", "Medium shot of a small steaming camping pot of water and a bowl of fluffy white popcorn side by side on a pale wooden table, one big shiny clear water drop floating between them, " + DAY,
       c("這兩件事，其實是同一個角色在搗蛋：水。"), c("你也可以想想看：一樣是把水加熱，", "轉向觀眾"))
-chief("chief-main-q", C("holding up both hands like two sides of a scale, eyebrows raised", close=True),
+scene("chief-main-q", "Medium shot of a camping pot of bubbling water with limp pale noodles drooping over its rim on the left, and one golden popcorn kernel bursting into a big fluffy white puff on the right, pale cream background, " + DAY,
       c("為什麼山上的水滾了，麵還煮不熟，", "放慢"), c("玉米裡的水，卻能把整顆玉米炸開？", "問句", "S:main"))
 kid("kid-guess-100", K("holding up both hands with fingers spread wide and a confident grin", close=True),
     k("水滾了就是一百度啊！", "很有把握的錯猜"))
-chief("chief-tease-temp", C("tilting her head with a knowing smile", close=True),
+scene("chief-tease-temp", "Close-up of a small plain steel camping pot of bubbling water on a small plain camping gas stove at a sunny grassy mountain campsite with green peaks, only a small calm wisp of steam rising from it, " + DAY,
       c("那你猜猜，你在山上煮的那鍋滾水，", "賣關子"), c("真的有一百度嗎？", "問句", "S:boil100"))
 scene("leftover-kernels", "Close-up of a few small hard golden popcorn kernels lying at the bottom of a bowl of fluffy white popcorn, " + DAY,
       c("還有，你那碗爆米花的碗底，"), c("是不是總剩下幾顆，怎麼熱都不爆？", "賣關子", "S:unpopped"))
 kid("kid-leftover", K("holding one tiny hard golden kernel between two fingers and squinting at it", close=True, where=KITCHEN),
     k("對耶，", "想起來"), k("它們是不是比較懶？", "好笑"))
-chief("chief-promise", C("folding her arms with a warm smile", close=True),
+scene("chief-promise", "Medium shot of an open steel pot with soft steam drifting freely out of its top on the left, and one golden popcorn kernel with its hard shiny shell closed tight on the right, pale cream background, " + DAY,
       c("答案就藏在水的身上。"), c("看它是被放開的，還是被關起來的。"))
 
 # ---------- 第一章：冒泡不代表同一溫度 ----------
@@ -123,55 +132,55 @@ scene("camp-wide", "Wide view of a sunny grassy mountain campsite high among gre
       c("你在山上看到的那鍋滾水，跟家裡的長得一模一樣。", "接住上一句"), chapter="水滾了，不一定是一百度")
 scene("home-pot", "Medium shot of a plain steel pot of water boiling hard on a gas stove in a bright sunny home kitchen, big round bubbles and soft white steam, " + DAY,
       c("水燒到冒大泡泡，在海邊附近，"), c("大約就是一百度。"))
-chief("chief-flat", C("pointing down toward the floor with a warm smile", close=True),
+chief("chief-flat", C("holding a small steel pot of boiling water with soft steam in both hands, a warm smile", close=True),
       c("你住在平地，家裡的滾水差不多就是這樣。", "轉向觀眾"))
 kid("kid-why-bubble", K("crouching to look closely at a pot of boiling water with big round bubbles, curious eyes", close=True, where=KITCHEN),
     k("那水一燙，", "好奇"), k("為什麼就會冒大泡泡？", "句尾上揚"))
-chief("chief-vapour", C("wiggling her fingers upward like tiny bubbles rising, a warm smile"),
+scene("chief-vapour", "Close-up cutaway of clear hot water in a glass pot on a stove, round see-through steam bubbles growing at the bottom and rising up through the water, " + DAY,
       c("水越燙，越多水想變成水氣。"), c("燙到夠了，水裡面就鼓出一顆顆水氣泡泡。"))
-kid("kid-fire-up", K("pretending to turn a stove knob with a determined grin", close=True, where=KITCHEN),
+kid("kid-fire-up", K("standing at a gas stove turning its round knob with a determined grin, facing the viewer", close=True, where=KITCHEN),
     k("那火再開大，", "推理"), k("水不就會更燙？", "句尾上揚", "S:fire"))
-chief("chief-fire", C("shaking her head gently with a kind smile"),
+scene("chief-fire", "Close-up of a steel pot of water boiling wildly with lots of big splashing bubbles over a tall bright blue gas flame, " + DAY,
       c("不會。水一滾起來，溫度就停住了。"), c("火開大，只是泡泡冒得更兇。", None, "P:fire"))
 kid("kid-where-heat", K("tilting her head with a puzzled frown and one finger on her chin", close=True),
     k("那多出來的火，", "追問"), k("跑去哪了？", "句尾上揚"))
-chief("chief-into-steam", C("lifting one open hand slowly upward like steam rising"),
+scene("chief-into-steam", "Medium shot of a steel pot of boiling water in a sunny kitchen, lots of soft white steam floating up out of the open top and drifting away, " + DAY,
       c("拿去把水變成水氣，飄走了。"), c("所以滾水，有一個熱不上去的天花板。"))
 kid("kid-ceiling", K("reaching one flat hand up high as if touching a ceiling, wide eyes", close=True),
     k("那個天花板，", "好奇"), k("在哪裡都一樣高嗎？", "句尾上揚"))
-chief("chief-press", C("pressing both palms down gently in the air"),
+scene("chief-press", "Medium shot of a steel pot of water on a stove under a tall soft column of fluffy white air resting gently on the water surface, " + DAY,
       c("不一定。它要看，水的上面有多少空氣壓著它。"))
 kid("kid-air-weight", K("waving one hand through the air with a doubtful laugh", close=True),
     k("空氣？", "懷疑"), k("空氣輕飄飄的，", "不服氣"), k("也會壓東西？", "句尾上揚", "S:airpress"))
-chief("chief-quilt", C("patting her own shoulder as if feeling a soft heavy blanket, a playful smile"),
+chief("chief-quilt", C("holding a big thick fluffy white quilt draped over both arms, a playful smile"),
       c("會。你頭上有一大層又高又厚的空氣，"), c("一直輕輕壓著你，也壓著那鍋水。"))
 scene("thick-quilt", "Medium shot of a plain steel pot of water on a stove by a sunny seaside, a huge thick soft fluffy quilt of white air resting over the pot, " + DAY,
       c("就像蓋著一床很厚的空氣棉被。", None, "P:airpress"), c("水裡的泡泡要冒出來，得先把棉被推開。"))
-kid("kid-bubble-push", K("pushing both hands forward hard as if shoving open a heavy door", close=True),
+kid("kid-bubble-push", K("pushing up hard with both hands as if lifting a heavy quilt, facing the viewer", close=True),
     k("水泡要用力推？", "驚訝"))
-chief("chief-hot-enough", C("nodding with one finger raised"),
+scene("chief-hot-enough", "Close-up cutaway of a steel pot of hot water by a sunny seaside, round steam bubbles pushing up against a thick soft fluffy white quilt of air lying on the water surface, " + DAY,
       c("對，水要熱到夠，水氣的泡泡才推得開。"), c("在海邊，這床棉被最厚，水要熱得最多。"))
 kid("kid-mountain-q", K("pointing up at tall green peaks behind her with a curious face", where=CAMP),
     k("那爬到山上呢？", "追問"))
-chief("chief-thin", C("lifting one hand higher and higher with a calm smile"),
+scene("chief-thin", "Wide view of one tall green mountain, a thick fluffy white quilt of air wrapped around its foot and only a thin light wisp of white air around its sunny peak, " + DAY,
       c("越往上爬，你頭上的空氣就越少，"), c("那床棉被，就變得又薄又輕。"))
-scene("thin-quilt", "Medium shot of " + POT + " bubbling on " + STOVE + " at a sunny grassy mountain campsite with green peaks, a thin light wisp of white air resting over the pot, " + DAY,
+scene("thin-quilt", "Medium shot of " + POT + " bubbling on " + STOVE + " at a sunny grassy mountain campsite with green peaks, a thin light see-through white quilt with neat stitched edges floating just above the pot, small bubbles popping up easily through it, " + DAY,
       c("棉被薄了，泡泡不用那麼熱，就推得開。"))
 kid("kid-cooler-boil", K("with her mouth open in surprise, both hands on her cheeks", close=True, where=CAMP),
     k("所以山上的水，", "慢慢想通"), k("不用那麼燙就滾了？", "句尾上揚"))
-chief("chief-3000", C("holding up three fingers with raised eyebrows", close=True),
+scene("chief-3000", "Medium shot of a small plain steel camping pot bubbling on a camping stove on a high rocky mountain top above the clouds, only a small calm puff of steam rising from it, " + DAY,
       c("對。在三千公尺左右的高山上，", "數字放慢"), c("水大約九十度就滾了。", None, "P:boil100"))
-chief("chief-yushan", C("pointing up toward one side with a warm smile"),
+scene("chief-yushan", "Wide view of a tall green Taiwanese mountain peak rising above a sea of white clouds, a small camping pot bubbling gently on a rock near the summit with a small calm wisp of steam, " + DAY,
       c("台灣最高的玉山，將近四千公尺，", "轉向觀眾"), c("山頂的滾水，連九十度都不到。"))
-chief("chief-longer", C("holding both hands as if around a warm bowl, a gentle smile", close=True),
+scene("chief-longer", "Medium shot of a camping pot of noodles simmering slowly on a camping stove at a sunny mountain campsite, a small wooden hourglass beside it, " + DAY,
       c("所以在山上煮麵、煮蛋、煮飯，"), c("常常都要比在家裡多等一會兒。"))
 kid("kid-yushan", K("gazing up at a tall green mountain peak with clouds around it, eyes wide", where=CAMP),
     k("滾水只有八十幾度！", "大驚"))
 kid("kid-but-bubbles", K("crouching by " + POT + " full of bubbles with a stubborn pout", where=CAMP),
     k("可是它一樣在冒泡泡啊，", "不服氣"), k("為什麼麵還是硬的？", "句尾上揚", "S:noodles"))
-chief("chief-cook", C("holding one hand flat and moving it slowly forward"),
+scene("chief-cook", "Close-up cutaway of pale noodles in a pot of hot water, a soft orange warm glow slowly soaking into the noodles from the outside, their middles still pale and stiff, " + DAY,
       c("把麵煮熟的，是水的熱，不是泡泡。"), c("水沒那麼燙，熱鑽進麵裡就比較慢。"))
-chief("chief-gas", C("shaking her head gently with a kind smile", close=True),
+scene("chief-gas", "Close-up of a small camping gas stove with a strong bright blue flame under a steel pot, only a small calm wisp of steam rising from the pot, " + DAY,
       c("所以麵煮得慢，不是瓦斯不夠力，", None, "P:gas"), c("是那鍋水本身就沒那麼燙。"))
 kid("kid-fire-again", K("pretending to turn a stove knob all the way up with a hopeful grin", close=True, where=CAMP),
     k("那我把火轉到最大！", "想到辦法"))
@@ -179,13 +188,13 @@ chief("chief-ceiling-back", C("smiling and tilting one hand side to side", close
       c("還記得那個天花板嗎？火再大，", "點名回呼"), c("水也只會停在剛剛那個溫度，只是滾得更兇。"))
 kid("kid-wait-long", K("sitting by " + POT + " with her chin in her hands and a bored sigh", where=CAMP),
     k("所以只能煮久一點！", "恍然大悟", "P:noodles"))
-chief("chief-lid-tease", C("pressing one flat hand down on top of the other, eyebrows raised"),
+scene("chief-lid-tease", "Close-up of a steel pot with its lid clamped down tight by two sturdy side clips, the lid gently puffed up by steam trapped inside, " + DAY,
       c("對。所以有人會想：那如果反過來，"), c("把蓋子壓得緊緊的，不讓水氣跑掉呢？", "賣關子"))
 kid("kid-lid-q", K("pressing both hands down hard on the lid of " + POT + " with a curious face", close=True, where=KITCHEN),
     k("蓋子壓緊，", "推理"), k("水會變得更燙嗎？", "章尾停住，句尾上揚", "S:lid"))
 
 # ---------- 第二章：把水封進玉米殼 ----------
-chief("chief-cooker", C("raising one hand in a calm careful gesture"),
+scene("chief-cooker", "Medium shot of a sturdy closed steel pressure cooker with a locked lid and a small round valve on top, sitting on a camping stove at a sunny high mountain campsite, plain smooth unmarked sides, " + DAY,
       c("會。有一種蓋子會鎖緊的鍋，叫做壓力鍋，", "接住上一句"), c("在很高的山上，常有人用它煮飯。"), chapter="把水關進玉米殼裡")
 chief("chief-careful", C("holding up one palm gently like a careful reminder, a serious kind face", close=True),
       c("不過壓力鍋要大人照說明使用，", "叮嚀"), c("我們不自己在家把水氣關起來做實驗。"))
@@ -201,45 +210,45 @@ kid("kid-dry", K("holding a golden kernel close to one eye and squinting hard", 
     k("可是它乾乾硬硬的，", "懷疑"), k("裡面哪有水？", "句尾上揚", "S:dry"))
 scene("kernel-inside", "Close-up cutaway of " + KERNEL + ", its inside filled with soft white starch and one small glistening drop of water tucked in the middle, " + DAY,
       c("有喔。殼的裡面是軟軟的澱粉，"), c("中間還藏著一小滴水。"))
-chief("chief-percent", C("holding her finger and thumb a little apart with a warm smile", close=True),
+chief("chief-percent", C("holding up one golden popcorn kernel with one tiny shiny water drop on her other fingertip, a warm smile", close=True),
       c("一顆好爆的玉米，大約一百份裡，"), c("有十四份左右是水。", "數字放慢", "P:dry"))
-kid("kid-hidden-water", K("with her mouth open in surprise, holding up a kernel", close=True, where=KITCHEN),
+kid("kid-hidden-water", K("mouth open in surprise, holding up a golden popcorn kernel cut in half with a tiny drop of water inside", close=True, where=KITCHEN),
     k("看起來乾乾的，", "驚訝"), k("原來偷藏著水！"))
-chief("chief-heat-kernel", C("rubbing her hands together as if warming them"),
+scene("chief-heat-kernel", "Close-up cutaway of " + KERNEL + " on a hot pan, the tiny pool of water inside turning into swirling little steam wisps trapped under the hard shell, " + DAY,
       c("鍋子一熱，這滴水也想變成水氣，"), c("可是玉米的外殼把它關在裡面。"))
 scene("kernel-puff", "Close-up of " + KERNEL + " on a warm pan, the kernel looking round and puffed up and tight like an overfilled balloon, faint soft warm glow around it, " + DAY,
       c("水氣出不去，就在殼裡越擠越多。"), c("整顆玉米，像一顆越吹越緊的氣球。"))
 kid("kid-hotter-q", K("frowning and holding her two hands together tight as if squeezing a ball", close=True),
     k("可是你剛剛說，", "抓到問題"), k("水熱不過天花板呀？", "句尾上揚", "S:hotter"))
-chief("chief-quilt-back", C("pressing her palms together hard with raised eyebrows"),
+scene("chief-quilt-back", "Close-up cutaway of " + KERNEL + ", its inside crowded with tight swirling white steam pressing hard on a tiny pool of water, the hard shell bulging slightly, " + DAY,
       c("還記得那床空氣棉被嗎？", "點名回呼"), c("在玉米裡面，壓住這些水的不是棉被，是越擠越多的水氣。"))
-chief("chief-higher-ceiling", C("lifting one flat hand higher and higher in steps"),
+scene("chief-higher-ceiling", "Close-up of " + KERNEL + " glowing hot orange on a hot pan, puffed tight like an overfilled balloon, soft heat shimmer around it, " + DAY,
       c("壓得越用力，泡泡越難推開，"), c("水就得熱過平地的滾水，天花板也跟著升高。", None, "P:hotter"))
 kid("kid-mountain-flip", K("pointing at a golden kernel in her palm with an excited grin", close=True, where=KITCHEN),
     k("跟山上剛好相反！", "想通"))
-chief("chief-180", C("holding up one finger with a calm smile", close=True),
+scene("chief-180", "Close-up of " + KERNEL + " on a very hot glowing iron pan, wavy heat shimmer all around it, the kernel trembling just before it bursts, " + DAY,
       c("對。研究的人量過，玉米大多在一百八十度左右爆開，", "數字放慢"))
-chief("chief-ten-times", C("spreading her arms wide as if holding something very tight"),
+scene("chief-ten-times", "Close-up of a small red balloon blown up so tight that it bulges and gleams, sitting beside one golden popcorn kernel on a pale wooden table, " + DAY,
       c("那時殼裡的壓力，大約是外面空氣的九到十倍。", "數字放慢"))
 kid("kid-ten-times", K("puffing out her cheeks like a tight balloon and laughing", close=True),
     k("殼快被撐破了！", "好笑"))
-chief("chief-liquid", C("raising one finger with a curious smile", close=True),
+scene("chief-liquid", "Close-up cutaway of " + KERNEL + " on a hot pan, inside the hard shell a small shiny pool of liquid water still sitting under tight swirling steam, " + DAY,
       c("還有一件怪事：研究的人算過，殼破之前，"), c("裡面大部分的水，其實還是液體。"))
 kid("kid-still-water", K("tilting her head with a puzzled frown and one finger on her chin", close=True),
     k("都燙成那樣了，", "不解"), k("還沒變成水氣？", "句尾上揚"))
-chief("chief-held", C("pressing both palms together tightly, then easing them apart slightly"),
+scene("chief-held", "Close-up of a golden popcorn kernel shell splitting open on a hot pan, a sudden burst of white steam rushing out of the crack, " + DAY,
       c("對，外殼破之前壓力太大，大部分只能先當水。"), c("等殼一破、壓力一鬆，它們才急著變成水氣。"))
-chief("chief-cooking", C("nodding with a warm smile"),
+scene("chief-cooking", "Close-up cutaway of " + KERNEL + ", the white starch inside turning soft, gooey and sticky like warm pancake batter, " + DAY,
       c("這段時間，裡面的澱粉也被燙得又軟又黏，"), c("像一團準備好的麵糊。"))
 kid("kid-big-fire", K("pretending to turn a stove knob all the way up with a mischievous grin", close=True, where=KITCHEN),
     k("那我火開超大，", "試探"), k("是不是爆得更快？", "句尾上揚"))
-chief("chief-too-fast", C("tilting one hand side to side with an honest smile"),
+scene("chief-too-fast", "Close-up of one half-popped popcorn kernel on a pan, its shell cracked open with only a small lumpy pale puff and a hard golden middle, " + DAY,
       c("太快也不好。裡面的水氣太早撐破殼，"), c("中間的澱粉還沒燙軟，就變成中間硬硬的半顆。"))
 kid("kid-lazy-back", K("holding up one tiny hard leftover kernel with a curious face", close=True, where=KITCHEN),
     k("那碗底那幾顆，", "點名回呼"), k("為什麼就是不爆？", "句尾上揚"))
-chief("chief-too-dry", C("holding her finger and thumb almost touching, a gentle smile", close=True),
+scene("chief-too-dry", "Close-up cutaway of a dull shrivelled golden popcorn kernel on a hot pan, its inside dry and wrinkled with only a tiny speck of water, " + DAY,
       c("常見的原因，是它太乾了。"), c("水太少，擠不出夠大的力氣撐破殼。"))
-chief("chief-tip", C("pointing at the tip of a tiny kernel between two fingers, eyebrows raised"),
+scene("chief-tip", "Close-up of " + KERNEL + " on a hot pan, thin wisps of steam leaking out of its small pointed tip, " + DAY,
       c("還有，玉米尖尖那頭接著玉米棒，"), c("那裡不太擋得住水氣，加熱太慢，水氣會偷偷漏走。", None, "P:unpopped"))
 kid("kid-leak", K("making a small whoosh shape with her hand by her mouth, a knowing grin", close=True),
     k("漏氣了，", "推理"), k("就爆不起來了！", "想通", "P:lid"))
@@ -249,77 +258,77 @@ kid("kid-crack-q", K("staring at a golden kernel on a warm pan with wide eyes, h
 # ---------- 第三章：外殼破了，接著才跳 ----------
 kid("kid-rocket", K("pretending to launch a rocket upward from her hands with a big grin", close=True),
     k("是不是水氣從裂縫噴出來，", "很有把握的錯猜"), k("像火箭把它推上天？", None, "S:rocket"), chapter="殼破了，接著才跳")
-chief("chief-paper", C("tapping the side of her glasses with a knowing smile", close=True),
+chief("chief-paper", C("holding a big round magnifying glass over one golden popcorn kernel in her palm, a knowing smile", close=True),
       c("很多人都這樣猜。二〇一五年，法國有兩位研究的人，", "接住上一句"), c("想把這件事看清楚。"))
-scene("camera", "Close-up of a big black high-speed camera on a tripod pointing at a plain round hot plate with a few golden popcorn kernels on it, in a bright tidy lab, " + DAY,
+scene("camera", "Close-up of a big black high-speed camera with a smooth unmarked body on a tripod, aimed at one single golden popcorn kernel sitting on a dark hot iron plate, in a bright tidy lab, " + DAY,
       c("他們把玉米放在一塊熱鐵板上，"), c("用一秒拍將近三千張的高速相機，慢慢看。"))
 kid("kid-3000", K("blinking fast with her mouth open in amazement", close=True),
     k("一秒三千張！", "驚奇"), k("看到什麼了？", "句尾上揚"))
 scene("kernel-crack", "Close-up of " + KERNEL + " on a warm pan with one thin crack opening across its shell and a small puff of soft white starch peeking out, " + DAY,
       c("先是殼裂開一條縫，軟軟的澱粉，"), c("就從裂縫裡一下子鼓了出來。"))
-chief("chief-white", C("opening both hands wide like a flower blooming"),
+scene("chief-white", "Close-up of a popcorn kernel bursting open on a warm pan into a big fluffy white puff of foamy starch, soft steam swirling out, " + DAY,
       c("關了很久的水氣，一下子全部放開，"), c("把那團軟澱粉，吹成一大朵白白的泡泡。"))
 kid("kid-white-q", K("holding one fluffy white popped popcorn next to one small golden kernel, puzzled", close=True, where=KITCHEN),
     k("怪不得黃黃小小的一顆，", "推理"), k("會變成白白一大朵？", "句尾上揚", "S:white"))
-chief("chief-crispy", C("nodding with a warm smile", close=True),
+scene("chief-crispy", "Close-up of one fluffy white popped popcorn with a few small golden-yellow shell flakes still stuck to its side, on a pale wooden table, " + DAY,
       c("對。黃色其實只在那層殼上，"), c("裡面的澱粉，本來就是白的。", None, "P:white"))
-chief("chief-set", C("pressing her fingertips together as if feeling something crisp"),
+scene("chief-set", "Close-up of a few crisp fluffy white popcorn pieces cooling in a bowl beside a warm pan, one piece broken open showing a crunchy airy inside, " + DAY,
       c("那些白泡泡一離開熱鍋就變涼，"), c("馬上變硬，就是你咬的那口脆脆的。"))
 kid("kid-jump-yet", K("leaning forward eagerly with both fists clenched", close=True),
     k("那它什麼時候跳？", "追問"))
-scene("starch-leg", "Close-up of a popcorn piece on a warm round pan, one soft white puff of starch pressed flat against the pan like a little springy foot, " + DAY,
+scene("starch-leg", "Close-up of a fresh fluffy popcorn piece on a warm round pan, standing on one short stubby white leg of puffed starch squashed flat against the pan like a tiny cartoon foot, " + DAY,
       c("鼓出來的澱粉，有一塊壓在鍋子上，"), c("像長出一隻短短的小腳。"))
 kid("kid-leg", K("laughing and pointing at her own leg", close=True),
     k("爆米花也有腳？", "好笑，句尾上揚"))
-chief("chief-spring", C("pressing one hand down then lifting it quickly like a spring"),
+scene("chief-spring", "Close-up of a popcorn piece springing up off a warm round pan, its short stubby white starch leg bouncing back like a coiled spring, " + DAY,
       c("那隻腳先被壓扁，再像彈簧一樣彈回去，"), c("就把整顆玉米踢離鍋子。", None, "P:jump"))
-chief("chief-not-rocket", C("shaking her head gently with a kind smile"),
+chief("chief-not-rocket", C("holding a small coiled metal spring between two fingers with a kind smile"),
       c("所以讓它跳起來的主角，是那隻澱粉腳，"), c("不是水氣像火箭那樣噴。", None, "P:rocket"))
 kid("kid-squat", K("squatting low and then springing up with arms in the air, laughing", where=KITCHEN),
     k("跟我跳遠一樣，", "開心"), k("先蹲再跳！", "開心"))
-chief("chief-flea", C("holding her finger and thumb close together with a playful smile", close=True),
+scene("chief-flea", "Close-up of a tiny brown flea leaping high in a big arc over a green leaf, next to a ripe green seed pod bursting open and flinging out small seeds, " + DAY,
       c("研究的人說，它的跳法有點像跳蚤，"), c("也有點像某些會彈出種子的植物。"))
 kid("kid-flea-q", K("crouching low and pretending to hop like a tiny flea, giggling", close=True),
     k("跳蚤？", "好笑"), k("那它跳得多快？", "句尾上揚"))
-chief("chief-fast", C("snapping her fingers with raised eyebrows"),
+scene("chief-fast", "Close-up of a fluffy popcorn piece leaping off a hot pan as a quick bright blur with soft speed streaks behind it, " + DAY,
       c("從殼裂開到跳起來，只有百分之幾秒，"), c("快到你的眼睛只看到一閃。"))
 kid("kid-flip", K("spinning one finger round in the air with a dizzy grin", close=True),
     k("眨一下眼就錯過了！", "好笑"))
-chief("chief-height", C("holding one hand just a little above the other"),
+scene("chief-height", "Close-up at pan level of a fluffy popcorn piece hopping just a tiny little bit above a warm round pan, a small soft shadow right under it, " + DAY,
       c("如果只靠那一踢，他們估計，"), c("大約能跳一公分左右。"))
 kid("kid-one-cm", K("holding her finger and thumb a tiny bit apart with raised eyebrows", close=True),
     k("只有一公分？", "驚訝"), k("我還以為它會飛好高！"))
-chief("chief-one-cm", C("laughing softly with one hand raised a little"),
+scene("chief-one-cm", "Close-up at pan level of two fluffy popcorn pieces hopping side by side to the same tiny height above a warm round pan, " + DAY,
       c("研究的人說，他們看到的跳法，"), c("跟這個估計差不多是同一個大小。"))
 kid("kid-pop-q", K("cupping one hand behind her ear and listening hard", close=True, where=KITCHEN),
     k("那「啵」的一聲，", "追問"), k("是殼破掉的聲音嗎？", "章尾停住，句尾上揚", "S:sound"))
 
 # ---------- 第四章：那聲啵又是哪一步 ----------
-chief("chief-mic", C("cupping one hand behind her ear with a curious smile"),
+chief("chief-mic", C("holding a round black microphone with a curious smile"),
       c("他們也想知道。所以在旁邊放了一支麥克風，", "接住上一句"), c("一邊錄聲音，一邊拍。"), chapter="那聲啵，晚了一點才出來")
 scene("mic", "Close-up of a round black microphone on a small stand beside a plain round hot plate with golden popcorn kernels on it, in a bright tidy lab, " + DAY,
       c("聲音和畫面對在一起，就知道每一聲是哪一步。"))
 kid("kid-how-long", K("holding her breath with puffed cheeks and wide eyes", close=True),
     k("那一聲啵，", "好奇"), k("有多長？", "句尾上揚"))
-chief("chief-50ms", C("snapping her fingers once with a playful smile", close=True),
+scene("chief-50ms", "Close-up of a popcorn kernel on a dark hot iron plate giving off one quick soft round ripple in the air, a round black microphone on a small stand beside it, in a bright tidy lab, " + DAY,
       c("他們錄到的，大約只有二十分之一秒。"))
-kid("kid-crack-guess", K("making a snapping gesture with both hands with a confident grin", close=True),
+kid("kid-crack-guess", K("holding up one golden popcorn kernel with a thin crack across its shell, a confident grin", close=True),
     k("一定是殼裂開，", "很有把握的錯猜"), k("裂開的那一下！"))
-chief("chief-after", C("holding up one finger and then a second one a moment later"),
+scene("chief-after", "Close-up of a popcorn kernel on a dark hot iron plate with a thin crack just opening across its shell, the air around it still calm, a round black microphone waiting beside it, in a bright tidy lab, " + DAY,
       c("聲音沒有在殼裂開的那一瞬間出來，"), c("而是晚了千分之幾秒。"))
 kid("kid-foot-guess", K("stomping one foot with a curious face", close=True),
     k("那是小腳踢鍋子的聲音？", "再猜"))
-chief("chief-not-foot", C("shaking her head gently with a playful smile", close=True),
+scene("chief-not-foot", "Close-up of a popcorn kernel bursting open on a warm pan, a sudden rush of soft white steam shooting out of the crack, " + DAY,
       c("也不是。研究的人推測，是水氣衝出來的時候，"))
 scene("hollow-ring", "Close-up of a popcorn piece bursting open on a warm pan, soft white steam rushing out of small round hollows inside the puff, gentle round ripples in the air around it, " + DAY,
       c("讓玉米裡面的小空洞，一起被震響了。", None, "P:sound"))
 kid("kid-bottle", K("blowing across the top of an empty glass bottle with puffed cheeks", close=True, where=KITCHEN),
     k("像我對著瓶口吹氣，", "想到"), k("會嗚嗚叫一樣？", "句尾上揚"))
-chief("chief-bottle", C("nodding with a warm smile"),
+scene("chief-bottle", "Close-up of an empty glass bottle with soft swirling air flowing across its open mouth and gentle round ripples spreading from it, beside a fluffy popcorn piece, " + DAY,
       c("有一點像。都是空氣在空洞裡，"), c("一下子被推動，就發出聲音。"))
-chief("chief-three", C("holding up three fingers one by one with a calm smile"),
+chief("chief-three", C("holding up one fluffy white popped popcorn with a calm smile", close=True),
       c("所以殼裂開、發出啵、跳起來，"), c("是三件不同的事，只是快到黏在一起。"))
-chief("chief-many", C("cupping one hand behind her ear with a warm smile"),
+scene("chief-many", "Close-up of a pan full of golden popcorn kernels popping one after another, fluffy white pieces hopping up at different moments, " + DAY,
       c("你在鍋邊聽到一串啵啵啵，", "轉向觀眾"), c("其實是好多顆玉米，一顆一顆各自走完這三步。"))
 kid("kid-three", K("counting on her fingers with her tongue sticking out in concentration", close=True),
     k("原來是三件事！", "整理"))
@@ -335,13 +344,13 @@ kid("kid-either", K("holding a golden kernel in one hand and a small camping pot
     k("壓著水的，", "推理"), k("可以是空氣，也可以是水氣？", "句尾上揚"))
 chief("chief-either", C("nodding with her hands open, a calm smile"),
       c("對，誰在壓都一樣。"), c("所以同一條規矩，能讓麵煮不熟，也能讓玉米炸開。"))
-chief("chief-opinion", C("folding her arms and laughing softly"),
+scene("chief-opinion", "Close-up of a steel pot full of lively big round bubbles on a stove, soft steam wisps curling up playfully, " + DAY,
       c("我覺得，水最會騙人的就是那些泡泡：", "意見，輕鬆"), c("它們只告訴你水滾了，沒告訴你水有多燙。"))
 kid("kid-trick", K("narrowing her eyes at a pot of bubbling water like a detective, one finger raised", where=KITCHEN),
     k("泡泡騙了我！", "像偵探"))
 
 # ---------- 收尾 ----------
-chief("chief-back-camp", C("smiling and pointing back over her shoulder"),
+chief("chief-back-camp", C("smiling warmly at the viewer with one hand open, filling the frame", close=True),
       c("還記得你一開始問我的兩件事嗎？你自己說說看。", "笑"), chapter="小問自己破案")
 kid("kid-got-it", K("throwing both arms up with a huge happy smile", where=KITCHEN),
     k("就是剛剛那條薄棉被！", "篤定"), k("讓山上的水不到一百度就滾，", "篤定"), k("麵才煮得慢！", "開心"))
@@ -349,12 +358,12 @@ kid("kid-got-it2", K("holding up a fluffy white popcorn proudly with both hands"
     k("還有剛剛的玉米外殼，", "篤定"), k("把水關在裡面熱到炸開！", "開心", "P:main"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
       c("下次你吃爆米花，可以先聽一聽：", "轉向觀眾，輕聲"), c("每一聲啵，就是又有一顆玉米走完了那三步。", "點名回呼"))
-chief("chief-safe", C("holding up one palm gently like a careful reminder, a kind smile"),
+chief("chief-safe", C("holding a puffy plain unmarked white microwave popcorn bag at arm's length, a careful kind smile"),
       c("微波爐爆米花的袋子剛拿出來很燙，"), c("要讓大人打開，別把臉湊過去。", "叮嚀"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
-chief("outro-chief", "Waist-up medium shot of the chief tilting her head with a curious smile and one finger raised, a plain pale wall behind her, bright morning light",
+chief("outro-chief", "Waist-up medium shot of the chief holding a bowl of fluffy popcorn with a few golden kernels left at the bottom, a curious smile, filling the frame, a plain pale wall behind her, bright morning light",
       c("你家的爆米花，碗底最後剩下幾顆沒爆？", "問句上揚，像聊天"), c("留言告訴我們。"))
 chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light",
       c("想一起找生活裡的為什麼，就訂閱原來如此事務所。", "誠懇"))
