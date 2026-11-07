@@ -10,7 +10,7 @@ OUT=${1:-$ROOT/_series/tai-nainai/sfx}
 mkdir -p "$OUT"
 for f in footstep_wood_000 footstep_concrete_000 footstep_concrete_001 creak1 creak2 creak3 door_close_01 metalLatch \
          paper_02 paper_03 impactWood_light_000 impactWood_light_001 impactWood_medium_000 impactPlate_light_000 \
-         dishes_01 dishes_02 cloth1 cloth2 handleCoins; do
+         dishes_01 dishes_02 cloth1 cloth2 handleCoins bookFlip1 bookPlace1 impactWood_heavy_000 impactPlate_light_000; do
   [ -f "$SRC/$f.wav" ] || { echo "sfx.sh: $SRC/$f.wav missing; rebuild the 種田 library first" >&2; exit 1; }
   cp "$SRC/$f.wav" "$OUT/"
 done
@@ -28,4 +28,8 @@ ffmpeg -v error -y -f lavfi -i "aevalsrc='(0.28*sin(2*PI*110*t)+0.14*sin(2*PI*16
 # 倒燈油：很細的液體流聲，一秒半
 ffmpeg -v error -y -f lavfi -i "anoisesrc=color=pink:amplitude=0.35:d=1.6:seed=11" \
   -af "bandpass=f=2600:width_type=o:w=1.4,tremolo=f=13:d=0.6,afade=t=in:d=0.15,afade=t=out:st=1.1:d=0.5" -ac 2 "$OUT/oil-pour.wav"
+# 手機撥號：三個按鍵音，再一聲掛斷（第 2 集 c04）
+ffmpeg -v error -y -f lavfi -i "aevalsrc='0.25*(sin(2*PI*697*t)+sin(2*PI*1209*t))*(between(t,0,0.09)+between(t,0.18,0.27)+between(t,0.36,0.45))+0.2*sin(2*PI*480*t)*between(t,0.9,1.15)':s=48000:d=1.3" -ac 2 "$OUT/phone-dial.wav"
+# 遠處的警笛：兩個音高來回，經過低通與殘響，像在巷口（第 2 集 c05、c08）
+ffmpeg -v error -y -f lavfi -i "aevalsrc='0.3*sin(2*PI*(700+250*sin(2*PI*0.5*t))*t)':s=48000:d=6" -af "lowpass=f=1800,aecho=0.8:0.6:120|240:0.4|0.25,afade=t=in:d=1.5,afade=t=out:st=4.5:d=1.5" -ac 2 "$OUT/siren-far.wav"
 ls "$OUT" | wc -l | xargs echo "sfx.sh: files in $OUT:"

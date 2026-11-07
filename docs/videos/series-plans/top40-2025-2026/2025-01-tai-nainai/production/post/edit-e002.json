@@ -1,0 +1,200 @@
+{
+ "_note": "《恁祖媽今年18》第 2 集剪接表（assemble-v4.mjs），照第 1 集：不放片名卡與人名條、不裁切放大、慢放 ≤ 1.1 倍、CC 軟字幕；min 無聲鏡照分鏡秒數、有台詞的鏡至少分鏡秒數減 0.5。配樂：第一場 comedy、c16 音樂停只留笑聲，第二場 suspense。",
+ "tempo": 1.07,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "punch": false,
+ "frame_round": true,
+ "grades": {},
+ "default_grade": "indoor",
+ "finish": "vignette=angle=PI/5,noise=alls=3:allf=t,format=yuv420p",
+ "names": {},
+ "min": {
+  "c01": 4.0,
+  "c01b": 1.5,
+  "c02": 4.5,
+  "c03": 7.0,
+  "c04": 5.0,
+  "c05": 5.5,
+  "c06": 5.0,
+  "c07": 5.0,
+  "c08": 5.0,
+  "c09": 4.5,
+  "c10": 5.0,
+  "c11": 4.0,
+  "c12": 4.0,
+  "c13": 5.0,
+  "c14": 4.0,
+  "c15": 5.5,
+  "c16": 5.0,
+  "c17": 6.5,
+  "c18": 4.5,
+  "c19": 4.5,
+  "c20": 4.5,
+  "c21": 5.0,
+  "c22": 4.5,
+  "c23": 4.5
+ },
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/tai-nainai/sfx"
+ ],
+ "music": [
+  {
+   "cue": "comedy",
+   "from": "c01",
+   "to": "c15",
+   "offset": 0,
+   "gain": -17,
+   "fade_in": 0.8,
+   "fade_out": 0.3
+  },
+  {
+   "cue": "comedy",
+   "from": "c17",
+   "to": "c19",
+   "offset": 50,
+   "gain": -18,
+   "fade_in": 0.6,
+   "fade_out": 1.0
+  },
+  {
+   "cue": "suspense",
+   "from": "c20",
+   "to": "c23",
+   "offset": 0,
+   "gain": -15,
+   "fade_in": 1.0,
+   "fade_out": 0.3
+  }
+ ],
+ "sfx": [
+  {
+   "file": "dishes_02",
+   "at": "c01",
+   "off": 0.1,
+   "gain": -12
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "c03",
+   "off": 0.2,
+   "gain": -18
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "c03",
+   "off": 0.6,
+   "gain": -18
+  },
+  {
+   "file": "phone-dial",
+   "at": "c04",
+   "off": 0.6,
+   "gain": -16
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c05",
+   "off": 0.5,
+   "gain": -18
+  },
+  {
+   "file": "siren-far",
+   "at": "c05",
+   "off": 1.5,
+   "gain": -26
+  },
+  {
+   "file": "siren-far",
+   "at": "c07",
+   "off": 0.0,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c08",
+   "off": 0.4,
+   "gain": -18
+  },
+  {
+   "file": "impactPlate_light_000",
+   "at": "c12",
+   "off": 0.6,
+   "gain": -12
+  },
+  {
+   "file": "dishes_01",
+   "at": "c12",
+   "off": 0.7,
+   "gain": -16
+  },
+  {
+   "file": "bookFlip1",
+   "at": "c13",
+   "off": 2.0,
+   "gain": -16
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "c15",
+   "off": 0.8,
+   "gain": -14
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "c15",
+   "off": 1.6,
+   "gain": -15
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c16",
+   "off": 0.3,
+   "gain": -18
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "c16",
+   "off": 1.2,
+   "gain": -20
+  },
+  {
+   "file": "handleCoins",
+   "at": "c18",
+   "off": 0.5,
+   "gain": -30
+  },
+  {
+   "file": "bookPlace1",
+   "at": "c19",
+   "off": 0.5,
+   "gain": -16
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "c20",
+   "off": 0.3,
+   "gain": -20
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "c20",
+   "off": 1.0,
+   "gain": -20
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c21",
+   "off": 0.4,
+   "gain": -20
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "c22",
+   "off": 0.3,
+   "gain": -14
+  }
+ ]
+}
