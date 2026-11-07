@@ -105,17 +105,21 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
     ep_title = heading.group(2).strip() if heading else f"第{ep}集"
     overrides = en.get("speaker_overrides", {})
     scenes, used, n = [], [], 0
+    own_ids: list[str] = []
     total = 0.0
     for sc in parsed["scenes"]:
         for s in sc["shots"]:
             e = en["shots"][s["id"]]
             lines = []
-            for d in s["dialogue"]:
+            vprompt, own = voiced(e["prompt"], s["dialogue"])
+            for k, d in enumerate(s["dialogue"]):
                 who = overrides.get(s["id"]) if not d["speaker"] else d["speaker"]
                 if not who:
                     raise SystemExit(f"{s['id']}: 說話人 {d['speaker_label']!r} 對不到 cast.json，在 shots-en.json 的 speaker_overrides 指定")
                 n += 1
                 line = {"id": f"{LINE_PREFIX}{ep:03d}{n:03d}", "speaker": who, "text": d["text"]}
+                if own[k]:
+                    own_ids.append(line["id"])  # 用草稿的模型原聲（post/voice.py）；沒有的照舊錄音
                 emo = emotion(d["notes"])
                 if emo:
                     line["emotion"] = emo
@@ -123,7 +127,7 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
                 used.append(who)
             shot_chars = list(e.get("characters", []))[:3]
             used += shot_chars
-            data = {"prompt": e["prompt"][:1000], "camera": e["camera"], "characters": shot_chars}
+            data = {"prompt": vprompt[:1000], "camera": e["camera"], "characters": shot_chars}
             if e.get("motion"):
                 data["motion"] = e["motion"]
             looks = {k: v for k, v in (e.get("looks") or {}).items() if k in shot_chars}
@@ -189,6 +193,7 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
         "站主 2026-11-06 試鏡後定走真人風格（3D 不行），片段先做到 1312×736。"
         "這部沒有系統、沒有面板；長明燈是唯一的特效，老化只用化妝與光。分鏡與台詞的權威版本是同一個資料夾的 `script.md`。\n"
     )
+    video["_own_voice"] = own_ids  # main 拿出來寫成 voice.json，不進 video.json
     return video, brief
 
 
@@ -210,6 +215,27 @@ def find_ref(refs: Path, names: list[str], size: tuple[int, int], placeholders: 
         return refs / names[-1]
     missing.append(names[-1])
     return refs / names[-1]
+
+
+SPEAK = re.compile(r"speaks a (?:short |very short |second )?Mandarin line")
+
+
+def voiced(prompt: str, dialogue: list[dict]) -> tuple[str, list[bool]]:
+    """模型原聲（站主 2026-11-07）：畫面上開口的台詞照順序填進「speaks a … Mandarin line」，模型才講劇本的字。
+
+    心裡話、畫外、電話不填（嘴閉著或不在畫面裡，照舊用錄音）；提示詞裡沒有說話句的台詞也算錄音。回傳改好的提示詞與每句是不是原聲。
+    """
+    spoken = [i for i, d in enumerate(dialogue) if not d.get("inner") and not d.get("offscreen")]
+    own = [False] * len(dialogue)
+    out, last, k = [], 0, 0
+    for m in SPEAK.finditer(prompt):
+        if k >= len(spoken):
+            break
+        i = spoken[k]
+        out.append(prompt[last:m.start()] + f"speaks a short Mandarin line, 「{dialogue[i]['text']}」")
+        last, own[i], k = m.end(), True, k + 1
+    out.append(prompt[last:])
+    return "".join(out), own
 
 
 def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
@@ -246,7 +272,7 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
             tags = ", ".join(f"<Picture {i}>" for i in range(1, len(images))) + (f" and <Picture {len(images)}>" if len(images) > 1 else "<Picture 1>")
             body = (f"For the target video, {tags} are referenced throughout.\n\n"
                     f"integrated_multimodal_description: [Shot 1] Live-action. " + "; ".join(anchors) + ". "
-                    f"Initial composition: {e['prompt']}{lamp_text} {FACES_RULE if e.get('characters') else ''} "
+                    f"Initial composition: {voiced(e['prompt'], s['dialogue'])[0]}{lamp_text} {FACES_RULE if e.get('characters') else ''} "
                     f"The camera: {e['camera']}. {TAIL}\noverall_soundscape: N/A\nnon_diegetic_music: N/A\n")
             pf = work / "prompts" / f"{s['id']}.txt"
             pf.write_text(body, encoding="utf-8")
@@ -294,7 +320,11 @@ def main(argv: list[str]) -> int:
         return 0
     video, brief = build_video(parsed, en, cast)
     d = episode_dir(a.episode)
+    own_ids = video.pop("_own_voice")
     (d / "video.json").write_text(json.dumps(video, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # 模型原聲（站主 2026-11-07）：這些台詞用草稿自己的語音，其餘（心裡話、畫外、背對鏡頭）照舊錄音
+    (d / "voice.json").write_text(json.dumps({"own_voice": own_ids, "note": "用草稿模型原聲的台詞 id；其餘錄音。post/voice.py 與剪接表的 own_voice 讀這份。"},
+                                             ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     (d / "brief.md").write_text(brief, encoding="utf-8")
     print(f"{d / 'video.json'}: {len(video['scenes'])} 鏡、{sum(len(s['lines']) for s in video['scenes'])} 句、{len(video['characters'])} 個角色")
     return 0
