@@ -1816,6 +1816,55 @@ test("a cute explainer's stills are judged by the nine fault checks the illustra
   }
 });
 
+test("a cute-mystery still is judged with its four zoomed quadrants beside it; without them, on the whole picture with a warning", async () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  rewrite(box, (doc) => {
+    doc.look = { preset: "cute-mystery" };
+    doc.subtitles = { burn_in: false };
+  });
+  const site = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 9, passed: true }) });
+  const asked = [];
+  const zoomImage = async (file, sha256) => {
+    asked.push(sha256);
+    return ["top-left", "top-right", "bottom-left", "bottom-right"].map((quadrant) => {
+      const out = `keyframes/zoom/${sha256.slice(0, 16)}-${quadrant}.png`;
+      mkdirSync(path.join(box.workdir, "keyframes", "zoom"), { recursive: true });
+      writeFileSync(path.join(box.workdir, out), PNG(`${file} ${quadrant}`));
+      return { quadrant, file: out, sha256: SHA(PNG(`${file} ${quadrant}`)) };
+    });
+  };
+  const run = context(box, site.fetchImpl, { zoomImage });
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.ok(site.state.judges.length > 0);
+  for (const request of site.state.judges) {
+    assert.deepEqual(request.files.map((each) => each.label), ["keyframe", "keyframe zoom: top-left", "keyframe zoom: top-right", "keyframe zoom: bottom-left", "keyframe zoom: bottom-right"]);
+    assert.ok(request.files.slice(1).every((each) => site.state.uploads.some((upload) => upload.sha256 === each.sha256)), "the crops are in the store");
+  }
+  assert.deepEqual(asked, site.state.judges.map((request) => request.files[0].sha256), "cropped from the picture judged");
+
+  const failing = sandbox("fixture-explainer", "explainer");
+  rewrite(failing, (doc) => {
+    doc.look = { preset: "cute-mystery" };
+    doc.subtitles = { burn_in: false };
+  });
+  const failingSite = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 9, passed: true }) });
+  const fallback = context(failing, failingSite.fetchImpl, { zoomImage: async () => null });
+  assert.equal(await main(["keyframes", "--slug", failing.slug], fallback.ctx), EXIT.ok, fallback.out.stderr);
+  for (const request of failingSite.state.judges) assert.deepEqual(request.files.map((each) => each.label), ["keyframe"]);
+  assert.match(fallback.out.stdout, /warning: zoomed crops could not be made; judged on the whole picture\n/);
+
+  // The cute-cartoon look asks neither question and gets no crops.
+  const cartoon = sandbox("fixture-explainer", "explainer");
+  rewrite(cartoon, (doc) => {
+    doc.look = { preset: "cute-cartoon" };
+    doc.subtitles = { burn_in: false };
+  });
+  const cartoonSite = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 9, passed: true }) });
+  const plain = context(cartoon, cartoonSite.fetchImpl, { zoomImage: async () => assert.fail("no crops for a look that asks neither question") });
+  assert.equal(await main(["keyframes", "--slug", cartoon.slug], plain.ctx), EXIT.ok, plain.out.stderr);
+  for (const request of cartoonSite.state.judges) assert.deepEqual(request.files.map((each) => each.label), ["keyframe"]);
+});
+
 test("--accept-best is still refused for a cute explainer: its failing picture is the prompt's to fix, then the owner's retry", async () => {
   const box = sandbox("fixture-explainer", "explainer");
   rewrite(box, (doc) => {
