@@ -73,3 +73,6 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
   - 夜景：場景句加「屋門在灶棚右邊六步」；s38 黑影寫成在門縫正中、看得清楚；s39 改用屋內場景（`house_door_night`，對到 `set-xujia-wu-t1`），面向鏡頭看著畫外的黑影，畫面裡沒有灶與鍋。
   - `colab/runs/e904/fix1` 重抽 s19、s25、s38、s39（種子 9040201／202），排在第 5 集重抽之後同一個 pod；挑好後精修、重剪、重送後台。
   - 教訓落地：`storyboard-shot-spec.md`、`storyboard-brief-for-planners.md` 加三行（道具尺寸、固定距離、反應鏡的地點）。
+- 2026-11-07 獨立審片另挑出約 20 項（s17 開匣沒開、s09 阿令沒走出門、s32 豬沒卸下、s37 二牛沒走、s40 黑影太小、s05 沒站起來、s11 小禾不在畫面、多鏡該不笑在笑）。站主：嚴重與中等都修。
+  `r2.py` 重寫，`colab/runs/e904/fix1` 改成 25 鏡 50 支（含站主指出的 s19、s25、s38、s39；加 CROCK、POLE、FIGURE、BELT 常數與近景短場景句），preflight 0／0。
+  預估再花約 US$8，第 4 集累計約 US$23（上限 28）。s37 改成中景（近景拍不到二牛出院門）。
