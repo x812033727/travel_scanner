@@ -79,5 +79,5 @@ for sid in shots:
     job.pop("prompt_sha256", None)
     (out / job["prompt_file"]).write_text(text, encoding="utf-8")
     new_jobs.append(job)
-(out / "ref-pilot-part1.json").write_text(json.dumps({"jobs": new_jobs}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+(out / "ref-epilot-part1.json").write_text(json.dumps({"jobs": new_jobs}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print(f"{len(new_jobs)} live-action jobs -> {out}")
