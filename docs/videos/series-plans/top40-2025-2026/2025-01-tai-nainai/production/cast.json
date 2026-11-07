@@ -1,0 +1,1053 @@
+{
+ "schema_version": 1,
+ "series": "2025-01-tai-nainai",
+ "purpose": "《祖奶奶今年十八》第一季第 1–60 集共用的 look、角色外貌（英文，給圖與影片模型）、聲音、路人、場景、道具與長明燈的提示詞。每集 video.json 從這裡照抄用到的角色（id、name、appearance、voice；換裝用 shot_looks），不要各自改寫，避免換臉。寫法、時間、帳與接點照同目錄 s1-bible-e001-e060.md。",
+ "owner_notes": [
+  "站主 2026-10-28（plan.json）：每集 90–180 秒、篇章最後一集至少 120 秒；每集 3–5 個鉤子。",
+  "plan.json production.voice：國語；沈月棠是「少女嗓、老人家語氣」，第 1 集前站主試聽核定。2026-11-06 主對話轉達已暫定：十八歲 Kore、九十六歲另開角色 Gacrux。",
+  "setting.json advertiser_safety 與 glamour：不露胸背、不濕身、鏡頭不停在身體部位；未成年裙長過膝；美在臉、眼神、身段與動作；她的反差是十八歲的臉配老人家的手勢。",
+  "票 2026-10-28 Notes（2026-11-05 定案）：今年二〇二六（民國一一五年）；大火民國三十七年（一九四八）；月棠 96、作甫 1922–1948、遠山 98、玉琴 78（作甫的女兒）、福伯 88。",
+  "規格 2026-11-05（storyboard-shot-spec.md）：台詞有頭有尾、一句 10–24 字；說話的人在畫面上嘴要動，畫外的台詞配閉嘴的反應鏡。",
+  "2026-11-06 主對話轉達、已暫定：畫面 16:9；CC 軟字幕不燒錄；不改 season-01.json，改字照 bible〈與細綱不同處〉。",
+  "沒有系統、沒有面板：長明燈的光是全劇唯一的「特效」，老化只用化妝與光（setting.json visual_bible）。"
+ ],
+ "look": {
+  "preset": "custom",
+  "style": "photorealistic live-action modern Taiwanese urban family drama, film still, natural cinematic light, realistic skin and fabric texture, soft flattering beauty light on faces, shallow depth of field; the old Shen house in warm amber wood and candlelight, the Shengtong tower in cold blue glass, the small pharmacy in warm white fluorescent light",
+  "negative": "cartoon, anime, illustration, plastic CG look, text, letters, Chinese characters, readable signs, subtitles, watermark, logo, brand names, license plates, extra fingers, deformed hands, blood, gore, nudity, cleavage, low neckline, bare back, see-through clothing, short skirt, wet clothes, fantasy glow effects, sparkles",
+  "motion": "Natural, realistic human motion; one clear action per clip; faces, clothes and props stay the same; her elderly manners stay slow and steady; no morphing, no cuts",
+  "candidates": 2
+ },
+ "lamp": {
+  "rule": "長明燈是全劇唯一的「特效」：亮時溫暖的橘金色，暗時帶灰的黃。每鏡照 bible〈燈帳〉的分數，把對應的句子寫進 prompt。第一季不拍油面高低、不翻燈座底面、不拍燈座頂面特寫。",
+  "levels": {
+   "1": "a bean-sized dim greyish-yellow flame inside the glass chimney, its light barely reaching beyond the chimney",
+   "3": "a knuckle-high steady warm orange-gold flame, its light reaching across the altar table top",
+   "4": "a warm orange-gold flame about one and a half knuckles high, its light reaching the lowest row of drawers of the medicine cabinet",
+   "5": "a two-knuckle-high warm orange-gold flame lighting the lower half of the medicine cabinet and glinting on the bronze mirror",
+   "6": "a tall warm orange-gold flame whose light spills through the lattice doors onto the stone steps outside",
+   "7": "a tall bright warm orange-gold flame filling the whole ancestral hall with warm light",
+   "8": "a very bright warm orange-gold flame whose light reaches across the courtyard to the dining room's back windows",
+   "9": "a sudden burst of bright warm orange-gold lamplight flooding the whole hall out to the doorway and lighting the old people sitting there"
+  },
+  "dim": "the flame flickers once, shrinks one step and turns greyish-yellow",
+  "brighten": "the flame grows steadily one step taller and warmer"
+ },
+ "characters": [
+  {
+   "id": "yuetang-18",
+   "setting_id": "shen-yuetang",
+   "name": "沈月棠",
+   "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze that seems to have seen a hundred years, light natural makeup, black hair in one thick old-fashioned three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white cotton shirt with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, a thick old silver ring on her left ring finger with its small square seal face turned toward the palm, back very straight, hands folded in front of her waist like an elderly lady",
+   "shot_looks": [
+    {
+     "id": "shouyi",
+     "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a loose plain off-white cotton burial robe with a high stand-up collar and fabric frog buttons fastened to the throat, long sleeves to the wrists and loose trousers to the ankles, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
+    },
+    {
+     "id": "wrinkle",
+     "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, one fine wrinkle line across the back of her right hand, back very straight, hands folded in front of her waist"
+    },
+    {
+     "id": "yaoju",
+     "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, an oversized white pharmacist's coat worn open with the sleeves rolled to the wrists over a plain moon-white high-collared cotton shirt buttoned to the throat, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, one fine wrinkle line across the back of her right hand, back very straight"
+    },
+    {
+     "id": "faint-line",
+     "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, an extremely faint thin line on the back of her right hand, barely visible, back very straight, hands folded in front of her waist"
+    },
+    {
+     "id": "white-strand",
+     "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder with one thin strand of white hair from her right temple braided into it, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, one fine wrinkle line across the back of her right hand, back very straight, hands folded in front of her waist"
+    },
+    {
+     "id": "huiyi-1948",
+     "appearance": "the same young woman of eighteen in 1948: an oval face, gently curved brows, calm almond eyes, black hair in two neat braids tied with plain cotton string, a pale blue cotton side-fastening blouse with a high collar and fabric frog buttons, a dark cotton skirt to the ankles, black cloth shoes, the thick silver ring on her left ring finger, standing straight with her hands folded, 1940s portrait photograph style"
+    }
+   ],
+   "voice": {
+    "provider": "gemini",
+    "name": "Kore",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的少女嗓，說話卻是老人家的規矩：慢、短、穩，客氣而有分寸，句尾往下收；生氣時聲音更低、更慢，不尖叫；童謠用輕輕唸唱的方式"
+   },
+   "portrait": "yuetang-18-portrait-t1",
+   "s1_episodes": "1–60",
+   "notes": "全劇主臉。look 參考圖 yuetang-18-<look>-t1；哪一集用哪個 look 照 bible〈燈帳與她的樣子〉。huiyi-1948 只用在照片道具。"
+  },
+  {
+   "id": "yuetang-96",
+   "setting_id": "shen-yuetang",
+   "name": "沈月棠（九十六歲）",
+   "appearance": "East Asian very old woman of ninety-six, small and very thin, the same gently curved brows and calm almond eyes as her eighteen-year-old self, a deeply wrinkled dignified face, thin white hair in one thin braid over her right shoulder, a loose plain off-white cotton burial robe with a high stand-up collar and frog buttons, long sleeves and loose trousers, white cloth shoes, an old silver ring loose on her left ring finger, back still straight, hands folded at her waist, calm and not sickly",
+   "voice": {
+    "provider": "gemini",
+    "name": "Gacrux",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；九十六歲的老太太，聲音蒼老、輕、慢，一字一字很穩，帶著長輩的分寸；不咳、不喘、不拖長"
+   },
+   "portrait": "yuetang-96-portrait-t1",
+   "s1_episodes": "1（開場）",
+   "notes": "同一個人的另一張臉與另一個聲音（工具的 shot_looks 只能共用一張臉、一個聲音，所以另開角色）。不拍病容特寫。"
+  },
+  {
+   "id": "yuqin",
+   "setting_id": "shen-yuqin",
+   "name": "沈玉琴",
+   "appearance": "East Asian elderly woman of seventy-eight, a gentle kind face with soft brows and smile lines, short silver-white hair, a navy wool cardigan buttoned over a light grey high-neck blouse, dark grey trousers, black flat shoes, seated in a plain black-framed manual wheelchair whose wheels she likes to push herself, a slightly faraway look that becomes sharp and clear when she looks at someone she loves",
+   "shot_looks": [
+    {
+     "id": "bed",
+     "appearance": "East Asian elderly woman of seventy-eight, a gentle kind face with soft brows and smile lines, short silver-white hair, a pale blue striped care-home pajama top under a navy wool cardigan, a grey blanket over her knees, seated in a plain black-framed manual wheelchair or sitting up in a care-home bed, a slightly faraway look"
+    }
+   ],
+   "voice": {
+    "provider": "gemini",
+    "name": "Vindemiatrix",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；七十八歲的老太太，聲音輕、慢、溫柔，常說到一半停下來想；叫「媽」的時候忽然很清楚、很篤定"
+   },
+   "portrait": "yuqin-portrait-t1",
+   "s1_episodes": "4、8、10–11、19–23、26、29–30、49、52–56、58、60",
+   "notes": "舊手帕是道具：第 29–52 集在月棠左袖，第 53 集還給她。bed＝安養院（第 49、52–53 集）。"
+  },
+  {
+   "id": "jianbang",
+   "setting_id": "shen-jianbang",
+   "name": "沈建邦",
+   "appearance": "East Asian man of fifty-eight, a kind, worried face with a furrowed brow, short black hair greying at the temples, thin black-framed glasses, a slightly worn charcoal-grey suit, a white shirt buttoned all the way to the top with no tie, black leather shoes, slightly rounded shoulders",
+   "shot_looks": [
+    {
+     "id": "home",
+     "appearance": "East Asian man of fifty-eight, a kind, worried face with a furrowed brow, short black hair greying at the temples, thin black-framed glasses, a grey wool cardigan over a white shirt buttoned all the way to the top, dark trousers, dark house slippers"
+    }
+   ],
+   "voice": {
+    "provider": "gemini",
+    "name": "Schedar",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十八歲的家主，男聲，溫和、常嘆氣，說話慢、帶點猶豫；喊「奶奶」時聲音發抖但篤定"
+   },
+   "portrait": "jianbang-portrait-t1",
+   "s1_episodes": "2、4–5、8、10–11、20、22–23、26–30、41–42、44–45、47、49–53、55–58、60",
+   "notes": "home＝在家的晚上。跟江慕白同框時一前一後，不並排近景。"
+  },
+  {
+   "id": "zhiyuan",
+   "setting_id": "shen-zhiyuan",
+   "name": "沈知遠",
+   "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a white pharmacist's coat worn open over a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, a calm focused look",
+   "shot_looks": [
+    {
+     "id": "shirt",
+     "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, no coat"
+    },
+    {
+     "id": "coat",
+     "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark charcoal wool overcoat over a dark navy shirt, dark grey trousers, black sneakers"
+    }
+   ],
+   "voice": {
+    "provider": "gemini",
+    "name": "Alnilam",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的藥師，男聲，低、穩、話不多但句句到位；對她說話時放軟"
+   },
+   "portrait": "zhiyuan-portrait-t1",
+   "s1_episodes": "6、12、15、18、20、25、27、30–41、43、46–48、50、52–54、56、58–60",
+   "notes": "男性顏值擔當：配藥、抓藥、捲袖。笑起來有一顆虎牙（寫了笑才露）。"
+  },
+  {
+   "id": "xiaoman",
+   "setting_id": "shen-xiaoman",
+   "name": "沈小滿",
+   "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, a school uniform: a navy blazer one size too big, a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, white socks and black school shoes, no badge or lettering on the uniform",
+   "shot_looks": [
+    {
+     "id": "home",
+     "appearance": "East Asian girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, an oversized light grey hoodie, loose black track pants, white socks"
+    },
+    {
+     "id": "damp",
+     "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, her bangs and the shoulders of her navy blazer damp and water marks on her cheeks, the blazer one size too big and buttoned over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, dry and fully covering, white socks and black school shoes, no badge or lettering"
+    }
+   ],
+   "voice": {
+    "provider": "gemini",
+    "name": "Leda",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；十七歲的高中女生，聲音快、亮；受委屈時先笑一下再哭，哭的時候聲音壓低"
+   },
+   "portrait": "xiaoman-portrait-t1",
+   "s1_episodes": "1–3、6–21、26、30、36、53–54、56–58、60",
+   "notes": "深藍書包與報信鈴是道具，不寫進外貌。damp＝第 3、6 集。"
+  },
+  {
+   "id": "fubo",
+   "setting_id": "fu-bo",
+   "name": "福伯",
+   "appearance": "East Asian old man of eighty-eight, thin and very upright, very short white hair, a lean lined face with respectful steady eyes, a neatly ironed grey Chinese-style jacket with fabric frog buttons, black trousers, black cloth shoes, the silver chain of an old pocket watch running from a button to his jacket pocket",
+   "voice": {
+    "provider": "gemini",
+    "name": "Enceladus",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八十八歲的老管家，男聲，蒼老、恭敬、慢，一句話常帶一個「是」；著急時聲音發抖但不拔高"
+   },
+   "portrait": "fubo-portrait-t1",
+   "s1_episodes": "1–6、8–10、12–13、15、17、19–27、29–30、36、40–46、48–50、53、55–58、60"
+  },
+  {
+   "id": "jianye",
+   "setting_id": "shen-jianye",
+   "name": "沈建業",
+   "appearance": "East Asian man of fifty-five, tall and heavyset, clean-shaven, oiled black hair slicked back, a scar-like deep wrinkle between his brows, a too-wide salesman's smile, a tailored brown double-breasted suit with a cream shirt and a dark brown tie, a thin gold watch on his left wrist, polished brown shoes",
+   "shot_looks": [
+    {
+     "id": "home",
+     "appearance": "East Asian man of fifty-five, tall and heavyset, clean-shaven, oiled black hair slicked back, a scar-like deep wrinkle between his brows, a dark brown cashmere sweater over a cream collared shirt, grey slacks, a thin gold watch on his left wrist"
+    }
+   ],
+   "voice": {
+    "provider": "gemini",
+    "name": "Algieba",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的副董，男聲，圓滑、熱絡、愛拍人肩膀，笑著說狠話；被拆穿時聲音變急變高"
+   },
+   "portrait": "jianye-portrait-t1",
+   "s1_episodes": "1–2、5、8、10–11、18–26、28、30、32、35、38–39、41、44–45、48–57、59–60",
+   "notes": "金錶在左腕（錢老闆的在右腕）。"
+  },
+  {
+   "id": "meifeng",
+   "setting_id": "lin-meifeng",
+   "name": "林美鳳",
+   "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace and small gold earrings, bright red nails, a fitted wine-red long-sleeved knit dress with a high round neckline and a hem below the knee, black low heels",
+   "shot_looks": [
+    {
+     "id": "home",
+     "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace, bright red nails, a plum satin house robe with a high collar, long sleeves and an ankle-length hem, tied closed at the waist and fully covering, satin slippers"
+    }
+   ],
+   "voice": {
+    "provider": "gemini",
+    "name": "Pulcherrima",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的二房太太，女聲，尖、快、一句話三個刺，假笑時拖長尾音；被頂撞時聲音拔高"
+   },
+   "portrait": "meifeng-portrait-t1",
+   "s1_episodes": "1–2、4–11、14、16、18–24、26–30、39–42、44–46、48–54、56–57、59"
+  },
+  {
+   "id": "zhixing",
+   "setting_id": "shen-zhixing",
+   "name": "沈知行",
+   "appearance": "East Asian young man of twenty-eight, handsome in a cool, reserved way: narrow long eyes, thin lips, impeccably side-parted black hair, a slim black suit, a white shirt and a thin black tie, black leather shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Iapetus",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的特助，男聲，冷、精準、話短，不帶情緒；對小滿說話時稍微放慢"
+   },
+   "portrait": "zhixing-portrait-t1",
+   "s1_episodes": "9–10、29、46、48–50、54、57",
+   "notes": "手指轉筆的習慣寫在鏡頭裡（一支銀色鋼筆）。第一季小滿不叫他表哥。"
+  },
+  {
+   "id": "zhouhuaian",
+   "setting_id": "zhou-huaian",
+   "name": "周懷安",
+   "appearance": "East Asian man of forty-five, cold and handsome: a high forehead, deep-set eyes, thin lips and very precisely trimmed sideburns, short neat black hair, a charcoal three-piece suit with a white shirt and a dark grey tie, black leather shoes, an old pale burn scar on the back of his left hand",
+   "voice": {
+    "provider": "gemini",
+    "name": "Charon",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的集團董事長，男聲，低、慢，每句話像在報價，不笑也不提高聲音"
+   },
+   "portrait": "zhouhuaian-portrait-t1",
+   "s1_episodes": "20、35（只拍右手與聲音）、42（電話）、44–45、47、49–51、55（電話）、57（電話）、59（只在話裡）、60",
+   "notes": "第 44 集才露臉。左手背燙疤第一季不特寫、不提（第三季第 126 集）。"
+  },
+  {
+   "id": "guchenglin",
+   "setting_id": "gu-chenglin",
+   "name": "顧承霖",
+   "appearance": "East Asian man of thirty-eight, an androgynous cold beauty: long brows, peach-blossom eyes and dark lips, slightly long black hair tied low at the nape, a black long coat with a high stand-up collar, a heavy old silver seal ring on his right index finger",
+   "voice": {
+    "provider": "gemini",
+    "name": "Umbriel",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；三十八歲的男人，男聲，溫柔得讓人發冷，輕、慢、帶一點笑意；第一季只在電話裡"
+   },
+   "portrait": "guchenglin-portrait-t1",
+   "s1_episodes": "60（只有電話裡的聲音）",
+   "notes": "第一季不畫。CC 與畫面都不出名字。"
+  },
+  {
+   "id": "guyuanshan",
+   "setting_id": "gu-yuanshan",
+   "name": "顧遠山",
+   "appearance": "East Asian very old man of ninety-eight, gaunt and bedridden, sunken cheeks and thin white hair, startlingly bright sharp eyes, a dark blue padded silk jacket, lying propped up in a dark wooden bed in a dim room",
+   "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；九十八歲的老人，男聲，沙啞、一字一頓；第一季不出場"
+   },
+   "portrait": "guyuanshan-portrait-t1",
+   "s1_episodes": "第一季不出場",
+   "notes": "第一季不畫。"
+  },
+  {
+   "id": "yuanshan-20",
+   "setting_id": "gu-yuanshan",
+   "name": "顧遠山（二十歲，回憶）",
+   "appearance": "East Asian young man of twenty in 1948, thin with sharp narrow eyes and a tight mouth, short black hair combed back in the 1940s style, a dark grey cotton changshan long gown, black cloth shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的青年，男聲，壓低、急、帶著不服；第一季不出場"
+   },
+   "portrait": "yuanshan-20-portrait-t1",
+   "s1_episodes": "第一季不出場",
+   "notes": "回憶 look，跟九十八歲的他同一人、同一個聲音；第一季不畫。"
+  },
+  {
+   "id": "jiangmubai",
+   "setting_id": "jiang-mubai",
+   "name": "江慕白",
+   "appearance": "East Asian man of forty, refined and composed, gold-rimmed glasses, neatly side-parted black hair, a polite smile that never reaches his eyes, a navy suit with a light blue shirt and a burgundy tie, black leather shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Rasalgethi",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的家族律師，男聲，咬文嚼字、慢條斯理，客氣裡帶著推託"
+   },
+   "portrait": "jiangmubai-portrait-t1",
+   "s1_episodes": "6、25、28、37、42–44、47、50、54",
+   "notes": "深棕皮革文件夾一律夾在左臂，寫在鏡頭裡。"
+  },
+  {
+   "id": "suxiao",
+   "setting_id": "su-xiao",
+   "name": "蘇曉",
+   "appearance": "East Asian young woman of twenty-seven, sweet and lively: round eyes and dimples when she smiles, a short neat bob tucked behind one ear, a white pharmacist's coat worn open over a buttoned red-and-navy checked cotton shirt, blue jeans, white sneakers, a black digital watch on her left wrist",
+   "shot_looks": [
+    {
+     "id": "casual",
+     "appearance": "East Asian young woman of twenty-seven, sweet and lively: round eyes and dimples when she smiles, a short neat bob tucked behind one ear, a camel short padded jacket over a buttoned red-and-navy checked cotton shirt, blue jeans, white sneakers, a black digital watch on her left wrist"
+    }
+   ],
+   "voice": {
+    "provider": "gemini",
+    "name": "Laomedeia",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十七歲的藥師，女聲，快、暖、愛笑，解釋事情很有耐心"
+   },
+   "portrait": "suxiao-portrait-t1",
+   "s1_episodes": "31–40、43、54、58",
+   "notes": "casual＝出門、雨天（第 38 集）。"
+  },
+  {
+   "id": "laochen",
+   "setting_id": "lao-chen",
+   "name": "老陳",
+   "appearance": "East Asian man of seventy, sturdy and broad, deeply tanned, a big hearty face with laugh lines, short grey hair, a dark blue canvas apron tied over a grey work shirt with rolled sleeves, dark trousers, rubber-soled shoes, rice bran dust on his hands",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sadachbia",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；七十歲的米行老闆，男聲，大聲、豪氣、笑聲大；生氣時嗓門更大"
+   },
+   "portrait": "laochen-portrait-t1",
+   "s1_episodes": "25–26、33–34、36、40、51–53、56"
+  },
+  {
+   "id": "hexiaoyang",
+   "setting_id": "xiao-he",
+   "name": "何曉陽",
+   "appearance": "East Asian high-school girl of seventeen, pretty and polished with a delicate face, long straight light-brown dyed hair worn loose, a slim-tailored navy school blazer over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, white socks and black school shoes, no badge or lettering on the uniform",
+   "voice": {
+    "provider": "gemini",
+    "name": "Zephyr",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；十七歲的高中女生，女聲，甜、輕，句尾帶刺"
+   },
+   "portrait": "hexiaoyang-portrait-t1",
+   "s1_episodes": "7、11、13–15、19",
+   "notes": "setting 的「校服改短」不用（未成年、廣告安全）。鑲鑽手機殼是道具。"
+  },
+  {
+   "id": "lindao",
+   "setting_id": "lin-dao",
+   "name": "林導",
+   "appearance": "East Asian man of thirty-five, thin and restless with quick hands, a black baseball cap with no logo, an olive utility jacket over a grey T-shirt, jeans and sneakers, a black camera with no logo on a strap around his neck",
+   "voice": {
+    "provider": "gemini",
+    "name": "Puck",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的直播主，男聲，快、誇張、愛下標題；對鏡頭講話時更亢奮"
+   },
+   "portrait": "lindao-portrait-t1",
+   "s1_episodes": "7、12、14、16–19、27、35、38、40、52–53",
+   "notes": "本名林啟明，第一季只叫「林導」。直播的手機與自拍桿寫在鏡頭裡，螢幕不入鏡。"
+  },
+  {
+   "id": "zuofu",
+   "setting_id": "shen-zuofu",
+   "name": "沈作甫",
+   "appearance": "East Asian young man of twenty-six in 1948, gentle and scholarly, round wire-framed glasses, short black hair side-parted in the 1940s style, a warm smile that resembles Shen Zhiyuan's, a dark blue-grey cotton changshan long scholar's gown, black cloth shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Achird",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的書生，男聲，溫和、慢、帶笑；只在回憶與燈下的聲音裡"
+   },
+   "portrait": "zuofu-portrait-t1",
+   "s1_episodes": "21（剪影）、46（聲音）、55（照片）",
+   "notes": "基本外貌就是民國三十七年的回憶 look。第 21 集只拍抱燈的剪影、不給臉。"
+  },
+  {
+   "id": "akai",
+   "setting_id": "s01-a-kai",
+   "name": "阿凱",
+   "appearance": "East Asian young man of thirty, clean-cut and upright: short hair, thick brows and a square jaw, a neatly pressed dark blue police uniform with no readable patches or lettering, a radio on his belt, an awkward but earnest expression",
+   "voice": {
+    "provider": "gemini",
+    "name": "Fenrir",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的派出所警員，男聲，認真、為難、常嘆氣，問話一句一句很清楚"
+   },
+   "portrait": "akai-portrait-t1",
+   "s1_episodes": "2、23–24、29、51–55、60"
+  },
+  {
+   "id": "qianlaoban",
+   "setting_id": "s01-qian-laoban",
+   "name": "錢老闆",
+   "appearance": "East Asian man of sixty, short and plump, oily slicked-back hair, a thin eight-shaped moustache, shrewd appraising eyes with crow's feet when he smiles, an olive-green satin Chinese-style jacket with frog buttons, a thick gold watch on his right wrist and a jade thumb ring on his right thumb",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sadaltager",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；六十歲的古董商，男聲，油滑、精明、愛壓價，被拆穿時乾笑"
+   },
+   "portrait": "qianlaoban-portrait-t1",
+   "s1_episodes": "9–10、24、39–41、59",
+   "notes": "guest_cast 寫灰色馬褂，改橄欖綠，跟福伯的灰唐裝分開。"
+  },
+  {
+   "id": "wuxiaozhang",
+   "setting_id": "s01-wu-xiaozhang",
+   "name": "吳校長",
+   "appearance": "East Asian woman of fifty-five, dignified, hair in a neat low bun, pearl stud earrings, thin gold-framed glasses she keeps pushing up, a beige skirt suit with a knee-length skirt over a cream blouse, a polite smile that avoids people's eyes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Erinome",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的高中校長，女聲，客氣、圓滑、官腔，緊張時說話變快"
+   },
+   "portrait": "wuxiaozhang-portrait-t1",
+   "s1_episodes": "14、16–19"
+  },
+  {
+   "id": "chenlaoshi",
+   "setting_id": "s01-chen-laoshi",
+   "name": "陳老師",
+   "appearance": "East Asian man of thirty-five, thin, black-framed glasses, a light blue shirt with the sleeves rolled halfway up, dark trousers, an evasive nervous look",
+   "voice": {
+    "provider": "gemini",
+    "name": "Fenrir",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的班導，男聲，怕事、急，拉高聲音喊人"
+   },
+   "portrait": "chenlaoshi-portrait-t1",
+   "s1_episodes": "11–13、16",
+   "notes": "點名簿是道具。聲音跟阿凱同一個，不同集。"
+  },
+  {
+   "id": "heqisheng",
+   "setting_id": "s01-he-qisheng",
+   "name": "何啟盛",
+   "appearance": "East Asian man of forty-eight, cold and polished: short hair combed flat, a high nose and thin lips, chin slightly raised when he looks at people, a dark navy suit with a white shirt, a navy tie and a gold tie clip, black leather shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Orus",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的集團高層，男聲，冷、硬、居高臨下，話短"
+   },
+   "portrait": "heqisheng-portrait-t1",
+   "s1_episodes": "14–16、18–20（第 18 集在車裡、第 20 集只有電話）",
+   "notes": "開黑轎車（深色車窗、車牌不入鏡）。"
+  },
+  {
+   "id": "zhengyishi",
+   "setting_id": "s01-zheng-yishi",
+   "name": "鄭醫師",
+   "appearance": "East Asian man of forty-five, slim and refined, rimless glasses, short neat hair, a white doctor's coat over a light grey shirt, polite but distant",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sadaltager",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的醫師，男聲，客氣、平板、疏離，一題一題問"
+   },
+   "portrait": "zhengyishi-portrait-t1",
+   "s1_episodes": "21、28",
+   "notes": "評估板是道具，字不入鏡。"
+  },
+  {
+   "id": "linzhuren",
+   "setting_id": "s01-lin-zhuren",
+   "name": "林主任",
+   "appearance": "East Asian woman of fifty, warm and capable, short curly hair, light makeup, a white head-nurse jacket over a pale blue top and dark trousers, a name badge on her chest with nothing readable",
+   "voice": {
+    "provider": "gemini",
+    "name": "Callirrhoe",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的安養院主任，女聲，溫和、慢、有分寸，照規矩說話"
+   },
+   "portrait": "linzhuren-portrait-t1",
+   "s1_episodes": "30、52、53（畫外聲）、60"
+  },
+  {
+   "id": "gaojingli",
+   "setting_id": "s01-gao-jingli",
+   "name": "高經理",
+   "appearance": "East Asian man of forty, sharp and smooth: neatly styled hair, narrow long eyes and a salesman's smile, a fitted light silver-grey two-piece suit with a white shirt and no tie, black leather shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Zubenelgenubi",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的通路經理，男聲，業務式的客氣，笑著施壓，說數字特別清楚"
+   },
+   "portrait": "gaojingli-portrait-t1",
+   "s1_episodes": "10、26、31–33、35–36、38–39、50",
+   "notes": "guest_cast 寫深灰西裝，改淺銀灰，跟周懷安的深灰三件式分開。手機常在右手，寫在鏡頭裡。"
+  },
+  {
+   "id": "denglao",
+   "setting_id": "s01-deng-lao",
+   "name": "鄧會長",
+   "appearance": "East Asian old man of eighty, tall, thin and very upright, white hair combed straight back, thick white brows, clear sharp eyes like an old accountant's, a dark brown Chinese-style jacket with a center opening and frog buttons, black trousers, black cloth shoes, a black ebony walking cane in his right hand",
+   "voice": {
+    "provider": "gemini",
+    "name": "Orus",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八十歲的藥行公會老會長，男聲，蒼老、清亮、慢，有老帳房的分量"
+   },
+   "portrait": "denglao-portrait-t1",
+   "s1_episodes": "34（電話）、35、38（電話）",
+   "notes": "聲音跟何啟盛同一個，不同集。"
+  },
+  {
+   "id": "chuntao",
+   "setting_id": "s01-a-po",
+   "name": "春桃阿婆",
+   "appearance": "East Asian old woman of seventy-five, a round kind face, short grey-white hair, eyes that crinkle into lines when she smiles, a floral cotton quilted jacket, dark trousers, cloth shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Achernar",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；七十五歲的老阿婆，女聲，軟、慢、親切，一激動就哽咽"
+   },
+   "portrait": "chuntao-portrait-t1",
+   "s1_episodes": "31–33、36",
+   "notes": "菜籃是道具。"
+  }
+ ],
+ "extras": [
+  {
+   "id": "waisong",
+   "name": "外送員",
+   "appearance": "a young delivery rider in a plain grey jacket and a plain helmet with no logo, carrying a plain insulated bag with no logo",
+   "voice": {
+    "provider": "gemini",
+    "name": "Zubenelgenubi",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十多歲的外送員，男聲，客氣、趕時間"
+   },
+   "episodes": "4",
+   "note": "沒有定妝照：中景、帽子壓低，不給正臉"
+  },
+  {
+   "id": "siji",
+   "name": "公車司機",
+   "appearance": "a bus driver in his fifties in a plain light blue work shirt with no lettering, seen from behind",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sadaltager",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十多歲的公車司機，男聲，急、大嗓門"
+   },
+   "episodes": "7",
+   "note": "只拍背影或肩以下"
+  },
+  {
+   "id": "jingwei",
+   "name": "校警",
+   "appearance": "a school security guard in his sixties in a plain navy security jacket and cap with no lettering or badge",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sadaltager",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；六十歲的校警，男聲，粗、硬、照章辦事"
+   },
+   "episodes": "11、18",
+   "note": "中景不給正臉；第 18 集兩人不說話"
+  },
+  {
+   "id": "nvxuesheng",
+   "name": "女學生",
+   "appearance": "East Asian high-school girls in the same navy blazers and pleated skirts below the knee, no badges",
+   "voice": {
+    "provider": "gemini",
+    "name": "Despina",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；高中女生，女聲，小聲議論、帶笑"
+   },
+   "episodes": "11、13、17、18",
+   "note": "群眾：背影、側面或虛焦，寫人數"
+  },
+  {
+   "id": "qunzhong",
+   "name": "男學生、家長、校董、等候的民眾、排隊的老客人、藥局客人",
+   "appearance": "ordinary East Asian townspeople, students in the same navy uniform, parents and board members in plain clothes or suits, no logos",
+   "voice": null,
+   "episodes": "11、13、14、16、17、19、25、33、40",
+   "note": "群眾，不說話；寫人數與排法"
+  },
+  {
+   "id": "gongyou",
+   "name": "學校工友",
+   "appearance": "an elderly school janitor in a plain grey uniform, seen from behind, holding a white envelope",
+   "voice": null,
+   "episodes": "18",
+   "note": "不說話；只拍背影與手"
+  },
+  {
+   "id": "huzheng",
+   "name": "戶政職員",
+   "appearance": "a female clerk in her thirties in a plain dark cardigan and glasses behind a service counter",
+   "voice": {
+    "provider": "gemini",
+    "name": "Aoede",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；三十多歲的戶政職員，女聲，公事公辦、帶點不耐煩"
+   },
+   "episodes": "25",
+   "note": "隔著櫃台，中景"
+  },
+  {
+   "id": "tanshang",
+   "name": "市場攤商",
+   "appearance": "a vegetable vendor woman in her forties in a plain apron and sleeve covers",
+   "voice": {
+    "provider": "gemini",
+    "name": "Autonoe",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；四十多歲的菜販，女聲，嗓門大、潑辣"
+   },
+   "episodes": "25、26",
+   "note": "中景不給正臉；第 25、26 集都說話"
+  },
+  {
+   "id": "banjia",
+   "name": "搬家工人",
+   "appearance": "two or three movers in plain grey work clothes with no logo and work gloves",
+   "voice": {
+    "provider": "gemini",
+    "name": "Zubenelgenubi",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；搬家工人，男聲，粗、短"
+   },
+   "episodes": "27、57",
+   "note": "肩以下、背影"
+  },
+  {
+   "id": "suojiang",
+   "name": "鎖匠",
+   "appearance": "a locksmith in his fifties in a plain dark work vest with a metal toolbox",
+   "voice": {
+    "provider": "gemini",
+    "name": "Fenrir",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十多歲的鎖匠，男聲，悶、話少"
+   },
+   "episodes": "27",
+   "note": "背影或肩以下"
+  },
+  {
+   "id": "siji-qita",
+   "name": "安養院司機、公會貨車司機、周懷安的司機、何啟盛的司機",
+   "appearance": "drivers in plain clothes or a black suit, seen from behind",
+   "voice": null,
+   "episodes": "14、29–30、35、45、49",
+   "note": "不說話；只拍背影（何啟盛的司機第 14 集只在駕駛座的背影與後腦）"
+  },
+  {
+   "id": "guabutiao",
+   "name": "掛布條的兩個男人",
+   "appearance": "two men in dark plain work jackets, plain dark caps and work gloves, seen only from behind while hanging a long cloth banner at night",
+   "voice": null,
+   "episodes": "32",
+   "note": "深夜在藥局門口掛布條；只拍背影，不說話；布條上的字不入鏡（從店裡看是反面、虛焦）"
+  },
+  {
+   "id": "jishi",
+   "name": "老技師",
+   "appearance": "an old building technician in his seventies in a plain khaki work jacket holding a small iron hammer",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sadaltager",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；七十多歲的老技師，男聲，沙啞、慢、篤定"
+   },
+   "episodes": "38",
+   "note": "中景、側面"
+  },
+  {
+   "id": "laojie-nan",
+   "name": "老街的老先生",
+   "appearance": "old men of seventy to eighty from the old town in Chinese-style jackets, cardigans or aprons, some with canes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Orus",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；七八十歲的老街老先生，男聲，蒼老、慢、篤定"
+   },
+   "episodes": "51、53、56",
+   "note": "第 51 集兩人、第 53 集約十人、第 56 集七人（與五位阿婆共約十二人，坐石階兩排加階前矮凳，老陳坐最下一級正中）；群眾，說話的給中景"
+  },
+  {
+   "id": "laojie-nv",
+   "name": "老街的阿婆",
+   "appearance": "old women of seventy to eighty from the old town in floral jackets and cardigans, some in wheelchairs or with canes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Despina",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；七八十歲的老街阿婆，女聲，蒼老、軟、慢"
+   },
+   "episodes": "51、52、53、56",
+   "note": "第 51 集一人、第 52 集說話（握她的手的阿婆）、第 53 集約五人、第 56 集五人"
+  },
+  {
+   "id": "jizhe",
+   "name": "記者",
+   "appearance": "a female reporter in her thirties in a plain beige trench coat holding a microphone with no logo",
+   "voice": {
+    "provider": "gemini",
+    "name": "Aoede",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；三十多歲的記者，女聲，快、咄咄逼人"
+   },
+   "episodes": "52",
+   "note": "中景不給正臉"
+  },
+  {
+   "id": "jianyan",
+   "name": "檢驗所人員",
+   "appearance": "a female lab technician in her thirties in a plain white lab coat and blue gloves, carrying a plain sample box",
+   "voice": {
+    "provider": "gemini",
+    "name": "Aoede",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；三十多歲的檢驗所人員，女聲，平板、客氣"
+   },
+   "episodes": "54",
+   "note": "只拍手與側臉"
+  },
+  {
+   "id": "shengtong-ren",
+   "name": "盛通的人",
+   "appearance": "men from Shengtong in plain dark business suits with no badges",
+   "voice": {
+    "provider": "gemini",
+    "name": "Zubenelgenubi",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；盛通的職員，男聲，冷、公事公辦"
+   },
+   "episodes": "10、56、59",
+   "note": "背影或肩以下；第 10 集兩人不說話（高經理同一個聲音）；第 56 集三人"
+  }
+ ],
+ "sets": [
+  {
+   "id": "shenjia-jiewai",
+   "name": "沈家老宅臨街外觀",
+   "prompt": "the street front of an old three-courtyard Chinese house on a quiet old-town lane in a Taiwanese city, facing south: on the left an old shopfront of six dark wooden door panels above three stone steps, a wooden lintel with two empty iron hooks where a signboard once hung and no signboard, one old iron nail under the lintel, on the right a black-lacquered double gate with brass ring knockers and a high removable wooden threshold, grey tiled eaves, a narrow lane of low old buildings running east, no readable text anywhere"
+  },
+  {
+   "id": "shenjia-chuantang",
+   "name": "沈家老宅穿堂與門房",
+   "prompt": "inside the gate of an old Chinese family house: a dim covered passage with a long wooden bench along the left wall, a small gatekeeper's room with a little window on the right, a wooden ramp board leaning by the high threshold, the main hall's door ahead, warm old wood, no text"
+  },
+  {
+   "id": "shenjia-diyijin",
+   "name": "沈家老宅第一進舊店堂",
+   "prompt": "the old shop hall at the front of an old Chinese house, unused for decades: dusty dark floorboards, an old empty wooden counter, bare wall shelves, thin daylight coming through gaps between six wooden door panels, a wide doorway into the house, no signboard and no text"
+  },
+  {
+   "id": "shenjia-zhengting",
+   "name": "沈家老宅正廳（前廳＝大廳）",
+   "prompt": "the main hall of an old Chinese family house seen from its front door: a long dark rosewood table for eight running toward the back, a long altar-style side table against the back wall under a blank hanging scroll, small doors to a courtyard at both ends of the back wall, a plain white plaster wall and a tall grandfather clock with its face turned away on the left, a door to a study and a wooden staircase on the right, a pair of carved armchairs by the front door, warm amber wood and a soft hanging lamp, no calligraphy or text"
+  },
+  {
+   "id": "shenjia-shufang",
+   "name": "沈家老宅書房",
+   "prompt": "a small old-fashioned study: a dark wooden desk under a window with a green-shaded desk lamp, a bookcase with blank book spines, a dark wooden document box under the desk, a picture hook on the right wall, warm narrow light, no readable text"
+  },
+  {
+   "id": "shenjia-fanting",
+   "name": "沈家老宅飯廳",
+   "prompt": "an old family dining room: a long dark wooden table for twelve running left to right with the head seat at the far end in front of a plain white wall, windows on the back wall looking onto a courtyard and an ancestral hall, a hanging lamp, a sideboard of blue-and-white bowls, warm light, no text"
+  },
+  {
+   "id": "shenjia-chufang",
+   "name": "沈家老宅廚房",
+   "prompt": "an old house kitchen: a window over the sink looking onto a stone courtyard, a small square wooden table with four stools, an old gas stove with pots, a doorway to a small laundry nook with a washing machine, worn tiles, warm light, no labels or text"
+  },
+  {
+   "id": "shenjia-yuanzi",
+   "name": "沈家老宅院子",
+   "prompt": "the inner stone courtyard of an old Chinese family house: a round stone table with four stone stools in the middle, an old well with a wooden cover in the far left corner, bamboo drying poles on the right, covered corridors with red-brown pillars along both sides, the ancestral hall with lattice doors above three stone steps at the far end, potted plants, no text"
+  },
+  {
+   "id": "shenjia-huilang",
+   "name": "沈家老宅迴廊",
+   "prompt": "a covered wooden corridor along an old courtyard house: red-brown wooden pillars, a long bench, paper-shaded lamps, bedroom doors along the wall, a green metal trash bin with a lid by the kitchen door at the end, the stone courtyard visible between the pillars, no text"
+  },
+  {
+   "id": "shenjia-citang",
+   "name": "沈家老宅祠堂",
+   "prompt": "the ancestral hall of an old Chinese family house: lattice doors at the front, a long dark altar table at the back with a brass oil lamp under a clear glass chimney on a square dark red-brown wooden base in the middle, ancestral tablets behind it out of focus, red candles, a bronze incense burner, a small open wooden box at the right end of the altar, a large old dark red-brown medicine cabinet of thirty drawers with brass ring pulls and no labels against the left wall, a round bronze mirror on a stand and an old wooden reclining chair on the right, a round straw cushion on the floor, warm lamplight and candlelight, no readable text"
+  },
+  {
+   "id": "shenjia-xiaomanfang",
+   "name": "沈家老宅小滿的房間",
+   "prompt": "a teenage girl's small bedroom in an old house: a single bed with a quilt and a hook by the bed head, a wooden desk with textbooks spines turned away, a desk lamp, a window to the corridor, no posters or text"
+  },
+  {
+   "id": "shenjia-baomufang",
+   "name": "沈家老宅保母房",
+   "prompt": "a tiny plain maid's room in an old house: a narrow wooden bed, a small wooden trunk, a small square mirror on the wall, one wooden chair, a small window, bare clean walls, no text"
+  },
+  {
+   "id": "shenjia-xixiang",
+   "name": "沈家老宅西廂二房臥房",
+   "prompt": "a richly furnished upstairs bedroom in the west wing of an old house: a large modern bed with satin bedding, a vanity table with jewelry boxes, a sofa, heavy curtains and modern lamps under old wooden beams, no text"
+  },
+  {
+   "id": "huiyi-1948-houyuan",
+   "name": "民國三十七年沈記後院（回憶）",
+   "prompt": "the back yard of an old Chinese herbal medicine shop in 1948 at night seen through heavy drifting smoke: orange firelight glowing on a wooden wall and doorway, a string of three brass bells on a bright new red cotton cord hanging on the door frame, the dark silhouette of a young man in a long gown walking out of the doorway holding a lamp in both arms, no flames on any person, no faces, no text"
+  },
+  {
+   "id": "gongche",
+   "name": "老城區公車",
+   "prompt": "the inside of a city bus in the morning: rows of blue seats, standing young passengers holding phones, a card reader beside the driver's seat and a separate coin box, the driver seen from behind, morning light through the windows, old-town streets outside, no readable signs or screens"
+  },
+  {
+   "id": "gaozhong-xiaomen",
+   "name": "高中校門口",
+   "prompt": "the front gate of a Taiwanese public high school in the morning: a wide sliding iron gate, a small guard booth, students in navy blazers walking in, a long school wall and trees, the school name out of frame, no readable text"
+  },
+  {
+   "id": "gaozhong-zoulang",
+   "name": "高中走廊、佈告欄與水池",
+   "prompt": "a long open-air corridor of a high school beside a garden: a wooden notice board with papers out of focus on the wall, railings, below the corridor a shallow ornamental pond with a stone edge, calf-deep water, students along the railing, daylight, no readable text"
+  },
+  {
+   "id": "gaozhong-jiaoshi",
+   "name": "高中教室",
+   "prompt": "a high-school classroom: rows of desks with about thirty students in navy blazers, a blank blackboard, a teacher's desk, windows along one side, fluorescent light, no text"
+  },
+  {
+   "id": "gaozhong-huiyishi",
+   "name": "高中玻璃會議室",
+   "prompt": "a glass-walled school meeting room: a long table with chairs, parents and teachers seated, a corridor outside the glass, fluorescent light, nothing written on the walls"
+  },
+  {
+   "id": "gaozhong-xiaodonghui",
+   "name": "高中校董會議室",
+   "prompt": "a formal school board room: a long polished table with leather chairs, wood-paneled walls with blank frames, a space for a wheelchair at the side, daylight from a window, no readable plaques or text"
+  },
+  {
+   "id": "gaozhong-tingchechang",
+   "name": "高中停車場",
+   "prompt": "a school parking lot in late afternoon: a black sedan with dark tinted windows, painted parking lines, a few other cars, school buildings behind, long shadows, no readable signs or license plates"
+  },
+  {
+   "id": "gaozhong-huatan",
+   "name": "高中後門花壇與校園角落",
+   "prompt": "a quiet corner by the back gate of a high school: a raised flower bed with a stone edge, at its corner an old grey stone slab laid flat as a base stone with its carved face crusted in mud, shrubs and the back gate, daylight, no readable carving"
+  },
+  {
+   "id": "gaozhong-cesuo",
+   "name": "高中女生廁所",
+   "prompt": "a high-school girls' restroom: a row of sinks and mirrors, stall doors, tiled walls, fluorescent light, no signs or text"
+  },
+  {
+   "id": "huzheng",
+   "name": "戶政事務所",
+   "prompt": "a city household registration office: a long service counter with clerks behind computer screens turned away, unreadable number displays, a row of waiting chairs with about eight people, fluorescent light, no readable signs"
+  },
+  {
+   "id": "fayuan-zoulang",
+   "name": "法院走廊",
+   "prompt": "a long courthouse corridor with marble pillars and a polished floor, wooden benches, tall doors, cold daylight from high windows, no readable signs"
+  },
+  {
+   "id": "laocheng-shichang",
+   "name": "老城區市場",
+   "prompt": "a traditional covered market in an old town in the afternoon: vegetable stalls with baskets, plastic buckets of washing water, hanging bulbs, shoppers, burlap rice sacks stacked beside a stall, no readable signs or price tags"
+  },
+  {
+   "id": "deji-mihang",
+   "name": "德記米行",
+   "prompt": "an old rice shop on an old-town street: an open wooden shopfront, plain burlap rice sacks stacked high with any printing turned away, wooden rice bins with scoops, an old scale, rice bran dust in the air, a framed black-and-white photograph on the wall, a storehouse door at the back, no readable signboard"
+  },
+  {
+   "id": "jiangmubai-shiwusuo",
+   "name": "江慕白律師事務所",
+   "prompt": "a lawyer's office high up in a new business district: a wall of identical document binders with spines turned away, a large desk with a lamp and two chairs in front, a big window showing glass towers lit cold blue, no readable text"
+  },
+  {
+   "id": "paichusuo",
+   "name": "老城區派出所",
+   "prompt": "a small old-town police station: a front desk, a few desks with computer screens turned away, a bench, glass doors with steps outside, fluorescent light, no readable signs or posters"
+  },
+  {
+   "id": "anyangyuan-bingfang",
+   "name": "安養院病房",
+   "prompt": "a clean quiet care-home room: an adjustable bed with white sheets, a bedside cabinet, a chair beside the bed, a wheelchair, a window with soft daylight, pale colors, no text"
+  },
+  {
+   "id": "anyangyuan-dating",
+   "name": "安養院大廳與大門",
+   "prompt": "the lobby of a care home: a reception counter, a glass partition looking into a lounge with elderly residents in wheelchairs, glass front doors and a covered drop-off area outside where a plain white van stops, soft light, no readable signs"
+  },
+  {
+   "id": "gudongdian",
+   "name": "錢老闆的古董店",
+   "prompt": "a dim antique shop: glass display cabinets of old objects, one dark velvet tray with an empty seal-shaped hollow, warm spotlights, wooden shelves of porcelain, a plain glass door with no bell, no readable labels"
+  },
+  {
+   "id": "erfang-gongyu",
+   "name": "二房的公寓門口",
+   "prompt": "the entrance of a modern apartment building in a new district in the evening: a glass lobby door, a marble floor, a white SUV parked outside, cold light, no readable signs or plates"
+  },
+  {
+   "id": "shengtong-dingceng",
+   "name": "盛通頂樓辦公室",
+   "prompt": "a top-floor chairman's office in a glass tower at night: floor-to-ceiling windows over the city lights, a large dark desk, one whole wall hung with old wooden shop signboards shown from the side or with their lettering worn away and unreadable, an empty iron hook in the very center of the wall, cold blue light, no readable text"
+  },
+  {
+   "id": "yaoju-nei",
+   "name": "知遠小藥局店內",
+   "prompt": "the inside of a small old neighborhood pharmacy: rows of wooden and glass medicine cabinets with labels turned away, a counter with a small lamp, one plain white wall, warm white fluorescent light, a glass front door with red light from a shop sign across the street reflecting on it, no readable text"
+  },
+  {
+   "id": "yaoju-menkou",
+   "name": "知遠小藥局門口與巷口",
+   "prompt": "the front of a small old pharmacy at the mouth of an old-town lane: a glass door under a dark wooden signboard seen only from below, a weathered two-story building, the lane opening onto a main road, across the road a chain pharmacy whose sign shows only as red light, no readable text"
+  },
+  {
+   "id": "yaoju-houchu",
+   "name": "知遠小藥局後廚",
+   "prompt": "the small back kitchen of an old pharmacy: a gas stove with a large stainless steel stockpot, a small wooden table with five stools, shelves of jars with labels turned away, a single hanging lamp, no text"
+  },
+  {
+   "id": "yaoju-chucangshi",
+   "name": "知遠小藥局儲藏室",
+   "prompt": "a small pharmacy storeroom: cardboard boxes with labels turned away on metal shelves, a folding camp bed with a blanket, a fluorescent tube light, a narrow door, no text"
+  },
+  {
+   "id": "che-zhouhuaian",
+   "name": "周懷安的車內",
+   "prompt": "the back seat of a long black luxury sedan: dark leather seats, tinted windows, no one in the front seats, an old-town street outside, cool light, no readable screens or logos",
+   "note": "；車內鏡頭司機不入鏡（鏡頭在前座中間往後拍）"
+  },
+  {
+   "id": "che-erfang",
+   "name": "二房的白色休旅車內",
+   "prompt": "the inside of a new white SUV: beige leather seats, a woman's handbag on the passenger's lap, tinted windows, a city street outside in afternoon light, no logos"
+  },
+  {
+   "id": "che-jianbang",
+   "name": "建邦的舊轎車內",
+   "prompt": "the inside of an old dark grey sedan: worn fabric seats, a folded wheelchair on the back seat, an old-town crossroads outside the window with elderly people on the pavement, afternoon light, no logos"
+  }
+ ],
+ "props": [
+  {
+   "id": "changmingdeng",
+   "name": "長明燈",
+   "ref": "prop-changmingdeng-t1",
+   "prompt": "a brass oil lamp: a small brass oil cup with a short wick under a clear glass chimney, standing on a square dark red-brown wooden base about thirty centimeters wide and twelve centimeters high, plain polished wood with no carving or writing visible"
+  },
+  {
+   "id": "yaogui",
+   "name": "老藥櫃",
+   "ref": "prop-yaogui-t1",
+   "prompt": "a large old dark red-brown wooden medicine cabinet about 180 cm wide and 150 cm tall with thirty small drawers in five rows of six, each with a brass ring pull and no labels, edges worn smooth"
+  },
+  {
+   "id": "baoxinling",
+   "name": "報信鈴",
+   "ref": "prop-baoxinling-t1",
+   "prompt": "three old brass bells on a faded red cotton cord, the middle bell about four centimeters and the two side bells about three centimeters, joined by a small brass ring clipped to the zipper pull of a navy school backpack"
+  },
+  {
+   "id": "yinjie",
+   "name": "她的銀印戒",
+   "ref": "prop-yinjie-t1",
+   "prompt": "a thick old silver ring on a young woman's left ring finger, its small square seal face about one centimeter wide turned toward the palm, a tiny tooth-mark dent on its side"
+  },
+  {
+   "id": "dier-yinyin",
+   "name": "第二枚銀印",
+   "ref": "prop-dier-yinyin-t1",
+   "prompt": "a small old silver block seal about two by two by three centimeters with a ring-shaped knob on top, seal face down, resting on dark cloth in a small plain open wooden box"
+  },
+  {
+   "id": "huaibiao",
+   "name": "福伯的懷錶與半張照片",
+   "ref": "prop-huaibiao-t1",
+   "prompt": "an old silver pocket watch on a chain with its back cover open, inside it a tiny torn half of a black-and-white photograph showing a young woman with two braids and part of a man's hand on her shoulder at the jagged torn edge"
+  },
+  {
+   "id": "zuofu-banzhang",
+   "name": "作甫抱燈的半張照片",
+   "ref": "prop-zuofu-banzhang-t1",
+   "prompt": "the other half of a small torn black-and-white photograph: a young man in round glasses and a long gown holding a brass oil lamp in his left arm, his right arm reaching out of the jagged torn edge"
+  },
+  {
+   "id": "shibasui-zhao",
+   "name": "十八歲照片",
+   "ref": "prop-shibasui-zhao-t1",
+   "prompt": "a black-and-white portrait photograph of a calm young woman of eighteen with two neat braids in a high-collared 1948 blouse, in a plain black wooden frame about A3 size"
+  },
+  {
+   "id": "mihang-laozhao",
+   "name": "米行老照片",
+   "ref": "prop-mihang-laozhao-t1",
+   "prompt": "a framed black-and-white 1948 photograph of a calm young woman with two braids and a sturdy young rice merchant in an apron standing at the door of an old rice shop, no bells on the door, no readable signboard"
+  },
+  {
+   "id": "diqi",
+   "name": "地契油紙包",
+   "ref": "prop-diqi-t1",
+   "prompt": "a yellowed oil-paper parcel about A4 size folded in three and tied with hemp string, opened to show an old yellowed paper deed with its writing turned away from the camera"
+  },
+  {
+   "id": "zhangben-1948",
+   "name": "民國三十七年帳本",
+   "ref": "prop-zhangben-1948-t1",
+   "prompt": "a thin thread-bound ledger with a faded grey-blue cloth cover, yellowed pages and worn white corners, about B5 size, closed"
+  },
+  {
+   "id": "jiapu",
+   "name": "家譜",
+   "ref": "prop-jiapu-t1",
+   "prompt": "a thick thread-bound family register with a dark blue cloth cover, about A4 size, closed"
+  },
+  {
+   "id": "juankuanbei",
+   "name": "捐款碑",
+   "ref": "prop-juankuanbei-t1",
+   "prompt": "an old grey stone slab about 120 by 60 cm laid flat at the corner of a school flower bed as a base stone, its carved face crusted with mud, the carving never readable"
+  },
+  {
+   "id": "prop-citang-chasuo",
+   "name": "祠堂格扇門的黃銅插鎖",
+   "ref": null,
+   "prompt": "an old-fashioned palm-length brass slide bolt lock mounted at the centre of a pair of lattice doors, its body passing through the gap between the doors, a keyhole on each side, plain surface with no lettering, warm lamplight",
+   "note": "第 1 集 c24、c26 特寫；同一把鑰匙裡外都能開。先畫"
+  },
+  {
+   "id": "prop-beiyong-yaoshi",
+   "name": "備用銅鑰匙",
+   "ref": null,
+   "prompt": "a single small old brass key with a plain round bow and no lettering, slightly dull with age",
+   "note": "第 1 集她開門後留在門內鎖孔；第 3 集 c01 福伯從裡面鎖門、c18 壓回燈座下。先畫"
+  },
+  {
+   "id": "prop-tong-youhu",
+   "name": "小銅油壺",
+   "ref": null,
+   "prompt": "a palm-sized lidded brass oil can with a long slender curved spout, polished by handling, standing on a dark wooden altar table",
+   "note": "平常放供桌右端燈旁"
+  },
+  {
+   "id": "prop-chapan-chabei",
+   "name": "黑漆茶盤與兩只白瓷有蓋茶杯",
+   "ref": null,
+   "prompt": "a black lacquer tea tray carrying two plain white porcelain lidded teacups, no pattern",
+   "note": "第 1 集 c25–c27 林美鳳從廚房端著橫過院子往西廂走、在祠堂石階下撞上月棠；第 2 集 c01 已摔碎。第 2 集福伯從門房捧給阿凱的是另一只白瓷單杯（無盤）"
+  },
+  {
+   "id": "prop-fubo-yaoshichuan",
+   "name": "福伯的鑰匙串",
+   "ref": null,
+   "prompt": "an iron ring holding three plain brass keys, no tags or lettering",
+   "note": "福伯隨身"
+  }
+ ]
+}
