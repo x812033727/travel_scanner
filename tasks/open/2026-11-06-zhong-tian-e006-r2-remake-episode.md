@@ -50,3 +50,4 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - [ ] 第二段精修
 - [ ] 剪接、cut-qa、量成片
 - [ ] `import --from`，備註「第 6 集重製版 r2」
+- 第 6 集的草稿開抽前規格還沒有 smile 檢查：s02、s04、s23、s29、s37 唐小棠只寫了 unsmiling，挑片時特別看，在笑就照第 5 集的寫法重抽。

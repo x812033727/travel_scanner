@@ -52,3 +52,4 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - 01:15 草稿 80 支抽完，39 鏡挑好（`colab/runs/e905/picks.tsv`；s12、s17、s24、s25、s34、s36 各有一支中途跳鏡，用另一支）。
 - s39 兩支唐小棠都在笑（稿子：眼睛瞪大、不笑）：`fix1` 把表情寫重一點（驚慌、眉頭上揚、沒有笑、沒有酒窩）重抽，排在第 6 集草稿之後，同一個 pod；挑好後把種子寫進 `runpod/a/st2-go`，`scratchpad/chain905r.sh` 才開始精修（60 分鐘沒寫就先停 pod）。
 - 這是「預設在笑」的老問題：唐小棠的定妝照與 cast 寫了 dimples／sweet，只寫 unsmiling 壓不住，要寫出另一個具體表情（驚慌、擔心）。
+- 照新的 smile 檢查回頭看，c28、c31、c33 稿子也寫唐小棠「不笑」，挑的片都在笑：併進 `fix1` 一起重抽（共 4 鏡 8 支），各寫成具體表情（公事公辦、精明打量、篤定），並寫「整鏡沒有笑、沒有酒窩」。
