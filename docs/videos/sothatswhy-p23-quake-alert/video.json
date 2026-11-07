@@ -1,0 +1,3439 @@
+{
+ "schema_version": 1,
+ "slug": "sothatswhy-p23-quake-alert",
+ "format": "drama",
+ "category": "explainer",
+ "narration_locale": "zh-TW",
+ "target_minutes": [
+  11,
+  13
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+ },
+ "subtitles": {
+  "burn_in": false
+ },
+ "theme": "paper",
+ "look": {
+  "preset": "cute-cartoon"
+ },
+ "series": {
+  "slug": "sothatswhy",
+  "episode": 23,
+  "chapter": 1
+ },
+ "music": {
+  "track": "sothatswhy-bed-r2.m4a",
+  "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "characters": [
+  {
+   "id": "chief",
+   "name": "所長",
+   "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text",
+   "shot_looks": [
+    {
+     "id": "office",
+     "appearance": "a friendly slim woman of about thirty, the chief of a small question office, with round black glasses, glossy jet-black shoulder-length hair tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear"
+    }
+   ]
+  },
+  {
+   "id": "kid",
+   "name": "小問",
+   "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
+   "voice": {
+    "provider": "gemini",
+    "name": "Leda",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  }
+ ],
+ "loops": [
+  {
+   "setup": "p006",
+   "payoff": "p048",
+   "what": "為什麼先輕輕搖，再一下子大搖"
+  },
+  {
+   "setup": "p019",
+   "payoff": "p133",
+   "what": "為什麼有些人家，大搖晃比警報還早到"
+  },
+  {
+   "setup": "p021",
+   "payoff": "p161",
+   "what": "哪一次大地震台北搖得很厲害，手機卻沒響"
+  },
+  {
+   "setup": "p023",
+   "payoff": "p188",
+   "what": "地震已經開始了，警報怎麼還能搶在大搖晃前面"
+  },
+  {
+   "setup": "p032",
+   "payoff": "p033",
+   "what": "地震一開始，是不是全台灣一起搖"
+  },
+  {
+   "setup": "p050",
+   "payoff": "p051",
+   "what": "小信差和大個子跑得多快"
+  },
+  {
+   "setup": "p058",
+   "payoff": "p060",
+   "what": "小信差只早到一下下，怎麼來得及躲"
+  },
+  {
+   "setup": "p061",
+   "payoff": "p062",
+   "what": "測站是什麼"
+  },
+  {
+   "setup": "p080",
+   "payoff": "p082",
+   "what": "電腦是不是一下子就算好"
+  },
+  {
+   "setup": "p087",
+   "payoff": "p157",
+   "what": "電腦會不會算錯"
+  },
+  {
+   "setup": "p090",
+   "payoff": "p091",
+   "what": "警報要怎麼追上大個子"
+  },
+  {
+   "setup": "p105",
+   "payoff": "p106",
+   "what": "警報聲為什麼那麼大聲"
+  },
+  {
+   "setup": "p113",
+   "payoff": "p115",
+   "what": "每次地震手機都會叫嗎"
+  },
+  {
+   "setup": "p123",
+   "payoff": "p124",
+   "what": "美濃地震時，台北搶到多少時間"
+  },
+  {
+   "setup": "p129",
+   "payoff": "p130",
+   "what": "住在震央旁邊的人是不是最早收到"
+  },
+  {
+   "setup": "p176",
+   "payoff": "p178",
+   "what": "手機沒響卻覺得在搖，要怎麼辦"
+  }
+ ],
+ "youtube": {
+  "category_id": 27,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "地震已經發生，警報怎麼還能搶先？｜原來如此事務所",
+  "description": "小問吃早餐時，媽媽的手機突然大叫；過了幾秒，房子才開始搖。手機怎麼會比地震還早知道？它是在預測地震嗎？\n\n這一集，所長和小問把地震想成一場從地底開始的賽跑：跑得快、搖得輕的小信差（P波），跑得慢、搖得兇的大個子（S波），跑道旁邊聽見小信差的測站，還有坐上電、跑贏大個子的地震警報。也一起看看為什麼震央旁邊常常來不及，以及二〇二四年花蓮大地震時，台北搖得很厲害、手機卻沒響。\n\n地震警報不是預測：它是地震已經開始以後，電腦用最早的資料估計出來的，可能估不準，也可能來不及。聽到警報，或是覺得在搖，都馬上趴下、掩護、穩住，不用等手機。\n\n本集插圖由 AI 生成，畫的是示意，不是量測。片中的速度、秒數都是氣象署與研究裡的大約數字，每次地震都不一樣。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-07",
+  "tags": [
+   "地震",
+   "地震警報",
+   "國家級警報",
+   "強震即時警報",
+   "P波",
+   "S波",
+   "科普",
+   "原來如此事務所"
+  ],
+  "video_id": null
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "地震已經開始\n**警報還能搶先**",
+   "sub": "警報坐上電，跑贏大搖晃",
+   "shot": "kid-phone-blare"
+  }
+ },
+ "sources": [
+  {
+   "title": "中央氣象署 地震測報中心：常見問答 84（強震即時警報）",
+   "url": "https://scweb.cwa.gov.tw/zh-tw/guidance/faqdetail/98",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "中央氣象署 地震測報中心：強震即時警報原理",
+   "url": "https://scweb.cwa.gov.tw/zh-tw/guidance/eew/3",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "中央氣象署 地震測報中心：常見問答 21（地震波）",
+   "url": "https://scweb.cwa.gov.tw/zh-tw/guidance/faqdetail/21",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "中央氣象署 地震百問（兒童版）：地震波",
+   "url": "https://edu.cwa.gov.tw/PopularScience/kids/ec/ec_9.html",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "中央氣象署：地震速報 App 說明",
+   "url": "https://www.cwa.gov.tw/V8/C/S/eservice/app/app_e.html",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "中央氣象署 地震測報中心：PWS 地震速報",
+   "url": "https://scweb.cwa.gov.tw/zh-tw/pws/info_d/2",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "USGS: Earthquake Early Warning – Overview",
+   "url": "https://www.usgs.gov/programs/earthquake-hazards/science/earthquake-early-warning-overview",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "報導者：0403 花蓮地震，國家級警報為什麼沒響",
+   "url": "https://www.twreporter.org/a/taiwan-0403earthquake",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "公視新聞網：地震國家級警報新制（2024-08-30）",
+   "url": "https://news.pts.org.tw/article/712421",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "Lin & Chen, SSA 2024 abstract: EEW performance for the 2024 Hualien earthquake",
+   "url": "https://seismosoc.secure-platform.com/a/solicitations/35/sessiongallery/1056/application/11871",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "內政部：115 年國家防災日（趴下、掩護、穩住）",
+   "url": "https://www.moi.gov.tw/News_Content.aspx?n=2&s=340709",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "臺中市政府教育局轉載消防署：地震避難",
+   "url": "https://tc.edu.tw/page/eba0fe24-e3d1-4d56-9953-5fe5796f71d1/unit-doc-content?id=4580",
+   "checked_on": "2026-11-07"
+  }
+ ],
+ "assets": [],
+ "scenes": [
+  {
+   "id": "kid-phone-blare",
+   "chapter": "手機先大叫，房子才搖",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room jumping back with a startled face beside a smartphone glowing bright orange and vibrating on a sturdy plain wooden dining table, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p001",
+     "speaker": "kid",
+     "text": "所長！昨天早上我在吃早餐，",
+     "pause_after_ms": 100,
+     "emotion": "興奮，跑進來報案的語氣"
+    },
+    {
+     "id": "p002",
+     "speaker": "kid",
+     "text": "媽媽的手機突然大叫！",
+     "pause_after_ms": 100,
+     "emotion": "誇張"
+    }
+   ]
+  },
+  {
+   "id": "phone-orange",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a smartphone glowing bright orange and vibrating hard on a sunny wooden breakfast table beside a bowl of rice porridge and a glass of milk, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p003",
+     "speaker": "kid",
+     "text": "爸爸的手機也一起叫，",
+     "pause_after_ms": 100,
+     "emotion": "比手畫腳"
+    },
+    {
+     "id": "p004",
+     "speaker": "kid",
+     "text": "好大聲，好可怕！",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-table-shake",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room holding tightly onto the edge of a sturdy plain wooden dining table with wide startled eyes as a glass of milk on it wobbles, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p005",
+     "speaker": "kid",
+     "text": "過了幾秒，房子就開始搖！",
+     "pause_after_ms": 100,
+     "emotion": "緊張"
+    },
+    {
+     "id": "p006",
+     "speaker": "kid",
+     "text": "先輕輕的，再一下子大搖！",
+     "pause_after_ms": 100,
+     "emotion": "比手畫腳"
+    },
+    {
+     "id": "p007",
+     "speaker": "kid",
+     "text": "牛奶都灑出來了！",
+     "pause_after_ms": 100,
+     "emotion": "委屈"
+    }
+   ]
+  },
+  {
+   "id": "kid-how-know",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a puzzled frown, one finger on her chin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p008",
+     "speaker": "kid",
+     "text": "手機怎麼比地震還早知道？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-not-early",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief laughing softly with one hand on her chest, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p009",
+     "speaker": "chief",
+     "text": "那個聲音，我第一次聽也嚇一跳。",
+     "pause_after_ms": 100,
+     "emotion": "笑"
+    },
+    {
+     "id": "p010",
+     "speaker": "chief",
+     "text": "它叫做地震警報。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-started",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling gently and raising one finger, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p011",
+     "speaker": "chief",
+     "text": "不過它響的時候，地震其實已經開始了。",
+     "pause_after_ms": 100,
+     "emotion": "接住她的問題"
+    }
+   ]
+  },
+  {
+   "id": "kid-predict",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl blinking with a surprised round open mouth, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p012",
+     "speaker": "kid",
+     "text": "它不是預測地震喔？",
+     "pause_after_ms": 100,
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "chief-predict",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head kindly with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p013",
+     "speaker": "chief",
+     "text": "不是。預測，是地震還沒發生就先猜。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p014",
+     "speaker": "chief",
+     "text": "警報是地震已經開始了，才趕快通知你。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-not-yet",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room looking down at the wooden floor with a puzzled face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p015",
+     "speaker": "kid",
+     "text": "已經開始了，",
+     "pause_after_ms": 100,
+     "emotion": "不解"
+    },
+    {
+     "id": "p016",
+     "speaker": "kid",
+     "text": "那我家怎麼還沒搖？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "quake-far",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view from a hill of green countryside with small houses and rolling hills on a sunny morning, a soft ripple spreading through the ground far away, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p017",
+     "speaker": "chief",
+     "text": "因為大搖晃要跑一段路，才到你家。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p018",
+     "speaker": "chief",
+     "text": "手機就是趁它還在路上，先叫你。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-tease-blind",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief leaning a little toward the viewer with a serious kind face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p019",
+     "speaker": "chief",
+     "text": "不過，有些人家，大搖晃比警報還早到。",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "city-tease",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of a big city of tall buildings in a green basin ringed by hills on a sunny morning, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p020",
+     "speaker": "chief",
+     "text": "還有一次大地震，台北搖得很厲害，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p021",
+     "speaker": "chief",
+     "text": "很多人的手機，卻一聲都沒響。",
+     "pause_after_ms": 100,
+     "emotion": "賣關子"
+    }
+   ]
+  },
+  {
+   "id": "chief-main-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief folding her hands with a curious smile, eyebrows raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p022",
+     "speaker": "chief",
+     "text": "你也想想看：地震都已經開始了，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p023",
+     "speaker": "chief",
+     "text": "警報怎麼還能搶在大搖晃前面？",
+     "pause_after_ms": 100,
+     "emotion": "問句"
+    }
+   ]
+  },
+  {
+   "id": "ground-start",
+   "chapter": "地底下開始的賽跑",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide cutaway view of the ground with green fields and small houses on top and thick brown rock layers below, one bright glowing spot deep inside the rock with soft rings spreading out from it, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p024",
+     "speaker": "chief",
+     "text": "因為地震一開始，就是一場賽跑。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p025",
+     "speaker": "chief",
+     "text": "起點在地底下，地震開始的那個地方。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-where-start",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room crouching and pressing one ear to the wooden floor with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p026",
+     "speaker": "kid",
+     "text": "起點在我家下面嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-epicentre",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling and shaking her head lightly, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p027",
+     "speaker": "chief",
+     "text": "每次都不一樣，常常離你家很遠。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p028",
+     "speaker": "chief",
+     "text": "起點正上方，地面上那一點，叫做震央。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-epi",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl nodding with a serious little face, one finger pointing down, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p029",
+     "speaker": "kid",
+     "text": "震央，就是起點！",
+     "pause_after_ms": 100,
+     "emotion": "記住了"
+    }
+   ]
+  },
+  {
+   "id": "chief-epi-yes",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling and giving a small nod, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p030",
+     "speaker": "chief",
+     "text": "對，賽跑就從那裡開始。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-whole-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room spreading both arms wide with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p031",
+     "speaker": "kid",
+     "text": "那地震一開始，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p032",
+     "speaker": "kid",
+     "text": "是不是全台灣一起搖？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "ripple-out",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view from a hill of green countryside and small towns, a soft ripple spreading out through the ground like rings on a pond, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p033",
+     "speaker": "chief",
+     "text": "不是。搖晃從震央往外，一路跑出去，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p034",
+     "speaker": "chief",
+     "text": "離震央越遠，就越晚跑到。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-two",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up two fingers with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p035",
+     "speaker": "chief",
+     "text": "而且跑出去的，不只一個。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-two-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl leaning forward with wide curious eyes, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p036",
+     "speaker": "kid",
+     "text": "還有誰在跑？",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    }
+   ]
+  },
+  {
+   "id": "messenger",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide cutaway view of brown rock layers underground with a small quick bright ripple racing through the rock far ahead of a big tall heavy wave rolling behind it, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p037",
+     "speaker": "chief",
+     "text": "跑在最前面的，是一個快腿的小信差。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p038",
+     "speaker": "chief",
+     "text": "它搖得很輕，多半是上下跳一跳。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-updown",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room bobbing up on her toes with a surprised little smile, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p039",
+     "speaker": "kid",
+     "text": "上下跳一跳？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-updown",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief lifting one open hand a little with a gentle smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p040",
+     "speaker": "chief",
+     "text": "對，像地板輕輕往上頂了一下。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-p-name",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling and raising one finger like a teacher sharing a fun fact, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p041",
+     "speaker": "chief",
+     "text": "科學家叫這個小信差，P波。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "big-wave",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide cutaway view of brown rock layers underground with a big tall heavy wave rolling through the rock, small houses on the green ground above it wobbling, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p042",
+     "speaker": "chief",
+     "text": "後面跟著一個大個子，叫S波。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p043",
+     "speaker": "chief",
+     "text": "它前後左右用力晃，搖得兇多了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-big-guy",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room swaying with both arms out for balance and a wobbly grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p044",
+     "speaker": "kid",
+     "text": "把東西搖倒的，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p045",
+     "speaker": "kid",
+     "text": "就是大個子？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-big-guy",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with a serious kind face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p046",
+     "speaker": "chief",
+     "text": "通常是它。小信差溫柔得多。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-order-got",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl with a bright face of sudden discovery, eyes wide and mouth open, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p047",
+     "speaker": "kid",
+     "text": "所以我先覺得輕輕的，",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    },
+    {
+     "id": "p048",
+     "speaker": "kid",
+     "text": "是小信差先到！",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "chief-order-yes",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling proudly and nodding, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p049",
+     "speaker": "chief",
+     "text": "對，後面那一下大搖，就是大個子到了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-speed-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room bouncing on her toes with an eager face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p050",
+     "speaker": "kid",
+     "text": "它們跑得多快？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "speed",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of a long straight country road stretching across green fields to far blue hills under a sunny sky, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p051",
+     "speaker": "chief",
+     "text": "小信差一秒，大約跑六公里半。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p052",
+     "speaker": "chief",
+     "text": "大個子慢一點，一秒大約四公里。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-fast",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl throwing both hands up with her mouth open in amazement, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p053",
+     "speaker": "kid",
+     "text": "一秒四公里！",
+     "pause_after_ms": 100,
+     "emotion": "驚呼"
+    }
+   ]
+  },
+  {
+   "id": "chief-count",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief leaning toward the viewer with a playful smile, one finger raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p054",
+     "speaker": "chief",
+     "text": "你數一、二，大個子就跑了大約八公里。",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "kid-p-lead",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl counting on her fingers with a wide-eyed face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p055",
+     "speaker": "kid",
+     "text": "那小信差呢？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-p-lead",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling and holding one hand a little higher than the other, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p056",
+     "speaker": "chief",
+     "text": "十三公里，已經領先大個子五公里了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-gap-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room hugging a round cushion with a worried face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p057",
+     "speaker": "kid",
+     "text": "小信差只早到一下下，",
+     "pause_after_ms": 100,
+     "emotion": "擔心"
+    },
+    {
+     "id": "p058",
+     "speaker": "kid",
+     "text": "我怎麼來得及躲？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-gap",
+   "chapter": "跑道旁邊的測站",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief raising her eyebrows with a knowing smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p059",
+     "speaker": "chief",
+     "text": "只靠你家感覺到的小信差，常常真的來不及。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p060",
+     "speaker": "chief",
+     "text": "所以要靠震央旁邊的測站。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-station-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a puzzled face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p061",
+     "speaker": "kid",
+     "text": "測站是什麼？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "station",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a small sturdy metal box half buried in green grass on a sunny hillside, a thin cable running from it into the ground, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p062",
+     "speaker": "chief",
+     "text": "是一台放在地上、一直在聽地面動靜的機器。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p063",
+     "speaker": "chief",
+     "text": "台灣各地，放了很多很多台。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-referee",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pointing one finger up with a bright smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p064",
+     "speaker": "chief",
+     "text": "它們就像跑道旁邊的裁判，誰跑過都知道。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p065",
+     "speaker": "chief",
+     "text": "放得越密，就越容易有一台剛好在震央旁邊。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "station-first",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of a green hillside with a small sturdy metal box in the grass, a soft bright ripple in the ground just reaching it, small villages far away, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p066",
+     "speaker": "chief",
+     "text": "地震一開始，離震央最近的幾台測站，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p067",
+     "speaker": "chief",
+     "text": "最先聽到小信差。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-station-shout",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room cupping both hands around her mouth as if calling out loudly, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p068",
+     "speaker": "kid",
+     "text": "測站會大喊大家快躲嗎？",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "chief-station-listen",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief laughing warmly and shaking her head, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p069",
+     "speaker": "chief",
+     "text": "測站只負責聽，跟裁判一樣。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p070",
+     "speaker": "chief",
+     "text": "它們馬上把小信差的樣子，傳給氣象署的電腦。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-cwa",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room raising one hand high like answering in class, a bright face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p071",
+     "speaker": "kid",
+     "text": "氣象署，是報天氣的那個？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-cwa",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief laughing softly and nodding, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p072",
+     "speaker": "chief",
+     "text": "對，地震也是他們在看。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "computer",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium shot of a big humming computer cabinet with rows of tiny blinking green and blue lights in a bright clean room, sunlight from a window, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p073",
+     "speaker": "chief",
+     "text": "電腦等不及所有測站都聽到，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p074",
+     "speaker": "chief",
+     "text": "只用最先聽到的那幾台，就開始算。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-hurry",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl laughing with a playful face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p075",
+     "speaker": "kid",
+     "text": "電腦好急喔！",
+     "pause_after_ms": 100,
+     "emotion": "好笑"
+    }
+   ]
+  },
+  {
+   "id": "chief-hurry",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling with a small playful shrug, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p076",
+     "speaker": "chief",
+     "text": "因為每過一秒，大個子都在往前跑。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-what-see",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl squinting thoughtfully with one finger on her chin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p077",
+     "speaker": "kid",
+     "text": "看小信差，能看出什麼？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-what-see",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief counting softly on her fingers with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p078",
+     "speaker": "chief",
+     "text": "看出起點在哪裡、地震有多大，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p079",
+     "speaker": "chief",
+     "text": "再估計大個子會跑到哪裡、搖得多兇。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-instant",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room standing with both hands on her hips and a confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p080",
+     "speaker": "kid",
+     "text": "電腦一下子就算好了吧！",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "chief-takes-time",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief tilting her head with a gentle smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p081",
+     "speaker": "chief",
+     "text": "算也要時間。像二〇一六年的美濃地震，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p082",
+     "speaker": "chief",
+     "text": "電腦大約十二秒，才算出第一次的答案。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-12",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl gasping with a big surprised open mouth, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p083",
+     "speaker": "kid",
+     "text": "十二秒，",
+     "pause_after_ms": 100,
+     "emotion": "驚訝"
+    },
+    {
+     "id": "p084",
+     "speaker": "kid",
+     "text": "大個子不就跑很遠了？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-48",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding slowly with a serious kind face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p085",
+     "speaker": "chief",
+     "text": "對，已經跑了四十幾公里。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p086",
+     "speaker": "chief",
+     "text": "而且電腦只看到地震剛開始的那一小段。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-wrong-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl biting her lip with a worried little frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p087",
+     "speaker": "kid",
+     "text": "那它會不會算錯？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-estimate",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one hand flat and tipping it a little with a thoughtful face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p088",
+     "speaker": "chief",
+     "text": "它算的是估計，有時候會估不準。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p089",
+     "speaker": "chief",
+     "text": "這件事你先記著，後面會用到。",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "kid-catch-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room pointing ahead with a determined face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p090",
+     "speaker": "kid",
+     "text": "那警報要怎麼追上大個子？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "wires",
+   "chapter": "警報坐上電，超過大個子",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of tall power poles and a cell tower on green hills under a sunny sky, a glowing ribbon of light racing along the wires, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p091",
+     "speaker": "chief",
+     "text": "警報不用自己跑，它是用電送出去的。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p092",
+     "speaker": "chief",
+     "text": "電跑得比大個子，快很多很多倍。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-electric",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room throwing one fist up in the air with a big excited grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p093",
+     "speaker": "kid",
+     "text": "警報坐上電，跑贏大個子！",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    }
+   ]
+  },
+  {
+   "id": "chief-overtake",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling and giving a quick nod, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p094",
+     "speaker": "chief",
+     "text": "對。電腦一算好，警報一下子就送出去。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p095",
+     "speaker": "chief",
+     "text": "大個子還在路上，警報已經先到了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-if-fast",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a curious squint, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p096",
+     "speaker": "kid",
+     "text": "如果大個子也跑那麼快呢？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-if-fast",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief raising her eyebrows with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p097",
+     "speaker": "chief",
+     "text": "那警報就永遠追不上了。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p098",
+     "speaker": "chief",
+     "text": "警報能搶先，靠的就是大個子跑得慢。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-how-phone",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl leaning forward with both hands out of frame and curious eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p099",
+     "speaker": "kid",
+     "text": "電是怎麼跑到手機裡的？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "tower",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of a tall cell tower on a green hill above a small town of houses on a sunny morning, soft glowing rings spreading out from the top of the tower, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p100",
+     "speaker": "chief",
+     "text": "警報送到附近的基地台，就是山上那種高高的鐵塔，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p101",
+     "speaker": "chief",
+     "text": "再從那裡，送給附近所有的手機。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-broadcast",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room pretending to dial an imaginary phone with one finger in the air, a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p102",
+     "speaker": "kid",
+     "text": "不用一個一個打電話？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-broadcast",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p103",
+     "speaker": "chief",
+     "text": "不用。它是一次廣播，附近的手機同時收到。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-loud-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl wincing with her shoulders pulled up and her eyes squeezed shut as two curved lines, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p104",
+     "speaker": "kid",
+     "text": "可是那個聲音，",
+     "pause_after_ms": 100,
+     "emotion": "皺臉"
+    },
+    {
+     "id": "p105",
+     "speaker": "kid",
+     "text": "為什麼要那麼大聲？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "phones-many",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium shot of several smartphones glowing bright orange and vibrating together on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p106",
+     "speaker": "chief",
+     "text": "因為它要在幾秒鐘裡，叫醒所有人。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p107",
+     "speaker": "chief",
+     "text": "收到這種警報，手機會被強迫叫出聲音，",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-together",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling warmly with one hand open, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p108",
+     "speaker": "chief",
+     "text": "而且不能取消接收。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p109",
+     "speaker": "chief",
+     "text": "所以你們全家的手機，才會一起叫。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-my-seconds",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room nodding hard with a bright face of understanding, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p110",
+     "speaker": "kid",
+     "text": "難怪手機先叫，",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    },
+    {
+     "id": "p111",
+     "speaker": "kid",
+     "text": "房子過幾秒才搖！",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    }
+   ]
+  },
+  {
+   "id": "chief-my-seconds",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling and nodding warmly, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p112",
+     "speaker": "chief",
+     "text": "對，你家搶到的，就是那幾秒。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-every-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tapping her chin with one finger and squinting in thought, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p113",
+     "speaker": "kid",
+     "text": "每次地震，手機都會叫嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-when",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head lightly with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p114",
+     "speaker": "chief",
+     "text": "不會。電腦要估計地震夠大，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p115",
+     "speaker": "chief",
+     "text": "你住的地方又會搖得夠兇，手機才叫。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-my-house-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl pointing at herself with a curious hopeful face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p116",
+     "speaker": "kid",
+     "text": "那我家能搶到幾秒？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-far",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief leaning toward the viewer with a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p117",
+     "speaker": "chief",
+     "text": "要看你家離震央多遠。",
+     "pause_after_ms": 100,
+     "emotion": "接住她的問題"
+    },
+    {
+     "id": "p118",
+     "speaker": "chief",
+     "text": "還記得大個子一秒跑多遠嗎？",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
+    }
+   ]
+  },
+  {
+   "id": "kid-four-km",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding up one hand with fingers spread and a proud grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p119",
+     "speaker": "kid",
+     "text": "大約四公里！",
+     "pause_after_ms": 100,
+     "emotion": "搶答"
+    }
+   ]
+  },
+  {
+   "id": "chief-far-rule",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling and nodding with one finger raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p120",
+     "speaker": "chief",
+     "text": "對。所以你家每離震央遠四公里，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p121",
+     "speaker": "chief",
+     "text": "大個子就晚大約一秒到。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-far-more",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room spreading her arms wide with a delighted face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p122",
+     "speaker": "kid",
+     "text": "住得越遠，時間越多！",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    },
+    {
+     "id": "p123",
+     "speaker": "kid",
+     "text": "那美濃地震的時候，台北呢？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "city-far",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of a big city of tall buildings in a green basin ringed by hills on a calm sunny morning, a glowing ribbon of light arriving along the power lines on the hills, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p124",
+     "speaker": "chief",
+     "text": "台北離美濃很遠很遠，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p125",
+     "speaker": "chief",
+     "text": "比大搖晃早了大約四十九秒，收到警報。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-49",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room throwing both hands up with her mouth open in amazement, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p126",
+     "speaker": "kid",
+     "text": "四十九秒！",
+     "pause_after_ms": 100,
+     "emotion": "驚呼"
+    }
+   ]
+  },
+  {
+   "id": "chief-49",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a warm calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p127",
+     "speaker": "chief",
+     "text": "同一個地震，每個地方搶到的時間都不一樣。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-near-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room pointing down at the floor with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p128",
+     "speaker": "kid",
+     "text": "那住在震央旁邊的人，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p129",
+     "speaker": "kid",
+     "text": "一定最早收到吧？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-near",
+   "chapter": "警報追不上、估不準的時候",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head gently with a kind serious face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p130",
+     "speaker": "chief",
+     "text": "剛好相反，那裡最難搶先。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "blind-village",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide cutaway view of the ground with green fields and small houses on top and thick brown rock layers below, a small village right above a bright glowing spot deep in the rock, a big heavy wave already rising under the houses, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p131",
+     "speaker": "chief",
+     "text": "電腦還在算的時候，大個子已經跑到那裡，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p132",
+     "speaker": "chief",
+     "text": "那裡就可能先搖，才收到警報。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-blind-name",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief drawing a small circle in the air with one finger, a calm face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p133",
+     "speaker": "chief",
+     "text": "這一圈警報趕不上的地方，叫做盲區。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-blind",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl covering her eyes playfully with both hands, grinning, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p134",
+     "speaker": "kid",
+     "text": "盲區，就是看不見？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-blind-see",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling and nodding a little, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p135",
+     "speaker": "chief",
+     "text": "差不多，是警報還來不及照顧到的地方。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p136",
+     "speaker": "chief",
+     "text": "在那裡，搖晃本身就是警報。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-blind-p",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding very still with wide alert eyes, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p137",
+     "speaker": "kid",
+     "text": "先覺得輕輕的，",
+     "pause_after_ms": 100,
+     "emotion": "小聲"
+    },
+    {
+     "id": "p138",
+     "speaker": "kid",
+     "text": "就是小信差到了？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-blind-p",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a serious kind face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p139",
+     "speaker": "chief",
+     "text": "對，大個子可能就在後面。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-far-sure",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room hugging a round cushion with a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p140",
+     "speaker": "kid",
+     "text": "那住得遠的人，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p141",
+     "speaker": "kid",
+     "text": "就一定會收到嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-recall-est",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief raising one finger with a serious kind face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p142",
+     "speaker": "chief",
+     "text": "還記得電腦算的是估計嗎？",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
+    },
+    {
+     "id": "p143",
+     "speaker": "chief",
+     "text": "二〇二四年四月，花蓮有一次大地震。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "hualien",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of tall green mountains rising right beside the blue sea on a sunny morning, a small city at the foot of the mountains, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p144",
+     "speaker": "chief",
+     "text": "地震開始後大約九秒，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p145",
+     "speaker": "chief",
+     "text": "花蓮附近的手機就響了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-nine",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room clapping her hands once with a bright surprised face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p146",
+     "speaker": "kid",
+     "text": "九秒，好快！",
+     "pause_after_ms": 100,
+     "emotion": "驚喜"
+    }
+   ]
+  },
+  {
+   "id": "chief-hualien-near",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with a serious kind face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p147",
+     "speaker": "chief",
+     "text": "可是花蓮離震央很近，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p148",
+     "speaker": "chief",
+     "text": "很多地方大約只搶到五到十秒。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-few-use",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a doubtful face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p149",
+     "speaker": "kid",
+     "text": "才幾秒，有用嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-few-use",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with a warm firm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p150",
+     "speaker": "chief",
+     "text": "有用。幾秒鐘，也能先保護好自己。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-few",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl frowning a little with a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p151",
+     "speaker": "kid",
+     "text": "那台北比較遠，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p152",
+     "speaker": "kid",
+     "text": "應該搶到更多吧？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-calc",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling and counting softly on her fingers, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p153",
+     "speaker": "chief",
+     "text": "我們自己粗算：花蓮到台北，大約一百四十公里，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p154",
+     "speaker": "chief",
+     "text": "大個子要跑大約三十五秒才到。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-calc",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl counting on her fingers with a concentrating face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p155",
+     "speaker": "kid",
+     "text": "比九秒久好多，",
+     "pause_after_ms": 100,
+     "emotion": "認真算"
+    },
+    {
+     "id": "p156",
+     "speaker": "kid",
+     "text": "台北一定來得及！",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "chief-calc-ok",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief tilting her head with a slightly worried face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p157",
+     "speaker": "chief",
+     "text": "照理說是。可是那天，電腦第一次把地震估得太小，",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "city-calm",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of a big city of tall buildings in a green basin ringed by hills on a calm sunny morning, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p158",
+     "speaker": "chief",
+     "text": "它以為台北不會搖到手機要響的程度，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p159",
+     "speaker": "chief",
+     "text": "而且只差一點點。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-taipei-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl leaning forward with wide worried eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p160",
+     "speaker": "kid",
+     "text": "那台北有收到嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "city-shake",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of a big city of tall buildings in a green basin ringed by hills on a sunny morning, trees on the hills swaying hard, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p161",
+     "speaker": "chief",
+     "text": "沒有。可是那天台北，真的搖得很厲害。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-taipei-scared",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room hugging a round cushion tightly with a startled face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p162",
+     "speaker": "kid",
+     "text": "台北的人一定嚇一跳！",
+     "pause_after_ms": 100,
+     "emotion": "擔心"
+    }
+   ]
+  },
+  {
+   "id": "chief-taipei-felt",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding slowly with a kind serious face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p163",
+     "speaker": "chief",
+     "text": "對，很多人是先覺得在搖，才知道地震來了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-update-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room frowning with her arms crossed, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p164",
+     "speaker": "kid",
+     "text": "電腦後來有改嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-update",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with a gentle smile, one hand open, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p165",
+     "speaker": "chief",
+     "text": "有。大約十五秒的時候，它又算了一次，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p166",
+     "speaker": "chief",
+     "text": "把地震估得大一點，可是台北還是沒收到。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-wait-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tapping her chin with one finger and a puzzled squint, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p167",
+     "speaker": "kid",
+     "text": "那為什麼不等久一點，",
+     "pause_after_ms": 100,
+     "emotion": "不解"
+    },
+    {
+     "id": "p168",
+     "speaker": "kid",
+     "text": "算準一點再送？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-wait",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief tilting her head with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p169",
+     "speaker": "chief",
+     "text": "等越久，大個子就跑越遠，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p170",
+     "speaker": "chief",
+     "text": "大家搶到的時間就越少。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-rule",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief giving a firm encouraging nod with a bright hopeful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p171",
+     "speaker": "chief",
+     "text": "所以後來氣象署也改了規則：很大的地震，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p172",
+     "speaker": "chief",
+     "text": "搖得沒那麼兇的地方，也會收到警報。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-miss",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room hugging her knees and looking down with a thoughtful face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p173",
+     "speaker": "kid",
+     "text": "原來警報也會漏掉……",
+     "pause_after_ms": 100,
+     "emotion": "若有所思"
+    }
+   ]
+  },
+  {
+   "id": "chief-helper",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling warmly at the viewer with one hand on her chest, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p174",
+     "speaker": "chief",
+     "text": "警報是你很好的幫手，可是它是估出來的。",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "kid-what-do-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl looking up with a serious little face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p175",
+     "speaker": "kid",
+     "text": "手機沒響，可是我覺得在搖，",
+     "pause_after_ms": 100,
+     "emotion": "認真"
+    },
+    {
+     "id": "p176",
+     "speaker": "kid",
+     "text": "那要怎麼辦？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-drop",
+   "chapter": "小問自己破案",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief crouching a little with one hand raised as if showing a safe pose, a calm caring face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p177",
+     "speaker": "chief",
+     "text": "不用等手機。聽到警報，或是覺得在搖，",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p178",
+     "speaker": "chief",
+     "text": "都馬上趴下、掩護、穩住。",
+     "pause_after_ms": 100,
+     "emotion": "清楚，一個字一個字"
+    }
+   ]
+  },
+  {
+   "id": "chief-drop-why",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding one arm over her head with a calm caring face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p179",
+     "speaker": "chief",
+     "text": "趴低，才不會被搖倒；掩護，是護住頭和脖子；",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p180",
+     "speaker": "chief",
+     "text": "穩住，就是抓好不放，等搖晃停下來。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-drop",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room crouching low beside a sturdy plain wooden dining table holding onto one of its legs, a brave serious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p181",
+     "speaker": "kid",
+     "text": "趴下、掩護、穩住！",
+     "pause_after_ms": 100,
+     "emotion": "認真"
+    }
+   ]
+  },
+  {
+   "id": "chief-dont-run",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with a proud caring smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p182",
+     "speaker": "chief",
+     "text": "對，也不要急著往外跑。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p183",
+     "speaker": "chief",
+     "text": "如果你在床上，就待在床上，翻身趴下。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-back",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling warmly at the viewer with one hand open, filling the frame, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p184",
+     "speaker": "chief",
+     "text": "還記得你一開始問我的嗎？你自己說說看。",
+     "pause_after_ms": 100,
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "kid-got1",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room throwing both arms up with a huge happy smile, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p185",
+     "speaker": "kid",
+     "text": "地震一開始，",
+     "pause_after_ms": 100,
+     "emotion": "篤定"
+    },
+    {
+     "id": "p186",
+     "speaker": "kid",
+     "text": "測站先聽到小信差，",
+     "pause_after_ms": 100,
+     "emotion": "篤定"
+    }
+   ]
+  },
+  {
+   "id": "kid-got2",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl pointing proudly up with one finger and a big grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p187",
+     "speaker": "kid",
+     "text": "電腦算好，警報坐上電，",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    },
+    {
+     "id": "p188",
+     "speaker": "kid",
+     "text": "就跑贏大個子了！",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "kid-got3",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny living room nodding firmly with her arms folded and a serious little face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p189",
+     "speaker": "kid",
+     "text": "可是震央旁邊會來不及，",
+     "pause_after_ms": 100,
+     "emotion": "認真"
+    },
+    {
+     "id": "p190",
+     "speaker": "kid",
+     "text": "電腦也可能估錯！",
+     "pause_after_ms": 100,
+     "emotion": "認真"
+    }
+   ]
+  },
+  {
+   "id": "chief-done",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling warmly at the viewer with her hands clasped, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p191",
+     "speaker": "chief",
+     "text": "完全正確！下次手機大叫，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾，輕聲"
+    },
+    {
+     "id": "p192",
+     "speaker": "chief",
+     "text": "你就知道大個子還在路上，先保護自己。",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p193",
+     "speaker": "kid",
+     "text": "原來如此！",
+     "pause_after_ms": 100,
+     "emotion": "開心大聲"
+    }
+   ]
+  },
+  {
+   "id": "outro-chief",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding a small wooden toy house in one hand with a curious smile, filling the frame, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p194",
+     "speaker": "chief",
+     "text": "看影片的你呢？你被地震警報嚇過嗎？",
+     "pause_after_ms": 100,
+     "emotion": "問句上揚，像聊天"
+    },
+    {
+     "id": "p195",
+     "speaker": "chief",
+     "text": "留言告訴我們。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "outro-wave",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p196",
+     "speaker": "chief",
+     "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
+     "pause_after_ms": 100,
+     "emotion": "誠懇"
+    }
+   ]
+  }
+ ]
+}
