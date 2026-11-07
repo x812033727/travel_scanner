@@ -53,3 +53,4 @@ scope:
 - 2026-11-06 成片 197.0 s、39 鏡，量測寫在 `brief.md` 最後一節（動量 6.8、靜止 4%、每句 15.6 字、-13.7 LUFS）；匯入時唯一差異是 24 fps（管線預設 30，這集刻意 24）。
 - 2026-11-06 完整備份（站主：「備份要做好所有備份完整」，選每集一條）：`transfer/zt-e043-media` … `zt-e056-media`、`zt-e057-media`、`zt-e001-r2-media`、`zt-series-media`（`_series`、合集、各集發布包資料夾），共約 10 GB、17 條，每條推完都用 ls-remote 對過 commit。
   每條是孤立 commit，根目錄 `README-backup.md` 寫還原方法；沒推的只有工具免費重做的：`clips/`、`segments-v4/`、`review/`、`cut/*.mp4`（成片也在站上）。
+- 2026-11-07 站主：「第一集也修掉」。s08 從 0.6 秒、s16 從 1.7 秒起剪（開頭閃一下別的畫面），重剪後 cut-jumps 0，`import --from --force` 重送後台。
