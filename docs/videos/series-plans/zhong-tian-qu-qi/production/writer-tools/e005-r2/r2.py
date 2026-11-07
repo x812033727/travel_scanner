@@ -71,7 +71,17 @@ TANG = "her peach-pink brocade ruqun one closed garment from the high stand-up c
 HE = "little Xiaohe in her patched lilac short jacket with red-string pigtails and one front tooth missing"
 GOURD = "one brown water gourd with a wooden stopper"
 MOULD = "one long plain pine soap mould about three feet long and one foot wide, turned upside down"
-SOAP = "snow-white square bars of soap, each palm-sized and one finger thick with square corners, opaque and not glowing"
+SOAP_ST1 = "snow-white square bars of soap, each palm-sized and one finger thick with square corners, opaque and not glowing"  # s27 (picked)
+# 2026-11-07 independent review of the stage-1 drafts (colab/runs/e905/review-picks.tsv): five RETAKE shots, one phrase
+# per prop word for word in them (s08, s25 -> colab/runs/e905/fix2; s28, s31, s33 -> fix3). The phrases above stay in the
+# picked shots.
+# The soap (s31 drew a big long brick; s33's board read as white piano keys).
+SOAP = "a snow-white square bar of soap the size of a palm and one finger thick"
+# Tang Xiaotang's collar (s31: all four drafts drew a neckband over an open chest).
+TANG_SHUT = "her peach-pink brocade ruqun one closed garment from the high stand-up collar buttoned at the throat to the waist"
+COLLAR = "framed from the chin up, her face filling the frame, the top of her high stand-up collar buttoned to the throat at the bottom edge, one closed garment, no opening below the collar"
+# s28, s31, s33: every draft laughed with her teeth showing; a concrete face, not just "unsmiling".
+TANG_CALC = "serious and calculating the whole time, lips closed between words, the corners of her mouth level, brows slightly lowered, eyes narrowed, no smile and no teeth at any moment"
 
 SHOTS = [
     # ---- scene 1: the cooking shelter, the second night (the instant after e004 c40), stove firelight from below and
@@ -112,10 +122,10 @@ SHOTS = [
          motion="his eyes dart right to the hand gripping the knife handle, and his whole body gives a shudder",
          zh="低角度近景（從板凳下往上拍）、慢推：賴三縮著脖子、衣領被畫面上緣秦霜的左手揪著，眼睛往右瞟一下握刀的手，整個人一抖；哭腔"),
     dict(loc="night", cam="Medium shot, slow push in", chars=["laisan", "qinshuang", "xuyan"], night="night",
-         comp=f"medium shot, Lai San on screen left by the wooden post, his right sleeve still pinned by the chopping knife; Qin Shuang in the middle, her right hand on the knife handle, the right side of her belt empty; Xu Yan on screen right, {XU}, unsmiling",
+         comp=f"medium shot, Lai San on screen left by the wooden shed post, both his hands empty, his right sleeve still pinned to the post by {CHOP}, its blade sunk deep into the post and its handle sticking out toward Qin Shuang; Qin Shuang in the middle, her right hand gripping that handle, the right side of her belt empty, unsmiling; Xu Yan on screen right, {XU}, unsmiling",
          lines=[("xuyan", "果然是他。秦霜，刀收好，人別打。", "冷靜")],
-         motion="Xu Yan turns to Qin Shuang; she pulls the knife out of the post and slides it into the right side of her belt, edge down and back up; Lai San's sleeve tears open and his arm drops; the others' lips stay closed",
-         zh="中景、慢推：許硯轉身看秦霜；秦霜右手拔出柴刀，刀刃朝下、刀背朝上插回腰帶右邊；賴三的袖子撕開一道口、手臂垂下來"),
+         motion="Qin Shuang's right hand wrenches the knife out of the post; only then Lai San's sleeve rips open along the forearm as his arm drops; she slides the knife into her belt on the right, blade down; Xu Yan turns to her; the others' lips stay closed",
+         zh="中景、慢推（e905 fix2）：賴三在左、兩手空空，右袖還被舊柴刀釘在棚柱上（刀身深深吃進柱子，裹黑布的刀柄朝秦霜伸出）；秦霜在中間右手握住刀柄把柴刀從柱上拔出來，賴三的右袖這才沿前臂撕開、手臂垂下；秦霜把刀刃朝下插進腰帶右邊；右邊許硯轉頭看秦霜說話，其他人嘴閉著"),
     dict(loc="night", cam="Over-the-shoulder medium shot, slow push in", chars=["qinshuang", "xuyan", "laisan"], night="night",
          comp=f"over-the-shoulder shot from behind Xu Yan's shoulder and his rolled-up sleeve in the left foreground, Qin Shuang on screen right, {QIN}, {KNIFE}, her left hand gripping Lai San's collar, frowning, defiant and unsmiling; Lai San at the back left by the post, his torn sleeve hanging",
          lines=[("qinshuang", "他要毀你的鍋，你還替他求情？", "不服")],
@@ -201,10 +211,10 @@ SHOTS = [
          motion="his left hand lets go of the pole and his right hand catches the brown water gourd flying in; he pulls out the wooden stopper and takes one drink",
          zh="中近景、慢推：許硯左手放開攪棍、右手接住水葫蘆，拔開木塞喝一口；累、眼睛發紅"),
     dict(loc="dawn_c", cam="Medium close-up to close-up, slow push in", chars=["qinshuang"], night="dawn",
-         comp=f"medium close-up, closing in to a close-up by the end, of Qin Shuang, the old grey cloth outer coat draped over her shoulders, {QIN}, the corners of her mouth pressed down, unsmiling; behind her only the wooden shelter post of the same cooking shelter",
+         comp=f"medium close-up, closing in to a close-up by the end, of Qin Shuang standing, one old grey cloth outer coat draped over her shoulders, {QIN}, her high ponytail a little messy, lips pressed together with the corners of her mouth turned down, brows drawn, a stubborn face, not smiling; at the left edge only Xu Yan's hand reaching in from off screen, in a rolled-up blue-grey sleeve, holding {POLE}; behind her only the wooden shelter post of the same cooking shelter",
          lines=[("qinshuang", "哼，算你還有點良心。喝完水，換我來顧。", "嘴硬")],
-         motion="she turns her face away, steps in and pulls the long stirring pole away from beside Xu Yan's hand off screen with her right hand",
-         zh="近景、慢推（中近景推到近景）：秦霜（披灰外衣）別開臉，走過來右手把攪棍從許硯手邊抽走；嘴角壓著、不笑"),
+         motion="she turns her face aside, steps to the stove and with her right hand pulls the long wooden stirring pole out of Xu Yan's hand off screen at the left edge, then holds it upright beside her; she stays standing, stubborn, not smiling",
+         zh="近景、慢推（中近景推到近景，e905 fix2）：秦霜（肩披舊灰布外衣、馬尾有點亂）別開臉，走到灶前右手把長攪棍從畫面左緣許硯手裡抽走，豎著拿在身邊；一直站著；抿嘴、嘴角往下、皺眉、嘴硬，不笑"),
     dict(loc="dawn_c", cam="Close-up, slow push in", chars=["xuyan", "qinshuang"], night="dawn",
          comp=f"close-up of Xu Yan, {XU}, {NIGHT}, {HAIR}, unsmiling; behind him, soft and out of focus, Qin Shuang seen from behind stirring the wok in the same cooking shelter",
          lines=[("xitong", "秦霜，好感加五。", "冷淡")],
@@ -219,14 +229,14 @@ SHOTS = [
          motion="Xu Yan and Qin Shuang carry the mould to the long board and bend together to set it down; Xiaohe runs from the house door to the board and rises on tiptoe; the others' lips stay closed",
          zh="全景、跟拍、前景柿子樹枝：許硯和秦霜（外衣已脫）一人一頭抬著倒扣的松木長木模，走到長木板邊同時彎腰放下；樹下疊著另外四個；小禾抱草兔從右邊屋門跑到木板邊踮腳（可以笑）"),
     dict(loc="sun", cam="Medium shot, tracking", chars=["tangxiaotang"], night="sun",
-         comp=f"medium shot of Tang Xiaotang at the house door on screen right, {TANG}, her small gold abacus hanging at her waist, unsmiling",
+         comp=f"medium shot of Tang Xiaotang at the house door on screen right, {TANG_SHUT}, her small gold abacus hanging at her waist, {TANG_CALC}; the long wooden board on screen left",
          lines=[("tangxiaotang", "先說好，要是沒成，柴錢豬油錢都記你帳上。", "精明")],
-         motion="Tang Xiaotang pushes the door open and walks out, unhooking the small gold abacus from her waist and tucking it under her left arm as she walks, and stops by the long board",
-         zh="中景、跟拍：唐小棠（t2，襦裙從立領到腰一件闔上）推開屋門走出來，邊走邊把腰間的小金算盤取下夾在左腋下，走到木板邊停住；不笑"),
+         motion="Tang Xiaotang walks out of the door, unhooking the small gold abacus from her waist with both hands and tucking it under her left arm, then stops at the long board; serious, calculating, no smile",
+         zh="中景、跟拍（e905 fix3）：唐小棠（t2，襦裙從立領扣到喉嚨、到腰一件闔上）推開屋門走出來，邊走邊用兩手把腰間的小金算盤取下夾在左腋下，走到長木板邊停住；整鏡嚴肅、在盤算：話與話之間嘴閉著、嘴角平、眉微壓、瞇眼，不笑不露齒"),
     dict(loc="sun_c", cam="Insert close-up, slow push in", chars=["xuyan"], nospeak=["xuyan"], night="sun",
          comp="low-angle insert close-up of the long wooden board, the shot opens directly on the long pine soap mould and Xu Yan's two hands from its very first frame: his two hands in his rolled-up blue-grey cuffs gripping both ends of the long mould turned upside down on the board; only the hands, cuffs and mould are in the frame, no face and no mouth; behind them only the warm sunrise light of the same yard",
          lines=[("xuyan", "記吧。要是成了，這一鍋就是我們還債的本錢。", "畫外，篤定")],
-         motion=f"his hands lift the mould straight up, and three rows of thirty {SOAP} slide out onto the board, lit by the morning sun",
+         motion=f"his hands lift the mould straight up, and three rows of thirty {SOAP_ST1} slide out onto the board, lit by the morning sun",
          zh="低角度手部特寫、慢推（第一格就是木模與許硯的兩隻手）：許硯兩手抓住木模兩端往上一提，三排共三十塊雪白方塊滑出來排在木板上，晨光照在上面；畫面上沒有嘴（script 的「手上沾著灰」不寫：皮膚上的小點會畫成黑點）"),
     dict(loc="sun_c", cam="Medium close-up, slow push in", chars=["xiaohe"], night="sun",
          comp=f"medium close-up of {HE}, her small straw rabbit tucked under her arm, one wooden basin of clear water before her, wide-eyed and smiling; behind her only the persimmon tree of the same yard",
@@ -234,20 +244,20 @@ SHOTS = [
          motion="she picks up one white bar of soap in both hands, dips it in the basin and rubs it twice; a big puff of white foam rises and bubbles float into the sunlight",
          zh="中近景、慢推：小禾（草兔夾在腋下）兩手抓起一塊白皂浸進木盆搓兩下，一大團白泡沫冒起來、泡泡飄進陽光；睜大眼睛（可以笑）"),
     dict(loc="sun_c", cam="Close-up, slow push in", chars=["tangxiaotang"], night="sun",
-         comp=f"close-up of Tang Xiaotang framed from the chin up, her high stand-up collar closed at her throat, {TANG}, shrewd and unsmiling, the small gold abacus under her left arm; behind her only the persimmon tree of the same yard",
+         comp=f"close-up of Tang Xiaotang {COLLAR}, her peach-pink brocade ruqun; serious and shrewd, eyes narrowed in appraisal, lips closed between words, no smile and no teeth at any moment; the small gold abacus under her left arm; behind her only the persimmon tree of the same yard",
          lines=[("tangxiaotang", "又白又香。一塊賣三錢，縣城的太太會搶著要。", "精明")],
-         motion="she lifts one white bar of soap to her nose with her right hand and sniffs it, while the fingertips of her left hand flick three beads of the abacus under her arm",
-         zh="近景、慢推（下巴以上）：唐小棠右手拿一塊白皂湊到鼻下聞，左手指尖撥過腋下算盤的三顆算珠；不笑、很精"),
+         motion=f"her right hand lifts {SOAP} under her nose and she sniffs it, left fingertips flicking three abacus beads; eyes narrowed, no smile",
+         zh="近景、慢推（下巴以上，臉填滿畫面，e905 fix3）：畫面下緣是扣到喉嚨的立領頂端，一件闔上、領下沒有開口；唐小棠右手拿一塊雪白方皂（巴掌大、一指厚）湊到鼻下聞，左手指尖撥過左腋下算盤的三顆算珠；嚴肅、精明、瞇眼打量，不笑"),
     dict(loc="sun", cam="Over-the-shoulder medium shot, slow push in", chars=["xuyan", "tangxiaotang"], night="sun",
          comp=f"over-the-shoulder shot from behind Tang Xiaotang's looped buns and pink silk ribbons in the left foreground, {TANG}; Xu Yan on screen right, {XU}, {NIGHT}, {HAIR}, unsmiling",
          lines=[("xuyan", "三錢？一斗米才幾十文，妳這價會不會太高？", "皺眉")],
          motion="Xu Yan walks over wiping his hands on the hem of his robe, stops and frowns; Tang Xiaotang's lips stay closed",
          zh="過肩（唐小棠肩後拍許硯）、慢推：許硯一邊用衣襬擦手一邊走過來，停步皺眉；累（script 的「手上沾著白色皂屑」不寫，只留擦手的動作）"),
     dict(loc="sun_c", cam="Over-the-shoulder close-up, slow push in", chars=["tangxiaotang", "xuyan"], night="sun",
-         comp=f"reverse over-the-shoulder shot from behind Xu Yan's shoulder in the right foreground, Tang Xiaotang on screen left framed from the chin up, her high stand-up collar closed at her throat, {TANG}, sure of herself and unsmiling; behind her only the persimmon tree of the same yard",
+         comp=f"reverse over-the-shoulder shot from behind Xu Yan's right shoulder in the right foreground, Tang Xiaotang on screen left in a close-up {COLLAR}, her peach-pink brocade ruqun; calm and certain, steady eyes, lips closed between words, no smile and no teeth at any moment; on the long wooden board before her only one row of identical soap bars, each {SOAP}; behind her only the persimmon tree of the same yard",
          lines=[("tangxiaotang", "便宜的東西沒人當寶。貴，她們才捨得拿出來炫耀。", "篤定")],
-         motion="she sets the white bar back on the board and lines it up neatly with the others, and only then lifts her eyes to him; Xu Yan's lips stay closed",
-         zh="反打（許硯肩後拍唐小棠）、慢推（唐小棠下巴以上）：唐小棠把白皂放回木板、跟其他的對齊排好，才抬眼看他；不笑、很篤定"),
+         motion=f"first she sets {SOAP} on the board in line with the others, then looks up at Xu Yan, no smile; his lips stay closed",
+         zh="反打（許硯右肩後拍唐小棠）、慢推（唐小棠下巴以上，立領扣到喉嚨，e905 fix3）：一開始她把一塊雪白方皂（巴掌大、一指厚）放上木板、跟一排一樣的方皂對齊，才抬眼看許硯說話；木板上只有那排方皂；平靜、篤定、眼神穩，話與話之間嘴閉著，不笑"),
     dict(loc="sun", cam="Two-shot, tracking", chars=["xuyan", "laisan"], night="sun",
          comp=f"two-shot, Xu Yan, {XU}, {NIGHT}, one small piece of soap trimmed from the mould's edge, half the size of a bar and wrapped in one green leaf, in his right hand; Lai San, {LAI}, his torn sleeve hanging and his head-wrap askew, just getting up from beside the bamboo fence and limping toward the yard gate deep at the back left",
          lines=[("xuyan", "這塊帶回去給錢員外，叫他好好洗洗手。", "淡淡，帶刺")],
