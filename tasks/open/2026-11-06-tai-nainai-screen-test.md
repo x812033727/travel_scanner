@@ -27,8 +27,8 @@ scope:
 
 ## Definition of done
 
-- [ ] 站主看過試鏡結果，定下畫風（真人或 3D）與月棠兩個聲音，寫進這張票，bible〈要站主決定的〉另開改單。
-- [ ] 試鏡的提示詞、seed、每段 CU 與取捨留在 `production/screen-test/`，選中的定妝照可以給下一個 session 用。
+- [x] 站主看過試鏡結果，定下畫風（真人或 3D）與月棠兩個聲音，寫進這張票，bible〈要站主決定的〉另開改單。
+- [x] 試鏡的提示詞、seed、每段 CU 與取捨留在 `production/screen-test/`，選中的定妝照可以給下一個 session 用。
 
 ## Steps
 
@@ -41,7 +41,7 @@ scope:
 - [x] 聲音：站主 2026-11-06「先用暫定的」——月棠十八歲 Kore、九十六歲 Gacrux（`cast.json` 已是這兩個，不用改；bible〈要站主決定的〉第 1、2 條另由 #2030 的分支更新）。
 - [x] 站主點頭開跑試鏡（約 10–12 CU，上限 15）。
 - [x] 教訓寫進 `minimax-h3-colab/references/lessons.md` 第 13 節。
-- [ ] 冷看一次，交站主。
+- [x] 冷看一次，交站主。
 
 ## How to verify
 
@@ -76,3 +76,4 @@ bash .agents/skills/minimax-h3-colab/scripts/h3.sh images-check --manifest <work
 - 預估（推算，未實測）：G4 約 8 CU／小時；整個試鏡約 1.5 小時、10–14 CU。花 CU 前後抄 `h3.sh usage`。
 - Colab 出圖至少要一張參考圖，這部還沒有定妝照：第一輪用一張空白灰底當 image 1（沒試過，先 `--only` 兩張驗）。
 - 分支疊在 PR #2030（`claude/confident-galileo-vfq0j3`）上，要 #2030 先合。
+- 2026-11-07 補畫第一章參考圖（`refs-r5`、`refs-r6`，#2034）；第 1 集三鏡小樣 c19–c21（Ref2VA hero → σ0.5 到 1312×736）已交站主，manifest 與提示詞在 `production/screen-test/runs/pilot-e001/`。結果：臉、辮子、壽衣、戒指三鏡都守住；c19 模型在 3.2 秒自己多切一鏡（剪掉）；c21 開頭已經站著、跳過起身，接 c20 會跳；燈畫得比寫的大。點數：小樣約 2.8 CU，Colab 餘額 32.2 CU。等站主看小樣決定量產或改法。
