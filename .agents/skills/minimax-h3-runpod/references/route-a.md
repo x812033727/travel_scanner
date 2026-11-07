@@ -301,3 +301,4 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
   - 用 `bk-episode.sh N|old NNN|shared` 推，每次都在同一條分支上加一版（fast-forward，不強推），再用 `verify-episode.py <分支名>` 逐檔比對雜湊。大檔切成 90 MiB 的段，每段都比對。
   - 不要再每天開帶日期的新分支：站主看不出哪條才是完整的，自己也不放心。
   - 刪本機檔案的條件（站主 2026-11-07）：備份分支驗證為 0、`coverage.py` 為 0、另一個代理到 GitHub 核對過，**而且這集已經送上後台、在後台確認成片、字幕、封面都在**，兩件都成立才刪，只刪那一集。
+- 模型原聲只用在**看得到嘴在說話**的台詞。系統聲、畫外、內心獨白、背對鏡頭（`nospeak`）的台詞，提示詞裡本來就沒有那句話，模型會自己編出聽不懂的話（第 1 集真人版 s01、s03、s22、s36、s37 的草稿）。這些台詞改用錄好的 `audio/` 檔，那一鏡自己的聲音整段靜音。`assemble-v4.mjs` 的 `clip_voice` 已經照這樣分開處理。看得到嘴說話的台詞，提示詞一定要有「speaks a short Mandarin line, 「…」」，而且是劇本原句。
