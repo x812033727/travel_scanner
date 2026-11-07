@@ -444,9 +444,9 @@
     {
      "id": "p014",
      "speaker": "chief",
-     "text": "鹽山？",
+     "text": "鹽山？這個猜法很合理。",
      "pause_after_ms": 100,
-     "emotion": "笑"
+     "emotion": "認真想一下"
     },
     {
      "id": "p015",
@@ -1371,7 +1371,7 @@
     {
      "id": "p075",
      "speaker": "chief",
-     "text": "你先別急。你看，水在這鍋湯裡，只待一下子。",
+     "text": "你先別急。先比比看，水跟鹽在這鍋湯裡，各待多久。",
      "pause_after_ms": 100
     }
    ]
@@ -1887,7 +1887,7 @@
     {
      "id": "p107",
      "speaker": "chief",
-     "text": "會。你一開始說的鹽山，說對了一點點。",
+     "text": "會。鹽山是沒有，不過海底真的會冒東西出來。",
      "pause_after_ms": 100
     }
    ]
@@ -1965,7 +1965,7 @@
    "id": "ancient-salt",
    "template": "shot",
    "data": {
-    "prompt": "Cutaway view of the ground showing a thick shiny white layer of salt buried deep under brown rock, green fields and a few small trees on top, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "prompt": "Wide view of a shallow sunny bay cut off from the blue sea by a long low sand bar, its still water shrinking and leaving bright white salt flats along the shore, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
     "camera": "drift",
     "visual": "still",
     "characters": [],
@@ -1975,9 +1975,22 @@
     {
      "id": "p112",
      "speaker": "chief",
-     "text": "很久很久以前，有些海灣跟大海隔開了，",
+     "text": "在很長很長的時間裡，有些海灣跟大海隔開了，",
      "pause_after_ms": 100
-    },
+    }
+   ]
+  },
+  {
+   "id": "buried-salt",
+   "template": "shot",
+   "data": {
+    "prompt": "Cutaway view of the ground showing a thick shiny white layer of salt buried deep under brown rock, green fields and a few small trees on top, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
     {
      "id": "p113",
      "speaker": "chief",
