@@ -1,0 +1,304 @@
+{
+ "_note": "《恁祖媽今年18》第 1 集剪接表（assemble-v4.mjs）。bible〈配樂、音效、剪接〉：不放片名卡、集數、人名條，畫面不放字；不裁切放大；慢放不超過 1.1 倍；CC 軟字幕。min：無聲鏡照分鏡秒數，有台詞的鏡至少分鏡秒數減 0.5（c20 結尾的起身、c27 推門要留住）。",
+ "tempo": 1.07,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "punch": false,
+ "grades": {},
+ "default_grade": "indoor",
+ "finish": "vignette=angle=PI/5,noise=alls=3:allf=t,format=yuv420p",
+ "names": {},
+ "min": {
+  "c01": 1.5,
+  "c01b": 2.0,
+  "c02": 5.5,
+  "c03": 5.0,
+  "c04": 5.5,
+  "c05": 4.5,
+  "c06": 4.5,
+  "c07": 5.5,
+  "c08": 4.5,
+  "c09": 5.0,
+  "c10": 5.0,
+  "c11": 5.0,
+  "c12": 4.5,
+  "c13": 3.0,
+  "c14": 4.5,
+  "c15": 5.0,
+  "c16": 5.5,
+  "c17": 4.5,
+  "c18": 6.0,
+  "c19": 3.0,
+  "c20": 6.5,
+  "c21": 4.0,
+  "c22": 5.0,
+  "c23": 5.5,
+  "c24": 5.0,
+  "c25": 5.5,
+  "c26": 4.0,
+  "c27": 4.5
+ },
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/tai-nainai/sfx"
+ ],
+ "music": [
+  {
+   "cue": "memory",
+   "from": "c01",
+   "to": "c06",
+   "offset": 0,
+   "gain": -17,
+   "fade_out": 1.2
+  },
+  {
+   "cue": "tension",
+   "from": "c07",
+   "to": "c15",
+   "offset": 0,
+   "gain": -16,
+   "fade_in": 0.6,
+   "fade_out": 1.0
+  },
+  {
+   "cue": "memory",
+   "from": "c16",
+   "to": "c26",
+   "offset": 40,
+   "gain": -16,
+   "fade_in": 1.0,
+   "fade_out": 0.3
+  }
+ ],
+ "sfx": [
+  {
+   "file": "oil-pour",
+   "at": "c01",
+   "off": 0.0,
+   "gain": -16
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "c02",
+   "off": 0.9,
+   "gain": -20
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c03",
+   "off": 0.3,
+   "gain": -20
+  },
+  {
+   "file": "handleCoins",
+   "at": "c03",
+   "off": 1.2,
+   "gain": -26
+  },
+  {
+   "file": "creak2",
+   "at": "c05",
+   "off": 3.3,
+   "gain": -20
+  },
+  {
+   "file": "door_close_01",
+   "at": "c05",
+   "off": 4.2,
+   "gain": -18
+  },
+  {
+   "file": "metalLatch",
+   "at": "c06",
+   "off": 0.9,
+   "gain": -16
+  },
+  {
+   "file": "metalLatch",
+   "at": "c06",
+   "off": 2.2,
+   "gain": -19
+  },
+  {
+   "file": "paper_02",
+   "at": "c07",
+   "off": 0.3,
+   "gain": -20
+  },
+  {
+   "file": "paper_03",
+   "at": "c07",
+   "off": 0.8,
+   "gain": -20
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "c09",
+   "off": 0.5,
+   "gain": -17
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c10",
+   "off": 0.4,
+   "gain": -22
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c10",
+   "off": 1.2,
+   "gain": -22
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c11",
+   "off": 0.3,
+   "gain": -22
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c12",
+   "off": 0.2,
+   "gain": -18
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c12",
+   "off": 0.6,
+   "gain": -18
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c12",
+   "off": 1.0,
+   "gain": -18
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c12",
+   "off": 1.4,
+   "gain": -19
+  },
+  {
+   "file": "baoxinling",
+   "at": "c13",
+   "off": 0.6,
+   "gain": -12
+  },
+  {
+   "file": "creak3",
+   "at": "c15",
+   "off": 2.6,
+   "gain": -20
+  },
+  {
+   "file": "creak1",
+   "at": "c16",
+   "off": 0.5,
+   "gain": -18
+  },
+  {
+   "file": "cloth1",
+   "at": "c17",
+   "off": 0.8,
+   "gain": -26
+  },
+  {
+   "file": "deng-hum",
+   "at": "c18",
+   "off": 0.6,
+   "gain": -14
+  },
+  {
+   "file": "cloth1",
+   "at": "c20",
+   "off": 1.0,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "c20",
+   "off": 5.0,
+   "gain": -22
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c21",
+   "off": 0.4,
+   "gain": -22
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c21",
+   "off": 1.4,
+   "gain": -22
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c21",
+   "off": 2.4,
+   "gain": -22
+  },
+  {
+   "file": "impactPlate_light_000",
+   "at": "c22",
+   "off": 2.0,
+   "gain": -26
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "c24",
+   "off": 0.6,
+   "gain": -22
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "c24",
+   "off": 3.8,
+   "gain": -22
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "c25",
+   "off": 0.3,
+   "gain": -20
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "c25",
+   "off": 1.1,
+   "gain": -20
+  },
+  {
+   "file": "dishes_01",
+   "at": "c25",
+   "off": 0.6,
+   "gain": -24
+  },
+  {
+   "file": "metalLatch",
+   "at": "c26",
+   "off": 0.8,
+   "gain": -15
+  },
+  {
+   "file": "creak2",
+   "at": "c26",
+   "off": 2.0,
+   "gain": -18
+  },
+  {
+   "file": "creak3",
+   "at": "c27",
+   "off": 0.0,
+   "gain": -19
+  },
+  {
+   "file": "dishes_02",
+   "at": "c27",
+   "off": 3.0,
+   "gain": -18
+  }
+ ]
+}
