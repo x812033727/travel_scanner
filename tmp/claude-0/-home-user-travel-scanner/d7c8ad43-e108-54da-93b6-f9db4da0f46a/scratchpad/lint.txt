@@ -1,0 +1,21 @@
+tai-nainai-e003: 0 errors, 13 warnings
+WARN  scenes: craft pace.median: median shot 4.6 s, target 2–4 s; split the long shots: one short line, one picture (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft pace.longest: longest shot 9.2 s, target ≤ 8 s; longer than the shortest clip the pipeline buys (c14) (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft pace.spread: long shots against short ones (90th ÷ 10th percentile) 1.5, target ≥ 2; every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft hook.opening30: shots that start in the first 30 s 8, target ≥ 10; the opening half-minute is where the density goes (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft lines.median: median line length 16 characters, target ≤ 12; people in a scene speak in short turns; break the sentence where the cut goes (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft size.agree: shots whose camera line and prompt name different sizes 2, target 0; the picture model receives both; write one size, in both places or only in `camera` (c15, c17) (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft size.insert: inserts 4%, target 5%–25%; an insert answers a story question (which paper, whose hand); too few hides the proof, too many hides the people (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft motion.look: shots where the only behaviour is a look, a breath or a tremor 70%, target ≤ 33%; reaction shots are needed, a third is the ceiling: elsewhere write what the person does to someone or something (c01, c01b, c02, c03, c04, c07, c09, c10, … 19) (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft motion.run: such shots in a row 6 shots, target ≤ 2; three looks in a row is three portraits: put an action between them (c13, c14, c15, c16, c17, c18) (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft motion.opening: first three shots all looks, target something happens; the opening is an action in progress, not three portraits (c01, c01b, c02) (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes: craft motion.repeat: same camera move in a row 9 shots, target ≤ 3; vary it, or let the cut do the moving (c15, c16, c17, c18, c19, c20, c21, c22, … 9) (.agents/skills/youtube-video/references/drama-craft.md)
+WARN  scenes[0]: the opening chapter runs about 41 s; the hook should land within 30 s
+WARN  sources: no sources: every fact in claims.md needs one, and they go in the description
+
+Estimate: 2.1 min, 19 lines, 301 spoken units
+Azure billable characters (estimate): 1223, 0.2% of the free tier's 500,000 a month
+Chapters (estimated times):
+  00:00 三十個抽屜
+  00:41 三十個抽屜（下）
+  01:32 垃圾桶裡的鈴
