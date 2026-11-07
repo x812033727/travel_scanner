@@ -1,0 +1,90 @@
+{
+  "look_hash": "326f3bacb71c7c72",
+  "look": {
+    "preset": "cute-cartoon",
+    "style": "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+    "negative": "",
+    "motion": "slow push in or gentle drift, no morphing, no cuts",
+    "candidates": 3,
+    "style_frames": []
+  },
+  "image": {
+    "provider": "minimax",
+    "model": "image-01"
+  },
+  "image_selection_version": 1,
+  "characters": {
+    "chief": {
+      "name": "所長",
+      "prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text. Character: 所長, a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+      "candidates": [
+        {
+          "n": 1,
+          "seed": 0,
+          "file": "characters/chief/series-0c3a400c8e981d84.png",
+          "sha256": "9c2c07aee01e9c76812836372b6dd0d8e8625a66965d82700bc8bc87c04333e6",
+          "key": "0c3a400c8e981d84",
+          "judge": {
+            "overall": 6.5,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 6,
+              "style": 7,
+              "clean": 6,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: missing grey streak in hair and pencil resembles an earring hanging from the lobe → noticeable streak of grey in low ponytail, full yellow pencil resting behind ear",
+              "clean: fingers on clasped hands are muddled and lack separation → clearly drawn clasped fingers"
+            ],
+            "notes": "The chibi design captures the general outfit and cute explainer aesthetic well. Minor inaccuracies remain regarding the pencil placement and hand details."
+          },
+          "reused_from": "sothatswhy-p14-sky-colors"
+        }
+      ],
+      "suggested": 1,
+      "needs_review": false,
+      "reused": true
+    },
+    "kid": {
+      "name": "小問",
+      "prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text. Character: 小問, a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+      "candidates": [
+        {
+          "n": 1,
+          "seed": 0,
+          "file": "characters/kid/series-f8dac008f296a6a3.png",
+          "sha256": "0a1d7073877f1f5fa672ea1103d51d79ff3c870f8a93e9c7ab56fff0ad7599da",
+          "key": "f8dac008f296a6a3",
+          "judge": {
+            "overall": 6.85,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 6.5,
+              "style": 7,
+              "clean": 6.8,
+              "no_text": 7.2
+            },
+            "problems": [
+              "appearance: eyes are small and half-lidded rather than large and round → large round wide-open expressive eyes",
+              "clean: fingers are indistinct nubs at the ends of the sleeves → defined cute cartoon hands with clear fingers"
+            ],
+            "notes": "The illustration matches the overall style, color scheme, and character design requirements cleanly. The character's eyes and hands could be slightly more defined to better match the prompt."
+          },
+          "reused_from": "sothatswhy-p14-sky-colors",
+          "image": {
+            "provider": "minimax",
+            "model": "image-01"
+          }
+        }
+      ],
+      "suggested": 1,
+      "needs_review": false,
+      "reused": true
+    }
+  },
+  "contact_sheet": "characters/contact-sheet.png",
+  "generated_at": "2026-11-07T07:51:25.601Z"
+}
