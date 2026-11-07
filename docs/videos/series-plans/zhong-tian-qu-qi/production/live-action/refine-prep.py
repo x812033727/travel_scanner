@@ -29,7 +29,8 @@ for tsv in sys.argv[2:]:
         shot, choice, reason = (line.split("\t") + ["", ""])[:3]
         if choice.isdigit():
             trim = dict(re.findall(r"(start|end-before)@([0-9.]+)", reason))
-            picks[shot] = {"seed": int(choice), "trim": {k: float(v) for k, v in trim.items()}}
+            crop = re.search(r"crop=(\d+:\d+:\d+:\d+)", reason)  # a reframe in the cut (e001 live fix2 s01)
+            picks[shot] = {"seed": int(choice), "trim": {k: float(v) for k, v in trim.items()}, **({"crop": crop.group(1)} if crop else {})}
         elif choice == "RETAKE":
             picks.pop(shot, None)
 for shot, p in picks.items():

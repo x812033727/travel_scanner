@@ -30,9 +30,14 @@ for shot, p in sorted(picks.items()):
         print(f"{shot}: not refined yet"); missing += 1; continue
     start = p["trim"].get("start", 0.0)
     cut = ["-to", f"{p['trim']['end-before']:.3f}"] if "end-before" in p["trim"] else []
+    # a crop from the pick is given on the 960x544 draft; the refined picture is 1312x736, so it is scaled to match
+    vf = []
+    if p.get("crop"):
+        w, h, x, y = (int(v) for v in p["crop"].split(":")); k = 1312 / 960
+        vf = ["-vf", f"crop={round(w * k)}:{round(h * k)}:{round(x * k)}:{round(y * k)},scale=1312:736:flags=lanczos,setsar=1"]
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{start:.3f}", *cut, "-i", str(pic),
                     "-ss", f"{start:.3f}", *cut, "-i", p["draft"],
-                    "-map", "0:v", "-map", "1:a?", "-c:v", "libx264", "-crf", "16", "-preset", "fast", "-pix_fmt", "yuv420p",
+                    "-map", "0:v", "-map", "1:a?", *vf, "-c:v", "libx264", "-crf", "16", "-preset", "fast", "-pix_fmt", "yuv420p",
                     "-c:a", "aac", "-b:a", "192k", "-shortest", str(E / "clips" / f"{shot}-t1.mp4")], check=True)
     done += 1
 print(f"staged {done}, not refined {missing} -> {E / 'clips'}")
