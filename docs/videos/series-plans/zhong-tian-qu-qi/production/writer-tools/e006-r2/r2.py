@@ -53,6 +53,10 @@ LOC = {
     "yamen_c": "At the vermilion gate of the county yamen at noon, bright overhead sunlight",
     "market": "On the market street of the county town on a clear autumn afternoon: a flagstone street with two rows of stalls along both sides, every stall boarded shut with nailed planks, their awnings and signboards plain and blank, one two-storey tea house on screen right with a red-lacquered railing along its upper floor, light from the upper right a little to the west, shadows falling to the left",
     "market_c": "On the market street of the county town in the afternoon, light from the upper right",
+    # Shorter wide-shot headers for the busy RETAKE shots (fix1), so the composition fits under 1000 characters.
+    "dawn_m": "In the dirt yard of the Xu farmhouse at sunrise on a clear autumn morning: one long wooden board of white soap bars in the middle, one persimmon tree on screen left, the house door on screen right, warm low sunrise light from screen left, long shadows",
+    "yamen_m": "At the vermilion gate of the county yamen at the top of five stone steps just before noon, a plain lintel board with no writing, one small wooden table by the gate, the sun overhead and short shadows",
+    "market_m": "On the market street of the county town on a clear autumn afternoon: a flagstone street with stalls along both sides, one two-storey tea house on screen right, light from the upper right, shadows falling to the left",
 }
 LIGHT = {
     "dawn": "the warm low sunrise light from the left stays unchanged",
@@ -76,13 +80,33 @@ FLOWER = "one small red papercut flower"
 HE = "little Xiaohe in her patched lilac short jacket with red-string pigtails and one front tooth missing"
 ERNIU = "Wang Erniu in his coarse brown short jacket with rolled sleeves"
 HOE = "one wooden-handled iron hoe"
-BASKET = "one bamboo basket full of snow-white bars of soap, each wrapped in one green leaf"
-SOAP = "snow-white square bars of soap, each palm-sized and one finger thick with square corners, opaque and not glowing"
+BASKET_ST1 = "one bamboo basket full of snow-white bars of soap, each wrapped in one green leaf"  # s25 (picked)
+SOAP_ST1 = "snow-white square bars of soap, each palm-sized and one finger thick with square corners, opaque and not glowing"  # s26 (picked)
 DOCS = "three marriage documents, each one long strip of red paper folded shut with its plain blank back toward the camera"
 ZHAO = "Constable Zhao in his black constable's hat and plain black official uniform, wiry and narrow-eyed, an iron ruler and a sword in a black scabbard on the left of his belt"
 QIAN = "Qian Yuanwai, short and portly with a round face, in his dark gold roundel-patterned silk robe, three gold rings on his fingers"
 CUP = "one small plain white glazed pottery cup"
 PACKS = "three small packets wrapped in plain blank red paper and tied with red cord"
+# 2026-11-07 independent review of the stage-1 drafts (colab/runs/e906/review-picks.tsv, its section C): one phrase per
+# prop, word for word, in the 14 RETAKE shots (colab/runs/e906/fix1). The older phrases above stay in the picked shots.
+# The red cloth (s16, s23, s27, s30, s35, s36; both drafts of s16 tied it round his waist only).
+RED_SASH = "a strip of red cloth tied diagonally across his chest from his left shoulder to his right hip"
+# The marriage letters (s21, s30: both drafts drew off-white paper, one with printed writing).
+LETTERS = "three marriage letters of bright red paper, each folded shut into one long narrow strip, their plain red backs toward the camera, no writing visible"
+# The soap (s35, s36 drew green cabbage-like balls in the basket).
+SOAP = "a white bar of soap the size of a palm and one finger thick, wrapped in one flat green leaf with the white soap showing"
+BASKET = f"one bamboo basket full of soap bars, each {SOAP}"
+# The red parcels of s26 (s27, s28 drew soft cushions and a flat red envelope).
+PARCEL = "one small square parcel of plain blank red paper, palm-sized and one finger thick with crisp square edges, tied once round with thin red string in a small knot"
+PARCELS = "three separate small square parcels of plain blank red paper, each palm-sized and one finger thick with crisp square edges, tied once round with thin red string in a small knot"
+# The market of c35-c39 (both drafts of s35 and s36 had the stalls open and trading).
+STALLS = "every stall front on both sides nailed shut with rough planks, nothing on display"
+FLOWER_BUN = "one small red paper flower pinned in her hair beside her bun"
+FLOWER_TAIL = "one small red paper flower pinned in her hair beside her ponytail"
+# s01 and s35 drew a second Qin Shuang (by the persimmon tree, in the street).
+ONE_QIN = "exactly one Qin Shuang"
+# Tang Xiaotang laughed with her teeth showing in both drafts of s02, s04, s29, s37: a concrete face, not just "unsmiling".
+TANG_COOL = "cool and businesslike, a stern level look, lips pressed flat between words, no smile and no teeth at any moment"
 
 SHOTS = [
     # ---- scene 1: the yard at sunrise, the next instant after e005 c40, warm low light from the left. Axis: the soap
@@ -213,12 +237,12 @@ SHOTS = [
          motion="he pushes the documents down into a hand reaching up at the bottom edge of the frame, then lifts his chin",
          zh="低角度近景（從台階下往上拍）、慢推：趙捕頭把婚書往下一推，退回許硯手裡，下巴一抬（可以冷笑）"),
     dict(loc="yamen_c", cam="Medium shot to close-up, slow push in", chars=["xuyan"], night="yamen",
-         comp=f"medium shot, closing in to a close-up by the end, of Xu Yan, {XU}, {SASH}, {RED}, {DOCS} in his hand; at the bottom edge of the frame {BASKET} on an arm in a dark brown sleeve; behind him only the vermilion gate of the same county yamen",
+         comp=f"medium shot, closing in to a close-up by the end, of Xu Yan, {XU}, {SASH}, {RED}, {DOCS} in his hand; at the bottom edge of the frame {BASKET_ST1} on an arm in a dark brown sleeve; behind him only the vermilion gate of the same county yamen",
          lines=[("xuyan", "等等，聘禮我有。不是金銀，是縣城沒見過的東西。", "愣一下，眼睛一亮")],
          motion="he tucks the documents under his left arm and looks down at the basket; he freezes, and only then his eyes light up and his right hand lifts out three bars",
          zh="近景、慢推（中景推到近景，長鏡）：許硯把退回的婚書夾到左腋下，低頭看見畫面下緣秦霜臂彎竹籃裡綠葉包的白皂，愣一下，眼睛一亮，伸右手從籃裡拿起三塊"),
     dict(loc="yamen_c", cam="Insert close-up, locked", chars=["xuyan"], night="yamen", act=3,
-         comp=f"insert close-up of the small wooden table by the drum stand, the shot opens directly on three white bars of soap on the table from its very first frame: three {SOAP}, three squares of plain blank red paper, one roll of red cord, and Xu Yan's two hands in his rolled-up blue-grey cuffs; only the hands, cuffs, soap and paper are in the frame, his face out of the frame; behind them only the stone steps of the same county yamen",
+         comp=f"insert close-up of the small wooden table by the drum stand, the shot opens directly on three white bars of soap on the table from its very first frame: three {SOAP_ST1}, three squares of plain blank red paper, one roll of red cord, and Xu Yan's two hands in his rolled-up blue-grey cuffs; only the hands, cuffs, soap and paper are in the frame, his face out of the frame; behind them only the stone steps of the same county yamen",
          lines=[],
          motion="his hands wrap each white bar in one square of red paper, tie one turn of red cord round it in a knot, and set the three red packets in a row",
          zh="手部特寫、固定（第一格就是鼓架旁小木桌上的三塊白皂）：許硯的兩手（藍灰袖口）把三塊白皂各包上一張紅紙，繞一圈紅繩打結，排成三個紅紙包（無台詞）"),
