@@ -121,7 +121,7 @@ chief("chief-main-q", C("folding her hands with a curious smile, eyebrows raised
 scene("ground-start", UNDER + ", one bright glowing spot deep inside the rock with soft rings spreading out from it, " + DAY,
       c("因為地震一開始，就是一場賽跑。", "接住上一句"), c("起點在地底下，地震開始的那個地方。"), chapter="地底下開始的賽跑")
 kid("kid-where-start", K("crouching to look closely at the wooden floor with a curious face, both hands out of frame", where=LIVING),
-    k("起點在我家下面嗎？", "句尾上揚"))
+    k("地震的起點在我家下面？", "句尾上揚"))
 scene("epicentre-dot", UNDER + ", one bright glowing spot deep inside the rock and one small bright yellow dot on the green grass at the surface, " + DAY,
       c("每次都不一樣，常常離你家很遠。"), c("起點正上方，地面上那一點，叫做震央。"))
 kid("kid-epi", K("nodding with a serious little face, both hands out of frame", close=True),
@@ -131,7 +131,7 @@ chief("chief-epi-yes", C("smiling and giving a small nod", close=True),
 kid("kid-whole-q", K("spreading both arms wide with a curious face", where=LIVING),
     k("那地震一開始，", "好奇"), k("是不是全台灣一起搖？", "句尾上揚", "S:whole"))
 scene("ripple-out", "Wide view from a hill of green countryside and small towns, soft round ripples in the ground like rings on a pond, " + DAY,
-      c("不是。搖晃從起點往外，一路跑出去，", None, "P:whole"), c("離震央越遠，就越晚跑到。"), c("而且跑出去的，不只一個。"))
+      c("不是。搖晃從起點往外，一路跑出去，", None, "P:whole"), c("住得離震央越遠，搖晃就越晚到。"), c("而且跑出去的，不只一個。"))
 kid("kid-two-q", K("leaning in with wide curious eyes, both hands out of frame", close=True),
     k("還有別人在跑？是誰？", "好奇"))
 scene("messenger", "Wide cutaway view of brown rock layers underground with one thin small bright quick ripple, tiny next to a huge thick heavy band of rock bulging slowly",
@@ -143,7 +143,7 @@ scene("ripple-close", "Close-up of one thin small bright ripple glowing softly i
 scene("big-wave", "Wide cutaway view of brown rock layers underground with a huge thick heavy band of rock bulging, small houses on the green ground with gently tilted roofs",
       c("後面跟著一個大個子，叫S波。"), c("它前後左右用力晃，搖得兇多了。"))
 kid("kid-big-guy", K("swaying with both arms out for balance and a wobbly grin", where=LIVING),
-    k("把東西搖倒的，", "推理"), k("就是大個子？", "句尾上揚"))
+    k("真的會把東西搖倒的，", "推理"), k("就是大個子？", "句尾上揚"))
 scene("tilted-house", "Medium shot of a small cartoon house on green grass with its roof tilted and a little tree leaning, a fallen flowerpot beside it, " + DAY,
       c("通常是它。小信差溫柔得多。"))
 kid("kid-order-got", K("with a bright face of sudden discovery, eyes wide and mouth open", close=True),
