@@ -332,7 +332,7 @@
 
 #### 69. kid-more-exit
 
-【小問】（句尾上揚）那廚房那種鹽，要從哪裡離開？
+【小問】（句尾上揚）那廚房那種鹽巴，要從哪裡離開？
 
 #### 70. chief-salt-exit
 
@@ -505,5 +505,5 @@
 
 【所長】（誠懇）想一起找生活裡的為什麼，就訂閱原來如此事務所。
 
-narrative 6987b90d70aa4000
-speech cab11a73de07f93a
+narrative 017551f1c9b78b53
+speech 2a6edcd3289b69f5

@@ -229,7 +229,7 @@ chief("chief-half-right", C("smiling and giving a small nod"),
 scene("vent-swap", "Close-up of a rocky seafloor chimney with warm shimmering water swirling around it, tiny golden specks drifting out and tiny white specks sinking into the rock, blue water around",
       c("熱泉會帶出石頭裡的一些金屬，"), c("也會把海水裡的一些東西，留在石頭裡。"))
 kid("kid-more-exit", K("leaning forward with both hands out of frame and curious eyes", close=True),
-    k("那廚房那種鹽，要從哪裡離開？", "句尾上揚", "S:saltexit"))
+    k("那廚房那種鹽巴，要從哪裡離開？", "句尾上揚", "S:saltexit"))
 chief("chief-salt-exit", C("pointing down with one finger and a knowing smile"),
       c("有一條路在鍋邊，就像湯熬乾時，鍋邊那一圈鹽。"))
 scene("ancient-salt", "Wide view of a shallow sunny bay cut off from the blue sea by a long low sand bar, its still water shrinking and leaving bright white salt flats along the shore, " + DAY,
