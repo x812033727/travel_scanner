@@ -71,7 +71,9 @@ def main(name):
             if inner:
                 emo = "內心獨白，嘴閉著，" + emo
             off = spk != "xitong" and spk not in on
-            lines.append({"id": f"zq{ep}a{n:02d}", "speaker": spk, "text": text, "emotion": ("畫外，" + emo) if off and not emo.startswith("畫外") else emo})
+            # a thought keeps its emotion when its thinker is off screen (e001 s38 live prep: his point of view), so the
+            # recorded voice, whose cache keys on the emotion, stays valid
+            lines.append({"id": f"zq{ep}a{n:02d}", "speaker": spk, "text": text, "emotion": ("畫外，" + emo) if off and not inner and not emo.startswith("畫外") else emo})
             if not off and not inner and spk != "xitong" and spk not in s.get("nospeak", []):
                 by.setdefault(spk, []).append(text)
         motion = s["motion"]

@@ -30,7 +30,9 @@ LIVE_LOOK = {  # cast.json text -> the live-action text the screen test drew (sc
     "a dark gold silk robe with roundel patterns": "an ancient Chinese Song-dynasty rich landlord's dark gold silk cross-collared robe with roundel patterns and a small black cap",
     "a grey-brown short jacket and an old cloth head wrap": "an ancient Chinese Song-dynasty peasant's grey-brown hemp cross-collared short jacket and an old cloth head wrap",
     "a patched lilac cotton jacket": "an ancient Chinese village child's patched lilac cotton jacket",
-    ", an old chopping knife tucked in the belt": ", her wide leather belt plain",
+    # the knife leaves the base look like the iron ruler; it used to become "her wide leather belt plain", which contradicted
+    # every shot that writes the knife tucked in her belt (e001 live pick: she drew it in s23, s24, s38)
+    ", an old chopping knife tucked in the belt": "",
     " with an iron ruler at his belt": "",
     # Tang Xiaotang wears the high-waisted ruqun with a low neckline the owner picked (2026-11-07: 低胸也是可以), so the CG
     # spec's closed-collar sentences would contradict her picture and her appearance (found in the e002 live prep)

@@ -43,15 +43,23 @@ RABBIT = "a small straw-woven rabbit, plaited from pale yellow straw, tucked int
 XIAOHE = f"little Xiaohe in her patched lilac cotton jacket with red-string pigtails, {RABBIT}"
 ROBE = "his blue-grey scholar's robe half-dry, the sleeves still damp"
 CROCK = "one squat brown clay rice crock as high as a small child's knee, with one round flat wooden lid"
+# 2026-11-07 live-action pick (e901-live review-picks.tsv): the rabbit moved into her hands, onto Xu Yan's belt and grew into
+# a big doll on the floor (s12, s14), so the retakes say where it stays in one identical phrase.
+RABBIT_STAYS = "the small pale-yellow straw rabbit stays tucked in the front of her waist sash from the first frame to the last"
+# Qin Shuang's knife came out in her right hand in s23, s24 and s38 of the live drafts: one phrase for every shot where her
+# belt is in the frame (the script never has her draw it in this episode).
+KNIFE = "her old chopping knife tucked in the right side of her belt, where it stays from the first frame to the last"
 
 SHOTS = [
     # ---- opening: the interview (night, rain). Axis: the interviewer on the right (only a hand), Xu Yan on the left facing right.
     # c01: the interviewer's portrait is the shot's only picture (ref2manifest needs one; the office has no set picture); only her hand is in frame.
     dict(chapter="面試", loc="office", cam="Insert close-up, slow push in", chars=["mianshiguan"], nospeak=["mianshiguan"],
-         comp="insert close-up of the glass table top, the shot opens directly on this close-up from its very first frame: one résumé lying face down on the glass with its plain blank back up, and the interviewer's right hand reaching in from screen right in a charcoal-grey suit sleeve with a white shirt cuff and a thin-strapped wristwatch, two fingers resting on the résumé; only the hand and sleeve are in the frame, her face and body out of the frame above; behind the table only the dark window and the blurred city lights",
+         # live pick (2026-11-07): one draft showed her face and body at the far end of the table and a second hand; the
+         # other only patted the résumé. The hand is the only part of anyone in the frame, and the push is the whole shot.
+         comp="insert close-up of the glass table top, the shot opens directly on this close-up from its very first frame: one résumé lying face down on the glass with its plain blank back up, and the interviewer's one right hand reaching in from screen right in a charcoal-grey suit sleeve with a white shirt cuff and a thin-strapped wristwatch, two fingers resting on the résumé; that single hand and its sleeve are the only part of any person in the frame from the first frame to the last, her face and body out of the frame above; beyond the far table edge only the dark window and the blurred city lights",
          lines=[("mianshiguan", "農學碩士？我們要的是會寫程式的，種田的就別來了。", "畫外，冷淡，不耐煩")],
-         motion="the two fingers press down on the face-down résumé, draw it back a little, then push it forward in one firm stroke so it slides across the glass and stops at the table edge, and the hand lifts away and settles flat on the table; the interviewer speaks from above the frame, her face never seen",
-         zh="桌面特寫、慢推（第一格就是桌面）：履歷背面朝上，面試官戴細錶帶的手（深灰西裝袖、白襯衫袖口）按住履歷一推，履歷滑過玻璃桌面停在桌邊（面試官在畫外）"),
+         motion="the two fingers press down on the face-down résumé, draw it back a little, then push it away in one firm stroke so it slides visibly across the glass and stops at the far table edge; then the hand lifts away and leaves the frame to the right, and the résumé lies still at the edge; the interviewer speaks from above the frame, her face out of the frame the whole shot",
+         zh="桌面特寫、慢推（第一格就是桌面）：履歷背面朝上，面試官戴細錶帶的手（深灰西裝袖、白襯衫袖口）按住履歷一推，履歷滑過玻璃桌面停在遠端桌邊，手才抬起出畫（面試官在畫外；整鏡畫面裡只有這一隻手；2026-11-07 真人版挑片重寫）"),
     dict(loc="office", cam="Medium shot to medium close-up, slow push in", chars=["xuyan"], looks={"xuyan": "modern"},
          comp="medium shot, closing in to a medium close-up by the end, of Xu Yan in a dark modern suit, white shirt and dark tie, seated at the long glass table on screen left, facing right, the résumé face down on the glass in front of him with its plain back up, his eyes on the interviewer off screen right; he opens with a small polite smile that fades as he speaks, and from then on controlled anger: his jaw clenched tight, his brows drawn down and level, his eyes hard and unblinking, his lips pressed flat between words, no smile again to the end of the shot",
          lines=[("xuyan", "種田怎麼了？全世界的人，每天都要吃飯。", "壓著火，很穩")],
@@ -112,21 +120,27 @@ SHOTS = [
          motion="Xu Yan grips Erniu's shoulder and hauls himself to his feet, water dripping from his robe and sleeves; he steadies his weight, looks down the misty path toward the village on screen right and takes the first step along it, Erniu turning with him",
          zh="全景、慢推、前景蘆葦：許硯扶著二牛的肩站起來，衣服往下滴水，望向右邊遠處的村路，邁出第一步（左邊岸上木樁掛著一頂繫紅繩的舊草帽，不特別帶到）"),
     # ---- scene 2: the Xu farmhouse, first morning. Axis: the door on the left; Xu Yan enters from the left, Xiaohe by the water vat on the right.
+    # live pick (2026-11-07): the rabbit came out of the ladle into her hands, one draft opened on two Xiaohes, and the
+    # cry was not in the prompt. She now speaks it on screen (the cut uses the model's voice), written in the motion after
+    # the ladle drops; nospeak only keeps build-r2.py from putting the speaking sentence first.
     dict(chapter="許家", loc="house", cam="Full shot, slow push in", chars=["xiaohe", "xuyan", "erniu"], night="house", nospeak=["xiaohe"],
-         comp=f"full shot of the farmhouse room, the half-open plank door on screen left: Wang Erniu stepping in through it, both his hands holding Xu Yan up, one arm round his back and one gripping his arm, nothing on Erniu's back or shoulders; Xu Yan, {ROBE}, leaning on him; on screen right by the big clay water vat {XIAOHE}, her back half turned to the door, one wooden ladle in her right hand from the very first frame",
+         comp=f"full shot of the room: Wang Erniu stepping in through the half-open plank door on screen left, both his hands holding Xu Yan up, one arm round his back and one gripping his arm; Xu Yan, {ROBE}, leaning on him; on screen right by the water vat exactly one little Xiaohe, the same eight-year-old girl the whole shot, in her patched lilac cotton jacket with red-string pigtails, her back half turned to the door, one wooden ladle in her right hand from the very first frame and her left hand empty; {RABBIT_STAYS}",
          lines=[("xiaohe", "哥哥！", "愣住，然後哭出來")],
-         motion="Erniu helps Xu Yan over the threshold on screen left; Xiaohe turns from the vat toward the door on screen left and freezes, eyes wide; only then the ladle drops from her hand and bounces once on the floor, and she cries out, startled, about to cry",
-         zh="屋內全景、慢推，木門在畫面左：二牛兩手扶著許硯（衣服半乾、袖子濕）跨進門檻，肩上背上什麼都沒有；水缸邊的小禾（草編兔子塞在腰帶上）轉向畫面左邊的門、愣住，然後木勺才從手裡掉下、在地上彈一下，她短喊一聲（2026-11-07 審稿重寫）"),
+         motion="Erniu helps Xu Yan over the threshold on screen left; Xiaohe turns from the vat toward the door and freezes, eyes wide; only then the ladle drops from her hand and bounces once on the floor, and then little Xiaohe speaks a short Mandarin line, 「哥哥！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, startled, about to cry",
+         zh="屋內全景、慢推，木門在畫面左：二牛兩手扶著許硯（衣服半乾、袖子濕）跨進門檻，肩上背上什麼都沒有；水缸邊的小禾（只有一個、八歲；草編兔子一直塞在腰帶前面、手上只有木勺）轉向畫面左邊的門、愣住，然後木勺才從手裡掉下、在地上彈一下，她才張嘴喊「哥哥！」（對嘴；2026-11-07 審稿重寫，同日真人版挑片再改）"),
     dict(loc="house", cam="Two-shot, tracking", chars=["xiaohe", "xuyan", "erniu"], night="house", nospeak=["xiaohe"],
          comp=f"two-shot in the same bare farmhouse room as before, earthen walls and a packed earth floor, no bed: Xu Yan on screen left just inside the plank door, {ROBE}; {XIAOHE}, on screen right by the big clay water vat, her face crumpling, about to cry; at the door on screen left only the half of Wang Erniu's body in his coarse brown jacket, the rest outside",
          lines=[("xiaohe", "我以為你回不來了，我一個人找了你一整晚。", "哭腔")],
          motion="Xiaohe runs from the vat and throws herself into Xu Yan, hugging his waist with her face buried in his robe and hidden to the end, her shoulders shaking as she sobs into the cloth; he rocks back half a step; Erniu's lips stay closed",
          zh="雙人鏡、跟拍，同一間屋（沒有床），木門在畫面左：小禾（草編兔子塞在腰帶上）從水缸邊跑過來抱住許硯的腰、臉埋在他衣服裡一直看不到、肩膀發抖在哭（不笑）；許硯退半步；二牛在門口只露半身（2026-11-07 審稿重寫）"),
-    dict(loc="house", cam="Close-up, slow push in", chars=["xuyan", "xiaohe"], night="house",
-         comp="close-up of Xu Yan in his blue-grey scholar's robe, half-dry with damp sleeves, looking down, only the top of little Xiaohe's head and her small arms around him at the lower edge of the frame; behind him only the earthen wall",
+    # live pick (2026-11-07): one draft hung the rabbit on Xu Yan's belt and lost the hug; the other spoke from the first
+    # second, then turned Xiaohe into a toddler and the rabbit into a big doll on the floor. Lips closed for four seconds,
+    # then the line (written in the motion, so nospeak keeps build-r2.py from putting it first); one eight-year-old Xiaohe.
+    dict(loc="house", cam="Close-up, slow push in", chars=["xuyan", "xiaohe"], night="house", nospeak=["xuyan"],
+         comp=f"close-up of Xu Yan in his blue-grey scholar's robe, half-dry with damp sleeves, looking down, framed with clear space above his head so that his whole head stays inside the frame as he crouches; exactly one little Xiaohe, the same eight-year-old girl the whole shot, at the lower edge of the frame, her arms around his waist and her face pressed into his robe, {RABBIT_STAYS}; behind them only the earthen wall",
          lines=[("xuyan", "她叫我哥哥……原來這副身體，還有個妹妹。", "心裡話，愣住", "inner"), ("xuyan", "別哭了，哥哥回來了，哥哥在這裡。", "放軟")],
-         motion="his lips stay closed while he gazes down at her for a breath; he bends his knees and slowly crouches to her height, his hand hovering above her head for a moment before it comes down gently to stroke her hair",
-         zh="近景、慢推：許硯慢慢蹲到她的高度，手在她頭頂上方停一下才輕輕摸下去（心裡話時嘴閉著，後一句才說話）"),
+         motion="for the first four seconds his lips stay closed while he slowly crouches to her height, her arms still around him, his hand pausing above her head before it settles gently on her hair; only then Xu Yan speaks a short Mandarin line, 「別哭了，哥哥回來了，哥哥在這裡」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes",
+         zh="近景、慢推：許硯慢慢蹲到她的高度（小禾一直抱著他、只有一個、八歲；草編兔子一直塞在她腰帶前面），手在她頭頂上方停一下才輕輕摸下去；前四秒心裡話嘴閉著，然後才說「別哭了……」（2026-11-07 真人版挑片重寫；頭上留空）"),
     dict(loc="house", cam="Over-the-shoulder medium close-up, slow push in", chars=["xiaohe", "xuyan"], night="house",
          comp=f"over-the-shoulder shot from behind Xu Yan's damp shoulder in the left foreground, {XIAOHE}, both hands empty, facing the camera on screen right and looking up at him, frightened: her eyes red and wet, her brows drawn up in the middle, her lower lip trembling, no smile the whole shot; the plank door on screen left behind is empty, Wang Erniu off screen outside the door",
          lines=[("xiaohe", "錢員外的人今天又來過了，說下次要把米缸搬走。", "害怕")],
@@ -154,10 +168,12 @@ SHOTS = [
          zh="碗的特寫慢慢拉到許硯近景：許硯拿起空碗，把粥倒一半過去，推回給畫面右邊的小禾，抬頭看她"),
     # ---- scene 3: the yard, near noon. Axis: the Xu side (Xu Yan, Xiaohe, Erniu) on the left; Zhao and the brides come in by the gate on the right.
     dict(chapter="配婚令", loc="yard", cam="Full shot, slow push in", chars=["zhaobutou", "xiaohe"], night="yard",
-         comp="full shot of the dirt yard through the bamboo fence in the foreground, Constable Zhao at the gate on screen right in his black constable's hat and black uniform, a sword in a black scabbard on his left hip beside the iron ruler, one roll of red paper rolled shut in his right hand with its plain blank back outward, about five villagers in Song-dynasty cross-collared coarse cotton jackets and cloth head-wraps showing only their upper bodies above the fence outside, and little Xiaohe peeking out of the house door at the back left",
+    # live pick (2026-11-07): one draft walked Zhao out of the house through the gate with the villagers inside the fence,
+    # the other started him inside the yard. The gate is shut at the first frame with Zhao and the villagers outside it.
+         comp="full shot of the dirt yard from inside it, the wooden yard gate in the bamboo fence on screen right shut at the first frame, Constable Zhao outside it in the lane, his head and shoulders above the gate, in his black constable's hat and black uniform, one sword in a black scabbard on his left hip, one roll of red paper rolled shut in his right hand with its plain blank back outward; about five villagers in Song-dynasty cross-collared coarse cotton jackets and cloth head-wraps outside the fence in the lane, showing only their upper bodies above it; little Xiaohe peeking out of the house door at the back left, the earthen house wall beside the door bare",
          lines=[("zhaobutou", "許硯！縣太爺的配婚令，出來接令！", "粗聲")],
-         motion="the gate bursts open under a heavy kick and bangs against the fence; Constable Zhao strides into the yard with weighted steps; the villagers crane over the fence, their lips closed; little Xiaohe ducks back into the house and out of sight",
-         zh="院子全景、慢推、前景籬笆：右邊院門被一腳踹開彈到籬笆上，趙捕頭（右手一卷紅紙）大步走進來；籬笆外約五個村民探頭；屋門口的小禾縮回屋裡"),
+         motion="the gate is kicked open from outside, swings inward and slams against the bamboo fence; Constable Zhao strides in through it from the right and walks across the yard toward the house door on the left with weighted steps; the villagers stay outside the fence, peering in over it, their lips closed; little Xiaohe ducks back into the doorway and out of sight",
+         zh="院子全景、慢推（從院子裡拍）：第一格右邊院門關著、趙捕頭在門外；院門被他從外面一腳踹開、往裡彈到籬笆上，趙捕頭（右手一卷紅紙、左腰一把佩刀）從右邊大步走進院子、往左邊屋門走；約五個村民一直在籬笆外探頭；屋門口的小禾縮回屋裡（2026-11-07 真人版挑片重寫）"),
     dict(loc="yard", cam="Low-angle medium shot, tracking", chars=["zhaobutou"], night="yard",
          comp="low-angle medium shot of Constable Zhao walking across the dirt yard from the gate on screen right, the black scabbard on his left hip, the roll of red paper in his hands with its plain blank back toward the camera",
          lines=[("zhaobutou", "凡男子二十五歲未婚者，官府配妻三名，今日成親。", "念告示")],
@@ -169,12 +185,12 @@ SHOTS = [
          motion="Constable Zhao strides fast across the yard toward the doorway, the red paper flapping in his swinging fist, his heavy boots kicking up dust, while Xu Yan hurries down off the doorstep toward him, raising one open hand to stop him as he speaks with his back turned, his mouth unseen; Zhao plants his feet and halts an arm's length away, his shoulders squared",
          zh="過肩（許硯肩後拍趙捕頭）、慢推：趙捕頭大步走過來、紅紙甩動，停在一臂外；許硯從門檻跨下來抬手攔他（許硯背對鏡頭說話）"),
     dict(loc="yard", cam="Full shot, slow push in", chars=["zhaobutou", "qinshuang", "aling"], night="yard",
-         comp="full shot of the yard toward the gate on screen right, Constable Zhao in the middle of the yard, and in the gateway behind him two young women: Qin Shuang in front, her old chopping knife in the right side of her belt, and A-ling behind her with her head bowed, iron shackles on both wrists joined by a short iron chain",
+         comp=f"full shot of the yard toward the gate on screen right, Constable Zhao in the middle of the yard, and in the gateway behind him two young women: Qin Shuang in front, {KNIFE}, and A-ling behind her with her head bowed, iron shackles on both wrists joined by a short iron chain",
          lines=[("zhaobutou", "那是你的事。人我帶來了，一個都不能少。", "冷笑")],
          motion="Zhao gives a cold smirk and takes one big step to the side, sweeping his arm toward the gateway so the two women stand revealed; Qin Shuang lifts her chin, A-ling keeps her eyes on the ground, both with their lips closed",
          zh="全景、慢推：趙捕頭冷笑著往旁邊讓開一大步，露出院門口的秦霜（前）與低著頭、戴鐵鐐的阿令（後）"),
     dict(loc="yard", cam="Medium shot, tracking", chars=["qinshuang", "xuyan"], night="yard",
-         comp="medium shot of Qin Shuang in the yard, her arms folded, her old chopping knife in the right side of her belt, her face scornful, and Xu Yan standing at the left edge of the frame, partly cut off, his robe half-dry",
+         comp=f"medium shot of Qin Shuang in the yard, her arms folded, {KNIFE}, her face scornful, and Xu Yan standing at the left edge of the frame, partly cut off, his robe half-dry",
          lines=[("qinshuang", "就這身板？風大一點，都能把你吹回河裡。", "不屑")],
          motion="Qin Shuang strides up with her arms folded and walks half a circle around Xu Yan, looking him up and down from head to feet with a cool tilt of her head, and stops facing him; Xu Yan turns his head to follow her, his lips closed",
          zh="中景、跟拍：秦霜雙手抱胸大步上前，繞著許硯走半圈上下打量他"),
@@ -184,10 +200,11 @@ SHOTS = [
          motion="he lifts his still-wet sleeve and shakes it out with a flick of the wrist, a few drops of water falling, and gives a short dry laugh",
          zh="近景、慢推：許硯抬起還濕的袖子甩一甩，水滴下來，乾笑一聲"),
     dict(loc="yard", cam="Medium shot, slow push in", chars=["aling", "zhaobutou"], night="yard",
-         comp="medium shot of A-ling standing with her head bowed on screen right, iron shackles on both wrists joined by a short iron chain, and Constable Zhao beside her on screen left, his sword in a black scabbard on his left hip",
+    # live pick (2026-11-07): one draft showed two blades for a second, one of them bare; the other left the sword hanging.
+         comp="medium shot of A-ling standing with her head bowed on screen right, iron shackles on both wrists joined by a short iron chain, and Constable Zhao beside her on screen left, exactly one sword at his left hip, sheathed in one black scabbard",
          lines=[("zhaobutou", "這個是罪奴阿令，配給你，算便宜你了。", "輕蔑")],
-         motion="Zhao draws the sword, still in its scabbard, from his left hip with his left hand and jabs the end of the black scabbard toward A-ling, knocking her shackles so they swing and the chain rattles; A-ling keeps her head bowed and does not look up, her lips closed",
-         zh="中景、慢推：趙捕頭抽出刀鞘往阿令一指，碰得鐵鐐晃一下；戴鐵鐐的阿令低著頭沒抬頭、嘴閉著"),
+         motion="with his left hand Zhao lifts the single sword from his left hip, the blade staying inside its black scabbard the whole time, points the scabbard tip at A-ling and taps it against her wrist chain so the shackles swing and the chain rattles; A-ling keeps her head bowed and her eyes on the ground, her lips closed",
+         zh="中景、慢推：趙捕頭左手把左腰唯一一把佩刀連鞘拿起來（刀一直在鞘裡），用鞘尖指著阿令、碰得鐵鐐晃一下；戴鐵鐐的阿令低著頭沒抬頭、嘴閉著（2026-11-07 真人版挑片重寫）"),
     dict(loc="yard", cam="Over-the-shoulder medium close-up, slow push in", chars=["xuyan", "zhaobutou"], night="yard",
          comp="over-the-shoulder shot from behind Constable Zhao's shoulder and black hat in the right foreground, Xu Yan facing the camera on screen left, frowning, his eyes on Zhao",
          lines=[("xuyan", "她犯了什麼罪，要戴著鐵鐐來？", "皺眉，低聲")],
@@ -199,10 +216,12 @@ SHOTS = [
          motion="he shoves the sheathed sword back into his belt at his left hip with a hard click, then leans his upper body forward toward Xu Yan off screen left, looming over him",
          zh="低角度近景、慢推：趙捕頭把刀鞘插回腰間，往前探身逼近許硯，斜眼、嘴角下撇"),
     dict(loc="yard", cam="Close-up, slow push in", chars=["xuyan"], night="yard",
-         comp="close-up of Xu Yan in the yard, calm and steady, a faint smile at the corner of his mouth, his eyes on Zhao off screen right, the top edge of the opened red paper held up into the right edge of the frame by Constable Zhao off screen right, its plain blank back toward the camera",
+    # live pick (2026-11-07): one draft only touched the lower edge and the paper stayed up with faint strokes on it; the
+    # other grabbed it. The palm goes flat on its top edge and pushes it down out of the frame; the sheet is blank red.
+         comp="close-up of Xu Yan in the yard, his sleeves still damp, calm and steady, a faint smile at the corner of his mouth, his eyes on Zhao off screen right, framed with clear space above his head; at the right edge of the frame the top half of the opened red paper held up by Constable Zhao off screen right, a sheet of plain blank red with its back toward the camera; behind him only the bamboo fence and the autumn tree",
          lines=[("xuyan", "問不得也罷。大衡律配婚第七條：三日為期，不得強押成親。", "不疾不徐")],
-         motion="Xu Yan does not back away; he shifts his weight forward and takes half a step closer, raises one hand and presses the red paper down out of Zhao's face with calm, unhurried pressure, and holds it there",
-         zh="近景、慢推：許硯沒退，往前半步，抬手把紅紙從趙捕頭面前輕輕按下去，臉上很穩、嘴角有一點笑"),
+         motion="Xu Yan shifts his weight forward and takes half a step closer, lifts his right hand, lays his open palm flat on the top edge of the blank red paper and calmly presses it straight down until it leaves the bottom of the frame, his palm flat on it the whole way, a slight steady smile on his face",
+         zh="近景、慢推：許硯沒退，往前半步，抬起右手、整個手掌平貼在紅紙上緣，把紅紙從趙捕頭面前穩穩按下去、按出畫面下緣；紅紙是空白的紅、背面朝鏡頭；臉上很穩、嘴角有一點笑（2026-11-07 真人版挑片重寫）"),
     dict(loc="yard", cam="Two-shot, slow push in", chars=["zhaobutou", "qinshuang"], night="yard",
          comp="two-shot, Constable Zhao in the foreground on screen left, his mouth half open, and Qin Shuang behind him on screen right with her arms folded, both looking toward Xu Yan off screen left",
          lines=[("qinshuang", "喲，窮秀才不只會讀書，還會背律條。", "有點意外")],
@@ -223,11 +242,14 @@ SHOTS = [
          lines=[("qinshuang", "穿綢緞的千金小姐，也來湊這個數？", "嗤笑")],
          motion="she turns her head toward Tang Xiaotang off screen right, her eyes running from the silk sleeves down to the shoes, and she gives a short scornful snort through her nose, one corner of her mouth lifting",
          zh="近景、慢推：秦霜轉頭，眼睛從唐小棠的綢緞袖子掃到鞋，嗤一聲"),
-    dict(loc="yard", cam="Two-shot, slow push in", chars=["qinshuang", "tangxiaotang"], night="yard",
-         comp="two-shot, Qin Shuang on screen left with her arms folded, and Tang Xiaotang on screen right framed from the chin up, her high stand-up collar closed at her throat, smiling",
+    # live pick (2026-11-07): both drafts said the first line to the camera and turned to Qin Shuang for 「你就是許秀才吧？」
+    # with Xu Yan nowhere in the frame. He is the over-the-shoulder in the right foreground (Tang is off screen right of
+    # him in s35), she turns from Qin Shuang on the left to him; three named people.
+    dict(loc="yard", cam="Over-the-shoulder medium close-up, slow push in", chars=["tangxiaotang", "qinshuang", "xuyan"], night="yard",
+         comp=f"over-the-shoulder shot from behind Xu Yan's right shoulder and the back of his head in the right foreground, his blue-grey robe half-dry; in the middle Tang Xiaotang facing the camera, framed from the chest up with clear space above her head so that her whole head stays inside the frame as she leans in; on screen left a step away Qin Shuang with her arms folded, {KNIFE}, her mouth set in a flat line the whole shot",
          lines=[("tangxiaotang", "千金也到了年紀，官府的名冊上一樣有我。", "對秦霜，甜甜地頂回去"), ("tangxiaotang", "我爹說，嫁秀才比嫁商人體面。你就是許秀才吧？", "轉向許硯，笑")],
-         motion="Tang Xiaotang turns to Qin Shuang with a sweet smile, then turns away and leans in toward Xu Yan off screen left, tilting her head to peer up at him; Qin Shuang watches her sideways, her lips closed",
-         zh="雙人鏡、慢推（唐小棠下巴以上）：左秦霜、右唐小棠；唐小棠先對秦霜笑一下，再轉身湊近許硯、歪頭看他；秦霜嘴閉著"),
+         motion="for the first line Tang Xiaotang turns her face to Qin Shuang on screen left with a sweet smile; for the second line she turns away from Qin Shuang to Xu Yan in the right foreground, leans in toward him with her head tilted and looks up into his face; Qin Shuang watches her sideways, cool, her lips closed; Xu Yan stays still with his back to us",
+         zh="過肩（許硯右肩後拍）、慢推（唐小棠胸口以上、頭上留空）：前景右許硯的肩與後腦、中間唐小棠、左邊秦霜（抱胸、柴刀插在腰帶右邊）；唐小棠第一句轉向左邊的秦霜笑一下，第二句「你就是許秀才吧？」轉離秦霜、湊近前景的許硯歪頭看他；秦霜嘴閉著、不笑（2026-11-07 真人版挑片重寫）"),
     dict(loc="yard", cam="Medium shot, slow push in", chars=["xuyan", "erniu"], night="yard",
          comp=f"medium shot, Xu Yan in the front of the frame in the middle of the yard, {ROBE}, the rolled red paper in his right hand with only its plain blank back showing, stunned and blank: his eyes wide and unfocused, his brows raised, his mouth slack, no smile the whole shot; behind him Wang Erniu coming in from screen left, his trousers dry, both hands empty, grinning broadly; only Erniu smiles",
          lines=[("xuyan", "我是許硯……可我還沒想好，要怎麼養活三個人。", "愣住，老實答"), ("erniu", "秀才，一口氣三個老婆，你這是要發了啊！", "壓低聲音，樂")],
@@ -245,11 +267,14 @@ SHOTS = [
          panel=[("失敗：抹殺", "penalty")],
          motion="his lips tremble, his throat bobs as he swallows hard, and he takes half a step back as if struck; his lips stay closed while the system voice speaks",
          zh="近景、慢推：許硯臉色發白，嘴唇動了動、喉結滾一下，往後退半步（說「抹……殺？」時對嘴，系統說話時嘴閉著）"),
-    dict(loc="yard", cam="Medium close-up to close-up, slow push in", chars=["xuyan", "qinshuang", "aling", "tangxiaotang"], night="yard",
-         comp="medium close-up, closing in to a close-up by the end, of Xu Yan's face in profile in the foreground on screen left, the rolled red paper in his fist with only its plain blank back showing, and behind him on screen right the three women facing him, standing one behind another in depth: nearest, Qin Shuang with her chopping knife at her belt; a step further back, Tang Xiaotang in the middle, her ruqun one closed garment from the high collar to the waist; and furthest back, beside the stone well, A-ling with her head bowed, iron shackles on both wrists joined by a hanging iron chain; behind them only the bamboo fence and the autumn tree",
+    # live pick (2026-11-07): both drafts lined the women up side by side, A-ling looked up from the first frame and Qin
+    # Shuang held her knife. Four named people were on screen, so the shot is now his point of view (he is off screen and
+    # his line is a thought, lips closed): the brides one behind another, A-ling last by the well, looking up at the end.
+    dict(loc="yard", cam="Medium shot, slow push in", chars=["qinshuang", "tangxiaotang", "aling"], night="yard",
+         comp=f"medium shot, the point of view of Xu Yan off screen: the brides facing the camera, one behind another in a line running back into the yard, each a step further back and a little to the right so every face shows: nearest, on screen left, Qin Shuang, arms folded, {KNIFE}; behind her, in the middle, Tang Xiaotang, her ruqun one closed garment from the high collar to the waist; furthest back, on screen right by the stone well, A-ling with her head bowed, iron shackles on both wrists joined by a hanging iron chain; behind them only the bamboo fence and the autumn tree",
          lines=[("xuyan", "三天，娶三個……好，那就娶給你看。", "心裡話，吸一口氣，下定決心", "inner")],
-         motion="Xu Yan draws a deep breath, his fingers tightening around the red paper until it crumples, and lifts his head to look at the three women; at the back by the well, A-ling slowly raises her eyes and looks straight at him; all their lips stay closed",
-         zh="近景、慢推（中近景推到近景，結尾）：前景許硯的側臉，深吸一口氣、捏緊紅紙，抬頭看三個女子（由前到後秦霜、唐小棠、阿令靠井邊）；最後面一直低著頭的阿令抬起眼直直看著他；都嘴閉著"),
+         motion="all their lips stay closed the whole shot; Qin Shuang looks straight ahead, cool and level; Tang Xiaotang tilts her head, curious; at the back by the well A-ling keeps her head bowed and her eyes on the ground, and only in the last second she slowly raises her eyes and looks straight into the lens",
+         zh="中景、慢推（結尾；許硯的主觀，許硯在畫外、心裡話）：三個女子由前到後站成一列往院子裡排、一個比一個後退一步偏右，臉都看得到：最前秦霜（抱胸、柴刀一直插在腰帶右邊）、中間唐小棠、最後阿令在右後井邊，一直低著頭；到最後一秒阿令才慢慢抬眼直直看鏡頭（看許硯）；都嘴閉著（2026-11-07 真人版挑片重寫：一鏡最多三個有名字的人）"),
 ]
 
 HEAD = [
