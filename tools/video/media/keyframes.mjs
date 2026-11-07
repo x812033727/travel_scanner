@@ -23,7 +23,7 @@ import { mediaKey } from "./cache.mjs";
 import { duplicates } from "./qc.mjs";
 import { composeShotPrompt, DEFAULT_IMAGE_PROMPT_LIMIT, imagePromptLimit, shotPromptBudget } from "./prompt-budget.mjs";
 import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, mayWriteProject, pictureHashes, retakeable, sameImage, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
-import { EDGE_INSET_SHARE, trimMargins } from "./trim.mjs";
+import { EDGE_INSET_SHARE, trimMargins, zoomCrops } from "./trim.mjs";
 
 export const MAX_KEYFRAME_TAKES = 3;
 // How far `--seed-offset` may shift a shot's seeds. The server refuses a request whose hash
@@ -163,9 +163,9 @@ export function keyframeChecks({ plate = false, characters = [], subtitleBand = 
 // The narrated series that go to every language with no words on screen (cute-mystery: 奇聞檔案局
 // and the brand stories, owner 2026-11-05) fail made-up writing too: a sign of letter-like squiggles
 // reads as words to a viewer and as a mistake in every language.
-export const WORDLESS_TEXT_QUESTION = "Is there any writing anywhere in the picture: letters, words, numbers, a logo, a watermark, made-up marks that look like writing on a sign, label, paper, screen, box or cover, a floating question mark, exclamation mark or other symbol, or a badge or emblem with marks on a car, cap, coin or uniform?";
+export const WORDLESS_TEXT_QUESTION = "Looking at the whole picture and every crop labelled \"keyframe zoom\", is there any writing anywhere: letters, words, numbers, a logo, a watermark, made-up marks that look like writing on a sign, label, paper, screen, box or cover, a floating question mark, exclamation mark or other symbol, or a badge or marks on a button, coin, sleeve, car, cap or uniform?";
 // A still marked `nobody` (its line is about someone who may not be drawn) fails when anyone is.
-export const NOBODY_QUESTION = "Is there any person, human face or human figure anywhere in the picture, however small, including a face drawn on an object?";
+export const NOBODY_QUESTION = "Looking at the whole picture and every crop labelled \"keyframe zoom\", is there any person, human face or human figure anywhere, however small, including a face or eyes drawn on an object?";
 /** Whether a video's stills must carry no writing at all: the cute-mystery look (奇聞檔案局, brand stories) and the cute-cartoon look (原來如此事務所, owner 2026-11-05: no words on screen). */
 export const wordlessLook = (doc) => ["cute-mystery", "cute-cartoon"].includes(doc?.look?.preset);
 
@@ -413,6 +413,28 @@ async function trimmed(ctx, workdir, picture, id, inset = 0) {
   const notes = [...(widest > 0 ? [`trimmed a ${widest}% paper margin`] : []), ...(cut.inset ? [`cut ${Math.round(cut.inset * 100)}% in from every edge`] : [])];
   if (notes.length) ctx.stdout.write(`${id}: ${notes.join(", ")}\n`);
   return { ...picture, file: cut.file, sha256: cut.sha256, margins: cut.margins, ...(cut.inset ? { inset: cut.inset } : {}) };
+}
+
+// The server takes at most this many files a judge call (apps/api/app/video_media/schemas.py MAX_JUDGE_FILES).
+export const MAX_JUDGE_FILES = 6;
+
+/**
+ * The four 2x quadrant crops of a picture for the judge, put in the media store, as judge files
+ * labelled "keyframe zoom: <quadrant>"; none, with a warning line, when they do not fit in `room`
+ * or cannot be made (the picture is then judged whole, as before).
+ */
+async function zoomFiles(ctx, stage, workdir, picture, id, room) {
+  if (room < 4) {
+    ctx.stdout.write(`${id}: warning: no zoomed crops for the judge (no room beside the references); judged on the whole picture\n`);
+    return [];
+  }
+  const crops = await zoomCrops(ctx, workdir, picture.file, picture.sha256);
+  if (!crops) {
+    ctx.stdout.write(`${id}: warning: zoomed crops could not be made; judged on the whole picture\n`);
+    return [];
+  }
+  for (const crop of crops) await stage.upload(path.join(workdir, crop.file));
+  return crops.map((crop) => ({ sha256: crop.sha256, label: `keyframe zoom: ${crop.quadrant}` }));
 }
 
 async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, force, trim, limit = DEFAULT_IMAGE_PROMPT_LIMIT, provider = "image model", ctx }) {
@@ -741,12 +763,17 @@ export async function run(command, args, ctx) {
         picture = await trimmed(ctx, workdir, picture, scene.id, inset);
         if (picture.margins) await stage.upload(path.join(workdir, picture.file));
       }
+      const shown = [{ sha256: picture.sha256, label: "keyframe" }, ...characters.filter((character) => uploaded[character.id]).map((character) => ({ sha256: uploaded[character.id], label: `sheet ${character.name}` })), ...(plate ? [{ sha256: plate.sha256, label: "style plate" }] : [])];
+      // The text and nobody checks miss small marks on the whole picture (fake letters on a
+      // button or coin, a floating "?", eyes on an object): the judge is also shown its four
+      // quadrants at 2x (trim.mjs zoomCrops), when they fit under the server's six files.
+      const zooms = asked.rubric.some((item) => item.question === WORDLESS_TEXT_QUESTION || item.question === NOBODY_QUESTION) ? await zoomFiles(ctx, stage, workdir, picture, scene.id, MAX_JUDGE_FILES - Math.min(shown.length, MAX_JUDGE_FILES)) : [];
       let judge;
       try {
         judge = await stage.judge({
           id: scene.id,
           kind: "keyframe",
-          files: [{ sha256: picture.sha256, label: "keyframe" }, ...characters.filter((character) => uploaded[character.id]).map((character) => ({ sha256: uploaded[character.id], label: `sheet ${character.name}` })), ...(plate ? [{ sha256: plate.sha256, label: "style plate" }] : [])].slice(0, 6),
+          files: [...shown, ...zooms].slice(0, MAX_JUDGE_FILES),
           ...asked,
         });
       } catch (error) {
