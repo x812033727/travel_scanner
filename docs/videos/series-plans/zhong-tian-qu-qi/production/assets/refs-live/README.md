@@ -16,7 +16,7 @@
 | set-xujia-yuan / xianya / shiji -l1 | v2 37002 |
 | set-xujia-zao / xujia-wu / liuxi-he -l1 | v2 37001 |
 
-三位女主角（唐小棠、秦霜、阿玲）的 `-portrait-l1` 換成「只改胸部」那一輪的 A（`live-bust/out2/<id>-onlybust-39001.png`，站主 2026-11-07：「都用A好了」）；換之前的原圖留在 `<id>-portrait-l1-before-bust.png`。
+三位女主角（唐小棠、秦霜、阿玲）用**沒改胸部的原圖**（站主 2026-11-07：「我要選沒改胸部的」）。改胸部的幾輪在 `_series/zhong-tian-qu-qi/live-bust/`，不用。
 
 角度圖（`angles/<id>-angle-a-l1.png` 四分之三側、`-angle-b-l1.png` 正側面，2026-11-07，從 `live-angles/out/` 挑）：
-許硯 a 42001、b 42002；唐小棠 a 42002、b 42002；秦霜 a 42001、b 42001（42002 的頭髮變成髮髻）；阿玲 a 42002、b 42002；小禾 a 42002、b 42002。
+許硯 a 42001、b 42002；小禾 a 42002、b 42002。三位女主角的角度圖是從改過胸部的圖畫的，已經拿掉，要從原圖重畫（等站主點頭）。
