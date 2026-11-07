@@ -86,115 +86,107 @@ def K(action, close=False, where=None):
     return ("Head-and-shoulders close-up" if close else "Waist-up medium shot") + " of the girl " + (where + " " if where else "") + action + ", " + DAY
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
-# One metaphor only: an earthquake is a race. 震央 = the starting line, P波 = the small quick messenger (小信差),
-# S波 = the big one (大個子), 測站 = the referees by the track, the alert rides electricity and overtakes the big one.
-kid("kid-phone-blare", K("jumping back with a startled face beside " + PHONE + " on " + TABLE, where=LIVING),
+# One metaphor only: an earthquake is a race. 震央 = the point on the ground over the starting line, P波 = the small
+# quick messenger (小信差), S波 = the big one (大個子), 測站 = the referees by the track, the alert rides electricity.
+# Round 2 (2026-11-07): verify-1 F01-F10 applied word for word; review-script-score and the blind panel's notes:
+# chief shots cut to about a fifth, mechanism lines moved onto object pictures, prompts with direction, counting,
+# hands at the face or a chief acting out drop-cover-hold replaced; the waves are drawn as a small thin ripple and a
+# huge thick band of rock (size, never position), machines are plain smooth unmarked.
+kid("kid-phone-blare", K("jumping up startled from her chair beside " + PHONE + " on " + TABLE, where=LIVING),
     k("所長！昨天早上我在吃早餐，", "興奮，跑進來報案的語氣"), k("媽媽的手機突然大叫！", "誇張"), chapter="手機先大叫，房子才搖")
 scene("phone-orange", "Close-up of " + PHONE + " hard on a sunny wooden breakfast table beside a bowl of rice porridge and a glass of milk, " + DAY,
       k("爸爸的手機也一起叫，", "比手畫腳"), k("好大聲，好可怕！"))
 kid("kid-table-shake", K("holding tightly onto the edge of " + TABLE + " with wide startled eyes as a glass of milk on it wobbles", where=LIVING),
     k("過了幾秒，房子就開始搖！", "緊張"), k("先輕輕的，再一下子大搖！", "比手畫腳", "S:order"), k("牛奶都灑出來了！", "委屈"))
-kid("kid-how-know", K("tilting her head with a puzzled frown, one finger on her chin", close=True),
+kid("kid-how-know", K("tilting her head with a puzzled frown, both hands out of frame", close=True),
     k("手機怎麼比地震還早知道？", "句尾上揚"))
 chief("chief-not-early", C("laughing softly with one hand on her chest", close=True),
-      c("那個聲音，我第一次聽也嚇一跳。", "笑"), c("它叫做地震警報。"))
-chief("chief-started", C("smiling gently and raising one finger"),
-      c("不過它響的時候，地震其實已經開始了。", "接住她的問題"))
+      c("那個聲音，我第一次聽也嚇一跳。", "笑"), c("它叫做地震警報。"), c("不過它響的時候，地震其實已經開始了。", "接住她的問題"))
 kid("kid-predict", K("blinking with a surprised round open mouth", close=True),
     k("它不是預測地震喔？", "驚訝"))
 chief("chief-predict", C("shaking her head kindly with a warm smile"),
       c("不是。預測，是地震還沒發生就先猜。"), c("警報是地震已經開始了，才趕快通知你。"))
 kid("kid-not-yet", K("looking down at the wooden floor with a puzzled face, both hands out of frame", where=LIVING),
     k("已經開始了，", "不解"), k("那我家怎麼還沒搖？", "句尾上揚"))
-scene("quake-far", "Wide view from a hill of green countryside with small houses and rolling hills on a sunny morning, a soft ripple spreading through the ground far away, " + DAY,
-      c("因為大搖晃要跑一段路，才到你家。"), c("手機就是趁它還在路上，先叫你。"))
-chief("chief-tease-blind", C("leaning a little toward the viewer with a serious kind face", close=True),
-      c("不過，有些人家，大搖晃比警報還早到。", "轉向觀眾", "S:blind"))
-scene("city-tease", "Wide view of a big city of tall buildings in a green basin ringed by hills on a sunny morning, " + DAY,
+scene("milk-still", "Close-up of " + PHONE + " on a calm sunny breakfast table, a full glass of milk standing perfectly still beside it, " + DAY,
+      c("問得好，這就是最奇怪的地方。"), c("地震開始了，你家還沒搖，手機卻先叫了。"))
+chief("chief-tease-blind", C("leaning in a little with a serious kind face", close=True),
+      c("不過你知道嗎？有些人家，大搖晃比警報還早到。", "轉向觀眾", "S:blind"))
+scene("city-tease", "Wide view of a big city of plain smooth unmarked tall buildings in a green basin ringed by hills on a sunny morning, " + DAY,
       c("還有一次大地震，台北搖得很厲害，"), c("很多人的手機，卻一聲都沒響。", "賣關子", "S:taipei"))
 chief("chief-main-q", C("folding her hands with a curious smile, eyebrows raised"),
-      c("你也想想看：地震都已經開始了，", "轉向觀眾"), c("警報怎麼還能搶在大搖晃前面？", "問句", "S:main"))
+      c("這一集，我們就把那幾秒找出來。", "承諾"), c("地震都已經開始了，"), c("警報怎麼還能搶在大搖晃前面？", "問句", "S:main"))
 
 # ---------- 第一章：地底下開始的賽跑 ----------
 scene("ground-start", UNDER + ", one bright glowing spot deep inside the rock with soft rings spreading out from it, " + DAY,
       c("因為地震一開始，就是一場賽跑。", "接住上一句"), c("起點在地底下，地震開始的那個地方。"), chapter="地底下開始的賽跑")
-kid("kid-where-start", K("crouching and pressing one ear to the wooden floor with a curious face", where=LIVING),
+kid("kid-where-start", K("crouching to look closely at the wooden floor with a curious face, both hands out of frame", where=LIVING),
     k("起點在我家下面嗎？", "句尾上揚"))
-chief("chief-epicentre", C("smiling and shaking her head lightly"),
+scene("epicentre-dot", UNDER + ", one bright glowing spot deep inside the rock and one small bright yellow dot on the green grass at the surface, " + DAY,
       c("每次都不一樣，常常離你家很遠。"), c("起點正上方，地面上那一點，叫做震央。"))
-kid("kid-epi", K("nodding with a serious little face, one finger pointing down", close=True),
-    k("震央，就是起點！", "記住了"))
+kid("kid-epi", K("nodding with a serious little face, both hands out of frame", close=True),
+    k("震央，在起點正上方！", "記住了"))
 chief("chief-epi-yes", C("smiling and giving a small nod", close=True),
-      c("對，賽跑就從那裡開始。"))
+      c("對，起點在地底下，震央在它正上方。"))
 kid("kid-whole-q", K("spreading both arms wide with a curious face", where=LIVING),
     k("那地震一開始，", "好奇"), k("是不是全台灣一起搖？", "句尾上揚", "S:whole"))
-scene("ripple-out", "Wide view from a hill of green countryside and small towns, a soft ripple spreading out through the ground like rings on a pond, " + DAY,
-      c("不是。搖晃從震央往外，一路跑出去，", None, "P:whole"), c("離震央越遠，就越晚跑到。"))
-chief("chief-two", C("holding up two fingers with a playful smile"),
-      c("而且跑出去的，不只一個。"))
-kid("kid-two-q", K("leaning forward with wide curious eyes, both hands out of frame", close=True),
-    k("還有誰在跑？", "好奇"))
-scene("messenger", "Wide cutaway view of brown rock layers underground with a small quick bright ripple racing through the rock far ahead of a big tall heavy wave rolling behind it",
+scene("ripple-out", "Wide view from a hill of green countryside and small towns, soft round ripples in the ground like rings on a pond, " + DAY,
+      c("不是。搖晃從起點往外，一路跑出去，", None, "P:whole"), c("離震央越遠，就越晚跑到。"), c("而且跑出去的，不只一個。"))
+kid("kid-two-q", K("leaning in with wide curious eyes, both hands out of frame", close=True),
+    k("還有別人在跑？是誰？", "好奇"))
+scene("messenger", "Wide cutaway view of brown rock layers underground with one thin small bright quick ripple, tiny next to a huge thick heavy band of rock bulging slowly",
       c("跑在最前面的，是一個快腿的小信差。"), c("它搖得很輕，多半是上下跳一跳。"))
 kid("kid-updown", K("bobbing up on her toes with a surprised little smile", where=LIVING),
-    k("上下跳一跳？", "句尾上揚"))
-chief("chief-updown", C("lifting one open hand a little with a gentle smile"),
-      c("對，像地板輕輕往上頂了一下。"))
-chief("chief-p-name", C("smiling and raising one finger like a teacher sharing a fun fact"),
-      c("科學家叫這個小信差，P波。"))
-scene("big-wave", "Wide cutaway view of brown rock layers underground with a big tall heavy wave rolling through the rock, small houses on the green ground above it wobbling",
+    k("就像地板往上頂一下？", "句尾上揚"))
+scene("ripple-close", "Close-up of one thin small bright ripple glowing softly inside smooth brown rock",
+      c("對，輕輕的。科學家叫這個小信差，P波。"))
+scene("big-wave", "Wide cutaway view of brown rock layers underground with a huge thick heavy band of rock bulging, small houses on the green ground with gently tilted roofs",
       c("後面跟著一個大個子，叫S波。"), c("它前後左右用力晃，搖得兇多了。"))
 kid("kid-big-guy", K("swaying with both arms out for balance and a wobbly grin", where=LIVING),
     k("把東西搖倒的，", "推理"), k("就是大個子？", "句尾上揚"))
-chief("chief-big-guy", C("nodding with a serious kind face"),
+scene("tilted-house", "Medium shot of a small cartoon house on green grass with its roof tilted and a little tree leaning, a fallen flowerpot beside it, " + DAY,
       c("通常是它。小信差溫柔得多。"))
 kid("kid-order-got", K("with a bright face of sudden discovery, eyes wide and mouth open", close=True),
     k("所以我先覺得輕輕的，", "恍然"), k("是小信差先到！", "開心", "P:order"))
-chief("chief-order-yes", C("smiling proudly and nodding", close=True),
+scene("milk-spill", "Close-up of a glass of milk tipped over on a sunny wooden breakfast table, a small puddle of milk spreading, " + DAY,
       c("對，後面那一下大搖，就是大個子到了。"))
 kid("kid-speed-q", K("bouncing on her toes with an eager face", where=LIVING),
-    k("它們跑得多快？", "句尾上揚", "S:speed"))
-scene("speed", "Wide view of a long straight country road stretching across green fields to far blue hills under a sunny sky, " + DAY,
+    k("它們兩個，到底跑多快？", "句尾上揚", "S:speed"))
+scene("speed", "Wide view of a long straight country road across green fields under a sunny sky, a thin small bright quick ripple and a huge thick heavy band in the ground beside the road, " + DAY,
       c("小信差一秒，大約跑六公里半。", None, "P:speed"), c("大個子慢一點，一秒大約四公里。"))
-kid("kid-fast", K("throwing both hands up with her mouth open in amazement", close=True),
-    k("一秒四公里！", "驚呼"))
-chief("chief-count", C("leaning toward the viewer with a playful smile, one finger raised", close=True),
-      c("你數一、二，大個子就跑了大約八公里。", "轉向觀眾"))
-kid("kid-p-lead", K("counting on her fingers with a wide-eyed face", close=True),
-    k("那小信差呢？", "句尾上揚"))
-chief("chief-p-lead", C("smiling and holding one hand a little higher than the other"),
-      c("十三公里，已經領先大個子五公里了。"))
+kid("kid-fast", K("pumping one fist with an excited grin", close=True),
+    k("那小信差一直跑，", "推理"), k("就會越領先越多？", "句尾上揚"))
+chief("chief-count", C("leaning in with a playful smile, one finger raised", close=True),
+      c("對。你數一、二，大個子跑了大約八公里，", "轉向觀眾"), c("小信差大約十三公里，已經領先大約五公里了。"))
 kid("kid-gap-q", K("hugging a round cushion with a worried face", where=LIVING),
     k("小信差只早到一下下，", "擔心"), k("我怎麼來得及躲？", "句尾上揚", "S:gap"))
 
-# ---------- 第二章：跑道旁邊的測站 ----------
+# ---------- 第二章：測站先聽到小信差 ----------
 chief("chief-gap", C("raising her eyebrows with a knowing smile"),
-      c("只靠你家感覺到的小信差，常常真的來不及。", "接住上一句"), c("所以要靠震央旁邊的測站。", None, "P:gap"), chapter="跑道旁邊的測站")
-kid("kid-station-q", K("tilting her head with a puzzled face", close=True),
-    k("測站是什麼？", "句尾上揚", "S:station"))
-scene("station", "Close-up of a small sturdy metal box half buried in green grass on a sunny hillside, a thin cable running from it into the ground, " + DAY,
+      c("只靠你家感覺到的小信差，常常真的來不及。", "接住上一句"), c("所以要靠震央旁邊的測站。", None, "P:gap"), chapter="測站先聽到小信差")
+kid("kid-station-q", K("tilting her head with a puzzled face, both hands out of frame", close=True),
+    k("測站？是什麼東西？", "句尾上揚", "S:station"))
+scene("station", "Close-up of a small sturdy plain smooth unmarked metal box half buried in green grass on a sunny hillside, a thin cable running from it into the ground, " + DAY,
       c("是一台放在地上、一直在聽地面動靜的機器。", None, "P:station"), c("台灣各地，放了很多很多台。"))
-chief("chief-referee", C("pointing one finger up with a bright smile"),
-      c("它們就像跑道旁邊的裁判，誰跑過都知道。"), c("放得越密，就越容易有一台剛好在震央旁邊。"))
-scene("station-first", "Wide view of a green hillside with a small sturdy metal box in the grass, a soft bright ripple in the ground just reaching it, small villages far away, " + DAY,
+scene("stations-many", "Wide view of green hills and valleys on a sunny day with many small sturdy plain smooth unmarked metal boxes dotted across the grass, " + DAY,
+      c("它們就像跑道旁邊的裁判。"), c("放得越密，就越容易有一台剛好在震央旁邊。"))
+scene("station-first", "Close-up of a small sturdy plain smooth unmarked metal box in green grass, a thin small bright ripple glowing in the ground beside it, " + DAY,
       c("地震一開始，離震央最近的幾台測站，"), c("最先聽到小信差。"))
-kid("kid-station-shout", K("cupping both hands around her mouth as if calling out loudly", where=LIVING),
+kid("kid-station-shout", K("standing on tiptoe with an excited face, both hands out of frame", where=LIVING),
     k("測站會大喊大家快躲嗎？", "很有把握的錯猜"))
-chief("chief-station-listen", C("laughing warmly and shaking her head"),
+scene("cable", "Wide view of green hills on a sunny day, a thin cable running across the grass from a small plain smooth unmarked metal box to a plain white building in the distance, a soft glow travelling along the cable, " + DAY,
       c("測站只負責聽，跟裁判一樣。"), c("它們馬上把小信差的樣子，傳給氣象署的電腦。"))
 kid("kid-cwa", K("raising one hand high like answering in class, a bright face", where=LIVING),
     k("氣象署，是報天氣的那個？", "句尾上揚"))
-chief("chief-cwa", C("laughing softly and nodding"),
-      c("對，地震也是他們在看。"))
-scene("computer", "Medium shot of a big humming computer cabinet with rows of tiny blinking green and blue lights in a bright clean room, sunlight from a window, " + DAY,
-      c("電腦等不及所有測站都聽到，"), c("只用最先聽到的那幾台，就開始算。"))
+scene("computer", "Medium shot of a big friendly plain smooth unmarked cabinet with rows of little coloured dots in a bright clean room, sunlight from a window, " + DAY,
+      c("對，地震也是他們在看。"), c("電腦等不及所有測站都聽到，"), c("只用最先聽到的那幾台，就開始算。"))
 kid("kid-hurry", K("laughing with a playful face, both hands out of frame", close=True),
-    k("電腦好急喔！", "好笑"))
-chief("chief-hurry", C("smiling with a small playful shrug"),
-      c("因為每過一秒，大個子都在往前跑。"))
-kid("kid-what-see", K("squinting thoughtfully with one finger on her chin", close=True),
+    k("電腦好急喔，不等一下？", "好笑"))
+scene("computer-dots", "Close-up of rows of little glowing coloured dots on a plain smooth unmarked cabinet, warm sunlight, " + DAY,
+      c("不等。因為每過一秒，大個子都在往前跑。"))
+kid("kid-what-see", K("squinting thoughtfully with a curious face, both hands out of frame", close=True),
     k("看小信差，能看出什麼？", "句尾上揚"))
-chief("chief-what-see", C("counting softly on her fingers with a thoughtful smile"),
+scene("towns-estimate", "Wide view of many small towns spread over green hills on a sunny day, some towns glowing a soft warm orange and others calm, " + DAY,
       c("看出起點在哪裡、地震有多大，"), c("再估計大個子會跑到哪裡、搖得多兇。"))
 kid("kid-instant", K("standing with both hands on her hips and a confident grin", where=LIVING),
     k("電腦一下子就算好了吧！", "很有把握的錯猜", "S:compute"))
@@ -202,109 +194,109 @@ chief("chief-takes-time", C("tilting her head with a gentle smile"),
       c("算也要時間。像二〇一六年的美濃地震，"), c("電腦大約十二秒，才算出第一次的答案。", None, "P:compute"))
 kid("kid-12", K("gasping with a big surprised open mouth, both hands out of frame", close=True),
     k("十二秒，", "驚訝"), k("大個子不就跑很遠了？", "句尾上揚"))
-chief("chief-48", C("nodding slowly with a serious kind face"),
+scene("big-wave-far", "Wide cutaway view of the ground with green hills on top and a huge thick heavy band of rock bulging far away under distant hills, " + DAY,
       c("對，已經跑了四十幾公里。"), c("而且電腦只看到地震剛開始的那一小段。"))
 kid("kid-wrong-q", K("biting her lip with a worried little frown", close=True),
     k("那它會不會算錯？", "句尾上揚", "S:estimate"))
 chief("chief-estimate", C("holding one hand flat and tipping it a little with a thoughtful face"),
       c("它算的是估計，有時候會估不準。"), c("這件事你先記著，後面會用到。", "轉向觀眾"))
-kid("kid-catch-q", K("pointing ahead with a determined face", where=LIVING),
+kid("kid-catch-q", K("clenching both fists with a determined face", where=LIVING),
     k("那警報要怎麼追上大個子？", "句尾上揚", "S:overtake"))
 
 # ---------- 第三章：警報坐上電，超過大個子 ----------
-scene("wires", "Wide view of tall power poles and a cell tower on green hills under a sunny sky, a glowing ribbon of light racing along the wires, " + DAY,
+scene("wires", "Wide view of tall power poles on green hills under a sunny sky, a glowing ribbon of light racing along the wires, " + DAY,
       c("警報不用自己跑，它是用電送出去的。", "接住上一句", "P:overtake"), c("電跑得比大個子，快很多很多倍。"), chapter="警報坐上電，超過大個子")
 kid("kid-electric", K("throwing one fist up in the air with a big excited grin", where=LIVING),
     k("警報坐上電，跑贏大個子！", "恍然"))
-chief("chief-overtake", C("smiling and giving a quick nod"),
+scene("wire-close", "Close-up of a power line over green fields with a bright glowing ribbon of light zipping along it, " + DAY,
       c("對。電腦一算好，警報一下子就送出去。"), c("大個子還在路上，警報已經先到了。"))
-kid("kid-if-fast", K("tilting her head with a curious squint", close=True),
+kid("kid-if-fast", K("tilting her head with a curious squint, both hands out of frame", close=True),
     k("如果大個子也跑那麼快呢？", "句尾上揚"))
 chief("chief-if-fast", C("raising her eyebrows with a playful smile"),
       c("那警報就永遠追不上了。"), c("警報能搶先，靠的就是大個子跑得慢。"))
-kid("kid-how-phone", K("leaning forward with both hands out of frame and curious eyes", close=True),
+kid("kid-how-phone", K("leaning in with both hands out of frame and curious eyes", close=True),
     k("電是怎麼跑到手機裡的？", "句尾上揚"))
-scene("tower", "Wide view of a tall cell tower on a green hill above a small town of houses on a sunny morning, soft glowing rings spreading out from the top of the tower, " + DAY,
-      c("警報送到附近的基地台，就是山上那種高高的鐵塔，"), c("再從那裡，送給附近所有的手機。"))
-kid("kid-broadcast", K("pretending to dial an imaginary phone with one finger in the air, a curious face", where=LIVING),
+scene("tower", "Wide view of a tall plain smooth unmarked grey antenna tower on a rooftop in a small sunny town, soft glowing rings spreading out from its top, " + DAY,
+      c("警報送到附近的基地台，就是收手機訊號的天線，"), c("再從那裡，送給附近所有的手機。"))
+kid("kid-broadcast", K("tilting her head with a curious face, both hands out of frame", where=LIVING),
     k("不用一個一個打電話？", "句尾上揚"))
-chief("chief-broadcast", C("shaking her head with a warm smile"),
+scene("town-glow", "Wide view of a small sunny town where every house window glows soft orange at the same moment, " + DAY,
       c("不用。它是一次廣播，附近的手機同時收到。"))
 kid("kid-loud-q", K("wincing with her shoulders pulled up and her eyes squeezed shut as two curved lines", close=True),
     k("可是那個聲音，", "皺臉"), k("為什麼要那麼大聲？", "句尾上揚", "S:loud"))
-scene("phones-many", "Medium shot of several smartphones glowing bright orange and vibrating together on a sunny wooden table, " + DAY,
-      c("因為它要在幾秒鐘裡，叫醒所有人。", None, "P:loud"), c("收到這種警報，手機會被強迫叫出聲音，"))
-chief("chief-together", C("smiling warmly with one hand open"),
-      c("而且不能取消接收。"), c("所以你們全家的手機，才會一起叫。"))
+chief("chief-loud", C("nodding with a serious caring face", close=True),
+      c("因為它要在幾秒鐘裡，叫醒所有人。", None, "P:loud"))
+scene("phones-many", "Medium shot of many plain smooth unmarked smartphones glowing bright orange and vibrating together on a sunny wooden table, " + DAY,
+      c("收到這種警報，手機預設會發出特別的警報聲，"), c("而且不能取消接收。"))
+scene("phone-family", "Medium shot of a sunny family breakfast table with rice porridge bowls and several smartphones glowing bright orange at once, " + DAY,
+      c("所以你們全家的手機，才會一起叫。"))
 kid("kid-my-seconds", K("nodding hard with a bright face of understanding", where=LIVING),
     k("難怪手機先叫，", "恍然"), k("房子過幾秒才搖！", "恍然"))
 chief("chief-my-seconds", C("smiling and nodding warmly", close=True),
-      c("對，你家搶到的，就是那幾秒。"))
-kid("kid-every-q", K("tapping her chin with one finger and squinting in thought", close=True),
+      c("對，你家搶到的，就是那幾秒。", "轉向觀眾"))
+kid("kid-every-q", K("squinting in thought with a curious face, both hands out of frame", close=True),
     k("每次地震，手機都會叫嗎？", "句尾上揚", "S:when"))
-chief("chief-when", C("shaking her head lightly with a calm smile"),
+scene("town-quiet", "Wide view of a calm small town under a sunny sky where only a few houses glow soft orange and the rest stay quiet, " + DAY,
       c("不會。電腦要估計地震夠大，"), c("你住的地方又會搖得夠兇，手機才叫。", None, "P:when"))
-kid("kid-my-house-q", K("pointing at herself with a curious hopeful face", close=True),
+kid("kid-my-house-q", K("pressing one hand to her own chest with a curious hopeful face", close=True),
     k("那我家能搶到幾秒？", "句尾上揚"))
-chief("chief-far", C("leaning toward the viewer with a friendly smile", close=True),
+chief("chief-far", C("leaning in with a friendly smile", close=True),
       c("要看你家離震央多遠。", "接住她的問題"), c("還記得大個子一秒跑多遠嗎？", "點名回呼"))
-kid("kid-four-km", K("holding up one hand with fingers spread and a proud grin", close=True),
-    k("大約四公里！", "搶答"))
-chief("chief-far-rule", C("smiling and nodding with one finger raised"),
+kid("kid-four-km", K("with a proud grin, both hands out of frame", close=True),
+    k("大約一秒四公里！", "搶答"))
+scene("road-far", "Wide view of a long straight country road across green fields to small houses far away, a huge thick heavy band in the ground rolling slowly beside the road, " + DAY,
       c("對。所以你家每離震央遠四公里，", "轉向觀眾"), c("大個子就晚大約一秒到。"))
 kid("kid-far-more", K("spreading her arms wide with a delighted face", where=LIVING),
     k("住得越遠，時間越多！", "恍然"), k("那美濃地震的時候，台北呢？", "句尾上揚", "S:meinong"))
-scene("city-far", "Wide view of a big city of tall buildings in a green basin ringed by hills on a calm sunny morning, a glowing ribbon of light arriving along the power lines on the hills, " + DAY,
-      c("台北離美濃很遠很遠，", None, "P:meinong"), c("比大搖晃早了大約四十九秒，收到警報。"))
-kid("kid-49", K("throwing both hands up with her mouth open in amazement", where=LIVING),
-    k("四十九秒！", "驚呼"))
-chief("chief-49", C("nodding with a warm calm smile", close=True),
-      c("同一個地震，每個地方搶到的時間都不一樣。"))
-kid("kid-near-q", K("pointing down at the floor with a curious face", where=LIVING),
+scene("city-far", "Wide view of a big city of plain smooth unmarked tall buildings in a green basin ringed by hills on a calm sunny morning, a glowing ribbon of light arriving along the power lines on the hills, " + DAY,
+      c("台北離美濃很遠很遠，", None, "P:meinong"), c("警報可以比大搖晃早大約四十九秒。"))
+kid("kid-49", K("with a thoughtful face, both hands out of frame", close=True),
+    k("那離得越近，", "推理"), k("時間就越少嗎？", "句尾上揚"))
+scene("towns-near-far", "Wide view of green countryside on a sunny day with small towns among the hills and a big city of plain smooth unmarked buildings far off, " + DAY,
+      c("對，同一個地震，每個地方搶到的時間都不一樣。"))
+kid("kid-near-q", K("tilting her head with a curious face, both hands out of frame", where=LIVING),
     k("那住在震央旁邊的人，", "好奇"), k("一定最早收到吧？", "句尾上揚", "S:near"))
 
 # ---------- 第四章：警報追不上、估不準的時候 ----------
 chief("chief-near", C("shaking her head gently with a kind serious face"),
-      c("剛好相反，那裡最難搶先。", "接住上一句", "P:near"), chapter="警報追不上、估不準的時候")
-scene("blind-village", UNDER + ", a small village right above a bright glowing spot deep in the rock, a big heavy wave already rising under the houses, " + DAY,
-      c("電腦還在算的時候，大個子已經跑到那裡，"), c("那裡就可能先搖，才收到警報。"))
-chief("chief-blind-name", C("drawing a small circle in the air with one finger, a calm face"),
+      c("收到不一定最早，可是那裡最難搶到時間。", "接住上一句", "P:near"), chapter="警報追不上、估不準的時候")
+scene("blind-village", UNDER + ", a small village of houses on the green ground and one bright glowing spot deep in the rock under it, the house roofs already tilting, " + DAY,
+      c("電腦還在算的時候，大個子常常已經跑到那裡。"), c("開頭說有些人家先搖才收到警報，就是這裡。", "點名回呼"))
+scene("blind-circle", "Wide view from a hill of a small village in green countryside with a soft pale circle of light drawn around it on the grass, " + DAY,
       c("這一圈警報趕不上的地方，叫做盲區。", None, "P:blind"))
-kid("kid-blind", K("covering her eyes playfully with both hands, grinning", close=True),
+kid("kid-blind", K("smiling with her eyes closed as two happy curved lines, both hands out of frame", close=True),
     k("盲區，就是看不見？", "句尾上揚"))
 chief("chief-blind-see", C("smiling and nodding a little"),
-      c("差不多，是警報還來不及照顧到的地方。"), c("在那裡，搖晃本身就是警報。"))
+      c("差不多，是警報還來不及照顧到的地方。"))
 kid("kid-blind-p", K("holding very still with wide alert eyes, both hands out of frame", close=True),
-    k("先覺得輕輕的，", "小聲"), k("就是小信差到了？", "句尾上揚"))
-chief("chief-blind-p", C("nodding with a serious kind face", close=True),
-      c("對，大個子可能就在後面。"))
+    k("就像那天早上，", "想起來"), k("先輕輕的，是小信差？", "句尾上揚"))
+scene("blind-tilt", "Medium shot of small cartoon houses on green grass with gently tilting roofs and leaning little trees, a soft glow in the ground under them, " + DAY,
+      c("對，大個子可能就在後面。"), c("所以在那裡，搖晃本身就是警報。"))
 kid("kid-far-sure", K("hugging a round cushion with a thinking face", where=LIVING),
     k("那住得遠的人，", "好奇"), k("就一定會收到嗎？", "句尾上揚"))
 chief("chief-recall-est", C("raising one finger with a serious kind face", close=True),
-      c("還記得電腦算的是估計嗎？", "點名回呼"), c("二〇二四年四月，花蓮有一次大地震。"))
-scene("hualien", "Wide view of tall green mountains rising right beside the blue sea on a sunny morning, a small city at the foot of the mountains, " + DAY,
-      c("地震開始後大約九秒，"), c("花蓮附近的手機就響了。"))
+      c("不一定。還記得電腦算的是估計嗎？", "點名回呼"), c("開頭說的台北那一次，是二〇二四年四月，", "點名回呼"))
+scene("hualien", "Wide view of tall green mountains beside the blue sea on a sunny morning, a small city at the foot of the mountains, " + DAY,
+      c("花蓮的大地震。地震開始後大約九秒，"), c("第一次警報就送出去了。"))
 kid("kid-nine", K("clapping her hands once with a bright surprised face", where=LIVING),
-    k("九秒，好快！", "驚喜"))
-chief("chief-hualien-near", C("nodding with a serious kind face"),
-      c("可是花蓮離震央很近，"), c("很多地方大約只搶到五到十秒。"))
-kid("kid-few-use", K("tilting her head with a doubtful face", close=True),
-    k("才幾秒，有用嗎？", "句尾上揚"))
+    k("九秒！花蓮的人，", "驚喜"), k("一定都躲好了吧？", "句尾上揚"))
+scene("hualien-town", "Medium shot of a small sunny town of low houses at the foot of tall green mountains, the roofs gently tilting, " + DAY,
+      c("可是花蓮離震央很近，"), c("測到的幾個地方，大約只搶到五到十秒。"))
+kid("kid-few-use", K("tilting her head with a doubtful face, both hands out of frame", close=True),
+    k("才幾秒鐘，真的有用嗎？", "句尾上揚"))
 chief("chief-few-use", C("nodding with a warm firm smile"),
       c("有用。幾秒鐘，也能先保護好自己。"))
-kid("kid-few", K("frowning a little with a thinking face", close=True),
+kid("kid-few", K("frowning a little with a thinking face, both hands out of frame", close=True),
     k("那台北比較遠，", "推理"), k("應該搶到更多吧？", "句尾上揚"))
-chief("chief-calc", C("smiling and counting softly on her fingers"),
+scene("road-long", "Wide view of a very long winding road from tall green mountains by the sea across green countryside to a big city far away, sunny sky, " + DAY,
       c("我們自己粗算：花蓮到台北，大約一百四十公里，"), c("大個子要跑大約三十五秒才到。"))
-kid("kid-calc", K("counting on her fingers with a concentrating face", close=True),
+kid("kid-calc", K("closing her eyes tight in concentration with a determined little face", close=True),
     k("比九秒久好多，", "認真算"), k("台北一定來得及！", "開心"))
-chief("chief-calc-ok", C("tilting her head with a slightly worried face"),
-      c("照理說是。可是那天，電腦第一次把地震估得太小，", None, "P:estimate"))
-scene("city-calm", "Wide view of a big city of tall buildings in a green basin ringed by hills on a calm sunny morning, " + DAY,
-      c("它以為台北不會搖到手機要響的程度，"), c("而且只差一點點。"))
-kid("kid-taipei-q", K("leaning forward with wide worried eyes", close=True),
-    k("那台北有收到嗎？", "句尾上揚"))
-scene("city-shake", "Wide view of a big city of tall buildings in a green basin ringed by hills on a sunny morning, trees on the hills swaying hard, " + DAY,
+scene("city-calm", "Wide view of a big city of plain smooth unmarked tall buildings in a green basin ringed by hills on a calm sunny morning, " + DAY,
+      c("照理說有機會。可是那天，電腦第一次把地震估得太小，", None, "P:estimate"), c("所以就沒有送警報給台北。"))
+kid("kid-taipei-q", K("leaning in with wide worried eyes, both hands out of frame", close=True),
+    k("台北的手機都沒響？", "句尾上揚"))
+scene("city-shake", "Wide view of a big city of plain smooth unmarked tall buildings in a green basin ringed by hills on a sunny morning, the trees on the hills leaning hard, " + DAY,
       c("沒有。可是那天台北，真的搖得很厲害。", None, "P:taipei"))
 kid("kid-taipei-scared", K("hugging a round cushion tightly with a startled face", where=LIVING),
     k("台北的人一定嚇一跳！", "擔心"))
@@ -312,13 +304,13 @@ chief("chief-taipei-felt", C("nodding slowly with a kind serious face", close=Tr
       c("對，很多人是先覺得在搖，才知道地震來了。"))
 kid("kid-update-q", K("frowning with her arms crossed", where=LIVING),
     k("電腦後來有改嗎？", "句尾上揚"))
-chief("chief-update", C("nodding with a gentle smile, one hand open"),
-      c("有。大約十五秒的時候，它又算了一次，"), c("把地震估得大一點，可是台北還是沒收到。"))
-kid("kid-wait-q", K("tapping her chin with one finger and a puzzled squint", close=True),
+scene("computer-again", "Medium shot of a big friendly plain smooth unmarked cabinet with rows of little coloured dots glowing a little brighter in a bright clean room, " + DAY,
+      c("有。大約十五秒的時候，它又算了一次，"), c("把地震估大一點，台北只差一點點，還是沒收到。"))
+kid("kid-wait-q", K("squinting with a puzzled face, both hands out of frame", close=True),
     k("那為什麼不等久一點，", "不解"), k("算準一點再送？", "句尾上揚"))
 chief("chief-wait", C("tilting her head with a thoughtful smile"),
       c("等越久，大個子就跑越遠，"), c("大家搶到的時間就越少。"))
-chief("chief-rule", C("giving a firm encouraging nod with a bright hopeful smile", close=True),
+scene("towns-glow", "Wide view of many small towns across green hills on a sunny day, most of them glowing a soft warm orange at the same moment, " + DAY,
       c("所以後來氣象署也改了規則：很大的地震，"), c("搖得沒那麼兇的地方，也會收到警報。"))
 kid("kid-miss", K("hugging her knees and looking down with a thoughtful face", where=LIVING),
     k("原來警報也會漏掉……", "若有所思"))
@@ -328,14 +320,15 @@ kid("kid-what-do-q", K("looking up with a serious little face, both hands out of
     k("手機沒響，可是我覺得在搖，", "認真"), k("那要怎麼辦？", "句尾上揚", "S:noalert"))
 
 # ---------- 收尾 ----------
-chief("chief-drop", C("crouching a little with one hand raised as if showing a safe pose, a calm caring face"),
-      c("不用等手機。聽到警報，或是覺得在搖，", "接住上一句"), c("都馬上趴下、掩護、穩住。", "清楚，一個字一個字", "P:noalert"), chapter="小問自己破案")
-chief("chief-drop-why", C("holding one arm over her head with a calm caring face", close=True),
-      c("趴低，才不會被搖倒；掩護，是護住頭和脖子；"), c("穩住，就是抓好不放，等搖晃停下來。"))
+# The drop-cover-hold lines play over the kid at the table: the chief never acts the pose out (review-script-score).
 kid("kid-drop", K("crouching low beside " + TABLE + " holding onto one of its legs, a brave serious face", where=LIVING),
-    k("趴下、掩護、穩住！", "認真"))
-chief("chief-dont-run", C("nodding with a proud caring smile"),
-      c("對，也不要急著往外跑。"), c("如果你在床上，就待在床上，翻身趴下。"))
+    c("不用等手機。聽到警報，或是覺得在搖，", "接住上一句"), c("都馬上趴下、掩護、穩住。", "清楚，一個字一個字", "P:noalert"), chapter="小問自己破案")
+kid("kid-drop-under", K("peeking out from under " + TABLE + " with a calm brave face, her head tucked low", close=True),
+    c("趴低，才不會被搖倒；掩護，是護住頭和脖子；"), c("穩住，就是抓好不放，等搖晃停下來。"))
+kid("kid-drop-say", K("sitting on the floor after the shaking, giving a small thumbs-up with a proud smile", where=LIVING),
+    k("趴下、掩護、穩住！", "認真"), c("對，也不要急著往外跑。"))
+scene("bed", "Medium shot of a cosy bed with a fluffy pillow and a soft blanket in a sunny bedroom, " + DAY,
+      c("如果你在床上，就待在床上，翻身趴下。"))
 chief("chief-back", C("smiling warmly at the viewer with one hand open, filling the frame", close=True),
       c("還記得你一開始問我的嗎？你自己說說看。", "笑"))
 kid("kid-got1", K("throwing both arms up with a huge happy smile", where=LIVING),
@@ -345,11 +338,11 @@ kid("kid-got2", K("pointing proudly up with one finger and a big grin", close=Tr
 kid("kid-got3", K("nodding firmly with her arms folded and a serious little face", where=LIVING),
     k("可是震央旁邊會來不及，", "認真"), k("電腦也可能估錯！", "認真"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
-      c("完全正確！下次手機大叫，", "轉向觀眾，輕聲"), c("你就知道大個子還在路上，先保護自己。", "點名回呼"))
+      c("對，就是這樣！下次手機大叫，", "轉向觀眾，輕聲"), c("大個子可能還在路上，馬上保護自己。", "點名回呼"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
-chief("outro-chief", "Waist-up medium shot of the chief holding a small wooden toy house in one hand with a curious smile, filling the frame, a plain pale wall behind her, bright morning light",
+chief("outro-chief", "Waist-up medium shot of the chief tilting her head with a curious smile and one hand open, filling the frame, a plain pale wall behind her, bright morning light",
       c("看影片的你呢？你被地震警報嚇過嗎？", "問句上揚，像聊天"), c("留言告訴我們。"))
 chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light",
       c("想一起找生活裡的為什麼，就訂閱原來如此事務所。", "誠懇"))
