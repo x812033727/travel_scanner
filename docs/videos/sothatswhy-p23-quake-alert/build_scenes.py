@@ -159,7 +159,7 @@ kid("kid-fast", K("pumping one fist with an excited grin", close=True),
 chief("chief-count", C("leaning in with a playful smile, one finger raised", close=True),
       c("對。你數一、二，大個子跑了大約八公里，", "轉向觀眾"), c("小信差大約十三公里，已經領先大約五公里了。"))
 kid("kid-gap-q", K("hugging a round cushion with a worried face", where=LIVING),
-    k("小信差只早到一下下，", "擔心"), k("我怎麼來得及躲？", "句尾上揚", "S:gap"))
+    k("小信差只先到一下下，", "擔心"), k("我怎麼來得及躲？", "句尾上揚", "S:gap"))
 
 # ---------- 第二章：測站先聽到小信差 ----------
 chief("chief-gap", C("raising her eyebrows with a knowing smile"),
@@ -173,7 +173,7 @@ scene("stations-many", "Wide view of green hills and valleys on a sunny day with
 scene("station-first", "Close-up of a small sturdy plain smooth unmarked metal box in green grass, a thin small bright ripple glowing in the ground beside it, " + DAY,
       c("地震一開始，離震央最近的幾台測站，"), c("最先聽到小信差。"))
 kid("kid-station-shout", K("standing on tiptoe with an excited face, both hands out of frame", where=LIVING),
-    k("測站會大喊大家快躲嗎？", "很有把握的錯猜"))
+    k("那些測站會大喊快躲嗎？", "很有把握的錯猜"))
 scene("cable", "Wide view of green hills on a sunny day, a thin cable running across the grass from a small plain smooth unmarked metal box to a plain white building in the distance, a soft glow travelling along the cable, " + DAY,
       c("測站只負責聽，跟裁判一樣。"), c("它們馬上把小信差的樣子，傳給氣象署的電腦。"))
 kid("kid-cwa", K("raising one hand high like answering in class, a bright face", where=LIVING),
