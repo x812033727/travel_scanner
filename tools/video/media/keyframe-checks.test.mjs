@@ -45,3 +45,13 @@ test("a nobody shot asks the cute look for objects, not its chibi people", async
   assert.match(nobody.style, /thick clean dark outlines/);
   assert.equal(lookForShot(look, { data: {} }), look);
 });
+
+test("the text and nobody questions ask about the whole picture and its zoomed crops, under the server's question limit", () => {
+  for (const question of [WORDLESS_TEXT_QUESTION, NOBODY_QUESTION]) {
+    assert.match(question, /whole picture and every crop labelled "keyframe zoom"/);
+    assert.ok(question.length <= 400, question);
+  }
+  assert.match(WORDLESS_TEXT_QUESTION, /floating question mark/);
+  assert.match(WORDLESS_TEXT_QUESTION, /button, coin, sleeve/);
+  assert.match(NOBODY_QUESTION, /eyes drawn on an object/);
+});
