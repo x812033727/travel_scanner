@@ -4,6 +4,11 @@ The maker reviews its own picks and missed what the owner then saw at once (e004
 moved relative to the wok, Xu Yan came out and the figure was not where he looked). So before a cut goes to the owner, an
 agent that took no part in making it reviews it from the script. It spends no money and changes nothing.
 
+## When
+Twice per episode (owner 2026-11-07): after the drafts are picked and before they are refined (sheets made from
+`runpod/a/st1/out` with `continuity-sheets.py` in picks mode), and again on the finished cut. Severe and medium findings
+are fixed, minor ones accepted.
+
 ## What the reviewer gets
 - `docs/videos/zhong-tian-qu-qi-eNNN-r2/script.md` — the storyboard: what each shot must show, who is where, props, light.
 - The continuity sheets (`continuity-sheets.py` output): one image per scene, each shot as a row of start / middle / end
