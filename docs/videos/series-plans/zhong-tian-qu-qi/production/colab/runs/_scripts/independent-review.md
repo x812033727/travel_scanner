@@ -26,7 +26,13 @@ are fixed, minor ones accepted.
 5. **Story**: each shot shows the action its row describes; the scene's ending (結尾) reads; a question is answered where
    the script says.
 6. **Look**: anything drawn that should not be — writing on paper or signs, a system panel drawn into the picture, glowing
-   eyes, modern objects, specks on skin, cartoon-looking people, a flash of another picture.
+   eyes, modern objects, specks on skin, cartoon-looking people, a flash of another picture; a night shot whose window,
+   door or sky is lit like day.
+7. **What still frames miss** (《恁祖媽今年18》 e001, 2026-11-07: two review rounds passed, the owner then saw at once a bell
+   nobody could hear, a doorway bright as day, a hand fused into the paper it held): step frame by frame through every
+   hand that holds, passes or tucks away an object; measure each signature sound effect's second (`ebur128`) against the
+   seconds around it; and in a shot where a line is placed at the start but the action at the end, say that the sound
+   comes seconds before the picture.
 
 ## What it returns
 A list, most serious first. Each item: shot id, what is wrong, what the script says, and the fix it suggests
