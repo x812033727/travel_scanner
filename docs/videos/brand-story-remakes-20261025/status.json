@@ -1,0 +1,2242 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-26T09:53:15.906509+00:00",
+  "state": "eighteen_source_native_PASS_seventeen_current_eight_language_text_PASS_media_held",
+  "reference_pr": 1844,
+  "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
+  "original_inventory": {
+    "snapshot_at": "2026-10-25T10:31:00Z",
+    "unuploaded_rows": 19,
+    "subjects": 18,
+    "first_batch_subjects": 3,
+    "remaining_subjects": 1,
+    "prepared_subjects": 17,
+    "prepared_stage": "source_written_visual_native_merged_and_untimed_eight_language_text_PASS",
+    "source_native_pass_subjects": 18,
+    "source_native_pass_scope": "All18 subjects now have SOURCE/written-visual/native-merged PASS. Seventeen have complete untimed eight-language TEXT_PASS; rolling R9/native8 retains capacity HOLD and no translation/operator/backend preparation. These are not film counts.",
+    "source_native_remaining_subjects": 0,
+    "source_written_visual_pass_subjects": 18
+  },
+  "projects": [
+    {
+      "id": "c03",
+      "slug": "story-everyday-moleskine-c03-remake-20261025",
+      "author_revision": 3,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+      "source_receipt": "c03/reviews/source-teaser-visual-independent.json",
+      "source_receipt_sha256": "a5d79ad4c17823d414e03a3e421f8d9c5ecb4bdcfe6b42aa6707f080a0ecbfb6",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c03/verify-1.md",
+      "narrative_receipt": "c03/reviews/narrative-final.json",
+      "narrative_receipt_sha256": "beb511213bccacffddaa8e933c5ca361e5ed9b9e0d059bc794b647f7195f7c25",
+      "actual_native_panel": 3,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c03/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "ff55c22c39680a0eb46505e56cd2aea7102ed811cddc591bad3d27ef7683fed3",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+      "backend_category": "story",
+      "source_renderer_category": "explainer",
+      "backend_review_id": "c90d3492-7efe-4385-bdcc-ccd6664205d1",
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
+      "backend_outline_review_id": "3b0480b5-0ca4-4337-b743-0db04dfb4106",
+      "backend_outline_status": "approved",
+      "outline_approval_imported": true,
+      "backend_checked_at": "2026-10-26T08:57:26.935Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": true,
+      "production_handoff": "c03/production-entry.md",
+      "text_translations": "c03/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1144,
+      "preflight": "c03/preflight-inputs.json",
+      "clean_master_recipe": "c03/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c03/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": "2026-10-25T14:09:45.088309Z",
+      "backend_outline_decided_at": "2026-10-25T14:10:30.120741Z",
+      "actual_backend_locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      },
+      "backend_language_choice_observed_at": "2026-10-26T08:57:26.935Z",
+      "backend_locales_decided_at": "2026-10-25T14:09:36.202531Z",
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c04",
+      "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+      "author_revision": 2,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+      "source_receipt": "c04/reviews/source-teaser-visual-independent.json",
+      "source_receipt_sha256": "2724e74d275abe49bb15ae43b9691982d81e7013f29f8e2a16ce21f4e312828c",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c04/verify-1.md",
+      "narrative_receipt": "c04/reviews/narrative-final.json",
+      "narrative_receipt_sha256": "05cdf7649684ff4b129fb0d91b61ee1ae3f07d05c6195787bb73d4f817d9d06e",
+      "actual_native_panel": 2,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c04/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "666ce7c8ac4f41efa1c65c7d57ac0cf5a638a170558bca3b216abbe37240def2",
+      "event_teasers": 1,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+      "backend_category": "story",
+      "source_renderer_category": "explainer",
+      "backend_review_id": "4b59f286-1467-4548-b0da-95b5462f682f",
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
+      "backend_outline_review_id": "b82ea00f-85da-4cc9-92d8-a654e08ea09b",
+      "backend_outline_status": "approved",
+      "outline_approval_imported": true,
+      "backend_checked_at": "2026-10-26T08:57:26.842Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": true,
+      "production_handoff": "c04/production-entry.md",
+      "text_translations": "c04/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 880,
+      "preflight": "c04/preflight-inputs.json",
+      "clean_master_recipe": "c04/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c04/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": "2026-10-25T11:30:32.315048Z",
+      "backend_outline_decided_at": "2026-10-26T00:07:53.166579Z",
+      "actual_backend_locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      },
+      "backend_language_choice_observed_at": "2026-10-26T08:57:26.842Z",
+      "backend_locales_decided_at": "2026-10-25T11:30:25.950439Z",
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c05",
+      "slug": "story-everyday-kincho-c05-remake-20261025",
+      "author_revision": 13,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546",
+      "source_receipt": "c05/reviews/source-teaser-r13-independent.json",
+      "source_receipt_sha256": "a4354979ec0c31098336edaa2486fd86357b0e9481b1453cbbf442fd35035cbe",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c05/verify-1.md",
+      "narrative_receipt": "c05/reviews/narrative-r12.json",
+      "narrative_receipt_sha256": "16421c58d996c71bd0c23ed42661cd82543a3c43cf075ac4de6df3c0a3ecca78",
+      "actual_native_panel": 12,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "one_line",
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c05/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "f4ab4038223e3b7cc4dac2792ed8d5c90eb50c6419d98ef500b83a837ec4a3e2",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "3f2f19c4989a33f0887331997e29ae505839726fb8079ceb0607511593835c80",
+      "backend_category": "story",
+      "source_renderer_category": "explainer",
+      "backend_review_id": "7eda9d94-62a3-4cd2-9bfe-5cdc48341126",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "3f9e948c-8a95-43de-bbb9-d06d45a4cb2a",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T08:57:26.936Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": true,
+      "production_handoff": "c05/production-entry.md",
+      "text_translations": "c05/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 872,
+      "preflight": "c05/preflight-inputs.json",
+      "clean_master_recipe": "c05/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c05/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": null,
+      "backend_outline_decided_at": null,
+      "actual_backend_locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      },
+      "backend_language_choice_observed_at": "2026-10-26T08:57:26.936Z",
+      "backend_locales_decided_at": "2026-10-25T11:29:01.252022Z",
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c06",
+      "slug": "story-everyday-play-doh-c06-remake-20261025",
+      "author_revision": 3,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+      "source_receipt": "c06/reviews/source-teaser-story-category-independent.json",
+      "source_receipt_sha256": "c893cb68b42e1f350cb664c5b02efcca4f76970a6bbf3cf6fff6853368d06845",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c06/verify-1.md",
+      "narrative_receipt": "c06/reviews/narrative-final.json",
+      "narrative_receipt_sha256": "f073c0055ef6932758b82b38f6ce7b28426855461a472d5874cbc1d27cf990bb",
+      "actual_native_panel": 3,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "scene_first"
+          ]
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c06/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "5d6f9c6bc6e91d960b5575652b263f7d55bd3ff785162ac2d12801a0891d5523",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "3d8ed292-ea12-4bfd-98b8-097acda4a828",
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
+      "backend_outline_review_id": "cf42c3a1-f54b-4295-934e-f4d6fa0ee163",
+      "backend_outline_status": "approved",
+      "outline_approval_imported": true,
+      "backend_checked_at": "2026-10-26T08:57:26.484Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": true,
+      "production_handoff": "c06/production-entry.md",
+      "text_translations": "c06/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1304,
+      "preflight": "c06/preflight-inputs.json",
+      "clean_master_recipe": "c06/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c06/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": "2026-10-25T23:42:51.381747Z",
+      "backend_outline_decided_at": "2026-10-25T23:55:27.437521Z",
+      "actual_backend_locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      },
+      "backend_language_choice_observed_at": "2026-10-26T08:57:26.484Z",
+      "backend_locales_decided_at": "2026-10-25T23:42:39.755660Z",
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c07",
+      "slug": "story-everyday-dr-martens-c07-remake-20261025",
+      "author_revision": 10,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805",
+      "source_receipt": "c07/reviews/source-r10-independent.json",
+      "source_receipt_sha256": "545a0290a0dfe9d9ac2a54a9f4879ab8f6fe83c445c3a83acb2f11dfaf215ab4",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c07/verify-1.md",
+      "narrative_receipt": "c07/reviews/narrative-r9.json",
+      "narrative_receipt_sha256": "7364e599ab646b8d9d9acb835fa54166914491360450ad3e37db86ae2a932c95",
+      "actual_native_panel": 9,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": false,
+          "failed": [
+            "one_line"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c07/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "153b12c8314fd60b2b2c7cce4cc10eb9ffbd5cd2a3d1cc8e5c9aaf01de72a1e2",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "38853f5f-8086-4493-aefd-81a772706286",
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
+      "backend_outline_review_id": "6da974aa-2b66-4e98-900c-0187b328e0c6",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T09:00:39.220Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": "c07/approval-import-current-20261026.json",
+      "approval_import_receipt_sha256": "28270b83c933ab5f6e90af45c9ba03a584951cb45a69783f396473d97a7f0e47",
+      "backend_language_selection_applied": true,
+      "production_handoff": "c07/production-entry.md",
+      "text_translations": "c07/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 672,
+      "preflight": "c07/preflight-inputs.json",
+      "clean_master_recipe": "c07/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c07/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": "2026-10-26T02:26:26.955624Z",
+      "backend_outline_decided_at": null,
+      "actual_backend_locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      },
+      "backend_language_choice_observed_at": "2026-10-26T08:57:26.455Z",
+      "backend_locales_decided_at": "2026-10-26T02:26:18.570478Z",
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true,
+      "current_approval_import_receipt": "c07/approval-import-current-20261026.json",
+      "current_approval_import_receipt_sha256": "28270b83c933ab5f6e90af45c9ba03a584951cb45a69783f396473d97a7f0e47"
+    },
+    {
+      "id": "c08",
+      "slug": "story-everyday-kikkoman-c08-remake-20261025",
+      "author_revision": 9,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "db15e970a5e64715744760c3ef6ecc7c868ee132170bd09a6751dd35bf7c7895",
+      "source_receipt": "c08/reviews/source-teaser-visual-independent.json",
+      "source_receipt_sha256": "8e325075bb693efb2b4427521dd2588cb255760b76cf099cf7c11b1266e56b95",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c08/verify-1.md",
+      "narrative_receipt": "c08/reviews/narrative-r9.json",
+      "narrative_receipt_sha256": "ac5270f0913788524f60201104bcb7cad070efa95e67758c67f8649c43d8a9fb",
+      "actual_native_panel": 9,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "chapters_link"
+          ]
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c08/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "36cdea235ef25e38406419566de9563b25fcd60df037300aa8b3b0a557358691",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "3135f5d6-47d2-4496-a36f-4dc0a1ca8258",
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
+      "backend_outline_review_id": "294c49b6-b310-426e-8422-a64827717bff",
+      "backend_outline_status": "approved",
+      "outline_approval_imported": true,
+      "backend_checked_at": "2026-10-26T08:57:27.980Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "c08/production-entry.md",
+      "text_translations": "c08/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1016,
+      "preflight": "c08/preflight-inputs.json",
+      "clean_master_recipe": "c08/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c08/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": "2026-10-26T00:07:52.484229Z",
+      "backend_outline_decided_at": "2026-10-26T00:07:52.345052Z",
+      "actual_backend_locales": {},
+      "backend_language_choice_observed_at": "2026-10-26T08:57:27.980Z",
+      "backend_locales_decided_at": null,
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c09",
+      "slug": "story-everyday-patagonia-c09-remake-20261025",
+      "author_revision": 7,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+      "source_receipt": "c09/reviews/source-teaser-visual-independent.json",
+      "source_receipt_sha256": "b3c86696c06adc8e0bf2d8b12f160d54c82dfef14df060f95c145b1f96b27611",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c09/verify-1.md",
+      "narrative_receipt": "c09/reviews/narrative-final.json",
+      "narrative_receipt_sha256": "0afdef3fac57f41bf3226d5fcb91c52b551ad85541c5b18d42d177094a414caa",
+      "actual_native_panel": 7,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c09/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "8485f2ecc10fb5a168bfb25c0579bce0814faec5264ea0e4b786e0225acf10c3",
+      "event_teasers": 1,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+      "backend_category": "story",
+      "source_renderer_category": "explainer",
+      "backend_review_id": "6a441762-8d88-45b7-adff-78b5c3ef1260",
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
+      "backend_outline_review_id": "5199b233-c1ee-4970-ae11-af9115cbbde9",
+      "backend_outline_status": "approved",
+      "outline_approval_imported": true,
+      "backend_checked_at": "2026-10-26T08:57:27.898Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": true,
+      "production_handoff": "c09/production-entry.md",
+      "text_translations": "c09/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 824,
+      "preflight": "c09/preflight-inputs.json",
+      "clean_master_recipe": "c09/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c09/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": "2026-10-26T00:07:52.889302Z",
+      "backend_outline_decided_at": "2026-10-26T00:07:52.765755Z",
+      "actual_backend_locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      },
+      "backend_language_choice_observed_at": "2026-10-26T08:57:27.898Z",
+      "backend_locales_decided_at": "2026-10-25T13:00:10.532417Z",
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c10",
+      "slug": "story-everyday-oxo-c10-remake-20261025",
+      "author_revision": 7,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f",
+      "source_receipt": "c10/reviews/source-teaser-visual-independent.json",
+      "source_receipt_sha256": "a1a7858632f3da9a98fed99a69344698992fbc6963f7e99c07476e36353abf05",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c10/verify-1.md",
+      "narrative_receipt": "c10/reviews/narrative-r6.json",
+      "narrative_receipt_sha256": "ade38a1b35362b8189ffae1a78ac42d4dd979fda35b9723538065aaec1de27e9",
+      "actual_native_panel": 6,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c10/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "6fc61e8c4b91fe6152eeb3c8ee427de5e695c2e6fcb08998de86ec67c7a87c68",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "1c9895e6-4de2-4ed8-b869-d315efecdba6",
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
+      "backend_outline_review_id": "6de185a0-c301-4ad1-843f-d2cc0d4765ba",
+      "backend_outline_status": "approved",
+      "outline_approval_imported": true,
+      "backend_checked_at": "2026-10-26T08:57:27.731Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "c10/production-entry.md",
+      "text_translations": "c10/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 944,
+      "preflight": "c10/preflight-inputs.json",
+      "clean_master_recipe": "c10/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c10/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": "2026-10-26T00:07:52.054884Z",
+      "backend_outline_decided_at": "2026-10-26T00:07:51.880862Z",
+      "actual_backend_locales": {},
+      "backend_language_choice_observed_at": "2026-10-26T08:57:27.731Z",
+      "backend_locales_decided_at": null,
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c11",
+      "slug": "story-everyday-ucc-c11-remake-20261025",
+      "author_revision": 6,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+      "source_receipt": "c11/reviews/source-r6-independent.json",
+      "source_receipt_sha256": "58ff9d0b1ce33e7374546aa1ae5cec788f40c8f0e413004f2897ba353cc8b258",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c11/verify-1.md",
+      "narrative_receipt": "c11/reviews/narrative-r5.json",
+      "narrative_receipt_sha256": "05ece28e9eae372e445d5c22edd895dd4d6a16737b727702f800a844905bdeb4",
+      "actual_native_panel": 5,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c11/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "4011ea915073e7ae6bc5a796eb06aff337020bdd0e946c73d76b2d85065af005",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "e57b1958-8d93-44d3-b203-1098c5af4a81",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "ee93f101-d27e-4980-82e6-d2f89d07cacc",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T08:57:27.650Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "c11/production-entry.md",
+      "text_translations": "c11/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 640,
+      "preflight": "c11/preflight-inputs.json",
+      "clean_master_recipe": "c11/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c11/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": null,
+      "backend_outline_decided_at": null,
+      "actual_backend_locales": {},
+      "backend_language_choice_observed_at": "2026-10-26T08:57:27.650Z",
+      "backend_locales_decided_at": null,
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c14",
+      "slug": "story-everyday-camelbak-c14-remake-20261025",
+      "author_revision": 6,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+      "source_receipt": "c14/reviews/source-r6-independent.json",
+      "source_receipt_sha256": "93075b84492dda65b4c7b1fc6abfff130d345fe150744f8f90b73b7a370c5506",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c14/verify-1.md",
+      "narrative_receipt": "c14/reviews/narrative-r5.json",
+      "narrative_receipt_sha256": "46e6fc42d9fe95fce2dacff20a5db932cc01384a2cec13e9a777b80b5abef333",
+      "actual_native_panel": 5,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c14/asset-reuse-plan.json",
+      "image_reuse_plan_sha256": "81017f59a9c7706243a39e38e9a82bac490e297e2ab437804ea2b05feb762ea3",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "7aca1f854cde265715340ba0218ef891584c9148a808d63a3864dae04a7a36f7",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "31bcfffc-9281-43d3-92cc-332a62165c55",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "7c6a0b46-a59f-4f4a-8906-d17978369674",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T08:57:27.896Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "c14/production-entry.md",
+      "text_translations": "c14/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 616,
+      "preflight": "c14/preflight-inputs.json",
+      "clean_master_recipe": "c14/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c14/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": null,
+      "backend_outline_decided_at": null,
+      "actual_backend_locales": {},
+      "backend_language_choice_observed_at": "2026-10-26T08:57:27.896Z",
+      "backend_locales_decided_at": null,
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c15",
+      "slug": "story-everyday-frixion-c15-remake-20261025",
+      "author_revision": 5,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "09f70cdcfa3776d827754bdbc9e41664ceae8231ec077eda2b141fcd0069531e",
+      "source_receipt": "c15/reviews/source-r5-independent.json",
+      "source_receipt_sha256": "9b2118c58723c4bfa81e1f2ef578962fa339c4444fd99eb916374454d63e2d79",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c15/verify-1.md",
+      "narrative_receipt": "c15/reviews/narrative-r3.json",
+      "narrative_receipt_sha256": "5f14165fe023df9aa36b56c0fb05d4b19febd9e191f6264089f7d331fdc10bc3",
+      "actual_native_panel": 3,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "payoffs"
+          ]
+        },
+        {
+          "passed": false,
+          "failed": [
+            "opening_hooks"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c15/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "77de0f10f38583659be70f33896c8b7ff5e102963daf7cc063594ecaf2363378",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "bf4210c14d702e4d9048d05ec0246dc4aea1b4b85a688fbb7370878ed178f99f",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "f07a1ee2-6648-448f-a236-9dd4a94710cb",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "f7f65baf-f607-44a1-94a7-0038f5518f70",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T08:57:28.795Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "c15/production-entry.md",
+      "text_translations": "c15/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 632,
+      "preflight": "c15/preflight-inputs.json",
+      "clean_master_recipe": "c15/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c15/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": null,
+      "backend_outline_decided_at": null,
+      "actual_backend_locales": {},
+      "backend_language_choice_observed_at": "2026-10-26T08:57:28.795Z",
+      "backend_locales_decided_at": null,
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c19",
+      "slug": "story-everyday-seven-bank-c19-remake-20261025",
+      "author_revision": 8,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+      "source_receipt": "c19/reviews/source-r8-independent.json",
+      "source_receipt_sha256": "c785d871c2357c7ab64b69f0cfb75c0a45bc65993760debc63f7e2fabbbd9e1e",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c19/verify-1.md",
+      "narrative_receipt": "c19/reviews/narrative-r8.json",
+      "narrative_receipt_sha256": "dfdbcda423a4669cc40a557914da5fa272faa6a62c7bbb5861e0e898d52a6c49",
+      "actual_native_panel": 8,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_toc",
+            "no_recap",
+            "opening_hooks"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c19/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "82d19374c8faee808fb52f2181a04a976fe5be0721d3461fcb33e52516b453c1",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "040048a25ed3fb16128f30e7bbdeeaa12a36ebf8f28fd9f588a3f4e6ec4ecdf9",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "d5c056c2-4a8a-4cce-800e-02af4b209093",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "7a6be9d6-fa01-4b92-840b-1fd3909cf018",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T08:57:28.798Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "c19/production-entry.md",
+      "text_translations": "c19/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 904,
+      "preflight": "c19/preflight-inputs.json",
+      "clean_master_recipe": "c19/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c19/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "backend_script_decided_at": null,
+      "backend_outline_decided_at": null,
+      "actual_backend_locales": {},
+      "backend_language_choice_observed_at": "2026-10-26T08:57:28.798Z",
+      "backend_locales_decided_at": null,
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "seiko",
+      "slug": "story-adapt-seiko-quartz-astron-remake-20261025",
+      "author_revision": 4,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "7c20dffd9c6be7082b36c9190188dfe70304901cf2fafbb4021e4a074f26a1e9",
+      "source_receipt": "seiko/reviews/source-r4-independent.json",
+      "source_receipt_sha256": "e29f28a7f1b607d0a7ee84ac3b9837eeba33385e70b4ec8c61dca69c99791925",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "seiko/verify-1.md",
+      "narrative_receipt": "seiko/reviews/narrative-r4.json",
+      "narrative_receipt_sha256": "a0b12381fd1a0c3c46ab05a38f0458a54ea6a0add59ae492112247a5a301264a",
+      "actual_native_panel": 4,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": false,
+          "failed": [
+            "no_spoiler",
+            "one_line",
+            "no_recap"
+          ]
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "seiko/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "f41f4244f91e199804c2a468d99a4904adf795154c1743668578f9d8ee8b185d",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "7126bf9c-0c88-4149-8380-46a9cdbf7f90",
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
+      "backend_outline_review_id": "93d9eaf2-950f-4c4f-a2d4-1fa1b7e552eb",
+      "backend_outline_status": "approved",
+      "outline_approval_imported": true,
+      "backend_checked_at": "2026-10-26T09:00:42.428Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": "seiko/approval-import-current-20261026.json",
+      "approval_import_receipt_sha256": "3075d8c67ce88ce553aecd73d0720bda972f40242f44ade2364d7147283b16d4",
+      "backend_language_selection_applied": true,
+      "production_handoff": "seiko/production-entry.md",
+      "text_translations": "seiko/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1160,
+      "preflight": "seiko/production-preflight-r4.json",
+      "clean_master_recipe": "seiko/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "seiko/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "current_preparation": "seiko/preparation-text-completion-r4.json",
+      "current_text_handoff": "seiko/production-entry-text-r4.md",
+      "backend_script_decided_at": "2026-10-26T05:54:46.054899Z",
+      "backend_outline_decided_at": "2026-10-26T05:54:53.089841Z",
+      "actual_backend_locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      },
+      "backend_language_choice_observed_at": "2026-10-26T08:57:28.403Z",
+      "backend_locales_decided_at": "2026-10-26T05:54:36.789752Z",
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true,
+      "current_approval_import_receipt": "seiko/approval-import-current-20261026.json",
+      "current_approval_import_receipt_sha256": "3075d8c67ce88ce553aecd73d0720bda972f40242f44ade2364d7147283b16d4"
+    },
+    {
+      "id": "garmin",
+      "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+      "author_revision": 4,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+      "source_receipt": "garmin/reviews/source-r4-independent.json",
+      "source_receipt_sha256": "6811e6b0fda564ca5dffc07835dcd309a88a400414ca797c35d7ffcf4c096fca",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "garmin/verify-1.md",
+      "narrative_receipt": "garmin/reviews/narrative-r3.json",
+      "narrative_receipt_sha256": "bcbd898a206f9edfc9dca014e4b43b334abb6bf518591fd429a3e165983b0224",
+      "actual_native_panel": 3,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": true,
+          "failed": []
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "garmin/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "0eeb86f4b73b5fa0223eacaf98a5d1b9e76337e2818866365a45a06f61ff58fb",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "9a5024e2-c705-41e1-ae00-610a7121058e",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "e7de91d3-0a00-46bc-8b97-7ae230f54811",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T08:57:28.787Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "garmin/production-entry-r4-prepared.md",
+      "text_translations": "garmin/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1080,
+      "preflight": "garmin/preflight-inputs.json",
+      "clean_master_recipe": "garmin/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "garmin/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "current_preparation": "garmin/preparation-text-completion-r4.json",
+      "current_text_handoff": "garmin/production-entry-text-r4.md",
+      "backend_script_decided_at": null,
+      "backend_outline_decided_at": null,
+      "actual_backend_locales": {},
+      "backend_language_choice_observed_at": "2026-10-26T08:57:28.787Z",
+      "backend_locales_decided_at": null,
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true
+    },
+    {
+      "id": "c20",
+      "slug": "story-everyday-zippo-c20-remake-20261025",
+      "author_revision": 8,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "abe91823784207abb476876cbfa243c4f0b4e370fc5f03bc733ac1752db6194e",
+      "source_receipt": "c20/reviews/source-r8-independent.json",
+      "source_receipt_sha256": "ac8272f4db625751536dd063d3f175e84de150e29114dcc92532d8939b3b1856",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "c20/verify-1.md",
+      "narrative_receipt": "c20/reviews/narrative-r8.json",
+      "narrative_receipt_sha256": "0a9b34a6dc1c2b98c282adc4834a13326e37e9aabd17f2ea8f49d84b8c505dbc",
+      "actual_native_panel": 8,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "c20/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "2269ad026782118679cec0c0143231076e8ad0f99368cea89d20e31da3c77e6f",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+      "backend_script_status": "approved",
+      "script_approval_imported": true,
+      "backend_outline_review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+      "backend_outline_status": "approved",
+      "outline_approval_imported": true,
+      "backend_checked_at": "2026-10-26T09:00:45.038Z",
+      "backend_current_readback": "backend-current-status-20261026.json",
+      "backend_current_readback_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+      "approval_import_receipt": "c20/approval-import-current-20261026.json",
+      "approval_import_receipt_sha256": "ce0c19dccc9a0670831476c08ac152d22c6a15b9c0bf0e7f9c3caf06d97a14c2",
+      "backend_language_selection_applied": true,
+      "production_handoff": "c20/production-entry-r8-prepared.md",
+      "text_translations": "c20/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 864,
+      "preflight": "c20/preflight-inputs.json",
+      "clean_master_recipe": "c20/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "c20/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "current_preparation": "c20/preparation-text-completion-r8.json",
+      "current_text_handoff": "c20/production-entry-text-r8.md",
+      "backend_script_decided_at": "2026-10-26T07:52:31.875093Z",
+      "backend_outline_decided_at": "2026-10-26T07:52:29.877975Z",
+      "actual_backend_locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      },
+      "backend_language_choice_observed_at": "2026-10-26T08:57:28.388Z",
+      "backend_locales_decided_at": "2026-10-26T07:52:19.988310Z",
+      "backend_current_status_receipt": "backend-current-status-20261026.json",
+      "backend_canonical_get_verified": true,
+      "current_approval_import_receipt": "c20/approval-import-current-20261026.json",
+      "current_approval_import_receipt_sha256": "ce0c19dccc9a0670831476c08ac152d22c6a15b9c0bf0e7f9c3caf06d97a14c2"
+    },
+    {
+      "id": "doraemon",
+      "slug": "story-adapt-doraemon-after-fujiko-remake-20261025",
+      "author_revision": 6,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "b18f40f7e33cdf75a13fb1f3eafc4fc542522fd893d8aa7e1cc86289d197fc05",
+      "source_receipt": "doraemon/reviews/source-r6-independent.json",
+      "source_receipt_sha256": "70f0c4432719e6e3f205217b9556853848f38b51fd8e4ffe54ba06f71b47463d",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "doraemon/verify-1.md",
+      "narrative_receipt": "doraemon/reviews/narrative-r5.json",
+      "narrative_receipt_sha256": "92fafac0c0313db60992566c7e73b408f8938e01f871000b56fcd27f48205a05",
+      "actual_native_panel": 5,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "doraemon/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "6c4d6f8f4914cdd9a40c5187c820108842647808d77de6c203236f02707de4df",
+      "event_teasers": 1,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "b3b8f9008fb2cd772d974a24d25ce19f76872359093067602ee7353555b0bdef",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "a794450d-61df-44ef-8e28-4320601632fd",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "0ac2352e-a88b-430e-a2fe-4500a2135ba9",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T08:47:41.551Z",
+      "backend_current_readback": null,
+      "backend_current_readback_sha256": null,
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "doraemon/production-entry-text-r6.md",
+      "text_translations": "doraemon/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1048,
+      "preflight": "doraemon/preflight-inputs.json",
+      "clean_master_recipe": "doraemon/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "doraemon/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "current_preparation": "doraemon/preparation-text-completion-r6.json",
+      "current_text_handoff": "doraemon/production-entry-text-r6.md",
+      "actual_backend_locales": {}
+    },
+    {
+      "id": "dyson",
+      "slug": "story-dyson-japan-first-20261021-remake-20261025",
+      "author_revision": 5,
+      "state": "source_native_and_eight_language_text_PASS_media_held",
+      "video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "source_receipt": "dyson/reviews/source-r5-independent.json",
+      "source_receipt_sha256": "371d04594c90fadf7b9b90343c8a035128fcce57a5d9a185a3604e0313641a82",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "dyson/verify-1.md",
+      "narrative_receipt": "dyson/reviews/narrative-r2.json",
+      "narrative_receipt_sha256": "6a3c9d41728aa9eafe139f88c61165d5895dcd4bb3ccaabdb50fa1ec34dc4f94",
+      "actual_native_panel": 2,
+      "native_merged_failed": [],
+      "native_review_matches_current_source": true,
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "one_line",
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "opening_teaser_same_asset_plan": "WRITTEN_PLAN_SOURCE_VERIFIED_ACTUAL_ASSET_PENDING",
+      "image_reuse_plan": "dyson/image-reuse-plan.json",
+      "image_reuse_plan_sha256": "31c6b3028c86bd68a130908ce8d08943583f34d2efa2999d09db33da3dd4f0b9",
+      "event_teasers": 2,
+      "actual_same_asset_verified": false,
+      "canonical_script_sha256": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+      "backend_category": "story",
+      "source_renderer_category": "story",
+      "backend_review_id": "155605c3-1cce-4a22-ac3a-845d69b156b4",
+      "backend_script_status": "pending",
+      "script_approval_imported": false,
+      "backend_outline_review_id": "f0e37031-5e29-435d-be2a-7f932758545f",
+      "backend_outline_status": "pending",
+      "outline_approval_imported": false,
+      "backend_checked_at": "2026-10-26T09:01:33.367Z",
+      "backend_current_readback": null,
+      "backend_current_readback_sha256": null,
+      "approval_import_receipt": null,
+      "approval_import_receipt_sha256": null,
+      "backend_language_selection_applied": false,
+      "production_handoff": "dyson/production-entry-text-r5.md",
+      "text_translations": "dyson/i18n/preparation-status.json",
+      "text_translation_preparation": "TEXT_PASS",
+      "eight_language_text_entries": 1120,
+      "preflight": "dyson/operator-preflight-r5.json",
+      "clean_master_recipe": "dyson/variants/clean-master/derivation.json",
+      "clean_master_metadata_review": "METADATA_DERIVATION_PASS",
+      "clean_master_metadata_review_receipt": "dyson/variants/clean-master/review.json",
+      "branding_required": "branding-pr1860/required-branding.json",
+      "actual_narration_seconds": null,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "current_preparation": "dyson/preparation-text-completion-r5.json",
+      "current_text_handoff": "dyson/production-entry-text-r5.md",
+      "actual_backend_locales": {}
+    }
+  ],
+  "paid_requests": 0,
+  "new_media_files": 0,
+  "original_sources_preserved": {
+    "checked_at": "2026-10-26T05:46:57.936134+00:00",
+    "checked_files": 53,
+    "changed_original_files": [],
+    "status": "PASS",
+    "scope": "Original source files only; not media QA"
+  },
+  "production_hold": "production-hold.json",
+  "verification": {
+    "docs_videos_suite": {
+      "passed": 236,
+      "failed": 0,
+      "skipped": 0,
+      "fresh_root_rerun_for": "checkpoint17",
+      "execution_receipt": "/workspace/work/brand-story-20261025/checkpoint17-docs-videos-tests.txt",
+      "execution_receipt_sha256": "7bb275539ea1b5abde3db29081d5fecd63901140c0decaf070791a9da6cb4e88",
+      "execution_scope": "Fresh root execution during checkpoint17 work; not run by metadata subagent. Other historical native-i18n results are unchanged."
+    },
+    "docs_test_discovery_contracts": {
+      "passed": 2,
+      "failed": 0
+    },
+    "tasks_validated": 2179,
+    "helper_syntax": "PASS",
+    "json_parse": {
+      "status": "PASS",
+      "git_index_json_files": 7673
+    },
+    "native_c03_fact_checked": true,
+    "native_i18n_tests": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0
+    },
+    "eight_language_runtime_rehearsal": {
+      "status": "PASS",
+      "locales": 8,
+      "entries": 1144,
+      "lint_errors": 0,
+      "stale_or_missing_translation_warnings": 0
+    },
+    "host_readback_local_fragment": {
+      "status": "PASS",
+      "negative_checks": 3,
+      "host_executed": false,
+      "receipt": "c03/host-readback-local-check.json"
+    },
+    "eight_language_runtime_rehearsals": [
+      {
+        "id": "c03",
+        "receipt": "c03/i18n/runtime-rehearsal.json",
+        "status": "PASS",
+        "helper_scope": "C03 selection with eight native source-bound text translations and independent verify-1.md",
+        "source_video_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+        "locale_count": 8,
+        "caption_text_entries": 1144,
+        "native_lint_errors": 0,
+        "untranslated_or_stale_translation_warnings": [],
+        "actual_media_generated": false,
+        "approvals_created": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c04",
+        "receipt": "c04/i18n/runtime-rehearsal.json",
+        "status": "PASS",
+        "helper_scope": "C04 selection with eight source-bound native text translations and independently written verify-1.md",
+        "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+        "locale_count": 8,
+        "caption_text_entries": 880,
+        "native_lint_errors": 0,
+        "untranslated_or_stale_translation_warnings": [],
+        "actual_media_generated": false,
+        "approvals_created": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c05",
+        "receipt": "c05/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546",
+        "lint_errors": 0,
+        "lint_warnings": 7,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c06",
+        "receipt": "c06/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+        "lint_errors": 0,
+        "lint_warnings": 17,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c07",
+        "receipt": "c07/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805",
+        "lint_errors": 0,
+        "lint_warnings": 5,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c08",
+        "receipt": "c08/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+        "lint_errors": 0,
+        "lint_warnings": 12,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c09",
+        "receipt": "c09/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+        "lint_errors": 0,
+        "lint_warnings": 12,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c10",
+        "receipt": "c10/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f",
+        "lint_errors": 0,
+        "lint_warnings": 4,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c11",
+        "receipt": "c11/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+        "lint_errors": 0,
+        "lint_warnings": 9,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c14",
+        "receipt": "c14/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+        "lint_errors": 0,
+        "lint_warnings": 4,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c15",
+        "receipt": "c15/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "09f70cdcfa3776d827754bdbc9e41664ceae8231ec077eda2b141fcd0069531e",
+        "lint_errors": 0,
+        "lint_warnings": 11,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      },
+      {
+        "id": "c19",
+        "receipt": "c19/i18n/runtime-rehearsal.json",
+        "source_video_sha256": "268d89aa563929543938fe9dd825b4729e91cd2003852e43ab870b29b032aa0e",
+        "lint_errors": 0,
+        "lint_warnings": 12,
+        "stale_or_missing_translation_warnings": 0,
+        "locales": 8,
+        "actual_audio": false,
+        "paid_calls": 0
+      }
+    ],
+    "whitespace": {
+      "status": "PASS_WITH_BOUND_SOURCE_QUOTE_EXCEPTIONS",
+      "preserved_quote_lines": 93,
+      "scope": "Exact hash-bound C09 claims.md source quotations and immutable EOF blanks preserved; all other staged whitespace checked."
+    },
+    "latest_checkpoint_whitespace": {
+      "status": "PASS",
+      "other_staged_whitespace_errors": 0,
+      "historical_bound_source_exceptions": "Source17 exact archive EOF exception stays in prior commit; none newly introduced."
+    },
+    "latest_index_validation": {
+      "status": "PASS",
+      "text_files": 9284,
+      "staged_files": 285,
+      "scope": "Final frozen source18/text17 checkpoint; batch and owned task only. Current Rolling R9 is frozen source/native PASS with explicit capacity HOLD. Original local primary-source MP3 excluded; all indexed UTF8/JSON/scope/credential/binary scans pass."
+    },
+    "required_assembly_guard": {
+      "status": "PASS",
+      "independent_recheck": "branding-pr1860/assembly-guard-recheck.json",
+      "actual_negative_cli_cases": 7,
+      "injected_cases": 33,
+      "actual_readonly_site_bridge": 1,
+      "actual_assembly": false
+    },
+    "host_budget_metadata_probe": {
+      "status": "LOCAL_INDEPENDENT_RECHECK_PASS",
+      "receipt": "c03/host-budget-metadata-independent-recheck.json",
+      "host_executed": false,
+      "account_exists": null,
+      "provider_calls": 0
+    }
+  },
+  "remaining": [
+    "Exact remake budget-history readback, per-film US$25 account registration/activation and whole-film quote under protected admission.",
+    "Measured native TTS body 720–840 seconds, including cold open and spoken CTA, followed by listening review.",
+    "Accepted actual illustrations including one actual identical asset per opening/payoff pair, render, measured music, formal bookends and burned zh-TW/CC.",
+    "Actual full-film decode QA, current owner final review and upload package.",
+    "Actual clean export with its own matching QA/current final approval and eight-language timed CC/dubs under actual backend selection.",
+    "C03 existing token is valid. User chose a read-only Claude host handoff; await its safe exact-old/new-slug budget JSON. Local independent probe passed, host not run; account existence remains unestablished.",
+    "Rolling R9 SOURCE/written-visual/native8 PASS is frozen, but material capacity remains HOLD at1,939 spoken units with actual body seconds null. No new backend cards/operator/eight-language work starts; require verifiable new material or ordinary protected natural-rate TTS evidence supporting720–840s, then freeze/review any final changes before text preparation. No silence, slowdown or recap padding."
+  ],
+  "limitations": [
+    "Written visual review is not generated-image acceptance.",
+    "Narrative PASS follows the native two-reader merge policy; individual failed answers and reader notes remain intact.",
+    "Image dry-run costs are not whole-film quotes; generic USD200 display is not authorization.",
+    "Original episodes have not been rebound or automatically resumed.",
+    "Merged narrative receipts retain legacy question labels in four genre-overridden fields; actual blind input, current rules and reader votes are preserved. Bounded tool issue recorded separately; core unchanged."
+  ],
+  "delivery": {
+    "pull_request": "https://github.com/x812033727/travel_scanner/pull/1849",
+    "draft": true,
+    "no_auto_merge_label": true
+  },
+  "current_priority": {
+    "episode": 3,
+    "subject": "Moleskine",
+    "state": "approved_inputs_and_eight_language_text_ready_tts_pre_dispatch_hold",
+    "user_direction": "從C03開始重製",
+    "execution_order": "execution-order.json",
+    "old_media_access": "optional_historical_recovery_not_a_prerequisite",
+    "actual_new_audio_seconds": null,
+    "production_mode": "fresh_remake",
+    "latest_user_direction": "做完後你繼續下一個不用停",
+    "slug": "story-everyday-moleskine-c03-remake-20261025",
+    "handoff": "c03/production-entry.md",
+    "backend_url": "https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-moleskine-c03-remake-20261025",
+    "clean_master_recipe": "c03/variants/clean-master/README.md",
+    "host_budget_handoff": "Claude read-only host handoff selected by user; safe exact budget JSON pending. Do not request token again or infer account absence from CLI hold.",
+    "quote_gap_audit": "c03/production-quote-gap-audit.json",
+    "quote_gap_audit_sha256": "c03b090eff68da9f2ec0c2674318ca30ed90315c1e23d6e620f06b82559ec5d3",
+    "quote_gap_state": "HOLD_CURRENT_ADMISSION_AND_INCOMPLETE_ALL_IN_QUOTE",
+    "current_host_handoff": "c03/connection-and-budget-readback.md",
+    "current_host_handoff_sha256": "9a2af4c8cb6e9b060884624f0c71425227e56db5ea8e4e72ac0b51e2eb46c63b",
+    "current_production_handoff_sha256": "6fb7680fe078ac4c9a875631092c0b24fb47444dec516d056af457687da94c88",
+    "quote_accounting_note": "Existing dispatch requires settled plus reserved/uncertain plus the next operation maximum within the exact account limit. Sum of every future model-wide cap is not an implemented gate or a completed all-in quote.",
+    "current_host_access_evidence": "c03/connection-check-current-20261026.json",
+    "current_host_access_evidence_sha256": "3570bf3c0d80b51eeefc690d1fb83c1fda39fdc264ed317a76f473d320da8a1f",
+    "current_host_access_state": "Managed cloud revision137 is current/connected/running but exposes zero capabilities, identities, runtime variables and secret references; no production-host proof or Claude safe JSON. Account existence/balance/activation remain unknown; token is valid."
+  },
+  "language_defaults": "language-defaults.json",
+  "default_additional_locales": [
+    "en",
+    "ja",
+    "ko",
+    "es",
+    "pt",
+    "id",
+    "vi",
+    "th"
+  ],
+  "automatic_continuation_authorized": true,
+  "language_backend_selection_read_back": {
+    "c03": true,
+    "c04": true,
+    "c05": true,
+    "c06": true,
+    "c07": true,
+    "c08": false,
+    "c09": true,
+    "c10": false,
+    "c11": false,
+    "c14": false,
+    "c15": false,
+    "c19": false,
+    "seiko": true,
+    "garmin": false,
+    "c20": true,
+    "doraemon": false,
+    "dyson": false
+  },
+  "selected_language_parts": [
+    "metadata",
+    "captions",
+    "dub"
+  ],
+  "translation_text_preparation": {
+    "receipt": "text-preparation-checkpoint-17.json",
+    "locales": 8,
+    "lines": 15720,
+    "independent_text_review": "TEXT_PASS",
+    "actual_timed_srt": false,
+    "dub_audio": false,
+    "projects": [
+      {
+        "id": "c03",
+        "receipt": "c03/i18n/preparation-status.json",
+        "lines": 1144,
+        "chapters": 48
+      },
+      {
+        "id": "c04",
+        "receipt": "c04/i18n/preparation-status.json",
+        "lines": 880,
+        "chapters": 48
+      },
+      {
+        "id": "c05",
+        "receipt": "c05/i18n/preparation-status.json",
+        "lines": 872,
+        "chapters": 48
+      },
+      {
+        "id": "c06",
+        "receipt": "c06/i18n/preparation-status.json",
+        "lines": 1304,
+        "chapters": 48
+      },
+      {
+        "id": "c07",
+        "receipt": "c07/i18n/preparation-status.json",
+        "lines": 672,
+        "chapters": 48
+      },
+      {
+        "id": "c08",
+        "receipt": "c08/i18n/preparation-status.json",
+        "lines": 1016,
+        "chapters": 48
+      },
+      {
+        "id": "c09",
+        "receipt": "c09/i18n/preparation-status.json",
+        "lines": 824,
+        "chapters": 48
+      },
+      {
+        "id": "c10",
+        "receipt": "c10/i18n/preparation-status.json",
+        "lines": 944,
+        "chapters": 48
+      },
+      {
+        "id": "c11",
+        "receipt": "c11/i18n/preparation-status.json",
+        "lines": 640,
+        "chapters": 48
+      },
+      {
+        "id": "c14",
+        "receipt": "c14/i18n/preparation-status.json",
+        "lines": 616,
+        "chapters": 56
+      },
+      {
+        "id": "c15",
+        "receipt": "c15/i18n/preparation-status.json",
+        "lines": 632,
+        "chapters": 48
+      },
+      {
+        "id": "c19",
+        "receipt": "c19/i18n/preparation-status.json",
+        "lines": 904,
+        "chapters": 48
+      },
+      {
+        "id": "seiko",
+        "receipt": "seiko/i18n/preparation-status.json",
+        "lines": 1160,
+        "chapters": 56
+      },
+      {
+        "id": "garmin",
+        "receipt": "garmin/i18n/preparation-status.json",
+        "lines": 1080,
+        "chapters": 56
+      },
+      {
+        "id": "c20",
+        "receipt": "c20/i18n/preparation-status.json",
+        "lines": 864,
+        "chapters": 48
+      },
+      {
+        "id": "doraemon",
+        "receipt": "doraemon/i18n/preparation-status.json",
+        "lines": 1048,
+        "chapters": 48
+      },
+      {
+        "id": "dyson",
+        "receipt": "dyson/i18n/preparation-status.json",
+        "lines": 1120,
+        "chapters": 56
+      }
+    ],
+    "prepared_projects": 17,
+    "scope": "All seventeen current full eight-language TEXT_PASS projects. Rolling R9 SOURCE/native8 PASS is excluded from text totals because material capacity remains HOLD and translations have not started.",
+    "chapters": 848
+  },
+  "latest_user_direction": "要加片頭加片尾，可以參考PR1860；做完繼續下一個，預設八語、不需例行確認",
+  "continuation_in_progress": {
+    "c03": "source_native_and_eight_language_text_PASS_media_held",
+    "c04": "source_native_and_eight_language_text_PASS_media_held",
+    "c05": "source_native_and_eight_language_text_PASS_media_held",
+    "c06": "source_native_and_eight_language_text_PASS_media_held",
+    "c07": "source_native_and_eight_language_text_PASS_media_held",
+    "c08": "source_native_and_eight_language_text_PASS_media_held",
+    "c09": "source_native_and_eight_language_text_PASS_media_held",
+    "c10": "source_native_and_eight_language_text_PASS_media_held",
+    "c11": "source_native_and_eight_language_text_PASS_media_held",
+    "c14": "source_native_and_eight_language_text_PASS_media_held",
+    "c15": "source_native_and_eight_language_text_PASS_media_held",
+    "c19": "source_native_and_eight_language_text_PASS_media_held",
+    "c20": "source_native_and_eight_language_text_PASS_media_held",
+    "seiko": "source_native_and_eight_language_text_PASS_media_held",
+    "garmin": "source_native_and_eight_language_text_PASS_media_held",
+    "dyson": "source_native_and_eight_language_text_PASS_media_held",
+    "rolling_suitcase": "R9_SOURCE_WRITTEN_VISUAL_PASS_NATIVE8_PASS_CAPACITY_HOLD_TEXT_NOT_PREPARED",
+    "doraemon": "source_native_and_eight_language_text_PASS_media_held"
+  },
+  "narration_size_planning": "narration-size-precheck.json",
+  "new_media_files_scope": "Generated production story audio/images/music/film only. Two reused formal production bookends are separately recorded; public source research downloads are excluded.",
+  "latest_exact_backend_review_readback": "backend-current-status-20261026.json",
+  "duration_measurement_scope": "duration-measurement-scope.json",
+  "latest_admission_policy_source_readback": "c03/existing-evidence/admission-policy-source-readback-pr1860.json",
+  "opening_teaser_same_asset_audit": {
+    "state": "FROZEN_HISTORICAL_AUDIT_RECONCILED",
+    "rule": "script-writing.md:165; teaser and named payoff must use one actual image, not separate similar generations.",
+    "known_gap_projects": [
+      "c03",
+      "c04",
+      "c05",
+      "c06",
+      "c07",
+      "c08",
+      "c09",
+      "c10"
+    ],
+    "new_plans_pending_source_recheck": [
+      "c11",
+      "c14",
+      "c15"
+    ],
+    "generated_same_asset_verified": false,
+    "preserved_owner_approvals": "Still valid only for their exact canonical narrative hashes; no fabricated approval or image acceptance.",
+    "receipt": "opening-teaser-image-audit.json",
+    "readable_report": "opening-teaser-image-audit.md",
+    "episodes": 11,
+    "event_teasers": 20,
+    "missing_plan_episodes": 8,
+    "missing_plan_events": 14,
+    "explicit_plan_episodes": 3,
+    "explicit_plan_events": 6,
+    "current_reconciliation": "opening-teaser-plan-reconciliation.json",
+    "current_source_verified_plan_projects": 17,
+    "current_written_plan_events": 31,
+    "current_missing_written_plans": 0
+  },
+  "production_branding": {
+    "state": "FORMAL_CHANNEL_V4_INSTALLED_AV_DECODE_PASS",
+    "receipt": "branding-pr1860/README.md",
+    "requirement": "branding-pr1860/required-branding.json",
+    "preflight": "branding-pr1860/preflight.mjs",
+    "package_id": "mokaair-brand-package-v4-endscreen",
+    "package_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "intro_seconds": 5,
+    "outro_seconds": 21,
+    "reused_files": 2,
+    "actual_episode_assembly": false,
+    "production_pin_created": false,
+    "assembly_entry_enforced": true,
+    "assembly_guard": "branding-pr1860/required-assembly.mjs",
+    "independent_guard_review": "branding-pr1860/assembly-guard-recheck.json",
+    "first_must_fix_preserved": "branding-pr1860/assembly-guard-independent.json"
+  },
+  "other_drafts": [
+    {
+      "id": "rolling-suitcase",
+      "state": "R9_SOURCE_WRITTEN_VISUAL_PASS_NATIVE8_PASS_CAPACITY_HOLD_TEXT_NOT_PREPARED",
+      "author_revision": 9,
+      "author_and_source_review_state": "FROZEN",
+      "video_sha256": "565f98f274c6f285b56a9d4f167e9e7503e0f0a6ed34dc744d4c643355e8751d",
+      "frozen_source_file": "rolling-suitcase/video.json",
+      "frozen_author_checkpoint": "rolling-suitcase/author-freeze-r9.json",
+      "frozen_author_checkpoint_sha256": "40abc61ca8c10d475513dce804953d916eec0427048ea287716484cb59cf89de",
+      "source_receipt": "rolling-suitcase/reviews/source-r9-independent.json",
+      "source_receipt_sha256": "13fdc30906c5c7387384af864723f66b7b15561575e96fc6e190c089fd2f8caa",
+      "source_text_fact_gate": "PASS",
+      "source_written_visual_gate": "PASS",
+      "native_fact_check": "rolling-suitcase/verify-1.md",
+      "native_fact_check_sha256": "e3561b810ce93a19bd441107980703a8d00906acbbcfba4d87bcafa7f2009bef",
+      "narrative_receipt": "rolling-suitcase/reviews/narrative-r8.json",
+      "narrative_receipt_sha256": "911b5ac400e0710c52855f5bb1afcd5ce1c6181c3f284d5a593aa00f989cf156",
+      "native_binding": "rolling-suitcase/reviews/narrative-r8-binding.json",
+      "native_binding_sha256": "790f428c033abf2ca173a512d1d7af855e31880bd564cabda357b1ec2cf9d9bc",
+      "actual_completed_native_panels": 8,
+      "native_merged": "PASS",
+      "native_merged_failed": [],
+      "narrative_readers": [
+        {
+          "passed": false,
+          "failed": [
+            "no_recap"
+          ]
+        },
+        {
+          "passed": true,
+          "failed": []
+        }
+      ],
+      "native_advisory": [],
+      "native_review_matches_current_source": true,
+      "current_native_state": "R9_ROUND_8_ACTUAL_MERGED_PASS",
+      "previous_native7_scope": "Historical R8 HOLD only; its receipts/raw remain preserved.",
+      "prepared_next_native_panel": null,
+      "source_lines": 85,
+      "source_chapters": 7,
+      "source_shots": 82,
+      "source_loops": 25,
+      "whole_narration_spoken_units": 1939,
+      "capacity_state": "HOLD_MATERIAL_CAPACITY",
+      "material_capacity_risk": "Natural 720–840-second body is unmeasured. 1,939 spoken units remain a material-capacity HOLD, not TTS FAIL. No slowdown, silence or recaps are authorized to fill the gap.",
+      "text_translation_preparation": "NOT_TEXT_PASS",
+      "eight_language_text_state": "NOT_PREPARED_CAPACITY_HOLD",
+      "translation_preparation_started": false,
+      "backend_submission_state": "NO_NEW_R9_BACKEND_CARDS",
+      "backend_review_id": null,
+      "backend_outline_review_id": null,
+      "backend_script_status": "not_submitted",
+      "backend_outline_status": "not_submitted",
+      "script_approval_imported": false,
+      "outline_approval_imported": false,
+      "actual_backend_locales": null,
+      "backend_language_selection_applied": false,
+      "free_operator_state": "NOT_PREPARED_NOT_OPERATOR_READY",
+      "source_only_handoff": "rolling-suitcase/production-entry-source-r9.md",
+      "source_only_handoff_sha256": "e95214660ba3d1af4398e92a4ee22aee23006018dfb3bfa51666f969671456be",
+      "target_minutes": 13,
+      "body_seconds_gate": [
+        720,
+        840
+      ],
+      "body_includes_coldopen_and_voiced_CTA": true,
+      "added_bookends_seconds_excluded": 26,
+      "actual_narration_seconds": null,
+      "actual_final_seconds": null,
+      "actual_same_asset_verified": false,
+      "audio_generated": false,
+      "illustrations_generated": false,
+      "media_qa": false,
+      "final_approval": false,
+      "paid_requests": 0
+    }
+  ],
+  "narration_capacity_research": {
+    "c07": {
+      "state": "R11_SCOPE_RESEARCH_FINAL_CAPACITY_HOLD_NOT_ADOPTED",
+      "receipt": "c07/candidate-scope-capacity-r11.json",
+      "receipt_sha256": "c6d3fa91df19dfd406b1132fa277f70cc2d5596c00e9c2544b191520b3137f4d",
+      "previous_receipt": "c07/duration-capacity-research.json",
+      "current_source_unchanged": true,
+      "current_translations_unchanged": true,
+      "actual_duration_measured": false,
+      "scope_proposal_adopted": false,
+      "new_source_native_or_media_approval": false
+    },
+    "c11": {
+      "state": "INSUFFICIENT_NEW_MATERIAL_FOR_CURRENT_PROMISE",
+      "receipt": "c11/duration-capacity-research.json",
+      "current_source_unchanged": true,
+      "actual_duration_measured": false
+    }
+  },
+  "current_text_checkpoint": "text-preparation-checkpoint-17.json",
+  "current_source_checkpoint": "source-preparation-checkpoint-18-20261026.json",
+  "backend_current_status_summary": {
+    "receipt": "backend-current-status-20261026.json",
+    "receipt_sha256": "ea3d8e5e75d2e175e045a71e52bd06130aea5c76ffc3e1b81403c57fd233b900",
+    "scope": "15 TEXT_PASS projects only; GET snapshot precedes the subsequent five official approval imports.",
+    "exact_current_canonical_verified": 15,
+    "outline_approved": 8,
+    "outline_pending": 7,
+    "script_approved": 9,
+    "script_pending": 6,
+    "actual_all_eight_metadata_captions_dub_selected_projects": 8,
+    "current_official_import_receipts": [
+      {
+        "id": "c07",
+        "path": "c07/approval-import-current-20261026.json",
+        "sha256": "28270b83c933ab5f6e90af45c9ba03a584951cb45a69783f396473d97a7f0e47",
+        "gates_imported": [
+          "script"
+        ],
+        "current_script": {
+          "review_id": "38853f5f-8086-4493-aefd-81a772706286",
+          "status": "approved",
+          "decided_at": "2026-10-26T02:26:26.955624Z",
+          "content_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+          "approval_imported": true
+        },
+        "current_outline": {
+          "review_id": "6da974aa-2b66-4e98-900c-0187b328e0c6",
+          "status": "pending",
+          "decided_at": null,
+          "content_sha256": "5ba5c9a3b251234519f0196f3f4ff0f179c8815db8be6a4176e9beb38f19c9c8",
+          "approval_imported": false
+        }
+      },
+      {
+        "id": "seiko",
+        "path": "seiko/approval-import-current-20261026.json",
+        "sha256": "3075d8c67ce88ce553aecd73d0720bda972f40242f44ade2364d7147283b16d4",
+        "gates_imported": [
+          "outline",
+          "script"
+        ],
+        "current_script": {
+          "review_id": "7126bf9c-0c88-4149-8380-46a9cdbf7f90",
+          "status": "approved",
+          "decided_at": "2026-10-26T05:54:46.054899Z",
+          "content_sha256": "fbce041d1b326cc6e6e74d5aaf73966c2315ce50d3196886c9b67ac974007e81",
+          "approval_imported": true
+        },
+        "current_outline": {
+          "review_id": "93d9eaf2-950f-4c4f-a2d4-1fa1b7e552eb",
+          "status": "approved",
+          "decided_at": "2026-10-26T05:54:53.089841Z",
+          "content_sha256": "633e143b4a8884bd6ab49a6b36c1131b1d9e4b74c24480d3bc0199b46e23c12c",
+          "approval_imported": true
+        }
+      },
+      {
+        "id": "c20",
+        "path": "c20/approval-import-current-20261026.json",
+        "sha256": "ce0c19dccc9a0670831476c08ac152d22c6a15b9c0bf0e7f9c3caf06d97a14c2",
+        "gates_imported": [
+          "outline",
+          "script"
+        ],
+        "current_script": {
+          "review_id": "5190cb63-1076-4689-8d58-bcb8d1c9e4e6",
+          "status": "approved",
+          "decided_at": "2026-10-26T07:52:31.875093Z",
+          "content_sha256": "8667936ba1e889b1a9c9f353008b264382537b11bfb2423685bad6f434721bd2",
+          "approval_imported": true
+        },
+        "current_outline": {
+          "review_id": "97b0d655-a81a-4083-aa62-c4535ded615c",
+          "status": "approved",
+          "decided_at": "2026-10-26T07:52:29.877975Z",
+          "content_sha256": "7ab47a0d4b5f73da0010a01af7e7f871176beb6810fd168ba2f61bc4a131765f",
+          "approval_imported": true
+        }
+      }
+    ],
+    "new_owner_decisions_imported": 5,
+    "actual_clean_media_or_dub_eligibility": false
+  },
+  "current_preparation_forward": "text-preparation-checkpoint-17.json",
+  "current_text_ready_backend_totals": {
+    "projects": 17,
+    "outline_approved": 8,
+    "outline_pending": 9,
+    "script_approved": 9,
+    "script_pending": 8,
+    "actual_all_eight_metadata_captions_dub_selected_projects": 8,
+    "scope": "Prior15 exact safe GET plus five official imports, and frozen Doraemon/Dyson pending cards. Rolling R9 has no new submitted cards and is excluded from these text-ready review totals."
+  }
+}

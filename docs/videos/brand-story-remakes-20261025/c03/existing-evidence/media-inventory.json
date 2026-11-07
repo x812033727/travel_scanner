@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-25T13:01:31.708Z",
+  "reviewer": "/root/c03_media_inventory",
+  "scope": "Readonly local artifact inventory and historical-receipt extraction; no live budget ledger query, no media acceptance, no new generation.",
+  "source_inputs_sha256": {
+    "video.json": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
+    "script.md": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
+    "reviews/upload-package-20261025.md": "041f3606192796823877a78105da904e6b9c0aa0fd2503e41a6b416d83a368a5",
+    "reviews/upload-readiness-20261024.md": "1683eb12b6cc0d0040e2bae5b0d4b5f47c88cbc56f63021b307984a3a35ab54e",
+    "production-quote.md": "6899e11b4e28f2c3973e4082aab727b0faf567d165100e6dbaf3c729d0aa9b79"
+  },
+  "current_repository_script": {
+    "video_sha256": "3b12bff0ab09a5827330c25121048912fefee014ec9134df582cff511a755109",
+    "script_sha256": "5f148061a2fa4bb89a42b1d91adfa67a6bad4796ee5a44b82f1eea473722cb46",
+    "target_minutes": [
+      9,
+      11
+    ],
+    "subtitle_burn_in": false,
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "voice_provider": "gemini",
+    "voice_name": "Sulafat",
+    "scenes": 94,
+    "templates": {
+      "shot": 73,
+      "stats": 21
+    },
+    "new_rules_satisfied": false,
+    "reasons": [
+      "target is 9–11 minutes; 10/25 rules require measured 12–14-minute narration",
+      "subtitles.burn_in is false; 10/25 rules require true",
+      "thumbnail data has no sub field; the 10/25 bold thumbnail convention requires a sub headline"
+    ]
+  },
+  "historical_document_report": {
+    "source": "docs/videos/story-everyday-moleskine-c03/reviews/upload-package-20261025.md",
+    "media_location_reported": "<home>\\mokaair-work\\videos\\story-everyday-moleskine-c03\\",
+    "completed_through": "upload package; owner watch/upload/languages remain pending in receipt",
+    "body_speech_seconds": 481.02,
+    "hook_speech_seconds": 31.74,
+    "final_frames": 19006,
+    "final_seconds": 633.6,
+    "final_upload_sha256": "915830a0969b480225c5e4d655794489de29bcfd02cc15ad61a8de24187dc75b",
+    "final_upload_bytes": 174748322,
+    "narration_lines": 94,
+    "illustrations": 73,
+    "data_cards": 21,
+    "music": {
+      "file": "music/5846379f92e64064.mp3",
+      "decoded_seconds": 174.002,
+      "loop_plays": 4,
+      "seams_seconds_approx": [
+        174,
+        348,
+        522
+      ],
+      "new_music_purchase_in_completion": false
+    },
+    "qa": {
+      "passed": 10,
+      "total": 11,
+      "policy_observation": 0.59,
+      "policy_observation_threshold": 0.6,
+      "policy_same_narration_not_reaskable": true,
+      "audio_near_homophone_owner_check": "c031101 開場/開展/開產; review/c031101-take2.mp3"
+    },
+    "branding": {
+      "package_id": "mokaair-brand-package-v4-endscreen",
+      "registry_hash_fragment": "416c8768…a63e88",
+      "intro_sha256_fragment": "50a53efa…0bb67d",
+      "outro_sha256_fragment": "00eb9ccc…834396",
+      "intro_frames": 150,
+      "outro_frames": 630,
+      "intro_at_frame": 1136,
+      "intro_at_seconds_approx": 37.87
+    },
+    "accounting": {
+      "readback_time_reported": "2026-10-24 17:4xZ",
+      "historical_closed_usd": "25.000000",
+      "settled_post_activation_usd": "0.017682",
+      "remaining_usd_at_that_time": "24.982318",
+      "media_ledger_usd_at_that_time": "1.713",
+      "media_ledger_generation_counts": {
+        "images": 118,
+        "image_judges": 122,
+        "music_tracks": 1
+      },
+      "live_current_balance_verified": false,
+      "authorization_for_new_remake_inferred": false
+    }
+  },
+  "local_availability": {
+    "searched_root": "/workspace",
+    "method": "rg --files --hidden --no-ignore excluding all node_modules and .git paths, filtered exact story-everyday-moleskine-c03 directory or c031202/c031101 filenames; .video-work direct child directories also listed",
+    "c03_runtime_directory_in_workspace_video_work": false,
+    "c03_media_files_found": [],
+    "c03_runtime_or_upload_package_available_here": false,
+    "repository_source_documents_available": true,
+    "live_backend_status": "Root agent reads separately; not inferred from these historical docs."
+  },
+  "local_branding": {
+    "registry_file": "/workspace/.video-work/_branding/current.json",
+    "registry_sha256": "be12f184de3f397aedcf3e1c626133661e452cd98bc2e3f27e3434f8d82bfc31",
+    "package_id": "curio-archive-original-candidate-20261020-v1",
+    "package_hash": "1ffcf193d68dfface2d561c3362f69b8bfe8590a90b5d8fa257a8b783984a801",
+    "matches_historical_v4_package_id": false,
+    "formal_owner_selected_v4_verified": false,
+    "assets": [
+      {
+        "role": "intro",
+        "file": "/workspace/.video-work/_branding/1ffcf193d68dfface2d561c3362f69b8bfe8590a90b5d8fa257a8b783984a801/intro.mp4",
+        "available": true,
+        "bytes": 515921,
+        "sha256": "a5ae205fcf6fa7c92998ac4991225e54206fff482cf03493a60cfb2519e8fcef",
+        "registry_sha_matches": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "width": 1920,
+              "height": 1080,
+              "r_frame_rate": "30/1",
+              "duration": "5.000000",
+              "nb_read_frames": "150"
+            }
+          ]
+        }
+      },
+      {
+        "role": "outro",
+        "file": "/workspace/.video-work/_branding/1ffcf193d68dfface2d561c3362f69b8bfe8590a90b5d8fa257a8b783984a801/outro.mp4",
+        "available": true,
+        "bytes": 1516526,
+        "sha256": "275475470f1b7b5d93a2948f561d6e300d0406f9a5b2ab17cfb0dfe4bb3f34ee",
+        "registry_sha_matches": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "width": 1920,
+              "height": 1080,
+              "r_frame_rate": "30/1",
+              "duration": "21.000000",
+              "nb_read_frames": "630"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "continuation_constraints": [
+    "Retrieve original C03 runtime/source media before paying for repeat assets. Existing paid images/music are documented, but their media bytes/approval manifests are not present here for safe reuse.",
+    "Old upload package meets historical 8-minute body/no-burn rules and is not a 10/25 13-minute remake. Keep it intact.",
+    "Historical ledger figures are receipt claims at the recorded time, not live current balance or a new remake budget.",
+    "The local candidate branding package differs from the historical official v4 package. Equal 5/21-second duration does not verify v4 identity."
+  ],
+  "mutations": {
+    "output_report_only": true,
+    "paid_requests": 0,
+    "backend_writes": 0,
+    "media_or_approval_changes": 0,
+    "credentials_read": false
+  }
+}

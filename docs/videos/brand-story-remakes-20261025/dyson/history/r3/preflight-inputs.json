@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "revision": "dyson-r3",
+  "status": "HOLD_PLANNING_CAPACITY_SOURCE_AND_FRESH_NATIVE2",
+  "core_four_sha256": {
+    "video.json": "f28f3feb6ea49867acd60157688f9ae675a5d0eddfa711de0cb983f991555969",
+    "script.md": "6f2064388486a9daca449dd60469738fc3dad66c0683aad812dacde34065a45f",
+    "narration-only.json": "9b9720854cbd74db4edfdd742c68265c94c456e1e91f59d77e6d447e18a3ee04",
+    "claims.json": "2e2c9f9a9731e529a4838b30105063ae606a7c9d8f89591e89062127115aaad3"
+  },
+  "source_review": "PENDING_R3_OTHER_REVIEWER",
+  "written_visual_review": "PENDING_R3_OTHER_REVIEWER",
+  "actual_native_round_count": 1,
+  "prior_native1": "ACTUAL_MERGED_HOLD",
+  "fresh_native2": "NOT_PREPARED_NOT_READ",
+  "native_input_prepared": false,
+  "native_reader_calls_this_revision": 0,
+  "capacity": {
+    "status": "PLANNING_CAPACITY_HOLD",
+    "whole_spoken_units": 1953,
+    "rough_target_units": 3500,
+    "units_gap_to_3500": 1547,
+    "planning_4_to_5_seconds": [
+      390.6,
+      488.25
+    ],
+    "planning_4_5_seconds": 434,
+    "target_minutes_unchanged": 13,
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "actual_audio_seconds": null,
+    "actual_duration_verified": false,
+    "is_actual_TTS_fail": false,
+    "minimum_additional_units_to_720_at_4": 927,
+    "additional_units_to_720_at_4_5": 1287,
+    "no_slow_playback_or_added_pauses": true,
+    "explanation": "Removing recaps and catalogue/patent chronology detours exposes insufficient sourced narrative capacity. Actual voice was not generated. Keep 13min/720–840 target; obtain genuinely new actions/evidence before production, not repeated descriptions or invented repairs."
+  },
+  "exact_new_project_account": {
+    "slug": "story-dyson-japan-first-20261021-remake-20261025",
+    "cap_usd": 25,
+    "account_id": null,
+    "activated": false,
+    "legacy_account_reused": false
+  },
+  "all_in_quote": null,
+  "protected_admission": null,
+  "production_spend_authorized_by_free_init": false,
+  "paid_commands_allowed": [],
+  "owner_approval_created": false,
+  "media_generated": false,
+  "branding_policy_path": "../branding-pr1860/required-branding.json",
+  "branding_policy_sha256": "b327ff11f96a475eecb7413e176d5b287a5d51d6db28da16fbf4a09433bc9aa5",
+  "branding_production_pin": null,
+  "languages_default": [
+    "en",
+    "ja",
+    "ko",
+    "es",
+    "pt",
+    "id",
+    "vi",
+    "th"
+  ]
+}

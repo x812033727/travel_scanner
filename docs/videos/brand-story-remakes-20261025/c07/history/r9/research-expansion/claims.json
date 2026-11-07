@@ -1,0 +1,649 @@
+{
+  "schema_version": 1,
+  "task": "C07 R4 capacity expansion research only",
+  "status": "HOLD_INSUFFICIENT_SAME_JOURNEY_NEW_EVENTS",
+  "researcher": "/root/c06_translate_en_ja",
+  "frozen_r4_sha256": {
+    "video.json": "6c54f169c32f41e85931367d7b94b2257bc2c3afbb5a951e685e46005ae8e74f",
+    "script.md": "fccf5cf07db47621ff70ffd83d0bf84586fad854f9e2acd854db84109a9025c7",
+    "narration-only.json": "b5922c7d0fb66dfe47821c4802d555ab2be0a8375927ac0c7ab4aef4e6a0e1a7",
+    "claims.json": "23d362f2fbea5cd9615ceba68464bb16feaee5f8fe6cc45a0d0060e0f6f1b39b"
+  },
+  "source_receipts_binding": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/research-expansion/source-receipts.json",
+    "bytes": 48885,
+    "sha256": "f4f5564d0c6b8b496eea6ea8793e5f53f88ccabca8927a6690f4d86b152f8afb"
+  },
+  "capacity": {
+    "status": "HOLD_FOR_RESEARCH_CAPACITY_ONLY",
+    "native_duration_basis": "Full actual unbranded narration timeline includes cold opening and voiced CTA; excludes additional5s intro and21s outro.",
+    "frozen_r4_total_native_units": 2668,
+    "after_opening_and_strict_are_auxiliary_planning_subtotals": true,
+    "requested_600_to_800_is_not_proven_audio_deficit": true,
+    "actual_tts_duration_seconds": null,
+    "actual_increment_required_after_tts": null,
+    "requested_useful_new_spoken_units": [
+      600,
+      800
+    ],
+    "preferred_increment_units": 700,
+    "confirmed_new_micro_action_nodes_in_existing_demonstration": 3,
+    "cautious_editorial_planning_range_for_same_demo_increment": [
+      80,
+      160
+    ],
+    "range_is_not_written_or_measured_spoken_units": true,
+    "same_journey_gap_to_requested_range": [
+      440,
+      720
+    ],
+    "same_journey_gap_to_preferred700": [
+      540,
+      620
+    ],
+    "no_chinese_narration_drafted_or_counted": true,
+    "no_duration_or_narrative_pass": true,
+    "alternative_complete_case": {
+      "id": "AU_DONNYBROOK_1460_MONO",
+      "unique_action_result_nodes": 6,
+      "initial_condition_nodes": 1,
+      "possible_whole_case_editorial_range_units": [
+        300,
+        500
+      ],
+      "not_increment_to_r4": true,
+      "reason": "A useful separate shop-reported tear/resole/polish journey, but attachment method differs and no verified wearer-return scene is supplied. It cannot be spliced into the July/authorised heat-weld case to claim700 new units."
+    },
+    "not_counted": [
+      "Logistics instructions, packing-label printing or quoting workflows",
+      "Annual repair volume/brand loyalty/business numbers",
+      "Repeat welt definitions and repeated old-upper/new-sole comparisons",
+      "Supplier antibacterial/odour claims without test protocol/results",
+      "Combining separate customer pairs, model types, workshop methods or years",
+      "UnacquiredYouTube videos, search snippets and inferred runtime",
+      "New fictional psychology, invented engineering reasons or generic guarantees"
+    ]
+  },
+  "case_identity_map": {
+    "R4_JULY2025_PUBLIC_REVIEW": "Existing not-verified public self-report; no new independent physical repair record acquired.",
+    "DEMO_UK_UNIDENTIFIED": "Existing authorised partner demonstration; edited clip, separate pair, no known customer identity.",
+    "AU_DONNYBROOK_1460_MONO": "SoleHeeled tear/resole/polish case; independent shop, gluedVibram alternative.",
+    "AU_COBURG_PAIR": "SoleHeeled midsole crack repair case; different pair.",
+    "AU_STAFFORD_PAIR": "SoleHeeled added-midsole/Solovair case; different pair and construction.",
+    "REPORT25_CHILDHOOD_BOOTS": "Issuer’s short mother/toddler anecdote; different pair and no process detail.",
+    "JAMIE2023_REFURBISHMENT": "Supplier interview about refurbishment, not verified treatment on existingJuly case."
+  },
+  "research_claims": [
+    {
+      "id": "E01",
+      "source_id": "L14_EXISTING_DEMO",
+      "case_identity": "DEMO_UK_UNIDENTIFIED",
+      "research_assertion_english": "A long thread strand extends from the held boot area across the operator body before the machine-stitching shots.",
+      "locator": "8.25–9.20s; native detail8.4s",
+      "short_exact_quote": null,
+      "limits": [
+        "Visible strand and hand-held upper only; do not infer measured length, tension test, thread composition, exact reason or real labour time.",
+        "Separate demonstration, not the July2025 reviewer pair."
+      ],
+      "r4_fit": "POSSIBLE_NARROW_INCREMENT_IN_EXISTING_DEMO",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://drmartensrepairs.com/cdn/shop/videos/c/vp/34288717dd15455da9b73c87e4b513ff/34288717dd15455da9b73c87e4b513ff.HD-1080p-7.2Mbps-18278076.mp4?v=0",
+      "parent_page": "https://drmartensrepairs.com/pages/how-it-works",
+      "source_raw_sha256": "f5a6acd16fed47470947b6f19f47ad582dda14615324cd598197a31d2c891c74",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L14_EXISTING_DEMO.mp4",
+      "timestamp_seconds": [
+        8.25,
+        9.2
+      ]
+    },
+    {
+      "id": "E02",
+      "source_id": "L14_EXISTING_DEMO",
+      "case_identity": "DEMO_UK_UNIDENTIFIED",
+      "research_assertion_english": "A handheld dispensing tool with a long feed stick is brought onto the exposed underside while loose replacement soles lie beside the inverted upper.",
+      "locator": "14.80–15.65s; native detail15.2s",
+      "short_exact_quote": null,
+      "limits": [
+        "The frame shows tool form and application position; do not infer chemical composition, exact product/model, purpose or measured cure strength.",
+        "Application is to exposed central underside, not independent evidence that every welt/outsole edge join uses adhesive. Existing company text no-adhesive claim is scoped to the heat-welded sole join, not the whole boot.",
+        "Do not identify this tool as the 13.6s edge-finishing tool or as a sanding belt."
+      ],
+      "r4_fit": "POSSIBLE_NARROW_INCREMENT_IN_EXISTING_DEMO",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://drmartensrepairs.com/cdn/shop/videos/c/vp/34288717dd15455da9b73c87e4b513ff/34288717dd15455da9b73c87e4b513ff.HD-1080p-7.2Mbps-18278076.mp4?v=0",
+      "parent_page": "https://drmartensrepairs.com/pages/how-it-works",
+      "source_raw_sha256": "f5a6acd16fed47470947b6f19f47ad582dda14615324cd598197a31d2c891c74",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L14_EXISTING_DEMO.mp4",
+      "timestamp_seconds": [
+        14.8,
+        15.65
+      ]
+    },
+    {
+      "id": "E03",
+      "source_id": "L14_EXISTING_DEMO",
+      "case_identity": "DEMO_UK_UNIDENTIFIED",
+      "research_assertion_english": "A spray bottle is aimed at a loose black foot-shaped insert on the cutting mat; a second insert and the boot stand beside it.",
+      "locator": "26.60–27.25s; native details26.9/27.1/27.2s",
+      "short_exact_quote": null,
+      "limits": [
+        "Visible spray and loose insert only; no brand, antimicrobial formula, kill rate, smell test, clinical benefit or identity with Micro-Fresh established by the image.",
+        "Insertion into the boot is not established by the reviewed samples; do not add it.",
+        "Do not claim new inserts or a measured comfort result."
+      ],
+      "r4_fit": "POSSIBLE_NARROW_INCREMENT_IN_EXISTING_DEMO",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://drmartensrepairs.com/cdn/shop/videos/c/vp/34288717dd15455da9b73c87e4b513ff/34288717dd15455da9b73c87e4b513ff.HD-1080p-7.2Mbps-18278076.mp4?v=0",
+      "parent_page": "https://drmartensrepairs.com/pages/how-it-works",
+      "source_raw_sha256": "f5a6acd16fed47470947b6f19f47ad582dda14615324cd598197a31d2c891c74",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L14_EXISTING_DEMO.mp4",
+      "timestamp_seconds": [
+        26.6,
+        27.25
+      ]
+    },
+    {
+      "id": "E04",
+      "source_id": "L10_TEAR_RESOLE",
+      "case_identity": "AU_DONNYBROOK_1460_MONO",
+      "research_assertion_english": "The repair shop reports one customer pair of1460Mono boots from Donnybrook with upper tears and soles nearly detached.",
+      "locator": "paragraphs017–021",
+      "short_exact_quote": "large tears in the uppers, and the soles almost falling off",
+      "limits": [
+        "Repair-shop first-person case account, not an independently authenticated transaction or the existing UK public-review pair.",
+        "Displayed publication2024-03-17 and modified2026-10-05 are article metadata, not repair dates."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "source_raw_sha256": "c2b242fabbfd186cb7c629bfb21974993cb207358eb220a0affddfc9315bf0e8",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.paragraphs.txt",
+        "bytes": 7320,
+        "sha256": "5acb7723447d23b137dd66cbd50ce5df3b41ffbc3411f4c68bcea4d81439c2cf"
+      },
+      "image_receipt_ids": [
+        "L10_IMAGE_01",
+        "L10_IMAGE_03",
+        "L10_IMAGE_05",
+        "L10_IMAGE_07"
+      ],
+      "quote_sha256": "a8ee18f88dffce82d34aa31568492a56a8526bc862abeb5d9ec5071135e44188"
+    },
+    {
+      "id": "E05",
+      "source_id": "L10_TEAR_RESOLE",
+      "case_identity": "AU_DONNYBROOK_1460_MONO",
+      "research_assertion_english": "The shop says it removed the old outsoles up to just below the existing midsole, leaving black stitching visible above.",
+      "locator": "paragraph023",
+      "short_exact_quote": "removing the original soles, up to just below the midsole",
+      "limits": [
+        "This local alternative method retains the midsole; not the authorised UK three-part replacement and not a universal DrMartens instruction."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "source_raw_sha256": "c2b242fabbfd186cb7c629bfb21974993cb207358eb220a0affddfc9315bf0e8",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.paragraphs.txt",
+        "bytes": 7320,
+        "sha256": "5acb7723447d23b137dd66cbd50ce5df3b41ffbc3411f4c68bcea4d81439c2cf"
+      },
+      "quote_sha256": "b1561fb491ff2d227c17fb129a5a876e5f2e01c1542f3fd5fc762af3cb558574"
+    },
+    {
+      "id": "E06",
+      "source_id": "L10_TEAR_RESOLE",
+      "case_identity": "AU_DONNYBROOK_1460_MONO",
+      "research_assertion_english": "The shop says it attached a new pair ofVibram lugged soles against the retained original midsoles.",
+      "locator": "paragraph023",
+      "short_exact_quote": "adhering them into place against the original midsoles",
+      "limits": [
+        "Another pair and another attachment method. Do not splice this into R4 heat-welding footage.",
+        "Do not repeat untested durability/lightweight/flexibility comparison as fact."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "source_raw_sha256": "c2b242fabbfd186cb7c629bfb21974993cb207358eb220a0affddfc9315bf0e8",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.paragraphs.txt",
+        "bytes": 7320,
+        "sha256": "5acb7723447d23b137dd66cbd50ce5df3b41ffbc3411f4c68bcea4d81439c2cf"
+      },
+      "image_receipt_ids": [
+        "L10_IMAGE_02",
+        "L10_IMAGE_04"
+      ],
+      "quote_sha256": "8445bf26a20b7fff12801f8534fa3c033338a854b292a50679f12c948a454d5c"
+    },
+    {
+      "id": "E07",
+      "source_id": "L10_TEAR_RESOLE",
+      "case_identity": "AU_DONNYBROOK_1460_MONO",
+      "research_assertion_english": "The shop describes slicing off the outer part of the old sole rather than pulling or unstitching the old outer sole from a traditional welt.",
+      "locator": "paragraph024",
+      "short_exact_quote": "the outer part of the original sole needs to be sliced off and replaced",
+      "limits": [
+        "Only the shop-described method for this case; not proof that an authorised workshop cannot replace welts.",
+        "This is context forE05, not a separately counted new physical event."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": false,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "source_raw_sha256": "c2b242fabbfd186cb7c629bfb21974993cb207358eb220a0affddfc9315bf0e8",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.paragraphs.txt",
+        "bytes": 7320,
+        "sha256": "5acb7723447d23b137dd66cbd50ce5df3b41ffbc3411f4c68bcea4d81439c2cf"
+      },
+      "quote_sha256": "96e61a4384d8feb6dd57ca4f5af4a028f541349dc59de7a8f4f6152bce13499b"
+    },
+    {
+      "id": "E08",
+      "source_id": "L10_TEAR_RESOLE",
+      "case_identity": "AU_DONNYBROOK_1460_MONO",
+      "research_assertion_english": "The shop reports reinforcing tears near the outer toes of both boots with leather patches placed inside the boots.",
+      "locator": "paragraph034",
+      "short_exact_quote": "on the interior of the boots",
+      "limits": [
+        "This is toe-area patching on another case, not expansion of the UK heel-lining new-leather offering.",
+        "Article wording has a typo; do not invent patch thickness or a source-not-given material formula."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "source_raw_sha256": "c2b242fabbfd186cb7c629bfb21974993cb207358eb220a0affddfc9315bf0e8",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.paragraphs.txt",
+        "bytes": 7320,
+        "sha256": "5acb7723447d23b137dd66cbd50ce5df3b41ffbc3411f4c68bcea4d81439c2cf"
+      },
+      "quote_sha256": "972d8f17ab7c988672504cd8b10d708bd92b6af8f208768817e681981a13bbf8"
+    },
+    {
+      "id": "E09",
+      "source_id": "L10_TEAR_RESOLE",
+      "case_identity": "AU_DONNYBROOK_1460_MONO",
+      "research_assertion_english": "The shop says those internal patches were adhered against the inner lining before loose exterior leather was fixed down.",
+      "locator": "paragraph034",
+      "short_exact_quote": "Once those patches were firmly adhered in place against the inner lining",
+      "limits": [
+        "Text describes order; before/after photos do not show the hidden patch installation itself.",
+        "No exact adhesive type, cure time, force, stitch reinforcement or quantitative strength test."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "source_raw_sha256": "c2b242fabbfd186cb7c629bfb21974993cb207358eb220a0affddfc9315bf0e8",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.paragraphs.txt",
+        "bytes": 7320,
+        "sha256": "5acb7723447d23b137dd66cbd50ce5df3b41ffbc3411f4c68bcea4d81439c2cf"
+      },
+      "quote_sha256": "01ec75c36641bd305162d4363a7b0dbec76e1990aa4940271f07a27696fdbe30"
+    },
+    {
+      "id": "E10",
+      "source_id": "L10_TEAR_RESOLE",
+      "case_identity": "AU_DONNYBROOK_1460_MONO",
+      "research_assertion_english": "The shop reports gluing loose leather on the outside down over the reinforced tear area.",
+      "locator": "paragraph034",
+      "short_exact_quote": "glued down the loose leather on the outside",
+      "limits": [
+        "Do not say a new whole upper was fitted or the tear became invisible.",
+        "No customer walking test or wear-life guarantee."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "source_raw_sha256": "c2b242fabbfd186cb7c629bfb21974993cb207358eb220a0affddfc9315bf0e8",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.paragraphs.txt",
+        "bytes": 7320,
+        "sha256": "5acb7723447d23b137dd66cbd50ce5df3b41ffbc3411f4c68bcea4d81439c2cf"
+      },
+      "image_receipt_ids": [
+        "L10_IMAGE_05",
+        "L10_IMAGE_06"
+      ],
+      "quote_sha256": "c0bfa6745f3827b71c0a9d1e8a21461ae16d21e277aef80e3702d32eac2790b4"
+    },
+    {
+      "id": "E11",
+      "source_id": "L10_TEAR_RESOLE",
+      "case_identity": "AU_DONNYBROOK_1460_MONO",
+      "research_assertion_english": "The shop reports using black pigmented polish on scuffed, faded upper leather.",
+      "locator": "paragraph041",
+      "short_exact_quote": "pigmented black polish",
+      "limits": [
+        "The shop gives this case action, not proof of a specific proprietary formula or permanent colourfastness."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "source_raw_sha256": "c2b242fabbfd186cb7c629bfb21974993cb207358eb220a0affddfc9315bf0e8",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.paragraphs.txt",
+        "bytes": 7320,
+        "sha256": "5acb7723447d23b137dd66cbd50ce5df3b41ffbc3411f4c68bcea4d81439c2cf"
+      },
+      "quote_sha256": "2e86b4ac8a69045f8c7dde841a7c5813caccc64b3defce8477d5e1747db662bd"
+    },
+    {
+      "id": "E12",
+      "source_id": "L10_TEAR_RESOLE",
+      "case_identity": "AU_DONNYBROOK_1460_MONO",
+      "research_assertion_english": "The shop says the finishing restored some faded colour; publisher before/after photos display a darker shinier upper and a newly lugged bottom while creases and the tear-area texture remain visible.",
+      "locator": "paragraph041; paired images01/02,05/06,07/08",
+      "short_exact_quote": "restore some of the faded colour",
+      "limits": [
+        "Provider-staged before/after photos are evidence of displayed appearance only; no controlled lighting test, independent identity authentication, friction test, seamless repair, verified customer delivery or further use."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-and-tear-repair",
+      "source_raw_sha256": "c2b242fabbfd186cb7c629bfb21974993cb207358eb220a0affddfc9315bf0e8",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L10_TEAR_RESOLE.paragraphs.txt",
+        "bytes": 7320,
+        "sha256": "5acb7723447d23b137dd66cbd50ce5df3b41ffbc3411f4c68bcea4d81439c2cf"
+      },
+      "image_receipt_ids": [
+        "L10_IMAGE_01",
+        "L10_IMAGE_02",
+        "L10_IMAGE_05",
+        "L10_IMAGE_06",
+        "L10_IMAGE_07",
+        "L10_IMAGE_08"
+      ],
+      "quote_sha256": "97471b8dca25ddc69a4bc20cd98021d8f228084cfadefe08e04f55af6f7a74f0"
+    },
+    {
+      "id": "E13",
+      "source_id": "L11_MIDSOLE_REPAIR",
+      "case_identity": "AU_COBURG_PAIR",
+      "research_assertion_english": "A different shop case reports worn outsoles and midsole separation, including a large crack at the rear of the right boot.",
+      "locator": "paragraphs021,030",
+      "short_exact_quote": "a large crack around the back of the right boot",
+      "limits": [
+        "Another customer pair, distinct fromDonnybrook/Stafford/UKJuly case."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-midsole-repair",
+      "source_raw_sha256": "561882a4dd5e8c54ece2b43d56ab183035cf1ecfba9404f853386b9dfba2f683",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L11_MIDSOLE_REPAIR.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L11_MIDSOLE_REPAIR.paragraphs.txt",
+        "bytes": 6550,
+        "sha256": "b337156352e5ae831baea44ce23791bbecd80c851a8a6ea2f5b9866d2562e0db"
+      },
+      "quote_sha256": "2b0ae30e93dd4ad608d10c015e598522ce4976ef0fa52e3323f38df1a1e8d56e"
+    },
+    {
+      "id": "E14",
+      "source_id": "L11_MIDSOLE_REPAIR",
+      "case_identity": "AU_COBURG_PAIR",
+      "research_assertion_english": "The shop says it removed damaged material, sealed cracks, re-adhered the existing midsoles against the uppers, then fitted replacement rubber outsoles.",
+      "locator": "paragraphs024,030",
+      "short_exact_quote": "re-adhered the midsoles back into place against the uppers",
+      "limits": [
+        "Do not present as the authorised UK construction or same R4 shoe.",
+        "No precise material/adhesive/cure/test data."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-midsole-repair",
+      "source_raw_sha256": "561882a4dd5e8c54ece2b43d56ab183035cf1ecfba9404f853386b9dfba2f683",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L11_MIDSOLE_REPAIR.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L11_MIDSOLE_REPAIR.paragraphs.txt",
+        "bytes": 6550,
+        "sha256": "b337156352e5ae831baea44ce23791bbecd80c851a8a6ea2f5b9866d2562e0db"
+      },
+      "quote_sha256": "9abb12c810dd7641f1b1e159ff4baeb3687c857d4c4e6f6064b891ca533d6b07"
+    },
+    {
+      "id": "E15",
+      "source_id": "L11_MIDSOLE_REPAIR",
+      "case_identity": "AU_COBURG_PAIR",
+      "research_assertion_english": "The shop explicitly acknowledges that this case could not have an entirely seamless finish because of the damage.",
+      "locator": "paragraph031",
+      "short_exact_quote": "it wasn’t possible to achieve an entirely seamless finish",
+      "limits": [
+        "Repair-shop judgement, not independently measured safety or endurance.",
+        "The page calls yellow stitching cosmetic in its method discussion; this must not override PLC explanation of structural welt stitching in R4."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-resole-midsole-repair",
+      "source_raw_sha256": "561882a4dd5e8c54ece2b43d56ab183035cf1ecfba9404f853386b9dfba2f683",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L11_MIDSOLE_REPAIR.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L11_MIDSOLE_REPAIR.paragraphs.txt",
+        "bytes": 6550,
+        "sha256": "b337156352e5ae831baea44ce23791bbecd80c851a8a6ea2f5b9866d2562e0db"
+      },
+      "quote_sha256": "7f7924e3fec63e3a3370fa11163c5af4f79fba50748a1e1a1f9f2269d27ae8f8"
+    },
+    {
+      "id": "E16",
+      "source_id": "L12_SOLOVAIR_RESOLE",
+      "case_identity": "AU_STAFFORD_PAIR",
+      "research_assertion_english": "Another customer pair from Stafford is described with tread almost flat.",
+      "locator": "paragraphs019–021",
+      "short_exact_quote": "the tread almost entirely flat",
+      "limits": [
+        "Displayed publication2024-05-22 differs from stale search snippets; neither is an actual repair-day record.",
+        "Another pair, not either Melbourne or UK customer."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-solovair-resole",
+      "source_raw_sha256": "d9384f161e39f93bc5b5cf708cf6797fab572376d2c87d1df569493ab0dd25be",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L12_SOLOVAIR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L12_SOLOVAIR_RESOLE.paragraphs.txt",
+        "bytes": 6245,
+        "sha256": "d68e16cd58943a7cfb20472d0ed81b954a089d2c49b2b21686520f90a2f3d451"
+      },
+      "quote_sha256": "c98b0bc69b9224b4a77f1eee704c4bf97cdbb9a90c3f743720500fdcb79abf4a"
+    },
+    {
+      "id": "E17",
+      "source_id": "L12_SOLOVAIR_RESOLE",
+      "case_identity": "AU_STAFFORD_PAIR",
+      "research_assertion_english": "The shop says it sliced away old outer soles and stitched full-length midsoles into footbeds.",
+      "locator": "paragraph024",
+      "short_exact_quote": "stitching a new pair of full-length midsoles firmly into the footbeds",
+      "limits": [
+        "Alternative rebuild method. The page’s broad claim that the rand cannot readily be removed is local-method context, not proof the UK authorised workflow cannot remove/re-welt."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-solovair-resole",
+      "source_raw_sha256": "d9384f161e39f93bc5b5cf708cf6797fab572376d2c87d1df569493ab0dd25be",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L12_SOLOVAIR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L12_SOLOVAIR_RESOLE.paragraphs.txt",
+        "bytes": 6245,
+        "sha256": "d68e16cd58943a7cfb20472d0ed81b954a089d2c49b2b21686520f90a2f3d451"
+      },
+      "quote_sha256": "c88d0d22d68475e94b28ae81a3ab4b897e9110ef2e518b8ceb453accea4d94b7"
+    },
+    {
+      "id": "E18",
+      "source_id": "L12_SOLOVAIR_RESOLE",
+      "case_identity": "AU_STAFFORD_PAIR",
+      "research_assertion_english": "The shop reports using the new midsoles as a flat base forSolovair replacement soles.",
+      "locator": "paragraph024",
+      "short_exact_quote": "provided a sturdy, flat base",
+      "limits": [
+        "Do not present as original DrMartens sole, authorised UK material, or demonstrated long-term/economic superiority.",
+        "No wearer return/walking/comfort test is documented here."
+      ],
+      "r4_fit": "ALTERNATIVE_CASE_ONLY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://soleheeled.com.au/case-studies/dr-martens-boot-solovair-resole",
+      "source_raw_sha256": "d9384f161e39f93bc5b5cf708cf6797fab572376d2c87d1df569493ab0dd25be",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L12_SOLOVAIR_RESOLE.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L12_SOLOVAIR_RESOLE.paragraphs.txt",
+        "bytes": 6245,
+        "sha256": "d68e16cd58943a7cfb20472d0ed81b954a089d2c49b2b21686520f90a2f3d451"
+      },
+      "quote_sha256": "b0921d92af34be6f806bc9b1aec95a27c9215f37d78134d583162a42a18e9136"
+    },
+    {
+      "id": "E19",
+      "source_id": "L05_AR25",
+      "case_identity": "REPORT25_CHILDHOOD_BOOTS",
+      "research_assertion_english": "The2025 annual report describes a wearer restoring childhood boots from the1990s for her toddler, thirty years after her own use.",
+      "locator": "PDF70 / printed68, WEARER STORY",
+      "short_exact_quote": "her toddler could give them a second life",
+      "limits": [
+        "Issuer anecdote, no named person, specific repair steps, customer date, delivery evidence or independent test.",
+        "Separate childhood pair, not July2025 adult boots or2023 management sample.",
+        "Not suitable as another sentimental branch to fill R4."
+      ],
+      "r4_fit": "EXCLUDE_FROM_R4_SINGLE_JOURNEY",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://www.drmartensplc.com/application/files/7517/5014/5983/DOCs-AR25-FINAL.pdf",
+      "source_raw_sha256": "6212be3c41d434a725da281b92c3db308e068e3194ef679d0bb7e98b5bbfd1f0",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L05_AR25.pdf",
+      "quote_sha256": "5edfba03a1293ce5aad388a74cbd14f22d6b542061342d175a41650a86df8ffd"
+    },
+    {
+      "id": "E20",
+      "source_id": "L06_SUPPLIER_INTERVIEW",
+      "case_identity": "JAMIE2023_REFURBISHMENT",
+      "research_assertion_english": "The supplier’s31May2023 Q&A identifiesJamieWhitehouse asTheBootRepairCompanyMD and quotes him saying the refurbishment service forVivoBarefoot andDrMartens usesMicro-Fresh.",
+      "locator": "paragraphs019,023,029–030",
+      "short_exact_quote": "Our service which renovates Vivo Barefoot footwear and Dr Martens boots utilises Micro-Fresh®",
+      "limits": [
+        "Supplier-hosted commercial interview, a named participant’s account; no neutral performance trial.",
+        "Refurbishment for the next user may involve resale, not the July owner’s UK repair.",
+        "No particular bottle in the38second demonstration is identified."
+      ],
+      "r4_fit": "BACKGROUND_ONLY_NOT_CASE_ACTION",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://www.microfresh.com/blog/the-boot-repair-company-freshness-from-the-king-s-guard-to-the-armed-forces/",
+      "source_raw_sha256": "e0337ab470e660c8c5384cd904b017403cf4756afaf934d966426537c0faf473",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L06_SUPPLIER_INTERVIEW.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L06_SUPPLIER_INTERVIEW.paragraphs.txt",
+        "bytes": 6684,
+        "sha256": "7476af4f7d4c6506b09f2d90a422592f68bea793ff269ea37de708649732eb72"
+      },
+      "quote_sha256": "d8cca8120176691fee23a2be176a28b00b0b207758a20e5f2bbedf2d00273246"
+    },
+    {
+      "id": "E21",
+      "source_id": "L06_SUPPLIER_INTERVIEW",
+      "case_identity": "JAMIE2023_REFURBISHMENT",
+      "research_assertion_english": "Whitehouse describes showing clients treatment presence using a detector pen.",
+      "locator": "paragraph033",
+      "short_exact_quote": "Micro-Fresh® detector pen",
+      "limits": [
+        "No model, protocol, controls, sample size, threshold, kill rate, test result or specificDrMartens customer pair.",
+        "Do not convert a supplier demonstration claim into clinical efficacy or actual end-user safety testing."
+      ],
+      "r4_fit": "EXCLUDE_AS_UNVERIFIED_TEST_DETAIL",
+      "new_relative_to_r4": true,
+      "status": "RESEARCH_CANDIDATE_NOT_NARRATIVE_QA",
+      "url": "https://www.microfresh.com/blog/the-boot-repair-company-freshness-from-the-king-s-guard-to-the-armed-forces/",
+      "source_raw_sha256": "e0337ab470e660c8c5384cd904b017403cf4756afaf934d966426537c0faf473",
+      "source_raw_path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L06_SUPPLIER_INTERVIEW.html",
+      "numbered_text_binding": {
+        "path": "/workspace/work/brand-story-20261025/c07-audit/length-research/L06_SUPPLIER_INTERVIEW.paragraphs.txt",
+        "bytes": 6684,
+        "sha256": "7476af4f7d4c6506b09f2d90a422592f68bea793ff269ea37de708649732eb72"
+      },
+      "quote_sha256": "cee0f95bc5963d19d905548905f0d3dd994568f2fc8e93eb7b89c3efdf7213cb"
+    }
+  ],
+  "source_count_with_candidate_claims": 6,
+  "unacquired_video_leads": [
+    {
+      "id": "G01_SHOEHEALER_VIDEO",
+      "url": "https://www.youtube.com/watch?v=Yjsy98EiOx0",
+      "discovery_title": "We Sent Dr Martens Boots to the Authorised Boot Repair Service – Here’s What Came Back",
+      "discovery_publisher": "Shoe Healer",
+      "metadata_seen_in_search_only": {
+        "published": "2025-04-23",
+        "description_lead": "Shop describes a one-off pair sent from Sweden, forwarded to authorised UK repair service and inspected after return; explicitly says not affiliated."
+      },
+      "actual_video_acquired": false,
+      "actual_duration_seconds": null,
+      "timestamps_verified": false,
+      "transcript_acquired": false,
+      "original_watch_http_receipt_id": "L01_SHOEHEALER_WATCH",
+      "web_original_open_result": "Failed to fetch original watch page. Search description is discovery only, not content proof.",
+      "potential": "Potentially useful single customer/workshop handoff and physical returned-object inspection; no usable claims until original is acquired and reviewed."
+    },
+    {
+      "id": "G02_KEYCOBBLER_2021",
+      "url": "https://www.youtube.com/watch?v=f0x9-aHiW-0",
+      "discovery_title": "Dr Marten Resole and Restoration",
+      "discovery_publisher": "The Key Cobbler",
+      "actual_video_acquired": false,
+      "actual_duration_seconds": null,
+      "timestamps_verified": false,
+      "web_original_open_result": "Failed to fetch original watch page. No repeated executor request after same YouTube host CONNECT403.",
+      "potential": "Alternative workshop process; no original bytes, duration or observed actions. Cannot count as long-form evidence."
+    },
+    {
+      "id": "G03_KEYCOBBLER_UNITS",
+      "url": "https://www.youtube.com/watch?v=WBlrCxZeSwY",
+      "discovery_title": "Dr Marten resole with original DM Units",
+      "discovery_publisher": "The Key Cobbler",
+      "actual_video_acquired": false,
+      "actual_duration_seconds": null,
+      "timestamps_verified": false,
+      "original_body_status": "Search discovery only; same YouTube origin inaccessible in this environment. No transcript or clips acquired."
+    }
+  ],
+  "research_limits": [
+    "Research propositions only; all later narration/source/visual QA must bind the actual new candidate.",
+    "No implicit claim of same pair between original UK demonstration, public reviewers, management samples, Australian cases or issuer anecdote.",
+    "No research document length is counted toward spoken duration or source capacity."
+  ],
+  "chinese_script_written": false,
+  "native_lint_rerun": false,
+  "r4_source_pass_issued": false,
+  "r4_narrative_pass_issued": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_actions": 0,
+  "git_actions": 0
+}

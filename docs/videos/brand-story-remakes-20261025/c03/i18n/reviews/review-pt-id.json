@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_caption_metadata_text",
+  "slug": "story-everyday-moleskine-c03-remake-20261025",
+  "review_scope": "Preparation only; native-viewer text review of canonical zh-TW script, merged translations, source slide data, claims, glossary and worksheet text cue boundaries. No media, final, publication or owner approval.",
+  "timing_status": "UNVERIFIED",
+  "actual_source_srt_available": false,
+  "tts_status": "HELD",
+  "locales": {
+    "pt": {
+      "status": "FIXES_REQUIRED",
+      "verdict": "ready after the fixes",
+      "reviewer_was_translator": false,
+      "coverage": {
+        "lines": 143,
+        "chapters": 6,
+        "title": true,
+        "description": true,
+        "tags": true,
+        "thumbnail_words": 3,
+        "worksheet_boundary_entries": 36
+      },
+      "inputs": {
+        "video": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/video.json",
+          "sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005"
+        },
+        "claims": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/claims.md",
+          "sha256": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb"
+        },
+        "lexicon": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/lexicon.json",
+          "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5"
+        },
+        "review_prompt": {
+          "path": "/workspace/work/brand-remakes-source/.agents/skills/youtube-video/references/prompts/caption-review.md",
+          "sha256": "e95c973686da098ea76dcbe4e3c41cbfe0148967e3a6f17840cd478ab3f3bd9a"
+        },
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/pt.json",
+          "sha256": "438538a3fb18a09650abf9e6c1cd429a4649b2bb0f52144b0022b10d2fcb321e"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/pt.todo.json",
+          "sha256": "ae896f5bab6bddfa14cae6b9d964758141af7084fc5666217a410e75fed53cfa"
+        }
+      },
+      "review_file": {
+        "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/pt.review.md",
+        "sha256": "41fcfb1091bd22eed2c6c5ff5ff79f9705528b695af9988309fc2ddc8d515ab9"
+      },
+      "fix_count": 4,
+      "fix_counts_by_kind": {
+        "meaning": 4,
+        "facts": 0,
+        "glossary": 0,
+        "cue_order": 0,
+        "readability": 0,
+        "budget": 0,
+        "metadata": 0,
+        "thumbnail": 0
+      },
+      "findings": [
+        {
+          "field": "lines.r305031.text",
+          "id": "r305031",
+          "kind": "meaning",
+          "problem": "發行人 is the securities issuer presenting the concept in its prospectus, not the historical book publisher. The attribution must remain with the issuing company.",
+          "current": "Na ideia da editora, o comprador assumia o caderno e também o lugar de autor.",
+          "suggested": "Na visão da empresa emissora, o comprador recebia o caderno e também assumia o lugar de autor."
+        },
+        {
+          "field": "lines.r318051.text",
+          "id": "r318051",
+          "kind": "meaning",
+          "problem": "The source excludes an extra cash payment of the same amount. “Gasto” is broader and can also mean an accounting expense; preserve the explicit cash distinction.",
+          "current": "É um recálculo contábil do ativo da marca; não é gasto extra de igual valor naquele ano, nem tantos cadernos devolvidos.",
+          "suggested": "É um recálculo contábil do ativo da marca; não é pagamento extra em dinheiro no mesmo valor naquele ano, nem tantos cadernos devolvidos."
+        },
+        {
+          "field": "lines.r319031.text",
+          "id": "r319031",
+          "kind": "meaning",
+          "problem": "Keep the causal link: partial principal forgiveness lowered financing expenses, which chiefly explains the smaller adjusted pretax loss. The current “e” presents forgiveness and lower expenses as separate causes.",
+          "current": "O prejuízo ajustado antes de impostos atribuível ao grupo caiu, sobretudo por perdão parcial do principal de empréstimos de acionistas e menores despesas financeiras.",
+          "suggested": "O prejuízo ajustado antes de impostos atribuível ao grupo caiu, sobretudo porque o perdão de parte do principal dos empréstimos de acionistas reduziu as despesas financeiras."
+        },
+        {
+          "field": "lines.r3e112.text",
+          "id": "r3e112",
+          "kind": "meaning",
+          "problem": "Retain the source’s cannot-assume qualification about current customer contracts, rather than assert what those contracts do or do not describe.",
+          "current": "não descrevem o contrato atual de cada cliente, mas acrescentam um fio invisível à história da estante.",
+          "suggested": "não podem ser tomados como os contratos atuais de todos os clientes; mas acrescentam um fio invisível à história da estante."
+        }
+      ],
+      "timing_status": "UNVERIFIED",
+      "soft_length_flags": {
+        "lines_over_80_chars": 91,
+        "hard_max_chars_budgets_present": false,
+        "note": "Raw line-length preparation flags only; actual timed cue fit remains to be checked without dropping required clauses."
+      }
+    },
+    "id": {
+      "status": "FIXES_REQUIRED",
+      "verdict": "ready after the fixes",
+      "reviewer_was_translator": false,
+      "coverage": {
+        "lines": 143,
+        "chapters": 6,
+        "title": true,
+        "description": true,
+        "tags": true,
+        "thumbnail_words": 3,
+        "worksheet_boundary_entries": 36
+      },
+      "inputs": {
+        "video": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/video.json",
+          "sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005"
+        },
+        "claims": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/claims.md",
+          "sha256": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb"
+        },
+        "lexicon": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/lexicon.json",
+          "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5"
+        },
+        "review_prompt": {
+          "path": "/workspace/work/brand-remakes-source/.agents/skills/youtube-video/references/prompts/caption-review.md",
+          "sha256": "e95c973686da098ea76dcbe4e3c41cbfe0148967e3a6f17840cd478ab3f3bd9a"
+        },
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/id.json",
+          "sha256": "fb10c31070403ab68d17b449feefb9e3cce5c21f4983aa04a9309b60c624382b"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/id.todo.json",
+          "sha256": "e3e726129dea95c0f940d53b51ee3b7e3a6deb26bb4dbade517ba14deeff0fbf"
+        }
+      },
+      "review_file": {
+        "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/id.review.md",
+        "sha256": "30fecde6d1f1a10f5873b248bcb57558ff49e60266e724d86ae2583eb4b653bc"
+      },
+      "fix_count": 3,
+      "fix_counts_by_kind": {
+        "meaning": 2,
+        "facts": 0,
+        "glossary": 0,
+        "cue_order": 0,
+        "readability": 0,
+        "budget": 0,
+        "metadata": 1,
+        "thumbnail": 0
+      },
+      "findings": [
+        {
+          "field": "lines.r305031.text",
+          "id": "r305031",
+          "kind": "meaning",
+          "problem": "發行人 is the securities issuer/company presenting the prospectus concept; penerbit reads as the book publisher in this story.",
+          "current": "Dalam gagasan penerbit, pembeli menerima bukunya sekaligus mengambil peran penulis.",
+          "suggested": "Menurut konsep perusahaan dalam prospektus, pembeli menerima bukunya sekaligus mengambil peran penulis."
+        },
+        {
+          "field": "lines.r3e112.text",
+          "id": "r3e112",
+          "kind": "meaning",
+          "problem": "Retain the source’s cannot-assume qualification; bukan kontrak semua pelanggan makes a categorical claim instead.",
+          "current": "bukan kontrak semua pelanggan saat ini, tetapi memberi kisah di depan rak satu jalur yang tak terlihat.",
+          "suggested": "tidak bisa dianggap sebagai kontrak setiap pelanggan saat ini; tetapi ini menambah satu jalur tak terlihat pada kisah di depan rak."
+        },
+        {
+          "field": "description.first_paragraph",
+          "id": "description",
+          "kind": "metadata",
+          "problem": "Literal product-positioning phrasing and unclear relationship to the reporting period need natural Indonesian wording.",
+          "current": "Bagaimana buku hitam kecil tanpa isi tercetak bisa menjadi perusahaan tercatat di bursa? Ikuti posisi produk, strategi toko buku dan grosir Moleskine, pekerjaan mengelola toko sendiri, serta pengisian stok dan penurunan nilai merek pada 2025 dan hasil lebih baru semester pertama 2026.",
+          "suggested": "Bagaimana buku hitam kecil tanpa isi tercetak bisa menjadi perusahaan tercatat di bursa? Ikuti cara Moleskine memosisikan produknya, strategi toko buku dan grosirnya, pekerjaan mengelola toko sendiri, serta pengisian stok dan penurunan nilai merek pada 2025 dan hasil yang lebih baru dari semester pertama 2026."
+        }
+      ],
+      "timing_status": "UNVERIFIED",
+      "soft_length_flags": {
+        "lines_over_80_chars": 94,
+        "hard_max_chars_budgets_present": false,
+        "note": "Raw line-length preparation flags only; actual timed cue fit remains to be checked without dropping required clauses."
+      }
+    }
+  }
+}

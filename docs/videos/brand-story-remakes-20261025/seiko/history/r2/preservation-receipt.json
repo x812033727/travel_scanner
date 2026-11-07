@@ -1,0 +1,802 @@
+{
+  "schema_version": 1,
+  "archived_at_utc": "2026-10-26T04:52:47.708868+00:00",
+  "frozen_revision": "seiko-r2",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_PLAN_ONLY",
+  "native_round_2_verdict": "HOLD",
+  "actual_native_round_count": 2,
+  "raw_payloads_and_input_binding_preserved": true,
+  "lone_reader_findings_preserved_without_consensus_edit": true,
+  "source_report_sha256": "b2456108c0b32ebd647e5edc71fced4e8156f4f80bf35dfa0bed224fae160aa9",
+  "verify_sha256": "774a6c52361e9c4f380f0f266f757406d4b46ee9dd842032370149091956aff2",
+  "native_round2_report_sha256": "6f156998830278467038b38a5af9d7757a5d283e418d0083cedfa3dec6ec55d4",
+  "files": [
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/author-notes.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/author-notes.json",
+      "sha256": "cd7a294c788109f5cfb4be336276616b7c92a9183cb7c996c5d56a6192aaa3af"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/narration-only.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/narration-only.json",
+      "sha256": "f242501b1dda12d08e20122db464afbaa86eec744c89b9477bdf6b18d69a0ea4"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/review-state.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/review-state.json",
+      "sha256": "0582b94cfff66cf13f2fe9c52ba391799f655e1ae717f94c9a8dfd15c43f0086"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/author-freeze-r2.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/author-freeze-r2.json",
+      "sha256": "3fbb14fb910e073b55a14cee3be64bed2cd2b0738990cf938630e2453aa8852a"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/video.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/video.json",
+      "sha256": "044ca1b115d4dcaea136de6edad3e316db6d11c5edc529f2bda3944fe985cda6"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/protected-inputs-r1.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/protected-inputs-r1.json",
+      "sha256": "82c0c533a256eab89a06348668dca39dac6dae17dbb65e5a0a1441668ea1ed40"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/author-revision-r2.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/author-revision-r2.json",
+      "sha256": "4ecf16a980f7e537d16988cf09306c085b5dee0bc599aa77ad81417b7a2be19d"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/build-candidate.mjs",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/build-candidate.mjs",
+      "sha256": "0f887440792e2dc62e619220e9861ccd890a63ea97831d9c1027056c06a1f179"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/image-reuse-plan.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/image-reuse-plan.json",
+      "sha256": "1329ff18bf742b0fe64b86dddcf266c8d67f5836af47316aea24271825310cf1"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/script.md",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/script.md",
+      "sha256": "c3a0fcea948a315b0b36ade7ecc666222612724ed3548df36337501ab5b36b1c"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/research-original.claims.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/research-original.claims.json",
+      "sha256": "4195ab5af88173c59ca4a3eff3b40386764a70c0e65420bec4446ac943095231"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/protected-inputs-r2.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/protected-inputs-r2.json",
+      "sha256": "4933d5bd522276a2635483f8d18b89322c259b2ae84d1349f50d48b237033c00"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/author-freeze-r1.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/author-freeze-r1.json",
+      "sha256": "f3dd5236a54f0273ad3afef1a4017217218294e51555f4ace494aacd9d9662ce"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/native-author-lint-r1.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/native-author-lint-r1.json",
+      "sha256": "11a2cd62a17e6e5d8216206cc19468c0540e02dc57db66acc6ad462ecdf5592c"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/author-source-additions.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/author-source-additions.json",
+      "sha256": "6751d73432f92c6375c0e770fdb88ee1e65d1e0e3000014d6422749bc19e722c"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/original-preservation.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/original-preservation.json",
+      "sha256": "de1800877f4406ac0ef01c9c3558ebb2965779bb7b3f1c63d29fd82bcba909bc"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/series.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/series.json",
+      "sha256": "226fc8e47e4c74d17df5f0a80839a58f38cc27b85d2e37a0a3599c1503b7ec2e"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/brief.md",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/brief.md",
+      "sha256": "a02ec64b74a5f6ba9222614327a3fa09f4e4c823d3a30dbc71a1896869e7b808"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/claims.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/claims.json",
+      "sha256": "ec24561254fbae179a0c6b72c5ad3efec4264383a434fde9bf206f2931805d26"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/author-rows.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/author-rows.json",
+      "sha256": "29c8c56ed66a560225de777f32229ea5a516f8b078bfa253b48f359b8ee09850"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/producer.md",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/producer.md",
+      "sha256": "4d850cd973b51d3856beacb4af3f8b2fcb29e7f462367ca6edcefe89bf06587a"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/research-original.md",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/research-original.md",
+      "sha256": "a41609ac4465275a629db67fd3ffa225907753d7f7681d50cd2dd4741d4eaacc"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/native-author-lint-r2.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/native-author-lint-r2.json",
+      "sha256": "2616dfb623aa9f36c7fed48e6cbbb2c6134b24b1f1aea8e8771324fc0187f04c"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/verify-1.md",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/verify-1.md",
+      "sha256": "774a6c52361e9c4f380f0f266f757406d4b46ee9dd842032370149091956aff2"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/preflight-inputs.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/preflight-inputs.json",
+      "sha256": "8ceff5a9f9f2bd542faebda618488e66ff0d36bc87738c5b70616143f252cc84"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/claims.md",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/claims.md",
+      "sha256": "ec6f0cccc76f15613d9d4db5ece8f4b6051a7d5673d56aa12ae46e7f858e177c"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r1-binding.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r1-binding.json",
+      "sha256": "dc65139ad29078669c79ac4b0520ea67544061f073d0d28316897c4c347cbb63"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r2-binding.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r2-binding.json",
+      "sha256": "c3099441a509b0c0fff7c5c8dcc58f95f49511fde29f41653f3e20fc7ebaee63"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r1-input.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r1-input.json",
+      "sha256": "f1072167fc963da3d953758bf7c5c35e09b8941089e48802bb71d6792a0f351b"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r1.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r1.json",
+      "sha256": "c6566aa3baaf5905decbd098ed21107366d2fe21922b814984212d735aad3739"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r1-b.raw.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r1-b.raw.json",
+      "sha256": "a4c1b011761f92f70874c486607f6e6d7a5434590c8396369a5878e1cd4a923c"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r2-b.raw.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r2-b.raw.json",
+      "sha256": "15a33562c13761708266566a66a7131c27abaabf7039151130e9ec324ca248f4"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r2.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r2.json",
+      "sha256": "6f156998830278467038b38a5af9d7757a5d283e418d0083cedfa3dec6ec55d4"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r1-a.raw.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r1-a.raw.json",
+      "sha256": "35dcd1741e9aa5e8950bfcd092b921cd129cc70f4452c7a49ef0f4f151487361"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r2-input.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r2-input.json",
+      "sha256": "b0fc0affcb866835c187aceb776ffa8cb0f83602f61a5c79afe8aa9ee4472546"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/source-r1-independent.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/source-r1-independent.json",
+      "sha256": "6dce40dd0dacf9f9169df308b7ee95fe26bd86d651255a191eb8753069f3e996"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/source-r2-independent.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/source-r2-independent.json",
+      "sha256": "b2456108c0b32ebd647e5edc71fced4e8156f4f80bf35dfa0bed224fae160aa9"
+    },
+    {
+      "original": "docs/videos/brand-story-remakes-20261025/seiko/reviews/narrative-r2-a.raw.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/reviews/narrative-r2-a.raw.json",
+      "sha256": "5ac50830b1a3c590e24ce73acccb59991e6a0db507d9f9356a35c84161854bf7"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-audit/round-2/blind-a.raw.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/external-native-round-2/blind-a.raw.json",
+      "sha256": "5ac50830b1a3c590e24ce73acccb59991e6a0db507d9f9356a35c84161854bf7"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-audit/round-2/blind-input.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/external-native-round-2/blind-input.json",
+      "sha256": "b0fc0affcb866835c187aceb776ffa8cb0f83602f61a5c79afe8aa9ee4472546"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-audit/round-2/blind-binding.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/external-native-round-2/blind-binding.json",
+      "sha256": "c3099441a509b0c0fff7c5c8dcc58f95f49511fde29f41653f3e20fc7ebaee63"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-audit/round-2/narrative-r2.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/external-native-round-2/narrative-r2.json",
+      "sha256": "6f156998830278467038b38a5af9d7757a5d283e418d0083cedfa3dec6ec55d4"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-audit/round-2/blind-instructions.txt",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/external-native-round-2/blind-instructions.txt",
+      "sha256": "2a2c87c37aada594ce6766de2a2bc9ef606f8ba539b84a8aad9907b416bfe587"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-audit/round-2/blind-b.raw.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/external-native-round-2/blind-b.raw.json",
+      "sha256": "15a33562c13761708266566a66a7131c27abaabf7039151130e9ec324ca248f4"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/runtime-manifest.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/runtime-manifest.json",
+      "sha256": "2b60fef09db13c92c90386813f91eed7a701f7331bb887edc7fa9dea3545091f"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/lexicon.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/docs/videos/lexicon.json",
+      "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/video.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/video.json",
+      "sha256": "044ca1b115d4dcaea136de6edad3e316db6d11c5edc529f2bda3944fe985cda6"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/script.md",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/script.md",
+      "sha256": "5ac2fd0f8be6c4990c7dfb261f76da3988ace1bad2584cfc6995feaf634c19af"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/series.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/series.json",
+      "sha256": "226fc8e47e4c74d17df5f0a80839a58f38cc27b85d2e37a0a3599c1503b7ec2e"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/brief.md",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/brief.md",
+      "sha256": "a02ec64b74a5f6ba9222614327a3fa09f4e4c823d3a30dbc71a1896869e7b808"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/claims.md",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/claims.md",
+      "sha256": "ec6f0cccc76f15613d9d4db5ece8f4b6051a7d5673d56aa12ae46e7f858e177c"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/story-lexicon/current.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/story-lexicon/current.json",
+      "sha256": "0d27f13eda0ba59de93bf08e9464152c5fda914dfc6e4b45083cf840985b8ff8"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/story-lexicon/versions/4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/story-lexicon/versions/4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e.json",
+      "sha256": "4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-submission-root/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/story-lexicon/events/2d1f3f0163df7cfd7eb4fe1971633c98abf9f73bdf57f7fc21e388d352736355.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/runtime-r2/docs/videos/story-adapt-seiko-quartz-astron-remake-20261025/story-lexicon/events/2d1f3f0163df7cfd7eb4fe1971633c98abf9f73bdf57f7fc21e388d352736355.json",
+      "sha256": "2d1f3f0163df7cfd7eb4fe1971633c98abf9f73bdf57f7fc21e388d352736355"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-audit/native-lint-r2-ordinary-cli.json",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/external-author-r2/native-lint-r2-ordinary-cli.json",
+      "sha256": "3c0655af4cbef8f0282c447f805de92f7ebfd1fa22d6e975eaa0e1c009d0e1ca"
+    },
+    {
+      "original": "/workspace/work/brand-story-20261025/seiko-audit/finalize-r2.mjs",
+      "snapshot": "docs/videos/brand-story-remakes-20261025/seiko/history/r2/external-author-r2/finalize-r2.mjs",
+      "sha256": "023c0de34eefa0ef03e825849bb5c609b3a27f63963f2272eefc5c0e9e09d2b9"
+    }
+  ],
+  "source_cache_protection": [
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S10_MUS_COLLECT.html",
+      "sha256": "1c6bfb1f1e3e7fdf81ffd55bb4d99ffe866282058020a41117a3ee3f47310c32",
+      "bytes": 5938
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S11_MUS_COMPANY.html",
+      "sha256": "1c6bfb1f1e3e7fdf81ffd55bb4d99ffe866282058020a41117a3ee3f47310c32",
+      "bytes": 5938
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S12_EPS_TECH.html",
+      "sha256": "dffeb5597f3322af67e21f89e36de1551fa5bff6d10747ce21462de128ae66a6",
+      "bytes": 68958
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S12_EPS_TECH.txt",
+      "sha256": "2e9f2472aad71f36c9c19869753ab4c65f3e513e6bcb3453f69ff134ef5a61ab",
+      "bytes": 16370
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S13_BRAND_RELEASE.html",
+      "sha256": "0d28dba3b9be5e495986bbc4b8e9417ee017f8f7da6fe5c087982cfc22da1da8",
+      "bytes": 115949
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S13_BRAND_RELEASE.txt",
+      "sha256": "a9a9640183fc9614301781e49916571b97aff6995b7666799f954e11b5029c89",
+      "bytes": 14597
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S14_SWISS_HLS.html",
+      "sha256": "179a2fc5c7b1bbece6e76f8782177d4b446b3164b7a63974f1ceb03f0286a664",
+      "bytes": 97021
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S14_SWISS_HLS.txt",
+      "sha256": "55cb5e4ab52ee4874b41586669c7010806aa7f537dfad48869abcd1adeaf52d1",
+      "bytes": 29704
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S15_SWATCH.html",
+      "sha256": "c94a308928d871358b7b1b3218a634086bae0b19e3bd7a780787731eba545655",
+      "bytes": 107945
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S15_SWATCH.txt",
+      "sha256": "e195d924cefe10109f7ebb8f64c45aa814cbb12032672743b62cb37e892f0c33",
+      "bytes": 16444
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S16_ETHW_FIRSTHAND.html",
+      "sha256": "ce94deca2b1ea7e7ef3c3ab264374595e1634588bf824c134ba8768247537d6d",
+      "bytes": 74299
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S16_ETHW_FIRSTHAND.txt",
+      "sha256": "c955578ff6b7cc6bfb651beb8283766f6889c666c66a23c21345ae0d6e631f3b",
+      "bytes": 34670
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S17_BRAND_EVOLUTION.html",
+      "sha256": "5ceadd1944f1ffbfb0d0e733b6c5cc08462378fd85afe2001206b0181a3b0a75",
+      "bytes": 121791
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S17_BRAND_EVOLUTION.txt",
+      "sha256": "2704075a1fa094431cc8dd99da0b350b22c4daeda4257547669afab78d10de83",
+      "bytes": 22259
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S18_IEEE_NEWS.html",
+      "sha256": "247364cb678f97070be3f411dbc5c52b63b96a625d9b4d66c0db21c56afa9e2a",
+      "bytes": 24151
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S19_KAHAKU.html",
+      "sha256": "57c4a327bc5564fda419722484630e09b92bbd30ea1036ae87a58f78987ada97",
+      "bytes": 29346
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S19_KAHAKU.txt",
+      "sha256": "07126a1b70389bb27b2ebbb6b6beeb9384d28f6aebc6d49cf1ce4f31c27a9aed",
+      "bytes": 2567
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S1_EPS35SQ.html",
+      "sha256": "e482cc8cb2f4c3607090d2585404af0336bb3534105ed00a615118c8df56a465",
+      "bytes": 54206
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S1_EPS35SQ.txt",
+      "sha256": "61929ac9ca9a137da9415e62de2046d599155619e8248245bd49addba37294b0",
+      "bytes": 9760
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20-author-3.png",
+      "sha256": "c4a1e8f035ba2bd48cab9fc052e7064199eb5097e73d2a790009157574d248f9",
+      "bytes": 555450
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20-author-6.png",
+      "sha256": "0c3364373e768c656e4a58d4e184cf3582f93a177569c48f5fc5c6459ce5d8d5",
+      "bytes": 324695
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977-page-1-compact.txt",
+      "sha256": "923ebff3d3fb354207193da0e7fa3473f049d002029df26dd2c3617e070a6b15",
+      "bytes": 5035
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977-page-2-compact.txt",
+      "sha256": "504c2e3787e4389fe66b3221ee5bcf5690b5fd390c970acaedd58621d30dc29e",
+      "bytes": 1879
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977-page-3-compact.txt",
+      "sha256": "aaba0e29ed88aea25db42afa02ceccfa5fc05767ae9705d3afcc0e0a87982130",
+      "bytes": 3661
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977-page-4-compact.txt",
+      "sha256": "615f3e83f56e21d305907cb0b783a3c035bc9c1f140606ec8c674164f753d9aa",
+      "bytes": 3991
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977-page-5-compact.txt",
+      "sha256": "71d364f3e9f63305617349b35a8a22037b9e2b591d8dd95f79a92510e63563be",
+      "bytes": 3626
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977-page-6-compact.txt",
+      "sha256": "5257a1d941f0e8638996be38e330c079b310d9d5b27c52c85abe4f544bdf9c67",
+      "bytes": 2681
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977-page-7-compact.txt",
+      "sha256": "e030493f4ab72e9765a0f1c0485dc8cb70a1f4c02351f460b09faaf32a1ccef7",
+      "bytes": 3058
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977-pages-manifest.json",
+      "sha256": "152fb14938ab55de8ed3ab9042380a8d376fb25283824c6f999e4d17681a2b0c",
+      "bytes": 2752
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977.pdf",
+      "sha256": "b8149f06c4c573eff5373dcb3267952a98f9d87c48e15f8286f8359efeba6e3a",
+      "bytes": 1846000
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S20_YASUKAWA1977.txt",
+      "sha256": "28340a7525ef0d558a7e29a57a3fa351c22232719e3bd32dc72b1e92c1c4cbee",
+      "bytes": 41196
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S21_OGUCHI-page-1-compact.txt",
+      "sha256": "e05b4224a5f95487e00de4a7e13758a806616d8d8c907428b414d00f94c235de",
+      "bytes": 3944
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S21_OGUCHI-page-2-compact.txt",
+      "sha256": "8761d69fa1543bf8cef619a385a1a5c61d87345b24b609534db8886860372109",
+      "bytes": 4277
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S21_OGUCHI-pages-manifest.json",
+      "sha256": "342f057729ea5c567af8d80bc31979e42b153389e39265ed16f743465f5b00dc",
+      "bytes": 773
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S21_OGUCHI.pdf",
+      "sha256": "08e8bd6ed6461ba3ab15eb39d779ef763daebf406b3bfcb9eb69d2e2fceeeb0e",
+      "bytes": 252737
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S21_OGUCHI.txt",
+      "sha256": "0f7173cfe37ff7b2c97961e504b4a1ece5db6b08d191fde3aaadc9e87700f674",
+      "bytes": 11606
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S22_BRAND50PART2.html",
+      "sha256": "5fbc0d6e06b315f02dc49ae9008a956afbd7898d800b1d8dc05298b05598d609",
+      "bytes": 26460
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S22_BRAND50PART2.txt",
+      "sha256": "ba5fe06e44824d6a4ad81adc4ac4c98522cbec27881066bd22de65b7c884b1d4",
+      "bytes": 12870
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S23_HERITAGE.html",
+      "sha256": "8b15f47dd740d6a3aed90280109bd71ea260e7107cd5df530455f92dea709479",
+      "bytes": 117147
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S23_HERITAGE.txt",
+      "sha256": "fc292e326b16b8cfd50f7a6527b761b746a0da9a6be34cf0e020ff12a19a5503",
+      "bytes": 35019
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24-selected-pages-manifest.json",
+      "sha256": "e8b3fd71de10bfa8849ebb1258564c7a4966646c3bf974725d21c73e2b95192e",
+      "bytes": 2335
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-039.png",
+      "sha256": "0d9143e4218a1af546e751feec4afacb6911c2209a20b73178a3602d7dd56ab0",
+      "bytes": 632050
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-040.png",
+      "sha256": "bcbf35fca08fe11dcb56e67f87251e0841cd9c827b0e71d1200213026769c842",
+      "bytes": 551846
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-041.png",
+      "sha256": "d58c147e48074953b51621f0e197443c02d9fbce7e601658cc53de1c5fa653c3",
+      "bytes": 506051
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-042.png",
+      "sha256": "0033b8695f36846794ed85230255d2abba53d011c9fb0919c940b991d74d0257",
+      "bytes": 552868
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-1.txt",
+      "sha256": "5f418c14ba61407040807caafdeeb394e3d34f067a76ea60a7779820fed99972",
+      "bytes": 6470
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-3.txt",
+      "sha256": "6dff57b79d00879e454eca1857f6534f015953aea0c2584c94a81ef95f118fec",
+      "bytes": 3383
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-39.txt",
+      "sha256": "c72725c339f3733c27e7d147de031f399b797f9bd419505f301fcaa931748b8b",
+      "bytes": 4391
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-40.txt",
+      "sha256": "845e271f0d892fb675482137c92a81ce57d14a70765183d2b92ea7ddb04e62f2",
+      "bytes": 6241
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-41.txt",
+      "sha256": "023047f1a30117dd88150da8fbac16eb6ba548eb483696613acf4efa1011d570",
+      "bytes": 5638
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT-page-42.txt",
+      "sha256": "a9d77628e9c3f271d3c7343f24a1c0ee98fe7b57763f216d9ad5f968999e6089",
+      "bytes": 5463
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT.pdf",
+      "sha256": "6bf97c371fc3c53185b5e22a1b76512f3e119af0a691ca8797507c10bb485006",
+      "bytes": 17282829
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S24_KAHAKU_REPORT.txt",
+      "sha256": "d9cc7416a61868964615a8a7627063d7606cc9a188a6cbe96f82487cb14cb1f9",
+      "bytes": 653858
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S25_PATENT1.html",
+      "sha256": "3772d89804e322bf63b12ab65d8154ebfc65c3ecff5704c721e1fd62f25c76d2",
+      "bytes": 28451
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S25_PATENT1.txt",
+      "sha256": "051484994a38c6a2f5b0e8c2e5fcd07322564b48f714fe93adf5412b97bf0997",
+      "bytes": 3568
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S26_PATENT2.html",
+      "sha256": "c2ca38b3374421597ae751e3a6624f4888871d1b38b0279d3d3fde3d2bb56d5e",
+      "bytes": 28442
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S26_PATENT2.txt",
+      "sha256": "83f2026ed6947881f12b84be81645e92b8e9926b82cdec2788e867b21c436f85",
+      "bytes": 3559
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S2_MUS_IEEE.html",
+      "sha256": "1c6bfb1f1e3e7fdf81ffd55bb4d99ffe866282058020a41117a3ee3f47310c32",
+      "bytes": 5938
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S2_MUS_IEEE.web-extract.json",
+      "sha256": "8284102f43003c12b74aee249a1bf51e9ff98723606a1470bdef44a0f8a0ffb3",
+      "bytes": 390
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S2_MUS_IEEE.web-extract.txt",
+      "sha256": "1ccc24338e2aacac836025dc0f683389f68c9115de326f79cf0edd7cc74381af",
+      "bytes": 287
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S3_MUS_BIRTH.html",
+      "sha256": "1c6bfb1f1e3e7fdf81ffd55bb4d99ffe866282058020a41117a3ee3f47310c32",
+      "bytes": 5938
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S4_BRAND50.html",
+      "sha256": "23d3fa04c0a3d0fb24a9e8f909a228947a3832cebba845c07839742a4a569d49",
+      "bytes": 25159
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S4_BRAND50.txt",
+      "sha256": "1130d40b022b09fbf78743ab89ec46809c332e3588d8a26bb629797896e093fd",
+      "bytes": 13694
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S5_ETHW_JP.html",
+      "sha256": "14b78e5cc40cdab87d88908a51e76f6c244b6eae1ce80693a95a6e3595eb5769",
+      "bytes": 33732
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S5_ETHW_JP.txt",
+      "sha256": "c4dc3016d90f59ad7c6f89ffce5beef4b180a90947bb601dd72c7d4d5eaa20b9",
+      "bytes": 5034
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S6_ETHW_CEH.html",
+      "sha256": "e0e8ce7baa25ac8e1072a7f8caed3681005ca8b132d656ef21be0c977192043f",
+      "bytes": 33403
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S6_ETHW_CEH.txt",
+      "sha256": "ad6f7d90d0206ddf6688cf9d3b17624b9dad651a6140f5b27203d409e29920a5",
+      "bytes": 3573
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7-pages-manifest.json",
+      "sha256": "349139821911382e3a6259968beb3b670d9175ad61f52918964b1ad947112122",
+      "bytes": 3475
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-1.png",
+      "sha256": "24f7a7639f87f568c463aaec19045561df10975eb14e9c6e9561e0a084f2af10",
+      "bytes": 259972
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-1.txt",
+      "sha256": "96a91e9ae77cb9d42dbf3c35e29cfbd839b80aa3df942e3bf21f1cc423fee3e9",
+      "bytes": 3318
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-2.png",
+      "sha256": "1eab031f7e4e70c64f435e4f3f35a2b56ec5584797306fbbc6d55b11bc3170bb",
+      "bytes": 298728
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-2.txt",
+      "sha256": "9bbbba9902234615ed930c85279bd93bdf6315029f53b800fa467d11f8c420f4",
+      "bytes": 3713
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-3.png",
+      "sha256": "ba193f38a3f16f04d9c36d2a5072cba506e7321490d0c7f1b33b733077cadfbc",
+      "bytes": 284446
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-3.txt",
+      "sha256": "0aa82a9d71d05627fdee9e1a651c0e7ecd3c23c5815384d324cfaefd95d2c598",
+      "bytes": 3512
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-4.png",
+      "sha256": "bbd26cfe352174e85b321cf05d08cc46fa02724e321a804f179fbc4304292feb",
+      "bytes": 325678
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-4.txt",
+      "sha256": "2da3e9814b9a5a1f9e9d0bf4b3bd5ec408fb5304f9d0b2aa29d801cd35305770",
+      "bytes": 3987
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-5.png",
+      "sha256": "7b9d788459634e8c02f57ec9d68fc0e06c11aded5333cba90fde4080ab5d7e07",
+      "bytes": 329131
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-5.txt",
+      "sha256": "911cf7220192396a2049e5b0c0b1b7c2c79a74717f3b1a8631ad17f9eabb63c0",
+      "bytes": 4079
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-6.png",
+      "sha256": "518300bbcb5ad6660e862574d14af34921334ae6c91e24352cfa3e496c7c33aa",
+      "bytes": 327234
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-6.txt",
+      "sha256": "90b4cdd4e8d544b95646d0f6616b85fae2a4ee68cfd6a0a3151e83b7a1722ac1",
+      "bytes": 4073
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-7.png",
+      "sha256": "63d7227db81878c34cd0b5777c9ccd87a2f90931496574914fea6a3bb470a35e",
+      "bytes": 282887
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-7.txt",
+      "sha256": "4b0b421952d516c51faef4ddcd29183d3f06a30f692d63025312a689191faed8",
+      "bytes": 3413
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-8.png",
+      "sha256": "1f9a5ceb17535cbe37d8197807df71537277fc72c923d31223d6ca9fbe95556d",
+      "bytes": 85341
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ-page-8.txt",
+      "sha256": "86fcf260a34eef4c52ea375602654ad3bc24939700978652074a8848a32991a5",
+      "bytes": 1109
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ.pdf",
+      "sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+      "bytes": 381497
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S7_SHMJ.txt",
+      "sha256": "3a235dcb6adabdcdcac1b2ed03a0c84082d976fba6af69b494c1764f48673d68",
+      "bytes": 25952
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S8_TOYOTA.html",
+      "sha256": "686ca1bf015473af794f8d44ddf6130ed23dccb20e68531634d393afc006e6ad",
+      "bytes": 26017
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S8_TOYOTA.txt",
+      "sha256": "51991f29ee04d901bc7eb4183df0af6d12074ab5c5dc0f896152bcc02b25c6c0",
+      "bytes": 5583
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S9_SMITHSONIAN.html",
+      "sha256": "a19c1d03e05afede4d726a7e3dbe5ca671e0015b21e8fcbcbc0728f13f50aff8",
+      "bytes": 75277
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/S9_SMITHSONIAN.txt",
+      "sha256": "7e6fc0840938ed1968bbb9861a3ab892e391af451dfecb6dac2d6b6d0d6e5ef3",
+      "bytes": 6228
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/capture-manifest.json",
+      "sha256": "20f64206a7c54995afd5a6456bcece6c0edfb94e1c5992df52208d07f04856dd",
+      "bytes": 22099
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/git-tree-FETCH_HEAD.txt",
+      "sha256": "102382ceb23ac29722e2e0be2bbd0d531a0b78027ef34ac6e1512e2c9d0077bc",
+      "bytes": 401667
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/git-tree-HEAD.txt",
+      "sha256": "56353c7862d86d1ea7f12e4394587bb176eb684763c9366f4cdc9fafc0239cf1",
+      "bytes": 911017
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/original-inventory-receipt.json",
+      "sha256": "8b17fa942a0baed1522398151c19d0d1f94962e1ad3db2fdaf7e5c387df91758",
+      "bytes": 5748
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/original-readonly/batch-observed.json",
+      "sha256": "e50dca8848f1fc969cf451ce7620a7d7e3b8835c6732108cc660de82405628f9",
+      "bytes": 20860
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/original-readonly/docs/videos/brand-stories-adapt-20261017/B25-seiko-quartz.md",
+      "sha256": "715ce56b7baba51526640debd097ba2bd45f190a3144a2184629d86581068172",
+      "bytes": 14053
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/original-readonly/docs/videos/brand-stories-adapt-20261017/episodes/B25.json",
+      "sha256": "b705afd8e69f8ebb4cef8fccb9bff65868545090580b3e8f769c608e1f1d8412",
+      "bytes": 15214
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/original-readonly/docs/videos/brand-stories-adapt-20261017/episodes/reviews/B25.json",
+      "sha256": "c7acf5ff783dea8daa52e4223e1dedbb71f83128b77f930ff8ca805a754a4c49",
+      "bytes": 3300
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/original-selected-metadata.json",
+      "sha256": "2939d91a43a35291d2ac48f2bc073505ee05050a5bd7eb3945cfcd050ecdefd7",
+      "bytes": 634
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/seiko-audit/source-cache/visual-reading-receipt.json",
+      "sha256": "1c475ba0d5c51a4dc10672dc2b2a757471ee5a7edf54240c8b2a91e562a12222",
+      "bytes": 1003
+    }
+  ],
+  "history_r1_preservation_receipt_sha256": "43b7a79545760899a37f1f01d40046949315a61f0c345389ff90024e06fa42de",
+  "paid_calls": 0,
+  "owner_approval_created": false,
+  "verify_for_new_candidate_created": false
+}

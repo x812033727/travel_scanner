@@ -1,0 +1,82 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+import {eachLine, spokenText, validateVideo} from '/workspace/work/brand-remakes-source/tools/video/core/schema.mjs';
+import {spokenUnits, estimateTimeline, FPS} from '/workspace/work/brand-remakes-source/tools/video/core/timeline.mjs';
+import {loadProject, lintProject} from '/workspace/work/brand-remakes-source/tools/video/core/state.mjs';
+
+// R9 changes the single unclosed viewer choice into a narrow, sourced material question.
+// Root completed the immutable R8 archive and removed current verify before this author run.
+const OUT=path.dirname(fileURLToPath(import.meta.url)), BASE=path.resolve(OUT,'../..');
+const PRIOR=path.join(OUT,'history/r8'),RESEARCH=path.join(BASE,'research-expansion');
+const ROOT='/workspace/work/brand-story-20261025/submission-root',SLUG='story-everyday-kincho-c05-remake-20261025';
+const BASE_SHA='7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a';
+const R8_SHA='821196689581188053a483819a01facd851502e370721b7ab8d52ef9ba165709';
+const R8_CORE={'video.json':R8_SHA,'brief.md':'f0566e0304f807e27dfe1975a451c8b4ed79d695e231b3721c3d6fef096bfe95','series.json':'91e4c5d9022ec84cdf3c17f874539d2d71c0631f1e604712c63d4d957534793f','claims.json':'4725f6591b230d2b90c9009f36b716dc3073581ce100de834050b0d0c6291153'};
+const sha=x=>createHash('sha256').update(x).digest('hex'),fileSha=f=>sha(fs.readFileSync(f));
+const read=f=>JSON.parse(fs.readFileSync(f,'utf8')),write=(f,x)=>fs.writeFileSync(path.join(OUT,f),JSON.stringify(x,null,2)+'\n');
+const walk=p=>fs.readdirSync(p,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(p,e.name)):[path.join(p,e.name)]);
+const protectedFiles=[...fs.readdirSync(BASE,{withFileTypes:true}).filter(e=>e.isFile()).map(e=>path.join(BASE,e.name)),...walk(path.join(BASE,'i18n')),...walk(path.join(ROOT,'docs/videos',SLUG)),...walk(path.join(OUT,'history')),...walk(path.join(OUT,'reviews')),...walk(RESEARCH)];
+const protectedBefore=Object.fromEntries(protectedFiles.map(f=>[f,fileSha(f)]));
+for(const [f,digest]of Object.entries(R8_CORE))assert.equal(fileSha(path.join(PRIOR,f)),digest,f);
+assert.equal(fileSha(path.join(BASE,'video.json')),BASE_SHA);
+assert.equal(fileSha(path.join(RESEARCH,'research.md')),'0241eb279172af302351ffa72f43264313a521d30fe2ffa86429bad22f371ff0');
+assert.equal(fileSha(path.join(RESEARCH,'claims.json')),'2219f8d5e97ac0647d2947319567695dea5bb90387edd6f5ae86e7dd1f656bc4');
+assert(!fs.readdirSync(OUT,{withFileTypes:true}).some(e=>e.isFile()&&/verify/i.test(e.name)),'Current verify must be archived and removed by root before R9.');
+const sourceReviewFile=path.join(OUT,'reviews/source-r8-independent.json'),sourceReview=read(sourceReviewFile);
+assert.equal(sourceReview.source_video_sha256,R8_SHA);assert.equal(sourceReview.source_verdict,'PASS');
+const prior=read(path.join(PRIOR,'video.json')),priorRows=read(path.join(PRIOR,'narration-only.json'));
+const priorClaims=read(path.join(PRIOR,'claims.json')),priorSeries=read(path.join(PRIOR,'series.json')),priorNotes=read(path.join(PRIOR,'author-notes.json'));
+const oldRows=new Map(priorRows.map(r=>[r.id,r])),oldScenes=new Map(prior.scenes.map(s=>[s.id,s]));
+const changedId='c07d11',payoffId='c07d12';
+const newText='乾花接著要怎麼處理，才能製成書裡出售的殺蟲粉？';
+const newPrompt='Close-up of dried daisy flowers waiting beside a plain mortar and fine sieve on a wooden workbench, soft side light.';
+const doc=structuredClone(prior),scene=doc.scenes.find(s=>s.id===changedId);
+assert.equal(scene.lines.length,1);scene.lines[0].text=newText;scene.data.prompt=newPrompt;
+assert(!doc.loops.some(l=>l.setup===changedId||l.payoff===changedId));
+const newLoop={setup:changedId,payoff:payoffId,what:'乾花如何成為書中出售的殺蟲粉：下一句搗碎、過篩形成細粉。'};
+doc.loops.push(newLoop);
+for(const key of Object.keys(prior).filter(k=>!['scenes','loops'].includes(k)))assert.deepEqual(doc[key],prior[key],key);
+for(const s of doc.scenes)if(s.id!==changedId)assert.deepEqual(s,oldScenes.get(s.id),s.id);
+const expectedScene=structuredClone(oldScenes.get(changedId));expectedScene.lines[0].text=newText;expectedScene.data.prompt=newPrompt;assert.deepEqual(scene,expectedScene);
+assert.deepEqual(doc.loops.slice(0,-1),prior.loops);assert.deepEqual(doc.loops.at(-1),newLoop);
+assert.deepEqual(validateVideo(doc),[]);assert.deepEqual(doc.look,{preset:'cute-mystery'});assert.deepEqual(doc.voice,prior.voice);assert.equal(doc.subtitles.burn_in,true);
+const rows=[];let chapter='';for(const {scene,line}of eachLine(doc)){if(scene.chapter)chapter=scene.chapter;rows.push({chapter,id:line.id,text:line.text});}
+for(const r of rows)if(r.id!==changedId)assert.deepEqual(r,oldRows.get(r.id),r.id);
+assert.equal(rows.length,priorRows.length);
+const index=new Map(rows.map((r,i)=>[r.id,i]));for(const l of doc.loops){assert(index.has(l.setup)&&index.has(l.payoff));assert(index.get(l.setup)<index.get(l.payoff));}
+assert.equal(index.get(payoffId),index.get(changedId)+1);
+assert.equal(rows.find(r=>r.id===payoffId).text,'真正要出售時，書裡的動作換成搗碎和過篩，讓乾花成為細粉。');
+const chapterRows=new Map();for(const r of rows)chapterRows.set(r.chapter,[...(chapterRows.get(r.chapter)??[]),r]);assert.equal(chapterRows.size,6);for(const rr of chapterRows.values())assert(rr.some(r=>r.text.includes('你'))&&rr.some(r=>r.text.includes('我')));
+const units=rr=>rr.reduce((n,r)=>n+spokenUnits(r.text),0),total=units(rows),opening=units([...chapterRows.values()][0]);
+const outro=units(rows.filter(r=>['c05r101','c05r102','c05r103'].includes(r.id))),body=total-opening-outro;
+const unitDelta=spokenUnits(newText)-spokenUnits(oldRows.get(changedId).text);assert.equal(total,units(priorRows)+unitDelta);
+
+const currentClaims=structuredClone(priorClaims);currentClaims.candidate_revision='length-r9';currentClaims.status='PENDING_INDEPENDENT_REVIEW_HOLD';currentClaims.parent_candidate_video_sha256=R8_SHA;
+currentClaims.historical_r7_independent_review=currentClaims.prior_independent_review;
+currentClaims.prior_independent_review={path:sourceReviewFile,sha256:fileSha(sourceReviewFile),source_video_sha256:R8_SHA,reported_r8_source_verdict:sourceReview.source_verdict,reported_r8_written_visual_verdict:sourceReview.written_visual_verdict,scope:'R8 receipt only; the R9 source/question/prompt delta remains pending another reviewer.'};
+for(const r of currentClaims.rows){r.r8_claim_sha256=sha(oldRows.get(r.id).text);r.change=r.id===changedId?'REWRITTEN_IN_R9':'R8_TEXT_RETAINED';r.status='PENDING_INDEPENDENT_REVIEW';}
+const claim=currentClaims.rows.find(r=>r.id===changedId),payoffClaim=currentClaims.rows.find(r=>r.id===payoffId);
+claim.claim=newText;claim.claim_kind='SOURCED_FORWARD_MATERIAL_QUESTION';claim.source_ids=structuredClone(payoffClaim.source_ids);claim.sources=structuredClone(payoffClaim.sources);claim.source_anchors=structuredClone(payoffClaim.source_anchors);
+claim.locator='1897年第五版手冊p25（NDL畫幅16左頁），N25_SIEVE。只問乾花成為出售粉劑前的處理，下一句c07d12以搗碎和過篩形成細粉回答；不再承諾回答速度/功能該選哪個。';
+claim.question_payoff_binding={setup:changedId,payoff:payoffId,payoff_text:payoffClaim.claim,payoff_action_result:'搗碎、過篩→細粉',prior_viewer_tradeoff_question_removed:true,historical_choice_invented:false,status:'AUTHOR_BINDING_PENDING_INDEPENDENT_REVIEW'};
+claim.written_visual_change={before:oldScenes.get(changedId).data.prompt,after:newPrompt,scope:'Anonymous preparation scene for the sourced powder-making action; no depiction of a historical person choosing a drying method.',status:'PENDING_INDEPENDENT_VISUAL_DELTA_REVIEW'};
+assert.equal(currentClaims.rows.length,rows.length);for(const r of currentClaims.rows)assert.equal(r.claim,rows.find(x=>x.id===r.id).text);
+for(const s of claim.sources){if(s.record)assert.equal(fileSha(s.record.path),s.record.sha256);for(const a of claim.source_anchors){if(a.image_sha256){const imageReceipt=s.image_receipts?.[String(a.canvas)];assert(imageReceipt);assert.equal(fileSha(imageReceipt.path),a.image_sha256);}}}
+const series={...priorSeries,status:'hold_r9_material_journey_pending_independent_delta_and_fresh_readers',candidate_revision:'length-r9',parent_candidate_video_sha256:R8_SHA,independent_source_review_required:true,two_isolated_narrative_readers_required:true,target_minutes:13};
+const brief=['# C05 R9｜一卷香的百年材料旅程','','狀態：HOLD。作者revision R9，下一次實際native讀者panel為round8。R8的來源及panel收據只對R8雜湊有效，本版待獨立差分查核與新讀者；實聲和媒體未核准。','','### 選項 A：把材料交到長夜裡','','乾花粉末／有效成分→成形→交付→使用，一條材料旅程。主角是材料的工作，不是跨百年同一包粉。1897手冊、歷史工具、2017研究回顧與未標日期的原廠製程各有歸屬。乾花粉末不是花粉pollen；粉劑本來可以出售或撒用，本集追的是它如何成為可燃燒、可交付的一卷香。','','## 問題','','一把會散的乾花粉末，憑什麼變成能陪你過夜的商品？','','## 一句答案','','讓材料在該留的時候留住，到了使用時，再有節奏地離開。','','## 站主觀點','','用動作帶出材料取捨：採後乾燥能力、細切快乾的書中代價、篩粉和存粉、手盤與打型，再讓使用者拆卷和安放完成交接。天然成分身分只作為從乾花走向已知成分的一關，不列化學名或商品型錄；1958研究不倒寫成1955導入的原因。','','## R9精確修改','','c07d11不再問觀眾在處理速度和功能之間如何選擇；改問乾花如何製成書裡出售的殺蟲粉，由既有下一句c07d12的搗碎、過篩形成細粉直接回答。該景提示詞改為乾花等待研缽與篩分的準備場景，來源窄綁N25_SIEVE，增加這一組真實動作結果的loop。未編當年任何人最後選了哪種乾法，也未重述快乾/功能作為假payoff。其餘旁白、場景、章名、承諾、標題和技術設定維持R8。','','## 長度與執行規格','','native總量'+total+' units；開場'+opening+'；排開場正文'+(total-opening)+'；有聲片尾'+outro+'；再扣有聲片尾的有效正文'+body+'。相較R8有效正文3087，淨變化'+unitDelta+'。4–5units/s算術範圍'+(body/5).toFixed(1)+'–'+(body/4).toFixed(1)+'秒；4.5units/s約'+(body/4.5).toFixed(1)+'秒。不是實聲量測；實聲正文720–840秒仍HOLD，不慢播、停頓或灌字補足。','','原slug、Sulafat台灣自然語速與技術設定保留。look只有{preset:cute-mystery}、image-01、英文匿名概念插圖，無人名品牌logo或可讀字，不複用史料圖。至少70%插圖、連卡最多3、stillmotion、native每景≤12秒；繁中燒錄及CC。5秒片頭、21秒正式v4片尾僅待執行規格，未造媒體。縮圖layout d，金鳥品牌、黃字黑框主標、白短副標。','','## 未解除的關卡','','需另一位來源QA及兩位fresh readers，不寫verify或作者SOURCE／敘事PASS。1900原申請、1940導入日誌未取得，不造心理、利潤或逐年試作；界線留claims，不唸查核警語。BASE、canonical、八語、history、reviews與凍結研究不動；付費/provider/後台/git皆零。',''].join('\n');
+write('video.json',doc);write('narration-only.json',rows);write('claims.json',currentClaims);write('series.json',series);fs.writeFileSync(path.join(OUT,'brief.md'),brief);
+const script=['# '+doc.youtube.title,'','作者R9材料旅程；HOLD，待獨立差分查核及fresh readers。下一次實際native panel為round8；實聲未量。ID不讀入旁白。',''];let last='';for(const r of rows){if(r.chapter!==last){last=r.chapter;script.push('## '+r.chapter,'');}script.push('### '+r.id,'',r.text,'');}fs.writeFileSync(path.join(OUT,'script.md'),script.join('\n'));
+const cm=['# C05 R9逐句主張與來源錨點','','全部PENDING_INDEPENDENT_REVIEW；R8收據不自動成為R9判定，無作者SOURCE／敘事PASS。','','| ID | 類型 | 旁白 | 來源 | 定位 |','| --- | --- | --- | --- | --- |'];for(const r of currentClaims.rows)cm.push('| '+r.id+' | '+r.claim_kind+' | '+r.claim+' | '+r.source_ids.join(', ')+' | '+r.locator+' |');for(const r of currentClaims.rows.filter(r=>r.source_anchors.length)){cm.push('','## '+r.id,'');for(const a of r.source_anchors)cm.push('- '+JSON.stringify(a));}cm.push('','## R9問題與具體結果','','c07d11：'+newText,'','c07d12：'+payoffClaim.claim,'','來源：NDL1897第五版p25／畫幅16左頁，N25_SIEVE；只問搗碎/過篩的下一個材料動作，不替歷史人物或觀眾選擇乾燥取捨。','','## 範圍界線','','乾花粉末不是pollen；歷史粉劑本來可以販售和撒用，本集不把粉末泛稱為尚非商品。1897手冊是歷史指導與帶商業立場的主張，非現代控制藥效實驗或1888/1902工廠逐批記錄。乾花1–1.5%與抽出製品20%不是當前香體配方或效力倍率。1958不是1955的原因。現代粉料與工法不回填早期。1900原申請、1940導入日誌仍缺；不造產量利潤心理或全產業交棒日。2017筆記照片不等於已讀原全筆記，不複用史料圖。','');fs.writeFileSync(path.join(OUT,'claims.md'),cm.join('\n'));
+const roleDelta={scope:'Only the jointly failed payoffs item at c07d11. Single-reader one_line was not pursued.',narration_changed:[{id:changedId,before:oldRows.get(changedId).text,after:newText,spoken_unit_delta:unitDelta,reason:'撤去無史料可決定的觀眾取捨問句，改為下一句現有搗碎/過篩動作即可回答的材料問題。'}],prompt_changed:[{id:changedId,before:oldScenes.get(changedId).data.prompt,after:newPrompt,reason:'由開放取捨的思考場景窄為粉製動作前的準備場景。'}],loop_added:newLoop,all_other_scene_objects_exact:true,all_other_narration_exact:true,all_non_scene_and_loop_video_fields_exact:true,all_prior_38_loops_exact:true,added_narration_lines:[],deleted_narration_lines:[],new_historical_choice_or_experiment_claim:false,net_total_unit_delta:unitDelta,net_effective_body_unit_delta:unitDelta};
+write('revision-edits.json',{revision:9,author_revision_label:'R9',next_actual_native_panel_round:8,prior_video_sha256:R8_SHA,prior_core_four_sha256:R8_CORE,role_delta:roleDelta,loops:doc.loops});
+const project=loadProject({root:ROOT,slug:SLUG}),context={canonical_root:ROOT,canonical_video_sha256:fileSha(project.file),initialized_lexicon_sha256:sha(JSON.stringify(project.lexicon)),shelf_lexicon_sha256:sha(JSON.stringify(project.shelfLexicon)),in_memory_substitution_only:['doc','brief','series'],canonical_files_written:false};project.doc=doc;project.brief=brief;project.series=series;
+const lint=lintProject(project),timeline=estimateTimeline(doc),shotEstimates=timeline.scenes.filter(s=>doc.scenes.find(t=>t.id===s.id)?.template==='shot').map(s=>({id:s.id,seconds:(s.end_frame-s.start_frame)/FPS}));
+const maxShot=Math.max(...shotEstimates.map(s=>s.seconds)),cadence=lint.warnings.filter(w=>/no open loop|open loops? planted|condensation plants/.test(w.message));assert.equal(lint.errors.length,0,JSON.stringify(lint.errors));assert.equal(cadence.length,0,JSON.stringify(cadence));assert(maxShot<=12);
+for(const f of protectedFiles)assert.equal(fileSha(f),protectedBefore[f],f);
+const files=['video.json','script.md','narration-only.json','claims.json','claims.md','brief.md','series.json','build-candidate.mjs','revision-edits.json'];
+const notes={status:'HOLD_PENDING_INDEPENDENT_DELTA_AND_TWO_FRESH_READERS',candidate_revision:'length-r9',author:'/root/c05_material_author',next_actual_native_panel_round:8,parent_source_video_sha256:BASE_SHA,parent_candidate_video_sha256:R8_SHA,prior_core_four_sha256:R8_CORE,prior_source_receipt:{path:sourceReviewFile,sha256:fileSha(sourceReviewFile),source_video_sha256:R8_SHA,reported_source_verdict:sourceReview.source_verdict,reported_written_visual_verdict:sourceReview.written_visual_verdict,applies_to_r9:false},independent_source_delta_review:'PENDING_OTHER_REVIEWER',narrative_review:'PENDING_TWO_FRESH_READERS',verify_written:false,source_pass_claimed:false,narrative_pass_claimed:false,role_delta:roleDelta,native_units:{counter:'spokenUnits(spokenText(line))',r8_total:units(priorRows),r8_body_excluding_opening:priorNotes.native_units.body_excluding_opening,r8_effective_body_excluding_opening_and_outro:priorNotes.native_units.effective_body_excluding_opening_and_outro,r9_total:total,opening,outro,body_excluding_opening:total-opening,effective_body_excluding_opening_and_outro:body,added_units:0,deleted_units:0,changed_unit_delta:unitDelta,net_total_delta:unitDelta,net_effective_body_delta_from_r8:unitDelta,target_actual_body_seconds:[720,840],normal_4_to_5_units_per_second_body_seconds_range:[body/5,body/4],at_4_5_units_per_second:body/4.5,actual_tts_seconds:null,actual_duration_verified:false,length_hold:true,range_is_arithmetic_not_measured_tts:true},counts:{lines:rows.length,scenes:doc.scenes.length,chapters:chapterRows.size,illustrations:doc.scenes.filter(s=>s.template==='shot').length,cards:doc.scenes.filter(s=>s.template!=='shot').length,loops:doc.loops.length,added_lines:0,changed_lines:1,deleted_lines:0,prompts_changed:1},native_initialized_context_lint:{context,scope:'author mechanical validation, not independent source/narrative/runtime approval',result:lint,errors:lint.errors.length,cadence_warnings:cadence,maximum_estimated_shot_seconds:maxShot,all_estimated_shots_at_most_12_seconds:maxShot<=12},visual_spec:{...structuredClone(priorNotes.visual_spec),illustration_unit_share:[...eachLine(doc)].filter(x=>x.scene.template==='shot').reduce((n,x)=>n+spokenUnits(spokenText(x.line)),0)/total,actual_generated_media_reviewed:false},opening_native_units:opening,opening_arithmetic_seconds_at_4_to_5:[opening/5,opening/4],at_least_eight_concrete_action_payoffs_for_fresh_review:[...structuredClone(priorNotes.at_least_eight_concrete_action_payoffs_for_fresh_review),{...newLoop,status:'AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT'}],metadata_changed_from_r8:[],protected_files_unchanged:true,paid_calls:0,provider_calls:0,backend_writes:0,git_commands:0,canonical_written:false,author_ready_for_independent_review:true,frozen_at_utc:new Date().toISOString(),file_sha256:Object.fromEntries(files.map(f=>[f,fileSha(path.join(OUT,f))]))};
+notes.core_four_sha256=Object.fromEntries(['video.json','brief.md','series.json','claims.json'].map(f=>[f,notes.file_sha256[f]]));write('author-notes.json',notes);
+console.log(JSON.stringify({revision:'length-r9',status:notes.status,next_actual_native_panel_round:8,counts:notes.counts,native_units:notes.native_units,lint_errors:lint.errors,cadence_warnings:cadence,maximum_estimated_shot_seconds:maxShot,core_four_sha256:notes.core_four_sha256,role_delta:roleDelta},null,2));

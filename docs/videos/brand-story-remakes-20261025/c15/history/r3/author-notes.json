@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_WRITTEN_VISUAL_AND_FRESH_READERS",
+  "candidate_revision": "c15-r3",
+  "author": "/root/c15_r1_author",
+  "counts": {
+    "lines": 79,
+    "scenes": 77,
+    "shots": 76,
+    "cards": 1,
+    "chapters": 6,
+    "loops": 26
+  },
+  "native_units": {
+    "whole_narration_spoken_units": 2342,
+    "coldopen": 179,
+    "voiced_CTA": 95,
+    "actual_narration_seconds": null,
+    "actual_duration_verified": false,
+    "official_duration_scope": "whole actual unwrapped narration timeline including coldopen and voiced CTA, excluding separately added channel bookends",
+    "rough_planning_target": 3500,
+    "delta_to_rough_target": -1158,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      468.4,
+      585.5
+    ],
+    "planning_arithmetic_not_actual_audio": true
+  },
+  "maximum_estimated_shot_seconds": 10.866666666666667,
+  "source_research_sha256": {
+    "research-original.md": "275f3c5cf2b105abc26c606bc5a9cd609c4735409939f236a47372fbdbc5b6b7",
+    "research-original.claims.json": "84da190bb348d86ac83ef86ad2430d80a035af4386e04bcc4d014a58a9d5b52f",
+    "original-preservation.json": "031d38bcb119734c6f32e00ce4e5308805236c16b339df29198e27d3657ec316"
+  },
+  "source_raw_receipts_checked": 18,
+  "protected_original25_and_snapshots_unchanged": true,
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true
+  },
+  "independent_source_review": "PENDING_OTHER_REVIEWER",
+  "independent_narrative_review": "PENDING_FRESH_READERS",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approval_created": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "actual_media_generated": false,
+  "runtime_root": "/workspace/work/brand-story-20261025/c15-submission-root",
+  "author_notes": [
+    "Material history supports the one-ink-stroke use chain; not one physical stroke traveling through past laboratories.",
+    "2001/2002 original mismatch retained in research and narrowed to early 2000s in narration.",
+    "1975 precise patent identity, unverified photocopying claim, product catalogue and sales totals excluded.",
+    "Every visual is an anonymous original concept; no readable text, logo or named likeness in prompts."
+  ],
+  "recipe_only": {
+    "image_model": "image-01",
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "stillmotion": true,
+    "burn_in_zh_tw": true,
+    "cc_zh_tw": true,
+    "intro_seconds": 5,
+    "intro_after_coldopen": true,
+    "outro_seconds": 21,
+    "outro_version": "formal-v4-not-yet-identified",
+    "minimum_illustration_share": 0.7,
+    "maximum_consecutive_cards": 3
+  },
+  "frozen_at_utc": "2026-10-26T00:24:34.074Z",
+  "native_initialized_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes[62].lines[0] (c15r1e01)",
+        "message": "41 spoken units; split sentences longer than 40"
+      },
+      {
+        "path": "scenes",
+        "message": "\"desk\" is in 36 of 76 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"sheet\" is in 27 of 76 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[59] (c15r1d10)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[62] (c15r1e01)",
+        "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[71] (c15r1e11)",
+        "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[73] (c15r1e13)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes",
+        "message": "about 10.7 minutes; the target is 12-14"
+      }
+    ],
+    "summary": {
+      "minutes": 10.69,
+      "lines": 79,
+      "spoken_units": 2342,
+      "billable_characters": 7359,
+      "chapters": [
+        "00:00 顧客把筆翻過來",
+        "00:50 同一個位置重新落筆",
+        "02:59 調整劑把兩個溫度拉開",
+        "04:28 膠囊縮小，筆跡卻還有顏色",
+        "06:32 小燒杯得接上五百公斤",
+        "08:16 低溫把重寫的字也帶回來"
+      ]
+    }
+  },
+  "native_lint_errors": 0,
+  "immutable_dictionary_sha256": "7bc3a64f9e3e635378a18e932f2cc264dbff0bd1278cd1dc9a9716af943788ef",
+  "author_revision_delta": {
+    "from": "c15-r2",
+    "to": "c15-r3",
+    "prior_source_receipt": {
+      "path": "history/r2/reviews/source-r2-independent.json",
+      "sha256": "95e2616aa1b73ba6040b4312734c3d39067031b38df833c4c58ca3de01117dcb",
+      "verdict": "PASS",
+      "applies_to_r3": false
+    },
+    "prior_verify": {
+      "path": "history/r2/verify-1.md",
+      "sha256": "638fc1dfd41a47635c5c871769748bde4373ee1fb2f80d3a605138aaab826375",
+      "current_and_runtime_old_marker_removed": true
+    },
+    "prior_actual_native_panel": {
+      "round": 1,
+      "verdict": "HOLD",
+      "shared_failed": [
+        "one_line",
+        "no_recap"
+      ],
+      "receipt": "history/r2/reviews/narrative-r1.json"
+    },
+    "changed_narration": [
+      {
+        "id": "c15r1a03",
+        "before": "如果你只看見擦這個動作，很容易把它當成另一種橡皮；它到底移走了什麼？",
+        "after": "如果你只看見擦這個動作，很容易把它當成另一種橡皮；它究竟怎麼讓顏色不見？"
+      },
+      {
+        "id": "c15r1a04",
+        "before": "專用膠擦來回摩擦，熱傳進筆跡，墨水便朝無色的狀態改變。",
+        "after": "專用膠擦摩擦產熱，讓紙上的墨水變得無色；這種消色不會產生消字屑。"
+      },
+      {
+        "id": "c15r1a18",
+        "before": "這種能把狀態留下的材料，是怎麼從只會變色，走到能供人修改？",
+        "after": "要讓這道舊線維持修改，調整劑在開發時，先遇上什麼麻煩？"
+      },
+      {
+        "id": "c15r1b06",
+        "before": "早期材料升溫時慢慢變色，放著又會回色，連改變的分界也不夠清楚。",
+        "after": "原廠回顧早期材料，升溫時慢慢變色，放著又會回色，連改變的分界也不夠清楚。"
+      },
+      {
+        "id": "c15r1b07",
+        "before": "於是，團隊先把調整劑改得更敏感：到某個溫度，顏色迅速改變。",
+        "after": "團隊把焦點放在調整劑，先做成高感度型：到某個溫度，顏色迅速改變。"
+      },
+      {
+        "id": "c15r1b09",
+        "before": "如果要讓你停手後的修改不馬上翻回去，變色與回色，能不能分開發生？",
+        "after": "我覺得這才是關鍵：要讓你停手後的修改不馬上翻回去，兩個溫度能不能分開？"
+      },
+      {
+        "id": "c15r1b12",
+        "before": "剛才那道舊線沒有立刻回來的疑問，到早期記憶型裡，兩端曾被隔開多遠？",
+        "after": "為了讓你剛改的地方先留成無色，研發最初曾把變色和回色，隔開多遠？"
+      }
+    ],
+    "deleted_narration": [
+      {
+        "id": "c15r1a06",
+        "text": "紙面沒有跟著掉下一堆消字屑；熱能傳到紙纖維裡的筆跡，也能讓那裡變得無色。"
+      },
+      {
+        "id": "c15r1a16",
+        "text": "你剛才用膠擦提供的熱，就是改變這種組合的入口；可它並不會替你一直加熱。"
+      },
+      {
+        "id": "c15r1a17",
+        "text": "要讓手停下來後的修改留下，材料還需要一種特性：回到室溫，仍維持剛變過的樣子。"
+      },
+      {
+        "id": "c15r1b01",
+        "text": "PILOT在二〇二四年的回顧裡，把變色研究的靈感，放在一九七〇年的秋天。"
+      },
+      {
+        "id": "c15r1b02",
+        "text": "研究者看見紅葉，想把那種顏色變化做進試管，於是著手尋找能變色的墨水。"
+      },
+      {
+        "id": "c15r1b03",
+        "text": "一九七六年，公司推出加冷水就會變色的紙杯，讓人把水倒進去，看杯子的外觀改變。"
+      },
+      {
+        "id": "c15r1b04",
+        "text": "你若拿著這種杯子，變化就是它要交給你的效果；寫在草稿上的字，要求卻不一樣。"
+      },
+      {
+        "id": "c15r1b05",
+        "text": "我覺得難處正在這裡：能表演變化以後，研究得先把哪個分界改清楚？"
+      },
+      {
+        "id": "c15r1b11",
+        "text": "同樣回到室溫，原本有色的可以有色，已經變成無色的，也能保持無色。"
+      },
+      {
+        "id": "c15r1c03",
+        "text": "你在紙上只想劃一條細線，裡面的色材，卻必須連自己的外殼一起通過。"
+      },
+      {
+        "id": "c15r1c05",
+        "text": "研究得同時處理尺寸和膜材，不能讓色材到了能過筆尖的大小，就失去實用的強度。"
+      },
+      {
+        "id": "c15r1c13",
+        "text": "這個要求，把變色從紙上的裝飾，推向了同一頁的修改。"
+      },
+      {
+        "id": "c15r1c16",
+        "text": "假設你只是想改同一行，桌上卻要接連交棒：寫、消，再換工具補上去。"
+      },
+      {
+        "id": "c15r1c20",
+        "text": "調整的目標，是讓一般使用環境裡的色態穩定；接下來，得把實驗室這一小份，真的做成商品。"
+      },
+      {
+        "id": "c15r1d11",
+        "text": "這樣，材料的改變才從研究桌，落到一個原本沒參與開發的人手裡。"
+      },
+      {
+        "id": "c15r1d13",
+        "text": "但你拿回家的紙，離開店面以後，並不會一直待在同一種溫度裡。"
+      },
+      {
+        "id": "c15r1e05",
+        "text": "這兩個位置不一樣：開始看見回色，不等於每一筆都已經回到原樣。"
+      },
+      {
+        "id": "c15r1e14",
+        "text": "而還在推敲的草稿，你可以選擇讓這一處繼續修改，同時知道紙上材料沒有因為看不見就全數離開。"
+      }
+    ],
+    "new_narration_ids": [],
+    "passed_opening_seven_scenes_exact": true,
+    "source_side_bar_attribution_fix_retained": true,
+    "all_surviving_scene_prompts_and_cameras_preserved": true,
+    "whole_narration_units_before": 2879,
+    "whole_narration_units_after": 2342,
+    "unique_material_facts_retained": [
+      "three functional components",
+      "color-development combination",
+      "adjuster choice",
+      "memory temperature separation",
+      "1988 approximately 20-degree historical span",
+      "over 1000 original compounds",
+      "10–15/5–10/2–3 micrometer historical capsule stages",
+      "thinner membrane failure constraint",
+      "solvent/additive compatibility and encapsulation research",
+      "ILLUSION color-to-color versus proposed transparent result",
+      "specific French ink-remover rewriting constraint",
+      "historical 0–40 versus -20–65 range",
+      "2004 project and 500kg scale-up",
+      "ink separation/deterioration and cross-department solution",
+      "2006 Europe/2007 Japan and actual trial-writing purchase recollection",
+      "current cooling endpoints and no guaranteed full restoration",
+      "overwritten content returning together",
+      "friction-erased marks cannot fully restore",
+      "current storage and unsuitable-purpose/paper conditions"
+    ],
+    "payoff_scenes_exact": true,
+    "source_pass_not_inherited": true,
+    "native_pass_not_inherited": true,
+    "substantive_edit": "Remove the independent 1970-autumn/leaf/paper-cup origin chapter. The stopped-hand/old-stroke question now leads directly to the documented early material boundary problem, adjuster changes, memory result and later capsule/production work. Historical years only qualify the relevant material stages. Retain the unique no-crumb result once with the first rubbing action; remove its separate repeated thermal explanation, the duplicate room-temperature statement, and other pure explanatory bridges."
+  },
+  "image_reuse_plan": {
+    "path": "image-reuse-plan.json",
+    "sha256": "70ac743f02afc38f25a8b435af2d2eaac87a7fdfc644a2d2ca54f6ef8954fdbd",
+    "both_pairs_keep_prior_prompts_cameras_and_native_keys": true,
+    "actual_generation": false,
+    "actual_file_sha_verified": false
+  },
+  "length_planning_status": "CAPACITY_REVIEW_REQUIRED_ACTUAL_AUDIO_UNKNOWN",
+  "length_planning_note": "Pruning is editorial, not a duration adjustment. Native units are planning only; real speech duration is unknown, no PASS/FAIL from arithmetic, no added filler or slowdown.",
+  "author_validation_history": [
+    {
+      "revision": "c15-r1",
+      "source_verdict": "HOLD",
+      "source_receipt": "history/r1/reviews/source-r1-independent.json",
+      "native_prepared_only": true,
+      "native_votes_exist": false
+    },
+    {
+      "revision": "c15-r2",
+      "source_verdict": "PASS",
+      "native_actual_panel": 1,
+      "native_verdict": "HOLD",
+      "native_failed": [
+        "one_line",
+        "no_recap"
+      ],
+      "receipts_archived": "history/r2"
+    },
+    {
+      "revision": "c15-r3",
+      "native_lint_only": true,
+      "source_and_written_visual_review": "PENDING_OTHER_REVIEWER",
+      "native_actual_next_panel": 2,
+      "native_readers": "PENDING_FRESH_READERS"
+    }
+  ],
+  "file_sha256": {
+    "video.json": "229685ea2347496071ef139f753525f39e3dbf26b928a23cb8f6c25f42fed3c6",
+    "script.md": "1646d8f5ba71b73d1ec3d642d8aa617bf7b49407ce49e4cf97ff2b711aedd17c",
+    "narration-only.json": "c0908555d9a7278f50bf6ca14275f8bb858892202b893fcbc8b0e6aa8d950175",
+    "claims.json": "1c991b362d68e0e6309abd02266ebed01d1403caf4b7a7c5ba3786429a560a90",
+    "claims.md": "945f7eda5db0ebba3f97d1a74f2965b00e95f168189cd7b11e0cda45ed23d39b",
+    "brief.md": "e6c9205627efbf09a749c22f6c703c4ae5cfc6e06abce31f13baf3dcc3034e7a",
+    "series.json": "6938c241c57ff4e45dd39cdd1a37523ec5b8503ade722a099b13b4942bf85428",
+    "build-candidate.mjs": "05d3717cd1922a5c96f54d488f9570dcac5281bc89fb9eebf8ce4156cf9160ab",
+    "image-reuse-plan.json": "70ac743f02afc38f25a8b435af2d2eaac87a7fdfc644a2d2ca54f6ef8954fdbd"
+  },
+  "core_four_sha256": {
+    "video.json": "229685ea2347496071ef139f753525f39e3dbf26b928a23cb8f6c25f42fed3c6",
+    "script.md": "1646d8f5ba71b73d1ec3d642d8aa617bf7b49407ce49e4cf97ff2b711aedd17c",
+    "narration-only.json": "c0908555d9a7278f50bf6ca14275f8bb858892202b893fcbc8b0e6aa8d950175",
+    "claims.json": "1c991b362d68e0e6309abd02266ebed01d1403caf4b7a7c5ba3786429a560a90"
+  }
+}

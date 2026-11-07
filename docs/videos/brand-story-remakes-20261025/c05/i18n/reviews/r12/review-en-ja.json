@@ -1,0 +1,44 @@
+{
+  "source_video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+  "reviewer": "/root/c11_r1_source",
+  "independent": true,
+  "role_disclosure": "我未撰寫C05中文、英文、日文或該研究；本輪未讀譯者author-en-ja自校作結論。直接逐句對照凍結R12 video/script/claims語意原件，完整讀兩語各108句（包含18句沿用文字）、6章及title/description/tags/thumbnail三欄。核對年代／物件與批次界線、來源歸屬、角色主詞、數字單位、現行假設及製程／化學區分；native與worksheet逐項文字一致，全部source binding為current。直接重抽2017原PDF第590及592頁並親看第592頁圖，原件SHA d595aa30312fd6497e6ba46176349fb685456e26f503b768b2b9b856e1e0bd3e：よしお支持Yoshio Katsuda，Naohide UEYAMA支持Naohide Ueyama。1890上市未混入1911–14存世物規格，1897書未當早工廠同批，1957設備使用期未改成全面停手卷，1958研究未倒因1955實用化；pyrethrum／pyrethrins／allethrin、混合／捏和／擠出／雙卷切型、玻纖墊／金屬接紅端、前方6–8mm／約250°C與紅端700–800°C均維持區別。只作文字覆核，未聲稱SRT時序、dub fit、actual timing或媒體QA；未改todo/native/core，無provider、backend mutation、git或spawn。",
+  "locales": [
+    {
+      "locale": "en",
+      "worksheet_sha256": "57234f21cda999a6ec8c534c50acda8431b89026c0eefe26d79ee28bfe2dc1ac",
+      "translation_sha256": "16a8de2f3824862670fc17d77fbb7a3d5c1265b7ccce9c99dacf503da5eedf23",
+      "status": "TEXT_PASS",
+      "checked_lines": 108,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "lines.c05r032",
+          "required": false,
+          "current": "I think this is an elegant turn. But does fitting a small table mean a factory can deliver it?",
+          "proposed": "I think this is an elegant turn. But does fitting on a small table mean a factory can deliver it?",
+          "reason": "可選的英語流暢度微調：加on使「在小桌面放得下」更直接；現譯可由上下文理解，未改歷史事實，不構成必要修正。"
+        }
+      ]
+    },
+    {
+      "locale": "ja",
+      "worksheet_sha256": "a4a0bca43924a7fa9c6ba7ceab86d18103dc8bce273f92a27942de02e5bcfb85",
+      "translation_sha256": "a842ed60c2660521820e717e41850d4919451327544884ef1f527c77c541d371",
+      "status": "TEXT_PASS",
+      "checked_lines": 108,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "lines.c07a11",
+          "required": false,
+          "current": "何種類あるかが分かれば、正体はすべて明らかになったといえるのでしょうか。",
+          "proposed": "どんな成分が含まれているか分かれば、その正体をすべて明らかにしたといえるのでしょうか。",
+          "reason": "可選的語意精度微調：中文「有哪幾種」著重成分的種類／內涵，現譯「何種類」著重數量。前句已交代六種、後句仍正確區分平面連接與立體配置，所以本段核心推進沒有失真，不列必要修正。"
+        }
+      ]
+    }
+  ]
+}

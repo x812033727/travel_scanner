@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r9",
+  "status": "WRITTEN_PLAN_PENDING_REAL_ASSETS_AND_FINAL_SHA",
+  "not_video_schema_extension": true,
+  "not_native_keyframes_manifest": true,
+  "no_assets_generated": true,
+  "actual_same_asset_verified": false,
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "565f98f274c6f285b56a9d4f167e9e7503e0f0a6ed34dc744d4c643355e8751d",
+      "script.md": "ffafa208daffd5bdcbd80abafb7ce25ee38ec528e7e935a398338f9958a0e334",
+      "narration-only.json": "af2a7ffd1993ca2025db8eae0fb99085cb73e121aab8d4171153e17c341e75f5",
+      "claims.json": "6f0438375b7e5db430591a5b9ad7cbf7811c30beaa870c863dbfc39db4d582af"
+    },
+    "claims_md_sha256": "a1ea8b35b95448c5e73147f418ee1c1bb0abf98e1819056960d99611299f678f",
+    "brief_sha256": "61628875fdf53de44592553def290d471e22209a266258737b92a8f98fa2ed72",
+    "series_sha256": "6443e8a9738949e3c99866c0cfa235d88fce416daa6665053a6519d10b5e5ac2"
+  },
+  "code_readback": {
+    "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+    "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+    "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+    "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+    "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+    "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+  },
+  "opening_graph_mapping_path": "opening-graph-mapping-r9.json",
+  "opening_graph_mapping_sha256": "c3bc76f32b76039f974d6c1ef7a1d9138d23fe3e8d85a2b9825fbd63c5a515d6",
+  "opening_graph_planned_same_asset": false,
+  "camera_in_composed_prompt": true,
+  "still_alias_available": false,
+  "data_source_is_clip_only": true,
+  "cache_guard": "readCache() only; cached() can mutate/delete cache and is not the guard.",
+  "pairs": [
+    {
+      "asset_plan_id": "offset-handle-parts",
+      "teaser_scene_id": "rs0005",
+      "payoff_scene_id": "rs0066",
+      "teaser_narration": "行李箱的把手拉起來，要靠什麼留在原位？",
+      "payoff_narration": "依專利說明，導件使杆子的下端楔住，杆和套筒、襯套之間產生摩擦。",
+      "prompt_exact_match": true,
+      "camera_exact_match": true,
+      "camera": "push in",
+      "source_prompt_sha256": "ae725e1cea469c417aff23f10c0e398e7954471ed1c7795ef4d133c98e44e86e",
+      "teaser_prompt_sha256": "ae725e1cea469c417aff23f10c0e398e7954471ed1c7795ef4d133c98e44e86e",
+      "composed_prompt_sha256": "a284bc1420604858438ad893d3ff6f0c6350db2f292eecd60ab895c657b6d973",
+      "look": {
+        "preset": "cute-mystery"
+      },
+      "teaser_stops_before_result": true,
+      "no_result_drawn_in_teaser": "Loose components only; no assembled lock or demonstrated action.",
+      "complete_stage_imageKey_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Close-up at a component explanation bench, an anonymous adult hand holding a plain short sleeve beside a metal rod and a small cylindrical guide, no assembled locking result visible, soft diffuse light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "options": {
+          "prompt": "Close-up at a component explanation bench, an anonymous adult hand holding a plain short sleeve beside a metal rod and a small cylindrical guide, no assembled locking result visible, soft diffuse light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+          "negative": "",
+          "references": [],
+          "seed": 1,
+          "size": null
+        },
+        "requested_size": null,
+        "image_selection_version": 1,
+        "takes": 1,
+        "seed_offset": 0,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "1caab70f8f5ec822",
+        "native_stage_key": "e8d589542750b9e4",
+        "parameters_are_plan_not_live_backend_readback": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_teaser_file": null,
+      "actual_teaser_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_final_selected_file_sha_verified": false
+    },
+    {
+      "asset_plan_id": "adjustable-strap",
+      "teaser_scene_id": "rs0006",
+      "payoff_scene_id": "rs0082",
+      "teaser_narration": "另一個包掛上去前，那條帶子又得先調到哪裡？",
+      "payoff_narration": "照艾默的說明，長度調好之後，主箱直立，旁邊的包會落到地上。",
+      "prompt_exact_match": true,
+      "camera_exact_match": true,
+      "camera": "push in",
+      "source_prompt_sha256": "564a8f63242094ec8a40c938b74e331d12cb2f7366945d29a8f663614b3d77e8",
+      "teaser_prompt_sha256": "564a8f63242094ec8a40c938b74e331d12cb2f7366945d29a8f663614b3d77e8",
+      "composed_prompt_sha256": "6d1a2d8a9cf400df283a46bf55ae69e162f8fc92ffd0dcae7b4b0c04aa772beb",
+      "look": {
+        "preset": "cute-mystery"
+      },
+      "teaser_stops_before_result": true,
+      "no_result_drawn_in_teaser": "Frame above floor; bag-ground contact is not revealed.",
+      "complete_stage_imageKey_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Close-up at a luggage workbench, an anonymous adult hand adjusting a plain flexible strap between the top of an unmarked suitcase and a small bag, frame cropped above the floor, soft diffuse light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "options": {
+          "prompt": "Close-up at a luggage workbench, an anonymous adult hand adjusting a plain flexible strap between the top of an unmarked suitcase and a small bag, frame cropped above the floor, soft diffuse light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: push in",
+          "negative": "",
+          "references": [],
+          "seed": 1,
+          "size": null
+        },
+        "requested_size": null,
+        "image_selection_version": 1,
+        "takes": 1,
+        "seed_offset": 0,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "717ae62caa18c094",
+        "native_stage_key": "ab8eb6c1780fa08b",
+        "parameters_are_plan_not_live_backend_readback": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_teaser_file": null,
+      "actual_teaser_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_final_selected_file_sha_verified": false
+    }
+  ],
+  "production_handoff": {
+    "preconditions": [
+      "Independent SOURCE/written visual, fresh native, pronunciation and ordinary owner gates remain pending.",
+      "Exact new slug independent US25 account, complete all-in quote and protected admission must be established before any paid operation.",
+      "Read live provider/model/imageVersion/size/negative/refs/seed/fixes/prompt limit; recompute full Stage.imageKey, not just prompt similarity."
+    ],
+    "official_command_recipe_only": [
+      {
+        "purpose": "PAYOFF FIRST after ordinary production admission only",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/runtime-root",
+          "keyframes",
+          "--slug",
+          "story-rolling-suitcase-v2-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/media",
+          "--shot",
+          "rs0066",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "MANDATORY READONLY GUARD BEFORE TEASER",
+        "checks": [
+          "Read ordinary keyframes/manifest.json payoff selected item: judge passed, needs_review false, exact live request key/seed/take/fixes/provider/model and selected file.",
+          "Hash actual selected bytes and match manifest.sha256.",
+          "Read readCache(workdir), require entries[live-key], same provider/model, file exists, actual bytes SHA matches cache.sha256.",
+          "If cache miss, missing file, mismatch, changed request, retake or crop issue: STOP pair. Do not buy a second image or alter cache/manifest."
+        ]
+      },
+      {
+        "purpose": "TEASER only after guard passed",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/runtime-root",
+          "keyframes",
+          "--slug",
+          "story-rolling-suitcase-v2-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/media",
+          "--shot",
+          "rs0005",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "PAYOFF FIRST after ordinary production admission only",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/runtime-root",
+          "keyframes",
+          "--slug",
+          "story-rolling-suitcase-v2-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/media",
+          "--shot",
+          "rs0082",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "MANDATORY READONLY GUARD BEFORE TEASER",
+        "checks": [
+          "Read ordinary keyframes/manifest.json payoff selected item: judge passed, needs_review false, exact live request key/seed/take/fixes/provider/model and selected file.",
+          "Hash actual selected bytes and match manifest.sha256.",
+          "Read readCache(workdir), require entries[live-key], same provider/model, file exists, actual bytes SHA matches cache.sha256.",
+          "If cache miss, missing file, mismatch, changed request, retake or crop issue: STOP pair. Do not buy a second image or alter cache/manifest."
+        ]
+      },
+      {
+        "purpose": "TEASER only after guard passed",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/runtime-root",
+          "keyframes",
+          "--slug",
+          "story-rolling-suitcase-v2-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r9/media",
+          "--shot",
+          "rs0006",
+          "--takes",
+          "1"
+        ]
+      }
+    ],
+    "actual_verification_required": [
+      "Both ordinary scene judges independently pass.",
+      "Read both selected native references and hash actual bytes.",
+      "After trim/crop both must select the identical final derived file with identical SHA.",
+      "Assembly must consume this identical final file. Preserve official cache/job/ledger receipts."
+    ],
+    "on_failure": "STOP. No forced acceptance, accept-best, paid lookalike reroll, fake still alias, edited native manifest or cache.",
+    "executed": false
+  },
+  "provider_calls": 0,
+  "paid_calls": 0
+}

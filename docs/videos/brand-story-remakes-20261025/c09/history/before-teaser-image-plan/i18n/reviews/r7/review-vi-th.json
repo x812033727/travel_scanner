@@ -1,0 +1,96 @@
+{
+  "source_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+  "reviewer": "/root/c06_translate_vi_th",
+  "independent": true,
+  "role_disclosure": "Wrote C09 R7 KO/ES, not C09 R7 VI/TH. Earlier Vietnamese/Thai translation work was C06, a different episode. Did not write C09 Chinese.",
+  "reviewed_at": "2026-10-25T20:35:25.823420+00:00",
+  "scope": "Whole-text independent review of all 103 VI/TH lines, six chapters and complete metadata against their source/context and the actual native merged files. No other locale/review was read for this review. Not actual voice, timed subtitles, dub fitting, thumbnail rendering or media QA.",
+  "locales": [
+    {
+      "locale": "vi",
+      "worksheet_sha256": "7075a5806bca67e7f3dc6698fbb9328bad4737a6aee32551b9429737bc8b1625",
+      "translation_sha256": "deeaa056acda01d9b37572a8c9b3ba3c8763604896cf83a1ed61534fdd1213b5",
+      "status": "TEXT_PASS",
+      "checked_lines": 103,
+      "checked_chapters": 6,
+      "checked_metadata": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail"
+      ],
+      "protected_non_text_fields_unchanged": true,
+      "source_urls_byte_exact_and_in_order": true,
+      "all_native_text_matches_worksheet": true,
+      "native_thumbnail_current": true,
+      "thumbnail_headline_actual_newlines": 1,
+      "title_characters": 80,
+      "findings": [
+        {
+          "target": "lines.c09r5062",
+          "required": false,
+          "current": "Lời tựa lấy những tuyến cũ ở Anh để so sánh: chỗ đặt chân đã mòn bóng, nhưng các khe nứt dùng để đặt bảo vệ, không bị đóng đinh piton, vẫn nguyên vẹn.",
+          "proposed": "Lời tựa lấy những tuyến cũ ở Anh để so sánh: chỗ đặt chân đã mòn bóng, nhưng các khe nứt dùng để đặt thiết bị bảo vệ, nơi không bị đóng đinh piton, vẫn nguyên vẹn.",
+          "reason": "非必修的口語精確化：đặt bảo vệ 略像把抽象「保護」放進裂縫；加 thiết bị 可讓名詞更自然。上下文已有完整器材敘述，現句仍可理解為放保護器材，未新增或誤述史實，因此保留作 advisory。"
+        }
+      ],
+      "advisory": [
+        "整體越文自然，tôi／bạn 你我角色及問句保留。nêm chèn 穩定表示楔塊，đai ốc 指金屬螺帽，leo trợ lực bằng thiết bị 與 leo sạch 不混成自由攀登或無繩獨攀。",
+        "Carson 的獨攀仍是 nếu hôm nay... 的條件盤算，後文明說沒有成行；CTA 是泛指一位賣家的假設問題，沒有變成 Chouinard 願意出版或授權的事實。",
+        "1973事件、1974文章刊出及1977另一採訪刊出／非已確認訪問時間在 description 分開。正文當年五月／同年秋天沿1973事件脈絡，未稱1973為楔塊首次使用。",
+        "首個楔塊只沉約四分之一英吋／近六公釐，第二個僅說移動；未把幅度套到第二個，也未說墜落或器材掉出。美元價格、頁數、段數及三人隊數量保留。",
+        "副標1973: bỏ đinh piton限定拿掉岩釘，不是拿掉所有保護；headline保留真正換行，六個URL精確。實際縮圖手機可讀性、讀音和聲音時間窗尚未量測。"
+      ],
+      "required_fix_count": 0,
+      "advisory_finding_count": 1
+    },
+    {
+      "locale": "th",
+      "worksheet_sha256": "a98d4db68736e51ddaf102bf6abe6f2069328b3c55f912132bd5858941610de9",
+      "translation_sha256": "a4305c315b4904b8f8980c0e30d3ea8ee9b0f55727976d51adef6f42ad081d72",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 103,
+      "checked_chapters": 6,
+      "checked_metadata": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail"
+      ],
+      "protected_non_text_fields_unchanged": true,
+      "source_urls_byte_exact_and_in_order": true,
+      "all_native_text_matches_worksheet": true,
+      "native_thumbnail_current": true,
+      "thumbnail_headline_actual_newlines": 1,
+      "title_characters": 69,
+      "findings": [
+        {
+          "target": "lines.c09r5015",
+          "required": true,
+          "current": "ชูนาร์ดซื้อเตาถ่านขนาดเล็ก ทั่ง และคีม อ่านหนังสือหัดตีเหล็ก แล้วเริ่มทำหมุดพิทอนจากเหล็กกล้าโครเมียมโมลิบดีนัม",
+          "proposed": "ชูนาร์ดซื้อเตาถ่านหินขนาดเล็ก ทั่ง และคีม อ่านหนังสือหัดตีเหล็ก แล้วเริ่มทำหมุดพิทอนจากเหล็กกล้าโครเมียมโมลิบดีนัม",
+          "reason": "中文是「小煤爐」；เตาถ่าน 通常指木炭爐，與煤／ถ่านหิน的燃料名詞不同。補成เตาถ่านหิน以精確對應煤爐，避免把歷史鍛造燃料換成木炭；其餘設備、金屬及動作完全不改。"
+        },
+        {
+          "target": "lines.c09r5105",
+          "required": false,
+          "current": "พวกเขาไปได้เร็วกว่าที่วางแผนไว้ และยังมีน้ำเหลือเฟือ ทั้งสองคืนก็มีชั้นหินที่เหมาะ และหยุดพักเร็วพอจะชมพระอาทิตย์ตกได้",
+          "proposed": "พวกเขาไปได้เร็วกว่าที่วางแผนไว้ และยังมีน้ำเหลือเฟือ ทั้งสองคืนก็มีชานหินที่เหมาะ และหยุดพักเร็วพอจะชมพระอาทิตย์ตกได้",
+          "reason": "非必修用語一致性：前面平台已譯ชานหิน，本句ชั้นหิน可由過夜語境理解為岩層平台；改ชานหิน更明確指岩台。未造成新地點／時間／器材主張，列advisory不強改。"
+        }
+      ],
+      "advisory": [
+        "泰文ฉัน／คุณ你我口吻、問句與條件自然，หมุดพิทอน／ลิ่มปีนผา／แป้นเกลียว區分鋼釘、楔塊與金屬螺帽，不是食物或攀岩粉。ปีนแบบคลีน未譯成無繩或free solo，繩索及現成โบลต์仍明示。",
+        "Carson的ใจแป้ว與ถ้าวันนี้เสียเวลาเปล่า...เป็น條件念頭，後文明說solo念頭消失；不是他真的無保護離隊。CTA以ถ้าเป็นคุณ หากคนขาย...ถาม觀眾假設，不是新增出版意願史實。",
+        "1974／1977刊出年與1973事件年分開，1970回信和1972型錄位置正確。第一個ลิ่มปีนผาประมาณหนึ่งในสี่นิ้ว／ราวหกมิลลิเมตร，第二個只ขยับ，未偷加相同幅度。",
+        "三十美分與一美元半、一小時兩枚／有時八小時、十四／七十二頁、五／四／三段、後續三人隊均保留。原來英國使用楔塊並非當年發明的界線保留。",
+        "metadata完整、兩行headline是真的換行、thumb無角括號且native current，六個URL精確。實際縮圖可讀性、音訊自然語速、逐句配音視窗與實測時長不在本次TEXT審核。"
+      ],
+      "required_fix_count": 1,
+      "advisory_finding_count": 1
+    }
+  ],
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "translations_modified_by_reviewer": false
+}

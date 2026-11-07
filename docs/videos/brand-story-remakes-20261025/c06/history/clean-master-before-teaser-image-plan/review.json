@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "status": "METADATA_DERIVATION_PASS",
+  "reviewer": "/root/c06_translate_pt_id",
+  "independent": true,
+  "reviewed_at_utc": "2026-10-25T19:09:36.980Z",
+  "role_disclosure": "Did not author the Chinese source or the root-created clean-master recipe. Earlier PT/ID translation authorship and EN/JA text review are unrelated text work, not media approval.",
+  "scope": "Read-only native metadata derivation QA only. No generated clean media was inspected or created; this does not grant owner approval, audio duration PASS, media QA, a final approval or actual dub eligibility.",
+  "source": {
+    "file": "../../video.json",
+    "sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13"
+  },
+  "variant": {
+    "file": "video.json",
+    "sha256": "c264415fec46f25e671f6384d6e44888d9c6a4a2471c98e873c3a652e1b0b864"
+  },
+  "derivation": {
+    "file": "derivation.json",
+    "sha256": "7753957f7346c3fbf7e978add73ab5e03035aff60662857f73765247c98ff0c2"
+  },
+  "stored_lint": {
+    "file": "lint.json",
+    "sha256": "e9b173090946bd37bd8cf07cd56e2b6385f3e0c8482814cae64a7ff555e30b40"
+  },
+  "source_and_canonical_video_bytes_identical": true,
+  "exact_value_differences": [
+    {
+      "path": "subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "all_other_values_deep_equal": true,
+  "same_exact_remake_slug": "story-everyday-play-doh-c06-remake-20261025",
+  "same_budget_identity": true,
+  "budget_account_or_activation_verified": false,
+  "old_activated_slug_used": false,
+  "source_zhTW_burned_recipe_preserved": true,
+  "screenplay": {
+    "source_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+    "variant_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+    "canonical_file_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+    "bytes_identical": true
+  },
+  "dictionary": {
+    "mode": "snapshot",
+    "canonical_root": "/workspace/work/brand-story-20261025/c06-submission-root",
+    "current_file_sha256": "1a08bb41e30016c4661bdd81bf80aed799b365900be398067f9a576357cbfa12",
+    "immutable_version_sha256": "88d56a0e7edfdd645d605193f653640121702d2fc2c819731966c8f545499416",
+    "head_event_sha256": "c29edf64bc1b0a672ed9b9a2fc906668a9fbb712c73542b1dbfac62202d83bca",
+    "native_pointer_matches_version_bytes": true,
+    "native_head_event_matches_event_bytes": true,
+    "project_speech_lexicon_json_sha256": "3e982509bd40c627c7074102ffe1e24481b7ef0ff112f6a0b3956d3d1eb5dfe5",
+    "project_shelf_lexicon_json_sha256": "3e982509bd40c627c7074102ffe1e24481b7ef0ff112f6a0b3956d3d1eb5dfe5",
+    "shared_dictionary_fallback_used": false
+  },
+  "native_hashes_recomputed": {
+    "narrativeHash": {
+      "source": "81af9e35ef603e7f",
+      "variant": "81af9e35ef603e7f",
+      "equal": true
+    },
+    "speechHash": {
+      "source": "3ea6ba231f7d8b58",
+      "variant": "3ea6ba231f7d8b58",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "b870aa1d1fcb917b",
+      "variant": "b870aa1d1fcb917b",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "71ecdd098c551254",
+      "variant": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
+  },
+  "lint_recheck": {
+    "stored_error_count": 0,
+    "stored_warning_count": 15,
+    "current_source_error_count": 0,
+    "current_variant_error_count": 0,
+    "current_source_warning_count": 17,
+    "current_variant_warning_count": 17,
+    "current_source_and_variant_warnings_identical": true,
+    "additional_current_context_warnings": [
+      {
+        "path": "youtube/es",
+        "message": "es.title: 45 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/pt",
+        "message": "pt.title: 41.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      }
+    ],
+    "context_note": "Original stored lint predates translated metadata. Current native initialized project includes translated ES/PT title-width warnings; both source and variant have the same two added warnings. The stored 15-warning receipt was preserved and is not relabeled as the current 17-warning result."
+  },
+  "actual_clean_master_exists": false,
+  "media_qa": false,
+  "final_approval": false,
+  "actual_dub_eligibility": false,
+  "paid_requests": 0,
+  "backend_requests": 0,
+  "backend_context": {
+    "source": "Parent-provided current backend status; no network read or mutation in this review.",
+    "reported_category": "explainer",
+    "legitimate_category_correction_required": "story",
+    "reported_language_choice_empty": true,
+    "protected_authenticated_language_choice_required": true,
+    "server_dub_allowed_used_as_evidence": false
+  },
+  "required_before_real_dubbing": [
+    "Legitimate story classification and actual authenticated language choice readback.",
+    "Legal paid admission and actual verified common source assets.",
+    "A real clean export with no burned-in subtitles, current full media QA bound to that actual MP4 and a matching current final approval.",
+    "Actual per-line audio fitting/listening checks and subtitle timing; metadata hashes alone do not prove these."
+  ],
+  "reproduction": {
+    "cwd": "/workspace/work/brand-remakes-source",
+    "runtime_root": "/workspace/work/brand-story-20261025/c06-submission-root",
+    "procedure": [
+      "Read source and variant JSON bytes and SHA256 them. Deep-compare after restoring only variant.subtitles.burn_in=true.",
+      "loadProject({root: runtime_root, slug: source.slug}); assert canonical document equals source; read videoLexicon({root, slug, dir: project.dir, requireSnapshot: true}); hash current/immutable version/event files and compare pointer IDs.",
+      "Compare screenplay(source) and screenplay(variant) as complete bytes; SHA256 both and canonical script.md.",
+      "Recompute native narrativeHash, speechHash(doc, project.lexicon), picturesHash, lookHash, mixHash and subtitlesHash separately for source and variant. Only subtitlesHash must differ.",
+      "Run lintProject(project) and lintProject({...project,doc:variant}) in memory. Confirm no errors and equal current warnings; preserve stored receipt and translation-context warning additions."
+    ],
+    "native_modules": [
+      "tools/video/core/state.mjs",
+      "tools/video/core/lexicon-store.mjs",
+      "tools/video/core/screenplay.mjs",
+      "tools/video/core/timeline.mjs",
+      "tools/video/core/drama.mjs"
+    ]
+  }
+}

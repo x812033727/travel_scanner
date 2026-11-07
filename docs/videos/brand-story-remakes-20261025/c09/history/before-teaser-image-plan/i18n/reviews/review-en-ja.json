@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "source_video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+  "reviewer": "/root/c04_readiness",
+  "reviewed_at": "2026-10-25T16:43:03.360464+00:00",
+  "scope": "text_only",
+  "locales": [
+    {
+      "locale": "en",
+      "worksheet_sha256": "841d8775e1478871a22a8f81605267209364c618332423d9f0b1a8e3814117c4",
+      "translation_sha256": "1ce1524ee55b3644df95b0a20629a03655d5b61b2c4e3bfcabdc320699037a3e",
+      "verdict": "FIXES_REQUIRED",
+      "lines_checked": 95,
+      "chapters_checked": 6,
+      "metadata_checked": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "boundaries_checked": 57,
+      "protected_source_invariants": "PASS",
+      "native_merged_text_equals_reviewed_worksheet": true,
+      "native_merge_receipt": {
+        "path": "native-merge-en.json",
+        "sha256": "ca53a5c9969dc3b40c74b149af5805c89cea3a61925d1ea09bcc21223d28a733",
+        "exit": 0
+      },
+      "findings": [
+        {
+          "target": "lines.c09r049",
+          "required": true,
+          "current": "The preface says mountains are not inexhaustible, and even their own gear needs restraint. So how does it judge a climb's success?",
+          "proposed": "The preface says mountains are not inexhaustible, and even the company's own gear should be used with restraint. So how does it judge a climb's success?",
+          "reason": "克制的是使用自家公司器材。原譯gear needs restraint把節制直接掛在物品上，英文也不自然；明示自家公司器材應節制使用，保留前言歸屬及後半問句。"
+        },
+        {
+          "target": "lines.c09r070",
+          "required": true,
+          "current": "Back to that opening catalog: would you trust this advice, or think the seller said one thing and did another?",
+          "proposed": "Back to that opening catalog: after reading this advice, would you trust the seller, or think they said one thing and did another?",
+          "reason": "原文問是否相信賣家，不是只問是否相信這項助言。信任對象是本段商業選擇的重點，改回seller，保留讀完勸告與說一套做一套的兩種反應。"
+        },
+        {
+          "target": "lines.c09r102",
+          "required": true,
+          "current": "Back to that press: the record's answer is that the order of advice changed, but the product remained; its seller also began asking whether you should use it.",
+          "proposed": "Back to that press: the record's answer is that the recommended priorities changed, but the product remained; its seller also began asking whether you should use it.",
+          "reason": "這裡改變的是建議採用器材的優先次序，不是助言的字句排列或出現順序。order of advice不自然且易偏移；recommended priorities明確承接前文先楔塊、必要時固定岩釘的次序，未寫成停售。"
+        }
+      ],
+      "checked_criteria": [
+        "All numbers, years, approximation/conditions/negation and attribution match the current approved Chinese source.",
+        "Piton/ハーケン versus chock/チョック remain distinct; no spring-loaded cam, free-solo, rope-free or all-route guarantee claim was introduced.",
+        "1967 article, 1972 preface/reprint, 1973 review, 1977 publication and later brand retrospective retain source layers; 1973 clothing label not moved earlier.",
+        "Advice to use fewer pitons is not cessation of sales; fixed piton and local guide conditions remain.",
+        "Company recollection, reviewer criticism/defense and observed factory production are not converted into admitted motives or financial proof.",
+        "Clothing income/収入 is not profit; die cost recovery remains a sometimes 5–10-year personal estimate, not a refund or audited financial statement.",
+        "First-person reactions, viewer questions, sentence cue order and consistent Latin person/brand names are retained; localized place names in JA are normal and do not change identity.",
+        "Titles/tags omit channel/series names and retain product search terms; thumbnail line break/source URLs/glossary are preserved."
+      ],
+      "limits": [
+        "Text only; no timing, reading-speed, dubbing, sound, rendered-thumbnail fit or media QA was verified.",
+        "No real timeline/max_chars is available; soft character limits were not used to remove facts."
+      ]
+    },
+    {
+      "locale": "ja",
+      "worksheet_sha256": "221028ff4d8e3d19301fe7d39f1a2cc2e8c47c6cd34fa60cd1d7630512ffdad5",
+      "translation_sha256": "3be07fbf4f8e9e6c7ca01e5320db2c44e86ff4419aa2b0e187e63d8ee91ad3fa",
+      "verdict": "FIXES_REQUIRED",
+      "lines_checked": 95,
+      "chapters_checked": 6,
+      "metadata_checked": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "boundaries_checked": 57,
+      "protected_source_invariants": "PASS",
+      "native_merged_text_equals_reviewed_worksheet": true,
+      "native_merge_receipt": {
+        "path": "native-merge-ja.json",
+        "sha256": "ef403fe1e6c35386f57d1d95a0b25ab8a63b597bb0b91c504f29c6e22163350d",
+        "exit": 0
+      },
+      "findings": [
+        {
+          "target": "lines.c09r093",
+          "required": true,
+          "current": "ブランドの回顧によると、1973年に、アウトドア衣料へPatagoniaのラベルを使い始めました。",
+          "proposed": "ブランドの回顧によると、1973年に、アウトドア衣料にPatagoniaのラベルを使い始めました。",
+          "reason": "使用對象的助詞應為衣料にラベルを使う。衣料へラベルを使う的方向助詞搭配不自然；只修へ→に，保留品牌回顧、1973開始及Latin標籤名。"
+        }
+      ],
+      "checked_criteria": [
+        "All numbers, years, approximation/conditions/negation and attribution match the current approved Chinese source.",
+        "Piton/ハーケン versus chock/チョック remain distinct; no spring-loaded cam, free-solo, rope-free or all-route guarantee claim was introduced.",
+        "1967 article, 1972 preface/reprint, 1973 review, 1977 publication and later brand retrospective retain source layers; 1973 clothing label not moved earlier.",
+        "Advice to use fewer pitons is not cessation of sales; fixed piton and local guide conditions remain.",
+        "Company recollection, reviewer criticism/defense and observed factory production are not converted into admitted motives or financial proof.",
+        "Clothing income/収入 is not profit; die cost recovery remains a sometimes 5–10-year personal estimate, not a refund or audited financial statement.",
+        "First-person reactions, viewer questions, sentence cue order and consistent Latin person/brand names are retained; localized place names in JA are normal and do not change identity.",
+        "Titles/tags omit channel/series names and retain product search terms; thumbnail line break/source URLs/glossary are preserved."
+      ],
+      "limits": [
+        "Text only; no timing, reading-speed, dubbing, sound, rendered-thumbnail fit or media QA was verified.",
+        "No real timeline/max_chars is available; soft character limits were not used to remove facts."
+      ]
+    }
+  ],
+  "source_deixis_note": "c09r079同年保持that same year／同じ年；本輪不推斷或補寫年份，也不評另行準備的澄清／長度候選。",
+  "actual_timing_verified": false,
+  "paid_calls": 0,
+  "backend_actions": 0
+}

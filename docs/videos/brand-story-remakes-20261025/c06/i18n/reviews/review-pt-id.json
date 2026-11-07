@@ -1,0 +1,141 @@
+{
+  "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "reviewer": "/root/c06_translate_vi_th",
+  "independent": true,
+  "role_disclosure": "Translated C06 Vietnamese and Thai only. Did not write Chinese, Portuguese or Indonesian. This review reads only the designated PT/ID worksheets, their pure baselines and their native merged translations.",
+  "reviewed_at": "2026-10-25T18:58:15.489625+00:00",
+  "scope": "Whole-text PT/ID semantic and native-language review only; not timed subtitle, pronunciation, dub-window or actual media approval.",
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "efb48f35580bb826acf07407bce01caefd1dd01de074cdb1c415fd66b7d879b4",
+      "translation_sha256": "bd6f05aec567ffd3726997353c9dc908f1ac85b585f6a8589d5cc982539f8ec0",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 163,
+      "checked_chapters": 6,
+      "checked_metadata": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail"
+      ],
+      "protected_source_fields_unchanged": true,
+      "source_urls_unchanged": true,
+      "all_native_body_and_metadata_text_matches_worksheet": true,
+      "native_thumbnail_present": false,
+      "findings": [
+        {
+          "target": "thumbnail.sub",
+          "required": true,
+          "current": "Hasbro (2024): >500 mi de potes",
+          "proposed": "Hasbro 2024: mais de 500 mi de potes",
+          "reason": "副標含 >，違反原生縮圖 no angle brackets，且本次 native translation 因此未帶入 thumbnail。改用自然葡文 mais de，保留 Hasbro／2024、逾五億及容器單位，修後須重新原生合併；手機可讀性仍需實際render。"
+        },
+        {
+          "target": "lines.c6sb101",
+          "required": false,
+          "current": "O documento descreve ainda a gelatinização das partículas de farinha revestidas sob calor úmido, formando uma massa macia, uniforme e sem grumos.",
+          "proposed": "O documento descreve ainda a gelatinização das partículas de farinha de trigo revestidas sob calor úmido, formando uma massa macia, uniforme e sem grumos.",
+          "reason": "可選精確化：中文麵粉通常特指小麥粉；farinha 在本文脈絡可理解，但補 de trigo 可排除其他穀物粉。現譯並未改變製程或移除文件歸因，列建議而非必要錯誤。"
+        },
+        {
+          "target": "lines.c6sn012",
+          "required": false,
+          "current": "A empresa o apresentou como sua primeira linha criada especificamente para adultos.",
+          "proposed": "A empresa apresentou a novidade como a primeira linha de Play-Doh criada especificamente para adultos.",
+          "reason": "可選範圍澄清：前句主詞是 Hasbro，sua primeira linha 可能被讀成整間公司的首個成人系列；明示 Play-Doh 可固定品牌脈絡。中文本句同樣省略品牌，因此不把此點單獨算為翻譯必修。"
+        }
+      ],
+      "advisory": [
+        "巴西葡文敘事整體自然，você 與 Eu／Para mim 的你我語氣保留；數字、1933–1965及2026時序、出貨量非零售、專利可選黏結成分與最長三年、公司噴霧數月聲稱均保持。",
+        "mi 是 milhões 的縮寫，已保留 de potes 單位；副標最終尺寸、字級與手機閱讀效果只可由真實縮圖驗證。",
+        "沒有實際音訊或時間軸；不判讀音、每句配音視窗、自然語速或12–14分鐘時長通過。"
+      ],
+      "required_fix_count": 1,
+      "advisory_finding_count": 2
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "72bdaba29864612cf9af642d6ac123e3d738d46433aecc9de617107c0571ced8",
+      "translation_sha256": "c6f435c0e1018ded71ff821874cc3919bc413b0f8bbc920cd52b8b39f375bb0c",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 163,
+      "checked_chapters": 6,
+      "checked_metadata": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail"
+      ],
+      "protected_source_fields_unchanged": true,
+      "source_urls_unchanged": true,
+      "all_native_body_and_metadata_text_matches_worksheet": true,
+      "native_thumbnail_present": false,
+      "findings": [
+        {
+          "target": "thumbnail.sub",
+          "required": true,
+          "current": "Klaim 2024: >500 jt wadah",
+          "proposed": "Klaim 2024: lebih dari 500 jt wadah",
+          "reason": "副標含 >，違反原生縮圖 no angle brackets，且本次 native translation 因此未帶入 thumbnail。改用印尼文 lebih dari，保留2024的聲稱、逾五億與容器單位；jt為juta縮寫，修後須原生合併，實際手機字級仍待render。"
+        },
+        {
+          "target": "lines.c6sh001",
+          "required": true,
+          "current": "Kalau bentuk yang kamu buat langsung ambruk begitu tanganmu dilepas, apa kamu masih mau mengambil wadah ini lagi?",
+          "proposed": "Kalau bentuk yang kamu buat langsung ambruk begitu kamu melepasnya, apa kamu masih mau mengambil wadah ini lagi?",
+          "reason": "tanganmu dilepas 是被動「你的手被放開／拆離」，主客體不自然；中文是你主動放開材料／作品。改為 kamu melepasnya，保留放手時形狀／用途的問題，不新增事實。"
+        },
+        {
+          "target": "lines.c6st071",
+          "required": true,
+          "current": "Ingat pertanyaan di pembuka, tentang bentuk yang ambruk setelah tanganmu dilepas?",
+          "proposed": "Ingat pertanyaan di pembuka, tentang bentuk yang ambruk begitu kamu melepasnya?",
+          "reason": "tanganmu dilepas 是被動「你的手被放開／拆離」，主客體不自然；中文是你主動放開材料／作品。改為 kamu melepasnya，保留放手時形狀／用途的問題，不新增事實。"
+        },
+        {
+          "target": "lines.c6sn091",
+          "required": true,
+          "current": "Kalau kamu meletakkannya di meja sendiri, apakah pekerjaan bahan itu berhenti saat tanganmu dilepas?",
+          "proposed": "Kalau kamu meletakkannya di meja sendiri, apakah pekerjaan bahan itu berhenti saat kamu melepasnya?",
+          "reason": "tanganmu dilepas 是被動「你的手被放開／拆離」，主客體不自然；中文是你主動放開材料／作品。改為 kamu melepasnya，保留放手時形狀／用途的問題，不新增事實。"
+        },
+        {
+          "target": "lines.c6sb101",
+          "required": false,
+          "current": "Dokumen lalu menjelaskan bahwa partikel tepung yang terlapisi mengalami gelatinisasi oleh panas lembap, sehingga membentuk bahan yang lunak, seragam, dan tidak menggumpal.",
+          "proposed": "Dokumen lalu menjelaskan bahwa partikel tepung terigu yang terlapisi mengalami gelatinisasi oleh panas lembap, sehingga membentuk bahan yang lunak, seragam, dan tidak menggumpal.",
+          "reason": "可選精確化：中文麵粉是小麥粉，tepung 是泛稱；補 terigu 可更精確指向材料。現句仍保留文件敘述及同一物理過程，不作必要翻譯錯誤。"
+        },
+        {
+          "target": "lines.c6sn012",
+          "required": false,
+          "current": "Perusahaan menyebutnya seri pertama yang khusus dirancang untuk orang dewasa.",
+          "proposed": "Perusahaan menyebutnya seri Play-Doh pertama yang khusus dirancang untuk orang dewasa.",
+          "reason": "可選範圍澄清：明示 Play-Doh 可避免把首個成人系列理解成 Hasbro 全部業務；中文本句也省略品牌，故列建議而非翻譯必修。"
+        },
+        {
+          "target": "lines.c6sn041",
+          "required": false,
+          "current": "Alat dan cetakan membantu membentuk, lalu kamu merangkai bunga dan akhirnya menatanya menjadi buket. Pihak resmi juga menyediakan video panduan untuk setiap kit,",
+          "proposed": "Alat dan cetakan membantu membentuk, lalu kamu merangkai bunga dan akhirnya menatanya menjadi buket. Merek ini juga menyediakan video panduan untuk setiap kit,",
+          "reason": "可選自然度修整：Pihak resmi 是籠統的「官方方面」，這裡指品牌提供教學，Merek ini 更自然且主體清楚；原句未指稱政府或新增史實，非必修。"
+        },
+        {
+          "target": "lines.c6sk022",
+          "required": false,
+          "current": "Menurut Hall of Fame, tanah liat untuk membentuk yang biasa dipakai terlalu keras untuk dikerjakan anak-anak.",
+          "proposed": "Menurut Hall of Fame, tanah liat biasa untuk membuat model terlalu keras untuk diolah anak-anak.",
+          "reason": "可選口語修整：tanah liat untuk membentuk yang biasa dipakai 修飾關係偏直譯；建議把「一般塑形黏土」整理成可順讀的名詞片語，不擅自指定新的配方。原句語意仍可理解，非必修。"
+        }
+      ],
+      "advisory": [
+        "其餘印尼文完整保留 kamu／saya 你我語氣、跨句順序與來源歸因。500 juta wadah 是出貨容器數量，未寫成兒童或零售銷售；1960申請／1965核發、可選黏結成分、文稱最長三年及2026公司保存說明保持。",
+        "jt 是 juta 的常見縮寫，wadah 保留容器計數；副標最終手機閱讀效果仍須真實縮圖驗證。",
+        "未讀任何其他語言或既有review，沒有實際音訊／SRT／時間擬合／發音或媒體QA判定。"
+      ],
+      "required_fix_count": 4,
+      "advisory_finding_count": 4
+    }
+  ]
+}

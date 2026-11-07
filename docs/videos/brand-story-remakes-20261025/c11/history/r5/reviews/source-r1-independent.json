@@ -1,0 +1,3228 @@
+{
+  "schema_version": 1,
+  "candidate_revision": "c11-r1",
+  "status": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "reviewer": "/root/c11_r1_source",
+  "reviewed_at_utc": "2026-10-25T22:18:11.384698+00:00",
+  "independent": true,
+  "independence": {
+    "wrote_chinese_candidate": false,
+    "wrote_research": false,
+    "read_c11_blind_or_narrative_votes": false,
+    "old_reviews_read_for_content": false,
+    "old_review_bytes_hashed_only_for_preservation": true,
+    "author_self_qa_not_accepted_as_evidence": true,
+    "subagents_spawned": 0,
+    "git_commands": 0,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "backend_mutations": 0
+  },
+  "scope": "凍結R1全89句、86個匿名配鏡提示詞、一景三句片尾、跨檔投影與原始來源核對；只核來源及書面配鏡。",
+  "core_four_sha256": {
+    "video.json": "08a9c4e28411909bc4a2b95c47d7bb8f4832c37bba9333f5b009bf645819b08d",
+    "script.md": "d4497864572a1fe4bb9fc5fadb9acc07744b26e8f10b9f7310b5a525508d3279",
+    "narration-only.json": "0495cf0e6664aefaed5de83c3df526ad2b7176f0e2f0276a72da3aded5f0aef7",
+    "claims.json": "138f5ac1c87e7019c5d503331cfa6e0e7582769b86a40dcdc2cfb7486dda8f1a"
+  },
+  "frozen_research_sha256": {
+    "research-original.md": "2c3e2f0a2ad4bf41b50a3c2484831eeda5861d32ecf4d11f409ebb7bc0bfed1b",
+    "research-original.claims.json": "14103ff5df3c9871d942021bda9e1c581bcf68c013047d9fbcd79512613a90fa",
+    "original-preservation.json": "40a0726eeb5937b9d6573c733b3432dc11c21c88762a1731cd46d80d46e9501b"
+  },
+  "cross_file_projection": {
+    "line_count": 89,
+    "unique_line_ids": 89,
+    "video_script_narration_claims_chapter_id_text_order_match": true,
+    "script_parser_normalization": "只移除文件末端換行，不改句中文字或標點。",
+    "ordered_chapter_id_text_projection_sha256": "a91517be9d02574f03b809a763bf7426920cdaaec80fb2f9fb52790f79b74305",
+    "shot_count": 86,
+    "outro_scene_count": 1,
+    "outro_line_count": 3,
+    "all_86_prompts_match_claims": true,
+    "anonymous_prompts_contain_no_declared_brand_person_names_or_readable_text_requests": true,
+    "loops": 24,
+    "all_48_loop_endpoints_exist": true,
+    "thumbnail_shot_exists": true,
+    "candidate_active_sources": 10,
+    "candidate_anchor_count": 21,
+    "frozen_research_anchor_count": 31,
+    "frozen_research_claim_count": 23,
+    "shared_19_anchor_objects_unchanged": true,
+    "new_candidate_anchors_independently_read": [
+      "A_BOTTLE_MATERIAL",
+      "A_EXPO_PREP"
+    ]
+  },
+  "preservation": {
+    "protected_old_file_count": 28,
+    "all_old_28_raw_byte_hashes_match": true,
+    "readonly_snapshot_sha256": "6dffd8c316fe221f596191b17678dd7e5d8dcde5aad09074690d80dd61899e6f",
+    "readonly_snapshot_bytes_match": true,
+    "three_frozen_research_files_match": true,
+    "core_files_modified_by_reviewer": false
+  },
+  "evidence_method": {
+    "original_html": "直接讀原HTML bytes；以獨立stdlib HTMLParser抽出可見文字，逐段核對全文存在、原件/text/paragraph檔SHA與段落SHA，然後親讀日文全文段落及上下文。",
+    "original_pdf": "原PDF以pdftotext直接重抽至stdout；親讀濱田市刊p3、尾道論文PDF p9（印刷p87）及1994論文相關頁，並搜尋1994全篇無UCC/上島。親看濱田市刊p3既有render且驗SHA。",
+    "images": "親看初代罐頂、1981罐頂、初代與現代對照、歷代罐、正確萬博人手罐照與全部五張誤名/不相干照片。",
+    "not_network_refetched": true,
+    "receipt_count": 35,
+    "receipt_manifests": [
+      {
+        "path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/receipts-additional.json",
+        "sha256": "897ae3cb65f31ab8b7601d8706b56b53bf25f96d1f1460e5e98f83793150dde4",
+        "bytes": 6540
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/receipts-final-targets.json",
+        "sha256": "f6da98c253a24f80b78c214a3dbbcff166398638041d5ff112b4ce3440c0558a",
+        "bytes": 1395
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/receipts-initial.json",
+        "sha256": "c4291a19c8af831d127ae048a9a0321d26797940c12a715f176d09736d4c06d7",
+        "bytes": 11346
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/receipts-objects.json",
+        "sha256": "1c3f49a31e91fcd412f0a8bb9c813bda9611e63bfa32cafaba2f2bf35d0f7c80",
+        "bytes": 3295
+      },
+      {
+        "path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/receipts-targeted.json",
+        "sha256": "a02c1a4dfd129febc02563319ef90981e5a7e87ae6f0d1d8430371ba436cecde",
+        "bytes": 5677
+      }
+    ],
+    "all_five_manifest_bytes_and_hashes_rechecked": true,
+    "usable_receipt_warning": "35筆收件包含HTTP失敗、掃描不可讀、同源重複及誤名圖片；不是35筆可用史實證據。"
+  },
+  "source_receipts": [
+    {
+      "source_id": "UCC2019_CANS",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC2019_CANS.html",
+      "bytes": 96030,
+      "sha256": "aa96f03e53d959a446457888ad72a5412070efb440ac99cd6aaee7308bf29dc0",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "GUINNESS2019",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/GUINNESS2019.html",
+      "bytes": 51705,
+      "sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "STEELCAN_HISTORY",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/STEELCAN_HISTORY.html",
+      "bytes": 93017,
+      "sha256": "4065e85f252f41a1ecea2f63ce5ece0445a18bdb3d09027f2e9dfea9430f5932",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "HAMADA201609_PDF",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/HAMADA201609_PDF.pdf",
+      "bytes": 5061812,
+      "sha256": "f1ada732713267eb119861c72999adefc0e69d842ee948c53b45a013bee38e6e",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "SHIMANE_FIRST",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/SHIMANE_FIRST.html",
+      "bytes": 238071,
+      "sha256": "280b7c1486d54d23b96e55dadff616f783bc2ca3b2c44fac29f28185ea142583",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "NIHON2005_PDF",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/NIHON2005_PDF.pdf",
+      "bytes": 1957341,
+      "sha256": "b1709b412d2d0f07a268052619a078644a5572eec0fd85c43c11c287ecb606bd",
+      "acquired_http_status": 200,
+      "research_admission": "NOT_ADMITTED_TO_STORY_CLAIMS",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "ONOMICHI2013_PDF",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/ONOMICHI2013_PDF.pdf",
+      "bytes": 1375730,
+      "sha256": "5ee68c1b638385a63dddff962a81625854399e0243f54a0ce33601199091bf30",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC_TECHNOLOGY",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC_TECHNOLOGY.html",
+      "bytes": 103576,
+      "sha256": "92e1df09cdd04101dfe630e6c919e1f38165b5397d286402b8fe2cffb867ce0d",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC1970_EXPO_VERIFIED",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC1970_EXPO_VERIFIED.jpg",
+      "bytes": 156596,
+      "sha256": "eee9768a78de577250455478b40c62defaa29624656bf15999215150b3f97191",
+      "acquired_http_status": 200,
+      "research_admission": "VERIFIED_ATTRIBUTED_HISTORICAL_PHOTO",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "SSNP2019_TAB",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/SSNP2019_TAB.html",
+      "bytes": 91998,
+      "sha256": "09bd0e16d2fc1c4bc9cb28bc0b57495d454c5cac50b8f7d502f7eef00967d854",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC2026",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC2026.html",
+      "bytes": 105586,
+      "sha256": "47107d1c33a1e8b9bf5b76c5f681d81c7bbc4dcdcbc1b44b854d485396dfc98a",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "UCC2025",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC2025.html",
+      "bytes": 107457,
+      "sha256": "49619fe308ca3eb54f5585f5de4a788020d4cecfcc3f00ba291a8af6c5505656",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "UCC_MUSEUM",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC_MUSEUM.html",
+      "bytes": 8498,
+      "sha256": "f60625cd37e3381b76259b48feb5e62efaa293c4e524371e006b461ab4ca11cd",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "UCC_HISTORY",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC_HISTORY.html",
+      "bytes": 122933,
+      "sha256": "f271380e24b331126b5c3d0a29d5edb7f2e121188db4a620cf75aade681b8340",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC_BRAND",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC_BRAND.html",
+      "bytes": 117079,
+      "sha256": "b18ed542555b66b0ae02fb59f42378ca467c816af5e212782a8f482cb32f3aab",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "HAMADA2015",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/HAMADA2015.html",
+      "bytes": 32996,
+      "sha256": "01589136f3da70664ae328701851ed41ef52c2e671b6c9054f8d83d0c79d0e0c",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "HAMADA2021",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/HAMADA2021.html",
+      "bytes": 45585,
+      "sha256": "a01bcaa015368e77b1a5c58ec093abf06a61bdae078322b3b43d3090531dcf7b",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "CAN_INTERVIEW",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/CAN_INTERVIEW.html",
+      "bytes": 79654,
+      "sha256": "63eaf7c0978932724a70b289f26c3a94cbd690c65065840962260b64184ccc36",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "HAMADA_TOURISM",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/HAMADA_TOURISM.html",
+      "bytes": 36475,
+      "sha256": "d3e8666cb4f4427327b36b88b2dd9682116335213d9fd9204062ab86f4d00b74",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "JSDA_HISTORY",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/JSDA_HISTORY.html",
+      "bytes": 261,
+      "sha256": "e4d4d30b9daa6bd67be4c388edc1879c99f605f189d76a14ba39cc3822241f30",
+      "acquired_http_status": 403,
+      "research_admission": "NOT_ADMITTED_HTTP_FAILURE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC2025_REPRO",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC2025_REPRO.html",
+      "bytes": 102127,
+      "sha256": "61aca893161a8967c3bcdb400f5a82d268a29080b9bf4b2ac8f7557003df7f3f",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "UCC1969_TOP",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC1969_TOP.jpg",
+      "bytes": 57656,
+      "sha256": "0fb0fe7780141e9489b55e89272e289605e4572ce4cb1bf033de8e31aad01452",
+      "acquired_http_status": 200,
+      "research_admission": "VERIFIED_OBJECT_REFERENCE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC1981_TOP",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC1981_TOP.jpg",
+      "bytes": 49013,
+      "sha256": "b3859525dba7eaf830360959db6de0ba110aeeb4f607d78dda4a89075c13eaa4",
+      "acquired_http_status": 200,
+      "research_admission": "VERIFIED_OBJECT_REFERENCE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC_INITIAL_AND_CURRENT",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC_INITIAL_AND_CURRENT.jpg",
+      "bytes": 91764,
+      "sha256": "38112a4364fa358b3adea0098354e4a0af8dc32c2172365288f9b73c6f9fb2d5",
+      "acquired_http_status": 200,
+      "research_admission": "VERIFIED_OBJECT_REFERENCE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC1970_EXPO_ACTUAL",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC1970_EXPO_ACTUAL.jpg",
+      "bytes": 162192,
+      "sha256": "ae9faa5fbb31bcc1450d41121d708f1c46cc5c6a6e9b1980531996059ef32f82",
+      "acquired_http_status": 200,
+      "research_admission": "EXCLUDED_IRRELEVANT_FARM_PHOTO",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "CANFLAVOR1994",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/CANFLAVOR1994.pdf",
+      "bytes": 3828272,
+      "sha256": "a5c69b5002a9c47670bd06c4a67a56b82660a4c4fdfea481f064082d80fe32a5",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "NDL_CANFLAVOR1994",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/NDL_CANFLAVOR1994.pdf",
+      "bytes": 444134,
+      "sha256": "459a5f151790b9c4a644c896e899e53d815d94d83fe25c640f9db1ea44fe48c2",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "JNET2023",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/JNET2023.html",
+      "bytes": 396419,
+      "sha256": "2e6950237d623148459a7ef38d270851f4b687bd564242a3aa7810ff0d9078fe",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "JNET2011",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/JNET2011.html",
+      "bytes": 406532,
+      "sha256": "d4f16296a7320f71dbc2d473608d9c464d86b05db1b929be33984a6a6f187c8a",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": true
+    },
+    {
+      "source_id": "DAIWA_HISTORY",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/DAIWA_HISTORY.html",
+      "bytes": 40505,
+      "sha256": "97277374ce4501eb96c20d76e37f70fd2f8a9ae1134fe98fbc8541696cb8ee18",
+      "acquired_http_status": 200,
+      "research_admission": "RESEARCH_SOURCE_CANDIDATE",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "DAIWA_CHALLENGE",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/DAIWA_CHALLENGE.html",
+      "bytes": 2039665,
+      "sha256": "bb2772523d5bc274d595e3a35a60a7e49e100fde2089bd23ccc24ddf922eb8a7",
+      "acquired_http_status": 200,
+      "research_admission": "NOT_ADMITTED_TO_STORY_CLAIMS",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC_PACKAGE_PHOTO",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC_PACKAGE_PHOTO.jpg",
+      "bytes": 368312,
+      "sha256": "c961ee22d89567d9784ef88a025ccc51acc2e38c1027e2039dfcb14fbf3846b5",
+      "acquired_http_status": 200,
+      "research_admission": "EXCLUDED_IRRELEVANT_CURRENT_CARTON",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "UCC_EXPO_PHOTO",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/UCC_EXPO_PHOTO.jpg",
+      "bytes": 106292,
+      "sha256": "12e9030fe1d22695b835e6f7a73e88815aa17a7e79d4c1e0a30b0c6632f44e1a",
+      "acquired_http_status": 200,
+      "research_admission": "VERIFIED_GENERATIONS_REFERENCE_NAME_IS_NOT_CAPTION",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "MIRA_PHOTO",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/MIRA_PHOTO.jpg",
+      "bytes": 63146,
+      "sha256": "da5f9e68575ce956ba9fdb03d71405f91bb3ff703e6f2fa957bf0f1103083181",
+      "acquired_http_status": 200,
+      "research_admission": "EXCLUDED_BIOGRAPHICAL_PANEL",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    },
+    {
+      "source_id": "MIRA_POSTER_PHOTO",
+      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/MIRA_POSTER_PHOTO.jpg",
+      "bytes": 56177,
+      "sha256": "b811d52d9806d44b4a05a5a56660edd4b5a8e3d820d8ccd791d1691fb478c2d7",
+      "acquired_http_status": 200,
+      "research_admission": "EXCLUDED_INTERVIEW_GROUP_PHOTO",
+      "raw_bytes_rechecked": true,
+      "narrated": false
+    }
+  ],
+  "anchor_reviews": [
+    {
+      "anchor_id": "A_BOTTLE",
+      "source_id": "UCC2026",
+      "raw_sha256": "47107d1c33a1e8b9bf5b76c5f681d81c7bbc4dcdcbc1b44b854d485396dfc98a",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        220
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 220,
+          "sha256": "294142059e1619dc7bd74645bf6f49d37f3620d5d0ea0f0257be68cb73962d29",
+          "text": "ある時、上島は駅の売店で冷蔵の瓶入りコーヒー牛乳を購入するも、発車ベルが鳴り、当時は瓶を売店に返す決まりだったため、飲み残して瓶を返却せざるを得ませんでした。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_THREE_OBSTACLES",
+      "source_id": "UCC2026",
+      "raw_sha256": "47107d1c33a1e8b9bf5b76c5f681d81c7bbc4dcdcbc1b44b854d485396dfc98a",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        222,
+        223
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 222,
+          "sha256": "541a6c678a6c3a65da3c30903bf474f0a6fb603402b026dd075400e95b4e7253",
+          "text": "ところが、製品化には多くの困難を伴い、コーヒーとミルクの分離、高熱殺菌による風味の変化など、専門家の協力を得ながら試行錯誤を繰り返しました。"
+        },
+        {
+          "paragraph": 223,
+          "sha256": "11c34e00a816770e442ff39e7be6683fc69447db90b73cfe59e905759e39d4ed",
+          "text": "特に、缶に含まれる鉄イオンとコーヒー成分のタンニンが結合し、コーヒーが真っ黒に変色するという難問には、製缶会社との取り組みにより、缶の内側に特殊コーティングをする技術を開発しました。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_COATING",
+      "source_id": "UCC2025_REPRO",
+      "raw_sha256": "61aca893161a8967c3bcdb400f5a82d268a29080b9bf4b2ac8f7557003df7f3f",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        185,
+        186
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 185,
+          "sha256": "541a6c678a6c3a65da3c30903bf474f0a6fb603402b026dd075400e95b4e7253",
+          "text": "ところが、製品化には多くの困難を伴い、コーヒーとミルクの分離、高熱殺菌による風味の変化など、専門家の協力を得ながら試行錯誤を繰り返しました。"
+        },
+        {
+          "paragraph": 186,
+          "sha256": "11c34e00a816770e442ff39e7be6683fc69447db90b73cfe59e905759e39d4ed",
+          "text": "特に、缶に含まれる鉄イオンとコーヒー成分のタンニンが結合し、コーヒーが真っ黒に変色するという難問には、製缶会社との取り組みにより、缶の内側に特殊コーティングをする技術を開発しました。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_UCC_MONTH",
+      "source_id": "UCC2025_REPRO",
+      "raw_sha256": "61aca893161a8967c3bcdb400f5a82d268a29080b9bf4b2ac8f7557003df7f3f",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        188
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 188,
+          "sha256": "249374293d804234dbedb1c7fef931e41035966f8fbc46af7ef309c2f3cdc13d",
+          "text": "UCCが世界初の缶コーヒー『UCCコーヒーミルク入り（当時の製品名）』を発売したのは、1969年4月。当初なかなか売上は伸びなかったものの、翌1970年3月から大阪で開催された「日本万国博覧会」で来場した多くの人の目にとまり、その後全国に広がりました。時代とともに変化する嗜好に合わせてリニューアルし、2019年に10代目を発売、現在に至っています。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_MUSEUM_MILK",
+      "source_id": "UCC_MUSEUM",
+      "raw_sha256": "f60625cd37e3381b76259b48feb5e62efaa293c4e524371e006b461ab4ca11cd",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        6
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 6,
+          "sha256": "ad9af773f449f1c10692b76e679629c7a77e844f43ed6d7ea7023ab0664131c5",
+          "text": "「いつでも、どこでも、ひとりでも多くの人においしいコーヒーを届けたい」という、UCC創業者・上島忠雄の熱い思いが、1969年世界初のミルク入り缶コーヒーを誕生させました。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_MIRA_DATE",
+      "source_id": "HAMADA2021",
+      "raw_sha256": "a01bcaa015368e77b1a5c58ec093abf06a61bdae078322b3b43d3090531dcf7b",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        161
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 161,
+          "sha256": "826f3d86bb55d9d488791941594800a87d4f0ec9a74e1571988276a1c3b7c589",
+          "text": "その後、缶コーヒーの開発に取り組んで3年がかりで完成させ、1965年9月14日、日本橋三越本店で缶コーヒー「ミラ・コーヒー」を販売しました。1968年には資金不足で販売を中止、その後体調不良によりコーヒー店「ヨシタケ」を閉店。1980年逝去、三浦家跡地墓所に一族と共に眠ります。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_MIRA_MONTH",
+      "source_id": "SHIMANE_FIRST",
+      "raw_sha256": "280b7c1486d54d23b96e55dadff616f783bc2ca3b2c44fac29f28185ea142583",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        140,
+        141
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 140,
+          "sha256": "2dabb2dbdc624b44ba59d69e4a1e7017fd99611b332679d4dec01efe94c5bc20",
+          "text": "世界初の缶コーヒー"
+        },
+        {
+          "paragraph": 141,
+          "sha256": "74977143d148c4a2ba995cb3a641dd522dc1f077990250d6ae6e946758b18c84",
+          "text": "昭和40年9月に浜田市で誕生。戦前は東京銀座で「コーヒーを樂しむ會」を主宰していた三隅町出身の三浦義武が昭和26年に浜田市内でコーヒー専門店「ヨシタケ」を開店した後、世界初の缶コーヒー「mira(ミラ)」を完成・発売した。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_MIRA_PRODUCT",
+      "source_id": "CAN_INTERVIEW",
+      "raw_sha256": "63eaf7c0978932724a70b289f26c3a94cbd690c65065840962260b64184ccc36",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        96
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 96,
+          "sha256": "12443f927b3ccf203528077ed2933730e8a2aa9a4d97505bd02cb449b437d182",
+          "text": "今から50年前の1965（昭和40）年9月14日、三浦義武が開発した缶コーヒーが日本橋三越本店で販売された。商品は「ミウラ」（三浦）と「ミラクル」（奇跡）にかけて「ミラ・コーヒー」と名づけられた。砂糖が入ったミルクなし200g入り缶コーヒーで、販売価格は80円だった。売れ行きは上々で、評判も良かった。翌年3月からは関西地方を中心に百貨店や国鉄（現JR）の鉄道弘済会売店などで本格的に販売された。歴史地理学者で三浦義武研究の第一人者である安来市加納美術館・神英雄館長は次のように解説する。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_MIRA_MAKING",
+      "source_id": "CAN_INTERVIEW",
+      "raw_sha256": "63eaf7c0978932724a70b289f26c3a94cbd690c65065840962260b64184ccc36",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        99,
+        100
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 99,
+          "sha256": "596090aea10f1e0004e4aa58b325126e9b019477cf346f744653d7411676fd7a",
+          "text": "缶コーヒー開発は1963（昭和38）年にさかのぼる。三浦は地元の浜田缶詰に協力を仰ぎ、店で淹れるのと同じような味や香りが出せて濁りが出ないものにしようと、半年かけていくつもの試作品をつくった。その間、製缶メーカーの技術者に依頼して、特殊加工した腐食しにくいスチール缶が開発された。"
+        },
+        {
+          "paragraph": 100,
+          "sha256": "3b8cdef5e7a277fbfafd2575187cfb4746da88ca0e63755b21d696602bf53a11",
+          "text": "「製造は18歳の女性従業員が担当していました。夏の間は週3日間、店から数百メートル離れた作業場で大型ネルを使ってコーヒーを淹れ、それを牛乳樽に詰めて軽トラで缶詰工場に運び、一つひとつ缶に注いでいました。現在の缶コーヒー製造では考えられないことですが、当時誰も思いつかなかった独自の抽出方法で、店で提供しているのとまったく同じコーヒーを詰めていました。おいしくないはずはありません。そのため注文が殺到して製造が追いつかない状態でした」（神館長）"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_MIRA_LIMIT",
+      "source_id": "CAN_INTERVIEW",
+      "raw_sha256": "63eaf7c0978932724a70b289f26c3a94cbd690c65065840962260b64184ccc36",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        97,
+        101
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 97,
+          "sha256": "1c1233cd632a0cd29b30e1d21cbc4531cad6e699601d7b03428667a95d78072e",
+          "text": "「1950年代後半から相次いで缶コーヒーの試作・開発が行われました。しかし内容物の腐食、変質、異臭などでうまくいきませんでした。こうした問題を克服して、継続販売された商品はミラ・コーヒーが世界で初めてです。小説家・小島政二郎のエッセイにも商品を推薦する記述が見られます。当時、浜田市内で盛んだった缶詰の製造技術にヒントを得て製品化されたもので、半年後に開缶しても濁らず沈殿することはありませんでした」"
+        },
+        {
+          "paragraph": 101,
+          "sha256": "e9cf85c30ab6003dc6d86ded0ce15157cc011e47058d500fa62871e0928485dd",
+          "text": "しかし資金の調達などの問題からミラ・コーヒーは販売開始から3年で市場から姿を消した。その翌年の1969（昭和44）年4月、三浦義武がコーヒー豆の仕入先として長年取り引きしていた上島珈琲がミルク入り缶コーヒーを発売し、大阪万博で爆発的にヒットした。ここに現在の缶コーヒー市場の礎が形成されたのだ。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_HOMOGENIZE",
+      "source_id": "JNET2011",
+      "raw_sha256": "d4f16296a7320f71dbc2d473608d9c464d86b05db1b929be33984a6a6f187c8a",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        1121
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 1121,
+          "sha256": "3fc27b89cbcba9157bb1e580cb503ed4529e1ec4eff94d786efe14e2a71372e3",
+          "text": "例えば、ミルク成分の分離の問題。開発当初、コーヒーの抽出液とミルクを混合させて缶に封入しても、ミルクの成分が分離して缶の上部に浮いてしまった。どんなにうまく混合させたつもりでも、やはりミルク成分が分離してしまう。試行錯誤を繰り返した末、ようやくミルクの粒子を均質化することで分離を抑えるという手法にたどり着けた。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_HEAT_RATIO",
+      "source_id": "JNET2011",
+      "raw_sha256": "d4f16296a7320f71dbc2d473608d9c464d86b05db1b929be33984a6a6f187c8a",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        1122
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 1122,
+          "sha256": "25d2312d025dc1502c4cdef1aac5ecc1e72dcb17ab7e7457dd0f136e0ee96a40",
+          "text": "また、加熱殺菌による味の変化の問題にも悩まされた。缶入りコーヒーは長期保存のために高温殺菌しなければならないが、高温で処理すると加熱臭が付いてコーヒーの風味を損なってしまう。そのため数えきれないほどの試作品を飲み続け、加熱臭を残さないための原料（コーヒー、ミルク、砂糖）の成分比率を探し出した。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_TRAIN_DISPLAY",
+      "source_id": "JNET2011",
+      "raw_sha256": "d4f16296a7320f71dbc2d473608d9c464d86b05db1b929be33984a6a6f187c8a",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        1126
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 1126,
+          "sha256": "5f7aafd4eab4623c1ee59d322adbb3c21b27c1f399d49eff563456662fd69cb3",
+          "text": "これではだめだ、もっと一般消費者に知ってもらおう。意を決したUCCは全社を挙げて営業活動を繰り広げ、販売力の大きなキヨスクへの売込みに注力した。また、売店では営業マンが「UCC缶コーヒーください」と大声で指名買いする。そして買った缶コーヒーを列車の窓際になん本も並べて乗客の目に触れるようにした。しかし、そんな努力にもかかわらず、一般消費者への認知度は思うように上がらなかった。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_INITIAL_HOLES",
+      "source_id": "UCC2025",
+      "raw_sha256": "49619fe308ca3eb54f5585f5de4a788020d4cecfcc3f00ba291a8af6c5505656",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        189,
+        190,
+        191
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 189,
+          "sha256": "b2042a42356c4a530890fd9a3e0ea57dcf6428cb4fa098c31a6b95803df3348d",
+          "text": "・初代（1969年発売）"
+        },
+        {
+          "paragraph": 190,
+          "sha256": "7e478b862411cf012f6f97ed1e2404a89fcf8c1ecf221af2bd4fc88cf05d9b1c",
+          "text": "専用の穴開け用オープナーによって、飲み口（注ぎ口）の穴と空気穴の2カ所を開けて飲用"
+        },
+        {
+          "paragraph": 191,
+          "sha256": "480dd31d5977cee044cbd2d8e645adb28e45d31c4e7888b5257b8ff4f65ccb8c",
+          "text": "※初代缶はUCC神戸本社にて保管"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_1981",
+      "source_id": "UCC2025",
+      "raw_sha256": "49619fe308ca3eb54f5585f5de4a788020d4cecfcc3f00ba291a8af6c5505656",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        192,
+        193
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 192,
+          "sha256": "9e2aa318d73f0c940802ab0a2fa76d1db62ce293a31f29b55b6b9a42a863716e",
+          "text": "・3代目（1981年発売）"
+        },
+        {
+          "paragraph": 193,
+          "sha256": "dede8f6bd1b7a71956751f410621bbbb6c0088b55f03028a5007a85262cf3458",
+          "text": "タブと同時に蓋の一部が切り取られて外れるプルタブ式を導入。穴開け用オープナーは不要に"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_GENERATIONS",
+      "source_id": "UCC2025",
+      "raw_sha256": "49619fe308ca3eb54f5585f5de4a788020d4cecfcc3f00ba291a8af6c5505656",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        186
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 186,
+          "sha256": "97d43421584cf20e4774d293a2c94f986e94e7374d98664195b4d85e07d1f550",
+          "text": "左から、①1969年 ②1978年 ③1981年 ④1986年 ⑤1993年 ⑥2000年 ⑦2001年 ⑧2003年 ⑨2010年 ⑩2019年"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_COLD_BRANCH",
+      "source_id": "UCC2025",
+      "raw_sha256": "49619fe308ca3eb54f5585f5de4a788020d4cecfcc3f00ba291a8af6c5505656",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        167,
+        168,
+        169
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 167,
+          "sha256": "f9c60dded61629cdfe1965e3323a6b3d669049e8e0ed9f39d40facf2878aa019",
+          "text": "各パビリオンや飲食店へのセールスの結果、レギュラーコーヒー等の取引、納入も多数あり、当時缶コーヒーを製造していた大阪の工場に隣接する場所に「万博支店」と呼ばれる大阪北支店を開設しました。冷やした缶コーヒーもこの支店から、万博会場へ輸送していました。"
+        },
+        {
+          "paragraph": 168,
+          "sha256": "1f958e3532980e0e7ea41e97d3831bfd8f8aa5cdda558c7c034074ed6b145ea8",
+          "text": "夏場になると、ますます需要が高まり、工場をフル稼働させて生産しても追いつかない状態に。"
+        },
+        {
+          "paragraph": 169,
+          "sha256": "51f7d9be095008a5ed5626c4a5d12cca90556b949a31863882f48b762ae96820",
+          "text": "全国から集まっていた来場者が会場でミルクコーヒーを飲み、地元に帰り、その飲用体験を広めて、返り注文も増加しました。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_PROJECT_YEAR",
+      "source_id": "JNET2023",
+      "raw_sha256": "2e6950237d623148459a7ef38d270851f4b687bd564242a3aa7810ff0d9078fe",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        1119,
+        1125
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 1119,
+          "sha256": "79abec2041450d3f83f9af477704ceecc3e7a24477556a98e01dc2b73707e8d9",
+          "text": "世界初となる缶コーヒーの開発を始めたのは1968年ごろのことだ。上島氏自身が先頭に立って開発プロジェクトを立ち上げた。"
+        },
+        {
+          "paragraph": 1125,
+          "sha256": "7dfac33b4c674c591738b30d3305f72a5092f295813cdaddcb4cbca7b050efdc",
+          "text": "プロジェクトをスタートして商品化するまでの期間はおよそ1年。新商品の企画・開発に携わっている飲料マーケティング部部長の油谷仁敬氏は「今、開発に携わる立場にいる身からすると、世の中にないものをこれほどの短期間で生み出したのは、『ものすごい』の一言に尽きる」と当時に思いをはせた。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_COLD_TRUCKS",
+      "source_id": "JNET2023",
+      "raw_sha256": "2e6950237d623148459a7ef38d270851f4b687bd564242a3aa7810ff0d9078fe",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        1131
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 1131,
+          "sha256": "8589bbb16e657903e2822e054bf0a0933899074920c9eab94dced42780499640",
+          "text": "海外の出展国などはブースに喫茶店やレストランなどを併設することが多い。併設店とのつながりができれば、業務用コーヒーの販売拡大も期待できる。外食事業を展開する自社のノウハウも活用できる。コーヒー生産国のツテをたどり、出展国にアプローチをかけた。当時、缶コーヒーの製造工場が大阪府内にあった地の利を生かし、工場に隣接した場所に「万博支店」と呼ばれた大阪北支店を開設した。「強みを生かしてほぼすべての海外の出展ブースと取引を獲得することができた。そして、会場の売店に冷蔵した缶コーヒーをすぐに納入できるようセントラルキッチン方式で冷やした缶コーヒーを輸送するトラックを何台も用意した」と栄氏は説明する。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_TV",
+      "source_id": "JNET2023",
+      "raw_sha256": "2e6950237d623148459a7ef38d270851f4b687bd564242a3aa7810ff0d9078fe",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        1132,
+        1133,
+        1134
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 1132,
+          "sha256": "3e76c571ff055702062a25b1f7cceb5caacde502ff059554370ed1953401f593",
+          "text": "開幕すると、全国から訪れた来場者が、売店で販売されている缶コーヒーを物珍しそうに手にとった。その光景がテレビを通じて茶の間に映し出された。"
+        },
+        {
+          "paragraph": 1133,
+          "sha256": "3126f4165bac13552a88c8ef74f626bafe300bc089ae76cf436ecd3702717b09",
+          "text": "「あれは何？」"
+        },
+        {
+          "paragraph": 1134,
+          "sha256": "da140eef6601ffee0057dcb16bc7dacdd7ec82a8db2884369679605a2f7c7ce3",
+          "text": "やがて、取引先からの問い合わせや注文が会社に殺到した。発売当初、見向きもしてくれなかった取引先からも注文を受けた。「製造が追いつかず、『できたらすぐに運びたい』と工場に出荷待ちのトラックの列が何台もできたというエピソードが残っている」と油谷氏。今でいうところの「大バズり」になった。缶コーヒーの生産は一つの工場だけでは賄えず、全国に協力工場を拡大。缶コーヒーだけの成果ではないが、70～80億円だった売り上げは万博の翌年の決算で100億円を突破。社員は600人を超えた。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_QUEUE_PARTNERS",
+      "source_id": "JNET2023",
+      "raw_sha256": "2e6950237d623148459a7ef38d270851f4b687bd564242a3aa7810ff0d9078fe",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        1134
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 1134,
+          "sha256": "da140eef6601ffee0057dcb16bc7dacdd7ec82a8db2884369679605a2f7c7ce3",
+          "text": "やがて、取引先からの問い合わせや注文が会社に殺到した。発売当初、見向きもしてくれなかった取引先からも注文を受けた。「製造が追いつかず、『できたらすぐに運びたい』と工場に出荷待ちのトラックの列が何台もできたというエピソードが残っている」と油谷氏。今でいうところの「大バズり」になった。缶コーヒーの生産は一つの工場だけでは賄えず、全国に協力工場を拡大。缶コーヒーだけの成果ではないが、70～80億円だった売り上げは万博の翌年の決算で100億円を突破。社員は600人を超えた。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_CASES",
+      "source_id": "GUINNESS2019",
+      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        65,
+        66
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 65,
+          "sha256": "03bc82930c450a8fa639969632161308f95b8560e1dcf28be15a216f6769a657",
+          "text": "プロジェクトが始まってからおよそ1年。あらゆるハードルをクリアし、ついに1969年4月、ミルク入り缶コーヒーが誕生した。しかし発売当初はなかなか受け入れられなかった。"
+        },
+        {
+          "paragraph": 66,
+          "sha256": "d8cc6da1ce2a18000037510655ecb90b636da41377d015fbcff9b41cc0a49184",
+          "text": "最初は、コーヒー業界からも「缶コーヒーは邪道」と非難されました。しかし、一度飲んでいただいた皆様から「おいしいやないか、置いていけ」とご好評いただきました。最初は、飛び込みで食料品店に3ケースだけ置かせていただいて、次第に10ケース、30ケースと注文が増えてといった具合に、少しずつ販売が広がって行きました。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_RAIL",
+      "source_id": "GUINNESS2019",
+      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        68
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 68,
+          "sha256": "50e3d6eb0c126acc539ec37a6309223d0fb662d5acfed2294521ef33e432f2f3",
+          "text": "販売拡大の転機となったのは、大阪万博と鉄道弘済会（現KIOSK）での採用。万博会場や新幹線の売店等で多くの人々の目にとまり、また、お飲み下さった方がリピーターとなり、あっと言う間に全国に広がって……作っても作っても追いつかない状況が続きました。いやあ忙しかった（笑）"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_FACTORY2019",
+      "source_id": "GUINNESS2019",
+      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        50,
+        51
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 50,
+          "sha256": "5017d296451767e82baf5e986850c90651a5bb4d3c9e7c7a3451a392e7d04657",
+          "text": "大きな一室のスペースを埋める、背の高いタンクの数々……。ここは、UCC兵庫飲料工場の調合室だ。この場所で同社の長寿ブランド『UCC ミルクコーヒー』が製造されている。"
+        },
+        {
+          "paragraph": 51,
+          "sha256": "02de17c052d0eeb340ee29fda98de01e17cabeaf3148a755cfd99b1f9215b05f",
+          "text": "50年間ほぼ変わらない製法には、コーヒーメーカーとしての心意気を感じさせるこだわりが詰まっている。中央にある3基のタンクはコーヒー抽出機。隣の工場で焙煎されて間もないコーヒーが、すぐさまここで抽出される。焙煎した豆を粉砕、即抽出して缶コーヒーを作っているメーカーは他にはいないという。そして抽出機の左側には20,000リットルの調合タンクが3基あり、ここで抽出されたばかりのコーヒー、牛乳、砂糖などが混ぜ合わさる。『UCC ミルクコーヒー』の原材料は、分離を防ぐための乳化剤、粉乳を除いては、コーヒーと砂糖、牛乳のみ。香料は一切使っていない。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_EMULSIFIER2019",
+      "source_id": "GUINNESS2019",
+      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        51
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 51,
+          "sha256": "02de17c052d0eeb340ee29fda98de01e17cabeaf3148a755cfd99b1f9215b05f",
+          "text": "50年間ほぼ変わらない製法には、コーヒーメーカーとしての心意気を感じさせるこだわりが詰まっている。中央にある3基のタンクはコーヒー抽出機。隣の工場で焙煎されて間もないコーヒーが、すぐさまここで抽出される。焙煎した豆を粉砕、即抽出して缶コーヒーを作っているメーカーは他にはいないという。そして抽出機の左側には20,000リットルの調合タンクが3基あり、ここで抽出されたばかりのコーヒー、牛乳、砂糖などが混ぜ合わさる。『UCC ミルクコーヒー』の原材料は、分離を防ぐための乳化剤、粉乳を除いては、コーヒーと砂糖、牛乳のみ。香料は一切使っていない。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_LONGEST",
+      "source_id": "GUINNESS2019",
+      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        73
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 73,
+          "sha256": "de679745c9b4c3a9471db74fcf68d6eac31daa95f3e2b80900baa789fde5e0c8",
+          "text": "発売から50年、『UCC ミルクコーヒー』は、「缶コーヒーの最長寿ブランド｜Longest-selling ready-to-drink canned coffee brand – current」としてギネス世界記録に認定された。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_FORMULA_CHANGE",
+      "source_id": "GUINNESS2019",
+      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        80
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 80,
+          "sha256": "cdf1adf0380511fb1c0c8b877cb420e94cfeec73f779ec1f0049f9a1b214e619",
+          "text": "発売から50年。『UCC ミルクコーヒー』はパッケージや原材料の配合など、10回のマイナーチェンジを経ている。2019年4月1日にもリニューアルを行ったばかりだ。飲料開発部の担当課長、油谷仁敬（あぶらや・よしひろ）氏によると、今回のリニューアルではアラビカ豆100％を使用し、乳原料の配合を見直すことで、ミルク感を際立たせて、より飲みやすく改良したそうだ。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_1978_CONFLICT",
+      "source_id": "SSNP2019_TAB",
+      "raw_sha256": "09bd0e16d2fc1c4bc9cb28bc0b57495d454c5cac50b8f7d502f7eef00967d854",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        42
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 42,
+          "sha256": "30320b477470da1aa0adcd2d14d48252c3e116663d0e42fb278b735f3884f3e0",
+          "text": "パッケージの主な変遷は、初代(1969年～1977年)は、専用の穴開け用オープナーによって、飲み口(注ぎ口)の穴と空気穴の2カ所を開けて飲用するタイプだった。2代目(1978年～1980年)から、タブと同時に蓋(ふた)の一部が切り取られて外れるプルタブ式を導入し、穴開け用オープナーが不要になったという。5代目(1993年～1999年)は、パッケージに誕生年を記載、8代目(2003年～2009年)は茶・白・赤の3色をはっきりとデザインした。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_1933",
+      "source_id": "UCC_HISTORY",
+      "raw_sha256": "f271380e24b331126b5c3d0a29d5edb7f2e121188db4a620cf75aade681b8340",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        144,
+        145
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 144,
+          "sha256": "c8c817e80216ce409c63a735acdd40fb7b023bcca6e87b6fc89973c447b6a858",
+          "text": "1933"
+        },
+        {
+          "paragraph": 145,
+          "sha256": "6a44a52cbec6b6918b1af957ec3612a0671e30718e456f770fc42c636b112b38",
+          "text": "上島忠雄商店を創業。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_COMMERCIAL_CLAIM",
+      "source_id": "DAIWA_HISTORY",
+      "raw_sha256": "97277374ce4501eb96c20d76e37f70fd2f8a9ae1134fe98fbc8541696cb8ee18",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "paragraphs": [
+        30,
+        31
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 30,
+          "sha256": "b6ed3872ac23e2a5b4e49bae7f960a5c5ccb3064847204ec1cda87673d8f2e8a",
+          "text": "1969年（昭和44年）"
+        },
+        {
+          "paragraph": 31,
+          "sha256": "3ca62cb07d1f1e8a3a8e8038adc9e474573680bbae3c074a01c0fa5ccfc579ba",
+          "text": "世界で初めてコーヒー飲料缶の商業生産・販売を開始"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_MIRA_CITY_PDF",
+      "source_id": "HAMADA201609_PDF",
+      "raw_sha256": "f1ada732713267eb119861c72999adefc0e69d842ee948c53b45a013bee38e6e",
+      "used_by_candidate": false,
+      "status": "PASS",
+      "pdf_page": 3,
+      "original_pdf_reextracted_with_pdftotext": true,
+      "existing_page_render_visually_read": true,
+      "finding": "市刊圖說明示ミラ・コーヒーのレプリカ；另列銷售時海報。不是取得1965原罐或原海報。"
+    },
+    {
+      "anchor_id": "A_BOTTLE_MATERIAL",
+      "source_id": "GUINNESS2019",
+      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        57
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 57,
+          "sha256": "dfce4ca46ed36019e2e9c626a8096e409bc3dec5e0f25848f64fd5af355ad501",
+          "text": "瓶の欠点は飲み残しだけではなかった。瓶は重く、割れると危険だ。当時は線路や、列車内で捨てる人もいたため、ゴミの問題になったり、ガラスの破片で怪我をした人が出たりしたそうだ。"
+        }
+      ]
+    },
+    {
+      "anchor_id": "A_EXPO_PREP",
+      "source_id": "JNET2023",
+      "raw_sha256": "2e6950237d623148459a7ef38d270851f4b687bd564242a3aa7810ff0d9078fe",
+      "used_by_candidate": true,
+      "status": "PASS",
+      "paragraphs": [
+        1130
+      ],
+      "independently_extracted_original_html_contains_full_passages": true,
+      "passages": [
+        {
+          "paragraph": 1130,
+          "sha256": "2245cf6af69b302161752060c4c1982aac7c0a27e21f8eea11502c89a8896b5b",
+          "text": "日本初の万国博覧会。情報が少なかった時代で、当時、社内では「来場者もせいぜい10万人くらい」というイメージだったそうだ。だが、当時の役員が海外視察すると、それどころの規模ではないことが分かってきた。「大阪万博を販売戦略の一つとして検討してみよう」と力を入れることになった。"
+        }
+      ]
+    }
+  ],
+  "research_claim_reviews": [
+    {
+      "id": "R01",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_BOTTLE"
+      ],
+      "used_by_candidate": true,
+      "note": "品牌後來回顧，非當天紀錄；現稿保留歸屬。"
+    },
+    {
+      "id": "R02",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_UCC_MONTH"
+      ],
+      "used_by_candidate": true,
+      "note": "1969年4月品牌上市；不證無條件全球第一。"
+    },
+    {
+      "id": "R03",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_MIRA_DATE",
+        "A_MIRA_MONTH"
+      ],
+      "used_by_candidate": true,
+      "note": "市府明載日期地點；只證有限早例。"
+    },
+    {
+      "id": "R04",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_MIRA_PRODUCT"
+      ],
+      "used_by_candidate": true,
+      "note": "產業訪談明載加糖、無奶、200g；不是原罐化驗。"
+    },
+    {
+      "id": "R05",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_MUSEUM_MILK"
+      ],
+      "used_by_candidate": true,
+      "note": "館方自己的含奶世界首主張；不完成全球優先權排除。"
+    },
+    {
+      "id": "R06",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_PROJECT_YEAR"
+      ],
+      "used_by_candidate": true,
+      "note": "約1968、約一年均見採訪；分開事件年與2023報導年。"
+    },
+    {
+      "id": "R07",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_THREE_OBSTACLES"
+      ],
+      "used_by_candidate": true,
+      "note": "三種難題有據；章節先後不等於實驗先後，塗層非萬能處置。"
+    },
+    {
+      "id": "R08",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "used_by_candidate": true,
+      "note": "J-Net2011有均質化抑制分離，缺操作參數；現稿未補。"
+    },
+    {
+      "id": "R09",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "used_by_candidate": true,
+      "note": "J-Net2011有試飲尋找比率，缺配方與試喝人數；現稿未補。"
+    },
+    {
+      "id": "R10",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "used_by_candidate": true,
+      "note": "原廠自述特殊內塗層及製罐公司合作，沒有同期專利或合作廠名。"
+    },
+    {
+      "id": "R11",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "used_by_candidate": true,
+      "note": "1969初代、兩孔、神戶保管、獨立開孔器均由原文及照片支持。"
+    },
+    {
+      "id": "R12",
+      "status": "CONFLICT_CONFIRMED_NO_FIRST_YEAR_APPROVED",
+      "anchor_ids": [
+        "A_1981",
+        "A_GENERATIONS",
+        "A_1978_CONFLICT"
+      ],
+      "used_by_candidate": false,
+      "note": "1978/1981拉環導入衝突成立；未解首用年，現稿未採該斷言。"
+    },
+    {
+      "id": "R13",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "used_by_candidate": true,
+      "note": "受訪者3→10→30箱回憶可有歸屬使用，非樣本統計。"
+    },
+    {
+      "id": "R14",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "used_by_candidate": true,
+      "note": "車站指名購買/列車窗邊展示有據；現稿不補對話或車次。"
+    },
+    {
+      "id": "R15",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "used_by_candidate": true,
+      "note": "萬博支店、冷罐、卡車輸送有據，無精確車數、溫度、路線。"
+    },
+    {
+      "id": "R16",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_TV"
+      ],
+      "used_by_candidate": true,
+      "note": "電視場景及訂單是2023採訪回顧；無當年電視節目實物或獨立因果測量。"
+    },
+    {
+      "id": "R17",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "used_by_candidate": true,
+      "note": "出貨等待與協力工廠擴大有據，無當年產能或全公司收入因果量測。"
+    },
+    {
+      "id": "R18",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_RAIL"
+      ],
+      "used_by_candidate": true,
+      "note": "鐵道弘濟會採用有據，不證所有站點或自販機首創。"
+    },
+    {
+      "id": "R19",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_FACTORY2019"
+      ],
+      "used_by_candidate": false,
+      "note": "2019兵庫工廠及設備有據；未用於本稿，也不能倒寫1969。"
+    },
+    {
+      "id": "R20",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_EMULSIFIER2019",
+        "A_FORMULA_CHANGE"
+      ],
+      "used_by_candidate": false,
+      "note": "2019乳化劑及配方調整有據；未用於本稿，不能倒推初代配方。"
+    },
+    {
+      "id": "R21",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_LONGEST"
+      ],
+      "used_by_candidate": false,
+      "note": "Guinness是仍在販售最長壽品牌，非發明第一罐認證；本稿只用其採訪。"
+    },
+    {
+      "id": "R22",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_MIRA_CITY_PDF"
+      ],
+      "used_by_candidate": false,
+      "note": "親讀原PDF p3及圖像：罐圖明標replica；非取得1965原罐或原始印刷海報。"
+    },
+    {
+      "id": "R23",
+      "status": "SUPPORTED_WITH_STATED_LIMITS",
+      "anchor_ids": [
+        "A_COMMERCIAL_CLAIM"
+      ],
+      "used_by_candidate": false,
+      "note": "大和自稱1969商業生產，1994原PDF全文無UCC/上島；不能命名為本稿合作公司。"
+    }
+  ],
+  "supplemental_direct_context": [
+    {
+      "source_id": "UCC2025",
+      "paragraphs": [
+        164,
+        165
+      ],
+      "uses": [
+        "c11r1s01",
+        "c11r1s06"
+      ],
+      "finding": "原廠回顧有指名購買/帶上列車與1970三月大阪萬博；補讀現有來源中冷卻錨點之外的直接上下文。"
+    },
+    {
+      "source_id": "UCC2025",
+      "raw_html_image": "i2rab100000005bh-img/banpaku.jpg",
+      "photo_sha256": "eee9768a78de577250455478b40c62defaa29624656bf15999215150b3f97191",
+      "uses": [
+        "c11r1s14"
+      ],
+      "finding": "原HTML將照片置於大阪萬博段落並寫画像は当時の様子；實圖中可見持飲奶咖罐。不是當年影片，也非今天生成畫面。"
+    },
+    {
+      "source_id": "JNET2023",
+      "paragraphs": [
+        1108,
+        1112,
+        1113
+      ],
+      "uses": [
+        "c11r1o11",
+        "c11r1s07"
+      ],
+      "finding": "採訪發表2023-11-02，栄秀文兼任UCC館長；開發約1968、物流1970是回顧事件年。"
+    }
+  ],
+  "exclusions_and_unresolved_originals": [
+    {
+      "source_id": "JSDA_HISTORY",
+      "finding": "實檔為403 Forbidden，261 bytes；排除史實支持。"
+    },
+    {
+      "source_id": "NIHON2005_PDF",
+      "finding": "原掃描PDF重抽僅23字元；未據此聲稱1958已實售。"
+    },
+    {
+      "source_id": "ONOMICHI2013_PDF",
+      "finding": "親讀原PDF p9腳註只為二手更早線索；沒有1958原報導，不核准全球優先權。"
+    },
+    {
+      "source_id": "NDL_CANFLAVOR1994",
+      "finding": "另份PDF文字重抽僅6字元；不把它算為獨立UCC技術證據。可讀原篇CANFLAVOR1994只作一般1994技術界線。"
+    },
+    {
+      "source_id": "UCC1970_EXPO_ACTUAL",
+      "finding": "實看是山坡農園彩虹，非萬博；不用。"
+    },
+    {
+      "source_id": "UCC_PACKAGE_PHOTO",
+      "finding": "實看是現代紙盒產品，非初代罐；不用。"
+    },
+    {
+      "source_id": "UCC_EXPO_PHOTO",
+      "finding": "實看是歷代罐對照，檔名不是萬博圖說。只作版本形制參照。"
+    },
+    {
+      "source_id": "MIRA_PHOTO",
+      "finding": "實看是人物介紹板；非Mira原罐。"
+    },
+    {
+      "source_id": "MIRA_POSTER_PHOTO",
+      "finding": "實看是現代受訪三人合照；非Mira銷售海報。"
+    },
+    {
+      "source_id": "UCC2025/SSNP2019_TAB",
+      "finding": "第三代1981與第二代1978拉環導入相互衝突。現稿只限初代需工具；無首用年核准。"
+    }
+  ],
+  "line_reviews": [
+    {
+      "id": "c11r1h01",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "3cae8f2d573f1751ace4ccc5c098731af5f5f94bcbae232db6ed75ae81024f33",
+      "result": "CONFIRMED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "5a463a54301fc1484a8cd47d448a99fc539ff2b8efee1e4bac62b38a4c49bd46",
+      "note": "原廠初代說明明列飲口與空氣孔兩處；數字有據。"
+    },
+    {
+      "id": "c11r1h02",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "b0e70a41b8855eaf919a881650282860333698d2e444bbe2abd0218ccedc493d",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "9c20fc349487cc1fcba8d129007d57e0625d19d0afa59f34c3bcdd9743d0a33f",
+      "note": "UCC2025 p189–191明列1969初代及神戶本社保管；已親看初代罐頂照片，獨立開孔器確置其上。不宣稱親訪或今天開保存罐。"
+    },
+    {
+      "id": "c11r1h03",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "f974f4dda165f9c349cd4f8383cc2561ecc832711e31514a98a6664b66ddf65a",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4fa4895b699a45ed011aa757b5533cf59b0f542f7fcfaf8e92c49ae7fde894fe",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1h04",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "99ccf8205fe531cc5f3346cbc6570ce14236bd6140adf12a39aa36fc9bcabde7",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07",
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES",
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2026",
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "8af8cff52c9f4a9a10be97009abf871f05655b8eb5890381bc848eaf5c959df2",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1h05",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "500da5324f06059337ee69847b7d65fa6390f73ecf921dcde7f43ba4cf22997a",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R06",
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_PROJECT_YEAR",
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "JNET2023",
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c2a5174c0814668088e8ce5bce1926ee2924d81311d532d5cb53443f9ceb1815",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1h06",
+      "chapter": "罐子帶走了，工具卻還得跟上",
+      "text_sha256": "2f0b91d43804cf74c663852c794dd439a7e36da404077fbb483178def0da617b",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01",
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE",
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2026",
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "0160dcbac297a51e28df53fa93529f2eddfd5b45c574273dc9386f018f2bcf34",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1o01",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "d165ca19f904fcf6e8e2786f9f6268e23aea8a87f7ff68f8b78efc28de3abd28",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4acd34d582a8edbfc7100fa8f98a83401e7cde22c4baa2ba4608412f5f670112",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1o02",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "5fbc15ec59dd2dcd6f398201538b6271c32b0dcb8c4d9195dc43f87749ef813d",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "ec4bd9ec6484ad75acce27070915cb08a35b493e577575c2d39c453b9e4926d9",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1o03",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "3f827a18820efc547f9536561f8483c98b621d43dcc15d78c6ca0693c9a9ddd8",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "f2d00ac9dbde37bb3f4b0f1fa6ef4fbfea448d152afe6d01ac6d079fd2527398",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1o04",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "f76685820aa875600a92877556028e3a946c2ff5b85a52d51359fe18d1ca2528",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_BOTTLE_MATERIAL"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "f0b2749bba290cf9bfc606e4cbbb81d8eb937b2e125d1ec7ea596135d463ea8b",
+      "note": "Guinness p52–58整體為上島達司訪談與記者敘述；瓶重與破碎危險見p57，旁白沒有偽作逐字引言。"
+    },
+    {
+      "id": "c11r1o05",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "90fd857c7400744b144c0ecb92d4c982f80e1bb2d14c8b13f40930c972ee5370",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "94d072e0bdb7ed1f38bc937ba21c4b5dff789abd60416432941fe36be583e5b5",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1o06",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "eb30fe2d4f965173a00564b630729b303268c8e021117a7607446d8edc03e44f",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R01",
+        "R03"
+      ],
+      "anchor_ids": [
+        "A_BOTTLE",
+        "A_MIRA_DATE",
+        "A_MIRA_MONTH"
+      ],
+      "source_ids": [
+        "UCC2026",
+        "HAMADA2021",
+        "SHIMANE_FIRST"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "f15f96b4bd03710f6721364858a6a54aeee85d8258ee50d6c3530880c050a026",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1o07",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "7fe6ec7c055fdc550cc649fe56c6f431b0f90035562dcd246339dbb8cc4319ac",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R03"
+      ],
+      "anchor_ids": [
+        "A_MIRA_DATE",
+        "A_MIRA_MONTH"
+      ],
+      "source_ids": [
+        "HAMADA2021",
+        "SHIMANE_FIRST"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c1812f1f6a1be6c2c5b72dd4a934caa787e55eaae43b49a43acd886f593007ff",
+      "note": "濱田市p161明列1965-09-14、日本橋三越本店；縣府只補月份，不證全球最早。"
+    },
+    {
+      "id": "c11r1o08",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "4ffd76d7be3a3c762a8014aabbfc5bad05333ec1a98721bd5c6c5b9c33628b4b",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R04",
+        "R07"
+      ],
+      "anchor_ids": [
+        "A_MIRA_PRODUCT",
+        "A_THREE_OBSTACLES"
+      ],
+      "source_ids": [
+        "CAN_INTERVIEW",
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "34c327483ded139b0f91ee001db286a1f6f15468417ff10c7d475890618d7824",
+      "note": "產協p96明文砂糖が入ったミルクなし200g；主句保留後來產業訪談歸屬，不把牛乳樽當配方。"
+    },
+    {
+      "id": "c11r1o09",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "37922f01f72ce7a8d784cdc9e091dabfc9e172aeebfdbdb771f577fc8adfae60",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R05"
+      ],
+      "anchor_ids": [
+        "A_MUSEUM_MILK"
+      ],
+      "source_ids": [
+        "UCC_MUSEUM"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "8f024e9ce6b804c2aa7e46d52576ce3556a8e95fef11cef3dad25831f8f62c05",
+      "note": "博物館p6含ミルク入り限定；此句明確是館方自家商品主張，未獨立授予世界優先權。"
+    },
+    {
+      "id": "c11r1o10",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "0fa8d554afd6e250059b33793dc53775e4feb921553638925d745cb5f4b8cfba",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "24a92bbb733ecde3f0874e96a33c11aad09b49b0174046b0c75181bc7506ca9c",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1o11",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "903eb95e7c9617206b2bc5c40dc9c38af623c81c59675adb2b22a6dfd0afb93c",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R06"
+      ],
+      "anchor_ids": [
+        "A_PROJECT_YEAR"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "d618bb1818767303c19d6cae7fc669d64ab92befac78eae6ca77832c682b53de",
+      "note": "J-Net2023 p1113介紹栄秀文兼任館長，p1119約1968、p1125約一年；不是2023才開發或同期啟案原件。"
+    },
+    {
+      "id": "c11r1o12",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "cad6744952dcbe688dc4331e4f3e023d78ee19495a4e9660166594cc50cc51f2",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c5a4b96971f86643cf83e020273dce8000cf10c4c462c6f948b34b1d804ab18c",
+      "note": "你若站在明示想像位置；原創匿名概念，未添當事人證詞。"
+    },
+    {
+      "id": "c11r1o13",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "2ba33a54f3db63167a49096886de6d9ddec875eb9453ccb3767dae18dbe31b82",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "32ee0a30af73520d3b6a6f8aeb867faaa8f1775a54b74594baf00dd5726a8693",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1o14",
+      "chapter": "瓶子交回去，奶咖得另找出口",
+      "text_sha256": "1ea8de851064e45d77fd312ad68a42f34534bb190ca874b29abb5724ad64a4d2",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "6ee1fd99855a38afee2993dc4559a0045174397959ef95c605a4bd3cde3fa2db",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1t01",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "8f7258d60b4cbbfde9738be84b4a31b8cdcf40a0931e9105c3ca81e8cf24b7a9",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "9f64bd847644a8d26c45e2bc891a0c363161e2e28bf9493807aeff90fe21dd06",
+      "note": "J-Net2011 p1121原文為混合封罐後分離、上浮；非推測熱殺菌造成此現象。"
+    },
+    {
+      "id": "c11r1t02",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "0b7ed8d2024892117a857b4fa81abb10255ccfd3f34402b68a477917a08dfa0c",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "48b3402dfff031e9ecbc4eed65239aad7d9bf7861b5199fc0aac4cc2da0a9d03",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1t03",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "2071e3c75de004f16822ef7e6923f864207f1d019efe0647b935b548c2029659",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "1d4111a4f8dc2f34a623ff22e9d9c0eab4008d825dc3897dacd2631545d1eba7",
+      "note": "原文どんなにうまく混合させたつもりでも仍分離；沒有新增實驗輪數。"
+    },
+    {
+      "id": "c11r1t04",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "24ebff573b6bac940c10e94e13eadc5c1d4e6565afd55fab7a070d6667d31983",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4449f40fed23c38a67e9245adbe4fa75a2ceb27c92ceb95d178ef3920bef75d2",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1t05",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "df6aade0dff32e97da78fe7d23c0e04cfb94f7245776313989f9c87d83e491bf",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "f059d10cfbd1796ec5a5ed6d8149ffbf58225ae1c0e2b4541572f881ad6015a6",
+      "note": "原文均質化以抑制分離；沒有補壓力、粒徑、設備型號或首用權。"
+    },
+    {
+      "id": "c11r1t06",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "a66b5ebc0d5d8aba1627cdc2c38e39358064c46fa41858533d29ab42dc968419",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "448dfb51ce33747acb46a47d18d354ece81fbf99b12df98210380365578373c1",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1t07",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "f6776549eb2c7c7c1e0ea632c38ead747c0465db8a4258ba0c39414efd2ad4b0",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "0b12d9c7d363b407e4adeeb9682776306e634766ade69394033e4a42f314a42c",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1t08",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "bfffd686970c1a0fd3555e2cd18c5fd69deef81bf097e9e4104377a959722edd",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08",
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE",
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "a2585b595a143a2a42682e1bfbe54d20410ada3e65ddfb4a81c999246be3310b",
+      "note": "承接t05抑制分離的設問；不是獨立的零分離測定或保證。"
+    },
+    {
+      "id": "c11r1t09",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "55434bf5421fa54cf9b08e77d81049a781520e8fc0cdd9bb326244e2af913fa6",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R07",
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES",
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "UCC2026",
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "cec6d7ca88e904ba15e4489b59df084a907e5315144622c907c989331193e6c5",
+      "note": "原廠有高熱殺菌走味，J-Net2011 p1122補加熱臭；熱與氣味因果只限來源有寫部分。"
+    },
+    {
+      "id": "c11r1t10",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "434049173d4a5793ed308c45792de6fb2bd9efb7d624c24ec5e7b7e29427899f",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "ba25fde138286cddb200927b8b9fe51741b6a5172f1a029a9122e8830b036936",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1t11",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "634b94d6dd988675d8fe76a60923be262b29a129c370497daf78d057e0398e25",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "6b56cd8cb911fe084b36df0c610dc5613089a8509fa70d35632effc9fbeaf147",
+      "note": "桌邊加奶是明顯日常類比，未冒作原廠試喝程序。"
+    },
+    {
+      "id": "c11r1t12",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "1112a8948084fb9a4194a3e7048db9bb5f6ae52d888ff0cf77ca7af3c233980c",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "57daf79316fc6fab6f7869b4102917cbd31830382d357781888663abc0e248bc",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1t13",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "0083d7a5928c88f71aecc85f0b056a06a26a768c3e242b19d267081fe109c6b3",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "92b85e095cb9b4fc09729676d4984788662044281c597bbaa0e051f0e77cf0ad",
+      "note": "J-Net2011 p1122持續試喝並尋找咖啡、奶、糖比率；沒有捏造比例、原試喝人數、溫度或測定標準。"
+    },
+    {
+      "id": "c11r1t14",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "737f2d1b44c81e0bf3c87928a3f8ab4d631a983c980ae5a1a3e41fb02d28d51d",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R09"
+      ],
+      "anchor_ids": [
+        "A_HEAT_RATIO"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "54cd6b7890a63cefd359838f2db38efac3addebe1d48798167d8da23f061ba74",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1t16",
+      "chapter": "混得進去，還得留在一起",
+      "text_sha256": "2155a519185f6bf42c57282e2eab225089e02eced8b1205e815d7fab87bc0e67",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "678ee341c2fa9c8723d32925a3bbc7ba939ce83bb38f7956e24a8c9477996344",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1w01",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "30b44ee558beaf60dca2b935dae3b486fe1adf6ffe88f7790f69d7666edfaf21",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "080b98ef13658d1f906fd8695ac640749f91c3c9a5863aec2f5c2a7ea1b19f56",
+      "note": "鐵離子與咖啡成分反應保留UCC後來說歸屬。"
+    },
+    {
+      "id": "c11r1w02",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "b9b1b4e7e5f24daf96b038fe95700ac7c93ceba4d8ca91b5528a8a0244599e36",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "3e867175404ebc6d2297b5b92ede86a5376e4728bb3c17c6426724386154dbbf",
+      "note": "單寧為原廠的用語；以原廠把成分寫作表明來源，沒有獨立化學定性。"
+    },
+    {
+      "id": "c11r1w03",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "e62025584e5269002ac82bb892d694e095a79d59551230d9934b96401d24130c",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "bcea256feeec123a156607e6a29c2f5483db543defd1580dcb8291b6b6b88208",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1w04",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "181ec4236b6f2dc2e27bff92d3540f63f2d204a78c415af9e3c15181c7235d1d",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c62dc6fe7482e3d2df1159dfbb74412bdf3a46e7e24046c7f401289daf2576da",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1w05",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "a9eea7a2b2128775dc205c5079d5270135124ded5922e5ab6d38f8b0e3b39ef4",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c0e76d4333b4d8bd6a11fb36d9762f218cc73a77aa2242ead55c4004a6e829c6",
+      "note": "原廠明說與製罐公司開發內部特殊塗層；沒有命名大和、專利或首次技術。"
+    },
+    {
+      "id": "c11r1w06",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "17d0f676e55b56b1c4a84e56a9218648d7a80c015315dac15f365cc235be0fb6",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "dd0199af3c69ab0088d18c34eacc63232ece4e7cf7358cec17dc6595e29011d0",
+      "note": "塗層作為罐壁隔離的有限說明；未宣稱內塗層同時解決分離與加熱臭。"
+    },
+    {
+      "id": "c11r1w07",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "bc052964c5562ff6adf6621ae9418d09141e00ff647026c1ded3dc33ba3d4311",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R10"
+      ],
+      "anchor_ids": [
+        "A_COATING"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "d16862de11c4a53b876b6d73bee19eb8f2f7f990491a5fa4ad060f17255e0d68",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1w08",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "f8ac79cbbe10f4451a1f8818e3f1a46cb7c7ac254964f9d34d5bd339546eba69",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R02",
+        "R06"
+      ],
+      "anchor_ids": [
+        "A_UCC_MONTH",
+        "A_PROJECT_YEAR"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4eb79251743cd11885edf2f679e9c01dc47bf0c178138b16a03b75475cdf7385",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1w09",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "99bc371f7c8c95360a6fad70aac97c56e6dc633ae3078a1c639c0f7bc8dc7ac6",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R02",
+        "R06"
+      ],
+      "anchor_ids": [
+        "A_UCC_MONTH",
+        "A_PROJECT_YEAR"
+      ],
+      "source_ids": [
+        "UCC2025_REPRO",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "1b4cb174598bb10394e93d62afc749e8119643f790faafa5ae2f2ea82dd853a8",
+      "note": "1969四月上市與約一年研發各有原文；前後順序是敘事安排，沒有虛構三障礙發現日誌。"
+    },
+    {
+      "id": "c11r1w10",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "c36e59f4e8f449639c690de9690302b7294299d225df9d25d67d2b0224ff92e0",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "dbe0ef69026595185dedfb3402d82d5cc4585df21dad61db1fd17003981508d3",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1w11",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "606ffc7c35612f542173f7816f35cc37301adb5e414ef7e5540aceba678ec3d9",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "44ee1757cc7be38c107d164e92affe716cc26d91b511507b0b8756f25567fc49",
+      "note": "Guinness訪談p66有業界邪道回憶；沒有把匿名批評者配成具名台詞。"
+    },
+    {
+      "id": "c11r1w12",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "8439502d508ce821b5a52f00bde060a97a0f6b388c37ab59b4534c8f8e7770d6",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "0f2d4b9dc30846981f020df72f086b9ab27a2a783366c5463f2ff7562a41646a",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1w17",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "d7af3f108d97ba647e0530a239577a59ba76151967f5fba2b61f9928b3d1a765",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "52d7ebc5cbc6fa5c4f173b1cfc962142025a379e59d23404dfd7380a0f23191c",
+      "note": "同一p66記述喝過後願意留下商品；保留受訪者說歸屬，不另造顧客原話。"
+    },
+    {
+      "id": "c11r1w13",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "199e9a75951170f803017a18df68e8ef589d380dc10126c7679112c29903a3d1",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "383ad2b1e23d1b3a31591c51c24057b1b493955b6dd1c9777c0e884940ee9226",
+      "note": "p66明列食品店先試放3ケース；只限受訪者記憶，非全店統計。"
+    },
+    {
+      "id": "c11r1w14",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "197ca4cb76e37ed3b00ecffffe3840e8bec6c1a0b22363a3ae31ab394eaa2b33",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "55623867ffa7277de03ceaa1e4cbf686bf96a1c91ac516947468ddb800634db4",
+      "note": "p66明列逐漸10ケース、30ケース；不推算增長率或公司總銷量。"
+    },
+    {
+      "id": "c11r1w15",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "9dddd74772068e41cc5f4f2fb41f9abec576f7a624ee1a483232757beb715a86",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R13"
+      ],
+      "anchor_ids": [
+        "A_CASES"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "051c1470d3c756a0322e2ca58cf885438419c891c8672263c74712f03dfddd77",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1w16",
+      "chapter": "罐壁加入了這杯咖啡",
+      "text_sha256": "713f2de0b0a923892e3f780b4fff7cfa56aff56b74910780316dd9350f0d88dc",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "36a48c086dd3f10cd75812fd35654f6c903ffdca45a1408b44d39b22c4a64867",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1s01",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "1dcd6c66feddf8b285bd6bfe440adf5187fea521cc869c14ab122744a591b247",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "11ec28794843b678ed8b0871e1e019a7fe2235ad1aa9d65b505e1aa6fe75592e",
+      "note": "J-Net2011 p1126的公司營業做法，UCC2025 p164原廠回顧亦直接支持大聲指名購買與帶上列車。"
+    },
+    {
+      "id": "c11r1s02",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "c989b960004461dfe8a19eb4343332e8079258a8529adf97b8dc7e125abceffa",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "3922ac09c9080db73a1b8796d87d8f57e694518dfb36b4c44222b1487a308f04",
+      "note": "p1126罐排窗邊讓乘客看見；無編顧客對話、車次或反應結果。"
+    },
+    {
+      "id": "c11r1s03",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "82a1d7932be4327f1b385d41c21cb3182f4a3e8b83e95daf9847f914872ff214",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "e65fe803d90642935e449fc1a6531e357796981c2dd651d76eaa80bb65f433b5",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1s04",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "7afb6d24f93b644a9ea0dc0b88443fe8b0fa91a97f9f7a520b7341d92e6d00d3",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY"
+      ],
+      "source_ids": [
+        "JNET2011"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "bbed147e55e424db3937a1417f5f33edacc37898aa6459a9b7eac7ea639e6fc8",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1s05",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "6b81ea578d61f7a673ed3806fc4f933bc57bc78dd939c0c3a98ef2acdc4af32d",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R14",
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_TRAIN_DISPLAY",
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "JNET2011",
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "13f70bc26026075b8cf81cded3dd853082bab022bb3042d8986947b71d44f76b",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1s19",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "86de80e3f0d6ec4f4c12ce2ec665893a3df8f963a7d3701f8109ec5ceb841168",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_EXPO_PREP"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "522fe97b5615f6db48c89062f8a31aa51f053121207cfb134c570a7cd15b0e33",
+      "note": "J-Net2023 p1130採訪報導所載事前認知限制。"
+    },
+    {
+      "id": "c11r1s20",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "fc8fd1b81fa67cbd9a54dbb820c5b3baaa9fda81a726b14d246f02f9509e613d",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_EXPO_PREP"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "cdd7a025e40c83221889ea97de50f0900fb755c4b9e5b0dbe3dcc9051e2bf2b8",
+      "note": "十萬只是公司內部當時想像；並非實際參觀人數，未據此推導銷量。"
+    },
+    {
+      "id": "c11r1s21",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "bcadf4ddb5aa7b476ca84077e13f11366171e35d8de693cd2c70060ffe6851ee",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_EXPO_PREP"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "09beb11c315160bf6af8760424dd2439da6012c72cdddf3d668fb1784bc0c0d5",
+      "note": "原文役員海外視察後將大阪萬博納入銷售策略；未補視察國家、展名、行程或當事人心理。"
+    },
+    {
+      "id": "c11r1s06",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "aca47737e0ef79395e6534f1621f276dcaa5bd18b2b0591be92695a184109cfd",
+      "result": "CONFIRMED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "3aefc5785022b7dabf726c3f63d9e6e7ee62faeee33ddb22daaa364f8d8eac80",
+      "note": "1970三月見UCC2025原HTML p165及UCC2025_REPRO p188；本輪直接補讀鄰近上下文，不只信列入的冷卻錨點。"
+    },
+    {
+      "id": "c11r1s07",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "939435c02284810e3eb1ba7b5da5dafc2ae0b871a3c44a2a52df6cf7247eb20f",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "ff89ecb63974ad29abfac6f9f014f8a17abf4a5fedbf9366fa8d15f1200b6c43",
+      "note": "p1131報導咖啡生產國聯繫及接觸參展國；不把ほぼすべて改成全部。"
+    },
+    {
+      "id": "c11r1s08",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "e3b7d927ae6eac6274571206b84b95978cb1109395ecc942092f48fc3afb42cb",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "b68cb9d4707d6070e00ae73e78695f5b99c89695287eb5dd3016d5af4176f523",
+      "note": "p1131展館附設餐飲與既有咖啡事業支援；未把常規咖啡供貨全算奶咖罐銷量。"
+    },
+    {
+      "id": "c11r1s09",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "edf5de351bbee5e280e44d27af988e8865e0d82c23bd7944804c71183b6ba21f",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "e70d25d0d66f5166e41964a1c0d43399d12b9890a96c9ed4862b9c134d2ff504",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1s10",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "6746449e9dc25ec58b1b16ed1f24bf85ad031559c90c49d7e4d7301e542b2582",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "0c4daadf5985df83b5ac27d067476a71b9b109c73ba540217193af2e5ebdde86",
+      "note": "原廠p167與採訪p1131一致：大阪製造工廠旁大阪北支店，稱萬博支店。"
+    },
+    {
+      "id": "c11r1s11",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "e33d75e23a68ad4fb893c78cc7660a1faa3095a7f64bcbdb045971b50da34cc2",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "d34ed3aa0f1c0e0ae24faf1ab7afc71b9d4c47e46df4a3d9344095aaefe36b4e",
+      "note": "原廠冷罐自支店輸送，採訪補中央冷卻與多台卡車；未稱冷藏車型、溫度、班次、路線或冰塊。"
+    },
+    {
+      "id": "c11r1s12",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "3a82b72ad6dc1005751ce74b0573d328a3e32c9abb1b6e82f15a3e6d14efcc6f",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "da7ef4c1bd0c7a92b6cfaf4697c9e616638d14050d9cfbdf3756b2d51ebadb39",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1s13",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "c5f0be5ed5e142a4c10abbffe2140792a8b270f9127b1d64ebbedf144850bcc2",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15",
+        "R16"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS",
+        "A_TV"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "72d6f7c1a5015a114f99a3cf336d3e1377801de13ecbb6209141e6736e98793f",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1s14",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "b66a6cdb5e7150832b7bbfe9ad6f04af111fc44163904d02cae6e7b6a8a27398",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "03b8d3aae577ab4cc90d34ac81c761116e182140a89db4e24f5cbff9d9eba1bb",
+      "note": "已親看原廠原始banpaku.jpg，確有來客持飲奶咖罐；原HTML明註画像は当時の様子。照片本身與現稿匿名概念圖分開，不將後來整理頁當1970即時實錄。"
+    },
+    {
+      "id": "c11r1s15",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "49a2c9b3a96d1e62cf17e6ae16080a9688415b3f5a503ec81590b6dad1fccfd2",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "34282b876c18e0490f3e02992e9876f4b57df2e3d9130d5535b1ae0bb81f2969",
+      "note": "UCC2025 p169有返鄉傳播飲用經驗；此段承接原廠回顧，無特定旅客證言。"
+    },
+    {
+      "id": "c11r1s16",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "f34b1a1fff4e74717aa7ad0ffd12138d3c7ea44882d4be1b2c0feec3ec67ce6f",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R16"
+      ],
+      "anchor_ids": [
+        "A_TV"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "d8ae1e3220d7ab65768f7a33234d29de3fc53bcd41ac7b96e927a4d6c52f45f9",
+      "note": "J-Net2023 p1132記電視傳播；只是報導歷史回顧，未假裝取得當年播出片段、台名或收視數據。"
+    },
+    {
+      "id": "c11r1s17",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "bfb9d174f17f66a1be1902e2016d9cab704ec5bff35e521646723abd8826b7af",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R16"
+      ],
+      "anchor_ids": [
+        "A_TV"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "cfee65c5c19d8f3a8752d94d115fbd8aab2f7afbe646866bb5ae8150654179ac",
+      "note": "p1134記詢問、訂單及原先忽視的通路；沒有量化獨立傳播因果。"
+    },
+    {
+      "id": "c11r1s18",
+      "chapter": "把罐子放進旅客看得到的地方",
+      "text_sha256": "5f1e47882d902a8eae371e47a731a9c8983dca6a5625c0ac7081a4af6a1c8305",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "3ee24bc0c40fecb8e5fc6df644a5667a2d66b23ddcc9e85b472dcd4951d31e80",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1d01",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "afdbbd8e4fc688847d9939cc52edca1f009fb789419f57107c7b912cde5f261d",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R15",
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_COLD_BRANCH",
+        "A_COLD_TRUCKS",
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "UCC2025",
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "306c3f9880a23acfd770abf7316263d1425a804fed216e9a1c98a6d597a12fd7",
+      "note": "原廠p168明說夏日全力仍追不上，採訪p1134補供應壓力；不是2019工廠產能。"
+    },
+    {
+      "id": "c11r1d02",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "e72e532e6f2fa322682b63f6b637b96608ec5a44a317d54bb5fc6bd5313e727b",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "c68d24c92254105c46cba78d25e8f389db0fea9c3ea5761d6d372c7371441b31",
+      "note": "採訪油谷主管回顧有等待出貨卡車；不造當年運單、車數、排隊順序。"
+    },
+    {
+      "id": "c11r1d03",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "69de1610a4a1cefd89a774bfa2ca7f6aa582b628e0ceca6b4ace6b74fc55d9ef",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "05eb4ae95078240ce527c589ddde8096b91d11ccf8784fc2e795205e790a3c4a",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1d04",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "b990ab8e593ed41bf1247b9ddf8574db634df9c7bc91b6752cf07a8343894163",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "99f2b8856c0097a513e4716d91de6cd86c35235bc31e2fb5f3dbd220161d100c",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1d05",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "d4d806342d26a17ca7719b5599bd4c28067b592ea9e9b5d50ca0bd4283b09871",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "4f93047409fd79933a6042f80b04a33d96bf3c69b0c34a0db1d1cfc79b1b7c22",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1d06",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "3450f3c893d139abd19fe6a60dd05c6ea5e63b4ddc2e9ae85b51708559c64377",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R17"
+      ],
+      "anchor_ids": [
+        "A_QUEUE_PARTNERS"
+      ],
+      "source_ids": [
+        "JNET2023"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "2cfa196f7008c189fe8575ca8197ab234f504de8e59c1664d3b5a3abcef416cc",
+      "note": "p1134單廠不足後擴大全國協力工廠；沒有補精確產能或承諾瞬間解除缺貨。"
+    },
+    {
+      "id": "c11r1d07",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "31ff061926f73af60cc297f5c6bb61bcea7f39d8da91c19447ddf39d5e3357ed",
+      "result": "ATTRIBUTED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R18"
+      ],
+      "anchor_ids": [
+        "A_RAIL"
+      ],
+      "source_ids": [
+        "GUINNESS2019"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "b949e7ddad616201b58f9de3d2dea81998f3a7fade8ad5c52ae66e3c87f8d2ab",
+      "note": "Guinness p68上島達司列鐵道弘濟會與萬博為轉點；不寫全國每站或全球同時普及。"
+    },
+    {
+      "id": "c11r1d09",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "09f0342aa1dc0609abdcc732850bfc83b96e47d90b7596ac72daee4729703a61",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "02a247999fe16886fdd16246d033dc32f1966d08a10efc371b4963fed4d83254",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1d10",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "7e1a73ab7fd75dc2469b36cf68a091dc6cbfff1e4bd3ab1777932c2566d26de7",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "b875edc67b451464217ea3fd23cad2cf52ba7e3818639f36ff982f1d99e9441d",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1d11",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "e0af0ec6da71f024d5d6fd00c51173909d444e157b3cb66c695d5ac2d9cf20b8",
+      "result": "CONFIRMED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "a048d56ec78a04497a1a366a1d2d16e24e8559d200245dca3f974b679f1aab0e",
+      "note": "UCC2025 p190專用開孔器作飲口；示意另罐，不是破壞保存原罐。"
+    },
+    {
+      "id": "c11r1d12",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "a6ce0f8edf9ffb65e8fac9cf363c576a380752fedf74e22406fb272152225a56",
+      "result": "CONFIRMED",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "046f7ce7c5564d8919755c591375620f2b177acfcbc5c2f9562d1a0ba1acbb28",
+      "note": "同段飲口與空氣孔用途可用；未補少一孔即不流出的實驗主張。"
+    },
+    {
+      "id": "c11r1d13",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "bcbb5045a12ca4a05d60434eb3c7f505a0d61f8fafcb955b9b6449f7128deca5",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "5a205f9f10ea40f54d0d453f92811e77653184e3b39a41706127dbeeb169c6a2",
+      "note": "只限初代罐需另工具；未聲稱1981才有拉環，1978/1981衝突沒有被掩成定論。"
+    },
+    {
+      "id": "c11r1d14",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "f43ffaebf4d40cf84a481fc47204284714506707f183fb3794f6c2b4b1a8c196",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "UCC2025"
+      ],
+      "written_visual_verdict": "PASS",
+      "visual_prompt_sha256": "2a48db6fcacedfda2c7ada45d78bc0027a203f1df755eaf307465c60060759c5",
+      "note": "旁白反應、觀眾類比或向前提問；未新增具名人物行動、台詞、心理或未證數字。"
+    },
+    {
+      "id": "c11r1ct1",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "4a3dc5f149f8a69f63454e91cd9416522ea89e37d3ffc237758bb76278835d93",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [
+        "R08",
+        "R09",
+        "R10",
+        "R15",
+        "R11"
+      ],
+      "anchor_ids": [
+        "A_HOMOGENIZE",
+        "A_HEAT_RATIO",
+        "A_COATING",
+        "A_COLD_TRUCKS",
+        "A_INITIAL_HOLES"
+      ],
+      "source_ids": [
+        "JNET2011",
+        "UCC2025_REPRO",
+        "JNET2023",
+        "UCC2025"
+      ],
+      "written_visual_verdict": "OUTRO_CARD_REVIEWED",
+      "visual_prompt_sha256": null,
+      "note": "作者綜合來源中製造、配送、開孔的工作，不新增事件、數字或技術優先權。"
+    },
+    {
+      "id": "c11r1ct2",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "c7bc0ad68982ea6549bfbe66c580ff817f60acddd673a048951a7f52eb5dd3da",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [],
+      "source_ids": [],
+      "written_visual_verdict": "OUTRO_CARD_REVIEWED",
+      "visual_prompt_sha256": null,
+      "note": "觀眾回憶提問，不是歷史斷言。"
+    },
+    {
+      "id": "c11r1ct3",
+      "chapter": "工廠外排起車，手裡的罐還等著開",
+      "text_sha256": "b9fc9faba41801cbddfdebc470ce75c16a4b86f93da17992d1ef1ffd11fa4641",
+      "result": "PLAN",
+      "source_verdict": "PASS",
+      "research_claim_ids": [],
+      "anchor_ids": [],
+      "source_ids": [],
+      "written_visual_verdict": "OUTRO_CARD_REVIEWED",
+      "visual_prompt_sha256": null,
+      "note": "頻道訂閱理由，不是歷史斷言。"
+    }
+  ],
+  "written_visual_review": {
+    "status": "PASS",
+    "all_86_prompts_and_outro_read": true,
+    "concept_illustrations_not_archival_reenactments": true,
+    "named_likenesses_dialogue_logo_or_readable_history_documents_requested": false,
+    "opening_object_check": "h02與h03是初代物件的匿名概念參照，不承諾現場親訪，不演今天打開神戶保存原罐。",
+    "technical_check": "分離/均質化/變黑/隔層是概念可視化，沒有設備型號、配方、比例或測定數字；熱容器不是同期工廠照片。",
+    "delivery_check": "卡車、候車、支店與試賣具來源動作，不補確切車隊數、路線、品牌、人名或1970現場原貌。",
+    "generated_visual_acceptance": "UNKNOWN_NOT_REVIEWED",
+    "required_actual_image_checks": [
+      "初代相關罐頂不能出現拉環；專用工具與飲口/空氣孔不能互相矛盾。",
+      "不得把概念液滴或隔層畫成實際微觀測定、歷史設備照片或可讀實驗報告。",
+      "匿名人物、罐子與場地不得生成商標、可讀字、名人長相或被誤當取得的萬博史料。"
+    ]
+  },
+  "length_scope": {
+    "official_whole_body_spoken_units": 2573,
+    "includes_coldopen": true,
+    "coldopen_units": 164,
+    "includes_spoken_outro_cta": true,
+    "spoken_outro_cta_units": 103,
+    "official_duration_excludes_only_separate_channel_bookends": true,
+    "native_estimated_total_frames": 21219,
+    "native_estimated_fps": 30,
+    "native_estimated_seconds": 707.3,
+    "native_default_cpm": 250,
+    "four_point_five_units_per_second_arithmetic_seconds": 571.7777777777778,
+    "rough_3500_unit_shortfall": 927,
+    "assessment": "相對約3500字有規劃風險；單位、語速算術與原生estimateTimeline都不是實聲。不能由此宣布13分鐘實測PASS或FAIL，不用減速、停頓、重述或無來源補字湊長。",
+    "actual_audio_duration_seconds": null,
+    "actual_audio_duration_verdict": "UNKNOWN_PENDING_MEASUREMENT"
+  },
+  "blockers": [],
+  "precise_fixes_required": [],
+  "not_granted": [
+    "owner或預算核准",
+    "敘事或盲評投票",
+    "canonical採用",
+    "讀音/字典核准",
+    "provider/TTS/付費啟用",
+    "13分鐘實聲驗收",
+    "實際生成圖或舊素材沿用驗收",
+    "音訊/字幕/clean配音/成片媒體QA",
+    "打包或發布"
+  ],
+  "approved_outputs": [
+    "reviews/source-r1-independent.json",
+    "verify-1.md"
+  ],
+  "report_note": "作者claims/brief/series的PENDING或HOLD字樣不改。本來源PASS只由本獨立收據與verify表成立；任何四核心byte變動即需重新核對。"
+}

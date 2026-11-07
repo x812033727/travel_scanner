@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "revision": "dyson-r5",
+  "role": "AUTHOR_ORDINARY_NATIVE_LINT_NOT_FRESH_NATIVE_READER",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime",
+    "lint",
+    "--slug",
+    "story-dyson-japan-first-20261021-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "ordinary_cli_output_path": "/workspace/work/brand-story-20261025/dyson-audit/author-r5/native-lint-r5-ordinary-cli.json",
+  "ordinary_cli_output_sha256": "8bf0bf7ce0c4d1f60829843206cb837ed18945787013d76572968fdf61b80ed9",
+  "errors": [],
+  "warnings": [
+    {
+      "path": "scenes",
+      "message": "about 15.6 minutes; the target is 12-14"
+    }
+  ],
+  "hook_cadence_warnings": [],
+  "visual_variety_warnings": [],
+  "opening_length_warnings": [],
+  "whole_spoken_units": 3316,
+  "coldopen_units": 171,
+  "voiced_CTA_units": 50,
+  "source_projection_exact": true,
+  "runtime_script_exact_native_screenplay": true,
+  "chapter_viewer_narrator_counts": [
+    {
+      "chapter": "四個人有圖，卻找不到人組裝",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "布濾堵住，家裡的空袋也吸不動",
+      "you": 4,
+      "I": 4
+    },
+    {
+      "chapter": "授權有人接，工作還沒結束",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "馬達改了，入口也要動手",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "圖紙跨海，商品走到日本市場",
+      "you": 3,
+      "I": 2
+    },
+    {
+      "chapter": "圖面之外，還缺資金和組裝的人",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "讓買手看見，也要讓顧客看懂",
+      "you": 5,
+      "I": 4
+    }
+  ],
+  "free_planner_path": "/workspace/work/brand-story-20261025/dyson-audit/author-r5/free-planner-r5.json",
+  "free_planner_sha256": "33ee1c79fa07b0f4555b4a1c912074cf9354578a686e4c6da0c52ef2d0992b72",
+  "normal_4_to_5_seconds": [
+    663.2,
+    829
+  ],
+  "normal_4_5_seconds": 736.8888888888889,
+  "actual_audio_seconds": null,
+  "actual_duration_pass_claimed": false,
+  "actual_native_round_count": 1,
+  "last_actual_native": "R2_NATIVE1_TRUE_MERGED_HOLD",
+  "r4_source_review": "ACTUAL_FULL_HOLD_MF_R4_01",
+  "r4_native": "NOT_PREPARED_NOT_READ",
+  "fresh_native2": "NOT_PREPARED_NOT_READ",
+  "native_input_prepared": false,
+  "native_reader_calls_this_revision": 0,
+  "immutable_same_project_dictionary_files": [
+    {
+      "path": "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/current.json",
+      "original_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/history/r4/external-author-r4/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/current.json",
+      "bytes": 294,
+      "sha256": "7793b04bf4ffe93d4a3f2ae19ddb947a7ddb254a53034f63ef53faf917d88ed6"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/versions/502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d.json",
+      "original_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/history/r4/external-author-r4/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/versions/502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d.json",
+      "bytes": 6737,
+      "sha256": "502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/dyson-audit/author-r5/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/events/9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339.json",
+      "original_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/history/r4/external-author-r4/runtime/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/events/9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339.json",
+      "bytes": 305,
+      "sha256": "9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339"
+    }
+  ],
+  "original_lexicon_sequence": 1,
+  "original_lexicon_untouched": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "provider_calls": 0,
+  "paid_calls": 0
+}

@@ -1,0 +1,11 @@
+# C05 金鳥蚊香｜基底準備與長度增補
+
+已核准的新稿基底為video SHA7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a，canonical劇本SHA83fbb61040f376347ac7d797a4b79fe6dfbbb2cbb32a02aa7caa00c178700c68；原生review-pull已匯入精確劇本核准。current來源、舊C05、歷史支出與所有媒體保持原樣。
+
+基底八語776句、48章與完整metadata已原生合併、獨立全文校對及5處修正後重查，見[i18n](i18n/README.md)。這只是97句基底的文字PASS，不是實際SRT／配音或成片。
+
+原生spokenUnits補查為總2792、開場後正文2609，距約3500正文規劃有明顯偏短風險；實際TTS仍未知。新候選另放candidates/length-extension，以原件支持的製造動作和取捨增加有效內容，不靠停頓、慢播、重述或查核警語填長。候選未來源核准、未盲讀、未owner核准，不繼承本基底的PASS／核准；採用後以原生hash差分更新翻譯。
+
+已重新開9份官方原件的r6來源核對記錄在work/c05-audit/readiness-review.json，source PASS但readiness為HOLD_FOR_LENGTH_EXTENSION，未寫native verify marker以免混用。現行企劃單一A免費送審見backend-outline-receipt.json，仍pending；本企劃亦不代替新候選精確稿關卡。
+
+後台八語三部分全選已實讀；clean-master配方有獨立METADATA_DERIVATION_PASS，只有字幕旗標差異，仍無clean影片或配音資格。付費入場、實際全片／語言報價、正式v4素材、真實TTS12–14分鐘與逐句聽檢、插畫、組片、字幕、完整QA及final關卡都未完成，無YouTube變更。

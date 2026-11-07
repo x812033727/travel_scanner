@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "author": "/root/approved_teaser_visual_plan",
+  "status": "HOLD_CATEGORY_ONLY_NATIVE_TEMPLATE_COMPATIBILITY",
+  "created_at": "2026-10-26T00:42:22.699769+00:00",
+  "baseline_archive": "history/teaser-plan-before-story-category",
+  "source_before_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+  "source_after_sha256": "4ab6d10574d46a80bf3c189cba820f75dab752d32b832fd8731ea5c3446743ea",
+  "allowed_video_diff": [
+    {
+      "path": "category",
+      "before": "explainer",
+      "after": "story"
+    }
+  ],
+  "reason": "The task is a brand story and normal report-only synchronizes the source category. Classifying this source as story prevents overwriting the already-correct backend category with historical explainer metadata. This changes no protected setting, budget, identity, or owner decision.",
+  "source_and_visual_PASS_issued": false,
+  "old_and_new_owner_approval_scope": "Canonical narrative hashes only; no new approval created or fabricated.",
+  "old_visual_review_preserved": {
+    "path": "history/teaser-plan-before-story-category/reviews/source-teaser-visual-independent.json",
+    "sha256": "a5d79ad4c17823d414e03a3e421f8d9c5ecb4bdcfe6b42aa6707f080a0ecbfb6"
+  },
+  "old_verify_preserved": {
+    "path": "history/teaser-plan-before-story-category/verify-1.md",
+    "sha256": "79777a56ec99fb1cd23eb65e9673ef63162ed0d025c807e6cae97e43bffd673c"
+  },
+  "current_verify_removed_until_new_independent_recheck": true,
+  "protected_auxiliary_files_sha256": {
+    "i18n/vi.json": "79ac336669b46aef8968883dcbd7d0aae6a3ee50e420e27f1c96ce7ca6b247bb",
+    "i18n/es.json": "a31a4a8fbee744f184183727125e6844ca6a0a724f0d2d0016d93353c9a6b0a4",
+    "i18n/ko.json": "324f3142584229d1cabece1102691e49fb4a35b5fddf45d24c8a0b3f45ff7584",
+    "i18n/id.json": "b35e991d2b94a5a886bb01b51e281fce8bb3c28fb351270b65050ec362d2fde7",
+    "i18n/en.json": "2039b013395772b9fa26111dfda73a1fc0f8f8bba928ba2af484a192d341c863",
+    "i18n/th.json": "e6c48afe876073c1e88b8d7fd7225155fd2803441664973d8ec7274d0a052706",
+    "i18n/ja.json": "038fb15c08dea06bcedb70785c416a3da1a186d52b8cd33092cbc5c4351a2fe9",
+    "i18n/pt.json": "47bff7a793c641aae85a847e241027ca814ef81ed8261a93a233b2187ab36199",
+    "i18n/preparation-status.json": "11d712e4331d3014ce43d32e1de9f86c852cf80af0cd5b56f98b47b58bf7b94f",
+    "i18n/README.md": "8374bb98be4d63d5f2777b4a73036cb5516ad93657633d59b2aff5bad44a0d3d",
+    "i18n/runtime-rehearsal.json": "ccb2d55c51d8f77fa66ca791690b784b7f2ac18984f9a693be458041f0aaf296",
+    "i18n/reviews/recheck-vi-th.json": "198c27464a2441b9c381206f7c5814a9b42e31d0646c178bb34591e9ef4f5bb0",
+    "i18n/reviews/native-merge-vi.json": "3e72d7e2a0dca3588a81cbc594c129f48544ed43e22cfdc4a548006e5836be7b",
+    "i18n/reviews/native-merge-pt.json": "0c27fc13784ba8f7e49d667544ae8b52be16c3c02d17681bd5d1a9febb986c99",
+    "i18n/reviews/en.review.md": "1cd52ed6369a3766045b1f7701d353a48716c5964b583c4b18e086d2a79c2ac1",
+    "i18n/reviews/recheck-pt-id.json": "878b09f32c9f0eeea5682ad7cb8950943061142a65a847393f4def4388b9cdab",
+    "i18n/reviews/recheck-ko-es.json": "7f84e09aa98a1e552dfdbb7060537a355a2275f23cadb55ffeff457c96a1f210",
+    "i18n/reviews/review-ko-es.json": "721182cb9afe735bfb29a03c263b3720c137969074dac15291ea636a9af27ec8",
+    "i18n/reviews/ja.review.md": "2e014821eb60d9345802b3bd35891c2178a1419cea7ddec8028d8acc1e920d12",
+    "i18n/reviews/th.review.md": "7852bf972b65b510e6a3461b53c7aa2d3199dcb9d023553835c56191c6f70890",
+    "i18n/reviews/native-merge-ko.json": "68d5fe494aa90ec452016831b2a7f8ed98b270843bccab4bace7b7752a7c1224",
+    "i18n/reviews/native-merge-th.json": "5c66d61f68e46b0c9da074bdb3f0a1977909555de1702a8a47a0b00d05005dff",
+    "i18n/reviews/native-merge-es.json": "390dc7b9796986619af58394c8e609712ebe138e0dfb6ae63e1c35c613a8c90b",
+    "i18n/reviews/recheck-en-ja.json": "22443de6baf59dd43adc344fb5b320d2ccfef0fd32886bbd5931b9c5f454ea09",
+    "i18n/reviews/id.review.md": "30fecde6d1f1a10f5873b248bcb57558ff49e60266e724d86ae2583eb4b653bc",
+    "i18n/reviews/pt.review.md": "41fcfb1091bd22eed2c6c5ff5ff79f9705528b695af9988309fc2ddc8d515ab9",
+    "i18n/reviews/vi.review.md": "aa36d314ca1b512fb3ef93a4619cb7a4344282f6bd0f9f4538eacb230f6e2bae",
+    "i18n/reviews/native-merge-en.json": "9da4f38079e9b5c5ba9a461a7cd45996ed07abc39dd2f46e74cd94fc4c6e7b96",
+    "i18n/reviews/review-en-ja.json": "c2d99bf078885a2c355bf24778a237fa3c976aeb621adbee17f279f57477d7e5",
+    "i18n/reviews/native-merge-id.json": "89efa4502e4d464119133ef173f7073911fe11310dcc34b6de646a226dfa23af",
+    "i18n/reviews/native-merge-ja.json": "bc00dd35061b7140f3add816c69f0c2e95155b0b5303995417d64121986419f9",
+    "i18n/reviews/es.review.md": "59498f7200c409ba8cda2a849af7d42e1aed00dde7524d5c9606fbd0515fead8",
+    "i18n/reviews/ko.review.md": "f7c86905cd6d0510bf717ef1d7e18e5b1139aba5065cd7fde7ccbe9f602adde0",
+    "i18n/reviews/review-vi-th.json": "64aa1f459732761ad0b23868d45ab74589d4ec6d425f1a63993aac50acb24235",
+    "i18n/reviews/review-pt-id.json": "8d03f17c5ed1f15b40f6d9d820700f3b260529037e7f94a4976f43354d48291f",
+    "i18n/history/round-1/vi.json": "a4bb7773c71246f67260d062609bc67152a1c08130f6e0c076cc688cec10910b",
+    "i18n/history/round-1/es.json": "97ea1a57e434a0de9cdf7224b4d30d5c15c931c42ab75e42e03b259de36edeac",
+    "i18n/history/round-1/ko.json": "2bf3d36cb1ec35872c5b81cc336534df315687564b92cad4dd958d191276f97d",
+    "i18n/history/round-1/id.json": "fb10c31070403ab68d17b449feefb9e3cce5c21f4983aa04a9309b60c624382b",
+    "i18n/history/round-1/en.json": "2cdfecd5943d0dd3e891cfdf5610164f5eae36dc91940d6f729fab1e444f8bba",
+    "i18n/history/round-1/th.json": "d99af24e4a2d20307c253fe5c87472de75a3b5d0ded14ef5b032dd721047f961",
+    "i18n/history/round-1/ja.json": "070f882dd21254518bc6e37dfe478932b4465e9622276df0fe90cc3ef9e6d957",
+    "i18n/history/round-1/pt.json": "438538a3fb18a09650abf9e6c1cd429a4649b2bb0f52144b0022b10d2fcb321e",
+    "i18n/reviews/translator-reports/pt-id.md": "c2b91f7a4685953b9070218eefe84c8fc6ea629bb2bc320680019eeeee66a14f",
+    "i18n/reviews/translator-reports/vi-th.md": "f75d389b1866969999dfa877352f29ba08385c0303767cbb1c750a8e1981c670",
+    "i18n/reviews/translator-reports/ko-es.md": "a44180445df28b406b2d32ee93523f4da8b60d6b07b429e995a11b77a678f7d7",
+    "i18n/reviews/translator-reports/en-ja.md": "b75bce8ec9add528d9449cb023cfa5d06d4d980013ddd9ff0c00cc8730a1e82e",
+    "runtime-lexicon/current.json": "b73c0395dbd2e00e85cffc57ca67ce521999afaa6fab1a98faa7c784c785177f",
+    "runtime-lexicon/versions/30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe.json": "30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe",
+    "runtime-lexicon/events/ffd171ab39647448bb3c3bcb546e19f3569b22c0c904645a40e57d7bf8c53f76.json": "ffd171ab39647448bb3c3bcb546e19f3569b22c0c904645a40e57d7bf8c53f76",
+    "variants/clean-master/derivation.json": "e787a59553acbee7e4b135d6f487aa16f5d6c2b9053b6e970fb44669c869fa6e",
+    "variants/clean-master/video.json": "814a229d33801a8a5be37ff9a8d074e54d851b636338e2ce9aac5871f827089e",
+    "variants/clean-master/review.json": "265b5cb7e012c41542239dceec02e600124b207944a9c6c8a5d54c3739a22146",
+    "variants/clean-master/README.md": "e267bec296efe2b54868a1e6bffc75f14c607af94b580558196db1e0009aadda",
+    "variants/clean-master/lint.json": "ff6829f83128c5fc0bc791557c3bd18ae275e527a1224d507d6c9bce25cab5f4"
+  },
+  "source_other_three_unchanged": {
+    "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+    "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+    "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328"
+  },
+  "producer_builder_sha256": "99daa1ebf660d7ea2a974f449db3df1086b8d080d85aa069c5bbaaf6e21cafde",
+  "runtime_writes": 0,
+  "media_writes": 0,
+  "approval_writes": 0,
+  "backend_calls": 0,
+  "provider_calls": 0,
+  "git_actions": 0,
+  "source_four_sha256": {
+    "video.json": "4ab6d10574d46a80bf3c189cba820f75dab752d32b832fd8731ea5c3446743ea",
+    "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+    "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+    "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328"
+  },
+  "plan_sha256": "ec9dee859d9139cd6d234fad6e5e343ad1b2d22912b642cf5a2d1e53e50f1ed5",
+  "author_input_sha256": "a5f27a94c1046f4ebb9f473edb5025253caca21493e5624b64b2578a608e1494",
+  "canonical_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+  "screenplay_bytes_identical": true,
+  "all_narrative_objects_and_ids_identical": true,
+  "all_scene_data_and_order_identical": true,
+  "all_other_metadata_leaves_identical": true,
+  "source_other_three_bytes_identical": true,
+  "claims_md_bytes_identical": true,
+  "native_review_matches_before_and_after": true,
+  "native_final_review_file_sha256": "beb511213bccacffddaa8e933c5ca361e5ed9b9e0d059bc794b647f7195f7c25",
+  "native_hash_comparison": {
+    "narrativeHash": {
+      "before": "5cb14d4ecf0bdc3a",
+      "after": "5cb14d4ecf0bdc3a",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "37aab4572320064b",
+      "after": "37aab4572320064b",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "057e50e3a5d588d4",
+      "after": "057e50e3a5d588d4",
+      "equal": true
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    }
+  },
+  "native_pair_requests": [
+    {
+      "asset_plan_id": "authors-old-notebook-context",
+      "composed_prompt_sha256": "294fd034c8940154fa4e85f9da4d91673048b486a0bc3bb79f9eba256fd150a0",
+      "native_key_1k": "d412156e47533c92",
+      "native_key_2k": "ec476f9db34ff556",
+      "unchanged_after_category_only_correction": true,
+      "actual_same_asset_verified": false
+    },
+    {
+      "asset_plan_id": "financial-remeasurement-context",
+      "composed_prompt_sha256": "d780f4974c16a74fe8eab85dd18c6ea166d3fdca2571941c77259584e499d2e1",
+      "native_key_1k": "be22fa92ca5132e1",
+      "native_key_2k": "d66150a0b42363b4",
+      "unchanged_after_category_only_correction": true,
+      "actual_same_asset_verified": false
+    }
+  ],
+  "planned_livecache_stop_conditions_unchanged": true,
+  "actual_same_asset_verified": false,
+  "lint": {
+    "actual_immutable_dictionary_context": true,
+    "errors_before": 0,
+    "errors_after": 9,
+    "errors_after_details": [
+      {
+        "path": "scenes[15].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p04s01",
+        "template": "stats",
+        "line_ids": [
+          "r304011"
+        ]
+      },
+      {
+        "path": "scenes[45].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p11s01",
+        "template": "stats",
+        "line_ids": [
+          "r311011",
+          "r311012"
+        ]
+      },
+      {
+        "path": "scenes[66].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p12s02",
+        "template": "stats",
+        "line_ids": [
+          "r312021"
+        ]
+      },
+      {
+        "path": "scenes[70].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p13s01",
+        "template": "stats",
+        "line_ids": [
+          "r313011",
+          "r313012"
+        ]
+      },
+      {
+        "path": "scenes[74].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-t02",
+        "template": "stats",
+        "line_ids": [
+          "r3t021"
+        ]
+      },
+      {
+        "path": "scenes[80].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p15s01",
+        "template": "stats",
+        "line_ids": [
+          "r315011"
+        ]
+      },
+      {
+        "path": "scenes[97].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p18s04",
+        "template": "stats",
+        "line_ids": [
+          "r318041",
+          "r318042"
+        ]
+      },
+      {
+        "path": "scenes[103].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p19s02",
+        "template": "stats",
+        "line_ids": [
+          "r319021"
+        ]
+      },
+      {
+        "path": "scenes[105].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p19s04",
+        "template": "stats",
+        "line_ids": [
+          "r319041"
+        ]
+      }
+    ],
+    "warnings_before": 32,
+    "warnings_after": 0,
+    "stale_or_missing_i18n_warnings": 0,
+    "status": "HOLD_NATIVE_CARD_TEMPLATE_COMPATIBILITY",
+    "reason": "category story excludes legacy explainer card templates. Repairing templates would exceed the category-only authorization and may change the canonical narrative; no template, voice or approval was altered to evade the guard."
+  },
+  "source_producer_replay": {
+    "memory_only": true,
+    "core_four_and_claims_md_exactly_equal": true
+  },
+  "runtime_protection": {
+    "current_runtime_source_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+    "canonical_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "approval_file_sha256": "709b5d261469595ffc55358b9f4585e2754403ec167924b4054625fb2febe5da",
+    "existing_runtime_category": "explainer",
+    "source_runtime_not_adopted_by_this_task": true,
+    "runtime_files_read_only_verified": {
+      "brief.md": "56becc4f375bc3e9c2a1600eb4f6061803be39c34f0e70d1ff7ce7dd70931b2e",
+      "claims.md": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb",
+      "i18n/en.json": "2039b013395772b9fa26111dfda73a1fc0f8f8bba928ba2af484a192d341c863",
+      "i18n/es.json": "a31a4a8fbee744f184183727125e6844ca6a0a724f0d2d0016d93353c9a6b0a4",
+      "i18n/id.json": "b35e991d2b94a5a886bb01b51e281fce8bb3c28fb351270b65050ec362d2fde7",
+      "i18n/ja.json": "038fb15c08dea06bcedb70785c416a3da1a186d52b8cd33092cbc5c4351a2fe9",
+      "i18n/ko.json": "324f3142584229d1cabece1102691e49fb4a35b5fddf45d24c8a0b3f45ff7584",
+      "i18n/pt.json": "47bff7a793c641aae85a847e241027ca814ef81ed8261a93a233b2187ab36199",
+      "i18n/th.json": "e6c48afe876073c1e88b8d7fd7225155fd2803441664973d8ec7274d0a052706",
+      "i18n/vi.json": "79ac336669b46aef8968883dcbd7d0aae6a3ee50e420e27f1c96ce7ca6b247bb",
+      "script.md": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+      "series.json": "6de1e3222d3e679e4bd740864e1c564c1b4708f936558a7a80ab9ff0d800e40b",
+      "story-lexicon/current.json": "b73c0395dbd2e00e85cffc57ca67ce521999afaa6fab1a98faa7c784c785177f",
+      "story-lexicon/events/ffd171ab39647448bb3c3bcb546e19f3569b22c0c904645a40e57d7bf8c53f76.json": "ffd171ab39647448bb3c3bcb546e19f3569b22c0c904645a40e57d7bf8c53f76",
+      "story-lexicon/versions/30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe.json": "30b814bbdb103aa143cac8b9cfd483f0e379100dcaf3638d18b8866f7fb636fe",
+      "verify-1.md": "1dc587379c910d1a02fb3c35f8206eaca49b01a32c4fcee76e291d84857e74da",
+      "video.json": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005"
+    },
+    "media_files_read_only_verified": {
+      "approvals.json": "709b5d261469595ffc55358b9f4585e2754403ec167924b4054625fb2febe5da",
+      "i18n/en.review.md": "1cd52ed6369a3766045b1f7701d353a48716c5964b583c4b18e086d2a79c2ac1",
+      "i18n/en.todo.json": "03bd597ffff3756f85c606a5e2a457f6d08b8288c9355ecd6af7bc0d0ceb2355",
+      "i18n/es.review.md": "59498f7200c409ba8cda2a849af7d42e1aed00dde7524d5c9606fbd0515fead8",
+      "i18n/es.todo.json": "a567113612c720ae7f02ef8a36821f78e4dfa73a6ad311e9f31037b5f0cc9957",
+      "i18n/id.review.md": "30fecde6d1f1a10f5873b248bcb57558ff49e60266e724d86ae2583eb4b653bc",
+      "i18n/id.todo.json": "d9203adad6200b4c030bf201cd2fdc6e14f2d15f08af8d0012967dc7393f8cde",
+      "i18n/ja.review.md": "2e014821eb60d9345802b3bd35891c2178a1419cea7ddec8028d8acc1e920d12",
+      "i18n/ja.todo.json": "b95701381d1a0fb9a28e22e5617c8689f7e1650d0339a1af8c6b3adb4bb17cd7",
+      "i18n/ko.review.md": "f7c86905cd6d0510bf717ef1d7e18e5b1139aba5065cd7fde7ccbe9f602adde0",
+      "i18n/ko.todo.json": "68a7e063d7ceaf098dabd3b3e92db7d09ff425ac6ae691c5250263ccc5089c5a",
+      "i18n/pt.review.md": "41fcfb1091bd22eed2c6c5ff5ff79f9705528b695af9988309fc2ddc8d515ab9",
+      "i18n/pt.todo.json": "a0e39bee5e490b040d45e911c25047a3ffc30a5d7340e9a923db9ff9a0abf9f7",
+      "i18n/th.review.md": "7852bf972b65b510e6a3461b53c7aa2d3199dcb9d023553835c56191c6f70890",
+      "i18n/th.todo.json": "c78be3b9b7d1e8ae82b596c8b14dc1962ffa15be70c0e472e44a7e3ecdfd3952",
+      "i18n/vi.review.md": "aa36d314ca1b512fb3ef93a4619cb7a4344282f6bd0f9f4538eacb230f6e2bae",
+      "i18n/vi.todo.json": "7b450128e33dbda2477137428a09562c7f1b287b1dde91a673613efaeecb8f8b",
+      "story/lexicon-transactions/885931e4-0c9f-4458-a89f-a5a3a7cb439a.json": "86ac7067d25e32440c35ec2284b386f6467c73747acc08b6a0c2ff68b2e5972b"
+    }
+  },
+  "current_i18n_and_other_auxiliary_files_rehashed": 55
+}

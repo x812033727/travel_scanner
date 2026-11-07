@@ -1,0 +1,394 @@
+{
+  "status": "UNAPPROVED_LENGTH_EXTENSION_CANDIDATE",
+  "candidate_revision": "length-r3",
+  "author": "/root/c03_review_pt_id",
+  "parent_source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+  "parent_candidate_video_sha256": "efbe5021a8dac732a71376f307903a5cf8220409a405130f59f742ddc96a57de",
+  "history_directory": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2",
+  "review_inputs": {
+    "blind_a": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-a.raw.json",
+      "sha256": "d4aad85097fb5b2554b4bad6f7e112681614ebcd62957b7a50a11e44bd912acd"
+    },
+    "blind_b": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-b.raw.json",
+      "sha256": "01d8e28c49f5e9f1d4d05cfbfbccd76a466f358bab3a57c0716183db442ca804"
+    },
+    "source": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/source-r2-independent.json",
+      "sha256": "5c827928c5bcbc2841dfe9671be743a8cf6b070a5cf03d03952ca60fdf8e72f4"
+    }
+  },
+  "response_to_required_feedback": [
+    {
+      "id": "no_recap",
+      "reader_a_target": "c05le008",
+      "reader_b_target": "c05r053",
+      "action": "雙根手卷只在r052完整敘述一次，合入切長及木片作芯；刪le007、le008、r053。",
+      "author_claim": "已精修，是否解決由新pair判定。"
+    }
+  ],
+  "author_self_check": {
+    "draft": "合併四句的獨立資訊，不添加新支線或填長句。",
+    "critique": "保留切長、雙根、木芯與手工盤卷；來源只記方法，機器每次出料條數仍未知；乾燥和運輸理由分別向前推進。",
+    "final": "僅r052旁白／prompt更改，三句刪除，其餘逐字保留；同步刪木芯重開問題的loop，保留開場兩根長條的既有回收。"
+  },
+  "delta_from_r2": {
+    "added_lines": [],
+    "changed_lines": [
+      {
+        "id": "c05r052",
+        "before": "注意工人接到什麼：兩根已擠出的長條，合在一起，才用手順著圓周盤卷。",
+        "after": "另一筆商品登錄記下：長條切成定長，兩根合在一起，以小木片作芯，用手盤成螺旋。",
+        "old_spoken_units": 29,
+        "new_spoken_units": 33,
+        "unit_delta": 4,
+        "source_ids": [
+          "K_T",
+          "NM_MACHINE",
+          "NM_COIL"
+        ],
+        "source_locator": "K_T：押出的兩根合在一起手卷。NM_MACHINE 910191180004：麵條狀材料兩根手卷。NM_COIL 910191180006製法段：定長切條、木片作芯、兩根手卷；不用錯配年份及產能。",
+        "reason": "針對r2雙讀者共同no_recap，將r052、le007、le008及r053涉及的手卷雙根事實合成一次推進：切長→合兩根→以木片作芯→手盤螺旋。只稱登錄記下製法，不稱木芯現物留存；不說機器同時或每次只出幾條。"
+      }
+    ],
+    "deleted_lines": [
+      {
+        "id": "c05le007",
+        "text": "另一筆商品登錄還記下以小木片作芯的做法。兩根合在一起之後，手又該先往哪裡繞？",
+        "spoken_units": 35,
+        "reason": "木片作芯的來源歸屬及做法併入r052；刪重開手卷中心動作的提問，不在前後兩句各講一次兩根合卷。"
+      },
+      {
+        "id": "c05le008",
+        "text": "長條先切成一定長度，再以木片作芯，兩根一起盤。你可以想像，手上每放好一圈，整個圓才慢慢長出來。",
+        "spoken_units": 41,
+        "reason": "定長切條、木片作芯及兩根手卷合入r052，成為一次連續製造動作；刪第二遍盤卷描述與想像句。"
+      },
+      {
+        "id": "c05r053",
+        "text": "原頁沒有說機器同時擠出兩條；能確認的是，手卷這一步把兩根放到一起。",
+        "spoken_units": 30,
+        "reason": "刪旁白中的查核邊界與第二次兩根合卷說明；機器是否同時擠出兩條未知，保留在claims及作者備註，不反向斷言只出一條。"
+      }
+    ],
+    "deleted_spoken_units": 106,
+    "changed_spoken_unit_delta": 4,
+    "net_spoken_unit_delta": -102,
+    "moved_scene_ids": [],
+    "changed_scene_object_ids": [
+      "c05r052"
+    ],
+    "unchanged_scene_objects_exact": 105,
+    "metadata_changes": [],
+    "loops_removed": [
+      {
+        "setup": "c05le007",
+        "payoff": "c05le008",
+        "what": "手卷的中心如何靠木芯形成"
+      }
+    ],
+    "loops_updated": [
+      {
+        "setup": "c05r005",
+        "payoff": "c05r052",
+        "what": "預告的兩根長條，在單一製法段落完成切長、合卷與木片作芯手盤"
+      }
+    ]
+  },
+  "delta_from_r6": {
+    "original_lines": 97,
+    "retained_original_ids": 94,
+    "retained_original_texts_exact": 86,
+    "changed_original_ids": [
+      "c05r052",
+      "c05r090",
+      "c05r091",
+      "c05r092",
+      "c05r093",
+      "c05r080",
+      "c05r089",
+      "c05rx009"
+    ],
+    "deleted_original_ids": [
+      "c05r053",
+      "c05rx006",
+      "c05rx008"
+    ],
+    "r1_additions_retained": 14
+  },
+  "native_units": {
+    "counter": "tools/video/core/timeline.mjs spokenUnits + core/schema.mjs eachLine",
+    "r2_total": 3279,
+    "candidate_total": 3177,
+    "candidate_hook": 183,
+    "candidate_body_excluding_hook": 2994,
+    "candidate_body_excluding_hook_and_outro": 2898,
+    "candidate_outro": 96,
+    "body_planning_range": [
+      3300,
+      3550
+    ],
+    "planning_range_met": false,
+    "shortfall_to_3300": 306,
+    "length_decision": "針對共同重述問題減字，不為回到3279或工作下限添加弱句、警語或停頓；不作篇幅或時長PASS。",
+    "actual_tts_seconds": null,
+    "target_tts_minutes": [
+      12,
+      14
+    ],
+    "actual_duration_verified": false,
+    "may_require_adjustment_after_actual_voice": true
+  },
+  "planned_visuals": {
+    "scenes": 106,
+    "lines": 108,
+    "illustration_scenes": 105,
+    "cards": 1,
+    "planned_illustration_unit_share": 0.9697828139754485,
+    "planning_basis": "spoken-unit share only; actual screen-time share unverified",
+    "look_exact": true,
+    "voice_exact": true,
+    "burn_in": true,
+    "changed_prompt_anonymous_english": true,
+    "all_shots_static_stills": true,
+    "actual_generated_media_reviewed": false
+  },
+  "loop_audit": {
+    "total_declared_loops": 32,
+    "concrete_pairs_for_fresh_blind_review": [
+      {
+        "setup": "c05r003",
+        "payoff": "c05r036",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r005",
+        "payoff": "c05r052",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r025",
+        "payoff": "c05r055",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r043",
+        "payoff": "c05r045",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r067",
+        "payoff": "c05r069",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r080",
+        "payoff": "c05r081",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r084",
+        "payoff": "c05r085",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05r090",
+        "payoff": "c05r091",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05le001",
+        "payoff": "c05le002",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05le004",
+        "payoff": "c05le005",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05le010",
+        "payoff": "c05r093",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      },
+      {
+        "setup": "c05le012",
+        "payoff": "c05le013",
+        "status": "AUTHOR_INTENT_PENDING_FRESH_BLIND_REVIEW"
+      }
+    ],
+    "opening_previews": 2,
+    "actual_30_to_45_second_cadence_verified": false
+  },
+  "source_caveats": [
+    "只在手工盤卷處講一次兩根合在一起；押出設備同時／每次出幾條未知，不補成單條或雙條機構。",
+    "木芯是商品登錄記下的製法，不是留存現物。",
+    "NM_COIL不用錯配西元日期或產能；其餘來源限定沿r2保留。"
+  ],
+  "independent_source_delta_review": "PENDING_OTHER_REVIEWER",
+  "narrative_review": "PENDING_TWO_FRESH_ISOLATED_READERS",
+  "native_verify_file_written": false,
+  "native_factchecked_marker_created": false,
+  "owner_approval": false,
+  "lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes[77].lines[0] (c05r090)",
+        "message": "42 spoken units; split sentences longer than 40"
+      },
+      {
+        "path": "scenes[101].lines[0] (c05le013)",
+        "message": "42 spoken units; split sentences longer than 40"
+      },
+      {
+        "path": "scenes[16] (c05le003)",
+        "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[77] (c05r090)",
+        "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[81] (c05le010)",
+        "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[101] (c05le013)",
+        "message": "about 11.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[102] (c05le014)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[103] (c05le015)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      }
+    ],
+    "summary": {
+      "minutes": 14.522777777777778,
+      "lines": 108,
+      "spoken_units": 3177,
+      "billable_characters": 9969,
+      "chapters": [
+        "00:00 一根香燒完了，夜還很長",
+        "00:51 先有花種，卻還沒有能賣的形狀",
+        "03:46 長條盤進圓，木模卻停住了",
+        "05:34 上市後，工人把兩條合在一起",
+        "08:50 新機器完成，舊手卷沒有立刻消失",
+        "11:56 路徑在外面，速度藏在香體裡"
+      ]
+    },
+    "scope": "local text/structure only; estimates are not actual TTS/media acceptance"
+  },
+  "file_sha256": {
+    "video.json": "dbd1677d7c04ae4bc62634b910b37e06ea96c5dcef591a02fa3909b1eee0d05c",
+    "script.md": "0be3a3919ab108ed2bf89d65437da5616a6a693d10802ffe4219e6ec41b8c65c",
+    "narration-only.json": "b15dfa3c5179bc72cbc20693a908ed08df383974be103c4a6072f933ae59b0f9",
+    "claims.json": "98b46f46959b1c7dd3014a16abdae61e101756f8e393e5336a9fe5baec041a5f",
+    "claims.md": "d17d26a3552a0c84162e4ffb9c5e3c88b6b576f923eb0cfb36b7ae12e3f60100",
+    "brief.md": "6598832c98070f3b8cbf5aa903be021cc236f20f2fa43ebfeec0af7a6a3e54d6",
+    "series.json": "ebac79aba8f38617ae500e95a9b0f2a4c7a20a06a09109006c7e8b4b9786c6db",
+    "build-candidate.mjs": "4886769e5f8253aff264bbe6200104ac431b336a7b586b4fb55001bb1ae5ddcc"
+  },
+  "protected_parent_history_and_review_files_unchanged": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/README.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/author-notes.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-language-choice.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-outline-receipt.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-script-receipt.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-script.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/backend-status.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/brief.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/build-candidate.py": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/claims.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/keyframes-dry-run.txt": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/lint-final.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/lint.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/music-preflight-hold.txt": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narration-only.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narrative-payload-r4.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narrative-payload-r5.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/narrative-payload-r6.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/preflight-inputs.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r3.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r4.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r5.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/revision-r6.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/script.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/series-context.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/series.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/tts-dry-run.txt": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/video.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/brief.md": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/claims.md": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/en.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/es.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/id.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/ja.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/ko.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/pt.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/th.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/i18n/vi.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/script.md": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/series.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/current.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/events/e1e8278f2992b3525b33fa5eed19374a793905896dae49aa2c0bb33221848fe7.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/story-lexicon/versions/1b7ab06d93193c145da374d4f0d1ae686f4e6ff948730ddb1532522f32ec21c3.json": true,
+    "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-kincho-c05-remake-20261025/video.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/author-notes.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/brief.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/build-candidate.mjs": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/claims.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/claims.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/narration-only.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-a.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-b.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-binding.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1-input.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/narrative-r1.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/reviews/source-r1-independent.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/script.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/series.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r1/video.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/author-notes.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/brief.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/build-candidate.mjs": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/claims.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/claims.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/narration-only.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1-a.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1-b.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1-binding.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1-input.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r1.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-a.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-b.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-binding.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2-input.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/narrative-r2.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/source-r1-independent.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/reviews/source-r2-independent.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/script.md": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/series.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/history/r2/video.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-a.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-b.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-binding.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1-input.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r1.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2-a.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2-b.raw.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2-binding.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2-input.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/narrative-r2.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/source-r1-independent.json": true,
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/source-r2-independent.json": true
+  },
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "git_commands": 0,
+  "canonical_written": false
+}

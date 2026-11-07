@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_clean_master_metadata_derivation",
+  "status": "METADATA_DERIVATION_PASS",
+  "checked_at": "2026-10-26T00:25:48.889Z",
+  "reviewer": "/root",
+  "independent": true,
+  "independence_basis": "Coordinator did not author the C11 R6 source or its clean variant/derivation. Reproduced native checks from actual frozen bytes and native snapshot dictionary.",
+  "slug": "story-everyday-ucc-c11-remake-20261025",
+  "scope": {
+    "source_fact_qa": false,
+    "written_visual_qa": false,
+    "media_qa": false,
+    "owner_approval": false,
+    "backend_calls": 0,
+    "provider_calls": 0,
+    "paid_requests": 0
+  },
+  "input_files_sha256": {
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/video.json": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/variants/clean-master/video.json": "f48374bc2813ad9330016cac042c94b1a5e6d9760b139eb03f87cb46808356ee",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/variants/clean-master/derivation.json": "bdb4b1b178765fd492506d5b2d424af267ef34f742172aa14a48c78b57715856",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/variants/clean-master/lint.json": "f9f37ffab2db4da5a223c7ac4c7d5c5394384e5462f25d6dd72a7c9a96667487",
+    "/workspace/work/brand-story-20261025/c11-submission-root/docs/videos/story-everyday-ucc-c11-remake-20261025/script.md": "4011ea915073e7ae6bc5a796eb06aff337020bdd0e946c73d76b2d85065af005",
+    "/workspace/work/brand-story-20261025/c11-submission-root/docs/videos/story-everyday-ucc-c11-remake-20261025/story-lexicon/current.json": "02a1da41e6d231eb7bc3d105911c141c6be71b29eadc72b9f23e254e3cd5f5bd"
+  },
+  "immutable_lexicon": {
+    "mode": "snapshot",
+    "actual_snapshot_read_by_native_reader": true
+  },
+  "deep_diff": [
+    {
+      "path": "subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "native_input_hashes": {
+    "narrativeHash": {
+      "source": "879d885294249d94",
+      "variant": "879d885294249d94",
+      "equal": true
+    },
+    "speechHash": {
+      "source": "c63123ba52b555d1",
+      "variant": "c63123ba52b555d1",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "e0ffe8ce3c70b457",
+      "variant": "e0ffe8ce3c70b457",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "71ecdd098c551254",
+      "variant": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
+  },
+  "canonical_script_sha256": "4011ea915073e7ae6bc5a796eb06aff337020bdd0e946c73d76b2d85065af005",
+  "screenplay_bytes_identical": true,
+  "lint": {
+    "reproduced_from_actual_dictionary": true,
+    "errors": 0,
+    "warnings": 3,
+    "saved_lint_exactly_matches": true
+  },
+  "same_new_remake_budget_identity": true,
+  "old_activated_slug_used": false,
+  "artifacts_absent": [
+    "timeline.json",
+    "narration.wav",
+    "final.mp4",
+    "qa.json",
+    "languages.json"
+  ],
+  "actual_clean_master_exists": false,
+  "media_qa": false,
+  "final_approval": false,
+  "actual_dub_eligibility": false,
+  "limitations": [
+    "Written recipe metadata only; no actual media was decoded or generated.",
+    "Each actual clean output requires full matching QA and current owner final approval.",
+    "Paper estimates do not establish actual narration duration or dubbing eligibility."
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "revision": "c07-r9",
+  "status": "WRITTEN_REUSE_PLAN_PENDING_GENERATION_AND_REAL_FILE_SHA_VERIFICATION",
+  "not_a_video_schema_extension": true,
+  "not_a_keyframes_manifest": true,
+  "no_assets_generated": true,
+  "actual_same_asset_verified": false,
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "474bde4e16ee3d575e70af2d21d5ac3f98ea43aee0b1c25749be2178f90ae4ab",
+      "script.md": "0a322b76db44c978aae51f72957bb6320b9375f7e35374f1d94a4d197d89e297",
+      "narration-only.json": "ff25e34df88cfb0005fd4437ef51931232a25597f26e4c8cec329d9a1d190646",
+      "claims.json": "419c47a40e00cf36dc3ccb99ee6216b2b8940d9060c9beb70b7ff60ec1cd2704"
+    },
+    "claims_md_sha256": "c97bcd720792f86398251aaa732fa932e0ef45ce893e16e0f226b3a560b346ca",
+    "brief_sha256": "23d451b3320a4321eb167674fadcfd5f743d0136e9ce6e841a867b43ef4128d5",
+    "series_sha256": "df0016934dd8b36a282903f990e3bb82f75a1ee920ee3a9b1285cc208f9adc85"
+  },
+  "rule": {
+    "file": ".agents/skills/youtube-video/references/script-writing.md",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "code_readback": {
+    "files_sha256": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+    },
+    "still_alias_field_available": false,
+    "clip_source_field_not_applicable": "data.source refers to an earlier clip, not a still alias; no video schema field or keyframes manifest was invented.",
+    "native_supported_route": "Official keyframes --shot and the ordinary exact-request cache, with an explicit live-cache byte/SHA check before the teaser invocation.",
+    "cache_identity": "Stage.imageKey includes provider/model/composed prompt/negative/reference SHA/seed/dimensions and image-selection version. Camera and cast enter the composed prompt. Scene IDs/output target do not enter the key.",
+    "cache_miss_is_not_safe_for_reuse": "Stage.generate can submit a new provider job on a cache miss. Therefore equal planned keys alone are insufficient; a missing, changed or mismatched live cache entry/file stops the pair before the teaser CLI command.",
+    "judge_scope": "Each narration scene still needs its own official judge result; request equality does not share or replace either acceptance."
+  },
+  "pairs": [
+    {
+      "asset_plan_id": "knife-before-cut-shared-still",
+      "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+      "setup_scene_id": "c07r2-01-04",
+      "setup_line_id": "c7r20104",
+      "payoff_scene_id": "c07r2-03-01",
+      "payoff_line_id": "c7r20301",
+      "setup_text": "我想跟著它看：修理要拆到哪裡？",
+      "payoff_text": "授權換底頁說，要先移走舊外底、沿條和縫線；示範裡，師傅倒放靴子，刀沿鞋底上緣走。",
+      "prompt": "Overhead view at a repair workbench, anonymous hands holding a plain knife just above the upper edge of a worn boot sole, soft daylight from the left.",
+      "setup_prompt_sha256": "33d1a74a6bc0c1d55d92cb9cac04f81c03e79b992cc36b37124fe4734e1e8e20",
+      "payoff_prompt_sha256": "33d1a74a6bc0c1d55d92cb9cac04f81c03e79b992cc36b37124fe4734e1e8e20",
+      "prompts_identical": true,
+      "camera": "tilt down",
+      "cameras_identical": true,
+      "cast": [],
+      "cast_appearance_prompt": "",
+      "cast_identical": true,
+      "no_result_drawn_in_teaser": "A plain knife is held just above a worn sole edge; no detached parts or teardown result are visible.",
+      "source_scope": "Authorised repair demonstration is a different boot from either public commenter; shared anonymous illustration is not proof of shared physical identity.",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Overhead view at a repair workbench, anonymous hands holding a plain knife just above the upper edge of a worn boot sole, soft daylight from the left.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: tilt down",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "aspect": "16:9",
+        "requested_size": null,
+        "nominal_image_size": "1K",
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "75a53a4b00d82ebd",
+        "native_stage_key": "2f84fa1721a8c53e",
+        "setup_and_payoff_keys_identical": true,
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    },
+    {
+      "asset_plan_id": "return-parcel-shared-still",
+      "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+      "setup_scene_id": "c07r9-01-04b",
+      "setup_line_id": "c7h04b1",
+      "payoff_scene_id": "c07r2-06-08",
+      "payoff_line_id": "c7r20607",
+      "setup_text": "包裹回來時，又多了什麼？",
+      "payoff_text": "評論還特別提到，維修方多添了一組全新鞋帶。",
+      "prompt": "Overhead view at a plain parcel table, anonymous hands resting beside a closed unmarked shoebox, soft daylight from the left.",
+      "setup_prompt_sha256": "91535811d716bb46341251729c30e7d9553238a98225d67ae8299fe6085591c4",
+      "payoff_prompt_sha256": "91535811d716bb46341251729c30e7d9553238a98225d67ae8299fe6085591c4",
+      "prompts_identical": true,
+      "camera": "pan right",
+      "cameras_identical": true,
+      "cast": [],
+      "cast_appearance_prompt": "",
+      "cast_identical": true,
+      "no_result_drawn_in_teaser": "The plain shoebox is closed and its contents are invisible; no new laces, unboxing order or customer likeness is drawn.",
+      "source_scope": "July public review is not verified and gives no documentary unboxing sequence; this is a neutral conceptual parcel shared at two narration positions.",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Overhead view at a plain parcel table, anonymous hands resting beside a closed unmarked shoebox, soft daylight from the left.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "aspect": "16:9",
+        "requested_size": null,
+        "nominal_image_size": "1K",
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "303e7719d5aed9ad",
+        "native_stage_key": "86299f960e56fdbe",
+        "setup_and_payoff_keys_identical": true,
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    }
+  ],
+  "production_handoff": {
+    "preconditions": [
+      "New exact source/visual and fresh narrative reviews, owner outline/script approval, true production admission and whole-film quote are still required. Nothing here starts paid work.",
+      "Read actual model/provider/version, size, look, prompt budget, cast/style-reference SHA, correction list and seed from the admitted execution context. Recompute both live Stage.imageKey values using those actual identical inputs; the example tuple above is not backend readback.",
+      "Keep the pair in one unchanged project/workdir and serialize its operations. Do not run another writer, retake, cache cleaner or competing generation between preflight and reuse."
+    ],
+    "per_pair_sequence": [
+      {
+        "asset_plan_id": "knife-before-cut-shared-still",
+        "first": {
+          "purpose": "Only after normal admission: generate payoff once, then independently judge that scene.",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/c07-submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-dr-martens-c07-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c07r2-03-01",
+            "--takes",
+            "1"
+          ],
+          "require": "That exact first take must pass and remain selected. Record the real cache key, source file path, bytes/SHA, job and ledger receipt; no retake/correction or second seed."
+        },
+        "before_second_command_required": {
+          "executed": false,
+          "live_cache_read": "Immediately before invoking the teaser, read readCache(projectWorkdir).entries[recomputedLiveKey] and the real entry.file under that workdir.",
+          "require_all": [
+            "Both recomputed live keys are equal and match the accepted payoff first-take key.",
+            "The cache entry exists and its file still exists. Read and SHA256 the actual file bytes; require equality with cache entry.sha256 and the recorded accepted payoff source-file SHA.",
+            "Resolve the actual source file path and require it is the very file registered for that accepted payoff request; no substitute, expired entry, unsupported alias or unresolved path.",
+            "The source scene still selects that accepted first take; model/version/references/size/seed/correction and cache state have not changed."
+          ],
+          "on_any_failure": "STOP BEFORE THE TEASER COMMAND. A cache miss is not permission to generate; restore/reconcile the legitimately accepted shared asset through the normal owner-approved route, never buy a similar second image."
+        },
+        "second": {
+          "purpose": "Invoke only after the live-cache byte/SHA preflight passes; this must reuse the existing source file.",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/c07-submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-dr-martens-c07-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c07r2-01-04",
+            "--takes",
+            "1"
+          ],
+          "require": "Preserve actual reused=true cache/job receipts and apply the teaser scene official judge. If reuse is absent or either scene needs a retake, stop the pair."
+        }
+      },
+      {
+        "asset_plan_id": "return-parcel-shared-still",
+        "first": {
+          "purpose": "Only after normal admission: generate payoff once, then independently judge that scene.",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/c07-submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-dr-martens-c07-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c07r2-06-08",
+            "--takes",
+            "1"
+          ],
+          "require": "That exact first take must pass and remain selected. Record the real cache key, source file path, bytes/SHA, job and ledger receipt; no retake/correction or second seed."
+        },
+        "before_second_command_required": {
+          "executed": false,
+          "live_cache_read": "Immediately before invoking the teaser, read readCache(projectWorkdir).entries[recomputedLiveKey] and the real entry.file under that workdir.",
+          "require_all": [
+            "Both recomputed live keys are equal and match the accepted payoff first-take key.",
+            "The cache entry exists and its file still exists. Read and SHA256 the actual file bytes; require equality with cache entry.sha256 and the recorded accepted payoff source-file SHA.",
+            "Resolve the actual source file path and require it is the very file registered for that accepted payoff request; no substitute, expired entry, unsupported alias or unresolved path.",
+            "The source scene still selects that accepted first take; model/version/references/size/seed/correction and cache state have not changed."
+          ],
+          "on_any_failure": "STOP BEFORE THE TEASER COMMAND. A cache miss is not permission to generate; restore/reconcile the legitimately accepted shared asset through the normal owner-approved route, never buy a similar second image."
+        },
+        "second": {
+          "purpose": "Invoke only after the live-cache byte/SHA preflight passes; this must reuse the existing source file.",
+          "argv": [
+            "node",
+            "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+            "/workspace/work/brand-story-20261025/c07-submission-root",
+            "keyframes",
+            "--slug",
+            "story-everyday-dr-martens-c07-remake-20261025",
+            "--workdir",
+            "/workspace/work/brand-story-20261025/media",
+            "--shot",
+            "c07r9-01-04b",
+            "--takes",
+            "1"
+          ],
+          "require": "Preserve actual reused=true cache/job receipts and apply the teaser scene official judge. If reuse is absent or either scene needs a retake, stop the pair."
+        }
+      }
+    ],
+    "on_any_failure_or_changed_request": "Stop the pair. Do not change only one endpoint, reroll a seed, buy an independently corrected look-alike, use --force/--accept-best, or hand-edit a manifest. If a factual/style correction is necessary, update both ends and repeat the normal exact-bound source/visual and admitted production process within existing account/take caps.",
+    "actual_verification_required": [
+      "Read the real official keyframes manifest only after both scene judges. Require both final selected references to resolve to the identical file, then SHA256 its actual bytes; preserve each actual assignment and verdict.",
+      "If either source is trimmed, verify both final selections and assembly inputs use the same derived file and actual SHA. Equality of pre-trim source hashes is insufficient.",
+      "Preserve real generation, cache-hit, judge, trim, selected-manifest, assembly and ledger receipts and confirm no duplicate teaser image purchase.",
+      "Until those actual checks pass, every file/SHA and actual_same_asset_verified stays null/false. Matching prompt/key or a written plan is not generated-image acceptance or media QA."
+    ],
+    "executed": false
+  },
+  "provider_calls": 0,
+  "paid_calls": 0
+}

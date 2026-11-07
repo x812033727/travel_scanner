@@ -1,0 +1,369 @@
+{
+  "topic": "C08 Kikkoman soy-sauce tabletop dispenser: patent/design source research",
+  "retrieved_at_utc": "2026-10-25T18:38:02.113335+00:00",
+  "scope": "Read-only research; writes restricted to this patent-research artifact directory. No repository, backend, paid, authentication, or git actions.",
+  "method": "Fetched actual source HTML/PDF/image bytes via inherited proxy with TLS validation; extracted PDFs with pdftotext -layout; visually checked JP5727888B2 p1 and JPAA pamphlet pp2-3. Search snippets used only for discovery, never as final evidence. Also visually checked the already-requested INPIT teaching PDF pp6-8 after that download completed.",
+  "conclusion": [
+    "Original full granted patent JP5727888B2 was acquired and directly read. Its later sealed-container subject is tied to the 2011 200mL tabletop bottle by the JPAA pamphlet pp2-3; this is not a 1961 Ekuan patent.",
+    "No original 1961 patent or design filing was located in the bounded search. This is a research gap, not evidence that none existed.",
+    "The 2011 launch release says patent applied for but supplies no number. A later published association source identifies JP5727888 for this product lineage; this does not establish that every 2011 production bottle met every later granted claim.",
+    "2018 registration 6031041 is a three-dimensional trademark concerning source recognition; it is not a functional patent or the original 1961 design filing."
+  ],
+  "sources": [
+    {
+      "name": "kikkoman-ip-topics1.html",
+      "url": "https://www.kikkoman.com/en/quality/ip/topics1/",
+      "final_url": "https://www.kikkoman.com/en/quality/ip/topics1/",
+      "sha256": "57f07ce389c39098aa9f2d71e3f7fa3ea175b3790c8a5c8118c63228c2c92c4e",
+      "bytes": 27791,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/kikkoman-ip-topics1.html"
+    },
+    {
+      "name": "kikkoman-ip-protection.html",
+      "url": "https://www.kikkoman.com/jp/quality/ip/protection.html",
+      "final_url": "https://www.kikkoman.com/jp/quality/ip/protection.html",
+      "sha256": "014f405509f451b20851d317edd397c84d613738fea7dbcd4a128bf5219ffe56",
+      "bytes": 28211,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/kikkoman-ip-protection.html"
+    },
+    {
+      "name": "kikkoman-2011-launch.html",
+      "url": "https://www.kikkoman.com/jp/corporate/news/11034.html",
+      "final_url": "https://www.kikkoman.com/jp/corporate/news/11034.html",
+      "sha256": "b65d9da5c95fdcf4a71cece6d3f4d61595debd99f23bf92db5ac710b07cce206",
+      "bytes": 14194,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/kikkoman-2011-launch.html"
+    },
+    {
+      "name": "kikkoman-2018-trademark.html",
+      "url": "https://www.kikkoman.com/jp/news/2018/20180417.html",
+      "final_url": "https://www.kikkoman.com/jp/news/2018/20180417.html",
+      "sha256": "677c19dc2656067529d80b3172618cb698335f58beda317d80199c117fd4487b",
+      "bytes": 31941,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/kikkoman-2018-trademark.html"
+    },
+    {
+      "name": "JP5727888B2.html",
+      "url": "https://patents.google.com/patent/JP5727888B2/en",
+      "final_url": "https://patents.google.com/patent/JP5727888B2/en",
+      "sha256": "0a4504637d29c405affb5623f4edbc14ccf60d04dbad51129bfc28dad4f921c5",
+      "bytes": 473406,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/JP5727888B2.html"
+    },
+    {
+      "name": "JP5053463B2.html",
+      "url": "https://patents.google.com/patent/JP5053463B2/en",
+      "final_url": "https://patents.google.com/patent/JP5053463B2/en",
+      "sha256": "ae10fbc112043cecfe11bc48d1ef825226be027f540f667f93aee549a193bf28",
+      "bytes": 292729,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/JP5053463B2.html"
+    },
+    {
+      "name": "jpaa-design-pamphlet.pdf",
+      "url": "https://www.jpaa.or.jp/cms/wp-content/uploads/2023/03/design-pamphlet.pdf",
+      "final_url": "https://www.jpaa.or.jp/cms/wp-content/uploads/2023/03/design-pamphlet.pdf",
+      "sha256": "8514ca1f251208bd4ad1d05d55987d98c76a75044933f6f40a85743befdb5811",
+      "bytes": 11662865,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/jpaa-design-pamphlet.pdf"
+    },
+    {
+      "name": "US20130119092A1.html",
+      "url": "https://patents.google.com/patent/US20130119092A1/en",
+      "final_url": "https://patents.google.com/patent/US20130119092A1/en",
+      "sha256": "60abee184a127cd9e689eae3d3df7d47e4f6af805fa66bd55080b9e425e7cec9",
+      "bytes": 393862,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/US20130119092A1.html"
+    },
+    {
+      "name": "jpo-workshop-2025.pdf",
+      "url": "https://tmfive.org/wp-content/uploads/2025/06/2025-INTA-9th-Joint-Workshop-JPO.pdf",
+      "final_url": "https://tmfive.org/wp-content/uploads/2025/06/2025-INTA-9th-Joint-Workshop-JPO.pdf",
+      "sha256": "54b8fdfd9e744558e24f57d14a4b4c353314c46e9e54af0006a15bc8046878d0",
+      "bytes": 676403,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/jpo-workshop-2025.pdf"
+    },
+    {
+      "name": "JP5727888B2.pdf",
+      "url": "https://patentimages.storage.googleapis.com/76/60/a8/45cd90f41229d0/JP5727888B2.pdf",
+      "status": 200,
+      "bytes": 519245,
+      "sha256": "b45e7a295f5f9e13687a1b4c8ca21ed724713aac3c53e937ed5609776320b9ba",
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/JP5727888B2.pdf"
+    },
+    {
+      "name": "JP5053463B2.pdf",
+      "url": "https://patentimages.storage.googleapis.com/a6/55/2c/482700e814f5a7/JP5053463B2.pdf",
+      "status": 200,
+      "bytes": 204582,
+      "sha256": "35a25cc4e607b5aac47abea5659369288d716a7b72b216a215e79957f64ee89f",
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/JP5053463B2.pdf"
+    },
+    {
+      "name": "US20130119092A1.pdf",
+      "url": "https://patentimages.storage.googleapis.com/83/88/f5/73018509bd6016/US20130119092A1.pdf",
+      "status": 200,
+      "bytes": 1311942,
+      "sha256": "ef4d0ac6b180a82bef2efe024df1a7a986c5db735e2477e8b0290a83f1fd0819",
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/US20130119092A1.pdf"
+    },
+    {
+      "name": "inpit-ipmix.pdf",
+      "url": "https://www.inpit.go.jp/content/100882381.pdf",
+      "final_url": "https://www.inpit.go.jp/content/100882381.pdf",
+      "sha256": "b205d203a3603555d3cca17a9d3ca933deef7e17853311b489d5890e1f7d2398",
+      "bytes": 18687644,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/inpit-ipmix.pdf"
+    },
+    {
+      "name": "kikkoman-protection-im01.jpg",
+      "url": "https://www.kikkoman.com/jp/quality/ip/img/protection_im01.jpg",
+      "sha256": "a2856e9a1584bbe600ef21bdf166ca717a432251fb4c568e52848e4398dbecfb",
+      "bytes": 30803,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/kikkoman-protection-im01.jpg"
+    },
+    {
+      "name": "kikkoman-protection-im02.jpg",
+      "url": "https://www.kikkoman.com/jp/quality/ip/img/protection_im02.jpg",
+      "sha256": "aebb10841924419cab1e91fc098e7a5f08a7ed1fa27bc2c9a1fafca94df7e9b2",
+      "bytes": 3008,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/kikkoman-protection-im02.jpg"
+    },
+    {
+      "name": "US9238527B2.pdf",
+      "url": "https://patentimages.storage.googleapis.com/fd/7c/4b/e0c1daef1dae4f/US9238527.pdf",
+      "status": 200,
+      "sha256": "4c463747cb31cef7f34507117dae32327be1d22a65db1e4c45b918e633798a6f",
+      "bytes": 2884292,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/US9238527B2.pdf"
+    },
+    {
+      "name": "JP2012192975A",
+      "url": "https://patents.google.com/patent/JP2012192975A/en",
+      "error": "HTTP Error 503: Service Unavailable"
+    },
+    {
+      "name": "inpit-ipmix.pdf",
+      "url": "https://www.inpit.go.jp/content/100882381.pdf",
+      "final_url": "https://www.inpit.go.jp/content/100882381.pdf",
+      "sha256": "b205d203a3603555d3cca17a9d3ca933deef7e17853311b489d5890e1f7d2398",
+      "bytes": 18687644,
+      "status": 200,
+      "local_path": "/workspace/work/brand-story-20261025/c08-audit/patent-research/inpit-ipmix.pdf"
+    }
+  ],
+  "findings": [
+    {
+      "id": "P1",
+      "document": "JP5727888B2.pdf",
+      "title": "吐出容器 / Discharge container",
+      "type": "Original Japanese granted-patent publication (19 PDF pages)",
+      "source_url": "https://patents.google.com/patent/JP5727888B2/en",
+      "dates_from_original_page1": {
+        "priority": "2011-02-28 (JP2011-42180)",
+        "application": "2011-07-11 (JP2011-153262)",
+        "registration": "2015-04-10",
+        "B2_publication": "2015-06-03",
+        "A_publication": "2012-10-11 (JP2012-192975)"
+      },
+      "date_caution": "Google Patents timeline labels 2015-06-03 Application granted. Original p1 distinguishes registration 2015-04-10 from publication 2015-06-03; use original dates.",
+      "holders_from_original_page1": [
+        "株式会社吉野工業所 / Yoshino Kogyosho Co., Ltd.",
+        "キッコーマン株式会社 / Kikkoman Corporation"
+      ],
+      "precise_locators": [
+        {
+          "pdf_page": 1,
+          "location": "Claim 1 opening",
+          "exact_excerpt": "内容物が収容されるとともに内容物の減少に伴いしぼみ変形する可撓性に富む内容器"
+        },
+        {
+          "pdf_page": 1,
+          "location": "Claim 1 final limitation",
+          "exact_excerpt": "前記軸線方向に沿って摺動可能な前記弁体部に当接して当該弁体部の弾性変位量を規制する変位量規制部が、前記本体筒部材に形成されている"
+        },
+        {
+          "pdf_page": 3,
+          "location": "Description [0004]-[0005]",
+          "summary": "Problem/object is suppressing leakage at the outlet of contents which were not returned to the inner container after dispensing."
+        },
+        {
+          "pdf_page": 4,
+          "location": "Description [0007]-[0010]",
+          "summary": "Squeezing raises inner-container pressure and displaces the valve axially; release returns it, increasing an intermediate space and drawing residual contents from the outlet."
+        }
+      ],
+      "safe_scope": "Claim 1 covers a specified combination: flexible shrinking inner container; outer container with air intake; discharge cap; outside-air inlet; air valve; inner plug and cylindrical cap body; axially sliding, elastically moving liquid valve; displacement restrictor. Claims 2 and 3 are other independent combinations with over-cap/seal and flow-allowing groove limitations. Do not reduce this to a monopoly on all double-wall bottles.",
+      "product_mapping": "JPAA pamphlet p2 names patent 5727888 beside the 200mL Itsudemo Shinsen tabletop bottle. Its p3 explicitly describes the August 2011 launch and double-structure squeeze bottle/double-check-valve cap. This is a credible later product-to-patent bridge, not the 2011 release itself.",
+      "excluded_inferences": [
+        "No connection to the 1961 red-cap 150mL glass bottle has been established.",
+        "No current enforceability opinion or present SKU claim chart is supplied.",
+        "Patent claim limitations alone do not prove a product uses the claimed structure."
+      ]
+    },
+    {
+      "id": "P2",
+      "document": "jpaa-design-pamphlet.pdf",
+      "type": "Japan Patent Attorneys Association official design pamphlet, not the original design gazette",
+      "precise_locators": [
+        {
+          "pdf_page": 2,
+          "printed_page": 2,
+          "location": "Product heading and registration list",
+          "exact_excerpt": "意匠登録 第1443164号、第1459666号 / 特許 第5727888号",
+          "summary": "Lists these rights alongside named Itsudemo Shinsen Shiboritate Nama Shoyu tabletop bottle and 200mL product photograph."
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 2,
+          "location": "Bottom right column",
+          "summary": "Says a 200mL bottle was developed for tabletop ease and adopted the form of the tabletop bottle sold since 1961; attributes original tabletop bottle to Kenji Ekuan."
+        },
+        {
+          "pdf_page": 3,
+          "printed_page": 3,
+          "location": "Left column, second paragraph",
+          "summary": "Dates tabletop-bottle launch August 2011 and explains flexible plastic outer bottle with internal soy-sauce bag and double-check-valve cap."
+        },
+        {
+          "pdf_page": 3,
+          "printed_page": 3,
+          "location": "Left column, second paragraph",
+          "summary": "Says the bottle body without cap and the outlet were each registered as partial designs."
+        }
+      ],
+      "safe_scope": "Useful for separating functional patent 5727888, later body/outlet partial designs 1443164/1459666 and trademark registrations. The original 1961 design is a historical predecessor here, not assigned those later design registrations.",
+      "limitation": "No original D1443164/D1459666 design gazette PDF was acquired in this subtask; their numbers are corroborated by the association pamphlet. Do not call this pamphlet an original filing."
+    },
+    {
+      "id": "P3",
+      "document": "US9238527B2.pdf",
+      "type": "Original US granted patent, 35 PDF pages",
+      "title": "Dispensing Container",
+      "precise_locators": [
+        {
+          "pdf_page": 1,
+          "location": "Bibliographic front page",
+          "summary": "US 9,238,527 B2; patent date Jan 19 2016; holders Yoshino Kogyosho and Kikkoman; PCT filed June 5 2012. Foreign priorities list JP2011-128826 (June 9), JP2011-153262 (July 11), JP2011-173843 (August 9)."
+        },
+        {
+          "pdf_page": 34,
+          "printed_columns": "25-26",
+          "location": "What is claimed is: claim 1",
+          "exact_excerpt": "a valve body is arranged and fitted in the communication port so as to be slidable along an axial direction of the communication port",
+          "summary": "English granted claim covers specified inner/outer containers, air valve and an axially sliding elastic liquid-valve structure."
+        }
+      ],
+      "safe_scope": "Additional original English-language granted document citing JP2011-153262 among priorities. Its claims differ in breadth/limitations from JP5727888B2; do not describe them as identical grants, and do not backdate its grant to the 2011 launch."
+    },
+    {
+      "id": "P4",
+      "documents": [
+        "JP5053463B2.pdf",
+        "US20130119092A1.pdf"
+      ],
+      "type": "Original Japanese grant plus US application publication; rejected as unproven marketed-bottle match",
+      "precise_locators": [
+        {
+          "document": "JP5053463B2.pdf",
+          "pdf_page": 1,
+          "location": "Claim 1",
+          "exact_excerpt": "前記蓋部の側面と本体部の内面とのなす角度は１５〜２５°"
+        },
+        {
+          "document": "JP5053463B2.pdf",
+          "pdf_page": 1,
+          "location": "Claim 2 start",
+          "exact_excerpt": "フィルムからなる容器本体と"
+        },
+        {
+          "document": "JP5053463B2.pdf",
+          "pdf_page": 2,
+          "location": "Claim 3",
+          "summary": "A container according to claim 2 suppressing oxidation deterioration of the soy sauce inside."
+        },
+        {
+          "document": "US20130119092A1.pdf",
+          "pdf_page": 1,
+          "location": "Front page",
+          "summary": "Patent Application Publication, May 16 2013; PCT filed July 22 2011; foreign priority July 23 2010 JP2010-165562; Kikkoman, Mikasa and Asahi Kasei Pax listed as assignees."
+        },
+        {
+          "document": "US20130119092A1.pdf",
+          "pdf_page": 21,
+          "location": "Claim 6",
+          "exact_excerpt": "a container main body formed of a film"
+        }
+      ],
+      "safe_scope": "A rubber integrally molded hinged check valve; grant claim 1 has detailed geometry/material restrictions and claim 2 recites a film container. No direct product mapping to the 2011 200mL bottle was established.",
+      "critical_caution": "Its 15-25 degree limitation is the angle between valve-lid side and valve-body inner surface, NOT the 1961 red-cap dispensing-spout angle. US20130119092A1 is an application publication, not a granted US patent."
+    },
+    {
+      "id": "P5",
+      "document": "jpo-workshop-2025.pdf",
+      "type": "Official JPO educational presentation hosted by TM5; trademark adjunct",
+      "precise_locators": [
+        {
+          "pdf_page": 16,
+          "printed_page": 16,
+          "location": "Registration No. 6031041 slide",
+          "exact_excerpt": "Registration No. 6031041",
+          "summary": "Names Kikkoman, registration March 30 2018, class 30; presents sales, long use of the same form, and consumer-recognition evidence."
+        }
+      ],
+      "safe_scope": "Supports registration and acquired distinctiveness argument only. A trademark does not establish a functional patent, precise fluid-mechanic mechanism, or an original 1961 patent filing."
+    },
+    {
+      "id": "P6",
+      "document": "kikkoman-ip-protection.html",
+      "type": "Current official product/IP explainer, full HTML and linked product figures acquired",
+      "precise_locators": [
+        {
+          "html_lines": "112,162",
+          "location": "Figures protection_im01.jpg and protection_im02.jpg",
+          "summary": "First figure labels bottle body design right, cap patent/design right, name/logos/position/3D trademark; a 200mL purple-cap sealed bottle is pictured. No patent numbers are printed in these figure bytes."
+        }
+      ],
+      "safe_scope": "Current official page supports the categories of protection. It does not alone identify grant number 5727888 or prove every current SKU falls within each granted claim. 2022 entire-bottle 3D trademark mentioned here concerns later sealed bottle, not 2018 classic glass-bottle trademark."
+    },
+    {
+      "id": "P7",
+      "document": "inpit-ipmix.pdf",
+      "type": "Official JPO-created instructional deck hosted by INPIT; later corroborating product-to-patent bridge with J-PlatPat screenshots, not a replacement for the original full gazette",
+      "precise_locators": [
+        {
+          "pdf_page": 6,
+          "printed_page": 5,
+          "summary": "Photograph of the 200mL purple-cap sealed bottle alongside patent 5727888, designs 1443164/1459666, and source credit stating prepared by JPO from Kikkoman official website."
+        },
+        {
+          "pdf_page": 7,
+          "printed_page": 6,
+          "summary": "Names Yoshino/Kikkoman, patent 5727888, title 吐出容器, and reproduces J-PlatPat record; original registration date April 10 2015 and publication June 3 2015 are visible."
+        },
+        {
+          "pdf_page": 8,
+          "printed_page": 7,
+          "summary": "Reproduces design J-PlatPat records: D1443164 注出口付き包装用容器 (partial design), filed June 8 2011, registered May 11 2012, published June 11 2012; D1459666 包装用容器の注出口, filed July 18 2012, registered December 14 2012, published January 21 2013. Both show Kikkoman and Yoshino holders."
+        }
+      ],
+      "safe_scope": "Strong official corroboration of later sealed bottle and listed rights. Downloaded complete deck and screenshots were directly viewed. It does not turn the educational deck into a full original design filing or connect these rights to 1961."
+    }
+  ],
+  "search_gap": {
+    "original_1961_filing": "Not found after English/Japanese searches for Kenji Ekuan/榮久庵, Kikkoman/野田醤油, soy sauce dispenser, patent, utility model and design registration. No claimed filing number should be invented.",
+    "not_acquired": "Original 1961 design/patent gazette; original D1443164/D1459666 gazettes; JP2012192975A fetch returned HTTP503.",
+    "status_caution": "Only historical grant/publication face dates and claim text are used. No official current patent register/annuity check was performed."
+  }
+}

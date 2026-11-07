@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_SOURCE_OR_NARRATIVE_APPROVAL",
+  "revision": "garmin-r4",
+  "checked_at_utc": "2026-10-26T06:31:36.325300+00:00",
+  "source_video_sha256": "96b1e2a519c739dcf4b9bf9f26949370e3ea911ad2f368602cc29c1a1fda4043",
+  "ordinary_cli_argv": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/garmin-submission-root",
+    "lint",
+    "--slug",
+    "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_exit_code": 0,
+  "raw_output_path": "/workspace/work/brand-story-20261025/garmin-audit/author-r4/native-lint-r4.raw.json",
+  "raw_output_sha256": "075b1016b666739799be6518e2651c3a8092d5006e4e946e5206fa22b94ad5fb",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"adult\" is in 123 of 132 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"wrist\" is in 113 of 132 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"device\" is in 100 of 132 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "「三零五」 is said in 5 lines (gr1a01, gr1a12, gr1a15, gr1d01, gr1v01): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    }
+  ],
+  "native_summary": {
+    "minutes": 13.775,
+    "lines": 135,
+    "spoken_units": 2877,
+    "billable_characters": 10155,
+    "chapters": [
+      "00:00 手腕上的錶，還在等天空",
+      "00:52 先充好電，再等訊號條消失",
+      "03:44 坐標變成配速，還得讓人看懂",
+      "05:53 重設之前，先把這一跑留下來",
+      "07:45 天線沿著手腕，朝天空轉過去",
+      "09:59 記得更細，能留下的時間反而變短",
+      "11:53 二零零九年，記錄到了軟體裡"
+    ]
+  },
+  "remaining_warning_scope": "Three visual motif concentration notices and one305 model-name scope notice; no cadence/duplicate-shot/shotlength warning.",
+  "chapter_viewer_narrator_counts": [
+    {
+      "chapter": "手腕上的錶，還在等天空",
+      "you": 5,
+      "I": 1
+    },
+    {
+      "chapter": "先充好電，再等訊號條消失",
+      "you": 8,
+      "I": 1
+    },
+    {
+      "chapter": "坐標變成配速，還得讓人看懂",
+      "you": 9,
+      "I": 1
+    },
+    {
+      "chapter": "重設之前，先把這一跑留下來",
+      "you": 6,
+      "I": 1
+    },
+    {
+      "chapter": "天線沿著手腕，朝天空轉過去",
+      "you": 8,
+      "I": 1
+    },
+    {
+      "chapter": "記得更細，能留下的時間反而變短",
+      "you": 6,
+      "I": 1
+    },
+    {
+      "chapter": "二零零九年，記錄到了軟體裡",
+      "you": 5,
+      "I": 3
+    }
+  ],
+  "source_script_claims_narration_projection_exact": true,
+  "normal_pure_planner_receipt": "/workspace/work/brand-story-20261025/garmin-audit/author-r4/free-native-planner-r4.json",
+  "normal_pure_planner_sha256": "25b7e5b7c8d2c4dd5836a33f6839377dc29714532d9b97578e2a2bb7494cf01d",
+  "immutable_lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+  "dictionary_sequence": 1,
+  "dictionary_rebuilt_or_republished": false,
+  "canonical_runtime_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb",
+  "actual_body_seconds": null,
+  "actual_final_seconds": null,
+  "actual_duration_verified": false,
+  "required_actual_body_seconds": [
+    720,
+    840
+  ],
+  "extra_bookends_seconds": 26,
+  "whole_narration_spoken_units": 2877,
+  "planning_at4_to5_units_per_second": [
+    575.4,
+    719.25
+  ],
+  "planning_at4_5_units_per_second": 639.3333333333334,
+  "duration_capacity_risk": true,
+  "actual_duration_failure_claimed": false,
+  "source_pass_claimed": false,
+  "fresh_native_pass_claimed": false,
+  "actual_native_round_count": 2,
+  "native_state": "R3_NATIVE2_HOLD_ARCHIVED_R4_NATIVE3_NOT_PREPARED",
+  "generated_story_media": 0,
+  "paid_calls": 0,
+  "backend_calls": 0
+}

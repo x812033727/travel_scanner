@@ -1,0 +1,83 @@
+{
+  "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "reviewer": "/root/c06_translate_en_ja",
+  "independent": true,
+  "role_disclosure": "曾翻譯本集EN/JA，未翻譯KO/ES；本次只讀KO/ES工作表、對應原生基底與原生合併譯文，未讀其他校對收據。",
+  "reviewed_at": "2026-10-25T18:56:19.958332+00:00",
+  "scope": "全量逐163句／6章及metadata獨立文字校對；不是媒體、配音時長、SRT或成片批准。",
+  "locales": [
+    {
+      "locale": "ko",
+      "worksheet_sha256": "cae440fa8cd969af5d92c063d4186ae591cb1489c7e1971e4d560287c408e7e7",
+      "translation_sha256": "b190f99b2676a517ceaff698e313b0d26a2affd6a338f8f7830d79b75b2eaf47",
+      "status": "FIXES_REQUIRED",
+      "checked_lines": 163,
+      "checked_chapters": 6,
+      "checked_metadata": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail"
+      ],
+      "findings": [
+        {
+          "target": "lines.c6so112",
+          "required": true,
+          "current": "여러분이 다음 통을 살 때까지 이어지리라는 보장은 없죠.",
+          "proposed": "그렇다고 여러분이 한 통을 더 사리라는 보장은 없죠.",
+          "reason": "原文是原用途仍能完成，也未必會有再次購買；目前「다음 통을 살 때까지 이어지리라는」變成是否能延續到下一次購買，反而預設將有下一次購買，淡化了需求縮小的因果。建議直接保留「未必再買一罐」。"
+        },
+        {
+          "target": "lines.c6sk131",
+          "required": true,
+          "current": "저는 색에서 가장 재미있는 점이 선택을 하게 해 준다는 거예요. 재료는 그저 납작해지기를 기다리는 게 아니라,",
+          "proposed": "저는 색이 선택할 수 있게 해 준다는 점이 가장 재미있어요. 재료는 그저 납작해지기를 기다리는 게 아니라,",
+          "reason": "目前以「저는」起句，接「가장 재미있는 점이 … 거예요」的主題／述語銜接不自然，配音會像未完成或混合的句式。改為「我最感興趣的是色彩讓人能選擇」，保留我視角與下一句邊界。"
+        },
+        {
+          "target": "lines.c6sk141",
+          "required": true,
+          "current": "그런데 작품에 가느다란 줄을 한 줄 더 붙이고 싶다면요? 한 가닥씩 천천히 굴려 만들 때, 원하는 모양은 어떻게 낼까요?",
+          "proposed": "그런데 작품에 가느다란 줄을 여러 가닥 나란히 붙이고 싶다면요? 한 가닥씩 천천히 굴려 만들 때, 원하는 모양은 어떻게 낼까요?",
+          "reason": "原文「一排細長條」為多條並列，目前「가느다란 줄을 한 줄 더」易讀成再加一條細線，與後面的逐根製作不一致。改為多條並排，不增加新工具或新事實。"
+        }
+      ],
+      "advisory": [
+        "工作表非text欄位與純基底完全一致；163句、6章及metadata與原生合併譯文逐項一致，來源網址原字元／順序保持。",
+        "2024出貨罐數、各歷史年份、1960申請／1965核發、專利可選成分與文本主張最長三年，以及2026產品／噴霧的公司歸因保留；未改成零售／人數／收入或實際產品保證。",
+        "此為文字對照；無真實音訊／時間軸，未判配音time-fit、實際縮圖可讀性或成片QA。"
+      ]
+    },
+    {
+      "locale": "es",
+      "worksheet_sha256": "938551525675c0e9d45581615ead8c2c53da7df5e3398bc88b3f43711e4dee21",
+      "translation_sha256": "00ea236c6fc9309b9e49b7560bb5666c17615a476caa8a4d073226743ddcba3e",
+      "status": "TEXT_PASS",
+      "checked_lines": 163,
+      "checked_chapters": 6,
+      "checked_metadata": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail"
+      ],
+      "findings": [
+        {
+          "target": "thumbnail.sub",
+          "required": false,
+          "current": "2024: +500 M de botes",
+          "proposed": "2024: 500M+ botes",
+          "reason": "目前21字元的縮圖短標可理解，且保留2024、逾5億與罐數單位，未含原生拒絕的尖括號。建議可用17字元的常見縮圖簡寫，保留年份與單位、少用介詞；未以中文字數直接判定西語失敗，也未宣稱實際渲染可讀性。"
+        }
+      ],
+      "advisory": [
+        "工作表非text欄位與純基底完全一致；163句、6章及metadata與原生合併譯文逐項一致，來源網址原字元／順序保持。",
+        "2024出貨罐數、各歷史年份、1960申請／1965核發、專利可選成分與文本主張最長三年，以及2026產品／噴霧的公司歸因保留；未改成零售／人數／收入或實際產品保證。",
+        "此為文字對照；無真實音訊／時間軸，未判配音time-fit、實際縮圖可讀性或成片QA。"
+      ]
+    }
+  ],
+  "paid_requests": 0,
+  "backend_writes": 0,
+  "target_text_mutated": false
+}

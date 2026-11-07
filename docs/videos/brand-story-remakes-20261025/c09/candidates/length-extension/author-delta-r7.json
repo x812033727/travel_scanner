@@ -1,0 +1,183 @@
+{
+  "revision": "length-extension-r7",
+  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_WRITTEN_VISUAL_DELTA_AND_TWO_NEW_ISOLATED_READERS",
+  "baseline": "history/r6",
+  "baseline_input_sha256": {
+    "video.json": "f12dd1a611783ccbfd94377d5c79b7099d9b14541f49d602e6a8abe9ec228962",
+    "script.md": "be8d0331bb468c9c33ac4cd17670e13503f0594455aceb9504fea1a117edc88f",
+    "narration-only.json": "9fb48e140406d089e4555e8a26c47cc7a12b4d4e62477428d915167e35dc23d4",
+    "claims.json": "edc8bbf93db92cb206851f11e92539327d095eb39121f67840e1bc847e10aea1"
+  },
+  "retained_ids_and_unmodified_visuals_preserved": true,
+  "deleted_lines": [
+    {
+      "id": "c09r5037",
+      "key": "use_reaction",
+      "text": "我讀這些細節才覺得，一枚貨品已經長進使用者的習慣裡；換工具，連動作都得換。",
+      "reason": "刪去對剛說過的器材動作與習慣作總結；5038保留原有可被回信回答的問題。"
+    },
+    {
+      "id": "c09r5048",
+      "key": "catalog_start",
+      "text": "於是一九七二年的型錄，直接把要求印了進去：使用自家器材，也得克制。",
+      "reason": "開場5004已說自家型錄要求克制，章首不再重報。"
+    },
+    {
+      "id": "c09r5096",
+      "key": "climb_reaction",
+      "text": "我覺得這幾步，比一句示範成功更能讓人信服：工具的用法，得在真正承重時一點點找回來。",
+      "reason": "刪去對剛發生的承重與放置困難作信服／用法歸納；5097保留原有下一個真實結果問題。"
+    },
+    {
+      "id": "c09r5110",
+      "key": "outro_answer",
+      "text": "修納德那句少敲，最後得由他自己把體重交給楔塊，才不只是一句賣家的勸告。",
+      "reason": "5091已第一次交付修納德親自承重的動作，末尾不再概括同一行為。"
+    }
+  ],
+  "modified_lines": [
+    {
+      "id": "c09r5038",
+      "key": "use_letter_q",
+      "before_text": "那麼，最熟悉這些動作的賣家自己，當時願意換嗎？",
+      "after_text": "我更想知道，最熟悉這些動作的賣家自己，當時願意換嗎？",
+      "source_anchor": "S4:008",
+      "reason": "僅將原有未解問題改為旁白反應，不新增事實或另說已知結果。"
+    },
+    {
+      "id": "c09r5045",
+      "key": "use_larger",
+      "before_text": "報導寫，有些原本能用小釘子的裂縫，後來得換大釘子；工具的尺寸，也跟著傷痕走。",
+      "after_text": "報導寫，有些原本能用小釘子的裂縫，後來得換大釘子。",
+      "source_anchor": "S4:008",
+      "reason": "保留裂縫從小釘改需大釘的首次史實，撤去「尺寸跟著傷痕走」的同義歸納。"
+    },
+    {
+      "id": "c09r5060",
+      "key": "catalog_guides",
+      "before_text": "還要把位置記進當地攀登指南。工具留在岩壁，資訊也得讓下一個人接得到。",
+      "after_text": "還要把位置記進當地攀登指南。",
+      "source_anchor": "S2:030",
+      "reason": "保留寫進當地指南的首次具體方法，撤去資訊傳給下一人的同義歸納。"
+    },
+    {
+      "id": "c09r5087",
+      "key": "climb_target",
+      "before_text": "目標是酋長岩的鼻子路線。他們把這件事，從冊子上的要求，帶到了一次真正的大岩壁攀登。",
+      "after_text": "目標是酋長岩的鼻子路線。",
+      "source_anchor": "S8:011",
+      "reason": "保留Nose目標，撤去再說一次「從冊子走到實際攀登」的主題總結。"
+    },
+    {
+      "id": "c09r5097",
+      "key": "climb_trust_q",
+      "before_text": "那麼，卡森最後真的得丟下搭檔，照自己盤算的獨攀計畫走嗎？",
+      "after_text": "我想知道，卡森最後真的得丟下搭檔，照自己盤算的獨攀計畫走嗎？",
+      "source_anchor": "S8:015;S8:018",
+      "reason": "僅將原有未解問題改為旁白反應，隨後仍由卡森自己的記錄回答。"
+    }
+  ],
+  "modified_visuals": [],
+  "chapter_moves": [
+    {
+      "chapter": "十四頁，要改掉一個動作",
+      "from_scene": "c09r5-shot-048",
+      "to_scene": "c09r5-shot-049"
+    }
+  ],
+  "loop_changes": [
+    {
+      "operation": "rebind",
+      "before": {
+        "setup": "c09r5008",
+        "payoff": "c09r5110",
+        "what": "賣家怎樣讓少敲的勸告承受真實重量"
+      },
+      "after": {
+        "setup": "c09r5008",
+        "payoff": "c09r5091",
+        "what": "賣家自己把重量交給楔塊時，第一次實際承重的結果"
+      },
+      "reason": "刪除末尾歸納後，指向5091首次實際承重的直接動作，不以新標籤冒充額外結果。"
+    }
+  ],
+  "protected_true_payoff": {
+    "setup": "c09r5068",
+    "payoff": "c09r5106",
+    "unchanged": true
+  },
+  "units_by_line": [
+    {
+      "id": "c09r5037",
+      "operation": "delete",
+      "before_units": 33,
+      "after_units": 0,
+      "net_units": -33
+    },
+    {
+      "id": "c09r5038",
+      "operation": "replace",
+      "before_units": 20,
+      "after_units": 23,
+      "net_units": 3
+    },
+    {
+      "id": "c09r5045",
+      "operation": "replace",
+      "before_units": 33,
+      "after_units": 22,
+      "net_units": -11
+    },
+    {
+      "id": "c09r5048",
+      "operation": "delete",
+      "before_units": 29,
+      "after_units": 0,
+      "net_units": -29
+    },
+    {
+      "id": "c09r5060",
+      "operation": "replace",
+      "before_units": 31,
+      "after_units": 13,
+      "net_units": -18
+    },
+    {
+      "id": "c09r5087",
+      "operation": "replace",
+      "before_units": 37,
+      "after_units": 11,
+      "net_units": -26
+    },
+    {
+      "id": "c09r5096",
+      "operation": "delete",
+      "before_units": 37,
+      "after_units": 0,
+      "net_units": -37
+    },
+    {
+      "id": "c09r5097",
+      "operation": "replace",
+      "before_units": 25,
+      "after_units": 27,
+      "net_units": 2
+    },
+    {
+      "id": "c09r5110",
+      "operation": "delete",
+      "before_units": 32,
+      "after_units": 0,
+      "net_units": -32
+    }
+  ],
+  "net_spoken_units": -181,
+  "unchanged_retained_narration_lines": 98,
+  "unchanged_retained_scene_visuals": 102,
+  "source_bytes_changed": false,
+  "source_anchors_changed": false,
+  "new_historical_claims": false,
+  "new_sources": [],
+  "actual_audio_measured": false,
+  "runtime_risk": "Body after the cold opening is 2737 spoken units, down from 2918. Natural 4–5 units per second may miss 720–840 seconds. No runtime approval, slowdown, pauses, or padding."
+}

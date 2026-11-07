@@ -1,0 +1,54 @@
+{
+  "status": "UNAPPROVED_CANDIDATE",
+  "author": "/root/remake_c04",
+  "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
+  "source_video_sha256": "1bb9fd7355e6bfa5fcfa8d9a4bcfb0f89f2a5f01451131bdc3754b12243b330b",
+  "reference_pr": 1844,
+  "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+  "target_minutes": 13,
+  "narration_characters_with_punctuation": 3561,
+  "narration_han_characters": 3200,
+  "estimate_han_seconds_at_4_5": 711.11,
+  "measured_audio_seconds": null,
+  "scenes": 103,
+  "lines": 114,
+  "shots": 93,
+  "cards": 9,
+  "loops": 25,
+  "changes": [
+    "以五步開場取代四線索清單；僅兩個後段預告，利害問句另作開場setup",
+    "每章加入觀眾視角和明示旁白反應，保留專利／公司回顧／實際銷售的界線",
+    "12–14分鐘目標、自然4–5字語速、繁中燒錄字幕、滿版bold縮圖",
+    "新slug，保留全部舊核准稿與既有媒體",
+    "全部新事實主張仍待獨立覆核；新增假想場景與比喻標editorial"
+  ],
+  "holds": [
+    "未生成TTS；字數估計不可當作13分鐘通過",
+    "C系列新版slug尚無已啟用專屬預算路由；不得以泛slug繞過",
+    "新來源覆核、雙盲、站主劇本及整片報價尚待完成",
+    "原件支持的內容不足時不得以停頓、重述或加速補足時長"
+  ],
+  "paying_calls": 0,
+  "backend_writes": 0,
+  "lint": {
+    "exit_code": 1,
+    "errors": 2,
+    "warnings": 6,
+    "remaining_errors": [
+      "Sealed/Air 未在 --file 所用共享字典；待獨立念法處理"
+    ],
+    "cadence_warnings": 0,
+    "long_shot_estimates_seconds": [
+      10.4,
+      10.4,
+      10.7,
+      10.7,
+      10.4,
+      10.4
+    ],
+    "receipt": "lint.txt"
+  },
+  "frozen_video_sha256": "0f880bdbd56fa370bffe0e230f79e5195aa4f24671523e713808e659bbb7243f",
+  "frozen_narration_sha256": "b46d78e2c1dcb2267a71a4619054631b12c9dd2e12210e455972eb1aeae85366",
+  "frozen_script_sha256": "c013e699e637a34d130e9d147024d6c4f3110e9fb5736a8d40751e81d3f3fbd1"
+}

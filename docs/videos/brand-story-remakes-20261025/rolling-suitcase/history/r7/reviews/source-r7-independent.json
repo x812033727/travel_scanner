@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r7",
+  "reviewer": "/root/dyson_r1_source",
+  "role": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_DELTA_REVIEW",
+  "reviewed_at_utc": "2026-10-26T09:01:45.609703+00:00",
+  "status": "SOURCE_AND_WRITTEN_VISUAL_PASS",
+  "passed": true,
+  "source_text_verdict": "PASS_R6_INHERITANCE_PLUS_TWO_DELTAS",
+  "written_visual_verdict": "PASS_ALL_R6_DATA_EXACTLY_INHERITED",
+  "source_pass_claimed": true,
+  "production_readiness": "HOLD_MATERIAL_CAPACITY_AND_REMAINING_GATES",
+  "input_binding": {
+    "core_four_sha256": {
+      "video.json": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
+      "script.md": "ff5c0f8c3e409c04a9a7352badc17cb106565fceee783de570ec0657a7e85eb1",
+      "narration-only.json": "075532b421f29c750ab4fafa362f8850c7cdff9f38e2e7cd7213c953eaa93f0f",
+      "claims.json": "0340c0188885f5ef06f519645ff0eea074b07f336f5d06f2085f6a704a2be2c7"
+    },
+    "author_freeze_r7_sha256": "69a79c01b9ff519cc8dfffc5a88ce27d04ecce07fc0a5e20cf715b11fd6fa8d6",
+    "changes_r7_sha256": "41d7a6d4f23670891c7c589b02ab5db143fa6a60a0e28a4a4c8c36a97de951fc",
+    "image_reuse_plan_sha256": "0f7b6bf3354b595b37b2ceb9fea57f53f00b0bbe725027104b9d103cc437910b",
+    "all_frozen_files_checked": 51
+  },
+  "inheritance": {
+    "parent_review_path": "history/r6/reviews/source-r6-independent.json",
+    "parent_review_sha256": "724b5af4a911fda9898ac7ede696150e004e30af77516073669eadd0c5a5fcb8",
+    "parent_verify_sha256": "bb4ed8ad1751671b97ab67a2e4bd364931f44aba5e93672f8ae8f480e8be60f7",
+    "parent_author_freeze_sha256": "3fc5510a157e00061f8a5f345271bc317ace0fb0eb1cadeb8c763fe7506f68fe",
+    "R6_history_manifest_sha256": "a944347e7472f01744c6552f27bbb1614afc5c3f90ce4fe3abda6f6983f5ca39",
+    "parent_source_status": "SOURCE_AND_WRITTEN_VISUAL_PASS",
+    "chain_scope": "R6 completed independent package uses R5 full source/written-visual QA plus its three independently read deltas. Current R7 inherits97 exact lines and independently reads only2 changed lines; no fresh full99-line or1395-file-content source reading is claimed.",
+    "unchanged_lines_inherited": 97,
+    "newly_source_read_lines": [
+      "rs0005",
+      "rs0089"
+    ],
+    "all_prior_source_limits_and_nonblocking_opening_graph_advisory_preserved": true
+  },
+  "deltas": [
+    {
+      "id": "rs0005",
+      "text": "行李箱的把手拉起來，要靠什麼留在原位？",
+      "source_ids": [
+        "PLATH_PATENT"
+      ],
+      "research_claim_ids": [
+        "R20"
+      ],
+      "anchor": {
+        "source_id": "PLATH_PATENT",
+        "kind": "HTML paragraph",
+        "paragraph": 396,
+        "quote": "wedge the lower end segment of rod 18",
+        "quote_sha256": "8e4ed6ea0ee70dfba9aa8f419d1be2ee51a74b7c71204d87d9b3d9f849f97123",
+        "paragraph_sha256": "eac81f9b327c08fe56e05caa981df6ae62755bc4b11b0a9095008cb8a813da74",
+        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+        "url": "https://patents.google.com/patent/US4995487A/en",
+        "http_status": 200
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "rs0089",
+      "text": "這個掛鉤還能拆下。",
+      "source_ids": [
+        "PLATH_PDF"
+      ],
+      "research_claim_ids": [
+        "R25"
+      ],
+      "anchor": {
+        "source_id": "PLATH_PDF",
+        "kind": "PDF page, whitespace-normalized text excerpt",
+        "pdf_page": 12,
+        "printed_page_or_columns": "printed cols5–6",
+        "quote": "generally J-shaped hook member 60",
+        "quote_sha256": "96260870f0d4e9a024f4f5c230f256fdd271b99a9b9a26b21282bc1df317a2c3",
+        "page_text_sha256": "32207343761e01a44720eeb7d75968df7a5a336b97f167573253a80b92e7c9be",
+        "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PDF-page-012-reading.txt",
+        "raw_sha256": "3716c8b238c2d12fcd297817a94d96d81c94ef68502e208d8cd771a4042f2c16",
+        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PDF.pdf",
+        "url": "https://patentimages.storage.googleapis.com/fc/1d/e7/7bc4ed21f866c0/US4995487.pdf",
+        "http_status": 200
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "primary_independent_reading": {
+    "rs0005": {
+      "source": "US4995487A original patent HTML, paragraph396 and surrounding handle section",
+      "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+      "paragraph_sha256": "eac81f9b327c08fe56e05caa981df6ae62755bc4b11b0a9095008cb8a813da74",
+      "paragraph_quote": "wedge the lower end segment of rod 18 against sleeve 28 and bushing means 27, binding said handle 17 frictionally in position for use as clearly shown by FIG. 4.",
+      "independent_decision": "The new question asks how the raised handle stays put. It narrows the teaser without adding mechanism, retraction result, date, priority, universal product requirement or modern button/spring latch. The unchanged payoff remains explicitly attributed to the patent; loose-component prompt remains consistent."
+    },
+    "rs0089": {
+      "source": "Original US4995487 PDF page12, printed columns5–6, claim6 and claim11",
+      "raw_sha256": "3716c8b238c2d12fcd297817a94d96d81c94ef68502e208d8cd771a4042f2c16",
+      "fresh_raw_pdf_text_reproduced": "pdftotext -layout -f12 -l12 to stdout; page read independently alongside pinned reading text.",
+      "quote": "said hook member being removably connectable to said suitcase by means of a flexible strap",
+      "independent_decision": "The remaining detachable-hook fact is explicitly in the patent claims and fits the preceding hook/strap/snaps context. Removed support/classification wording introduces no replacement assertion. This does not establish that every retail model included the accessory.",
+      "unchanged_prompt": "Anonymous person separating plain hook/strap from unmarked suitcase; no factual or style contradiction."
+    },
+    "source_raw_hashes_anchor_quote_hashes_and_original_locations_checked": true,
+    "new_external_source_fetches": 0
+  },
+  "structural_checks": {
+    "video_only_two_JSON_leaves_changed": [
+      "/scenes/2/lines/0/text",
+      "/scenes/80/lines/0/text"
+    ],
+    "all_other_video_objects_exact_R6": true,
+    "claims_only_changes": "candidate_revision;99 pending source-review labels; claim text forrs0005 andrs0089. Every evidence/limit/source/non-narrated-research field exact.",
+    "video_narration_ID_order_chapter_text_exact": true,
+    "script99_ID_text_exact": true,
+    "claims99_ID_text_exact": true,
+    "all96_shot_data_prompt_camera_and_outro_data_exact_R6": true,
+    "all25_loops_endpoints_and_text_exact_R6": true,
+    "all_endpoints_exist_and_payoffs_follow_setups": true,
+    "nonnarrated_research_appendix_exact_R6": true,
+    "rs0021_retying_unchanged": true,
+    "opening_actual_Seattle_scene_and_body_callback_unchanged": true,
+    "opening_graph_mapping_only_revision_binding_changed": true
+  },
+  "coverage": {
+    "narration_rows": 99,
+    "source_rechecked_rows": 2,
+    "inherited_rows": 97,
+    "chapters": 7,
+    "scenes": 97,
+    "shots": 96,
+    "content_cards": 0,
+    "outro": 1,
+    "loops": 25
+  },
+  "opening_graph_rule_inherited": "The unchanged R6 independent decision distinguishes the first Seattle taking-paper scene and body callback from the two later-event teasers. No new same-image requirement or native narrative judgment is imposed here. Distinct paper-frame requests are not certified as one actual asset; optional R6 reuse advisory remains nonblocking.",
+  "event_teaser_pairs": {
+    "pure_full_native_Stage_imageKey_recomputed": true,
+    "pairs": [
+      {
+        "teaser": "rs0005",
+        "payoff": "rs0066",
+        "camera": "push in",
+        "base_key": "1caab70f8f5ec822",
+        "native_stage_key": "e8d589542750b9e4",
+        "composed_prompt_sha256": "a284bc1420604858438ad893d3ff6f0c6350db2f292eecd60ab895c657b6d973",
+        "full_tuple_equal_R6_and_both_ends": true,
+        "independently_recomputed_matches_declared": true,
+        "cut_chars": 0
+      },
+      {
+        "teaser": "rs0006",
+        "payoff": "rs0082",
+        "camera": "push in",
+        "base_key": "717ae62caa18c094",
+        "native_stage_key": "ab8eb6c1780fa08b",
+        "composed_prompt_sha256": "6d1a2d8a9cf400df283a46bf55ae69e162f8fc92ffd0dcae7b4b0c04aa772beb",
+        "full_tuple_equal_R6_and_both_ends": true,
+        "independently_recomputed_matches_declared": true,
+        "cut_chars": 0
+      }
+    ],
+    "full_request_fields": "provider/model,1920x1080,size=null,seed1,refs[],cast[],resolvedcute-mysterylook,camera,composedprompt,negativeempty,imageVersion1,fixes[],takes1,promptlimit1500",
+    "complete_tuple_and_options_deep_equal_R6": true,
+    "only_pair_metadata_change": "rs0005 teaser_narration synchronized; candidate bindings/revision/mapping reference and normal runtime/media paths updated. No request/key/camera/prompt/parameter or cache guard change.",
+    "six_core_code_file_hashes_verified": true,
+    "production_recipe_preserved": "Payoff first takes1; ordinary selected judge/manifest/readCache and actual byteSHA guard; cache miss/mismatch/change/retake STOP; both contexts ordinary judges; final post-crop selected fileSHA and assembly input equality required.",
+    "actual_same_asset_verified": false,
+    "actual_final_selected_file_SHA_verified": false
+  },
+  "normal_checks": {
+    "ordinary_lint_argv": [
+      "node",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+      "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/runtime-root",
+      "lint",
+      "--slug",
+      "story-rolling-suitcase-v2-remake-20261025",
+      "--json"
+    ],
+    "lint_exit_code": 0,
+    "errors": 0,
+    "warnings": [
+      "luggage46of96",
+      "suitcase37of96",
+      "about11.0minutes;target12–14"
+    ],
+    "warning_scope": "Retained central-object soft warnings and planning duration estimate; no actual media result.",
+    "normal_factsChecks_exact_marker": {
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    "NOT_FOUND_rows": 0,
+    "runtime_video_sha256": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
+    "runtime_script_and_manifest_SHA_verified": true,
+    "runtime_files_written": false,
+    "native_narrative_command_or_payload_prepared": false
+  },
+  "protected_readback": {
+    "all2159_expected_SHA_comparisons_passed_before_and_after": true,
+    "protected_unique_original_paths": 1395,
+    "content_of1395_files_not_newly_source_reviewed": "Only bytes/SHA checked; no need for a new full source-content QA.",
+    "R6_archived_files": 78,
+    "raw_source_cache_files": 611,
+    "frozen_research_files": 3,
+    "R7_frozen_candidate_files": 51,
+    "original_related192_and_backend_snapshots_covered_by_manifest": true,
+    "immutable_R7_same_project_dictionary_files": 3,
+    "lexicon_sequence": 1,
+    "dictionary_rebuilt_or_revised": false,
+    "old_runtime_not_written": true
+  },
+  "capacity": {
+    "status": "HOLD_MATERIAL_CAPACITY",
+    "whole_raw_spoken_units": 2330,
+    "series_target_minutes": 13,
+    "planning_4_to_5_units_per_second_seconds": [
+      466,
+      582.5
+    ],
+    "legacy_lint_estimate_minutes": 10.983888888888888,
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "actual_TTS_tested": false,
+    "actual_body_seconds": null,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "body_scope": "whole unwrapped voiced narration includingcoldopen/CTA, excluding additional5sintro+21soutro",
+    "duration_standard_lowered": false,
+    "slowdown_silence_or_filler_authorized": false
+  },
+  "independence_and_limits": {
+    "independent_from_author": true,
+    "actual_native_round_count_from_supplied_status": 5,
+    "fresh_native6_not_prepared_read_or_prejudged": true,
+    "native_votes_or_author_narrative_opinions_used_for_this_source_verdict": false,
+    "actual_audio_pronunciation_images_final_asset_duration_owner_approval_performed": false,
+    "SOURCE_PASS_authorizes_account_quote_admission_or_media_spend": false,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "external_fetches": 0
+  },
+  "must_fix": [],
+  "verify_marker": {
+    "path": "verify-1.md",
+    "row_count": 99,
+    "sha256": "317d2a4edc60cbd6cf446a21a6c400bcde00b8a0c2af32616cb1a2fa56c5451e",
+    "ID_order_and_narration_text_exact": true,
+    "CONFIRMED_rows": 51,
+    "OUT_OF_SCOPE_editorial_rows": 48,
+    "appendix_excluded": true,
+    "scope": "R6 completed independent chain plus two R7 source deltas; source/written visual only; material capacity HOLD preserved."
+  },
+  "mutations": {
+    "written_files": [
+      "reviews/source-r7-independent.json",
+      "verify-1.md"
+    ],
+    "core_files_changed": false,
+    "runtime_files_changed": false,
+    "git_operations": 0,
+    "backend_operations": 0,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "subagents_spawned": 0,
+    "owner_approvals_created": 0
+  }
+}

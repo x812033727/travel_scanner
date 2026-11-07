@@ -1,0 +1,2013 @@
+{
+  "schema_version": 1,
+  "episode": "C20",
+  "revision": "c20-r3",
+  "reviewer": "codex-c20-r1-source-independent",
+  "reviewed_at_utc": "2026-10-26T04:33:19.966936+00:00",
+  "independent": true,
+  "scope": "EXACT_R2_BASELINE_PLUS_R3_SOURCE_AND_WRITTEN_VISUAL_DELTA",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "must_fix": [],
+  "independence": {
+    "research_or_writing_participation": false,
+    "native_or_blind_results_read": false,
+    "author_narrative_judgments_read": false,
+    "asked_author_or_spawned": false,
+    "archive_sensitive_files": "SHA_AND_SIZE_ONLY"
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "8b68147765cd4cfdf4769a80db8a381e3d24ef6d387c8cb7ba693d9d2abe6a93",
+      "script.md": "7c07b65966df310e19dca161f6dd28ef395a95142d3b0cdf577bfbe0531e825d",
+      "narration-only.json": "3c8d3145307a7130d70d240b81b2f0dbf914959894a5bd27147af02a4241ee3c",
+      "claims.json": "e949796bc6144ec49b721072b11d7c78147b58e4cb1ad63c5e0ab268223dc54c"
+    },
+    "claims_md_sha256": "db4ac8daa501dae3bffead89b7bbc686f83c5c3bd584d23d69d57dadd592b066",
+    "image_reuse_plan_sha256": "090937a52924ac5d5e58f29aa7deb6d300b288f2bd99839a7a9b3aef07c4321c",
+    "freeze_sha256": "63a10415777cf7f06f5a1be33bd7a8fd99cf4a5ee990542ebea3f096397b4f84",
+    "protected_inputs_sha256": "d8d5d28bbfd4c8a7dcb289534dd5735e8e0380a32b433c5261879c6accea26e1",
+    "runtime_video_exact": true,
+    "runtime_canonical_script_sha256": "d63e5d94d2c428363939ef3085b5a94bf1f3c57a16d4e2a755442fdaa7cdd863"
+  },
+  "baseline": {
+    "review_path": "history/r2/reviews/source-r2-independent.json",
+    "review_sha256": "00e5569b45a84fa9d8685d0e30ba7fdab9f95f78ab483ec38077d3a7ed21a81e",
+    "core_four_sha256": {
+      "video.json": "1590484bcebbd45dc29bcf4fe555895d7d39d56f216623a6f60980b9e9be0170",
+      "script.md": "5ed7d81b2ba7455d64970dc407f4155e03fdb53cc4c31b2ed8fd6c77d453d2ad",
+      "narration-only.json": "0fbbdf635e1668889917e021cbe4b0d601ba931577779c928b81e6bc8b0efbf7",
+      "claims.json": "6170d489e93e97bb36f49b340e012924160576f04cbca4b3c3910fd9dcb1913b"
+    },
+    "source_content_verdict": "PASS",
+    "written_visual_verdict_was": "HOLD",
+    "inheritance_rule": "Compare canonical JSON source payload (claim, kind, research/source/quote IDs, full source_evidence and limits) exactly after only c20r2→c20r3 identifier renaming. IDs, deletions, order/context and 28 loop endpoints separately reviewed. Rows retain per-payload SHA. No R2 visual HOLD is inherited as PASS.",
+    "sources": [
+      {
+        "id": "DF_CASE",
+        "publisher": "Joseph / Dependable Flame",
+        "publisher_date": "published 2022-04-06; modified 2022-04-08",
+        "applicable_country_or_region": "United States, historical reported experience",
+        "url": "https://dependableflame.com/sending-lighters-to-the-zippo-repair-clinic-a-mixed-bag-or-padded-mailer-review-from-a-happy-customer",
+        "final_url": "https://dependableflame.com/sending-lighters-to-the-zippo-repair-clinic-a-mixed-bag-or-padded-mailer-review-from-a-happy-customer",
+        "retrieved_at_utc": "2026-10-26T01:39:31.603263+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_CASE.html",
+        "raw_sha256": "6f623a6bbcb0c94cafa9fac32c7992cd5224ae78fd9885b3403e4ea57a18ebac",
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_CASE.txt",
+        "text_sha256": "6ac84a07c099b3f5ede3b11718a6070f23edc23a0cbcf37bf68991e0e5844cd5"
+      },
+      {
+        "id": "DF_FORM_PHOTO",
+        "publisher": "Joseph / Dependable Flame",
+        "publisher_date": "linked in 2022-04-06 article",
+        "applicable_country_or_region": "United States",
+        "url": "https://dependableflame.com/wp-content/uploads/2022/04/8F21F941-2605-4D3B-B180-C96085A7E4AB.jpeg",
+        "final_url": "https://dependableflame.com/wp-content/uploads/2022/04/8F21F941-2605-4D3B-B180-C96085A7E4AB.jpeg",
+        "retrieved_at_utc": "2026-10-26T01:40:53.621717+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_ORIGINAL_PHOTO.html",
+        "raw_sha256": "5d7c44365f958fafe241ebe05d4adb8c47531dacc5ad83b018730ec9ceab03e7",
+        "text_path": null,
+        "text_sha256": null
+      },
+      {
+        "id": "DF_PRE_REPAIR",
+        "publisher": "Joseph / Dependable Flame",
+        "publisher_date": "published 2022-04-04; modified 2022-04-05",
+        "applicable_country_or_region": "United States, historical reported experience",
+        "url": "https://dependableflame.com/vintage-lighter-diaries-vol-8-tinkering-with-some-old-favorites-as-we-await-some-zippo-repairs",
+        "final_url": "https://dependableflame.com/vintage-lighter-diaries-vol-8-tinkering-with-some-old-favorites-as-we-await-some-zippo-repairs",
+        "retrieved_at_utc": "2026-10-26T01:41:43.877430+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_PRE_REPAIR.html",
+        "raw_sha256": "59d3ffe8516ba1ff468c507718dbc4dde04a2f3d307dc9cf384e9ae71dcbd722",
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_PRE_REPAIR.decoded.txt",
+        "text_sha256": "61de0bee875121a7ef95cca07a7371e2d571c38a981fa43e0362d07e66d34eda"
+      },
+      {
+        "id": "JP_BEFORE",
+        "publisher": "ゆきいるか / note.com image CDN",
+        "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+        "applicable_country_or_region": "Japan",
+        "url": "https://assets.st-note.com/img/1729259530-cqSYTGsQPrvk92znbCIV8tBK.jpg?width=1200",
+        "final_url": "https://assets.st-note.com/img/1729259530-cqSYTGsQPrvk92znbCIV8tBK.jpg?width=1200",
+        "retrieved_at_utc": "2026-10-26T01:43:55.708466+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_BEFORE.jpg",
+        "raw_sha256": "eb32dce72d7bc195047d174d19e8e9a4312bffd4c53034021d998e776e040422",
+        "text_path": null,
+        "text_sha256": null
+      },
+      {
+        "id": "JP_NOTE",
+        "publisher": "ゆきいるか / note.com",
+        "publisher_date": "2024-10-18 23:51 (page display; timezone not independently established)",
+        "applicable_country_or_region": "Japan; author says Tokyo–Osaka",
+        "url": "https://note.com/snow_dolphin/n/ndbe3e3f23b9c",
+        "final_url": "https://note.com/snow_dolphin/n/ndbe3e3f23b9c",
+        "retrieved_at_utc": "2026-10-26T01:41:56.198306+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.html",
+        "raw_sha256": "11820f397cc4b37b30d763b862704668a26ae9aac7cc5963da202c7215c09ca4",
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.txt",
+        "text_sha256": "7f6c3b6c3d982dd06fa42552cf9ecb042b745c63a393ae7bbe75370a53857828"
+      },
+      {
+        "id": "JP_RETURN",
+        "publisher": "ゆきいるか / note.com image CDN",
+        "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+        "applicable_country_or_region": "Japan",
+        "url": "https://assets.st-note.com/img/1729259962-dzY8AgZGL2mFMlkIBwhROqDs.jpg?width=1200",
+        "final_url": "https://assets.st-note.com/img/1729259962-dzY8AgZGL2mFMlkIBwhROqDs.jpg?width=1200",
+        "retrieved_at_utc": "2026-10-26T01:43:56.322422+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_RETURN.jpg",
+        "raw_sha256": "628d965853f6e87d47852ca6e111e19e67cfdfb7fb5360144a3abfa6bd5f4634",
+        "text_path": null,
+        "text_sha256": null
+      },
+      {
+        "id": "JP_TRACKING",
+        "publisher": "ゆきいるか / note.com image CDN",
+        "publisher_date": "linked in 2024-10-18 article; original capture time not independently certified",
+        "applicable_country_or_region": "Japan",
+        "url": "https://assets.st-note.com/img/1729259743-ZLoOkxAsbH6z2MEBCFlUWrum.png?width=1200",
+        "final_url": "https://assets.st-note.com/img/1729259743-ZLoOkxAsbH6z2MEBCFlUWrum.png?width=1200",
+        "retrieved_at_utc": "2026-10-26T01:43:56.117236+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/JP_CASE_TRACKING.png",
+        "raw_sha256": "1eed321d5bcc104b3e0bf0e19416613db7f6410029106853b84697df5c526e88",
+        "text_path": null,
+        "text_sha256": null
+      },
+      {
+        "id": "KB_FILL",
+        "publisher": "Zippo Manufacturing Company",
+        "publisher_date": "2026-07-30",
+        "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+        "url": "https://kb.zippo.com/zippo-lighter/fill",
+        "final_url": "https://kb.zippo.com/zippo-lighter/fill",
+        "retrieved_at_utc": "2026-10-26T01:41:43.725571+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FILL.html",
+        "raw_sha256": "f490785e64b3aa130424047f774c917c0131f413e8085376d4c8cc0bf56d25f0",
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_FILL.txt",
+        "text_sha256": "b47b716cd74589b0ca9786b8a12e148db15cd1f1d68af32c2c2ed52bb527a5a9"
+      },
+      {
+        "id": "KB_HISTORY",
+        "publisher": "Zippo Manufacturing Company",
+        "publisher_date": "2026-08-25",
+        "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+        "url": "https://kb.zippo.com/the-history-of-zippo",
+        "final_url": "https://kb.zippo.com/the-history-of-zippo",
+        "retrieved_at_utc": "2026-10-26T01:39:03.837789+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_HISTORY.html",
+        "raw_sha256": "c9740b36fd3b78a8de7942a1dbda2ae2d5c6a166277c6526287abe56bc201a9c",
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/KB_HISTORY.txt",
+        "text_sha256": "61be35e24fc4f59f110cf807648bc3dc7e073b9c15ffc92fd465ab6aaeb8c2d1"
+      },
+      {
+        "id": "PATENT_US2032695",
+        "publisher": "United States Patent Office; original scan hosted by Google",
+        "publisher_date": "filed 1934-05-17; granted/patented 1936-03-03",
+        "applicable_country_or_region": "United States",
+        "url": "https://patentimages.storage.googleapis.com/c6/09/ea/1d1b14be9be79c/US2032695.pdf",
+        "final_url": "https://patentimages.storage.googleapis.com/c6/09/ea/1d1b14be9be79c/US2032695.pdf",
+        "retrieved_at_utc": "2026-10-26T01:38:32.520649+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/US2032695.pdf",
+        "raw_sha256": "65e39aa2c91397b6873327c1fb32dc8fca303a5e1c3762af1746f02cf3f34ea3",
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/US2032695.txt",
+        "text_sha256": "70b830281ecdd4b1a88a355235f6c31021e0d5a90e97d4d582475521e0a2a324"
+      },
+      {
+        "id": "UK_FORM_20261008",
+        "publisher": "Zippo UK linked official CDN PDF",
+        "publisher_date": "PDF metadata Creation/ModDate 2026-10-08 12:46:39 UTC; publication day not independently certified",
+        "applicable_country_or_region": "UK; forwarded to Germany",
+        "url": "https://cdn.shopify.com/s/files/1/0471/9532/4576/files/20261008_Repair_Form_EN.pdf?v=1792749458",
+        "final_url": "https://cdn.shopify.com/s/files/1/0471/9532/4576/files/20261008_Repair_Form_EN.pdf?v=1792749458",
+        "retrieved_at_utc": "2026-10-26T01:40:14.455446+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/UK_FORM_20261008.pdf",
+        "raw_sha256": "fb47e0a3acaa3c4a13b3ac3a8704025b6dd1aeafa7145d18a03e78957bd6ad51",
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/UK_FORM_20261008.txt",
+        "text_sha256": "96bbe048bf5034f432e60dd60eb91fd6b1a7e49e778f63bbb55ce4a85dbecc07"
+      },
+      {
+        "id": "US_DECO",
+        "publisher": "Zippo Manufacturing Company",
+        "publisher_date": "2026-08-24",
+        "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+        "url": "https://kb.zippo.com/zippo-lighter/worn-deco",
+        "final_url": "https://kb.zippo.com/zippo-lighter/worn-deco",
+        "retrieved_at_utc": "2026-10-26T01:39:31.347978+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_DECO.html",
+        "raw_sha256": "a40dabbe427c5bd9906a516aba20b0621b96ce34493623671fc9639e492ad68b",
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_DECO.txt",
+        "text_sha256": "60c2215403475764e4f159273d21cbaca4130fbb0b4819762c2398692ba21406"
+      },
+      {
+        "id": "US_REPAIR",
+        "publisher": "Zippo Manufacturing Company",
+        "publisher_date": "not displayed; retrieved 2026-10-26",
+        "applicable_country_or_region": "United States website; do not apply shipping details worldwide",
+        "url": "https://www.zippo.com/pages/repairs-windproof-lighter",
+        "final_url": "https://kb.zippo.com/warranty-repair",
+        "retrieved_at_utc": "2026-10-26T01:39:03.864721+00:00",
+        "raw_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_REPAIR.html",
+        "raw_sha256": "12e50e284c208d90f9e9b19d0388d9ebd7fe186cb0b6c2b5f68b1ca1f685cb81",
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/US_REPAIR.txt",
+        "text_sha256": "e6b64dbcb691eec67aa02fb27b5fe156b0b3ecae52fa20750a2ba96cdc114300"
+      }
+    ]
+  },
+  "coverage": {
+    "narration_lines": 117,
+    "scenes": 115,
+    "shot_prompts": 114,
+    "native_outro": 1,
+    "projection_script_video_narration_claim_rows_exact": true,
+    "loop_endpoints_forward_and_source_payoffs_reviewed": 28,
+    "used_sources": 13,
+    "used_anchors_verified": 64,
+    "source_exact": 105,
+    "source_reread": 12,
+    "prompt_exact": 53,
+    "framing_camera_reread": 49,
+    "prompt_content_reread": 12,
+    "outro": 3
+  },
+  "delta_findings_zh": [
+    "h01兩件是2022同包兩件；E06加上原DF_CASE複數/包裝與同包兩表照片支持，不是把JP粉紅算為同一包。h08/o03為有事實支點的對觀眾提問。",
+    "o01的將近一年按DF_CASE line27「I had been eager for almost a yr now」與line28從未寄修的自述；是想試承諾而遲疑，未新增故障已持續一年或精神狀態。o02仍明示公司後來回顧1933首款，不冒稱原保證卡。",
+    "i05維持另一普通鍍鉻款與lid/new insert請求；i09/E20 line31「I don’t even remember ... small lot」及i25/E21 line38「great hope for its continued usefulness」是同一普通款作者回憶/願望，未變成已成功點火。",
+    "t14/t15只把故障彈簧對比寄修整體；JP line61列本體、inside unit、修理表，不是只有彈簧。t16/E23 line47自述分離後同polypouch，line54分開緩衝包裝支持；沒有聲稱看過真包裝工序、已填表或退舊申請。t17是條件提問。",
+    "刪去o12及JP追蹤動機/教程t18–t23後，9/1、9/3、10/18、47日與新舊內膽同返仍由同原文/原圖支持。未移除任何保留句的唯一證據。",
+    "R2 M01已關閉：e03/e04中性hinge/loop inspection不再宣稱返還後仍loose，不增工序或確證換pin。M02已關閉：e09明寫worn plain silvery chrome，承接e05–e08普通款，未套Camden。",
+    "12個內容變動prompt逐一重看；h01兩件分色並列，i09泛指來源小批舊物，i25是開殼銀色款且無火焰，t14/t15是零件及送修整體，t29/t30仍是未開包裹/單獨舊insert概念。49個僅取景/運鏡差分亦重看，無新增物件、可讀文字、商標、複製船盾刻字或廠內修理動作。"
+  ],
+  "new_anchor_checks": [
+    {
+      "id": "E20-Q1",
+      "source_id": "DF_CASE",
+      "quote": "I don’t even remember how I acquired it other than it was in a small lot.",
+      "locator": {
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_CASE.txt",
+        "text_sha256": "6ac84a07c099b3f5ede3b11718a6070f23edc23a0cbcf37bf68991e0e5844cd5",
+        "start_line": 31,
+        "end_line": 31,
+        "normalized_whitespace": true,
+        "normalized_text_character_offset": 2117
+      },
+      "verdict": "PASS_PERSONALLY_REREAD"
+    },
+    {
+      "id": "E21-Q1",
+      "source_id": "DF_CASE",
+      "quote": "wasn’t ever really going to catch anyone’s attention for its aesthetic beauty but I had great hope for its continued usefulness.",
+      "locator": {
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/DF_CASE.txt",
+        "text_sha256": "6ac84a07c099b3f5ede3b11718a6070f23edc23a0cbcf37bf68991e0e5844cd5",
+        "start_line": 38,
+        "end_line": 38,
+        "normalized_whitespace": true,
+        "normalized_text_character_offset": 3977
+      },
+      "verdict": "PASS_PERSONALLY_REREAD"
+    },
+    {
+      "id": "E22-Q1",
+      "source_id": "JP_NOTE",
+      "quote": "本体-インサイド・ユニット-修理シートをレターパックに入れたら封をして送る",
+      "locator": {
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.txt",
+        "text_sha256": "7f6c3b6c3d982dd06fa42552cf9ecb042b745c63a393ae7bbe75370a53857828",
+        "start_line": 61,
+        "end_line": 61,
+        "normalized_whitespace": true,
+        "normalized_text_character_offset": 1540
+      },
+      "verdict": "PASS_PERSONALLY_REREAD"
+    },
+    {
+      "id": "E23-Q1",
+      "source_id": "JP_NOTE",
+      "quote": "分離してポリ袋にまとめて入れた",
+      "locator": {
+        "text_path": "/workspace/work/brand-story-20261025/c20-audit/source-cache/patent-subtask/repair-case/snow-dolphin-jp.txt",
+        "text_sha256": "7f6c3b6c3d982dd06fa42552cf9ecb042b745c63a393ae7bbe75370a53857828",
+        "start_line": 47,
+        "end_line": 47,
+        "normalized_whitespace": true,
+        "normalized_text_character_offset": 1161
+      },
+      "verdict": "PASS_PERSONALLY_REREAD"
+    }
+  ],
+  "closed_previous_must_fix": [
+    {
+      "id": "M01",
+      "current_ids": [
+        "c20r3e03",
+        "c20r3e04"
+      ],
+      "verdict": "CLOSED"
+    },
+    {
+      "id": "M02",
+      "current_ids": [
+        "c20r3e09"
+      ],
+      "verdict": "CLOSED"
+    }
+  ],
+  "row_checks": [
+    {
+      "id": "c20r3h01",
+      "scene_id": "c20r3h01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "bd75a7b5c9d3e702f4d143a6da3a7110d889217661cf013983b72d542bc6c889",
+      "anchor_ids": [
+        "O09-Q1",
+        "D05-Q1",
+        "E06-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "6d4392cb804c03c3a0f74ab78498f75e7ed9cc53678122efdb95bc053f72271e"
+    },
+    {
+      "id": "c20r3h02",
+      "scene_id": "c20r3h02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "825453fd3399e292a96740da7ea035f83380033a0eac12210262320e944bcdef",
+      "anchor_ids": [
+        "D01-Q1",
+        "E01-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "98abe58955206fbcd3b17c2773832eecb4e1c2fe74a3b495d36c853cd9396a8d"
+    },
+    {
+      "id": "c20r3h03",
+      "scene_id": "c20r3h03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "ff4f97033829cb52f077f329c5c18040833a1ebad31f8988c3dbc29d33f5a08f",
+      "anchor_ids": [
+        "D02-Q1",
+        "E02-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "ad5abd76ab552c8b3330128bf1bf77f88653fe65188ff20d3c2662093cc90f01"
+    },
+    {
+      "id": "c20r3h04",
+      "scene_id": "c20r3h04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "81fcff9424f625aa55af3566d6412359bbac98c1b448d793d3670c770dd597b2",
+      "anchor_ids": [
+        "E03-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "20b02fd7b2046d4fda53768122e1ab87c7bfa3a3511cbb89e6a6e8766e15f638"
+    },
+    {
+      "id": "c20r3h05",
+      "scene_id": "c20r3h05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "4d990aa9edbae5248e4303af1f54c984588c9dee9020fae2714af2bfb3273277",
+      "anchor_ids": [
+        "D04-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "48a5630d1f8d5bb311d86ae22cc6a6846e853a2c551fe3c343af1e2ba3a23954"
+    },
+    {
+      "id": "c20r3h06",
+      "scene_id": "c20r3h06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "b8c85dec86add2198d94f67a09afd6a373863909028e336809e25c0f3689f03e",
+      "anchor_ids": [
+        "J09-Q1",
+        "J17-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "9437e8525118c162f512b76d38d85c999e30af0c98bca587c309bbe822c094db"
+    },
+    {
+      "id": "c20r3h07",
+      "scene_id": "c20r3h07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "0d53b4bbd01d01f29aa1be4df621582e2ba73a32926c972a9dbe5e381f5544d0",
+      "anchor_ids": [
+        "J01-Q1",
+        "O07-Q1",
+        "D01-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "f376a3a3a9a2a031267fb9a9a1ef14777bbe307c6f325aa7d5fb355595798714"
+    },
+    {
+      "id": "c20r3h08",
+      "scene_id": "c20r3h08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "97c230ba36bad560bc4cfdeb55013ce375ede29d364af431af54bc1b5be7e008",
+      "anchor_ids": [
+        "J18-Q1",
+        "O07-Q1",
+        "O09-Q1",
+        "D05-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "05da12f7c13a6552e5482b26054676897ff5a18e59442f64f580d5deb4401354"
+    },
+    {
+      "id": "c20r3o01",
+      "scene_id": "c20r3o01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "68659f23417b056d44df4713bdd8480ed5ae9ac9d3047427f04c1fb41f86183c",
+      "anchor_ids": [
+        "E02-Q1",
+        "E15-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "17c1aea6dd64b15d1837b64aaa7bfffadb2b03d72b046c8b56b5280e1ae3f7ba"
+    },
+    {
+      "id": "c20r3o02",
+      "scene_id": "c20r3o02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "b45b386501a2545ba0f08f27eefaee190dc4d85498a4693e39b495feee2adb41",
+      "anchor_ids": [
+        "O07-Q1",
+        "H02-Q1",
+        "H03-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "5d43d0c2a81d91e096d9ab8acbc7c44c35311caa736d6201ab51a17dafb9c2ea"
+    },
+    {
+      "id": "c20r3o03",
+      "scene_id": "c20r3o03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "e87b1936537f7198f2f9cbcdb8585f60e77ed4c8a6b141af422919aeac5afb07",
+      "anchor_ids": [
+        "E03-Q1",
+        "E05-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "cf193f82e4111ab448e9516b1eb7aaff971246152d6ef6f1fd266b63f1b69ba2"
+    },
+    {
+      "id": "c20r3o04",
+      "scene_id": "c20r3o04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "dacf466d69dc4b8a7456cc56200778b8f252bdc6664e888cb42ac457ffc778a6",
+      "anchor_ids": [
+        "O07-Q1",
+        "D02-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "2de2e64a7ac7575bf89f63de78af0045015a416650acd06cc95cea62c416b4be"
+    },
+    {
+      "id": "c20r3o05",
+      "scene_id": "c20r3o05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "4e236764deb34793628904974d821702b4c4a4e3e58029549944dd05c312bec2",
+      "anchor_ids": [
+        "D02-Q1",
+        "D05-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "ef3d05dbae992d339fc77ba03a7d02b8ceea1ffbac3debfa8d1b24f6cd4c8523"
+    },
+    {
+      "id": "c20r3o06",
+      "scene_id": "c20r3o06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "4ffdf147eee9a4ca8c6faf5c26490471c6bfe29494c723d91575537e4f625aab",
+      "anchor_ids": [
+        "E01-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "879001c2f568db04f2838230f4350a3acfbc57e283d9c0bc082d1d78168bbd95"
+    },
+    {
+      "id": "c20r3o07",
+      "scene_id": "c20r3o07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "7e1ae8af429c3c2909f37e81365bbe01a5545413cddac61308ac6dfecdf46264",
+      "anchor_ids": [
+        "E01-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "15c83997688dfa7dd2762fe98b37bf2c5a44eeadbe815debf19454ebb87261da"
+    },
+    {
+      "id": "c20r3o08",
+      "scene_id": "c20r3o08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "5cb2f2c95f90fe7a6856e5a501b2db8d565222edd208ea59635f56edabbf2fb1",
+      "anchor_ids": [
+        "E01-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "2804ba252b2370900cfe3025dcb93b418a3a263b3088d400a3d91efb84598344"
+    },
+    {
+      "id": "c20r3o09",
+      "scene_id": "c20r3o09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "f4f7d19d94099c1d0d0c241b991040b22a87183c931ccd603b9d3e422f0679dc",
+      "anchor_ids": [
+        "E01-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "d52d3d1938bbd96c1f3c0eb9cfbdcb6c0c108e3b66f1bc027c676ae870e3d3d0"
+    },
+    {
+      "id": "c20r3o10",
+      "scene_id": "c20r3o10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "0ca98e01d65fc209fffb2f35da3d5ba04fe7040665ab7698fba0219bb11fffa9",
+      "anchor_ids": [
+        "E02-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "888fb2b89a6804acb990cbf3a88f7ab5fb23e7e7328a8af52166867a3fa30974"
+    },
+    {
+      "id": "c20r3o11",
+      "scene_id": "c20r3o11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "c29013d0f2f72ceb7e8a1ee4baef3de249d67b7439842d16b3ae79feea577295",
+      "anchor_ids": [
+        "E02-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "546b4597824a3e9dfc59d183cd5d524560ab211d438e5f9e8b03f535f9ff1fd5"
+    },
+    {
+      "id": "c20r3o13",
+      "scene_id": "c20r3o13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "3f7b90ca28920f3e4e851deb372b165239ca945993833947f9614f87e2e2b520",
+      "anchor_ids": [
+        "E02-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "6776b0be532a1c291fd1df14c067b921a5bfd6ab8ef6ddc522892871ffe656d7"
+    },
+    {
+      "id": "c20r3o14",
+      "scene_id": "c20r3o14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "968b76ecaa56467db7f9db97f19771f50eea306616e982836d5afbb49200fd31",
+      "anchor_ids": [
+        "E03-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "f81d92404be5b9e4830a9e934f86a8fd6ad5d7a4d962784f66f240c89f571650"
+    },
+    {
+      "id": "c20r3o15",
+      "scene_id": "c20r3o15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "8e0ace8ce728795599e9663a31263804f8bfa0f12c35b260e5e8e00e1ca352f8",
+      "anchor_ids": [
+        "E03-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "6f84eb98e1376b8515741e443c9e7fe8be3d3c6d9da234ca051a7790d19d0d5f"
+    },
+    {
+      "id": "c20r3o16",
+      "scene_id": "c20r3o16",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "72e98902646f976f55f27f3883e82541c71b5fc90ac309d2328a2cd5fc82ae12",
+      "anchor_ids": [
+        "E03-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "cde4c0a29b3fc35665318c8d895e3cc5956f0447d8837067b4880110daff36f6"
+    },
+    {
+      "id": "c20r3o17",
+      "scene_id": "c20r3o17",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "5c6ade772f7b50ff6b306247a05bbc59e3d41ac086e9bf16eda3b8218fdd15ff",
+      "anchor_ids": [
+        "E04-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "d75ef9db664250aba9a1790b2f40c180e19ccc7e7248c4626036bd8ff5115cc6"
+    },
+    {
+      "id": "c20r3o18",
+      "scene_id": "c20r3o18",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "f04b48a1fe9ff807e71ceecdf09a4275977eaae48b5d03b06e94d4a034f3d1c5",
+      "anchor_ids": [
+        "E04-Q1",
+        "E05-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "52e6eb3266dd16fbce7303bc313a106cb0f6e82ebec919c8638fad93920a1f85"
+    },
+    {
+      "id": "c20r3o19",
+      "scene_id": "c20r3o19",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "8e99cc91b62e4ca718476f548f39001028901d397bfe22128a6e542895e8a57a",
+      "anchor_ids": [
+        "E05-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "00b1cd5ee0199f4acb7534a8ea659586d6679cafbe8efd30bf22bbf553dd71a3"
+    },
+    {
+      "id": "c20r3o20",
+      "scene_id": "c20r3o20",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "b822d938b08b82765f111198f4f6039deceae04da28c27e68619f94b5719ce95",
+      "anchor_ids": [
+        "E01-Q1",
+        "E05-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "c9a01d7d2d3751cb7f65f70c9cd667b5e031daa672d0df67391e679443c3c076"
+    },
+    {
+      "id": "c20r3o21",
+      "scene_id": "c20r3o21",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "151c6c0115ca0ad7f262ace6a8a2cafc8529bf39bd7009806e925716a40ac979",
+      "anchor_ids": [
+        "E05-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "3c94b2080f1fa9d0a17340c359e66a90dbfc7aeb8365fdc4ca30d77469b0fd91"
+    },
+    {
+      "id": "c20r3i01",
+      "scene_id": "c20r3i01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "1788b891667e5c2e59eb6e9edd960a1d10cd5cef7d92b71337060e594a8b0392",
+      "anchor_ids": [
+        "E05-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "1ae9be9345d80dbd23a6296e67c7601b22a9812aa3e7bab0cc6c77f4eba8d9c5"
+    },
+    {
+      "id": "c20r3i02",
+      "scene_id": "c20r3i02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "dab07245d256afee452a5aaacab8d25f13be02faa85346dcf77f54e2e453ee7e",
+      "anchor_ids": [
+        "D02-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "43fc1537e0fc6232f0c1734a34f156b11de7dd5622f0319627faa1b43d362c49"
+    },
+    {
+      "id": "c20r3i03",
+      "scene_id": "c20r3i03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "a04ab57e4ab430da7d278abd41d019ff095086a9b8dbe73c9d7fa71d574bcb7a",
+      "anchor_ids": [
+        "D02-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "d61bcbd9e4bee2202a8ffce875252b1f34806400c9845b147e7d66d4412a87f8"
+    },
+    {
+      "id": "c20r3i04",
+      "scene_id": "c20r3i04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "d70a9b041de0459531fd9de5946ce20f07d1a53413eaff5e403b9a43c801284b",
+      "anchor_ids": [
+        "E07-Q1",
+        "E07-EXTRA"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "520cfc24e5422181ea104cefaf04cb2601b37c2203fc09230351dbaf7d425b89"
+    },
+    {
+      "id": "c20r3i05",
+      "scene_id": "c20r3i05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "2c4d06bfd81442c42148f559ef5b780525adade407efd43f98e6e9ad522f29f8",
+      "anchor_ids": [
+        "E14-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "15481e41a23a1f16e7de786574b2a0c4546019651898f39354a8f06e62190523"
+    },
+    {
+      "id": "c20r3i09",
+      "scene_id": "c20r3i09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "253ee77ab2a043959e13454904b9eaa6df78e0d22cec6afeaa3900f5f0873361",
+      "anchor_ids": [
+        "E20-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "5676a46d27812048e2fb7bc0a53a798d566fa41abdc57acfac4218f6456a730d"
+    },
+    {
+      "id": "c20r3i25",
+      "scene_id": "c20r3i25",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "7db1cb4cc8ea796406bdc95f4e436b5b7ead4b655735932513f8ebdeba64cff3",
+      "anchor_ids": [
+        "E21-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "ef9dcf2bf4dd738c17685636585e4de827842bdada7ec0fb2d550f0ece34c5f7"
+    },
+    {
+      "id": "c20r3i06",
+      "scene_id": "c20r3i06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "2ce78d991f63f0e7d6161b34c54192f84e0b48a38ffe9fa2f8dd809e85a2f1cb",
+      "anchor_ids": [
+        "E16-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "2e1d1d08fc38680b8f3e18b902a2aa8d34c067c0a6a26b602219a442281bbe5c"
+    },
+    {
+      "id": "c20r3i07",
+      "scene_id": "c20r3i07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "a615e37c33d26ccaf70fac5992958739875b752554eaedce585643a19ae3ce27",
+      "anchor_ids": [
+        "E16-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "7c416a0fe4c56a8aefff5784b6b738def65f26f9a84b0fd2ed97103decbbd25b"
+    },
+    {
+      "id": "c20r3i08",
+      "scene_id": "c20r3i08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "138a56067ee4edb8344fde58214f83704697f4654e8056df8df7ae136a42151a",
+      "anchor_ids": [
+        "D02-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "100d8cbcc02813be51c9e13c659cf25bc1057fb857cfbfc9dc82bfe4c4e5ebcc"
+    },
+    {
+      "id": "c20r3i10",
+      "scene_id": "c20r3i10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "d3588daa80591e0df30ea85bea8c52fd7e342a07b2b3ccdd4f11745ffc2321d3",
+      "anchor_ids": [
+        "E07-Q1",
+        "E07-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "1ba3ab91226859aa4fb85a44610145780bd343807004f1d480aa0e23641887af"
+    },
+    {
+      "id": "c20r3i11",
+      "scene_id": "c20r3i11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "7d72bba87410273f3e864845151b310ff7539d4aadc53625831d2aba09131a29",
+      "anchor_ids": [
+        "E07-Q1",
+        "E07-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "38f2a780a1df1b84d1126b6e180a2ccd77aeba59b1924b550885ee6393046b94"
+    },
+    {
+      "id": "c20r3i12",
+      "scene_id": "c20r3i12",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "0c07c9bdbcb0a88714ccf86dbc9f8cea26004b7e960712cf681fd6c37863795e",
+      "anchor_ids": [
+        "E07-Q1",
+        "E07-EXTRA"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "4cae5ba86962c01003ae7abe1265450236e89e26f1ef3ba766e452d9c97b81f1"
+    },
+    {
+      "id": "c20r3i13",
+      "scene_id": "c20r3i13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "be9be741fbe5c75d5be95364d61ed5163dbfab7bdb50dc20ab956f6ad7ef1dfa",
+      "anchor_ids": [
+        "E07-Q1",
+        "E09-Q1",
+        "E09-EXTRA",
+        "E07-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "751b8dd6b16ad58f7db5dd963fed47347817c138fb5e92e245f24af11b07ddc3"
+    },
+    {
+      "id": "c20r3i14",
+      "scene_id": "c20r3i14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "feb6c6386124c6db41532e6298c4ff90b7f6a67e60c51f5a114a6bdbf6f9ec30",
+      "anchor_ids": [
+        "E08-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "7a87d32c218849643fe22b2e2d3995bd62ce59a41be81cddc5f9f4d6abac69c7"
+    },
+    {
+      "id": "c20r3i15",
+      "scene_id": "c20r3i15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "8792a1784946dcdc82d5c1b9cd99753082548b22be87869314720c4de338eb43",
+      "anchor_ids": [
+        "E09-Q1",
+        "E09-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "94d27314cc4530947c770632cc286983c23f0f184886b5b58aaddf4c7322c0e3"
+    },
+    {
+      "id": "c20r3i16",
+      "scene_id": "c20r3i16",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "d295a5c214414a3668f5361a31e244a5325f5794e65dcee73cb06c7d96328ddf",
+      "anchor_ids": [
+        "E06-Q1",
+        "E09-Q1",
+        "E09-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "9caf87d9f026e588dfa7aa27af7ddf73587db7f7b83359c6d34ac4655b3ce5ee"
+    },
+    {
+      "id": "c20r3i17",
+      "scene_id": "c20r3i17",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "7ea38747ab4ba75bf6e7926c3ed739b9ca2879296bc28bc9acb632e4a20513a7",
+      "anchor_ids": [
+        "E09-Q1",
+        "E09-EXTRA"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "9c8e0e575ecdd9679105132e17e0a434a48d6e8ad61788cb5f5753783e75d7bb"
+    },
+    {
+      "id": "c20r3i18",
+      "scene_id": "c20r3i18",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "dbb8faa2be27d279c129e285d2dafa517eda07a12d00a89f31dd051dddfb4f81",
+      "anchor_ids": [
+        "E10-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "04ebedc8e2e657f11fff330a4a5c9ec63a217cd69570f3dc148391b9dc388855"
+    },
+    {
+      "id": "c20r3i19",
+      "scene_id": "c20r3i19",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "3fc4d80a30d937a10a5e649a216d4fdc95695bb70739c5afe00ac88501d54d33",
+      "anchor_ids": [
+        "E09-Q1",
+        "E10-Q1",
+        "E09-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "70be8eb8149098b3cffa088959a5382e0711ab2d266f9e9ab461f68b7a42ed43"
+    },
+    {
+      "id": "c20r3i20",
+      "scene_id": "c20r3i20",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "ac2a8306b5c8e25d513bc114e5cb53ed6c46fbc7134020b76f8a123e756db4c0",
+      "anchor_ids": [
+        "E10-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "2b25af2594ea0a12f36de08a433a2f0ab1c729ca0281383100e0b4e566702eba"
+    },
+    {
+      "id": "c20r3i21",
+      "scene_id": "c20r3i21",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "58f8d04278dfd28f4b22c331c1fa623d42a172f8816a4c2b09fc40d187249fa6",
+      "anchor_ids": [
+        "E10-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "43fc1537e0fc6232f0c1734a34f156b11de7dd5622f0319627faa1b43d362c49"
+    },
+    {
+      "id": "c20r3i22",
+      "scene_id": "c20r3i22",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "14953e7b025592b44bd041a1354e011ae044b704c324ac16ce491d59befe7b62",
+      "anchor_ids": [
+        "D04-Q1",
+        "E10-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "fda00b2e4696519ede6ab3bca8878a04630a104e19638c4f2de8ce2f2ac0ef1b"
+    },
+    {
+      "id": "c20r3i23",
+      "scene_id": "c20r3i23",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "e959d96a85587526c80d776820933d00a65dae05747993695fae243280f96746",
+      "anchor_ids": [
+        "D02-Q1",
+        "D04-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "e81b631da298b53bf9bacfcd9ec5125609e863b1dc0c2944d386b8d393783613"
+    },
+    {
+      "id": "c20r3i24",
+      "scene_id": "c20r3i24",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "fe46c29b07bfaa115ce9efc327cdcf8e84c480956ec026ecbeff4462ebc0a60d",
+      "anchor_ids": [
+        "D04-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "579683cfb54948fa0564fb122a12f1f425e01f563d77b3ec6c0c7142e2e9cf26"
+    },
+    {
+      "id": "c20r3e01",
+      "scene_id": "c20r3e01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "6961c4591e40e2b88b850f129d071e80104d8c7ab9ca0ef5489bc40da571f159",
+      "anchor_ids": [
+        "D04-Q1",
+        "E11-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "48a5630d1f8d5bb311d86ae22cc6a6846e853a2c551fe3c343af1e2ba3a23954"
+    },
+    {
+      "id": "c20r3e02",
+      "scene_id": "c20r3e02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "85b7a506bfbb99c2c0a13eb249e1e200f8952f4d73fc2b428f82ada4627fedab",
+      "anchor_ids": [
+        "D04-Q1",
+        "E11-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "249a09771c64a7d05fb856b6af2cbbf4880ac9dff71d8c13b4e020e77c2ad645"
+    },
+    {
+      "id": "c20r3e03",
+      "scene_id": "c20r3e03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "1211076153e1f69d911125c3d82f6b6524d8ed59459a7c024e6a6a6fa8d28682",
+      "anchor_ids": [
+        "D04-Q1",
+        "E11-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "91a9d92bf5d5cef5487bffa174fad6c6d4ba768f2e85a499a17498e3516a5db4"
+    },
+    {
+      "id": "c20r3e04",
+      "scene_id": "c20r3e04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "15a6f0dc6bdb9b5ffd61a4b6a5afe0ebe2508f7fcce91285ba8907c3a454ee60",
+      "anchor_ids": [
+        "D04-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "a7119a9acbdd51ba01dba5632c0f2e89ec1850e07aca8898611c79e833990ec3"
+    },
+    {
+      "id": "c20r3e05",
+      "scene_id": "c20r3e05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "f281f97d365794b5e545d15bb63f484424fa527582291ddd76a2632415b4b886",
+      "anchor_ids": [
+        "E14-Q1",
+        "E17-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "3d19bef3398d4039f380d7849913c0e8b3715e6b9426d5ffe8febdd340f4f7bf"
+    },
+    {
+      "id": "c20r3e06",
+      "scene_id": "c20r3e06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "3214afd9f2e94e5de50398a0f751b62a7b881d972a5de954e669198e61a6f9b8",
+      "anchor_ids": [
+        "E17-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "8a24ae496fe5be6f40b42fbb7c319a4c963af41274a9eb3aed88e979429bc18a"
+    },
+    {
+      "id": "c20r3e07",
+      "scene_id": "c20r3e07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "3a2ab927d2327ea90470ea240dcc226c430cfaf5b29cdc1f83050bd0486d2bc5",
+      "anchor_ids": [
+        "E17-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "765a593ddc81a8aef348c07e147f3ffd5ec1f6e43b8f26ded46913be2e3903cb"
+    },
+    {
+      "id": "c20r3e08",
+      "scene_id": "c20r3e08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "593b0754a2a316952d4373fbd3faff3e702bc36237620c1ee7d2cfda913a152e",
+      "anchor_ids": [
+        "E17-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "9cc902a4ee5844088eeac85eb4799b8460d0abe42e0cf372cb8efd016e3ed2e2"
+    },
+    {
+      "id": "c20r3e09",
+      "scene_id": "c20r3e09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "5f7bf598958e4b66fd2dbe97145f8e4edeac2451a26f8425cdd0ce302758b81f",
+      "anchor_ids": [
+        "D05-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "c8d6b2d2ce25bbdbb45f9019b4cf392e98f559f9d0ca5c5637c4ba56dcb04b03"
+    },
+    {
+      "id": "c20r3e10",
+      "scene_id": "c20r3e10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "845912a2b2029039ab2e0e7e0b867a8a50207aaee07d60f6bd473f8870e1727e",
+      "anchor_ids": [
+        "D05-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "3b91546a7a40603cc1a563795a2e479dd89206a200db2beb785ca476a16caa07"
+    },
+    {
+      "id": "c20r3e11",
+      "scene_id": "c20r3e11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "83e4b93677f427a2841bf2b3f0817a7df8a736e7bae3e0e8553fe09d8609c6b3",
+      "anchor_ids": [
+        "E12-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "8ff95b454cc7753234dba3c27527db43d97e20c1f08012fe718b341e1f76cfbd"
+    },
+    {
+      "id": "c20r3e12",
+      "scene_id": "c20r3e12",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "9d073c051569749d6d85e43fee8d4e2fc7e0185304729caf62cec36a293e19c5",
+      "anchor_ids": [
+        "E12-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "5c5938cc2d1a17682bf827bcfd107df49acee504864c3332dbb74f7f9c13f03e"
+    },
+    {
+      "id": "c20r3e13",
+      "scene_id": "c20r3e13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "7eff53392bb1a1592441d40cdf85716ae7c19d176b4e6fa8b57341f8af75e01c",
+      "anchor_ids": [
+        "E12-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "3ededc6b7be9dac70bf032911b11caca18a5c9a40b829138fe676591f339aa09"
+    },
+    {
+      "id": "c20r3e14",
+      "scene_id": "c20r3e14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "79672b8f376eeb6f45f0a37898a2914d8e32b6661bbcbef69122598f53dcba50",
+      "anchor_ids": [
+        "E12-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "35925ca7bd24c0cdd94aeb0211d6172be140d351a808681df296d8adb7548aef"
+    },
+    {
+      "id": "c20r3e15",
+      "scene_id": "c20r3e15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "563992c05f8f113453039be3f6877baeb2944695cf01138e0d8c23ff96d55c73",
+      "anchor_ids": [
+        "E12-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "aeb06b4712cd723ae499c40eb60cc5a7b7199743977c83fbcd7092d8a6965781"
+    },
+    {
+      "id": "c20r3e16",
+      "scene_id": "c20r3e16",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "f2db52b79d9d32fe0ce381d24a8352ea08809e12eb9884470616e547243f58d9",
+      "anchor_ids": [
+        "D04-Q1",
+        "E12-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "2b6e86ac882085b502e9c9ab5f1bc71a725125d28fd693064c28454d3d0909a6"
+    },
+    {
+      "id": "c20r3e17",
+      "scene_id": "c20r3e17",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "9fb1ffb24377d01b5e49a9ca04a439dd2cb2a0691913889c6a47f095aa06ef61",
+      "anchor_ids": [
+        "E13-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "a940f8ee29356c4c38874d004ff55cfaf99b6c04715f405e197838b90926151c"
+    },
+    {
+      "id": "c20r3e18",
+      "scene_id": "c20r3e18",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "aaf8cf123d1736d1f93001f0cfbb7cddaa3a365e2b30e83b458cdcfa4ba90178",
+      "anchor_ids": [
+        "E13-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "f731ef4bd0d97a048813f7d762c234129e983928c8497da8fcc81c37d3fa8249"
+    },
+    {
+      "id": "c20r3e19",
+      "scene_id": "c20r3e19",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "c416f8c17c9db7e2a68dd509968734de29de875f694f5fe867985e1f24738c23",
+      "anchor_ids": [
+        "O04-Q1",
+        "D04-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "9ccc06441d621336a5a049162885451d8899a5343624d1e6d0983d57d69e51cb"
+    },
+    {
+      "id": "c20r3e20",
+      "scene_id": "c20r3e20",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "498822d097022b224c24e1254d79b1292a0a5fe5f5da4decea458c1ea6173b8f",
+      "anchor_ids": [
+        "O04-Q1",
+        "P04-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "702833882a591bbca5b178720e843aa6d742f1998f48a6a3771a3a4a3802832b"
+    },
+    {
+      "id": "c20r3e21",
+      "scene_id": "c20r3e21",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "0457fab494ca5110a35c1c0557f89011af576825fe7183046654c1052c1a80e1",
+      "anchor_ids": [
+        "O04-Q1",
+        "U03-Q1",
+        "D04-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "5653371753cc440133b36ad6c7d1b0a1b88c0c6978a39bb457736fb0e137ca0d"
+    },
+    {
+      "id": "c20r3e22",
+      "scene_id": "c20r3e22",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "896a2865bfb7b7acfc935aca4a3eec9bf049921fb5745788db079b2403a3c245",
+      "anchor_ids": [
+        "J17-Q1",
+        "U03-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "b62fc32cffbd637e8d6fb0c0b37b0199002a5947f55f20e3f974f33765c34e21"
+    },
+    {
+      "id": "c20r3t01",
+      "scene_id": "c20r3t01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "f32655e244d4591fbc73b574410b19a75bfcdc3d09a772bc447889bd57d666a2",
+      "anchor_ids": [
+        "J03-Q1",
+        "J09-Q1",
+        "J14-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "c340817eed8bf000c7a4d7fac10aa2bb7747ef5cbec84ab5a136e41efa4195d1"
+    },
+    {
+      "id": "c20r3t02",
+      "scene_id": "c20r3t02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "7bad5f22a6a982341265704e3b7a299e4189aaf7255930885194cb061d06a555",
+      "anchor_ids": [
+        "J01-Q1",
+        "J02-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "a0b8009ea970198e26b120373abb28ab13ec2376fc6b976fe6b1c8a8477f4fb1"
+    },
+    {
+      "id": "c20r3t03",
+      "scene_id": "c20r3t03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "de2aa08dff584ac7f01dbeee398ac9ece38587f228b3d80f37b45dd126019392",
+      "anchor_ids": [
+        "J09-Q1",
+        "J20-Q1",
+        "J20-CAPTION"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "ab7435160bd3bf0db4a283774d01a6526bf3ec52076517bdec9f61b824bbb956"
+    },
+    {
+      "id": "c20r3t04",
+      "scene_id": "c20r3t04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "441368e124ae05ef7a8d85a635e43d9b00114724e6276e8b81f6ad8bdd4bf086",
+      "anchor_ids": [
+        "J03-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "ff5f8c234a6401d2a6683ac34cfd95a9e1e4d8b2c1a57100161b533a276451b4"
+    },
+    {
+      "id": "c20r3t05",
+      "scene_id": "c20r3t05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "ce14f1a355fbe3f33c912deb431dcfe3fb72275de3c7cfacc4ba2758928afecc",
+      "anchor_ids": [
+        "J03-Q1",
+        "E18-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "841171ccb63d360eb859b87bcd73dedd47934201abf6f4d3c84fca55ef6b760f"
+    },
+    {
+      "id": "c20r3t06",
+      "scene_id": "c20r3t06",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "3f61fdc4637b27a8d7343f636c35ebce85ded606baa410399cb610de46bae4fd",
+      "anchor_ids": [
+        "J04-Q1",
+        "J05-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "e703f1a7fb02a3d0db8f6722eb0e0ce1c9e19a8f7e5a15594a4ad32090e462d5"
+    },
+    {
+      "id": "c20r3t07",
+      "scene_id": "c20r3t07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "646a1487c5263da3088213415cdc75260882845b128220c93fad75242f68de83",
+      "anchor_ids": [
+        "J06-Q1",
+        "J06-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "810af1e5780c740b7dbf3b0fd82dd8acfec41ecb3987bd631fb63a8e629b093f"
+    },
+    {
+      "id": "c20r3t08",
+      "scene_id": "c20r3t08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "dd3af56c1b0af377f8ab87e29ef8ae1ce89c14238aedf2822bfa8156eebfaca3",
+      "anchor_ids": [
+        "J06-Q1",
+        "J06-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "ab262d07ea039030a9e7b1878ed2dfbe956647c17801874e1fa16e3f6e83bd32"
+    },
+    {
+      "id": "c20r3t09",
+      "scene_id": "c20r3t09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "005801fcebefca7d064ed734716d10119316741ba7d93c278114696e895b42a5",
+      "anchor_ids": [
+        "J06-Q1",
+        "J06-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "5cac8f0b00559404e6f03e08b69f87fa3b4122342445f63ab6f9dd8825525981"
+    },
+    {
+      "id": "c20r3t10",
+      "scene_id": "c20r3t10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "65104a8bc6948fc3776a55d0e8f551337a0be5b4fa6d431a6e9297ba47383b0f",
+      "anchor_ids": [
+        "J07-Q1",
+        "J07-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "962537ed7152d52e15d632fb10af47f2de5247a0d0d1d0a07e46b8c054b14543"
+    },
+    {
+      "id": "c20r3t11",
+      "scene_id": "c20r3t11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "9e1ccd9176d3f0d06b7c523c494dab4e09ca82e638cd03cf5b86135cbc5f0f61",
+      "anchor_ids": [
+        "J08-Q1",
+        "J08-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "638140905a67008b1a0ec0985a7a5f30cf77b2c8c39044c5aa0c8958c1ad1b22"
+    },
+    {
+      "id": "c20r3t12",
+      "scene_id": "c20r3t12",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "6ca501e09f3946825d7605d4d44fc3cda279568bbd89d1fae5aeb1cb9c26a3a4",
+      "anchor_ids": [
+        "J07-Q1",
+        "J14-Q1",
+        "J07-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "85b9ca6b9bdd5ec20196f27d0225f904e298b21fbad293efc5c9e581a04eef45"
+    },
+    {
+      "id": "c20r3t13",
+      "scene_id": "c20r3t13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "c9f20af7fa56d2fc8e7501986168f61bb58267fc47f15ce61cff69bf78e522f6",
+      "anchor_ids": [
+        "J07-Q1",
+        "J14-Q1",
+        "J07-EXTRA"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "4cabaf4bc72f2a916f568a19b7d622fbff961bdcc524acbfb9a88c8cf1109d0b"
+    },
+    {
+      "id": "c20r3t14",
+      "scene_id": "c20r3t14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "c4e38163ad4322121f2aa2f87ba16f6e569204e165eb12a21aff7edfa729887f",
+      "anchor_ids": [
+        "J03-Q1",
+        "J11-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "350f2a5314984658a91450676d5f8022dd96cd9dd97ea0fc65e35300c9a11ea1"
+    },
+    {
+      "id": "c20r3t15",
+      "scene_id": "c20r3t15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "2000a2dab6f3673bac04c55f03a7f9db8194b2f9e7ba5a406e8a7ff5e2e9ec4c",
+      "anchor_ids": [
+        "J03-Q1",
+        "E22-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "ceee1c5b8b2e86a059eccde9dc7363905fb8b5c3f12256092bf7a90b0d7034e4"
+    },
+    {
+      "id": "c20r3t16",
+      "scene_id": "c20r3t16",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "a4e327d2606f06d506cb3f39c7bc5291e8304470f9a53d547d964aa85b064533",
+      "anchor_ids": [
+        "J11-Q1",
+        "E23-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "abbfa230d95b2f40293de3c8e2a5c38ea8c25f1f2c43ac26bdc6a26762b54d95"
+    },
+    {
+      "id": "c20r3t17",
+      "scene_id": "c20r3t17",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "primary_delta_reread",
+      "source_payload_sha256": "3d0137ad4c2ec757b38d73ef2e282a8a0be8cbda917fc23eeb7965fd50e62384",
+      "anchor_ids": [
+        "J11-Q1",
+        "J17-Q1"
+      ],
+      "visual_method": "exact_baseline_payload",
+      "visual_payload_sha256": "ab21e60610b18c422474d54792c376beef92f46ea1aff9d90b5211a52002f004"
+    },
+    {
+      "id": "c20r3t24",
+      "scene_id": "c20r3t24",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "1f7386f6d4309ae09174799a65a0053d9014c946b6362d6dfb555521e3360e93",
+      "anchor_ids": [
+        "J14-Q1",
+        "J21-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "0745d8bf5ba15b7ce32c85b74f25ff0465e8b98d7075db35a0f133f7ce5be5f7"
+    },
+    {
+      "id": "c20r3t25",
+      "scene_id": "c20r3t25",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "2bcc0a4ba3130f90fc9b91fe746e409d251b304334ca0768fc7d115ba7e6df7f",
+      "anchor_ids": [
+        "J15-Q1",
+        "J15-EXTRA"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "0bec8e92e3fba75c21c105434b8ef22b3ba57d4dbe5474e61b50915ffc6b4673"
+    },
+    {
+      "id": "c20r3t26",
+      "scene_id": "c20r3t26",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "47b6ac7919ffbec2b6611460e78502710ee4bc5b377b1c6cf3f2732b9d6c442c",
+      "anchor_ids": [
+        "J16-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "872028b1e41139ed1d486488df1724b9feb0a07ca9a7973d809234ed45d5219b"
+    },
+    {
+      "id": "c20r3t27",
+      "scene_id": "c20r3t27",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "0daad6c94ed15ce19e6bbd0b149d07b67de3b7723a2f4b7a248027fac1b9e7a0",
+      "anchor_ids": [
+        "J14-Q1",
+        "J15-Q1",
+        "J15-EXTRA"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "d6bb89b60587fc45f564e3e54d345688947a224c958dab3d27c3a419e09f2c77"
+    },
+    {
+      "id": "c20r3t28",
+      "scene_id": "c20r3t28",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "c6f7309083423b2d045c5bb8b3936040b0d295f892e78747260fc578a6588700",
+      "anchor_ids": [
+        "J15-Q1",
+        "J15-EXTRA"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "c5351a5bcb0e76acb7abacaaf7841a477b747e65bdd7cc4e33d825c2d718508a"
+    },
+    {
+      "id": "c20r3t29",
+      "scene_id": "c20r3t29",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "6b175e26f4bc44d9452a8b1cf05c3f0f6eec68ca5af60d067234901aa56754ce",
+      "anchor_ids": [
+        "J17-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "b264318c49bb9402de914e0fc851f1dc72d0e6dc325ce729626edbe4122b3525"
+    },
+    {
+      "id": "c20r3t30",
+      "scene_id": "c20r3t30",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "2b2474af3941582c7e316e4f0b983cf8bfb39d118a3d7608f9e686718fdfffd2",
+      "anchor_ids": [
+        "J17-Q1"
+      ],
+      "visual_method": "changed_content_personally_reviewed",
+      "visual_payload_sha256": "ed5eb2a60961f9e2f9a5859d553c524b0188c32bf1dd0e9576ea5ef59adc82cb"
+    },
+    {
+      "id": "c20r3t31",
+      "scene_id": "c20r3t31",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "344afd89520e711ebee109516c52c4dc33030e736eabc9bf1a1de57b43a2a4fb",
+      "anchor_ids": [
+        "J17-Q1",
+        "J18-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "0af6cec32d68f5fd2608472b2206c733134a565e25bb925a19c2443c903ef250"
+    },
+    {
+      "id": "c20r3n01",
+      "scene_id": "c20r3n01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "bd359e8f33a8653a3f147e2a533f3dcfd49e833923c80293e0c29f7b6b0f3412",
+      "anchor_ids": [
+        "J18-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "9437e8525118c162f512b76d38d85c999e30af0c98bca587c309bbe822c094db"
+    },
+    {
+      "id": "c20r3n02",
+      "scene_id": "c20r3n02",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "4ab1c94fd13905cfaba811f60b3b0d70c942f518e507280d3b59f6d761e08ef9",
+      "anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "053d1be344bc38843162d932e7001b5ec91f5f494bcf61b0f93f9cb793438d16"
+    },
+    {
+      "id": "c20r3n03",
+      "scene_id": "c20r3n03",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "afea6ce2a7316348fe899eacfedeb3d7e531b90c8ba82e0bdcc071b1b3b7112d",
+      "anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "19829de2f9a2628135ff01dbe1b976d0f6ecc32862493349b70f81edb0739e6a"
+    },
+    {
+      "id": "c20r3n04",
+      "scene_id": "c20r3n04",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "54ee864000d3278c1f60e36972cb06c79e440f2f2c57b20031b493180f329ac4",
+      "anchor_ids": [
+        "J19-Q1",
+        "E19-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "945f9bbdb3a6860aa6cc09fa085182e07f7d2280cc69b3ded552008d576ff460"
+    },
+    {
+      "id": "c20r3n05",
+      "scene_id": "c20r3n05",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "9354f283b0539060f4a1378ecfab3fc0d541174a13c36aac82206c53e52308fb",
+      "anchor_ids": [
+        "J19-Q1",
+        "E19-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "1d4adb9379f84ec09b484423a7824d080c7be96ca852182766eb056ce765d980"
+    },
+    {
+      "id": "c20r3n07",
+      "scene_id": "c20r3n07",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "aa91b2e87769a2d122dd8b427e96971ea18ed44a7c60f44e6bcb3e5bef77ceff",
+      "anchor_ids": [
+        "J18-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "8c4e04fa21a1804b3b87efa085d241d3f882beb72731cd7e3f04705b37c6ff38"
+    },
+    {
+      "id": "c20r3n08",
+      "scene_id": "c20r3n08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "1a1db2c47589c7b529bb87cc193e5dcdd7f7622ada1d5b554cb0e0ff6a6196b2",
+      "anchor_ids": [
+        "J13-Q1",
+        "J18-Q1",
+        "J13-EXTRA"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "aff95e38f7ae097840761264f68024419402905536caf9c8ea81af3cd2078e69"
+    },
+    {
+      "id": "c20r3n09",
+      "scene_id": "c20r3n09",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "8feaa39615ef34e45157f51be8cfbc2f7f1dfe2fd64ee66d469d247a956aa474",
+      "anchor_ids": [
+        "J13-Q1",
+        "J18-Q1",
+        "J13-EXTRA"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "4e6df8370a50acd6a0d2033b783e580440172bd592cf2c26d83df433922a80ad"
+    },
+    {
+      "id": "c20r3n10",
+      "scene_id": "c20r3n10",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "6a672076690d13ec0f2dd0077186f3235b5449ad40d373ce9d17746113b62ca8",
+      "anchor_ids": [
+        "U03-Q1",
+        "U04-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "f82cca7c471845fe7a51d9fda925ac438751b91738e19e597611cba9d3bc3752"
+    },
+    {
+      "id": "c20r3n11",
+      "scene_id": "c20r3n11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "5fede4b1da21a0619d16e03bffce7b975bf6012673729ff4ca754f0175e5aea6",
+      "anchor_ids": [
+        "U03-Q1",
+        "U04-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "f8f6a9be2d692527bd4f0d57c6c7e357a0ff6021e564132f8aeba96643a5a47d"
+    },
+    {
+      "id": "c20r3n12",
+      "scene_id": "c20r3n12",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "3bd048b690ce35c3138ad72e4cd68ce622d75f57b52f3a4cbe93f31a4f9886c8",
+      "anchor_ids": [
+        "U04-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "c244b630741885da5c94352b94868b0ddc44d85676fe9b3800ffd67b6e90660f"
+    },
+    {
+      "id": "c20r3n13",
+      "scene_id": "c20r3n13",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "4f9cf6dc6b70b904b7eb683da44876e79869f29788018b7f32da17569a36947b",
+      "anchor_ids": [
+        "O09-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "99c2044e852d00031198744ef17669d2309efbdd245e2caae465059b0dddea8c"
+    },
+    {
+      "id": "c20r3n14",
+      "scene_id": "c20r3n14",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "efa83e8d89805318152d6ffd425a75ee815ada142e8ed0da78f7eaf263ef3c4c",
+      "anchor_ids": [
+        "O07-Q1",
+        "O09-Q1"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "6b179f3e1c046a566fee71dbd455d3f916b3f804837577ca44ee3967cd2be190"
+    },
+    {
+      "id": "c20r3n15",
+      "scene_id": "c20r3n15",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "ee069ddcacad4d4e9106262c29df07424aba65b34330323a6f85858362b998af",
+      "anchor_ids": [
+        "J22-Q1",
+        "J22-CAPTION"
+      ],
+      "visual_method": "same_subject_framing_and_camera_reread",
+      "visual_payload_sha256": "5d50384b60068a8e8f5a5a4dc5c96d787abb7cc69ba020e89c69811fb44004d4"
+    },
+    {
+      "id": "c20r3n16",
+      "scene_id": "c20r3outro",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "9ae7dcd12f1098a6796f8391f42f75104f41558548f0f291ae755cc180380858",
+      "anchor_ids": [
+        "J18-Q1",
+        "O07-Q1",
+        "O09-Q1",
+        "U04-Q1",
+        "D02-Q1",
+        "E13-Q1"
+      ],
+      "visual_method": "native_outro"
+    },
+    {
+      "id": "c20r3n17",
+      "scene_id": "c20r3outro",
+      "source_verdict": "OUT_OF_SCOPE_CTA",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "85db86be97c9fd9c40a9ed434ab7a33baac2578a270d4cdd277aee4679080e4a",
+      "anchor_ids": [],
+      "visual_method": "native_outro"
+    },
+    {
+      "id": "c20r3n18",
+      "scene_id": "c20r3outro",
+      "source_verdict": "OUT_OF_SCOPE_CTA",
+      "written_visual_verdict": "PASS",
+      "source_method": "exact_normalized_baseline_payload",
+      "source_payload_sha256": "db5ff8550c1ff555335d3a4e09f2d8f0bbb38998c92868bdf0d2d3916bb35a36",
+      "anchor_ids": [],
+      "visual_method": "native_outro"
+    }
+  ],
+  "image_reuse_plan": {
+    "verdict": "PASS_WRITTEN_ONLY",
+    "pure_native_full_input_recalculation": true,
+    "pairs": [
+      {
+        "source": "c20r3e01",
+        "reuse": "c20r3h05",
+        "both_native_key": "10628c6d991ddf8d",
+        "base_key": "14da6fdbee2275d6",
+        "composed_sha256": "f6aa701ac9dd7c2edd06474c99b4ea9b00457e616c5a7995e106ecd10d61989c"
+      },
+      {
+        "source": "c20r3n01",
+        "reuse": "c20r3h06",
+        "both_native_key": "8499e810e4c09fb5",
+        "base_key": "382dc0d240a028e3",
+        "composed_sha256": "9d60b29c7012dd1ee180808278130ba215a099e2abdd860d2a6962cf6f5d12d3"
+      }
+    ],
+    "tuple": "MiniMax/image-01; version1;1920x1080/1K;seed1;refs[];negative empty;takes1;no fixes;prompt limit1500; pure shotPrompt(resolveLook) and Stage.prototype.imageKey with declared status stub, no constructor/image/provider call. Camera is included; JP pair changed to push in on BOTH endpoints.",
+    "plan_limits": "Actual model/version/size/seed/references/fixes and runtime/media paths must be read back before execution; payoff first after normal admission, readCache/existence/bytes SHA guard, cache miss stops. Both ordinary endpoint judges; require identical actual selected file and final trimmed SHA plus assembly input; hash original cache separately. No manifest edits/reroll/force.",
+    "actual_same_asset_verified": false,
+    "actual_final_file_sha_verified": false
+  },
+  "fact_limits": [
+    "兩旅程、三件物品及部件分開。US修件觀察不是廠內診斷/連續工序，未增原先不能點火或新焊接；JP返還物不是成功點火證明，未取得完成表/要求退舊/廠方原因。",
+    "公司1933歷史回顧有歸屬；原專利僅結構對照，非首創或全型BOM；UK2026及US現行功能/外觀界線不倒推舊案例，不擴成全球所有產品/免運費。"
+  ],
+  "validation": {
+    "native_lint": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"case\" is in 71 of 114 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"adult\" is in 55 of 114 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"closed\" is in 40 of 114 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        }
+      ],
+      "summary": {
+        "minutes": 13.986666666666668,
+        "lines": 117,
+        "spoken_units": 3005,
+        "billable_characters": 9919,
+        "chapters": [
+          "00:00 帶繫繩環的舊盒，準備寄回去",
+          "00:51 想修鬆蓋，卻遲遲沒寄的舊盒",
+          "03:19 回信還沒來，包裹先出門",
+          "06:16 蓋子收緊，舊磨痕仍在",
+          "08:51 粉紅色禮物，輪子也停住了",
+          "11:51 原來的內膽，也一起回來"
+        ]
+      }
+    },
+    "native_facts_parser": {
+      "not_found_count": 0,
+      "result": {
+        "ok": true,
+        "detail": "verify-1.md marks no claim NOT FOUND"
+      }
+    },
+    "parser_limit": "Only checks cited NOT FOUND rows. Source PASS rests on exact baseline and personal delta checks above.",
+    "research_files_verified": 3,
+    "legacy_originals_verified": 68,
+    "readonly_snapshots_verified": 68,
+    "raw_files_sha_size_verified": 159,
+    "history_files_hash_only": {
+      "r1": 24,
+      "r2": 35
+    },
+    "immutable_lexicon_files_verified": 3,
+    "all_protected_inputs_unchanged": true
+  },
+  "limitations": {
+    "readiness": "HOLD_FOR_REMAINING_EDITORIAL_AND_PRODUCTION_GATES",
+    "length": "3005units; MATERIAL_CAPACITY_RISK; target13 unchanged; native13.9866667min estimate is planning only. No durationPASS or actualspeechFAIL.",
+    "actual_audio_seconds": null,
+    "actual_final_seconds": null,
+    "actual_same_asset_verified": false,
+    "narrative_or_owner_approval_created": false,
+    "paid_calls": 0,
+    "backend_or_git_mutations": 0
+  },
+  "outputs": [
+    "reviews/source-r3-independent.json",
+    "verify-1.md"
+  ]
+}

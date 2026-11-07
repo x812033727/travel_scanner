@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "revision": "garmin-r3",
+  "status": "PLANNED_SAME_INPUT_PENDING_REAL_MEDIA",
+  "not_a_video_schema_extension": true,
+  "not_a_keyframes_manifest": true,
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "572c24735edb484a28cdc2a44031c4678459cbcada67875091db1e6b4377dcda",
+      "script.md": "c78f35749f98bb9d91be254cc07c8d60d49016c17e2e7afcb00788a19fd9d551",
+      "narration-only.json": "af0818590ec67ae27a21ade8a39c1bd6b7070ed4b81d96b01b64e82a5d1ca9b3",
+      "claims.json": "fcb89ee93c461da8a017f9596e5a6b9ca7e011d385d6122e4740531d8b8e2321"
+    },
+    "claims_md_sha256": "77dac6ccccd03fe6a384e630bb97e0c1bde570ee789c929f42ce0daa96a322e7",
+    "brief_sha256": "c282c88201f01d284deefb189b591c9c96c66584823099c1b41bbc26b5b61a1b",
+    "series_sha256": "47951d52257307137cebfee2bbc38fb5bcefd96dc47ddecc36bad595abb90f20"
+  },
+  "pairs": [
+    {
+      "asset_plan_id": "two-unscored-runner-symbols",
+      "source_scene_id": "gr1p12",
+      "reuse_scene_id": "gr1h05",
+      "prompt_exact_match": true,
+      "camera_exact_match": true,
+      "camera": "pan right",
+      "composed_prompt_sha256": "3298c402b00e905c067ccc828258c921f83571ef8c0dfa70d468e97c606c4de7",
+      "native_same_input_key_rehearsal": {
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Medium close-up at a plain training desk, an anonymous adult examining a small unmarked wrist screen containing two generic human-shaped symbols without scores, soft interior lamp light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "requested_size": null,
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "14c124c6a62784b5",
+        "native_stage_key": "6a8adb8315a70678",
+        "pure_local_functions_only": true,
+        "parameters_are_declared_plan_not_backend_readback": true
+      },
+      "no_result_in_teaser": "Two unscored generic symbols or neutral curved case only; no lead/lag values, measured reception result, branded geometry or historical named portrait.",
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    },
+    {
+      "asset_plan_id": "curved-wrist-side-extension",
+      "source_scene_id": "gr1a03",
+      "reuse_scene_id": "gr1h06",
+      "prompt_exact_match": true,
+      "camera_exact_match": true,
+      "camera": "pan left",
+      "composed_prompt_sha256": "597e908835ecee71d0d71939a919fd64594dde461496e9ff168c1ef1ab0f1847",
+      "native_same_input_key_rehearsal": {
+        "input_tuple": {
+          "provider": "minimax",
+          "model": "image-01",
+          "prompt": "Close-up at a plain design demonstration table, an anonymous adult holding an unmarked wrist device with a curved side extension beside a bent forearm, mild overhead light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+          "negative": "",
+          "width": 1920,
+          "height": 1080,
+          "seed": 1,
+          "references": []
+        },
+        "requested_size": null,
+        "image_selection_version": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "base_key": "85cc952e13a6b7ab",
+        "native_stage_key": "6ece2406bc7cd130",
+        "pure_local_functions_only": true,
+        "parameters_are_declared_plan_not_backend_readback": true
+      },
+      "no_result_in_teaser": "Two unscored generic symbols or neutral curved case only; no lead/lag values, measured reception result, branded geometry or historical named portrait.",
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false,
+      "actual_same_file_sha_verified": false
+    }
+  ],
+  "code_readback": {
+    "camera_in_composed_prompt": true,
+    "readCache_is_guard_cached_is_not_readonly": true,
+    "files_sha256": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1"
+    }
+  },
+  "production_handoff": {
+    "preconditions": [
+      "Independent source/writtenvisual/freshnative and real owner gates pending.",
+      "Exact new US$25 account, protectedadmission and full-film all-inquote required before any production spend.",
+      "Read actual backendprovider/model/imageversion/size/negative/refs/seed/fixes/promptlimit and recalculate livekeys."
+    ],
+    "official_command_recipe_only": [
+      {
+        "purpose": "PAYOFF FIRST only after normal admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/garmin-submission-root",
+          "keyframes",
+          "--slug",
+          "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "gr1p12",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "STOPLINE BEFORE TEASER",
+        "checks": [
+          "Read official payoff selected manifest: judge passed,needs_review false, livekey/take/seed/fixes exact.",
+          "ReadCache(workdir) must have livekey with actual file present and matching bytesSHA; do not call cached() as guard.",
+          "Selected final/cropped file bytesSHA must match official selected record.",
+          "Cachemiss/missingfile/SHA mismatch/changedrequest/retake: STOP pair, because ordinaryCLI would otherwise dispatch a paid request."
+        ]
+      },
+      {
+        "purpose": "TEASER only after verified livecache",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/garmin-submission-root",
+          "keyframes",
+          "--slug",
+          "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "gr1h05",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "PAYOFF FIRST only after normal admission",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/garmin-submission-root",
+          "keyframes",
+          "--slug",
+          "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "gr1a03",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "STOPLINE BEFORE TEASER",
+        "checks": [
+          "Read official payoff selected manifest: judge passed,needs_review false, livekey/take/seed/fixes exact.",
+          "ReadCache(workdir) must have livekey with actual file present and matching bytesSHA; do not call cached() as guard.",
+          "Selected final/cropped file bytesSHA must match official selected record.",
+          "Cachemiss/missingfile/SHA mismatch/changedrequest/retake: STOP pair, because ordinaryCLI would otherwise dispatch a paid request."
+        ]
+      },
+      {
+        "purpose": "TEASER only after verified livecache",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/garmin-submission-root",
+          "keyframes",
+          "--slug",
+          "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "gr1h06",
+          "--takes",
+          "1"
+        ]
+      }
+    ],
+    "actual_acceptance": [
+      "Both endpoints independently pass ordinaryjudge.",
+      "Compare official selected references and final bytes after trim/crop; require same selected file andSHA.",
+      "Assembly consumes that same final file for both.",
+      "Retain normal cache/job/ledger receipts; no custommanifest/fakealias/cache-edit/force/accept-best."
+    ],
+    "executed": false
+  },
+  "actual_same_asset_verified": false,
+  "provider_calls": 0,
+  "paid_calls": 0
+}

@@ -1,0 +1,2424 @@
+{
+  "schema_version": 1,
+  "slug": "story-garmin-smartphone-pivot-worker-2026-remake-20261025",
+  "format": "drama",
+  "category": "story",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "對一個人說材料怎麼換工作；企業與館方回顧自然保留歸屬。假設動作不演成歷史現場。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "gr1h04",
+      "payoff": "gr1s25",
+      "what": "衛星圖示停止閃爍，才是定位完成"
+    },
+    {
+      "setup": "gr1h05",
+      "payoff": "gr1p12",
+      "what": "開場兩個小人按目標與實際進度顯示差距"
+    },
+    {
+      "setup": "gr1h06",
+      "payoff": "gr1a04",
+      "what": "開場面對擺臂的裝置以天線形狀爭取天空視野"
+    },
+    {
+      "setup": "gr1h08",
+      "payoff": "gr1f07",
+      "what": "開場等待落到能看懂並保留的一趟活動"
+    },
+    {
+      "setup": "gr1s07",
+      "payoff": "gr1s08",
+      "what": "裝置以可充電鋰電池供電"
+    },
+    {
+      "setup": "gr1s13",
+      "payoff": "gr1s14",
+      "what": "久置且完全放電後可能先充電才有顯示"
+    },
+    {
+      "setup": "gr1s16",
+      "payoff": "gr1s19",
+      "what": "裝置要先取得天空視野以找衛星"
+    },
+    {
+      "setup": "gr1s20",
+      "payoff": "gr1s21",
+      "what": "之後定位通常不到幾分鐘，不是每次初次等待"
+    },
+    {
+      "setup": "gr1s24",
+      "payoff": "gr1s25",
+      "what": "開場閃爍圖示停止與訊號條消失才按開始"
+    },
+    {
+      "setup": "gr1s28",
+      "payoff": "gr1p01",
+      "what": "運動畫面將位置接成時間配速與距離"
+    },
+    {
+      "setup": "gr1p04",
+      "payoff": "gr1p07",
+      "what": "配速平滑平均一段時間並可選平滑程度"
+    },
+    {
+      "setup": "gr1p08",
+      "payoff": "gr1p12",
+      "what": "先輸入目標，虛擬夥伴按目標前進"
+    },
+    {
+      "setup": "gr1p14",
+      "payoff": "gr1p15",
+      "what": "虛擬夥伴沒有另一個真人在線上跑"
+    },
+    {
+      "setup": "gr1p16",
+      "payoff": "gr1p17",
+      "what": "按低速條件自動暫停計時"
+    },
+    {
+      "setup": "gr1p19",
+      "payoff": "gr1p20",
+      "what": "到達設定距離自動記圈"
+    },
+    {
+      "setup": "gr1p25",
+      "payoff": "gr1r03",
+      "what": "停表重設後自動保存活動歷史"
+    },
+    {
+      "setup": "gr1r04",
+      "payoff": "gr1r08",
+      "what": "詳細與基本歷史有不同容量"
+    },
+    {
+      "setup": "gr1r09",
+      "payoff": "gr1r10",
+      "what": "最細資料須趕在下次重設前傳到電腦"
+    },
+    {
+      "setup": "gr1r14",
+      "payoff": "gr1r15",
+      "what": "訓練軟體可以加註記及匯出"
+    },
+    {
+      "setup": "gr1r16",
+      "payoff": "gr1r19",
+      "what": "地圖不能載入細圖，GOTO僅連到已存點的直線"
+    },
+    {
+      "setup": "gr1r22",
+      "payoff": "gr1a01",
+      "what": "片狀天線在擺臂時朝向天空"
+    },
+    {
+      "setup": "gr1a06",
+      "payoff": "gr1a09",
+      "what": "新接收器仍要到開闊處站定等待"
+    },
+    {
+      "setup": "gr1a11",
+      "payoff": "gr1a12",
+      "what": "三零五從胸帶帶入心率資料"
+    },
+    {
+      "setup": "gr1a17",
+      "payoff": "gr1a20",
+      "what": "配對學會識別碼後只收該感測器資料"
+    },
+    {
+      "setup": "gr1a21",
+      "payoff": "gr1a23",
+      "what": "配對距離在三公尺內並遠離別人感測器"
+    },
+    {
+      "setup": "gr1a27",
+      "payoff": "gr1d04",
+      "what": "每秒詳細記錄有儲存容量取捨"
+    },
+    {
+      "setup": "gr1d03",
+      "payoff": "gr1d04",
+      "what": "每秒記錄最多三點五小時詳細資料"
+    },
+    {
+      "setup": "gr1d10",
+      "payoff": "gr1d11",
+      "what": "舊活動可建立路線"
+    },
+    {
+      "setup": "gr1d17",
+      "payoff": "gr1d19",
+      "what": "灰黑三角區分歷史進度與目前位置"
+    },
+    {
+      "setup": "gr1d20",
+      "payoff": "gr1d21",
+      "what": "回到路線後箭頭繼續引路"
+    },
+    {
+      "setup": "gr1d24",
+      "payoff": "gr1v01",
+      "what": "特定長期使用者自述累積三百六十三跑"
+    },
+    {
+      "setup": "gr1v03",
+      "payoff": "gr1v05",
+      "what": "長期使用者自述高樓旁偶爾失去連線"
+    },
+    {
+      "setup": "gr1v06",
+      "payoff": "gr1v08",
+      "what": "該使用者主要依心率訓練而少用小人"
+    },
+    {
+      "setup": "gr1v10",
+      "payoff": "gr1v12",
+      "what": "一秒尖峰遇到當時軟體不能編修點與刻度"
+    },
+    {
+      "setup": "gr1v13",
+      "payoff": "gr1v14",
+      "what": "該使用者用第三方軟體命名分組與匯出"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Garmin戴上GPS，為何還不能立刻跑？｜品牌故事",
+    "description": "把GPS戴上手腕，還不等於一趟跑步記得好。從2003年11月出貨的Forerunner201，沿著充電與初次鎖星、配速平滑和目標夥伴、歷史保存與序列埠上傳，接到2006年205/305的腕旁天線、胸帶識別碼和記錄容量，再看2009長期使用者如何處理資料。\n\n201手冊是2006年2月RevF，205/305手冊是RevD©2006–2008，不能把後期手冊全當首發韌體。15–30分鐘只指201初次定位，3.5小時指305每秒記錄的詳細資料容量。DC Rainmaker原帖2007，但本片採明示2009-06-25大幅更新的自述，非受控精度實驗；未採動態比較表、讀者留言或游泳建議。手機競爭沒有被寫成2003跑錶發明動機。畫面為匿名概念插畫。\n\n來源（查閱2026-10-26）\nForerunner 201 Owner’s Manual\nhttps://static.garmin.com/pumac/Forerunner201_OwnersManual.pdf\nForerunner 205/305 preliminary specification sheet\nhttps://www8.garmin.com/specs/forerunner205305_0106.pdf\nTwenty years of running with Garmin\nhttps://www.garmin.com/en-US/blog/fitness/twenty-years-of-running-with-garmin/\nGarmin FY2003 Form 10-K, original SEC filing\nhttps://www.sec.gov/Archives/edgar/data/1121788/000112178804000005/form10k_122703.txt\nForerunner 201 preliminary specification sheet\nhttps://www8.garmin.com/specs/Forerunner_201_Sneak.pdf\nGarmin FY2008 Form 10-K\nhttps://www.sec.gov/Archives/edgar/data/1121788/000114420409010751/v141191_10k.htm\nForerunner 205/305 Owner’s Manual\nhttps://static.garmin.com/pumac/984_OwnersManual.pdf\nDC Rainmaker: Review of GarminForerunner305; major2009update\nhttps://www.dcrainmaker.com/2007/11/review-of-garmin-forerunner-305.html",
+    "tags": [
+      "Garmin",
+      "Forerunner201",
+      "Forerunner305",
+      "GPS",
+      "跑錶",
+      "品牌故事",
+      "配速",
+      "運動記錄"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "layout": "d",
+      "brand": "GARMIN",
+      "tag": "品牌故事",
+      "headline": "戴上卻得等",
+      "sub": "GPS怎麼變跑錶",
+      "shot": "gr1h01"
+    }
+  },
+  "sources": [
+    {
+      "title": "Forerunner 201 Owner’s Manual",
+      "url": "https://static.garmin.com/pumac/Forerunner201_OwnersManual.pdf",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Forerunner 205/305 preliminary specification sheet",
+      "url": "https://www8.garmin.com/specs/forerunner205305_0106.pdf",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Twenty years of running with Garmin",
+      "url": "https://www.garmin.com/en-US/blog/fitness/twenty-years-of-running-with-garmin/",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Garmin FY2003 Form 10-K, original SEC filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000112178804000005/form10k_122703.txt",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Forerunner 201 preliminary specification sheet",
+      "url": "https://www8.garmin.com/specs/Forerunner_201_Sneak.pdf",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Garmin FY2008 Form 10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420409010751/v141191_10k.htm",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Forerunner 205/305 Owner’s Manual",
+      "url": "https://static.garmin.com/pumac/984_OwnersManual.pdf",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "DC Rainmaker: Review of GarminForerunner305; major2009update",
+      "url": "https://www.dcrainmaker.com/2007/11/review-of-garmin-forerunner-305.html",
+      "checked_on": "2026-10-26"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "gr1h01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain exercise preparation table, an anonymous adult pressing a small side button on an unmarked rectangular wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1h01",
+          "text": "在屋外，你按住Forerunner二零一的電源，衛星圖示還在閃。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ],
+      "chapter": "手腕上的錶，還在等天空"
+    },
+    {
+      "id": "gr1h03",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an open path entrance, an anonymous adult standing still while examining a plain rectangular wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1h03",
+          "text": "如果你第一次定位，等待可能拖到十五至三十分鐘。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1h02",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a quiet reading desk, an anonymous adult reading an open blank instruction booklet beside a plain wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1h02",
+          "text": "這是二零零六年二月修訂手冊裡，第一次起跑前的動作。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1h04",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at an open running path, an anonymous adult raising one wrist to examine a plain rectangular electronic device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1h04",
+          "text": "電已充好，人也準備好了，手腕上的錶到底還在等什麼？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1h05",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain training desk, an anonymous adult examining a small unmarked wrist screen containing two generic human-shaped symbols without scores, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1h05",
+          "text": "等你跑起來，螢幕裡的兩個小人，還會帶來另一個問題。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1h06",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain design demonstration table, an anonymous adult holding an unmarked wrist device with a curved side extension beside a bent forearm, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1h06",
+          "text": "到了二零零六年，另一支裝置，得先面對你不停擺動的手臂。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1h07",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1h07",
+          "text": "我們沿著Garmin從定位到留下記錄的改動，追這段腕上GPS的路。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1h08",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at an open running path, an anonymous adult raising one wrist to examine a plain rectangular electronic device, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1h08",
+          "text": "把GPS戴到手腕上，還差什麼，才能成為你用得上的跑步工具？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain packing table, an anonymous worker placing a rectangular wrist device inside an unmarked open box, muted diffuse light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1s01",
+          "text": "要讓你的一跑留下記錄，起點是二零零三年十一月出貨的這款裝置。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ],
+      "chapter": "先充好電，再等訊號條消失"
+    },
+    {
+      "id": "gr1s02",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a quiet archive desk, an anonymous reader examining an open blank document beside a plain wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1s02",
+          "text": "當年的公司年報，寫的是跑步時的速度、時間、距離和圈時。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an open running path, an anonymous adult raising one wrist to examine a plain rectangular electronic device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1s03",
+          "text": "這款裝置的初步規格，列的重量是七十八公克。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s04",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain comparison table, an anonymous adult examining two unmarked rectangular wrist devices beside blank paper, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1s04",
+          "text": "它的長方形機身寬度超過八公分，厚度則不到兩公分。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s05",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an open running path, an anonymous adult raising one wrist to examine a plain rectangular electronic device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1s05",
+          "text": "如果你要邊跑邊看，這塊裝置就得連同顯示畫面，一起留在手腕上。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s06",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at an exercise preparation table, an anonymous jogger holding a small charging cradle with its cable while a plain strap lies beside it, soft side light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1s06",
+          "text": "它早在車用導航後來碰上手機競爭以前，就進到跑者的手腕。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s07",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain room with a wall socket, an anonymous adult attaching a small unmarked wrist device to a simple charging cradle, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1s07",
+          "text": "把這塊裝置帶出門，它的電要從哪裡來？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s08",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain equipment bench, an anonymous adult examining a small plain battery beside an unmarked wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1s08",
+          "text": "它使用可充電鋰電池，手冊列充滿可用長達十五小時。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s09",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain equipment bench, an anonymous adult examining a small plain battery beside an unmarked wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1s09",
+          "text": "後來修訂的手冊又提醒，低溫、高溫和電池老化，都會減少電量。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s10",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain equipment table, an anonymous adult wiping the back contacts of a rectangular wrist device with a small cloth, soft side-window light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1s10",
+          "text": "所以你把接點擦乾，先把四接點那一端扣進充電座。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s11",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain room with a wall socket, an anonymous adult attaching a small unmarked wrist device to a simple charging cradle, soft side-window light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1s11",
+          "text": "修訂手冊說，第一次使用前，要先充電至少兩小時。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s12",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain equipment bench, an anonymous adult examining a small plain battery beside an unmarked wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1s12",
+          "text": "一般充滿所需的時間，列在一到三小時之間。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s13",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain room with a wall socket, an anonymous adult attaching a small unmarked wrist device to a simple charging cradle, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1s13",
+          "text": "可是機器久置到電池完全沒電時，插上電源，螢幕就一定立刻有反應嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s14",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a home desk, an anonymous user waiting beside an unlit rectangular receiver seated in a simple charging cradle, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1s14",
+          "text": "手冊說，這種情況可能得充電最多三十分鐘，才開機或顯示充電。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s15",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training table, an anonymous adult examining a featureless wrist-device screen beside blank note paper, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1s15",
+          "text": "因此，看到螢幕沒亮，還得先分清它是否正在補回電量。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s16",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain room with a wall socket, an anonymous adult attaching a small unmarked wrist device to a simple charging cradle, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1s16",
+          "text": "電充進去了，錶又要怎麼知道，你現在站在哪裡？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s17",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an open path entrance, an anonymous adult standing still while examining a plain rectangular wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1s17",
+          "text": "我覺得這個起點很有意思：人已經知道自己在哪，機器還不知道。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s18",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a quiet reading desk, an anonymous adult reading an open blank instruction booklet beside a plain wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1s18",
+          "text": "剛剛那本修訂手冊，把找訊號的條件寫得很具體。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s19",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an open path beside low buildings, an anonymous adult holding one forearm upward beneath an unobstructed sky, muted diffuse light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1s19",
+          "text": "第一次使用，要把它留在能清楚看見天空的地方。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s20",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at an open path entrance, an anonymous adult standing still while examining a plain rectangular wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1s20",
+          "text": "可是你每次出門，都得等那麼久嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s21",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain exercise preparation table, an anonymous adult pressing a small side button on an unmarked rectangular wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1s21",
+          "text": "前面的等待只指初次定位；同頁寫，之後找衛星通常不到幾分鐘。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s22",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain outdoor path, an anonymous adult jogging while wearing an unmarked rectangular wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1s22",
+          "text": "如果你急著跑出門，這兩種等待，差的可不是一點點。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s23",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a path beside a tall plain building, an anonymous adult walking with one wrist raised beside the building wall, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1s23",
+          "text": "但錶要找的是來自天空的訊號，屋頂和建物會把視野擋住。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s24",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain training table, an anonymous adult examining a featureless wrist-device screen beside blank note paper, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1s24",
+          "text": "開場還在閃的衛星圖示，又要變成什麼樣，你才按開始？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s25",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain exercise preparation table, an anonymous adult pressing a small side button on an unmarked rectangular wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1s25",
+          "text": "衛星圖示停止閃爍，訊號條消失，才是它已經定位的提示。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s26",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at an open path entrance, an anonymous adult pressing a front button on an unmarked wrist device before starting to move, soft side-window light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1s26",
+          "text": "等到這時，按下開始鍵，這支錶才開始計時和追蹤距離。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1s28",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at an open running path, an anonymous adult raising one wrist to examine a plain rectangular electronic device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1s28",
+          "text": "可是，光知道你的位置，還不等於知道這一段跑得怎麼樣。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain training table, an anonymous adult examining a featureless wrist-device screen beside blank note paper, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1p01",
+          "text": "時間、配速和距離，出現在這支跑錶的運動主畫面上。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ],
+      "chapter": "坐標變成配速，還得讓人看懂"
+    },
+    {
+      "id": "gr1p02",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain exercise preparation table, an anonymous adult pressing a small side button on an unmarked rectangular wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1p02",
+          "text": "你按上下鍵，就能切到當圈的配速、圈時和圈距。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p03",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training table, an anonymous adult examining a featureless wrist-device screen beside blank note paper, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1p03",
+          "text": "同一個位置資料，現在接上了時間，變成跑者要看的進度。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p04",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at an open running path, an anonymous adult raising one wrist to examine a plain rectangular electronic device, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1p04",
+          "text": "但如果位置和速度有誤差，畫面上的配速，又該怎麼讀？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p05",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain preparation desk, an anonymous adult pressing one small button beside an unmarked wrist-device display, muted diffuse light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1p05",
+          "text": "它提供一個配速平滑設定，把一段時間裡的配速平均。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p06",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a quiet reading desk, an anonymous adult reading an open blank instruction booklet beside a plain wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1p06",
+          "text": "手冊說，這是為了避開GPS位置和速度計算的誤差。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p07",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain preparation desk, an anonymous adult pressing one small button beside an unmarked wrist-device display, muted diffuse light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1p07",
+          "text": "設定裡可以選不同的平滑程度，最強到最弱都有。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p08",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training desk, an anonymous adult examining a small unmarked wrist screen containing two generic human-shaped symbols without scores, muted diffuse light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1p08",
+          "text": "我會接著問，有了配速，你還得自己心算，才能追上目標嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p10",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain training desk, an anonymous adult examining a small unmarked wrist screen containing two generic human-shaped symbols without scores, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1p10",
+          "text": "開場那兩個小人，這時才有了工作。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p11",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain preparation desk, an anonymous adult pressing one small button beside an unmarked wrist-device display, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1p11",
+          "text": "你先輸入想跑的距離和時間，讓裝置建立一個目標。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p12",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain training desk, an anonymous adult examining a small unmarked wrist screen containing two generic human-shaped symbols without scores, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1p12",
+          "text": "按下開始，畫面上方的虛擬夥伴，就照那個目標往前跑。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p13",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain training desk, an anonymous adult examining a small unmarked wrist screen containing two generic human-shaped symbols without scores, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1p13",
+          "text": "下方的小人代表你，底下會顯示兩邊相差多少。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p14",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain training table, an anonymous adult examining a featureless wrist-device screen beside blank note paper, soft side-window light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1p14",
+          "text": "畫面裡讓你追的人，是另一個真人嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p15",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training desk, an anonymous adult examining a small unmarked wrist screen containing two generic human-shaped symbols without scores, soft side-window light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1p15",
+          "text": "這裡追的，是你事先設定的目標，並沒有另一個真人在線上跑。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p16",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain street crossing, an anonymous adult standing still before crossing while examining a wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1p16",
+          "text": "但是，一趟跑步也會遇到紅燈，計時要一直算下去嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p17",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain path junction, an anonymous adult stopping beside a low post with one wrist raised, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1p17",
+          "text": "你可以設定，配速低於某個值時，自動暫停計時。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p18",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain training table, an anonymous adult examining a featureless wrist-device screen beside blank note paper, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1p18",
+          "text": "它到達暫停條件時，計時指示會閃爍。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p19",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain outdoor path, an anonymous adult jogging while wearing an unmarked rectangular wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1p19",
+          "text": "停下來的時間處理了，跑動中的分段，又能怎麼記？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p20",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain running path marker, an anonymous adult pressing a wrist-device button beside an unmarked post, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1p20",
+          "text": "另一個自動記圈功能，則在到達設定距離時，替你記下一圈。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p22",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain exercise preparation table, an anonymous adult pressing a small side button on an unmarked rectangular wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1p22",
+          "text": "你也可以自己按圈鍵，告訴它這一段到這裡為止。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p23",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain running path marker, an anonymous adult pressing a wrist-device button beside an unmarked post, muted diffuse light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1p23",
+          "text": "手動停表再開始，裝置還會自動算成新的一圈。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1p25",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1p25",
+          "text": "那麼跑完以後，這些分段和位置，能一起留下來嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r01",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain training desk, an anonymous adult holding a finger on a wrist-device button beside blank activity sheets, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1r01",
+          "text": "你停下計時，再按住重設鍵三秒，這一跑就成了上一次跑步。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ],
+      "chapter": "重設之前，先把這一跑留下來"
+    },
+    {
+      "id": "gr1r03",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1r03",
+          "text": "手冊說，裝置會自動保存上一次跑步和歷史資料。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r04",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain training desk, an anonymous adult holding a finger on a wrist-device button beside blank activity sheets, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1r04",
+          "text": "我讀到這裡想問：存下歷史，就表示每一個點都保住了嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r06",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a quiet training desk, an anonymous adult arranging a small stack of blank record sheets beside a wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1r06",
+          "text": "手冊列的是，記憶體最多五千圈。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r07",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain analysis desk, an anonymous adult pointing at a wordless dotted route on blank paper beside a wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1r07",
+          "text": "最近十次跑步有基本軌跡，而還沒重設的最近一跑，記得更細。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r08",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain analysis desk, an anonymous adult pointing at a wordless dotted route on blank paper beside a wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1r08",
+          "text": "那一跑的詳細軌跡，最多能留三千個點。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r09",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain computer desk, an anonymous adult connecting a simple cable from a charging cradle to a plain desktop computer, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1r09",
+          "text": "如果你想保住最細的資料，要趕在哪個動作之前傳出去？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r10",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain computer desk, an anonymous adult examining abstract wordless lines on a desktop screen beside a connected wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1r10",
+          "text": "手冊提醒，要在下次重設前傳到電腦，接收器就得接上另一端。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r11",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain computer desk, an anonymous adult connecting a simple cable from a charging cradle to a plain desktop computer, soft side-window light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1r11",
+          "text": "剛剛充電用的座子，現在要連起裝置與電腦。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r12",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain computer desk, an anonymous adult connecting a simple cable from a charging cradle to a plain desktop computer, muted diffuse light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1r12",
+          "text": "這次，座上的序列線還要插到電腦的序列埠。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r13",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain computer desk, an anonymous adult examining abstract wordless lines on a desktop screen beside a connected wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1r13",
+          "text": "打開訓練軟體，選接收歷史資料，才把活動傳進去。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r14",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1r14",
+          "text": "傳進電腦，只看過一次數字就結束了嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r15",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1r15",
+          "text": "在訓練軟體裡，你還可以加註記，把跑步歷史匯出成資料檔。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r16",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain analysis table, an anonymous adult examining a wordless dotted route on a blank map sheet, soft interior lamp light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1r16",
+          "text": "若你要靠它導航回去，錶上的地圖又能畫得多細？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r17",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a training desk, an anonymous reader pressing a small side control beside a wordless dotted route on a simple display, soft lamp light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1r17",
+          "text": "它能開啟地圖模式，顯示自己走過的軌跡。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r18",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a planning table, an anonymous jogger examining a simple dotted trail sketch beside an unopened blank folded map, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1r18",
+          "text": "它不能載入詳細地圖資料，畫面主要留下你和位置點。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r19",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain path planning desk, an anonymous adult pointing at a single simple direction arrow on a wordless sheet, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1r19",
+          "text": "選一個已存位置導航，裝置會從目前位置，拉出一條直線。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r20",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an open path with a low obstacle, an anonymous adult stepping around a low plain barrier while wearing a wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1r20",
+          "text": "如果直線中間有障礙，你還是得自己繞過去。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1r22",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain movement demonstration space, an anonymous adult bending one forearm to inspect an unmarked wrist device with a curved side extension, soft side-window light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1r22",
+          "text": "可是只要手臂一直擺動，接收器還能好好看著天空嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain comparison table, an anonymous adult examining two unmarked rectangular wrist devices beside blank paper, soft interior lamp light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1a01",
+          "text": "二零五和三零五的規格，寫明片狀天線會在擺臂時朝向天空。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ],
+      "chapter": "天線沿著手腕，朝天空轉過去"
+    },
+    {
+      "id": "gr1a03",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain design demonstration table, an anonymous adult holding an unmarked wrist device with a curved side extension beside a bent forearm, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1a03",
+          "text": "Garmin回顧開場那支裝置，說天線沿著手腕的一部分伸出去。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a04",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain movement demonstration space, an anonymous adult bending one forearm to inspect an unmarked wrist device with a curved side extension, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1a04",
+          "text": "這段形狀，是為了讓天線取得更好的天空視野。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a05",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at an open running path, an anonymous adult raising one wrist to examine a plain rectangular electronic device, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1a05",
+          "text": "你抬手看螢幕的動作，和接收器要看的方向，得放在一起處理。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a06",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain design demonstration table, an anonymous adult holding an unmarked wrist device with a curved side extension beside a bent forearm, muted diffuse light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1a06",
+          "text": "我看到這裡會問，接收器變了，你還需要先到開闊地找衛星嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a07",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a quiet reading desk, an anonymous adult reading an open blank instruction booklet beside a plain wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1a07",
+          "text": "規格也列出高感度接收器，但手冊並沒有因此叫你直接起跑。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a08",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an open path beside low buildings, an anonymous adult holding one forearm upward beneath an unobstructed sky, muted diffuse light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1a08",
+          "text": "它還是要求，到遠離高樓和樹木的開闊地方找衛星。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a09",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain movement demonstration space, an anonymous adult bending one forearm to inspect an unmarked wrist device with a curved side extension, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1a09",
+          "text": "把天線朝上，先站定，等定位頁消失。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a11",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain exercise preparation room, an anonymous adult wearing a generic chest strap beneath a plain exercise shirt while holding a wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1a11",
+          "text": "如果你想知道身體出了多少力，速度以外，還能接到什麼資料？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a12",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain exercise preparation table, an anonymous adult adjusting a simple chest strap beside an unmarked wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1a12",
+          "text": "三零五加入的心率資料，來自另一件貼在身上的東西。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a13",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a plain exercise preparation room, an anonymous adult adjusting a generic chest strap below the sternum against bare skin, an unmarked wrist receiver resting nearby, soft side light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1a13",
+          "text": "胸帶要直接接觸皮膚，綁在胸骨下方。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a14",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain exercise preparation table, an anonymous adult moistening two plain contact pads on a simple chest strap, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1a14",
+          "text": "你還得把背面的兩個感測點沾濕，讓脈搏和傳送器連上。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a15",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a quiet reading desk, an anonymous adult reading an open blank instruction booklet beside a plain wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1a15",
+          "text": "這份手冊的胸帶，三零五能用，同代二零五不支援。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a17",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain exercise preparation table, an anonymous adult adjusting a simple chest strap beside an unmarked wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1a17",
+          "text": "不過你把胸帶戴好，錶又怎麼確定，收到的是你的資料？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a18",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain exercise preparation table, an anonymous adult moistening two plain contact pads on a simple chest strap, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1a18",
+          "text": "每個感測器都有自己的識別碼，第一次配對時，這支錶會學起來。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a19",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at an open running path, an anonymous adult raising one wrist to examine a plain rectangular electronic device, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1a19",
+          "text": "下次開機，它就用存下的識別碼，尋找那個感測器。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a20",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training table, an anonymous adult examining a featureless wrist-device screen beside blank note paper, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1a20",
+          "text": "配對之後，手冊說它只接收這個感測器的資料。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a21",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain exercise preparation table, an anonymous adult adjusting a simple chest strap beside an unmarked wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1a21",
+          "text": "配對時，你的錶和胸帶離多遠，才符合手冊的建議？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a23",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain preparation desk, an anonymous adult pressing one small button beside an unmarked wrist-device display, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1a23",
+          "text": "手冊要它們在三公尺內，還要遠離別人的感測器。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a24",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1a24",
+          "text": "若看起來配到別人的感測器，排錯建議是重新掃描。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a26",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain preparation desk, an anonymous adult pressing one small button beside an unmarked wrist-device display, soft interior lamp light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1a26",
+          "text": "訊號接進來以後，儲存空間還得容得下這一跑。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1a27",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1a27",
+          "text": "每一秒都留下，還是只留重要的變化？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d01",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain preparation desk, an anonymous adult pressing one small button beside an unmarked wrist-device display, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1d01",
+          "text": "三零五預設的智慧記錄，按方向、速度或心率的變化選取關鍵點。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ],
+      "chapter": "記得更細，能留下的時間反而變短"
+    },
+    {
+      "id": "gr1d03",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain preparation desk, an anonymous adult pressing one small button beside an unmarked wrist-device display, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1d03",
+          "text": "如果改成每秒都記，能一直保留整趟活動嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d04",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a quiet training desk, an anonymous adult arranging a small stack of blank record sheets beside a wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1d04",
+          "text": "但手冊接著寫，這樣最多只能記下三點五小時的詳細資料。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d06",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain equipment bench, an anonymous adult examining a small plain battery beside an unmarked wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1d06",
+          "text": "這是詳細資料的儲存上限，電池續航是另一項規格。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d07",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1d07",
+          "text": "我會把它看成同一趟跑步的新取捨：不是每個點都能永遠留著。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d08",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a training desk, an anonymous user moving an older blank activity sheet aside while positioning a new blank sheet at the front of a small stack, soft diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1d08",
+          "text": "手冊又提醒，歷史滿了，較舊的資料會自動被覆寫。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d09",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain computer desk, an anonymous adult examining abstract wordless lines on a desktop screen beside a connected wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1d09",
+          "text": "針對覆寫，手冊建議定期把歷史傳到電腦保存。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d10",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain route preparation table, an anonymous adult examining a wordless dotted course on a featureless screen beside a connected wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1d10",
+          "text": "留在歷史裡的活動，下一次出門還能做什麼？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d11",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain route preparation table, an anonymous adult examining a wordless dotted course on a featureless screen beside a connected wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1d11",
+          "text": "你能在歷史裡挑一筆活動，用它建立一條路線。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d12",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain outdoor path, an anonymous adult jogging while wearing an unmarked rectangular wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1d12",
+          "text": "你再沿著它跑，目標就能換成追上過去那次表現。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d14",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain analysis table, an anonymous adult examining a wordless dotted route on a blank map sheet, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1d14",
+          "text": "如果你想把補水處或轉彎留成提示，還可以加上路線點。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d15",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain computer desk, an anonymous adult examining abstract wordless lines on a desktop screen beside a connected wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1d15",
+          "text": "不過，這些路線點要用電腦上的訓練軟體加入。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d16",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain route preparation table, an anonymous adult examining a wordless dotted course on a featureless screen beside a connected wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1d16",
+          "text": "傳回裝置後，畫面才會顯示，到下一個路線點還有多遠。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d17",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1d17",
+          "text": "可是一條路線上，要怎麼同時看你和過去那次活動？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d18",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain analysis table, an anonymous adult examining one gray and one black simple triangle on a wordless route diagram, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1d18",
+          "text": "地圖裡的灰色三角形，代表原本那次活動的進度。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d19",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain analysis table, an anonymous adult examining one gray and one black simple triangle on a wordless route diagram, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1d19",
+          "text": "黑色三角形，則是你現在的位置。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d20",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain path planning desk, an anonymous adult pointing at a single simple direction arrow on a wordless sheet, soft side-window light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1d20",
+          "text": "如果跑離路線，箭頭先引你回去；回去以後，它又要指哪裡？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d21",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a plain curved outdoor path, an anonymous jogger back on a simple trail while following a wordless direction arrow on an unmarked wrist display, mild diffuse daylight.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1d21",
+          "text": "一旦回到路線，箭頭才繼續指示，沿著它該往哪裡走。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1d24",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1d24",
+          "text": "規格裡能比較過去，真的長期跑下來，留下的會是什麼？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v01",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1v01",
+          "text": "評測者DC Rainmaker的三零五，留下了三百六十三次跑步。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ],
+      "chapter": "二零零九年，記錄到了軟體裡"
+    },
+    {
+      "id": "gr1v02",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet archive desk, an anonymous reader examining an open blank document beside a plain wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1v02",
+          "text": "這是他在二零零九年六月二十五日，大幅更新的長期評測自述。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v03",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an open running path, an anonymous adult raising one wrist to examine a plain rectangular electronic device, muted diffuse light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1v03",
+          "text": "他報告的記錄，也會在遮蔽物旁遇到中斷嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v04",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain outdoor path, an anonymous adult jogging while wearing an unmarked rectangular wrist device, muted diffuse light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1v04",
+          "text": "他寫，一般樹木和較矮建物旁，通常沒有什麼問題。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v05",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a path beside a tall plain building, an anonymous adult walking with one wrist raised beside the building wall, muted diffuse light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1v05",
+          "text": "但沿著較高的建物跑，有時會短暫失去連線。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v06",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain training table, an anonymous adult holding an unmarked rectangular wrist receiver beside a generic chest strap, featureless screen without scores, muted side light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1v06",
+          "text": "至於剛剛那種追目標的小人，他會拿來當自己的訓練依據嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v07",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain training desk, an anonymous adult examining a small unmarked wrist screen containing two generic human-shaped symbols without scores, soft interior lamp light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1v07",
+          "text": "而且畫面上的小人，他自己其實用得不多。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v08",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain exercise preparation room, an anonymous adult wearing a generic chest strap beneath a plain exercise shirt while holding a wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1v08",
+          "text": "因為他主要依心率訓練，所以更常看身體的反應。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v09",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training table, an anonymous adult examining a featureless wrist-device screen beside blank note paper, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1v09",
+          "text": "我覺得這個選擇很實在：能顯示的資料，不一定每一種都要追。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v10",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain computer desk, an anonymous adult examining abstract wordless lines on a desktop screen beside a connected wrist device, soft interior lamp light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1v10",
+          "text": "同一趟活動，到了電腦曲線裡，就一定變得比較好讀嗎？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v11",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain computer desk, an anonymous adult examining a simple wordless line with one tall spike on a featureless screen, soft side-window light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1v11",
+          "text": "他展示過一個例子：某一秒的配速，突然跳出很高的尖峰。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v12",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a plain computer desk, an anonymous adult examining abstract wordless lines on a desktop screen beside a connected wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "lines": [
+        {
+          "id": "gr1v12",
+          "text": "在當時的內建軟體裡，他不能改資料點，也不能調整圖表刻度。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v13",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "lines": [
+        {
+          "id": "gr1v13",
+          "text": "你如果想替每次跑步命名、分組，這又要怎麼做？",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v14",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up at a plain computer desk, an anonymous adult examining abstract wordless lines on a desktop screen beside a connected wrist device, soft side-window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "lines": [
+        {
+          "id": "gr1v14",
+          "text": "他寫自己已改用第三方軟體，能命名、分組，也能匯出資料。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1v15",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain training desk, an anonymous adult sorting blank activity sheets beside an unmarked wrist device, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "lines": [
+        {
+          "id": "gr1v15",
+          "text": "如果你想比較兩次活動，記錄留下以後，怎麼整理也很重要。",
+          "emotion": "對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖"
+        }
+      ]
+    },
+    {
+      "id": "gr1outro",
+      "template": "outro",
+      "data": {
+        "title": "把一趟活動，交到下一次出門",
+        "cta": "你最常回頭看哪項記錄？"
+      },
+      "lines": [
+        {
+          "id": "gr1f07",
+          "text": "開場那個等待，最後要交給你的，是看得懂也留得下的一趟活動。",
+          "emotion": "自然溫暖收束，對一位觀眾邀請"
+        },
+        {
+          "id": "gr1f08",
+          "text": "如果你有跑步記錄，留言告訴我，你最常回頭看哪一項？",
+          "emotion": "自然溫暖收束，對一位觀眾邀請"
+        },
+        {
+          "id": "gr1f09",
+          "text": "也訂閱我，讓這些平常只看見結果的設計，繼續被講清楚。",
+          "emotion": "自然溫暖收束，對一位觀眾邀請"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "source_video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+  "reviewer": "/root/c03_admission_current — independent PT/ID reviewer; not translator",
+  "reviewed_at_utc": "2026-10-25T17:04:40.663841+00:00",
+  "scope": "text_only",
+  "revision_scope": "Exact 95-line baseline only; excludes any length-extension candidate. Targeted PT fix recheck; unchanged ID hash verification only.",
+  "original_review_sha256": "ddd880a5defcbc102d5e6b8d59cfc78e75e034d47d78ca6f5728f5ecccfc8a4a",
+  "applied_fixes_sha256": "288d0825a306f1461e81b7fc0028ee7c333c85059242d844e4d55ffda1cf88d7",
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "c1c97faef9251c766ff9a0cedf5730fd0523b5bcec8279d221496f8183811aa8",
+      "translation_sha256": "39cce776e822e150ce5be5f6b7ace552295f225ce4127b976a52004593b80d2f",
+      "verdict": "TEXT_PASS",
+      "native_merge_receipt_binds_inputs": true,
+      "native_merge_receipt_sha256": "3188deb8604b5841b97affb0d74edb6687ab66db8e2a2a2fbc0c61ec1d6da531",
+      "findings": [],
+      "review_type": "targeted_post_fix",
+      "old_worksheet_sha256": "2bd57285f526674f514ee85540e454f33ffda1673c06a38b821f57980d81952a",
+      "old_translation_sha256": "04e383ba4ae160441ff8a357794d6789aeb1008ce60df6b036810a3d10ddb9e8",
+      "old_input_hashes_match_original_review": true,
+      "worksheet_changed_paths": [
+        ".lines[12].text",
+        ".lines[73].text",
+        ".lines[74].text"
+      ],
+      "translation_changed_paths": [
+        ".lines.c09r013.text",
+        ".lines.c09r078.text",
+        ".lines.c09r079.text"
+      ],
+      "only_three_required_text_fields_changed": true,
+      "protected_fields_and_all_other_text_unchanged": true,
+      "targets_checked": [
+        {
+          "target": "c09r013",
+          "previous": "Você talvez perguntasse em outra loja; ele comprou uma forja a carvão e uma bigorna e aprendeu em livros a fazer o que não encontrava.",
+          "current": "Se você não conseguisse comprar o equipamento adequado, talvez perguntasse em outra loja; já ele comprou uma forja a carvão e uma bigorna e aprendeu a fabricá-lo lendo livros.",
+          "exact_required_replacement": true,
+          "semantic_recheck": "PASS",
+          "source": "換成你，買不到合用的東西，也許會換一家問；他的辦法卻是買煤爐和鐵砧，翻書學著做。"
+        },
+        {
+          "target": "c09r078",
+          "previous": "Mas essa é a avaliação do autor da resenha. Numa grande parede de verdade, o que você encontra na bolsa de Chouinard e seus parceiros?",
+          "current": "Mas essa é a avaliação do autor da resenha. Numa grande parede de verdade, o que você encontra na bolsa de Chouinard e seu parceiro?",
+          "exact_required_replacement": true,
+          "semantic_recheck": "PASS",
+          "source": "不過那是書評作者的判斷；換到真正的大岩壁，你看修納德與夥伴的器材袋，裡面又裝了什麼？"
+        },
+        {
+          "target": "c09r079",
+          "previous": "A escalada sem levar pitons anunciada no começo é esta: naquele mesmo ano, Chouinard e seus parceiros levaram entaladores para uma famosa via longa no El Capitan.",
+          "current": "A escalada sem levar pitons anunciada no começo é esta: naquele mesmo ano, Chouinard e seu parceiro levaram entaladores para uma famosa via longa no El Capitan.",
+          "exact_required_replacement": true,
+          "semantic_recheck": "PASS",
+          "source": "開場那次不帶岩釘的攀登，說的就是這裡：同年，修納德和夥伴帶著楔塊，去爬酋長岩一條著名長路線。"
+        }
+      ],
+      "semantic_checks": [
+        "c09r013 restores viewer unable-to-buy condition, shop response, then forge/anvil/books action in source cue order; wording is natural Brazilian Portuguese.",
+        "c09r078 and c09r079 now retain one unnamed partner without adding name or year; naquele mesmo ano remains unchanged."
+      ],
+      "full_review_repeated": false
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "b5418b1e9260c4ebc89a3f15dedd559d682925ee6960fd0316fae932fadd2bc7",
+      "translation_sha256": "ed504067730666a5000b961003ebd96f9d977e8f02b583d22140b83ee9ce1233",
+      "verdict": "TEXT_PASS",
+      "native_merge_receipt_binds_inputs": true,
+      "native_merge_receipt_sha256": "ad4b3846028616351597581e7cbe9581fd9e0ee78e5d31454cff2a3eed1759d5",
+      "findings": [],
+      "review_type": "unchanged_input_carry_forward",
+      "whole_worksheet_and_translation_unchanged_from_original_pass": true,
+      "full_review_repeated": false
+    }
+  ],
+  "timing": false,
+  "paid": 0,
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "owner_approval_asserted": false,
+  "limitations": [
+    "No actual timeline, SRT, audio, dub fit or media QA verified. No timed max_chars was available.",
+    "PT full review not repeated; ID prior TEXT_PASS applies to byte-identical current files."
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r8",
+  "reviewer": "/root/dyson_r1_source",
+  "role": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_DELETION_DELTA_REVIEW",
+  "reviewed_at_utc": "2026-10-26T09:15:30.762571+00:00",
+  "status": "SOURCE_AND_WRITTEN_VISUAL_PASS",
+  "passed": true,
+  "source_text_verdict": "PASS_R7_INHERITANCE_WITH_SINGLE_SCENE_DELETION",
+  "written_visual_verdict": "PASS_ALL_RETAINED_R7_SCENE_VALUES_EXACT",
+  "source_pass_claimed": true,
+  "production_readiness": "HOLD_MATERIAL_CAPACITY_AND_REMAINING_GATES",
+  "must_fix": [],
+  "input_binding": {
+    "core_four_sha256": {
+      "video.json": "0770a93c4e7d5c8b8539d927d81a4c39f8997123766f0ef4981660d1044cb77b",
+      "script.md": "d77142ba3df1820d7b0d8d3a766bb980a25d0a1f2192f818ddab8ac878e4e464",
+      "narration-only.json": "d3195d37271282c5d704018a3b642dc78dda15ee61163cfb7634739322c8c305",
+      "claims.json": "17ffd867b60bbb7777c1c43774dee95e6d86d741cfeaa40c211313cc63afe4c7"
+    },
+    "author_freeze_r8_sha256": "44b13924e934239b7179a4759ece9b9add9b0022aa76dbdfbc3ce6f5620e676e",
+    "changes_r8_sha256": "8e4def57e5a309aa3c7f916cd5f970d5227b36c56cf372b48be4ea7b597bc121",
+    "image_reuse_plan_sha256": "9de3abc486c4ed58ac0473d644f380b806530817265051aed355a2ce69639f2c",
+    "all_frozen_candidate_files_hash_checked": 57
+  },
+  "inheritance": {
+    "parent_review_path": "history/r7/reviews/source-r7-independent.json",
+    "parent_review_sha256": "9d9ec143db310fde4ce2f949065c32524d0ca6ea00eb28f8f87c6dcf64056b04",
+    "parent_verify_sha256": "317d2a4edc60cbd6cf446a21a6c400bcde00b8a0c2af32616cb1a2fa56c5451e",
+    "parent_author_freeze_sha256": "69a79c01b9ff519cc8dfffc5a88ce27d04ecce07fc0a5e20cf715b11fd6fa8d6",
+    "history_r7_manifest_sha256": "4db34b49e1b0648b08e87f7b40b52be7a48f0fe7f88ec7c89759222126ceca9c",
+    "parent_source_status": "SOURCE_AND_WRITTEN_VISUAL_PASS",
+    "retained_lines_exactly_inherited": 98,
+    "retained_shots_exactly_inherited": 95,
+    "scope": "R7 completed independent source/written-visual chain inherited for all retained values. Only precise deletion, projections, references, request equality and hashes checked now; no fresh full source-content review is claimed.",
+    "all_prior_source_limits_and_nonblocking_opening_graph_advisory_preserved": true
+  },
+  "deletion": {
+    "scene_id": "rs0057",
+    "line_id": "rs0057",
+    "old_text": "停下與出發，讓同一個箱子用不同部位碰地；這是設計的使用順序。",
+    "old_kind": "editorial_link",
+    "old_scene_archived_at": "history/r7/video.json#scene=rs0057",
+    "whole_attached_scene_removed": true,
+    "replacement_lines_or_scenes": [],
+    "new_historical_or_technical_claims": false,
+    "retained_video_exact_test": "current video JSON equals R7 video JSON with only scene rs0057 filtered out",
+    "local_context_read": "rs0054–rs0056 retain patent operating example and angle attribution; next rs0058 asks about protective flange, then rs0059 names it. Deleting the intervening editorial recap removes no source attribution and introduces no unsupported referent.",
+    "narrative_quality_vote_issued": false
+  },
+  "empty_scene_schema_receipt": {
+    "path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/empty-scene-schema-readback-r8.json",
+    "sha256": "07dd6dc1c8bc436ded4be5504171a815e414a2d464fc1fb942a52639d43b364c",
+    "read_and_hash_checked": true,
+    "reported_findings": "Empty lines rejected: a scene lasts as long as narration. Manually timed action_seconds also disallowed for this narrator-only knowledge story.",
+    "assessment": "Deleting attached shot with deleted line follows the recorded normal schema restriction. No silent padding, manual time, duplicate speech, cast/profile/schema change or replacement fact was added.",
+    "new_schema_experiment_or_stricter_gate_created": false
+  },
+  "structural_and_projection_checks": {
+    "video_only_delta": "one full scene rs0057 removed; no other object value changed",
+    "narration_only_delta": "one row rs0057 removed; every retained ID/chapter/text exact",
+    "claims_only_delta": "candidate revision and pending-source-review labels updated; rs0057 row removed; all retained claim text/evidence/limits and nonnarrated research exact",
+    "video_to_narration_ID_order_chapter_text_exact": true,
+    "script98_ID_text_exact": true,
+    "claims98_ID_text_exact": true,
+    "deleted_id_absent_from_scenes_lines_claims_marker": true,
+    "all95_retained_shot_data_prompt_camera_exact_R7": true,
+    "all25_loops_endpoints_and_text_exact_R7": true,
+    "all_endpoints_resolve_and_payoffs_follow_setups": true,
+    "rs0021_retying_unchanged": true,
+    "actual_Seattle_opening_and_body_callback_unchanged": true,
+    "SEA_graph_scene_requests_and_values_except_revision_binding_exact_R7": true,
+    "no_extra_scene_or_narration_padding": true
+  },
+  "coverage": {
+    "lines": 98,
+    "chapters": 7,
+    "scenes": 96,
+    "shots": 95,
+    "content_cards": 0,
+    "outro": 1,
+    "loops": 25,
+    "all_retained_source_values_inherited": true
+  },
+  "image_request_checks": {
+    "pair_objects_entirely_equal_R7": true,
+    "pairs": [
+      {
+        "teaser": "rs0005",
+        "payoff": "rs0066",
+        "native_stage_key": "e8d589542750b9e4",
+        "composed_prompt_sha256": "a284bc1420604858438ad893d3ff6f0c6350db2f292eecd60ab895c657b6d973",
+        "all_pair_object_fields_and_full_request_tuple_equal_R7": true,
+        "actual_same_asset_verified": false
+      },
+      {
+        "teaser": "rs0006",
+        "payoff": "rs0082",
+        "native_stage_key": "ab8eb6c1780fa08b",
+        "composed_prompt_sha256": "6d1a2d8a9cf400df283a46bf55ae69e162f8fc92ffd0dcae7b4b0c04aa772beb",
+        "all_pair_object_fields_and_full_request_tuple_equal_R7": true,
+        "actual_same_asset_verified": false
+      }
+    ],
+    "R7_pure_Stage_imageKey_rehearsal_inherited_after_complete_tuple_equality": true,
+    "fresh_stage_recomputation_claimed": false,
+    "six_core_keyframe_files_hash_unchanged": true,
+    "opening_graph_same_asset_claimed": false,
+    "actual_cache_judge_crop_or_file_SHA_acceptance": false,
+    "production_recipe_preserved": "payoff-first,takes1,normal selected/judge/readCache/actual byteSHA guard;miss or mismatch STOP;both context judges;final post-crop selected fileSHA and actual assembly-input equality.",
+    "actual_same_asset_verified": false
+  },
+  "normal_checks": {
+    "ordinary_lint_argv": [
+      "node",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+      "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/runtime-root",
+      "lint",
+      "--slug",
+      "story-rolling-suitcase-v2-remake-20261025",
+      "--json"
+    ],
+    "lint_exit_code": 0,
+    "errors": 0,
+    "warnings": [
+      "luggage46of95",
+      "suitcase36of95",
+      "about10.9minutes;target12–14"
+    ],
+    "native_spoken_units": 2303,
+    "legacy_estimate_minutes": 10.858888888888888,
+    "normal_factsChecks_exact98row_marker": {
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    "NOT_FOUND_rows": 0,
+    "runtime_video_script_manifest_and_same_project_dictionary_SHA_verified": true,
+    "runtime_or_dictionary_written": false
+  },
+  "protected_readback": {
+    "protected_unique_original_paths_hash_checked": 1555,
+    "R7_archive_files_hash_checked": 89,
+    "all1718_expected_hash_comparisons_passed_before_and_after": true,
+    "scope_of_protected1555_check": "Bytes/SHA only; content not reread as new source QA.",
+    "prior1395_originals_research3_cache611_original192_and_snapshots_preserved_by_manifest": true,
+    "frozen_candidate_files": 57,
+    "lexicon_sequence": 1,
+    "immutable_current_lexicon_files_checked": 3,
+    "dictionary_rebuilt_or_revised": false,
+    "old_runtime_not_written": true
+  },
+  "capacity": {
+    "status": "HOLD_MATERIAL_CAPACITY",
+    "whole_raw_spoken_units": 2303,
+    "series_target_minutes": 13,
+    "planning_4_to_5_units_per_second_seconds": [
+      460.6,
+      575.75
+    ],
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "actual_body_seconds": null,
+    "actual_TTS_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "body_scope": "whole unwrapped voiced narration includingcoldopen/CTA,excluding added5sintro+21soutro",
+    "estimate_is_not_actual_PASS_or_TTS_FAIL": true,
+    "duration_standard_lowered_or_slowdown_padding_authorized": false
+  },
+  "independence_and_limits": {
+    "not_author_or_researcher": true,
+    "native_votes_or_author_narrative_opinions_used_for_this_source_verdict": false,
+    "supplied_actual_native_round_count": 6,
+    "fresh_native7_not_prepared_read_or_prejudged": true,
+    "pronunciation_actual_audio_images_final_assets_final_film_or_owner_approval_performed": false,
+    "SOURCE_PASS_authorizes_US25_account_quote_admission_or_spend": false,
+    "new_primary_raw_fetches": 0,
+    "provider_calls": 0,
+    "paid_calls": 0
+  },
+  "verify_marker": {
+    "path": "verify-1.md",
+    "sha256": "9460f1fd83e98d924a0b2acd31ccf93880b7812f38c5d8cd72e1139ef0e279ec",
+    "row_count": 98,
+    "ID_order_and_current_text_exact": true,
+    "CONFIRMED_rows": 51,
+    "OUT_OF_SCOPE_editorial_rows": 47,
+    "rs0057_and_nonnarrated_appendix_excluded": true,
+    "scope": "R7 source/written-visual chain plus R8 single deletion; capacity HOLD remains."
+  },
+  "mutations": {
+    "written_files": [
+      "reviews/source-r8-independent.json",
+      "verify-1.md"
+    ],
+    "core_files_changed": false,
+    "runtime_files_changed": false,
+    "git_operations": 0,
+    "backend_operations": 0,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "subagents_spawned": 0,
+    "owner_approvals_created": 0
+  }
+}

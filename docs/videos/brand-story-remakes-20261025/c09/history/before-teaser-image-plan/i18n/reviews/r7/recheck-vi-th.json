@@ -1,0 +1,134 @@
+{
+  "source_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+  "reviewer": "/root/c06_translate_vi_th",
+  "independent": true,
+  "role_disclosure": "Wrote C09 R7 KO/ES, not C09 R7 VI/TH. Earlier Vietnamese/Thai translation work was C06, a different episode. Did not write C09 Chinese.",
+  "reviewed_at": "2026-10-25T20:43:34.766300+00:00",
+  "scope": "Targeted recheck of the single required Thai coal-stove fix and its two adjacent lines; unchanged Vietnamese original TEXT_PASS carried by exact hashes. No resampling of unchanged full narration.",
+  "base_full_review": "review-vi-th.json",
+  "base_full_review_sha256": "c6d229bb3353c1e40bade9a75b68d2cc62332e033c2a94fd7ebc70e7c0634b8f",
+  "applied_fixes_receipt": "applied-fixes-vi-th.json",
+  "applied_fixes_receipt_sha256": "74191844d09cf8f3e9342b8acb48368dfec9e663054fc89ecfae00cb4a25c1e1",
+  "locales": [
+    {
+      "locale": "vi",
+      "worksheet_sha256": "7075a5806bca67e7f3dc6698fbb9328bad4737a6aee32551b9429737bc8b1625",
+      "translation_sha256": "deeaa056acda01d9b37572a8c9b3ba3c8763604896cf83a1ed61534fdd1213b5",
+      "status": "TEXT_PASS",
+      "checked_fix_targets": [],
+      "resolved_required_fix_count": 0,
+      "remaining_required_findings": [],
+      "prior_full_review_lines": 103,
+      "prior_full_review_chapters": 6,
+      "evidence": [
+        {
+          "target": "unchanged_locale",
+          "resolved": true,
+          "evidence": "VI工作表及native檔位元組完全未改，原TEXT_PASS及advisory直接保留，不抽未變全文重審。"
+        }
+      ],
+      "original_advisory_findings": [
+        {
+          "target": "lines.c09r5062",
+          "required": false,
+          "current": "Lời tựa lấy những tuyến cũ ở Anh để so sánh: chỗ đặt chân đã mòn bóng, nhưng các khe nứt dùng để đặt bảo vệ, không bị đóng đinh piton, vẫn nguyên vẹn.",
+          "proposed": "Lời tựa lấy những tuyến cũ ở Anh để so sánh: chỗ đặt chân đã mòn bóng, nhưng các khe nứt dùng để đặt thiết bị bảo vệ, nơi không bị đóng đinh piton, vẫn nguyên vẹn.",
+          "reason": "非必修的口語精確化：đặt bảo vệ 略像把抽象「保護」放進裂縫；加 thiết bị 可讓名詞更自然。上下文已有完整器材敘述，現句仍可理解為放保護器材，未新增或誤述史實，因此保留作 advisory。"
+        }
+      ],
+      "advisory": [
+        "整體越文自然，tôi／bạn 你我角色及問句保留。nêm chèn 穩定表示楔塊，đai ốc 指金屬螺帽，leo trợ lực bằng thiết bị 與 leo sạch 不混成自由攀登或無繩獨攀。",
+        "Carson 的獨攀仍是 nếu hôm nay... 的條件盤算，後文明說沒有成行；CTA 是泛指一位賣家的假設問題，沒有變成 Chouinard 願意出版或授權的事實。",
+        "1973事件、1974文章刊出及1977另一採訪刊出／非已確認訪問時間在 description 分開。正文當年五月／同年秋天沿1973事件脈絡，未稱1973為楔塊首次使用。",
+        "首個楔塊只沉約四分之一英吋／近六公釐，第二個僅說移動；未把幅度套到第二個，也未說墜落或器材掉出。美元價格、頁數、段數及三人隊數量保留。",
+        "副標1973: bỏ đinh piton限定拿掉岩釘，不是拿掉所有保護；headline保留真正換行，六個URL精確。實際縮圖手機可讀性、讀音和聲音時間窗尚未量測。"
+      ],
+      "no_other_changes_proof": {
+        "method": "Exact current whole worksheet and native translation SHA-256 equal the independently full-reviewed original values.",
+        "worksheet_byte_identical_to_original_review": true,
+        "native_translation_byte_identical_to_original_review": true,
+        "original_TEXT_PASS_preserved_without_new_full_review": true
+      },
+      "native_thumbnail_current": true,
+      "native_body_and_metadata_match_worksheet": true
+    },
+    {
+      "locale": "th",
+      "worksheet_sha256": "32776ac4c508675753120299d07f567e2e00481fc5d0016c1fd13bd6520802ac",
+      "translation_sha256": "43eb8988f2d255604f2c48bb2e7e9f8bfd0dd0fb05af721261b22e29328d68e7",
+      "status": "TEXT_PASS",
+      "checked_fix_targets": [
+        "lines.c09r5015"
+      ],
+      "resolved_required_fix_count": 1,
+      "remaining_required_findings": [],
+      "prior_full_review_lines": 103,
+      "prior_full_review_chapters": 6,
+      "evidence": [
+        {
+          "target": "lines.c09r5015",
+          "resolved": true,
+          "current": "ชูนาร์ดซื้อเตาถ่านหินขนาดเล็ก ทั่ง และคีม อ่านหนังสือหัดตีเหล็ก แล้วเริ่มทำหมุดพิทอนจากเหล็กกล้าโครเมียมโมลิบดีนัม",
+          "evidence": "เตาถ่านหิน已明確指煤而非通常的木炭。小型爐、鐵砧、鉗子、自學鍛造與鉻鉬鋼仍依原source；前句買不到合用品的提問與後句裝車沿海移動／生火製作銜接自然，未增新燃料或製程步驟。",
+          "adjacent_text_checked": [
+            {
+              "id": "c09r5014",
+              "source": "換成你，買不到合用的東西，會等別人補貨，還是自己做？",
+              "text": "ถ้าเป็นคุณ เมื่อหาซื้อของที่เหมาะไม่ได้ จะรอให้คนอื่นมีของมาขาย หรือทำขึ้นเอง?"
+            },
+            {
+              "id": "c09r5015",
+              "source": "修納德買了小煤爐、鐵砧和鉗子，翻書學鍛造，開始用鉻鉬鋼做岩釘。",
+              "text": "ชูนาร์ดซื้อเตาถ่านหินขนาดเล็ก ทั่ง และคีม อ่านหนังสือหัดตีเหล็ก แล้วเริ่มทำหมุดพิทอนจากเหล็กกล้าโครเมียมโมลิบดีนัม"
+            },
+            {
+              "id": "c09r5016",
+              "source": "他把工具裝上車，沿加州海岸移動，停一兩天，就生火做一批，帶到攀岩區賣。",
+              "text": "เขาขนอุปกรณ์ขึ้นรถ เดินทางเลียบชายฝั่งแคลิฟอร์เนีย พอจอดพักสักวันสองวันก็จุดไฟทำหมุดหนึ่งชุด แล้วนำไปขายตามแหล่งปีนผา"
+            }
+          ]
+        }
+      ],
+      "original_advisory_findings": [
+        {
+          "target": "lines.c09r5105",
+          "required": false,
+          "current": "พวกเขาไปได้เร็วกว่าที่วางแผนไว้ และยังมีน้ำเหลือเฟือ ทั้งสองคืนก็มีชั้นหินที่เหมาะ และหยุดพักเร็วพอจะชมพระอาทิตย์ตกได้",
+          "proposed": "พวกเขาไปได้เร็วกว่าที่วางแผนไว้ และยังมีน้ำเหลือเฟือ ทั้งสองคืนก็มีชานหินที่เหมาะ และหยุดพักเร็วพอจะชมพระอาทิตย์ตกได้",
+          "reason": "非必修用語一致性：前面平台已譯ชานหิน，本句ชั้นหิน可由過夜語境理解為岩層平台；改ชานหิน更明確指岩台。未造成新地點／時間／器材主張，列advisory不強改。"
+        }
+      ],
+      "advisory": [
+        "泰文ฉัน／คุณ你我口吻、問句與條件自然，หมุดพิทอน／ลิ่มปีนผา／แป้นเกลียว區分鋼釘、楔塊與金屬螺帽，不是食物或攀岩粉。ปีนแบบคลีน未譯成無繩或free solo，繩索及現成โบลต์仍明示。",
+        "Carson的ใจแป้ว與ถ้าวันนี้เสียเวลาเปล่า...เป็น條件念頭，後文明說solo念頭消失；不是他真的無保護離隊。CTA以ถ้าเป็นคุณ หากคนขาย...ถาม觀眾假設，不是新增出版意願史實。",
+        "1974／1977刊出年與1973事件年分開，1970回信和1972型錄位置正確。第一個ลิ่มปีนผาประมาณหนึ่งในสี่นิ้ว／ราวหกมิลลิเมตร，第二個只ขยับ，未偷加相同幅度。",
+        "三十美分與一美元半、一小時兩枚／有時八小時、十四／七十二頁、五／四／三段、後續三人隊均保留。原來英國使用楔塊並非當年發明的界線保留。",
+        "metadata完整、兩行headline是真的換行、thumb無角括號且native current，六個URL精確。實際縮圖可讀性、音訊自然語速、逐句配音視窗與實測時長不在本次TEXT審核。"
+      ],
+      "changed_and_adjacent_body_line_ids": [
+        "c09r5014",
+        "c09r5015",
+        "c09r5016"
+      ],
+      "no_other_changes_proof": {
+        "method": "Reverse only the exact reviewed text substitution in memory; full original worksheet and native translation SHA-256 values are recovered. No file was rewritten by reviewer.",
+        "reconstructed_original_worksheet_sha256": "a98d4db68736e51ddaf102bf6abe6f2069328b3c55f912132bd5858941610de9",
+        "matches_reviewed_original_worksheet": true,
+        "reconstructed_original_translation_sha256": "a4305c315b4904b8f8980c0e30d3ea8ee9b0f55727976d51adef6f42ad081d72",
+        "matches_reviewed_original_translation": true,
+        "current_worksheet_matches_applied_receipt": true,
+        "other_text_source_context_and_metadata_changes": 0
+      },
+      "native_thumbnail_current": true,
+      "native_body_and_metadata_match_worksheet": true
+    }
+  ],
+  "actual_timing_available": false,
+  "dub_window_fit_checked": false,
+  "actual_mobile_render_readability_checked": false,
+  "pronunciation_approved": false,
+  "media_qa": false,
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "translations_modified_by_reviewer": false
+}

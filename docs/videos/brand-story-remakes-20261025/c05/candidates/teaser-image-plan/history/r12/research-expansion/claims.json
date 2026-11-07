@@ -1,0 +1,733 @@
+{
+  "schema_version": 1,
+  "researcher": "/root/c05_r3_source_delta",
+  "frozen_at_utc": "2026-10-25T19:41:48.288209+00:00",
+  "status": "RESEARCH_EXPANSION_FROZEN_NO_CANDIDATE_ADOPTION",
+  "bound_existing_skeleton": {
+    "video_sha256": "155dc0ac8a8949fd0adea91a28e6afd8c3571cb9bce6597533152c1e617eabb6",
+    "lines": 84,
+    "scenes": 82,
+    "total_units": 2168,
+    "body_units": 1985,
+    "narrative_blind_not_requested": true,
+    "backend_submission_not_requested": true
+  },
+  "selected_primary_material_sets": 3,
+  "sources": {
+    "NDL1897": {
+      "title": "除虫菊栽培書 5版",
+      "publisher": "上山英一郎",
+      "bibliographic_author_field": "NDL record leaves author blank; publication by Ueyama is confirmed, no invented author credit.",
+      "publication_year": 1897,
+      "source_kind": "Contemporaneous primary cultivation/insect-powder manufacturing and commercial guidance, not a record of an actual mosquito-coil factory run.",
+      "url": "https://dl.ndl.go.jp/pid/1084941",
+      "doi": "10.11501/1084941",
+      "record": {
+        "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897_RECORD.html",
+        "sha256": "ddd146bc5d8536f299dca86a1e64e1ecae91a02fb372e2ddf479c885c29b90f1",
+        "bytes": 265840
+      },
+      "manifest": {
+        "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897_MANIFEST.json",
+        "sha256": "78fbee196b7337100d60e4a350759d4dc2ee5eff0f9f0b93af1dbabcc3237c9d",
+        "bytes": 25194
+      },
+      "public_access": "NDL metadata: internet-public / PDM",
+      "canvases_read": [
+        2,
+        4,
+        5,
+        6,
+        12,
+        16,
+        17,
+        20,
+        24
+      ],
+      "used_canvases": [
+        6,
+        16,
+        17,
+        20
+      ],
+      "image_receipts": {
+        "2": {
+          "id": "NDL1897_CANVAS_2",
+          "url": "https://dl.ndl.go.jp/api/iiif/1084941/R0000002/full/2000,/0/default.jpg",
+          "status": 200,
+          "bytes": 333648,
+          "sha256": "3ce4e1f3a6545b49cfa82ad4d2164750ec3c4f8108941694b67f59d9af35c83a",
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897-canvas-02.jpg",
+          "accessed_at_utc": "2026-10-25T19:37:22.364235+00:00"
+        },
+        "4": {
+          "id": "NDL1897_CANVAS_4",
+          "url": "https://dl.ndl.go.jp/api/iiif/1084941/R0000004/full/2000,/0/default.jpg",
+          "status": 200,
+          "bytes": 713849,
+          "sha256": "8599c4a0bd68bfb2ae10141abe6bef0267f14790baf602b9836be2a809ab1e16",
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897-canvas-04.jpg",
+          "accessed_at_utc": "2026-10-25T19:30:51.856827+00:00"
+        },
+        "5": {
+          "id": "NDL1897_CANVAS_5",
+          "url": "https://dl.ndl.go.jp/api/iiif/1084941/R0000005/full/2000,/0/default.jpg",
+          "status": 200,
+          "bytes": 617028,
+          "sha256": "67c6c4aaa15a371cf4e18b2e53f3302bce770a9b989fba8c841b5083658832ff",
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897-canvas-05.jpg",
+          "accessed_at_utc": "2026-10-25T19:30:51.304468+00:00"
+        },
+        "6": {
+          "id": "NDL1897_CANVAS_6",
+          "url": "https://dl.ndl.go.jp/api/iiif/1084941/R0000006/full/2000,/0/default.jpg",
+          "status": 200,
+          "bytes": 573564,
+          "sha256": "f579895cdb5861118d66983b94c7eaf93b5c489363ddc8d034e91c1528062a94",
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897-canvas-06.jpg",
+          "accessed_at_utc": "2026-10-25T19:30:51.376220+00:00"
+        },
+        "12": {
+          "id": "NDL1897_CANVAS_12",
+          "url": "https://dl.ndl.go.jp/api/iiif/1084941/R0000012/full/2000,/0/default.jpg",
+          "status": 200,
+          "bytes": 669648,
+          "sha256": "0aea55edb8c8ba2949eee7d4c4dfe011891700b49cbc0c0391451fd3dcddfc81",
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897-canvas-12.jpg",
+          "accessed_at_utc": "2026-10-25T19:31:32.179608+00:00"
+        },
+        "16": {
+          "id": "NDL1897_CANVAS_16",
+          "url": "https://dl.ndl.go.jp/api/iiif/1084941/R0000016/full/2000,/0/default.jpg",
+          "status": 200,
+          "bytes": 636658,
+          "sha256": "db435fd507b4d8b7ae6eb8bb368dc2d826e5750fbec8b79da2e7094be973a07d",
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897-canvas-16.jpg",
+          "accessed_at_utc": "2026-10-25T19:31:31.163171+00:00"
+        },
+        "17": {
+          "id": "NDL1897_CANVAS_17",
+          "url": "https://dl.ndl.go.jp/api/iiif/1084941/R0000017/full/full/0/default.jpg",
+          "status": 200,
+          "bytes": 1287742,
+          "sha256": "af193b58719dc3b18024682996f8fd417b3502d5dc24e32b2815fb717927b59a",
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897-canvas-17.jpg",
+          "accessed_at_utc": "2026-10-25T19:32:58.528749+00:00"
+        },
+        "20": {
+          "id": "NDL1897_CANVAS_20",
+          "url": "https://dl.ndl.go.jp/api/iiif/1084941/R0000020/full/2000,/0/default.jpg",
+          "status": 200,
+          "bytes": 621823,
+          "sha256": "76e73f84d37c5f305da6e8d50fe35cb5b38d1e974a531f5449d9600d160ecc48",
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897-canvas-20.jpg",
+          "accessed_at_utc": "2026-10-25T19:31:32.243925+00:00"
+        },
+        "24": {
+          "id": "NDL1897_CANVAS_24",
+          "url": "https://dl.ndl.go.jp/api/iiif/1084941/R0000024/full/2000,/0/default.jpg",
+          "status": 200,
+          "bytes": 708708,
+          "sha256": "956c2f52824796476524d48070ed724751b8835fafd05632a683378a03beec6c",
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NDL1897-canvas-24.jpg",
+          "accessed_at_utc": "2026-10-25T19:31:32.297156+00:00"
+        }
+      },
+      "scope_limits": [
+        "Historical instructions and seller claims require explicit attribution to this 1897 edition.",
+        "Not proof that any one factory/1902 product used all these steps, and not modern instructions or independent efficacy/safety validation.",
+        "Flower timing advice differs from later maximal-content descriptions; do not recycle a flower-stage list or assert all sources agree."
+      ]
+    },
+    "CHEM2017": {
+      "title": "日本における殺虫剤産業の発祥と発展",
+      "author": "上山直英（掲載時、大日本除蟲菊代表取締役社長）",
+      "publication": "化学と工業 Vol.70-7 July2017 pp590–592",
+      "source_kind": "Manufacturer-authored later account and article reproductions/captions of preserved objects. Not a 1900/1958 contemporaneous lab record itself.",
+      "retrieval": {
+        "id": "CHEM_HIST",
+        "url": "https://www.kincho.co.jp/new/tech/chemical-industry.pdf",
+        "final_url": "https://www.kincho.co.jp/new/tech/chemical-industry.pdf",
+        "status": 200,
+        "bytes": 1812129,
+        "sha256": "d595aa30312fd6497e6ba46176349fb685456e26f503b768b2b9b856e1e0bd3e",
+        "content_type": "application/pdf",
+        "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/CHEM_HIST.pdf",
+        "accessed_at_utc": "2026-10-25T19:27:37.354111+00:00"
+      },
+      "page_texts": [
+        {
+          "pdf_page": 1,
+          "printed_page": 590,
+          "text": {
+            "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/CHEM_HIST-page-001.txt",
+            "sha256": "f1eeedb8761bcdb059f1e496cf3284a3cc243bd650ea3dab26600fc0f1c9fde7",
+            "bytes": 5480
+          }
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 591,
+          "text": {
+            "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/CHEM_HIST-page-002.txt",
+            "sha256": "c60ca62311da8d3c8a97f4ecae586e1f7cfd04de9a6c18357eee283364e4b6c0",
+            "bytes": 5457
+          }
+        },
+        {
+          "pdf_page": 3,
+          "printed_page": 592,
+          "text": {
+            "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/CHEM_HIST-page-003.txt",
+            "sha256": "e4d8f1bb6f6b813afe75ae56cbdd80f68a50e34a3983a1f221d3c95e58f8ca48",
+            "bytes": 6135
+          }
+        }
+      ],
+      "viewed_renders": [
+        {
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/CHEM_HIST-p2.png",
+          "sha256": "92badc400af5e5e2be98e7796476a857578b187525a2e977d78f3a4a07f52e67",
+          "bytes": 1023621
+        },
+        {
+          "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/CHEM_HIST-p3.png",
+          "sha256": "2b4c4a12114761bbb649af1d74de67be02e6467a5d3ef91e8a724734114d72d8",
+          "bytes": 1016923
+        }
+      ],
+      "scope_limits": [
+        "Figure8 is a reproduced photograph/caption of a saved notebook; original full notebook was not obtained.",
+        "Paper says notebook covers Katsuda work from1950 Kyoto placement; figurecaption says used around1958.",
+        "Do not turn1958 structure determination into cause of original1955 allethrin introduction, or infer commercial formula/which stereoisomer is strongest."
+      ]
+    },
+    "NSM_FULL": {
+      "title": "農薬産業技術の系統化調査",
+      "author": "大田博樹",
+      "publisher": "国立科学博物館 産業技術史資料情報センター",
+      "source_kind": "Museum technical history/research report; later synthesis with citations, not contemporary original factory ledger.",
+      "retrieval": {
+        "id": "NSM_AGRO_FULL",
+        "url": "https://sts.kahaku.go.jp/albums/abm.php?d=5029&f=abm00010785.pdf&n=077.pdf",
+        "final_url": "https://sts.kahaku.go.jp/albums/abm.php?d=5029&f=abm00010785.pdf&n=077.pdf",
+        "status": 200,
+        "bytes": 17434987,
+        "sha256": "da80a3aae57cafc133487b2d28feb8e2374462a694e1cc64f9f5ddd68b72ff73",
+        "content_type": "application/pdf",
+        "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NSM_AGRO_FULL.pdf",
+        "accessed_at_utc": "2026-10-25T19:31:41.678637+00:00"
+      },
+      "pdf_pages": 110,
+      "page_texts": [
+        {
+          "pdf_page": 25,
+          "printed_page": 25,
+          "text": {
+            "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NSM_AGRO_FULL-page-025.txt",
+            "sha256": "c4639fd7acfab3bc5669f596e2c77990d7f0d990ed34b2ef469639e9cbab45dd",
+            "bytes": 5625
+          }
+        },
+        {
+          "pdf_page": 26,
+          "printed_page": 26,
+          "text": {
+            "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NSM_AGRO_FULL-page-026.txt",
+            "sha256": "2313dfa5f3553db0bfb682998d6dfe347988122ff079e7b0bd608ea6b0787231",
+            "bytes": 6925
+          }
+        },
+        {
+          "pdf_page": 27,
+          "printed_page": 27,
+          "text": {
+            "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NSM_AGRO_FULL-page-027.txt",
+            "sha256": "a3b8a97c5f0cfe10d90bcaf04a10cf41f6189dfdb462612d1f2e82da770ec926",
+            "bytes": 5363
+          }
+        },
+        {
+          "pdf_page": 28,
+          "printed_page": 28,
+          "text": {
+            "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NSM_AGRO_FULL-page-028.txt",
+            "sha256": "8e5fe54c0abd6a45dcfb0bbc6e38247aaeac505c45f17e883098c8fab6290eb2",
+            "bytes": 2865
+          }
+        },
+        {
+          "pdf_page": 87,
+          "printed_page": 87,
+          "text": {
+            "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NSM_AGRO_FULL-page-087.txt",
+            "sha256": "117d680b2acbbde916a7e6040da07b598fe3c7b210bc303462ff16f7e4b65abd",
+            "bytes": 7879
+          }
+        }
+      ],
+      "viewed_render": {
+        "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NSM_AGRO_FULL-p27.png",
+        "sha256": "0fa42602cdf15b38fd576d6e50ffd4fdc5b4a97d032afc9c6a8f2e12aeac6d98",
+        "bytes": 1030640
+      },
+      "date_note": "PDF metadata creation/modification2013; rendered text pagefooters say Vol18 2015.March. Do not infer a historical event from this publication-date discrepancy; date omitted from narrative.",
+      "scope_limits": [
+        "Dry-flower1–1.5% and extract approximately20% refer to the stated raw/extract products, not current retail coil percentages or a direct efficacy multiplier.",
+        "Six-compound/chemical identity statements do not identify the current entire product formula.",
+        "UV/heat/oxidation discussion onp27 and allethrin stability onp87 is agricultural-use context; do not transplant into a claim that coils cannot survive heat or cannot work indoors.",
+        "1935 world share70% differs from2017 article90%; not needed in main material journey and excluded from capacity."
+      ]
+    }
+  },
+  "anchors": {
+    "N25_FAST": {
+      "source": "NDL1897",
+      "printed_page": 25,
+      "canvas": 16,
+      "page_side": "left",
+      "short_excerpt": "二三時間にて乾燥す",
+      "read_mode": "Manual visual reading of actual NDL scan; short quotation only, not whole-page OCR.",
+      "image_sha256": "db435fd507b4d8b7ae6eb8bb368dc2d826e5750fbec8b79da2e7094be973a07d"
+    },
+    "N25_COST": {
+      "source": "NDL1897",
+      "printed_page": 25,
+      "canvas": 16,
+      "page_side": "left",
+      "short_excerpt": "功能多少稀薄となる",
+      "read_mode": "Manual visual reading; historical assertion only.",
+      "image_sha256": "db435fd507b4d8b7ae6eb8bb368dc2d826e5750fbec8b79da2e7094be973a07d"
+    },
+    "N25_SIEVE": {
+      "source": "NDL1897",
+      "printed_page": 25,
+      "canvas": 16,
+      "page_side": "left",
+      "short_excerpt": "篩ひ細粉",
+      "read_mode": "Manual visual reading; source paragraph says pound/sieve and put in bag or bottle.",
+      "image_sha256": "db435fd507b4d8b7ae6eb8bb368dc2d826e5750fbec8b79da2e7094be973a07d"
+    },
+    "N25_STORAGE": {
+      "source": "NDL1897",
+      "printed_page": 25,
+      "canvas": 16,
+      "page_side": "left last columns",
+      "short_excerpt": "罎又は壺",
+      "read_mode": "Manual visual reading; unused powder stored in a closed vessel.",
+      "image_sha256": "db435fd507b4d8b7ae6eb8bb368dc2d826e5750fbec8b79da2e7094be973a07d"
+    },
+    "N27_SCALE": {
+      "source": "NDL1897",
+      "printed_page": 27,
+      "canvas": 17,
+      "page_side": "left lower columns",
+      "short_excerpt": "多量の花",
+      "read_mode": "Manual visual reading of paragraph comparing shade drying work with bulk sun-drying and prolonged rain.",
+      "image_sha256": "af193b58719dc3b18024682996f8fd417b3502d5dc24e32b2815fb717927b59a"
+    },
+    "N27_RAIN": {
+      "source": "NDL1897",
+      "printed_page": 27,
+      "canvas": 17,
+      "page_side": "left lower columns",
+      "short_excerpt": "廣き竹簾",
+      "read_mode": "Manual visual reading of rain-workaround paragraph: flowers on broad bamboo mat with heat below/warm room.",
+      "image_sha256": "af193b58719dc3b18024682996f8fd417b3502d5dc24e32b2815fb717927b59a"
+    },
+    "N32_OLD": {
+      "source": "NDL1897",
+      "printed_page": 32,
+      "canvas": 20,
+      "page_side": "right",
+      "short_excerpt": "二三年越し",
+      "read_mode": "Manual visual reading of seller complaint about imported old/mixed powder. Not independent proof of all imports.",
+      "image_sha256": "76e73f84d37c5f305da6e8d50fe35cb5b38d1e974a531f5449d9600d160ecc48"
+    },
+    "M27_EXTRACT": {
+      "source": "NSM_FULL",
+      "pdf_page": 27,
+      "printed_page": 27,
+      "section": "3.3.4(2) ピレトリンの化学",
+      "short_excerpts": [
+        "約１～ 1.5%",
+        "約 20%",
+        "6 種類の同族体の混合"
+      ],
+      "page_text_sha256": "a3b8a97c5f0cfe10d90bcaf04a10cf41f6189dfdb462612d1f2e82da770ec926",
+      "raw_pdf_sha256": "da80a3aae57cafc133487b2d28feb8e2374462a694e1cc64f9f5ddd68b72ff73"
+    },
+    "C591_MACHINE": {
+      "source": "CHEM2017",
+      "pdf_page": 2,
+      "printed_page": 591,
+      "section": "蚊取り線香の製造装置 / 図6",
+      "short_excerpts": [
+        "2.5 m",
+        "現在は横倒しで",
+        "昔の実際の使用写真"
+      ],
+      "page_text_sha256": "c60ca62311da8d3c8a97f4ecae586e1f7cfd04de9a6c18357eee283364e4b6c0",
+      "raw_pdf_sha256": "d595aa30312fd6497e6ba46176349fb685456e26f503b768b2b9b856e1e0bd3e"
+    },
+    "C592_MIX": {
+      "source": "CHEM2017",
+      "pdf_page": 3,
+      "printed_page": 592,
+      "section": "ピレトリン類に関わる化学的研究の歴史",
+      "short_excerpts": [
+        "6 種類",
+        "混合物"
+      ],
+      "page_text_sha256": "e4d8f1bb6f6b813afe75ae56cbdd80f68a50e34a3983a1f221d3c95e58f8ca48",
+      "raw_pdf_sha256": "d595aa30312fd6497e6ba46176349fb685456e26f503b768b2b9b856e1e0bd3e"
+    },
+    "C592_IDENTITY": {
+      "source": "CHEM2017",
+      "pdf_page": 3,
+      "printed_page": 592,
+      "section": "勝田純郎による…絶対配置の決定",
+      "short_excerpts": [
+        "1958 年",
+        "直接誘導",
+        "オゾン酸化後"
+      ],
+      "page_text_sha256": "e4d8f1bb6f6b813afe75ae56cbdd80f68a50e34a3983a1f221d3c95e58f8ca48",
+      "raw_pdf_sha256": "d595aa30312fd6497e6ba46176349fb685456e26f503b768b2b9b856e1e0bd3e"
+    },
+    "C592_NOTEBOOK": {
+      "source": "CHEM2017",
+      "pdf_page": 3,
+      "printed_page": 592,
+      "section": "図8及右欄",
+      "short_excerpts": [
+        "実験ノート",
+        "1958 年前後に使用",
+        "1950 年"
+      ],
+      "page_text_sha256": "e4d8f1bb6f6b813afe75ae56cbdd80f68a50e34a3983a1f221d3c95e58f8ca48",
+      "raw_pdf_sha256": "d595aa30312fd6497e6ba46176349fb685456e26f503b768b2b9b856e1e0bd3e"
+    }
+  },
+  "claims": [
+    {
+      "id": "R01",
+      "claim_zh_tw": "1897年第五版手冊把採花後的乾燥、研粉和出售分成實際步驟。",
+      "source_anchors": [
+        "N25_FAST",
+        "N25_SIEVE"
+      ],
+      "support_kind": "PRIMARY_HISTORICAL_GUIDANCE",
+      "novelty_against_r6": "R6只說1887試磨，沒有採後處理鏈。",
+      "limits": [
+        "只歸屬本版手冊，不宣稱1887/1902工廠全照此做。"
+      ],
+      "capacity_cluster": "RAW_DRYING",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R02",
+      "claim_zh_tw": "手冊預想到連續降雨或乾燥不充分時，改用火氣乾燥再研粉。",
+      "source_anchors": [
+        "N25_FAST",
+        "N27_RAIN"
+      ],
+      "support_kind": "PRIMARY_HISTORICAL_GUIDANCE",
+      "novelty_against_r6": "新增天氣會卡住原料處理的具體障礙與當時寫下的替代動作。",
+      "limits": [
+        "未證明某日真遇雨；可以明示假想，不造歷史現場。",
+        "不把古法當當代安全或效力實證。"
+      ],
+      "capacity_cluster": "RAW_DRYING",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R03",
+      "claim_zh_tw": "盛採需預備乾燥能力；手冊談到花量多時，陰乾的手續難以負荷，改求較方便的日乾。",
+      "source_anchors": [
+        "N27_SCALE"
+      ],
+      "support_kind": "PRIMARY_HISTORICAL_GUIDANCE",
+      "novelty_against_r6": "新增批量與處理能力取捨，與既用的成卷乾燥兩天不同階段。",
+      "limits": [
+        "不外推精確產能/成本；不判哪種乾法在現代科學上最好。"
+      ],
+      "capacity_cluster": "RAW_DRYING",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R04",
+      "claim_zh_tw": "手冊寫細切後約二三小時可乾，又緊接括註這樣做的功能多少稀薄。",
+      "source_anchors": [
+        "N25_FAST",
+        "N25_COST"
+      ],
+      "support_kind": "PRIMARY_ATTRIBUTED_TRADEOFF",
+      "novelty_against_r6": "新的快乾與書中自述代價，不能拆成兩個相同事實重算。",
+      "limits": [
+        "只是當時出版者的指導/主張，無本輪獨立效力試驗。",
+        "不用它推出分子破壞或現代產品性能。"
+      ],
+      "capacity_cluster": "RAW_DRYING",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R05",
+      "claim_zh_tw": "充分乾燥後搗粉、過篩成細粉，再入袋或瓶出售。",
+      "source_anchors": [
+        "N25_SIEVE"
+      ],
+      "support_kind": "PRIMARY_HISTORICAL_GUIDANCE",
+      "novelty_against_r6": "新增粉末的實際交付動作。",
+      "limits": [
+        "不是已證實金鳥蚊香配方，也不是將已用混合/捏和重算新動作。"
+      ],
+      "capacity_cluster": "MILL_STORE",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R06",
+      "claim_zh_tw": "同年用不完的殺蟲粉，手冊指向瓶/壺的密閉保存。",
+      "source_anchors": [
+        "N25_STORAGE"
+      ],
+      "support_kind": "PRIMARY_HISTORICAL_GUIDANCE",
+      "novelty_against_r6": "新增粉料在抵達使用/製造前的保存要求。",
+      "limits": [
+        "不採用接續的重新焙火可恢復功能等未經本輪證明主張。"
+      ],
+      "capacity_cluster": "MILL_STORE",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R07",
+      "claim_zh_tw": "出版者把自製新鮮花粉與其所抱怨的輸入陳舊、混莖葉粉並列。",
+      "source_anchors": [
+        "N32_OLD"
+      ],
+      "support_kind": "PRIMARY_SELLER_CLAIM",
+      "novelty_against_r6": "可呈現材料品質與買現成粉/自己處理的選擇，具有當時行銷立場。",
+      "limits": [
+        "只能說書中抱怨/自薦，不斷言所有進口都摻假，不把競業宣傳當獨立效力結論。",
+        "不枚舉其他害蟲用途。"
+      ],
+      "capacity_cluster": "MILL_STORE",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R08",
+      "claim_zh_tw": "博物館報告在乾花條目列約1–1.5%的除蟲菊素，並記石油系溶劑抽出所得製品約20%。",
+      "source_anchors": [
+        "M27_EXTRACT"
+      ],
+      "support_kind": "LATER_TECHNICAL_REPORT",
+      "novelty_against_r6": "新增乾花原料與濃縮有效成分的不同角色，可接R6已說抽走成分後粉末仍入香體。",
+      "limits": [
+        "不是目前零售蚊香配方含量；不相除成殺蚊效力倍率。",
+        "不給實作萃取處方/操作條件，也不證明本集某年代工廠採用。"
+      ],
+      "capacity_cluster": "ACTIVE_VS_BODY",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R09",
+      "claim_zh_tw": "文獻所稱天然除蟲菊素本身是六種成分的混合物，並非一個單獨化合物。",
+      "source_anchors": [
+        "M27_EXTRACT",
+        "C592_MIX"
+      ],
+      "support_kind": "LATER_TECHNICAL_REPORT",
+      "novelty_against_r6": "新增「花粉/有效成分」裡還有成分身分問題。",
+      "limits": [
+        "可用白話稱六種，不必唸六個化學名；不能等同當前成品完整配方。"
+      ],
+      "capacity_cluster": "OPTIONAL_IDENTITY",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R10",
+      "claim_zh_tw": "2017文章以兩種酸部分、三種醇部分的組合說明六種酯。",
+      "source_anchors": [
+        "C592_MIX"
+      ],
+      "support_kind": "MANUFACTURER_AUTHORED_LATER_REPORT",
+      "novelty_against_r6": "若改為材料旅程主承諾，這是能延續成分身分的一步。",
+      "limits": [
+        "與R09同一容量群，不能把六種名字各拆景湊長。",
+        "只在必要時用組合示意，不做化學名詞目錄。"
+      ],
+      "capacity_cluster": "OPTIONAL_IDENTITY",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R11",
+      "claim_zh_tw": "文獻將平面結構、酸部分立體結構與尚未解的醇部分分開；1958年勝田等解決醇部分的絕對配置。",
+      "source_anchors": [
+        "C592_IDENTITY"
+      ],
+      "support_kind": "MANUFACTURER_AUTHORED_LATER_REPORT",
+      "novelty_against_r6": "新增研究者如何確定要合成的是哪一種身分。",
+      "limits": [
+        "1958不能寫成1955初次導入丙烯菊酯的原因。",
+        "不聲稱任何鏡像比較的殺蚊差異，本文未給那種比較。"
+      ],
+      "capacity_cluster": "OPTIONAL_IDENTITY",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R12",
+      "claim_zh_tw": "文章描述保持目標不對稱碳光學活性，經化學轉換導向已知絕對配置化合物的辨識方法。",
+      "source_anchors": [
+        "C592_IDENTITY"
+      ],
+      "support_kind": "MANUFACTURER_AUTHORED_LATER_REPORT",
+      "novelty_against_r6": "可說明不是看外形猜分子，而是連到已知物作身分判定。",
+      "limits": [
+        "只按本文歸屬描述，原始1958論文/全實驗筆記尚未取得。",
+        "不用詳細反應配方填旁白，也不推新的工程/藥效因果。"
+      ],
+      "capacity_cluster": "OPTIONAL_IDENTITY",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R13",
+      "claim_zh_tw": "2017文章圖8刊出保存的實驗筆記照片，圖說約1958前後使用，正文說涵蓋1950赴京都及後續公司研究。",
+      "source_anchors": [
+        "C592_NOTEBOOK"
+      ],
+      "support_kind": "REPRODUCED_ARTIFACT_CAPTION",
+      "novelty_against_r6": "給研究段一件可指認物，不只抽象分子故事。",
+      "limits": [
+        "只看了文章中的再現影像，未假稱翻閱原筆記每頁。",
+        "不得將照片重新用作AI圖；可另畫匿名概念場景。"
+      ],
+      "capacity_cluster": "OPTIONAL_IDENTITY",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    },
+    {
+      "id": "R14",
+      "claim_zh_tw": "原廠作者文章記手卷押出設備原來高約2.5m，圖6將如今橫放保存和昔日使用照並列。",
+      "source_anchors": [
+        "C591_MACHINE"
+      ],
+      "support_kind": "MANUFACTURER_AUTHORED_LATER_REPORT_AND_PHOTO_CAPTION",
+      "novelty_against_r6": "只有設備尺度及保存姿態新增；押出/切長/手卷已用，不重算。",
+      "limits": [
+        "不據照片推精確操作人數、產能、工作姿勢標準或1910首用地。",
+        "容量最多一個短補充，不當主要補長模組。"
+      ],
+      "capacity_cluster": "SMALL_VISUAL_DETAIL",
+      "status": "RESEARCH_SUPPORTED_REQUIRES_NEW_SCRIPT_CONTEXT_REVIEW"
+    }
+  ],
+  "capacity": {
+    "status": "CONDITIONAL_RESEARCH_POTENTIAL_NOT_STORY_READY",
+    "required_new_units_approx": [
+      1000,
+      1500
+    ],
+    "main_material_journey_new_units_estimate": [
+      750,
+      950
+    ],
+    "optional_identity_reframing_units_estimate": [
+      300,
+      400
+    ],
+    "conditional_total_new_units_estimate": [
+      1050,
+      1350
+    ],
+    "counting_rule": "Count meaningful connected explanations across distinct actions/constraints, not report length, copied quotations, source lists, deleted recap, or splitting a fact. Estimates are not an authored or native-counted screenplay.",
+    "main_only_gap_to1000": [
+      50,
+      250
+    ],
+    "dependency": "Conditional total requires changing the episode promise from only spiral manufacturing to material/active-ingredient identity and embedding the optional research step as a cause-linked passage. If that passage reads as detour, exclude it and keep the length hold.",
+    "r6_body_units": 1985,
+    "r6_total_units": 2168,
+    "r6_is13min_ready": false,
+    "actual_audio_seconds": null,
+    "runtime_pass": false
+  },
+  "source_gaps": [
+    "1900螺旋蚊香原始申請號/全文/圖仍未取得；不稱已核准專利。",
+    "1940輪轉打型機的原始專利、導入紀錄、產線產能/操作人數未取得。",
+    "1897粉劑手冊不是1902蚊香工廠批次記錄；新稿必須維持年代與來源身分。",
+    "1958研究目前是2017作者回顧及文中筆記照片；如需說原論文中的具體實驗結果，仍須取得原文。",
+    "主線直接新增僅約750–950units的規劃潛力；不採材料身分研究分支就仍達不到1000–1500新增目標。",
+    "任何新版仍需原生機械檢查、獨立逐句/配鏡QA與兩個新讀者；本研究不寫verify、不批准R6/後台。"
+  ],
+  "excluded_or_unread": [
+    {
+      "id": "NM_POSTER",
+      "source": {
+        "id": "NM_POSTER",
+        "url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180007",
+        "final_url": "https://sts.kahaku.go.jp/sts/detail.php?no=910191180007",
+        "status": 200,
+        "bytes": 34666,
+        "sha256": "04c2d7b5b717d41788e150f6dbb2f2a57996db8e412af9d83ceaa4d79e72b056",
+        "content_type": "text/html",
+        "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NM_POSTER.html",
+        "accessed_at_utc": "2026-10-25T19:27:32.058673+00:00"
+      },
+      "verdict": "EXCLUDED_FROM_EXTENSION_CAPACITY",
+      "why": "1930–40 export-poster languages are real object evidence, but listing regions/languages would divert this material journey."
+    },
+    {
+      "id": "NSM_AGRO_ABSTRACT",
+      "source": {
+        "id": "NSM_AGRO",
+        "url": "https://sts.kahaku.go.jp/albums/abm.php?d=3254&f=abm00010784.pdf&n=274562.pdf",
+        "final_url": "https://sts.kahaku.go.jp/albums/abm.php?d=3254&f=abm00010784.pdf&n=274562.pdf",
+        "status": 200,
+        "bytes": 1371906,
+        "sha256": "21c36aba88a1fba414ca581c9aaf0d2b12c4f0b43e550e6a9a9e53b2ff6e549f",
+        "content_type": "application/pdf",
+        "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/NSM_AGRO.pdf",
+        "accessed_at_utc": "2026-10-25T19:28:25.052406+00:00"
+      },
+      "verdict": "SUPERSEDED_BY_COMPLETE_REPORT",
+      "why": "Six-page abstract lacks required detailed passages. Full110-pagePDF now used."
+    },
+    {
+      "id": "JP7474916",
+      "receipt": {
+        "id": "JP7474916",
+        "url": "https://patents.google.com/patent/JP7474916B2/ja",
+        "status": 503,
+        "raw_bytes_obtained": false,
+        "reason": "Original Japanese Google Patents fetch returned HTTP503; English retry also HTTP503 automatic-query response. No patent text or drawings admitted.",
+        "retry": {
+          "url": "https://patents.google.com/patent/JP7474916B2/en",
+          "http_status": 503,
+          "response": {
+            "path": "/workspace/work/brand-story-20261025/c05-audit/extension-research-next/JP7474916-retry.html",
+            "sha256": "9010e5a841cf0acfb13facfaa2c3318bc8118020ec071d15de099eb9a628fd01",
+            "bytes": 1103
+          }
+        }
+      },
+      "verdict": "NOT_ADMITTED",
+      "why": "No original patent text/drawings obtained; note article is discovery only."
+    },
+    {
+      "id": "JPS5943443B2",
+      "url": "https://patents.google.com/patent/JPS5943443B2/ja",
+      "verdict": "NOT_ADMITTED",
+      "why": "Original request returnedHTTP503; search snippet not evidence."
+    }
+  ],
+  "blind_narrative_files_read": false,
+  "candidate_or_base_or_canonical_or_i18n_or_history_edited": false,
+  "verify_written": false,
+  "owner_approval": false,
+  "runtime_approval": false,
+  "media_approval": false,
+  "paid_calls": 0,
+  "provider_calls": 0,
+  "backend_writes": 0,
+  "git_commands": 0,
+  "subagents_spawned": 0
+}

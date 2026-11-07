@@ -1,0 +1,271 @@
+{
+  "narrative_hash": "23bd8e8ce3210ea0",
+  "script_hash": "42f6907486b7c73c06fe2b61b10153e45a5f6a32f78d7a34e77ec79cd02b4337",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "bb3f2856540b5f8c7f86d869aaae92f2d721fd003f1be42e9b816307a1c80112",
+  "round": 2,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1h02] 八〇年代末，德州一場單車賽裡，品牌回顧中的艾德森，把一袋水放到車衣背後。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1h04] 後來，出口被送進模具，也被夾在模擬牙齒的金屬之間。",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1b04] 原先是管子越肩來找嘴，現在瓶子被手拿起，短管把瓶裡的水接到上面的咬口。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1h05] 今天跟著CamelBak的一袋水，從背上身，走到下一次還能再喝。",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1b01] 二〇〇六年的展場報導裡，那個咬著喝的出口，已經搬到透明水瓶上。",
+      "yes_readers": 2
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1m09] 可是，就算嘴邊會自封，補水時還有另一個開口必須打開；那裡也能守住水嗎？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c14r1t10] 這篇報導沒有交出那張成績表，留下的，是袋體與嘴部分別被施力的現場。；讀者二：[c14r1m02] 他先做出三維列印模具，再用模具做真正的矽膠零件；列印的，不是拿來咬的塑膠替身。",
+      "yes_readers": 0
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c14r1o03] 你看這個安排，背後負責帶水，管子負責把水送到肩上；襪子自己並不裝水。；讀者二：[c14r1r02] 這一款還有單手開關，可以關住飲水管；嘴邊的自封口器，另負責每次喝完後的回閉。",
+      "yes_readers": 0
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[c14r1t06] 同時，十二個咬閥夾在兩片金屬之間，模擬大人和孩子的牙齒反覆咬壓。",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1ct3] 想知道熟悉的物品，怎麼把方便送到你手裡，歡迎訂閱，和我一起看那些真正起作用的小動作。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1h01] 你背著三公升水，若管口一直滴，喝到以前就先漏掉；多裝水，能解決這件事嗎？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1r11] 我覺得，它沒有離開一開始的問題：讓水跟你走，還得知道它有沒有從別的地方先走掉。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c14r1d13] 開場問水能不能留在該在的地方，到這裡，答案多了一個時間點：收起來時，它得離開。",
+      "yes_readers": 2
+    }
+  ],
+  "failed": [
+    "payoffs",
+    "no_recap"
+  ],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c14r1h02] 八〇年代末，德州一場單車賽裡，品牌回顧中的艾德森，把一袋水放到車衣背後。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c14r1h04] 後來，出口被送進模具，也被夾在模擬牙齒的金屬之間。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c14r1b04] 原先是管子越肩來找嘴，現在瓶子被手拿起，短管把瓶裡的水接到上面的咬口。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c14r1h05] 今天跟著CamelBak的一袋水，從背上身，走到下一次還能再喝。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[c14r1b01] 二〇〇六年的展場報導裡，那個咬著喝的出口，已經搬到透明水瓶上。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c14r1m09] 可是，就算嘴邊會自封，補水時還有另一個開口必須打開；那裡也能守住水嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": false,
+          "evidence": "[c14r1t10] 這篇報導沒有交出那張成績表，留下的，是袋體與嘴部分別被施力的現場。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c14r1o03] 你看這個安排，背後負責帶水，管子負責把水送到肩上；襪子自己並不裝水。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c14r1t06] 同時，十二個咬閥夾在兩片金屬之間，模擬大人和孩子的牙齒反覆咬壓。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c14r1ct3] 想知道熟悉的物品，怎麼把方便送到你手裡，歡迎訂閱，和我一起看那些真正起作用的小動作。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c14r1h01] 你背著三公升水，若管口一直滴，喝到以前就先漏掉；多裝水，能解決這件事嗎？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c14r1r11] 我覺得，它沒有離開一開始的問題：讓水跟你走，還得知道它有沒有從別的地方先走掉。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[c14r1d13] 開場問水能不能留在該在的地方，到這裡，答案多了一個時間點：收起來時，它得離開。"
+        }
+      ],
+      "failed": [
+        "payoffs",
+        "no_recap"
+      ],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c14r1h01] 你背著三公升水，若管口一直滴，喝到以前就先漏掉；多裝水，能解決這件事嗎？"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c14r1h04] 後來，出口被送進模具，也被夾在模擬牙齒的金屬之間。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c14r1b04] 原先是管子越肩來找嘴，現在瓶子被手拿起，短管把瓶裡的水接到上面的咬口。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c14r1h05] 今天跟著CamelBak的一袋水，從背上身，走到下一次還能再喝。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[c14r1b01] 二〇〇六年的展場報導裡，那個咬著喝的出口，已經搬到透明水瓶上。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c14r1t11] 而出口要被咬，前提是手裡真有一個能變形的樣件；螢幕上的形狀，怎麼交給嘴試？"
+        },
+        {
+          "id": "payoffs",
+          "yes": false,
+          "evidence": "[c14r1m02] 他先做出三維列印模具，再用模具做真正的矽膠零件；列印的，不是拿來咬的塑膠替身。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c14r1r02] 這一款還有單手開關，可以關住飲水管；嘴邊的自封口器，另負責每次喝完後的回閉。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c14r1t06] 同時，十二個咬閥夾在兩片金屬之間，模擬大人和孩子的牙齒反覆咬壓。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c14r1ct3] 想知道熟悉的物品，怎麼把方便送到你手裡，歡迎訂閱，和我一起看那些真正起作用的小動作。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c14r1h01] 你背著三公升水，若管口一直滴，喝到以前就先漏掉；多裝水，能解決這件事嗎？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c14r1d13] 開場問水能不能留在該在的地方，到這裡，答案多了一個時間點：收起來時，它得離開。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[c14r1ct1] 一袋水的方便，是把開、關與重新使用接成水路；容量留在背上，出口和接縫，卻都得被照顧。"
+        }
+      ],
+      "failed": [
+        "payoffs",
+        "no_recap"
+      ],
+      "advisory": []
+    }
+  ]
+}

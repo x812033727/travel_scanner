@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_INDEPENDENT_REVIEW",
+  "revision": "c19-r2",
+  "checked_at_utc": "2026-10-26T02:37:17.073Z",
+  "runtime_root": "/workspace/work/brand-story-20261025/c19-submission-root",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/c19-submission-root",
+    "lint",
+    "--slug",
+    "story-everyday-seven-bank-c19-remake-20261025"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"blank\" is in 65 of 118 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"terminal\" is in 51 of 118 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"closed\" is in 51 of 118 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "about 15.9 minutes; the target is 12-14"
+    },
+    {
+      "path": "scenes",
+      "message": "「二〇〇二年」 is said in 3 lines (c19r1a11, c19r1a22, c19r1e01): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「二〇一〇年」 is said in 5 lines (c19r1e14, c19r1t01, c19r1t14, c19r1n01, c19r1n22): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    }
+  ],
+  "whole_narration_spoken_units": 3456,
+  "hook_cadence_45s_warnings": [],
+  "native_estimate_seconds": 951.3333333333334,
+  "estimated_time_is_not_actual": true,
+  "video_projection_matches_narration_and_claims": true,
+  "scene_count": 119,
+  "shot_count": 118,
+  "illustration_share_body": 1,
+  "maximum_consecutive_cards": 0,
+  "voice_exact_c06": true,
+  "runtime_manifest_sha256": "a00202ba6afce15ba0520558f966821fcd7a708a6ccd5fb6edcc3afe09d13f63",
+  "immutable_lexicon_sha256": "302845192be36f6ec7a3048148c8c280d6b36ccb2e6811c3a950fcfbb8cf80b1",
+  "old_protection_file_count": 66,
+  "old_and_snapshot_all_match": true,
+  "research_three_unchanged": true,
+  "r1_archive_file_count": 30,
+  "r1_archive_hashes_match": true,
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "approvals_created": 0
+}

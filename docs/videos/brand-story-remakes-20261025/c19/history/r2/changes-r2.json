@@ -1,0 +1,1930 @@
+{
+  "schema_version": 1,
+  "revision": "c19-r2",
+  "status": "AUTHOR_REWRITE_PENDING_NEW_INDEPENDENT_REVIEW",
+  "baseline_r1_core_four_sha256": {
+    "video.json": "314cafc2fbf4e06ebf4eee4ebfa1e6fb683fafffe5f002075fcbbafc6aa46dbe",
+    "script.md": "eadf5f5456a3dd3b0469c05149510d96ade6f99a55040d9dac1b3520158b797e",
+    "narration-only.json": "2bad0f6690b4e118bacb66bbb7092d8eb23e3811fab0a76dd6d6bb9864c30dab",
+    "claims.json": "ee3ed5e3280271ad47aa5756efab5681e83c90026d05dc34c05283af48b2a9a4"
+  },
+  "baseline_source_sha256": "52f839bcae41ebaa8321925cf7df92e03885fed736128b302cb40b635eeb219d",
+  "baseline_native1_sha256": "fab6b03c4245aa205f15a500321a7284ad0bb36db3313de4e6cb4ff2a563a143",
+  "archived_r1_review_state": "history/r1/review-state.json",
+  "r1_source_result": "HOLD",
+  "r1_written_visual_result": "HOLD",
+  "r1_native1_result": "HOLD",
+  "mandatory_fix_responses": [
+    {
+      "issue": "C19-R1-SOURCE-01",
+      "lines": [
+        "c19r1a12",
+        "c19r1a13"
+      ],
+      "authored_change": "2002 claims narrowed to partner-bank specifications; no same/previous/familiar interface assertion. New review pending."
+    },
+    {
+      "issue": "C19-R1-VISUAL-01",
+      "scenes": [
+        "c19r1a19",
+        "c19r1a20"
+      ],
+      "authored_change": "Both scenes now explicitly inside/at an anonymous bank branch with blank poster. New review pending."
+    },
+    {
+      "issue": "native1 scene_first",
+      "authored_change": "Opening now describes the source-supported 2001-04-06 FSA-room photo: a suited person at a table holding a document. Numeric scale is in line1; aggregate installation is moved to actual activation after bank formation. No identity/completed receipt/readable document/psychology invented."
+    },
+    {
+      "issue": "native1 no_spoiler/no_recap",
+      "authored_change": "Opening contains no renaming event. 2005 rename appears only once in its chronological position, where the company explained recognition."
+    },
+    {
+      "issue": "native1 one_line",
+      "authored_change": "2001-12 store-sales deposits moved before 2002 disclosure/adoption; 2003 general-enterprise deposits moved after early support systems and before2005 hardware. No hard return to opening year."
+    },
+    {
+      "issue": "native1 chapters_link",
+      "authored_change": "Chapter2 starts with four-days-later bank establishment from the held provisional-licence document, then formal licence/opening/ATM activation. Legacy customer-demand background is three short contextual statements rather than a separate1987 origin chapter."
+    }
+  ],
+  "changed_narration_rows": [
+    {
+      "id": "c19r1h01",
+      "before": "你拿著別家銀行的卡，想在超商領錢，誰來替你把銀行接上？",
+      "after": "你想在超商用別家銀行的卡領錢，背後這張網，從六十六台機器起步。",
+      "old_text_sha256": "74ed793e60aa69d50945431bd23cd442be9d788457c6464de5706e370d0a17dc",
+      "new_text_sha256": "c92a7b3791aa5f34c1077734c20be6927a20bbdef384044a59d96eed984f75ee",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1h02",
+      "before": "二〇〇一年，東京五十九個地點，啟動了六十六台IY銀行的提款機。",
+      "after": "二〇〇一年四月六日，金融廳裡，一位西裝人士在桌旁拿著文件。",
+      "old_text_sha256": "941f57955d3ac7092c030d672e687e4aba69b92d0887780ecb63fd198f1c8106",
+      "new_text_sha256": "b027b2e3d7b9693e13416edfa1f6f90343082d1a6849ae00f486242f0633e5d8",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1h03",
+      "before": "五月十五日，本店舉行啟用儀式；這家銀行後來改名七銀行。",
+      "after": "圖說寫的是取得預備牌照；銀行卻還沒有成立。",
+      "old_text_sha256": "0deb4eacd2ecbce7de635a56516f036f3492aef200598963e515a1dd5a8be898",
+      "new_text_sha256": "cc59c43e974327664725adb4111b6defdef7932899569b4c1a216c2553913b1a",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1h04",
+      "before": "我先卡在這一步：零售集團沒有只放機器，而是先成立了一家銀行。",
+      "after": "我先卡住了：這份文件，離你能插卡還有多遠？",
+      "old_text_sha256": "e331e3733c035e38187d8096acbd0010925bdb481078d112e525bb8e0a887b6b",
+      "new_text_sha256": "3946d2961940af5a40612322275e7e10459e86a97d1702a4a170531844479ec9",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1h05",
+      "before": "合作銀行分行裡的一包面紙，又怎麼參與這張網？",
+      "after": "銀行分行裡的一包面紙，會怎麼把客人帶向超商？",
+      "old_text_sha256": "c5e20400bb01f519fd0d80afd6991b4573403bd732dfa72f948e8646c6312c9d",
+      "new_text_sha256": "4f98e00a6c30631862286c4473461fc926f4939fb6aec8b05d46deddca3edb1b",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1h07",
+      "before": "跟著七銀行從六十六台起步，把一個提款入口背後的工作接起來。",
+      "after": "跟著七銀行，追一個店角的提款入口，如何接到別家銀行的卡。",
+      "old_text_sha256": "84725100f4e93dbb813730d0cfadc31838a4756e45403f32525fddedbbb6182e",
+      "new_text_sha256": "749827e69fcf962f519c43bcc44a6af778b835fad902ddaf50d868bc2f423186",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1h08",
+      "before": "店角這台機器，怎麼才能替別家銀行的客人辦事？",
+      "after": "等銀行辦好了，機器就能接待每一張卡嗎？",
+      "old_text_sha256": "869ed79636dfc5fc14b32504325b5b22e478709d00a592b692741f6c987b7614",
+      "new_text_sha256": "9b2211909bdaf37ce5249f00b6e3a26037477bcf275265801463720abb7799fb",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o01",
+      "before": "公司給的起點，是顧客的要求；它原本已經替顧客處理一部分付款。",
+      "after": "拿到預備牌照，還不是拿到一台能用的機器；四天後，IY銀行才成立。",
+      "old_text_sha256": "1e6f3339210fbb27149846e5b8005a220ef4f53889772984cd1ff5b11de0f49e",
+      "new_text_sha256": "12cb812448091e894757785e700ed62ca0cf57f7c3bce25195618f5a9b73dec6",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o02",
+      "before": "七銀行後來回顧，一九八七年起，超商收銀台開始用條碼代收公共費用。",
+      "after": "四月二十五日，它再取得銀行營業牌照；五月七日，開始受理普通預金開戶。",
+      "old_text_sha256": "5d208a6df1b889acc252b37c744870644eccab7232e711459c7bc07a512a51c2",
+      "new_text_sha256": "a572d6121265eab1d2247947033136afda60a9d081366af91ca5b726e909499b",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o03",
+      "before": "你不用趕銀行櫃台的時間，可以照自己的時間，到店裡繳水電等帳單。",
+      "after": "銀行先開門，店裡的機器也同一天啟用嗎？",
+      "old_text_sha256": "c24edf6dad129135a38cedfd6c709c39328a610d3f2a1de6b2a169a24d988a85",
+      "new_text_sha256": "3eb1a78e1824cd105589fc06cca18c8ce902a90133de18344b6d4b2f8d4a729d",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o04",
+      "before": "收銀台接了帳單，顧客又提出另一個要求：店裡能不能也放提款機？",
+      "after": "又過了八天，本店舉行ATM啟用儀式；照片裡的人站在紅緞帶前，身後就是機器。",
+      "old_text_sha256": "41584cd4c239e8b0bc3180f53007932f9c41c124eb5119e1ae09ce24619990b0",
+      "new_text_sha256": "2af59521f1e7007e4f44d7984056b16f314d45e6a531a5f29e8ef959812e21af",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o05",
+      "before": "我原先只想到多一個服務櫃檯；公司的構想裡，卻連自己的銀行帳戶也放了進來。",
+      "after": "開頭的六十六台，五月十五日在東京二十三區的五十九個地點，開始運作。",
+      "old_text_sha256": "3642d37568fec1a3453ab52f7070cee29460dc3564f3c68bdf060b9446ed44a3",
+      "new_text_sha256": "609c8ad27daee9a498b0fba0b78f72eb7603b26176f1beb14d0fd84e612d9ba0",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o06",
+      "before": "二〇〇二年這份報告說，集團各店收到希望隨時存提款、匯款的要求。",
+      "after": "我在這裡才看見，領牌照和放機器，是同一個計畫裡前後相接的工作。",
+      "old_text_sha256": "7402f026135b8327e0937fc607ff3a9ead9debbe138ffecf9493074b319dc04a",
+      "new_text_sha256": "dc792c70718ac7ea1aa8536101f3ed70e5961809bd4b46aba8d4229ece752602",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o07",
+      "before": "後來的周年回顧，也把設ATM列為顧客調查裡經常在前面的要求。",
+      "after": "公司首次揭露誌給的起點，是顧客的要求；顧客原本還想在店裡辦什麼？",
+      "old_text_sha256": "b79abae1192d3fa1260a0671931241cb731a08d23589f1fb8872c2dfbb3ba09a",
+      "new_text_sha256": "dc189df91e31216d42cef133abb1b8008712662b75dd4e0e8bc8832fcd9c9ea0",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o08",
+      "before": "不過，店裡擺提款機，當時已經有人做了；這不是七銀行發明的點子。",
+      "after": "集團原本代收水電等公共費用；顧客接著希望，存提款、匯款也能在店裡辦。",
+      "old_text_sha256": "428da451640e2c6fa783e12c6f78060454183f325e303375640839b1f331ec2d",
+      "new_text_sha256": "8757a99c8f6a25f7821ed00c60a8bc1313f664dd6def7bb535b2ba1adb002600",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o09",
+      "before": "它自己的年表，寫下一九九九年的別家先例；這個集團又要把機器接到誰的銀行？",
+      "after": "你能在購物的地方繳費，卻不等於能用自己的卡提款；那要再接上金融機構。",
+      "old_text_sha256": "2464e414ba27557c5a70558a14779af9b410383b5265d68b95932da184746c27",
+      "new_text_sha256": "067b01c3e15cca9ce714bc04f3f0b8041cac2f6af2169722dd5989104bf553f2",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o10",
+      "before": "我想追的是後面那一步：有了銀行，店裡的機器，怎麼把別家的卡也接進來？",
+      "after": "不過，一九九九年其他超商就已有銀行合作；這個集團不是超商ATM的首創者。",
+      "old_text_sha256": "385770f865252056664a606b7e30d65f4306b54f8b0ae495a783662ced6fa0df",
+      "new_text_sha256": "033dda7a106ba707462c6f7724bcaee25bfa91bbcc36b30d78a6d6347ceadc7f",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o11",
+      "before": "至少在公司留下的業務設計裡，它要做的，不只是一間店的插座和空位。",
+      "after": "光是店裡多一台機器，還說不清銀行的工作；它要接待誰的客人？",
+      "old_text_sha256": "3916fd8ff91706156627d21aa2396cabd29e9ca5800335afddd68c9f9ca981e7",
+      "new_text_sha256": "f1028f3b12915ac4c6c8d79711831ca655b14c23841db212d14237e1b8e9bb36",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o12",
+      "before": "二〇〇一年四月六日，依同期揭露誌與公司沿革，銀行計畫取得預備牌照。",
+      "after": "公司把自家存戶的金融服務，和供合作金融機構使用的ATM網路，放在同一張業務圖。",
+      "old_text_sha256": "72b97b6659a5faafb37a5b56ae1dfce1fbaf62ba7d570a5b1eea7d0d291c84fd",
+      "new_text_sha256": "33bebd7822994a53e8a5deb44892f054250c925814c7a01fdcabb91bf63bac43",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o13",
+      "before": "四天後，IY銀行成立；四月二十五日，正式的銀行營業牌照到手。",
+      "after": "一邊替自己開戶的人辦事，另一邊，則要讓別家金融機構的客戶也能用機器。",
+      "old_text_sha256": "f6b3f886598ed6f3c48e47b04e03e916179cbcfddee9dd9ec02565bbf072cf77",
+      "new_text_sha256": "b9ce03ee94b618845b440d395c46d52a8ccf2277b8f628c2a5d19450492eceff",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o14",
+      "before": "成立、取牌，還不等於顧客已經能在店裡提款，機器服務仍在後面。",
+      "after": "你手上的卡若來自別家銀行，店裡就得有一條路，把那張卡接回原來的機構。",
+      "old_text_sha256": "8a33ddce28db8492bb61fa1b5b46f874bc634c6a6748cdeda1e9b65f330715e5",
+      "new_text_sha256": "6f8b7cb42f6c69e7ffa6ca895b7e10a840c297868feb08f45c3688ab121ece8e",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1o15",
+      "before": "五月七日，銀行先開業，受理普通預金帳戶；那天，機器也一起能用了嗎？",
+      "after": "這條路，要從實際合作開始；啟用那天，哪家銀行也跟著接進來？",
+      "old_text_sha256": "7c8753a8217995a008f22c1c1e7043d5ba2ef4877b1908acd97a41bd8bb31c6a",
+      "new_text_sha256": "79a374e9e9680ca2fa48f1541a05aed830407767cd4eb580dcfc29713d83d522",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1a07",
+      "before": "地圖上增加了點，經營者要接待的是自己的存戶，還是別家銀行的客人？",
+      "after": "設點擴大，店裡接觸的現金也不只提款；店家一天收下的營業款，能不能存進去？",
+      "old_text_sha256": "2c6870bdad79feed26e75d9ae59913c90b1f0ffe480f0aa82e4bfc81957606c4",
+      "new_text_sha256": "09021a0bc943bec8e33e96e423675aabe29061024a0a209f452054244bf266f2",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1a25",
+      "before": "回到開業那年十二月，銀行先替Seven-Eleven店舖存營業款；一般公司呢？",
+      "after": "同年十二月，銀行開始替Seven-Eleven店舖辦理營業款入金，先接住店舖的需要。",
+      "old_text_sha256": "97087e09097c0433cc1b9524a0cf80ca27f6d27adaedd4a5fe0d5e4096776b93",
+      "new_text_sha256": "161972d3a48665f47d038d806ab6f9e49cb5faf2fc08135885ca7b88cccbf67b",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1a27",
+      "before": "你眼前同樣一台機器，於是可能承接提款，也承接商家的存款工作。",
+      "after": "機器接了店家的存款，其他人帶銀行卡來，還是得知道，自己能在這裡做什麼。",
+      "old_text_sha256": "8a24aba904708715b306acf2af455effc1462d965f0c2efc7627160b1d296b86",
+      "new_text_sha256": "43413f51b8e2d34ddbbef420704930e0f4274181bc6f340ef0f5bd89ebf32384",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1a12",
+      "before": "機器的畫面，會依各家合作銀行的規格顯示，延續顧客原來使用的介面。",
+      "after": "機器的畫面，則依各家合作銀行的規格顯示。",
+      "old_text_sha256": "8fc8cefbc513ce7e7ebe920b937db55be95272d5af3f725787f1f8e8d62e97d6",
+      "new_text_sha256": "22625fb40079b65440e9a55ba4a30b00d85fe960aac0656ba43164f70ad1857a",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1a13",
+      "before": "假設你拿的是適用的合作卡，操作時看見的，就能是自己銀行熟悉的顯示。",
+      "after": "假設你拿的是適用的合作卡，畫面便按合作銀行規格顯示，能用的服務仍要另看。",
+      "old_text_sha256": "9d0b9dd0b3a964d6f998277d67d1fdca1d8351956d5a551ffea1c3ea0b09e625",
+      "new_text_sha256": "5943cc3a0154bdda80f03d01952336cf6f17335ad795e1f5c5838bbd8f520551",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1a28",
+      "before": "服務往店裡集中，顧客碰到不懂的地方，總不能只對著這個機殼發問。",
+      "after": "服務往店裡集中，顧客真遇到不懂的步驟，總不能只問機殼；該找誰？",
+      "old_text_sha256": "a67471bcc4ef831d1d3acc74154b6a0d3930cb234d02590c20e2e5e6a5626b43",
+      "new_text_sha256": "342d7ad660a07145e3a47357782a8ceb31b61c09c38566aa6343e2b896e6c719",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1e06",
+      "before": "我在這裡開始看懂，店裡只多一台機器，後面卻多了持續接手的工作。",
+      "after": "我在這裡開始看懂，一台機器要有人持續接手；服務一多，現鈔又該怎麼顧？",
+      "old_text_sha256": "6765a3671a7f89bd38dbf73d0934e78efb639758ee7237a16ea19f0c5d5e154f",
+      "new_text_sha256": "7c28acfe507121dc89894109daeadc0551de6cd6cac1cce6f9c811f436491560",
+      "source_review_required": true
+    },
+    {
+      "id": "c19r1a26",
+      "before": "到二〇〇三財年，這項服務再走向一般企業；兩種入金，起步時間不同。",
+      "after": "機器接待的也不只個人；二〇〇三財年，營業款入金開始走向一般企業。",
+      "old_text_sha256": "d531081839bf023964a684508ddc8fd4e15dee28230af3dae15ed3b4656127ed",
+      "new_text_sha256": "bc2eee06efad14dae2f6a195c6eacfa8afd65d68190dff642e554154aad764bf",
+      "source_review_required": true
+    }
+  ],
+  "added_narration_rows": [
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "id": "c19r2a30",
+      "text": "六月十一日，銀行也把系統接上全銀網；匯款服務的啟用，還要等下一步。"
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "id": "c19r2a31",
+      "text": "當時公司把ATM列為合作銀行的共同出張所；那螢幕，要照哪家銀行的規格？"
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "id": "c19r2a32",
+      "text": "它還把這種合作寫成業務外包；另一家銀行，不必把自己的機器一起搬進店裡。"
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "id": "c19r2a33",
+      "text": "拿來相比的，是開業初期六月設下的機器；公司看到的是不同批次的使用成長。"
+    },
+    {
+      "chapter": "入口變多，仍有人沒有用",
+      "id": "c19r2e30",
+      "text": "銀行還另設備援中心，為突發狀況預作準備；店裡一台機器，連線之外也有支援。"
+    },
+    {
+      "chapter": "入口變多，仍有人沒有用",
+      "id": "c19r2e31",
+      "text": "商家把錢存進來、個人把錢提出去，現金的兩端，往後都得被這張網照顧。"
+    }
+  ],
+  "removed_narration_rows": [
+    {
+      "chapter": "顧客的要求辦成了一家銀行",
+      "id": "c19r1o16",
+      "text": "你若在那天申請的是自家帳戶，走的是銀行開戶這一步，還不是ATM啟用。"
+    },
+    {
+      "chapter": "顧客的要求辦成了一家銀行",
+      "id": "c19r1o17",
+      "text": "八天後，才來到開場的啟用日；銀行與機器，終於接到同一段服務裡。"
+    },
+    {
+      "chapter": "顧客的要求辦成了一家銀行",
+      "id": "c19r1o18",
+      "text": "但這家銀行並沒有只等自己的新存戶來用，首批服務還接上了合作銀行。"
+    },
+    {
+      "chapter": "顧客的要求辦成了一家銀行",
+      "id": "c19r1o19",
+      "text": "如果卡片上的銀行，跟機器的經營者不同，這個入口要怎麼讓人認得？"
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "id": "c19r1a08",
+      "text": "公司把自己的普通預金服務，和提供給合作金融機構的ATM事業分開經營。"
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "id": "c19r1a09",
+      "text": "一邊是自己的存戶；另一邊，是已經在別家銀行開戶、卻想在附近辦事的人。"
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "id": "c19r1a24",
+      "text": "而店家不只想把提款的客人迎進來，自己收下的營業現金，也有存入的需要。"
+    }
+  ],
+  "moved_rows": [
+    {
+      "id": "c19r1a01",
+      "old_index": 27,
+      "new_index": 23,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a02",
+      "old_index": 28,
+      "new_index": 24,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a03",
+      "old_index": 29,
+      "new_index": 25,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a04",
+      "old_index": 30,
+      "new_index": 27,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a05",
+      "old_index": 31,
+      "new_index": 28,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a06",
+      "old_index": 32,
+      "new_index": 29,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a07",
+      "old_index": 33,
+      "new_index": 30,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a25",
+      "old_index": 51,
+      "new_index": 31,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a27",
+      "old_index": 53,
+      "new_index": 32,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a10",
+      "old_index": 36,
+      "new_index": 33,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a11",
+      "old_index": 37,
+      "new_index": 34,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a12",
+      "old_index": 38,
+      "new_index": 37,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a13",
+      "old_index": 39,
+      "new_index": 38,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a14",
+      "old_index": 40,
+      "new_index": 39,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a15",
+      "old_index": 41,
+      "new_index": 40,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a16",
+      "old_index": 42,
+      "new_index": 41,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a17",
+      "old_index": 43,
+      "new_index": 42,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a18",
+      "old_index": 44,
+      "new_index": 43,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a19",
+      "old_index": 45,
+      "new_index": 44,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a20",
+      "old_index": 46,
+      "new_index": 45,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a21",
+      "old_index": 47,
+      "new_index": 46,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a22",
+      "old_index": 48,
+      "new_index": 47,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1a28",
+      "old_index": 54,
+      "new_index": 50,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "別家銀行的客人走進店裡"
+    },
+    {
+      "id": "c19r1e01",
+      "old_index": 55,
+      "new_index": 51,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e02",
+      "old_index": 56,
+      "new_index": 52,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e03",
+      "old_index": 57,
+      "new_index": 53,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e04",
+      "old_index": 58,
+      "new_index": 54,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e05",
+      "old_index": 59,
+      "new_index": 55,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e06",
+      "old_index": 60,
+      "new_index": 57,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1a26",
+      "old_index": 52,
+      "new_index": 58,
+      "old_chapter": "別家銀行的客人走進店裡",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e07",
+      "old_index": 61,
+      "new_index": 60,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e08",
+      "old_index": 62,
+      "new_index": 61,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e09",
+      "old_index": 63,
+      "new_index": 62,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e10",
+      "old_index": 64,
+      "new_index": 63,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e11",
+      "old_index": 65,
+      "new_index": 64,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e12",
+      "old_index": 66,
+      "new_index": 65,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e13",
+      "old_index": 67,
+      "new_index": 66,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e14",
+      "old_index": 68,
+      "new_index": 67,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e15",
+      "old_index": 69,
+      "new_index": 68,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e16",
+      "old_index": 70,
+      "new_index": 69,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e17",
+      "old_index": 71,
+      "new_index": 70,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e18",
+      "old_index": 72,
+      "new_index": 71,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1e19",
+      "old_index": 73,
+      "new_index": 72,
+      "old_chapter": "入口變多，仍有人沒有用",
+      "new_chapter": "入口變多，仍有人沒有用"
+    },
+    {
+      "id": "c19r1t01",
+      "old_index": 74,
+      "new_index": 73,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t02",
+      "old_index": 75,
+      "new_index": 74,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t03",
+      "old_index": 76,
+      "new_index": 75,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t04",
+      "old_index": 77,
+      "new_index": 76,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t05",
+      "old_index": 78,
+      "new_index": 77,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t06",
+      "old_index": 79,
+      "new_index": 78,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t07",
+      "old_index": 80,
+      "new_index": 79,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t08",
+      "old_index": 81,
+      "new_index": 80,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t09",
+      "old_index": 82,
+      "new_index": 81,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t10",
+      "old_index": 83,
+      "new_index": 82,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t11",
+      "old_index": 84,
+      "new_index": 83,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t12",
+      "old_index": 85,
+      "new_index": 84,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t13",
+      "old_index": 86,
+      "new_index": 85,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t14",
+      "old_index": 87,
+      "new_index": 86,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t15",
+      "old_index": 88,
+      "new_index": 87,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t16",
+      "old_index": 89,
+      "new_index": 88,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t17",
+      "old_index": 90,
+      "new_index": 89,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t18",
+      "old_index": 91,
+      "new_index": 90,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t19",
+      "old_index": 92,
+      "new_index": 91,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1t20",
+      "old_index": 93,
+      "new_index": 92,
+      "old_chapter": "螢幕上的免費，沒有結清網路的帳",
+      "new_chapter": "螢幕上的免費，沒有結清網路的帳"
+    },
+    {
+      "id": "c19r1n01",
+      "old_index": 94,
+      "new_index": 93,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n02",
+      "old_index": 95,
+      "new_index": 94,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n03",
+      "old_index": 96,
+      "new_index": 95,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n04",
+      "old_index": 97,
+      "new_index": 96,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n05",
+      "old_index": 98,
+      "new_index": 97,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n06",
+      "old_index": 99,
+      "new_index": 98,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n07",
+      "old_index": 100,
+      "new_index": 99,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n08",
+      "old_index": 101,
+      "new_index": 100,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n09",
+      "old_index": 102,
+      "new_index": 101,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n10",
+      "old_index": 103,
+      "new_index": 102,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n11",
+      "old_index": 104,
+      "new_index": 103,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n12",
+      "old_index": 105,
+      "new_index": 104,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n13",
+      "old_index": 106,
+      "new_index": 105,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n14",
+      "old_index": 107,
+      "new_index": 106,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n15",
+      "old_index": 108,
+      "new_index": 107,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n16",
+      "old_index": 109,
+      "new_index": 108,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n17",
+      "old_index": 110,
+      "new_index": 109,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n18",
+      "old_index": 111,
+      "new_index": 110,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n19",
+      "old_index": 112,
+      "new_index": 111,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n20",
+      "old_index": 113,
+      "new_index": 112,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n21",
+      "old_index": 114,
+      "new_index": 113,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n22",
+      "old_index": 115,
+      "new_index": 114,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n23",
+      "old_index": 116,
+      "new_index": 115,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n24",
+      "old_index": 117,
+      "new_index": 116,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n25",
+      "old_index": 118,
+      "new_index": 117,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1n27",
+      "old_index": 119,
+      "new_index": 118,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1ct1",
+      "old_index": 120,
+      "new_index": 119,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    },
+    {
+      "id": "c19r1ct2",
+      "old_index": 121,
+      "new_index": 120,
+      "old_chapter": "訊息接回銀行，現鈔留在機器裡",
+      "new_chapter": "訊息接回銀行，現鈔留在機器裡"
+    }
+  ],
+  "unchanged_narration_row_ids": [
+    "c19r1h06",
+    "c19r1a01",
+    "c19r1a02",
+    "c19r1a03",
+    "c19r1a04",
+    "c19r1a05",
+    "c19r1a06",
+    "c19r1a10",
+    "c19r1a11",
+    "c19r1a14",
+    "c19r1a15",
+    "c19r1a16",
+    "c19r1a17",
+    "c19r1a18",
+    "c19r1a19",
+    "c19r1a20",
+    "c19r1a21",
+    "c19r1a22",
+    "c19r1a23",
+    "c19r1e01",
+    "c19r1e02",
+    "c19r1e03",
+    "c19r1e04",
+    "c19r1e05",
+    "c19r1e07",
+    "c19r1e08",
+    "c19r1e09",
+    "c19r1e10",
+    "c19r1e11",
+    "c19r1e12",
+    "c19r1e13",
+    "c19r1e14",
+    "c19r1e15",
+    "c19r1e16",
+    "c19r1e17",
+    "c19r1e18",
+    "c19r1e19",
+    "c19r1t01",
+    "c19r1t02",
+    "c19r1t03",
+    "c19r1t04",
+    "c19r1t05",
+    "c19r1t06",
+    "c19r1t07",
+    "c19r1t08",
+    "c19r1t09",
+    "c19r1t10",
+    "c19r1t11",
+    "c19r1t12",
+    "c19r1t13",
+    "c19r1t14",
+    "c19r1t15",
+    "c19r1t16",
+    "c19r1t17",
+    "c19r1t18",
+    "c19r1t19",
+    "c19r1t20",
+    "c19r1n01",
+    "c19r1n02",
+    "c19r1n03",
+    "c19r1n04",
+    "c19r1n05",
+    "c19r1n06",
+    "c19r1n07",
+    "c19r1n08",
+    "c19r1n09",
+    "c19r1n10",
+    "c19r1n11",
+    "c19r1n12",
+    "c19r1n13",
+    "c19r1n14",
+    "c19r1n15",
+    "c19r1n16",
+    "c19r1n17",
+    "c19r1n18",
+    "c19r1n19",
+    "c19r1n20",
+    "c19r1n21",
+    "c19r1n22",
+    "c19r1n23",
+    "c19r1n24",
+    "c19r1n25",
+    "c19r1n27",
+    "c19r1ct1",
+    "c19r1ct2"
+  ],
+  "changed_written_visuals": [
+    {
+      "scene_id": "c19r1h02",
+      "before": {
+        "prompt": "Medium shot inside a plain neighborhood shop, an anonymous technician positioning a closed unbranded terminal beside a shelf, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium shot inside a plain government office, one anonymous suited adult holding an unmarked document beside a small table, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1h03",
+      "before": {
+        "prompt": "Medium shot in a plain bank lobby, an anonymous employee standing beside an unbranded automated teller terminal at a small opening ceremony, soft light from a side window.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Medium close-up inside a plain government office, one anonymous suited adult extending an unmarked document above a small table, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1h04",
+      "before": {
+        "prompt": "Medium shot at a plain office table, an anonymous administrator opening an unmarked document folder, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Wide shot at a plain office table, an anonymous administrator opening an unmarked document folder, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1h06",
+      "before": {
+        "prompt": "Close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium shot in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, muted window light on the object.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o01",
+      "before": {
+        "prompt": "Medium shot inside a plain convenience store, an anonymous adult cashier holding a blank bill beside a small barcode scanner, soft light from a side window.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Close-up at a plain office table, an anonymous administrator opening an unmarked document folder, soft interior light from the right.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o02",
+      "before": {
+        "prompt": "Medium close-up inside a plain convenience store, an anonymous adult cashier holding a blank bill beside a small barcode scanner, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium shot at a simple office table, an anonymous accountant examining an open unmarked ledger with abstract nonlinguistic lines, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o03",
+      "before": {
+        "prompt": "Wide shot inside a plain convenience store, an anonymous adult cashier holding a blank bill beside a small barcode scanner, gentle light from the left.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Medium shot in a plain equipment workshop, an anonymous technician examining a closed unmarked terminal housing beside a blank clipboard, soft light from a side window.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o04",
+      "before": {
+        "prompt": "Medium close-up at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium shot inside a plain bank lobby, an anonymous suited adult standing beside a ribbon barrier with an unbranded automated teller terminal behind, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o05",
+      "before": {
+        "prompt": "Medium close-up at a plain office table, an anonymous administrator opening an unmarked document folder, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Medium shot inside a plain neighborhood shop, an anonymous technician positioning a closed unbranded terminal beside a shelf, soft light from a side window.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o06",
+      "before": {
+        "prompt": "Wide shot at a plain office table, an anonymous administrator opening an unmarked document folder, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium close-up in a plain equipment workshop, an anonymous technician examining a closed unmarked terminal housing beside a blank clipboard, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o07",
+      "before": {
+        "prompt": "Medium shot inside a plain convenience store, an anonymous adult holding an unmarked survey sheet beside a shelf, soft light from a side window.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Medium close-up at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o08",
+      "before": {
+        "prompt": "Medium close-up inside a plain neighborhood shop, an anonymous technician positioning a closed unbranded terminal beside a shelf, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium shot inside a plain convenience store, an anonymous adult cashier holding a blank bill beside a small barcode scanner, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o09",
+      "before": {
+        "prompt": "Medium shot at a planning office, an anonymous planner placing a plain marker onto an unlabelled outline map board, soft light from a side window.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Wide shot at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, gentle light from the left.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o10",
+      "before": {
+        "prompt": "Close-up at a plain office table, an anonymous administrator opening an unmarked document folder, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium close-up inside a plain neighborhood shop, an anonymous technician positioning a closed unbranded terminal beside a shelf, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o11",
+      "before": {
+        "prompt": "Wide shot inside a plain neighborhood shop, an anonymous technician positioning a closed unbranded terminal beside a shelf, gentle light from the left.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Wide shot beside an unbranded terminal in a plain shop, an anonymous adult holding a blank card while facing the viewer, gentle light from the left.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o12",
+      "before": {
+        "prompt": "Medium shot at a plain office table, an anonymous administrator opening an unmarked document folder, muted window light on the object.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium close-up at a simple office table, an anonymous accountant examining an open unmarked ledger with abstract nonlinguistic lines, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o13",
+      "before": {
+        "prompt": "Medium close-up at a plain office table, an anonymous administrator opening an unmarked document folder, soft light from a side window.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Close-up beside an unbranded terminal in a plain shop, an anonymous adult holding a blank card while facing the viewer, soft interior light from the right.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o14",
+      "before": {
+        "prompt": "Medium shot in a plain equipment workshop, an anonymous technician examining a closed unmarked terminal housing beside a blank clipboard, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium shot in a simple equipment room, an anonymous engineer connecting a plain cable to a closed communication cabinet, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1o15",
+      "before": {
+        "prompt": "Medium shot at a simple office table, an anonymous accountant examining an open unmarked ledger with abstract nonlinguistic lines, soft light from a side window.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Medium close-up in a simple equipment room, an anonymous engineer connecting a plain cable to a closed communication cabinet, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a01",
+      "before": {
+        "prompt": "Medium close-up in a simple equipment room, an anonymous engineer connecting a plain cable to a closed communication cabinet, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Wide shot in a simple equipment room, an anonymous engineer connecting a plain cable to a closed communication cabinet, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a02",
+      "before": {
+        "prompt": "Medium close-up at a planning office, an anonymous planner placing a plain marker onto an unlabelled outline map board, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Medium shot at a planning office, an anonymous planner placing a plain marker onto an unlabelled outline map board, soft light from a side window.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r2a30",
+      "before": null,
+      "after": {
+        "prompt": "Close-up inside a plain bank equipment room, an anonymous engineer attaching a plain cable to a closed communication cabinet, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a04",
+      "before": {
+        "prompt": "Wide shot in a simple equipment room, an anonymous engineer connecting a plain cable to a closed communication cabinet, gentle light from the left.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Medium shot in a simple equipment room, an anonymous engineer connecting a plain cable to a closed communication cabinet, muted window light on the object.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a06",
+      "before": {
+        "prompt": "Close-up inside a plain neighborhood shop, an anonymous technician positioning a closed unbranded terminal beside a shelf, soft interior light from the right.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Wide shot inside a plain neighborhood shop, an anonymous technician positioning a closed unbranded terminal beside a shelf, gentle light from the left.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a07",
+      "before": {
+        "prompt": "Wide shot at a planning office, an anonymous planner placing a plain marker onto an unlabelled outline map board, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium shot inside a plain shop after trading hours, an anonymous adult proprietor holding a sealed plain cash envelope beside a closed unbranded deposit terminal, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a27",
+      "before": {
+        "prompt": "Close-up beside an unbranded terminal in a plain shop, an anonymous adult holding a blank card while facing the viewer, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium shot at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, muted window light on the object.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r2a31",
+      "before": null,
+      "after": {
+        "prompt": "Medium close-up inside a plain bank branch lobby, an anonymous employee holding a blank bank card beside a closed automated terminal, soft light from a side window.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r2a32",
+      "before": null,
+      "after": {
+        "prompt": "Close-up inside a plain shop, an anonymous employee examining one closed unbranded automated terminal beside a shelf, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a19",
+      "before": {
+        "prompt": "Wide shot inside a plain shop entrance, an anonymous employee lifting a blank poster toward a bare notice board, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium shot inside a plain bank branch lobby, an anonymous employee lifting a blank poster toward a bare notice board, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a20",
+      "before": {
+        "prompt": "Close-up inside a plain shop entrance, an anonymous employee lifting a blank poster toward a bare notice board, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Medium close-up at a plain bank branch entrance, an anonymous visitor looking at a blank poster on a simple notice board, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a21",
+      "before": {
+        "prompt": "Medium shot at a simple office table, an anonymous accountant examining an open unmarked ledger with abstract nonlinguistic lines, muted window light on the object.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Close-up at a simple office table, an anonymous accountant examining an open unmarked ledger with abstract nonlinguistic lines, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1a22",
+      "before": {
+        "prompt": "Medium close-up at a simple office table, an anonymous accountant examining an open unmarked ledger with abstract nonlinguistic lines, soft light from a side window.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Medium shot at a simple office table, an anonymous accountant examining an open unmarked ledger with abstract nonlinguistic lines, muted window light on the object.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r2a33",
+      "before": null,
+      "after": {
+        "prompt": "Medium close-up at a plain planning desk, an anonymous analyst comparing two blank folders beside a simple calendar with abstract nonlinguistic marks, soft light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r2e30",
+      "before": null,
+      "after": {
+        "prompt": "Wide shot inside a plain backup equipment room, an anonymous engineer inspecting a row of closed communication cabinets, gentle light from the left.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r2e31",
+      "before": null,
+      "after": {
+        "prompt": "Medium close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e07",
+      "before": {
+        "prompt": "Medium close-up in a plain equipment workshop, an anonymous technician examining a closed unmarked terminal housing beside a blank clipboard, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Wide shot in a plain equipment workshop, an anonymous technician examining a closed unmarked terminal housing beside a blank clipboard, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e08",
+      "before": {
+        "prompt": "Wide shot in a plain equipment workshop, an anonymous technician examining a closed unmarked terminal housing beside a blank clipboard, gentle light from the left.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Close-up in a plain equipment workshop, an anonymous technician examining a closed unmarked terminal housing beside a blank clipboard, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e09",
+      "before": {
+        "prompt": "Close-up in a plain equipment workshop, an anonymous technician examining a closed unmarked terminal housing beside a blank clipboard, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium shot in a plain equipment workshop, an anonymous technician examining a closed unmarked terminal housing beside a blank clipboard, muted window light on the object.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e10",
+      "before": {
+        "prompt": "Medium close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Wide shot in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, gentle light from the left.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e11",
+      "before": {
+        "prompt": "Medium shot inside a plain shop entrance, an anonymous employee lifting a blank poster toward a bare notice board, muted window light on the object.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Wide shot inside a plain shop entrance, an anonymous employee lifting a blank poster toward a bare notice board, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e13",
+      "before": {
+        "prompt": "Medium close-up inside a plain convenience store, an anonymous adult holding an unmarked survey sheet beside a shelf, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium shot inside a plain convenience store, an anonymous adult holding an unmarked survey sheet beside a shelf, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e14",
+      "before": {
+        "prompt": "Wide shot inside a plain convenience store, an anonymous adult holding an unmarked survey sheet beside a shelf, gentle light from the left.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Medium close-up inside a plain convenience store, an anonymous adult holding an unmarked survey sheet beside a shelf, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e15",
+      "before": {
+        "prompt": "Close-up inside a plain convenience store, an anonymous adult holding an unmarked survey sheet beside a shelf, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Wide shot inside a plain convenience store, an anonymous adult holding an unmarked survey sheet beside a shelf, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e16",
+      "before": {
+        "prompt": "Medium shot at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, muted window light on the object.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Wide shot at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1e17",
+      "before": {
+        "prompt": "Medium close-up inside a plain shop entrance, an anonymous employee lifting a blank poster toward a bare notice board, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Close-up inside a plain shop entrance, an anonymous employee lifting a blank poster toward a bare notice board, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1t02",
+      "before": {
+        "prompt": "Medium close-up at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Close-up at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1t07",
+      "before": {
+        "prompt": "Close-up at a planning office, an anonymous planner placing a plain marker onto an unlabelled outline map board, soft interior light from the right.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Medium close-up at a planning office, an anonymous planner placing a plain marker onto an unlabelled outline map board, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1t11",
+      "before": {
+        "prompt": "Medium shot at a planning office, an anonymous planner placing a plain marker onto an unlabelled outline map board, muted window light on the object.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Wide shot at a planning office, an anonymous planner placing a plain marker onto an unlabelled outline map board, gentle light from the left.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1t12",
+      "before": {
+        "prompt": "Wide shot at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, mild overhead light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium shot at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1t20",
+      "before": {
+        "prompt": "Close-up at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, gentle light from the left.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium close-up at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, muted window light on the object.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n02",
+      "before": {
+        "prompt": "Close-up in a simple equipment room, an anonymous engineer connecting a plain cable to a closed communication cabinet, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium close-up in a simple equipment room, an anonymous engineer connecting a plain cable to a closed communication cabinet, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n05",
+      "before": {
+        "prompt": "Wide shot inside a simple operations room, an anonymous operator examining a row of closed equipment cabinets, gentle light from the left.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Close-up inside a simple operations room, an anonymous operator examining a row of closed equipment cabinets, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n09",
+      "before": {
+        "prompt": "Wide shot in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, gentle light from the left.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n10",
+      "before": {
+        "prompt": "Close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium shot in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, muted window light on the object.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n11",
+      "before": {
+        "prompt": "Medium shot in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, muted window light on the object.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Medium close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, soft light from a side window.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n13",
+      "before": {
+        "prompt": "Close-up inside a simple operations room, an anonymous operator examining a row of closed equipment cabinets, soft interior light from the right.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Medium shot inside a simple operations room, an anonymous operator examining a row of closed equipment cabinets, muted window light on the object.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n14",
+      "before": {
+        "prompt": "Medium close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Wide shot in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, mild overhead light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n19",
+      "before": {
+        "prompt": "Wide shot in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, mild overhead light.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Close-up in a plain cash management office, an anonymous analyst reviewing a blank clipboard beside a single closed unmarked metal container, gentle light from the left.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n20",
+      "before": {
+        "prompt": "Medium shot inside a simple operations room, an anonymous operator examining a row of closed equipment cabinets, muted window light on the object.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium close-up inside a simple operations room, an anonymous operator examining a row of closed equipment cabinets, soft light from a side window.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n23",
+      "before": {
+        "prompt": "Medium shot at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, soft interior light from the right.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Wide shot at a plain service counter, an anonymous adult examining a blank bank card beside an unbranded terminal, soft light from a side window.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "review_required": true
+    },
+    {
+      "scene_id": "c19r1n25",
+      "before": {
+        "prompt": "Wide shot in a plain bank lobby, an anonymous employee standing beside an unbranded automated teller terminal at a small opening ceremony, gentle light from the left.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "after": {
+        "prompt": "Medium close-up in a plain bank lobby, an anonymous employee standing beside an unbranded automated teller terminal at a small opening ceremony, mild overhead light.",
+        "visual": "still",
+        "camera": "pull out"
+      },
+      "review_required": true
+    }
+  ],
+  "new_author_source_anchors": [
+    "R04-PHOTO1",
+    "R14-Q4"
+  ],
+  "research_three_modified": false,
+  "old_66_modified": false,
+  "whole_narration_spoken_units": 3456,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approval_created": false
+}

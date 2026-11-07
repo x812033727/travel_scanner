@@ -1,0 +1,2545 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/c15_r1_source",
+  "created_at_utc": "2026-10-26T00:12:57.305837+00:00",
+  "status": "FROZEN_READ_ONLY_WRITTEN_PLAN_AUDIT",
+  "scope": "11 current story opening event teasers only. No source/narrative/owner/media approval is issued or changed. Conclusions bind before/after author-file SHA snapshots.",
+  "rule": {
+    "path": ".agents/skills/youtube-video/references/script-writing.md",
+    "line": 165,
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "classification_definitions": {
+    "EXPLICIT_SAME_ASSET_PLAN": "書面明列兩端scene與同一accepted asset及生成後實檔SHA驗收；不等於實圖共用已通過。",
+    "PROMPT_MATCH_ONLY_NEEDS_BINDING": "同prompt但缺同一accepted asset綁定。",
+    "PROMPT_MISMATCH_OR_NO_PLAN": "不同prompt或沒有共圖計畫。",
+    "NO_EVENT_TEASER_OR_UNCERTAIN": "非獨立事件預告，或輸入變動/語意不足，附原因而不下current結論。"
+  },
+  "counts": {
+    "episodes": 11,
+    "event_teasers": 20,
+    "classification_counts": {
+      "PROMPT_MISMATCH_OR_NO_PLAN": 14,
+      "EXPLICIT_SAME_ASSET_PLAN": 6
+    },
+    "episodes_with_preproduction_gaps": [
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10"
+    ]
+  },
+  "native_behavior": {
+    "code_sha256": {
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1"
+    },
+    "evidence": [
+      {
+        "locator": "keyframes.mjs:600; prompt-budget.mjs:102",
+        "finding": "camera/resolved look/cast/corrections enter composed image prompt; same data.prompt with different camera gives a different request."
+      },
+      {
+        "locator": "stages.mjs:283; core/drama.mjs:729",
+        "finding": "imageKey uses provider/model/composed prompt/negative/size/seed/refs and selection version; scene id, shot_id and target do not enter the image cache key."
+      },
+      {
+        "locator": "stages.mjs:225; cache.mjs:53",
+        "finding": "The ordinary cache checks actual file SHA before dispatch. Payoff first with a passing take, then teaser under the same complete inputs can reuse the same file."
+      },
+      {
+        "locator": "keyframes.mjs:603,610,661,671,704,728",
+        "finding": "Scenes are judged/retaken independently; fixes/seed/selected take can diverge. Same prompt or initial request alone does not guarantee equal final selected assets."
+      },
+      {
+        "locator": "core/drama.mjs:452; trim.mjs:120; keyframes.mjs:375",
+        "finding": "data.source is for clip sourcing, not still aliasing. Compare actual selected derived files/SHA after any trimming, not just original image cache keys."
+      }
+    ],
+    "pure_local_function_checks": [
+      {
+        "episode": "c14",
+        "setup": "c14r1h04",
+        "payoff": "c14r1t06",
+        "prompt_equal": true,
+        "camera_equal": true,
+        "composed_equal": true,
+        "composed_sha256": "993b8480f5826ef212e0ec54bb06d74fa001db962a8d8a09716fa9412f2cfe4c",
+        "example_key_equal": true,
+        "example_dimensions_not_backend": true,
+        "no_provider_call": true
+      },
+      {
+        "episode": "c14",
+        "setup": "c14r1h07",
+        "payoff": "c14r1m02",
+        "prompt_equal": true,
+        "camera_equal": true,
+        "composed_equal": true,
+        "composed_sha256": "6e0c1ce3b9de7333d537fe7e5074116061a25e87da3d2aa6fec0373605363a24",
+        "example_key_equal": true,
+        "example_dimensions_not_backend": true,
+        "no_provider_call": true
+      },
+      {
+        "episode": "c15",
+        "setup": "c15r1h04",
+        "payoff": "c15r1d03",
+        "prompt_equal": true,
+        "camera_equal": true,
+        "composed_equal": true,
+        "composed_sha256": "33ba857fc4ce0375a7f441a84acdca2ea1743a2a57d38d3a93030abdadd8b83c",
+        "example_key_equal": true,
+        "example_dimensions_not_backend": true,
+        "no_provider_call": true
+      },
+      {
+        "episode": "c15",
+        "setup": "c15h04b1",
+        "payoff": "c15r1e04",
+        "prompt_equal": true,
+        "camera_equal": true,
+        "composed_equal": true,
+        "composed_sha256": "b1dc424d5d2e6e3d1c3e74f1f9be03937a519d34b5ad438d2b62d58e32ab5c4b",
+        "example_key_equal": true,
+        "example_dimensions_not_backend": true,
+        "no_provider_call": true
+      },
+      {
+        "episode": "c11",
+        "setup": "c11r1h04",
+        "payoff": "c11r1t05",
+        "prompt_equal": true,
+        "camera_equal": true,
+        "composed_equal": true,
+        "composed_sha256": "677ed7d19c58b796e5f200c59e273e5127ab19d125f50a0ffe82eeade7811cb4",
+        "example_key_equal": true,
+        "example_dimensions_not_backend": true,
+        "no_provider_call": true
+      },
+      {
+        "episode": "c11",
+        "setup": "c11h04b1",
+        "payoff": "c11r1s11",
+        "prompt_equal": true,
+        "camera_equal": true,
+        "composed_equal": true,
+        "composed_sha256": "08ee5f2938fd54e22c913b362fe02f31e783664a3e588ccdac9de98c852174a5",
+        "example_key_equal": true,
+        "example_dimensions_not_backend": true,
+        "no_provider_call": true
+      }
+    ],
+    "same_prompt_guarantees_same_selected_asset": false,
+    "provider_requests": 0,
+    "code_changes": 0
+  },
+  "episodes": [
+    {
+      "episode": "C03",
+      "slug": "story-everyday-moleskine-c03-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+        "before": {
+          "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+          "video.json": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+          "candidate-freeze.json": "b5ff7816044e6b74c0651ba43d73664ef125f4b90ab6c88de6034fb760557d4c",
+          "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+          "series.json": "6de1e3222d3e679e4bd740864e1c564c1b4708f936558a7a80ab9ff0d800e40b",
+          "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328",
+          "reuse-eligibility.json": "adf653c6044b8ce3a047437729162cea45820a8595fab702e9fbc39f5822a3db",
+          "claims.md": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb"
+        },
+        "after": {
+          "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+          "video.json": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+          "candidate-freeze.json": "b5ff7816044e6b74c0651ba43d73664ef125f4b90ab6c88de6034fb760557d4c",
+          "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+          "series.json": "6de1e3222d3e679e4bd740864e1c564c1b4708f936558a7a80ab9ff0d800e40b",
+          "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328",
+          "reuse-eligibility.json": "adf653c6044b8ce3a047437729162cea45820a8595fab702e9fbc39f5822a3db",
+          "claims.md": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": false,
+        "current_status": "STABLE_DURING_READ_CURRENT_AS_OF_REPORT",
+        "author_freeze_confirmation": null,
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 2,
+      "event_teasers": [
+        {
+          "teaser_id": "c03-1",
+          "setup": {
+            "line_id": "r3h041",
+            "quote": "上市文件往前追，竟連到比現代品牌早得多的作家。",
+            "line_sha256": "821711c39df62dc5cb9e76e43adf46ec67afe1350ab84dbaae187c35e8ff9445",
+            "scene_id": "c03r-h04",
+            "template": "shot",
+            "prompt": "Medium shot in a quiet reading room, one anonymous adult studying a plain black notebook beside a closed blank archive folder, soft window light.",
+            "prompt_sha256": "5b033257284d56130975afb995dfb3e47c5aed9d94220a247639eb4deb87d599",
+            "camera": "pan right",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "早於品牌的作家與現代商品之關係尚未揭。",
+          "actual_payoffs": [
+            {
+              "line_id": "r304021",
+              "quote": "開頭那些作家，品牌官網把他們連到的是老式筆記本；",
+              "line_sha256": "d60b951165a3ab76fd944593308500c3d19144defa281fec72f0e46bf48c1ae1",
+              "scene_id": "c03r-p04s02",
+              "template": "shot",
+              "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.",
+              "prompt_sha256": "5864f92d036095203cd6417df522316c06ef04afb8d3d88d2c1d1119abe0fe56",
+              "camera": "push in",
+              "card_data": null
+            },
+            {
+              "line_id": "r304031",
+              "quote": "那是同一類型的物件，並不是他們用過後來的現代品牌商品。",
+              "line_sha256": "fddc731cea44b1b740ef619fcbf3b737e56a74897d320c51e0e83dd126632d0c",
+              "scene_id": "c03r-p04s03",
+              "template": "shot",
+              "prompt": "Close-up, one anonymous maker comparing an old plain notebook with a fresh blank one, neutral ceiling light.",
+              "prompt_sha256": "15c236b02f5fedcf15c452c4a42bbed02911158aa0be995fbd1bf1001ad901ef",
+              "camera": "pan left",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "r3h041",
+              "payoff": "r304021",
+              "what": "早於現代商標的作家，究竟和品牌是什麼關係"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "h04與作家關係回收章的一張匿名插圖綁同一accepted still。"
+        },
+        {
+          "teaser_id": "c03-2",
+          "setup": {
+            "line_id": "r3h051",
+            "quote": "多年後，一份財報又得重新計算這個名字的價值。",
+            "line_sha256": "b3b465c875a9567ab8c18dba2a9c7b314cb36a1abb9636f3180c5f5f05740c4a",
+            "scene_id": "c03r-h05",
+            "template": "shot",
+            "prompt": "Close-up at an office desk, one anonymous adult turning a blank report page with a thoughtful face, soft window light.",
+            "prompt_sha256": "34e36c2dc66e7ed9dcc2110d4f8c824cf9c2246250cc7b7df27524545e4c55f4",
+            "camera": "tilt up",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "後來財報重算名字價值，是第二個事件。",
+          "actual_payoffs": [
+            {
+              "line_id": "r318041",
+              "quote": "這份二〇二五年度財報，記下開頭預告的帳面重算：",
+              "line_sha256": "9a92202811674993666241dc918f66d5f498a5c5f8b5ad1cc5a45773c54404ca",
+              "scene_id": "c03r-p18s04",
+              "template": "stats",
+              "prompt": null,
+              "prompt_sha256": null,
+              "camera": null,
+              "card_data": {
+                "title": "名字的帳面價值重算",
+                "stats": [
+                  {
+                    "value": "約1.074億歐元",
+                    "label": "2025品牌無形資產減損"
+                  }
+                ],
+                "source": "2025全年業績，PDF10、42"
+              }
+            },
+            {
+              "line_id": "r318042",
+              "quote": "品牌無形資產減損約一億零七百四十萬歐元。",
+              "line_sha256": "834e71f4d3bd1603cc1af7f8aa93db960e5ef8229c29ff8295800a38437fecd2",
+              "scene_id": "c03r-p18s04",
+              "template": "stats",
+              "prompt": null,
+              "prompt_sha256": null,
+              "camera": null,
+              "card_data": {
+                "title": "名字的帳面價值重算",
+                "stats": [
+                  {
+                    "value": "約1.074億歐元",
+                    "label": "2025品牌無形資產減損"
+                  }
+                ],
+                "source": "2025全年業績，PDF10、42"
+              }
+            }
+          ],
+          "supporting_or_context_lines": [
+            {
+              "line_id": "r3n041",
+              "quote": "用往後五年的財務預測，把未來現金流折回今天，檢查帳上價值能不能支持。",
+              "line_sha256": "63cb1c42eaf6096fb5752a5a1e6b3b476056b9757efccef9f7a8335010cd46c3",
+              "scene_id": "c03r-n04",
+              "template": "shot",
+              "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.",
+              "prompt_sha256": "4fc3b4c522413d60f490c4e269c19b729213fdcb931d945cee82c678711e3ad6",
+              "camera": "pan right",
+              "card_data": null
+            }
+          ],
+          "registered_loop_links": [
+            {
+              "setup": "r3h051",
+              "payoff": "r318041",
+              "what": "後來哪份財報重新計算這個名字的價值"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "保留減損數字卡；另選同章財務文件插圖（例如r3n041）與h05共用，勿把減損數字先揭。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "r3h011",
+          "quote": "你可能只是想買一本筆記本，賣小黑本的公司，上市時市值卻逼近五億歐元。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "r3h021",
+          "quote": "二〇一三年四月三日，義大利交易所宣布一家公司掛牌；它的招牌商品，翻開竟是一片空白。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "r3h031",
+          "quote": "我看到這裡先愣了一下：沒有印好的故事，這本書靠什麼吸引你？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "r3h061",
+          "quote": "今天就跟著 Moleskine 這本小黑本，",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "r3h062",
+          "quote": "看看它怎麼從書架，走到剛剛那個公司市值。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "r3h071",
+          "quote": "一本空白本，究竟怎麼讓人願意為它的名字付錢？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [
+        {
+          "scene": "c03r-h04",
+          "old_scene": null,
+          "eligibility": "new_conceptual_prompt",
+          "prompt_sha256": "5b033257284d56130975afb995dfb3e47c5aed9d94220a247639eb4deb87d599",
+          "prompt_verbatim": false,
+          "media_available": false,
+          "actual_media_reuse": false,
+          "condition": "僅語意與提示詞相容；須取回原圖、核對hash及原評審，再按新旁白重審，不能憑此表宣稱重用"
+        },
+        {
+          "scene": "c03r-h05",
+          "old_scene": null,
+          "eligibility": "new_conceptual_prompt",
+          "prompt_sha256": "34e36c2dc66e7ed9dcc2110d4f8c824cf9c2246250cc7b7df27524545e4c55f4",
+          "prompt_verbatim": false,
+          "media_available": false,
+          "actual_media_reuse": false,
+          "condition": "僅語意與提示詞相容；須取回原圖、核對hash及原評審，再按新旁白重審，不能憑此表宣稱重用"
+        },
+        {
+          "scene": "c03r-p04s02",
+          "old_scene": "c03-p04-s02",
+          "eligibility": "eligible_prompt_verbatim",
+          "prompt_sha256": "5864f92d036095203cd6417df522316c06ef04afb8d3d88d2c1d1119abe0fe56",
+          "prompt_verbatim": true,
+          "media_available": false,
+          "actual_media_reuse": false,
+          "condition": "僅語意與提示詞相容；須取回原圖、核對hash及原評審，再按新旁白重審，不能憑此表宣稱重用"
+        },
+        {
+          "scene": "c03r-p04s03",
+          "old_scene": "c03-p04-s03",
+          "eligibility": "eligible_prompt_verbatim",
+          "prompt_sha256": "15c236b02f5fedcf15c452c4a42bbed02911158aa0be995fbd1bf1001ad901ef",
+          "prompt_verbatim": true,
+          "media_available": false,
+          "actual_media_reuse": false,
+          "condition": "僅語意與提示詞相容；須取回原圖、核對hash及原評審，再按新旁白重審，不能憑此表宣稱重用"
+        },
+        {
+          "scene": "c03r-p18s04",
+          "old_scene": "c03-p18-s04",
+          "eligibility": "card_no_image_reuse",
+          "prompt_sha256": null,
+          "prompt_verbatim": false,
+          "media_available": false,
+          "actual_media_reuse": false,
+          "condition": "僅語意與提示詞相容；須取回原圖、核對hash及原評審，再按新旁白重審，不能憑此表宣稱重用"
+        }
+      ],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C04",
+      "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+        "before": {
+          "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+          "video.json": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+          "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+          "series.json": "0745c10d1cb0dac55d786a2f278b2e0823f42bdb671daba55d1dfb8dc9bb9f9f",
+          "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a",
+          "claims.md": "08455c68eda7a3cb994b1d8ee493f955e70f1f487cd83f854aec733f0e8551ea"
+        },
+        "after": {
+          "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+          "video.json": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+          "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+          "series.json": "0745c10d1cb0dac55d786a2f278b2e0823f42bdb671daba55d1dfb8dc9bb9f9f",
+          "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a",
+          "claims.md": "08455c68eda7a3cb994b1d8ee493f955e70f1f487cd83f854aec733f0e8551ea"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": false,
+        "current_status": "STABLE_DURING_READ_CURRENT_AS_OF_REPORT",
+        "author_freeze_confirmation": null,
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 1,
+      "event_teasers": [
+        {
+          "teaser_id": "c04-1",
+          "setup": {
+            "line_id": "c04rh051",
+            "quote": "可兩張膜之間那條細細的接縫，會讓這個設計碰到一道意外的難題。",
+            "line_sha256": "63111f703c61413e3250bf3a4b1cae3e787f47e13b6d4615e45d0a0f0114b754",
+            "scene_id": "c04r-h05",
+            "template": "shot",
+            "prompt": "Close-up at a workbench, one technician tracing the narrow sealed edge of a raised plastic cell with a fingertip, soft side light.",
+            "prompt_sha256": "25f36f5f7746da85ed7ad1c653081a31414411583a1bc217939f47ba90e116b0",
+            "camera": "tilt up",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "後來接縫難關/解法尚未揭；h03已揭牆面背景另列排除。",
+          "actual_payoffs": [
+            {
+              "line_id": "c04re071",
+              "quote": "它改把兩張薄膜的接觸面加熱，趁表面能融合時施壓，直接熔成接縫。",
+              "line_sha256": "80757c958a15209eab89a5785f3e4850b488f84a2eb61bb104b5c3e36c32dcae",
+              "scene_id": "c04r-e07",
+              "template": "shot",
+              "prompt": "Wide shot beside a generic laminating press, one anonymous technician guiding an embossed plastic web between heated rollers, muted workshop light.",
+              "prompt_sha256": "d22c507368ec4bf5fc9243ef786001f7d6bea49651c74bb46ad1d6fe9a7e0bd7",
+              "camera": "pull out",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c04rh051",
+              "payoff": "c04re071",
+              "what": "兩張膜的接縫如何換一種做法"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "接縫預告與回收章選一張相容圖，統一完整request並記同一accepted-file綁定。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c04rh011",
+          "quote": "你寄出去的東西，會不會只隔著兩張薄膜，就得承受一路搬運的碰撞？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c04rh021",
+          "quote": "想像你站在包裝桌前，捏著一片鼓泡的透明材料；每格裡面封著的，只是空氣。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c04rh031",
+          "quote": "我覺得最有意思的是，這種小氣室原本被寫進牆面覆層的設計。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "已揭牆面背景與原廠歸屬，並非另一個未揭事件預告。"
+        },
+        {
+          "line_id": "c04rh041",
+          "quote": "製造它的 Sealed Air，後來把這段起點寫進公司史。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "已揭牆面背景與原廠歸屬，並非另一個未揭事件預告。"
+        },
+        {
+          "line_id": "c04rh061",
+          "quote": "今天跟著泡泡紙，看看一個牆面構想，怎麼遇上你寄包裹時的難題。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c04rh071",
+          "quote": "看起來只是封住一口空氣，它到底怎麼承擔保護貨物的工作？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C05",
+      "slug": "story-everyday-kincho-c05-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+        "before": {
+          "narration-only.json": "9c809fb2e1c25ded52ca59351a1a2196a0953f4f13566d066768c9b8e6d7ae24",
+          "video.json": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+          "script.md": "c6bb4438b4215d387db287e9381dea961731e92c1d594e0169bc77b1a3f6e353",
+          "series.json": "a0fd65ce97d4d0538bdc417b6f26bd84bbd42870772f652d185235dc76587782",
+          "claims.json": "2217a881565c919d3dc7d38440f276e162e35b0375d6966e51d2800519547d7e",
+          "claims.md": "d3e1674704c9ff57af455dabaf20c1bd263c8f3a04ce282fd110ff0019cf2d7e"
+        },
+        "after": {
+          "narration-only.json": "9c809fb2e1c25ded52ca59351a1a2196a0953f4f13566d066768c9b8e6d7ae24",
+          "video.json": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+          "script.md": "c6bb4438b4215d387db287e9381dea961731e92c1d594e0169bc77b1a3f6e353",
+          "series.json": "a0fd65ce97d4d0538bdc417b6f26bd84bbd42870772f652d185235dc76587782",
+          "claims.json": "2217a881565c919d3dc7d38440f276e162e35b0375d6966e51d2800519547d7e",
+          "claims.md": "d3e1674704c9ff57af455dabaf20c1bd263c8f3a04ce282fd110ff0019cf2d7e"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": false,
+        "current_status": "STABLE_DURING_READ_CURRENT_AS_OF_REPORT",
+        "author_freeze_confirmation": null,
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 2,
+      "event_teasers": [
+        {
+          "teaser_id": "c05-1",
+          "setup": {
+            "line_id": "c07o04",
+            "quote": "採下的花遇上連雨怎麼辦，點火後成分又從哪裡離開？",
+            "line_sha256": "f5a2e6c8ff1dd38bdfe809d1875090efcb34183a4bf518acb0e04375ae95ca47",
+            "scene_id": "c07o04",
+            "template": "shot",
+            "prompt": "Wide shot of a shallow basket of freshly picked daisy flowers beside a rain-streaked window, soft daylight.",
+            "prompt_sha256": "a3680a2081fbf5fb7a02ae9b471a2f67c05002e440f7d13b04986e3a68f4151e",
+            "camera": "pan right",
+            "card_data": null
+          },
+          "setup_clause": "採下的花遇上連雨怎麼辦",
+          "identification_rationale": "同一句第一事件：連雨鮮花乾燥備案。",
+          "actual_payoffs": [
+            {
+              "line_id": "c07d08",
+              "quote": "它寫，做一張寬大的竹簾，把花排在上面，再從下方供熱，讓溫暖的室內接手乾燥。",
+              "line_sha256": "382acbdfd44c77dd5439bb7507e15d58e92abac0de9996fc75466866fcb4edae",
+              "scene_id": "c07d08",
+              "template": "shot",
+              "prompt": "Wide shot of flowers spread on a raised bamboo drying mat in a simple warm drying room, an enclosed heat source below.",
+              "prompt_sha256": "f4417711f0bc17d6c4c4abeacccc1a86530705f61e3d57c52ca395abd3bdc418",
+              "camera": "drift",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c07o04",
+              "payoff": "c07d08",
+              "what": "連雨鮮花的竹簾供熱備案"
+            },
+            {
+              "setup": "c07o04",
+              "payoff": "c05le013",
+              "what": "點火後成分離開的位置"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "將雙事件配成各自圖像段；雨天段與乾燥回收章的一張相容圖共用。"
+        },
+        {
+          "teaser_id": "c05-2",
+          "setup": {
+            "line_id": "c07o04",
+            "quote": "採下的花遇上連雨怎麼辦，點火後成分又從哪裡離開？",
+            "line_sha256": "f5a2e6c8ff1dd38bdfe809d1875090efcb34183a4bf518acb0e04375ae95ca47",
+            "scene_id": "c07o04",
+            "template": "shot",
+            "prompt": "Wide shot of a shallow basket of freshly picked daisy flowers beside a rain-streaked window, soft daylight.",
+            "prompt_sha256": "a3680a2081fbf5fb7a02ae9b471a2f67c05002e440f7d13b04986e3a68f4151e",
+            "camera": "pan right",
+            "card_data": null
+          },
+          "setup_clause": "點火後成分又從哪裡離開",
+          "identification_rationale": "同句第二事件：成分從燃燒端前方香體揮散，le013只補位置數值。",
+          "actual_payoffs": [
+            {
+              "line_id": "c07u04",
+              "quote": "原廠把發紅的燃燒端，標在約攝氏七百度到八百度；成分卻從它前方的香體揮散。",
+              "line_sha256": "d66ed279112d7bd0b78f1fda18a1ebebd650170ff9d4b78145570637af20b020",
+              "scene_id": "c07u04",
+              "template": "shot",
+              "prompt": "Macro conceptual view of the glowing tip of a plain green incense coil and the intact section ahead, warm glow against a neutral backdrop.",
+              "prompt_sha256": "2806aa5947aab10dd6fecf0070d2b5f18275ba0ccbebd02eba192862692be503",
+              "camera": "pan right",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [
+            {
+              "line_id": "c05le013",
+              "quote": "那個位置離前端約六到八毫米，溫度約攝氏二百五十度，還沒有變成你眼前的灰。",
+              "line_sha256": "79c49af862416246a415faadcef9394e2be7b98243fed9dd82fa2ba3e8a6c970",
+              "scene_id": "c05le013",
+              "template": "shot",
+              "prompt": "Macro conceptual view of a short intact section just ahead of the glowing tip of a plain incense coil, soft neutral light.",
+              "prompt_sha256": "9943e91c6071671d5f23cab0658ed1f73dc5da35e527fbb5dd715de8698caa7c",
+              "camera": "drift",
+              "card_data": null
+            }
+          ],
+          "registered_loop_links": [
+            {
+              "setup": "c07o04",
+              "payoff": "c07d08",
+              "what": "連雨鮮花的竹簾供熱備案"
+            },
+            {
+              "setup": "c07o04",
+              "payoff": "c05le013",
+              "what": "點火後成分離開的位置"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": true,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "另配與揮散回收章共用圖；一張雨窗花籃不能充當兩個事件的回收圖。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c05r001",
+          "quote": "你想讓一根蚊香陪你撐過長夜，早期一根卻約四十分鐘就燒完。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c05r002",
+          "quote": "一八九〇年，上山英一郎推出棒狀蚊香，把除蟲菊粉做成了能點燃的細條。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c07o03",
+          "quote": "我原以為，蚊香難在盤成那個圓；可材料還沒變成香，就已經有一道關卡。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c07o05",
+          "quote": "金鳥這一卷香，我們沿著百餘年的材料選擇，追到你點火的那一端。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c07o06",
+          "quote": "一把會散的乾花粉末，憑什麼變成能陪你過夜的商品？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C06",
+      "slug": "story-everyday-play-doh-c06-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+        "before": {
+          "narration-only.json": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+          "video.json": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+          "script.md": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+          "series.json": "ff546fbb3a68df5d0cdffa37d62af2295883d7007c79a43c5bb71473de362cee",
+          "claims.json": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926",
+          "claims.md": "d93f7e42b2e1849935e4740a691b54e21f8248f0a18d8d345fe1c35d0cc10959"
+        },
+        "after": {
+          "narration-only.json": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+          "video.json": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+          "script.md": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+          "series.json": "ff546fbb3a68df5d0cdffa37d62af2295883d7007c79a43c5bb71473de362cee",
+          "claims.json": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926",
+          "claims.md": "d93f7e42b2e1849935e4740a691b54e21f8248f0a18d8d345fe1c35d0cc10959"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": false,
+        "current_status": "STABLE_DURING_READ_CURRENT_AS_OF_REPORT",
+        "author_freeze_confirmation": null,
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 2,
+      "event_teasers": [
+        {
+          "teaser_id": "c06-1",
+          "setup": {
+            "line_id": "c6sh051",
+            "quote": "有一雙更小的手，正被另一團材料難住。",
+            "line_sha256": "d2842c5050f94d4ddfb65470338c08bcd51edf3601d75969ab63b93094f56f10",
+            "scene_id": "c06r2-h05",
+            "template": "shot",
+            "prompt": "Medium close-up at a kitchen table, one anonymous adult with a frustrated expression while looking at a small handprint beside a firm clay lump, gentle desk lamp light from the right.",
+            "prompt_sha256": "0af781c474f545c454774b57a044954e99d216698ca8b28d72d8f024e0d5ced7",
+            "camera": "push in",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "小手遇硬黏土；後文先揭太硬，再交代清潔材料進幼稚園。",
+          "actual_payoffs": [
+            {
+              "line_id": "c6sk022",
+              "quote": "名人堂說，一般塑形黏土太硬，孩子不好操作。",
+              "line_sha256": "9ec398b0514062a500214ac348e2261b8cc62474bd2ea50e30e5174ea8f02ec1",
+              "scene_id": "c06r2-k02-p2",
+              "template": "shot",
+              "prompt": "Wide shot inside a classroom craft corner, one anonymous adult with a frustrated expression while trying to flatten a firm clay lump, soft doorway light.",
+              "prompt_sha256": "a5d45131155e7525f16e05c19e5f393b342e51b58b849823bdda35936866cb59",
+              "camera": "pan left",
+              "card_data": null
+            },
+            {
+              "line_id": "c6sk041",
+              "quote": "名人堂回顧，約瑟夫送材料讓老師試；Kutol記下她把它帶進幼稚園，受到了歡迎。清潔材料，",
+              "line_sha256": "ab64250c711199eed77a5ebcb7961aaa29c8c01c8c3b62ac6d5b5b32210e7924",
+              "scene_id": "c06r2-k04",
+              "template": "shot",
+              "prompt": "Medium shot inside a classroom craft corner, one curious person looking toward the viewer while pressing a small indentation into a pliable plain lump, mild overcast window light.",
+              "prompt_sha256": "e2f714743f687b3035a31e408d14e65eb5f68ab342afd549afcfa46518f4b260",
+              "camera": "tilt down",
+              "card_data": null
+            },
+            {
+              "line_id": "c6sk042",
+              "quote": "碰上了要塑形的小手。",
+              "line_sha256": "ec0ef1f0c53819c20d8214e093ee2625f67436203a9a05512d45d2745910edcd",
+              "scene_id": "c06r2-k04-p2",
+              "template": "shot",
+              "prompt": "Medium close-up inside a classroom craft corner, one focused hobbyist with a thoughtful expression while pressing a small indentation into a pliable plain lump, gentle desk lamp light from the right.",
+              "prompt_sha256": "e5249d356bbd9a43bbfa618f425785737317f5d0bbe201733b85e562c9d14cb2",
+              "camera": "pan right",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c6sh051",
+              "payoff": "c6sk041",
+              "what": "被硬材料難住的小手得到什麼回應"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "h05與回收章選一張小手/材料相容圖共用，明列實檔綁定。"
+        },
+        {
+          "teaser_id": "c06-2",
+          "setup": {
+            "line_id": "c6sh061",
+            "quote": "另一張桌上，一束剛做完的花，還得過最後一關。",
+            "line_sha256": "09b753432f946642f460fb7fbca775eeb91a924dc976606122f4bf28b979b96e",
+            "scene_id": "c06r2-h06",
+            "template": "shot",
+            "prompt": "Wide shot at a home crafting corner, one unidentified craftsperson with a puzzled expression while examining a completed modeled flower beside a plain vase, soft doorway light.",
+            "prompt_sha256": "2501ca3b07dd91c9d12395f85130844e6a65546750aeb91d7d1f9e93fd4075de",
+            "camera": "pan left",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "花束最後保存關卡，後文以最後處理噴霧回答。",
+          "actual_payoffs": [
+            {
+              "line_id": "c6sn071",
+              "quote": "孩之寶說，套件裡特製的最後處理噴霧，能幫花維持結構數月；",
+              "line_sha256": "aa499270dc82f73f22184bf3200545d13a84ff60dfd8f2fe8ba49144a67d62a6",
+              "scene_id": "c06r2-n07",
+              "template": "shot",
+              "prompt": "Medium shot at a home crafting corner, one curious person looking toward the viewer while holding a plain finishing spray beside a completed modeled bouquet, mild overcast window light.",
+              "prompt_sha256": "6365eef752af28f345ce8410e23725c598be3f33c4cd1f3e51ff8a1ca4a26cd1",
+              "camera": "pan left",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [
+            {
+              "line_id": "c6sn061",
+              "quote": "還記得開場那束要過最後一關的花嗎？",
+              "line_sha256": "306520f88716784c8e6c513b04533eca935076ff7f83588a6dd062db4522e7c3",
+              "scene_id": "c06r2-n06",
+              "template": "shot",
+              "prompt": "Close-up at a home crafting corner, one anonymous adult facing the viewer while looking at a completed modeled bouquet beside a plain spray bottle, soft window light from the left.",
+              "prompt_sha256": "5dde4aed2a08614492ba45dfd35140ae54d153984a37d98d646a0fc755b7cd07",
+              "camera": "push in",
+              "card_data": null
+            },
+            {
+              "line_id": "c6sn062",
+              "quote": "現在花束已經排好，要怎麼把這個形狀留下？",
+              "line_sha256": "e505fb02b67af21ab26e5898d7cb105b8a51d4e3c60a0d5a6880168f2329629d",
+              "scene_id": "c06r2-n06",
+              "template": "shot",
+              "prompt": "Close-up at a home crafting corner, one anonymous adult facing the viewer while looking at a completed modeled bouquet beside a plain spray bottle, soft window light from the left.",
+              "prompt_sha256": "5dde4aed2a08614492ba45dfd35140ae54d153984a37d98d646a0fc755b7cd07",
+              "camera": "push in",
+              "card_data": null
+            }
+          ],
+          "registered_loop_links": [
+            {
+              "setup": "c6sh061",
+              "payoff": "c6sn071",
+              "what": "開場花束的最後保存關卡"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": true,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "可讓h06與花束回呼鏡n06共用，噴霧解答鏡保留，寫同一實檔驗收。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c6sh001",
+          "quote": "如果你捏的形狀，手一放就垮，還會再拿這罐嗎？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c6sh021",
+          "quote": "孩之寶二〇二四年說，Play-Doh年出貨逾五億罐。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c6sh011",
+          "quote": "想像你在一九五〇年代的辛辛那提，正打開一罐壁紙清潔材料。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c6sh031",
+          "quote": "但在你眼前，牆上的煤灰正在變少。你取出材料，手感還好好的，卻得找個理由，",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c6sh032",
+          "quote": "讓人再次打開這罐。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c6sh041",
+          "quote": "我覺得最棘手的，是材料還能用，原本的工作卻正在縮小。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c6sh071",
+          "quote": "今天跟著Play-Doh，追一團材料怎麼在不同人的手上留下來。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c6sh081",
+          "quote": "拿它的手換了，它究竟要替那個人做對什麼？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C07",
+      "slug": "story-everyday-dr-martens-c07-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "037f7a673481337e6d0bf0c591e7b37b8443b0b1e82216722f9ee5c528b84262",
+        "before": {
+          "narration-only.json": "e6717dd0018a4d7cc9c5dadf0736190d14b3440da4647cea5f01d459020ce148",
+          "video.json": "037f7a673481337e6d0bf0c591e7b37b8443b0b1e82216722f9ee5c528b84262",
+          "script.md": "b9df40b98cd53582674445f2490d363cfbab73125251c9eaef658ff0b834a5b3",
+          "series.json": "df0016934dd8b36a282903f990e3bb82f75a1ee920ee3a9b1285cc208f9adc85",
+          "claims.json": "5d66f2ce62d61dade5e9ecdbaa90170671eef5fcab74f94a74111c6ba2583b90",
+          "claims.md": "210b1485b6340665b418c6d09079e585856c0bea23b65f3b8d6280a5ed36a07c"
+        },
+        "after": {
+          "narration-only.json": "e6717dd0018a4d7cc9c5dadf0736190d14b3440da4647cea5f01d459020ce148",
+          "video.json": "037f7a673481337e6d0bf0c591e7b37b8443b0b1e82216722f9ee5c528b84262",
+          "script.md": "b9df40b98cd53582674445f2490d363cfbab73125251c9eaef658ff0b834a5b3",
+          "series.json": "df0016934dd8b36a282903f990e3bb82f75a1ee920ee3a9b1285cc208f9adc85",
+          "claims.json": "5d66f2ce62d61dade5e9ecdbaa90170671eef5fcab74f94a74111c6ba2583b90",
+          "claims.md": "210b1485b6340665b418c6d09079e585856c0bea23b65f3b8d6280a5ed36a07c"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": false,
+        "current_status": "STABLE_DURING_READ_CURRENT_AS_OF_REPORT",
+        "author_freeze_confirmation": null,
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 2,
+      "event_teasers": [
+        {
+          "teaser_id": "c07-1",
+          "setup": {
+            "line_id": "c7r20104",
+            "quote": "我想跟著它看：修理要拆到哪裡，包裹回來時，又多了什麼？",
+            "line_sha256": "cc89524b503aa0d8059998e521d76e025279f514ab16224a6da477a1f66e0f8c",
+            "scene_id": "c07r2-01-04",
+            "template": "shot",
+            "prompt": "Low angle close-up at a simple packing table, one anonymous adult studying an idle shoe-joining machine beside a closed parcel, mild window light from behind the camera.",
+            "prompt_sha256": "f94568b3a0e16d4073848f5062cb7cdee06e0669fef0ed9308dc915b951f07b0",
+            "camera": "pan right",
+            "card_data": null
+          },
+          "setup_clause": "修理要拆到哪裡",
+          "identification_rationale": "同句第一事件：維修先拆哪些部件。",
+          "actual_payoffs": [
+            {
+              "line_id": "c7r20301",
+              "quote": "授權換底頁說，要先移走舊外底、沿條和縫線；示範裡，師傅倒放靴子，刀沿鞋底上緣走。",
+              "line_sha256": "ae44fc29034050fea2acf51d666ca4dcecf6a2c654ebc4a58a264eb02a6713ed",
+              "scene_id": "c07r2-03-01",
+              "template": "shot",
+              "prompt": "Overhead view at a repair workbench, one anonymous adult guiding a plain knife along the upper edge of an old outsole, soft daylight from the left.",
+              "prompt_sha256": "489caad451303260ab1659860ca951bb428ed8576bdd412076186f7ec7ad5f32",
+              "camera": "tilt down",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c7r20104",
+              "payoff": "c7r20301",
+              "what": "開場拆除範圍由授權頁與示範第一刀回答"
+            },
+            {
+              "setup": "c7r20104",
+              "payoff": "c7r20607",
+              "what": "開場回程預告：包裹裡新增的鞋帶"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "雙事件各配圖像段；拆除預告與刀沿舊底上緣的回收章圖共用。"
+        },
+        {
+          "teaser_id": "c07-2",
+          "setup": {
+            "line_id": "c7r20104",
+            "quote": "我想跟著它看：修理要拆到哪裡，包裹回來時，又多了什麼？",
+            "line_sha256": "cc89524b503aa0d8059998e521d76e025279f514ab16224a6da477a1f66e0f8c",
+            "scene_id": "c07r2-01-04",
+            "template": "shot",
+            "prompt": "Low angle close-up at a simple packing table, one anonymous adult studying an idle shoe-joining machine beside a closed parcel, mild window light from behind the camera.",
+            "prompt_sha256": "f94568b3a0e16d4073848f5062cb7cdee06e0669fef0ed9308dc915b951f07b0",
+            "camera": "pan right",
+            "card_data": null
+          },
+          "setup_clause": "包裹回來時，又多了什麼",
+          "identification_rationale": "同句第二事件：回包裹新增物，後文為新鞋帶。",
+          "actual_payoffs": [
+            {
+              "line_id": "c7r20607",
+              "quote": "評論還特別提到，維修方多添了一組全新鞋帶。",
+              "line_sha256": "d577a17483a40021d55fadc8fa0151afa0bd3ed92faeee8df48ea17f612bdf7d",
+              "scene_id": "c07r2-06-08",
+              "template": "shot",
+              "prompt": "Overhead view at a simple parcel table, one anonymous adult lifting a new pair of plain laces from a shoebox, a gentle work lamp from the right.",
+              "prompt_sha256": "e30f88b4ebdf4a137e729abc0e2986d5425bb3880e53f6e80f425ed45b714207",
+              "camera": "pan right",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c7r20104",
+              "payoff": "c7r20301",
+              "what": "開場拆除範圍由授權頁與示範第一刀回答"
+            },
+            {
+              "setup": "c7r20104",
+              "payoff": "c7r20607",
+              "what": "開場回程預告：包裹裡新增的鞋帶"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": true,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "回包裹預告與回收章選一張相容圖共用；不要獨立買第二張相似圖。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c7r20101",
+          "quote": "你穿了四年的靴子，底快磨穿了，鞋面還好，現在會想留下哪一半？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c7r20102",
+          "quote": "二〇二五年七月，一位馬汀靴送修者在公開評論裡，寫下這個難題。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c7r20107",
+          "quote": "選修理時，對方還能挑鞋底和縫線的顏色，覺得很有趣。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c7r20105",
+          "quote": "我們就看這一雙馬汀靴，能不能把主人穿慣的鞋面留下來。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c7r20106",
+          "quote": "為了留下你穿慣的鞋面，換掉的到底會有哪些東西？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C08",
+      "slug": "story-everyday-kikkoman-c08-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+        "before": {
+          "narration-only.json": "7598e280bb828934312ced6dfc72578a2f4df8dd4369d304fb590ee8b892b8be",
+          "video.json": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+          "script.md": "54dd6134884285511a2cafadb240d5b10b7c1ecfa70166f08a4e188e3f701278",
+          "series.json": "8084576dbe257f40b089650535a3667800e9d3ab983fe3a3363c61429024e0d8",
+          "claims.json": "0000c5cd24273e13b39e7ffe77bddd53951b0d3284026c549517a87599a9cb38",
+          "claims.md": "815955bb3792fba469529ba274427df513189ea27b686d3dbd612da006366e16"
+        },
+        "after": {
+          "narration-only.json": "7598e280bb828934312ced6dfc72578a2f4df8dd4369d304fb590ee8b892b8be",
+          "video.json": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
+          "script.md": "54dd6134884285511a2cafadb240d5b10b7c1ecfa70166f08a4e188e3f701278",
+          "series.json": "8084576dbe257f40b089650535a3667800e9d3ab983fe3a3363c61429024e0d8",
+          "claims.json": "0000c5cd24273e13b39e7ffe77bddd53951b0d3284026c549517a87599a9cb38",
+          "claims.md": "815955bb3792fba469529ba274427df513189ea27b686d3dbd612da006366e16"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": false,
+        "current_status": "STABLE_DURING_READ_CURRENT_AS_OF_REPORT",
+        "author_freeze_confirmation": null,
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 2,
+      "event_teasers": [
+        {
+          "teaser_id": "c08-1",
+          "setup": {
+            "line_id": "c8r10105",
+            "quote": "但後來，連進入瓶裡的空氣，都成了難題。",
+            "line_sha256": "f133aabb2b196bc775e167c570db37c665f5fded368b29f7d3722a69a9390264",
+            "scene_id": "c08r1-01-05",
+            "template": "shot",
+            "prompt": "Medium shot at a small dining table, one anonymous adult examining a plain flexible condiment bottle beside a sealed empty pouch sample, soft overhead light.",
+            "prompt_sha256": "36a27dd2fca0c42309bd58de3dab4468790f992aa660d287d0ea8f3539f73a79",
+            "camera": "pan right",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "後來進氣事件；h04屬眼前滴液問題，非第三個後文預告。",
+          "actual_payoffs": [
+            {
+              "line_id": "c8r10503",
+              "quote": "公告說，出去多少醬油，便有相當量的空氣進入外瓶和內袋之間。",
+              "line_sha256": "5b06f0e2beb272c3433b6a3631484ca778587dfc06baa5f6f00aa637be37dfd3",
+              "scene_id": "c08r1-05-03",
+              "template": "shot",
+              "prompt": "Wide shot at a plain container development bench, one anonymous technician pointing to the gap between a plain outer shell and a shrinking inner pouch, gentle desk lamp light.",
+              "prompt_sha256": "b13bab35ef7cd1bbb45d758ccc37fbb471bc59cf8b505d7f351bb0ccd95ad054",
+              "camera": "push in",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [
+            {
+              "line_id": "c8r10501",
+              "quote": "這一代新瓶，在外瓶裡，另外放了一個裝醬油的內袋。",
+              "line_sha256": "3a342cb42c5d5ec5f4673a65f5f36d5a3d61ae9f934d91713ceeba94e0ac2a5e",
+              "scene_id": "c08r1-05-01",
+              "template": "shot",
+              "prompt": "Medium shot at a plain container development bench, one anonymous technician holding a plain conceptual outer bottle beside a separate soft inner pouch, soft overhead light.",
+              "prompt_sha256": "6ef40a04bb5e0cbb93dc98a265c87b7d522459e8bae4d8087113005b9626953b",
+              "camera": "pan right",
+              "card_data": null
+            },
+            {
+              "line_id": "c8r10502",
+              "quote": "醬油往外倒，內袋隨著內容減少縮小。",
+              "line_sha256": "b13aa58e160e028abb739a8f0b6fa12c92871d0f20d1e0de69f7f02ad10ad47e",
+              "scene_id": "c08r1-05-02",
+              "template": "shot",
+              "prompt": "Close-up at a plain container development bench, one anonymous technician examining a partly shrunken inner pouch inside a plain demonstration shell, mild light from an open doorway.",
+              "prompt_sha256": "5fda5f6869cdff86216547e1af2c5cb2561dcffa4ae667674d169ae550eb0222",
+              "camera": "tilt up",
+              "card_data": null
+            },
+            {
+              "line_id": "c8r10507",
+              "quote": "公告稱它採雙逆止閥的蓋子，讓醬油通過，卻不讓空氣進入醬油內袋。",
+              "line_sha256": "ff8a7a0449f7634ce27810d2417088765e18ce319294d85cf68c0712ced0023e",
+              "scene_id": "c08r1-05-07",
+              "template": "shot",
+              "prompt": "Wide shot at a plain container development bench, one anonymous technician holding a plain conceptual two-valve cap model over an inner pouch, gentle desk lamp light.",
+              "prompt_sha256": "2f7d3500bad97ac318f5a409c17dd69ad9e73838ed91221844c3594801d17703",
+              "camera": "pan right",
+              "card_data": null
+            }
+          ],
+          "registered_loop_links": [
+            {
+              "setup": "c8r10105",
+              "payoff": "c8r10503",
+              "what": "進氣究竟被安排到哪裡"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "h05與進氣/外瓶內袋回收章相容圖共用，完整request及實檔SHA需綁定。"
+        },
+        {
+          "teaser_id": "c08-2",
+          "setup": {
+            "line_id": "c8r10106",
+            "quote": "最後一點倒不出來時，整座瓶蓋還藏著一個選擇。",
+            "line_sha256": "bc79b72e65e1d1162a3acd8bd339b9d7eaa7c9299065ad1a502e16affe442b72",
+            "scene_id": "c08r1-01-06",
+            "template": "shot",
+            "prompt": "Close-up at a small dining table, one anonymous adult holding a nearly empty plain flexible condiment bottle at a counter, mild light from an open doorway.",
+            "prompt_sha256": "0b0a58d83c03bdabe400bea68b4f2b28932457cce42c2852146b9050388990a5",
+            "camera": "tilt up",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "整座瓶蓋的選擇，真正動作是往右卸蓋；23補冷藏代價。",
+          "actual_payoffs": [
+            {
+              "line_id": "c8r10621",
+              "quote": "剩很少時，可以從上方看，往右轉下整座蓋子，取出餘量。",
+              "line_sha256": "6132eff95aa246ff1c8bebd1ecbadacf223d695d284b6e0c90f601383938dea0",
+              "scene_id": "c08r1-06-21",
+              "template": "shot",
+              "prompt": "Close-up beside a home kitchen counter, one anonymous adult rotating the whole cap base of a nearly empty plain bottle clockwise, gentle desk lamp light.",
+              "prompt_sha256": "d8089f2f5122b6dfd2a7261e4aaf340b0f9d7e4c937a9dc90a8a4a33d4e94fe3",
+              "camera": "pan left",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [
+            {
+              "line_id": "c8r10623",
+              "quote": "但這個動作也會切斷密封；取下以後，官方要求改放冰箱。",
+              "line_sha256": "42e613e3c828a345581d64ed818df75d0d633d4f0a7b9d8fa669da573cbb215b",
+              "scene_id": "c08r1-06-23",
+              "template": "shot",
+              "prompt": "Medium close-up beside a home kitchen counter, one anonymous adult placing an opened plain sauce bottle inside a refrigerator, soft overhead light.",
+              "prompt_sha256": "7e278bec497fc4ec1fda36354fa815534906dbc302946834ce474ef15840bb9b",
+              "camera": "tilt down",
+              "card_data": null
+            }
+          ],
+          "registered_loop_links": [
+            {
+              "setup": "c8r10106",
+              "payoff": "c8r10623",
+              "what": "取最後一點的保存代價"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "h06與整座瓶蓋操作回收鏡共用，保留冷藏代價鏡，不只抄loop映射。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c8r10101",
+          "quote": "你只想添一滴醬油，卻得先搬動一點八公升的大瓶。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c8r10102",
+          "quote": "榮久庵憲司回憶，一九五八年接到委託時，許多家庭把醬油大瓶放在水槽下。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c8r10204",
+          "quote": "玻璃小瓶出現以前，你先把大瓶醬油倒進小陶壺，才把它端上餐桌。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c8r10104",
+          "quote": "嘴尖那一點褐色，會乖乖停住嗎？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c8r10107",
+          "quote": "我想跟著龜甲萬的這一滴，追過六十多年的瓶子改動。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c8r10108",
+          "quote": "你手裡的瓶子，究竟要讓什麼出去，才能把想留的東西留住？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C09",
+      "slug": "story-everyday-patagonia-c09-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+        "before": {
+          "narration-only.json": "18c5843875be1525341d3b0f24992baafc227f7b975487a8369e2517a6383d25",
+          "video.json": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+          "script.md": "9c0f1ea143b4b750b378d97ee8d27b555ab50255fc621f393c2549344e2f2e59",
+          "series.json": "5f9e789d2acb26c7c97e117292b83897c53eb60f0e4bfde9a3645f6b4e813abb",
+          "claims.json": "b5fdafc2dcae6e3093acf69be622de9ef4de98fe7f60b2165e6e1e62e038faee",
+          "claims.md": "e6767a6da2716c531552a8566964ebbf6d67c6a87e61838b866277ed8ab32f86"
+        },
+        "after": {
+          "narration-only.json": "18c5843875be1525341d3b0f24992baafc227f7b975487a8369e2517a6383d25",
+          "video.json": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+          "script.md": "9c0f1ea143b4b750b378d97ee8d27b555ab50255fc621f393c2549344e2f2e59",
+          "series.json": "5f9e789d2acb26c7c97e117292b83897c53eb60f0e4bfde9a3645f6b4e813abb",
+          "claims.json": "b5fdafc2dcae6e3093acf69be622de9ef4de98fe7f60b2165e6e1e62e038faee",
+          "claims.md": "e6767a6da2716c531552a8566964ebbf6d67c6a87e61838b866277ed8ab32f86"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": false,
+        "current_status": "STABLE_DURING_READ_CURRENT_AS_OF_REPORT",
+        "author_freeze_confirmation": null,
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 1,
+      "event_teasers": [
+        {
+          "teaser_id": "c09-1",
+          "setup": {
+            "line_id": "c09r5006",
+            "quote": "我最想看的是，他自己站到大岩壁下，會帶什麼。",
+            "line_sha256": "3f9853726f51c69ac1a157f5a7e4e959da29b119a0d53438db974b4b001f0a08",
+            "scene_id": "c09r5-shot-006",
+            "template": "shot",
+            "prompt": "Medium shot at a plain reading desk, one unidentified person holding a closed climbing gear bag below a plain tall rock wall, soft side light from the left.",
+            "prompt_sha256": "c90ce101ec454243a057d3f74b51455185b6cf0dc2ad2757c23098e424f6bf73",
+            "camera": "tilt up",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "本人攀登帶什麼為一項事件，下一句命名承諾非第二預告。",
+          "actual_payoffs": [
+            {
+              "line_id": "c09r5088",
+              "quote": "開場那個器材袋，這回沒有岩釘，換成楔塊；繩索和其他攀登裝備，仍跟著人上岩壁。",
+              "line_sha256": "8ed44d80f0309c13ea1637581ed465c16feb6ac4c8a6113f8e5a2867bca53af6",
+              "scene_id": "c09r5-shot-088",
+              "template": "shot",
+              "prompt": "Wide shot at a plain granite ledge, one anonymous craftsperson opening a plain climbing pouch containing small metal wedges beside a coiled rope, warm late afternoon light.",
+              "prompt_sha256": "2197146de2bb9e0f80060e925b3ace7a736a5f60fe246a8d60d21b8f6243c90a",
+              "camera": "tilt down",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [
+            {
+              "line_id": "c09r5091",
+              "quote": "卡森寫，修納德一把重量交上去，第一個楔塊就往下沉了約四分之一英吋，差不多六公釐。",
+              "line_sha256": "07d31338cc8fd02cffb1aae79df0d8d84c8cdb735182fc2545f5b0e17d59f1b7",
+              "scene_id": "c09r5-shot-091",
+              "template": "shot",
+              "prompt": "Close-up at a plain granite ledge, one unnamed climber examining a metal wedge sitting slightly lower in a plain stone gap, soft side light from the left.",
+              "prompt_sha256": "02c841969f0e2d4b4c7c8ad0dbb323f1132ae1166de1d1350002803a8ab8ae13",
+              "camera": "push in",
+              "card_data": null
+            }
+          ],
+          "registered_loop_links": [
+            {
+              "setup": "c09r5006",
+              "payoff": "c09r5088",
+              "what": "賣家實際攀登那次，器材袋裡帶了什麼"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "h006與岩棚開袋回收章相容圖綁同一accepted still。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c09r5001",
+          "quote": "一組攀岩熟手，一天能放入、取回一百枚岩釘；下一個爬那道裂縫的人，可能就是你。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c09r5002",
+          "quote": "釘子拿走了，敲過的釘孔，卻可能留在你面前。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c09r5003",
+          "quote": "把一九七二年的器材型錄攤開，旁邊放一枚鋼釘。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c09r5004",
+          "quote": "後來創辦Patagonia的修納德，在自家冊子裡，勸顧客克制使用器材。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c09r5005",
+          "quote": "這就奇怪了：貨還要賣，原來的習慣卻得改。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c09r5007",
+          "quote": "這回，跟著Patagonia創辦人的勸告，走到它真正承受重量的一次攀登。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c09r5008",
+          "quote": "賣岩釘的人，做什麼才能讓你相信，這一錘可以少敲？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C10",
+      "slug": "story-everyday-oxo-c10-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
+        "before": {
+          "narration-only.json": "c1e723ca73cd7c3a8c883feb491745f7f498cc384a1bc76493236f3b7524a77c",
+          "video.json": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
+          "script.md": "ae93803b514aa6e0272c3563f69d10497953c24b5b0dd483ec41821603cfacb7",
+          "series.json": "f18da6d7eb2b70718ff0c2fd0d9fed6ecd015f7b41921041b167832c4118f41a",
+          "claims.json": "8ccc4bacc1b03163caa0ec069b476262e0d6093012dfbab72b50332b3f708fcc",
+          "claims.md": "d1ba00883e3d7022c8dc129f0de887729cd43923f6638470f8c78b607bc8d7d0"
+        },
+        "after": {
+          "narration-only.json": "c1e723ca73cd7c3a8c883feb491745f7f498cc384a1bc76493236f3b7524a77c",
+          "video.json": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
+          "script.md": "ae93803b514aa6e0272c3563f69d10497953c24b5b0dd483ec41821603cfacb7",
+          "series.json": "f18da6d7eb2b70718ff0c2fd0d9fed6ecd015f7b41921041b167832c4118f41a",
+          "claims.json": "8ccc4bacc1b03163caa0ec069b476262e0d6093012dfbab72b50332b3f708fcc",
+          "claims.md": "d1ba00883e3d7022c8dc129f0de887729cd43923f6638470f8c78b607bc8d7d0"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": false,
+        "current_status": "STABLE_DURING_READ_CURRENT_AS_OF_REPORT",
+        "author_freeze_confirmation": null,
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 2,
+      "event_teasers": [
+        {
+          "teaser_id": "c10-1",
+          "setup": {
+            "line_id": "c10h06",
+            "quote": "桌上，一塊黏土等著被捏。",
+            "line_sha256": "bf1b56fe76b4ccc54579ae9d80659ca90a55dea51ceac821422339795f01d01a",
+            "scene_id": "c10r1-h06",
+            "template": "shot",
+            "prompt": "Macro shot of a small lump of clay beside the metal handle of an unmarked peeler, afternoon light across a pottery surface.",
+            "prompt_sha256": "7e34f488b06cec43ff303e88b9cab1f01ee7231ab48ad61dbb45ac2cb14657eb",
+            "camera": "pan left",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "黏土等被捏的未揭動作，後文捏在金屬柄外。",
+          "actual_payoffs": [
+            {
+              "line_id": "c10o06",
+              "quote": "參與設計的戴文・斯托威爾後來回憶，貝琪把黏土捏在金屬削皮器外。",
+              "line_sha256": "5a3a69720732b2059a18936e40c52fc498c46a8838ab39736da737d2294b3169",
+              "scene_id": "c10r1-o06",
+              "template": "shot",
+              "prompt": "Macro shot of fingers pressing clay around the thin metal handle of an unmarked vegetable peeler.",
+              "prompt_sha256": "1f719a8daaef21379b1d63fb8922f6251b2b200fb663792018a48a96125cc1bf",
+              "camera": "pull back",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c10h06",
+              "payoff": "c10o06",
+              "what": "黏土怎麼接到舊金屬柄"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "h06與捏黏土回收章圖共用；目前靜物/捏動作與camera都異。"
+        },
+        {
+          "teaser_id": "c10-2",
+          "setup": {
+            "line_id": "c10h07",
+            "quote": "另一張桌，陌生的黑柄還等人伸手。",
+            "line_sha256": "8d00732dff53dfafbc77b08e0d11ec717bc521898e1680fd3adef2918128f118",
+            "scene_id": "c10r1-h07",
+            "template": "shot",
+            "prompt": "Medium close-up of a broad black tool handle waiting beside a bowl of carrots on a shop demonstration table.",
+            "prompt_sha256": "2f5cb6977c1810824161c4da680326ce5cd22a350e447915af8734a2a915becb",
+            "camera": "pull back",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "陌生黑柄等人試，後文是鏈條連胡蘿蔔碗的店內試用。",
+          "actual_payoffs": [
+            {
+              "line_id": "c10v5s04",
+              "quote": "開場預告的黑柄試用，就在這裡：削皮器用鏈條拴在胡蘿蔔碗上，讓進店的人伸手試。",
+              "line_sha256": "ccf41009e4ca1b5fa1129b58eb496d88023f82616641e6b9a3a0f37dbaf3c6ea",
+              "scene_id": "c10r5-s04",
+              "template": "shot",
+              "prompt": "Close-up: An unbranded black-handled peeler attached by a visible short chain to a bowl of carrots on a store demonstration table; an anonymous hand reaches toward the peeler.",
+              "prompt_sha256": "16558eff9b7d71953d7aa2a82ec9b11a4d8b84523929a99dfa879d1a782a5ac7",
+              "camera": "tilt down",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c10h07",
+              "payoff": "c10v5s04",
+              "what": "陌生黑柄如何交到店內顧客手裡"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [],
+          "prompt_equal_to_actual_payoff": false,
+          "camera_equal_to_actual_payoff": false,
+          "same_asset_plan": null,
+          "native_pure_local_pair_check": [],
+          "classification": "PROMPT_MISMATCH_OR_NO_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": "No current opening-to-payoff accepted-file binding; semantic similarity or loop metadata is not an asset plan.",
+          "minimum_repair_or_production_requirement": "h07與店內試用回收鏡共用；統一完整request並綁實檔。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c10h01",
+          "quote": "你連削皮器都握不住，晚餐還怎麼做？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c10h02",
+          "quote": "MoMA收藏的OXO削皮器，只有十七點八公分長；難題卻是，怎麼讓你的手握得住。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c10h03",
+          "quote": "把時間往前挪，想像普羅旺斯的廚房，你正捏住細硬金屬柄。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c10h04",
+          "quote": "菜還沒削，手指就已經收得很勉強。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c10h05",
+          "quote": "我想先看清楚，這雙手到底能放在哪。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c10h08",
+          "quote": "今天跟著OXO，追一支削皮器怎麼從握不住，走到交給別人試。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c10h09",
+          "quote": "換了拿它的手，握柄究竟得改掉什麼？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C11",
+      "slug": "story-everyday-ucc-c11-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "4bf4cf8ac1afacd68988a00db34ce81cf494a623ee3f299dbeb098fad4bee8c3",
+        "before": {
+          "narration-only.json": "faf50858697c1e48895435af3abad6068e9d047eb86cc8898b32bbdd7d36053b",
+          "video.json": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+          "image-reuse-plan.json": "bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9",
+          "script.md": "1cc1d014cf1bf3c7aa6c1f44751e7c457bb5e327729d3e8a573867787a1c65d1",
+          "series.json": "2ba6558904ffa91f15cfad6bef81841e58eef64dbaf46052b37cc0dd39c1c848",
+          "claims.json": "41d367767138c4d34da8af812f779f94151675e31abf9ae6ae07039feb1c5082",
+          "claims.md": "6772fd0dac05faaeebd1090534e0275291a115c0001ec7cf389da981bc496657"
+        },
+        "after": {
+          "narration-only.json": "faf50858697c1e48895435af3abad6068e9d047eb86cc8898b32bbdd7d36053b",
+          "video.json": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+          "image-reuse-plan.json": "bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9",
+          "script.md": "1cc1d014cf1bf3c7aa6c1f44751e7c457bb5e327729d3e8a573867787a1c65d1",
+          "series.json": "2ba6558904ffa91f15cfad6bef81841e58eef64dbaf46052b37cc0dd39c1c848",
+          "claims.json": "41d367767138c4d34da8af812f779f94151675e31abf9ae6ae07039feb1c5082",
+          "claims.md": "6772fd0dac05faaeebd1090534e0275291a115c0001ec7cf389da981bc496657"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": true,
+        "current_status": "STABLE_AFTER_EXPLICIT_AUTHOR_FREEZE",
+        "author_freeze_confirmation": {
+          "revision": "c11-r6",
+          "video_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+          "plan_sha256": "bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9",
+          "confirmation": "Root relayed author final frozen R6; independent audit reopened current source/plan and ran native pure function checks. No other reviewer conclusion is used as evidence."
+        },
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 2,
+      "event_teasers": [
+        {
+          "teaser_id": "c11-1",
+          "setup": {
+            "line_id": "c11r1h04",
+            "quote": "罐裡的奶，怎麼待得住？",
+            "line_sha256": "eb74674efec732a7ddf9d600a5063f81039d19d78b53be036310e7702357a934",
+            "scene_id": "c11r1h04",
+            "template": "shot",
+            "prompt": "Medium shot at a plain development bench, anonymous hands holding a closed unmarked sample can beside a plain cup of pale coffee, diffuse side light.",
+            "prompt_sha256": "d1eeb3d08fa35766e2e92b78b0b238b68ea9abab6f67e8eb2f94d24f35136cba",
+            "camera": "pan right",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "奶成分保持/冷罐配送兩個獨立後文事件；R6已分兩句/兩鏡，命名總問不另計。",
+          "actual_payoffs": [
+            {
+              "line_id": "c11r1t05",
+              "quote": "採訪記下的方法，是把奶的粒子做得均一，用均質化來抑制分離。",
+              "line_sha256": "df6aade0dff32e97da78fe7d23c0e04cfb94f7245776313989f9c87d83e491bf",
+              "scene_id": "c11r1t05",
+              "template": "shot",
+              "prompt": "Medium shot at a plain development bench, anonymous hands holding a closed unmarked sample can beside a plain cup of pale coffee, diffuse side light.",
+              "prompt_sha256": "d1eeb3d08fa35766e2e92b78b0b238b68ea9abab6f67e8eb2f94d24f35136cba",
+              "camera": "pan right",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c11r1h04",
+              "payoff": "c11r1t05",
+              "what": "奶成分上浮由均質化抑制"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [
+            "c11r1t05"
+          ],
+          "prompt_equal_to_actual_payoff": true,
+          "camera_equal_to_actual_payoff": true,
+          "same_asset_plan": {
+            "path": "docs/videos/brand-story-remakes-20261025/c11/image-reuse-plan.json",
+            "sha256": "bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9",
+            "pair": {
+              "asset_plan_id": "milk-sample-shared-still",
+              "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+              "source_scene_id": "c11r1t05",
+              "source_line_id": "c11r1t05",
+              "reuse_scene_id": "c11r1h04",
+              "reuse_line_id": "c11r1h04",
+              "source_prompt_sha256": "d1eeb3d08fa35766e2e92b78b0b238b68ea9abab6f67e8eb2f94d24f35136cba",
+              "reuse_prompt_sha256": "d1eeb3d08fa35766e2e92b78b0b238b68ea9abab6f67e8eb2f94d24f35136cba",
+              "prompt_exact_match": true,
+              "source_camera": "pan right",
+              "reuse_camera": "pan right",
+              "composed_prompt_sha256": "677ed7d19c58b796e5f200c59e273e5127ab19d125f50a0ffe82eeade7811cb4",
+              "narration_setup_text": "罐裡的奶，怎麼待得住？",
+              "narration_payoff_text": "採訪記下的方法，是把奶的粒子做得均一，用均質化來抑制分離。",
+              "no_result_drawn_in_teaser": "Neutral closed sample can and cup do not show homogeneous droplets, equipment, pressure or a separation result.",
+              "native_same_input_key_rehearsal": {
+                "pure_local_functions_only": true,
+                "input_tuple": {
+                  "provider": "minimax",
+                  "model": "image-01",
+                  "prompt": "Medium shot at a plain development bench, anonymous hands holding a closed unmarked sample can beside a plain cup of pale coffee, diffuse side light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+                  "negative": "",
+                  "width": 1920,
+                  "height": 1080,
+                  "seed": 1,
+                  "references": []
+                },
+                "aspect": "16:9",
+                "requested_size": null,
+                "nominal_image_size": "1K",
+                "image_selection_version": 1,
+                "seed_offset": 0,
+                "takes": 1,
+                "correction_list": [],
+                "prompt_budget_chars": 1500,
+                "base_key": "dfb812d297eccb54",
+                "native_stage_key": "99c272f890e44236",
+                "parameters_are_declared_plan_not_backend_readback": true,
+                "no_provider_call": true
+              },
+              "actual_source_file": null,
+              "actual_source_sha256": null,
+              "actual_reused_file": null,
+              "actual_reused_sha256": null,
+              "actual_same_asset_verified": false,
+              "actual_same_file_sha_verified": false
+            },
+            "is_native_manifest": false,
+            "actual_same_file_sha_verified": false
+          },
+          "native_pure_local_pair_check": [
+            {
+              "episode": "c11",
+              "setup": "c11r1h04",
+              "payoff": "c11r1t05",
+              "prompt_equal": true,
+              "camera_equal": true,
+              "composed_equal": true,
+              "composed_sha256": "677ed7d19c58b796e5f200c59e273e5127ab19d125f50a0ffe82eeade7811cb4",
+              "example_key_equal": true,
+              "example_dimensions_not_backend": true,
+              "no_provider_call": true
+            }
+          ],
+          "classification": "EXPLICIT_SAME_ASSET_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": null,
+          "minimum_repair_or_production_requirement": "依R6計畫先回收鏡單次合格，再以相同完整請求取cache；任端失敗停線成對修，生成後核兩端最終實檔SHA及各自場景圖像驗收。"
+        },
+        {
+          "teaser_id": "c11-2",
+          "setup": {
+            "line_id": "c11h04b1",
+            "quote": "冷罐又要怎麼追上萬博的人潮？",
+            "line_sha256": "b3f05b1886f16e9b1c3f86384fb3348501cc732ef4d54e52390c9126133b55ea",
+            "scene_id": "c11h04b1",
+            "template": "shot",
+            "prompt": "Medium shot inside a plain beverage depot, an anonymous worker gripping a plain drink crate beside a closed loading doorway, soft daylight.",
+            "prompt_sha256": "0c592b769618b81b579615eae456f43255c83f5ff36b72b95a758daeae75ca3d",
+            "camera": "pull out",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "奶成分保持/冷罐配送兩個獨立後文事件；R6已分兩句/兩鏡，命名總問不另計。",
+          "actual_payoffs": [
+            {
+              "line_id": "c11r1s11",
+              "quote": "奶咖先在這個配送據點冷卻，再由卡車送進會場；採訪記述，為此準備了多台車。",
+              "line_sha256": "e33d75e23a68ad4fb893c78cc7660a1faa3095a7f64bcbdb045971b50da34cc2",
+              "scene_id": "c11r1s11",
+              "template": "shot",
+              "prompt": "Medium shot inside a plain beverage depot, an anonymous worker gripping a plain drink crate beside a closed loading doorway, soft daylight.",
+              "prompt_sha256": "0c592b769618b81b579615eae456f43255c83f5ff36b72b95a758daeae75ca3d",
+              "camera": "pull out",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c11h04b1",
+              "payoff": "c11r1s11",
+              "what": "冷罐如何接上萬博人潮：支店冷卻及卡車"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [
+            "c11r1s11"
+          ],
+          "prompt_equal_to_actual_payoff": true,
+          "camera_equal_to_actual_payoff": true,
+          "same_asset_plan": {
+            "path": "docs/videos/brand-story-remakes-20261025/c11/image-reuse-plan.json",
+            "sha256": "bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9",
+            "pair": {
+              "asset_plan_id": "cold-delivery-crate-shared-still",
+              "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+              "source_scene_id": "c11r1s11",
+              "source_line_id": "c11r1s11",
+              "reuse_scene_id": "c11h04b1",
+              "reuse_line_id": "c11h04b1",
+              "source_prompt_sha256": "0c592b769618b81b579615eae456f43255c83f5ff36b72b95a758daeae75ca3d",
+              "reuse_prompt_sha256": "0c592b769618b81b579615eae456f43255c83f5ff36b72b95a758daeae75ca3d",
+              "prompt_exact_match": true,
+              "source_camera": "pull out",
+              "reuse_camera": "pull out",
+              "composed_prompt_sha256": "08ee5f2938fd54e22c913b362fe02f31e783664a3e588ccdac9de98c852174a5",
+              "narration_setup_text": "冷罐又要怎麼追上萬博的人潮？",
+              "narration_payoff_text": "奶咖先在這個配送據點冷卻，再由卡車送進會場；採訪記述，為此準備了多台車。",
+              "no_result_drawn_in_teaser": "Neutral crate handling at a closed depot doorway does not show trucks, cooling method, delivery route or completed delivery.",
+              "native_same_input_key_rehearsal": {
+                "pure_local_functions_only": true,
+                "input_tuple": {
+                  "provider": "minimax",
+                  "model": "image-01",
+                  "prompt": "Medium shot inside a plain beverage depot, an anonymous worker gripping a plain drink crate beside a closed loading doorway, soft daylight.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pull out",
+                  "negative": "",
+                  "width": 1920,
+                  "height": 1080,
+                  "seed": 1,
+                  "references": []
+                },
+                "aspect": "16:9",
+                "requested_size": null,
+                "nominal_image_size": "1K",
+                "image_selection_version": 1,
+                "seed_offset": 0,
+                "takes": 1,
+                "correction_list": [],
+                "prompt_budget_chars": 1500,
+                "base_key": "2eb2425ff53fc761",
+                "native_stage_key": "284cb84f75f0ea4c",
+                "parameters_are_declared_plan_not_backend_readback": true,
+                "no_provider_call": true
+              },
+              "actual_source_file": null,
+              "actual_source_sha256": null,
+              "actual_reused_file": null,
+              "actual_reused_sha256": null,
+              "actual_same_asset_verified": false,
+              "actual_same_file_sha_verified": false
+            },
+            "is_native_manifest": false,
+            "actual_same_file_sha_verified": false
+          },
+          "native_pure_local_pair_check": [
+            {
+              "episode": "c11",
+              "setup": "c11h04b1",
+              "payoff": "c11r1s11",
+              "prompt_equal": true,
+              "camera_equal": true,
+              "composed_equal": true,
+              "composed_sha256": "08ee5f2938fd54e22c913b362fe02f31e783664a3e588ccdac9de98c852174a5",
+              "example_key_equal": true,
+              "example_dimensions_not_backend": true,
+              "no_provider_call": true
+            }
+          ],
+          "classification": "EXPLICIT_SAME_ASSET_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": null,
+          "minimum_repair_or_production_requirement": "依R6計畫先回收鏡單次合格，再以相同完整請求取cache；任端失敗停線成對修，生成後核兩端最終實檔SHA及各自場景圖像驗收。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c11r1h01",
+          "quote": "如果是你的小店，願不願意先放三箱奶咖，讓它占住貨架？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c11r1h02",
+          "quote": "上島達司後來回憶，銷售人員走進食品店，推銷一九六九年上市的UCC奶咖。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c11r1h03",
+          "quote": "我沒想到，方便還有這一面：做成了罐子，也得有人肯讓它走進自己的店。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c11r1h05",
+          "quote": "跟著UCC這款奶咖，追上市前後兩年的工廠與會場，找出帶著走還需要什麼。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c11r1h06",
+          "quote": "一杯咖啡離開店面，要怎麼讓你在別處，完整地喝到？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C14",
+      "slug": "story-everyday-camelbak-c14-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "3155a83548e7bc907c107f794f70bc425de7aa22f3dde6ac1b0876a6eeb1ab43",
+        "before": {
+          "narration-only.json": "a703e0def0cd5dfb9b0b65274c8924d2e731ea9e5a02a7bc1203f913dd4e5a84",
+          "asset-reuse-plan.json": "81017f59a9c7706243a39e38e9a82bac490e297e2ab437804ea2b05feb762ea3",
+          "video.json": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+          "script.md": "cca53c89fa030a937545e2e6291b93c2a3d88f8315090a5765ab9882a470449e",
+          "series.json": "bba9fbaa643a33c22e8205b73d57563ab2941271c7e122530c8f1677065e746d",
+          "claims.json": "ef56290aff6c63961a7267115e86630fc6ef84ee7c9832daf6b9f2a6e51c4e3d",
+          "claims.md": "31acb25836cb575dbb4678d9a4ba3ca3f70b6d5d817f64fc2979d673630b5a77"
+        },
+        "after": {
+          "narration-only.json": "a703e0def0cd5dfb9b0b65274c8924d2e731ea9e5a02a7bc1203f913dd4e5a84",
+          "asset-reuse-plan.json": "81017f59a9c7706243a39e38e9a82bac490e297e2ab437804ea2b05feb762ea3",
+          "video.json": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+          "script.md": "cca53c89fa030a937545e2e6291b93c2a3d88f8315090a5765ab9882a470449e",
+          "series.json": "bba9fbaa643a33c22e8205b73d57563ab2941271c7e122530c8f1677065e746d",
+          "claims.json": "ef56290aff6c63961a7267115e86630fc6ef84ee7c9832daf6b9f2a6e51c4e3d",
+          "claims.md": "31acb25836cb575dbb4678d9a4ba3ca3f70b6d5d817f64fc2979d673630b5a77"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": true,
+        "current_status": "STABLE_AFTER_EXPLICIT_AUTHOR_FREEZE",
+        "author_freeze_confirmation": [
+          "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+          "81017f59a9c7706243a39e38e9a82bac490e297e2ab437804ea2b05feb762ea3",
+          "R6 author explicitly confirmed frozen by agent message"
+        ],
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 2,
+      "event_teasers": [
+        {
+          "teaser_id": "c14-1",
+          "setup": {
+            "line_id": "c14r1h04",
+            "quote": "後來，出口被夾在模擬牙齒的金屬之間。",
+            "line_sha256": "9ccf3b51ac238ab3dc5ac18f256ec786527163c40ed39ab3eacf2eff47926967",
+            "scene_id": "c14r1h04",
+            "template": "shot",
+            "prompt": "Wide conceptual view of twelve plain small mouthpieces arranged between two metal test plates, soft laboratory light.",
+            "prompt_sha256": "5ae0d715146501a12d931408a94a783d61d98f1240bc94e52cb0cc9698e9586f",
+            "camera": "tilt up",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "後文金屬牙齒測試，預告未揭細節。",
+          "actual_payoffs": [
+            {
+              "line_id": "c14r1t06",
+              "quote": "開場那副金屬牙齒，是兩片金屬夾著十二個咬閥，反覆模擬大人和孩子的咬壓。",
+              "line_sha256": "e856abf7a0f68616368340dff07d9660b762870be5b71b630acd22d436eb129e",
+              "scene_id": "c14r1t06",
+              "template": "shot",
+              "prompt": "Wide conceptual view of twelve plain small mouthpieces arranged between two metal test plates, soft laboratory light.",
+              "prompt_sha256": "5ae0d715146501a12d931408a94a783d61d98f1240bc94e52cb0cc9698e9586f",
+              "camera": "tilt up",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c14r1h04",
+              "payoff": "c14r1t06",
+              "what": "開場的金屬牙齒：十二咬閥被反覆夾壓"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [
+            "c14r1t06"
+          ],
+          "prompt_equal_to_actual_payoff": true,
+          "camera_equal_to_actual_payoff": true,
+          "same_asset_plan": {
+            "path": "docs/videos/brand-story-remakes-20261025/c14/asset-reuse-plan.json",
+            "sha256": "81017f59a9c7706243a39e38e9a82bac490e297e2ab437804ea2b05feb762ea3",
+            "pair": {
+              "setup_scene_id": "c14r1h04",
+              "setup_line_id": "c14r1h04",
+              "payoff_scene_id": "c14r1t06",
+              "payoff_line_id": "c14r1t06",
+              "setup_text": "後來，出口被夾在模擬牙齒的金屬之間。",
+              "payoff_text": "開場那副金屬牙齒，是兩片金屬夾著十二個咬閥，反覆模擬大人和孩子的咬壓。",
+              "prompt": "Wide conceptual view of twelve plain small mouthpieces arranged between two metal test plates, soft laboratory light.",
+              "prompt_sha256": "5ae0d715146501a12d931408a94a783d61d98f1240bc94e52cb0cc9698e9586f",
+              "prompts_identical": true,
+              "camera": "tilt up",
+              "cameras_identical": true,
+              "composed_prompt_native": "Wide conceptual view of twelve plain small mouthpieces arranged between two metal test plates, soft laboratory light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: tilt up",
+              "composed_prompt_native_sha256": "993b8480f5826ef212e0ec54bb06d74fa001db962a8d8a09716fa9412f2cfe4c",
+              "composed_prompt_scope": "Native composeShotPrompt for current look/camera, empty cast, image-01 limit1500; not a live provider/cache receipt",
+              "generate_and_accept_once_at": "c14r1t06",
+              "reuse_exact_accepted_still_at": "c14r1h04",
+              "production_file_path": null,
+              "production_file_sha256": null,
+              "setup_assigned_file_sha256": null,
+              "payoff_assigned_file_sha256": null,
+              "same_actual_file_verified": false,
+              "planned_normal_cli_sequence": [
+                "keyframes --shot c14r1t06 --takes 1",
+                "After that exact first take passes, keyframes --shot c14r1h04 --takes 1 with identical full request inputs; native cache must return the same file"
+              ],
+              "equal_request_inputs_required_at_execution": [
+                "composed prompt",
+                "negative",
+                "model",
+                "size",
+                "seed 1",
+                "references",
+                "image selection version",
+                "retake fixes"
+              ],
+              "production_instruction": "Only after all normal paid-entry and approval gates: generate the payoff with --shot and --takes 1. If that first take passes, run the teaser with the same full native request inputs so Stage.imageKey can reuse the existing accepted file. Any first-take or either-context failure stops the pair: reconcile both prompts/cameras before another attempt; do not independently roll another seed. Before rendering, read the two real manifest assignments and require identical file bytes/SHA. Never forge a manifest or substitute a second similar generated picture. If the real cache does not reuse the accepted file, stop before another provider dispatch.",
+              "pending_checks": [
+                "Actual image passes visual QA for both contexts",
+                "Both scene assignments use the same accepted file bytes and SHA",
+                "Generated media ledger contains no duplicate teaser purchase"
+              ]
+            },
+            "is_native_manifest": false,
+            "actual_same_file_sha_verified": false
+          },
+          "native_pure_local_pair_check": [
+            {
+              "episode": "c14",
+              "setup": "c14r1h04",
+              "payoff": "c14r1t06",
+              "prompt_equal": true,
+              "camera_equal": true,
+              "composed_equal": true,
+              "composed_sha256": "993b8480f5826ef212e0ec54bb06d74fa001db962a8d8a09716fa9412f2cfe4c",
+              "example_key_equal": true,
+              "example_dimensions_not_backend": true,
+              "no_provider_call": true
+            }
+          ],
+          "classification": "EXPLICIT_SAME_ASSET_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": null,
+          "minimum_repair_or_production_requirement": "依R6計畫先payoff單次合格再cache，最後核兩端實檔/SHA與各自圖像驗收。"
+        },
+        {
+          "teaser_id": "c14-2",
+          "setup": {
+            "line_id": "c14r1h07",
+            "quote": "另一份個案裡，工程師為咬口做出模具。",
+            "line_sha256": "d26959269d0e2c99adc45f7e402375a6fcf35bd8459c5a756beeb720619717a8",
+            "scene_id": "c14r1h07",
+            "template": "shot",
+            "prompt": "Close-up of an anonymous hand lifting a plain flexible silicone part from a small printed mold, diffuse workshop light.",
+            "prompt_sha256": "84cf7020705f6cd21ad8b288d17992954a71fb923cc97d3f29133ba298ebb449",
+            "camera": "tilt up",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "另一個案的列印模具製矽膠樣件。",
+          "actual_payoffs": [
+            {
+              "line_id": "c14r1m02",
+              "quote": "開場那副模具，是他用三維列印做的，再用來製作矽膠咬閥樣件。",
+              "line_sha256": "f84544a68d9b29417f1d2792b55b53712c8b34a379223a14356bfd35d946b59d",
+              "scene_id": "c14r1m02",
+              "template": "shot",
+              "prompt": "Close-up of an anonymous hand lifting a plain flexible silicone part from a small printed mold, diffuse workshop light.",
+              "prompt_sha256": "84cf7020705f6cd21ad8b288d17992954a71fb923cc97d3f29133ba298ebb449",
+              "camera": "tilt up",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c14r1h07",
+              "payoff": "c14r1m02",
+              "what": "開場的工程師模具：三維列印模具製出實矽膠樣件"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [
+            "c14r1m02"
+          ],
+          "prompt_equal_to_actual_payoff": true,
+          "camera_equal_to_actual_payoff": true,
+          "same_asset_plan": {
+            "path": "docs/videos/brand-story-remakes-20261025/c14/asset-reuse-plan.json",
+            "sha256": "81017f59a9c7706243a39e38e9a82bac490e297e2ab437804ea2b05feb762ea3",
+            "pair": {
+              "setup_scene_id": "c14r1h07",
+              "setup_line_id": "c14r1h07",
+              "payoff_scene_id": "c14r1m02",
+              "payoff_line_id": "c14r1m02",
+              "setup_text": "另一份個案裡，工程師為咬口做出模具。",
+              "payoff_text": "開場那副模具，是他用三維列印做的，再用來製作矽膠咬閥樣件。",
+              "prompt": "Close-up of an anonymous hand lifting a plain flexible silicone part from a small printed mold, diffuse workshop light.",
+              "prompt_sha256": "84cf7020705f6cd21ad8b288d17992954a71fb923cc97d3f29133ba298ebb449",
+              "prompts_identical": true,
+              "camera": "tilt up",
+              "cameras_identical": true,
+              "composed_prompt_native": "Close-up of an anonymous hand lifting a plain flexible silicone part from a small printed mold, diffuse workshop light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: tilt up",
+              "composed_prompt_native_sha256": "6e0c1ce3b9de7333d537fe7e5074116061a25e87da3d2aa6fec0373605363a24",
+              "composed_prompt_scope": "Native composeShotPrompt for current look/camera, empty cast, image-01 limit1500; not a live provider/cache receipt",
+              "generate_and_accept_once_at": "c14r1m02",
+              "reuse_exact_accepted_still_at": "c14r1h07",
+              "production_file_path": null,
+              "production_file_sha256": null,
+              "setup_assigned_file_sha256": null,
+              "payoff_assigned_file_sha256": null,
+              "same_actual_file_verified": false,
+              "planned_normal_cli_sequence": [
+                "keyframes --shot c14r1m02 --takes 1",
+                "After that exact first take passes, keyframes --shot c14r1h07 --takes 1 with identical full request inputs; native cache must return the same file"
+              ],
+              "equal_request_inputs_required_at_execution": [
+                "composed prompt",
+                "negative",
+                "model",
+                "size",
+                "seed 1",
+                "references",
+                "image selection version",
+                "retake fixes"
+              ],
+              "production_instruction": "Only after all normal paid-entry and approval gates: generate the payoff with --shot and --takes 1. If that first take passes, run the teaser with the same full native request inputs so Stage.imageKey can reuse the existing accepted file. Any first-take or either-context failure stops the pair: reconcile both prompts/cameras before another attempt; do not independently roll another seed. Before rendering, read the two real manifest assignments and require identical file bytes/SHA. Never forge a manifest or substitute a second similar generated picture. If the real cache does not reuse the accepted file, stop before another provider dispatch.",
+              "pending_checks": [
+                "Actual image passes visual QA for both contexts",
+                "Both scene assignments use the same accepted file bytes and SHA",
+                "Generated media ledger contains no duplicate teaser purchase"
+              ]
+            },
+            "is_native_manifest": false,
+            "actual_same_file_sha_verified": false
+          },
+          "native_pure_local_pair_check": [
+            {
+              "episode": "c14",
+              "setup": "c14r1h07",
+              "payoff": "c14r1m02",
+              "prompt_equal": true,
+              "camera_equal": true,
+              "composed_equal": true,
+              "composed_sha256": "6e0c1ce3b9de7333d537fe7e5074116061a25e87da3d2aa6fec0373605363a24",
+              "example_key_equal": true,
+              "example_dimensions_not_backend": true,
+              "no_provider_call": true
+            }
+          ],
+          "classification": "EXPLICIT_SAME_ASSET_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": null,
+          "minimum_repair_or_production_requirement": "依R6同圖計畫；任一端失敗停止成對修，不獨立買相似圖。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c14r1h01",
+          "quote": "你背著三公升水，若管口一直滴，喝到以前就先漏掉；多裝水，能解決這件事嗎？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c14r1h02",
+          "quote": "八〇年代末，德州一場單車賽裡，品牌回顧中的艾德森，把一袋水放到車衣背後。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c14r1h03",
+          "quote": "袋子外面套著襪子，管子越過肩膀；我注意到的，卻是管口那枚衣夾。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c14r1h05",
+          "quote": "今天跟著CamelBak的一袋水，從背上身，走到下一次還能再喝。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c14r1h06",
+          "quote": "把水背上身之後，怎麼讓它在你要喝時出來，其他時候留在該在的地方？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    },
+    {
+      "episode": "C15",
+      "slug": "story-everyday-frixion-c15-remake-20261025",
+      "snapshot_binding": {
+        "initial_observed_video_sha256": "8cdf57a326f17bebbedf7f8357bc5c8afa7eec5894b56b14e1ee0fb3e85390b1",
+        "before": {
+          "narration-only.json": "d7a7cab74a52924da6771beff948ce532230c1047e49302ccb2373f2b36c8f3d",
+          "author-freeze-r2.json": "34e63e03bbeaf9f680378f24e9014a72a1bbe87ad56ca86c799e0761e4dbd2eb",
+          "video.json": "f6bbebbe4c05aedb6def5613154740a4f41230c14e65ec086348e1721ce53d2a",
+          "image-reuse-plan.json": "bb961879025960789a7d3453acff1269bf8acd9c0ecf64f61473bc029d4798e0",
+          "script.md": "b75cc7febdb05781f3c37f9864de27d906353b0e3fab412f571f389d44b79025",
+          "author-freeze-r1.json": "0952e602969e64c03047e9b36ae3f4e3ba7e21d673f955e4abc08988b1f10fd3",
+          "series.json": "fb44a64b244957021e3542888bfd98c65a4defacaf07956c86afd604289d7aec",
+          "claims.json": "13ecebb4119803f9db63c3fbc9a75388eff186f42f1efa51dad6743b4ba910f8",
+          "claims.md": "db98aae0d3d472dc1b1e24cd50c5895bb31ae0c4d230033e154830643ae28954"
+        },
+        "after": {
+          "narration-only.json": "d7a7cab74a52924da6771beff948ce532230c1047e49302ccb2373f2b36c8f3d",
+          "author-freeze-r2.json": "34e63e03bbeaf9f680378f24e9014a72a1bbe87ad56ca86c799e0761e4dbd2eb",
+          "video.json": "f6bbebbe4c05aedb6def5613154740a4f41230c14e65ec086348e1721ce53d2a",
+          "image-reuse-plan.json": "bb961879025960789a7d3453acff1269bf8acd9c0ecf64f61473bc029d4798e0",
+          "script.md": "b75cc7febdb05781f3c37f9864de27d906353b0e3fab412f571f389d44b79025",
+          "author-freeze-r1.json": "0952e602969e64c03047e9b36ae3f4e3ba7e21d673f955e4abc08988b1f10fd3",
+          "series.json": "fb44a64b244957021e3542888bfd98c65a4defacaf07956c86afd604289d7aec",
+          "claims.json": "13ecebb4119803f9db63c3fbc9a75388eff186f42f1efa51dad6743b4ba910f8",
+          "claims.md": "db98aae0d3d472dc1b1e24cd50c5895bb31ae0c4d230033e154830643ae28954"
+        },
+        "before_after_identical": true,
+        "revision_changed_during_audit": true,
+        "current_status": "STABLE_AFTER_EXPLICIT_AUTHOR_FREEZE",
+        "author_freeze_confirmation": [
+          "f6bbebbe4c05aedb6def5613154740a4f41230c14e65ec086348e1721ce53d2a",
+          "bb961879025960789a7d3453acff1269bf8acd9c0ecf64f61473bc029d4798e0",
+          "R2 author and root explicitly confirmed frozen by agent messages"
+        ],
+        "old_source_pass_or_owner_approval_adopted": false
+      },
+      "event_teaser_count": 2,
+      "event_teasers": [
+        {
+          "teaser_id": "c15-1",
+          "setup": {
+            "line_id": "c15r1h04",
+            "quote": "它的背後，還有等著離開小燒杯的一批膠囊。",
+            "line_sha256": "f88de3f245e3c048fd1b8fca471c335922ef9528a06b6564bea60f9a257912ea",
+            "scene_id": "c15r1h04",
+            "template": "shot",
+            "prompt": "Medium shot in a plain production room, an anonymous technician standing beside a large unmarked capsule-material container and a small sample jar, mild light.",
+            "prompt_sha256": "dbc18147a39d77be3f0b62ff56724660d942f5c21534102d7da5203506eee85d",
+            "camera": "pull out",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "燒杯外的量產，旁白尚未揭500kg。",
+          "actual_payoffs": [
+            {
+              "line_id": "c15r1d03",
+              "quote": "開場那批等著離開燒杯的膠囊，到了千賀的量產回憶裡，數量是五百公斤。",
+              "line_sha256": "65aa5fbe450810912849cbb612165abf0ed65ee9e6250e1405c73d2134a54368",
+              "scene_id": "c15r1d03",
+              "template": "shot",
+              "prompt": "Medium shot in a plain production room, an anonymous technician standing beside a large unmarked capsule-material container and a small sample jar, mild light.",
+              "prompt_sha256": "dbc18147a39d77be3f0b62ff56724660d942f5c21534102d7da5203506eee85d",
+              "camera": "pull out",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [],
+          "registered_loop_links": [
+            {
+              "setup": "c15r1h04",
+              "payoff": "c15r1d03",
+              "what": "小燒杯外的量產膠囊為五百公斤"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [
+            "c15r1d03"
+          ],
+          "prompt_equal_to_actual_payoff": true,
+          "camera_equal_to_actual_payoff": true,
+          "same_asset_plan": {
+            "path": "docs/videos/brand-story-remakes-20261025/c15/image-reuse-plan.json",
+            "sha256": "bb961879025960789a7d3453acff1269bf8acd9c0ecf64f61473bc029d4798e0",
+            "pair": {
+              "asset_plan_id": "capsule-production-shared-still",
+              "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+              "source_scene_id": "c15r1d03",
+              "source_line_id": "c15r1d03",
+              "reuse_scene_id": "c15r1h04",
+              "reuse_line_id": "c15r1h04",
+              "source_prompt_sha256": "dbc18147a39d77be3f0b62ff56724660d942f5c21534102d7da5203506eee85d",
+              "reuse_prompt_sha256": "dbc18147a39d77be3f0b62ff56724660d942f5c21534102d7da5203506eee85d",
+              "prompt_exact_match": true,
+              "source_camera": "pull out",
+              "reuse_camera": "pull out",
+              "composed_prompt_sha256": "33ba857fc4ce0375a7f441a84acdca2ea1743a2a57d38d3a93030abdadd8b83c",
+              "native_same_input_key_rehearsal": {
+                "pure_local_function_only": true,
+                "input_tuple": {
+                  "provider": "minimax",
+                  "model": "image-01",
+                  "prompt": "Medium shot in a plain production room, an anonymous technician standing beside a large unmarked capsule-material container and a small sample jar, mild light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pull out",
+                  "negative": "",
+                  "width": 1920,
+                  "height": 1080,
+                  "seed": 1,
+                  "references": []
+                },
+                "key": "7b467aedfcbaea63",
+                "dimensions_are_declared_example_not_backend_readback": true,
+                "no_provider_call": true
+              },
+              "actual_source_file": null,
+              "actual_source_sha256": null,
+              "actual_reused_file": null,
+              "actual_reused_sha256": null,
+              "actual_same_file_sha_verified": false
+            },
+            "is_native_manifest": false,
+            "actual_same_file_sha_verified": false
+          },
+          "native_pure_local_pair_check": [
+            {
+              "episode": "c15",
+              "setup": "c15r1h04",
+              "payoff": "c15r1d03",
+              "prompt_equal": true,
+              "camera_equal": true,
+              "composed_equal": true,
+              "composed_sha256": "33ba857fc4ce0375a7f441a84acdca2ea1743a2a57d38d3a93030abdadd8b83c",
+              "example_key_equal": true,
+              "example_dimensions_not_backend": true,
+              "no_provider_call": true
+            }
+          ],
+          "classification": "EXPLICIT_SAME_ASSET_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": null,
+          "minimum_repair_or_production_requirement": "依R2先d03單次合格再h04同request cache，待正式入場與兩端實SHA驗收。"
+        },
+        {
+          "teaser_id": "c15-2",
+          "setup": {
+            "line_id": "c15h04b1",
+            "quote": "而寫完的那張紙，溫度也有機會再插手。",
+            "line_sha256": "eb6385b41990f15c352bcd7a3305daeffd977cfecb1648e73b5ce2049b9a9726",
+            "scene_id": "c15h04b1",
+            "template": "shot",
+            "prompt": "Close-up at a plain workbench, an anonymous adult looking at an enclosed draft sheet beside an unnumbered cooling instrument, diffuse light.",
+            "prompt_sha256": "f390f9e24d86248f39666477acf565b083bb6dd1d9daac13207330a00748de76",
+            "camera": "pan right",
+            "card_data": null
+          },
+          "setup_clause": null,
+          "identification_rationale": "寫後溫度介入，後文給低溫端點與復原限制。",
+          "actual_payoffs": [
+            {
+              "line_id": "c15r1e04",
+              "quote": "它把開始回色，寫在零下十度以下；到了零下二十度前後，則有完整回色的特性。",
+              "line_sha256": "7a4a1d95f3e911f657c089e060e969c61eeeb0491a1e95fed1fa7372bd61239a",
+              "scene_id": "c15r1e04",
+              "template": "shot",
+              "prompt": "Close-up at a plain workbench, an anonymous adult looking at an enclosed draft sheet beside an unnumbered cooling instrument, diffuse light.",
+              "prompt_sha256": "f390f9e24d86248f39666477acf565b083bb6dd1d9daac13207330a00748de76",
+              "camera": "pan right",
+              "card_data": null
+            }
+          ],
+          "supporting_or_context_lines": [
+            {
+              "line_id": "c15r1e03",
+              "quote": "說明先把限制擺明：不能保證顏色確實恢復；那它把開始回色，放在哪裡？",
+              "line_sha256": "e8f8606f22d1fcb87a867cb33d5f12bff7cf35edea3db48a1158d9c67920c8f3",
+              "scene_id": "c15r1e03",
+              "template": "shot",
+              "prompt": "Medium close-up at a writing desk, an anonymous adult carefully holding a faintly marked draft sheet, soft light.",
+              "prompt_sha256": "abc47d52aa287d9557fa986d14ef8d724d15fba34a2de3aef846225f8c9461c7",
+              "camera": "pull out",
+              "card_data": null
+            },
+            {
+              "line_id": "c15r1e07",
+              "quote": "原廠明示，重疊寫過的內容，會一起回色；先前擦掉的舊筆跡，也可能夾在新內容裡。",
+              "line_sha256": "bc66e6deaf6be64ef01734df1190206a2bf86493db189cce1ea22b6c2db456d6",
+              "scene_id": "c15r1e07",
+              "template": "shot",
+              "prompt": "Medium shot at a writing desk, an anonymous adult examining overlapping abstract ink arcs within a corrected patch, diffuse light.",
+              "prompt_sha256": "40158c34ce09866c948207f4450e8e5e77bda0f49d64308b532062c0218ce14f",
+              "camera": "drift",
+              "card_data": null
+            },
+            {
+              "line_id": "c15r1e08",
+              "quote": "而用摩擦擦過的筆跡，說明直接寫不能完整回色；把紙冷下來，不能當成復原鍵。",
+              "line_sha256": "aa8b1ccb45d5cddfe9f2d720ff71a087b2eaf31afe5667dec197419ba6d736d5",
+              "scene_id": "c15r1e08",
+              "template": "shot",
+              "prompt": "Close-up at a desk, an anonymous adult holding a sheet with partly faded overlapping abstract marks, soft light.",
+              "prompt_sha256": "d4e034a9bd327e83499119049d02de3a4e4a75f3dd3b58b24886057883973c8f",
+              "camera": "push in",
+              "card_data": null
+            }
+          ],
+          "registered_loop_links": [
+            {
+              "setup": "c15h04b1",
+              "payoff": "c15r1e04",
+              "what": "寫後低溫介入的開始與回色端點"
+            }
+          ],
+          "exact_setup_prompt_elsewhere": [
+            "c15r1e04"
+          ],
+          "prompt_equal_to_actual_payoff": true,
+          "camera_equal_to_actual_payoff": true,
+          "same_asset_plan": {
+            "path": "docs/videos/brand-story-remakes-20261025/c15/image-reuse-plan.json",
+            "sha256": "bb961879025960789a7d3453acff1269bf8acd9c0ecf64f61473bc029d4798e0",
+            "pair": {
+              "asset_plan_id": "cooled-page-shared-still",
+              "role": "PLANNED_ONE_IDENTICAL_IMAGE_NOT_AN_ACTUAL_ASSET",
+              "source_scene_id": "c15r1e04",
+              "source_line_id": "c15r1e04",
+              "reuse_scene_id": "c15h04b1",
+              "reuse_line_id": "c15h04b1",
+              "source_prompt_sha256": "f390f9e24d86248f39666477acf565b083bb6dd1d9daac13207330a00748de76",
+              "reuse_prompt_sha256": "f390f9e24d86248f39666477acf565b083bb6dd1d9daac13207330a00748de76",
+              "prompt_exact_match": true,
+              "source_camera": "pan right",
+              "reuse_camera": "pan right",
+              "composed_prompt_sha256": "b1dc424d5d2e6e3d1c3e74f1f9be03937a519d34b5ad438d2b62d58e32ab5c4b",
+              "native_same_input_key_rehearsal": {
+                "pure_local_function_only": true,
+                "input_tuple": {
+                  "provider": "minimax",
+                  "model": "image-01",
+                  "prompt": "Close-up at a plain workbench, an anonymous adult looking at an enclosed draft sheet beside an unnumbered cooling instrument, diffuse light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+                  "negative": "",
+                  "width": 1920,
+                  "height": 1080,
+                  "seed": 1,
+                  "references": []
+                },
+                "key": "c092f72cbbaa0566",
+                "dimensions_are_declared_example_not_backend_readback": true,
+                "no_provider_call": true
+              },
+              "actual_source_file": null,
+              "actual_source_sha256": null,
+              "actual_reused_file": null,
+              "actual_reused_sha256": null,
+              "actual_same_file_sha_verified": false
+            },
+            "is_native_manifest": false,
+            "actual_same_file_sha_verified": false
+          },
+          "native_pure_local_pair_check": [
+            {
+              "episode": "c15",
+              "setup": "c15h04b1",
+              "payoff": "c15r1e04",
+              "prompt_equal": true,
+              "camera_equal": true,
+              "composed_equal": true,
+              "composed_sha256": "b1dc424d5d2e6e3d1c3e74f1f9be03937a519d34b5ad438d2b62d58e32ab5c4b",
+              "example_key_equal": true,
+              "example_dimensions_not_backend": true,
+              "no_provider_call": true
+            }
+          ],
+          "classification": "EXPLICIT_SAME_ASSET_PLAN",
+          "actual_media_same_image_pass": false,
+          "gap": null,
+          "minimum_repair_or_production_requirement": "依R2先e04單次合格再h04b1同request cache，保留不保證與不能完整復原。"
+        }
+      ],
+      "opening_lines_not_counted_as_event_teasers": [
+        {
+          "line_id": "c15r1h01",
+          "quote": "你剛改好的一頁筆記，若紙張到了六十度，還能留下哪一版？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c15r1h02",
+          "quote": "PILOT的營業人員後來回憶，日本一家文具專門店試賣時，顧客親手寫，接著拿膠擦去擦。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c15r1h03",
+          "quote": "我覺得，這個動作比廣告更難交代：筆尖剛留下的東西，怎麼交給另一端處理？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c15r1h05",
+          "quote": "跟著FriXion的一筆修改，追過三十多年的變色研究，看它怎麼走到你手裡。",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        },
+        {
+          "line_id": "c15r1h06",
+          "quote": "同一支筆寫、消、再寫，究竟把什麼留在紙上，又把什麼交給了溫度？",
+          "classification": "NO_EVENT_TEASER_OR_UNCERTAIN",
+          "reason": "眼前利害/場景背景、反應、即時問題或命名/核心承諾，沒有另種一個後文事件；不因它列於loops就算teaser。"
+        }
+      ],
+      "video_assets": [],
+      "reuse_search_scope": "current video.assets/shot data and top-level reuse/asset-plan/visual-plan/teaser file names; no histories/reviews/native/blind votes",
+      "relevant_existing_eligibility_rows": [],
+      "source_narrative_or_owner_gate_rejudged": false
+    }
+  ],
+  "followup": {
+    "source_pass_or_owner_approval_changed": false,
+    "native_or_blind_votes_read": false,
+    "on_author_change": "This episode conclusion expires. Preserve this snapshot and rebind a new audit; old approvals remain only on their original SHA.",
+    "actual_media_status": "No images generated/read/accepted in this audit; actual asset fields remain null. No same-image media PASS or paid authorization.",
+    "general_minimum_repair": "For each real event teaser choose a source-compatible image in its payoff chapter, identify both scenes and one accepted still, equalize complete native image-request inputs, generate payoff once, then use the verified ordinary cache for teaser. Any scene failure stops the pair for coordinated repair; verify both final file/SHA assignments and each context judge. Multiple events in one spoken line need separate executable image segments.",
+    "mutations": "Only opening-teaser-image-audit.json and .md written; no episode/rootstatus/Git/backend/manifest/approval/provider changes."
+  },
+  "all_current_inputs_frozen_or_stable_before_after": true
+}

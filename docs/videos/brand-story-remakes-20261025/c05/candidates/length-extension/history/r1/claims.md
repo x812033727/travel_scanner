@@ -1,0 +1,136 @@
+# C05 長度候選逐句主張
+
+全部PENDING_INDEPENDENT_REVIEW；作者沒有將舊source PASS轉移為新稿PASS。
+
+| ID | 狀態 | 旁白 | 來源索引 | 新增資訊／定位 |
+| --- | --- | --- | --- | --- |
+| c05r001 | PENDING_INDEPENDENT_REVIEW | 你想讓一根蚊香陪你撐過長夜，早期一根卻約四十分鐘就燒完。 | K_T, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r002 | PENDING_INDEPENDENT_REVIEW | 想像桌邊只剩一截灰，窗外仍暗著；你得再拿一根，夜晚才剛開始。 | K_T, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r003 | PENDING_INDEPENDENT_REVIEW | 一八九五年留下的螺旋木模，像是替長香找到了一個藏身的圓。 | K_T, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r004 | PENDING_INDEPENDENT_REVIEW | 但我覺得真正奇怪的，是想得出這個圓，還不一定做得成商品。 | K_T, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r005 | PENDING_INDEPENDENT_REVIEW | 後來保存的另一台工具，又把兩根長條交到工人手裡，問題還沒結束。 | K_T | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r006 | PENDING_INDEPENDENT_REVIEW | 金鳥這一條香，我們從桌邊追到工廠，看一個形狀怎麼撐過製造和運送。 | K_T, K_F, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r007 | PENDING_INDEPENDENT_REVIEW | 為什麼把香盤成螺旋，還不夠讓它久燃、完整地走上貨架？ | K_T, K_F, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r008 | PENDING_INDEPENDENT_REVIEW | 得先讓材料變成能交到人手上的東西；上山英一郎起初拿到的，只是種子。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r009 | PENDING_INDEPENDENT_REVIEW | 金鳥後來整理的年表，從一八八五年的種苗交換約定開始記這段路。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r010 | PENDING_INDEPENDENT_REVIEW | 隔年，美國植物商寄來的種子裡，有了除蟲菊；新的材料這才到手。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r011 | PENDING_INDEPENDENT_REVIEW | 但你把一包種子放到櫃台上，買家不會因此得到一根能用的蚊香。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r012 | PENDING_INDEPENDENT_REVIEW | 先得種出花、收下花；可是一碗磨好的粉，要靠什麼變成能點燃的商品？ | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r013 | PENDING_INDEPENDENT_REVIEW | 一八八七年，年表記下首次收成和試磨；花被磨成粉，商品還沒成形。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05le001 | PENDING_INDEPENDENT_REVIEW | 可是你想一想，同樣一株除蟲菊，為什麼收下來磨的偏偏是花，不是整把葉子？ | K_F | 花與葉、莖的有效成分分布不同，為材料選擇增加具體原因。；除蟲菊について：乾花中的成分、葉及莖幾乎沒有 |
+| c05le002 | PENDING_INDEPENDENT_REVIEW | 原廠後來說，有效成分主要在乾花中，葉和莖幾乎沒有。 | K_F | 原廠對乾花、葉及莖的具體區分；不推斷當年已做此分析。；除蟲菊について：殺蟲成分存在於乾花，葉／莖幾乎沒有 |
+| c05le022 | PENDING_INDEPENDENT_REVIEW | 可是，收下同一種花，含量就都一樣嗎？ | K_F | 以含量是否相同的具體問題銜接開花程度的原廠說明。；除蟲菊について：殺蟲成分存在於乾花，葉／莖幾乎沒有 |
+| c05le003 | PENDING_INDEPENDENT_REVIEW | 花朵展開的程度也會影響含量，盛開時最多。你手上那碗粉，前面先有了採什麼、何時採的差別。 | K_F | 開花程度影響含量，把採花選擇接到粉料；不加新的採收年代或比例。；除蟲菊について：隨花蕾膨大增加、盛開時最大 |
+| c05r014 | PENDING_INDEPENDENT_REVIEW | 我讀到這裡才發現，熟悉的螺旋離這張工作桌，還隔著好幾個步驟。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r015 | PENDING_INDEPENDENT_REVIEW | 更早怎麼對付蚊子？金鳥資料館回顧，人們曾燻燒草木，靠煙來驅蚊。 | K_S | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r016 | PENDING_INDEPENDENT_REVIEW | 資料館還說，草木燒旺時得設法增煙；煙多了，屋裡也可能跟著煙霧瀰漫。 | K_S | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r017 | PENDING_INDEPENDENT_REVIEW | 那包花種接下來面對的新難題，是能不能替粉料找到另一種商品形狀？ | K_S, K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r018 | PENDING_INDEPENDENT_REVIEW | 一八八八年，上山與一位線香商人在東京同住，開始另一種試做。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r019 | PENDING_INDEPENDENT_REVIEW | 公司年表寫，他用舶來除蚤粉和竹筒做蚊香；那包粉的配方，紀錄沒交代。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r020 | PENDING_INDEPENDENT_REVIEW | 線香的做法給了一條路：把粉料變成細條，讓材料有可以持續燃燒的形狀。 | K_T, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r021 | PENDING_INDEPENDENT_REVIEW | 到一八九〇年，年表裡終於出現直條產品上市，種苗變成可以出售的東西。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r022 | PENDING_INDEPENDENT_REVIEW | 可是商品到了桌上，問題來了：單根撐不久，把它做得更長有用嗎？ | K_T, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r023 | PENDING_INDEPENDENT_REVIEW | 公司回顧，這種直條約二十公分長，當時往往得同時用上數根。 | K_T, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r024 | PENDING_INDEPENDENT_REVIEW | 你多點幾根，可以讓眼前多幾個燃點，卻沒有把其中一根的路徑拉長。 | K_T, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r025 | PENDING_INDEPENDENT_REVIEW | 另一個麻煩在送達以前：原廠工廠說明回顧，細直條在運送途中容易折。 | K_T, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r026 | PENDING_INDEPENDENT_REVIEW | 要把一根香做長，又不讓桌面跟著拉長，手裡這條細線，能往哪裡走？ | K_T, K_F, K_M, NM, NA | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r027 | PENDING_INDEPENDENT_REVIEW | 把它往圓裡盤。依金鳥後來的記述，這個構想出自上山的妻子。 | K_M, NM, NA | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r028 | PENDING_INDEPENDENT_REVIEW | 公司年表把提出構想和開始試作記在那一年；這是公司的後年歸屬。 | K_M, NM, NA | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r029 | PENDING_INDEPENDENT_REVIEW | 還記得開頭那塊木模嗎？國立科學博物館在登錄裡，將它列為試作品。 | K_M, NM, NA, K_T | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r030 | PENDING_INDEPENDENT_REVIEW | 你可以拿一條線想像：直直擺，線有多長，桌面就得讓出多長的距離。 | K_M, NM, NA | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r031 | PENDING_INDEPENDENT_REVIEW | 把它一圈圈往裡收，路徑仍沿著線走，占用的平面卻縮小了。 | K_M, NM, NA | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r032 | PENDING_INDEPENDENT_REVIEW | 我覺得這個轉身很漂亮；但盤得進小桌面，就等於工廠能夠交貨了嗎？ | K_M, NM, NA | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r033 | PENDING_INDEPENDENT_REVIEW | 難題換了位置：桌上盤出一件，工廠要交出的，卻是一件接著一件的商品。 | K_T, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r034 | PENDING_INDEPENDENT_REVIEW | 那塊木模的方案，是把原料填進去，再推出螺旋；形狀已經落成工具。 | K_T, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r035 | PENDING_INDEPENDENT_REVIEW | 你若只看展示品，很容易以為它就是後來大量生產的起點；它真的走進產線了嗎？ | K_T, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r036 | PENDING_INDEPENDENT_REVIEW | 金鳥技術遺產頁明說，這種木模不適合大量生產，最後沒有被採用。 | K_T, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r038 | PENDING_INDEPENDENT_REVIEW | 能證明構想存在的物件，不能直接替它證明，商品已經源源不絕地做出來。 | K_T, NM, K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r042 | PENDING_INDEPENDENT_REVIEW | 我們能繼續追的，反而是那個沒解掉的生產問題：圖畫成圓了，商品在哪裡？ | K_T, NM, K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r043 | PENDING_INDEPENDENT_REVIEW | 公司年表再往下，有一個專利申請節點；申請能不能直接當作上市？ | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r044 | PENDING_INDEPENDENT_REVIEW | 你站在櫃台前要買一卷，等的是商品交得出來，還是紙上先多一筆紀錄？ | K_M, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r045 | PENDING_INDEPENDENT_REVIEW | 不能。金鳥年表把螺旋蚊香的專利申請，記在一九〇〇年。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r046 | PENDING_INDEPENDENT_REVIEW | 目前沒有原始申請文件可核對，所以這裡只說申請，不替它補成已經獲准。 | K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r047 | PENDING_INDEPENDENT_REVIEW | 真正的上市節點，是一九〇二年；從提出螺旋構想到市售，隔了七年。 | K_M, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r048 | PENDING_INDEPENDENT_REVIEW | 這七年最勾人好奇，可惜資料沒有逐年試作帳，不能替每一年安排一次失敗。 | K_T, NM, K_M | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r049 | PENDING_INDEPENDENT_REVIEW | 我寧可跟著下一件留存工具走：後來的人，究竟怎麼讓長條盤成形？ | K_T, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r050 | PENDING_INDEPENDENT_REVIEW | 那是手卷用的擠出設備，原廠標示約從一九一〇年起使用，晚於上市。 | K_T | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05le004 | PENDING_INDEPENDENT_REVIEW | 你若站在這台機器前，送進去的不是一把乾粉。粉一倒就散，怎麼變成能被擠出去的那一塊？ | NM_MACHINE | 用尚未解答的入口材料狀態引出押出前工序，不加設備內部構造。；910191180004 特徵：粉／糊粉加水成黏土狀塊料 |
+| c05le005 | PENDING_INDEPENDENT_REVIEW | 科博館對這台押出機的記錄說，除蟲菊粉和糊粉等原料，先加水混合，成為像黏土的塊料。 | NM_MACHINE | 新增水、糊粉與黏土狀塊料的製造動作，限於該手卷押出設備記錄。；910191180004 特徵：原料粉／糊粉加水混合為黏土狀 |
+| c05le006 | PENDING_INDEPENDENT_REVIEW | 先讓散粉聚成塊，才輪到機器往外擠；可接著盤成圓，還是同一台機器的工作嗎？ | NM_MACHINE, EDITORIAL | 將塊料的入口需求與押出作用接起；末句明示旁白反應。；910191180004 塊料→長條；旁白對成形分工的反應 |
+| c05r051 | PENDING_INDEPENDENT_REVIEW | 和把原料填進木模不同，它先把材料擠成像麵條的長條，再交給人的雙手。 | K_T, NM | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r052 | PENDING_INDEPENDENT_REVIEW | 注意工人接到什麼：兩根已擠出的長條，合在一起，才用手順著圓周盤卷。 | K_T | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05le007 | PENDING_INDEPENDENT_REVIEW | 另一筆商品登錄還留下中心那塊小木片。兩根合在一起之後，手又該先往哪裡繞？ | NM_COIL | 新增作芯木片，讓手卷的中心動作有具體物件。；910191180006 製法段：以木片作芯、兩根手卷；不採其括號日期 |
+| c05le008 | PENDING_INDEPENDENT_REVIEW | 長條先切成一定長度，再以木片作芯，兩根一起盤。你可以想像，手上每放好一圈，整個圓才慢慢長出來。 | NM_COIL, NM_MACHINE, EDITORIAL | 新增定長切條與作芯盤卷，不使用產能數字或內部矛盾日期。；910191180006 製法段：定長切條、木片作芯、兩根手卷 |
+| c05le009 | PENDING_INDEPENDENT_REVIEW | 盤好後，還要把整卷放到金網上乾燥。剛才繞好的形狀，現在得從工人的雙手，交給網面承放。 | NM_COIL | 新增歷史手卷後的金網乾燥／承放工序，不加乾燥時間或溫度。；910191180006 製法段：金網上乾燥 |
+| c05r053 | PENDING_INDEPENDENT_REVIEW | 原頁沒有說機器同時擠出兩條；能確認的是，手卷這一步把兩根放到一起。 | K_T | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r054 | PENDING_INDEPENDENT_REVIEW | 你看到的兩個螺旋，為什麼非得靠在一起，才被送往貨架？ | K_T | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r055 | PENDING_INDEPENDENT_REVIEW | 金鳥說，雙卷方式能降低運送中的折損與運輸成本；這裡沒有具體省下的金額。 | K_T | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r056 | PENDING_INDEPENDENT_REVIEW | 我覺得有意思的是，同一個圓開始回答另一道題：做得長以後，還得送得完整。 | K_T, K_M, NM, NA | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r057 | PENDING_INDEPENDENT_REVIEW | 不過，運送時彼此相連，跟單卷點燃後燒得多慢，並不是同一個機制。 | K_T, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r058 | PENDING_INDEPENDENT_REVIEW | 那麼，這些較晚的商品，到底留下多長、燒多久的明確紀錄？ | K_S | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r059 | PENDING_INDEPENDENT_REVIEW | 金鳥資料館列出約一九一九年的一款螺旋，約五十八公分，燃燒約六小時。 | K_S | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r060 | PENDING_INDEPENDENT_REVIEW | 這是資料館對那款較晚商品的標示，不能把它塞回試作木模或最早上市的那一天。 | K_S | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r061 | PENDING_INDEPENDENT_REVIEW | 資料館另列約一九二二年的手卷商品，燃燒約十二小時，又是另一款。 | K_S | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r062 | PENDING_INDEPENDENT_REVIEW | 你看到不同時期、不同商品的刻度，這些時數能不能直接換算成殺蚊本領？ | K_S | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r063 | PENDING_INDEPENDENT_REVIEW | 所以也不能把開場的短香與較晚螺旋相除，說成殺蚊本領增加了幾倍。 | K_T, K_F, K_S | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r064 | PENDING_INDEPENDENT_REVIEW | 時數說的是燃燒持續多久；把它聽成效果有多強，就已經替資料加了一句話。 | K_S | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r067 | PENDING_INDEPENDENT_REVIEW | 靠雙手盤出的圓，接下來碰上打型機；機器一完成，人的雙手就立刻退場了嗎？ | K_T, K_40 | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r068 | PENDING_INDEPENDENT_REVIEW | 沒有這麼整齊。公司年表記一九四〇年，自動輪轉打型式螺旋蚊香製造機完成。 | K_T, K_40 | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r069 | PENDING_INDEPENDENT_REVIEW | 可剛才那套手卷設備的留存介紹，使用期還一路記到約一九五七年。 | K_T | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r070 | PENDING_INDEPENDENT_REVIEW | 一條紀錄寫新機器完成，另一條寫舊設備仍在使用；它們並不要求同一天交棒。 | K_T, K_40 | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r071 | PENDING_INDEPENDENT_REVIEW | 我覺得這才像生產史：一個發明的年份，往往放不下每條產線後來的生活。 | K_T, K_40 | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r072 | PENDING_INDEPENDENT_REVIEW | 工法之外，這種形狀也得靠原料撐住；花田和材料，後來又發生了什麼事？ | K_T, K_40 | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r073 | PENDING_INDEPENDENT_REVIEW | 這段歲月，材料也在變；金鳥工廠回顧，為了增加糧食生產，除蟲菊栽培縮小。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r074 | PENDING_INDEPENDENT_REVIEW | 同一份說明又記，約一九五五年，合成成分丙烯菊酯開發並實用化。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r075 | PENDING_INDEPENDENT_REVIEW | 這說的是原廠回顧的材料進展，不能說所有蚊香在同一年就一起換了配方。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r076 | PENDING_INDEPENDENT_REVIEW | 接著，公司年表記改良型高效率自動打型機完成，工廠回顧也把機械打型放在這時。 | K_57, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r080 | PENDING_INDEPENDENT_REVIEW | 時間拉回你今天拿到的雙卷，兩卷相連著出貨，使用前該從哪裡分開？ | K_Q | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r081 | PENDING_INDEPENDENT_REVIEW | 原廠的現行問答說，從中間輕按，再捏住比較厚的中心，拆成各自的一卷。 | K_Q | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r082 | PENDING_INDEPENDENT_REVIEW | 如果從外緣硬拉，就可能折斷；暫時不用，反而要保持相連，才不容易變形。 | K_Q | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r083 | PENDING_INDEPENDENT_REVIEW | 你大概遇過這種心情：東西還沒開始用，先擔心自己的手把它弄壞了。 | K_Q | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r084 | PENDING_INDEPENDENT_REVIEW | 但分開只是讓每一卷成為自己的路徑；火為什麼能在那條路上慢慢走？ | K_Q, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r085 | PENDING_INDEPENDENT_REVIEW | 金鳥工廠給的解釋在香體斷面：空隙少，氧氣不容易進去，於是慢慢燃燒。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05rx001 | PENDING_INDEPENDENT_REVIEW | 原廠還提出一個具體比較：外形、材料、粗細和長度都不變，只把重量減輕。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05rx002 | PENDING_INDEPENDENT_REVIEW | 外面看起來一樣，裡面比較鬆，空氣會不會更容易碰到材料？ | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05rx003 | PENDING_INDEPENDENT_REVIEW | 照公司的解釋，密度較小，內外更容易接觸空氣，就應該燒得比較快。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05rx004 | PENDING_INDEPENDENT_REVIEW | 這讓你分清一件事：原廠標示的時數，該跟著螺旋外形走，還是跟著每款產品看？ | K_F, K_Q | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r087 | PENDING_INDEPENDENT_REVIEW | 我覺得最容易想錯的就在這裡：把形狀的本事，一口氣算成材料的本事。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r088 | PENDING_INDEPENDENT_REVIEW | 現行一般尺寸，金鳥標示單卷約七十五公分，燃燒約七小時，已經是另一代規格。 | K_Q | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r089 | PENDING_INDEPENDENT_REVIEW | 原廠還列短時與長時尺寸，環境也會影響時數；可香體裡面，還是當年的花粉嗎？ | K_Q | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r090 | PENDING_INDEPENDENT_REVIEW | 材料也沒有停在早年的花粉：原廠說明所述產品，使用合成擬除蟲菊酯有效成分。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r091 | PENDING_INDEPENDENT_REVIEW | 植物性粉末、木粉與黏結材料仍參與混合；有效成分換了，不等於植物材料都不見。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05rx005 | PENDING_INDEPENDENT_REVIEW | 工廠說，植物粉末裡還包括取走除蟲菊有效成分後留下的粉，材料並非只剩藥劑。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05rx006 | PENDING_INDEPENDENT_REVIEW | 但粉末一倒就散；這樣的材料，要靠什麼留住可以拿在手裡的螺旋？ | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05rx007 | PENDING_INDEPENDENT_REVIEW | 原廠列出黏結用的粉料和澱粉，與植物粉、有效成分一起混合，才得到可加工的原料。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05rx008 | PENDING_INDEPENDENT_REVIEW | 所以形狀背後還有材料的配合：你拿的是一個圓，工廠得先處理怎麼把粉料做成形。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r092 | PENDING_INDEPENDENT_REVIEW | 把混合料加工成片，再打出螺旋並乾燥，這是工廠頁描述的另一種製法。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05le010 | PENDING_INDEPENDENT_REVIEW | 你可以把那把刀想成餅乾模，科博館也是這樣比喻。刀型已備好輪廓，可送到刀下的，為何是一片料？ | NM_MACHINE | 新增刀型輪廓如何取代逐圈盤卷的具體製造類比。；910191180004 特徵：如餅乾打型，以巴形渦卷刃型打抜 |
+| c05le011 | PENDING_INDEPENDENT_REVIEW | 原廠先用混和機揉合，再擠成板狀，讓刀型從平面取出螺旋。 | K_F, NM_MACHINE, EDITORIAL | 新增混和機揉合動作，區分同名押出步驟的不同出料形態與後續角色。；K_F 家庭用殺蟲劑略歷：混和機練料、押出板狀、打型；004為長條押出 |
+| c05le023 | PENDING_INDEPENDENT_REVIEW | 讓我意外的是，同名押出機，前面交長條，這裡卻交片材。 | K_F, NM_MACHINE, EDITORIAL | 明示作者對前後押出形態分工的反應，不主張兩台相同型號設備。；K_F 家庭用殺蟲劑略歷：混和機練料、押出板狀、打型；004為長條押出 |
+| c05rx009 | PENDING_INDEPENDENT_REVIEW | 你以為把粉料黏成圓就結束了？燃燒時，它還要把什麼交到空氣裡？ | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05rx010 | PENDING_INDEPENDENT_REVIEW | 燃燒時，有效成分會以極細微粒子的形式進入空氣，這也是原廠描述的工作方式。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05le012 | PENDING_INDEPENDENT_REVIEW | 原廠的說明把兩個位置分開。你看到香端發紅，有效成分就一定要等到那一點才離開嗎？ | K_F | 把成分進入空氣的問題進一步定位到燃燒端前方，而不是添加效力保證。；なぜ蚊取線香で蚊が死ぬ：燃燒端與前端前方揮散位置 |
+| c05le013 | PENDING_INDEPENDENT_REVIEW | 燃燒端大約七百度到八百度；香體上離前端六到八毫米的位置，約二百五十度，有效成分在那裡揮散。 | K_F | 新增原廠的兩位置、距離與溫度，限於原廠所述作用機制。；なぜ蚊取線香で蚊が死ぬ：700–800℃；前端6–8mm／約250℃揮散 |
+| c05le014 | PENDING_INDEPENDENT_REVIEW | 照這個說法，還沒變成灰的那一小段，已在把成分交給空氣。可釋出的工作，怎麼跟著火一路走完？ | K_F | 說明位置差異的觀眾意義，不主張本集量過溫度或微粒。；同段：前方約250℃位置揮散；依原廠位置敘述的白話解讀 |
+| c05le015 | PENDING_INDEPENDENT_REVIEW | 那份說明還把工作寫成燃燒中連續釋放；一卷慢慢走完，也在把有效成分一段接一段送進空氣。 | K_F | 新增持續釋放與慢燃進程的分工；不引用安全性、濃度或效力保證。；末段：燃燒時間中不斷連續釋放有效成分 |
+| c05rx011 | PENDING_INDEPENDENT_REVIEW | 所以粉料既要能成形，也得能持續燃燒；形狀、材料與時間，到這裡才真正接上。 | K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r093 | PENDING_INDEPENDENT_REVIEW | 你剛才看過的手盤動作，在這裡換成打型；圓留下來了，做出圓的動作卻變了。 | K_T, K_F | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05le016 | PENDING_INDEPENDENT_REVIEW | 說到灰，還記得開場桌邊那一截嗎？香燒過一段，灰為什麼也常斷成一段，沒有一直連著還沒燒完的香？ | K_F, EDITORIAL | 以開場已出現的灰提出新受力問題，不補歷史事故。；なぜ蚊取線香の灰が切れてしまう：灰斷開；回扣c05r002實際出現的灰 |
+| c05le017 | PENDING_INDEPENDENT_REVIEW | 原廠以香皿的墊面解釋：一股力讓灰和香體相連，另一股摩擦力，卻要把灰留在墊面原來的位置。 | K_F | 新增香皿支撐下的兩股力，限於原廠指定容器情境。；灰為何斷：香體相連力與白墊摩擦力 |
+| c05le018 | PENDING_INDEPENDENT_REVIEW | 灰累積到一定長度，摩擦力超過相連的力，灰就斷開；接著再燃燒、再累積，這個過程反覆發生。 | K_F | 新增斷灰的條件與循環，不虛構固定斷灰長度。；灰為何斷：一定長度後摩擦力大、斷開並反覆 |
+| c05le024 | PENDING_INDEPENDENT_REVIEW | 如果改由線香立支撐，原廠又用哪一股力，解釋灰為什麼往下落？ | K_F | 以不同支撐方式提出具體力學問題，下一句給出重力條件。；灰為何斷：線香立情境改以灰的重量解釋 |
+| c05le019 | PENDING_INDEPENDENT_REVIEW | 原廠把另一邊換成灰的重量：重力超過相連的力，灰便往下落，依然是一段段交接。 | K_F | 新增另一種支撐方式下的力學對照；不是操作或安全建議。；灰為何斷：線香立情境為相連力對灰重量／向下落力 |
+| c05le020 | PENDING_INDEPENDENT_REVIEW | 原廠在罐裝香皿的問答裡說，燃著的部分若直接碰到上蓋金屬，就會被帶走熱，可能中途熄掉。 | K_Q | 新增原廠罐裝香皿所述上蓋金屬接觸火種、熱流失及立消風險，未泛稱所有金屬皆如此。；缶入上蓋金屬部分直接接觸火種會奪熱立消；其他立消原因列金屬接觸 |
+| c05le021 | PENDING_INDEPENDENT_REVIEW | 原來承放也有取捨：要接住香和灰，又可能從接觸處帶走熱。我覺得這讓能燒多久，從香體一路連到它放在哪裡。 | K_Q, K_F, EDITORIAL | 把灰的支撐與熱接觸造成的中斷連為具體取捨，明示作者反應。；K_Q 金屬接觸奪熱立消；K_F 香皿支撐／摩擦；旁白對支撐與熱接觸的解讀 |
+| c05r101 | PENDING_INDEPENDENT_REVIEW | 回到那塊沒進產線的木模：螺旋只是構想起點，還得把材料、製造和送達一起做成，才是商品。 | K_T, NM, K_F, EDITORIAL | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r102 | PENDING_INDEPENDENT_REVIEW | 如果你曾把相連的雙卷拆斷，留言告訴我，你當時先抓的是中心，還是外緣？ | K_T, NM, K_Q | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+| c05r103 | PENDING_INDEPENDENT_REVIEW | 想看懂日用品背後這些不只靠一個好點子的選擇，歡迎訂閱這個頻道。 | EDITORIAL, PROJECT | 原r6逐字保留；既有r6映射；原句未改，舊來源報告只對舊SHA有效。 |
+
+## 原件與使用範圍
+
+- K_F：https://www.kincho.co.jp/factory/listen/detail.html；HTTP 200，讀取日2026-10-25；raw SHA 98cc42111485595fc062421931adf48851d9a6337933b83bd696152210c2aa9f；快取 /workspace/work/brand-story-20261025/c05-audit/source-check/K_F.html
+- NM_MACHINE：https://sts.kahaku.go.jp/sts/detail.php?no=910191180004；HTTP 200，讀取日2026-10-25；raw SHA 5c4b6188a27dd36e6d325968e3aee9c157a9019fb3f740daa03132efcbdf3f43；快取 /workspace/work/brand-story-20261025/c05-audit/source-check/NM_MACHINE.html
+- NM_COIL：https://sts.kahaku.go.jp/sts/detail.php?no=910191180006；HTTP 200，讀取日2026-10-25；raw SHA ad84546af83ce5e60a2795cf44257be9df81e9a4936386d9d48503e381216c75；快取 /workspace/work/brand-story-20261025/c05-audit/source-check/NM_COIL.html
+- K_Q：https://www.kincho.co.jp/seihin/qa/qa_uzumaki.html；HTTP 200，讀取日2026-10-25；raw SHA 1bed4d4030159b7735137cb0184fc4b9a7379073d32b3c1816d7c52137dee018；快取 /workspace/work/brand-story-20261025/c05-audit/source-check/K_Q.html
+
+NM_COIL只用製法段的定長切條、木芯、手卷與網上乾燥。該頁西元括號與紀年換算有衝突，不用它補任何日期、產能或首創主張；原稿年代仍按原來源。所有廠方機制均保留歸屬，不加入安全／效力保證或本集實驗。

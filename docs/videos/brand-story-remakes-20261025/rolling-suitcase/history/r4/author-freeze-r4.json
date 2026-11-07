@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r4",
+  "frozen_at_utc": "2026-10-26T07:01:14.074437+00:00",
+  "role": "AUTHOR_SUBMISSION_NOT_INDEPENDENT_APPROVAL",
+  "author": "/root/rolling_visual_r2_author",
+  "video_slug": "story-rolling-suitcase-v2-remake-20261025",
+  "status": "HOLD_CAPACITY_R4_SOURCE_DELTA_AND_FRESH_NATIVE_3",
+  "parent_author_freeze_r3_sha256": "a516209c212850a0a486d47db1ba037db29afadf45daf74276062ffe20aee634",
+  "parent_video_r3_sha256": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d",
+  "parent_source_review_r3_sha256": "6374eda2abf5c1045ed1ac9b6c223033343f1fb01a320d559ea65c77756df81c",
+  "parent_verify_r3_sha256": "00511f3d1dca04ce555a416bd078460e47ac34e28a81a77aed3fb2388cddfaa9",
+  "history_r3_manifest_sha256": "9caf0abcf648b3ba1f858ffe9effa8f47ec599531bbed1ff2eac164970e3aa39",
+  "history_r1_manifest_sha256": "2e363135ec1ce109e74cbea3998415279cc62ab732d600203458e17f546738e5",
+  "file_sha256": {
+    "video.json": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92",
+    "script.md": "e8401e776f39770b3e37bf821ca3bc48573dc5242154685fb350e1e7dfc14e78",
+    "narration-only.json": "103ada67f91023988e2587c2589f2934c085363fac75888cc003a554c07afa26",
+    "claims.json": "9ca15690c67ad87ad726cea945d47547646a5c490f4e40884180abaeb2137542",
+    "claims.md": "52fa2eda1d17f26a115201632435ff0db5dc91bab1660a0d477b9c092bed4168",
+    "brief.md": "2432d9f34971405c28ae2fa3aae02b79ced4045ac063be2175b9eef62d889280",
+    "series.json": "57be9fd5779add888861c239718feae3aa9248776ba3e7a299e36890783f15ed",
+    "author-rows.json": "7d259a8a3051b070a6992c774363e60f28f6bfc09605fc8ed5906d9fa3f1429f",
+    "native-id-map.json": "31ba047eb080aa062db98089edd7940196bc41e5740e6405cb13bd740fdb987f",
+    "author-source-additions.json": "8cac2258719c81a7c58673e6aed936bec4bb28eaf0480094fc71cbfa5abbeb9c",
+    "build-candidate.mjs": "aacc38ac6b5b25caf6b50dc4ef1836a7a63154fdec7992a14c0aa5eba61f1b0a",
+    "producer.md": "091ffd02dd36fed0089b3a0e216661969b22c2ebfb5a21da9f59430c3c1f4394",
+    "image-reuse-plan.json": "3a227399f083f4d6d37ef31b34c24ff58b530e942666d869c58b30393394c0c3",
+    "protected-inputs-r4.json": "de639ab4aa5105e5c1e9cb8c483d2ca5c564bf00625c66d888b32e5401b7adf0",
+    "native-author-lint-r4.json": "a67699ea6877fb10328c8e8cf6ec6227bb0213801f28f26f219c92b1383932df",
+    "preflight-inputs.json": "d5d07861d6d520381be02d8c68d5a2e30b5feefcb0be4f8e186eeec1b491f700",
+    "author-notes.json": "112d00ae69d10940dbbdbadbf99e6dc87cdacb6a6c6718214178ea8878b9baff",
+    "review-state.json": "f4dfc9f9f147f6d95332aff74c1403b7a7c09d3da0fae573cd20c15944d6e8fe",
+    "changes-r4.json": "c2863c252991262e74a06e006c74a5a63db92508dbc0eb6fc1c7cfd1f825247e",
+    "reviews/narrative-r1-a.raw.json": "23bcd8aa70d071446e8714d6fe6d8abc340a435ea86f74dcd1cc6b1b27867fb1",
+    "reviews/narrative-r1-b.raw.json": "e37fc77ad9a2e34ec4a8babfb869c57ac541ac9c26aa4bc984a4ad490b9344ae",
+    "reviews/narrative-r1-binding.json": "d7f6b21f4d22a0ed49ebfc865a139bcf412302525935ef4d4e779a2bf549a14b",
+    "reviews/narrative-r1-input.json": "a33d891766054df106741af631a4c2cf088221569d0313e09782fb6b07a6a9a6",
+    "reviews/narrative-r1.json": "73143312a4bc964719cb45594a718337bb17768ff3673c6bdf3002a40ddcc4ec",
+    "reviews/narrative-r2-a.raw.json": "abbf5af13614f5168c784e4324e040e0d7562814a3e1e50911ab69fa59e6c5e0",
+    "reviews/narrative-r2-b.raw.json": "7341fdcdfbaa896879c247a837afd6f06a43e31b195cacf6de6fb8b1d441f805",
+    "reviews/narrative-r2-binding.json": "163c9174e27a689090f21e08738e26d6a41d159072bd5d0a3a55bf5d11b2e6e7",
+    "reviews/narrative-r2-input.json": "2d5f14a0e2999a1dcb14a4e4ebb5b744df70add24c33a32ddefa41a6dc929845",
+    "reviews/narrative-r2.json": "ca2dc92a96d0c6189ff65ca7f6bcdf1c681aed79cae5967583acbdb7d8501a6a",
+    "reviews/source-r1-independent.json": "b470b181b0384d9e6c5b839bcbe196532f1e67552a258b1bc801a2ac95600faa",
+    "reviews/source-r2-independent.json": "52ca57657a29f8d63408e7c9b3c158e4d1652972fc436465e182ef2c3a89b535",
+    "reviews/source-r3-independent.json": "6374eda2abf5c1045ed1ac9b6c223033343f1fb01a320d559ea65c77756df81c"
+  },
+  "core_four_sha256": {
+    "video.json": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92",
+    "script.md": "e8401e776f39770b3e37bf821ca3bc48573dc5242154685fb350e1e7dfc14e78",
+    "narration-only.json": "103ada67f91023988e2587c2589f2934c085363fac75888cc003a554c07afa26",
+    "claims.json": "9ca15690c67ad87ad726cea945d47547646a5c490f4e40884180abaeb2137542"
+  },
+  "frozen_research_sha256": {
+    "research-original.md": "aadd939e34076a3c556667fde0e0b4049e80ddd8be0e814adcadf11b7fe91319",
+    "research-original.claims.json": "d66cb44dd958162945e7a23776306d3421e615a21c6f63aa1c351d494bc4abbc",
+    "original-preservation.json": "124613d9f6d663f2a2d127deadcb8265ac6ec93d735c8e46fddd8a0bb763c92f"
+  },
+  "original_source_cache_files": 611,
+  "protected_cache_list_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r1/protected-start.json",
+  "protected_cache_list_sha256": "ec43ce37e2f95eb0edc83fd855d1ce7d505c106a45e1057098d10863348cca4b",
+  "original192_and_snapshots_unchanged": true,
+  "source_index_sha256": "d16a174e7dc0320d119865b1dfb8221f51d4431eee86ebbacbb1c4f6533c2b4e",
+  "new_raw_acquisitions": 0,
+  "author_added_original_anchors": 5,
+  "image_reuse_plan_sha256": "3a227399f083f4d6d37ef31b34c24ff58b530e942666d869c58b30393394c0c3",
+  "counts": {
+    "lines": 104,
+    "chapters": 7,
+    "scenes": 102,
+    "shots": 101,
+    "cards": 0,
+    "outro": 1,
+    "loops": 26
+  },
+  "capacity": {
+    "whole_raw_spoken_units": 2462,
+    "coldopen": 169,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 1038,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      492.4,
+      615.5
+    ],
+    "planning_at_4_5": 547.1111111111111,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "source_review": "PENDING_R4_DELTA_QA",
+  "written_visual_review": "PENDING_R4_DELTA_QA",
+  "r3_source_text_verdict": "PASS_ON_R3_ONLY",
+  "r3_written_visual_verdict": "PASS_ON_R3_ONLY",
+  "fresh_native": "NOT_PREPARED_NOT_READ_FOR_R4",
+  "actual_native_round_count": 2,
+  "native_input_prepared": false,
+  "native_reader_calls": 4,
+  "current_revision_native_reader_calls": 0,
+  "prior_native_round_2_verdict": "HOLD_NO_RECAP_NO_DETOUR",
+  "prior_native_round_2_merge_sha256": "ca2dc92a96d0c6189ff65ca7f6bcdf1c681aed79cae5967583acbdb7d8501a6a",
+  "next_gate": "INDEPENDENT_R4_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_3",
+  "pronunciation": "PENDING_OTHER_REVIEWER",
+  "actual_audio_seconds": null,
+  "actual_final_seconds": null,
+  "actual_duration_verified": false,
+  "current_verify_present": false,
+  "actual_same_asset_verified": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approval_created": false,
+  "normal_native_lint": {
+    "observed_exit_code": 0,
+    "errors": [],
+    "soft_warnings": [
+      {
+        "path": "scenes",
+        "message": "\"luggage\" is in 50 of 101 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"suitcase\" is in 38 of 101 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "about 11.6 minutes; the target is 12-14"
+      }
+    ],
+    "object_word_warnings": 2,
+    "planning_duration_warnings": 1,
+    "planning_duration_warning_is_not_actual_audio_verdict": true,
+    "hook_cadence_gaps": 0,
+    "near_identical_adjacent_shots": 0,
+    "output_sha256": "dff5878a9d042d2c08d25d1c2f023093801514268d48dc112cd35c2ee1de8661"
+  },
+  "normal_free_planner": {
+    "ordinary_cli": "tts --dry-run",
+    "observed_exit_code": 0,
+    "credential_context": "empty same-task home and empty env; no credentials read",
+    "network_attempts": 0,
+    "requests": 102,
+    "unchanged_request_objects": 101,
+    "changed_request_ids": [
+      "rs0045"
+    ],
+    "deleted_request_ids": [
+      "rs0083",
+      "rs0091",
+      "rs0092",
+      "rs0093",
+      "rs0094",
+      "rs0095"
+    ],
+    "ordinary_output_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/ordinary-free-planner-r4.txt",
+    "ordinary_output_sha256": "987bc0fa9928b8cce6461bb8f2d6740325eda38c19b44fca3c76f842e856e2d6",
+    "speech_hash": "db7a930e2f4325e6",
+    "speech_hash_changed_from_r3": true
+  },
+  "stage_imageKey_rehearsal": {
+    "pure_local_only": true,
+    "all_pair_plan_objects_exactly_equal_r3": true,
+    "pairs": [
+      {
+        "teaser": "rs0005",
+        "payoff": "rs0066",
+        "native_stage_key": "e8d589542750b9e4",
+        "composed_prompt_sha256": "a284bc1420604858438ad893d3ff6f0c6350db2f292eecd60ab895c657b6d973",
+        "complete_tuple_equal": true,
+        "actual_same_asset_verified": false
+      },
+      {
+        "teaser": "rs0006",
+        "payoff": "rs0082",
+        "native_stage_key": "ab8eb6c1780fa08b",
+        "composed_prompt_sha256": "6d1a2d8a9cf400df283a46bf55ae69e162f8fc92ffd0dcae7b4b0c04aa772beb",
+        "complete_tuple_equal": true,
+        "actual_same_asset_verified": false
+      }
+    ]
+  },
+  "normal_lexicon": {
+    "sequence": 1,
+    "lexicon_sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+    "files": [
+      {
+        "relative_path": "current.json",
+        "sha256": "29516c8a1aba3ae0a4d226747bd172be4db3c832feeca27f9c3aeb190edcece1",
+        "bytes": 287
+      },
+      {
+        "relative_path": "events/93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32.json",
+        "sha256": "93516d24a1b2c6e45a21d1f14d357fed3bb0ac7facbdba330d65343ef7050a32",
+        "bytes": 298
+      },
+      {
+        "relative_path": "versions/5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a.json",
+        "sha256": "5a770dcde527377743c4b6e4efbfee41a69241a939cafe2e1f33360e97816e7a",
+        "bytes": 6778
+      }
+    ],
+    "original_r1_r2_r3_and_r4_bytes_equal": true,
+    "initialize_returned_existing_snapshot": true,
+    "reinitialized_or_rebuilt": false
+  },
+  "runtime_root": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root",
+  "runtime_manifest_sha256": "6eabc508522f85753ea0827a2dc0ae708925b41571555efff17b7d68d2dcf037",
+  "runtime_script_sha256": "3e43f60f2e91ecf64ee858cae4f40d9b0d06adaba6b8353bb64204ecc6269608",
+  "protected_readback": {
+    "prior_protected_919": 919,
+    "research_files": 3,
+    "original_related_files": 192,
+    "source_cache_files": 611,
+    "backend_snapshot_copies": 2,
+    "total_unique_original_files_checked": 1013,
+    "archived_r3_files_checked": 47,
+    "old_r3_runtime_files": 10,
+    "r1_r2_history_unchanged": true,
+    "all_sha_and_bytes_match": true,
+    "history_r3_manifest_sha256": "9caf0abcf648b3ba1f858ffe9effa8f47ec599531bbed1ff2eac164970e3aa39"
+  },
+  "exact_new_US25_account_activated": false,
+  "whole_episode_quote": null,
+  "protected_admission": null,
+  "free_init_authorizes_spend": false,
+  "actual_generated_media": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "revision": "seiko-r4",
+  "role": "AUTHOR_MINIMAL_REVISION_RESPONSE_NOT_INDEPENDENT_PASS",
+  "history_r3_receipt": "history/r3/preservation-receipt.json",
+  "history_r3_receipt_sha256": "e331bd5b7da59cfa6db3e1a2a24b6c9277f5dd01adf743fc6d7137efb5a8be74",
+  "actual_native_round_count": 3,
+  "prior_source": "PASS_R3_PRESERVED_AS_HISTORY",
+  "prior_native_round3": "HOLD_SHARED_no_recap_e14_e15",
+  "changed_line_ids": [
+    "skr1e14",
+    "skr1e15"
+  ],
+  "changes": [
+    {
+      "before": {
+        "id": "skr1e14",
+        "chapter": "振子、回路與馬達，擠進三公分",
+        "text": "精工的產品史記下，七十六個電晶體、二十九個電容等零件，得靠手工連接。",
+        "research_claim_ids": [
+          "C06"
+        ],
+        "kind": "attributed",
+        "visual": "parts"
+      },
+      "after": {
+        "id": "skr1e14",
+        "chapter": "振子、回路與馬達，擠進三公分",
+        "text": "精工的產品史記下，電路包含七十六個電晶體、二十九個電容等零件。",
+        "research_claim_ids": [
+          "C06"
+        ],
+        "kind": "attributed",
+        "visual": "parts"
+      }
+    },
+    {
+      "before": {
+        "id": "skr1e15",
+        "chapter": "振子、回路與馬達，擠進三公分",
+        "text": "發振、分頻與驅動電路，在陶瓷板上組成了混合電路。",
+        "research_claim_ids": [
+          "C06"
+        ],
+        "kind": "fact",
+        "visual": "boardfit"
+      },
+      "after": {
+        "id": "skr1e15",
+        "chapter": "振子、回路與馬達，擠進三公分",
+        "text": "發振、分頻與驅動電路，組成了混合電路。",
+        "research_claim_ids": [
+          "C06"
+        ],
+        "kind": "fact",
+        "visual": "boardfit"
+      }
+    }
+  ],
+  "scope": "Remove already-stated hand-connection clause and ceramic-board location only. Preserve attributed76transistors/29capacitors, oscillator/divider/drive functional categories, hybrid circuit, all source bindings and all other narration. No new engineering action added.",
+  "all_other_143_narration_lines_and_order_unchanged": true,
+  "all_visual_prompt_and_camera_data_unchanged": true,
+  "all_research_and_source_bindings_unchanged": true,
+  "both_full_native_image_keys_required_identical_to_r3": true,
+  "current_old_verify_removed_only_after_full_sha_snapshot": true,
+  "new_source": "PENDING_OTHER_REVIEWER",
+  "new_native_round4": "PENDING_FRESH_READERS",
+  "source_pass_claimed": false,
+  "native_pass_claimed": false,
+  "owner_approval_created": false,
+  "paid_calls": 0
+}

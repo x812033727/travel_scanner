@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "revision": "c03-teaser-image-plan-v1-story-category",
+  "author": "/root/approved_teaser_visual_plan",
+  "created_at": "2026-10-26T00:46:30.972Z",
+  "status": "AUTHOR_CATEGORY_ONLY_HOLD_NATIVE_CARD_TEMPLATE_COMPATIBILITY",
+  "scope": "Cumulative patch from before-teaser-image-plan: specified shot data.prompt/data.camera plus the single category metadata leaf explainer -> story. Relative to the immediately preceding independently checked visual source, category is the only video.json difference. Narration, IDs, scene order, chapters, loops, all other metadata, voice, subtitles, look, dictionaries and existing approval bytes remain unchanged.",
+  "baseline_archive": "history/before-teaser-image-plan",
+  "source_before_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+  "source_after_sha256": "4ab6d10574d46a80bf3c189cba820f75dab752d32b832fd8731ea5c3446743ea",
+  "source_four_sha256": {
+    "video.json": "4ab6d10574d46a80bf3c189cba820f75dab752d32b832fd8731ea5c3446743ea",
+    "script.md": "1698aa0a955713ae5f0eaf9234ad307e32332aa7a02aaa966b8e34bd01736709",
+    "narration-only.json": "3d5461032a626e9c3246b5b2214af504e3fffee81c1a83cdda38dc2ba532c235",
+    "claims.json": "c8eaf8b7d01704417b147ff7af3080e5a6041d964b9cc6830d5b0153f6eb4328"
+  },
+  "claims_md_sha256": "8ff55ec06c753b92260d326c85372c6f6d5225b55bfdec193cbfa3f2b56683a0",
+  "plan_sha256": "ec9dee859d9139cd6d234fad6e5e343ad1b2d22912b642cf5a2d1e53e50f1ed5",
+  "author_input_sha256": "a5f27a94c1046f4ebb9f473edb5025253caca21493e5624b64b2578a608e1494",
+  "changed_scenes": [
+    {
+      "scene_id": "c03r-h04",
+      "before": {
+        "prompt": "Medium shot in a quiet reading room, one anonymous adult studying a plain black notebook beside a closed blank archive folder, soft window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.",
+        "visual": "still",
+        "camera": "push in"
+      }
+    },
+    {
+      "scene_id": "c03r-h05",
+      "before": {
+        "prompt": "Close-up at an office desk, one anonymous adult turning a blank report page with a thoughtful face, soft window light.",
+        "visual": "still",
+        "camera": "tilt up"
+      },
+      "after": {
+        "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.",
+        "visual": "still",
+        "camera": "pan right"
+      }
+    }
+  ],
+  "native_hash_comparison": {
+    "narrativeHash": {
+      "before": "5cb14d4ecf0bdc3a",
+      "after": "5cb14d4ecf0bdc3a",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "37aab4572320064b",
+      "after": "37aab4572320064b",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "5905cc7dcd62b707",
+      "after": "057e50e3a5d588d4",
+      "equal": false
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    }
+  },
+  "canonical_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+  "canonical_script_bytes_identical": true,
+  "author_script_bytes_identical": true,
+  "narration_projection_bytes_identical": true,
+  "claims_json_fact_bytes_identical": true,
+  "native_final_review_file_sha256": "beb511213bccacffddaa8e933c5ca361e5ed9b9e0d059bc794b647f7195f7c25",
+  "native_final_review_matches_before_and_after": true,
+  "reader_count_in_preserved_record": 2,
+  "source_marker_removed_from_current_and_archived": true,
+  "runtime": {
+    "root": "/workspace/work/brand-story-20261025/c03-submission-root",
+    "source_video_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+    "still_equals_archived_prechange_source": true,
+    "official_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "approval_file_sha256_read_only": "709b5d261469595ffc55358b9f4585e2754403ec167924b4054625fb2febe5da",
+    "any_runtime_or_media_write_by_this_task": false,
+    "latest_category_delta_runtime_source_sha256_read_only": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+    "latest_category_delta_approval_file_sha256_read_only": "709b5d261469595ffc55358b9f4585e2754403ec167924b4054625fb2febe5da"
+  },
+  "lint": {
+    "native_actual_immutable_dictionary_context": true,
+    "errors": 9,
+    "errors_details": [
+      {
+        "path": "scenes[15].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p04s01",
+        "template": "stats",
+        "line_ids": [
+          "r304011"
+        ]
+      },
+      {
+        "path": "scenes[45].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p11s01",
+        "template": "stats",
+        "line_ids": [
+          "r311011",
+          "r311012"
+        ]
+      },
+      {
+        "path": "scenes[66].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p12s02",
+        "template": "stats",
+        "line_ids": [
+          "r312021"
+        ]
+      },
+      {
+        "path": "scenes[70].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p13s01",
+        "template": "stats",
+        "line_ids": [
+          "r313011",
+          "r313012"
+        ]
+      },
+      {
+        "path": "scenes[74].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-t02",
+        "template": "stats",
+        "line_ids": [
+          "r3t021"
+        ]
+      },
+      {
+        "path": "scenes[80].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p15s01",
+        "template": "stats",
+        "line_ids": [
+          "r315011"
+        ]
+      },
+      {
+        "path": "scenes[97].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p18s04",
+        "template": "stats",
+        "line_ids": [
+          "r318041",
+          "r318042"
+        ]
+      },
+      {
+        "path": "scenes[103].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p19s02",
+        "template": "stats",
+        "line_ids": [
+          "r319021"
+        ]
+      },
+      {
+        "path": "scenes[105].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c03r-p19s04",
+        "template": "stats",
+        "line_ids": [
+          "r319041"
+        ]
+      }
+    ],
+    "soft_warnings_before": 32,
+    "soft_warnings_after": 0,
+    "result": {
+      "errors": [
+        {
+          "path": "scenes[15].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[45].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[66].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[70].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[74].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[80].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[97].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[103].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        },
+        {
+          "path": "scenes[105].template",
+          "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro"
+        }
+      ],
+      "warnings": [],
+      "summary": null
+    }
+  },
+  "producer_build": {
+    "path": "build-candidate.py",
+    "sha256": "99daa1ebf660d7ea2a974f449db3df1086b8d080d85aa069c5bbaaf6e21cafde",
+    "memory_only_replay_core_four_and_claims_md_exact": true,
+    "c03_preexisting_producer_voice_style_drift_aligned_to_existing_approved_source": true,
+    "actual_source_voice_changed": false
+  },
+  "preservation": {
+    "archive_manifest_sha256": "5354f5e8af03b93d6d9b681dd2a5075cb6b0550af1256781e782d6f6f56fcbe8",
+    "archived_source_and_reviews_hashes_verified": true,
+    "unchanged_current_auxiliary_files_verified": 55
+  },
+  "source_or_written_visual_PASS_issued": false,
+  "owner_approval_created": false,
+  "actual_images_verified": false,
+  "actual_duration_measured": false,
+  "paid_provider_requests": 0,
+  "backend_calls": 0,
+  "git_actions": 0,
+  "additional_allowed_video_metadata_paths": [
+    "category"
+  ],
+  "category_only_delta": {
+    "baseline_archive": "history/teaser-plan-before-story-category",
+    "source_before_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+    "source_after_sha256": "4ab6d10574d46a80bf3c189cba820f75dab752d32b832fd8731ea5c3446743ea",
+    "path": "category",
+    "before": "explainer",
+    "after": "story",
+    "receipt": "story-category-delta.json",
+    "receipt_sha256": "5956e10a81475b34b2c930d3ba33a5a8425a1b98383e353bef73ce9708fbddbf"
+  },
+  "category_only_native_hash_comparison": {
+    "narrativeHash": {
+      "before": "5cb14d4ecf0bdc3a",
+      "after": "5cb14d4ecf0bdc3a",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "37aab4572320064b",
+      "after": "37aab4572320064b",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "057e50e3a5d588d4",
+      "after": "057e50e3a5d588d4",
+      "equal": true
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    }
+  },
+  "latest_source_marker_archive": "history/teaser-plan-before-story-category/verify-1.md"
+}

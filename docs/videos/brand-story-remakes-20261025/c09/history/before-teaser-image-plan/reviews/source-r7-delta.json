@@ -1,0 +1,1649 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/find_rules/c09_delta",
+  "receipt_coordinator": "/root/find_rules",
+  "independent": true,
+  "date": "2026-10-25",
+  "revision": "r7",
+  "slug": "story-everyday-patagonia-c09-remake-20261025",
+  "verdict": "HOLD",
+  "source_verdict": "HOLD",
+  "written_visual_verdict": "PASS",
+  "input_sha256": {
+    "history-r6/video.json": "54842c50b8da3636847fe52593967e4905f78a1f64b832cd059c372ef1b37bf0",
+    "history-r6/narration-only.json": "2552b7771e2d0c2b805b7620386779a9628206fdf27ec5e10c55d9c9c0a4ae52",
+    "history-r6/claims.json": "9faac01a9e8102ad8b15dd6ca0ad83d2890bdc53e5e1084783ae29c67dd71e8d",
+    "history-r6/script.md": "d0529fe70ad0161a5a30f9ee500ce120c418e1bf263937c351bfc73e201d98af",
+    "reviews/source-r6-delta.json": "0a890d72fc4259dd825db9d9718be98b931b044f11ba3590c90b59e57cc26d26",
+    "reviews/structural-r7-author-delta.json": "62975fb80fd67c18a5490be8615c7e9510bd8651870f2379982e30dc686bfc10",
+    "video.json": "abf2ecc8e406fcb690389ee2054db330a82ed3ca3c390719750b32c0e635a971",
+    "narration-only.json": "c62e6b344dc944d5ad53ecf41305663a8684d46e4648f0fe709c8570922a923b",
+    "claims.json": "0b886b0a8bd6db63e4e66f4a8a427aaf1d7668fdf395ece67e7e37e0c941d748",
+    "script.md": "cf74014004facc7723ad37a484e6b277d7e61d826730edd1bd78576309ee4f0b"
+  },
+  "baseline": {
+    "source_receipt": "reviews/source-r6-delta.json",
+    "source_receipt_sha256": "0a890d72fc4259dd825db9d9718be98b931b044f11ba3590c90b59e57cc26d26",
+    "four_history_r6_inputs_match_receipt": true,
+    "archived_source_receipt_copy_exists": false,
+    "prior_receipts_not_rewritten": true
+  },
+  "counts": {
+    "lines": 100,
+    "scenes": 98,
+    "source_pass": 99,
+    "source_hold": 1,
+    "written_visual_scene_pass": 98,
+    "written_visual_scene_hold": 0,
+    "changed_text_lines": 13,
+    "retained_exact_text_lines": 87,
+    "deleted_lines": 4,
+    "moved_line_ids_count": 6,
+    "changed_visual_data_scenes": 2
+  },
+  "findings": [
+    {
+      "id": "R7-S01",
+      "severity": "P2",
+      "line_id": "c09r093",
+      "verdict": "HOLD",
+      "issue": "移位新句把公司後年服裝標籤回顧改成無歸屬的品牌名字首次出現，範圍擴張。",
+      "required_fix": "恢復品牌回顧歸屬並限1973服裝標籤使用，不聲稱品牌名稱首次出現。",
+      "minimal_suggested_text": "品牌回顧說，一九七三年，戶外服裝開始使用巴塔哥尼亞標籤。",
+      "evidence": "S7 2012品牌文章Ventura段L207；原件說公司1973擴至戶外服裝並用該標籤。",
+      "after_fix": "保全本r7與HOLD，再固定新video/narration/claims SHA作該句差分。"
+    }
+  ],
+  "chronology_review": [
+    {
+      "move": "040/041/043到1964前",
+      "verdict": "PASS",
+      "evidence": "S4 L65有1959/1960使用；只敘已使用，不推修納德發明。"
+    },
+    {
+      "move": "044/045到1967後/1972前",
+      "verdict": "PASS",
+      "evidence": "S4 L65–67明有1970回信；不把他當時意見倒放1972。"
+    },
+    {
+      "move": "093到1973段",
+      "verdict": "PASS_TIMELINE_ONLY_HOLD_WORDING",
+      "evidence": "S3書評明1973，S4 L71直接載1973 Nose攀登；同一年不是從1977刊年回推。093歸屬/範圍仍HOLD。"
+    }
+  ],
+  "opening_number_review": {
+    "line_id": "c09r001",
+    "verdict": "PASS",
+    "evidence": "S1 L14",
+    "scope": "特定結繩熟手例示100枚/天；未泛成平均或單人。001的claims source由S2改S1正確，原028重複刪除。"
+  },
+  "deleted_line_ids": [
+    "c09r028",
+    "c09r066",
+    "c09r067",
+    "c09r094"
+  ],
+  "moved_line_ids": [
+    "c09r040",
+    "c09r041",
+    "c09r043",
+    "c09r044",
+    "c09r045",
+    "c09r093"
+  ],
+  "claims_delta": [
+    {
+      "line_id": "c09r001",
+      "changed_fields": [
+        "text",
+        "source",
+        "anchor"
+      ],
+      "before_source": "S2",
+      "after_source": "S1"
+    },
+    {
+      "line_id": "c09r002",
+      "changed_fields": [
+        "text",
+        "anchor"
+      ],
+      "before_source": "S2",
+      "after_source": "S2"
+    },
+    {
+      "line_id": "c09r003",
+      "changed_fields": [
+        "text",
+        "anchor"
+      ],
+      "before_source": "S2",
+      "after_source": "S2"
+    },
+    {
+      "line_id": "c09r040",
+      "changed_fields": [
+        "chapter",
+        "text"
+      ],
+      "before_source": "S4",
+      "after_source": "S4"
+    },
+    {
+      "line_id": "c09r041",
+      "changed_fields": [
+        "chapter"
+      ],
+      "before_source": "S2、S4",
+      "after_source": "S2、S4"
+    },
+    {
+      "line_id": "c09r043",
+      "changed_fields": [
+        "chapter",
+        "text",
+        "anchor"
+      ],
+      "before_source": "S4",
+      "after_source": "S4"
+    },
+    {
+      "line_id": "c09r044",
+      "changed_fields": [
+        "text"
+      ],
+      "before_source": "S4",
+      "after_source": "S4"
+    },
+    {
+      "line_id": "c09r045",
+      "changed_fields": [
+        "text"
+      ],
+      "before_source": "S4",
+      "after_source": "S4"
+    },
+    {
+      "line_id": "c09r033",
+      "changed_fields": [
+        "text"
+      ],
+      "before_source": "S2",
+      "after_source": "S2"
+    },
+    {
+      "line_id": "c09r039",
+      "changed_fields": [
+        "text"
+      ],
+      "before_source": "S2、S4",
+      "after_source": "S2、S4"
+    },
+    {
+      "line_id": "c09r042",
+      "changed_fields": [
+        "text"
+      ],
+      "before_source": "S2",
+      "after_source": "S2"
+    },
+    {
+      "line_id": "c09r093",
+      "changed_fields": [
+        "chapter",
+        "text",
+        "anchor"
+      ],
+      "before_source": "S7",
+      "after_source": "S7"
+    },
+    {
+      "line_id": "c09r092",
+      "changed_fields": [
+        "text"
+      ],
+      "before_source": "S4",
+      "after_source": "S4"
+    },
+    {
+      "line_id": "c09r095",
+      "changed_fields": [
+        "text"
+      ],
+      "before_source": "S4",
+      "after_source": "S4"
+    }
+  ],
+  "metadata_review": {
+    "non_scenes_top_level_except_loops_exact": true,
+    "all_retained_visual_data_except002003_exact": true,
+    "loop_updates": "對應開場/搬位/刪景重綁；本次只核ID/來源語義，不作全片敘事判定。"
+  },
+  "source_references": {
+    "S1": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+    "S2": "https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html",
+    "S3": "https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment",
+    "S4": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+    "S7": "https://www.patagonia.com/stories/culture/community/patagonia-surf-stores-the-wave-riding-collective/story-18439.html"
+  },
+  "method": "獨立來源代理與協調者各核主要原件/精確重排；S1/S4/S7於本日重開。其餘同文來源依已驗r6精確基線承接。",
+  "isolation_limits": {
+    "blind_report_files_read": false,
+    "narrative_verdict": null,
+    "actual_audio_images_reviewed": false,
+    "duration_measured": false,
+    "paid_calls": 0,
+    "backend_writes": 0,
+    "owner_approval": false,
+    "note": "本r7來源HOLD，不可當來源PASS送後續製作。"
+  },
+  "line_results": [
+    {
+      "line_id": "c09r001",
+      "scene_id": "c09r-shot-001",
+      "line_text_sha256": "f88e1fdca5f4694ce921562c87cf6d681eae01d6acdf8b46245d7472576b3342",
+      "change": "changed_text",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S1"
+      ],
+      "source_note": "S1 1967文章L14是一組結繩熟手單日放/取100枚例示。新句明說文章例子及一組，非平均/單人/所有攀登；原028刪重。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r002",
+      "scene_id": "c09r-shot-002",
+      "line_text_sha256": "77a9fdc8ecbf9e0f867b0b878fa3e3acdba5804d33972136ea8f98c46d627578",
+      "change": "changed_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2",
+        "S4",
+        "EDITORIAL"
+      ],
+      "source_note": "如果你是下一位的假想利害，不把個別事故當紀錄；磨損裂縫圖是示意。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "002/003改為匿名下一位攀岩者/空白型錄假想場景；未重建史實交易。"
+    },
+    {
+      "line_id": "c09r003",
+      "scene_id": "c09r-shot-003",
+      "line_text_sha256": "a5d7c7f853caa257eddeb5304d45396f6d8957e7f9ecde23b7e231feeb32c9f5",
+      "change": "changed_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2",
+        "EDITORIAL"
+      ],
+      "source_note": "想像1972型錄桌邊，明示概念，不重建可考的翻閱現場。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "002/003改為匿名下一位攀岩者/空白型錄假想場景；未重建史實交易。"
+    },
+    {
+      "line_id": "c09r004",
+      "scene_id": "c09r-shot-004",
+      "line_text_sha256": "24af273c3a74498e36827c04c8695ba704a7a596a6bd7025dac03b386ecc7651",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r005",
+      "scene_id": "c09r-shot-005",
+      "line_text_sha256": "b3737ed9912c2dcd033787a0a422d552c69431e26e0f8e9cd3ed2d5e8b42017b",
+      "change": "retained_exact_text",
+      "source_mapping": "S3、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r006",
+      "scene_id": "c09r-shot-006",
+      "line_text_sha256": "c570f666c890c19963187f94c21d8db79c7b16cad27032677a20c9df22d1f117",
+      "change": "retained_exact_text",
+      "source_mapping": "S1–S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S1–S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r007",
+      "scene_id": "c09r-shot-007",
+      "line_text_sha256": "b463cb2c18ce79c8f93cb72e24154eaeb423af7ebf57d15f59e4ed843d25f514",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r008",
+      "scene_id": "c09r-shot-008",
+      "line_text_sha256": "131dc0e76be3dd3dc3eafc6890477c65ab4a0dbe2b67b835838e8baf040a1e5f",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r009",
+      "scene_id": "c09r-shot-009",
+      "line_text_sha256": "ee37d29b88897fcd6cb9b7f4ff5b780f97e0ec3aee13d7c66ff050f2b4228fb5",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r010",
+      "scene_id": "c09r-shot-010",
+      "line_text_sha256": "6749d4456ff0b1becc16739b80e6d23ced8af8518e3621be47dd4b99408cfd99",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r011",
+      "scene_id": "c09r-shot-011",
+      "line_text_sha256": "33d0cdfc2b6fb8bb101a161e52e0388430dd7e97644780e9c6378627dacb0715",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r012",
+      "scene_id": "c09r-shot-012",
+      "line_text_sha256": "cc6e812d92c85cb4fd2f5b913ac07c92232bcdded2e1dd0acbe9b3cb562e94a4",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r013",
+      "scene_id": "c09r-shot-013",
+      "line_text_sha256": "e055c0f1cfcd52bd9bfbd65fa22e36ad67f2610bdc578baa5ce88d8184239efd",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r014",
+      "scene_id": "c09r-shot-014",
+      "line_text_sha256": "eaf351973c391e06092dff8dca2efae2ad684580435b834c996132053f094eb7",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r015",
+      "scene_id": "c09r-shot-015",
+      "line_text_sha256": "aa8d0bebff0a3713250d801a89021ca986227371554877c2834327f6b57aa660",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r016",
+      "scene_id": "c09r-shot-016",
+      "line_text_sha256": "978e0be5e4b5b7d3057dd160e5e58f7f27fcbf6fef64db689ca72acdf17ade35",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r017",
+      "scene_id": "c09r-shot-017",
+      "line_text_sha256": "f10326748e07b39f75abcd6829b7e795057cf211b0cb4f87f335b80a0ea39288",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r018",
+      "scene_id": "c09r-shot-018",
+      "line_text_sha256": "54b57a4bd4ba6379676d4ade63e8299adc38acad2b44edc4341a739d734120da",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r040",
+      "scene_id": "c09r-shot-040",
+      "line_text_sha256": "ed7e6325f68deeb706b0f64e8a3246246f180d23847d6fd56e77045951cce9fb",
+      "change": "changed_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "英國工具前史與非修納德發明的限定未變。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r041",
+      "scene_id": "c09r-shot-041",
+      "line_text_sha256": "3f4cc7922893e11abe6f8ddfc8eff51e5a8467d456420555e228281dd6b69e2f",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r043",
+      "scene_id": "c09r-shot-043",
+      "line_text_sha256": "c13b8b765ae883097df523df9be2aa7978f2be380ff7bb5d7d88f17b85b3d6bc",
+      "change": "changed_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "S4 L65直載1959/60使用，移到1964前不增加首次/發明聲稱。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r019",
+      "scene_id": "c09r-shot-019",
+      "line_text_sha256": "2a89a24228599420f2fb840d1c4a8fc3c5cdfa436a7c2de5eae9a1d2034cc5d0",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r020",
+      "scene_id": "c09r-shot-020",
+      "line_text_sha256": "2a2ef7d8409f0f484207607fcc7debc8eca852f656ae4ec2b8375d9ee9292ad1",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r021",
+      "scene_id": "c09r-shot-021",
+      "line_text_sha256": "bd0a4153e15b581402cd0ee497bdd2025b3c815545637dc4213efbec88b400bd",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r022",
+      "scene_id": "c09r-shot-022",
+      "line_text_sha256": "ac520d29c423d657266f6d3e3a18cc66d964210e7bc7b46bc81ca98cd2002b8e",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r023",
+      "scene_id": "c09r-shot-023",
+      "line_text_sha256": "ca4dcddacec472db794dea3e5ad75ac6877e271fe0e8ee644f2d3be308e4af6b",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r024",
+      "scene_id": "c09r-shot-024",
+      "line_text_sha256": "dbc4072e60955f643c1364ebe44c45c8e0a8b152434227ff60915b1052b96dc5",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r025",
+      "scene_id": "c09r-shot-025",
+      "line_text_sha256": "d2247793d5d50ecf3ea745c5e5d2d3abcbdf132573715d7b8cfa015e9b3cac5f",
+      "change": "retained_exact_text",
+      "source_mapping": "S1、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S1、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r026",
+      "scene_id": "c09r-shot-026",
+      "line_text_sha256": "63fdab86cad3cbd0f2f74bb96d3020c0dd6ccc56809bcb5b9d2ed12774b0e7f0",
+      "change": "retained_exact_text",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S1"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r027",
+      "scene_id": "c09r-shot-027",
+      "line_text_sha256": "96e157fcf4bcc6b5011f9750a56a5f99f1725c551a4d81a55e408e5a80691cc6",
+      "change": "retained_exact_text",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S1"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r029",
+      "scene_id": "c09r-shot-029",
+      "line_text_sha256": "546878d592856c189f472cee9b36c13878ff8d869a404bbeb19002393dda61e6",
+      "change": "retained_exact_text",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S1"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r030",
+      "scene_id": "c09r-shot-030",
+      "line_text_sha256": "eb383ef10806aae71568435e5f0486f4d9500c954c7d70b4d4b2cbd3c2e92e36",
+      "change": "retained_exact_text",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S1"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r044",
+      "scene_id": "c09r-shot-044",
+      "line_text_sha256": "c94450440e21f1ffb2b25cd8f3404dfa70c9b71f0b6c67da44c6d31dcc1cd31f",
+      "change": "changed_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "S4 L65–67轉引1970回信；加他說更明確歸屬。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r045",
+      "scene_id": "c09r-shot-045",
+      "line_text_sha256": "ca5992815b7f6767bf8109b9ae4ba196a64b20e357e716448352e7441cebe6f2",
+      "change": "changed_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "保留原信普通情況不替代岩釘，刪停滯評論未改技術結論。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r031",
+      "scene_id": "c09r-shot-031",
+      "line_text_sha256": "9ff6b0c7c9d8e45e770388bae8c68ee3e712c200bbaa3e71e0581f1a2e39db3e",
+      "change": "retained_exact_text",
+      "source_mapping": "S1、S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S1、S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r032",
+      "scene_id": "c09r-shot-032",
+      "line_text_sha256": "655b44654451cd2a320d3e39911a5b9d89ea6f0f9a119261b968473d40178df2",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r033",
+      "scene_id": "c09r-shot-033",
+      "line_text_sha256": "3448bf98d08f382fc2a66eeed3858b9bdf1ae39b427f9570cbf853d31a0bd9da",
+      "change": "changed_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "1972前言身分明確，數字/岩傷主張未改。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r034",
+      "scene_id": "c09r-shot-034",
+      "line_text_sha256": "5169b00856fc5c29e6a76a12896e5d956cfeef79f66464ac07e28c7ff03ebfb3",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r035",
+      "scene_id": "c09r-shot-035",
+      "line_text_sha256": "939add8604ce1d78edb0dae07fef44fed9720e5d36603982da8628d87022ff8e",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r036",
+      "scene_id": "c09r-shot-036",
+      "line_text_sha256": "29ff537d85d52d9030a30c0ae0aafaeb7d01249ca814716b37b06c08b05fe1bc",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r037",
+      "scene_id": "c09r-shot-037",
+      "line_text_sha256": "50e8030780a2206eb7355efefb1b4eaa8f2096b651c6a6db5c908f1b1b769a08",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r038",
+      "scene_id": "c09r-shot-038",
+      "line_text_sha256": "16e4537d6c6892c82c83db5a6448cdc42eb7ca095ca904a1a7a2e307dd4799f6",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r039",
+      "scene_id": "c09r-shot-039",
+      "line_text_sha256": "f2a01523a55558dc6094ef726c9f849ff4d129bc9ec517e1a8f17cea26784b5c",
+      "change": "changed_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2",
+        "S4"
+      ],
+      "source_note": "040/041/043已介紹楔塊，回呼有實物；兩工具可取回，沒有零傷害/普遍安全推論。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r042",
+      "scene_id": "c09r-shot-042",
+      "line_text_sha256": "013144804d6b08f5b4d2a488f897a973dcd6e203cf60e0e8d88382f8dc7e60d1",
+      "change": "changed_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2",
+        "EDITORIAL"
+      ],
+      "source_note": "縮句仍保留不同裂縫/無安全保證界線。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r046",
+      "scene_id": "c09r-shot-046",
+      "line_text_sha256": "578dc1484e6e67f6692f72049d903d021d456ff2e2547ba9ebeab59c654337e8",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r047",
+      "scene_id": "c09r-shot-047",
+      "line_text_sha256": "a56d503b45632109460b8d31483b2885dbf6df7ff741fcee2189d3c87aa0e773",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r048",
+      "scene_id": "c09r-shot-048",
+      "line_text_sha256": "44b3bbd083a3cdd8ff5d2ee65fca94fc5672b84a2697447ea30bb5245818fe63",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r049",
+      "scene_id": "c09r-shot-049",
+      "line_text_sha256": "e752d165706f216a10e11553e804f8cc24bb94b4e75e8af95dec213871404645",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r050",
+      "scene_id": "c09r-shot-050",
+      "line_text_sha256": "19c7cf9b34aa492dd4a47c55374f6f22e8e32509e45190081e87766a14cd9c9a",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r051",
+      "scene_id": "c09r-shot-051",
+      "line_text_sha256": "981da15eacddf33cd0280eb615e43f8dd56c3c90a6e12723158e8738eb9c8f7d",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r052",
+      "scene_id": "c09r-shot-052",
+      "line_text_sha256": "6f0fd236163751013107888f8ca993d48228da1b181c43fbc8c32237b3b331a5",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r053",
+      "scene_id": "c09r-shot-053",
+      "line_text_sha256": "1236892bffb990b6a3754b60319f771ecd624f381a51199817c516a53a7cd2d9",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r054",
+      "scene_id": "c09r-shot-054",
+      "line_text_sha256": "29760c95fcff880b3cc347b472a0a5f679b6c28bdacaa2d1a0efdb13a76bf799",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r055",
+      "scene_id": "c09r-shot-055",
+      "line_text_sha256": "35594012e9ebf92b05406cf88240c89f0de23c5be84195d251cd009a62c8d4c0",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r056",
+      "scene_id": "c09r-shot-056",
+      "line_text_sha256": "758006befec1cb4328fec9375a74aad147e8777bfd78d2789565a46e1440b922",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r057",
+      "scene_id": "c09r-shot-057",
+      "line_text_sha256": "4f63c63ae720402918a1ff5c117011f636b9baaf2d440a43ddacaff13da97401",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r058",
+      "scene_id": "c09r-shot-058",
+      "line_text_sha256": "9f73a71da70936f758343abe8a9e40474d9c8453af5c1a91cc75fea74bbd1504",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r059",
+      "scene_id": "c09r-shot-059",
+      "line_text_sha256": "8acea7bd708c9b74026452c7b1b16a014b02b8f395c41493648be6137fd3cf59",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r060",
+      "scene_id": "c09r-shot-060",
+      "line_text_sha256": "4ac6e5e418eba55243799b2635283d608327b3b6d992f4aac6987df1e0f16f99",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r061",
+      "scene_id": "c09r-shot-061",
+      "line_text_sha256": "eb4662e6e5c4d0594461564f806e010f486a6a3132affc881f0e61180cdef2b7",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r062",
+      "scene_id": "c09r-shot-062",
+      "line_text_sha256": "abc11d7ea309238ed5019de7f9f5a053a831765c40ad6a5d033b6965649f8800",
+      "change": "retained_exact_text",
+      "source_mapping": "S3、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r063",
+      "scene_id": "c09r-shot-063",
+      "line_text_sha256": "92e5b20910a096027f7132d9db324e244edf73266e77b774dc2adac9c511b8cc",
+      "change": "retained_exact_text",
+      "source_mapping": "S3、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r064",
+      "scene_id": "c09r-shot-064",
+      "line_text_sha256": "c903e2ce635b0cc00234b8e352e7f237de04afc6c7acc69f178004d0fe84006c",
+      "change": "retained_exact_text",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r065",
+      "scene_id": "c09r-shot-065",
+      "line_text_sha256": "5fcdf98df707720fd1e4b0d91fdb474e74a76a54983fd50de9fbbd3937907a18",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r068",
+      "scene_id": "c09r-shot-068",
+      "line_text_sha256": "a90f8a46714e9289a40064ec9f12efdbb6b545f76dda40912eaa853c1f9cf62b",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r069",
+      "scene_id": "c09r-shot-069",
+      "line_text_sha256": "90b8864a50b5a5f8de6da6220f7a3cb46bb5748d90653b2fa1e01f1a5a96cbf8",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r070",
+      "scene_id": "c09r-shot-070",
+      "line_text_sha256": "ce6e71b0c0e3f8f9bc744c94de8da38e3dcb6ebe13d6e46e1b8afbf09baff7fe",
+      "change": "retained_exact_text",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r071",
+      "scene_id": "c09r-shot-071",
+      "line_text_sha256": "e242ac4eb5b9fcaf119ca9395a89f18eb6ea4c9e0b5667cf975a2edd117faf11",
+      "change": "retained_exact_text",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r072",
+      "scene_id": "c09r-shot-072",
+      "line_text_sha256": "5044162c4d5144c5a38d7018ba379837a9c7fc218275830459e846208e5f63a0",
+      "change": "retained_exact_text",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r073",
+      "scene_id": "c09r-shot-073",
+      "line_text_sha256": "eb2647ff9fe1194340137c3e50d5af041003dba445d42bb925a07e6e766a4d28",
+      "change": "retained_exact_text",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r074",
+      "scene_id": "c09r-shot-074",
+      "line_text_sha256": "098dba9555417c5eb8c21af94e403097eeacc1f6093db594d46e45d11744586e",
+      "change": "retained_exact_text",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r075",
+      "scene_id": "c09r-shot-075",
+      "line_text_sha256": "37f856a35dca21b122690b6e5ae339b91de5cdbe713f3697d29e632af177de67",
+      "change": "retained_exact_text",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r076",
+      "scene_id": "c09r-shot-076",
+      "line_text_sha256": "8cca69ad9b004060aa58b76a55936689838d502ac947e1db18574137861042ae",
+      "change": "retained_exact_text",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r077",
+      "scene_id": "c09r-shot-077",
+      "line_text_sha256": "b3817cf01344bb4be7a56dced74426b3a787821b5317f802bbb95ec193578cc0",
+      "change": "retained_exact_text",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r078",
+      "scene_id": "c09r-shot-078",
+      "line_text_sha256": "74684b596b99ad3153d5ffc50ebcfb040e2a513698176b57f7afaa23adc3c80e",
+      "change": "retained_exact_text",
+      "source_mapping": "S3、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S3、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r079",
+      "scene_id": "c09r-shot-079",
+      "line_text_sha256": "ae14d2bc6545c96f346228592633bedb0a06a1b2afc3cce5205b4fc85149d00e",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r080",
+      "scene_id": "c09r-shot-080",
+      "line_text_sha256": "ac6f26080c0695e3f5d6790dcdbaadfb6d72b56f21d293b35fa459d754e824bf",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r081",
+      "scene_id": "c09r-shot-081",
+      "line_text_sha256": "80f3f5182d38d401c7a3ff548faf951143e78d132f3ff172c3f6d777f94e668e",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r082",
+      "scene_id": "c09r-shot-082",
+      "line_text_sha256": "fe07e1123bb70d8db7ceded6be21f6c86b45728cb4cca62fc8d80b4b9b9ac6f6",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r093",
+      "scene_id": "c09r-shot-093",
+      "line_text_sha256": "45c4f4ca1e26b5be39a1ef69351e6e1b9f680f82c398bdc68630379d7a31a5ce",
+      "change": "changed_text",
+      "source_mapping": "S7",
+      "source_verdict": "HOLD",
+      "source_evidence": [
+        "S7"
+      ],
+      "source_note": "S7僅支持公司2012回顧其1973服裝使用標籤；新句刪品牌回顧歸屬，並以品牌名字這時才出現擴成命名首次，超出此原件範圍。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r083",
+      "scene_id": "c09r-shot-083",
+      "line_text_sha256": "7ea5da8d7314580d2aa46115c3059cbc2394a5fa2b6e9a72834c33a7bfe079cf",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r084",
+      "scene_id": "c09r-shot-084",
+      "line_text_sha256": "0f6e58aeaf3f8c47efbe84d4746435a1e3cc8e70e937c5ed320e9a3295756a4d",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r085",
+      "scene_id": "c09r-shot-085",
+      "line_text_sha256": "3dc9f48fd982ad6860d7534ff26d76d77cabd87c28eae4f9b48f362b276b0072",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r086",
+      "scene_id": "c09r-shot-086",
+      "line_text_sha256": "7440e2b08580428460b284cf15c92a1e717ce32a3aabfd99ca7731c0f908f809",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r087",
+      "scene_id": "c09r-shot-087",
+      "line_text_sha256": "997e86fe3b805e74556da2a4759f51790a2098982d928c9dc750ce6322897399",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r088",
+      "scene_id": "c09r-shot-088",
+      "line_text_sha256": "9593ae68c8b4bbcc955e328b920470fbdb6f0c5e90864625018bd0ceadfb2b49",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r089",
+      "scene_id": "c09r-shot-089",
+      "line_text_sha256": "cac8bea5393462fb0736b5f49edd2627a63bee0672a42a0ff5ca5b6227dc3dfd",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r090",
+      "scene_id": "c09r-shot-090",
+      "line_text_sha256": "c47588e36377bc1fea1488ad70785704ee26cdff1e95c6776ffb71f160533fc4",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r091",
+      "scene_id": "c09r-shot-091",
+      "line_text_sha256": "02774fc4cb4b3ff2d9f54d3c8c53934e30a2e73a5963d02d1211184650acf928",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r092",
+      "scene_id": "c09r-shot-092",
+      "line_text_sha256": "fc965d0a778925af0b47ab4c2e7db3960b043c14bd38cd42675b5771a6a5ac29",
+      "change": "changed_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4",
+        "S7",
+        "EDITORIAL"
+      ],
+      "source_note": "093已有服裝標籤，回呼對準同物件；只問與工廠的關聯，沒有自加政策導致服裝收入因果。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r095",
+      "scene_id": "c09r-shot-095",
+      "line_text_sha256": "cb258981f8332ab70d9363885c9dafd07982aa6f6bafc9c31f56d3b8d0a2256a",
+      "change": "changed_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "加修納德說保當事人補貼說法，仍有098非獨立財報限定。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r096",
+      "scene_id": "c09r-shot-096",
+      "line_text_sha256": "5d02739cecab377a89849d8f83d1cb0849b7938dff8877a41640382ce7139977",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r097",
+      "scene_id": "c09r-shot-097",
+      "line_text_sha256": "e69994993ed7237b8eb4dc80e388fbc1f341f908c6021c76ff7e2a12c69b1d34",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r098",
+      "scene_id": "c09r-shot-098",
+      "line_text_sha256": "b436e46de15f6763596a5268b1691cd4d3cde16b32f4f37631868ddde40f3dc7",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r099",
+      "scene_id": "c09r-shot-099",
+      "line_text_sha256": "42c6196d505dad84c36cb797c14a46940b5171d1be46c64105d7bbfd141134d5",
+      "change": "retained_exact_text",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r100",
+      "scene_id": "c09r-shot-100",
+      "line_text_sha256": "3db238f1f8ac29e833b59435770389950c0701e123722fddb64ecfe3252dbe27",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r101",
+      "scene_id": "c09r-shot-101",
+      "line_text_sha256": "bd5bb693503db9c8c85715237af1aa1245f6a1db6584a3740ae75c17016e5f1c",
+      "change": "retained_exact_text",
+      "source_mapping": "S2",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r102",
+      "scene_id": "c09r-outro",
+      "line_text_sha256": "f26e2a6a1364254231b37d770373adac93190a3d669aade9a5a53a26faa0f16b",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S4",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S4"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r103",
+      "scene_id": "c09r-outro",
+      "line_text_sha256": "1c0b0207c35b3041d5249de992d4ad7c45051a345015c7c999349de4ea5a482f",
+      "change": "retained_exact_text",
+      "source_mapping": "S2、S3",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "S2、S3"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    },
+    {
+      "line_id": "c09r104",
+      "scene_id": "c09r-outro",
+      "line_text_sha256": "ebd74bb0a2e298a0af37fbc1c9f7e7136d7cfa82c957d761056f4a7d6ba11600",
+      "change": "retained_exact_text",
+      "source_mapping": "編輯",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "編輯"
+      ],
+      "source_note": "與r6精確同文；移位段另核時序，來源/書面畫面PASS基線有效。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "保留畫面data與r6精確相同；服裝標籤圖不證命名首次。"
+    }
+  ]
+}

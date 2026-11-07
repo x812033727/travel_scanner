@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "revision": "dyson-r2",
+  "role": "AUTHOR_DELTA_READBACK_NOT_INDEPENDENT_REVIEW",
+  "source_report_sha256": "00350b7fccd855790d73665f771fc457eb1cdf32185576a0623379b78772d16c",
+  "prior_freeze_sha256": "5f175ecb3d8251f0df47fcef37847a36c24e17ef64ab276017e54fc19fd4f105",
+  "native_state_r1": "NOT_PREPARED_NOT_READ",
+  "native_state_r2": "NOT_PREPARED_NOT_READ",
+  "actual_native_round_count": 0,
+  "prior_source_HOLD_is_not_native_round1_HOLD": true,
+  "sole_changed_line_id": "swdr",
+  "video_json_leaf_diff": [
+    {
+      "path": "/scenes/101/lines/0/text",
+      "before": "戴森在後來口述裡，把取得Apex授權放在一九八六年。",
+      "after": "戴森在後來口述裡，把與Apex達成授權協議放在一九八六年。"
+    }
+  ],
+  "narration_json_leaf_diff": [
+    {
+      "path": "/101/text",
+      "before": "戴森在後來口述裡，把取得Apex授權放在一九八六年。",
+      "after": "戴森在後來口述裡，把與Apex達成授權協議放在一九八六年。"
+    }
+  ],
+  "author_rows_leaf_diff": [
+    {
+      "path": "/101/text",
+      "before": "戴森在後來口述裡，把取得Apex授權放在一九八六年。",
+      "after": "戴森在後來口述裡，把與Apex達成授權協議放在一九八六年。"
+    }
+  ],
+  "claim_rows_leaf_diff": [
+    {
+      "path": "/101/claim",
+      "before": "戴森在後來口述裡，把取得Apex授權放在一九八六年。",
+      "after": "戴森在後來口述裡，把與Apex達成授權協議放在一九八六年。"
+    }
+  ],
+  "all_other_narration_exactly_equal": true,
+  "all_138_prompts_and_camera_exactly_equal": true,
+  "all_25_loops_exactly_equal": true,
+  "opening_8_lines_exactly_equal": true,
+  "complete_2_image_pair_plans_and_keys_exactly_equal": true,
+  "original_research_3_sha_unchanged": true,
+  "raw_203_sha_unchanged": true,
+  "old_related32_and_backend_snapshot_sha_unchanged": true,
+  "immutable_lexicon_files_sha_unchanged": [
+    {
+      "path": "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/current.json",
+      "sha256": "7793b04bf4ffe93d4a3f2ae19ddb947a7ddb254a53034f63ef53faf917d88ed6"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/events/9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339.json",
+      "sha256": "9406584efa77e67ee52721011ad2893f40f947f59ab04c8a8d869885bfc13339"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/story-lexicon/versions/502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d.json",
+      "sha256": "502241d1d9f8de6c7fbd53c8229638f6e35128b438e44df354c79579993e4b8d"
+    }
+  ],
+  "normal_lexicon_sequence": 1,
+  "source_delta_recheck": "PENDING_OTHER_REVIEWER",
+  "source_pass_claimed": false,
+  "verify_created": false,
+  "owner_approval_created": false,
+  "paid_calls": 0
+}

@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-10-26T03:17:43.148Z",
+  "status": "PASS",
+  "scope": "Isolated injected child-process results; actual readonly C20 proof used as baseline, no assembly or provider called.",
+  "file_sha256": "1dccccc1f8189d9f9474a0849e8c51f1b306e8dbb4391b23aa486253d5cfb6d1",
+  "cases": [
+    "default source/media/placement match actual readonly C20 proof",
+    "source override, alternate operation and unknown options rejected before preflight",
+    "missing slug or wrong workdir rejected before preflight",
+    "failed child proof stops assembly",
+    "all project, source, package and asset proof fields fail closed",
+    "explicit force/adoption/placement preserved, no silent adoption"
+  ],
+  "real_assembly_calls": 0,
+  "paid_requests": 0,
+  "pins_written": 0
+}

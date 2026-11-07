@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "revision": "c09-r7-teaser-image-plan-v1",
+  "status": "WRITTEN_REUSE_PLAN_PENDING_INDEPENDENT_SOURCE_REVIEW_AND_ACTUAL_MEDIA",
+  "author": "/root/c09_c10_c08_visual_plan",
+  "not_a_video_schema_extension": true,
+  "not_a_keyframes_manifest": true,
+  "generated_images": 0,
+  "actual_same_asset_verified": false,
+  "source_video_sha256": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+      "script.md": "186602e9f7511c10c5f4bf43ea2206c9a1a0bd787381e31412ae8765735a9946",
+      "narration-only.json": "18c5843875be1525341d3b0f24992baafc227f7b975487a8369e2517a6383d25",
+      "claims.json": "8f9b5d2936b0a18cb729cdac3052103fe6edcf0719830a68eac1214cfc48f686"
+    },
+    "claims_md_sha256": "32989c6542a1ec4a4b85fa0cd3646123dc721caded5293e80e520e6f449ac82f",
+    "series_sha256": "5f9e789d2acb26c7c97e117292b83897c53eb60f0e4bfde9a3645f6b4e813abb",
+    "brief_sha256": "55475b788d21d3d51429a9567f0ea660e47a6ecb4c1c373e87fa590082820efb"
+  },
+  "rule": {
+    "file": ".agents/skills/youtube-video/references/script-writing.md",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）"
+  },
+  "code_readback": {
+    "files_sha256": {
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+      "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+      "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+    },
+    "still_alias_available": false,
+    "clip_data_source_is_not_still_alias": true,
+    "same_prompt_is_not_same_final_asset": true,
+    "camera_is_part_of_composed_prompt": true,
+    "per_scene_judge_and_retake_can_change_final_selection": true
+  },
+  "pairs": [
+    {
+      "pair_id": "climbing-bag-shared-still",
+      "setup_scene_id": "c09r5-shot-006",
+      "setup_line_id": "c09r5006",
+      "payoff_scene_id": "c09r5-shot-088",
+      "payoff_line_id": "c09r5088",
+      "prompt": "Medium shot on a plain granite ledge below a tall rock wall, an anonymous climber resting a closed plain gear bag beside a coiled rope, diffuse daylight.",
+      "camera": "tilt up",
+      "no_result_drawn_in_teaser": "The closed gear bag conceals its contents. The neutral cliff context does not show pitons, chocks, a hammerless result, route completion or a named climber. The body narration supplies the factual answer; this is an anonymous conceptual context, not a claimed historical photograph.",
+      "source_scope": "Retains the existing first-person 1974 publication about the 1973 climb and the separate clean-climbing source boundaries; no new historical action, location precision, person likeness or claim about one preserved physical bag.",
+      "source_line_text": "開場那個器材袋，這回沒有岩釘，換成楔塊；繩索和其他攀登裝備，仍跟著人上岩壁。",
+      "setup_line_text": "我最想看的是，他自己站到大岩壁下，會帶什麼。",
+      "shared_prompt": "Medium shot on a plain granite ledge below a tall rock wall, an anonymous climber resting a closed plain gear bag beside a coiled rope, diffuse daylight.",
+      "prompt_sha256": "8115ff40d59719eb84690080d20e1339f02b0e18ff38184a4abc2d0b8c2eecf3",
+      "cast": "",
+      "prompts_and_cameras_exactly_equal": true,
+      "native_composed_prompt": "Medium shot on a plain granite ledge below a tall rock wall, an anonymous climber resting a closed plain gear bag beside a coiled rope, diffuse daylight.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: tilt up",
+      "native_composed_prompt_sha256": "59d3b8c894bdc31f8bdc92a721f3e8d7ad1008f2b659ca6887c77eda54998551",
+      "native_same_input_key_rehearsal": {
+        "pure_local_functions_only": true,
+        "provider": "minimax",
+        "model": "image-01",
+        "look_sha256": "dcc81bf4d80ac76646d231d084615282af4dc2731b663c541e202c5aae2c0b77",
+        "image_selection_version": 1,
+        "nominal_image_size": "1K",
+        "width": 1920,
+        "height": 1080,
+        "seed": 1,
+        "seed_offset": 0,
+        "takes": 1,
+        "references": [],
+        "negative": "",
+        "requested_size": null,
+        "correction_list": [],
+        "prompt_budget_chars": 1500,
+        "native_stage_image_key": "56004e358e0d7e9d",
+        "base_key": "54ff8953f25502f9",
+        "parameters_are_declared_plan_not_backend_readback": true,
+        "no_provider_call": true
+      },
+      "planned_generate_once_at": "c09r5-shot-088",
+      "planned_reuse_at": "c09r5-shot-006",
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false
+    }
+  ],
+  "production_preconditions": [
+    "Normal reviewed budget account and activation, current script approval, actual measured speech and other ordinary gates must be satisfied first.",
+    "Read current live provider/model/dimensions/reference hashes/image-selection version; declared local key examples are not live provider readiness or a quote.",
+    "Generate and accept the payoff scene once via the ordinary keyframes --shot PAYOFF --takes 1 route.",
+    "Before executing any teaser command, compute the exact current request key and inspect the ordinary live cache record plus the real stored file SHA. Cache must already contain the accepted payoff bytes. A cache miss, missing/unreadable file, hash mismatch, request difference or selection change stops the pair before a second dispatch; never use a request as a cache probe.",
+    "Only after that read-only live cache proof, use ordinary keyframes --shot SETUP --takes 1 with the exact same request inputs. Both scene contexts still require their own real judge acceptance.",
+    "Do not independently retake a teaser or change its seed. If either context fails, stop and reconcile/review the pair together under the ordinary guarded workflow.",
+    "After any subtitle-band trim or other derivative, compare actual final manifest assignments and bytes: teaser and payoff must use the same accepted file SHA. If not, stop before render.",
+    "Decode actual final assembly and verify both positions use that same accepted still, with no duplicate teaser purchase on the ledger."
+  ],
+  "planned_cli_pairs": [
+    {
+      "payoff": "keyframes --shot c09r5-shot-088 --takes 1",
+      "read_only_live_cache_check_required_before_teaser": true,
+      "teaser": "keyframes --shot c09r5-shot-006 --takes 1"
+    }
+  ],
+  "pending_actual_checks": {
+    "all_media_files_exist": false,
+    "live_cache_file_hash_verified": false,
+    "both_scene_judges_passed": false,
+    "final_manifest_same_sha_verified": false,
+    "assembled_same_image_verified": false,
+    "no_duplicate_purchase_verified": false
+  },
+  "paid_requests": 0,
+  "backend_calls": 0,
+  "git_actions": 0
+}

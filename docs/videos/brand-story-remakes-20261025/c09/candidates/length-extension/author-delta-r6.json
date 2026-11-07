@@ -1,0 +1,139 @@
+{
+  "revision": "length-extension-r6",
+  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_WRITTEN_VISUAL_DELTA_AND_TWO_NEW_ISOLATED_READERS",
+  "baseline": "history/r5",
+  "baseline_input_sha256": {
+    "video.json": "22029a19ce8643fc7694ee78b186f68db93acbde9ce7ae70cd3d5928dfee1ff1",
+    "script.md": "0ddbec18d204ecc22fe210c915f618636c224ebb823a86d81d22bccfa503d64a",
+    "narration-only.json": "ace0923859bd9ecf2d85a0feb225cadbcee7eda1475b4beb6d519bc0041c56a6",
+    "claims.json": "9d22c84c69a70d31fceec4bc6a986081fe8a335211c7baa867dea37e169fd12d"
+  },
+  "retained_ids_and_unmodified_visuals_preserved": true,
+  "deleted_ids": [
+    "c09r5042",
+    "c09r5071",
+    "c09r5072",
+    "c09r5073",
+    "c09r5085"
+  ],
+  "modified_lines": [
+    {
+      "id": "c09r5043",
+      "key": "use_rockhard",
+      "before_text": "他們後來在型錄寫得很直接：花崗岩比合金鋼釘軟，敲拔還會讓薄岩片鬆動、剝落。",
+      "after_text": "回到開場的釘孔，型錄把原因寫得很直接：花崗岩比合金鋼釘軟，敲拔會使薄岩片鬆落。",
+      "before_anchor": "S2:029",
+      "after_anchor": "S2:029"
+    },
+    {
+      "id": "c09r5068",
+      "key": "resistance_viewer",
+      "before_text": "換成你，前面的人用過一種辦法，輪到你卻叫你收起來，你會只點頭嗎？",
+      "after_text": "我更想問，提出這個要求的修納德，自己能不能帶著楔塊完成一條大岩壁路線？",
+      "before_anchor": "S3:005",
+      "after_anchor": "S3:005;S4:009;S8:011;S8:019"
+    }
+  ],
+  "modified_visuals": [
+    {
+      "scene_id": "c09r5-shot-068",
+      "field": "data.prompt",
+      "before": "Medium shot at a quiet camp beside a plain rock wall, one anonymous craftsperson holding a small hammer while facing a closed gear bag, soft side light from the left.",
+      "after": "Medium shot at a plain granite practice area, one unidentified person examining a small unmarked metal wedge below a tall rock surface, soft overcast light."
+    }
+  ],
+  "loop_changes": [
+    {
+      "operation": "rebind",
+      "before": {
+        "setup": "c09r5041",
+        "payoff": "c09r5042",
+        "what": "重複敲拔在岩壁留下的實際痕跡"
+      },
+      "after": {
+        "setup": "c09r5041",
+        "payoff": "c09r5043",
+        "what": "花崗岩與鋼釘的材質差異，怎樣使薄岩片鬆落"
+      }
+    },
+    {
+      "operation": "replace",
+      "before": {
+        "setup": "c09r5071",
+        "payoff": "c09r5072",
+        "what": "商業身分面對的具體批評"
+      },
+      "after": {
+        "setup": "c09r5068",
+        "payoff": "c09r5106",
+        "what": "提出換用楔塊要求的人，能否親自完成一條大岩壁路線"
+      }
+    },
+    {
+      "operation": "delete",
+      "before": {
+        "setup": "c09r5085",
+        "payoff": "c09r5091",
+        "what": "賣家到大岩壁時第一步的實際結果"
+      }
+    }
+  ],
+  "units_by_line": [
+    {
+      "id": "c09r5042",
+      "operation": "delete",
+      "before_units": 30,
+      "after_units": 0,
+      "net_units": -30
+    },
+    {
+      "id": "c09r5043",
+      "operation": "replace",
+      "before_units": 33,
+      "after_units": 35,
+      "net_units": 2
+    },
+    {
+      "id": "c09r5068",
+      "operation": "replace",
+      "before_units": 28,
+      "after_units": 32,
+      "net_units": 4
+    },
+    {
+      "id": "c09r5071",
+      "operation": "delete",
+      "before_units": 29,
+      "after_units": 0,
+      "net_units": -29
+    },
+    {
+      "id": "c09r5072",
+      "operation": "delete",
+      "before_units": 33,
+      "after_units": 0,
+      "net_units": -33
+    },
+    {
+      "id": "c09r5073",
+      "operation": "delete",
+      "before_units": 36,
+      "after_units": 0,
+      "net_units": -36
+    },
+    {
+      "id": "c09r5085",
+      "operation": "delete",
+      "before_units": 27,
+      "after_units": 0,
+      "net_units": -27
+    }
+  ],
+  "net_spoken_units": -149,
+  "unchanged_retained_narration_lines": 105,
+  "unchanged_retained_scene_visuals": 104,
+  "source_bytes_changed": false,
+  "new_sources": [],
+  "actual_audio_measured": false,
+  "runtime_risk": "Body after the cold opening is 2918 spoken units; natural 4–5 units per second may miss 720–840 seconds. No runtime approval, slowdown, pauses, or inventory padding."
+}
