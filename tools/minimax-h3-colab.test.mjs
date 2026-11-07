@@ -799,6 +799,27 @@ test("refine.py --check: a sound manifest passes; every error that would waste a
   assert.ok(!existsSync(env.FAKE_COLAB_LOG), "colab was never called");
 });
 
+const FFMPEG = spawnSync("ffmpeg", ["-version"]).status === 0 && spawnSync("ffprobe", ["-version"]).status === 0;
+
+test("refine.py --check: a draft trimmed to a length that is not 17k+5 frames is refused before a session starts (2026-11-07)", { skip: !POSIX || !FFMPEG }, () => {
+  const { env, dir, job } = stagesDir();
+  const clip = (name, frames) => {
+    const out = path.join(dir, "draft", name);
+    const made = spawnSync("ffmpeg", ["-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=gray:s=64x32:r=24", "-frames:v", String(frames), "-pix_fmt", "yuv420p", out]);
+    assert.equal(made.status, 0, String(made.stderr));
+    return `draft/${name}`;
+  };
+  const manifest = path.join(dir, "frames.json");
+  writeFileSync(manifest, JSON.stringify({ jobs: [
+    { ...job, id: "c19", input_video: clip("c19-77.mp4", 77), output_name: "c19.mp4" },
+    { ...job, id: "c20", input_video: clip("c20-73.mp4", 73), output_name: "c20.mp4" },
+  ] }));
+  const result = run(PYTHON, ["-I", REFINE, "--manifest", manifest, "--check"], env);
+  assert.equal(result.code, 1);
+  assert.match(result.err, /c19: the draft has 77 frames; the refine notebook takes only H3 lengths 17k\+5/);
+  assert.doesNotMatch(result.err, /c20:/);
+});
+
 test("h3.sh refine: one G4 session without high-RAM, three uploads per job, the settings in the environment, then stop", { skip: !POSIX }, () => {
   const { env, dir, job } = stagesDir();
   const manifest = path.join(dir, "r.json");
