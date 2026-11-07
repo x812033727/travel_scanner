@@ -54,3 +54,6 @@ scope:
 - 2026-11-06 完整備份（站主：「備份要做好所有備份完整」，選每集一條）：`transfer/zt-e043-media` … `zt-e056-media`、`zt-e057-media`、`zt-e001-r2-media`、`zt-series-media`（`_series`、合集、各集發布包資料夾），共約 10 GB、17 條，每條推完都用 ls-remote 對過 commit。
   每條是孤立 commit，根目錄 `README-backup.md` 寫還原方法；沒推的只有工具免費重做的：`clips/`、`segments-v4/`、`review/`、`cut/*.mp4`（成片也在站上）。
 - 2026-11-07 站主：「第一集也修掉」。s08 從 0.6 秒、s16 從 1.7 秒起剪（開頭閃一下別的畫面），重剪後 cut-jumps 0，`import --from --force` 重送後台。
+- 2026-11-07 獨立審片：嚴重 c03 沒有閃電（親自看過：背影一路走、畫面沒發白）、c16 米缸半缸以上（台詞「都快見底了」）；中等 c12、c13、c02、c35、c32、c28、小禾的兔子是布偶。
+  站主：修嚴重與中等，**上限提高到 US$32**。閃電用剪接加：`assemble-v4.mjs` 新增 `flash`（`edit-dh-e901.json` `"flash": {"s03": 0.4}`，加雷聲）；c32、c28 用裁剪；
+  c02、c12、c13、c15、c16、c35 重抽（規格交給子代理重寫中）。

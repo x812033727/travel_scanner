@@ -117,7 +117,9 @@ for (const scene of video.scenes) {
     return p;
   });
   if (DUB) { starts[scene.id] = { start: t, dur }; report.push(`${scene.id} ${t.toFixed(2)} +${dur.toFixed(2)}s`); t += dur; continue; }
-  const decor = `${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}`;
+  // `flash: {"s03": 0.35}`: the shot ends in a white flash of that many seconds (a lightning cut the clip did not draw, e001-r2 c03).
+  const flashOut = edit.flash?.[scene.id] ? `,fade=t=out:st=${Math.max(0, dur - edit.flash[scene.id]).toFixed(3)}:d=${edit.flash[scene.id]}:color=white` : "";
+  const decor = `${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}${flashOut}`;
   let vf, note;
   if (clip) {
     const from = src ? Number(src.from_s ?? 0) : 0;
