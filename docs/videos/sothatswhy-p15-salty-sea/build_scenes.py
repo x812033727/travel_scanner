@@ -261,7 +261,7 @@ kid("kid-guess", K("tapping her chin with one finger and squinting in thought", 
 chief("chief-later", C("smiling with a small playful shrug"),
       c("先別急，我們先去一片很熱的海看看。", "賣關子"))
 scene("red-sea", "Wide view of a hot dry desert coast with bare sandy mountains beside a deep blue sea under a blazing sun, heat shimmer, " + DAY,
-      c("像紅海，旁邊都是沙漠，太陽很大，"), c("很少下雨，也幾乎沒有河流進來。"))
+      c("像紅海，旁邊幾乎都是沙漠，太陽很大，"), c("很少下雨，也幾乎沒有河流進來。"))
 kid("kid-fire-up", K("fanning her face with one hand on a hot sunny day, squinting", where=BEACH),
     k("爐火開大，又不加水！", "恍然"))
 scene("red-sea-salty", "Close-up of sparkling white salt crystals along a rocky shore of a deep blue sea under a hot sun, " + DAY,
@@ -358,7 +358,7 @@ doc = {
         "title": "河水一直流進海裡，海為什麼還是鹹？｜原來如此事務所",
         "description": "小問在海邊被浪打到，喝了一口好鹹的海水；回家路上，她卻看到一條淡淡的河一直流進海裡。全世界的河每天都在倒淡水，海怎麼沒有被沖淡？\n\n"
                        "這一集，所長和小問把整片海想成一鍋一直在熬的湯：先看河水從山上的石頭帶走了一點點鹽，再看太陽為什麼只搬得走水、搬不走鹽，"
-                       "最後潛到海底，看貝殼、泥沙、熱泉和古老的鹽層怎麼把鹽收走，以及為什麼紅海特別鹹、波羅的海卻淡淡的。\n\n"
+                       "最後潛到海底，看貝殼、泥沙、熱泉和古老的鹽層怎麼把海水裡的東西收走，以及為什麼紅海特別鹹、波羅的海卻淡淡的。\n\n"
                        "本集插圖由 AI 生成，畫的是示意，不是量測。片中的鹽度、年數與鹽量都是海洋機關與教材裡的大約數字，每片海、每個季節都會不一樣。"
                        "海水很鹹，請不要喝。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["海水", "為什麼海是鹹的", "鹽度", "水循環", "七股鹽山", "科普", "原來如此事務所"],
@@ -376,9 +376,9 @@ doc = {
         {"title": "Chamberlin, Shaw & Rich, Our World Ocean, 8.09 Residence Time (LibreTexts)", "url": "https://geo.libretexts.org/Bookshelves/Oceanography/Our_World_Ocean%3A_Understanding_the_Most_Important_Ecosystem_on_Earth_Essentials_Edition_(Chamberlin_Shaw_and_Rich)/03%3A_New_Page/08%3A_The_Water_Cycle_and_Ocean_Salinity/8.09%3A_Residence_Time", "checked_on": CHECKED},
         {"title": "Martha R. Scott, Ocean Chemical Processes (Water: Science and Issues, Gale)", "url": "https://www.encyclopedia.com/science/news-wires-white-papers-and-books/ocean-chemical-processes", "checked_on": CHECKED},
         {"title": "HELCOM: Salinity of the Baltic Sea (archived)", "url": "https://archive.iwlearn.org/helcom.fi/environment2/nature/en_GB/salinity/index.html", "checked_on": CHECKED},
-        {"title": "NSIDC: Science of sea ice", "url": "https://nsidc.org/learn/parts-cryosphere/sea-ice/science-sea-ice", "checked_on": CHECKED},
+        {"title": "Wikipedia: Red Sea", "url": "https://en.wikipedia.org/wiki/Red_Sea", "checked_on": CHECKED},
+        {"title": "Wikipedia: Baltic Sea", "url": "https://en.wikipedia.org/wiki/Baltic_Sea", "checked_on": CHECKED},
         {"title": "Wikipedia: Dead Sea", "url": "https://en.wikipedia.org/wiki/Dead_Sea", "checked_on": CHECKED},
-        {"title": "交通部觀光署：七股鹽山", "url": "https://www.taiwan.net.tw/m1.aspx?sNo=0001119&id=10352", "checked_on": CHECKED},
         {"title": "水產試驗所：臺灣周邊海域漁場環境監測IV（107年度）", "url": "https://fisheryprogress.org/sites/default/files/documents_actions/Environmental%20monitoring%20of%20fishing%20grounds%20in%20the%20coastal%20and%20offshore%20waters%20around%20Taiwan.pdf", "checked_on": CHECKED},
     ],
     "assets": [],

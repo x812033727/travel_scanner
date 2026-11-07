@@ -4,6 +4,8 @@
 2026-11-07 由研究代理逐頁打開來源（WebFetch）寫成筆記，撰稿只用筆記裡的數字；引文照頁面原文。標「只看到搜尋摘要」的是頁面回 403／503，查核時請再開一次。
 方括號數字對應文末〈來源〉。第一版稿子由另一個代理逐行查核（[`verify-1.md`](verify-1.md)，OK 197、FIX 7 項）；第二版（盲評與評分之後重寫）的查核在 `verify-2.md`。
 
+**第三、四版（2026-11-07）**：再依第二、三位盲評改寫：拿掉七股（C11）、早期的海（C17 後半）、死海漂浮；鹽的出口統一說成「鍋底和鍋邊」（C13–C16）；四十層樓（C18）移到第一章回答「一點點怎麼會變鹹」。新增與改寫的句子由 `verify-3.md` 查核。
+
 **第二版（2026-11-07）**：依盲評、評分與 verify-1 改寫。拿掉 C08（地球的水九十六份）、C09（杯子裡的水）、C10（海冰）與極地那一句；七股不再唸二〇〇二年。行號已重新編過，下面各條的行號是第一版的，查核以 `video.json` 的文字為準。
 
 ## C00 海裡的鹽大部分從陸地來（回應「海底有鹽山」）
@@ -53,12 +55,6 @@
 - **來源**：[10] 蒸發移除水、留下溶解的鹽（verify-1 指出 [9] 沒有這句，改引 Gale）；[2] 雨補充河水；[1] 鹽來自岩石與海底。
 - **注意**：高。「太陽只搬得動水，搬不動鹽」是比喻。在家曬一碟鹽水留下白圈（p073–p074）是蒸發留下溶質的直接推論，安全、不用火。
 
-## C11 七股曾經是台灣最大的曬鹽場；曬鹽是讓太陽曬乾海水
-
-- **片中**：p088–p091
-- **來源**：[13] 「七股鹽場過去是臺灣最大的曬鹽場」「民國91年（西元2002年）5月廢曬，結束臺灣338年曬鹽歷史」。
-- **注意**：觀光署頁面沒有寫曬鹽的步驟；verify-1 以中文維基〈鹽田〉與英文維基 Salt evaporation pond 確認方法。第二版不唸二〇〇二年。
-
 ## C12 水在海裡平均大約三千年；鹽住幾千萬年
 
 - **片中**：p097–p102、p202
@@ -105,7 +101,7 @@
 
 - **片中**：p159–p163
 - **來源**：[7] "strong evaporation and other processes do make the Red and Mediterranean Seas saltier."；紅海表層約 40–41（教材 40；Britannica "rises to 41 psu"，只看到搜尋摘要）。
-- **注意**：40 − 35 = 5，片中說「大約五公克」。「幾乎沒有河流進來」：紅海周邊沒有長年流入的大河（查核時請確認一個來源）。
+- **注意**：40 − 35 = 5，片中說「大約五公克」。「幾乎沒有河流進來」：Wikipedia Red Sea "no significant rivers or streams drain into the sea"（verify-2）；周邊是 "arid land, desert and semi-desert"，所以說「幾乎都是沙漠」。
 
 ## C20 波羅的海北端很淡（一公斤只有幾公克）
 
@@ -116,7 +112,7 @@
 ## C21 河口附近較淡（第二版拿掉極地那一句）
 
 - **片中**：p170–p174
-- **來源**：[15] "in polar regions, it may be less than 30 PSU"；[7] "significantly fresher waters appear … in the icy high latitudes"、"Rivers such as the Amazon carry tremendous amounts of fresh runoff from land and spread plumes far into the sea."
+- **來源**：[7] "significantly fresher waters appear … in the icy high latitudes"、"Rivers such as the Amazon carry tremendous amounts of fresh runoff from land and spread plumes far into the sea."
 - **注意**：「冰融成的淡水」是極地較淡的原因之一（NSIDC 的頁面說海冰排鹽、融化時是較淡的水），查核時確認措辭。
 
 ## C22 台灣附近的海水一公斤大約三十四公克多；夏天雨多、河水多，近岸較淡
@@ -157,6 +153,6 @@
 10. Martha R. Scott, Ocean Chemical Processes, in Water: Science and Issues (Gale). https://www.encyclopedia.com/science/news-wires-white-papers-and-books/ocean-chemical-processes
 11. HELCOM, Salinity (archived). https://archive.iwlearn.org/helcom.fi/environment2/nature/en_GB/salinity/index.html
 12. Wikipedia, Dead Sea. https://en.wikipedia.org/wiki/Dead_Sea
-13. 交通部觀光署，七股鹽山。https://www.taiwan.net.tw/m1.aspx?sNo=0001119&id=10352
 14. 水產試驗所，臺灣周邊海域漁場環境監測IV（107年度）。https://fisheryprogress.org/sites/default/files/documents_actions/Environmental%20monitoring%20of%20fishing%20grounds%20in%20the%20coastal%20and%20offshore%20waters%20around%20Taiwan.pdf
-15. NSIDC, Science of sea ice. https://nsidc.org/learn/parts-cryosphere/sea-ice/science-sea-ice
+16. Wikipedia, Red Sea. https://en.wikipedia.org/wiki/Red_Sea
+17. Wikipedia, Baltic Sea. https://en.wikipedia.org/wiki/Baltic_Sea
