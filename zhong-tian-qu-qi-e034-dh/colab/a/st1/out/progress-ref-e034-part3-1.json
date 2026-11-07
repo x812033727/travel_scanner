@@ -1,0 +1,65 @@
+{
+  "task": "batch",
+  "status": "completed",
+  "session": "zt34",
+  "gpu": "G4",
+  "jobs": [
+    {
+      "id": "s41",
+      "title": "zhong-tian-qu-qi-e034 s41 ref2va",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s41.mp4",
+      "started_at": "2026-10-31T01:19:24Z",
+      "seed": 330000,
+      "duration_seconds": 5.0,
+      "finished_at": "2026-10-31T01:21:51Z",
+      "bytes": 1092174
+    }
+  ],
+  "log_tail": [
+    "Free disk GiB: 194.0",
+    "重用本次 Colab session 已安裝的 ComfyUI 環境",
+    "ComfyUI: /content/ComfyUI",
+    "[colab] Executing cell 2/8 - 654c99ee...",
+    "Ref2VA variant: int8_convrot (CUDA 13.0 ; GPU capability (12, 0) )",
+    "diffusion_models minimax_h3_ref2va_pruned_int8_convrot.safetensors 19.53 GiB",
+    "text_encoders qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors 14.61 GiB",
+    "vae minimax_h3_video_vae_int8_convrot.safetensors 2.62 GiB",
+    "vae minimax_h3_audio_vae_fp32.safetensors 0.56 GiB",
+    "loras minimax_h3_ref2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors 1.82 GiB",
+    "[colab] Executing cell 3/8 - fa51860f...",
+    "模式：reference；要求長度：5.000 秒；排程：124 幀 / 5.167 秒（24 fps）",
+    "[colab] Executing cell 4/8 - 350eae2f...",
+    "使用 CLI 上傳的完整 prompt： /content/h3_s41_prompt.txt",
+    "模型收到的完整 prompt：",
+    "overall_soundscape: N/A",
+    "non_diegetic_music: N/A",
+    "[colab] Executing cell 5/8 - db83492d...",
+    "[colab] Executing cell 6/8 - 7b39ba03...",
+    "使用已啟動的 ComfyUI",
+    "節點檢查通過，ComfyUI 已啟動",
+    "[colab] Executing cell 7/8 - eea52094...",
+    "已提交推論： 9ada062a-8023-443b-bd8c-0f368c7e5b92",
+    "[colab] Executing cell 8/8 - 38f7ef3a...",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "完成： /content/ComfyUI/output/MiniMax_H3_s41_00001-audio.mp4 (1.0 MiB，含影片與音訊)",
+    "COLAB_CLI_OUTPUT_PATH: /content/h3_s41_output.mp4",
+    "[colab] Saving notebook with outputs to '/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/work_5636e417/s41/MiniMax_H3_Turbo_Colab_output.ipynb'...",
+    "[colab] Downloaded '/content/h3_s41_output.mp4' to '/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s41.mp4'"
+  ],
+  "updated_at": "2026-10-31T01:21:51Z",
+  "current_job": "s41",
+  "session_status": "active",
+  "completed_count": 1,
+  "failed_count": 0,
+  "cancelled_count": 0,
+  "error": null,
+  "results": [
+    {
+      "id": "s41",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s41.mp4",
+      "status": "completed"
+    }
+  ]
+}
