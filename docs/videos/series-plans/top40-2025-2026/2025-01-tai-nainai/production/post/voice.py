@@ -9,7 +9,7 @@ takes.json：{"c04": {"draft": "/…/r2/out/c04-r1.mp4", "from": 0.0}, …}
   精修（refine）不改格數與時間，所以草稿從 from 起、長度等於精修片段的那段音軌，就是那一鏡的原聲。
 
 輸出：
-  <out>/<鏡>.wav：48 kHz 立體聲，長度等於精修片段（或 to − from）；整段調到 --lufs（預設 −20，跟 TTS 台詞一樣；
+  <out>/<鏡>.wav：48 kHz 立體聲，長度等於精修片段（或 to − from）；整段調到 --lufs（預設 −18，跟剪好的 TTS 台詞一樣；
     模型原聲本來約 −10 LUFS，比 TTS 大 10 dB，第 1 集同一場 c03→c04 跳 6.5 dB）；說話段一直講到最後一格時，
     最後 60 毫秒淡出，免得字被切成爆音（第 1 集 c05、c25、c27）。
   <out>/<鏡>.json：{"seconds": 片段長, "speech": [[開始, 結束], …]}，
@@ -75,7 +75,7 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--takes", required=True)
     ap.add_argument("--clips", required=True, help="精修片段資料夾（<鏡>.mp4）")
     ap.add_argument("--out", required=True)
-    ap.add_argument("--lufs", type=float, default=-20.0, help="原聲調到的響度（TTS 台詞約 -20 LUFS）")
+    ap.add_argument("--lufs", type=float, default=-18.0, help="原聲調到的響度（TTS 台詞剪掉頭尾靜音、加速後約 -17 到 -18 LUFS）")
     ap.add_argument("--only", help="只做這幾鏡，逗號分隔")
     a = ap.parse_args(argv)
     takes = json.loads(Path(a.takes).read_text(encoding="utf-8"))

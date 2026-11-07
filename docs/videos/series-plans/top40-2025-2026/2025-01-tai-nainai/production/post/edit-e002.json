@@ -1,5 +1,5 @@
 {
- "_note": "《恁祖媽今年18》第 2 集剪接表（assemble-v4.mjs），照第 1 集：不放片名卡與人名條、不裁切放大、慢放 ≤ 1.1 倍、CC 軟字幕；min 無聲鏡照分鏡秒數、有台詞的鏡至少分鏡秒數減 0.5。配樂：第一場 comedy、c16 音樂停只留笑聲，第二場 suspense。 2026-11-07 起中文用模型原聲（own_voice → voice.json；post/voice.py 抽草稿音軌，用 post/assemble-v4.mjs 剪）。 原聲版：comedy 從 c01 一路放到 c15 要 95 秒，曲子只有 87 秒（曲尾 1.5 秒靜音），c15 後段會沒有配樂；在院子進正廳（c04→c05）換段，c05 起從 14 秒接。",
+ "_note": "《恁祖媽今年18》第 2 集剪接表（assemble-v4.mjs），照第 1 集：不放片名卡與人名條、不裁切放大、慢放 ≤ 1.1 倍、CC 軟字幕；min 無聲鏡照分鏡秒數、有台詞的鏡至少分鏡秒數減 0.5。配樂：第一場 comedy、c16 音樂停只留笑聲，第二場 suspense。 2026-11-07 起中文用模型原聲（own_voice → voice.json；post/voice.py 抽草稿音軌，用 post/assemble-v4.mjs 剪）。 原聲版：comedy 從 c01 一路放到 c15 要 95 秒，曲子只有 87 秒（曲尾 1.5 秒靜音），c15 後段會沒有配樂；在院子進正廳（c04→c05）換段，c05 起從 14 秒接。 原聲版審片後：comedy 改成 c01–c11 一段、c12 茶杯落地抽掉一拍、c13 起從 60 秒接（不再在 c04→c05 重起）；c16 配樂照劇本不放，鋪室內底噪（synth room），不再 3.6 秒全靜。",
  "tempo": 1.07,
  "slow_max": 1.1,
  "interpolate": false,
@@ -44,19 +44,19 @@
   {
    "cue": "comedy",
    "from": "c01",
-   "to": "c04",
+   "to": "c11",
    "offset": 0,
    "gain": -17,
    "fade_in": 0.8,
-   "fade_out": 0.8
+   "fade_out": 0.3
   },
   {
    "cue": "comedy",
-   "from": "c05",
+   "from": "c13",
    "to": "c15",
-   "offset": 14,
+   "offset": 60,
    "gain": -17,
-   "fade_in": 0.6,
+   "fade_in": 0.4,
    "fade_out": 0.3
   },
   {
@@ -204,6 +204,14 @@
    "at": "c22",
    "off": 0.3,
    "gain": -14
+  },
+  {
+   "synth": "room",
+   "at": "c16",
+   "off": 0,
+   "to": "c16",
+   "gain": -14,
+   "fade": 0.2
   }
  ],
  "own_voice": "docs/videos/tai-nainai-e002/voice.json"

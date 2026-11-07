@@ -106,7 +106,7 @@ for (const scene of video.scenes) {
     l.len = probe(fast);
   }
   let dur = ttsLines.length ? (ownSpeech ? speechEnd + GAP : LEAD) + ttsLines.reduce((a, l) => a + l.len, 0) + GAP * (ttsLines.length - 1) + TAIL :
-    ownSpeech ? speechEnd + TAIL : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
+    ownSpeech ? Math.min(speechEnd + TAIL, Math.max(ownSpeech.seconds, speechEnd)) : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
   dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
   // `frame_round: true` (e001-r2 on): every shot a whole number of 24 fps frames, so the stream-copied concat stays at
   // exactly 24 fps instead of drifting to 23.976 (season 1 lost ~5 frames a 100 s cut); off for episodes already dubbed.
@@ -155,7 +155,8 @@ for (const scene of video.scenes) {
     // motion-compensated interpolation (minterpolate) instead of repeating them; `interpolate: false`
     // in the edit list restores the old frame-duplicating path. Whatever is still missing after
     // that is a held last frame, reported as "held" so the shot can be bought longer next time.
-    const slow = dur > clipLen ? Math.min(dur / clipLen, SLOW_MAX) : 1;
+    // 原聲的鏡不放慢：聲音沒跟著拉長，放慢 3% 到片尾嘴就慢 0.2 秒（tai-nainai 第 2 集原聲版審片量到 5 格）；不夠長就停在最後一格。
+    const slow = dur > clipLen && !ownSpeech ? Math.min(dur / clipLen, SLOW_MAX) : 1;
     const smooth = slow > 1 && edit.interpolate !== false ? ",minterpolate=fps=24:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" : ",fps=24";
     const base = `[0:v]setpts=${slow.toFixed(4)}*(PTS-STARTPTS),scale=1920:1080:flags=lanczos${smooth},format=yuv420p,tpad=stop_mode=clone:stop_duration=${Math.max(0, dur - clipLen * slow + 0.1).toFixed(3)},trim=duration=${dur.toFixed(3)},setpts=PTS-STARTPTS`;
     // `punch: false` in the edit list turns the split-and-punch-in off for the whole episode (e001-r2).
@@ -227,6 +228,8 @@ const SYNTH = {
   rain: "anoisesrc=color=pink:amplitude=0.5:d=DUR,highpass=f=700,lowpass=f=9000,volume=0.8",
   underwater: "anoisesrc=color=brown:amplitude=0.6:d=DUR,lowpass=f=320,volume=1.4",
   river: "anoisesrc=color=brown:amplitude=0.4:d=DUR,bandpass=f=900:width_type=o:w=2.5,volume=0.7",
+  // 室內底噪：配樂抽掉、又沒有台詞的鏡不要變成數位靜音（tai-nainai 第 2 集 c16 有 3.6 秒全靜）。
+  room: "anoisesrc=color=brown:amplitude=0.3:d=DUR,lowpass=f=500,highpass=f=60,volume=0.6",
 };
 const dubbed = DUB ? (await import("./dub-track.mjs")).dubDialogue({ locale: DUB, videoFile: file, work, segDir, lineAt, starts, total, probe, zhSrt: out.replace(/\.mp4$/, ".zh-TW.srt") }) : null;
 const inputs = ["-i", DUB ? dubbed.dialogue : joined];
