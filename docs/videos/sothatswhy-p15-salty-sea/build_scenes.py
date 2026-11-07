@@ -141,17 +141,15 @@ kid("kid-billion", K("throwing both hands up with her mouth open in amazement", 
 chief("chief-years", C("smiling and opening both hands wide"),
       c("一點點，乘上很多很多河、很多很多年，"), c("就不是一點點了。"))
 scene("salt-blanket", "Wide view of green land covered by a huge thick soft white layer of salt as tall as a tall building, a few tiny houses beside it, " + DAY,
-      c("現在海裡的鹽，多到如果全部撈上來，鋪在陸地上，"), c("會有大約四十層樓那麼厚。"))
+      c("現在海裡的鹽，多到如果全部撈上來，鋪在陸地上，"), c("會有大約四十層樓那麼厚。", None, "P:howsmall"))
 kid("kid-40", K("stretching up on tiptoe with one arm reaching high above her head, an amazed face"),
-    k("一點點，", "恍然"), k("原來會變這麼多！", "驚呼", "P:howsmall"))
+    k("四十層樓！", "驚呼"))
 kid("kid-overflow", K("standing at the water's edge watching the waves, scratching her head", where=BEACH),
     k("可是河一直把水倒進去，", "不解"), k("海不是應該越來越滿、越來越淡嗎？", "句尾上揚", "S:fuller"))
 
 # ---------- 第二章：太陽只搬走水，搬不走鹽 ----------
 chief("chief-full", C("raising her eyebrows with a curious smile, one finger on her chin"),
       c("河一直在倒水，這沒錯，", "接住上一句"), c("可是海從來沒有滿出來。"), chapter="太陽只搬走水，搬不走鹽")
-scene("ocean-fill", "Wide view of a calm endless blue sea meeting the sky at the far horizon under a bright sun, " + DAY,
-      c("如果海是空的，光靠全世界的河來倒，"), c("大約三萬多年就倒滿了。"))
 kid("kid-drain", K("crouching and peering down into the shallow sea water as if looking for a hole", where=BEACH),
     k("是不是海底有一個排水孔？", "錯猜", "S:drain"))
 chief("chief-up", C("pointing one finger up toward the sky with a smile"),
@@ -197,13 +195,13 @@ kid("kid-where-go", K("leaning forward with wide curious eyes", close=True),
 
 # ---------- 第三章：鍋底偷偷把鹽收走 ----------
 scene("seafloor", "Wide underwater view of a calm sandy seafloor deep in the blue sea, soft sunbeams fading from above, a few small fish",
-      c("鹽的出口，在鍋底，還有鍋邊。", "接住上一句", "P:exit"), c("這就是我一開始說的那個祕密。", None, "P:secret"), chapter="鍋底和鍋邊，偷偷把鹽收走")
+      c("海水裡溶的東西，出口在鍋底，還有鍋邊。", "接住上一句", "P:exit"), c("這就是我一開始說的那個祕密。", None, "P:secret"), chapter="鍋底和鍋邊，偷偷把鹽收走")
 scene("mud-layers", "Cutaway view of the seafloor showing soft layers of mud and sand stacked like a layered cake, tiny glittering specks settling down onto the top layer, blue sea above",
       c("海水裡溶著的一些東西，會慢慢沉下去，"), c("跟泥沙一起，變成海底一層一層的泥和石頭。"))
 kid("kid-crust", K("pointing at the inside bottom of " + POT + " with a surprised face", close=True, where=KITCHEN),
     k("就像鍋底的鍋巴！", "恍然"))
 chief("chief-crust", C("laughing warmly and nodding"),
-      c("對，這鍋湯也會結鍋巴。"), c("你下次刷鍋子，就會想起海底。", "轉向觀眾，笑"))
+      c("對，這鍋湯也會結鍋巴。"))
 scene("shells", "Close-up of colourful seashells and a small pink coral on the sandy seafloor, tiny drifting plankton dots in the clear blue water",
       c("還有貝殼和珊瑚，"), c("會把水裡做殼的材料，拿去蓋自己的家。"))
 kid("kid-shell-home", K("holding a big seashell up next to her ear with a curious smile", close=True, where=BEACH),
@@ -217,7 +215,7 @@ scene("river-mix", "Medium shot of a river flowing into the sea, the river water
 kid("kid-why-not-salt", K("tilting her head with a puzzled frown, one finger on her chin", close=True),
     k("那為什麼不把鹽也拿走？", "句尾上揚"))
 chief("chief-table-salt", C("holding up a small bowl of white salt with a smile", close=True),
-      c("因為做殼用不到廚房那種鹽。"), c("所以留在海裡最多的，就是它。"))
+      c("因為做殼用不到廚房那種鹽。"), c("所以你嘗到的海水那麼鹹，最多的就是它。", "轉向觀眾"))
 scene("salt-crystal", "Close-up of a few clear square white salt crystals sparkling on a dark blue plate, " + DAY,
       c("海水裡溶著的小東西，一百份裡，"), c("大約有八十五份，都是廚房那種鹽的材料。"))
 scene("vents", "Wide underwater view of a dark rocky seafloor with a tall rocky chimney puffing warm shimmering water and dark smoky clouds",
@@ -225,9 +223,9 @@ scene("vents", "Wide underwater view of a dark rocky seafloor with a tall rocky 
 scene("vents-all", "Wide underwater view of a long dark seafloor ridge with several small rocky chimneys puffing shimmering water, blue sea above",
       c("科學家估計，全世界的海水大約一千到兩千萬年，"), c("就會從熱泉的石頭縫裡，整個鑽過一次。"))
 kid("kid-mountain-right", K("gasping with a big surprised open mouth, both hands out of frame", close=True),
-    k("那熱泉會冒出鹽嗎？", "句尾上揚"))
+    k("那熱泉會冒出東西嗎？", "句尾上揚"))
 chief("chief-half-right", C("smiling and giving a small nod"),
-      c("會冒出一些。你一開始說的鹽山，說對了一點點。", None, "P:mountain"))
+      c("會。你一開始說的鹽山，說對了一點點。", None, "P:mountain"))
 scene("vent-swap", "Close-up of a rocky seafloor chimney with warm shimmering water swirling around it, tiny golden specks drifting out and tiny white specks sinking into the rock, blue water around",
       c("熱泉會帶出石頭裡的一些金屬，"), c("也會把海水裡的一些東西，留在石頭裡。"))
 kid("kid-more-exit", K("leaning forward with both hands out of frame and curious eyes", close=True),
@@ -259,7 +257,7 @@ chief("chief-guess-taiwan", C("leaning a little toward the viewer with a playful
 kid("kid-guess", K("tapping her chin with one finger and squinting in thought", close=True, where=BEACH),
     k("熬得很兇的那種？", "猜"))
 chief("chief-later", C("smiling with a small playful shrug"),
-      c("先別急，我們先去一片很熱的海看看。", "賣關子"))
+      c("有可能喔，先記著。我們先去一片很熱的海看看。", "賣關子"))
 scene("red-sea", "Wide view of a hot dry desert coast with bare sandy mountains beside a deep blue sea under a blazing sun, heat shimmer, " + DAY,
       c("像紅海，旁邊幾乎都是沙漠，太陽很大，"), c("很少下雨，也幾乎沒有河流進來。"))
 kid("kid-fire-up", K("fanning her face with one hand on a hot sunny day, squinting", where=BEACH),
@@ -283,19 +281,13 @@ kid("kid-taiwan-q", K("pointing out at the blue sea with a curious smile", where
 chief("chief-pacific", C("smiling and opening one hand toward the viewer"),
       c("答案是：兩種都不太像。", None, "P:taiwan"), c("台灣附近的海水，平常一公斤大約三十四公克多，"))
 chief("chief-taiwan", C("nodding with a gentle smile, one hand open", close=True),
-      c("跟整片海的平均差不多。"), c("不過夏天雨多、河水多，"), c("岸邊的海水，就像你看到的河口，會淡一點。"))
-kid("kid-saltiest-q", K("standing on tiptoe and shading her eyes with one hand, looking far away", where=BEACH),
-    k("那有沒有超級鹹的地方？", "句尾上揚"))
-scene("dead-sea", "Wide view of a calm turquoise salty lake with white salt crusts along its shore and bare brown hills around it, bright sun, " + DAY,
-      c("有一個很有名的，叫死海。它其實是一個湖，"), c("水流不出去，只能被太陽熬，熬到比海水鹹快十倍。"))
+      c("跟整片海的平均差不多。"), c("不過夏天雨多、河水多，"), c("岸邊的海水就會淡一點。"))
 chief("chief-same-thing", C("smiling and pressing her palms together"),
       c("所以，每片海鹹不鹹，看的是什麼呢？", "問句，考考她"))
 kid("kid-soup-again", K("tapping the lid of " + POT + " with a spoon, grinning", where=KITCHEN),
     k("看加多少水，熬走多少水！", "篤定", "P:same"))
 scene("beach-guess", "Wide view of a sunny Taiwan beach with gentle waves, a small river mouth at one end and green hills behind, " + DAY,
       c("你下次去海邊，也可以猜猜看。", "轉向觀眾"))
-scene("waves-opinion", "Close-up of sparkling blue waves rolling gently onto a sunny sandy beach, " + DAY,
-      c("我覺得，海最厲害的地方，", "意見，輕鬆"), c("就是它一邊收河送來的鹽，一邊把水送上天，從來沒停過。"))
 
 # ---------- 收尾 ----------
 chief("chief-back", C("smiling warmly at the viewer with one hand open, filling the frame", close=True),
