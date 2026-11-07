@@ -84,3 +84,10 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
   s31 許硯走出灶房、s39 阿令膝上一團火、s27 手抓住水桶（稿子：撲空）。站主：嚴重與中等都修、輕微接受。
   `r2.py` 重寫 24 鏡（加 KNIFE、LAMP、BELT、CHOP、SERV1 常數與近景短場景句），`colab/runs/e903/fix3` 共 48 支（9030401／402），preflight 0／0。
   排在 `scratchpad/chainQ.sh` 佇列（e905 fix1 → e904 fix1 → e903 fix3 → e902 fix2）。預估再花約 US$8，第 3 集累計約 US$26（上限 28）。
+
+## 2026-11-07 fix3 挑片與 fix4
+- fix3 一共 24 鏡、48 支草稿。獨立挑片的結果寫在 `colab/runs/e903/review-picks.tsv`：12 鏡選好，12 鏡要重抽（RETAKE）。
+  - 要重抽：s01、s02、s10、s16、s18、s22、s27、s34、s35、s36、s37、s39。
+  - 問題：s01 的刀被握著、s16 一開頭手上就有刀、s27 水桶沒被拉走；s18、s22、s34 笑了；阿玲的短刀每一鏡大小不一樣；s37 越軸。
+- 站主同意把上限提高到 **US$31**（原本 US$28），條件是改鏡頭設計，而且只再抽這一輪。這輪還不行，就用最接近的版本加剪接補救。
+- fix4 一共 12 鏡、24 支，種子 9030501／502，排在佇列最後。
