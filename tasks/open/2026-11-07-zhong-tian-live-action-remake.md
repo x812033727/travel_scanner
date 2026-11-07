@@ -38,6 +38,14 @@ CG 的重抽佇列（`scratchpad/chainR`–`chainU`）已經停掉，pod 也停�
 - [ ] 5. 第 1–6 集逐集做，每集上限 US$28。
   - 2026-11-07 17:13 站主「開始拍第1集」：`runpod/live/d1` 78 支草稿（39 鏡、種子 9011101／102），`scratchpad/e901live.sh`；剪接用 `assemble-v4.mjs` 的 `clip_voice: true`（草稿原聲、字幕跟開口時間）。
 
+## 每一集的流程（站主 2026-11-07）
+
+1. 自己審、自己改：挑片後、剪完後各一次獨立審片；嚴重與中等的自己修好再給站主。
+2. 有要檢討的就記教訓（skill 規則、寫稿說明、preflight）。
+3. 一集做完：推 `claude/zt-e00N-r2`（或真人版的分支）與 `transfer/` 備份；以後要重做時需要的檔案全部備份到（草稿、精修、草稿原聲、參考圖、規格、prompts、剪接表、匯入資料夾）。
+4. 刪本機檔案前：請一個沒參與製作的代理到 GitHub 逐檔核對都在，才可以刪。
+5. 前一集在跑的時候，先做下一集的前置（轉真人版提示詞、preflight、需要的參考圖）。
+
 ## 已經做的（2026-11-07）
 
 - CG 版最後的狀態都已備份：`transfer/zt-e90N-media-20261107`（第 1–6 集）、`transfer/zt-series-media-20261107`、`transfer/zt-import-dubs-review-20261107`，全部 verify-bk 都是 missing=0、differ=0。
