@@ -188,6 +188,7 @@ MiniMax `image-01` 讀得懂**一個**角色參考圖，讀不懂多人互動（
 | 配樂 | `video.json` 的 `music` 用系列配樂床 `sothatswhy-p02-bed.m4a`（sha256 `54169439…`，放在工作目錄的 `_music/`），不另生 | P05 第一次合成沒有配樂：`build_scenes.py` 漏了 `music` |
 | 合成與品管 | `qa` 11 項全過；片尾同一個畫面 ≤ 15 秒 | P05 片尾 15.1 秒：把片尾最後一句縮短 |
 | 送審順序 | 成片（`final`）→ 上架確認（`publish`）**等站主核准之後**才送附配音的語言包（`languages`） | P02 先送語言包、後送上架確認，後台擋下「已選取的 en 配音尚未核准」（票 `2026-10-07-the-worker-sends-a-language-batch`） |
+| 八語縮圖 | `i18n-merge` 之後一定跑 `render --thumbnails-only`，確認 `thumbnails/` 有八張（en ja ko es pt id th vi）並逐張看過，才 `package`、送語言包 | P07／P14 漏了，站主上傳時發現上傳包沒有八語縮圖（2026-11-07 站主：「之後要記得」） |
 | 配音 | 時間軸一動（換鏡、改句）就 `dub` 八語重跑：沿用快取不重錄，只重對齊 | P02 把一鏡拆成兩鏡，後面全部晚 0.7 秒 |
 
 PR #2028 合併後已補（2026-11-06）：`scene()` 的鏡頭加 `nobody: true`，`wordlessLook` 也認 `cute-cartoon`。
