@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync, realpathSync } from 'node:fs';
 import path from 'node:path';
 import { MUSIC_TRACK, SFX_SET } from '../core/drama.mjs';
+import { TARGET_LOCALES } from '../core/schema.mjs';
 import { atomicWrite, isInside } from '../core/paths.mjs';
 import { ENTRANCE, entranceCss, themeOf } from './layouts.mjs';
 
@@ -20,6 +21,11 @@ const HASHTAG = /^#?[\p{L}\p{N}_]{1,30}$/u;
 export const MAX_HASHTAGS = 3;
 export const MAX_LINKS = 5;
 export const MAX_TAGS = 15;
+// The languages a Short's title and description may also be written in (`localizations`), beside
+// its own zh-TW: the site's video languages (core/schema.mjs TARGET_LOCALES). YouTube shows each
+// viewer the copy of their own language, so a Short meant for the whole world carries an English
+// one at least.
+export const TITLE_LOCALES = Object.freeze(TARGET_LOCALES.filter((locale) => locale !== 'zh-TW'));
 // What a build directory holds besides the cut: the script it was made from, as filmed, and
 // what making it used.
 export const SCRIPT_FILE = 'script.json';
@@ -68,10 +74,14 @@ export const saveJson = (file, data) => atomicWrite(file, `${JSON.stringify(data
 export const lineOf = (doc) => (doc?.schema_version === 1 ? 'lab' : doc?.line);
 export const phrasesOf = (doc) => doc.scenes.flatMap((scene) => scene.narration);
 
+/** Whether a script is told without words (schema 2 `silent`): its scenes say nothing. */
+export const isSilent = (doc) => doc?.schema_version === 2 && doc?.silent === true;
+
 function sceneErrors(doc, errors) {
   if (!Array.isArray(doc?.scenes) || doc.scenes.length < 3 || doc.scenes.length > 12) errors.push('3–12 scenes required');
   if (!Array.isArray(doc?.scenes)) return;
   const evidence = Array.isArray(doc.evidence) ? doc.evidence : [];
+  const silent = isSilent(doc);
   // The latest beat named so far: a scene's beat may repeat it or go on, never back.
   let beat = -1;
   for (const [i, scene] of doc.scenes.entries()) {
@@ -85,7 +95,9 @@ function sceneErrors(doc, errors) {
       else beat = BEATS.indexOf(scene.beat);
     }
     if (typeof scene.headline !== 'string' || !scene.headline.trim() || scene.headline.length > 36) errors.push(`scene ${i}: headline 1–36 characters`);
-    if (!Array.isArray(scene.narration) || !scene.narration.length || scene.narration.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 38)) errors.push(`scene ${i}: narration phrases 1–38 characters`);
+    if (silent) {
+      if (!Array.isArray(scene.narration) || scene.narration.length) errors.push(`scene ${i}: a silent Short says nothing (narration [])`);
+    } else if (!Array.isArray(scene.narration) || !scene.narration.length || scene.narration.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 38)) errors.push(`scene ${i}: narration phrases 1–38 characters`);
     if (scene.body && (!Array.isArray(scene.body) || scene.body.length > 5 || scene.body.some(t => typeof t !== 'string' || t.length > 85))) errors.push(`scene ${i}: up to five body rows of 85 characters`);
     if (scene.asset && !evidence.some(e => e?.path === scene.asset)) errors.push(`scene ${i}: asset must be evidence-bound`);
     if (scene.shot !== undefined && !(doc.schema_version === 2 && doc.line === 'cut' && text(scene.shot))) errors.push(`scene ${i}: shot names a keyframe of the video a cut comes from (line cut only)`);
@@ -114,6 +126,30 @@ function soundErrors(doc, errors) {
   if (sfx !== undefined) {
     if (!sfx || typeof sfx !== 'object' || Array.isArray(sfx) || !(typeof sfx.set === 'string' && SFX_SET.test(sfx.set))) errors.push('sfx.set must name a sound-effect set under <work base>/_sfx/');
     else if (sfx.gain_db !== undefined && !(Number.isFinite(sfx.gain_db) && sfx.gain_db >= -40 && sfx.gain_db <= 0)) errors.push('sfx.gain_db must be -40 to 0');
+  }
+}
+
+/**
+ * The title and description in other languages (schema 2): { en: { title, description,
+ * hashtags? } }, each locale one of TITLE_LOCALES. The site sends them to YouTube as the video's
+ * localizations; zh-TW stays the Short's own title and description.
+ */
+function localizationErrors(doc, errors) {
+  const found = doc?.localizations;
+  if (found === undefined) return;
+  if (!found || typeof found !== 'object' || Array.isArray(found)) {
+    errors.push('localizations must be an object of { title, description } by locale');
+    return;
+  }
+  for (const [locale, entry] of Object.entries(found)) {
+    if (!TITLE_LOCALES.includes(locale)) {
+      errors.push(`localizations.${locale}: the locale must be one of ${TITLE_LOCALES.join(', ')}`);
+      continue;
+    }
+    if (typeof entry?.title !== 'string' || !entry.title.trim() || [...entry.title].length > 100 || /[<>]/.test(entry.title)) errors.push(`localizations.${locale}.title: 1–100 characters without angle brackets`);
+    if (!text(entry?.description) || /[<>]/.test(entry.description)) errors.push(`localizations.${locale}.description required, without angle brackets`);
+    if (entry?.hashtags !== undefined && (!Array.isArray(entry.hashtags) || entry.hashtags.length > MAX_HASHTAGS || entry.hashtags.some(t => typeof t !== 'string' || !HASHTAG.test(t)))) errors.push(`localizations.${locale}.hashtags: up to ${MAX_HASHTAGS} hashtags of letters and digits`);
+    for (const key of Object.keys(entry ?? {})) if (!['title', 'description', 'hashtags'].includes(key)) errors.push(`localizations.${locale}.${key} is not a field of a translation`);
   }
 }
 
@@ -151,6 +187,11 @@ function validateV2(doc) {
     // An experiment says what was tested and what the test cannot tell, and shows its evidence.
     for (const field of ['experiment_summary', 'limitations']) if (!text(doc?.[field])) errors.push(`${field} required`);
     if (!Array.isArray(doc?.evidence) || !doc.evidence.length) errors.push('evidence required');
+  } else if (doc?.original === true) {
+    // An original Short is made for Shorts and cut from no video: it names none, and its
+    // evidence is the cut itself (`import` lists it).
+    if (doc.line !== 'drama') errors.push('original: only a drama Short is made without a full video');
+    if (doc.source !== undefined) errors.push('an original Short names no source');
   } else {
     // A highlight or a vertical short leads back to the video it was cut from. Its address may
     // be left out: `package` reads it from the site, which knows the video once it is public.
@@ -166,6 +207,10 @@ function validateV2(doc) {
   if (doc?.links !== undefined && (!Array.isArray(doc.links) || doc.links.length > MAX_LINKS || doc.links.some(l => !text(l?.label) || !/^https:\/\/[^\s<>]+$/.test(l?.url ?? '')))) errors.push(`up to ${MAX_LINKS} links, each { label, url } with an https address`);
   if (doc?.tags !== undefined && (!Array.isArray(doc.tags) || doc.tags.length > MAX_TAGS || doc.tags.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 30 || /[<>,]/.test(t)))) errors.push(`up to ${MAX_TAGS} tags of 1–30 characters`);
   if (doc?.synthetic_media !== undefined && typeof doc.synthetic_media !== 'boolean') errors.push('synthetic_media must be true or false');
+  if (doc?.original !== undefined && doc.original !== true) errors.push('original is true or left out');
+  if (doc?.silent !== undefined && typeof doc.silent !== 'boolean') errors.push('silent must be true or false');
+  if (doc?.silent === true && doc.line !== 'drama') errors.push('silent: only a drama Short is told without words; cards are read out');
+  localizationErrors(doc, errors);
   soundErrors(doc, errors);
   sceneErrors(doc, errors);
   return errors;
