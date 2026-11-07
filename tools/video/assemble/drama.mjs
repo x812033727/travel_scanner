@@ -68,7 +68,20 @@ const MOTION_DRIFT_SHARE = 0.15;
 export const MOTION_MANGA_VERSION = "manga-motion-v1";
 export const MANGA_MOTION = Object.freeze({ zoom: 0.2, panZoom: 1.12, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 3, travelMin: 0.6 });
 const STILL_MOTION = Object.freeze({ zoom: MOTION_ZOOM, panZoom: MOTION_PAN_ZOOM, driftZoom: MOTION_DRIFT_ZOOM, driftShare: MOTION_DRIFT_SHARE, travelSeconds: MOTION_TRAVEL_SECONDS, travelMin: MOTION_TRAVEL_MIN });
-export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION });
+// The beat move (video.json `still_motion: "beat"`, owner 2026-11-05, after the 黑貓研究院
+// reference): every still keeps moving for its whole length, a little further than the held shot,
+// and the stills take turns at the moves (push in, pan right, pull out, pan left, tilt up) so the
+// video never zooms in picture after picture; a still whose camera line names a move keeps it.
+// The pictures dissolve into each other (beatTransition), the way the reference changes them.
+// Measured on the reference: mean_difference 5.0-5.9 against 2.5-3.5 for our held shots
+// (.agents/skills/producer/references/pace-targets.md).
+export const MOTION_BEAT_VERSION = "beat-motion-v4";
+export const BEAT_MOTION = Object.freeze({ zoom: 0.18, panZoom: 1.16, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 4, travelMin: 1 });
+/** The moves beat stills take in turn. */
+export const BEAT_MOVES = Object.freeze(["push-in", "pan-right", "pull-out", "pan-left", "tilt-up"]);
+export const MOTION_PROFILES = Object.freeze({ manga: MANGA_MOTION, beat: BEAT_MOTION });
+/** The motion profiles a video may ask for by name in `still_motion`. */
+export const STILL_MOTIONS = Object.freeze(["beat"]);
 /** The amounts a move's expressions use: the manga tier's when the move carries `profile: "manga"`, else the held shot's. */
 export const motionProfile = (move) => (move && typeof move === "object" && move.profile ? MOTION_PROFILES[move.profile] : undefined) ?? STILL_MOTION;
 // Where a drifting picture goes: its shot id decides, so two drifts in a row rarely go one way.
@@ -148,7 +161,17 @@ export function illustratedTransition(source, index, previous = null) {
  * never a frozen picture; a card with reveals keeps its entrances as its motion. `tier` is the
  * series' visual_tier: a still shot of the manga tier carries the manga motion profile.
  */
+/**
+ * How a beat video's pictures change (still_motion "beat"): the first shot and every chapter's
+ * first scene cut in, a shot's own `transition` is kept, and every other picture dissolves in.
+ */
+export function beatTransition(source, index) {
+  if (index === 0 || source.chapter) return "cut";
+  return source.data?.transition ?? "dissolve";
+}
+
 export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { transitionRule = null, cardMotion = false, tier = null } = {}) {
+  let stillTurn = 0;
   if (timeline.scenes.length !== frames.scenes.length) {
     throw new PlanError(`the frames were rendered for ${frames.scenes.length} scenes, the timeline has ${timeline.scenes.length}; run render again`);
   }
@@ -173,14 +196,14 @@ export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { tr
       const [laid] = layoutScenes({ scenes: [scene] }, { scenes: [rendered] });
       return { ...laid, kind: "stills" };
     }
-    const transition = transitionRule ? transitionRule(source, index, previous) : index > 0 ? (source.data?.transition ?? "cut") : "cut";
+    const transition = transitionRule ? transitionRule(source, index, previous) : tier === "beat" ? beatTransition(source, index) : index > 0 ? (source.data?.transition ?? "cut") : "cut";
     if (shotVisual(source) === "still") {
       // The keyframes manifest is the source; the clips manifest carries the same file and hash
       // for every still, so a work directory missing one still assembles from the other.
       const keyframe = keyframes?.shots?.[scene.id] ?? (clips?.shots?.[scene.id]?.still ? clips.shots[scene.id] : null);
       if (!keyframe?.file) throw new PlanError(`shot ${scene.id} is a still with no keyframe; run keyframes first`);
       if (keyframe.needs_review) throw new PlanError(`shot ${scene.id} is a still whose keyframe failed its checks (needs_review in keyframes/manifest.json); fix the prompt and run keyframes again`);
-      return { ...base, kind: "motion", keyframe: { file: keyframe.file, sha256: keyframe.sha256 ?? null }, move: motionMove(source.data, scene.id, tier), transition, fit: null };
+      return { ...base, kind: "motion", keyframe: { file: keyframe.file, sha256: keyframe.sha256 ?? null }, move: motionMove(source.data, scene.id, tier, stillTurn++), transition, fit: null };
     }
     const clip = clips?.shots?.[scene.id];
     if (!clip?.file || clip.still) throw new PlanError(`shot ${scene.id} has no clip; run clips first`);
@@ -230,11 +253,16 @@ export const driftDirection = (id) => DRIFT_DIRECTIONS[[...String(id ?? "")].red
  * prompt is what happens in the picture, never the camera. `profile` names a motion profile
  * (MOTION_PROFILES: the manga tier's); any other tier adds nothing, so its moves are unchanged.
  */
-export function motionMove(data, id = null, profile = null) {
+export function motionMove(data, id = null, profile = null, turn = null) {
   const lower = typeof data?.camera === "string" ? data.camera.toLowerCase() : "";
   const found = MOVES.find(([, pattern]) => pattern.test(lower));
   const profiled = profile && MOTION_PROFILES[profile] ? { profile } : {};
   if (found && found[0] !== "drift") return { name: found[0], startsAtIdentity: IDENTITY_START.has(found[0]), ...profiled };
+  // A beat still with no move of its own takes the next one in turn (`turn`, its place among the stills).
+  if (profile === "beat" && Number.isInteger(turn)) {
+    const name = BEAT_MOVES[turn % BEAT_MOVES.length];
+    return { name, startsAtIdentity: IDENTITY_START.has(name), ...profiled };
+  }
   return { name: "drift", startsAtIdentity: true, direction: driftDirection(id), ...profiled };
 }
 
@@ -347,7 +375,8 @@ export function clipSegmentKey(scene, fit, subtitles = null, previous = null, ma
 export function motionSegmentKey(scene, move, subtitles = null, previous = null, mark = null) {
   // A move under a motion profile (the manga tier's) adds the profile's version, so a profile
   // change re-renders only its own segments and a move without one keeps the key it always had.
-  const profiled = motionProfile(move) === STILL_MOTION ? [] : [MOTION_MANGA_VERSION, move.profile];
+  const profile = motionProfile(move);
+  const profiled = profile === STILL_MOTION ? [] : [profile === BEAT_MOTION ? MOTION_BEAT_VERSION : MOTION_MANGA_VERSION, move.profile];
   return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, move.direction ?? null, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : []), ...profiled, ...markKey(mark)]);
 }
 

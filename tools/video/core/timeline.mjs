@@ -21,6 +21,19 @@ export const DEFAULT_PAUSE_MS = 300;
 // Extra silence after a scene's last line, so a slide change never lands mid-breath.
 export const SCENE_GAP_MS = 700;
 export const TAIL_MS = 1500;
+/**
+ * A narrated video may tighten both silences (video.json `pauses` { line_ms, scene_ms }, never
+ * longer than the defaults): the measured reference channels leave almost no gap between
+ * sentences (.agents/skills/producer/references/pace-targets.md, silence at most 3%), where the
+ * defaults left 奇聞檔案局 at 7–10% (owner, 2026-11-05). A line's own pause_after_ms still wins.
+ */
+export function pausesOf(doc) {
+  const pauses = doc?.pauses;
+  return {
+    line: Number.isInteger(pauses?.line_ms) ? pauses.line_ms : DEFAULT_PAUSE_MS,
+    scene: Number.isInteger(pauses?.scene_ms) ? pauses.scene_ms : SCENE_GAP_MS,
+  };
+}
 export const MIN_CHAPTERS = 3;
 export const CHAPTER_MIN_SECONDS = 10;
 
@@ -56,6 +69,7 @@ export function buildTimeline(doc, samplesById, { basis = "measured" } = {}) {
   const actions = [];
   let frame = 0;
   const policyHash = hasAnimePolicy(doc) ? runtimePolicyHash(doc) : null;
+  const gaps = pausesOf(doc);
   for (const source of doc.scenes) {
     const action = source.action_seconds;
     if (action !== undefined && (!(isLongAnime(doc) || timesSilentShots(doc)) || !Number.isSafeInteger(action) || action < 1 || action > 8 || source.template !== "shot" || !Array.isArray(source.lines) || source.lines.length)) throw new Error(`scene ${source.id}: action_seconds needs a silent shot of a long anime or of a drama with a cast and no length floor, lasting 1 to 8 seconds`);
@@ -82,7 +96,7 @@ export function buildTimeline(doc, samplesById, { basis = "measured" } = {}) {
       }
       const last = index === source.lines.length - 1;
       const isLastLine = last && source === doc.scenes.at(-1);
-      const pauseMs = (line.pause_after_ms ?? DEFAULT_PAUSE_MS) + (last ? (isLastLine ? TAIL_MS : SCENE_GAP_MS) : 0);
+      const pauseMs = (line.pause_after_ms ?? gaps.line) + (last ? (isLastLine ? TAIL_MS : gaps.scene) : 0);
       const frames = framesFor(samples + msToSamples(pauseMs));
       lines.push({ id: line.id, scene: source.id, start_frame: frame, end_frame: frame + frames, audio_samples: samples, ...(line.speaker ? { speaker: line.speaker } : {}) });
       frame += frames;
@@ -175,6 +189,8 @@ export function speechHash(doc, lexicon) {
   else if (doc.cohost !== undefined) hash.update(JSON.stringify(["cohost", doc.cohost?.id ?? null, doc.cohost?.voice ?? null]));
   const actions = (doc.scenes ?? []).filter((scene) => scene.action_seconds !== undefined);
   if (actions.length) hash.update(JSON.stringify(doc.scenes.map((scene) => [scene.id, scene.action_seconds ?? null])));
+  // Tightened pauses move every line after the first; a video without them hashes as before.
+  if (doc.pauses !== undefined) hash.update(JSON.stringify(["pauses", pausesOf(doc)]));
   for (const { scene, line, last } of eachLine(doc)) {
     const fields = [scene.id, line.id, spokenText(line), line.pause_after_ms ?? null, last];
     if (drama) fields.push(line.speaker ?? "narrator", line.emotion ?? null);

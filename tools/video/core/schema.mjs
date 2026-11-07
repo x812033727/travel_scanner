@@ -66,6 +66,11 @@ export const GEMINI_MODELS = ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts
 const GEMINI_VOICE = /^[A-Za-z][A-Za-z0-9_-]{1,79}$/;
 const STYLE_MAX = 400;
 export const MAX_PAUSE_MS = 5000;
+// The defaults `pauses` may only tighten: timeline.mjs DEFAULT_PAUSE_MS and SCENE_GAP_MS (a test
+// keeps them equal; timeline.mjs imports this module, so it is not imported back).
+export const PAUSE_LIMITS = Object.freeze({ line_ms: 300, scene_ms: 700 });
+// The motion profiles `still_motion` may name: assemble/drama.mjs STILL_MOTIONS (a test keeps them equal).
+export const STILL_MOTION_NAMES = Object.freeze(["beat"]);
 export const DEFAULT_TARGET_MINUTES = [8, 12];
 // The owner's rule (2026-10-01): every episode runs at least eight minutes, except a drama's.
 // The explainer (原來如此事務所) is held to it too; drama.mjs's needsMinimumLength says which.
@@ -139,6 +144,10 @@ const TOP_KEYS = new Set([
   // A narrated video's open loops (script-writing.md §故事主線與鉤子): the line that plants each
   // hook, the line that pays it off, and what it holds back; validated in validateLoops.
   "loops",
+  // Shorter silences between lines and between scenes (timeline.mjs pausesOf).
+  "pauses",
+  // How a still is moved under the narration: "beat" holds, then punches in (assemble/drama.mjs).
+  "still_motion",
 ]);
 const LOOP_KEYS = new Set(["setup", "payoff", "what"]);
 /** The most characters a loop's "what" may have: one phrase naming what is held back. */
@@ -345,6 +354,18 @@ export function validateVideo(doc) {
     errors.push({ path: "slug", message: "must be lowercase words joined by hyphens" });
   }
   if (!FORMATS.includes(doc.format)) errors.push({ path: "format", message: `must be one of ${FORMATS.join(", ")}` });
+  if (doc.still_motion !== undefined && !STILL_MOTION_NAMES.includes(doc.still_motion)) errors.push({ path: "still_motion", message: `must be ${STILL_MOTION_NAMES.map((name) => `"${name}"`).join(" or ")}, or left out for the gliding move` });
+  if (doc.pauses !== undefined) {
+    const limits = PAUSE_LIMITS;
+    if (!isObject(doc.pauses) || !Object.keys(doc.pauses).length) errors.push({ path: "pauses", message: "must be an object with line_ms and/or scene_ms" });
+    else {
+      unknownKeys(doc.pauses, new Set(Object.keys(limits)), "pauses", errors);
+      for (const [key, max] of Object.entries(limits)) {
+        const value = doc.pauses[key];
+        if (value !== undefined && !(Number.isInteger(value) && value >= 0 && value <= max)) errors.push({ path: `pauses.${key}`, message: `must be an integer from 0 to ${max} (the default): pauses only tighten` });
+      }
+    }
+  }
   if (doc.theme !== undefined && !THEMES.includes(doc.theme)) errors.push({ path: "theme", message: `must be ${THEMES.map((theme) => `"${theme}"`).join(" or ")} (docs/videos/PAPER.md), or left out for the dark theme` });
   if (doc.narration_locale !== undefined && !NARRATION_LOCALES.includes(doc.narration_locale)) {
     errors.push({ path: "narration_locale", message: `must be one of ${NARRATION_LOCALES.join(", ")}; leave it out for ${NARRATION_LOCALE}` });
