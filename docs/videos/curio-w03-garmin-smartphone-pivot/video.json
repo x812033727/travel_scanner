@@ -1,0 +1,2577 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w03-garmin-smartphone-pivot",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "從頭到尾像在跟一個朋友翻一份公司的舊檔案：開場兩句對著觀眾講、帶一點挑釁；年報那句怪話放慢，像發現了什麼；賣得多賺得少那一段數字一個一個放慢；手機那一章帶一點「這招蠻聰明」的語氣；十月二十八日那段加快、帶點看熱鬧；「沒有。還是可能。」乾脆；二〇一一年那句放慢落地，「可是同一天」轉折要亮；十一年那句收著；手腕那章有點無奈的好笑；最後十月二十八日那個巧合輕輕帶笑；結尾乾脆，「存檔」兩個字落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "t005",
+      "payoff": "t112",
+      "what": "營收兩倍多，那七成的生意去了哪裡"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t047",
+      "what": "它自己也做過一支手機"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t082",
+      "what": "年報裡親手寫下成長停了"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t137",
+      "what": "營收憑什麼還翻一倍"
+    },
+    {
+      "setup": "t021",
+      "payoff": "t022",
+      "what": "它是怎麼開進你車裡的"
+    },
+    {
+      "setup": "t023",
+      "payoff": "t024",
+      "what": "衛星訊號的大毛病"
+    },
+    {
+      "setup": "t035",
+      "payoff": "t036",
+      "what": "應該越賣越好賺吧"
+    },
+    {
+      "setup": "t045",
+      "payoff": "t068",
+      "what": "那句「可能拖慢」會不會改"
+    },
+    {
+      "setup": "t055",
+      "payoff": "t056",
+      "what": "二十八號那篇部落格文章"
+    },
+    {
+      "setup": "t076",
+      "payoff": "t082",
+      "what": "那句「可能」哪一天才改"
+    },
+    {
+      "setup": "t087",
+      "payoff": "t089",
+      "what": "同一天的新聞稿裡另一個數字"
+    },
+    {
+      "setup": "t094",
+      "payoff": "t095",
+      "what": "三張小桌子是什麼時候擺上去的"
+    },
+    {
+      "setup": "t106",
+      "payoff": "t109",
+      "what": "別以為這樣就翻身了：營收卡住"
+    },
+    {
+      "setup": "t111",
+      "payoff": "t112",
+      "what": "當年那七成的生意現在在哪"
+    },
+    {
+      "setup": "t114",
+      "payoff": "t116",
+      "what": "七成縮到不到一成，是不是車用就沒了"
+    },
+    {
+      "setup": "t119",
+      "payoff": "t128",
+      "what": "手機公司搶健身這張桌子，搶到了沒"
+    },
+    {
+      "setup": "t123",
+      "payoff": "t124",
+      "what": "又要被打趴一次了嗎"
+    }
+  ],
+  "youtube": {
+    "title": "Garmin 七成生意被手機打趴？營收憑什麼還翻一倍｜奇聞檔案局",
+    "description": "流傳的版本是：手機的免費導航，打趴了 Garmin 七成的生意。這一集翻開它 2008 到 2025 年度之間的年報，看那句「可能拖慢成長」是哪一天改成「已經讓成長停止」的、它自己做的那支手機怎麼了、同一天公布的另一個數字是什麼，還有營收要等幾年才追回來。\n\n「被手機打趴」標明是流傳的版本：年報同時點名新車選配導航，二〇〇九年還有景氣與價格戰，手機造成成長停止是 Garmin 自己在年報裡的說法。Counterpoint 的智慧手錶排名只是 2022 年第一季、經 9to5Mac 轉述；全年約 81.5 億美元是公司自己的預估。每個數字的出處列在下方參考資料。\n\n本集插圖由 AI 生成，裡面的人物與機器都是一般化的卡通造型，不是真實人物或真實產品。本頻道跟 Garmin 沒有授權或合作關係。\n\n資料截至 2026-11-05",
+    "tags": [
+      "Garmin",
+      "奇聞檔案局",
+      "導航機",
+      "手機導航",
+      "商業故事",
+      "智慧手錶",
+      "年報",
+      "公司轉型",
+      "Google 地圖導航",
+      "生意奇聞"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "Garmin\n**被打趴？**",
+      "tag": "生意奇聞",
+      "sub": "營收還翻了一倍",
+      "shot": "open-promise"
+    }
+  },
+  "assets": [],
+  "sources": [
+    {
+      "title": "Garmin 2008 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420409010751/v141191_10k.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2009 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420410009642/v175216_10k.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2010 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420411010358/v210433_10k.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2011 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420412012007/v303209_10k.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2003 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000112178804000005/form10k_122703.txt",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2013 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420414010483/v367065_10k.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2015 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000161577416004243/s102606_10k.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2018 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000161577419002739/s116041_10k.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2019 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000156459020005133/grmn-10k_20191228.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2023 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000095017024017559/grmn-20231230.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2025 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000119312526056028/grmn-20251227.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2006 年第四季暨全年財報新聞稿",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420407007445/v065417_ex99-1.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2008 年第四季暨全年財報新聞稿",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420409010317/v141019_ex99-1.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2010 年第四季暨全年財報新聞稿，2011-02-23",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000114420411010322/v212200_ex99-1.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2025 年第四季暨全年財報新聞稿，2026-02-18",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000119312526056025/grmn-ex99_1.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 2026 年第三季財報新聞稿，2026-10-28",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001121788/000119312526435066/grmn-ex99_1.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Garmin 台灣官網：關於我們",
+      "url": "https://www.garmin.com.tw/company/about/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Google 官方部落格：Google 地圖導航（2009-10-28）",
+      "url": "https://googleblog.blogspot.com/2009/10/announcing-google-maps-navigation-for.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BBC News：Free Google sat-nav shakes market（2009-10-29）",
+      "url": "https://news.bbc.co.uk/2/hi/business/8331824.stm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Daring Fireball（2009-10-28）",
+      "url": "https://daringfireball.net/linked/2009/10/28/garmin-tomtom",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "24/7 Wall St.：Is Google's Navigation Launch A Category Killer?（2009-10-28）",
+      "url": "https://247wallst.com/telecom-wireless/2009/10/28/is-googles-navigation-launch-a-category-killer-goog-trmb-grmn/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Engadget：fēnix 發表與新聞稿（2012-07-10）",
+      "url": "https://www.engadget.com/2012-07-10-garmin-fenix-gps-watch.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "9to5Mac：2022 年第一季智慧手錶（2022-05-31）",
+      "url": "https://9to5mac.com/2022/05/31/smartwatch-market-leader/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Wikipedia：Garmin",
+      "url": "https://en.wikipedia.org/wiki/Garmin",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "田納西大學 Volopedia：Min H. Kao",
+      "url": "https://volopedia.lib.utk.edu/entries/min-h-kao/",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "title": "Garmin 新聞稿：Gary Burrell 過世（2019-06-14）",
+      "url": "https://garmin.mynewsdesk.com/pressreleases/garmin-announces-passing-of-co-founder-and-chairman-emeritus-gary-burrell-2886668",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "title": "AOPA：Gary Burrell 過世（2019-06-13）",
+      "url": "https://aopa.org/news-and-media/all-news/2019/june/13/avionics-pioneer-gary-burrell-has-died",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "title": "GPS.gov：Selective Availability",
+      "url": "https://archive.gps.gov/systems/gps/modernization/sa/",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "title": "白宮聲明：停止降低 GPS 精度（2000-05-01）",
+      "url": "https://www.govinfo.gov/content/pkg/PPP-2000-book1/html/PPP-2000-book1-doc-pg803.htm",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "title": "Garmin 2002 年度年報",
+      "url": "https://www.sec.gov/Archives/edgar/data/1121788/000112178803000004/form10k_122802.txt",
+      "checked_on": "2026-11-05"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open-dash",
+      "chapter": "擋風玻璃上的那台機器",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a parked car pressing a small plain grey navigation box with a dark blank screen and smooth bare sides onto the windshield by its suction cup, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你有沒有用過那種導航機？開車去沒去過的地方，先把它吸在擋風玻璃上。",
+          "emotion": "對觀眾說，像在問一個朋友"
+        }
+      ]
+    },
+    {
+      "id": "open-maker",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful shopkeeper in a plain apron raising a small grey navigation box high above her head like a prize, plain pale wall, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "賣這種機器賣到全球市占第一的公司，叫 Garmin。"
+        }
+      ]
+    },
+    {
+      "id": "open-72",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall heap of smooth plain gold coins on a wooden table with one small plain grey navigation box resting on top, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "二〇〇八年，它七成多的營收，都靠車用和隨身導航這一塊。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain grey navigation box lying flat on its back on a blue boxing ring mat, a big smartphone with a screen showing one blue route line standing upright in the corner, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "後來手機有了免費導航，大家都說：Garmin 被打趴了。"
+        }
+      ]
+    },
+    {
+      "id": "open-double",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a surprised girl in a striped sweater at a table, gasping with both hands on her cheeks beside a very tall tower of smooth unmarked gold coins, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "可是你想不到，它二〇二五年度的營收，是那一年的兩倍多。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-tease-phone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small smooth grey navigation box beside a chunky grey smartphone, its screen a plain pale colour with one single blue line, both lying on a wooden workbench, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "更怪的是，被手機追著打的那幾年，它自己也做過一支手機。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "open-tease-pen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small potted seedling bent over on a wooden desk, both leaves limp and hanging down, the soil dry and cracked, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "還在交給主管機關的年報裡，親手寫下：我們的成長，已經停了。"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a fat bulging brown purse on a wooden desk, a few smooth shiny gold discs spilling out beside it, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "今天我們就來聊聊：一家大家都說被手機打趴的公司，營收憑什麼還翻了一倍？",
+          "emotion": "承諾句，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "origin-zhushan",
+      "chapter": "兩個做飛機儀器的工程師",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing, medium close-up of Ada with her wavy black bob, side fringe and round red glasses, waving hello with a friendly smile on a cream backdrop, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "我是檔案局的研究員，答案我帶你從頭翻。第一位主角叫高民環，在台灣南投的竹山出生。"
+        }
+      ]
+    },
+    {
+      "id": "origin-degree",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a white paper airplane flying over a calm blue sea toward a far green coast on the horizon, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "一九七一年，他從台大電機系畢業，到美國田納西大學，一路念到電機博士。"
+        }
+      ]
+    },
+    {
+      "id": "origin-satellite",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sturdy olive-green metal box with a carry handle on a workbench, its screen a plain pale colour with one single blue line, a folded camouflage net beside it, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "畢業後，他在美國做導航系統，後來到一家國防承包商，設計用衛星定位的軍用導航。"
+        }
+      ]
+    },
+    {
+      "id": "origin-new",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a laughing young man leaning out of his small family car's window, a huge olive-green metal box strapped to the roof above him, mild morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "那時候，用衛星來定位，還是一套剛起步的新系統。誰會想到它有一天會進到你車裡？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "origin-cockpit-radio",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white paper airplane and a small toy sailboat side by side on a wooden workbench, a small screwdriver lying beside them, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "第二位主角叫 Gary Burrell，在好幾家做飛機和船用電子儀器的公司當過主管。"
+        }
+      ]
+    },
+    {
+      "id": "origin-navcomm",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain grey box with a dark blank screen resting on a brown leather pilot glove on a wooden workbench, a white paper airplane beside it, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "Garmin 說，他替私人小飛機這個市場，設計出第一套成功的導航通訊機。"
+        }
+      ]
+    },
+    {
+      "id": "origin-colleagues",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up two white paper airplanes side by side, smiling, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "一九八三年，高民環也轉到一家做飛機電子儀器的公司，兩人成了同事。結果呢？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "origin-bench",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of one smooth round ball of clay, half red and half blue, pressed together into a single sphere on a plain smooth white desk, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "一九八九年，他們出來自己開公司，一開始叫 ProNav。"
+        },
+        {
+          "id": "t017",
+          "text": "後來改名 Garmin，就是把 Gary 和 Min 拼在一起。"
+        }
+      ]
+    },
+    {
+      "id": "origin-aviation",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing with thick clean dark outlines of a big white paper airplane carrying a small grey box across a clear blue sky, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "它最早的產品，是給飛機用的，"
+        }
+      ]
+    },
+    {
+      "id": "origin-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a fisherman in a yellow raincoat on a small wooden boat holding a small plain grey handheld box with a dark blank screen, squinting out to sea, grey overcast sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "也有給開船的人用的。"
+        }
+      ]
+    },
+    {
+      "id": "origin-not-car",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a cardigan in the driver's seat of his car, shrugging at the empty bare windshield in front of him, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "你注意到了嗎？這時候，它還沒有給你家車上用的產品。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "origin-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a small grey navigation box with a suction cup lying on an empty car seat, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "那它是怎麼開進你車裡的？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "car-1998",
+      "chapter": "訊號變準了，賣得越多留得越少",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a 1990s sedan pressing a bulky smooth grey navigation box with a dark blank screen and round knobs onto the windshield, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "要到一九九八年，照維基百科，它才有第一台給汽車用的可攜式導航。"
+        }
+      ]
+    },
+    {
+      "id": "car-problem",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain grey navigation box with a dark blank screen on a bare desk, a white sticking plaster stuck across its corner, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "問題來了，那時候的衛星訊號，有個大毛病。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "car-sa",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a red dart lying on a plain floor below a small round target hanging on a bare wall, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "給一般人用的訊號，被美國政府故意加了誤差，理由是國家安全。"
+        }
+      ]
+    },
+    {
+      "id": "car-tv",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a red dart stuck right in the centre of a round target on a bare wall, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "二〇〇〇年五月一日，白宮宣布：當天午夜起，不再加這個誤差。"
+        }
+      ]
+    },
+    {
+      "id": "car-10x",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round straw archery target with plain coloured rings on a bare wall, a single red dart stuck right in its centre, mild morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "白宮說，民間的定位，最多可以準十倍。"
+        }
+      ]
+    },
+    {
+      "id": "car-left",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pointing firmly to her left with one hand, plain wall, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "我覺得，對一台要在路口叫你左轉的機器，這差很多。",
+          "emotion": "旁白的看法"
+        }
+      ]
+    },
+    {
+      "id": "boom-queue",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a delighted woman lifting a small plain grey navigation box over her head, a long line of smiling shoppers behind her against a bare white wall, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "再過六年，到了二〇〇六年，它的生意爆了：全公司營收一口氣多了七成三。"
+        }
+      ]
+    },
+    {
+      "id": "boom-170",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a huge red balloon tied to a small plain grey navigation box, lifting the box up off a wooden table into the air, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "車用這一塊呢？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "t030",
+          "text": "多了百分之一百七十。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "boom-nuvi",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a small grey navigation box stuck to a car windshield by its suction cup, its screen a plain pale blue colour with one big white turn arrow, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "主角是一個叫 nüvi 的導航機系列。",
+          "say_for": "58b0523e7ff2",
+          "say": "主角是一個叫 nuvi 的導航機系列。"
+        },
+        {
+          "id": "t032",
+          "text": "二〇〇六年，它占全公司營收兩成八，隔年五成二，再隔年六成四。"
+        }
+      ]
+    },
+    {
+      "id": "boom-three",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shopkeeper in a plain apron at a wooden counter tipping a small plain grey box so a stream of smooth unmarked gold coins pours out, eyes wide, mild morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "你想像一下，每三塊錢，就有快兩塊來自同一類機器。"
+        }
+      ]
+    },
+    {
+      "id": "boom-factory",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bare-headed factory worker in plain blue overalls at a clean workbench pressing a dark blank screen into a small plain grey box, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "它自己說，在台灣汐止、中壢、林口的自家工廠，是它的核心能力之一。"
+        }
+      ]
+    },
+    {
+      "id": "boom-doubt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hopeful shop clerk rubbing his hands together beside a tall stack of small plain grey boxes, a big grin on his face, mild morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "賣成這樣，應該越賣越好賺吧？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "margin-units",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a worker in a plain shirt smiling up at a tall heap of smooth unmarked grey boxes on a bare floor, soft skylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "並沒有。就在 nüvi 占六成四的那一年，它賣出去的東西多了三成八。",
+          "say_for": "64b827539af8",
+          "say": "並沒有。就在 nuvi 占六成四的那一年，它賣出去的東西多了三成八。"
+        }
+      ]
+    },
+    {
+      "id": "margin-revenue",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one shopkeeper at a wooden counter frowning at a thin flat brown leather wallet in her hand, plain wall behind, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "營收卻只多了一成。"
+        }
+      ]
+    },
+    {
+      "id": "margin-price",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain grey navigation box sliding down a red toy playground slide on a wooden counter, a few smooth unmarked gold coins at the bottom, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "偏偏多出來的量，被價格吃掉了。它自己寫：過去兩年，價格大幅往下砍。"
+        }
+      ]
+    },
+    {
+      "id": "margin-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, opening a very thick plain-covered annual report with an eager smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "那一年的帳，我把它攤開來給你看。"
+        }
+      ]
+    },
+    {
+      "id": "margin-jars",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing on a plain table: a fat bulging brown leather wallet by a white paper plane, and a brown leather wallet lying completely flat and empty by a small grey box, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "車用導航每賣一百塊，扣掉成本只賺三十八塊半；飛機用的儀器，能賺六十七塊。"
+        }
+      ]
+    },
+    {
+      "id": "margin-opinion",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a tall stack of plain grey boxes on a wooden floor with one tiny gold disc resting on top, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "也就是說，它賣得最多的導航機，反而是最不賺錢的那一門生意。",
+          "emotion": "旁白的看法"
+        }
+      ]
+    },
+    {
+      "id": "crash-quarter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worried shopkeeper in a plain apron standing under a big grey umbrella in pouring rain, hugging a small plain grey box to her chest, soft grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "那年最後一季，營收掉了一成四；它自己寫的原因是景氣差，金融風暴來了。"
+        }
+      ]
+    },
+    {
+      "id": "crash-report",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one very thick closed plain book with both hands, plain wall, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "在美國上市的公司，每年都要交一份年報給美國證券主管機關，生意和風險都要寫進去。"
+        }
+      ]
+    },
+    {
+      "id": "crash-risk",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big magnifying glass resting on one very thick closed plain book on a bare wooden desk, plain wall behind, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "二〇〇九年二月，Garmin 交出的這一份，風險那一段寫了什麼？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "crash-quote",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small potted seedling with drooping leaves in the shadow of a big smartphone leaning over it, its screen a plain pale colour with one single blue line, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "它寫：手機導航如果被大家接受，可能拖慢我們的成長。",
+          "emotion": "放慢，像發現了什麼"
+        }
+      ]
+    },
+    {
+      "id": "crash-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small white sailboat on calm blue water facing one tall wave rolling toward it, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "既然知道手機要來，它打算怎麼辦？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "phone-callback",
+      "chapter": "它自己也做了一支手機",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a chunky smartphone with a screen showing one blue route line lying on a wooden workbench next to a small plain grey navigation box, a small screwdriver beside them, mild morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "它的答案很直接。還記得開場說的那支手機嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "phone-alliance",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small smooth grey navigation box and a smartphone with a plain pale screen showing one blue line, tied together with a big blue ribbon bow on a bare table, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "就在交出年報的同一個月，它跟台灣的華碩宣布結盟，要一起做聯名手機。"
+        }
+      ]
+    },
+    {
+      "id": "phone-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a chunky touchscreen phone with a solid blue screen and a small suction cup on its back, lying on a white table, mild morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "手機前一年就公布了，叫 nüvifone，裡面有電話、瀏覽器，還有導航。",
+          "say_for": "3bb9bc01f560",
+          "say": "手機前一年就公布了，叫 nuvifone，裡面有電話、瀏覽器，還有導航。"
+        }
+      ]
+    },
+    {
+      "id": "phone-logic",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand snapping the back cover onto a chunky smartphone on a wooden workbench, its screen showing one blue route line, a small screwdriver beside it, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "你看懂這步棋了嗎？既然手機要搶導航，那我自己來做手機。",
+          "emotion": "這招蠻聰明的語氣"
+        }
+      ]
+    },
+    {
+      "id": "phone-reaction",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping her temple with one finger and grinning, impressed, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "老實說，我第一次讀到，也覺得這招蠻聰明的。"
+        }
+      ]
+    },
+    {
+      "id": "phone-taiwan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling shop assistant behind a plain smooth counter holding up a chunky smartphone, its screen showing one blue route line, plain smooth pastel wall, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "它原本說上半年就上市，結果拖到那年七月，第一款才在台灣開賣。"
+        }
+      ]
+    },
+    {
+      "id": "phone-factory",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one factory worker in plain blue overalls looking down with a raised eyebrow at a chunky smartphone with a dark blank screen in his hands, plain wall behind, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "偏偏有個地方不一樣：這支手機，不是它自家工廠造的，是交給別家做。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "phone-carrier",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a salesman in a plain shirt arranging a row of chunky smartphones with screens showing one blue route line on a white display table, bare white walls, soft autumn light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "十月，美國一家大電信商宣布要賣它。"
+        }
+      ]
+    },
+    {
+      "id": "phone-blog",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open laptop with a plain white screen on a wooden desk, a bright red autumn leaf lying beside it, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "可是同一個月的二十八號，另一家公司在部落格貼了一篇文章。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "google-post",
+      "chapter": "十月二十八日，免費",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a giant smartphone standing upright on a grassy hill like a monument, its screen a plain pale colour with one single blue line, soft clouds in a pale blue daytime sky",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "發文的是 Google，宣布 Google 地圖導航，給 Android 2.0 的手機用。"
+        }
+      ]
+    },
+    {
+      "id": "google-features",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing, medium shot of a cheerful young woman in a plain smooth green sweater on a leafy park path holding a dark smartphone to her ear, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "它說，導航機該有的它都有：語音報路、立體畫面，走錯了自動重算。"
+        }
+      ]
+    },
+    {
+      "id": "google-maps",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a grinning young man in a living room dropping a stack of blank shiny silver discs into a wastebasket, a smartphone with a screen showing one blue route line in his other hand",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "還說：你永遠不用再買地圖更新。"
+        }
+      ]
+    },
+    {
+      "id": "google-price",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman holding a smartphone, its screen a plain pale colour with one single blue line, opening her brown wallet with the other hand, eyebrows raised, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "那這東西要多少錢？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "google-free",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a grinning young man holding up a smartphone with a plain white screen showing one blue route line, a big shiny red gift bow tied around the phone, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "免費。BBC 還提到，別家手機導航軟體，貴的要六十英鎊。",
+          "emotion": "加快、看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "google-stock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain grey navigation box tumbling down a long flight of bare wooden stairs, soft grey light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "那一天，Garmin 的股價跌了大約一成七；BBC 報的是一成八。"
+        }
+      ]
+    },
+    {
+      "id": "google-sleep",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in pajamas sitting up in bed in grey early morning light, wide awake with dark rings under his eyes, clutching his pillow",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "如果你那天手上有它的股票，大概很難睡。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "google-writing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain grey navigation box with a dark screen sitting alone on a wooden shelf under a thick layer of dust, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "一位知名科技部落客當天就寫：專用導航機，快走到盡頭了。"
+        }
+      ]
+    },
+    {
+      "id": "google-killer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a big smartphone standing upright on a bare desk, its screen a plain pale colour with one single blue line, a small plain grey box knocked over in front of it, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "一家財經網站的標題更直接，問這是不是一個會殺死整類產品的東西。"
+        }
+      ]
+    },
+    {
+      "id": "google-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, nodding knowingly, holding up a dark-screened phone, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "我覺得，手機打趴導航機這個說法，差不多就是從這一天開始的。",
+          "emotion": "旁白的看法"
+        }
+      ]
+    },
+    {
+      "id": "google-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thoughtful woman in the driver's seat pulling a small plain grey navigation box with a dark blank screen off the windshield by its suction cup, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "你可能也是那幾年，把車上那台拿下來的。"
+        }
+      ]
+    },
+    {
+      "id": "google-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a small potted seedling on a wooden windowsill, its two little leaves drooping, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "四個月後，它交出下一份年報。你猜，那句「可能」改了嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "google-unchanged",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of two matching thick navy blue books of the same size lying side by side on a wooden desk, like twins, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "沒有，還是「可能」。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "google-android",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a smartphone with a bright green back lying face down on a plain white table, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "同一份年報還寫，它下一批手機，有幾款也要用 Google 的 Android。",
+          "emotion": "好笑"
+        }
+      ]
+    },
+    {
+      "id": "google-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a slim flat brown purse lying open and empty on a wooden desk, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "這一份也算出了前一年的帳：營收少了一成五多，車用少了一成九。"
+        }
+      ]
+    },
+    {
+      "id": "google-units",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall heap of small plain grey boxes on a bare warehouse floor, just as tall and tidy as ever, pale light from a high window",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "可是你注意：車用賣出的台數，只少了百分之二。"
+        }
+      ]
+    },
+    {
+      "id": "google-asp",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a small grey car GPS box on a bare floor, a wrinkled half-deflated red balloon tied to it sagging on the floor beside it, string slack, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "少掉的是價錢，平均售價掉了百分之十八。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "google-planes",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet marina under a grey sky, small sailboats tied up with covers on, a wet white paper airplane lying in a puddle on the dock, soft grey light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "飛機和船也一起掉，年報寫的是景氣；"
+        }
+      ]
+    },
+    {
+      "id": "google-rivals",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain shelf crammed full of small unprinted navigation boxes in many colours, one grey box squeezed in sideways at the end, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "車用那段，寫的是競爭環境。"
+        }
+      ]
+    },
+    {
+      "id": "google-not-yet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shaking her head at a dark-screened phone held out, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "免費導航那年快結束才出現，所以這一年掉的，不能全算在手機頭上。"
+        }
+      ]
+    },
+    {
+      "id": "google-when",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed very thick plain-covered annual report on a wooden desk beside a small hourglass with its sand running, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "那句「可能」，要等到哪一天才改？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "halt-cancel",
+      "chapter": "它親手寫下「成長停了」",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a chunky smartphone with a plain dark screen lying alone at the bottom of an empty wooden drawer that is sliding shut, soft grey light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "在那之前，它先放棄了那支手機。"
+        }
+      ]
+    },
+    {
+      "id": "halt-cancel-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain grey navigation box and a smartphone with a plain dark screen lying apart on a table, a cut blue ribbon and a pair of scissors between them, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "二〇一〇年十月，它跟華碩宣布不再推新的聯名手機，年報寫得很短：已經取消。"
+        }
+      ]
+    },
+    {
+      "id": "halt-fall",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the small potted seedling wilting further with brown curled leaves beside a small plain grey navigation box on a desk, soft grey light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "那一年，車用營收又少了一成九，剩不到十七億美元。"
+        }
+      ]
+    },
+    {
+      "id": "halt-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nervous young boss at a bare desk biting the end of her pen over a blank white sheet of paper, a sweat drop on her brow, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "換成你是老闆，六成多的收入在往下掉，年報你敢怎麼寫？",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "halt-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a courier in a plain winter coat at a bare doorway handing over a very thick plain-covered annual report, snow on the steps behind him, soft grey morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "二〇一一年二月二十三日，年報交出去了。"
+        }
+      ]
+    },
+    {
+      "id": "halt-callback",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping one finger on her temple to recall something, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "還記得開場那句「成長已經停了」嗎？就是這一份寫的。"
+        }
+      ]
+    },
+    {
+      "id": "halt-quote",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a small potted seedling on a windowsill with its leaves completely wilted and brown, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "同一句話，「可能拖慢」換成了「已經讓我們的成長停止」。",
+          "emotion": "放慢落地"
+        }
+      ]
+    },
+    {
+      "id": "halt-peak",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a small smooth grey box with a suction cup sitting alone on the very top of a tall rocky peak under a pale sky, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "下一段還多一句：這個市場，已經到頂了。"
+        }
+      ]
+    },
+    {
+      "id": "halt-own",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, one index finger raised by her cheek, calm serious face, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "注意，這是它自己的說法。同一份年報也寫，新車越來越常選配導航，景氣也列成風險。"
+        }
+      ]
+    },
+    {
+      "id": "halt-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired shopkeeper in a plain apron reaching up with both hands to pull a plain grey roller shutter halfway down, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "這就是大家講的結局，對吧？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "halt-release",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain white envelope lying alone on a bare wooden table, the only object on the table, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "可是同一天，它還發了一份財報新聞稿。",
+          "emotion": "轉折要亮"
+        }
+      ]
+    },
+    {
+      "id": "turn-title",
+      "chapter": "同一天的另一個數字",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a small toy sailboat to her chest, cheerful, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "新聞稿的標題沒提導航機，寫的是：戶外健身、飛航、航海，持續強勁。"
+        }
+      ]
+    },
+    {
+      "id": "turn-61",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a fat bulging brown purse on a wooden table with a white laced sneaker, a small wooden propeller and a toy sailboat resting on top, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "這三塊，賺了全公司六成一的營業利益。",
+          "emotion": "揭曉"
+        },
+        {
+          "id": "t090",
+          "text": "營收加起來，卻只占三成八。"
+        }
+      ]
+    },
+    {
+      "id": "turn-defer",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing with thick clean dark outlines of three equal stacks of smooth gold coins in a row on a wooden desk, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "就算把延後入帳的錢都算回去，我算過，那三塊還是賺了一半以上。"
+        }
+      ]
+    },
+    {
+      "id": "turn-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing, close-up of one brown leather wallet lying completely flat and empty on a plain white table, thin as a pancake, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "它們也不是突然暴衝。主要是車用的營業利益，兩年從五億二掉到兩億五。"
+        }
+      ]
+    },
+    {
+      "id": "turn-tables",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big smooth grey navigation box on a wooden table with a small white sneaker, a paper airplane and a toy sailboat lined up beside it, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "那時候它的生意分成好幾塊：車用導航最大，旁邊還有三塊小的，戶外健身、船、還有飛機。"
+        }
+      ]
+    },
+    {
+      "id": "turn-tables-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white sneaker, a paper airplane and a toy sailboat on an old wooden shelf under a light layer of dust, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "問題來了：這三塊小生意，是什麼時候開始做的？",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "tables-old",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing, medium shot of a fisherman in a yellow raincoat in a small wooden boat waving up at a small white plane with a long row of windows, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "答案是，一直都在。還記得一開始那些飛機和船嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "tables-jet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up side view of a smiling pilot in a plain white shirt and headset sitting before a wide cockpit panel of smooth dark glass screens, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "時間倒回二〇〇三年：Cessna 飛機選了它的整合航電，當一款新商務噴射機的標準配備。"
+        }
+      ]
+    },
+    {
+      "id": "tables-runner",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a runner in a plain track jacket on an autumn park path raising her wrist to check a chunky sports watch with a screen showing one red heart, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "同一年十一月，它開始出貨一款跑步用的裝置，用衛星量你的速度、距離和圈速。"
+        }
+      ]
+    },
+    {
+      "id": "tables-snake",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing, close-up of a teenager on a bus grinning at a small old mobile phone with a plain solid green screen, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "二〇〇三年，你的手機可能還在玩貪食蛇。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "tables-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shaking her head with a calm small smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "所以我不覺得這叫臨危換跑道。這是我的看法："
+        }
+      ]
+    },
+    {
+      "id": "tables-marathon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a laughing jogger in a plain t-shirt in a park with a big smartphone taped clumsily to his forearm with grey tape, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "手機能陪你開車，可是你不會把它綁在手上跑馬拉松，"
+        }
+      ]
+    },
+    {
+      "id": "tables-panel",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of an empty small plane cockpit, a smartphone showing one blue route line taped crookedly onto the smooth grey instrument panel, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "也不會把它鎖進飛機的儀表板。"
+        }
+      ]
+    },
+    {
+      "id": "tables-fitness",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a big red balloon tied to a white sneaker, lifting it up off a park bench into the air, mild morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "結果，數字也開始動：二〇一〇年，健身成長四成二，隔年又兩成四。"
+        }
+      ]
+    },
+    {
+      "id": "tables-watch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a large sturdy outdoor watch with a smooth plain strap and a screen showing one red heart, wrapped around a mossy rock on a mountain ridge, peaks behind, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "二〇一二年七月，它發表第一支給登山健行的人用的衛星定位手錶，叫 fēnix。",
+          "say_for": "16fa4615c0fb",
+          "say": "二〇一二年七月，它發表第一支給登山健行的人用的衛星定位手錶，叫 fenix。"
+        }
+      ]
+    },
+    {
+      "id": "tables-399",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing, close-up of a chunky outdoor sports watch with a solid red face lying on a plain white table, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "建議售價三百九十九美元。你當年會買嗎？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "t105",
+          "text": "我是不會，我連山都不爬。",
+          "emotion": "自嘲"
+        }
+      ]
+    },
+    {
+      "id": "tables-slide",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a red balloon tied to a white sneaker, its string caught on a bare tree branch, the sneaker dangling in the air, soft grey light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "可是你別以為這樣就翻身了。"
+        }
+      ]
+    },
+    {
+      "id": "tables-stuck",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small toy sailboat stranded on a dry sandbar, its sails drooping, shallow water all around, soft grey light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "全公司的營收卡住了，二〇一三年還掉到二十六億多美元。"
+        }
+      ]
+    },
+    {
+      "id": "tables-share",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white pie dish holding one lone thin slice of pie with a tiny smooth grey box sitting on top, mild morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "車用占營收的比例，從五成八一路掉到一成九。"
+        }
+      ]
+    },
+    {
+      "id": "tables-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the small potted plant from before, now grown tall and leafy, its plain smooth pot draped with a thin cobweb and a little dust, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "要超過二〇〇八年度那個高點，它等到二〇一九年度，快三十八億美元。"
+        },
+        {
+          "id": "t110",
+          "text": "整整十一年。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "now-where",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty clear suction cup mount with its bare bracket stuck alone on a clean car windshield, green hills beyond the glass, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "那麼，當年那七成的生意，現在在哪？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "now-total",
+      "chapter": "七十二億裡，沒有那七成",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the girl in a striped sweater peering with a magnifying glass behind a very tall tower of smooth unmarked gold coins, searching, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "還記得開場那個兩倍多嗎？二〇二五年度那七十二億多美元裡，找不到一塊叫那七成的。"
+        }
+      ]
+    },
+    {
+      "id": "now-split",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big round pie on a wooden table with a white sneaker, a paper airplane and a toy sailboat each sitting on its own slice, mild morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "健身接近三分之一，戶外兩成八，航海和飛航各一成多。剩下最小的一塊，不到一成。"
+        }
+      ]
+    },
+    {
+      "id": "late-objection",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, squinting doubtfully at an empty pie dish holding only crumbs, plain wall, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "故事到這裡還沒結束。你可能會想：七成縮到不到一成，車用就是這樣沒的。",
+          "emotion": "代觀眾問"
+        }
+      ]
+    },
+    {
+      "id": "now-oem-small",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a frowning factory worker in plain overalls holding a slim car display with a plain dark screen, a bare car body behind her, mild morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "最小的一塊，是替汽車廠供貨的事業，不到一成，全年還是虧的。"
+        }
+      ]
+    },
+    {
+      "id": "now-oem",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing with thick clean dark outlines of a shiny new red car parked alone in a bright empty showroom, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "它做的是裝在新車裡的軟硬體，不是當年那門生意改了名字。"
+        }
+      ]
+    },
+    {
+      "id": "now-pnd",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small car GPS box stuck by its suction cup to a car windshield, its screen a plain pale blue colour with one big white turn arrow, green hills outside, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "那你吸在擋風玻璃上那種機器呢？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "t118",
+          "text": "今天還在賣，年報把它歸在戶外，沒有單獨列金額。"
+        }
+      ]
+    },
+    {
+      "id": "late-wrist",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a jogger in a city park glancing at a smartwatch with a screen showing one red heart on her wrist while holding a big smartphone in her other hand, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "時間先倒回二〇一七年前後：健身這一塊，其實一直有手機公司來搶。"
+        }
+      ]
+    },
+    {
+      "id": "wrist-list",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a row of shiny smartwatches with screens showing one red heart on a glass counter, a sturdy black sports watch at the end of the row, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "二〇一八年度的年報，列出健身類的主要對手：Apple、三星、華為。"
+        }
+      ]
+    },
+    {
+      "id": "wrist-same",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, lifting her wrist to show a dark-screened smartwatch, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "你看，好幾家根本就是賣手機的。同一批對手，追到你手腕上來了。",
+          "emotion": "無奈的好笑"
+        }
+      ]
+    },
+    {
+      "id": "wrist-drop",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain grey rubber fitness band rolling down a gentle grassy slope, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "它也承認，前一年，也就是二〇一七年，健身營收掉了百分之七，說是基本款手環的市場在走下坡。"
+        }
+      ]
+    },
+    {
+      "id": "wrist-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small sports watch showing one red heart on a counter, a much bigger smartphone leaning over it, its screen a plain pale colour with one single blue line, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "又要被打趴一次了嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "wrist-rise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful trail runner on a hill path raising her fist in triumph, a chunky sports watch with a screen showing one red heart on her wrist, pale morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "結果到了二〇一八年，健身成長一成三，變成全公司最大的一塊。"
+        }
+      ]
+    },
+    {
+      "id": "wrist-won",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big shiny red apple on a tall wooden block and a sturdy black sports watch with a screen showing one red heart on a lower block beside it, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "那它贏了 Apple 嗎？沒有。"
+        }
+      ]
+    },
+    {
+      "id": "wrist-q1",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a grey hoodie at a bare desk lining up a pile of smartwatches with screens showing one red heart in a neat row, calm, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "市調公司 Counterpoint 二〇二二年第一季的數字，"
+        }
+      ]
+    },
+    {
+      "id": "wrist-q1-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a giant red apple towering over a small sturdy black sports watch with a screen showing one red heart on a bare wooden table, mild morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "Apple 出貨占三成六，Garmin 排第五。"
+        }
+      ]
+    },
+    {
+      "id": "wrist-premium",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a proud mountaineer in a red jacket on a rocky summit, raising her wrist high to show a large sturdy black sports watch with a screen showing one red heart, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "可是五百美元以上那一段，Garmin 排第一。",
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "wrist-one-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a single autumn leaf, a cautious look, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t129",
+          "text": "這只是一季的數字，不能當永遠。"
+        }
+      ]
+    },
+    {
+      "id": "now-q3",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fat bulging brown purse on a wooden desk beside a bright red autumn leaf, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t130",
+          "text": "最新一筆，是今年十月二十八日公布的第三季，營收將近二十億美元。"
+        }
+      ]
+    },
+    {
+      "id": "now-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a surprised office worker at her desk holding up a bright red autumn leaf by its stem and gasping, autumn trees outside the window, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t131",
+          "text": "這個日子，你有沒有覺得眼熟？",
+          "emotion": "輕輕帶笑"
+        },
+        {
+          "id": "t132",
+          "text": "十七年前，前面那篇免費導航的文章，就是這天貼出來的。"
+        }
+      ]
+    },
+    {
+      "id": "now-guidance",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shading her eyes with one hand, gazing far off, hopeful, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "全年它自己預估八十一億多美元。這是預估，還沒發生。"
+        }
+      ]
+    },
+    {
+      "id": "close-answer",
+      "chapter": "擋風玻璃上的空位",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, a hand on a closed grey folder, one eyebrow raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t134",
+          "text": "所以，Garmin 到底有沒有在導航機上贏過手機？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "close-answer-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big smartphone with a screen showing one blue route line beside a small plain grey navigation box with a dark screen on a bare desk, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t135",
+          "text": "沒有。手機讓它的成長停了，這句是它自己在年報裡寫的。"
+        }
+      ]
+    },
+    {
+      "id": "close-not-only",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing of a small grey box pressed flat under a steering wheel, a closed umbrella with a hooked handle beside it, a brown leather wallet lying completely flat and empty, daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t136",
+          "text": "只是照它自己的年報，拖住那門生意的不只手機，還有新車選配、景氣和價格戰。"
+        }
+      ]
+    },
+    {
+      "id": "close-tables",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bare wrist wearing a sports watch with a screen showing one red heart, a seaside path, a sailboat on the water and a small white plane in the sky blurred behind, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t137",
+          "text": "營收能翻倍，靠的是車子以外的生意：駕駛艙、船上、跑步的人，還有你的手腕。"
+        }
+      ]
+    },
+    {
+      "id": "close-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, friendly eyes, tilting her head thoughtfully, holding a thin grey folder, plain wall, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t138",
+          "text": "我猜，如果它當年只押車用導航這一門生意，這份檔案大概就停在二〇一一年那一頁。",
+          "emotion": "旁白的猜想"
+        }
+      ]
+    },
+    {
+      "id": "close-mount",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smartphone with a screen showing one blue route line held in a small black cradle stuck to a car windshield by a suction cup, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t139",
+          "text": "那擋風玻璃上那個吸盤的位置呢？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "t140",
+          "text": "照它自己的年報，手機確實搶走了一大塊。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "close-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small toy sailboat with a proud smile, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t141",
+          "text": "可是我覺得，這份檔案說的是：被打趴的是一門生意；撐住一家公司的，是它早就開始做的其他生意。",
+          "emotion": "放慢，金句落地"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "shot",
+      "data": {
+        "prompt": "Flat 2D drawing, medium close-up of Ada with her wavy black bob with a side fringe and round red glasses smiling and waving goodbye, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t142",
+          "text": "好啦，這就是今天的故事。"
+        },
+        {
+          "id": "t143",
+          "text": "你家車上，現在還有吸在擋風玻璃上的導航機嗎？留言告訴我。",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a very thick plain-covered annual report and smiling warmly at the viewer, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t144",
+          "text": "這個頻道只講紀錄裡有的事，想一起翻檔案，就訂閱。"
+        }
+      ]
+    }
+  ],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat"
+}
