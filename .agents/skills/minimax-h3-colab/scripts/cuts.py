@@ -13,8 +13,10 @@ has one. With --manifest (the stage-1 manifest), a trimmed draft shorter than it
 `duration_seconds` minus 2 when there is no `min_seconds`, is reported as too short and the exit code is 3, so
 that shot is bought again instead of being refined. ffmpeg and ffprobe must be on PATH.
 
-The threshold is on ffmpeg's scene score. The cut in c19 scored 0.31 between two dark frames; ordinary motion
-in the same pilot (hands sweeping across the face, a walk with a tracking camera) stayed below 0.04.
+A cut is a frame whose ffmpeg scene score is at least --threshold (0.15) AND at least --spike (8) times the
+median score of the six frames on each side (floored at 0.005). e001 c19's cut scored 0.31 against neighbours
+near 0.002; c13 (a schoolbag bouncing, bells swinging) reached 0.16 on one frame but its neighbours ran 0.02-0.06,
+so it is motion, not a cut.
 """
 
 from __future__ import annotations
@@ -46,6 +48,15 @@ def scene_scores(path: Path) -> list[tuple[int, float]]:
     return list(enumerate(scores))
 
 
+def is_cut(scores: list[float], i: int, threshold: float, spike: float) -> bool:
+    """Frame i starts a new shot: a high score that stands out from the frames around it."""
+    if scores[i] < threshold:
+        return False
+    around = sorted(scores[max(0, i - 6):i] + scores[i + 1:i + 7])
+    median = around[len(around) // 2] if around else 0.0
+    return scores[i] >= spike * max(median, 0.005)
+
+
 def h3_length_before(frame: int) -> int:
     """The longest 17k+5 frame count that fits in the `frame` frames before the cut (0 when even 22 do not)."""
     k = (frame - 5) // 17
@@ -58,6 +69,7 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--output-dir", required=True)
     ap.add_argument("--manifest", help="stage-1 manifest: report trimmed drafts too short for their shot")
     ap.add_argument("--threshold", type=float, default=0.15)
+    ap.add_argument("--spike", type=float, default=8.0)
     ap.add_argument("--json", dest="report", help="write the report here as JSON")
     args = ap.parse_args(argv)
     if not (shutil.which("ffmpeg") and shutil.which("ffprobe")):
@@ -73,7 +85,8 @@ def main(argv: list[str]) -> int:
     report, short = [], 0
     for path in sorted(src.glob("*.mp4")):
         frames, fps = probe(path)
-        cuts = [(i, s) for i, s in scene_scores(path) if s >= args.threshold]
+        scores = [s for _, s in scene_scores(path)]
+        cuts = [(i, s) for i, s in enumerate(scores) if is_cut(scores, i, args.threshold, args.spike)]
         row = {"file": path.name, "frames": frames, "fps": fps, "cuts": [{"frame": i, "seconds": round(i / fps, 3), "score": s} for i, s in cuts]}
         out = dst / path.name
         if cuts:
