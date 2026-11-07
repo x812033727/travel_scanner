@@ -114,8 +114,11 @@ for (const scene of video.scenes) {
   const clip = src ? firstTake(path.join(work, "clips"), src.shot) : pick(path.join(work, "clips"), scene.id);
   // A line the model voiced on screen (its lips follow it) vs one we lay in from the recorded audio/ files: the system,
   // an off-screen speaker, inner monologue, or a speaker whose lips the shot does not show (nospeak).
+  // `voice_on: ["s12", ...]` in the edit list: shots whose speaker is marked nospeak only so the builder writes the speech
+  // after the action, but who does speak on screen (e001 live fix1 s12, s14) -- their lines take the clip's voice.
   const onscreen = (l) => l.speaker !== "xitong" && (scene.data?.characters ?? []).includes(l.speaker)
-    && !(scene.data?.nospeak ?? []).includes(l.speaker) && !/嘴閉著|內心獨白|畫外/.test(l.emotion ?? "");
+    && (!(scene.data?.nospeak ?? []).includes(l.speaker) || (edit.voice_on ?? []).includes(scene.id))
+    && !/嘴閉著|內心獨白|畫外/.test(l.emotion ?? "");
   const useClip = Boolean(edit.clip_voice && clip);
   const voiced = useClip && lines.some(onscreen) && hasAudio(clip);  // otherwise the clip's own (invented) speech is muted
   const voiceFrom = src ? Number(src.from_s ?? 0) : 0;
