@@ -1,0 +1,3 @@
+K=/tmp/claude-0/-home-user-travel-scanner/920e1ef4-ec17-537b-bdd8-529e9301e4f3/scratchpad/h3r-state; mkdir -p "$K"; [ -L ~/.cache/minimax-h3-runpod ] || { mkdir -p ~/.cache; cp -pn ~/.cache/minimax-h3-runpod/session.json "$K/" 2>/dev/null; rm -rf ~/.cache/minimax-h3-runpod; ln -s "$K" ~/.cache/minimax-h3-runpod; }
+cd /root/mokaair-work/videos/_series/zhong-tian-qu-qi/live-bust; bash /home/user/travel_scanner/.agents/skills/minimax-h3-runpod/scripts/h3r.sh images --manifest bust.json --output-dir out --progress out/progress.json --label zt-live-bust --slug zhong-tian-qu-qi
+echo "=== bust done $(date -u +%T)"

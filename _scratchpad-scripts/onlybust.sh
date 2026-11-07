@@ -1,0 +1,4 @@
+K=/tmp/claude-0/-home-user-travel-scanner/920e1ef4-ec17-537b-bdd8-529e9301e4f3/scratchpad/h3r-state; mkdir -p "$K"; [ -L ~/.cache/minimax-h3-runpod ] || { mkdir -p ~/.cache; cp -pn ~/.cache/minimax-h3-runpod/session.json "$K/" 2>/dev/null; rm -rf ~/.cache/minimax-h3-runpod; ln -s "$K" ~/.cache/minimax-h3-runpod; }
+cd /root/mokaair-work/videos/_series/zhong-tian-qu-qi/live-bust; bash /home/user/travel_scanner/.agents/skills/minimax-h3-runpod/scripts/h3r.sh images --manifest onlybust.json --output-dir out2 --progress out2/progress.json --label zt-live-bust --slug zhong-tian-qu-qi
+mkdir -p sheets2; for c in "tangxiaotang tangxiaotang-qixiong-37001" "qinshuang qinshuang-37001" "aling aling-37002"; do set -- $c; ffmpeg -v error -y -i picks/$2.png -i out2/$1-onlybust-39001.png -i out2/$1-onlybust-39002.png -filter_complex "[0]scale=-2:520[a];[1]scale=-2:520[b];[2]scale=-2:520[c];[a][b][c]hstack=3" sheets2/$1.jpg; done
+echo "=== onlybust done $(date -u +%T)"
