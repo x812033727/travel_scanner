@@ -6,7 +6,7 @@ br = sys.argv[1]; R = '/home/user/travel_scanner'
 S = '/tmp/claude-0/-home-user-travel-scanner/920e1ef4-ec17-537b-bdd8-529e9301e4f3/scratchpad'
 subprocess.run(['git', 'fetch', '-q', '--depth=1', '--filter=blob:none', 'origin', f'+refs/heads/transfer/{br}:refs/bkcheck/{br}'], cwd=R, check=True)
 tree = {}
-for line in subprocess.run(['git', 'ls-tree', '-r', f'refs/bkcheck/{br}'], cwd=R, capture_output=True, text=True).stdout.splitlines():
+for line in subprocess.run(['git', '-c', 'core.quotePath=false', 'ls-tree', '-r', f'refs/bkcheck/{br}'], cwd=R, capture_output=True, text=True).stdout.splitlines():
     meta, path = line.split('\t', 1); tree[path] = meta.split()[2]
 pairs = [l.rstrip('\n').split('\t', 1) for l in open(f'{S}/bk-list-{br}.tsv', encoding='utf-8') if l.strip()]
 CH = 90 * 1024 * 1024; ok = bad = 0; problems = []

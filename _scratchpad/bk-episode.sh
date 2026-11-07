@@ -20,6 +20,7 @@ case "$1" in
     add_dir "$V/_series" "_series"
     add_dir "$V/_live-pilot" "_live-pilot"
     add_dir "$V/zhong-tian-qu-qi-compilations" "zhong-tian-qu-qi-compilations"
+    add_dir "$V/_scratchpad-scripts" "_scratchpad-scripts"
     for m in "$V"/zhong-tian-qu-qi-e9*-dh/music; do add_dir "$m" "${m#$V/}"; done
     find "$V" -maxdepth 1 -type f -print0 | while IFS= read -r -d '' f; do printf '%s\t%s\n' "$f" "${f#$V/}"; done >> "$LIST"
     find "$V/zhong-tian-qu-qi-import" -maxdepth 1 -type f -print0 | while IFS= read -r -d '' f; do printf '%s\t%s\n' "$f" "${f#$V/}"; done >> "$LIST"
