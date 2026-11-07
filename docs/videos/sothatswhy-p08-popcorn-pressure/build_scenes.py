@@ -218,7 +218,7 @@ chief("chief-liquid", C("raising one finger with a curious smile", close=True),
 kid("kid-still-water", K("tilting her head with a puzzled frown and one finger on her chin", close=True),
     k("都那麼燙了，", "不解"), k("還沒變成水氣？", "句尾上揚"))
 chief("chief-held", C("pressing both palms together tightly, then easing them apart slightly"),
-      c("對，它們被壓得太緊，變不了。"), c("等殼一破、壓力一鬆，它們才急著變成水氣。"))
+      c("對，殼裂之前壓力太大，大部分只能先當水。"), c("等殼一破、壓力一鬆，它們才急著變成水氣。"))
 chief("chief-cooking", C("nodding with a warm smile"),
       c("這段時間，裡面的澱粉也被燙得又軟又黏，"), c("像一團準備好的麵糊。"))
 kid("kid-big-fire", K("pretending to turn a stove knob all the way up with a mischievous grin", close=True, where=KITCHEN),
@@ -232,13 +232,13 @@ chief("chief-too-dry", C("holding her finger and thumb almost touching, a gentle
 chief("chief-tip", C("pointing at the tip of a tiny kernel between two fingers, eyebrows raised"),
       c("還有，玉米尖尖那頭接著玉米棒，"), c("那裡不太擋得住水氣，加熱太慢，水氣會偷偷漏走。", None, "P:unpopped"))
 kid("kid-leak", K("making a small whoosh shape with her hand by her mouth, a knowing grin", close=True),
-    k("漏氣了，", "推理"), k("就跟山上那鍋水一樣！", "想通", "P:lid"))
+    k("漏氣了，", "推理"), k("就爆不起來了！", "想通", "P:lid"))
 kid("kid-crack-q", K("staring at a golden kernel on a warm pan with wide eyes, holding her breath", where=KITCHEN),
     k("那殼終於撐破的時候，", "追問"), k("它為什麼會跳起來？", "章尾停住，句尾上揚", "S:jump"))
 
 # ---------- 第三章：外殼破了，接著才跳 ----------
 kid("kid-rocket", K("pretending to launch a rocket upward from her hands with a big grin", close=True),
-    k("我知道！水氣從裂縫噴出來，", "很有把握的錯猜"), k("像火箭把它推上天！", None, "S:rocket"), chapter="殼破了，接著才跳")
+    k("是不是水氣從裂縫噴出來，", "很有把握的錯猜"), k("像火箭把它推上天？", None, "S:rocket"), chapter="殼破了，接著才跳")
 chief("chief-paper", C("tapping the side of her glasses with a knowing smile", close=True),
       c("很多人都這樣猜。二〇一五年，法國有兩位研究的人，", "接住上一句"), c("想把這件事看清楚。"))
 scene("camera", "Close-up of a big black high-speed camera on a tripod pointing at a plain round hot plate with a few golden popcorn kernels on it, in a bright tidy lab, " + DAY,
@@ -286,7 +286,7 @@ kid("kid-pop-q", K("cupping one hand behind her ear and listening hard", close=T
 
 # ---------- 第四章：那聲啵又是哪一步 ----------
 chief("chief-mic", C("cupping one hand behind her ear with a curious smile"),
-      c("他們也想知道。所以在旁邊放了一支麥克風，", "接住上一句"), c("一邊錄聲音，一邊拍。"), chapter="那聲啵是哪一步")
+      c("他們也想知道。所以在旁邊放了一支麥克風，", "接住上一句"), c("一邊錄聲音，一邊拍。"), chapter="那聲啵，晚了一點才出來")
 scene("mic", "Close-up of a round black microphone on a small stand beside a plain round hot plate with golden popcorn kernels on it, in a bright tidy lab, " + DAY,
       c("聲音和畫面對在一起，就知道每一聲是哪一步。"))
 kid("kid-how-long", K("holding her breath with puffed cheeks and wide eyes", close=True),
@@ -308,23 +308,23 @@ kid("kid-bottle", K("blowing across the top of an empty glass bottle with puffed
 chief("chief-bottle", C("nodding with a warm smile"),
       c("有一點像。都是空氣在空洞裡，"), c("一下子被推動，就發出聲音。"))
 chief("chief-three", C("holding up three fingers one by one with a calm smile"),
-      c("所以殼裂開、跳起來、發出啵，"), c("是三件不同的事，只是快到黏在一起。"))
+      c("所以殼裂開、發出啵、跳起來，"), c("是三件不同的事，只是快到黏在一起。"))
 chief("chief-many", C("cupping one hand behind her ear with a warm smile"),
       c("你在鍋邊聽到一串啵啵啵，", "轉向觀眾"), c("其實是好多顆玉米，一顆一顆各自走完這三步。"))
 kid("kid-three", K("counting on her fingers with her tongue sticking out in concentration", close=True),
-    k("先裂、再跳、再響！", "整理"))
+    k("原來是三件事！", "整理"))
 chief("chief-compare", C("holding up both hands like two sides of a scale"),
-      c("好，現在把山上那鍋水，和這顆玉米擺在一起，"))
+      c("還記得山上那鍋水嗎？把它和這顆玉米擺在一起，"))
 scene("pot-and-kernel", "Medium shot of " + POT + " with gentle bubbles under a thin light wisp of white air on the left, and one round tight puffed-up golden popcorn kernel glowing warm on the right, a pale cream background, " + DAY,
-      c("山上的鍋子是開著的，壓著水的只有薄棉被。"), c("玉米是關著的，壓著水的是硬殼。"))
+      c("一個鍋子開著，一顆玉米關著。"), c("差別只在，壓著水的力氣有多大。"))
 kid("kid-same-rule", K("raising one finger with sparkling eyes", close=True),
     k("可是規矩是同一條？", "句尾上揚"))
 chief("chief-rule", C("pressing her palms together gently with a calm smile"),
-      c("對。壓著水的力氣越小，水不用很熱就滾，"), c("壓著水的力氣越大，水就得熱得多才滾。"))
+      c("對，就是剛剛那條天花板規矩，"), c("只是一個壓得輕，一個壓得重。"))
 kid("kid-either", K("holding a golden kernel in one hand and a small camping pot lid in the other, a thinking face", close=True, where=KITCHEN),
-    k("壓著水的，", "推理"), k("可以是空氣，也可以是殼？", "句尾上揚"))
+    k("壓著水的，", "推理"), k("可以是空氣，也可以是水氣？", "句尾上揚"))
 chief("chief-either", C("nodding with her hands open, a calm smile"),
-      c("對，誰在壓都一樣。壓得越輕，天花板越低；"), c("壓得越重，天花板就越高。"))
+      c("對，誰在壓都一樣。"), c("所以同一條規矩，能讓麵煮不熟，也能讓玉米炸開。"))
 chief("chief-opinion", C("folding her arms and laughing softly"),
       c("我覺得，水最會騙人的就是那些泡泡：", "意見，輕鬆"), c("它們只告訴你水滾了，沒告訴你水有多燙。"))
 kid("kid-trick", K("narrowing her eyes at a pot of bubbling water like a detective, one finger raised", where=KITCHEN),
@@ -332,13 +332,13 @@ kid("kid-trick", K("narrowing her eyes at a pot of bubbling water like a detecti
 
 # ---------- 收尾 ----------
 chief("chief-back-camp", C("smiling and pointing back over her shoulder"),
-      c("好，那我們回到你一開始的問題。", "笑"), chapter="小問把答案說出來")
+      c("還記得你一開始問我的兩件事嗎？你自己說說看。", "笑"), chapter="小問自己破案")
 kid("kid-got-it", K("throwing both arms up with a huge happy smile", where=KITCHEN),
-    k("山上的空氣棉被比較薄，", "篤定"), k("水不到一百度就滾，", "篤定"), k("麵才煮得慢！", "開心"))
+    k("就是剛剛那條薄棉被！", "篤定"), k("讓山上的水不到一百度就滾，", "篤定"), k("麵才煮得慢！", "開心"))
 kid("kid-got-it2", K("holding up a fluffy white popcorn proudly with both hands", close=True, where=KITCHEN),
-    k("玉米把水關在硬殼裡，", "篤定"), k("水越熱越擠，最後砰地炸開！", "開心", "P:main"))
+    k("還有剛剛那層硬殼，", "篤定"), k("把水關到熱得炸開！", "開心", "P:main"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
-      c("下次你吃爆米花，可以先聽一聽：", "轉向觀眾，輕聲"), c("那聲啵，是水氣從小空洞裡衝出來的聲音。", "點名回呼"))
+      c("下次你吃爆米花，可以先聽一聽：", "轉向觀眾，輕聲"), c("每一聲啵，就是又有一顆玉米走完了那三步。", "點名回呼"))
 chief("chief-safe", C("holding up one palm gently like a careful reminder, a kind smile"),
       c("微波爐爆米花的袋子剛拿出來很燙，"), c("要讓大人打開，別把臉湊過去。", "叮嚀"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
