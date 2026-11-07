@@ -1,0 +1,2338 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s24-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友拆一個大家都聽過的故事：開場對著觀眾講，「可是你想不到」放慢、帶一點挑釁，兩個預告一句一停；金花環那段像講懸案；澡堂那幾句安靜，水漫出來放慢；Eureka 興奮加快；「等一下」乾脆，「往家裡，沒寫上街」篤定帶笑。《浮體論》那段清楚、慢；普魯塔克「走不是跑」和饕客的笑話帶點好笑；伽利略的重話一字一字；兩個數字放慢；未結乾脆，最後那句看法放慢落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-bath",
+      "chapter": "一聲大家都聽過的大喊",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stone bath basin in a quiet bathhouse, clear water spilling over its rim onto the tiles beside a pair of worn brown leather sandals, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek001",
+          "text": "你一定聽過這個故事：阿基米德坐進浴池，看見水漫了出來，一下子想通了一個難題。",
+          "emotion": "對觀眾說，像在講大家都知道的事"
+        }
+      ]
+    },
+    {
+      "id": "open-run",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a white robe left in a heap on a bathhouse bench, wet footprints running across the tiles out through an open doorway, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek002",
+          "text": "他高興得光著身子衝上大街，一路大喊 Eureka，意思是：我找到了。",
+          "emotion": "加快，興奮"
+        }
+      ]
+    },
+    {
+      "id": "open-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt sitting on a sofa in a bright living room, hugging a cushion and gasping with wide eyes, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ek003",
+          "text": "這一幕你可能從小聽到大。可是你想不到，最早寫下它的字，離他已經將近兩百年。",
+          "emotion": "轉折，放慢，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-tease-plut",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a clay bowl of green olives on a stone bench in a courtyard beside an empty wooden clothes peg on the wall, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek004",
+          "text": "更怪的是，一百多年後又有人寫這場澡，卻少了一樣東西。",
+          "emotion": "升級，停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "open-tease-gal",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a goose quill stabbed upright into a wooden desk beside a folded letter with a plain red wax seal, gentle light from an open doorway",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek005",
+          "text": "再過一千多年，一個二十出頭的年輕人讀到這方法，開頭就下了重話。",
+          "emotion": "停在這裡，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning toward us with a knowing smile and one finger raised, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek006",
+          "text": "今天我們就來聊聊：阿基米德真的光著身子，跑上街大喊 Eureka 嗎？",
+          "emotion": "承諾句，問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-route",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a tall stack of thick plain-covered books in her arms, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek007",
+          "text": "我們把寫過這場澡的紀錄，照年代一份一份翻開：五份古書，一個算式。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "vitr-who",
+      "chapter": "羅馬建築師的第九書",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, peering through a big magnifying glass held up to one eye, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek008",
+          "text": "最早寫下這一幕的，是一位羅馬建築師，叫維特魯威。",
+          "emotion": "接住，進故事"
+        }
+      ]
+    },
+    {
+      "id": "vitr-shelf",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small wooden ballista model standing on a wooden shelf beside rolled scrolls tied with cords in a quiet Roman study, soft light from high windows",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek009",
+          "text": "他還替奧古斯都管過弩炮，是個軍事工程師。"
+        }
+      ]
+    },
+    {
+      "id": "vitr-augustus",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bundle of rolled scrolls tied with a red ribbon resting on a white marble pedestal in a tall hall, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek010",
+          "text": "他寫了一套《建築十書》，獻給奧古斯都，寫在西元前一世紀後期。"
+        }
+      ]
+    },
+    {
+      "id": "vitr-200",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an hourglass with falling sand standing on a long stone ledge between a pair of worn brown leather sandals and a small wooden ballista model, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek011",
+          "text": "從阿基米德的時代算到這裡，就是開頭說的那將近兩百年。",
+          "emotion": "點名回呼"
+        }
+      ]
+    },
+    {
+      "id": "vitr-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shrugging with both palms up and a wry little smile, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek012",
+          "text": "那這個故事，他是從哪裡聽來的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ek013",
+          "text": "書裡一個字也沒說。我每次翻到這裡，都想問他一句。",
+          "emotion": "帶一點無奈"
+        }
+      ]
+    },
+    {
+      "id": "hiero-king",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an empty stone throne draped with a deep-red cloak on a palace terrace above a calm harbour full of small boats, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek014",
+          "text": "故事在第九書的開頭。敘拉古的國王希倫，統治了這座城半個多世紀。"
+        }
+      ]
+    },
+    {
+      "id": "hiero-vow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small stone altar in a marble temple hall with an empty red velvet cushion waiting on top, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek015",
+          "text": "剛掌王權那年，他立誓把一頂金冠獻進神廟。"
+        }
+      ]
+    },
+    {
+      "id": "wreath",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fine ring of thin gold leaves resting on a red velvet cushion, beside it an empty spot on the cloth, gentle light from an open doorway",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek016",
+          "text": "說是金冠，其實是一圈金葉子做的花環；你腦中那頂鑲寶石的王冠，可以先放下。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "wreath-remember",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping the side of her head with one finger, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek017",
+          "text": "先記住這頂花環：接下來好幾份紀錄，都會繞回它身上。",
+          "emotion": "預告"
+        }
+      ]
+    },
+    {
+      "id": "gold-weighed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of hands sliding a small stack of smooth unmarked gold bars across a wooden workbench, soft light from high windows",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek018",
+          "text": "國王按重量，把金子交給工匠，請他照這個重量打造花環；"
+        }
+      ]
+    },
+    {
+      "id": "delivered",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze balance on a stone table, a ring of gold leaves in one pan and smooth gold bars in the other, both pans hanging perfectly level, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek019",
+          "text": "交件那天，工匠把花環捧上來，一秤，重量分毫不差。"
+        },
+        {
+          "id": "ek020",
+          "text": "那問題出在哪裡？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "accused",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of hands secretly slipping a small silver bar into a heap of thin gold leaves on a workbench, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek021",
+          "text": "有人告發：工匠偷走一部分金子，摻進一樣重的銀。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "cannot-melt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a ring of gold leaves on a stone altar, a pair of iron tongs and a small file lying untouched far off to one side, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek022",
+          "text": "偏偏那是要獻給神的東西，熔不得，也刮不得。"
+        }
+      ]
+    },
+    {
+      "id": "ask-arch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a pair of worn brown leather sandals standing on a marble floor in front of an empty stone throne draped with a deep-red cloak, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek023",
+          "text": "國王氣歸氣，想不出辦法揭穿，只好請阿基米德想。結果呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bath-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a pair of worn brown leather sandals on the worn stone threshold of a public bathhouse doorway, a folded white towel beside them, gentle light from an open doorway",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek024",
+          "text": "就在這時候，他偶然走進公共澡堂，心裡正掛著這件難事。",
+          "emotion": "安靜"
+        }
+      ]
+    },
+    {
+      "id": "basin-edge",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a full stone bath basin, water sliding over the rim onto the floor tiles, a pair of worn brown leather sandals by the edge, soft light from high windows",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek025",
+          "text": "他往浴池裡一坐，身子沉下去多少，水就漫出去多少。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "he-sees",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, eyes lighting up, one finger raised, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek026",
+          "text": "那一刻，他想到了什麼？",
+          "emotion": "問句，輕輕停住"
+        },
+        {
+          "id": "ek027",
+          "text": "漫出來的水，讓他看出了揭穿的辦法：",
+          "emotion": "揭曉前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "same-weight",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small smooth gold block beside a bigger smooth silver block on a wooden table, two shallow bowls of water behind them, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek028",
+          "text": "東西放進水裡，排開多少水，它就有多大；一樣重的金和銀，大小不一樣。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "jump-out",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a white robe still folded on a bathhouse bench, wet footprints hurrying away from it toward a bright open doorway, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek029",
+          "text": "他一刻也沒等，高興得從浴池跳了出來，",
+          "emotion": "加快"
+        },
+        {
+          "id": "ek030",
+          "text": "光著身子，往家裡去；一邊跑，一邊大聲喊：",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "eureka",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a narrow stone lane between pale houses, a trail of wet footprints racing along it and drops of water flying, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek031",
+          "text": "Eureka，Eureka！意思是：我找到了。",
+          "emotion": "興奮"
+        }
+      ]
+    },
+    {
+      "id": "the-question",
+      "chapter": "原文寫的是「往家裡」",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one open hand with a raised eyebrow, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek032",
+          "text": "等一下。照這段原文，他是光著身子，跑過大街嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "home-lane",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quiet stone lane ending at a small wooden house door left ajar, wet footprints leading straight to it, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek033",
+          "text": "仔細看原文：它寫的是「往家裡」，沒有寫上街；",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "from-bathhouse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a public bathhouse with stone columns and a wide open doorway, a short line of wet footprints leaving it, gentle light from an open doorway",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek034",
+          "text": "而且他是從公共澡堂往家裡跑，不是從自己家的浴缸跑出門。"
+        }
+      ]
+    },
+    {
+      "id": "later-added",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of hands stacking one more soft sponge layer onto a tall wobbly layer cake on a plate, soft light from high windows",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek035",
+          "text": "「忘了穿衣服」「跑遍大街」，都是後來的人一層一層加上去的。"
+        }
+      ]
+    },
+    {
+      "id": "your-version",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small boy on a sofa listening with wide eyes as his grandmother tells him a story with big arm gestures, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ek036",
+          "text": "你小時候聽到的那個滿街跑的版本，就是這樣加出來的。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "nudus-word",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain short linen tunic hanging alone on a wooden peg on a pale stone wall, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek037",
+          "text": "那「光著」呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ek038",
+          "text": "原文用的拉丁字，有時也指只穿一件短衣；"
+        }
+      ]
+    },
+    {
+      "id": "nudus-literal",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, covering her eyes with one hand and laughing, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek039",
+          "text": "不過他是剛從浴池跳出來的，照字面讀，最自然的意思就是光著。"
+        },
+        {
+          "id": "ek040",
+          "text": "這一點，我不替他遮。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "how-prove",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a closed scroll tied with red ribbon, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek041",
+          "text": "那他回到家之後，要怎麼證明？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ek042",
+          "text": "維特魯威接著寫，而且自己先加了兩個字：據說。"
+        }
+      ]
+    },
+    {
+      "id": "vessel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand lowering a smooth silver block into a large bronze basin filled to the brim, water spilling over the edge, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek043",
+          "text": "據說他做了兩塊跟花環一樣重的金塊和銀塊，一塊一塊放進裝滿水的大容器，"
+        }
+      ]
+    },
+    {
+      "id": "pour-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand pouring water from a small bronze cup back into a large bronze basin, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek044",
+          "text": "再用一個羅馬的量器，一杯一杯量要倒回多少水，才補得滿。"
+        }
+      ]
+    },
+    {
+      "id": "caught",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two bronze basins side by side, the one holding a ring of gold leaves spilling a much bigger puddle than the one holding a gold block, gentle light from an open doorway",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek045",
+          "text": "花環排開的水，比同樣重的金塊多；摻了銀，就這樣被揭穿了。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "caught-but",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one hand as if to say hold on, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek046",
+          "text": "聽起來很合理，對吧？先別急，後面有人不買帳。",
+          "emotion": "預告，帶一點神秘"
+        }
+      ]
+    },
+    {
+      "id": "smith-fate",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an empty goldsmith's workbench with small hammers and tongs, a stool pushed back from it, soft light from high windows",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek047",
+          "text": "工匠後來怎樣？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ek048",
+          "text": "原文沒寫，故事就停在這裡。",
+          "emotion": "收住"
+        }
+      ]
+    },
+    {
+      "id": "why-in-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head, hugging a thick closed book, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek049",
+          "text": "可是，一本講建築的書，為什麼要講這個故事？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "vitr-protest",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small wooden ballista model with a bundle of scrolls tied with a red ribbon leaning against it on a wooden desk, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek050",
+          "text": "因為第九書的開頭，說來有點好笑，是一篇替作家抱不平的文章：",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "athlete",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big shiny gold trophy cup beside a small rolled scroll on a stone pedestal, the scroll looking tiny next to it, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek051",
+          "text": "運動員得到的榮耀，作家也該有，而且要更多。"
+        }
+      ]
+    },
+    {
+      "id": "one-example",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of worn brown leather sandals resting on a long stone shelf next to a smooth stone triangle, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek052",
+          "text": "阿基米德這一段是他舉的例子之一，前一個例子是畢達哥拉斯。"
+        }
+      ]
+    },
+    {
+      "id": "arch-own",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of worn brown leather sandals beside a small pile of old closed scrolls on a stone floor, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek053",
+          "text": "那故事的主角自己呢？阿基米德有沒有寫過這頂花環？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "arch-works",
+      "chapter": "阿基米德自己的書",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shaking her head beside a tall stack of old closed scrolls, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek054",
+          "text": "至少在他流傳到今天的著作裡，一個字也沒提到王冠，也沒有浴缸。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "heath-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick plain-covered book on a wooden desk, a pair of round wire spectacles resting on its cover, gentle light from an open doorway",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek055",
+          "text": "一八九七年，英國學者希斯編了他的英文全集；"
+        },
+        {
+          "id": "ek056",
+          "text": "他手上的《浮體論》，只有拉丁譯本。"
+        }
+      ]
+    },
+    {
+      "id": "heath-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands flipping through the blank pages of a very thick open book on a wooden desk, soft light from high windows",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek057",
+          "text": "從頭翻到尾，「王冠」只出現在編者自己的導論和註裡。"
+        }
+      ]
+    },
+    {
+      "id": "lost-kept",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden shelf with a few old rolled scrolls, one crumbling to dust and one still whole and tied with cord, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek058",
+          "text": "他寫過的書，有的失傳了，有的很僥倖地留了下來。僥倖到什麼程度？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "palimpsest",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old parchment book lying open at blank pages on a wooden table, a small scraping knife beside it, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek059",
+          "text": "《浮體論》的希臘原文，是後來才在一本被刮掉重寫的羊皮書裡找回來的。"
+        }
+      ]
+    },
+    {
+      "id": "floating-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smooth round stone sinking slowly into a clear glass bowl of water on a wooden table, tiny bubbles rising, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek060",
+          "text": "而這本《浮體論》講的，正好是東西泡進水裡會怎樣。"
+        }
+      ]
+    },
+    {
+      "id": "prop7",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze balance, a smooth stone hanging from one pan into a bowl of water, that pan lifting a little higher, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek061",
+          "text": "書裡寫：比水重的東西，放進水裡秤，會變輕；",
+          "emotion": "放慢"
+        },
+        {
+          "id": "ek062",
+          "text": "輕掉的，正好是它排開的那些水的重量。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "weigh-in-water",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small stone hanging on a string, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek063",
+          "text": "這就是你課本上學過的浮力。問題來了：他講的，是在水裡秤重。",
+          "emotion": "對觀眾，升級"
+        }
+      ]
+    },
+    {
+      "id": "volume-not",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stone bath basin overflowing onto the tiles, a small bronze balance standing apart on a dry ledge beside it, gentle light from an open doorway",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek064",
+          "text": "開頭那池漫出來的水，比的卻是體積，不是這本書裡的道理。"
+        }
+      ]
+    },
+    {
+      "id": "two-things",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, blinking in surprise with her mouth slightly open, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek065",
+          "text": "我第一次讀到這裡，也愣了一下。",
+          "emotion": "自己的反應"
+        },
+        {
+          "id": "ek066",
+          "text": "那別的古人講起這場澡，又是怎麼說的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "plutarch",
+      "chapter": "一百多年後，喊著走了",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clay bowl of green olives on a stone bench in a quiet courtyard with a fig tree, soft light from high windows",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek067",
+          "text": "開頭說的那個再晚一百多年的版本，出自希臘作家普魯塔克。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "plut-hearsay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of three townsfolk in simple tunics at a market stall, whispering to each other behind their hands, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ek068",
+          "text": "他下筆前自己先加了「據說」：到他那時候，這已經是大家在傳的故事。"
+        }
+      ]
+    },
+    {
+      "id": "plut-bath",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a ring of gold leaves resting on the rim of a stone bath basin as water spills over beside it, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek069",
+          "text": "據說阿基米德洗澡時，從溢出來的水，想到怎麼量那頂冠；"
+        }
+      ]
+    },
+    {
+      "id": "plut-leap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of worn brown leather sandals leaping into the air above a splash of water beside a stone bath basin, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek070",
+          "text": "像被什麼附了身，跳出來大喊「我找到了」，一路喊著，走了。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "plut-dinner",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a round-bellied man in a simple tunic leaning back from an empty plate, calmly patting his belly, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ek071",
+          "text": "他講這段，是為了挖苦愛吃的人：從來沒聽過哪個饕客吃完一頓，大喊「我吃到了」。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "you-eat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman at a dining table holding a fork, chewing happily with her eyes closed, gentle light from an open doorway",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ek072",
+          "text": "你上次吃到特別好吃的東西，有衝出門喊嗎？",
+          "emotion": "開玩笑"
+        },
+        {
+          "id": "ek073",
+          "text": "應該沒有。",
+          "emotion": "短，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "plut-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a clay bowl of green olives on a stone bench beside a neatly folded white robe, soft light from high windows",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek074",
+          "text": "那開頭說少了的那一樣，是什麼？就是光著身子：衣服的事，普魯塔克一個字也沒提；",
+          "emotion": "問句，再揭曉"
+        }
+      ]
+    },
+    {
+      "id": "plut-walk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a pair of worn brown leather sandals strolling slowly side by side along a stone garden path, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek075",
+          "text": "也沒說他往家裡去；他用的字，是「走」，不是「跑」。"
+        }
+      ]
+    },
+    {
+      "id": "oil-draw",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fingertip drawing a circle and a triangle in a thin smear of olive oil on a smooth stone slab, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek076",
+          "text": "普魯塔克在另一本書裡還寫，他常被人硬拖去洗澡抹油，"
+        },
+        {
+          "id": "ek077",
+          "text": "手指還在身上的油裡畫幾何圖。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "plut-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, resting her chin on her hand with a small smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek078",
+          "text": "難怪這個故事安在他身上這麼順，這是我的猜想。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "reverse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, turning an empty clay bowl upside down in her hands, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek079",
+          "text": "有浴池，沒提光身子；那有沒有反過來的版本？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "poem",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed scroll tied with grey cord resting on an empty stone stool in a plain courtyard, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek080",
+          "text": "有。羅馬帝國晚期，一首不知道作者的拉丁詩，講的顯然是同一個故事："
+        }
+      ]
+    },
+    {
+      "id": "poem-smith",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a deep-red cloak, a ring of gold leaves and a small silver bar laid in a row on a wooden table, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek081",
+          "text": "西西里的國王、獻給神的金冠、偷摻了銀的工匠，都在；"
+        }
+      ]
+    },
+    {
+      "id": "poem-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an empty dry stone bath basin in a quiet bathhouse, a few dry leaves at its bottom, gentle light from an open doorway",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek082",
+          "text": "可是沒有浴池，也沒有人喊「我找到了」；"
+        },
+        {
+          "id": "ek083",
+          "text": "連阿基米德的名字都沒寫，只說是「敘拉古的大師」。"
+        }
+      ]
+    },
+    {
+      "id": "poem-balance",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze balance hanging perfectly level, a smooth gold block in one pan and a smooth silver block in the other, soft light from high windows",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek084",
+          "text": "詩裡用的，是一架天平：兩邊放上等重的金和銀，秤平了，"
+        }
+      ]
+    },
+    {
+      "id": "poem-sink",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze balance lowered into a tub of clear water, the pan with the gold block dipping down hard, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek085",
+          "text": "再一起放進水裡；一進水，放金子的那一邊，馬上沉了下去。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "which-works",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, looking back and forth between her two open palms, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek086",
+          "text": "同一頂冠，一邊量水，一邊秤重；哪一種，才真的行得通？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "gal-1586",
+      "chapter": "一五八六年，一篇只給朋友看的短文",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded letter with a plain red wax seal on a wooden desk by a window in a plain study, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek087",
+          "text": "量水那一種，一五八六年就被人嫌過了；",
+          "emotion": "接住"
+        },
+        {
+          "id": "ek088",
+          "text": "嫌它的，就是開頭那個年輕人：義大利的伽利略。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "gal-writes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one pair of hands passing a folded letter with a plain red wax seal to another pair of hands across a table, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek089",
+          "text": "他寫了一篇短文，只拿給朋友看，生前沒有印；後人叫它《小天平》。"
+        }
+      ]
+    },
+    {
+      "id": "gal-quote",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a ring of gold leaves sinking into a bronze basin of water, the water rising a little up its inner wall, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek090",
+          "text": "一開頭就說：照有些人寫的，把王冠放進水裡，看水漲多少來分辨金和銀，"
+        }
+      ]
+    },
+    {
+      "id": "gal-quote-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archery target with plain coloured rings, a single arrow stuck far out at its very edge, gentle light from an open doorway",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek091",
+          "text": "這種說法，老實講，很粗糙，離精確差得遠。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "who-some",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping one finger on her chin, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek092",
+          "text": "他說「有些人寫的」，沒有點名是誰。那量水這一段，又是從哪裡來的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "rumor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a row of townsfolk in simple tunics passing a whisper from ear to ear along a market street, soft light from high windows",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ek093",
+          "text": "他猜：阿基米德用水揭穿偷金子的事，傳開了；那個時代，有位作家把它寫了下來，"
+        }
+      ]
+    },
+    {
+      "id": "writer-adds",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand adding one more big scoop of whipped topping onto a small plain pie on a plate, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek094",
+          "text": "為了在聽來的那一點消息上多補一些，就自己加上了量水的做法。"
+        }
+      ]
+    },
+    {
+      "id": "best-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, laughing with one hand over her mouth, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek095",
+          "text": "我們覺得，這是整份檔案裡最妙的一句：量水這一段，被懷疑是寫的人自己補的。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "only-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded letter with a plain red wax seal resting on the rim of a calm stone bath basin, the water perfectly still, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek096",
+          "text": "不過，這是他的猜測，不是證據；他懷疑的也只有方法，不是那場澡。"
+        }
+      ]
+    },
+    {
+      "id": "friends-only",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old wooden printing press standing in a quiet workshop, a blank white sheet on its bed, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek097",
+          "text": "那除了朋友，有沒有人把這種懷疑印出來？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "della-porta",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered printed book lying on a workshop bench beside an old wooden printing press, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek098",
+          "text": "有。三年後的一五八九年，另一個義大利人在印出來的書裡，也說這個方法難用；",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "super-eureka",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a party popper bursting bright confetti over a thick plain-covered book on a wooden table, gentle light from an open doorway",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek099",
+          "text": "還說自己的辦法，該喊「超級 Eureka」。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "balance",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze balance with one pan dipping into a tub of clear water and the other pan in the air, soft light from high windows",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek100",
+          "text": "那伽利略自己覺得，阿基米德真正用的是什麼？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ek101",
+          "text": "天平。跟剛剛那首詩一樣，在水裡秤。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "why-arch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin plain-covered book lying beside a bronze balance on a wooden desk, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek102",
+          "text": "還記得那本《浮體論》嗎？伽利略說，這才是阿基米德會用的辦法，",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "why-arch-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, nodding and tapping a thin closed book, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek103",
+          "text": "因為它靠的，正是那本書裡證明過的道理。"
+        }
+      ]
+    },
+    {
+      "id": "how-much",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a T-shirt at a kitchen table scratching his head with a pencil, a glass of water in front of him, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ek104",
+          "text": "你可能會想：量水就算粗糙，到底能差多少？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "rorres-calc",
+      "chapter": "一位數學家替那池水算帳",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a ring of gold leaves up in both hands, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek105",
+          "text": "數學家羅瑞斯替它算過。先說他的假設：花環重一公斤。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "vergina-wreath",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big ring of gold leaves lying on dark velvet inside a glass museum case, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek106",
+          "text": "真的出土過的、那個時代最大的金花環，七百多公克；取整數算一公斤，我覺得不算離譜。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "container",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze basin filled with clear water on a wooden table, a ring of gold leaves resting beside it, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek107",
+          "text": "三成的金子被換成了銀；容器的口，直徑二十公分。"
+        }
+      ]
+    },
+    {
+      "id": "two-in",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two identical bronze basins side by side, a ring of gold leaves in one and a smooth gold block in the other, gentle light from an open doorway",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek108",
+          "text": "把花環和一樣重的金塊各放進去，水面的高度會差多少？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "mm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, squinting hard and leaning in close, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek109",
+          "text": "只差零點四一公釐，連半公釐都不到。",
+          "say": "只差零點四一毫米，連半毫米都不到。",
+          "say_for": "416ea9744c21",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "dice",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three small plain ivory cubes resting in an open palm held over a wooden table, soft light from high windows",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek110",
+          "text": "差的水量其實不少，大約三顆骰子那麼大；"
+        }
+      ]
+    },
+    {
+      "id": "dice-bowl",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand dropping three small plain ivory cubes into a big bowl of water, the surface barely rippling, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek111",
+          "text": "可是你把三顆骰子丟進一盆水，水面幾乎看不出動靜。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "balance-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze balance dipped in a tub of water, one pan clearly sinking lower than the other, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek112",
+          "text": "那改用天平，在水裡秤呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "ek113",
+          "text": "兩邊會差十三公克；",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "g-easy",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archery target with plain coloured rings, a single arrow stuck right in the centre, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek114",
+          "text": "他說，阿基米德那個時代的秤，很容易就秤得出來。"
+        }
+      ]
+    },
+    {
+      "id": "sciam-2006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, giving a slow thumbs up with a careful look, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek115",
+          "text": "二〇〇六年，他對《科學美國人》說：量水的方法，理論上行得通；"
+        }
+      ]
+    },
+    {
+      "id": "sciam-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a toy sailboat stuck against a round pebble in a shallow basin of water, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek116",
+          "text": "可是真的動手做，現實就會擋路。擋路的是什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wet-wreath",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands lifting a ring of gold leaves out of a bronze basin, water dripping and tiny bubbles caught between the leaves, gentle light from an open doorway",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek117",
+          "text": "他點了三樣會攪局的：水的表面張力、拿出來時沾著的水、花環縫裡的氣泡。"
+        }
+      ]
+    },
+    {
+      "id": "bath-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, glancing sideways with one eyebrow raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek118",
+          "text": "方法大概行不通；那浴池和那聲「我找到了」呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "some-truth",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of worn brown leather sandals beside a row of small bronze cups of water on a wooden table, soft light from high windows",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek119",
+          "text": "羅瑞斯說，故事可能有幾分真：阿基米德確實量過東西的體積；"
+        }
+      ]
+    },
+    {
+      "id": "buoyancy-moment",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a red rubber ball bobbing up to the surface of a clear glass tank of water, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek120",
+          "text": "可是那個「我找到了」的時刻，也許是因為他發現了浮力，"
+        }
+      ]
+    },
+    {
+      "id": "not-bathtub",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm stone bath basin with still water, a pair of worn brown leather sandals placed neatly side by side next to it, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek121",
+          "text": "而不是坐在浴缸裡，再光著身子跑過大街。"
+        }
+      ]
+    },
+    {
+      "id": "final-q",
+      "chapter": "回到那間澡堂",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, folding her hands and looking straight at us, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek122",
+          "text": "所以，回到開頭那個問題：他真的光著身子，跑上街喊 Eureka 嗎？",
+          "emotion": "問句，慢"
+        }
+      ]
+    },
+    {
+      "id": "rewind-lane",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the quiet stone lane with wet footprints leading to a small wooden house door left ajar, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek123",
+          "text": "倒回去看一遍：最早那一份，寫的是往家裡，不是上街；"
+        }
+      ]
+    },
+    {
+      "id": "rewind-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a clay bowl of green olives beside a neatly folded white robe on a stone bench in a courtyard, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek124",
+          "text": "一百多年後普魯塔克的版本，連衣服的事都沒提；"
+        }
+      ]
+    },
+    {
+      "id": "rewind-gal",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded letter with a plain red wax seal lying beside a bronze basin of still water on a wooden desk, gentle light from an open doorway",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek125",
+          "text": "一千多年後，連量水的方法都被嫌粗糙。那這一幕，到底有沒有發生？",
+          "emotion": "問句，慢"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small wooden ballista model alone on a long empty wooden shelf beside a single rolled scroll, soft light from high windows",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek126",
+          "text": "光著身子跑回家這一幕，只有開頭那位羅馬建築師，留下一份紀錄；",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "answer-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing the lid onto a plain grey box, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek127",
+          "text": "它到底有沒有發生，沒有任何證據能回答。這一案，未結。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "half-half",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small wooden ballista model, a bowl of green olives, a corded scroll and a sealed letter in a row on a long shelf, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek128",
+          "text": "查得清的，是誰在哪一年寫了什麼；回答不了的，是那天到底發生了什麼。",
+          "emotion": "收束，放慢"
+        }
+      ]
+    },
+    {
+      "id": "theme",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of hands lifting the top layers off a tall wobbly layer cake, a small plain sponge base left underneath, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "ek129",
+          "text": "一個故事每傳一次，就可能多一層、少一塊。那它本來長什麼樣子？",
+          "emotion": "看法，放慢"
+        },
+        {
+          "id": "ek130",
+          "text": "只能一份一份往回翻。",
+          "emotion": "落地"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in a hoodie on a sofa typing on a smartphone with a dark blank screen, smiling to herself, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ek131",
+          "text": "你小時候聽到的版本，阿基米德跑出去的時候，有沒有穿衣服？留言告訴我。",
+          "emotion": "問句上揚，像在聊天"
+        }
+      ]
+    },
+    {
+      "id": "subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, waving goodbye with a warm smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "ek132",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "ek001",
+      "payoff": "ek028",
+      "what": "他坐進浴池想通的那個難題是什麼"
+    },
+    {
+      "setup": "ek003",
+      "payoff": "ek011",
+      "what": "最早寫下這一幕的字離他將近兩百年：誰寫的"
+    },
+    {
+      "setup": "ek004",
+      "payoff": "ek074",
+      "what": "晚一百多年的版本少了什麼"
+    },
+    {
+      "setup": "ek005",
+      "payoff": "ek091",
+      "what": "二十出頭的年輕人下的重話"
+    },
+    {
+      "setup": "ek006",
+      "payoff": "ek126",
+      "what": "他真的光著身子跑上街喊 Eureka 嗎"
+    },
+    {
+      "setup": "ek012",
+      "payoff": "ek013",
+      "what": "維特魯威從哪裡聽來的"
+    },
+    {
+      "setup": "ek017",
+      "payoff": "ek090",
+      "what": "好幾份紀錄都會繞回這頂花環"
+    },
+    {
+      "setup": "ek020",
+      "payoff": "ek021",
+      "what": "金冠的問題出在哪裡"
+    },
+    {
+      "setup": "ek023",
+      "payoff": "ek027",
+      "what": "請阿基米德想，結果呢"
+    },
+    {
+      "setup": "ek026",
+      "payoff": "ek028",
+      "what": "那一刻他想到了什麼"
+    },
+    {
+      "setup": "ek032",
+      "payoff": "ek033",
+      "what": "他是光著身子跑過大街嗎"
+    },
+    {
+      "setup": "ek035",
+      "payoff": "ek129",
+      "what": "故事一層一層加上去"
+    },
+    {
+      "setup": "ek037",
+      "payoff": "ek039",
+      "what": "「光著」是什麼意思"
+    },
+    {
+      "setup": "ek041",
+      "payoff": "ek045",
+      "what": "回家之後要怎麼證明"
+    },
+    {
+      "setup": "ek046",
+      "payoff": "ek091",
+      "what": "後面有人不買帳"
+    },
+    {
+      "setup": "ek049",
+      "payoff": "ek050",
+      "what": "建築書為什麼講這個故事"
+    },
+    {
+      "setup": "ek053",
+      "payoff": "ek054",
+      "what": "阿基米德有沒有寫過這頂花環"
+    },
+    {
+      "setup": "ek058",
+      "payoff": "ek059",
+      "what": "僥倖到什麼程度"
+    },
+    {
+      "setup": "ek066",
+      "payoff": "ek067",
+      "what": "別的古人怎麼講這場澡"
+    },
+    {
+      "setup": "ek079",
+      "payoff": "ek080",
+      "what": "有沒有反過來的版本"
+    },
+    {
+      "setup": "ek086",
+      "payoff": "ek087",
+      "what": "量水和秤重哪一種行得通"
+    },
+    {
+      "setup": "ek092",
+      "payoff": "ek094",
+      "what": "量水這一段從哪裡來"
+    },
+    {
+      "setup": "ek097",
+      "payoff": "ek098",
+      "what": "有沒有人把懷疑印出來"
+    },
+    {
+      "setup": "ek100",
+      "payoff": "ek101",
+      "what": "伽利略覺得阿基米德用什麼"
+    },
+    {
+      "setup": "ek104",
+      "payoff": "ek109",
+      "what": "量水到底差多少"
+    },
+    {
+      "setup": "ek108",
+      "payoff": "ek109",
+      "what": "水面差多少"
+    },
+    {
+      "setup": "ek112",
+      "payoff": "ek113",
+      "what": "改用天平差多少"
+    },
+    {
+      "setup": "ek116",
+      "payoff": "ek117",
+      "what": "現實擋路的是什麼"
+    },
+    {
+      "setup": "ek118",
+      "payoff": "ek119",
+      "what": "浴池和喊聲是真是假"
+    },
+    {
+      "setup": "ek125",
+      "payoff": "ek126",
+      "what": "這一幕到底有沒有發生"
+    },
+    {
+      "setup": "ek129",
+      "payoff": "ek130",
+      "what": "故事本來長什麼樣子"
+    }
+  ],
+  "youtube": {
+    "title": "阿基米德真的光著身子喊 Eureka？最早的紀錄晚了將近 200 年｜奇聞檔案局",
+    "description": "阿基米德泡在浴缸裡想通、光著身子跑上街喊 Eureka，你一定聽過。這一集只講紀錄裡找得到的，照年代一份一份翻。目前找得到最早的文字，是羅馬建築師維特魯威《建築十書》第九書的序，獻給奧古斯都、寫在西元前一世紀後期，離阿基米德將近兩百年：希倫國王的金冠（其實是金葉花環）、被告發摻銀的工匠、公共澡堂裡漫出來的水，還有「光著身子往家裡去」（nudus vadens domum versus），一路喊 εὕρηκα（我找到了）。原文寫的是「往家裡」，沒有「上街」或「忘了穿衣服」。阿基米德流傳到今天的著作，包括《浮體論》，沒有一個字提到王冠或浴缸；《浮體論》講的是在水裡秤重，不是漫出來的水。一百多年後的普魯塔克也寫了洗澡和那聲「我找到了」，卻沒提衣服、沒說他回家，用的字是「走」；羅馬帝國晚期一首不知作者的拉丁詩有金冠，沒有浴池，用的是水中的天平。一五八六年，二十出頭的伽利略在一篇只給朋友看的短文裡，說量水的方法「很粗糙，離精確差得遠」，猜是那個時代的作家自己補的；一五八九年德拉波爾塔在印出來的書裡也嫌它難用。數學家 Chris Rorres 估算（一公斤的花環、三成銀、口徑二十公分）：水位只差 0.41 公釐，水中天平卻差 13 公克。\n\n界線：Rorres 的數字是他假設的情境；這個故事沒有人能證明是假的，光著身子跑回家這一幕也只有維特魯威一份紀錄，所以這一案是「未結」。出處列在下方參考資料。\n\n本集插圖由 AI 生成；歷史人物不入畫，用物件代表（例如阿基米德是一雙涼鞋）；現代研究者不入畫，由檔案局的研究員 Ada 解說。\n\n資料截至 2026-10-20（2026-10-25 照新規則重寫；2026-11-06 照黑貓十步重排）",
+    "tags": [
+      "阿基米德",
+      "Eureka",
+      "我找到了",
+      "浮力",
+      "阿基米德原理",
+      "維特魯威",
+      "伽利略",
+      "普魯塔克",
+      "歷史謠言",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "光著？\n**兩百年後**",
+      "tag": "歷史名場面",
+      "sub": "原文寫往家裡，沒寫上街",
+      "shot": "open-run"
+    }
+  },
+  "sources": [
+    {
+      "title": "Vitruvius, De architectura IX praef.（拉丁原文，Teubner 1899，LacusCurtius）",
+      "url": "https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Vitruvius/9*.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Vitruvius, De architectura I praef.（拉丁原文，LacusCurtius）",
+      "url": "https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Vitruvius/1*.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Vitruvius, The Ten Books on Architecture, tr. Morgan (1914)",
+      "url": "https://www.gutenberg.org/cache/epub/20239/pg20239.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Encyclopædia Britannica (1911), Vitruvius",
+      "url": "https://en.wikisource.org/wiki/Page:EB1911_-_Volume_28.djvu/166",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Wikipedia, De architectura（成書年代，二手）",
+      "url": "https://en.wikipedia.org/wiki/De_architectura",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Wikipedia, Archimedes（後世版本，二手）",
+      "url": "https://en.wikipedia.org/wiki/Archimedes",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Heath, The Works of Archimedes (1897)",
+      "url": "https://archive.org/details/worksofarchimede00arch",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Plutarch, Non posse suaviter vivi 1094C（希臘原文，Perseus）",
+      "url": "https://github.com/PerseusDL/canonical-greekLit/blob/master/data/tlg0007/tlg139/tlg0007.tlg139.perseus-grc2.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Carmen de ponderibus et mensuris, Hultsch (1866) vol. II",
+      "url": "https://archive.org/details/bub_gb_d4urIMWhWWYC",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Galileo, La bilancetta（Favaro 國家版）",
+      "url": "https://it.wikisource.org/wiki/La_bilancetta_(Favaro)/La_bilancetta",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Favaro, La bilancetta: Avvertimento",
+      "url": "https://it.wikisource.org/wiki/La_bilancetta_(Favaro)/Avvertimento",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Rorres, The Golden Crown: Introduction",
+      "url": "https://math.nyu.edu/Archimedes/Crown/CrownIntro.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Rorres, Galileo's Balance",
+      "url": "https://math.nyu.edu/Archimedes/Crown/bilancetta.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Scientific American, Fact or Fiction?: Archimedes Coined the Term \"Eureka!\" in the Bath (2006)",
+      "url": "https://www.scientificamerican.com/article/fact-or-fiction-archimede/",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": []
+}

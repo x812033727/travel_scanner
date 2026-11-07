@@ -1,0 +1,2166 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s42",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟朋友對帳：開場對著觀眾、帶點挑釁；「星期四」一字一字，「星期三」停一拍；海峽命令帶壓力；太平洋不煽情；毒箭與宴會壓低，「立刻開走」乾脆；騙米那段帶笑；阿爾博認錯一字一字；大使「不可能不發生」亮起來；「不到一分半鐘」放慢；少看一次日出落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "pigafetta",
+      "name": "Pigafetta",
+      "appearance": "a slim grown adult Italian man about 30 with adult proportions and a long narrow face, long dark wavy hair falling past his ears to his shoulders, a smooth clean-shaven chin, in a brown Renaissance doublet with puffed sleeves over a white linen shirt, dark breeches and brown leather shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, arms relaxed, a closed leather diary in one hand, deep navy night background with a few faint stars",
+      "shot_looks": [
+        {
+          "id": "wounded",
+          "appearance": "a slim grown adult Italian man about 30 with adult proportions and a long narrow face, long dark wavy hair falling past his ears to his shoulders, a smooth clean-shaven chin, in a brown Renaissance doublet with puffed sleeves over a white linen shirt, dark breeches and brown leather shoes, a white cloth bandage wrapped around his swollen forehead"
+        }
+      ]
+    },
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "t004",
+      "payoff": "t067",
+      "what": "岸上說星期四、日記寫星期三的那一天"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t077",
+      "what": "結論跟皮加費塔相反的另一個人"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t047",
+      "what": "一支毒箭怎麼救了這本日記"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t109",
+      "what": "那一天到底去了哪裡"
+    },
+    {
+      "setup": "t009",
+      "payoff": "t070",
+      "what": "他每天都寫，從沒間斷"
+    },
+    {
+      "setup": "t011",
+      "payoff": "t062",
+      "what": "先記住維德角這片島"
+    },
+    {
+      "setup": "t015",
+      "payoff": "t021",
+      "what": "聖胡利安港的處決與流放"
+    },
+    {
+      "setup": "t017",
+      "payoff": "t022",
+      "what": "剩下的人還願不願意往前走"
+    },
+    {
+      "setup": "t020",
+      "payoff": "t022",
+      "what": "往前走還是掉頭"
+    },
+    {
+      "setup": "t026",
+      "payoff": "t107",
+      "what": "海峽裡那張命令"
+    },
+    {
+      "setup": "t025",
+      "payoff": "t075",
+      "what": "兩本帳第一次對上"
+    },
+    {
+      "setup": "t029",
+      "payoff": "t030",
+      "what": "還有誰在數日子"
+    },
+    {
+      "setup": "t035",
+      "payoff": "t040",
+      "what": "寫日記的人中了一支毒箭"
+    },
+    {
+      "setup": "t050",
+      "payoff": "t051",
+      "what": "誰先把消息帶回西班牙"
+    },
+    {
+      "setup": "t053",
+      "payoff": "t102",
+      "what": "往東開的那條船"
+    },
+    {
+      "setup": "t054",
+      "payoff": "t055",
+      "what": "你會上哪一條"
+    },
+    {
+      "setup": "t070",
+      "payoff": "t071",
+      "what": "一直很健康？"
+    },
+    {
+      "setup": "t072",
+      "payoff": "t074",
+      "what": "他真的沒漏嗎"
+    },
+    {
+      "setup": "t078",
+      "payoff": "t089",
+      "what": "阿爾博沒寫為什麼"
+    },
+    {
+      "setup": "t081",
+      "payoff": "t085",
+      "what": "星期三還是星期四，沒有人答得出來"
+    },
+    {
+      "setup": "t086",
+      "payoff": "t089",
+      "what": "那一天怎麼不見的"
+    },
+    {
+      "setup": "t093",
+      "payoff": "t095",
+      "what": "任何人想一想就明白，是什麼意思"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "麥哲倫船隊 1522 年返航，天天寫的日記憑什麼少一天？｜奇聞檔案局",
+    "description": "一五二二年七月九日，維多利亞號靠上維德角，船員交代上岸的人順便問一句今天星期幾。岸上說星期四，船上的日記寫星期三。皮加費塔說他每天都寫、從沒間斷；另一本航海日誌的作者阿爾博卻寫「我相信我們弄錯了一天」。\n\n這一集把這本日記從頭對一遍：海峽裡問維多利亞號要不要回頭的命令、太平洋九十八天、馬坦島的毒箭與五月一日的宴會、帝多雷兩條方向相反的船、好望角九個星期，再回到維德角，最後看彼得馬特與威尼斯大使孔塔里尼怎麼解釋。皮加費塔的解釋是向西跟著太陽繞完一圈；阿爾博在那段日誌裡沒有提出繞地球的解釋；彼得馬特寄去羅馬的那本已失，另一部《De Orbe Novo》留有這段；大使那句強的說法是拉姆西奧的轉述。星期幾與天數的算術是旁白依這個英譯本的日期自己算的。\n\n所引文本為一八七四年英譯編纂本，不是任何船員的親筆原頁；插畫為 AI 生成卡通示意，不是歷史照片。\n\n原始資料：\n皮加費塔等當代作者英譯編本：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt\n皮加費塔的維德角星期差：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L6523-L6568\n阿爾博的航海日誌：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L8754-L8780\n拉姆西奧轉述彼得馬特與孔塔里尼：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L7044-L7072\n彼得馬特《De Orbe Novo》第五個十年第七卷（MacNutt 英譯 1912，第二冊頁 170–171）：https://archive.org/stream/deorbenovoeightd02angh/deorbenovoeightd02angh_djvu.txt\n麥哲倫在海峽的命令：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L6962-L7010\n特立尼達號的結局：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L8804-L8862\n本頻道：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-31",
+    "tags": [
+      "麥哲倫",
+      "維多利亞號",
+      "皮加費塔",
+      "阿爾博",
+      "環球航行",
+      "航海日誌",
+      "日期",
+      "維德角",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "日記\n**少一天？**",
+      "tag": "歷史名場面",
+      "sub": "1522 年岸上說星期四",
+      "shot": "open-wed"
+    }
+  },
+  "sources": [
+    {
+      "title": "Pigafetta and other contemporary accounts, Hakluyt Society English translation with Lord Stanley notes (1874)",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Pigafetta on the Cape Verde weekday and the return",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L6523-L6581",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Francisco Albo log-book, as translated in the 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L7940-L8780",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Order of the day of Magellan in the strait, from Barros, as translated in the 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L6962-L7010",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Discourse of Ramusio on Peter Martyr and Contarini, as translated in the 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L7044-L7072",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Introduction naming Gasparo Contarini, 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L1822-L1842",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The ship Trinity and her crew, from Navarrete, as translated in the 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L8804-L8862",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Peter Martyr d'Anghera, De Orbe Novo, Fifth Decade, Book VII, trans. F. A. MacNutt (1912), vol. 2, pp. 170-171",
+      "url": "https://archive.org/stream/deorbenovoeightd02angh/deorbenovoeightd02angh_djvu.txt",
+      "checked_on": "2026-11-04"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "open-diary",
+      "chapter": "一天都沒漏的日記",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands writing with a white quill in a small open diary of blank pages on a wooden cabin table, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你有沒有試過天天寫日記？一天都不漏，連寫一千零二十三天。",
+          "emotion": "對觀眾說，帶一點挑釁，數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-voyage",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of three wooden sailing ships with square canvas sails crossing a calm blue ocean toward the west, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "五百多年前，真的有人這樣寫：他跟著麥哲倫的船隊，一路往西，繞了地球一圈。"
+        }
+      ]
+    },
+    {
+      "id": "open-island",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling islander in a loose linen shirt on a sunny dry island shore, holding up one open palm toward a small rowing boat, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "船回到大西洋上的一座小島，岸上的人說：今天星期四。",
+          "emotion": "「星期四」一字一字"
+        }
+      ]
+    },
+    {
+      "id": "open-wed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary tied with a red cord, lying open on blank pages on a wooden rail with the sea behind it, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "可是他的日記，這一天寫的是星期三。一天都沒漏，怎麼會少一天？",
+          "emotion": "放慢，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-other",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass astrolabe and a small brown leather diary lying on a plank table, set apart and turned away from each other, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "更怪的是，同一條船上還有一個人也在記日子，結論跟他正好相反。",
+          "emotion": "收著，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "open-arrow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one slim wooden arrow with grey feathers lying across a closed brown leather diary on a sunny deck, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "而且這本日記能活著回來，還要謝謝一支射中他額頭的毒箭。",
+          "emotion": "收著，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small brown leather diary, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "今天我們就來聊聊：一本一天都沒漏的日記，那一天到底去了哪裡？",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "origin-1519",
+      "chapter": "五艘船往西出發",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of five wooden sailing ships with square canvas sails leaving a broad river mouth for the open sea, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "故事要回到一五一九年九月二十日，星期二，五艘船從西班牙的聖盧卡爾出海。",
+          "emotion": "沉穩進場景"
+        }
+      ]
+    },
+    {
+      "id": "origin-pig",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary tied with a red cord and a white quill lying on a narrow bunk in a small cabin, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "船上有一個人叫皮加費塔，他一路上把每天發生的事，一天一天寫下來。"
+        }
+      ]
+    },
+    {
+      "id": "origin-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, opening a very thick plain-covered book with a calm smile, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "先說清楚，我手上的是一八七四年的英譯編本，不是他親筆的原本。",
+          "emotion": "老實交代"
+        }
+      ]
+    },
+    {
+      "id": "origin-cv",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a chain of dry brown islands in a calm blue sea, a far wooden sailing ship passing them on its way south, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "十月初，船隊往南，經過大西洋上一片叫維德角的群島。這片島，先記住。",
+          "emotion": "前向鉤子，輕"
+        }
+      ]
+    },
+    {
+      "id": "origin-albo",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered logbook and a brass astrolabe lying side by side on a plank table in a ship's cabin, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "船隊裡還有一個人也在記日子，他是領航員，叫阿爾博。"
+        }
+      ]
+    },
+    {
+      "id": "origin-sun",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass astrolabe hanging from a cord on a wooden mast, the sun high in a clear blue sky above it, soft midday light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "出海兩個多月後，他開始量太陽的高度，寫進航海日誌。"
+        }
+      ]
+    },
+    {
+      "id": "origin-south",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of wooden sailing ships anchored in a cold grey bay below low brown cliffs, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "船隊沿著南美洲往南，在聖胡利安港，一停就是大約五個月。"
+        }
+      ]
+    },
+    {
+      "id": "origin-mutiny",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a black velvet hat with a white feather lying on a wooden bench beside a drawn sword and a coil of rope, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "停在這裡的時候，有軍官倒戈，也有人被處決、被流放。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "origin-wreck",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a broken wooden ship lying on its side on a rocky grey shore, tiny sailors walking safely up the beach, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "另一艘船出去探路，毀了，船上的人倒是活了下來。"
+        }
+      ]
+    },
+    {
+      "id": "origin-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of four wooden sailing ships with square sails heading into a narrow channel between steep grey mountains, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "五艘船少了一艘，剩下的人，還願不願意往前走？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "strait-in",
+      "chapter": "海峽裡的一張命令",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone wooden sailing ship gliding through a narrow grey channel between snowy mountains, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "一五二〇年，出海一年多以後，船隊還在南方的一道海峽裡。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "strait-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded blank letter with a red wax seal lying under a black velvet hat with a white feather on a cabin table, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "麥哲倫寫了一張命令，要維多利亞號的船長和領航員，各寫一份意見。"
+        }
+      ]
+    },
+    {
+      "id": "strait-choice",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head over a toy sailboat in her palm, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "要問的只有一件事：往前走，還是掉頭回去？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "strait-fear",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of three nervous sailors in linen shirts standing close together on a deck, eyes down and lips pressed, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "命令裡他自己寫得很白：你們是因為聖胡利安港那件事，怕了，才不敢開口。",
+          "emotion": "帶一點壓力"
+        }
+      ]
+    },
+    {
+      "id": "strait-forward",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden sailing ship with full square sails pushing forward through a grey channel between snowy peaks, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "收到意見之後，他還是下令往前開。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "strait-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a sealed blank letter, pleased, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "這張紙對我最有用的，是最後的日期：十一月二十一日，星期三。",
+          "emotion": "發現什麼的語氣"
+        }
+      ]
+    },
+    {
+      "id": "strait-out",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden sailing ship sailing out of a narrow mountain channel onto a wide calm blue ocean, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "再翻皮加費塔：七天後，十一月二十八日，星期三，船隊穿出海峽。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "strait-match",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded blank letter with a red wax seal and a small brown leather diary open on blank pages, side by side on a plank table, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "兩個不同的人，兩張不同的紙，隔七天，都是星期三：帳對得上。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "strait-remember",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping a sealed blank letter, a knowing smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "這張命令先記住，等到最後，它還會回來。",
+          "emotion": "前向鉤子，輕"
+        }
+      ]
+    },
+    {
+      "id": "pac-empty",
+      "chapter": "九十八天，和一支毒箭",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone wooden sailing ship on a flat open blue ocean stretching to a bare horizon, soft pale morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "穿出海峽之後，是三個月又二十天，一次糧都沒補到的大海。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "pac-food",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cracked wooden bowl of crumbled grey biscuit dust beside a tin cup of murky yellow water on a deck plank, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "皮加費塔寫，餅乾碎成粉，裡面全是蟲，水又黃又臭。",
+          "emotion": "不煽情"
+        }
+      ]
+    },
+    {
+      "id": "pac-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary lying open on blank pages in a sagging hammock, a white quill beside it, soft light from a hatch",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "人一個一個倒下，還有誰在數日子？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "pac-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a brown leather diary, determined, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "至少還有兩個人在寫：一個是皮加費塔，另一個就是阿爾博。",
+          "emotion": "接住問題"
+        }
+      ]
+    },
+    {
+      "id": "pac-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered logbook open on blank pages under a brass astrolabe on a plank table, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "到了太平洋，阿爾博的日誌幾乎就是一張表：一天一行，往哪個方向，到了幾度。",
+          "emotion": "數數的節奏"
+        }
+      ]
+    },
+    {
+      "id": "pac-land",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a bow of a small green island rising on the far blue horizon, seabirds circling overhead, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "三月六日，這張表寫：今天看到陸地。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "pac-pig",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary tied with a red cord lying open on blank pages on a wooden rail, a green island far behind, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "皮加費塔那本也寫：三月六日，星期三，發現島。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "pac-98",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two identical white seashells lying side by side on smooth wet sand at the water's edge, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "從穿出海峽到這一天，九十八天，正好十四個星期，又是星期三到星期三。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "pac-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger in a gentle warning, a serious face, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "兩本帳又對上了。沒想到一個多月後，寫日記的人自己中了一支毒箭。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "mactan-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a low green island edged with mangroves and shallow turquoise water, a wooden sailing ship far offshore, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "那一天是一五二一年四月二十七日，星期六，地點是馬坦島。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "mactan-chief",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a black velvet hat with a white feather resting on a wooden rail that faces a green island across the water, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "島上有一位首領不肯服從西班牙國王，麥哲倫決定親自去。結果呢？"
+        }
+      ]
+    },
+    {
+      "id": "mactan-wade",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a group of sailors in linen shirts wading thigh-deep through shallow turquoise water toward a beach, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "水太淺，船靠不過去，四十九個人跳下水，涉水上岸。"
+        }
+      ]
+    },
+    {
+      "id": "mactan-fall",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a black velvet hat with a white feather floating alone on shallow turquoise water near a sandy beach, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "麥哲倫戰死在那片淺水裡，皮加費塔也在傷者之中。",
+          "emotion": "收乾，不煽情"
+        }
+      ]
+    },
+    {
+      "id": "mactan-wound",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary beside a rolled white cloth bandage and one slim arrow on a wooden bench, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "他的額頭中了一支毒箭，腫了起來。"
+        }
+      ]
+    },
+    {
+      "id": "banquet-feast",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long low table set with fruit platters and clay bowls under palm trees beside a beach, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "四天後，五月一日，星期三，岸上的國王請客。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "banquet-go",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rowing boat full of sailors in linen shirts and soft wool hats landing on a palm beach, soft afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "兩位指揮官，帶著二十四個人上岸赴宴。"
+        }
+      ]
+    },
+    {
+      "id": "banquet-stay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary resting on a narrow bunk beside a rolled white bandage, a palm beach seen through a square hatch, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "皮加費塔沒去。他寫：我不能去，因為額頭腫著。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "banquet-cries",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty palm beach seen from a deck, a flock of seabirds bursting up out of the trees, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "沒想到他們上岸沒多久，船上就聽到岸邊傳來哭喊。",
+          "emotion": "一下子掉下去"
+        }
+      ]
+    },
+    {
+      "id": "banquet-beach",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a coil of loose rope and a fallen soft wool hat on wet sand at the edge of a palm beach, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "一位受傷被綁的指揮官出現在海灘上，喊說除了翻譯，全部被殺了。",
+          "emotion": "壓低，不煽情"
+        }
+      ]
+    },
+    {
+      "id": "banquet-leave",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of wooden sailing ships hurrying away from a palm island under full square sails, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "船隊立刻開走了。同一場宴會，二十幾個人上了岸，他留在船上。",
+          "emotion": "乾脆，再放慢"
+        }
+      ]
+    },
+    {
+      "id": "banquet-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a brown leather diary close, relieved, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "還記得開頭那支毒箭嗎？我覺得，它反而救了這本日記。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "tidore-1",
+      "chapter": "帝多雷，兩條船分頭走",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two wooden sailing ships anchored off a green volcanic island under a clear blue sky, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "七個多月後，一五二一年年底，香料群島的帝多雷，只剩兩條船準備回家。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "tidore-leak",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of seawater pouring in between two planks of a wooden hold, a wooden bucket floating nearby, soft light from a hatch above",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "維多利亞號先駛出去等，偏偏特立尼達號這才發現，底艙大量進水。",
+          "emotion": "緊張"
+        }
+      ]
+    },
+    {
+      "id": "tidore-king",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a carved wooden royal stool with a red cushion on a palm-roofed porch above a sunny harbor, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "帝多雷的國王問：那誰先把消息帶回西班牙？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "tidore-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden sailing ship with full square sails heading west out of a sunny tropical harbor, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "船員回答：維多利亞號趁東風馬上走，繼續往西。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "tidore-east",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden sailing ship tied up in a calm harbor beside a stack of fresh planks on the beach, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "特立尼達號修好之後，要等西風往東開，橫渡太平洋回美洲。"
+        }
+      ]
+    },
+    {
+      "id": "tidore-split",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, moving two toy sailboats apart in her hands, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "同一個港口，兩條船，方向正好相反。這兩條船，先記住。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "tidore-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a plain grey hoodie holding a small brown leather diary, glancing from one hand to the other, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "換成你手上拿著這本日記，你會上哪一條？",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "tidore-noon",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden sailing ship leaving a green island under full sail, the sun high overhead, soft midday light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "十二月二十一日，星期六中午，皮加費塔跟著維多利亞號走了，船上六十個人。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "tidore-albo",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass astrolabe resting on a thick plain-covered logbook beside a small brown leather diary on a plank table, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "阿爾博的日誌也寫同一天，星期六，兩本帳又對上一次。"
+        }
+      ]
+    },
+    {
+      "id": "cape-1",
+      "chapter": "維德角的星期四",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone wooden sailing ship with furled sails tossing on huge grey waves off a rocky headland, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "可是這條船，後來在好望角外面，整整停了九個星期。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "cape-sails",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of furled canvas sails lashed tight to a wooden yard, rain and spray flying sideways, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "他們收著帆，頂著西風和西北風，哪裡都去不了。"
+        }
+      ]
+    },
+    {
+      "id": "cape-rice",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden bucket of seawater beside a small sack of rice and a tin cup of water on a wet plank floor, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "船在漏水，肉全爛了，能吃的只剩米和水。",
+          "emotion": "不煽情"
+        }
+      ]
+    },
+    {
+      "id": "cape-north",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone battered wooden sailing ship with patched sails on an empty grey-blue ocean, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "繞過去之後，又往西北走了整整兩個月，再死了二十一個人。還撐得到家嗎？",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "cv-arrive",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a battered wooden sailing ship with patched sails dropping anchor off a dry brown island, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "一五二二年七月九日，維多利亞號餓到不得不靠岸，地方叫維德角。",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "cv-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, smiling, circling a toy sailboat in the air, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "還記得嗎？快三年前往南的時候，他們就經過這片島；繞一大圈，正好回到這裡。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "cv-enemy",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a few white-walled stone houses with tiled roofs above a quiet harbor on a dry island, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "可是這裡是葡萄牙人的地盤，對他們來說是敵人，所以上岸的人得撒謊。",
+          "emotion": "壓低一點"
+        }
+      ]
+    },
+    {
+      "id": "cv-lie",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor in a linen shirt in a rowing boat, smiling a little too widely and spreading his hands as he talks, soft morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "他們說前桅是在赤道壞掉的，麥哲倫帶另外兩條船，先回西班牙了。",
+          "emotion": "像在串供"
+        }
+      ]
+    },
+    {
+      "id": "cv-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor in a rowing boat holding an empty rice sack and raising one finger as if remembering a question, soft morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "小艇放下去換米，船上還多交代了一句：順便問問，今天星期幾？",
+          "emotion": "輕鬆，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "cv-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one eyebrow with a small amused smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "一邊騙米，一邊問星期幾。他們問，是想確認自己的日子記得準不準。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "cv-thursday",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling islander in a loose linen shirt on a sunny dry island shore, holding up one open palm toward a small rowing boat, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "葡萄牙居民回答：星期四。",
+          "emotion": "一字一字"
+        },
+        {
+          "id": "t068",
+          "text": "可是船上的日記，這一天寫的是星期三。",
+          "emotion": "放慢，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cv-cannot",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary lying open on blank pages on a rowing boat's bench, a dry brown island behind it, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "皮加費塔寫，大家怎麼也說服不了自己，是我們記錯了。"
+        }
+      ]
+    },
+    {
+      "id": "cv-healthy",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white quill resting in the crease of a small brown leather diary open on blank pages, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "最驚訝的是他本人：他一直很健康，每天都把日子寫下來，從沒間斷。",
+          "emotion": "轉述，理直氣壯"
+        }
+      ]
+    },
+    {
+      "id": "cv-arrowjoke",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, touching her own forehead with her fingertips and a wry smile, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "額頭被毒箭射腫的那幾天，也算一直很健康嗎？",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "check-34",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, running a finger down a blank sheet, focused, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "他真的沒漏嗎？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "t073",
+          "text": "書裡寫了星期幾的三十四天，除了出海前那天，全都對得上。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "check-trap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shaking her head slowly with a calm small smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "可是這抓不到他：真的漏掉一天，日期和星期幾會一起晚一天，照樣對得上。",
+          "emotion": "像在解釋給朋友聽"
+        }
+      ]
+    },
+    {
+      "id": "check-others",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three pairs of matching white seashells lined up in a neat row on smooth wet sand, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "要抓他，只能拿別人的帳來對：還記得海峽的命令、三月六日、帝多雷出發那天嗎？"
+        }
+      ]
+    },
+    {
+      "id": "check-albo",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass astrolabe lying on a closed thick plain-covered logbook on a plank table, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "三次都對上了。那另一本帳的主人阿爾博，在維德角這一天寫了什麼？",
+          "emotion": "回呼，收著"
+        }
+      ]
+    },
+    {
+      "id": "albo-quote",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered logbook lying open on blank pages with a quill set down across it, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "這天是星期三，他們算星期四，所以我相信，我們弄錯了一天。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "albo-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, weighing her open palms like a scale, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "一個說我不可能錯，一個直接認了。阿爾博沒寫為什麼，到底誰錯了？",
+          "emotion": "旁白的反應"
+        }
+      ]
+    },
+    {
+      "id": "boat-gone",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty rowing boat pulled up on a dry brown island shore beside a stone jetty, soft midday light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "七月十四日星期一，小艇又去載米，中午回來一趟，再去就沒有回來。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "boat-seized",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern Portuguese officer in a steel breastplate and simple open steel kettle hat in a rowing boat, calling out with one raised hand, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "隔天靠近港口一看，對方叫他們投降，小艇連十三個人都被扣了。",
+          "emotion": "緊張"
+        }
+      ]
+    },
+    {
+      "id": "boat-flee",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a battered wooden sailing ship spreading every sail and turning away from a dry island, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "維多利亞號張滿帆走了。星期三還是星期四，這條船上，有人答得出來嗎？",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "spain-1",
+      "chapter": "少掉的那一天去了哪裡",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a battered wooden sailing ship with patched sails entering a wide calm river bay with green banks, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "同一年九月六日，星期六，維多利亞號進了聖盧卡爾灣，回到出發的地方。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "spain-18",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, looking down sadly at a small toy sailboat in her palm, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "還記得在帝多雷上船的六十個人嗎？這時只剩十八個，大部分還病著。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "martyr-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white goose quill standing in a silver inkwell beside a thick plain-covered book on an oak desk, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "替皇帝寫這段歷史的彼得馬特，把活著回來的人，全部問了一遍。"
+        }
+      ]
+    },
+    {
+      "id": "martyr-all",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a row of small brown leather diaries standing upright on an oak shelf, all leaning the same way, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "他發現大部分人都自己記著日子，回來一對，都少一天。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "martyr-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, eyes wide in a sharp gasp, one hand on her cheek, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "所以不是皮加費塔一個人漏寫。那一天，到底是怎麼不見的？",
+          "emotion": "旁白的反應"
+        }
+      ]
+    },
+    {
+      "id": "contarini-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gold ring with a red stone resting on a crimson velvet cushion on an oak table, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "他拿這個問題，去問當時在西班牙的威尼斯大使孔塔里尼。"
+        }
+      ]
+    },
+    {
+      "id": "contarini-yes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, nodding firmly with a bright smile, one finger raised, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "照拉姆西奧的轉述，大使說：這不可能不發生。",
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "contarini-sun",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden sailing ship sailing west across a calm blue ocean, the sun high ahead of its bow, soft midday light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "大使的理由是：三年來一直跟著太陽往西走，一天會被拉長，古人就注意到了。",
+          "emotion": "轉述，清楚"
+        }
+      ]
+    },
+    {
+      "id": "pig-told",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary tied with a red cord lying on an oak desk in a sunny room, a white quill beside it, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "結果，皮加費塔自己也寫，後來有人告訴他們，他們沒有算錯。"
+        }
+      ]
+    },
+    {
+      "id": "pig-24",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small wooden toy sailboat resting on top of a plain blue-and-tan globe on a sunny desk, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "一路往西、跟著太陽，回到原地，就等於多出二十四小時。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "pig-smug",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary propped up proudly on a sunny windowsill, a white quill tucked into its red cord, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "他還補一句：任何人想一想就明白了。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "ada-confess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, scratching her head with a sheepish grin, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "老實說，我想了很久才懂。這到底是什麼意思？",
+          "emotion": "自嘲"
+        }
+      ]
+    },
+    {
+      "id": "explain-noon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a plain blue t-shirt in a sunny field, shading her eyes and looking straight up at the high sun, soft midday light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "用現在的話講：你看太陽爬到頭頂，就算過了一天。",
+          "emotion": "像在解釋給朋友聽"
+        }
+      ]
+    },
+    {
+      "id": "explain-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small wooden sailing ship heading west on a calm blue ocean while the sun hangs high just behind it, soft midday light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "船往西走，太陽要多走一小段才追上你，你的這一天，就長了一點點。"
+        }
+      ]
+    },
+    {
+      "id": "explain-plane",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in an airplane window seat turning the crown of a plain wristwatch with a solid white face, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "你搭飛機往西飛，到了要把手錶往回撥，就是同一件事。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "explain-how",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pinching her thumb and finger almost together, eyes narrowed, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "那這一天到底長了多少？攤在這一千多天上，平均一天不到一分半鐘。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "explain-rice",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a glass jar on a sunny windowsill filled to the brim with rice, a few single grains resting beside it, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "短到沒有人會發現，可是一天一天累積起來，就是一整天。",
+          "emotion": "落地"
+        }
+      ]
+    },
+    {
+      "id": "tail-1",
+      "chapter": "故事還沒結束",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered book wrapped in brown cloth and tied with string on an oak desk, ready to be sent off, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "故事還沒結束。彼得馬特把這段寫進書裡，寄去羅馬印，結果呢？",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "tail-rome",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty cobbled street in an old stone city, an overturned wooden cart and a few loose blank sheets on the stones, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "拉姆西奧說，那一本偏偏碰上羅馬被洗劫，丟了。",
+          "emotion": "可惜"
+        }
+      ]
+    },
+    {
+      "id": "tail-maybe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a second thick plain-covered book standing on an oak shelf beside a white goose quill in a silver inkwell, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "還好他另一部書也留著這段，只是說得保守很多：我們認為，原因也許是這樣。"
+        }
+      ]
+    },
+    {
+      "id": "tail-trinity",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, turning a toy sailboat to face the other way, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "還記得帝多雷往東開的那條船嗎？它後來怎麼了？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "tail-storm",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden sailing ship with torn sails turning back through towering grey storm waves, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "一五二二年四月六日，它開船往東，碰上暴風折了回來，最後落到葡萄牙人手裡。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "tail-seize",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern Portuguese officer in a steel breastplate carrying off an armful of thick plain-covered logbooks and a brass astrolabe, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "葡萄牙人把船長的信、儀器和航海日誌，全部收走。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "tail-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a brown leather diary, relieved, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "皮加費塔如果上的是那條船，這本日記，大概也在那一堆裡面。",
+          "emotion": "意見，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "tail-emperor",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands in plain brown sleeves offering a small brown leather diary to two hands in black velvet sleeves above a carved oak throne arm, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "皮加費塔回來之後，把一天一天寫下的書，親手交給了查理皇帝。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "close-order",
+      "chapter": "少看一次日出",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded blank letter with a red wax seal resting on a calm sunny deck, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "還記得海峽裡那張命令嗎？那天如果掉頭，這一圈就繞不完，這一天也不會不見。",
+          "emotion": "回呼，輕輕的"
+        }
+      ]
+    },
+    {
+      "id": "close-today",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old small brown leather diary lying open on blank yellowed pages on a plain oak table, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "留到今天的航記裡，七月九日，寫的還是星期三。",
+          "emotion": "放慢，收著"
+        }
+      ]
+    },
+    {
+      "id": "close-where",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brown leather diary tied with a red cord resting on a coil of rope on a sunny deck, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "所以，一天都沒漏的日記，那一天到底去了哪裡？",
+          "emotion": "問句，放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-sunrise",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden sailing ship heading west on a calm sea while the morning sun rises low behind its stern, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "其實哪裡也沒去：往西繞完一圈，船上就是比岸上，少看了一次日出。",
+          "emotion": "落地"
+        }
+      ]
+    },
+    {
+      "id": "close-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small brown leather diary and smiling warmly, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "他沒有記錯，岸上也沒有說錯，兩邊只是各自跟著自己的太陽。",
+          "emotion": "收束"
+        }
+      ]
+    },
+    {
+      "id": "outro-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning in, one hand cupped behind her ear, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "你有沒有碰過，全世界都說你記錯、最後其實是你對的事？",
+          "emotion": "問句放慢"
+        }
+      ]
+    },
+    {
+      "id": "outro-sub",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a thick plain-covered book, smiling warmly, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "留言告訴我。這個頻道只講紀錄裡找得到的，想一起對到最後一行，就訂閱。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ],
+  "still_motion": "beat"
+}

@@ -1,0 +1,2822 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    15,
+    16
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。語速像平常聊天，一秒四到五個字，句與句之間不拖。",
+    "performance": "說給一個人聽。驛站的壓力、果實的期限、宋人的爭論一路接住，不把古籍名字唸成清單。詩句清楚但不拖長，意見是自己的反應，疑問保留好奇，不把推測講成定論。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "theme": "paper",
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "t001",
+      "payoff": "t108",
+      "what": "杜牧那首詩：地方志拿它當妃子園的證據"
+    },
+    {
+      "setup": "t001",
+      "payoff": "t146",
+      "what": "那一騎紅塵：荒廢的華清宮只剩荔枝筐"
+    },
+    {
+      "setup": "t001",
+      "payoff": "t009",
+      "what": "這句詩是誰寫的：晚唐的杜牧"
+    },
+    {
+      "setup": "t004",
+      "payoff": "t028",
+      "what": "《新唐書》說味未變：答案藏在「置騎傳送」"
+    },
+    {
+      "setup": "t004",
+      "payoff": "t151",
+      "what": "史書味未變與白居易變味觀察不是同批果子的互驗紀錄"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t023",
+      "what": "白居易的三天：一天變色、兩天變香"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t107",
+      "what": "開頭人馬死傷的出處：宋代地方志，而非唐代運單"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t097",
+      "what": "同一本書寫了兩個答案的宋朝學者：改口了"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t153",
+      "what": "楊貴妃的荔枝怎麼送到長安：結檔"
+    },
+    {
+      "setup": "t012",
+      "payoff": "t013",
+      "what": "杜牧回頭看的年代：天寶年間"
+    },
+    {
+      "setup": "t015",
+      "payoff": "t016",
+      "what": "長安的大官見過荔枝嗎"
+    },
+    {
+      "setup": "t018",
+      "payoff": "t085",
+      "what": "忠州的白居易：那裡的荔枝不能進貢"
+    },
+    {
+      "setup": "t022",
+      "payoff": "t064",
+      "what": "李肇「過一夜就壞」那條筆記的前半"
+    },
+    {
+      "setup": "t027",
+      "payoff": "t028",
+      "what": "要新鮮又會變味，那要怎麼送"
+    },
+    {
+      "setup": "t033",
+      "payoff": "t034",
+      "what": "騎馬的人一天能跑幾站"
+    },
+    {
+      "setup": "t041",
+      "payoff": "t115",
+      "what": "十個驛站約三百里：七天七夜要一天三百多里"
+    },
+    {
+      "setup": "t049",
+      "payoff": "t050",
+      "what": "荔枝從哪裡出發"
+    },
+    {
+      "setup": "t054",
+      "payoff": "t055",
+      "what": "貴妃個人的口味能否解釋驛路：杜甫寫其死後仍進貢"
+    },
+    {
+      "setup": "t060",
+      "payoff": "t061",
+      "what": "嶺南到長安多遠"
+    },
+    {
+      "setup": "t066",
+      "payoff": "t079",
+      "what": "先記住的「蜀」字：涪州在四川"
+    },
+    {
+      "setup": "t069",
+      "payoff": "t129",
+      "what": "《甘澤謠》驪山那一幕：天寶十四載六月一日"
+    },
+    {
+      "setup": "t074",
+      "payoff": "t075",
+      "what": "宋朝人說的另一個地方"
+    },
+    {
+      "setup": "t092",
+      "payoff": "t093",
+      "what": "涪州說法的依據：吳曾也找過"
+    },
+    {
+      "setup": "t104",
+      "payoff": "t105",
+      "what": "妃子園後來被寫成什麼樣子"
+    },
+    {
+      "setup": "t114",
+      "payoff": "t115",
+      "what": "七天七夜一天要跑幾里"
+    },
+    {
+      "setup": "t122",
+      "payoff": "t123",
+      "what": "貴妃當時在華清宮嗎"
+    },
+    {
+      "setup": "t136",
+      "payoff": "t137",
+      "what": "史書怎麼說"
+    },
+    {
+      "setup": "t141",
+      "payoff": "t142",
+      "what": "夏四月那一次能證明荔枝也到了嗎"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "楊貴妃的荔枝，怎麼送到長安？｜奇聞檔案局",
+    "description": "楊貴妃想吃新鮮荔枝，唐朝的驛馬怎麼把它送進長安？從杜牧的一騎紅塵出發，跟著唐代的驛站規定、白居易寫下的果實變化，再追到宋人爭論的產地、妃子園和華清宮行程。\n\n驛馬傳送有文字記載；確切出發地、運送天數和抵達時的鮮度，仍不能蓋章定案。「日馳十驛」是對部分被貶官員的規定，「七日七夜」出自宋代地方記載，不能當成唐代荔枝運單。\n\n本集插圖由 AI 生成，歷史人物以卡通角色示意。古籍查核沿用2026-10-20資料，本次2026-10-26依新敘事規則改寫，新增表述另行獨立覆核。來源完整列於上架包。",
+    "tags": [
+      "楊貴妃",
+      "荔枝",
+      "一騎紅塵妃子笑",
+      "杜牧",
+      "唐玄宗",
+      "華清宮",
+      "驛站",
+      "涪州",
+      "長安",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "拚命送荔枝？",
+      "sub": "三天變味，怎麼送？",
+      "shot": "basket-wait",
+      "layout": "d"
+    }
+  },
+  "sources": [
+    {
+      "title": "維基文庫：《新唐書》卷七十六〈楊貴妃傳〉",
+      "url": "https://zh.wikisource.org/wiki/%E6%96%B0%E5%94%90%E6%9B%B8/%E5%8D%B7076",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：李肇《唐國史補》卷上",
+      "url": "https://zh.wikisource.org/wiki/%E5%94%90%E5%9C%8B%E5%8F%B2%E8%A3%9C/%E5%8D%B7%E4%B8%8A",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：資治通鑑（卷二一五、二一八）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E7%BC%96%E5%B9%B4/%E8%B5%84%E6%B2%BB%E9%80%9A%E9%89%B4.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：舊唐書（卷九、四十一、五十一）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E6%97%A7%E5%94%90%E4%B9%A6.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：唐會要（卷四十一、六十一）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E6%94%BF%E4%B9%A6/%E5%94%90%E4%BC%9A%E8%A6%81.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：全唐詩（杜牧、鮑防）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E8%AF%97%E8%97%8F/%E8%AF%97%E9%9B%86/%E5%85%A8%E5%94%90%E8%AF%97.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：白氏長慶集（卷十八、四十五）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E9%9B%86%E8%97%8F/%E5%9B%9B%E5%BA%93%E5%88%AB%E9%9B%86/%E7%99%BD%E6%B0%8F%E9%95%BF%E5%BA%86%E9%9B%86.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：杜詩詳注（卷十〈病橘〉、卷十七〈解悶〉）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E9%9B%86%E8%97%8F/%E5%9B%9B%E5%BA%93%E5%88%AB%E9%9B%86/%E6%9D%9C%E8%AF%97%E8%AF%A6%E6%B3%A8.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：蔡襄《荔枝譜》",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E8%89%BA%E8%97%8F/%E8%8D%89%E6%9C%A8%E9%B8%9F%E5%85%BD%E8%99%AB%E9%B1%BC/%E8%8D%94%E6%9E%9D%E8%B0%B1.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：蘇軾集（卷二十三〈荔支歎〉）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E9%9B%86%E8%97%8F/%E5%9B%9B%E5%BA%93%E5%88%AB%E9%9B%86/%E8%8B%8F%E8%BD%BC%E9%9B%86.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：吳曾《能改齋漫錄》（卷三、十五）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%AD%90%E8%97%8F/%E7%AC%94%E8%AE%B0/%E8%83%BD%E6%94%B9%E6%96%8B%E6%BC%AB%E5%BD%95.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：元和郡縣圖志（卷三十、三十四）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E5%9C%B0%E7%90%86/%E5%85%83%E5%92%8C%E9%83%A1%E5%8E%BF%E5%9B%BE%E5%BF%97.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：陳正敏《遯齋閑覽》",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E8%AF%97%E8%97%8F/%E8%AF%97%E8%AF%9D/%E9%81%AF%E6%96%8B%E9%97%B2%E8%A7%88.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0：程大昌《考古編》（卷八）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%AD%90%E8%97%8F/%E7%AC%94%E8%AE%B0/%E8%80%83%E5%8F%A4%E7%BC%96.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "王象之《輿地紀勝》卷一七四（國家圖書館抄本影像）",
+      "url": "https://archive.org/details/nlc-892-cbm0573-369259",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣 v2.0 其他轉錄本：唐六典、唐律疏議、全唐文、太平廣記、學林、方輿勝覽、太平寰宇記、吳船錄、開元天寶遺事",
+      "url": "https://github.com/garychowcmu/daizhigev20",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "open-poem",
+      "chapter": "一騎紅塵，送的是什麼？",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a young relay rider in a dusty brown riding robe and black headscarf galloping away down a dirt road, a long trail of red dust behind him, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你一定聽過這句唐詩：一騎紅塵妃子笑，無人知是荔枝來。",
+          "emotion": "對觀眾說，後半句吟一下，放慢",
+          "say": "你一定聽過這句唐詩：一寄紅塵妃子笑，無人知是荔枝來。",
+          "say_for": "91195d1181e6"
+        }
+      ]
+    },
+    {
+      "id": "open-meaning",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gold flower hairpin resting beside a small bamboo basket of walnut-sized lychees with bumpy red rind on a rose silk cloth, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "講的是唐朝的楊貴妃愛吃荔枝，有人騎著馬，一路揚起紅塵送來給她。"
+        }
+      ]
+    },
+    {
+      "id": "open-far",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long empty dirt road winding over endless green hills toward a far walled city, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "可是荔枝長在南方，長安在北方，中間隔了幾千里路。"
+        }
+      ]
+    },
+    {
+      "id": "open-fresh",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one peeled lychee with white translucent flesh on a celadon plate, a few walnut-sized lychees with bumpy red rind beside it, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "《新唐書》說，這樣跑了幾千里，送到京城，味道還沒變。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-bai",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slate-blue round silk fan with a bamboo handle lying beside a lychee branch whose fruit is turning dull brown, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "可是你想不到，唐朝的白居易寫：荔枝離開枝頭三天，味道就變了。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-death",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty mountain dirt road with a lone saddle lying in the dust, heavy grey clouds above, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "宋朝的一部地方志，還說這一路上，人和馬死了很多。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "open-twice",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick tan bound book with two red ribbon bookmarks hanging out at different places, lying on a low wooden desk, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "更怪的是，有一位宋朝學者，在同一本書裡，對產地寫了兩個答案。",
+          "emotion": "收著，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a single lychee branch with a curious smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "今天我們就來聊聊：楊貴妃的荔枝，到底怎麼送到長安？",
+          "emotion": "承諾句，問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "origin-dumu",
+      "chapter": "寫詩的人，晚了將近五十年",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small pale celadon wine cup beside a resting ink brush and a blank sheet on a low writing table, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "要回答這個問題，得先認識寫這句詩的人：晚唐的杜牧。",
+          "emotion": "沉穩進故事"
+        }
+      ]
+    },
+    {
+      "id": "origin-born",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gold flower hairpin lying among fallen dry leaves on an old stone step, soft autumn light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "他出生的時候，楊貴妃已經死了將近五十年。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "origin-lookback",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hillside palace with tiled roofs on a green mountain slope, its terraces empty among pine trees, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "所以這首詩不是親眼看到的，是他回頭寫華清宮。"
+        }
+      ]
+    },
+    {
+      "id": "origin-era",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, glancing back over her shoulder with a curious smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "那他回頭看的那個年代，到底發生了什麼事？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "origin-tianbao",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a pale yellow silk parasol standing open beside a low lacquered table with a bowl of walnut-sized lychees with bumpy red rind, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "那是唐玄宗的天寶年間。《新唐書》說，貴妃愛吃荔枝，"
+        }
+      ]
+    },
+    {
+      "id": "origin-fresh",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woven bamboo basket lined with dark leaves and filled with fresh walnut-sized lychees with bumpy red rind, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "而且一定要新鮮的，所以才派人從老遠送來。"
+        }
+      ]
+    },
+    {
+      "id": "origin-north-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding one lychee between two fingers and squinting at it, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "可是在北方的長安，那些大官，見過荔枝嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "origin-zhang",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain ivory court tablet with a crimson tassel resting on a red lacquered table in a quiet court hall, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "開元年間，嶺南來的張九齡，在長安誇過荔枝好吃；",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "origin-zhang-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two Tang officials in black hats and green robes shrugging at a single lychee on a table, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "同僚多半不知道那是什麼，也不信。"
+        }
+      ]
+    },
+    {
+      "id": "origin-bai-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand in a slate-blue sleeve picking one lychee from a branch heavy with walnut-sized lychees with bumpy red rind, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "在長安做官多年的白居易，也是到了忠州，才第一次摘來吃。"
+        }
+      ]
+    },
+    {
+      "id": "origin-bai-paint",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hanging silk painting of a red lychee branch above a slate-blue round silk fan on a wooden desk, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "他請人畫了荔枝圖，畫給誰看？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t020",
+          "text": "給沒見過新鮮荔枝的人。"
+        }
+      ]
+    },
+    {
+      "id": "origin-fruit-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a lychee to her nose and sniffing it, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "那這種從南方來的果子，到底有多難保存？",
+          "emotion": "好奇"
+        }
+      ]
+    },
+    {
+      "id": "origin-lizhao",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small sand-coloured bound notebook beside one split-open lychee turning brown on a wooden board, soft summer light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "唐朝的李肇在《唐國史補》裡寫：荔枝盛夏才熟，過一夜就壞。"
+        }
+      ]
+    },
+    {
+      "id": "origin-bai-days",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three lychees in a row on a wooden board, the first bright red, the next dull, the last darkening, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "白居易寫得更細：離開枝頭，一天變色，兩天變香，",
+          "emotion": "數字一個一個"
+        }
+      ]
+    },
+    {
+      "id": "origin-bai-days2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one shrivelled brown lychee on a celadon plate beside a slate-blue round silk fan, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "三天變味；四五天後，色香味全沒了。",
+          "emotion": "數字一個一個"
+        }
+      ]
+    },
+    {
+      "id": "origin-gradual",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping her chin with one finger, thinking it over, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "他是分開寫顏色、香氣和味道，不是滿三天才突然壞掉。"
+        }
+      ]
+    },
+    {
+      "id": "origin-looks",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one shiny lychee with bumpy red rind held between a thumb and finger above a wooden table, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "你就算看見一顆看起來還不錯的，也不能只靠外表斷定新鮮。"
+        }
+      ]
+    },
+    {
+      "id": "origin-deadline",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden balance scale with a gold flower hairpin on one pan and a small bamboo basket of walnut-sized lychees with bumpy red rind on the other, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "一邊是要吃新鮮的貴妃，一邊是幾天就變味的果子。那要怎麼送？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "relay-method",
+      "chapter": "一站一站接力，和一道催命的詔書",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young relay rider in a dusty brown riding robe and black headscarf handing a covered bamboo basket to another rider at a wooden gate, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "《新唐書》的答案，藏在四個字：「置騎傳送」，",
+          "emotion": "接住問題，平穩"
+        },
+        {
+          "id": "t029",
+          "text": "派騎馬的人，一站一站接力。",
+          "emotion": "平穩"
+        }
+      ]
+    },
+    {
+      "id": "relay-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young relay rider in a dusty brown riding robe and black headscarf gripping the reins, his mouth tight with worry, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "你如果是接到命令的人，不能只問馬跑得快不快。"
+        }
+      ]
+    },
+    {
+      "id": "relay-handoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin post-station clerk in a mustard robe and black headscarf pressing a plain red seal onto a blank wooden tally at a counter, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "每一站怎麼交接，會不會耽誤，才是壓力所在。"
+        }
+      ]
+    },
+    {
+      "id": "station",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small timber post station with a stable and a tied horse beside a dirt road through green fields, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "唐朝大約三十里一個驛站，全國有一千六百多所。"
+        }
+      ]
+    },
+    {
+      "id": "station-slow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young relay rider in a dusty brown riding robe and black headscarf leading his horse at an easy walk along a dirt road, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "那一天能跑幾站？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t034",
+          "text": "平常公事不急，一天不得超過四站。"
+        }
+      ]
+    },
+    {
+      "id": "pass-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin post-station clerk in a mustard robe and black headscarf sliding a blank wooden tally tied with red cord across a counter, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "緊急的公文，就在通行憑證上，註明一天要走幾站；"
+        }
+      ]
+    },
+    {
+      "id": "pass-cane",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long wooden rod leaning against a plain post-station counter beside a blank wooden tally, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "誤了一天，打八十杖。",
+          "emotion": "加重"
+        },
+        {
+          "id": "t037",
+          "text": "規定催得動人，催得過果實變壞嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "edict",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin post-station clerk in a mustard robe and black headscarf holding up a folded blank paper order tied with red cord, eyebrows raised, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "還有一道更急的命令，在天寶五載七月下達：",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "edict-text",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired official in a faded grey-green travel robe hurrying on foot along a dusty road with a small bundle on his back, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "被貶的官員路上拖拖拉拉；從此，罪比較重的，",
+          "emotion": "一字一字唸清楚"
+        },
+        {
+          "id": "t040",
+          "text": "一天要趕十個驛站以上。",
+          "emotion": "一字一字唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "edict-300",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a very long straight dirt road running past a row of small timber post stations into the distance, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "十個驛站，大約三百里。先記住這個速度。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "edict-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one open palm as if to say wait a moment, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "那送荔枝，就一定照這個速度嗎？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "t043",
+          "text": "詔書催的，是被貶的官員。"
+        }
+      ]
+    },
+    {
+      "id": "edict-tongjian",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty dusty road with a lone walking stick lying across it, grey clouds above, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "《資治通鑑》同一段還接著說：從此，被貶的人，很多沒能活著走到。",
+          "emotion": "低沉"
+        }
+      ]
+    },
+    {
+      "id": "edict-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, looking down at a pinch of reddish sand in her palm, solemn, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "我讀到這裡，才覺得那句紅塵，不是輕飄飄的。",
+          "emotion": "自己的反應，自然說"
+        }
+      ]
+    },
+    {
+      "id": "basket-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young relay rider in a dusty brown riding robe and black headscarf peering anxiously into a bamboo basket of walnut-sized lychees with bumpy red rind, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "你可能想說，那就再快一點；"
+        },
+        {
+          "id": "t047",
+          "text": "偏偏荔枝不會因為接到聖旨，就多等你幾天。"
+        }
+      ]
+    },
+    {
+      "id": "relay-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small bamboo basket of walnut-sized lychees with bumpy red rind strapped to a leather saddle, dust drifting past, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "這就是驛路的壓力：人被催著跑，果子照樣在變。"
+        }
+      ]
+    },
+    {
+      "id": "crossroads",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a young relay rider in a dusty brown riding robe and black headscarf on horseback stopping at a fork in a dirt road among green hills, soft morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "可是，驛馬送進長安的荔枝，到底從哪裡出發？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "dufu",
+      "chapter": "唐人說：南海來的使者",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a worn brown walking staff leaning against a thatched cottage wall beside a small orange tree, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "杜甫留下了一個方向。上元二年，他在詩裡想起當年的使者：",
+          "emotion": "接住問題"
+        }
+      ]
+    },
+    {
+      "id": "dufu-poem",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a young relay rider in a dusty brown riding robe and black headscarf galloping along a riverside dirt road under tall palm trees, soft morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "想起當年，南海來的使者，奔馳著進獻荔枝。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "dufu-route",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, sweeping one hand aside as if clearing a table, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "先把你腦中的現代地圖放一旁：杜甫寫的是使者從哪裡來，"
+        }
+      ]
+    },
+    {
+      "id": "dufu-route2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a worn brown walking staff resting across a low desk beside a bundle of blank bamboo slips tied with cord, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "不是把沿路驛站一個一個列出來。在檔案找到的唐詩裡，這首離天寶最近。"
+        }
+      ]
+    },
+    {
+      "id": "dufu-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gold flower hairpin lying at the start of a long dirt road that runs off toward the hills, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "但這還不是最怪的。貴妃的口味，能解釋整條驛路嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "dufu-after",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty palace hall with a pale yellow silk parasol folded against a pillar and a basket of fresh lychees on the floor, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "幾年後杜甫又寫：玄宗和貴妃都死了以後，荔枝照樣送進長安。",
+          "emotion": "低一點"
+        }
+      ]
+    },
+    {
+      "id": "bao",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an ochre wine gourd tied with a red cord lying beside an ink brush on a low table, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "另一位唐朝詩人鮑防，寫得更誇張，你聽聽看：",
+          "say": "另一位唐朝詩人包防，寫得更誇張，你聽聽看：",
+          "say_for": "325cd9408acc"
+        }
+      ]
+    },
+    {
+      "id": "bao-poem",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a galloping horse and rider streaking past green hills as a blur of red dust, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "五月荔枝剛熟，早上離開嶺南的象郡，傍晚就到了函谷關。",
+          "emotion": "加快，像在吹牛"
+        }
+      ]
+    },
+    {
+      "id": "bao-fast",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cloud of red dust settling over an empty dirt road between green hills, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "這句寫得多痛快，你幾乎看得到馬影一閃而過。"
+        }
+      ]
+    },
+    {
+      "id": "bao-laugh",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, laughing with one hand over her mouth, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "我覺得，這是詩的誇張，不能拿來當速度紀錄。",
+          "emotion": "旁白的看法"
+        }
+      ]
+    },
+    {
+      "id": "lingnan-li",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an endless dirt road winding over many rows of green mountains toward the horizon, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "那嶺南到長安多遠？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t061",
+          "text": "唐代的地志寫，廣州到長安，四千二百多里；",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "lingnan-li2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of worn straw sandals left at the edge of a long dusty dirt road through green hills, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "另一條路，五千多里。兩句詩，就把幾千里抹掉了。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "shu-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding one lychee in each hand and comparing them, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "可唐人眼裡，真的只有嶺南能出荔枝嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "lizhao-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small sand-coloured bound notebook lying open with blank pages beside a small clay teapot, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "還記得李肇那句「過一夜就壞」嗎？同一條筆記的前半寫："
+        }
+      ]
+    },
+    {
+      "id": "guoshibu",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two bamboo baskets of lychees side by side, one fuller and redder than the other, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "貴妃生在蜀地，愛吃荔枝；南海的比蜀地的更好，所以每年飛馳送來。"
+        }
+      ]
+    },
+    {
+      "id": "shu-plant",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing one finger to her lips with a knowing smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "先記住李肇提到的「蜀」，也就是四川；它後來會變成另一條線索。",
+          "emotion": "像在提醒"
+        }
+      ]
+    },
+    {
+      "id": "shu-trap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single red thread stretched between a gold flower hairpin and a lychee branch on a wooden table, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "可生在哪裡，就等於荔枝從哪裡送嗎？這樣接，路線就是自己畫的。",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ganze",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bamboo flute resting on a rose silk cushion in a quiet empty palace hall, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "晚唐的小說《甘澤謠》，還寫了驪山上的一幕：",
+          "say": "晚唐的小說《甘澤謠》，還寫了離山上的一幕：",
+          "say_for": "cd5c0fdc79ab"
+        }
+      ]
+    },
+    {
+      "id": "ganze-scene",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bamboo flute and a bowl of walnut-sized lychees with bumpy red rind on a lacquered table in a palace hall, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "貴妃生日，玄宗在長生殿聽新曲，正好南海送來荔枝，",
+          "say": "貴妃生日，玄宗在常生殿聽新曲，正好南海送來荔枝，",
+          "say_for": "df6e5203c2b2"
+        },
+        {
+          "id": "t070",
+          "text": "曲子就叫〈荔枝香〉。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "ganze-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a bamboo flute and raising one eyebrow, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "場面很完整，日子也寫得細；可小說寫的，等於一定發生過嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "sima",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall stack of thick history volumes with plain covers on a wooden desk, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "到了宋朝，司馬光的《資治通鑑》寫得最直接：每年命嶺南用驛馬送來。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "sima-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a thick history volume with a plain cover at one end of a long empty table and a small bamboo basket far off at the other end, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "查過的史書裡，只有這一條寫明嶺南；只是它離天寶，已經兩三百年。"
+        }
+      ]
+    },
+    {
+      "id": "arc-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning toward the viewer with a sly smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "可是同樣在宋朝，有人說出了另一個地方。會是哪裡？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "cai",
+      "chapter": "宋人說：四川的涪州",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dark red bound book with a plain cover lying on a wooden desk beside a small clay teapot, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "四川的涪州。北宋的蔡襄在《荔枝譜》裡寫：天寶年間，涪州每年用驛馬送。",
+          "emotion": "接住問題，乾脆",
+          "say": "四川的扶州。北宋的蔡香在《荔枝譜》裡寫：天寶年間，扶州每年用驛馬送。",
+          "say_for": "67abec4f248c"
+        }
+      ]
+    },
+    {
+      "id": "cai-basket",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a young relay rider in a dusty brown riding robe and black headscarf on horseback turning onto a mountain path beside a wide river, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "你剛跟著使者往南海走，宋人卻把籃子接到了四川。"
+        }
+      ]
+    },
+    {
+      "id": "cai-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dark red bound book with a plain cover lying open with blank pages on a wooden desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "這是這份檔案找到，最早寫明涪州的文字。",
+          "say": "這是這份檔案找到，最早寫明扶州的文字。",
+          "say_for": "86693799082f"
+        }
+      ]
+    },
+    {
+      "id": "cai-quality",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bamboo basket of dull brownish lychees with a few wilted dark leaves, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "他還說：送得再快，到了也剩不下幾分色香味。"
+        }
+      ]
+    },
+    {
+      "id": "shu-returns",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small sand-coloured bound notebook and smiling, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "還記得李肇那個「蜀」字嗎？它回來了：涪州，就在四川。",
+          "say": "還記得李肇那個「蜀」字嗎？它回來了：扶州，就在四川。",
+          "say_for": "9036a024e8d0"
+        }
+      ]
+    },
+    {
+      "id": "su",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall square black scholar's hat resting on a low desk beside an ink brush and a blank sheet, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "蘇東坡在一首詩的自注裡也說：天寶年間，大概取的是涪州荔枝，",
+          "say": "蘇東坡在一首詩的自注裡也說：天寶年間，大概取的是扶州荔枝，",
+          "say_for": "18728e46d6fb"
+        }
+      ]
+    },
+    {
+      "id": "su-route",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a narrow mountain valley road winding north between steep green cliffs and pine trees, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "從子午谷的路，進入長安。你注意到那個「大概」了嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "su-gai",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, cupping one hand behind her ear, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "原文只用一個「蓋」字。我覺得這種保留，比把路線畫死更值得聽。",
+          "emotion": "自己的反應，自然說"
+        }
+      ]
+    },
+    {
+      "id": "fu-dist",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dirt road climbing over green mountain ridges beside a winding river, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "唐宋地志算過：涪州到長安，兩千兩百到兩千三百多里，",
+          "emotion": "數字放慢",
+          "say": "唐宋地志算過：扶州到長安，兩千兩百到兩千三百多里，",
+          "say_for": "98a1c4eee3cb"
+        }
+      ]
+    },
+    {
+      "id": "fu-half",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long coil of rope lying beside a much shorter coil of rope on a wooden floor, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "大約是嶺南那條路的一半。路短一些，果子就一定新鮮嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "bai-zhongzhou",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wide green river bending past a small riverside town of tiled roofs among green trees, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "還記得忠州的白居易嗎？忠州就在涪州下游隔壁。",
+          "say": "還記得忠州的白居易嗎？忠州就在扶州下游隔壁。",
+          "say_for": "437acf8f7e3a"
+        }
+      ]
+    },
+    {
+      "id": "bai-tribute-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small bamboo basket and tilting her head, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "那忠州的荔枝，當年有沒有送進京城？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bai-tribute",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slate-blue round silk fan lying under a lychee tree heavy with walnut-sized lychees with bumpy red rind, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "沒有。白居易寫：這裡的荔枝不能列入貢品，送不到京城。"
+        }
+      ]
+    },
+    {
+      "id": "bai-limit",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone lychee tree in an empty courtyard with fallen leaves on the stones, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "不過那是白居易那時候；隔了一段年月，進貢的情況可能不同。"
+        }
+      ]
+    },
+    {
+      "id": "jian-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sealed round clay jar beside a bamboo basket of fresh walnut-sized lychees with bumpy red rind on a wooden shelf, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "可貢品清單裡的荔枝，一定是鮮果嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "jian",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of peeled white lychees simmering in honey in a clay pot on a brick stove, a wooden ladle on the rim, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "唐代還有「荔枝煎」。蔡襄記的做法，是剝果、去汁，再用蜜煮。",
+          "say": "唐代還有「荔枝煎」。蔡香記的做法，是剝果、去汁，再用蜜煮。",
+          "say_for": "446cd5fb79ec"
+        }
+      ]
+    },
+    {
+      "id": "jian-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small sealed clay jar in one hand, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "我覺得這提醒很實在：史書寫送荔枝，你還得問是哪一種。",
+          "emotion": "自己的反應，自然說"
+        }
+      ]
+    },
+    {
+      "id": "jian-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sealed clay jar next to a branch of fresh walnut-sized lychees with bumpy red rind on a plain wooden counter, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "加工保存的，說明不了鮮果怎麼送。那涪州的說法，有什麼依據？",
+          "emotion": "好奇，問句上揚",
+          "say": "加工保存的，說明不了鮮果怎麼送。那扶州的說法，有什麼依據？",
+          "say_for": "5d43f67ed072"
+        }
+      ]
+    },
+    {
+      "id": "wu",
+      "chapter": "吳曾翻到後面，改了答案",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick tan bound book with two red ribbon bookmarks lying closed on a low wooden desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "這個依據，開頭那位寫了兩個答案的宋朝學者吳曾，也找過。"
+        }
+      ]
+    },
+    {
+      "id": "wu-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young reader in a plain sweater frowning at two open books with blank pages on a table, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "如果你查資料，發現同一個人前後說法不一，會先相信哪一段？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "wu-mingyi",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick tan bound book open at its first red ribbon bookmark, blank pages, a palm frond laid across it, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "吳曾先寫：史書和杜甫的詩都說南方，明皇的荔枝來自嶺南，明矣。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "wu-full",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, arms crossed, one eyebrow raised, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "「明矣」就是再明白不過了。話說得這麼滿，我反而想知道他後來碰上什麼。",
+          "emotion": "自己的反應，自然說"
+        }
+      ]
+    },
+    {
+      "id": "wu-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand turning a thick tan bound book to its second red ribbon bookmark, blank pages, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "沒想到，同一本書翻到後面，他改口了。",
+          "emotion": "語氣一轉"
+        }
+      ]
+    },
+    {
+      "id": "wu-listen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old farmer in a straw hat pointing up toward a hillside orchard on a green slope, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "他讀了一本《涪州圖經》，又問了當地人：",
+          "say": "他讀了一本《扶州圖經》，又問了當地人：",
+          "say_for": "7de68cf85a0f"
+        }
+      ]
+    },
+    {
+      "id": "wu-fuzhou",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hillside orchard of lychee trees heavy with red fruit above a small river town, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "涪州有座妃子園；從涪州到長安有條便路，不用七天就到。",
+          "say": "扶州有座妃子園；從扶州到長安有條變路，不用七天就到。",
+          "say_for": "3297424dac7f"
+        }
+      ]
+    },
+    {
+      "id": "wu-su",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall square black scholar's hat resting on top of a thick tan bound book with two red ribbon bookmarks, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "他還說：東坡也是四川人，所以知道實情。"
+        }
+      ]
+    },
+    {
+      "id": "wu-local",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shaking her head slowly with a gentle smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "理由聽起來很親切。可知道家鄉的路，就等於知道幾百年前那一趟嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "wu-odd",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty lacquered wooden box with its lid open on a scholar's desk, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "我覺得奇怪的是，他改口靠地方志和當地人的話，沒有唐朝的運送文件。",
+          "emotion": "旁白的看法"
+        }
+      ]
+    },
+    {
+      "id": "orchard-witness",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hillside orchard with a narrow dirt path leading up between the dark-leaved trees, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "到這裡，果園不只是種水果的地方，也開始替故事作證。"
+        }
+      ]
+    },
+    {
+      "id": "orchard-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gold flower hairpin hanging from a low branch of a lychee tree in an orchard, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "那座妃子園，後來被寫成什麼樣子？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "gaz",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick gazetteer volume tied with brown string lying on a wooden desk, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "南宋的地方志《輿地紀勝》，把妃子園寫進涪州的古蹟：",
+          "say": "南宋的地方志《于地紀勝》，把妃子園寫進扶州的古蹟：",
+          "say_for": "51de09a23cc7"
+        }
+      ]
+    },
+    {
+      "id": "seven-days",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long mountain road with an abandoned bamboo basket and a broken saddle lying in the dust, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "當時用馬接力，七天七夜送到京城，死在路上的人和馬非常多。",
+          "emotion": "低沉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "seven-callback",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a thick gazetteer volume, serious, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "開頭那句人馬死傷，就出自這裡：一部宋代地方志，不是唐朝的運單。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "gaz-poem",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small pale celadon wine cup set on top of a thick gazetteer volume on a wooden desk, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "還記得杜牧那首詩嗎？",
+          "emotion": "揭穿"
+        },
+        {
+          "id": "t109",
+          "text": "地方志把它抄進妃子園這一條，說寫的就是這裡。",
+          "emotion": "揭穿"
+        }
+      ]
+    },
+    {
+      "id": "gaz-circle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a red thread looped in a circle around a small pale celadon wine cup and a lychee branch on a wooden table, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "你原本想拿果園解釋詩，地方志卻拿詩，證明果園跟貴妃有關。"
+        }
+      ]
+    },
+    {
+      "id": "gaz-copy",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand copying onto a blank sheet with an ink brush beside a thick gazetteer volume, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "後來的《方輿勝覽》抄這段時，在前面加了四個字，是哪四個？",
+          "emotion": "問句",
+          "say": "後來的《方于勝覽》抄這段時，在前面加了四個字，是哪四個？",
+          "say_for": "2ea2ed191947"
+        },
+        {
+          "id": "t112",
+          "text": "圖經相傳。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "gaz-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pinching her thumb and finger as if holding something tiny, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "我覺得「相傳」很要緊；拿掉它，地方說法就像成了交接紀錄。",
+          "emotion": "自己的反應，自然說"
+        }
+      ]
+    },
+    {
+      "id": "rider-q",
+      "chapter": "七天七夜，跟那道詔書一樣快",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young relay rider in a dusty brown riding robe and black headscarf resting against his horse beside the road, wiping his brow, soft afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "照宋朝人說的七天七夜去算，一天要跑幾里？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "rider-edict",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the very long straight dirt road running past a row of small timber post stations, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "三百多里。還記得天寶五載那道詔書嗎？一天十驛，大約三百里。",
+          "emotion": "揭曉前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "rider-same",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, gasping with one hand on her cheek, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "宋人說的送荔枝，竟然跟催被貶官員的速度差不多。",
+          "emotion": "驚訝，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "rider-caveat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a coil of rope lying beside a plain round stone sundial on a wooden table in a courtyard, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "不過這個速度，是拿宋人的天數，去除唐代地理志上記的路程。"
+        }
+      ]
+    },
+    {
+      "id": "rider-receipt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty open wooden box with a blank sheet at the bottom on a post-station counter, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "看得出壓力有多大，卻沒有因此找到一張唐朝的收貨單。"
+        }
+      ]
+    },
+    {
+      "id": "fan-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small wooden river boat with a woven sail drifting past a hillside orchard, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "那涪州的荔枝，到底好不好吃？",
+          "emotion": "問句",
+          "say": "那扶州的荔枝，到底好不好吃？",
+          "say_for": "16950cf11318"
+        },
+        {
+          "id": "t120",
+          "text": "淳熙四年七月，范成大路過，說品質其實不高。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "gaz-admit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small pile of plain lychees on a rough wooden board with a gold flower hairpin set on top, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "連地方志都寫：涪州荔枝只是靠貴妃出名，比不上瀘州、敘州。",
+          "say": "連地方志都寫：扶州荔枝只是靠貴妃出名，比不上瀘州、敘州。",
+          "say_for": "94fcfebac6dd"
+        }
+      ]
+    },
+    {
+      "id": "chen-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hillside palace with tiled roofs on a green summer mountain, its terraces empty, soft summer light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "故事還沒結束。有人連目的地都不信：貴妃當時，真的在華清宮嗎？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "chen",
+      "chapter": "收貨的人，當時在華清宮嗎？",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a charcoal-grey wooden abacus on a low desk beside a closed plain book, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "北宋的陳正敏，在崇寧、大觀年間就提出這個問題。",
+          "emotion": "接住問題"
+        }
+      ]
+    },
+    {
+      "id": "chen-quote",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pale yellow silk parasol planted in the snow outside the gate of a hillside palace with tiled roofs, soft winter light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "他說玄宗照例十月去驪山，開春回宮。還記得李肇說荔枝什麼時候熟嗎？",
+          "say": "他說玄宗照例十月去離山，開春回宮。還記得李肇說荔枝什麼時候熟嗎？",
+          "say_for": "6b6d82629a39"
+        }
+      ]
+    },
+    {
+      "id": "chen-season",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a basket of fresh red lychees sitting alone on the empty stone steps of a palace, soft summer light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "盛夏。果子熟的時候，收貨的人已經走了？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "chen-verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a charcoal-grey wooden abacus with an ink brush laid across it on a low desk, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "他的結論是：詩句雖好，不合事實。另一位宋人王觀國，也站在他這邊。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "chen-scope",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a bamboo basket on her arm, frowning slightly, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "這個質疑沒說唐朝不曾送荔枝，只問杜牧那一幕，能不能發生在華清宮。"
+        }
+      ]
+    },
+    {
+      "id": "cheng",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dark umber lacquered scroll case standing upright on a low wooden desk, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "偏偏，有人跳出來替杜牧辯護，他叫程大昌。",
+          "emotion": "語氣一轉"
+        }
+      ]
+    },
+    {
+      "id": "cheng-digs",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bamboo flute lying beside a dark umber lacquered scroll case on a low desk, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t129",
+          "text": "還記得《甘澤謠》驪山上那一幕嗎？程大昌翻出它寫的日子：",
+          "say": "還記得《甘澤謠》離山上那一幕嗎？程大昌翻出它寫的日子：",
+          "say_for": "9607f5838f09"
+        }
+      ]
+    },
+    {
+      "id": "cheng-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hillside palace with tiled roofs on a green summer mountain with a pale yellow silk parasol open on a terrace, soft summer light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t130",
+          "text": "天寶十四載六月一日，貴妃生日，玄宗就在驪山。",
+          "emotion": "一字一字",
+          "say": "天寶十四載六月一日，貴妃生日，玄宗就在離山。",
+          "say_for": "08feef2f08c9"
+        }
+      ]
+    },
+    {
+      "id": "cheng-more",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two wine cups and a plate of walnut-sized lychees with bumpy red rind on a palace terrace railing, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t131",
+          "text": "他又舉一本筆記：每年七月七日夜，玄宗和貴妃在華清宮遊宴；"
+        }
+      ]
+    },
+    {
+      "id": "cheng-poem",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slate-blue round silk fan resting on a carved palace hall railing, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t132",
+          "text": "還有白居易的〈長恨歌〉：七月七日長生殿。",
+          "say": "還有白居易的〈常恨歌〉：七月七日常生殿。",
+          "say_for": "2257ce6909d1"
+        }
+      ]
+    },
+    {
+      "id": "cheng-claim",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dark umber lacquered scroll case standing beside a small pale celadon wine cup on a low desk, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "他說，杜牧寫的，是當時傳下來的實話。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "cheng-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping a closed plain book with a doubtful frown, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t134",
+          "text": "他拿故事寫的日子替詩作證。可小說寫了日子，就能當證據嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "cheng-key",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden balance scale with a closed plain book on each pan, gently tipping, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t135",
+          "text": "爭論到這裡，已經在比哪一種文字可以相信。"
+        },
+        {
+          "id": "t136",
+          "text": "那史書怎麼說？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "winter",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hillside palace with tiled roofs with snow on its roofs and steam rising from a hot spring pool, soft winter light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t137",
+          "text": "史書裡記下幾十次驪山之行，大多是在冬天。",
+          "say": "史書裡記下幾十次離山之行，大多是在冬天。",
+          "say_for": "cbb354cce770"
+        }
+      ]
+    },
+    {
+      "id": "tianbao8-find",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick history volume with a plain cover lying open with blank pages under a sprig of fresh green leaves, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t138",
+          "text": "偏偏《舊唐書》的玄宗本紀，在天寶八載夏四月，記了一句：",
+          "emotion": "揭曉前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "tianbao8",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall wooden lookout tower on green palace grounds among leafy trees, soft spring light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t139",
+          "text": "到華清宮的觀風樓。只有這一句，沒寫他待了多久；"
+        }
+      ]
+    },
+    {
+      "id": "tianbao8-only",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two thick history volumes with plain covers lying closed side by side on a desk, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t140",
+          "text": "《新唐書》的本紀和《資治通鑑》，都沒記這一次。"
+        }
+      ]
+    },
+    {
+      "id": "tianbao8-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one finger with a cautious smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t141",
+          "text": "這一句至少讓「從沒去過」說得太滿。可它能證明荔枝當天也到了嗎？",
+          "emotion": "好奇，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "tianbao8-no",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty bamboo basket left on the wooden steps of a tall lookout tower, soft spring light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t142",
+          "text": "我覺得，還不行；它沒有記下荔枝當天也到了。",
+          "emotion": "自己的反應，自然說"
+        }
+      ]
+    },
+    {
+      "id": "dumu-august",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small pale celadon wine cup on a palace terrace railing with a few reddening leaves beside it, soft autumn light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t143",
+          "text": "杜牧自己在一首長詩裡，也把華清宮寫在八月：樓台八月涼。"
+        }
+      ]
+    },
+    {
+      "id": "dumu-calendar",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small pale celadon wine cup beside a brush resting on a blank sheet at a low writing table, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t144",
+          "text": "所以你看杜牧，不必把每一行都排進皇帝的日曆。"
+        }
+      ]
+    },
+    {
+      "id": "dumu-image",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, framing a view with both hands like a picture frame, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t145",
+          "text": "那一騎紅塵，留下的到底是行程，還是一個畫面？",
+          "emotion": "好奇，問句上揚",
+          "say": "那一寄紅塵，留下的到底是行程，還是一個畫面？",
+          "say_for": "03b8f76775ca"
+        }
+      ]
+    },
+    {
+      "id": "baskets-a",
+      "chapter": "散落的荔枝筐",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hillside palace with tiled roofs with overgrown terraces and weeds between the stones, soft autumn light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t146",
+          "text": "他回頭寫的，是盛世和荒廢。還記得開頭那一騎紅塵嗎？",
+          "emotion": "放慢，像在收尾",
+          "say": "他回頭寫的，是盛世和荒廢。還記得開頭那一寄紅塵嗎？",
+          "say_for": "e5453f7418f1"
+        }
+      ]
+    },
+    {
+      "id": "baskets-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of broken empty bamboo baskets lying here and there among weeds on old stone palace steps, soft autumn light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t147",
+          "text": "同一首長詩裡，荒廢的華清宮，只剩散落的荔枝筐。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-fresh-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding one fresh lychee and one dried lychee side by side, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t148",
+          "text": "還記得開頭的「味未變」，和白居易的「三天變味」嗎？",
+          "emotion": "像跟朋友釐清"
+        }
+      ]
+    },
+    {
+      "id": "close-xintang",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick history volume with a plain cover and a slate-blue round silk fan lying side by side on a wooden desk, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t149",
+          "text": "宋朝修的《新唐書》，是在追記貴妃；白居易記的，是唐朝人對果實的觀察。"
+        }
+      ]
+    },
+    {
+      "id": "close-notsame",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two bamboo baskets of lychees on two separate tables, one bright red, one turning brown, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t150",
+          "text": "兩邊是同一批果子的驗收表嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t151",
+          "text": "不是，它們拼不成一次成功保鮮的實驗。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two relay riders passing a covered bamboo basket between their horses at a small timber post station, soft morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t152",
+          "text": "開頭那籃荔枝，史書給了送法：騎馬，一站一站接力。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "verdict2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain grey archive box with its lid half open and a bamboo basket resting on top, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t153",
+          "text": "從哪裡出發、走了幾天、到時新不新鮮，還留在未結的檔案裡。",
+          "emotion": "收尾，分清楚兩半"
+        }
+      ]
+    },
+    {
+      "id": "close-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, gently closing a plain book with a warm smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t154",
+          "text": "我覺得，一騎紅塵最動人的是畫面；要把它當運單，就得先查帳。",
+          "emotion": "收尾，誠懇",
+          "say": "我覺得，一寄紅塵最動人的是畫面；要把它當運單，就得先查帳。",
+          "say_for": "9604b236ddf5"
+        }
+      ]
+    },
+    {
+      "id": "outro-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a long Tang robe waiting at a palace gate and looking down a dusty road, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t155",
+          "text": "如果你在長安等這籃荔枝，會先問產地，還是到貨的日子？",
+          "emotion": "問句上揚，像在聊天"
+        },
+        {
+          "id": "t156",
+          "text": "留言告訴我。"
+        }
+      ]
+    },
+    {
+      "id": "outro-sub",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, waving goodbye with a warm smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t157",
+          "text": "想一起把熟悉的故事翻出新問題，就訂閱奇聞檔案局。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2390 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s27-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友講這份檔案：開場兩句對著觀眾講、帶一點挑釁；農地那段安靜，「眼鏡」兩個字帶笑；兩頂、碎片那段清楚；沼澤喀嚓一聲帶驚奇；「鳥，不是角」輕輕揭穿；塔西佗那句帶諷刺，「他以為自己在考據」放慢；舞台與翅膀輕快，「像天氣一樣」是真的笑；球場那段乾脆；結檔分清楚，「存檔」停住。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "vk002",
+      "payoff": "vk047",
+      "what": "開頭那個「一件都沒有」是怎麼數出來的"
+    },
+    {
+      "setup": "vk003",
+      "payoff": "vk060",
+      "what": "沼澤裡那兩頂有角的頭盔，比維京人早多少"
+    },
+    {
+      "setup": "vk005",
+      "payoff": "vk105",
+      "what": "歌劇院台上演的是誰"
+    },
+    {
+      "setup": "vk006",
+      "payoff": "vk130",
+      "what": "角到底是誰戴上去的"
+    },
+    {
+      "setup": "vk014",
+      "payoff": "vk015",
+      "what": "當時的人寫頭盔有沒有寫角"
+    },
+    {
+      "setup": "vk012",
+      "payoff": "vk013",
+      "what": "頭盔是怎麼被故意弄壞的"
+    },
+    {
+      "setup": "vk018",
+      "payoff": "vk019",
+      "what": "那個男人和頭盔後來怎麼了"
+    },
+    {
+      "setup": "vk023",
+      "payoff": "vk024",
+      "what": "出土後先打給誰"
+    },
+    {
+      "setup": "vk025",
+      "payoff": "vk031",
+      "what": "頭盔上為什麼會有一副眼鏡"
+    },
+    {
+      "setup": "vk038",
+      "payoff": "vk039",
+      "what": "今天還找得到幾頂"
+    },
+    {
+      "setup": "vk043",
+      "payoff": "vk046",
+      "what": "碎片少到什麼程度"
+    },
+    {
+      "setup": "vk048",
+      "payoff": "vk049",
+      "what": "有角的是不是剛好沒挖到"
+    },
+    {
+      "setup": "vk050",
+      "payoff": "vk058",
+      "what": "沼澤那兩頂是誰戴的"
+    },
+    {
+      "setup": "vk061",
+      "payoff": "vk062",
+      "what": "角是不是戴去打仗"
+    },
+    {
+      "setup": "vk066",
+      "payoff": "vk067",
+      "what": "十九世紀的人看得到這兩頂嗎"
+    },
+    {
+      "setup": "vk069",
+      "payoff": "vk071",
+      "what": "戴角的想像從哪本書來"
+    },
+    {
+      "setup": "vk078",
+      "payoff": "vk079",
+      "what": "十八世紀畫裡的維京人戴什麼"
+    },
+    {
+      "setup": "vk082",
+      "payoff": "vk083",
+      "what": "小說主角頭上戴什麼"
+    },
+    {
+      "setup": "vk084",
+      "payoff": "vk115",
+      "what": "牛角什麼時候才出現在書裡"
+    },
+    {
+      "setup": "vk087",
+      "payoff": "vk089",
+      "what": "小人頭上翹的是不是角"
+    },
+    {
+      "setup": "vk102",
+      "payoff": "vk103",
+      "what": "拉開的那道幕是哪一齣"
+    },
+    {
+      "setup": "vk111",
+      "payoff": "vk112",
+      "what": "牛角怎麼從舞台跑到維京人頭上"
+    },
+    {
+      "setup": "vk124",
+      "payoff": "vk125",
+      "what": "這對角停不停得下來"
+    },
+    {
+      "setup": "vk026",
+      "payoff": "vk027",
+      "what": "博物館能派誰去挖"
+    },
+    {
+      "setup": "vk040",
+      "payoff": "vk041",
+      "what": "另一頂在哪裡"
+    },
+    {
+      "setup": "vk096",
+      "payoff": "vk106",
+      "what": "Doepler 會給演員戴什麼"
+    },
+    {
+      "setup": "vk116",
+      "payoff": "vk117",
+      "what": "角長得有多快"
+    },
+    {
+      "setup": "vk092",
+      "payoff": "vk132",
+      "what": "你看到什麼，要看心裡先裝了什麼"
+    }
+  ],
+  "youtube": {
+    "title": "維京人其實沒戴牛角？出土頭盔 0 件有角，角是誰戴上去的｜奇聞檔案局",
+    "description": "你心裡那個維京人，頭上大概長著兩支牛角；可是挖出來的維京時代頭盔和碎片，有角的一件都沒有。這一集跟著 1943 年挪威林厄里克農家兒子挖出的那頂碎成九塊的鐵盔走：它有一副「眼鏡」護住眼睛和鼻子，沒有角；在斯堪地那維亞和英國，幾乎完整的維京頭盔只有兩頂；同一個世紀的《哈康之歌》和約 1225 年的《海姆斯克林拉》寫了不少頭盔，也沒有一頂帶角。真正有角的 Viksø 頭盔 1942 年在丹麥沼澤出土，2021 年的研究定在約西元前 900 年，比維京時代早了一千七百年左右，而且比 1876 年的拜魯特晚了 66 年才出土。角是借來的：塔西佗說日耳曼人難得有頭盔，1616 年的學者卻把高盧人的角給了古日耳曼人；十八世紀的維京人戴翅膀；1875 年 Carl Emil Doepler 翻塔西佗做考據，1876 年《尼伯龍根的指環》全本首演，一些戰士和隨從戴上牛角，台上沒有維京人；1870 年代末起插畫書一本本換成角，《Erling the Bold》前八個插圖版是翅膀、1890 年第九版才出現角；1961 年開打的明尼蘇達維京人把角畫上頭盔。\n\n界線：Viksø 頭盔的用途是博物館與研究者的詮釋；Cosima Wagner、Montelius 的話據 Roberta Frank 轉引；「角不實用」是挪威維京時代博物館的說法；有角頭盔沒有單一的發明人；Tjele 殘片「134 年」只見英文維基。出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；現代研究者不入畫。\n\n資料截至 2026-10-20（2026-10-25 照新規則重寫）",
+    "tags": [
+      "維京人",
+      "維京頭盔",
+      "牛角頭盔",
+      "Gjermundbu",
+      "Viksø",
+      "華格納",
+      "尼伯龍根的指環",
+      "北歐歷史",
+      "歷史謠言",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "牛角？\n**借來的**",
+      "tag": "歷史謠言",
+      "sub": "出土的維京頭盔一件都沒角",
+      "shot": "open-bog"
+    }
+  },
+  "sources": [
+    {
+      "title": "Museum of the Viking Age (University of Oslo), The Gjermundbu Helmet",
+      "url": "https://www.vikingtidsmuseet.no/english/viking-age/power-and-weapons/the-gjermundbu-helmet.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Stylegar & Børsheim, Gjermundbufunnet, Viking 85 (2021)",
+      "url": "https://journals.uio.no/viking/article/view/9089",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Wikipedia, Gjermundbu helmet（九塊碎片，二手）",
+      "url": "https://en.wikipedia.org/wiki/Gjermundbu_helmet",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "BBC News, Yarm Viking helmet 'first' to be unearthed in Britain (2020)",
+      "url": "https://www.bbc.co.uk/news/uk-england-tees-53713029",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Museum of Cultural History (University of Oslo), The Viking helmet from Yarm",
+      "url": "https://www.khm.uio.no/english/news/the-viking-helmet-from-yarm.html",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Hákonarmál, ed. Finnur Jónsson (heimskringla.no)",
+      "url": "https://heimskringla.no/wiki/H%C3%A1konarm%C3%A1l",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Snorri Sturluson, Heimskringla（英譯，Project Gutenberg #598）",
+      "url": "https://www.gutenberg.org/cache/epub/598/pg598.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "National Museum of Denmark, The Viksø helmets",
+      "url": "https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-bronze-age/the-viksoe-helmets/",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Nationalmuseet, Viksø-hjelmene",
+      "url": "https://natmus.dk/historisk-viden/danmark/oldtid-indtil-aar-1050/bronzealderen-1700-fkr-500-fkr/viksoe-hjelmene/",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "National Museum of Denmark, Helmets embellished with feathers and horsehair",
+      "url": "https://en.natmus.dk/historical-knowledge/historical-themes/the-fur-trail/fur-in-prehistory/helmets-embellished-with-feathers-and-horsehair/",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Live Science, Horned 'Viking' helmets were actually from a different civilization (2022)",
+      "url": "https://www.livescience.com/horned-viking-helmets-from-different-civilization",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Roberta Frank, The Invention of the Viking Horned Helmet (2000)",
+      "url": "https://ingebretsens-blog.com/wp-content/uploads/2018/07/51267328-frank-invention-of-horned-helmet.pdf",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Wikimedia Commons, Doepler: Walküre (Waltraute), Archivio Storico Ricordi ICON003994",
+      "url": "https://commons.wikimedia.org/wiki/Category:Costume_designs_by_Carl_Emil_Doepler",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Wikipedia, Der Ring des Nibelungen（首次全本上演，二手）",
+      "url": "https://en.wikipedia.org/wiki/Der_Ring_des_Nibelungen",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "R. M. Ballantyne, Erling the Bold（Project Gutenberg #21730）",
+      "url": "https://www.gutenberg.org/ebooks/21730",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Elisabeth Ward, Viking Pop Culture on Display, Material Culture Review 54 (2001)",
+      "url": "https://journals.lib.unb.ca/index.php/MCR/article/view/17894/22065",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Wikipedia, Minnesota Vikings（第一季，二手）",
+      "url": "https://en.wikipedia.org/wiki/Minnesota_Vikings",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "你心裡的維京人，頭上長著角",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful young man in a hoodie on a sofa holding one finger up on each side of his head like a pair of horns, grinning, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk001",
+          "text": "你想像一個維京人，他頭上，是不是長著兩支彎彎的牛角？",
+          "emotion": "對觀眾，像聊天"
+        }
+      ]
+    },
+    {
+      "id": "open-zero",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rusty iron helmet with a small spike on top resting on a bed of dark brushed soil beside a small trowel, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk002",
+          "text": "可是你想不到，考古學家挖出來的維京頭盔，有角的，一件都沒有。",
+          "emotion": "放慢，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-bog",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two identical bronze helmets with long curved horns standing side by side on a mossy bank at the edge of a brown peat bog, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk003",
+          "text": "丹麥的沼澤裡，倒是挖出過兩頂有角的頭盔，卻比維京人早了一千七百年左右。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-stage",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded opera singer in a shaggy fur cloak and a horned helmet striding across a wooden theatre stage, soft morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk004",
+          "text": "更怪的是，一八七六年，德國一座歌劇院的舞台上，有人戴起了牛角，",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "open-stage-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty wooden theatre stage framed by heavy red velvet curtains, a single horned helmet left on the bare boards, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk005",
+          "text": "可是那天台上演的戲裡，一個維京人也沒有。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small toy horned helmet with one eyebrow raised, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk006",
+          "text": "今天我們就來聊聊：維京人頭上那對角，到底是誰替他們戴上去的？",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "origin-back",
+      "chapter": "十世紀，一個男人和他的鐵盔下葬",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, glancing back over her shoulder with a curious smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk007",
+          "text": "要回答這個問題，得先回到一千年前，維京人真正活著的年代。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "origin-grave",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a low grassy burial mound on a quiet hillside farm above a dark pine forest, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk008",
+          "text": "十世紀後半，在今天挪威的 Ringerike，有一個男人下葬了。"
+        }
+      ]
+    },
+    {
+      "id": "origin-goods",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old iron sword, two spears, two axes and a wooden shield laid side by side on dark soil, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk009",
+          "text": "陪他下葬的，有一把劍、兩支矛、兩把斧頭，還有盾牌和馬具。",
+          "emotion": "清單，加快"
+        }
+      ]
+    },
+    {
+      "id": "origin-horses",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old wooden sledge resting in pale winter grass beside a row of worn brown leather saddles, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk010",
+          "text": "後來的研究說，墓裡連馬都有五六匹，還有雪橇。"
+        }
+      ]
+    },
+    {
+      "id": "origin-helmet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an iron helmet with a small spike on top set on a fur pelt beside a small pile of smooth gold coins, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk011",
+          "text": "墓裡還放了一頂鐵頭盔。這樣的頭盔很貴，買得起的戰士不多。"
+        }
+      ]
+    },
+    {
+      "id": "origin-broken",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, frowning and tilting her head, one finger on her chin, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk012",
+          "text": "奇怪的是，下葬的時候，這頂頭盔是被人故意弄壞的。怎麼弄的？",
+          "emotion": "收著，問句"
+        }
+      ]
+    },
+    {
+      "id": "origin-spears",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two old iron spear tips resting beside an iron helmet with a small hole in its side, on dark soil, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk013",
+          "text": "墓裡那兩支矛，在它身上各刺了一下；博物館說，這是下葬儀式的一部分。"
+        }
+      ]
+    },
+    {
+      "id": "origin-poem",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small carved wooden harp leaning against a carved wooden bench in an old timber hall, mild afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk014",
+          "text": "那同一個世紀的人，寫到頭盔的時候，有沒有寫過角？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "origin-poem-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny gold helmet with a smooth dome resting on a white feather cloak on a wooden bench, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk015",
+          "text": "挪威宮廷詩人寫的《哈康之歌》裡，有金頭盔，有戴頭盔的女武神，就是沒有角。"
+        }
+      ]
+    },
+    {
+      "id": "origin-saga",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick old book with a plain brown leather cover lying closed on a wooden desk beside a quill, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk016",
+          "text": "兩百多年後，大約一二二五年寫成的史書《Heimskringla》，頭盔寫了幾十次："
+        }
+      ]
+    },
+    {
+      "id": "origin-saga-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three iron helmets in a row on a wooden shelf, one with a nose guard, one gilded, one painted red, mild afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk017",
+          "text": "有護鼻的、鍍金的、畫上十字的，也沒有一頂帶角。"
+        }
+      ]
+    },
+    {
+      "id": "origin-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing one finger to her lips with a hushed smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk018",
+          "text": "那個男人和他的頭盔，後來呢？他們在土裡，一躺就是九百多年。",
+          "emotion": "問句，放慢"
+        }
+      ]
+    },
+    {
+      "id": "dig-farm",
+      "chapter": "一九四三年，農家兒子鏟到那座墓",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a half-built wooden farmhouse frame on a bare early-spring farm, a wheelbarrow of dark earth beside it, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk019",
+          "text": "時間快轉到一九四三年。Ringerike 的一戶農家，兒子正在替父母蓋房子。"
+        }
+      ]
+    },
+    {
+      "id": "dig-bank",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands in rough wool sleeves pushing a spade into a long low bank of dark earth, mild afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk020",
+          "text": "三月二十九日下午，他整平旁邊一道長長的土堆，鏟到了那座墓。"
+        }
+      ]
+    },
+    {
+      "id": "dig-nine",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a loose heap of rusty iron pieces of a broken helmet laid out on a plain wooden table, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk021",
+          "text": "墓裡那頂鐵頭盔，早就碎成了九塊，散在土裡。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "dig-floor",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain farmhouse living room floor half covered with old rusty iron pieces laid out on white sheets, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk022",
+          "text": "挖出來的東西，在農家的客廳裡，鋪滿了半個地板。",
+          "emotion": "帶點驚奇"
+        }
+      ]
+    },
+    {
+      "id": "dig-call",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding an old black telephone receiver to her ear, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk023",
+          "text": "換成是你家的客廳鋪滿了這些，你會先打給誰？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "dig-phone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old black telephone with a curly cord on a plain wooden farmhouse table beside a cup of coffee, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk024",
+          "text": "隔天，一位當地的歷史愛好者，打電話通知了博物館。"
+        }
+      ]
+    },
+    {
+      "id": "dig-glasses",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small rusty iron piece shaped like a pair of round spectacles lying on a white cloth, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk025",
+          "text": "兩天後，地方報紙寫到它：沒有角，倒有一副「眼鏡」。",
+          "emotion": "「眼鏡」停一拍"
+        }
+      ]
+    },
+    {
+      "id": "dig-war",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty quiet museum hallway with tall windows and bare wooden stands, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk026",
+          "text": "那是德軍占領挪威的第三年，博物館人手不夠，能派誰去？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "dig-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two pairs of hands brushing dark soil off an old iron sword blade in a shallow pit, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk027",
+          "text": "只派得出一位年輕研究員和一個學生，四月二日到場，一天就挖完了。"
+        }
+      ]
+    },
+    {
+      "id": "dig-oneday",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, wiping her brow with the back of her hand, wide-eyed, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk028",
+          "text": "一天。我讀到這裡，真的替他們捏了一把冷汗。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "dig-fit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands fitting rusty iron pieces of a helmet together on a padded stand, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk029",
+          "text": "報紙說的那副眼鏡，要等頭盔拼回來，才看得懂。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "dig-dome",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a restored round iron helmet with a small spike on top sitting on a padded stand in a quiet storeroom, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk030",
+          "text": "拼回來的頭盔，圓圓的鐵頂，頂上一個小尖；"
+        }
+      ]
+    },
+    {
+      "id": "dig-visor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, peering through the eye holes of an old iron helmet, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk031",
+          "text": "眼睛和鼻子前面，護著一圈鐵框，就像一副眼鏡。",
+          "emotion": "揭曉，輕快"
+        }
+      ]
+    },
+    {
+      "id": "dig-mail",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fine iron chain mail curtain hanging from the rim of an iron helmet on a stand, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk032",
+          "text": "帽緣還有一排小鐵環，原本掛著什麼？",
+          "emotion": "問句"
+        },
+        {
+          "id": "vk033",
+          "text": "保護脖子的鎖子甲。"
+        }
+      ]
+    },
+    {
+      "id": "dig-weight",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an iron helmet and a plain modern green helmet balanced level on the two pans of a brass scale, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk034",
+          "text": "完整的時候有多重？",
+          "emotion": "問句"
+        },
+        {
+          "id": "vk035",
+          "text": "大約一點五公斤，跟今天軍人戴的頭盔差不多重。"
+        }
+      ]
+    },
+    {
+      "id": "dig-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet red wooden farmhouse on a green hillside with a pine forest behind it, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk036",
+          "text": "後來，它照出土那座農場的名字，叫做 Gjermundbu 頭盔。"
+        }
+      ]
+    },
+    {
+      "id": "dig-nohorn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, running one finger over the smooth dome of an old iron helmet, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk037",
+          "text": "你注意到了嗎？這頂真正的維京頭盔，從頭到尾，沒有一個地方長角。"
+        }
+      ]
+    },
+    {
+      "id": "dig-rare",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single iron helmet standing alone on a long empty wooden museum shelf, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk038",
+          "text": "可是，它會不會只是個例外？今天，像這樣的頭盔還找得到幾頂？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "count-two",
+      "chapter": "數下來，幾乎完整的只有兩頂",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two old iron helmets side by side on a padded museum shelf beside a few small rusty iron scraps, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk039",
+          "text": "兩頂。在斯堪地那維亞和英國，幾乎完整的只有兩頂，另外還有幾塊碎片。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "count-yarm",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two gloved hands lifting a rusty iron helmet out of a muddy trench beside a clay pipe, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk040",
+          "text": "另一頂在哪裡？",
+          "emotion": "問句"
+        },
+        {
+          "id": "vk041",
+          "text": "英格蘭的 Yarm，一九五〇年代挖下水道的時候挖到；"
+        }
+      ]
+    },
+    {
+      "id": "count-yarm-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rusty iron helmet with a spectacle-shaped guard around the eyes resting on a padded stand, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk042",
+          "text": "二〇二〇年的研究認為，它是維京時代的；臉前面，也有一副眼鏡。"
+        }
+      ]
+    },
+    {
+      "id": "count-tjele",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small curved rusty iron scrap lying alone in an old wooden drawer lined with green felt, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk043",
+          "text": "碎片少到什麼程度？",
+          "emotion": "問句"
+        },
+        {
+          "id": "vk044",
+          "text": "丹麥有一塊，一八五〇年就挖到了，"
+        }
+      ]
+    },
+    {
+      "id": "count-saddle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old brown leather saddle on a wooden rack with a small curved iron scrap tucked beside it, mild afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk045",
+          "text": "卻被當成馬鞍的配件，放了一百三十四年，",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "count-brow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands holding a curved iron brow piece with a nose guard up toward a bright window, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk046",
+          "text": "一九八四年才有人認出，那是頭盔的眉毛和護鼻。"
+        }
+      ]
+    },
+    {
+      "id": "count-zero",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, counting on her fingers with a knowing smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk047",
+          "text": "還記得開頭那個「一件都沒有」嗎？就是這兩頂，加上這些碎片，一件一件數出來的。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "count-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a hoodie on a sofa scratching his head over a small toy horned helmet in his hands, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk048",
+          "text": "你可能會想：東西這麼少，會不會只是有角的剛好沒挖到？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "count-texts",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small carved wooden harp leaning against a very thick plain brown leather book on a wooden bench, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk049",
+          "text": "還記得那首詩和那部史書嗎？當時的人寫頭盔，也沒寫過角。"
+        }
+      ]
+    },
+    {
+      "id": "count-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a flat brown peat bog under a pale sky with a lone wooden spade stuck upright in the turf, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk050",
+          "text": "那問題就來了：開頭說的，丹麥沼澤裡那兩頂有角的頭盔，又是誰戴的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "bog-1942",
+      "chapter": "一九四二年，沼澤裡那兩頂有角的頭盔",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of neat stacks of cut peat drying beside a wooden wheelbarrow on a flat brown bog, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk051",
+          "text": "其實就在 Gjermundbu 出土的前一年，一九四二年，丹麥西蘭島的 Viksø，",
+          "emotion": "小倒敘"
+        }
+      ]
+    },
+    {
+      "id": "bog-crunch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands gripping a wooden spade stuck in dark wet peat, a bit of green bronze poking out below, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk052",
+          "text": "一位挖泥炭的工人，聽見鏟子底下，喀嚓一聲。",
+          "emotion": "帶點驚奇"
+        }
+      ]
+    },
+    {
+      "id": "bog-rubbish",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two muddy green bronze lumps tossed on top of a heap of cut peat beside a wheelbarrow, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk053",
+          "text": "他以為那是埋在土裡的垃圾，順手擱到了一邊。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "bog-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in rubber boots shrugging over a muddy lump in his gloved hands in a peat field, mild afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk054",
+          "text": "換成是你，鏟到兩塊髒兮兮的銅，大概也會這樣。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "bog-helmets",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two identical polished bronze helmets with long curved horns side by side on a grey museum plinth, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk055",
+          "text": "結果，那是兩頂幾乎一模一樣的青銅頭盔，除了一對牛角，"
+        }
+      ]
+    },
+    {
+      "id": "bog-beak",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the front of a bronze horned helmet decorated with two bronze eyes and a small hooked bird beak, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk056",
+          "text": "還有一雙眼睛和一個鉤狀的鳥嘴；頭頂和角尖，可能還插過馬鬃和羽毛。"
+        }
+      ]
+    },
+    {
+      "id": "bog-viking",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shaking her head with a calm small smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk057",
+          "text": "那這兩頂是維京人的嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "vk058",
+          "text": "不是。它們埋進沼澤，大約是西元前九百年。",
+          "emotion": "揭曉，篤定"
+        }
+      ]
+    },
+    {
+      "id": "bog-tar",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small dark lump of birch tar on the tip of a bronze horn beside a strip of white birch bark, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk059",
+          "text": "這個年代，是二〇二一年發表的研究，從角上一小塊樺樹焦油測出來的。"
+        }
+      ]
+    },
+    {
+      "id": "bog-1700",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a very long straight dirt road stretching across empty flat fields toward a faraway hill, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk060",
+          "text": "也就是說，比維京時代，早了一千七百年左右。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "bog-war",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a long curved bronze horn, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk061",
+          "text": "那頭上頂著這麼大的一對角，是戴去打仗用的嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bog-ritual",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze horned helmet resting on a flat stone altar among wildflowers, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk062",
+          "text": "丹麥國家博物館認為不是：它們是宗教儀式用的，"
+        }
+      ]
+    },
+    {
+      "id": "bog-priest",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze horned helmet sinking into still brown bog water among tall reeds, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk063",
+          "text": "是祭司裝扮的一部分；後來，才被當成祭品，沉進了沼澤。"
+        }
+      ]
+    },
+    {
+      "id": "bog-figures",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two tiny kneeling bronze figurines wearing curved horned helmets on a dark velvet cloth, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk064",
+          "text": "這種角，在北方的青銅時代並不稀奇：十八世紀就挖到過兩個戴這種角的小銅人，"
+        }
+      ]
+    },
+    {
+      "id": "bog-nonsense",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, crossing her arms and shaking her head firmly, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk065",
+          "text": "研究它們的丹麥考古學家說得很直接：大家把它們跟維京人連在一起，其實是胡說。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "bog-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small toy horned helmet sitting beside a polished bronze horned helmet on a museum plinth, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk066",
+          "text": "那十九世紀的人，是看了這兩頂角盔，才讓維京人戴上角的嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bog-late",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty wooden theatre stage framed by heavy red velvet curtains, a single horned helmet left on the bare boards, mild afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk067",
+          "text": "不可能。還記得開頭那座歌劇院的舞台嗎？那是一八七六年。"
+        }
+      ]
+    },
+    {
+      "id": "bog-66",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze horned helmet still caked with dark peat lying in a small wooden cart on a bog, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk068",
+          "text": "那兩頂沼澤頭盔，出土比它還晚了六十六年。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "bog-where",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pulling a thick plain book off a shelf, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk069",
+          "text": "那他們心裡的角，又是從哪裡來的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "vk070",
+          "text": "從更老的書裡。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "book-tacitus",
+      "chapter": "角是從古書裡一路借來的",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled papyrus scroll tied with a red cord resting on a white marble bench beside a laurel wreath, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk071",
+          "text": "故事要倒回西元九十八年。古羅馬人塔西佗寫日耳曼人，他寫的是："
+        }
+      ]
+    },
+    {
+      "id": "book-tacitus-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single plain leather hood and one small iron helmet lying alone on a long empty wooden bench, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk072",
+          "text": "有金屬頭盔或皮帽的，難得一兩個。",
+          "emotion": "帶點諷刺"
+        },
+        {
+          "id": "vk073",
+          "text": "你沒聽錯：幾乎沒有頭盔，更別說角。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "book-gaul",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bronze helmet with two short horns on top resting on a white marble bench beside a rolled papyrus scroll, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk074",
+          "text": "角，是從別處借來的：另一位古代史家寫高盧人，"
+        }
+      ]
+    },
+    {
+      "id": "book-gaul-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall bronze helmet with high horns towering over a small plain helmet on a white marble bench, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk075",
+          "text": "說他們很多頭盔上都裝著角，看起來人高一大截。"
+        }
+      ]
+    },
+    {
+      "id": "book-1616",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy plain leather-bound book with brass corners lying closed beside a brass drafting compass on a desk, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk076",
+          "text": "一千五百多年後，一六一六年，一位地理學家引了這些古書，"
+        }
+      ]
+    },
+    {
+      "id": "book-1616-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small carved wooden figurine wearing a tiny horned helmet standing on a heavy closed leather-bound book, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk077",
+          "text": "出了一本有插圖的古日耳曼志，把角，戴到了古日耳曼人頭上。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "book-wings-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head with a playful questioning smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk078",
+          "text": "那維京人呢？十八世紀畫裡的維京人，頭上戴的是什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "book-wings",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny steel helmet with a pair of white feathered wings on its sides resting on a wooden stool, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk079",
+          "text": "翅膀。研究這段歷史的學者 Roberta Frank 說，那時候的維京人，多半戴翅膀頭盔。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "book-frithiof",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small stack of plain blue clothbound books tied with string on a wooden shop counter, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk080",
+          "text": "一八二五年，瑞典出了一部很受歡迎的長詩，《Frithiof 傳奇》；"
+        }
+      ]
+    },
+    {
+      "id": "book-eagle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young hero with long blond hair in a blue cloak wearing a helmet topped with eagle wings, standing on a ship's deck, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk081",
+          "text": "插畫裡的英雄 Frithiof，頭上戴的，是一頂「鷹盔」。"
+        }
+      ]
+    },
+    {
+      "id": "book-erling",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain red clothbound novel lying closed on a wooden table beside a small toy longship, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk082",
+          "text": "一八六九年，倫敦出了一本北歐海王的小說，《Erling the Bold》。主角頭上戴什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "book-hawk",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a burnished steel helmet with a pair of brown hawk wings spread open on its top, set on a wooden table, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk083",
+          "text": "書上寫，他的鋼盔頂上，豎著一對展開的鷹翅，像正要起飛。"
+        }
+      ]
+    },
+    {
+      "id": "book-nohorn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a white feather and raising one eyebrow, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk084",
+          "text": "翅膀、鷹盔、鷹翅，就是沒有牛角。那牛角，什麼時候才出現？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "book-oland",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of four small square bronze stamping plates lying in a row on a white cloth, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk085",
+          "text": "一八七〇年，瑞典的厄蘭島挖到四塊銅模，用來壓頭盔裝飾片，大約是西元六百年前後的東西。"
+        }
+      ]
+    },
+    {
+      "id": "book-dancer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small bronze plate embossed with a dancing figure holding a spear, lying on a white cloth, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk086",
+          "text": "其中一塊上，有個拿著武器跳舞的人，頭上翹著一對彎彎的東西。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "vk087",
+          "text": "那是角嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "book-montelius",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass magnifying glass resting on a small bronze stamping plate on a wooden desk, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk088",
+          "text": "一位瑞典考古學家，一八七二年把這批銅模發表出來；"
+        }
+      ]
+    },
+    {
+      "id": "book-birds",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a helmet topped by two small carved wooden bird heads on long curved necks facing each other, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk089",
+          "text": "他寫：那是一頂頭盔，上面兩個突起，是兩隻相對的鳥脖子。",
+          "emotion": "揭穿，輕輕的"
+        }
+      ]
+    },
+    {
+      "id": "book-seen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, peering through a big magnifying glass, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk090",
+          "text": "他看到的是鳥，不是角；後來的人，才把它看成了角。"
+        }
+      ]
+    },
+    {
+      "id": "book-flip",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small toy horned helmet reflected in a hand mirror on a wooden desk, mild afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk091",
+          "text": "Frank 說，那時候多半是反過來：心裡先有了戴角的維京人，才回頭把舊東西看成角。"
+        }
+      ]
+    },
+    {
+      "id": "book-strange",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping her temple with one finger, a thoughtful half smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk092",
+          "text": "這就很怪了：東西明明在那裡，你看到什麼，卻要看你心裡先裝了什麼。",
+          "emotion": "旁白自己的反應，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "book-age",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long wooden drawer pulled open, full of blank white index cards in neat rows, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk093",
+          "text": "更怪的是，「維京時代」這個名字，據研究，也是這幾年才剛開始有人叫；"
+        }
+      ]
+    },
+    {
+      "id": "book-age-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two green seedlings sprouting side by side from one small clay pot on a windowsill, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk094",
+          "text": "Frank 說，沒有維京時代，就沒有戴角的維京人，兩個是一起長出來的。"
+        }
+      ]
+    },
+    {
+      "id": "book-doepler",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of large silver tailor's scissors and a spool of red thread on a pile of folded fur and velvet cloth, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk095",
+          "text": "一八七五年，華格納的服裝設計師 Doepler，要替一齣歌劇做戲服。"
+        },
+        {
+          "id": "vk096",
+          "text": "他會給演員戴上什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "book-berlin",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grand theatre balcony with three empty red velvet seats and a pair of opera glasses on the rail, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk097",
+          "text": "他很認真：那年春天，先陪華格納夫婦去柏林，看一個以服裝考究出名的劇團演戲；"
+        }
+      ]
+    },
+    {
+      "id": "book-tacitus-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of silver tailor's scissors resting on a rolled papyrus scroll tied with a red cord on a wooden desk, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk098",
+          "text": "然後翻開塔西佗，和歷來的註解。"
+        },
+        {
+          "id": "vk099",
+          "text": "還記得那句「難得一兩個」嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "book-notes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy plain leather book lying open on blank pages, a small bronze horned helmet sitting in its fold, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk100",
+          "text": "可是註解裡等著他的，是這一路傳下來的角。"
+        }
+      ]
+    },
+    {
+      "id": "book-irony",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing her lips together, holding back a wry smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk101",
+          "text": "我覺得這是整個故事最諷刺的地方：他以為自己在考據。",
+          "emotion": "意見標成意見，放慢"
+        },
+        {
+          "id": "vk102",
+          "text": "第二年八月，幕拉開了。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "stage-open",
+      "chapter": "一八七六年八月，拜魯特的舞台",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large plain red brick opera house on a green hill under a pale summer sky, mild afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk103",
+          "text": "一八七六年八月，拜魯特的節日劇院開幕，華格納的《尼伯龍根的指環》第一次全本上演。"
+        }
+      ]
+    },
+    {
+      "id": "stage-seat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a long blue dress on a red velvet theatre seat leaning forward with wide eyes, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk104",
+          "text": "換成你坐在那年的觀眾席，台上走出來的，是神話裡的神、侏儒、巨人和英雄；",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "stage-novk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, spreading both hands wide with a playful grin, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk105",
+          "text": "開頭說的那座舞台上，一個維京人也沒有。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "stage-horns",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an opera singer in a fur cloak lifting a horned helmet onto his head backstage, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk106",
+          "text": "Doepler 讓其中一些戰士和隨從，戴上了牛角；"
+        }
+      ]
+    },
+    {
+      "id": "stage-valkyrie",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an opera singer in a silver robe wearing a white winged helmet and smiling, on a wooden stage, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk107",
+          "text": "偏偏給女武神的，是一頂白色的翅膀頭盔。"
+        }
+      ]
+    },
+    {
+      "id": "stage-cosima",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded black lace fan lying on a red velvet theatre seat beside a horned helmet, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk108",
+          "text": "華格納的妻子 Cosima 還嫌，這些服裝讓她想到「印第安酋長」。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "stage-ragnar",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one finger with a careful look, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk109",
+          "text": "但要說清楚，Doepler 不是第一個。Frank 找到過一張一八五一年的畫，"
+        }
+      ]
+    },
+    {
+      "id": "stage-goat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an iron helmet with two short curled goat horns resting alone on a wooden stool, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk110",
+          "text": "最有名的維京人 Ragnar，戴著一頂訂做的山羊角頭盔；那是她找到的唯一例外。"
+        }
+      ]
+    },
+    {
+      "id": "stage-how",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a horned helmet on the edge of a wooden stage above a row of closed plain books lined up below it, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk111",
+          "text": "那牛角，又是怎麼從這座舞台，跑到維京人頭上的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "spread-frithiof-b",
+      "chapter": "一本書接一本書，角長滿了維京人",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young hero with long blond hair in a blue cloak putting on a helmet with two cow horns, grinning, mild afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk112",
+          "text": "還記得戴鷹盔的 Frithiof 嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "vk113",
+          "text": "到一八七〇年代末，一本德國的通俗讀物，讓他戴上了角。"
+        }
+      ]
+    },
+    {
+      "id": "spread-erling",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a row of plain red clothbound novels on a shelf, a small white feather tucked into each, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk114",
+          "text": "那本《Erling the Bold》，一八八〇年以前印的八個插圖版，畫的都是翅膀；"
+        }
+      ]
+    },
+    {
+      "id": "spread-ninth",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain red clothbound novel lying open on blank pages with a tiny bronze horned helmet resting on it, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk115",
+          "text": "到一八九〇年的第九版，角，第一次出現在書裡。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "spread-fast",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long row of small toy horned helmets lined up on a wooden toy shelf in a quiet shop, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk116",
+          "text": "長得有多快？",
+          "emotion": "問句"
+        },
+        {
+          "id": "vk117",
+          "text": "不到二十年，廣告、畫、通俗歷史、兒童書，維京人一個接一個戴上了角。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "spread-weather",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pale sky full of small toy horned helmets drifting down like soft rain over red rooftops, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk118",
+          "text": "Frank 說，到了一八九〇年代，有角的維京人多得像天氣一樣，到處都是。",
+          "emotion": "好笑"
+        }
+      ]
+    },
+    {
+      "id": "spread-laugh",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, laughing with one hand over her mouth, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk119",
+          "text": "我讀到「像天氣」這三個字，是真的笑了出來。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "spread-heims",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick old book with a plain brown leather cover lying closed on a wooden desk beside a quill, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk120",
+          "text": "還記得那部《Heimskringla》嗎？一八九九年的挪威譯本，"
+        }
+      ]
+    },
+    {
+      "id": "spread-conical",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of long neat rows of identical plain cone-shaped iron helmets on wooden shelves, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk121",
+          "text": "插圖裡的維京人戴的都是圓錐盔，一排一排，無聊得很。",
+          "emotion": "好笑"
+        }
+      ]
+    },
+    {
+      "id": "spread-single",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a bunch of mixed wildflowers, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk122",
+          "text": "Frank 也說，有角頭盔，沒有哪一個人是它唯一的源頭。"
+        }
+      ]
+    },
+    {
+      "id": "spread-1900",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny horned helmet on a red velvet cushion under a glass dome in a quiet museum room, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk123",
+          "text": "可是到了一九〇〇年，這對角，已經成了維京人的招牌。"
+        },
+        {
+          "id": "vk124",
+          "text": "它停得下來嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "field-helmet",
+      "chapter": "一九六一年，球員的頭盔畫上了角",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand with a small brush painting a curved white horn onto the side of a plain grey football helmet, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk125",
+          "text": "停不下來。一九六一年，明尼蘇達維京人第一季開打，球員的頭盔側面，就畫上了一對角。"
+        }
+      ]
+    },
+    {
+      "id": "field-shop",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gift shop shelf crowded with toy horned helmets and plush horned helmets, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk126",
+          "text": "後來史密森尼辦維京展，紀念品店想進一批維京商品，卻很難訂到沒有角的。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "field-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a museum gift shop holding up a toy horned helmet and laughing, mild afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vk127",
+          "text": "你下次逛博物館的紀念品店，可以找找看，有沒有一頂沒角的。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "close-back",
+      "chapter": "那頂鐵盔，本來就沒少什麼",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, resting one hand on an iron helmet, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk128",
+          "text": "所以，回到開頭那頂碎成九塊的鐵盔：它為什麼沒有角？",
+          "emotion": "問句，慢"
+        },
+        {
+          "id": "vk129",
+          "text": "它本來就沒少什麼。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "close-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a restored round iron helmet with a small spike on top sitting alone on a padded stand, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk130",
+          "text": "少的那對角，是十九世紀的人從古書和舞台上一路借來，替維京人戴上的。"
+        }
+      ]
+    },
+    {
+      "id": "close-rewind",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a polished bronze horned helmet and a restored round iron helmet side by side on a grey museum plinth, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk131",
+          "text": "開頭那兩頂有角的，博物館說是祭司裝扮；開頭那座舞台，演的是神話。",
+          "emotion": "倒帶，輕輕的"
+        }
+      ]
+    },
+    {
+      "id": "close-theme",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, looking into a hand mirror with a gentle smile, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk132",
+          "text": "我覺得最有意思的是：土裡的頭盔從來沒變過，變的是我們心裡先裝了什麼。",
+          "emotion": "意見標成意見"
+        }
+      ]
+    },
+    {
+      "id": "close-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain grey folder lying closed on a wooden desk beside a small toy horned helmet, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "vk133",
+          "text": "這份檔案，存檔。",
+          "emotion": "收尾，乾脆"
+        },
+        {
+          "id": "vk134",
+          "text": "你第一次看到戴角的維京人，是在卡通、球賽，還是故事書裡？",
+          "emotion": "問句上揚，像在聊天"
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a plain grey folder and smiling warmly at the viewer, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "vk135",
+          "text": "留言告訴我。這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}

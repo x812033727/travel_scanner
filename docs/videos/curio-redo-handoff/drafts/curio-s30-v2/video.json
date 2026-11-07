@@ -1,0 +1,2336 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s30-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友講這份檔案：開場對著觀眾講、帶一點挑釁；兩本傳記那段清楚分開；涼州加快，瓜州那一段壓低像說祕密；玉門關、烽火台緊張，箭那句喊出來；水袋打翻那句一下子掉下去，「寧可往西死在路上」一字一字有力；高昌結拜那段輕鬆、小說那段帶笑；于闐八個字一字一字唸清楚、停一拍；洛陽宮太宗那句寬厚帶笑；結尾乾脆，分清楚「存檔」與「未結」。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-novel",
+      "chapter": "御弟、文牒，和一份通緝公文",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick printed book with a plain orange cover lying open on a sofa cushion, its blank pages fanned by a breeze, a bowl of popcorn beside it, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x001",
+          "text": "你一定記得《西遊記》：唐僧是唐太宗結拜的兄弟，叫御弟。",
+          "emotion": "對觀眾，像聊天"
+        }
+      ]
+    },
+    {
+      "id": "open-permit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled blank paper permit tied with a yellow silk ribbon resting on a yellow silk cushion in a palace hall, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x002",
+          "text": "皇帝發給他通關文牒，送他出長安，去西天取經。"
+        }
+      ]
+    },
+    {
+      "id": "open-real",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall woven bamboo backpack frame with a small round canopy leaning against a red temple pillar, a pair of straw sandals beside it, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x003",
+          "text": "這個唐僧，原型是唐朝一位真實的和尚，叫玄奘。",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "open-twist",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising her eyebrows and holding up one empty open hand, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x004",
+          "text": "可是你想不到，唐朝人替他寫的傳記裡，他出發時連文牒都沒有。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-warrant",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded blank paper order tied with red cord tucked in the saddlebag of a galloping brown horse on a dusty road, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x005",
+          "text": "反倒有一份公文追著他跑，要各州縣把他抓起來。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "open-arrow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single arrow stuck upright in the sand beside a leather waterskin at the edge of a small pool, a mud watchtower behind, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x006",
+          "text": "他一個人走進沙漠，在一座烽火台下，差點被一支箭射中。",
+          "emotion": "升級，收著"
+        }
+      ]
+    },
+    {
+      "id": "open-emperor",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall empty throne draped in bright yellow silk at the far end of a long red-pillared hall, sunbeams through lattice windows, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x007",
+          "text": "十幾年後他回來，皇帝見到他，第一句話問的是什麼？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning toward the viewer with a knowing smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x008",
+          "text": "今天我們就來聊聊：唐朝最有名的和尚，真的是偷渡出國的嗎？",
+          "emotion": "承諾句，問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "src-where",
+      "chapter": "兩本傳記，兩種說法",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, setting a red book and a blue book on a table, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x009",
+          "text": "要回答這個問題，得先知道這個故事從哪裡來。",
+          "emotion": "接住，沉穩"
+        }
+      ]
+    },
+    {
+      "id": "src-cien",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound book with a plain red cover lying on a low wooden desk beside an ink brush and an inkstone, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x010",
+          "text": "第一本，是他的弟子慧立寫的傳記，大家簡稱《慈恩傳》。"
+        }
+      ]
+    },
+    {
+      "id": "src-daoxuan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound book with a plain blue cover standing upright on a shelf of plain scrolls in a quiet temple library, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x011",
+          "text": "第二本叫《續高僧傳》，作者道宣，也在他的譯經團隊裡，見過他本人。"
+        }
+      ]
+    },
+    {
+      "id": "era-border",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a heavy wooden frontier gate shut tight in a long mud-brick wall on a dry plain, spears leaning beside it, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x012",
+          "text": "先看時代。唐朝那時才剛建國，邊境禁止百姓出境。"
+        }
+      ]
+    },
+    {
+      "id": "era-petition",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of several hands together holding up one rolled blank petition toward a palace gate, soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x013",
+          "text": "主角玄奘那時在長安。他想去西方取經，跟幾個同伴一起遞了奏章。"
+        }
+      ]
+    },
+    {
+      "id": "cien-no",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound book with a plain red cover lying open on a desk, a red tassel bookmark between its blank pages, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x014",
+          "text": "結果呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "x015",
+          "text": "弟子寫的《慈恩傳》說：皇帝下詔，不准。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "cien-alone",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a few pairs of straw sandals walking back toward a city gate while a tall woven bamboo backpack frame stays standing on the road, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x016",
+          "text": "同伴都打了退堂鼓，只有他不肯放棄。"
+        }
+      ]
+    },
+    {
+      "id": "cien-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping her chin with a pen and squinting slightly, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x017",
+          "text": "可是，那份奏章真的送到皇帝面前了嗎？",
+          "emotion": "問句，輕輕的"
+        }
+      ]
+    },
+    {
+      "id": "xu-no",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound book with a plain blue cover lying open on a desk, a single rolled blank petition resting on top, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x018",
+          "text": "道宣的《續高僧傳》寫得溫和多了：根本沒送到。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "xu-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one rolled blank petition left untouched on the corner of an empty clerk's desk while other papers pile high, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x019",
+          "text": "照道宣，奏章是他一個人遞的，官署沒有替他往上送。"
+        }
+      ]
+    },
+    {
+      "id": "xu-how",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shrugging with both palms up and a small baffled frown, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x020",
+          "text": "照這一本，也就沒有什麼拒絕的詔書。"
+        },
+        {
+          "id": "x021",
+          "text": "那他是怎麼走的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "frost",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bare winter field white with frost outside a city wall, a line of small bundles and baskets on carts heading down a road, pale morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x022",
+          "text": "道宣說，貞觀三年鬧霜災，朝廷讓僧人和百姓，到有收成的地方找糧。"
+        }
+      ]
+    },
+    {
+      "id": "frost-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall woven bamboo backpack frame strapped to the back of a walking pack horse on a frosty road heading west, pale morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x023",
+          "text": "他就趁這個機會，往西去了涼州。《慈恩傳》寫，那年他二十六歲。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "two-ways",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up two fingers on one hand and frowning thoughtfully, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x024",
+          "text": "兩本書，兩種說法。可是不管哪一種，他都沒拿到朝廷的許可。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "first-gate",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long dusty road leading west to a walled garrison town with a tall watchtower, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x025",
+          "text": "而且出了長安，他碰上的第一關，不是沙漠，是人。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "liang-li",
+      "chapter": "涼州都督逼他回去，瓜州州吏撕了公文",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dark iron helmet with a red plume on a wooden stand in a garrison hall, a long spear leaning beside it, gentle afternoon sun",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x026",
+          "text": "在涼州，他撞上的第一個人，是都督李大亮。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "liang-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled blank imperial order with a yellow ribbon lying in front of a dark iron helmet with a red plume on a desk, clear midday light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x027",
+          "text": "李大亮剛接到朝廷的嚴令，邊境看得特別緊。"
+        }
+      ]
+    },
+    {
+      "id": "lecture",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hall of listeners in plain robes sitting on mats and looking up at a raised platform where a tall woven bamboo backpack frame stands, soft light from high windows",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x028",
+          "text": "偏偏玄奘在涼州停了一個多月，講經。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a row of listeners in plain robes turning to whisper to each other, soft light from a high window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x029",
+          "text": "一個長安來的和尚講了一個多月，消息會傳到誰的耳朵裡？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nervous man in a brown tunic cupping one hand and whispering toward a dark iron helmet with a red plume on a stand, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x030",
+          "text": "有人向李大亮報告：有個長安來的和尚，要去西方。",
+          "emotion": "像在打小報告"
+        }
+      ]
+    },
+    {
+      "id": "report-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall woven bamboo backpack frame standing in a garrison courtyard facing a dark iron helmet with a red plume on a tall stand, gentle afternoon sun",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x031",
+          "text": "李大亮把他找來問。他說：要去西方求法。"
+        }
+      ]
+    },
+    {
+      "id": "report-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big armoured hand pointing firmly back east down a long dusty road out of a garrison town, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x032",
+          "text": "李大亮一聽，逼他回長安。",
+          "emotion": "語氣一沉"
+        },
+        {
+          "id": "x033",
+          "text": "他回去了嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "secret",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two young temple helpers in brown robes quietly carrying a tall woven bamboo backpack frame out through a back door of a temple, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x034",
+          "text": "沒有。涼州一位法師暗中派兩個弟子，偷偷送他往西。",
+          "emotion": "接答"
+        }
+      ]
+    },
+    {
+      "id": "hide-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall woven bamboo backpack frame tucked in the cool shade under a low mud wall beside a dozing horse, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x035",
+          "text": "從此他不敢公開走，白天躲、夜裡趕路，就這樣到了瓜州。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "yumen",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone mud-brick gate tower standing over a narrow river on a dry plain, the only way west, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x036",
+          "text": "他打聽到：往西一定要經過玉門關。"
+        }
+      ]
+    },
+    {
+      "id": "beacons",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a row of small mud watchtowers stretching far apart across a flat empty desert with long shadows, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x037",
+          "text": "關外還有五座烽火台，各隔一百里，中間沒有水，也沒有草。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "warrant-arrives",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded blank paper order tied with red cord being dropped onto a clerk's desk from a dusty courier pouch, clear midday light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x038",
+          "text": "就在這時候，涼州的通緝公文，追到了瓜州。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "warrant-text",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded blank paper order tied with red cord lying open on a desk beside a brush, its paper left blank, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x039",
+          "text": "公文上寫：有個和尚叫玄奘，想去西方，各州縣要嚴加捉拿。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "lichang",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hand sliding a folded blank paper order tied with red cord across a low table toward a tall woven bamboo backpack frame in a quiet temple room, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x040",
+          "text": "瓜州有一個州吏，叫李昌，偷偷拿著這份公文去找他。",
+          "emotion": "壓低，像說祕密"
+        }
+      ]
+    },
+    {
+      "id": "lichang-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding up a folded blank paper order tied with red cord in front of a tall woven bamboo backpack frame, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x041",
+          "text": "李昌只問了一句：師父，這說的不就是你嗎？",
+          "emotion": "問句，緊張"
+        }
+      ]
+    },
+    {
+      "id": "truth",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing her lips together and holding her breath, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x042",
+          "text": "那一刻，和尚沒有否認，老老實實把實話說了。",
+          "emotion": "短句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "tear-say",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands gripping a folded blank paper order tied with red cord at both ends, ready to pull, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x043",
+          "text": "李昌聽了，說：師父真能做到，我替你把這份文書毀了。",
+          "emotion": "佩服"
+        }
+      ]
+    },
+    {
+      "id": "tear",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands tearing a blank paper order in half, a red cord falling loose, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x044",
+          "text": "他當著和尚的面，把公文撕了，還交代：師父，要早點走。",
+          "emotion": "揭曉，俐落"
+        }
+      ]
+    },
+    {
+      "id": "tear-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, looking off to one side with a worried little frown, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x045",
+          "text": "通緝公文沒了，可是玉門關還擋在前面。"
+        },
+        {
+          "id": "x046",
+          "text": "他要怎麼過？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "shi",
+      "chapter": "三更天，他在玉門關上游十里過了河",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall pointed felt hat resting on a temple step beside a pair of leather boots, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x047",
+          "text": "帶路的，是一個來寺裡禮佛的胡人，姓石，叫槃陀。"
+        }
+      ]
+    },
+    {
+      "id": "shi-vow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands pressed together in prayer above a tall pointed felt hat lying on a mat, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x048",
+          "text": "他請玄奘替他授戒，然後答應：送師父過那五座烽火台。"
+        }
+      ]
+    },
+    {
+      "id": "old-man",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old thin red horse standing beside a gnarled wooden walking stick leaning on a mud wall, clear midday light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x049",
+          "text": "他還帶來一位老翁。老翁勸：西邊的路很險，從來沒有人走得過去。",
+          "emotion": "蒼老，勸告"
+        }
+      ]
+    },
+    {
+      "id": "old-horse",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old weathered hand passing the reins of an old thin red horse to another hand, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x050",
+          "text": "勸不動，老翁就把自己的老紅馬，換給了他。"
+        }
+      ]
+    },
+    {
+      "id": "old-horse-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old thin red horse with a worn saddle standing calm and steady on a sandy track, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x051",
+          "text": "這匹馬來回伊吾走過十五趟，認得路。先記住這匹馬。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "river",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a narrow river winding across a dry plain, a lone mud-brick gate tower far downstream, soft early morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x052",
+          "text": "三更天，他們摸到河邊，遠遠看得見玉門關。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "bridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rough bridge of freshly cut logs laid across a narrow river, straw and sand spread over it, soft early morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x053",
+          "text": "他們沒走關門。石槃陀在上游十里，砍樹搭橋，鋪草填沙。"
+        }
+      ]
+    },
+    {
+      "id": "bridge-cross",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old thin red horse stepping carefully across a rough log bridge over a narrow river, soft early morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x054",
+          "text": "趕著馬過了河。玉門關，就這樣被繞了過去。"
+        }
+      ]
+    },
+    {
+      "id": "law-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, folding her arms and raising one eyebrow, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x055",
+          "text": "這樣不走關門、自己繞過去，到底是多大的罪？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "law",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy plain bronze scale on a stone table with one pan sinking low under a big stone weight, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x056",
+          "text": "照後來的唐律，沒公文從關門過，徒刑一年；不走關門，罪加一等。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "law-lost",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old wooden scroll shelf in a dusty archive room with one empty gap where a scroll is missing, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x057",
+          "text": "他出關那時的律文沒有留下來，但你猜得到，這不是小事。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "law-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tucking a pencil behind her ear and giving a sly look, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x058",
+          "text": "那這筆私自出關的帳，後來有人跟他算嗎？",
+          "emotion": "問句，留著"
+        }
+      ]
+    },
+    {
+      "id": "knife",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a short curved knife in a leather sheath lying on the sand beside a tall pointed felt hat, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x059",
+          "text": "過河沒多久，石槃陀忽然拔刀起身，走向他，不到十步，又折了回去。",
+          "emotion": "緊張，放慢"
+        }
+      ]
+    },
+    {
+      "id": "quit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall pointed felt hat lying on the sand beside a set of footprints walking away east, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x060",
+          "text": "第二天他說：我不去了，家裡人口多，王法不能犯。",
+          "emotion": "像在推託"
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands parting after a firm handshake above a sandy desert track at the river bank, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x061",
+          "text": "玄奘發誓：就算被抓，也絕不供出他。兩人就在這裡分手。",
+          "emotion": "堅定"
+        }
+      ]
+    },
+    {
+      "id": "alone",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old thin red horse carrying a tall woven bamboo backpack frame walking alone into an endless yellow desert under a huge pale sky, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x062",
+          "text": "從這裡起，他一個人牽著那匹老馬，走進沙漠。"
+        },
+        {
+          "id": "x063",
+          "text": "一個人，走得出去嗎？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "beacon-water",
+      "chapter": "烽火台下，一支箭差點射中他的膝蓋",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a mud watchtower with a small pool at its foot, an old thin red horse waiting beside the water, soft early morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x064",
+          "text": "第一座烽火台。夜裡，他摸到水邊，蹲下來喝水。"
+        }
+      ]
+    },
+    {
+      "id": "beacon-skin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands dipping a leather waterskin into a small pool, ripples spreading, soft early morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x065",
+          "text": "剛拿出皮囊要裝水，突然，有東西飛了過來。",
+          "emotion": "斷在這裡"
+        }
+      ]
+    },
+    {
+      "id": "arrow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single arrow stuck upright in the sand beside a leather waterskin at the edge of a small pool, a mud watchtower behind, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x066",
+          "text": "還記得開頭那支箭嗎？就是這一支，差一點射中他的膝蓋。",
+          "emotion": "回呼，急促"
+        }
+      ]
+    },
+    {
+      "id": "arrow-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a second arrow landing in the sand near a small pool, a puff of sand flying up, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x067",
+          "text": "第二支又來了。他大喊：我是京城來的和尚，別射我！",
+          "emotion": "喊出來"
+        }
+      ]
+    },
+    {
+      "id": "wang",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hunting bow and a full quiver leaning in the doorway of a mud-brick watchtower, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x068",
+          "text": "守烽火台的軍官王祥，問清楚他是誰，勸他：我是敦煌人，送你去敦煌吧。"
+        }
+      ]
+    },
+    {
+      "id": "wang-no",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall woven bamboo backpack frame standing firm on a sandy track that points west, its straps tied tight, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x069",
+          "text": "他會跟著回敦煌嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "x070",
+          "text": "他回答：要扣就扣，要判刑就判刑，我絕不往東走一步。",
+          "emotion": "堅定，一字一頓"
+        }
+      ]
+    },
+    {
+      "id": "wang-gift",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands holding out a bulging leather waterskin and a cloth bundle of dry flatbread, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x071",
+          "text": "王祥反倒送他水和乾糧，哭著跟他拜別，指他直接去第四座。",
+          "emotion": "動容"
+        }
+      ]
+    },
+    {
+      "id": "bolong",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hunting bows hung side by side on a mud-brick watchtower wall, a far green patch of reeds beyond, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x072",
+          "text": "第四座的守將王伯隴是王祥的親人，勸他改去百里外的野馬泉取水。"
+        }
+      ]
+    },
+    {
+      "id": "two-only",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up two fingers with a wry little smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x073",
+          "text": "五座烽火台，他其實只進了兩座。"
+        },
+        {
+          "id": "x074",
+          "text": "那最難的一段呢？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "moheyan",
+      "chapter": "水袋打翻，四夜五天沒喝一滴水",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an enormous flat desert stretching to the horizon, empty sky above and bare sand below, heat haze, pale washed-out light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x075",
+          "text": "再往前是莫賀延磧：八百多里，天上沒有鳥，地上沒有獸，也沒有水草。",
+          "emotion": "放慢，空曠"
+        }
+      ]
+    },
+    {
+      "id": "lost",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old thin red horse turning in a circle among identical sand dunes, hoofprints looping behind, harsh midday light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x076",
+          "text": "偏偏走了一百多里，他迷了路，找不到野馬泉。",
+          "emotion": "不安"
+        }
+      ]
+    },
+    {
+      "id": "spill",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy leather waterskin slipping from two hands and splashing onto the sand, harsh midday light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x077",
+          "text": "下馬要喝水，水袋太重，一失手，整袋打翻了。",
+          "emotion": "一下子掉下去"
+        }
+      ]
+    },
+    {
+      "id": "spill-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a flat empty leather waterskin lying on a dark wet patch of sand that is drying fast, harsh midday light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x078",
+          "text": "傳記說：千里路的本錢，一下子全沒了。"
+        }
+      ]
+    },
+    {
+      "id": "turn-east",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old thin red horse walking back east along its own hoofprints across the dunes, harsh midday light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x079",
+          "text": "他掉頭往東，想回第四座烽火台。走了十幾里，停了下來。"
+        }
+      ]
+    },
+    {
+      "id": "ning",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing one fist to her chest with a fierce, determined look, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x080",
+          "text": "他對自己說：寧可往西死在路上，也不往東回去活命。",
+          "emotion": "一字一字，有力"
+        }
+      ]
+    },
+    {
+      "id": "ning-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old thin red horse turning around and heading northwest into the open desert, a tall woven bamboo backpack frame on its back, harsh midday light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x081",
+          "text": "他掉轉馬頭，再往西北走，一路默念觀音。",
+          "emotion": "堅定"
+        }
+      ]
+    },
+    {
+      "id": "thirst",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cracked dry riverbed of sand under a white sun, a single dry thornbush, harsh pale light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x082",
+          "text": "這一走，四夜五天，他一滴水也沒喝到。",
+          "emotion": "低沉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "collapse",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old thin red horse standing still beside a tall woven bamboo backpack frame lying on its side on a sand dune, harsh white sunlight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x083",
+          "text": "他走不動了，躺倒在沙上。",
+          "emotion": "低沉"
+        },
+        {
+          "id": "x084",
+          "text": "這一次，誰來救他？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wind",
+      "chapter": "高昌王跟他結拜，不是唐太宗",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of fine sand blowing off the crest of a dune in a cool breeze, a few drops of dew on a thornbush, soft pale morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x085",
+          "text": "傳記寫，第五天半夜，忽然吹來一陣涼風，冷得像泡進冷水裡。",
+          "emotion": "鬆一口氣"
+        }
+      ]
+    },
+    {
+      "id": "horse-up",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old thin red horse lifting its head and stepping forward across the sand, ears pricked, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x086",
+          "text": "還記得那匹認得路的老紅馬嗎？",
+          "emotion": "回呼，親近"
+        },
+        {
+          "id": "x087",
+          "text": "他爬起來，牠也站起來，繼續往前走。"
+        }
+      ]
+    },
+    {
+      "id": "grass",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old thin red horse drinking from a small clear pool ringed by a patch of green grass in the desert, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x088",
+          "text": "然後他眼前出現幾畝青草，旁邊還有一池清水。",
+          "emotion": "鬆一口氣"
+        }
+      ]
+    },
+    {
+      "id": "yiwu",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small green oasis town with mud-brick houses and poplar trees at the edge of the desert, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x089",
+          "text": "一個人走得出去嗎？走出去了。又走兩天，出了沙漠，到了伊吾。",
+          "emotion": "輕快起來"
+        }
+      ]
+    },
+    {
+      "id": "gaochang",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a jewelled gold crown on a red cushion in a sunlit oasis palace hall with carved wooden pillars, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x090",
+          "text": "高昌國王麴文泰派人，把他接到了高昌。"
+        }
+      ]
+    },
+    {
+      "id": "gaochang-keep",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a jewelled gold crown on a cushion beside a tall woven bamboo backpack frame in a palace room, a full untouched meal tray between them, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x091",
+          "text": "國王要留他當國師。他不肯，絕食三天，連水都不喝。"
+        }
+      ]
+    },
+    {
+      "id": "gaochang-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a full bowl of rice and an untouched cup of water on a tray going cold, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x092",
+          "text": "國王會放人嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "x093",
+          "text": "第四天，國王讓步了。"
+        }
+      ]
+    },
+    {
+      "id": "brothers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a jewelled gold crown and a tall woven bamboo backpack frame side by side before a small golden altar, incense smoke rising, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x094",
+          "text": "兩人在佛前，當著王母的面，結為兄弟。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "brothers-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pointing one finger up with a delighted grin, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x095",
+          "text": "還記得開頭那個御弟嗎？跟他結拜的，其實是高昌王。",
+          "emotion": "回呼，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "novel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick printed book with a plain orange cover lying open on a teahouse table beside a cup of tea, blank pages, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x096",
+          "text": "御弟和通關文牒，是明朝小說《西遊記》寫的。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "novel-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick printed book with a plain orange cover beside a rolled blank permit on a yellow ribbon, and an empty patch of table beside them, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x097",
+          "text": "小說裡那趟路走了十四年；史書裡，他出發時連文牒都沒有。"
+        }
+      ]
+    },
+    {
+      "id": "gifts",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small open wooden chest filled with gold coins and silver coins in a sunny palace room, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x098",
+          "text": "國王給他夠用二十年的盤纏，還有二十四封介紹信。",
+          "emotion": "親切"
+        }
+      ]
+    },
+    {
+      "id": "three-years",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a jewelled gold crown on a cushion at a palace gate as an old thin red horse sets off down the road, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x099",
+          "text": "臨走前，他答應國王：回程時，要在高昌住三年。"
+        },
+        {
+          "id": "x100",
+          "text": "這個約，他守得住嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "gaochang-fall",
+      "chapter": "于闐的奏章：他自己寫下「私往天竺」",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of oasis city walls with the gate shut and dry weeds growing on the ramparts, empty road outside, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x101",
+          "text": "沒守成。早在貞觀十四年，唐朝就滅了高昌。",
+          "emotion": "語氣一沉"
+        }
+      ]
+    },
+    {
+      "id": "khotan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall woven bamboo backpack frame leaning beside a low writing desk in a mud-brick room, a long blank scroll on the desk, a camel outside the door, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x102",
+          "text": "回程走到于闐，他寫了一份奏章給太宗，收在《慈恩傳》裡。"
+        }
+      ]
+    },
+    {
+      "id": "khotan-eight",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a magnifying glass up to one eye with a serious face, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x103",
+          "text": "裡面有八個字，我覺得是整份檔案最重要的八個字。",
+          "emotion": "放慢，準備揭曉"
+        }
+      ]
+    },
+    {
+      "id": "confess",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a writing brush resting on a long blank scroll beside a small red ink dish on a low desk, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x104",
+          "text": "冒越憲章，私往天竺。意思是：違犯了國家的法令，私自去了天竺。",
+          "emotion": "一字一字唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "confess-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, nodding slowly with a quiet, firm look, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x105",
+          "text": "偷渡出國這件事，是他自己在奏章裡認的。",
+          "emotion": "短句，落地"
+        }
+      ]
+    },
+    {
+      "id": "tianwei",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long blank scroll unrolling down the steps toward a tall empty throne draped in bright yellow silk, clear midday light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x106",
+          "text": "同一份奏章裡，他又照例寫：一路靠皇帝的威德，走到哪裡都沒阻礙。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "tianwei-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head with an amused half-smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x107",
+          "text": "一邊認罪，一邊歸功給皇帝。"
+        },
+        {
+          "id": "x108",
+          "text": "這樣的奏章送到長安，皇帝會怎麼回？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "reply",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone rider galloping back along a long desert road toward an oasis, a dust trail behind, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x109",
+          "text": "等了七八個月，使者回來了。太宗說：快來跟朕見面。"
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long line of horses loaded with wrapped bundles entering a big city gate, crowds lining the road, bright clear sunshine",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x110",
+          "text": "貞觀十九年正月，他回到長安，二十匹馬，馱著六百五十七部經。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "luoyang",
+      "chapter": "洛陽宮：皇帝的第一句話",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grand palace with red pillars and tiled roofs beside a river, army tents and banners gathering on the plain, gentle afternoon sun",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x111",
+          "text": "偏偏那時皇帝不在長安，在洛陽，準備出兵遼東。"
+        }
+      ]
+    },
+    {
+      "id": "luoyang-meet",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall woven bamboo backpack frame standing at the foot of the steps before a tall empty throne draped in bright yellow silk in a long red-pillared hall, clear midday light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x112",
+          "text": "二月，他在洛陽宮的儀鸞殿，見到了太宗。"
+        }
+      ]
+    },
+    {
+      "id": "first-words",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall empty throne draped in bright yellow silk with its silk sleeve-like drape lifted forward by a breeze toward the steps, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x113",
+          "text": "還記得開頭那個問題嗎？皇帝的第一句話是：",
+          "emotion": "回呼，停一拍"
+        },
+        {
+          "id": "x114",
+          "text": "師父，你走的時候，怎麼不說一聲？",
+          "emotion": "問句，帶一點埋怨"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall woven bamboo backpack frame bowing low at the foot of throne steps, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x115",
+          "text": "他回答：我遞了兩三次奏章，都沒獲准，只好自己走了。",
+          "emotion": "誠懇，低一點"
+        }
+      ]
+    },
+    {
+      "id": "answer-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands pressed together and bowed low over a polished stone palace floor, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x116",
+          "text": "擅自出國，是專擅的罪，我心裡很慚愧。"
+        }
+      ]
+    },
+    {
+      "id": "praise",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall empty throne draped in bright yellow silk in a sunlit hall with warm sunbeams falling across the steps, gentle afternoon sun",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x117",
+          "text": "太宗說：出家人能捨命求法，造福眾生，朕很讚許，也不必慚愧了。",
+          "emotion": "寬厚，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "praise-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, letting out a big sigh of relief with a hand on her chest, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x118",
+          "text": "還記得玉門關那筆帳嗎？照《慈恩傳》，就這一句，皇帝當面把它勾銷了。",
+          "emotion": "回呼，鬆一口氣"
+        }
+      ]
+    },
+    {
+      "id": "which-year",
+      "chapter": "他是哪一年出關的？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, frowning from one thick book to another, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x119",
+          "text": "赦免歸赦免，有一個數字，唐朝的書自己對不上：他是哪一年出關的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "which-year-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound book with a plain red cover, a thick bound book with a plain blue cover and a plain brown book stacked neatly on one side of a desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x120",
+          "text": "前面說的貞觀三年，《慈恩傳》、《續高僧傳》、《大唐西域記》都這樣寫。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "yuannian",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin scroll tied with green cord lying alone on the empty other side of a desk, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x121",
+          "text": "只有一篇掛在他名下、收在《廣弘明集》的奏章，寫的是貞觀元年。",
+          "emotion": "語氣一轉"
+        }
+      ]
+    },
+    {
+      "id": "old-history",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall stack of thick black-bound books on a palace desk, an ink brush resting on top, gentle afternoon sun",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x122",
+          "text": "那正史怎麼寫？",
+          "emotion": "問句"
+        },
+        {
+          "id": "x123",
+          "text": "《舊唐書》更乾脆，只寫「貞觀初」，連要抓他的事都沒提。"
+        }
+      ]
+    },
+    {
+      "id": "scholars",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shrugging with both hands up and a thoughtful little smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x124",
+          "text": "這兩個年份，後來的學者也爭論過。"
+        }
+      ]
+    },
+    {
+      "id": "scholars-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping a red book with one finger, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x125",
+          "text": "我覺得，紀錄多的那一邊比較站得住，但不敢替他定案。",
+          "emotion": "意見標成意見"
+        }
+      ]
+    },
+    {
+      "id": "close-q",
+      "chapter": "被撕掉的公文，和一匹老馬",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, folding her hands and looking at the viewer, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x126",
+          "text": "回到開頭的問題：他是偷渡出國的嗎？",
+          "emotion": "答案前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "close-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound book with a plain red cover closed on a desk beside a brush laid down, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x127",
+          "text": "他自己認了：沒拿到朝廷的許可，就私自出了國。",
+          "emotion": "答案，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "close-history",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick printed book with a plain orange cover and a rolled blank permit on one side of a desk, a torn blank paper order and an arrow on the other, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x128",
+          "text": "小說給了他一張文牒。史書裡，追著他的，卻是一份通緝公文和一支箭。"
+        }
+      ]
+    },
+    {
+      "id": "close-help",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands tearing a blank paper order in half beside a rough log bridge over a narrow river, a tall pointed felt hat on the bank, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x129",
+          "text": "那是誰幫他走過去的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "x130",
+          "text": "撕公文的州吏，還有搭橋的胡人。"
+        }
+      ]
+    },
+    {
+      "id": "close-help-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old thin red horse standing beside a hunting bow and a bulging leather waterskin on the sand, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x131",
+          "text": "還有送水的軍官，和一匹認得路的老馬。"
+        }
+      ]
+    },
+    {
+      "id": "close-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, smiling warmly and pointing one finger to the side, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x132",
+          "text": "我覺得，讓他走出去的，不是一張文牒，是那句：絕不往東走一步。",
+          "emotion": "收一句，放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed wooden document box with a red wax blob on the lid, a thick bound book with a plain red cover on top of it, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "x133",
+          "text": "所以這份檔案：私自出國這一頁，存檔；哪一年出發，未結。",
+          "emotion": "收尾，乾脆，分清楚兩頁"
+        }
+      ]
+    },
+    {
+      "id": "close-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at a kitchen table holding a torn sheet of blank paper in two hands, eyebrows raised, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "x134",
+          "text": "如果你是瓜州的李昌，那份公文，你會撕嗎？留言告訴我。",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, waving goodbye with one hand and a friendly smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "x135",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案，就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "x001",
+      "payoff": "x095",
+      "what": "結拜的御弟：其實是高昌王"
+    },
+    {
+      "setup": "x004",
+      "payoff": "x097",
+      "what": "史書裡，他出發時連文牒都沒有"
+    },
+    {
+      "setup": "x005",
+      "payoff": "x038",
+      "what": "追著他跑的那份公文"
+    },
+    {
+      "setup": "x006",
+      "payoff": "x066",
+      "what": "烽火台下的那支箭"
+    },
+    {
+      "setup": "x007",
+      "payoff": "x114",
+      "what": "皇帝的第一句話"
+    },
+    {
+      "setup": "x008",
+      "payoff": "x127",
+      "what": "他真的是偷渡出國的嗎"
+    },
+    {
+      "setup": "x017",
+      "payoff": "x018",
+      "what": "奏章送到皇帝面前了嗎"
+    },
+    {
+      "setup": "x021",
+      "payoff": "x022",
+      "what": "那他是怎麼走的"
+    },
+    {
+      "setup": "x029",
+      "payoff": "x030",
+      "what": "消息會傳到誰耳朵裡"
+    },
+    {
+      "setup": "x033",
+      "payoff": "x034",
+      "what": "他回去了嗎"
+    },
+    {
+      "setup": "x041",
+      "payoff": "x042",
+      "what": "這說的不就是你嗎"
+    },
+    {
+      "setup": "x046",
+      "payoff": "x053",
+      "what": "玉門關要怎麼過"
+    },
+    {
+      "setup": "x051",
+      "payoff": "x086",
+      "what": "認得路的老紅馬"
+    },
+    {
+      "setup": "x058",
+      "payoff": "x118",
+      "what": "出關這筆帳，後來有人算嗎"
+    },
+    {
+      "setup": "x063",
+      "payoff": "x089",
+      "what": "一個人走得出去嗎"
+    },
+    {
+      "setup": "x069",
+      "payoff": "x070",
+      "what": "他會跟著回敦煌嗎"
+    },
+    {
+      "setup": "x074",
+      "payoff": "x075",
+      "what": "最難的一段"
+    },
+    {
+      "setup": "x084",
+      "payoff": "x085",
+      "what": "這一次誰來救他"
+    },
+    {
+      "setup": "x092",
+      "payoff": "x093",
+      "what": "國王會不會放人"
+    },
+    {
+      "setup": "x100",
+      "payoff": "x101",
+      "what": "三年之約守住了嗎"
+    },
+    {
+      "setup": "x103",
+      "payoff": "x104",
+      "what": "最重要的八個字"
+    },
+    {
+      "setup": "x108",
+      "payoff": "x109",
+      "what": "皇帝會怎麼回"
+    },
+    {
+      "setup": "x119",
+      "payoff": "x121",
+      "what": "哪一年出關"
+    }
+  ],
+  "youtube": {
+    "title": "唐僧其實是偷渡出國的？貞觀三年那張被撕掉的通緝公文｜奇聞檔案局",
+    "description": "貞觀三年（629），瓜州的州吏李昌把一份涼州發來的通緝公文遞到一個年輕和尚面前：「有僧字玄奘，欲入西蕃，所在州縣宜嚴候捉。」和尚沒有否認。\n\n這一集照唐朝人自己寫的兩部傳記講：長安上表，《大慈恩寺三藏法師傳》寫「有詔不許」，同時代道宣的《續高僧傳》則說表根本沒有轉呈；涼州都督李大亮逼他回長安，他從此「晝伏夜行」；李昌當面撕掉公文；嚮導石槃陀帶他在玉門關上游十里繞過關門；烽火台的箭「幾中於膝」，水袋打翻，「寧可就西而死，豈歸東而生」；高昌王麴文泰跟他「約為兄弟」（《西遊記》寫成唐太宗）。回程他在于闐的表裡自己寫下「冒越憲章，私往天竺」，貞觀十九年（645）二月在洛陽宮見太宗，太宗問「師去何不相報？」，他答「乃輒私行，專擅之罪」，太宗說「亦不煩為愧」。沒拿到朝廷許可就出境：他自己認了，存檔。哪一年出發：多數唐代記載寫貞觀三年（629），只有一篇收在《廣弘明集》的表寫貞觀元年（627），未結。\n\n佛典依 CBETA（大正藏底本，含校勘記），正史、《資治通鑑》、《唐律疏議》、《西遊記》依殆知閣轉錄本；「有詔不許」的「詔」，大正藏底本字形作「瞾」。唐律是後來的律文，玄奘出關時的律文已不存。出處列在下方參考資料；只講旅程與文本的來歷，不評論信仰。\n\n本集插圖由 AI 生成；歷史人物不入畫，用物件代表（例如玄奘是一個竹編的行李架）。\n\n資料截至 2026-10-20（2026-10-25 照新規則重寫）",
+    "tags": [
+      "玄奘",
+      "唐三藏",
+      "偷渡",
+      "大慈恩寺三藏法師傳",
+      "續高僧傳",
+      "玉門關",
+      "高昌",
+      "唐太宗",
+      "西遊記",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "御弟？\n**通緝犯**",
+      "tag": "歷史名場面",
+      "sub": "史書裡沒有通關文牒",
+      "shot": "open-warrant"
+    }
+  },
+  "sources": [
+    {
+      "title": "CBETA T50 No. 2053《大唐大慈恩寺三藏法師傳》（唐 慧立本、彥悰箋；卷一、五、六）",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T50/T50n2053.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "CBETA T50 No. 2060《續高僧傳》（唐 道宣，卷四〈京大慈恩寺釋玄奘傳〉）",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T50/T50n2060.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "CBETA T51 No. 2087《大唐西域記》（卷首序、卷末記讚）",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T51/T51n2087.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "CBETA T52 No. 2103《廣弘明集》（唐 道宣，卷二十二〈請御制經序表〉）",
+      "url": "https://raw.githubusercontent.com/cbeta-org/xml-p5/master/T/T52/T52n2103.xml",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：唐律疏議（卷八 衛禁）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E6%94%BF%E4%B9%A6/%E5%94%90%E5%BE%8B%E7%96%8F%E8%AE%AE.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：舊唐書（卷三 太宗紀下、卷一九一〈玄奘傳〉）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E6%97%A7%E5%94%90%E4%B9%A6.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：西遊記（第十二、十三、九十六回）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E9%9B%86%E8%97%8F/%E5%B0%8F%E8%AF%B4/%E8%A5%BF%E6%B8%B8%E8%AE%B0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": []
+}

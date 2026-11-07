@@ -1,0 +1,2584 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s14-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友講這份檔案：開場兩句對觀眾講、帶一點挑釁，「史實」加重；岩殿山那章放慢誠懇，「一個字都沒有」一字一字；碑那章平實莊重，「同時相會」放慢停一拍；船夫那章像聽老人講古；小倉兩章加快有戲，睡過頭帶點好笑，小次郎那句喊出來；熊本那章帶點懷疑，「原文都沒有」乾脆；小說家那章輕快，「剛剛好」短而停一拍；結尾乾脆。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-legend",
+      "chapter": "巖流島上的兩個多小時",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a grinning man in a hoodie on a sofa in a sunny living room, swinging a toy wooden sword over his head, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv101",
+          "text": "你一定聽過：日本劍客宮本武藏，在一座小島上跟人決鬥。",
+          "emotion": "對觀眾說，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a very long sword in a red lacquered scabbard lying alone on an empty pebbly beach of a small green island, calm sea under a pale morning sky",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv102",
+          "text": "對手佐佐木小次郎，等了兩個多小時。"
+        }
+      ]
+    },
+    {
+      "id": "open-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small wooden rowing boat with a large plain wooden sword lying across its seat drifting toward a pebbly beach, calm blue sea, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv103",
+          "text": "武藏才划船來，木刀是船槳削的。"
+        }
+      ]
+    },
+    {
+      "id": "open-choice",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass balance scale on a wooden table, a large plain wooden sword in one pan and a small hourglass in the other, the pans swaying, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv104",
+          "text": "這兩個多小時，決定了你心裡的武藏是兵法家，還是耍小手段的。",
+          "emotion": "放慢，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "open-statue",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two stone plinths on a seaside lawn under a mild overcast sky, one holding a tall shape wrapped in white cloth tied with a red ribbon, a calm sea behind",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv105",
+          "text": "二〇〇三年，島上武藏的銅像，比小次郎的晚了四個月揭幕。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "open-brochure",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful tour guide in a straw hat on a seaside lawn, laughing with one hand over her mouth, a calm sea behind her, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv106",
+          "text": "導覽開玩笑：也許是配合遲到的史實吧。",
+          "emotion": "帶點笑意"
+        }
+      ]
+    },
+    {
+      "id": "open-stone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall smooth blank grey stone slab standing in a quiet castle-town yard, a few fallen pine needles around its base, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv107",
+          "text": "可是你想不到，最早提到這一戰的，是他死後九年兒子立的碑。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-nameless",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stonemason's chisel and mallet resting at the foot of a tall blank stone slab, its smooth grey surface clean and empty, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv108",
+          "text": "碑上連小次郎的名字都沒有，更沒寫誰遲到。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a long wooden office table with several plain blank booklets laid out side by side in a row, a pair of round spectacles resting beside them, afternoon window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv109",
+          "text": "更怪的是，明治四十二年，熊本有人把各種說法排上一張桌子。",
+          "emotion": "升級，收著"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning forward with a finger on her chin, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv110",
+          "text": "今天我們就來聊聊：武藏那天，到底是不是故意遲到的？",
+          "emotion": "承諾句，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "gorin-first",
+      "chapter": "寬永二十年，武藏自己數戰績",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one finger with a calm smile, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv201",
+          "text": "這份檔案，把口供一份一份翻給你。先從最該知道答案的人開始：武藏自己。",
+          "emotion": "平實，像翻開卷宗"
+        }
+      ]
+    },
+    {
+      "id": "gorin-climb",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rocky green mountainside with a shallow cave opening among pine trees, a narrow stone path winding up to it, pale morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv202",
+          "text": "寬永二十年十月，六十歲的武藏，登上了肥後的岩殿山。"
+        }
+      ]
+    },
+    {
+      "id": "gorin-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long blank paper scroll unrolled on a low wooden desk inside a rocky cave mouth, an ink stone and a brush beside it, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv203",
+          "text": "他在這裡，開始寫一本兵法書，叫《五輪書》。"
+        }
+      ]
+    },
+    {
+      "id": "gorin-brush",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand lifting a ink brush from an ink stone above a blank paper scroll, a rough stone cave wall behind, soft pale morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv204",
+          "text": "序的最後寫著：十月十日夜裡，寅時，他拿起了筆。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "gorin-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, counting on her fingers with a thoughtful look, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv205",
+          "text": "他在序裡，數了自己一輩子的戰績。"
+        }
+      ]
+    },
+    {
+      "id": "gorin-young",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small child-sized wooden practice sword leaning against a full-sized one on a dojo floor, sunlight falling across the wooden boards",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv206",
+          "text": "十三歲第一次比試就贏，十六歲又贏了一場。"
+        }
+      ]
+    },
+    {
+      "id": "gorin-sixty",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long wooden rack along a dojo wall filled with many wooden practice swords standing side by side, every slot full, gentle afternoon sun",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv207",
+          "text": "一生比了六十多次，一次都沒輸，全在二十八、九歲以前。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "gorin-remember",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping her temple with one finger and smiling, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv208",
+          "text": "先記住這個數字。等一下，它還會再出現。",
+          "emotion": "前向鉤子，放慢"
+        }
+      ]
+    },
+    {
+      "id": "gorin-29",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed very thick plain-covered book lying on a wooden table beside a large plain wooden sword, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv209",
+          "text": "那巖流島呢？照後來的一本書，那一年他二十九歲，剛好落在這段的尾巴。",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "gorin-nothing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long blank paper scroll unrolled across a low desk in a rocky cave mouth, the brush resting untouched on its ink stone, pale morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv210",
+          "text": "可是在《五輪書》裡，岩流、小次郎、船島，一個字都沒有。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "gorin-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious boy sitting cross-legged on a tatami floor, holding a blank paper scroll open in both hands and frowning at it, mild clear light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv211",
+          "text": "你想想：第一次比試的對手他記得，最有名的這一場，他不寫。",
+          "emotion": "對觀眾，誠懇"
+        }
+      ]
+    },
+    {
+      "id": "gorin-silent",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing one finger to her lips with a gentle look, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv212",
+          "text": "我不替他猜為什麼。最該知道答案的人，什麼都沒留下。",
+          "emotion": "誠懇"
+        }
+      ]
+    },
+    {
+      "id": "gorin-copies",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain bound book being passed from one pair of hands to another over a low wooden table, two more plain books stacked nearby, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv213",
+          "text": "還有：原稿據說早就燒了，我們查的是弟子一路傳抄下來的本子。"
+        }
+      ]
+    },
+    {
+      "id": "gorin-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, glancing over her shoulder with a curious smile, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv214",
+          "text": "那第二個開口的證人，又會怎麼說？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "stele-raise",
+      "chapter": "承應三年，兒子立的碑",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall smooth blank stone slab standing beside a castle wall with white plaster and dark roof tiles, pine trees around it, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv301",
+          "text": "武藏死後九年，承應三年四月，小倉城下立起了一塊碑。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "stele-iori",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands wiping a tall smooth blank stone slab with a soft white cloth, pine needles on the ground below, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv302",
+          "text": "立碑的人，是武藏的養子宮本伊織。"
+        }
+      ]
+    },
+    {
+      "id": "stele-filial",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small bunch of white chrysanthemums and a bowl of fresh rice offered at the foot of a tall blank stone slab, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv303",
+          "text": "碑上自己說：這是孝子立的，要讓後人看見。"
+        }
+      ]
+    },
+    {
+      "id": "stele-witness",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one eyebrow with a knowing half smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv304",
+          "text": "所以最早的這位證人，也是最想替他說話的人。碑上會怎麼誇他？",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "stele-sixty",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick twisted red and white rope tied around a tall smooth blank stone slab, a few pine branches leaning on it, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv305",
+          "text": "碑上先數他的比試：一場都沒輸過。"
+        }
+      ]
+    },
+    {
+      "id": "stele-match",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing her palms together with a satisfied smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv306",
+          "text": "還記得《五輪書》那個數字嗎？兒子刻的，跟他自己寫的，對得上。",
+          "emotion": "回呼，親近"
+        }
+      ]
+    },
+    {
+      "id": "stele-ganryu",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very long sword in a red lacquered scabbard resting on a wooden stand in a quiet tatami room, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv307",
+          "text": "對手呢？碑上沒有小次郎，只叫他「岩流」，一個兵法高手。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "stele-blade",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long bare steel sword and a large plain wooden sword lying crossed on a straw mat, gentle afternoon sun",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv308",
+          "text": "是岩流要求用真刀比。武藏回他：你用刀，我用木頭。",
+          "emotion": "加重"
+        }
+      ]
+    },
+    {
+      "id": "stele-island",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small flat green island with a pebbly shore in a calm strait between two hilly coasts, pale morning sky",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv309",
+          "text": "然後，兩個人上了島。碑上怎麼寫？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "stele-same",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two small wooden rowing boats touching the same pebbly shore side by side, calm sea, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv310",
+          "text": "碑上寫：兩雄同時相會。兩個人，同時到。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "stele-nolate",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand resting flat on a tall smooth blank stone surface, the grey stone clean and empty, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv311",
+          "text": "最早的這塊碑，沒有一個字提到遲到。"
+        }
+      ]
+    },
+    {
+      "id": "stele-maybe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two pairs of straw sandals left side by side on a pebbly beach, one pair set a little ahead of the other, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv312",
+          "text": "不過「同時」，也可以只是雙雙到場，不一定準到時刻。",
+          "emotion": "輕輕的"
+        }
+      ]
+    },
+    {
+      "id": "stele-son",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head with a small wry smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv313",
+          "text": "我讀到這裡想的是：就算父親真的晚到，兒子大概也不會刻上去。",
+          "emotion": "像跟朋友說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "stele-lightning",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large plain wooden sword lying on a pebbly beach under a bright daytime sky split by a white lightning bolt, calm sea beyond",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv314",
+          "text": "勝負，碑上寫得很短：木刀一擊，閃電都比它慢。"
+        }
+      ]
+    },
+    {
+      "id": "stele-rename",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small flat green island in a calm strait, a very long sword in a red lacquered scabbard planted upright on its shore, pale morning sky",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv315",
+          "text": "從此，這座船島，被人叫成了岩流島。"
+        }
+      ]
+    },
+    {
+      "id": "stele-only",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pebbly beach where many sets of footprints crowd the wet sand around two small rowing boats, calm sea, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv316",
+          "text": "可是那天在島上的，只有他們兩個嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "numata-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain bound family book tied with a red cord on a low lacquered desk in a quiet tatami room, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv317",
+          "text": "另一份紀錄，是門司城代沼田家的家記。"
+        }
+      ]
+    },
+    {
+      "id": "numata-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a closed plain bound book with a pleased smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv318",
+          "text": "我們查到，「小次郎」這個名字，最早就出現在這裡。"
+        }
+      ]
+    },
+    {
+      "id": "numata-quarrel",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two rows of wooden practice swords facing each other across a dojo floor, two training jackets tossed on the boards between them, mild clear light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv319",
+          "text": "起因，是兩邊的弟子在吵，誰的劍法比較強。"
+        }
+      ]
+    },
+    {
+      "id": "numata-more",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of several long wooden staffs lying crossways on a pebbly beach around a large plain wooden sword, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv320",
+          "text": "它還說，最後動手的不只武藏一個人。",
+          "emotion": "放低"
+        }
+      ]
+    },
+    {
+      "id": "numata-dispute",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass balance scale on a wooden table swaying unevenly with a plain bound book in each pan, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv321",
+          "text": "這段只有轉引，到今天還有爭議。",
+          "emotion": "一句帶過"
+        }
+      ]
+    },
+    {
+      "id": "numata-where",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, scratching her head with a bewildered smile, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv322",
+          "text": "這就怪了。碑上沒寫遲到，那遲到的故事，又是從哪裡來的？",
+          "emotion": "自己的反應，問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "merchant-elder",
+      "chapter": "正德二年，商人說起那個船夫",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed lacquered wooden box with a silk cord tied in a neat bow on a tatami floor, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv401",
+          "text": "答案在一本後來的書裡。書裡先交代：這件事當年是家老興長經手的；",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "merchant-boatman",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a weathered wooden oar resting across an old rowing boat pulled up on a pebbly shore, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv402",
+          "text": "他們家一直有傳下來。可是細節，大多來自另一條線：一個划船的老人。"
+        }
+      ]
+    },
+    {
+      "id": "merchant-spring",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a traveller's straw hat and a wrapped cloth bundle resting on a bench at a roadside teahouse among blooming cherry trees, soft spring sunshine",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv403",
+          "text": "正德二年春天，決鬥整整一百年後，一個商人從小倉來到肥後的八代。",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "merchant-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands pouring tea into a small cup set beside a traveller's straw hat on a tatami floor, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv404",
+          "text": "一個叫豐田正剛的武士拉著他問：巖流島那天，到底怎麼回事？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "merchant-young",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old teapot and several small cups arranged in a circle on a wooden veranda, cherry petals drifting past, mild afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv405",
+          "text": "正剛年輕時，就聽過武藏晚年的弟子講老師的事。"
+        }
+      ]
+    },
+    {
+      "id": "merchant-kin",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old harbour wholesale shop front with a plain indigo curtain, stacked plain grey crates and rice bales, small boats moored beyond, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv406",
+          "text": "商人說，他親戚在下關開批發行，當年武藏就住在那裡。"
+        }
+      ]
+    },
+    {
+      "id": "merchant-old",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of wrinkled old hands resting on the handle of a worn wooden oar, a quiet harbour behind, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv407",
+          "text": "家裡有個老人，就是那天替武藏划船的人。這種話，能信嗎？"
+        }
+      ]
+    },
+    {
+      "id": "merchant-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a traveller's straw hat and cloth bundle on a teahouse bench beside a tall stack of empty tea cups, cherry trees behind, gentle afternoon sun",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv408",
+          "text": "書裡說，商人來過好幾次，每次講的，一個字都不差。",
+          "emotion": "問句，再答"
+        }
+      ]
+    },
+    {
+      "id": "merchant-uneasy",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging her own arms with a small shiver, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv409",
+          "text": "每次都一個字不差。我讀到這裡反而有點毛，你大概也會。",
+          "emotion": "像跟朋友說自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "toyota-three",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three ink brushes from thick to slim laid side by side on a low wooden desk beside a blank sheet of paper, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv410",
+          "text": "豐田家祖孫三代，把這些話寫成了書。"
+        }
+      ]
+    },
+    {
+      "id": "toyota-names",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered bound book being handed from an older pair of hands to a younger pair over a low desk, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv411",
+          "text": "寶曆五年叫《武公傳》；安永五年，孫子改名叫《二天記》。"
+        }
+      ]
+    },
+    {
+      "id": "toyota-164",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall old pine tree with a thick gnarled trunk on a quiet hillside, a tiny seedling growing at its base, pale morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv412",
+          "text": "從那一天到這本書，一百六十四年。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "toyota-admit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three straw hats mixed up on a row of wooden pegs, one hat hanging on a sword hilt by mistake, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv413",
+          "text": "問題來了：書的凡例自己先認了，武藏的說法很多，常常張冠李戴。"
+        }
+      ]
+    },
+    {
+      "id": "toyota-school",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a large plain wooden sword hanging on a dojo wall above a smaller practice sword, sunlight falling across the boards",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv414",
+          "text": "寫書的這一家，學的就是武藏傳下來的劍法。"
+        }
+      ]
+    },
+    {
+      "id": "toyota-29",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pointing to one side with a bright smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv415",
+          "text": "還記得前面那本說他二十九歲的書嗎？就是它。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "toyota-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered book lying half open on a wooden table, its blank pages lifting in a light breeze, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv416",
+          "text": "那他們筆下的那一天，是什麼樣子？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "kokura-arrive",
+      "chapter": "比試前一晚，武藏不見了",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dusty road leading to a castle town with white walls and dark tiled roofs, a large plain wooden sword resting on a roadside stone, soft spring sunshine",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv501",
+          "text": "書裡寫，慶長十七年四月，武藏從京都來到小倉。"
+        }
+      ]
+    },
+    {
+      "id": "kokura-kojiro",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very long sword in a red lacquered scabbard on a wooden rack in a bright dojo, polished floorboards below, mild clear light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv502",
+          "text": "對手小次郎，書裡說是越前人，自創岩流，藩主細川忠興留他在小倉教劍。"
+        }
+      ]
+    },
+    {
+      "id": "kokura-set",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded plain white letter tied with a red cord resting on a black lacquered tray on a tatami floor, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv503",
+          "text": "家老約武藏：明天辰時一開始，在島上跟岩流小次郎比試。"
+        }
+      ]
+    },
+    {
+      "id": "kokura-hour",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sleepy woman in pajamas stretching her arms beside a bedroom window at sunrise, a mug on the sill, pale morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv504",
+          "text": "辰時，換算成你的錶，大概是早上七點到九點。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "kokura-officials",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pebbly island shore fenced off with tall bamboo poles and taut ropes, a rack of long spears standing by the water, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv505",
+          "text": "島上，還派了檢使看守，號令很嚴。"
+        }
+      ]
+    },
+    {
+      "id": "night-gone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty tatami room with a neatly folded futon and a bare sword rack, the sliding door left wide open, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv506",
+          "text": "沒想到，當天晚上，武藏不見了。他去了哪裡？",
+          "emotion": "轉折，壓低"
+        }
+      ]
+    },
+    {
+      "id": "night-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious townswoman in a simple kimono peeking around a wooden gate with wide eyes, a quiet street behind her, soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv507",
+          "text": "換成你是城裡的人，比試前一晚主角不見了，你會怎麼想？",
+          "emotion": "問句，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "night-rumor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two gossiping townsmen in simple kimono whispering behind their hands at a market stall, baskets of radishes beside them, gentle afternoon sun",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv508",
+          "text": "城裡開始傳說：武藏怕了，逃走了。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "night-found",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of straw sandals set neatly at the entrance of an old harbour wholesale shop, stacked plain grey crates inside, mild clear light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv509",
+          "text": "後來，在下關找到了他，就在那個船夫待的批發行裡。"
+        }
+      ]
+    },
+    {
+      "id": "letter-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a fine lacquered boat with red railings moored empty at a wooden pier, calm water around it, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv510",
+          "text": "書裡收了一封據說是他寫的信：家老準備的船，他不坐，要自己搭船去。"
+        }
+      ]
+    },
+    {
+      "id": "letter-reason",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a large fine boat model and a smaller plainer boat model sitting side by side on a lacquered shelf, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv511",
+          "text": "理由很體面：小次郎坐藩主的船，我坐家老的船，對主人不好交代。"
+        }
+      ]
+    },
+    {
+      "id": "letter-elder",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded white letter lying open with its paper blank on a lacquered tray beside a small hourglass, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv512",
+          "text": "換成你是家老，最想知道的是：他到底幾點過去？",
+          "emotion": "問句，帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "letter-good",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shrugging with both palms up and a playful smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv513",
+          "text": "信裡只有一句：到了適當的時候，我就過去。",
+          "emotion": "放慢，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "day-shore",
+      "chapter": "隔天巳時，小次郎在水邊等",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty pebbly island shore under a bright high morning sky, a calm sea stretching away, clear morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv601",
+          "text": "第二天，約好的時刻快到了。武藏呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "day-sleep",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rumpled futon in a sunny tatami room, a large plain wooden sword lying beside the pillow, bright sunshine streaming in",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv602",
+          "text": "太陽都升得老高了，他還躺在那裡睡。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "day-runner",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a breathless runner in a short coat and straw sandals knocking on a wooden sliding door, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv603",
+          "text": "小倉的信差來催了兩次。他急了嗎？"
+        }
+      ]
+    },
+    {
+      "id": "day-breakfast",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty rice bowl with chopsticks and a wooden wash basin with a folded towel on a tatami floor, bright morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv604",
+          "text": "沒有。他回說馬上去，然後洗了臉，吃完飯。"
+        }
+      ]
+    },
+    {
+      "id": "day-oar-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small wooden practice sword with a curious smile, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv605",
+          "text": "還記得碑上那把木頭的武器嗎？在這本書裡，它有了來歷。",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "day-carve",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands carving a long wooden oar into a large wooden sword with a small knife on a pebbly shore, wood shavings around, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv606",
+          "text": "他跟旅店主人要了一支槳，在岸上削成一把大木刀。"
+        }
+      ]
+    },
+    {
+      "id": "day-late",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small wooden rowing boat with a large wooden sword across its seat reaching a pebbly island shore under a bright late-morning sky",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv607",
+          "text": "到島上時，已經是巳時以後。晚了多久？"
+        }
+      ]
+    },
+    {
+      "id": "day-hourglass",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an hourglass standing on a flat beach rock with almost all of its sand run into the bottom, a calm sea behind, bright sunshine",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv608",
+          "text": "開頭說的那兩個多小時，就是從這裡算出來的。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "day-shout",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very long sword in a red lacquered scabbard stuck upright in wet sand at the water's edge, small waves splashing hard against it, clear late-morning sun",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv609",
+          "text": "等在島上的小次郎呢？他在水邊大喊：我比約好的先到，你遲到了嗎！",
+          "emotion": "加重"
+        }
+      ]
+    },
+    {
+      "id": "day-scabbard",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a red lacquered scabbard splashing into calm blue water just off a pebbly shore, droplets flying, bright clear light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv610",
+          "text": "他拔出三尺多長的刀，把刀鞘丟進了海裡。"
+        }
+      ]
+    },
+    {
+      "id": "day-smile",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of bare feet standing in clear shallow water beside the tip of a large wooden sword, gentle ripples around, bright sunshine",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv611",
+          "text": "武藏站在淺淺的水裡，笑著對他說："
+        }
+      ]
+    },
+    {
+      "id": "day-youlost",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty red lacquered scabbard floating away on calm blue water, a few ripples behind it, clear late-morning sun",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv612",
+          "text": "小次郎，你輸了；贏的人，怎麼會丟掉刀鞘？",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "day-headband",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cut white cloth headband drifting down onto a pebbly beach, its two loose ends fluttering, bright clear light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv613",
+          "text": "書裡說，小次郎那一刀，砍斷了武藏的頭巾。只差這麼一點。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "day-bow",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small wooden rowing boat with a large wooden sword across its seat pulling away from a pebbly island shore, calm sea, bright sunshine",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv614",
+          "text": "勝負分了：小次郎敗了。武藏向檢使行禮，搭原來的船回下關。",
+          "emotion": "低沉，一句帶過"
+        }
+      ]
+    },
+    {
+      "id": "day-fast",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a grumbling townsman in a simple kimono with his arms folded on a harbour pier, a small boat leaving behind him, soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv615",
+          "text": "當時就有人嫌武藏走得太快；他回：那天號令那麼嚴，你想也知道。"
+        }
+      ]
+    },
+    {
+      "id": "day-fullname",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very long sword in a red lacquered scabbard laid on a white cloth beside a tall blank stone slab, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv616",
+          "text": "碑上沒名字的那個對手，到書末有了全名：佐佐木小次郎。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "day-hearsay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cupped hand held against a paper shoji screen as if listening, soft sunshine falling through the screen",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv617",
+          "text": "這時才十八歲。書上寫的是：聽說。"
+        }
+      ]
+    },
+    {
+      "id": "day-nowhy",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leafing through a thick plain book with a small frown, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv618",
+          "text": "這麼仔細的一段，你注意到了嗎？偏偏沒寫一件事：他為什麼晚到。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "day-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding a ink brush above a blank sheet of paper on a low desk, a drop of ink about to fall, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv619",
+          "text": "那「故意」這兩個字，最早是在哪裡寫下來的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "table-callback",
+      "chapter": "明治四十二年，熊本那張桌子",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a long wooden office table covered with plain blank booklets in neat rows, a pair of round spectacles resting on top, afternoon window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv701",
+          "text": "在它寫下來之前，開頭那張桌子先動了手。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "table-society",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old Western-style office with tall windows, a long wooden table and a bowler hat on a coat stand, afternoon window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv702",
+          "text": "熊本的宮本武藏遺蹟顯彰會，正在編一本《宮本武藏》。"
+        }
+      ]
+    },
+    {
+      "id": "table-reject",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand pushing a plain bound book tied with a red cord off to the edge of a long wooden table, afternoon window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv703",
+          "text": "沼田家說最後動手的不只一個人？編者說：不可信。"
+        }
+      ]
+    },
+    {
+      "id": "table-officials",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, wagging one finger with a mock-stern look, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv704",
+          "text": "還記得島上那些檢使嗎？編者的理由是：號令那麼嚴，不可能。",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "table-circle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small fluffy puppy chasing its own tail in a circle on a wooden office floor, afternoon window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv705",
+          "text": "可是這個理由，本身就出自《二天記》，就是武藏回人家的那一句。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "table-follow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered book set alone in the middle of a long table, the other booklets pushed to the edges, afternoon window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv706",
+          "text": "最後他們寫：現在，就照《二天記》。可是，他們全信嗎？",
+          "emotion": "放慢，問句"
+        }
+      ]
+    },
+    {
+      "id": "table-age",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wobbly wooden stool with one short leg tipping sideways on an office floor, afternoon window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv707",
+          "text": "書末那句「聽說十八歲」呢？編者自己就說：《二天記》寫的年紀，很靠不住。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "table-stage",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty kabuki stage with a painted pine tree backdrop, a long sword in a red lacquered scabbard on a stand at centre, gentle afternoon sun",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv708",
+          "text": "他還補了一句：江戶時代的戲裡，小次郎反而是年長的那個。"
+        }
+      ]
+    },
+    {
+      "id": "table-grave",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty grassy clearing on an island with tall grass and a single shovel stuck in the ground, calm sea beyond, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv709",
+          "text": "編者還親自渡海，到島上找小次郎的墓，什麼痕跡都沒找到。"
+        }
+      ]
+    },
+    {
+      "id": "table-stone",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall plain grey stone monument standing in the middle of a grassy island among pine trees, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv710",
+          "text": "隔年，島中央立起一塊「佐佐木巖流之碑」；你今天上島看到的，就是它。"
+        }
+      ]
+    },
+    {
+      "id": "table-added",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand tucking a few extra blank sheets into a thick plain-covered book on a wooden table, afternoon window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv711",
+          "text": "更怪的是，轉述《二天記》那一段時，他們多寫了幾句。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "table-already",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pebbly island shore with a long sword in a red lacquered scabbard planted upright in the sand, an empty sea beyond, early morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv712",
+          "text": "信差來催，這本書寫：小次郎早就到了。"
+        }
+      ]
+    },
+    {
+      "id": "table-slowly",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smooth silk lined kimono jacket hanging on a wooden stand in a sunny tatami room, a big wooden sword leaning beside it, mild clear light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv713",
+          "text": "武藏呢？慢慢地起來，從容地站起身，穿上絲綢的夾衣。",
+          "emotion": "放慢，帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "table-worse",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of choppy waves slapping hard against a long sword in a red lacquered scabbard stuck in the sand, spray flying everywhere, clear late-morning sun",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv714",
+          "text": "小次郎那句「你遲到了嗎」，也變成了：你違約，也太過分了。",
+          "emotion": "回呼，加重"
+        }
+      ]
+    },
+    {
+      "id": "table-notin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered book lying open on a wooden table, both of its pages clean and blank, afternoon window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv715",
+          "text": "這幾句話，《二天記》的原文都沒有。",
+          "emotion": "短，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "table-attitude",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, folding her arms with a sly smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv716",
+          "text": "我們覺得，到這裡，晚到已經開始像一種態度了。語氣有了，可是動機呢？",
+          "emotion": "像跟朋友說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "naoki-first",
+      "chapter": "小說家替他寫出了動機",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin stack of blank manuscript sheets and a fountain pen on a wooden writing desk beside a window, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv801",
+          "text": "最早替他寫出動機的，我們找到的是一個短篇小說。"
+        }
+      ]
+    },
+    {
+      "id": "naoki-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fountain pen resting on a closed blank notebook beside a small vase of white chrysanthemums, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv802",
+          "text": "作者直木三十五，一九三四年就過世了。"
+        }
+      ]
+    },
+    {
+      "id": "naoki-trust",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered book propped open on a writing desk beside a fountain pen and a stack of blank sheets, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv803",
+          "text": "他照《二天記》寫，說那是一本可以信的書。"
+        }
+      ]
+    },
+    {
+      "id": "naoki-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rumpled futon in a quiet tatami room with a go board set up beside the pillow, black and white stones in mid-game, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv804",
+          "text": "他寫，武藏睡覺的時候，好像一直在想怎麼對付小次郎。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "naoki-critic",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long sword in a red lacquered scabbard slumped wearily against a beach rock beside an hourglass with its sand run out, bright clear light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv805",
+          "text": "接著，他引了一句已經有人在說的批評：故意拖時間，讓對手等到累，是卑鄙的計謀。"
+        }
+      ]
+    },
+    {
+      "id": "naoki-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shaking her head with an apologetic smile, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv806",
+          "text": "這句是誰說的、多早，我們還沒查到，直木也說可能是後人的話。那他站哪一邊？"
+        }
+      ]
+    },
+    {
+      "id": "naoki-defend",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a large plain wooden sword leaning calmly by a stove where a small iron kettle is boiling over, steam rising, gentle afternoon sun",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv807",
+          "text": "他替武藏辯護：大部分比試，武藏都會晚一點到，故意讓對手焦躁。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "naoki-both",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass balance scale on a wooden desk with a red tomato in one pan and a bouquet of flowers in the other, the two pans perfectly level, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv808",
+          "text": "罵的人說是卑鄙，辯的人說是兵法；兩邊說的，都是故意。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "naoki-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, nodding firmly with one hand on a thin stack of sheets, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv809",
+          "text": "所以前面那個問題，答案是：寫成字的「故意」，我們找到最早的就是這一篇。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "yoshi-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a delivery bicycle loaded with bundles of folded plain grey paper parked by a wooden house gate, soft pale morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv810",
+          "text": "直木過世一年多後，吉川英治的《宮本武藏》在朝日新聞連載，一連四年。"
+        }
+      ]
+    },
+    {
+      "id": "yoshi-refs",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall stack of plain thick books on a writing desk, the sturdy wide book at the bottom holding up all the rest, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv811",
+          "text": "吉川列的參考書，排第一的就是熊本那本。那他怎麼看《二天記》？"
+        }
+      ]
+    },
+    {
+      "id": "yoshi-essay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered book resting on a red velvet cushion on a writing desk, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv812",
+          "text": "他在隨筆裡說，最可信的就是它。",
+          "emotion": "問句，再答"
+        }
+      ]
+    },
+    {
+      "id": "yoshi-stone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall blank stone slab with a thin crack running down its side, a few weeds growing at its base, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv813",
+          "text": "連那塊碑他都嫌：離武藏最近，卻也有錯，文獻價值很低。"
+        }
+      ]
+    },
+    {
+      "id": "yoshi-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an hourglass lying on its side on a pebbly beach rock with its sand stopped, a large wooden sword leaning beside it, bright sunshine",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv814",
+          "text": "又說，武藏對付小次郎的第一招，就是故意不守約定的時間。",
+          "emotion": "加重"
+        }
+      ]
+    },
+    {
+      "id": "yoshi-oar",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands whittling a broken split oar with a small knife inside a rocking wooden boat, wood shavings on the planks, mild clear light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv815",
+          "text": "小說裡，木刀換了來歷：是船底撿到的破槳，坐在船上削的。"
+        }
+      ]
+    },
+    {
+      "id": "yoshi-boatman",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small wooden rowing boat gliding across a calm strait toward a distant flat island, a large wooden sword across its seat, bright late-morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv816",
+          "text": "船夫提醒他：時間，已經晚很久了。武藏怎麼回？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "yoshi-justright",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning in with one finger raised as if sharing a secret, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv817",
+          "text": "還記得信裡的「適當的時候」嗎？到了小說，他只回一句：剛剛好。",
+          "emotion": "語氣親近，揭曉，短"
+        }
+      ]
+    },
+    {
+      "id": "yoshi-accuse",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long sword in a red lacquered scabbard aimed sharply at a large wooden sword lying across a pebbly beach, clear late-morning sun",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv818",
+          "text": "小次郎則當面指控他：每一次，都故意不守時。"
+        }
+      ]
+    },
+    {
+      "id": "famous",
+      "chapter": "後來才長大的故事",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a row of wooden houses along a quiet street, a bundle of folded plain grey paper on every doorstep, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv901",
+          "text": "這部小說，讓「故意遲到」變成了家喻戶曉的事。"
+        }
+      ]
+    },
+    {
+      "id": "classic",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered book displayed in a glass museum case on a velvet stand, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv902",
+          "text": "後來有人對吉川說：你的宮本武藏，已經是古典了。"
+        }
+      ]
+    },
+    {
+      "id": "you-heard",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling man in a hoodie on a sofa holding a toy wooden sword across his knees, a dark blank TV screen behind him, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv903",
+          "text": "你第一次聽到的那個版本，大概就是從這裡傳下來的。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "brochure-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a folded blank leaflet with a grin, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv904",
+          "text": "故事到這裡還沒結束。還記得開頭，島上那份導覽嗎？",
+          "emotion": "語氣親近，問句"
+        }
+      ]
+    },
+    {
+      "id": "island-small",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tiny flat green islet in a calm strait, a few seabirds circling above it, pale morning sky",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv905",
+          "text": "它還寫了：決鬥那年的島，只有今天的六分之一大。"
+        }
+      ]
+    },
+    {
+      "id": "island-grew",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, spreading her arms wide with a playful smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv906",
+          "text": "那這個故事呢？我們覺得，它也跟島一樣，是後來才長大的。",
+          "emotion": "問句，像跟朋友說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, nodding with a calm smile, her hands clasped in front of her, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv907",
+          "text": "所以「故意遲到」可以結案：一手的紀錄都沒寫動機，那是後來的讀法。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "rewind",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two small wooden rowing boats on a pebbly shore, one already beached and one just arriving, calm sea, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv908",
+          "text": "碑上寫同時到，船夫那一支寫晚到。可是，誰說了為什麼？"
+        }
+      ]
+    },
+    {
+      "id": "silent-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long blank paper scroll on a low desk in a rocky cave mouth, the brush laid neatly across its ink stone, pale morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "mv909",
+          "text": "沒有人。最該知道答案的武藏自己，在《五輪書》裡一個字都沒寫。",
+          "emotion": "回呼，放慢"
+        }
+      ]
+    },
+    {
+      "id": "filed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand tying a thick plain folder shut with a red cord on a wooden desk, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mv910",
+          "text": "至於那天島上到底發生了什麼，到今天還是各說各話。這份檔案，存檔。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "outro-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning toward us with one hand cupped behind her ear, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv911",
+          "text": "你第一次聽到武藏故意遲到，是在哪一部漫畫、哪一齣戲？",
+          "emotion": "問句上揚，像在聊天"
+        }
+      ]
+    },
+    {
+      "id": "outro-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, waving goodbye with a warm smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "mv912",
+          "text": "留言告訴我。這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "mv104",
+      "payoff": "mv608",
+      "what": "開頭那兩個多小時，是哪本書算出來的"
+    },
+    {
+      "setup": "mv108",
+      "payoff": "mv616",
+      "what": "碑上沒有的那個名字"
+    },
+    {
+      "setup": "mv109",
+      "payoff": "mv701",
+      "what": "熊本那張桌子上選了哪一本"
+    },
+    {
+      "setup": "mv106",
+      "payoff": "mv904",
+      "what": "島上的官方導覽"
+    },
+    {
+      "setup": "mv208",
+      "payoff": "mv306",
+      "what": "《五輪書》裡那六十多場"
+    },
+    {
+      "setup": "mv209",
+      "payoff": "mv415",
+      "what": "說他那年二十九歲的那本後來的書"
+    },
+    {
+      "setup": "mv212",
+      "payoff": "mv909",
+      "what": "最該知道答案的人，什麼都沒留下"
+    },
+    {
+      "setup": "mv214",
+      "payoff": "mv301",
+      "what": "第二個開口的證人"
+    },
+    {
+      "setup": "mv308",
+      "payoff": "mv605",
+      "what": "碑上那把木頭的武器"
+    },
+    {
+      "setup": "mv316",
+      "payoff": "mv317",
+      "what": "島上只有他們兩個嗎"
+    },
+    {
+      "setup": "mv320",
+      "payoff": "mv703",
+      "what": "沼田家說動手的不只一個人"
+    },
+    {
+      "setup": "mv322",
+      "payoff": "mv401",
+      "what": "遲到的故事從哪裡來"
+    },
+    {
+      "setup": "mv416",
+      "payoff": "mv501",
+      "what": "他們筆下的那一天"
+    },
+    {
+      "setup": "mv505",
+      "payoff": "mv704",
+      "what": "島上的檢使"
+    },
+    {
+      "setup": "mv506",
+      "payoff": "mv509",
+      "what": "武藏去了哪裡"
+    },
+    {
+      "setup": "mv512",
+      "payoff": "mv513",
+      "what": "他到底幾點過去"
+    },
+    {
+      "setup": "mv513",
+      "payoff": "mv817",
+      "what": "信裡的「適當的時候」"
+    },
+    {
+      "setup": "mv615",
+      "payoff": "mv705",
+      "what": "武藏那句「號令那麼嚴」"
+    },
+    {
+      "setup": "mv609",
+      "payoff": "mv714",
+      "what": "小次郎那句「你遲到了嗎」"
+    },
+    {
+      "setup": "mv617",
+      "payoff": "mv707",
+      "what": "聽說十八歲"
+    },
+    {
+      "setup": "mv619",
+      "payoff": "mv809",
+      "what": "「故意」最早寫在哪裡"
+    },
+    {
+      "setup": "mv716",
+      "payoff": "mv801",
+      "what": "動機呢"
+    },
+    {
+      "setup": "mv816",
+      "payoff": "mv817",
+      "what": "武藏怎麼回船夫"
+    }
+  ],
+  "youtube": {
+    "title": "宮本武藏故意遲到兩小時？死後 9 年的碑文，連對手的名字都沒寫｜奇聞檔案局",
+    "description": "巖流島上，小次郎等了兩個多小時，武藏才划船來，木刀是船槳削的，遲到是故意的。這一幕漫畫、電視、電玩都這樣演；二〇〇三年武藏的銅像比小次郎的晚了四個月揭幕，島上的官方導覽摺頁還開玩笑說，也許是配合他決鬥遲到的「史實」（摺頁原文：「決闘に遅刻したという史実にあわせてかも…」）。可是最早提到這一戰的紀錄，連對手的名字都沒有。\n\n這一集一份一份翻口供：先是武藏自己在寬永二十年（1643 年）動筆的《五輪書》，序裡數了一生六十多場比試，卻沒有一個字提到岩流、小次郎或船島；武藏死後九年、承應三年（1654 年）養子宮本伊織在小倉立的碑，寫的是「兩雄同時相會」，對手只叫「岩流」；門司城代沼田家的家記，對手只叫「小次郎」；正德二年（1712 年）一個小倉商人轉述當年船夫的話，由熊本的豐田家三代寫成寶曆五年（1755 年）的《武公傳》、安永五年（1776 年）的《二天記》，裡面有失蹤、書信、睡過頭、削槳、「汝後れたるか」、「小次郎負たり」和「聽說十八歲」，卻沒有寫他為什麼晚到；明治四十二年（1909 年）熊本的宮本武藏遺蹟顯彰會把各種說法排在一起，選了《二天記》，轉述時還多寫了幾句；最早把遲到寫成計謀的，是我們查到的直木三十五的短篇（直木 1934 年歿），他還記了一句來源不明的批評；吉川英治的《宮本武藏》（1935–1939 年朝日新聞連載）讓它家喻戶曉。\n\n《二天記》用《肥後文獻叢書》第二卷本、顯彰會本《宮本武藏》（含小倉碑文、《五輪書》與《沼田家記》的轉引），兩者都在國立國會圖書館數位典藏；直木三十五〈巖流島〉與吉川英治的小說、隨筆用青空文庫本。《沼田家記》原書我們沒開，只用了顯彰會本的轉引；《五輪書》用的是顯彰會本所收的抄本。巖流島那天的日期，《二天記》寫慶長十七年四月（1612 年），另有十幾年前的說法。\n\n每個引文、年份與數字的出處列在下方參考資料；旁白裡的日期是舊曆，「我們覺得」「我讀到這裡想的是」的句子是本頻道的看法。導覽摺頁只引用文字，沒有放截圖。\n\n本集插圖由 AI 生成；歷史人物不入畫，用物件代表（武藏是一把大木刀，小次郎是一把紅鞘長刀）；吉川英治、直木三十五與現代研究者也不入畫。畫面上沒有文字。\n\n資料截至 2026-10-19（2026-10-25 照新規則重寫；2026-11-06 照黑貓十步重排）",
+    "tags": [
+      "宮本武藏",
+      "巖流島",
+      "佐佐木小次郎",
+      "故意遲到",
+      "二天記",
+      "五輪書",
+      "吉川英治",
+      "日本史",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "故意？\n**沒人寫**",
+      "tag": "歷史名場面",
+      "sub": "三份一手紀錄，都沒寫動機",
+      "shot": "day-sleep"
+    }
+  },
+  "sources": [
+    {
+      "title": "豐田景英校《二天記》（《肥後文獻叢書》第二卷，隆文館，明治四十三年；國立國會圖書館數位典藏）",
+      "url": "https://dl.ndl.go.jp/pid/766733",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "宮本武藏遺蹟顯彰會編《宮本武藏》（金港堂書籍，明治四十二年；含小倉碑文錄文、《五輪書》、《沼田家記》轉引；國立國會圖書館數位典藏）",
+      "url": "https://dl.ndl.go.jp/pid/992019",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "直木三十五〈巖流島〉（青空文庫）",
+      "url": "https://www.aozora.gr.jp/cards/000216/card1715.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "吉川英治《宮本武藏》〈圓明の卷〉（青空文庫）",
+      "url": "https://www.aozora.gr.jp/cards/001562/card52402.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "吉川英治《隨筆 宮本武藏》（青空文庫）",
+      "url": "https://www.aozora.gr.jp/cards/001562/card52434.html",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "關門海峽觀光推進協議會〈巖流島〉導覽摺頁（PDF，2019 年 4 月製作；只引文字）",
+      "url": "https://kanmon.gr.jp/kanmon2020/wp-content/uploads/2017/12/ganryu2019JP.pdf",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "日文維基百科〈宮本武蔵 (小説)〉（朝日新聞連載期間；二手）",
+      "url": "https://ja.wikipedia.org/wiki/%E5%AE%AE%E6%9C%AC%E6%AD%A6%E8%94%B5%20%28%E5%B0%8F%E8%AA%AC%29",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": []
+}

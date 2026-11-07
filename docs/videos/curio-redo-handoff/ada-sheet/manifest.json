@@ -1,0 +1,188 @@
+{
+  "look_hash": "f6c712c665d07d7a",
+  "look": {
+    "preset": "cute-mystery",
+    "style": "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+    "negative": "",
+    "motion": "slow push in or gentle drift, no morphing, no cuts",
+    "candidates": 3,
+    "style_frames": []
+  },
+  "image": {
+    "provider": "minimax",
+    "model": "image-01"
+  },
+  "image_selection_version": 1,
+  "characters": {
+    "researcher": {
+      "name": "Ada",
+      "candidates": [
+        {
+          "n": 1,
+          "seed": 1,
+          "file": "characters/researcher/001.jpg",
+          "sha256": "cb13a331253efbf891da7f321edc429b268821894f92e3d590216381dc7443ae",
+          "key": "b822451e7f1491c1",
+          "judge": {
+            "overall": 6.86,
+            "passed": false,
+            "scores": {
+              "recognizable": 6.8,
+              "appearance": 7,
+              "style": 6.9,
+              "clean": 6.7,
+              "no_text": 7
+            },
+            "problems": [
+              "clean: faint stray white dot artifact in the background to the right of the hair → clean uniform background",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt",
+              "style: the judge found it but did not say what or where (asked: Is the picture in the requested visual style?) → write the correction into the prompt"
+            ],
+            "notes": "The character and art style match the brief accurately with appropriate palette and proportions. Only minor artifacting is visible in the background."
+          }
+        },
+        {
+          "n": 2,
+          "seed": 2,
+          "file": "characters/researcher/002.jpg",
+          "sha256": "6a1b1b008e7f3a0b6cd9feb758e4c348810a70bab21bdfe7c88c47aea4aa4dc6",
+          "key": "53c8825481131bda",
+          "judge": {
+            "overall": 6.31,
+            "passed": false,
+            "scores": {
+              "recognizable": 6,
+              "appearance": 6,
+              "style": 5.5,
+              "clean": 7,
+              "no_text": 7
+            },
+            "problems": [
+              "style: character positioned in the lower right rather than the centre third → centered in the frame",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt",
+              "appearance: the judge found it but did not say what or where (asked: Does the character match the written appearance: age, build, hair, clothing, colours, props?) → write the correction into the prompt"
+            ],
+            "notes": "The character design fits the aesthetic and description well, though framing fails to keep the subject in the center third."
+          },
+          "fixes": [
+            "clean uniform background"
+          ]
+        },
+        {
+          "n": 3,
+          "seed": 3,
+          "file": "characters/researcher/003.jpg",
+          "sha256": "c031130cb660951ab92c4c41a5488582c749e93c5e0c63ac911791612674a5f0",
+          "key": "2e709ebeb96fa314",
+          "judge": {
+            "overall": 6.72,
+            "passed": false,
+            "scores": {
+              "recognizable": 6.8,
+              "appearance": 6.2,
+              "style": 7,
+              "clean": 6.9,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: face and proportions look like a young child rather than an adult woman → mature adult facial features",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt",
+              "clean: the judge found it but did not say what or where (asked: Are anatomy and clothing free of faults: correct hands and fingers, no warped face, nothing floating or duplicated?) → write the correction into the prompt"
+            ],
+            "notes": "The visual style and outfit match the prompt accurately. The character reads more like a child than a grown woman."
+          },
+          "fixes": [
+            "clean uniform background",
+            "centered in the frame"
+          ]
+        },
+        {
+          "n": 4,
+          "seed": 101,
+          "file": "characters/researcher/101.jpg",
+          "sha256": "15adb02ec85b26bf4b267d21de355ea927b13b5d4b3ce6b45c89a63acfec44cc",
+          "key": "b960a924ad8b9733",
+          "judge": {
+            "overall": 6.75,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 6,
+              "style": 7,
+              "clean": 7,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: face looks somewhat childlike rather than a calm grown-up woman → calm mature adult face"
+            ],
+            "notes": "The illustration matches the specified explainer cartoon style and clothing closely. The character silhouette is clear, though facial maturity is slightly reduced."
+          },
+          "fixes": [
+            "clean uniform background",
+            "centered in the frame",
+            "mature adult facial features"
+          ]
+        },
+        {
+          "n": 5,
+          "seed": 102,
+          "file": "characters/researcher/102.jpg",
+          "sha256": "4e5f0fd0b97a1b7c8dca1b39c8d8d596b95a396324c33fd2f6ce40052c95b8f9",
+          "key": "06a65fba7a67031c",
+          "judge": {
+            "overall": 7,
+            "passed": true,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 7,
+              "style": 7,
+              "clean": 7,
+              "no_text": 7
+            },
+            "problems": [],
+            "notes": "The character design matches the prompt specifications well with appropriate chibi proportions and clean visual styling."
+          },
+          "fixes": [
+            "clean uniform background",
+            "centered in the frame",
+            "mature adult facial features",
+            "calm mature adult face"
+          ]
+        },
+        {
+          "n": 6,
+          "seed": 103,
+          "file": "characters/researcher/103.jpg",
+          "sha256": "f306796053b83d97984caebe9f4340c329b9f1cf343689486bd3c4a9f285a0d1",
+          "key": "3bac124464ad89ad",
+          "judge": {
+            "overall": 6.75,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 6,
+              "style": 7,
+              "clean": 7,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: Ada has an anxious, downturned mouth rather than a friendly calm face → a calm gentle friendly smile"
+            ],
+            "notes": "The visual style and character outfit match the prompt accurately. The facial expression leans slightly more concerned than intended."
+          },
+          "fixes": [
+            "clean uniform background",
+            "centered in the frame",
+            "mature adult facial features",
+            "calm mature adult face"
+          ]
+        }
+      ],
+      "suggested": 5,
+      "needs_review": false,
+      "prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background. Character: Ada, a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9"
+    }
+  },
+  "contact_sheet": null,
+  "generated_at": "2026-11-07T02:35:42.023Z"
+}

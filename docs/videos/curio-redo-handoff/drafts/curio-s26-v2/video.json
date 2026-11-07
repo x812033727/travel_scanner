@@ -1,0 +1,2367 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s26-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友講這份檔案：開場兩句對著觀眾講、帶一點挑釁；里昂那個不敢買麵包的年輕人帶點好笑；王后的信誠懇放慢；卡爾的傳聞像說八卦，「大致證明」篤定；「他就是盧梭」揭曉停一拍；「早了十五年」像蓋章；伯爵夫人的酥皮好心又天真；結尾乾脆，「存檔」落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "t004",
+      "payoff": "t090",
+      "what": "死後四十八年才寫到她名下的人是誰"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t031",
+      "what": "書裡那件事比她出生早十五年"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t065",
+      "what": "她寫給媽媽、寫到麵包的信"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t101",
+      "what": "最早寫她的人兩年後自己說大概不是她"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t127",
+      "what": "瑪麗皇后真的說過嗎"
+    },
+    {
+      "setup": "t017",
+      "payoff": "t018",
+      "what": "佩劍的人為什麼不敢買麵包"
+    },
+    {
+      "setup": "t024",
+      "payoff": "t025",
+      "what": "那位偉大的公主說過什麼"
+    },
+    {
+      "setup": "t028",
+      "payoff": "t084",
+      "what": "蛋糕是哪裡跑出來的"
+    },
+    {
+      "setup": "t032",
+      "payoff": "t033",
+      "what": "一個家教買麵包的小事，怎麼會知道"
+    },
+    {
+      "setup": "t043",
+      "payoff": "t044",
+      "what": "他寫書時她在哪裡"
+    },
+    {
+      "setup": "t048",
+      "payoff": "t049",
+      "what": "真的有過缺麵包的日子嗎"
+    },
+    {
+      "setup": "t061",
+      "payoff": "t062",
+      "what": "她知不知道麵包多貴"
+    },
+    {
+      "setup": "t068",
+      "payoff": "t069",
+      "what": "麵包的事只寫了一次嗎"
+    },
+    {
+      "setup": "t073",
+      "payoff": "t074",
+      "what": "兩封信能證明她沒說過嗎"
+    },
+    {
+      "setup": "t076",
+      "payoff": "t077",
+      "what": "那本書什麼時候印出來"
+    },
+    {
+      "setup": "t079",
+      "payoff": "t080",
+      "what": "那位偉大的公主是誰"
+    },
+    {
+      "setup": "t088",
+      "payoff": "t089",
+      "what": "大革命的文宣為什麼不用這句話"
+    },
+    {
+      "setup": "t094",
+      "payoff": "t095",
+      "what": "兩年後他寫了什麼"
+    },
+    {
+      "setup": "t025",
+      "payoff": "t104",
+      "what": "盧梭寫的是鄉下人"
+    },
+    {
+      "setup": "t107",
+      "payoff": "t110",
+      "what": "有沒有紀錄寫出說話的人"
+    },
+    {
+      "setup": "t116",
+      "payoff": "t117",
+      "what": "這個版本哪裡不一樣"
+    },
+    {
+      "setup": "t118",
+      "payoff": "t119",
+      "what": "這個版本可靠嗎"
+    },
+    {
+      "setup": "t084",
+      "payoff": "t121",
+      "what": "蛋糕後來怎麼成了通行譯法"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "瑪麗皇后真說過「吃蛋糕」？書裡那一天，比她出生早 15 年｜奇聞檔案局",
+    "description": "「沒有麵包，就吃蛋糕。」這句話幾乎都掛在瑪麗．安東尼名下。這一集只講紀錄裡找得到的：一七七五年麵粉戰爭之後，她寫給母親的兩封信，寫到麵包很貴、百姓受了很多苦；目前找得到最早把這句話寫在她名下的，是卡爾一八四一年十一月的《黃蜂》，寫的是「人家傳說、不知道真假」，一八四三年他又寫文章說，這大致證明不是她說的；更早白紙黑字寫下這句話的，是盧梭《懺悔錄》第六卷（一七八二年出版），說話的人只寫「一位偉大的公主」，而盧梭想起這句話的那件事，發生在一七四〇年前後的里昂，比她出生早了十五年。\n\n原文是 brioche（布里歐，加了奶油和雞蛋的麵包），一七八三年與一九〇三年的英譯都寫成 pastry。第一部寫在一七六〇年代後半，寫到第六卷是哪一年不能確定，所以說她那時「十來歲」「還不到十三歲」；盧梭自己承認第一部憑記憶寫、錯誤很多，「是他編的」只是學者的懷疑。卡爾說的那本一七六〇年的書沒有書名，我們沒有找到；「革命當時的文宣找不到這句話」是研究者的說法，卡爾的「當年」沒有寫年份。維多利亞夫人那句出自 Boigne 伯爵夫人的回憶錄，是轉述。她有沒有在別的時候說過什麼，紀錄沒辦法回答；能說的是，盧梭書裡那位公主不可能是她。出處列在下方參考資料；標「二手」的是只靠維基百科的項目。「我覺得」「我們覺得」的句子是本頻道的看法。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；現代研究者不入畫。\n\n資料截至 2026-10-19（2026-10-25 照新規則重寫）",
+    "tags": [
+      "瑪麗安東尼",
+      "沒有麵包就吃蛋糕",
+      "讓他們吃蛋糕",
+      "盧梭",
+      "懺悔錄",
+      "布里歐",
+      "法國大革命",
+      "麵粉戰爭",
+      "歷史謠言",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "蛋糕？\n**她沒出生**",
+      "tag": "歷史謠言",
+      "sub": "書裡那一天，早她十五年",
+      "shot": "open-promise"
+    }
+  },
+  "sources": [
+    {
+      "title": "Jean-Jacques Rousseau, Les Confessions, Livre VI、Livre VII（Paris, Launette 1889 校訂本），法文維基文庫",
+      "url": "https://fr.wikisource.org/wiki/Les_Confessions_(Rousseau)/Livre_VI",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Les Confessions de J. J. Rousseau, Tome second (A Genève, 1782)，archive.org",
+      "url": "https://archive.org/details/j1782lesconfessio02rous",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Les Confessions de J. J. Rousseau, Tome second (Lausanne, F. Grasset, 1782)，archive.org",
+      "url": "https://archive.org/details/d1782lesconfessi02rous",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "The Confessions of J. J. Rousseau (London, J. Bew, 1783)，最早的英譯，archive.org",
+      "url": "https://archive.org/details/confessionsjjro01rousgoog",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "The Confessions of Jean Jacques Rousseau — Complete (London 1903)，Project Gutenberg #3913",
+      "url": "https://www.gutenberg.org/ebooks/3913",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Alphonse Karr, Les Guêpes, novembre 1841，archive.org",
+      "url": "https://archive.org/details/bub_gb_pCv7DOf42bsC",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Alphonse Karr, Les Guêpes, tome 4 (Michel Lévy 1859)，「Avril 1843」一節 p. 260，archive.org",
+      "url": "https://archive.org/details/lesgupes04karruoft",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Alfred von Arneth (ed.), Maria Theresia und Marie Antoinette. Ihr Briefwechsel (Leipzig 1866)，1775-06-22 與 1775-07-14 的信，archive.org",
+      "url": "https://archive.org/details/mariatheresiaund00mari",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Récits d'une tante. Mémoires de la comtesse de Boigne, Vol. 1，Project Gutenberg #29613",
+      "url": "https://www.gutenberg.org/ebooks/29613",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Let them eat cake（「蛋糕」的通行譯法、一半收入花在麵包上、革命文宣；二手）",
+      "url": "https://en.wikipedia.org/wiki/Let_them_eat_cake",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Marie Antoinette、Adèle d'Osmond（出生、婚禮、即位、麵粉戰爭傷了名聲、伯爵夫人的生年與出版年；二手）",
+      "url": "https://en.wikipedia.org/wiki/Marie_Antoinette",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Brioche（奶油雞蛋麵包；二手）",
+      "url": "https://en.wikipedia.org/wiki/Brioche",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Flour War（一七七五年四月到五月的暴動；二手）",
+      "url": "https://en.wikipedia.org/wiki/Flour_War",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "法文維基百科 Guerre des farines（五月二日凡爾賽、三日巴黎的麵包店、一七七四年九月放開穀物買賣；二手）",
+      "url": "https://fr.wikipedia.org/wiki/Guerre_des_farines",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "法文維基百科 Jean-Jacques Rousseau（一七四〇年到里昂、一七四一年離開、Wootton 時期；二手）",
+      "url": "https://fr.wikipedia.org/wiki/Jean-Jacques_Rousseau",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "法文維基百科 Les Confessions (Rousseau)（第一部寫於一七六〇年代、一七八二年死後出版；二手）",
+      "url": "https://fr.wikipedia.org/wiki/Les_Confessions_(Rousseau)",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "你一定聽過的八個字",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a knitted sweater at a sunny kitchen table, tearing a piece off a bread roll and raising one eyebrow, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你一定聽過這句話：沒有麵包，就吃蛋糕。",
+          "emotion": "對觀眾，像聊天"
+        }
+      ]
+    },
+    {
+      "id": "open-queen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pale blue silk fan with a pearl handle lying on a red velvet cushion beside a small golden brioche bun, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "大家都說，這是法國王后瑪麗．安東尼說的。"
+        }
+      ]
+    },
+    {
+      "id": "open-blame",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pale blue silk fan pinned flat under a heavy plain grey sack of flour on a polished palace floor, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "八個字，讓她背到今天：一個不知道百姓有多苦的王后。"
+        }
+      ]
+    },
+    {
+      "id": "open-48",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a thin plain booklet, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "可是目前找得到最早把它寫到她名下的文字，在她死後四十八年。",
+          "emotion": "帶一點挑釁，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-15",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty wooden baby cradle in a sunny room, a small golden brioche resting on its folded pale blue blanket, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "更早白紙黑字寫下這句話的書裡，那件事，比她出生還早了十五年。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded blank letter sealed with red wax lying beside a round country loaf on a small writing desk, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "更怪的是，她自己寫信給媽媽的時候，還真的寫到了麵包。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "open-karr",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown fur hat hanging on the back of a wooden chair beside a writing desk, a small striped wasp resting on its brim, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "而目前找得到最早把話記在她名下的人，兩年後自己說：大概不是她。",
+          "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small golden brioche bun, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "今天我們就來聊聊：沒有麵包就吃蛋糕，瑪麗皇后真的說過嗎？",
+          "emotion": "承諾句，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "open-route",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small 18th-century pastry shop front on a sunny cobbled street, its wooden door shut, golden brioches in the window, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "我們照時間順著走，從一家糕點店的門口開始。"
+        }
+      ]
+    },
+    {
+      "id": "lyon",
+      "chapter": "一七四〇年，里昂，一個不敢買麵包的家教",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunny riverside city of old stone houses with red tile roofs and an arched stone bridge over a wide river, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "故事要回到一七四〇年的五月，法國里昂。",
+          "emotion": "沉穩，進故事"
+        }
+      ]
+    },
+    {
+      "id": "tutor-arrive",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown tricorn hat and a small leather travel bag resting on a wooden bench in a grand stone entrance hall, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "一個二十八歲的年輕人來到這裡，住進憲兵總監的家。"
+        }
+      ]
+    },
+    {
+      "id": "pupils",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two small wooden school desks side by side in a sunny panelled room, a quill and an inkpot on each desk, gentle daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "他的工作是當家教，教主人家的兩個學生。"
+        }
+      ]
+    },
+    {
+      "id": "tutor-wine",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown tricorn hat sitting on top of an oak barrel in a stone wine cellar beside a pale green bottle of white wine, soft light from a high window",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "在這戶人家裡，他偷喝過主人的白酒。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "jura",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pale green bottle of white wine and one small half-filled glass on a wooden attic table under a slanted window, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "那是一種侏羅產的小白酒；他自己說，酒很不錯。"
+        }
+      ]
+    },
+    {
+      "id": "must-eat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's hand in a brown cuffed sleeve holding a small glass of white wine above an empty white plate, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "可是他有個習慣：喝酒，一定要配東西吃。"
+        }
+      ]
+    },
+    {
+      "id": "dare-not",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small sword in a brown leather scabbard leaning against a closed wooden door at the top of a narrow staircase, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "照理說，出門買一塊麵包就好了。可是，他不敢。"
+        }
+      ]
+    },
+    {
+      "id": "sword",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small sword in a brown leather scabbard and a brown tricorn hat lying together on a wooden chair by a tall window, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "他腰上佩著劍，為什麼連一塊麵包都不敢買？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "unthinkable",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a thick plain-covered book open, grinning, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "他後來寫：一個佩劍的體面先生，走進麵包店買一塊麵包，這像話嗎？",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "you-suit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a neat grey suit standing outside a tiny street food stall, one hand half raised, hesitating with an awkward smile, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "你大概也有過：穿得太體面，反而不好意思走進一家小店。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "thirty-shops",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long sunny cobbled street lined with many small bakery windows full of golden loaves, the doors all shut, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "所以他在街上走，走過三十家糕點店，還是不敢推門。"
+        }
+      ]
+    },
+    {
+      "id": "alone-errand",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle close-up of a pair of buckled brown leather shoes striding fast along a sunny cobbled street, the hem of a brown coat swinging above them, soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "他一個人出門，就是為了這一塊麵包；有時候跑遍全城。"
+        }
+      ]
+    },
+    {
+      "id": "one-person",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a single baker woman in a white apron standing alone behind a wooden counter in a small bakery, arranging golden loaves, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "問題來了：就算要進門，店裡也只能有一個人，"
+        }
+      ]
+    },
+    {
+      "id": "peek",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a kindly round-faced baker woman in a white apron smiling warmly across a wooden counter, holding out a small golden brioche, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "而且那個人的長相，還要很討他喜歡。"
+        }
+      ]
+    },
+    {
+      "id": "recall",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tiny silver tiara resting on a plum velvet cushion on a small wooden side table in a sunny room, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "最後，他想起一位偉大的公主說過的話：",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "peasants",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty straw bread basket on a rough farmhouse table beside one small golden brioche bun, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "聽說鄉下人沒有麵包，她就回答：那讓他們吃布里歐吧。"
+        }
+      ]
+    },
+    {
+      "id": "buys-brioche",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's hand in a brown cuffed sleeve picking up a small golden brioche from a wooden bakery counter, soft morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "他把這句話當成不得已的辦法，買了布里歐。"
+        }
+      ]
+    },
+    {
+      "id": "brioche",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a golden brioche bun on a white plate beside a little dish of butter and two brown eggs on a wooden table, soft indoor daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "布里歐，是加了奶油和雞蛋的麵包，在當時算奢侈的食物。"
+        }
+      ]
+    },
+    {
+      "id": "not-cake",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small golden brioche bun and a tall frosted cream cake side by side on a marble counter in a sunny bakery, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "注意：是麵包，不是蛋糕。那蛋糕是哪裡跑出來的？等一下就知道。",
+          "emotion": "問句，輕"
+        }
+      ]
+    },
+    {
+      "id": "excuse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping her temple with one finger and smiling knowingly, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "他不是在罵那位公主，是拿這句話，替自己解圍。"
+        }
+      ]
+    },
+    {
+      "id": "is-rousseau",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown tricorn hat resting on a small brioche bun on a sunny windowsill overlooking red tile roofs, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "這個連麵包都不敢買的家教，叫盧梭。他在里昂，待了一年就走了。",
+          "emotion": "揭曉，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "fifteen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty wooden baby cradle in a sunny room, its folded pale blue blanket smooth and untouched, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "那一年是一七四〇年前後；瑪麗．安東尼，還要再過十五年才出生。",
+          "emotion": "放慢，像蓋章"
+        }
+      ]
+    },
+    {
+      "id": "how-know",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, resting her chin on one hand, a curious frown, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "可是，一個家教買麵包的小事，我們今天怎麼會知道？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "wrote",
+      "chapter": "一七六〇年代後半，他寫書的時候，她在維也納",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick open book with blank pages on a wooden desk, a quill lying across it and a brown tricorn hat beside it, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "因為二十多年後，他自己把這件事寫進了一本書。"
+        }
+      ]
+    },
+    {
+      "id": "england",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small grey stone cottage in rolling green English countryside under a pale cloudy sky, smoke curling from its chimney, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "一七六〇年代後半，他先在英國鄉下，後來在一座城堡裡，寫下第一部。"
+        }
+      ]
+    },
+    {
+      "id": "wootton",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain wooden writing desk under a small cottage window with a stack of blank pages and a quill, green hills outside, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "頭幾卷，是一七六六年三月到隔年五月，在英國寫的；"
+        }
+      ]
+    },
+    {
+      "id": "which-castle",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long quiet stone castle corridor with tall arched windows and a single wooden writing chair at the far end, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "寫到糕點店的第六卷呢？是不是也在那裡寫完，沒人能確定。"
+        }
+      ]
+    },
+    {
+      "id": "sixty",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old wrinkled hand in a brown cuffed sleeve slowly writing with a quill on a blank page, a brown tricorn hat beside it, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "他在這一卷裡寫：寫下這些的時候，自己已經體弱，快六十歲了。"
+        }
+      ]
+    },
+    {
+      "id": "you-old",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa flipping through a thick photo album with blank pale pages, smiling fondly, soft morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "你想想，一個老人，在寫自己二十幾歲的事，能記得多準？",
+          "emotion": "對觀眾，輕"
+        }
+      ]
+    },
+    {
+      "id": "recalled",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, closing her eyes and touching two fingers to her temple, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "注意他用的動詞：「我想起」。他不是在記新鮮事，是在翻一段舊記憶。"
+        }
+      ]
+    },
+    {
+      "id": "errors",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a quill lying on a blank page dotted with small ink blots beside an overturned inkpot on a wooden desk, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "他自己也承認：第一部全憑記憶寫，錯一定很多。"
+        }
+      ]
+    },
+    {
+      "id": "invented",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small brioche, head tilted doubtfully, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "也有學者懷疑，糕點店這段故事，根本是他編的。"
+        }
+      ]
+    },
+    {
+      "id": "sure",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tiny silver tiara on a plum velvet cushion beside a closed thick plain-covered book on a wooden desk, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "能確定的只有：他寫書的時候，已經知道這個段子。"
+        }
+      ]
+    },
+    {
+      "id": "where-she",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunny palace garden with neatly trimmed hedges, a round stone fountain and white gravel paths, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "那他寫這一卷的時候，瑪麗．安東尼在哪裡？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "vienna",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small wooden garden swing hanging from an oak tree in a palace garden, a little pale blue silk fan resting on its seat, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "她一七五五年在維也納出生，這時候還在那裡，是個十來歲的小女孩。"
+        }
+      ]
+    },
+    {
+      "id": "under13",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tiny pale blue satin slipper lying on a white garden bench beside a single pink rose, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "也就是說，盧梭寫下那位公主的時候，她還不到十三歲，連法國都沒去過。"
+        }
+      ]
+    },
+    {
+      "id": "carriage",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a gilded royal carriage with pale blue curtains rolling along a sunny tree-lined road toward a distant palace, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "一七七〇年四月，她先在維也納辦了代理婚禮；五月才到凡爾賽，那年十四歲。"
+        }
+      ]
+    },
+    {
+      "id": "queen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pale blue silk fan lying beside a gold crown on a red velvet cushion in a sunny palace hall, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "四年後，一七七四年，十八歲的她當上了法國王后。"
+        }
+      ]
+    },
+    {
+      "id": "legend",
+      "chapter": "一七七五年，人群鬧到凡爾賽宮門口",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin mother in a patched shawl standing in a bare kitchen, holding up an empty bread basket with a worried frown, mild light from a doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "傳說裡，她說那句話的時候，法國的百姓正缺麵包。真的有過這樣的日子嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "price-up",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout baker woman in a white apron behind a wooden counter, wincing apologetically as she sets down one small loaf, mild window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "有，就在她當上王后的隔年春天，麵包的價錢漲了起來。"
+        }
+      ]
+    },
+    {
+      "id": "half-income",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a nearly flat brown leather purse lying beside a big round country loaf on a worn wooden table, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "麵包有多要緊？傳記作者估計，那時老百姓一半的收入，都花在麵包上。"
+        }
+      ]
+    },
+    {
+      "id": "you-salary",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a hoodie at a kitchen table, gasping with both hands on her cheeks over a nearly empty coin purse, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "想想看，你每個月最大的一筆開銷忽然漲價，你會不會上街？",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "obsess",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big round country loaf set in the very middle of a long empty wooden dining table, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "所以傳記作者說，麵包，是全國上下最掛心的事。"
+        }
+      ]
+    },
+    {
+      "id": "grain",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden farm cart heaped with plain grain sacks standing in an open sunny market square, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "導火線，是前一年九月，政府放開了穀物的買賣。"
+        }
+      ]
+    },
+    {
+      "id": "riots",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an angry market woman in a striped skirt shaking an empty wicker basket above her head in a crowded market square, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "結果四月到五月，北部、東部、西部好幾個地方，都鬧起了暴動；"
+        }
+      ]
+    },
+    {
+      "id": "crowd-gate",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young apprentice baker in a white apron holding up an empty basket outside tall gilded palace gates, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "五月初，人群一路鬧到凡爾賽宮門口。"
+        }
+      ]
+    },
+    {
+      "id": "looted",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small bakery with bare wooden shelves and a split flour sack spilling white flour across the floor, its door hanging open, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "第二天，巴黎的麵包店也被搶了。後來的人，叫它「麵粉戰爭」。"
+        }
+      ]
+    },
+    {
+      "id": "reputation",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pale blue silk fan with one torn pleat lying open on a polished palace floor, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "研究她的人說，這場風波，傷了她在百姓心裡的名聲。"
+        }
+      ]
+    },
+    {
+      "id": "deficit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big open wooden treasure chest standing completely empty on a polished palace floor beside a pale blue silk fan, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "但這還不是最糟的：後來反對王室的文宣，叫她「赤字夫人」；",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "deficit-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open jewelry box spilling pearls beside a flat empty velvet purse on a palace dressing table, soft indoor daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "說法國的錢，是她一個人花光的。"
+        }
+      ]
+    },
+    {
+      "id": "sticks",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a pale blue silk fan, a thoughtful look, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "我覺得，這就是這八個字黏得住她的原因：外國來的、愛花錢、又是王后。",
+          "emotion": "像在講自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "knew",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single round loaf sitting on a brass kitchen scale in a sunny palace kitchen, soft indoor daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "那麼，她自己知不知道，麵包有多貴？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "crowned",
+      "chapter": "六月二十二日，王后給媽媽寫了一封信",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gold crown on a red velvet cushion on a stone altar step in a tall sunny stone church, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "知道，而且她自己寫下來了。那年六月十一日，國王加冕；"
+        }
+      ]
+    },
+    {
+      "id": "letter-june",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a quill resting in an inkpot beside a folded blank letter and a pale blue silk fan on a small writing desk, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "十一天後，她寫信給媽媽，日期是六月二十二日。"
+        }
+      ]
+    },
+    {
+      "id": "empress",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a black lace shawl draped over a high-backed chair beside a neat stack of blank letters tied with a ribbon, gentle daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "媽媽，是奧地利的女皇瑪麗亞．特蕾莎；這些信到一八六六年才整批印出來。"
+        }
+      ]
+    },
+    {
+      "id": "june-quote",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cheerful crowd of townspeople waving hats in the sunny square outside tall gilded palace gates, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "她寫：暴動過了兩個月，大家還這樣歡迎我們。可惜，麵包還是很貴。",
+          "emotion": "誠懇，放慢"
+        }
+      ]
+    },
+    {
+      "id": "duty",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of hands in pale blue lace cuffs pressing a red wax seal onto a folded blank letter on a writing desk, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "「看到這些受苦、卻還這樣待我們的人，我們更應該為他們的幸福努力。」",
+          "emotion": "慢，誠懇"
+        }
+      ]
+    },
+    {
+      "id": "king",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gold crown on a red velvet cushion beside a folded blank letter on a polished desk in a sunny palace room, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "她還寫，國王看起來，也深深明白這個道理。"
+        }
+      ]
+    },
+    {
+      "id": "only-once",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one folded blank letter, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "那麼，麵包的事，她只寫了這一次嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "letter-july",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two folded blank letters tied together with a pale blue ribbon on a small writing desk, a quill beside them, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "沒有。三個星期後，她又寫：百姓為了麵包貴，吃了好多苦。"
+        }
+      ]
+    },
+    {
+      "id": "wheat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunny golden wheat field with tall heavy ears swaying under a clear sky, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "「好在麥子長得很好；收成以後，麵包一定會便宜。」"
+        }
+      ]
+    },
+    {
+      "id": "surprised",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a folded blank letter, a small surprised gasp, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "我第一次讀到這兩封信，老實說，有點意外。",
+          "emotion": "像跟朋友說自己的感覺"
+        }
+      ]
+    },
+    {
+      "id": "nineteen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pale blue silk fan resting on two folded blank letters on a small writing desk beside a pink rose, gentle daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "寫信的是一個十九歲的王后，口氣不像會說「吃蛋糕」的人。"
+        }
+      ]
+    },
+    {
+      "id": "prove",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up two folded blank letters, a cautious look, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "那這兩封信，能證明她沒說過那句話嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "cannot",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two folded blank letters resting on one pan of a brass balance scale, the other pan empty and level, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "不能。信說明的是她的態度，不是她說過什麼。"
+        }
+      ]
+    },
+    {
+      "id": "you-postcard",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a cardigan at a cafe table writing on a blank postcard with a small smile, soft indoor daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "你寫給媽媽的信，也只能證明你那天在想什麼。",
+          "emotion": "對觀眾，輕"
+        }
+      ]
+    },
+    {
+      "id": "rousseau-dies",
+      "chapter": "一七八二年，作者過世四年後，那本書印出來了",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown tricorn hat resting on a closed wooden writing box beside a quill laid flat, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "一七七八年，盧梭過世；那本寫到糕點店的書，還沒有印出來。"
+        }
+      ]
+    },
+    {
+      "id": "printer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a printer in an ink-stained apron at a wooden printing press, lifting a fresh blank page off the press with raised eyebrows, mild window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "四年後的一七八二年，日內瓦印出了它的第一部：盧梭的《懺悔錄》。"
+        }
+      ]
+    },
+    {
+      "id": "page-six",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered book lying open on a printer's wooden bench, its pale blank pages fanned out, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "里昂那一段，就在第六卷；同一年在洛桑印的另一個版本，也有這一句。"
+        }
+      ]
+    },
+    {
+      "id": "nameless",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty plum velvet cushion with a small dent where a tiara once sat, on a wooden side table, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "那書裡這位偉大的公主，是誰？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t080",
+          "text": "盧梭沒寫：沒有名字，沒有國家，也沒有年份。",
+          "emotion": "一個一個放慢"
+        }
+      ]
+    },
+    {
+      "id": "queen-reads",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pale blue silk fan lying on a thick plain-covered book on a gilded palace table, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "書印出來的時候，瑪麗．安東尼二十六歲，已經當了八年王后。"
+        }
+      ]
+    },
+    {
+      "id": "neat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a thick plain-covered book to her chest, a sly smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "這就很妙了：書出來的時候，讀者身邊，正好有一位王后。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "translation",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plate of flaky golden pastries beside a thick plain-covered book on a wooden table, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "隔年，最早的英文譯本出來了，布里歐被翻成「酥皮點心」；"
+        }
+      ]
+    },
+    {
+      "id": "cake-bit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small slice of cream cake on a saucer resting on a thick plain-covered book, a fork beside it, soft indoor daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "奇怪的是，同一段裡，這個譯本也把布里歐叫作「一小塊蛋糕」。"
+        }
+      ]
+    },
+    {
+      "id": "pamphlets",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scruffy young man in a sunny attic hunched over a small table, scribbling fast with a quill on a stack of blank pages, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "到了法國大革命，也有人寫文宣罵她。"
+        }
+      ]
+    },
+    {
+      "id": "missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a messy heap of blank pamphlets strewn across a dusty attic floor beside a dropped quill, gentle daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "可是研究者說，大革命當時的文宣裡，找不到這句話。"
+        }
+      ]
+    },
+    {
+      "id": "odd",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, frowning at a crumpled blank sheet in her hand, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "這就很怪了：照這個說法，最恨她的年代，反而找不到這句話。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "you-pamphlet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a hoodie at a desk holding up a quill, grinning mischievously at a blank sheet of paper, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "你如果是當年寫小冊子罵她的人，手上有這麼好用的一句話，會不用嗎？",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "she-dies",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed pale blue silk fan resting on a plain wooden chest beside a single white lily, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "一七九三年，她過世了；目前找得到的文字裡，這句話還不在她名下。",
+          "emotion": "低一點，一句帶過"
+        }
+      ]
+    },
+    {
+      "id": "karr",
+      "chapter": "一八四一年十一月，一句「人家傳說」",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown fur hat on a writing desk beside a thin plain booklet, a small striped wasp resting on the booklet, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "直到四十八年後，一八四一年十一月，一位作家卡爾，才把它寫進刊物。"
+        }
+      ]
+    },
+    {
+      "id": "wasp",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small striped wasp perched on the edge of an inkpot beside a quill on a wooden desk, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "刊物叫《黃蜂》。他寫：人家傳說，瑪麗．安東尼講過一句話，",
+          "emotion": "像說八卦"
+        }
+      ]
+    },
+    {
+      "id": "hearsay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small golden brioche bun on a saucer beside a thin plain booklet lying open with blank pages, gentle daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "「沒有麵包，就吃布里歐。」不知道是真是假。",
+          "emotion": "像念一則傳聞"
+        }
+      ]
+    },
+    {
+      "id": "passing-on",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, cupping one hand beside her mouth as if whispering a rumour, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "注意他的用字：人家傳說、不知真假。卡爾是轉述，不是發明。"
+        }
+      ]
+    },
+    {
+      "id": "pen-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown fur hat beside a fresh quill dipped in an inkpot and a clean blank sheet on a writing desk, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "兩年後，卡爾自己又拿起筆，寫了一篇文章。他寫了什麼？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "rumour",
+      "chapter": "一八四三年，他自己說：大概不是她",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown fur hat resting on a writing desk beside a thin plain booklet and a quill, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "那是一八四三年。他回想，當年有人散布謠言，"
+        }
+      ]
+    },
+    {
+      "id": "which-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two gossiping townswomen leaning close together over a wooden fence in a sunny village lane, one whispering behind her hand, soft morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "說她聽到「人民」沒有麵包，就說了那句話；可是「當年」是哪一年，他沒寫。"
+        }
+      ]
+    },
+    {
+      "id": "old-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small worn leather book lying open with blank yellowed pages on a wooden desk beside a brown fur hat, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "接著他說，前幾天，碰巧讀到一本一七六〇年的書，"
+        }
+      ]
+    },
+    {
+      "id": "duchess",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a lemon-yellow silk glove lying on a small worn leather book beside a bowl of fresh lemons on a sunny table, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "書裡把同一句話，記在誰身上？一位托斯卡尼的公爵夫人。"
+        }
+      ]
+    },
+    {
+      "id": "proof",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown fur hat and a quill laid neatly on a closed thin booklet in the middle of a tidy wooden desk, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "卡爾寫：這大致證明，這句話不是瑪麗．安東尼說的，",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "proof-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pale blue silk fan lying under a small heavy wooden mallet on a polished table, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "而是被人找了出來，拿去對付她的。"
+        }
+      ]
+    },
+    {
+      "id": "rueful",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, grinning with one eyebrow up, holding a thin plain booklet, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "你看，有意思了：目前找得到最早寫她的人，兩年後自己說，大概不是她。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "no-title",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small worn leather book with a blank plain cover lying closed on an empty library shelf, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "那本更老的書，叫什麼名字？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t103",
+          "text": "卡爾沒寫書名，我們也沒有找到。"
+        }
+      ]
+    },
+    {
+      "id": "people",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up an empty straw bread basket, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "還記得盧梭寫的是「鄉下人」嗎？",
+          "emotion": "回呼"
+        },
+        {
+          "id": "t105",
+          "text": "到了卡爾筆下，變成了「人民」。"
+        }
+      ]
+    },
+    {
+      "id": "sixty-years",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long winding country road through green fields, one small golden brioche resting on a weathered wooden fence post, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "你看，這句話在路上走了六十年，連聽話的對象都換了。"
+        }
+      ]
+    },
+    {
+      "id": "not-over",
+      "chapter": "一九〇七年，一份寫出名字的回憶錄",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one finger, a knowing look, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "故事到這裡還沒結束。有沒有哪一份紀錄，寫出了說話的人是誰？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "pastry-1903",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plate of flaky golden pastries beside a second thick plain-covered book on a sunny wooden table, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "先說一件小事：一九〇三年的英譯本，也還是酥皮點心。"
+        }
+      ]
+    },
+    {
+      "id": "countess",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a lavender feather quill resting on a very thick plain-covered book on a polished writing desk, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "四年後的一九〇七年，一位伯爵夫人的回憶錄出版了。"
+        }
+      ]
+    },
+    {
+      "id": "victoire",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round wooden embroidery hoop with a half-finished white daisy lying on a silk armchair in a sunny palace room, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "書裡寫出了名字：路易十五的女兒，維多利亞夫人。"
+        }
+      ]
+    },
+    {
+      "id": "victoire-kind",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round wooden embroidery hoop with a half-finished white daisy beside a teacup and a spool of pink thread, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "伯爵夫人寫她：不太聰明，但是極好心。"
+        },
+        {
+          "id": "t112",
+          "text": "那她說了什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "disette",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single empty wicker bread basket on a bare kitchen shelf in a poor cottage, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "她寫，在一次缺糧的時候，維多利亞夫人聽人說起窮人沒有麵包，"
+        }
+      ]
+    },
+    {
+      "id": "tears",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a lace handkerchief damp with tears lying beside a round embroidery hoop on a silk armchair, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "含著眼淚說：「天啊，要是他們肯將就，吃肉派的酥皮，就好了！」",
+          "emotion": "好心又天真"
+        }
+      ]
+    },
+    {
+      "id": "crust",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a golden meat pie with a thick flaky crust on a white plate, one slice cut out to show the filling, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "酥皮，就是包在肉派外面的那一層。"
+        }
+      ]
+    },
+    {
+      "id": "differs",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a slice of meat pie on a small plate, head tilted, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "這跟你聽過的版本，哪裡不一樣？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "kind",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a lace handkerchief folded beside a round embroidery hoop and a small potted daisy on a sunny windowsill, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "這個版本裡，說話的人不是冷漠，是好心。"
+        },
+        {
+          "id": "t118",
+          "text": "可是，這個版本可靠嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "heard-it",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small pink seashell lying beside a lavender feather quill on a polished writing desk, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "寫回憶錄的伯爵夫人，一七八一年才出生；這件事，是她聽來的。"
+        }
+      ]
+    },
+    {
+      "id": "late-pen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a lavender feather quill resting on a very thick plain-covered book beside a pair of reading spectacles, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "她一八三五年才動筆，寫的時候，已經五十多歲了。"
+        }
+      ]
+    },
+    {
+      "id": "cake-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall frosted cream cake on a glass stand in a sunny modern bakery window, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "至於蛋糕，是後來才成了那句話最通行的英文譯法。"
+        }
+      ]
+    },
+    {
+      "id": "rewind",
+      "chapter": "書裡的公主，不可能是她",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small 18th-century pastry shop front on a sunny cobbled street, its wooden door now ajar, golden brioches in the window, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "倒回去看：一個家教在里昂不敢買麵包，想起一位公主的話；",
+          "emotion": "慢一點"
+        }
+      ]
+    },
+    {
+      "id": "rewind-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long winding country road through green fields, a brown tricorn hat and a brown fur hat resting on two fence posts, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "四十多年後，這段話印進他的書；將近六十年後，才被寫到她名下。"
+        }
+      ]
+    },
+    {
+      "id": "needed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small brioche in her palm, smiling gently, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "我們覺得，這句話一直在找主人，是因為大家需要一位不知道麵包多貴的公主。",
+          "emotion": "像跟朋友說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "asks",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a pale blue silk fan, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "所以，開頭那個問題：瑪麗皇后真的說過嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed pale blue silk fan lying on a wooden table beside a small golden brioche, soft indoor daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "她這一輩子有沒有隨口說過什麼，紀錄沒辦法告訴我們。"
+        }
+      ]
+    },
+    {
+      "id": "verdict-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty wooden baby cradle in a sunny room, a small golden brioche resting on its folded pale blue blanket, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "可是，書裡這句話，說的不可能是她。",
+          "emotion": "放慢，篤定"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, closing a thick plain-covered book with a satisfied smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "這份檔案，存檔。",
+          "emotion": "收尾，乾脆"
+        },
+        {
+          "id": "t129",
+          "text": "你第一次聽到這句話，是在哪裡、聽誰說的？留言告訴我。",
+          "emotion": "問句上揚，像在聊天"
+        }
+      ]
+    },
+    {
+      "id": "subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, waving goodbye with one hand, a warm smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t130",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案，就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}

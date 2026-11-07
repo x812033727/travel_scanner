@@ -15,13 +15,25 @@
     "performance": "像跟一個騎山葉、也學過琴的朋友聊天：開場對觀眾、帶點挑釁；富士山那段加快；風琴那章輕快，「不能用」收乾；螺旋槳數字放慢；轟炸壓低，「諷刺」放慢；極機密命令壓低神祕，茶壺與顏色帶笑；比賽亮起來；持股數字清楚，「倒過來」落地；台灣那章親近；結尾乾脆。"
   },
   "subtitles": {
-    "burn_in": true
+    "burn_in": false
   },
   "look": {
     "preset": "cute-mystery"
   },
   "theme": "paper",
-  "characters": [],
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
   "music": {
     "prompt": "light, curious, a little mysterious, no vocals",
     "gain_db": -20,
@@ -30,10 +42,10 @@
   "scenes": [
     {
       "id": "open-you",
-      "chapter": "富士山的起跑線上，一台鋼琴公司賣的機車",
+      "chapter": "兩個山葉，是不是同一家？",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young man in a half helmet sitting on a small scooter at a quiet street corner on an overcast evening, facing us with a curious smile, a doorway with a blank signboard behind him, soft light, full frame",
+        "prompt": "Medium shot of a young Taiwanese woman on a sunny pavement holding up a scooter key, a parked scooter on her left and a brown upright piano on her right, grinning",
         "camera": "push in",
         "visual": "still"
       },
@@ -41,76 +53,39 @@
         {
           "id": "t001",
           "text": "你在台灣一定認得兩個山葉：一個在機車行，一個在音樂教室。",
-          "emotion": "對觀眾說，帶一點挑釁"
+          "emotion": "對觀眾說，像在問一個朋友"
         }
       ]
     },
     {
-      "id": "open-you-b",
+      "id": "open-count",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a little girl at an upright piano in a small music classroom pressing one key with one finger, wide-eyed and facing forward, an open songbook with nothing printed on it, soft daylight from the left",
+        "prompt": "Wide shot of a long row of scooters waiting side by side at a sunny Taiwanese street corner, riders in half helmets, seen from the side",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "t002",
-          "text": "二〇二五年台灣新掛牌的機車，有十二萬五千多台是山葉。",
+          "text": "二〇二五年，台灣新掛牌的機車，有十二萬五千多台是山葉。",
           "emotion": "數字放慢"
         }
       ]
     },
     {
-      "id": "open-race",
+      "id": "open-belief",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a steep gravel mountain road on the slope of a huge snow-capped volcano in 1955, one rider in goggles leaning forward on a small chestnut-brown and ivory motorcycle, gritting his teeth, tiny spectators along the road, overcast sky",
-        "camera": "pan right",
+        "prompt": "Medium shot of a smiling grandmother in a bright music room pointing proudly from a brown upright piano to a small scooter parked by the open door",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "text": "一九五五年七月十日，富士山的登山賽。",
-          "emotion": "進場景，沉穩",
-          "id": "t003"
-        },
-        {
-          "text": "前兩屆的冠軍，都是本田。",
-          "emotion": "停一拍",
-          "id": "t004"
-        }
-      ]
-    },
-    {
-      "id": "open-race-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a 1950s flagman in a cap standing on a gravel road holding a raised flag beside a small chestnut-brown and ivory motorcycle at a chalk start line, excited face, overcast light, full frame",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "text": "起跑線上，有一款新來的小機車。",
-          "emotion": "壓低，等起跑",
-          "id": "t005"
-        }
-      ]
-    },
-    {
-      "id": "open-odd",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a 1950s clerk in a dark suit in a quiet office holding up a sales leaflet with a small motorcycle drawing and no words, eyebrows raised in disbelief, grey daylight",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "text": "怪的是，這台車不到五個月前就開賣了，",
-          "emotion": "升級，放慢",
-          "id": "t006"
+          "id": "t003",
+          "text": "很多人以為，機車那個山葉，是鋼琴那個山葉開的子公司。",
+          "emotion": "輕鬆，像在講大家都知道的事"
         }
       ]
     },
@@ -118,31 +93,48 @@
       "id": "open-piano",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a piano tuner in a long apron standing in a 1950s showroom between a grand piano and a small motorcycle, one hand resting on each, puzzled and facing us, soft hazy light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t007",
-          "text": "賣它的，是一家做鋼琴的公司。",
-          "emotion": "揭曉，停一拍"
-        }
-      ]
-    },
-    {
-      "id": "open-tease-machines",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elderly factory worker in a cap pulling a canvas sheet off a heavy metal lathe inside a wooden shed on a wooded hillside, relieved and turned toward us, rows of covered machines behind him, grey morning light through the door",
+        "prompt": "Medium shot of a piano shop salesman in a bow tie proudly presenting a small 1950s motorcycle with a chestnut-brown tank, ivory mudguards and thin spoked wheels between two grand pianos",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "text": "一場戰爭，給這家鋼琴公司留下了一樣它沒想到的東西。",
-          "emotion": "收著",
-          "id": "t008"
+          "id": "t004",
+          "text": "可是你想不到，山葉的第一台機車，是一家做鋼琴的公司賣的。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-tease-war",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain grey box tied with a red ribbon sitting alone on a floor of grey ash and charred planks, soft overcast daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "更怪的是，一場戰爭，給這家鋼琴公司留下了一樣它沒想到的東西。",
+          "emotion": "升級，收著"
+        }
+      ]
+    },
+    {
+      "id": "open-tease-race",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a rider in a brown leather helmet and big round goggles on a small chestnut-brown motorcycle at the foot of a snowy volcano, sunny morning",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "分出來的機車公司，成立才九天，就跑去富士山，跟本田比了一場。",
+          "emotion": "加快，帶點看熱鬧"
         }
       ]
     },
@@ -150,55 +142,69 @@
       "id": "open-tease-shares",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an office clerk in a grey suit at a desk holding two thick stacks of certificates, one in each hand, weighing them with a puzzled frown, muted morning light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a wooden seesaw on a sunny lawn, a small toy piano resting on the low end and a brown leather motorcycle helmet up on the high end",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "text": "而今天，鋼琴和機車這兩個山葉的位置，跟當年已經很不一樣了。",
-          "emotion": "意味深長",
-          "id": "t009",
-          "say": "而今天，這兩家都叫山葉的公司，位置跟當年很不一樣了。",
-          "say_for": "b47cb0a41cba"
+          "id": "t007",
+          "text": "而今天，這兩個山葉的位置，跟當年已經很不一樣了。",
+          "emotion": "意味深長"
         }
       ]
     },
     {
       "id": "open-promise",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "text": "1 個名字，2 家公司",
-        "kicker": "山葉：鋼琴與機車",
-        "sub": "1887 年，從一台壞掉的風琴開始"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a shiny steel tuning fork with a curious smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t010",
-          "text": "這份檔案，一百三十多年的帳，一頁一頁翻給你看。",
-          "emotion": "承諾句，篤定"
-        },
+          "id": "t008",
+          "text": "今天我們就來聊聊：做鋼琴的山葉和你騎的山葉，到底是不是同一家公司？",
+          "emotion": "承諾句，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "era-meiji",
+      "chapter": "一八八七年，一台被打槍的風琴",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet old street of low wooden houses with grey tiled roofs and paper windows in the Meiji era, a clear spring morning",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
         {
-          "id": "t011",
-          "text": "做鋼琴的山葉和你騎的山葉，到底是不是同一家公司？",
-          "emotion": "問句上揚，停一拍"
+          "id": "t009",
+          "text": "故事要回到一八八七年，明治時代的濱松。",
+          "emotion": "沉穩進場景"
         }
       ]
     },
     {
       "id": "organ-school",
-      "chapter": "一八八七年，一台被打槍的風琴",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a Meiji-era wooden schoolroom with rows of low desks, a man with a neat moustache in a dark Western suit kneeling beside an old reed organ with its back panel off, peering inside with keen interest, grey light from tall windows",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Medium shot of an old wooden reed organ with its lid open standing in an empty bright Meiji-era classroom with rows of small wooden desks",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t012",
-          "text": "那台機車之前六十八年，濱松一間小學的風琴壞了。",
-          "emotion": "接住開場，輕快"
+          "id": "t010",
+          "text": "那一年，濱松一間小學的風琴壞了。"
         }
       ]
     },
@@ -206,17 +212,33 @@
       "id": "organ-man",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of the moustached Meiji-era man in a dark suit unrolling a leather tool roll on a school desk, confident smile facing us, a pocket watch and small screwdrivers on the roll, overcast daylight",
-        "camera": "pan right",
+        "prompt": "Close-up of a dark brown bowler hat resting on an open wooden tool case full of small brass tools beside an old reed organ, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "學校找來一個修醫療器材的男人，叫山葉寅楠。",
+          "emotion": "介紹人物",
+          "say": "學校找來一個修醫療器材的男人，叫山葉銀南。",
+          "say_for": "d7c9adb10962"
+        }
+      ]
+    },
+    {
+      "id": "organ-medical",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands in dark charcoal sleeves fixing an old brass microscope with a tiny screwdriver on a wooden bench, soft window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t013",
-          "text": "學校找來一個修醫療器材的男人，叫山葉寅楠。",
-          "emotion": "介紹人物",
-          "say": "學校找來一個修醫療器材的男人，名字叫做山葉銀南。",
-          "say_for": "d7c9adb10962"
+          "id": "t012",
+          "text": "他從小親近西洋的科學技術，後來修起醫療器材，常跑濱松的醫院。"
         }
       ]
     },
@@ -224,13 +246,13 @@
       "id": "organ-copy",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of the moustached man's hand sketching the inside of a reed organ on a sheet of paper with a pencil, the open organ beside the paper, his face half visible and concentrating, soft grey daylight",
-        "camera": "tilt down",
+        "prompt": "Close-up of two hands in dark charcoal sleeves sketching with a pencil on a blank drawing board beside the open insides of a reed organ, morning sun",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t014",
+          "id": "t013",
           "text": "他把風琴修好了，還順手做了一件事：把裡面整個畫下來。",
           "emotion": "帶一點好笑"
         }
@@ -240,29 +262,32 @@
       "id": "organ-proto",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of the moustached Meiji-era man in shirtsleeves in a small workshop beside a newly built reed organ, hands on his hips, proud and facing forward, wood shavings on the floor, lamp light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Medium shot of a brand-new shiny reed organ standing among curls of wood shavings in a small sunny workshop, a dark brown bowler hat on its lid",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t015",
-          "text": "兩個月後，他照著那份圖，做出了自己的第一台風琴。",
-          "emotion": "敘述"
+          "id": "t014",
+          "text": "兩個月後，他照著那份圖，做出了自己的第一台風琴。"
         }
       ]
     },
     {
-      "id": "organ-proto-b",
+      "id": "organ-hook",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of the moustached man scratching his head beside the new organ, a worried look toward us, an empty road map pinned to the workshop wall, lamp light",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head with one finger on her chin, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t016",
+          "id": "t015",
           "text": "問題來了：做出來的風琴，要誰說它能用？",
           "emotion": "問句"
         }
@@ -272,13 +297,14 @@
       "id": "organ-carry",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a misty mountain pass on an old stone road, the moustached man in a straw hat carrying a reed organ hung from a long shoulder pole, straining but smiling, cedar trees in grey fog, overcast light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Wide shot of a wooden shoulder pole with a small reed organ tied to one end, leaning on a rock beside a steep mountain path, a dark brown bowler hat on the rock, sunny",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t017",
+          "id": "t016",
           "text": "據說，他用扁擔挑著風琴，翻過箱根的山，一路走到東京。",
           "emotion": "轉述傳說"
         }
@@ -288,18 +314,30 @@
       "id": "organ-judge",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stern Meiji-era official in a black frock coat seated at the reed organ in a high-ceilinged hall, pressing a key and wincing at the sound, soft grey light from tall windows",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a tall grey silk top hat on a polished desk in a bright Meiji-era hall, a small reed organ standing behind it, gentle sunlight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "他要找的評審，是東京藝術大學的前身。"
+        }
+      ]
+    },
+    {
+      "id": "organ-verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small reed organ with a sad deflated red balloon tied to its side, standing in a bright empty wooden hall, bright morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
           "id": "t018",
-          "text": "他要找的評審，是東京藝術大學的前身。",
-          "emotion": "敘述"
-        },
-        {
-          "id": "t019",
           "text": "評語只有一句：外型不錯，音不準，不能用。",
           "emotion": "揭曉，乾"
         }
@@ -309,13 +347,16 @@
       "id": "organ-reject",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of the moustached Meiji-era man sitting on a bench beside his organ in an empty corridor, shoulders slumped, crestfallen and facing us, soft grey light",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shrugging with both palms up and a sympathetic wince, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t020",
+          "id": "t019",
           "text": "走了那麼遠，換來一句不能用。換成你，你會怎麼做？",
           "emotion": "對觀眾，問句"
         }
@@ -325,17 +366,17 @@
       "id": "organ-gate",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a Meiji-era school building with a stone gate on a mild cloudy day, one student in a dark uniform walking out of the gate carrying a violin case, curious and turned toward us",
+        "prompt": "Medium shot of a music student in a striped hakama playing a violin with eyes closed in a long bright wooden school corridor",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t021",
-          "text": "先記住東京藝大這個名字，六十多年後它還會再出現一次。",
+          "id": "t020",
+          "text": "先記住東京藝大這個名字，六十多年後，它還會再出現一次。",
           "emotion": "前向鉤子，放慢",
-          "say": "先記住東京藝術大學這個名字，六十多年後它還會再出現一次。",
-          "say_for": "b2e026aa67e6"
+          "say": "先記住東京藝術大學這個名字，六十多年後，它還會再出現一次。",
+          "say_for": "88665ea77b74"
         }
       ]
     },
@@ -343,15 +384,15 @@
       "id": "fork-study",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of the moustached man in a rented room at night with his eyes closed, holding a two-pronged steel tuning fork to his ear and concentrating hard, lamp light, full frame",
+        "prompt": "Close-up of a dark brown bowler hat resting on a stack of thick plain-covered music books on a wooden desk, a steel tuning fork beside them, morning sun",
         "camera": "tilt down",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t022",
-          "text": "他沒有回家，留在東京一個月，從頭學音樂理論。",
-          "emotion": "敘述"
+          "id": "t021",
+          "text": "他沒有回家，留在東京一個月，從頭學音樂理論。"
         }
       ]
     },
@@ -359,13 +400,16 @@
       "id": "fork-study-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of the moustached man's face at a desk, tapping a tuning fork on the table edge and smiling to himself, a notebook of ruled staves, lamp light from the right",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, giving a small thumbs-up with an admiring smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t023",
+          "id": "t022",
           "text": "我讀到這裡滿佩服他的：被打槍，不是回家生氣，是坐下來學。",
           "emotion": "旁白自己的反應"
         }
@@ -375,18 +419,31 @@
       "id": "fork-second",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of the stern Meiji-era official in a frock coat playing the reed organ again in the high-ceilinged hall, eyebrows lifted in surprise, a faint smile, soft grey daylight",
+        "prompt": "Close-up of a tall grey silk top hat on a polished desk facing a second, glossier reed organ in a bright Meiji-era hall, mild afternoon sun",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "第二台送去東京，這一次，評審怎麼說？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "fork-praise",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a glossy small reed organ in a bright wooden hall with a big round red balloon floating high above it, sunny daylight",
         "camera": "pan left",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
           "id": "t024",
-          "text": "第二台送去，這一次評審怎麼說？",
-          "emotion": "問句"
-        },
-        {
-          "id": "t025",
           "text": "前次的缺點全部去除，可以取代進口貨。",
           "emotion": "亮起來"
         }
@@ -396,13 +453,13 @@
       "id": "fork-close",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of the moustached man at a wooden workbench holding up a two-pronged steel tuning fork and looking at it with wonder, small brass organ reeds on the bench, dull afternoon light",
+        "prompt": "Close-up of a hand in a dark charcoal sleeve holding up a shiny steel tuning fork beside the white keys of a reed organ, soft daylight",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t026",
+          "id": "t025",
           "text": "他學調音的時候，手裡拿的是一支音叉。",
           "emotion": "放慢"
         }
@@ -412,15 +469,17 @@
       "id": "fork-archive",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a modern woman archivist in a cardigan in a company archive room holding up an old tuning fork in white gloves, thoughtful and facing us, mild light from a high skylight",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a tuning fork to her ear, listening, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t027",
-          "text": "山葉公司自己推測，音叉標誌的點子，就是從這段日子來的。",
-          "emotion": "敘述"
+          "id": "t026",
+          "text": "山葉公司自己推測，音叉標誌的點子，就是從這段日子來的。"
         }
       ]
     },
@@ -428,15 +487,15 @@
       "id": "fork-company",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a Meiji-era two-storey wooden workshop with an empty signboard over the door, the moustached man standing in front with his arms folded, satisfied and facing us, overcast sky",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Wide shot of a large new wooden workshop with tall windows and a grey tiled roof on a sunny day, piles of fresh timber stacked in the yard",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t028",
-          "text": "一八九七年，他成立日本樂器製造，當第一任社長。",
-          "emotion": "敘述"
+          "id": "t027",
+          "text": "一八九七年，他成立日本樂器製造，當第一任社長。"
         }
       ]
     },
@@ -444,17 +503,35 @@
       "id": "fork-badge",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a craftsman's hands pinning a small plain round brass badge onto the lapel of a dark Meiji-era jacket, the man's proud chin visible above it, soft daylight",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of one shiny steel tuning fork lying on a red velvet cushion on a polished wooden desk, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "隔年，那一支音叉，被定成了公司的社章。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "fork-remember",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a tuning fork with a playful wink, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
           "id": "t029",
-          "text": "隔年，音叉定成了公司的社章。",
-          "emotion": "輕",
-          "say": "隔年，那一支音叉，被定成了公司的社章。",
-          "say_for": "22dbf7d12514"
+          "text": "先記住這支音叉，後面它會被另一家公司一起帶走。",
+          "emotion": "前向鉤子"
         }
       ]
     },
@@ -462,15 +539,15 @@
       "id": "piano-grand",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a long workshop hall with one finished grand piano in the middle, a young apprentice polishing its lid and smiling out at us, grey daylight from a skylight",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Medium shot of a brown upright piano and a glossy grand piano side by side in a bright wooden workshop full of curls of wood shavings",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
           "id": "t030",
-          "text": "一九〇〇年開始做直立鋼琴，兩年後，平台鋼琴也做出來了。",
-          "emotion": "敘述"
+          "text": "一九〇〇年開始做直立鋼琴，兩年後，平台鋼琴也做出來了。"
         }
       ]
     },
@@ -478,9 +555,10 @@
       "id": "piano-wood",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a craftsman's hands pressing thin layers of glued wood into a curved clamp form, his focused face leaning over it, sawdust in the air, cloudy light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Close-up of a steel wood plane resting on a long curved plank of reddish wood, curls of shavings piled around it, warm workshop daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
@@ -495,20 +573,51 @@
       "chapter": "一九二一年，陸軍來訂螺旋槳",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1920s army officer in a peaked cap and khaki uniform standing in a factory office, a rolled drawing under his arm, a stern stare straight ahead, grey daylight",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of a pair of polished black army boots standing on the wooden floor of a sunny piano workshop beside a grand piano leg",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
           "id": "t032",
-          "text": "那個客人，是日本陸軍。",
+          "text": "那個你想不到的客人，就是日本陸軍。",
           "emotion": "揭曉"
-        },
+        }
+      ]
+    },
+    {
+      "id": "prop-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a big two-bladed wooden aircraft propeller leaning against a glossy glossy grand piano in a sunny wooden workshop",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
         {
           "id": "t033",
-          "text": "一九二一年，陸軍要日本樂器做飛機的木頭螺旋槳。",
-          "emotion": "敘述"
+          "text": "一九二一年，陸軍要日本樂器做飛機的木頭螺旋槳。"
+        }
+      ]
+    },
+    {
+      "id": "prop-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a thin stack of wooden planks pressed together, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "陸軍為什麼偏偏找一家做鋼琴的？",
+          "emotion": "問句"
         }
       ]
     },
@@ -516,36 +625,16 @@
       "id": "prop-layers",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a craftsman's hands spreading glue on thin boards of dark mahogany and pale walnut stacked on a bench, his surprised face lit from the side, soft hazy light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Extreme close-up of the cut end of a thick laminated wooden block showing neat stripes of dark and light reddish wood, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
-        {
-          "id": "t034",
-          "text": "為什麼找做鋼琴的？",
-          "emotion": "問句"
-        },
         {
           "id": "t035",
-          "text": "因為木頭螺旋槳，是一層一層壓出來的，",
+          "text": "因為木頭螺旋槳，是用桃花心木和胡桃木，一層一層壓出來的。",
           "emotion": "解釋"
-        }
-      ]
-    },
-    {
-      "id": "prop-layers-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a worker in an apron carrying a stack of thin mahogany and walnut boards across a workshop, smiling over the top of the stack at us, grey daylight from a doorway",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t036",
-          "text": "用的是桃花心木和胡桃木。",
-          "emotion": "敘述"
         }
       ]
     },
@@ -553,13 +642,14 @@
       "id": "prop-memo",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an old hand writing with a fountain pen on a manuscript sheet with empty ruled squares, a pair of round glasses resting beside it on a desk, mild daylight",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Close-up of a closed thick plain-covered company magazine and a black fountain pen lying on a polished wooden desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t037",
+          "id": "t036",
           "text": "山葉機車的一位老董事，後來在公司刊物裡寫得很直接：",
           "emotion": "轉述"
         }
@@ -569,13 +659,14 @@
       "id": "prop-memo-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a fountain pen nib underlining a row of plain squares on a manuscript page, an ink bottle and a teacup at the edge of the desk, soft daylight",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Top-down view of a workbench with a smooth wooden propeller blade lying next to a glossy piano lid, a wood plane and curls of shavings, soft light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t038",
+          "id": "t037",
           "text": "這種精密木工，最適合的就是做鋼琴的技術。",
           "emotion": "引述，篤定"
         }
@@ -585,80 +676,67 @@
       "id": "prop-sand",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a worker in an apron sanding the long curved blade of a laminated wooden propeller held in a vice, a calm smile turned toward us, overcast skylight",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t039",
-          "text": "你想想，讓琴發聲的木頭和讓飛機飛的木頭，出自同一雙手。",
-          "emotion": "對觀眾，帶點驚奇"
-        }
-      ]
-    },
-    {
-      "id": "prop-metal",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a 1930s factory worker in a cap operating a large lathe that turns a shiny metal propeller hub, light glinting on his goggles, focused, grey light from high windows",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t040",
-          "text": "規模做到多大？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "prop-stats",
-      "template": "stats",
-      "data": {
-        "title": "1939 年，日本做了 4,033 支螺旋槳",
-        "stats": [
-          {
-            "value": "2,567",
-            "label": "日本樂器"
-          },
-          {
-            "value": "1,466",
-            "label": "住友金屬"
-          },
-          {
-            "value": "約 60%",
-            "label": "鋼琴公司的占比"
-          }
-        ],
-        "source": "やまももの木は知っている 001（山葉發動機社內報連載，1978）；查核 2026-10-31"
-      },
-      "lines": [
-        {
-          "id": "t041",
-          "text": "據那份刊物的整理，一九三九年全日本做了四千零三十三支螺旋槳，",
-          "emotion": "數字放慢"
-        },
-        {
-          "id": "t042",
-          "text": "其中兩千五百六十七支出自這家鋼琴公司，大約六成。",
-          "emotion": "數字落地"
-        }
-      ]
-    },
-    {
-      "id": "prop-floor",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a vast factory hall with rows of wooden propellers hanging from overhead rails, one young worker in front gazing up at them with his mouth open, grey light from a sawtooth roof",
+        "prompt": "Close-up of two craftsman hands sanding a glossy wooden propeller blade, a piano lid resting behind it, sawdust floating in the sunlight",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t043",
-          "text": "我第一次讀到這裡，以為看錯了。",
+          "id": "t038",
+          "text": "讓琴發聲的木頭，和讓飛機飛的木頭，出自同一雙手，你想得到嗎？",
+          "emotion": "對觀眾，帶點驚奇"
+        }
+      ]
+    },
+    {
+      "id": "prop-total",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a vast bright factory hall with long rows of wooden propellers hanging from overhead rails, light from a sawtooth roof",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "規模做到多大？據那份刊物，一九三九年全日本做了四千零三十三支，",
+          "emotion": "問句，數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "prop-share",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a very tall towering stack of wooden propellers beside a small brown upright piano in a sunny workshop",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "其中兩千五百六十七支，出自這家鋼琴公司，大約六成。",
+          "emotion": "數字落地"
+        }
+      ]
+    },
+    {
+      "id": "prop-react",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, gasping with one hand over her mouth, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "我第一次讀到這個數字，還以為自己看錯了。",
           "emotion": "旁白自己的反應"
         }
       ]
@@ -667,20 +745,15 @@
       "id": "prop-honda",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a half-built metal machine on a workshop floor at night, a mechanic's gloved hand tightening a bolt beside a bare blueprint pinned to the wall, lamp light from above",
-        "camera": "tilt up",
+        "prompt": "Extreme close-up of a leather-gloved hand tightening a big steel bolt on a heavy grey machine, gears and a wooden propeller blade filling the frame",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t044",
+          "id": "t042",
           "text": "更怪的是，據那位老董事的回憶，還有一個外人被請來，",
           "emotion": "升級"
-        },
-        {
-          "id": "t045",
-          "text": "幫忙設計螺旋槳的加工機。",
-          "emotion": "敘述"
         }
       ]
     },
@@ -688,13 +761,32 @@
       "id": "prop-honda-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a half-built metal machine under a dust sheet on a workshop floor at night, a cap and a pair of work gloves left on a stool beside it, lamp light",
+        "prompt": "Medium shot of a half-built heavy machine half covered by a grey cloth beside an unfinished wooden propeller blade in a sunny workshop",
         "camera": "push in",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t046",
+          "id": "t043",
+          "text": "幫忙設計做螺旋槳用的專用加工機。"
+        }
+      ]
+    },
+    {
+      "id": "prop-honda-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pointing one finger up with a sly grin, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t044",
           "text": "他叫本田宗一郎。對，就是後來那個本田。",
           "emotion": "帶一點好笑"
         }
@@ -704,19 +796,32 @@
       "id": "prop-quake",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a factory worker in a cap steadying himself against a wooden pillar as hanging lights swing above him, startled and facing us, dust falling, lamp light at night",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Wide shot of a long crack running across a dusty factory yard in front of a tilted wooden workshop, grey overcast daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t047",
-          "text": "然後，戰爭打到了濱松。",
+          "id": "t045",
+          "text": "然後，戰爭打到了濱松。一九四四年底，先是大地震，",
           "emotion": "壓低"
-        },
+        }
+      ]
+    },
+    {
+      "id": "prop-raid",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of thick grey smoke rising over the tiled roofs of a long wooden factory under a pale overcast sky",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
         {
-          "id": "t048",
-          "text": "一九四四年底先是大地震，隔年五月，空襲炸到了工廠。",
+          "id": "t046",
+          "text": "到了隔年五月，美軍的空襲炸到了工廠。",
           "emotion": "加快"
         }
       ]
@@ -725,13 +830,14 @@
       "id": "prop-quake-b",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a long wooden factory building under a heavy grey sky, one guard in a helmet standing at the gate looking up anxiously",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Wide shot of a lone brown upright piano standing in an empty smoky factory yard under a pale grey sky",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t049",
+          "id": "t047",
           "text": "一家做樂器、也做螺旋槳的工廠，最後會剩下什麼？",
           "emotion": "問句，收著"
         }
@@ -742,13 +848,14 @@
       "chapter": "一九四五年，燒掉的是做樂器的機器",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a wooden factory shed burning at night seen from a dark field, one worker in a cap standing in the foreground with a hand over his mouth, the fire glow on his face",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of charred wooden propeller blades lying in grey ash among fallen burnt beams, thin smoke drifting, overcast daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t050",
+          "id": "t048",
           "text": "五月那場空襲，天龍工廠裡做木頭螺旋槳的廠房全燒了。",
           "emotion": "收乾"
         }
@@ -758,13 +865,14 @@
       "id": "war-ship",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a night watchman on a factory roof gripping the railing and staring out to sea in fear, orange flashes on the dark horizon behind him, faint light from the flashes",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Wide shot of a grey warship firing its big guns from a calm sea toward a distant shore, puffs of white smoke, hazy daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t051",
+          "id": "t049",
           "text": "七月底的一個晚上，從海上打來的艦砲，直接命中工廠。",
           "emotion": "壓低"
         }
@@ -774,13 +882,13 @@
       "id": "war-ruin",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a long wooden factory building under a heavy grey sky, one guard in a helmet standing at the gate looking up anxiously",
-        "camera": "pan right",
+        "prompt": "Medium shot of a worker in a grey cotton work jacket standing in the charred ruins of a wooden factory, shoulders slumped, overcast daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t052",
+          "id": "t050",
           "text": "換成你是社長，大概覺得什麼都沒了吧？",
           "emotion": "對觀眾，問句"
         }
@@ -790,29 +898,33 @@
       "id": "war-hill",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a wrinkled old factory worker in a cap pulling a canvas sheet off a heavy metal lathe inside a wooden shed, relieved and turned toward us, grey morning light through the door, full frame",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger with a knowing smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t053",
+          "id": "t051",
           "text": "偏偏，有一批機器，早就不在工廠裡了。",
           "emotion": "轉折"
         }
       ]
     },
     {
-      "id": "war-card",
-      "template": "big",
+      "id": "war-shed",
+      "template": "shot",
       "data": {
-        "text": "約 800 台",
-        "kicker": "疏散到佐久良工廠的工作母機",
-        "sub": "艦砲打來時，機器大多已經搬走"
+        "prompt": "Wide shot of a quiet wooden shed on a green hillside, its wide doors open on rows of heavy grey lathes, bright morning",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t054",
+          "id": "t052",
           "text": "大約八百台工作母機，先疏散到了山邊的佐久良工廠。",
           "emotion": "數字放慢，鬆一口氣"
         }
@@ -822,20 +934,16 @@
       "id": "war-ash",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a worker's hand lifting a charred plank from a pile of grey ash beside the black skeleton of a woodworking bench, his shocked face behind it, overcast morning light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a burnt piano keyboard and blackened woodworking saws half buried in grey ash inside a ruined workshop, overcast daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t055",
-          "text": "那燒掉的是什麼？",
-          "emotion": "問句"
-        },
-        {
-          "id": "t056",
-          "text": "做樂器的木工機械和設備，全部燒光。",
-          "emotion": "揭曉，收乾"
+          "id": "t053",
+          "text": "那燒掉的是什麼？做樂器的木工機械和設備，全部燒光。",
+          "emotion": "問句，揭曉收乾"
         }
       ]
     },
@@ -843,52 +951,52 @@
       "id": "war-key",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young worker crouching in grey ruins holding up a single scorched piano key in his open palm, staring at it sadly, overcast light",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Close-up of one charred piano key lying in grey ash beside a shiny unharmed steel gear, soft overcast daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t057",
+          "id": "t054",
           "text": "那位老董事自己都用了一個詞：諷刺。",
           "emotion": "放慢"
         }
       ]
     },
     {
-      "id": "war-key-b",
+      "id": "war-callback",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of the elderly worker in the hillside shed patting a heavy lathe like an old friend, grinning out at us, grey daylight through the door",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, untying a red ribbon from a plain grey box, delighted, against a plain wall, in soft daylight",
         "camera": "pan right",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
+          "id": "t055",
           "text": "還記得開頭說的那樣東西嗎？就是這批做螺旋槳的機器。",
-          "emotion": "回呼",
-          "id": "t058"
+          "emotion": "回呼"
         }
       ]
     },
     {
-      "id": "war-table-b",
+      "id": "war-table",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a small boy kneeling at a low oval dining table striking a toy xylophone with a wooden mallet, laughing, soft daylight from a paper screen",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Close-up of a low round wooden dining table with a small wooden xylophone resting on top, in a bare sunny room with tatami mats",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t059",
+          "id": "t056",
           "text": "這段時間，他們最早做出來的東西，是矮飯桌和木琴。",
           "emotion": "帶一點好笑"
-        },
-        {
-          "id": "t060",
-          "text": "從螺旋槳做到飯桌，這個落差，你自己感受一下。",
-          "emotion": "開玩笑"
         }
       ]
     },
@@ -896,20 +1004,15 @@
       "id": "war-head",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a cold cup of tea beside a tall stack of files on a dark desk at night, a man's hand in a suit sleeve drumming its fingers on the files, lamp light",
-        "camera": "pan left",
+        "prompt": "Top-down close-up of two hands in dark suit sleeves drumming fingers on a desk beside a heavy steel gear and a spark plug, morning sun",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t061",
-          "text": "社長很頭痛。",
-          "emotion": "帶一點同情"
-        },
-        {
-          "id": "t062",
-          "text": "問題來了：這些留下來的機器，能拿來做什麼？",
-          "emotion": "問句，停一拍"
+          "id": "t057",
+          "text": "社長很頭痛：這些留下來的機器，能拿來做什麼？",
+          "emotion": "帶一點同情，問句"
         }
       ]
     },
@@ -918,13 +1021,13 @@
       "chapter": "一九五三年，一道極機密的命令",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a hand in a dark suit sleeve tapping one finger on a single sheet of paper on a desk at night, a desk lamp and a pair of glasses folded beside it, lamp light",
-        "camera": "tilt up",
+        "prompt": "Top-down close-up of a hand in a dark suit sleeve sliding a sealed plain brown envelope across a polished desk, gentle sunlight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t063",
+          "id": "t058",
           "text": "一九五三年十一月七日，社長川上源一下了一道極機密的命令：",
           "emotion": "壓低，神祕"
         }
@@ -934,13 +1037,14 @@
       "id": "order-desk-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a sealed envelope with a plain wax seal being slid across a dark desk by a hand in a suit sleeve, a young secretary's startled eyes above it, lamp light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a small single-cylinder motorcycle engine sitting on a clean wooden workbench, a few spanners beside it, morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t064",
+          "id": "t059",
           "text": "試做機車的引擎，一年後正式量產。",
           "emotion": "篤定"
         }
@@ -950,17 +1054,15 @@
       "id": "order-hill",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a quiet wooden shed on a wooded hillside on a mild cloudy morning, one worker sweeping the doorway and glancing our way, rows of covered machines inside",
-        "camera": "drift",
+        "prompt": "Medium shot of an old factory worker with grey hair and braces oiling a heavy grey lathe inside a hillside wooden shed, sunny",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
+          "id": "t060",
           "text": "公司刊物的版本多一句：趁佐久良的機器還沒壞，要用起來。",
-          "emotion": "轉述",
-          "id": "t065",
-          "say": "在公司的內部刊物裡，還多了一句：趁佐久良工廠的機器還沒壞，要用起來。",
-          "say_for": "0c0d1513d5bb"
+          "emotion": "轉述"
         }
       ]
     },
@@ -968,15 +1070,18 @@
       "id": "order-hill-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an old lathe's hand wheel being turned by a gloved hand, a thin curl of metal coming off a small engine part, grey light from a shed door",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a heavy steel gear with a satisfied smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
+          "id": "t061",
           "text": "那位老董事後來寫：山葉機車會誕生，契機就是這批機器。",
-          "emotion": "揭曉，篤定",
-          "id": "t066"
+          "emotion": "揭曉，篤定"
         }
       ]
     },
@@ -984,19 +1089,15 @@
       "id": "order-timber",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a lumber yard on an overcast day with only a short stack of planks left, a young worker in a cap looking at the empty racks in dismay",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Wide shot of a nearly empty timber yard with only a few logs left in one small pile, soft overcast daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t067",
-          "text": "他自己說的理由是：",
-          "emotion": "轉述"
-        },
-        {
-          "id": "t068",
-          "text": "木材就那麼多，樂器不可能一直增產。",
+          "id": "t062",
+          "text": "他自己說的理由是：木材就那麼多，樂器不可能一直增產。",
           "emotion": "認真"
         }
       ]
@@ -1005,19 +1106,33 @@
       "id": "order-street",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1950s mechanic in overalls wiping his hands in front of a small motorcycle shop with a blank signboard, facing us with a proud grin, overcast afternoon",
-        "camera": "pull out",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning toward us with one eyebrow raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "可是你知道，那時候日本有多少家機車廠嗎？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "order-204",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowded 1950s street packed with small motorcycles and their riders, shop fronts with plain bare walls, clear morning light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t069",
-          "text": "可是你知道，那時候日本有多少家機車廠嗎？",
-          "emotion": "對觀眾，問句"
-        },
-        {
-          "id": "t070",
-          "text": "最多的時候，兩百零四家。",
+          "id": "t064",
+          "text": "最多的時候，全日本有兩百零四家。",
           "emotion": "數字落地"
         }
       ]
@@ -1026,13 +1141,13 @@
       "id": "order-rival",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1950s engineer in a cap holding a notebook in a busy motorcycle assembly hall, wide-eyed and turned toward us, rows of identical small motorcycles behind him, light from overhead skylights",
-        "camera": "pan left",
+        "prompt": "Wide shot of a busy 1950s factory floor where rows of workers assemble small motorcycles, daylight from high windows",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t071",
+          "id": "t065",
           "text": "一九五三年還剩四十二家，最大的是本田，一個月做三千兩百台。",
           "emotion": "數字放慢"
         }
@@ -1042,13 +1157,16 @@
       "id": "order-late",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young engineer at a crowded drawing table, nervous eyes toward us, holding a pencil over an unfinished drawing of a wheel, grey daylight",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, crossing her arms with a skeptical squint, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t072",
+          "id": "t066",
           "text": "一家做鋼琴的公司，這麼晚才擠進去，憑什麼？",
           "emotion": "問句"
         }
@@ -1058,20 +1176,16 @@
       "id": "order-teapot",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a bulky round cast-iron engine cylinder on a workbench beside a small clay teapot, an engineer's laughing face peeking from behind them, dull afternoon light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a chunky round finned engine cylinder sitting beside a black iron teapot on a wooden workbench, bright morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t073",
-          "text": "第一個汽缸，用的是鑄造鋼琴鐵骨的技術，",
-          "emotion": "帶一點驚奇"
-        },
-        {
-          "id": "t074",
-          "text": "被人取笑像個茶壺。",
-          "emotion": "開玩笑"
+          "id": "t067",
+          "text": "第一個汽缸，用的是鑄造鋼琴鐵骨的技術，被人取笑像個茶壺。",
+          "emotion": "帶一點驚奇，開玩笑"
         }
       ]
     },
@@ -1079,14 +1193,14 @@
       "id": "order-ship",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a new factory courtyard on a grey winter morning, one worker in a cap pushing a small chestnut-brown and ivory motorcycle out of a wide door, beaming at us",
-        "camera": "drift",
+        "prompt": "Medium shot of a cheerful worker wheeling a small 1950s motorcycle with a chestnut-brown tank, ivory mudguards and thin spoked wheels out of a wide wooden factory door into the sun",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t075",
-          "text": "開發不到一年，車子做出來了。",
+          "id": "t068",
+          "text": "開發不到一年，第一台車子就做出來了。",
           "emotion": "輕快"
         }
       ]
@@ -1095,29 +1209,31 @@
       "id": "order-ship-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a delivery man in a cap tying a small motorcycle onto the back of a 1950s truck in a factory yard, proud and facing forward, mild winter daylight",
+        "prompt": "Wide shot of a worker in overalls proudly patting a small 1950s motorcycle with a chestnut-brown tank, ivory mudguards and thin spoked wheels in front of a new factory, winter sun",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t076",
-          "text": "一九五五年二月十一日，它從日本樂器新蓋的濱名工廠出貨。",
-          "emotion": "敘述"
+          "id": "t069",
+          "text": "一九五五年二月十一日，它從日本樂器新蓋的濱名工廠出貨。"
         }
       ]
     },
     {
-      "id": "order-catalog",
+      "id": "order-brochure",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a 1950s salesman's hands holding open a sales catalogue with a drawing of a small motorcycle and empty white panels, his finger pointing at the lower right corner, pale afternoon light",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small closed plain brochure, grinning, against a plain wall, in soft daylight",
         "camera": "tilt down",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t077",
+          "id": "t070",
           "text": "開頭那件怪事就在這裡：型錄右下角印的公司名，是日本樂器。",
           "emotion": "回呼，揭曉"
         }
@@ -1127,22 +1243,17 @@
       "id": "order-paint",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of paint-stained hands mixing chestnut-brown and ivory paint on a wooden palette in an art studio, an easel with an unpainted card behind, soft north light",
-        "camera": "pull out",
+        "prompt": "Extreme close-up of a paint palette with chestnut-brown and ivory paint, a fingertip mixing them, the hand cut off at the wrist, mild afternoon sun",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t078",
-          "text": "那車身的顏色，是誰配的？",
-          "emotion": "問句"
-        },
-        {
-          "id": "t079",
-          "text": "還記得東京藝大這個名字嗎？",
-          "emotion": "回呼",
-          "say": "還記得東京藝術大學這個名字嗎？",
-          "say_for": "ef7126f10a24"
+          "id": "t071",
+          "text": "那車身的顏色，是誰配的？還記得東京藝大這個名字嗎？",
+          "emotion": "問句，回呼",
+          "say": "那車身的顏色，是誰配的？還記得東京藝術大學這個名字嗎？",
+          "say_for": "e989626e111c"
         }
       ]
     },
@@ -1150,15 +1261,15 @@
       "id": "order-paint-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a hand holding a chestnut-brown colour swatch against the fuel tank of a small motorcycle in an art studio, paint pots behind, soft daylight",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of open pots of chestnut-brown and ivory paint and two brushes beside a curved ivory motorcycle mudguard on a workbench, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t080",
-          "text": "配色的，是藝大美術那一邊的一位副教授，和他帶的學生。",
-          "emotion": "敘述"
+          "id": "t072",
+          "text": "配色的，是藝大美術那一邊的一位副教授，和他帶的學生。"
         }
       ]
     },
@@ -1166,13 +1277,14 @@
       "id": "order-colour",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1950s mechanic polishing the chestnut-brown and ivory fuel tank of a small motorcycle with a cloth, smiling proudly, cloudy light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a red dragonfly resting on the handlebar of a small chestnut-brown motorcycle, a green field softly blurred behind, sunny",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t081",
+          "id": "t073",
           "text": "它的綽號叫紅蜻蜓，可是到底什麼顏色，兩家公司寫得不一樣：",
           "emotion": "帶一點好笑"
         }
@@ -1182,13 +1294,14 @@
       "id": "order-colour-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1950s woman shop assistant holding two paint chips up beside a small motorcycle, tilting her head toward us in confusion, soft light from a doorway",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of two open paint pots side by side on a sunny workbench, one chestnut-brown with ivory, the other deep crimson, a brush resting across them",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t082",
+          "id": "t074",
           "text": "機車那家說栗子色配奶油色，鋼琴那家說胭脂紅。",
           "emotion": "加快"
         }
@@ -1198,15 +1311,16 @@
       "id": "order-price",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1950s salesman leaning on a small motorcycle in an empty showroom, chin in his hand, bored, a price card with nothing written on it on the handlebar, grey afternoon light",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Close-up of a thin flat empty leather purse lying open on a polished wooden shop counter beside a shop bell, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t083",
-          "text": "它還有一個問題：貴。",
-          "emotion": "停一拍"
+          "id": "t075",
+          "text": "它還有一個問題：貴。那時一二五的機車，平均賣十一、二萬日圓，",
+          "emotion": "停一拍，數字放慢"
         }
       ]
     },
@@ -1214,15 +1328,15 @@
       "id": "order-price-c",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a shopkeeper's hand laying coins and paper notes on a wooden counter next to a toy motorcycle, his wincing face behind, soft hazy light",
+        "prompt": "Medium shot of a bored salesman resting his chin on his hand beside a small 1950s motorcycle with a chestnut-brown tank, ivory mudguards and thin spoked wheels in an empty bright shop",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t084",
-          "text": "那時一二五的機車，平均賣十一、二萬日圓，它賣十三萬八千。",
-          "emotion": "數字放慢"
+          "id": "t076",
+          "text": "它賣十三萬八千。剛上市的時候，幾乎賣不動。",
+          "emotion": "收著"
         }
       ]
     },
@@ -1230,18 +1344,16 @@
       "id": "order-price-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a customer in a hat with raised eyebrows holding a thin wallet, a small motorcycle blurred behind him, overcast light",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hands on her hips with a challenging look, against a plain wall, in soft daylight",
         "camera": "tilt down",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t085",
-          "text": "剛上市的時候，幾乎賣不動。",
-          "emotion": "收著"
-        },
-        {
-          "id": "t086",
+          "id": "t077",
           "text": "換成你是社長，這台車你還敢繼續做嗎？",
           "emotion": "對觀眾，問句"
         }
@@ -1252,17 +1364,15 @@
       "chapter": "成立九天，就去爬富士山",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of two plain single-storey wooden factory buildings on a mild cloudy morning, one worker on a short ladder hanging an empty signboard over the door, grinning back at us",
-        "camera": "pull out",
+        "prompt": "Medium shot of two smiling workers wheeling a small 1950s motorcycle with a chestnut-brown tank, ivory mudguards and thin spoked wheels out of a piano workshop door into the sun",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t087",
+          "id": "t078",
           "text": "他們不但沒停，還把機車部門整個分了出去。",
-          "emotion": "接住，輕快",
-          "say": "他們不但沒有停下來，還把做摩托車的部門整個分了出去。",
-          "say_for": "22ae16067cbf"
+          "emotion": "接住，輕快"
         }
       ]
     },
@@ -1270,15 +1380,15 @@
       "id": "motor-found-a",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1950s office clerk stamping a thick document at a counter, then holding it up with a satisfied smile toward us, cloudy morning light from a doorway",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of a pair of shiny scissors cutting a red ribbon tied across the door of a small wooden workshop, sunny morning",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t088",
-          "text": "七月一日，山葉發動機成立。",
-          "emotion": "敘述"
+          "id": "t079",
+          "text": "一九五五年七月一日，山葉發動機成立。"
         }
       ]
     },
@@ -1286,13 +1396,13 @@
       "id": "motor-found-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young worker in overalls inside a wooden shed bolting a motorcycle frame onto a stand, looking up cheerfully, light from an open door",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a young Taiwanese man on a scooter at a sunny street corner, turning toward us with a friendly grin",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t089",
+          "id": "t080",
           "text": "也就是你今天騎的那個山葉機車。",
           "emotion": "對觀眾"
         }
@@ -1302,18 +1412,30 @@
       "id": "motor-found-c",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a foreman with a clipboard standing in a small wooden assembly shed with only a few motorcycles in it, a sheepish smile toward us, grey daylight",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Wide shot of two plain long wooden bungalows with tin roofs side by side on a dirt lot under a clear sky",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t090",
-          "text": "一百五十多個員工，兩棟木造平房，",
-          "emotion": "敘述"
-        },
+          "id": "t081",
+          "text": "一百五十多個員工，兩棟木造平房，"
+        }
+      ]
+    },
+    {
+      "id": "motor-target",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one small toy motorcycle parked alone at the end of a very long empty wooden workbench, morning sun",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
         {
-          "id": "t091",
+          "id": "t082",
           "text": "目標是一個月兩百台，還不到本田的十分之一。",
           "emotion": "帶一點好笑"
         }
@@ -1323,20 +1445,50 @@
       "id": "race-start",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a start line on a gravel road at the foot of a huge snow-capped volcano, one rider in goggles revving a small chestnut-brown and ivory motorcycle, determined, a flagman beside him, overcast sky",
-        "camera": "drift",
+        "prompt": "Wide shot of a flagman in a white shirt raising a red flag beside a small 1950s motorcycle with a chestnut-brown tank, ivory mudguards and thin spoked wheels at a chalk start line",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "text": "九天後，就是開頭那場富士山登山賽。",
-          "emotion": "回呼",
-          "id": "t092"
-        },
+          "id": "t083",
+          "text": "還記得開頭那場富士山的比賽嗎？就在成立九天後。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "race-honda",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowd of 1950s spectators lining a gravel mountain road below a snowy volcano, cheering, bright morning",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
         {
-          "text": "起跑線上那台小機車，最後跑得怎麼樣？",
-          "emotion": "問句",
-          "id": "t093"
+          "id": "t084",
+          "text": "那是第三屆的富士山登山賽，前兩屆的冠軍，都是本田。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "race-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, crossing her fingers on both hands with a hopeful grin, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "這台又貴、又賣不動的小機車，跑得過本田嗎？",
+          "emotion": "問句"
         }
       ]
     },
@@ -1344,15 +1496,15 @@
       "id": "race-climb",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of the rider on the small chestnut-brown and ivory motorcycle charging up a steep gravel switchback, leaning forward with a fierce grin, dust clouds, hazy light",
-        "camera": "pan right",
+        "prompt": "Wide shot of a rider in a brown leather helmet and big round goggles on a small chestnut-brown motorcycle bursting through a finish ribbon, sunny",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "text": "二十九分零七秒，第一名。",
-          "emotion": "揭曉，放慢",
-          "id": "t094"
+          "id": "t086",
+          "text": "二十九分零七秒，它衝過終點，第一名。",
+          "emotion": "揭曉，放慢"
         }
       ]
     },
@@ -1360,15 +1512,15 @@
       "id": "race-top",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a gravel summit finish area under a grey sky, a row of small chestnut-brown and ivory motorcycles parked side by side, one marshal in a cap counting them with a pointed finger and grinning",
-        "camera": "tilt down",
+        "prompt": "Wide shot of a cheering crowd waving plain flags around a line of small chestnut-brown motorcycles parked on a mountain road, sunny",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "text": "前十名裡，它佔了七台。",
-          "emotion": "數字落地",
-          "id": "t095"
+          "id": "t087",
+          "text": "不只這樣，前十名裡，它就佔了七台。",
+          "emotion": "數字落地"
         }
       ]
     },
@@ -1376,29 +1528,29 @@
       "id": "race-win",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of the front wheel of a small chestnut-brown and ivory motorcycle bursting through a rope finish line at a mountain summit, mud flying, a gloved hand raising a bunch of flowers above the handlebars, grey sky",
-        "camera": "pull out",
+        "prompt": "Medium shot of a rider in a brown leather helmet and big round goggles raising one fist from a small chestnut-brown motorcycle on a mountain road, clear morning light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t096",
-          "text": "鋼琴公司分出來的新公司，把本田擋了下來。",
+          "id": "t088",
+          "text": "鋼琴公司分出來的新公司，就這樣把本田擋了下來。",
           "emotion": "帶一點驕傲"
         }
       ]
     },
     {
-      "id": "race-asama-b",
+      "id": "race-asama",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a mechanic in the pit area wiping oil from his hands and winking at us, a motorcycle exhaust pipe on the ground beside him, muted morning light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a mechanic in grey overalls kneeling on an open gravel lot to adjust a small motorcycle engine, clear blue sky behind",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t097",
+          "id": "t089",
           "text": "為了秋天的下一場比賽，他們調引擎的方法更想不到。",
           "emotion": "收著"
         }
@@ -1408,74 +1560,89 @@
       "id": "race-trombone",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an engineer in a work coat holding a brass trombone up beside the exhaust pipe of a small motorcycle on a workbench, grinning, lamp light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a shiny brass trombone lying beside a curved steel motorcycle exhaust pipe on a wooden workbench, gentle sunlight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t098",
+          "id": "t090",
           "text": "他們把長號的共鳴原理，用在排氣管上。",
           "emotion": "揭曉"
-        },
+        }
+      ]
+    },
+    {
+      "id": "race-hp",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small motorcycle engine on a workbench with a big round red balloon swelling up and tied to it, sunny workshop",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
         {
-          "id": "t099",
+          "id": "t091",
           "text": "原本五匹馬力，兩個月後變成十匹。",
           "emotion": "數字放慢"
         }
       ]
     },
     {
-      "id": "race-trombone-b",
+      "id": "race-ada",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1950s engineer in a workshop holding a brass trombone in one hand and a curved exhaust pipe in the other, laughing with delight, soft daylight",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a small brass trombone, beaming, against a plain wall, in soft daylight",
         "camera": "push in",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
+          "id": "t092",
           "text": "我覺得這是整份檔案最可愛的一頁。",
-          "emotion": "旁白自己的反應",
-          "id": "t100"
+          "emotion": "旁白自己的反應"
         }
       ]
     },
     {
       "id": "race-fork",
+      "chapter": "分了家，帶走音叉，也帶走手藝",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1950s factory worker holding a single steel tuning fork up in one hand and a spanner in the other, undecided and facing us, grey daylight",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a tuning fork out toward us, smiling, against a plain wall, in soft daylight",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t101",
-          "text": "分了家的機車公司，要不要把那個音叉也帶走？",
+          "id": "t093",
+          "text": "故事還沒結束。分了家的機車公司，要不要把那支音叉也帶走？",
           "emotion": "問句，收著"
         }
       ]
     },
     {
       "id": "fork-carry",
-      "chapter": "分了家，帶走音叉，也帶走手藝",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1950s worker in a cap walking out of a wooden factory gate carrying a small wooden box with a steel tuning fork lying on top, smiling at us, mild cloudy light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a shiny steel tuning fork tucked into the brown leather saddlebag of a small motorcycle parked in the sun",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t102",
-          "text": "它帶走了。",
+          "id": "t094",
+          "text": "它帶走了。山葉機車自己說：就算變成不同的公司，",
           "emotion": "乾脆"
-        },
-        {
-          "id": "t103",
-          "text": "山葉機車自己說：就算變成不同的公司，",
-          "emotion": "敘述"
         }
       ]
     },
@@ -1483,13 +1650,14 @@
       "id": "fork-carry-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young man in a 1950s suit at a workbench holding up a two-pronged steel tuning fork with both hands, earnest proud face, soft overcast light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of three shiny steel tuning forks fanned out on a red velvet cushion on a wooden desk, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t104",
+          "id": "t095",
           "text": "也要繼承日本樂器的精神。那三支音叉，代表什麼？",
           "emotion": "問句"
         }
@@ -1499,20 +1667,15 @@
       "id": "fork-three",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of three plain steel tuning forks laid side by side on a dark velvet cloth, a woman's hand placing the third one, her smiling face softly behind, lamp light",
+        "prompt": "Close-up of three hands stacked one on top of another over a wooden workbench in a sunny motorcycle workshop",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t105",
+          "id": "t096",
           "text": "代表技術、製造、銷售三個部門的合作，",
           "emotion": "一項一項"
-        },
-        {
-          "id": "t106",
-          "text": "也代表音樂的旋律、和聲、節奏。",
-          "emotion": "輕"
         }
       ]
     },
@@ -1520,13 +1683,13 @@
       "id": "fork-redlight",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young woman in a helmet on a scooter waiting at a Taiwanese traffic light on an overcast afternoon, leaning forward to peer at the scooter in front, curious",
-        "camera": "pan left",
+        "prompt": "Medium shot from behind of a young rider on a scooter waiting at a red traffic light on a bright Taiwanese street",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t107",
+          "id": "t097",
           "text": "你下次等紅燈，可以看一下前面那台機車的標誌。",
           "emotion": "對觀眾"
         }
@@ -1536,36 +1699,51 @@
       "id": "fork-compare",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a curious young designer at a workbench holding up two plain blank round metal badges side by side, looking from one to the other with an amused face, dull afternoon light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a steel tuning fork inside a large brass hoop, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t108",
+          "id": "t098",
           "text": "機車那家的音叉，握柄壓在外圈上；鋼琴那家的，整支收在圓圈裡。",
           "emotion": "清楚"
         }
       ]
     },
     {
-      "id": "fork-wheel-b",
+      "id": "fork-craft",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1960s craftsman in an apron sanding the rim of a wooden steering wheel clamped on a bench, a proud smile toward us, overcast skylight",
+        "prompt": "Close-up of a wood chisel and curls of shavings lying beside a shiny steel gear on a sunny workbench",
         "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "帶走的，不只是那個標誌。那還帶走了什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "fork-toyota",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mechanic polishing the long front of a sleek white 1960s sports car in a sunny workshop",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t109",
-          "text": "帶走的不只是標誌，還有什麼？",
-          "emotion": "問句"
-        },
-        {
-          "id": "t110",
-          "text": "還有手藝。一九六五年，豐田跟山葉機車簽約，合作開發跑車。",
-          "emotion": "敘述"
+          "id": "t100",
+          "text": "是手藝。一九六五年，豐田跟山葉機車簽約，合作開發跑車。",
+          "emotion": "揭曉"
         }
       ]
     },
@@ -1573,13 +1751,14 @@
       "id": "fork-car",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a polished wooden dashboard and wooden steering wheel inside a low 1960s sports car, a craftsman's hand checking the grain, his reflection in the varnish, soft garage light",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Close-up of a glossy wooden steering wheel and a round wooden gear knob inside a 1960s sports car, sunlight on the polished wood",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t111",
+          "id": "t101",
           "text": "兩年後完成的第一台市售車，木頭方向盤、排檔頭和儀表板，",
           "emotion": "放慢"
         }
@@ -1589,14 +1768,17 @@
       "id": "fork-car-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a craftsman's hands fitting a curved walnut panel into a car dashboard frame on a workbench, wood shavings around, soft overcast light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a glossy round wooden gear knob, impressed, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t112",
-          "text": "用的都是做樂器練出來的木工。",
+          "id": "t102",
+          "text": "用的，全都是做樂器練出來的那一手木工。",
           "emotion": "帶一點驚奇"
         }
       ]
@@ -1605,15 +1787,15 @@
       "id": "tw-1966",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1960s mechanic in a workshop tightening the spokes of a small motorcycle wheel, grinning up at us, overcast light from an open shutter",
-        "camera": "tilt down",
+        "prompt": "Wide shot of a sailor tying down a small chestnut-brown motorcycle on the deck of a cargo ship on a calm bright sea",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
+          "id": "t103",
           "text": "跟豐田簽約的隔年，做機車的技術也到了台灣。找的是誰？",
-          "emotion": "問句",
-          "id": "t113"
+          "emotion": "問句"
         }
       ]
     },
@@ -1621,15 +1803,15 @@
       "id": "tw-1966-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of two hands shaking over a workbench with a small motorcycle engine on it in a 1960s Taiwanese workshop, a wrench and a teacup beside it, mild daylight from an open shutter",
-        "camera": "pull out",
+        "prompt": "Close-up of two hands shaking firmly over a wooden workbench with a small motorcycle engine on it, bright morning light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
+          "id": "t104",
           "text": "功學社，一九六六年簽下技術援助。",
-          "emotion": "揭曉",
-          "id": "t114"
+          "emotion": "揭曉"
         }
       ]
     },
@@ -1637,15 +1819,15 @@
       "id": "tw-partner",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a brass trumpet and a small motorcycle wheel side by side on the wooden counter of a 1960s Taiwanese shop, a shopkeeper's hand resting between them, mild daylight",
-        "camera": "pan left",
+        "prompt": "Medium shot of a 1960s Taiwanese music shop owner polishing a brass trumpet beside a brown upright piano, sunny shop",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
+          "id": "t105",
           "text": "沒想到，功學社也是鋼琴那邊在台灣的老夥伴。",
-          "emotion": "帶一點驚奇",
-          "id": "t115"
+          "emotion": "帶一點驚奇"
         }
       ]
     },
@@ -1653,15 +1835,16 @@
       "id": "tw-music-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young researcher in a university library turning the pages of an old bound thesis, eyebrows raised in interest, cloudy light from a skylight",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a very thick plain-covered bound thesis resting on top of a brown upright piano, mild afternoon sun",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "text": "一篇台大的碩士論文寫到，它賣的山葉鋼琴五、六〇年代就很有名，",
-          "emotion": "轉述",
-          "id": "t116"
+          "id": "t106",
+          "text": "一篇台大的碩士論文寫到，它賣的山葉鋼琴，五、六〇年代就很有名，",
+          "emotion": "轉述"
         }
       ]
     },
@@ -1669,31 +1852,14 @@
       "id": "tw-kids",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a 1970s music classroom where one small boy sits at a piano pulling a reluctant face toward us, other little piano benches empty around him, soft hazy light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t117",
-          "text": "七〇年代在台灣辦起山葉的音樂教學，帶起一波小孩學琴的風氣。",
-          "emotion": "敘述"
-        }
-      ]
-    },
-    {
-      "id": "tw-kids-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a grown man in his forties at home smiling sheepishly while resting one finger on a piano key, a faded framed certificate with nothing on it on the wall, soft light from a doorway",
+        "prompt": "Wide shot of a bright classroom where rows of small children sit at little pianos, playing happily, sunny",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t118",
-          "text": "你小時候如果被抓去學琴，說不定就是那一波。",
-          "emotion": "開玩笑"
+          "id": "t107",
+          "text": "七〇年代，它在台灣辦起山葉的音樂教學，帶起一波小孩學琴的風氣。"
         }
       ]
     },
@@ -1701,15 +1867,15 @@
       "id": "tw-1986",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a 1980s Taiwanese motorcycle factory courtyard with a row of new scooters, one worker in a cap wheeling one forward and smiling, overcast sky",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Wide shot of a long new white factory building with plain walls and a row of shiny scooters parked outside, bright day",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "text": "一九八六年前後，山葉機車再跟功學社合資，成立台灣山葉機車。",
-          "emotion": "敘述",
-          "id": "t119"
+          "id": "t108",
+          "text": "一九八六年前後，山葉機車再跟功學社合資，成立台灣山葉機車。"
         }
       ]
     },
@@ -1717,13 +1883,16 @@
       "id": "fork-family",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young man in a modern office holding a toy motorcycle in one hand and a toy piano in the other, a puzzled smile facing us, daylight",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding two steel tuning forks side by side, smiling warmly, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t120",
+          "id": "t109",
           "text": "你會不會覺得，這已經不像兩家公司，像一家人？",
           "emotion": "對觀眾，問句"
         }
@@ -1733,15 +1902,15 @@
       "id": "fork-rename",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1980s office worker on a step ladder replacing a large empty sign on a company building facade, grinning down at us, overcast sky",
+        "prompt": "Close-up of a big white birthday cake with many small candles on a table beside a glossy grand piano, soft daylight",
         "camera": "pull out",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t121",
-          "text": "一九八七年，創業滿一百年，日本樂器改名，就叫山葉。",
-          "emotion": "敘述"
+          "id": "t110",
+          "text": "一九八七年，創業滿一百年，日本樂器改名，就叫山葉。"
         }
       ]
     },
@@ -1749,17 +1918,14 @@
       "id": "tw-1996",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Taiwanese office worker in the 1990s signing a contract at a meeting table, glancing up at us with a satisfied smile, cloudy morning light",
-        "camera": "pan left",
+        "prompt": "Medium shot of two smiling music shop clerks unwrapping a new brown upright piano in a bright Taiwanese shop",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "text": "一九九六年，鋼琴那家也跟功學社合資，成立功學社山葉樂器。",
-          "emotion": "敘述",
-          "id": "t122",
-          "say": "一九九六年，鋼琴那一家也跟功學社合資，成立功學社山葉樂器。",
-          "say_for": "bc3285cd243b"
+          "id": "t111",
+          "text": "一九九六年，鋼琴那家也跟功學社合資，成立功學社山葉樂器。"
         }
       ]
     },
@@ -1767,15 +1933,18 @@
       "id": "fork-ledger",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an accountant's hand turning a page in a thick ledger with empty columns, her raised eyebrow visible over the top edge, pale afternoon light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, frowning at a very thick plain-covered ledger held open, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
+          "id": "t112",
           "text": "感情這麼好，可是帳本上，寫的是另一回事。",
-          "emotion": "轉折，停一拍",
-          "id": "t123"
+          "emotion": "轉折，停一拍"
         }
       ]
     },
@@ -1784,13 +1953,14 @@
       "chapter": "二〇〇七年以後，持股一路倒過來",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an office clerk in a grey suit at a desk holding two thick stacks of certificates, one in each hand, weighing them with a puzzled frown, muted morning light",
+        "prompt": "Close-up of a big golden pie on a wooden table with one generous slice set on a plate beside a small toy piano, soft window light",
         "camera": "push in",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t124",
+          "id": "t113",
           "text": "二〇〇七年，鋼琴那家還持有山葉機車百分之二十二點七的股份。",
           "emotion": "數字放慢"
         }
@@ -1800,15 +1970,15 @@
       "id": "share-2007-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a businessman in a 2000s suit at a trading desk handing a thick envelope forward, raising his eyebrows, grey daylight",
+        "prompt": "Wide shot of two toy sailboats drifting apart on a calm pond, a loose rope trailing between them, sunny",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t125",
-          "text": "那一年它賣掉一部分，機車那家從此不再算它的關聯企業。",
-          "emotion": "敘述"
+          "id": "t114",
+          "text": "那一年它賣掉一部分，機車那家從此不再算它的關聯企業。"
         }
       ]
     },
@@ -1816,15 +1986,14 @@
       "id": "share-sell",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Taiwanese shop assistant in a music store polishing the lid of an upright piano in a row of plain upright pianos with no lettering on the fallboards, smiling toward us, soft daylight",
-        "camera": "pan right",
+        "prompt": "Medium shot of a smiling clerk in a bright Taiwanese piano showroom wiping the lid of a glossy grand piano with a soft cloth",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "text": "二〇一三年，鋼琴那家買下台灣合資公司，改名台灣山葉音樂。",
-          "emotion": "敘述",
-          "id": "t126"
+          "id": "t115",
+          "text": "二〇一三年，鋼琴那家買下台灣的合資公司，改名台灣山葉音樂。"
         }
       ]
     },
@@ -1832,20 +2001,15 @@
       "id": "fork-committee",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a woman in a grey business suit at a long meeting table pushing a thick rulebook with a plain cover toward us, smiling firmly, hazy light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of a very thick plain-covered rulebook lying on a meeting table with a steel tuning fork placed neatly on top, bright window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t127",
-          "text": "兩家還設了聯合的品牌委員會，和共同的品牌規章，",
-          "emotion": "敘述"
-        },
-        {
-          "id": "t128",
-          "text": "一起管這個共用的名字。",
-          "emotion": "輕"
+          "id": "t116",
+          "text": "兩家還設了聯合的品牌委員會和品牌規章，一起管這個共用的名字。"
         }
       ]
     },
@@ -1853,13 +2017,14 @@
       "id": "fork-expo",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a woman designer in a gallery striking a sleek marimba with two mallets, delighted, a futuristic small vehicle model blurred behind her, soft gallery lights",
+        "prompt": "Wide shot of a bright white gallery with a sleek wooden marimba and a curvy futuristic bicycle on low white stands, morning sun",
         "camera": "pull out",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t129",
+          "id": "t117",
           "text": "二〇一五年，兩家合辦設計展，還互相替對方設計產品：",
           "emotion": "輕快"
         }
@@ -1869,13 +2034,14 @@
       "id": "fork-expo-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a cheerful young drummer sitting behind a simple drum kit in a bright gallery, raising his sticks and laughing, soft even light",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of a sleek wooden marimba with a glossy red body shaped like a motorcycle tank in a bright white gallery",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t130",
+          "id": "t118",
           "text": "鋼琴那家設計交通工具，機車那家設計樂器。",
           "emotion": "加快"
         }
@@ -1885,17 +2051,16 @@
       "id": "share-hook",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a gallery visitor's hand holding an exhibition leaflet with no printing on it, while the other hand slides a thin envelope of certificates into a coat pocket, soft gallery light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a small brown leather purse lying shut on the closed lid of a glossy grand piano, bright window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
+          "id": "t119",
           "text": "設計展辦得熱鬧，鋼琴那家手上的股票呢？",
-          "emotion": "問句，轉折",
-          "id": "t131",
-          "say": "設計展辦得熱鬧，那做鋼琴的那一家，手上的股票呢？",
-          "say_for": "6dc3853a9bcd"
+          "emotion": "問句，轉折"
         }
       ]
     },
@@ -1903,15 +2068,16 @@
       "id": "share-sell-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a calm office clerk at a desk pressing a rubber stamp down onto a blank form, a neat pile of blank papers beside her, mild daylight",
+        "prompt": "Close-up of a small leftover pile of gold coins on a wide wooden table after most were swept away, gentle sunlight",
         "camera": "push in",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
+          "id": "t120",
           "text": "後來，它又陸續賣掉好幾批山葉機車的股票。",
-          "emotion": "加快",
-          "id": "t132"
+          "emotion": "加快"
         }
       ]
     },
@@ -1919,17 +2085,15 @@
       "id": "tw-2026",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Taiwanese man in a cardigan at a breakfast table reading a newspaper with an empty front page, eyebrows raised in surprise, mild morning light",
+        "prompt": "Medium shot of an empty wooden chair pushed back from a long polished meeting table in a sunny room with tall windows",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "text": "二〇二六年一月，功學社也退出了機車那邊，",
-          "emotion": "敘述",
-          "id": "t133",
-          "say": "今年一月，功學社也退出了機車那一邊，",
-          "say_for": "aafa6396f352"
+          "id": "t121",
+          "text": "二〇二六年一月，功學社也退出了機車那邊，"
         }
       ]
     },
@@ -1937,15 +2101,15 @@
       "id": "tw-2026-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a salesperson in a polo shirt polishing a scooter seat in a showroom with a blank sign and no writing, smiling out at us, overcast afternoon light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Wide shot of a big toy sailboat with a small toy sailboat tied snugly to its side on a calm pond, clear morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "text": "台灣山葉機車成了日本山葉發動機的全資子公司。",
-          "emotion": "敘述",
-          "id": "t134"
+          "id": "t122",
+          "text": "台灣山葉機車，成了日本山葉發動機的全資子公司。"
         }
       ]
     },
@@ -1953,69 +2117,71 @@
       "id": "share-aug",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an office clerk in a grey suit sliding one thin stack of certificates into a drawer, eyebrows raised toward us, overcast light from a doorway",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding open a nearly empty small purse, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
+          "id": "t123",
           "text": "同一年八月，鋼琴那家再賣一千四百萬股。剩下多少？",
-          "emotion": "問句",
-          "id": "t135",
-          "say": "同一年八月，做鋼琴的那一家再賣一千四百萬股。剩下多少？",
-          "say_for": "1148b696ecaf"
+          "emotion": "問句"
         }
       ]
     },
     {
       "id": "share-card",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "鋼琴那家持有山葉機車的比例",
-        "stats": [
-          {
-            "value": "22.7%",
-            "label": "2007 年賣股前"
-          },
-          {
-            "value": "2.75%",
-            "label": "2024 年賣股後"
-          },
-          {
-            "value": "1.46%",
-            "label": "2026 年 8 月賣股後"
-          }
-        ],
-        "source": "兩家新聞稿 2007-05-21、2024-09-02、2026-08-27；查核 2026-10-31"
+        "prompt": "Close-up of one single gold coin lying alone in the middle of a wide empty wooden table, bright morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t136",
-          "text": "百分之一點四六。",
+          "id": "t124",
+          "text": "賣完之後，只剩下百分之一點四六。",
           "emotion": "數字落地，放慢"
         }
       ]
     },
     {
       "id": "share-reverse",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "text": "3.20%",
-        "kicker": "山葉機車持有鋼琴那家",
-        "sub": "2026 年 3 月 31 日，鋼琴那家的大股東名單"
+        "prompt": "Close-up of a wooden seesaw on a sunny lawn, a brown leather motorcycle helmet resting on the low end and a small toy piano up on the high end",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
+          "id": "t125",
           "text": "反過來，機車那家手上，有鋼琴那家百分之三點二的股份。",
-          "emotion": "揭曉",
-          "id": "t137"
-        },
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "share-reverse-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pointing to her side with a knowing smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
         {
+          "id": "t126",
           "text": "還記得開頭說，兩個山葉的位置不一樣了嗎？就是這個。",
-          "emotion": "回呼",
-          "id": "t138",
-          "say": "還記得開頭說，這兩家都叫山葉的公司，位置不一樣了嗎？就是這個。",
-          "say_for": "f05cdc6043ba"
+          "emotion": "回呼"
         }
       ]
     },
@@ -2023,13 +2189,14 @@
       "id": "share-toyota",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a market analyst in shirtsleeves at a desk at night comparing two stacks of plain paper of different heights, scratching his head and laughing, lamp light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Close-up of an old glossy wooden steering wheel lying on top of a neat pile of gold coins on a wooden table, mild afternoon sun",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t139",
+          "id": "t127",
           "text": "更怪的是，豐田六月底持有的山葉機車股票，比鋼琴那家還多。",
           "emotion": "升級"
         }
@@ -2039,14 +2206,14 @@
       "id": "share-parent",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young woman at a cafe table reading her phone, frowning and shaking her head toward us, cloudy morning light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a young man at a sunny café table shaking his head kindly at a friend, holding a coffee cup",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t140",
-          "text": "你如果聽人說鋼琴山葉是機車山葉的母公司，那對不上帳本。",
+          "id": "t128",
+          "text": "你如果聽人說，鋼琴山葉是機車山葉的母公司，那對不上帳本。",
           "emotion": "對觀眾"
         }
       ]
@@ -2055,13 +2222,14 @@
       "id": "share-profile",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a woman's hand opening a thin company brochure with a plain cover on a desk, her calm face behind it, daylight",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Wide shot of two toy sailboats sailing their own separate ways across a calm pond on a bright bright morning",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t141",
+          "id": "t129",
           "text": "兩家各自上市，鋼琴那家的公司簡介寫得很清楚：經營互相獨立。",
           "emotion": "清楚"
         }
@@ -2071,31 +2239,35 @@
       "id": "share-who",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young woman at a scooter shop counter holding a scooter key in one hand and glancing at a small keyboard on a shelf behind, curious and facing us, mild daylight",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small leather purse in each hand, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "text": "那論做生意，現在誰比較大？",
-          "emotion": "問句，收著",
-          "id": "t142"
+          "id": "t130",
+          "text": "那論做生意，這兩家現在誰比較大？",
+          "emotion": "問句，收著"
         }
       ]
     },
     {
       "id": "close-street",
+      "chapter": "同一個名字，兩本帳",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a woman on a scooter waiting at a red light at dusk on a quiet street, looking back over her shoulder at us with a small smile, a doorway with a blank sign behind, soft streetlight, full frame",
-        "camera": "drift",
+        "prompt": "Medium shot of a young Taiwanese woman on a sunny pavement between a parked scooter and a brown upright piano, holding up a scooter key and smiling at us",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t143",
-          "text": "回到開場的問題：做鋼琴的山葉和你騎的山葉，是不是同一家公司？",
-          "emotion": "問句"
+          "id": "t131",
+          "text": "所以答案是：做鋼琴的山葉和你騎的山葉，不是同一家公司。",
+          "emotion": "答案，篤定"
         }
       ]
     },
@@ -2103,35 +2275,104 @@
       "id": "close-answer",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young man in a half helmet sitting on a small scooter at a quiet street corner on an overcast evening, facing us with a curious smile, a doorway with a blank signboard behind him, soft light, full frame",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a very fat bulging brown leather purse sitting on the seat of a parked scooter on a sunny street",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "text": "不是同一家：分出去的機車那家，現在營收是鋼琴那家的五倍多。",
-          "emotion": "答案，放慢",
-          "id": "t144"
+          "id": "t132",
+          "text": "論做生意，分出去的機車那家，現在營收是鋼琴那家的五倍多。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-rewind",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny steel tuning fork resting on top of a small old reed organ beside a wooden propeller blade, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "一台修好的風琴，一場燒掉樂器機器的空襲，一道極機密的命令。",
+          "emotion": "放慢，倒帶"
+        }
+      ]
+    },
+    {
+      "id": "close-theme",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, cradling one steel tuning fork in both hands, smiling gently, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t134",
+          "text": "分家七十多年，兩個山葉各走各的路，手裡拿的，卻還是同一支音叉。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "close-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two very thick plain-covered ledgers side by side on a wooden desk, a shiny steel tuning fork lying on each one, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t135",
+          "text": "名字可以兩家一起用；帳本，還是各記各的。",
+          "emotion": "落地"
         }
       ]
     },
     {
       "id": "close-outro",
-      "template": "outro",
+      "template": "shot",
       "data": {
-        "title": "1955 年分家，如今營收是 5 倍多",
-        "cta": "參考資料在說明欄"
+        "prompt": "Medium shot of a curious girl peeking under the open lid of a brown upright piano in a bright living room, a scooter helmet on the sofa",
+        "camera": "pan left",
+        "visual": "still"
       },
       "lines": [
         {
-          "text": "你家裡有沒有哪一樣東西，也印著那三支音叉？留言告訴我。",
-          "emotion": "親近",
-          "id": "t145"
-        },
+          "id": "t136",
+          "text": "留言告訴我：你家裡有沒有哪一樣東西，也印著那三支音叉？",
+          "emotion": "親近，問句"
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a very thick plain-covered ledger, smiling warmly, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
         {
+          "id": "t137",
           "text": "這個頻道只講查得到的紀錄，想一起翻檔案，就訂閱。",
-          "emotion": "乾脆",
-          "id": "t146"
+          "emotion": "乾脆"
         }
       ]
     }
@@ -2139,43 +2380,58 @@
   "loops": [
     {
       "setup": "t001",
-      "payoff": "t144",
+      "payoff": "t131",
       "what": "兩個山葉是不是同一家公司"
     },
     {
-      "setup": "t005",
-      "payoff": "t094",
-      "what": "起跑線上那款小機車"
+      "setup": "t003",
+      "payoff": "t128",
+      "what": "機車山葉是鋼琴山葉的子公司？"
     },
     {
       "setup": "t004",
-      "payoff": "t096",
-      "what": "前兩屆都是本田"
+      "payoff": "t070",
+      "what": "第一台機車是鋼琴公司賣的"
     },
     {
-      "setup": "t007",
-      "payoff": "t077",
-      "what": "鋼琴公司賣的機車"
-    },
-    {
-      "setup": "t008",
-      "payoff": "t058",
+      "setup": "t005",
+      "payoff": "t055",
       "what": "戰爭留下的沒想到的東西"
     },
     {
-      "setup": "t009",
-      "payoff": "t138",
+      "setup": "t006",
+      "payoff": "t083",
+      "what": "成立九天就去富士山跟本田比"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t126",
       "what": "兩個山葉的位置不一樣了"
     },
     {
-      "setup": "t016",
-      "payoff": "t019",
+      "setup": "t008",
+      "payoff": "t131",
+      "what": "做鋼琴的山葉和你騎的山葉是不是同一家"
+    },
+    {
+      "setup": "t015",
+      "payoff": "t017",
       "what": "誰來說風琴能不能用"
     },
     {
-      "setup": "t021",
-      "payoff": "t079",
+      "setup": "t023",
+      "payoff": "t024",
+      "what": "第二台評審怎麼說"
+    },
+    {
+      "setup": "t020",
+      "payoff": "t071",
       "what": "東京藝大六十多年後再出現"
+    },
+    {
+      "setup": "t029",
+      "payoff": "t094",
+      "what": "那支音叉後來被另一家公司帶走"
     },
     {
       "setup": "t031",
@@ -2183,44 +2439,89 @@
       "what": "想不到的客人"
     },
     {
-      "setup": "t049",
-      "payoff": "t056",
+      "setup": "t034",
+      "payoff": "t035",
+      "what": "陸軍為什麼找做鋼琴的"
+    },
+    {
+      "setup": "t099",
+      "payoff": "t100",
+      "what": "帶走的不只是標誌"
+    },
+    {
+      "setup": "t042",
+      "payoff": "t044",
+      "what": "被請來的外人是誰"
+    },
+    {
+      "setup": "t047",
+      "payoff": "t053",
       "what": "工廠最後剩下什麼"
     },
     {
-      "setup": "t062",
-      "payoff": "t066",
+      "setup": "t057",
+      "payoff": "t061",
       "what": "留下來的機器做什麼"
     },
     {
-      "setup": "t072",
-      "payoff": "t096",
+      "setup": "t066",
+      "payoff": "t086",
       "what": "這麼晚擠進去的鋼琴公司憑什麼"
     },
     {
-      "setup": "t086",
-      "payoff": "t087",
+      "setup": "t077",
+      "payoff": "t078",
       "what": "又貴又賣不動的車還做不做"
     },
     {
-      "setup": "t097",
-      "payoff": "t098",
+      "setup": "t085",
+      "payoff": "t086",
+      "what": "跑得過本田嗎"
+    },
+    {
+      "setup": "t089",
+      "payoff": "t090",
       "what": "想不到的調引擎方法"
     },
     {
-      "setup": "t101",
-      "payoff": "t102",
+      "setup": "t093",
+      "payoff": "t094",
       "what": "音叉要不要帶走"
+    },
+    {
+      "setup": "t095",
+      "payoff": "t096",
+      "what": "三支音叉代表什麼"
+    },
+    {
+      "setup": "t103",
+      "payoff": "t104",
+      "what": "技術到台灣找的是誰"
+    },
+    {
+      "setup": "t112",
+      "payoff": "t113",
+      "what": "帳本上寫的另一回事"
+    },
+    {
+      "setup": "t119",
+      "payoff": "t120",
+      "what": "鋼琴那家手上的股票"
     },
     {
       "setup": "t123",
       "payoff": "t124",
-      "what": "帳本上寫的另一回事"
+      "what": "賣完剩下多少"
+    },
+    {
+      "setup": "t130",
+      "payoff": "t132",
+      "what": "論做生意誰比較大"
     }
   ],
   "youtube": {
     "title": "山葉鋼琴和山葉機車是兩家公司？分出去的營收反而是 5 倍多｜奇聞檔案局",
-    "description": "一九五五年七月十日，富士山登山賽衝第一的小機車，是一家做鋼琴的公司不到五個月前開賣的；派它參賽的機車公司，九天前才成立。\n\n從一八八七年濱松那台壞掉的風琴講起：被評為「不能用」的第一台風琴、一九二一年起做的木頭螺旋槳、轟炸後活下來的工作母機、一九五三年那道極機密的命令；最後是今天的帳本——持股倒過來、機車那家營收是五倍多，以及台灣兩個山葉共同的老夥伴功學社。\n\n流傳的說法（扁擔挑風琴翻過箱根）標明是「據說」；只有單一來源的說出是誰說的。\n\n本集插圖由 AI 生成；歷史人物是卡通化的角色，不追求相似；過世未滿七十年的人物不入畫，只畫手與物件；畫面不出現公司標誌。\n\n資料截至 2026-10-31",
+    "description": "你在台灣一定認得兩個山葉：一個在機車行，一個在音樂教室。很多人以為機車那個是鋼琴那個的子公司——可是山葉的第一台機車，其實是一家做鋼琴的公司賣的。\n\n從一八八七年濱松那台壞掉的風琴講起：被評為「不能用」的第一台風琴、一九二一年起做的木頭螺旋槳、轟炸後活下來的工作母機、一九五三年那道極機密的命令、成立九天就去爬富士山的新公司；最後是今天的帳本——持股倒過來、機車那家營收是五倍多，以及台灣兩個山葉共同的老夥伴功學社。\n\n流傳的說法（扁擔挑風琴翻過箱根）標明是「據說」；只有單一來源的說出是誰說的。\n\n本集插圖由 AI 生成；解說員 Ada 是本頻道的卡通角色。歷史人物與在世人物都不畫成人像，只用物件或手代表；其他人物與機器都是一般化的卡通造型，畫面不出現公司標誌。\n\n資料截至 2026-10-31",
     "tags": [
       "山葉",
       "山葉機車",
@@ -2408,5 +2709,6 @@
       "checked_on": "2026-10-31"
     }
   ],
-  "assets": []
+  "assets": [],
+  "still_motion": "beat"
 }

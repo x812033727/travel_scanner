@@ -12,15 +12,27 @@
     "provider": "gemini",
     "name": "Sulafat",
     "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
-    "performance": "像在跟一個朋友講這份檔案：開場兩句對著觀眾講；「拆成了兩半」一下子沉下來。四分鐘那段清楚、慢；樸茨茅斯等五個月帶點無奈；牙買加的爭議分清楚是誰說的；十個地理英里放慢；「總不能輪流用同一只錶」帶笑；拆錶那句放輕；固定快兩分鐘的鐘帶笑；四十八年停一拍；結尾乾脆。"
+    "performance": "像跟朋友翻一份舊檔案：開場對著觀眾講，「拆成了兩半」一下子沉下來；四分鐘那段清楚、慢；樸茨茅斯等五個月帶點無奈；牙買加的爭議分清楚是誰說的；十個地理英里放慢；「總不能輪流用同一只錶」帶笑；拆錶那句放輕；快兩分鐘的鐘帶笑；四十八年停一拍；結尾乾脆。"
   },
   "subtitles": {
-    "burn_in": true
+    "burn_in": false
   },
   "look": {
     "preset": "cute-mystery"
   },
-  "characters": [],
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
   "music": {
     "prompt": "light, curious, a little mysterious, no vocals",
     "gain_db": -20,
@@ -28,83 +40,85 @@
   },
   "scenes": [
     {
-      "id": "open-you",
-      "chapter": "一七六五年，議會把一只錶寫進法律",
+      "id": "open-phone",
+      "chapter": "三百年前，海上找不到自己在哪",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a man in a T-shirt sitting cross-legged on a sofa in a plain living room in the evening, holding a smartphone with its back toward us and grinning at us, a lit floor lamp beside him, warm lamp light from the left",
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, holding up a smartphone whose screen shows a single red pin on plain white, grinning at us, soft morning light",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg101",
-          "text": "你打開手機地圖，一秒就知道自己在哪裡。",
+          "id": "t001",
+          "text": "你打開手機，螢幕上一個紅點，一秒就知道自己在哪裡。",
           "emotion": "對觀眾說，像聊天"
         }
       ]
     },
     {
-      "id": "open-stake",
+      "id": "open-sea",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, Full-frame wide storybook scene of an eighteenth-century navigator studying a plain unlettered sea chart spread flat on a table, small ship token near two simple compass rings, complete figure and hands visible, soft morning light edge to edge, no numerals",
+        "prompt": "Wide shot of a sailor in a plain blue coat leaning on the wooden rail of an old sailing ship, squinting at an empty grey sea in every direction, pale overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "可是三百多年前的船，在海上連往東西走了多遠都算不出來。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-prize",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big open wooden chest overflowing with smooth unmarked gold coins on a plain oak table, bright midday light from a tall window",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg102",
-          "text": "三百多年前的船，連往東西走了多遠都算不出來；英國為此懸賞兩萬英鎊。",
-          "emotion": "放慢，兩萬英鎊咬清楚"
+          "id": "t003",
+          "text": "英國為此懸賞兩萬英鎊，給能在海上量出經度的辦法。",
+          "emotion": "兩萬英鎊咬清楚"
         }
       ]
     },
     {
-      "id": "open-act",
+      "id": "open-watch",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot eighteenth century clerk placing a blank report beside a pocket marine chronometer on a wooden table, daylight",
+        "prompt": "Close-up of a closed silver pocket watch resting on a folded dark green velvet cloth on a workbench, a few tiny brass wheels beside it, mild morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "後來，一個做鐘的人，交出了一只帶得走的航海錶。"
+        }
+      ]
+    },
+    {
+      "id": "open-third",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single wooden dart stuck dead centre in a straw archery target hung on a whitewashed wall, bright afternoon light",
         "camera": "pan right",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg103",
-          "text": "一七六五年，議會把一只航海錶的海上測試，寫進了法案。",
-          "emotion": "沉穩，進場景"
-        }
-      ]
-    },
-    {
-      "id": "open-under",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of one adult eighteenth-century clerk placing two blue ribbon strips of clearly different lengths on a bare wooden desk",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "lg104",
-          "text": "最高獎要誤差在三十個地理英里內；法案寫著，這只錶沒超過。",
-          "emotion": "清楚，數字放慢"
-        }
-      ]
-    },
-    {
-      "id": "open-harrison",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elderly clockmaker with curled grey hair in a brown Georgian waistcoat and white cravat smiling hopefully as he holds a small closed wooden watch case to his chest, plain plaster wall behind him, mild window light from the left",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "lg105",
-          "text": "照理說，那筆錢該整筆交給做錶的哈里森了吧？",
-          "emotion": "問句，輕鬆"
+          "id": "t005",
+          "text": "錶帶上船橫過大西洋，誤差最多只有最高獎門檻的三分之一。",
+          "emotion": "數字放慢"
         }
       ]
     },
@@ -112,15 +126,31 @@
       "id": "open-split",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an elderly clockmaker with curled grey hair and a white cravat staring in disbelief at a folded blank parchment held in both hands, eyebrows raised and mouth open, soft window light from the left",
-        "camera": "pull out",
+        "prompt": "Close-up of two hands pushing a heap of smooth gold coins apart into two equal piles on a bare wooden table, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg106",
-          "text": "可是同一部法案，把這筆獎金拆成了兩半。",
-          "emotion": "一下子沉下來，停一拍"
+          "id": "t006",
+          "text": "但你想不到，議會沒有把錢整筆給他，而是把獎金拆成了兩半。",
+          "emotion": "轉折，沉下來"
+        }
+      ]
+    },
+    {
+      "id": "open-gears",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old man's wrinkled hands in white shirt cuffs lifting a tiny brass wheel out of an open silver watch case above a white cloth, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "他還得當著別人的面，把那只錶一件一件拆開。",
+          "emotion": "升級"
         }
       ]
     },
@@ -128,1592 +158,1893 @@
       "id": "open-observatory",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Georgian astronomer in a powdered wig and dark frock coat bending over a small closed wooden watch case on an oak table and writing in a blank ledger with a quill, a tall timber-framed window behind him, overcast daylight",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Medium shot of a long brass telescope on a wooden tripod beside a closed silver pocket watch on a stone windowsill of an old observatory, clear blue sky outside, bright morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg107",
-          "text": "更怪的還在隔年：這只錶被送進天文台，一位天文學家一天一天記它走快還是走慢。",
-          "emotion": "升級，停在這裡"
+          "id": "t008",
+          "text": "錶後來還被送進天文台，有人一天一天記它走快還是走慢。",
+          "emotion": "停在這裡"
         }
       ]
     },
     {
       "id": "open-promise",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "text": "2 部法案 + 1 本小冊子",
-        "kicker": "1765、1773 年議會的法案｜1767 年哈里森的反駁",
-        "sub": "從 1714 年的懸賞，翻到最後一筆錢"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a pocket watch by its chain, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg108",
-          "text": "這份檔案照兩部法案、一本他自己印的小冊子，從懸賞翻到最後一筆錢。",
-          "emotion": "承諾句，篤定"
-        },
-        {
-          "id": "lg109",
-          "text": "一只過了海上測試的錶，為什麼拿不到整筆獎金？",
-          "emotion": "問句上揚，停一拍"
+          "id": "t009",
+          "text": "今天我們就來聊聊：一只過了海上測試的錶，為什麼拿不到整筆獎金？",
+          "emotion": "承諾句，問句上揚"
         }
       ]
     },
     {
-      "id": "prize-1714",
-      "chapter": "一七一四年，英國懸賞一個在海上量經度的辦法",
+      "id": "open-route",
+      "chapter": "一七一四年，一筆兩萬英鎊的懸賞",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a small stack of unmarked gold coins on a bare wooden table, coins only, no map, papers, writing or people",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "lg201",
-          "text": "開頭那筆懸賞，是一七一四年的一部法案定下的。",
-          "emotion": "接住開場"
-        }
-      ]
-    },
-    {
-      "id": "no-signpost",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot on the timber deck of an early-1700s British sailing ship, one adult seafarer with tied-back hair and a plain three-cornered hat scanning the open grey sea from a wooden rail",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a very thick plain book, smiling, against a plain wall, in soft daylight",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg202",
-          "text": "船往西開，四周只有海，可沒有一塊寫著經度的路牌。"
+          "id": "t010",
+          "text": "我是檔案局的研究員，照兩部法案和他自己印的一本小冊子，從頭翻起。",
+          "emotion": "篤定"
         }
       ]
     },
     {
-      "id": "sun-sight",
+      "id": "era-1714",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot navigator holding a simple sun sight instrument on a ship deck, bright morning light",
+        "prompt": "Close-up of a small heap of smooth unmarked gold coins on a bare wooden table in an old stone room, soft afternoon light from a tall window",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "故事要回到一七一四年：英國的一部法案，定下了那筆懸賞。",
+          "emotion": "接住，進時代"
+        }
+      ]
+    },
+    {
+      "id": "era-sea",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot of a sailor with tied-back hair and a plain three-cornered hat scanning the open grey sea from a wooden rail, mild morning light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg203",
+          "id": "t012",
+          "text": "船往西開，四周只有海，可沒有一塊路牌，告訴你經度是多少。"
+        }
+      ]
+    },
+    {
+      "id": "era-sun",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a navigator in a blue coat on a ship deck holding a simple brass sun sight up to one eye, bright morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
           "text": "你可能會問：抬頭看太陽，不就知道了嗎？",
           "emotion": "對觀眾，問句"
         }
       ]
     },
     {
-      "id": "sundial",
+      "id": "era-noon",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one adult British navigator in a tricorn hat studying a single brass sundial on a stone quay beneath the bright midday sun",
+        "prompt": "Close-up of a plain smooth brass sundial on a stone quay casting one short shadow under a high sun, blue sea behind, bright midday light",
         "camera": "tilt down",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg204",
+          "id": "t014",
           "text": "太陽每天都會經過頭頂，可是不同的地方，正午不在同一刻。"
         }
       ]
     },
     {
-      "id": "globe",
+      "id": "era-orange",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot simple illustrated globe with unlettered meridian lines, soft museum light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of an orange sliced into many thin even wedges fanned out on a white plate on a wooden table, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg205",
-          "text": "地球轉一圈是二十四小時，地圖把這一圈分成三百六十度。",
+          "id": "t015",
+          "text": "地球轉一圈是二十四小時，人們把這一圈分成三百六十度。",
           "emotion": "數字放慢"
         }
       ]
     },
     {
-      "id": "four-minutes",
+      "id": "era-four",
       "template": "shot",
       "data": {
-        "prompt": "Close shot two blank clock faces pointing to slightly different positions, flat studio light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Close-up of a small wooden hourglass with pale sand trickling down beside a sliced orange on a wooden table, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg206",
-          "text": "哈里森算得很直白：兩個地方差一度，正午就差大約四分鐘。",
+          "id": "t016",
+          "text": "算法很直白：兩個地方差一度，正午就差大約四分鐘。",
           "emotion": "四分鐘咬清楚"
         }
       ]
     },
     {
-      "id": "cabin-watch",
+      "id": "era-carry",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young ship's officer in a navy coat sitting at a cabin table and holding a closed round brass watch case up to his ear with a confident smile, a square window behind him, deep navy and parchment tones, daylight",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of a closed silver pocket watch lying on a small wooden table in a ship cabin beside a square cabin window, sea outside, pale overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg207",
+          "id": "t017",
           "text": "所以只要船上帶一只錶，一路記著出發港的時間就行了。"
         }
       ]
     },
     {
-      "id": "compare-noon",
+      "id": "era-compare",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one adult eighteenth-century ship navigator holding a closed brass marine timekeeper case beside a sea chart on a wooden ship table",
-        "camera": "push in",
+        "prompt": "Medium shot of a sailor on a sunny deck holding an open pocket watch in one hand and shading his eyes to look up at the sun, bright midday light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg208",
-          "text": "錶說港口已經正午，頭頂的太陽卻還沒到；差出來的那段時間，代表什麼？",
+          "id": "t018",
+          "text": "錶說港口已經正午，頭頂的太陽卻還沒到；差出來的時間代表什麼？",
           "emotion": "問句，慢慢交代"
         }
       ]
     },
     {
-      "id": "gap-answer",
+      "id": "era-answer",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a Georgian navigator in a tricorn hat holding a closed brass watch case up toward the sky with one hand and squinting upward, ship's rigging behind him, overcast daylight",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Wide shot of a small toy sailing boat with white sails gliding far across a long calm blue pond, a soft wake behind it, mild morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg209",
+          "id": "t019",
           "text": "代表船往西走了多遠：差得越久，走得越遠。",
-          "emotion": "對觀眾，篤定"
+          "emotion": "篤定"
         }
       ]
     },
     {
-      "id": "too-easy",
+      "id": "era-easy",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an eighteenth-century navigator in a plain tricorn hat and long wool coat scratching his head beside a ship's wooden rail, open grey sea behind him, overcast daylight",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shrugging with both palms up and a sheepish grin, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg210",
+          "id": "t020",
           "text": "聽起來很簡單吧？我第一次讀到這裡，也以為這題早該解決了。",
           "emotion": "自己的反應，帶笑"
         }
       ]
     },
     {
-      "id": "rolling-deck",
+      "id": "era-rolling",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot, full-frame storybook view from the rolling timber deck of a mid-1700s British sailing ship, empty wooden rails leaning against a large grey wave, rope rigging and canvas sail blowing sideways in misty daylight",
+        "prompt": "Close-up of a toy wooden sailing boat tipping hard on choppy little waves in a wide tin washtub, splashes in the air, soft afternoon light",
         "camera": "tilt down",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg211",
+          "id": "t021",
           "text": "問題是，船會搖、天氣會變；岸上走得好好的鐘，搬上船還守得住嗎？",
           "emotion": "問句，收著"
         }
       ]
     },
     {
-      "id": "three-piles",
+      "id": "era-anymethod",
       "template": "shot",
       "data": {
-        "prompt": "Close shot Parliament clerk arranging three differently sized unlabeled coin piles, soft indoor light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of three cloth purses in a row on an oak table, one small, one plump and one bulging with gold coins, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg212",
+          "id": "t022",
           "text": "那部法案不管你用什麼方法，都可以拿去海上試，賞金分成三級。"
         }
       ]
     },
     {
-      "id": "tiers",
-      "template": "big",
+      "id": "era-tiers",
+      "template": "shot",
       "data": {
-        "text": "60 → 40 → 30",
-        "kicker": "1714 年的懸賞（1765 年法案追述）",
-        "sub": "誤差幾個地理英里以內：1 萬、1.5 萬、2 萬英鎊"
+        "prompt": "Close-up of two cloth purses on an oak table, a plump one and a fatter one beside it, both tied with string, pale overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg213",
+          "id": "t023",
           "text": "誤差在六十個地理英里以內，一萬英鎊；四十個以內，一萬五千。",
           "emotion": "清楚，一級一級"
         }
       ]
     },
     {
-      "id": "top-tier",
+      "id": "era-top",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stern official in a powdered wig resting one hand on a closed iron strongbox with a proud look, deep navy and parchment tones, cool daylight",
+        "prompt": "Close-up of a big open wooden chest overflowing with smooth unmarked gold coins on a plain oak table, bright midday light from a tall window",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "最高那一級，要在三十個以內，拿的就是整筆懸賞。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "era-miles",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a sailor's hands opening a pair of brass dividers above a bare wooden table beside a coil of rope, mild morning light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg214",
-          "text": "最高那一級，就是開頭那個三十，配的是那兩萬英鎊。",
-          "emotion": "點回開頭"
-        }
-      ]
-    },
-    {
-      "id": "dividers",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot inside a plank-walled ship's cabin, a Georgian navigator in a tricorn hat walking a pair of brass dividers across a plain unlettered sea chart on a wooden table, mild daylight from a square cabin window",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "lg215",
+          "id": "t025",
           "text": "地理英里，大約可以當成今天的海里。"
         }
       ]
     },
     {
-      "id": "judged",
+      "id": "era-judged",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Georgian committee member in a powdered wig and dark coat seated at a long oak table, holding a small closed wooden watch case up to eye level to examine it, mild daylight",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Wide shot of a long polished oak table lined with tall empty high-backed chairs in a wood-panelled room, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg216",
+          "id": "t026",
           "text": "而且不是做出一只好錶就能領：得真的上船去試，再由委員會裁定。"
         }
       ]
     },
     {
-      "id": "which-clock",
+      "id": "era-who",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot inside a Georgian clockmaker workshop, one elderly craftsman with curled grey hair, a buttoned waistcoat and white cravat opening an oak drawer of cloth-wrapped clock parts beside a timber workbench",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning forward with a curious smile and one finger raised, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg217",
-          "text": "那麼，哈里森要帶上船的，是一只什麼樣的鐘？",
+          "id": "t027",
+          "text": "那麼，後來接下這一題、跟它纏了大半輩子的，是誰？",
           "emotion": "問句"
         }
       ]
     },
     {
-      "id": "fourth",
-      "chapter": "第四件作品，跟著兒子在港口等了五個月",
+      "id": "era-apron",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly clockmaker with curled grey hair proudly holding up a closed round silver watch case in his palm and smiling, a plain workshop wall behind him, parchment and teal tones, window light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a worn brown leather work apron hanging on a wooden peg above a cluttered wooden workbench strewn with tiny brass wheels, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg301",
+          "id": "t028",
+          "text": "是一個做鐘的人，叫哈里森。畫面裡這條皮圍裙，就代表他。"
+        }
+      ]
+    },
+    {
+      "id": "era-four-pieces",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three tall closed wooden cabinets with brass handles standing in a workshop, a closed silver pocket watch on a stool in front, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t029",
           "text": "他先後做了三件計時機器，第四件不一樣，是一只帶得走的錶。",
           "emotion": "第四件稍停"
         }
       ]
     },
     {
-      "id": "not-pendulum",
+      "id": "era-not-pendulum",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly clockmaker with curled grey hair and a white cravat steadying a small closed brass watch case with both hands on a tilting wooden ship table while a hanging lantern swings, mild grey light from a square cabin window",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of a closed silver pocket watch sitting steady in a wooden box lined with green cloth on a tilting ship table, a rope swinging behind, pale overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg302",
+          "id": "t030",
           "text": "它不是把牆上的擺鐘搬上船；剛才說的搖晃，正是它要對付的事。"
         }
       ]
     },
     {
-      "id": "three-earlier",
+      "id": "era-three-kept",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly clockmaker with curled grey hair draping a large cloth over a tall wooden cabinet in his workshop with a fond look, parchment and deep navy tones, morning light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, resting a hand on a tall wooden cabinet, winking, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg303",
-          "text": "前三件機器還在他手上；過幾年，議會會點名要它們。",
-          "emotion": "收著"
+          "id": "t031",
+          "text": "前三件機器還在他手上。你先記住它們，過幾年，議會會點名要。",
+          "emotion": "收著，埋梗"
         }
       ]
     },
     {
-      "id": "petition",
+      "id": "trial-petition",
+      "chapter": "第四件錶，第一趟去牙買加",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one older eighteenth-century clockmaker holding a folded blank petition at a plain wooden committee table",
+        "prompt": "Close-up of a tall stack of folded blank letters sealed with red wax and tied with string on an oak desk, a quill beside them, soft window light",
         "camera": "pull out",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg304",
+          "id": "t032",
           "text": "為了這只錶，他跟經度委員會來來回回好多年，終於申請到正式的海上試驗。"
         }
       ]
     },
     {
-      "id": "william-quay",
+      "id": "trial-who",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of adult William Harrison in an eighteenth-century travel coat carrying a closed wooden instrument chest along a stone quay toward a wooden sailing ship",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a black three-cornered hat, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg305",
+          "id": "t033",
           "text": "那麼，誰帶它上船？",
           "emotion": "問句"
         },
         {
-          "id": "lg306",
-          "text": "不是他，是他的兒子威廉。",
+          "id": "t034",
+          "text": "不是他，是他的兒子威廉；這頂三角帽，就代表威廉。",
           "emotion": "轉折"
         }
       ]
     },
     {
-      "id": "portsmouth-wait",
+      "id": "trial-wait",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young man in a dark coat and plain tricorn hat sitting on a wooden crate with his chin in his hand and looking bored, a plain pale sky behind him, deep navy and teal tones, grey morning light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a black three-cornered hat resting on a weathered wooden bench on a harbour quay beside a small wooden box, moored sailing ships behind, pale overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg307",
+          "id": "t035",
           "text": "威廉先被派到樸茨茅斯港等正式命令，一等就是五個月。",
           "emotion": "五個月放慢"
         }
       ]
     },
     {
-      "id": "waiting-face",
+      "id": "trial-you",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an adult man in a dark Georgian travel coat and plain tricorn hat resting his chin on one hand on top of a closed wooden instrument chest, looking bored and worried, harbour mist behind him, soft overcast light",
-        "camera": "drift",
+        "prompt": "Medium shot of a young man in a T-shirt sitting on a harbour bench hugging a small wooden box, chin on the lid, sighing at the sea, mild morning light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg308",
-          "text": "換成你，抱著父親做了好多年的錶，在港邊乾等，",
+          "id": "t036",
+          "text": "換成你，抱著父親做了好多年的錶在港邊乾等，會不會懷疑還去不去得成？",
           "emotion": "對觀眾，像聊天"
-        },
-        {
-          "id": "lg309",
-          "text": "你會不會懷疑，這趟還去不去得成？",
-          "emotion": "問句"
         }
       ]
     },
     {
-      "id": "deptford",
+      "id": "trial-sail",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an adult eighteenth-century sailor on the deck of a square-rigged wooden sailing ship looking across open ocean",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Wide shot of a large three-masted sailing ship with full white sails leaving a busy harbour on a blue sea, gulls overhead, bright morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg310",
+          "id": "t037",
           "text": "船終於開了。威廉帶著錶，登上皇家海軍的德普特福德號，往牙買加去。",
           "emotion": "出航的節奏"
         }
       ]
     },
     {
-      "id": "roped-box",
+      "id": "trial-hope",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young man in a dark coat and plain tricorn hat on a ship's deck hugging a small roped wooden box to his chest with a worried look, deep navy and teal tones, grey sea light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, crossing her fingers and biting her lip, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg311",
-          "text": "我讀到這裡，是替他捏一把冷汗的。",
-          "emotion": "自己的反應"
-        },
-        {
-          "id": "lg312",
-          "text": "如果第一趟就夠準，最高那一級會不會直接到手？",
+          "id": "t038",
+          "text": "我讀到這裡也替他緊張：第一趟要是夠準，最高那一級會不會直接到手？",
           "emotion": "問句上揚"
         }
       ]
     },
     {
-      "id": "merlin",
-      "chapter": "牙買加回來，委員會先給兩千五百英鎊",
+      "id": "trial-back",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of another eighteenth-century square-rigged wooden sailing vessel crossing open sea under afternoon sky, no people, rowboats or modern craft",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Wide shot of a small two-masted sailing ship coming home into a grey English harbour under half-furled sails, pale overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg401",
+          "id": "t039",
           "text": "沒有那麼快。回程，威廉改搭梅林號，把錶帶回英國。",
           "emotion": "接住問題"
         }
       ]
     },
     {
-      "id": "quadrant-compare",
+      "id": "trial-compare",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Georgian navigator in a tricorn hat holding a brass quadrant beside a closed wooden watch case on a quayside table, palm trunks behind him, overcast daylight",
+        "prompt": "Close-up of two hands laying two blank sheets of paper side by side on an oak desk next to a brass quadrant, soft afternoon light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg402",
-          "text": "接下來，要拿兩地的天文觀測跟錶上的時間對一對；兩邊算出來的，會一樣嗎？",
+          "id": "t040",
+          "text": "接著要拿兩地的觀測，跟錶上的時間對一對；兩邊算的，會一樣嗎？",
           "emotion": "問句"
         }
       ]
     },
     {
-      "id": "two-papers",
+      "id": "trial-differ",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one adult eighteenth-century clockmaker comparing two folded observation papers on a wooden desk beside brass dividers",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of two neat stacks of blank papers on an oak desk, one tall and one short, a quill lying across the gap between them, bright midday light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg403",
-          "text": "委員會有一套算法，哈里森手上也有兩地的觀測資料，算出來的看法不一樣。"
+          "id": "t041",
+          "text": "委員會有一套算法，哈里森手上也有兩地的資料，算出來的看法不一樣。"
         }
       ]
     },
     {
-      "id": "receipts",
+      "id": "trial-receipts",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a man in a T-shirt at a kitchen table frowning at two short paper receipts held side by side, a pen in his other hand, soft evening lamp light",
-        "camera": "push in",
+        "prompt": "Medium shot of two young friends at a cafe table each holding a blank white slip of paper, frowning at each other across the cups, soft window light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg404",
-          "text": "有點像你跟朋友拿同一疊收據對帳，兩個人各算出不同的數字。",
+          "id": "t042",
+          "text": "有點像你跟朋友拿同一疊收據對帳，兩個人各算出不同的結果。",
           "emotion": "對觀眾，像聊天"
         }
       ]
     },
     {
-      "id": "quill-letter",
+      "id": "trial-refuse",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly clockmaker with curled grey hair frowning as he writes a letter with a quill at a plain desk, a plain parchment-coloured wall behind him, deep navy and teal tones, soft even light",
-        "camera": "drift",
+        "prompt": "Close-up of an old man's wrinkled hands in white shirt cuffs pressing a red wax seal onto a folded blank letter on an oak desk, mild morning light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg405",
+          "id": "t043",
           "text": "他想指派自己信任的人去核對；委員會答應了嗎？",
           "emotion": "問句"
         },
         {
-          "id": "lg406",
+          "id": "t044",
           "text": "照他自己的說法，沒有。",
           "emotion": "歸給哈里森"
         }
       ]
     },
     {
-      "id": "archive-folios",
+      "id": "trial-years",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a mid-1700s British archive room, one adult clerk in a buttoned frock coat lifting plain folded calculation folios from a small wooden document chest under daylight",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a row of plain leather folders tied with faded string on a high wooden shelf, a thin layer of dust on top, pale overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg407",
+          "id": "t045",
           "text": "他還說，過了幾年，他才看到委員會當年用的計算。"
         }
       ]
     },
     {
-      "id": "archivist-finger",
+      "id": "trial-fair",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist with round glasses in a cotton shirt and a knitted vest raising one finger as if to say wait a moment, a blank folder under the other arm, plain wall, mild lamp light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one open palm with a calm, fair look, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg408",
-          "text": "你聽到這裡要記得，這些全是哈里森一個人的說法；誰算錯了，我不替他判。",
-          "emotion": "對觀眾，誠懇"
+          "id": "t046",
+          "text": "這些都是哈里森一個人的說法；誰算錯了，我不替他判。",
+          "emotion": "誠懇"
         }
       ]
     },
     {
-      "id": "records-room",
+      "id": "trial-useful",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a Georgian records room, one adult clerk with tied-back hair, white cravat and cuffed coat comparing two stitched blank parchment folios tied with ribbon on an oak desk",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a very thick plain-covered book tied with a red ribbon lying on a polished oak desk beside a quill and a small brass inkpot, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg409",
-          "text": "那留在法律裡的，又是怎麼記這一趟的？",
+          "id": "t047",
+          "text": "那後來的法案，是怎麼記這一趟的？",
           "emotion": "問句"
         }
       ]
     },
     {
-      "id": "considerable",
-      "template": "big",
+      "id": "trial-useful-b",
+      "template": "shot",
       "data": {
-        "text": "「相當的用處」",
-        "kicker": "1765 年法案：對牙買加航試的判定",
-        "sub": "of considerable Use"
+        "prompt": "Close-up of a closed silver pocket watch on a small velvet cushion with one plain blue ribbon rosette beside it on an oak table, mild morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg410",
-          "text": "法案裡的判定很窄：委員會多數認為，這只錶有相當的用處。",
+          "id": "t048",
+          "text": "判定很窄：委員會多數認為，這只錶有相當的用處。",
           "emotion": "引號語氣"
         }
       ]
     },
     {
-      "id": "pay-2500",
-      "template": "big",
+      "id": "trial-2500",
+      "template": "shot",
       "data": {
-        "text": "£2,500",
-        "kicker": "1765 年法案",
-        "sub": "先付，算進日後可能領到的獎金"
+        "prompt": "Close-up of a small cloth purse of gold coins set down beside a big open wooden chest of gold coins on an oak table, bright midday light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg411",
-          "text": "於是先給兩千五百英鎊，也寫明這筆以後要算進他可能領到的獎金裡。",
+          "id": "t049",
+          "text": "於是先給兩千五百英鎊，寫明這筆以後要算進他可能領到的獎金裡。",
           "emotion": "數字放慢"
         }
       ]
     },
     {
-      "id": "not-yet",
+      "id": "trial-eighth",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a short pile of plain gold coins beside a much taller pile on a bare wooden table, coins only, no papers, writing or people, mild daylight",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Close-up of a tiny cloth purse looking lost next to a huge wooden chest heaped high with gold coins on an oak table, pale overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg412",
-          "text": "這筆錢只有最高獎的八分之一；最高那一級，這時候還沒有判給他。"
+          "id": "t050",
+          "text": "這筆錢只有最高獎的八分之一；最高那一級，還沒有判給他。"
         }
       ]
     },
     {
-      "id": "caribbean",
+      "id": "trial-start",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of an eighteenth-century square-rigged wooden ship sailing toward a low Caribbean island coast with palm trees, no map, modern ship or writing",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pinching a tiny cloth purse with a wry smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg413",
+          "id": "t051",
+          "text": "這就是這場獎金拉鋸的起點：錶過了一趟海，錢只先給了一小袋。",
+          "emotion": "小結"
+        }
+      ]
+    },
+    {
+      "id": "trial-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a toy wooden sailing boat with patched sails set back down on calm blue water in a wide tin washtub, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t052",
           "text": "第一趟留下一堆爭議；再跑一趟西印度，能不能把話說清楚？",
           "emotion": "問句"
         }
       ]
     },
     {
-      "id": "strapped",
-      "chapter": "第二趟橫過大西洋，結果寫進了法律",
+      "id": "bb-sail",
+      "chapter": "第二趟巴貝多，錢卻拆成兩半",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of one small closed wooden marine timekeeper case strapped to a shelf inside a wooden sailing ship cabin, no people, digital devices or lettering",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Wide shot of a large three-masted sailing ship with full white sails crossing a wide open blue ocean, a long white wake behind it, bright midday light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg501",
+          "id": "t053",
           "text": "哈里森再請求一次海試，威廉又帶著同一只錶出發。"
         }
       ]
     },
     {
-      "id": "bridgetown",
+      "id": "bb-route",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot sailing ship nearing a Caribbean harbor with low buildings, sunlit haze",
+        "prompt": "Wide shot of a sailing ship dropping anchor in a sunny island harbour with palm trees and white stone houses along the shore, bright morning light",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg502",
+          "id": "t054",
           "text": "這一次從樸茨茅斯出發，橫過大西洋，到巴貝多的布里奇敦。"
         }
       ]
     },
     {
-      "id": "into-law",
+      "id": "bb-how",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one mid-1700s British parliamentary clerk in a Georgian waistcoat placing a blank folded statute on a plain oak desk in a wood-panelled chamber",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, one hand at her chin, eyes narrowed in a sly smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg503",
-          "text": "這一趟的結果，就是開頭寫進法案的那一句：沒有超過門檻。",
+          "id": "t055",
+          "text": "差了多少？還記得開頭說的那個三分之一嗎？答案就在這一趟。",
           "emotion": "點回開頭"
         }
       ]
     },
     {
-      "id": "ten-miles",
-      "template": "big",
+      "id": "bb-ten",
+      "template": "shot",
       "data": {
-        "text": "≤ 10 地理英里",
-        "kicker": "1765 年法案：樸茨茅斯到巴貝多",
-        "sub": "船靠這只錶定經度的偏差"
+        "prompt": "Close-up of a single wooden dart stuck dead centre in a straw archery target hung on a whitewashed wall, bright afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg504",
-          "text": "差了多少？法案寫著，船靠這只錶定經度，一路沒有差出十個地理英里。",
+          "id": "t056",
+          "text": "法案寫著，船靠這只錶定經度，一路沒有差出十個地理英里。",
           "emotion": "十咬清楚"
         }
       ]
     },
     {
-      "id": "relieved",
+      "id": "bb-third",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an elderly clockmaker with curled grey hair and a white cravat breaking into a relieved smile while holding a folded blank letter, mild window light from the left",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of three wooden darts clustered tightly in the very middle of a straw archery target on a whitewashed wall, mild morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg505",
-          "text": "最多也只有門檻的三分之一；這是議會採用的判定，不是我們重算的。"
+          "id": "t057",
+          "text": "門檻是三十個，這一趟最多只用掉三分之一；這是議會採用的判定。"
         }
       ]
     },
     {
-      "id": "happy-harbour",
+      "id": "bb-happy",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a wooden sailing ship resting in a calm Caribbean harbour in soft evening light, one sailor in a tricorn hat waving his hat from the rail",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, clasping her hands under her chin, relieved, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg506",
+          "id": "t058",
           "text": "說真的，故事要是停在這裡，就是個圓滿結局。",
           "emotion": "自己的反應"
         }
       ]
     },
     {
-      "id": "viewer-count",
+      "id": "bb-you",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a man in a T-shirt at a kitchen table counting on his fingers with a puzzled smile, a mug beside him, soft evening lamp light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, thumping a cushion and pointing at us with a big grin, soft afternoon light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg507",
+          "id": "t059",
           "text": "照一七一四年的規矩，你大概會說：這不就是最高那一級嗎？",
           "emotion": "對觀眾，問句"
         }
       ]
     },
     {
-      "id": "chamber-chest",
+      "id": "bb-doubt",
       "template": "shot",
       "data": {
-        "prompt": "Close shot in a wood-panelled British parliamentary chamber in 1765, one Georgian clerk in a buttoned waistcoat and white cravat unrolling a blank parchment statute beside a small wooden coin chest",
+        "prompt": "Close-up of a very thick plain-covered book tied with a red ribbon lying open on an oak desk at blank pages, a quill resting across them, pale overcast light",
         "camera": "pan left",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg508",
-          "text": "可是同一部法案寫著：照舊法，這筆錢到底該怎麼付，有疑義。",
+          "id": "t060",
+          "text": "可是一七六五年的法案寫著：照舊法，這筆錢到底該怎麼付，有疑義。",
           "emotion": "轉折"
         }
       ]
     },
     {
-      "id": "unfinished-case",
+      "id": "bb-reason",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot, Full-frame storybook illustration of a clockmaker examining an unfinished instrument case at a workbench, warm daylight fills the picture edge to edge, clean dark outlines",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "lg509",
-          "text": "法案的理由是，方法要完整解釋、同樣的錶還做得出來，它才可能普遍拿來用。"
-        }
-      ]
-    },
-    {
-      "id": "one-watch-harbour",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a crowded eighteenth-century harbour at dawn, one harbour clerk in a tricorn hat holding up a single small closed watch case while tall wooden ships crowd the quay behind him, mild grey light",
+        "prompt": "Close-up of a closed silver pocket watch on green velvet with a long row of empty watch-shaped hollows beside it in the same tray, soft window light",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg510",
-          "text": "我覺得這個理由不難懂：全英國的船，總不能輪流用同一只錶吧。",
-          "emotion": "意見，帶點好笑"
+          "id": "t061",
+          "text": "理由是：方法要完整解釋、同樣的錶還做得出來，才可能普遍拿來用。"
         }
       ]
     },
     {
-      "id": "reading-statute",
+      "id": "bb-joke",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly eighteenth-century clockmaker in a Georgian waistcoat reading a plain folded statute parchment at a bare wooden bench by a window, empty wall, no clocks, dials or writing",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one closed silver pocket watch and laughing, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "我覺得這不難懂：全英國的船，總不能輪流用同一只錶吧。",
+          "emotion": "帶點好笑"
+        }
+      ]
+    },
+    {
+      "id": "bb-harrison",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a worn brown leather work apron hanging on a wooden peg beside a closed silver pocket watch lying on a cluttered workbench, mild morning light",
         "camera": "pan right",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg511",
-          "text": "但哈里森不這麼看，他覺得海上測試已經回答了最關鍵的問題。"
+          "id": "t063",
+          "text": "但哈里森不這麼看，他覺得海上測試，已經回答了最關鍵的問題。"
         }
       ]
     },
     {
-      "id": "viewer-suspicious",
+      "id": "bb-suspect",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a man in a T-shirt on a sofa narrowing his eyes suspiciously at us with his arms crossed, warm lamp light from the left",
-        "camera": "tilt down",
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, narrowing his eyes and rubbing his chin, a cushion on his lap, pale overcast light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg512",
+          "id": "t064",
           "text": "你可能會想，議會是不是根本看不起一個做鐘的？",
           "emotion": "對觀眾，問句"
         }
       ]
     },
     {
-      "id": "moon-telescope",
+      "id": "bb-moon",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Georgian astronomer in a powdered wig and dark frock coat looking up at a pale full moon through a brass telescope on a stone balcony at dusk, soft grey evening light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Wide shot of a long brass telescope on a wooden tripod on a grassy hill pointed at a pale half moon in a clear blue morning sky, bright morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg513",
-          "text": "同一部法案裡，議會也替算月亮位置的表發了獎勵；那一年，不是鐘跟天文只能贏一邊。"
+          "id": "t065",
+          "text": "同一部法案裡，議會也替算月亮位置的表，發了獎勵。"
         }
       ]
     },
     {
-      "id": "archivist-shrug",
+      "id": "bb-guess",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist with round glasses in a cotton shirt and a knitted vest closing a blank folder and shrugging with a small smile, plain wall, mild lamp light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head with a small shrug and a neutral smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg514",
-          "text": "至於誰心裡怎麼想，紀錄沒寫，我也不猜。",
+          "id": "t066",
+          "text": "那一年，鐘跟天文不是只能贏一邊；誰心裡怎麼想，紀錄沒寫，我也不猜。",
           "emotion": "自己的意見"
         }
       ]
     },
     {
-      "id": "cogwheels",
+      "id": "bb-replica",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot inside a Georgian clockmaker workshop, one elderly craftsman with grey curled hair and white cravat comparing a small brass marine watch movement with loose brass cogwheels on an oak workbench",
+        "prompt": "Close-up of a closed silver pocket watch on green velvet beside one empty watch-shaped hollow in the same tray, soft afternoon light",
         "camera": "pan left",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg515",
+          "id": "t067",
           "text": "所以問題落在這裡：一只錶成功了，照著做，還做得出別的嗎？",
           "emotion": "問句"
         }
       ]
     },
     {
-      "id": "statute-coin-clerk",
+      "id": "half-intro",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one adult eighteenth-century parliamentary clerk presenting a rolled statute parchment beside a small sandglass on a wooden table",
-        "camera": "push in",
+        "prompt": "Close-up of two hands pushing a heap of smooth gold coins apart into two equal piles on a bare wooden table, soft window light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg516",
-          "text": "那開頭拆開的兩半，各要他做什麼？",
+          "id": "t068",
+          "text": "那開頭說的拆成兩半，各要他做什麼？",
           "emotion": "問句，收著"
         }
       ]
     },
     {
-      "id": "first-half",
-      "chapter": "一七六五年八月，他當著別人的面拆開錶",
-      "template": "big",
+      "id": "half-first",
+      "template": "shot",
       "data": {
-        "text": "前半：公開構造",
-        "kicker": "1765 年法案",
-        "sub": "6 個月內把原理講清楚"
+        "prompt": "Close-up of a small wooden hourglass beside a blank open notebook and a few tiny brass wheels laid out on an oak desk, bright midday light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg601",
+          "id": "t069",
           "text": "前半筆，要他把錶的構造講清楚，法案只給他六個月。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "half-months",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small hourglass and puffing out her cheeks, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
         {
-          "id": "lg602",
+          "id": "t070",
           "text": "六個月，要把做了好多年的東西，講到別人聽得懂。",
           "emotion": "自己的反應"
         }
       ]
     },
     {
-      "id": "four-pieces",
-      "template": "big",
+      "id": "half-four",
+      "template": "shot",
       "data": {
-        "text": "4 件時計",
-        "kicker": "1765 年法案",
-        "sub": "前三件機器加這只航海錶，產權轉給委員會"
+        "prompt": "Wide shot of three tall closed wooden cabinets and a small wooden watch box tied with ribbon waiting by an open workshop door, pale overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg603",
+          "id": "t071",
           "text": "還要把前三件機器，加上這只錶，產權轉給委員會，給公眾使用。",
           "emotion": "回收前三件"
         }
       ]
     },
     {
-      "id": "empty-shelf",
+      "id": "half-empty",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly clockmaker with curled grey hair and a white cravat standing beside a bare wooden workshop shelf, one hand resting on the empty boards, a wistful look, mild window light from the left",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Wide shot of an empty workshop corner with bare wooden shelves and a worn brown leather work apron hanging on a wooden peg, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg604",
+          "id": "t072",
           "text": "也就是說，他做了這麼多年的四件東西，從此不歸他了。",
           "emotion": "放輕"
         }
       ]
     },
     {
-      "id": "deduct",
+      "id": "half-deduct",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot treasurer moving a small coin pile from one tray into another, soft light",
-        "camera": "pan right",
+        "prompt": "Close-up of a hand lifting a small cloth purse off the top of a pile of gold coins on an oak table, mild morning light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg605",
-          "text": "還記得牙買加先給的兩千五百英鎊嗎？",
+          "id": "t073",
+          "text": "還記得牙買加先給的兩千五百英鎊嗎？就從這前半扣掉。",
           "emotion": "點名回呼"
+        }
+      ]
+    },
+    {
+      "id": "half-second",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed silver pocket watch on green velvet beside one empty watch-shaped hollow in the same tray, pale overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "那後半筆呢？",
+          "emotion": "問句"
         },
         {
-          "id": "lg606",
-          "text": "就從這前半扣掉。那後半筆呢？",
-          "emotion": "問句"
+          "id": "t075",
+          "text": "更難：同類的錶要做出來，測到半度之內，就是同一道最高門檻。"
         }
       ]
     },
     {
-      "id": "second-half",
+      "id": "half-unclear",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one adult eighteenth-century clockmaker comparing a closed brass sea watch case and an exposed unfinished brass mechanism on a wooden bench",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of a very long empty velvet tray with an endless row of watch-shaped hollows stretching out of view on an oak table, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg607",
-          "text": "比前半更難：同類的錶要做出來，測到半度之內，也就是同一道最高門檻。"
-        }
-      ]
-    },
-    {
-      "id": "lid",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elderly clockmaker with curled grey hair and a white cravat reading a folded blank parchment with a puzzled frown and scratching his head, an oak workbench behind him, mild window light from the left",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "lg608",
+          "id": "t076",
           "text": "還要委員會滿意；可是要做幾只、怎麼測，法案沒有直接寫。"
         }
       ]
     },
     {
-      "id": "viewer-outrage",
+      "id": "half-you",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a man in a T-shirt on a sofa throwing up his hands in mock outrage, a cushion sliding off his lap, warm lamp light from the left",
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, throwing up both hands in disbelief, mouth open, soft morning light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg609",
-          "text": "換成你是哈里森，兩趟航程跑完，回來發現規則多了一條，你會怎麼想？",
+          "id": "t077",
+          "text": "換成你，兩趟航程都跑完，回來發現規則多了一條，你會怎麼想？",
           "emotion": "對觀眾，問句"
         }
       ]
     },
     {
-      "id": "indignant",
+      "id": "half-his",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly clockmaker with curled grey hair in a brown Georgian waistcoat and white cravat pointing firmly at a folded blank parchment on an oak table, his face indignant, mild window light from the left",
-        "camera": "pan left",
+        "prompt": "Close-up of an old man's wrinkled hands in white shirt cuffs gripping the edges of a very thick plain-covered book tied with a red ribbon tightly on an oak desk, bright midday light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg610",
+          "id": "t078",
           "text": "哈里森的說法是：航程都跑完了，領獎的辦法卻換了一套。",
           "emotion": "歸給哈里森"
         }
       ]
     },
     {
-      "id": "open-the-watch",
+      "id": "half-open",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one elderly British clockmaker in a mid-1700s cuffed frock coat and white cravat lifting the lid of one small oak instrument case on a bare timber workbench, plain plaster wall",
-        "camera": "push in",
+        "prompt": "Close-up of an old man's wrinkled hands in white shirt cuffs lifting a tiny brass wheel out of an open silver watch case above a white cloth, pale overcast light",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg611",
+          "id": "t079",
           "text": "可是他照做了：一七六五年八月二十二日，他把錶拆開。",
           "emotion": "日期一字一字"
         }
       ]
     },
     {
-      "id": "show-gears",
+      "id": "half-show",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of one elderly Georgian clockmaker showing small brass gears inside an opened marine watch case to one adult observer in a mid-1700s coat at an oak table",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "lg612",
-          "text": "在委員會派來的人面前，一件一件講解構造。"
-        }
-      ]
-    },
-    {
-      "id": "sad-gears",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an elderly clockmaker with curled grey hair and a white cravat gazing sadly at tiny brass wheels laid out on a white cloth before him on an oak table, mild window light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "lg613",
-          "text": "我很難想像那種感覺：做了好多年的東西，當著別人的面拆成零件。",
-          "emotion": "自己的反應，放輕"
-        }
-      ]
-    },
-    {
-      "id": "william-steps",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an adult man in a dark Georgian travel coat and plain tricorn hat carrying a closed wooden watch case up the stone steps of a plain Georgian building, overcast daylight",
+        "prompt": "Medium shot of three men in plain Georgian coats leaning over an oak table to look at tiny brass wheels laid out on a white cloth, soft afternoon light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg614",
+          "id": "t080",
+          "text": "在委員會派來的人面前，一件一件講解構造。"
+        }
+      ]
+    },
+    {
+      "id": "half-sad",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, gazing sadly at tiny brass wheels in her palm, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "我很難想像那種感覺：做了好多年的東西，當著別人的面拆成零件。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "half-william",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a black three-cornered hat beside a small closed wooden watch box on an oak table in a wood-panelled room, mild morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t082",
           "text": "照哈里森的記述，交錶那天，是威廉帶著錶到場。"
         }
       ]
     },
     {
-      "id": "pouch",
+      "id": "half-paid",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of an elderly clockmaker with curled grey hair and a white cravat holding a small cloth money pouch at a timber workbench, a tired half smile, mild window light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a plump leather purse of gold coins sitting on a worn brown leather work apron hanging on a wooden peg folded on a workbench, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg615",
-          "text": "他說，前半筆獎金，他拿到了。"
-        }
-      ]
-    },
-    {
-      "id": "pamphlet-chest",
-      "template": "shot",
-      "data": {
-        "prompt": "Close shot of one eighteenth-century British clerk in a Georgian waistcoat laying a small blank pamphlet beside a sealed wooden instrument chest on an oak desk",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
+          "id": "t083",
+          "text": "他說，前半筆獎金，他拿到了。",
+          "emotion": "歸給哈里森"
+        },
         {
-          "id": "lg616",
-          "text": "可是那只錶交出去以後，接下來歸誰管？",
+          "id": "t084",
+          "text": "可是錶交出去以後，歸誰管？",
           "emotion": "問句"
         }
       ]
     },
     {
-      "id": "admiralty",
-      "chapter": "一七六六年，天文台換了一種方法測它",
+      "id": "lab-admiralty",
+      "chapter": "天文台裡，錶被質疑",
       "template": "shot",
       "data": {
-        "prompt": "Close shot of a small closed wooden marine watch case on a shelf inside an eighteenth-century Admiralty storage cabinet, door ajar, no people, writing or modern devices",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Wide shot of a small wooden watch box alone on a high shelf in a grand stone hall with tall arched windows, pale overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg701",
+          "id": "t085",
           "text": "照哈里森的說法，錶先放在海軍部，後來送進格林威治的皇家天文台。",
           "emotion": "接住問題"
         }
       ]
     },
     {
-      "id": "maskelyne",
+      "id": "lab-maskelyne",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Georgian astronomer in a powdered wig and dark frock coat bending over a small closed wooden watch case on an oak table and writing in a blank ledger with a quill, a tall timber-framed window behind him, overcast daylight",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Medium shot of a long brass telescope on a wooden tripod standing by a tall open window in an old observatory room, clear blue sky outside, bright morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg702",
-          "text": "開頭說的那位天文學家，是一七六六年五月接手的皇家天文學家，馬斯基林。",
+          "id": "t086",
+          "text": "一七六六年五月，收下這只錶的，是皇家天文學家馬斯基林。",
           "emotion": "名字放慢"
         }
       ]
     },
     {
-      "id": "land-test",
+      "id": "lab-symbol",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one Georgian-era British observer in a Georgian coat setting a closed wooden timekeeper case on an oak table inside a timber observatory room with tall mullioned windows",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small brass spyglass up to one eye playfully, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg703",
+          "id": "t087",
+          "text": "他一樣不畫成人像；畫面裡那支望遠鏡，就代表他。"
+        }
+      ]
+    },
+    {
+      "id": "lab-land",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed silver pocket watch lying on a wide stone windowsill in an observatory, green lawns and trees outside, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t088",
           "text": "這是一場陸地上的測試，跟海上那兩趟完全不同。"
         }
       ]
     },
     {
-      "id": "doubt-rate",
+      "id": "lab-doubt",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a Georgian astronomer in a powdered wig and dark frock coat squinting doubtfully at a small closed wooden watch case on an oak table, quill paused in his hand, overcast daylight from a tall window",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a closed silver pocket watch beside a blank open ledger and a quill on an oak table under a long brass telescope on a wooden tripod, pale overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg704",
-          "text": "結果，他對這只錶每天的快慢，提出了質疑。",
+          "id": "t089",
+          "text": "一天一天記下來，他對這只錶每天的快慢，提出了質疑。",
           "emotion": "收著"
         }
       ]
     },
     {
-      "id": "angry-letter",
+      "id": "lab-swallow",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an elderly clockmaker with curled grey hair and a white cravat gripping a blank folded letter with both hands, cheeks puffed in anger, candle light from the left",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, folding her arms and raising one eyebrow, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg705",
-          "text": "哈里森會吞下這口氣嗎？",
+          "id": "t090",
+          "text": "這下輪到哈里森了：他會吞下這口氣嗎？",
           "emotion": "問句"
         }
       ]
     },
     {
-      "id": "pamphlet",
+      "id": "lab-pamphlet",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one elderly Georgian clockmaker laying a small blank stitched pamphlet beside a closed brass timekeeper case on an oak workbench, daylight from a leaded window",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a thin plain grey booklet lying on a worn brown leather work apron hanging on a wooden peg folded on a workbench, a quill beside it, bright midday light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg706",
+          "id": "t091",
           "text": "隔年，他自己印了一本小冊子，專門反駁這套測法和計算。"
         }
       ]
     },
     {
-      "id": "diagonal",
+      "id": "lab-fixed",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot surveyor drawing a steady diagonal line on blank graph paper, soft lamplight",
+        "prompt": "Close-up of a closed silver pocket watch beside a small wooden hourglass on an oak desk, both perfectly still, mild morning light",
         "camera": "pull out",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg707",
+          "id": "t092",
           "text": "他的道理是：錶不必每天分秒不差，只要快慢固定、知道快多少，就能扣回來。",
           "emotion": "清楚"
         }
       ]
     },
     {
-      "id": "wall-clock",
+      "id": "lab-wallclock",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a man in a T-shirt in a plain kitchen pointing with a grin at a round wall clock with a blank face and no numbers, morning light from a window",
-        "camera": "pan left",
+        "prompt": "Medium shot of a young man in a T-shirt in a bright kitchen grinning and pointing at a round wall clock with a plain blank face and two hands, soft window light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg708",
-          "text": "就像你家那個每天固定快兩分鐘的鐘，其實很好用，因為你知道要扣兩分鐘。",
-          "emotion": "對觀眾，帶笑"
+          "id": "t093",
+          "text": "就像你家每天固定快兩分鐘的鐘，其實很好用，你知道要扣兩分鐘。",
+          "emotion": "帶笑"
         }
       ]
     },
     {
-      "id": "rate-question",
+      "id": "lab-rate",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a Georgian astronomer in a powdered wig and dark frock coat holding a small closed wooden watch case up beside a tall case clock with a blank face, comparing the two with a puzzled look, overcast daylight",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, squinting at a tiny screwdriver in her hand, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg709",
+          "id": "t094",
           "text": "問題是，一只調過的錶，還能拿以前量的走速來判嗎？",
           "emotion": "問句"
         }
       ]
     },
     {
-      "id": "adjust-screw",
+      "id": "lab-adjust",
       "template": "shot",
       "data": {
-        "prompt": "Close shot at a sunlit oak workbench in a mid-1700s clockmaker shop, one elderly craftsman in a waistcoat and white cravat adjusting a small screw on a brass watch balance wheel",
-        "camera": "drift",
+        "prompt": "Close-up of an old man's wrinkled hands in white shirt cuffs turning a tiny screw inside an open silver watch case with a fine screwdriver, soft afternoon light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg710",
-          "text": "哈里森說，他交錶之前特地改過走速，所以不能拿航試時的速度來判它。",
+          "id": "t095",
+          "text": "哈里森說，他交錶之前特地改過走速，所以不能拿航試時的速度判它。",
           "emotion": "歸給哈里森"
         }
       ]
     },
     {
-      "id": "two-pamphlets",
+      "id": "lab-limit",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one grey-haired eighteenth-century adult man comparing two small plain pamphlets at a wooden desk",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a thin plain grey booklet lying alone on a bare oak table beside a quill, pale overcast light from a tall window",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg711",
+          "id": "t096",
           "text": "這是他自己的反駁；只憑這本小冊子，不能說對方的測試就錯了。",
           "emotion": "平實"
         }
       ]
     },
     {
-      "id": "archivist-empty",
+      "id": "lab-unread",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist with round glasses in a cotton shirt and a knitted vest holding up an empty blank folder with a rueful smile, plain wall, mild lamp light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding out an empty open folder, apologetic, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg712",
+          "id": "t097",
           "text": "可惜對方的報告全文，我們這次沒有讀到。",
           "emotion": "自己的反應"
         }
       ]
     },
     {
-      "id": "borrow-back",
+      "id": "lab-borrow",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly clockmaker with curled grey hair and a white cravat holding out both open hands across a plain oak committee table toward someone off frame, a pleading look on his face, mild daylight",
-        "camera": "tilt up",
+        "prompt": "Close-up of an old man's wrinkled empty hands held out palms up over a bare oak table, white shirt cuffs, mild morning light",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg713",
+          "id": "t098",
           "text": "他還請委員會把錶借回來，讓別的工匠照著做；他說，這個請求被拒絕了。"
         }
       ]
     },
     {
-      "id": "archivist-wince",
+      "id": "lab-awkward",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an archivist with round glasses in a cotton shirt and a knitted vest wincing awkwardly while holding a blank folder, plain wall, mild lamp light",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, wincing with her teeth clenched in an awkward grin, against a plain wall, in soft daylight",
         "camera": "pull out",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg714",
-          "text": "這就有點尷尬了：後半筆，偏偏要同類的錶。",
-          "emotion": "自己的反應"
-        },
-        {
-          "id": "lg715",
-          "text": "那這件事，最後怎麼收場？",
+          "id": "t099",
+          "text": "這就有點尷尬了：後半筆，偏偏要同類的錶。那最後怎麼收場？",
           "emotion": "問句"
         }
       ]
     },
     {
       "id": "act-1773",
-      "chapter": "一七七三年，議會又寫了一部法案",
+      "chapter": "一七七三年，四十八年",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a wood-panelled Georgian chamber, one parliamentary clerk in a white cravat writing on a long blank parchment with a quill at an oak desk, mild daylight from tall windows",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of a very thick plain-covered book tied with a blue ribbon set down on a polished oak desk beside a quill and a small brass inkpot, bright morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg801",
+          "id": "t100",
           "text": "收場在另一部法案裡：一七七三年，議會又把哈里森的名字寫了進去。",
           "emotion": "接住問題"
         }
       ]
     },
     {
-      "id": "forty-eight",
-      "template": "big",
+      "id": "act-48",
+      "template": "shot",
       "data": {
-        "text": "48 年",
-        "kicker": "1773 年法案寫道",
-        "sub": "不間斷投入航海計時的時間"
+        "prompt": "Close-up of a worn brown leather work apron hanging on a wooden peg, faded and patched, above a deeply worn wooden workbench, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg802",
+          "id": "t101",
           "text": "法案說，他在航海計時上，不間斷地做了四十八年。",
           "emotion": "數字放慢"
         }
       ]
     },
     {
-      "id": "quiet-bench",
+      "id": "act-pause",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an elderly clockmaker with white curled hair in a white cravat sitting quietly at a worn timber workbench by a leaded window, hands resting on his knees, soft grey afternoon light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, gasping softly with one hand pressed to her chest, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg803",
-          "text": "我讀到這個數字，停了好一會兒。",
-          "emotion": "自己的反應，放輕"
+          "id": "t102",
+          "text": "四十八年。我讀到這個數字，停了好一會兒。",
+          "emotion": "放輕"
         }
       ]
     },
     {
-      "id": "sketch",
+      "id": "act-public",
       "template": "shot",
       "data": {
-        "prompt": "Close shot clockmaker pointing at an unlettered mechanism sketch on a workshop bench, warm daylight",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Close-up of a blank open notebook with tiny brass wheels laid out neatly in a row beside it on an oak desk, mild morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg804",
+          "id": "t103",
           "text": "法案也寫，他已經把構造原理公開了。"
         }
       ]
     },
     {
-      "id": "recall-replica",
+      "id": "act-recall",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot inside a Georgian clockmaker workshop, one elderly craftsman with grey curled hair and white cravat comparing a small brass marine watch movement with loose brass cogwheels on an oak workbench",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping a closed silver pocket watch with one finger, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg805",
+          "id": "t104",
           "text": "還記得那個問題嗎？一只錶成功了，照著做，做得出別的嗎？",
           "emotion": "點名回呼"
         }
       ]
     },
     {
-      "id": "two-cases",
+      "id": "act-answer",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one grey-haired Georgian official in a dark frock coat examining two closed rectangular wooden instrument cases on a bare table",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of two identical closed silver pocket watches lying side by side on green velvet in the same tray, bright midday light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg806",
+          "id": "t105",
           "text": "法案的回答是：同類的錶已經做出來了，而且走得相當準。",
           "emotion": "篤定"
         }
       ]
     },
     {
-      "id": "two-reports",
+      "id": "act-unknown",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of one adult Georgian parliamentary clerk in a white cravat seated alone at an oak table, holding two distinct folded blank reports above a simple unlettered maritime sketch in a British timber chamber",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of two identical closed silver pocket watches on green velvet with a plain grey cloth draped over the space beside them, pale overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg807",
+          "id": "t106",
           "text": "可是它沒寫是誰做的，也沒列出每一只在海上各差多少。"
         }
       ]
     },
     {
-      "id": "bill",
+      "id": "act-trade",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of one eighteenth-century British parliamentary clerk in a Georgian waistcoat holding a blank folded bill in a wood-panelled chamber with oak benches",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Wide shot of a busy harbour full of sailing ships with white sails coming and going on a blue sea, gulls overhead, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg808",
+          "id": "t107",
           "text": "議會相信這套方法對航運和貿易有好處，於是授權一筆新的獎勵。"
         }
       ]
     },
     {
-      "id": "pay-8750",
-      "template": "big",
+      "id": "act-8750",
+      "template": "shot",
       "data": {
-        "text": "£8,750",
-        "kicker": "1773 年法案",
-        "sub": "授權追加獎勵的上限，由海軍財務官支付"
+        "prompt": "Close-up of a plump new leather purse of gold coins tied with a blue ribbon on a polished oak desk, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg809",
+          "id": "t108",
           "text": "最多八千七百五十英鎊，由海軍財務官支付。",
           "emotion": "數字放慢"
         }
       ]
     },
     {
-      "id": "viewer-tilt",
+      "id": "tail-notyet",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a man in a T-shirt on a sofa tilting his head with a curious frown, a cushion under his arm, warm lamp light from the left",
-        "camera": "pan left",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, weighing a plump leather purse in one hand, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "故事到這裡還沒完：這一筆新錢，到底算什麼？",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "tail-half",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, tilting his head with a hopeful look, one finger raised, mild morning light",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "lg810",
+          "id": "t110",
           "text": "你可能跟我一樣，第一個念頭是：這是不是原本那筆獎金的後半？",
           "emotion": "對觀眾，問句"
         }
       ]
     },
     {
-      "id": "layered",
+      "id": "tail-further",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot, Full-frame top-down storybook still life of two complete folded blank parchment documents layered on a wooden desk, the later document resting partly atop the earlier one, no people, hands, letters or numbers, clear side light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a plump leather purse tied with a blue ribbon set down beside an older pile of gold coins on an oak desk, bright midday light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg811",
+          "id": "t111",
           "text": "條文寫的是「進一步的獎勵」，加在他之前已經拿到的錢之外。",
           "emotion": "引號語氣"
         }
       ]
     },
     {
-      "id": "new-bill",
+      "id": "tail-new",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a man in a T-shirt at a kitchen table holding up a second blank sheet of paper beside a first one with a knowing smile, soft evening lamp light",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up two plain blank slips of paper, one in each hand, against a plain wall, in soft daylight",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "lg812",
-          "text": "你可以把它想成：議會另外開了一張單子，不是把舊單子補完。",
+          "id": "t112",
+          "text": "就像另外開了一張新單子，不是把舊單子補完。",
           "emotion": "對觀眾"
         }
       ]
     },
     {
-      "id": "historian",
+      "id": "tail-prize",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot historian arranging two distinct unlettered statute pages on a table, neutral light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a big open wooden chest of gold coins half empty on an oak table, a few coins strewn beside it, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg813",
-          "text": "原來那兩半各實付了多少，條文沒有列出來，我們也不拿這筆新錢倒推舊帳。"
+          "id": "t113",
+          "text": "還記得開頭那兩萬英鎊嗎？兩半各實付了多少，條文沒有列出來。",
+          "emotion": "問句，再平實回答"
         }
       ]
     },
     {
-      "id": "outro",
-      "template": "outro",
+      "id": "tail-noback",
+      "template": "shot",
       "data": {
-        "title": "海上準不準：過了。做不做得出第二只：另一個問題",
-        "cta": "參考資料在說明欄"
+        "prompt": "Close-up of a very thick plain-covered book tied with a red ribbon and a very thick plain-covered book tied with a blue ribbon stacked on an oak desk, pale overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "lg814",
-          "text": "好啦，回到開頭：那只錶回答了海上準不準，議會還要另一個答案，就是同樣的錶做不做得出來。",
-          "emotion": "篤定，乾脆"
-        },
+          "id": "t114",
+          "text": "我們也不拿這筆新錢，去倒推舊帳。"
+        }
+      ]
+    },
+    {
+      "id": "close-back",
+      "chapter": "海上準，還要做得出來",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a pocket watch by its chain, smiling, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
         {
-          "id": "lg815",
-          "text": "如果由你來評獎，你會先看一趟海上測試，還是等同類的錶也做出來？留言告訴我。",
+          "id": "t115",
+          "text": "好啦，回到開頭：一只過了海上測試的錶，為什麼拿不到整筆獎金？",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "close-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands pushing a heap of smooth gold coins apart into two equal piles on a bare wooden table, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "那筆懸賞被拆成兩半，拆開的，其實是兩個問題。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-sea",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single wooden dart stuck dead centre in a straw archery target hung on a whitewashed wall, bright afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "因為那只錶回答的，是它自己在海上準不準。"
+        }
+      ]
+    },
+    {
+      "id": "close-more",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two identical closed silver pocket watches lying side by side on green velvet in the same tray, mild morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "議會還要另一個答案：同樣的錶，做不做得出來。"
+        }
+      ]
+    },
+    {
+      "id": "close-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding two silver pocket watches side by side, beaming, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "一只好錶，是一個人的本事；做得出第二只，才是所有船都能用的辦法。",
+          "emotion": "金句，放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, resting his chin on one fist and thinking hard, a closed pocket watch on the sofa arm, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "如果由你來評獎，你會先看一趟海上測試，還是等同類的錶也做出來？",
           "emotion": "親近，問句"
-        },
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a very thick plain book, smiling at us, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
         {
-          "id": "lg816",
-          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "id": "t121",
+          "text": "留言告訴我。這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "乾脆"
         }
       ]
@@ -1721,144 +2052,144 @@
   ],
   "loops": [
     {
-      "setup": "lg102",
-      "payoff": "lg811",
-      "what": "兩萬英鎊的懸賞，最後他拿到什麼"
+      "setup": "t003",
+      "payoff": "t113",
+      "what": "懸賞兩萬英鎊，最後付了多少"
     },
     {
-      "setup": "lg104",
-      "payoff": "lg504",
-      "what": "沒超過門檻，實際差了多少"
+      "setup": "t005",
+      "payoff": "t057",
+      "what": "誤差最多只有門檻的三分之一：實際多少"
     },
     {
-      "setup": "lg106",
-      "payoff": "lg601",
-      "what": "被拆成的兩半各是什麼條件"
+      "setup": "t006",
+      "payoff": "t068",
+      "what": "獎金拆成兩半：兩半各要什麼"
     },
     {
-      "setup": "lg107",
-      "payoff": "lg702",
-      "what": "天文台裡那位天文學家是誰、測出什麼"
+      "setup": "t007",
+      "payoff": "t079",
+      "what": "當著別人的面拆錶"
     },
     {
-      "setup": "lg109",
-      "payoff": "lg814",
-      "what": "過了海上測試為什麼拿不到整筆"
+      "setup": "t008",
+      "payoff": "t086",
+      "what": "天文台裡一天一天記快慢的人是誰"
     },
     {
-      "setup": "lg203",
-      "payoff": "lg204",
+      "setup": "t009",
+      "payoff": "t117",
+      "what": "全片的問題：為什麼拿不到整筆"
+    },
+    {
+      "setup": "t013",
+      "payoff": "t014",
       "what": "看太陽為什麼不夠"
     },
     {
-      "setup": "lg208",
-      "payoff": "lg209",
+      "setup": "t018",
+      "payoff": "t019",
       "what": "差出來的時間代表什麼"
     },
     {
-      "setup": "lg305",
-      "payoff": "lg306",
-      "what": "誰帶錶上船"
+      "setup": "t021",
+      "payoff": "t030",
+      "what": "鐘搬上船守不守得住"
     },
     {
-      "setup": "lg211",
-      "payoff": "lg302",
-      "what": "岸上的鐘搬上船守不守得住"
+      "setup": "t027",
+      "payoff": "t028",
+      "what": "接下這一題的人是誰"
     },
     {
-      "setup": "lg217",
-      "payoff": "lg301",
-      "what": "帶上船的是哪一只鐘"
+      "setup": "t031",
+      "payoff": "t071",
+      "what": "前三件機器會被議會點名"
     },
     {
-      "setup": "lg303",
-      "payoff": "lg603",
-      "what": "前三件機器為什麼被點名"
+      "setup": "t033",
+      "payoff": "t034",
+      "what": "誰帶它上船"
     },
     {
-      "setup": "lg312",
-      "payoff": "lg411",
-      "what": "第一趟能不能直接拿最高獎"
+      "setup": "t038",
+      "payoff": "t039",
+      "what": "第一趟夠準會不會直接到手"
     },
     {
-      "setup": "lg402",
-      "payoff": "lg403",
-      "what": "兩邊算出來一不一樣"
+      "setup": "t040",
+      "payoff": "t041",
+      "what": "兩邊算的會不會一樣"
     },
     {
-      "setup": "lg405",
-      "payoff": "lg406",
-      "what": "委員會答不答應讓他派人核對"
+      "setup": "t043",
+      "payoff": "t044",
+      "what": "委員會答應核算了嗎"
     },
     {
-      "setup": "lg409",
-      "payoff": "lg410",
-      "what": "法律怎麼記第一趟"
+      "setup": "t047",
+      "payoff": "t048",
+      "what": "法案怎麼記第一趟"
     },
     {
-      "setup": "lg411",
-      "payoff": "lg606",
-      "what": "先給的兩千五百英鎊後來怎麼算"
+      "setup": "t049",
+      "payoff": "t073",
+      "what": "先給的兩千五百英鎊"
     },
     {
-      "setup": "lg413",
-      "payoff": "lg504",
-      "what": "第二趟能不能說清楚"
+      "setup": "t052",
+      "payoff": "t056",
+      "what": "再跑一趟能不能說清楚"
     },
     {
-      "setup": "lg507",
-      "payoff": "lg508",
-      "what": "照舊規矩是不是最高一級"
+      "setup": "t059",
+      "payoff": "t060",
+      "what": "這不就是最高那一級嗎"
     },
     {
-      "setup": "lg512",
-      "payoff": "lg513",
+      "setup": "t064",
+      "payoff": "t065",
       "what": "議會是不是看不起做鐘的"
     },
     {
-      "setup": "lg515",
-      "payoff": "lg806",
-      "what": "照著做，做不做得出別的錶"
+      "setup": "t067",
+      "payoff": "t105",
+      "what": "照著做，做得出別的嗎"
     },
     {
-      "setup": "lg516",
-      "payoff": "lg601",
-      "what": "兩半各要他做什麼"
+      "setup": "t077",
+      "payoff": "t078",
+      "what": "規則多了一條，你會怎麼想"
     },
     {
-      "setup": "lg609",
-      "payoff": "lg610",
-      "what": "規則多一條，哈里森怎麼想"
-    },
-    {
-      "setup": "lg616",
-      "payoff": "lg701",
+      "setup": "t084",
+      "payoff": "t085",
       "what": "交出去的錶歸誰管"
     },
     {
-      "setup": "lg705",
-      "payoff": "lg706",
-      "what": "哈里森怎麼回應質疑"
+      "setup": "t090",
+      "payoff": "t091",
+      "what": "他會吞下這口氣嗎"
     },
     {
-      "setup": "lg709",
-      "payoff": "lg710",
-      "what": "調過的錶能不能用舊走速判"
+      "setup": "t094",
+      "payoff": "t095",
+      "what": "調過的錶能用舊走速判嗎"
     },
     {
-      "setup": "lg715",
-      "payoff": "lg801",
-      "what": "這件事怎麼收場"
+      "setup": "t099",
+      "payoff": "t100",
+      "what": "最後怎麼收場"
     },
     {
-      "setup": "lg810",
-      "payoff": "lg811",
-      "what": "新獎勵是不是原本的後半"
+      "setup": "t110",
+      "payoff": "t111",
+      "what": "是不是原本的後半"
     }
   ],
   "youtube": {
     "title": "航海鐘誤差在十海里內，兩萬英鎊為什麼被拆成兩半？｜奇聞檔案局",
-    "description": "三百多年前，英國懸賞兩萬英鎊，給能讓海上的船算出經度的方法。1765 年，議會把約翰・哈里森那只航海錶的海上測試寫進法案：從樸茨茅斯到巴貝多的布里奇敦，船靠這只錶定經度，偏差沒有超過十個地理英里（大約可當成海里），最高獎的門檻是三十個。可是同一部法案把獎金拆成兩半：前半要他六個月內公開構造，把前三件機器和這只錶的產權轉給委員會；後半要同類的錶做出來，再測到同一個門檻內。\n\n這一集照紀錄的順序走：1714 年的三級懸賞、「兩地差一度，正午差約四分鐘」、兒子威廉在樸茨茅斯等了五個月、牙買加那一趟只換到「相當的用處」與先付的 2,500 英鎊、1765 年 8 月 22 日當著委員會派來的人拆錶、1766 年 5 月格林威治皇家天文台的陸地測試、哈里森 1767 年印小冊子反駁，到 1773 年議會另一部法案寫下「四十八年」，授權最多 8,750 英鎊的「進一步的獎勵」。\n\n界線：十個地理英里是 1765 年法案採用的判定，本集沒有重算航海日誌；哈里森對委員會與馬斯基林的批評是他自己的說法，不當成獨立裁決；1773 年的追加獎勵不是原本兩萬英鎊的後半，條文也沒列出原獎兩半各實付多少。出處是 1765、1773 年英國國會法案的固定版 OCR 與哈里森 1767 年的小冊子，列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似，錶的內部與公文都是示意。\n\n資料截至 2026-10-19（2026-10-25 照新規則重寫）",
+    "description": "三百多年前，英國懸賞兩萬英鎊，給能讓海上的船算出經度的方法。1765 年，議會把約翰・哈里森那只航海錶的海上測試寫進法案：從樸茨茅斯到巴貝多的布里奇敦，船靠這只錶定經度，偏差沒有超過十個地理英里（大約可當成海里），最高獎的門檻是三十個。可是同一部法案把獎金拆成兩半：前半要他六個月內公開構造，把前三件機器和這只錶的產權轉給委員會；後半要同類的錶做出來，再測到同一個門檻內。\n\n這一集照紀錄的順序走：1714 年的三級懸賞、「兩地差一度，正午差約四分鐘」、兒子威廉在樸茨茅斯等了五個月、牙買加那一趟只換到「相當的用處」與先付的 2,500 英鎊、1765 年 8 月 22 日當著委員會派來的人拆錶、1766 年 5 月格林威治皇家天文台的陸地測試、哈里森 1767 年印小冊子反駁，到 1773 年議會另一部法案寫下「四十八年」，授權最多 8,750 英鎊的「進一步的獎勵」。\n\n界線：十個地理英里是 1765 年法案採用的判定，本集沒有重算航海日誌；哈里森對委員會與馬斯基林的批評是他自己的說法，不當成獨立裁決；1773 年的追加獎勵不是原本兩萬英鎊的後半，條文也沒列出原獎兩半各實付多少。出處是 1765、1773 年英國國會法案的固定版 OCR 與哈里森 1767 年的小冊子，列在下方參考資料。\n\n本集插圖由 AI 生成；歷史人物不入畫，用物件代表（皮圍裙是哈里森、三角帽是威廉、望遠鏡是馬斯基林），錶的內部與公文都是示意，畫面不放文字。\n\n資料截至 2026-10-19（2026-10-25 照新規則重寫）",
     "tags": [
       "約翰哈里森",
       "航海鐘",

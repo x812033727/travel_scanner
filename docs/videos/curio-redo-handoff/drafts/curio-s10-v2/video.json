@@ -1,0 +1,2322 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s10-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆一句大家都聽過的台詞：開場對觀眾、帶點挑釁；龜山到岔路口沉穩，「光秀往左」短而停；三份紀錄平實像翻卷宗；老兵那段溫柔，「只以為是家康」放慢；本能寺壓低，「不及是非」一字一字；粽子帶笑，「敵在本能寺」揭曉前停一拍；舉鞭那句放慢有力；成語輕鬆；最後誠懇，分清存檔與未結，結尾乾脆。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "t003",
+      "payoff": "t107",
+      "what": "三百年後成了日文的成語"
+    },
+    {
+      "setup": "t004",
+      "payoff": "t039",
+      "what": "那一夜的紀錄沒有一份寫著這一句"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t081",
+      "what": "五十九年後，書裡士兵先開口問了"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t093",
+      "what": "又有人讓他舉起馬鞭自己喊出來"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t066",
+      "what": "光秀真的喊過嗎（最早寫下它的書）"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t116",
+      "what": "最早是誰把它寫下來的"
+    },
+    {
+      "setup": "t015",
+      "payoff": "t072",
+      "what": "愛宕山上的連歌會"
+    },
+    {
+      "setup": "t019",
+      "payoff": "t075",
+      "what": "那晚商量的四個重臣"
+    },
+    {
+      "setup": "t023",
+      "payoff": "t090",
+      "what": "老之山岔路口，光秀往左"
+    },
+    {
+      "setup": "t025",
+      "payoff": "t094",
+      "what": "今天的故事裡那一聲喊"
+    },
+    {
+      "setup": "t026",
+      "payoff": "t027",
+      "what": "那一夜真的有人聽見嗎"
+    },
+    {
+      "setup": "t029",
+      "payoff": "t030",
+      "what": "光秀對全軍說了什麼"
+    },
+    {
+      "setup": "t033",
+      "payoff": "t117",
+      "what": "四個月後就替他定性的紀錄"
+    },
+    {
+      "setup": "t037",
+      "payoff": "t080",
+      "what": "傳教士聽到的閱兵"
+    },
+    {
+      "setup": "t040",
+      "payoff": "t041",
+      "what": "走在隊伍裡的人怎麼說"
+    },
+    {
+      "setup": "t046",
+      "payoff": "t055",
+      "what": "本能寺在哪都不知道"
+    },
+    {
+      "setup": "t048",
+      "payoff": "t092",
+      "what": "老兵天快亮時渡過的桂川"
+    },
+    {
+      "setup": "t051",
+      "payoff": "t053",
+      "what": "本能寺什麼時候被說出口"
+    },
+    {
+      "setup": "t065",
+      "payoff": "t066",
+      "what": "誰先把它寫進書裡"
+    },
+    {
+      "setup": "t078",
+      "payoff": "t101",
+      "what": "「信長要殺我」"
+    },
+    {
+      "setup": "t084",
+      "payoff": "t091",
+      "what": "先有人問他才開口；下一本有人問嗎"
+    },
+    {
+      "setup": "t106",
+      "payoff": "t108",
+      "what": "舉鞭的這一句走到了哪裡"
+    }
+  ],
+  "youtube": {
+    "title": "敵在本能寺，光秀真的喊過？一句名言被改寫了 245 年｜奇聞檔案局",
+    "description": "天正十年六月一日夜裡（1582 年 6 月 20 日，儒略曆），明智光秀的大軍在老之山的岔路口往左，走向京都。今天的故事都說，他在那一夜喊了「敵在本能寺」。這句話，最早是誰寫下來的？\n\n照紀錄出現的順序追：《信長公記》寫光秀對全軍宣布的是「經山崎往攝津」；大村由己《惟任退治記》只寫出兵；佛洛伊斯的報告說士兵被告知是去閱兵、有人以為對象是家康；本城惣右衛門寬永十七年（1640 年）寫下「我們只以為是家康」；《川角太閤記》寫快到京都時，齋藤利三叫各隊對準本能寺的樹林。這幾份紀錄裡都沒有這一句；那一夜留下來的話，是信長的「不及是非」。\n\n我們目前查到最早寫下它的，是林羅山父子奉將軍之命寫的《織田信長譜》（1641 年呈上，今讀 1658 年刊本）：士兵在大江山發問，光秀回答「敵在本能寺」。賴山陽《日本外史》（文政十年、1827 年隨信呈給松平定信）把這一幕搬到桂川，寫成舉鞭東指、揚聲說「吾敵在本能寺矣」；它的參考書目裡列著《織田信長譜》。\n\n佛洛伊斯與《川角太閤記》用德富蘇峰的轉引，《本城惣右衛門覚書》用日文維基的錄文；「最早」只表示本次查到的範圍。光秀為什麼起兵，到今天沒有定說。旁白的日期是舊曆；「我覺得」是本頻道的看法。\n\n本集插圖由 AI 生成；歷史人物不入畫，用物件代表；本能寺裡的經過只講對話，不畫。\n\n資料截至 2026-10-20（2026-10-25 照新規則重寫）",
+    "tags": [
+      "本能寺之變",
+      "敵在本能寺",
+      "明智光秀",
+      "織田信長",
+      "織田信長譜",
+      "林羅山",
+      "日本外史",
+      "賴山陽",
+      "日本史",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "光秀\n**喊過嗎？**",
+      "tag": "歷史名場面",
+      "sub": "最早寫下它的書，晚了 59 年",
+      "shot": "s-whip"
+    }
+  },
+  "sources": [
+    {
+      "title": "太田牛一《信長公記》卷十五（明治十四年刊本，維基文庫）",
+      "url": "https://ja.wikisource.org/wiki/%E4%BF%A1%E9%95%B7%E5%85%AC%E8%A8%98/%E6%88%91%E8%87%AA%E5%88%8A%E6%88%91%E6%9B%B8",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "大村由己《惟任退治記》（《史籍集覽》第十三冊，近藤出版部，明治三十九年；國立國會圖書館數位典藏）",
+      "url": "https://dl.ndl.go.jp/pid/1920348",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "德富猪一郎《近世日本國民史 第3 織田氏時代 後篇》（民友社；《川角太閤記》與佛洛伊斯報告的轉引；國立國會圖書館數位典藏）",
+      "url": "https://dl.ndl.go.jp/pid/1223718",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "日文維基百科〈本城惣右衛門覚書〉（原文錄文；二手）",
+      "url": "https://ja.wikipedia.org/wiki/%E6%9C%AC%E5%9F%8E%E6%83%A3%E5%8F%B3%E8%A1%9B%E9%96%80%E8%A6%9A%E6%9B%B8",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "林羅山、林春齋《織田信長譜》（明曆四年荒川四郎左衛門刊本，京都大學附屬圖書館藏；國文學研究資料館國書資料庫；只引文字）",
+      "url": "https://kokusho.nijl.ac.jp/biblio/100426189/",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "賴山陽《日本外史》卷十四（明治九年刊本；國立國會圖書館數位典藏）",
+      "url": "https://dl.ndl.go.jp/pid/770378",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "賴山陽《日本外史》卷一〈日本外史引用書目〉（明治九年刊本；國立國會圖書館數位典藏）",
+      "url": "https://dl.ndl.go.jp/pid/770365",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "賴山陽〈上樂翁公書〉（《日本外史》上，寶文館，明治四十三年；國立國會圖書館數位典藏）",
+      "url": "https://dl.ndl.go.jp/pid/770339",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "原田助編《基督教及教育》（明治二十八年；成語用例，國立國會圖書館全文檢索片段）",
+      "url": "https://dl.ndl.go.jp/pid/824242",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "林毅陸《三國同盟と三國協商》（大正三年；成語用例，國立國會圖書館全文檢索片段）",
+      "url": "https://dl.ndl.go.jp/pid/953242",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "落合直文、小中村義象《新撰日本外史》（明治二十五年；舉鞭型教科書用例，國立國會圖書館全文檢索片段）",
+      "url": "https://dl.ndl.go.jp/pid/769805",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "藤岡作太郎《日本史教科書》（明治三十五年；一問一答型教科書用例，國立國會圖書館全文檢索片段）",
+      "url": "https://dl.ndl.go.jp/pid/770771",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "日文維基百科〈敵は本能寺にあり〉（研究史與成語；二手）",
+      "url": "https://ja.wikipedia.org/wiki/%E6%95%B5%E3%81%AF%E6%9C%AC%E8%83%BD%E5%AF%BA%E3%81%AB%E3%81%82%E3%82%8A",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "日文維基百科〈本能寺の変〉（動機諸說；二手）",
+      "url": "https://ja.wikipedia.org/wiki/%E6%9C%AC%E8%83%BD%E5%AF%BA%E3%81%AE%E5%A4%89",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "日文維基百科〈日本外史〉（流傳；二手）",
+      "url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E5%A4%96%E5%8F%B2",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "maechan.net 和曆換算（說明欄的西曆）",
+      "url": "https://maechan.net/kanreki/",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "マイナビニュース〈本能寺の変・四国説後押しの新資料〉（2014-06-26；石谷家文書報導，二手）",
+      "url": "https://news.mynavi.jp/techplus/article/20140626-a237/",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "h-you",
+      "chapter": "你一定聽過的那一句",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, pointing at us with a knowing grin, a bowl of popcorn on his lap, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你一定聽過這句話：敵在本能寺。日本最有名的一句叛變台詞。",
+          "emotion": "對觀眾說，像聊天，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "h-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain indigo lacquered samurai helmet and a closed plain gold folding fan facing each other on a long wooden table, a thin strip of space between them, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "說它的人，是明智光秀；他帶兵攻打的，是住在本能寺的織田信長。"
+        }
+      ]
+    },
+    {
+      "id": "h-idiom",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two young office workers laughing together over coffee at a small round cafe table, one tapping the table to make a point, bright midday light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "三百年後，它甚至成了日文裡的一句成語。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "h-odd",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pile of old bound books with plain covers on a wooden desk, the top one lying open on blank pages, a round magnifying glass resting on it, pale overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "可是你想不到：那一夜留下的紀錄，我們翻了好幾份，沒有一份寫著這一句。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "h-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young foot soldier in a wide straw hat and a plain brown tunic on a mountain path raising one hand to ask a question, other soldiers behind him, misty morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "更怪的是，五十九年後，一本呈給將軍的書裡，是士兵先開口問了他。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "h-whip",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown leather riding whip lying across a tall stack of bound books with plain deep green covers on a low wooden desk, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "再過一百八十多年，又有人讓他舉起馬鞭，自己喊了出來。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "p-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small indigo samurai helmet, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "今天我們就來聊聊：敵在本能寺，光秀真的喊過嗎？",
+          "emotion": "承諾句，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "p-route",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pointing at us with a bright smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "這份檔案跟著這句台詞走兩百四十五年，看最早是誰把它寫下來的。"
+        }
+      ]
+    },
+    {
+      "id": "o-ada",
+      "chapter": "天正十年，信長住進了本能寺",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, opening one palm toward us like starting a story, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "我是檔案局的研究員。先帶你回到那一年：天正十年，四百多年前的日本。",
+          "emotion": "接住，像翻開卷宗"
+        }
+      ]
+    },
+    {
+      "id": "o-fan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a closed gold folding fan beside her face, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "先說好，這一集的歷史人物我都不畫成人像。金色扇子，代表信長；",
+          "emotion": "像在介紹道具"
+        }
+      ]
+    },
+    {
+      "id": "o-helmet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain indigo lacquered samurai helmet sitting on a wooden stand in a plain tatami room, its smooth indigo shell freshly polished, mild morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "深藍色的頭盔，代表光秀。這兩樣東西，你先記住。"
+        }
+      ]
+    },
+    {
+      "id": "o-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain indigo lacquered samurai helmet resting on a flat rock on a hilltop, facing a long row of far blue mountains to the west, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "那年五月，光秀正準備帶兵，往西邊的中國地方出征。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "o-kameyama",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small Japanese hill castle with white walls and grey tiled roofs among green hills, thin mist around its base, mild morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "五月二十六日，他進了自己的龜山城。"
+        }
+      ]
+    },
+    {
+      "id": "o-atago",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand drawing one thin bamboo stick from a round wooden cup on a shrine's wooden step, tall cedar trees behind, misty morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "第二天上愛宕山參拜，在神前抽了籤。"
+        }
+      ]
+    },
+    {
+      "id": "o-renga",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of several hands holding brushes over long blank paper strips laid on a low wooden table in a bright tatami room, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "二十八日，他又在山上辦了一場連歌會。"
+        }
+      ]
+    },
+    {
+      "id": "o-nobunaga",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain gold folding fan resting on a flat silk cushion on a quiet wooden temple veranda, a temple garden of raked white gravel beyond it, mild morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "這時候的信長，五月二十九日上了京，住進了本能寺。"
+        }
+      ]
+    },
+    {
+      "id": "o-few",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a short neat row of straw sandals lined up on a wooden temple step beside a closed plain gold folding fan, bright midday light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "他身邊，只帶了二三十個隨從。那其他的大軍呢？"
+        }
+      ]
+    },
+    {
+      "id": "o-stay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of foot soldiers in straw hats sitting relaxed in a camp yard eating rice balls and chatting, one stretching his arms, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "他交代大軍：各自備好，等通知再出發；這一次，不用跟。"
+        }
+      ]
+    },
+    {
+      "id": "o-june1",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain indigo lacquered samurai helmet on a low wooden table in a plain tatami room, four flat floor cushions set around it, mild window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "六月一日，光秀在龜山城找了四個重臣。他們商量的是什麼？",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "o-plan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of four flat floor cushions pulled in tight around a plain indigo lacquered samurai helmet on a low wooden table, the room very still, pale overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "他們商量定的是：除掉信長，讓光秀自己當天下之主。"
+        }
+      ]
+    },
+    {
+      "id": "o-march",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long line of foot soldiers in straw hats leaving a white-walled hill castle along a winding road, soft misty light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "那天入夜，光秀帶著大軍，離開了龜山城。"
+        }
+      ]
+    },
+    {
+      "id": "o-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long line of foot soldiers in straw hats turning back on a mountain road, the line bending into a wide U shape, soft misty light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "往西的路，他們沒走；隊伍掉頭向東，上了老之山。"
+        }
+      ]
+    },
+    {
+      "id": "o-fork",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a mountain path splitting in two around a big old pine tree, a plain indigo lacquered samurai helmet resting on a mossy stone at the fork, misty morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "山上路分兩條：往右去山崎、攝津，往左下山去京都。他會走哪一條？"
+        }
+      ]
+    },
+    {
+      "id": "o-left",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the left branch of a forked mountain path running down toward a wide misty valley, a plain indigo lacquered samurai helmet on a mossy stone beside it, mild morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "光秀往左。往左，就是往京都、往本能寺的方向。",
+          "emotion": "第一句短，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "o-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, leaning forward with wide eyes and a fist raised like cheering, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "今天的故事都說，就是在這一夜，他喊了那一句：敵在本能寺！",
+          "emotion": "演出來，再收"
+        }
+      ]
+    },
+    {
+      "id": "o-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, cupping one hand behind her ear, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "可是那一夜，真的有人聽見他喊了這一句嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "r-scribe",
+      "chapter": "書記官寫下的命令：經過山崎，往攝津",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound book with a plain dark blue cover lying closed on a low wooden writing desk beside a resting brush and a small ink stone, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "信長身邊的書記官太田牛一，把那幾天寫進了《信長公記》。"
+        }
+      ]
+    },
+    {
+      "id": "r-scribe-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound book with a plain dark blue cover on an empty writing desk in a quiet plain room, a folded floor cushion pushed aside, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "它是同時代寫得最詳細的紀錄；不過那一夜，他本人不在場。"
+        }
+      ]
+    },
+    {
+      "id": "r-four",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain indigo lacquered samurai helmet on a low wooden table in a plain tatami room, four flat floor cushions set around it, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "那四個重臣的名字，他也記了。那對全軍的士兵，光秀說了什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "r-settsu",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of foot soldiers in straw hats listening as one of them points down the right branch of a mountain road, soft misty light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "他記下對士兵宣布的命令是：經過山崎，往攝津出兵。",
+          "emotion": "清楚，像念卷宗"
+        }
+      ]
+    },
+    {
+      "id": "r-poet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim bound book with a plain orange cover lying on a lacquered tray on a wooden desk, a resting brush beside it, mild morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "事變四個月後，秀吉身邊的文人大村由己也寫了一份。他寫了宣告嗎？"
+        }
+      ]
+    },
+    {
+      "id": "r-poet-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim bound book with a plain orange cover lying open on blank pages on a wooden desk, a pressed green leaf resting in its fold, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "沒有。裡頭只寫光秀從龜山出兵，一句宣告都沒有。"
+        }
+      ]
+    },
+    {
+      "id": "r-poet-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim bound book with a plain orange cover beside a small glass pot holding a seedling with very long deep roots, bright midday light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "倒是先替光秀定了性：這不是一時起意，是多年的逆意。"
+        }
+      ]
+    },
+    {
+      "id": "r-winner",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger with a knowing look, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "我得提醒一句：這是打贏的那一邊寫的。",
+          "emotion": "旁白的反應"
+        }
+      ]
+    },
+    {
+      "id": "r-priest",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled white letter tied with a sky-blue ribbon resting on the deck of a small wooden toy sailboat on a plain wooden table, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "傳教士佛洛伊斯寫給教會的報告，又是怎麼說的？"
+        }
+      ]
+    },
+    {
+      "id": "r-priest-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a rolled letter with a blue ribbon, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "我們讀的，是德富蘇峰的日文翻譯；德富自己也提醒，可疑的地方不少。"
+        }
+      ]
+    },
+    {
+      "id": "r-review",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of foot soldiers in straw hats standing proudly in neat rows on a grassy field, chests out and chins up, bright midday light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "報告說，光秀告訴士兵：是信長要看看我們的軍容。"
+        }
+      ]
+    },
+    {
+      "id": "r-whisper",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two young foot soldiers in straw hats whispering behind their hands at the back of a marching line, misty morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "可是隊伍裡，有人起了疑心：會不會是奉了密令，要去對付家康？"
+        }
+      ]
+    },
+    {
+      "id": "r-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dark blue book, an orange book and a rolled letter with a sky-blue ribbon lying side by side on a plain table, pale overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "三份紀錄，三種說法，沒有一份有「敵在本能寺」。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "r-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, resting her chin on one hand, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "書記官不在場，文人站在贏家那邊。那走在隊伍裡的人，自己又怎麼說？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "v-old",
+      "chapter": "寬永十七年，一個老兵寫下那一夜",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gnarled wooden walking stick leaning on an old straw hat on a sunny wooden bench under the eaves of a small farmhouse, mild morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "有一個人說了。他叫本城惣右衛門，那一夜，他就走在光秀的隊伍裡。"
+        }
+      ]
+    },
+    {
+      "id": "v-age",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gnarled wooden walking stick leaning on an old straw hat on a wooden bench with a few fallen brown leaves around them, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "寬永十七年，八九十歲的他，寫下了那一夜。離那一夜，五十八年。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "v-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a single sheet of blank paper, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "這份回憶錄來歷不明，一九三〇年才出現，所以我們只當它是一個人的回憶。"
+        }
+      ]
+    },
+    {
+      "id": "v-yamazaki",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young foot soldier in a wide straw hat and a plain brown tunic walking on a road and looking back over his shoulder in surprise as the line turns, misty morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "他寫：本來以為要往山崎那邊去，沒想到，說是要去京都。",
+          "emotion": "帶點溫柔"
+        }
+      ]
+    },
+    {
+      "id": "v-ieyasu",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young foot soldier in a wide straw hat and a plain brown tunic shrugging with a friendly guessing smile as he marches, misty morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "那時家康大人正好上京，我們只以為，是家康。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "v-where",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young foot soldier in a wide straw hat and a plain brown tunic scratching his head at a crossroads of quiet dirt roads, misty morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "他還說，本能寺這個地方，連在哪裡都不知道。那他記得什麼？"
+        }
+      ]
+    },
+    {
+      "id": "v-follow",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind of a foot soldier in a wide straw hat walking after a rider on a brown horse down a misty road, pale morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "他記得的是：跟著齋藤利三的兒子一路過去；利三，就是那四個重臣之一。"
+        }
+      ]
+    },
+    {
+      "id": "v-river",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long line of foot soldiers in straw hats wading across a wide shallow river, cool early morning light over far hills",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "隊伍一路下山，渡過桂川的時候，天快亮了。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "k-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim bound book with a plain brown cover lying on a wooden desk by a bright open window, a resting brush beside it, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "大約一六二〇年代寫成的《川角太閤記》，寫到了過桂川之後。隊伍裡聽到了什麼？"
+        }
+      ]
+    },
+    {
+      "id": "k-tenka",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of foot soldiers in straw hats on a riverbank cheering with fists in the air, cool early morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "書裡寫，隊伍裡傳的令是：從今天起，主公就是天下之主，連提草鞋的都要高興。"
+        }
+      ]
+    },
+    {
+      "id": "k-noenemy",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger with narrowed eyes, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "可是你注意，這道令還是沒有「敵」字，也沒有本能寺。"
+        }
+      ]
+    },
+    {
+      "id": "g-q",
+      "chapter": "天快亮，有人指著本能寺的樹林",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet old city of grey tiled roofs seen from a low hill, thin mist between the roofs, cool early morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "那本能寺，到底是什麼時候，才被說出口的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "g-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of foot soldiers in straw hats pushing open a pair of tall wooden town gates together, cool early morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "快到京都時，齋藤利三下令推開各町的門，各隊分頭前進。往哪裡走？"
+        }
+      ]
+    },
+    {
+      "id": "g-grove",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dark green grove of tall trees with a large temple roof rising inside it, morning mist around the trunks, cool early morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "利三說：就對準本能寺的那片樹林。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "g-callback",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gnarled wooden walking stick leaning on an old straw hat at the mouth of a quiet narrow city street at first light, a dark grove far ahead, cool early morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "還記得老兵連本能寺在哪都不知道嗎？到了京都門口，才有人指出來。"
+        }
+      ]
+    },
+    {
+      "id": "g-no",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the edge of a dark green temple grove at the end of an empty street, a single fallen leaf on the stones, cool early morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "可是這一句，沒有「敵」字，也不是光秀說的。"
+        }
+      ]
+    },
+    {
+      "id": "g-nor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding one palm out in a careful gesture, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "所以也不能反過來說，士兵到最後都不知道要打誰。"
+        }
+      ]
+    },
+    {
+      "id": "t-few",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain gold folding fan resting on a flat silk cushion on a quiet wooden temple veranda, a short row of straw sandals on the step below, cool early morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "這時候的本能寺裡，就是信長，和那二三十個隨從。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "t-dawn",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large temple roof and long white wall wrapped in thick pale mist at first light, the street before it empty, cool early morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "天亮的時候，本能寺已經被團團圍住了。"
+        }
+      ]
+    },
+    {
+      "id": "t-noise",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain gold folding fan on a silk cushion on a temple veranda beside a small teacup that has tipped over, cool early morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "信長起初以為，是下人在吵架；聽到鬨聲和鐵炮聲，才問：是誰謀反？"
+        }
+      ]
+    },
+    {
+      "id": "t-zehi",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain gold folding fan lying very still on a silk cushion on an empty temple veranda, a raked gravel garden beyond, cool early morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "隨從森乱回答：看來是明智的人。信長只說了四個字：不及是非。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "t-read",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, closing her eyes with a calm face, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "我們把它讀成：事到這裡，沒什麼好說的了。"
+        }
+      ]
+    },
+    {
+      "id": "t-odd",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head with one eyebrow raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "這就很怪了：那一夜寺裡真正留下來的一句話，是信長的，不是光秀的。",
+          "emotion": "旁白的反應"
+        }
+      ]
+    },
+    {
+      "id": "t-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty silk cushion on a quiet temple veranda, closed plain gold folding fan left lying beside it, a single fallen leaf, pale overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "這一天，天正十年六月二日，信長死在寺裡。",
+          "emotion": "一句帶過"
+        }
+      ]
+    },
+    {
+      "id": "t-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim bound book with a plain pale yellow cover lying closed on a low lacquered desk beside two brushes, one big and one small, mild morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "剛剛那幾份紀錄裡，沒人記下光秀那一句。那是誰，最先把它寫進了書裡？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "b-book",
+      "chapter": "寬永十八年，呈給將軍的書裡，士兵開口問了",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim bound book with a plain pale yellow cover standing upright on a low lacquered stand in a bright tatami room, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "目前查到最早的，是開頭說的那本呈給將軍的書：《織田信長譜》。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "b-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands in wide sleeves presenting a slim bound book with a plain pale yellow cover on a black lacquered tray, a bright tatami floor behind, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "書末自己寫著：奉將軍之命，十一月上旬動筆，十二月七日呈上。"
+        }
+      ]
+    },
+    {
+      "id": "b-month",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, one hand on her cheek in surprise, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "一個多月就寫完一本書。那是寬永十八年，離那一夜五十九年。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "b-razan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two writing brushes, one big and one small, hanging side by side from a wooden brush stand on a low desk, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "署名的是幕府的儒官林羅山，還注明了：由兒子春齋起草。"
+        }
+      ]
+    },
+    {
+      "id": "b-tokugawa",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big brush and a small brush laid together across a slim bound book with a plain pale yellow cover on a low lacquered desk, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "書裡稱家康為「大權現」。一對父子替德川家寫織田家的歷史，會怎麼寫光秀？"
+        }
+      ]
+    },
+    {
+      "id": "b-print",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands lifting a fresh sheet of blank paper off a carved wooden printing block on a workbench, mild morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "呈給將軍的那一本我們沒看到；讀的是十七年後，明曆四年在京都印的本子。"
+        }
+      ]
+    },
+    {
+      "id": "b-renga",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding a brush that has stopped in midair above a long blank paper strip on a low table, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "這本書裡，連歌會上，光秀突然問：本能寺的壕溝，有多深？"
+        }
+      ]
+    },
+    {
+      "id": "b-dumpling",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding a leaf-wrapped rice dumpling up to take a bite, the green leaf still tied on, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "接著吃粽子，連葉子都忘了剝。你吃粽子，忘過剝葉子嗎？",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "b-not",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound book with a plain dark blue cover lying closed beside a slim bound book with a plain pale yellow cover on a low wooden desk, pale overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "這兩件事，《信長公記》寫的那場連歌會裡，都沒有。"
+        }
+      ]
+    },
+    {
+      "id": "b-five",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain indigo lacquered samurai helmet on a low wooden table in a plain tatami room, five flat floor cushions now set around it, mild window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "然後，光秀在龜山城密召家臣。還記得四個重臣嗎？到這裡，變成了五個。"
+        }
+      ]
+    },
+    {
+      "id": "b-die",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of five flat floor cushions pulled in tight around a plain indigo lacquered samurai helmet on a low table, the room very still, pale overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "他問這五個人：你們肯為我死嗎？不肯，就砍下我的頭。"
+        }
+      ]
+    },
+    {
+      "id": "b-reply",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of five flat floor cushions around a plain indigo lacquered samurai helmet on a low table, one cushion pushed back away from the table, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "利三先說不行；左馬助說：話已出口，事情一定會被發現。光秀怎麼回答？"
+        }
+      ]
+    },
+    {
+      "id": "b-fear",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain indigo lacquered samurai helmet and a closed plain gold folding fan facing each other across a low wooden table, the fan pointed at the helmet, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "接著，光秀說出了他的理由：信長，要殺我。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "b-review",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of foot soldiers in straw hats standing proudly in neat rows on a grassy field, chests out and chins up, bright midday light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "出兵時，他下令：明天早上進京，讓信長看看我們的軍容。"
+        }
+      ]
+    },
+    {
+      "id": "b-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pointing to one side with a small smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "剛剛傳教士聽到的閱兵，這本書裡也有。"
+        }
+      ]
+    },
+    {
+      "id": "b-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young foot soldier in a wide straw hat and a plain brown tunic on a mountain path raising one hand to ask a question, other soldiers behind him, misty morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "隊伍走到大江山，士兵覺得奇怪，問：我們到底要往哪裡去？"
+        }
+      ]
+    },
+    {
+      "id": "b-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain indigo lacquered samurai helmet on a mossy stone beside a mountain path, a long line of straw hats stopped behind it in the mist, misty morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "光秀回答：敵，在本能寺。大家這才知道，他要反了。",
+          "emotion": "揭曉前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "b-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, one hand over her mouth in a small gasp, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "在我們查到的書裡，這是它頭一次有了說話的人、地方，和聽見它的人。"
+        }
+      ]
+    },
+    {
+      "id": "b-notice",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger with a sly smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "你注意到了嗎？在這裡，是先有人問，他才開口。"
+        }
+      ]
+    },
+    {
+      "id": "s-more",
+      "chapter": "文政十年，一位讀書人把那一句搬到了桂川",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall stack of bound books with plain deep green covers on a low wooden desk beside a plain wooden chest with its lid closed, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "一百八十多年後，同一幕又被寫了一次。寫它的，是賴山陽的《日本外史》。"
+        }
+      ]
+    },
+    {
+      "id": "s-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand folding a long sheet of blank letter paper on a low wooden desk, a plain wooden chest behind it, mild morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "文政十年五月，他寫信給松平定信：這部書，我寫了二十多年，"
+        }
+      ]
+    },
+    {
+      "id": "s-chest",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young messenger in a plain dark robe carrying a plain wooden chest out through a garden gate, smiling, mild morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "一直收在箱子裡，沒給人看過；是定信派人來取的。"
+        }
+      ]
+    },
+    {
+      "id": "s-west",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain indigo lacquered samurai helmet on a flat rock facing a long row of far blue mountains to the west, a road running toward them, bright midday light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "他筆下的那一夜呢？藉口換了：不是閱兵，是奉命往西，去支援秀吉。"
+        }
+      ]
+    },
+    {
+      "id": "s-pass",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long line of foot soldiers in straw hats climbing a steep mountain pass through thick mist, soft misty light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "夜裡，隊伍翻過大江山，走到了老坂。"
+        }
+      ]
+    },
+    {
+      "id": "s-fork",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a mountain path splitting in two around a big old pine tree, a plain indigo lacquered samurai helmet resting on a mossy stone at the fork, misty morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "還記得開頭那個岔路口嗎？這本書寫：往右，是去備中的路。"
+        }
+      ]
+    },
+    {
+      "id": "s-jump",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of foot soldiers in straw hats jumping back in surprise on a mountain path as the line ahead swings left, misty morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "光秀掉轉馬頭往左，士兵們都嚇了一跳。這一次，有人開口問嗎？"
+        }
+      ]
+    },
+    {
+      "id": "s-ford",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long line of foot soldiers in straw hats wading across a wide shallow river, cool early morning light over far hills",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "沒有人問。隊伍渡過了桂川，就是老兵天快亮時走過的那條河。"
+        }
+      ]
+    },
+    {
+      "id": "s-whip",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gloved hand raising a brown leather riding whip high and pointing it toward far eastern hills over a river, cool early morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "光秀舉起馬鞭，往東一指。這一次，他自己揚聲說了什麼？",
+          "emotion": "放慢有力"
+        }
+      ]
+    },
+    {
+      "id": "s-mean",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, one arm stretched out pointing far away, smiling, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "吾敵在本能寺矣。我的敵人，在本能寺。這就是今天大家記得的那一句。"
+        }
+      ]
+    },
+    {
+      "id": "s-also",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim bound book with a plain pale yellow cover lying open beside one deep green book on a low desk, both on blank pages, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "問壕溝那段這裡也有；「大家這才知道他反了」也幾乎一樣。那到底變了什麼？"
+        }
+      ]
+    },
+    {
+      "id": "s-changed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, both palms up with a curious look, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "還記得一六四一年那本嗎？那一句，說在大江山；"
+        }
+      ]
+    },
+    {
+      "id": "s-moved",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wide shallow river at first light with a misty mountain pass far behind it, an empty pebbly bank in front, cool early morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "這裡，搬到了桂川；從一句回答，變成一句宣告，還多了「吾」和「矣」兩個字。"
+        }
+      ]
+    },
+    {
+      "id": "s-index",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one deep green bound book lying open on blank pages with a slim bound book with a plain pale yellow cover tucked inside it like a bookmark, mild morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "兩本書之間有線索嗎？《日本外史》的參考書目裡，就列著《織田信長譜》。"
+        }
+      ]
+    },
+    {
+      "id": "s-maybe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting one flat hand side to side, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "這份書目是不是山陽自己編的，我們沒查到，所以只算旁證。那自衛的理由呢？"
+        }
+      ]
+    },
+    {
+      "id": "s-self",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain indigo lacquered samurai helmet backed up against the edge of a low table, a closed plain gold folding fan pointed toward it from the other side, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "同一卷裡，光秀也問家臣肯不肯為他死，也說：我好幾次，差點被信長殺了。"
+        }
+      ]
+    },
+    {
+      "id": "s-nothis",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big brush and a small brush resting on a slim bound book with a plain pale yellow cover beside a tall stack of bound books with plain deep green covers, mild window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "那句「信長要殺我」，《織田信長譜》裡就寫了；這套理由，不是山陽想出來的。"
+        }
+      ]
+    },
+    {
+      "id": "s-scene",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, sweeping one arm out like opening a curtain, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "所以他改的，主要是台詞出場的場面。我覺得，名句缺的就是這個場面。"
+        }
+      ]
+    },
+    {
+      "id": "s-you2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, laughing and raising a rolled-up towel high like a riding whip, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "一句被問出來的回答，和一句舉著馬鞭喊出來的話，你會記住哪一句？"
+        }
+      ]
+    },
+    {
+      "id": "m-more",
+      "chapter": "明治以後，這句話成了一句成語",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger with a bright look, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "故事還沒結束。後來，《日本外史》成了幕末到明治，讀的人最多的歷史書。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "m-prints",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of tall wooden library shelves packed with rows of deep green bound books, a sunny reading room beyond, bright midday light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "光是明治時期的刊本，國會圖書館裡就有二十幾種印著這一句。"
+        }
+      ]
+    },
+    {
+      "id": "m-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a student in a plain kimono sitting under a tree reading a deep green bound book, eyes wide, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "你隨便翻開其中一本，看到的都是舉鞭那一句。那它最後走到了哪裡？"
+        }
+      ]
+    },
+    {
+      "id": "m-idiom",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two young office workers laughing together over coffee at a small round cafe table, one leaning in to share a secret, bright midday light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "它走進了日常的日文：明治二十八年，已經有書把它當成語在用，"
+        }
+      ]
+    },
+    {
+      "id": "m-meaning",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dart flying past a big round dartboard toward a small hidden dartboard behind it on a plain wall, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "它的意思是：真正的目標，其實另有所在。"
+        }
+      ]
+    },
+    {
+      "id": "m-england",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two small wooden toy sailboats facing each other across calm blue water in a stone garden pond, bright midday light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "二十年後，連談國際政治的書都在用：真正的敵人，是英國。"
+        }
+      ]
+    },
+    {
+      "id": "m-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a cafe window seat laughing into a dark-screened smartphone held to her ear, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "你今天在日文裡聽到它，它可以跟本能寺一點關係都沒有。"
+        }
+      ]
+    },
+    {
+      "id": "m-text",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a friendly teacher in a plain dark kimono standing beside a blank blackboard in an old wooden classroom, mild morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "那原來那一幕，明治的課本又是怎麼教的？",
+          "emotion": "問句，再答"
+        }
+      ]
+    },
+    {
+      "id": "m-1892",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brown leather riding whip lying across one deep green bound book on an old wooden school desk, mild morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "兩種寫法都還在：明治二十五年的一本，光秀舉鞭大呼；"
+        }
+      ]
+    },
+    {
+      "id": "m-1902",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young foot soldier in a wide straw hat and a plain brown tunic on a mountain path raising one hand to ask a question, other soldiers behind him, misty morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "明治三十五年的教科書，則是將士先問，光秀才答。"
+        }
+      ]
+    },
+    {
+      "id": "m-lucky",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, laughing with both hands spread wide, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "等於同一句話有了兩個爸爸。我覺得很巧：真正寫下它的人，也另有所在。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "z-who",
+      "chapter": "台詞存檔，動機未結",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping one finger on her chin, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "回到開頭那個問題：敵在本能寺，到底是誰寫的？",
+          "emotion": "誠懇"
+        }
+      ]
+    },
+    {
+      "id": "z-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim bound book with a plain pale yellow cover lying on a low lacquered desk with a big brush and a small brush resting on top, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "它是後來才寫的台詞；目前查到最早寫下它的，是林羅山父子。"
+        }
+      ]
+    },
+    {
+      "id": "z-recall",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim bound book with a plain orange cover beside a small glass pot holding a seedling with very long deep roots, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "還記得四個月後，就替光秀定性的那份紀錄嗎？動機這一題，從那時就開始了。"
+        }
+      ]
+    },
+    {
+      "id": "z-fifty",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big glass jar packed full of marbles of many different colours on a plain wooden table, mild window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "四百多年過去，光秀為什麼起兵，說法多到有人分成五十類；"
+        }
+      ]
+    },
+    {
+      "id": "z-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big glass jar full of marbles of many colours with its lid still on, an empty small dish beside it, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "怨恨、野心、四國的局勢，到今天，有哪一個成為定說嗎？"
+        }
+      ]
+    },
+    {
+      "id": "z-2014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small bundle of old folded letters with blank faces tied with a thin string on a wooden desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "沒有。二〇一四年公布的一批信，讓四國說受到注意，但沒直接說他為什麼起兵。"
+        }
+      ]
+    },
+    {
+      "id": "z-fork",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, looking back over her shoulder with a gentle smile, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "我覺得，那一夜在岔路口往左的，是一支軍隊；後來一路走下去的，是這一句話。",
+          "emotion": "意見，放慢"
+        }
+      ]
+    },
+    {
+      "id": "z-stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, closing a plain grey folder with both hands, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "所以，台詞這一題，存檔；動機那一題，還是未結。",
+          "emotion": "分清楚，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "c-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, smiling and typing on a laptop with a dark blank screen on his knees, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "留言告訴我：你第一次聽到「敵在本能寺」，是在哪裡？"
+        }
+      ]
+    },
+    {
+      "id": "c-sub",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, waving goodbye with a big smile, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案，就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ]
+}

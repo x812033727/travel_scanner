@@ -1,0 +1,2242 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s39-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友拆一句大家都會說的話：開場對觀眾、帶一點挑釁；舞台那句停住。密謀與遺囑沉穩，出門那段加快，「遺囑裡的那一位」一字一字；會議廳等人壓低、緊張；「這是暴力」喊出來；三個希臘詞一字一字、停一拍；舞台名句放慢，「死」落地；腳註那段清楚；「未結」乾脆。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "連你也，布魯圖斯？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, pressing one hand to his chest and wincing at us as if a friend just let him down, mild morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你大概聽過，有人被朋友出賣的時候，會學凱撒說一句：連你也，布魯圖斯？",
+          "emotion": "對觀眾說，像聊天"
+        }
+      ]
+    },
+    {
+      "id": "open-meaning",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a green laurel wreath slipping off a marble seat toward the floor, one hand in a white toga sleeve reaching after it, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "說的是凱撒被一群人刺殺的那一刻，看見布魯圖斯也拿著刀。"
+        }
+      ]
+    },
+    {
+      "id": "open-plot",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long dim stone corridor lined with many pairs of plain leather sandals waiting in a neat row outside a closed wooden door, bright midday light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "這大概是全世界最常被借用的遺言；它背後，是一場超過六十人參與的密謀。",
+          "emotion": "放慢，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-stage",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an actor in a white toga costume raising a plain wooden prop dagger on an open-air wooden stage, pale overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "舞台上演到這一幕，扮布魯圖斯的人舉起道具刀，凱撒正要開口。",
+          "emotion": "沉穩，停住"
+        }
+      ]
+    },
+    {
+      "id": "open-last",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound play script with a plain cover lying shut on the edge of a wooden stage, a white feather quill resting across it, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "可是你想不到：在這齣戲的劇本裡，這句名台詞，竟然不是凱撒的最後一句。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze brooch and a plain silver ring lying side by side on a folded dark red cloth on a stone step, mild morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "更怪的是，那一天有兩個布魯圖斯：一個勸凱撒出門，另一個會站在哪裡？",
+          "emotion": "升級，收著"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a rolled scroll in one hand, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "今天我們就來聊聊：歷史上的凱撒，臨死前真的說了這句話嗎？",
+          "emotion": "承諾句，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "origin-ada",
+      "chapter": "兩位作者，六十多人的密謀",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, smiling and tapping a rolled scroll on her open palm, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "我是檔案局的研究員。要回答這個問題，得先認識寫下這一天的兩個人。",
+          "emotion": "接住，像要開檔"
+        }
+      ]
+    },
+    {
+      "id": "origin-suet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled scroll tied with a red ribbon standing upright on a wooden desk beside a white feather quill and a small clay inkpot, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "一位是傳記作者蘇埃托尼烏斯，他寫了《神聖的凱撒》。"
+        }
+      ]
+    },
+    {
+      "id": "origin-plut",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two rolled scrolls tied with blue ribbons resting side by side on a plain wooden shelf, a sprig of olive leaves beside them, bright midday light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "另一位是普魯塔克，他寫了《凱撒傳》，也寫了《布魯圖斯傳》。"
+        }
+      ]
+    },
+    {
+      "id": "origin-three",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, fanning out three rolled scrolls in one hand, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "兩位作者，三篇傳記。這三篇你先記住，等一下我們一篇一篇翻。",
+          "emotion": "像在發牌"
+        }
+      ]
+    },
+    {
+      "id": "origin-plot",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of many hands in white toga sleeves stacked one on top of another over a round stone table, pale overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "故事從一份密謀名單開始：蘇埃托尼烏斯說，參與的超過六十人。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "origin-leaders",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three hands resting on the edge of a stone table, one wearing a plain silver ring, one beside a round bronze brooch pinned on a red cloak, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "帶頭的人裡，有一個叫卡西烏斯；開場那兩個布魯圖斯，也都在裡面。"
+        }
+      ]
+    },
+    {
+      "id": "origin-names",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze brooch and a plain silver ring lying close together on a folded dark red cloth on a stone ledge, mild morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "一個叫馬爾庫斯，一個叫德奇姆斯，同一個姓，站在同一邊。"
+        }
+      ]
+    },
+    {
+      "id": "origin-confuse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, squinting at two small bronze trinkets held one in each hand, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "我第一次讀的時候，也得停下來分清楚誰是誰。",
+          "emotion": "旁白自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "origin-objects",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a green laurel wreath with a small smile, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "所以畫面裡，月桂花環代表凱撒，銅別針是馬爾庫斯，銀戒指是德奇姆斯。",
+          "emotion": "像在介紹道具"
+        }
+      ]
+    },
+    {
+      "id": "origin-where",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunny stone square with a pillared meeting hall on one side and a busy street on the other, empty steps in front, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "那要在哪裡動手？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t018",
+          "text": "他們考慮過好幾個地方，最後挑了元老院開會的時候。"
+        }
+      ]
+    },
+    {
+      "id": "origin-ides",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grand pillared stone meeting hall with wide empty steps and tall bronze doors standing open, bright midday light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "三月十五日，元老們要在龐培的會議廳聚集。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "origin-theatre",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large half-round open-air stone theatre with rows of empty seats, a pillared hall joined to its far side, pale overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "這個會議廳就靠著龐培的劇場，普魯塔克也記下了這個位置。"
+        }
+      ]
+    },
+    {
+      "id": "origin-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping her temple with one finger and smiling slyly, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "我猜他們的算盤很簡單：開會的日子，凱撒總得到場吧？",
+          "emotion": "意見，壓低"
+        }
+      ]
+    },
+    {
+      "id": "origin-statue",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind of a tall pale marble statue on a plain base in a sunny square, a few pigeons pecking on the steps below, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "另一邊，凱撒雕像的下面，出現了諷刺他像國王的字句。"
+        }
+      ]
+    },
+    {
+      "id": "origin-notes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a few small folded blank notes tucked under a round bronze brooch on a wooden judge's bench, mild morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "馬爾庫斯自己的審判席上，也被放了催他行動的匿名字條。"
+        }
+      ]
+    },
+    {
+      "id": "origin-name-value",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze brooch set alone on a red velvet cushion at the head of a long empty wooden table, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "普魯塔克說，其他密謀者想借馬爾庫斯的聲望，讓這件事更有分量。"
+        }
+      ]
+    },
+    {
+      "id": "origin-trust",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain silver ring on a hand resting gently on a folded white toga on a marble bench, bright midday light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "德奇姆斯也加入了密謀，可是凱撒對他，仍然信任。有多信任？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "origin-will",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled blank parchment tied with a cord and closed with a red wax seal, a plain silver ring resting on top, on a wooden desk, pale overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "蘇埃托尼烏斯寫到凱撒的遺囑：德奇姆斯被列在後順位的繼承人裡。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "origin-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze brooch and a plain silver ring lying on a stone doorstep in front of a closed wooden house door, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "那麼兩個布魯圖斯裡，哪一個會親自把凱撒帶出家門？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "morning-stay",
+      "chapter": "三月十五日早上，凱撒本來想留在家裡",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a green laurel wreath left on a folded white blanket on a wooden bed, a shuttered window behind it, mild morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "要帶他出門，還真得有人去勸：那天早上，凱撒一度考慮留在家裡。",
+          "emotion": "接住，轉折"
+        }
+      ]
+    },
+    {
+      "id": "morning-omen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small stone altar with a shallow clay bowl and a thin curl of grey smoke rising into the air, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "蘇埃托尼烏斯提到，他身體不舒服，祭祀的兆頭也不好。"
+        }
+      ]
+    },
+    {
+      "id": "morning-wife",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hand with a thin gold bracelet gently holding the edge of a white toga sleeve, bright midday light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "普魯塔克寫，妻子卡爾普尼亞還勸丈夫，把會議改天。"
+        }
+      ]
+    },
+    {
+      "id": "morning-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in pajamas sitting on the edge of her bed holding her forehead, a mug of tea on the bedside table, pale overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "你一定也有過那種早上：人不舒服，家裡又有人叫你今天別出門。",
+          "emotion": "對觀眾，像聊天"
+        }
+      ]
+    },
+    {
+      "id": "morning-stop",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a green laurel wreath resting on a pillow beside a small clay bowl of grey ash, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "夢和兆頭，都是傳記裡的故事；它們最後攔得住凱撒嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "morning-decimus",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand wearing a plain silver ring pushing a heavy wooden house door wide open onto a sunny street, mild morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "攔不住。這時，有一位布魯圖斯來勸他：元老們都在等，別讓會議落空。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "morning-out",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of brown leather sandals stepping over a worn stone threshold into a sunny street, the hem of a white toga above them, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "凱撒聽了他的話，跟著他走出了家門。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "morning-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled blank parchment tied with a cord and closed with a red wax seal, a plain silver ring resting on top, on a wooden desk, bright midday light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "這個勸他出門的布魯圖斯，就是德奇姆斯，遺囑裡的那一位。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "morning-chill",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging her own arms with a small shiver, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "這一段我每次讀，都覺得背後一陣發冷，忍不住想叫他回去。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "morning-warning",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one hand passing a small folded blank note to another hand already holding a bundle of blank papers, a busy sunny street behind, pale overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "路上，有人把一份陰謀警告交給凱撒。"
+        },
+        {
+          "id": "t038",
+          "text": "他讀了嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "morning-later",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand sliding a small folded blank note into the middle of a thick stack of blank papers, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "他把紙放進手上其他文件的中間，打算稍後再讀。"
+        }
+      ]
+    },
+    {
+      "id": "morning-letters",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at his front door flipping through a thick pile of plain envelopes and blank flyers, shrugging, mild morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "你應該也做過這種事：重要的信跟一疊廣告單疊在一起，想說晚點再看。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "morning-crowd",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of many hands in white toga sleeves reaching in from all sides toward one hand holding a bundle of blank papers, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "普魯塔克也寫了那張警告，但他說，擠上來的人太多，凱撒沒能讀完。"
+        }
+      ]
+    },
+    {
+      "id": "morning-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small folded blank note, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "警告到了手上，卻沒把他攔下；會議廳裡，又有誰在等？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "hall-wait",
+      "chapter": "會議廳裡，密謀的人以為事情洩了底",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long pillared stone portico with marble benches in a row, a few white cloaks folded on them, bright midday light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "等著的，是密謀的人自己：他們早就到了龐培的廊廳。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "hall-nervous",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand in a white toga sleeve drumming its fingers on a marble bench in a pillared hall, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "可是凱撒遲遲沒有來，他們在廊廳裡，越等越緊張。"
+        }
+      ]
+    },
+    {
+      "id": "hall-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a cafe table glancing at the door with her chin on her fist, a cold cup of coffee in front of her, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "你一定等過遲到的人；換成你等的是這種事，每一分鐘大概都很長。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "hall-whisper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old man's hand in a white toga sleeve resting on a younger man's shoulder in a pillared hall, mild morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "這時，一位元老悄悄對馬爾庫斯和卡西烏斯說，希望他們快些辦完。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "hall-leak",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, covering her mouth with both hands, eyes wide, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "他們一度以為，事情洩了底；偏偏那個人接著轉身，去找凱撒說話。",
+          "emotion": "緊張"
+        },
+        {
+          "id": "t048",
+          "text": "他要告密嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "hall-petition",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old man in a white toga bowing low and holding out a rolled blank scroll with both hands in a pillared hall, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "馬爾庫斯盯著那人的臉色看，才判斷：他只是在向凱撒陳情。"
+        }
+      ]
+    },
+    {
+      "id": "hall-sweat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, wiping her palm on her cardigan with a relieved sigh, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "讀到這裡，我自己的手心，都有點出汗了。",
+          "emotion": "旁白自己的反應，鬆一口氣"
+        }
+      ]
+    },
+    {
+      "id": "hall-antony",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall bronze door left half open at the top of sunny stone steps, two long shadows of people talking stretched across the steps, bright midday light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "另一邊，安東尼被另一名同謀留在門外談話。"
+        }
+      ]
+    },
+    {
+      "id": "hall-seat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall carved wooden chair in a pillared hall, a green laurel wreath resting on its seat, a rolled blank scroll leaning on its leg, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "凱撒進門坐下，馬上有人帶著請願走近。他會先說什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "cimber-plea",
+      "chapter": "辛伯抓住了凱撒的袍子",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands holding out a rolled blank petition scroll toward a carved wooden chair, a white toga hem in view, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "先開口的，是請願的人：提利烏斯辛伯，要替被放逐的兄弟求情。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "cimber-grab",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands gripping and yanking a fold of a white toga at a shoulder in a pillared hall, mild morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "凱撒沒有答應，辛伯就抓住了他的袍子。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "cimber-shout",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand flung up flat with its palm out, its white toga sleeve pulled tight by another hand gripping the cloth, soft afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "蘇埃托尼烏斯記下，凱撒先喊了一聲：這是暴力！",
+          "emotion": "喊出來"
+        }
+      ]
+    },
+    {
+      "id": "cimber-before",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger with a serious look, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "你注意一下：這一聲在第一刀之前，不是那句有名的臨終問話。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "casca-strike",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single hand raising a small plain dagger from inside a white toga sleeve, a marble pillar behind, bright midday light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "接著，一個叫卡斯卡的人出手；凱撒還來得及還擊嗎？",
+          "emotion": "問句，緊張"
+        }
+      ]
+    },
+    {
+      "id": "casca-grip",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one hand gripping another hand's wrist hard, a small bronze writing stylus clenched in the gripping hand, pale overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "來得及。他抓住對方的手，蘇埃托尼烏斯說，他還拿寫字的筆反擊。"
+        }
+      ]
+    },
+    {
+      "id": "casca-stylus",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small bronze writing stylus in surprise, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "老實說，讀到這支筆的時候，我愣了一下。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "casca-latin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two rolled scrolls tied with blue ribbons, one of them half unrolled and completely blank, on a wooden desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "普魯塔克的《凱撒傳》則寫，他受了第一刀之後，用拉丁語質問卡斯卡。"
+        }
+      ]
+    },
+    {
+      "id": "casca-greek",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand in a white toga sleeve stretched out wide toward a pillared doorway, fingers spread, mild morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "卡斯卡隨即向兄弟求救；普魯塔克說，他喊的是希臘語。"
+        }
+      ]
+    },
+    {
+      "id": "casca-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding two rolled scrolls apart, head tilted, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "所以這段希臘話是卡斯卡的；那凱撒自己，後來有沒有說希臘語？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "hall-frozen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old man in a white toga sitting stiff on a marble bench, both hands clutching his knees, eyes wide, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "附近的元老嚇得動不了，不逃，也沒上前幫忙。"
+        }
+      ]
+    },
+    {
+      "id": "hall-ring",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white toga hem sweeping across a marble floor, sharp shadows of many raised hands closing in from every side, bright midday light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "凱撒想往外移動，四周卻全是拔出來的短刀。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "hall-brooch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze brooch fastening a dark red cloak at a shoulder, the cloak swinging forward in motion, pale overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "開場問的另一個布魯圖斯，就在這裡。",
+          "emotion": "點名，收著"
+        }
+      ]
+    },
+    {
+      "id": "hall-marcus",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single hand holding a small plain dagger low, the dark red cloak sleeve above it pinned with a round bronze brooch, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "普魯塔克的《布魯圖斯傳》寫，馬爾庫斯拿著刀，站到他眼前。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "hall-cover",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands pulling a fold of a white toga up and over, the cloth billowing, a marble pillar behind, mild morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "凱撒於是鬆開卡斯卡的手，拉起袍子蓋住了頭。"
+        }
+      ]
+    },
+    {
+      "id": "suet-ask",
+      "chapter": "蘇埃托尼烏斯在同一段裡，寫了兩種聲音",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a red-ribboned scroll, frowning slightly, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "眼前的人是馬爾庫斯；古代作者，有替他寫下最後一句嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "suet-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled scroll tied with a red ribbon lying half unrolled and completely blank on a wooden desk, a white feather quill beside it, soft afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "蘇埃托尼烏斯先寫：二十三次刺擊之間，凱撒沒有說出一句完整的話。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "suet-groan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a green laurel wreath lying on a cold marble floor beside the folded edge of a white toga, bright midday light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "他只記下，凱撒在第一刀時，發出了一聲呻吟。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "suet-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, closing a thick book on his lap with a satisfied nod, pale overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "如果你覺得故事就停在這裡，我一開始也這麼想。",
+          "emotion": "對觀眾，放輕"
+        }
+      ]
+    },
+    {
+      "id": "suet-more",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, unrolling a long blank scroll with both hands, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "可是沒想到，這段拉丁文，並沒有在呻吟那裡結束。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "suet-some",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled scroll tied with a red ribbon beside a small cluster of empty clay cups on a wooden table, as if many people had just talked there, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "作者接著寫：雖然，有些人傳下了另一種話。"
+        }
+      ]
+    },
+    {
+      "id": "suet-witness",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty wooden stool beside a rolled scroll tied with a red ribbon on a stone floor in a quiet room, mild morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "他沒列出那些人是誰，也沒說自己在場聽見。"
+        }
+      ]
+    },
+    {
+      "id": "suet-greek",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze brooch on a dark red cloak swinging forward toward a green laurel wreath on a marble seat, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "在那個說法裡，馬爾庫斯衝上前來，凱撒對他開了口，說的正是希臘語。"
+        }
+      ]
+    },
+    {
+      "id": "suet-words",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning in with one hand cupped beside her mouth, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "三個希臘詞，大致是：連你也是嗎，孩子？",
+          "emotion": "一字一字，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "suet-noname",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze brooch resting alone on a long unrolled completely blank scroll on a wooden desk, bright midday light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "這句話裡沒有布魯圖斯的名字；名字在作者介紹這個傳聞的句子裡。"
+        }
+      ]
+    },
+    {
+      "id": "suet-child",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two small potted seedlings of different kinds growing side by side in plain clay pots on a windowsill, pale overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "「孩子」這兩個字，也不能拿來證明兩人有血緣。"
+        }
+      ]
+    },
+    {
+      "id": "suet-grandma",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling old woman patting the head of a neighbour's little boy at a garden gate, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "就像你叫晚輩一聲孩子，不代表他是你親生的。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "plut-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two rolled scrolls tied with blue ribbons standing upright on a wooden desk, a small brass magnifying glass leaning against them, mild morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "那另一位作者普魯塔克，會替這三個希臘詞補上證據嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "plut-statue",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind of the plain base of a tall marble statue in a pillared hall, a green laurel wreath lying on the floor at its foot, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "普魯塔克的《凱撒傳》轉述一說：凱撒倒在龐培像的腳邊。"
+        }
+      ]
+    },
+    {
+      "id": "plut-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a blue-ribboned scroll unrolled flat and completely blank on a wooden desk, a white feather quill lying unused beside it, bright midday light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "那一段，也沒有給他一句對馬爾庫斯的遺言。"
+        }
+      ]
+    },
+    {
+      "id": "plut-flee",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pillared stone hall with rows of empty marble benches, a few white cloaks dropped on the floor, pale overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "換到《布魯圖斯傳》：凱撒倒下後，馬爾庫斯想解釋，元老們卻逃散了，沒人聽。"
+        }
+      ]
+    },
+    {
+      "id": "plut-same",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two rolled scrolls tied with blue ribbons tied together with one shared blue ribbon on a wooden desk, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "而且這兩篇是同一位作者寫的，不能算兩個獨立的現場證人。"
+        }
+      ]
+    },
+    {
+      "id": "plut-overlooked",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one finger with a thoughtful look, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "這一點，我覺得最容易被忽略。",
+          "emotion": "意見"
+        },
+        {
+          "id": "t086",
+          "text": "當然，沒寫，不等於絕對沒發生。"
+        }
+      ]
+    },
+    {
+      "id": "plut-quill",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white feather quill standing in a clay inkpot beside a thick bound play script with a plain cover, mild morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "那這句拉丁名言，又是誰明明白白寫進劇本的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "stage-back",
+      "chapter": "舞台上的凱撒，終於開口",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an actor in a white toga costume raising a plain wooden prop dagger on an open-air wooden stage, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "就是開場那個停住的舞台。現在，扮凱撒的演員繼續說下去。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "stage-star",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an actor in a white toga costume on an open-air wooden stage, chest puffed out and chin raised high, bright midday light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "莎士比亞的劇本，先讓請願的人圍上來；凱撒宣稱，自己像北極星一樣堅定。"
+        }
+      ]
+    },
+    {
+      "id": "stage-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a theatre seat smirking and nudging the friend beside her with an elbow, pale overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "你看戲看多了應該懂：角色把話說得這麼滿，通常就要出事了。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "stage-hands",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an actor in a white toga costume thrusting one fist high on an open-air wooden stage, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "卡斯卡喊：讓雙手說話！舞台指示，讓他和其他人一起動刀。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "stage-brutus",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick bound play script lying open and completely blank on a wooden stage floor, a round bronze brooch resting on it, mild morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "劇本還特別寫明，馬爾庫斯布魯圖斯也參與了刺殺。"
+        },
+        {
+          "id": "t093",
+          "text": "那凱撒看見他，會說什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "stage-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an actor in a white toga costume on an open-air wooden stage reaching one hand out toward another actor, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "那句名台詞終於出來了：連你也，布魯圖斯？可是只有這半句，是拉丁語。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "stage-fall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an actor in a white toga costume sinking down onto one knee on an open-air wooden stage, bright midday light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "後面那句「那就倒下吧，凱撒！」，在這個版本是英文。"
+        }
+      ]
+    },
+    {
+      "id": "stage-dies",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty open-air wooden stage with a heavy red curtain drawn halfway closed, a plain wooden prop dagger lying on the boards, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "那才是劇本給凱撒的最後一句台詞；接著，才是一行舞台指示：死。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "stage-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, flipping a thick book back a page and laughing, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "我第一次讀到這裡，還回頭把那一行又看了一遍。",
+          "emotion": "旁白自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "stage-liberty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an actor in a white toga costume throwing both arms up in the air on an open-air wooden stage, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "他一倒下，戲裡的密謀者就高喊自由。"
+        }
+      ]
+    },
+    {
+      "id": "stage-remember",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pillared stone hall with rows of empty marble benches, a few white cloaks dropped on the floor, mild morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "還記得普魯塔克筆下，那個想解釋卻沒人聽的馬爾庫斯嗎？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "stage-calm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an actor in a dark red cloak costume on an open-air wooden stage, both palms pressed gently downward, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "在戲裡，布魯圖斯安撫旁人，說凱撒的野心受了懲罰。"
+        }
+      ]
+    },
+    {
+      "id": "stage-proves",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a thick bound play script, looking firm, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "所以這齣戲證明的，是莎士比亞寫了它，不是凱撒說了它。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "stage-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white feather quill lying across a thick bound play script with a plain cover, a stack of older plain books behind it, bright midday light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "也不能因為戲裡有這句，就說莎士比亞一定是第一個寫它的人。"
+        }
+      ]
+    },
+    {
+      "id": "stage-objection",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, leaning forward with his elbows on his knees and one eyebrow raised at us, pale overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "你可能會想：那這句拉丁話，總該有個古代的出處吧？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "foot-book",
+      "chapter": "一份英譯本的腳註，替凱撒換了一種語言",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick book with a plain cover lying shut on a wooden desk, a pair of thin wire spectacles folded on top, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "故事還沒結束：後來，有一份《十二凱撒傳》的英譯本，也翻了這一段。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "foot-layer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the same very thick book lying open with completely blank pages on a wooden desk, thin wire spectacles resting on the lower edge, mild morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "它還把一個拉丁語的猜測放進腳註；讀的人會看錯哪一層？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "foot-some",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a finger resting on a completely blank page of a very thick open book, soft afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "那份英譯的正文，倒是照樣保留了「有些作者說」。"
+        }
+      ]
+    },
+    {
+      "id": "foot-son",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round bronze brooch resting on a completely blank page of a very thick open book, bright midday light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "只是它把稱呼寫成「我的兒子」，不是莎劇裡的「布魯圖斯」。"
+        }
+      ]
+    },
+    {
+      "id": "foot-97",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand turning a completely blank page of a very thick book, the paper curling mid-flip, pale overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "這句後面掛著第九十七號註；一翻到腳註，就會看見另一種語言。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "foot-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a library chair skimming a thick book with a bored face, her thumb flipping pages fast, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "你讀書的時候，大概也跳過不少腳註；偏偏這一次，關鍵就藏在那裡。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "foot-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of thin wire spectacles lying on the blank lower edge of an open very thick book, a pencil beside them, mild morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "後來的編者在那裡才猜：凱撒大概會用拉丁語說那句話。"
+        }
+      ]
+    },
+    {
+      "id": "foot-maybe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pencil resting at an angle on the blank lower edge of an open very thick book, a soft eraser crumb beside it, soft afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "那裡沒有現場的逐字紀錄；「很可能」這幾個字，說明這是編者的推測。"
+        }
+      ]
+    },
+    {
+      "id": "foot-long",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long white ribbon unrolling off the edge of a wooden desk and trailing onto the floor, bright midday light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "編者還嫌英譯那一串呼語太長，不像緊急時刻會說的話。"
+        }
+      ]
+    },
+    {
+      "id": "foot-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pushing her glasses up her nose and shrugging with open palms, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "他的理由是：都這種時候了，凱撒何必改用希臘語？",
+          "emotion": "學他的口氣"
+        }
+      ]
+    },
+    {
+      "id": "foot-doubt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, nodding slowly with one hand on her chin, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "說實話，這個疑問我也有過；可是有疑問，不等於有證據。",
+          "emotion": "意見，誠懇"
+        }
+      ]
+    },
+    {
+      "id": "foot-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick open book with completely blank pages beside an empty plain wooden box with its lid off, pale overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "那前面你可能會問的古代出處，腳註裡有嗎？",
+          "emotion": "點名，問句"
+        }
+      ]
+    },
+    {
+      "id": "foot-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old rolled blank scroll lying in an otherwise empty plain wooden box on a desk, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "腳註只提到手稿裡有希臘文字樣的異文，卻沒提出寫著拉丁名句的古抄本。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "foot-layer-pay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping the lower edge of an open thick book, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "所以會看錯的，就是這一層：那是編者的推理，不能放回蘇埃托尼烏斯的嘴裡。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "close-question",
+      "chapter": "這份檔案只能寫：未結",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, looking straight at us, holding a rolled scroll, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "還記得開頭的問題嗎？凱撒臨死前，真的說了這句話嗎？",
+          "emotion": "答案前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "close-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain grey box on a wooden desk with its lid resting half open, a green laurel wreath lying inside, mild morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "他臨死前到底說了什麼，這份檔案只能寫：未結。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "close-languages",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a scroll and a bound play script, smiling, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "我覺得最妙的是：古書裡傳下的是希臘語，舞台和腳註上的，卻是拉丁語。",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "close-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt on a sofa in a bright living room, pressing one hand to his chest and wincing at a friend beside him, soft afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "所以下次再聽到有人學凱撒說那一句，",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "close-layers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled scroll tied with a red ribbon, a very thick open book with blank pages and a bound play script lined up in a row on a wooden desk, bright midday light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "你可以先問：它在古文正文、譯本腳註，還是舞台上？",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "close-comment",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a library table looking up from a thick book with a curious smile, pale overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "你第一次聽到這句話，是在課本、電影，還是戲劇裡？留言告訴我。",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, waving at us with a warm smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t003",
+      "payoff": "t013",
+      "what": "六十多人的密謀，帶頭的是誰"
+    },
+    {
+      "setup": "t004",
+      "payoff": "t088",
+      "what": "停在開口前的舞台"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t096",
+      "what": "名台詞竟然不是最後一句"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t065",
+      "what": "另一個布魯圖斯站在哪裡"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t119",
+      "what": "全片的問題：凱撒臨死前說了這句話嗎"
+    },
+    {
+      "setup": "t011",
+      "payoff": "t084",
+      "what": "兩位作者、三篇傳記，一篇一篇翻"
+    },
+    {
+      "setup": "t017",
+      "payoff": "t018",
+      "what": "要在哪裡動手"
+    },
+    {
+      "setup": "t021",
+      "payoff": "t028",
+      "what": "開會的日子凱撒一定會到嗎"
+    },
+    {
+      "setup": "t025",
+      "payoff": "t026",
+      "what": "凱撒有多信任德奇姆斯"
+    },
+    {
+      "setup": "t027",
+      "payoff": "t035",
+      "what": "哪個布魯圖斯帶他出門"
+    },
+    {
+      "setup": "t032",
+      "payoff": "t033",
+      "what": "夢和兆頭攔不攔得住"
+    },
+    {
+      "setup": "t038",
+      "payoff": "t039",
+      "what": "那張警告讀了沒"
+    },
+    {
+      "setup": "t042",
+      "payoff": "t043",
+      "what": "會議廳裡誰在等"
+    },
+    {
+      "setup": "t048",
+      "payoff": "t049",
+      "what": "那個元老要告密嗎"
+    },
+    {
+      "setup": "t052",
+      "payoff": "t055",
+      "what": "凱撒先說了什麼"
+    },
+    {
+      "setup": "t057",
+      "payoff": "t058",
+      "what": "凱撒來不來得及還擊"
+    },
+    {
+      "setup": "t062",
+      "payoff": "t075",
+      "what": "凱撒自己有沒有說希臘語"
+    },
+    {
+      "setup": "t068",
+      "payoff": "t069",
+      "what": "古代作者有沒有寫下最後一句"
+    },
+    {
+      "setup": "t080",
+      "payoff": "t082",
+      "what": "普魯塔克能不能補上證據"
+    },
+    {
+      "setup": "t083",
+      "payoff": "t099",
+      "what": "想解釋卻沒人聽的馬爾庫斯"
+    },
+    {
+      "setup": "t087",
+      "payoff": "t089",
+      "what": "誰把拉丁名言寫進劇本"
+    },
+    {
+      "setup": "t093",
+      "payoff": "t094",
+      "what": "戲裡的凱撒看見布魯圖斯說什麼"
+    },
+    {
+      "setup": "t103",
+      "payoff": "t116",
+      "what": "拉丁話的古代出處"
+    },
+    {
+      "setup": "t105",
+      "payoff": "t117",
+      "what": "讀者會看錯哪一層"
+    }
+  ],
+  "youtube": {
+    "title": "凱撒真說了「連你也，布魯圖斯」？六十多人的密謀，誰聽見了這句｜奇聞檔案局",
+    "description": "「連你也，布魯圖斯？」大概是全世界最常被借用的一句遺言。這一集跟著這句話，從三月十五日龐培的會議廳一路翻回舞台：蘇埃托尼烏斯《神聖的凱撒》先寫凱撒在二十三次刺擊之間沒有說出完整的話，只在第一刀時呻吟，再保留「有些人傳說」的希臘語版本 καὶ σὺ τέκνον（連你也是嗎，孩子？），原句裡沒有布魯圖斯的名字；普魯塔克的《凱撒傳》與《布魯圖斯傳》沒有替那句拉丁語作證，而且是同一位作者，不算兩個獨立證人。莎士比亞《凱撒大帝》第三幕讓凱撒先說拉丁語「Et tu, Brute?」，再說英文「Then fall, Caesar!」，接著才是「死」的舞台指示。後來一份《十二凱撒傳》英譯本的腳註，才猜凱撒大概會用拉丁語說那句話；那是編者的推測，不是古代原文。我們能確定劇本怎麼寫；凱撒有沒有說那句拉丁話，紀錄給不出確定的答案，也不能反過來說他絕對沒說過類似的話。\n\n蘇埃托尼烏斯依 PerseusDL 的 Rolfe 拉丁文本與英譯；普魯塔克依 GITenberg 的 Clough 英譯（未對讀希臘原文）；莎士比亞依 GITenberg 全文。出處列在下方參考資料。\n\n本集插圖由 AI 生成；歷史人物不入畫，用物件代表（月桂花環是凱撒、圓形銅別針是馬爾庫斯、銀戒指是德奇姆斯），畫面不是歷史現場影像。\n\n資料截至 2026-10-20（2026-10-25 照新規則重寫）",
+    "tags": [
+      "凱撒",
+      "布魯圖斯",
+      "Et tu Brute",
+      "莎士比亞",
+      "十二凱撒傳",
+      "普魯塔克",
+      "三月十五日",
+      "羅馬共和",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "連你也？\n**誰聽見**",
+      "tag": "歷史名場面",
+      "sub": "傳記裡是三個希臘詞",
+      "shot": "open-stage"
+    }
+  },
+  "sources": [
+    {
+      "title": "Suetonius, Divus Iulius 80–85 (Rolfe Latin, PerseusDL pinned text)",
+      "url": "https://github.com/PerseusDL/canonical-latinLit/blob/128a05afa9cc7179ab18f8d05f78a9f1dd50e415/data/phi1348/abo011/phi1348.abo011.rolfe-lat1.xml#L587-L638",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Suetonius, Divus Iulius 82 (Rolfe English, PerseusDL pinned text)",
+      "url": "https://github.com/PerseusDL/canonical-latinLit/blob/128a05afa9cc7179ab18f8d05f78a9f1dd50e415/data/phi1348/abo011/phi1348.abo011.rolfe-eng1.xml#L2009-L2037",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Plutarch, Caesar and Brutus (GITenberg pinned text)",
+      "url": "https://github.com/GITenberg/Plutarch-Lives-of-the-noble-Grecians-and-Romans_674/blob/6aea7c6d83ee3596f9106d2d832d705aa4ed4620/674.txt#L46821-L46946",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Shakespeare, Julius Caesar III.i (GITenberg pinned text)",
+      "url": "https://github.com/GITenberg/Julius-Caesar_1120/blob/61f9979ce377707e385fdd4e0b48b0383b857524/1120.txt#L1670-L1694",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Thomson/Forester Suetonius translation, footnote 97 (later editorial conjecture)",
+      "url": "https://github.com/GITenberg/The-Lives-of-the-Twelve-Caesars-Complete_6400/blob/bb5afc956095e248b2287cce2a4d3ebe394e5d31/6400.txt#L18375-L18392",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": []
+}

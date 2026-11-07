@@ -1,0 +1,2704 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w02-michelin-guide-stars",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友翻一份帳：開場帶一點挑釁；十二本那裡忍不住好笑；韓國那章先看熱鬧，講到「議員的說法」就收乾，但書貼著講不拖；「只撐了兩年」停一拍；台灣那章壓低，「查不到，我也不估」乾脆；「兩筆帳」放慢落地；「存檔」落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "t010",
+      "payoff": "t139",
+      "what": "星星到底買不買得到"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t118",
+      "what": "為什麼是部長站上輪胎公司的舞台"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t071",
+      "what": "韓國國會議員追的那筆錢"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t087",
+      "what": "美國城市從沒付過，只撐兩年"
+    },
+    {
+      "setup": "t009",
+      "payoff": "t134",
+      "what": "免費小冊子憑什麼讓城市付錢"
+    },
+    {
+      "setup": "t026",
+      "payoff": "t030",
+      "what": "白送的書被拿去墊什麼"
+    },
+    {
+      "setup": "t021",
+      "payoff": "t027",
+      "what": "一大疊免費的東西會被怎麼對待"
+    },
+    {
+      "setup": "t040",
+      "payoff": "t049",
+      "what": "憑什麼相信神祕客吃出來的結果"
+    },
+    {
+      "setup": "t052",
+      "payoff": "t054",
+      "what": "養一批評審要花多少"
+    },
+    {
+      "setup": "t057",
+      "payoff": "t068",
+      "what": "書賺不回來，錢從哪裡來"
+    },
+    {
+      "setup": "t070",
+      "payoff": "t073",
+      "what": "那帳單長什麼樣子"
+    },
+    {
+      "setup": "t069",
+      "payoff": "t087",
+      "what": "美國從來沒付過這句話怎麼破功"
+    },
+    {
+      "setup": "t090",
+      "payoff": "t092",
+      "what": "付了錢的泰國後悔了嗎"
+    },
+    {
+      "setup": "t099",
+      "payoff": "t100",
+      "what": "評審來了就一定有星嗎"
+    },
+    {
+      "setup": "t106",
+      "payoff": "t107",
+      "what": "台灣有沒有付"
+    },
+    {
+      "setup": "t120",
+      "payoff": "t123",
+      "what": "台灣總額查不到怎麼處理"
+    },
+    {
+      "setup": "t124",
+      "payoff": "t126",
+      "what": "錢付了星星有沒有跟著來"
+    },
+    {
+      "setup": "t050",
+      "payoff": "t133",
+      "what": "自己付帳的評審就是答案"
+    },
+    {
+      "setup": "t004",
+      "payoff": "t142",
+      "what": "部長站上的講台"
+    }
+  ],
+  "youtube": {
+    "title": "米其林 1900 年的免費小冊子，憑什麼讓城市付錢請它來評？｜奇聞檔案局",
+    "description": "「米其林的星星買得到」「指南被拿去墊桌腳」，這兩個都是流傳的版本。這一集把它們翻到紀錄那一頁：墊工作台是米其林自己愛講的故事；這本書的錢換過三種人付，一九〇〇年輪胎公司免費送，一九二〇年讀者花七法郎買、廣告拿掉，二〇一六年之後不少新版本背後是觀光單位。\n\n首爾約二十億韓元是議員的說法，公社拒談金額；泰國一億四千三百五十萬泰銖是相關觀光推廣預算，不等於全付給米其林。台灣從二〇一八年起贊助，公視報導首年上千萬元，合約總額查不到，我們不估。\n\n「星級由匿名評審決定」「評審自付餐費」都是米其林的說法；米其林主管 2025 年也說，觀光單位的錢有一部分用來付評審前往評估。韓國有店主提告、公共電視報導顧問費爭議，米其林否認，檢方結果我們查不到。這一集沒有指稱任何餐廳的星是買來的。\n\n插圖由 AI 生成，人物都是卡通化或一般化的角色。本頻道和米其林沒有授權或合作關係。\n\n資料截至 2026-10-31",
+    "tags": [
+      "米其林",
+      "米其林指南",
+      "米其林星星",
+      "必比登",
+      "輪胎公司",
+      "觀光署",
+      "生意奇聞",
+      "奇聞檔案局",
+      "Michelin Guide"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "米其林\n**誰付錢**",
+      "tag": "生意奇聞",
+      "sub": "城市出錢，米其林說評審自付",
+      "shot": "bench-close"
+    }
+  },
+  "sources": [
+    {
+      "title": "MICHELIN Guide About Us（存檔）",
+      "url": "https://web.archive.org/web/20241227184206/https://guide.michelin.com/en/about-us",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "MICHELIN Guide：History（存檔）",
+      "url": "https://web.archive.org/web/20250115052246/https://guide.michelin.com/kr/en/article/features/history-michelin-guide",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "米其林台灣官網：關於指南（存檔）",
+      "url": "https://web.archive.org/web/20260722031649/https://guide.michelin.com/tw/zh_TW/about-the-michelin-guide-taipei",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "米其林台灣官網：2025 新增三城（存檔）",
+      "url": "https://web.archive.org/web/20250801163737/https://guide.michelin.com/tw/zh_TW/article/news-and-views/the-michelin-guide-taiwan-expand-new-cities",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "遠見 2010",
+      "url": "https://www.gvm.com.tw/article/13687",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "中央社（關鍵評論網）2024",
+      "url": "https://www.thenewslens.com/article/198852",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "天下雜誌 2017",
+      "url": "https://www.cw.com.tw/article/5086023",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "遠見 2017",
+      "url": "https://www.gvm.com.tw/article/40858",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Eater 2018",
+      "url": "https://www.eater.com/2018/7/18/17540672/michelin-guides-restaurants-tourism-bangkok-thailand-south-korea-singapore-funding",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Korea Times 2017",
+      "url": "https://www.koreatimes.co.kr/amp/lifestyle/travel-food/20171024/credibility-of-michelin-guide-seoul-questioned",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Khaosod English 2017（存檔）",
+      "url": "https://web.archive.org/web/20200112095838/http://www.khaosodenglish.com/life/food/2017/02/28/star-power-michelin-guide-coming-thailand/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "泰國觀光局新聞室 2021",
+      "url": "https://www.tatnews.org/2021/12/acclaimed-michelin-guide-thailand-gets-5-year-extension-from-2022-2026",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "CapRadio 2019（存檔）",
+      "url": "https://web.archive.org/web/20201029163331/https://www.capradio.org/articles/2019/05/29/michelin-dining-guide-honors-three-sacramento-restaurants/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Boston Globe 2025",
+      "url": "https://www.bostonglobe.com/2025/05/09/lifestyle/boston-michelin-guide-restaurants-stars-good-or-bad",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Colorado Sun 2025",
+      "url": "https://coloradosun.com/2025/09/19/do-colorado-cities-pay-to-have-restaurants-reviewed-for-the-michelin-guide/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Asia Business Daily 2025",
+      "url": "https://www.asiae.co.kr/en/article/2025102314213598318",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "公視 2019",
+      "url": "https://news.pts.org.tw/article/454636",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "鏡週刊 2022",
+      "url": "https://www.mirrormedia.mg/story/20220830food005",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "中央社 2024",
+      "url": "https://www.cna.com.tw/news/aopl/202408020072.aspx",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "產經新聞網 2025",
+      "url": "https://www.1111.com.tw/news/jobns/160751",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "產經新聞網 2026",
+      "url": "https://www.1111.com.tw/news/jobns/166823",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "聯合新聞網 2026",
+      "url": "https://udn.com/news/story/7270/9641657",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "食尚玩家 2026",
+      "url": "https://supertaste.tvbs.com.tw/esg/360622",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "遠見城市學 2026",
+      "url": "https://city.gvm.com.tw/article/131707",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Korea Times 2019",
+      "url": "https://www.koreatimes.co.kr/lifestyle/travel-food/20191203/s-korean-chef-takes-legal-action-against-michelin-over-pay-for-star-collusion",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "에너지경제 2019",
+      "url": "https://m.ekn.kr/view.php?key=463922",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "KPI뉴스 2019",
+      "url": "https://kpinews.kr/newsView/179545622506633",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Star（馬來西亞）2025",
+      "url": "https://www.thestar.com.my/lifestyle/travel/2025/10/23/michelin-wants-us-to-trust-its-hotel-ratings-but-should-we",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Tyrepress 2012（米其林 2011 財報）",
+      "url": "https://tyrepress.com/2012/02/michelin_claims_strategic_validation_in_2011_financial_report",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open-book",
+      "chapter": "輪胎公司的書，部長來站台",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain red booklet with a blank cover lying on a white restaurant tablecloth beside three small gold paper stars, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你一定聽過米其林指南：一本替餐廳打星星的書，最多三顆。",
+          "emotion": "對觀眾說，像在問一個朋友"
+        }
+      ]
+    },
+    {
+      "id": "open-tire",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tall stack of rubber tyres in a bright workshop with a small plain red booklet resting on the very top tyre, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "可是出這本書的，不是美食雜誌，是一家賣輪胎的公司。",
+          "emotion": "反差，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-rumor",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand sliding a fat brown leather purse across a white tablecloth toward a small gold paper star on a plate, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "關於它，有個說法傳了很久：米其林的星星，買得到。",
+          "emotion": "帶一點挑釁，標明是流傳的"
+        }
+      ]
+    },
+    {
+      "id": "open-hall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright hotel ballroom with rows of empty gold chairs facing a plain wooden podium with one microphone, soft daylight from tall windows",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "二〇二六年七月，台北的頒獎典禮上，照觀光署的資料，上台致詞的是交通部長。",
+          "emotion": "沉穩進場景，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-odd",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head, holding a small rubber tyre, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "這就怪了。一家輪胎公司出的書，為什麼是部長站上去？",
+          "emotion": "自己的反應，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "open-free",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wooden handcart piled high with small plain red booklets parked beside a dirt country road in early 1900s France, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "更怪的是，一百多年前，這本書根本是免費送人的。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "open-pay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fat brown leather purse lying open on a desk with smooth unmarked gold coins sliding out toward a small plain red booklet, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "可是你想不到，現在有城市反過來付錢，請它來評。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-tags",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a long wooden hall desk with a row of slim microphones and water glasses, one thick plain-covered book lying shut in the middle, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "這種錢，曾被韓國國會的議員追著問；有報導說美國城市從沒付過，也只撐了兩年。",
+          "emotion": "加快，帶兩個預告"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small plain red booklet with a curious grin, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "今天我們就來聊聊：一本免費送人的小冊子，憑什麼讓城市付錢請它來評？",
+          "emotion": "承諾句，語氣篤定，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "open-promise-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small gold paper star balanced on top of a closed brown leather purse on a white tablecloth, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "還有，那顆星星，到底買不買得到？",
+          "emotion": "停一拍，問句"
+        }
+      ]
+    },
+    {
+      "id": "shop-back",
+      "chapter": "三萬五千本，一本都不收錢",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, opening a thick plain-covered book, eager smile, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "我是檔案局的研究員。要回答這個問題，得把時間倒回一八八九年的法國。",
+          "emotion": "自我介紹，說故事"
+        }
+      ]
+    },
+    {
+      "id": "shop-start",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sunny brick workshop in early 1900s France with fresh rubber tyres hanging in rows on wooden pegs along the wall, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "法國中部的克萊蒙費朗，一對兄弟開了一家輪胎公司。",
+          "emotion": "說故事"
+        }
+      ]
+    },
+    {
+      "id": "shop-today",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful mechanic in grey overalls rolling a tyre along a busy street lined with parked cars, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "你今天開輪胎行，至少路上滿滿都是車。他們那時候呢？",
+          "emotion": "對觀眾，輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "shop-road",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long empty dirt country road running across green fields to a bare horizon in early 1900s France, one wooden horse cart far away, mild afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "官方的說法是，全法國的車，加起來不到三千輛。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "shop-idea",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small rubber tyre with a sly grin, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "車這麼少，輪胎要賣給誰？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t016",
+          "text": "兄弟倆的主意是：讓人多開車。",
+          "emotion": "得意"
+        }
+      ]
+    },
+    {
+      "id": "shop-worn",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a worn bald tyre with smooth tread leaning against a shiny new tyre with deep tread on a wooden workshop floor, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "開得越遠，輪胎就磨得越快，就得回來買新的。",
+          "emotion": "得意"
+        }
+      ]
+    },
+    {
+      "id": "press",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old iron hand-cranked printing press in a sunny print shop in early 1900s France, a tall stack of small plain red booklets beside it, soft light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "所以一九〇〇年，第一版指南印了三萬五千本，一本都不收錢。",
+          "emotion": "清楚，數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "inside",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling driver in goggles and a long duster coat reading a small plain red booklet beside an open-top motorcar on a country road in early 1900s France",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "裡面寫怎麼換輪胎、哪裡加油，還有哪裡吃飯、哪裡過夜。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "twelve",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall wobbly tower of small plain red booklets on a wooden bench beside one pair of old leather driving goggles, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "這樣算，全法國一輛車，差不多分到十二本。",
+          "emotion": "好笑，揭曉"
+        }
+      ]
+    },
+    {
+      "id": "twelve-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a tall stack of small red booklets, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "你手上有一大疊免費的東西，你會好好珍惜它嗎？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "author",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick plain-covered book lying open on a wooden desk with blank pages, a fountain pen resting across it, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "更怪的是，一位寫這家公司百年歷史的作者說：",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "tire-shelf",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one lonely tyre sitting on a long empty wooden shop shelf with a thin layer of dust, soft grey daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "沒有證據顯示，這本書讓輪胎賣得更好。",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "payer-one",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim brown leather purse tipped over on a wooden counter, its last few smooth gold coins rolling onto a stack of small plain red booklets, soft light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "所以第一種付錢的人很清楚：就是輪胎公司自己。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "silly",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shrugging with a small amused smile, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "我第一次讀到這裡，覺得這門生意有點傻。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "storeroom",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle close-up of a small plain red booklet lying on a dusty wooden workshop floor right beside the thick leg of a heavy wooden bench, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "然後，這本白送的書，被人拿去墊東西了。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "table-leg",
+      "chapter": "工作台底下那一本",
+      "template": "shot",
+      "data": {
+        "prompt": "Ground-level close-up of a wooden table leg standing on a squashed small plain red booklet on a garage floor, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "你大概聽過這個版本：《遠見》寫的是修車廠，書被墊在桌腳下。",
+          "emotion": "轉述流傳的版本"
+        }
+      ]
+    },
+    {
+      "id": "own-story",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning forward with one hand cupped behind her ear, curious, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "那出這本書的公司，自己是怎麼講這件事的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "shop-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sunny tyre shop in early 1900s France with stacked tyres and an open wooden door letting in a beam of light, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "官網說，一九二〇年，兄弟其中一位，走進一家輪胎行，",
+          "emotion": "說故事，放慢"
+        }
+      ]
+    },
+    {
+      "id": "bench-close",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle close-up of the heavy leg of a wooden workbench pressing down on a flattened small plain red booklet, iron tools resting on top, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "看見自己心愛的指南，被拿去墊一張工作台。",
+          "emotion": "揭曉，短句"
+        }
+      ]
+    },
+    {
+      "id": "cushion",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old creased small plain red booklet with a flattened corner resting proudly on a red velvet cushion, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "官網說，這是他們到今天還愛講的軼事。",
+          "emotion": "帶一點調侃"
+        }
+      ]
+    },
+    {
+      "id": "own-caveat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger in a gentle warning, calm face, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "注意，這是他們自己講的故事，我沒查到第三方的紀錄。",
+          "emotion": "清楚，但書"
+        }
+      ]
+    },
+    {
+      "id": "respect",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one smooth gold coin placed carefully on top of a small plain red booklet on a polished wooden table, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "不管墊在哪裡，他們從這件事學到什麼？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t034",
+          "text": "人只會尊重自己付費得到的東西。",
+          "emotion": "放慢，一字一字"
+        }
+      ]
+    },
+    {
+      "id": "subscribe-joke",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, grinning and holding up a smartphone with a plain dark screen, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "老實說，這句話你現在拿去賣訂閱制，我看還是通。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "seven",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling woman in a 1920s coat handing coins over a wooden bookshop counter for a small plain red booklet, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "一九二〇年，新版上市，定價七法郎，這本書開始要你掏錢買。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "scissors",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big pair of steel scissors lying open beside a pile of blank paper scraps and a slim small plain red booklet on a desk, soft light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "但這還不是最狠的：它把書裡的付費廣告拿掉了。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "payer-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling young woman in a 1920s dress reading a small plain red booklet on a park bench, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "付錢的人第一次換了：從輪胎公司，變成你這樣的讀者。",
+          "emotion": "轉折，放慢"
+        }
+      ]
+    },
+    {
+      "id": "mystery-old",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quiet man in a 1920s overcoat and felt hat eating soup alone at a corner table of a small bistro with plain walls, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "它還招了一批神祕客，不公開身份，匿名上館子吃飯。",
+          "emotion": "壓低，帶一點神祕"
+        }
+      ]
+    },
+    {
+      "id": "doubt-reader",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, arms folded, one eyebrow raised in doubt, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "問題來了：你付了錢，憑什麼相信這些人吃出來的結果？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "one-star",
+      "chapter": "星星量的是開車的距離",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single small gold paper star resting on a white tablecloth beside a steaming bowl of soup, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "它給你的答案，是一顆星。一九二六年，好餐廳旁邊開始出現一顆星。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "three-stars",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of small gold paper stars standing in a neat row on a white tablecloth, sunlight falling across them, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "五年後變成零到三顆星；再過五年，連評星的標準都公開了。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "star-cake",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small round cream cake with one gold paper star on top and one thin candle, on a wooden table, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "對，從第一顆星算起，到今年剛好滿一百年。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "fork-road",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a Y-shaped dirt road junction among green fields, one branch winding far off into distant blue hills, mild afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "看它今天怎麼定義：二星，值得繞道；三星，值得專程。",
+          "emotion": "念清楚"
+        }
+      ]
+    },
+    {
+      "id": "distance",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small rubber tyre and a knowing smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "這是形容味道的嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t046",
+          "text": "我覺得，這量的是開車的距離。",
+          "emotion": "自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "star-weigh",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old brass balance scale with a small gold paper star on one pan sitting lower than a pile of coins on the other pan, soft light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "可是一顆星憑什麼值錢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t048",
+          "text": "照米其林的說法，靠的是一套規矩。",
+          "emotion": "標出是誰說的"
+        }
+      ]
+    },
+    {
+      "id": "anon-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm man with short neat dark hair in a plain charcoal blazer sitting alone at a restaurant table with a napkin on his lap, quietly studying his plate, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "評審是全職員工，不跟外部機構連結，到店裡也不公開身份。",
+          "emotion": "壓低，清楚"
+        }
+      ]
+    },
+    {
+      "id": "pay-tray",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a calm man with short neat dark hair in a plain charcoal blazer placing coins on a small silver tray beside a folded white napkin, soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "一家店去好幾次，餐費全部自己付。這些，都是米其林自己說的。",
+          "emotion": "後半是但書，輕"
+        }
+      ]
+    },
+    {
+      "id": "train-suit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm man with short neat dark hair in a plain charcoal blazer walking along a plain concrete train platform with a small brown suitcase, soft morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "《天下雜誌》寫過，一位評審一年平均要跑兩百五十家餐廳。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "not-cheap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin, nearly empty brown purse lying beside a clean empty dinner plate on a restaurant table, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "這就是星星值錢的起點。可是這樣養一批人，可不便宜。",
+          "emotion": "小結，接問題"
+        }
+      ]
+    },
+    {
+      "id": "loss-desk",
+      "chapter": "一年虧兩千四百萬美元",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain red booklet on a wooden desk beside a flat, empty brown leather purse lying open, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "有個數字可以看：二〇一一年，《金融時報》報導這本指南，",
+          "emotion": "數字前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "loss-balloon",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a red balloon sagging and going soft, its string tied to a small plain red booklet on a table, soft grey daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "一年虧超過兩千四百萬美元。這是一家美國美食媒體轉述的。",
+          "emotion": "數字放慢，但書貼著講"
+        }
+      ]
+    },
+    {
+      "id": "loss-wilt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small potted seedling with drooping brown leaves beside a small plain red booklet on a windowsill, soft grey daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "它還說，到二〇一五年，可能一年虧到三千萬。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "revenue",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a vast bright warehouse with mountains of rubber tyres stacked high to the ceiling, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "你先別替輪胎公司緊張。同一年，它全年營收超過兩百億歐元。",
+          "emotion": "對觀眾，輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "cash-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open wooden cash box on a table with one single smooth gold coin lying in the bottom, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "問題來了：書賺不回來，錢要從哪裡來？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "seoul-start",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling office clerk in a cardigan holding up a small plain red booklet at her tidy desk, a potted plant behind her, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "同一個二〇一一年，韓國觀光公社，開始爭取一本首爾版。",
+          "emotion": "說故事"
+        }
+      ]
+    },
+    {
+      "id": "no-link",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shrugging with both palms up, an honest smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "這兩件事之間，有沒有關係？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t060",
+          "text": "我查不到，只能先擺在一起。",
+          "emotion": "但書，輕"
+        }
+      ]
+    },
+    {
+      "id": "airport",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a row of small plain red booklets lined up on a bright airport bench beside a small blue suitcase, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "二〇一六年起，它一口氣往亞洲開新版本。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "cabinet-stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big wooden rubber stamp pressing down onto a blank sheet of paper on a polished wooden desk, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "奇怪的是，泰國根本不用追：錢就寫在內閣核准的預算裡。",
+          "emotion": "轉折，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "baht",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall stack of smooth unmarked gold coins beside a small wooden hourglass on a polished desk, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "二〇一七年二月，過渡內閣核准一億四千三百五十萬泰銖，期限五年。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "baht-use",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of smooth gold coins spread across a sunny table beside a plate of mango sticky rice and a small plain red booklet, soft light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "但用途要講清楚：是給觀光局做跟這本指南相關的推廣，",
+          "emotion": "但書，清楚"
+        }
+      ]
+    },
+    {
+      "id": "baht-pocket",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two small ceramic bowls on a table, one full of smooth gold coins, the other bowl covered by a folded cloth, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "不等於全部付給米其林。那到底有多少，進了它的口袋？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t066",
+          "text": "我查不到。",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "exec-mic",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim microphone on a small round table beside a white coffee cup, soft daylight from a tall window",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "同一年，米其林當時的一位高層，對《華盛頓郵報》講得很白：",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "sponsor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bunch of bright balloons tied to a small plain red booklet, lifting it gently off a wooden table, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "有些政府想吸引觀光，所以贊助一本指南。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "never-paid",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed blue leather purse with its clasp snapped tight resting on a white tablecloth, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "同一篇，照美食媒體轉述，還寫了：美國的城市，從來沒付過。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "remember-this",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, winking and tapping her temple with one finger, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "記住這句話，等一下會很好笑。那帳單，到底長什麼樣子？",
+          "emotion": "埋梗，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "assembly",
+      "chapter": "國會裡念出來的二十億",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long wooden hall table with a row of slim microphones and water glasses in a bright empty hearing room, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "答案在二〇一七年十月，韓國國會的監查。",
+          "emotion": "接住"
+        },
+        {
+          "id": "t072",
+          "text": "還記得開頭那位議員嗎？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "assembly-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding up a blank sheet of paper above a wooden desk with a slim microphone, mild afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "他叫宋基錫。他追的那份合約：觀光公社要付給米其林約二十億韓元，",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "won-sack",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy cloth sack of coins with its drawstring tied tight sitting on a wooden desk beside a slim microphone, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "付到二〇二〇年。注意，這是議員的說法，公社的官員拒談金額。",
+          "emotion": "但書，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "what-for",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old brass balance scale with a small plain red booklet on one pan and a heavy cloth sack of coins on the other, soft light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "那這筆錢換到什麼？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t076",
+          "text": "報導裡被指控的是：拿錢，換指南在韓國出版。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "not-a-star",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain red booklet standing upright at one end of a long table, a small gold paper star lying far away at the other end, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "被指控的，是出版這件事，不是哪一家餐廳的星。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "contract-counter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up over a restaurant counter of one hand sliding a plain closed folder toward another hand, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "但這還不是最怪的。同一篇報導裡，一位店主說，有人上門推銷顧問服務，",
+          "emotion": "升級，放慢"
+        }
+      ]
+    },
+    {
+      "id": "contract-tear",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a blank sheet of paper torn into two halves lying on a wooden restaurant counter, mild afternoon light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "說能幫餐廳拿星。她簽了約，後來因為財務原因解約。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "deny-1",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain closed grey folder pushed firmly away to the far edge of a white tablecloth, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "米其林否認，說它跟這位顧問沒有任何關係。",
+          "emotion": "但書貼著講"
+        }
+      ]
+    },
+    {
+      "id": "sequel",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, gasping with one hand over her mouth, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "我原本以為，故事就停在這裡。沒想到，顧問這件事有下文。",
+          "emotion": "收乾，不看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "tv",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a vintage television set with a plain blue screen on a wooden cabinet in a quiet living room, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "兩年後，韓國公共電視台報導，有餐廳付了顧問費之後，拿到了星。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "complaint-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at counter height of a hand placing a thick plain folder onto a tall wooden counter, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "一位店主向檢方提告，說對方要她年付五千萬韓元，",
+          "emotion": "清楚，標明是她的說法"
+        }
+      ]
+    },
+    {
+      "id": "empty-chair",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an empty restaurant chair beside a clean empty table set with one white plate, soft grey daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "她不付，就沒上榜。注意，這是她的說法。",
+          "emotion": "但書"
+        }
+      ]
+    },
+    {
+      "id": "deny-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a magnifying glass resting on top of a closed plain grey folder on a wooden desk, mild afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "米其林說，它不拿錢換入選，內部查過，沒找到證據。",
+          "emotion": "平"
+        }
+      ]
+    },
+    {
+      "id": "cant-find",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up an open empty grey folder with a small sigh, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "檢方的結果、官方或法院的認定，我都查不到。查不到，就是查不到。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "two-years",
+      "chapter": "從來不付的美國，兩年後付了",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, stifling a laugh behind one hand, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "還記得那句「美國的城市從來沒付過」嗎？它只撐了兩年。",
+          "emotion": "回呼，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "radio",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old wooden radio with a plain cloth speaker grille and a bare front panel on a sunny kitchen table, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "二〇一九年，加州觀光局的負責人，親口對當地電台說：",
+          "emotion": "揭曉前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "coast-road",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small plain red booklet resting on a wooden fence post beside a sunny coastal road above the blue ocean, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "他們付了六十萬美元，讓這本指南從舊金山灣區，擴大到全加州。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "wok",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big steaming wok of noodles on a street stall stove under a striped awning, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "付了錢的地方，後悔了嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t091",
+          "text": "二〇二一年十二月，泰國觀光局發了新聞稿：",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "ribbon",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain red booklet tied with a fresh bright ribbon bow on a wooden table, mild afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "合作再延五年，做到二〇二六年。還附了一張成績單，",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "noodle-balloon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bright yellow balloon rising high above a bowl of noodles on a sunny street stall table, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "說二〇一九年，外國旅客在吃的方面花的錢，翻了一倍。",
+          "emotion": "得意的語氣"
+        }
+      ]
+    },
+    {
+      "id": "mirror",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small round hand mirror propped on a table, reflecting a small plain red booklet lying in front of it, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "你要記得，這是出錢的人，自己發給自己的成績單。",
+          "emotion": "對觀眾，收著"
+        }
+      ]
+    },
+    {
+      "id": "atlanta",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a big heavy sack of gold coins sitting on a wooden porch beside a basket of ripe peaches, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "二〇二三年換亞特蘭大：一份合約一百萬美元；有一份查核寫，簽的是三年。",
+          "emotion": "回呼，帶新東西"
+        }
+      ]
+    },
+    {
+      "id": "snow-town",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet snowy mountain town street of wooden houses with plain walls under tall pine trees, soft winter daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "那份查核來自科羅拉多的報紙，標題問：我們的城市有付錢嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "yes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single smooth gold coin dropping into a ceramic jar on a snowy wooden windowsill, pine trees outside, soft winter light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "報紙給的答案，只有一個字：有。",
+          "emotion": "短句，落地"
+        }
+      ]
+    },
+    {
+      "id": "snow-jars",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a row of small ceramic jars filled with coins on a snowy wooden windowsill, pine trees outside, soft winter daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "州觀光局和幾個城鎮的觀光單位，從二〇二三年起，每年各出七萬到十萬美元。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "door-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an empty restaurant table set for one beside a window with snowy pines outside, soft winter daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "那評審來了，就一定有星嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "arrive",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm man with short neat dark hair in a plain charcoal blazer stepping off a train onto a snowy concrete platform with a small brown suitcase, soft winter daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "報紙寫得很清楚：這筆錢不保證有人得到肯定，只確保評審會來。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "gate",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a closed wooden gate across a snowy country lane, pine trees on both sides, soft winter daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "可是《波士頓環球報》的評論說，沒出錢的小鎮，就被關在外面。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "response",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small gold paper star on a white plate, a fat brown purse set far away at the edge of the table, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "米其林怎麼回應這類報導？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t103",
+          "text": "它說，和觀光局合作，不影響評鑑。",
+          "emotion": "平"
+        }
+      ]
+    },
+    {
+      "id": "partners",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands shaking firmly over a white restaurant tablecloth, a small plain red booklet lying beside them, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "更怪的是，二〇二五年，它的一位主管也說：這行很花錢，需要這些夥伴。",
+          "emotion": "亮一下"
+        }
+      ]
+    },
+    {
+      "id": "travel-pay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a calm man with short neat dark hair in a plain charcoal blazer pulling a small brown suitcase through a bright airport hall, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "觀光局的錢，有一部分，是付評審前往評估的。",
+          "emotion": "放慢，落地"
+        }
+      ]
+    },
+    {
+      "id": "noodle-stall",
+      "chapter": "部長說「同意」的那兩個縣市",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a bowl of noodles with chopsticks, curious look, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "故事到這裡還沒結束。這些帳都在國外，那你排隊吃過的那一家呢？",
+          "emotion": "問句，轉回來"
+        }
+      ]
+    },
+    {
+      "id": "bubble-tea",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain red booklet beside a cup of bubble tea on a sunny wooden cafe table, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "台灣也在這份名單上，而且不是被找上門的。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "plum",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small potted plum tree finally in bloom beside a small plain red booklet on a sunny windowsill, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "《遠見》寫過，觀光局爭取了八年，才等到二〇一八年三月的台北版。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "ntd",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall stack of smooth unmarked gold coins on an office desk beside a potted green plant, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "那上市時花了多少？",
+          "emotion": "問句帶過"
+        },
+        {
+          "id": "t110",
+          "text": "公視的報導是：觀光局投入上千萬元預算，",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "seedling",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young green seedling sprouting from a clay pot filled with smooth gold coins, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "支付秘密客來台評選等相關費用，還說這本書值得投資。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "cw",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, frowning at an open notebook with blank pages, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "偏偏《天下雜誌》當時寫，評鑑費用由米其林支付。這筆怎麼分，我查不到。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "expo",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim microphone on a wooden podium beside a steaming bamboo basket of dumplings, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "二〇二四年八月，交通部長在美食展致詞時說：",
+          "emotion": "轉述，放慢"
+        }
+      ]
+    },
+    {
+      "id": "agree",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain red booklet on a table with two small potted plants beside it, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "米其林已經同意，台灣再增加兩個縣市。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "agree-verb",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, nodding slowly with one finger raised, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "你注意他用的動詞：同意。聽起來，是要對方點頭的事。",
+          "emotion": "對觀眾，自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "three-pots",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three small potted plants with fresh green leaves standing in a row on a sunny wooden windowsill, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "更怪的是，隔年來的不是兩個，是三個：新北市、新竹縣、新竹市。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "ten-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a row of potted seedlings growing taller one after another along a long sunny shelf, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "觀光署自己說，這是它的十年計畫，是政府有計畫的階段性成果。",
+          "emotion": "標出是誰說的"
+        }
+      ]
+    },
+    {
+      "id": "podium-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, snapping her fingers with a bright eureka smile, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "所以部長為什麼站上去，答案有了：這本書，已經寫進政府自己的成績單。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "podium-tire",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a rubber tyre leaning against a plain wooden podium with one microphone in a bright hotel ballroom, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "觀光署又在交通部底下。輪胎公司的書由交通部長站台，我覺得挺對味的。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "total-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick plain-covered book lying open on a desk with blank pages and a pencil resting across it, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "那總共花了多少？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t121",
+          "text": "我找到的報導，都沒有寫。",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "big-balloon",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a huge red balloon blown up far too big, squeezed against the ceiling above an office desk, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "網路上會看到更大的數字，可是來源都是評論，或是「外傳」。",
+          "emotion": "平"
+        }
+      ]
+    },
+    {
+      "id": "blank",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, firmly closing an empty grey folder, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "當年交通部也沒說明實際金額。所以這一欄，我空著，不估。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "star-follow",
+      "chapter": "台南等了四年的第一顆星",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small gold paper star resting on a fat brown purse on top of a plain wooden podium, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "我們回到開頭那場典禮。錢付了，星星有沒有跟著來？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "spread",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a long sunny wooden table with a big cluster of small gold paper stars gathered at one end, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "今年台灣有六十一家星級餐廳，評選範圍是七個城市，",
+          "emotion": "回呼，帶新東西"
+        }
+      ]
+    },
+    {
+      "id": "empty-plates",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a clean empty white plate on a table between two plates that each hold a small gold paper star, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "可是星星只落在其中五個地方。新北市和新竹市，一顆都沒有。",
+          "emotion": "短句，落地"
+        }
+      ]
+    },
+    {
+      "id": "tainan-bud",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a potted plant with one single bud finally opening on a sunny windowsill after a row of bare green stems, mild afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "台南更有意思：二〇二二年就進了評選，一直到今年，才有第一家星級餐廳。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "young-cook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands gently holding a small gold paper star above a clean steel kitchen counter, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "而且那家店，開業還不到一年。",
+          "emotion": "揭曉，短句"
+        }
+      ]
+    },
+    {
+      "id": "four-years",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, resting her chin on one hand, thoughtful, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t129",
+          "text": "你說，如果星星是跟著錢走的，台南怎麼會等上四年？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "closed-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a closed wooden kitchen door with a thin line of daylight under it in a quiet restaurant hallway, soft light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t130",
+          "text": "這當然證明不了全部。評審怎麼決定，外面看不到。",
+          "emotion": "但書"
+        }
+      ]
+    },
+    {
+      "id": "opinion",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, gently shaking her head with a calm smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t131",
+          "text": "但我的看法是：把觀光單位的錢和星星直接畫上等號，這份紀錄撐不住。",
+          "emotion": "標成意見，篤定"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "chapter": "請它來的錢，和吃飯的錢",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small plain red booklet with a warm smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t132",
+          "text": "好啦，回到開頭的問題：一本免費的小冊子，憑什麼讓城市付錢？",
+          "emotion": "輕鬆，問句"
+        }
+      ]
+    },
+    {
+      "id": "answer-tray",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a calm man with short neat dark hair in a plain charcoal blazer placing coins on a small silver tray beside a folded white napkin, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "還記得那些自己付帳的評審嗎？我的答案，就是他們。",
+          "emotion": "答案，放慢"
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small gold paper star resting on top of a tall stack of smooth unmarked gold coins, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t134",
+          "text": "有人信，那顆星才值錢；值錢，才有城市願意付錢。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "two-ledgers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding two thin grey folders apart, one in each hand, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t135",
+          "text": "所以這裡其實有兩筆帳。",
+          "emotion": "全片第一次說，放慢"
+        }
+      ]
+    },
+    {
+      "id": "ledger-one",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fat brown leather purse beside a small plain red booklet on a tidy office desk, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t136",
+          "text": "一筆是請指南進駐的錢，常常是觀光單位出的。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "ledger-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small silver tray with a few coins and a folded white napkin on a restaurant table, mild afternoon light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t137",
+          "text": "另一筆是評審的餐費，照米其林的說法，是自己付。",
+          "emotion": "清楚標出是誰說的"
+        }
+      ]
+    },
+    {
+      "id": "overlap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two thin grey folders lying on a desk with their edges slightly overlapping, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t138",
+          "text": "偏偏它也說，觀光局的錢有一部分付評審前往，這行需要那些夥伴。",
+          "emotion": "但書貼著講"
+        }
+      ]
+    },
+    {
+      "id": "buyable",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small gold paper star, calm and serious, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t139",
+          "text": "那星星買得到嗎？",
+          "emotion": "問句，回到開頭"
+        },
+        {
+          "id": "t140",
+          "text": "在我查得到的紀錄裡，這兩筆帳，都沒寫星星可以買。",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "not-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a magnifying glass lying beside a closed plain grey folder on a wooden desk, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t141",
+          "text": "可是有人指控、有人提告，米其林否認；查不到，不等於沒有。",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "full-circle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old creased small plain red booklet with a flattened corner resting on a plain wooden podium beside a microphone, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t142",
+          "text": "從當年被拿去墊工作台的那一本，到今年部長站上的那個講台，",
+          "emotion": "倒帶，放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing a small plain red booklet to her chest, warm smile, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t143",
+          "text": "這本書的帳一直在換人付；不換的，是你願不願意信它。",
+          "emotion": "金句，落地"
+        }
+      ]
+    },
+    {
+      "id": "close-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, closing a thick plain-covered book with a satisfied smile, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t144",
+          "text": "這份檔案，存檔。",
+          "emotion": "乾脆，落地"
+        },
+        {
+          "id": "t145",
+          "text": "好啦，這就是今天的故事。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "close-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a bowl of noodles with a friendly smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t146",
+          "text": "留言告訴我：你會因為一家店有星星或必比登，特地繞道去吃嗎？",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, waving goodbye with one hand, cheerful, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t147",
+          "text": "這個頻道只講紀錄裡有的事，想一起翻檔案，就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "assets": [],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat"
+}

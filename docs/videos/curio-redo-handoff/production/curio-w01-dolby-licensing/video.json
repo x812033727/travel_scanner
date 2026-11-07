@@ -1,0 +1,2922 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w01-dolby-licensing",
+  "theme": "paper",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友講一份檔案：開場帶挑釁；阿富汗路邊壓低放慢；工廠一角帶笑，金額逐字唸清楚；「他們沒有」乾脆；卡帶輕快；平安夜沉穩，法條範圍講清楚；年報像翻帳本，「千萬別聽成」放慢；「存檔」落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-tv",
+      "chapter": "電視上印的那兩個字",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a sofa leaning toward a slim flat TV with a dark screen, a remote in her hand, a curious smile, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你家的電視或手機上，有沒有看過「杜比」這兩個字？",
+          "emotion": "對觀眾說，像在問一個朋友"
+        }
+      ]
+    },
+    {
+      "id": "open-pay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of slim dark-screened TVs gliding along a factory conveyor, one smooth gold coin dropping into a small wooden box at the end of the line, gentle overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "有的話，造這台機器的廠商，通常每賣一台，就要付它一筆錢。",
+          "emotion": "帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-93",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fat bulging brown leather purse on a wooden table, stuffed so full that smooth gold coins spill out over its edge, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "二〇二五財年，杜比收了十三億四千九百萬美元，九成三是授權費。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at a café table whispering behind his hand to a friend, two coffee cups between them, bright clear light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "所以你可能聽過一種說法：杜比不造硬體，只賣專利。",
+          "emotion": "轉述，帶一點看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "open-twist",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain dark green metal box with two round silver knobs sitting on a wooden workbench beside a small screwdriver, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "但你想不到，它的第一筆生意，賣的是自己造的機器。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-xmas",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden gavel resting on a polished table beside a small wreath of holly with red berries, pale winter sunlight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "一九九六年平安夜，美國要定數位電視的聲音，還有一家公司一直反對它。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-convince",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick plain-covered annual report lying open with blank pages on a desk, a smartphone with a black screen resting on top, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "而收了幾十年的錢，它的年報到今天還寫著：得一直說服別人。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one smooth gold coin, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "今天我們就來聊聊：一家不造電視也不造手機的公司，憑什麼讓廠商每台付它一筆？",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "origin-1949",
+      "chapter": "十六歲就開始聽的那個嘶聲",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1949 wooden school desk holding a stack of plain textbooks and a yellow pencil, California sunshine through a tall window",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "要回答這個問題，故事得回到一九四九年的美國加州，一個十六歲的高中生。",
+          "emotion": "沉穩進場景"
+        }
+      ]
+    },
+    {
+      "id": "origin-ampex",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big 1949 reel-to-reel tape recorder with two large spools of brown tape on a wooden workbench, warm California sun",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "一次偶遇，他進了一家做磁帶錄音機的公司，週末和假日去打工。"
+        }
+      ]
+    },
+    {
+      "id": "origin-hiss",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a spool of brown recording tape on a table with a little cloud of pale fuzzy specks drifting off it like dust, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "磁帶有個甩不掉的毛病，叫嘶聲。從那時候起，他就一直想對付它。"
+        }
+      ]
+    },
+    {
+      "id": "origin-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in big headphones sitting on a bedroom floor, wincing at a small plain cassette player in his lap, warm afternoon sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "你如果聽過老錄音帶，一定記得那種嘶嘶嘶的底噪。",
+          "emotion": "對觀眾，親近"
+        }
+      ]
+    },
+    {
+      "id": "origin-vtr",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a huge 1950s video tape machine the size of a wardrobe, with big spools and rows of plain round knobs, soft studio light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "後來，他主要負責世界第一台實用錄影機的電子部分。"
+        }
+      ]
+    },
+    {
+      "id": "origin-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shrugging with both palms up and a playful smile, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "我還以為，他會做錄影機做到老。結果呢？",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "origin-cambridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old stone college courtyard in Cambridge, England, with a green lawn and a bicycle leaning on an arch, gentle overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "他跑去英國劍橋，一路念到物理博士。"
+        }
+      ]
+    },
+    {
+      "id": "origin-india",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a portable 1960s tape recorder on a woven mat beside a brass water pot and a pair of hand drums, warm Indian sun",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "一九六三年，他又去了印度，在聯合國教科文組織的一個計畫當技術顧問。"
+        }
+      ]
+    },
+    {
+      "id": "origin-hobby",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a microphone on a short stand facing a sitar and a pair of hand drums on a patterned rug in a sunny courtyard, warm afternoon sun",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "他的嗜好，是帶著錄音機，去錄當地的現場音樂。"
+        }
+      ]
+    },
+    {
+      "id": "origin-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reel-to-reel tape recorder on a woven mat with a small rain cloud of fuzzy specks hovering over its spools, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "那個從打工時就想對付的嘶聲，到底怎麼弄掉？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "origin-old",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bulky 1960s audio box on a table with tangled wires bursting out of its back like spaghetti, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "市面上的設備他研究過，加進去的失真，比去掉的噪音還多。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "origin-idea",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, cupping one hand behind her ear and listening closely, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "他想通的是：嘶聲只有在音樂很小聲的時候，才聽得到。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "origin-fridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small white refrigerator in a quiet tidy kitchen after a party, a few balloons drifting near the ceiling, gentle overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "就像派對正熱鬧時，你聽不見冰箱的嗡嗡聲；客人一走，它就冒出來了。",
+          "emotion": "比喻，輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "origin-gate",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small wooden toy gate on a table letting a big red ball roll straight through while a tiny blue marble is caught in a soft net, bright clear light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "所以大聲的部分原樣放過去，只處理小聲的部分。"
+        }
+      ]
+    },
+    {
+      "id": "origin-drive",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1960s station wagon seen from behind on a dusty mountain road under a wide blue sky, luggage strapped on its roof, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "一九六五年，他要回英國，走陸路開車，一路開了兩個月。"
+        }
+      ]
+    },
+    {
+      "id": "origin-afghan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white envelope and a fountain pen on the warm hood of a parked 1960s car, dry brown mountains of Afghanistan behind, warm afternoon sun",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "途中在阿富汗停下來，他把點子寫下來，寄給加州的專利律師。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "origin-plane",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white paper airplane folded from a letter gliding over dry brown hills under a clear blue sky, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "一封半路寄出的信，後來會變成什麼？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "london-open",
+      "chapter": "倫敦工廠的一角，先造的是機器",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of 1960s London brick rooftops and chimney pots under a soft overcast sky, a few pigeons resting on a ledge",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "同一年五月，他在倫敦開了公司。"
+        }
+      ]
+    },
+    {
+      "id": "london-corner",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1960s London dressmaking workshop with rows of sewing machines and fabric bolts, a seamstress glancing at a small tidy bench in the corner, soft morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "照他一九八八年接受專訪的說法，地點是一家成衣工廠的一個角落。"
+        }
+      ]
+    },
+    {
+      "id": "london-money",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim brown leather wallet on a workbench beside four plain white coffee mugs standing in a row, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "兩萬五千美元，存的加上借的，再加四個員工。",
+          "emotion": "金額逐字唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "london-bbc",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a boxy 1960s television with a plain silver-white screen on a wooden stand, a reel of film beside it, gentle overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "你猜，他第一個做的是什麼？典藏說明寫，還不是聲音，是黑白影像的降噪。",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "london-bbc-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a boxy 1960s television with a dark screen beside an open tin of bright paints and a brush, bright clear light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "他拿給 BBC 評估，對方沒要，因為 BBC 正要改成彩色。這時機準不準？",
+          "emotion": "帶一點同情，問句"
+        }
+      ]
+    },
+    {
+      "id": "london-a",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain dark green metal box with two round silver knobs wired by a short cable to a big reel-to-reel tape recorder, soft studio light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "他回頭做聲音，把那一招裝進一個金屬盒，接在錄音機旁邊。"
+        }
+      ]
+    },
+    {
+      "id": "london-a-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small plain dark green metal box, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "這就是 A 型降噪：它不是錄音機，是一台專門去嘶聲的機器。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "london-made",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1960s workshop bench lined with identical plain dark green metal boxes, a soldering iron resting beside them, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "還記得開場說的第一筆生意嗎？這些盒子，是他們自己造的。",
+          "emotion": "回呼，強調"
+        }
+      ]
+    },
+    {
+      "id": "london-sold",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big wooden mixing desk with plain unmarked faders in a 1960s recording studio, a dark green metal box sitting on top, warm afternoon sun",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "賣的對象，是英國和美國的錄音室。那第一個客戶是誰？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "london-decca",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of nine plain dark green metal boxes stacked neatly on a wooden trolley, a shiny black vinyl record leaning against them, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "是迪卡唱片。測了好幾個月，訂下最早的九台，還要三個月獨家。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "london-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping a dark green metal box, one eyebrow raised, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "你看，「不造硬體」這句話，從第一筆生意起就對不上。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "london-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain dark green metal box on a workbench with a long coiled spring stretching out of its side, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "好玩的是，這台機器本來叫「訊噪比伸展器」，",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "london-name-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two 1960s studio engineers in rolled-up shirt sleeves pointing at a dark green metal box and laughing together, gentle overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "沒多久，大家直接叫它「杜比」，連他自己都意外。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "london-name-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain dark green metal box on a red velvet cushion with a small paper crown resting on its top, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "先記住這件事：一個人的姓，變成了機器的名字。後面它也要收錢。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "london-start",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small tidy 1960s workshop corner with one workbench, shelves of dark green metal boxes and a kettle, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "這就是杜比的起點：一家自己造機器、賣給錄音室的小公司。",
+          "emotion": "小結"
+        }
+      ]
+    },
+    {
+      "id": "london-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1967 wooden home radio with a plain round dial and a big fabric speaker grille on a living room shelf, bright clear light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "然後一九六七年，一位美國音響廠商開口，要的東西完全不一樣。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "reel-kloss",
+      "chapter": "一台進不了一般家庭的開盤機",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of walnut bookshelf speakers and a small home tape recorder on a living room sideboard, a potted fern beside them, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "這位廠商叫亨利·克洛斯，他催著要一套給一般家庭用的降噪。"
+        }
+      ]
+    },
+    {
+      "id": "reel-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty wooden workbench with a neat set of tools laid out around one blank sheet of paper, warm afternoon sun",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "這就是後來的 B 型。問題來了：家用的機器，誰來造？",
+          "emotion": "問題來了"
+        }
+      ]
+    },
+    {
+      "id": "reel-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at a kitchen table resting his chin on his fist, a small dark green metal box in front of him, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "換成你，盒子賣得動，家用版你會怎麼做？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "reel-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a toy wooden factory, grinning confidently, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "我大概會說：蓋大一點的工廠，自己造。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "reel-no",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small toy wooden factory with a tall chimney lying in unbuilt pieces inside an open wooden crate on a table, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "他們沒有。",
+          "emotion": "短句，揭曉"
+        }
+      ]
+    },
+    {
+      "id": "reel-plans",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain blue rolled paper tied with a red ribbon being handed across a table from one shirt-cuffed hand to another, gentle overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "他們把技術的設計，賣給本來就在做音響的廠商，自己只造專業用的機器。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "reel-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pinching her thumb and finger close together with a wry smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "你聽過的「只賣專利」，要到這裡，才沾得上一點邊。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "reel-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leafing through a thick plain book, shaking her head, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "至於他當時為什麼這樣選，我讀到的紀錄都沒寫。"
+        }
+      ]
+    },
+    {
+      "id": "reel-klh-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a ripe red apple falling toward a small wicker basket on a kitchen table, caught in mid-air, bright clear light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "問題是，第一家拿到授權的廠商，接得住嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "reel-klh",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1968 open-reel home tape recorder with two big spools of tape in a walnut case on a living room table, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "第一個產品，是 KLH 一九六八年的開盤式錄音機，獨家授權到一九七〇年。",
+          "say": "第一個產品，是 K L H 一九六八年的開盤式錄音機，獨家授權到一九七〇年。",
+          "say_for": "e2433d1cce18"
+        }
+      ]
+    },
+    {
+      "id": "reel-home",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in a 1960s dress frowning at a long loose tangle of brown tape spilling from a big reel onto the carpet, warm afternoon sun",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "性能很好，可是磁帶繞兩個大轉盤太麻煩，一般家庭從來沒有真正接受它。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "reel-awkward",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a toy dart stuck far off the edge of a round plain red and white target on a wooden wall, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "你看多尷尬：不造家用機的決定才剛做，第一張牌就押錯了格式。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "reel-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a narrow dirt path in a quiet meadow splitting into two directions, gentle overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "這條路，還走得下去嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "tape-save",
+      "chapter": "被看不起的卡帶",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single small plain white cassette tape sitting alone on a wide wooden table in a ray of soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "救它的，是當時被看不起的卡帶。",
+          "emotion": "接住，揭曉"
+        }
+      ]
+    },
+    {
+      "id": "tape-worse",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain white cassette tape on a shelf, dwarfed by a big tape reel and a chunky tape cartridge towering beside it, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "工程史的紀錄寫，當時的人覺得卡帶比開盤帶、八軌帶都差。"
+        }
+      ]
+    },
+    {
+      "id": "tape-pencil",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, winding a white cassette with a yellow pencil, grinning, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "用鉛筆轉過卡帶的人，大概懂我在說什麼。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "tape-lp",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain white cassette and a shiny black vinyl record balanced level on a toy wooden seesaw, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "沒想到加上杜比，卡帶的音質可以追上黑膠唱片。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "tape-1970",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling young clerk in a 1970 hi-fi shop lifting a plain silver cassette deck off a crowded shelf, gentle overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "一九七〇年，第一批內建 B 型的卡帶機上市，馬上就紅了。"
+        }
+      ]
+    },
+    {
+      "id": "tape-mail",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden mail tray overflowing with plain white envelopes on an office desk, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "廠商的授權申請，一下子多了起來。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "tape-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tiny potted seedling beside a tall leafy plant in the same kind of clay pot on a sunny windowsill, bright clear light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "杜比年表寫，那年九月才第五家，隔年底已經三十家。",
+          "emotion": "收住"
+        }
+      ]
+    },
+    {
+      "id": "tape-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white envelope beside a very thick plain-covered folder tied with red string on a wooden desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "更怪的是，還記得阿富汗那封信嗎？典藏說明寫，它變成了一份美國專利，",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "tape-patent",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slow garden snail crawling across a thick plain-covered folder on a wooden desk, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "一九六九年申請，一九七一年底才核准。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "tape-patent-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain silver cassette deck on a shop shelf while a thick plain-covered folder still sits sealed in a wooden tray behind it, warm afternoon sun",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "第一批卡帶機上市的時候，這一份還沒下來，雖然它前面還有更早的申請。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "tape-buy",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a single blank sheet of paper and tilting her head, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "所以我覺得，廠商買的不只是那張專利。還有什麼？",
+          "emotion": "我的看法，問句"
+        }
+      ]
+    },
+    {
+      "id": "tape-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain blue rolled paper tied with red ribbon lying next to a small paper crown on a red velvet cushion, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "設計圖，加上那個已經被叫開的名字。還記得那個姓嗎？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "tape-1988",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long 1980s shop shelf lined end to end with identical plain silver cassette decks, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "工程師學會的雜誌後來寫：幾乎每家卡帶機廠商，都授權了它。"
+        }
+      ]
+    },
+    {
+      "id": "tape-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged man in a living room lifting a dusty plain silver cassette deck out of a wooden chest, smiling fondly, soft morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "你家以前如果有卡帶機，回想一下面板上印了什麼。",
+          "emotion": "對觀眾，親近"
+        }
+      ]
+    },
+    {
+      "id": "tape-origin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small toy sailboat setting off across a calm pond on a light breeze, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "授權這條路，到這裡才算走通：家用機不自己造，讓別人造。",
+          "emotion": "小結"
+        }
+      ]
+    },
+    {
+      "id": "tape-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of heavy red velvet curtains slightly parted at a doorway, morning light spilling in through the gap",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "要讓更多人聽見這個名字，得走進一個黑漆漆的地方。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "film-legend",
+      "chapter": "《發條橘子》只用在母帶上",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1971 cinema hall with rows of red velvet seats and a plain white screen, house lights up, soft even light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "那個地方是戲院。你可能聽過：杜比第一次進電影，是庫柏力克的《發條橘子》。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "film-1971",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful moviegoer in a 1970s cinema seat holding a striped popcorn box, soft even house light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "那是一九七一年。你可能以為，這下全世界都聽到杜比了。"
+        }
+      ]
+    },
+    {
+      "id": "film-master",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1970s film mixing room with a big tape machine and stacked film reels on a wooden table, gentle overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "但它只用在混音和母帶上，也就是做片的過程。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "film-print",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a film reel in a round metal tin being wheeled on a wooden trolley down a cinema corridor, bright clear light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "發到戲院的拷貝，用的還是傳統的光學聲軌。"
+        }
+      ]
+    },
+    {
+      "id": "film-noname",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty red velvet cushion on a small wooden pedestal, waiting for something to be placed on it, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "杜比立體聲這個名字，那時候根本還沒出現。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "film-which",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a round metal film tin and raising one eyebrow, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "你可能會問：那真正掛上這個名字的，是哪一部？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "film-1975",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big round cinema loudspeaker mounted high on a theatre side wall above red velvet seats, soft even house light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "杜比年表寫，第一部在一九七五年；第一部帶環繞聲的，是一九七六年的《星夢淚痕》。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "film-small",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tiny neighbourhood cinema hall with a few dozen worn seats and a small plain white screen, soft even house light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "先裝的多半是本來就有喇叭的大戲院。小戲院為什麼要花這筆錢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "film-1977",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a long happy queue of kids and parents along a sunny brick wall outside a small 1977 cinema door, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "答案不是庫柏力克，是一九七七年的《星際大戰》。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "film-1977b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two new round speakers on wooden stands set on either side of a small plain white cinema screen, soft even light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "它的成功，讓小戲院第一次願意裝立體聲。"
+        }
+      ]
+    },
+    {
+      "id": "film-unit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain black metal box with round silver knobs sitting beside a film projector in a small projection booth, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "要換，就要加一台杜比的機器和新喇叭。"
+        }
+      ]
+    },
+    {
+      "id": "film-machine",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, patting a plain black metal box with a knowing smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "它又站在賣機器這一邊了，你注意到了嗎？",
+          "emotion": "對觀眾，帶一點得意"
+        }
+      ]
+    },
+    {
+      "id": "film-6000",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a model village of tiny cinema buildings spread across a big table, each with red velvet curtains in its doorway, warm afternoon sun",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "不到十年，全世界有六千家戲院裝好了杜比立體聲。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "film-1992",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of five small round speakers standing in a ring around one big square subwoofer on a polished wooden floor, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "一九九二年，它把環繞聲做成數位，五個主聲道加一個重低音，又叫 AC-3。",
+          "say": "一九九二年，它把環繞聲做成數位，五個主聲道加一個重低音，又叫 A C 三。",
+          "say_for": "976c7489b4e9"
+        }
+      ]
+    },
+    {
+      "id": "film-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a family on a sofa in a 1990s living room facing a boxy TV with a dark screen, warm afternoon sun",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "可是戲院再紅，你家客廳的電視用什麼聲音，不是戲院說了算。那是誰？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "fcc-room",
+      "chapter": "一九九六年的平安夜，一份命令",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long polished wooden hearing table with a row of empty leather chairs and microphones, pale winter sun from tall windows",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "在美國，這題交到了聯邦通訊委員會，FCC。",
+          "say": "在美國，這題交到了聯邦通訊委員會，F C C。",
+          "say_for": "9915cc22a83d"
+        }
+      ]
+    },
+    {
+      "id": "fcc-draft",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick plain-covered binder lying open with blank pages on a polished table, a small round speaker resting on the pages, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "當時要定的數位電視標準裡，聲音那一段寫的正是 AC-3。",
+          "say": "當時要定的數位電視標準裡，聲音那一段寫的正是 A C 三。",
+          "say_for": "3e5da1b040d3"
+        }
+      ]
+    },
+    {
+      "id": "fcc-dts",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden gavel beside a small wreath of holly on a polished table, a second gavel lying across from it, pale winter sunlight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "還記得開場那家反對的公司嗎？它叫 DTS。",
+          "say": "還記得開場那家反對的公司嗎？它叫 D T S。",
+          "say_for": "61c10268b6fa",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "fcc-dts-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny silver speaker set on a tall wooden pedestal beside a plain black speaker resting on the table below, gentle overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "DTS 說：我的系統比較好，標準根本不該指定音訊格式。",
+          "say": "D T S 說：我的系統比較好，標準根本不該指定音訊格式。",
+          "say_for": "c3a48b3e54c8"
+        }
+      ]
+    },
+    {
+      "id": "fcc-dolby",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slim dark-screened TV with an extra plain black box strapped onto its back, sitting heavily on a shop counter, bright clear light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "杜比回：你沒有證明比較好，多一套解碼，機器還會變貴。"
+        }
+      ]
+    },
+    {
+      "id": "fcc-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a polished hearing table holding a wooden gavel in mid-air, thinking hard, pale winter sunlight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "換成你坐在委員的位子，怎麼判？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "fcc-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden gavel striking its block beside a small decorated Christmas tree on a polished table, pale winter sunlight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "一九九六年十二月二十四日，平安夜，命令通過，聲音照 AC-3。",
+          "say": "一九九六年十二月二十四日，平安夜，命令通過，聲音照 A C 三。",
+          "say_for": "c97c34d3e695",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "fcc-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one shiny gold medal on a ribbon lying on a polished table beside an empty velvet medal box, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "理由很乾脆：DTS 沒經過杜比勝出的那套測試，也沒有獨立測試佐證，",
+          "say": "理由很乾脆：D T S 沒經過杜比勝出的那套測試，也沒有獨立測試佐證，",
+          "say_for": "6fe03e7ff501"
+        }
+      ]
+    },
+    {
+      "id": "fcc-why-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an hourglass with sand running beside a small pile of gold coins on a polished table, pale winter sunlight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "改動可能拖延時間，也要多花成本。"
+        }
+      ]
+    },
+    {
+      "id": "fcc-win",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty deck chair on a sunny lawn with a fat brown leather purse resting on its seat, warm afternoon sun",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "聽到這裡，你大概覺得杜比贏了，從此坐著收錢？",
+          "emotion": "問句，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "fcc-simple",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger in a gentle warning, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "事情有這麼簡單嗎？同一份命令還重申了一個前提：",
+          "emotion": "問題來了"
+        }
+      ]
+    },
+    {
+      "id": "fcc-rand",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass balance scale on a table with one identical small gold coin resting evenly on each pan, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "相關專利，要用合理、非歧視的條件授權。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "fcc-10k",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a deflating red balloon sagging over a very thick plain-covered annual report on a desk, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "杜比的年報也承認：被標準寫進去，費率常得壓低，也不一定能挑對象。"
+        }
+      ]
+    },
+    {
+      "id": "fcc-ticket",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a blank paper ticket tied to a red rope, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "所以我覺得，寫進標準是一張門票，也是一條繩子。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "fcc-scope-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain blank paper ticket on a red rope lying on a stone step in front of three closed wooden doors, gentle overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "那這張門票，到底能進哪裡？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "fcc-scope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rooftop TV antenna on a suburban American house under a clear blue sky, bright clear light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "這份命令管的，是美國的地面數位電視。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "fcc-cfr",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall red and white broadcast tower standing on a green hill under a clear blue sky, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "現行聯邦法規還寫著，電視台發射訊號要符合這套標準，"
+        }
+      ]
+    },
+    {
+      "id": "fcc-cfr-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a boxy TV with a dark screen and a pair of rabbit-ear antennas on a living room shelf, warm afternoon sun",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "能收無線訊號的電視，也要收得到。"
+        }
+      ]
+    },
+    {
+      "id": "fcc-notworld",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smartphone with a black screen lying outside a small white picket fence that surrounds a boxy TV on a lawn, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "它沒有管到全世界，也沒有管到你的手機，",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "fcc-notpay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick plain-covered binder lying open with blank pages beside an empty coin purse lying flat on a table, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "也沒有一句話說，廠商從此一定要付錢給杜比。"
+        }
+      ]
+    },
+    {
+      "id": "fcc-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a dark phone and a gold coin, a curious frown, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "那手機通常沒人規定要用它，憑什麼也收得到錢？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "pipe-chip",
+      "chapter": "一台收多少？年報不講",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a small square black computer chip with shiny silver legs sitting on a green circuit board, gentle overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "答案藏在一顆晶片裡：年報寫的收法，通常分兩段。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "pipe-chip-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small tray of black computer chips sliding along a factory conveyor toward a waiting slim dark-screened TV, bright clear light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "晶片廠把杜比的技術做進晶片，經它核可，再賣給機器廠。"
+        }
+      ]
+    },
+    {
+      "id": "pipe-nominal",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one tiny copper coin lying alone in a huge empty wooden bowl on a kitchen table, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "晶片廠付多少？只有一筆象徵性的初始費用。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "pipe-oem",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a modern factory line of slim dark-screened TVs, a metal arm placing one small black chip into the back of each, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "真正的錢在下一段：機器廠拿到授權，才能買這些晶片。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "pipe-unit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of slim dark-screened TVs gliding along a factory conveyor, one smooth gold coin dropping into a small wooden box as each one passes, warm afternoon sun",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "還記得開場那一筆嗎？通常就是每賣一台，算一次。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "pipe-1000",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a vast green plain dotted with hundreds of small white factory buildings with tall chimneys under a soft blue sky",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "這樣的機器廠，全世界大約一千家。"
+        }
+      ]
+    },
+    {
+      "id": "pipe-how",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a single gold coin up to one eye and squinting at it, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "那一台到底收多少？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "pipe-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick plain-covered annual report lying open with blank pages and a magnifying glass resting on it, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "你翻遍年報也找不到，它沒有公布單台授權費。",
+          "emotion": "揭曉，帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "pipe-93",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up one open palm in a firm halt gesture, serious face, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "還記得開場那個九成三嗎？千萬別聽成每台抽九成三。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "pipe-93b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a fat bulging brown leather purse beside a much smaller slim coin pouch on a wooden table, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "那是授權收入占總營收的比例，年報四捨五入；精確一點，是九成二點五。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "pipe-volume",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a towering pile of black-screened smartphones, a smaller pile of slim TVs and a little heap of car keys on a long table, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "二〇二四年，行動裝置賣了超過十億台，電視大約兩億台，汽車大約九千萬輛。",
+          "emotion": "清單，加快"
+        }
+      ]
+    },
+    {
+      "id": "pipe-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three bowls on a table, a car key in a bowl full of gold coins, a TV remote in a half-full bowl, a phone in a bowl with two coins",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "賣得越多，單價通常越低，所以平均每台，汽車比電視多，電視比手機多。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "pipe-pool",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, peeking inside a plain white envelope with a surprised look, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "更怪的是，授權費裡有一部分，根本不掛杜比的名字。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "pipe-pool-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big glass jar on a table filling up with plain white envelopes of different sizes, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "它也參加專利池：好幾家專利持有人湊在一起，授權影音壓縮標準。"
+        }
+      ]
+    },
+    {
+      "id": "pipe-pool-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two identical slim dark-screened TVs side by side on a shop counter, a gold coin resting on top of each, gentle overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "機器有沒有印那兩個字，跟它有沒有收到錢，不一定是同一件事。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "pipe-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big golden pie on a table cut into slices of very different sizes, a pie server beside it, bright clear light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "那十二億多的授權費，到底誰付得最多？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "mkt-tv",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the biggest slice of golden pie on a plate beside a slim dark-screened TV and a small black set-top box, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "最大的還是電視和機上盒，占二〇二五財年授權收入的三成四。"
+        }
+      ]
+    },
+    {
+      "id": "mkt-tv-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, wagging one finger with a calm small smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "這是收入結構，不是說每台電視都有杜比。",
+          "emotion": "但書"
+        }
+      ]
+    },
+    {
+      "id": "mkt-mobile",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smaller slice of golden pie on a plate next to a black-screened smartphone and a tablet, warm afternoon sun",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "手機和平板排第二，兩成二。"
+        }
+      ]
+    },
+    {
+      "id": "late-notover",
+      "chapter": "收了幾十年，還得說服",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, flipping back through a very thick plain annual report, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "故事到這裡還沒結束：電視拿了最大的一塊，可是它還撐得住嗎？",
+          "emotion": "轉場，問句"
+        }
+      ]
+    },
+    {
+      "id": "late-2023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slice of golden pie on a plate with a fork taking a bite out of its edge, a slim dark-screened TV standing behind it, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "二〇二三財年，電視是三成八，手機兩成。"
+        }
+      ]
+    },
+    {
+      "id": "late-tvdown",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a red balloon tied to a slim dark-screened TV, slowly sinking toward a wooden floor, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "電視在往下掉；手機多出來的兩點，年報說來自收購和合約入帳的時間。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "late-ticket",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain blank paper ticket on a red rope, faded and curled at the edges, lying on a dusty wooden shelf, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t129",
+          "text": "還記得那張門票嗎？年報自己寫，廣播標準的重要性，這幾年一直在下降。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "late-callback",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a black-screened smartphone with a knowing look, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t130",
+          "text": "還記得開場那句「得一直說服別人」嗎？說的就是手機。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "late-mobile",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an eager young salesman holding out a small round speaker across a meeting table, smiling hopefully, soft office light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t131",
+          "text": "年報寫，手機通常沒有標準撐腰，它得一直說服手機廠。"
+        }
+      ]
+    },
+    {
+      "id": "late-remove",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of tweezers lifting a tiny round speaker easily out of an open smartphone on a workbench, gentle overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t132",
+          "text": "問題來了：手機廠要拿掉它，也比電視廠容易。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "late-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, resting her chin on her hand with an amused smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "收了幾十年的錢，還得靠說服。我覺得這句，比開頭那個數字還有意思。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "late-how",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of white earbuds resting on a black-screened smartphone on a café table, bright clear light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t134",
+          "text": "怎麼說服？你大概猜得到：先讓內容用它。",
+          "emotion": "問句，然後輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "late-apple",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a park bench wearing big headphones, eyes closed, smiling as she listens, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t135",
+          "text": "比如二〇二一年，Apple 的音樂服務，加入支援杜比全景聲的空間音訊。"
+        }
+      ]
+    },
+    {
+      "id": "late-7-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a thick plain book to her chest, thoughtful, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t136",
+          "text": "那開場那句「不造硬體，只賣專利」，到底對不對？還差最後一個數字。",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "late-7",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small slim coin pouch sitting in front of a fat bulging brown leather purse on a wooden table, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t137",
+          "text": "授權費以外，還有百分之七是產品與服務，大約一億美元。這一億是什麼？",
+          "emotion": "數字放慢，問句"
+        }
+      ]
+    },
+    {
+      "id": "late-cinema",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a modern projection room with a sleek black server rack, an amplifier and a big speaker cabinet, warm afternoon sun",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t138",
+          "text": "主要是賣給戲院的：放映伺服器、擴大機、喇叭，還有服務。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "late-oem",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright modern factory floor where metal arms assemble black speaker cabinets on a conveyor, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t139",
+          "text": "設計是它的，產線主要交給代工廠。"
+        }
+      ]
+    },
+    {
+      "id": "late-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a cinema seat tilting his head up toward a big round speaker on the side wall, soft even house light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t140",
+          "text": "你下次進戲院，抬頭看到的喇叭，有可能就是它賣的。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "end-wrong",
+      "chapter": "半句對，半句錯",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain dark green metal box with two round knobs placed on top of a very thick plain-covered annual report, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t141",
+          "text": "所以「不造硬體」這半句，從倫敦那個角落到這份年報都對不上：它一直在賣自己的硬體。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "end-right",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young couple carrying a slim TV wrapped in plain brown paper into their apartment, smiling, gentle overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t142",
+          "text": "成立的是另一半：你買回家的電視和手機，不是它造的。"
+        }
+      ]
+    },
+    {
+      "id": "end-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping her chin with one finger, eyes narrowed in thought, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t143",
+          "text": "那，憑什麼讓廠商每台付一筆？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "end-not",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden gavel and a single sealed white envelope pushed aside to the edge of a polished table, bright clear light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t144",
+          "text": "不是憑一條法律，也不是憑一張專利。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "end-rewind",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a white envelope and a small dark green metal box side by side on a wooden table, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t145",
+          "text": "倒回去看：阿富汗半路寄出的信，成衣工廠角落的那些盒子，",
+          "emotion": "放慢，像倒帶"
+        }
+      ]
+    },
+    {
+      "id": "end-rewind-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small plain white cassette tape beside a wooden gavel and a sprig of holly on a polished table, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t146",
+          "text": "被看不起的卡帶，還有平安夜那份命令。"
+        }
+      ]
+    },
+    {
+      "id": "end-answer-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a white cassette in one hand and a dark phone, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t147",
+          "text": "照這些紀錄，我的解讀是：從卡帶機到手機，它一直讓造機器的人，",
+          "emotion": "落地"
+        }
+      ]
+    },
+    {
+      "id": "end-answer-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of slim dark-screened TVs and smartphones gliding along a factory conveyor, one gold coin dropping into a small wooden box at the end, warm afternoon sun",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t148",
+          "text": "願意為那一小段設計和那個名字，每台付一筆。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "end-stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, closing a plain folder firmly, a satisfied smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t149",
+          "text": "這份檔案，存檔。",
+          "emotion": "乾脆，落地"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, smiling and holding up a small plain white cassette tape, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t150",
+          "text": "好啦，這就是今天的故事。",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "close-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a sofa peering at the back of a slim TV, a remote in her hand, a surprised smile, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t151",
+          "text": "你家哪一台機器印著這兩個字，是你今天才發現的？留言告訴我。",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a thick plain annual report, smiling warmly, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t152",
+          "text": "這個頻道只講紀錄裡有的事，想一起翻檔案，就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t002",
+      "payoff": "t111",
+      "what": "廠商每賣一台付的那一筆，到底怎麼收"
+    },
+    {
+      "setup": "t003",
+      "payoff": "t115",
+      "what": "九成三的授權費，是什麼意思"
+    },
+    {
+      "setup": "t004",
+      "payoff": "t141",
+      "what": "「不造硬體，只賣專利」對不對"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t033",
+      "what": "第一筆生意，賣的是自己造的機器"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t092",
+      "what": "平安夜那份命令，反對的公司是誰、結果站哪一邊"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t131",
+      "what": "收了幾十年，年報還寫得一直說服別人"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t148",
+      "what": "憑什麼讓廠商每台付一筆"
+    },
+    {
+      "setup": "t018",
+      "payoff": "t020",
+      "what": "嘶聲怎麼弄掉"
+    },
+    {
+      "setup": "t025",
+      "payoff": "t062",
+      "what": "半路寄出的信後來變成什麼"
+    },
+    {
+      "setup": "t039",
+      "payoff": "t066",
+      "what": "變成機器名字的那個姓，後面怎麼收錢"
+    },
+    {
+      "setup": "t041",
+      "payoff": "t042",
+      "what": "一九六七年那位廠商要的是什麼"
+    },
+    {
+      "setup": "t043",
+      "payoff": "t047",
+      "what": "家用機誰來造"
+    },
+    {
+      "setup": "t050",
+      "payoff": "t052",
+      "what": "第一家拿到授權的廠商接得住嗎"
+    },
+    {
+      "setup": "t054",
+      "payoff": "t055",
+      "what": "授權這條路還走得下去嗎"
+    },
+    {
+      "setup": "t065",
+      "payoff": "t066",
+      "what": "廠商買的除了專利還有什麼"
+    },
+    {
+      "setup": "t070",
+      "payoff": "t071",
+      "what": "那個黑漆漆的地方是哪裡"
+    },
+    {
+      "setup": "t076",
+      "payoff": "t077",
+      "what": "真正掛上杜比立體聲的是哪一部"
+    },
+    {
+      "setup": "t078",
+      "payoff": "t079",
+      "what": "小戲院為什麼要花這筆錢"
+    },
+    {
+      "setup": "t085",
+      "payoff": "t086",
+      "what": "客廳的聲音誰說了算"
+    },
+    {
+      "setup": "t095",
+      "payoff": "t097",
+      "what": "寫進標準是不是從此坐著收錢"
+    },
+    {
+      "setup": "t099",
+      "payoff": "t129",
+      "what": "寫進標準的那張門票"
+    },
+    {
+      "setup": "t100",
+      "payoff": "t101",
+      "what": "那張門票能進哪裡"
+    },
+    {
+      "setup": "t106",
+      "payoff": "t110",
+      "what": "沒人規定手機要用，它憑什麼收得到錢"
+    },
+    {
+      "setup": "t113",
+      "payoff": "t114",
+      "what": "一台到底收多少"
+    },
+    {
+      "setup": "t122",
+      "payoff": "t123",
+      "what": "十二億多的授權費誰付得最多"
+    },
+    {
+      "setup": "t136",
+      "payoff": "t137",
+      "what": "還差的最後一個數字"
+    }
+  ],
+  "youtube": {
+    "title": "杜比不造電視也不造手機，憑什麼 93% 的錢都是授權費？｜奇聞檔案局",
+    "description": "杜比不造電視也不造手機，2025 財年年報卻列著：九成三的營收是授權收入。這一集從一個十六歲就在磁帶錄音機公司打工的高中生翻起：1965 年開車回英國途中、在阿富汗寄給專利律師的那封信，倫敦工廠一角造的降噪機器、1967 年家用版決定不自己造、一台進不了一般家庭的開盤機、被看不起的卡帶、1996 年平安夜 FCC 把 AC-3 寫進美國地面數位電視標準的命令，一路到年報裡的每台計費與晶片兩段授權。\n\n流傳的版本有兩個，片中都標明是流傳的版本：「不造硬體只賣專利」，以及「杜比進電影，第一部就是庫柏力克的片」。紀錄是：A 型是它自己造的設備，2025 財年仍有 7% 來自產品與服務；《發條橘子》只在混音與母帶用降噪。\n\n幾個容易聽錯的地方：93% 是年報四捨五入的比例，不是每台抽成，年報沒有公布單台授權費；FCC 那份命令只管美國地面數位電視，不是全世界，也不是手機；電視與機上盒占授權收入 34%，不等於所有電視都有杜比。數字一律是 2025 財年（截至 2025 年 9 月 26 日），2026 財年財報要到 2026 年 11 月 17 日才發布。\n\n本集插圖由 AI 生成，人物都是不對應真人的卡通角色，畫面不放任何商標、海報或劇照。本頻道跟片中提到的公司沒有授權或合作關係，也沒有收它們的錢。每個數字與引言的出處列在下方參考資料。\n\n資料截至 2026-10-31",
+    "tags": [
+      "杜比",
+      "Dolby",
+      "授權",
+      "專利",
+      "卡帶",
+      "杜比立體聲",
+      "發條橘子",
+      "FCC",
+      "AC-3",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "杜比\n**93% 授權**",
+      "tag": "生意奇聞",
+      "sub": "不造電視也不造手機",
+      "shot": "open-tv"
+    }
+  },
+  "sources": [
+    {
+      "title": "Dolby Laboratories 2025 財年 10-K 本文（SEC EDGAR）",
+      "url": "https://www.sec.gov/Archives/edgar/data/1308547/000130854725000007/dlb-20250926.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Dolby 2025 財年 10-K：合併損益表 R5",
+      "url": "https://www.sec.gov/Archives/edgar/data/1308547/000130854725000007/R5.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Dolby 2025 財年 10-K：營收拆分附表 R56",
+      "url": "https://www.sec.gov/Archives/edgar/data/1308547/000130854725000007/R56.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Dolby 2025 財年 10-K：營收認列附註 R13",
+      "url": "https://www.sec.gov/Archives/edgar/data/1308547/000130854725000007/R13.htm",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Dolby 2026-10-12 新聞稿：Q4 Fiscal 2026 財報 11-17 發布（PRNewswire 轉載）",
+      "url": "https://finviz.com/news/401219/dolby-laboratories-announces-conference-call-and-webcast-for-q4-fiscal-2026-financial-results",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Online Archive of California：史丹佛大學 Ray Dolby papers 典藏說明",
+      "url": "https://oac.cdlib.org/findaid/ark:/13030/c8pv6t9k/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "IEEE Spectrum：Remembering Ray Dolby（2013，轉載 1988 年專訪）",
+      "url": "https://spectrum.ieee.org/remembering-ray-dolby",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Engineering and Technology History Wiki：Dolby Laboratories",
+      "url": "https://ethw.org/Dolby_Laboratories",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Wikipedia：Dolby Stereo",
+      "url": "https://en.wikipedia.org/wiki/Dolby_Stereo",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Wikipedia：Dolby Laboratories（Dolby Digital／AC-3）",
+      "url": "https://en.wikipedia.org/wiki/Dolby_Laboratories",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Wikipedia：A Clockwork Orange (film)（導演）",
+      "url": "https://en.wikipedia.org/wiki/A_Clockwork_Orange_(film)",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Guinness World Records：First film with Dolby sound",
+      "url": "https://www.guinnessworldrecords.com/world-records/first-film-with-dolby-sound",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "FCC：Fourth Report and Order, MM Docket 87-268（FCC 96-493，1996-12-24）",
+      "url": "https://transition.fcc.gov/Bureaus/Mass_Media/Orders/1996/fcc96493.txt",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Cornell LII：47 CFR §73.682 TV transmission standards",
+      "url": "https://www.law.cornell.edu/cfr/text/47/73.682",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "ATSC：A/52 Digital Audio Compression (AC-3) (E-AC-3) Standard",
+      "url": "https://www.atsc.org/atsc-documents/a522012-digital-audio-compression-ac-3-e-ac-3-standard/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "MediaTek 新聞稿：Pentonic 2000（2021-11-19）",
+      "url": "https://www.mediatek.com/press-room/mediatek-announces-new-pentonic-smart-tv-family-with-new-pentonic-2000-for-flagship-8k-120hz-tvs",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Apple Newsroom：Apple Music announces Spatial Audio and Lossless Audio（2021）",
+      "url": "https://www.apple.com/newsroom/2021/05/apple-music-announces-spatial-audio-and-lossless-audio/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "A Chronology of Dolby Laboratories, May 1965–May 1998（杜比 1998 年自編年表，Film-Tech 存檔）",
+      "url": "https://www.film-tech.com/warehouse/manuals/dolbychronology.pdf",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Google Patents：US3631365A（Signal compressors and expanders）",
+      "url": "https://patents.google.com/patent/US3631365A/en",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Google Patents：GB1120541A（Improvements in noise reduction systems）",
+      "url": "https://patents.google.com/patent/GB1120541A/en",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Cornell LII：47 CFR §15.117 TV broadcast receivers",
+      "url": "https://www.law.cornell.edu/cfr/text/47/15.117",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "assets": [],
+  "pauses": {
+    "line_ms": 0,
+    "scene_ms": 150
+  },
+  "still_motion": "beat"
+}

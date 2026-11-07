@@ -1,0 +1,2216 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s28-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友講這口甕的履歷：開場兩句對著觀眾講、帶一點挑釁；讀本那段帶點好笑；《宋史》《冷齋夜話》的引文一字一字唸；蘇軾「一律不寫」放慢；筆筒那段帶驚訝；收藏家那段平穩不嘲諷；請君入甕的反轉略帶得意；「活人手段」那段放輕；結尾兩頁分清楚，乾脆。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "你從小讀的那口缸",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in a knitted cardigan at a kitchen table holding a thin picture book open toward the viewer with a nostalgic smile, a teacup beside her, soft morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg001",
+          "text": "你小時候一定讀過司馬光砸缸：一個孩子掉進大水缸，他拿石頭把缸砸破。",
+          "emotion": "對觀眾，像聊天"
+        }
+      ]
+    },
+    {
+      "id": "open-tv",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old wooden television set with a dark blank screen on a low cabinet, a small blue-and-white porcelain vase standing beside it, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg002",
+          "text": "二〇一五年，一位收藏家在電視上說它是假的：宋朝燒不出那麼大的缸。",
+          "emotion": "放慢，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-weng",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big round-bellied clay jar with a small mouth standing alone on dry stone flagstones in a quiet courtyard, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg003",
+          "text": "可是你想不到，我們翻到的宋元古書，寫這件事的，沒有一個用「缸」字。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a string of dark wooden prayer beads resting on a closed plain-covered thread-bound book on a low wooden desk, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg004",
+          "text": "目前找到最早的那一筆，還是在司馬光過世三十年上下，才有人寫下來。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "open-1933",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat stack of old folded newspapers tied with string on a wooden stool, the top sheet blank and creamy, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg005",
+          "text": "而「砸缸」這兩個字，據學者查到的，最早可能要等到一九三三年。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small clay jar, one eyebrow raised, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg006",
+          "text": "今天我們就來聊聊：司馬光砸的，真的是缸嗎？那口缸，又是從哪裡來的？",
+          "emotion": "承諾句，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "origin-born",
+      "chapter": "一〇一九年，一個手不離書的孩子",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smooth grey river stone resting on a folded red silk baby blanket on a carved wooden cradle, soft morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg007",
+          "text": "故事要回到北宋。一〇一九年，司馬光出生，父親司馬池在朝廷做官。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "walnut-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single folded sheet of old blank paper resting beside a smooth grey river stone on a plain wooden table, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg008",
+          "text": "他小時候的事，他自己寫過一件。宋朝人邵博說，看過他親筆的帖子："
+        }
+      ]
+    },
+    {
+      "id": "walnut-peel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three round green walnuts in their smooth green husks sitting in a small bamboo basket on a wooden table, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg009",
+          "text": "五六歲時，婢女用熱水替他剝了青胡桃，他卻跟姊姊說：是我自己剝的。",
+          "emotion": "像講故事，輕快"
+        }
+      ]
+    },
+    {
+      "id": "walnut-scold",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a large adult hand in a dark silk sleeve wagging one finger above a peeled walnut on a wooden table, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg010",
+          "text": "父親剛好看見，罵他小孩子怎麼說謊。這件事，先記住，後面會用到。"
+        }
+      ]
+    },
+    {
+      "id": "origin-seven",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smooth grey river stone resting on an open thread-bound book with blank pages on a low wooden desk, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg011",
+          "text": "到了七歲，照後來的記載，他聽人講《左傳》，回家講給家人聽。"
+        }
+      ]
+    },
+    {
+      "id": "origin-books",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall stack of plain thread-bound books on a wooden floor beside a half-eaten bowl of rice gone cold, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg012",
+          "text": "從此他手不離書，讀到連餓了、冷了都忘記。"
+        }
+      ]
+    },
+    {
+      "id": "sci-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a small clay basin and studying it, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg013",
+          "text": "這裡先科普一下：整個故事就卡在兩個字上，缸和甕，到底差在哪裡？",
+          "emotion": "像在聊天"
+        }
+      ]
+    },
+    {
+      "id": "sci-shape",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wide open-mouthed clay basin standing beside a pot-bellied pottery jar with a small mouth on a dry stone floor, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg014",
+          "text": "今天我們說的缸，是敞口的；口小、肚子大的，才叫甕。"
+        }
+      ]
+    },
+    {
+      "id": "sci-pickle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands lifting the wooden lid off a small round-bellied clay pickle jar on a kitchen counter, mild afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg015",
+          "text": "你想一下家裡醃菜的那種罐子，口小、肚子大，那就是甕。",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "sci-shuowen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slender long-necked clay jar standing on a low wooden shelf beside a closed plain thread-bound book, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg016",
+          "text": "那缸呢？東漢的字典《說文解字》，照小徐本和段玉裁的注，",
+          "emotion": "問句"
+        },
+        {
+          "id": "sg017",
+          "text": "缸是一種長頸的陶罐。"
+        }
+      ]
+    },
+    {
+      "id": "origin-official",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smooth grey river stone resting on a folded purple silk court robe on a wooden stand, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg018",
+          "text": "長大以後，司馬光一路做到了宰相。那他的年代，留下過甕的紀錄嗎？"
+        }
+      ]
+    },
+    {
+      "id": "rain-drought",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dry cracked dirt lane between low tiled houses under a pale hazy sky, a few dusty willow branches drooping, pale spring light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg019",
+          "text": "他還在世的熙寧年間，一〇六八到一〇七七年，京城鬧了大旱。"
+        }
+      ]
+    },
+    {
+      "id": "rain-lane",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet stone lane with one big big-bellied earthenware jar full of water set at each doorway, willow sprigs floating on top, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg020",
+          "text": "一本宋人筆記寫著：街巷各放一口大甕，裝水求雨。"
+        }
+      ]
+    },
+    {
+      "id": "rain-lizard",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small green lizard resting on the rim of a big clay jar full of water with floating green leaves, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg021",
+          "text": "後來的《宋史》也記著：熙寧十年夏天大旱，朝廷頒出求雨的法子，",
+          "emotion": "清單，加快"
+        },
+        {
+          "id": "sg022",
+          "text": "把幾十隻蜥蜴放進甕裡。"
+        }
+      ]
+    },
+    {
+      "id": "rain-remember",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big round-bellied clay jar full of water with green willow leaves floating on top, standing at a quiet doorway, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg023",
+          "text": "兩筆都沒寫甕有多大；先記住，那時京城求雨，用的就是甕。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "tongjian-present",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall neat tower of plain thread-bound books on a red lacquered table with a smooth grey river stone set on top, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg024",
+          "text": "一〇八四年，司馬光主編的一部大書進呈給皇帝，叫《資治通鑑》。"
+        }
+      ]
+    },
+    {
+      "id": "tongjian-tang",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain thread-bound book lying beside a big empty clay jar in a stone courtyard, a few fallen leaves on the flagstones, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg025",
+          "text": "書裡記著唐朝六九一年的一件事，比他出生還早三百多年。"
+        }
+      ]
+    },
+    {
+      "id": "tongjian-jar",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hand in a wide red silk sleeve politely gesturing toward a big empty clay jar standing in a stone courtyard, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg026",
+          "text": "一個酷吏出主意，用大甕逼犯人招供；另一個酷吏照做，然後請他自己進去。"
+        }
+      ]
+    },
+    {
+      "id": "tongjian-idiom",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big empty pot-bellied pottery jar standing alone in a quiet stone courtyard beside a closed plain thread-bound book, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg027",
+          "text": "這就是成語「請君入甕」。這口甕，後面會再用到。",
+          "emotion": "帶一點得意"
+        }
+      ]
+    },
+    {
+      "id": "su-friend",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bamboo writing brush lying beside a smooth grey river stone on a stone inkstone on a wooden desk, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg028",
+          "text": "他身邊還有一位老朋友：蘇軾。蘇軾自己說，跟司馬光來往了二十年。"
+        }
+      ]
+    },
+    {
+      "id": "farmer-road",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowd of cheerful farmers in straw hats standing along a dusty country road, waving their arms toward the viewer, mild afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg029",
+          "text": "有一回，百姓攔在路上對他喊：別回洛陽，留下來輔佐天子，救活百姓。",
+          "emotion": "喊出來"
+        }
+      ]
+    },
+    {
+      "id": "farmer-remember",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty dusty country road between green fields with a few straw hats left lying at the roadside, mild afternoon light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg030",
+          "text": "救活百姓。這四個字，我們先記住，故事最後會用到。",
+          "emotion": "前向鉤子，放慢"
+        }
+      ]
+    },
+    {
+      "id": "su-writes",
+      "chapter": "一〇八六年，蘇軾沒寫進去的那一段",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bamboo writing brush resting across a long blank paper scroll unrolled on a low wooden desk, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg031",
+          "text": "一〇八六年，司馬光過世。蘇軾替他寫了一篇，記他一生的長文。"
+        }
+      ]
+    },
+    {
+      "id": "su-seven",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bamboo writing brush lying on an open thread-bound book with blank pages, a smooth grey river stone beside it, mild morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg032",
+          "text": "前面說的那段，七歲聽講《左傳》，就寫在這篇裡。",
+          "emotion": "點名回呼"
+        }
+      ]
+    },
+    {
+      "id": "su-missing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a long blank paper scroll unrolled on a desk, a small clay jar figurine sitting off its edge on the bare wood, a bamboo brush beside it, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg033",
+          "text": "可是砸甕救人那件事，這篇裡沒有；連墓前的碑文也沒有。為什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "su-rule",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bamboo writing brush laid neatly on top of a rolled and tied paper scroll on a wooden desk, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg034",
+          "text": "他在文章最後交代：其餘跟天下治亂安危無關的，一律不寫。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "su-maybe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bamboo writing brush resting on an inkstone beside a small clay jar figurine pushed to the edge of the desk, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg035",
+          "text": "救小孩這種事，他要嘛不知道，要嘛覺得不必寫。"
+        }
+      ]
+    },
+    {
+      "id": "su-clear",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one flat hand with a serious face, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg036",
+          "text": "我要先說清楚：蘇軾沒寫，不能拿來證明這件事沒發生。",
+          "emotion": "認真"
+        }
+      ]
+    },
+    {
+      "id": "you-write",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at a wooden desk holding a pen above a blank notebook, tapping his chin while thinking, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg037",
+          "text": "換成你替一位宰相寫傳，會把他小時候救人的事放進去嗎？",
+          "emotion": "問句，像在聊天"
+        }
+      ]
+    },
+    {
+      "id": "su-me",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shaking her head with a small honest smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg038",
+          "text": "我大概也不會。問題是，在他生前，有沒有別人寫過？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "alive-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long empty wooden bookshelf with only a smooth grey river stone resting on the middle shelf, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg039",
+          "text": "有學者說：司馬光生前，看不到有人提過這個故事。那它第一次出現，是什麼時候？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "monk-arrive",
+      "chapter": "一一二〇年前後，一位和尚寫下第一筆",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a string of dark wooden prayer beads lying on a closed plain thread-bound notebook on a low desk in a quiet temple room, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg040",
+          "text": "時間快轉到一一二〇年前後，北宋末年，一位和尚寫下了它。"
+        }
+      ]
+    },
+    {
+      "id": "monk-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a string of dark wooden prayer beads coiled beside a writing brush and a blank sheet of paper on a low wooden desk, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg041",
+          "text": "他叫惠洪，筆記叫《冷齋夜話》，就是開頭說的，目前找到最早的那一筆。",
+          "emotion": "回收開場"
+        }
+      ]
+    },
+    {
+      "id": "monk-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tilting her head with one finger raised, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg042",
+          "text": "那時司馬光已經過世很久了。最早這一筆，寫的會不會是缸？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "monk-weng",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet courtyard with one big big-bellied earthenware jar standing on dry stone flagstones beside a small tree, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg043",
+          "text": "不是。他寫：院子裡有一口大甕，一個孩子爬上去，掉進甕裡；",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "monk-hole",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big round-bellied clay jar on dry stone flagstones with a small round hole in its side, water spurting out, a grey stone on the ground, pale spring light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg044",
+          "text": "別的孩子都跑了；司馬光拿石頭敲甕，水從破洞裡噴出來，孩子沒事。"
+        }
+      ]
+    },
+    {
+      "id": "monk-age",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small round hole in the side of a big clay jar with a thin stream of water running out onto dry flagstones, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg045",
+          "text": "注意，他寫的是敲出一個洞。那他寫了是幾歲嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "monk-teeth",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smiling little boy holding up one tiny baby tooth between his fingers, a gap in his front teeth, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg046",
+          "text": "沒有。他只說是小時候，換牙的年紀，大概就是你掉第一顆門牙的時候。",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "monk-paintings",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy old market street with several small paper scrolls hung on a string between wooden stalls, each painted with a round jar, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg047",
+          "text": "他還寫了一句：京城和洛陽一帶，有很多孩子打甕的畫。",
+          "emotion": "揭曉，輕輕放"
+        }
+      ]
+    },
+    {
+      "id": "monk-title",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a string of dark wooden prayer beads resting on top of a big pot-bellied pottery jar with a small hole in its side, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg048",
+          "text": "那一條在書裡的標題，叫「活人手段」，救人的本事。"
+        }
+      ]
+    },
+    {
+      "id": "monk-start",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a grey river stone with a small smile, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg049",
+          "text": "這就是目前找得到的起點：一口大甕，一顆石頭，一個破洞。",
+          "emotion": "小結，篤定"
+        }
+      ]
+    },
+    {
+      "id": "critic",
+      "chapter": "南宋到元朝，每一本都寫甕",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain thread-bound notebook with a string of prayer beads on it, a tall stack of books leaning away from it on the desk, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg050",
+          "text": "可是問題來了：宋朝的書目就批評過這本書，說它不太可靠。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "critic-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain thread-bound notebook with a string of dark prayer beads on it, a magnifying glass resting beside, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg051",
+          "text": "這一條，會不會是惠洪自己編的？我們接著往下翻。",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "shao-fan",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain paper folding fan lying half open on a wooden table in a courtyard house, a willow tree outside the doorway, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg052",
+          "text": "一一三二年，邵伯溫在他的《聞見錄》裡，也寫了這件事。"
+        }
+      ]
+    },
+    {
+      "id": "shao-luoyang",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain paper folding fan resting beside a smooth grey river stone on a garden bench in a quiet courtyard, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg053",
+          "text": "邵伯溫住在洛陽，家裡跟司馬光有交情。他的版本是："
+        }
+      ]
+    },
+    {
+      "id": "shao-broken",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big clay jar broken into a few large pieces on dry stone flagstones, a puddle of water spreading around it, a grey stone beside, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg054",
+          "text": "一個孩子掉進大水甕，司馬光拿石頭把甕打破，孩子出來了。"
+        }
+      ]
+    },
+    {
+      "id": "shao-ball",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small leather ball bobbing up out of a deep hole at the foot of a wooden pillar filled with water, soft window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg055",
+          "text": "他還把它跟另一件童年事排在一起：文彥博用水，把掉進洞裡的球灌了出來。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "shao-pair",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small leather ball and a smooth grey river stone sitting side by side on a red silk cushion, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg056",
+          "text": "還說，懂的人那時就看出，這兩個孩子仁智不凡。這個排法，先記住。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "critic-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, giving a thumbs up with a notebook under her arm, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg057",
+          "text": "有學者查過，認為惠洪這一條大致可信，不是他捏造的。",
+          "emotion": "回收"
+        }
+      ]
+    },
+    {
+      "id": "dongdu",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open thread-bound book with blank pages, its next page turned to show a folded official robe laid on top, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg058",
+          "text": "南宋另一部司馬光傳，卻沒有寫：七歲講完《左傳》，下一句就去做官了。"
+        }
+      ]
+    },
+    {
+      "id": "wanhuagu",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand copying with a writing brush onto a blank sheet next to a string of prayer beads on a wide wooden desk, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg059",
+          "text": "可是一一八八年，南宋一部類書抄了惠洪這一條，底下註明出自《冷齋夜話》。"
+        }
+      ]
+    },
+    {
+      "id": "wanhuagu-title",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small paper scroll hung on a wooden wall, painted with a round clay jar and a tiny stone beside it, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg060",
+          "text": "那一條的標題，就叫「擊甕圖」，正是惠洪說的那種畫。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "zijing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands offering a bowl of rice to another pair of hands across a wooden table, mild afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg061",
+          "text": "南宋還有一本修身的書收了這一條，放在「濟人」，也就是幫助別人那一類。"
+        }
+      ]
+    },
+    {
+      "id": "songshi",
+      "chapter": "一三四五年，《宋史》寫下兩個甕",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall wall of wooden shelves packed with plain thread-bound books in a quiet hall, one ladder leaning against it, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg062",
+          "text": "到了元朝，一三四五年，替宋朝修成的正史《宋史》，也寫了這一段："
+        }
+      ]
+    },
+    {
+      "id": "songshi-play",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet stone courtyard with a big big-bellied earthenware jar beside a small tree, a few toy wooden tops left on the dry ground, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg063",
+          "text": "一群孩子在院子裡玩，一個爬上甕，腳一滑，掉進水裡；",
+          "emotion": "一字一字唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "songshi-save",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cracked big clay jar on dry flagstones with water rushing out of the break, a grey stone resting at its foot, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg064",
+          "text": "大家都跑了，司馬光拿石頭打破甕，水湧出來，孩子活了。"
+        }
+      ]
+    },
+    {
+      "id": "songshi-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two identical big round-bellied clay jars standing side by side on dry stone flagstones in a quiet courtyard, pale spring light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg065",
+          "text": "短短一段，出現了兩次「甕」，卻一個「缸」字都沒有。",
+          "emotion": "放慢，像蓋章"
+        }
+      ]
+    },
+    {
+      "id": "songshi-seven-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, glancing sideways with a playful raised eyebrow, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg066",
+          "text": "那你從小聽的「七歲砸缸」呢？還記得他七歲做了什麼嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "songshi-seven",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an open thread-bound book with blank pages, a smooth grey river stone set on the left page and a small clay jar figurine far off on the right, soft window light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg067",
+          "text": "《宋史》裡的七歲，接的是聽講《左傳》；砸甕那一句排在後面，前面沒有寫年份。",
+          "emotion": "回收"
+        }
+      ]
+    },
+    {
+      "id": "songshi-yuefei",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a big pot-bellied pottery jar floating calmly on a wide brown river toward a grassy bank, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg068",
+          "text": "《宋史》還寫過另一口甕：岳飛出生不滿月，黃河決口，",
+          "emotion": "放慢"
+        },
+        {
+          "id": "sg069",
+          "text": "母親抱著他坐進甕裡，漂到岸邊。"
+        }
+      ]
+    },
+    {
+      "id": "songshi-sum",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, resting both hands on a big clay jar beside her, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg070",
+          "text": "從北宋到元朝，我們翻到寫這件事的書，用的全是甕。那它什麼時候變成缸的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "pot-none",
+      "chapter": "十七世紀以後，甕慢慢變成了缸",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, spreading both empty hands with an apologetic shrug, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg071",
+          "text": "惠洪說的那些畫，我們一幅也沒找到；目前看得到最早的圖，是一隻筆筒。",
+          "emotion": "接住上一句"
+        }
+      ]
+    },
+    {
+      "id": "pot-museum",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall blue-and-white porcelain brush pot standing alone on a pale stone plinth in a quiet museum gallery, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg072",
+          "text": "十七世紀景德鎮燒的青花瓷，現在收在美國的克里夫蘭藝術博物館。"
+        }
+      ]
+    },
+    {
+      "id": "pot-basin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the side of a blue-and-white porcelain brush pot painted with a wide open basin decorated with flowers, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg073",
+          "text": "那口容器，在筆筒上畫成了一口寬口、外面有花紋的大盆。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "pot-kids",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a blue-and-white porcelain brush pot painted with one tiny blue figure raising both arms by a wide basin and several tiny blue figures running off, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg074",
+          "text": "一個孩子在盆邊高舉著手，旁邊三四個孩子跑開。"
+        }
+      ]
+    },
+    {
+      "id": "pot-stare",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning close to a blue-and-white brush pot, wide eyed, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg075",
+          "text": "宋朝人寫的甕，到了瓷器上，口變寬了。可是那個字，又是什麼時候換的？",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "textbook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small stack of old cloth-covered school readers with plain covers on a wooden classroom desk beside an inkwell, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg076",
+          "text": "再往後，有學者翻過清末民國的小學國文課本，發現從那時候起，用缸取代了甕。"
+        }
+      ]
+    },
+    {
+      "id": "textbook-names",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wide open-mouthed clay basin on a classroom desk with a small wooden mallet resting against it, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg077",
+          "text": "課本裡的叫法有擊缸、有敲水缸，就是還沒有「砸」這個字。"
+        }
+      ]
+    },
+    {
+      "id": "reader",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young schoolteacher in a long dark cotton gown holding a small closed plain cloth-bound book against his chest with a warm smile, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg078",
+          "text": "一九二〇年代，上海出了一本小學生課外讀物，",
+          "emotion": "沉穩"
+        },
+        {
+          "id": "sg079",
+          "text": "裡面有一節，叫〈司馬光破缸救人〉。"
+        }
+      ]
+    },
+    {
+      "id": "reader-story",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wide open-mouthed clay vat on dry flagstones with water pouring out of a crack in its side, a grey stone beside it, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg080",
+          "text": "書裡一個孩子掉進水缸；司馬光拿石頭往缸上亂碰，水流出來了。",
+          "emotion": "輕快，像在念故事書"
+        }
+      ]
+    },
+    {
+      "id": "reader-tall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, stretching one arm high above her head, laughing, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg081",
+          "text": "更怪的是，書上說：這水缸真大，足有五六尺高。我讀到這裡，真的笑出來。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "reader-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a young schoolteacher in a long dark cotton gown beside a wooden desk, one finger raised with a playful grin, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg082",
+          "text": "書裡還問：聰明的司馬光，怎麼不愛惜這缸呢？",
+          "emotion": "問句，俏皮"
+        }
+      ]
+    },
+    {
+      "id": "reader-before",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed plain cloth-bound school book lying on a wooden desk with a small leather ball resting on its cover, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg083",
+          "text": "你猜這本書的前一節，寫的是什麼？還記得邵伯溫的那個排法嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "reader-ball",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small leather ball floating up out of a deep hole in the roots of an old tree filled with water, soft morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg084",
+          "text": "正是文彥博灌球；連球掉進「樹洞」這個細節，都跟南宋的類書一樣。",
+          "emotion": "揭曉，回收"
+        }
+      ]
+    },
+    {
+      "id": "reader-swap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wide open-mouthed clay vat and a small leather ball side by side on a wooden school desk, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg085",
+          "text": "它照著宋朝人的排法寫，卻把甕換成了缸；這是我們打開過最早的一筆缸。",
+          "emotion": "像蓋章"
+        }
+      ]
+    },
+    {
+      "id": "ad-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wide open-mouthed clay vat beside a folded blank newspaper on a wooden bench in an old shop, soft morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg086",
+          "text": "那「砸缸」這兩個字，又是到什麼時候，才出現的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ad-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful newspaper seller in a flat cloth hat holding up a folded blank newspaper on a busy old street corner, mild afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg087",
+          "text": "據學者文章，目前找到最早的，可能是一九三三年《申報》上的一則廣告。",
+          "emotion": "回收開場"
+        }
+      ]
+    },
+    {
+      "id": "ad-cards",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat fan of small blank picture cards spread on a wooden shop counter beside a wide clay vat figurine, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg088",
+          "text": "賣的是一套兒童模範故事圖，第十三種，叫《司馬砸缸》。"
+        }
+      ]
+    },
+    {
+      "id": "ad-fixed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wide open-mouthed clay vat sitting in the middle of an empty wooden stage, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg089",
+          "text": "那位學者推測，大概從那以後，這個名字就定了。然後，有人拿這口缸，回頭質疑整個故事。",
+          "emotion": "斷在這裡"
+        }
+      ]
+    },
+    {
+      "id": "tv-back",
+      "chapter": "二〇一五年，質疑的缸碰上宋朝的甕",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old wooden television set with a dark blank screen on a low cabinet in an empty living room, soft overcast light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg090",
+          "text": "還記得開頭那位收藏家嗎？他那句宋朝燒不出那麼大的缸，站得住嗎？",
+          "emotion": "問句，平穩不嘲諷"
+        }
+      ]
+    },
+    {
+      "id": "tv-reply",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, comparing a small clay jar and a small wide basin, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg091",
+          "text": "有學者回應：拿後來的「缸」，去質疑原文的「甕」，本來就對不上。",
+          "emotion": "放慢，回收開場"
+        }
+      ]
+    },
+    {
+      "id": "rain-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet stone lane lined with big big-bellied earthenware jars full of water at every doorway, soft morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg092",
+          "text": "那宋朝，真的有大甕嗎？還記得熙寧年間，京城街巷那一口口求雨的甕嗎？",
+          "emotion": "問句，回收"
+        }
+      ]
+    },
+    {
+      "id": "rain-size",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a big round-bellied clay jar full of water with a small green lizard on its rim and willow leaves floating, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg093",
+          "text": "那時京城求雨，用的就是甕；只是兩筆都沒寫甕有多大。"
+        }
+      ]
+    },
+    {
+      "id": "tongjian-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall tower of plain thread-bound books on a red lacquered table with a smooth grey river stone set on top, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg094",
+          "text": "裝得下一個大人的甕呢？還記得司馬光自己主編的那部書嗎？",
+          "emotion": "問句，回收"
+        }
+      ]
+    },
+    {
+      "id": "tongjian-big",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hand in a wide red silk sleeve holding open the wooden lid of a huge empty clay jar in a stone courtyard, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg095",
+          "text": "《資治通鑑》裡的請君入甕：那口甕，大到可以請一個人自己進去。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger with a thoughtful half smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg096",
+          "text": "再加上《宋史》岳飛坐甕的出生傳說；在宋朝人眼裡，裝得下大人的甕，我們覺得並不稀奇。",
+          "emotion": "像說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "you-reply",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a sofa happily handing a thick closed plain-covered book to a friend beside her, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg097",
+          "text": "所以你下次聽到「宋朝沒有大甕」，可以請對方翻翻司馬光自己編的書。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "height",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very tall wooden ladder leaning against a small pot-bellied pottery jar on dry flagstones in a courtyard, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg098",
+          "text": "至於五六尺高？我們翻到的宋元原文，沒有一筆寫過甕有多高。",
+          "emotion": "親近，回收"
+        }
+      ]
+    },
+    {
+      "id": "reader-callback",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, one finger raised with a playful look, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg099",
+          "text": "還記得那本讀物的問題嗎？聰明的司馬光，怎麼不愛惜這缸呢？",
+          "emotion": "親近，略上揚"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smooth grey river stone resting at the foot of a big big-bellied earthenware jar with a small hole on dry flagstones, pale spring light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg100",
+          "text": "答案是：因為照紀錄，他砸的從來就不是缸，是甕。",
+          "emotion": "俏皮，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "today",
+      "chapter": "他真的救過那個孩子嗎",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a modern school reader with a plain blue cover lying on a child's desk beside a small round-bellied clay jar figurine, soft morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg101",
+          "text": "故事還沒結束：今天大陸三年級的文言課文又用「瓮」，只是口語裡，大家還是說砸缸。"
+        }
+      ]
+    },
+    {
+      "id": "last-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a grey river stone up to eye level, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg102",
+          "text": "可是，最後一個問題：他小時候，真的救過一個孩子嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "last-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet archive room with long rows of closed boxes on wooden shelves and one empty table in the middle, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg103",
+          "text": "紀錄裡找不到這個答案；找得到的，是宋朝人怎麼看這件事。"
+        }
+      ]
+    },
+    {
+      "id": "last-title",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a string of dark wooden prayer beads draped over a smooth grey river stone on a low wooden desk, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg104",
+          "text": "還記得惠洪那一條叫「活人手段」，南宋又把它放進「濟人」嗎？",
+          "emotion": "回收"
+        }
+      ]
+    },
+    {
+      "id": "last-ren",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, one hand over her heart with a gentle smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg105",
+          "text": "宋朝人讀這個故事，讀的是仁，不只是聰明。那它跟司馬光的名聲有關係嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "last-four",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowd of cheerful farmers in straw hats along a dusty country road, raising their arms and calling out, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg106",
+          "text": "還記得百姓攔路喊的那四個字嗎？救活百姓。",
+          "emotion": "親近，回收"
+        }
+      ]
+    },
+    {
+      "id": "last-scholar",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a closed notebook, looking up thoughtfully, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg107",
+          "text": "有學者認為：救人的故事在他死後才傳開，跟這名聲不是巧合。"
+        }
+      ]
+    },
+    {
+      "id": "last-walnut",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a peeled pale walnut and a smooth grey river stone on one side of a wooden table and a big clay jar figurine on the other, soft window light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg108",
+          "text": "還記得他親筆留下的童年嗎？他自己寫的，是一次說謊；別人替他傳的，是一次救人。",
+          "emotion": "回收"
+        }
+      ]
+    },
+    {
+      "id": "last-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, spreading both empty hands with an honest little shrug, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg109",
+          "text": "至於那件事到底有沒有發生，那位學者說：已經沒辦法知道。這一句，我讀了兩遍。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "rewind-vat",
+      "chapter": "一頁存檔，一頁未結",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wide open-mouthed clay vat standing on a wooden classroom floor beside a small closed school reader, soft morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg110",
+          "text": "所以倒回來看：你小時候讀的那口缸，是清末民國的課本換上去的；",
+          "emotion": "收束，放慢"
+        }
+      ]
+    },
+    {
+      "id": "rewind-pot",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall blue-and-white porcelain brush pot standing beside a big pot-bellied pottery jar on a pale wooden table, soft morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "sg111",
+          "text": "再往前，是一隻筆筒上的大盆；再往前，是宋朝人寫的一口甕。"
+        }
+      ]
+    },
+    {
+      "id": "theme",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, cupping a grey river stone in both hands, smiling, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg112",
+          "text": "我覺得，一個故事傳久了，容器會換、名字會換；不變的，是宋朝人讀到的那個仁字。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, stamping a blank manila folder, looking pleased, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg113",
+          "text": "所以這份檔案，一頁存檔：砸的是甕；一頁未結：那件事本身。",
+          "emotion": "收尾，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "close-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in a knitted cardigan at a kitchen table closing a thin picture book and smiling at the viewer, a teacup beside her, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sg114",
+          "text": "你小時候聽到的版本，是缸、是甕，還是別的東西？留言告訴我。",
+          "emotion": "問句上揚，像在聊天"
+        }
+      ]
+    },
+    {
+      "id": "close-sub",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, waving goodbye with one hand and a bright smile, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg115",
+          "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "sg002",
+      "payoff": "sg090",
+      "what": "收藏家說宋朝燒不出大缸，站不站得住"
+    },
+    {
+      "setup": "sg003",
+      "payoff": "sg065",
+      "what": "宋元古書寫這件事，用的是哪個字"
+    },
+    {
+      "setup": "sg004",
+      "payoff": "sg041",
+      "what": "最早那一筆是誰寫的"
+    },
+    {
+      "setup": "sg005",
+      "payoff": "sg087",
+      "what": "「砸缸」兩個字從哪裡來"
+    },
+    {
+      "setup": "sg006",
+      "payoff": "sg100",
+      "what": "司馬光砸的真的是缸嗎"
+    },
+    {
+      "setup": "sg010",
+      "payoff": "sg108",
+      "what": "他親筆寫的童年是一次說謊"
+    },
+    {
+      "setup": "sg016",
+      "payoff": "sg017",
+      "what": "缸本來是什麼樣子"
+    },
+    {
+      "setup": "sg023",
+      "payoff": "sg092",
+      "what": "京城求雨用的甕"
+    },
+    {
+      "setup": "sg027",
+      "payoff": "sg094",
+      "what": "請君入甕那口甕"
+    },
+    {
+      "setup": "sg030",
+      "payoff": "sg106",
+      "what": "救活百姓"
+    },
+    {
+      "setup": "sg033",
+      "payoff": "sg034",
+      "what": "蘇軾為什麼沒寫"
+    },
+    {
+      "setup": "sg038",
+      "payoff": "sg039",
+      "what": "生前有沒有人寫過"
+    },
+    {
+      "setup": "sg039",
+      "payoff": "sg040",
+      "what": "第一次出現是什麼時候"
+    },
+    {
+      "setup": "sg042",
+      "payoff": "sg043",
+      "what": "最早一筆的字"
+    },
+    {
+      "setup": "sg045",
+      "payoff": "sg046",
+      "what": "惠洪寫了幾歲"
+    },
+    {
+      "setup": "sg048",
+      "payoff": "sg104",
+      "what": "活人手段"
+    },
+    {
+      "setup": "sg061",
+      "payoff": "sg104",
+      "what": "濟人"
+    },
+    {
+      "setup": "sg051",
+      "payoff": "sg057",
+      "what": "惠洪這一條可靠嗎"
+    },
+    {
+      "setup": "sg056",
+      "payoff": "sg083",
+      "what": "擊甕跟灌球排在一起"
+    },
+    {
+      "setup": "sg066",
+      "payoff": "sg067",
+      "what": "七歲那句接的是什麼"
+    },
+    {
+      "setup": "sg068",
+      "payoff": "sg096",
+      "what": "岳飛坐的那口甕"
+    },
+    {
+      "setup": "sg070",
+      "payoff": "sg076",
+      "what": "甕什麼時候變成缸"
+    },
+    {
+      "setup": "sg081",
+      "payoff": "sg098",
+      "what": "五六尺高"
+    },
+    {
+      "setup": "sg082",
+      "payoff": "sg099",
+      "what": "讀本的問題"
+    },
+    {
+      "setup": "sg083",
+      "payoff": "sg084",
+      "what": "讀本的前一節"
+    },
+    {
+      "setup": "sg086",
+      "payoff": "sg087",
+      "what": "「砸缸」兩個字何時出現"
+    },
+    {
+      "setup": "sg090",
+      "payoff": "sg091",
+      "what": "質疑站不站得住"
+    },
+    {
+      "setup": "sg102",
+      "payoff": "sg109",
+      "what": "他真的救過人嗎"
+    },
+    {
+      "setup": "sg105",
+      "payoff": "sg107",
+      "what": "故事跟名聲的關係"
+    }
+  ],
+  "youtube": {
+    "title": "司馬光砸的不是缸？最早那一筆，寫在他死後 30 年｜奇聞檔案局",
+    "description": "一本 1920 年代的兒童課外讀物說，司馬光打破的水缸「足有五六尺髙」；2015 年一位收藏家在電視上質疑宋代燒不出那麼大的缸。這一集把這口容器的履歷倒著翻：1345 年的《宋史》寫的是「甕」；1132 年邵伯溫《聞見錄》寫「破其瓮」；目前找到最早的一筆是北宋末年惠洪的《冷齋夜話》；替司馬光寫行狀的蘇軾說小事「皆不載」。《說文解字》（小徐本）與段注裡，缸是長頸的陶罐；十七世紀景德鎮青花筆筒把甕畫成大盆；清末民國的課本開始以缸代甕，最早寫「砸缸」的可能是 1933 年《申報》的廣告。宋人筆記與《宋史》禮志記著熙寧年間京城求雨用甕，「請君入甕」記在司馬光自己主編的《資治通鑑》裡。砸的是甕，存檔；事情本身有沒有發生，未結。\n\n引文依殆知閣與維基文庫；學者研究依中華書局的轉載；2015 年的節目依澎湃新聞報導，只轉述、不引原話；「我們覺得」「我覺得」是本頻道的看法。\n\n本集插圖由 AI 生成；歷史人物不入畫，用物件代表。\n\n資料截至 2026-10-20（2026-10-25 照新規則重寫）",
+    "tags": [
+      "司馬光",
+      "司馬光砸缸",
+      "甕",
+      "宋史",
+      "冷齋夜話",
+      "惠洪",
+      "蘇軾",
+      "請君入甕",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "缸？\n**原文是甕**",
+      "tag": "歷史名場面",
+      "sub": "宋朝人寫的全是甕",
+      "shot": "open-promise"
+    }
+  },
+  "sources": [
+    {
+      "title": "殆知閣古代文獻 v2.0：宋史（卷 336 司馬光傳、禮志五、全書「缸」）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E5%AE%8B%E5%8F%B2.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：宋史／卷336（司馬光傳）",
+      "url": "https://zh.wikisource.org/wiki/%E5%AE%8B%E5%8F%B2/%E5%8D%B7336",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：冷齋夜話（宋 釋惠洪，卷三〈活人手段〉）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%AD%90%E8%97%8F/%E7%AC%94%E8%AE%B0/%E5%86%B7%E6%96%8B%E5%A4%9C%E8%AF%9D.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：冷齋夜話／卷三",
+      "url": "https://zh.wikisource.org/wiki/%E5%86%B7%E9%BD%8B%E5%A4%9C%E8%A9%B1/%E5%8D%B7%E4%B8%89",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：聞見錄（宋 邵伯溫，卷九）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%AD%90%E8%97%8F/%E7%AC%94%E8%AE%B0/%E9%97%BB%E8%A7%81%E5%BD%95.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：蘇軾〈司馬溫公行狀〉",
+      "url": "https://zh.wikisource.org/wiki/%E5%8F%B8%E9%A6%AC%E6%BA%AB%E5%85%AC%E8%A1%8C%E7%8B%80",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：蘇軾〈司馬溫公神道碑〉",
+      "url": "https://zh.wikisource.org/wiki/%E5%8F%B8%E9%A6%AC%E6%BA%AB%E5%85%AC%E7%A5%9E%E9%81%93%E7%A2%91",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：東都事略（宋 王稱，卷八十七上 司馬光傳）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E5%88%AB%E5%8F%B2/%E4%B8%9C%E9%83%BD%E4%BA%8B%E7%95%A5.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：說文解字注（段玉裁，缶部 缸、瓦部 瓨）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%84%92%E8%97%8F/%E5%B0%8F%E5%AD%A6/%E8%AF%B4%E6%96%87%E8%A7%A3%E5%AD%97%E6%B3%A8.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：說文解字繫傳（小徐本，缸）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%84%92%E8%97%8F/%E5%B0%8F%E5%AD%A6/%E8%AF%B4%E6%96%87%E8%A7%A3%E5%AD%97%E7%B3%BB%E4%BC%A0.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：墨客揮犀（卷三 熙寧求雨）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%AD%90%E8%97%8F/%E7%AC%94%E8%AE%B0/%E5%A2%A8%E5%AE%A2%E6%8C%A5%E7%8A%80.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：資治通鑑（卷二百四 天授二年）",
+      "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E7%BC%96%E5%B9%B4/%E8%B5%84%E6%B2%BB%E9%80%9A%E9%89%B4.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "克里夫蘭藝術博物館 1964.179〈Brush Pot with Episode from Life on Sima Guang〉（CC0）",
+      "url": "https://clevelandart.org/art/1964.179",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Project Gutenberg #67976《故事新讀本：第一冊》（上海大東書局；書目作 1926）",
+      "url": "https://www.gutenberg.org/ebooks/67976",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "中華書局（澎湃號）〈「司馬光砸缸」可能是虛構？萬字長文捋清歷史經過〉，2025-04-08（學者文章轉載，二手）",
+      "url": "https://m.thepaper.cn/newsDetail_forward_30593917",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "澎湃新聞 2015-08-30 對該電視節目的報導（二手）",
+      "url": "https://www.thepaper.cn/newsDetail_forward_1369905",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "中文維基百科〈宋史〉（成書年，二手）",
+      "url": "https://zh.wikipedia.org/wiki/%E5%AE%8B%E5%8F%B2",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "中文維基百科〈冷齋夜話〉（成書年與惠洪生卒，二手）",
+      "url": "https://zh.wikipedia.org/wiki/%E5%86%B7%E9%BD%8B%E5%A4%9C%E8%A9%B1",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": []
+}

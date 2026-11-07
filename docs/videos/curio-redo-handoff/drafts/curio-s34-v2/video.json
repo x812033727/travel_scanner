@@ -1,0 +1,2438 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s34-v2",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友講這份檔案：開場像念舊剪報，兩句對觀眾講；夢到冰塊、偷渡少年、「坐」上象島帶笑；船沉那幾句放慢壓低；小艇那章越講越緊，「抓緊」要急；「我的名字，是薛克頓」一字一字；羅斯海一句低沉帶過；「還記得」親近略上揚；「我讀到這裡」是自己的話，放鬆一點；結尾乾脆，「存檔」落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "e001",
+      "payoff": "e125",
+      "what": "人人會背的那則廣告"
+    },
+    {
+      "setup": "e003",
+      "payoff": "e113",
+      "what": "困在冰裡的快兩年到底多久"
+    },
+    {
+      "setup": "e004",
+      "payoff": "e125",
+      "what": "流傳的文字不只一個版本：原件在哪裡"
+    },
+    {
+      "setup": "e005",
+      "payoff": "e019",
+      "what": "薛克頓的書裡沒有廣告，那人是怎麼來的"
+    },
+    {
+      "setup": "e006",
+      "payoff": "e080",
+      "what": "只靠太陽指路"
+    },
+    {
+      "setup": "e007",
+      "payoff": "e117",
+      "what": "開破冰船回去找它"
+    },
+    {
+      "setup": "e008",
+      "payoff": "e125",
+      "what": "那則廣告到底在哪裡"
+    },
+    {
+      "setup": "e009",
+      "payoff": "e112",
+      "what": "這一船人回來了幾個"
+    },
+    {
+      "setup": "e012",
+      "payoff": "e013",
+      "what": "從五千封信裡挑誰"
+    },
+    {
+      "setup": "e016",
+      "payoff": "e030",
+      "what": "塞滿冰塊的夢有多準"
+    },
+    {
+      "setup": "e020",
+      "payoff": "e021",
+      "what": "求工作的年輕人會不會被收"
+    },
+    {
+      "setup": "e024",
+      "payoff": "e025",
+      "what": "薛克頓收不收偷渡的少年"
+    },
+    {
+      "setup": "e028",
+      "payoff": "e061",
+      "what": "下一次踩到陸地是什麼時候"
+    },
+    {
+      "setup": "e031",
+      "payoff": "e032",
+      "what": "船會被卡多久"
+    },
+    {
+      "setup": "e036",
+      "payoff": "e037",
+      "what": "冰上轉把手的人在做什麼"
+    },
+    {
+      "setup": "e046",
+      "payoff": "e049",
+      "what": "船還會撐多久"
+    },
+    {
+      "setup": "e051",
+      "payoff": "e121",
+      "what": "沃斯利記下的沉船位置"
+    },
+    {
+      "setup": "e054",
+      "payoff": "e056",
+      "what": "走得到寶萊島嗎"
+    },
+    {
+      "setup": "e062",
+      "payoff": "e064",
+      "what": "誰先上象島"
+    },
+    {
+      "setup": "e069",
+      "payoff": "e071",
+      "what": "下一步怎麼做"
+    },
+    {
+      "setup": "e085",
+      "payoff": "e086",
+      "what": "巨浪撐得過去嗎"
+    },
+    {
+      "setup": "e092",
+      "payoff": "e095",
+      "what": "沒人走過的山翻得過去嗎"
+    },
+    {
+      "setup": "e105",
+      "payoff": "e110",
+      "what": "島上的人撐得到嗎"
+    },
+    {
+      "setup": "e107",
+      "payoff": "e108",
+      "what": "冰會讓開嗎"
+    },
+    {
+      "setup": "e114",
+      "payoff": "e115",
+      "what": "另一隊呢"
+    },
+    {
+      "setup": "e116",
+      "payoff": "e117",
+      "what": "沉船還找得到嗎"
+    },
+    {
+      "setup": "e120",
+      "payoff": "e121",
+      "what": "位置準不準"
+    }
+  ],
+  "youtube": {
+    "title": "薛克頓的船困冰281天，28人憑什麼全部活著回來？｜奇聞檔案局",
+    "description": "「徵求男子，參加危險的旅程。工資很少，危險不斷。」據說這是薛克頓招人的廣告，可是到今天沒有人找到過原件，一般被當成傳說；薛克頓自己的書裡只寫了「宣布探險後收到將近五千封申請信」，船長沃斯利是夢見倫敦街上塞滿冰塊、又看到門柱上的牌子才走進去的。這一集只講紀錄裡找得到的：一九一四年十二月五日起錨；一九一五年一月十九日在威德爾海被冰圍住，困了兩百八十一天、漂了一千多公里，十月底被擠碎、十一月二十一日沉沒；二十八個人在浮冰上過了五個多月，再坐小艇不到一個星期上了象島；薛克頓帶五個人坐凱爾德號航行約一千三百公里（他寫八百英里），沃斯利整趟只量到四次太陽；三個人連走三十六小時翻過南喬治亞島；第四次救援，一九一六年八月三十日，島上的人全部上船。最後是二〇二二年三月五日，在三千零八公尺深的海底找到的沉船。\n\n「全部活著回來」說的是堅忍號這一隊的二十八個人；同一次探險在羅斯海的另一隊，有三個人沒有回來。距離照薛克頓自己寫的經緯度換算（他的 miles 是海里）。「象島第一次有人登陸」「沒有人往南喬治亞島內陸走超過一英里」是薛克頓在書裡的說法，那次翻山今天說成「第一次有紀錄的橫越」。獲救時懷爾德的回答，薛克頓記成「We are all well, boss」，隊員日記記成「All safe, all well」，兩種都照錄。每個引文、年份與數字的出處列在下方參考資料；只靠維基百科的幾項（不見陸地的一年四個多月、玻璃底片一百二十張、沉船離紀錄位置約十公里、船原名北極星號）是二手。「我們覺得」的句子是本頻道的看法。\n\n本集插圖由 AI 生成；歷史人物不入畫，用物件代表；現代研究者不入畫。\n\n資料截至 2026-10-19（2026-10-25 照新規則重寫，2026-11-06 照十步結構重排）",
+    "tags": [
+      "薛克頓",
+      "堅忍號",
+      "南極探險",
+      "象島",
+      "南喬治亞島",
+      "凱爾德號",
+      "威德爾海",
+      "求生",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**28人**\n一個沒少",
+      "tag": "歷史名場面",
+      "sub": "困在南極634天，憑什麼",
+      "shot": "caird-wave"
+    }
+  },
+  "sources": [
+    {
+      "title": "Ernest Shackleton, South: The Story of Shackleton's Last Expedition, 1914–1917 (London 1919)，Project Gutenberg #5199",
+      "url": "https://www.gutenberg.org/ebooks/5199",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Frank A. Worsley, Endurance: An Epic of Polar Adventure (London 1931)，archive.org OCR 全文",
+      "url": "https://archive.org/details/enduranceepicofp00wors_0",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "Jonathan Amos, \"Endurance: Shackleton's lost ship is found in Antarctic\", BBC News, 2022-03-09",
+      "url": "https://www.bbc.com/news/science-environment-60662541",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Imperial Trans-Antarctic Expedition（廣告的查證、兩隊各二十八人、玻璃底片；二手）",
+      "url": "https://en.wikipedia.org/wiki/Imperial_Trans-Antarctic_Expedition",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Endurance (1912 ship)（2022 年的發現、沃斯利的紀錄、原名 Polaris、Watkins 的廣告書；二手）",
+      "url": "https://en.wikipedia.org/wiki/Endurance_(1912_ship)",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Ernest Shackleton（497 天不見陸地；二手）",
+      "url": "https://en.wikipedia.org/wiki/Ernest_Shackleton",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Voyage of the James Caird（約一千三百公里、第一次有紀錄的橫越；二手）",
+      "url": "https://en.wikipedia.org/wiki/Voyage_of_the_James_Caird",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Perce Blackborow（偷渡者的年齡；二手）",
+      "url": "https://en.wikipedia.org/wiki/Perce_Blackborow",
+      "checked_on": "2026-10-19"
+    },
+    {
+      "title": "英文維基百科 Frank Hurley（玻璃底片一百二十張；二手）",
+      "url": "https://en.wikipedia.org/wiki/Frank_Hurley",
+      "checked_on": "2026-10-19"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "open-ad",
+      "chapter": "一則人人會背的廣告",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt at a kitchen table reading a blank yellowed paper clipping with a big grin, a mug of coffee beside him, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e001",
+          "text": "你一定聽過這則廣告：徵求男子，參加危險旅程，工資很少，危險不斷。",
+          "emotion": "對觀眾，像念一張人人會背的舊剪報"
+        }
+      ]
+    },
+    {
+      "id": "open-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the grey knitted wool hat resting on a wooden desk beside a blank yellowed sheet of paper and a fountain pen, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e002",
+          "text": "據說，這是一百多年前，探險家薛克頓招人去南極時登的。"
+        }
+      ]
+    },
+    {
+      "id": "open-stakes",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden three-masted ship stuck fast in a vast field of white pack ice under a pale grey sky, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e003",
+          "text": "靠它招到的二十八個人，後來困在南極的冰裡，快兩年。",
+          "emotion": "放慢，利害"
+        }
+      ]
+    },
+    {
+      "id": "open-versions",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, comparing two blank yellowed paper sheets, one eyebrow raised, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e004",
+          "text": "可是你想不到，這則廣告流傳的文字，不只一個版本。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick plain-covered book lying open on blank white pages, the grey knitted wool hat beside it on a wooden desk, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e005",
+          "text": "更怪的是，薛克頓自己寫的那本書裡，根本沒提到這則廣告。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "open-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small open wooden boat with one patched sail riding a heavy slate sea under low clouds, a pale sun half hidden, pale morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e006",
+          "text": "後來船被冰擠碎，六個人坐一條小木船出海找人，只靠太陽指路。",
+          "emotion": "預告，收著"
+        }
+      ]
+    },
+    {
+      "id": "open-deep",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large red icebreaker ship standing still in white pack ice, a crane at its stern lowering a boxy yellow underwater vehicle, pale morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e007",
+          "text": "而一個世紀以後，還有人開破冰船，回到那片海去找它。",
+          "emotion": "停在這裡，不揭曉"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning toward the viewer with a curious smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e008",
+          "text": "今天我們就來聊聊：那則人人會背的廣告，到底在哪裡？",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a thick plain-covered logbook, serious, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e009",
+          "text": "還有，困在冰裡的這一船人，最後回來了幾個？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "origin-london",
+      "chapter": "一九一四年，倫敦一扇門上的牌子",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey knitted wool hat hanging on a wooden coat stand beside a tall window looking out on steel-blue London rooftops, hazy cold light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e010",
+          "text": "故事要回到一九一四年初的倫敦。薛克頓宣布，要組一支探險隊去南極。",
+          "emotion": "進場景"
+        }
+      ]
+    },
+    {
+      "id": "origin-letters",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mountain of plain sealed envelopes heaped on a wooden office desk, the grey knitted wool hat perched on top of the pile, soft window light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e011",
+          "text": "他自己寫：宣布以後，收到了將近五千封申請信。"
+        }
+      ]
+    },
+    {
+      "id": "origin-pick-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman sitting on a wooden floor surrounded by heaps of plain sealed envelopes, holding one up and biting her lip, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e012",
+          "text": "換成你是他，從五千封信裡挑人，你會挑誰？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "origin-teams",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two identical small wooden sailing ships moored side by side at a stone quay on calm pewter water, light from a low cloudy sky",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e013",
+          "text": "他挑了五十六個人，分成人數一樣的兩隊；其中一隊的船，叫堅忍號。"
+        }
+      ]
+    },
+    {
+      "id": "origin-worsley",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass sextant resting on a sunny windowsill beside a coil of rope and a folded wool scarf, light from a tall window",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e014",
+          "text": "其中有一個人是怎麼來的，他自己寫了下來。他叫沃斯利，是一個船長。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "origin-dream",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a toy wooden sailboat floating between big white ice blocks that fill a cobbled city street between brick houses, thin cold sunshine",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e015",
+          "text": "那年他做了一個夢：倫敦一條街塞滿冰塊，他在中間開船。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "origin-dream-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, grinning at a small ice cube between two fingers, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e016",
+          "text": "這個夢有多準？等一下你就知道了。",
+          "emotion": "自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "origin-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain dark green wooden door with a blank polished brass plate on its frame, on a quiet city pavement, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e017",
+          "text": "後來他走在街上，看到一扇門的門柱上掛著牌子：帝國橫越南極探險隊。"
+        }
+      ]
+    },
+    {
+      "id": "origin-engaged",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the grey knitted wool hat and a brass sextant side by side on a polished wooden table in a bright office, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e018",
+          "text": "他走進去，見到薛克頓；薛克頓對他說：你錄取了。",
+          "emotion": "最後四個字乾脆"
+        }
+      ]
+    },
+    {
+      "id": "origin-no-ad",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, tapping a blank yellowed paper sheet, knowing look, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e019",
+          "text": "你注意到了嗎？他不是看廣告來的，是一個夢，加上一塊牌子。",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "origin-quay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a pair of small worn brown boots standing alone on a sunny harbour quay beside the tall wooden hull of a ship, soft diffuse light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e020",
+          "text": "船開到布宜諾斯艾利斯，一個年輕人跑來求工作。他們會收嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "origin-refused",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass sextant on a ship's wooden railing, a pair of small worn brown boots left at the foot of a gangplank on the quay below, bright cold sunshine",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e021",
+          "text": "沃斯利寫：他們回絕了他。人已經夠了，而且他太年輕。"
+        }
+      ]
+    },
+    {
+      "id": "origin-stowaway",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a pair of small worn brown boots stepping out from behind a stack of plain grey wooden crates in a ship's hold, soft daylight from an open hatch",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e022",
+          "text": "結果出海以後，他自己從躲藏的地方走了出來。",
+          "emotion": "帶一點不可思議"
+        }
+      ]
+    },
+    {
+      "id": "origin-plead",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass sextant, a pair of small worn brown boots and the grey knitted wool hat together on a wooden ship's table in a small cabin, soft porthole light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e023",
+          "text": "沃斯利把他帶去見薛克頓，還替他說話，建議收下。"
+        }
+      ]
+    },
+    {
+      "id": "origin-plead-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, laughing with one hand on her hip and the other palm up, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e024",
+          "text": "剛把人趕走的，現在替他說話。那薛克頓呢？",
+          "emotion": "自己的反應，帶笑，問句"
+        }
+      ]
+    },
+    {
+      "id": "origin-youngest",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a pair of small worn brown boots placed neatly at the end of a row of big worn sea boots on a wooden ship deck, even pale light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e025",
+          "text": "收下了。他叫布雷克伯勒，十八、九歲，成了船上最年輕的水手。"
+        }
+      ]
+    },
+    {
+      "id": "origin-anchor",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a heavy iron anchor rising out of grey harbour water on a dripping chain beside a wooden hull, pale morning light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e026",
+          "text": "那年十二月五日早上，堅忍號從南喬治亞島起錨。"
+        }
+      ]
+    },
+    {
+      "id": "origin-last-link",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick frayed rope parting in two above slate water, the two ends drifting apart, soft overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e027",
+          "text": "薛克頓寫：起錨機的聲音，切斷了他們跟文明的最後一條聯繫。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "origin-horizon",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden three-masted ship sailing away toward an empty steel-blue horizon, small white ice floes on the water, pale morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e028",
+          "text": "下一次踩到陸地，會是什麼時候？先記住這個問題。",
+          "emotion": "問句，輕"
+        }
+      ]
+    },
+    {
+      "id": "ice-close",
+      "chapter": "冰在一夜之間把船圍住",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden three-masted ship surrounded by thick white pack ice closing in from every side on a flat pewter sea, pale morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e029",
+          "text": "一九一五年一月十九日，在威德爾海，冰在一夜之間把船圍住。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "ice-dream-true",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of big white ice blocks pressed tight against the dark wooden planks of a ship's hull, hazy cold light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e030",
+          "text": "沃斯利夢裡那些冰塊，這下真的圍上來了。"
+        }
+      ]
+    },
+    {
+      "id": "ice-beset",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wooden three-masted ship frozen upright in a flat white ice field, its sails furled and its bow buried in ice, light from a low cloudy sky",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e031",
+          "text": "第二天，船已經被牢牢卡死。它會被卡多久？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ice-281",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, gasping with both hands on her cheeks, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e032",
+          "text": "兩百八十一天。我第一次看到這個數字，倒抽了一口氣。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "ice-crushed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the wooden planks of a ship's hull splintering and bending under heaving slabs of white ice, pale overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e033",
+          "text": "十月底，氣溫零下二十多度，冰終於把船擠碎了。",
+          "emotion": "短，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "ice-abandon",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the grey knitted wool hat on the snow beside heaped plain grey crates and folded tents, a leaning broken ship behind, thin cold sunshine",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e034",
+          "text": "下午五點，薛克頓下令：所有人，下到冰上。"
+        }
+      ]
+    },
+    {
+      "id": "ice-crank",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gloved hand turning the crank handle of an old wooden film camera on a tripod on the ice, a leaning broken ship blurred behind, soft diffuse light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e035",
+          "text": "這時候，冰上有一個人，對著那艘快散掉的船，一直轉著一個把手。",
+          "emotion": "停在這裡"
+        },
+        {
+          "id": "e036",
+          "text": "他在做什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "camp-film",
+      "chapter": "金幣丟掉，照片留下",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old wooden hand-crank film camera on a tripod standing on the snow and aimed at a broken wooden ship leaning in the ice, bright cold sunshine",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e037",
+          "text": "在拍片。那是攝影師赫利，在拍堅忍號最後的樣子。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "camp-mast",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a broken wooden crow's nest lying in the snow a few steps from an old wooden hand-crank film camera on a tripod, even pale light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e038",
+          "text": "船上的瞭望台倒下來，掉在他三公尺外；他的攝影機沒有停。"
+        }
+      ]
+    },
+    {
+      "id": "camp-two-pounds",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small brass hand scale on the snow with one tiny canvas bag in its pan, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e039",
+          "text": "要在冰上走，就得丟東西。薛克頓規定：每個人的私人物品，只能帶兩磅。"
+        }
+      ]
+    },
+    {
+      "id": "camp-bottle-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a hoodie in his living room weighing a plain clear bottle of water in one hand, eyebrows raised, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e040",
+          "text": "兩磅，不到一公斤。換成你，只能帶這麼一點，你會帶什麼？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "camp-coins",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of smooth plain gold coins lying abandoned on white snow, a small stack of blank photo prints tucked safe inside a wool mitten beside them, pale morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e041",
+          "text": "薛克頓寫了一句：金幣丟掉了，照片留了下來。",
+          "emotion": "輕，帶一點感慨"
+        }
+      ]
+    },
+    {
+      "id": "camp-coins-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a blank photo print to her chest, smiling, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e042",
+          "text": "這一句，我讀了好幾遍：值錢的不要，回憶要帶走。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "camp-bible",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gloved hand tearing the first blank leaf out of a very thick plain-covered book resting on the snow, hazy cold light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e043",
+          "text": "薛克頓自己，把女王送給這艘船的聖經，只撕下扉頁帶走。"
+        }
+      ]
+    },
+    {
+      "id": "camp-plates",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small wooden box of clear glass plates on the snow, broken glass shards heaped beside it, light from a low cloudy sky",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e044",
+          "text": "赫利的玻璃底片，也只挑了一百二十張，其他的全部砸碎。"
+        }
+      ]
+    },
+    {
+      "id": "camp-ocean",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a few canvas tents on a big flat ice floe, a broken leaning ship small in the far distance, thin cold sunshine",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e045",
+          "text": "他們在離船兩公里多的一塊浮冰上紮營，叫它海洋營。"
+        },
+        {
+          "id": "e046",
+          "text": "船還沒沉。它還會撐多久？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "camp-tent",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a canvas tent on the ice with its flap tied open, rolled sleeping bags on the groundsheet inside, soft diffuse light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e047",
+          "text": "十一月二十一日傍晚，一個隊員在日記裡寫：大家正躺在帳篷裡，"
+        }
+      ]
+    },
+    {
+      "id": "camp-shout",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey knitted wool hat dropped on the snow in front of a tent, a tilting ship far behind it on the ice, bright cold sunshine",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e048",
+          "text": "就在這時，他們聽見薛克頓大喊：她要沉了！",
+          "emotion": "急，略高"
+        }
+      ]
+    },
+    {
+      "id": "camp-sinks",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the stern of a wooden ship rising high as its bow slides down into a dark gap in white ice, even pale light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e049",
+          "text": "船頭朝下，船尾翹起來，一下子沉了下去；冰在上面合了起來。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "camp-records",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass sextant resting on a very thick plain-covered logbook on the snow, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e050",
+          "text": "沃斯利把沉船的位置，寫進了他的紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "camp-records-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger beside a thick plain logbook, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e051",
+          "text": "先記住這筆紀錄，故事最後，它會回來。",
+          "emotion": "收著，壓低"
+        }
+      ]
+    },
+    {
+      "id": "floe-where",
+      "chapter": "浮冰上的五個半月，象島上沒有別人",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the grey knitted wool hat on a wooden sledge facing a far pale island across a field of broken ice, pale morning light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e052",
+          "text": "船沒了，往哪裡走？薛克頓算了一下：最近可能有吃的、有地方躲的，是寶萊島。"
+        }
+      ]
+    },
+    {
+      "id": "floe-hut",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small stone and wooden hut on a rocky shore with plain grey crates stacked against its wall, hazy cold light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e053",
+          "text": "那裡有一間瑞典探險隊留下的小屋，堆著存糧，可是沒有人住。"
+        }
+      ]
+    },
+    {
+      "id": "floe-640",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a few tents on a small drifting ice floe, a pale island tiny on the far horizon, wide grey sea between, light from a low cloudy sky",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e054",
+          "text": "距離，大約六百四十公里。站在一塊會漂的冰上，走得到嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "floe-patience",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small camp stove with a dented kettle outside a canvas tent on a floe, thin cold sunshine",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e055",
+          "text": "他們後來搬到另一塊浮冰，叫忍耐營，一住就是將近三個半月。"
+        }
+      ]
+    },
+    {
+      "id": "floe-never",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an ice floe with a few tents drifting past a far pale island on a slate sea, soft diffuse light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e056",
+          "text": "寶萊島，他們一直沒有走到；浮冰帶著他們，漂了將近五個半月。",
+          "emotion": "收住"
+        }
+      ]
+    },
+    {
+      "id": "floe-launch",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of gloved hands pushing three wooden rowing boats off the edge of an ice floe into steel-blue water, bright cold sunshine",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e057",
+          "text": "一九一六年四月九日下午一點，他們不得不離開浮冰，把三艘小艇推下水。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "floe-caird",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of one sturdy wooden lifeboat in front of two smaller boats on the edge of the ice, even pale light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e058",
+          "text": "三艘小艇，用捐款人的名字命名；其中一艘，叫凱爾德號。"
+        }
+      ]
+    },
+    {
+      "id": "floe-island",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of three small wooden boats rowing toward a dark rocky island with a pewter pebble beach under steep cliffs, soft overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e059",
+          "text": "不到一個星期，四月十五日，他們靠上了象島。",
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "land-callback",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, one hand cupped beside her mouth, eager, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e060",
+          "text": "還記得起錨那天的問題嗎？下一次踩到陸地，是什麼時候？",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "land-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one wet worn boot pressing down onto round grey pebbles at the edge of the surf, pale morning light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e061",
+          "text": "答案是：從離開南喬治亞島算起，一年四個多月。"
+        }
+      ]
+    },
+    {
+      "id": "land-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey knitted wool hat resting on the bow of a wooden boat drawn up at a slate pebble beach, hazy cold light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e062",
+          "text": "誰先上岸？",
+          "emotion": "問句，輕"
+        },
+        {
+          "id": "e063",
+          "text": "薛克頓寫：這是象島第一次有人登陸，光榮該給最年輕的人。"
+        }
+      ]
+    },
+    {
+      "id": "land-jump",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of small worn brown boots on the edge of a wooden boat's bow just above dry steel-blue pebbles, light from a low cloudy sky",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e064",
+          "text": "他叫第一個跳的，就是那個偷渡上船的少年，布雷克伯勒。",
+          "emotion": "略上揚"
+        }
+      ]
+    },
+    {
+      "id": "land-sat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of small worn brown boots tipped over side by side on dry pewter pebbles next to a boat's hull, thin cold sunshine",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e065",
+          "text": "他的腳已經凍傷，一跳就一屁股坐下；薛克頓說，他是第一個「坐」上這座島的人。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "land-pebbles",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two cupped hands letting round grey pebbles trickle down between the fingers, a pebble beach below, soft diffuse light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e066",
+          "text": "其他人上了岸，抓起石頭，讓小石子從指縫裡一把一把漏下去。",
+          "emotion": "慢"
+        }
+      ]
+    },
+    {
+      "id": "land-pebbles-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, looking down at pebbles in her open palm, moved, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e067",
+          "text": "我讀到這一段的時候，手裡好像也抓了一把石頭。",
+          "emotion": "自己的反應，輕"
+        }
+      ]
+    },
+    {
+      "id": "land-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty slate pebble beach under tall dark cliffs, three small boats drawn up at the edge of the surf, bright cold sunshine",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e068",
+          "text": "可是這座島上，除了他們，一個別人都沒有。"
+        }
+      ]
+    },
+    {
+      "id": "land-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a padded parka standing on a steel-blue pebble beach, arms folded, frowning thoughtfully out at the sea, even pale light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e069",
+          "text": "換成你是薛克頓，站在這片石灘上，下一步你會怎麼做？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "land-upturned",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two wooden boats turned upside down on a low stone wall on a pebble beach as a roof, soft overcast light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e070",
+          "text": "留下來的人，把兩艘小艇倒扣過來，當成屋頂。"
+        }
+      ]
+    },
+    {
+      "id": "land-decides",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey knitted wool hat placed on the seat of a sturdy wooden lifeboat at the water's edge of a pebble beach, pale morning light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e071",
+          "text": "薛克頓決定：坐第三艘，凱爾德號，回南喬治亞島找人。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "land-800",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of one tiny wooden sailing boat alone on a vast rolling pewter ocean stretching to every horizon, hazy cold light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e072",
+          "text": "到南喬治亞島，薛克頓寫：八百英里，大約一千三百公里。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "land-crazy-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a toy wooden rowing boat, eyes wide, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e073",
+          "text": "這就很瘋狂了：六個人，一艘沒有頂的小木船。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "caird-depart",
+      "chapter": "凱爾德號的十六天，只量到四次太陽",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a brass sextant and the grey knitted wool hat sitting in the bow of a small sailing lifeboat pulling away from a pebble beach, pale morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e074",
+          "text": "四月二十四日早上，薛克頓帶著五個人出發，導航的，是沃斯利。"
+        }
+      ]
+    },
+    {
+      "id": "caird-left",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two upturned wooden boats on a pebble beach under dark cliffs, a thin wisp of smoke rising from a small stove pipe, light from a low cloudy sky",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e075",
+          "text": "其他二十二個人留在象島，由懷爾德帶著。"
+        }
+      ]
+    },
+    {
+      "id": "caird-clock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one small brass ship's clock with a plain blank white face standing upright on a heap of stopped brass clocks, thin cold sunshine",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e076",
+          "text": "出發時的二十四個天文鐘，還能走的，只剩一個。"
+        }
+      ]
+    },
+    {
+      "id": "caird-sun",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass sextant held up toward a pale sun behind thin clouds above a rolling grey sea, soft diffuse light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e077",
+          "text": "船在哪裡，就看沃斯利能不能用六分儀量到太陽。"
+        }
+      ]
+    },
+    {
+      "id": "caird-kneel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of four gloved hands gripping a wet wooden thwart to steady it while a fifth gloved hand lifts a brass sextant toward the sky, bright cold sunshine",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e078",
+          "text": "要量太陽，他得跪在橫板上，左右各一個水手抱住他。"
+        }
+      ]
+    },
+    {
+      "id": "caird-clouds",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of thick slate clouds hiding the sun over a small wooden sailing boat on a heaving sea, even pale light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e079",
+          "text": "結果，出發以後整整六天，一次都沒量到。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "caird-four-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, frowning worriedly at a small brass sextant, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e080",
+          "text": "還記得開頭說的，只靠太陽指路嗎？整趟航程，他只量到四次太陽。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "caird-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a raincoat gripping the side of a small rowing boat on choppy steel-blue water, wide-eyed and tense, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e081",
+          "text": "換成你坐在那條船上，知道領航的人好幾天才看得到一次太陽，你慌不慌？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "caird-white",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright white band stretched along the horizon of a dark pewter sea, a tiny sailing boat in the foreground, pale morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e082",
+          "text": "但這還不是最危險的。第十一天，薛克頓看到天邊一道白色，以為雲終於散了。",
+          "emotion": "收住，再往前推"
+        }
+      ]
+    },
+    {
+      "id": "caird-wave",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an enormous white-crested wave towering high over a tiny wooden sailing boat on a grey sea, hazy cold light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e083",
+          "text": "那不是雲，是一個巨浪的浪頭。他在海上二十六年，從沒見過這麼大的浪。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "caird-hold",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of gloved hands clutching the wet wooden edge of a small boat as white spray bursts over it, light from a low cloudy sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e084",
+          "text": "薛克頓對著船上的人大喊：抓緊！它打過來了！",
+          "emotion": "急，大聲"
+        }
+      ]
+    },
+    {
+      "id": "caird-breath-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding her breath with both hands pressed over her mouth, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e085",
+          "text": "我每次讀到這句，都會屏住呼吸。他們撐得過去嗎？",
+          "emotion": "自己的反應，低"
+        }
+      ]
+    },
+    {
+      "id": "caird-cliffs",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of tall black cliffs rising out of a slate sea, a tiny wooden sailing boat far out on the water, pale morning light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e086",
+          "text": "撐過去了。第十四天，五月八日，有人看見了南喬治亞島黑色的懸崖。",
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "caird-storm",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of steep storm waves rolling between a tiny sailing boat and a line of dark cliffs, heavy steel-blue clouds, thin cold sunshine",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e087",
+          "text": "可是一場風暴，又把他們擋在海上兩天。"
+        }
+      ]
+    },
+    {
+      "id": "caird-landing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small wooden lifeboat pulled up on a narrow pebble cove under dark cliffs, calm water behind it, soft diffuse light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e088",
+          "text": "第十六天，五月十日晚上，他們在哈康國王灣上了岸。"
+        }
+      ]
+    },
+    {
+      "id": "cross-other",
+      "chapter": "三十六小時翻過山，站長只認得他的聲音",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long snowy island ridge seen from a pebble cove, a small wooden lifeboat drawn up on the stones in front, bright cold sunshine",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e089",
+          "text": "問題來了：他們要去的捕鯨站，在島的另一邊。",
+          "emotion": "收住"
+        }
+      ]
+    },
+    {
+      "id": "cross-31",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a wall of jagged snowy peaks rising behind a quiet pebble cove, a tiny lifeboat on the shore, even pale light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e090",
+          "text": "還記得那一千三百公里嗎？都過來了。現在到捕鯨站的直線，只剩三十一公里左右。",
+          "emotion": "略上揚"
+        }
+      ]
+    },
+    {
+      "id": "cross-nobody",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smooth untouched snow slope rising toward a rocky ridge, perfectly clean snow, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e091",
+          "text": "薛克頓寫：從來沒有人往內陸走超過一點六公里。"
+        }
+      ]
+    },
+    {
+      "id": "cross-q-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, looking up with her chin raised and one hand shading her eyes, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e092",
+          "text": "一座從來沒有人走過的山，翻得過去嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cross-set-off",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pot of hot stew steaming on a small camp stove on pebbles, three tin mugs beside it, pale early light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e093",
+          "text": "五月十九日凌晨兩點，薛克頓、沃斯利和克林起來，吃了熱食就出發。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "cross-36",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of three lines of boot prints winding across a broad white glacier toward a far ridge, pale morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e094",
+          "text": "他們翻山、過冰河，連走了三十六個小時。"
+        }
+      ]
+    },
+    {
+      "id": "cross-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a single trail of boot prints crossing a high snowy ridge under a pale sun, hazy cold light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e095",
+          "text": "今天說起來，這是第一次有紀錄的、橫越南喬治亞島內陸的路。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "cross-station",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of wooden whaling station sheds and a tall chimney beside a calm bay at the foot of snowy hills, light from a low cloudy sky",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e096",
+          "text": "最後，他們走進了斯特羅姆內斯捕鯨站。"
+        }
+      ]
+    },
+    {
+      "id": "cross-voice",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a half-open wooden office door at a whaling station, three pairs of worn boots on the snowy step, thin cold sunshine",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e097",
+          "text": "站長看著這三個人，遲疑地說：我認得你的聲音……你是黛西號的大副吧？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cross-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gloved hand lifting the grey knitted wool hat in front of a half-open wooden door, soft diffuse light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e098",
+          "text": "他回答：「我的名字，是薛克頓。」",
+          "emotion": "慢，一字一字"
+        },
+        {
+          "id": "e099",
+          "text": "你想想，站長那一刻的表情。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "cross-war",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an untouched mug of coffee going cold on a wooden table beside a stack of blank folded newspapers, soft window light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e100",
+          "text": "站長告訴他：戰爭還沒結束，幾百萬人正在死去，歐洲瘋了，全世界都瘋了。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "cross-war-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, staring ahead with one hand resting on her cheek, stunned, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e101",
+          "text": "他們出發時，那場大戰才剛開始。我讀到這裡，愣了一下。",
+          "emotion": "自己的反應，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cross-waiting",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two upturned wooden boats half buried in snow on a pewter pebble beach under dark cliffs, bright cold sunshine",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e102",
+          "text": "而象島上的人，還在倒扣的小艇底下等。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "rescue-first",
+      "chapter": "試了三次，第四次耶爾喬號開到了象島",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small steamship stopped in front of a solid wall of white pack ice on a grey sea, even pale light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e103",
+          "text": "從五月到七月，薛克頓試了三次。第一次，一艘汽船離象島還有七十英里，就被冰擋住。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "rescue-trawler",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small fishing trawler turning back from a band of thick pack ice under a slate sky, soft overcast light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e104",
+          "text": "第二次，一艘拖網船開到只剩三十二公里；第三次換成帆船，也沒過去。"
+        }
+      ]
+    },
+    {
+      "id": "rescue-worry-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, clasping her hands tightly together under her chin, anxious, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e105",
+          "text": "冰一直不散。我讀到第三次失敗，真的替島上的人急。他們撐得到嗎？",
+          "emotion": "自己的反應，問句"
+        }
+      ]
+    },
+    {
+      "id": "rescue-yelcho",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small steel steamship with one tall funnel pushing through a choppy steel-blue sea, pale morning light",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e106",
+          "text": "八月二十五日，他第四次出發，坐的是智利的鋼殼小汽船，耶爾喬號。"
+        }
+      ]
+    },
+    {
+      "id": "rescue-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small steel steamship easing toward loose ice floes with wide lanes of open water between them, hazy cold light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e107",
+          "text": "他答應了人家：這艘船，絕不碰冰。這一次，冰會讓開嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "rescue-spots",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass sextant resting on a steel ship's rail, a dark rocky island ahead with a thin wisp of smoke on its beach, light from a low cloudy sky",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e108",
+          "text": "一九一六年八月三十日上午，沃斯利先看到了島上的營地。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "rescue-call",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey knitted wool hat in the bow of a small rowing boat nearing a pebble beach under dark cliffs, thin cold sunshine",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e109",
+          "text": "薛克頓朝著岸上的人大喊：大家都好嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "rescue-well",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of woollen mittens tossed high into the air above a pewter pebble beach, two upturned boats behind, soft diffuse light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e110",
+          "text": "懷爾德回答：我們都好，老大。然後，岸上響起三聲歡呼。",
+          "emotion": "鬆一口氣"
+        }
+      ]
+    },
+    {
+      "id": "rescue-aboard",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty dented tin pot scraped clean on grey pebbles, a rowing boat waiting in the surf behind, bright cold sunshine",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e111",
+          "text": "不到一個小時，全部上了船。在島上四個半月，存糧也差不多見底了。"
+        }
+      ]
+    },
+    {
+      "id": "rescue-all-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, beaming and holding up a big bunch of balloons, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e112",
+          "text": "開頭問的，回來了幾個？堅忍號上的二十八個人，全部活著回來。",
+          "emotion": "放慢，像蓋章"
+        }
+      ]
+    },
+    {
+      "id": "rescue-634",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the grey knitted wool hat resting on a coiled iron anchor chain on a wooden dock, calm slate water behind, even pale light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e113",
+          "text": "從起錨那天算起，六百三十四天；薛克頓自己說，快兩年。"
+        }
+      ]
+    },
+    {
+      "id": "epi-other-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger with a serious face, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e114",
+          "text": "可是這個「全部」，只算堅忍號。另一隊呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "epi-ross",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single wilted white flower lying on smooth snow under a pale steel-blue sky, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e115",
+          "text": "他們在南極另一邊的羅斯海，有三個人沒有回來。",
+          "emotion": "低沉，一句帶過"
+        }
+      ]
+    },
+    {
+      "id": "epi-wreck-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of flat white sea ice closed over dark water where a ship went down, an empty horizon, pale morning light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e116",
+          "text": "那艘沉在冰底下的船呢？還找得到嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "deep-icebreaker",
+      "chapter": "二〇二二年，三千零八公尺深的海底",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large red icebreaker ship forcing its way through white pack ice on a pewter sea, hazy cold light",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e117",
+          "text": "找得到。二〇二二年三月，一艘南非的破冰船，開進了威德爾海。",
+          "emotion": "接住上一章"
+        }
+      ]
+    },
+    {
+      "id": "deep-found",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a boxy yellow underwater vehicle hovering beside the dark wooden hull of an old shipwreck resting upright on the deep seabed, soft blue light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e118",
+          "text": "三月五日，它在三千零八公尺深的海底，找到了堅忍號。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "deep-centenary",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the grey knitted wool hat resting on a stone bench beside a small bunch of white flowers, light from a low cloudy sky",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e119",
+          "text": "那天，剛好是薛克頓葬禮的一百週年。"
+        }
+      ]
+    },
+    {
+      "id": "deep-position-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, opening a thick plain logbook, eyebrows raised, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e120",
+          "text": "還記得沃斯利當年記下的那個位置嗎？它準不準？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "deep-dart",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single dart stuck just beside the centre of a plain dartboard with only red and white rings, thin cold sunshine",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e121",
+          "text": "船就在它附近，大約十公里。發現團隊說，他當年的紀錄，幫了大忙。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "deep-stern",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the curved dark wooden stern of an old shipwreck on the seabed, pale sea anemones clinging to its planks, soft blue light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e122",
+          "text": "船尾上，堅忍號的英文名字，一個字母一個字母，還看得清楚。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "deep-star",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pale five-armed starfish resting on the dark wooden stern of an old shipwreck on the seabed, soft blue light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e123",
+          "text": "名字下面是一顆五角星；那是它原本的名字，北極星號。"
+        }
+      ]
+    },
+    {
+      "id": "close-ad-ada",
+      "chapter": "廣告找不到，紀錄都在",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a blank yellowed paper sheet, smiling, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e124",
+          "text": "最後，回到開頭那則人人會背的廣告。",
+          "emotion": "語氣親近"
+        }
+      ]
+    },
+    {
+      "id": "close-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a white paper airplane gliding away over a snowy field toward a pale sky, soft diffuse light",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e125",
+          "text": "到今天，沒有人找到過它的原件，一般被當成傳說。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "close-records-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a thick plain logbook, warm smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e126",
+          "text": "我們覺得，撐住這個故事的不是那則廣告，是他們自己寫下的日記和航海紀錄。",
+          "emotion": "像跟朋友說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "close-shelf",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey knitted wool hat, a brass sextant, a pair of small worn brown boots and an old wooden film camera lined up together on a sunlit wooden shelf, bright cold sunshine",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e127",
+          "text": "沃斯利的夢、門上的牌子、赫利的底片、沉船的位置，全都留在紀錄裡。"
+        }
+      ]
+    },
+    {
+      "id": "close-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass sextant resting on a very thick plain-covered logbook beside a white paper airplane on a wooden desk, soft window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "e128",
+          "text": "一則廣告，傳著傳著成了傳說；一筆寫對的位置，過了一個世紀，還能帶人找到船。",
+          "emotion": "收一句"
+        }
+      ]
+    },
+    {
+      "id": "close-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a T-shirt at a kitchen table putting down a blank yellowed paper clipping and smiling, a mug of coffee beside him, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "e129",
+          "text": "所以下次有人跟你背這則廣告，你可以告訴他：廣告找不到，紀錄都在。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, closing a thick plain logbook, head tilted, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e130",
+          "text": "這份檔案，存檔。如果是你，你會想坐上那艘小艇，還是留在象島等？",
+          "emotion": "問句上揚，像在聊天"
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, smiling warmly, a logbook under one arm, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e131",
+          "text": "留言告訴我。這個頻道只講紀錄裡找得到的，想一起開檔案，就訂閱。",
+          "emotion": "收尾，誠懇"
+        }
+      ]
+    }
+  ]
+}
