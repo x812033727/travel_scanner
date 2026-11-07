@@ -27,6 +27,8 @@ LOC = {
     "under": "Under the murky green-brown water of the Liuxi stream at dawn, shafts of grey light from the surface above, silt drifting",
     "river": "On the reedy mud bank of the Liuxi stream at foggy autumn dawn, the shallow brown water on screen left and the mud bank on screen right, tall reeds, mist on the water, a dirt path to the village in the distance on screen right, cool grey light from behind on the left",
     "house": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, earthen walls and a packed earth floor, the plank door on screen left, a big clay water vat on screen right, a clay rice crock in the corner by the back wall, a low table with two stools, clear morning light slanting in from the door and window on the left",
+    # close-ups keep the set to one line (storyboard-shot-spec 近景被拍成全景); the wording still picks set-xujia-wu-t1
+    "crock": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, in the corner by the earthen back wall, soft morning light from the left",
     "yard": "In the dirt yard of the Xu farmhouse near noon on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, the house door at the back left, the yard gate in the fence on screen right, a stone well at the back right, bright sunlight from overhead and slightly right casting short shadows",
 }
 LIGHT = {
@@ -34,6 +36,13 @@ LIGHT = {
     "house": "the slanting morning light stays unchanged",
     "yard": "the bright near-noon sunlight stays unchanged",
 }
+
+# 2026-11-07 review (reshoot s02, s12, s13, s15, s16, s35): one identical phrase per prop and costume, every shot.
+# Xiaohe's toy is a straw rabbit in her sash, never in her hands in this episode (cast.json says "hugging"; extras.json rewrites it).
+RABBIT = "a small straw-woven rabbit, plaited from pale yellow straw, tucked into her waist sash"
+XIAOHE = f"little Xiaohe in her patched lilac cotton jacket with red-string pigtails, {RABBIT}"
+ROBE = "his blue-grey scholar's robe half-dry, the sleeves still damp"
+CROCK = "one squat brown clay rice crock as high as a small child's knee, with one round flat wooden lid"
 
 SHOTS = [
     # ---- opening: the interview (night, rain). Axis: the interviewer on the right (only a hand), Xu Yan on the left facing right.
@@ -44,10 +53,10 @@ SHOTS = [
          motion="the two fingers press down on the face-down résumé, draw it back a little, then push it forward in one firm stroke so it slides across the glass and stops at the table edge, and the hand lifts away and settles flat on the table; the interviewer speaks from above the frame, her face never seen",
          zh="桌面特寫、慢推（第一格就是桌面）：履歷背面朝上，面試官戴細錶帶的手（深灰西裝袖、白襯衫袖口）按住履歷一推，履歷滑過玻璃桌面停在桌邊（面試官在畫外）"),
     dict(loc="office", cam="Medium shot to medium close-up, slow push in", chars=["xuyan"], looks={"xuyan": "modern"},
-         comp="medium shot, closing in to a medium close-up by the end, of Xu Yan in a dark modern suit, white shirt and dark tie, seated at the long glass table on screen left, facing right, the résumé face down on the glass in front of him with its plain back up, his polite smile fading into held-back anger, his eyes on the interviewer off screen right",
+         comp="medium shot, closing in to a medium close-up by the end, of Xu Yan in a dark modern suit, white shirt and dark tie, seated at the long glass table on screen left, facing right, the résumé face down on the glass in front of him with its plain back up, his eyes on the interviewer off screen right; he opens with a small polite smile that fades as he speaks, and from then on controlled anger: his jaw clenched tight, his brows drawn down and level, his eyes hard and unblinking, his lips pressed flat between words, no smile again to the end of the shot",
          lines=[("xuyan", "種田怎麼了？全世界的人，每天都要吃飯。", "壓著火，很穩")],
-         motion="his smile drains away; he reaches out and draws the résumé back across the glass, squares its edges and folds it once, then plants both palms, pushes his chair back and rises to his feet in one firm motion, his weight settling squarely on both feet",
-         zh="中近景、慢推（中景推到中近景）：許硯（現代西裝）笑容收掉、壓著火，伸手把履歷抽回來對齊摺好，推開椅子站起來"),
+         motion="his polite smile fades as he speaks and his jaw sets hard; only then he draws the résumé back across the glass, squares it and folds it once, plants both palms, pushes his chair back and stands, his jaw still tight",
+         zh="中近景、慢推（中景推到中近景）：許硯（現代西裝）開口時禮貌的笑慢慢收掉，變成壓著火（咬緊牙、眉壓低、眼神硬、之後不再笑）；然後才把履歷抽回來對齊摺好，推開椅子站起來（2026-11-07 審稿重寫）"),
     dict(loc="street", cam="Full shot from behind, tracking", chars=["xuyan"], looks={"xuyan": "modern"}, nospeak=["xuyan"],
          comp="full shot from behind of Xu Yan in his dark modern suit, soaked through, walking away from the camera down the middle of the wet street, rain streaks falling close across the foreground, the street otherwise empty",
          lines=[("xuyan", "算了，這些話說了也沒人聽。", "低聲自嘲")],
@@ -104,37 +113,37 @@ SHOTS = [
          zh="全景、慢推、前景蘆葦：許硯扶著二牛的肩站起來，衣服往下滴水，望向右邊遠處的村路，邁出第一步（左邊岸上木樁掛著一頂繫紅繩的舊草帽，不特別帶到）"),
     # ---- scene 2: the Xu farmhouse, first morning. Axis: the door on the left; Xu Yan enters from the left, Xiaohe by the water vat on the right.
     dict(chapter="許家", loc="house", cam="Full shot, slow push in", chars=["xiaohe", "xuyan", "erniu"], night="house", nospeak=["xiaohe"],
-         comp="full shot of the farmhouse room past the half-open plank door in the left foreground, Wang Erniu on screen left helping Xu Yan, whose blue-grey scholar's robe is half-dry with the sleeves still wet, through the doorway, and little Xiaohe by the water vat on screen right with one wooden ladle in her hand, her small straw rabbit tucked into her sash",
+         comp=f"full shot of the farmhouse room, the half-open plank door on screen left: Wang Erniu stepping in through it, both his hands holding Xu Yan up, one arm round his back and one gripping his arm, nothing on Erniu's back or shoulders; Xu Yan, {ROBE}, leaning on him; on screen right by the big clay water vat {XIAOHE}, her back half turned to the door, one wooden ladle in her right hand from the very first frame",
          lines=[("xiaohe", "哥哥！", "愣住，然後哭出來")],
-         motion="Erniu shoulders the door open and helps Xu Yan step over the threshold; by the water vat Xiaohe turns, the wooden ladle slips from her fingers and bounces once on the dirt floor, and she speaks one short cry with her mouth wide open; Erniu lets go and steps back into the doorway",
-         zh="屋內全景、慢推、前景半開的木門：二牛推門扶著許硯（衣服半乾、袖子濕）跨進門檻；水缸邊的小禾回頭，木勺掉在地上彈一下，張嘴喊（短喊）；二牛退到門口"),
+         motion="Erniu helps Xu Yan over the threshold on screen left; Xiaohe turns from the vat toward the door on screen left and freezes, eyes wide; only then the ladle drops from her hand and bounces once on the floor, and she cries out, startled, about to cry",
+         zh="屋內全景、慢推，木門在畫面左：二牛兩手扶著許硯（衣服半乾、袖子濕）跨進門檻，肩上背上什麼都沒有；水缸邊的小禾（草編兔子塞在腰帶上）轉向畫面左邊的門、愣住，然後木勺才從手裡掉下、在地上彈一下，她短喊一聲（2026-11-07 審稿重寫）"),
     dict(loc="house", cam="Two-shot, tracking", chars=["xiaohe", "xuyan", "erniu"], night="house", nospeak=["xiaohe"],
-         comp="two-shot inside the room, Xu Yan on screen left just inside the door, his robe half-dry with the sleeves still wet, little Xiaohe on screen right by the water vat with her straw rabbit tucked into her sash, and only half of Wang Erniu leaning in at the doorway behind Xu Yan at the left edge",
+         comp=f"two-shot in the same bare farmhouse room as before, earthen walls and a packed earth floor, no bed: Xu Yan on screen left just inside the plank door, {ROBE}; {XIAOHE}, on screen right by the big clay water vat, her face crumpling, about to cry; at the door on screen left only the half of Wang Erniu's body in his coarse brown jacket, the rest outside",
          lines=[("xiaohe", "我以為你回不來了，我一個人找了你一整晚。", "哭腔")],
-         motion="Xiaohe runs from the water vat across the dirt floor and throws herself into Xu Yan, wrapping both arms round his waist and burying her face in his robe, her shoulders shaking as she speaks into the cloth, her mouth hidden; the impact rocks him back half a step and he catches his balance; at the doorway Erniu watches, his lips closed",
-         zh="雙人鏡、跟拍：小禾從水缸邊跑過來一頭撞進許硯懷裡抱住他的腰、臉埋著；許硯退半步；二牛在門口只露半身"),
+         motion="Xiaohe runs from the vat and throws herself into Xu Yan, hugging his waist with her face buried in his robe and hidden to the end, her shoulders shaking as she sobs into the cloth; he rocks back half a step; Erniu's lips stay closed",
+         zh="雙人鏡、跟拍，同一間屋（沒有床），木門在畫面左：小禾（草編兔子塞在腰帶上）從水缸邊跑過來抱住許硯的腰、臉埋在他衣服裡一直看不到、肩膀發抖在哭（不笑）；許硯退半步；二牛在門口只露半身（2026-11-07 審稿重寫）"),
     dict(loc="house", cam="Close-up, slow push in", chars=["xuyan", "xiaohe"], night="house",
          comp="close-up of Xu Yan in his blue-grey scholar's robe, half-dry with damp sleeves, looking down, only the top of little Xiaohe's head and her small arms around him at the lower edge of the frame; behind him only the earthen wall",
          lines=[("xuyan", "她叫我哥哥……原來這副身體，還有個妹妹。", "心裡話，愣住", "inner"), ("xuyan", "別哭了，哥哥回來了，哥哥在這裡。", "放軟")],
          motion="his lips stay closed while he gazes down at her for a breath; he bends his knees and slowly crouches to her height, his hand hovering above her head for a moment before it comes down gently to stroke her hair",
          zh="近景、慢推：許硯慢慢蹲到她的高度，手在她頭頂上方停一下才輕輕摸下去（心裡話時嘴閉著，後一句才說話）"),
     dict(loc="house", cam="Over-the-shoulder medium close-up, slow push in", chars=["xiaohe", "xuyan"], night="house",
-         comp="over-the-shoulder shot from behind Xu Yan's damp shoulder in the left foreground, little Xiaohe facing the camera on screen right, her eyes red, frightened, looking up at him, her straw rabbit tucked into her sash; the doorway behind is empty, Wang Erniu off screen outside the door",
+         comp=f"over-the-shoulder shot from behind Xu Yan's damp shoulder in the left foreground, {XIAOHE}, both hands empty, facing the camera on screen right and looking up at him, frightened: her eyes red and wet, her brows drawn up in the middle, her lower lip trembling, no smile the whole shot; the plank door on screen left behind is empty, Wang Erniu off screen outside the door",
          lines=[("xiaohe", "錢員外的人今天又來過了，說下次要把米缸搬走。", "害怕")],
-         motion="she lifts her tear-streaked face to him, wipes her eyes with her sleeve, then turns her head to glance at the rice crock in the corner by the back wall",
-         zh="過肩（許硯肩後拍小禾）：小禾抬起臉、用袖子擦眼睛，轉頭看後牆角的米缸（二牛已退到門外）"),
-    dict(loc="house", cam="High-angle insert close-up, locked", chars=[], act=3,
-         comp="high-angle insert close-up of the round wooden lid on the clay rice crock in the corner by the back wall, the shot opens directly on this close-up from its very first frame, a young man's hand in the damp cuff of a faded blue-grey cotton sleeve gripping the lid; only the hand and sleeve are in the frame",
+         motion="she lifts her tear-streaked face to him and wipes her eyes with her empty sleeve, then turns her head to glance at the rice crock in the corner by the back wall, her hands staying empty at her sides",
+         zh="過肩（許硯肩後拍小禾）：小禾（草編兔子塞在腰帶上、兩手空空）眼睛紅、害怕、不笑，抬起臉用袖子擦眼睛，轉頭看後牆角的米缸（二牛已退到門外；2026-11-07 審稿：兔子不在手上）"),
+    dict(loc="crock", cam="High-angle insert close-up, locked", chars=[], act=3,
+         comp=f"high-angle insert close-up looking straight down into {CROCK}, the shot opens directly on this close-up from its very first frame with the wooden lid still on, a young man's hand in the damp cuff of a faded blue-grey cotton sleeve gripping the lid; only the hand, the sleeve and the crock are in the frame; under the lid the crock is almost empty: a thin layer of rice only just covering the very bottom, the bare brown clay bottom showing through in the middle, the rice far below the rim, the clay walls bare and dry",
          lines=[],
-         motion="the hand lifts the heavy wooden lid and sets it aside, revealing only a thin layer of rice at the bottom of the crock; two fingers reach in and stir the grains, and the rice slides back down in a thin trickle",
-         zh="手部特寫、俯拍（第一格就是米缸蓋）：許硯的手（書生袍濕袖口）掀開米缸木蓋，缸底只剩薄薄一層米，手指撥一下、米粒滑下去"),
+         motion="the hand lifts the wooden lid away out of the frame, showing the nearly empty crock; only then two fingers reach down to the bottom and stir the thin layer, and a few grains slide over the bare clay",
+         zh="手部特寫、俯拍（第一格就是蓋著木蓋的米缸）：許硯的手（書生袍濕袖口）掀開木蓋，缸幾乎是空的：缸底只鋪一層薄米、中間露出陶土底、米離缸口很遠；然後手指才伸到缸底撥一下，幾粒米滑過陶土（2026-11-07 審稿重寫）"),
     dict(loc="house", cam="Medium close-up, slow push in", chars=["xuyan"], night="house",
          comp="medium close-up of Xu Yan standing beside the rice crock in the back corner on screen left, his robe half-dry with damp sleeves, the wooden lid in his hand, his eyes on the crock; behind him only the earthen wall and the rice crock in the corner",
          lines=[("xuyan", "都快見底了，還有什麼好搬的。小禾，家裡還有吃的嗎？", "苦笑")],
          motion="he lowers the wooden lid back onto the crock with a soft knock, lets out a long sigh that drops his shoulders, and turns his head with a rueful smile to Xiaohe off screen right",
          zh="中近景、慢推：許硯放下木蓋，嘆口氣、苦笑，轉頭看畫面右邊的小禾"),
     dict(loc="house", cam="Two-shot, slow push in", chars=["xiaohe", "xuyan"], night="house",
-         comp="two-shot at the low table, Xu Yan seated on a stool on screen left, his robe half-dry with damp sleeves, and little Xiaohe on screen right holding one clay bowl half full of thin porridge in both hands, her straw rabbit tucked into her sash; on the low table in front of Xu Yan already stands a second clay bowl, empty, so two clay bowls are on the table by the end",
+         comp=f"two-shot at the low table, Xu Yan seated on a stool on screen left, his robe half-dry with damp sleeves, and little Xiaohe on screen right holding one clay bowl half full of thin porridge in both hands, {RABBIT}; on the low table in front of Xu Yan already stands a second clay bowl, empty, so two clay bowls are on the table by the end",
          lines=[("xiaohe", "還有半碗粥，哥你先吃，我不餓。", "懂事")],
          motion="Xiaohe walks carefully from the stove with small steps so nothing spills, rises onto her tiptoes and pushes the bowl across the low table to Xu Yan with both hands, then settles back on her heels; Xu Yan looks from the bowl up to her, his lips closed",
          zh="雙人鏡、慢推：小禾雙手捧著半碗稀粥從灶邊小心走過來，踮腳把碗推到矮桌上他面前；矮桌上另放一個空陶碗（c19 倒粥用）"),
@@ -220,10 +229,10 @@ SHOTS = [
          motion="Tang Xiaotang turns to Qin Shuang with a sweet smile, then turns away and leans in toward Xu Yan off screen left, tilting her head to peer up at him; Qin Shuang watches her sideways, her lips closed",
          zh="雙人鏡、慢推（唐小棠下巴以上）：左秦霜、右唐小棠；唐小棠先對秦霜笑一下，再轉身湊近許硯、歪頭看他；秦霜嘴閉著"),
     dict(loc="yard", cam="Medium shot, slow push in", chars=["xuyan", "erniu"], night="yard",
-         comp="medium shot, Xu Yan in the front of the frame in the middle of the yard, stunned, his robe half-dry and his sleeves still damp, the rolled red paper in his hand with only its plain blank back showing, and Wang Erniu behind him coming in from screen left, his trousers dry, both hands empty, grinning",
+         comp=f"medium shot, Xu Yan in the front of the frame in the middle of the yard, {ROBE}, the rolled red paper in his right hand with only its plain blank back showing, stunned and blank: his eyes wide and unfocused, his brows raised, his mouth slack, no smile the whole shot; behind him Wang Erniu coming in from screen left, his trousers dry, both hands empty, grinning broadly; only Erniu smiles",
          lines=[("xuyan", "我是許硯……可我還沒想好，要怎麼養活三個人。", "愣住，老實答"), ("erniu", "秀才，一口氣三個老婆，你這是要發了啊！", "壓低聲音，樂")],
-         motion="Xu Yan blinks, then gives Tang Xiaotang off screen right an awkward nod and answers her; Erniu leans in from behind to his ear, one hand cupped beside his mouth, grinning, while Xu Yan's lips stay closed",
-         zh="中景、慢推：許硯愣一下，對唐小棠點點頭（先許硯說話）；二牛從左後湊到他耳邊、用手擋著嘴咧嘴笑（二牛說話時許硯嘴閉著）"),
+         motion="Xu Yan blinks, still blank and unsmiling, gives Tang Xiaotang off screen right a stiff nod and answers her, the red paper in his right hand; only then Erniu leans in to his ear, one hand cupped by his mouth, grinning, Xu Yan's lips closed",
+         zh="中景、慢推：許硯愣住、發呆、不笑（眼睛睜大失焦、眉上揚、嘴微張），右手握著捲起的紅紙，對唐小棠僵硬地點頭（先許硯說話）；然後二牛從左後湊到他耳邊、用手擋著嘴咧嘴笑（只有二牛在笑；二牛說話時許硯嘴閉著；2026-11-07 審稿重寫）"),
     dict(loc="yard", cam="Extreme close-up, slow push in", chars=["xuyan"], night="yard",
          comp="extreme close-up of Xu Yan's eyes, the shot opens directly on his eyes from its very first frame, a faint pale blue light reflected in his pupils; nothing else in the frame",
          lines=[("xitong", "叮。任務：三日內，與三人成婚。", "冷淡，像在念公告")],
