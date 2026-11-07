@@ -16,4 +16,4 @@
 | set-xujia-yuan / xianya / shiji -l1 | v2 37002 |
 | set-xujia-zao / xujia-wu / liuxi-he -l1 | v2 37001 |
 
-三位女主角另外要一張「胸部豐滿一點」的腰上照（站主 2026-11-07），選定後放在這裡，命名 `<id>-figure-l1.png`。
+三位女主角（唐小棠、秦霜、阿玲）的 `-portrait-l1` 換成「只改胸部」那一輪的 A（`live-bust/out2/<id>-onlybust-39001.png`，站主 2026-11-07：「都用A好了」）；換之前的原圖留在 `<id>-portrait-l1-before-bust.png`。
