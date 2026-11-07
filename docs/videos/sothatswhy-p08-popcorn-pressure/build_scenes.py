@@ -60,7 +60,17 @@ CHIEFFIX2 = set()  # every chief shot: the base description's grey streak kept w
 CHIEFFIX_DESC = "the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines"
 KIDFIX_TAIL = ', exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines'
 CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, glossy jet-black hair with only one thin silver strand, mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines'
+# Visual review 2026-11-07: shots whose three takes all failed get one more line (photo-real, off-model, marks).
+FLAT = ", simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours"
+EXTRA = {
+    "kid-guess-100": FLAT, "kid-popcorn-bowl": FLAT, "kid-bubble-push": FLAT + ", big round friendly cartoon eyes with dark pupils",
+    "kid-camp-pot": FLAT, "kid-any-corn": FLAT + ", plain smooth golden corn cob", "outro": FLAT,
+    "chief-fire": FLAT, "chief-spring": FLAT + ", round black glasses", "chief-heat-kernel": FLAT + ", plain pale wall behind her",
+    "thick-quilt": ", the quilt is a plain smooth pale cloud-like blanket with even soft folds, plain pot and plain stove" + FLAT,
+    "chief-careful": FLAT,
+}
 def _shot(id, prompt, chars, lines, chapter):
+    prompt = prompt + EXTRA.get(id, "")
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
     assert id not in {s["id"] for s in S}, id
     cam = FROZEN.get(id) or next(CAMS)
