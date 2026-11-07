@@ -223,6 +223,7 @@ PR #2028 合併後已補（2026-11-06）：`scene()` 的鏡頭加 `nobody: true`
 - 八語翻譯分四個代理（每集兩組語言），要他們對齊 P05 的 `i18n/<locale>.json`：系列名、角色稱呼、標題格式、口頭禪、說明結構。`max_chars` 很緊，很多句只剩一兩個字，是預期的。
 - 要自己再看一次的詞：葡萄牙文「冷媒」別寫 `refrigerante`（也是汽水），用 `gás refrigerante`／`fluido`；泰文「夕陽」別單用 ตะวันตก（也是「西方」）。
 - 配音會被**容器重開與語音服務斷線**打斷，留下卡在 speech journal 的請求（可能已計費）。用一次一個語系、斷線就 `speech-journal.mjs forget` 再重試的迴圈跑，每個語系最多 6 次。
+- **八語縮圖要在翻譯合併之後畫**：`render` 在成片前跑，那時還沒有翻譯，只會有中文縮圖。`i18n-merge` 之後跑 `render --slug S --thumbnails-only`（只畫 `thumbnails/<locale>.jpg`，不動成片），再放進 `upload/thumbnails/`。P07／P14 漏了這步，站主上傳時才發現。
 - `dub` 報「budgets are in …/fit.json」：看 `windows` 裡 `over: true` 的那一格，縮短那幾句、`i18n-merge`、重跑那個語系。
 
 ### 10.5 借自奇聞 W03 的教訓（PR #2037），原來如此也用得到
