@@ -32,8 +32,8 @@ CG 的重抽佇列（`scratchpad/chainR`–`chainU`）已經停掉，pod 也停�
 
 - [x] 0. `cast.json` 的畫風本來就是真人（`look.style`：photorealistic live-action），外貌照用；定妝照拿掉道具（秦霜的刀、小禾的草兔、趙捕頭的鐵尺），由 `production/live-action/screen-test.py` 產生提示詞。
 - [x] 1. （2026-11-07）試鏡：三輪共 US$1.44；站主「照你的建議選，唐小棠用齊胸襦裙」，選定的放在 `production/assets/refs-live/`（README 列來源）。三位女主角另加「胸部豐滿一點」的腰上照。原本：10 個角色＋許硯現代裝的真人定妝照、6 張場景圖，各兩個種子（上限 US$8，**等站主點頭**）。
-- [ ] 2. 主要角色的角度圖。
-- [ ] 3. 第 1 集三鏡小樣（說話近景、手拿道具、三人同框）。
+- [x] 2. 主要角色的角度圖（`refs-live/angles/`；女主角從沒改胸部的原圖重畫）。
+- [ ] 3. 第 1 集三鏡小樣 s23–s25：草稿 6 支（US$0.67），挑 s23-02、s24-01、s25-01，精修（US$1.09），配上原錄音給站主看（`_live-pilot/…/st2/pilot-refined.mp4`）。**等站主決定真人路線過不過**。
 - [ ] 4. 鎖定：換掉提示詞的畫風句，重建 manifest，preflight 0 錯。
 - [ ] 5. 第 1–6 集逐集做，每集上限 US$28。
 
