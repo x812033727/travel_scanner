@@ -298,7 +298,7 @@ scene("chief-height", "Close-up seen a little from above of one popped popcorn, 
       c("如果只靠那一踢，他們估計，"), c("大約能跳一公分左右。"))
 kid("kid-one-cm", K("holding her finger and thumb a tiny bit apart with raised eyebrows", close=True),
     k("只有一公分？", "驚訝"), k("我還以為它會飛好高！"))
-scene("chief-one-cm", "Close-up seen a little from above of two popped popcorn pieces, each an irregular fluffy white puff shaped like a small torn cloud with ragged uneven edges and soft cream shading, hovering side by side at the same tiny height above a warm round steel pan, small soft shadows under them, plain empty pale cream background, flat 2D cartoon drawing",
+scene("chief-one-cm", "Close-up seen a little from above of two popped popcorn pieces, each a pure white irregular fluffy puff all white, smooth cloud-like surfaces shaped like a small torn cloud with ragged uneven edges and soft cream shading, hovering side by side at the same tiny height above a warm round steel pan, small soft shadows under them, plain empty pale cream background, flat 2D cartoon drawing",
       c("研究的人說，他們看到的跳法，"), c("跟這個估計差不多是同一個大小。"))
 kid("kid-pop-q", K("cupping one hand behind her ear and listening hard", close=True, where=KITCHEN),
     k("那「啵」的一聲，", "追問"), k("是殼破掉的聲音嗎？", "章尾停住，句尾上揚", "S:sound"))
