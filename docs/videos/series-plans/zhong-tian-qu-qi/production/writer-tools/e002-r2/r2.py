@@ -72,11 +72,13 @@ SHOTS = [
          lines=[],
          motion="Zhao bends, picks the shackles up from the dirt and slings them over his right shoulder, his sword staying sheathed at his left hip; only then he strides out through the gate on screen right as the villagers part to both sides; Erniu waves to Xu Yan off screen left and follows him out; all lips stay closed",
          zh="全景、跟拍（往右）、前景籬笆：趙捕頭（黑捕快帽）背影彎腰撿起泥地上的鐵鐐甩上右肩，佩刀一直在左腰刀鞘裡；然後才大步出院門，籬笆外村民往兩邊讓開；二牛（兩手空空）朝左邊的許硯擺手，跟著出院門"),
-    dict(loc="yard", cam="Medium shot, tracking", chars=["xuyan", "qinshuang", "tangxiaotang", "aling"], night="yard",
-         comp=f"medium shot, Xu Yan on screen left in his blue-grey scholar's robe, half-dry with the cuffs still wet, one roll of red paper rolled shut in his right hand with its plain blank back outward; on screen right the three women standing in a row: Qin Shuang nearest with her arms folded and {KNIFE} tucked in the right side of her belt, Tang Xiaotang in the middle, {TANG}, and A-ling last, her sleeves pulled down over her wrists",
+    # live-action prep (2026-11-07, preflight `four`): four named faces drew a stranger in crowded shots, so A-ling, last in
+    # the row and silent here, stands just past the right frame edge; he still walks up to and addresses all three.
+    dict(loc="yard", cam="Medium shot, tracking", chars=["xuyan", "qinshuang", "tangxiaotang"], night="yard",
+         comp=f"medium shot, Xu Yan on screen left in his blue-grey scholar's robe, half-dry with the cuffs still wet, one roll of red paper rolled shut in his right hand with its plain blank back outward; on screen right Qin Shuang and Tang Xiaotang standing in a row: Qin Shuang nearest with her arms folded and {KNIFE} tucked in the right side of her belt, Tang Xiaotang beside her, {TANG}; beyond them A-ling stays off screen past the right frame edge",
          lines=[("xuyan", "三位姑娘，配婚令來得突然，成親的事，我們能不能坐下來談？", "陪笑")],
-         motion="Xu Yan tucks the rolled red paper into the left side of his belt, rubs his hands together and walks up to the three women with an awkward smile, stopping before them; the women do not move and their lips stay closed",
-         zh="中景、跟拍（往右）：許硯（半乾、袖口濕）把捲紅紙塞進腰帶左邊，搓著手走到三個女子面前陪笑（笑得不自在）；秦霜抱胸，三人沒動"),
+         motion="Xu Yan tucks the rolled red paper into the left side of his belt, rubs his hands together and walks up to the women with an awkward smile, stopping before them; the women stay still and their lips stay closed",
+         zh="中景、跟拍（往右）：許硯（半乾、袖口濕）把捲紅紙塞進腰帶左邊，搓著手走到三個女子面前陪笑（笑得不自在）；秦霜抱胸，三人沒動；阿令（排最後）在畫面右邊緣外，畫面裡只有秦霜與唐小棠"),
     dict(loc="yard", cam="Over-the-shoulder medium shot, slow push in", chars=["qinshuang", "xuyan"], night="yard",
          comp=f"over-the-shoulder shot from behind Xu Yan's shoulder and its wet cuff in the left foreground, Qin Shuang facing the camera on screen right with her arms folded, {KNIFE} tucked in the right side of her belt, impatient: brows drawn down, mouth set hard, her eyes on him",
          lines=[("qinshuang", "談什麼？你先說說，你拿什麼養活三個人？", "不耐煩")],
@@ -94,21 +96,25 @@ SHOTS = [
          lines=[("qinshuang", "想辦法不如先動手。把這堆柴劈完，再來跟我談嫁。", "冷")],
          motion="Qin Shuang swings the log underhand and lets it go low toward Xu Yan's feet; it lands on the dirt, rolls twice and stops against the toe of his left cloth shoe, where it stays on the ground to the end; Xu Yan hops half a step back, his lips closed; the knife stays tucked in her belt",
          zh="全景、固定（fix3 重設計：第一格秦霜已經在柴堆前、右手拿著一根手臂粗的木柴；兩人相距兩步、頭到腳都在畫面裡）：秦霜冷著臉，把木柴往許硯腳前低低一丟，滾兩圈停在他左腳鞋尖、留在地上；許硯往後跳半步；柴刀一直插在腰帶右邊"),
+    # live-action prep (2026-11-07, preflight `headroom`): he bends down and straightens up during Tang's line, so the
+    # framing writes the space above his head.
     dict(loc="yard", cam="Low-angle close-up, slow push in", chars=["xuyan"], night="yard",
-         comp="low-angle close-up of Xu Yan in his half-dry scholar's robe with the cuffs still wet, one log lying at his feet at the lower edge of the frame; behind him only the autumn tree and the sky above the same yard",
+         comp="low-angle close-up of Xu Yan in his half-dry scholar's robe with the cuffs still wet, framed with clear space above his head so that his whole head stays inside the frame as he bends down and straightens up, one log lying at his feet at the lower edge of the frame; behind him only the autumn tree and the sky above the same yard",
          lines=[("tangxiaotang", "她要你劈柴，我這邊倒是簡單多了。", "畫外，輕快")],
          motion="he looks down at the log at his feet and swallows, bends down, picks it up and hugs it to his chest, then gives one short nod toward Qin Shuang off screen; his lips stay closed",
-         zh="低角度近景、慢推（從腳邊的木柴帶到臉）：許硯低頭看木柴、嚥口水，彎腰撿起抱在胸前，朝秦霜點一下頭；唐小棠畫外說話"),
+         zh="低角度近景、慢推（從腳邊的木柴帶到臉）：許硯低頭看木柴、嚥口水，彎腰撿起抱在胸前，朝秦霜點一下頭；唐小棠畫外說話；頭上留空，彎腰再站直時整個頭都在畫面裡"),
     dict(loc="yard", cam="Medium shot, tracking", chars=["tangxiaotang", "xuyan"], night="yard",
          comp=f"medium shot, Tang Xiaotang in {TANG}, one small palm-sized gold abacus with wooden beads on her left palm and her right forefinger flicking its beads, and Xu Yan on screen left hugging the log",
          lines=[("tangxiaotang", "我只要你許家的戶籍，相公這兩個字就免了。", "談生意的口氣")],
          motion="flicking the abacus beads, Tang Xiaotang walks from screen right round to Xu Yan and stops one step to his right, tilting her head to look at him; Xu Yan turns his head to follow her, his lips closed",
          zh="中景、跟拍（由右往左）：唐小棠（t2，襦裙從立領到腰一件闔上）左手托金算盤、右手食指撥珠，繞到許硯右側一步，歪頭看他"),
+    # live-action prep (2026-11-07, preflight `headroom`): he speaks while leaning forward, so the framing writes the
+    # space above his head.
     dict(loc="yard", cam="Over-the-shoulder medium shot, slow push in", chars=["xuyan", "tangxiaotang"], night="yard",
-         comp=f"over-the-shoulder shot from behind Tang Xiaotang's shoulder and her looped bun with its pink ribbon in the right foreground, {TANG}, and Xu Yan facing the camera on screen left hugging the log, dumbfounded",
+         comp=f"over-the-shoulder shot from behind Tang Xiaotang's shoulder and her looped bun with its pink ribbon in the right foreground, {TANG}, and Xu Yan facing the camera on screen left hugging the log, dumbfounded, framed with clear space above his head so that his whole head stays inside the frame as he leans forward",
          lines=[("xuyan", "只要戶籍不要人？那跟成親到底差在哪裡？", "傻眼")],
          motion="Xu Yan shifts the log into his left arm, points at himself with his right forefinger and leans forward toward her",
-         zh="過肩（唐小棠肩後拍許硯）、慢推：許硯把木柴換到左手，右手指指自己，往前探身；傻眼"),
+         zh="過肩（唐小棠肩後拍許硯）、慢推：許硯把木柴換到左手，右手指指自己，往前探身；傻眼；頭上留空，探身時整個頭都在畫面裡"),
     # fix3 redesign: her portrait and angle-b grin, so the line plays from behind her (nospeak): the abacus click and
     # Xu Yan's wary face carry the shot; both drafts smiled through the line and showed no abacus.
     dict(loc="yard_cu", cam="Over-the-shoulder close shot, slow push in", chars=["tangxiaotang", "xuyan"], nospeak=["tangxiaotang"], night="yard",
@@ -132,16 +138,21 @@ SHOTS = [
          motion="his eyes follow A-ling off screen to the right, then flick aside and his brows draw together; his lips stay closed",
          zh="眼睛大特寫、慢推（第一格就是眼睛）：瞳孔映淡藍光，眼睛跟著阿令的背影往右移，再一瞟，皺眉；心裡話，嘴閉著"),
     # c13b (2026-11-06 review): split from c13; its own id keeps s14-s40 unchanged.
-    dict(sid="s13b", loc="yard", cam="Medium close-up, slow push in", chars=["xuyan", "qinshuang", "tangxiaotang", "aling"], night="yard",
-         comp="medium close-up of Xu Yan in his half-dry blue-grey scholar's robe with the cuffs still wet, the rolled red paper tucked into the left side of his belt with its plain blank back outward; far off on screen right, soft and out of focus, the three women: Qin Shuang with her arms folded, Tang Xiaotang flicking her abacus, her ruqun one closed garment from the high collar to the waist, and A-ling by the well; behind him only the bamboo fence and the autumn tree of the same yard",
+    # live-action prep (2026-11-07, preflight `four`): the three out-of-focus women made four named people in one shot;
+    # they move off screen right and his eyeline carries the beat, resting on each of them in turn (worded without
+    # "the three women", which makes gen-dh send all three brides' pictures).
+    dict(sid="s13b", loc="yard", cam="Medium close-up, slow push in", chars=["xuyan"], night="yard",
+         comp="medium close-up of Xu Yan in his half-dry blue-grey scholar's robe with the cuffs still wet, the rolled red paper tucked into the left side of his belt with its plain blank back outward, framed alone; the brides stand off screen to the right, all three of them; behind him only the bamboo fence and the autumn tree of the same yard",
          lines=[("xitong", "做不完就抹殺。建議宿主別浪費時間。", "冷")],
-         motion="Xu Yan turns round and looks at the three women on screen right one after another, and his shoulders slump; all lips stay closed",
-         zh="中近景、慢推（2026-11-06 審稿新鏡）：許硯轉身一個一個看向右邊遠處虛焦的三個女子，肩膀垮下來；嘴閉著；系統畫外（冷的「嘀」）"),
-    dict(loc="yard", cam="Full shot, slow push in", chars=["xuyan", "qinshuang", "tangxiaotang", "aling"], night="yard",
-         comp=f"full shot past a wooden eave post in the foreground: on screen left the woodpile, with Qin Shuang walking back to stand beside it with her arms folded; at the back left Tang Xiaotang walking back under the eaves, {TANG}; at the back right A-ling by the well; in the middle Xu Yan in his half-dry robe with the cuffs still wet, one axe with a wooden handle and an iron head leaning against the wall beside him",
+         motion="Xu Yan turns round toward screen right and his eyes stop on three points off screen right one after another, near, middle and far, then his shoulders slump; his lips stay closed",
+         zh="中近景、慢推（2026-11-06 審稿新鏡）：許硯轉身一個一個看向畫面右邊外的三個女子（真人版準備：三個女子移到畫外，視線一近一中一遠停三下），肩膀垮下來；嘴閉著；系統畫外（冷的「嘀」）"),
+    # live-action prep (2026-11-07, preflight `four`): four named people in the wide; A-ling walked off past the well in
+    # s12, so she stays off screen here and the shot keeps Qin Shuang, Tang Xiaotang and Xu Yan's exit to the woodpile.
+    dict(loc="yard", cam="Full shot, slow push in", chars=["xuyan", "qinshuang", "tangxiaotang"], night="yard",
+         comp=f"full shot past a wooden eave post in the foreground: on screen left the woodpile, with Qin Shuang walking back to stand beside it with her arms folded; at the back left Tang Xiaotang walking back under the eaves, {TANG}; A-ling stays off screen, gone past the well; in the middle Xu Yan in his half-dry robe with the cuffs still wet, one axe with a wooden handle and an iron head leaning against the wall beside him",
          lines=[("xuyan", "做不完也得做。秦姑娘要柴，我就先把柴劈了。", "豁出去")],
          motion="Xu Yan draws a deep breath and rolls up both sleeves, grabs the axe from the wall by its handle in his right hand, blade down, swings it onto his right shoulder and walks toward the woodpile on screen left; the others' lips stay closed",
-         zh="全景、慢推、前景屋簷柱子：秦霜回左邊柴堆抱胸、唐小棠（t2）回左後屋簷下、阿令在右後井邊；許硯深吸一口氣捲起袖子，從牆邊抄起斧頭扛上右肩，往左邊柴堆走"),
+         zh="全景、慢推、前景屋簷柱子：秦霜回左邊柴堆抱胸、唐小棠（t2）回左後屋簷下、阿令已走到井的另一邊、在畫外（真人版準備：一鏡最多三個有名字的人）；許硯深吸一口氣捲起袖子，從牆邊抄起斧頭扛上右肩，往左邊柴堆走"),
     # ---- scene 2: the woodpile, early afternoon (slanting light from the right). Axis: Xu Yan left of the
     # chopping block facing right; Xiaohe squatting lower left; Qin Shuang comes from the fence on the right.
     dict(chapter="柴堆", loc="yard_pm", cam="Full shot, slow truck right", chars=["xuyan", "xiaohe"], night="yard_pm",

@@ -32,10 +32,17 @@ LIVE_LOOK = {  # cast.json text -> the live-action text the screen test drew (sc
     "a patched lilac cotton jacket": "an ancient Chinese village child's patched lilac cotton jacket",
     ", an old chopping knife tucked in the belt": ", her wide leather belt plain",
     " with an iron ruler at his belt": "",
+    # Tang Xiaotang wears the high-waisted ruqun with a low neckline the owner picked (2026-11-07: 低胸也是可以), so the CG
+    # spec's closed-collar sentences would contradict her picture and her appearance (found in the e002 live prep)
+    " Tang Xiaotang's high stand-up collar stays closed at her throat.": "",
+    "her peach-pink brocade ruqun one closed garment from the high stand-up collar to the waist": "her peach-pink high-waisted ruqun with its light short jacket",
+    "her ruqun one closed garment from the high collar to the waist": "her peach-pink high-waisted ruqun with its light short jacket",
+    "framed from the chin up, her high stand-up collar closed at her throat": "framed from the chest up",
+    "in her peach-pink brocade ruqun, one closed garment from the high stand-up collar to the waist": "in her peach-pink high-waisted ruqun with its light short jacket",
 }
 tang = next(c for c in cast["characters"] if c["id"] == "tangxiaotang")["appearance"]
 TANG_LIVE = re.sub(r"a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar.*?see-through",
-                   "a peach-pink silk brocade Tang-dynasty high-waisted ruqun: a light cross-collared short jacket open in a soft V "
+                   "a peach-pink silk brocade high-waisted ruqun: a light cross-collared short jacket open in a soft V "
                    "over a chest-high skirt tied above the bust with a ribbon, a low neckline, thick opaque silk", tang)
 
 
@@ -72,6 +79,8 @@ for sid in shots:
     for old, new in LIVE_LOOK.items():
         text = text.replace(old, new)
     text = text.replace(tang, TANG_LIVE)
+    if re.search(r"stand-up collar|closed garment|collar (stays )?closed", text):
+        sys.exit(f"{sid}: a closed-collar sentence for Tang Xiaotang is left in the prompt")
     if "3D" in text or "CG" in text:
         sys.exit(f"{sid}: a 3D CG mention is left in the prompt")
     job["reference_images"] = [live_picture(Path(r).name) for r in job["reference_images"]]
