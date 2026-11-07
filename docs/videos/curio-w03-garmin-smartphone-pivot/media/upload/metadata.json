@@ -93,12 +93,17 @@
   "final_sha256": "e0a462865d504f3f88f82f92271493f288a0d0704e7022d5d63411e67705f78a",
   "branding_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
   "thumbnail": "thumbnail.jpg",
-  "thumbnails": {},
-  "skipped_thumbnail_locales": {
-    "en": "i18n/en.json has no thumbnail words (i18n-sheet --locale en --parts metadata, then i18n-merge)",
-    "ja": "i18n/ja.json has no thumbnail words (i18n-sheet --locale ja --parts metadata, then i18n-merge)",
-    "ko": "i18n/ko.json has no thumbnail words (i18n-sheet --locale ko --parts metadata, then i18n-merge)"
+  "thumbnails": {
+    "en": "thumbnails/en.jpg",
+    "ja": "thumbnails/ja.jpg",
+    "ko": "thumbnails/ko.jpg",
+    "es": "thumbnails/es.jpg",
+    "pt": "thumbnails/pt.jpg",
+    "id": "thumbnails/id.jpg",
+    "th": "thumbnails/th.jpg",
+    "vi": "thumbnails/vi.jpg"
   },
+  "skipped_thumbnail_locales": {},
   "captions": [
     "captions/zh-TW.srt",
     "captions/en.srt",
