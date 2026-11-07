@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+export COLAB_GPU=G4
+cd /tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e002
+for try in 1 2; do timeout 900 bash /home/user/travel_scanner/.agents/skills/minimax-h3-colab/scripts/h3.sh refine --manifest /tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e002/st2c07/st2-part1.json --output-dir /tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e002/st2c07/refined > /tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e002/run4.inner.log 2>&1; [ -s /tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e002/st2c07/refined/c07.mp4 ] && break; done
+echo "== done $(date -u +%T) $(ls /tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e002/st2c07/refined/*.mp4 2>/dev/null)"; bash /home/user/travel_scanner/.agents/skills/minimax-h3-colab/scripts/h3.sh usage | tail -1

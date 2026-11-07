@@ -1,0 +1,65 @@
+{
+  "task": "batch",
+  "status": "completed",
+  "session": "tn-e001d",
+  "gpu": "G4",
+  "jobs": [
+    {
+      "id": "c05-r1",
+      "title": "tai-nainai-e001 c05 ref2va",
+      "status": "completed",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c05-r1.mp4",
+      "started_at": "2026-11-07T07:00:29Z",
+      "seed": 700506,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-11-07T07:05:15Z",
+      "bytes": 905996
+    }
+  ],
+  "log_tail": [
+    "vae minimax_h3_video_vae_int8_convrot.safetensors 2.62 GiB",
+    "vae/minimax_h3_audio_vae_fp32.safetensor(…): reconstructing file:   0%|",
+    "|  0.00B /  605MB",
+    "vae/minimax_h3_audio_vae_fp32.safetensor(…): downloading bytes:           |",
+    "0.00B",
+    "vae minimax_h3_audio_vae_fp32.safetensors 0.56 GiB",
+    "minimax_h3_ref2v_turbo_8step_v1.0_768p_c(…): reconstructing file:   0%|",
+    "|  0.00B / 1.96GB",
+    "minimax_h3_ref2v_turbo_8step_v1.0_768p_c(…): downloading bytes:           |",
+    "0.00B",
+    "loras minimax_h3_ref2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors 1.82 GiB",
+    "[colab] Executing cell 3/8 - 6ffd6edb...",
+    "模式：reference；要求長度：6.000 秒；排程：158 幀 / 6.583 秒（24 fps）",
+    "[colab] Executing cell 4/8 - 2085fe61...",
+    "使用 CLI 上傳的完整 prompt： /content/h3_c05-r1_prompt.txt",
+    "模型收到的完整 prompt：",
+    "overall_soundscape: N/A",
+    "non_diegetic_music: N/A",
+    "[colab] Executing cell 5/8 - e5596a7c...",
+    "[colab] Executing cell 6/8 - c26051a8...",
+    "節點檢查通過，ComfyUI 已啟動",
+    "[colab] Executing cell 7/8 - a3bb4a59...",
+    "已提交推論： 5b550c85-66d9-44eb-8885-7511d84cde50",
+    "[colab] Executing cell 8/8 - 8255eeed...",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "完成： /content/ComfyUI/output/MiniMax_H3_c05-r1_00001-audio.mp4 (0.9 MiB，含影片與音訊)",
+    "COLAB_CLI_OUTPUT_PATH: /content/h3_c05-r1_output.mp4",
+    "[colab] Saving notebook with outputs to '/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/work_c958e52a/c05-r1/MiniMax_H3_Turbo_Colab_output.ipynb'...",
+    "[colab] Downloaded '/content/h3_c05-r1_output.mp4' to '/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c05-r1.mp4'"
+  ],
+  "updated_at": "2026-11-07T07:05:15Z",
+  "current_job": "c05-r1",
+  "session_status": "active",
+  "completed_count": 1,
+  "failed_count": 0,
+  "cancelled_count": 0,
+  "error": null,
+  "results": [
+    {
+      "id": "c05-r1",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c05-r1.mp4",
+      "status": "completed"
+    }
+  ]
+}

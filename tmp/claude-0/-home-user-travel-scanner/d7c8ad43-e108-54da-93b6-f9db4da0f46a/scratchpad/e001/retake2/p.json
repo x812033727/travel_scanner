@@ -1,0 +1,57 @@
+{
+  "task": "batch",
+  "status": "running",
+  "session": "tn-e001b",
+  "gpu": "G4",
+  "jobs": [
+    {
+      "id": "c12-t1",
+      "title": "tai-nainai-e001 c12 ref2va",
+      "status": "generating",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake2/out/c12-t1.mp4",
+      "started_at": "2026-11-07T06:04:33Z",
+      "seed": 700212,
+      "duration_seconds": 5.0
+    },
+    {
+      "id": "c12-t2",
+      "title": "tai-nainai-e001 c12 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake2/out/c12-t2.mp4"
+    }
+  ],
+  "log_tail": [
+    "│ ❱ 287 │   │   reply = self._manager.client.execute_interactive(              │",
+    "│   288 │   │   │   code,                                                      │",
+    "│   289 │   │   │   silent=silent,                                             │",
+    "│   290 │   │   │   store_history=store_history,                               │",
+    "│                                                                              │",
+    "│ /root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/ju │",
+    "│ pyter_kernel_client/wsclient.py:1112 in execute_interactive                  │",
+    "│                                                                              │",
+    "│   1109 │   │   │   # output is done, get the reply                           │",
+    "│   1110 │   │   │   if timeout is not None:                                   │",
+    "│   1111 │   │   │   │   timeout = max(0, deadline - time.monotonic())         │",
+    "│ ❱ 1112 │   │   │   return self._recv_reply(msg_id, timeout=timeout)          │",
+    "│   1113 │                                                                     │",
+    "│   1114 │   def is_alive(self) -> bool:                                       │",
+    "│   1115 │   │   \"\"\"Is the kernel process still running?\"\"\"                    │",
+    "│                                                                              │",
+    "│ /root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/ju │",
+    "│ pyter_kernel_client/wsclient.py:1356 in _recv_reply                          │",
+    "│                                                                              │",
+    "│   1353 │   │   │   │   │   reply =                                           │",
+    "│        self.shell_channel.get_msg(timeout=timeout)                           │",
+    "│   1354 │   │   │   except queue.Empty as e:                                  │",
+    "│   1355 │   │   │   │   msg = \"Timeout waiting for reply\"                     │",
+    "│ ❱ 1356 │   │   │   │   raise TimeoutError(msg) from e                        │",
+    "│   1357 │   │   │   if reply[\"parent_header\"].get(\"msg_id\") != msg_id:        │",
+    "│   1358 │   │   │   │   self.log.debug(\"Ignoring message not from request:    │",
+    "│        %s\", msg_id)                                                          │",
+    "│   1359 │   │   │   │   continue                                              │",
+    "╰──────────────────────────────────────────────────────────────────────────────╯",
+    "TimeoutError: Timeout waiting for reply"
+  ],
+  "updated_at": "2026-11-07T06:05:21Z",
+  "current_job": "c12-t1"
+}
