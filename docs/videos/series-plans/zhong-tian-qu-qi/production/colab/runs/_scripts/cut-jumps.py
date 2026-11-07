@@ -16,7 +16,7 @@ from pathlib import Path
 
 cut = Path(sys.argv[1])
 log = (cut / "final.log").read_text(encoding="utf-8")
-shots = [(s, float(a), float(d)) for s, a, d in re.findall(r"^(s\d+[a-z]?) ([\d.]+) \+([\d.]+)s ", log, re.M)]
+shots = [(s, float(a), float(d)) for s, a, d in re.findall(r"^([sc]\d+[a-z]?) ([\d.]+) \+([\d.]+)s ", log, re.M)]
 mp4 = next(p for p in cut.glob("*.mp4") if not p.name.endswith("-phone.mp4"))
 w, h = 160, 90
 raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(mp4), "-vf", f"scale={w}:{h}:flags=area,format=gray", "-f", "rawvideo", "-"],

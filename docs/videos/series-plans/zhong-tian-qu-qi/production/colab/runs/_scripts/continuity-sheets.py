@@ -26,10 +26,10 @@ PICKS = not (cut / "final.log").exists()
 if PICKS:
     dur = lambda f: float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(f)],
                                          capture_output=True, text=True).stdout)
-    times = {f.stem: (0.0, dur(f)) for f in cut.glob("s*.mp4")}
+    times = {f.stem: (0.0, dur(f)) for f in cut.glob("[sc][0-9]*.mp4")}
 else:
     log = (cut / "final.log").read_text(encoding="utf-8")
-    times = {s: (float(a), float(d)) for s, a, d in re.findall(r"^(s\d+[a-z]?) ([\d.]+) \+([\d.]+)s ", log, re.M)}
+    times = {s: (float(a), float(d)) for s, a, d in re.findall(r"^([sc]\d+[a-z]?) ([\d.]+) \+([\d.]+)s ", log, re.M)}
 FONT = next((str(p) for p in [Path("/usr/share/fonts/opentype/unifont/unifont.otf")] if p.exists()), None)
 FONTARG = f":fontfile={FONT}" if FONT else ""
 mp4 = None if PICKS else next(p for p in cut.glob("*.mp4") if not p.name.endswith("-phone.mp4"))
@@ -61,6 +61,6 @@ for n, scene in enumerate(scenes, 1):
         continue
     sheet = out / f"scene-{n:02d}.jpg"
     subprocess.run(["ffmpeg", "-v", "error", "-y", *sum((["-i", str(r)] for r in rows), []), "-filter_complex", f"vstack=inputs={len(rows)}", str(sheet)], check=True)
-    for p in out.glob(".s*.jpg"):
+    for p in out.glob(".[sc][0-9]*.jpg"):
         p.unlink()
     print(f"{sheet}  ({scene['name']}, {len(rows)} shots)")
