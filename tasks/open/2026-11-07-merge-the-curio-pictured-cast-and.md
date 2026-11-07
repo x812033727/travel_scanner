@@ -1,7 +1,7 @@
 ---
 id: 2026-11-07-merge-the-curio-pictured-cast-and
 title: Merge the curio pictured cast and beat motion tools into main
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-opus-5-5-curio-redo-20
