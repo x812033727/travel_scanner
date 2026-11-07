@@ -37,13 +37,15 @@ MUSIC = "one cue per scene: a slow quiet night suspense cue of low cello and sof
 # the middle, the house door on the right, the gate and fence at the back left (as e005 opens).
 LOC = {
     "kitchen": "Inside the small earthen kitchen of the Xu farmhouse at night, packed earth walls and floor, the plank door on screen left with faint cold moonlight beyond it, a clay stove on screen right with its fire mouth facing left and a fire burning in it, firewood stacked against the wall, lit only by the warm orange glow of the stove fire and a small clay oil lamp",
+    "house_door_night": "Inside the poor thatched farmhouse of the Xu family at night, just behind the half-open plank door, only darkness inside the house, a faint orange glow of a fire far outside the doorway",
     "house": "Inside the poor thatched farmhouse of the Xu family on an autumn morning, earthen walls and a packed earth floor, the plank door on screen left, a big clay water vat by the back wall, a clay rice crock with a wooden lid in the corner by the back wall, a small clay stove on screen right with one small iron pot on it, a low table with two stools, clear morning light slanting in from the door and window on the left",
     "yard_am": "In the dirt yard of the Xu farmhouse on a clear autumn morning, an autumn tree, a bamboo fence, a woodpile on screen left, the house eaves along the back, a wooden table in the middle, the yard gate in the fence on screen right, warm morning sunlight from screen right",
     "yard_day": "In the dirt yard of the Xu farmhouse on a clear autumn day, an autumn tree, a bamboo fence, a woodpile on screen left, a wooden table in the middle, the yard gate in the fence on screen right, bright slanting sunlight from screen right",
-    "yard_night": "In the dirt yard of the Xu farmhouse on a clear autumn night, at the cooking shelter on the east side of the yard: one wooden shelter post on screen left, a clay stove in the middle with one big black iron wok on it giving off white steam, the house door on screen right, the bamboo fence and the yard gate at the back left, only a few broken twigs left beside the stove, lit by the warm orange glow of the stove fire and cold moonlight",
+    "yard_night": "In the dirt yard of the Xu farmhouse on a clear autumn night, at the cooking shelter on the east side of the yard: one wooden shelter post on screen left, a clay stove in the middle with one big black iron wok on it giving off white steam, the house door on screen right about six paces from the stove, the bamboo fence and the yard gate at the back left, only a few broken twigs left beside the stove, lit by the warm orange glow of the stove fire and cold moonlight",
 }
 LIGHT = {
     "kitchen": "the warm orange firelight stays unchanged",
+    "house_door_night": "the faint orange glow from outside stays unchanged",
     "kitchen_fire": "the warm orange firelight stays steady apart from that one flare",
     "house": "the slanting morning light stays unchanged",
     "yard_am": "the warm morning sunlight from the right stays unchanged",
@@ -58,7 +60,7 @@ XU = "his blue-grey scholar's robe with his sleeves rolled up to the elbows"
 BELT = "the rolled red paper tucked into the left side of his belt with its plain blank back outward"
 ALING = "no shackles, her sleeves pulled down over her wrists"
 KNIFE = "one short single-edged knife with an iron-grey blade about a hand and a half long and a wooden handle"
-BOX = "one small wooden casket two palms wide in dark brown lacquer with a brass clasp, plain, with no writing anywhere"
+BOX = "one small wooden casket the size of a book, two palms wide and one palm deep, with a lid hinged at the back, in dark brown lacquer with one brass clasp, small enough to carry in one hand, plain, with no writing anywhere"  # same size in every shot (owner: the box grew and shrank)
 GOLD = "five small yuanbao-shaped gold ingots, plain gold with no marks or writing"
 WOK = "one big black iron wok about two and a half feet across with an ear handle on each side"
 PIG = "one whole black-haired pig, dead and limp with its eyes closed, its four legs tied together with straw rope, no blood and no wound"
@@ -168,7 +170,7 @@ SHOTS = [
          motion="she rises on tiptoe, grips the table edge with both hands, peers into the casket below the frame and bursts into a smile",
          zh="近景、慢推：小禾踮腳趴到桌邊，兩手扒著桌沿往匣裡看，眼睛睜大，笑出來（可以笑）；身後只有院子籬笆"),
     dict(loc="yard_am", cam="Over-the-shoulder medium shot, slow push in", chars=["tangxiaotang", "xuyan"], night="yard_am",
-         comp=f"over-the-shoulder shot from behind Xu Yan's shoulder and his rolled-up sleeve in the left foreground, Tang Xiaotang on screen right across the wooden table framed from the chin up, her high stand-up collar closed at her throat, {TANG}, offhand and unsmiling, both hands on the open casket of gold ingots",
+         comp=f"over-the-shoulder shot past Xu Yan's shoulder in the left foreground, Tang Xiaotang on screen right across the wooden table framed from the chin up, {TANG}, offhand, a cool careless look as if it were nothing, lips pressed flat, never smiling, both hands on {BOX}, its hinged lid standing open behind it, {GOLD} inside",
          lines=[("tangxiaotang", "這點不過是零頭，拿去還，省得錢員外再上門。", "輕描淡寫")],
          motion="she pushes the casket across the table toward Xu Yan with both hands and lifts her chin",
          zh="過肩（許硯肩後拍唐小棠）、慢推（唐小棠下巴以上）：唐小棠兩手把木匣往許硯那邊一推，下巴一抬；輕描淡寫、不笑"),
@@ -199,7 +201,7 @@ SHOTS = [
          motion="his eyes blink once and his gaze settles down and to the right on the bowed head off screen, his lips staying closed",
          zh="眼睛大特寫、慢推（第一格就是眼睛）：瞳孔映淡藍光，眨一下，視線落在低著頭的唐小棠身上"),
     dict(loc="yard_am", cam="Medium shot, tracking", chars=["tangxiaotang", "xuyan", "xiaohe"], night="yard_am",
-         comp=f"medium shot, Tang Xiaotang on screen right, {TANG}, the closed casket in both arms, the corners of her mouth lifting in a slight smile; Xu Yan and little Xiaohe on screen left at the left end of the wooden table, the house eaves on screen right",
+         comp=f"medium shot, Tang Xiaotang on screen right, {TANG}, {BOX}, its lid closed, held easily against her side in one arm, no bigger than a book, the corners of her mouth lifting in a slight smile; Xu Yan and little Xiaohe on screen left at the left end of the wooden table, the house eaves on screen right",
          lines=[("tangxiaotang", "那我先記在帳上。後天日落賺不到，我可要笑你。", "帶一點笑")],
          motion="Tang Xiaotang turns with the casket, walks two steps right, looks back left at Xu Yan, then walks out of the frame on screen right; the others' lips stay closed",
          zh="中景、跟拍（跟著唐小棠往右）：唐小棠（t2）抱起木匣轉身往右邊屋簷下走兩步，停下回頭往左看許硯，嘴角帶一點笑，說完往右出畫；許硯、小禾在左（結尾）"),
@@ -268,12 +270,12 @@ SHOTS = [
          motion="Xu Yan yawns, glances at the bare twigs, leans the pole on the wok and walks right to the house door; Erniu, lips closed, yawns and leaves at the back left",
          zh="近景、跟拍（跟著許硯往右，長鏡買 8 秒）：許硯邊攪邊打呵欠，看一眼空了的柴堆，說完把木棍斜靠在鍋邊，往右邊屋門走去搬柴；左邊緣二牛站起來點頭打呵欠，往左後院門出畫（回家睡）"),
     dict(loc="yard_night", cam="Point-of-view full shot, slow push in", chars=[], night="yard_night", act=4,
-         comp="point-of-view full shot through the narrow gap of the half-open house door, the dark door frame and a bundle of firewood edging the foreground: beyond the gap the steaming big wok left unattended on the stove, one low wooden stool beside it, and one small thin dark figure in a grey-brown short jacket and an old cloth head-wrap, back-lit by the stove fire, his face in deep shadow and never seen, one wooden bucket full of water in both hands",
+         comp="point-of-view full shot through the narrow gap of the half-open house door, the dark door frame and a bundle of firewood edging the foreground: beyond the gap, about six paces away, the steaming big wok left unattended on the stove, one low wooden stool beside it, and one small thin dark figure clearly visible in the middle of the gap in a grey-brown short jacket and an old cloth head-wrap, back-lit by the stove fire, his face in deep shadow and never seen, one wooden bucket full of water in both hands",
          lines=[],
          motion="the dark figure creeps out of the shadow of the fence at the back left to the wok, steps up onto the stool and lifts the bucket with both hands over the mouth of the wok; no one speaks",
          zh="主觀（許硯在屋門內抱一捆柴，從門縫往外看）、慢推、前景門框：門縫外一個黑影（瘦小、灰褐短褐、舊布頭巾、背光、臉在暗處）從左後籬笆陰影摸到鍋邊，一腳踩上板凳，兩手把水桶舉到鍋口上方"),
-    dict(loc="yard_night", cam="Medium close-up to close-up, slow push in", chars=["xuyan"], night="yard_night",
-         comp=f"medium close-up, closing in to a close-up by the end, of Xu Yan just inside the house door, {XU}, {NIGHT}, one bundle of firewood in both arms, shocked and furious, unsmiling; behind him only the darkness inside the house",
+    dict(loc="house_door_night", cam="Medium close-up to close-up, slow push in", chars=["xuyan"], night="house_door_night",
+         comp=f"medium close-up, closing in to a close-up by the end, of Xu Yan standing just inside the house door, facing the camera and looking out through the doorway, {XU}, {NIGHT}, one bundle of firewood in both arms, shocked and furious, staring out at the figure by the wok off screen, unsmiling; behind him only the darkness inside the house; no stove or wok in the frame",
          lines=[("xuyan", "誰在那裡！把水桶給我放下，別碰那口鍋！", "厲聲")],
          motion="the firewood in his arms crashes down to the floor and he braces one hand against the door",
          zh="近景、慢推（中近景推到近景）：許硯在屋門內，懷裡的柴嘩啦掉了一地，一手撐住門板；身後只有屋內的黑暗；驚怒、不笑（結尾，懸念到第 5 集）"),

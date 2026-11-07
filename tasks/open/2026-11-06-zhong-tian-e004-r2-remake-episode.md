@@ -68,3 +68,8 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 | 花費 | RunPod 約 US$15（pod 16:03–22:07 US$15.72，含第 3 集 s06、s08 重抽與精修約 US$0.9） |
 
 `cut-qa.py` 0 problem(s)；整片每鏡中間一格看過，面板字跟稿一致。工作分支 `claude/zt-e004-r2`，備份 `transfer/zt-e904-media`。
+- 2026-11-07 站主看片：「箱子忽大忽小」「最後門口跟鍋子的距離有問題」「主角門口出來沒看到詭異的人，另一個畫面詭異的人在倒東西」。
+  - 木匣：s16、s22 小匣、s19 畫成沒蓋的扁托盤、s25 抱著大木箱。`BOX` 改成「一本書大小、兩掌寬一掌深、後面有鉸鏈的蓋、一手拿得動」，s19、s25 重寫。
+  - 夜景：場景句加「屋門在灶棚右邊六步」；s38 黑影寫成在門縫正中、看得清楚；s39 改用屋內場景（`house_door_night`，對到 `set-xujia-wu-t1`），面向鏡頭看著畫外的黑影，畫面裡沒有灶與鍋。
+  - `colab/runs/e904/fix1` 重抽 s19、s25、s38、s39（種子 9040201／202），排在第 5 集重抽之後同一個 pod；挑好後精修、重剪、重送後台。
+  - 教訓落地：`storyboard-shot-spec.md`、`storyboard-brief-for-planners.md` 加三行（道具尺寸、固定距離、反應鏡的地點）。
