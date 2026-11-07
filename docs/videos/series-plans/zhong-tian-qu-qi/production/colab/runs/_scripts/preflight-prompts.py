@@ -4,6 +4,8 @@
 Each check is a mistake this season paid for at least once (lessons.md §11-§12):
 - ERROR costume: the modern-suit picture with ancient-costume words in the text (e001-r2 s01-s02 drew the robe in the office);
 - ERROR pictures: the header names a different number of <Picture N> than the job sends;
+- ERROR picture-list: one person's "shown in <Picture a>, <Picture b> and <Picture c>" names a picture twice or one the job
+  does not send (retake.py's first drop_pictures left e904 fix2 s05 reading "<Picture 1>, <Picture 1> and <Picture 2>");
 - warn prop: a prop baked into a base appearance (Erniu's carrying pole grew a jar on his back in e001-r2);
 - warn shout: a quoted line of five characters or fewer ending in ！ (painted on screen as a subtitle, e053 s05);
 - warn paper: a letter, note, scroll, notice or paper without blank / out of focus / folded shut / its back (fake text, e054-e056);
@@ -19,6 +21,9 @@ Each check is a mistake this season paid for at least once (lessons.md §11-§12
   fourth (《恁祖媽今年18》 e001 c12 drew a stranger, then three more); on RunPod nine pictures fit, but crowded shots drew
   someone twice (e906-r2 s01: Qin Shuang twice in both seeds, five named). Keep three on screen; the rest from behind,
   off screen, or in the next shot;
+- warn smile-ref: a serious or unsmiling face asked of Xu Yan while his smirking pictures are sent (xuyan-portrait-t1,
+  xuyan-angle-b; only xuyan-angle-a is serious): s18, s22, s34 of e003-r2 smiled through three rounds of text. Drop them
+  with retake.py's "drop_pictures", or hide the mouth;
 - warn headroom: a speaker who stands up, leans over or bends down with no headroom written (the face left the frame while
   speaking, e004-r2 s05, s19, s30): write the space above the head, or where the face sits in the frame.
 Exit 1 on any ERROR; warnings are for the reviewer to accept or fix before the batch.
@@ -61,6 +66,10 @@ def check(manifest):
         m = re.search(r"For the target video, (.*?) (?:is|are) referenced throughout", text)
         if m and len(re.findall(r"<Picture \d+>", m.group(1))) != len(refs):
             found.append(("ERROR", "pictures", f"header names {len(re.findall(r'<Picture \\d+>', m.group(1)))}, job sends {len(refs)}"))
+        for lst in re.findall(r"shown in ((?:<Picture \d+>(?:, | and )?)+)", text):
+            nums = [int(n) for n in re.findall(r"<Picture (\d+)>", lst)]
+            if len(set(nums)) != len(nums) or max(nums) > len(refs):
+                found.append(("ERROR", "picture-list", lst.strip()))
         if PROP.search(text):
             found.append(("warn", "prop", PROP.search(text).group(0)))
         if SHOUT.search(text):
@@ -86,6 +95,9 @@ def check(manifest):
         for name in onscreen:
             if not any(r.startswith(NAMES[name] + "-") for r in refs):
                 found.append(("warn", "unpictured", name))
+        if re.search(r"Xu Yan[^.]{0,300}\b(unsmiling|grave|serious|stern|sour|earnest|brows (level|drawn|pulled))", comp) and \
+                any(r in ("xuyan-portrait-t1.png", "xuyan-angle-b.png") for r in refs):
+            found.append(("warn", "smile-ref", "Xu Yan serious with his smirking picture sent"))
         if "speaks" in text and RISE.search(text) and not HEADROOM.search(text):
             found.append(("warn", "headroom", RISE.search(text).group(0)))
         if len(onscreen) > 3:
