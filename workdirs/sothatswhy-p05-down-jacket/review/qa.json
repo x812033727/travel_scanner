@@ -1,0 +1,69 @@
+{
+  "ok": false,
+  "final_sha256": "6ef984d7b1052a61b7736c0bd5ff353cb93f637bacc2c7ad640e2d5c37a11241",
+  "items": [
+    {
+      "id": "assemble",
+      "ok": true,
+      "detail": "20160 frames, -14.1 LUFS, 0 frames matched their slides; every check passed"
+    },
+    {
+      "id": "render",
+      "ok": true,
+      "detail": "0 slide states drawn with no layout, glyph or font problem, thumbnail included"
+    },
+    {
+      "id": "narration",
+      "ok": true,
+      "detail": "timeline.json approved at 2026-11-06T01:43:09.183Z"
+    },
+    {
+      "id": "pace",
+      "ok": true,
+      "detail": "116 slide states, the longest 9.9 s; none over 15 s"
+    },
+    {
+      "id": "captions",
+      "ok": true,
+      "detail": "caption files for zh-TW, en, ja, ko, every translation current"
+    },
+    {
+      "id": "metadata",
+      "ok": true,
+      "detail": "title, description and tags within YouTube's limits for zh-TW, en, ja, ko, es, pt, id, vi, th; 7 chapters"
+    },
+    {
+      "id": "facts",
+      "ok": true,
+      "detail": "verify-2.md marks no claim NOT FOUND"
+    },
+    {
+      "id": "links",
+      "ok": false,
+      "detail": "1 of 17 links do not open: https://patents.google.com/patent/US4992327A/en (HTTP 503)"
+    },
+    {
+      "id": "thumbnail",
+      "ok": true,
+      "detail": "1280x720 JPEG, 106 KB; the headline is about 34 px tall at 320 px wide; language thumbnails checked: en, ja, ko, es, pt, id, vi, th",
+      "warnings": [
+        "id thumbnail (thumbnails/id.jpg): the headline shrinks to about 21 px at 320 px wide; at least 24 px reads on a phone, so shorten it"
+      ]
+    },
+    {
+      "id": "policy",
+      "ok": true,
+      "detail": "Jev：符合立場 0.80、有示範：不適用（解說）、建議 0.01、業配 0.06，通過"
+    },
+    {
+      "id": "disclosure",
+      "ok": true,
+      "detail": "tick altered or synthetic content: a drama: AI-generated shots and music are always disclosed; upload/metadata.json already says so"
+    }
+  ],
+  "policy_judged": {
+    "request_sha256": "effc823a31653f348108bd297786d2215bc13f567c785b319cb0b319dfcf7c9d",
+    "ok": true,
+    "detail": "Jev：符合立場 0.80、有示範：不適用（解說）、建議 0.01、業配 0.06，通過"
+  }
+}

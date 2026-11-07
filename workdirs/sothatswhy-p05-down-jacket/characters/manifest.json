@@ -1,0 +1,384 @@
+{
+  "look_hash": "94c2d136d35f8664",
+  "look": {
+    "preset": "cute-cartoon",
+    "style": "cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+    "negative": "",
+    "motion": "slow push in or gentle drift, no morphing, no cuts",
+    "candidates": 3,
+    "style_frames": []
+  },
+  "image": {
+    "provider": "minimax",
+    "model": "image-01"
+  },
+  "image_selection_version": 1,
+  "characters": {
+    "chief": {
+      "name": "所長",
+      "candidates": [
+        {
+          "n": 1,
+          "seed": 1,
+          "file": "characters/chief/001.jpg",
+          "sha256": "d2822224102686e5fd332558a32c37803fec76276ecb4af463694d53147be673",
+          "key": "8616a5434ac8425e",
+          "judge": {
+            "overall": 6.62,
+            "passed": false,
+            "scores": {
+              "recognizable": 6.8,
+              "appearance": 6.2,
+              "style": 7,
+              "clean": 6.4,
+              "no_text": 7.2
+            },
+            "problems": [
+              "appearance: missing yellow pencil behind ear → clearly visible bright yellow pencil tucked behind ear",
+              "clean: fingers are undefined and merged together at the hands → distinct chibi fingers clasped neatly",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt"
+            ],
+            "notes": "The visual matches the cute explainer aesthetic and requested clothing accurately. The character is only missing the pencil prop and has slightly indistinct fingers."
+          }
+        },
+        {
+          "n": 2,
+          "seed": 2,
+          "file": "characters/chief/002.jpg",
+          "sha256": "b0d5c49a855b0031bf36d4e3746c47910ce107c4e1b4af9cc8ddd5c4496b7fdf",
+          "key": "2fe565502eae5245",
+          "judge": {
+            "overall": 6.35,
+            "passed": false,
+            "scores": {
+              "recognizable": 6.5,
+              "appearance": 6,
+              "style": 6.8,
+              "clean": 6,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: pencil behind the ear is oversized and appears detached from the head → slender yellow pencil neatly tucked behind ear",
+              "clean: fingers on clasped hands lack clear definition → clearly articulated fingers in clasped pose",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt",
+              "style: the judge found it but did not say what or where (asked: Is the picture in the requested visual style?) → write the correction into the prompt"
+            ],
+            "notes": "The chibi explainer illustration matches the requested character design and palette well. Minor clean-up is needed for hand definition and the pencil scale."
+          },
+          "fixes": [
+            "clearly visible bright yellow pencil tucked behind ear",
+            "distinct chibi fingers clasped neatly"
+          ]
+        },
+        {
+          "n": 3,
+          "seed": 3,
+          "file": "characters/chief/003.jpg",
+          "sha256": "888a3028a9818d0d37dd60e0e9addabd34cccca44a8d36cdc9e9c5213ebaedb8",
+          "key": "125e42602bd856b2",
+          "judge": {
+            "overall": 6.19,
+            "passed": false,
+            "scores": {
+              "recognizable": 6.5,
+              "appearance": 5.5,
+              "style": 6.5,
+              "clean": 6,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: hair is styled in a high grey bun instead of dark hair with a grey streak in a low ponytail → shoulder-length dark hair with a single grey streak in a low ponytail",
+              "clean: fingers on the clasped hands are indistinct and blobby → distinct simple fingers",
+              "appearance: pencil behind the ear is oversized → realistically proportioned pencil behind ear",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt",
+              "style: the judge found it but did not say what or where (asked: Is the picture in the requested visual style?) → write the correction into the prompt"
+            ],
+            "notes": "The character generally matches the requested aesthetic and clothing palette. However, the hairstyle skews older into a full grey topknot rather than the specified dark ponytail."
+          },
+          "fixes": [
+            "clearly visible bright yellow pencil tucked behind ear",
+            "distinct chibi fingers clasped neatly",
+            "slender yellow pencil neatly tucked behind ear",
+            "clearly articulated fingers in clasped pose"
+          ]
+        },
+        {
+          "n": 4,
+          "seed": 101,
+          "file": "characters/chief/101.jpg",
+          "sha256": "203c420a45fa0854f63f2f1d00c00ef32beb60d2d39b4dbc884b4a7c38ae99a9",
+          "key": "868a11e54fb2cbc3",
+          "judge": {
+            "overall": 6.38,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 7,
+              "style": 7,
+              "clean": 6,
+              "no_text": 4
+            },
+            "problems": [
+              "no_text: red seal mark with characters in the bottom right corner → without corner stamp seal",
+              "clean: pencil placement behind ear appears slightly detached → pencil securely tucked behind ear"
+            ],
+            "notes": "The character design and visual style capture the chibi explainer prompt closely. An unwanted red stamp logo appears in the lower corner."
+          },
+          "fixes": [
+            "clearly visible bright yellow pencil tucked behind ear",
+            "distinct chibi fingers clasped neatly",
+            "slender yellow pencil neatly tucked behind ear",
+            "clearly articulated fingers in clasped pose",
+            "shoulder-length dark hair with a single grey streak in a low ponytail",
+            "distinct simple fingers",
+            "realistically proportioned pencil behind ear"
+          ]
+        },
+        {
+          "n": 5,
+          "seed": 103,
+          "file": "characters/chief/103.jpg",
+          "sha256": "9c2c07aee01e9c76812836372b6dd0d8e8625a66965d82700bc8bc87c04333e6",
+          "key": "bd7e2c2a1ed96d4b",
+          "judge": {
+            "overall": 6.5,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 6,
+              "style": 7,
+              "clean": 6,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: missing grey streak in hair and pencil resembles an earring hanging from the lobe → noticeable streak of grey in low ponytail, full yellow pencil resting behind ear",
+              "clean: fingers on clasped hands are muddled and lack separation → clearly drawn clasped fingers"
+            ],
+            "notes": "The chibi design captures the general outfit and cute explainer aesthetic well. Minor inaccuracies remain regarding the pencil placement and hand details."
+          },
+          "fixes": [
+            "clearly visible bright yellow pencil tucked behind ear",
+            "distinct chibi fingers clasped neatly",
+            "slender yellow pencil neatly tucked behind ear",
+            "clearly articulated fingers in clasped pose",
+            "shoulder-length dark hair with a single grey streak in a low ponytail",
+            "distinct simple fingers",
+            "realistically proportioned pencil behind ear",
+            "without corner stamp seal",
+            "pencil securely tucked behind ear"
+          ]
+        }
+      ],
+      "suggested": null,
+      "needs_review": true,
+      "prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text. Character: 所長, a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+      "fixes": [
+        "clearly visible bright yellow pencil tucked behind ear",
+        "distinct chibi fingers clasped neatly",
+        "slender yellow pencil neatly tucked behind ear",
+        "clearly articulated fingers in clasped pose",
+        "shoulder-length dark hair with a single grey streak in a low ponytail",
+        "distinct simple fingers",
+        "realistically proportioned pencil behind ear",
+        "without corner stamp seal",
+        "pencil securely tucked behind ear",
+        "noticeable streak of grey in low ponytail, full yellow pencil resting behind ear",
+        "clearly drawn clasped fingers"
+      ]
+    },
+    "kid": {
+      "name": "小問",
+      "candidates": [
+        {
+          "n": 1,
+          "seed": 1,
+          "file": "characters/kid/001.jpg",
+          "sha256": "f6ac10a18f4a908fc24f51410a0966c312e889d26a0773563794f23cb3ccbb78",
+          "key": "61c11059cb0141f6",
+          "judge": {
+            "overall": 6.38,
+            "passed": false,
+            "scores": {
+              "recognizable": 6.8,
+              "appearance": 6.3,
+              "style": 7,
+              "clean": 6.8,
+              "no_text": 4.2
+            },
+            "problems": [
+              "no_text: Stylized watermark text and red stamp in the bottom right corner → no signature, no watermark, clean background",
+              "appearance: Hair is styled into a mini bun instead of a cowlick on top → one single cowlick hair strand sticking up without a bun",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt",
+              "clean: the judge found it but did not say what or where (asked: Are anatomy and clothing free of faults: correct hands and fingers, no warped face, nothing floating or duplicated?) → write the correction into the prompt"
+            ],
+            "notes": "The visual style and chibi proportions strongly match the intended explainer aesthetic. However, there is a visible artist seal text mark in the lower corner and the hair includes a bun rather than a simple cowlick."
+          }
+        },
+        {
+          "n": 2,
+          "seed": 2,
+          "file": "characters/kid/002.jpg",
+          "sha256": "eea1a82f6e2c42154ec5f93dc844b68214a03461e53c58d9c15e12e72b445084",
+          "key": "fb44c4d9e958aaf5",
+          "judge": {
+            "overall": 6.75,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 7,
+              "style": 7,
+              "clean": 6,
+              "no_text": 7
+            },
+            "problems": [
+              "clean: fingers on hands holding notebook are slightly fused and indistinct → clearly rendered separate fingers holding notebook"
+            ],
+            "notes": "Character appearance and style strongly align with the prompt requirements. Visual execution is clean with minimal anatomical flaws."
+          },
+          "fixes": [
+            "no signature, no watermark, clean background",
+            "one single cowlick hair strand sticking up without a bun"
+          ]
+        },
+        {
+          "n": 3,
+          "seed": 3,
+          "file": "characters/kid/003.jpg",
+          "sha256": "bfca1af0b4b3481d7c9e46b623b5465af986bda2cebb37040ccf3b04dbca256a",
+          "key": "dbfd229b4ec49d8b",
+          "judge": {
+            "overall": 6.31,
+            "passed": false,
+            "scores": {
+              "recognizable": 6.5,
+              "appearance": 5.5,
+              "style": 6.5,
+              "clean": 6.5,
+              "no_text": 7
+            },
+            "problems": [
+              "appearance: hair tied in a small ponytail with a red band instead of a single cowlick on top → short bob with one small cowlick sticking up, no ponytail or hair tie",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt",
+              "style: the judge found it but did not say what or where (asked: Is the picture in the requested visual style?) → write the correction into the prompt",
+              "clean: the judge found it but did not say what or where (asked: Are anatomy and clothing free of faults: correct hands and fingers, no warped face, nothing floating or duplicated?) → write the correction into the prompt"
+            ],
+            "notes": "The illustration matches the cute chibi explainer style and costume specifications well. The hairstyle incorrectly includes a tied ponytail rather than a simple cowlick."
+          },
+          "fixes": [
+            "no signature, no watermark, clean background",
+            "one single cowlick hair strand sticking up without a bun",
+            "clearly rendered separate fingers holding notebook"
+          ]
+        },
+        {
+          "n": 4,
+          "seed": 101,
+          "file": "characters/kid/101.jpg",
+          "sha256": "5a4c50b8abc1d9377e78e7f54be724c48a8e8da5e25fb4201e8fd3ef67de6eeb",
+          "key": "e758d5af930818e7",
+          "judge": {
+            "overall": 6.72,
+            "passed": false,
+            "scores": {
+              "recognizable": 7.2,
+              "appearance": 7,
+              "style": 7.1,
+              "clean": 6.9,
+              "no_text": 4.5
+            },
+            "problems": [
+              "no_text: red seal stamp with text characters in the bottom right corner → without corner signature or seal mark",
+              "clean: the judge found it but did not say what or where (asked: Are anatomy and clothing free of faults: correct hands and fingers, no warped face, nothing floating or duplicated?) → write the correction into the prompt"
+            ],
+            "notes": "The character design and requested explainer aesthetic match the description well. However, an unwanted decorative seal containing text appears in the lower right."
+          },
+          "fixes": [
+            "no signature, no watermark, clean background",
+            "one single cowlick hair strand sticking up without a bun",
+            "clearly rendered separate fingers holding notebook",
+            "short bob with one small cowlick sticking up, no ponytail or hair tie"
+          ]
+        },
+        {
+          "n": 5,
+          "seed": 102,
+          "file": "characters/kid/102.jpg",
+          "sha256": "e170cf6da6e2b7dd7aff6450986484810683e99d3494cda9f48e3282571bfeec",
+          "key": "30ffd50537309afe",
+          "judge": {
+            "overall": 6.09,
+            "passed": false,
+            "scores": {
+              "recognizable": 6.5,
+              "appearance": 6,
+              "style": 6.8,
+              "clean": 6.2,
+              "no_text": 4.5
+            },
+            "problems": [
+              "no_text: small red stamp mark at the bottom center → without stamp logo or mark",
+              "appearance: notebook held in one hand instead of both hands → holding a notebook in both hands",
+              "recognizable: the judge found it but did not say what or where (asked: Is the character distinctive, with a face and silhouette that could be kept the same across many shots?) → write the correction into the prompt",
+              "style: the judge found it but did not say what or where (asked: Is the picture in the requested visual style?) → write the correction into the prompt",
+              "clean: the judge found it but did not say what or where (asked: Are anatomy and clothing free of faults: correct hands and fingers, no warped face, nothing floating or duplicated?) → write the correction into the prompt"
+            ],
+            "notes": "The chibi style and character design closely match the prompt specifications. However, the character is framed quite small and includes a mark at the bottom edge."
+          },
+          "fixes": [
+            "no signature, no watermark, clean background",
+            "one single cowlick hair strand sticking up without a bun",
+            "clearly rendered separate fingers holding notebook",
+            "short bob with one small cowlick sticking up, no ponytail or hair tie",
+            "without corner signature or seal mark"
+          ]
+        },
+        {
+          "n": 6,
+          "seed": 103,
+          "file": "characters/kid/103.jpg",
+          "sha256": "29a78e465fc688b401b635b8fafcd005b44a3242a234fd0cd3e931f7135373fb",
+          "key": "213a58438a253e8f",
+          "judge": {
+            "overall": 6.62,
+            "passed": false,
+            "scores": {
+              "recognizable": 7,
+              "appearance": 7,
+              "style": 7,
+              "clean": 7,
+              "no_text": 4
+            },
+            "problems": [
+              "no_text: red stamp and text watermark in the bottom right corner → remove watermark, no text in corner"
+            ],
+            "notes": "The illustration matches the requested character design and chibi explainer aesthetic well. However, an unwanted watermark seal is visible in the lower right."
+          },
+          "fixes": [
+            "no signature, no watermark, clean background",
+            "one single cowlick hair strand sticking up without a bun",
+            "clearly rendered separate fingers holding notebook",
+            "short bob with one small cowlick sticking up, no ponytail or hair tie",
+            "without corner signature or seal mark",
+            "without stamp logo or mark",
+            "holding a notebook in both hands"
+          ]
+        }
+      ],
+      "suggested": null,
+      "needs_review": true,
+      "prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text. Character: 小問, a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, holding a small plain blank notebook in both hands. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, bright flat colours with soft cel shading on a warm cream paper ground, ink navy, mustard yellow, stamp red only on the answer, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9",
+      "fixes": [
+        "no signature, no watermark, clean background",
+        "one single cowlick hair strand sticking up without a bun",
+        "clearly rendered separate fingers holding notebook",
+        "short bob with one small cowlick sticking up, no ponytail or hair tie",
+        "without corner signature or seal mark",
+        "without stamp logo or mark",
+        "holding a notebook in both hands",
+        "remove watermark, no text in corner"
+      ]
+    }
+  },
+  "contact_sheet": "characters/contact-sheet.png",
+  "generated_at": "2026-11-03T08:32:20.561Z"
+}
