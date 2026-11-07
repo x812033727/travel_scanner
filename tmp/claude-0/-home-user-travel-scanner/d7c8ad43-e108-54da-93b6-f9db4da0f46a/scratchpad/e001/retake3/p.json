@@ -1,0 +1,138 @@
+{
+  "task": "batch",
+  "status": "running",
+  "session": "tn-e001b",
+  "gpu": "G4",
+  "jobs": [
+    {
+      "id": "c01b-r1",
+      "title": "tai-nainai-e001 c01b ref2va",
+      "status": "completed",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c01b-r1.mp4",
+      "started_at": "2026-11-07T06:28:58Z",
+      "seed": 700402,
+      "duration_seconds": 5.0,
+      "finished_at": "2026-11-07T06:30:35Z",
+      "bytes": 372592
+    },
+    {
+      "id": "c02-r1",
+      "title": "tai-nainai-e001 c02 ref2va",
+      "status": "completed",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c02-r1.mp4",
+      "started_at": "2026-11-07T06:30:35Z",
+      "seed": 700403,
+      "duration_seconds": 7.0,
+      "finished_at": "2026-11-07T06:33:15Z",
+      "bytes": 967111
+    },
+    {
+      "id": "c03-r1",
+      "title": "tai-nainai-e001 c03 ref2va",
+      "status": "completed",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c03-r1.mp4",
+      "started_at": "2026-11-07T06:33:15Z",
+      "seed": 700404,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-11-07T06:35:23Z",
+      "bytes": 1019558
+    },
+    {
+      "id": "c05-r1",
+      "title": "tai-nainai-e001 c05 ref2va",
+      "status": "generating",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c05-r1.mp4",
+      "started_at": "2026-11-07T06:35:23Z",
+      "seed": 700406,
+      "duration_seconds": 6.0
+    },
+    {
+      "id": "c08-r1",
+      "title": "tai-nainai-e001 c08 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c08-r1.mp4"
+    },
+    {
+      "id": "c12-r1",
+      "title": "tai-nainai-e001 c12 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c12-r1.mp4"
+    },
+    {
+      "id": "c12-r2",
+      "title": "tai-nainai-e001 c12 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c12-r2.mp4"
+    },
+    {
+      "id": "c15-r1",
+      "title": "tai-nainai-e001 c15 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c15-r1.mp4"
+    },
+    {
+      "id": "c16-r1",
+      "title": "tai-nainai-e001 c16 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c16-r1.mp4"
+    },
+    {
+      "id": "c17-r1",
+      "title": "tai-nainai-e001 c17 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c17-r1.mp4"
+    },
+    {
+      "id": "c18-r1",
+      "title": "tai-nainai-e001 c18 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c18-r1.mp4"
+    },
+    {
+      "id": "c18-r2",
+      "title": "tai-nainai-e001 c18 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c18-r2.mp4"
+    },
+    {
+      "id": "c22-r1",
+      "title": "tai-nainai-e001 c22 ref2va",
+      "status": "queued",
+      "output": "/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/e001/retake3/out/c22-r1.mp4"
+    }
+  ],
+  "log_tail": [
+    "│       \"error\"}                                                               │",
+    "│   242 │   │   else:                                                          │",
+    "│ ❱ 243 │   │   │   reply = self.kernel_client.execute(code, **kwargs)         │",
+    "│   244 │   │   │   if not reply:                                              │",
+    "│   245 │   │   │   │   return []                                              │",
+    "│   246 │   │   │   outputs = reply.get(\"outputs\", [])                         │",
+    "│                                                                              │",
+    "│ /root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/ju │",
+    "│ pyter_kernel_client/client.py:287 in execute                                 │",
+    "│                                                                              │",
+    "│   284 │   │   \"\"\"                                                            │",
+    "│   285 │   │   outputs = []                                                   │",
+    "│   286 │   │   self._set_variables(variables)                                 │",
+    "│ ❱ 287 │   │   reply = self._manager.client.execute_interactive(              │",
+    "│   288 │   │   │   code,                                                      │",
+    "│   289 │   │   │   silent=silent,                                             │",
+    "│   290 │   │   │   store_history=store_history,                               │",
+    "│                                                                              │",
+    "│ /root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/ju │",
+    "│ pyter_kernel_client/wsclient.py:1073 in execute_interactive                  │",
+    "│                                                                              │",
+    "│   1070 │   │   │   # wait for output and redisplay it                        │",
+    "│   1071 │   │   │   while True:                                               │",
+    "│   1072 │   │   │   │   if not self.connection_ready.is_set():                │",
+    "│ ❱ 1073 │   │   │   │   │   raise RuntimeError(\"Connection was lost.\")        │",
+    "│   1074 │   │   │   │                                                         │",
+    "│   1075 │   │   │   │   if timeout is not None:                               │",
+    "│   1076 │   │   │   │   │   timeout = max(0, deadline - time.monotonic())     │",
+    "╰──────────────────────────────────────────────────────────────────────────────╯",
+    "RuntimeError: Connection was lost."
+  ],
+  "updated_at": "2026-11-07T06:35:41Z",
+  "current_job": "c05-r1"
+}
