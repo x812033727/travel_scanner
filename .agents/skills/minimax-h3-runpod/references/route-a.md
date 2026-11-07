@@ -281,4 +281,5 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 **備份要跟著每一批走（2026-11-07）**
 - 站主問「東西都有備份到嗎」：我用 `verify-bk.py` 比對，第 1–4 集舊備份各少 19–125 個檔、另有 27–31 個檔已經改過；第 5、6 集從來沒備份；`_series` 少 2 個。少的都是今天的重抽草稿、精修和改過的 spec。另外兩個系列（奇聞檔案局、原來如此事務所）也在同一天丟了沒備份的語音。
 - 規則：每一批花了錢的東西回來（草稿、精修、配音、定妝照），當天就用 `bk-media.sh` 備份，再用 `verify-bk.py` 比對，看到 `missing=0 differ=0` 才算完成，不要等一集做完才備份。分支名稱加日期（`transfer/zt-e90N-media-YYYYMMDD`），舊的分支不覆蓋。
-- `bk-media.sh` 只略過工具免費重建得回來的東西：`clips/`（`stage-clips.sh`）、`segments-v4/`（`assemble-v4.mjs` 從 `audio/` 與片段重組）、`review/`，以及 `cut/*.mp4`。配音的錄音放在 `audio/`、`audio-<語言>/`，一定要備份。
+- `bk-media.sh` 只略過工具免費重建得回來的東西：`clips/`（`stage-clips.sh`）、`segments-v4/`（`assemble-v4.mjs` 從 `audio/` 與片段重組）、`review/` 裡的預覽和格子圖（`.mp4`、`.jpg`、`.png`），以及 `cut/*.mp4`。配音的錄音放在 `audio/`、`audio-<語言>/`，一定要備份。
+- 第一版把整個 `review/` 都略過了，結果第 53、54 集 `review/recordings` 裡的八語錄音（約 1 GB）一直沒有備份，`verify-bk.py` 也跟著略過，所以從來沒報過。後台匯入資料夾 `zhong-tian-qu-qi-import/` 裡的 104 條八語配音（`dub.*.m4a`）、字幕與說明，也不在任何一集的備份裡。檢查備份時，先列出被略過的資料夾裡有哪些副檔名，有 `.wav`、`.m4a`、`.srt`、`.json` 就要確認它們有備份。
