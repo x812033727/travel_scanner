@@ -127,7 +127,7 @@ scene("epicentre-dot", UNDER + ", one bright glowing spot deep inside the rock a
 kid("kid-epi", K("nodding with a serious little face, both hands out of frame", close=True),
     k("震央，在起點正上方！", "記住了"))
 chief("chief-epi-yes", C("smiling and giving a small nod", close=True),
-      c("對，起點在地底下，震央在它正上方。"))
+      c("對！"))
 kid("kid-whole-q", K("spreading both arms wide with a curious face", where=LIVING),
     k("那地震一開始，", "好奇"), k("是不是全台灣一起搖？", "句尾上揚", "S:whole"))
 scene("ripple-out", "Wide view from a hill of green countryside and small towns, soft round ripples in the ground like rings on a pond, " + DAY,
@@ -209,7 +209,7 @@ scene("wires", "Wide view of tall power poles on green hills under a sunny sky, 
 kid("kid-electric", K("throwing one fist up in the air with a big excited grin", where=LIVING),
     k("警報坐上電，跑贏大個子！", "恍然"))
 scene("wire-close", "Close-up of a power line over green fields with a bright glowing ribbon of light zipping along it, " + DAY,
-      c("對。電腦一算好，警報一下子就送出去。"), c("大個子還在路上，警報已經先到了。"))
+      c("對。電腦一算好，警報一下子就送出去。"), c("遠一點的地方，大個子還沒到，警報先到了。"))
 kid("kid-if-fast", K("tilting her head with a curious squint, both hands out of frame", close=True),
     k("如果大個子也跑那麼快呢？", "句尾上揚"))
 chief("chief-if-fast", C("raising her eyebrows with a playful smile"),
@@ -245,7 +245,7 @@ chief("chief-far", C("leaning in with a friendly smile", close=True),
 kid("kid-four-km", K("with a proud grin, both hands out of frame", close=True),
     k("大約一秒四公里！", "搶答"))
 scene("road-far", "Wide view of a long straight country road across green fields to small houses far away, a huge thick heavy band in the ground rolling slowly beside the road, " + DAY,
-      c("對。所以你家每離震央遠四公里，", "轉向觀眾"), c("大個子就晚大約一秒到。"))
+      c("對。我們自己粗算：你家每離震央遠四公里，", "轉向觀眾"), c("大個子就晚大約一秒到。"))
 kid("kid-far-more", K("spreading her arms wide with a delighted face", where=LIVING),
     k("住得越遠，時間越多！", "恍然"), k("那美濃地震的時候，台北呢？", "句尾上揚", "S:meinong"))
 scene("city-far", "Wide view of a big city of plain smooth unmarked tall buildings in a green basin ringed by hills on a calm sunny morning, a glowing ribbon of light arriving along the power lines on the hills, " + DAY,
@@ -269,7 +269,7 @@ kid("kid-blind", K("smiling with her eyes closed as two happy curved lines, both
 chief("chief-blind-see", C("smiling and nodding a little"),
       c("差不多，是警報還來不及照顧到的地方。"))
 kid("kid-blind-p", K("holding very still with wide alert eyes, both hands out of frame", close=True),
-    k("就像那天早上，", "想起來"), k("先輕輕的，是小信差？", "句尾上揚"))
+    k("那邊也會像我那天一樣，", "想起來"), k("先輕輕的嗎？", "句尾上揚"))
 scene("blind-tilt", "Medium shot of small cartoon houses on green grass with gently tilting roofs and leaning little trees, a soft glow in the ground under them, " + DAY,
       c("對，大個子可能就在後面。"), c("所以在那裡，搖晃本身就是警報。"))
 kid("kid-far-sure", K("hugging a round cushion with a thinking face", where=LIVING),
@@ -297,7 +297,7 @@ scene("city-calm", "Wide view of a big city of plain smooth unmarked tall buildi
 kid("kid-taipei-q", K("leaning in with wide worried eyes, both hands out of frame", close=True),
     k("台北的手機都沒響？", "句尾上揚"))
 scene("city-shake", "Wide view of a big city of plain smooth unmarked tall buildings in a green basin ringed by hills on a sunny morning, the trees on the hills leaning hard, " + DAY,
-      c("沒有。可是那天台北，真的搖得很厲害。", None, "P:taipei"))
+      c("沒有警報。可是那天台北，真的搖得很厲害。", None, "P:taipei"))
 kid("kid-taipei-scared", K("hugging a round cushion tightly with a startled face", where=LIVING),
     k("台北的人一定嚇一跳！", "擔心"))
 chief("chief-taipei-felt", C("nodding slowly with a kind serious face", close=True),
@@ -336,7 +336,7 @@ kid("kid-got1", K("throwing both arms up with a huge happy smile", where=LIVING)
 kid("kid-got2", K("pointing proudly up with one finger and a big grin", close=True),
     k("電腦算好，警報坐上電，", "開心"), k("就跑贏大個子了！", "開心", "P:main"))
 kid("kid-got3", K("nodding firmly with her arms folded and a serious little face", where=LIVING),
-    k("可是震央旁邊會來不及，", "認真"), k("電腦也可能估錯！", "認真"))
+    k("可是震央旁邊可能來不及，", "認真"), k("電腦也可能估錯！", "認真"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
       c("對，就是這樣！下次手機大叫，", "轉向觀眾，輕聲"), c("大個子可能還在路上，馬上保護自己。", "點名回呼"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
@@ -394,7 +394,7 @@ doc = {
                        "以及二〇二四年花蓮大地震時，台北搖得很厲害、手機卻沒響。\n\n"
                        "地震警報不是預測：它是地震已經開始以後，電腦用最早的資料估計出來的，可能估不準，也可能來不及。"
                        "聽到警報，或是覺得在搖，都馬上趴下、掩護、穩住，不用等手機。\n\n"
-                       "本集插圖由 AI 生成，畫的是示意，不是量測。片中的速度、秒數都是氣象署與研究裡的大約數字，每次地震都不一樣。"
+                       "本集插圖由 AI 生成，畫的是示意，不是量測。片中的速度、秒數是氣象署與研究裡的大約數字，有幾個是我們自己粗算的，每次地震都不一樣。"
                        "每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["地震", "地震警報", "國家級警報", "強震即時警報", "P波", "S波", "科普", "原來如此事務所"],
         "video_id": None},
