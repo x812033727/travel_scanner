@@ -1,0 +1,53 @@
+{
+  "approvals": [
+    {
+      "gate": "look",
+      "file": "manifest.json",
+      "sha256": "0cabc5566343c4d620834e2ef075ded4497a35da051f230c52af23bb5d5507a7",
+      "approved_at": "2026-11-07T17:15:16.053Z",
+      "note": "reused the sheets approved earlier for this series"
+    },
+    {
+      "gate": "script",
+      "file": "script.md",
+      "sha256": "9f9c92979cb9add682919677ef9c18fe6a0d6bceb4f6ef75fa881d08ca5afd0b",
+      "approved_at": "2026-11-07T17:17:19.812Z",
+      "note": "fact-check verify-1/2/3 (3 independent rounds, all FIX applied); blind panel 14/14 on round 6 (six readers); script score 41/50, 69/90 (second independent scorer); owner delegated the script gate to Claude"
+    },
+    {
+      "gate": "script",
+      "file": "script.md",
+      "sha256": "e4f74a3fec1492f63fea5c5248df10c6ed0031b50a050fbc5e1d525f043a8624",
+      "approved_at": "2026-11-07T17:17:37.970Z",
+      "note": "re-approved after splitting ancient-salt into two shots (no line changed); fact-check verify-1/2/3, blind panel 14/14, script score 41/50 and 69/90; owner delegated the script gate to Claude"
+    },
+    {
+      "gate": "script",
+      "file": "script.md",
+      "sha256": "00a56362792c2294f5f10e8367ea065fa820dc5b68523516768175f4dd4e3b21",
+      "approved_at": "2026-11-07T17:42:19.451Z",
+      "note": "re-approved after rewording 14 lines check-audio misheard (鹽山→鹽巴山, 海→大海, 做殼→蓋貝殼 and similar; no new claims)"
+    },
+    {
+      "gate": "script",
+      "file": "script.md",
+      "sha256": "1a771327d07d7aa23c7c1ff5a94c493b4100981634fefb0c7757900268a1cc0e",
+      "approved_at": "2026-11-07T17:44:56.540Z",
+      "note": "re-approved after rewording p073 and p128 (misheard; no new claims)"
+    },
+    {
+      "gate": "script",
+      "file": "script.md",
+      "sha256": "12a829539152fa2f4b5116704784739c742c186299dd8e6e2742d157fe43a90b",
+      "approved_at": "2026-11-07T17:46:20.473Z",
+      "note": "re-approved after rewording p110 鹽→鹽巴 (misheard; no new claims)"
+    },
+    {
+      "gate": "audio",
+      "file": "timeline.json",
+      "sha256": "dfcda8291e878662952f9e37a6db60ae04f85b2e340cb493abbe1691dabc7329",
+      "approved_at": "2026-11-07T17:46:47.026Z",
+      "note": "check-audio: 166/166 lines, 0 flagged (24 same-sound or filler only, 5 judged fine by Jev) after rewording 17 misheard lines; owner delegated the audio gate to Claude"
+    }
+  ]
+}
