@@ -206,8 +206,8 @@ scope:
 
 ## Definition of done
 
-- [ ] `production/tools/` 能把一集的 `script.md` 解析成結構化的鏡頭與台詞，加上逐鏡英文正文（`shots-en.json`，以中文那一列的雜湊綁定），產生 `video.json` 與 Ref2VA 第一段 manifest。
-- [ ] 第 1 集跑通：`node tools/video/cli.mjs lint --slug tai-nainai-e001` 零錯，manifest 過 `h3.sh check`。
+- [x] `production/tools/` 能把一集的 `script.md` 解析成結構化的鏡頭與台詞，加上逐鏡英文正文（`shots-en.json`，以中文那一列的雜湊綁定），產生 `video.json` 與 Ref2VA 第一段 manifest。
+- [x] 第 1 集跑通：`node tools/video/cli.mjs lint --slug tai-nainai-e001` 零錯，manifest 過 `h3.sh check`。
 
 ## Steps
 
