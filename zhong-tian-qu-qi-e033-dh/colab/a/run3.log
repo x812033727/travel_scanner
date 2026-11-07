@@ -1,0 +1,13 @@
+start 2026-10-30T21:06:25Z
+{"ok": true, "balance": 716.05, "rate_per_hour": 0.0, "active_assignments": 0, "checked_at": "2026-10-30T21:06:27Z"}
+Colab session ready: zt33u
+up-1 try 1 (5 left) 21:06:35
+{"status": "completed", "session": "zt33u", "seconds": {"s01.mp4": 283.4, "s02.mp4": 160.5, "s03.mp4": 151.3, "s05.mp4": 152.3, "s06.mp4": 121.0}, "error": null}
+up-1 exit=0 21:21:56
+up-2 try 1 (5 left) 21:21:59
+{"status": "failed", "session": "zt33u", "seconds": null, "error": "SeedVR2 failed (exit 1):\n│ /root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/ju │\n│ pyter_kernel_client/wsclient.py:1073 in execute_interactive                  │\n│                                                                              │\n│   1070 │   │   │   # wait for output and redisplay it                        │\n│   1071 │   │   │   while True:                                               │\n│   1072 │   │   │   │   if not self.connection_ready.is_set():                │\n│ ❱ 1073 │   │   │   │   │   raise RuntimeError(\"Connection was lost.\")        │\n│   1074 │   │   │   │                                                         │\n│   1075 │   │   │   │   if timeout is not None:                               │\n│   1076 │   │   │   │   │   timeout = max(0, deadline - time.monotonic())     │\n╰──────────────────────────────────────────────────────────────────────────────╯\nRuntimeError: Connection was lost."}
+up-2 exit=0 21:47:12
+up-2 try 2 (5 left) 21:47:15
+{"status": "completed", "session": "zt33u", "seconds": {"s01.mp4": 151.5, "s02.mp4": 151.5, "s03.mp4": 151.6, "s05.mp4": 152.0, "s06.mp4": 120.8, "s07.mp4": 121.0, "s10.mp4": 152.3, "s11.mp4": 152.2, "s12.mp4": 152.5, "s13.mp4": 152.3}, "error": null}
+up-2 exit=0 22:12:46
+up-3 try 1 (5 left) 22:12:48

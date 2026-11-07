@@ -1,0 +1,12 @@
+start 2026-10-30T19:13:08Z
+refine-a left: [] 19:13:10
+refine-b try 1: s22,s23,s24,s25,s26,s28,s29,s30,s31,s33,s34,s35,s36,s39,s40,s41 19:13:10
+watchdog: refined-b/progress.json stale 506s, killing colab exec 20817
+{"status": "failed", "session": "zt33", "completed": 14, "error": "refine s40 failed (exit -15):\nComfyUI: /content/ComfyUI\n[colab] Executing cell 2/4 - c39297c4...\ndiffusion_models minimax_h3_fl2va_pruned_int8_convrot.safetensors 19.53 GiB\ntext_encoders qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors 14.61 GiB\nvae minimax_h3_video_vae_fp16.safetensors 4.85 GiB\n[colab] Executing cell 3/4 - e8b24357...\nusing the running ComfyUI\nnodes ok\n[colab] Executing cell 4/4 - 78ee4bd2...\nREFINE_FRAMES: 158\nREFINE_SIGMAS: 0.500000, 0.471616, 0.440367, 0.405797, 0.367347, 0.324324, 0.275862, 0.220859, 0.157895, 0.085106, 0.000000\nstill refining… 0 s"}
+refine-b try 2: s40,s41 19:55:10
+{"status": "completed", "session": "zt33", "completed": 2, "error": null}
+refine-b left: [] 20:00:11
+refine-c try 1: s04,s27,s32,s37,s38 20:00:11
+{"status": "completed", "session": "zt33", "completed": 5, "error": null}
+refine-c left: [] 20:10:38
+upscale-a try 1 (0/17) 20:10:38
