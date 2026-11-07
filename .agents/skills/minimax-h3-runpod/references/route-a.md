@@ -249,3 +249,11 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 **種田（RunPod）也用得到的兩件事**（2026-11-07 對照上面一節）
 - RunPod 一支放得下九張參考圖，第四個人不會像 Colab 那樣被模型自己編出來，但人多一樣會出事：r2 第 6 集 c01 五人同框，兩稿都多畫一個秦霜。`preflight-prompts.py` 的 `four` 對一鏡四個以上有名字的人發出警告，寫稿時就壓到三人。
 - 挑完片、精修之前，在本機（免費）跑一次 `python3 -I .agents/skills/minimax-h3-colab/scripts/cuts.py --input-dir runpod/a/st1/out --output-dir <暫存> --json <報告>`，只看報告、不用它剪出來的檔案。報告裡的切點換成 `stage-clips.sh NN sNN@SECS` 的剪點。e905 試跑 35 支，只抓到 s36 的 0.42 秒，和人工挑片排好的 `s36@0.5` 一致。
+
+**容器重啟後 pod 變成沒人管（r2，2026-11-07 兩次）**
+- 05:51 和 07:31 容器重啟後，`h3r.sh batch` 都回「pod session … is running but its gate token is not on this computer」。舊的 pod 照樣計費：第一次空轉到 US$20.46 才被發現，第二次停在 US$3.66。
+- 原因：重啟後 `~/.cache/minimax-h3-runpod/session.json` 沒了，或者第一次問站台時沒有得到回應。舊版 `pod_client.py` 只要沒拿到 200，就把 session.json 刪掉。
+- 修法有兩個：
+  - `pod_client.py` 只在 404 或 pod 已停時才清掉 session.json，其他錯誤保留它、要你再跑一次。
+  - chain 腳本開頭把 `~/.cache/minimax-h3-runpod` 改成連到 scratchpad 的連結，scratchpad 重啟後還在。重啟後直接重跑 chain，就會接回原來的 pod，不用停掉再開新的。
+- 自查時看到這句訊息，先 `h3r.sh stop --session <id>`，不要放著。

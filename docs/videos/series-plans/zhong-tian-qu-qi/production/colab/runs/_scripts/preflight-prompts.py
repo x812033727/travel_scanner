@@ -18,7 +18,9 @@ Each check is a mistake this season paid for at least once (lessons.md §11-§12
 - warn four: four or more named characters on screen in one shot. On Colab Ref2VA holds three portraits and invents the
   fourth (《恁祖媽今年18》 e001 c12 drew a stranger, then three more); on RunPod nine pictures fit, but crowded shots drew
   someone twice (e906-r2 s01: Qin Shuang twice in both seeds, five named). Keep three on screen; the rest from behind,
-  off screen, or in the next shot.
+  off screen, or in the next shot;
+- warn headroom: a speaker who stands up, leans over or bends down with no headroom written (the face left the frame while
+  speaking, e004-r2 s05, s19, s30): write the space above the head, or where the face sits in the frame.
 Exit 1 on any ERROR; warnings are for the reviewer to accept or fix before the batch.
 """
 import json
@@ -27,6 +29,8 @@ import sys
 from pathlib import Path
 
 ANCIENT = re.compile(r"(?<!no )(?<!no ancient clothing, no )\b(topknot|scholar's robe|cloth shoes|cross-collared|ruqun)", re.I)
+RISE = re.compile(r"\b(stands up|rises to (his|her) feet|gets to (his|her) feet|leans (over|forward|across)|bends (down|over))", re.I)
+HEADROOM = re.compile(r"headroom|space above [^.]{0,20}head|whole head (and face )?(stays? |inside )|face (stays )?in the upper (part|half)|face fills the upper", re.I)
 PROP = re.compile(r"\b(carrying pole|a hoe\b|hoe or)", re.I)
 SHOUT = re.compile(r"speaks a short Mandarin line, 「[^」]{1,5}！」")
 PAPER = re.compile(r"\b(letter|note|scroll|notice|paper|résumé|document|ledger|signboard|plaque|banner with)\b", re.I)
@@ -82,6 +86,8 @@ def check(manifest):
         for name in onscreen:
             if not any(r.startswith(NAMES[name] + "-") for r in refs):
                 found.append(("warn", "unpictured", name))
+        if "speaks" in text and RISE.search(text) and not HEADROOM.search(text):
+            found.append(("warn", "headroom", RISE.search(text).group(0)))
         if len(onscreen) > 3:
             found.append(("warn", "four", ", ".join(onscreen)))
         for level, kind, what in found:
