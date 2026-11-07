@@ -38,7 +38,7 @@ TAIL = ("One continuous shot. Natural, realistic live-action human motion; faces
 FACES_RULE = ("Besides them, only the other people the composition names are in the frame; no second copy of anyone appears. "
               "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood.")
 LAMP_SIZE = (" It is the same lamp in every shot: a small brass oil cup with a short wick under a round-bellied clear glass chimney, standing on a plain square dark red-brown wooden base; about thirty centimetres tall in all, about as tall as a forearm is long, small on the long altar table; it never looks bigger than a person's head, and there is only this one lamp in the hall.")  # 小樣燈太大、成片各鏡燈罩不同（2026-11-07）
-NIGHT = (" It is late at night: every window, every doorway and the sky outside are dark, almost black; the only light comes from the lamps and lights this shot describes.")
+NIGHT = (" It is late at night: every window, every doorway and the sky outside are dark, almost black, with no daylight anywhere.")
 EN_NAMES = {
     "yuetang-18": "Shen Yuetang", "yuetang-96": "Shen Yuetang at ninety-six", "yuqin": "Shen Yuqin", "jianbang": "Shen Jianbang",
     "zhiyuan": "Shen Zhiyuan", "xiaoman": "Shen Xiaoman", "fubo": "Fu Bo", "jianye": "Shen Jianye", "meifeng": "Lin Meifeng",
@@ -239,7 +239,7 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                 images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
                 anchors.append(f"the location shown in <Picture {len(images)}> is the set, keeping its layout and props")
             lamp_text = f" The brass oil lamp shows {cast['lamp']['levels'][str(e['lamp'])]}; the light stays as it is through the shot." if e.get("lamp") and not e.get("lamp_changes") else ""
-            if e.get("lamp") or "lamp" in e["prompt"].lower():
+            if e.get("lamp") or (set_id == "shenjia-citang" and re.search(r"\b(oil lamp|the lamp)\b", e["prompt"], re.I)):  # 第 2 集：正廳的 hanging lamp 也被加上長明燈，桌上多一盞油燈
                 lamp_text += LAMP_SIZE  # 小樣 c19–c21：燈畫得比人頭還高（2026-11-07）
             if re.search(r"\bat night\b", e["prompt"], re.I):
                 lamp_text += NIGHT  # 第 1 集 c14：正廳的場景圖是白天畫的，門外亮得像白天（2026-11-07）
