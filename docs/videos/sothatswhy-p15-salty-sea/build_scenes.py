@@ -97,7 +97,7 @@ scene("river-into-sea", "Wide view from a grassy hill of a calm blue river windi
 kid("kid-river-q", K("pointing at the river behind her with a puzzled frown", where=RIVERMOUTH),
     k("河水是淡的耶，", "不解"), k("海怎麼沒有被沖淡？", "句尾上揚"))
 scene("chief-main-q", "Wide view of many little rivers running down from green mountains on every side into one big sparkling blue sea, sunny sky, " + DAY,
-      c("好問題。全世界的河，每天都把好多淡水倒進海裡，", "接住她的問題"), c("可是你去海邊嘗到的海，從來沒有變淡過。", "轉向觀眾"))
+      c("好問題。全世界的河，每天都把好多淡水倒進海裡，", "接住她的問題"), c("可是你嘗到的整片海，從來沒有被沖淡過。", "轉向觀眾"))
 kid("kid-salt-mountain", K("spreading her arms wide with an excited know-it-all grin", close=True),
     k("我知道！", "搶答"), k("海底有一座鹽山，一直在冒鹽！", "很有把握的錯猜", "S:mountain"))
 chief("chief-no-mountain", C("shaking her head gently with a warm amused smile"),
@@ -195,7 +195,7 @@ kid("kid-where-go", K("leaning forward with wide curious eyes", close=True),
 
 # ---------- 第三章：鍋底偷偷把鹽收走 ----------
 scene("seafloor", "Wide underwater view of a calm sandy seafloor deep in the blue sea, soft sunbeams fading from above, a few small fish",
-      c("海水裡溶的東西，出口在鍋底，還有鍋邊。", "接住上一句", "P:exit"), c("這就是我一開始說的那個祕密。", None, "P:secret"), chapter="鍋底和鍋邊，偷偷把鹽收走")
+      c("海水裡溶的東西，出口在鍋底，還有鍋邊。", "接住上一句", "P:exit"), c("鍋底，就是我一開始說的那個海底的祕密。", None, "P:secret"), chapter="鍋底和鍋邊，偷偷把鹽收走")
 scene("mud-layers", "Cutaway view of the seafloor showing soft layers of mud and sand stacked like a layered cake, tiny glittering specks settling down onto the top layer, blue sea above",
       c("海水裡溶著的一些東西，會慢慢沉下去，"), c("跟泥沙一起，變成海底一層一層的泥和石頭。"))
 kid("kid-crust", K("pointing at the inside bottom of " + POT + " with a surprised face", close=True, where=KITCHEN),
@@ -231,15 +231,15 @@ scene("vent-swap", "Close-up of a rocky seafloor chimney with warm shimmering wa
 kid("kid-more-exit", K("leaning forward with both hands out of frame and curious eyes", close=True),
     k("那廚房那種鹽，要怎麼出去？", "句尾上揚", "S:saltexit"))
 chief("chief-salt-exit", C("pointing down with one finger and a knowing smile"),
-      c("它要從鍋邊出去，就像湯熬乾時，鍋邊那一圈鹽。"))
+      c("有一條路在鍋邊，就像湯熬乾時，鍋邊那一圈鹽。"))
 scene("ancient-salt", "Cutaway view of the ground showing a thick shiny white layer of salt buried deep under brown rock, green fields and a few small trees on top, " + DAY,
       c("很久很久以前，有些海灣跟大海隔開了，", None, "P:saltexit"), c("裡面的海水被曬乾，留下厚厚的鹽層，埋進地底下。"))
 kid("kid-balance", K("holding both hands out flat at the same height, a thinking face"),
     k("所以河送進來的鹽，", "推理"), k("海也一直在收？", "句尾上揚"))
 chief("chief-two-exits", C("holding up two fingers with a warm smile"),
-      c("對，只是收得很慢。還記得你找的排水孔嗎？", "點名回呼"), c("水的出口在天上，鹽的出口在鍋底和鍋邊。", None, "P:drain"))
+      c("對，收走的大概跟送來的差不多。還記得排水孔嗎？", "點名回呼"), c("水的出口在天上，鹽的出口在鍋底和鍋邊。", None, "P:drain"))
 scene("balance-pot", "Close-up cutaway of " + POT + " simmering gently, a thin pale crust growing on its inside bottom, soft steam rising, " + DAY,
-      c("一邊加一點鹽，一邊結一點鍋巴。"))
+      c("一邊加一點鹽，一邊在鍋底結鍋巴、在鍋邊留一圈鹽。"))
 chief("chief-steady", C("folding her hands calmly with a gentle smile"),
       c("所以你問，海會不會變成一大片鹽巴？", "點名回呼"), c("海洋學家認為，現在的海，大概已經沒有再越變越鹹了。", None, "P:allsalt"))
 kid("kid-same-q", K("looking out at the sea with one hand on her hip, a curious face", where=BEACH),
@@ -257,7 +257,7 @@ chief("chief-guess-taiwan", C("leaning a little toward the viewer with a playful
 kid("kid-guess", K("tapping her chin with one finger and squinting in thought", close=True, where=BEACH),
     k("熬得很兇的那種？", "猜"))
 chief("chief-later", C("smiling with a small playful shrug"),
-      c("有可能喔，先記著。我們先去一片很熱的海看看。", "賣關子"))
+      c("先記著，等一下揭曉。我們先去一片很熱的海看看。", "賣關子"))
 scene("red-sea", "Wide view of a hot dry desert coast with bare sandy mountains beside a deep blue sea under a blazing sun, heat shimmer, " + DAY,
       c("像紅海，旁邊幾乎都是沙漠，太陽很大，"), c("很少下雨，也幾乎沒有河流進來。"))
 kid("kid-fire-up", K("fanning her face with one hand on a hot sunny day, squinting", where=BEACH),
@@ -295,7 +295,7 @@ chief("chief-back", C("smiling warmly at the viewer with one hand open, filling 
 kid("kid-got1", K("throwing both arms up with a huge happy smile", where=BEACH),
     k("河水帶一點點鹽進海裡，", "篤定"), k("太陽只把水熬走，", "篤定"))
 kid("kid-got2", K("pointing proudly at " + POT + " on the stove with a big grin", close=True, where=KITCHEN),
-    k("海底和海邊，再慢慢把鹽收走！", "開心", "P:main"))
+    k("海底和鍋邊，再慢慢把鹽收走！", "開心", "P:main"))
 chief("chief-safe", C("holding a glass of clear water with a caring smile"),
       c("完全正確！對了，你昨天喝到的那口海水，", "先誇她，再叮嚀"), c("可別拿來解渴。身體要用更多的水排鹽，會越喝越渴。"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
@@ -304,7 +304,7 @@ chief("chief-done", C("smiling warmly at the viewer with her hands clasped", clo
 kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
 chief("outro-chief", "Waist-up medium shot of the chief holding a pretty seashell in one hand with a curious smile, filling the frame, a plain pale wall behind her, bright morning light",
-      c("你去過的海邊，被浪打到的時候，鹹不鹹？", "問句上揚，像聊天"), c("留言告訴我們。"))
+      c("看影片的你呢？你去過的海邊，鹹不鹹？", "問句上揚，像聊天"), c("留言告訴我們。"))
 chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light",
       c("想一起找生活裡的為什麼，就訂閱原來如此事務所。", "誠懇"))
 
@@ -363,6 +363,7 @@ doc = {
         {"title": "USGS Water Science School: Why is the ocean salty?", "url": "https://www.usgs.gov/special-topics/water-science-school/science/why-ocean-salty", "checked_on": CHECKED},
         {"title": "USGS Water Science School: Saline water and salinity", "url": "https://www.usgs.gov/special-topics/water-science-school/science/saline-water-and-salinity", "checked_on": CHECKED},
         {"title": "USGS Water Science School: How much water is there on Earth?", "url": "https://www.usgs.gov/special-topics/water-science-school/science/how-much-water-there-earth", "checked_on": CHECKED},
+        {"title": "USGS Water Science School: Evaporation and the Water Cycle", "url": "https://www.usgs.gov/special-topics/water-science-school/science/evaporation-and-water-cycle", "checked_on": CHECKED},
         {"title": "NASA Earth Observatory: A Measure of Salt", "url": "https://science.nasa.gov/earth/earth-observatory/a-measure-of-salt-78250/", "checked_on": CHECKED},
         {"title": "NASA Earth Observatory: A Global Accounting of Earth's Rivers", "url": "https://science.nasa.gov/earth/earth-observatory/global-accounting-of-earths-rivers-152742", "checked_on": CHECKED},
         {"title": "Chamberlin, Shaw & Rich, Our World Ocean, 8.09 Residence Time (LibreTexts)", "url": "https://geo.libretexts.org/Bookshelves/Oceanography/Our_World_Ocean%3A_Understanding_the_Most_Important_Ecosystem_on_Earth_Essentials_Edition_(Chamberlin_Shaw_and_Rich)/03%3A_New_Page/08%3A_The_Water_Cycle_and_Ocean_Salinity/8.09%3A_Residence_Time", "checked_on": CHECKED},

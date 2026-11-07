@@ -53,7 +53,7 @@
 
 - **片中**：p056–p060、p069–p071、p077–p081、p093
 - **來源**：[10] 蒸發移除水、留下溶解的鹽（verify-1 指出 [9] 沒有這句，改引 Gale）；[2] 雨補充河水；[1] 鹽來自岩石與海底。
-- **注意**：高。「太陽只搬得動水，搬不動鹽」是比喻。在家曬一碟鹽水留下白圈（p073–p074）是蒸發留下溶質的直接推論，安全、不用火。
+- **注意**：高。「太陽只搬得動水，搬不動鹽」是比喻。雨「有的直接下回海上」：USGS Evaporation and the Water Cycle "Most of the water that evaporates from the oceans falls back into the oceans"（verify-3）。在家曬一碟鹽水留下白圈（p073–p074）是蒸發留下溶質的直接推論，安全、不用火。
 
 ## C12 水在海裡平均大約三千年；鹽住幾千萬年
 
@@ -156,3 +156,4 @@
 14. 水產試驗所，臺灣周邊海域漁場環境監測IV（107年度）。https://fisheryprogress.org/sites/default/files/documents_actions/Environmental%20monitoring%20of%20fishing%20grounds%20in%20the%20coastal%20and%20offshore%20waters%20around%20Taiwan.pdf
 16. Wikipedia, Red Sea. https://en.wikipedia.org/wiki/Red_Sea
 17. Wikipedia, Baltic Sea. https://en.wikipedia.org/wiki/Baltic_Sea
+18. USGS Water Science School, Evaporation and the Water Cycle. https://www.usgs.gov/special-topics/water-science-school/science/evaporation-and-water-cycle
