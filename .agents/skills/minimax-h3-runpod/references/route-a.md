@@ -204,3 +204,48 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - 一鏡的提示詞上限 1000 字：多個常數一起用時很容易超過；近景改用一句短的場景句（`*_cu`），全景用 `*_m`，不要拿掉道具與表情。
 - 稿子裡的雷電、閃白這種「整個畫面一下子發白」，模型常常不畫；剪接用 `edit-dh-eNNN.json` 的 `"flash": {"sNN": 0.4}` 加白閃（`assemble-v4.mjs`），再配一個雷聲音效。
 
+
+## Colab 版第 1 集（《恁祖媽今年18》，2026-11-07）學到的
+
+真人短劇第 1 集照同一條路線 A（Ref2VA 960×544 `hero` → σ0.5 refine 到 1312×736，不跑 SeedVR2）在 Colab G4 做完；28 鏡草稿 9 CU、精修約 10 CU。
+跟 RunPod 共通、或寫稿時就能避開的事：
+
+**一鏡最多三個有名字的人**
+- Ref2VA 一支最多放四張參考圖：最多三張角色定妝照，再加一張場景圖。第四個角色只能靠文字，模型會自己編一個人：
+  - c12 寫四個人，第一次草稿多出一個穿米色套裝的女人。
+  - 把林美鳳的外貌寫進正文重抽，又多出三個穿制服的女生。
+- 站主同意的改法：那兩個人移到畫面外，他們的反應交給下一鏡。
+- 寫稿時就把多人鏡控制在三個有名字的人以內；第四個人只拍背影，或放到別鏡。
+
+**模型會跳過開頭的動作**
+- c21 寫「照老習慣撐扶手站起來，才發現不用撐」，兩次小樣她一開頭都已經站著。
+- 改法：起身寫進前一鏡 c20 的結尾。c20 從約 6 秒變約 7 秒，標長鏡、買 8 秒；c21 從站著開始。
+- 一鏡的開頭要和前一鏡的結尾同一個狀態（坐著、站著、手上拿什麼），要轉換的動作放在前一鏡的尾巴。
+
+**鏡中跳鏡要在精修前剪掉，而且剪完要停在 17k+5 格**
+- 跳鏡分兩種，要用不同的方法抓：
+  - c19 的 5 秒眼睛大特寫，第 3.2 秒硬切成一個全景（同一個 seed 每次都一樣）。
+  - c26 是鏡頭慢慢轉去拍燈，掃描抓不到，要看格子圖。
+- 剪完的草稿格數必須是 17k+5（39、56、73、90…），refine 的 notebook 才收。手剪成 77 格送出去才失敗，白開了一個 session；`refine.py --check` 現在會先擋。
+- `.agents/skills/minimax-h3-colab/scripts/h3.sh cuts --input-dir st1/out --output-dir trimmed --manifest st1.json` 在草稿階段（本機、免費）做這兩件事：
+  - 找出鏡中的硬切。分數要過 0.15，而且是前後六格中位數的 8 倍以上才算：c19 是 0.31 對 0.002；c13 書包上的鈴一彈就到 0.16，但周圍有 0.02–0.06，那是動作不是切點。
+  - 剪回切點前的 17k+5 格；剪完短於該鏡的 `min_seconds`，就以結束碼 3 要求重買。
+- 跟剪完才跑的 `cut-jumps.py` 互補：一個在精修前，一個在成品上。
+
+**剪接表要跟著剪過的片段改**
+- `assemble-v4.mjs` 對無聲鏡用 `min(action_seconds, 2.4)` 秒，再跟 `min.<鏡>` 取大的那個。
+- 片段剪到 1.6 秒時，會被撐成 2.4 秒、停格 0.6 秒。
+- 那一鏡的 `action_seconds` 要寫成不超過片段長度，`min` 寫片段長度。
+
+**道具大小只寫在場景圖不夠**
+- 場景圖的提示詞寫了「約三十公分」，片段裡的燈加燈罩仍比人頭還高。
+- 每一鏡的正文都帶同一句用身體比的尺寸，大小就穩了，c18 是小的：「about thirty centimetres tall … about as tall as a forearm is long … never looks bigger than a person's head」。這跟本章「同一個道具忽大忽小」的教訓一致。
+
+**Colab 的批次與容器重啟**
+- runner 的 `prompt_file` 是相對於「執行時所在的資料夾」，不是 manifest 所在的資料夾。在上層資料夾送出子資料夾的 manifest，會讀到上層同名的舊提示詞（報錯「references Picture [4]; it has 3 images」）。一律 `cd` 到 manifest 所在的資料夾再跑 `h3.sh batch`。
+- 容器重啟時 Colab 的 session 照樣開著，每小時約 10 CU。重啟後第一件事是看 `h3.sh usage` 的 `active_assignments`；有就馬上接上同一個 session（`--session` 沿用、`refine.py --only` 跳過已完成的鏡）。不要重開，冷開機一次約 2 CU。
+- 重抽與精修排在同一個 session 裡跑：草稿重抽、產生精修 manifest，再 `h3.sh refine`，省一次冷開機。
+
+**種田（RunPod）也用得到的兩件事**（2026-11-07 對照上面一節）
+- RunPod 一支放得下九張參考圖，第四個人不會像 Colab 那樣被模型自己編出來，但人多一樣會出事：r2 第 6 集 c01 五人同框，兩稿都多畫一個秦霜。`preflight-prompts.py` 的 `four` 對一鏡四個以上有名字的人發出警告，寫稿時就壓到三人。
+- 挑完片、精修之前，在本機（免費）跑一次 `python3 -I .agents/skills/minimax-h3-colab/scripts/cuts.py --input-dir runpod/a/st1/out --output-dir <暫存> --json <報告>`，只看報告、不用它剪出來的檔案。報告裡的切點換成 `stage-clips.sh NN sNN@SECS` 的剪點。e905 試跑 35 支，只抓到 s36 的 0.42 秒，和人工挑片排好的 `s36@0.5` 一致。

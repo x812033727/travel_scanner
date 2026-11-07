@@ -24,7 +24,7 @@ video = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
 mp4 = next(p for p in cut.glob("*.mp4") if not p.name.endswith("-phone.mp4"))
 lines = json.loads(mp4.with_suffix(".lines.json").read_text(encoding="utf-8"))
 log = (cut / "final.log").read_text(encoding="utf-8")
-shots = {s: (float(a), float(a) + float(d)) for s, a, d in re.findall(r"^(s\d+[a-z]?) ([\d.]+) \+([\d.]+)s ", log, re.M)}
+shots = {s: (float(a), float(a) + float(d)) for s, a, d in re.findall(r"^([sc]\d+[a-z]?) ([\d.]+) \+([\d.]+)s ", log, re.M)}
 total = float(re.search(r"^total ([\d.]+)s", log, re.M).group(1))
 scene = {s["id"]: s for s in video["scenes"]}
 onscreen = lambda l: l["speaker"] != "xitong" and l["speaker"] in scene[l["shot"]]["data"].get("characters", []) \
