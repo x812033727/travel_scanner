@@ -619,7 +619,7 @@ test("the manga tier's stills take a move the viewer sees, under their own versi
   const { MANGA_MOTION, MOTION_MANGA_VERSION, MOTION_PROFILES, motionProfile, motionTravel } = await import("./drama.mjs");
   assert.equal(MOTION_MANGA_VERSION, "manga-motion-v1");
   assert.deepEqual(MANGA_MOTION, { zoom: 0.2, panZoom: 1.12, driftZoom: 0.1, driftShare: 0.3, travelSeconds: 3, travelMin: 0.6 });
-  assert.deepEqual(Object.keys(MOTION_PROFILES), ["manga"]);
+  assert.deepEqual(Object.keys(MOTION_PROFILES), ["manga", "beat"], "the manga tier and the opt-in beat move");
   // Only a tier with a profile marks the move; the clips, hybrid and stills tiers add nothing.
   assert.deepEqual(motionMove({ camera: "push in" }, "a", "manga"), { name: "push-in", startsAtIdentity: true, profile: "manga" });
   assert.deepEqual(motionMove({}, "b", "manga"), { name: "drift", startsAtIdentity: true, direction: "right", profile: "manga" });
@@ -670,4 +670,32 @@ test("the manga tier's stills take a move the viewer sees, under their own versi
   assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes, { tier: "manga" })[0].move, { name: "push-in", startsAtIdentity: true, profile: "manga" });
   assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes, { tier: "hybrid" })[0].move, { name: "push-in", startsAtIdentity: true });
   assert.deepEqual(layoutDrama(doc, timeline, frames, clips, keyframes)[0].move, { name: "push-in", startsAtIdentity: true });
+});
+
+test("beat stills take the moves in turn, keep moving the whole shot, and dissolve into each other", async () => {
+  const { BEAT_MOTION, BEAT_MOVES, MOTION_PROFILES, STILL_MOTIONS, beatTransition } = await import("./drama.mjs");
+  const { STILL_MOTION_NAMES, validateVideo } = await import("../core/schema.mjs");
+  assert.deepEqual([...STILL_MOTIONS], [...STILL_MOTION_NAMES]);
+  assert.equal(MOTION_PROFILES.beat, BEAT_MOTION);
+  const names = [0, 1, 2, 3, 4, 5].map((turn) => motionMove({}, `shot-${turn}`, "beat", turn).name);
+  assert.deepEqual(names, [...BEAT_MOVES, BEAT_MOVES[0]], "five moves in turn");
+  for (let i = 1; i < names.length; i += 1) assert.notEqual(names[i], names[i - 1], "never the same move twice in a row");
+  assert.equal(names.filter((name) => name === "push-in").length < names.length / 2, true, "not a zoom on every picture");
+  assert.equal(motionMove({ camera: "slow tilt down" }, "x", "beat", 0).name, "tilt-down", "a named camera move is kept");
+  const push = zoompanExpr(motionMove({}, "a", "beat", 0), 150, { eased: true, travel: 1 });
+  assert.match(push.z, /^1\+0\.18\*/, "a bigger push than the held shot's");
+  const pan = zoompanExpr(motionMove({}, "b", "beat", 1), 150, { eased: true, travel: 1 });
+  assert.equal(pan.z, "1.16");
+  assert.equal(beatTransition({ data: {} }, 0), "cut");
+  assert.equal(beatTransition({ chapter: "two", data: {} }, 5), "cut", "a chapter cuts in");
+  assert.equal(beatTransition({ data: {} }, 5), "dissolve");
+  assert.equal(beatTransition({ data: { transition: "cut" } }, 5), "cut", "a shot's own transition is kept");
+  // The beat profile joins the segment key; a move without it keeps the key it always had.
+  const scene = { frames: 150, keyframe: { file: "keyframes/a.png", sha256: "x" }, transition: "cut" };
+  const plain = motionMove({ camera: "slow pan left" }, "shot-a");
+  assert.notEqual(motionSegmentKey(scene, motionMove({ camera: "slow pan left" }, "shot-a", "beat", 0)), motionSegmentKey(scene, plain));
+  assert.equal(motionSegmentKey(scene, plain), motionSegmentKey(scene, motionMove({ camera: "slow pan left" }, "shot-a", null)));
+  const doc = fixture();
+  assert.deepEqual(validateVideo({ ...doc, still_motion: "beat" }), []);
+  assert.equal(validateVideo({ ...doc, still_motion: "punch" })[0].path, "still_motion");
 });

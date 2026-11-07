@@ -33,11 +33,15 @@ test("the explainer example is valid, lints clean and is drawn in the flat-expla
   assert.equal(hasCast(dramaFixture()), true);
 });
 
-test("an explainer has no characters, no clips, and may use number and comparison cards", () => {
+test("an explainer's characters never speak, it has no clips, and may use number and comparison cards", () => {
   const doc = explainerFixture();
   doc.characters = [{ id: "host", name: "所長", appearance: "a capybara", voice: { provider: "gemini", name: "Kore", style: "開朗" } }];
   doc.scenes[0].data.visual = "clip";
-  assert.deepEqual(paths(validateVideo(doc)), ["characters", "scenes[0].data.visual"]);
+  const spoken = doc.scenes.findIndex((scene) => Array.isArray(scene.lines) && scene.lines.length);
+  doc.scenes[spoken].lines[0].speaker = "host";
+  const errors = validateVideo(doc);
+  assert.deepEqual(paths(errors).map((where) => where.replace(/ \(.*\)/, "")), ["scenes[0].data.visual", `scenes[${spoken}].lines[0].speaker`]);
+  assert.match(errors[1].message, /told by the narrator: its characters are drawn from their sheets, never voiced/);
   const missing = explainerFixture();
   delete missing.scenes[0].data.visual;
   assert.match(validateVideo(missing)[0].message, /all "still"/, "a shot is a clip unless it says still");
