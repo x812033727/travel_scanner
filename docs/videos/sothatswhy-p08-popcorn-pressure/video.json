@@ -1,0 +1,3391 @@
+{
+ "schema_version": 1,
+ "slug": "sothatswhy-p08-popcorn-pressure",
+ "format": "drama",
+ "category": "explainer",
+ "narration_locale": "zh-TW",
+ "target_minutes": [
+  12,
+  14
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+ },
+ "subtitles": {
+  "burn_in": false
+ },
+ "theme": "paper",
+ "look": {
+  "preset": "cute-cartoon"
+ },
+ "series": {
+  "slug": "sothatswhy",
+  "episode": 8,
+  "chapter": 1
+ },
+ "music": {
+  "track": "sothatswhy-p02-bed.m4a",
+  "sha256": "54169439df49a00bc3ad993a148690be9f79d1dff8a4ea5143e64e583001b20c",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "characters": [
+  {
+   "id": "chief",
+   "name": "所長",
+   "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  },
+  {
+   "id": "kid",
+   "name": "小問",
+   "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
+   "voice": {
+    "provider": "gemini",
+    "name": "Leda",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  }
+ ],
+ "loops": [
+  {
+   "setup": "p005",
+   "payoff": "p067",
+   "what": "麵煮得慢是不是山上的瓦斯不夠力"
+  },
+  {
+   "setup": "p011",
+   "payoff": "p216",
+   "what": "一樣是把水加熱，為什麼山上的麵煮不熟、玉米卻會炸開"
+  },
+  {
+   "setup": "p014",
+   "payoff": "p057",
+   "what": "山上那鍋滾水真的有一百度嗎"
+  },
+  {
+   "setup": "p016",
+   "payoff": "p128",
+   "what": "碗底那幾顆為什麼怎麼熱都不爆"
+  },
+  {
+   "setup": "p030",
+   "payoff": "p032",
+   "what": "火開大，水會不會更燙"
+  },
+  {
+   "setup": "p042",
+   "payoff": "p045",
+   "what": "輕飄飄的空氣也會壓東西嗎"
+  },
+  {
+   "setup": "p064",
+   "payoff": "p072",
+   "what": "水一樣在冒泡，山上的麵為什麼還是硬的"
+  },
+  {
+   "setup": "p076",
+   "payoff": "p130",
+   "what": "把蓋子壓緊不讓水氣跑掉，水會不會更燙"
+  },
+  {
+   "setup": "p090",
+   "payoff": "p094",
+   "what": "乾乾硬硬的玉米裡面哪有水"
+  },
+  {
+   "setup": "p102",
+   "payoff": "p106",
+   "what": "水不是熱不過天花板嗎，殼裡怎麼能更熱"
+  },
+  {
+   "setup": "p132",
+   "payoff": "p156",
+   "what": "殼撐破的時候，玉米為什麼會跳起來"
+  },
+  {
+   "setup": "p134",
+   "payoff": "p158",
+   "what": "是不是水氣像火箭一樣把它噴上天"
+  },
+  {
+   "setup": "p146",
+   "payoff": "p148",
+   "what": "黃黃小小的一顆，怎麼變成白白一大朵"
+  },
+  {
+   "setup": "p175",
+   "payoff": "p188",
+   "what": "那聲啵是不是殼破掉的聲音"
+  }
+ ],
+ "youtube": {
+  "category_id": 27,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "山上滾水煮得慢，玉米為什麼又會爆開？｜原來如此事務所",
+  "description": "小問去山上露營，水明明滾了，麵卻煮好久還是硬的；回家用微波爐爆米花，一下子就全爆開。一樣是把水加熱，結果怎麼差這麼多？\n\n這一集，所長和小問跟著同一滴水走：先看滾水為什麼有一個熱不上去的天花板，山上的空氣為什麼讓這個天花板變低；再把水關進玉米的硬殼裡，看它怎麼熱過一百度、撐到殼破；最後用二〇一五年的高速攝影研究，分開殼裂開、跳起來和那聲「啵」是哪三件事。\n\n本集插圖由 AI 生成，畫的是示意，不是量測。片中的沸點、爆開溫度與壓力都是教學資料與研究裡的大約數字；壓力鍋只在片中提到，請不要自己在家做加壓實驗。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-07",
+  "tags": [
+   "爆米花",
+   "沸點",
+   "高山煮麵",
+   "氣壓",
+   "玉山",
+   "科普",
+   "原來如此事務所"
+  ],
+  "video_id": null
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "山上的滾水\n**不到一百度**",
+   "sub": "玉米卻把水關到快一百八十度",
+   "shot": "kid-popcorn-bowl"
+  }
+ },
+ "sources": [
+  {
+   "title": "Virot & Ponomarenko (2015), Popcorn: critical temperature, jump and sound, J. R. Soc. Interface 12: 20141247",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4345489/",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "OpenStax Chemistry 2e, 10.3 Phase Transitions",
+   "url": "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "Wikipedia: High-altitude cooking",
+   "url": "https://en.wikipedia.org/wiki/High-altitude_cooking",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "Wikipedia: Popcorn",
+   "url": "https://en.wikipedia.org/wiki/Popcorn",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "Popcorn Board: What Makes Popcorn Pop?",
+   "url": "https://www.popcorn.org/All-About-Popcorn/What-Makes-Popcorn-Pop",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "Wikipedia: Yushan (mountain)",
+   "url": "https://en.wikipedia.org/wiki/Yushan_(mountain)",
+   "checked_on": "2026-11-07"
+  },
+  {
+   "title": "NOAA JetStream: Air Pressure",
+   "url": "https://www.noaa.gov/jetstream/atmosphere/air-pressure",
+   "checked_on": "2026-11-07"
+  }
+ ],
+ "assets": [],
+ "scenes": [
+  {
+   "id": "kid-camp-pot",
+   "chapter": "山上的麵，家裡的爆米花",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny grassy mountain campsite with green peaks behind her crouching beside a small plain steel camping pot bubbling on a small plain camping gas stove, lifting a few limp pale noodles with chopsticks and frowning, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p001",
+     "speaker": "kid",
+     "text": "所長！我上個月去山上露營，",
+     "pause_after_ms": 100,
+     "emotion": "興奮，跑進來報案的語氣"
+    },
+    {
+     "id": "p002",
+     "speaker": "kid",
+     "text": "水明明已經滾得咕嘟咕嘟，",
+     "pause_after_ms": 100,
+     "emotion": "不解"
+    },
+    {
+     "id": "p003",
+     "speaker": "kid",
+     "text": "麵卻煮好久都還硬硬的！",
+     "pause_after_ms": 100,
+     "emotion": "抱怨"
+    }
+   ]
+  },
+  {
+   "id": "kid-gas-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl at a sunny grassy mountain campsite with green peaks behind her shaking a small camping gas canister next to her ear with a suspicious frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p004",
+     "speaker": "kid",
+     "text": "我還以為是山上的瓦斯，",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p005",
+     "speaker": "kid",
+     "text": "不夠力！",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-popcorn-bowl",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen hugging a big bowl of fluffy white popcorn and grinning, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p006",
+     "speaker": "kid",
+     "text": "可是回家用微波爐爆米花，",
+     "pause_after_ms": 100,
+     "emotion": "轉折"
+    },
+    {
+     "id": "p007",
+     "speaker": "kid",
+     "text": "一下子就啵啵啵全爆開了！",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "chief-same-water",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief raising one finger with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p008",
+     "speaker": "chief",
+     "text": "這兩件事，其實是同一個角色在搗蛋：水。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p009",
+     "speaker": "chief",
+     "text": "你也可以想想看：一樣是把水加熱，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "chief-main-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up both hands like two sides of a scale, eyebrows raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p010",
+     "speaker": "chief",
+     "text": "為什麼山上的水滾了，麵還煮不熟，",
+     "pause_after_ms": 100,
+     "emotion": "放慢"
+    },
+    {
+     "id": "p011",
+     "speaker": "chief",
+     "text": "玉米裡的水，卻能把整顆玉米炸開？",
+     "pause_after_ms": 100,
+     "emotion": "問句"
+    }
+   ]
+  },
+  {
+   "id": "kid-guess-100",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding up both hands with fingers spread wide and a confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p012",
+     "speaker": "kid",
+     "text": "水滾了就是一百度啊！",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    }
+   ]
+  },
+  {
+   "id": "chief-tease-temp",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief tilting her head with a knowing smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p013",
+     "speaker": "chief",
+     "text": "那你猜猜，你在山上煮的那鍋滾水，",
+     "pause_after_ms": 100,
+     "emotion": "賣關子"
+    },
+    {
+     "id": "p014",
+     "speaker": "chief",
+     "text": "真的有一百度嗎？",
+     "pause_after_ms": 100,
+     "emotion": "問句"
+    }
+   ]
+  },
+  {
+   "id": "leftover-kernels",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a few small hard golden popcorn kernels lying at the bottom of a bowl of fluffy white popcorn, bright daylight",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p015",
+     "speaker": "chief",
+     "text": "還有，你那碗爆米花的碗底，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p016",
+     "speaker": "chief",
+     "text": "是不是總剩下幾顆，怎麼熱都不爆？",
+     "pause_after_ms": 100,
+     "emotion": "賣關子"
+    }
+   ]
+  },
+  {
+   "id": "kid-leftover",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen holding one tiny hard golden kernel between two fingers and squinting at it, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p017",
+     "speaker": "kid",
+     "text": "對耶，",
+     "pause_after_ms": 100,
+     "emotion": "想起來"
+    },
+    {
+     "id": "p018",
+     "speaker": "kid",
+     "text": "它們是不是比較懶？",
+     "pause_after_ms": 100,
+     "emotion": "好笑"
+    }
+   ]
+  },
+  {
+   "id": "chief-promise",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief folding her arms with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p019",
+     "speaker": "chief",
+     "text": "答案就藏在水的身上。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p020",
+     "speaker": "chief",
+     "text": "看它是被放開的，還是被關起來的。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "camp-wide",
+   "chapter": "水滾了，不一定是一百度",
+   "template": "shot",
+   "data": {
+    "prompt": "Wide view of a sunny grassy mountain campsite high among green peaks, a small tent and a camping stove with a steaming pot in the middle distance, bright daylight",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p021",
+     "speaker": "chief",
+     "text": "你在山上看到的那鍋滾水，跟家裡的長得一模一樣。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "home-pot",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium shot of a plain steel pot of water boiling hard on a gas stove in a bright sunny home kitchen, big round bubbles and soft white steam, bright daylight",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p022",
+     "speaker": "chief",
+     "text": "水燒到冒大泡泡，在海邊附近，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p023",
+     "speaker": "chief",
+     "text": "大約就是一百度。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-flat",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief pointing down toward the floor with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p024",
+     "speaker": "chief",
+     "text": "你住在平地，家裡的滾水差不多就是這樣。",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "kid-why-bubble",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen crouching to look closely at a pot of boiling water with big round bubbles, curious eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p025",
+     "speaker": "kid",
+     "text": "那水一燙，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p026",
+     "speaker": "kid",
+     "text": "為什麼就會冒大泡泡？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-vapour",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief wiggling her fingers upward like tiny bubbles rising, a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p027",
+     "speaker": "chief",
+     "text": "水越燙，越多水想變成水氣。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p028",
+     "speaker": "chief",
+     "text": "燙到夠了，水裡面就鼓出一顆顆水氣泡泡。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-fire-up",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen pretending to turn a stove knob with a determined grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p029",
+     "speaker": "kid",
+     "text": "那火再開大，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p030",
+     "speaker": "kid",
+     "text": "水不就會更燙？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-fire",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head gently with a kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p031",
+     "speaker": "chief",
+     "text": "不會。水一滾起來，溫度就停住了。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p032",
+     "speaker": "chief",
+     "text": "火開大，只是泡泡冒得更兇。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-where-heat",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a puzzled frown and one finger on her chin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p033",
+     "speaker": "kid",
+     "text": "那多出來的火，",
+     "pause_after_ms": 100,
+     "emotion": "追問"
+    },
+    {
+     "id": "p034",
+     "speaker": "kid",
+     "text": "跑去哪了？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-into-steam",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief lifting one open hand slowly upward like steam rising, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p035",
+     "speaker": "chief",
+     "text": "拿去把水變成水氣，飄走了。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p036",
+     "speaker": "chief",
+     "text": "所以滾水，有一個熱不上去的天花板。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-ceiling",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl reaching one flat hand up high as if touching a ceiling, wide eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p037",
+     "speaker": "kid",
+     "text": "那個天花板，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p038",
+     "speaker": "kid",
+     "text": "在哪裡都一樣高嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-press",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pressing both palms down gently in the air, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p039",
+     "speaker": "chief",
+     "text": "不一定。它要看，水的上面有多少空氣壓著它。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-air-weight",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl waving one hand through the air with a doubtful laugh, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p040",
+     "speaker": "kid",
+     "text": "空氣？",
+     "pause_after_ms": 100,
+     "emotion": "懷疑"
+    },
+    {
+     "id": "p041",
+     "speaker": "kid",
+     "text": "空氣輕飄飄的，",
+     "pause_after_ms": 100,
+     "emotion": "不服氣"
+    },
+    {
+     "id": "p042",
+     "speaker": "kid",
+     "text": "也會壓東西？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-quilt",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief patting her own shoulder as if feeling a soft heavy blanket, a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p043",
+     "speaker": "chief",
+     "text": "會。你頭上有一大層又高又厚的空氣，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p044",
+     "speaker": "chief",
+     "text": "一直輕輕壓著你，也壓著那鍋水。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "thick-quilt",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium shot of a plain steel pot of water on a stove by a sunny seaside, a huge thick soft fluffy quilt of white air resting over the pot, bright daylight",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p045",
+     "speaker": "chief",
+     "text": "就像蓋著一床很厚的空氣棉被。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p046",
+     "speaker": "chief",
+     "text": "水裡的泡泡要冒出來，得先把棉被推開。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-bubble-push",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl pushing both hands forward hard as if shoving open a heavy door, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p047",
+     "speaker": "kid",
+     "text": "泡泡要用力推？",
+     "pause_after_ms": 100,
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "chief-hot-enough",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with one finger raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p048",
+     "speaker": "chief",
+     "text": "對，水要熱到夠，水氣的泡泡才推得開。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p049",
+     "speaker": "chief",
+     "text": "在海邊，這床棉被最厚，水要熱得最多。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-mountain-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny grassy mountain campsite with green peaks behind her pointing up at tall green peaks behind her with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p050",
+     "speaker": "kid",
+     "text": "那爬到山上呢？",
+     "pause_after_ms": 100,
+     "emotion": "追問"
+    }
+   ]
+  },
+  {
+   "id": "chief-thin",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief lifting one hand higher and higher with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p051",
+     "speaker": "chief",
+     "text": "越往上爬，你頭上的空氣就越少，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p052",
+     "speaker": "chief",
+     "text": "那床棉被，就變得又薄又輕。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "thin-quilt",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium shot of a small plain steel camping pot bubbling on a small plain camping gas stove at a sunny grassy mountain campsite with green peaks, a thin light wisp of white air resting over the pot, bright daylight",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p053",
+     "speaker": "chief",
+     "text": "棉被薄了，泡泡不用那麼熱，就推得開。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-cooler-boil",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl at a sunny grassy mountain campsite with green peaks behind her with her mouth open in surprise, both hands on her cheeks, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p054",
+     "speaker": "kid",
+     "text": "所以山上的水，",
+     "pause_after_ms": 100,
+     "emotion": "慢慢想通"
+    },
+    {
+     "id": "p055",
+     "speaker": "kid",
+     "text": "不用那麼燙就滾了？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-3000",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up three fingers with raised eyebrows, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p056",
+     "speaker": "chief",
+     "text": "對。在三千公尺左右的高山上，",
+     "pause_after_ms": 100,
+     "emotion": "數字放慢"
+    },
+    {
+     "id": "p057",
+     "speaker": "chief",
+     "text": "水大約九十度就滾了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-yushan",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pointing up toward one side with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p058",
+     "speaker": "chief",
+     "text": "台灣最高的玉山，將近四千公尺，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p059",
+     "speaker": "chief",
+     "text": "山頂的滾水，連九十度都不到。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-longer",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding both hands as if around a warm bowl, a gentle smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p060",
+     "speaker": "chief",
+     "text": "所以在山上煮麵、煮蛋、煮飯，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p061",
+     "speaker": "chief",
+     "text": "常常都要比在家裡多等一會兒。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-yushan",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny grassy mountain campsite with green peaks behind her gazing up at a tall green mountain peak with clouds around it, eyes wide, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p062",
+     "speaker": "kid",
+     "text": "滾水只有八十幾度！",
+     "pause_after_ms": 100,
+     "emotion": "大驚"
+    }
+   ]
+  },
+  {
+   "id": "kid-but-bubbles",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny grassy mountain campsite with green peaks behind her crouching by a small plain steel camping pot full of bubbles with a stubborn pout, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p063",
+     "speaker": "kid",
+     "text": "可是它一樣在冒泡泡啊，",
+     "pause_after_ms": 100,
+     "emotion": "不服氣"
+    },
+    {
+     "id": "p064",
+     "speaker": "kid",
+     "text": "為什麼麵還是硬的？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-cook",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one hand flat and moving it slowly forward, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p065",
+     "speaker": "chief",
+     "text": "把麵煮熟的，是水的熱，不是泡泡。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p066",
+     "speaker": "chief",
+     "text": "水沒那麼燙，熱鑽進麵裡就比較慢。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-gas",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief shaking her head gently with a kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p067",
+     "speaker": "chief",
+     "text": "所以麵煮得慢，不是瓦斯不夠力，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p068",
+     "speaker": "chief",
+     "text": "是那鍋水本身就沒那麼燙。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-fire-again",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl at a sunny grassy mountain campsite with green peaks behind her pretending to turn a stove knob all the way up with a hopeful grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p069",
+     "speaker": "kid",
+     "text": "那我把火轉到最大！",
+     "pause_after_ms": 100,
+     "emotion": "想到辦法"
+    }
+   ]
+  },
+  {
+   "id": "chief-ceiling-back",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling and tilting one hand side to side, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p070",
+     "speaker": "chief",
+     "text": "還記得那個天花板嗎？火再大，",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
+    },
+    {
+     "id": "p071",
+     "speaker": "chief",
+     "text": "水也只會停在剛剛那個溫度，只是滾得更兇。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-wait-long",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl at a sunny grassy mountain campsite with green peaks behind her sitting by a small plain steel camping pot with her chin in her hands and a bored sigh, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p072",
+     "speaker": "kid",
+     "text": "所以只能煮久一點！",
+     "pause_after_ms": 100,
+     "emotion": "恍然大悟"
+    }
+   ]
+  },
+  {
+   "id": "chief-lid-tease",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pressing one flat hand down on top of the other, eyebrows raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p073",
+     "speaker": "chief",
+     "text": "對。所以有人會想：那如果反過來，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p074",
+     "speaker": "chief",
+     "text": "把蓋子壓得緊緊的，不讓水氣跑掉呢？",
+     "pause_after_ms": 100,
+     "emotion": "賣關子"
+    }
+   ]
+  },
+  {
+   "id": "kid-lid-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen pressing both hands down hard on the lid of a small plain steel camping pot with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p075",
+     "speaker": "kid",
+     "text": "蓋子壓緊，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p076",
+     "speaker": "kid",
+     "text": "水會變得更燙嗎？",
+     "pause_after_ms": 100,
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-cooker",
+   "chapter": "把水關進玉米殼裡",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief raising one hand in a calm careful gesture, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p077",
+     "speaker": "chief",
+     "text": "會。有一種蓋子會鎖緊的鍋，叫做壓力鍋，",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p078",
+     "speaker": "chief",
+     "text": "在很高的山上，常有人用它煮飯。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-careful",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one palm gently like a careful reminder, a serious kind face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p079",
+     "speaker": "chief",
+     "text": "不過壓力鍋要大人照說明使用，",
+     "pause_after_ms": 100,
+     "emotion": "叮嚀"
+    },
+    {
+     "id": "p080",
+     "speaker": "chief",
+     "text": "我們不自己在家關水氣做實驗。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-tiny-pot",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a tiny popcorn kernel between two fingers with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p081",
+     "speaker": "chief",
+     "text": "我們看大自然做的小小壓力鍋就好，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p082",
+     "speaker": "chief",
+     "text": "它就是你碗底的那一顆玉米。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kernel-big",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of one big shiny golden-yellow popcorn kernel with a smooth hard shell, drawn as a flat 2D cartoon object sitting on a pale wooden kitchen table, bright daylight",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p083",
+     "speaker": "chief",
+     "text": "爆米花的玉米，外面包著一層又硬又亮的殼，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p084",
+     "speaker": "chief",
+     "text": "水氣幾乎鑽不出去。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-any-corn",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen holding up a yellow corn on the cob with a hopeful grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p085",
+     "speaker": "kid",
+     "text": "那我吃的玉米棒，",
+     "pause_after_ms": 100,
+     "emotion": "追問"
+    },
+    {
+     "id": "p086",
+     "speaker": "kid",
+     "text": "也能爆嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-strain",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one tiny kernel with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p087",
+     "speaker": "chief",
+     "text": "爆米花用的是一種特別的玉米，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p088",
+     "speaker": "chief",
+     "text": "它的殼特別硬，又不太透水，跟大多數穀物不一樣。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-dry",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen holding a golden kernel close to one eye and squinting hard, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p089",
+     "speaker": "kid",
+     "text": "可是它乾乾硬硬的，",
+     "pause_after_ms": 100,
+     "emotion": "懷疑"
+    },
+    {
+     "id": "p090",
+     "speaker": "kid",
+     "text": "裡面哪有水？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "kernel-inside",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up cutaway of one big shiny golden-yellow popcorn kernel with a smooth hard shell, drawn as a flat 2D cartoon object, its inside filled with soft white starch and one small glistening drop of water tucked in the middle, bright daylight",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p091",
+     "speaker": "chief",
+     "text": "有喔。殼的裡面是軟軟的澱粉，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p092",
+     "speaker": "chief",
+     "text": "中間還藏著一小滴水。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-percent",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her finger and thumb a little apart with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p093",
+     "speaker": "chief",
+     "text": "一顆好爆的玉米，大約一百份裡，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p094",
+     "speaker": "chief",
+     "text": "有十四份左右是水。",
+     "pause_after_ms": 100,
+     "emotion": "數字放慢"
+    }
+   ]
+  },
+  {
+   "id": "kid-hidden-water",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen with her mouth open in surprise, holding up a kernel, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p095",
+     "speaker": "kid",
+     "text": "看起來乾乾的，",
+     "pause_after_ms": 100,
+     "emotion": "驚訝"
+    },
+    {
+     "id": "p096",
+     "speaker": "kid",
+     "text": "原來偷藏著水！",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-heat-kernel",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief rubbing her hands together as if warming them, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p097",
+     "speaker": "chief",
+     "text": "鍋子一熱，這滴水也想變成水氣，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p098",
+     "speaker": "chief",
+     "text": "可是硬殼把它關在裡面。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kernel-puff",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of one big shiny golden-yellow popcorn kernel with a smooth hard shell, drawn as a flat 2D cartoon object on a warm pan, the kernel looking round and puffed up and tight like an overfilled balloon, faint soft warm glow around it, bright daylight",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p099",
+     "speaker": "chief",
+     "text": "水氣出不去，就在殼裡越擠越多。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p100",
+     "speaker": "chief",
+     "text": "整顆玉米，像一顆越吹越緊的氣球。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-hotter-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl frowning and holding her two hands together tight as if squeezing a ball, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p101",
+     "speaker": "kid",
+     "text": "可是你剛剛說，",
+     "pause_after_ms": 100,
+     "emotion": "抓到問題"
+    },
+    {
+     "id": "p102",
+     "speaker": "kid",
+     "text": "水熱不過天花板呀？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-quilt-back",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pressing her palms together hard with raised eyebrows, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p103",
+     "speaker": "chief",
+     "text": "還記得那床空氣棉被嗎？",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
+    },
+    {
+     "id": "p104",
+     "speaker": "chief",
+     "text": "在殼裡，壓著水的不是棉被，是越擠越多的水氣。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-higher-ceiling",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief lifting one flat hand higher and higher in steps, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p105",
+     "speaker": "chief",
+     "text": "壓得越用力，泡泡越難推開，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p106",
+     "speaker": "chief",
+     "text": "水就得熱過平地的滾水，天花板也跟著升高。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-mountain-flip",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen pointing at a golden kernel in her palm with an excited grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p107",
+     "speaker": "kid",
+     "text": "跟山上剛好相反！",
+     "pause_after_ms": 100,
+     "emotion": "想通"
+    }
+   ]
+  },
+  {
+   "id": "chief-180",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one finger with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p108",
+     "speaker": "chief",
+     "text": "對。研究的人量過，玉米大多在一百八十度左右爆開，",
+     "pause_after_ms": 100,
+     "emotion": "數字放慢"
+    }
+   ]
+  },
+  {
+   "id": "chief-ten-times",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief spreading her arms wide as if holding something very tight, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p109",
+     "speaker": "chief",
+     "text": "那時殼裡的壓力，大約是外面空氣的九到十倍。",
+     "pause_after_ms": 100,
+     "emotion": "數字放慢"
+    }
+   ]
+  },
+  {
+   "id": "kid-ten-times",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl puffing out her cheeks like a tight balloon and laughing, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p110",
+     "speaker": "kid",
+     "text": "殼快被撐破了！",
+     "pause_after_ms": 100,
+     "emotion": "好笑"
+    }
+   ]
+  },
+  {
+   "id": "chief-liquid",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief raising one finger with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p111",
+     "speaker": "chief",
+     "text": "還有一件怪事：研究的人算過，殼破之前，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p112",
+     "speaker": "chief",
+     "text": "裡面大部分的水，其實還是液體。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-still-water",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a puzzled frown and one finger on her chin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p113",
+     "speaker": "kid",
+     "text": "都那麼燙了，",
+     "pause_after_ms": 100,
+     "emotion": "不解"
+    },
+    {
+     "id": "p114",
+     "speaker": "kid",
+     "text": "還沒變成水氣？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-held",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pressing both palms together tightly, then easing them apart slightly, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p115",
+     "speaker": "chief",
+     "text": "對，它們被壓得太緊，變不了。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p116",
+     "speaker": "chief",
+     "text": "等殼一破、壓力一鬆，它們才急著變成水氣。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-cooking",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p117",
+     "speaker": "chief",
+     "text": "這段時間，裡面的澱粉也被燙得又軟又黏，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p118",
+     "speaker": "chief",
+     "text": "像一團準備好的麵糊。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-big-fire",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen pretending to turn a stove knob all the way up with a mischievous grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p119",
+     "speaker": "kid",
+     "text": "那我火開超大，",
+     "pause_after_ms": 100,
+     "emotion": "試探"
+    },
+    {
+     "id": "p120",
+     "speaker": "kid",
+     "text": "是不是爆得更快？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-too-fast",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief tilting one hand side to side with an honest smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p121",
+     "speaker": "chief",
+     "text": "太快也不好。外面的水氣太早撐破殼，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p122",
+     "speaker": "chief",
+     "text": "中間的澱粉還沒燙軟，就變成中間硬硬的半顆。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-lazy-back",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen holding up one tiny hard leftover kernel with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p123",
+     "speaker": "kid",
+     "text": "那碗底那幾顆，",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
+    },
+    {
+     "id": "p124",
+     "speaker": "kid",
+     "text": "為什麼就是不爆？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-too-dry",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her finger and thumb almost touching, a gentle smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p125",
+     "speaker": "chief",
+     "text": "常見的原因，是它太乾了。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p126",
+     "speaker": "chief",
+     "text": "水太少，擠不出夠大的力氣撐破殼。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-tip",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pointing at the tip of a tiny kernel between two fingers, eyebrows raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p127",
+     "speaker": "chief",
+     "text": "還有，玉米尖尖那頭接著玉米棒，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p128",
+     "speaker": "chief",
+     "text": "那裡不太擋得住水氣，加熱太慢，水氣會偷偷漏走。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-leak",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl making a small whoosh shape with her hand by her mouth, a knowing grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p129",
+     "speaker": "kid",
+     "text": "漏氣了，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p130",
+     "speaker": "kid",
+     "text": "就跟山上那鍋水一樣！",
+     "pause_after_ms": 100,
+     "emotion": "想通"
+    }
+   ]
+  },
+  {
+   "id": "kid-crack-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny home kitchen staring at a golden kernel on a warm pan with wide eyes, holding her breath, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p131",
+     "speaker": "kid",
+     "text": "那殼終於撐破的時候，",
+     "pause_after_ms": 100,
+     "emotion": "追問"
+    },
+    {
+     "id": "p132",
+     "speaker": "kid",
+     "text": "它為什麼會跳起來？",
+     "pause_after_ms": 100,
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "kid-rocket",
+   "chapter": "殼破了，接著才跳",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl pretending to launch a rocket upward from her hands with a big grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p133",
+     "speaker": "kid",
+     "text": "我知道！水氣從裂縫噴出來，",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p134",
+     "speaker": "kid",
+     "text": "像火箭把它推上天！",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-paper",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief tapping the side of her glasses with a knowing smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p135",
+     "speaker": "chief",
+     "text": "很多人都這樣猜。二〇一五年，法國有兩位研究的人，",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p136",
+     "speaker": "chief",
+     "text": "想把這件事看清楚。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "camera",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a big black high-speed camera on a tripod pointing at a plain round hot plate with a few golden popcorn kernels on it, in a bright tidy lab, bright daylight",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p137",
+     "speaker": "chief",
+     "text": "他們把玉米放在一塊熱鐵板上，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p138",
+     "speaker": "chief",
+     "text": "用一秒拍將近三千張的高速相機，慢慢看。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-3000",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl blinking fast with her mouth open in amazement, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p139",
+     "speaker": "kid",
+     "text": "一秒三千張！",
+     "pause_after_ms": 100,
+     "emotion": "驚奇"
+    },
+    {
+     "id": "p140",
+     "speaker": "kid",
+     "text": "看到什麼了？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "kernel-crack",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of one big shiny golden-yellow popcorn kernel with a smooth hard shell, drawn as a flat 2D cartoon object on a warm pan with one thin crack opening across its shell and a small puff of soft white starch peeking out, bright daylight",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p141",
+     "speaker": "chief",
+     "text": "先是殼裂開一條縫，軟軟的澱粉，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p142",
+     "speaker": "chief",
+     "text": "就從裂縫裡一下子鼓了出來。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-white",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief opening both hands wide like a flower blooming, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p143",
+     "speaker": "chief",
+     "text": "關了很久的水氣，一下子全部放開，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p144",
+     "speaker": "chief",
+     "text": "把那團軟澱粉，吹成一大朵白白的泡泡。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-white-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen holding one fluffy white popped popcorn next to one small golden kernel, puzzled, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p145",
+     "speaker": "kid",
+     "text": "怪不得黃黃小小的一顆，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p146",
+     "speaker": "kid",
+     "text": "會變成白白一大朵？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-crispy",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p147",
+     "speaker": "chief",
+     "text": "對。黃色其實只在那層殼上，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p148",
+     "speaker": "chief",
+     "text": "裡面的澱粉，本來就是白的。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-set",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pressing her fingertips together as if feeling something crisp, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p149",
+     "speaker": "chief",
+     "text": "那團白泡泡一離開熱鍋就變涼，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p150",
+     "speaker": "chief",
+     "text": "馬上變硬，就是你咬的那口脆脆的。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-jump-yet",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl leaning forward eagerly with both fists clenched, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p151",
+     "speaker": "kid",
+     "text": "那它什麼時候跳？",
+     "pause_after_ms": 100,
+     "emotion": "追問"
+    }
+   ]
+  },
+  {
+   "id": "starch-leg",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a popcorn piece on a warm round pan, one soft white puff of starch pressed flat against the pan like a little springy foot, bright daylight",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p152",
+     "speaker": "chief",
+     "text": "鼓出來的澱粉，有一塊壓在鍋子上，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p153",
+     "speaker": "chief",
+     "text": "像長出一隻短短的小腳。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-leg",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl laughing and pointing at her own leg, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p154",
+     "speaker": "kid",
+     "text": "爆米花也有腳？",
+     "pause_after_ms": 100,
+     "emotion": "好笑，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-spring",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pressing one hand down then lifting it quickly like a spring, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p155",
+     "speaker": "chief",
+     "text": "那隻腳先被壓扁，再像彈簧一樣彈回去，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p156",
+     "speaker": "chief",
+     "text": "就把整顆玉米踢離鍋子。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-not-rocket",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head gently with a kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p157",
+     "speaker": "chief",
+     "text": "所以讓它跳起來的主角，是那隻澱粉腳，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p158",
+     "speaker": "chief",
+     "text": "不是水氣像火箭那樣噴。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-squat",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny home kitchen squatting low and then springing up with arms in the air, laughing, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p159",
+     "speaker": "kid",
+     "text": "跟我跳遠一樣，",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    },
+    {
+     "id": "p160",
+     "speaker": "kid",
+     "text": "先蹲再跳！",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "chief-flea",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding her finger and thumb close together with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p161",
+     "speaker": "chief",
+     "text": "研究的人說，它的跳法有點像跳蚤，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p162",
+     "speaker": "chief",
+     "text": "也有點像某些會彈出種子的植物。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-flea-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl crouching low and pretending to hop like a tiny flea, giggling, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p163",
+     "speaker": "kid",
+     "text": "跳蚤？",
+     "pause_after_ms": 100,
+     "emotion": "好笑"
+    },
+    {
+     "id": "p164",
+     "speaker": "kid",
+     "text": "那它跳得多快？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-fast",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief snapping her fingers with raised eyebrows, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p165",
+     "speaker": "chief",
+     "text": "從殼裂開到跳起來，只有百分之幾秒，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p166",
+     "speaker": "chief",
+     "text": "快到你的眼睛只看到一閃。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-flip",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl spinning one finger round in the air with a dizzy grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p167",
+     "speaker": "kid",
+     "text": "眨一下眼就錯過了！",
+     "pause_after_ms": 100,
+     "emotion": "好笑"
+    }
+   ]
+  },
+  {
+   "id": "chief-height",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one hand just a little above the other, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p168",
+     "speaker": "chief",
+     "text": "如果只靠那一踢，他們估計，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p169",
+     "speaker": "chief",
+     "text": "大約能跳一公分左右。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-one-cm",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding her finger and thumb a tiny bit apart with raised eyebrows, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p170",
+     "speaker": "kid",
+     "text": "才一公分？",
+     "pause_after_ms": 100,
+     "emotion": "驚訝"
+    },
+    {
+     "id": "p171",
+     "speaker": "kid",
+     "text": "我還以為它會飛好高！",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-one-cm",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief laughing softly with one hand raised a little, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p172",
+     "speaker": "chief",
+     "text": "研究的人說，他們看到的跳法，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p173",
+     "speaker": "chief",
+     "text": "跟這個估計差不多是同一個大小。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-pop-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen cupping one hand behind her ear and listening hard, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p174",
+     "speaker": "kid",
+     "text": "那「啵」的一聲，",
+     "pause_after_ms": 100,
+     "emotion": "追問"
+    },
+    {
+     "id": "p175",
+     "speaker": "kid",
+     "text": "是殼破掉的聲音嗎？",
+     "pause_after_ms": 100,
+     "emotion": "章尾停住，句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-mic",
+   "chapter": "那聲啵是哪一步",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief cupping one hand behind her ear with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p176",
+     "speaker": "chief",
+     "text": "他們也想知道。所以在旁邊放了一支麥克風，",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p177",
+     "speaker": "chief",
+     "text": "一邊錄聲音，一邊拍。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "mic",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a round black microphone on a small stand beside a plain round hot plate with golden popcorn kernels on it, in a bright tidy lab, bright daylight",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p178",
+     "speaker": "chief",
+     "text": "聲音和畫面對在一起，就知道每一聲是哪一步。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-how-long",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding her breath with puffed cheeks and wide eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p179",
+     "speaker": "kid",
+     "text": "那一聲啵，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p180",
+     "speaker": "kid",
+     "text": "有多長？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-50ms",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief snapping her fingers once with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p181",
+     "speaker": "chief",
+     "text": "他們錄到的，大約只有二十分之一秒。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-crack-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl making a snapping gesture with both hands with a confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p182",
+     "speaker": "kid",
+     "text": "一定是殼裂開，",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p183",
+     "speaker": "kid",
+     "text": "喀的那一下！",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-after",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up one finger and then a second one a moment later, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p184",
+     "speaker": "chief",
+     "text": "聲音沒有在殼裂開的那一瞬間出來，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p185",
+     "speaker": "chief",
+     "text": "而是晚了千分之幾秒。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-foot-guess",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl stomping one foot with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p186",
+     "speaker": "kid",
+     "text": "那是小腳踢鍋子的聲音？",
+     "pause_after_ms": 100,
+     "emotion": "再猜"
+    }
+   ]
+  },
+  {
+   "id": "chief-not-foot",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief shaking her head gently with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p187",
+     "speaker": "chief",
+     "text": "也不是。研究的人推測，是水氣衝出來的時候，",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "hollow-ring",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a popcorn piece bursting open on a warm pan, soft white steam rushing out of small round hollows inside the puff, gentle round ripples in the air around it, bright daylight",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p188",
+     "speaker": "chief",
+     "text": "讓玉米裡面的小空洞，一起被震響了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-bottle",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen blowing across the top of an empty glass bottle with puffed cheeks, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p189",
+     "speaker": "kid",
+     "text": "像我對著瓶口吹氣，",
+     "pause_after_ms": 100,
+     "emotion": "想到"
+    },
+    {
+     "id": "p190",
+     "speaker": "kid",
+     "text": "會嗚嗚叫一樣？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-bottle",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p191",
+     "speaker": "chief",
+     "text": "有一點像。都是空氣在空洞裡，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p192",
+     "speaker": "chief",
+     "text": "一下子被推動，就發出聲音。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-three",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up three fingers one by one with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p193",
+     "speaker": "chief",
+     "text": "所以殼裂開、跳起來、發出啵，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p194",
+     "speaker": "chief",
+     "text": "是三件不同的事，只是快到黏在一起。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-many",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief cupping one hand behind her ear with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p195",
+     "speaker": "chief",
+     "text": "你在鍋邊聽到一串啵啵啵，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p196",
+     "speaker": "chief",
+     "text": "其實是好多顆玉米，一顆一顆各自走完這三步。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-three",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl counting on her fingers with her tongue sticking out in concentration, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p197",
+     "speaker": "kid",
+     "text": "先裂、再跳、再響！",
+     "pause_after_ms": 100,
+     "emotion": "整理"
+    }
+   ]
+  },
+  {
+   "id": "chief-compare",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up both hands like two sides of a scale, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p198",
+     "speaker": "chief",
+     "text": "好，現在把山上那鍋水，和這顆玉米擺在一起，",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "pot-and-kernel",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium shot of a small plain steel camping pot with gentle bubbles under a thin light wisp of white air on the left, and one round tight puffed-up golden popcorn kernel glowing warm on the right, a pale cream background, bright daylight",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p199",
+     "speaker": "chief",
+     "text": "山上的鍋子是開著的，壓著水的只有薄棉被。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p200",
+     "speaker": "chief",
+     "text": "玉米是關著的，壓著水的是硬殼。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-same-rule",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl raising one finger with sparkling eyes, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p201",
+     "speaker": "kid",
+     "text": "可是規矩是同一條？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-rule",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief pressing her palms together gently with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p202",
+     "speaker": "chief",
+     "text": "對。壓著水的力氣越小，水不用很熱就滾，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p203",
+     "speaker": "chief",
+     "text": "壓著水的力氣越大，水就得熱得多才滾。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-either",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen holding a golden kernel in one hand and a small camping pot lid in the other, a thinking face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p204",
+     "speaker": "kid",
+     "text": "壓著水的，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p205",
+     "speaker": "kid",
+     "text": "可以是空氣，也可以是殼？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-either",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with her hands open, a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p206",
+     "speaker": "chief",
+     "text": "對，誰在壓都一樣。壓得越輕，天花板越低；",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p207",
+     "speaker": "chief",
+     "text": "壓得越重，天花板就越高。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-opinion",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief folding her arms and laughing softly, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p208",
+     "speaker": "chief",
+     "text": "我覺得，水最會騙人的就是那些泡泡：",
+     "pause_after_ms": 100,
+     "emotion": "意見，輕鬆"
+    },
+    {
+     "id": "p209",
+     "speaker": "chief",
+     "text": "它們只告訴你水滾了，沒告訴你水有多燙。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-trick",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny home kitchen narrowing her eyes at a pot of bubbling water like a detective, one finger raised, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p210",
+     "speaker": "kid",
+     "text": "泡泡騙了我！",
+     "pause_after_ms": 100,
+     "emotion": "像偵探"
+    }
+   ]
+  },
+  {
+   "id": "chief-back-camp",
+   "chapter": "小問把答案說出來",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief smiling and pointing back over her shoulder, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p211",
+     "speaker": "chief",
+     "text": "好，那我們回到你一開始的問題。",
+     "pause_after_ms": 100,
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "kid-got-it",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny home kitchen throwing both arms up with a huge happy smile, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p212",
+     "speaker": "kid",
+     "text": "山上的空氣棉被比較薄，",
+     "pause_after_ms": 100,
+     "emotion": "篤定"
+    },
+    {
+     "id": "p213",
+     "speaker": "kid",
+     "text": "水不到一百度就滾，",
+     "pause_after_ms": 100,
+     "emotion": "篤定"
+    },
+    {
+     "id": "p214",
+     "speaker": "kid",
+     "text": "麵才煮得慢！",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "kid-got-it2",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen holding up a fluffy white popcorn proudly with both hands, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p215",
+     "speaker": "kid",
+     "text": "玉米把水關在硬殼裡，",
+     "pause_after_ms": 100,
+     "emotion": "篤定"
+    },
+    {
+     "id": "p216",
+     "speaker": "kid",
+     "text": "水越熱越擠，最後砰地炸開！",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "chief-done",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling warmly at the viewer with her hands clasped, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p217",
+     "speaker": "chief",
+     "text": "下次你吃爆米花，可以先聽一聽：",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾，輕聲"
+    },
+    {
+     "id": "p218",
+     "speaker": "chief",
+     "text": "那聲啵，是水氣從小空洞裡衝出來的聲音。",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
+    }
+   ]
+  },
+  {
+   "id": "chief-safe",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up one palm gently like a careful reminder, a kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p219",
+     "speaker": "chief",
+     "text": "微波爐爆米花的袋子剛拿出來很燙，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p220",
+     "speaker": "chief",
+     "text": "要讓大人打開，別把臉湊過去。",
+     "pause_after_ms": 100,
+     "emotion": "叮嚀"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p221",
+     "speaker": "kid",
+     "text": "原來如此！",
+     "pause_after_ms": 100,
+     "emotion": "開心大聲"
+    }
+   ]
+  },
+  {
+   "id": "outro-chief",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief tilting her head with a curious smile and one finger raised, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p222",
+     "speaker": "chief",
+     "text": "你家的爆米花，碗底最後剩下幾顆沒爆？",
+     "pause_after_ms": 100,
+     "emotion": "問句上揚，像聊天"
+    },
+    {
+     "id": "p223",
+     "speaker": "chief",
+     "text": "留言告訴我們。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "outro-wave",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p224",
+     "speaker": "chief",
+     "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
+     "pause_after_ms": 100,
+     "emotion": "誠懇"
+    }
+   ]
+  }
+ ]
+}
