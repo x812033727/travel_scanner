@@ -1,0 +1,593 @@
+{
+  "schema_version": 1,
+  "slug": "tai-nainai-e014",
+  "format": "drama",
+  "target_minutes": [
+    1.5,
+    3.0
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action modern Taiwanese urban family drama, film still, natural cinematic light, realistic skin and fabric texture, soft flattering beauty light on faces, shallow depth of field; the old Shen house in warm amber wood and candlelight, the Shengtong tower in cold blue glass, the small pharmacy in warm white fluorescent light",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, letters, Chinese characters, readable signs, subtitles, watermark, logo, brand names, license plates, extra fingers, deformed hands, blood, gore, nudity, cleavage, low neckline, bare back, see-through clothing, short skirt, wet clothes, fantasy glow effects, sparkles",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces, clothes and props stay the same; her elderly manners stay slow and steady; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "wuxiaozhang",
+      "name": "吳校長",
+      "appearance": "East Asian woman of fifty-five, dignified, hair in a neat low bun, pearl stud earrings, thin gold-framed glasses she keeps pushing up, a beige skirt suit with a knee-length skirt over a cream blouse, a polite smile that avoids people's eyes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Erinome",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的高中校長，女聲，客氣、圓滑、官腔，緊張時說話變快"
+      }
+    },
+    {
+      "id": "yuetang-18",
+      "name": "沈月棠",
+      "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze that seems to have seen a hundred years, light natural makeup, black hair in one thick old-fashioned three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white cotton shirt with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, a thick old silver ring on her left ring finger with its small square seal face turned toward the palm, back very straight, hands folded in front of her waist like an elderly lady",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的少女嗓，說話卻是老人家的規矩：慢、短、穩，客氣而有分寸，句尾往下收；生氣時聲音更低、更慢，不尖叫；童謠用輕輕唸唱的方式"
+      },
+      "shot_looks": [
+        {
+          "id": "shouyi",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a loose plain off-white cotton burial robe with a high stand-up collar and fabric frog buttons fastened to the throat, long sleeves to the wrists and loose trousers to the ankles, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "wrinkle",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "yaoju",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, an oversized white pharmacist's coat worn open with the sleeves rolled to the wrists over a plain moon-white high-collared cotton shirt buttoned to the throat, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight"
+        },
+        {
+          "id": "faint-line",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, on the back of her right hand the old wrinkles have faded to one thin pale line, still clearly visible in close-up, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "white-strand",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder with a clearly visible streak of white hair about a finger wide from her right temple braided into it, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "huiyi-1948",
+          "appearance": "the same young woman of eighteen in 1948: an oval face, gently curved brows, calm almond eyes, black hair in two neat braids tied with plain cotton string, a pale blue cotton side-fastening blouse with a high collar and fabric frog buttons, a dark cotton skirt to the ankles, black cloth shoes, the thick silver ring on her left ring finger, standing straight with her hands folded, 1940s portrait photograph style"
+        }
+      ]
+    },
+    {
+      "id": "xiaoman",
+      "name": "沈小滿",
+      "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, a school uniform: a navy blazer one size too big, a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, white socks and black school shoes, no badge or lettering on the uniform",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十七歲的高中女生，聲音快、亮；受委屈時先笑一下再哭，哭的時候聲音壓低"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, an oversized light grey hoodie, loose black track pants, white socks"
+        },
+        {
+          "id": "damp",
+          "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, her bangs and the shoulders of her navy blazer damp and water marks on her cheeks, the blazer one size too big and buttoned over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, dry and fully covering, white socks and black school shoes, no badge or lettering"
+        }
+      ]
+    },
+    {
+      "id": "heqisheng",
+      "name": "何啟盛",
+      "appearance": "East Asian man of forty-eight, cold and polished: short hair combed flat, a high nose and thin lips, chin slightly raised when he looks at people, a dark navy suit with a white shirt, a navy tie and a gold tie clip, black leather shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的集團高層，男聲，冷、硬、居高臨下，話短"
+      }
+    },
+    {
+      "id": "meifeng",
+      "name": "林美鳳",
+      "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace and small gold earrings, bright red nails, a fitted wine-red long-sleeved knit dress with a high round neckline and a hem below the knee, black low heels",
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的二房太太，女聲，尖、快、一句話三個刺，假笑時拖長尾音；被頂撞時聲音拔高"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace, bright red nails, a plum satin house robe with a high collar, long sleeves and an ankle-length hem, tied closed at the waist and fully covering, satin slippers"
+        }
+      ]
+    },
+    {
+      "id": "lindao",
+      "name": "林導",
+      "appearance": "East Asian man of thirty-five, thin and restless with quick hands, a black baseball cap with no logo, an olive utility jacket over a grey T-shirt, jeans and sneakers, a black camera with no logo on a strap around his neck",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的直播主，男聲，快、誇張、愛下標題；對鏡頭講話時更亢奮"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a taut low string ostinato over a muted piano pulse for the school gate and the glass meeting room, one heavy accent on the bow, a small accent on her look and dropping out for the announcement; then a sparse suspenseful low cello drone with soft ticking pizzicato in the parking lot, one accent on the father's name; restrained and tense, no vocals"
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "家長會｜恁祖媽今年18 第14集",
+    "description": "隔天下午，一輛黑轎車開進校門，吳校長小跑過去鞠躬叫「何總」。何啟盛下車要校長今天就處理昨天的事，抬著下巴看了她一眼，像看地上的紙；她心裡一動：這抬下巴的樣子，好像在哪裡見過。校長立刻在玻璃會議室開家長會，林美鳳也來了，說何總一早就打給她、建邦走不開，沈家今天由她代表。她不是監護人，被擋在玻璃門外；小滿一個人坐在長桌尾。校門外，林導舉著手機直播，鏡頭正好拍到林美鳳在會議室裡笑著說「我們小滿確實愛說謊」。何啟盛到走廊上催結果，校長壓低聲音說溜一句「新大樓還沒驗收」，她記住了。校長宣布退學審議初審通過，小滿哭著衝出來。她帶著小滿走到停車場，何啟盛在車裡要她回去做家事、升起車窗。她站到右後車窗外，隔著玻璃問：何先生，令尊叫何志誠吧？車窗映出她平靜的臉，車裡的何啟盛僵住了。",
+    "tags": [
+      "恁祖媽今年18",
+      "AI短劇",
+      "家族劇",
+      "老靈魂"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "令尊何志誠",
+      "tag": "恁祖媽今年18",
+      "shot": "c21"
+    }
+  },
+  "scenes": [
+    {
+      "id": "c01",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014001",
+          "speaker": "wuxiaozhang",
+          "text": "何總。",
+          "emotion": "恭敬，有點喘"
+        }
+      ],
+      "data": {
+        "prompt": "At the front gate of a Taiwanese public high school on a sunny afternoon, the guard booth's window frame in the foreground; sun from the back left; the iron gate on screen left, the campus on screen right. A black sedan with dark tinted windows, no plate visible, drives slowly in from screen left and stops mid-frame. In the right foreground by the booth stand Shen Yuetang in her moon-white shirt, hands folded, and Shen Xiaoman in her school uniform with her navy schoolbag; in the booth only a guard's back in a navy jacket and cap. Principal Wu in a beige skirt suit, pearl studs and thin gold glasses hurries in from screen right to the car's rear door, clasps her hands and bows deeply. About ten students in navy uniforms, skirts below the knee, stop behind to watch. Principal Wu speaks a short Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, respectful, out of breath. Everyone else keeps their mouth closed.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "wuxiaozhang",
+          "yuetang-18",
+          "xiaoman"
+        ]
+      },
+      "chapter": "校門口"
+    },
+    {
+      "id": "c02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014002",
+          "speaker": "heqisheng",
+          "text": "校長，昨天那件事，今天就處理。",
+          "emotion": "冷，話短"
+        }
+      ],
+      "data": {
+        "prompt": "At the front gate of a Taiwanese public high school on a sunny afternoon, beside the black sedan with dark tinted windows. Two people and a driver: He Qisheng in his dark navy suit, white shirt, navy tie and gold tie clip steps out of the right rear door; on his right Principal Wu in her beige skirt suit stands bent at the waist; through the car, in the driver's seat on the far side, only the back of the head and the shoulders of a driver in a dark suit. He Qisheng steps out, stands up straight and buttons his suit jacket without looking at her, his eyes sweeping toward the guard booth on screen right; not smiling. He Qisheng speaks a short Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, cold and clipped. Principal Wu keeps nodding, mouth closed.",
+        "camera": "medium shot, slow push-in to medium close-up",
+        "characters": [
+          "heqisheng",
+          "wuxiaozhang"
+        ]
+      }
+    },
+    {
+      "id": "c03",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "At the front gate of a Taiwanese public high school on a sunny afternoon, seen from below: the first frame is He Qisheng's raised chin, thin lips and the gold tie clip on his navy tie above a white shirt collar; behind him the campus is soft and out of focus. He is the only person in the frame. His chin lifts a little higher and his half-lowered eyes, at the top edge of the frame, look down toward screen right; mouth closed, not smiling.",
+        "camera": "low-angle extreme close-up on the chin, locked",
+        "characters": [
+          "heqisheng"
+        ],
+        "motion": "His chin lifts a little higher and his half-lowered eyes look down toward screen right."
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014003",
+          "speaker": "yuetang-18",
+          "text": "這孩子抬下巴的樣子，我好像在哪裡見過。"
+        }
+      ],
+      "data": {
+        "prompt": "At the front gate of a Taiwanese public high school on a sunny afternoon: Shen Yuetang in her moon-white high-collared shirt, her thick braid over her right shoulder; behind her only the guard booth wall and the iron gate bars. She is the only person in the frame, not smiling. She looks toward screen left, tilts her head slightly, her brows draw together a little and her eyes slowly narrow; her folded hands tighten gently. Her inner voice is heard; her mouth stays closed throughout.",
+        "camera": "close-up, slow push-in from medium close-up",
+        "characters": [
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014004",
+          "speaker": "wuxiaozhang",
+          "text": "何總，家長會馬上在會議室開。沈小滿，妳也一起來。",
+          "emotion": "官腔，說得很快"
+        }
+      ],
+      "data": {
+        "prompt": "At the front gate of a Taiwanese public high school on a sunny afternoon. Four people: Principal Wu in her beige skirt suit leads He Qisheng in his dark navy suit from screen left toward the school buildings on screen right; in the right foreground by the guard booth stand Shen Yuetang in her moon-white high-collared shirt and navy ankle-length skirt and Shen Xiaoman in her school uniform with her navy schoolbag. Walking, Principal Wu sweeps one hand toward the building, then looks back and beckons once toward Xiaoman; Xiaoman flinches and grabs Yuetang's sleeve. Principal Wu speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, fast and official, smiling politely. He Qisheng is not smiling; everyone else keeps their mouth closed.",
+        "camera": "medium shot, tracking left to right with the principal",
+        "characters": [
+          "wuxiaozhang",
+          "yuetang-18",
+          "xiaoman"
+        ]
+      }
+    },
+    {
+      "id": "c06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014005",
+          "speaker": "meifeng",
+          "text": "何總一早就打給我，大哥走不開，沈家今天我來。",
+          "emotion": "拖長尾音"
+        }
+      ],
+      "data": {
+        "prompt": "At the front gate of a Taiwanese public high school on a sunny afternoon. Three people: Lin Meifeng in her wine-red knit dress, pearl necklace and red nails, a black handbag in her left hand, walks in low heels through the gate from screen left; on screen right stand Shen Yuetang in her moon-white high-collared shirt and navy ankle-length skirt and Shen Xiaoman in her school uniform with her navy schoolbag. Lin Meifeng passes beside Yuetang, stops for half a step, glances sideways at her with a false smile, flicks her hair behind her shoulder with her red-nailed right hand, then walks on toward the school buildings on screen right. Lin Meifeng speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, drawling. Yuetang and Xiaoman keep their mouths closed.",
+        "camera": "medium shot, tracking with Lin Meifeng",
+        "characters": [
+          "meifeng",
+          "yuetang-18",
+          "xiaoman"
+        ]
+      }
+    },
+    {
+      "id": "c07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014006",
+          "speaker": "xiaoman",
+          "text": "二嬸跟何家是一夥的，她根本不會幫我說話。",
+          "emotion": "壓低聲音，急"
+        },
+        {
+          "id": "t014007",
+          "speaker": "yuetang-18",
+          "text": "她來了也好，正好看清楚誰站在哪一邊。",
+          "emotion": "低而穩"
+        }
+      ],
+      "data": {
+        "prompt": "At the front gate of a Taiwanese public high school on a sunny afternoon, behind them the guard booth and the iron gate bars. Two people: on screen left Shen Xiaoman in her school uniform with her navy schoolbag, holding Shen Yuetang's sleeve, not smiling; on screen right Shen Yuetang in her moon-white shirt, her braid over her right shoulder. Xiaoman rises on tiptoe to Yuetang's ear, her eyes fixed on the backs of people walking away off screen; Shen Xiaoman speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low and urgent, while Yuetang's mouth stays closed. Yuetang stays still, looks first into Xiaoman's eyes, then ahead; then Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low and steady, while Xiaoman's mouth stays closed. She takes Xiaoman's hand and the two turn to walk toward the school buildings.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "xiaoman",
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014008",
+          "speaker": "wuxiaozhang",
+          "text": "這位同學，家長會只有監護人能進。",
+          "emotion": "客氣，不看人"
+        }
+      ],
+      "data": {
+        "prompt": "In the school corridor outside a glass-walled meeting room on a sunny afternoon, slanting sun in the corridor and fluorescent light inside. Three people: on screen left at the glass door Principal Wu in her beige skirt suit holds the door with one hand, and Shen Xiaoman in her school uniform with her navy schoolbag has just stepped in past her; on screen right Shen Yuetang in her moon-white high-collared shirt and navy ankle-length skirt stands outside, hands folded. Principal Wu turns sideways to let Xiaoman in; as Yuetang follows she puts her arm straight across the doorway and pushes up her glasses, smiling politely without looking at Yuetang. Principal Wu speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, polite and evasive. Yuetang stops, hands still folded, mouth closed. The principal turns and goes in, leaving the door not quite shut.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "wuxiaozhang",
+          "yuetang-18",
+          "xiaoman"
+        ]
+      },
+      "chapter": "玻璃會議室外的走廊"
+    },
+    {
+      "id": "c09",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "From the school corridor looking through the glass wall into the meeting room under fluorescent light; in the foreground the soft side profile of Shen Yuetang with her braid, and her faint reflection on the glass. Inside: a long table; at the head on the left Principal Wu in beige; on the near side, backs to the glass, He Qisheng in a navy suit and He Xiaoyang in a fitted school blazer with long straight light-brown hair; on the far side Lin Meifeng in wine red faces the glass; alone at the right end Shen Xiaoman in her school uniform sits with her head down; about five parents and two teachers sit out of focus. Thirteen people in all. Lin Meifeng taps her red nails on the table again and again and lifts her eyes once toward the glass; Principal Wu keeps nodding; Xiaoman hugs her schoolbag on her knees. The people inside move their mouths, unheard; Yuetang's mouth is closed.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "meifeng",
+          "xiaoman",
+          "yuetang-18"
+        ],
+        "motion": "Lin Meifeng taps her red nails on the table and glances up at the glass while the principal keeps nodding."
+      },
+      "action_seconds": 6
+    },
+    {
+      "id": "c10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014009",
+          "speaker": "lindao",
+          "text": "古風少女被擋在門外，家長會裡在說什麼，我們幫她看！",
+          "emotion": "壓低聲音，對著手機，亢奮"
+        }
+      ],
+      "data": {
+        "prompt": "On the pavement outside the high school's sliding iron gate on a sunny afternoon, the gate bars in the foreground; far off across the forecourt the big window of a ground-floor meeting room, soft and out of focus, with tiny blurred figures inside. Director Lin in a black cap with no logo and an olive utility jacket is seen only from behind; his right hand holds a selfie stick high with a phone on it, the back of the phone to the camera, its screen facing him and never shown. He is the only person near the camera. He pushes the selfie stick forward through a gap in the bars, points at the distant window with his left hand and leans forward. Director Lin speaks a Mandarin line under his breath, excited, his face never seen.",
+        "camera": "medium shot from behind, locked",
+        "characters": [
+          "lindao"
+        ]
+      }
+    },
+    {
+      "id": "c11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014010",
+          "speaker": "meifeng",
+          "text": "我們小滿確實愛說謊，家裡都拿她沒辦法。",
+          "emotion": "笑著，拖長尾音"
+        }
+      ],
+      "data": {
+        "prompt": "Looking through the glass wall into the school meeting room under fluorescent light, a faint reflection on the glass: Lin Meifeng in her wine-red knit dress and pearl necklace sits leaning back in her chair with a false smile; inside the glass, soft in the left foreground, the navy-suited shoulder of He Qisheng, his back to the glass. Two people. She covers her mouth and laughs once, opens her red-nailed right hand toward the right end of the table, then turns to him and nods. Lin Meifeng speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, laughing and drawling. His face is not seen.",
+        "camera": "medium close-up through the glass, slow push-in",
+        "characters": [
+          "meifeng",
+          "heqisheng"
+        ]
+      }
+    },
+    {
+      "id": "c12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014011",
+          "speaker": "yuetang-18",
+          "text": "要擋住何家，得先知道學校到底怕什麼。"
+        }
+      ],
+      "data": {
+        "prompt": "In the school corridor outside a glass-walled meeting room on a sunny afternoon: Shen Yuetang in her moon-white high-collared shirt stands at the glass, half her face reflected on it; behind the glass the meeting room is soft and out of focus. She is the only person in focus, not smiling. She presses her right palm flat on the glass for a moment, slowly draws it back and folds her hands at her waist; her eyes move across the room behind the glass to its far left end. Her inner voice is heard; her mouth stays closed throughout.",
+        "camera": "close-up, slow push-in from medium close-up",
+        "characters": [
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014012",
+          "speaker": "heqisheng",
+          "text": "審議的事，今天就要有結果。",
+          "emotion": "冷"
+        },
+        {
+          "id": "t014013",
+          "speaker": "wuxiaozhang",
+          "text": "何總放心，新大樓還沒驗收，學校一定配合。",
+          "emotion": "壓低聲音，說得太快"
+        }
+      ],
+      "data": {
+        "prompt": "In the school corridor outside a glass-walled meeting room on a sunny afternoon, the glass wall on screen left. Three people: He Qisheng in his navy suit walks out of the glass door holding a phone, its back to the camera, Principal Wu in her beige skirt suit half a step behind him; on screen right Shen Yuetang stands with her back against the wall, upright, eyes lowered, hands folded at her waist. The two pass in front of her without looking at her and stop two steps to her right. He slides the phone into his inside jacket pocket and lifts his chin; He Qisheng speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, cold, not smiling. The principal glances left and right and leans in close; Principal Wu speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low and too fast, with an anxious smile. Yuetang does not move, mouth closed. The two turn back toward the meeting room.",
+        "camera": "medium shot, tracking from the glass door toward screen right",
+        "characters": [
+          "heqisheng",
+          "wuxiaozhang",
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c14",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "In the school corridor in slanting afternoon light: the first frame is Shen Yuetang's eyes and brows, a section of her thick black braid at the frame edge, the background soft and blurred. Her lowered eyes slowly lift toward screen left, her pupils settle and hold, and she blinks once. Her mouth is out of frame.",
+        "camera": "extreme close-up on the eyes, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Her lowered eyes slowly lift toward screen left, hold still, and blink once."
+      },
+      "action_seconds": 4
+    },
+    {
+      "id": "c15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014014",
+          "speaker": "wuxiaozhang",
+          "text": "退學審議初審通過，這週五正式審議。",
+          "emotion": "官腔，很快"
+        }
+      ],
+      "data": {
+        "prompt": "Inside the glass meeting room under fluorescent light, seen through the narrow gap of the glass door, the door edge soft in the foreground. Four people in focus: at the head of the table Principal Wu in her beige skirt suit stands holding one sheet of paper, its back to the camera; Lin Meifeng in wine red claps lightly; He Xiaoyang in a fitted school blazer with long light-brown hair turns her head and smiles toward the right end of the table; at the right end Shen Xiaoman in her school uniform springs to her feet and her chair tips over backward. About five parents and two teachers sit out of focus. Principal Wu pushes up her glasses and reads from the paper without looking at Xiaoman. Principal Wu speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, fast and official. Lin Meifeng claps twice. Everyone else keeps their mouth closed.",
+        "camera": "medium shot through the gap of the glass door, slow push-in",
+        "characters": [
+          "wuxiaozhang",
+          "xiaoman",
+          "meifeng"
+        ]
+      }
+    },
+    {
+      "id": "c16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014015",
+          "speaker": "xiaoman",
+          "text": "姐，他們連話都不讓我說完。",
+          "emotion": "哭，聲音壓低"
+        }
+      ],
+      "data": {
+        "prompt": "In the school corridor outside a glass-walled meeting room on a sunny afternoon, the glass door frame in the foreground. Two people: Shen Xiaoman in her school uniform with her navy schoolbag pushes the glass door open and runs out, her face wet with tears; Shen Yuetang in her moon-white shirt stands on screen right, not smiling. Xiaoman rushes up to her; Yuetang takes Xiaoman's shoulders firmly in both hands and stops her; Xiaoman clutches her sleeve, crying. Shen Xiaoman speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, crying and keeping her voice low. Yuetang's mouth stays closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "xiaoman",
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014016",
+          "speaker": "yuetang-18",
+          "text": "跟著我，別哭，我們去送送何家的大人。",
+          "emotion": "低而慢"
+        }
+      ],
+      "data": {
+        "prompt": "In the school corridor outside a glass-walled meeting room on a sunny afternoon. Three people: up close Shen Yuetang in her moon-white shirt holds Shen Xiaoman, red-eyed in her school uniform with her navy schoolbag, by the shoulders; over Xiaoman's head Yuetang looks toward the back left, where He Qisheng in his navy suit, small and out of focus, walks from the meeting room toward the exit with his back to the camera. Yuetang wipes a tear from Xiaoman's cheek with her thumb, takes her hand and begins to turn toward the exit on screen right. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low and slow, not smiling. Xiaoman's mouth stays closed. The shot ends halfway through the turn.",
+        "camera": "close-up, slow push-in from medium close-up",
+        "characters": [
+          "yuetang-18",
+          "xiaoman",
+          "heqisheng"
+        ]
+      }
+    },
+    {
+      "id": "c18",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "In a school parking lot in late afternoon, the low sun slanting in from the back left and long shadows falling to the right; white lines, a few other cars with no plates visible, the school building behind; another car's side mirror soft in the foreground. On screen left a black sedan with dark tinted windows faces screen right, its right side toward the camera. Four people: He Qisheng in his navy suit walks to the car and a driver in a dark suit, seen from behind, opens the right rear door for him; from screen right Shen Yuetang in her moon-white high-collared shirt and navy ankle-length skirt walks in holding the hand of Shen Xiaoman in her school uniform with her navy schoolbag. He Qisheng bends and gets into the back seat; the driver shuts the door and walks round to the driver's seat on the far side. Yuetang lets go of Xiaoman's hand and walks step by step toward the car; Xiaoman stops two steps behind her. All mouths closed.",
+        "camera": "low-angle wide shot, slow push-in",
+        "characters": [
+          "heqisheng",
+          "yuetang-18",
+          "xiaoman"
+        ],
+        "motion": "He Qisheng gets into the back seat and the driver shuts the door while Yuetang walks step by step toward the car."
+      },
+      "chapter": "停車場",
+      "action_seconds": 6
+    },
+    {
+      "id": "c19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014017",
+          "speaker": "heqisheng",
+          "text": "一個保母，也想替沈家出頭。回去做家事吧。",
+          "emotion": "冷，居高臨下"
+        }
+      ],
+      "data": {
+        "prompt": "In a school parking lot in late afternoon, the low sun slanting in from the back left and long shadows falling to the right, seen from outside the black sedan's right rear window. Two people: the dark tinted window is half down and He Qisheng in his navy suit sits in the right rear seat, chin raised, looking out; Shen Yuetang in her moon-white shirt stands outside an arm's length away on screen right, hands folded. Neither smiles. He looks at her sideways; He Qisheng speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, cold and condescending. Then his finger presses the switch and the dark window slowly rises, her face gradually appearing as a reflection on the glass. Yuetang's mouth stays closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "heqisheng",
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014018",
+          "speaker": "xiaoman",
+          "text": "姐，算了，他們家連校長都要鞠躬。",
+          "emotion": "小聲，害怕"
+        },
+        {
+          "id": "t014019",
+          "speaker": "yuetang-18",
+          "text": "校長要鞠躬，是校長的事，我不用。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "prompt": "In a school parking lot in late afternoon, the low sun slanting in from the back left and long shadows falling to the right, a car body and white lines behind. Two people: in front Shen Xiaoman in her school uniform with her navy schoolbag, red-eyed, steps up and holds Shen Yuetang's sleeve; behind her Shen Yuetang in her moon-white shirt looks toward the closed car window off screen. Neither smiles. Xiaoman tugs the sleeve and shakes her head; Shen Xiaoman speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, small and frightened, while Yuetang's mouth stays closed. Yuetang looks down at her, gently draws her sleeve out of Xiaoman's hand and pats the back of her hand; Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, calm, while Xiaoman's mouth stays closed.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "xiaoman",
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t014020",
+          "speaker": "yuetang-18",
+          "text": "何先生，我記得令尊，他叫何志誠吧？",
+          "emotion": "低而慢，很清楚"
+        }
+      ],
+      "data": {
+        "prompt": "In a school parking lot in late afternoon, the low sun slanting in from the back left and long shadows falling to the right, seen from the side: Shen Yuetang in her moon-white high-collared shirt stands outside the closed right rear window of the black sedan; the dark tinted glass reflects her face; the low sun lights half her face. She is the only person in the frame; the glass is dark. She bends slowly and steadily at the waist and brings her face close to the window, looks first into the dark glass at eye level, then speaks to it word by word. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low, slow and very clear, not smiling.",
+        "camera": "medium close-up from the side, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ]
+      }
+    },
+    {
+      "id": "c22",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "In the school parking lot in late afternoon, seen from outside the black sedan's closed right rear window: two faces at once on the dark tinted glass, the reflection of Shen Yuetang's calm face on the glass, and behind the glass, inside the car, He Qisheng's face in the back seat; the back of the driver's head soft in the front seat on screen right. He Qisheng's finger rests on the window switch and does not press it; his raised chin slowly draws back down and he freezes, his face changing colour, not smiling. Both mouths are closed.",
+        "camera": "close-up through the car window, slow push-in",
+        "characters": [
+          "heqisheng",
+          "yuetang-18"
+        ],
+        "motion": "His finger stays on the window switch as his raised chin slowly draws back and he freezes."
+      },
+      "action_seconds": 4
+    }
+  ]
+}

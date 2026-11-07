@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "slug": "tai-nainai-e059",
+  "format": "drama",
+  "target_minutes": [
+    1.5,
+    3.0
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action modern Taiwanese urban family drama, film still, natural cinematic light, realistic skin and fabric texture, soft flattering beauty light on faces, shallow depth of field; the old Shen house in warm amber wood and candlelight, the Shengtong tower in cold blue glass, the small pharmacy in warm white fluorescent light",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, letters, Chinese characters, readable signs, subtitles, watermark, logo, brand names, license plates, extra fingers, deformed hands, blood, gore, nudity, cleavage, low neckline, bare back, see-through clothing, short skirt, wet clothes, fantasy glow effects, sparkles",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces, clothes and props stay the same; her elderly manners stay slow and steady; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "qianlaoban",
+      "name": "錢老闆",
+      "appearance": "East Asian man of sixty, short and plump, oily slicked-back hair, a thin eight-shaped moustache, shrewd appraising eyes with crow's feet when he smiles, an olive-green satin Chinese-style jacket with frog buttons, a thick gold watch on his right wrist and a jade thumb ring on his right thumb",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十歲的古董商，男聲，油滑、精明、愛壓價，被拆穿時乾笑"
+      }
+    },
+    {
+      "id": "yuetang-18",
+      "name": "沈月棠",
+      "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze that seems to have seen a hundred years, light natural makeup, black hair in one thick old-fashioned three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white cotton shirt with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, a thick old silver ring on her left ring finger with its small square seal face turned toward the palm, back very straight, hands folded in front of her waist like an elderly lady",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的少女嗓，說話卻是老人家的規矩：慢、短、穩，客氣而有分寸，句尾往下收；生氣時聲音更低、更慢，不尖叫；童謠用輕輕唸唱的方式"
+      },
+      "shot_looks": [
+        {
+          "id": "shouyi",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a loose plain off-white cotton burial robe with a high stand-up collar and fabric frog buttons fastened to the throat, long sleeves to the wrists and loose trousers to the ankles, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "wrinkle",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "yaoju",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, an oversized white pharmacist's coat worn open with the sleeves rolled to the wrists over a plain moon-white high-collared cotton shirt buttoned to the throat, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight"
+        },
+        {
+          "id": "faint-line",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, on the back of her right hand the old wrinkles have faded to one thin pale line, still clearly visible in close-up, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "white-strand",
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder with a clearly visible streak of white hair about a finger wide from her right temple braided into it, a plain moon-white high-collared cotton shirt with frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, the thick old silver ring on her left ring finger, the back of her right hand covered in a patch of fine crinkled old-woman wrinkles, clearly visible, in sharp contrast to her young face and her smooth left hand, back very straight, hands folded in front of her waist"
+        },
+        {
+          "id": "huiyi-1948",
+          "appearance": "the same young woman of eighteen in 1948: an oval face, gently curved brows, calm almond eyes, black hair in two neat braids tied with plain cotton string, a pale blue cotton side-fastening blouse with a high collar and fabric frog buttons, a dark cotton skirt to the ankles, black cloth shoes, the thick silver ring on her left ring finger, standing straight with her hands folded, 1940s portrait photograph style"
+        }
+      ]
+    },
+    {
+      "id": "zhiyuan",
+      "name": "沈知遠",
+      "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a white pharmacist's coat worn open over a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, a calm focused look",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十歲的藥師，男聲，低、穩、話不多但句句到位；對她說話時放軟"
+      },
+      "shot_looks": [
+        {
+          "id": "shirt",
+          "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark navy shirt with the sleeves rolled to the elbows, dark grey trousers, black sneakers, no coat"
+        },
+        {
+          "id": "coat",
+          "appearance": "East Asian young man of thirty, clean-cut and handsome: sword-like straight brows, long single-lidded eyes, a straight nose and a clean jawline, about 180 cm tall with broad shoulders, short neat black hair, a dark charcoal wool overcoat over a dark navy shirt, dark grey trousers, black sneakers"
+        }
+      ]
+    },
+    {
+      "id": "shengtong-ren",
+      "name": "盛通的人",
+      "appearance": "men from Shengtong in plain dark business suits with no badges",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；盛通的職員，男聲，冷、公事公辦"
+      }
+    },
+    {
+      "id": "jianye",
+      "name": "沈建業",
+      "appearance": "East Asian man of fifty-five, tall and heavyset, clean-shaven, oiled black hair slicked back, one deep vertical frown line between his brows, the same colour as the rest of his skin, a too-wide salesman's smile, a tailored brown double-breasted suit with a cream shirt and a dark brown tie, a thin gold watch on his left wrist, polished brown shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的副董，男聲，圓滑、熱絡、愛拍人肩膀，笑著說狠話；被拆穿時聲音變急變高"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian man of fifty-five, tall and heavyset, clean-shaven, oiled black hair slicked back, one deep vertical frown line between his brows, the same colour as the rest of his skin, a dark brown cashmere sweater over a cream collared shirt, grey slacks, a thin gold watch on his left wrist"
+        }
+      ]
+    },
+    {
+      "id": "meifeng",
+      "name": "林美鳳",
+      "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace and small gold earrings, bright red nails, a fitted wine-red long-sleeved knit dress with a high round neckline and a hem below the knee, black low heels",
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的二房太太，女聲，尖、快、一句話三個刺，假笑時拖長尾音；被頂撞時聲音拔高"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace, bright red nails, a plum satin house robe with a high collar, long sleeves and an ankle-length hem, tied closed at the waist and fully covering, satin slippers"
+        }
+      ]
+    }
+  ],
+  "music": {
+    "prompt": "dark slow tension in the antique shop with one accent as the silver ring catches the light and a beat of silence before the whispered answer, then cold suspense outside the apartment block with one accent on the parting line, cut away to nothing after the last word; no vocals"
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "古董商｜恁祖媽今年18 第59集",
+    "description": "第43天上午，老陳一早看見林美鳳進了錢老闆的古董店。她帶著知遠推門進去，錢老闆手一抖。她問今早林美鳳賣了什麼；錢老闆說兩萬塊收了一個不值錢的舊印，可玻璃櫃裡那塊絨布的凹槽已經空了。他拿出鑑定書說是清代的老銀印、買家搶著要；她看一眼就說環鈕的刀法是民國的工，抬起手上那枚戒指：同一個師傅的手。錢老闆乾笑著招了：兩萬收進來，兩百萬轉給周董的人，周董早交代過「沈家的銀印，有幾枚都要」。知遠問周懷安要銀印做什麼，錢老闆壓低聲音：「不是他要。」他是替別人收的。傍晚，新城區的公寓門口，盛通的人交給建業一個牛皮紙信封：「合作愉快，到此為止。」裡面是建業自己簽的股權轉讓書影本，和一張紙條「老宅的事，你自己擔」。林美鳳問怎麼辦，建業抬頭看向老宅的方向：「那個保母，要付代價。」",
+    "tags": [
+      "恁祖媽今年18",
+      "AI短劇",
+      "家族劇",
+      "老靈魂"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "民國的工",
+      "tag": "恁祖媽今年18",
+      "shot": "c09"
+    }
+  },
+  "scenes": [
+    {
+      "id": "c01",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059001",
+          "speaker": "qianlaoban",
+          "text": "妳……",
+          "emotion": "一驚，脫口"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain, seen from behind the counter toward the plain glass door. Three people: in the foreground, seen from behind and the side, Boss Qian in his olive-green satin jacket wipes a glass case with a cloth, his hand out of focus; at the back in the middle Shen Yuetang, back very straight; Shen Zhiyuan in his charcoal overcoat behind her; daylight from the street behind them. In the first frame her right hand is already pushing the glass door open, with no bell; she steps in and folds her hands at her waist again. Boss Qian looks up, his hand jerks and the cloth drops onto the glass case. Boss Qian blurts a short Mandarin word, his lips and jaw moving clearly, startled. The other two keep their mouths closed.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "qianlaoban",
+          "yuetang-18",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "yuetang-18": "faint-line",
+          "zhiyuan": "coat"
+        }
+      },
+      "chapter": "古董店"
+    },
+    {
+      "id": "c01b",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, the camera low against the top of a glass display case: only a man's right hand in an olive-green satin cuff, a thick gold watch on the wrist and a jade ring on the thumb, hovering over the glass; a polishing cloth lies where it dropped on the glass; the warm cabinet light gleams on the glass. No face, no mouth. The hand is still trembling; the fingers reach slowly down and press the cloth flat.",
+        "camera": "close-up on the hand, slow push-in, low on the glass case",
+        "characters": [
+          "qianlaoban"
+        ],
+        "motion": "The trembling hand reaches down slowly and presses the dropped cloth flat on the glass."
+      },
+      "action_seconds": 1
+    },
+    {
+      "id": "c02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059002",
+          "speaker": "yuetang-18",
+          "text": "老陳說，林美鳳今早一開門，就進了你的店。",
+          "emotion": "慢、穩"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain; in the foreground the corner of a glass case on the right. Three people: Shen Yuetang walks in from the door, Shen Zhiyuan in his charcoal overcoat half a step behind her to her right; Boss Qian behind the counter, out of focus at the front of the frame. Unhurried, step by step, she walks up to the counter and stops, hands folded at her waist, and looks into Boss Qian's eyes first, then at the hand that was wiping the case; Zhiyuan stops behind her right shoulder. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, slow and steady.",
+        "camera": "medium wide shot, tracking with her",
+        "characters": [
+          "yuetang-18",
+          "zhiyuan",
+          "qianlaoban"
+        ],
+        "character_looks": {
+          "yuetang-18": "faint-line",
+          "zhiyuan": "coat"
+        }
+      }
+    },
+    {
+      "id": "c03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059003",
+          "speaker": "yuetang-18",
+          "text": "錢老闆，今早林美鳳賣了什麼？",
+          "emotion": "不提高聲音"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: over Shen Yuetang's right shoulder, her shoulder and the thick braid lying over it on screen left in the foreground, her back to the camera; on screen right Boss Qian in his olive-green satin Chinese jacket, a thick gold watch on his right wrist and a jade ring on his right thumb, behind him the wooden shelves of porcelain; he laughs dryly, his eyes darting about. Two people. He stuffs the cloth into his jacket pocket and rests both hands on the counter. She speaks a Mandarin line with her back to the camera, without raising her voice. Boss Qian keeps his mouth closed.",
+        "camera": "over-the-shoulder medium close-up, slow push-in",
+        "characters": [
+          "qianlaoban",
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "faint-line"
+        }
+      }
+    },
+    {
+      "id": "c04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059004",
+          "speaker": "qianlaoban",
+          "text": "一個舊印，不值錢的小玩意，兩萬塊收的。",
+          "emotion": "乾笑"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: Boss Qian in his olive-green satin Chinese jacket, a thick gold watch on his right wrist and a jade ring on his right thumb; behind him only the wooden shelves of porcelain. He is the only person in the frame, laughing dryly. He spreads both hands and shrugs, and the jade ring on his right thumb flashes in the light. Boss Qian speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, with a dry laugh.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "qianlaoban"
+        ]
+      }
+    },
+    {
+      "id": "c05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059005",
+          "speaker": "zhiyuan",
+          "text": "東西呢？這塊絨布上的凹槽，是空的。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: the first frame is a dark velvet tray inside a glass display case, a square hollow shaped like a small seal with a ring knob pressed into it, empty; warm cabinet light on the velvet; the glass reflects a little daylight from the door. Nobody is in the frame. The camera creeps slowly toward the empty hollow while a man's cold voice speaks from off screen.",
+        "camera": "close-up on the velvet tray, slow push-in",
+        "characters": []
+      }
+    },
+    {
+      "id": "c06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059006",
+          "speaker": "qianlaoban",
+          "text": "一早就讓買家拿走了，鑑定書寫的是清代老銀印。",
+          "emotion": "挺胸"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: Boss Qian in his olive-green satin Chinese jacket, a thick gold watch on his right wrist and a jade ring on his right thumb; behind him only the wooden shelves of porcelain. He is the only person in the frame, chest out, a little smug. He pulls a single sheet of paper from under the counter, a small photograph stapled to its top left corner, its blank back to the camera, slaps it down on the counter and pushes it toward screen left. Boss Qian speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, puffing out his chest.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "qianlaoban"
+        ]
+      }
+    },
+    {
+      "id": "c07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059007",
+          "speaker": "yuetang-18",
+          "text": "環鈕的刀法，是民國的工，你寫成清代。",
+          "emotion": "平平地"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: Shen Yuetang, back very straight, holding the sheet of paper in both hands, its blank back toward the camera; behind her only reflections in the glass cases and the dark shop. She is the only person in the frame, not smiling. She looks down at the small photograph on the paper for two seconds, lays the sheet back on the counter and pushes it back. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, flat and even.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "faint-line"
+        }
+      },
+      "chapter": "古董店（下）"
+    },
+    {
+      "id": "c08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059008",
+          "speaker": "qianlaoban",
+          "text": "小姑娘，妳一個保母，懂什麼清代民國？",
+          "emotion": "乾笑"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: Boss Qian in his olive-green satin Chinese jacket, a thick gold watch on his right wrist and a jade ring on his right thumb; behind him only the wooden shelves of porcelain. He is the only person in the frame, caught out, laughing dryly. He snatches the sheet back and pins it under his palm, gives two dry laughs and leans forward. Boss Qian speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, with a dry laugh.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "qianlaoban"
+        ]
+      }
+    },
+    {
+      "id": "c09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059009",
+          "speaker": "yuetang-18",
+          "text": "我這枚戒指跟它，出自同一個師傅的手，是民國的工。",
+          "emotion": "低"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: Shen Yuetang, back very straight, the dim light leaving her young face half lit and half in shadow; her left hand raised beside her face; behind her only the dark shop. She is the only person in the frame. She lifts her eyes to someone beside the lens and slowly raises her left hand into the cabinet light, the back of the hand toward him, so the side of the thick old silver ring on her ring finger, its seal face turned to the palm, gleams in the reflection of the glass. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "character_looks": {
+          "yuetang-18": "faint-line"
+        }
+      }
+    },
+    {
+      "id": "c10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059010",
+          "speaker": "yuetang-18",
+          "text": "兩萬收進來，寫成清代轉手，賣了多少？",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: over Boss Qian's left shoulder, his olive satin shoulder soft on screen right in the foreground; on screen left Shen Yuetang, her left hand back at her waist; behind her on screen left Shen Zhiyuan in his charcoal overcoat steps half a step forward. Three people. She does not move except to lean forward a very little, laying it out for him word by word. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, word by word. Boss Qian keeps his mouth closed.",
+        "camera": "over-the-shoulder medium close-up, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "qianlaoban",
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "yuetang-18": "faint-line",
+          "zhiyuan": "coat"
+        }
+      }
+    },
+    {
+      "id": "c11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059011",
+          "speaker": "qianlaoban",
+          "text": "兩……兩百萬。周董的人，一早就來拿走了。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: Boss Qian in his olive-green satin Chinese jacket, a thick gold watch on his right wrist and a jade ring on his right thumb; behind him only the wooden shelves of porcelain. He is the only person in the frame, sweat on his forehead, his dry laugh gone, not smiling. He wipes his forehead with his sleeve, his eyes flick toward the glass door, and he lowers his voice. Boss Qian speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, his voice dropped low.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "qianlaoban"
+        ]
+      }
+    },
+    {
+      "id": "c12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059012",
+          "speaker": "qianlaoban",
+          "text": "周董早就交代過：沈家的銀印，有幾枚都要。",
+          "emotion": "一口氣說"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: Boss Qian in his olive-green satin Chinese jacket, a thick gold watch on his right wrist and a jade ring on his right thumb, both hands braced on the counter; behind him only the wooden shelves of porcelain. He is the only person in the frame, not smiling. He twists the jade ring on his right thumb round once and looks up toward screen left. Boss Qian speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, all in one breath.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "qianlaoban"
+        ]
+      }
+    },
+    {
+      "id": "c13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059013",
+          "speaker": "zhiyuan",
+          "text": "他要銀印做什麼？他又不是收古董的。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain: Shen Zhiyuan in his charcoal wool overcoat; behind him only reflections in the glass cases. He is the only person in the frame, frowning, not smiling. He steps up one pace from behind to stand beside someone at the edge of the frame, pushes his hands into his coat pockets and takes them out again. Shen Zhiyuan speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, cold.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "zhiyuan"
+        ],
+        "character_looks": {
+          "zhiyuan": "coat"
+        }
+      }
+    },
+    {
+      "id": "c14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059014",
+          "speaker": "qianlaoban",
+          "text": "不是他要。周董是替別人收的，替誰我可不敢問。",
+          "emotion": "壓到最低"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain, seen from counter height looking up: Boss Qian in his olive-green satin Chinese jacket, a thick gold watch on his right wrist and a jade ring on his right thumb; behind him only the dark wooden shelves and one small spotlight. He is the only person in the frame, not smiling, afraid. He leans in close and drops his voice as low as it will go, then straight away pulls back and shakes his head, refusing to say more. Boss Qian speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, barely above a whisper.",
+        "camera": "low-angle close-up, slow push-in",
+        "characters": [
+          "qianlaoban"
+        ]
+      }
+    },
+    {
+      "id": "c15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059015",
+          "speaker": "yuetang-18",
+          "text": "知遠，走吧。東西在誰手上，總有見面的一天。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "prompt": "Inside a dim antique shop in the late morning, warm cabinet lights and small spotlights, glass display cases and shelves of porcelain, seen from behind the counter toward the glass door. Three people: Shen Yuetang, back very straight, turns and walks unhurried toward the door, Shen Zhiyuan in his charcoal overcoat following; in the right foreground Boss Qian behind the counter, out of focus. At the glass door she rests her hand on the handle and looks back at Zhiyuan. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, calm. Then she pushes the door open and goes out, and Zhiyuan follows her.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "yuetang-18",
+          "zhiyuan",
+          "qianlaoban"
+        ],
+        "character_looks": {
+          "yuetang-18": "faint-line",
+          "zhiyuan": "coat"
+        }
+      }
+    },
+    {
+      "id": "c16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059016",
+          "speaker": "shengtong-ren",
+          "text": "沈副董，周董交代的東西，請您收下。",
+          "emotion": "公事公辦"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the glass lobby door of a modern apartment block in a new district at dusk, a marble floor, cold white light spilling out of the lobby, seen from the driveway; in the right foreground the front of a white SUV with no logo, its plate out of view. Three people: in the right foreground a man in a plain dark suit with no badge stands with his back to the camera by the SUV's front, a sealed plain kraft envelope in his left hand; Shen Jianye in his brown double-breasted suit gets out of the driver's seat and Lin Meifeng in her wine-red knit dress, a black leather handbag on her arm, gets out of the passenger seat; behind them the glass lobby. The two shut the car doors and walk toward the man, facing the camera; he steps forward and holds the envelope out to Jianye. The man in the dark suit speaks a Mandarin line with his back to the camera, his face never seen, businesslike. The others keep their mouths closed.",
+        "camera": "wide shot, slow push-in",
+        "characters": [
+          "jianye",
+          "meifeng",
+          "shengtong-ren"
+        ]
+      },
+      "chapter": "二房的公寓門口"
+    },
+    {
+      "id": "c17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059017",
+          "speaker": "jianye",
+          "text": "周董總算想起我了。他什麼時候約我見面？",
+          "emotion": "笑得太滿"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the glass lobby door of a modern apartment block in a new district at dusk, a marble floor, cold white light spilling out of the lobby: Shen Jianye in his brown double-breasted suit takes the kraft envelope in both hands; behind him only the cold white light of the glass lobby. He is the only person in the frame, grinning far too widely. He weighs the envelope in his hands, his grin widening, and leans in half a step. Shen Jianye speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, grinning too widely.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "jianye"
+        ]
+      }
+    },
+    {
+      "id": "c18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059018",
+          "speaker": "shengtong-ren",
+          "text": "周董說：合作愉快，到此為止。",
+          "emotion": "臉不入鏡，平板"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the glass lobby door of a modern apartment block in a new district at dusk, a marble floor, cold white light spilling out of the lobby: framed from the shoulders down on a man in a plain dark suit, his face above the top edge of the frame the whole time; his two hands buttoning his jacket; at the left edge of the frame only another man's hand in a brown suit cuff holding a kraft envelope. Two people, no face seen. He finishes buttoning the jacket and, before turning, a flat Mandarin line is heard in his voice, his face staying above the frame; then he turns and walks out of the frame toward the camera side of the driveway without looking back.",
+        "camera": "medium shot, slow push-in",
+        "characters": [
+          "shengtong-ren",
+          "jianye"
+        ]
+      }
+    },
+    {
+      "id": "c19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059019",
+          "speaker": "meifeng",
+          "text": "到此為止？我們一家都搬出老宅了，你們說斷就斷？",
+          "emotion": "拔高"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the glass lobby door of a modern apartment block in a new district at dusk, a marble floor, cold white light spilling out of the lobby, seen from the driveway toward the lobby: Lin Meifeng in her wine-red knit dress and pearl necklace; behind her the cold white light of the glass lobby. She is the only person in the frame, not smiling, shaking with anger. Her eyes lift from the envelope at screen right, she takes one quick step toward the camera and raises her voice at someone walking away behind the camera. Lin Meifeng speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, her voice rising high.",
+        "camera": "medium close-up, slow push-in",
+        "characters": [
+          "meifeng"
+        ]
+      }
+    },
+    {
+      "id": "c20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059020",
+          "speaker": "jianye",
+          "text": "我簽的股權轉讓書影本……還有一張紙條。",
+          "emotion": "愣住"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the glass lobby door of a modern apartment block in a new district at dusk, a marble floor, cold white light spilling out of the lobby: the first frame, from above, is a man's two hands in brown suit cuffs, a thin gold watch on the left wrist, holding a plain kraft envelope. Only the hands are in the frame; no face. He tears open the flap and draws out a stapled stack of photocopied sheets and one small folded note, both with their blank backs to the camera, nothing written visible. His voice is heard from off screen, stunned.",
+        "camera": "close-up on the envelope from above, locked",
+        "characters": [
+          "jianye"
+        ]
+      }
+    },
+    {
+      "id": "c21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059021",
+          "speaker": "jianye",
+          "text": "老宅的事，你自己擔。",
+          "emotion": "一字一字唸"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the glass lobby door of a modern apartment block in a new district at dusk, a marble floor, cold white light spilling out of the lobby: Shen Jianye in his brown double-breasted suit; behind him only the cold lobby light. He is the only person in the frame, his smile gone, not smiling. With his thumb he unfolds the small note, its blank back to the camera, reads it out word by word, then stuffs it back into the envelope. Shen Jianye speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, reading word by word.",
+        "camera": "close-up, slow push-in",
+        "characters": [
+          "jianye"
+        ]
+      }
+    },
+    {
+      "id": "c22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059022",
+          "speaker": "meifeng",
+          "text": "建業，現在怎麼辦？盛通不要我們，老宅也回不去了。",
+          "emotion": "慌、尖"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the glass lobby door of a modern apartment block in a new district at dusk, a marble floor, cold white light spilling out of the lobby. Two people: on screen left Lin Meifeng in her wine-red knit dress; on screen right Shen Jianye in his brown suit holding the open envelope and the photocopies, their blank backs to the camera; behind them the glass lobby. Lin Meifeng grabs Jianye's suit sleeve, shakes it once and lets go; Jianye does not look at her. Lin Meifeng speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, panicked and shrill. Shen Jianye keeps his mouth closed.",
+        "camera": "medium two-shot, slow push-in",
+        "characters": [
+          "meifeng",
+          "jianye"
+        ]
+      }
+    },
+    {
+      "id": "c23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "t059023",
+          "speaker": "jianye",
+          "text": "從那個保母進門，這個家就一路散到今天。",
+          "emotion": "低、狠"
+        },
+        {
+          "id": "t059024",
+          "speaker": "jianye",
+          "text": "那個保母，要付代價。",
+          "emotion": "更低"
+        }
+      ],
+      "data": {
+        "prompt": "Outside the glass lobby door of a modern apartment block in a new district at dusk, a marble floor, cold white light spilling out of the lobby, seen from chest height looking up: Shen Jianye in his brown double-breasted suit holds the open kraft envelope and the photocopies, their blank backs to the camera; behind him only the cold lobby light and one corner of deep blue evening sky. He is the only person in the frame, not smiling, the scar-like crease between his brows deepening. He slowly raises his head and looks toward screen left, his jaw tightening. Shen Jianye speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, low and vicious, then lower still.",
+        "camera": "low-angle close-up, slow push-in",
+        "characters": [
+          "jianye"
+        ]
+      }
+    }
+  ]
+}

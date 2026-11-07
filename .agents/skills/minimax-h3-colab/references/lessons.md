@@ -224,3 +224,32 @@ Qwen-Image-Edit-2509（`h3.sh images`，`lora: false`、20 步、CFG 4、空白 
 現代參考圖配古裝文字、`<Picture N>` 數目不對是 ERROR；基本外貌裡的道具、五字以內的短喊、沒寫空白或虛焦的紙、唐小棠近景沒寫下巴以上或襦裙闔上、
 有名字卻沒掛參考圖的人是 warning，審片時逐條決定。拿 r2 已經畫好的那批去跑，它抓到了這次的古裝與扁擔。
 外貌描述裡也不要寫否定句（「no topknot」）：模型常把否定的東西畫出來，檢查程式也會誤判。
+
+## 13. 真人風格的試鏡（2026-11-06，《恁祖媽今年18》，票 `2026-11-06-tai-nainai-screen-test`）
+
+第一部走真人風格的作品，開角色之前先做的試鏡：Qwen-Image-Edit 畫定妝照與場景圖 16 張，Ref2VA 跑第 1 集五鏡（真人四鏡、3D 一鏡對照），G4，合計約 13.8 CU。
+提示詞、seed 與進度檔在 `docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/screen-test/`（`build.py` 從 `cast.json` 產生、`runs/` 是實際送出的）。
+
+**結果**：真人可行，站主看草稿後說 3D 不行。Ref2VA 吃真人胸像，五鏡的臉都守住定妝照，同一個人換鏡不漂；說話鏡嘴有動。九十六歲以十八歲為 image 1 畫，看得出同一家人的長相。
+
+**第一部作品還沒有任何定妝照時**：`h3.sh images` 至少要一張參考圖。用一張空白中灰底（`build.py` 自己寫的 PNG）當 image 1、提示詞寫「image 1 is only a blank mid-grey canvas: take nothing from it but the plain grey backdrop」，`latent: empty`，可以畫出人。
+
+| 症狀 | 原因 | 怎麼辦 |
+| --- | --- | --- |
+| 定妝照畫成全身、臉很小（Ref2VA 認臉就弱） | 外貌段寫了鞋、褲、裙、手交疊、背挺直，模型照字面把全身畫出來 | 胸像只貼頭肩看得到的部分（`build.py` 的 `bust()`，用整字比對：「ring」不能吃掉「wearing」「earrings」）；加「A tight head-and-shoulders casting portrait… no hands, no legs, no feet」 |
+| 十八歲畫成三十多歲 | 「East Asian young woman of eighteen」不夠 | 外貌段前面加「a young girl of eighteen with a youthful teenage face… clearly a teenager and not an adult woman」；還是偏二十出頭，選 take 時看 |
+| 場景圖上下黑邊、角落像浮水印的字 | 提示詞寫了「film still」「establishing shot of a film set」 | 改「photograph」「empty room」，加「fills the whole frame edge to edge: no black bars, no letterbox」；畫壞的可以裁黑邊再放回 1920×1088 |
+| 祠堂牆上掛軸、牌匾帶假字；左右擺反 | 「ancestral tablets」「hanging scroll」會帶字；左右只寫一次不夠 | 寫「No hanging scrolls, no calligraphy」、牌位寫「plain blank wooden」；另加一句「Layout seen from the doorway: … LEFT wall … RIGHT side」。擺位第二輪仍然擺反，場景圖要多抽幾張 |
+| 片段裡燈的亮度、景別不照正文（燈 1 畫成亮的；要近景給全景） | Ref2VA 照參考圖的場景與光走，正文只寫「a bean-sized dim flame」拉不動 | 每個燈的分數各畫一張場景圖給 Ref2VA；景別一定要準的鏡改走首格路線 |
+| 細到一道皺紋的連戲記號畫不出來，還多畫一枚戒指 | 模型不會穩定畫「只有一道」的細節；戒指的描述同時出現在兩隻手的上下文 | 劇本的記號改成看得見的（光、插鏡、白髮），不要靠每鏡畫中 |
+| 片段裡的辮子數照正文、不照定妝照（定妝照兩條，片段一條） | Ref2VA 正文的外貌段把它拉回來 | 好事，但定妝照還是要重畫對；不要靠正文修參考圖 |
+| 同一個 runtime 先跑 `h3.sh images` 再跑 H3：`ComfyUI 缺少節點：['VHS_VideoCombine']` | 出圖的筆記本先啟動了沒有 VideoHelperSuite 的 ComfyUI，H3 筆記本「使用已啟動的 ComfyUI」 | 出圖與片段分兩個 session（`h3.sh stop` 再 `start`）；第二、三段可以接在片段的 session |
+| `output_name: "r1/x.png"` 存成 `r1-x.png` | `images.py` 把斜線換成連字號 | 後續步驟讀 `r1-<id>.png` |
+| 冷啟動下載模型 `429 Too Many Requests`，runtime 一直開著扣點 | 匿名下載 Hugging Face 被限流（第 9 節） | 停掉本機那一輪，同一個 `--session` 重跑就過了；這次損失約 2 CU |
+| 換裝時眉間畫出紅色刀疤；臉上的「水漬」畫成瘀青；壽衣、睡袍畫成 V 領 | 外貌段寫了「a scar-like deep wrinkle」「water marks on her face」，模型照字面畫傷口與污漬；「robe」本身就會帶出交叉領 | 外貌不寫像傷的比喻（改「one deep vertical frown line… the same colour as the rest of his skin」）；濕身只寫頭髮與衣服濕、臉上乾淨；長袍寫「HIGH stand-up collar closed to the throat」，兩次仍是 V 領的話換成「long buttoned house dress」之類不是 robe 的字 |
+| 監看腳本把「PROMPT 長度 1429 字元」當成 429 | grep 只寫了 `429` | 比對 `Too Many Requests` |
+
+**換裝要同一張臉**：同一個角色的兩個 look 分開畫會是兩個人；用選定的基本款當 image 1、`latent: image1`、只寫「Change only …」（`docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/tools/refs.py looks`）。九十六歲也用十八歲那張當 image 1 畫老。
+
+**時間與點數（G4，暖機後）**：胸像 1248×1664 約 1.3 分／張；Ref2VA 960×544 `hero` 6 秒約 2.1 分／支（含冷啟動的第一支 5.2 分）；第二段 σ0.5 五支約 14 分。
+站主同一天定：片段先做到 1312×736（第二段），不跑 SeedVR2，剪接時整支放到 1920×1080。

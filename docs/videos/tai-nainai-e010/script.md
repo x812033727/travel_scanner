@@ -1,4 +1,4 @@
-# 祖奶奶今年十八 第10集：孫媳婦
+# 恁祖媽今年18 第10集：孫媳婦
 
 第一季第 10 集（第一章〈醒來十八歲〉的最後一集），細綱 `season-01.json` 第 10 集，片長目標 150 秒、約 27 鏡、兩場。
 分鏡照 `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` 的十一項寫；全季共用的時間線、接點、帳、場景格局、道具與人物在
