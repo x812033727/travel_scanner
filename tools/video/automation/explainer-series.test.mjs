@@ -122,6 +122,8 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // file's three sections, no card and no word on screen, MiniMax image-01 prompt rules, Latin
 // names said as written, and nobody living or dead since 1956 drawn. An unfinished 奇聞檔案局
 // one-off on the host stops with video_ai_receipt_input_changed at its next stage after the deploy.
+// The two 奇聞檔案局 writers moved again on 2026-11-03 (thumbnailGuide: the famous name, then the
+// reversal; a sub the title does not say; one large face on the right).
 const SERIES_TEXT_PINS = {
   "planner:bible-explainer-cartoon": [6347, "f9afae8a35b9fee5d247b6bb2a4b0729b47fd20c1f9d195eab42a76adf7ac0d2"],
   "writer:explainer-cartoon": [27161, "24625a430c23d15dc2428d2195c3947b5a18a59b51ab7b9e6e30bcd85b4264f5"],
@@ -129,10 +131,10 @@ const SERIES_TEXT_PINS = {
   "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
   "writer:discuss-cartoon": [25626, "19bacf8358177a1a461c5b46643211041f91969434eba8a89404524084a17fca"],
   "planner:bible-explainer-mystery": [9560, "96629ae4e51040e354111f8659249f1526c57070993a5025c1fbf1e58564adb6"],
-  "writer:explainer-mystery": [36805, "c6e691c253e08bb14b5b9a0f3f15ebe8ae05f082e27a6f85600300deebae243c"],
+  "writer:explainer-mystery": [37238, "81f301a618b7c0b27041cf6ef875c1481c74497a18267217f264712804f99f2d"],
   "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
   "planner:discuss-mystery": [10189, "615cac5cc3db625e6106081948ac8a43bddb397b06ced096bb9236201b0d1b0e"],
-  "writer:discuss-mystery": [35342, "0efe4f8d2f530ae8be4afa2f578f74adaf9e44b6f754e84fe208fc22c7c2f780"],
+  "writer:discuss-mystery": [35775, "11560301bbe17386cbd548c6605a14f64c7592642d91d88a15e0fe97e662de82"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {

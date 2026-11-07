@@ -166,6 +166,22 @@ test("a headline that says the title's first ten characters again warns, and onl
   assert.deepEqual(thumbnailChecks({ bytes, headline: "ChatGPT\n有廣告", title: "  " }).warnings, []);
 });
 
+test("a curio thumbnail names the famous person, then the reversal, and its sub adds a fact the title does not say (review 2026-11-03)", () => {
+  const bytes = jpegBytes(1280, 720, 2000);
+  const title = "周瑜根本不是被氣死的？赤壁之後他還活了兩年｜奇聞檔案局";
+  const good = thumbnailChecks({ bytes, headline: "周瑜\n**早死了？**", sub: "史書只寫『巴丘病卒』", title, curio: true });
+  assert.equal(good.ok, true, good.detail);
+  assert.deepEqual(good.warnings, []);
+  const riddle = thumbnailChecks({ bytes, headline: "史書裡\n沒有他", title, curio: true });
+  assert.equal(riddle.ok, true, "a warning, not a fail");
+  assert.match(riddle.warnings.join(), /a curio headline is two lines: the famous name, then the \*\*reversal\*\*/);
+  assert.match(thumbnailChecks({ bytes, headline: "**誰先上門？**", curio: true }).warnings.join(), /two lines/);
+  assert.deepEqual(thumbnailChecks({ bytes, headline: "史書裡\n沒有他" }).warnings, [], "only a curio episode is held to the shape");
+  assert.deepEqual(thumbnailChecks({ bytes, headline: "史書裡\n沒有他", curio: true, locale: "en" }).warnings, [], "a language's own thumbnail is not");
+  const repeat = thumbnailChecks({ bytes, headline: "周瑜\n**早死了？**", sub: "他還活了兩年", title, curio: true });
+  assert.deepEqual(repeat.warnings, ["the sub repeats the title: 「他還活了兩年」 is in it; give a fact neither the headline nor the title says (a number, a year, the object)"]);
+});
+
 test("the thumbnail item checks each language's own thumbnail too, and what is wrong with one only warns", () => {
   const doc = fixture();
   doc.thumbnail.data.headline = "**不一定**最好用";

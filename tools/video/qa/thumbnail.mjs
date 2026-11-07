@@ -213,11 +213,11 @@ export function headlineSplitWords(headline, rule = HEADLINE) {
   return words;
 }
 
-/** The longest run of characters the headline and the title's first TITLE_HEAD_CHARS share, spaces and markup aside. */
-export function titleOverlap(headline, title) {
+/** The longest run of characters the headline and the title's first `chars` characters share, spaces and markup aside. */
+export function titleOverlap(headline, title, chars = TITLE_HEAD_CHARS) {
   const strip = (value) => [...String(value).replace(/\*\*/g, "").replace(/[\s\p{P}\p{S}]/gu, "")];
   const own = strip(headline);
-  const head = strip(title).slice(0, TITLE_HEAD_CHARS);
+  const head = strip(title).slice(0, chars);
   let best = "";
   for (let i = 0; i < own.length; i++) {
     for (let j = 0; j < head.length; j++) {
@@ -244,8 +244,11 @@ export const CHANNEL_RULES_LOCALE = "zh-TW";
  * `locale` names a locale's own thumbnail (CHANNEL_RULES_LOCALE or null is the video's own).
  * `layout` is the thumbnail's data.layout: the AI look (THUMB_AI_LAYOUT) holds the headline to
  * one line across the frame instead of six characters in the column.
+ * `sub` is the thumbnail's second line: one that says the title again warns. `curio` holds the
+ * headline to the 2026-11-03 review's shape (.agents/skills/curio-episode/SKILL.md §標題與縮圖):
+ * the famous name on line 1, the reversal with a question mark on line 2.
  */
-export function thumbnailChecks({ bytes, headline, title = null, series = null, locale = null, layout = null }) {
+export function thumbnailChecks({ bytes, headline, title = null, series = null, locale = null, layout = null, sub = null, curio = false }) {
   const problems = [];
   const warnings = [];
   const size = imageSize(bytes);
@@ -269,6 +272,15 @@ export function thumbnailChecks({ bytes, headline, title = null, series = null, 
   if (own && typeof title === "string" && title.trim()) {
     const { shared, ratio } = titleOverlap(own, title);
     if (ratio > TITLE_OVERLAP_MAX) warnings.push(`the headline repeats the title: 「${shared}」 is in the title's first ${TITLE_HEAD_CHARS} characters; say what the title does not`);
+  }
+  const ownSub = typeof sub === "string" && sub.trim() ? sub : null;
+  if (ownSub && typeof title === "string" && title.trim()) {
+    const { shared, ratio } = titleOverlap(ownSub, title, Infinity);
+    if (ratio > TITLE_OVERLAP_MAX) warnings.push(`the sub repeats the title: 「${shared}」 is in it; give a fact neither the headline nor the title says (a number, a year, the object)`);
+  }
+  if (own && curio && (locale === null || locale === CHANNEL_RULES_LOCALE)) {
+    const lines = own.split("\n").map((line) => line.replace(/\*\*/g, "").trim());
+    if (lines.length !== 2 || !/[？?]$/.test(lines[1])) warnings.push("a curio headline is two lines: the famous name, then the **reversal** ending on a question mark (「周瑜\\n**早死了？**」)");
   }
   const kb = Math.round(bytes.length / 1024);
   const described = size ? `${size.width}x${size.height} ${size.format.toUpperCase()}, ${kb} KB` : `${kb} KB`;
