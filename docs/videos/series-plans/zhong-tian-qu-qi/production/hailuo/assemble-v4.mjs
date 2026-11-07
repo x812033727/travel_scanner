@@ -112,9 +112,15 @@ for (const scene of video.scenes) {
   }
   const src = scene.data?.source;
   const clip = src ? firstTake(path.join(work, "clips"), src.shot) : pick(path.join(work, "clips"), scene.id);
-  const voiced = Boolean(edit.clip_voice && clip && hasAudio(clip));
+  // A line the model voiced on screen (its lips follow it) vs one we lay in from the recorded audio/ files: the system,
+  // an off-screen speaker, inner monologue, or a speaker whose lips the shot does not show (nospeak).
+  const onscreen = (l) => l.speaker !== "xitong" && (scene.data?.characters ?? []).includes(l.speaker)
+    && !(scene.data?.nospeak ?? []).includes(l.speaker) && !/嘴閉著|內心獨白|畫外/.test(l.emotion ?? "");
+  const useClip = Boolean(edit.clip_voice && clip);
+  const voiced = useClip && lines.some(onscreen) && hasAudio(clip);  // otherwise the clip's own (invented) speech is muted
   const voiceFrom = src ? Number(src.from_s ?? 0) : 0;
-  let dur = voiced ? probe(clip) - voiceFrom : lines.length ? LEAD + lines.reduce((a, l) => a + l.len, 0) + GAP * (lines.length - 1) + TAIL : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
+  const recordedNeed = LEAD + lines.filter((l) => !(voiced && onscreen(l))).reduce((a, l) => a + l.len + GAP, 0) + TAIL;
+  let dur = useClip ? Math.max(probe(clip) - voiceFrom, recordedNeed) : lines.length ? LEAD + lines.reduce((a, l) => a + l.len, 0) + GAP * (lines.length - 1) + TAIL : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
   dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
   // `frame_round: true` (e001-r2 on): every shot a whole number of 24 fps frames, so the stream-copied concat stays at
   // exactly 24 fps instead of drifting to 23.976 (season 1 lost ~5 frames a 100 s cut); off for episodes already dubbed.
@@ -125,13 +131,14 @@ for (const scene of video.scenes) {
   // Where each line sits in the shot, and its subtitle (system lines live on the panel instead).
   let at = LEAD;
   let subs = "";
-  if (voiced && lines.length) {
-    // the model's speech, split among the shot's lines by text length; a shot where it says nothing keeps LEAD
+  if (voiced) {
+    // the model's speech, split among the shot's on-screen lines by text length; recorded lines keep their own files
+    const live = lines.filter(onscreen);
     const spans = speechSpans(clip, voiceFrom, dur);
     if (spans.length) {
-      const s0 = spans[0][0], s1 = spans[spans.length - 1][1], chars = lines.reduce((a, l) => a + [...l.text].length, 0);
+      const s0 = spans[0][0], s1 = spans[spans.length - 1][1], chars = live.reduce((a, l) => a + [...l.text].length, 0);
       let cur = s0;
-      for (const l of lines) { l.len = (s1 - s0) * [...l.text].length / chars; l.voiceAt = cur; cur += l.len; }
+      for (const l of live) { l.len = (s1 - s0) * [...l.text].length / chars; l.voiceAt = cur; cur += l.len; }
     }
   }
   const placed = lines.map((l, i) => {
@@ -183,7 +190,8 @@ for (const scene of video.scenes) {
     note = `still ${path.basename(still)}`;
   }
   const amix = [];
-  if (voiced) placed.length = 0;  // the dialogue is the clip's own audio, mixed below
+  // with the clip's voice, only the lines it does not speak (system, off screen, inner, nospeak) come from audio/ files
+  if (voiced) placed.splice(0, placed.length, ...placed.filter((l) => l.voiceAt === undefined));
   placed.forEach((l, i) => {
     args.push("-i", l.wav);
     const ms = Math.round(l.at * 1000);
