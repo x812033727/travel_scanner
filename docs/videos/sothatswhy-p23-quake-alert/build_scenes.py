@@ -59,6 +59,50 @@ FROZEN = json.load(open(CAM_FILE, encoding="utf-8")) if os.path.exists(CAM_FILE)
 
 S = []
 EXTRA = {}
+# Picture review round 1 (2026-11-07, README §10.1): an independent reviewer zoomed every picture.
+# REWRITE replaces the prompt of shots with no usable take; FIX appends to shots with a severe fault.
+REWRITE = {
+ "phone-orange": "Close-up of a smartphone lying face-down on a sunny wooden breakfast table, a warm orange glow spilling out around its edges and little curved motion lines showing it buzzing, beside a bowl of rice porridge and a glass of milk, bright daylight, a still-life of objects only, simple flat 2D cel-shaded children's cartoon illustration with clean ink outlines, warm bright colours.",
+ "kid-updown": "Waist-up medium shot of the girl in a bright sunny living room giving a happy little hop with her shoulders lifted, eyes closed as happy curves, a big surprised smile, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat-style jacket with a mustard-yellow hood, flat 2D cel-shaded children's cartoon illustration with clean ink outlines, warm bright colours.",
+ "kid-order-got": "Head-and-shoulders close-up of the girl with a delighted face of sudden understanding, eyes closed as happy curves, a big open smile, both hands out of frame, a plain warm cream background, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat-style jacket with a mustard-yellow hood, flat 2D cel-shaded children's cartoon illustration with clean ink outlines, warm bright colours.",
+ "kid-station-q": "Head-and-shoulders side profile of the girl tilting her head with a thoughtful little pout, one simple round dot eye gazing upward, both hands out of frame, a plain warm cream background, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat-style jacket with a mustard-yellow hood, flat 2D cel-shaded children's cartoon illustration with clean ink outlines, warm bright colours.",
+ "kid-catch-q": "Waist-up back view of the girl in a bright sunny living room clenching both fists at her sides, standing ready like a runner at a starting line, looking toward a big sunny window, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat-style jacket with a mustard-yellow hood, flat 2D cel-shaded children's cartoon illustration with clean ink outlines, warm bright colours.",
+ "kid-loud-q": "Head-and-shoulders close-up of the girl wincing with both eyes squeezed shut as two curved lines and her shoulders pulled up, her short straight black chin-length bob hanging loose with straight bangs and one small cowlick on top, navy raincoat-style jacket with mustard-yellow hood resting on her shoulders, both hands out of frame, bright daylight, plain warm cream background, flat 2D cel-shaded children's cartoon with clean ink outlines",
+ "kid-near-q": "Head-and-shoulders close-up of the girl tilting her head with a curious face, short straight black chin-length bob hanging loose with straight bangs and one small cowlick on top, navy raincoat-style jacket with mustard-yellow hood resting on her shoulders, both hands out of frame, bright sunny living room softly blurred behind her, flat 2D cel-shaded children's cartoon with clean ink outlines",
+ "kid-nine": "Waist-up medium shot of the girl in a bright sunny living room with both palms pressed together in front of her chest and a bright surprised open-mouth smile, short straight black chin-length bob hanging loose with straight bangs and one small cowlick on top, navy raincoat-style jacket with mustard-yellow hood resting on her shoulders, flat 2D cel-shaded children's cartoon with clean ink outlines",
+ "kid-calc": "Head-and-shoulders close-up of the girl with a confident proud grin and eyes closed as two happy curves, short straight black chin-length bob hanging loose with straight bangs and one small cowlick on top, navy raincoat-style jacket with mustard-yellow hood resting on her shoulders, both hands out of frame, bright daylight, plain warm cream background, flat 2D cel-shaded children's cartoon with clean ink outlines",
+ "kid-what-do-q": "Head-and-shoulders close-up of the girl looking up with a serious little face, glossy black short straight chin-length bob with straight bangs and one small cowlick on top, navy raincoat-style jacket with mustard-yellow hood resting on her shoulders, both hands out of frame, bright daylight, plain warm cream background, flat 2D cel-shaded children's cartoon with clean ink outlines",
+ "kid-drop-under": "Back view of the girl crouched low under a sturdy plain wooden dining table, both arms folded over the back of her head and neck, short straight black chin-length bob, navy raincoat-style jacket with mustard-yellow hood, bright sunny living room, calm warm daylight, flat 2D cel-shaded children's cartoon with clean ink outlines",
+ "bed": "Medium shot of a neatly made cosy bed with a plain smooth white pillow and a fluffy mustard-yellow blanket in a sunny bedroom, soft daylight through sheer curtains, simple flat 2D children's cartoon with clean ink outlines, only furniture and fabric in the scene"
+}
+FIX = {
+ "kid-table-shake": "the glass of milk tipping over with milk sloshing out in a splash, motion lines on the table, clean smooth wooden tabletop",
+ "chief-tease-blind": "round black glasses sitting straight on her nose with both eyes centered inside the lenses, glossy black hair tied in a low ponytail at the nape",
+ "city-tease": "building facades with simple evenly spaced plain square windows in tidy grids, smooth flat walls",
+ "epicentre-dot": "a small bright glowing dot on the grass surface directly above the glowing underground point, a dotted vertical line joining the two",
+ "chief-epi-yes": "two matching eyebrows, both clearly visible above the round glasses, symmetric friendly face",
+ "ripple-close": "a small light quick ripple ring spreading across smooth ground, gentle thin concentric lines, smooth plain mound surfaces",
+ "station-first": "a smooth plain pale green metal box with an even clean lid surface, soft rings spreading from the box",
+ "chief-if-fast": "both pupils looking in the same direction, matching eye size, round symmetric black glasses, calm thoughtful expression",
+ "phones-many": "many plain phones on a table each glowing with soft light and small curved sound waves, clean dry tabletop, calm tidy scene",
+ "kid-my-seconds": "bright wide eyes with both pupils looking the same way, delighted aha expression, finger raised, closer medium shot",
+ "kid-far-more": "short black bob haircut to the jaw with straight blunt bangs and one small cowlick, girl",
+ "chief-near": "both eyes level and equal in size looking the same way, small earrings hanging from the earlobes, pencil tucked behind one ear",
+ "blind-village": "a cutaway diagram of gentle layered ground beneath an intact calm village, a small glowing point deep below, soft rings spreading upward",
+ "chief-blind-see": "slim young adult woman, oval face, perfectly round thin black glasses, low ponytail, pencil behind one ear",
+ "blind-tilt": "small houses and trees on a hill gently tilting with wobble motion lines, every building a cosy cottage with a roof and windows",
+ "kid-far-sure": "a plain round cushion with a smooth even surface, the girl with a short black bob with straight bangs, curious questioning look",
+ "chief-recall-est": "raising one index finger beside her cheek, glasses resting cleanly on her nose, pencil tucked behind one ear",
+ "hualien-town": "roofs with smooth even tile rows, houses with plain evenly placed square windows, simple flat facades",
+ "road-long": "a winding road through green hills toward a distant city, roadside lined with grass and small bushes only",
+ "city-shake": "city buildings gently wobbling with cartoon motion lines and a soft rumble, rooftops plain and empty",
+ "chief-wait": "above her a simple drawing of a big slow wave running further along a road, clean cream background",
+ "chief-helper": "both pupils looking the same direction, round black glasses sitting straight on her face, warm reassuring smile",
+ "kid-drop-say": "the girl crouching low under a sturdy wooden table, one hand covering her head and the other holding a table leg, both eyes looking forward",
+ "chief-done": "perfectly round thin black glasses resting straight on her nose, both eyes inside the lenses"
+}
+for _id, _fix in FIX.items():
+    EXTRA[_id] = EXTRA.get(_id, "") + ", " + _fix
 def _shot(id, prompt, chars, lines, chapter):
     prompt = prompt + EXTRA.get(id, "")
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
@@ -67,6 +111,7 @@ def _shot(id, prompt, chars, lines, chapter):
     S.append(dict(id=id, chapter=chapter, template="shot", data=dict(prompt=prompt, camera=cam, visual="still", characters=list(chars)), lines=list(lines)))
 def kid(id, prompt, *lines, chapter=None):
     """The kid doing one simple thing, facing the camera, waist-up or head-and-shoulders."""
+    prompt = REWRITE.get(id, prompt)
     _shot(id, prompt.rstrip(". ") + ", " + KIDDESC + KIDFIX_TAIL, ["kid"], lines, chapter)
 def chief(id, prompt, *lines, chapter=None):
     """The chief, always waist-up or head-and-shoulders, in front of a plain wall in daylight, in her `office` look."""
@@ -75,6 +120,7 @@ def chief(id, prompt, *lines, chapter=None):
     S[-1]["data"]["character_looks"] = {"chief": "office"}
 def scene(id, prompt, *lines, chapter=None):
     """No character: an object, a place or a mechanism drawn as a picture."""
+    prompt = REWRITE.get(id, prompt)
     _shot(id, prompt + FLAT, [], lines, chapter)
     S[-1]["data"]["nobody"] = True  # PR #2028: no person or face in an object-only shot
 def k(t, e=None, tag=None): return ("kid", t, e, tag)
