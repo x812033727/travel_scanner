@@ -176,4 +176,8 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
   - 誰在看什麼：被看的人或東西在他看的方向、在前後鏡裡看得清楚嗎？
   - 同一場的時間、光、衣服、手上的東西一樣嗎？
 - 有一項不對就重抽那幾鏡，修好再送後台；看過的結果寫進該集工作單。
+- **鏡頭開頭閃一下別的畫面**：連戲表一排出來才看到，Ref2VA 片段有時開頭 0.1–0.8 秒是另一個畫面（全景、場景圖）再跳成這一鏡；每鏡只看中間一格看不到，播出來是閃一下。
+  r2 第 1–4 集共 11 處（e901 s08、s16；e902 s13、s35；e903 s01、s05、s14、s19、s24、s25；e904 s13）。剪完一定跑
+  `python3 docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/cut-jumps.py <cut 資料夾>`（逐格找鏡頭內的硬切），
+  開頭的用 `stage-clips.sh NN sNN@秒數` 從跳完之後起剪（寫進 `colab/runs/eNNN/stage-clips-args.txt`），再剪一次、`cut-jumps` 要 0。
 
