@@ -15,6 +15,8 @@ git init -q; git config user.name Claude; git config user.email noreply@anthropi
 printf '%s\n' '/'"${S#/}"'/tn*.git/' '/'"${S#/}"'/tn*-parts/' > $G/info/exclude
 paths=(); for p in $S/e$EP $S/e$EP-* $S/own/e$EP $V/tai-nainai-import/tai-nainai-e$EP; do [ -e "$p" ] && paths+=("${p#/}"); done
 [ "$EP" = 001 ] && [ -e $S/pilot ] && paths+=("${S#/}/pilot")
+# 那集用到的共用素材也放一份（站主 2026-11-07：每集分開分支放，單拿一條就能重做那一集）：音效庫、配樂、種田音效（sfx.sh 從它複製）、腳本與審片工具
+for p in $V/_series/tai-nainai/sfx $V/_series/tai-nainai/music $V/_series/zhong-tian-qu-qi/sfx $S/asm2038 $S/*.sh $S/*.py; do [ -e "$p" ] && paths+=("${p#/}"); done
 big=$(cd / && find "${paths[@]}" -type f -size +95M 2>/dev/null)
 for f in $big; do echo "/$f" >> $G/info/exclude; done
 cd /

@@ -11,6 +11,10 @@ G=$S/tnser.git; P=$S/tnser-parts; rm -rf $G $P; mkdir -p $P
 export GIT_DIR=$G GIT_WORK_TREE=/
 git init -q; git config user.name Claude; git config user.email noreply@anthropic.com; git config core.bigFileThreshold 50m
 printf '%s\n' '/'"${S#/}"'/tn*.git/' '/'"${S#/}"'/tn*-parts/' > $G/info/exclude
+# 含 .git 檔的資料夾（git worktree）git add 只會存成提交連結、裡面的檔不會進來（2026-11-07 全面驗證抓到 wt2038）：打包成 tar 放進去
+mkdir -p $S/_backup-archives
+for w in $(find $S -mindepth 1 -maxdepth 3 -name .git -not -path "$S/tn*" -printf '%h\n'); do
+  tar cf $S/_backup-archives/$(basename $w).tar -C $(dirname $w) $(basename $w); echo "/${w#/}/" >> $G/info/exclude; done
 paths=()
 for p in $S/* $S/.[!.]*; do b=$(basename $p); case $b in e0[0-9][0-9]|e0[0-9][0-9]-*|pilot|own|tn*.git|tn*-parts) continue;; esac; [ -e "$p" ] && paths+=("${p#/}"); done
 for p in $S/own/*; do case $(basename $p) in e0[0-9][0-9]) continue;; esac; paths+=("${p#/}"); done
