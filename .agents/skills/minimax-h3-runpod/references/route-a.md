@@ -295,7 +295,8 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - 站主 2026-11-07 選了**模型原聲**（`pilot-own`：精修後的畫面配上同一鏡草稿的音軌）：「用pilot-own感覺滿可以的」。錄好的配音分段對齊（`pilot-seg`）仍然怪，原因是模型講一句話中間會停將近一秒，我們的錄音幾乎是一口氣講完。真人版的中文聲音就用每一鏡草稿自己的音軌；字幕時間照模型實際開口的時間（`silencedetect`）。要注意兩件事：同一個角色在不同鏡的聲音會不會不一樣，以及模型講的字對不對，剪完由站主聽。
 - 換畫風時，**舊稿裡寫死的服裝句子也要一起換**：真人版的唐小棠換成齊胸襦裙、低領（站主選的），但 CG 稿的每一鏡都還寫著「立領扣到喉嚨」「襦裙從立領到腰一件闔上」，等於同一個提示詞互相矛盾。這是第 2 集前置的代理查到的，第 1 集草稿開拍前才修掉。`pilot.py` 現在把這些句子換掉，有漏的就直接中止。另外：`gen-dh.mjs` 只要看到「three women」就會把三位新娘的圖都加進去，寫多人鏡時避開這個字眼。
 - **備份的分法（站主 2026-11-07）**：「一集一個分支」「跨集共用可以共同放一個：音效庫、配樂、試鏡、參考圖各輪、我寫的腳本；其他每一集的全部放每一集的分支」。
-  - 每一集一條 `transfer/zt-live-e00N`：那集的整個工作資料夾（除了 `music/`），加上那集的 r2 發布資料夾。
-  - 跨集共用一條 `transfer/zt-shared`：`_series/zhong-tian-qu-qi`（音效、每一輪的參考圖與試鏡）、`_live-pilot`、各集的 `music/`、scratchpad 的腳本。
-  - 用 `bk-episode.sh N|shared` 推，每次都在同一條分支上加一版（fast-forward，不強推），再用 `verify-episode.py N|shared` 逐檔比對雜湊。大檔切成 90 MiB 的段，每段都比對。
+  - **所有檔案都要備份，不可以略過我覺得沒用的檔案**（站主：「不要漏備份某個你覺得沒用的檔案」）。之前略過的 `clips/`、`segments-v4/`、`cut/*.mp4`、審片預覽、最外層的 log 都要放進去；唯一不放的是 pod 的登入憑證（`h3r-state`，那是密碼）。推完之後跑 `coverage.py`，確認工作資料夾和 scratchpad 的每一個檔案都在某一條分支的清單裡。
+  - 每一集一條 `transfer/zt-live-e00N`：那集的整個工作資料夾（除了 `music/`）、那集的 r2 發布資料夾、後台匯入資料夾；舊的第 43–55 集各一條 `transfer/zt-live-e0NN`。
+  - 跨集共用一條 `transfer/zt-shared`：`_series`（音效、每一輪的參考圖與試鏡）、`_live-pilot`、各集的 `music/`、合輯、最外層的檔案、整個 scratchpad（`_scratchpad/`）。
+  - 用 `bk-episode.sh N|old NNN|shared` 推，每次都在同一條分支上加一版（fast-forward，不強推），再用 `verify-episode.py <分支名>` 逐檔比對雜湊。大檔切成 90 MiB 的段，每段都比對。
   - 不要再每天開帶日期的新分支：站主看不出哪條才是完整的，自己也不放心。
