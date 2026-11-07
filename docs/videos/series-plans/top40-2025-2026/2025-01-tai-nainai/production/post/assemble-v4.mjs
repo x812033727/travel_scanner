@@ -237,7 +237,11 @@ const tEnd = (shot) => starts[shot].start + starts[shot].dur;
 for (const [i, m] of (edit.music ?? []).entries()) {
   const a = tAt(m.from, m.from_off ?? 0), b = tEnd(m.to) + (m.tail ?? 0);
   const len = Math.min(b, total) - a;
-  inputs.push("-i", path.join(work, "music", `cue-${m.cue}.mp3`));
+  const cue = path.join(work, "music", `cue-${m.cue}.mp3`);
+  inputs.push("-i", cue);
+  // 曲子不夠長就停（不是報錯後默默變靜音）：tai-nainai 第 1 集原聲版比 TTS 版短，memory 從 40 秒起放，c26 整整 1.8 秒數位靜音。
+  // 曲尾的靜音也算不夠長，所以留 2 秒。
+  if ((m.offset ?? 0) + len > probe(cue) - 2) throw new Error(`music ${m.cue} ${m.from}-${m.to}: needs ${((m.offset ?? 0) + len).toFixed(1)} s of a ${probe(cue).toFixed(1)} s cue; lower its offset`);
   const ms = Math.round(a * 1000);
   parts.push(`[${n}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=start=${m.offset ?? 0}:duration=${len.toFixed(3)},asetpts=PTS-STARTPTS,afade=t=in:d=${m.fade_in ?? 0.4},afade=t=out:st=${Math.max(0, len - (m.fade_out ?? 0.8)).toFixed(3)}:d=${m.fade_out ?? 0.8},volume=${m.gain ?? -20}dB,adelay=${ms}|${ms}[m${i}]`);
   musicParts.push(`[m${i}]`);

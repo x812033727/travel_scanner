@@ -5,10 +5,13 @@
 
 takes.json：{"c04": {"draft": "/…/r2/out/c04-r1.mp4", "from": 0.0}, …}
   draft 是那一鏡選用的草稿（沒剪過的原片），from 是片段從草稿第幾秒起用（手剪或 h3.sh cuts 剪掉的開頭；沒剪就是 0）。
+  可加 "to"：音軌取到草稿第幾秒，可以比畫面長（第 1 集 c27 畫面剪在茶杯半空，尖叫在最後一格上停格唸完）。
   精修（refine）不改格數與時間，所以草稿從 from 起、長度等於精修片段的那段音軌，就是那一鏡的原聲。
 
 輸出：
-  <out>/<鏡>.wav：48 kHz 立體聲，長度等於精修片段；
+  <out>/<鏡>.wav：48 kHz 立體聲，長度等於精修片段（或 to − from）；整段調到 --lufs（預設 −20，跟 TTS 台詞一樣；
+    模型原聲本來約 −10 LUFS，比 TTS 大 10 dB，第 1 集同一場 c03→c04 跳 6.5 dB）；說話段一直講到最後一格時，
+    最後 60 毫秒淡出，免得字被切成爆音（第 1 集 c05、c25、c27）。
   <out>/<鏡>.json：{"seconds": 片段長, "speech": [[開始, 結束], …]}，
     用 ffmpeg silencedetect（-35 dB、0.25 秒，照種田真人小樣）找出的說話段，時間從片段開頭算。
 剪接表的 own_voice 讀這兩個檔：對白用這條音軌，字幕照 speech 的時間（post/assemble-v4.mjs）。
@@ -60,11 +63,19 @@ def speech(wav: Path, length: float, noise: str = "-35dB", gap: float = 0.25) ->
     return out
 
 
+def loudness(wav: Path) -> float | None:
+    err = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(wav), "-af", "ebur128", "-f", "null", "-"],
+                         capture_output=True, text=True).stderr
+    m = re.findall(r"I:\s+(-?[\d.]+) LUFS", err)
+    return float(m[-1]) if m and float(m[-1]) > -70 else None
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--takes", required=True)
     ap.add_argument("--clips", required=True, help="精修片段資料夾（<鏡>.mp4）")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--lufs", type=float, default=-20.0, help="原聲調到的響度（TTS 台詞約 -20 LUFS）")
     ap.add_argument("--only", help="只做這幾鏡，逗號分隔")
     a = ap.parse_args(argv)
     takes = json.loads(Path(a.takes).read_text(encoding="utf-8"))
@@ -85,12 +96,17 @@ def main(argv: list[str]) -> int:
             print(f"[voice] {shot}: the draft has no audio track", file=sys.stderr)
             bad += 1
             continue
-        length = duration(clip)
+        length = float(t["to"]) - start if t.get("to") is not None else duration(clip)
         wav = out / f"{shot}.wav"
+        raw = out / f"_{shot}.raw.wav"
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{start:.3f}", "-i", str(draft), "-t", f"{length:.3f}", "-vn",
-                        "-af", f"aresample=48000,apad=whole_dur={length:.3f}", "-ac", "2", str(wav)], check=True)
-        segs = speech(wav, length)
-        (out / f"{shot}.json").write_text(json.dumps({"seconds": round(length, 3), "draft": str(draft), "from": start, "speech": segs},
+                        "-af", f"aresample=48000,apad=whole_dur={length:.3f}", "-ac", "2", str(raw)], check=True)
+        segs = speech(raw, length)
+        gain = a.lufs - (loudness(raw) or a.lufs)
+        fade = f",afade=t=out:st={length - 0.06:.3f}:d=0.06" if segs and length - segs[-1][1] < 0.05 else ""
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-af", f"volume={gain:.2f}dB{fade}", str(wav)], check=True)
+        raw.unlink()
+        (out / f"{shot}.json").write_text(json.dumps({"seconds": round(length, 3), "draft": str(draft), "from": start, "gain_db": round(gain, 2), "speech": segs},
                                                      ensure_ascii=False) + "\n", encoding="utf-8")
         print(f"[voice] {shot}: {length:.2f} s, speech {segs}")
     return 1 if bad else 0
