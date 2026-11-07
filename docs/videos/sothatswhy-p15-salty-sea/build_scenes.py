@@ -177,7 +177,7 @@ kid("kid-soup", K("standing on tiptoe to look into " + POT + " simmering on the 
 scene("soup-pot", "Close-up of " + POT + " simmering on a stove, soft steam rising away from the soup, a faint ring on the inside of the pot where the soup used to reach, " + DAY,
       c("對，海就是這樣一鍋湯。"), c("河水是一直加進去、帶著一點點鹽的水，"), c("太陽就是爐火。"))
 kid("kid-all-salt", K("hugging her knees and looking worried at the sea", where=BEACH),
-    k("那大海每天被熬，", "擔心"), k("最後不就變成一大片鹽巴？", "句尾上揚", "S:allsalt"))
+    k("那海水每天被熬，", "擔心"), k("最後不就變成一大片鹽巴？", "句尾上揚", "S:allsalt"))
 chief("chief-guest", C("tilting her head with a thoughtful smile"),
       c("你先別急。先比比看，水跟鹽在這鍋湯裡，各待多久。"))
 scene("drop-guest", "Close-up of one shiny clear water drop sparkling in warm sunshine above a calm blue sea, " + DAY,
@@ -255,7 +255,7 @@ kid("kid-connected", K("spreading both arms wide with a confident face", where=B
 chief("chief-recipe", C("holding up one finger with a warm smile"),
       c("連在一起，可是每個地方的火和水，不一樣。"))
 chief("chief-guess-taiwan", C("leaning a little toward the viewer with a playful smile", close=True),
-      c("有的大海熬得特別兇，有的大海一直在加水。"), c("你先猜猜，台灣旁邊的海，比較像哪一種？", "轉向觀眾", "S:taiwan"))
+      c("有些地方熬得特別兇，有些地方一直在加水。"), c("你先猜猜，台灣旁邊的海，比較像哪一種？", "轉向觀眾", "S:taiwan"))
 kid("kid-guess", K("tapping her chin with one finger and squinting in thought", close=True, where=BEACH),
     k("熬得很兇的那種？", "猜"))
 chief("chief-later", C("smiling with a small playful shrug"),
