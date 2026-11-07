@@ -7,7 +7,7 @@ import path from "node:path";
 import { readApprovals } from "./approvals.mjs";
 import { isCompilation } from "./compilation.mjs";
 import { explainerSeries, hasCast, isDialogueExplainer, isExplainer } from "./drama.mjs";
-import { isDailyBrief } from "./narrative.mjs";
+import { isDailyBrief, isStorySeries } from "./narrative.mjs";
 import { atomicWrite, readJson, UsageError } from "./paths.mjs";
 import { isStory } from "./story.mjs";
 import { FPS, frameToMs } from "./timeline.mjs";
@@ -90,8 +90,12 @@ export function narratedLong(doc, series = null) {
 /**
  * Tech Signal (a daily-ai- slug) opens on the channel intro, then the hosts' greeting: the owner
  * dropped its condensation (2026-11-03), so there is no first chapter to play the intro behind.
+ *
+ * 奇聞檔案局 (curio-) and the brand stories (story-) open on the channel intro too (owner,
+ * 2026-11-07): they dropped the condensation for 黑猫研究院's hook, so the intro plays first,
+ * then the video, then the outro.
  */
-export const defaultIntroAt = (doc, series = null) => (narratedLong(doc, series) && !isDailyBrief(doc) ? INTRO_AFTER_FIRST_CHAPTER : INTRO_AT_START);
+export const defaultIntroAt = (doc, series = null) => (narratedLong(doc, series) && !isDailyBrief(doc) && !isStorySeries(doc) && !isStory(series) ? INTRO_AFTER_FIRST_CHAPTER : INTRO_AT_START);
 
 /**
  * An episode of a binge series that ends in a compilation (series.json `compilation: true`,

@@ -8,6 +8,7 @@
 | --- | --- | --- | --- |
 | 0 | 鎖定包定稿正文；首格裁兩份：960×544（第一段）、1312×736（第二段 keyframe） | `fit_first_frame.sh`（或 ffmpeg cover-crop）、`h3.sh check` | 格式錯誤在本機擋掉 |
 | 1 | H3 生成 960×544，`hero`（20 步、不掛 LoRA、CFG 1）、seed 固定 | `H3_PROFILE=hero bootstrap.sh patch`；`COLAB_GPU=G4 h3.sh batch --manifest st1.json …` | **關卡 1**：構圖、動作、嘴；不過換 seed 只重做這一段 |
+| 1.5 | 找出 Ref2VA 在一支裡自己多切的鏡（場景分數 ≥ 0.15），剪回切點前最後一個 17k+5 格；剪完太短的鏡重買 | `h3.sh cuts --input-dir out/ --output-dir trimmed/ --manifest st1.json`（本機、免費；第二段改吃 `trimmed/`） | 結束碼 3＝有鏡剪完不夠長 |
 | 2 | 拉伸到 1312×736，從 σ0.5 重算 10 步，首格當 frame 0 keyframe | `h3.sh refine --manifest st2.json --output-dir refined/` | **關卡 2**：臉與第一段同一張、第 0 格 PSNR ≥ 22 |
 | 3 | SeedVR2 7B 到短邊 1080，剪掉 prepend 的格，置中裁成 1920×1080 | `h3.sh upscale --input-dir refined/ --output-dir final/` | 幀數＝輸入；皮膚是否補得太寫實 |
 | 4 | 進產線 | `clips import`（凍格、切鏡、第 0 格 PSNR）→ `music` → `assemble` | 既有規則 |

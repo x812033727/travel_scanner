@@ -87,6 +87,7 @@ manifest 的形狀（`jobs[]`：`id`、`title`、`inference_mode`、`reference_i
 
 ```bash
 COLAB_GPU=G4 bash .agents/skills/minimax-h3-colab/scripts/h3.sh batch --manifest st1.json --output-dir drafts/   # G4 自動不要 high-RAM
+bash .agents/skills/minimax-h3-colab/scripts/h3.sh cuts --input-dir out/ --output-dir trimmed/ --manifest st1.json   # 本機：Ref2VA 自己多切的鏡剪回 17k+5 格；結束碼 3＝剪完太短要重買
 python3 .agents/skills/minimax-h3-colab/scripts/refine.py --manifest st2.json --check                            # 免費
 bash .agents/skills/minimax-h3-colab/scripts/h3.sh refine --manifest st2.json --output-dir refined/               # σ0.5、10 步、1312×736
 bash .agents/skills/minimax-h3-colab/scripts/h3.sh upscale --input-dir refined/ --output-dir final/               # SeedVR2 7B → 1920×1080
