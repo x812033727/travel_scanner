@@ -80,3 +80,7 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - 22:15 重剪（s06、s08 換成乾淨的手），cut-qa 0 problem(s)（動量 7.2、靜止 8%），`import --from --force` 重送後台，備註寫明是修正版。
 - 修正版備份推到新分支 `transfer/zt-e903-media-fix`（702 MB；含 s06、s08 新片與舊的 `refined-woodchips`）。舊分支 `transfer/zt-e903-media` 是修正前，留著不動（覆蓋要強制推，不做）。
 - 2026-11-07 連戲審查補做：`cut-jumps.py` 找到鏡頭開頭閃一下別的畫面，照 `stage-clips-args.txt` 從跳完後起剪，重剪後 cut-qa 0、cut-jumps 0，`import --from --force` 重送後台（備註寫明修正版）。
+- 2026-11-07 獨立審片（另一個代理、只看稿子與連戲表）挑出 24 項，最嚴重的親自核對屬實：s01 柴刀被手握著（不是釘在門框）、s16 秦霜一開始刀就在手上、
+  s31 許硯走出灶房、s39 阿令膝上一團火、s27 手抓住水桶（稿子：撲空）。站主：嚴重與中等都修、輕微接受。
+  `r2.py` 重寫 24 鏡（加 KNIFE、LAMP、BELT、CHOP、SERV1 常數與近景短場景句），`colab/runs/e903/fix3` 共 48 支（9030401／402），preflight 0／0。
+  排在 `scratchpad/chainQ.sh` 佇列（e905 fix1 → e904 fix1 → e903 fix3 → e902 fix2）。預估再花約 US$8，第 3 集累計約 US$26（上限 28）。
