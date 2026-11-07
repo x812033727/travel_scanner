@@ -20,7 +20,7 @@
 | P05 羽絨衣（`BirHcIAlfz4`） | 已上架、八語完成 | 同上（只有工作目錄部分；站上檔案未補完，站主說從 P08 起好好備份即可） |
 | P07 冰箱門 | 已上架；站主自己上傳了八語配音與縮圖 | `claude/backup-sothatswhy-p07-p14`（工作目錄去掉 wav／dubs，加上完整 `upload/` 含切塊成片、八語 m4a、縮圖） |
 | P14 天空的顏色 | 同 P07 | 同上 |
-| P08 爆米花 | 成片已核准、上架包已送審（等站主核准上架）；八語翻譯進行中 → 之後 `i18n-merge`、`dub`、`render --thumbnails-only`、`package`、`review-push --gate languages`（等上架核准後才送語言包） | `claude/backup-sothatswhy-p08-popcorn-pressure`（每關完整備份） |
+| P08 爆米花 | 成片、上架已核准；八語配音、字幕、縮圖做完，語言包已送審（站上確認 8 配音、8 縮圖、8 字幕都在），等站主核准語言、上傳 YouTube 後貼網址。分鏡第二次評分 54／70 | `claude/backup-sothatswhy-p08-popcorn-pressure`（每關完整備份，最後一次 5,020 檔、0 不符） |
 
 P07、P14 後台各有一個沒有音檔的語言包待核准，站主不要核准（舊的核准仍有效）。
 
@@ -36,11 +36,14 @@ P07、P14 後台各有一個沒有音檔的語言包待核准，站主不要核�
 
 ## 還沒做完的票
 
-- `tasks/open/2026-11-07-sothatswhy-p08-dialogue-mountain-boiling-and.md`：P08，見上。
+- `tasks/open/2026-11-07-sothatswhy-p08-dialogue-mountain-boiling-and.md`：P08，只剩站主核准語言、上傳 YouTube；記下影片網址後 `npm run tasks -- done`。
 - `tasks/open/2026-11-06-keyframe-judge-refuses-some-child-character.md`：評審拒答（PROHIBITED_CONTENT）的處理已寫進 `keyframes.mjs`，還缺測試。
 - `tasks/open/2026-11-06-curio-and-brand-story-skills-the.md`：奇聞與品牌故事 skill 補眼睛檢查。
 
 ## 已知的坑
+
+- 八語縮圖：英、日、葡、印尼的字常太長，撞到右上的「原來如此事務所」標記就不會畫，`render --thumbnails-only` 會印 note；把 headline 與 sub 縮短到兩行內再 `i18n-merge` 重畫。
+- 送語言包後用 `review-files --dry-run --gate languages` 確認站上有 8 個 dub、8 個 thumbnail、8 個 captions。
 
 - 評審比對設定圖時會把所長的灰髮加回去；所長鏡頭用 `CHIEFFIX_DESC`（不寫灰髮），挑圖時要看灰髮面積。
 - 小問會漂成馬尾、包包頭、帽兜、男孩頭、照片風；`KIDFIX_TAIL` 加 `EXTRA` 補「hood down, short black bob hanging free」與 flat 2D。
