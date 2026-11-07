@@ -34,7 +34,8 @@ BLANK = "image 1 is only a blank mid-grey canvas: take nothing from it but the p
 FRAME = ("A tight head-and-shoulders casting portrait: the frame ends just below the collarbones and the face fills the upper half of the frame, large and sharp. "
          "Front view, looking at the camera, calm neutral expression, mouth closed, not smiling. Plain mid-grey studio backdrop. "
          "Only the head, neck and shoulders are in the frame: no hands, no legs, no feet. ")
-BODY_ONLY = ("shoes", "heels", "hands folded", "hand", "back very straight", "back still straight", "trousers", "skirt", "ring")
+BODY_ONLY = ("shoes", "heels", "hands folded", "hand", "hands", "back very straight", "back still straight", "trousers", "skirt", "ring",
+             "jeans", "sneakers", "slippers", "slacks", "wheelchair", "tall", "watch")
 # 試鏡學到的：只寫「eighteen」會畫成二三十歲；福伯不寫老相會畫成七十歲；辮子要寫「only one」
 EXTRA = {
     "yuetang-18": "a young girl of eighteen with a youthful teenage face, smooth young skin and a fresh, delicate classical beauty, clearly a teenager and not an adult woman; ",
