@@ -50,6 +50,13 @@ def speech(wav: Path, length: float, noise: str = "-35dB", gap: float = 0.25) ->
         t = b
     if length - t > 0.05:
         out.append([round(t, 3), round(length, 3)])
+    # 短於 0.2 秒的不是說話（第 1 集 c25 茶杯碰撞的叮叮聲被當成好幾段 0.07 秒的話，字幕提早 2.9 秒出現）
+    out = [s for s in out if s[1] - s[0] >= 0.2]
+    # 頭尾孤立的短聲（< 0.4 秒、跟其他段隔 > 1 秒）也不算：c25 開頭 0.27 秒的杯聲
+    while len(out) > 1 and out[0][1] - out[0][0] < 0.4 and out[1][0] - out[0][1] > 1.0:
+        out.pop(0)
+    while len(out) > 1 and out[-1][1] - out[-1][0] < 0.4 and out[-1][0] - out[-2][1] > 1.0:
+        out.pop()
     return out
 
 
