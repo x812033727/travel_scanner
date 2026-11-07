@@ -180,4 +180,11 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
   r2 第 1–4 集共 11 處（e901 s08、s16；e902 s13、s35；e903 s01、s05、s14、s19、s24、s25；e904 s13）。剪完一定跑
   `python3 docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/cut-jumps.py <cut 資料夾>`（逐格找鏡頭內的硬切），
   開頭的用 `stage-clips.sh NN sNN@秒數` 從跳完之後起剪（寫進 `colab/runs/eNNN/stage-clips-args.txt`），再剪一次、`cut-jumps` 要 0。
+- **送審前另外兩關（站主 2026-11-07 同意加）**：
+  - 聲音：`python3 docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/audio-qa.py <cut 資料夾> <video.json>`，
+    讀 `assemble-v4.mjs` 寫的 `<stem>.lines.json`，查台詞跨到下一鏡（說話的人在畫面裡時）、兩句重疊、被片尾切掉、被配樂蓋過、超過 4 秒沒有台詞。
+    它不會判斷嘴型與聲音合不合臉，那仍要站主聽。
+  - 獨立審片：另開一個沒參與製作的子代理，照 `colab/runs/_scripts/independent-review.md` 給它稿子、連戲表與三個檢查的結果，逐場挑錯；
+    照它的清單修完才送後台，清單與處理結果寫進該集工作單。
+- 每集送後台前的順序：`cut-qa.py` → `cut-jumps.py` → `audio-qa.py` → `continuity-sheets.py` 自己看一遍 → 獨立審片 → 修 → 送審。
 

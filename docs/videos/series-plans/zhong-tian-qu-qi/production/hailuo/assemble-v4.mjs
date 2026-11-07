@@ -258,6 +258,8 @@ if (DUB) {
   process.exit(0);
 }
 const srtFile = out.replace(/\.mp4$/, ".zh-TW.srt");
+// Where every line landed (absolute start, length, shot, speaker): audio-qa.py checks it against the shots.
+writeFileSync(out.replace(/\.mp4$/, ".lines.json"), JSON.stringify(lineAt, null, 1) + "\n");
 writeFileSync(srtFile, srt.map((c, i) => `${i + 1}\n${fmt(c.start)} --> ${fmt(c.end)}\n${c.text}\n`).join("\n"));
 writeFileSync(path.join(segDir, "mix-graph.txt"), graph);
 // Subtitles ride as a soft zh-TW track (CC), the owner's choice; burn_subtitles draws them instead.
