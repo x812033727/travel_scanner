@@ -26,7 +26,9 @@ out = Path(sys.argv[1])
 (out / "base").mkdir(exist_ok=True)
 by_id = {c["id"]: c for c in cast["characters"]}
 
-STYLE = ("Style: a photorealistic live-action photograph for a Chinese historical costume drama, shot on a cinema camera with "
+ANCIENT = "Ancient China, Song dynasty: every garment is ancient Chinese clothing. "
+PRESENT_DAY = {"xuyan-modern", "mianshiguan"}  # the interview room of e001
+STYLE = (ANCIENT + "Style: a photorealistic live-action photograph for a Chinese historical costume drama, shot on a cinema camera with "
          "an 85mm lens, natural soft key light, realistic skin with fine pores and natural texture, realistic hair and fabric, "
          "shallow depth of field. Not a painting, not 3D CG, not a game render, not anime, not a cartoon, not a doll. The "
          "picture fills the whole frame edge to edge: no black bars, no border. Clean image with nothing written anywhere, "
@@ -62,24 +64,28 @@ PORTRAITS = [  # (job id, description)
     ("tangxiaotang-qixiong", TANG_QIXIONG),
     ("qinshuang", appearance("qinshuang") + ", her belt plain and bare"),
     ("aling", appearance("aling")),
-    ("xiaohe", appearance("xiaohe") + ", a plain, simply dressed village child"),
-    ("erniu", appearance("erniu")),
-    ("zhaobutou", appearance("zhaobutou")),
-    ("qianyuanwai", appearance("qianyuanwai")),
-    ("laisan", appearance("laisan")),
+    ("xiaohe", appearance("xiaohe").replace("a patched lilac cotton jacket", "an ancient Chinese village child's patched lilac cotton cross-collared jacket") + ", a plain, simply dressed village child"),
+    ("erniu", appearance("erniu").replace("a coarse brown short jacket with rolled sleeves",
+        "an ancient Chinese Song-dynasty peasant's coarse brown hemp cross-collared short jacket with rolled sleeves, tied with a cloth sash")),
+    ("zhaobutou", appearance("zhaobutou").replace("a black constable's hat and plain black official uniform",
+        "an ancient Chinese Song-dynasty constable's soft black futou cap and a plain black round-collared constable's robe")),
+    ("qianyuanwai", appearance("qianyuanwai").replace("a dark gold silk robe with roundel patterns",
+        "an ancient Chinese Song-dynasty rich landlord's dark gold silk cross-collared robe with roundel patterns and a small black cap")),
+    ("laisan", appearance("laisan").replace("a grey-brown short jacket and an old cloth head wrap",
+        "an ancient Chinese Song-dynasty peasant's grey-brown hemp cross-collared short jacket and an old cloth head wrap")),
     ("mianshiguan", appearance("mianshiguan")),
 ]
 # the owner wants all three heroines with good figures: a three-quarter-length look for each, so the figure reads
 FIGURES = [
-    ("tangxiaotang-figure", TANG_QIXIONG.replace("petite curvy figure", "a petite curvy hourglass figure with a slim waist")),
+    ("tangxiaotang-figure", TANG_QIXIONG.replace("petite curvy figure", "a petite curvy hourglass figure with a full bust, a slim waist and rounded hips")),
     ("qinshuang-figure", appearance("qinshuang").replace(
         "a fitted dark brown cotton short jacket crossed at the collar",
         "a fitted dark brown cotton short jacket wrapped in a deep V to the chest over a dark inner wrap") +
-        ", a tall athletic hourglass figure, toned and curvy, with long legs, her belt plain and bare"),
+        ", a tall athletic hourglass figure, toned and curvy, with a full bust, a small cinched waist and rounded hips, her belt plain and bare"),
     ("aling-figure", appearance("aling").replace(
         "a plain grey-white cotton dress tailored close at the waist with a cloth sash",
         "a plain grey-white cotton cross-collared dress, the collar crossing in a soft V to the chest, tailored close at "
-        "the bust and waist with a pale cloth sash, a long flowing skirt") + ", a tall slender figure with graceful curves"),
+        "the bust and waist with a pale cloth sash, a long flowing skirt") + ", a tall slender figure with graceful curves, a full bust and a slim waist; the dress is grey-white, a soft pale grey close to white"),
 ]
 SETS = {s["id"]: s["prompt"] for s in cast["sets"]}
 SETS.update({  # sets that only gen-dh names
@@ -105,9 +111,10 @@ FEET = r",? (and )?(cloth shoes|black leather shoes|leather boots|boots|shoes)\b
 def jobs(items, frame, w, h, base):
     out_jobs = []
     for jid, desc in items:
-        if frame is HEAD:
+        if frame is HEAD or frame is BODY:
             desc = re.sub(FEET, "", desc)
-        (out / "prompts" / f"{jid}.txt").write_text(BLANK + frame.format(desc=desc) + " " + STYLE, encoding="utf-8")
+        style = STYLE.replace(ANCIENT, "") if jid in PRESENT_DAY else STYLE
+        (out / "prompts" / f"{jid}.txt").write_text(BLANK + frame.format(desc=desc) + " " + style, encoding="utf-8")
         out_jobs += [{"id": f"{jid}-{s}", "reference_images": [base], "prompt_file": f"prompts/{jid}.txt",
                       "negative_file": "prompts/negative.txt", "width": w, "height": h, "seed": s, "latent": "empty"}
                      for s in SEEDS]
@@ -120,7 +127,7 @@ HEAD = ("A tight head-and-shoulders casting portrait: the frame ends just below 
         "half of the frame, large and sharp. Front view, looking at the camera, calm neutral expression, mouth closed, not "
         "smiling. Plain mid-grey studio backdrop. Only the head, neck and shoulders are in the frame: no hands. The person "
         "is: {desc}. They are the only person in the frame.")
-BODY = ("A three-quarter-length costume portrait from the top of the head to mid-thigh, standing in a relaxed elegant pose "
+BODY = ("A three-quarter-length costume portrait: the frame runs from the top of the head down to mid-thigh and ends there, her knees, legs and feet below the bottom edge; standing in a relaxed elegant pose "
         "with her weight on one leg, facing the camera, so her figure and costume read clearly. Calm expression, mouth "
         "closed. Her hands rest at her sides, empty. Plain mid-grey studio backdrop with a soft rim light along her figure. "
         "She is: {desc}. She is the only person in the frame.")
