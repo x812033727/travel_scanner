@@ -79,3 +79,4 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - s06 用 `fix2` 9030302、s08 用 9030301（手乾淨）；舊的精修片與草稿移到 `st2/refined-woodchips`、`st1/out-woodchips`。
 - 22:15 重剪（s06、s08 換成乾淨的手），cut-qa 0 problem(s)（動量 7.2、靜止 8%），`import --from --force` 重送後台，備註寫明是修正版。
 - 修正版備份推到新分支 `transfer/zt-e903-media-fix`（702 MB；含 s06、s08 新片與舊的 `refined-woodchips`）。舊分支 `transfer/zt-e903-media` 是修正前，留著不動（覆蓋要強制推，不做）。
+- 2026-11-07 連戲審查補做：`cut-jumps.py` 找到鏡頭開頭閃一下別的畫面，照 `stage-clips-args.txt` 從跳完後起剪，重剪後 cut-qa 0、cut-jumps 0，`import --from --force` 重送後台（備註寫明修正版）。
