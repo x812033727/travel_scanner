@@ -287,6 +287,7 @@ kernel 卡住
   - 沒寫表情的臉會退回參考照的表情：不說話的人在多人鏡裡全是空白臉，定妝照在笑的角色會一直笑。
   - 抽象或否定的寫法沒用：「cold」被讀成聲音，「does not smile」照樣出笑臉。要寫眉、眼、嘴角、下巴、呼吸，例如「mouth corners pulled down」「lips pressed between words」。
   - 說話的近景要寫看著畫外哪個人、never into the camera，否則是對鏡頭說話的主播臉。
+  - 每一句台詞都要寫，不能只修被抓到的鏡：站主 2026-11-08 看完第 2 集「很多幕都是看前面，不會面對對方說話」。正文寫 `turned toward <對象>, face in profile or three-quarter profile, eyes on <對象>, never looking at the camera`；對話鏡不要全員面向鏡頭排成一排。
   - 一鏡內的情緒轉變做不出來：開場就給目標表情。
 - 燈不在畫面裡的鏡，不要放那段固定的燈的描述。第 3 集草稿有 6 鏡在手邊多畫一盞玻璃燈，連「the lamp itself is out of the frame」那鏡也一樣：只要寫到燈，模型就會畫一盞出來。`compile.py` 現在遇到 `"lamp_in_frame": false` 或正文寫「lamp … out of the frame / no lamp」時，只寫「No lamp is in the frame; its warm light comes from off screen.」。寫分鏡時，燈不入鏡的鏡要標出來。
 - 要等前一條 chain 跑完再接下一條時，不要用 `pgrep -f "<前一條的指令>"`：等待迴圈自己的指令列也含那段字，會一直等到自己（2026-11-08 第 2 集表情重拍因此晚開，Colab session 空等計費）。改用前一條寫進 log 的完成行，或記下它的 PID。
