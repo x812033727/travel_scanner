@@ -46,6 +46,7 @@
   - 數字改用感受來畫：鼓或扁的錢包、升起或洩氣的氣球、幼苗、飛鏢靶。
 - 整個系列固定用同一張 Ada 設定圖：W03 的候選 E，檔案在 `ada-sheet/`（B03 工作資料夾的 characters/）。
   - 站主說不用每支片都去按 look 關卡，可以用 `approve --gate look --note "owner 2026-11-07: Ada sheet is fixed for the series (W03 sheet E); approve without per-video clicks"`。
+  - 站主 2026-11-08 再次交代：角色設定一律用原本選的那張，**不要再問他**。所以不要 `review-push --gate look`，只在本機 approve。後台還掛著的舊 look 卡不會擋任何步驟，不用請站主處理。
 - 品質優先，長度可以依內容拉長或縮短：
   - S31-v2 的目標是 15–16 分鐘；
   - S14-v2 照時間順序，把《五輪書》放在前面。

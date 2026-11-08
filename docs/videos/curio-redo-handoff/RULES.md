@@ -53,3 +53,5 @@
 - 上架包自檢一律用 package/check.mjs 的 readPackageReport(workdir)（review-push 用的同一支），不要自己呼叫 checkPackage：它的 brandingMatches 預設 true，會漏掉 checks.json 遺失。checks.json 也要列入備份。
 - 配音的片頭片尾要讓 dub 工具自己加（需要 checks.json 的 branding 與 speech_hash），不要手接到 upload/dubs：languages 關卡讀的是 dubs/<locale>.m4a。送審後用 review-files --dry-run 對每個 dub_ 的 sha 跟本機檔案。
 - 站主 2026-11-08：縮圖的主要物件不能被字擋住。參考「原來如此」系列，改用左右分開的 C 版型：video.json 的 thumbnail.data 加 "layout": "c", "tone": "navy"（左 40% 深藍底放字，右 60% 放圖）。右欄會裁掉插圖左邊，所以縮圖用的那一景要畫成主體在畫面右側、左邊留白（提示詞寫 on the right side of the frame, a plain pale wall on the left）。八語縮圖要逐語預覽：外語字長，放不下就縮短 i18n/<locale>.json 的 thumbnail 字（B02 的 id、th、vi 就改過）。
+- 分鏡核准後不要再跑 keyframes（就算沒有重畫，它也會改寫 manifest 的 generated_at，讓核准失效）。要確認狀態用 status。
+- 站主 2026-11-08：角色設定用原本選的（W03 候選 E），不要再問；look 只在本機 approve，不 review-push。
