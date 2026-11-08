@@ -1,0 +1,3319 @@
+{
+ "schema_version": 1,
+ "slug": "sothatswhy-p11-old-battery",
+ "format": "drama",
+ "category": "explainer",
+ "narration_locale": "zh-TW",
+ "target_minutes": [
+  11,
+  13
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+ },
+ "subtitles": {
+  "burn_in": false
+ },
+ "theme": "paper",
+ "look": {
+  "preset": "cute-cartoon"
+ },
+ "series": {
+  "slug": "sothatswhy",
+  "episode": 11,
+  "chapter": 1
+ },
+ "music": {
+  "track": "sothatswhy-bed-r2.m4a",
+  "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "characters": [
+  {
+   "id": "chief",
+   "name": "所長",
+   "appearance": "a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。事務所的所長，溫和、有耐心，像陪一個好奇的小朋友和你一起找答案。語速像平常聊天，一秒四到五個字，句與句之間不拖。"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text",
+   "shot_looks": [
+    {
+     "id": "office",
+     "appearance": "a friendly slim woman of about thirty, the chief of a small question office, with round black glasses, glossy jet-black shoulder-length hair tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear"
+    }
+   ]
+  },
+  {
+   "id": "kid",
+   "name": "小問",
+   "appearance": "a curious eight-year-old girl with a short black bob haircut with straight bangs and one small cowlick sticking up on top, large round eyes, wearing a navy raincoat-style jacket with a mustard-yellow hood, white sneakers, both hands free",
+   "voice": {
+    "provider": "gemini",
+    "name": "Leda",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲小女孩的聲音，好奇、活潑，問問題時句尾上揚，語速輕快"
+   },
+   "sheet_prompt": "character reference: one single full-body figure standing in the centre, facing the viewer in a slight three-quarter turn, relaxed friendly pose, both hands clearly drawn, plain empty cream background with nothing else in the picture, no turnaround, no second view, no seal, no stamp, no signature, no text"
+  }
+ ],
+ "loops": [
+  {
+   "setup": "p001",
+   "payoff": "p139",
+   "what": "那天很冷，跟手機黑掉有沒有關係"
+  },
+  {
+   "setup": "p007",
+   "payoff": "p039",
+   "what": "媽媽說剛買時一整天都有電，現在為什麼撐不久"
+  },
+  {
+   "setup": "p016",
+   "payoff": "p123",
+   "what": "為什麼說那一下黑掉是手機自己決定的"
+  },
+  {
+   "setup": "p017",
+   "payoff": "p052",
+   "what": "電池裡偷偷長著的那一層是什麼"
+  },
+  {
+   "setup": "p021",
+   "payoff": "p129",
+   "what": "電量明明還有，電池為什麼會老，還會突然關機"
+  },
+  {
+   "setup": "p033",
+   "payoff": "p037",
+   "what": "充到百分之百是不是跟新手機一樣多電"
+  },
+  {
+   "setup": "p051",
+   "payoff": "p064",
+   "what": "壺怎麼會自己變小"
+  },
+  {
+   "setup": "p066",
+   "payoff": "p067",
+   "what": "把水垢刷掉不就好了"
+  },
+  {
+   "setup": "p070",
+   "payoff": "p074",
+   "what": "是不是充一次電就長一次水垢"
+  },
+  {
+   "setup": "p088",
+   "payoff": "p089",
+   "what": "不充電是不是就不會老"
+  },
+  {
+   "setup": "p093",
+   "payoff": "p094",
+   "what": "多熱才算太熱"
+  },
+  {
+   "setup": "p096",
+   "payoff": "p097",
+   "what": "放冷凍庫是不是就不會老"
+  },
+  {
+   "setup": "p100",
+   "payoff": "p119",
+   "what": "壺變小只是比較快沒電，怎麼會一下子黑掉"
+  },
+  {
+   "setup": "p126",
+   "payoff": "p128",
+   "what": "還有百分之二十卻黑掉，百分比是不是騙人"
+  },
+  {
+   "setup": "p144",
+   "payoff": "p151",
+   "what": "手機變慢是不是都是電池老了"
+  },
+  {
+   "setup": "p153",
+   "payoff": "p160",
+   "what": "怎麼讓電池老得慢一點"
+  },
+  {
+   "setup": "p169",
+   "payoff": "p170",
+   "what": "是不是要用到沒電才可以充"
+  },
+  {
+   "setup": "p179",
+   "payoff": "p183",
+   "what": "媽媽的舊手機還有救嗎"
+  },
+  {
+   "setup": "p185",
+   "payoff": "p186",
+   "what": "自己拆開換電池是不是比較快"
+  },
+  {
+   "setup": "p187",
+   "payoff": "p188",
+   "what": "怎樣算是壞掉的電池"
+  }
+ ],
+ "youtube": {
+  "category_id": 27,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "電量還有，手機電池為什麼已經老了？｜原來如此事務所",
+  "description": "小問在公園用媽媽的舊手機拍松鼠，明明還有百分之二十的電，一按拍照就黑掉了。手機壞了嗎？電量還有，電池怎麼會老？\n\n這一集，所長和小問把電池想成一個裝電的水壺：百分比是壺裡現在還剩幾分滿，「最大容量」是壺本身還剩多大，壺嘴寬不寬決定電一次能倒多快。電池裡慢慢長出一層像水垢的薄膜，讓壺變小、也讓壺嘴變窄；手機要大口用電時倒不夠快，就會自己先關機、保護裡面的零件。\n\n也聊到手機怎麼自己照顧電池、為什麼想充就充，以及電池鼓起來、很燙或有怪味時，要停用並告訴大人。\n\n水壺與水垢是我們的比喻，不是電池真正的構造；本集插圖由 AI 生成，畫的是示意。片中的數字都是手機公司說明裡的大約數字，每支手機、每顆電池都不一樣。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-08",
+  "tags": [
+   "手機電池",
+   "電池健康度",
+   "最大容量",
+   "鋰電池",
+   "突然關機",
+   "充電",
+   "科普",
+   "原來如此事務所"
+  ],
+  "video_id": null
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "電量還有\n**電池已經老了**",
+   "sub": "還有百分之二十，手機卻黑掉",
+   "shot": "kid-hundred",
+   "subject": "right"
+  }
+ },
+ "sources": [
+  {
+   "title": "Apple：iPhone 電池與效能",
+   "url": "https://support.apple.com/en-us/101575",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Apple：iPhone 11 及後續機型的電池與效能",
+   "url": "https://support.apple.com/en-us/106348",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Apple：iPhone 的最佳化電池充電",
+   "url": "https://support.apple.com/en-us/108055",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Apple：Why lithium-ion",
+   "url": "https://www.apple.com/batteries/why-lithium-ion/",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Apple：Maximizing performance",
+   "url": "https://www.apple.com/batteries/maximizing-performance/",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Apple：iPhone 重要安全資訊",
+   "url": "https://support.apple.com/guide/iphone/important-safety-information-iph301fc905/ios",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Google：Understand your Pixel battery",
+   "url": "https://support.google.com/pixelphone/answer/15738128?hl=en",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Google：Get the most life from your Pixel battery",
+   "url": "https://support.google.com/pixelphone/answer/6090612?hl=en",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Samsung：Battery protection in One UI 6.1",
+   "url": "https://www.samsung.com/ie/support/mobile-devices/galaxy-battery-protection-feature-in-one-ui-6-1/",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Battery University：BU-808 How to prolong lithium-based batteries",
+   "url": "https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Battery University：BU-808b What causes Li-ion to die",
+   "url": "https://batteryuniversity.com/article/bu-808b-what-causes-li-ion-to-die",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Battery University：BU-903 How to measure state-of-charge",
+   "url": "https://batteryuniversity.com/article/bu-903-how-to-measure-state-of-charge",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "University of Münster MEET：Battery Aging",
+   "url": "https://www.uni-muenster.de/MEET/en/research/cell-system/Aging.html",
+   "checked_on": "2026-11-08"
+  },
+  {
+   "title": "Edge et al. 2021, Lithium ion battery degradation: what you need to know (PCCP)",
+   "url": "https://doi.org/10.1039/D1CP00359C",
+   "checked_on": "2026-11-08"
+  }
+ ],
+ "assets": [],
+ "scenes": [
+  {
+   "id": "kid-park",
+   "chapter": "還有電，手機卻黑掉了",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny park on a crisp winter day holding a plain smooth unmarked phone glowing softly in both hands with a shocked face, eyes wide, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p001",
+     "speaker": "kid",
+     "text": "所長！今天好冷喔，",
+     "pause_after_ms": 100,
+     "emotion": "跑進來報案的語氣"
+    },
+    {
+     "id": "p002",
+     "speaker": "kid",
+     "text": "我在公園拍松鼠，",
+     "pause_after_ms": 100,
+     "emotion": "比手畫腳"
+    }
+   ]
+  },
+  {
+   "id": "squirrel",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a fluffy squirrel nibbling an acorn on a frosty tree branch in a sunny winter park, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p003",
+     "speaker": "kid",
+     "text": "用的是媽媽的舊手機，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p004",
+     "speaker": "kid",
+     "text": "一按拍照，它就黑掉了！",
+     "pause_after_ms": 100,
+     "emotion": "誇張"
+    }
+   ]
+  },
+  {
+   "id": "phone-dark",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a plain smooth unmarked dark phone lying quiet on a wooden park bench, a few fallen leaves beside it, crisp winter sunshine, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p005",
+     "speaker": "kid",
+     "text": "明明還有百分之二十的電！",
+     "pause_after_ms": 100,
+     "emotion": "委屈"
+    }
+   ]
+  },
+  {
+   "id": "kid-mom-said",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding a plain smooth unmarked phone glowing softly with a sad little pout, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p006",
+     "speaker": "kid",
+     "text": "媽媽說它剛買的時候，",
+     "pause_after_ms": 100,
+     "emotion": "委屈"
+    },
+    {
+     "id": "p007",
+     "speaker": "kid",
+     "text": "一整天都有電耶！",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p008",
+     "speaker": "kid",
+     "text": "它是不是壞掉了？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-not-broken",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling gently with one hand on her chest, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p009",
+     "speaker": "chief",
+     "text": "先別急，它多半沒有壞。",
+     "pause_after_ms": 100,
+     "emotion": "安撫"
+    },
+    {
+     "id": "p010",
+     "speaker": "chief",
+     "text": "很多舊手機，都可能這樣突然關機。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-why-old",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a puzzled frown, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p011",
+     "speaker": "kid",
+     "text": "為什麼舊的才會這樣？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-old",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with a knowing smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p012",
+     "speaker": "chief",
+     "text": "因為它的電池，已經老了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-still-full",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office spreading both hands wide with a confused face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p013",
+     "speaker": "kid",
+     "text": "可是電量還有啊，",
+     "pause_after_ms": 100,
+     "emotion": "不服氣"
+    },
+    {
+     "id": "p014",
+     "speaker": "kid",
+     "text": "電池怎麼會老？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-you",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief leaning in a little with a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p015",
+     "speaker": "chief",
+     "text": "很多人都跟你一樣，以為電量還多，電池就還好。",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "bottle-tease",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a mustard-yellow cap half full of water on a sunny wooden table, a thin soft white crust coating its inside walls, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p016",
+     "speaker": "chief",
+     "text": "其實那一下黑掉，是手機自己決定的。",
+     "pause_after_ms": 100,
+     "emotion": "賣關子"
+    },
+    {
+     "id": "p017",
+     "speaker": "chief",
+     "text": "而且電池裡面，正偷偷長著一層東西。",
+     "pause_after_ms": 100,
+     "emotion": "賣關子"
+    }
+   ]
+  },
+  {
+   "id": "kid-tease",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl gasping with a round open mouth, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p018",
+     "speaker": "kid",
+     "text": "自己決定？還會長東西？",
+     "pause_after_ms": 100,
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "battery-open",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a plain smooth rounded battery cell lying on a sunny wooden table beside a tiny screwdriver, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p019",
+     "speaker": "chief",
+     "text": "聽起來很怪吧？這一集，我們就來拆開這顆老電池。",
+     "pause_after_ms": 100,
+     "emotion": "承諾"
+    }
+   ]
+  },
+  {
+   "id": "chief-main-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief folding her hands with a curious smile, eyebrows raised, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p020",
+     "speaker": "chief",
+     "text": "電量明明還有，電池為什麼會老，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p021",
+     "speaker": "chief",
+     "text": "還會突然關機？",
+     "pause_after_ms": 100,
+     "emotion": "問句"
+    }
+   ]
+  },
+  {
+   "id": "bottle",
+   "chapter": "百分之百，只是這個壺裝滿了",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a mustard-yellow cap half full of water on a sunny wooden table, sunlight shining through it, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p022",
+     "speaker": "chief",
+     "text": "要回答它，先想想你每天帶的水壺。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p023",
+     "speaker": "chief",
+     "text": "電池就像一個裝電的水壺。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-bottle",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office holding a clear plastic water bottle with a mustard-yellow cap in both hands with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p024",
+     "speaker": "kid",
+     "text": "我的水壺？",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p025",
+     "speaker": "kid",
+     "text": "電也能裝在壺裡？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "bottle-level",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a mustard-yellow cap with only a little water remaining in it, on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p026",
+     "speaker": "chief",
+     "text": "我們就這樣想：電是壺裡的水。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p027",
+     "speaker": "chief",
+     "text": "螢幕上的百分比，是壺裡現在還剩幾分滿。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-twenty",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl pinching her thumb and finger close together with a small worried face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p028",
+     "speaker": "kid",
+     "text": "那我的手機，",
+     "pause_after_ms": 100,
+     "emotion": "想一想"
+    },
+    {
+     "id": "p029",
+     "speaker": "kid",
+     "text": "就是只剩一點點水？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "bottle-fill",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a mustard-yellow cap being filled at a kitchen tap with fresh sparkling water, sunny kitchen, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p030",
+     "speaker": "chief",
+     "text": "對。用電，就是喝掉壺裡的水；",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p031",
+     "speaker": "chief",
+     "text": "充電，就是再把壺裝滿。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-hundred",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl centred in the frame, large clear face, holding a clear plastic water bottle with a mustard-yellow cap in front of her chest with both hands and a confident proud grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p032",
+     "speaker": "kid",
+     "text": "那充到百分之百，",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p033",
+     "speaker": "kid",
+     "text": "就跟新手機一樣多電吧？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-hundred",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head kindly with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p034",
+     "speaker": "chief",
+     "text": "不一定。百分之百，只是這個壺裝滿了。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p035",
+     "speaker": "chief",
+     "text": "壺有多大，百分比可不會告訴你。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "two-bottles",
+   "template": "shot",
+   "data": {
+    "prompt": "A big clear plastic water bottle full of water beside a much smaller clear plastic water bottle also full of water, on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p036",
+     "speaker": "chief",
+     "text": "舊電池的壺，比新的時候小了。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p037",
+     "speaker": "chief",
+     "text": "一樣裝滿，裡面的水就是比較少。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-short",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office nodding hard with a bright face of understanding, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p038",
+     "speaker": "kid",
+     "text": "難怪舊手機充滿了，",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    },
+    {
+     "id": "p039",
+     "speaker": "kid",
+     "text": "也撐不了一整天！",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    }
+   ]
+  },
+  {
+   "id": "chief-settings",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief raising one finger with a friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p040",
+     "speaker": "chief",
+     "text": "你可以請大人打開手機的設定找找看。",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "phone-bottle",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a plain smooth unmarked phone glowing softly lying on a sunny wooden table beside a clear plastic water bottle with a mustard-yellow cap, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p041",
+     "speaker": "chief",
+     "text": "很多手機有一項「最大容量」或「電池健康度」，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p042",
+     "speaker": "chief",
+     "text": "說的就是這個壺，現在還剩多大。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-tell-mom",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office pumping one fist with an eager grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p043",
+     "speaker": "kid",
+     "text": "我回家要叫媽媽找！",
+     "pause_after_ms": 100,
+     "emotion": "躍躍欲試"
+    },
+    {
+     "id": "p044",
+     "speaker": "kid",
+     "text": "可是手機怎麼知道壺多大？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "phone-glow",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a plain smooth unmarked phone glowing softly resting on a sunny wooden table, a soft warm halo around it, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p045",
+     "speaker": "chief",
+     "text": "它是跟全新的時候比，自己估出來的，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p046",
+     "speaker": "chief",
+     "text": "所以不一定很準。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-pct-est",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a thoughtful pout, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p047",
+     "speaker": "kid",
+     "text": "那百分比也是估的嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "pour-glass",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a mustard-yellow cap pouring a steady stream of water into a glass, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p048",
+     "speaker": "chief",
+     "text": "對。手機一邊看壺裡的水倒起來多有力，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p049",
+     "speaker": "chief",
+     "text": "一邊數倒出去多少，大約算出來。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-shrink-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office hugging a clear plastic water bottle with a mustard-yellow cap with a worried face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p050",
+     "speaker": "kid",
+     "text": "可是壺怎麼會，",
+     "pause_after_ms": 100,
+     "emotion": "不解"
+    },
+    {
+     "id": "p051",
+     "speaker": "kid",
+     "text": "自己變小呢？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "kettle",
+   "chapter": "電池裡長出一層水垢",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up looking into a plain metal kettle, its inside walls coated with a thick chalky white crust, sunny kitchen, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p052",
+     "speaker": "chief",
+     "text": "因為壺裡面，會慢慢長出一層水垢。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "kid-scale",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl wrinkling her nose with a curious face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p053",
+     "speaker": "kid",
+     "text": "水垢？那是什麼？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "kettle-crust",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a thick chalky white crust on the inside of an old plain metal kettle, sunny kitchen, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p054",
+     "speaker": "chief",
+     "text": "你家的熱水壺用久了，裡面會黏上一層白白硬硬的東西，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p055",
+     "speaker": "chief",
+     "text": "那就是水垢。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-battery-scale",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl gasping with a surprised round mouth, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p056",
+     "speaker": "kid",
+     "text": "電池裡也有水垢？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "battery-layer",
+   "template": "shot",
+   "data": {
+    "prompt": "Cutaway of a plain smooth rounded battery cell with a thin soft pale layer slowly growing on its inside walls, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p057",
+     "speaker": "chief",
+     "text": "不是真的水垢，是很像水垢的一層薄膜。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p058",
+     "speaker": "chief",
+     "text": "電池用得越久，它就慢慢長得越厚。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-only-scale",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a curious squint, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p059",
+     "speaker": "kid",
+     "text": "電池變老，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p060",
+     "speaker": "kid",
+     "text": "只是因為水垢嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-many-causes",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one hand open with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p061",
+     "speaker": "chief",
+     "text": "不只。科學家找到好幾種讓電池變老的原因，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p062",
+     "speaker": "chief",
+     "text": "水垢是最常被提到的一種。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "bottle-crust",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a mustard-yellow cap with a thick white crust lining its inside walls, holding only a little water, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p063",
+     "speaker": "chief",
+     "text": "水垢會佔掉一些本來能裝電的地方。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p064",
+     "speaker": "chief",
+     "text": "長得越厚，壺能裝的電就越少。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-brush",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office making a scrubbing motion with a clever grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p065",
+     "speaker": "kid",
+     "text": "那把水垢刷掉，",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p066",
+     "speaker": "kid",
+     "text": "不就好了？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-brush",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief shaking her head with a gentle smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p067",
+     "speaker": "chief",
+     "text": "刷不到。它長在電池最裡面，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p068",
+     "speaker": "chief",
+     "text": "而且長了，就退不掉。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-cycle-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office with a thinking face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p069",
+     "speaker": "kid",
+     "text": "充一次電，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p070",
+     "speaker": "kid",
+     "text": "就長一次水垢嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-cycle",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one hand flat with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p071",
+     "speaker": "chief",
+     "text": "差不多。不過手機算的是「一次循環」。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-cycle-what",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl blinking with a curious face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p072",
+     "speaker": "kid",
+     "text": "一次循環？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "half-bottle",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a mustard-yellow cap half full on a sunny school desk beside a lunch box, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p073",
+     "speaker": "chief",
+     "text": "就是喝掉一整壺的量。今天喝半壺，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p074",
+     "speaker": "chief",
+     "text": "明天再喝半壺，加起來一整壺，才算一次。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-many",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office spreading both arms wide with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p075",
+     "speaker": "kid",
+     "text": "那喝很多很多次以後呢？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "bottle-shrunk",
+   "template": "shot",
+   "data": {
+    "prompt": "A slightly smaller clear plastic water bottle with a thin white crust inside, still mostly full of water, on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p076",
+     "speaker": "chief",
+     "text": "有一家手機公司說，它有一批手機的電池，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p077",
+     "speaker": "chief",
+     "text": "在很理想的情況下，",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "bottle-eighty",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a slightly smaller clear plastic water bottle standing beside its big new twin, both full of sparkling water, on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p078",
+     "speaker": "chief",
+     "text": "大約一千次循環以後，壺還有原來的大約八成大。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-thousand",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl gasping with a wide surprised face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p079",
+     "speaker": "kid",
+     "text": "那麼多次，",
+     "pause_after_ms": 100,
+     "emotion": "驚訝"
+    },
+    {
+     "id": "p080",
+     "speaker": "kid",
+     "text": "要用好幾年吧？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "shelf-bottles",
+   "template": "shot",
+   "data": {
+    "prompt": "A long sunny shelf lined with many clear plastic water bottles, each with a mustard-yellow cap, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p081",
+     "speaker": "chief",
+     "text": "我們自己粗算：如果每天剛好用掉一整壺，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p082",
+     "speaker": "chief",
+     "text": "那大約是將近三年。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-two-tenths",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office throwing both fists in the air with an excited grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p083",
+     "speaker": "kid",
+     "text": "將近三年，",
+     "pause_after_ms": 100,
+     "emotion": "驚喜"
+    },
+    {
+     "id": "p084",
+     "speaker": "kid",
+     "text": "才少了大約兩成！",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "chief-ideal",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief tilting her head with a gentle smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p085",
+     "speaker": "chief",
+     "text": "那是很理想的情況。真的用起來，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p086",
+     "speaker": "chief",
+     "text": "要看你怎麼用、放在哪裡。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-idle",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office crossing her arms with a clever confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p087",
+     "speaker": "kid",
+     "text": "那我都不充電，",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p088",
+     "speaker": "kid",
+     "text": "就不會長水垢了吧？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-idle",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head gently with a kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p089",
+     "speaker": "chief",
+     "text": "不是喔。放著不用，電池也會慢慢老。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p090",
+     "speaker": "chief",
+     "text": "就算收在抽屜裡，水垢也會慢慢長。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "hot-car",
+   "template": "shot",
+   "data": {
+    "prompt": "A parked car baking in strong summer sunshine, wavy heat lines rising from its roof, a plain smooth unmarked phone glowing softly on its dashboard, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p091",
+     "speaker": "chief",
+     "text": "尤其放在很熱的地方，水垢長得特別快，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p092",
+     "speaker": "chief",
+     "text": "像夏天停在大太陽底下的車子裡。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-hot-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl with a hot sweaty face and pink cheeks, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p093",
+     "speaker": "kid",
+     "text": "要多熱，才算太熱？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-35",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief raising one finger with a serious kind face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p094",
+     "speaker": "chief",
+     "text": "手機公司說，大約超過三十五度，就太熱了。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-freezer",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office standing with both hands on her hips and a clever grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p095",
+     "speaker": "kid",
+     "text": "那我放進冷凍庫，",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p096",
+     "speaker": "kid",
+     "text": "它就不會老了吧？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-freezer",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief raising both eyebrows with a startled little laugh, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p097",
+     "speaker": "chief",
+     "text": "千萬不要！太冷也不行。",
+     "pause_after_ms": 100,
+     "emotion": "笑"
+    },
+    {
+     "id": "p098",
+     "speaker": "chief",
+     "text": "手機公司說，最好待在大約零度以上。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-blackout-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl frowning with a puzzled face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p099",
+     "speaker": "kid",
+     "text": "可是壺變小，只是比較快沒電，",
+     "pause_after_ms": 100,
+     "emotion": "不解"
+    },
+    {
+     "id": "p100",
+     "speaker": "kid",
+     "text": "怎麼會一下子黑掉？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "spout",
+   "chapter": "壺嘴變窄，大口倒不出來",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a very thin narrow spout, only a thin trickle of water coming out of it, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p101",
+     "speaker": "chief",
+     "text": "因為水垢不只讓壺變小，也會把壺嘴慢慢堵窄。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "kid-spout",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding a clear plastic water bottle with a mustard-yellow cap with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p102",
+     "speaker": "kid",
+     "text": "壺嘴？是倒水的地方？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "wide-spout",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a big jug pouring a thick fast stream of water from a wide spout into a glass, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p103",
+     "speaker": "chief",
+     "text": "對。壺嘴寬不寬，決定水一次能倒多快。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p104",
+     "speaker": "chief",
+     "text": "手機用電，就是從壺嘴把水倒出來。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-spout-you",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief pretending to pour from an invisible bottle with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p105",
+     "speaker": "chief",
+     "text": "你想想，用很窄的壺嘴倒一大杯水，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p106",
+     "speaker": "chief",
+     "text": "是不是要等好久？",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-sip",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office with a calm little smile, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p107",
+     "speaker": "kid",
+     "text": "小口小口喝，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p108",
+     "speaker": "kid",
+     "text": "窄一點也沒關係？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "trickle-cup",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a thin steady trickle of water from a narrow spout slowly filling a small cup, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p109",
+     "speaker": "chief",
+     "text": "對，平常慢慢用電，窄窄的壺嘴也來得及。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-gulp-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a curious face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p110",
+     "speaker": "kid",
+     "text": "那什麼時候，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p111",
+     "speaker": "kid",
+     "text": "要一下子大口喝？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "phone-busy",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a plain smooth unmarked phone glowing softly glowing brightly with little sparkles around it on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p112",
+     "speaker": "chief",
+     "text": "像開相機拍照、玩很忙的遊戲，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p113",
+     "speaker": "chief",
+     "text": "手機一下子就要很多電。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-gulp-what",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office holding a plain smooth unmarked phone glowing softly with a worried face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p114",
+     "speaker": "kid",
+     "text": "壺嘴太窄，倒不出來，",
+     "pause_after_ms": 100,
+     "emotion": "擔心"
+    },
+    {
+     "id": "p115",
+     "speaker": "kid",
+     "text": "會怎麼樣？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "cup-short",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a big empty cup beside a narrow-spouted bottle that only drips thin drops into it, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p116",
+     "speaker": "chief",
+     "text": "手機裡的零件，一下子拿不到夠多的電，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p117",
+     "speaker": "chief",
+     "text": "就沒辦法好好工作。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-broken-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl biting her lip with a worried little frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p118",
+     "speaker": "kid",
+     "text": "所以它就壞掉了？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-protect",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head with a calm reassuring smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p119",
+     "speaker": "chief",
+     "text": "不是。手機會搶先一步，自己關機，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p120",
+     "speaker": "chief",
+     "text": "保護裡面的零件。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-decided",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl with a bright face of sudden discovery, eyes wide and mouth open, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p121",
+     "speaker": "kid",
+     "text": "原來是它自己決定的！",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    }
+   ]
+  },
+  {
+   "id": "chief-on-purpose",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling warmly at the viewer with one hand open, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p122",
+     "speaker": "chief",
+     "text": "對。你看到的是突然黑掉，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p123",
+     "speaker": "chief",
+     "text": "其實是手機故意的。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p124",
+     "speaker": "chief",
+     "text": "它沒有壞，插上電就能再打開。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-liar-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office crossing her arms with a doubtful pout, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p125",
+     "speaker": "kid",
+     "text": "可是我的手機明明有電，",
+     "pause_after_ms": 100,
+     "emotion": "不服氣"
+    },
+    {
+     "id": "p126",
+     "speaker": "kid",
+     "text": "百分比是不是騙人？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-liar",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief raising her eyebrows with a gentle smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p127",
+     "speaker": "chief",
+     "text": "還記得百分比是估的嗎？它不一定很準。",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
+    }
+   ]
+  },
+  {
+   "id": "bottle-left",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a little water still inside and a very thin narrow spout, tipped over a cup, only a thin trickle coming out, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p128",
+     "speaker": "chief",
+     "text": "可是它沒騙人，壺裡多半真的還有水，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p129",
+     "speaker": "chief",
+     "text": "只是壺嘴太窄，大口倒不出來。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-three",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office counting on her fingers with a bright face of discovery, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p130",
+     "speaker": "kid",
+     "text": "壺裡的水、壺有多大，",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    },
+    {
+     "id": "p131",
+     "speaker": "kid",
+     "text": "還有壺嘴多寬，是三件事！",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    }
+   ]
+  },
+  {
+   "id": "chief-three",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding firmly with a proud smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p132",
+     "speaker": "chief",
+     "text": "對。電量還多，不代表壺還大、壺嘴還寬。",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    }
+   ]
+  },
+  {
+   "id": "kid-full-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl squinting in thought with a curious face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p133",
+     "speaker": "kid",
+     "text": "那電多的時候，",
+     "pause_after_ms": 100,
+     "emotion": "推理"
+    },
+    {
+     "id": "p134",
+     "speaker": "kid",
+     "text": "怎麼就不會黑掉？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "full-pour",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a tall full clear water bottle pouring a strong steady stream of water into a glass, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p135",
+     "speaker": "chief",
+     "text": "壺裡水多，倒起來比較有力；",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p136",
+     "speaker": "chief",
+     "text": "水少了，再碰上窄壺嘴，就容易倒不夠。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-cold-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office hugging herself with a shivering face and pink cheeks, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p137",
+     "speaker": "kid",
+     "text": "那今天那麼冷，",
+     "pause_after_ms": 100,
+     "emotion": "想起來"
+    },
+    {
+     "id": "p138",
+     "speaker": "kid",
+     "text": "也有關係嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "cold-bench",
+   "template": "shot",
+   "data": {
+    "prompt": "A plain smooth unmarked phone on a frosty wooden park bench on a crisp clear winter morning, a little frost on the slats, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p139",
+     "speaker": "chief",
+     "text": "有。天氣冷，壺嘴也會暫時變窄一點，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p140",
+     "speaker": "chief",
+     "text": "回到暖和的地方，就會好一些。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-park-again",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a sunny park on a crisp winter day nodding hard with a bright face of understanding, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p141",
+     "speaker": "kid",
+     "text": "難怪在冷冷的公園，",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    },
+    {
+     "id": "p142",
+     "speaker": "kid",
+     "text": "它一下就黑掉了！",
+     "pause_after_ms": 100,
+     "emotion": "恍然"
+    }
+   ]
+  },
+  {
+   "id": "kid-slow-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a curious face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p143",
+     "speaker": "kid",
+     "text": "那手機變慢，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p144",
+     "speaker": "kid",
+     "text": "也是電池老了嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "snail",
+   "template": "shot",
+   "data": {
+    "prompt": "A cute little garden snail resting beside a plain smooth unmarked phone glowing softly on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p145",
+     "speaker": "chief",
+     "text": "有時候是。有些手機遇到壺嘴變窄，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p146",
+     "speaker": "chief",
+     "text": "會讓自己跑慢一點，少大口喝電。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-slow-why",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl tilting her head with a puzzled face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p147",
+     "speaker": "kid",
+     "text": "故意跑慢？",
+     "pause_after_ms": 100,
+     "emotion": "不解"
+    },
+    {
+     "id": "p148",
+     "speaker": "kid",
+     "text": "那樣有什麼好處？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "snail-sip",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a thin calm steady trickle of water from a narrow spout into a small cup, a cute little snail resting beside it, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p149",
+     "speaker": "chief",
+     "text": "少一點大口喝，就比較不會突然關機。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-opinion",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding one hand on her chest with a thoughtful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p150",
+     "speaker": "chief",
+     "text": "不過我覺得，別每次手機變慢都怪電池，",
+     "pause_after_ms": 100,
+     "emotion": "意見"
+    },
+    {
+     "id": "p151",
+     "speaker": "chief",
+     "text": "慢的原因很多，電池只是其中一個。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-care-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office clenching both fists with a determined face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p152",
+     "speaker": "kid",
+     "text": "那我要怎麼做，",
+     "pause_after_ms": 100,
+     "emotion": "認真"
+    },
+    {
+     "id": "p153",
+     "speaker": "kid",
+     "text": "才能讓電池老得慢一點？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-good-news",
+   "chapter": "手機先停在八成",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling brightly with a friendly face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p154",
+     "speaker": "chief",
+     "text": "好消息是，很多事手機已經在幫你做了。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    }
+   ]
+  },
+  {
+   "id": "kid-help-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl blinking with a surprised curious face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p155",
+     "speaker": "kid",
+     "text": "手機會幫我？幫什麼？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "brim-bottle",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a mustard-yellow cap filled to the brim with water, standing in warm sunshine on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p156",
+     "speaker": "chief",
+     "text": "電池也不喜歡一直裝得滿滿的，放很久，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p157",
+     "speaker": "chief",
+     "text": "那樣水垢也長得比較快。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "bedside",
+   "template": "shot",
+   "data": {
+    "prompt": "A plain smooth unmarked phone glowing softly on a bedside table beside a clear plastic water bottle with a mustard-yellow cap filled most of the way, early morning sunshine through the curtains, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p158",
+     "speaker": "chief",
+     "text": "所以很多手機會學你的習慣：",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p159",
+     "speaker": "chief",
+     "text": "先充到大約八成，停一下，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p160",
+     "speaker": "chief",
+     "text": "快起床時，再把它充滿。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-wake-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl gasping with a delighted surprised face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p161",
+     "speaker": "kid",
+     "text": "它知道我幾點起床？",
+     "pause_after_ms": 100,
+     "emotion": "驚訝"
+    }
+   ]
+  },
+  {
+   "id": "chief-learn",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief nodding with a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p162",
+     "speaker": "chief",
+     "text": "它會慢慢記住，你平常什麼時候拔掉充電線。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p163",
+     "speaker": "chief",
+     "text": "有的手機公司說，大約要學兩個禮拜。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-unplug-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl squinting with a determined little face, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p164",
+     "speaker": "kid",
+     "text": "那我要不要自己盯著，",
+     "pause_after_ms": 100,
+     "emotion": "認真"
+    },
+    {
+     "id": "p165",
+     "speaker": "kid",
+     "text": "到八成就拔掉？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "phone-rest",
+   "template": "shot",
+   "data": {
+    "prompt": "A plain smooth unmarked phone glowing softly resting calmly on its charger on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p166",
+     "speaker": "chief",
+     "text": "不用那麼辛苦，交給手機就好。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p167",
+     "speaker": "chief",
+     "text": "有些手機也能設定，最多只充到八成。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-zero-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office standing with both hands on her hips and a confident grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p168",
+     "speaker": "kid",
+     "text": "那我要用到完全沒電，",
+     "pause_after_ms": 100,
+     "emotion": "很有把握的錯猜"
+    },
+    {
+     "id": "p169",
+     "speaker": "kid",
+     "text": "才可以充電，對吧？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-zero",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief shaking her head kindly with a warm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p170",
+     "speaker": "chief",
+     "text": "不用。現在的手機電池，想充就充。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p171",
+     "speaker": "chief",
+     "text": "不用等它用光，也不用教它認識壺。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "top-up",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a clear plastic water bottle with a mustard-yellow cap being topped off with a little fresh water at a kitchen tap, sunny kitchen, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p172",
+     "speaker": "chief",
+     "text": "研究電池的人也說，用一點、充一點沒關係，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p173",
+     "speaker": "chief",
+     "text": "能不要常常用到完全沒電，反而比較好。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-hotcharge-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding a plain smooth unmarked phone glowing softly with a worried face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p174",
+     "speaker": "kid",
+     "text": "充電時它好燙，",
+     "pause_after_ms": 100,
+     "emotion": "擔心"
+    },
+    {
+     "id": "p175",
+     "speaker": "kid",
+     "text": "要怎麼辦？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "case-off",
+   "template": "shot",
+   "data": {
+    "prompt": "A plain smooth unmarked phone lying beside its soft plain silicone case on a cool wooden table in the shade, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p176",
+     "speaker": "chief",
+     "text": "手機公司建議，先把手機殼拿掉，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p177",
+     "speaker": "chief",
+     "text": "也別在大太陽底下充電。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-fix-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office hugging a plain smooth unmarked phone close with a sad hopeful face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p178",
+     "speaker": "kid",
+     "text": "那媽媽那支舊手機，",
+     "pause_after_ms": 100,
+     "emotion": "心疼"
+    },
+    {
+     "id": "p179",
+     "speaker": "kid",
+     "text": "還有救嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "crust-stays",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a small clear plastic water bottle with a thick white crust inside, on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p180",
+     "speaker": "chief",
+     "text": "還記得水垢退不掉嗎？",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
+    },
+    {
+     "id": "p181",
+     "speaker": "chief",
+     "text": "所以壺也變不回原來那麼大。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-replace",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief nodding with a warm kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p182",
+     "speaker": "chief",
+     "text": "真的太舊了，可以請大人帶去，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾"
+    },
+    {
+     "id": "p183",
+     "speaker": "chief",
+     "text": "讓專業的人換一顆新電池。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-diy-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office pumping one fist with an eager grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p184",
+     "speaker": "kid",
+     "text": "我自己拆開來換，",
+     "pause_after_ms": 100,
+     "emotion": "躍躍欲試"
+    },
+    {
+     "id": "p185",
+     "speaker": "kid",
+     "text": "不是比較快？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-diy",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief raising one open hand with a serious kind face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p186",
+     "speaker": "chief",
+     "text": "不行喔。電池弄壞了，可能會變燙，甚至起火。",
+     "pause_after_ms": 100,
+     "emotion": "認真"
+    }
+   ]
+  },
+  {
+   "id": "kid-bad-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding very still with wide alert eyes, both hands out of frame, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p187",
+     "speaker": "kid",
+     "text": "那怎樣是壞掉的電池？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "swollen",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a plain smooth unmarked phone with its back puffed and bulging like a little pillow, on a wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p188",
+     "speaker": "chief",
+     "text": "像手機變得鼓鼓的、很燙，或有怪味，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p189",
+     "speaker": "chief",
+     "text": "就不要再用、也不要充電，馬上告訴大人。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-charger-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl holding a plain smooth white charging cable with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p190",
+     "speaker": "kid",
+     "text": "那充電器，",
+     "pause_after_ms": 100,
+     "emotion": "好奇"
+    },
+    {
+     "id": "p191",
+     "speaker": "kid",
+     "text": "隨便用一個可以嗎？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "charger",
+   "template": "shot",
+   "data": {
+    "prompt": "A plain smooth white phone charger and a neatly coiled cable on a sunny wooden table, bright daylight, simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours",
+    "camera": "tilt down",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p192",
+     "speaker": "chief",
+     "text": "要用合格的充電器和線。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p193",
+     "speaker": "chief",
+     "text": "不合格的，可能不安全。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "kid-case-q",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office holding a plain smooth unmarked phone with a serious little face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p194",
+     "speaker": "kid",
+     "text": "所以那天我的手機，",
+     "pause_after_ms": 100,
+     "emotion": "認真"
+    },
+    {
+     "id": "p195",
+     "speaker": "kid",
+     "text": "到底發生什麼事？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
+    }
+   ]
+  },
+  {
+   "id": "chief-back",
+   "chapter": "小問自己破案",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling warmly at the viewer with one hand open, filling the frame, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p196",
+     "speaker": "chief",
+     "text": "其實你已經知道了。你自己說說看。",
+     "pause_after_ms": 100,
+     "emotion": "笑"
+    }
+   ]
+  },
+  {
+   "id": "kid-got1",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl pointing proudly with one finger and a big grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p197",
+     "speaker": "kid",
+     "text": "我一按拍照，要大口喝電，",
+     "pause_after_ms": 100,
+     "emotion": "篤定"
+    },
+    {
+     "id": "p198",
+     "speaker": "kid",
+     "text": "舊壺嘴太窄，天氣又冷，",
+     "pause_after_ms": 100,
+     "emotion": "篤定"
+    }
+   ]
+  },
+  {
+   "id": "kid-got2",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl in a bright sunny little office throwing both arms wide with a huge happy smile, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p199",
+     "speaker": "kid",
+     "text": "手機就先關機，保護自己！",
+     "pause_after_ms": 100,
+     "emotion": "開心"
+    }
+   ]
+  },
+  {
+   "id": "chief-done",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief smiling warmly at the viewer with her hands clasped, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p200",
+     "speaker": "chief",
+     "text": "對，就是這樣！下次手機突然黑掉，",
+     "pause_after_ms": 100,
+     "emotion": "轉向觀眾，輕聲"
+    },
+    {
+     "id": "p201",
+     "speaker": "chief",
+     "text": "先別怪它，它是在保護自己。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "drift",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p202",
+     "speaker": "kid",
+     "text": "原來如此！",
+     "pause_after_ms": 100,
+     "emotion": "開心大聲"
+    }
+   ]
+  },
+  {
+   "id": "outro-chief",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief tilting her head with a curious smile and one hand open, filling the frame, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "tilt up",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p203",
+     "speaker": "chief",
+     "text": "看影片的你呢？你的手機有沒有突然黑掉過？",
+     "pause_after_ms": 100,
+     "emotion": "問句上揚，像聊天"
+    },
+    {
+     "id": "p204",
+     "speaker": "chief",
+     "text": "留言告訴我們。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "outro-wave",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan right",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ],
+    "character_looks": {
+     "chief": "office"
+    }
+   },
+   "lines": [
+    {
+     "id": "p205",
+     "speaker": "chief",
+     "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
+     "pause_after_ms": 100,
+     "emotion": "誠懇"
+    }
+   ]
+  }
+ ]
+}
