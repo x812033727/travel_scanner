@@ -328,3 +328,4 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - 2026-11-08 服裝定案（站主）：唐小棠照定妝照穿「交領短襦闔上、百褶裙腰間繫蝴蝶結與小金飾」。pilot.py 的 TANG_LIVE 原本寫「短襦敞成 V、齊胸裙綁在胸上」，與定妝照不同，胸口以上的近景會照文字畫，e902 s36 因此換了衣服。真人版外貌句一律照定妝照寫；改了 TANG_LIVE 之後，已備好的集數（e903）要重跑 pilot.py → retake.py → preflight。
 - **台詞說完後片子自己還有聲音，字幕拖到鏡尾（第 2 集真人版 fix3，2026-11-08）**：s26 跑走的腳步、s38 抽借據的紙聲在台詞後面被 silencedetect 算成講話，字幕延長 2 秒。`assemble-v4.mjs` 加了 `voice_until`（幾秒以後的聲音不算台詞），跟 `voice_skip` 一頭一尾。換 take 後兩個都要重量。
 - Bash 的 `run_in_background` 沒給 `timeout` 時只跑 30 分鐘就被停（2026-11-08 e902 精修，等 GPU 有貨時被停掉，pod 已開著在付錢）。拍攝、精修一律帶 `timeout: 7200000`。
+- **備份腳本在磁碟快滿時假裝成功（2026-11-08）**：容器寫入額度只剩 1.3 GB，`bk-episode.sh shared` 切 220 MB 的檔只寫出第一段，`git hash-object` 失敗卻沒停，回報 OK；是 `verify-episode.py` 抓到 `zt-shared` 少了 part01、part02。腳本已改成切檔或寫入失敗就 FAIL 停下。推備份前先 `df -h /`，要留得下整條分支的物件（共用分支約 1.5 GB）；`.git/objects/pack/tmp_pack_*` 是中斷的 fetch 留下的，可以刪。
