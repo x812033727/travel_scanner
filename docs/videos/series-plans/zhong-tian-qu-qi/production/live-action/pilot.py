@@ -7,6 +7,8 @@ its shot text, camera and motion, and changes three things:
 - each character's appearance becomes the live-action look the owner picked (the cast.json text with the screen-test
   fixes: Song-dynasty clothing for the supporting cast, props out of the base look, Tang Xiaotang's high-waisted ruqun);
 - every reference picture maps to its live-action pick in assets/refs-live (portrait, angle views, set).
+A shot that writes a character soaked ("soaked dark through", e001 r2's SOAKED) gets a closing sentence that lets hair and
+costume go wet instead of staying as the dry pictures.
 Writes OUT_DIR/ref-pilot.json and OUT_DIR/prompts/ref-sNN.txt (the layout retake.py reads). Fails when a picture or
 an appearance has no live-action version, rather than send a CG picture.
 """
@@ -42,6 +44,12 @@ LIVE_LOOK = {  # cast.json text -> the live-action text the screen test drew (sc
     "framed from the chin up, her high stand-up collar closed at her throat": "framed from the chest up",
     "in her peach-pink brocade ruqun, one closed garment from the high stand-up collar to the waist": "in her peach-pink high-waisted ruqun with its light short jacket",
 }
+# A soaked character (e001 r2's SOAKED phrase, s05-s11): the closing lock to the reference pictures, which show a dry robe
+# and a neat topknot, left him only damp in the live drafts (e901 live cut review 2026-11-08, item 19). Where the shot
+# writes the soaked state, the pictures fix the face and the cut and colour of hair and costume; the text fixes the water.
+SOAKED_MARK = "soaked dark through"
+SOAKED_LOCK = ("Natural, realistic human motion of real actors; faces stay as in their reference pictures, and hair and costumes "
+               "keep the cut and colour of their pictures, soaked and dripping wet the whole shot as described above.")
 tang = next(c for c in cast["characters"] if c["id"] == "tangxiaotang")["appearance"]
 TANG_LIVE = re.sub(r"a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar.*?see-through",
                    "a peach-pink silk brocade high-waisted ruqun: a light cross-collared short jacket open in a soft V "
@@ -79,6 +87,8 @@ for sid in shots:
         if old not in text:
             sys.exit(f"{sid}: style sentence not found: {old[:40]}")
         text = text.replace(old, new)
+    if SOAKED_MARK in text:
+        text = text.replace(STYLE_NEW[1], SOAKED_LOCK)
     for old, new in LIVE_LOOK.items():
         text = text.replace(old, new)
     text = text.replace(tang, TANG_LIVE)
