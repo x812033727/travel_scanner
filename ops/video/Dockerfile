@@ -10,8 +10,10 @@
 # docker) moves the digest by pull request.
 FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf AS worker
 
+# git fetches the AI dramas' transfer/* backup branches that the worker mirrors to Google Drive
+# (tools/video/automation/branch-mirror.mjs, docs/videos/BACKUP.md §AI 劇的分支鏡像).
 RUN apt-get update \
- && apt-get install -y --no-install-recommends ca-certificates curl ffmpeg python3-venv unzip \
+ && apt-get install -y --no-install-recommends ca-certificates curl ffmpeg git python3-venv unzip \
  && rm -rf /var/lib/apt/lists/*
 
 # rclone copies the videos on YouTube to the owner's Google Drive (docs/videos/BACKUP.md,
