@@ -315,6 +315,77 @@ worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts
 就是新的成片，會再備份一次，舊版照第 4 步留在雲端 `_舊版/`。tidy 跳過 `_` 開頭的資料夾，這些 Shorts 的清除由
 `2026-11-03-purge-a-video-from-the-host` 處理（票 `2026-11-03-back-up-the-worker-s-own`）。
 
+## AI 劇的分支鏡像
+
+站主 2026-11-08：「備份到雲端的內容應該也要跟備份到分支的一樣」，同一天同意由主機 worker 鏡像分支。
+
+雲端 session 做的 AI 劇（種田 `zt`、祖媽 `tn`）每集推到 GitHub 的 `transfer/*` 分支
+（規則在 `docs/videos/drama/BACKUP-BRANCHES.md`）。審核區那條路線（上面〈匯入的影片〉）收不齊分支裡的東西：
+`clip_` 最多 120 支、組片資料最多 40 個、不能有子路徑、總共 20 GB，系列共用檔也沒有關卡可送。所以 worker
+直接把分支本身鏡像到雲端硬碟。程式在 [`branch-mirror.mjs`](../../tools/video/automation/branch-mirror.mjs)，
+審核區那條路線照舊、不受影響。
+
+**放在哪裡**（跟影片備份同一個 remote、同一個鎖定的 `AI/備份`，路徑在後台「備份位置」那個資料夾底下）：
+
+```
+AI/備份/drama/
+  zhong-tian-qu-qi/_分支/<分支名去掉 transfer/>/…     （transfer/zt-*，例如 zt-live-e001、zt-shared、zt-cg-e001）
+  tai-nainai/_分支/<分支名>/…                          （transfer/tn-*）
+  _其他/_分支/<分支名>/…                               （之後加的其他代號）
+    <跟分支最新一版逐檔相同的內容>
+    _舊版/<UTC 時間>/…                                 （被新一版改掉或刪掉的檔）
+```
+
+**每一輪做什麼**（在影片備份之後，`cli.mjs` 的 `branchMirrorAfterBackup`；一輪因錯誤或站主的規則（每月草稿上限等）結束時只跑影片備份、不跑鏡像，免得鏡像的行夾在原因與結束碼之間，讓部署檢查 `host-verify.sh` 判成錯誤）：
+
+1. `git ls-remote` 列出 `transfer/zt-`、`transfer/tn-` 開頭的分支，跟 `video_work/_branch-mirror/branch-mirror.json`
+   記的「上次鏡像的 commit」比。一樣的分支什麼都不做，不下載。
+2. 不一樣的，一次一條：只抓那一個 commit（`git fetch --depth 1`）到暫存的 bare repo，把檔案寫到暫存資料夾
+   （連結寫成內容是目標路徑的一般檔），然後馬上刪掉 repo，磁碟上只留一份。
+3. 把 `X.part00`、`X.part01`… 依序接回 `X`，刪掉切塊。旁邊有 `X.SPLIT` 說明檔、裡面寫了 sha256 時，接回的檔要相同，
+   不同就整條不傳。切塊不連號也不傳。分支同時有 `X` 和它的切塊時，照分支原樣保留。
+4. `rclone sync --checksum` 到上面的資料夾，`--backup-dir <資料夾>/_舊版/<時間>/`：被改掉或分支刪掉的檔**移**到 `_舊版`，
+   雲端硬碟上不刪任何檔。用 `sync` 而不是 `copy`，只是為了讓分支刪掉的檔也離開這個資料夾（移到 `_舊版`）。
+   分支沒有任何檔時不 sync。
+5. `rclone check` 雙向核對（`_舊版` 除外），0 差異才把這個 commit 記成已鏡像；有差異或任何一步失敗就不記，
+   下一輪再試，連續失敗 3 次後每 6 小時試一次。暫存資料夾每條做完就刪。
+
+**每輪上限**（第一次要把現有的 `zt-*`、`tn-*` 分支全部傳一遍，好幾 GB，分散在很多輪，不讓一輪卡住其他工作）：
+
+| 環境變數 | 預設 | 說明 |
+| --- | --- | --- |
+| `VIDEO_BRANCH_MIRROR` | compose 設 `on` | 不是 `on` 就完全不跑、不印任何行 |
+| `VIDEO_BRANCH_MIRROR_PREFIXES` | `transfer/zt-,transfer/tn-` | 要鏡像的分支前綴，逗號分隔 |
+| `VIDEO_BRANCH_MIRROR_PER_ROUND` | 1 | 一輪最多幾條分支 |
+| `VIDEO_BRANCH_MIRROR_MAX_GB` | 2 | 一輪傳到這麼多 GB 就不再開新的一條 |
+| `VIDEO_BRANCH_MIRROR_MIN_FREE_GB` | 5 | 工作磁碟剩不到這麼多就等 |
+| `VIDEO_BRANCH_MIRROR_REPO` | `x812033727/travel_scanner` | 要鏡像的 repo |
+| `VIDEO_BRANCH_MIRROR_TOKEN`、`_TOKEN_FILE` | 無 | repo 是公開的，不需要；repo 改成私有時才用（只要 contents 讀取權限） |
+
+備份每輪跑完會呼叫一次（一輪超過 10 分鐘時在兩個單位之間也會），所以大約每 5–10 分鐘傳一條分支。
+站主的雲端硬碟是 5 TiB，所有分支加起來是幾十 GB，空間不是限制。
+
+**主機要做什麼**：什麼都不用做。repo 是公開的，worker 用 HTTPS 匿名抓，不需要 deploy key 或 token；
+映像加了 `git`（`ops/video/Dockerfile`），compose 設了 `VIDEO_BRANCH_MIRROR: "on"`，合併到 main 之後自動部署就開始跑。
+前提是影片備份本身已經開著（後台「備份位置」卡的開關、主機的 rclone 設定，見〈主機設定〉）；影片備份關掉時，
+鏡像也不跑，log 印「backup is off」。
+
+**怎麼確認**：`docker compose -f docker-compose.prod.yml logs video-worker | grep "branch mirror"`，每條成功的分支印一行：
+
+```
+branch mirror: transfer/zt-live-e001 1a2b3c4d5e6f → drama/zhong-tian-qu-qi/_分支/zt-live-e001: 768 files, 976 MB, 3 joined from parts, rclone check 0 differences
+```
+
+每條分支最後鏡像的 commit、時間、檔數、大小、核對結果與最近的錯誤記在 worker 的
+`/var/lib/mokaair/video-work/_branch-mirror/branch-mirror.json`。後台備份卡還沒有「分支」這一列，
+另開票 `2026-11-08-backup-card-shows-branch-mirror`（要動 API 與 web）。
+
+**怎麼關掉**：把 `docker-compose.prod.yml` 裡 video-worker 的 `VIDEO_BRANCH_MIRROR` 改成 `"off"`，用 PR 合併、自動部署。
+急的話在主機的 `video_work` 放 `STOP` 檔（這也會停掉整個 worker 的備份與 tidy）。已經傳上去的不會被刪。
+
+推完分支之後，等 log 出現這條分支的 `rclone check 0 differences`（或 `branch-mirror.json` 記到新的 commit），
+雲端硬碟才跟分支一樣。
+
 ## 跟 tidy 的關係
 
 [`tidy.mjs`](../../tools/video/automation/tidy.mjs) 對每支已上傳的影片多一道保留條件：
