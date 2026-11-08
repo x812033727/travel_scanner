@@ -170,11 +170,15 @@ SHOTS = [
          lines=[],
          motion="the hand lifts the wooden lid away out of the frame, showing the nearly empty crock; only then two fingers reach down to the bottom and stir the thin layer, and a few grains slide over the bare clay",
          zh="手部特寫、俯拍（第一格就是蓋著木蓋的米缸）：許硯的手（書生袍濕袖口）掀開木蓋，缸幾乎是空的：缸底只鋪一層薄米、中間露出陶土底、米離缸口很遠；然後手指才伸到缸底撥一下，幾粒米滑過陶土（2026-11-07 審稿重寫）"),
-    dict(loc="house", cam="Medium close-up, slow push in", chars=["xuyan"], night="house",
-         comp="medium close-up of Xu Yan standing beside the rice crock in the back corner on screen left, his robe half-dry with damp sleeves, the wooden lid in his hand, his eyes on the crock; behind him only the earthen wall and the rice crock in the corner",
+    # e901 live fix7 (gaze review 2026-11-08, owner approved the reshoot): a single frontal medium close-up with a push in,
+    # the listener off screen right; he asked 「小禾，家裡還有吃的嗎？」 smiling straight into the lens, and "rueful smile"
+    # came out as a happy one. Over-the-shoulder from behind Xiaohe (right foreground, back of her head only), his face
+    # three-quarter toward her, the camera ~40 degrees off his eyeline; 苦笑 written as brows and one corner of the mouth.
+    dict(loc="house", cam="Over-the-shoulder medium close-up, slow push in", chars=["xuyan", "xiaohe"], night="house",
+         comp=f"over-the-shoulder shot from behind little Xiaohe in the lower right foreground, only the back of her head with red-string pigtails and one small shoulder of her patched lilac cotton jacket, soft and out of focus, her face turned up to him; Xu Yan standing beside the rice crock in the back corner on screen left, {ROBE}, the wooden lid in his hand, his eyes on the crock, his body angled toward screen right, the camera about 40 degrees off his eyeline; behind him only the earthen wall and the rice crock in the corner",
          lines=[("xuyan", "都快見底了，還有什麼好搬的。小禾，家裡還有吃的嗎？", "苦笑")],
-         motion="he lowers the wooden lid back onto the crock with a soft knock, lets out a long sigh that drops his shoulders, and turns his head with a rueful smile to Xiaohe off screen right",
-         zh="中近景、慢推：許硯放下木蓋，嘆口氣、苦笑，轉頭看畫面右邊的小禾"),
+         motion="he lowers the wooden lid back onto the crock with a soft knock and lets out a long sigh that drops his shoulders, saying the first words down into the crock; on 「小禾」 he turns his head and shoulders to Xiaohe in the right foreground and looks down into her face, his face in three-quarter profile toward her, eyes on her, never into the lens; his face tired and bitter: brows drawn up and together, a small crooked twist at one corner of his closed mouth between words, no teeth, never a broad or happy smile, never laughing; Xiaohe stays still, looking up at him",
+         zh="過肩中近景、慢推（2026-11-08 fix7 視線重拍：原本單人正面中近景＋推鏡，「小禾，家裡還有吃的嗎？」笑著對鏡頭問）：鏡頭在小禾背後，右下前景只有她的後腦（紅繩辮子）和一邊小肩膀（淡紫補丁棉襖），虛焦、臉朝上看著哥哥；許硯站在畫面左邊後牆角的米缸旁，手拿木蓋、先看米缸，身體斜向畫右，鏡頭偏離他的視線約 40°；他放下木蓋、嘆口氣，前半句對著米缸說，說到「小禾」才轉頭轉肩、低頭看著右前景的小禾，四分之三側臉，眼睛在她臉上，不看鏡頭；苦笑寫成臉：眉頭往上往中間皺、閉著的嘴一邊嘴角歪一下，不露齒、不開心地笑、不笑出聲；小禾不動，抬頭看他"),
     # e901 live fix5 (2026-11-08): written part by part, both seeds still smiled (her open-mouthed cheerful talk, his
     # warm closed-mouth smile) in a full two-shot where the faces were a few dozen pixels. Owner "換做法再拍一次": a
     # static two-shot medium close-up (he seated on the left as in s17 and s19, she standing on the right), the walk from
@@ -188,11 +192,15 @@ SHOTS = [
     # mouth; one pulled a stranger's head in at the right edge. Owner "換做法再拍一次": the pour framed as a medium shot
     # that keeps his face in view, one short pour and slide, then a push in to a medium close-up for the promise, his face
     # held still: steady eyes, set jaw, one slow nod, mouth closed between words; the smile words gone except the ban.
-    dict(loc="house", cam="Medium shot to medium close-up, slow push in", chars=["xuyan"], night="house",
-         comp="medium shot, closing in to a medium close-up of his face by the line, of Xu Yan seated on a stool behind the low table on screen left, his sleeves damp, his face clear in the upper part of the frame; on the table right in front of him his own clay bowl, filled with thin porridge; on the screen-right side of the table, set for little Xiaohe off screen right, the second clay bowl, empty, its brown clay inside dry; nobody else in the frame, the right edge of the frame only the table and the earthen wall",
+    # e901 live fix7 (gaze review 2026-11-08): fix6 9011702 got the unsmiling resolve but said the promise straight into
+    # the lens and the push in lost the slide. Over-the-shoulder from behind Xiaohe standing at the table (right
+    # foreground, back of her head at his seated eye level), locked so both bowls stay in, his face three-quarter toward
+    # her, the camera ~35 degrees off his eyeline; the pour, the slide and NOSMILE kept.
+    dict(loc="house", cam="Over-the-shoulder medium shot, locked", chars=["xuyan", "xiaohe"], night="house",
+         comp="over-the-shoulder shot from behind little Xiaohe standing at the table in the right foreground, only the back of her head with red-string pigtails and one small shoulder of her lilac jacket, soft and out of focus, her face turned to him; Xu Yan seated on a stool behind the table on screen left facing her across it, in three-quarter profile toward screen right, the camera about 35 degrees off his eyeline, his sleeves damp, his face large and clear; along the bottom of the frame on the table between them his own clay bowl, filled with thin porridge, and on her side the second clay bowl, empty, its brown clay inside dry; nobody else in the frame",
          lines=[("xuyan", "一人一半。從今天起，哥不會再讓你餓肚子。", "認真")],
-         motion=f"with his eyes lowered on the porridge he lifts his own full bowl and in one short pour tips half of it into the empty bowl, sets his bowl down and slides the second bowl to the right out of the frame toward Xiaohe off screen right; then he lifts his eyes to her off screen right and holds still, his eyes steady, his brows level and still, his jaw set, his lips firmly closed; after a short pause he speaks slowly and low, his mouth closing firmly between words, and gives one slow nod; his brows never rise; no raised eyebrows, no open-mouthed eager talking, {NOSMILE}",
-         zh="中景推到中近景（2026-11-08 fix6：fix5 兩個種子倒粥時笑、講承諾時挑眉、張大嘴熱情地講，還有一支右緣冒出別人的後腦；站主「換做法再拍一次」）：開頭中景，看得到他的臉和桌上兩個碗（他面前是盛著稀粥的碗、桌子右邊小禾的位置是乾的空碗）；他低頭看著粥，端起自己那碗、一次倒一半到空碗裡，放下，把倒好的那碗往右推出畫面給畫面外的小禾；然後抬眼看右邊畫面外的她、定住，鏡頭推到中近景；停一拍才慢慢低聲說，字跟字之間嘴閉緊，眼神穩、眉毛平、不動，下巴收緊，慢慢點一下頭；眉毛不抬、不張大嘴熱情地講，從頭到最後一格都不笑；畫面裡沒有別人，右緣只有桌子和土牆"),
+         motion=f"with his eyes lowered on the porridge he lifts his own full bowl and in one short pour tips half of it into the empty bowl, sets his bowl down and slides the second bowl across the table to the right in front of Xiaohe; then he lifts his eyes to her face across the table and holds still, his face in three-quarter profile toward her, eyes on her, never into the lens, his eyes steady, his brows level and still, his jaw set, his lips firmly closed; after a short pause he speaks slowly and low, his mouth closing firmly between words, and gives one slow nod; his brows never rise; no raised eyebrows, no open-mouthed eager talking, {NOSMILE}; Xiaohe stays still facing him",
+         zh="過肩中景、固定（2026-11-08 fix7 視線重拍：fix6 9011702 認真不笑對了，但承諾是正對鏡頭說的，推鏡也把推碗推出畫面）：鏡頭在站在桌邊的小禾背後，右前景只有她的後腦（紅繩辮子）和一邊小肩膀，虛焦、臉朝著哥哥（她站著、他坐著，兩人眼睛差不多高）；許硯坐在畫面左邊矮桌後的凳子上，隔著桌子面對她，四分之三側臉朝畫右，鏡頭偏離他的視線約 35°，臉大而清楚在畫面上半；畫面下緣的桌上是他那碗稀粥和她那邊乾的空碗。固定鏡頭，兩個碗一直在畫面裡。他低頭看著粥，端起自己那碗、一次倒一半到空碗裡，放下，把倒好的那碗往右推過桌面到小禾面前；然後抬眼看她的臉、定住，四分之三側臉朝她，眼睛在她身上，不看鏡頭；眼神穩、眉毛平、不動，下巴收緊，嘴閉緊；停一拍才慢慢低聲說，字跟字之間嘴閉緊，慢慢點一下頭；眉毛不抬、不張大嘴熱情地講，從頭到最後一格都不笑（NOSMILE）；小禾不動，面向他（fix6 的中景推到中近景單人寫法見 git 歷史）"),
     # ---- scene 3: the yard, near noon. Axis: the Xu side (Xu Yan, Xiaohe, Erniu) on the left; Zhao and the brides come in by the gate on the right.
     dict(chapter="配婚令", loc="yardin", cam="Insert, static", chars=["zhaobutou"], nospeak=["zhaobutou"], night="yard",
     # live pick (2026-11-07) and fix1: nobody ever kicked the gate; it was pushed open toward the camera from the yard side
@@ -252,13 +260,16 @@ SHOTS = [
          lines=[("zhaobutou", "她犯什麼罪，輪不到你一個窮秀才來問。", "冷笑")],
          motion="with his left hand he shoves the sheathed sword back into his belt at his left hip with a hard click, his right fist keeping hold of the red paper, then leans his upper body forward toward Xu Yan off screen left, looming over him",
          zh="低角度近景、慢推：趙捕頭（頭上只有一頂黑色軟捕快帽）左手把刀鞘插回腰間，右手一直握著展開的紅紙（背面朝鏡頭），往前探身逼近許硯，斜眼、嘴角下撇（2026-11-08 真人版成片審查：帽子疊成兩頂）"),
-    dict(loc="yard", cam="Close-up, slow push in", chars=["xuyan"], night="yard",
     # live pick (2026-11-07): one draft only touched the lower edge and the paper stayed up with faint strokes on it; the
-    # other grabbed it. The palm goes flat on its top edge and pushes it down out of the frame; the sheet is blank red.
-         comp="close-up of Xu Yan in the yard, his sleeves still damp, calm and steady, a faint smile at the corner of his mouth, his eyes on Zhao off screen right, framed with clear space above his head; at the right edge of the frame the top half of the opened red paper held up by Constable Zhao off screen right, a sheet of plain blank red with its back toward the camera; behind him only the bamboo fence and the autumn tree",
+    # other grabbed it. The palm goes flat on its top edge and pushes it down; the sheet is blank red.
+    # e901 live fix7 (gaze review 2026-11-08): a single frontal close-up with a push in, Zhao off screen right; the second
+    # half of the statute was said smiling into the lens and the hand reached toward it. Over-the-shoulder from behind
+    # Zhao's right shoulder as in s27 (the shot that kept its gaze), the paper and the hand between the two of them.
+    dict(loc="yard", cam="Over-the-shoulder medium close-up, slow push in", chars=["xuyan", "zhaobutou"], night="yard",
+         comp="over-the-shoulder shot from behind Constable Zhao's right shoulder and the back of his single soft black cap in the right foreground, soft and out of focus; Xu Yan on screen left facing him in three-quarter profile toward screen right, the camera about 35 degrees off his eyeline, his sleeves still damp, calm and sure, his eyes on Zhao's face, framed with clear space above his head; between them, held up in Zhao's right fist, the opened red paper seen almost edge-on, a sheet of plain blank red with no strokes; behind Xu Yan only the bamboo fence and the autumn tree",
          lines=[("xuyan", "問不得也罷。大衡律配婚第七條：三日為期，不得強押成親。", "不疾不徐")],
-         motion="Xu Yan shifts his weight forward and takes half a step closer, lifts his right hand, lays his open palm flat on the top edge of the blank red paper and calmly presses it straight down until it leaves the bottom of the frame, his palm flat on it the whole way, a slight steady smile on his face",
-         zh="近景、慢推：許硯沒退，往前半步，抬起右手、整個手掌平貼在紅紙上緣，把紅紙從趙捕頭面前穩穩按下去、按出畫面下緣；紅紙是空白的紅、背面朝鏡頭；臉上很穩、嘴角有一點笑（2026-11-07 真人版挑片重寫）"),
+         motion="Xu Yan shifts his weight forward and takes half a step closer to Zhao, lifts his right hand, lays his open palm flat on the top edge of the blank red paper and calmly presses it straight down below Zhao's chest, his palm flat on it the whole way, his hand and the paper staying between the two of them; he speaks to Zhao's face in three-quarter profile, eyes on Zhao, never into the lens: his eyes steady, his brows level, one corner of his closed mouth tucked in slightly between phrases, no grin, no teeth; Zhao stays still, his head turned to Xu Yan, his lips closed",
+         zh="過肩中近景、慢推（2026-11-08 fix7 視線重拍：原本單人正面近景＋推鏡，背律條的後半句笑著對鏡頭說，壓紙的手也朝鏡頭伸）：照 s27 的做法，從趙捕頭右肩後拍，右前景是他的右肩和黑色軟捕快帽的後面（只有一頂），虛焦；許硯在畫面左邊，四分之三側臉朝畫右面對趙捕頭，鏡頭偏離他的視線約 35°，袖子還濕，頭上留空，眼睛在趙捕頭臉上；兩人之間是趙捕頭右拳舉著的展開紅紙，幾乎側邊對鏡頭、空白的紅、沒有字。許硯往前半步，抬起右手、整個手掌平貼在紅紙上緣，穩穩往下按到趙捕頭胸口以下，手與紅紙一直在兩人之間、不朝鏡頭；說話時四分之三側臉朝趙捕頭，眼睛看著他，不看鏡頭：眼神穩、眉毛平、閉著的嘴一邊嘴角在字句之間微微收一下（劇本：本鏡可以微笑），不咧嘴、不露齒；趙捕頭不動，頭轉向許硯，嘴閉著"),
     dict(loc="yard", cam="Two-shot, slow push in", chars=["zhaobutou", "qinshuang"], night="yard",
          comp="two-shot, Constable Zhao in the foreground on screen left, his mouth half open, and Qin Shuang behind him on screen right with her arms folded, both looking toward Xu Yan off screen left",
          lines=[("qinshuang", "喲，窮秀才不只會讀書，還會背律條。", "有點意外")],
@@ -287,11 +298,14 @@ SHOTS = [
          lines=[("tangxiaotang", "千金也到了年紀，官府的名冊上一樣有我。", "對秦霜，甜甜地頂回去"), ("tangxiaotang", "我爹說，嫁秀才比嫁商人體面。你就是許秀才吧？", "轉向許硯，笑")],
          motion="for the first line Tang Xiaotang turns her face to Qin Shuang on screen left with a sweet smile; for the second line she turns away from Qin Shuang to Xu Yan in the right foreground, leans in toward him with her head tilted and looks up into his face; Qin Shuang watches her sideways, cool, her lips closed; Xu Yan stays still with his back to us",
          zh="過肩（許硯右肩後拍）、慢推（唐小棠胸口以上、頭上留空）：前景右許硯的肩與後腦、中間唐小棠、左邊秦霜（抱胸、柴刀插在腰帶右邊）；唐小棠第一句轉向左邊的秦霜笑一下，第二句「你就是許秀才吧？」轉離秦霜、湊近前景的許硯歪頭看他；秦霜嘴閉著、不笑（2026-11-07 真人版挑片重寫）"),
-    dict(loc="yard", cam="Medium shot, slow push in", chars=["xuyan", "erniu"], night="yard",
-         comp=f"medium shot, Xu Yan in the front of the frame in the middle of the yard, {ROBE}, the rolled red paper in his right hand with only its plain blank back showing, stunned and blank: his eyes wide and unfocused, his brows raised, his mouth slack, no smile the whole shot; behind him Wang Erniu coming in from screen left, his trousers dry, both hands empty, grinning broadly; only Erniu smiles",
+    # e901 live fix7 (gaze review 2026-11-08): the worst "group photo" of the episode: Xu Yan walked toward the lens
+    # answering Tang to it, and Erniu at his ear also faced the lens. Shot from Tang's side about 45 degrees off his
+    # eyeline, Xu Yan three-quarter toward her off screen right the whole shot, Erniu in profile at his ear; locked.
+    dict(loc="yard", cam="Medium two-shot, locked", chars=["xuyan", "erniu"], night="yard",
+         comp=f"medium two-shot from the side of Tang Xiaotang off screen right, the camera about 45 degrees off Xu Yan's eyeline: Xu Yan standing in the middle of the yard in three-quarter profile turned toward screen right, {ROBE}, the rolled red paper in his right hand with only its plain blank back showing, stunned and blank: his eyes wide and unfocused, his brows raised, his mouth slack, no smile the whole shot; behind his shoulder on screen left Wang Erniu coming in, his trousers dry, both hands empty, grinning broadly, his face in profile turned to Xu Yan; only Erniu smiles; nobody faces the lens",
          lines=[("xuyan", "我是許硯……可我還沒想好，要怎麼養活三個人。", "愣住，老實答"), ("erniu", "秀才，一口氣三個老婆，你這是要發了啊！", "壓低聲音，樂")],
-         motion="Xu Yan blinks, still blank and unsmiling, gives Tang Xiaotang off screen right a stiff nod and answers her, the red paper in his right hand; only then Erniu leans in to his ear, one hand cupped by his mouth, grinning, Xu Yan's lips closed",
-         zh="中景、慢推：許硯愣住、發呆、不笑（眼睛睜大失焦、眉上揚、嘴微張），右手握著捲起的紅紙，對唐小棠僵硬地點頭（先許硯說話）；然後二牛從左後湊到他耳邊、用手擋著嘴咧嘴笑（只有二牛在笑；二牛說話時許硯嘴閉著；2026-11-07 審稿重寫）"),
+         motion="Xu Yan blinks, still blank and unsmiling, gives Tang Xiaotang off screen right a stiff nod and answers her, his eyes on her off screen right, never into the lens, the red paper in his right hand; only then Erniu leans in from behind to his ear, one hand cupped by his mouth, grinning, his face in profile, his eyes on Xu Yan, never into the lens; Xu Yan's lips closed, his eyes still on Tang Xiaotang off screen right",
+         zh="雙人中景、固定（2026-11-08 fix7 視線重拍：原本兩人一前一後都正對鏡頭說話，像合照）：從畫面右邊外唐小棠那一側拍，鏡頭偏離許硯的視線約 45°；許硯站在院子中間，四分之三側臉朝畫右（唐小棠的方向），右手握著捲起的紅紙（只露空白背面），愣住、不笑（眼睛睜大失焦、眉上揚、嘴微張）；他對畫右外的唐小棠僵硬點頭作答，眼睛一直在她那邊，不看鏡頭；然後二牛從畫左、他肩後湊到他耳邊、用手擋著嘴咧嘴笑，側臉朝許硯、眼睛看許硯，不看鏡頭（只有二牛在笑；二牛說話時許硯嘴閉著、眼睛還在唐小棠那邊）；沒有人面向鏡頭"),
     dict(loc="yard", cam="Extreme close-up, slow push in", chars=["xuyan"], night="yard",
          comp=f"extreme close-up of Xu Yan's eyes, the shot opens directly on his eyes from its very first frame, {EYES}; nothing else in the frame",
          lines=[("xitong", "叮。任務：三日內，與三人成婚。", "冷淡，像在念公告")],
