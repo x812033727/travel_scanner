@@ -676,7 +676,7 @@ test("the split thumbnail layout keeps the words off the picture and is chosen b
   assert.match(split, /<div class="thumb column layout-e tone-[a-z]+">/);
   assert.match(split, /\.thumb\.column\.layout-e\{right:47%/, "the panel ends where the picture starts");
   assert.match(split, /\.thumb-subject\.layout-e\{width:47%/);
-  assert.match(split, /<h1 class="fit">/, "a long translated headline shrinks inside the panel");
+  assert.match(split, /<h1 class="fit[ "]/, "a long translated headline shrinks inside the panel");
   const centred = thumbnailHtml({ template: "thumb", data: { ...data, layout: "e" } }, { background: "https://video.local/k.png", slug: "curio-b01" });
   assert.match(centred, new RegExp(`style="--focus:${THUMB_FOCUS_DEFAULT}%"`));
   // No default moves: a curio slug without a layout keeps d, and only layout e carries the CSS.
@@ -685,6 +685,17 @@ test("the split thumbnail layout keeps the words off the picture and is chosen b
   assert.doesNotMatch(bold, /layout-e|--focus/);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus: 0 } }), []);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus: 100 } }), []);
+  // A line in a script without word spaces keeps the break the writer made, and shrinks instead.
+  const ja = thumbnailHtml({ template: "thumb", data: { ...data, layout: "e", headline: "もう死んでた？\n**11年**" } }, { slug: "curio-b01", locale: "ja" });
+  assert.match(ja, /<h1 class="fit keep-lines">/);
+  assert.match(split, /<h1 class="fit keep-lines">/, "a Chinese headline too");
+  const en = thumbnailHtml({ template: "thumb", data: { ...data, layout: "e", headline: "Already dead?\n**11 years**", sub: "Novel: right arm" } }, { slug: "curio-b01", locale: "en" });
+  assert.match(en, /<h1 class="fit">/, "a Latin headline still wraps between words");
+  assert.match(en, /<div class="sub fit">/);
+  const th = thumbnailHtml({ template: "thumb", data: { ...data, layout: "e", headline: "ฆ่ามัน?\n**อ้างชื่อ**", sub: "ต้นฉบับบอกเองว่าไม่ใช่โนบุนางะ" } }, { slug: "curio-b01", locale: "th" });
+  assert.match(th, /<div class="sub fit keep-lines">/);
+  assert.match(th, /\.thumb\.column\.layout-e \.keep-lines\{white-space:nowrap\}/);
+  assert.doesNotMatch(bold, /keep-lines/, "only the split layout keeps lines");
   for (const focus of [-1, 101, 12.5, "30"]) {
     assert.ok(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus } }).some((problem) => /focus must be a whole number from 0/.test(problem)), String(focus));
   }
