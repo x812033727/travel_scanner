@@ -208,16 +208,24 @@ export function speechHash(doc, lexicon) {
   return hash.digest("hex").slice(0, 16);
 }
 
+// Fields drawn on thumbnail.jpg alone and new enough that no video already shot carries them:
+// the split layout ("e", templates.mjs THUMB_SPLIT_LAYOUT) and its `focus` (2026-11-08). Choosing
+// them after the storyboard is approved must not make the keyframes, clips and assembly stale.
+// Any other layout ("ai", "d", ...) stays in the hash, so no existing video's hash moves.
+const thumbnailOnly = ([key, value]) => key === "brand" || key === "focus" || (key === "layout" && value === "e");
+
 /**
  * Hash of everything that changes the pictures, for the render stage's cache and status. A
  * brand story's company name on the thumbnail (`thumbnail.data.brand`, templates.mjs
  * THUMB_BRAND_MAX) is left out: it is drawn on thumbnail.jpg alone, and the keyframes, clips and
  * assembly are bound to this hash, so adding it to a story already shot must not make them all
  * stale (`render` draws the thumbnail again on every run). Without a brand the hash is as before.
+ * The split layout and its `focus` are left out the same way (thumbnailOnly).
  */
 export function visualHash(doc) {
   const hash = createHash("sha256");
-  const thumbnail = doc.thumbnail?.data && Object.hasOwn(doc.thumbnail.data, "brand") ? { ...doc.thumbnail, data: Object.fromEntries(Object.entries(doc.thumbnail.data).filter(([key]) => key !== "brand")) } : doc.thumbnail;
+  const data = doc.thumbnail?.data;
+  const thumbnail = data && Object.entries(data).some(thumbnailOnly) ? { ...doc.thumbnail, data: Object.fromEntries(Object.entries(data).filter((entry) => !thumbnailOnly(entry))) } : doc.thumbnail;
   hash.update(JSON.stringify(thumbnail ?? null));
   // The paper look (docs/videos/PAPER.md) redraws every card; a video without a theme hashes as it always did.
   if (doc.theme) hash.update(JSON.stringify(["theme", doc.theme]));
