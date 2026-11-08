@@ -25,6 +25,9 @@ Each check is a mistake this season paid for at least once (lessons.md §11-§12
   with retake.py's "drop_pictures", or hide the mouth;
 - warn headroom: a speaker who stands up, leans over or bends down with no headroom written (the face left the frame while
   speaking, e004-r2 s05, s19, s30): write the space above the head, or where the face sits in the frame.
+- warn gaze: a "speaks ... Mandarin line" with no "turned toward" / "eyes on" after it (owner 2026-11-08: 「很多幕都是看前面，
+  不會面對對方說話」; e001 live: 13 of 31 lines spoken into the camera): write whom the line is said to, face in profile or
+  three-quarter profile, never into the camera (build-r2.py and gen-dh.mjs add it to every speaking sentence).
 Exit 1 on any ERROR; warnings are for the reviewer to accept or fix before the batch.
 """
 import json
@@ -95,6 +98,9 @@ def check(manifest):
             found.append(("warn", "smile-ref", "Xu Yan serious with his smirking picture sent"))
         if "speaks" in text and RISE.search(text) and not HEADROOM.search(text):
             found.append(("warn", "headroom", RISE.search(text).group(0)))
+        for m in re.finditer(r"([A-Z][\w-]*(?: [A-Z][\w-]*)?) speaks (?:a short Mandarin line|\d+ short Mandarin lines)[^;.]*", text):
+            if not re.search(r"turned toward|eyes on", m.group(0)):
+                found.append(("warn", "gaze", f"{m.group(1)} speaks with no 'turned toward' / 'eyes on' the listener"))
         if len(onscreen) > 3:
             found.append(("warn", "four", ", ".join(onscreen)))
         for level, kind, what in found:
