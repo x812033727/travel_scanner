@@ -60,7 +60,7 @@ EXTRA = {}
 # Picture review round 1 (2026-11-07, README §10.1): an independent reviewer zoomed every picture.
 # REWRITE replaces the prompt of shots with no usable take; FIX appends to shots with a severe fault.
 REWRITE = {
- "river-sparkle": "Close-up of clear river water flowing over plain smooth round grey pebbles, tiny white glitter specks drifting in the water, simple flat 2D cartoon with clean ink outlines, plain smooth stone surfaces",
+ "river-sparkle": "Medium shot of a clear mountain stream running between green grassy banks, tiny white sparkles floating in the clear water, bright daylight",
  "kid-mountain-right": "Head-and-shoulders close-up of the girl with a small round surprised mouth and both eyes wide and level looking straight at the viewer, her short black bob with straight bangs neatly rounded under her ears, hood down on her shoulders, plain warm cream background",
  "globe": "Wide empty seascape of calm blue sea stretching to the horizon with two small green islands far away, smooth empty water and a clear sky, flat 2D cartoon with clean ink outlines",
  "kid-connected": "Flat 2D cel-shaded cartoon, back view of the girl standing on a sunny beach spreading both arms wide toward the blue sea, her short black bob and the mustard-yellow hood of her navy raincoat seen from behind",
@@ -75,7 +75,7 @@ FIX = {
  "salt-blanket": "a flat thick white salt layer blanketing the whole countryside evenly like snow, tall as a 40-storey building beside tiny houses, flat top surface",
  "chief-3000": "young slim woman with clean clear round glasses lenses, sleek low black ponytail, yellow pencil tucked behind ear",
  "seafloor": "calm empty sandy seafloor with sunbeams, corals and seaweed, quiet scenery only",
- "chief-crust": "young woman with glossy black hair swept back into a low ponytail, forehead visible, round black glasses, yellow pencil behind ear",
+ "chief-crust": "centered waist-up shot filling the frame, laughing with eyes closed as happy curves",
  "shells-sink": "smooth plain sand surface with soft shading and a few small pebbles beside the shells",
  "vents-all": "dark rocky hydrothermal vents, jagged black rock chimneys and cracks on the seafloor releasing shimmering hot water",
  "chief-later": "thin round black glasses, glossy black hair in a neat low ponytail, mustard-yellow cardigan over white blouse",
