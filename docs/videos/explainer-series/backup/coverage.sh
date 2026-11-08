@@ -6,8 +6,10 @@
 # reassembled .partNN pieces. Reads only git objects, so the agent that did not make the
 # episode can run it against the pushed branch:
 #
-#   git fetch origin transfer/curio-h24
-#   coverage.sh FETCH_HEAD ~/mokaair-work/videos/curio-h24 curio-h24
+#   coverage.sh transfer/curio-h24 ~/mokaair-work/videos/curio-h24 curio-h24
+#
+# REF is a commit you already have or, as above, a branch name on origin (fetched into a
+# temporary object directory, so nothing is left in .git).
 #
 # Prints MISSING / MISMATCH lines and the two counts; exits non-zero unless both are 0.
 # Without SRC_DIR (pass "-") it only checks the branch itself: every .SPLIT note matches
@@ -20,7 +22,16 @@ parts() { # $1 = commit, $2 = path of the split original: its .partNN pieces in 
 REF=$1; SRC=${2%/}; PRE=${3%/}
 [ "$PRE" = "." ] && PRE=""
 J=${PRE:+$PRE/}
-C=$(git rev-parse --verify "$REF^{commit}")
+if C=$(git rev-parse -q --verify "$REF^{commit}" 2>/dev/null); then :; else
+  # REF is a branch on origin: read it through a temporary object directory, so the check
+  # leaves no copy of the episode in .git and moves no ref.
+  WORK=$(mktemp -d); trap 'rm -rf "$WORK"' EXIT
+  export GIT_OBJECT_DIRECTORY=$WORK/objects GIT_ALTERNATE_OBJECT_DIRECTORIES=$(cd "$(git rev-parse --git-common-dir)" && pwd)/objects
+  mkdir -p "$GIT_OBJECT_DIRECTORY"
+  C=$(git ls-remote origin "refs/heads/$REF" | cut -f1)
+  [ -n "$C" ] || { echo "no branch $REF on origin" >&2; exit 2; }
+  git fetch -q --refmap= --no-write-fetch-head origin "refs/heads/$REF"
+fi
 missing=0; bad=0
 split_ok() { # $1 = path of the original file inside the tree
   local note got

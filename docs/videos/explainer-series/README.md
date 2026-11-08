@@ -61,6 +61,7 @@ AI 劇（種田、祖媽）的同類文件在 [`../drama/`](../drama/)（PR #204
   模型會把人畫回去（原來如此 P23）。
 - **提示詞超出預算的鏡頭不會畫**：原來如此小孩鏡頭約 840 字上限（含 KIDDESC＋KIDFIX）。畫圖前先 `keyframes --dry-run`
   看每鏡的 `prompt budget: X of Y`。
+- **備份會把整集再存一份到本機 `.git`**：舊版推分支的寫法每推一次就留一份物件，推了幾輪 H24、B01 後 `.git` 長到 12 GB、容器額度用完，連配音都寫不進去（奇聞 2026-11-08）。[`backup/`](backup/) 現在用暫存物件目錄，推完就刪；已經堆起來的用 `git update-ref -d refs/remotes/origin/transfer/…` 再 `git prune --expire=now` 清掉（分支已在 GitHub、核對過才清）。
 - **一次推送超過 2 GiB 會被 GitHub 拒絕**：一集工作目錄常超過（P23 3.96 GiB），所以分批推（[`backup/`](backup/)）。
 
 ## 不統一、各系列自己定的

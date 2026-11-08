@@ -18,12 +18,12 @@ $REPO/$T/tobranch.sh $B $REPO/docs/videos/curio-h24 _repo/docs/videos/curio-h24 
 - 每次呼叫在分支上加一個 commit（只 fast-forward），結尾印 `verify mismatches: 0` 才算成功，否則結束碼非 0。
 - 超過 95 MB 的檔切成 90 MiB 的 `.partNN`，旁邊放 `.SPLIT`（sha256、大小、`cat X.part* > X`）。同一個檔再推一次會先清掉舊的 part。
 - 內容沒變就印 `nothing new` 不推。
+- 新寫的物件放在暫存的物件目錄，推完就刪，本機 `.git` 不會多一份整集的副本（2026-11-08 推了幾輪 H24、B01 後容器額度滿了）；也不留 `FETCH_HEAD` 和 `origin/transfer/*` 追蹤參照。
 
 ## 涵蓋檢查（刪工作目錄前，由沒參與製作的代理跑）
 
 ```bash
-git fetch origin transfer/curio-h24
-$REPO/docs/videos/explainer-series/backup/coverage.sh FETCH_HEAD ~/mokaair-work/videos/curio-h24 curio-h24
+$REPO/docs/videos/explainer-series/backup/coverage.sh transfer/curio-h24 ~/mokaair-work/videos/curio-h24 curio-h24
 ```
 
 印 `missing: 0  mismatches: 0` 才算過。第二個參數給 `-` 時只核對分支上每個 `.SPLIT` 跟它的 part 相符（工作目錄已不在時用）。

@@ -27,8 +27,15 @@ J=${PRE:+$PRE/}  # PREFIX "." puts the files at the root of the branch
 LIMIT=$((95 * 1000 * 1000))
 cd "$(git rev-parse --show-toplevel)"
 WORK=$(mktemp -d); trap 'rm -rf "$WORK"' EXIT
-P=
-if git fetch -q origin "$B" 2>/dev/null; then P=$(git rev-parse FETCH_HEAD); fi
+# New objects go to a temporary object directory (the repo's own is an alternate), so a backup
+# never leaves a second copy of an episode in .git: a container's disk allowance ran out on
+# 2026-11-08 after a few episode pushes. Nothing here moves a ref or writes FETCH_HEAD.
+REPO_OBJECTS=$(cd "$(git rev-parse --git-common-dir)" && pwd)/objects
+export GIT_OBJECT_DIRECTORY=$WORK/objects GIT_ALTERNATE_OBJECT_DIRECTORIES=$REPO_OBJECTS
+mkdir -p "$GIT_OBJECT_DIRECTORY"
+remote_head() { git ls-remote origin "refs/heads/$B" | cut -f1; }
+P=$(remote_head)
+if [ -n "$P" ]; then git fetch -q --refmap= --no-write-fetch-head origin "refs/heads/$B"; fi
 export GIT_INDEX_FILE=$WORK/index
 if [ -n "$P" ]; then git read-tree "$P"; fi
 BATCH=${TOBRANCH_BATCH_BYTES:-1500000000}
@@ -43,6 +50,8 @@ flush() { # commit and push what is in the index so far
 $TOBRANCH_TRAILERS
 }" | git commit-tree "$T" ${P:+-p "$P"})
   git push -q origin "$C:refs/heads/$B"
+  # push also sets refs/remotes/origin/$B, which would point into the temporary objects
+  git update-ref -d "refs/remotes/origin/$B" 2>/dev/null || true
   P=$C; pending=0
 }
 while IFS= read -r -d '' f; do
@@ -70,8 +79,7 @@ flush
 unset GIT_INDEX_FILE
 if [ "$P" = "$START" ]; then echo "nothing new for $B"; exit 0; fi
 C=$P
-git fetch -q origin "$B"
-[ "$(git rev-parse FETCH_HEAD)" = "$C" ] || { echo "PUSH MISMATCH on $B" >&2; exit 1; }
+[ "$(remote_head)" = "$C" ] || { echo "PUSH MISMATCH on $B" >&2; exit 1; }
 echo "pushed $B $C ($n blobs from $SRC, $batch commit(s))"
 # Verify every file against the pushed commit; split files by reassembling the parts.
 bad=0
