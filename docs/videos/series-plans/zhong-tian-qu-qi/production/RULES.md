@@ -91,6 +91,7 @@ YouTube 標題的格式：`<這集的鉤子>｜種田娶妻打天下 第N集`，
 
 | 日期 | 決定 | 站主的話 |
 | --- | --- | --- |
+| 2026-11-08 | **說話要面對對方**（兩部共用，祖媽第 2 集起的）：每一句露嘴的台詞寫「turned toward the person he/she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera」；`build-r2.py` 與 `hailuo/gen-dh.mjs` 自動補在說話句後面。第 2 集還沒拍的 39 支已照這條重建；第 1 集逐鏡查視線 | 「很多幕都是看前面 不會面對對方說話」 |
 | 2026-11-07 | 真人版沿用第 1–6 集 r2 的 `script.md`、`video.json`（240 鏡、238 句），只換畫風句 | （`live-action-plan.md` 第一節） |
 | 2026-11-05 | **最後合併成一支**：每集開頭不放集數、片名卡，不重講上一集；第一鏡接上一集最後一鏡 | — |
 | 2026-11-05 | 台詞要有頭有尾 | 「台詞應該有頭有尾吧？不要都沒頭沒尾的。」 |
