@@ -170,7 +170,7 @@ kid("kid-shrink-q", K("hugging " + BOTTLE + " with a worried face", where=OFFICE
 scene("kettle", "Close-up looking into a plain metal kettle, its inside walls coated with a thick chalky white crust, sunny kitchen, " + DAY,
       c("因為壺裡面，會慢慢長出一層水垢。", "接住上一句", "P:skin"), chapter="電池裡長出一層水垢")
 scene("kettle-crust", "Close-up of a thick chalky white crust on the inside of an old plain metal kettle, sunny kitchen, " + DAY,
-      c("水壺跟家裡的熱水壺一樣，用久了，", "轉向觀眾"), c("裡面會黏上一層白白硬硬的東西，"), c("那就是水垢。"))
+      c("就像家裡的熱水壺，用久了，裡面會黏上一層白白硬硬的東西，", "轉向觀眾"), c("那就是水垢。"))
 kid("kid-battery-scale", K("gasping with a surprised round mouth, both hands out of frame", close=True),
     k("電池裡也有水垢？", "句尾上揚"))
 scene("battery-layer", "A simple flat illustration of " + BOTTLE + " with a thin soft white film lining its inside walls, on " + TABLE + ", " + DAY,
@@ -246,7 +246,7 @@ kid("kid-broken-q", K("biting her lip with a worried little frown", close=True),
 chief("chief-protect", C("shaking her head with a calm reassuring smile"),
       c("不是。手機會搶先一步，自己關機，", None, "P:blackout"), c("保護裡面的零件。", None, "P:onpurpose"))
 kid("kid-decided", K("with a bright face of sudden discovery, eyes wide and mouth open", close=True),
-    k("原來是它自己決定的！", "恍然"))
+    k("原來這就是想不到的原因！", "恍然"))
 scene("phone-rest-safe", "Close-up of a plain smooth unmarked dark phone resting safely on a soft round cushion, " + DAY,
       c("對，所以它多半沒有壞。"))
 kid("kid-liar-q", K("crossing her arms with a doubtful pout", where=OFFICE),
@@ -258,7 +258,7 @@ scene("bottle-left", "Close-up of " + NARROW + " with a little water still insid
 kid("kid-three", K("with a bright face of sudden discovery, both hands out of frame", where=OFFICE),
     k("壺裡的水、壺有多大，", "恍然"), k("還有壺嘴多寬，是三件事！", "恍然"))
 chief("chief-three", C("nodding firmly with a proud smile", close=True),
-      c("對。電量還多，不代表壺還大、壺嘴還寬。", "轉向觀眾"))
+      c("對！一點都沒錯。", "轉向觀眾"))
 kid("kid-full-q", K("squinting in thought with a curious face, both hands out of frame", close=True),
     k("那電多的時候，", "推理"), k("怎麼就不會黑掉？", "句尾上揚"))
 scene("full-pour", "Close-up of " + WIDE + ", full to the brim and tipped over a glass, a strong steady stream pouring out, " + DAY,
@@ -268,7 +268,7 @@ kid("kid-cold-q", K("hugging herself with a shivering face and pink cheeks", whe
 scene("cold-bench", "A plain smooth unmarked phone on a frosty wooden park bench on a crisp clear winter morning, a little frost on the slats, " + DAY,
       c("有。天氣冷，壺嘴也會暫時變窄一點，", None, "P:cold"), c("回到暖和的地方，就會好一些。"))
 kid("kid-care-q", K("clenching both fists with a determined face", where=OFFICE),
-    k("難怪在冷冷的公園，", "恍然"), k("它一下就黑掉了！", "恍然"),
+    k("那公園那麼冷……", "若有所思"), k("我好像快想通了！", "眼睛一亮"),
     k("那我要怎麼做，", "認真"), k("才能讓電池老得慢一點？", "句尾上揚", "S:care"))
 
 # ---------- 第四章：手機先停在八成 ----------
@@ -316,7 +316,7 @@ kid("kid-got1", K("pointing proudly with one finger and a big grin", close=True)
 kid("kid-got2", K("throwing both arms wide with a huge happy smile", where=OFFICE),
     k("手機就先關機，保護自己！", "開心"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
-      c("對，就是這樣！下次手機突然黑掉，", "轉向觀眾，輕聲"), c("先別怪它，它多半是在保護自己。"))
+      c("對，就是這樣！下次手機突然黑掉，", "轉向觀眾，輕聲"), c("先別怪它，帶回暖和的地方，再開機試試。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
