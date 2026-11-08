@@ -26,8 +26,10 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
 - 解說片的 slug 本身就是集數，不另外編號；重做的 `-v2` 是另一支片，用它自己的 slug。
 - 每次備份在同一條分支上加一個 commit，只 fast-forward，**不強推**。舊版本留在歷史裡。
 - 已有的分支保留不動，不搬也不刪：`claude/backup-sothatswhy-p02-p05`、`claude/backup-sothatswhy-p07-p14`、
-  `claude/backup-sothatswhy-p08-popcorn-pressure`、奇聞 W03 在 `claude/eloquent-hypatia-fxsz7j` 的
-  `docs/videos/curio-w03-garmin-smartphone-pivot/media/`。下一次備份起用新名字。
+  `claude/backup-sothatswhy-p08-popcorn-pressure`、`claude/backup-sothatswhy-p11-old-battery`、
+  `claude/backup-sothatswhy-p15-salty-sea`、`claude/backup-sothatswhy-p23-quake-alert`、奇聞 W03 在
+  `claude/eloquent-hypatia-fxsz7j` 的 `docs/videos/curio-w03-garmin-smartphone-pivot/media/`。
+- 已經在舊名字上推過的那一集，做完前繼續推同一條，免得一集拆在兩條分支（原來如此 P11）。之後新開的集數用 `transfer/<slug>`。
 
 ## 分支裡的路徑
 
@@ -73,7 +75,7 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
 
 送上後台的那一份（`_site/<slug>/` 的 `dub_*`、`thumbnail_*`、`captions_*`）也要在，跟本機的 sha 對得上。
 
-**不放的**：密碼與權杖（`~/.mokaair/`）、可重裝的套件、別支片的檔案。
+**不放的**：`LEASE*`（工具的鎖檔紀錄，重製用不到）、密碼與權杖（`~/.mokaair/`）、可重裝的套件、別支片的檔案。
 
 ## 共用分支放什麼
 
@@ -83,13 +85,15 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
   以及改過的稿子原樣（`_repo/docs/videos/…`）。還沒開工的集數也在這裡，改稿的功夫才不會白費。
 - 奇聞：Ada 設定圖 `curio-redo-handoff/ada-sheet/`（目前只在分支 `claude/eloquent-hypatia-fxsz7j`，沒進 main）、重做的決定紀錄。
 
-- 原來如此：系列配樂床 `sothatswhy-p02-bed.m4a`（sha256 `54169439…`）。
+- 原來如此：系列配樂床兩條都放，README 註明哪幾集用哪一條：
+  - `sothatswhy-bed-r2.m4a`（sha256 `9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6`，全長 863.75 s；P15、P23、P11 用）與它的付費原檔；
+  - `sothatswhy-p02-bed.m4a`（sha256 `54169439…`，P02 等早期集數用）。原檔目前兩邊的備份都找不到，找到再補。
 - 兩邊：片頭片尾素材包 `_branding/<hash>/`（`branding --pull` 抓得回來，但素材包會換版，留一份當時用的）。
 
 ## 什麼時候推
 
 每過一關推一次：分鏡核准後、成片送審後、上架核准後、語言送審後；之後任何新產生或補上的檔案再推一次。
-交給站主或送上後台的檔案，先推再交。
+交給站主或送上後台的檔案，先推再交；指令要寫成 `備份 && review-push`，備份失敗就不送（不能用 `;`）。
 
 ## 怎麼確認完整
 

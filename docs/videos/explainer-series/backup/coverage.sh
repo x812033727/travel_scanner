@@ -47,6 +47,6 @@ while IFS= read -r -d '' f; do
   else
     echo "MISSING $rel"; missing=$((missing + 1))
   fi
-done < <(find "$SRC" -type f -print0)
+done < <(find "$SRC" -type f ! -name 'LEASE*' -print0)
 echo "missing: $missing  mismatches: $bad"
 [ "$missing" -eq 0 ] && [ "$bad" -eq 0 ]

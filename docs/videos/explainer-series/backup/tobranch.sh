@@ -65,7 +65,7 @@ while IFS= read -r -d '' f; do
   else
     h=$(git hash-object -w "$f"); git update-index --add --cacheinfo "100644,$h,$J$rel"; n=$((n + 1))
   fi
-done < <(find "$SRC" -type f -print0)
+done < <(find "$SRC" -type f ! -name 'LEASE*' -print0)
 flush
 unset GIT_INDEX_FILE
 if [ "$P" = "$START" ]; then echo "nothing new for $B"; exit 0; fi
@@ -85,6 +85,6 @@ while IFS= read -r -d '' f; do
   else
     [ "$(git rev-parse -q --verify "$C:$J$rel" 2>/dev/null)" = "$(git hash-object "$f")" ] || { echo "MISMATCH $rel"; bad=$((bad + 1)); }
   fi
-done < <(find "$SRC" -type f -print0)
+done < <(find "$SRC" -type f ! -name 'LEASE*' -print0)
 echo "verify mismatches: $bad"
 [ "$bad" -eq 0 ]
