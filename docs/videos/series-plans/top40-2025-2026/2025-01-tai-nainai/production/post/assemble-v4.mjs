@@ -48,6 +48,8 @@ const GRADES = {
   night: "eq=contrast=1.18:saturation=0.70:gamma=0.92,colorbalance=rs=-0.05:bs=0.08:rm=-0.02:bm=0.04",
   dh: "eq=contrast=1.05:saturation=0.92:gamma=0.98",
   office: "eq=contrast=1.08:saturation=0.72:gamma=0.97,colorbalance=rs=-0.03:bs=0.05:rh=-0.01:bh=0.02",
+  // 暗場的主觀鏡用：indoor 的 gamma 0.90 加對比把第 1 集 c27 壓成全黑（獨立審片 2，2026-11-08）
+  lift: "eq=contrast=1.04:saturation=0.82:gamma=1.22:brightness=0.02,colorbalance=rh=0.03:gh=0.01:bh=-0.03",
 };
 const gradeOf = (id) => { for (const [g, ids] of Object.entries(edit.grades ?? {})) if (ids.includes(id)) return g; return edit.default_grade ?? "day"; };
 const FINISH = edit.finish ?? "vignette=angle=PI/4.6,noise=alls=5:allf=t,format=yuv420p";
