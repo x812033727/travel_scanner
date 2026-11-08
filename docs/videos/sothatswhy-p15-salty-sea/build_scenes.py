@@ -68,6 +68,10 @@ REWRITE = {
  "kid-got2": "Close-up of a big plain smooth steel soup pot on the stove with a thin white ring of salt crust around its inner rim, warm sunny kitchen, flat 2D cartoon with clean ink outlines"
 }
 FIX = {
+ "kid-40": "both eyes closed as two happy curved lines",
+ "kid-more-exit": "both eyes closed as two happy curved lines, thinking smile",
+ "kid-plate": "both eyes closed as two happy curved lines, round young child face",
+ "kid-fire-up": "her open empty hand waving beside her face, both eyes closed as two happy curved lines",
  "kid-splash": "short rounded black bob, hair ends curving inward at the jaw",
  "kid-salt-mountain": "mustard-yellow hood resting down on her shoulders, short black bob with straight bangs and one thin cowlick visible on bare head",
  "rock-dissolve": "plain smooth grey rock with soft matte texture and scattered tiny speckles, mineral grains drifting into the puddle",
