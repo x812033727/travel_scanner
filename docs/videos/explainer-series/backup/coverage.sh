@@ -18,6 +18,8 @@ parts() { # $1 = commit, $2 = path of the split original: its .partNN pieces in 
 }
 [ $# -eq 3 ] || { echo "usage: $0 REF SRC_DIR|- PREFIX" >&2; exit 2; }
 REF=$1; SRC=${2%/}; PRE=${3%/}
+[ "$PRE" = "." ] && PRE=""
+J=${PRE:+$PRE/}
 C=$(git rev-parse --verify "$REF^{commit}")
 missing=0; bad=0
 split_ok() { # $1 = path of the original file inside the tree
@@ -28,16 +30,16 @@ split_ok() { # $1 = path of the original file inside the tree
 }
 if [ "$SRC" = "-" ]; then
   while read -r s; do
-    split_ok "${s%.SPLIT}" || { echo "MISMATCH ${s#"$PRE"/} (split)"; bad=$((bad + 1)); }
-  done < <(git ls-tree -r --name-only "$C" -- "$PRE" | grep '\.SPLIT$' || true)
+    split_ok "${s%.SPLIT}" || { echo "MISMATCH ${s#"$J"} (split)"; bad=$((bad + 1)); }
+  done < <(git ls-tree -r --name-only "$C" ${PRE:+-- "$PRE"} | grep '\.SPLIT$' || true)
   echo "split notes checked; mismatches: $bad"
   [ "$bad" -eq 0 ]; exit
 fi
 [ -d "$SRC" ] || { echo "no such directory: $SRC" >&2; exit 2; }
 declare -A tree
-while IFS= read -r p; do tree[$p]=1; done < <(git ls-tree -r --name-only "$C" -- "$PRE")
+while IFS= read -r p; do tree[$p]=1; done < <(git ls-tree -r --name-only "$C" ${PRE:+-- "$PRE"})
 while IFS= read -r -d '' f; do
-  rel=${f#"$SRC"/}; path=$PRE/$rel
+  rel=${f#"$SRC"/}; path=$J$rel
   if [ -n "${tree[$path]:-}" ]; then
     [ "$(git rev-parse "$C:$path")" = "$(git hash-object "$f")" ] || { echo "MISMATCH $rel"; bad=$((bad + 1)); }
   elif [ -n "${tree[$path.SPLIT]:-}" ]; then

@@ -9,6 +9,9 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
 - **所有檔案都要備份，不挑檔**：「不是叫你都要備份到分支嗎?」「要把如果真的需要重製的檔案跟所有上傳的檔案都備份起來」
   （2026-11-07，原來如此 P07／P14 刪了沒備份的配音，差點整條重錄）；「備份＝所有上架用的檔案＋重製會用到的所有檔案」
   （2026-11-07，奇聞 W03 刪除時只推了文字檔，旁白原檔和配音沒留下）。
+- **重製時什麼都不用重做**：「備份要之後如果要重製就可以不用重新做的都要備份到」；「八國跟繁體中文 縮圖 語音 字幕 敘述都要」
+  （2026-11-08）。判斷標準是「這個檔不見了，重製時要不要再花錢、再跑一次、再審一次」：要的就放。工作目錄以外的也算
+  （改過還沒進 main 的稿子、scratchpad 的腳本與紀錄、片頭片尾素材包、當時的工具版本）。
 - **交給站主或送上後台的檔案，一律先進分支**（2026-11-07）。
 - **之後才產生或補上的檔案也要補進同一條分支**（2026-11-07）。
 - **沒備份完、沒核對完不准刪**（2026-11-07）。
@@ -34,8 +37,9 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
 | --- | --- |
 | `<slug>/…` | 整個工作目錄，原樣 |
 | `_site/<slug>/…` | `review-files` 從站上抓回的檔案（含換版保留的 `retained/`） |
-| `_repo/docs/videos/<slug>/…` | 備份當下 repo 裡這支的稿子快照（`video.json`、`script.md`、`i18n/` 等），還原時才知道是哪一版稿子做的 |
-| `_scratchpad/<slug>/…` | 這支用到的 scratchpad 檔案（放大檢查的報告、還原清單、換版候選目錄） |
+| `_repo/docs/videos/<slug>/…` | 實際拿來做這支的那份 checkout 裡、這支的稿子（**含未提交的修改**；`video.json`、`script.md`、`i18n/`、`claims.md`、`panel/` 等）。不是 main 上的版本 |
+| `_repo/BASE` | 做這支時工具所在 checkout 的 commit（`git rev-parse HEAD`），以及那份 checkout 有沒有未提交的修改 |
+| `_scratchpad/<slug>/…` | 這支用到的 scratchpad 檔案：自己寫的腳本（`.py`、`.sh`、`.mjs`）、改稿前的備份、放大檢查的報告與裁圖、import 清單、執行紀錄（`*.log`）、換版候選目錄 |
 | `README-backup.md` | 這一版放了什麼、沒放什麼（以及在哪裡）、怎麼還原、檔案數與大小 |
 
 超過 95 MB 的檔案切成 90 MiB 的 `X.part00`、`X.part01`…，旁邊放 `X.SPLIT`：原檔 sha256 與還原指令
@@ -54,15 +58,30 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
 | 合成 | `frames/`、`clips/`、`segments/`、`build/`（含 `body.mp4`）、`music/`、`branding.json`、`checks.json`、`watermark.json`、`final.mp4` |
 | 字幕 | `captions/` 全部語言 |
 | 配音 | `dubs/<locale>/` 逐句錄音、時間軸、`body.m4a`、`dubs/<locale>.m4a`；逐句錄音存無損（W03 用 FLAC，見其 `media/dub-lines/README.md`） |
-| 上傳包 | `upload/` 全部：成片、八語配音、字幕、說明、縮圖（含八語）、`metadata.json`、`UPLOAD.md` |
+| 上傳包 | `upload/` 全部：成片、`metadata.json`、`UPLOAD.md`，以及下面九語表的每一格 |
 | 媒體帳本 | `media/`（`cache.json`、`jobs.json`、`ledger.json`）：重畫時吃快取不重付錢 |
 | 站上檔案 | `_site/<slug>/`：送審過的每個附件，送審後用 `review-files --out` 抓回 |
+
+### 九種語言，每一格都要有
+
+繁體中文加八語（en、ja、ko、es、pt、id、th、vi），每種語言四樣都要在分支上，缺一格就不算完整：
+
+| | 縮圖 | 語音 | 字幕 | 敘述（標題、說明、標籤、章節） |
+| --- | --- | --- | --- | --- |
+| 繁體中文 | `upload/` 的縮圖、`build/` 的縮圖 | `narration.wav`、`audio/` 逐句、`speech-journal/` | `captions/zh-TW` | `video.json` 的標題說明、`upload/` 的說明檔 |
+| 八語各一 | `upload/` 的 `thumbnail_<locale>`（`render --thumbnails-only` 的結果） | `dubs/<locale>/` 逐句（無損）與時間軸、`dubs/<locale>.m4a` | `captions/<locale>` | `i18n/<locale>.json`（在 `_repo/` 快照裡）、`upload/` 的各語說明 |
+
+送上後台的那一份（`_site/<slug>/` 的 `dub_*`、`thumbnail_*`、`captions_*`）也要在，跟本機的 sha 對得上。
 
 **不放的**：密碼與權杖（`~/.mokaair/`）、可重裝的套件、別支片的檔案。
 
 ## 共用分支放什麼
 
-不在 repo 裡、又跨集共用的檔案。已經進 repo 的（奇聞 Ada 設定圖、原來如此 `series-sheets/`）不重複放。
+不在 main 裡、又跨集共用的檔案。已經進 main 的不重複放。
+
+- 兩邊：做重製時那份 checkout 的未提交修改（`_repo/BASE` 加 `_repo/worktree.patch`，`git diff --binary HEAD` 加上新增的檔），
+  以及改過的稿子原樣（`_repo/docs/videos/…`）。還沒開工的集數也在這裡，改稿的功夫才不會白費。
+- 奇聞：Ada 設定圖 `curio-redo-handoff/ada-sheet/`（目前只在分支 `claude/eloquent-hypatia-fxsz7j`，沒進 main）、重做的決定紀錄。
 
 - 原來如此：系列配樂床 `sothatswhy-p02-bed.m4a`（sha256 `54169439…`）。
 - 兩邊：片頭片尾素材包 `_branding/<hash>/`（`branding --pull` 抓得回來，但素材包會換版，留一份當時用的）。
@@ -74,9 +93,11 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
 
 ## 怎麼確認完整
 
+0. **九語清單**：照上面的九語表逐格打勾，缺的補做或補抓（`review-files --out`）再推。
 1. **逐檔核對**：工作目錄每個檔（切塊的檔核對 `.SPLIT` 裡的 sha256）跟分支上的 blob 比，不符要是 0。
 2. **涵蓋檢查**：工作目錄每個檔都在分支上，漏的要是 0。
 3. **刪工作目錄之前**：另一個沒參與製作的代理只看 GitHub（`git ls-tree`、`.SPLIT`）再核對一次 1、2，並確認站主已決定成片、上架、
    語言三關。三件都成立才刪，而且只刪那一支。
 
-工具在 [`backup/`](backup/)：`tobranch.sh` 推分支並逐檔核對，`coverage.sh` 做涵蓋檢查。
+工具在 [`backup/`](backup/)：`tobranch.sh` 推分支並逐檔核對（GitHub 一次推送不能超過 2 GB，所以每約 1.5 GB 分一個
+commit 推），`coverage.sh` 做涵蓋檢查。
