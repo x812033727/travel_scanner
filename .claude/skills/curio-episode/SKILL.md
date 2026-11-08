@@ -285,5 +285,8 @@ W03（Garmin）重畫十二輪分鏡、花了約 US$28 才過，量到的做法�
 
 ## 交接
 
+備份分支（`transfer/<slug>`）、刪工作資料夾的條件與跟原來如此事務所統一的規則在
+`docs/videos/explainer-series/`（README.md、BACKUP-BRANCHES.md），兩邊衝突時以那裡為準。
+
 做到一半要停，把狀態寫進看板的票：哪幾景的插圖過了、哪幾景卡在哪一題、花了多少、下一步。不要只寫
 在對話或 PR 描述裡；下一個接手的模型（Claude 或 Codex）讀的是票和這份 skill。
