@@ -12,6 +12,12 @@ belt in c16, a bundle of firewood on her right shoulder in c29; A-ling without s
 the bucket c26-c30, one short knife and a whetstone c31-c40; Tang Xiaotang always t2 (high collar, closed garment); the
 new 字據 never readable (blank sheet, out of focus, blank corner, folded); the grey-clad servants and the villagers have
 no picture and are never shown by the face. Opens on the next instant after e002 c40: the knife thunks into the gate frame.
+Live action (2026-11-08 prep, the e901/e902 live lessons): every visible face gets an expression written as brows, eyes,
+mouth corners, jaw, throat and breath at the moment of the line; every on-screen speaker is turned in profile or
+three-quarter toward the listener, with the camera locked about 30-45 degrees off the eyeline or over the listener's
+shoulder (no frontal single-face push-in); NOSMILE is the only smile word in the prompts (the allowed c11 forced smile
+c26 deliberate and c30 wry smiles are written as face movements; Qian Yuanwai's c11 one is a hard grimace with QIAN_FACE's eyes); the eye
+extreme close-ups use EYES; the fan is FAN, folded shut, and Qin Shuang's knife is CHOP in every shot it is in.
 """
 EP = 903  # internal working number; the published slug is zhong-tian-qu-qi-e003-r2
 SLUG = "zhong-tian-qu-qi-e003-r2"
@@ -65,6 +71,16 @@ LAMP = "one small open clay bowl oil lamp the size of a palm, a single wick burn
 CHOP = "one old chopping knife with a foot-long dark iron blade and a black-cloth-wrapped wooden handle"
 # The grey-clad servants have no picture: only backs, shoulders down or hands (2026-11-07 review).
 SERV1 = "a grey coarse cotton cross-collared short jacket, a cloth head-wrap and cloth shoes"
+# Live-action prep (2026-11-08), from e902 live fix1/fix2 (e002-r2/r2.py) and drama/WRITING.md 四、七、八: a face that must
+# not smile gets no smile word at all except this one ban (smile, smirk, sneer, grin, unsmiling all came out as a warm
+# smile; Qian Yuanwai's "smug smile", "sneer" and "forced smile" turned the villain friendly in e002 s27-s38).
+NOSMILE = "no smile at any moment, not even at the end of the shot, until the last frame"
+# The eye extreme close-ups keep natural eyes ("a faint pale blue light in his pupils" drew glowing blue irises).
+EYES = "his irises a natural dark brown from the first frame to the last, the whites of his eyes clear, only a tiny faint cold pale glint of reflected light in each pupil, like a catchlight"
+# The villain's face (e002 fix1): mouth closed and turned down, eyes cold, brows low; never a smile word.
+QIAN_FACE = "his face cold and hard: lips closed, the corners of his mouth pulled down, his eyes narrowed, cold and hard, his brows lowered"
+# Qian Yuanwai's one fan, folded shut in every shot (e002 s38: opened, it grew a full face of calligraphy).
+FAN = "one plain bamboo-ribbed folding fan with a blank face, folded shut"
 
 SHOTS = [
     # ---- scene 1: the 字據, late afternoon (e002's same instant), low sun from the gate on the right. Axis: the Xu side
@@ -77,65 +93,72 @@ SHOTS = [
          motion="the knife, just driven into the post, quivers hard, its handle shaking up and down in the empty air while a few pale splinters fall from the cut; the quiver slowly dies away and the knife stays buried in the post to the end",
          zh="門柱特寫、固定（第一格就是院門門柱；2026-11-07 第四輪重設計）：柴刀刀尖與前三分之一刀身已釘進門柱左面、刀柄朝左懸在空中，刀身猛顫、幾片木屑掉下，顫動慢慢停；畫面只有門柱與刀。家丁的手與唐小棠的袖子移出本鏡（兩輪都畫成家丁握刀柄），抓手臂留在 s02 右邊緣、s03 鬆手；音效「篤」接第 2 集 c40"),
     dict(loc="yard_late_cu", cam="Medium close-up, tracking", chars=["qinshuang"], night="yard_late",
-         comp=f"medium close-up tracking with Qin Shuang as she strides in from screen left, framed from the chest up the whole shot with her belt below the bottom edge of the frame, a cold hard stare, her brows level, her mouth a flat line, both hands empty; on screen right the upright wooden gate post with {CHOP} buried in it at her shoulder height, its handle toward screen left; at the right edge beside the post one grey-clad servant seen only from behind, the back of his head-wrap and his shoulders toward the camera, in {SERV1}, his right hand gripping a slender forearm in a peach-pink brocade sleeve at the bottom right corner of the frame; behind them only the bamboo fence of the same yard",
+         comp=f"medium close-up tracking with Qin Shuang as she strides in from screen left, framed from the chest up the whole shot with her belt below the bottom edge of the frame, both hands empty, her body and face in profile toward the servant at the right edge, the camera about 40 degrees off her eyeline, her eyes on the back of his head, never the lens; her face hard: brows drawn down straight and low, eyes narrowed and fixed, jaw set, mouth pressed into a flat line; on screen right the upright wooden gate post with {CHOP} buried in it at her shoulder height, its handle toward screen left; at the right edge beside the post one grey-clad servant seen only from behind, the back of his head-wrap and his shoulders toward the camera, in {SERV1}, his right hand gripping a slender forearm in a peach-pink brocade sleeve at the bottom right corner of the frame; behind them only the bamboo fence of the same yard",
          lines=[("qinshuang", "放手。這一刀是故意偏的，下一刀不會。", "冷，不大聲")],
-         motion="Qin Shuang strides from screen left to one step behind the servant, lifts her empty right hand and rests it on the knife handle, leaving the blade in the post; the servant keeps his back turned and his grip on the sleeve to the end",
-         zh="中近景、跟拍（由左往右；2026-11-07 第四輪重設計）：秦霜胸口以上、腰帶在畫面下緣外（定妝照腰間有刀），兩手空空從左大步走到家丁背後一步，右手搭上門柱上的刀柄不拔；右邊緣家丁背影抓著一截桃粉織錦袖子（唐小棠不入鏡，只見袖子）；冷、不笑"),
+         motion=f"Qin Shuang strides from screen left to one step behind the servant, lifts her empty right hand and rests it on the knife handle, leaving the blade in the post; she says the line to the back of his head in profile, her nostrils flaring once and her eyes narrowing further on 「下一刀不會」; the servant keeps his back turned and his grip on the sleeve to the end; {NOSMILE}",
+         zh="中近景、跟拍（由左往右；2026-11-07 第四輪重設計）：秦霜胸口以上、腰帶在畫面下緣外（定妝照腰間有刀），兩手空空從左大步走到家丁背後一步，右手搭上門柱上的刀柄不拔；右邊緣家丁背影抓著一截桃粉織錦袖子（唐小棠不入鏡，只見袖子）；冷、不笑。真人版（2026-11-08）：秦霜側臉朝畫右的家丁、鏡頭偏離視線約 40°，眼睛盯著他的後腦、不看鏡頭；眉往下壓成一直線、眼睛瞇起、下巴收緊、嘴抿成線，說「下一刀不會」時鼻翼一張、眼睛再瞇；從頭到最後一格都不笑（NOSMILE）"),
     dict(loc="yard_late_m", cam="Over-the-shoulder medium shot, slow push in", chars=["qinshuang", "tangxiaotang", "xiaohe"], night="yard_late", act=4,
-         comp=f"over-the-shoulder shot from behind Qin Shuang: her right shoulder and high ponytail fill the left foreground, her belt empty; that shoulder is Qin Shuang, who appears nowhere else in the frame; on screen right one grey-clad servant seen only from the shoulders down, his head above the top of the frame, his right hand on the left forearm of Tang Xiaotang, {TANG}, glaring, brows drawn together, lips pressed tight, not smiling the whole shot; at the left, a few steps from the house door at the back left, little Xiaohe in her patched lilac jacket, hugging her small woven straw rabbit to her chest",
+         comp=f"over-the-shoulder shot from behind Qin Shuang: her right shoulder and high ponytail fill the left foreground, her belt empty; that shoulder is Qin Shuang, who appears nowhere else in the frame; on screen right one grey-clad servant seen only from the shoulders down, his head above the top of the frame, his right hand on the left forearm of Tang Xiaotang, {TANG}, glaring at him: brows drawn together and down, eyes narrowed, lips pressed tight, chin tucked; at the left, a few steps from the house door at the back left, little Xiaohe in her patched lilac jacket, hugging her small woven straw rabbit to her chest, frightened: eyes wide, brows drawn up, lips pressed together",
          lines=[],
-         motion="the servant lets go and steps back one step; Tang Xiaotang shakes her sleeve free, rubs her left forearm, glares at him and backs off past the left edge to stand behind Xu Yan off screen left; little Xiaohe runs back into the house door at the back left, hugging her rabbit; all lips stay closed",
-         zh="過肩（秦霜肩後拍家丁與唐小棠）、慢推：家丁（只露肩膀以下）鬆手退一步；唐小棠（t2）甩開袖子退到許硯身後，揉左前臂瞪家丁；小禾從許硯身後跑回左後屋門口；秦霜腰帶空著"),
-    dict(loc="yard_late", cam="Low-angle close-up, slow push in", chars=["qianyuanwai"], night="yard_late",
-         comp="low-angle close-up of Qian Yuanwai in his dark gold silk robe with roundel patterns, gritting his teeth in a cold sneer, one plain bamboo-ribbed folding fan with a blank face and no writing, closed, in his right hand, three gold rings on his right hand; behind him only the yard gate and the autumn tree of the same yard",
+         motion=f"the servant lets go and steps back one step; Tang Xiaotang shakes her sleeve free with a sharp breath through her nose, rubs her left forearm, glares at him and backs off past the left edge to stand behind Xu Yan off screen left; little Xiaohe runs back into the house door at the back left, hugging her rabbit; all lips stay closed; {NOSMILE}",
+         zh="過肩（秦霜肩後拍家丁與唐小棠）、慢推：家丁（只露肩膀以下）鬆手退一步；唐小棠（t2）甩開袖子退到許硯身後，揉左前臂瞪家丁；小禾從許硯身後跑回左後屋門口；秦霜腰帶空著。表情（2026-11-08 真人版）：唐小棠瞪家丁：眉頭往中間往下皺、眼睛瞇起、嘴抿緊、收下巴，甩袖子時鼻子出一口氣；小禾害怕：眼睛睜大、眉毛往上皺、嘴抿著；從頭到最後一格都不笑（NOSMILE）"),
+    # Live prep (2026-11-08): e002 fix1 s29 — "cold sneer" and a low frontal push drew the villain laughing with open teeth.
+    dict(loc="yard_late", cam="Low-angle close-up, locked", chars=["qianyuanwai"], night="yard_late",
+         comp=f"low-angle close-up of Qian Yuanwai, the camera low below his chin looking up at him, his body and face turned three-quarter to screen left toward Qin Shuang off screen left, the camera about 35 degrees off his eyeline, in his dark gold silk robe with roundel patterns, {QIAN_FACE}, his teeth clenched behind his closed lips, a muscle jumping in his jaw, {FAN} in his right hand, three gold rings on his right hand; behind him only the yard gate and the autumn tree of the same yard",
          lines=[("qianyuanwai", "好個潑辣貨。來人，拿紙筆，三個都寫進字據！", "冷笑")],
-         motion="he jabs the closed fan at Qin Shuang off screen left, then sweeps it toward the wooden table in the middle of the yard",
-         zh="低角度近景、慢推：錢員外（深金色團花錦袍、三枚金戒指）咬牙冷笑，用合起的素面摺扇朝秦霜一點，再往院子中間的木桌一揮"),
+         motion=f"he jabs the folded fan at Qin Shuang off screen left, speaking to her in three-quarter profile, eyes on her, never into the lens, his lips thin and closing between words, no teeth, his nostrils flaring on 「好個潑辣貨」; then he sweeps the fan toward the wooden table in the middle of the yard; {NOSMILE}",
+         zh="低角度近景、固定（2026-11-08 真人版：原本慢推、寫「咬牙冷笑」；第 2 集 s29 同樣寫法兩支都露齒大笑）：錢員外（深金色團花錦袍、三枚金戒指）身體與臉四分之三側向畫左、朝畫外左邊的秦霜，鏡頭偏離視線約 35°，不看鏡頭；用合起的素面摺扇朝秦霜一點，再往院子中間的木桌一揮。表情（QIAN_FACE）：嘴閉著、嘴角往下、眼睛瞇起又冷又硬、眉頭壓低、牙咬在閉著的嘴裡、下顎一抽，說「好個潑辣貨」時鼻翼一張；從頭到最後一格都不笑（NOSMILE），不寫任何笑的字"),
     dict(loc="yard_late", cam="Insert close-up, slow push in", chars=[], night="yard_late", act=3,
          comp="insert close-up of the wooden table top, the shot opens directly on the table top from its very first frame: one sheet of plain pale yellow paper, completely blank, one ink brush and one small inkstone; the two hands of one grey-clad servant in grey coarse cotton cross-collared sleeves reaching in; only the hands and sleeves are in the frame, his face out of the frame; behind them only the out-of-focus dirt ground of the same yard",
          lines=[],
          motion="the hands smooth the blank sheet flat on the table, then pick up the brush and dip it in the inkstone",
          zh="手部特寫、慢推（第一格就是木桌桌面）：家丁的雙手（灰短褐袖口）把空白的淡黃紙在桌上攤平，拿起毛筆在硯台裡蘸墨"),
-    dict(loc="yard_late", cam="Medium shot to medium close-up, slow push in", chars=["xuyan", "qianyuanwai"], night="yard_late",
-         comp=f"medium shot, closing in to a medium close-up by the end, Xu Yan in {XU1}, {BELT}, beside the wooden table with one blank sheet of pale yellow paper on it; Qian Yuanwai at the right edge of the frame",
+    # Live prep (2026-11-08): the medium-to-medium-close push became a locked side two-shot (they face each other across
+    # the table), so neither face is pushed in on frontally (e002 live: frontal single pushes said the line into the lens).
+    dict(loc="yard_late", cam="Medium shot, locked", chars=["xuyan", "qianyuanwai"], night="yard_late",
+         comp=f"medium shot from the side of the wooden table, Xu Yan in {XU1}, {BELT}, on screen left and Qian Yuanwai at the right edge of the frame facing each other across the table in side view, one blank sheet of pale yellow paper on the table between them; Xu Yan in profile facing screen right, his face hard: brows drawn down, eyes narrowed on Qian, jaw set; Qian Yuanwai in profile facing screen left, {QIAN_FACE}, {FAN} in his right hand",
          lines=[("xuyan", "慢著。這張字據，錢員外最好別寫。", "聲音一沉")],
-         motion="Xu Yan strides in from screen left to the table, slaps his right hand flat on the blank sheet and looks up at Qian on screen right; Qian's lips stay closed",
-         zh="中景、慢推（中景推到中近景）：許硯（書生袍已乾、袖子捲到手肘、手背沾木屑）從左大步走到桌邊，右手啪地按住空白的紙，抬頭看錢員外"),
-    dict(loc="yard_late", cam="Over-the-shoulder medium shot, slow push in", chars=["qianyuanwai", "xuyan"], night="yard_late",
-         comp="over-the-shoulder shot from behind Xu Yan's shoulder and his rolled-up sleeve in the left foreground, Qian Yuanwai facing the camera on screen right across the wooden table, the closed blank folding fan in his right hand",
+         motion=f"Xu Yan strides in from screen left to the table, slaps his right hand flat on the blank sheet and looks up at Qian on screen right, speaking to him in profile, eyes on him, never the lens, his lips pressing together between phrases; Qian's eyes narrow further and his lips stay closed; {NOSMILE}",
+         zh="中景、固定（2026-11-08 真人版：原本中景推到中近景；改成兩人隔著桌子側面相對的雙人鏡，不對單張臉正面推近）：許硯（書生袍已乾、袖子捲到手肘）從左大步走到桌邊，右手啪地按住空白的紙，抬頭看錢員外；錢員外在畫右邊緣、側面朝畫左。表情：許硯聲音一沉：眉往下壓、眼睛瞇起盯著錢員外、下巴收緊，字句之間嘴抿著；錢員外 QIAN_FACE（嘴閉、嘴角往下、眼睛又冷又硬、眉壓低），聽到後眼睛再瞇；兩人從頭到最後一格都不笑（NOSMILE）"),
+    # Live prep (2026-11-08): locked; Qian leans in three-quarter toward Xu Yan's face, never toward the lens (e002 live:
+    # a villain's face large toward the lens laughed).
+    dict(loc="yard_late", cam="Over-the-shoulder medium shot, locked", chars=["qianyuanwai", "xuyan"], night="yard_late",
+         comp=f"over-the-shoulder shot from behind Xu Yan's shoulder and his rolled-up sleeve in the left foreground, Xu Yan's face turned away from the camera; Qian Yuanwai on screen right across the wooden table, his body and face turned three-quarter toward Xu Yan at the left of the frame, his eyes on Xu Yan, never the lens, {QIAN_FACE}, {FAN} in his right hand",
          lines=[("qianyuanwai", "怎麼？欠債還錢天經地義，你還想賴帳不成？", "逼問")],
-         motion="Qian smacks the fan down on the table, leans forward and pushes his face close to Xu Yan's",
-         zh="過肩（許硯肩後拍錢員外）、慢推：錢員外把扇子往桌上一拍，身子往前傾，臉湊近許硯"),
-    dict(loc="yard_late_cu", cam="Medium close-up to close-up, slow push in", chars=["xuyan"], night="yard_late",
-         comp=f"medium close-up, closing in to a close-up by the end, of Xu Yan standing at the wooden table, his sleeves rolled up to the elbows, a little sweat on his brow, {BELT}, a calm level look, his mouth set firm, his eyes on Qian Yuanwai off screen right; his right hand rests flat on one blank sheet of pale yellow paper on the table at the bottom edge of the frame, his left hand empty; behind him only the bamboo fence and the autumn tree of the same yard",
+         motion=f"Qian smacks the folded fan down on the table and leans forward over it toward Xu Yan, his face stopping a hand's width from Xu Yan's and staying in three-quarter profile toward him; he speaks to Xu Yan with his lips thin, the corners of his mouth pulled down, no teeth, his brows clamping lower on 「賴帳不成」; {NOSMILE}",
+         zh="過肩（許硯肩後拍錢員外）、固定（2026-11-08 真人版：原本慢推）：錢員外把扇子往桌上一拍，身子往前傾，臉湊近許硯，臉一直四分之三朝許硯、不朝鏡頭。表情：QIAN_FACE，嘴唇薄、嘴角往下、不露齒，說「賴帳不成」時眉頭再壓；從頭到最後一格都不笑（NOSMILE）"),
+    dict(loc="yard_late_cu", cam="Medium close-up, locked", chars=["xuyan"], night="yard_late",
+         comp=f"medium close-up of Xu Yan standing at the wooden table, framed from the chest up with space above his head, his sleeves rolled up to the elbows, a little sweat on his brow, {BELT}, his body and face turned three-quarter to screen right toward Qian Yuanwai off screen right, the camera about 40 degrees off his eyeline, his eyes on Qian, never the lens; his face set: brows straight and low, eyes fixed and hard, jaw firm, lips pressing together between phrases; his right hand rests flat on one blank sheet of pale yellow paper on the table at the bottom edge of the frame, his left hand empty; behind him only the bamboo fence and the autumn tree of the same yard",
          lines=[("xuyan", "不賴帳。大衡律配婚篇，她們三個的名字記在縣衙名冊上。", "慢條斯理")],
-         motion="he straightens up, his right hand staying flat on the blank pale yellow sheet, lifts his eyes and points his empty left hand out past the gate toward the county town",
-         zh="近景反打、慢推（中近景推到近景）：許硯直起身，手還按著紙，抬眼直視錢員外，另一手指向院門外縣城；穩、不笑"),
+         motion=f"he straightens up, his right hand staying flat on the blank pale yellow sheet, draws one slow breath in through his nose, and on 「大衡律配婚篇」 points his empty left hand out past the gate toward the county town, his face staying three-quarter toward Qian; {NOSMILE}",
+         zh="近景反打、固定（2026-11-08 真人版：原本中近景推到近景，單人正面推近；改成胸口以上、鏡頭偏離他的視線約 40°）：許硯身體與臉四分之三側向畫右、朝畫外右邊的錢員外，不看鏡頭；直起身，手還按著紙，另一手指向院門外縣城。表情：眉毛平直壓低、眼睛定住發硬、下巴收緊、字句之間嘴抿著，說「大衡律配婚篇」前用鼻子慢慢吸一口氣；從頭到最後一格都不笑（NOSMILE）"),
     dict(loc="yard_late", cam="Medium shot, tracking", chars=["xuyan", "qianyuanwai"], night="yard_late",
-         comp=f"medium shot, Xu Yan on screen left, his sleeves rolled up to the elbows, a little sweat on his brow, {BELT}, and Qian Yuanwai on screen right, only these two men inside the yard; in the background outside the bamboo fence, on its far side, about five {VILL}, seen only from the chest up over the top of the fence, the fence between them and the yard",
+         comp=f"medium shot, Xu Yan on screen left, his sleeves rolled up to the elbows, a little sweat on his brow, {BELT}, in profile facing screen right toward Qian Yuanwai, his face hard: brows drawn down, eyes locked on Qian, jaw set; Qian Yuanwai on screen right in profile facing him, {QIAN_FACE}; only these two men inside the yard; in the background outside the bamboo fence, on its far side, about five {VILL}, soft and out of focus, seen only from the chest up over the top of the fence, the fence between them and the yard",
          lines=[("xuyan", "官府配的人，你私自押走，就是搶官府的人。", "一字一句")],
-         motion="Xu Yan rounds the corner of the table and takes one step toward Qian, staying on his left; Qian leans back a little and his lips stay closed",
-         zh="中景、跟拍（跟著許硯往右）：許硯繞過桌角朝錢員外走近一步（仍在他左邊），錢員外往後仰一下；背景籬笆外村民"),
-    dict(loc="yard_late_cu", cam="Medium close-up, slow push in", chars=["qianyuanwai"], night="yard_late", act=3,
-         comp=f"medium close-up of Qian Yuanwai on screen right facing the camera, framed from the chest up, his right hand raised before his chest holding one plain bamboo-ribbed folding fan folded shut into a slim closed bundle of ribs, an uneasy frozen look, his small eyes darting; directly behind him the bamboo fence, as high as his shoulders, and over its top, on its far side, the heads and shoulders of about five {VILL}, the fence between them and him; in the soft out-of-focus left foreground one small hand in a peach-pink brocade cuff holding the small gold abacus with wooden beads",
+         motion=f"Xu Yan rounds the corner of the table and takes one step toward Qian, staying on his left, speaking to him in profile, eyes on him, never the lens, biting off each word, his jaw tightening on 「搶官府的人」; Qian leans back a little, his eyes darting and his throat bobbing as he swallows, his lips staying closed; {NOSMILE}",
+         zh="中景、跟拍（跟著許硯往右）：許硯繞過桌角朝錢員外走近一步（仍在他左邊），錢員外往後仰一下；背景籬笆外村民（虛焦）。真人版（2026-11-08）：兩人側面相對，許硯側臉看錢員外、不看鏡頭。表情：許硯一字一句：眉往下壓、眼睛釘住錢員外、下巴收緊，說「搶官府的人」時下巴再一緊；錢員外 QIAN_FACE，往後仰時眼睛亂飄、喉結一動、嘴閉著；兩人都不笑（NOSMILE）"),
+    dict(loc="yard_late_cu", cam="Medium close-up, locked", chars=["qianyuanwai"], night="yard_late", act=3,
+         comp=f"medium close-up of Qian Yuanwai on screen right, framed from the chest up, his body turned three-quarter to screen left toward Xu Yan off screen left, the camera about 35 degrees off his eyeline, never the lens, his right hand raised before his chest holding {FAN} into a slim closed bundle of ribs, uneasy, his face hard and closed: lips pressed shut, the corners of his mouth pulled down, his brows lowered and twitching, his small eyes darting sideways, a bead of sweat at his temple; directly behind him the bamboo fence, as high as his shoulders, and over its top, on its far side, the heads and shoulders of about five {VILL}, soft and out of focus, the fence between them and him; in the soft out-of-focus left foreground one small hand in a peach-pink brocade cuff holding the small gold abacus with wooden beads",
          lines=[],
-         motion="the small hand in the left foreground flicks one abacus bead; Qian, the folded fan held still in midair, glances back over his shoulder at the villagers whispering over the fence, turns back and swallows hard; the fan stays folded shut to the end; all lips stay closed",
-         zh="中近景、慢推（2026-11-07 第四輪重設計，原雙人鏡）：錢員外胸口以上、右手合起的摺扇停在胸前半空（整鏡不打開）；身後就是齊肩的竹籬笆，籬笆外約五個村民只露頭肩；左前景虛焦一隻桃粉袖口的小手托著金算盤，撥一顆珠；錢員外回頭瞄一眼村民、轉回來喉結一動。唐小棠的臉不入鏡（定妝照露齒笑），點頭這一下拿掉"),
-    dict(loc="yard_late", cam="Close-up, slow push in", chars=["qianyuanwai"], night="yard_late",
-         comp="close-up of Qian Yuanwai squeezing out a stiff forced smile, the closed blank folding fan in his right hand; behind him only the yard gate of the same yard",
+         motion=f"the small hand in the left foreground flicks one abacus bead; Qian, the folded fan held still in midair, glances back over his shoulder at the villagers whispering over the fence, turns back toward Xu Yan off screen left and swallows hard, his throat bobbing; the fan stays folded shut to the end; all lips stay closed; {NOSMILE}",
+         zh="中近景、固定（2026-11-08 真人版：原本慢推、正面；改成四分之三朝畫外左邊的許硯、鏡頭偏約 35°；表情寫成嘴閉緊、嘴角往下、眉壓低又一抽、小眼睛往旁邊飄、太陽穴一滴汗，喉結一動；村民虛焦；不笑 NOSMILE）（2026-11-07 第四輪重設計，原雙人鏡）：錢員外胸口以上、右手合起的摺扇停在胸前半空（整鏡不打開）；身後就是齊肩的竹籬笆，籬笆外約五個村民只露頭肩；左前景虛焦一隻桃粉袖口的小手托著金算盤，撥一顆珠；錢員外回頭瞄一眼村民、轉回來喉結一動。唐小棠的臉不入鏡（定妝照露齒笑），點頭這一下拿掉"),
+    # Live prep (2026-11-08): the script's forced smile is a villain's; written as a hard grimace with no smile word
+    # (e002 live: Qian's smug smile, sneer and forced smile all became warm laughter). Locked, three-quarter toward Xu Yan.
+    dict(loc="yard_late", cam="Close-up, locked", chars=["qianyuanwai"], night="yard_late",
+         comp=f"close-up of Qian Yuanwai, his body and face turned three-quarter to screen left toward Xu Yan off screen left, the camera about 35 degrees off his eyeline, never the lens, forcing a hard grimace: his lips pressed thin and stretched tight sideways, his teeth clenched behind them, the corners of his mouth pulled sideways and down, his eyes staying narrowed, cold and hard, a muscle jumping in his cheek, {FAN} in his right hand; behind him only the yard gate of the same yard",
          lines=[("qianyuanwai", "行，人我不押。那你拿什麼還？房子、地，還有你？", "咬牙")],
-         motion="he tucks the closed fan into his belt, forces a smile and jabs one finger at Xu Yan off screen left",
-         zh="近景、慢推：錢員外把扇子收起插進腰帶，硬擠出一個笑（可以假笑），手指往許硯一點"),
-    dict(loc="yard_late", cam="Reverse close-up, slow push in", chars=["xuyan"], night="yard_late",
-         comp="reverse close-up of Xu Yan, his sleeves rolled up to the elbows, a little sweat on his brow, steady and unsmiling, his eyes on Qian Yuanwai off screen right; behind him only the bamboo fence of the same yard",
+         motion=f"he tucks the folded fan into his belt, the stretched grimace staying on his face, and jabs one finger at Xu Yan off screen left, speaking to him in three-quarter profile through his clenched jaw, eyes on him, never into the lens, his eyes hardening on 「還有你」; {NOSMILE}",
+         zh="近景、固定（2026-11-08 真人版：原本慢推、寫「硬擠出一個假笑」；反派寫任何笑字都被演成和氣的笑，改成咬牙硬擠的怪臉）：錢員外身體與臉四分之三側向畫左、朝畫外左邊的許硯，鏡頭偏約 35°，不看鏡頭；把扇子收起插進腰帶，手指往許硯一點。表情：嘴唇抿薄往兩邊扯緊、牙咬在嘴裡、嘴角往旁往下拉、眼睛照樣瞇著又冷又硬、臉頰一抽，說「還有你」時眼神一硬；從頭到最後一格都不笑（NOSMILE），不寫任何笑的字"),
+    dict(loc="yard_late", cam="Reverse close-up, locked", chars=["xuyan"], night="yard_late",
+         comp="reverse close-up of Xu Yan, his sleeves rolled up to the elbows, a little sweat on his brow, his body and face turned three-quarter to screen right toward Qian Yuanwai off screen right, the camera about 40 degrees off his eyeline, his eyes on Qian, never the lens; his face firm: brows straight and low, eyes holding Qian's, jaw set, lips pressing together between phrases; behind him only the bamboo fence of the same yard",
          lines=[("xuyan", "房子和地你先別急。給我三天，二十兩一文不少。", "穩")],
-         motion="he lifts his hand off the blank sheet below the frame and holds up three fingers",
-         zh="反打近景、慢推：許硯把按著紙的手收回來，伸出三根手指；穩"),
+         motion=f"he lifts his hand off the blank sheet below the frame, draws a short breath through his nose, and on 「給我三天」 holds up three fingers toward Qian, giving one small firm nod on 「一文不少」; {NOSMILE}",
+         zh="反打近景、固定（2026-11-08 真人版：原本慢推）：許硯四分之三側向畫右、朝畫外右邊的錢員外，鏡頭偏約 40°，不看鏡頭；把按著紙的手收回來，伸出三根手指。表情：眉毛平直壓低、眼睛盯住錢員外、下巴收緊、字句之間嘴抿著，說「給我三天」前鼻子短吸一口氣，「一文不少」時小小點一下頭；從頭到最後一格都不笑（NOSMILE）"),
     dict(loc="yard_late", cam="Medium shot, slow push in", chars=["qianyuanwai", "xuyan"], night="yard_late",
-         comp="medium shot past one corner of the wooden table in the foreground, Qian Yuanwai standing behind the table with one ink brush in his right hand, the pale yellow sheet lying flat on the table soft and out of focus, nothing on it readable from the camera's side; Xu Yan with his sleeves rolled up at the left edge of the frame",
+         comp=f"medium shot past one corner of the wooden table in the foreground, Qian Yuanwai standing behind the table with one ink brush in his right hand, bent over the pale yellow sheet lying flat on the table, soft and out of focus, nothing on it readable from the camera's side, his face turned down to the sheet and three-quarter toward Xu Yan, {QIAN_FACE}; Xu Yan with his sleeves rolled up at the left edge of the frame in profile facing Qian, watching the brush: jaw clenched, brows drawn together, lips pressed shut",
          lines=[("qianyuanwai", "三日後日落前還清二十兩，否則收房收地。", "念")],
-         motion="Qian bends over the sheet and writes with the brush as he reads aloud, then lays the brush on the inkstone; Xu Yan's lips stay closed",
-         zh="中景、慢推、前景木桌一角：錢員外抓起毛筆彎腰寫，邊寫邊念，寫完把筆擱在硯台上；紙面虛焦、看不到字；許硯在左邊緣"),
+         motion=f"Qian writes with the brush as he reads the words aloud to Xu Yan, his eyes going from the sheet to Xu Yan and back, never into the lens, his lips thin, the corners of his mouth pulled down; then he lays the brush on the inkstone; Xu Yan swallows, his throat bobbing, his lips staying closed; {NOSMILE}",
+         zh="中景、慢推、前景木桌一角：錢員外抓起毛筆彎腰寫，邊寫邊念，寫完把筆擱在硯台上；紙面虛焦、看不到字；許硯在左邊緣。真人版（2026-11-08）：錢員外臉朝紙、四分之三朝許硯，眼睛在紙與許硯之間來回，不看鏡頭；許硯側面看筆。表情：錢員外 QIAN_FACE，嘴唇薄、嘴角往下；許硯咬牙、眉頭皺、嘴抿緊，嚥一下口水；兩人都不笑（NOSMILE）"),
     dict(loc="yard_late", cam="Insert close-up, slow push in", chars=["xuyan"], night="yard_late", act=3,
          comp="insert close-up of one bottom corner of the pale yellow sheet on the wooden table, the shot opens directly on the blank paper corner and one small box of red ink paste from its very first frame: only the plain blank corner, the written part outside the frame, and Xu Yan's right hand in his rolled-up blue-grey cuff; only the hand and the paper corner are in the frame, his face out of the frame; behind them only the out-of-focus dirt ground of the same yard",
          lines=[],
