@@ -149,3 +149,4 @@
 13. University of Münster MEET, Battery Aging. https://www.uni-muenster.de/MEET/en/research/cell-system/Aging.html
 14. Edge, O'Kane et al., "Lithium ion battery degradation: what you need to know", Phys. Chem. Chem. Phys. 23 (2021) 8200–8221（verify-1 讀 Guelph 大學機構典藏的開放全文 PDF，CC-BY 3.0）. https://doi.org/10.1039/D1CP00359C
 15. Google, Extended Repair Program for Pixel 7a（verify-1 補）. https://support.google.com/pixelphone/answer/16043453
+16. Apple, About iPhone batteries / Maximizing battery life（verify-2 補：停在車裡的高溫、低溫關機是暫時的、遊戲與相機是重度使用）. https://support.apple.com/en-us/118431

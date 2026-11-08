@@ -128,7 +128,7 @@ scene("phone-tease", "Close-up of a plain smooth unmarked dark phone lying quiet
 kid("kid-tease", K("gasping with a round open mouth, both hands out of frame", close=True),
     k("想不到的原因？還會長東西？", "驚訝"))
 scene("battery-open", "Close-up of a plain smooth rounded battery cell lying on " + TABLE + ", soft warm light, " + DAY,
-      c("聽起來很怪吧？這一集，我們就來看看這顆老電池裡面。", "承諾"))
+      c("聽起來很怪吧？我們打開這顆老電池看看。", "承諾"))
 chief("chief-main-q", C("folding her hands with a curious smile, eyebrows raised"),
       c("電量明明還有，電池為什麼會老，"), c("還會突然關機？", "問句", "S:main"))
 
@@ -170,7 +170,7 @@ kid("kid-shrink-q", K("hugging " + BOTTLE + " with a worried face", where=OFFICE
 scene("kettle", "Close-up looking into a plain metal kettle, its inside walls coated with a thick chalky white crust, sunny kitchen, " + DAY,
       c("因為壺裡面，會慢慢長出一層水垢。", "接住上一句", "P:skin"), chapter="電池裡長出一層水垢")
 scene("kettle-crust", "Close-up of a thick chalky white crust on the inside of an old plain metal kettle, sunny kitchen, " + DAY,
-      c("你家的熱水壺用久了，裡面會黏上一層白白硬硬的東西，", "轉向觀眾"), c("那就是水垢。"))
+      c("水壺跟家裡的熱水壺一樣，用久了，", "轉向觀眾"), c("裡面會黏上一層白白硬硬的東西，"), c("那就是水垢。"))
 kid("kid-battery-scale", K("gasping with a surprised round mouth, both hands out of frame", close=True),
     k("電池裡也有水垢？", "句尾上揚"))
 scene("battery-layer", "A simple flat illustration of " + BOTTLE + " with a thin soft white film lining its inside walls, on " + TABLE + ", " + DAY,
@@ -306,7 +306,7 @@ chief("chief-replace", C("nodding with a warm kind smile", close=True),
 scene("swollen", "Close-up of a plain smooth unmarked phone with its back slightly puffed, lying on a wooden table, " + DAY,
       c("要是它鼓鼓的、很燙，就別用也別充，馬上告訴大人。", "認真"))
 kid("kid-case-q", K("holding a plain smooth unmarked phone with a serious little face", where=OFFICE),
-    k("所以那天我的手機，", "認真"), k("到底發生什麼事？", "句尾上揚"))
+    k("所以我剛剛在公園，", "認真"), k("手機到底發生什麼事？", "句尾上揚"))
 
 # ---------- 收尾 ----------
 chief("chief-back", C("smiling warmly at the viewer with one hand open, filling the frame", close=True),
@@ -371,7 +371,7 @@ doc = {
                        "這一集，所長和小問把電池想成一個裝電的水壺：百分比是壺裡現在還剩幾分滿，「最大容量」是壺本身還剩多大，"
                        "壺嘴寬不寬決定電一次能倒多快。電池裡慢慢長出一層像水垢的薄膜，讓壺變小、也讓壺嘴變窄；"
                        "手機要大口用電時倒不夠快，就會自己先關機、保護裡面的零件。\n\n"
-                       "也聊到手機怎麼自己照顧電池、為什麼想充就充，以及電池鼓起來或很燙時，要停用並告訴大人。\n\n"
+                       "也聊到手機怎麼自己照顧電池、充電時可以想充就充，以及電池鼓起來或很燙時，要停用並告訴大人。\n\n"
                        "水壺與水垢是我們的比喻，不是電池真正的構造；本集插圖由 AI 生成，畫的是示意。片中的數字大多是手機公司說明裡的大約數字，「將近三年」是我們自己粗算，"
                        "每支手機、每顆電池都不一樣。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["手機電池", "電池健康度", "最大容量", "鋰電池", "突然關機", "充電", "科普", "原來如此事務所"],
@@ -381,6 +381,7 @@ doc = {
         {"title": "Apple：iPhone 電池與效能", "url": "https://support.apple.com/en-us/101575", "checked_on": CHECKED},
         {"title": "Apple：iPhone 11 及後續機型的電池與效能", "url": "https://support.apple.com/en-us/106348", "checked_on": CHECKED},
         {"title": "Apple：iPhone 的最佳化電池充電", "url": "https://support.apple.com/en-us/108055", "checked_on": CHECKED},
+        {"title": "Apple：關於 iPhone 電池", "url": "https://support.apple.com/en-us/118431", "checked_on": CHECKED},
         {"title": "Apple：Why lithium-ion", "url": "https://www.apple.com/batteries/why-lithium-ion/", "checked_on": CHECKED},
         {"title": "Apple：Maximizing performance", "url": "https://www.apple.com/batteries/maximizing-performance/", "checked_on": CHECKED},
         {"title": "Apple：iPhone 重要安全資訊", "url": "https://support.apple.com/guide/iphone/important-safety-information-iph301fc905/ios", "checked_on": CHECKED},
