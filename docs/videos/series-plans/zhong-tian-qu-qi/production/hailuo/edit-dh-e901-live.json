@@ -99,7 +99,7 @@
    "file": "impactBell_heavy_001",
    "at": "s03",
    "off": 5.87,
-   "gain": -16
+   "gain": -8
   },
   {
    "file": "splash_02",
@@ -152,7 +152,7 @@
   {
    "file": "dishes_01",
    "at": "s18",
-   "off": 4.0,
+   "off": 1.0,
    "gain": -22
   },
   {
@@ -165,7 +165,7 @@
    "file": "slam_01",
    "at": "s20",
    "off": 0.88,
-   "gain": -14
+   "gain": -10
   },
   {
    "file": "footstep_concrete_000",
@@ -219,13 +219,13 @@
    "file": "explosion",
    "at": "s03",
    "off": 5.87,
-   "gain": -22
+   "gain": -12
   },
   {
    "synth": "heartbeat",
    "at": "s38",
    "to": "s38",
-   "gain": -12
+   "gain": -18
   }
  ],
  "frame_round": true,
@@ -239,7 +239,10 @@
  ],
  "_note": "live action (owner 2026-11-07): the model's own voice for on-screen lines (clip_voice), recorded audio for system, off-screen, inner and nospeak lines; s12 and s14 speak on screen although marked nospeak (voice_on).",
  "voice_skip": {
-  "s12": 4.5
+  "s12": 4.5,
+  "s28": 1.95,
+  "s31": 0.4,
+  "s32": 1.85
  },
  "name_at": {
   "s20": 1.2
@@ -247,7 +250,7 @@
  "subtitle_lines": [
   "zq901a44"
  ],
- "_note_timing": "sfx offsets re-timed to the live clips from the cut review (2026-11-08): s03 thunder at the flash, s18 bowl, s20 kick at the gate burst and name card after it, s31 slap; s19 pour at 1.4 s (fix6 take) and s31 slap at 1.5 s re-measured on the fix4 picks.",
+ "_note_timing": "sfx offsets re-timed to the live clips from the cut review (2026-11-08): s03 thunder at the flash, s18 bowl, s20 kick at the gate burst and name card after it, s31 slap; s19 pour at 1.4 s (fix6 take) and s31 slap at 1.5 s re-measured on the fix4 picks. Cut review 2: s18 bowl at 1.0 s on the fix6 take, thunder and kick louder, heartbeat under the last line; s28 s31 s32 subtitles start where the speech does (voice_skip).",
  "move_lines": {
   "zq901a44": "s38"
  },
