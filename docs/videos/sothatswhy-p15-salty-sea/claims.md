@@ -144,9 +144,9 @@
 1. NOAA Ocean Service, Why is the ocean salty? https://oceanservice.noaa.gov/facts/whysalty.html
 2. NOAA Ocean Service, Why are rivers not salty? https://oceanservice.noaa.gov/facts/riversnotsalty.html
 3. NOAA Ocean Service, Can humans drink seawater? https://oceanservice.noaa.gov/facts/drinksw.html
-4. USGS Water Science School, Why is the ocean salty? https://www.usgs.gov/special-topics/water-science-school/science/why-ocean-salty
-5. USGS Water Science School, Saline water and salinity. https://www.usgs.gov/special-topics/water-science-school/science/saline-water-and-salinity
-6. USGS Water Science School, How much water is there on Earth? https://www.usgs.gov/special-topics/water-science-school/science/how-much-water-there-earth
+4. USGS Water Science School, Why is the ocean salty? https://www.usgs.gov/water-science-school/science/why-ocean-salty
+5. USGS Water Science School, Saline water and salinity. https://www.usgs.gov/water-science-school/science/saline-water-and-salinity
+6. USGS Water Science School, How much water is there on Earth? https://www.usgs.gov/water-science-school/science/how-much-water-there-earth
 7. NASA Earth Observatory, A Measure of Salt. https://science.nasa.gov/earth/earth-observatory/a-measure-of-salt-78250/
 8. NASA Earth Observatory, A Global Accounting of Earth's Rivers. https://science.nasa.gov/earth/earth-observatory/global-accounting-of-earths-rivers-152742
 9. Chamberlin, Shaw & Rich, Our World Ocean, 8.09 Residence Time (LibreTexts). https://geo.libretexts.org/Bookshelves/Oceanography/Our_World_Ocean%3A_Understanding_the_Most_Important_Ecosystem_on_Earth_Essentials_Edition_(Chamberlin_Shaw_and_Rich)/03%3A_New_Page/08%3A_The_Water_Cycle_and_Ocean_Salinity/8.09%3A_Residence_Time
@@ -156,4 +156,4 @@
 14. 水產試驗所，臺灣周邊海域漁場環境監測IV（107年度）。https://fisheryprogress.org/sites/default/files/documents_actions/Environmental%20monitoring%20of%20fishing%20grounds%20in%20the%20coastal%20and%20offshore%20waters%20around%20Taiwan.pdf
 16. Wikipedia, Red Sea. https://en.wikipedia.org/wiki/Red_Sea
 17. Wikipedia, Baltic Sea. https://en.wikipedia.org/wiki/Baltic_Sea
-18. USGS Water Science School, Evaporation and the Water Cycle. https://www.usgs.gov/special-topics/water-science-school/science/evaporation-and-water-cycle
+18. USGS Water Science School, Evaporation and the Water Cycle. https://www.usgs.gov/water-science-school/science/evaporation-and-water-cycle
