@@ -358,6 +358,14 @@ test("So That's Why wears its own thumbnail: palette, name, stamp, pillar tag, a
   assert.match(own, /rgba\(31,42,68,\.94\)/, "the ink-navy scrim");
   const right = thumbnailHtml({ ...thumb, data: { ...thumb.data, layout: "right" } }, { background: "https://video.local/work/keyframes/a.png", series: "sothatswhy" });
   assert.match(right, /<div class="thumb-scrim layout-right"><\/div><div class="thumb series layout-right">/);
+  // `subject: "right"` narrows the picture to the right of the frame, so a centred character leaves the text column (owner 2026-11-08).
+  const shifted = thumbnailHtml({ ...thumb, data: { ...thumb.data, subject: "right" } }, { background: "https://video.local/work/keyframes/a.png", series: "sothatswhy" });
+  assert.match(shifted, /<img class="thumb-bg subject-right" src=/);
+  assert.match(shifted, /\.thumb-bg\.subject-right\{left:auto;width:38%\}/);
+  assert.doesNotMatch(own, /subject-right|width:38%/, "left out, the picture fills the frame as before");
+  assert.deepEqual(thumbnailProblems({ ...thumb, data: { ...thumb.data, subject: "right" } }, { series: "sothatswhy" }), []);
+  assert.deepEqual(thumbnailProblems({ ...thumb, data: { ...thumb.data, subject: "middle" } }, { series: "sothatswhy" }), ["thumbnail.data.subject must be one of right, left"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", subject: "right" } }), ["thumbnail.data.subject is a series thumbnail's option"]);
   assert.match(thumbnailHtml({ ...thumb, data: { ...thumb.data, pillar: "sports" } }, { series: "sothatswhy" }), /<div class="tag">科學<\/div>/, "an unknown pillar keeps the default tag");
 
   assert.deepEqual(thumbnailProblems(thumb, { series: "sothatswhy" }), []);
