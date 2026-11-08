@@ -1,5 +1,5 @@
 {
- "_note": "《恁祖媽今年18》第 3 集剪接表（post/assemble-v4.mjs）：不放片名卡與人名條、不裁切放大、慢放 ≤ 1.1 倍、CC 軟字幕；中文用模型原聲（own_voice）。配樂：第一場 memory、第二場 suspense。",
+ "_note": "《恁祖媽今年18》第 3 集剪接表（post/assemble-v4.mjs）：不放片名卡與人名條、不裁切放大、慢放 ≤ 1.1 倍、CC 軟字幕；中文用模型原聲（own_voice）。配樂：第一場 memory、第二場 suspense。 原聲版：memory 從 c01 放到 c19 要 111 秒，曲子只有 93 秒；c08 燈焰升起那一拍抽掉音樂（只留燈的嗡聲），c09 起從 25 秒接。",
  "tempo": 1.07,
  "slow_max": 1.1,
  "interpolate": false,
@@ -48,10 +48,19 @@
   {
    "cue": "memory",
    "from": "c01",
-   "to": "c19",
+   "to": "c07",
    "offset": 0,
    "gain": -17,
    "fade_in": 1.0,
+   "fade_out": 0.6
+  },
+  {
+   "cue": "memory",
+   "from": "c09",
+   "to": "c19",
+   "offset": 25,
+   "gain": -17,
+   "fade_in": 0.8,
    "fade_out": 1.0
   },
   {
