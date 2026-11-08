@@ -1,6 +1,6 @@
 # 種田的備份工具
 
-這一套工具實作 [`../../../../DRAMA-BACKUP-BRANCHES.md`](../../../../DRAMA-BACKUP-BRANCHES.md) 的規則。原本放在 Claude 的 scratchpad 裡（2026-11-08），這裡是一份副本。
+這一套工具實作 [`../../../../drama/BACKUP-BRANCHES.md`](../../../../drama/BACKUP-BRANCHES.md) 的規則。原本放在 Claude 的 scratchpad 裡（2026-11-08），這裡是一份副本。
 
 用法：先把整個資料夾複製到 scratchpad，再從那裡執行。腳本裡的 `S=` 是當時那個 session 的 scratchpad 路徑，換 session 時要改成新的。
 

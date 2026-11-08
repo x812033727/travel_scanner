@@ -1,6 +1,6 @@
 # 影片的雲端硬碟備份
 
-> 雲端 session 做的 AI 劇另外推到 GitHub 的 `transfer/*` 分支，分集與共用各放什麼見 [`DRAMA-BACKUP-BRANCHES.md`](DRAMA-BACKUP-BRANCHES.md)。
+> 雲端 session 做的 AI 劇另外推到 GitHub 的 `transfer/*` 分支，分集與共用各放什麼見 [`drama/BACKUP-BRANCHES.md`](drama/BACKUP-BRANCHES.md)。
 
 影片可以上架（或已經上 YouTube）時，把它的檔案依系列複製到站主的 Google 雲端硬碟。雲端的檔案經過核對、
 網站也確認沒有缺檔之後，worker 才可以刪掉主機上的檔案。程式在

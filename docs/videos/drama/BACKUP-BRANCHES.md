@@ -2,7 +2,7 @@
 
 適用：在雲端 session 製作的 AI 劇。先統一《種田娶妻打天下》（`zt`）與《恁祖媽今年18》（`tn`）兩個系列（站主 2026-11-08：「我想要先統一種田跟祖媽」），之後新的 AI 劇照這份做。
 
-這份管的是 GitHub 上的 `transfer/*` 備份分支。雲端 session 的容器隨時會被收掉，本機檔案只在 GitHub 上留一份才算安全。主機上影片的雲端硬碟備份是另一條路線，見 [`BACKUP.md`](BACKUP.md)。
+這份管的是 GitHub 上的 `transfer/*` 備份分支。雲端 session 的容器隨時會被收掉，本機檔案只在 GitHub 上留一份才算安全。主機上影片的雲端硬碟備份是另一條路線，見 [`BACKUP.md`](../BACKUP.md)。
 
 ## 站主定下的原則
 
@@ -129,4 +129,4 @@
 | 種田（CG 版） | `zt-cg-e001`、`zt-cg-shared`；更早的 `zt-e0NN-media`、`zt-e9NN-media-*` 等多條 | 新備份用 `zt-cg-e<NNN>`；舊的多條保留不動 |
 | 祖媽 | `tn-e001-work`、`tn-e001-work-v2`、`tn-e002-work`、`tn-e003-work`、`tn-series-assets`、`tn-all-work` | 新備份推到 `tn-e<NNN>` 與 `tn-shared`，路徑改成相對路徑；第一次推時把 `-work` 與 `-work-v2` 的內容一起放進去 |
 
-工具：種田的實作在 [`series-plans/zhong-tian-qu-qi/production/backup/`](series-plans/zhong-tian-qu-qi/production/backup/README.md)。祖媽換成同一套之前，先用它的清單跑一次涵蓋檢查。
+工具：種田的實作在 [`series-plans/zhong-tian-qu-qi/production/backup/`](../series-plans/zhong-tian-qu-qi/production/backup/README.md)。祖媽換成同一套之前，先用它的清單跑一次涵蓋檢查。
