@@ -49,7 +49,7 @@ const GRADES = {
   dh: "eq=contrast=1.05:saturation=0.92:gamma=0.98",
   office: "eq=contrast=1.08:saturation=0.72:gamma=0.97,colorbalance=rs=-0.03:bs=0.05:rh=-0.01:bh=0.02",
   // 暗場的主觀鏡用：indoor 的 gamma 0.90 加對比把第 1 集 c27 壓成全黑（獨立審片 2，2026-11-08）
-  lift: "eq=contrast=1.04:saturation=0.82:gamma=1.22:brightness=0.02,colorbalance=rh=0.03:gh=0.01:bh=-0.03",
+  lift: "eq=contrast=1.10:saturation=0.80:gamma=1.12:brightness=-0.01,colorbalance=rh=0.03:gh=0.01:bh=-0.03",
 };
 const gradeOf = (id) => { for (const [g, ids] of Object.entries(edit.grades ?? {})) if (ids.includes(id)) return g; return edit.default_grade ?? "day"; };
 const FINISH = edit.finish ?? "vignette=angle=PI/4.6,noise=alls=5:allf=t,format=yuv420p";
@@ -128,7 +128,7 @@ for (const scene of video.scenes) {
   if (spill) dur = ownSpeech ? speechEnd + TAIL : 0;
   dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
   // `min_is_cut: true`（種田拍法，2026-11-08）：沒有台詞的鏡，剪接表的 min 就是剪長（1.5 秒的快拍不被 video.json 的整數 action_seconds 撐成 2 秒）
-  if (edit.min_is_cut && !lines.length && edit.min?.[scene.id] != null) dur = Math.max(1.0, edit.min[scene.id]);
+  if (edit.min_is_cut && !lines.length && edit.min?.[scene.id] != null) dur = Math.max(0.75, edit.min[scene.id]);  // 插鏡可以短到 0.75 秒（第 1 集 c45 第 0.9 秒後門紙有手影）
   // `frame_round: true` (e001-r2 on): every shot a whole number of 24 fps frames, so the stream-copied concat stays at
   // exactly 24 fps instead of drifting to 23.976 (season 1 lost ~5 frames a 100 s cut); off for episodes already dubbed.
   if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
