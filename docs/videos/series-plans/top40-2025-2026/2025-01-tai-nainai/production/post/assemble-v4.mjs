@@ -89,6 +89,9 @@ const stillMove = (id, f) => { const k = [...id].reduce((a, c) => a + c.charCode
 const report = [], segs = [], starts = {}, lineAt = [], srt = [];
 let t = 0;
 const spilled = [];
+let spillEnd = -1;
+// 延到別鏡的心裡話，字幕與 lineAt 跟著聲音搬
+const fixLine = (id, start) => { const a = lineAt.find((x) => x.id === id); const r = srt.find((x) => x.lineId === id); if (a) a.start = start; if (r) { r.end = start + (r.end - r.start); r.start = start; } };
 for (const scene of video.scenes) {
   if (scene.template !== "shot") continue;
   // `skip`：拍了三輪都不能用、劇情又接得上的鏡，整鏡拿掉（第 1 集 c43、c47，2026-11-08）。拿掉的鏡不能有台詞。
@@ -131,7 +134,7 @@ for (const scene of video.scenes) {
     const p = { ...l, at };
     if (edit.burn_subtitles && !(l.speaker === "xitong" && overlays[scene.id])) subs += subtitle(`${scene.id}-s${i}`, l.text, at, Math.min(dur, at + l.len + 0.08), l.speaker === "xitong" ? "0x9fe3ff" : "0xffffff");
     lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start: t + at, len: l.len, subtitled: !(l.speaker === "xitong" && overlays[scene.id]) });
-    if (!(l.speaker === "xitong" && overlays[scene.id])) srt.push({ start: t + at, end: t + at + l.len, text: l.text });
+    if (!(l.speaker === "xitong" && overlays[scene.id])) srt.push({ start: t + at, end: t + at + l.len, text: l.text, lineId: l.id });
     at += l.len + GAP;
     return p;
   });
@@ -193,7 +196,12 @@ for (const scene of video.scenes) {
     note = `still ${path.basename(still)}`;
   }
   const amix = [];
-  if (spill) { for (const l of placed) spilled.push({ wav: l.wav, start: t + l.at }); placed.length = 0; }
+  // 心裡話接著心裡話時不疊：延到下一鏡的那句講完（加 GAP）才放下一句；`spill_lead: {"c42": 0.6}` 讓這句提早從上一鏡尾巴開始（J cut，第 1 集 c42 撞到 c44 的原聲 0.39 秒）
+  if (spill) {
+    let at0 = t + (placed[0]?.at ?? 0) - (edit.spill_lead?.[scene.id] ?? 0);
+    for (const l of placed) { at0 = Math.max(at0, spillEnd + GAP); spilled.push({ wav: l.wav, start: at0 }); fixLine(l.id, at0); spillEnd = at0 + l.len; at0 = spillEnd + GAP; }
+    placed.length = 0;
+  }
   placed.forEach((l, i) => {
     args.push("-i", l.wav);
     const ms = Math.round(l.at * 1000);
