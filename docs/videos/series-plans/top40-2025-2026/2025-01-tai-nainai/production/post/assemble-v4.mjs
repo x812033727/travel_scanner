@@ -90,6 +90,8 @@ const report = [], segs = [], starts = {}, lineAt = [], srt = [];
 let t = 0;
 for (const scene of video.scenes) {
   if (scene.template !== "shot") continue;
+  // `skip`：拍了三輪都不能用、劇情又接得上的鏡，整鏡拿掉（第 1 集 c43、c47，2026-11-08）。拿掉的鏡不能有台詞。
+  if (edit.skip?.includes(scene.id)) { if ((scene.lines ?? []).length) throw new Error(`${scene.id}: skip a shot that has lines`); continue; }
   const lines = (scene.lines ?? []).map((l) => ({ ...l, wav: path.join(work, "audio", `${l.id}.wav`) }));
   const ownFile = path.join(work, "voice", `${scene.id}.json`);
   const ownSpeech = lines.some((l) => OWN.has(l.id)) && existsSync(ownFile) ? JSON.parse(readFileSync(ownFile, "utf8")) : null;
@@ -240,8 +242,11 @@ const dubbed = DUB ? (await import("./dub-track.mjs")).dubDialogue({ locale: DUB
 const inputs = ["-i", DUB ? dubbed.dialogue : joined];
 const parts = [], musicParts = [], sfxParts = [];
 let n = 1;
-const tAt = (shot, off = 0) => starts[shot].start + off;
-const tEnd = (shot) => starts[shot].start + starts[shot].dur;
+// 被 skip 的鏡：配樂的 from 往後找、to 往前找最近的鏡；音效直接拿掉
+const order = video.scenes.filter((x) => x.template === "shot").map((x) => x.id);
+const near = (shot, dir) => { let i = order.indexOf(shot); while (i >= 0 && i < order.length && !starts[order[i]]) i += dir; return order[i]; };
+const tAt = (shot, off = 0) => starts[shot] ? starts[shot].start + off : starts[near(shot, 1)].start;
+const tEnd = (shot) => { const s = starts[shot] ? shot : near(shot, -1); return starts[s].start + starts[s].dur; };
 for (const [i, m] of (edit.music ?? []).entries()) {
   const a = tAt(m.from, m.from_off ?? 0), b = tEnd(m.to) + (m.tail ?? 0);
   const len = Math.min(b, total) - a;
@@ -256,7 +261,7 @@ for (const [i, m] of (edit.music ?? []).entries()) {
   n++;
 }
 // Every system line rings a ding just before it.
-const cues = [...(edit.sfx ?? [])];
+const cues = [...(edit.sfx ?? [])].filter((c) => !c.at || starts[c.at]);
 for (const l of lineAt) if (l.speaker === "xitong") cues.push({ synth: "ding", abs: l.start - 0.22, gain: -9 });
 for (const name of Object.keys(edit.names ?? {})) cues.push({ file: edit.name_whoosh ?? "swish-9", at: name, off: 0.15, gain: -16 });
 for (const [i, c] of cues.entries()) {
