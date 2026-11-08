@@ -86,6 +86,13 @@ const subtitle = (name, text, a, b, color = "0xffffff") =>
   `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(name, text)}':fontsize=60:fontcolor=${color}:borderw=4:bordercolor=0x000000@0.9:shadowcolor=0x000000@0.6:shadowx=2:shadowy=3:x=(w-text_w)/2:y=h-160:enable='between(t,${a.toFixed(3)},${b.toFixed(3)})'`;
 const stillMove = (id, f) => { const k = [...id].reduce((a, c) => a + c.charCodeAt(0), 0) % 4; if (k === 0) return `z='1+0.16*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 1) return `z='1.16-0.14*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 2) return `z='1.14':x='(iw-iw/zoom)*on/${f}':y='ih/2-(ih/zoom/2)'`; return `z='1.14':x='(iw-iw/zoom)*(1-on/${f})':y='ih/2-(ih/zoom/2)'`; };
 
+// 個別台詞的音量與距離（第 1 集 v2 審片：院子對面的笑聲像貼耳，心裡話比畫面上的人大 3–4 dB）：
+// `speaker_gain: {"yuetang-18": -3.5}`、`line_gain: {"t001001": -8}`（dB，可疊加）；`line_far: ["t001001"]` 削掉低頻與高頻、加一點房間回音，聽起來在遠處
+const lineFx = (l) => {
+  const g = (edit.speaker_gain?.[l.speaker] ?? 0) + (edit.line_gain?.[l.id] ?? 0);
+  const far = edit.line_far?.includes(l.id) ? ",highpass=f=350,lowpass=f=2800,aecho=0.8:0.6:45|90:0.3|0.2" : "";
+  return `${far}${g ? `,volume=${g}dB` : ""}`;
+};
 const report = [], segs = [], starts = {}, lineAt = [], srt = [];
 let t = 0;
 const spilled = [];
@@ -107,7 +114,7 @@ for (const scene of video.scenes) {
   // atempo inside the segment graph (before adelay) silently cut every segment's audio to 0.12 s.
   for (const l of ttsLines) {
     const fast = path.join(fastDir, `${l.id}.wav`);
-    execFileSync("ffmpeg", ["-v", "error", "-y", "-i", l.wav, "-af", `silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.08,areverse,atempo=${TEMPO}`, "-ar", "48000", "-ac", "2", fast]);
+    execFileSync("ffmpeg", ["-v", "error", "-y", "-i", l.wav, "-af", `silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.08,areverse,atempo=${TEMPO}${lineFx(l)}`, "-ar", "48000", "-ac", "2", fast]);
     l.wav = fast;
     l.len = probe(fast);
   }
@@ -226,6 +233,12 @@ for (const scene of video.scenes) {
   starts[scene.id] = { start: t, dur };
   report.push(`${scene.id} ${t.toFixed(2)} +${dur.toFixed(2)}s ${note}`);
   t += dur;
+}
+// `end_black: 1.0`：片尾最後一句之後接一段黑畫面（第 1 集 v2 審片：「報警！」講完 0.2 秒就結束，像被剪斷）；配樂與音效照常淡出
+if (edit.end_black && !DUB) {
+  const seg = path.join(segDir, "_end.mkv"), d = Math.round(edit.end_black * 24) / 24;
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "lavfi", "-i", `color=c=black:s=1920x1080:r=24:d=${d.toFixed(3)}`, "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", d.toFixed(3), "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-pix_fmt", "yuv420p", "-c:a", "pcm_s16le", seg]);
+  segs.push(seg); t += d;
 }
 const total = t;
 
