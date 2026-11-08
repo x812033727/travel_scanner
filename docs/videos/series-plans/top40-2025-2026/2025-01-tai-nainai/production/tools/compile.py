@@ -136,7 +136,7 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
         for s in sc["shots"]:
             e = en["shots"][s["id"]]
             lines = []
-            vprompt, own = voiced(e["prompt"], s["dialogue"])
+            vprompt, own = voiced(e["prompt"], s["dialogue"], e.get("addressee"))
             for k, d in enumerate(s["dialogue"]):
                 who = overrides.get(s["id"]) if not d["speaker"] else d["speaker"]
                 if not who:
@@ -247,7 +247,7 @@ def find_ref(refs: Path, names: list[str], size: tuple[int, int], placeholders: 
 SPEAK = re.compile(r"speaks a (?:short |very short |second )?Mandarin line")
 
 
-def voiced(prompt: str, dialogue: list[dict]) -> tuple[str, list[bool]]:
+def voiced(prompt: str, dialogue: list[dict], addressee: str | None = None) -> tuple[str, list[bool]]:
     """模型原聲（站主 2026-11-07）：畫面上開口的台詞照順序填進「speaks a … Mandarin line」，模型才講劇本的字。
 
     心裡話、畫外、電話不填（嘴閉著或不在畫面裡，照舊用錄音）；提示詞裡沒有說話句的台詞也算錄音。回傳改好的提示詞與每句是不是原聲。
@@ -261,8 +261,10 @@ def voiced(prompt: str, dialogue: list[dict]) -> tuple[str, list[bool]]:
         i = spoken[k]
         # 站主 2026-11-08（看完第 2 集）：「很多幕都是看前面，不會面對對方說話」。沒寫看誰，模型就對著鏡頭講。
         # 每句都補上：轉向說話的對象、側臉或四分之三側臉、不看鏡頭。
-        out.append(prompt[last:m.start()] + f"speaks a short Mandarin line, 「{dialogue[i]['text']}」, turned toward the person being spoken to, "
-                   "face in profile or three-quarter profile, eyes on that person, never looking at the camera")
+        # shots-en.json 的 "addressee"：沒有聽的人時寫看哪裡（自言自語、對著燈），免得模型多畫一個聽的人或對鏡頭講（第 1 集重寫審稿）
+        facing = (f", eyes on {addressee}, face in profile or three-quarter profile, never looking at the camera" if addressee else
+                  ", turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera")
+        out.append(prompt[last:m.start()] + f"speaks a short Mandarin line, 「{dialogue[i]['text']}」{facing}")
         last, own[i], k = m.end(), True, k + 1
     out.append(prompt[last:])
     return "".join(out), own
@@ -307,11 +309,13 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
             tags = ", ".join(f"<Picture {i}>" for i in range(1, len(images))) + (f" and <Picture {len(images)}>" if len(images) > 1 else "<Picture 1>")
             body = (f"For the target video, {tags} are referenced throughout.\n\n"
                     f"integrated_multimodal_description: [Shot 1] Live-action. " + "; ".join(anchors) + ". "
-                    f"Initial composition: {voiced(e['prompt'], s['dialogue'])[0]}{lamp_text} {FACES_RULE if e.get('characters') else ''} "
+                    f"Initial composition: {voiced(e['prompt'], s['dialogue'], e.get('addressee'))[0]}{lamp_text} {FACES_RULE if e.get('characters') else ''} "
                     f"The camera: {e['camera']}. {TAIL}\noverall_soundscape: N/A\nnon_diegetic_music: N/A\n")
             pf = work / "prompts" / f"{s['id']}.txt"
             pf.write_text(body, encoding="utf-8")
             secs = max(5, min(10, int(-(-((s["seconds"] or 5) + 0.5) // 1))))
+            if voiced(e["prompt"], s["dialogue"])[1].count(True):
+                secs = max(secs, 6)  # 開口說話的鏡至少買 6 秒：模型常在片段最後一格還沒講完（第 1 集原聲版 c05、c25、c27）
             jobs.append({"id": s["id"], "title": f"tai-nainai-e{ep:03d} {s['id']} ref2va", "inference_mode": "reference",
                          "reference_images": [str(p) for p in images], "prompt_file": f"prompts/{s['id']}.txt",
                          "prompt_sha256": hashlib.sha256(pf.read_bytes()).hexdigest(), "duration_seconds": secs,
