@@ -1,13 +1,13 @@
 ---
 id: 2026-11-08-thumbnail-layout-and-focus-stay-out
 title: Thumbnail layout and focus stay out of the visual hash
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-curio-redo-20
 claimed_at: 2026-11-08T06:17:55Z
 created_at: 2026-11-08T06:16:57Z
-completed_at:
+completed_at: 2026-11-08T06:20:50Z
 branch: claude/curio-redo-20-episodes-ldnrq0
 depends_on: []
 scope:
@@ -39,3 +39,4 @@ left out for the same reason.
 the independent duration increment.
 
 ## Notes
+- Independent duration increment by claude-review-thumb-hash-20261108: PASS; long-form check passes.
