@@ -62,7 +62,7 @@ EXTRA = {}
 # Picture review round 1 (2026-11-07, README §10.1): an independent reviewer zoomed every picture.
 # REWRITE replaces the prompt of shots with no usable take; FIX appends to shots with a severe fault.
 REWRITE = {
- "kid-drop-say": "Waist-up view of the girl crouched low on the floor under a sturdy wooden table, one arm covering the back of her head and neck, other hand holding a table leg, serious face, bright daylight",
+ "kid-drop-say": "Flat 2D children's cartoon drawing, side view of the girl kneeling low on the floor under a sturdy wooden table, curled up small, both hands covering the back of her neck, bright daylight",
  "kid-far-sure": "Wide view of a small far town on a green plain with a plain smooth unmarked phone tower beside it, bright daylight",
  "kid-miss": "Close-up of a plain smooth dark phone lying quiet on a wooden table, soft calm light, bright daylight",
  "kid-instant": "A friendly plain smooth unmarked cartoon desktop computer with a softly glowing round light on its front, on a plain wooden desk, clean empty cream wall, bright daylight",
@@ -88,7 +88,7 @@ REWRITE = {
  "kid-calc": "Head-and-shoulders close-up of the girl with a proud grin, eyes closed as happy curves, both hands out of frame, plain warm cream background, bright daylight",
  "kid-what-do-q": "Head-and-shoulders close-up of the girl looking up with a serious little face, both hands out of frame, plain warm cream background, bright daylight",
  "kid-drop-under": "Back view of the girl crouched low under a sturdy plain wooden dining table, both arms folded over the back of her head, in a bright sunny living room, bright daylight, back view of the girl crouched under a sturdy table, both arms covering her head, one hand holding a table leg",
- "bed": "Waist-up view of the girl lying face-down on her bed holding a soft pillow over her head and neck, calm bedroom, bright daylight"
+ "bed": "Flat 2D children's cartoon drawing with ink outlines, the girl lying face-down on her bed, both hands pressing a soft pillow over her head and neck, bright daylight"
 }
 FIX = {
  "kid-station-q": "plain smooth mustard-yellow hood",
@@ -103,7 +103,7 @@ FIX = {
  "chief-takes-time": "simple flat cartoon face matching the reference sheet",
  "kid-what-see": "facing the viewer, both eyes the same size with matching dark pupils",
  "kid-station-shout": "flat 2D cartoon, glossy black bob with straight bangs, plain cream room",
- "chief-gap": "clear round glasses, dark pupils both looking at the viewer, glossy black low ponytail",
+ "chief-gap": "round black glasses, both pupils glancing to her left together, knowing smile",
  "kid-gap-q": "glossy black bob with straight bangs, bare hair, light skin as on the reference sheet",
  "kid-order-got": "glossy black bob with straight bangs and one cowlick",
  "chief-predict": "same slim proportions as the reference sheet",
