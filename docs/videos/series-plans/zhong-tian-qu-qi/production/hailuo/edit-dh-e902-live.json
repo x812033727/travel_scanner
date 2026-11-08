@@ -22,6 +22,14 @@
   {
    "cue": "comedy",
    "from": "s01",
+   "to": "s13",
+   "offset": 0,
+   "gain": -18,
+   "fade_out": 0.5
+  },
+  {
+   "cue": "comedy",
+   "from": "s14",
    "to": "s25",
    "offset": 0,
    "gain": -18,
@@ -30,6 +38,14 @@
   {
    "cue": "tension",
    "from": "s26",
+   "to": "s34",
+   "offset": 0,
+   "gain": -16,
+   "fade_out": 0.4
+  },
+  {
+   "cue": "tension",
+   "from": "s36",
    "to": "s39",
    "offset": 0,
    "gain": -16,
@@ -48,38 +64,50 @@
   {
    "file": "key_open_01",
    "at": "s01",
-   "off": 0.6,
+   "off": 2.2,
    "gain": -18
   },
   {
    "file": "metalLatch",
    "at": "s01",
-   "off": 1.6,
+   "off": 2.8,
    "gain": -18
   },
   {
    "file": "impactMetal_light_000",
    "at": "s01",
-   "off": 2.6,
+   "off": 4.2,
    "gain": -20
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "s02",
+   "off": 2.4,
+   "gain": -22
   },
   {
    "file": "footstep_grass_000",
    "at": "s02",
-   "off": 0.8,
+   "off": 3.2,
    "gain": -24
   },
   {
    "file": "paper_02",
    "at": "s03",
-   "off": 0.8,
+   "off": 1.0,
    "gain": -22
   },
   {
    "file": "impactWood_light_000",
    "at": "s06",
-   "off": 1.2,
+   "off": 3.4,
    "gain": -20
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s07",
+   "off": 1.2,
+   "gain": -24
   },
   {
    "file": "handleCoins",
@@ -90,7 +118,7 @@
   {
    "file": "handleCoins2",
    "at": "s10",
-   "off": 0.4,
+   "off": 1.1,
    "gain": -26
   },
   {
@@ -102,98 +130,92 @@
   {
    "file": "impactWood_light_001",
    "at": "s14",
-   "off": 0.5,
+   "off": 4.9,
    "gain": -22
   },
   {
    "file": "chop",
    "at": "s15",
-   "off": 0.8,
+   "off": 1.9,
+   "gain": -16
+  },
+  {
+   "file": "chop",
+   "at": "s15",
+   "off": 3.0,
    "gain": -16
   },
   {
    "file": "creak1",
    "at": "s16",
-   "off": 0.6,
+   "off": 0.2,
    "gain": -20
   },
   {
    "file": "drawKnife1",
    "at": "s17",
-   "off": 0.5,
+   "off": 0.0,
    "gain": -16
   },
   {
    "file": "impactWood_heavy_000",
    "at": "s19",
-   "off": 1.2,
+   "off": 0.8,
    "gain": -12
   },
   {
    "file": "impactWood_medium_000",
    "at": "s19",
-   "off": 1.6,
+   "off": 1.3,
    "gain": -18
   },
   {
-   "file": "drawKnife2",
-   "at": "s21",
-   "off": 1.5,
-   "gain": -20
+   "file": "impactWood_light_000",
+   "at": "s22",
+   "off": 3.2,
+   "gain": -24
   },
   {
    "file": "impactWood_medium_001",
    "at": "s25",
-   "off": 0.6,
+   "off": 0.9,
    "gain": -20
   },
   {
    "file": "splash_01",
    "at": "s26",
-   "off": 0.3,
-   "gain": -20
+   "off": 1.0,
+   "gain": -26
   },
   {
    "file": "footstep_concrete_001",
    "at": "s26",
-   "off": 1.0,
-   "gain": -24
-  },
-  {
-   "file": "cloth1",
-   "at": "s27",
-   "off": 0.4,
+   "off": 5.6,
    "gain": -24
   },
   {
    "file": "footstep_concrete_000",
-   "at": "s27",
-   "off": 0.8,
+   "at": "s28",
+   "off": 0.5,
    "gain": -22
   },
   {
-   "file": "cloth2",
-   "at": "s29",
-   "off": 0.3,
-   "gain": -22
-  },
-  {
-   "file": "paper_04",
-   "at": "s29",
-   "off": 1.2,
-   "gain": -18
-  },
-  {
-   "file": "hit_01",
-   "at": "s31",
-   "off": 0.8,
+   "file": "cloth1",
+   "at": "s28",
+   "off": 1.7,
    "gain": -24
   },
   {
    "file": "handleCoins",
    "at": "s32",
-   "off": 0.2,
+   "off": 1.9,
    "gain": -22
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s32",
+   "off": 4.5,
+   "gain": -24
   },
   {
    "file": "impactBell_heavy_001",
@@ -202,25 +224,45 @@
    "gain": -16
   },
   {
+   "file": "cloth2",
+   "at": "s38",
+   "off": 4.9,
+   "gain": -22
+  },
+  {
+   "file": "paper_04",
+   "at": "s38",
+   "off": 5.3,
+   "gain": -18
+  },
+  {
    "file": "cloth1",
    "at": "s39",
-   "off": 0.4,
+   "off": 0.6,
    "gain": -20
   },
   {
    "file": "footstep_concrete_002",
    "at": "s39",
-   "off": 1.0,
+   "off": 1.2,
    "gain": -22
   },
   {
    "file": "swish-7",
    "at": "s40",
-   "off": 0.0,
+   "off": 0.45,
    "gain": -14
   }
  ],
  "frame_round": true,
  "clip_voice": true,
- "_note": "live action (owner 2026-11-07): the model's own voice for on-screen lines (clip_voice), recorded audio for system, off-screen, inner and nospeak lines (s34, s37 Xu Yan, e002 fix2). Unified 2026-11-08: no punch-in, slow-down <= 1.1, own-voice shots never slowed. Sound-effect offsets are still the CG-era ones: re-time them on the live clips after the first cut."
+ "_note": "live action (owner 2026-11-07): the model's own voice for on-screen lines (clip_voice), recorded audio for system, off-screen, inner and nospeak lines (s34, s37 Xu Yan, e002 fix2). Unified 2026-11-08: no punch-in, slow-down <= 1.1, own-voice shots never slowed. Cut review 1 (2026-11-08, colab/runs/e902-live/cut-review.md): effects re-timed on the live clips (offsets on the shots as trimmed by review1-trims.tsv); music drops out under s13b and s35 (storyboard), the comedy cue (121 s) restarting at s14 since it had run out at 121 s under s18-s25; voice_skip puts the s28, s36, s39 subtitles on the actual onset; s27's name card comes in at the cut, before he speaks.",
+ "name_at": {
+  "s27": 0.0
+ },
+ "voice_skip": {
+  "s28": 2.2,
+  "s36": 1.68,
+  "s39": 0.87
+ }
 }
