@@ -4,7 +4,7 @@ import test from "node:test";
 
 import { estimateTimeline } from "../core/timeline.mjs";
 import { ICON_NAMES, icon } from "./icons.mjs";
-import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, brandProblem, captureRef, CREDIT_MAX_CHARS, escapeHtml, FIT_VERSION, fitStale, headlineCount, inlineSvg, isStockPath, KEY_BAND_CSS, KEY_MAX_CHARS, keyProblems, MARK_OVERLAID, PAPER_CSS, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneKey, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, stateCount, svgProblems, TEMPLATE_SPECS, THEMES, themeCss, THUMB_BOLD_LAYOUT, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
+import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, brandProblem, captureRef, CREDIT_MAX_CHARS, escapeHtml, FIT_VERSION, fitStale, headlineCount, inlineSvg, isStockPath, KEY_BAND_CSS, KEY_MAX_CHARS, keyProblems, MARK_OVERLAID, PAPER_CSS, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneKey, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, stateCount, svgProblems, TEMPLATE_SPECS, THEMES, themeCss, THUMB_BOLD_LAYOUT, THUMB_FOCUS_DEFAULT, THUMB_HEADLINE_MAX, THUMB_SPLIT_LAYOUT, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -298,7 +298,7 @@ test("the channel's layout and tone rotate by slug, a variant one step on, and d
   assert.notEqual(thumbnailRotation("facebook-code-scam", 2).layout, next.layout);
   assert.match(thumbnailHtml({ ...thumb, data: { ...thumb.data, layout: "c", tone: "plum" } }, { slug: "facebook-code-scam" }), /<div class="thumb-subject layout-c tone-plum"><\/div><div class="thumb column layout-c tone-plum">/);
   assert.match(thumbnailHtml(thumb), /layout-[abc] tone-(teal|plum|navy|forest)/, "no slug: still a layout and a tone");
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "left", tone: "red" } }), ["thumbnail.data.layout must be one of a, b, c, d, ai", "thumbnail.data.tone must be one of teal, plum, navy, forest"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "left", tone: "red" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, ai", "thumbnail.data.tone must be one of teal, plum, navy, forest"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "b", tone: "navy", capture: "find-guides#2", shot: "hall" } }), []);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", capture: "Find Guides", shot: 3 } }), ['thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture', "thumbnail.data.shot must be a shot's id"]);
   assert.deepEqual(captureRef("find-guides"), { scene: "find-guides", index: 0 });
@@ -365,7 +365,7 @@ test("So That's Why wears its own thumbnail: palette, name, stamp, pillar tag, a
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一\n二\n三" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has 3 lines; this series takes at most 2"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "top", pillar: "sports" } }, { series: "sothatswhy" }), ["thumbnail.data.layout must be one of left, right", "thumbnail.data.pillar must be one of business, science, travel, tech"]);
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "right" } }), ["thumbnail.data.layout must be one of a, b, c, d, ai"], "the channel's layouts are its own");
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "right" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, ai"], "the channel's layouts are its own");
 });
 
 test("a thumbnail's B and C variants for YouTube's test are laid over A and linted like it", () => {
@@ -379,7 +379,7 @@ test("a thumbnail's B and C variants for YouTube's test are laid over A and lint
   const long = { ...thumb, variants: [{ data: { headline: "一二三四五六七八九十十一" } }] };
   assert.deepEqual(thumbnailProblems(long, { series: "sothatswhy" }), ["variant b: thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
   assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }, { series: "sothatswhy" }), ["variant b: thumbnail.data.layout must be one of left, right"]);
-  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c, d, ai"]);
+  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c, d, e, ai"]);
   const shape = "thumbnail.variants must be 1 to 2 of { data: {...} } (A is the thumbnail itself; YouTube tests up to three)";
   for (const variants of [[], [{}], "b", [{ data: {} }, { data: {} }, { data: {} }]]) assert.deepEqual(thumbnailProblems({ ...thumb, variants }), [shape], JSON.stringify(variants));
 });
@@ -662,7 +662,32 @@ test("a curio- or story- slug takes the bold thumbnail layout by default; other 
   assert.match(thumbnailHtml({ template: "thumb", data: { ...data, layout: "d" } }, { slug: "ai-term-token" }), /layout-d/);
   assert.match(thumbnailHtml({ template: "thumb", data: { ...data, layout: "a" } }, { slug: "curio-h01-v2" }), /layout-a/, "a named layout wins");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "d" } }), []);
-  assert.ok(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e" } }).some((problem) => /layout must be one of a, b, c, d/.test(problem)));
+  assert.ok(thumbnailProblems({ template: "thumb", data: { ...data, layout: "z" } }).some((problem) => /layout must be one of a, b, c, d, e, ai/.test(problem)));
+});
+
+// The split layout (2026-11-08): the words on a panel of their own, the picture beside them, and
+// only where a video names it, so no thumbnail already drawn moves.
+test("the split thumbnail layout keeps the words off the picture and is chosen by name alone", () => {
+  const data = { headline: "鋼琴廠\n**造機車**", tag: "品牌檔案", sub: "分出去的營收 5 倍多", shot: "x" };
+  assert.equal(THUMB_SPLIT_LAYOUT, "e");
+  assert.ok(!THUMB_LAYOUTS.includes(THUMB_SPLIT_LAYOUT), "not in the rotation");
+  const split = thumbnailHtml({ template: "thumb", data: { ...data, layout: "e", focus: 30 } }, { background: "https://video.local/k.png", slug: "curio-b01" });
+  assert.match(split, /<div class="thumb-subject layout-e tone-[a-z]+ from-shot" style="--focus:30%">/);
+  assert.match(split, /<div class="thumb column layout-e tone-[a-z]+">/);
+  assert.match(split, /\.thumb\.column\.layout-e\{right:47%/, "the panel ends where the picture starts");
+  assert.match(split, /\.thumb-subject\.layout-e\{width:47%/);
+  assert.match(split, /<h1 class="fit">/, "a long translated headline shrinks inside the panel");
+  const centred = thumbnailHtml({ template: "thumb", data: { ...data, layout: "e" } }, { background: "https://video.local/k.png", slug: "curio-b01" });
+  assert.match(centred, new RegExp(`style="--focus:${THUMB_FOCUS_DEFAULT}%"`));
+  // No default moves: a curio slug without a layout keeps d, and only layout e carries the CSS.
+  const bold = thumbnailHtml({ template: "thumb", data }, { background: "https://video.local/k.png", slug: "curio-b01" });
+  assert.match(bold, /layout-d/);
+  assert.doesNotMatch(bold, /layout-e|--focus/);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus: 0 } }), []);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus: 100 } }), []);
+  for (const focus of [-1, 101, 12.5, "30"]) {
+    assert.ok(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus } }).some((problem) => /focus must be a whole number from 0/.test(problem)), String(focus));
+  }
 });
 
 test("a paper video not yet on YouTube is drawn and cut again when the text fitting changes; others are left alone", () => {
