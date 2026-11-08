@@ -135,7 +135,10 @@ for (const scene of video.scenes) {
     const groups = []; let from = 0;
     for (const c of [...cuts, segs.length - 1]) { groups.push([segs[from][0], segs[c][1]]); from = c + 1; }
     ownLines.forEach((l, k) => {
-      const [a, b] = groups[Math.min(k, groups.length - 1)];
+      const [a, b0] = groups[Math.min(k, groups.length - 1)];
+      // 字幕至少照每秒 8 字留著（模型講得快時，第 2 集 c03 一句 14 字只講 1.3 秒，cut-qa 抓到每秒超過 9 字），但不壓到下一句
+      const next = k + 1 < groups.length ? groups[k + 1][0] - 0.05 : dur;
+      const b = Math.max(b0, Math.min(a + [...l.text].length / 8 - 0.15, next - 0.15));
       if (edit.burn_subtitles) subs += subtitle(`${scene.id}-o${k}`, l.text, a, Math.min(dur, b + 0.15));
       lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start: t + a, len: b - a, subtitled: true, own_voice: true });
       srt.push({ start: t + a, end: t + Math.min(dur, b + 0.15), text: l.text });
@@ -282,7 +285,7 @@ const graph = [
   // Music ducking under dialogue: `duck_ratio` and `duck_release_ms` in the edit list (defaults 8 and 350 ms, as before).
   `[mus][key]sidechaincompress=threshold=0.02:ratio=${edit.duck_ratio ?? 8}:attack=15:release=${edit.duck_release_ms ?? 350}:makeup=1[ducked]`,
   `${sfxParts.join("")}amix=inputs=${sfxParts.length}:normalize=0:duration=longest[fx]`,
-  `[dlg][ducked][fx]amix=inputs=3:normalize=0:duration=first,loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[mix]`,
+  `[dlg][ducked][fx]amix=inputs=3:normalize=0:duration=first,loudnorm=I=-14:TP=-2:LRA=11,aresample=48000[mix]`,
 ].join(";");
 const fmt = (s) => { const ms = Math.round(s * 1000); const h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, sec = Math.floor(ms / 1000) % 60; return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")},${String(ms % 1000).padStart(3, "0")}`; };
 if (DUB) {
