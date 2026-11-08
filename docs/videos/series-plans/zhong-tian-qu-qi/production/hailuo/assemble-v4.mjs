@@ -102,7 +102,12 @@ const report = [], segs = [], starts = {}, lineAt = [], srt = [];
 let t = 0;
 for (const scene of video.scenes) {
   if (scene.template !== "shot") continue;
-  const lines = (scene.lines ?? []).map((l) => ({ ...l, wav: path.join(work, "audio", `${l.id}.wav`) }));
+  // `move_lines`: {line id: shot} plays a line at the start of another shot (e001 live s37: the take ends before the
+  // system's second line, so it opens s38, a point-of-view shot with no mouth on screen)
+  const moved = edit.move_lines ?? {};
+  const incoming = video.scenes.flatMap((s) => s.lines ?? []).filter((l) => moved[l.id] === scene.id && !(scene.lines ?? []).includes(l));
+  const lines = [...incoming, ...(scene.lines ?? []).filter((l) => !moved[l.id] || moved[l.id] === scene.id)]
+    .map((l) => ({ ...l, wav: path.join(work, "audio", `${l.id}.wav`) }));
   // Each line is trimmed of its own leading/trailing silence and sped up into its own file first:
   // atempo inside the segment graph (before adelay) silently cut every segment's audio to 0.12 s.
   for (const l of lines) {
