@@ -693,6 +693,11 @@ export const isBoldThumbSlug = (slug) => /^(?:curio|story)-/.test(slug ?? "");
 export const THUMB_SPLIT_LAYOUT = "e";
 export const THUMB_FOCUS_DEFAULT = 50;
 const isFocus = (value) => Number.isInteger(value) && value >= 0 && value <= 100;
+// In the split panel a line the writer broke with "\n" stays one line when its script has no word
+// spaces to break at (Chinese, kana, Hangul headlines; a Thai sub line): the browser would cut such
+// a line mid-word (「もう死んで／た？」, 「โนบุนา／งะ」), so fitText shrinks it instead.
+const KEEP_LINE_SCRIPTS = /[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff\uac00-\ud7af]/;
+const THAI_SCRIPT = /[\u0e00-\u0e7f]/;
 /**
  * The AI look (the owner, 2026-11-01, after the AI 101 channel's 「AI新聞快報」): every AI video,
  * the daily brief, AI 科技資訊, AI 名詞十分鐘 and the hands-on tutorials, wears one thumbnail. The
@@ -947,7 +952,8 @@ const THUMB_SPLIT_CSS =
   ".thumb.column.layout-e .tag{display:none}" +
   ".thumb.column.layout-e h1{color:#ffd60a;font-size:144px;max-height:420px;letter-spacing:.02em;-webkit-text-stroke:6px #000;paint-order:stroke fill;text-shadow:0 5px 0 #000}" +
   ".thumb.column.layout-e .sub{color:#fff;font-size:58px;font-weight:900;max-height:150px;-webkit-text-stroke:4px #000;paint-order:stroke fill;text-shadow:0 3px 0 #000}" +
-  ".thumb.column.layout-e .brand{left:52px;bottom:44px;color:var(--paper);opacity:.85}";
+  ".thumb.column.layout-e .brand{left:52px;bottom:44px;color:var(--paper);opacity:.85}" +
+  ".thumb.column.layout-e .keep-lines{white-space:nowrap}";
 
 const THUMB_MARQUE_CSS =
   ".thumb .marque{align-self:stretch;font-weight:900;line-height:1.05;color:var(--orange);white-space:nowrap;overflow:hidden;letter-spacing:.01em;" +
@@ -982,8 +988,8 @@ export function thumbnailHtml(thumbnail, { background = null, subject = null, se
     `<div class="thumb-subject ${classes}${background ? ` from-${kind}` : ""}"${split ? ` style="--focus:${focus}%"` : ""}>${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
     `<div class="thumb column ${classes}">`,
     marque ? `<div class="marque fit" style="font-size:${brandFontSize(marque)}px">${escapeHtml(marque.trim())}</div>` : data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
-    `<h1 class="fit">${richText(data.headline)}</h1>`,
-    data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : "",
+    `<h1 class="fit${split && KEEP_LINE_SCRIPTS.test(data.headline ?? "") ? " keep-lines" : ""}">${richText(data.headline)}</h1>`,
+    data.sub ? `<div class="sub fit${split && THAI_SCRIPT.test(data.sub) ? " keep-lines" : ""}">${richText(data.sub)}</div>` : "",
     `<div class="brand">${BRAND}</div>`,
     "</div>",
   ].join("");
