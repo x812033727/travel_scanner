@@ -1,13 +1,13 @@
 ---
 id: 2026-11-08-explainer-series-shared-backup-and-rules
 title: Explainer series share one backup and rule set for curio and so that's why
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-curio-redo-20
 claimed_at: 2026-11-08T07:18:40Z
 created_at: 2026-11-08T07:18:32Z
-completed_at:
+completed_at: 2026-11-08T13:14:43Z
 branch: claude/curio-redo-20-episodes-ldnrq0
 depends_on: []
 scope:
@@ -28,7 +28,7 @@ AI 劇的 PR #2047 把兩個系列的備份與共同規則統一，並在 PR 裡
 
 - [x] `docs/videos/explainer-series/` 有共用規則（README.md）與備份分支規則（BACKUP-BRANCHES.md），命名與核對方式跟 #2047 一致。
 - [x] `backup/` 有可用的推分支（tobranch.sh）與涵蓋檢查（coverage.sh），不寫死 session 與絕對路徑。
-- [ ] 原來如此那邊在 PR 裡看過、沒有異議或已改好。
+- [x] 原來如此那邊在 PR 裡看過、沒有異議或已改好（2026-11-08 10:31，已推 `transfer/sothatswhy-shared`）。
 - [x] 站主確認 README 最後一節的三點（2026-11-08：1 分開、2 可以、3 好）。
 
 ## Steps
@@ -37,7 +37,7 @@ AI 劇的 PR #2047 把兩個系列的備份與共同規則統一，並在 PR 裡
 - [x] 寫統一表、兩邊都踩過的坑、不統一的項目、待站主確認的三點。
 - [x] 寫並測試 backup/ 的兩支腳本（本機 bare repo：一般檔、含空白的路徑、200 MB 與 100 MB 切塊、重推、竄改後抓得到）。
 - [x] curio-episode skill 加一行連到這裡。
-- [ ] PR 討論後的修改。
+- [x] PR 討論後的修改（分批推送、對照表更正、三個坑、配樂床、既有分支、LEASE、暫存物件目錄）。
 
 ## How to verify
 
