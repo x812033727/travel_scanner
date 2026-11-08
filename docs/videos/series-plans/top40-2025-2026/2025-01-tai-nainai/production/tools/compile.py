@@ -265,7 +265,12 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                 images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
                 anchors.append(f"the location shown in <Picture {len(images)}> is the set, keeping its layout and props")
             lamp_text = f" The brass oil lamp shows {cast['lamp']['levels'][str(e['lamp'])]}; the light stays as it is through the shot." if e.get("lamp") and not e.get("lamp_changes") else ""
-            if e.get("lamp") or (set_id == "shenjia-citang" and re.search(r"\b(oil lamp|the lamp)\b", e["prompt"], re.I)):  # 第 2 集：正廳的 hanging lamp 也被加上長明燈，桌上多一盞油燈
+            # 燈不在畫面裡的鏡（shots-en.json 寫 "lamp_in_frame": false，或正文寫了 lamp … out of the frame / no lamp）只說光從畫外來：
+            # 第 3 集草稿 c01、c05、c07、c11、c14、c16 都因為固定的那段燈的描述，在手邊多畫一盞玻璃燈（2026-11-08 審草稿）
+            offscreen = e.get("lamp_in_frame") is False or re.search(r"\blamp (?:itself )?is (?:out of|off) (?:the )?(?:frame|screen)\b|\bno lamp\b", e["prompt"], re.I)
+            if offscreen:
+                lamp_text = " No lamp is in the frame; its warm light comes from off screen."
+            elif e.get("lamp") or (set_id == "shenjia-citang" and re.search(r"\b(oil lamp|the lamp)\b", e["prompt"], re.I)):  # 第 2 集：正廳的 hanging lamp 也被加上長明燈，桌上多一盞油燈
                 lamp_text += LAMP_SIZE  # 小樣 c19–c21：燈畫得比人頭還高（2026-11-07）
             if re.search(r"\bat night\b", e["prompt"], re.I):
                 lamp_text += NIGHT  # 第 1 集 c14：正廳的場景圖是白天畫的，門外亮得像白天（2026-11-07）

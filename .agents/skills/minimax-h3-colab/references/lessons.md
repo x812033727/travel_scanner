@@ -283,6 +283,7 @@ kernel 卡住
 - chain 一律用 `setsid nohup … & disown` 跑。
 - 重啟後先看 `h3.sh usage` 的 `active_assignments`；有在跑就用同一個 session 接回去，不重開。
 - 另外排一個 `send_later` 定時回來看。
+- 燈不在畫面裡的鏡，不要放那段固定的燈的描述。第 3 集草稿有 6 鏡在手邊多畫一盞玻璃燈，連「the lamp itself is out of the frame」那鏡也一樣：只要寫到燈，模型就會畫一盞出來。`compile.py` 現在遇到 `"lamp_in_frame": false` 或正文寫「lamp … out of the frame / no lamp」時，只寫「No lamp is in the frame; its warm light comes from off screen.」。寫分鏡時，燈不入鏡的鏡要標出來。
 - 拆成一鏡一份 manifest 時，那份 manifest 要放在 `prompts/` 的同一層：`prompt_file` 是相對 manifest 解讀的。第 3 集第一次放在 `one/` 底下，27 鏡每一鏡都 check 失敗，開著的 session 空轉了 10 分鐘。chain 要加「連續 3 鏡失敗就停」，別把整集跑完。
 - 對話閒著時，容器會被收回（2026-11-07 晚上兩次：回合結束後約 20 分鐘，`uptime` 是 0 分鐘、chain 不見，Colab session 也跟著沒了，各浪費約 2 CU 與一次開機）。`setsid` 擋不住收回。所以 chain 要用 Bash 工具的背景指令跑（`run_in_background`，上限 2 小時），系統會把它當成工作中，不收回容器。超過 2 小時的批次要切成幾段，每段各自用背景指令跑。
 
