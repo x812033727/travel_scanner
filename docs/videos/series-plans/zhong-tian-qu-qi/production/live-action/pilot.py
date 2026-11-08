@@ -25,7 +25,11 @@ src, out, shots = Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3:]
 
 STYLE_OLD = ["[Shot 1] 3D CG.", "Smooth, weighty 3D CG character animation; faces, hair and costumes stay as in their reference pictures."]
 STYLE_NEW = ["[Shot 1] Photorealistic live-action film footage of real actors in an ancient Chinese (Song-dynasty) period drama, shot on a cinema camera.",
-             "Natural, realistic human motion of real actors; faces, hair and costumes stay as in their reference pictures."]
+             # the live portraits are neutral studio faces; "faces stay as in their pictures" froze every face blank
+             # (e901 live expression review 2026-11-08: 14 of 34 faces flat, blank or wrong), so the pictures fix identity only
+             "Natural, realistic human motion and acting of real actors: each person keeps the identity, hair and costume of their "
+             "reference pictures, while every visible face acts the emotion written above and changes with it; the pictures are "
+             "neutral studio portraits, never copy their blank expression."]
 LIVE_LOOK = {  # cast.json text -> the live-action text the screen test drew (screen-test.py)
     "a coarse brown short jacket with rolled sleeves": "an ancient Chinese Song-dynasty peasant's coarse brown hemp cross-collared short jacket with rolled sleeves, tied with a cloth sash",
     "a black constable's hat and plain black official uniform": "an ancient Chinese Song-dynasty constable's soft black futou cap and a plain black round-collared constable's robe",
@@ -48,8 +52,9 @@ LIVE_LOOK = {  # cast.json text -> the live-action text the screen test drew (sc
 # and a neat topknot, left him only damp in the live drafts (e901 live cut review 2026-11-08, item 19). Where the shot
 # writes the soaked state, the pictures fix the face and the cut and colour of hair and costume; the text fixes the water.
 SOAKED_MARK = "soaked dark through"
-SOAKED_LOCK = ("Natural, realistic human motion of real actors; faces stay as in their reference pictures, and hair and costumes "
-               "keep the cut and colour of their pictures, soaked and dripping wet the whole shot as described above.")
+SOAKED_LOCK = ("Natural, realistic human motion and acting of real actors: each person keeps the identity of their reference "
+               "pictures while every visible face acts the emotion written above, and hair and costumes keep the cut and colour "
+               "of their pictures, soaked and dripping wet the whole shot as described above.")
 tang = next(c for c in cast["characters"] if c["id"] == "tangxiaotang")["appearance"]
 TANG_LIVE = re.sub(r"a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar.*?see-through",
                    "a peach-pink silk brocade high-waisted ruqun: a light cross-collared short jacket open in a soft V "
