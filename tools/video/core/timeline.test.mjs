@@ -280,3 +280,20 @@ test("a video may tighten the pauses between lines and scenes, never lengthen th
     assert.ok(validateVideo({ ...structuredClone(doc), pauses }).some((error) => error.path.startsWith("pauses")), JSON.stringify(pauses));
   }
 });
+
+// The split thumbnail layout (2026-11-08) is drawn on thumbnail.jpg alone: choosing it, or its
+// focus, after the storyboard is approved leaves the pictures' hash where it was; any other layout
+// still moves it, so no video already shot changes hash.
+test("visualHash leaves out the split thumbnail layout and its focus, and nothing else", async () => {
+  const { visualHash } = await import("./timeline.mjs");
+  const base = { schema_version: 1, slug: "curio-x", thumbnail: { template: "thumb", data: { headline: "a\n**b**", sub: "c", shot: "s1" } }, scenes: [{ id: "s1", template: "shot", data: { prompt: "p" }, lines: [{ id: "t001", text: "x" }] }] };
+  const withData = (extra) => ({ ...base, thumbnail: { ...base.thumbnail, data: { ...base.thumbnail.data, ...extra } } });
+  const plain = visualHash(base);
+  assert.equal(visualHash(withData({ layout: "e" })), plain);
+  assert.equal(visualHash(withData({ layout: "e", focus: 80 })), plain);
+  assert.equal(visualHash(withData({ focus: 30 })), plain);
+  assert.equal(visualHash(withData({ brand: "Crocs" })), plain, "the brand rule stands");
+  assert.notEqual(visualHash(withData({ layout: "d" })), plain, "another layout still moves the hash");
+  assert.notEqual(visualHash(withData({ layout: "ai" })), plain);
+  assert.notEqual(visualHash(withData({ headline: "x" })), plain, "the words on the thumbnail still count");
+});

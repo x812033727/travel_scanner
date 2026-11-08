@@ -1,20 +1,20 @@
 ---
-id: 2026-11-06-p14
-title: 原來如此事務所對話版 P14：同一道陽光，天空為什麼藍、夕陽為什麼紅
+id: 2026-11-07-sothatswhy-p08-dialogue-mountain-boiling-and
+title: sothatswhy P08 dialogue: mountain boiling and popcorn
 status: in-progress
 priority: P2
 area: docs
 owner: claude-opus-5.5-focused-hopper
-claimed_at: 2026-11-06T11:24:04Z
-created_at: 2026-11-06T11:23:57Z
+claimed_at: 2026-11-07T07:09:49Z
+created_at: 2026-11-07T07:09:47Z
 completed_at:
 branch:
 depends_on: []
 scope:
-  - docs/videos/sothatswhy-p14-sky-colors
+  - docs/videos/sothatswhy-p08-popcorn-pressure
 ---
 
-# 原來如此事務所對話版 P14：同一道陽光，天空為什麼藍、夕陽為什麼紅
+# sothatswhy P08 dialogue: mountain boiling and popcorn
 
 ## Why
 

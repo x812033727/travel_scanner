@@ -664,6 +664,14 @@ export const THUMB_PILLARS = ["business", "science", "travel", "tech"];
 /** A series' thumbnail keeps the full-width text column and may mirror it (the stamp follows). */
 export const THUMB_SERIES_LAYOUTS = ["left", "right"];
 /**
+ * Where a series thumbnail's picture sits (owner 2026-11-08: 「縮圖的人可以盡量不要被字擋住嗎?」).
+ * A keyframe drawn for the video centres its character, so the full-frame picture puts her under
+ * the text column; `data.subject: "right"` narrows the picture to the right 38% of the frame, the
+ * character then in the right half beside the text, the left on the ink ground under the scrim
+ * ("left" mirrors it for a right-hand column). Left out, the picture fills the frame as before.
+ */
+export const THUMB_SERIES_SUBJECTS = ["right", "left"];
+/**
  * The channel's thumbnail (docs/videos/README.md §版型, the owner's 2026-10-08 decision): the text
  * column is the left 40%, the subject the right 60%, in one of three layouts the slug rotates
  * through unless `data.layout` names one: a) the subject on a card inset in its area, b) the
@@ -693,6 +701,11 @@ export const isBoldThumbSlug = (slug) => /^(?:curio|story)-/.test(slug ?? "");
 export const THUMB_SPLIT_LAYOUT = "e";
 export const THUMB_FOCUS_DEFAULT = 50;
 const isFocus = (value) => Number.isInteger(value) && value >= 0 && value <= 100;
+// In the split panel a line the writer broke with "\n" stays one line when its script has no word
+// spaces to break at (Chinese, kana, Hangul headlines; a Thai sub line): the browser would cut such
+// a line mid-word (「もう死んで／た？」, 「โนบุนา／งะ」), so fitText shrinks it instead.
+const KEEP_LINE_SCRIPTS = /[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff\uac00-\ud7af]/;
+const THAI_SCRIPT = /[\u0e00-\u0e7f]/;
 /**
  * The AI look (the owner, 2026-11-01, after the AI 101 channel's 「AI新聞快報」): every AI video,
  * the daily brief, AI 科技資訊, AI 名詞十分鐘 and the hands-on tutorials, wears one thumbnail. The
@@ -888,6 +901,7 @@ function ownThumbnailProblems(thumbnail, series) {
   const own = THUMB_SERIES[series];
   const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT, THUMB_SPLIT_LAYOUT, THUMB_AI_LAYOUT];
   if (data.layout !== undefined && !layouts.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${layouts.join(", ")}`);
+  if (data.subject !== undefined && (!own || !THUMB_SERIES_SUBJECTS.includes(data.subject))) problems.push(own ? `thumbnail.data.subject must be one of ${THUMB_SERIES_SUBJECTS.join(", ")}` : "thumbnail.data.subject is a series thumbnail's option");
   if (data.layout === THUMB_AI_LAYOUT && isText(data.headline) && data.headline.includes("\n")) problems.push("thumbnail.data.headline takes one line in the AI look: the subject, then the **hook**; remove the line break");
   if (data.focus !== undefined && !isFocus(data.focus)) problems.push("thumbnail.data.focus must be a whole number from 0 (the picture's left edge) to 100 (its right edge)");
   if (data.tone !== undefined && !THUMB_TONES.includes(data.tone)) problems.push(`thumbnail.data.tone must be one of ${THUMB_TONES.join(", ")}`);
@@ -909,6 +923,8 @@ function ownThumbnailProblems(thumbnail, series) {
 // A series' thumbnail sits on a keyframe: the picture fills the frame under a scrim that keeps
 // the headline readable. The CSS lives here rather than in the theme so that adding it changed
 // no slides video's frame keys.
+const THUMB_SUBJECT_CSS =
+  "body{background:#1f2a44}.thumb-bg.subject-right{left:auto;width:38%}.thumb-bg.subject-left{right:auto;width:38%}";
 const THUMB_BACKGROUND_CSS =
   ".thumb-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}" +
   ".thumb-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,38,39,.94) 0%,rgba(14,38,39,.72) 48%,rgba(14,38,39,.12) 100%)}";
@@ -947,7 +963,8 @@ const THUMB_SPLIT_CSS =
   ".thumb.column.layout-e .tag{display:none}" +
   ".thumb.column.layout-e h1{color:#ffd60a;font-size:144px;max-height:420px;letter-spacing:.02em;-webkit-text-stroke:6px #000;paint-order:stroke fill;text-shadow:0 5px 0 #000}" +
   ".thumb.column.layout-e .sub{color:#fff;font-size:58px;font-weight:900;max-height:150px;-webkit-text-stroke:4px #000;paint-order:stroke fill;text-shadow:0 3px 0 #000}" +
-  ".thumb.column.layout-e .brand{left:52px;bottom:44px;color:var(--paper);opacity:.85}";
+  ".thumb.column.layout-e .brand{left:52px;bottom:44px;color:var(--paper);opacity:.85}" +
+  ".thumb.column.layout-e .keep-lines{white-space:nowrap}";
 
 const THUMB_MARQUE_CSS =
   ".thumb .marque{align-self:stretch;font-weight:900;line-height:1.05;color:var(--orange);white-space:nowrap;overflow:hidden;letter-spacing:.01em;" +
@@ -967,7 +984,7 @@ const THUMB_MARQUE_CSS =
 export function thumbnailHtml(thumbnail, { background = null, subject = null, series = null, locale = null, slug = null, offset = 0, aiSeries = null } = {}) {
   const data = thumbnail.data;
   const own = THUMB_SERIES[series] ?? null;
-  if (own) return page(seriesThumbnailBody(data, own, background), THUMB_SIZE, [background ? THUMB_BACKGROUND_CSS : "", data.layout === "right" ? THUMB_RIGHT_CSS : "", THUMB_SERIES_CSS[series]].join(""), { locale });
+  if (own) return page(seriesThumbnailBody(data, own, background), THUMB_SIZE, [background ? THUMB_BACKGROUND_CSS : "", background && THUMB_SERIES_SUBJECTS.includes(data.subject) ? THUMB_SUBJECT_CSS : "", data.layout === "right" ? THUMB_RIGHT_CSS : "", THUMB_SERIES_CSS[series]].join(""), { locale });
   if (data.layout === THUMB_AI_LAYOUT) return page(aiThumbnailBody(data, { background, subject, locale, slug, aiSeries }), THUMB_SIZE, THUMB_AI_CSS, { locale });
   const rotation = thumbnailRotation(slug, offset);
   const layout = THUMB_LAYOUTS.includes(data.layout) || data.layout === THUMB_BOLD_LAYOUT || data.layout === THUMB_SPLIT_LAYOUT ? data.layout : isBoldThumbSlug(slug) ? THUMB_BOLD_LAYOUT : rotation.layout;
@@ -982,8 +999,8 @@ export function thumbnailHtml(thumbnail, { background = null, subject = null, se
     `<div class="thumb-subject ${classes}${background ? ` from-${kind}` : ""}"${split ? ` style="--focus:${focus}%"` : ""}>${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
     `<div class="thumb column ${classes}">`,
     marque ? `<div class="marque fit" style="font-size:${brandFontSize(marque)}px">${escapeHtml(marque.trim())}</div>` : data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
-    `<h1 class="fit">${richText(data.headline)}</h1>`,
-    data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : "",
+    `<h1 class="fit${split && KEEP_LINE_SCRIPTS.test(data.headline ?? "") ? " keep-lines" : ""}">${richText(data.headline)}</h1>`,
+    data.sub ? `<div class="sub fit${split && THAI_SCRIPT.test(data.sub) ? " keep-lines" : ""}">${richText(data.sub)}</div>` : "",
     `<div class="brand">${BRAND}</div>`,
     "</div>",
   ].join("");
@@ -1018,7 +1035,7 @@ function seriesThumbnailBody(data, own, background) {
   const layout = data.layout === "right" ? " layout-right" : "";
   const pillar = THUMB_PILLARS.includes(data.pillar) ? ` pillar-${data.pillar}` : "";
   return [
-    background ? `<img class="thumb-bg" src="${escapeHtml(background)}" alt=""><div class="thumb-scrim${layout}"></div>` : "",
+    background ? `<img class="thumb-bg${THUMB_SERIES_SUBJECTS.includes(data.subject) ? ` subject-${data.subject}` : ""}" src="${escapeHtml(background)}" alt=""><div class="thumb-scrim${layout}"></div>` : "",
     `<div class="thumb series${layout}">`,
     data.tag ? `<div class="tag${pillar}">${richText(data.tag)}</div>` : "",
     `<h1 class="fit">${richText(data.headline)}</h1>`,
