@@ -690,6 +690,23 @@ export const THUMB_LAYOUTS = ["a", "b", "c"];
 export const THUMB_BOLD_LAYOUT = "d";
 export const isBoldThumbSlug = (slug) => /^(?:curio|story)-/.test(slug ?? "");
 /**
+ * The split layout (the owner, 2026-11-08, for the curio redo: "the subject should not be covered
+ * by the words", after So That's Why's thumbnails): a solid panel on the left holds the bold
+ * layout's yellow headline and white sub line, the picture fills the right panel and nothing is
+ * laid over it. `data.focus` (0 to 100, THUMB_FOCUS_DEFAULT) is where the picture sits across its
+ * panel, so a subject left of centre can be brought in. A video takes it only by naming it in
+ * `data.layout`; no slug defaults to it, so no thumbnail already drawn moves. Its CSS is inline
+ * (THUMB_SPLIT_CSS) for the same reason.
+ */
+export const THUMB_SPLIT_LAYOUT = "e";
+export const THUMB_FOCUS_DEFAULT = 50;
+const isFocus = (value) => Number.isInteger(value) && value >= 0 && value <= 100;
+// In the split panel a line the writer broke with "\n" stays one line when its script has no word
+// spaces to break at (Chinese, kana, Hangul headlines; a Thai sub line): the browser would cut such
+// a line mid-word (「もう死んで／た？」, 「โนบุนา／งะ」), so fitText shrinks it instead.
+const KEEP_LINE_SCRIPTS = /[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff\uac00-\ud7af]/;
+const THAI_SCRIPT = /[\u0e00-\u0e7f]/;
+/**
  * The AI look (the owner, 2026-11-01, after the AI 101 channel's 「AI新聞快報」): every AI video,
  * the daily brief, AI 科技資訊, AI 名詞十分鐘 and the hands-on tutorials, wears one thumbnail. The
  * picture fills the frame; the series' name (a brief's date, or the episode's `tag`, after it) is
@@ -882,10 +899,11 @@ function ownThumbnailProblems(thumbnail, series) {
   const data = thumbnail.data ?? {};
   const problems = [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"];
   const own = THUMB_SERIES[series];
-  const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT, THUMB_AI_LAYOUT];
+  const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT, THUMB_SPLIT_LAYOUT, THUMB_AI_LAYOUT];
   if (data.layout !== undefined && !layouts.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${layouts.join(", ")}`);
   if (data.subject !== undefined && (!own || !THUMB_SERIES_SUBJECTS.includes(data.subject))) problems.push(own ? `thumbnail.data.subject must be one of ${THUMB_SERIES_SUBJECTS.join(", ")}` : "thumbnail.data.subject is a series thumbnail's option");
   if (data.layout === THUMB_AI_LAYOUT && isText(data.headline) && data.headline.includes("\n")) problems.push("thumbnail.data.headline takes one line in the AI look: the subject, then the **hook**; remove the line break");
+  if (data.focus !== undefined && !isFocus(data.focus)) problems.push("thumbnail.data.focus must be a whole number from 0 (the picture's left edge) to 100 (its right edge)");
   if (data.tone !== undefined && !THUMB_TONES.includes(data.tone)) problems.push(`thumbnail.data.tone must be one of ${THUMB_TONES.join(", ")}`);
   if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
   if (data.capture !== undefined && !captureRef(data.capture)) problems.push('thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture');
@@ -935,6 +953,19 @@ const THUMB_RIGHT_CSS =
 // The brand name's look. Inline, as the keyframe CSS is, so that adding it moved no other video's
 // thumbnail key: only a thumbnail with a brand carries it. Orange on the column's dark ground or
 // tone, the heaviest weight, one line, a short rule under it that sets it apart from the headline.
+// The split layout (THUMB_SPLIT_LAYOUT): the picture is the right 47%, the panel the rest, on the
+// series' deep navy. The headline and sub line wear the bold layout's outline, a little smaller,
+// and fitText shrinks a long translated headline inside the panel instead of over the picture.
+const THUMB_SPLIT_CSS =
+  ".thumb-subject.layout-e{width:47%;border-left:6px solid #000}" +
+  ".thumb-subject.layout-e img{object-position:var(--focus,50%) center}" +
+  ".thumb.column.layout-e{right:47%;padding:48px 36px 104px 52px;gap:16px;justify-content:center;background:#16233b}" +
+  ".thumb.column.layout-e .tag{display:none}" +
+  ".thumb.column.layout-e h1{color:#ffd60a;font-size:144px;max-height:420px;letter-spacing:.02em;-webkit-text-stroke:6px #000;paint-order:stroke fill;text-shadow:0 5px 0 #000}" +
+  ".thumb.column.layout-e .sub{color:#fff;font-size:58px;font-weight:900;max-height:150px;-webkit-text-stroke:4px #000;paint-order:stroke fill;text-shadow:0 3px 0 #000}" +
+  ".thumb.column.layout-e .brand{left:52px;bottom:44px;color:var(--paper);opacity:.85}" +
+  ".thumb.column.layout-e .keep-lines{white-space:nowrap}";
+
 const THUMB_MARQUE_CSS =
   ".thumb .marque{align-self:stretch;font-weight:900;line-height:1.05;color:var(--orange);white-space:nowrap;overflow:hidden;letter-spacing:.01em;" +
   "padding-bottom:14px;border-bottom:8px solid var(--orange);max-height:200px}";
@@ -956,22 +987,24 @@ export function thumbnailHtml(thumbnail, { background = null, subject = null, se
   if (own) return page(seriesThumbnailBody(data, own, background), THUMB_SIZE, [background ? THUMB_BACKGROUND_CSS : "", background && THUMB_SERIES_SUBJECTS.includes(data.subject) ? THUMB_SUBJECT_CSS : "", data.layout === "right" ? THUMB_RIGHT_CSS : "", THUMB_SERIES_CSS[series]].join(""), { locale });
   if (data.layout === THUMB_AI_LAYOUT) return page(aiThumbnailBody(data, { background, subject, locale, slug, aiSeries }), THUMB_SIZE, THUMB_AI_CSS, { locale });
   const rotation = thumbnailRotation(slug, offset);
-  const layout = THUMB_LAYOUTS.includes(data.layout) || data.layout === THUMB_BOLD_LAYOUT ? data.layout : isBoldThumbSlug(slug) ? THUMB_BOLD_LAYOUT : rotation.layout;
+  const layout = THUMB_LAYOUTS.includes(data.layout) || data.layout === THUMB_BOLD_LAYOUT || data.layout === THUMB_SPLIT_LAYOUT ? data.layout : isBoldThumbSlug(slug) ? THUMB_BOLD_LAYOUT : rotation.layout;
   const tone = THUMB_TONES.includes(data.tone) ? data.tone : rotation.tone;
   const classes = `layout-${layout} tone-${tone}`;
+  const split = layout === THUMB_SPLIT_LAYOUT;
+  const focus = isFocus(data.focus) ? data.focus : THUMB_FOCUS_DEFAULT;
   const kind = THUMB_SUBJECTS.includes(subject) ? subject : THUMB_SUBJECTS[1];
   // A brand story's company (THUMB_BRAND_MAX) in place of the tag; one that cannot be drawn is render's to report (thumbnailProblems).
   const marque = isText(data.brand) && !brandProblem(data.brand) ? data.brand : null;
   const body = [
-    `<div class="thumb-subject ${classes}${background ? ` from-${kind}` : ""}">${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
+    `<div class="thumb-subject ${classes}${background ? ` from-${kind}` : ""}"${split ? ` style="--focus:${focus}%"` : ""}>${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
     `<div class="thumb column ${classes}">`,
     marque ? `<div class="marque fit" style="font-size:${brandFontSize(marque)}px">${escapeHtml(marque.trim())}</div>` : data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
-    `<h1 class="fit">${richText(data.headline)}</h1>`,
-    data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : "",
+    `<h1 class="fit${split && KEEP_LINE_SCRIPTS.test(data.headline ?? "") ? " keep-lines" : ""}">${richText(data.headline)}</h1>`,
+    data.sub ? `<div class="sub fit${split && THAI_SCRIPT.test(data.sub) ? " keep-lines" : ""}">${richText(data.sub)}</div>` : "",
     `<div class="brand">${BRAND}</div>`,
     "</div>",
   ].join("");
-  return page(body, THUMB_SIZE, marque ? THUMB_MARQUE_CSS : "", { locale });
+  return page(body, THUMB_SIZE, [marque ? THUMB_MARQUE_CSS : "", split ? THUMB_SPLIT_CSS : ""].join(""), { locale });
 }
 
 /**
