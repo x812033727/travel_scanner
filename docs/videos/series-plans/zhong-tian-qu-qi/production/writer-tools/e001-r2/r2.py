@@ -75,10 +75,12 @@ SHOTS = [
          motion="one right hand in a charcoal-grey suit sleeve enters from the top edge of the frame, lays its flat palm on the face-down résumé and in one firm push slides it across the glass to the near table edge at the bottom of the frame; then the hand draws back out through the top edge",
          zh="桌面插入鏡、桌面高度、固定（第一格就是桌面；畫面上緣就是遠端桌面，桌面以上都在畫外）：履歷背面朝上、一張白紙；面試官一隻手（深灰西裝袖）從畫面上緣伸進來，手掌平按履歷一推，履歷朝鏡頭滑到近端桌邊，手從上緣收回，履歷仍背面朝上（面試官在畫外說話；2026-11-07 真人版第二輪挑片後改鏡頭設計）"),
     dict(loc="office", cam="Medium shot to medium close-up, slow push in", chars=["xuyan"], looks={"xuyan": "modern"},
-         comp="medium shot, closing in to a medium close-up by the end, of Xu Yan in a dark modern suit, white shirt and dark tie, seated at the long glass table on screen left, facing right, the résumé face down on the glass in front of him with its plain back up, his eyes on the interviewer off screen right; he opens with a small polite smile that fades as he speaks, and from then on controlled anger: his jaw clenched tight, his brows drawn down and level, his eyes hard and unblinking, his lips pressed flat between words, no smile again to the end of the shot",
+         comp="medium shot, closing in to a medium close-up by the end, of Xu Yan in a dark modern suit, white shirt and dark tie, seated at the long glass table on screen left, facing right, the résumé face down on the glass in front of him with its plain back up, his eyes on the interviewer off screen right; from the very first frame his face is held-back anger, no smile at any moment: his jaw clenched so the muscle at its hinge stands out, his brows pulled down hard and knotted between his eyes, his eyes narrowed, hard and fixed on the interviewer, his nostrils flared, his lips pressed into a thin line between words, the corners of his mouth turned down",
          lines=[("xuyan", "種田怎麼了？全世界的人，每天都要吃飯。", "壓著火，很穩")],
-         motion="his polite smile fades as he speaks and his jaw sets hard; only then he draws the résumé back across the glass, squares it and folds it once, plants both palms, pushes his chair back and stands, his jaw still tight",
-         zh="中近景、慢推（中景推到中近景）：許硯（現代西裝）開口時禮貌的笑慢慢收掉，變成壓著火（咬緊牙、眉壓低、眼神硬、之後不再笑）；然後才把履歷抽回來對齊摺好，推開椅子站起來（2026-11-07 審稿重寫）"),
+         # e901 live expression review (2026-11-08): "a small polite smile that fades" came first and won (0-2.5 s a
+         # cheerful smile, then a flat face). The anger is now the face from the first frame, written as brows, eyes, jaw.
+         motion="his words come out through a clenched jaw, his brows pressing lower on 「每天都要吃飯」, and after the last word he lets out one sharp breath through his nose; only then he draws the résumé back across the glass, squares it and folds it once, plants both palms, pushes his chair back and stands, his jaw still clenched, his eyes never leaving the interviewer, never smiling",
+         zh="中近景、慢推（中景推到中近景）：許硯（現代西裝）從第一格起就是壓著火、完全不笑：咬緊牙（腮幫子鼓起）、眉頭往下壓緊、眼睛瞇起直盯著面試官、鼻翼張開、嘴抿成一條線、嘴角往下；說到「每天都要吃飯」眉壓得更低，說完用鼻子重重出一口氣；然後才把履歷抽回來對齊摺好，推開椅子站起來，牙一直咬著、眼睛不離開面試官（2026-11-07 審稿重寫；2026-11-08 真人版表情審查：拿掉開場的笑）"),
     dict(loc="street", cam="Full shot from behind, tracking", chars=["xuyan"], looks={"xuyan": "modern"}, nospeak=["xuyan"],
          comp="full shot from behind of Xu Yan in his dark modern suit, soaked through, walking away from the camera down the middle of the wet street, rain streaks falling close across the foreground, the street otherwise empty",
          lines=[("xuyan", "算了，這些話說了也沒人聽。", "低聲自嘲")],
@@ -173,13 +175,17 @@ SHOTS = [
     dict(loc="house", cam="Two-shot, slow push in", chars=["xiaohe", "xuyan"], night="house",
          comp=f"two-shot at the low table, Xu Yan seated on a stool on screen left, his robe half-dry with damp sleeves, and little Xiaohe on screen right holding one clay bowl half full of thin porridge in both hands, {RABBIT}; on the low table in front of Xu Yan already stands a second clay bowl, empty, so two clay bowls are on the table by the end",
          lines=[("xiaohe", "還有半碗粥，哥你先吃，我不餓。", "懂事")],
-         motion="Xiaohe walks carefully from the stove with small steps so nothing spills, rises onto her tiptoes and pushes the bowl across the low table to Xu Yan with both hands, then settles back on her heels; Xu Yan looks from the bowl up to her, his lips closed",
-         zh="雙人鏡、慢推：小禾雙手捧著半碗稀粥從灶邊小心走過來，踮腳把碗推到矮桌上他面前；矮桌上另放一個空陶碗（c19 倒粥用）"),
+         # e901 live expression review (2026-11-08): no face was written and both came out blank. Her brave pretence and
+         # his heartache (the reason for s19's promise) are now written as brows, eyes, mouth and throat at their moments.
+         motion="as she speaks she puts on a small brave smile that trembles at the corners and does not reach her eyes, her brows tilted up in the middle, her eyes big and wet, not a happy smile; her eyes dart to the porridge once, and on 「我不餓」 she swallows and gives a quick shake of her head; Xiaohe walks carefully from the stove with small steps so nothing spills, rises onto her tiptoes and pushes the bowl across the low table to Xu Yan with both hands, then settles back on her heels; Xu Yan looks from the bowl up to her, his lips closed, his brows drawing up and together in the middle, his eyes glistening, his throat tightening as he swallows hard, the corners of his mouth pulled down, no smile",
+         zh="雙人鏡、慢推：小禾雙手捧著半碗稀粥從灶邊小心走過來，踮腳把碗推到矮桌上他面前；矮桌上另放一個空陶碗（c19 倒粥用）。小禾說話時擠出逞強的小笑（嘴角發抖、笑不到眼睛、眉頭往上皺、眼睛水亮，不是開心的笑），眼睛偷瞄一下粥，說「我不餓」時吞一下口水、很快搖頭；許硯從碗抬頭看她，眉頭往中間皺起、眼眶發亮、喉嚨一緊用力吞口水、嘴角往下，心疼、不笑（2026-11-08 真人版表情審查）"),
     dict(loc="house", cam="Close-up of the bowls, slow pull out to Xu Yan's close-up", chars=["xuyan"], night="house",
-         comp="close-up of two clay bowls on the low table: right in front of Xu Yan on screen left his own clay bowl, filled with thin porridge; on the screen-right side of the table, set for Xiaohe off screen right, the second clay bowl, empty, its brown clay inside dry; widening to a close-up of Xu Yan seated behind them on screen left, his sleeves damp, little Xiaohe off screen right",
+         comp="close-up of two clay bowls on the low table: right in front of Xu Yan on screen left his own clay bowl, filled with thin porridge; on the screen-right side of the table, set for Xiaohe off screen right, the second clay bowl, empty, its brown clay inside dry; widening to a close-up of Xu Yan seated behind them on screen left, his sleeves damp, little Xiaohe off screen right; his brows set firm, his eyes warm on her, no grin",
          lines=[("xuyan", "一人一半。從今天起，哥不會再讓你餓肚子。", "認真")],
-         motion="Xu Yan lifts his own full bowl, tilts it over the empty bowl and pours half the porridge into it, so the second bowl now holds half; he sets his bowl down, slides the second bowl across the table to Xiaohe off screen right and lifts his eyes to her",
-         zh="碗的特寫慢慢拉到許硯近景：開頭許硯面前是他那碗盛著稀粥的碗、桌子右邊小禾的位置是乾的空碗；許硯端起自己那碗，倒一半到空碗裡，放下自己的碗，把倒好的那碗推給畫面右邊的小禾，抬頭看她（2026-11-08 真人版成片審查：粥從空碗倒出來，寫清楚哪碗滿、哪碗空）"),
+         # e901 live expression review (2026-11-08): the promise came out as a polite flat face (no emotion word was sent).
+         # The pour stays as fixed in fix4; the resolve is written as brows, eyes, jaw and a nod on 「從今天起」.
+         motion="Xu Yan lifts his own full bowl, tilts it over the empty bowl and pours half the porridge into it, so the second bowl now holds half, his brows drawn together and his lips pressed in concentration; he sets his bowl down, slides the second bowl across the table to Xiaohe off screen right and lifts his eyes to her; on 「從今天起」 his face fills with earnest, warm resolve: his eyes soften and shine as they hold hers, his brows set firm and straight, his jaw firms, and he gives one slow resolute nod, his mouth set, no grin, not a happy smile",
+         zh="碗的特寫慢慢拉到許硯近景：開頭許硯面前是他那碗盛著稀粥的碗、桌子右邊小禾的位置是乾的空碗；許硯端起自己那碗，倒一半到空碗裡（倒的時候眉頭微皺、抿著嘴專心倒），放下自己的碗，把倒好的那碗推給畫面右邊的小禾，抬頭看她；說到「從今天起」臉上是認真又溫柔的決心：眼神放軟、發亮地看著她，眉毛定住、下巴收緊，慢慢點一下頭，不咧嘴、不是開心的笑（2026-11-08 真人版成片審查：粥從空碗倒出來，寫清楚哪碗滿、哪碗空；同日表情審查：承諾要有決心）"),
     # ---- scene 3: the yard, near noon. Axis: the Xu side (Xu Yan, Xiaohe, Erniu) on the left; Zhao and the brides come in by the gate on the right.
     dict(chapter="配婚令", loc="yardin", cam="Insert, static", chars=["zhaobutou"], nospeak=["zhaobutou"], night="yard",
     # live pick (2026-11-07) and fix1: nobody ever kicked the gate; it was pushed open toward the camera from the yard side
@@ -206,11 +212,13 @@ SHOTS = [
          lines=[("zhaobutou", "那是你的事。人我帶來了，一個都不能少。", "冷笑")],
          motion="Zhao gives a cold smirk and takes one big step to the side, sweeping his arm toward the gateway so the two women stand revealed; Qin Shuang lifts her chin, both her hands empty at her sides; A-ling keeps her head bowed and her eyes on the ground from the first frame to the last; both women keep their lips closed",
          zh="全景、慢推：趙捕頭冷笑著往旁邊讓開一大步，露出院門口的秦霜（前；柴刀一直插在腰帶右邊、兩手空著）與低著頭、戴鐵鐐的阿令（後；整鏡一直低頭看地上，抬眼留給 s38；2026-11-08 真人版成片審查）"),
-    dict(loc="yard", cam="Medium shot, tracking", chars=["qinshuang", "xuyan"], night="yard",
-         comp=f"medium shot of Qin Shuang in the yard, her arms folded, {KNIFE}, her face scornful, and Xu Yan standing at the left edge of the frame, partly cut off, his robe half-dry",
+    # e901 live expression review (2026-11-08): "her face scornful" and "a cool tilt of her head" drew a neutral face on her
+    # first line, and the medium shot kept it small. Medium close-up now, and the disdain written as eyes, brows and mouth.
+    dict(loc="yard", cam="Medium close-up, tracking", chars=["qinshuang", "xuyan"], night="yard",
+         comp=f"medium close-up of Qin Shuang in the yard, her face large and clear in the frame, her arms folded, {KNIFE}, her chin raised, her eyelids half lowered as she looks down her nose at him, and Xu Yan standing at the left edge of the frame, partly cut off, his robe half-dry",
          lines=[("qinshuang", "就這身板？風大一點，都能把你吹回河裡。", "不屑")],
-         motion="Qin Shuang strides up with her arms folded and walks half a circle around Xu Yan, looking him up and down from head to feet with a cool tilt of her head, and stops facing him; Xu Yan turns his head to follow her, his lips closed",
-         zh="中景、跟拍：秦霜雙手抱胸大步上前，繞著許硯走半圈上下打量他"),
+         motion="Qin Shuang strides up with her arms folded and walks half a circle around Xu Yan, her eyes travelling slowly down him from his face to his feet and back up, one eyebrow cocked high, and stops facing him; on 「就這身板？」 one corner of her mouth curls up in a contemptuous half-smile, lips thin, no teeth, not a friendly smile, and on 「吹回河裡」 she gives a short scornful snort through her nose; Xu Yan turns his head to follow her, his lips closed, his jaw tightening",
+         zh="中近景、跟拍（2026-11-08 真人版表情審查：原本中景、臉太小）：秦霜雙手抱胸大步上前，繞著許硯走半圈，眼睛從他的臉慢慢往下看到腳再看回來、一邊眉毛挑高、下巴抬起、眼皮半垂從鼻尖往下看他，停在他面前；說「就這身板？」時一邊嘴角往上撇、冷笑（嘴唇薄、不露牙，不是友善的笑），說到「吹回河裡」從鼻子哼一聲；許硯轉頭跟著她，嘴閉著、下巴一緊"),
     dict(loc="yard", cam="Close-up, slow push in", chars=["xuyan"], night="yard",
          comp="close-up of Xu Yan on screen left, his blue-grey robe half-dry and his sleeves still wet, his eyes on Qin Shuang off screen right; behind him only the sunlit yard and the bamboo fence",
          lines=[("xuyan", "昨晚已經掉進去一次了，謝謝提醒。", "自嘲，乾笑")],
