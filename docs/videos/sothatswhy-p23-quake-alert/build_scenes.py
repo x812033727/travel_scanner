@@ -62,14 +62,18 @@ EXTRA = {}
 # Picture review round 1 (2026-11-07, README §10.1): an independent reviewer zoomed every picture.
 # REWRITE replaces the prompt of shots with no usable take; FIX appends to shots with a severe fault.
 REWRITE = {
- "blind-tilt": "Two small cottages leaning on a rolling green hill with bold wobble lines, plain clean red roof tiles, round leafy trees, smooth empty cream sky, bright daylight",
- "city-shake": "A city of plain smooth unmarked tall buildings in a green basin wobbling with bold curved motion lines at their sides, swaying trees, a rippling river, clear empty sky, bright daylight",
+ "kid-far-sure": "Wide view of a small far town on a green plain with a plain smooth unmarked phone tower beside it, bright daylight",
+ "kid-miss": "Close-up of a plain smooth dark phone lying quiet on a wooden table, soft calm light, bright daylight",
+ "kid-instant": "A friendly plain smooth unmarked cartoon desktop computer with a softly glowing round light on its front, on a plain wooden desk, clean empty cream wall, bright daylight",
+ "kid-table-shake": "A breakfast table wobbling with bold motion lines, a glass of milk tipping over and splashing, a plain smooth phone glowing orange beside it, sunny kitchen, bright daylight",
+ "blind-tilt": "Two small cottages leaning on an empty rolling green hill, bold curved wobble lines around them, plain red roof tiles, smooth empty cream sky, bright daylight",
+ "city-shake": "Close-up of a plain round ceiling light swinging hard with bold curved motion lines in a plain apartment room, bright daylight",
  "road-far": "A long straight road stretching toward a small far town, a huge round brown boulder rolling slowly on it, bright daylight",
  "computer-dots": "A huge round brown boulder rolling steadily along a country road, a trail of dust behind it, bright daylight",
- "computer-again": "The same friendly plain smooth unmarked cartoon desktop computer with a brighter, bigger glowing round light on its front, on a plain wooden desk, clean empty cream wall, bright daylight",
+ "computer-again": "A friendly plain smooth unmarked cartoon desktop computer with a softly glowing round light on its front, on a plain wooden desk, clean empty cream wall, bright daylight",
  "computer": "A friendly plain smooth unmarked cartoon desktop computer with a softly glowing round light on its front, on a plain wooden desk, clean empty cream wall, bright daylight",
  "big-wave-far": "A huge round brown boulder rolling along a long country road, a long empty stretch of road between it and a glowing crack in the ground, bright daylight",
- "speed": "A long straight country road through green fields, a small bright yellow ball of light zooming along it and a huge round brown boulder rolling slowly far from it, a long empty stretch of road between them, bright daylight",
+ "speed": "Flat cartoon of a straight country road, a small bright yellow ball of light with long speed streaks far down the road, a huge round brown boulder with short dust puffs far behind it, bright daylight",
  "big-wave": "Underground cutaway of brown rock layers with a huge slow round brown boulder pushing through them, wide side-to-side wobble lines around it, bright daylight",
  "messenger": "Underground cutaway of brown rock layers with a small bright yellow ball of light racing quickly through them, long speed trails behind it, bright daylight",
  "phone-orange": "Close-up of a smartphone lying face-down on a sunny wooden breakfast table, a warm orange glow spilling out around its edges and little curved motion lines showing it buzzing, beside a bowl of rice porridge and a glass of milk, bright daylight, a still-life of objects only, simple flat 2D cel-shaded children's cartoon illustration with clean ink outlines, warm bright colours.",
@@ -98,10 +102,10 @@ FIX = {
  "chief-takes-time": "simple flat cartoon face matching the reference sheet",
  "kid-what-see": "facing the viewer, both eyes the same size with matching dark pupils",
  "kid-station-shout": "flat 2D cartoon, glossy black bob with straight bangs, plain cream room",
- "chief-gap": "glossy black hair tied in a low ponytail",
+ "chief-gap": "chief with glossy jet-black low ponytail, round black glasses, yellow pencil tucked behind one ear",
  "kid-gap-q": "glossy black bob with straight bangs, bare hair, light skin as on the reference sheet",
  "kid-order-got": "glossy black bob with straight bangs and one cowlick",
- "kid-updown": "bouncing up on her toes as the floor pushes up, small motion lines",
+ "kid-updown": "girl with jet-black bob and bangs, hood down on shoulders, small happy hop with both feet off the floor",
  "chief-predict": "same slim proportions as the reference sheet",
  "kid-phone-blare": "a big orange-glowing phone buzzing with bold vibration lines",
  "kid-loud-q": "both eyes the same size with matching dark pupils, bare black bob with straight bangs",
@@ -117,7 +121,7 @@ FIX = {
  "chief-if-fast": "both pupils looking in the same direction, matching eye size, round symmetric black glasses, calm thoughtful expression",
  "phones-many": "many plain phones on a table each glowing with soft light and small curved sound waves, clean dry tabletop, calm tidy scene",
  "kid-my-seconds": "bright wide eyes with both pupils looking the same way, delighted aha expression, finger raised, closer medium shot",
- "kid-far-more": "flat 2D cartoon, glossy black bob with straight bangs",
+ "kid-far-more": "girl with black bob and cowlick, arms spread wide, eyes closed as two happy upward curves, big open smile",
  "chief-near": "both eyes level and equal in size looking the same way, small earrings hanging from the earlobes, pencil tucked behind one ear",
  "blind-village": "a cutaway diagram of gentle layered ground beneath an intact calm village, a small glowing point deep below, soft rings spreading upward",
  "chief-blind-see": "big perfectly round black glasses, yellow pencil tucked behind her ear, hands folded at her waist",
@@ -173,7 +177,7 @@ kid("kid-phone-blare", K("jumping up startled from her chair beside " + PHONE + 
     k("所長！昨天早上我在吃早餐，", "興奮，跑進來報案的語氣"), k("媽媽的手機突然大叫！", "誇張"), chapter="手機先大叫，房子才搖")
 scene("phone-orange", "Close-up of " + PHONE + " hard on a sunny wooden breakfast table beside a bowl of rice porridge and a glass of milk, " + DAY,
       k("爸爸的手機也一起叫，", "比手畫腳"), k("好大聲，好可怕！"))
-kid("kid-table-shake", K("holding tightly onto the edge of " + TABLE + " with wide startled eyes as a glass of milk on it wobbles", where=LIVING),
+scene("kid-table-shake", K("holding tightly onto the edge of " + TABLE + " with wide startled eyes as a glass of milk on it wobbles", where=LIVING),
     k("過了幾秒，房子就開始搖！", "緊張"), k("先輕輕的，再一下子大搖！", "比手畫腳", "S:order"), k("牛奶都灑出來了！", "委屈"))
 kid("kid-how-know", K("tilting her head with a puzzled frown, both hands out of frame", close=True),
     k("手機怎麼比地震還早知道？", "句尾上揚"))
@@ -265,7 +269,7 @@ kid("kid-what-see", K("squinting thoughtfully with a curious face, both hands ou
     k("看小信差，能看出什麼？", "句尾上揚"))
 scene("towns-estimate", "Wide view of many small towns spread over green hills on a sunny day, some towns glowing a soft warm orange and others calm, " + DAY,
       c("看出起點在哪裡、地震有多大，"), c("再估計大個子會跑到哪裡、搖得多兇。"))
-kid("kid-instant", K("standing with both hands on her hips and a confident grin", where=LIVING),
+scene("kid-instant", K("standing with both hands on her hips and a confident grin", where=LIVING),
     k("電腦一下子就算好了吧！", "很有把握的錯猜", "S:compute"))
 chief("chief-takes-time", C("tilting her head with a gentle smile"),
       c("算也要時間。像二〇一六年的美濃地震，"), c("電腦大約十二秒，才算出第一次的答案。", None, "P:compute"))
@@ -349,7 +353,7 @@ kid("kid-blind-p", K("holding very still with wide alert eyes, both hands out of
     k("那邊也會像我那天一樣，", "想起來"), k("先輕輕的嗎？", "句尾上揚"))
 scene("blind-tilt", "Medium shot of small cartoon houses on green grass with gently tilting roofs and leaning little trees, a soft glow in the ground under them, " + DAY,
       c("對，大個子可能就在後面。"), c("所以在那裡，搖晃本身就是警報。"))
-kid("kid-far-sure", K("hugging a round cushion with a thinking face", where=LIVING),
+scene("kid-far-sure", K("hugging a round cushion with a thinking face", where=LIVING),
     k("那住得遠的人，", "好奇"), k("就一定會收到嗎？", "句尾上揚"))
 chief("chief-recall-est", C("raising one finger with a serious kind face", close=True),
       c("不一定。還記得電腦算的是估計嗎？", "點名回呼"), c("開頭說的台北那一次，是二〇二四年四月，", "點名回呼"))
@@ -389,7 +393,7 @@ chief("chief-wait", C("tilting her head with a thoughtful smile"),
       c("等越久，大個子就跑越遠，"), c("大家搶到的時間就越少。"))
 scene("towns-glow", "Wide view of many small towns across green hills on a sunny day, most of them glowing a soft warm orange at the same moment, " + DAY,
       c("所以後來氣象署也改了規則：很大的地震，"), c("搖得沒那麼兇的地方，也會收到警報。"))
-kid("kid-miss", K("hugging her knees and looking down with a thoughtful face", where=LIVING),
+scene("kid-miss", K("hugging her knees and looking down with a thoughtful face", where=LIVING),
     k("原來警報也會漏掉……", "若有所思"))
 chief("chief-helper", C("smiling warmly at the viewer with one hand on her chest", close=True),
       c("警報是你很好的幫手，可是它是估出來的。", "轉向觀眾"))
