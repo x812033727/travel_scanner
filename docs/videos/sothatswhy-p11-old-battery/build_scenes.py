@@ -124,7 +124,7 @@ kid("kid-still-full", K("spreading both hands wide with a confused face", where=
 chief("chief-you", C("leaning in a little with a friendly smile", close=True),
       c("很多人都跟你一樣，以為電量還多，電池就還好。", "轉向觀眾"))
 scene("phone-tease", "Close-up of a plain smooth unmarked dark phone lying quiet on " + TABLE + ", soft warm light around it, " + DAY,
-      c("其實那一下黑掉，有一個你想不到的原因。", "賣關子", "S:onpurpose"), c("而且電池裡面，正偷偷長著一層東西。", "賣關子", "S:skin"))
+      c("其實手機突然黑掉，有一個你想不到的原因。", "賣關子", "S:onpurpose"), c("而且電池裡面，正偷偷長著一層東西。", "賣關子", "S:skin"))
 kid("kid-tease", K("gasping with a round open mouth, both hands out of frame", close=True),
     k("想不到的原因？還會長東西？", "驚訝"))
 scene("battery-open", "Close-up of a plain smooth rounded battery cell lying on " + TABLE + ", soft warm light, " + DAY,
@@ -138,7 +138,7 @@ scene("bottle", "Close-up of " + BOTTLE + " half full of water on " + TABLE + ",
 kid("kid-bottle", K("holding " + BOTTLE + " in both hands with a curious face", where=OFFICE),
     k("我的水壺？", "好奇"), k("電也能裝在壺裡？", "句尾上揚"))
 scene("bottle-level", "Close-up of " + BOTTLE + " with only a little water remaining in it, on " + TABLE + ", " + DAY,
-      c("我們就這樣想：電是壺裡的水。"), c("螢幕上的百分比，是壺裡現在還剩幾分滿。"))
+      c("我們就這樣想：電是壺裡的水。"), c("螢幕上的百分比，是水壺現在還剩幾分滿。"))
 kid("kid-twenty", K("with a small worried face, both hands out of frame", close=True),
     k("那我的手機，", "想一想"), k("就是只剩一點點水？", "句尾上揚"))
 scene("bottle-fill", "Close-up of " + BOTTLE + " being filled at a kitchen tap with fresh sparkling water, sunny kitchen, " + DAY,
@@ -178,9 +178,9 @@ scene("battery-layer", "A simple flat illustration of " + BOTTLE + " with a thin
 kid("kid-only-scale", K("tilting her head with a curious squint, both hands out of frame", close=True),
     k("電池變老，", "好奇"), k("只是因為水垢嗎？", "句尾上揚"))
 chief("chief-many-causes", C("holding one hand open with a thoughtful smile"),
-      c("不只。科學家找到好幾種讓電池變老的原因，"), c("水垢是常被提到的主要原因之一。"))
+      c("還有別的。科學家找到好幾種讓電池變老的原因，"), c("水垢是常被提到的主要原因之一。"))
 scene("bottle-crust", "Close-up of " + BOTTLE + " with a thick white crust lining its inside walls, holding only a little water, " + DAY,
-      c("水垢會把一些本來能存電的東西，卡在裡面。"), c("長得越厚，壺能裝的電就越少。", None, "P:shrink"))
+      c("水垢會把一些本來能幫忙裝電的小東西，卡在裡面。"), c("長得越厚，壺能裝的電就越少。", None, "P:shrink"))
 kid("kid-brush", K("with a clever confident grin, both hands out of frame", where=OFFICE),
     k("那把水垢刷掉，", "很有把握的錯猜"), k("不就好了？", "句尾上揚", "S:brush"))
 chief("chief-brush", C("shaking her head with a gentle smile", close=True),
@@ -262,7 +262,7 @@ chief("chief-three", C("nodding firmly with a proud smile", close=True),
 kid("kid-full-q", K("squinting in thought with a curious face, both hands out of frame", close=True),
     k("那電多的時候，", "推理"), k("怎麼就不會黑掉？", "句尾上揚"))
 scene("full-pour", "Close-up of " + WIDE + ", full to the brim and tipped over a glass, a strong steady stream pouring out, " + DAY,
-      c("壺裡水多，倒起來比較有力；"), c("水少了，再碰上窄壺嘴，就容易倒不夠。"))
+      c("壺裡水多，倒起來比較有力；"), c("可是水一少，再碰上窄壺嘴，就容易倒不夠。"))
 kid("kid-cold-q", K("hugging herself with a shivering face and pink cheeks", where=OFFICE),
     k("那今天那麼冷，", "想起來"), k("也有關係嗎？", "句尾上揚"))
 scene("cold-bench", "A plain smooth unmarked phone on a frosty wooden park bench on a crisp clear winter morning, a little frost on the slats, " + DAY,
