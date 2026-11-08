@@ -87,14 +87,26 @@ if not os.path.exists(readme):
         f"- 稿子與 `build_scenes.py` 在工作分支的 `docs/videos/{slug}/`。\n\n## 紀錄\n\n")
 open(readme, "a", encoding="utf-8").write(f"- {time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())}：{message}（{len(manifest)} 個檔案）\n")
 
-run("git", "add", "-A")
-if run("git", "status", "--porcelain", capture=True).decode().strip():
-    run("git", "commit", "-q", "-m", f"backup: {slug} {message}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_018EYovHhG7uMki2Ri6NGbqt")
-for attempt in range(5):
-    if subprocess.run(["git", "push", "-q", "-u", "origin", branch], cwd=wt).returncode == 0: break
-    time.sleep(2 ** (attempt + 1))
-else:
+# GitHub refuses a push over 2 GiB: commit and push in batches of at most 900 MB, MANIFEST and README last.
+def push():
+    for attempt in range(5):
+        if subprocess.run(["git", "push", "-q", "-u", "origin", branch], cwd=wt).returncode == 0: return
+        time.sleep(2 ** (attempt + 1))
     sys.exit("push failed")
+pending = [l[3:] for l in run("git", "status", "--porcelain", "-uall", capture=True).decode().splitlines() if l]
+meta = [f for f in pending if f in ("MANIFEST.tsv", "README.md")]
+data = [f for f in pending if f not in meta]
+batches, cur, size = [], [], 0
+for f in data:
+    fs = os.path.getsize(os.path.join(wt, f)) if os.path.exists(os.path.join(wt, f)) else 0
+    if cur and size + fs > 900 * 1024 * 1024: batches.append(cur); cur, size = [], 0
+    cur.append(f); size += fs
+if cur: batches.append(cur)
+if meta: batches.append(meta)
+for i, b in enumerate(batches, 1):
+    run("git", "add", "-A", "--", *b)
+    run("git", "commit", "-q", "-m", f"backup: {slug} {message}" + (f" (part {i}/{len(batches)})" if len(batches) > 1 else "") + "\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_018EYovHhG7uMki2Ri6NGbqt")
+    push()
 
 # verify from the remote
 run("git", "fetch", "-q", "origin", branch)
