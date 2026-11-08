@@ -1086,6 +1086,7 @@ python3 -I docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scri
     - 「cold」被當成聲音，「does not smile」照樣出笑臉。
   - 月棠的「冷靜」要寫成看得出來的冷靜：專注、有神的眼睛、屏住的呼吸、一點點了然。不是空白臉。
   - 福伯的老臉會把情緒壓小，他的描述要寫得比別人更外放、更具體。
+  - 角色的固定外貌描述（`cast.json` 的 appearance）不寫表情：建業的「a too-wide salesman's smile」讓他在每一支都笑，連寫明「嘴抿成一直線」的鏡也一樣（第 1 集 c15 拍了四支都在笑）。2026-11-08 已把五個角色描述裡的固定笑容換成不帶表情的寫法；皺紋（smile lines、laugh lines）可以留。
   - 說話的近景寫明看著哪一邊畫外的人，不對鏡頭說話。不寫的話會變成主播臉，嘴角還會在字與字之間上揚。
   - 一鏡之內的情緒轉變（笑容收起、愣住），模型多半做不到：開場就給目標表情，或寫明第幾秒做什麼動作。
   - `production/tools/compile.py --check` 會列出表情描述不夠的鏡（每人至少兩處），寫完分鏡就跑。
