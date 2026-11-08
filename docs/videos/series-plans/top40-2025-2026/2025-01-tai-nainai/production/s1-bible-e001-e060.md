@@ -1093,6 +1093,9 @@ python3 -I docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scri
   - 一鏡之內的情緒轉變（笑容收起、愣住），模型多半做不到：開場就給目標表情，或寫明第幾秒做什麼動作。
   - `production/tools/compile.py --check` 會列出表情描述不夠的鏡（每人至少兩處），寫完分鏡就跑。
   - 劇本要木然的鏡（睡著、刻意收住）在 shots-en.json 寫清楚。
+- **拍法照種田**（站主 2026-11-08：「B 照種田的拍法重做第1~3集」「以後應該也要都用這樣的拍法」）：第 1–3 集重寫分鏡、整集重拍，之後每集都這樣拍。
+  鏡多鏡短（一集約 45–50 鏡）、每鏡有動作、切在動作中間、過肩與反打、前景、每張臉的表情、說話面對對方；分鏡開拍前過三道檢查與獨立審稿。
+  依據：種田 `camera-feel-study-20261105.md`、共用 `docs/videos/drama/WRITING.md`、`storyboard-shot-spec.md`；決定記在 `production/RULES.md` 第三之一節。
 
 ## 要站主決定的
 
