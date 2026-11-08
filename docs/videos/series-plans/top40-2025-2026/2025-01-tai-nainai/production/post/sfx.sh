@@ -15,14 +15,15 @@ for f in footstep_wood_000 footstep_concrete_000 footstep_concrete_001 creak1 cr
   [ -f "$SRC/$f.wav" ] || { echo "sfx.sh: $SRC/$f.wav missing; rebuild the 種田 library first" >&2; exit 1; }
   cp "$SRC/$f.wav" "$OUT/"
 done
-# 報信鈴：三顆小銅鈴錯開響兩下（第一版只有高音、太短，站主 2026-11-07：「鈴鐺應該要有聲音」聽不到）
-bell() { echo "(0.30*sin(2*PI*$1*(t-$2))*exp(-2.2*(t-$2))+0.20*sin(2*PI*$1*2.76*(t-$2))*exp(-4*(t-$2))+0.12*sin(2*PI*$1*5.4*(t-$2))*exp(-7*(t-$2)))*gte(t,$2)"; }
-expr="$(bell 1318 0)+$(bell 1568 0.05)+$(bell 1760 0.09)+0.8*($(bell 1318 0.42)+$(bell 1568 0.46)+$(bell 1760 0.5))"
-ffmpeg -v error -y -f lavfi -i "aevalsrc='$expr':s=48000:d=2.6" \
-  -af "aecho=0.7:0.5:35|60:0.3|0.2,highpass=f=400,afade=t=out:st=2.0:d=0.6,volume=1.6" -ac 2 "$OUT/baoxinling.wav"
-# 跑步時書包上的鈴輕輕晃：同一組鈴、一下、短
-expr2="$(bell 1318 0)+$(bell 1568 0.03)+$(bell 1760 0.06)"
-ffmpeg -v error -y -f lavfi -i "aevalsrc='$expr2':s=48000:d=0.9" -af "highpass=f=400,afade=t=out:st=0.5:d=0.4" -ac 2 "$OUT/baoxinling-shake.wav"
+# 報信鈴：真的鈴鐺錄音（站主 2026-11-08：鈴鐺聲怪怪的。第一、二版是正弦波合成的音階，像電子門鈴）。
+# 來源：Wikimedia Commons「File:Sleigh bells.wav」，作者 The Midnite Wolf，CC0；用的是 Commons 轉檔的 mp3
+# （原 wav 下載被限流）。存在 $OUT/src/commons-sleigh-bells-cc0.mp3（備份分支 transfer/tn-series-assets 有）。舊的合成版留在 src/*-synth-v1.wav。
+BELL="$OUT/src/commons-sleigh-bells-cc0.mp3"
+[ -f "$BELL" ] || { echo "sfx.sh: $BELL missing (restore it from transfer/tn-series-assets)" >&2; exit 1; }
+# 錄音很小聲（平均約 −46 dB），切掉 350 Hz 以下、加閘門壓底噪再放大
+ffmpeg -v error -y -ss 4.40 -to 7.00 -i "$BELL" -af "highpass=f=350,agate=threshold=0.004:ratio=4:release=80,volume=21dB,afade=t=in:d=0.01,afade=t=out:st=2.2:d=0.4,aresample=48000" -ac 2 "$OUT/baoxinling.wav"
+# 跑步時書包上的鈴輕輕晃：錄音裡一小下
+ffmpeg -v error -y -ss 1.15 -to 1.95 -i "$BELL" -af "highpass=f=350,agate=threshold=0.004:ratio=4:release=80,volume=25dB,afade=t=in:d=0.01,afade=t=out:st=0.55:d=0.25,aresample=48000" -ac 2 "$OUT/baoxinling-shake.wav"
 # 燈亮的低鳴：低音慢慢升起、帶一點泛音，三秒
 ffmpeg -v error -y -f lavfi -i "aevalsrc='(0.28*sin(2*PI*110*t)+0.14*sin(2*PI*165*t)+0.07*sin(2*PI*330*t))*(1-exp(-1.6*t))*exp(-0.35*t)':s=48000:d=3.2" \
   -af "lowpass=f=1200,afade=t=out:st=2.4:d=0.8" -ac 2 "$OUT/deng-hum.wav"
@@ -43,5 +44,5 @@ ffmpeg -v error -y -f lavfi -i "aevalsrc='0.5*sin(2*PI*4200*t)*exp(-180*mod(t,1)
 # 劃火柴：一下擦、一團火著
 ffmpeg -v error -y -f lavfi -i "anoisesrc=color=white:amplitude=0.6:d=1.2:seed=7" -af "bandpass=f=3500:width_type=o:w=2,volume='if(lt(t,0.12),1.0,0.35*exp(-2*(t-0.12)))':eval=frame,afade=t=out:st=0.9:d=0.3" -ac 2 "$OUT/match-strike.wav"
 # 報信鈴在鐵皮桶裡悶悶一響（招牌音效的悶版）
-ffmpeg -v error -y -i "$OUT/baoxinling.wav" -af "lowpass=f=900,aecho=0.6:0.5:25:0.4,volume=0.8" -ac 2 "$OUT/baoxinling-muffled.wav"
+ffmpeg -v error -y -i "$OUT/baoxinling.wav" -af "lowpass=f=3000,aecho=0.6:0.5:25:0.4,volume=16dB" -ac 2 "$OUT/baoxinling-muffled.wav"  # 錄音版的鈴在 900 Hz 以下幾乎沒有聲音
 ls "$OUT" | wc -l | xargs echo "sfx.sh: files in $OUT:"
