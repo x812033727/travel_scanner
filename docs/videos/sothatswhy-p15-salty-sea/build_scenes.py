@@ -68,7 +68,7 @@ REWRITE = {
  "kid-got2": "Close-up of a big plain smooth steel soup pot on the stove with a thin white ring of salt crust around its inner rim, warm sunny kitchen, flat 2D cartoon with clean ink outlines"
 }
 FIX = {
- "kid-splash": "short rounded black bob with straight bangs, hair ends falling smoothly inward at jaw level, one small cowlick on top",
+ "kid-splash": "short rounded black bob, hair ends curving inward at the jaw",
  "kid-salt-mountain": "mustard-yellow hood resting down on her shoulders, short black bob with straight bangs and one thin cowlick visible on bare head",
  "rock-dissolve": "plain smooth grey rock with soft matte texture and scattered tiny speckles, mineral grains drifting into the puddle",
  "all-rivers": "empty grassy riverbanks with plain bushes and small wildflowers, landscape only",
