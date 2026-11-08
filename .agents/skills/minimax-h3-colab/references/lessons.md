@@ -289,6 +289,7 @@ kernel 卡住
   - 說話的近景要寫看著畫外哪個人、never into the camera，否則是對鏡頭說話的主播臉。
   - 一鏡內的情緒轉變做不出來：開場就給目標表情。
 - 燈不在畫面裡的鏡，不要放那段固定的燈的描述。第 3 集草稿有 6 鏡在手邊多畫一盞玻璃燈，連「the lamp itself is out of the frame」那鏡也一樣：只要寫到燈，模型就會畫一盞出來。`compile.py` 現在遇到 `"lamp_in_frame": false` 或正文寫「lamp … out of the frame / no lamp」時，只寫「No lamp is in the frame; its warm light comes from off screen.」。寫分鏡時，燈不入鏡的鏡要標出來。
+- 要等前一條 chain 跑完再接下一條時，不要用 `pgrep -f "<前一條的指令>"`：等待迴圈自己的指令列也含那段字，會一直等到自己（2026-11-08 第 2 集表情重拍因此晚開，Colab session 空等計費）。改用前一條寫進 log 的完成行，或記下它的 PID。
 - 拆成一鏡一份 manifest 時，那份 manifest 要放在 `prompts/` 的同一層：`prompt_file` 是相對 manifest 解讀的。第 3 集第一次放在 `one/` 底下，27 鏡每一鏡都 check 失敗，開著的 session 空轉了 10 分鐘。chain 要加「連續 3 鏡失敗就停」，別把整集跑完。
 - 對話閒著時，容器會被收回（2026-11-07 晚上兩次：回合結束後約 20 分鐘，`uptime` 是 0 分鐘、chain 不見，Colab session 也跟著沒了，各浪費約 2 CU 與一次開機）。`setsid` 擋不住收回。所以 chain 要用 Bash 工具的背景指令跑（`run_in_background`，上限 2 小時），系統會把它當成工作中，不收回容器。超過 2 小時的批次要切成幾段，每段各自用背景指令跑。
 
