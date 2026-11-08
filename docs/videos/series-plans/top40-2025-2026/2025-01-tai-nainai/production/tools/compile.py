@@ -67,7 +67,8 @@ def face_gaps(parsed, en):
 LAMP_SIZE = (" It is the same lamp in every shot, exactly the lamp shown in the lamp picture: a tall slim clear glass chimney over a round brass oil font on a slender brass stem, "
              "standing on a plain square dark red-brown wooden base; about thirty centimetres tall in all, small on the long altar table, and there is only this one lamp in the hall, "
              "no lantern, no cap, no other lamp anywhere.")
-NIGHT = (" It is late at night: every window, every doorway and the sky outside are dark, almost black, with no daylight anywhere and no beam of light through any window.")
+NIGHT = (" It is late at night: the sky and everything outdoors are dark, almost black, with no daylight anywhere and no beam of daylight through any window;"
+         " the only light comes from lamps, lanterns and bulbs.")  # 第 2 集審稿：門房亮著的窗被舊句「every window dark」打架（2026-11-08）
 EN_NAMES = {
     "yuetang-18": "Shen Yuetang", "yuetang-96": "Shen Yuetang at ninety-six", "yuqin": "Shen Yuqin", "jianbang": "Shen Jianbang",
     "zhiyuan": "Shen Zhiyuan", "xiaoman": "Shen Xiaoman", "fubo": "Fu Bo", "jianye": "Shen Jianye", "meifeng": "Lin Meifeng",
@@ -294,6 +295,9 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                 names = ([f"{cid}-{look}-t1.png"] if look else []) + [f"{cid}-portrait-t1.png"]
                 images.append(find_ref(refs, names, (1248, 1664), args.placeholders, missing))
                 text = looks.get((cid, look)) or chars[cid]["appearance"]
+                # 姿勢不寫進定妝描述：每鏡的姿勢由正文決定（第 3 集審稿：「hands folded in front of her waist」跟 27 鏡的動作打架，c35 還正好是第 1 集的死亡姿勢）
+                text = re.sub(r",?\s*back very straight", "", text)
+                text = re.sub(r",?\s*(?:both )?hands folded (?:in front of|at) (?:her|his) waist(?: like an elderly lady)?", "", text)
                 anchors.append(f"{EN_NAMES.get(cid, chars[cid]['name'])} shown in <Picture {len(images)}> keeps exactly the same face, hair and costume as the picture: {text}")
             set_id = e.get("set") or (sc["sets"][0] if sc["sets"] else None)
             if set_id:
@@ -306,15 +310,22 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
             # 第 3 集草稿 c01、c05、c07、c11、c14、c16 都因為固定的那段燈的描述，在手邊多畫一盞玻璃燈（2026-11-08 審草稿）
             offscreen = e.get("lamp_in_frame") is False or re.search(r"\blamp (?:itself )?is (?:out of|off) (?:the )?(?:frame|screen)\b|\bno lamp\b", e["prompt"], re.I)
             if offscreen:
-                lamp_text = " No lamp is in the frame; its warm light comes from off screen."
+                # 第 2 集審稿：院子、正廳也會被標 lamp_in_frame false，「No lamp」跟迴廊紙燈、吊燈打架；只在祠堂說長明燈在畫外
+                lamp_text = " The altar oil lamp is not in the frame; its warm light comes from off screen." if set_id == "shenjia-citang" else ""
             elif e.get("lamp") or (set_id == "shenjia-citang" and re.search(r"\b(oil lamp|the lamp)\b", e["prompt"], re.I)):  # 第 2 集：正廳的 hanging lamp 也被加上長明燈，桌上多一盞油燈
                 lamp_text += LAMP_SIZE.replace("the lamp picture", "the lamp picture")  # 小樣 c19–c21：燈畫得比人頭還高（2026-11-07）
                 if len(images) < 4:
                     images.append(find_ref(refs, ["prop-changmingdeng-t1.png"], (1024, 1024), args.placeholders, missing))
                     lamp_text = lamp_text.replace("the lamp shown in the lamp picture", f"the lamp shown in <Picture {len(images)}>")
+            # 道具圖：正文提到就附上（第 3 集審稿：藥櫃、報信鈴只靠場景圖，c13 要三十個抽屜、c45 要三個鈴；第 1 集 v2：道具一直畫錯，附圖才對）
+            for rx, ref, name in ((r"medicine cabinet", "prop-yaogui-t1.png", "medicine cabinet"), (r"\bbells?\b", "prop-baoxinling-t1.png", "bells"),
+                                  (r"key ring", "prop-fubo-yaoshichuan-t1.png", "key ring")):
+                if re.search(rx, e["prompt"], re.I) and len(images) < 4:
+                    images.append(find_ref(refs, [ref], (1024, 1024), args.placeholders, missing))
+                    lamp_text += f" The {name} looks exactly as in <Picture {len(images)}>."
             if set_id == "shenjia-citang":
                 lamp_text += " The ancestral tablets are plain dark wood with nothing carved or written on them."
-            if re.search(r"\bat night\b", e["prompt"], re.I):
+            if re.search(r"\bat night\b|^\s*night\b|\bdeep in the night\b", e["prompt"], re.I):  # 第 2 集審稿：c48、c49 以「Night, seen from」開頭，沒加到夜景句
                 lamp_text += NIGHT  # 第 1 集 c14：正廳的場景圖是白天畫的，門外亮得像白天（2026-11-07）
             tags = ", ".join(f"<Picture {i}>" for i in range(1, len(images))) + (f" and <Picture {len(images)}>" if len(images) > 1 else "<Picture 1>")
             body = (f"For the target video, {tags} are referenced throughout.\n\n"
