@@ -83,7 +83,14 @@ default_extras = [
     ("/root/mokaair-work/videos/_branding", "shared/_branding"),
     (f"/root/review-packs/{slug}", "review-packs"),
 ]
-for name in ("backup.py", "makepack.py", "overview.py"):
+# the episode's script folder as it is in the checkout used (uncommitted edits included) and that checkout's commit
+default_extras.append((os.path.join(REPO, "docs/videos", slug), f"_repo/docs/videos/{slug}"))
+base = os.path.join(SCRATCH, f".base-{slug}.txt")
+head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO, capture_output=True, text=True).stdout.strip()
+dirty = subprocess.run(["git", "status", "--porcelain", "--", f"docs/videos/{slug}"], cwd=REPO, capture_output=True, text=True).stdout
+open(base, "w").write(f"{head}\nuncommitted changes in docs/videos/{slug}: {'yes' if dirty.strip() else 'no'}\n{dirty}")
+default_extras.append((base, "_repo/BASE"))
+for name in ("backup.py", "makepack.py", "overview.py", "dubloop.sh", "repin.py"):
     default_extras.append((os.path.join(SCRATCH, name), f"tools/{name}"))
 for name in sorted(os.listdir(SCRATCH)):
     full = os.path.join(SCRATCH, name)
