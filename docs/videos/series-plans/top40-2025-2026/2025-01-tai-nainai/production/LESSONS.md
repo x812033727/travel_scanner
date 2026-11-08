@@ -124,6 +124,7 @@ RunPod 在 [`minimax-h3-runpod/references/route-a.md`](../../../../../../.agents
 - **報信鈴用真的鈴鐺錄音，不用合成的正弦音階**（像電子門鈴）。來源：站主 2026-11-08「鈴鐺聲也怪怪的」；`post/sfx.sh`（Commons CC0 錄音）。
 - **`cast.json` 的外貌描述不寫笑容。** 建業的「a too-wide salesman's smile」讓他每一支都笑，寫了「嘴抿成一直線」的第 1 集 c15 拍了四支都在笑；拿掉後才不笑。2026-11-08 已改五個角色。
 - **燈不在畫面裡的鏡不放燈的固定描述**（`compile.py` 的 `lamp_in_frame`）；只要寫到燈，模型就在手邊多畫一盞。來源：祖媽第 3 集草稿 6 鏡（審草稿）。
+- **每一句台詞都寫對誰說、臉朝哪邊、never into the camera；只在被抓到的鏡補不夠。** 站主 2026-11-08 看完第 2 集：「很多幕都是看前面，不會面對對方說話」。`tools/compile.py` 的 `voiced()` 現在替每句原聲台詞補「turned toward the person being spoken to, face in profile or three-quarter profile … never looking at the camera」。
 - **說話的近景寫明看著畫外哪個人、never into the camera。** 沒寫的變成對鏡頭講話的主播臉，嘴角在字與字之間上揚；第 2 集 c09、c17、c21 兩輪重拍都對著鏡頭，第三輪寫「三分之四側臉、看著對方」才改過來（c17 仍沒解決）。
   來源：三集表情審片與挑片（2026-11-08）。
 - **最後一鏡的動作（茶盤脫手、茶杯飛起）要寫在第一秒。** 第 1 集 c27 新站位兩支都沒摔茶盤。來源：挑片（2026-11-08）。
