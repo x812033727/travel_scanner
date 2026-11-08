@@ -29,7 +29,7 @@ AI 劇的 PR #2047 把兩個系列的備份與共同規則統一，並在 PR 裡
 - [x] `docs/videos/explainer-series/` 有共用規則（README.md）與備份分支規則（BACKUP-BRANCHES.md），命名與核對方式跟 #2047 一致。
 - [x] `backup/` 有可用的推分支（tobranch.sh）與涵蓋檢查（coverage.sh），不寫死 session 與絕對路徑。
 - [ ] 原來如此那邊在 PR 裡看過、沒有異議或已改好。
-- [ ] 站主確認 README 最後一節的三點。
+- [x] 站主確認 README 最後一節的三點（2026-11-08：1 分開、2 可以、3 好）。
 
 ## Steps
 
