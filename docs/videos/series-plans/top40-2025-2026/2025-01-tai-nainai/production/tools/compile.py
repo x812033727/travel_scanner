@@ -257,7 +257,10 @@ def voiced(prompt: str, dialogue: list[dict]) -> tuple[str, list[bool]]:
         if k >= len(spoken):
             break
         i = spoken[k]
-        out.append(prompt[last:m.start()] + f"speaks a short Mandarin line, 「{dialogue[i]['text']}」")
+        # 站主 2026-11-08（看完第 2 集）：「很多幕都是看前面，不會面對對方說話」。沒寫看誰，模型就對著鏡頭講。
+        # 每句都補上：轉向說話的對象、側臉或四分之三側臉、不看鏡頭。
+        out.append(prompt[last:m.start()] + f"speaks a short Mandarin line, 「{dialogue[i]['text']}」, turned toward the person being spoken to, "
+                   "face in profile or three-quarter profile, eyes on that person, never looking at the camera")
         last, own[i], k = m.end(), True, k + 1
     out.append(prompt[last:])
     return "".join(out), own
