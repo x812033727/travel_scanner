@@ -362,7 +362,7 @@ doc = {
                        "本集插圖由 AI 生成。功率與倍數都是教科書的典型值或大約的數量級；每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["羽絨衣", "保暖", "為什麼穿羽絨衣會暖", "熱傳導", "保溫瓶", "風寒", "科普", "原來如此事務所"],
         "video_id": "BirHcIAlfz4"},
-    "thumbnail": {"template": "thumb", "data": {"headline": "羽絨衣\n**不會發熱**", "sub": "暖爐其實是你自己", "shot": "kid-where"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "羽絨衣\n**不會發熱**", "sub": "暖爐其實是你自己", "shot": "kid-hug-done", "subject": "right"}},
     "sources": [
         {"title": "OpenStax College Physics 2e: 7.8 Work, Energy, and Power in Humans", "url": "https://openstax.org/books/college-physics-2e/pages/7-8-work-energy-and-power-in-humans", "checked_on": CHECKED},
         {"title": "OpenStax College Physics 2e: 13.1 Temperature", "url": "https://openstax.org/books/college-physics-2e/pages/13-1-temperature", "checked_on": CHECKED},

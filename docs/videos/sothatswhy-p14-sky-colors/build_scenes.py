@@ -405,7 +405,7 @@ doc = {
                        "本集插圖由 AI 生成。倍數與距離都是教學資料裡的大約數量級；每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["天空為什麼是藍的", "夕陽為什麼是紅的", "瑞利散射", "散射", "雲為什麼是白的", "牛奶實驗", "科普", "原來如此事務所"],
         "video_id": None},
-    "thumbnail": {"template": "thumb", "data": {"headline": "天空的藍\n**是彈過來的**", "sub": "同一道陽光，傍晚就變紅", "shot": "roof-sunset"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "天空的藍\n**是彈過來的**", "sub": "同一道陽光，傍晚就變紅", "shot": "kid-sky-guess", "subject": "right"}},
     "sources": [
         {"title": "NASA Space Place: Why Is the Sky Blue?", "url": "https://spaceplace.nasa.gov/blue-sky/en/", "checked_on": CHECKED},
         {"title": "Philip Gibbs, Why is the sky blue? (Physics FAQ, UC Riverside)", "url": "https://math.ucr.edu/home/baez/physics/General/BlueSky/blue_sky.html", "checked_on": CHECKED},

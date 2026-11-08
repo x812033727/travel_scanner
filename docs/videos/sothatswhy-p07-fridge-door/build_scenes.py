@@ -380,7 +380,7 @@ doc = {
                        "每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["冰箱", "冰箱門打開", "冷氣", "室外機", "冷媒", "熱力學", "科普", "原來如此事務所"],
         "video_id": None},
-    "thumbnail": {"template": "thumb", "data": {"headline": "冰箱門開著\n**廚房更熱**", "sub": "冰箱只是把熱搬到背後", "shot": "fridge-open"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "冰箱門開著\n**廚房更熱**", "sub": "冰箱只是把熱搬到背後", "shot": "kid-freezer", "subject": "right"}},
     "sources": [
         {"title": "HyperPhysics (Georgia State University): Refrigerator", "url": "https://hyperphysics.gsu.edu/hbase/thermo/refrig.html", "checked_on": CHECKED},
         {"title": "HyperPhysics (Georgia State University): Heat Pump, Air Conditioners and Heat Pumps, Coefficient of Performance", "url": "https://hyperphysics.gsu.edu/hbase/thermo/heatpump.html", "checked_on": CHECKED},
