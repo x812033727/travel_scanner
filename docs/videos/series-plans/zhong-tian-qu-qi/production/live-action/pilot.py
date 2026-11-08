@@ -51,8 +51,9 @@ TANG_LIVE = re.sub(r"a fitted peach-pink silk brocade ruqun with a high stand-up
 def live_picture(name):
     m = re.match(r"(?P<id>[a-z]+)-(?P<kind>portrait|angle-[ab]|modern)(-t\d)?\.png$", name)
     s = re.match(r"set-(?P<id>[a-z-]+)-t\d\.png$", name)
-    if s:
-        path = LIVE / f"set-{s['id']}-l1.png"
+    if s:  # the newest version of a set (l2 = the yard without its written plaques, 2026-11-08)
+        versions = sorted(LIVE.glob(f"set-{s['id']}-l*.png"), key=lambda q: int(q.stem.rsplit("-l", 1)[1]))
+        path = versions[-1] if versions else LIVE / f"set-{s['id']}-l1.png"
     elif m and m["kind"] == "portrait":
         path = LIVE / f"{m['id']}-portrait-l1.png"
     elif m and m["kind"] == "modern":

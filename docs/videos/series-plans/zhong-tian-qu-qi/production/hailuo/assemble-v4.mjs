@@ -143,9 +143,28 @@ for (const scene of video.scenes) {
       let cur = s0;
       for (const l of live) { l.len = (s1 - s0) * [...l.text].length / chars; l.voiceAt = cur; cur += l.len; }
     }
+    // recorded lines keep the script's order around the model's speech: one before a spoken line must end before it
+    // (sped up at most 1.2x to fit, e001 live s14), one after starts when the speech ends and the shot holds its last
+    // frame if it runs past the clip (e001 live s37, whose system line had run into s38)
+    let cursor = LEAD;
+    lines.forEach((l, i) => {
+      if (l.voiceAt !== undefined) { l.placeAt = l.voiceAt; cursor = l.voiceAt + l.len + GAP; return; }
+      const next = lines.slice(i + 1).find((x) => x.voiceAt !== undefined);
+      if (next && cursor + l.len > next.voiceAt - GAP) {
+        const room = next.voiceAt - GAP - cursor;
+        if (room > 0 && l.len / room <= 1.2) {
+          const fit = path.join(fastDir, `${l.id}-fit.wav`);
+          execFileSync("ffmpeg", ["-v", "error", "-y", "-i", l.wav, "-af", `atempo=${(l.len / room).toFixed(4)}`, fit]);
+          l.wav = fit; l.len = probe(fit);
+        }
+      }
+      l.placeAt = cursor; cursor += l.len + GAP;
+    });
+    dur = Math.max(dur, cursor - GAP + TAIL);
+    if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
   }
   const placed = lines.map((l, i) => {
-    if (l.voiceAt !== undefined) at = l.voiceAt;
+    if (l.placeAt !== undefined) at = l.placeAt;
     const p = { ...l, at };
     if (edit.burn_subtitles && !(l.speaker === "xitong" && overlays[scene.id])) subs += subtitle(`${scene.id}-s${i}`, l.text, at, Math.min(dur, at + l.len + 0.08), l.speaker === "xitong" ? "0x9fe3ff" : "0xffffff");
     lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start: t + at, len: l.len, subtitled: !(l.speaker === "xitong" && overlays[scene.id]) });
@@ -194,7 +213,7 @@ for (const scene of video.scenes) {
   }
   const amix = [];
   // with the clip's voice, only the lines it does not speak (system, off screen, inner, nospeak) come from audio/ files
-  if (voiced) placed.splice(0, placed.length, ...placed.filter((l) => l.voiceAt === undefined));
+  if (voiced) placed.splice(0, placed.length, ...placed.filter((l) => l.voiceAt === undefined));  // recorded lines only
   placed.forEach((l, i) => {
     args.push("-i", l.wav);
     const ms = Math.round(l.at * 1000);
