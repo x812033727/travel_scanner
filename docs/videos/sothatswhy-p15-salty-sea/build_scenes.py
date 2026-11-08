@@ -70,7 +70,6 @@ REWRITE = {
 FIX = {
  "kid-40": "both eyes closed as two happy curved lines",
  "kid-more-exit": "both eyes closed as two happy curved lines, thinking smile",
- "kid-plate": "both eyes closed as two happy curved lines, round young child face",
  "kid-fire-up": "her open empty hand waving beside her face, both eyes closed as two happy curved lines",
  "kid-splash": "short rounded black bob, hair ends curving inward at the jaw",
  "kid-salt-mountain": "mustard-yellow hood resting down on her shoulders, short black bob with straight bangs and one thin cowlick visible on bare head",
@@ -204,7 +203,7 @@ kid("kid-rain-fresh", K("standing in light rain catching raindrops in her open h
     k("所以雨不是鹹的！", "恍然", "P:saltfly"))
 chief("chief-rain-proof", C("nodding warmly with a proud smile", close=True),
       c("對，你淋到的雨，幾乎就是被太陽熬出來的淡水。"))
-kid("kid-plate", K("carefully setting a small plain white plate of water on a sunny windowsill", where=KITCHEN),
+scene("kid-plate", "Close-up of a small plain white plate of clear water resting on a sunny wooden windowsill, warm sunlight on it, " + DAY,
     k("那我也可以在家曬一盤鹽水？", "句尾上揚"))
 chief("chief-plate", C("holding a small plain white plate with a thin white ring of salt on it, a pleased smile"),
       c("可以。放在太陽下幾天，"), c("水不見了，碟子上就剩一圈鹽。"))
