@@ -412,7 +412,7 @@ doc = {
                        "每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["爆米花", "沸點", "高山煮麵", "氣壓", "玉山", "科普", "原來如此事務所"],
         "video_id": None},
-    "thumbnail": {"template": "thumb", "data": {"headline": "山上的滾水\n**不到一百度**", "sub": "玉米卻把水關到快一百八十度", "shot": "kid-popcorn-bowl"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "山上的滾水\n**不到一百度**", "sub": "玉米卻把水關到快一百八十度", "shot": "kid-popcorn-bowl", "subject": "right"}},
     "sources": [
         {"title": "Virot & Ponomarenko (2015), Popcorn: critical temperature, jump and sound, J. R. Soc. Interface 12: 20141247", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4345489/", "checked_on": CHECKED},
         {"title": "OpenStax Chemistry 2e, 10.3 Phase Transitions", "url": "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions", "checked_on": CHECKED},
