@@ -36,7 +36,29 @@ LINE_PREFIX = "t"
 TAIL = ("One continuous shot. Natural, realistic live-action human motion; faces, hair and costumes stay as in their reference pictures; "
         "nothing written anywhere in the frame.")
 FACES_RULE = ("Besides them, only the other people the composition names are in the frame; no second copy of anyone appears. "
-              "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood.")
+              "Facial expressions follow the action and lines described here, not the reference pictures: the pictures fix the face, hair and costume only, never the mood; "
+              "every visible face, speaking or silent, shows the expression written for it, and whoever speaks talks to the other person, never into the camera.")
+# 站主 2026-11-08：角色常常沒表情。三集審下來：沒寫表情的臉（多半是不說話的人）會退回定妝照的臉；寫「cold」「calm」「does not smile」
+# 這種抽象或否定的字，模型照樣給木然或笑臉；說話的近景會變成對鏡頭講話的主播臉。所以每張看得到的臉都要一句具體的表情
+# （眉、眼、嘴角、下巴、呼吸），--check 會列出缺的鏡。
+FACE_WORDS = re.compile(r"\b(brows?|eyes?|eyelids?|lids|mouth corners?|corners of (?:his|her|their) mouth|lips? (?:pressed|trembl|curl|part)|jaw|frown|scowl|glar|sneer|grin|smil|tears?|sob|gasp|swallow)", re.I)
+NO_FACE = re.compile(r"(face is never in the frame|only (?:this one hand|(?:his|her|their|the) hands?)|seen only from behind|back to (?:the )?camera|no one|nobody is in the frame|empty)", re.I)
+
+
+def face_gaps(parsed, en):
+    """Shots with a visible face but fewer than two concrete expression words in the English prompt."""
+    out = []
+    for sc in parsed["scenes"]:
+        for s in sc["shots"]:
+            e = (en.get("shots") or {}).get(s["id"]) or {}
+            pr = e.get("prompt", "")
+            if not pr or NO_FACE.search(pr) or e.get("no_face"):
+                continue
+            people = [n for n in set(EN_NAMES.values()) if n in pr] or ["?"]
+            need, got = 2 * len(people), len(FACE_WORDS.findall(pr))
+            if got < need:
+                out.append(f"{s['id']}: {len(people)} 人入鏡，具體表情描述只有 {got} 處（每人至少兩處：眉、眼、嘴角、下巴、呼吸）")
+    return out
 LAMP_SIZE = (" It is the same lamp in every shot: a small brass oil cup with a short wick under a round-bellied clear glass chimney, standing on a plain square dark red-brown wooden base; about thirty centimetres tall in all, about as tall as a forearm is long, small on the long altar table; it never looks bigger than a person's head, and there is only this one lamp in the hall.")  # 小樣燈太大、成片各鏡燈罩不同（2026-11-07）
 NIGHT = (" It is late at night: every window, every doorway and the sky outside are dark, almost black, with no daylight anywhere.")
 EN_NAMES = {
@@ -314,6 +336,9 @@ def main(argv: list[str]) -> int:
     if problems:
         print("\n".join(problems))
         return 1
+    gaps = face_gaps(parsed, en)
+    if gaps:
+        print("表情（站主 2026-11-08：每張臉都要有表情，除非劇本要木然）：\n  " + "\n  ".join(gaps))
     if a.check:
         print(f"e{a.episode:03d}: {sum(len(s['shots']) for s in parsed['scenes'])} 鏡，英文正文都對得上 script.md")
         return 0
