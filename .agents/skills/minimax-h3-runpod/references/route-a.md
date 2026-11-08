@@ -298,6 +298,7 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
   - **所有檔案都要備份，不可以略過我覺得沒用的檔案**（站主：「不要漏備份某個你覺得沒用的檔案」）。之前略過的 `clips/`、`segments-v4/`、`cut/*.mp4`、審片預覽、最外層的 log 都要放進去；唯一不放的是 pod 的登入憑證（`h3r-state`，那是密碼）。推完之後跑 `coverage.py`，確認工作資料夾和 scratchpad 的每一個檔案都在某一條分支的清單裡。
   - 每一集一條 `transfer/zt-live-e00N`：那集的整個工作資料夾（除了 `music/`）、那集的 r2 發布資料夾、後台匯入資料夾；舊的第 43–55 集各一條 `transfer/zt-live-e0NN`。
   - 跨集共用一條 `transfer/zt-shared`：`_series`（音效、每一輪的參考圖與試鏡）、`_live-pilot`、各集的 `music/`、合輯、最外層的檔案、整個 scratchpad（`_scratchpad/`）。
+  - （2026-11-08 註：上面兩條已被取代。分集分支只留重剪需要的加上可能還會用到的，見本節最後一條與 [`docs/videos/drama/BACKUP-BRANCHES.md`](../../../../docs/videos/drama/BACKUP-BRANCHES.md)；舊的第 43–55 集先不管（種田 `RULES.md` 第八節）；只給一集用的 `music/` 改放那一集的分支，系列共用的配樂才放 `zt-shared`。統一的做法見 [`docs/videos/drama/README.md`](../../../../docs/videos/drama/README.md)）
   - 用 `bk-episode.sh N|old NNN|shared` 推，每次都在同一條分支上加一版（fast-forward，不強推），再用 `verify-episode.py <分支名>` 逐檔比對雜湊。大檔切成 90 MiB 的段，每段都比對。
   - 不要再每天開帶日期的新分支：站主看不出哪條才是完整的，自己也不放心。
   - 刪本機檔案的條件（站主 2026-11-07）：備份分支驗證為 0、`coverage.py` 為 0、另一個代理到 GitHub 核對過，**而且這集已經送上後台、在後台確認成片、字幕、封面都在**，兩件都成立才刪，只刪那一集。
