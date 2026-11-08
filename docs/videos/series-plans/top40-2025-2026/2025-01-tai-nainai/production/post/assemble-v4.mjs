@@ -88,6 +88,7 @@ const stillMove = (id, f) => { const k = [...id].reduce((a, c) => a + c.charCode
 
 const report = [], segs = [], starts = {}, lineAt = [], srt = [];
 let t = 0;
+const spilled = [];
 for (const scene of video.scenes) {
   if (scene.template !== "shot") continue;
   // `skip`：拍了三輪都不能用、劇情又接得上的鏡，整鏡拿掉（第 1 集 c43、c47，2026-11-08）。拿掉的鏡不能有台詞。
@@ -109,6 +110,9 @@ for (const scene of video.scenes) {
   }
   let dur = ttsLines.length ? (ownSpeech ? speechEnd + GAP : LEAD) + ttsLines.reduce((a, l) => a + l.len, 0) + GAP * (ttsLines.length - 1) + TAIL :
     ownSpeech ? Math.min(speechEnd + TAIL, Math.max(ownSpeech.seconds, speechEnd)) : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
+  // `spill`：心裡話比畫面長時，不停格等台詞講完；這一鏡照剪接表的長度，台詞延到下一鏡底下（J/L cut，第 1 集 c39、c42 停格 5 秒，2026-11-08）
+  const spill = (edit.spill ?? []).includes(scene.id);
+  if (spill) dur = ownSpeech ? speechEnd + TAIL : 0;
   dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
   // `min_is_cut: true`（種田拍法，2026-11-08）：沒有台詞的鏡，剪接表的 min 就是剪長（1.5 秒的快拍不被 video.json 的整數 action_seconds 撐成 2 秒）
   if (edit.min_is_cut && !lines.length && edit.min?.[scene.id] != null) dur = Math.max(1.0, edit.min[scene.id]);
@@ -189,6 +193,7 @@ for (const scene of video.scenes) {
     note = `still ${path.basename(still)}`;
   }
   const amix = [];
+  if (spill) { for (const l of placed) spilled.push({ wav: l.wav, start: t + l.at }); placed.length = 0; }
   placed.forEach((l, i) => {
     args.push("-i", l.wav);
     const ms = Math.round(l.at * 1000);
@@ -285,8 +290,14 @@ for (const [i, c] of cues.entries()) {
   }
   sfxParts.push(`[x${i}]`);
 }
+for (const [i, sp] of spilled.entries()) {
+  inputs.push("-i", sp.wav);
+  const ms = Math.round(sp.start * 1000);
+  parts.push(`[${n}:a]aresample=48000,aformat=channel_layouts=stereo,adelay=${ms}|${ms}[sp${i}]`);
+  n++;
+}
 const graph = [
-  `[0:a]aresample=48000,asplit=2[dlg][key]`,
+  spilled.length ? `[0:a]aresample=48000[d0];[d0]${spilled.map((_, i) => `[sp${i}]`).join("")}amix=inputs=${spilled.length + 1}:normalize=0:duration=first,asplit=2[dlg][key]` : `[0:a]aresample=48000,asplit=2[dlg][key]`,
   ...parts,
   `${musicParts.join("")}amix=inputs=${musicParts.length}:normalize=0:duration=longest[mus]`,
   // Music ducking under dialogue: `duck_ratio` and `duck_release_ms` in the edit list (defaults 8 and 350 ms, as before).
