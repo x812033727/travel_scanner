@@ -40,7 +40,7 @@ TAIL = ("One continuous shot. Natural, realistic live-action human motion; each 
         "nothing written anywhere in the frame.")
 FACES_RULE = ("Besides them, only the other people the composition names are in the frame; no second copy of anyone appears. "
               "Facial expressions follow the action and lines described here, not the reference pictures: the pictures fix the face, hair and costume only, never the mood; "
-              "every visible face, speaking or silent, shows the expression written for it, and whoever speaks talks to the other person, never into the camera.")
+              "every visible face, speaking or silent, shows the expression written for it; whoever speaks talks to the other person, and nobody, speaking or listening, ever looks into the camera.")
 # 站主 2026-11-08：角色常常沒表情。三集審下來：沒寫表情的臉（多半是不說話的人）會退回定妝照的臉；寫「cold」「calm」「does not smile」
 # 這種抽象或否定的字，模型照樣給木然或笑臉；說話的近景會變成對鏡頭講話的主播臉。所以每張看得到的臉都要一句具體的表情
 # （眉、眼、嘴角、下巴、呼吸），--check 會列出缺的鏡。
@@ -73,7 +73,8 @@ EN_NAMES = {
     "wuxiaozhang": "Principal Wu", "chenlaoshi": "Teacher Chen", "heqisheng": "He Qisheng", "zhengyishi": "Dr. Zheng",
     "linzhuren": "Director Lin of the care home", "gaojingli": "Manager Gao", "denglao": "Elder Deng", "chuntao": "Granny Chuntao",
 }
-STRIP_EMOTION = re.compile(r"`[a-z0-9-]+`，?|96，?|畫外，?|心裡話，?|嘴閉著，?|背對鏡頭，?")
+# 說話人括號裡的造型名不是語氣：加不加反引號都拿掉（第 3 集 c49 的語氣只剩「基本款」，第 3 集審稿）
+STRIP_EMOTION = re.compile(r"`[a-z0-9-]+`，?|\b(?:shouyi|home|damp|portrait|wrinkle|faintline|huiyi(?:-\d+)?)\b，?|基本款，?|96，?|畫外，?|心裡話，?|嘴閉著，?|背對鏡頭，?")
 
 
 def episode_dir(ep: int) -> Path:
