@@ -101,6 +101,10 @@ def check(manifest):
         for m in re.finditer(r"([A-Z][\w-]*(?: [A-Z][\w-]*)?) speaks (?:a short Mandarin line|\d+ short Mandarin lines)[^;.]*", text):
             if not re.search(r"turned toward|eyes on", m.group(0)):
                 found.append(("warn", "gaze", f"{m.group(1)} speaks with no 'turned toward' / 'eyes on' the listener"))
+        # e901 live s08/s36 and e902 live s13/s35: "a faint pale blue light reflected in his pupils" drew solid glowing
+        # blue irises in every take (8 of 8); the e001 fix never reached e002-e006, so it is an ERROR now
+        if re.search(r"(blue|glow\w*)[^.;]{0,40}(pupil|iris|irises|eyes)|(pupil|iris|irises|eyes)[^.;]{0,40}(blue|glow)", text, re.I) and "natural dark brown" not in text:
+            found.append(("ERROR", "eye-glow", "blue or glowing light in the eyes draws solid glowing irises; write natural dark brown irises with a tiny catchlight"))
         if len(onscreen) > 3:
             found.append(("warn", "four", ", ".join(onscreen)))
         for level, kind, what in found:
