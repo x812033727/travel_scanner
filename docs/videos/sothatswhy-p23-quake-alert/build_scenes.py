@@ -77,7 +77,7 @@ REWRITE = {
  "big-wave": "Underground cutaway of brown rock layers with a huge slow round brown boulder pushing through them, wide side-to-side wobble lines around it, bright daylight",
  "messenger": "Underground cutaway of brown rock layers with a small bright yellow ball of light racing quickly through them, long speed trails behind it, bright daylight",
  "phone-orange": "Close-up of a smartphone lying face-down on a sunny wooden breakfast table, a warm orange glow spilling out around its edges and little curved motion lines showing it buzzing, beside a bowl of rice porridge and a glass of milk, bright daylight, a still-life of objects only, simple flat 2D cel-shaded children's cartoon illustration with clean ink outlines, warm bright colours.",
- "kid-updown": "Waist-up medium shot of the girl giving a happy little hop, eyes closed as happy curves, both hands out of frame, in a bright sunny living room, bright daylight",
+ "kid-updown": "Close-up of a plain cup and a spoon hopping up off a wooden breakfast table, small upward motion lines under them, sunny kitchen, bright daylight",
  "kid-order-got": "Head-and-shoulders close-up of the girl with a delighted face, eyes closed as happy curves, big open smile, both hands out of frame, plain warm cream background, bright daylight",
  "kid-station-q": "Head-and-shoulders side profile of the girl tilting her head with a thoughtful pout, both hands out of frame, plain warm cream background, bright daylight, head-and-shoulders girl tilting her head, small comic ? above her, both eyes simple matching black dots",
  "kid-catch-q": "Waist-up back view of the girl clenching both fists at her sides like a runner at a starting line, facing a big sunny window, bright daylight",
@@ -104,7 +104,6 @@ FIX = {
  "chief-gap": "chief with glossy jet-black low ponytail, round black glasses, yellow pencil tucked behind one ear",
  "kid-gap-q": "glossy black bob with straight bangs, bare hair, light skin as on the reference sheet",
  "kid-order-got": "glossy black bob with straight bangs and one cowlick",
- "kid-updown": "short loose black bob with straight bangs and cowlick, happy hop, ink outlines",
  "chief-predict": "same slim proportions as the reference sheet",
  "kid-phone-blare": "a big orange-glowing phone buzzing with bold vibration lines",
  "kid-loud-q": "both eyes the same size with matching dark pupils, bare black bob with straight bangs",
@@ -213,7 +212,7 @@ kid("kid-two-q", K("leaning in with wide curious eyes, both hands out of frame",
     k("還有別人在跑？是誰？", "好奇"))
 scene("messenger", "Wide cutaway view of brown rock layers underground with one thin small bright quick ripple, tiny next to a huge thick heavy band of rock bulging slowly",
       c("跑在最前面的，是一個快腿的小信差。"), c("它搖得很輕，多半是上下跳一跳。"))
-kid("kid-updown", K("bobbing up on her toes with a surprised little smile", where=LIVING),
+scene("kid-updown", K("bobbing up on her toes with a surprised little smile", where=LIVING),
     k("就像地板往上頂一下？", "句尾上揚"))
 scene("ripple-close", "Close-up of one thin small bright ripple glowing softly inside smooth brown rock",
       c("對，輕輕的。科學家叫這個小信差，P波。"))
