@@ -376,7 +376,7 @@ doc = {
                        "每支手機、每顆電池都不一樣。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["手機電池", "電池健康度", "最大容量", "鋰電池", "突然關機", "充電", "科普", "原來如此事務所"],
         "video_id": None},
-    "thumbnail": {"template": "thumb", "data": {"headline": "電量還有\n**電池已經老了**", "sub": "還有百分之二十，手機卻黑掉", "shot": "kid-hundred", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "電量還有\n**電池卻老了**", "sub": "還有兩成電，手機卻黑掉", "shot": "kid-mom-said", "subject": "right"}},
     "sources": [
         {"title": "Apple：iPhone 電池與效能", "url": "https://support.apple.com/en-us/101575", "checked_on": CHECKED},
         {"title": "Apple：iPhone 11 及後續機型的電池與效能", "url": "https://support.apple.com/en-us/106348", "checked_on": CHECKED},
