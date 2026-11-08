@@ -14,7 +14,7 @@
   鏡位與軸線在 [`animation-camera`](../../../.agents/skills/animation-camera/SKILL.md)；英文正文的動作寫法在
   [`minimax-h3-colab/references/motion-quality.md`](../../../.agents/skills/minimax-h3-colab/references/motion-quality.md)。這份與它們衝突時，以這份為準，並回頭改它們。
 
-系列的規則比這份嚴或不同時，照系列的 `RULES.md`（例如祖媽剪接不裁切放大，種田可以）。
+系列的規則比這份嚴或不同時，照系列的 `RULES.md`。兩個系列已經統一的做法列在 [`README.md`](README.md)。
 
 ## 為什麼要寫這麼細
 
@@ -180,6 +180,8 @@
 - **系列不要的裸露**：照系列 `RULES.md`（兩部的標準不同）。
 
 ## 十、秒數
+
+- **開場 10 秒至少四鏡**（2026-11-08 兩個系列統一；種田從第 3 集起）。
 
 - 先錄配音（或估好台詞長度）再決定買幾秒：每鏡需要的秒數 ≈ 每句長度加 0.5 秒的總和。超過就加買，不要靠慢放或停格。
 - 有人說話約 3 秒以上、或動作有兩拍（then、;）的鏡買長一點；多的在剪接切，比停格便宜。
