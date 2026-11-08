@@ -475,7 +475,7 @@ doc = {
                        "每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["地震", "地震警報", "國家級警報", "強震即時警報", "P波", "S波", "科普", "原來如此事務所"],
         "video_id": None},
-    "thumbnail": {"template": "thumb", "data": {"headline": "地震已經開始\n**警報還能搶先**", "sub": "警報坐上電，跑贏大搖晃", "shot": "kid-phone-blare"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "地震已經開始\n**警報還能搶先**", "sub": "警報坐上電，跑贏大搖晃", "shot": "kid-loud-q", "subject": "right"}},
     "sources": [
         {"title": "中央氣象署 地震測報中心：常見問答 84（強震即時警報）", "url": "https://scweb.cwa.gov.tw/zh-tw/guidance/faqdetail/98", "checked_on": CHECKED},
         {"title": "中央氣象署 地震測報中心：強震即時警報原理", "url": "https://scweb.cwa.gov.tw/zh-tw/guidance/eew/3", "checked_on": CHECKED},
