@@ -43,11 +43,14 @@ OFFICE = "in a bright sunny little office"
 PARK = "in a sunny park on a crisp winter day"
 TABLE = "a sunny wooden table"
 PHONE = "a plain smooth unmarked phone glowing softly"
-BOTTLE = "a clear plastic water bottle with a mustard-yellow cap"
+BOTTLE = "a plain clear water bottle with a mustard-yellow cap"
+# The spout (壺嘴) is drawn as the same bottle's mouth: its cap open to a tiny opening, or off with a wide neck.
+NARROW = "a plain clear water bottle with its mustard-yellow cap open to a tiny narrow opening"
+WIDE = "a plain clear water bottle with its mustard-yellow cap off and a wide open neck"
 # One drawing language for the whole episode (README §10.5: numbers as feelings, one metaphor throughout):
 # a battery is a water bottle. The water is the electricity: how full the bottle is now is the percentage; how big
 # the bottle still is, is the maximum capacity; how wide its spout is, is how fast it can pour (power delivery).
-# Ageing is a white chalky crust (水垢) growing inside: it takes room (the bottle holds less) and clogs the spout
+# Ageing is a white chalky crust (水垢) growing inside: it locks some of what stores the electricity away (the bottle holds less) and narrows the mouth
 # (a big gulp cannot come out fast). Nothing is counted, nothing depends on direction, no clock, no gauge, no phone
 # face, no battery-level icon: a phone is only ever a plain smooth unmarked phone glowing softly.
 # Prompt words that P02/P05 taught us to keep out (README §3.1): the model has no negative prompt,
@@ -97,10 +100,12 @@ def K(action, close=False, where=None):
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 # One metaphor only: a battery is a water bottle. 百分比 = how full the bottle is now; 最大容量 = how big the bottle
-# still is; 壺嘴 = how fast it can pour (power delivery). 水垢 = the crust that grows inside (SEI in claims.md):
-# it takes room and clogs the spout. Each mapping is defined once and then only used.
-kid("kid-park", K("holding " + PHONE + " in both hands with a shocked face, eyes wide", where=PARK),
-    k("所長！今天好冷喔，", "跑進來報案的語氣", "S:cold"), k("我在公園拍松鼠，", "比手畫腳"),
+# still is; 壺嘴 (drawn as the bottle's narrow mouth) = how fast it can pour (power delivery). 水垢 = the crust that
+# grows inside (SEI in claims.md): it locks away some of what stores the electricity and narrows the mouth.
+# Each mapping is defined once and then only used. Round 2 (2026-11-08): verify-1 F01-F08 word for word,
+# review-script-score improvements 1-6, blind panel round 1 blocking cuts and notes.
+kid("kid-park", K("running in holding " + PHONE + " in both hands with a shocked face, eyes wide", where=OFFICE),
+    k("所長！今天好冷喔，", "跑進來報案的語氣", "S:cold"), k("我剛剛在公園拍松鼠，", "比手畫腳"),
     chapter="還有電，手機卻黑掉了")
 scene("squirrel", "Close-up of a fluffy squirrel nibbling an acorn on a frosty tree branch in a sunny winter park, " + DAY,
       k("用的是媽媽的舊手機，"), k("一按拍照，它就黑掉了！", "誇張"))
@@ -109,7 +114,7 @@ scene("phone-dark", "Close-up of a plain smooth unmarked dark phone lying quiet 
 kid("kid-mom-said", K("holding " + PHONE + " with a sad little pout", close=True),
     k("媽媽說它剛買的時候，", "委屈"), k("一整天都有電耶！", None, "S:allday"), k("它是不是壞掉了？", "句尾上揚"))
 chief("chief-not-broken", C("smiling gently with one hand on her chest", close=True),
-      c("先別急，它多半沒有壞。", "安撫"), c("很多舊手機，都可能這樣突然關機。"))
+      c("先別急。很多舊手機，都可能這樣突然關機。", "安撫"))
 kid("kid-why-old", K("tilting her head with a puzzled frown, both hands out of frame", close=True),
     k("為什麼舊的才會這樣？", "句尾上揚"))
 chief("chief-old", C("nodding with a knowing smile"),
@@ -118,12 +123,12 @@ kid("kid-still-full", K("spreading both hands wide with a confused face", where=
     k("可是電量還有啊，", "不服氣"), k("電池怎麼會老？", "句尾上揚"))
 chief("chief-you", C("leaning in a little with a friendly smile", close=True),
       c("很多人都跟你一樣，以為電量還多，電池就還好。", "轉向觀眾"))
-scene("bottle-tease", "Close-up of " + BOTTLE + " half full of water on " + TABLE + ", a thin soft white crust coating its inside walls, " + DAY,
-      c("其實那一下黑掉，是手機自己決定的。", "賣關子", "S:onpurpose"), c("而且電池裡面，正偷偷長著一層東西。", "賣關子", "S:skin"))
+scene("phone-tease", "Close-up of a plain smooth unmarked dark phone lying quiet on " + TABLE + ", soft warm light around it, " + DAY,
+      c("其實那一下黑掉，有一個你想不到的原因。", "賣關子", "S:onpurpose"), c("而且電池裡面，正偷偷長著一層東西。", "賣關子", "S:skin"))
 kid("kid-tease", K("gasping with a round open mouth, both hands out of frame", close=True),
-    k("自己決定？還會長東西？", "驚訝"))
-scene("battery-open", "Close-up of a plain smooth rounded battery cell lying on " + TABLE + " beside a tiny screwdriver, " + DAY,
-      c("聽起來很怪吧？這一集，我們就來拆開這顆老電池。", "承諾"))
+    k("想不到的原因？還會長東西？", "驚訝"))
+scene("battery-open", "Close-up of a plain smooth rounded battery cell lying on " + TABLE + ", soft warm light, " + DAY,
+      c("聽起來很怪吧？這一集，我們就來看看這顆老電池裡面。", "承諾"))
 chief("chief-main-q", C("folding her hands with a curious smile, eyebrows raised"),
       c("電量明明還有，電池為什麼會老，"), c("還會突然關機？", "問句", "S:main"))
 
@@ -134,7 +139,7 @@ kid("kid-bottle", K("holding " + BOTTLE + " in both hands with a curious face", 
     k("我的水壺？", "好奇"), k("電也能裝在壺裡？", "句尾上揚"))
 scene("bottle-level", "Close-up of " + BOTTLE + " with only a little water remaining in it, on " + TABLE + ", " + DAY,
       c("我們就這樣想：電是壺裡的水。"), c("螢幕上的百分比，是壺裡現在還剩幾分滿。"))
-kid("kid-twenty", K("pinching her thumb and finger close together with a small worried face", close=True),
+kid("kid-twenty", K("with a small worried face, both hands out of frame", close=True),
     k("那我的手機，", "想一想"), k("就是只剩一點點水？", "句尾上揚"))
 scene("bottle-fill", "Close-up of " + BOTTLE + " being filled at a kitchen tap with fresh sparkling water, sunny kitchen, " + DAY,
       c("對。用電，就是喝掉壺裡的水；"), c("充電，就是再把壺裝滿。"))
@@ -142,7 +147,7 @@ kid("kid-hundred", K("centred in the frame, large clear face, holding " + BOTTLE
     k("那充到百分之百，", "很有把握的錯猜"), k("就跟新手機一樣多電吧？", "句尾上揚", "S:hundred"))
 chief("chief-hundred", C("shaking her head kindly with a warm smile"),
       c("不一定。百分之百，只是這個壺裝滿了。"), c("壺有多大，百分比可不會告訴你。"))
-scene("two-bottles", "A big clear plastic water bottle full of water beside a much smaller clear plastic water bottle also full of water, on " + TABLE + ", " + DAY,
+scene("two-bottles", "Close-up of two plain clear water bottles with mustard-yellow caps side by side, a big one and a much smaller one, both full of water, on " + TABLE + ", " + DAY,
       c("舊電池的壺，比新的時候小了。"), c("一樣裝滿，裡面的水就是比較少。", None, "P:hundred"))
 kid("kid-short", K("nodding hard with a bright face of understanding", where=OFFICE),
     k("難怪舊手機充滿了，", "恍然"), k("也撐不了一整天！", "恍然", "P:allday"))
@@ -164,21 +169,19 @@ kid("kid-shrink-q", K("hugging " + BOTTLE + " with a worried face", where=OFFICE
 # ---------- 第二章：電池裡長出一層水垢 ----------
 scene("kettle", "Close-up looking into a plain metal kettle, its inside walls coated with a thick chalky white crust, sunny kitchen, " + DAY,
       c("因為壺裡面，會慢慢長出一層水垢。", "接住上一句", "P:skin"), chapter="電池裡長出一層水垢")
-kid("kid-scale", K("wrinkling her nose with a curious face, both hands out of frame", close=True),
-    k("水垢？那是什麼？", "句尾上揚"))
 scene("kettle-crust", "Close-up of a thick chalky white crust on the inside of an old plain metal kettle, sunny kitchen, " + DAY,
       c("你家的熱水壺用久了，裡面會黏上一層白白硬硬的東西，", "轉向觀眾"), c("那就是水垢。"))
 kid("kid-battery-scale", K("gasping with a surprised round mouth, both hands out of frame", close=True),
     k("電池裡也有水垢？", "句尾上揚"))
-scene("battery-layer", "Cutaway of a plain smooth rounded battery cell with a thin soft pale layer slowly growing on its inside walls, " + DAY,
+scene("battery-layer", "A simple flat illustration of " + BOTTLE + " with a thin soft white film lining its inside walls, on " + TABLE + ", " + DAY,
       c("不是真的水垢，是很像水垢的一層薄膜。"), c("電池用得越久，它就慢慢長得越厚。"))
 kid("kid-only-scale", K("tilting her head with a curious squint, both hands out of frame", close=True),
     k("電池變老，", "好奇"), k("只是因為水垢嗎？", "句尾上揚"))
 chief("chief-many-causes", C("holding one hand open with a thoughtful smile"),
-      c("不只。科學家找到好幾種讓電池變老的原因，"), c("水垢是最常被提到的一種。"))
+      c("不只。科學家找到好幾種讓電池變老的原因，"), c("水垢是常被提到的主要原因之一。"))
 scene("bottle-crust", "Close-up of " + BOTTLE + " with a thick white crust lining its inside walls, holding only a little water, " + DAY,
-      c("水垢會佔掉一些本來能裝電的地方。"), c("長得越厚，壺能裝的電就越少。", None, "P:shrink"))
-kid("kid-brush", K("making a scrubbing motion with a clever grin", where=OFFICE),
+      c("水垢會把一些本來能存電的東西，卡在裡面。"), c("長得越厚，壺能裝的電就越少。", None, "P:shrink"))
+kid("kid-brush", K("with a clever confident grin, both hands out of frame", where=OFFICE),
     k("那把水垢刷掉，", "很有把握的錯猜"), k("不就好了？", "句尾上揚", "S:brush"))
 chief("chief-brush", C("shaking her head with a gentle smile", close=True),
       c("刷不到。它長在電池最裡面，", None, "P:brush"), c("而且長了，就退不掉。"))
@@ -186,19 +189,17 @@ kid("kid-cycle-q", K("with a thinking face, both hands out of frame", where=OFFI
     k("充一次電，", "推理"), k("就長一次水垢嗎？", "句尾上揚", "S:cycle"))
 chief("chief-cycle", C("holding one hand flat with a thoughtful smile"),
       c("差不多。不過手機算的是「一次循環」。"))
-kid("kid-cycle-what", K("blinking with a curious face, both hands out of frame", close=True),
-    k("一次循環？", "句尾上揚"))
-scene("half-bottle", "Close-up of " + BOTTLE + " half full on a sunny school desk beside a lunch box, " + DAY,
-      c("就是喝掉一整壺的量。今天喝半壺，"), c("明天再喝半壺，加起來一整壺，才算一次。", None, "P:cycle"))
+scene("half-bottle", "Close-up of " + BOTTLE + " half full on a sunny school desk, " + DAY,
+      c("一次循環，就是喝掉一整壺的量。今天喝半壺，"), c("明天再喝半壺，加起來一整壺，才算一次。", None, "P:cycle"))
 kid("kid-many", K("spreading both arms wide with a curious face", where=OFFICE),
     k("那喝很多很多次以後呢？", "句尾上揚"))
-scene("bottle-shrunk", "A slightly smaller clear plastic water bottle with a thin white crust inside, still mostly full of water, on " + TABLE + ", " + DAY,
-      c("有一家手機公司說，它有一批手機的電池，"), c("在很理想的情況下，"))
-scene("bottle-eighty", "Close-up of a slightly smaller clear plastic water bottle standing beside its big new twin, both full of sparkling water, on " + TABLE + ", " + DAY,
-      c("大約一千次循環以後，壺還有原來的大約八成大。"))
+scene("bottle-shrunk", "Close-up of two plain clear water bottles with mustard-yellow caps side by side, one a little smaller than the other, both full of water, on " + TABLE + ", " + DAY,
+      c("有一家手機公司說，它較新的一批手機電池，"), c("在很理想的情況下，"))
+scene("bottle-eighty", "Close-up of " + BOTTLE + " with a thin white crust inside, still mostly full of sparkling water, on " + TABLE + ", " + DAY,
+      c("設計成大約一千次循環後，壺還有原來的大約八成大。"))
 kid("kid-thousand", K("gasping with a wide surprised face, both hands out of frame", close=True),
     k("那麼多次，", "驚訝"), k("要用好幾年吧？", "句尾上揚"))
-scene("shelf-bottles", "A long sunny shelf lined with many clear plastic water bottles, each with a mustard-yellow cap, " + DAY,
+scene("shelf-bottles", "A long sunny shelf lined with many plain clear water bottles with mustard-yellow caps, " + DAY,
       c("我們自己粗算：如果每天剛好用掉一整壺，"), c("那大約是將近三年。"))
 kid("kid-two-tenths", K("throwing both fists in the air with an excited grin", where=OFFICE),
     k("將近三年，", "驚喜"), k("才少了大約兩成！", "開心"))
@@ -207,8 +208,8 @@ chief("chief-ideal", C("tilting her head with a gentle smile", close=True),
 kid("kid-idle", K("crossing her arms with a clever confident grin", where=OFFICE),
     k("那我都不充電，", "很有把握的錯猜"), k("就不會長水垢了吧？", "句尾上揚", "S:idle"))
 chief("chief-idle", C("shaking her head gently with a kind smile"),
-      c("不是喔。放著不用，電池也會慢慢老。", None, "P:idle"), c("就算收在抽屜裡，水垢也會慢慢長。"))
-scene("hot-car", "A parked car baking in strong summer sunshine, wavy heat lines rising from its roof, " + PHONE + " on its dashboard, " + DAY,
+      c("不是喔。就算收在抽屜裡不用，水垢也會慢慢長。", None, "P:idle"))
+scene("hot-car", "Close-up of " + PHONE + " lying on a sunny car seat in strong summer sunshine, wavy heat lines shimmering, " + DAY,
       c("尤其放在很熱的地方，水垢長得特別快，"), c("像夏天停在大太陽底下的車子裡。"))
 kid("kid-hot-q", K("with a hot sweaty face and pink cheeks, both hands out of frame", close=True),
     k("要多熱，才算太熱？", "句尾上揚", "S:hot"))
@@ -217,75 +218,63 @@ chief("chief-35", C("raising one finger with a serious kind face", close=True),
 kid("kid-freezer", K("standing with both hands on her hips and a clever grin", where=OFFICE),
     k("那我放進冷凍庫，", "很有把握的錯猜"), k("它就不會老了吧？", "句尾上揚", "S:freezer"))
 chief("chief-freezer", C("raising both eyebrows with a startled little laugh", close=True),
-      c("千萬不要！太冷也不行。", "笑", "P:freezer"), c("手機公司說，最好待在大約零度以上。"))
+      c("不要喔！冰起來也還是會老。", "笑", "P:freezer"), c("手機公司說，用的時候最好在大約零度以上。"))
 kid("kid-blackout-q", K("frowning with a puzzled face, both hands out of frame", close=True),
     k("可是壺變小，只是比較快沒電，", "不解"), k("怎麼會一下子黑掉？", "句尾上揚", "S:blackout"))
 
 # ---------- 第三章：壺嘴變窄，大口倒不出來 ----------
-scene("spout", "Close-up of a clear plastic water bottle with a very thin narrow spout, only a thin trickle of water coming out of it, " + DAY,
+scene("spout", "Close-up of " + NARROW + ", tipped over a glass, only a thin trickle of water coming out, " + DAY,
       c("因為水垢不只讓壺變小，也會把壺嘴慢慢堵窄。", "接住上一句"), chapter="壺嘴變窄，大口倒不出來")
-kid("kid-spout", K("holding " + BOTTLE + " with a curious face", close=True),
-    k("壺嘴？是倒水的地方？", "句尾上揚"))
-scene("wide-spout", "Close-up of a big jug pouring a thick fast stream of water from a wide spout into a glass, " + DAY,
-      c("對。壺嘴寬不寬，決定水一次能倒多快。"), c("手機用電，就是從壺嘴把水倒出來。"))
-chief("chief-spout-you", C("pretending to pour from an invisible bottle with a playful smile", close=True),
+scene("wide-spout", "Close-up of " + WIDE + ", tipped over a glass, a thick fast stream of water pouring out, " + DAY,
+      c("壺嘴就是倒水的地方，它寬不寬，決定水一次能倒多快。"), c("手機用電，就是從壺嘴把水倒出來。"))
+chief("chief-spout-you", C("holding a plain clear water bottle with a playful smile", close=True),
       c("你想想，用很窄的壺嘴倒一大杯水，", "轉向觀眾"), c("是不是要等好久？"))
 kid("kid-sip", K("with a calm little smile, both hands out of frame", where=OFFICE),
     k("小口小口喝，", "推理"), k("窄一點也沒關係？", "句尾上揚"))
-scene("trickle-cup", "Close-up of a thin steady trickle of water from a narrow spout slowly filling a small cup, " + DAY,
+scene("trickle-cup", "Close-up of " + NARROW + " slowly filling a small cup with a thin steady trickle, " + DAY,
       c("對，平常慢慢用電，窄窄的壺嘴也來得及。"))
 kid("kid-gulp-q", K("tilting her head with a curious face, both hands out of frame", close=True),
     k("那什麼時候，", "好奇"), k("要一下子大口喝？", "句尾上揚"))
-scene("phone-busy", "Close-up of " + PHONE + " glowing brightly with little sparkles around it on " + TABLE + ", " + DAY,
+scene("phone-busy", "Close-up of a plain smooth unmarked phone glowing brightly with little sparkles around it on " + TABLE + ", " + DAY,
       c("像開相機拍照、玩很忙的遊戲，"), c("手機一下子就要很多電。"))
 kid("kid-gulp-what", K("holding " + PHONE + " with a worried face", where=OFFICE),
     k("壺嘴太窄，倒不出來，", "擔心"), k("會怎麼樣？", "句尾上揚"))
-scene("cup-short", "Close-up of a big empty cup beside a narrow-spouted bottle that only drips thin drops into it, " + DAY,
+scene("cup-short", "Close-up of a big empty glass beside " + NARROW + " that only drips thin drops into it, " + DAY,
       c("手機裡的零件，一下子拿不到夠多的電，"), c("就沒辦法好好工作。"))
 kid("kid-broken-q", K("biting her lip with a worried little frown", close=True),
     k("所以它就壞掉了？", "句尾上揚"))
 chief("chief-protect", C("shaking her head with a calm reassuring smile"),
-      c("不是。手機會搶先一步，自己關機，", None, "P:blackout"), c("保護裡面的零件。"))
+      c("不是。手機會搶先一步，自己關機，", None, "P:blackout"), c("保護裡面的零件。", None, "P:onpurpose"))
 kid("kid-decided", K("with a bright face of sudden discovery, eyes wide and mouth open", close=True),
     k("原來是它自己決定的！", "恍然"))
-chief("chief-on-purpose", C("smiling warmly at the viewer with one hand open", close=True),
-      c("對。你看到的是突然黑掉，", "轉向觀眾"), c("其實是手機故意的。", None, "P:onpurpose"), c("它沒有壞，插上電就能再打開。"))
+scene("phone-rest-safe", "Close-up of a plain smooth unmarked dark phone resting safely on a soft round cushion, " + DAY,
+      c("對，所以它多半沒有壞。"))
 kid("kid-liar-q", K("crossing her arms with a doubtful pout", where=OFFICE),
     k("可是我的手機明明有電，", "不服氣"), k("百分比是不是騙人？", "句尾上揚", "S:liar"))
 chief("chief-liar", C("raising her eyebrows with a gentle smile", close=True),
       c("還記得百分比是估的嗎？它不一定很準。", "點名回呼"))
-scene("bottle-left", "Close-up of a clear plastic water bottle with a little water still inside and a very thin narrow spout, tipped over a cup, only a thin trickle coming out, " + DAY,
+scene("bottle-left", "Close-up of " + NARROW + " with a little water still inside, tipped over a glass, only a thin trickle coming out, " + DAY,
       c("可是它沒騙人，壺裡多半真的還有水，", None, "P:liar"), c("只是壺嘴太窄，大口倒不出來。", None, "P:main"))
-kid("kid-three", K("counting on her fingers with a bright face of discovery", where=OFFICE),
+kid("kid-three", K("with a bright face of sudden discovery, both hands out of frame", where=OFFICE),
     k("壺裡的水、壺有多大，", "恍然"), k("還有壺嘴多寬，是三件事！", "恍然"))
 chief("chief-three", C("nodding firmly with a proud smile", close=True),
       c("對。電量還多，不代表壺還大、壺嘴還寬。", "轉向觀眾"))
 kid("kid-full-q", K("squinting in thought with a curious face, both hands out of frame", close=True),
     k("那電多的時候，", "推理"), k("怎麼就不會黑掉？", "句尾上揚"))
-scene("full-pour", "Close-up of a tall full clear water bottle pouring a strong steady stream of water into a glass, " + DAY,
+scene("full-pour", "Close-up of " + WIDE + ", full to the brim and tipped over a glass, a strong steady stream pouring out, " + DAY,
       c("壺裡水多，倒起來比較有力；"), c("水少了，再碰上窄壺嘴，就容易倒不夠。"))
 kid("kid-cold-q", K("hugging herself with a shivering face and pink cheeks", where=OFFICE),
     k("那今天那麼冷，", "想起來"), k("也有關係嗎？", "句尾上揚"))
 scene("cold-bench", "A plain smooth unmarked phone on a frosty wooden park bench on a crisp clear winter morning, a little frost on the slats, " + DAY,
       c("有。天氣冷，壺嘴也會暫時變窄一點，", None, "P:cold"), c("回到暖和的地方，就會好一些。"))
-kid("kid-park-again", K("nodding hard with a bright face of understanding", where=PARK),
-    k("難怪在冷冷的公園，", "恍然"), k("它一下就黑掉了！", "恍然"))
-kid("kid-slow-q", K("tilting her head with a curious face, both hands out of frame", close=True),
-    k("那手機變慢，", "好奇"), k("也是電池老了嗎？", "句尾上揚", "S:slow"))
-scene("snail", "A cute little garden snail resting beside " + PHONE + " on " + TABLE + ", " + DAY,
-      c("有時候是。有些手機遇到壺嘴變窄，"), c("會讓自己跑慢一點，少大口喝電。"))
-kid("kid-slow-why", K("tilting her head with a puzzled face, both hands out of frame", close=True),
-    k("故意跑慢？", "不解"), k("那樣有什麼好處？", "句尾上揚"))
-scene("snail-sip", "Close-up of a thin calm steady trickle of water from a narrow spout into a small cup, a cute little snail resting beside it, " + DAY,
-      c("少一點大口喝，就比較不會突然關機。"))
-chief("chief-opinion", C("holding one hand on her chest with a thoughtful smile"),
-      c("不過我覺得，別每次手機變慢都怪電池，", "意見"), c("慢的原因很多，電池只是其中一個。", None, "P:slow"))
 kid("kid-care-q", K("clenching both fists with a determined face", where=OFFICE),
+    k("難怪在冷冷的公園，", "恍然"), k("它一下就黑掉了！", "恍然"),
     k("那我要怎麼做，", "認真"), k("才能讓電池老得慢一點？", "句尾上揚", "S:care"))
 
 # ---------- 第四章：手機先停在八成 ----------
+# Panel round 1: every care point ties back to 水垢 or the spout, and one forward hook (mom's phone) is planted.
 chief("chief-good-news", C("smiling brightly with a friendly face", close=True),
-      c("好消息是，很多事手機已經在幫你做了。", "接住上一句"), chapter="手機先停在八成")
+      c("好消息是，很多事手機已經在幫你做了。", "接住上一句"), c("媽媽那支舊手機，等一下也有辦法。", "轉向觀眾", "S:fix"), chapter="手機先停在八成")
 kid("kid-help-q", K("blinking with a surprised curious face, both hands out of frame", close=True),
     k("手機會幫我？幫什麼？", "句尾上揚"))
 scene("brim-bottle", "Close-up of " + BOTTLE + " filled to the brim with water, standing in warm sunshine on " + TABLE + ", " + DAY,
@@ -303,31 +292,19 @@ scene("phone-rest", PHONE[0].upper() + PHONE[1:] + " resting calmly on its charg
 kid("kid-zero-q", K("standing with both hands on her hips and a confident grin", where=OFFICE),
     k("那我要用到完全沒電，", "很有把握的錯猜"), k("才可以充電，對吧？", "句尾上揚", "S:zero"))
 chief("chief-zero", C("shaking her head kindly with a warm smile"),
-      c("不用。現在的手機電池，想充就充。", None, "P:zero"), c("不用等它用光，也不用教它認識壺。"))
-scene("top-up", "Close-up of " + BOTTLE + " being topped off with a little fresh water at a kitchen tap, sunny kitchen, " + DAY,
-      c("研究電池的人也說，用一點、充一點沒關係，"), c("能不要常常用到完全沒電，反而比較好。"))
-kid("kid-hotcharge-q", K("holding " + PHONE + " with a worried face", close=True),
-    k("充電時它好燙，", "擔心"), k("要怎麼辦？", "句尾上揚"))
+      c("不用。現在的手機電池，想充就充，", None, "P:zero"), c("也不用特地先用光再充滿。"))
+kid("kid-hotcharge-q", K("holding " + PHONE + " with a puzzled face", close=True),
+    k("充電時它熱熱的，", "好奇"), k("要怎麼辦？", "句尾上揚"))
 scene("case-off", "A plain smooth unmarked phone lying beside its soft plain silicone case on a cool wooden table in the shade, " + DAY,
-      c("手機公司建議，先把手機殼拿掉，"), c("也別在大太陽底下充電。"))
+      c("還記得熱會讓水垢長得快嗎？", "點名回呼"), c("所以充電時，先把手機殼拿掉，也別在大太陽底下充。"))
 kid("kid-fix-q", K("hugging a plain smooth unmarked phone close with a sad hopeful face", where=OFFICE),
-    k("那媽媽那支舊手機，", "心疼"), k("還有救嗎？", "句尾上揚", "S:fix"))
-scene("crust-stays", "Close-up of a small clear plastic water bottle with a thick white crust inside, on " + TABLE + ", " + DAY,
+    k("那媽媽那支舊手機，", "心疼"), k("有什麼辦法？", "句尾上揚"))
+scene("crust-stays", "Close-up of a small plain clear water bottle with a mustard-yellow cap and a thick white crust inside, on " + TABLE + ", " + DAY,
       c("還記得水垢退不掉嗎？", "點名回呼"), c("所以壺也變不回原來那麼大。"))
 chief("chief-replace", C("nodding with a warm kind smile", close=True),
       c("真的太舊了，可以請大人帶去，", "轉向觀眾"), c("讓專業的人換一顆新電池。", None, "P:fix"))
-kid("kid-diy-q", K("pumping one fist with an eager grin", where=OFFICE),
-    k("我自己拆開來換，", "躍躍欲試"), k("不是比較快？", "句尾上揚", "S:diy"))
-chief("chief-diy", C("raising one open hand with a serious kind face"),
-      c("不行喔。電池弄壞了，可能會變燙，甚至起火。", "認真", "P:diy"))
-kid("kid-bad-q", K("holding very still with wide alert eyes, both hands out of frame", close=True),
-    k("那怎樣是壞掉的電池？", "句尾上揚", "S:swollen"))
-scene("swollen", "Close-up of a plain smooth unmarked phone with its back puffed and bulging like a little pillow, on a wooden table, " + DAY,
-      c("像手機變得鼓鼓的、很燙，或有怪味，", None, "P:swollen"), c("就不要再用、也不要充電，馬上告訴大人。"))
-kid("kid-charger-q", K("holding a plain smooth white charging cable with a curious face", close=True),
-    k("那充電器，", "好奇"), k("隨便用一個可以嗎？", "句尾上揚"))
-scene("charger", "A plain smooth white phone charger and a neatly coiled cable on " + TABLE + ", " + DAY,
-      c("要用合格的充電器和線。"), c("不合格的，可能不安全。"))
+scene("swollen", "Close-up of a plain smooth unmarked phone with its back slightly puffed, lying on a wooden table, " + DAY,
+      c("要是它鼓鼓的、很燙，就別用也別充，馬上告訴大人。", "認真"))
 kid("kid-case-q", K("holding a plain smooth unmarked phone with a serious little face", where=OFFICE),
     k("所以那天我的手機，", "認真"), k("到底發生什麼事？", "句尾上揚"))
 
@@ -339,7 +316,7 @@ kid("kid-got1", K("pointing proudly with one finger and a big grin", close=True)
 kid("kid-got2", K("throwing both arms wide with a huge happy smile", where=OFFICE),
     k("手機就先關機，保護自己！", "開心"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
-      c("對，就是這樣！下次手機突然黑掉，", "轉向觀眾，輕聲"), c("先別怪它，它是在保護自己。"))
+      c("對，就是這樣！下次手機突然黑掉，", "轉向觀眾，輕聲"), c("先別怪它，它多半是在保護自己。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
@@ -350,15 +327,14 @@ chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a war
 
 # ---------- assemble ----------
 WHAT = {"main": "電量明明還有，電池為什麼會老，還會突然關機", "cold": "那天很冷，跟手機黑掉有沒有關係",
-        "onpurpose": "為什麼說那一下黑掉是手機自己決定的", "skin": "電池裡偷偷長著的那一層是什麼",
+        "onpurpose": "那一下黑掉，你想不到的原因是什麼", "skin": "電池裡偷偷長著的那一層是什麼",
+        "allday": "媽媽說剛買時一整天都有電，現在為什麼撐不久",
         "hundred": "充到百分之百是不是跟新手機一樣多電", "shrink": "壺怎麼會自己變小",
-        "cycle": "是不是充一次電就長一次水垢", "idle": "不充電是不是就不會老",
-        "hot": "多熱才算太熱", "blackout": "壺變小只是比較快沒電，怎麼會一下子黑掉",
-        "liar": "還有百分之二十卻黑掉，百分比是不是騙人", "slow": "手機變慢是不是都是電池老了",
-        "care": "怎麼讓電池老得慢一點", "zero": "是不是要用到沒電才可以充",
-        "fix": "媽媽的舊手機還有救嗎", "allday": "媽媽說剛買時一整天都有電，現在為什麼撐不久",
-        "brush": "把水垢刷掉不就好了", "freezer": "放冷凍庫是不是就不會老", "diy": "自己拆開換電池是不是比較快",
-        "swollen": "怎樣算是壞掉的電池"}
+        "brush": "把水垢刷掉不就好了", "cycle": "是不是充一次電就長一次水垢", "idle": "不充電是不是就不會老",
+        "hot": "多熱才算太熱", "freezer": "放冷凍庫是不是就不會老",
+        "blackout": "壺變小只是比較快沒電，怎麼會一下子黑掉",
+        "liar": "還有電卻黑掉，百分比是不是騙人", "care": "怎麼讓電池老得慢一點",
+        "zero": "是不是要用到沒電才可以充", "fix": "媽媽那支舊手機有什麼辦法"}
 scenes, loops_s, loops_p, n = [], {}, {}, 0
 for sc in S:
     lines = []
@@ -395,8 +371,8 @@ doc = {
                        "這一集，所長和小問把電池想成一個裝電的水壺：百分比是壺裡現在還剩幾分滿，「最大容量」是壺本身還剩多大，"
                        "壺嘴寬不寬決定電一次能倒多快。電池裡慢慢長出一層像水垢的薄膜，讓壺變小、也讓壺嘴變窄；"
                        "手機要大口用電時倒不夠快，就會自己先關機、保護裡面的零件。\n\n"
-                       "也聊到手機怎麼自己照顧電池、為什麼想充就充，以及電池鼓起來、很燙或有怪味時，要停用並告訴大人。\n\n"
-                       "水壺與水垢是我們的比喻，不是電池真正的構造；本集插圖由 AI 生成，畫的是示意。片中的數字都是手機公司說明裡的大約數字，"
+                       "也聊到手機怎麼自己照顧電池、為什麼想充就充，以及電池鼓起來或很燙時，要停用並告訴大人。\n\n"
+                       "水壺與水垢是我們的比喻，不是電池真正的構造；本集插圖由 AI 生成，畫的是示意。片中的數字大多是手機公司說明裡的大約數字，「將近三年」是我們自己粗算，"
                        "每支手機、每顆電池都不一樣。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["手機電池", "電池健康度", "最大容量", "鋰電池", "突然關機", "充電", "科普", "原來如此事務所"],
         "video_id": None},
@@ -416,6 +392,7 @@ doc = {
         {"title": "Battery University：BU-903 How to measure state-of-charge", "url": "https://batteryuniversity.com/article/bu-903-how-to-measure-state-of-charge", "checked_on": CHECKED},
         {"title": "University of Münster MEET：Battery Aging", "url": "https://www.uni-muenster.de/MEET/en/research/cell-system/Aging.html", "checked_on": CHECKED},
         {"title": "Edge et al. 2021, Lithium ion battery degradation: what you need to know (PCCP)", "url": "https://doi.org/10.1039/D1CP00359C", "checked_on": CHECKED},
+        {"title": "Google：Extended Repair Program for Pixel 7a", "url": "https://support.google.com/pixelphone/answer/16043453", "checked_on": CHECKED},
     ],
     "assets": [],
     "scenes": scenes,
