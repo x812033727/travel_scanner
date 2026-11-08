@@ -66,14 +66,14 @@ REWRITE = {
  "kid-miss": "Close-up of a plain smooth dark phone lying quiet on a wooden table, soft calm light, bright daylight",
  "kid-instant": "A friendly plain smooth unmarked cartoon desktop computer with a softly glowing round light on its front, on a plain wooden desk, clean empty cream wall, bright daylight",
  "kid-table-shake": "A breakfast table wobbling with bold motion lines, a glass of milk tipping over and splashing, a plain smooth phone glowing orange beside it, sunny kitchen, bright daylight",
- "blind-tilt": "Two small cottages leaning on an empty rolling green hill, bold curved wobble lines around them, plain red roof tiles, smooth empty cream sky, bright daylight",
+ "blind-tilt": "Two small cottages with plain square windows leaning on an empty green hill, bold curved wobble lines around them, smooth empty cream sky, bright daylight",
  "city-shake": "Close-up of a plain round ceiling light swinging hard with bold curved motion lines in a plain apartment room, bright daylight",
  "road-far": "A long straight road stretching toward a small far town, a huge round brown boulder rolling slowly on it, bright daylight",
  "computer-dots": "A huge round brown boulder rolling steadily along a country road, a trail of dust behind it, bright daylight",
  "computer-again": "A friendly plain smooth unmarked cartoon desktop computer with a softly glowing round light on its front, on a plain wooden desk, clean empty cream wall, bright daylight",
  "computer": "A friendly plain smooth unmarked cartoon desktop computer with a softly glowing round light on its front, on a plain wooden desk, clean empty cream wall, bright daylight",
  "big-wave-far": "A huge round brown boulder rolling along a long country road, a long empty stretch of road between it and a glowing crack in the ground, bright daylight",
- "speed": "Flat cartoon road, a big bright yellow glowing ball racing far ahead with long streaks, a huge brown boulder far behind, bright daylight",
+ "speed": "Flat cartoon of a long straight road, a tiny pea-sized bright yellow ball of light zooming with long streaks, and far away a gigantic round brown boulder as big as a hill, bright daylight",
  "big-wave": "Underground cutaway of brown rock layers with a huge slow round brown boulder pushing through them, wide side-to-side wobble lines around it, bright daylight",
  "messenger": "Underground cutaway of brown rock layers with a small bright yellow ball of light racing quickly through them, long speed trails behind it, bright daylight",
  "phone-orange": "Close-up of a smartphone lying face-down on a sunny wooden breakfast table, a warm orange glow spilling out around its edges and little curved motion lines showing it buzzing, beside a bowl of rice porridge and a glass of milk, bright daylight, a still-life of objects only, simple flat 2D cel-shaded children's cartoon illustration with clean ink outlines, warm bright colours.",
@@ -87,9 +87,10 @@ REWRITE = {
  "kid-calc": "Head-and-shoulders close-up of the girl with a proud grin, eyes closed as happy curves, both hands out of frame, plain warm cream background, bright daylight",
  "kid-what-do-q": "Head-and-shoulders close-up of the girl looking up with a serious little face, both hands out of frame, plain warm cream background, bright daylight",
  "kid-drop-under": "Back view of the girl crouched low under a sturdy plain wooden dining table, both arms folded over the back of her head, in a bright sunny living room, bright daylight, back view of the girl crouched under a sturdy table, both arms covering her head, one hand holding a table leg",
- "bed": "Medium shot of a neatly made cosy bed with a plain smooth white pillow and a fluffy mustard-yellow blanket in a sunny bedroom, soft daylight through sheer curtains, simple flat 2D children's cartoon with clean ink outlines, only furniture and fabric in the scene"
+ "bed": "Waist-up view of the girl lying face-down on her bed holding a soft pillow over her head and neck, calm bedroom, bright daylight"
 }
 FIX = {
+ "kid-station-q": "plain smooth mustard-yellow hood",
  "outro": "plain smooth mustard-yellow hood",
  "kid-got3": "flat 2D cartoon, glossy black bob with straight bangs",
  "chief-taipei-felt": "one yellow pencil tucked behind one ear, simple cartoon mouth",
@@ -101,7 +102,7 @@ FIX = {
  "chief-takes-time": "simple flat cartoon face matching the reference sheet",
  "kid-what-see": "facing the viewer, both eyes the same size with matching dark pupils",
  "kid-station-shout": "flat 2D cartoon, glossy black bob with straight bangs, plain cream room",
- "chief-gap": "chief with glossy jet-black low ponytail, round black glasses, yellow pencil tucked behind one ear",
+ "chief-gap": "clear round glasses, dark pupils both looking at the viewer, glossy black low ponytail",
  "kid-gap-q": "glossy black bob with straight bangs, bare hair, light skin as on the reference sheet",
  "kid-order-got": "glossy black bob with straight bangs and one cowlick",
  "chief-predict": "same slim proportions as the reference sheet",
@@ -128,7 +129,7 @@ FIX = {
  "city-shake": "Plain unmarked city towers in a green basin, hillside trees leaning hard, bold wobble lines, clear empty sky",
  "chief-wait": "smooth plain cream wall with a soft clean shadow, gentle smile",
  "chief-helper": "flat 2D chief with big round black glasses, pencil behind ear, one hand on chest, plain pale wall",
- "kid-drop-say": "crouched low under a sturdy table, one arm over her head and neck",
+ "kid-drop-say": "crouched low on the floor under a sturdy wooden table, one arm covering the back of her head and neck, other hand holding a table leg, serious face",
  "chief-done": "perfectly round thin black glasses resting straight on her nose, both eyes inside the lenses"
 }
 for _id, _fix in FIX.items():
@@ -403,7 +404,7 @@ kid("kid-drop-under", K("peeking out from under " + TABLE + " with a calm brave 
     c("趴低，才不會被搖倒；掩護，是護住頭和脖子；"), c("穩住，就是抓好不放，等搖晃停下來。"))
 kid("kid-drop-say", K("sitting on the floor after the shaking, giving a small thumbs-up with a proud smile", where=LIVING),
     k("趴下、掩護、穩住！", "認真"), c("對，也不要急著往外跑。"))
-scene("bed", "Medium shot of a cosy bed with a fluffy pillow and a soft blanket in a sunny bedroom, " + DAY,
+kid("bed", "Medium shot of a cosy bed with a fluffy pillow and a soft blanket in a sunny bedroom, " + DAY,
       c("如果你在床上，就待在床上，翻身趴下。"))
 chief("chief-back", C("smiling warmly at the viewer with one hand open, filling the frame", close=True),
       c("還記得你一開始問我的嗎？你自己說說看。", "笑"))
