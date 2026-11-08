@@ -47,7 +47,7 @@
    "cue": "tension",
    "from": "s36",
    "to": "s39",
-   "offset": 0,
+   "offset": 68.42,
    "gain": -16,
    "fade_out": 0.4
   },
@@ -256,12 +256,13 @@
  ],
  "frame_round": true,
  "clip_voice": true,
- "_note": "live action (owner 2026-11-07): the model's own voice for on-screen lines (clip_voice), recorded audio for system, off-screen, inner and nospeak lines (s34, s37 Xu Yan, e002 fix2). Unified 2026-11-08: no punch-in, slow-down <= 1.1, own-voice shots never slowed. Cut review 1 (2026-11-08, colab/runs/e902-live/cut-review.md): effects re-timed on the live clips (offsets on the shots as trimmed by review1-trims.tsv); music drops out under s13b and s35 (storyboard), the comedy cue (121 s) restarting at s14 since it had run out at 121 s under s18-s25; voice_skip puts the s28, s36, s39 subtitles on the actual onset; s27's name card comes in at the cut, before he speaks.",
+ "_note": "live action (owner 2026-11-07): the model's own voice for on-screen lines (clip_voice), recorded audio for system, off-screen, inner and nospeak lines (s34, s37 Xu Yan, e002 fix2). Unified 2026-11-08: no punch-in, slow-down <= 1.1, own-voice shots never slowed. Cut review 1 (2026-11-08, colab/runs/e902-live/cut-review.md): effects re-timed on the live clips (offsets on the shots as trimmed by review1-trims.tsv); music drops out under s13b and s35 (storyboard), the comedy cue (121 s) restarting at s14 since it had run out at 121 s under s18-s25, the tension cue picking up after s35 where it would have been (offset = s36 start - s26 start in the review-1 cut); voice_skip puts the s28, s29, s36, s39 subtitles on the actual onset; s27's name card comes in at the cut, before he speaks.",
  "name_at": {
   "s27": 0.0
  },
  "voice_skip": {
   "s28": 2.2,
+  "s29": 0.42,
   "s36": 1.68,
   "s39": 0.87
  }
