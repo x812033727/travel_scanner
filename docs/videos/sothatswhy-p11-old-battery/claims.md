@@ -77,7 +77,7 @@
 
 - **片中**：「因為水垢不只讓壺變小，也會把壺嘴慢慢堵窄。」（p097）「手機裡的零件，一下子拿不到夠多的電，就沒辦法好好工作。」「不是。手機會搶先一步，自己關機，保護裡面的零件。」「對，所以它多半沒有壞。」（p111–p117）；「只是壺嘴太窄，大口倒不出來。」（p122）
 - **來源**：[1] "a battery's ability to deliver maximum instantaneous performance, or 'peak power,' might decrease."；"When a device pulls power from a battery with a higher level of impedance, the battery's voltage will drop to a greater degree. Electronic components require a minimum voltage to properly operate."；"the system will perform a shutdown to preserve these electronic components. While this shutdown is intentional from the device perspective, it might be unexpected by the user."；[11] SEI 屏障造成 "an increase of internal resistance."；[14] SEI "increase the overall impedance of cells, leading to power fade"
-- **注意**：高（Apple 的官方說明）。「壺嘴」是內阻／供電能力的比喻；「同一層水垢把壺嘴堵窄」依 [11]（SEI 讓內阻上升），其他老化機制也會讓內阻上升，片中只講這一個。第一版 p124「它沒有壞，插上電就能再打開」沒有來源，第二版照 F05 拿掉；盲評第一輪要「刻意關機」只講一次，所以 F05 的建議句「所以它多半沒有壞，只是先關機保護自己」只留前半（後半跟 p114–p115 重複）。片尾 p175 照 F07 改成「它多半是在保護自己」。
+- **注意**：高（Apple 的官方說明）。「壺嘴」是內阻／供電能力的比喻；「同一層水垢把壺嘴堵窄」依 [11]（SEI 讓內阻上升），其他老化機制也會讓內阻上升，片中只講這一個。第一版 p124「它沒有壞，插上電就能再打開」沒有來源，第二版照 F05 拿掉；盲評第一輪要「刻意關機」只講一次，所以 F05 的建議句「所以它多半沒有壞，只是先關機保護自己」只留前半（後半跟 p114–p115 重複）。片尾 p175 原照 F07 改成「它多半是在保護自己」；第四輪盲評說這句第三次重述，改成冷天限定的新步驟，見下方 p174–p175。
 
 ## C13 開相機、玩遊戲這類事會一下子要很多電
 
@@ -128,9 +128,9 @@
 ## 意見與比喻（不需要來源，但要標成意見或比喻）
 
 - 水壺（電池）、壺裡的水（電）、幾分滿（百分比）、壺多大（最大容量）、壺嘴（供電能力）、水垢（SEI 薄膜）：比喻，全片只用這一個，是我們自己的（研究筆記：沒有找到官方的兒童比喻）。
-- p009 所長安撫、p014「很多人都跟你一樣」、p018「我們就來看看這顆老電池裡面」、p125「電量還多，不代表壺還大、壺嘴還寬」、p139「媽媽那支舊手機，等一下也有辦法」：承諾、問題與歸納，不是新主張。
+- p009 所長安撫、p014「很多人都跟你一樣」、p018「我們走進這顆老電池裡看看」、p125「對！一點都沒錯。」（小問 p124–p125 自己說出三件事）、p139「媽媽那支舊手機，等一下也有辦法」：承諾、問題與歸納，不是新主張。
 - p100–p101「用很窄的壺嘴倒一大杯水，是不是要等好久」：比喻的延伸。
-- p174–p175「下次手機突然黑掉，先別怪它，它多半是在保護自己」：依 C12 的歸納（F07 加「多半」）。
+- p174–p175「下次冷天手機突然黑掉，先別怪它，帶回暖和的地方，再開機試試。」：限定冷天。依 [16] Apple 118431（低溫造成的關機是暫時的，回到正常溫度就恢復）與 p133–p134 的冷天段落；熱或鼓脹的情況由 p167 的安全句處理，不適用這句。
 
 ## 來源
 

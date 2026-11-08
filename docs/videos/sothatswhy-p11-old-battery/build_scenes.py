@@ -128,7 +128,7 @@ scene("phone-tease", "Close-up of a plain smooth unmarked dark phone lying quiet
 kid("kid-tease", K("gasping with a round open mouth, both hands out of frame", close=True),
     k("想不到的原因？還會長東西？", "驚訝"))
 scene("battery-open", "Close-up of a plain smooth rounded battery cell lying on " + TABLE + ", soft warm light, " + DAY,
-      c("聽起來很怪吧？我們打開這顆老電池看看。", "承諾"))
+      c("聽起來很怪吧？我們走進這顆老電池裡看看。", "承諾"))
 chief("chief-main-q", C("folding her hands with a curious smile, eyebrows raised"),
       c("電量明明還有，電池為什麼會老，"), c("還會突然關機？", "問句", "S:main"))
 
@@ -268,7 +268,7 @@ kid("kid-cold-q", K("hugging herself with a shivering face and pink cheeks", whe
 scene("cold-bench", "A plain smooth unmarked phone on a frosty wooden park bench on a crisp clear winter morning, a little frost on the slats, " + DAY,
       c("有。天氣冷，壺嘴也會暫時變窄一點，", None, "P:cold"), c("回到暖和的地方，就會好一些。"))
 kid("kid-care-q", K("clenching both fists with a determined face", where=OFFICE),
-    k("那公園那麼冷……", "若有所思"), k("我好像快想通了！", "眼睛一亮"),
+    k("那公園那麼冷……", "若有所思"), k("我好像快想通了！先不說，", "眼睛一亮"),
     k("那我要怎麼做，", "認真"), k("才能讓電池老得慢一點？", "句尾上揚", "S:care"))
 
 # ---------- 第四章：手機先停在八成 ----------
@@ -306,7 +306,7 @@ chief("chief-replace", C("nodding with a warm kind smile", close=True),
 scene("swollen", "Close-up of a plain smooth unmarked phone with its back slightly puffed, lying on a wooden table, " + DAY,
       c("要是它鼓鼓的、很燙，就別用也別充，馬上告訴大人。", "認真"))
 kid("kid-case-q", K("holding a plain smooth unmarked phone with a serious little face", where=OFFICE),
-    k("所以我剛剛在公園，", "認真"), k("手機到底發生什麼事？", "句尾上揚"))
+    k("那我剛剛在公園，", "認真"), k("手機到底發生什麼事？", "句尾上揚"))
 
 # ---------- 收尾 ----------
 chief("chief-back", C("smiling warmly at the viewer with one hand open, filling the frame", close=True),
@@ -316,7 +316,7 @@ kid("kid-got1", K("pointing proudly with one finger and a big grin", close=True)
 kid("kid-got2", K("throwing both arms wide with a huge happy smile", where=OFFICE),
     k("手機就先關機，保護自己！", "開心"))
 chief("chief-done", C("smiling warmly at the viewer with her hands clasped", close=True),
-      c("對，就是這樣！下次手機突然黑掉，", "轉向觀眾，輕聲"), c("先別怪它，帶回暖和的地方，再開機試試。"))
+      c("對，就是這樣！下次冷天手機突然黑掉，", "轉向觀眾，輕聲"), c("先別怪它，帶回暖和的地方，再開機試試。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
@@ -356,7 +356,7 @@ loops = [{"setup": loops_s[key], "payoff": loops_p[key], "what": WHAT[key]} for 
 
 doc = {
     "schema_version": 1, "slug": SLUG, "format": "drama", "category": "explainer", "narration_locale": "zh-TW",
-    "target_minutes": [11, 13], "voice": VOICE, "subtitles": {"burn_in": False}, "theme": "paper", "look": {"preset": "cute-cartoon"},
+    "target_minutes": [10, 12], "voice": VOICE, "subtitles": {"burn_in": False}, "theme": "paper", "look": {"preset": "cute-cartoon"},
     # The series tag: the approved character sheets live in the series store and every episode reuses them (docs/videos/SERIES.md).
     "series": {"slug": "sothatswhy", "episode": 11, "chapter": 1},
     # The series bed: the same paid Lyria take as P02-P14 (P02 backup music/e4225993d121c03b.mp3), rebuilt on
