@@ -197,7 +197,8 @@ for (const scene of video.scenes) {
     // motion-compensated interpolation (minterpolate) instead of repeating them; `interpolate: false`
     // in the edit list restores the old frame-duplicating path. Whatever is still missing after
     // that is a held last frame, reported as "held" so the shot can be bought longer next time.
-    const slow = dur > clipLen ? Math.min(dur / clipLen, SLOW_MAX) : 1;
+    // `slow_shot`: a per-shot slow-down limit (e001 live s38: a slow push-in that took the moved system line too)
+    const slow = dur > clipLen ? Math.min(dur / clipLen, edit.slow_shot?.[scene.id] ?? SLOW_MAX) : 1;
     const smooth = slow > 1 && edit.interpolate !== false ? ",minterpolate=fps=24:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" : ",fps=24";
     const base = `[0:v]setpts=${slow.toFixed(4)}*(PTS-STARTPTS),scale=1920:1080:flags=lanczos${smooth},format=yuv420p,tpad=stop_mode=clone:stop_duration=${Math.max(0, dur - clipLen * slow + 0.1).toFixed(3)},trim=duration=${dur.toFixed(3)},setpts=PTS-STARTPTS`;
     // `punch: false` in the edit list turns the split-and-punch-in off for the whole episode (e001-r2).
