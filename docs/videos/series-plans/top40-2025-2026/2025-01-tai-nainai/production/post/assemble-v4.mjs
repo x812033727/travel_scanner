@@ -108,6 +108,8 @@ for (const scene of video.scenes) {
   let dur = ttsLines.length ? (ownSpeech ? speechEnd + GAP : LEAD) + ttsLines.reduce((a, l) => a + l.len, 0) + GAP * (ttsLines.length - 1) + TAIL :
     ownSpeech ? Math.min(speechEnd + TAIL, Math.max(ownSpeech.seconds, speechEnd)) : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
   dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
+  // `min_is_cut: true`（種田拍法，2026-11-08）：沒有台詞的鏡，剪接表的 min 就是剪長（1.5 秒的快拍不被 video.json 的整數 action_seconds 撐成 2 秒）
+  if (edit.min_is_cut && !lines.length && edit.min?.[scene.id] != null) dur = Math.max(1.0, edit.min[scene.id]);
   // `frame_round: true` (e001-r2 on): every shot a whole number of 24 fps frames, so the stream-copied concat stays at
   // exactly 24 fps instead of drifting to 23.976 (season 1 lost ~5 frames a 100 s cut); off for episodes already dubbed.
   if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
