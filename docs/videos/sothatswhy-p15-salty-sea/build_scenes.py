@@ -392,7 +392,7 @@ doc = {
                        "海水很鹹，請不要喝。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["海水", "為什麼海是鹹的", "鹽度", "水循環", "海底熱泉", "科普", "原來如此事務所"],
         "video_id": None},
-    "thumbnail": {"template": "thumb", "data": {"headline": "河水一直倒\n**海還是鹹**", "sub": "太陽只搬走水，搬不走鹽", "shot": "kid-salty-face"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "河水一直倒\n**海還是鹹**", "sub": "太陽只搬走水，搬不走鹽", "shot": "kid-splash", "subject": "right"}},
     "sources": [
         {"title": "NOAA Ocean Service: Why is the ocean salty?", "url": "https://oceanservice.noaa.gov/facts/whysalty.html", "checked_on": CHECKED},
         {"title": "NOAA Ocean Service: Why are rivers not salty?", "url": "https://oceanservice.noaa.gov/facts/riversnotsalty.html", "checked_on": CHECKED},
