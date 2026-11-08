@@ -146,7 +146,10 @@ for (const scene of video.scenes) {
     // `voice_skip`: ignore model sound before this many seconds into the shot (e001 live s12: a murmur at 0.4 s pulled
     // the line's subtitle 4.3 s ahead of the shout)
     const skip = edit.voice_skip?.[scene.id] ?? 0;
-    const spans = speechSpans(clip, voiceFrom, dur).filter(([, e]) => e > skip).map(([s, e]) => [Math.max(s, skip), e]);
+    // `voice_until`: ignore model sound after this many seconds (e002 live s26/s38: footsteps and paper after the line
+    // ended stretched its subtitle to the end of the shot)
+    const until = edit.voice_until?.[scene.id] ?? Infinity;
+    const spans = speechSpans(clip, voiceFrom, dur).filter(([s, e]) => e > skip && s < until).map(([s, e]) => [Math.max(s, skip), Math.min(e, until)]);
     if (spans.length) {
       const s0 = spans[0][0], s1 = spans[spans.length - 1][1], chars = live.reduce((a, l) => a + [...l.text].length, 0);
       let cur = s0;
