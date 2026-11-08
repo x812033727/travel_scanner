@@ -128,9 +128,9 @@
 ## 意見與比喻（不需要來源，但要標成意見或比喻）
 
 - 水壺（電池）、壺裡的水（電）、幾分滿（百分比）、壺多大（最大容量）、壺嘴（供電能力）、水垢（SEI 薄膜）：比喻，全片只用這一個，是我們自己的（研究筆記：沒有找到官方的兒童比喻）。
-- p009 所長安撫、p014「很多人都跟你一樣」、p018「我們走進這顆老電池裡看看」、p125「對！一點都沒錯。」（小問 p124–p125 自己說出三件事）、p139「媽媽那支舊手機，等一下也有辦法」：承諾、問題與歸納，不是新主張。
+- p009 所長安撫、p014「很多人都跟你一樣」、p018「我們走進這顆老電池裡看看」、p125「對！一點都沒錯。」（小問 p123–p124 自己說出三件事）、p139「媽媽那支舊手機，等一下也有辦法」：承諾、問題與歸納，不是新主張。
 - p100–p101「用很窄的壺嘴倒一大杯水，是不是要等好久」：比喻的延伸。
-- p174–p175「下次冷天手機突然黑掉，先別怪它，帶回暖和的地方，再開機試試。」：限定冷天。依 [16] Apple 118431（低溫造成的關機是暫時的，回到正常溫度就恢復）與 p133–p134 的冷天段落；熱或鼓脹的情況由 p167 的安全句處理，不適用這句。
+- p174–p175「下次冷天手機突然黑掉，先別怪它，帶回暖和的地方，再開機試試。」：限定冷天。依 [16] Apple 118431（低溫造成的關機是暫時的，回到正常溫度就恢復）與 p132–p133 的冷天段落；熱或鼓脹的情況由 p167 的安全句處理，不適用這句。
 
 ## 來源
 
@@ -149,4 +149,4 @@
 13. University of Münster MEET, Battery Aging. https://www.uni-muenster.de/MEET/en/research/cell-system/Aging.html
 14. Edge, O'Kane et al., "Lithium ion battery degradation: what you need to know", Phys. Chem. Chem. Phys. 23 (2021) 8200–8221（verify-1 讀 Guelph 大學機構典藏的開放全文 PDF，CC-BY 3.0）. https://doi.org/10.1039/D1CP00359C
 15. Google, Extended Repair Program for Pixel 7a（verify-1 補）. https://support.google.com/pixelphone/answer/16043453
-16. Apple, About iPhone batteries / Maximizing battery life（verify-2 補：停在車裡的高溫、低溫關機是暫時的、遊戲與相機是重度使用）. https://support.apple.com/en-us/118431
+16. Apple, If your iPhone or iPad gets too hot or too cold（verify-2 補：停在車裡的高溫、低溫關機是暫時的、遊戲與相機是重度使用）. https://support.apple.com/en-us/118431

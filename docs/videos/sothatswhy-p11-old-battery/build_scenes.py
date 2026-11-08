@@ -202,7 +202,7 @@ kid("kid-thousand", K("gasping with a wide surprised face, both hands out of fra
 scene("shelf-bottles", "A long sunny shelf lined with many plain clear water bottles with mustard-yellow caps, " + DAY,
       c("我們自己粗算：如果每天剛好用掉一整壺，"), c("那大約是將近三年。"))
 kid("kid-two-tenths", K("throwing both fists in the air with an excited grin", where=OFFICE),
-    k("將近三年，", "驚喜"), k("才少了大約兩成！", "開心"))
+    k("那麼久，", "驚喜"), k("才少了大約兩成！", "開心"))
 chief("chief-ideal", C("tilting her head with a gentle smile", close=True),
       c("那是很理想的情況。真的用起來，", "轉向觀眾"), c("要看你怎麼用、放在哪裡。"))
 kid("kid-idle", K("crossing her arms with a clever confident grin", where=OFFICE),
@@ -230,7 +230,7 @@ scene("wide-spout", "Close-up of " + WIDE + ", tipped over a glass, a thick fast
 chief("chief-spout-you", C("holding a plain clear water bottle with a playful smile", close=True),
       c("你想想，用很窄的壺嘴倒一大杯水，", "轉向觀眾"), c("是不是要等好久？"))
 kid("kid-sip", K("with a calm little smile, both hands out of frame", where=OFFICE),
-    k("小口小口喝，", "推理"), k("窄一點也沒關係？", "句尾上揚"))
+    k("對耶！那小口小口喝，", "推理"), k("窄一點也沒關係？", "句尾上揚"))
 scene("trickle-cup", "Close-up of " + NARROW + " slowly filling a small cup with a thin steady trickle, " + DAY,
       c("對，平常慢慢用電，窄窄的壺嘴也來得及。"))
 kid("kid-gulp-q", K("tilting her head with a curious face, both hands out of frame", close=True),
@@ -269,7 +269,7 @@ scene("cold-bench", "A plain smooth unmarked phone on a frosty wooden park bench
       c("有。天氣冷，壺嘴也會暫時變窄一點，", None, "P:cold"), c("回到暖和的地方，就會好一些。"))
 kid("kid-care-q", K("clenching both fists with a determined face", where=OFFICE),
     k("那公園那麼冷……", "若有所思"), k("我好像快想通了！先不說，", "眼睛一亮"),
-    k("那我要怎麼做，", "認真"), k("才能讓電池老得慢一點？", "句尾上揚", "S:care"))
+    k("我想先知道，要怎麼做，", "認真"), k("才能讓電池老得慢一點？", "句尾上揚", "S:care"))
 
 # ---------- 第四章：手機先停在八成 ----------
 # Panel round 1: every care point ties back to 水垢 or the spout, and one forward hook (mom's phone) is planted.
