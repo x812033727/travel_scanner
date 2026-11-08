@@ -89,6 +89,7 @@ const subtitle = (name, text, a, b, color = "0xffffff") =>
 const stillMove = (id, f) => { const k = [...id].reduce((a, c) => a + c.charCodeAt(0), 0) % 4; if (k === 0) return `z='1+0.16*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 1) return `z='1.16-0.14*on/${f}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'`; if (k === 2) return `z='1.14':x='(iw-iw/zoom)*on/${f}':y='ih/2-(ih/zoom/2)'`; return `z='1.14':x='(iw-iw/zoom)*(1-on/${f})':y='ih/2-(ih/zoom/2)'`; };
 
 // 個別台詞的音量與距離（第 1 集 v2 審片：院子對面的笑聲像貼耳，心裡話比畫面上的人大 3–4 dB）：
+// `speaker_tempo: {"yuetang-18": 1.18}`：某人的錄音講快一點（第 1 集拿掉 c43 少了 2 秒畫面，第三場心裡話撞到 c44 的原聲）
 // `speaker_gain: {"yuetang-18": -3.5}`、`line_gain: {"t001001": -8}`（dB，可疊加）；`line_far: ["t001001"]` 削掉低頻與高頻、加一點房間回音，聽起來在遠處
 const lineFx = (l) => {
   const g = (edit.speaker_gain?.[l.speaker] ?? 0) + (edit.line_gain?.[l.id] ?? 0);
@@ -116,7 +117,7 @@ for (const scene of video.scenes) {
   // atempo inside the segment graph (before adelay) silently cut every segment's audio to 0.12 s.
   for (const l of ttsLines) {
     const fast = path.join(fastDir, `${l.id}.wav`);
-    execFileSync("ffmpeg", ["-v", "error", "-y", "-i", l.wav, "-af", `silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.08,areverse,atempo=${TEMPO}${lineFx(l)}`, "-ar", "48000", "-ac", "2", fast]);
+    execFileSync("ffmpeg", ["-v", "error", "-y", "-i", l.wav, "-af", `silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.08,areverse,atempo=${(edit.speaker_tempo?.[l.speaker] ?? TEMPO).toFixed(3)}${lineFx(l)}`, "-ar", "48000", "-ac", "2", fast]);
     l.wav = fast;
     l.len = probe(fast);
   }
