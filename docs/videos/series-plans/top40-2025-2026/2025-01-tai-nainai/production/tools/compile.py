@@ -309,7 +309,9 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
             # 燈不在畫面裡的鏡（shots-en.json 寫 "lamp_in_frame": false，或正文寫了 lamp … out of the frame / no lamp）只說光從畫外來：
             # 第 3 集草稿 c01、c05、c07、c11、c14、c16 都因為固定的那段燈的描述，在手邊多畫一盞玻璃燈（2026-11-08 審草稿）
             offscreen = e.get("lamp_in_frame") is False or re.search(r"\blamp (?:itself )?is (?:out of|off) (?:the )?(?:frame|screen)\b|\bno lamp\b", e["prompt"], re.I)
-            if offscreen:
+            if e.get("lamp_base_only"):  # 第 3 集 c33：只拍燈座，燈罩與火在畫面上緣外；不附整盞燈的描述與道具圖（2026-11-08 審稿）
+                lamp_text = " Only the lamp's plain square dark red-brown wooden base and the foot of its slender brass stem are in the frame; the glass chimney and flame are above the top edge of the frame."
+            elif offscreen:
                 # 第 2 集審稿：院子、正廳也會被標 lamp_in_frame false，「No lamp」跟迴廊紙燈、吊燈打架；只在祠堂說長明燈在畫外
                 lamp_text = " The altar oil lamp is not in the frame; its warm light comes from off screen." if set_id == "shenjia-citang" else ""
             elif e.get("lamp") or (set_id == "shenjia-citang" and re.search(r"\b(oil lamp|the lamp)\b", e["prompt"], re.I)):  # 第 2 集：正廳的 hanging lamp 也被加上長明燈，桌上多一盞油燈
