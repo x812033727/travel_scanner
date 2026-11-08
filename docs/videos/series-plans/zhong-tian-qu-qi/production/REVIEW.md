@@ -65,6 +65,7 @@
 - 同一角色每鏡的聲音像不像同一個人（量基頻與頻譜，拿不準交站主聽）；whisper 聽寫找模型講錯的字（同音字有字幕可以接受）。
 - 音效時間：真人片段換過以後重新對（打雷、踹門、放碗、倒粥、拍胸都早過好幾秒）；招牌音效要聽得到（雷聲只比雨聲高 1.6 dB 就等於沒有）。
 - 字幕：模型開口的時間；片段開頭有雜音時字幕會提早（`voice_skip`）。
+- 撞聲：用錄音的角色（系統、心裡話、畫外、背影）同一集不能兩個人同一個聲音（`RULES.md` 第三節）。
 
 ## 七、集與集的接點
 
@@ -79,8 +80,8 @@ r2 第 1–60 集最後會合併成一支：上一集最後一鏡與下一集第
 | `colab/runs/_scripts/storyboard-check.py`（main） | 分鏡的程式檢查 |
 | `colab/runs/_scripts/camera-feel.py` | 量鏡內動量與靜止幀 |
 | `colab/runs/_scripts/retake.py` 的 `drop_pictures` | 拿掉會帶表情或道具的參考圖；用完讀一次每個人的 `shown in <Picture …>` 句 |
-| `live-action/refine-prep.py`、`live-action/stage.py`、`live-action/pilot.py`（種田工作分支） | 挑片轉精修（讀 `start@`、`end-before@`、`crop=`、`RETAKE`、`KEEP`）、組片段、真人版畫風句 |
-| `hailuo/edit-dh-eNNN.json` 的 `flash`、`voice_skip`、`subtitle_lines`、`move_lines`、`name_at`、`clip_voice` | 白閃、字幕起點、面板外的系統句字幕、移系統句、名牌時間、模型原聲 |
+| [`live-action/refine-prep.py`](live-action/refine-prep.py)、[`stage.py`](live-action/stage.py)、[`pilot.py`](live-action/pilot.py) | 挑片轉精修（讀 `start@`、`end-before@`、`crop=`、`RETAKE`、`KEEP`）、組片段、真人版畫風句。挑片理由裡另一支的情況用文字寫，不要寫 `@`：`refine-prep.py` 會把理由裡的剪點套到選中的那支（第 1 集真人版 s01）。挑片檔**後面的蓋掉前面的**：某一鏡後來又重抽，剪點檔（`cut-trims.tsv`）要排在重抽挑片檔前面 |
+| `hailuo/edit-dh-eNNN.json` 的 `flash`、`voice_skip`、`subtitle_lines`、`move_lines`、`name_at`、`clip_voice`、`slow_shot` | 白閃、字幕起點（片段開頭有雜音時用 `voice_skip` 指定幾秒前的聲音不算）、面板外的系統句字幕、移系統句、名牌時間、模型原聲、單一鏡的慢放上限（最多 1.2，寫原因）。每集寫 `"punch": false`、`"slow_max": 1.1`；範例 [`edit-dh-e901-live.json`](hailuo/edit-dh-e901-live.json) |
 | `colab/runs/eNNN/`、`colab/runs/e901-live/` | 每集送出的提示詞、挑片表（`review-picks.tsv`、`cut-trims.tsv`）、審片報告 |
 | r2 的 `NOSMILE` 句 | 不能笑的鏡：`no smile at any moment, not even at the end of the shot, until the last frame` |
 

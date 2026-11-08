@@ -8,8 +8,8 @@
 劇情、時間線、好感帳、場景格局、道具的樣子不重抄，看系列設定：
 
 - [`r2-bible-e001-e010.md`](r2-bible-e001-e010.md)、[`r2-bible-e011-e060.md`](r2-bible-e011-e060.md)（重製版 r2 的共用設定與帳）
-- `live-action-plan.md`（真人版的計畫與小樣之後的決定；目前在種田工作分支 `claude/trusting-shannon-g7dl74`，還沒進 main）
-- [`cast.json`](cast.json)（外貌、聲音、look）、`assets/refs-live/README.md`（真人版參考圖的來源，同在工作分支）
+- [`live-action-plan.md`](live-action-plan.md)（真人版的計畫與小樣之後的決定；原本只在種田工作分支，PR #2047 帶進 main）
+- [`cast.json`](cast.json)（外貌、聲音、look）、[`assets/refs-live/README.md`](assets/refs-live/README.md)（真人版參考圖的來源；圖本身還沒進 repo，在 `transfer/zt-series-media-20261107c` 與共用分支 `transfer/zt-shared`）
 - 給企劃 AI 直接貼的交辦：[`storyboard-brief-for-planners.md`](storyboard-brief-for-planners.md)；總索引：[`README.md`](README.md)
 
 站主的話以後有新的，加在對應的一節，舊的不刪、標「已被○○取代」。
@@ -56,6 +56,9 @@
 照這些決定的做法：系統聲、心裡話、畫外、背對鏡頭（`nospeak`）的台詞，提示詞裡沒有那句話，模型會自己編，所以這些用錄好的 `audio/` 檔，
 那一鏡自己的聲音靜音（`assemble-v4.mjs` 的 `clip_voice`）。字幕照模型實際開口的時間。
 同一角色跨鏡的聲音是否一致、模型講的字對不對，**每集剪完由站主聽**。
+撞聲檢查（同一集兩個說話的角色不能用同一個錄音聲音，共用 [`README.md`](../../../drama/README.md)〈聲音〉）：真人版只有系統聲、心裡話、畫外、背影用錄音，每集照 `cast.json` 查這幾個角色；還沒有寫下來的結果（2026-11-08 缺口檢查）。
+
+YouTube 標題的格式：`<這集的鉤子>｜種田娶妻打天下 第N集`，重製的集數加「（重製版） | CC字幕」，例如 `…｜種田娶妻打天下 第1集（重製版） | CC字幕`（共用 `REVIEW.md` 第 10 節）。外語的標題在 `hailuo/youtube-locales/`。
 
 ## 四、錢
 
@@ -104,9 +107,9 @@
 
 | 分支 | 放什麼 |
 | --- | --- |
-| `transfer/zt-live-e<NNN>` | 真人版一集一條：重剪需要的（選中的草稿與提示詞、精修、picks、錄音、成片、後台匯入資料夾）加上全部真人草稿、log、精修舊版、挑片縮圖 |
+| `transfer/zt-live-e<NNN>` | 真人版一集一條：重剪需要的（選中的草稿與提示詞、精修、picks、**剪進成片的片段（帶原聲）**、**剪接表**、錄音、**這一集的配樂**、成片、後台匯入資料夾）加上全部真人草稿、log、精修舊版、挑片縮圖（2026-11-08 起照這樣分，見 [`BACKUP-BRANCHES.md`](../../../drama/BACKUP-BRANCHES.md)） |
 | `transfer/zt-cg-e<NNN>`、`transfer/zt-cg-shared` | CG 時期的檔，另開，不跟真人的混 |
-| `transfer/zt-shared` | 跨集共用：音效、配樂、試鏡與參考圖各輪、腳本、scratchpad |
+| `transfer/zt-shared` | 跨集共用：音效、系列共用的配樂、試鏡與參考圖各輪、腳本、scratchpad |
 
 站主的話：「一集一個分支」「跨集共用可以共同放一個：音效庫、配樂、試鏡、參考圖各輪、我寫的腳本；其他每一集的全部放每一集的分支」（2026-11-07）；
 「不要漏備份某個你覺得沒用的檔案」（2026-11-07）；「只留重剪需要的 但不能漏」「3D CG 時期的全部檔案就另外開分支吧 不要跟真人的混再一起」（2026-11-08）。

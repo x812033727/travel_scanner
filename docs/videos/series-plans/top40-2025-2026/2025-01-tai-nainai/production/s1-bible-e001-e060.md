@@ -3,7 +3,7 @@
 這份是第一季 60 集分鏡共用的系列設定：時間、燈、錢、道具、期限、人物、場景與接點。劇情照 `season-01.json` 細綱；細綱自相矛盾、
 或跟後面幾季對不上的地方，**以這份為準**，每一處都列在〈與細綱不同處〉（站主 2026-11-06：不改 `season-01.json`，寫稿照這份）。
 
-- 每一鏡怎麼寫：`.agents/skills/animation-preproduction/references/storyboard-shot-spec.md`（十一項、場頭、台詞有頭有尾、五張清單、三道檢查）；
+- 每一鏡怎麼寫：`.agents/skills/animation-preproduction/references/storyboard-shot-spec.md`（十一項、場頭、台詞有頭有尾、五張清單、三道檢查）。**2026-11-08 起以共用區 [`docs/videos/drama/WRITING.md`](../../../../drama/WRITING.md) 為準**（兩部統一，見 [`drama/README.md`](../../../../drama/README.md)；shot-spec 的「沒寫就是嚴肅」已不再用）；
   流程：同目錄的 `script-to-storyboard.md`；格式範本：`docs/videos/zhong-tian-qu-qi-e001-r2/script.md`。
 - 角色外貌（英文）、聲音、場景、道具與燈的提示詞：同目錄 [`cast.json`](cast.json)。每集 `video.json` 從那裡照抄，不要各自改寫。
 - 各集稿子：`docs/videos/tai-nainai-eNNN/script.md`（NNN 三位數）。交稿前：
@@ -889,7 +889,7 @@ python3 -I docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scri
   快門「咔」（第 42 集）。古董店的門不要有門鈴（免得像報信鈴）。
 - **童謠**（全季唯一一首，原創，第 22、29 集唱、第 42 集提到）：「燈兒亮，照屋梁；小玉琴，睡眠床。風莫進，雨莫響；媽守燈，到天光。」
   她用 Kore 輕輕唸唱，配一把古箏的單旋律；怎麼錄見〈要站主決定〉。
-- **剪接**：不放集數、片名卡，不回顧；剪在動作中間；全季最後合併成一支。不裁切放大、不慢放超過 1.1 倍。
+- **剪接**：不放集數、片名卡，不回顧；剪在動作中間；全季最後合併成一支。不裁切放大、不慢放超過 1.1 倍（2026-11-08 註：台詞放不下時單一鏡可到 1.2 倍，見 [`drama/README.md`](../../../../drama/README.md)）。
 - **字幕**：CC 軟字幕、不燒錄（已暫定）；CC 不標說話人，第 60 集電話那頭尤其不能出名字。畫面欄不寫台詞原文（會被畫成字）。
 
 ## 寫稿中補定的事（主控彙整各寫稿者回報，後寫的集照這份）
@@ -1073,7 +1073,7 @@ python3 -I docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scri
 3. **畫面比例：已暫定 16:9**（plan.json 建議；每篇章另剪合輯長片，Shorts 從中央裁 9:16）。
 4. **字幕：已暫定 CC 軟字幕**，不燒錄（plan.json `shot_rules` 寫的燒錄不再用）；CC 不標說話人。
 5. **細綱改字：已暫定不改 `season-01.json`**，寫稿照〈與細綱不同處〉；以後要回頭改細綱，那一節就是改單。
-6. **預算（要站主決定）**：第一季細綱 7,535 秒、1,379 鏡；審稿後實際 7,555.5 秒、1,577 鏡（下面的數字照實際重算：一次到位約 12.7 萬點＝影片 9.1 萬＋首格 3.6 萬；其餘比例同）。原估：照 plan.json 的單價（影片約 12 點／秒、2K 首格約 23 點／張）：
+6. **預算（要站主決定）**：（2026-11-08 註：已被 [`RULES.md`](RULES.md) 第四節取代：整季 1,300–1,500 CU、每集上限 25 CU，用 Colab G4 的 CU 算；下面的海螺點數只留作紀錄，見 [`drama/README.md`](../../../../drama/README.md)）第一季細綱 7,535 秒、1,379 鏡；審稿後實際 7,555.5 秒、1,577 鏡（下面的數字照實際重算：一次到位約 12.7 萬點＝影片 9.1 萬＋首格 3.6 萬；其餘比例同）。原估：照 plan.json 的單價（影片約 12 點／秒、2K 首格約 23 點／張）：
    - 照成片秒數算，一次到位約 **12.2 萬點**（影片 9.0 萬＋首格 3.2 萬）；
    - 照每鏡買 6 秒、長鏡 10 秒算，約 **14 萬點**；
    - 含重抽約 **18–23 萬點**（plan.json `per_season`）；

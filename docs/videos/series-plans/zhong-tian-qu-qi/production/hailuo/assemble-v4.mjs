@@ -7,10 +7,13 @@
 //   - burned-in subtitles, a name card the first time a character matters, a title card;
 //   - a mix: dialogue, Lyria music cues ducked under dialogue, CC0 effects and synthetic beds.
 //   node assemble-v4.mjs <video.json> <overlays.json|-> <edit.json> <workdir> <out.mp4>
+// `clip_voice: true` (live action, owner 2026-11-07): a shot whose clip carries its own audio (the draft's voice, staged
+// onto the refined picture) uses that audio instead of the recorded lines, at the clip's own length; the subtitles follow
+// where the model actually speaks (silencedetect on the clip), because the lips follow the model's voice, not ours.
 // DUB=<locale> (en, ja, ko) makes no picture: it times the zh-TW lines exactly as the cut does, lays
 // <workdir>/audio-<locale>/ on the same starts (dub-track.mjs) under the same music and effects, and
 // writes <out>.<locale>.m4a and <out>.<locale>.srt instead of <out>.
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -26,6 +29,18 @@ const TEMPO = edit.tempo ?? 1.07, LEAD = 0.12, GAP = 0.12, TAIL = 0.22, MIN = 1.
 // file and drawtext then falls back to a font without CJK glyphs, so every panel is boxes. ZT_FONT
 // overrides; otherwise a CJK font that Debian ships.
 const FONT = process.env.ZT_FONT ?? (process.platform === "win32" ? "C\\:/Windows/Fonts/msjhbd.ttc" : "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc");
+const hasAudio = (f) => execFileSync("ffprobe", ["-v", "error", "-select_streams", "a", "-show_entries", "stream=index", "-of", "csv=p=0", f]).toString().trim() !== "";
+// Speech spans in a clip's own audio: [[start, end], ...] in seconds from `from`, pauses under 0.25 s ignored.
+const speechSpans = (f, from, len) => {
+  const err = spawnSync("ffmpeg", ["-hide_banner", "-nostats", "-ss", from.toFixed(3), "-t", len.toFixed(3), "-i", f, "-af", "silencedetect=noise=-35dB:d=0.25", "-f", "null", "-"]).stderr.toString();
+  const spans = []; let cur = 0, silent = false;
+  for (const [, k, v] of err.matchAll(/silence_(start|end): ([0-9.]+)/g)) {
+    const at = Number(v);
+    if (k === "start") { if (at - cur > 0.12) spans.push([cur, at]); silent = true; } else { cur = at; silent = false; }
+  }
+  if (!silent && len - cur > 0.12) spans.push([cur, len]);
+  return spans;
+};
 const probe = (f) => Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString().trim());
 const segDir = path.join(work, "segments-v4");
 const txtDir = path.join(segDir, "text");
@@ -64,7 +79,8 @@ function panelFilters(shot) {
 function nameCard(shot) {
   const card = edit.names?.[shot];
   if (!card) return "";
-  const [name, tag] = card, a = 0.25, b = 2.6;
+  // `name_at`: when the card comes in (e001 live s20: not while the gate is still shut)
+  const [name, tag] = card, a = edit.name_at?.[shot] ?? 0.25, b = a + 2.35;
   const alpha = `if(lt(t,${a}),0,if(lt(t,${a + 0.25}),(t-${a})/0.25,if(lt(t,${b - 0.3}),1,max(0,(${b}-t)/0.3))))`;
   return `,drawbox=x=96:y=596:w=8:h=150:color=0xe8c26a@0.95:t=fill:enable='between(t,${a},${b})'` +
     `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-n`, name)}':fontsize=84:fontcolor=0xf3d27a:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.7:x=124:y=598` +
@@ -86,7 +102,12 @@ const report = [], segs = [], starts = {}, lineAt = [], srt = [];
 let t = 0;
 for (const scene of video.scenes) {
   if (scene.template !== "shot") continue;
-  const lines = (scene.lines ?? []).map((l) => ({ ...l, wav: path.join(work, "audio", `${l.id}.wav`) }));
+  // `move_lines`: {line id: shot} plays a line at the start of another shot (e001 live s37: the take ends before the
+  // system's second line, so it opens s38, a point-of-view shot with no mouth on screen)
+  const moved = edit.move_lines ?? {};
+  const incoming = video.scenes.flatMap((s) => s.lines ?? []).filter((l) => moved[l.id] === scene.id && !(scene.lines ?? []).includes(l));
+  const lines = [...incoming, ...(scene.lines ?? []).filter((l) => !moved[l.id] || moved[l.id] === scene.id)]
+    .map((l) => ({ ...l, wav: path.join(work, "audio", `${l.id}.wav`) }));
   // Each line is trimmed of its own leading/trailing silence and sped up into its own file first:
   // atempo inside the segment graph (before adelay) silently cut every segment's audio to 0.12 s.
   for (const l of lines) {
@@ -95,26 +116,77 @@ for (const scene of video.scenes) {
     l.wav = fast;
     l.len = probe(fast);
   }
-  let dur = lines.length ? LEAD + lines.reduce((a, l) => a + l.len, 0) + GAP * (lines.length - 1) + TAIL : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
-  dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
   const src = scene.data?.source;
   const clip = src ? firstTake(path.join(work, "clips"), src.shot) : pick(path.join(work, "clips"), scene.id);
+  // A line the model voiced on screen (its lips follow it) vs one we lay in from the recorded audio/ files: the system,
+  // an off-screen speaker, inner monologue, or a speaker whose lips the shot does not show (nospeak).
+  // `voice_on: ["s12", ...]` in the edit list: shots whose speaker is marked nospeak only so the builder writes the speech
+  // after the action, but who does speak on screen (e001 live fix1 s12, s14) -- their lines take the clip's voice.
+  const onscreen = (l) => l.speaker !== "xitong" && (scene.data?.characters ?? []).includes(l.speaker)
+    && (!(scene.data?.nospeak ?? []).includes(l.speaker) || (edit.voice_on ?? []).includes(scene.id))
+    && !/嘴閉著|內心獨白|畫外/.test(l.emotion ?? "");
+  const useClip = Boolean(edit.clip_voice && clip);
+  const voiced = useClip && lines.some(onscreen) && hasAudio(clip);  // otherwise the clip's own (invented) speech is muted
+  const voiceFrom = src ? Number(src.from_s ?? 0) : 0;
+  const recordedNeed = LEAD + lines.filter((l) => !(voiced && onscreen(l))).reduce((a, l) => a + l.len + GAP, 0) + TAIL;
+  let dur = useClip ? Math.max(probe(clip) - voiceFrom, recordedNeed) : lines.length ? LEAD + lines.reduce((a, l) => a + l.len, 0) + GAP * (lines.length - 1) + TAIL : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
+  dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
+  // `frame_round: true` (e001-r2 on): every shot a whole number of 24 fps frames, so the stream-copied concat stays at
+  // exactly 24 fps instead of drifting to 23.976 (season 1 lost ~5 frames a 100 s cut); off for episodes already dubbed.
+  if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
   const still = pick(path.join(work, "first-frames"), src ? src.shot : scene.id);
   const seg = path.join(segDir, `${scene.id}.mp4`);
   const args = ["-v", "error", "-y"];
   // Where each line sits in the shot, and its subtitle (system lines live on the panel instead).
   let at = LEAD;
   let subs = "";
+  if (voiced) {
+    // the model's speech, split among the shot's on-screen lines by text length; recorded lines keep their own files
+    const live = lines.filter(onscreen);
+    // `voice_skip`: ignore model sound before this many seconds into the shot (e001 live s12: a murmur at 0.4 s pulled
+    // the line's subtitle 4.3 s ahead of the shout)
+    const skip = edit.voice_skip?.[scene.id] ?? 0;
+    const spans = speechSpans(clip, voiceFrom, dur).filter(([, e]) => e > skip).map(([s, e]) => [Math.max(s, skip), e]);
+    if (spans.length) {
+      const s0 = spans[0][0], s1 = spans[spans.length - 1][1], chars = live.reduce((a, l) => a + [...l.text].length, 0);
+      let cur = s0;
+      for (const l of live) { l.len = (s1 - s0) * [...l.text].length / chars; l.voiceAt = cur; cur += l.len; }
+    }
+    // recorded lines keep the script's order around the model's speech: one before a spoken line must end before it
+    // (sped up at most 1.2x to fit, e001 live s14), one after starts when the speech ends and the shot holds its last
+    // frame if it runs past the clip (e001 live s37, whose system line had run into s38)
+    let cursor = LEAD;
+    lines.forEach((l, i) => {
+      if (l.voiceAt !== undefined) { l.placeAt = l.voiceAt; cursor = l.voiceAt + l.len + GAP; return; }
+      const next = lines.slice(i + 1).find((x) => x.voiceAt !== undefined);
+      if (next && cursor + l.len > next.voiceAt - GAP) {
+        const room = next.voiceAt - GAP - cursor;
+        if (room > 0 && l.len / room <= 1.2) {
+          const fit = path.join(fastDir, `${l.id}-fit.wav`);
+          execFileSync("ffmpeg", ["-v", "error", "-y", "-i", l.wav, "-af", `atempo=${(l.len / room).toFixed(4)}`, fit]);
+          l.wav = fit; l.len = probe(fit);
+        }
+      }
+      l.placeAt = cursor; cursor += l.len + GAP;
+    });
+    dur = Math.max(dur, cursor - GAP + TAIL);
+    if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
+  }
+  // a system line lives on the shot's panel, unless `subtitle_lines` names it (e001 live s37 a44: not on the panel)
+  const panelOnly = (l) => l.speaker === "xitong" && overlays[scene.id] && !(edit.subtitle_lines ?? []).includes(l.id);
   const placed = lines.map((l, i) => {
+    if (l.placeAt !== undefined) at = l.placeAt;
     const p = { ...l, at };
-    if (edit.burn_subtitles && !(l.speaker === "xitong" && overlays[scene.id])) subs += subtitle(`${scene.id}-s${i}`, l.text, at, Math.min(dur, at + l.len + 0.08), l.speaker === "xitong" ? "0x9fe3ff" : "0xffffff");
-    lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start: t + at, len: l.len, subtitled: !(l.speaker === "xitong" && overlays[scene.id]) });
-    if (!(l.speaker === "xitong" && overlays[scene.id])) srt.push({ start: t + at, end: t + at + l.len, text: l.text });
+    if (edit.burn_subtitles && !panelOnly(l)) subs += subtitle(`${scene.id}-s${i}`, l.text, at, Math.min(dur, at + l.len + 0.08), l.speaker === "xitong" ? "0x9fe3ff" : "0xffffff");
+    lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start: t + at, len: l.len, subtitled: !panelOnly(l) });
+    if (!panelOnly(l)) srt.push({ start: t + at, end: t + at + l.len, text: l.text });
     at += l.len + GAP;
     return p;
   });
   if (DUB) { starts[scene.id] = { start: t, dur }; report.push(`${scene.id} ${t.toFixed(2)} +${dur.toFixed(2)}s`); t += dur; continue; }
-  const decor = `${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}`;
+  // `flash: {"s03": 0.35}`: the shot ends in a white flash of that many seconds (a lightning cut the clip did not draw, e001-r2 c03).
+  const flashOut = edit.flash?.[scene.id] ? `,fade=t=out:st=${Math.max(0, dur - edit.flash[scene.id]).toFixed(3)}:d=${edit.flash[scene.id]}:color=white` : "";
+  const decor = `${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}${flashOut}`;
   let vf, note;
   if (clip) {
     const from = src ? Number(src.from_s ?? 0) : 0;
@@ -125,7 +197,8 @@ for (const scene of video.scenes) {
     // motion-compensated interpolation (minterpolate) instead of repeating them; `interpolate: false`
     // in the edit list restores the old frame-duplicating path. Whatever is still missing after
     // that is a held last frame, reported as "held" so the shot can be bought longer next time.
-    const slow = dur > clipLen ? Math.min(dur / clipLen, SLOW_MAX) : 1;
+    // `slow_shot`: a per-shot slow-down limit (e001 live s38: a slow push-in that took the moved system line too)
+    const slow = dur > clipLen ? Math.min(dur / clipLen, edit.slow_shot?.[scene.id] ?? SLOW_MAX) : 1;
     const smooth = slow > 1 && edit.interpolate !== false ? ",minterpolate=fps=24:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" : ",fps=24";
     const base = `[0:v]setpts=${slow.toFixed(4)}*(PTS-STARTPTS),scale=1920:1080:flags=lanczos${smooth},format=yuv420p,tpad=stop_mode=clone:stop_duration=${Math.max(0, dur - clipLen * slow + 0.1).toFixed(3)},trim=duration=${dur.toFixed(3)},setpts=PTS-STARTPTS`;
     // `punch: false` in the edit list turns the split-and-punch-in off for the whole episode (e001-r2).
@@ -151,6 +224,8 @@ for (const scene of video.scenes) {
     note = `still ${path.basename(still)}`;
   }
   const amix = [];
+  // with the clip's voice, only the lines it does not speak (system, off screen, inner, nospeak) come from audio/ files
+  if (voiced) placed.splice(0, placed.length, ...placed.filter((l) => l.voiceAt === undefined));  // recorded lines only
   placed.forEach((l, i) => {
     args.push("-i", l.wav);
     const ms = Math.round(l.at * 1000);
@@ -158,7 +233,9 @@ for (const scene of video.scenes) {
   });
   args.push("-f", "lavfi", "-t", dur.toFixed(3), "-i", "anullsrc=r=48000:cl=stereo");
   const silence = placed.length + 1;
-  const graph = [vf, ...amix, `${placed.map((_, i) => `[a${i}]`).join("")}[${silence}:a]amix=inputs=${placed.length + 1}:normalize=0:duration=longest,atrim=duration=${dur.toFixed(3)}[a]`].join(";");
+  const voice = voiced ? [`[0:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS[cv]`] : [];
+  const mixIn = `${placed.map((_, i) => `[a${i}]`).join("")}${voiced ? "[cv]" : ""}[${silence}:a]`;
+  const graph = [vf, ...amix, ...voice, `${mixIn}amix=inputs=${placed.length + (voiced ? 1 : 0) + 1}:normalize=0:duration=longest,atrim=duration=${dur.toFixed(3)}[a]`].join(";");
   args.push("-filter_complex", graph, "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-c:a", "pcm_s16le", "-t", dur.toFixed(3), seg.replace(/\.mp4$/, ".mkv"));
   execFileSync("ffmpeg", args, { stdio: "inherit" });
   // Guard: the segment's audio must be as long as its picture, or every later line drifts.
@@ -192,6 +269,8 @@ const SYNTH = {
   rain: "anoisesrc=color=pink:amplitude=0.5:d=DUR,highpass=f=700,lowpass=f=9000,volume=0.8",
   underwater: "anoisesrc=color=brown:amplitude=0.6:d=DUR,lowpass=f=320,volume=1.4",
   river: "anoisesrc=color=brown:amplitude=0.4:d=DUR,bandpass=f=900:width_type=o:w=2.5,volume=0.7",
+  // a slow lub-dub at about 70 bpm (e001 live s38: the script asks for a heartbeat and the library has none)
+  heartbeat: "aevalsrc='sin(2*PI*52*t)*(exp(-28*mod(t,0.86))+0.6*gte(mod(t,0.86),0.22)*exp(-28*(mod(t,0.86)-0.22)))':d=DUR:s=48000,lowpass=f=160,volume=2.5",
 };
 const dubbed = DUB ? (await import("./dub-track.mjs")).dubDialogue({ locale: DUB, videoFile: file, work, segDir, lineAt, starts, total, probe, zhSrt: out.replace(/\.mp4$/, ".zh-TW.srt") }) : null;
 const inputs = ["-i", DUB ? dubbed.dialogue : joined];
@@ -211,7 +290,7 @@ for (const [i, m] of (edit.music ?? []).entries()) {
 // Every system line rings a ding just before it.
 const cues = [...(edit.sfx ?? [])];
 for (const l of lineAt) if (l.speaker === "xitong") cues.push({ synth: "ding", abs: l.start - 0.22, gain: -9 });
-for (const name of Object.keys(edit.names ?? {})) cues.push({ file: edit.name_whoosh ?? "swish-9", at: name, off: 0.15, gain: -16 });
+for (const name of Object.keys(edit.names ?? {})) cues.push({ file: edit.name_whoosh ?? "swish-9", at: name, off: (edit.name_at?.[name] ?? 0.25) - 0.1, gain: -16 });
 for (const [i, c] of cues.entries()) {
   const a = c.abs ?? tAt(c.at, c.off ?? 0);
   const ms = Math.max(0, Math.round(a * 1000));
@@ -255,6 +334,8 @@ if (DUB) {
   process.exit(0);
 }
 const srtFile = out.replace(/\.mp4$/, ".zh-TW.srt");
+// Where every line landed (absolute start, length, shot, speaker): audio-qa.py checks it against the shots.
+writeFileSync(out.replace(/\.mp4$/, ".lines.json"), JSON.stringify(lineAt, null, 1) + "\n");
 writeFileSync(srtFile, srt.map((c, i) => `${i + 1}\n${fmt(c.start)} --> ${fmt(c.end)}\n${c.text}\n`).join("\n"));
 writeFileSync(path.join(segDir, "mix-graph.txt"), graph);
 // Subtitles ride as a soft zh-TW track (CC), the owner's choice; burn_subtitles draws them instead.

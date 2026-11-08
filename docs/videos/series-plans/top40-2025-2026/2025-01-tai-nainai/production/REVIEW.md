@@ -51,8 +51,9 @@
 
 - **招牌音效要聽得到**：三顆銅鈴（報信鈴）、燈亮的低鳴與暗的一閃、三十個抽屜歸位、福伯懷錶的滴答、落地鐘、快門「咔」。
   每個量那一秒的音量要比前後高（第 1 集兩輪審片都沒抓到鈴聲聽不到）。古董店的門不能有門鈴（會像報信鈴）。
-- 聲音：每個角色照 bible〈聲音〉的 Gemini 聲音；同一集沒有兩個說話的人用同一個聲音（撞聲檢查）。月棠十八歲 Kore、九十六歲 Gacrux。
-- 剪接不裁切放大、不慢放超過 1.1 倍；開頭 10 秒至少四鏡（`lint` 沒有 `hook.opening`）；開頭不放集數與片名卡。
+- 聲音：第 1 集全部是錄好的 Gemini 聲音。**第 2 集起（2026-11-08 跟種田統一），畫面上露嘴說話的台詞是模型原聲**；系統聲、心裡話、畫外、背影的台詞是照 bible〈聲音〉錄好的 Gemini 聲音，那一鏡模型的聲音要靜掉。
+  錄音的角色同一集沒有兩個說話的人用同一個聲音（撞聲檢查）；用原聲的角色，同一角色每鏡聽起來像不像同一個人（量基頻，拿不準交站主聽）。月棠十八歲 Kore、九十六歲 Gacrux。
+- 剪接不裁切放大、慢放上限 1.1 倍，台詞放不下時單一鏡可到 1.2 倍並寫在剪接表（[`drama/README.md`](../../../../drama/README.md)）；開頭 10 秒至少四鏡（`lint` 不能有 `hook.opening` 警告）；開頭不放集數與片名卡。
 - CC 不標說話人。
 
 ## 七、第 1 集抓到、以後每集都看的
@@ -72,6 +73,7 @@
 | `node tools/video/cli.mjs lint --slug tai-nainai-eNNN` | 0 錯；節奏（craft）警告依站主決定可以留，`hook.opening` 不能留 |
 | `storyboard-check.py`（種田資料夾，main） | 分鏡的程式檢查；細綱的短句是寫明的例外 |
 | `h3.sh check`、`h3.sh cuts`、`refine.py --check`（`minimax-h3-colab`） | 送出前檢查、免費找鏡中硬切、精修前檢查 17k+5 格 |
-| 剪完的 `cut-qa.py`、`cut-jumps.py`、`audio-qa.py`、`continuity-sheets.py` | 借用種田的（共用 `REVIEW.md` 第 9 節）；祖媽的 repo 資料夾裡沒有自己的一份 |
+| 剪完的 `cut-qa.py`、`cut-jumps.py`、`audio-qa.py`、`continuity-sheets.py` | 借用種田的（共用 `REVIEW.md` 第 12 節）；祖媽的 repo 資料夾裡沒有自己的一份 |
+| 剪接：種田的 [`hailuo/assemble-v4.mjs`](../../../zhong-tian-qu-qi/production/hailuo/assemble-v4.mjs) | 第 1–3 集用它剪（`transfer/tn-e003-work` 的 scratchpad 有一份複製的 `asm2038/assemble-v4.mjs`），輸出在 scratchpad 的 `e00N-post/<版本>/cut/`（成片、`final.log`、`<stem>.lines.json`、字幕）。剪接表每集要寫 `"punch": false`、`"slow_max": 1.1`。**剪接表放在哪、檔名是什麼還沒寫進 repo**（2026-11-08 缺口檢查發現，待祖媽的 session 補）：建議每集提交進 repo，送上架包時用 `--edit` 帶它（共用 `REVIEW.md` 第 8 節） |
 
 祖媽沒有種田 `preflight-prompts.py` 那種逐支讀提示詞的檢查（`four`、`headroom`、紙、群眾、皮膚等）；`compile.py` 與 `lint` 管的是格式與對應。

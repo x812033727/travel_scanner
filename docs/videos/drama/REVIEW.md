@@ -27,8 +27,10 @@
 | 7 | 獨立成片審查 | 獨立代理 | 否 | 嚴重、中等要修，輕微接受 |
 | 8 | 表情審查 | 獨立代理 | 否 | 重拍最嚴重的，其他交站主 |
 | 9 | 交站主 | 站主 | — | 站主決定接受、修或重拍 |
-| 10 | 送上後台與確認 | 製作端 | 否 | 抓回來比對，缺就補 |
-| 11 | 備份與刪本機 | 製作端、另一個代理 | 否 | `BACKUP-BRANCHES.md` |
+| 10 | 送上後台與確認（`import`） | 製作端 | 否 | 抓回來比對，缺就補 |
+| 11 | 站主核准成片 → 語言 → 上架包（`import --publish`） | 站主、製作端 | 否 | 看輸出的 `missing`，缺就補送 |
+| 12 | 上 YouTube | 站主 | — | 第 11 節 |
+| 13 | 備份與刪本機 | 製作端、另一個代理 | 否 | `BACKUP-BRANCHES.md` |
 
 修正的範圍（種田站主 2026-11-07）：**嚴重與中等都自己修好再給站主，輕微的接受**。挑片後一次、剪完後一次，兩次獨立審片。
 
@@ -74,8 +76,7 @@
 | `RETAKE` ＋ 英文改寫句 | 兩支都不行，照改寫句重抽。`refine-prep.py` 會把這一鏡從精修清單拿掉 |
 | `KEEP` | 這輪兩支都不行，但**之前已經有可用的那支**，維持舊的。不要寫 RETAKE，否則成片會少一鏡（種田真人版第 1 集 fix5） |
 
-- 挑片理由裡另一支的情況用文字寫，不要寫 `@`：工具會把理由裡的剪點套到選中的那支（種田真人版第 1 集 s01）。
-- 剪點檔與重抽的挑片檔一起用時，**後面的蓋掉前面的**：某一鏡後來又重抽，剪點檔要排在重抽挑片檔前面。
+- 挑片理由只寫選中那一支的剪點；挑片檔怎麼排、工具怎麼讀，照系列的工具（種田的 `refine-prep.py` 見種田 [`REVIEW.md`](../series-plans/zhong-tian-qu-qi/production/REVIEW.md) 第八節）。
 - **重抽前先看參考圖是不是問題本身**（兩頂帽子、腰上多一把刀、一直在笑）；是圖的問題就改圖或拿掉那張圖。
 - **改字只改一次**，第二輪還錯就改鏡頭設計（`WRITING.md` 第十一節）。三輪都錯就用最接近的版本，剪接時補救。
 - 挑片時看「說的是不是劇本那句」：評片前先讀那一鏡的稿子，每一條「錯」都先對過動作欄再說（種田真人小樣 s25 差點把照稿演的當成錯重拍）。
@@ -84,7 +85,7 @@
 
 挑完、**精修前**先做一次（種田站主 2026-11-07：「這些在審片時應該要看到吧？」）。在這一輪抓到要重抽的錯，省一輪精修。
 
-- 跑 `continuity-sheets.py`（種田 `colab/runs/_scripts/`，目前只在種田工作分支，見第 9 節）的草稿模式（輸入選中的草稿資料夾，檔名 `sNN.mp4`）：
+- 跑 [`continuity-sheets.py`](../series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/continuity-sheets.py) 的草稿模式（輸入選中的草稿資料夾，檔名 `sNN.mp4`）：
   一場一張圖，每鏡頭、中、尾三格照剪接順序排。
 - 交給獨立代理，照下面第 6 節的清單逐場看。要重抽的重抽，再一起精修。
 
@@ -100,6 +101,8 @@
 | `audio-qa.py CUT_DIR VIDEO_JSON` | 台詞跨到下一鏡（畫面上的人在說話時是 FAIL）、兩句重疊、被片尾切掉、被配樂蓋過（不到 −30 LUFS，或比前一秒的配樂高不到 3 dB）、超過 4 秒沒有台詞（只是提醒） | 改台詞位置、拆鏡、壓配樂。**它不判斷嘴型與聲音合不合臉，那要站主聽** |
 | `continuity-sheets.py CUT_DIR VIDEO_JSON OUT` | 不抓錯，只畫表：一場一張、每鏡三格。對著分鏡看同一道具大小樣子、地點的相對位置與距離、誰看什麼被看的在不在那邊、同場的光與衣服 | 有一項不對就重抽那幾鏡 |
 
+**交站主前，製作端先開聲音把整集從頭到尾看一遍**，特別看畫面上的人說話時嘴有沒有動、聲音像不像同一個人（種田 [`storyboard-rules.md`](../series-plans/zhong-tian-qu-qi/production/storyboard-rules.md)〈收工前要用聲音看一遍〉）。
+
 自動檢查抓不到的三件事，**合成後、交站主前另外做**（祖媽第 1 集 2026-11-07：兩輪審片都過了，站主一看就看到鈴聲聽不到、門外亮得像白天、手跟紙黏在一起）：
 
 1. **招牌音效**：每個招牌音效那一秒用 `ebur128` 或 50 ms RMS 量，要明顯比前後高；位置要對到畫面上的動作。
@@ -110,14 +113,15 @@
 
 - **每次換片段（重抽、換種子、改剪點），音效與名牌的時間都要照新片段重量**。從舊版複製來的剪接表，音效時間是照舊片段的動作算的
   （種田真人版第 1 集：打雷早 4 秒、踹門早 0.8 秒、放碗早 3.5 秒、拍胸早 6.3 秒，動作那一刻反而沒聲音）。
-- **字幕起點**：用模型原聲的劇，字幕要從模型實際開口的時間算；片段前面有一聲雜音字幕就會提早（種田 s12 早 4.3 秒，用 `voice_skip`）。
-  有面板的鏡，面板上沒有的系統句要另外列字幕（`subtitle_lines`）。
+- **字幕起點**：用模型原聲的劇，字幕要從模型實際開口的時間算；片段前面有一聲雜音字幕就會提早（種田 s12 早 4.3 秒）。
+  有面板的鏡，面板上沒有的系統句要另外列字幕。剪接表的寫法（`voice_skip`、`subtitle_lines`）見種田 [`REVIEW.md`](../series-plans/zhong-tian-qu-qi/production/REVIEW.md) 第八節。
 
 ## 5. 獨立成片審查
 
-剪完、自動檢查與人工三項做完以後，另開一個沒參與製作的代理審成片。給它的說明（brief）在
-種田 `colab/runs/_scripts/independent-review.md`（目前只在種田工作分支，見第 9 節）；下面是它的通用內容與實際寫法。
-實際的報告可以參考種田真人版第 1 集的 `colab/runs/e901-live/cut-review.md`（第 1 輪）與 `cut-review-2.md`（第 2 輪）。
+剪完、自動檢查與人工三項做完以後，另開一個沒參與製作的代理審成片。**給它的說明就是這一節**，加上系列的 `REVIEW.md`（含〈站主已經定案〉那一節）。
+種田的 [`independent-review.md`](../series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/independent-review.md) 是較早、較窄的版本
+（只給稿子、連戲表與三個檢查結果，清單 7 項，路徑寫死 `zhong-tian-qu-qi-eNNN-r2`），不要只給它；下面的「給它的東西」與第 8 項以這一節為準。
+實際的報告可以參考種田真人版第 1 集的 [`cut-review.md`](../series-plans/zhong-tian-qu-qi/production/colab/runs/e901-live/cut-review.md)（第 1 輪）與 [`cut-review-2.md`](../series-plans/zhong-tian-qu-qi/production/colab/runs/e901-live/cut-review-2.md)（第 2 輪）。
 
 **給它的東西**：分鏡（`script.md` 或 `storyboard.md`）、`video.json`、成片、`final.log`、`lines.json`、字幕、剪接表、混音圖、參考圖、
 連戲表、三個自動檢查的結果（它不重複）、上一輪的審片報告、**站主已經定案、不再列為要修的事**。
@@ -167,7 +171,7 @@
 ## 6. 表情審查
 
 露臉的鏡多、又是真人版時，另外做一次逐鏡表情審查（種田站主 2026-11-08：「我發現有些角色都沒表情，應該每個都要有表情，除非是劇情要求要沒表情」）。
-範例：種田 `colab/runs/e901-live/expression-review.md`。
+範例：種田 [`expression-review.md`](../series-plans/zhong-tian-qu-qi/production/colab/runs/e901-live/expression-review.md)。
 
 - **素材**：選中的草稿（精修保留同一段表演），只看剪接用到的那段；每鏡每 0.5 秒一格，臉小的鏡裁臉放大。
 - **對照**：`video.json` 每句台詞的情緒、每鏡實際送出的提示詞、參考圖。
@@ -178,6 +182,8 @@
 - 只能剪掉的（開頭一秒在笑）寫剪點；其他交站主決定重拍哪幾鏡。
 
 ## 7. 交給站主
+
+**怎麼交**：用第 8 節的 `import` 把成片送上後台，站主在 `/admin/videos` 那一集的成片審核卡上看、核准或退回。還在改、不想送上後台的版本，先給預覽檔請站主看。
 
 **交出去的**：
 
@@ -192,32 +198,91 @@
 - 站主指的是哪一張、哪一支不清楚時，把候選並排、標好名字問一句，不要猜了就往下做。
 - 製作端的建議站主照做之後才發現建議錯了，馬上說、收回（例如重拍其實照稿演對的鏡）。
 
-## 8. 送上後台與確認
+## 8. 送上後台、核准成片與上架包
 
-- 用 `node tools/video/cli.mjs import`（`--from <匯入資料夾>`；後台已經有同 slug 的舊版時加 `--force` 蓋過去，舊檔移到匯入資料夾的 `cg-old/` 之類，不刪）。
-  上架包、語言批次的順序照各系列 README（種田 `production/README.md` 第 3 節第 5 條）。
-- 封面不要沿用畫風不同的舊季封面。
-- **送上去以後抓回來比**：`review-files --slug <slug> --out <資料夾> --gate final`，封面與字幕逐位元相同，成片比長度與畫面；三樣都在才算送上後台。
-- 在後台影片清單逐項確認成片、字幕、封面都在。這也是刪本機檔案的兩個條件之一（另一個是備份核對，見 `BACKUP-BRANCHES.md`）。
+送上後台有兩次 `import`，中間是站主核准成片與決定語言。順序不能換（種田第 32、34 集踩過，[`種田 production/README.md`](../series-plans/zhong-tian-qu-qi/production/README.md) 第 3 節第 5 條）：
 
-## 9. 工具在哪裡、main 有沒有
+1. **送成片**：`node tools/video/cli.mjs import --from <匯入資料夾>`。匯入資料夾放 `final.mp4`、`meta.json`、字幕、封面。
+   後台已經有同 slug 的舊版時加 `--force` 蓋過去，舊檔移到匯入資料夾的 `cg-old/` 之類，不刪。
+2. **送上去以後抓回來比**：`review-files --slug <slug> --out <資料夾> --gate final`，封面與字幕逐位元相同，成片比長度與畫面；三樣都在才算送上後台。
+   在後台影片清單也逐項確認成片、字幕、封面都在。這是刪本機檔案的兩個條件之一（另一個是備份核對，見 `BACKUP-BRANCHES.md`）。
+3. 站主看成片（第 7 節），核准。
+4. 站主在那一集的語言面板勾語言；有勾的話 `import --from <匯入資料夾> --languages` 送語言批次，等站主核准（第 9 節）。
+5. **站主核准成片以後，送上架包，連同重剪需要的檔**：
 
-審片工具目前放在種田的資料夾，祖媽借用同一份（祖媽第 2、3 集的工作備份 `transfer/tn-e003-work` 裡有 scratchpad 複製的 `cut-qa.py`、`cut-jumps.py`、`audio-qa.py`、`continuity-sheets.py`）。
-路徑相對於 `docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/`，除非另外寫明。
+   ```bash
+   node tools/video/cli.mjs import --from <匯入資料夾> --publish \
+     --clips <剪進成片的片段資料夾> \
+     --edit <這一集的剪接表 json>
+   ```
 
-| 工具 | main 上有嗎（2026-11-08） | 備註 |
+   - `--clips` 指**剪進成片的那一份片段，帶模型原聲的**。種田真人版是 `_live-e90N/zhong-tian-qu-qi-e90N-dh/clips/`（`sNN-t1.mp4`，接好聲音、剪好頭尾）；
+     不要指精修資料夾 `runpod/a/st2/refined`，那裡的片段沒有聲音，原聲就丟了。
+   - `--edit` 指 repo 裡的剪接表，例如 `docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/edit-dh-e901-live.json`。
+   - 錄音、`cut/*.log`、配樂、首格是從 `--clips` 的**上一層**找的（`audio/`、`audio-<語言>/`、`cut/`、`music/`、`first-frames/`）；錄音不在那裡就加 `--recordings <資料夾>`。
+   - 看輸出的 `missing`：有缺就補好再送。核准後的上架包加不進片段，所以要一次送齊。
+6. 站主核准上架包。
+
+**每一次送的東西會進雲端硬碟的哪裡**（主機 worker 從審核區取回，照 [`BACKUP.md`](../BACKUP.md)〈匯入的影片〉）：
+
+| 送法 | 帶上去的 | 雲端硬碟裡 |
 | --- | --- | --- |
-| `cut-qa.py` | 沒有，只在種田的工作分支 `claude/trusting-shannon-g7dl74` | |
-| `cut-jumps.py` | 沒有，只在種田的工作分支 | |
-| `audio-qa.py` | 沒有，只在種田的工作分支 | |
-| `continuity-sheets.py` | 沒有，只在種田的工作分支 | |
-| `independent-review.md`（獨立審片 brief） | 沒有，只在種田的工作分支 | 第 7 項（靜止格子看不到的）是 2026-11-07 加的 |
-| `preflight-prompts.py` | 有，但比種田工作分支舊 | 工作分支多了 `four`、`smile-ref`、`headroom`、圖片清單檢查等 |
+| `import` | 成片、字幕、封面、`metadata.json` | 那一集的資料夾 |
+| `--languages` | 核准的外語字幕、說明、配音、各語縮圖 | `captions/`、`descriptions/` 等 |
+| `--publish --clips … --edit …` | `--clips` 裡每支 `<鏡>.mp4`（最多 120 支）；上一層的 `audio/`、`audio-<語言>/` 打包成每種語言一個錄音檔加 manifest；`cut/*.log`、`music/*.mp3|wav`、`--edit` 的剪接表（這類最多 40 個、名稱最多 28 字、只收文字、json、mp3、wav）；`first-frames/*`（最多 400 張） | `clips/`、`recordings/`、`recut/`、`keyframes/`（完整層級才有） |
+
+沒送 `--publish` 的話，雲端硬碟只有上傳包。分支裡有、雲端硬碟今天還拿不到的東西（沒選中的草稿、精修、提示詞、挑片檔、系列共用檔），見 [`BACKUP-BRANCHES.md`](BACKUP-BRANCHES.md)〈雲端硬碟〉。
+
+封面不要沿用畫風不同的舊季封面（第 10 節）。
+
+## 9. 語言與多語 CC
+
+- 每支影片先只有繁體中文。成片核准後，站主在 `/admin/videos` 那一集的語言面板勾每種語言要不要做標題說明、CC、配音；工人只做勾了的，做好一批送一張語言卡給站主核准。
+  做法與規則在 [`youtube-video` 的 `publish.md`](../../../.agents/skills/youtube-video/references/publish.md)〈語言：每支影片由站主選〉與 [`LANGUAGES.md`](../LANGUAGES.md)。
+- 送語言批次要在送上架包**之前**（第 8 節第 4 步）。
+- 漫劇的配音目前灰掉，只能勾標題說明與 CC（`publish.md`）。
+- 各系列的外語決定：種田只做中文原聲加多語 CC，八語配音先停（種田 [`RULES.md`](../series-plans/zhong-tian-qu-qi/production/RULES.md) 第三節）；祖媽還沒定（祖媽 [`RULES.md`](../series-plans/top40-2025-2026/2025-01-tai-nainai/production/RULES.md) 第八節）。
+- 合輯的語言照 [`COMPILATIONS.md`](../COMPILATIONS.md)。
+
+## 10. 標題、說明、封面
+
+通用規則在 [`publish.md`](../../../.agents/skills/youtube-video/references/publish.md)〈標題〉〈說明欄〉：給 3 個候選、頻道上限 36 個全形字等值、系列名當後綴；漫劇的集數可以寫（lint 帶 `numbered: true`）。
+
+- **標題格式**：`<這集的鉤子>｜<劇名> 第N集`。種田重製的集數加「（重製版）」並帶「| CC字幕」，例如 `…｜種田娶妻打天下 第1集（重製版） | CC字幕`。各系列的格式寫在系列 `RULES.md`。
+- **說明**：第一行是鉤子，第二行寫給誰看；外語的標題說明走第 9 節的語言批次。
+- **封面**：1280×720、2 MB 以內。換畫風重做的集數不用舊畫風的季封面，從這一集的片段抽一格主角同框的畫面，加片名與集數（種田真人版第 1 集）。
+- 站主要決定的欄位（合成內容揭露、兒童專屬、公開時間）交給站主，代理不代填。
+
+## 11. 上 YouTube
+
+- **誰按**：站主。代理準備好上架包，在 Studio 登入、公開與排程是站主的事。
+- **什麼時候**：上架包核准、勾的語言都做好或略過以後，影片進「可以上架」。站主也可以先在 Studio 傳成私人、貼網址，排程等語言做好才送出（`publish.md`〈語言〉）。
+- **API 不能用時**（配額用完、還沒過稽核）：照 [`MANUAL-UPLOAD.md`](../MANUAL-UPLOAD.md) 的手動模式下載檔案、複製文字，在 Studio 上傳。
+- 上架以後，主機才會把這一集備份到雲端硬碟並在核對後刪主機上的檔（[`BACKUP.md`](../BACKUP.md)）。
+
+## 12. 工具在哪裡
+
+審片工具放在種田的資料夾，祖媽借用同一份（祖媽第 2、3 集的工作備份 `transfer/tn-e003-work` 裡有 scratchpad 複製的 `cut-qa.py`、`cut-jumps.py`、`audio-qa.py`、`continuity-sheets.py` 與 `assemble-v4.mjs`）。
+路徑相對於 `docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/`，除非另外寫明。
+2026-11-08 以前，標「這個 PR 帶進 main」的檔只在種田的工作分支 `claude/trusting-shannon-g7dl74`；PR #2047 原樣帶進來，合併後就在 main 上。
+
+| 工具 | 在 main 上嗎 | 備註 |
+| --- | --- | --- |
+| [`cut-qa.py`](../series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/cut-qa.py) | 這個 PR 帶進 main | |
+| [`cut-jumps.py`](../series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/cut-jumps.py) | 這個 PR 帶進 main | |
+| [`audio-qa.py`](../series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/audio-qa.py) | 這個 PR 帶進 main | |
+| [`continuity-sheets.py`](../series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/continuity-sheets.py) | 這個 PR 帶進 main | |
+| [`independent-review.md`](../series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/independent-review.md)（獨立審片 brief） | 這個 PR 帶進 main | 較早的版本，以第 5 節為準 |
+| [`preflight-prompts.py`](../series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/preflight-prompts.py) | 這個 PR 換成工作分支的新版 | 新版多了 `four`、`smile-ref`、`headroom`、`skin`、`glow`、`smile`、圖片清單檢查；拿掉了 `collar`（站主 2026-11-07 低領可以） |
+| [`retake.py`](../series-plans/zhong-tian-qu-qi/production/colab/runs/_scripts/retake.py) | 這個 PR 換成工作分支的新版 | 新版多了 `drop_pictures` |
 | `storyboard-check.py` | 有 | 種田工作分支反而沒有（分支開在它合進 main 之前） |
 | `.agents/skills/minimax-h3-colab/scripts/cuts.py` | 有 | 種田工作分支沒有 |
-| `camera-feel.py`、`retake.py`、`colab/route-a/stage-clips.sh`、`headtrim.sh` | 有 | |
-| `live-action/refine-prep.py`、`live-action/stage.py`、`live-action/pilot.py` | 沒有，只在種田的工作分支 | 真人版的挑片轉精修、組片段、提示詞 |
-| `colab/runs/e901-live/cut-review.md`、`cut-review-2.md`、`expression-review.md` | 沒有，只在種田的工作分支 | 審片報告的範例 |
+| `camera-feel.py`、`colab/route-a/stage-clips.sh`、`headtrim.sh` | 有 | |
+| [`hailuo/assemble-v4.mjs`](../series-plans/zhong-tian-qu-qi/production/hailuo/assemble-v4.mjs) | 這個 PR 換成工作分支的新版 | 新版多了 `clip_voice`、`voice_skip`、`subtitle_lines`、`move_lines`、`slow_shot`、`flash`，並寫 `<stem>.lines.json`。預設慢放上限仍是 1.25，每集的剪接表要寫 `"slow_max": 1.1`（[`README.md`](README.md)） |
+| [`hailuo/edit-dh-e901-live.json`](../series-plans/zhong-tian-qu-qi/production/hailuo/edit-dh-e901-live.json) | 這個 PR 帶進 main | 種田真人版第 1 集的剪接表 |
+| [`live-action/refine-prep.py`](../series-plans/zhong-tian-qu-qi/production/live-action/refine-prep.py)、[`stage.py`](../series-plans/zhong-tian-qu-qi/production/live-action/stage.py)、[`pilot.py`](../series-plans/zhong-tian-qu-qi/production/live-action/pilot.py)、[`screen-test.py`](../series-plans/zhong-tian-qu-qi/production/live-action/screen-test.py) | 這個 PR 帶進 main | 真人版的挑片轉精修、組片段、提示詞、定妝照 |
+| `colab/runs/e901-live/` 的 [`cut-review.md`](../series-plans/zhong-tian-qu-qi/production/colab/runs/e901-live/cut-review.md)、[`cut-review-2.md`](../series-plans/zhong-tian-qu-qi/production/colab/runs/e901-live/cut-review-2.md)、[`expression-review.md`](../series-plans/zhong-tian-qu-qi/production/colab/runs/e901-live/expression-review.md) | 這個 PR 帶進 main | 審片報告的範例 |
+| [`route-a.md`](../../../.agents/skills/minimax-h3-runpod/references/route-a.md)（RunPod skill） | 這個 PR 換成工作分支的新版（323 行） | 共用區引用的「runpod〈…〉」各節都在第 134 行以後 |
 | `.agents/skills/animation-camera/scripts/shot_reading.mjs` | 有 | |
 | 祖媽 `production/tools/compile.py`、`parse_script.py`、`refs.py` | 有 | 祖媽的轉換與參考圖工具 |
 
