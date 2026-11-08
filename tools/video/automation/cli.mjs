@@ -5,7 +5,8 @@
 // longer than BACKUP_EVERY_MS), the backup copies the videos
 // on YouTube to Google Drive (backup.mjs; also after a run that ended in an error) and the tidy
 // clears the work files of the oldest video
-// finished long enough ago that Drive has (tidy.mjs); `tidy` runs that by hand, and
+// finished long enough ago that Drive has (tidy.mjs); with VIDEO_BRANCH_MIRROR on (production), the AI dramas'
+// transfer/* branches are mirrored to Drive after the backup (branch-mirror.mjs); `tidy` runs that by hand, and
 // `tidy --dry-run` only says what would go. `restyle --slug S` retells one of the worker's videos
 // in the storytelling register (docs/videos/ILLUSTRATED.md §說書式旁白) through the listener's
 // register pass; `--dry-run` only measures the script.
@@ -13,6 +14,7 @@ import { parseArgs } from "node:util";
 
 import { resolveWorkBase, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { backupRound } from "./backup.mjs";
+import { branchMirrorRound, mirrorOn } from "./branch-mirror.mjs";
 import { restoreVideo } from "./restore.mjs";
 import { AutomationError, automationClient } from "./client.mjs";
 import { Automation } from "./flow.mjs";
@@ -58,17 +60,33 @@ export function tidyAfterRound(ctx, site, backup) {
 }
 
 /**
- * The backup at the end of a round (backup.mjs): its lines printed, its gate for the tidy. It
- * never stops the worker; a round it could not finish holds the tidy instead.
+ * The backup at the end of a round (backup.mjs): its lines printed, its gate for the tidy, then
+ * (unless `mirror` is false) the branch mirror. It never stops the worker; a round it could not
+ * finish holds the tidy instead.
  */
-export async function backupAfterRound(ctx) {
+export async function backupAfterRound(ctx, { mirror = true } = {}) {
   try {
     const { lines, gate } = await backupRound(ctx, { client: ctx.backupClient, rclone: ctx.backupRclone });
     for (const line of lines) ctx.stdout.write(`${line}\n`);
+    if (mirror) await branchMirrorAfterBackup(ctx);
     return gate;
   } catch (error) {
     ctx.stdout.write(`backup: stopped by an error (${error.message}); the tidy keeps every video on YouTube\n`);
     return { unknown: error.message };
+  }
+}
+
+/**
+ * The AI dramas' transfer/* branches mirrored to Drive after the backup (branch-mirror.mjs), when
+ * VIDEO_BRANCH_MIRROR is on. Its own lines; it never stops the worker and the tidy does not wait on it.
+ */
+export async function branchMirrorAfterBackup(ctx) {
+  if (!mirrorOn(ctx.env)) return;
+  try {
+    const { lines } = await branchMirrorRound(ctx, { client: ctx.backupClient, rclone: ctx.branchMirrorRclone, git: ctx.branchMirrorGit });
+    for (const line of lines) ctx.stdout.write(`${line}\n`);
+  } catch (error) {
+    ctx.stdout.write(`branch mirror: stopped by an error (${error.message})\n`);
   }
 }
 
@@ -288,7 +306,9 @@ export async function run(command, args, ctx) {
     // A round that ends in an error still copies to Drive: a stage that fails every round (a
     // prompt the site refused, 2026-10-21) must not hold every backup with it. backupRound reads
     // its own settings, skips on a STOP file and never throws. The tidy waits for a whole round.
-    await backupAfterRound(ctx);
+    // The branch mirror waits for a round that ends normally: its lines would sit between the
+    // owner-policy reason and the exit, which the deploy check (host-verify.sh) reads as an error.
+    await backupAfterRound(ctx, { mirror: false });
     if (!(error instanceof AutomationError)) throw error;
     return error.who === "owner" ? EXIT.owner : EXIT.external;
   }
