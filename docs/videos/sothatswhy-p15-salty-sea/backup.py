@@ -3,7 +3,8 @@
 
 usage: backup.py <slug> <message> [extra_src:dest ...]
 - copies /root/mokaair-work/videos/<slug>/ to <wt>/workdir/ (never deletes anything already backed up)
-- extra files go to <wt>/<dest>
+- extra files or directories go to <wt>/<dest>
+- always adds shared/ (series sheets, music, branding), review-packs/, tools/ and the scratchpad files for the episode
 - files over 90 MB are split into <name>.partNN (90 MB each); MANIFEST.tsv keeps path, size, sha256, parts
 - commits, pushes to origin claude/backup-<slug>, fetches it back and re-hashes every file from the remote tree
 """
@@ -71,9 +72,38 @@ if os.path.isdir(src):
         for f in files:
             full = os.path.join(root, f)
             place(full, os.path.join("workdir", os.path.relpath(full, src)))
+# Everything a remake needs that lives outside the episode's work directory goes in every backup (站主 2026-11-08:
+# 之後如果要重製就可以不用重新做的都要備份到): series sheets, the music bed and its paid source, the branding pack,
+# the zoom-review packs, and this session's helper scripts, logs, prompts and answers for the episode.
+SCRATCH = os.path.dirname(os.path.abspath(__file__))
+short = slug.split("-")[1] if slug.startswith("sothatswhy-") else slug
+default_extras = [
+    ("/root/mokaair-work/videos/_series/sothatswhy", "shared/_series/sothatswhy"),
+    ("/root/mokaair-work/videos/_music", "shared/_music"),
+    ("/root/mokaair-work/videos/_branding", "shared/_branding"),
+    (f"/root/review-packs/{slug}", "review-packs"),
+]
+for name in ("backup.py", "makepack.py", "overview.py"):
+    default_extras.append((os.path.join(SCRATCH, name), f"tools/{name}"))
+for name in sorted(os.listdir(SCRATCH)):
+    full = os.path.join(SCRATCH, name)
+    if os.path.isfile(full) and name.startswith(short + "-"):
+        default_extras.append((full, f"scratchpad/{name}"))
+
+def place_any(s, d):
+    if os.path.isdir(s):
+        for root, dirs, files in os.walk(s):
+            for f in files:
+                full = os.path.join(root, f)
+                place(full, os.path.join(d, os.path.relpath(full, s)))
+    elif os.path.isfile(s):
+        place(s, d)
+
+for s, d in default_extras:
+    place_any(s, d)
 for e in extras:
     s, d = e.split(":", 1)
-    place(s, d)
+    place_any(s, d)
 
 with open(mpath, "w", encoding="utf-8") as f:
     f.write("path\tsize\tsha256\tparts\n")
