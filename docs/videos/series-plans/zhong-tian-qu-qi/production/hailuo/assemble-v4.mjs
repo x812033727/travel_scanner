@@ -79,7 +79,8 @@ function panelFilters(shot) {
 function nameCard(shot) {
   const card = edit.names?.[shot];
   if (!card) return "";
-  const [name, tag] = card, a = 0.25, b = 2.6;
+  // `name_at`: when the card comes in (e001 live s20: not while the gate is still shut)
+  const [name, tag] = card, a = edit.name_at?.[shot] ?? 0.25, b = a + 2.35;
   const alpha = `if(lt(t,${a}),0,if(lt(t,${a + 0.25}),(t-${a})/0.25,if(lt(t,${b - 0.3}),1,max(0,(${b}-t)/0.3))))`;
   return `,drawbox=x=96:y=596:w=8:h=150:color=0xe8c26a@0.95:t=fill:enable='between(t,${a},${b})'` +
     `,drawtext=expansion=none:fontfile='${FONT}':textfile='${textFile(`${shot}-n`, name)}':fontsize=84:fontcolor=0xf3d27a:alpha='${alpha}':borderw=3:bordercolor=0x000000@0.7:x=124:y=598` +
@@ -137,7 +138,10 @@ for (const scene of video.scenes) {
   if (voiced) {
     // the model's speech, split among the shot's on-screen lines by text length; recorded lines keep their own files
     const live = lines.filter(onscreen);
-    const spans = speechSpans(clip, voiceFrom, dur);
+    // `voice_skip`: ignore model sound before this many seconds into the shot (e001 live s12: a murmur at 0.4 s pulled
+    // the line's subtitle 4.3 s ahead of the shout)
+    const skip = edit.voice_skip?.[scene.id] ?? 0;
+    const spans = speechSpans(clip, voiceFrom, dur).filter(([, e]) => e > skip).map(([s, e]) => [Math.max(s, skip), e]);
     if (spans.length) {
       const s0 = spans[0][0], s1 = spans[spans.length - 1][1], chars = live.reduce((a, l) => a + [...l.text].length, 0);
       let cur = s0;
@@ -163,12 +167,14 @@ for (const scene of video.scenes) {
     dur = Math.max(dur, cursor - GAP + TAIL);
     if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
   }
+  // a system line lives on the shot's panel, unless `subtitle_lines` names it (e001 live s37 a44: not on the panel)
+  const panelOnly = (l) => l.speaker === "xitong" && overlays[scene.id] && !(edit.subtitle_lines ?? []).includes(l.id);
   const placed = lines.map((l, i) => {
     if (l.placeAt !== undefined) at = l.placeAt;
     const p = { ...l, at };
-    if (edit.burn_subtitles && !(l.speaker === "xitong" && overlays[scene.id])) subs += subtitle(`${scene.id}-s${i}`, l.text, at, Math.min(dur, at + l.len + 0.08), l.speaker === "xitong" ? "0x9fe3ff" : "0xffffff");
-    lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start: t + at, len: l.len, subtitled: !(l.speaker === "xitong" && overlays[scene.id]) });
-    if (!(l.speaker === "xitong" && overlays[scene.id])) srt.push({ start: t + at, end: t + at + l.len, text: l.text });
+    if (edit.burn_subtitles && !panelOnly(l)) subs += subtitle(`${scene.id}-s${i}`, l.text, at, Math.min(dur, at + l.len + 0.08), l.speaker === "xitong" ? "0x9fe3ff" : "0xffffff");
+    lineAt.push({ id: l.id, shot: scene.id, speaker: l.speaker, start: t + at, len: l.len, subtitled: !panelOnly(l) });
+    if (!panelOnly(l)) srt.push({ start: t + at, end: t + at + l.len, text: l.text });
     at += l.len + GAP;
     return p;
   });
@@ -257,6 +263,8 @@ const SYNTH = {
   rain: "anoisesrc=color=pink:amplitude=0.5:d=DUR,highpass=f=700,lowpass=f=9000,volume=0.8",
   underwater: "anoisesrc=color=brown:amplitude=0.6:d=DUR,lowpass=f=320,volume=1.4",
   river: "anoisesrc=color=brown:amplitude=0.4:d=DUR,bandpass=f=900:width_type=o:w=2.5,volume=0.7",
+  // a slow lub-dub at about 70 bpm (e001 live s38: the script asks for a heartbeat and the library has none)
+  heartbeat: "aevalsrc='sin(2*PI*52*t)*(exp(-28*mod(t,0.86))+0.6*gte(mod(t,0.86),0.22)*exp(-28*(mod(t,0.86)-0.22)))':d=DUR:s=48000,lowpass=f=160,volume=2.5",
 };
 const dubbed = DUB ? (await import("./dub-track.mjs")).dubDialogue({ locale: DUB, videoFile: file, work, segDir, lineAt, starts, total, probe, zhSrt: out.replace(/\.mp4$/, ".zh-TW.srt") }) : null;
 const inputs = ["-i", DUB ? dubbed.dialogue : joined];
@@ -276,7 +284,7 @@ for (const [i, m] of (edit.music ?? []).entries()) {
 // Every system line rings a ding just before it.
 const cues = [...(edit.sfx ?? [])];
 for (const l of lineAt) if (l.speaker === "xitong") cues.push({ synth: "ding", abs: l.start - 0.22, gain: -9 });
-for (const name of Object.keys(edit.names ?? {})) cues.push({ file: edit.name_whoosh ?? "swish-9", at: name, off: 0.15, gain: -16 });
+for (const name of Object.keys(edit.names ?? {})) cues.push({ file: edit.name_whoosh ?? "swish-9", at: name, off: (edit.name_at?.[name] ?? 0.25) - 0.1, gain: -16 });
 for (const [i, c] of cues.entries()) {
   const a = c.abs ?? tAt(c.at, c.off ?? 0);
   const ms = Math.max(0, Math.round(a * 1000));

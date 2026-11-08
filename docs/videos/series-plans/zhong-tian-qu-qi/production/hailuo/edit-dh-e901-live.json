@@ -98,7 +98,7 @@
   {
    "file": "impactBell_heavy_001",
    "at": "s03",
-   "off": 1.6,
+   "off": 5.87,
    "gain": -16
   },
   {
@@ -152,7 +152,7 @@
   {
    "file": "dishes_01",
    "at": "s18",
-   "off": 1.0,
+   "off": 4.0,
    "gain": -22
   },
   {
@@ -164,13 +164,13 @@
   {
    "file": "slam_01",
    "at": "s20",
-   "off": 0.1,
+   "off": 0.88,
    "gain": -14
   },
   {
    "file": "footstep_concrete_000",
    "at": "s20",
-   "off": 0.6,
+   "off": 1.5,
    "gain": -22
   },
   {
@@ -188,7 +188,7 @@
   {
    "file": "paper_04",
    "at": "s31",
-   "off": 0.5,
+   "off": 6.8,
    "gain": -18
   },
   {
@@ -218,8 +218,14 @@
   {
    "file": "explosion",
    "at": "s03",
-   "off": 2.7,
+   "off": 5.87,
    "gain": -22
+  },
+  {
+   "synth": "heartbeat",
+   "at": "s38",
+   "to": "s38",
+   "gain": -12
   }
  ],
  "frame_round": true,
@@ -231,5 +237,15 @@
   "s12",
   "s14"
  ],
- "_note": "live action (owner 2026-11-07): the model's own voice for on-screen lines (clip_voice), recorded audio for system, off-screen, inner and nospeak lines; s12 and s14 speak on screen although marked nospeak (voice_on)."
+ "_note": "live action (owner 2026-11-07): the model's own voice for on-screen lines (clip_voice), recorded audio for system, off-screen, inner and nospeak lines; s12 and s14 speak on screen although marked nospeak (voice_on).",
+ "voice_skip": {
+  "s12": 4.5
+ },
+ "name_at": {
+  "s20": 1.2
+ },
+ "subtitle_lines": [
+  "zq901a44"
+ ],
+ "_note_timing": "sfx offsets re-timed to the live clips from the cut review (2026-11-08): s03 thunder at the flash, s18 bowl, s20 kick at the gate burst and name card after it, s31 slap; s19 and s31 are retaken, so their sounds are re-measured after the new picks."
 }
