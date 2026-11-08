@@ -216,7 +216,7 @@ test("the close never names the next video: the outro card's words, its lines an
 });
 
 test("the panel passes only when every required question is yes; a missing or malformed answer is a no", () => {
-  assert.equal(NARRATIVE_PANEL.length, 13);
+  assert.equal(NARRATIVE_PANEL.length, 14);
   assert.deepEqual(NARRATIVE_PANEL.filter((question) => !question.required).map((question) => question.id), ["chapters_are_events"]);
   const all = (yes) => ({ answers: NARRATIVE_PANEL.map((question) => ({ id: question.id, yes, evidence: "[k7p2] 每次有新模型出來" })) });
   const passed = panelVerdict(all(true));
@@ -468,7 +468,7 @@ test("a tutorial reads the panel in its own wording, same ids and required flags
   const tutorial = panelQuestions({ ...fixture(), category: "tutorial" });
   assert.deepEqual(tutorial.map((question) => question.id), NARRATIVE_PANEL.map((question) => question.id));
   assert.deepEqual(tutorial.map((question) => question.required), NARRATIVE_PANEL.map((question) => question.required));
-  assert.equal(Object.keys(TUTORIAL_PANEL_QUESTIONS).length, 12, "outro_no_next keeps the story wording");
+  assert.equal(Object.keys(TUTORIAL_PANEL_QUESTIONS).length, 13, "outro_no_next keeps the story wording");
   assert.match(tutorial.find((question) => question.id === "no_toc").question, /承諾句/);
   assert.match(tutorial.find((question) => question.id === "chapters_link").question, /「好，」「所以，」開頭/);
   assert.match(tutorial.find((question) => question.id === "open_loops").question, /你可能會想/);
@@ -563,8 +563,8 @@ test("a manga-tier drama lands a hook inside every 30 seconds of its shots, with
 });
 
 // The two story series are told to one viewer (register.mjs TOLD_TO_ONE_VIEWER, 2026-10-25): lint
-// counts 「你」, and the blind panel reads the opening the reference channels use (the stakes,
-// the scene, one promise sentence) instead of three teasers.
+// counts 「你」, and the blind panel reads the shape the reference channel uses (the hook with its
+// contrast, 「今天我們就來聊聊」, then the story in order from its era) instead of three teasers.
 import { isStorySeries, STORY_SERIES_PANEL_QUESTIONS, VIEWER_ADDRESS_PER_1000, viewerAddressProblems } from "./narrative.mjs";
 
 test("a story-series script that never turns to the viewer is warned once; two 「你」 a thousand characters is enough", () => {
@@ -598,7 +598,12 @@ test("a curio- or story- slug reads the panel in the viewer wording, with its ow
   assert.deepEqual(questions.map((question) => question.required), NARRATIVE_PANEL.map((question) => question.required));
   for (const id of Object.keys(STORY_SERIES_PANEL_QUESTIONS)) assert.equal(questions.find((question) => question.id === id).question, STORY_SERIES_PANEL_QUESTIONS[id], id);
   assert.match(questions.find((question) => question.id === "opening_hooks").question, /承諾句/);
-  assert.match(questions.find((question) => question.id === "scene_first").question, /利害/);
+  // 2026-11-05: the ten steps of 黑猫研究院 and the owner's continuity rule (nothing arrives out of nowhere).
+  assert.match(questions.find((question) => question.id === "opening_hooks").question, /今天我們就來聊聊/);
+  assert.match(questions.find((question) => question.id === "scene_first").question, /完全沒看過的人聽懂/);
+  assert.match(questions.find((question) => question.id === "no_spoiler").question, /沒有先把劇情照順序濃縮一遍/);
+  assert.match(questions.find((question) => question.id === "one_line").question, /明確的時間提示/);
+  assert.match(questions.find((question) => question.id === "chapters_link").question, /沒頭沒尾/);
   assert.notEqual(panelRulesSha256(curio), PANEL_RULES_SHA256);
   assert.notEqual(panelRulesSha256(curio), panelRulesSha256({ ...fixture(), category: "tutorial" }));
   assert.equal(panelRulesSha256({ ...fixture(), slug: "story-adapt-seiko" }), panelRulesSha256(curio), "both series share one contract");
@@ -625,4 +630,22 @@ test("a daily-ai- slug reads the panel in the daily brief wording, with its own 
   assert.notEqual(panelRulesSha256(brief), panelRulesSha256({ ...fixture(), slug: "curio-h01-v2" }));
   // A tutorial category still reads the tutorial wording, whatever its slug.
   assert.equal(panelQuestions({ ...brief, category: "tutorial" }).find((question) => question.id === "no_toc").question, TUTORIAL_PANEL_QUESTIONS.no_toc);
+});
+
+test("no_orphans asks every script whether anything arrives out of nowhere; a two-voice transcript names its speakers", () => {
+  const ids = (doc) => panelQuestions(doc).map((question) => question.id);
+  for (const doc of [fixture(), { ...fixture(), category: "tutorial" }, { ...fixture(), slug: "daily-ai-20261106" }]) {
+    assert.ok(ids(doc).includes("no_orphans"), doc.slug ?? doc.category);
+    assert.match(panelQuestions(doc).find((question) => question.id === "no_orphans").question, /沒頭沒尾/);
+  }
+  assert.equal(NARRATIVE_PANEL.find((question) => question.id === "no_orphans").required, true);
+  const base = fixture();
+  const firstLine = base.scenes.flatMap((scene) => scene.lines ?? [])[0];
+  const duo = {
+    ...base,
+    characters: [{ id: "chief", name: "所長" }, { id: "kid", name: "小問" }],
+    scenes: base.scenes.map((scene, index) => (index ? scene : { ...scene, lines: scene.lines.map((line, at) => ({ ...line, speaker: at ? "chief" : "kid" })) })),
+  };
+  assert.match(narrationText(duo, estimateTimeline(duo)), new RegExp(`\\] 小問：${firstLine.text.slice(0, 4)}`));
+  assert.doesNotMatch(narrationText(base, estimateTimeline(base)), /小問：|所長：/, "one voice: no names");
 });

@@ -1,0 +1,44 @@
+{
+  "slug": "2025-16-fuye-qingmei",
+  "title": "八歲那年，我管過首富",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：大埕回到她名下、錢的帳還清；颱風夜全鎮一起守住大埕；獅會即婚禮——他當她的獅尾，托她上了十八年沒人上過的最後一根樁（雲埕的老規矩：獅頭獅尾一起上最後一根，就是當著全鎮許終身），欠條兩半合起來，新帳本第一頁寫『一輩子，慢慢還』。第 300 集最後一格，婚禮隔天清晨，一個十歲、穿名牌白襯衫的男孩被送到大埕門口、踢了門，司機說『喬太太，這孩子姓卓』，她翻開新帳本第二頁——留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代鄉鎮甜寵：童年篇是十八年前的夏天（過曝的金黃、稻埕、竹編、鵝）；成年篇的雲埕是稻田的綠與獅頭的紅黃，瀚城是玻璃與冷灰；她的紅黃獅頭在每一種顏色裡都最亮。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是孩子氣的誓言或被看低的鄉下場面；高樁戲拆成短鏡頭（起步、托舉、落樁、回頭採青）用首尾格接，不靠一個長鏡頭生成整套動作；童年篇兩個孩子的參考圖先給站主看過。",
+    "reuse": "固定場景：大埕的稻埕與高樁陣、獸醫站、修復工坊、水塔與鵝寮、老街的公車站與雜貨行、瀚城的還新大樓與喬懷德的小修理行；童年篇與成年篇共用同一座大埕，只換年份的色調。",
+    "voice": "國語；女主清、快、短；男主低、慢、帶笑；童年篇兩個孩子用童聲配音（另選，不用大人變聲）；老太太慢；姑姑尖；彭阿添沙啞；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–4,000 點；高樁與颱風集偏高。",
+    "per_season": "60 集 ≈ 18–24 萬點；五季 ≈ 90–120 萬點。",
+    "levers": "文戲（帳本、飯桌、修復台、獸醫站）一張首格＋緩推可省五到六成；稻埕與高樁陣的全景跨季重用；先拍童年篇 10 集量完留存，再決定成年篇的量。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour；童年篇（第 1–10 集）另有兒童角色規則。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《傅爺的小青梅又颯又美》（2025 年紅果熱度年榜第 16，都市情感・童年篇＋成年篇）",
+    "how": "只學套路：童年篇由孩子演、頑劣少爺被交給家裡的小管家、孩子氣的『長大娶妳』、多年後成了首富回鄉兌現承諾、多才多藝的颯女主、身分揭露、男主在親戚與城裡人面前撐腰、歡喜冤家→假結婚→真心相守、浪子回頭的努力被看見、打臉前先被看低。她的三樣本事（獸醫、古物修復、高樁舞獅）、他的事業（虛構的維修翻新平台『還新』）、雲埕鎮與喬家大埕、帳本與撕成兩半的欠條、老鵝將軍、每個人物、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["八歲那年，我管過首富", "管家婆，我回來還帳了", "首富回鄉，先還十八年前的花瓶錢"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "2026-10-haomen-yuesao",
+  "title": "住進唐家的治療師",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：弟弟的手術成功、她的執照被誣告的真相翻過來、唐承什麼時候心動揭開；唐家五個人五個結全解、老太爺自己走到門口送她——她不留，她開了自己的工作室，唐家是第一個客戶。第 300 集最後一格，工作室門口站著一個拿著履歷的女孩：『聶老師，我想跟妳學。我家也有一個不肯復健的爺爺。』留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代豪門治癒劇：一棟老字號家族的三層老宅、一間復健室、一個嬰兒房、一間糕餅工坊；米白與木色，沒有金。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是面試受辱或一個緊急狀況（嬰兒嗆到、老人跌倒）——動作專業、不獵奇。",
+    "reuse": "固定場景：唐家老宅的客廳與樓梯、復健室、嬰兒房、二少的房、糕餅工坊、醫院走廊、她弟弟的病房、第五季的工作室。",
+    "voice": "國語；女主平穩、不卑不亢、說專業話像說家常；唐承低冷；老太爺台語腔；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "一棟宅子文戲為主，一張首格＋緩推可省六到七成；復健動作用短鏡頭。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《豪門月嫂，一不小心成了全家白月光》（2026 年 1–10 月紅果熱度合併榜第 10，現代豪門職業女主治癒）",
+    "how": "只學套路：低位置高能力的職業女主、為家人的醫藥費進豪門、每個技能對應家中一個人的問題、先被質疑再用結果證明、清醒搞錢不戀愛腦、逐個治癒、反向團寵、少爺從輕視到放不下。職業（居家物理治療師取代月嫂）、家族（老字號糕餅世家唐家三代）、每個成員的結、她弟弟的病、執照的誣告、劇情與台詞全部原創，不搬原劇情節；捨棄原劇被批評的低俗開頭。"
+  },
+  "title_candidates": ["住進唐家的治療師", "她不是月嫂，她是治療師", "唐家請來的那個女孩"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

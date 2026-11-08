@@ -13,7 +13,8 @@ import { HEADLINE, HEADLINE_SERIES, headlineRule } from "../qa/thumbnail.mjs";
 import { thumbnailSeries } from "../render/plan.mjs";
 import { EPISODE_SERIES, episodeSeries, ILLUSTRATED_SERIES } from "../shorts/episode.mjs";
 import { thumbnailProblems } from "../templates/templates.mjs";
-import { DIALOGUE_EXPLAINER_PRESETS, EXPLAINER_PRESET, EXPLAINER_PRESETS, explainerSeries, hasCast, isCuteExplainer, isDialogueExplainer, isExplainer, isExplainerPreset, isKnowledgeLongform, keyframeKey, lookHash, needsMinimumLength, pictureVarietyProblems, PRESET_NAMES, PRESETS, resolveLook, timesSilentShots } from "./drama.mjs";
+import { DIALOGUE_EXPLAINER_PRESETS, EXPLAINER_PRESET, EXPLAINER_PRESETS, explainerSeries, hasCast, isCuteExplainer, isDialogueExplainer, isExplainer, isExplainerPreset, isKnowledgeLongform, isNarratedExplainer, keyframeKey, lookHash, needsMinimumLength, pictureVarietyProblems, PRESET_NAMES, PRESETS, resolveLook, timesSilentShots } from "./drama.mjs";
+import { craftChecks } from "./craft.mjs";
 import { dramaFixture, explainerFixture, storyFixture } from "./fixtures/load.mjs";
 import { defaultIntroAt, INTRO_AFTER_FIRST_CHAPTER, INTRO_AT_START, narratedLong } from "./branding.mjs";
 import { BRIEF_SECTIONS_EXPLAINER, briefSectionsFor, lintVideo } from "./lint.mjs";
@@ -46,7 +47,8 @@ test("a brand story can wear the cute-mystery picture look and keep its cast", (
   assert.equal(isKnowledgeLongform(doc), true);
   assert.deepEqual(validateVideo(doc), []);
   const explainer = { ...doc, category: "explainer" };
-  assert.match(validateVideo(explainer).find((error) => error.path === "characters")?.message ?? "", /an explainer .* has no characters/);
+  // The same narrated cast may be drawn in an explainer too (the speaker rule is tested below).
+  assert.deepEqual(validateVideo(explainer), []);
 });
 
 // The two looks are the texts the owner approved (docs/videos/history-curiosity/look.md).
@@ -107,12 +109,19 @@ test("each of the three presets is held to the explainer's rules: no cast but th
     assert.equal(timesSilentShots(doc), false, preset);
     assert.equal(briefSectionsFor("drama", preset), BRIEF_SECTIONS_EXPLAINER, preset);
 
-    const cast = validateVideo({ ...doc, characters: dramaFixture().characters.slice(0, 1) }).filter((error) => error.path === "characters");
+    // Every explainer may list characters (their sheets keep a face the same); only a dialogue
+    // explainer's characters speak.
+    const characters = dramaFixture().characters.slice(0, 1);
+    assert.deepEqual(validateVideo({ ...doc, characters }).filter((error) => error.path === "characters"), [], preset);
+    const spoken = structuredClone({ ...doc, characters });
+    const sceneIndex = spoken.scenes.findIndex((scene) => Array.isArray(scene.lines) && scene.lines.length);
+    spoken.scenes[sceneIndex].lines[0].speaker = characters[0].id;
+    const speaker = validateVideo(spoken).filter((error) => error.path.endsWith(".speaker"));
     if (DIALOGUE_EXPLAINER_PRESETS.includes(preset)) {
-      assert.deepEqual(cast, [], preset);
+      assert.deepEqual(speaker, [], preset);
     } else {
-      assert.equal(cast.length, 1, preset);
-      assert.equal(cast[0].message, `an explainer (look preset "${preset}") has no characters: the narrator tells it`);
+      assert.equal(speaker.length, 1, preset);
+      assert.equal(speaker[0].message, `an explainer (look preset "${preset}") is told by the narrator: its characters are drawn from their sheets, never voiced`);
     }
 
     const clip = structuredClone(doc);
@@ -217,4 +226,17 @@ test("So That's Why's dialogue explainer keeps the explainer's stills and floor,
   assert.equal(defaultIntroAt(inPreset("cute-cartoon")), INTRO_AFTER_FIRST_CHAPTER);
   const mystery = { ...inPreset("cute-mystery"), characters: dramaFixture().characters.slice(0, 1) };
   assert.equal(isDialogueExplainer(mystery), false);
+});
+
+test("a narrator's explainer may draw characters from sheets and stays narrated (奇聞檔案局 S42)", () => {
+  const mystery = { ...inPreset("cute-mystery"), characters: dramaFixture().characters.slice(0, 1) };
+  assert.deepEqual(validateVideo(mystery), []);
+  assert.equal(hasCast(mystery), true, "the cast's sheets go through the look gate and into its keyframes");
+  assert.equal(isNarratedExplainer(mystery), true);
+  assert.equal(isNarratedExplainer(inPreset("cute-mystery")), true);
+  assert.equal(isNarratedExplainer({ ...inPreset("cute-cartoon"), characters: mystery.characters }), false);
+  assert.equal(narratedLong(mystery), true);
+  assert.equal(defaultIntroAt(mystery), INTRO_AFTER_FIRST_CHAPTER);
+  assert.equal(craftChecks(mystery).applies, false, "paced as narration, not as a drama");
+  assert.deepEqual(lintVideo(mystery).warnings, lintVideo(inPreset("cute-mystery")).warnings);
 });

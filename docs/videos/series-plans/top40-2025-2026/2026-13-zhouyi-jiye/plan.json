@@ -1,0 +1,56 @@
+{
+  "slug": "2026-13-zhouyi-jiye",
+  "title": "四樓的燈整夜都亮",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": {
+    "min": 90,
+    "max": 180,
+    "chapter_finale_min": 120
+  },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉三條主線：林以澄在公開聽證會上用證據讓葛承峰的簽證案重審、自己開了一間結構事務所；蘇曼禾把作保的債清掉、和陸霽撕了合約再自己求一次婚；韓靜宜帶著女兒離婚、搬回四樓、和宋川從頭認識一次。方阿嬤把房子過到三人名下，條件是第四間房要繼續租給『需要一扇門的女人』。第 300 集最後一格，門鈴響，門外一個拖著行李箱、眼睛紅著的年輕女人：『請問……這裡是不是有一間空房？』留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": {
+    "decided": null,
+    "suggested": "16:9",
+    "why": "照《種田娶妻打天下》的建議。"
+  },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市女性群像：一間老公寓四樓的客廳與長餐桌、三個人三種職場（結構事務所、花藝工作室、小學教室）；四樓的燈是暖黃，外面的世界偏冷藍。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是三人之一的危機現場；騷擾與外遇只用台詞、證據與他人反應交代，不拍過程。",
+    "reuse": "固定場景：四樓客廳與長餐桌、玄關的鑰匙盤、頂樓曬衣場、結構事務所開放辦公區與會議室、曼禾的花藝工作室、靜宜的教室、方阿嬤的一樓雜貨店。",
+    "voice": "國語；以澄低、準、像在念計算書；曼禾亮、快、會撒嬌也會頂嘴；靜宜輕、慢、第一季每句都先道歉、第五季不道歉；方阿嬤台語夾國語；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲為主，四樓客廳、餐桌與三個職場重複使用；一張首格＋緩推可省六到七成；三人同框的餐桌戲每篇章拍一組。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《晝以繼夜》（2026 年 1–10 月紅果熱度合併榜第 13，都市女性群像、三線並行）",
+    "how": "只學套路：三位合租的都市女性各自卡在原生家庭、婚姻與職場裡、互相托住、從『被選擇』走向『自己選』；三條感情線混用聯姻、替身、歡喜冤家；合租空間是安全區；一條線的危機由另一條線的人解決；三線輪流、單線不久缺席。人名、城市（架空的澄港）、三人的職業（結構技師、花藝師、小學老師）、每一場危機、房東與家規、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": [
+    "四樓的燈整夜都亮",
+    "我們三個，自己選",
+    "同一把鑰匙"
+  ],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

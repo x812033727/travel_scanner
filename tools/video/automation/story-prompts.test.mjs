@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { NARRATIVE_RULES, STORY_OPENING_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
+import { CONDENSATION_RULE, NARRATIVE_RULES, STORY_OPENING_RULE, STORY_SERIES_SCREEN_RULE, TOLD_TO_ONE_VIEWER } from "./register.mjs";
 import { STORY_HOOK_RULES, STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
 const writer = STORY_INSTRUCTIONS["writer:story"];
@@ -32,12 +32,30 @@ test("the explainer videos' shared rules keep their own cadence", () => {
   assert.ok(!NARRATIVE_RULES.includes("30 to 45 seconds"), "the story cadence stays in the story's prompt");
 });
 
-test("a story's writer opens on the stakes and one promise sentence and talks to one viewer, after the hook rules (2026-10-25)", () => {
+test("a story's writer follows the ten steps and talks to one viewer, after the hook rules (2026-10-25, 2026-11-05)", () => {
   assert.ok(writer.includes(STORY_OPENING_RULE) && writer.includes(TOLD_TO_ONE_VIEWER), "both series rules are in what the worker sends");
   assert.ok(writer.indexOf(STORY_OPENING_RULE) > writer.indexOf(STORY_HOOK_RULES), "the opening follows the cadence it refines");
-  assert.match(STORY_OPENING_RULE, /At most two teasers of later moments/);
-  assert.match(STORY_OPENING_RULE, /One promise sentence naming the subject and the scale/);
+  // Owner, 2026-11-05: 黑猫研究院's ten steps replace the condensation in these two series.
+  assert.match(STORY_OPENING_RULE, /in place of the condensation\s+rule above, so no 30-to-60-second condensation/);
+  assert.match(STORY_OPENING_RULE, /at most one or two labels of later climaxes/);
+  assert.match(STORY_OPENING_RULE, /The promise, landing at about 0:40 to 1:05: 「今天我們就來聊聊…」/);
+  assert.match(STORY_OPENING_RULE, /The first chapter ends\s+here \(40 to 90 seconds; lint warns outside them\)/);
+  assert.match(STORY_OPENING_RULE, /A flashback is a short insert opened by a plain time cue/);
+  assert.match(STORY_OPENING_RULE, /Nothing arrives out of nowhere/);
+  assert.ok(!writer.includes(CONDENSATION_RULE), "the story writer no longer carries the condensation it replaces");
   assert.match(TOLD_TO_ONE_VIEWER, /Lint warns under two 「你」 a thousand characters/);
   assert.match(TOLD_TO_ONE_VIEWER, /about 4\.5 spoken characters a second/);
   assert.ok(!NARRATIVE_RULES.includes("promise sentence"), "the explainers keep the condensation as it was");
+});
+
+test("a story's writer puts no card and no word on screen, writes short MiniMax prompts and draws nobody living or dead since 1956 (2026-11-05)", () => {
+  assert.ok(writer.includes(STORY_SERIES_SCREEN_RULE));
+  assert.match(STORY_SERIES_SCREEN_RULE, /No card and no word on screen/);
+  assert.match(STORY_SERIES_SCREEN_RULE, /100 to 200 characters: ONE subject doing ONE\s+action/);
+  assert.match(STORY_SERIES_SCREEN_RULE, /It never uses the words no, not, without, text or blank/);
+  assert.match(STORY_SERIES_SCREEN_RULE, /A Latin-letter name is said as it is written/);
+  assert.match(writer, /No outro card and no other card/);
+  assert.doesNotMatch(writer, /ends with one outro card/);
+  assert.doesNotMatch(writer, /mild, overcast, soft grey sky or lamp/, "the old dim-light advice is gone");
+  assert.match(writer, /one who is living or died in 1956 or later is not drawn at all/);
 });

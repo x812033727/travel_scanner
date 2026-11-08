@@ -1,0 +1,52 @@
+{
+  "slug": "2026-01-wanyao-tulu",
+  "title": "百妖食單",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": {
+    "min": 90,
+    "max": 180,
+    "chapter_finale_min": 120
+  },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：饕餮的來歷與食單的真相揭開、御膳司倒台、阮青梧用最後一道菜把饕餮『請上桌』而不是殺掉，妖與人在邊城驛站同桌；第 300 集最後一格，食單翻到最後一頁，自己寫出一個新菜名：「海。」留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": {
+    "decided": null,
+    "suggested": "16:9",
+    "why": "照《種田娶妻打天下》的建議：每集照常上架、每篇章另剪合輯長片，Shorts 從中央裁 9:16。"
+  },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom，需要鉤子類型、主角走向與每集兩個爽點的留存規則）；每季的 season-NN.json 就是六份篇章細綱的來源。target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線；妖物設計每季先做一組參考圖。",
+    "look": "真人電影感架空古裝志怪：中式志怪美術（水墨、燭影、紙燈、霧），妖物『人形為主、局部異化』以省點數；料理鏡頭是全劇的視覺糖。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md：前 3 秒鉤子畫面與第一句台詞，前 10 秒 4–8 個鏡頭，台詞一句 1–10 字，幾乎不用旁白，燒錄繁中字幕。",
+    "reuse": "固定場景先拍一組可重用的空景：霧關驛站的灶房與大堂、州城妖市、皇都御膳司、北荒雪原、食單翻頁的特寫動畫。",
+    "voice": "國語；阮青梧明亮俐落，食單是低沉的中性『書聲』；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json：影片約 12 點／秒，2K 首格約 23 點／張。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點；戰鬥集偏高。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "灶房與飯桌的文戲用一張首格＋緩推可省四到六成；妖物以人形為主；季末 BOSS 戰全景跨集重用。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour；每集的 spectacle 與 glamour_shot 都要照它寫。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包（設定集、五季總綱、逐集細綱），還不是逐集分鏡劇本；比例、預算、聲音等站主決定。",
+  "reference": {
+    "work": "《萬妖圖錄傳》（2026 年 1–10 月紅果熱度合併榜第 1，貴州夢繪星界 3D 漫劇）",
+    "how": "只學套路：穿越少女＋道具型外掛、先勝妖才得其能、逐級升級、每集一妖現形或能力失效、季末大 BOSS 與更大陰謀、感情線極淡、志怪美術。朝代、妖物體系、載體（食單取代圖錄）、人名、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["百妖食單", "她的鍋裡煮著妖", "食妖錄"],
+  "title_decision": "未定；先用候選第一個《百妖食單》，站主可改。"
+}

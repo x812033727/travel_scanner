@@ -211,7 +211,9 @@ test("only narrated long videos move the intro behind the condensation; casts, c
   b.current(preset());
   assert.equal((await selectBrandingForBuild({ ...b, doc })).intro_at, INTRO_AFTER_FIRST_CHAPTER);
   assert.equal((await selectBrandingForBuild({ ...b, doc: cast })).intro_at, undefined);
-  assert.equal((await selectBrandingForBuild({ ...b, doc: cast, series: story })).intro_at, INTRO_AFTER_FIRST_CHAPTER);
+  assert.equal((await selectBrandingForBuild({ ...b, doc: cast, series: story })).intro_at, undefined, "a brand story opens on the intro (owner, 2026-11-07)");
+  assert.equal(defaultIntroAt({ ...explainer, slug: "curio-w03-garmin" }), INTRO_AT_START, "a 奇聞檔案局 episode opens on the intro (owner, 2026-11-07)");
+  assert.equal(defaultIntroAt({ ...doc, slug: "story-everyday-crocs-c01" }), INTRO_AT_START, "a story- slug opens on the intro");
   assert.equal((await selectBrandingForBuild({ ...b, doc: cast })).hash, brandingHash(preset()), "a drama with a cast keeps the original hash");
   b.current(seriesPreset(), "sothatswhy");
   const series = await selectBrandingForBuild({ ...b, doc: explainer });

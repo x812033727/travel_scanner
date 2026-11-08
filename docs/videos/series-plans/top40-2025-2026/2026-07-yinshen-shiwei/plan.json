@@ -1,0 +1,44 @@
+{
+  "slug": "2026-07-yinshen-shiwei",
+  "title": "保鏢只想吃飽",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：他的能力從哪來、另一個能用能力的人是誰、他父親是誰全部揭開；沈家的公司保住、前夫家族與幕後人倒台；他在夜市重新開攤，第一碗麵免費給她兒子。第 300 集最後一格，一個穿黑衣的女孩坐到攤前：『一碗麵。我也會走那一步。』留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市異能喜劇動作：夜市的油煙與霓虹、物流公司的鐵皮倉與貨櫃、豪宅的冷白；一個永遠在吃的保鏢。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是接地氣的日常一格再翻轉（他在數零錢、下一秒人不見了）。",
+    "reuse": "固定場景：夜市炒麵攤、硯通物流的倉庫與辦公室、沈家住宅、碼頭、醫院、魏家會客廳。",
+    "voice": "國語；男主懶、碎嘴、吃東西時說話；女主低而穩；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 125 秒一集 ≈ 3,200–4,000 點。",
+    "per_season": "60 集 ≈ 19–24 萬點；五季 ≈ 95–120 萬點。",
+    "levers": "『一步』的消失用剪接不用特效：前一格有人、後一格沒人、再一格在別處；動作戲以短鏡頭與反應鏡頭為主。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《隱身侍衛》（2026 年 1–10 月紅果熱度合併榜第 7，男頻都市異能喜劇動作）",
+    "how": "只學套路：有缺點的小人物（愛錢摳門）得到有代價的異能、成為女老闆的保鏢、能力用完會餓的反差喜劇、刺殺一次次被破、幫雇主贏回家業、身世反轉。能力的形式（『一步』：瞬間跨到十步外，過程無人看見）、代價（一步一碗麵）、人物、公司背景、家族恩怨、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["保鏢只想吃飽", "一步一碗麵", "夜市攤販成了女總裁的影子"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

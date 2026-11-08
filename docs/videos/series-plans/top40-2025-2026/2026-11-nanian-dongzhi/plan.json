@@ -1,0 +1,44 @@
+{
+  "slug": "2026-11-nanian-dongzhi",
+  "title": "冬至那天我嫁給了倒數的人",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：倒數到期那天（第二個冬至）他沒走、枯樹發芽、療養院的預約早就取消；他用左手在院子裡彈完一首單手曲；兩人把一年之約撕了換成『一年一棵樹』。第 300 集最後一格，她在苗圃收到一封信——另一個訂了倒數的人：『聽說妳種的樹會讓人活。』留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市情感：一棟老宅的院子、一台鋼琴、一間苗圃；四季的顏色跟著院子走——冬的灰、春的綠、夏的滿、秋的金、再回到冬。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是倉促婚禮與新婚夜那句宣告的反差。",
+    "reuse": "固定場景：謝家老宅的院子與琴房、她的苗圃、祖母的病房、小姪女的房、第四季的療養院門口。",
+    "voice": "國語；女主亮、快、鈍感；男主低、少、第一季每句都像結論；祖母慢；小姪女童聲；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲與院子為主，一張首格＋緩推可省六到七成；院子四季各拍一組。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《那年冬至》（2026 年 1–10 月紅果熱度合併榜第 11，都市先婚後愛雙向救贖）",
+    "how": "只學套路：倉促的限期婚姻、男主的死亡倒數、女主不勸不哭用『先把日子過起來』反向救贖、細節累積量化感情進度、女主清醒直接提方案、溫暖的配角群、雙向治癒、沒有反派只有倒數。病（虛構的『漸失症』）、倒數的形式（一年後去山上的療養院不再見人）、她的職業（園藝設計師）與那棵樹、院子、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["冬至那天我嫁給了倒數的人", "你的院子我種到春天", "一年之約，先把日子過起來"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

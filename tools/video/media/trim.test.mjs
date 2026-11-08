@@ -75,3 +75,35 @@ test("a manga still is cut in by the inset share on every side, inside any paper
   assert.equal(inner.h % 2, 0);
   assert.equal(EDGE_INSET_SHARE, 0.04);
 });
+
+test("zoomed crops: four 2x quadrants cached by the picture's sha, null when they cannot be made", async () => {
+  const { execFileSync } = await import("node:child_process");
+  const { mkdtempSync, mkdirSync, existsSync, statSync } = await import("node:fs");
+  const os = await import("node:os");
+  const path = await import("node:path");
+  const { zoomArgs, zoomCrops, ZOOM_QUADRANTS } = await import("./trim.mjs");
+  assert.deepEqual(ZOOM_QUADRANTS.map((each) => each.quadrant), ["top-left", "top-right", "bottom-left", "bottom-right"]);
+  assert.equal(zoomArgs("in.png", ZOOM_QUADRANTS[3], { width: 1280, height: 720 }, "out.png")[7], "crop=640:360:640:360,scale=1280:720:flags=lanczos");
+  const dir = mkdtempSync(path.join(os.tmpdir(), "zoom-"));
+  mkdirSync(path.join(dir, "keyframes"));
+  const fake = path.join(dir, "keyframes", "bad.png");
+  (await import("node:fs")).writeFileSync(fake, "not a picture");
+  assert.equal(await zoomCrops({ env: {} }, dir, "keyframes/bad.png", "a".repeat(64)), null);
+  let ffmpeg = true;
+  try {
+    execFileSync("ffmpeg", ["-hide_banner", "-loglevel", "error", "-f", "lavfi", "-i", "testsrc=size=320x180", "-frames:v", "1", path.join(dir, "keyframes", "pic.png")]);
+  } catch {
+    ffmpeg = false;
+  }
+  if (!ffmpeg) return;
+  const crops = await zoomCrops({ env: {} }, dir, "keyframes/pic.png", "b".repeat(64));
+  assert.equal(crops.length, 4);
+  for (const crop of crops) {
+    assert.ok(existsSync(path.join(dir, crop.file)) && crop.file.startsWith(`keyframes/zoom/${"b".repeat(16)}-`));
+    assert.match(crop.sha256, /^[0-9a-f]{64}$/);
+  }
+  const before = statSync(path.join(dir, crops[0].file)).mtimeMs;
+  const again = await zoomCrops({ env: { FFMPEG_PATH: "/nonexistent" } }, dir, "keyframes/pic.png", "b".repeat(64));
+  assert.deepEqual(again, crops, "a rerun reuses the cached crops");
+  assert.equal(statSync(path.join(dir, crops[0].file)).mtimeMs, before);
+});

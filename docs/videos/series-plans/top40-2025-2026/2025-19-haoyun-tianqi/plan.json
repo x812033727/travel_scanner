@@ -1,0 +1,44 @@
+{
+  "slug": "2025-19-haoyun-tianqi",
+  "title": "我兒子在戶政門口徵爸爸",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：她撤回對七年前那張婚書的更正，和他在同一個三號櫃台重新登記——婚書寫『常初』、蓋她自己刻的名字章，他把每一個字念出來才蓋；栗子在八歲生日那天自己指著補上父欄、姓氏留『常』；姑姑第四季已用補好的家印把她蓋進族譜，也寫回自己的本名『常韞』；立春千燈宴上他說出『我愛常初』，面試表蓋滿二十個『過』。第 300 集最後一格，她又看見兩條線，這一次他就在旁邊；栗子拿出一張新的『徵弟弟妹妹・面試表』——留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市甜寵：戶政騎樓的攤子是暖黃帆布與紅印泥，封氏大樓是紙白與玻璃，篁谷紙坊是水車、竹林與發白的曬紙牆，立春千燈宴是千盞暖橘的紙燈；全劇主色是紙白與印泥紅。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是七年前驗孕棒的兩條線、機頭有鉤的紙飛機或重逢的對視；刻章、蓋章、抄紙的手部特寫拆成短鏡頭用首尾格接，不靠一個長鏡頭生成整套動作；栗子（AI 生成的兒童角色）的參考圖先給站主看過。",
+    "reuse": "固定場景：南區戶政三號櫃台與檔案室、騎樓攤子街（刻印攤、證件照店與樓上小套房、代書桌）、封氏大樓大廳與董事會長桌、封家老宅族譜室、篁谷紙坊、棲枝育幼院名字牆、立春千燈宴大廳（第二季拍一組，第五季重用）。",
+    "voice": "國語；女主穩、短；男主低、準，在栗子面前會結巴；栗子用童聲配音（另選，不用大人變聲），一本正經；姑姑慢、冷；藺嫣柔、帶笑；魯師傅沙啞台語腔；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點；千燈宴與董事會集偏高。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "攤子與櫃台的文戲為主，一張首格＋緩推可省六到七成；千燈宴大廳第二季拍一組、第五季重用；刻章與蓋章的手部特寫做成一套可重用素材；先拍第一季第一篇章 10 集量完留存，再決定後面的量。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour；兒童角色常栗另有規則（永遠安全、不碰刻刀、不被拍臉上新聞）。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《好孕甜妻被鑽石老公寵上天》（2025 年熱度榜補位第 19，DataEye 熱力值；萌寶親情・甜寵・久別重逢）",
+    "how": "只學套路：出身低、帶著孩子的媽媽型女主，久別重逢後補償式寵溺的霸總，覬覦男主的名媛與不認她的豪門長輩，會撮合的萌寶與閨蜜，「他不知道有孩子」的資訊差，孩子像誰一眼看出，團寵、打臉名媛、豪門認親、算計女主的人被反算。原劇的『一夜』換成立春千燈宴上的錯認、一百天的假婚約與一張寫錯名字的婚書，沒有任何親密戲；她的職業（刻印師）、他的事業（虛構的封氏紙業）、棠坪與戶政騎樓的攤子街、爸爸面試表、一對紙飛機章、印譜、名字牆、每個人物、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["我兒子在戶政門口徵爸爸", "婚書上寫的不是我的名字", "刻章的媽媽不收你的錢"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

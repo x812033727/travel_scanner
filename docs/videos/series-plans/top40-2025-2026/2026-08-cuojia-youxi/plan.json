@@ -1,0 +1,44 @@
+{
+  "slug": "2026-08-cuojia-youxi",
+  "title": "傻姑娘嫁對了人",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：她的寒毒解盡、心智回到二十歲，蕭承來求娶，她選了陸清和——不是因為誰先來，是因為她自己選；河州糧案收掉；小禮叫她娘。第 300 集最後一格，一頂花轎停在陸府門口，轎裡坐著大姐姜嬈：『妹妹，這次換我錯嫁。』留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感架空古裝治癒劇：河州的小院、一株老梨樹、一個鞦韆、通判衙門的側廳；米白與淺綠，沒有大紅大金。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是錯位畫面（花轎掀開、人不對）或她的一句童言。",
+    "reuse": "固定場景：陸府小院與梨樹鞦韆、小禮的房、通判衙門側廳、河州街市與藥鋪、姜府正廳、城外尼庵。",
+    "voice": "國語；女主清亮、慢、像小孩說話但不裝嗲，隨季數一季比一季像大人；男主溫、低、慢；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 115 秒一集 ≈ 2,900–3,700 點。",
+    "per_season": "60 集 ≈ 17–22 萬點；五季 ≈ 87–110 萬點。",
+    "levers": "文戲與日常為主、幾乎沒有動作戲，一張首格＋緩推可省六到七成；小院與梨樹一季拍一組四季重用。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《錯嫁有喜》（2026 年 1–10 月紅果熱度合併榜第 8，古裝先婚後愛治癒）",
+    "how": "只學套路：錯嫁、心智停滯而被低估的女主、引導型的溫柔男主、沒有惡毒女配而阻力來自世俗眼光、舊情人悔悟、日常治癒、女主用純真解開大人解不開的事、心智逐步恢復。朝代（大宣）、人物、錯嫁的緣由（大姐換轎私奔）、男主的身分（帶幼子的鰥夫通判）、寒毒與草藥的規則、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["傻姑娘嫁對了人", "她不傻，她只是慢", "錯上花轎的二小姐"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

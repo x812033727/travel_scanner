@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { dramaBrief, dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
-import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_CHAPTER_SECONDS, OPENING_SECONDS, OUTRO_SENTENCES, productionShotProblems, SOURCING_FAMILY, SOURCING_MAX, stancePoints, stanceProblems, templateSimilarity, thumbnailHeadlineProblems } from "./lint.mjs";
+import { announcesList, billableEstimate, briefSections, checkBrief, episodeScriptProblems, HEDGE_AFTER_UNWRITTEN, HEDGE_FAMILY, lintVideo, OPENING_CHAPTER_SECONDS, OPENING_SECONDS, STORY_OPENING_CHAPTER_SECONDS, OUTRO_SENTENCES, productionShotProblems, SOURCING_FAMILY, SOURCING_MAX, stancePoints, stanceProblems, templateSimilarity, thumbnailHeadlineProblems } from "./lint.mjs";
 import { captionsItem } from "../qa/checks.mjs";
 import { estimateTimeline, FPS } from "./timeline.mjs";
 import { eachLine, MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
@@ -839,6 +839,32 @@ test("an episode's opening chapter is the condensation: 30 to 60 seconds, a warn
   long.scenes[0].lines.push(...Array.from({ length: 12 }, (_, index) => ({ id: `cx${index.toString(36).padStart(2, "0")}`, text: "這一句把濃縮拉得比一分鐘還長，觀眾等不到正片。" })));
   assert.match(messages(opening(long)), /the opening chapter runs about \d+ s; it is the condensation/);
   assert.deepEqual(opening(fixture()), [], "the example runs seconds");
+});
+
+// 奇聞檔案局 and the brand stories open on the hook and the promise instead (register.mjs
+// STORY_OPENING_RULE; owner, 2026-11-05): 「今天我們就來聊聊」 lands at about 0:40 to 1:05, so their
+// first chapter runs 40 to 90 seconds and the 30-to-60 condensation window is not theirs.
+test("a curio- or story- episode's first chapter is the hook and the promise: 40 to 90 seconds, a warning on either side", () => {
+  assert.deepEqual(STORY_OPENING_CHAPTER_SECONDS, [40, 90]);
+  const opening = (doc) => lintVideo(doc, context()).warnings.filter((warning) => /the opening chapter runs/.test(warning.message));
+  const withOpening = (count, slug) => {
+    const doc = closed(stretched());
+    doc.slug = slug;
+    doc.scenes[0].lines.push(...Array.from({ length: count }, (_, index) => ({ id: `ho${index.toString(36).padStart(2, "0")}`, text: "你有沒有想過，這個東西最後大到這種程度？" })));
+    return doc;
+  };
+  // The stretched example's opening (about half a minute) is a condensation for the other videos,
+  // and too short for these two series' hook and promise.
+  assert.deepEqual(opening(withOpening(0, "ai-term-x01")), []);
+  const [short] = opening(withOpening(0, "curio-x01"));
+  assert.match(short.message, /^the opening chapter runs about \d+ s; in this series it is the hook and the promise, 40 to 90 s/);
+  assert.match(opening(withOpening(0, "story-x01"))[0].message, /in this series it is the hook and the promise/);
+  // About 75 seconds: inside the series window, past the condensation's 60.
+  const fitted = withOpening(8, "curio-x01");
+  assert.deepEqual(opening(fitted), [], messages(opening(fitted)));
+  assert.match(messages(opening(withOpening(8, "ai-term-x01"))), /it is the condensation, 30 to 60 s/);
+  // A plot told up front runs past 90.
+  assert.match(messages(opening(withOpening(20, "curio-x01"))), /in this series it is the hook and the promise/);
 });
 
 test("the hedge family is counted across the whole narration: twice is a warning that names each phrase, once is the description's sentence", () => {

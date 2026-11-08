@@ -7,7 +7,7 @@
 // the picture is used as it came.
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, renameSync } from "node:fs";
 import path from "node:path";
 import { promisify } from "node:util";
 
@@ -149,6 +149,51 @@ export async function trimMargins(ctx, workdir, file, { inset = 0 } = {}) {
     const sha256 = createHash("sha256").update(readFileSync(path.join(workdir, out))).digest("hex");
     const share = (side) => (margin ? Math.round((margins[side] / (side === "top" || side === "bottom" ? ANALYSIS.height : ANALYSIS.width)) * 1000) / 10 : 0);
     return { file: out, sha256, margins: { top: share("top"), bottom: share("bottom"), left: share("left"), right: share("right") }, ...(inset ? { inset } : {}) };
+  } catch {
+    return null;
+  }
+}
+
+// The quadrants a picture is cut into for the judge's zoomed look, as shares of its size.
+export const ZOOM_QUADRANTS = [
+  { quadrant: "top-left", x: 0, y: 0 },
+  { quadrant: "top-right", x: 0.5, y: 0 },
+  { quadrant: "bottom-left", x: 0, y: 0.5 },
+  { quadrant: "bottom-right", x: 0.5, y: 0.5 },
+];
+
+/** One quadrant of a `size` picture, cut out and scaled back up to that size (2x). */
+export const zoomArgs = (file, at, size, outFile) => {
+  const w = Math.floor(size.width / 4) * 2;
+  const h = Math.floor(size.height / 4) * 2;
+  return ["-hide_banner", "-loglevel", "error", "-y", "-i", file, "-vf", `crop=${w}:${h}:${Math.round(size.width * at.x)}:${Math.round(size.height * at.y)},scale=${size.width}:${size.height}:flags=lanczos`, "-frames:v", "1", outFile];
+};
+
+/**
+ * The four 2x quadrant crops of a picture in `workdir`, for the judge to look closer at small
+ * marks: `[{ quadrant, file, sha256 }]` (files relative to the workdir, under keyframes/zoom/
+ * named by the picture's sha, so a rerun reuses them), or null when they cannot be made (no
+ * ffmpeg, a picture ffmpeg cannot read). `ctx.zoomImage(file, sha256)` stands in for tests.
+ */
+export async function zoomCrops(ctx, workdir, file, sha256) {
+  if (ctx.zoomImage) return ctx.zoomImage(file, sha256);
+  const named = ZOOM_QUADRANTS.map((at) => ({ ...at, file: `keyframes/zoom/${sha256.slice(0, 16)}-${at.quadrant}.png` }));
+  const hashOf = (rel) => createHash("sha256").update(readFileSync(path.join(workdir, rel))).digest("hex");
+  try {
+    if (named.every((each) => existsSync(path.join(workdir, each.file)))) return named.map((each) => ({ quadrant: each.quadrant, file: each.file, sha256: hashOf(each.file) }));
+    const tools = await locateFfmpeg(ctx.env);
+    const source = path.join(workdir, file);
+    const probe = JSON.parse((await exec(tools.ffprobe, sizeArgs(source), { windowsHide: true })).stdout);
+    const size = { width: Number(probe.streams?.[0]?.width), height: Number(probe.streams?.[0]?.height) };
+    if (!(size.width > 0 && size.height > 0)) return null;
+    mkdirSync(path.join(workdir, "keyframes", "zoom"), { recursive: true });
+    for (const each of named) {
+      const out = path.join(workdir, each.file);
+      const partial = `${out}.partial.png`;
+      await exec(tools.ffmpeg, zoomArgs(source, each, size, partial), { windowsHide: true });
+      renameSync(partial, out);
+    }
+    return named.map((each) => ({ quadrant: each.quadrant, file: each.file, sha256: hashOf(each.file) }));
   } catch {
     return null;
   }

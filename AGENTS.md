@@ -68,7 +68,8 @@ fact-checked and imported, and what to do when the host worker stalls),
 `minimax-h3-runpod` (H3 clips on a RunPod pod the site starts, from a paired session),
 `animation-preproduction` (planning, risk-grading, pricing and locking an
 animated episode before any clip is paid for: shot list, animatic, three-shot pilot, lock
-package and change orders), `animation-camera` (how a drama scene is covered and how camera,
+package and change orders; also 審劇本 — turning a script into a storyboard with shots and
+notes, then the three checks before it goes to production), `animation-camera` (how a drama scene is covered and how camera,
 prompt and motion are written so the tools and the models read them alike) and
 `animation-production` (a drama production's stage preconditions, cost per route, preflight,
 error catalogue and post-mortem). Read the matching skill before re-deriving a workflow

@@ -1,0 +1,56 @@
+{
+  "slug": "2026-12-mantuoluo",
+  "title": "瀾港的帳，一筆都不能是他給的",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": {
+    "min": 90,
+    "max": 180,
+    "chapter_finale_min": 120
+  },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：陸既白在商會總會上親口公開自己十年的每一筆布局、把恆通洋行與照寧名下所有『他給的』產權轉進公開信託；溫照寧照自己寫的三條約重新認識他——他以普通客戶身分到照寧報關行排號、她收他的單、按規矩收費。第 300 集最後一格，她在新帳本扉頁寫下『陸既白，第一筆：自付』，窗外一艘不屬於陸氏的新船進港，船東署名是她從前的學徒——留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": {
+    "decided": null,
+    "suggested": "16:9",
+    "why": "照《種田娶妻打天下》的建議。"
+  },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感民國架空港口城市：碼頭的霧、洋行的木櫃檯、帳房的綠罩燈、商會的大理石樓梯；顏色跟著她的處境走——第一季暖黃、第二季冷綠、第三季灰藍、第四季她自己的白、第五季回到晨光的金。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是『大人物在高處看見帳房裡一個人』或『舊潮汐表被翻出來』的反差；所有操控只用文件、帳目、合約與人事安排呈現，不拍跟蹤、不拍肢體強迫。",
+    "reuse": "固定場景：恆通洋行帳房、陸氏輪船公司頂樓辦公室、碼頭三號泊位、溫家弄堂的閣樓、夜校教室、商會大樓、第四季的照寧報關行。",
+    "voice": "國語帶一點民國腔；女主清、穩、算數時快；男主低、溫、每句都留半句；前未婚夫斯文發虛；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲為主，帳房、辦公室、碼頭三組固定場景一張首格＋緩推可省六到七成；碼頭大景一季拍一組。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《曼陀羅》（2026 年 1–10 月紅果熱度合併榜第 12，都市情感病嬌戀愛）",
+    "how": "只學套路：資源操控型追求、每份善意背後都有布局、清醒女主層層識破、識破後主動離開、前未婚夫自曝其短、操控者反被晾的追妻火葬場、悔改後照女主的條件追回。時代（民國架空港口城市瀾港）、資源（船運、泊位、倉棧、房契與商會信用）、她的職業（帳房出身的報關員）與帳本這個識破工具、每個人物、劇情與台詞全部原創，不搬原劇任何情節；不採用原劇的『雙潔』爭議設定，也不寫設計出軌。"
+  },
+  "title_candidates": [
+    "瀾港的帳，一筆都不能是他給的",
+    "潮汐表上寫著妳的名字",
+    "她把他的好意記成了帳"
+  ],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}
