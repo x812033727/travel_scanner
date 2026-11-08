@@ -152,6 +152,8 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
                 used.append(who)
             shot_chars = list(e.get("characters", []))[:3]
             used += shot_chars
+            if len(vprompt) > 1000:  # video.json 的欄位上限；以前直接截斷不吭聲（第 3 集重寫分鏡時發現）
+                print(f"warning: {s['id']}: prompt {len(vprompt)} chars > 1000, video.json keeps the first 1000 (the Colab manifest keeps all)", file=sys.stderr)
             data = {"prompt": vprompt[:1000], "camera": e["camera"], "characters": shot_chars}
             if e.get("motion"):
                 data["motion"] = e["motion"]
