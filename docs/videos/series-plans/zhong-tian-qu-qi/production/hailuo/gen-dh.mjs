@@ -171,7 +171,7 @@ for (const scene of video.scenes) {
   const on = (scene.lines ?? []).filter((l) => l.speaker !== "xitong" && (d.characters ?? []).includes(l.speaker) && !silent.has(l.speaker) && !/嘴閉著|內心獨白/.test(l.emotion ?? ""));
   const by = {};
   for (const l of on) (by[l.speaker] ??= []).push(`「${l.text.replace(/[。]$/, "")}」`);
-  const talk = Object.entries(by).map(([id, ls]) => `${EN[id] ?? id} speaks ${ls.length > 1 ? `${ls.length} short Mandarin lines, ${ls.join(" then ")}` : `a short Mandarin line, ${ls[0]}`}, ${HER.has(id) ? "her" : "his"} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes`).join("; ");
+  const talk = Object.entries(by).map(([id, ls]) => `${EN[id] ?? id} speaks ${ls.length > 1 ? `${ls.length} short Mandarin lines, ${ls.join(" then ")}` : `a short Mandarin line, ${ls[0]}`}, ${HER.has(id) ? "her" : "his"} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person ${HER.has(id) ? "she" : "he"} is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera`).join("; ");  // owner 2026-11-08: 「很多幕都是看前面，不會面對對方說話」
   // Her collar sentence opens the clip (e25 on): a fixed look the clip must keep, and it keeps a re-shot
   // clip from matching the card of the one it replaces.
   const collar = (d.characters ?? []).includes("tangxiaotang") && /stand-up mandarin collar/.test(C.tangxiaotang?.appearance ?? "") ? "Tang Xiaotang's high stand-up collar stays closed at her throat. " : "";

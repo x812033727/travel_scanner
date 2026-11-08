@@ -35,9 +35,13 @@ def speak_clause(sid, texts):
     t = [f"「{re.sub('。$', '', x)}」" for x in texts]
     who = EN[sid][0].upper() + EN[sid][1:]
     pro = "her" if sid in HER else "his"
+    # owner 2026-11-08 (after 祖媽 episode 2): 「很多幕都是看前面，不會面對對方說話」 — every spoken line faces the listener
+    them = "her" if sid in HER else "him"
+    gaze = (f", turned toward the person {'she' if sid in HER else 'he'} is speaking to, face in profile or three-quarter profile, "
+            f"eyes on that person, never looking at the camera")
     if len(t) == 1:
-        return f"{who} speaks a short Mandarin line, {t[0]}, {pro} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes"
-    return f"{who} speaks {len(t)} short Mandarin lines, {' then '.join(t)}, {pro} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes"
+        return f"{who} speaks a short Mandarin line, {t[0]}, {pro} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes{gaze}"
+    return f"{who} speaks {len(t)} short Mandarin lines, {' then '.join(t)}, {pro} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes{gaze}"
 
 
 def main(name):
