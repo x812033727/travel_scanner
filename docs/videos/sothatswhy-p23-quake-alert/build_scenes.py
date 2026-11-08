@@ -62,6 +62,7 @@ EXTRA = {}
 # Picture review round 1 (2026-11-07, README §10.1): an independent reviewer zoomed every picture.
 # REWRITE replaces the prompt of shots with no usable take; FIX appends to shots with a severe fault.
 REWRITE = {
+ "kid-drop-say": "Waist-up view of the girl crouched low on the floor under a sturdy wooden table, one arm covering the back of her head and neck, other hand holding a table leg, serious face, bright daylight",
  "kid-far-sure": "Wide view of a small far town on a green plain with a plain smooth unmarked phone tower beside it, bright daylight",
  "kid-miss": "Close-up of a plain smooth dark phone lying quiet on a wooden table, soft calm light, bright daylight",
  "kid-instant": "A friendly plain smooth unmarked cartoon desktop computer with a softly glowing round light on its front, on a plain wooden desk, clean empty cream wall, bright daylight",
@@ -129,7 +130,6 @@ FIX = {
  "city-shake": "Plain unmarked city towers in a green basin, hillside trees leaning hard, bold wobble lines, clear empty sky",
  "chief-wait": "smooth plain cream wall with a soft clean shadow, gentle smile",
  "chief-helper": "flat 2D chief with big round black glasses, pencil behind ear, one hand on chest, plain pale wall",
- "kid-drop-say": "crouched low on the floor under a sturdy wooden table, one arm covering the back of her head and neck, other hand holding a table leg, serious face",
  "chief-done": "perfectly round thin black glasses resting straight on her nose, both eyes inside the lenses"
 }
 for _id, _fix in FIX.items():
