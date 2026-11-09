@@ -169,7 +169,7 @@ kid("kid-better-guess", K("tilting her head with a hopeful grin, one finger on h
 chief("chief-same-carbon", C("holding up two identical small plain wooden balls, one in each hand, a playful smile"),
       c("碳就是碳。石墨裡的碳，跟鑽石裡的碳，", None, "P:diamond"), c("一顆一顆拿出來比，是一模一樣的。"))
 chief("chief-ingredients", C("shrugging with open palms and a knowing smile", close=True),
-      c("裡面是什麼東西，科學家叫做成分。"), c("所以你如果只問成分，兩樣的答案都一樣：碳。"))
+      c("裡面是什麼東西，科學家叫做成分。"))
 kid("kid-where-q", K("crossing her arms with a puzzled frown", where=HOME),
     k("那到底差在哪裡？", "句尾上揚"))
 chief("chief-arrange", C("holding a small wooden box of building toys with a curious smile"),
@@ -280,7 +280,7 @@ chief("chief-two-things", C("holding up two fingers with a gentle smile", close=
 kid("kid-differ-q", K("scratching her head with a puzzled face", close=True),
     k("哪裡不一樣？", "句尾上揚"))
 chief("chief-tough", C("tapping one fist lightly into her other palm, a thoughtful look"),
-      c("硬，是比誰不容易被刮傷；"), c("耐敲，是比被重重敲一下，會不會裂開。"))
+      c("硬，就是剛剛說的，比誰不容易被刮傷；"), c("耐敲，是比被重重敲一下，會不會裂開。"))
 chief("chief-glass", C("holding up a plain clear drinking glass with a thoughtful smile", close=True),
       c("你想想家裡的玻璃杯：用指甲刮不出痕跡，"), c("掉到地上，卻可能摔碎。", "轉向觀眾"))
 kid("kid-broke-glass", K("covering her mouth with one hand and a sheepish embarrassed grin", close=True, where=HOME),
@@ -350,10 +350,6 @@ kid("kid-long-q", K("stretching her two hands far apart with a curious face", wh
     k("差那麼多！", "驚訝"), k("線畫很長的話，", "追問"), k("燈還會亮嗎？", "句尾上揚", "S:long"))
 scene("stroke-long", "Close-up of a very long winding thick dark grey pencil stroke on a plain white drawing sheet, a round battery at one end and a tiny LED glowing faintly at the other end, " + DAY,
       c("博物館說，石墨只是還不錯的導電材料，"), c("線越長，電越難走，燈就越暗。", None, "P:long"))
-chief("chief-my-guess", C("holding a dark pencil in one hand and a pale pencil in the other with a playful thinking face"),
-      c("你也可以比比看，軟的和硬的鉛筆，哪一支的線讓燈比較亮。"))
-chief("chief-guess-soft", C("holding up a short dark pencil with a playful confident smile", close=True),
-      c("我猜是軟的那支，因為石墨比較多。不過要量了才算。"))
 kid("kid-try", K("raising one hand high with an excited grin", where=DESK),
     k("我要試試看！", "興奮"))
 chief("chief-safety", C("holding up one hand like a gentle stop with a serious kind face", close=True),
@@ -365,7 +361,7 @@ kid("kid-enough-q", K("looking down at her pencil in her hands with a thinking f
 
 # ---------- 收尾 ----------
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the girl"),
-      c("你說呢？小問，你來說說看。", "笑"), chapter="原來差在排法")
+      c("你說呢？小問，你來說說看。", "笑"), chapter="小問說出了答案")
 kid("kid-got-it", K("holding up her yellow pencil proudly with a big confident grin", where=DESK),
     k("我懂了！", "恍然大悟", "P:enough"), k("不只看是碳，還要看怎麼排！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
@@ -380,6 +376,10 @@ kid("kid-two-patches", K("rubbing one fingertip across a small shaded pencil pat
     k("各塗一小塊，", "接著說"), k("再用手指擦擦看？", "句尾上揚"))
 chief("chief-which-smudge", C("nodding with an encouraging smile, one finger raised", close=True),
       c("對，看看哪一塊比較容易糊。"))
+kid("kid-smudge-guess", K("holding up a short dark pencil next to a long pale pencil with a sure, cheeky grin", where=DESK),
+    k("我猜黑的那支！", "很有把握"), k("石墨比較多！", "得意"))
+chief("chief-more-clay", C("giving a small approving nod with a warm smile, holding a pale pencil", close=True),
+      c("猜得有道理：淡的那支，黏土比較多。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
@@ -484,6 +484,6 @@ for s in body:
 for g in gaps: print(f"  hook gap {g}", file=sys.stderr)
 assert not gaps, "a stretch longer than 45 s without a question or a planted loop"
 assert len(loops) >= 11, "13 minutes need at least 11 loops"
-assert 2300 <= body_chars <= 2600, f"body {body_chars} characters: write 2,300–2,600 (README §9, 3.2 chars/s; P18 round 2 trimmed the recaps and detours)"
+assert 2250 <= body_chars <= 2600, f"body {body_chars} characters: write 2,250–2,600 (README §9, 3.2 chars/s; P18 blind-review rounds cut recaps and detours; EPISODES.md gives P18 11–13 min, P17 measured 2,543 chars = 12:56)"
 cams = [s["data"]["camera"] for s in scenes]
 assert all(not (a == b == c_) for a, b, c_ in zip(cams, cams[1:], cams[2:])), "three shots in a row with the same camera"
