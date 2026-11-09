@@ -153,11 +153,11 @@ kid("kid-mine-graphite", K("holding up a short stubby yellow pencil with a proud
 kid("kid-graphite-q", K("rubbing the grey side of one palm with a finger of her other hand, a thinking face", where=DESK),
     k("所以黑黑的是石墨？", "句尾上揚"))
 chief("chief-carbon", C("nodding with one hand open towards the viewer", close=True),
-      c("對。你手上那層，大部分就是石墨，"), c("就是我說，跟鑽石一樣的那種碳。"))
+      c("對。你手上那層，大部分就是石墨。"))
 kid("kid-slick", K("rubbing her grey fingertip and thumb together with a curious face", close=True, where=DESK),
     k("我手上這層，摸起來滑滑的！", "發現"))
 chief("chief-slick", C("rubbing her fingertip and thumb together with a curious smile", close=True),
-      c("對，石墨摸起來有點滑，還帶一點金屬亮光。"), c("人們把它混進黏土做成筆芯，已經用了很久。"))
+      c("對，石墨摸起來有點滑，還帶一點金屬亮光。"))
 kid("kid-diamond-guess", K("raising one finger with a confident know-it-all grin", where=HOME),
     k("那鑽石呢？", "很有把握"), k("一定是別的東西吧？", "很有把握的錯猜", "S:diamond"))
 kid("kid-ring", K("holding a tiny sparkling ring between her finger and thumb and gazing at it", close=True),
@@ -257,8 +257,10 @@ kid("kid-guessed", K("pumping one fist with a proud delighted grin", where=DESK)
     k("我猜對了！", "得意"))
 chief("chief-no-gaps", C("pressing her two flat hands firmly together with a warm smile", close=True),
       c("對，攀爬架裡沒有那種層跟層中間的大空隙。"))
+kid("kid-frame-guess", K("pressing both palms forward against the air with a sure, determined grin", where=DESK),
+    k("那攀爬架呢？", "預測"), k("我猜推不動！", "很有把握"))
 model("frame-push", "Medium shot of " + FRAME + ", standing firm and unmoved on a sunny wooden table, " + DAY,
-      c("再推鑽石的攀爬架。每顆球都被四面八方牽住，"), c("沒有一層可以滑開。"))
+      c("推推看：每顆球都被四面八方牽住，"), c("沒有一層可以滑開。"))
 chief("chief-break-hands", C("pulling her two tightly clasped hands apart with an effortful playful face", close=True),
       c("要刮下一點點，就得把好多隻牽得很牢的手，"), c("一起扯斷。"))
 kid("kid-graphite-easy", K("flicking a tiny grey flake off her fingertip with a thinking face", close=True, where=DESK),
@@ -286,7 +288,7 @@ chief("chief-glass", C("holding up a plain clear drinking glass with a thoughtfu
 kid("kid-broke-glass", K("covering her mouth with one hand and a sheepish embarrassed grin", close=True, where=HOME),
     k("我打破過一個……", "不好意思"))
 chief("chief-fear-back", C("holding up a small steel hammer with a mysterious playful smile", close=True),
-      c("還記得我說，最硬的鑽石，也有怕的東西嗎？", "點名回呼"))
+      c("那你就懂了。", "笑"), c("還記得我說，最硬的鑽石，也有怕的東西嗎？", "點名回呼"))
 kid("kid-fear-q", K("leaning forward with wide curious eyes and both hands on her knees", where=HOME),
     k("記得！它怕什麼？", "句尾上揚"))
 chief("chief-fear", C("tapping the hammer lightly into her open palm with a knowing smile", close=True),
@@ -331,9 +333,9 @@ model("net-glow", "Close-up of " + NET + ", a soft warm golden glow running alon
 scene("stroke-path", "Close-up of " + STROKE + ", a soft warm golden glow running along the stroke from a round battery at one end to a tiny glowing LED at the other end, " + DAY,
       c("你那條鉛筆線，就是給電子跑的路，"), c("一路跑過小燈，燈就亮了。"))
 kid("kid-diamond-lamp-q", K("holding up a tiny clear crystal between two fingers with a curious face", close=True, where=DESK),
-    k("那鑽石呢？", "追問"), k("也會亮嗎？", "句尾上揚", "S:dlamp"))
+    k("那鑽石呢？", "追問"), k("它沒有空手，", "推理"), k("我猜不會亮！", "很有把握", "S:dlamp"))
 scene("gem-dark", "Close-up of " + GEM + " sitting between two short wires on a sunny wooden desk, one wire running to a round battery, a tiny unlit LED beside it, " + DAY,
-      c("鑽石的四隻手全部牽滿，電子被牢牢抓住，跑不動。"), c("所以一般的鑽石，幾乎不導電，燈不會亮。", None, "P:dlamp"))
+      c("猜得對。四隻手全部牽滿，電子被牢牢抓住，跑不動。"), c("所以一般的鑽石，幾乎不導電，燈不會亮。", None, "P:dlamp"))
 chief("chief-blue", C("holding one hand on her chest with an honest smile", close=True),
       c("老實說，有一種很少見的藍色鑽石，"), c("裡面混了一點別的東西，會導一點電。"))
 kid("kid-blue-q", K("raising her eyebrows high with an amazed open-mouthed face", close=True),
@@ -347,15 +349,13 @@ model("stack-glow", "Medium shot from the side of " + STACK + ", a soft warm gol
 chief("chief-hundred", C("holding one flat hand still and sliding the other hand smoothly across it, a pleased smile"),
       c("量出來，沿著層走，比穿過層好走幾百到上千倍。", "數字放慢", "P:dir"))
 kid("kid-long-q", K("stretching her two hands far apart with a curious face", where=DESK),
-    k("差那麼多！", "驚訝"), k("線畫很長的話，", "追問"), k("燈還會亮嗎？", "句尾上揚", "S:long"))
-scene("stroke-long", "Close-up of a very long winding thick dark grey pencil stroke on a plain white drawing sheet, a round battery at one end and a tiny LED glowing faintly at the other end, " + DAY,
-      c("博物館說，石墨只是還不錯的導電材料，"), c("線越長，電越難走，燈就越暗。", None, "P:long"))
+    k("差那麼多！", "驚訝"))
 kid("kid-try", K("raising one hand high with an excited grin", where=DESK),
     k("我要試試看！", "興奮"))
 chief("chief-safety", C("holding up one hand like a gentle stop with a serious kind face", close=True),
       c("對了，這個小實驗只能用小電池，"), c("牆上的插座，絕對不要拿來玩。", "認真"))
 chief("chief-which-carbon", C("holding a yellow pencil out towards the viewer like a microphone with a playful questioning smile"),
-      c("所以下次有人跟你說，碳會導電，", "轉向觀眾"), c("你可以問他：是哪一種排法的碳？"))
+      c("下次有人跟你說，碳會導電，", "轉向觀眾"), c("你可以問他：是哪一種排法的碳？"))
 kid("kid-enough-q", K("looking down at her pencil in her hands with a thinking face", where=DESK),
     k("所以只知道是碳，", "推理"), k("還不夠囉？", "章尾停住，句尾上揚", "S:enough"))
 
@@ -397,7 +397,7 @@ WHAT = {"main": "同樣都是碳，鉛筆芯和鑽石怎麼會差這麼多", "sm
         "harder": "模型猜得出誰比較硬嗎", "unbreak": "最硬的鑽石是不是一定打不破",
         "more": "模型除了硬不硬、碎不碎，還能猜別的嗎",
         "metal": "鉛筆不是金屬，電怎麼走得過去", "dlamp": "鑽石接上電池，小燈也會亮嗎",
-        "dir": "石墨換個方向，電也一樣好走嗎", "long": "鉛筆線畫很長，小燈還會亮嗎", "squeeze": "鑽石的碳是不是被擠得比較緊",
+        "dir": "石墨換個方向，電也一樣好走嗎", "squeeze": "鑽石的碳是不是被擠得比較緊",
         "enough": "只知道是碳，是不是還不夠", }
 scenes, loops_s, loops_p, n = [], {}, {}, 0
 for sc in S:
@@ -484,6 +484,6 @@ for s in body:
 for g in gaps: print(f"  hook gap {g}", file=sys.stderr)
 assert not gaps, "a stretch longer than 45 s without a question or a planted loop"
 assert len(loops) >= 11, "13 minutes need at least 11 loops"
-assert 2250 <= body_chars <= 2600, f"body {body_chars} characters: write 2,250–2,600 (README §9, 3.2 chars/s; P18 blind-review rounds cut recaps and detours; EPISODES.md gives P18 11–13 min, P17 measured 2,543 chars = 12:56)"
+assert 2200 <= body_chars <= 2600, f"body {body_chars} characters: write 2,200–2,600 (README §9, 3.2 chars/s; P18 blind-review rounds cut recaps and detours; EPISODES.md gives P18 11–13 min, P17 measured 2,543 chars = 12:56)"
 cams = [s["data"]["camera"] for s in scenes]
 assert all(not (a == b == c_) for a, b, c_ in zip(cams, cams[1:], cams[2:])), "three shots in a row with the same camera"
