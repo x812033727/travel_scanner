@@ -58,82 +58,87 @@
  "loops": [
   {
    "setup": "p011",
-   "payoff": "p214",
+   "payoff": "p219",
    "what": "腳能黏住天花板，下一步怎麼又抬得起來"
   },
   {
    "setup": "p013",
-   "payoff": "p047",
+   "payoff": "p043",
    "what": "壁虎的腳底是不是有膠水"
   },
   {
    "setup": "p015",
-   "payoff": "p165",
+   "payoff": "p170",
    "what": "整天在灰塵裡爬，腳要是黏的，不早就沾成一團"
   },
   {
    "setup": "p017",
-   "payoff": "p174",
-   "what": "有沒有壁虎爬不上去的地方"
+   "payoff": "p181",
+   "what": "有沒有壁虎黏不太住的地方"
   },
   {
-   "setup": "p040",
+   "setup": "p019",
+   "payoff": "p118",
+   "what": "牠每次抬腳前先做的那個小動作是什麼"
+  },
+  {
+   "setup": "p041",
    "payoff": "p042",
    "what": "是不是像浴室掛鉤一樣用吸盤"
   },
   {
-   "setup": "p051",
-   "payoff": "p107",
+   "setup": "p053",
+   "payoff": "p111",
    "what": "不用膠的貼紙，到底靠什麼黏住"
   },
   {
-   "setup": "p064",
-   "payoff": "p070",
+   "setup": "p066",
+   "payoff": "p072",
    "what": "腳趾上的毛為什麼要分那麼細"
   },
   {
-   "setup": "p093",
-   "payoff": "p207",
-   "what": "家裡那隻小壁虎，也跟大守宮一樣嗎"
+   "setup": "p097",
+   "payoff": "p214",
+   "what": "家裡天花板上那隻壁虎，也跟大守宮一樣嗎"
   },
   {
-   "setup": "p098",
-   "payoff": "p103",
+   "setup": "p102",
+   "payoff": "p107",
    "what": "十億個小扁片一起拉，到底有多大力"
   },
   {
-   "setup": "p109",
-   "payoff": "p128",
+   "setup": "p113",
+   "payoff": "p131",
    "what": "這麼黏，腳不就拔不起來了"
   },
   {
-   "setup": "p110",
-   "payoff": "p126",
+   "setup": "p114",
+   "payoff": "p128",
    "what": "是不是用力一拔就拔起來"
   },
   {
-   "setup": "p116",
-   "payoff": "p121",
+   "setup": "p120",
+   "payoff": "p125",
    "what": "放開是不是像撕貼紙從邊邊掀"
   },
   {
-   "setup": "p134",
-   "payoff": "p142",
+   "setup": "p137",
+   "payoff": "p145",
    "what": "踩下去的時候，怎麼又黏回去"
   },
   {
-   "setup": "p147",
-   "payoff": "p151",
+   "setup": "p150",
+   "payoff": "p154",
    "what": "倒掛時體重會不會把腳撕下來"
   },
   {
-   "setup": "p178",
-   "payoff": "p188",
+   "setup": "p185",
+   "payoff": "p195",
    "what": "沾了水是不是一定更滑"
   },
   {
-   "setup": "p194",
-   "payoff": "p198",
+   "setup": "p201",
+   "payoff": "p205",
    "what": "粗粗的牆是不是更好抓"
   }
  ],
@@ -254,7 +259,7 @@
  "scenes": [
   {
    "id": "kid-ceiling",
-   "chapter": "天花板上的壁虎",
+   "chapter": "天花板上一動也不動的壁虎",
    "template": "shot",
    "data": {
     "prompt": "Waist-up medium shot of the girl in a bright sunny living room with a plain white ceiling pointing up at a cute small pale tan cartoon gecko on the ceiling just above her head, an excited open-mouthed face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -322,14 +327,16 @@
     {
      "id": "p005",
      "speaker": "chief",
-     "text": "早上那麼亮，你一定看得很清楚。",
-     "pause_after_ms": 100
+     "text": "一動也不動？那牠多半是在休息。",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
     },
     {
      "id": "p006",
      "speaker": "chief",
-     "text": "牠四隻腳貼著天花板，背朝下，一點都不會掉。",
-     "pause_after_ms": 100
+     "text": "你看到牠的四隻腳，是不是平平貼著天花板？",
+     "pause_after_ms": 100,
+     "emotion": "問句"
     }
    ]
   },
@@ -348,21 +355,21 @@
     {
      "id": "p007",
      "speaker": "kid",
+     "text": "有！貼得平平的！",
+     "pause_after_ms": 100,
+     "emotion": "用力點頭"
+    },
+    {
+     "id": "p008",
+     "speaker": "kid",
      "text": "牠的腳是黏住的嗎？",
      "pause_after_ms": 100,
      "emotion": "好奇"
     },
     {
-     "id": "p008",
-     "speaker": "kid",
-     "text": "那要走的時候，",
-     "pause_after_ms": 100,
-     "emotion": "追問"
-    },
-    {
      "id": "p009",
      "speaker": "kid",
-     "text": "腳怎麼拔起來？",
+     "text": "那要走的時候，腳怎麼拔起來？",
      "pause_after_ms": 100,
      "emotion": "句尾上揚"
     }
@@ -462,14 +469,14 @@
     {
      "id": "p016",
      "speaker": "kid",
-     "text": "對耶……",
+     "text": "對耶……那牠也有怕的地方嗎？",
      "pause_after_ms": 100,
      "emotion": "想了一下"
     },
     {
      "id": "p017",
      "speaker": "kid",
-     "text": "那有沒有牠爬不上去的地方？",
+     "text": "有沒有牠黏不太住的地方？",
      "pause_after_ms": 100,
      "emotion": "好奇"
     }
@@ -497,14 +504,15 @@
     {
      "id": "p019",
      "speaker": "chief",
-     "text": "今天我們就跟著牠的一隻腳，從貼上去、黏住，一路看到它放開。",
-     "pause_after_ms": 100
+     "text": "還有，牠每次抬腳，都會先做一個小動作。",
+     "pause_after_ms": 100,
+     "emotion": "賣關子"
     }
    ]
   },
   {
    "id": "chief-old-q",
-   "chapter": "腳底沒有一灘膠水",
+   "chapter": "腳底找不到膠水",
    "template": "shot",
    "data": {
     "prompt": "Head-and-shoulders close-up of the chief holding up a small old-fashioned scroll tied with a ribbon, a playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -525,7 +533,25 @@
     {
      "id": "p021",
      "speaker": "chief",
-     "text": "兩千多年前，亞里斯多德就記下過壁虎爬牆的本事。",
+     "text": "兩千多年前，古希臘有一位很愛觀察動物的學者，",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "aristotle-tree",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium shot of a cute small pale tan cartoon gecko with big round dark eyes, a long tail and wide rounded toe tips climbing head-down on the trunk of a big sunny olive tree, its toes spread flat on the bark, bright daylight",
+    "camera": "push in",
+    "visual": "still",
+    "characters": []
+   },
+   "lines": [
+    {
+     "id": "p022",
+     "speaker": "chief",
+     "text": "叫亞里斯多德。他就記下過，壁虎能頭朝下爬樹。",
      "pause_after_ms": 100
     }
    ]
@@ -543,7 +569,7 @@
    },
    "lines": [
     {
-     "id": "p022",
+     "id": "p023",
      "speaker": "kid",
      "text": "那他知道答案嗎？",
      "pause_after_ms": 100,
@@ -564,9 +590,15 @@
    },
    "lines": [
     {
-     "id": "p023",
+     "id": "p024",
      "speaker": "chief",
-     "text": "他沒有答案，後來的人也猜了很久。先來查你的膠水說：",
+     "text": "他沒有答案，後來的人也猜了很久。",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p025",
+     "speaker": "chief",
+     "text": "那就來查查你的膠水說。",
      "pause_after_ms": 100
     }
    ]
@@ -583,7 +615,7 @@
    },
    "lines": [
     {
-     "id": "p024",
+     "id": "p026",
      "speaker": "chief",
      "text": "如果靠膠水，腳底就得有地方，一直冒出膠來。",
      "pause_after_ms": 100
@@ -602,13 +634,13 @@
    },
    "lines": [
     {
-     "id": "p025",
+     "id": "p027",
      "speaker": "chief",
      "text": "可是研究的人仔細看過，",
      "pause_after_ms": 100
     },
     {
-     "id": "p026",
+     "id": "p028",
      "speaker": "chief",
      "text": "壁虎的腳底，沒有會分泌東西的腺體。",
      "pause_after_ms": 100
@@ -628,7 +660,7 @@
    },
    "lines": [
     {
-     "id": "p027",
+     "id": "p029",
      "speaker": "kid",
      "text": "腺體是什麼？",
      "pause_after_ms": 100,
@@ -649,15 +681,9 @@
    },
    "lines": [
     {
-     "id": "p028",
+     "id": "p030",
      "speaker": "chief",
      "text": "就是身上專門做汗、做口水的小工廠。",
-     "pause_after_ms": 100
-    },
-    {
-     "id": "p029",
-     "speaker": "chief",
-     "text": "壁虎的腳底，沒有這種小工廠。",
      "pause_after_ms": 100
     }
    ]
@@ -674,13 +700,13 @@
    },
    "lines": [
     {
-     "id": "p030",
+     "id": "p031",
      "speaker": "chief",
      "text": "而且牠的腳趾很怕水，",
      "pause_after_ms": 100
     },
     {
-     "id": "p031",
+     "id": "p032",
      "speaker": "chief",
      "text": "水滴在上面，會縮成圓圓的一顆。",
      "pause_after_ms": 100
@@ -700,7 +726,7 @@
    },
    "lines": [
     {
-     "id": "p032",
+     "id": "p033",
      "speaker": "kid",
      "text": "所以牠的腳是乾的？",
      "pause_after_ms": 100,
@@ -720,13 +746,13 @@
    },
    "lines": [
     {
-     "id": "p033",
+     "id": "p034",
      "speaker": "chief",
      "text": "對，乾乾的。研究的人還準備了兩種表面，",
      "pause_after_ms": 100
     },
     {
-     "id": "p034",
+     "id": "p035",
      "speaker": "chief",
      "text": "一種很愛沾水，一種很怕水。",
      "pause_after_ms": 100
@@ -744,7 +770,7 @@
    },
    "lines": [
     {
-     "id": "p035",
+     "id": "p036",
      "speaker": "chief",
      "text": "讓壁虎的腳趾去黏，兩種黏得一樣好。",
      "pause_after_ms": 100
@@ -764,7 +790,7 @@
    },
    "lines": [
     {
-     "id": "p036",
+     "id": "p037",
      "speaker": "kid",
      "text": "這代表什麼？",
      "pause_after_ms": 100,
@@ -785,15 +811,15 @@
    },
    "lines": [
     {
-     "id": "p037",
+     "id": "p038",
      "speaker": "chief",
-     "text": "如果靠的是一層水，愛沾水的那種，應該黏得好很多。",
+     "text": "如果靠一層水，愛沾水的那種，應該黏得好很多。",
      "pause_after_ms": 100
     },
     {
-     "id": "p038",
+     "id": "p039",
      "speaker": "chief",
-     "text": "結果不差，代表主要不是靠一層水。",
+     "text": "結果兩種差不多，代表主要不是靠一層水。",
      "pause_after_ms": 100
     }
    ]
@@ -811,14 +837,14 @@
    },
    "lines": [
     {
-     "id": "p039",
+     "id": "p040",
      "speaker": "kid",
      "text": "那是不是吸盤？",
      "pause_after_ms": 100,
      "emotion": "再猜"
     },
     {
-     "id": "p040",
+     "id": "p041",
      "speaker": "kid",
      "text": "像浴室的掛鉤那樣？",
      "pause_after_ms": 100,
@@ -838,15 +864,15 @@
    },
    "lines": [
     {
-     "id": "p041",
+     "id": "p042",
      "speaker": "chief",
-     "text": "也不是。研究的人說，壁虎黏東西，",
+     "text": "也不是。研究的人說，壁虎黏東西，沒有用吸盤，",
      "pause_after_ms": 100
     },
     {
-     "id": "p042",
+     "id": "p043",
      "speaker": "chief",
-     "text": "沒有用膠，也沒有用吸盤。",
+     "text": "也沒有用膠。",
      "pause_after_ms": 100
     }
    ]
@@ -864,13 +890,13 @@
    },
    "lines": [
     {
-     "id": "p043",
+     "id": "p044",
      "speaker": "chief",
      "text": "不過有一件小事要老實說：",
      "pause_after_ms": 100
     },
     {
-     "id": "p044",
+     "id": "p045",
      "speaker": "chief",
      "text": "有研究在牠走過的腳印裡，找到非常薄的一層油油的東西。",
      "pause_after_ms": 100
@@ -890,7 +916,7 @@
    },
    "lines": [
     {
-     "id": "p045",
+     "id": "p046",
      "speaker": "kid",
      "text": "那不就是膠水嗎？",
      "pause_after_ms": 100,
@@ -910,9 +936,15 @@
    },
    "lines": [
     {
-     "id": "p046",
+     "id": "p047",
      "speaker": "chief",
-     "text": "不是。它少到要用很精密的儀器才找得到。",
+     "text": "不是。那層油少到眼睛看不到，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p048",
+     "speaker": "chief",
+     "text": "要用很精密的儀器，才查得出是什麼。",
      "pause_after_ms": 100
     }
    ]
@@ -930,9 +962,9 @@
    },
    "lines": [
     {
-     "id": "p047",
+     "id": "p049",
      "speaker": "chief",
-     "text": "研究的人還在查它有沒有幫忙，可是腳底沒有一灘膠。",
+     "text": "到底有沒有幫上忙，研究的人還在查。",
      "pause_after_ms": 100
     }
    ]
@@ -950,13 +982,13 @@
    },
    "lines": [
     {
-     "id": "p048",
+     "id": "p050",
      "speaker": "chief",
      "text": "所以，你可以把壁虎的腳，",
      "pause_after_ms": 100
     },
     {
-     "id": "p049",
+     "id": "p051",
      "speaker": "chief",
      "text": "想成一張不用膠的貼紙。",
      "pause_after_ms": 100
@@ -976,16 +1008,16 @@
    },
    "lines": [
     {
-     "id": "p050",
+     "id": "p052",
      "speaker": "kid",
      "text": "不用膠的貼紙？",
      "pause_after_ms": 100,
      "emotion": "不解"
     },
     {
-     "id": "p051",
+     "id": "p053",
      "speaker": "kid",
-     "text": "那它靠什麼黏？",
+     "text": "那這張貼紙靠什麼黏？",
      "pause_after_ms": 100,
      "emotion": "章尾停住，句尾上揚"
     }
@@ -993,7 +1025,7 @@
   },
   {
    "id": "chief-draw-big",
-   "chapter": "把一隻腳畫大",
+   "chapter": "五十萬根小毛一起拉",
    "template": "shot",
    "data": {
     "prompt": "Head-and-shoulders close-up of the chief holding a big round magnifying glass up beside her face with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -1005,7 +1037,7 @@
    },
    "lines": [
     {
-     "id": "p052",
+     "id": "p054",
      "speaker": "chief",
      "text": "我們把那隻腳，畫大來看。",
      "pause_after_ms": 100,
@@ -1025,13 +1057,13 @@
    },
    "lines": [
     {
-     "id": "p053",
+     "id": "p055",
      "speaker": "chief",
      "text": "牠的腳趾底下，有一排一排的皮，",
      "pause_after_ms": 100
     },
     {
-     "id": "p054",
+     "id": "p056",
      "speaker": "chief",
      "text": "像疊起來的小毯子。",
      "pause_after_ms": 100
@@ -1050,13 +1082,13 @@
    },
    "lines": [
     {
-     "id": "p055",
+     "id": "p057",
      "speaker": "chief",
      "text": "每一排上面，長滿很細很細的毛，",
      "pause_after_ms": 100
     },
     {
-     "id": "p056",
+     "id": "p058",
      "speaker": "chief",
      "text": "一根大約只有你頭髮的十分之一粗。",
      "pause_after_ms": 100
@@ -1076,14 +1108,14 @@
    },
    "lines": [
     {
-     "id": "p057",
+     "id": "p059",
      "speaker": "kid",
      "text": "比頭髮還細！",
      "pause_after_ms": 100,
      "emotion": "驚奇"
     },
     {
-     "id": "p058",
+     "id": "p060",
      "speaker": "kid",
      "text": "那有幾根？",
      "pause_after_ms": 100,
@@ -1103,7 +1135,7 @@
    },
    "lines": [
     {
-     "id": "p059",
+     "id": "p061",
      "speaker": "chief",
      "text": "一隻腳上，大約有五十萬根。",
      "pause_after_ms": 100,
@@ -1124,14 +1156,14 @@
    },
    "lines": [
     {
-     "id": "p060",
+     "id": "p062",
      "speaker": "kid",
      "text": "可是毛毛又不黏，",
      "pause_after_ms": 100,
      "emotion": "不服氣"
     },
     {
-     "id": "p061",
+     "id": "p063",
      "speaker": "kid",
      "text": "我的頭髮就不黏啊。",
      "pause_after_ms": 100
@@ -1150,7 +1182,7 @@
    },
    "lines": [
     {
-     "id": "p062",
+     "id": "p064",
      "speaker": "chief",
      "text": "壁虎的毛不一樣。每一根的尖端，又分成好幾百個更小的尖，",
      "pause_after_ms": 100
@@ -1169,7 +1201,7 @@
    },
    "lines": [
     {
-     "id": "p063",
+     "id": "p065",
      "speaker": "chief",
      "text": "最前面是一片小小的扁片，像一支小湯匙。",
      "pause_after_ms": 100
@@ -1189,7 +1221,7 @@
    },
    "lines": [
     {
-     "id": "p064",
+     "id": "p066",
      "speaker": "kid",
      "text": "為什麼要分那麼細？",
      "pause_after_ms": 100,
@@ -1209,15 +1241,15 @@
    },
    "lines": [
     {
-     "id": "p065",
+     "id": "p067",
      "speaker": "chief",
      "text": "因為牆其實沒有你想的那麼平。",
      "pause_after_ms": 100
     },
     {
-     "id": "p066",
+     "id": "p068",
      "speaker": "chief",
-     "text": "把牆畫大，它高高低低，像一片小山丘。",
+     "text": "把牆畫大，牆面高高低低，像一片小山丘。",
      "pause_after_ms": 100
     }
    ]
@@ -1234,13 +1266,13 @@
    },
    "lines": [
     {
-     "id": "p067",
+     "id": "p069",
      "speaker": "chief",
      "text": "你的手指太粗，只碰得到幾個山頂，",
      "pause_after_ms": 100
     },
     {
-     "id": "p068",
+     "id": "p070",
      "speaker": "chief",
      "text": "大部分地方，都差了一點點。",
      "pause_after_ms": 100
@@ -1251,7 +1283,7 @@
    "id": "tips-valleys",
    "template": "shot",
    "data": {
-    "prompt": "Close-up of a soft dense brush of very fine pale cream bristles, drawn large as a simple flat 2D cartoon diagram pressing gently onto a landscape of small rolling hills, the tiny flat spoon-shaped tips bending into every little valley and lying flat on every slope",
+    "prompt": "Close-up of a soft dense brush of very fine pale cream bristles, drawn large as a simple flat 2D cartoon diagram pressing gently onto a landscape of small rolling hills, the tiny flat spoon-shaped tips bending down into many little valleys and lying flat on the slopes",
     "camera": "pan left",
     "visual": "still",
     "characters": [],
@@ -1259,15 +1291,15 @@
    },
    "lines": [
     {
-     "id": "p069",
+     "id": "p071",
      "speaker": "chief",
-     "text": "可是那麼多小扁片，就能鑽進每個小山谷，",
+     "text": "可是那麼多小扁片，就能鑽進許多小山谷，",
      "pause_after_ms": 100
     },
     {
-     "id": "p070",
+     "id": "p072",
      "speaker": "chief",
-     "text": "幾乎每個地方，都貼得上。",
+     "text": "大部分地方，都貼得上。",
      "pause_after_ms": 100
     }
    ]
@@ -1285,13 +1317,13 @@
    },
    "lines": [
     {
-     "id": "p071",
+     "id": "p073",
      "speaker": "chief",
      "text": "分得越細，同一塊地方能貼上的點就越多。",
      "pause_after_ms": 100
     },
     {
-     "id": "p072",
+     "id": "p074",
      "speaker": "chief",
      "text": "研究的人算過，光是把尖端分細，就能黏得更牢。",
      "pause_after_ms": 100
@@ -1311,7 +1343,7 @@
    },
    "lines": [
     {
-     "id": "p073",
+     "id": "p075",
      "speaker": "kid",
      "text": "一定要用壁虎的毛嗎？",
      "pause_after_ms": 100,
@@ -1331,13 +1363,13 @@
    },
    "lines": [
     {
-     "id": "p074",
+     "id": "p076",
      "speaker": "chief",
      "text": "不用。他們用兩種不同的材料，做出假的小尖，",
      "pause_after_ms": 100
     },
     {
-     "id": "p075",
+     "id": "p077",
      "speaker": "chief",
      "text": "兩種都照樣黏得住。代表重點是形狀和大小。",
      "pause_after_ms": 100
@@ -1357,14 +1389,14 @@
    },
    "lines": [
     {
-     "id": "p076",
+     "id": "p078",
      "speaker": "kid",
      "text": "貼得上，",
      "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
-     "id": "p077",
+     "id": "p079",
      "speaker": "kid",
      "text": "就黏住了嗎？",
      "pause_after_ms": 100,
@@ -1385,13 +1417,13 @@
    },
    "lines": [
     {
-     "id": "p078",
+     "id": "p080",
      "speaker": "chief",
      "text": "其實任何兩樣東西，只要靠得非常非常近，",
      "pause_after_ms": 100
     },
     {
-     "id": "p079",
+     "id": "p081",
      "speaker": "chief",
      "text": "都會互相輕輕拉一下。",
      "pause_after_ms": 100
@@ -1411,14 +1443,14 @@
    },
    "lines": [
     {
-     "id": "p080",
+     "id": "p082",
      "speaker": "kid",
      "text": "那我的手，",
      "pause_after_ms": 100,
      "emotion": "懷疑"
     },
     {
-     "id": "p081",
+     "id": "p083",
      "speaker": "kid",
      "text": "怎麼沒黏在桌上？",
      "pause_after_ms": 100,
@@ -1438,15 +1470,15 @@
    },
    "lines": [
     {
-     "id": "p082",
+     "id": "p084",
      "speaker": "chief",
-     "text": "因為這一下很弱，又只有近到看不見的距離才有。",
+     "text": "因為這一下很弱，又要近到看不見才有。",
      "pause_after_ms": 100
     },
     {
-     "id": "p083",
+     "id": "p085",
      "speaker": "chief",
-     "text": "你的手只碰到幾個點，你根本感覺不到。",
+     "text": "你的手只碰到幾個點，根本感覺不到。",
      "pause_after_ms": 100
     }
    ]
@@ -1464,15 +1496,15 @@
    },
    "lines": [
     {
-     "id": "p084",
+     "id": "p086",
      "speaker": "chief",
      "text": "這種靠得很近才有的小拉力，",
      "pause_after_ms": 100
     },
     {
-     "id": "p085",
+     "id": "p087",
      "speaker": "chief",
-     "text": "科學家叫它凡得瓦力。",
+     "text": "科學家叫做凡得瓦力。",
      "pause_after_ms": 100
     }
    ]
@@ -1490,9 +1522,15 @@
    },
    "lines": [
     {
-     "id": "p086",
+     "id": "p088",
      "speaker": "chief",
-     "text": "另外也有研究發現，空氣裡的濕氣，會幫上一點忙。",
+     "text": "雖然主要不是靠水，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p089",
+     "speaker": "chief",
+     "text": "不過也有研究發現，空氣裡的濕氣會幫上一點忙。",
      "pause_after_ms": 100
     }
    ]
@@ -1509,13 +1547,13 @@
    },
    "lines": [
     {
-     "id": "p087",
+     "id": "p090",
      "speaker": "chief",
      "text": "一個小扁片拉一下，弱到不行，",
      "pause_after_ms": 100
     },
     {
-     "id": "p088",
+     "id": "p091",
      "speaker": "chief",
      "text": "可是壁虎的腳上，有好多好多個小扁片一起拉。",
      "pause_after_ms": 100
@@ -1535,7 +1573,7 @@
    },
    "lines": [
     {
-     "id": "p089",
+     "id": "p092",
      "speaker": "kid",
      "text": "好多是多少個？",
      "pause_after_ms": 100,
@@ -1556,9 +1594,15 @@
    },
    "lines": [
     {
-     "id": "p090",
+     "id": "p093",
      "speaker": "chief",
-     "text": "要看是哪一種壁虎。這些研究，大多用一種大壁虎，叫大守宮，",
+     "text": "要看是哪一種壁虎。這些研究，大多用一種大壁虎，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p094",
+     "speaker": "chief",
+     "text": "叫大守宮，英文叫 Tokay gecko。",
      "pause_after_ms": 100
     }
    ]
@@ -1574,9 +1618,9 @@
    },
    "lines": [
     {
-     "id": "p091",
+     "id": "p095",
      "speaker": "chief",
-     "text": "牠的身體，比你家牆上那隻長好幾倍。",
+     "text": "大守宮的身體，大約是你家天花板上那隻的兩三倍長。",
      "pause_after_ms": 100
     }
    ]
@@ -1594,14 +1638,14 @@
    },
    "lines": [
     {
-     "id": "p092",
+     "id": "p096",
      "speaker": "kid",
-     "text": "那我家那隻小的，",
+     "text": "那我家天花板上那隻，",
      "pause_after_ms": 100,
      "emotion": "好奇"
     },
     {
-     "id": "p093",
+     "id": "p097",
      "speaker": "kid",
      "text": "也是這樣嗎？",
      "pause_after_ms": 100,
@@ -1622,7 +1666,7 @@
    },
    "lines": [
     {
-     "id": "p094",
+     "id": "p098",
      "speaker": "chief",
      "text": "先記住這個問題，最後我們回來看。",
      "pause_after_ms": 100
@@ -1640,15 +1684,15 @@
    },
    "lines": [
     {
-     "id": "p095",
+     "id": "p099",
      "speaker": "chief",
-     "text": "一隻大守宮的腳趾上，",
+     "text": "一隻大守宮，四隻腳的腳趾全部加起來，",
      "pause_after_ms": 100
     },
     {
-     "id": "p096",
+     "id": "p100",
      "speaker": "chief",
-     "text": "加起來大約有十億個小扁片。",
+     "text": "大約有十億個小扁片。",
      "pause_after_ms": 100,
      "emotion": "數字放慢"
     }
@@ -1667,14 +1711,14 @@
    },
    "lines": [
     {
-     "id": "p097",
+     "id": "p101",
      "speaker": "kid",
      "text": "十億個一起拉！",
      "pause_after_ms": 100,
      "emotion": "大驚"
     },
     {
-     "id": "p098",
+     "id": "p102",
      "speaker": "kid",
      "text": "那有多大力？",
      "pause_after_ms": 100,
@@ -1694,7 +1738,7 @@
    },
    "lines": [
     {
-     "id": "p099",
+     "id": "p103",
      "speaker": "chief",
      "text": "研究的人先量出一根小毛的力氣，再估算，",
      "pause_after_ms": 100
@@ -1713,13 +1757,13 @@
    },
    "lines": [
     {
-     "id": "p100",
+     "id": "p104",
      "speaker": "chief",
      "text": "如果小毛全部同時用上，理論上能吊起大約一百三十公斤，",
      "pause_after_ms": 100
     },
     {
-     "id": "p101",
+     "id": "p105",
      "speaker": "chief",
      "text": "差不多兩個大人那麼重。",
      "pause_after_ms": 100
@@ -1739,7 +1783,7 @@
    },
    "lines": [
     {
-     "id": "p102",
+     "id": "p106",
      "speaker": "chief",
      "text": "當然，牠平常只用到其中一小部分。",
      "pause_after_ms": 100
@@ -1757,9 +1801,9 @@
    },
    "lines": [
     {
-     "id": "p103",
+     "id": "p107",
      "speaker": "chief",
-     "text": "實驗裡，一根腳趾，就撐得住整隻壁虎。",
+     "text": "實驗裡，一根腳趾，就撐得住整隻大守宮。",
      "pause_after_ms": 100
     }
    ]
@@ -1777,14 +1821,14 @@
    },
    "lines": [
     {
-     "id": "p104",
+     "id": "p108",
      "speaker": "kid",
      "text": "我一根手指，",
      "pause_after_ms": 100,
      "emotion": "好笑"
     },
     {
-     "id": "p105",
+     "id": "p109",
      "speaker": "kid",
      "text": "撐不住我自己！",
      "pause_after_ms": 100
@@ -1804,13 +1848,13 @@
    },
    "lines": [
     {
-     "id": "p106",
+     "id": "p110",
      "speaker": "chief",
      "text": "這就是那張不用膠的貼紙：",
      "pause_after_ms": 100
     },
     {
-     "id": "p107",
+     "id": "p111",
      "speaker": "chief",
      "text": "貼得夠近，貼得夠多。",
      "pause_after_ms": 100
@@ -1830,14 +1874,14 @@
    },
    "lines": [
     {
-     "id": "p108",
+     "id": "p112",
      "speaker": "kid",
      "text": "這麼黏，",
      "pause_after_ms": 100,
      "emotion": "擔心"
     },
     {
-     "id": "p109",
+     "id": "p113",
      "speaker": "kid",
      "text": "牠的腳不就拔不起來了？",
      "pause_after_ms": 100,
@@ -1847,7 +1891,7 @@
   },
   {
    "id": "kid-pull-guess",
-   "chapter": "黏住以後，怎麼放開",
+   "chapter": "腳趾一捲就放手",
    "template": "shot",
    "data": {
     "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room with a plain white ceiling crouching and gripping an imaginary rope with both hands, leaning back hard with a determined grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -1859,7 +1903,7 @@
    },
    "lines": [
     {
-     "id": "p110",
+     "id": "p114",
      "speaker": "kid",
      "text": "是不是用力一拔？",
      "pause_after_ms": 100,
@@ -1880,17 +1924,18 @@
    },
    "lines": [
     {
-     "id": "p111",
+     "id": "p115",
      "speaker": "chief",
      "text": "牠不用硬拔。",
      "pause_after_ms": 100,
      "emotion": "接住上一句"
     },
     {
-     "id": "p112",
+     "id": "p116",
      "speaker": "chief",
-     "text": "牠用的，是一個角度的小把戲。",
-     "pause_after_ms": 100
+     "text": "還記得我說的那個小動作嗎？",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
     }
    ]
   },
@@ -1905,13 +1950,13 @@
    },
    "lines": [
     {
-     "id": "p113",
+     "id": "p117",
      "speaker": "chief",
      "text": "你仔細看牠抬腳，腳趾會從最前面，",
      "pause_after_ms": 100
     },
     {
-     "id": "p114",
+     "id": "p118",
      "speaker": "chief",
      "text": "往上、往後捲起來。",
      "pause_after_ms": 100
@@ -1931,14 +1976,14 @@
    },
    "lines": [
     {
-     "id": "p115",
+     "id": "p119",
      "speaker": "kid",
      "text": "像撕貼紙，",
      "pause_after_ms": 100,
      "emotion": "推理"
     },
     {
-     "id": "p116",
+     "id": "p120",
      "speaker": "kid",
      "text": "從邊邊開始掀？",
      "pause_after_ms": 100,
@@ -1959,13 +2004,13 @@
    },
    "lines": [
     {
-     "id": "p117",
+     "id": "p121",
      "speaker": "chief",
      "text": "看起來很像。不過研究的人發現，",
      "pause_after_ms": 100
     },
     {
-     "id": "p118",
+     "id": "p122",
      "speaker": "chief",
      "text": "真正的開關，藏在每一根小毛身上。",
      "pause_after_ms": 100
@@ -1984,7 +2029,7 @@
    },
    "lines": [
     {
-     "id": "p119",
+     "id": "p123",
      "speaker": "chief",
      "text": "小毛黏著的時候，是斜斜躺下來的。",
      "pause_after_ms": 100
@@ -2003,16 +2048,16 @@
    },
    "lines": [
     {
-     "id": "p120",
+     "id": "p124",
      "speaker": "chief",
-     "text": "只要它跟牆的角度，翻到大約三十度以上，",
+     "text": "只要小毛跟牆的角度，翻到大約三十度以上，",
      "pause_after_ms": 100,
      "emotion": "數字放慢"
     },
     {
-     "id": "p121",
+     "id": "p125",
      "speaker": "chief",
-     "text": "它就自己鬆開了。",
+     "text": "就會自己鬆開。",
      "pause_after_ms": 100
     }
    ]
@@ -2030,14 +2075,14 @@
    },
    "lines": [
     {
-     "id": "p122",
+     "id": "p126",
      "speaker": "kid",
      "text": "自己鬆開？",
      "pause_after_ms": 100,
      "emotion": "驚訝"
     },
     {
-     "id": "p123",
+     "id": "p127",
      "speaker": "kid",
      "text": "不用力氣嗎？",
      "pause_after_ms": 100,
@@ -2057,35 +2102,15 @@
    },
    "lines": [
     {
-     "id": "p124",
+     "id": "p128",
      "speaker": "chief",
      "text": "幾乎不用。腳趾一捲，",
      "pause_after_ms": 100
     },
     {
-     "id": "p125",
+     "id": "p129",
      "speaker": "chief",
      "text": "一排一排的小毛就跟著翻起來，照順序放手。",
-     "pause_after_ms": 100
-    }
-   ]
-  },
-  {
-   "id": "chief-not-pull",
-   "template": "shot",
-   "data": {
-    "prompt": "Waist-up medium shot of the chief tilting one flat hand up with an easy relaxed smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
-    "camera": "pan right",
-    "visual": "still",
-    "characters": [
-     "chief"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p126",
-     "speaker": "chief",
-     "text": "所以牠不是用力拔，是把角度一翻。",
      "pause_after_ms": 100
     }
    ]
@@ -2101,13 +2126,13 @@
    },
    "lines": [
     {
-     "id": "p127",
+     "id": "p130",
      "speaker": "chief",
-     "text": "研究的人量過，牠放開一隻腳，",
+     "text": "研究的人量過，壁虎放開一隻腳，",
      "pause_after_ms": 100
     },
     {
-     "id": "p128",
+     "id": "p131",
      "speaker": "chief",
      "text": "大約只要百分之一秒多一點。",
      "pause_after_ms": 100,
@@ -2128,14 +2153,14 @@
    },
    "lines": [
     {
-     "id": "p129",
+     "id": "p132",
      "speaker": "kid",
      "text": "那麼快！",
      "pause_after_ms": 100,
      "emotion": "驚奇"
     },
     {
-     "id": "p130",
+     "id": "p133",
      "speaker": "kid",
      "text": "那牠一秒能走幾步？",
      "pause_after_ms": 100,
@@ -2154,13 +2179,13 @@
    },
    "lines": [
     {
-     "id": "p131",
+     "id": "p134",
      "speaker": "chief",
      "text": "有一種小壁虎在實驗裡往牆上衝，",
      "pause_after_ms": 100
     },
     {
-     "id": "p132",
+     "id": "p135",
      "speaker": "chief",
      "text": "每隻腳一秒大約能貼上、放開十五次。",
      "pause_after_ms": 100
@@ -2180,14 +2205,14 @@
    },
    "lines": [
     {
-     "id": "p133",
+     "id": "p136",
      "speaker": "kid",
      "text": "那牠踩下去的時候，",
      "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
-     "id": "p134",
+     "id": "p137",
      "speaker": "kid",
      "text": "怎麼又黏回去？",
      "pause_after_ms": 100,
@@ -2207,13 +2232,13 @@
    },
    "lines": [
     {
-     "id": "p135",
+     "id": "p138",
      "speaker": "chief",
      "text": "反過來就好。腳趾先放平貼上，",
      "pause_after_ms": 100
     },
     {
-     "id": "p136",
+     "id": "p139",
      "speaker": "chief",
      "text": "再往身體這邊，輕輕拖一下。",
      "pause_after_ms": 100
@@ -2232,13 +2257,13 @@
    },
    "lines": [
     {
-     "id": "p137",
+     "id": "p140",
      "speaker": "chief",
      "text": "這一拖，小毛就斜斜躺下、貼平，",
      "pause_after_ms": 100
     },
     {
-     "id": "p138",
+     "id": "p141",
      "speaker": "chief",
      "text": "拖著的力氣越大，黏得越牢。",
      "pause_after_ms": 100
@@ -2258,14 +2283,14 @@
    },
    "lines": [
     {
-     "id": "p139",
+     "id": "p142",
      "speaker": "kid",
      "text": "只拍上去，",
      "pause_after_ms": 100,
      "emotion": "試探"
     },
     {
-     "id": "p140",
+     "id": "p143",
      "speaker": "kid",
      "text": "不拖呢？",
      "pause_after_ms": 100,
@@ -2285,13 +2310,13 @@
    },
    "lines": [
     {
-     "id": "p141",
+     "id": "p144",
      "speaker": "chief",
      "text": "那就黏得很少。這些小毛平常是不太黏的，",
      "pause_after_ms": 100
     },
     {
-     "id": "p142",
+     "id": "p145",
      "speaker": "chief",
      "text": "要拖一下，才像打開開關。",
      "pause_after_ms": 100
@@ -2311,15 +2336,15 @@
    },
    "lines": [
     {
-     "id": "p143",
+     "id": "p146",
      "speaker": "chief",
      "text": "所以這張不用膠的貼紙，跟一般貼紙最不一樣：",
      "pause_after_ms": 100
     },
     {
-     "id": "p144",
+     "id": "p147",
      "speaker": "chief",
-     "text": "它有開關。往裡拖就黏，翻起來就放。",
+     "text": "有開關。往裡拖就黏，翻起來就放。",
      "pause_after_ms": 100
     }
    ]
@@ -2337,21 +2362,21 @@
    },
    "lines": [
     {
-     "id": "p145",
+     "id": "p148",
      "speaker": "kid",
      "text": "可是倒掛的時候，",
      "pause_after_ms": 100,
      "emotion": "擔心"
     },
     {
-     "id": "p146",
+     "id": "p149",
      "speaker": "kid",
      "text": "身體一直往下墜，",
      "pause_after_ms": 100,
      "emotion": "擔心"
     },
     {
-     "id": "p147",
+     "id": "p150",
      "speaker": "kid",
      "text": "不會把腳撕下來嗎？",
      "pause_after_ms": 100,
@@ -2370,15 +2395,15 @@
    },
    "lines": [
     {
-     "id": "p148",
+     "id": "p151",
      "speaker": "chief",
      "text": "研究的人看到，牠倒掛的時候，",
      "pause_after_ms": 100
     },
     {
-     "id": "p149",
+     "id": "p152",
      "speaker": "chief",
-     "text": "前腳和後腳會互相往裡拉。",
+     "text": "腳和腳趾會朝相反方向，互相往裡拉。",
      "pause_after_ms": 100
     }
    ]
@@ -2396,13 +2421,13 @@
    },
    "lines": [
     {
-     "id": "p150",
+     "id": "p153",
      "speaker": "chief",
      "text": "他們認為，這可能就是讓小毛一直保持拖著，",
      "pause_after_ms": 100
     },
     {
-     "id": "p151",
+     "id": "p154",
      "speaker": "chief",
      "text": "不被體重撕開的辦法。",
      "pause_after_ms": 100
@@ -2422,7 +2447,7 @@
    },
    "lines": [
     {
-     "id": "p152",
+     "id": "p155",
      "speaker": "chief",
      "text": "還記得一開始，我問你的灰塵嗎？",
      "pause_after_ms": 100,
@@ -2443,14 +2468,14 @@
    },
    "lines": [
     {
-     "id": "p153",
+     "id": "p156",
      "speaker": "kid",
      "text": "記得！",
      "pause_after_ms": 100,
      "emotion": "想起來"
     },
     {
-     "id": "p154",
+     "id": "p157",
      "speaker": "kid",
      "text": "你說會沾成一團！",
      "pause_after_ms": 100
@@ -2461,7 +2486,7 @@
    "id": "dust-foot",
    "template": "shot",
    "data": {
-    "prompt": "Close-up of one cartoon gecko foot with wide rounded toe tips covered in tiny round grey specks of dust, resting on clean smooth glass, bright daylight",
+    "prompt": "Close-up of one cartoon gecko foot with wide rounded toe tips covered in tiny round grey specks of dust, resting on a clean clear glass pane, bright daylight",
     "camera": "push in",
     "visual": "still",
     "characters": [],
@@ -2469,9 +2494,15 @@
    },
    "lines": [
     {
-     "id": "p155",
+     "id": "p158",
      "speaker": "chief",
-     "text": "研究的人把很細的小粉末，撒在大守宮的腳上。",
+     "text": "研究的人把很細的小粉末，撒在大守宮的腳趾上，",
+     "pause_after_ms": 100
+    },
+    {
+     "id": "p159",
+     "speaker": "chief",
+     "text": "再按在乾淨的玻璃上踩。",
      "pause_after_ms": 100
     }
    ]
@@ -2489,14 +2520,14 @@
    },
    "lines": [
     {
-     "id": "p156",
+     "id": "p160",
      "speaker": "kid",
      "text": "那牠的腳，",
      "pause_after_ms": 100,
      "emotion": "擔心"
     },
     {
-     "id": "p157",
+     "id": "p161",
      "speaker": "kid",
      "text": "就不黏了吧？",
      "pause_after_ms": 100,
@@ -2508,22 +2539,23 @@
    "id": "clean-steps",
    "template": "shot",
    "data": {
-    "prompt": "Medium shot of a big chubby blue-grey cartoon gecko with orange spots, big round golden eyes and wide rounded toe tips walking a few steps across clean smooth glass, a short trail of tiny grey specks of dust left behind its feet, bright daylight",
+    "prompt": "Close-up of one cartoon gecko toe with wide rounded tip pressing down on a clean clear glass pane, a few tiny grey specks of dust left on the glass beside it, bright daylight",
     "camera": "pull out",
     "visual": "still",
-    "characters": []
+    "characters": [],
+    "nobody": true
    },
    "lines": [
     {
-     "id": "p158",
+     "id": "p162",
      "speaker": "chief",
-     "text": "一開始是不太黏。可是牠只走了幾步，",
+     "text": "一開始是不太黏。可是腳趾才踩了幾下，",
      "pause_after_ms": 100
     },
     {
-     "id": "p159",
+     "id": "p163",
      "speaker": "chief",
-     "text": "腳就差不多又能撐住自己了。",
+     "text": "就差不多又能撐住自己了。",
      "pause_after_ms": 100
     }
    ]
@@ -2541,7 +2573,7 @@
    },
    "lines": [
     {
-     "id": "p160",
+     "id": "p164",
      "speaker": "kid",
      "text": "灰塵跑去哪了？",
      "pause_after_ms": 100,
@@ -2561,15 +2593,15 @@
    },
    "lines": [
     {
-     "id": "p161",
+     "id": "p165",
      "speaker": "chief",
      "text": "留在玻璃上了。研究的人推測，",
      "pause_after_ms": 100
     },
     {
-     "id": "p162",
+     "id": "p166",
      "speaker": "chief",
-     "text": "一粒灰塵被牆拉住的力氣，比被小扁片拉住的大，",
+     "text": "一粒灰塵被玻璃拉住的力氣，比被小扁片拉住的大，",
      "pause_after_ms": 100
     }
    ]
@@ -2586,9 +2618,9 @@
    },
    "lines": [
     {
-     "id": "p163",
+     "id": "p167",
      "speaker": "chief",
-     "text": "所以一踩一放，灰塵就被牆留下來了。",
+     "text": "所以一踩一放，灰塵就被玻璃留下來了。",
      "pause_after_ms": 100
     }
    ]
@@ -2597,23 +2629,42 @@
    "id": "flick-dust",
    "template": "shot",
    "data": {
-    "prompt": "Close-up of a cartoon gecko toe curling up from its tip, tiny grey specks of dust springing off it into the bright air, bright daylight",
+    "prompt": "Medium shot of a big chubby blue-grey cartoon gecko with orange spots, big round golden eyes and wide rounded toe tips walking across a clean clear glass pane, its toes curling up as it lifts each foot, a short trail of tiny grey specks of dust behind it, bright daylight",
     "camera": "push in",
     "visual": "still",
-    "characters": [],
-    "nobody": true
+    "characters": []
    },
    "lines": [
     {
-     "id": "p164",
+     "id": "p168",
      "speaker": "chief",
-     "text": "另一個研究發現，腳趾往上一捲，",
+     "text": "另一個研究讓壁虎自己在玻璃上走，",
      "pause_after_ms": 100
     },
     {
-     "id": "p165",
+     "id": "p169",
      "speaker": "chief",
-     "text": "會順便把灰塵甩掉，大約四步，就回到八成左右。",
+     "text": "發現腳趾能往上捲的時候，灰塵掉得快一倍，",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
+   "id": "chief-eighty",
+   "template": "shot",
+   "data": {
+    "prompt": "Head-and-shoulders close-up of the chief holding up one hand with fingers spread and a bright smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pan left",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p170",
+     "speaker": "chief",
+     "text": "大約走四步，就回到原本抓力的八成左右。",
      "pause_after_ms": 100
     }
    ]
@@ -2631,17 +2682,18 @@
    },
    "lines": [
     {
-     "id": "p166",
+     "id": "p171",
      "speaker": "kid",
-     "text": "一般貼紙沾了灰，",
+     "text": "一般貼紙沾了灰就不太黏，",
      "pause_after_ms": 100,
      "emotion": "比較"
     },
     {
-     "id": "p167",
+     "id": "p172",
      "speaker": "kid",
-     "text": "就不太黏了！",
-     "pause_after_ms": 100
+     "text": "牠比貼紙還厲害？",
+     "pause_after_ms": 100,
+     "emotion": "句尾上揚"
     }
    ]
   },
@@ -2658,7 +2710,7 @@
    },
    "lines": [
     {
-     "id": "p168",
+     "id": "p173",
      "speaker": "chief",
      "text": "對，這是牠贏過貼紙的地方。",
      "pause_after_ms": 100
@@ -2666,8 +2718,35 @@
    ]
   },
   {
+   "id": "chief-slip-bridge",
+   "chapter": "連壁虎都滑的鍋子",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the chief holding up a small plain dark grey frying pan beside her with a mysterious playful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "pull out",
+    "visual": "still",
+    "characters": [
+     "chief"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p174",
+     "speaker": "chief",
+     "text": "灰塵難不倒牠，可是有一種地方，",
+     "pause_after_ms": 100,
+     "emotion": "賣關子"
+    },
+    {
+     "id": "p175",
+     "speaker": "chief",
+     "text": "連牠都會滑。",
+     "pause_after_ms": 100
+    }
+   ]
+  },
+  {
    "id": "kid-where-q",
-   "chapter": "換一種表面，還黏得住嗎",
    "template": "shot",
    "data": {
     "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room with a plain white ceiling standing with her hands on her hips and a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -2679,14 +2758,14 @@
    },
    "lines": [
     {
-     "id": "p169",
+     "id": "p176",
      "speaker": "kid",
-     "text": "那牠爬不上去的地方，",
+     "text": "就是那個黏不太住的地方？",
      "pause_after_ms": 100,
      "emotion": "點名回呼"
     },
     {
-     "id": "p170",
+     "id": "p177",
      "speaker": "kid",
      "text": "到底在哪裡？",
      "pause_after_ms": 100,
@@ -2706,14 +2785,14 @@
    },
    "lines": [
     {
-     "id": "p171",
+     "id": "p178",
      "speaker": "chief",
      "text": "就在廚房。不沾鍋上那層很滑的塗層，",
      "pause_after_ms": 100,
      "emotion": "接住上一句"
     },
     {
-     "id": "p172",
+     "id": "p179",
      "speaker": "chief",
      "text": "常是一種叫鐵氟龍的材料。",
      "pause_after_ms": 100
@@ -2724,22 +2803,22 @@
    "id": "teflon-slip",
    "template": "shot",
    "data": {
-    "prompt": "Close-up of a cute small pale tan cartoon gecko with big round dark eyes, a long tail and wide rounded toe tips sliding down a smooth shiny dark grey slab with a surprised face, its toes splayed, bright daylight",
+    "prompt": "Close-up of a cute small pale tan cartoon gecko with big round dark eyes, a long tail and wide rounded toe tips sliding backwards across a flat smooth shiny dark grey slab with a surprised face, its toes splayed, bright daylight",
     "camera": "pan left",
     "visual": "still",
     "characters": []
    },
    "lines": [
     {
-     "id": "p173",
+     "id": "p180",
      "speaker": "chief",
-     "text": "研究的人讓壁虎去爬乾的鐵氟龍，",
+     "text": "研究的人讓壁虎去抓平平的乾鐵氟龍，",
      "pause_after_ms": 100
     },
     {
-     "id": "p174",
+     "id": "p181",
      "speaker": "chief",
-     "text": "連壁虎都會滑。",
+     "text": "再輕輕往後拉，連壁虎都會滑。",
      "pause_after_ms": 100
     }
    ]
@@ -2757,7 +2836,7 @@
    },
    "lines": [
     {
-     "id": "p175",
+     "id": "p182",
      "speaker": "kid",
      "text": "連壁虎都滑！",
      "pause_after_ms": 100,
@@ -2777,7 +2856,7 @@
    },
    "lines": [
     {
-     "id": "p176",
+     "id": "p183",
      "speaker": "chief",
      "text": "這種表面很特別，小扁片在上面，很難拉出那個小拉力。",
      "pause_after_ms": 100
@@ -2797,14 +2876,14 @@
    },
    "lines": [
     {
-     "id": "p177",
+     "id": "p184",
      "speaker": "kid",
      "text": "那再沾水，",
      "pause_after_ms": 100,
      "emotion": "推理"
     },
     {
-     "id": "p178",
+     "id": "p185",
      "speaker": "kid",
      "text": "一定滑得更厲害！",
      "pause_after_ms": 100,
@@ -2823,13 +2902,13 @@
    },
    "lines": [
     {
-     "id": "p179",
+     "id": "p186",
      "speaker": "chief",
      "text": "怪就怪在這裡。把鐵氟龍泡在水裡，",
      "pause_after_ms": 100
     },
     {
-     "id": "p180",
+     "id": "p187",
      "speaker": "chief",
      "text": "牠反而抓得好上好幾倍。",
      "pause_after_ms": 100
@@ -2849,7 +2928,7 @@
    },
    "lines": [
     {
-     "id": "p181",
+     "id": "p188",
      "speaker": "kid",
      "text": "為什麼？",
      "pause_after_ms": 100,
@@ -2870,15 +2949,15 @@
    },
    "lines": [
     {
-     "id": "p182",
+     "id": "p189",
      "speaker": "chief",
      "text": "研究的人說，跟水和表面怎麼互相拉有關，",
      "pause_after_ms": 100
     },
     {
-     "id": "p183",
+     "id": "p190",
      "speaker": "chief",
-     "text": "算得出大方向，可是還沒有完全弄懂。",
+     "text": "算得出大方向，但還沒有完全弄懂。",
      "pause_after_ms": 100
     }
    ]
@@ -2894,13 +2973,13 @@
    },
    "lines": [
     {
-     "id": "p184",
+     "id": "p191",
      "speaker": "chief",
-     "text": "可是換成普通玻璃，結果就倒過來。",
+     "text": "換成普通玻璃，結果就倒過來。",
      "pause_after_ms": 100
     },
     {
-     "id": "p185",
+     "id": "p192",
      "speaker": "chief",
      "text": "玻璃一泡水，抓力少了一大半。",
      "pause_after_ms": 100
@@ -2920,7 +2999,7 @@
    },
    "lines": [
     {
-     "id": "p186",
+     "id": "p193",
      "speaker": "kid",
      "text": "跟鐵氟龍剛好相反！",
      "pause_after_ms": 100,
@@ -2940,13 +3019,13 @@
    },
    "lines": [
     {
-     "id": "p187",
+     "id": "p194",
      "speaker": "chief",
      "text": "要是腳趾自己整個濕透，",
      "pause_after_ms": 100
     },
     {
-     "id": "p188",
+     "id": "p195",
      "speaker": "chief",
      "text": "抓力更是掉到只剩一點點。",
      "pause_after_ms": 100
@@ -2966,14 +3045,14 @@
    },
    "lines": [
     {
-     "id": "p189",
+     "id": "p196",
      "speaker": "kid",
      "text": "所以下雨天，",
      "pause_after_ms": 100,
      "emotion": "推理"
     },
     {
-     "id": "p190",
+     "id": "p197",
      "speaker": "kid",
      "text": "牠會比較難爬？",
      "pause_after_ms": 100,
@@ -2994,15 +3073,15 @@
    },
    "lines": [
     {
-     "id": "p191",
+     "id": "p198",
      "speaker": "chief",
-     "text": "研究的人也提醒，對住在又熱又濕地方的壁虎，",
+     "text": "很可能。研究的人提醒，",
      "pause_after_ms": 100
     },
     {
-     "id": "p192",
+     "id": "p199",
      "speaker": "chief",
-     "text": "水可能是個大麻煩。",
+     "text": "對住在又熱又濕地方的壁虎，水恐怕是個大麻煩。",
      "pause_after_ms": 100
     }
    ]
@@ -3020,14 +3099,14 @@
    },
    "lines": [
     {
-     "id": "p193",
+     "id": "p200",
      "speaker": "kid",
      "text": "那粗粗的牆呢？",
      "pause_after_ms": 100,
      "emotion": "追問"
     },
     {
-     "id": "p194",
+     "id": "p201",
      "speaker": "kid",
      "text": "應該更好抓吧？",
      "pause_after_ms": 100,
@@ -3039,7 +3118,7 @@
    "id": "fine-rough",
    "template": "shot",
    "data": {
-    "prompt": "Close-up of a soft dense brush of very fine pale cream bristles, drawn large as a simple flat 2D cartoon diagram resting on a surface of very fine tightly packed little bumps drawn large, the tiny flat tips perched awkwardly on the bumps, only a few faint sparkles",
+    "prompt": "Close-up of a soft dense brush of very fine pale cream bristles, drawn large as a simple flat 2D cartoon diagram resting on a surface of very fine tightly packed little bumps drawn large, only a few faint sparkles where the tips touch",
     "camera": "tilt up",
     "visual": "still",
     "characters": [],
@@ -3047,15 +3126,15 @@
    },
    "lines": [
     {
-     "id": "p195",
+     "id": "p202",
      "speaker": "chief",
      "text": "不一定。研究發現，有一種很細很細的粗糙，",
      "pause_after_ms": 100
     },
     {
-     "id": "p196",
+     "id": "p203",
      "speaker": "chief",
-     "text": "最難黏：小扁片鑽不進去，又貼不滿。",
+     "text": "黏起來反而最差，比更平的、更粗的都差。",
      "pause_after_ms": 100
     }
    ]
@@ -3071,13 +3150,13 @@
    },
    "lines": [
     {
-     "id": "p197",
+     "id": "p204",
      "speaker": "chief",
      "text": "大一點的凸起，如果剛好跟腳趾上那一排排的皮差不多大，",
      "pause_after_ms": 100
     },
     {
-     "id": "p198",
+     "id": "p205",
      "speaker": "chief",
      "text": "抓力也會掉得剩下很少很少。",
      "pause_after_ms": 100
@@ -3097,16 +3176,16 @@
    },
    "lines": [
     {
-     "id": "p199",
+     "id": "p206",
      "speaker": "chief",
-     "text": "還記得你家那隻小壁虎嗎？",
+     "text": "還記得你家天花板上那隻壁虎嗎？",
      "pause_after_ms": 100,
      "emotion": "點名回呼"
     },
     {
-     "id": "p200",
+     "id": "p207",
      "speaker": "chief",
-     "text": "你家牆上的，多半是另外幾種比較小的壁虎。",
+     "text": "家裡常見的，多半是另外幾種比較小的壁虎。",
      "pause_after_ms": 100
     }
    ]
@@ -3115,20 +3194,20 @@
    "id": "home-gecko",
    "template": "shot",
    "data": {
-    "prompt": "Close-up of a cute small pale tan cartoon gecko with big round dark eyes, a long tail and wide rounded toe tips on a sunny white wall beside a window, its wide rounded toe tips spread flat, bright daylight",
+    "prompt": "Close-up of a cute small pale tan cartoon gecko with big round dark eyes, a long tail and wide rounded toe tips resting on a sunny white ceiling near a window, its wide rounded toe tips spread flat, bright daylight",
     "camera": "tilt down",
     "visual": "still",
     "characters": []
    },
    "lines": [
     {
-     "id": "p201",
+     "id": "p208",
      "speaker": "chief",
      "text": "牠們的腳趾底下，也有一排一排的皮。",
      "pause_after_ms": 100
     },
     {
-     "id": "p202",
+     "id": "p209",
      "speaker": "chief",
      "text": "可是剛剛那些實驗，大多是在大守宮身上做的。",
      "pause_after_ms": 100
@@ -3148,14 +3227,14 @@
    },
    "lines": [
     {
-     "id": "p203",
+     "id": "p210",
      "speaker": "kid",
      "text": "所以換一種，",
      "pause_after_ms": 100,
      "emotion": "推理"
     },
     {
-     "id": "p204",
+     "id": "p211",
      "speaker": "kid",
      "text": "就不一定一樣？",
      "pause_after_ms": 100,
@@ -3176,15 +3255,15 @@
    },
    "lines": [
     {
-     "id": "p205",
+     "id": "p212",
      "speaker": "chief",
      "text": "對，數字不一定一樣。",
      "pause_after_ms": 100
     },
     {
-     "id": "p206",
+     "id": "p213",
      "speaker": "chief",
-     "text": "而且不是每一種壁虎，都有這種腳趾。",
+     "text": "而且，不是每一種壁虎都有那一排排的皮，",
      "pause_after_ms": 100
     }
    ]
@@ -3200,16 +3279,16 @@
    },
    "lines": [
     {
-     "id": "p207",
+     "id": "p214",
      "speaker": "chief",
-     "text": "有些壁虎的腳趾細細的，根本沒有這片墊子。",
+     "text": "有些壁虎的腳底，根本沒有。",
      "pause_after_ms": 100
     }
    ]
   },
   {
    "id": "chief-answer",
-   "chapter": "小問自己破案",
+   "chapter": "小問把案子說破",
    "template": "shot",
    "data": {
     "prompt": "Head-and-shoulders close-up of the chief smiling warmly at the viewer with one hand open, filling the frame, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -3221,9 +3300,16 @@
    },
    "lines": [
     {
-     "id": "p208",
+     "id": "p215",
      "speaker": "chief",
-     "text": "現在，你可以回答一開始的問題了。",
+     "text": "不管哪一種，有那排皮的壁虎，",
+     "pause_after_ms": 100,
+     "emotion": "接住上一句"
+    },
+    {
+     "id": "p216",
+     "speaker": "chief",
+     "text": "用的都是同一招。小問，你能把案子說破嗎？",
      "pause_after_ms": 100,
      "emotion": "笑"
     }
@@ -3233,7 +3319,7 @@
    "id": "kid-got-it",
    "template": "shot",
    "data": {
-    "prompt": "Waist-up medium shot of the girl in a bright sunny Taiwanese apartment living room with a plain white ceiling throwing both arms up with a huge happy smile, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen holding one hand up flat and curling her fingertips back like a peeling sticker, a proud grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
     "camera": "pull out",
     "visual": "still",
     "characters": [
@@ -3242,58 +3328,23 @@
    },
    "lines": [
     {
-     "id": "p209",
+     "id": "p217",
      "speaker": "kid",
-     "text": "牠的腳是不用膠的貼紙！",
+     "text": "我懂了！牠不是黏得很死，",
+     "pause_after_ms": 100,
+     "emotion": "恍然大悟"
+    },
+    {
+     "id": "p218",
+     "speaker": "kid",
+     "text": "是腳趾一捲，小毛翻過大約三十度，",
      "pause_after_ms": 100,
      "emotion": "篤定"
     },
     {
-     "id": "p210",
+     "id": "p219",
      "speaker": "kid",
-     "text": "好多小扁片貼得很近，",
-     "pause_after_ms": 100,
-     "emotion": "篤定"
-    },
-    {
-     "id": "p211",
-     "speaker": "kid",
-     "text": "一起輕輕拉住天花板！",
-     "pause_after_ms": 100,
-     "emotion": "開心"
-    }
-   ]
-  },
-  {
-   "id": "kid-got-it2",
-   "template": "shot",
-   "data": {
-    "prompt": "Head-and-shoulders close-up of the girl in a bright sunny home kitchen holding one hand up flat and curling her fingertips back like a peeling sticker, a proud grin, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, bare loose bob hair hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
-    "camera": "drift",
-    "visual": "still",
-    "characters": [
-     "kid"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p212",
-     "speaker": "kid",
-     "text": "要走的時候，腳趾往上一捲，",
-     "pause_after_ms": 100,
-     "emotion": "篤定"
-    },
-    {
-     "id": "p213",
-     "speaker": "kid",
-     "text": "小毛翻過角度，",
-     "pause_after_ms": 100,
-     "emotion": "篤定"
-    },
-    {
-     "id": "p214",
-     "speaker": "kid",
-     "text": "就自己放開了！",
+     "text": "就自己放手了！",
      "pause_after_ms": 100,
      "emotion": "開心"
     }
@@ -3312,16 +3363,35 @@
    },
    "lines": [
     {
-     "id": "p215",
+     "id": "p220",
      "speaker": "chief",
-     "text": "我覺得最厲害的，不是黏得牢，",
+     "text": "我覺得最厲害的，不是黏得牢，是說放就放。",
      "pause_after_ms": 100,
      "emotion": "意見，輕鬆"
+    }
+   ]
+  },
+  {
+   "id": "little-gecko-back",
+   "template": "shot",
+   "data": {
+    "prompt": "Medium shot of a slim little pale grey cartoon gecko trotting up a smooth sunny white wall, one foot lifted with its toes curled up, bright daylight",
+    "camera": "push in",
+    "visual": "still",
+    "characters": []
+   },
+   "lines": [
+    {
+     "id": "p221",
+     "speaker": "chief",
+     "text": "還記得那隻一秒貼放十五次的小壁虎嗎？",
+     "pause_after_ms": 100,
+     "emotion": "點名回呼"
     },
     {
-     "id": "p216",
+     "id": "p222",
      "speaker": "chief",
-     "text": "是說放就放。這張貼紙，一秒鐘就能貼上、放開好多次。",
+     "text": "牠每一步都在放手。",
      "pause_after_ms": 100
     }
    ]
@@ -3339,14 +3409,14 @@
    },
    "lines": [
     {
-     "id": "p217",
+     "id": "p223",
      "speaker": "chief",
      "text": "下次你在家看到壁虎，",
      "pause_after_ms": 100,
      "emotion": "轉向觀眾，輕聲"
     },
     {
-     "id": "p218",
+     "id": "p224",
      "speaker": "chief",
      "text": "看就好，別去抓牠，牠會被嚇到。",
      "pause_after_ms": 100
@@ -3365,13 +3435,13 @@
    },
    "lines": [
     {
-     "id": "p219",
+     "id": "p225",
      "speaker": "chief",
      "text": "你只要盯著牠抬腳的那一下，",
      "pause_after_ms": 100
     },
     {
-     "id": "p220",
+     "id": "p226",
      "speaker": "chief",
      "text": "看看腳趾，是不是先往上捲。",
      "pause_after_ms": 100,
@@ -3392,7 +3462,7 @@
    },
    "lines": [
     {
-     "id": "p221",
+     "id": "p227",
      "speaker": "kid",
      "text": "原來如此！",
      "pause_after_ms": 100,
@@ -3413,14 +3483,14 @@
    },
    "lines": [
     {
-     "id": "p222",
+     "id": "p228",
      "speaker": "chief",
      "text": "你家的壁虎，最常停在哪裡？",
      "pause_after_ms": 100,
      "emotion": "問句上揚，像聊天"
     },
     {
-     "id": "p223",
+     "id": "p229",
      "speaker": "chief",
      "text": "留言告訴我們。",
      "pause_after_ms": 100
@@ -3440,7 +3510,7 @@
    },
    "lines": [
     {
-     "id": "p224",
+     "id": "p230",
      "speaker": "chief",
      "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
      "pause_after_ms": 100,
