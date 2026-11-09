@@ -47,3 +47,5 @@ scope:
   兩個工作目錄整個用新版 `tobranch.sh` 推到 `claude/backup-sothatswhy-p07-p14` 的 `local-20261109/<slug>/`（head 5683fbcf，verify 0），
   同一代理只看 GitHub 重跑 `coverage.sh`：兩集 missing 0、mismatches 0、`.SPLIT` 0 不符，才刪；磁碟 6.1 → 7.7 GB。
   兩邊都沒有的（早在 11-07 就沒了）：兩集繁中逐句旁白、P07 其餘五語與 P14 八語的逐句配音（成品配音在分支與 YouTube）。
+- 2026-11-09：`keyframes --takes 3` 跑了約 4.5 小時，127 景裡 67 景三個 take 都沒過評審（多半是「半身畫成全身」「所長沒有鉛筆／灰髮一撮」）。
+  照 PR #2048：不用 `--accept-best`，四個沒畫過圖的代理逐張看全圖加四格 2× 放大挑圖，挑中的用 `repin.py` 固定。
