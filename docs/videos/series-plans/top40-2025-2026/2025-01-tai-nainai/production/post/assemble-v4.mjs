@@ -94,7 +94,10 @@ const stillMove = (id, f) => { const k = [...id].reduce((a, c) => a + c.charCode
 const lineFx = (l) => {
   const g = (edit.speaker_gain?.[l.speaker] ?? 0) + (edit.line_gain?.[l.id] ?? 0);
   const far = edit.line_far?.includes(l.id) ? ",highpass=f=350,lowpass=f=2800,aecho=0.8:0.6:45|90:0.3|0.2" : "";
-  return `${far}${g ? `,volume=${g}dB` : ""}`;
+  // `line_squeeze: {"t001016": 0.3}`：句中超過這個秒數的停頓縮到這麼長（第 1 集 c39 心裡話句中停 0.7、1.06 秒，第三場的心裡話塞不進畫面，2026-11-09）
+  const sq = edit.line_squeeze?.[l.id];
+  const squeeze = sq ? `,silenceremove=stop_periods=-1:stop_duration=0.15:stop_threshold=-35dB:stop_silence=${sq}:window=0.02` : "";
+  return `${squeeze}${far}${g ? `,volume=${g}dB` : ""}`;
 };
 const report = [], segs = [], starts = {}, lineAt = [], srt = [];
 let t = 0;
