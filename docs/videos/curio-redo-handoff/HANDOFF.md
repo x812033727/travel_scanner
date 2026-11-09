@@ -1,5 +1,13 @@
 # 奇聞檔案局重做：交接（2026-11-07）
 
+> **2026-11-09 更新：以 main 上的 [`docs/videos/explainer-series/`](../explainer-series/README.md)（PR #2048）為準。**
+> 這份交接寫在它之前；兩邊衝突時照 #2048：
+> - 備份用 `transfer/<slug>` 分支，備份整個工作目錄，用 `explainer-series/backup/tobranch.sh`。每過一關推一次，`備份 && review-push`。
+> - 縮圖用奇聞的 `layout: "e"`＋`focus`（#2044–#2046），不是下面寫的 C 版型。
+> - 刪工作目錄前，要另一個代理用 `coverage.sh` 核對。
+> - 不要刪 `keyframes/zoom/`、`segments/`、`build/`，它們也要備份。
+
+
 前一個對話負責 W03、B02 和 B03，其他 20 支交給新的對話做。
 這個資料夾和同一分支上的 `docs/videos/<slug>/` 就是要接手的全部東西。
 
