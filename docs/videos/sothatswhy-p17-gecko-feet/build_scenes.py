@@ -102,7 +102,8 @@ def K(action, close=False, where=None):
     return ("Head-and-shoulders close-up" if close else "Waist-up medium shot") + " of the girl " + (where + " " if where else "") + action + ", " + DAY
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
-kid("kid-ceiling", K("pointing up at the ceiling with an excited open-mouthed face", where=HOME),
+# Thumbnail shot (fixed before keyframes, explainer-series/README.md): the kid big, a clear face, the gecko in frame.
+kid("kid-ceiling", K("pointing up at a cute small pale tan cartoon gecko on the ceiling just above her head, an excited open-mouthed face", where="in a bright sunny living room with a plain white ceiling"),
     k("所長！今天早上，我家客廳天花板上，", "興奮，跑進來報案的語氣"), k("有一隻壁虎！", "興奮"), chapter="天花板上的壁虎")
 critter("gecko-ceiling", "Medium shot looking up at " + GECKO + " resting upside down on a plain white ceiling near the corner of a sunny living room, all four feet spread flat, morning sunlight on the ceiling",
         k("牠倒掛在上面，", "壓低聲音"), k("一動也不動！", "驚奇"))
@@ -407,8 +408,8 @@ doc = {
     "target_minutes": [12, 14], "voice": VOICE, "subtitles": {"burn_in": False}, "theme": "paper", "look": {"preset": "cute-cartoon"},
     # The series tag: the approved character sheets live in the series store and every episode reuses them (docs/videos/SERIES.md).
     "series": {"slug": "sothatswhy", "episode": 17, "chapter": 1},
-    # Same 14-minute bed as P02/P05/P07/P14/P08 (one paid Lyria take, tail trimmed, crossfaded): the series sounds the same.
-    "music": {"track": "sothatswhy-p02-bed.m4a", "sha256": "54169439df49a00bc3ad993a148690be9f79d1dff8a4ea5143e64e583001b20c", "gain_db": -20, "duck_db": -10},
+    # The series bed from P15 on (explainer-series/README.md, PR #2048): sothatswhy-bed-r2.m4a, remade from P02's paid take.
+    "music": {"track": "sothatswhy-bed-r2.m4a", "sha256": "9bb4ba6fd16feb4a7f352144b2d89e9648acbbbbaa2173c27a7eefbdb70f28c6", "gain_db": -20, "duck_db": -10},
     "characters": CHARACTERS, "loops": loops,
     "youtube": {
         "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",
@@ -420,7 +421,7 @@ doc = {
                        "看到壁虎請不要去抓牠。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["壁虎", "大守宮", "凡得瓦力", "鐵氟龍", "生物力學", "科普", "原來如此事務所"],
         "video_id": None},
-    "thumbnail": {"template": "thumb", "data": {"headline": "壁虎倒掛\n**為什麼不掉**", "sub": "腳底沒有膠，也沒有吸盤", "shot": "kid-stuck-q", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "黏得住\n**怎麼走？**", "sub": "腳底沒有膠", "shot": "kid-ceiling", "subject": "right"}},
     "sources": [
         {"title": "Autumn et al. (2000), Adhesive force of a single gecko foot-hair, Nature 405: 681–685", "url": "https://doi.org/10.1038/35015073", "checked_on": CHECKED},
         {"title": "Autumn et al. (2002), Evidence for van der Waals adhesion in gecko setae, PNAS 99: 12252–12256", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC129431/", "checked_on": CHECKED},
