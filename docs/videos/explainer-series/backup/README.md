@@ -1,17 +1,25 @@
 # 備份工具
 
-規則在 [`../BACKUP-BRANCHES.md`](../BACKUP-BRANCHES.md)。兩支腳本都只用 git 的物件與索引，不動工作樹，在 repo 任何 checkout 裡都能跑。
+規則在 [`../BACKUP-BRANCHES.md`](../BACKUP-BRANCHES.md)。兩支腳本都只用 git 的物件與索引，不動工作樹。它們推到、讀自
+**執行時所在 checkout 的 `origin`**，所以要在該系列備份 repo 的 clone 裡執行（奇聞是 `x812033727/mokaair-video-backup`，
+各系列見 BACKUP-BRANCHES.md〈備份推到哪個 repo〉），腳本本身從 `travel_scanner` 的 checkout 叫：
+
+```bash
+git clone --depth 1 https://github.com/x812033727/mokaair-video-backup ~/mokaair-video-backup   # 空 repo 也可以
+cd ~/mokaair-video-backup
+REPO=~/travel_scanner   # 工具所在的 checkout
+```
 
 ## 推一支片
 
 ```bash
 export TOBRANCH_TRAILERS="Co-Authored-By: …
 Claude-Session: …"          # 這個 session 的署名行，不寫死在腳本裡
-cd ~/mokaair-work/videos
+cd ~/mokaair-video-backup   # 不是 travel_scanner
 B=transfer/curio-h24
 T=docs/videos/explainer-series/backup
-$REPO/$T/tobranch.sh $B curio-h24 curio-h24 "curio-h24: 成片送審後"
-$REPO/$T/tobranch.sh $B _site/curio-h24 _site/curio-h24 "curio-h24: 站上檔案"
+$REPO/$T/tobranch.sh $B ~/mokaair-work/videos/curio-h24 curio-h24 "curio-h24: 成片送審後"
+$REPO/$T/tobranch.sh $B ~/mokaair-work/videos/_site/curio-h24 _site/curio-h24 "curio-h24: 站上檔案"
 $REPO/$T/tobranch.sh $B $REPO/docs/videos/curio-h24 _repo/docs/videos/curio-h24 "curio-h24: 稿子快照"
 ```
 
@@ -23,6 +31,7 @@ $REPO/$T/tobranch.sh $B $REPO/docs/videos/curio-h24 _repo/docs/videos/curio-h24 
 ## 涵蓋檢查（刪工作目錄前，由沒參與製作的代理跑）
 
 ```bash
+cd ~/mokaair-video-backup
 $REPO/docs/videos/explainer-series/backup/coverage.sh transfer/curio-h24 ~/mokaair-work/videos/curio-h24 curio-h24
 ```
 
@@ -31,6 +40,7 @@ $REPO/docs/videos/explainer-series/backup/coverage.sh transfer/curio-h24 ~/mokaa
 ## 還原
 
 ```bash
+cd ~/mokaair-video-backup   # 2026-11-09 前推的分支也已搬到這裡
 git fetch origin transfer/curio-h24
 git archive FETCH_HEAD curio-h24 | tar -x -C ~/mokaair-work/videos
 cd ~/mokaair-work/videos/curio-h24
