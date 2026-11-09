@@ -69,7 +69,23 @@ CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, gloss
 # Lines added after a visual review (P08: photo-real, off-model, marks). Empty until this episode's keyframes are drawn.
 FLAT = ", simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours"
 HOOD = ", hood down, short black bob hanging free"
-EXTRA = {}
+EXTRA = {'kid-ceiling': ', hood folded down, bare black bob uncovered, flat cartoon background',
+    'kid-gland-q': ', hood folded down, bare black bob uncovered',
+    'kid-dust-q': ', hood folded down, bare black bob uncovered',
+    'kid-slip': ', loose chin-length bob, smooth round back of head, hood folded down, bare black bob uncovered',
+    'kid-real-q': ', hood folded down, bare black bob uncovered, standing upright, navy sleeves, eyes looking the same way',
+    'kid-oily-q': ', loose chin-length bob, smooth round back of head, both eyes the same size looking the same way',
+    'kid-how-many-q': ', plain navy raincoat, pinching one strand of her own hair, loose chin-length bob, smooth round back of head',
+    'kid-pull-guess': ', loose chin-length bob, hood folded down, empty hands',
+    'kid-suction-guess': ', loose chin-length bob, smooth round back of head, hood folded down, bare black bob uncovered',
+    'kid-dusty-sticker': ', plain navy raincoat, loose chin-length bob, smooth round back of head, holding one crumpled plain yellow sticker',
+    'kid-hairy': ', hood folded down, bare black bob uncovered, smooth raincoat hood',
+    'kid-opposite': ', flat cartoon kitchen with ink outlines and flat colour fills in sharp focus, one palm facing the camera and the other palm facing herself',
+    'chief-sticker': ', glossy jet-black hair, round black glasses frames, the pencil only behind her ear',
+    'chief-pull': ', both eyes identical dark brown looking the same way, clear lenses, one pebble pinched in each hand',
+    'chief-slip-bridge': ', a plain clean background, flat 2D cel-shaded cartoon with ink outlines, holding the pan by its handle',
+    'climb-fast': ', top-down view, exactly four legs clearly visible, two front and two back placed symmetrically, body pointing straight up the wall',
+    'home-gecko': ', whole gecko in a clear top-down view, slim body between head and tail, exactly four legs spread flat, head in proportion'}
 def _shot(id, prompt, chars, lines, chapter):
     prompt = prompt + EXTRA.get(id, "")
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
@@ -177,7 +193,7 @@ kid("kid-mine-q", K("pointing back over her shoulder towards her home with a cur
     k("那我家天花板上那隻，", "好奇"), k("腳也跟大守宮一樣嗎？", "句尾上揚", "S:species"))
 chief("chief-later", C("holding up one finger with a patient smile", close=True),
       c("先記住這個問題，最後我們回來看。"), c("現在，我們把大守宮的腳畫大來看。"))
-scene("toe-flaps", "Close-up of the underside of one cartoon gecko toe drawn large, wide and rounded, covered in neat curved rows of soft pale flaps stacked like little folded blankets, plain pale cream background, flat 2D cartoon drawing",
+scene("toe-flaps", "Close-up of a single wide flat rounded cartoon gecko toe pad seen from directly underneath, shaped like a flat spoon, its underside crossed by six to eight parallel curved ridges like a neat stack of folded blankets, plain pale cream background, simple flat 2D diagram with ink outlines",
       c("牠的腳趾底下，有一排一排的皮，"), c("像疊起來的小毯子。"))
 scene("flap-bristles", "Close-up of " + BRISTLES + " growing from one soft pale flap of a gecko toe, plain pale cream background",
       c("每一排上面，長滿很細很細的毛，"), c("一根大約只有你頭髮的十分之一粗。"))
@@ -185,7 +201,7 @@ kid("kid-how-many-q", K("holding up one strand of her own hair between two finge
     k("比頭髮還細！", "驚奇"), k("那有幾根？", "句尾上揚"))
 scene("bristle-field", "Wide view of a huge soft field of very fine pale cream bristles like a thick meadow of tiny grass, drawn large on a gecko toe pad, soft sunlight, flat 2D cartoon drawing",
       c("一隻腳上，大約有五十萬根。", "數字放慢"))
-kid("kid-hairy", K("rubbing the fuzzy hood of her jacket with a doubtful frown", close=True),
+kid("kid-hairy", K("pinching a lock of her own black bob hair between two fingers with a doubtful frown", close=True),
     k("可是毛毛又不黏，", "不服氣"), k("我的頭髮就不黏啊。"))
 scene("bristle-tips", "Close-up of a few very fine pale cream bristles drawn large, " + TIPS + ", plain pale cream background, flat 2D cartoon drawing",
       c("壁虎的毛不一樣。每一根的尖端，又分成好幾百個更小的尖，"))
@@ -225,7 +241,7 @@ kid("kid-billion", K("throwing both arms wide open with a huge amazed face", clo
     k("全部一起拉！", "大驚"), k("那有多大力？", "句尾上揚", "S:strong"))
 scene("strong-feel", "Close-up of one very fine pale cream bristle drawn large, its tiny flat spoon-shaped tips stuck to smooth glass, one small round bead hanging gently from it on a fine thread, plain pale cream background, flat 2D cartoon drawing",
       c("研究的人先量出一根小毛的力氣，再估算，"))
-scene("rice-sacks", "Medium shot of a pile of big heavy round sacks of rice hanging together from one small chubby cartoon gecko foot stuck on a smooth glass pane, the foot calm and steady, " + DAY,
+scene("rice-sacks", "Medium shot of a tidy bundle of plain round burlap rice sacks tied together with one rope that runs straight up to a single small pale cartoon gecko foot pressed flat on a vertical clear glass pane at the top of the frame, the sacks dangling in mid-air above an empty floor, plain smooth sacks, " + DAY,
       c("如果小毛全部同時用上，理論上能吊起大約一百三十公斤，"), c("差不多兩個大人那麼重。"))
 chief("chief-fraction", C("pinching her finger and thumb a little apart with a knowing smile", close=True),
       c("當然，牠平常只用到其中一小部分。"))
@@ -287,7 +303,7 @@ scene("dust-foot", "Close-up of one cartoon gecko foot with wide rounded toe tip
       c("研究的人把很細的小粉末，撒在大守宮的腳趾上，"), c("再按在乾淨的玻璃上踩。"))
 kid("kid-dust-q", K("wiping her dusty hands on a cloth with a worried face", close=True),
     k("那牠的腳，", "擔心"), k("就不黏了吧？", "句尾上揚"))
-scene("clean-steps", "Close-up of one cartoon gecko toe with wide rounded tip pressing down on a clean clear glass pane, a few tiny grey specks of dust left on the glass beside it, " + DAY,
+scene("clean-steps", "Side-view close-up of a simple rounded gecko toe pad shaped like a smooth pale pebble with soft ridges underneath, pressing down on a clean clear glass pane, a few tiny grey specks of dust left on the glass beside it, a plain object drawing, " + DAY,
       c("一開始是不太黏。可是腳趾才踩了幾下，"), c("就差不多又能撐住自己了。"))
 kid("kid-where-dust-q", K("looking down at the floor behind her with a puzzled face", close=True),
     k("灰塵跑去哪了？", "句尾上揚"))
