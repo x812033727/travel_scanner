@@ -37,7 +37,8 @@ LINE_PREFIX = "t"
 # （drama/LESSONS.md 第三節，種田 e901 真人版；祖媽第 1–3 集表情審片，2026-11-08）。只鎖長相、髮型、服裝。
 TAIL = ("One continuous shot. Natural, realistic live-action human motion; each person's facial features, hair and costume stay as in their reference picture, "
         "while the facial expressions follow the text above; "
-        "nothing written anywhere in the frame.")
+        "nothing written anywhere in the frame; no subtitles, no captions, no characters or letters at the bottom of the picture.")
+# 「不要字幕」：第 4 集 c38 首格把台詞畫成畫面下方的字幕（lessons.md 2026-11-09）；原聲台詞的引號會邀請字幕，所以每一鏡都加（第 5 集審稿）
 FACES_RULE = ("Besides them, only the other people the composition names are in the frame; no second copy of anyone appears. "
               "Facial expressions follow the action and lines described here, not the reference pictures: the pictures fix the face, hair and costume only, never the mood; "
               "every visible face, speaking or silent, shows the expression written for it; whoever speaks talks to the other person, and nobody, speaking or listening, ever looks into the camera.")
@@ -324,7 +325,10 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                     lamp_text = lamp_text.replace("the lamp shown in the lamp picture", f"the lamp shown in <Picture {len(images)}>")
             # 道具圖：正文提到就附上（第 3 集審稿：藥櫃、報信鈴只靠場景圖，c13 要三十個抽屜、c45 要三個鈴；第 1 集 v2：道具一直畫錯，附圖才對）
             for rx, ref, name in ((r"medicine cabinet", "prop-yaogui-t1.png", "medicine cabinet"), (r"\bbells?\b", "prop-baoxinling-t1.png", "bells"),
-                                  (r"key ring", "prop-fubo-yaoshichuan-t1.png", "key ring")):
+                                  (r"key ring", "prop-fubo-yaoshichuan-t1.png", "key ring"),
+                                  # 第 5 集審稿（2026-11-09）：油壺與十八歲照片也每鏡附道具圖，免得每鏡各畫各的
+                                  (r"\boil can\b", "prop-tong-youhu-t1.png", "oil can"),
+                                  (r"(?:portrait photograph|eighteen-year-old'?s? photograph)", "prop-shibasui-zhao-t1.png", "photograph")):
                 if re.search(rx, e["prompt"], re.I) and len(images) < 4:
                     images.append(find_ref(refs, [ref], (1024, 1024), args.placeholders, missing))
                     lamp_text += f" The {name} looks exactly as in <Picture {len(images)}>."
@@ -333,9 +337,10 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
             if re.search(r"\bat night\b|^\s*night\b|\bdeep in the night\b", e["prompt"], re.I):  # 第 2 集審稿：c48、c49 以「Night, seen from」開頭，沒加到夜景句
                 lamp_text += NIGHT  # 第 1 集 c14：正廳的場景圖是白天畫的，門外亮得像白天（2026-11-07）
             tags = ", ".join(f"<Picture {i}>" for i in range(1, len(images))) + (f" and <Picture {len(images)}>" if len(images) > 1 else "<Picture 1>")
-            body = (f"For the target video, {tags} are referenced throughout.\n\n"
-                    f"integrated_multimodal_description: [Shot 1] Live-action. " + "; ".join(anchors) + ". "
-                    f"Initial composition: {voiced(e['prompt'], s['dialogue'], e.get('addressee'))[0]}{lamp_text} {FACES_RULE if e.get('characters') else ''} "
+            # 沒有參考圖的鏡（沒有臉、不附場景圖的插鏡）不寫「<Picture 1> are referenced throughout」：那張圖不存在（第 5 集審稿）
+            body = ((f"For the target video, {tags} are referenced throughout.\n\n" if images else "")
+                    + "integrated_multimodal_description: [Shot 1] Live-action. " + ("; ".join(anchors) + ". " if anchors else "")
+                    + f"Initial composition: {voiced(e['prompt'], s['dialogue'], e.get('addressee'))[0]}{lamp_text} {FACES_RULE if e.get('characters') else ''} "
                     f"The camera: {e['camera']}. {TAIL}\noverall_soundscape: N/A\nnon_diegetic_music: N/A\n")
             pf = work / "prompts" / f"{s['id']}.txt"
             pf.write_text(body, encoding="utf-8")
