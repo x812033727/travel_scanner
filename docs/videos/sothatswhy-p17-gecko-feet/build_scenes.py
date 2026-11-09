@@ -38,6 +38,7 @@ DAY = "bright daylight"
 # A Taiwanese home in the morning: the gecko is resting, the room is full of sunlight (README §3.1: daylight, never lamps).
 HOME = "in a bright sunny Taiwanese apartment living room with a plain white ceiling"
 KITCHEN = "in a bright sunny home kitchen"
+FOOT = "one big pale tan cartoon gecko foot drawn alone and filling the frame, four wide rounded toes"
 GECKO = "a cute small pale tan cartoon gecko with big round dark eyes, a long tail and wide rounded toe tips"
 TOKAY = "a big chubby blue-grey cartoon gecko with orange spots, big round golden eyes and wide rounded toe tips"
 # One drawing language for the whole episode (README §10.5: numbers as feelings, one metaphor throughout):
@@ -69,7 +70,13 @@ CHIEFFIX_TAIL = ', exactly matching her reference sheet: slim young woman, gloss
 # Lines added after a visual review (P08: photo-real, off-model, marks). Empty until this episode's keyframes are drawn.
 FLAT = ", simple hand-drawn flat 2D children's cartoon illustration with clean ink outlines and flat colours"
 HOOD = ", hood down, short black bob hanging free"
-EXTRA = {'kid-ceiling': ', hood folded down, bare black bob uncovered, flat cartoon background',
+EXTRA = {'outro-wave': ', glossy jet-black hair, low ponytail, chibi proportions',
+    'chief-padless': ', glossy jet-black hair, low ponytail, round black glasses',
+    'chief-tape': ', glossy jet-black hair, low ponytail',
+    'kid-one-toe': ', hood folded down, loose chin-length black bob, navy raincoat',
+    'kid-how-many-tips-q': ', hood folded down, loose chin-length bob',
+    'kid-mean-q': ', hood folded down, loose chin-length bob',
+    'kid-ceiling': ', hood folded down, bare black bob uncovered, flat cartoon background',
     'kid-gland-q': ', hood folded down, bare black bob uncovered',
     'kid-dust-q': ', flat 2D cartoon for children with clean ink outlines and flat colours, hood folded down, bare black bob uncovered',
     'kid-slip': ', loose chin-length bob, smooth round back of head, hood folded down, bare black bob uncovered',
@@ -167,7 +174,7 @@ chief("chief-humid", C("holding her palm out flat in soft morning sunlight with 
       c("不過也有研究發現，空氣裡的濕氣，"), c("還是會幫上一點忙。"))
 kid("kid-suction-guess", K("pressing a round plastic suction-cup hook onto a bathroom tile with a hopeful grin", close=True),
     k("那是不是吸盤？", "再猜"), k("像浴室的掛鉤那樣？", "句尾上揚", "S:suction"))
-scene("suction-hook", "Close-up of a round clear plastic suction-cup hook stuck on a smooth white bathroom tile, beside a small cartoon gecko foot with wide rounded toe tips on the same tile, " + DAY,
+scene("suction-hook", "Close-up of a round clear plastic suction-cup hook stuck on a smooth white bathroom tile, and beside it a small pale tan cartoon gecko foot with four short rounded toes resting on the same tile, soft simple shapes, " + DAY,
       c("也不是。研究的人說，壁虎黏東西，沒有用吸盤，", None, "P:suction"), c("也沒有用膠。", None, "P:glue"))
 chief("chief-honest", C("holding one hand on her chest with an honest serious smile", close=True),
       c("不過有一件小事要老實說："), c("有研究在牠走過的腳印裡，找到非常薄的一層油油的東西。"))
@@ -195,7 +202,7 @@ chief("chief-later", C("holding up one finger with a patient smile", close=True)
       c("先記住這個問題，最後我們回來看。"), c("現在，我們把大守宮的腳畫大來看。"))
 scene("toe-flaps", "Close-up of a single wide flat rounded cartoon gecko toe pad seen from directly underneath, shaped like a flat spoon, its underside crossed by six to eight parallel curved ridges like a neat stack of folded blankets, plain pale cream background, simple flat 2D diagram with ink outlines",
       c("牠的腳趾底下，有一排一排的皮，"), c("像疊起來的小毯子。"))
-scene("flap-bristles", "Close-up of " + BRISTLES + " growing from one soft pale flap of a gecko toe, plain pale cream background",
+scene("flap-bristles", "Simple flat 2D cartoon diagram on a plain pale cream background: one thick dark brown strand of human hair drawn large across the frame, and right beside it a much thinner pale cream gecko bristle, about one tenth as thick, both side by side and parallel",
       c("每一排上面，長滿很細很細的毛，"), c("一根大約只有你頭髮的十分之一粗。"))
 kid("kid-how-many-q", K("raising one hand beside her cheek pinching a single strand of her own bob hair, wide eyes"),
     k("比頭髮還細！", "驚奇"), k("那有幾根？", "句尾上揚"))
@@ -259,7 +266,7 @@ kid("kid-pull-guess", K("crouching and gripping an imaginary rope with both hand
     k("是不是用力一拔？", "很有把握的錯猜", "S:pull"), chapter="腳趾一捲就放手")
 chief("chief-angle", C("tilting one flat hand slowly upward with a playful smile", close=True),
       c("牠不用硬拔。", "接住上一句"), c("還記得我說的那個小動作嗎？", "點名回呼"))
-critter("toe-curl", "Close-up of " + GECKO + " on a sunny white wall, one foot with its toes curling up and back from the tips like little rolled ribbons, the rest of the foot still flat, " + DAY,
+critter("toe-curl", "Side-view close-up of " + FOOT + " on a sunny white wall, every toe rolled up and back from its tip like a curled party blower, the heel of the foot still flat on the wall, simple flat 2D cartoon diagram, " + DAY,
         c("你仔細看牠抬腳，腳趾會從最前面，"), c("往上、往後捲起來。", None, "P:move"))
 kid("kid-tape-q", K("peeling the edge of " + STICKER + " off the back of her hand with a curious face", close=True),
     k("像撕下一張貼紙，", "推理"), k("從邊邊開始掀？", "句尾上揚", "S:tape"))
@@ -267,11 +274,11 @@ chief("chief-tape", C("nodding slowly with one finger raised", close=True),
       c("看起來很像。不過研究的人發現，"), c("真正讓牠放手的開關，藏在每一根小毛身上。"))
 scene("bristle-lean", "Close-up of one very fine pale cream bristle drawn large, leaning over at a low slant against a smooth surface, its tiny flat spoon-shaped tips lying flat, " + SPARK + ", plain pale cream background, flat 2D cartoon drawing",
       c("小毛黏著的時候，是斜斜躺下來的。"))
-scene("bristle-up", "Close-up of one very fine pale cream bristle drawn large, standing up tall and steep from a smooth surface, its tiny flat spoon-shaped tips lifted clear and free, plain pale cream background, flat 2D cartoon drawing",
+scene("bristle-up", "Simple flat 2D cartoon diagram on a plain pale cream background: one long thin pale cream stalk with a tiny flat spoon at its end, tipped up at a steep angle off a smooth grey floor line, the spoon lifted clear of the floor",
       c("只要小毛跟牆的角度，翻到大約三十度以上，", "數字放慢"), c("就會自己鬆開。", None, "P:tape"))
 kid("kid-itself-q", K("opening both hands wide with a surprised face", close=True),
     k("自己鬆開？", "驚訝"), k("不用力氣嗎？", "句尾上揚"))
-scene("rows-release", "Close-up of a cartoon gecko toe drawn large curling up from its tip, the soft rows of pale flaps lifting off a smooth wall one after another like a zip opening, " + DAY,
+scene("rows-release", "Close-up of a long pale yellow sticker being peeled back from one end off a smooth white wall, curling up and back in a smooth roll while the rest of it stays flat, simple flat 2D cartoon drawing, " + DAY,
       c("幾乎不用。只要腳趾往上一捲，", None, "P:pull"), c("一排一排的小毛就跟著翻起來，照順序放手。"))
 critter("quick-step", "Medium shot of " + GECKO + " scurrying quickly across a sunny white wall, little speed streaks behind its feet, " + DAY,
         c("研究的人量過，壁虎放開一隻腳，"), c("大約只要百分之一秒多一點。", "數字放慢", "P:letgo"))
@@ -287,7 +294,7 @@ scene("bristles-lay", "Close-up of " + BRISTLES + " all leaning over together an
       c("這一拖，小毛就斜斜躺下、貼平，"), c("拖著的力氣越大，黏得越牢。"))
 kid("kid-tap-q", K("tapping one fingertip lightly on a table with a curious frown", close=True, where=KITCHEN),
     k("只拍上去，", "試探"), k("不拖呢？", "句尾上揚"))
-scene("bristles-stand", "Close-up of " + BRISTLES + " standing upright and loose above a smooth surface, the tiny tips barely touching it, plain pale cream background",
+scene("bristles-stand", "Simple flat 2D cartoon diagram on a plain pale cream background: a neat row of thin pale cream stalks with tiny flat spoons at their ends, all standing straight up, their spoons only just touching a smooth grey floor line",
       c("那就黏得很少。小毛不拖一下的時候，是不太黏的，"), c("要拖一下，才像打開開關。", None, "P:grip"))
 kid("kid-ceiling-q", K("looking straight up at the ceiling with a worried frown", where=HOME),
     k("可是倒掛的時候，", "擔心"), k("身體一直往下墜，", "擔心"), k("不會把腳撕下來嗎？", "句尾上揚", "S:ceiling"))
@@ -375,7 +382,7 @@ critter("little-gecko-back", "Medium shot of a slim little pale grey cartoon gec
         c("還記得那隻一秒貼放十五次的小壁虎嗎？", "點名回呼"), c("牠每一步都在放手。"))
 chief("chief-watch", C("crouching a little and pointing up at a sunny window frame, whispering with a gentle smile"),
       c("下次你在家看到壁虎，", "轉向觀眾，輕聲"), c("看就好，別去抓牠，牠會被嚇到。"))
-scene("toe-curl-end", "Close-up of one small cartoon gecko foot on a sunny white wall, its toes just starting to curl up from the tips, " + DAY,
+scene("toe-curl-end", "Close-up from below of " + FOOT + " on a sunny white wall, the tips of all four toes just starting to roll up and back, simple flat 2D cartoon diagram, " + DAY,
       c("你只要盯著牠抬腳的那一下，"), c("看看腳趾，是不是先往上捲。", "點名回呼"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Head-and-shoulders close-up of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
