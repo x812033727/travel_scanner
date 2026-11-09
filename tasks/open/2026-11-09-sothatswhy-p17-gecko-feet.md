@@ -30,7 +30,7 @@ scope:
 - [x] 插圖畫完、另一個代理逐張放大檢查、分鏡評分 ≥ 49／70，核准分鏡。
 - [x] 配樂（`sothatswhy-bed-r2.m4a`）→ 合成 → `qa` 11 項 → 成片送站主（`final`）。
 - [ ] 上架確認、八語翻譯與配音、八語縮圖、語言包，站主核准。
-- [ ] 每過一關備份到 `transfer/sothatswhy-p17-gecko-feet`（`docs/videos/explainer-series/backup/tobranch.sh`）。
+- [x] 每過一關備份到 `transfer/sothatswhy-p17-gecko-feet`（`docs/videos/explainer-series/backup/tobranch.sh`）。
 
 ## How to verify
 
@@ -59,3 +59,10 @@ scope:
   已備份到 `transfer/sothatswhy-p17-gecko-feet`（20799d61，verify 0）。
 - 2026-11-09：合成 24271 格（約 13:29），-14 LUFS；`qa` 11／11（警告：縮圖大字與標題前 10 字重複，縮圖在關鍵影格前定案，未改）。
   先備份成片再 `review-push --gate final`，已送 /admin/videos 等站主核准；核准後 `review-pull` → `package` → `--gate publish`。
+- 2026-11-09：站主核准成片與上架包。八語由四個代理翻譯（對齊 P07／P08），`i18n-merge` 全過；配音 ja 縮 4 句、id 縮片尾口頭禪；
+  es／pt／th 中途 ECONNRESET，`speech-journal.mjs forget` 後重跑。八語縮圖逐張看過（en/ja/pt 原本被紅印章蓋住，改短）。
+  th 說明加上 17 筆來源超過 5000 bytes，濃縮中段。
+  **坑：非 worker 做的集，`languages.json` 不會自動從站上抄下來**，`package` 只打包 en/ja/ko；
+  用 `/api/video/reviews/<slug>` 的 `locales` 照 `writeLanguages()` 寫進工作目錄後重打包，才有 8 軌。
+  備份 `transfer/sothatswhy-p17-gecko-feet` 206b42b5（verify 0）後送語言包，`review-files --dry-run --gate languages`：dub／縮圖／字幕／說明各 8。
+  剩：站主核准語言、上傳 YouTube、記下影片網址後 `npm run tasks -- done`。
