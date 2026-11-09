@@ -71,16 +71,16 @@ FLAT = ", simple hand-drawn flat 2D children's cartoon illustration with clean i
 HOOD = ", hood down, short black bob hanging free"
 EXTRA = {'kid-ceiling': ', hood folded down, bare black bob uncovered, flat cartoon background',
     'kid-gland-q': ', hood folded down, bare black bob uncovered',
-    'kid-dust-q': ', hood folded down, bare black bob uncovered',
+    'kid-dust-q': ', flat 2D cartoon for children with clean ink outlines and flat colours, hood folded down, bare black bob uncovered',
     'kid-slip': ', loose chin-length bob, smooth round back of head, hood folded down, bare black bob uncovered',
     'kid-real-q': ', hood folded down, bare black bob uncovered, standing upright, navy sleeves, eyes looking the same way',
     'kid-oily-q': ', loose chin-length bob, smooth round back of head, both eyes the same size looking the same way',
-    'kid-how-many-q': ', plain navy raincoat, pinching one strand of her own hair, loose chin-length bob, smooth round back of head',
+    'kid-how-many-q': ', flat 2D cartoon for children with clean ink outlines and flat colours, simple dot eyes, plain cream background',
     'kid-pull-guess': ', loose chin-length bob, hood folded down, empty hands',
     'kid-suction-guess': ', loose chin-length bob, smooth round back of head, hood folded down, bare black bob uncovered',
-    'kid-dusty-sticker': ', plain navy raincoat, loose chin-length bob, smooth round back of head, holding one crumpled plain yellow sticker',
-    'kid-hairy': ', hood folded down, bare black bob uncovered, smooth raincoat hood',
-    'kid-opposite': ', flat cartoon kitchen with ink outlines and flat colour fills in sharp focus, one palm facing the camera and the other palm facing herself',
+    'kid-dusty-sticker': ', flat 2D cartoon for children with clean ink outlines and flat colours, hood folded down, bare black bob uncovered',
+    'kid-hairy': ', flat 2D cartoon for children with clean ink outlines and flat colours, hood folded down, bare black bob uncovered',
+    'kid-opposite': ', flat 2D cartoon for children with clean ink outlines and flat colours, loose bob',
     'chief-sticker': ', glossy jet-black hair, round black glasses frames, the pencil only behind her ear',
     'chief-pull': ', both eyes identical dark brown looking the same way, clear lenses, one pebble pinched in each hand',
     'chief-slip-bridge': ', a plain clean background, flat 2D cel-shaded cartoon with ink outlines, holding the pan by its handle',
@@ -197,11 +197,11 @@ scene("toe-flaps", "Close-up of a single wide flat rounded cartoon gecko toe pad
       c("牠的腳趾底下，有一排一排的皮，"), c("像疊起來的小毯子。"))
 scene("flap-bristles", "Close-up of " + BRISTLES + " growing from one soft pale flap of a gecko toe, plain pale cream background",
       c("每一排上面，長滿很細很細的毛，"), c("一根大約只有你頭髮的十分之一粗。"))
-kid("kid-how-many-q", K("holding up one strand of her own hair between two fingers with wide eyes", close=True),
+kid("kid-how-many-q", K("raising one hand beside her cheek pinching a single strand of her own bob hair, wide eyes"),
     k("比頭髮還細！", "驚奇"), k("那有幾根？", "句尾上揚"))
 scene("bristle-field", "Wide view of a huge soft field of very fine pale cream bristles like a thick meadow of tiny grass, drawn large on a gecko toe pad, soft sunlight, flat 2D cartoon drawing",
       c("一隻腳上，大約有五十萬根。", "數字放慢"))
-kid("kid-hairy", K("pinching a lock of her own black bob hair between two fingers with a doubtful frown", close=True),
+kid("kid-hairy", K("pinching one strand of her own black bob beside her cheek with a doubtful frown"),
     k("可是毛毛又不黏，", "不服氣"), k("我的頭髮就不黏啊。"))
 scene("bristle-tips", "Close-up of a few very fine pale cream bristles drawn large, " + TIPS + ", plain pale cream background, flat 2D cartoon drawing",
       c("壁虎的毛不一樣。每一根的尖端，又分成好幾百個更小的尖，"))
@@ -301,7 +301,7 @@ kid("kid-remember-dust", K("nodding fast with a bright remembering face, one fin
     k("記得！", "想起來"), k("你說會沾成一團！"))
 scene("dust-foot", "Close-up of one cartoon gecko foot with wide rounded toe tips covered in tiny round grey specks of dust, resting on a clean clear glass pane, " + DAY,
       c("研究的人把很細的小粉末，撒在大守宮的腳趾上，"), c("再按在乾淨的玻璃上踩。"))
-kid("kid-dust-q", K("wiping her dusty hands on a cloth with a worried face", close=True),
+kid("kid-dust-q", K("wiping her hands on a small white cloth in front of her chest with a worried face"),
     k("那牠的腳，", "擔心"), k("就不黏了吧？", "句尾上揚"))
 scene("clean-steps", "Side-view close-up of a simple rounded gecko toe pad shaped like a smooth pale pebble with soft ridges underneath, pressing down on a clean clear glass pane, a few tiny grey specks of dust left on the glass beside it, a plain object drawing, " + DAY,
       c("一開始是不太黏。可是腳趾才踩了幾下，"), c("就差不多又能撐住自己了。"))
@@ -313,7 +313,7 @@ critter("flick-dust", "Medium shot of " + TOKAY + " walking across a clean clear
         c("另一個研究讓壁虎自己在玻璃上走，"), c("比較腳趾能捲、跟不讓牠捲的時候，"))
 chief("chief-eighty", C("holding up one hand with fingers spread and a bright smile", close=True),
       c("能捲的，灰塵掉得快一倍，"), c("大約走四步，就回到原本抓力的八成左右。", None, "P:dirty"))
-kid("kid-dusty-sticker", K("holding up a dusty crumpled yellow sticker with a sad pout", close=True),
+kid("kid-dusty-sticker", K("pinching a small crumpled yellow sticker between finger and thumb with a sad pout"),
     k("一般貼紙沾了灰就不太黏，", "比較"), k("牠比貼紙還厲害？", "句尾上揚"))
 chief("chief-beat", C("giving a small proud nod with a warm smile", close=True),
       c("對，這是牠贏過貼紙的地方。"))
@@ -341,7 +341,7 @@ chief("chief-unknown", C("shrugging gently with open palms and an honest smile")
       c("研究的人說，跟水和表面怎麼互相拉有關，"), c("算得出大方向，但還沒有完全弄懂。"))
 critter("glass-wet", "Close-up of " + GECKO + " on a clear glass pane covered in shallow water, its toes splayed and slipping a little, " + DAY,
         c("換成普通玻璃，結果就倒過來。"), c("玻璃一泡水，抓力少了一大半。"))
-kid("kid-opposite", K("holding her two hands up flipped opposite ways with a surprised grin", close=True, where=KITCHEN),
+kid("kid-opposite", K("holding her two hands up flipped opposite ways with a surprised grin", where=KITCHEN),
     k("跟鐵氟龍剛好相反！", "驚訝"))
 kid("kid-rain-q", K("holding an open umbrella under falling rain on a covered balcony, curious face", close=True),
     k("所以下雨天，", "推理"), k("牠會比較難爬？", "句尾上揚"))
