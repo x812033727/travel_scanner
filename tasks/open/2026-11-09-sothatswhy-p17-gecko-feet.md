@@ -27,7 +27,7 @@ scope:
 
 - [x] 稿子：獨立查核 `verify-1.md`、盲評 14 題全過、`lint` 0 錯誤，Claude 依站主授權核准。
 - [x] 旁白兩個聲音、`check-audio`，核准；角色設定圖沿用系列。
-- [ ] 插圖畫完、另一個代理逐張放大檢查、分鏡評分 ≥ 49／70，核准分鏡。
+- [x] 插圖畫完、另一個代理逐張放大檢查、分鏡評分 ≥ 49／70，核准分鏡。
 - [ ] 配樂（`sothatswhy-bed-r2.m4a`）→ 合成 → `qa` 11 項 → 成片送站主（`final`）。
 - [ ] 上架確認、八語翻譯與配音、八語縮圖、語言包，站主核准。
 - [ ] 每過一關備份到 `transfer/sothatswhy-p17-gecko-feet`（`docs/videos/explainer-series/backup/tobranch.sh`）。
@@ -53,3 +53,7 @@ scope:
   改提示詞重畫後 15 景過；剩下 5 景都是小問，第三輪把特寫改半身（特寫一直出照片風）後 4 景過，
   `kid-dust-q` 照 #2048「三次不過換同章已過的圖」改用 `kid-tap-q` 的圖，旁白不變。127 張用 `repin.py` 固定，`pins.json` 放在工作目錄 `keyframes/`。
   教訓：`build_scenes.py` 禁用 no／not，修正要正面寫；小問的提示詞要明寫 hood folded down、bare black bob uncovered。
+- 分鏡評分（兩個獨立代理）：50／70，補畫後 51／70，過門檻；2026-11-09 依站主授權核准分鏡。
+  第四輪把腳趾捲起、小毛角度、頭髮粗細改成圖解重畫，結果長出臉和假字，退回原提示詞；只留下撕貼紙與四張重抽的角色。
+  **坑：`keyframes --shot` 重畫會用同一個檔名蓋掉先前挑中的 take**，挑中的圖要先備份或另存。4 張舊圖靠伺服器同提示詞重現救回（byte 相同），4 張用放大檢查留下的副本補回（`*-pick.jpg`）。
+  已備份到 `transfer/sothatswhy-p17-gecko-feet`（20799d61，verify 0）。
