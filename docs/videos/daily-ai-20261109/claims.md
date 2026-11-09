@@ -55,8 +55,8 @@ c27｜法律全名 Ensuring Likeness Voice and Image Security Act，縮寫是 EL
 c28｜Eminem 出版商一案的法律依據，報導未說明（SUNO 原文）｜SUNO；SUV｜2026-11-08｜mc15, mc16, mc62, so02；卡片 mc-em
 c29｜訴狀：「Suno's ravenous race to the bottom aims to make human creativity obsolete, coldly replicating without a license in seconds what takes years to learn, struggle with, maintain, and endlessly attempt to make better and perfect.」旁白 mc20「人要花好幾年學習、磨練的東西，Suno 沒有授權，幾秒鐘就複製出來」；mc51「照訴狀的說法，Suno 想讓人類的創意變得過時」；卡片 mc-quote2 引中段、mc-lose 引「human creativity obsolete」（指控）｜SUNO；SUV｜2026-11-08｜mc19, mc20, mc51；卡片 mc-quote2、mc-lose
 c30｜Suno 目前還面對 Sony、UMG、Isbell、Reservoir Media 等多起訴訟（SUV「the pile of lawsuits Suno is currently facing from Sony, UMG, Isbell, Reservoir Media, and more」；旁白「一疊官司」＝pile）；「大型音樂公司」是對 Sony、UMG 的解釋（來源只寫名字）｜SUNO；SUV｜2026-11-08｜mc24, mc25；卡片 mc-pile
-c31｜這兩案與 Jason Isbell 等人 9 月提起的訴訟很像（「closely mirror」）；該案指稱 Suno 做出模仿原告的東西，但沒有直接主張著作權侵權（旁白「那一案說 Suno 模仿了原告」＝「claimed Suno created imitations of the plaintiffs」）。「歌手 Jason Isbell」：Isbell 是美國創作歌手，解釋。卡片 mc-isb「Imitation, / not copyright」→「Imitation, / not directly copyright」（原文「did not claim copyright infringement directly」，查核第 1 輪）｜SUNO；SUV｜2026-11-08｜mc28, mc29；卡片 mc-isb
-c32｜「著作權，就是創作的人對自己作品的權利，像是誰可以拿去用、拿去賣」：解釋，不是法律定義；Kai mc31「所以那一案告的不是作品，是模仿了人？」只講 Isbell 那一案，跟 c31 一致｜—｜—｜mc30, mc31
+c31｜這兩案與 Jason Isbell 等人 9 月提起的訴訟很像（「closely mirror」）；該案指稱 Suno 做出模仿原告的東西，但沒有直接主張著作權侵權（旁白「那一案說 Suno 模仿了原告」＝「claimed Suno created imitations of the plaintiffs」）。「歌手 Jason Isbell」：Isbell 是美國創作歌手，解釋。卡片 mc-isb「Imitation, / not copyright」→「Imitation, / not directly copyright」（原文「did not claim copyright infringement directly」，查核第 1 輪）｜SUNO；SUV｜2026-11-08｜mc28, mc29；卡片 mc-isb（盲聽修改第 2 輪：Isbell 案與著作權的解釋整段刪掉，mc28–mc31 已不在旁白；聽眾說三個案子混在一起，主線不需要它）
+c32｜「著作權，就是創作的人對自己作品的權利，像是誰可以拿去用、拿去賣」：解釋，不是法律定義；Kai mc31「所以那一案告的不是作品，是模仿了人？」只講 Isbell 那一案，跟 c31 一致｜—｜—｜mc30, mc31（盲聽修改第 2 輪：Isbell 案與著作權的解釋整段刪掉，mc28–mc31 已不在旁白；聽眾說三個案子混在一起，主線不需要它）
 c33｜mc32「照報導的寫法，這兩案告的重點，是 Suno 做出來的東西在模仿誰」＝c22（「generates music and lyrics that mimic those artists」）；mc33「學不是唯一的重點」是節目整理，故意不說這兩案沒告著作權（來源沒說）。Presley 訴狀也說 Suno 把藝人的身分「encoded itself」（c39，跟學有關），所以卡片 mc-turn「Not what it learned.」→「Not just learning.」（查核第 1 輪），跟 mc33 的「不是唯一的重點」一致｜SUNO；SUV｜2026-11-08｜mc32, mc33；卡片 mc-turn
 c34｜「這要法院決定，現在都還只是原告的指控」：SUNO 的閱讀提醒「訴狀中的內容是原告一方的指控」；沒有判決｜SUNO｜2026-11-08｜mc35, mc66；卡片 mc-judge、mc-view2
 c35｜Suno 發言人 Cat McCormack 對 The Verge 說，Suno 的目的是協助人們創作新的原創音樂，不是利用任何人的姓名或肖像（「not to trade on anyone's name or likeness」）；旁白不唸發言人的名字｜SUNO；SUV｜2026-11-08｜mc36, mc37；卡片 mc-suno
@@ -93,6 +93,26 @@ c59｜完整整理在 Mokaair，說明欄列四篇站上文章（四個網址 20
 c60｜outro 答案 ou01「原告說，AI 跟人學歌，差在授權和速度。」（查核第 1 輪為了把 outro 壓到 12.5 秒以內，拿掉前面的問句，問題改寫進答案句裡）：依 c29（without a license；in seconds what takes years）｜SUNO；SUV｜2026-11-08｜ou01
 c61｜縮圖「Ask **first**?」「Elvis, Eminem rights holders vs. Suno」；標題「Tech Signal 11/9｜Elvis, Eminem rights holders vs. Suno」：依 c21 與 Sola 的看法（c44）。原告是 Elvis 音樂的權利人與 Eminem 唱片的出版商，不是本人（SUV 標題「Elvis and Eminem rights holders are suing Suno」）；查核第 1 輪把標題、縮圖副標與卡片 su-lead 的「Elvis, Eminem vs. Suno」都加上 rights holders｜SUNO；SUV｜2026-11-08｜thumbnail, youtube.title
 
+## 盲聽修改第 2 輪（第一次聽的讀者 6/10；保留查核第 1 輪的全部改動）
+
+只列本輪改到、有事實主張的句子；新的串場、意見與笑點列在〈笑點〉最後。沒有新增任何來源外的事實。
+
+c62｜開場鉤子 hk01「今天的主菜是一場官司，兩組握有音樂權利的原告，告了 AI 音樂公司 Suno」＝c18、c21（「權利人」這個詞先不用，留到 su03 在同一句裡解釋）；Kai 的問題 su05 從 Monologue 尾巴搬到開場（mo-q），su06「這題，主菜時吵給你聽」跟著搬，hi03 改「先補上週五到週末的另外兩則新聞」｜SUNO；SUV｜2026-11-08｜hk01, su05, su06, hi03；卡片 mo-hi「Music rights holders vs. Suno」
+c63｜su01「第三則是今天的主菜：據 The Verge 週日 11 月 8 日的報導，Suno 又被告了」：「又被告」＝「yet another pair of lawsuits」；11/8 是報導日（照查核第 1 輪 #17）。su02 刪掉（兩組原告移到主菜第一句 su03）｜SUNO；SUV｜2026-11-08｜su01
+c64｜主菜前兩句：su03「告 Suno 的，一組是握有貓王 Elvis Presley 音樂權利的權利人，一組是 Eminem 幾張招牌唱片的出版商」（c21；「握有……音樂權利的」就是權利人的解釋，照 SUNO「擁有其音樂相關權利的一方」）；su04 不變（c22）。章節「Main Course」移到 su-who；mc04 改「所以出面告人的，不一定是歌手本人」（解釋）；場景 mc-scene 移到這兩句之後｜SUNO；SUV｜2026-11-08｜su03, su04, mc04
+c65｜mc03 提示詞的解釋改「使用者輸入給 AI 的那段文字，叫提示詞」，移到 mc-guard、緊接在用到它的 mc39 之前（mc-terms 場景刪掉；mc-guard 的第一個畫面狀態變成 mc38＋mc03，keys 數量不變）｜SUNO｜2026-11-08｜mc03
+c66｜mc11「這部法律的英文全名，意思是確保肖像、聲音與影像安全，縮寫起來就是 ELVIS」：SUV 寫了全名「Ensuring Likeness Voice and Image Security (ELVIS) Act」，旁白念意思不念英文（確保＝Ensuring、肖像＝Likeness、聲音＝Voice、影像＝Image、安全＝Security）｜SUNO；SUV｜2026-11-08｜mc11
+c67｜mc43「好，這點算你一分，至少 Suno 說得出它怎麼擋」：Kai 的論點是 Suno 有防護，給他的分要是這一點；依 c36（發言人描述了兩種防護），不說防護有效（mc42 剛說沒人測過）｜SUV｜2026-11-08｜mc43；卡片 mc-kai2b「At least it says how it blocks」
+c68｜mc72「好，誰對誰錯先吵到這裡，接下來看錢」：串場。mc51 拆開：Kai mc73「那這樣下來，誰會吃虧？」，Sola mc51「訴狀的原話是，Suno 想讓人類的創意變得過時」（c29「aims to make human creativity obsolete」，明說是訴狀原話）；mc52／mc53 移到 mc-lose2（kicker 改「Kai's side」），mc54 自己一張 mc-lose3｜SUV｜2026-11-08｜mc72, mc73, mc51
+c69｜mc57 改由 Kai 說「而且 Presley 那一案用的，是美國田納西州的法律」：Sola 在 mc09 已經講過（c25）｜SUNO；SUV｜2026-11-08｜mc57
+c70｜ny08「一種叫 trifle 的分層甜點」：VNY 原文就是 trifle（「in this sweet dessert trifle」），不是提拉米蘇；英文照念（字典加 trifle: null）｜NYT；VNY｜2026-11-08｜ny08
+c71｜ny17 改「同意一半，記者也說用量和時間，還是要自己跟原食譜對一次」（c17）；ny16 改成 Kai 的意見「我覺得它比一般聊天 AI 好用，至少不會把原食譜蓋掉」：「不會把原食譜蓋掉」＝c10，Sola 在 ny04 已經講過；卡片 ny-check kicker 改「Kai's verdict」、text「Useful, but check it」（副廚的評語不再出現在旁白與卡片）｜NYT；VNY｜2026-11-08｜ny16, ny17
+c72｜af01「主角是一套叫 Artex 的 AI 工具，它會自己去找電腦系統的弱點」＝c46，Artex 是什麼移到第一句；af02「研究人員發現好幾百套 Artex，就這樣露在公開網路上」＝c45；af03 改「Artex 是開源的工具」（c46）｜ART；TC6｜2026-11-08｜af01, af02, af03
+c73｜af08「資安公司 Censys 找到超過 800 套 Artex，從網路就連得進去，登入還不用密碼」＝c49（原來 af09「而且登入還不用密碼」併進來；af09 改成 Kai 的反應）｜ART；TC6｜2026-11-08｜af08
+c74｜af15 拆成兩句：af15「TechCrunch 還說，連攻擊用的工具，也一起露出來了」、af31「其中一種，是藏在受害者網路裡的惡意程式」（c51，implants＝hidden malicious software；不講怎麼用）｜ART；TC6｜2026-11-08｜af15, af31
+c75｜af19「部分原因是，這個駭客把放 Artex 的資料夾，設成誰都能打開」：c52 的「open directory hosting the system」，白話是一個網路上誰都能瀏覽的資料夾，裡面放著那套 Artex｜ART；TC6｜2026-11-08｜af19
+c76｜ct12「Cybertruck 的銷量，大約只有產線規劃的十分之一」（c8；拿掉「賣不好」一詞，意思不變）｜TSLA；DC7｜2026-11-08｜ct12
+
 ## 笑點（無事實主張）
 
 給查核代理做笑點檢查：每個笑點前一行的事實、笑點本身、為什麼不算新的事實。沒有新的數字、沒有雙關與諧音、沒有替真人編的話、不打一般人。
@@ -122,6 +142,21 @@ c61｜縮圖「Ask **first**?」「Elvis, Eminem rights holders vs. Suno」；�
 - so03（Sola）「今天最有原則的 AI，是那個不肯把牛絞肉放進甜點的食譜助理。」：回扣 ny09（c13）。so04（Kai）「連食譜 AI 都懂得說不，我對 AI 又多了一點信心。」：反應。
 - su06（Sola）「這題，主菜時我們吵給你聽。」：串場（跟 11/6 同一句，固定說法）。
 
+盲聽修改第 2 輪（都沒有新的事實或數字）：
+- ct07（Kai）改「對車主來說，這總比一句『沒了』好。」：Kai 的意見，接 c4，不說售後服務怎樣（ct05 已說報導沒提）。
+- ct10（Sola）改「換句話說，Cybertruck 被裁員了，接替它的同事，連方向盤都沒有。」：「裁員」「同事」一聽就是擬人的比喻；事實是 c6、c7。
+- ct13（Kai）改「十分之一？那條產線要是員工，早就在偷投履歷了。」：接同一組擬人比喻，「要是」標明是假設；不暗示產線停工，沒有新數字。
+- ct14（Kai）改「老規矩，先問我的老問題：所以我要不要換手機？」：先交代這是 Kai 的固定梗（11/6 起），af25「老問題又來了」回扣；af26 答案不變。
+- ny18（Sola）新增「而且它守住的戰場，是甜點。」：接 ny10，冷面補刀，沒有事實主張。
+- mc23（Kai）改「可是模仿秀也是靠模仿別人賺錢，我不覺得差那麼多。」：Kai 不讓步，是意見；mc70（Sola）新增「差在模仿秀的人會累。」：人與 AI 的對比，沒有數字、不是法律結論。卡片 mc-joke1b 改「Kai holds out / Impersonators get paid too」。
+- mc44（Kai）改「終於有一分是我的！」（Sola 不再先拿一分）；mc71（Sola）新增「記好，今天可能就這一分。」：冷面，沒有事實主張。
+- mc69（Sola）改「我覺得那就少學一點吧，人類歌手也沒聽完全世界的唱片才出道。」：標明是 Sola 的看法。
+- mc67（Kai）改「我還是站 AI 這邊，學本身沒有錯；要不要先問，等法院說。」：Kai 到最後都沒改立場；卡片 mc-view2 kicker「Kai's last word」。
+- su07（Kai）新增「好，AI 跟人學唱歌差在哪，現在可以吵了。」：串場，把開場的問題重說一次，不往回指。
+- af09（Kai）改「連密碼都不用？這是駭客工具，還是公共圖書館？」：誇張的反應，接 af08（c49）。
+- af32（Kai）新增「我覺得研究人員太客氣了，工具放在網上還不鎖，本身就是問題。」：Kai 的意見；研究人員的原話（c50）沒有被改寫。
+- af20（Sola）改「打個比方，就像小偷把作案行程表貼上網，還設成公開。」：開頭標明是比方。「小偷」指 c52 那一個被歸因的駭客，不是所有 Artex 的使用者。
+
 ## 我懷疑但沒動的事
 
 - 「2027 年年中左右」：DC7 寫「next year」、發文 2026-11-06，換算成 2027；TSLA 標題也寫 2027 年中。
@@ -145,3 +180,4 @@ c61｜縮圖「Ask **first**?」「Elvis, Eminem rights holders vs. Suno」；�
 - 新加的發音字典詞（null）：Act、Artex、Censys、Cooking、CrowdStrike、Cybercab、Cybertruck、ELVIS、Elvis、Eminem、Fail、Isbell、Jason、NYT、Presley、Sony、Suno、UMG。
 - 查核第 1 輪（2026-11-08，`verify-1.md`）：改了 c9、c11、c15、c16、c17、c18、c26、c27、c31、c33、c36、c48、c52、c60、c61 與四個笑點（ct06 key、mc14、mc22 卡片、af11）；outro 13.0 → 12.3 秒；`lint` 0 錯誤、3 條警告（同第 1 稿），估 13.6 分鐘、150 句，最長畫面狀態 12.9 秒。
 - 待做（第 1 輪之前寫的）：另派查核代理照 `prompts/verifier-video.md` 逐句對回原始來源並做笑點檢查；盲讀；Whisper 第二意見與試聽。
+- 盲聽修改第 2 輪（2026-11-09，保留查核第 1 輪的全部改動）：77 個場景、154 句（Kai 43 句，Sola 佔 72%，原本約 80%）；`lint` 0 錯誤、同樣 3 條警告；估 14.0 分鐘，最長畫面狀態 13.0 秒（outro），其次 12.9 秒。刪掉 su02、mc28–mc31（Isbell 與著作權）；mc-terms、su-q、mc-isb、mc-isb2 四個場景拿掉，新增 mo-q、mc-lose3、af-open2、af-kai。字典加 trifle（null）。本輪改過的事實句（c62–c76）要再交查核代理對一次。

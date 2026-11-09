@@ -93,7 +93,7 @@
     {
       "setup": "su05",
       "payoff": "ou01",
-      "what": "AI 學唱歌跟人聽唱片學，差在哪"
+      "what": "AI 學唱歌跟人聽唱片學，差在哪（開場問，片尾答）"
     },
     {
       "setup": "ny09",
@@ -103,12 +103,12 @@
     {
       "setup": "ct14",
       "payoff": "af26",
-      "what": "Kai 的固定梗「要不要換手機」，兩次答案不同"
+      "what": "Kai 的固定梗「要不要換手機」，ct14 先交代每則都問，兩次答案不同"
     },
     {
       "setup": "mc05",
       "payoff": "mc67",
-      "what": "Kai 站 AI 這邊，最後改立場一半"
+      "what": "Kai 站 AI 這邊，到最後都沒改"
     }
   ],
   "scenes": [
@@ -139,9 +139,9 @@
       "id": "mo-hi",
       "template": "big",
       "data": {
-        "kicker": "Since Friday",
-        "text": "Friday to Sunday,\n**in one go**",
-        "key": "News from Fri to Sun"
+        "kicker": "Today's main course",
+        "text": "Music rights holders\n**vs. Suno**",
+        "key": "Today: Suno is sued"
       },
       "lines": [
         {
@@ -155,8 +155,34 @@
           "emotion": "輕鬆、帶笑"
         },
         {
+          "id": "hk01",
+          "text": "今天的主菜是一場官司，兩組握有音樂權利的原告，告了 AI 音樂公司 Suno。"
+        }
+      ]
+    },
+    {
+      "id": "mo-q",
+      "template": "big",
+      "data": {
+        "kicker": "Today's question",
+        "text": "AI learns from songs.\n**So do we. Difference?**",
+        "key": "What's the difference?"
+      },
+      "lines": [
+        {
+          "id": "su05",
+          "text": "可是 AI 聽歌學唱，跟我們聽唱片學唱歌，到底差在哪？",
+          "speaker": "kai",
+          "emotion": "替觀眾追問，問句停在半空"
+        },
+        {
+          "id": "su06",
+          "text": "這題，主菜時吵給你聽。",
+          "emotion": "冷淡、慢半拍"
+        },
+        {
           "id": "hi03",
-          "text": "週末過完了，我們一次補上，上週五到這個週末的科技新聞。",
+          "text": "先補上週五到週末的另外兩則新聞。",
           "emotion": "切換段落，輕快"
         }
       ]
@@ -221,9 +247,9 @@
         },
         {
           "id": "ct07",
-          "text": "好痛！",
+          "text": "對車主來說，這總比一句「沒了」好。",
           "speaker": "kai",
-          "emotion": "誇張地摀胸口"
+          "emotion": "半認真地替車主說話"
         }
       ]
     },
@@ -257,7 +283,7 @@
       "lines": [
         {
           "id": "ct10",
-          "text": "所以 Cybertruck 是被一台連方向盤都沒有的車，搶走了工作。",
+          "text": "換句話說，Cybertruck 被裁員了，接替它的同事，連方向盤都沒有。",
           "emotion": "冷淡、慢半拍"
         },
         {
@@ -279,13 +305,13 @@
       "lines": [
         {
           "id": "ct12",
-          "text": "而且據 Decrypt 引述的數字，Cybertruck 一直賣不好，銷量大約只有產線規劃的十分之一。"
+          "text": "而且據 Decrypt 引述的數字，Cybertruck 的銷量，大約只有產線規劃的十分之一。"
         },
         {
           "id": "ct13",
-          "text": "十分之一？那條產線都在放假吧！",
+          "text": "十分之一？那條產線要是員工，早就在偷投履歷了。",
           "speaker": "kai",
-          "emotion": "誇張"
+          "emotion": "誇張，一聽就是玩笑"
         }
       ]
     },
@@ -300,7 +326,7 @@
       "lines": [
         {
           "id": "ct14",
-          "text": "所以我要不要換手機？",
+          "text": "老規矩，先問我的老問題：所以我要不要換手機？",
           "speaker": "kai",
           "emotion": "固定梗，認真地問"
         },
@@ -385,7 +411,7 @@
       "lines": [
         {
           "id": "ny08",
-          "text": "記者還故意問它，能不能把一種分層甜點裡的手指餅乾，換成牛絞肉。"
+          "text": "記者還故意問它，能不能把一種叫 trifle 的分層甜點裡的手指餅乾，換成牛絞肉。"
         },
         {
           "id": "ny09",
@@ -404,7 +430,7 @@
       "lines": [
         {
           "id": "ny10",
-          "text": "這大概是今天整個 AI 產業，守得最成功的一道安全防線。",
+          "text": "這大概是今天 AI 產業守得最成功的一道防線。",
           "emotion": "冷淡、慢半拍"
         },
         {
@@ -412,6 +438,11 @@
           "text": "終於有 AI 敢對人類說不了！",
           "speaker": "kai",
           "emotion": "誇張地感動"
+        },
+        {
+          "id": "ny18",
+          "text": "而且它守住的戰場，是甜點。",
+          "emotion": "冷淡、慢半拍"
         }
       ]
     },
@@ -459,20 +490,20 @@
       "id": "ny-check",
       "template": "big",
       "data": {
-        "kicker": "The Verge's verdict",
-        "text": "A sous-chef,\n**not the chef**",
+        "kicker": "Kai's verdict",
+        "text": "Useful,\n**but check it**",
         "key": "Still check the original"
       },
       "lines": [
         {
           "id": "ny16",
-          "text": "好，所以它是副廚，不是主廚。",
+          "text": "我覺得它比一般聊天 AI 好用，至少不會把原食譜蓋掉。",
           "speaker": "kai",
-          "emotion": "下結論"
+          "emotion": "認真推薦"
         },
         {
           "id": "ny17",
-          "text": "對，記者說用量和時間，還是要自己跟原食譜對一次。"
+          "text": "同意一半，記者也說用量和時間，還是要自己跟原食譜對一次。"
         }
       ]
     },
@@ -487,39 +518,53 @@
       "lines": [
         {
           "id": "su01",
-          "text": "第三則是今天的主菜，來自 The Verge 11 月 8 日週日的報導。"
+          "text": "第三則是今天的主菜：據 The Verge 週日 11 月 8 日的報導，Suno 又被告了。"
         },
         {
-          "id": "su02",
-          "text": "報導說，有兩組原告，分別告了 AI 音樂公司 Suno。"
+          "id": "su07",
+          "text": "好，AI 跟人學唱歌差在哪，現在可以吵了。",
+          "speaker": "kai",
+          "emotion": "摩拳擦掌"
         }
       ]
     },
     {
-      "id": "su-q",
+      "id": "su-who",
       "template": "big",
       "data": {
-        "kicker": "Today's question",
-        "text": "AI learns from songs.\n**So do we. Difference?**",
-        "key": "What's the difference?"
+        "kicker": "The plaintiffs",
+        "text": "Elvis rights holders,\n**Eminem's publisher**",
+        "key": "Two sets of plaintiffs"
       },
       "lines": [
         {
-          "id": "su05",
-          "text": "可是 AI 聽歌學唱，跟我們聽唱片學唱歌，到底差在哪？",
-          "speaker": "kai",
-          "emotion": "替觀眾追問，問句停在半空"
+          "id": "su03",
+          "text": "告 Suno 的，一組是握有貓王 Elvis Presley 音樂權利的權利人，一組是 Eminem 幾張招牌唱片的出版商。"
+        }
+      ],
+      "chapter": "Main Course：AI 學唱歌，算不算偷？"
+    },
+    {
+      "id": "su-claim",
+      "template": "big",
+      "data": {
+        "kicker": "The claim",
+        "text": "Music that\n**mimics the artists**",
+        "key": "Claim: it mimics them"
+      },
+      "lines": [
+        {
+          "id": "su04",
+          "text": "他們都說，Suno 違法生成模仿這些歌手的音樂和歌詞。"
         },
         {
-          "id": "su06",
-          "text": "這題，主菜時我們吵給你聽。",
-          "emotion": "冷淡、慢半拍"
+          "id": "mc04",
+          "text": "所以出面告人的，不一定是歌手本人。"
         }
       ]
     },
     {
       "id": "mc-scene",
-      "chapter": "Main Course：AI 學唱歌，算不算偷？",
       "template": "big",
       "data": {
         "kicker": "Main Course",
@@ -535,55 +580,6 @@
         {
           "id": "mc02",
           "text": "Suno 做的就是這種事，你輸入文字，它生成音樂和歌詞。"
-        }
-      ]
-    },
-    {
-      "id": "su-who",
-      "template": "big",
-      "data": {
-        "kicker": "The plaintiffs",
-        "text": "Elvis rights holders,\n**Eminem's publisher**",
-        "key": "Two sets of plaintiffs"
-      },
-      "lines": [
-        {
-          "id": "su03",
-          "text": "告 Suno 的兩組原告，一組是貓王 Elvis Presley 的音樂權利人，另一組是 Eminem 幾張招牌唱片的出版商。"
-        }
-      ]
-    },
-    {
-      "id": "su-claim",
-      "template": "big",
-      "data": {
-        "kicker": "The claim",
-        "text": "Music that\n**mimics the artists**",
-        "key": "Claim: it mimics them"
-      },
-      "lines": [
-        {
-          "id": "su04",
-          "text": "他們都說，Suno 違法生成模仿這些歌手的音樂和歌詞。"
-        }
-      ]
-    },
-    {
-      "id": "mc-terms",
-      "template": "big",
-      "data": {
-        "kicker": "Two words",
-        "text": "Prompts and\n**rights holders**",
-        "key": "Prompt: what you type"
-      },
-      "lines": [
-        {
-          "id": "mc03",
-          "text": "你輸入給 AI 的那段文字，叫提示詞。"
-        },
-        {
-          "id": "mc04",
-          "text": "權利人，就是擁有這些音樂相關權利的一方，不一定是歌手本人。"
         }
       ]
     },
@@ -675,7 +671,7 @@
       "lines": [
         {
           "id": "mc11",
-          "text": "這部法律的英文全名，縮寫起來就是 ELVIS。"
+          "text": "這部法律的英文全名，意思是確保肖像、聲音與影像安全，縮寫起來就是 ELVIS。"
         },
         {
           "id": "mc12",
@@ -794,16 +790,21 @@
       "id": "mc-joke1b",
       "template": "big",
       "data": {
-        "kicker": "Point to Sola",
-        "text": "Their own\n**voice**",
-        "key": "Point to Sola: own voice"
+        "kicker": "Kai holds out",
+        "text": "Impersonators\n**get paid too**",
+        "key": "Kai: tributes earn too"
       },
       "lines": [
         {
           "id": "mc23",
-          "text": "好，這一分我先記在你那邊。",
+          "text": "可是模仿秀也是靠模仿別人賺錢，我不覺得差那麼多。",
           "speaker": "kai",
-          "emotion": "不甘心"
+          "emotion": "不服氣"
+        },
+        {
+          "id": "mc70",
+          "text": "差在模仿秀的人會累。",
+          "emotion": "冷淡、慢半拍"
         }
       ]
     },
@@ -845,46 +846,6 @@
           "id": "mc27",
           "text": "對，Suno 的官司，已經可以出一張精選輯了。",
           "emotion": "冷淡、慢半拍"
-        }
-      ]
-    },
-    {
-      "id": "mc-isb",
-      "template": "big",
-      "data": {
-        "kicker": "Like September's case",
-        "text": "Imitation,\n**not directly copyright**",
-        "key": "Isbell: imitation claim"
-      },
-      "lines": [
-        {
-          "id": "mc28",
-          "text": "The Verge 說，這兩案很像 9 月歌手 Jason Isbell 等人的官司。"
-        },
-        {
-          "id": "mc29",
-          "text": "那一案說 Suno 模仿了原告，但沒直接主張著作權侵權。"
-        }
-      ]
-    },
-    {
-      "id": "mc-isb2",
-      "template": "big",
-      "data": {
-        "kicker": "One term",
-        "text": "Copyright:\n**rights to your work**",
-        "key": "Copyright, in a line"
-      },
-      "lines": [
-        {
-          "id": "mc30",
-          "text": "著作權，就是創作的人對自己作品的權利，像是誰可以拿去用、拿去賣。"
-        },
-        {
-          "id": "mc31",
-          "text": "所以那一案告的不是作品，是模仿了人？",
-          "speaker": "kai",
-          "emotion": "恍然大悟"
         }
       ]
     },
@@ -969,6 +930,10 @@
           "text": "發言人也說了 Suno 怎麼防。"
         },
         {
+          "id": "mc03",
+          "text": "使用者輸入給 AI 的那段文字，叫提示詞。"
+        },
+        {
           "id": "mc39",
           "text": "Suno 不讓使用者在提示詞裡，打特定歌手的名字和歌名。",
           "reveal": 1
@@ -1006,19 +971,24 @@
       "template": "big",
       "data": {
         "kicker": "Point to Kai",
-        "text": "At least\n**it has rules**",
-        "key": "Point to Kai: rules"
+        "text": "At least\n**it says how it blocks**",
+        "key": "Point to Kai: guardrails"
       },
       "lines": [
         {
           "id": "mc43",
-          "text": "不過這點算你一分，至少它自己也說，藝人的名字不能隨便用。"
+          "text": "好，這點算你一分，至少 Suno 說得出它怎麼擋。"
         },
         {
           "id": "mc44",
-          "text": "一比一！",
+          "text": "終於有一分是我的！",
           "speaker": "kai",
           "emotion": "握拳"
+        },
+        {
+          "id": "mc71",
+          "text": "記好，今天可能就這一分。",
+          "emotion": "冷淡、慢半拍"
         }
       ]
     },
@@ -1039,7 +1009,7 @@
         },
         {
           "id": "mc69",
-          "text": "那就少學一點，人類歌手也沒有聽完全世界的唱片才出道。",
+          "text": "我覺得那就少學一點吧，人類歌手也沒聽完全世界的唱片才出道。",
           "emotion": "冷淡、慢半拍"
         }
       ]
@@ -1053,6 +1023,11 @@
         "key": "Where does money go?"
       },
       "lines": [
+        {
+          "id": "mc72",
+          "text": "好，誰對誰錯先吵到這裡，接下來看錢。",
+          "emotion": "切換，節奏放穩"
+        },
         {
           "id": "mc45",
           "text": "說到底，錢跑到哪裡去了？",
@@ -1116,14 +1091,14 @@
       },
       "lines": [
         {
-          "id": "mc51",
-          "text": "那誰會輸？照訴狀的說法，Suno 想讓人類的創意變得過時。"
+          "id": "mc73",
+          "text": "那這樣下來，誰會吃虧？",
+          "speaker": "kai",
+          "emotion": "認真"
         },
         {
-          "id": "mc52",
-          "text": "可是一般人贏了啊，不會樂器的人也能做歌。",
-          "speaker": "kai",
-          "emotion": "反駁"
+          "id": "mc51",
+          "text": "訴狀的原話是，Suno 想讓人類的創意變得過時。"
         }
       ]
     },
@@ -1131,15 +1106,32 @@
       "id": "mc-lose2",
       "template": "big",
       "data": {
-        "kicker": "Sola's reply",
-        "text": "More songs: good.\n**Asking first: better**",
-        "key": "More songs; ask first"
+        "kicker": "Kai's side",
+        "text": "Anyone can\n**make a song now**",
+        "key": "Kai: anyone can make one"
       },
       "lines": [
         {
+          "id": "mc52",
+          "text": "可是一般人贏了啊，不會樂器的人也能做歌。",
+          "speaker": "kai",
+          "emotion": "反駁"
+        },
+        {
           "id": "mc53",
           "text": "能做歌的人變多，是好事。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "mc-lose3",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's reply",
+        "text": "No license,\n**per the suit**",
+        "key": "Sola: profit, no license"
+      },
+      "lines": [
         {
           "id": "mc54",
           "text": "可是照原告的說法，Suno 沒拿到授權，就拿別人的招牌去賺錢。"
@@ -1178,7 +1170,8 @@
       "lines": [
         {
           "id": "mc57",
-          "text": "Presley 這一案援引的，是美國田納西州的法律。"
+          "text": "而且 Presley 那一案用的，是美國田納西州的法律。",
+          "speaker": "kai"
         },
         {
           "id": "mc58",
@@ -1268,9 +1261,9 @@
       "id": "mc-view2",
       "template": "big",
       "data": {
-        "kicker": "Sola's view",
-        "text": "Still just\n**allegations**",
-        "key": "Court decides; not us"
+        "kicker": "Kai's last word",
+        "text": "Learning is fine.\n**Let the court decide**",
+        "key": "Kai: still on AI's side"
       },
       "lines": [
         {
@@ -1280,9 +1273,9 @@
         },
         {
           "id": "mc67",
-          "text": "好，我改立場一半，可以學，但要先問。",
+          "text": "我還是站 AI 這邊，學本身沒有錯；要不要先問，等法院說。",
           "speaker": "kai",
-          "emotion": "讓步"
+          "emotion": "不讓步"
         }
       ]
     },
@@ -1298,7 +1291,7 @@
       "lines": [
         {
           "id": "af01",
-          "text": "好，來到今天的 AI Fail，翻車的是一套 AI 駭客工具。",
+          "text": "好，來到今天的 AI Fail，主角是一套叫 Artex 的 AI 工具，它會自己去找電腦系統的弱點。",
           "emotion": "切換段落，輕快"
         }
       ]
@@ -1314,7 +1307,7 @@
       "lines": [
         {
           "id": "af02",
-          "text": "11 月 6 日週五，據 TechCrunch，研究人員發現好幾百套叫 Artex 的工具，就這樣露在公開網路上。"
+          "text": "11 月 6 日週五，據 TechCrunch，研究人員發現好幾百套 Artex，就這樣露在公開網路上。"
         }
       ]
     },
@@ -1329,7 +1322,7 @@
       "lines": [
         {
           "id": "af03",
-          "text": "Artex 是一套開源的 AI 工具，會自己去找電腦系統的弱點。"
+          "text": "Artex 是開源的工具。"
         },
         {
           "id": "af04",
@@ -1384,11 +1377,24 @@
       "lines": [
         {
           "id": "af08",
-          "text": "然後是翻車的部分，資安公司 Censys 說，它找到超過 800 套 Artex，從網路上就連得進去。"
-        },
+          "text": "然後是翻車的部分，資安公司 Censys 找到超過 800 套 Artex，從網路就連得進去，登入還不用密碼。"
+        }
+      ]
+    },
+    {
+      "id": "af-open2",
+      "template": "big",
+      "data": {
+        "kicker": "Kai, stunned",
+        "text": "No password?\n**A public library?**",
+        "key": "No password at all?"
+      },
+      "lines": [
         {
           "id": "af09",
-          "text": "而且登入還不用密碼。"
+          "text": "連密碼都不用？這是駭客工具，還是公共圖書館？",
+          "speaker": "kai",
+          "emotion": "誇張地驚訝"
         }
       ]
     },
@@ -1460,6 +1466,23 @@
       ]
     },
     {
+      "id": "af-kai",
+      "template": "big",
+      "data": {
+        "kicker": "Kai's take",
+        "text": "Unlocked tools:\n**the problem itself**",
+        "key": "Kai: unlocked = problem"
+      },
+      "lines": [
+        {
+          "id": "af32",
+          "text": "我覺得研究人員太客氣了，工具放在網上還不鎖，本身就是問題。",
+          "speaker": "kai",
+          "emotion": "有點火"
+        }
+      ]
+    },
+    {
       "id": "af-kit",
       "template": "big",
       "data": {
@@ -1470,7 +1493,11 @@
       "lines": [
         {
           "id": "af15",
-          "text": "TechCrunch 還說，這些公開的系統，連攻擊用的工具也露出來了，像藏在別人網路裡的惡意程式。"
+          "text": "TechCrunch 還說，連攻擊用的工具，也一起露出來了。"
+        },
+        {
+          "id": "af31",
+          "text": "其中一種，是藏在受害者網路裡的惡意程式。"
         },
         {
           "id": "af16",
@@ -1510,11 +1537,11 @@
       "lines": [
         {
           "id": "af19",
-          "text": "部分原因是，這個駭客把放系統的目錄，公開在網路上了。"
+          "text": "部分原因是，這個駭客把放 Artex 的資料夾，設成誰都能打開。"
         },
         {
           "id": "af20",
-          "text": "這就像小偷把作案行程表貼到網路上，還設成公開。",
+          "text": "打個比方，就像小偷把作案行程表貼上網，還設成公開。",
           "emotion": "冷淡、慢半拍"
         }
       ]
@@ -1581,7 +1608,7 @@
       "lines": [
         {
           "id": "af25",
-          "text": "所以我要不要換手機？",
+          "text": "老問題又來了，所以我要不要換手機？",
           "speaker": "kai",
           "emotion": "固定梗，認真地問"
         },
@@ -1711,7 +1738,7 @@
         },
         {
           "id": "ou02",
-          "text": "用歌手的聲音，AI 該先問嗎？留言說。",
+          "text": "用歌手的聲音，AI 該先問嗎？留言告訴我們。",
           "speaker": "kai"
         },
         {
