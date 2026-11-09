@@ -146,7 +146,7 @@ critter("tokay-tiles", "Medium shot of " + GECKO + " clinging calmly to a smooth
 kid("kid-mean-q", K("scrunching her face in thought with both hands on her cheeks", close=True),
     k("這代表什麼？", "句尾上揚"))
 chief("chief-mean", C("holding up both palms side by side like a fair comparison"),
-      c("如果靠一層水，愛沾水的那種，應該黏得好很多。"), c("結果沒有，代表主要不是靠一層水。"))
+      c("如果靠一層水，容易沾水的那種，應該黏得好很多。"), c("結果沒有，代表主要不是靠一層水。"))
 chief("chief-humid", C("holding her palm out flat in soft morning sunlight with a thoughtful smile", close=True),
       c("不過也有研究發現，空氣裡的濕氣，"), c("還是會幫上一點忙。"))
 kid("kid-suction-guess", K("pressing a round plastic suction-cup hook onto a bathroom tile with a hopeful grin", close=True),
@@ -222,7 +222,7 @@ kid("kid-how-many-tips-q", K("spreading all ten fingers wide with a curious face
 critter("tokay-wall", "Medium shot of " + TOKAY + " clinging to a smooth sunny wall, all four feet spread flat, " + DAY,
         c("一隻大守宮，四隻腳的腳趾全部加起來，"), c("大約有十億個小扁片。", "數字放慢"))
 kid("kid-billion", K("throwing both arms wide open with a huge amazed face", close=True),
-    k("十億個一起拉！", "大驚"), k("那有多大力？", "句尾上揚", "S:strong"))
+    k("全部一起拉！", "大驚"), k("那有多大力？", "句尾上揚", "S:strong"))
 scene("strong-feel", "Close-up of one very fine pale cream bristle drawn large, its tiny flat spoon-shaped tips stuck to smooth glass, one small round bead hanging gently from it on a fine thread, plain pale cream background, flat 2D cartoon drawing",
       c("研究的人先量出一根小毛的力氣，再估算，"))
 scene("rice-sacks", "Medium shot of a pile of big heavy round sacks of rice hanging together from one small chubby cartoon gecko foot stuck on a smooth glass pane, the foot calm and steady, " + DAY,
@@ -246,7 +246,7 @@ chief("chief-angle", C("tilting one flat hand slowly upward with a playful smile
 critter("toe-curl", "Close-up of " + GECKO + " on a sunny white wall, one foot with its toes curling up and back from the tips like little rolled ribbons, the rest of the foot still flat, " + DAY,
         c("你仔細看牠抬腳，腳趾會從最前面，"), c("往上、往後捲起來。", None, "P:move"))
 kid("kid-tape-q", K("peeling the edge of " + STICKER + " off the back of her hand with a curious face", close=True),
-    k("像撕貼紙，", "推理"), k("從邊邊開始掀？", "句尾上揚", "S:tape"))
+    k("像撕下一張貼紙，", "推理"), k("從邊邊開始掀？", "句尾上揚", "S:tape"))
 chief("chief-tape", C("nodding slowly with one finger raised", close=True),
       c("看起來很像。不過研究的人發現，"), c("真正讓牠放手的開關，藏在每一根小毛身上。"))
 scene("bristle-lean", "Close-up of one very fine pale cream bristle drawn large, leaning over at a low slant against a smooth surface, its tiny flat spoon-shaped tips lying flat, " + SPARK + ", plain pale cream background, flat 2D cartoon drawing",
@@ -256,7 +256,7 @@ scene("bristle-up", "Close-up of one very fine pale cream bristle drawn large, s
 kid("kid-itself-q", K("opening both hands wide with a surprised face", close=True),
     k("自己鬆開？", "驚訝"), k("不用力氣嗎？", "句尾上揚"))
 scene("rows-release", "Close-up of a cartoon gecko toe drawn large curling up from its tip, the soft rows of pale flaps lifting off a smooth wall one after another like a zip opening, " + DAY,
-      c("幾乎不用。腳趾一捲，", None, "P:pull"), c("一排一排的小毛就跟著翻起來，照順序放手。"))
+      c("幾乎不用。只要腳趾往上一捲，", None, "P:pull"), c("一排一排的小毛就跟著翻起來，照順序放手。"))
 critter("quick-step", "Medium shot of " + GECKO + " scurrying quickly across a sunny white wall, little speed streaks behind its feet, " + DAY,
         c("研究的人量過，壁虎放開一隻腳，"), c("大約只要百分之一秒多一點。", "數字放慢", "P:letgo"))
 kid("kid-fast", K("blinking with her mouth open in amazement", close=True),
@@ -278,7 +278,7 @@ kid("kid-ceiling-q", K("looking straight up at the ceiling with a worried frown"
 critter("ceiling-feet", "Close-up looking up at " + GECKO + " resting upside down on a sunny white ceiling, its front feet and back feet spread wide apart and gripping firmly, " + DAY,
         c("研究的人看到，牠倒掛的時候，"), c("會讓幾隻腳朝相反方向用力，一起往身體這邊拉。"))
 chief("chief-maybe", C("holding her two fists close together and pulling gently towards each other, a thoughtful face"),
-      c("他們認為，這可能就是讓小毛一直保持拖著，"), c("不被體重撕開的辦法。", None, "P:ceiling"))
+      c("他們認為，這可能就是讓每一根小毛一直保持拖著，"), c("不被體重撕開的辦法。", None, "P:ceiling"))
 chief("chief-dust-back", C("brushing a little dust off her cardigan sleeve with a playful smile", close=True),
       c("還記得一開始，我問你的灰塵嗎？", "點名回呼"))
 kid("kid-remember-dust", K("nodding fast with a bright remembering face, one finger raised", close=True),
