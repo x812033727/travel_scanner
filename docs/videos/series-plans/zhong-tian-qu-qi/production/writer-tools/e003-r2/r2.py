@@ -283,13 +283,17 @@ SHOTS = [
          lines=[("qinshuang", "活該。話說得越好聽，越不能信。", "冷")],
          motion=f"Qin Shuang carries the bundle past Xu Yan in profile, gives him only one sidelong look out of the corner of her eye as she says the line, never into the lens, a short huff through her nose on 「活該」, and walks out of the frame on screen left toward the woodpile; Xu Yan winces, his lips closed; {NOSMILE}",
          zh="中景、跟拍（由右往左）：秦霜右肩扛一捆劈好的柴（草繩捆著約十根，柴刀在腰帶右邊）從扶著井沿的許硯身邊走過，看都沒看他，往左邊柴堆走出畫。真人版（2026-11-08）：秦霜側面走過，說話時只用眼角斜他一眼（說話要看對方的規則；「看都沒看」改成只斜一眼），不看鏡頭；柴刀照 CHOP 那一句插在腰帶右邊。表情：秦霜眉往下壓成直線、眼睛瞇起、嘴抿成線，「活該」時鼻子哼一聲；許硯皺眉往上、嘴抿死；兩人都不笑（NOSMILE）"),
-    # Live prep (2026-11-08): the script's wry smile is allowed but written as face movements, with no smile word; he
-    # turns three-quarter toward A-ling at the back right, the camera locked about 40 degrees off his eyeline.
-    dict(loc="yard_dusk", cam="Close-up, locked", chars=["xuyan", "aling"], night="yard_dusk",
-         comp="close-up of Xu Yan at the left of the frame, his sleeves rolled up to the elbows, his body and face turned three-quarter toward the back right, the camera about 40 degrees off his eyeline, watching A-ling, never the lens; rueful: his brows drawn up in the middle, his eyes tired, one corner of his mouth tugged up crookedly, not a happy face; behind him the stone well of the same yard, and far beyond it at the right A-ling's back, small, soft and out of focus, walking away with the bucket",
+    # e903 live fix4 (2026-11-09, cut review 1 item 3 and cut review 2 item 3): the d1 pick smiled happily through the line
+    # and on the last frame, and sighed after it. The close-up's "rueful" and "one corner of his mouth tugged up" became
+    # a smile, and "lets out a long sigh" put a sigh on the dialogue track. Redesigned like fix3's s23/s38: a side medium
+    # shot ~65 degrees off his eyeline, his face small; a pained, conceding face written part by part with nothing that
+    # goes up, NOSMILE the only smile word, no sigh named. A-ling has already walked off screen right with the bucket (the
+    # other d1 seed drew a second A-ling standing before him), so she has no picture here and is not named in the English (preflight `unpictured`).
+    dict(loc="yard_dusk_m", cam="Medium shot, locked", chars=["xuyan"], night="yard_dusk",
+         comp="side medium shot from his right side, the camera about 65 degrees off his eyeline, Xu Yan alone, seen from the waist up and small in the frame with space above his head, standing beside the rim of the stone well on screen left in profile facing screen right, his eyes on the empty dusk yard off screen right, never the lens; his sleeves rolled up to the elbows, both shoulders of his robe whole and smooth, his right hand pressed to his chest; pained and conceding: his brows drawn together and pulled low, his eyes narrowed with the sting, his lips pressed flat, one corner of his mouth pulled down, his jaw tight",
          lines=[("xuyan", "好，我記住了。這裡的人，用騙的騙不來。", "又痛又服氣")],
-         motion="rubbing his chest, he straightens up, watches A-ling carry the bucket away, says the line after her with a slow shake of his head, and lets out a long sigh, his shoulders dropping",
-         zh="近景、固定（2026-11-08 真人版：原本慢推、正面；改成許硯在畫左、身體與臉四分之三轉向右後方的阿令，鏡頭偏約 40°，不看鏡頭）：許硯揉著胸口直起身，看著阿令提水桶走開的背影（虛焦），嘆一口氣；苦笑（可以）（結尾）。表情：眉頭中間往上、眼神累、一邊嘴角歪歪地往上扯，不是開心的臉，說完慢慢搖頭、長嘆一口氣、肩膀一垮（劇本允許的苦笑，提示詞不寫笑字）"),
+         motion=f"he rubs his chest once with his right hand and straightens up from the well, still in profile, his eyes on the empty yard off screen right where she has gone, never the lens, and says the line after her in a low voice, his lips closing flat between phrases; on 「騙不來」 he gives one slow shake of his head, his brows still drawn together; after the line his lips stay pressed shut and he stands still to the last frame; {NOSMILE}",
+         zh="側面中景、固定（2026-11-09 真人版 fix4，成片審查一-3、二-3：d1 選的那支整句開心地笑、最後一格也笑，講完還嘆一口氣留在對白軌；台詞橫跨整鏡、剪不掉）：近景改成跟 fix3 s23、s38 一樣的側面中景，從他右邊拍、鏡頭偏離視線約 65°，許硯單獨一人、腰以上、在畫面裡小小的、頭上留空，站在畫左井沿旁，正側面朝畫右、看阿令走開的方向（阿令已提桶走出畫右，不入鏡；d1 另一支畫出兩個阿令），不看鏡頭；右手按胸口。拿掉 rueful 與「一邊嘴角往上扯」（被演成笑），表情改成逐部位、沒有任何往上的字：眉頭皺緊往下壓、眼睛痛得瞇起、嘴唇抿平、一邊嘴角往下、下巴收緊（又痛又服氣的苦臉，不笑）；揉一下胸口、從井邊直起身，低聲說完，「騙不來」慢慢搖一下頭，講完嘴抿住、站著不動到最後一格；嘆氣拿掉、英文不寫嘆氣；從頭到最後一格都不笑（NOSMILE）。袍子兩肩完整（補丁只在手肘）。台詞不變"),
     # ---- scene 3: the kitchen at night, the stove fire and Xu Yan's oil lamp, faint moonlight at the door. Axis: Xu Yan in
     # from the door on the left, A-ling on the stool before the fire mouth on the right; c34 on he squats on her left.
     dict(chapter="灶房", loc="kitchen_door", cam="Full shot from behind, tracking", chars=["xuyan", "aling"], nospeak=["xuyan"], night="kitchen",
