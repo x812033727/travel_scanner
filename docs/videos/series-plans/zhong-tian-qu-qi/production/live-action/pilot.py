@@ -63,6 +63,11 @@ TANG_LIVE = re.sub(r"a fitted peach-pink silk brocade ruqun with a high stand-up
 # The owner locked the portrait's costume (2026-11-08, after e902 s36 drifted to an open V over a chest-high skirt):
 # the jacket is closed and the skirt is tied at the waist, so the original "high cinched waist" goes too.
 TANG_LIVE = TANG_LIVE.replace(", a high cinched waist and flowing sleeves", " and flowing sleeves")
+# e904 live fix1 (2026-11-09): Tang smiled through her line in all four takes of s14 and s19 however her face was written,
+# and through most of her earlier shots; her cast sentence says "sweet" and "dimples", which the model reads as a smile.
+# The live text keeps the beauty and drops the two words (the portrait keeps the face).
+TANG_LIVE = TANG_LIVE.replace("dazzling sweet glamorous beauty", "dazzling glamorous beauty").replace("rosy cheeks with dimples", "rosy cheeks")
+assert "sweet" not in TANG_LIVE and "dimple" not in TANG_LIVE, "cast.json's Tang sentence changed; update pilot.py"
 
 
 def live_picture(name):

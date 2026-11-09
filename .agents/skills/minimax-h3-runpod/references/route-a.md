@@ -333,3 +333,6 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - **成片音量差一點沒過（第 3 集真人版，2026-11-09）**：`assemble-v4.mjs` 的 loudnorm 是單段式，第 3 集出來 -15.3 LUFS（要 -14±1）。不用重剪：先量一次 `loudnorm=print_format=json`，再用量到的值做第二段（`linear=true`，`TP=-2.2` 以免峰值超過 -1.0），畫面與字幕軌 `-c copy`，只重壓聲音。原檔留在 `cut/v0/`。
 - **挑片理由裡別寫別的剪點（2026-11-09 e902 fix4）**：理由寫「剪輯表：s18 拿掉 end-before@5.85」，`refine-prep.py` 把這個 `@5.85` 讀成新 take 的剪點。理由裡提到舊剪點時不要用 `@`（寫「end-before 5.85」）。
 - **RunPod 缺貨時改用 Colab（2026-11-09，站主「改用colab 拍」）**：EU-CZ-1 連續 3 小時沒貨。`retake.json` 加上 `output_path` 就能直接給 `h3_detached.py`；精修的 `st2-*.json` 跟 Colab `refine.py` 同一個格式（1312×736、σ0.5、10 步），`--only` 指定鏡頭。Colab 一定要用自己的 session 名（`zt-live`），帳號上同時有其他對話的 runtime；第二台 G4 有時回 Service Unavailable，過幾分鐘再開就好。
+- **角色描述裡的 sweet、dimples 會讓她每一鏡都笑（第 4 集真人版 fix1，2026-11-09）**：唐小棠在 s14、s19 兩輪四支、兩種設計（四分之三、正側臉）都邊講邊笑，逐部位寫表情、拿掉 shrewd／offhand 都壓不住。`cast.json` 她的外貌句寫「dazzling sweet glamorous beauty」「rosy cheeks with dimples」，每一鏡的提示詞都帶著；`pilot.py` 的真人版現在拿掉這兩個詞（有 assert）。另一層保險：她的台詞非笑不可的鏡，讓嘴不入鏡（背後過肩加 `nospeak`，或單拍聽的人、她在畫外），錄好的配音照放。
+- **單人特寫的「低頭」「吞嚥」也會變成閉嘴微笑（第 4 集真人版 fix1 s23）**：動容的反應鏡只寫不動的臉（平視、眼眶發亮、嘴閉成一直線、手指收緊），不要寫頭的動作。
+- **改了上一鏡的方向，下一鏡要跟著想（第 4 集真人版 fix1 s38、s40）**：s38 改成從屋內門縫拍他的背，s40 寫「回頭看屋門」就等於把臉轉向鏡頭、被火照亮。回頭鏡改從側面遠拍、讓他背著火轉進暗處；要藏的臉，光源一定在他和鏡頭的另一邊。
