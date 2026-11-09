@@ -43,3 +43,7 @@ scope:
 - `check-audio` 一直把「十億」聽成「十一」、「撕貼紙」聽成「是貼紙」、「腳趾」聽成「餃子」：改說法比重錄有效。
 - 旁白 12:56；插圖報價 US$1.71（三 take 上限 US$5.14），2026-11-09 開始 `keyframes --takes 3`。
 - 容器磁碟只剩約 6 GB，`.git` 裡有舊備份留下的約 4.8 GB loose objects（舊 tobranch 寫法），清理指令被自動模式擋下，等站主決定。
+- 2026-11-09：站主要求刪 P07／P14 工作目錄騰空間。獨立代理第一次核對發現 P07 的 en/ja/ko 逐句配音等 741 檔（288 MB）、P14 三個 JSON 不在 GitHub；
+  兩個工作目錄整個用新版 `tobranch.sh` 推到 `claude/backup-sothatswhy-p07-p14` 的 `local-20261109/<slug>/`（head 5683fbcf，verify 0），
+  同一代理只看 GitHub 重跑 `coverage.sh`：兩集 missing 0、mismatches 0、`.SPLIT` 0 不符，才刪；磁碟 6.1 → 7.7 GB。
+  兩邊都沒有的（早在 11-07 就沒了）：兩集繁中逐句旁白、P07 其餘五語與 P14 八語的逐句配音（成品配音在分支與 YouTube）。
