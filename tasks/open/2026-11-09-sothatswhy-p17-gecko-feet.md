@@ -19,21 +19,27 @@ scope:
 
 ## Why
 
-Describe the problem in the terms someone who has never seen it would need.
+原來如此事務所對話版（所長＋小問）的下一集。題目照 `docs/videos/so-thats-why/refresh-20261101/EPISODES.md` 的 P17，
+做法照 `docs/videos/so-thats-why/dialogue-pilot-20261103/HANDOFF.md`、README §9–§10，以及 PR #2048 的
+`docs/videos/explainer-series/`（兩邊衝突時以共用區為準）。
 
 ## Definition of done
 
-- [ ] The observable outcome, not the implementation.
-
-## Steps
-
-- [ ] First sub-task.
-- [ ] Second sub-task.
+- [x] 稿子：獨立查核 `verify-1.md`、盲評 14 題全過、`lint` 0 錯誤，Claude 依站主授權核准。
+- [x] 旁白兩個聲音、`check-audio`，核准；角色設定圖沿用系列。
+- [ ] 插圖畫完、另一個代理逐張放大檢查、分鏡評分 ≥ 49／70，核准分鏡。
+- [ ] 配樂（`sothatswhy-bed-r2.m4a`）→ 合成 → `qa` 11 項 → 成片送站主（`final`）。
+- [ ] 上架確認、八語翻譯與配音、八語縮圖、語言包，站主核准。
+- [ ] 每過一關備份到 `transfer/sothatswhy-p17-gecko-feet`（`docs/videos/explainer-series/backup/tobranch.sh`）。
 
 ## How to verify
 
-The exact commands or clicks that prove it works.
+`node tools/video/cli.mjs status --slug sothatswhy-p17-gecko-feet`；`lint` 0 錯誤；站主在 /admin/videos 看過成片。
 
 ## Notes
 
-Findings, decisions and dead ends, so the next agent does not repeat them.
+- 2026-11-09：稿子四輪盲評才全過（5 → 3 → 2 → 0 題不過）；亞里斯多德那段整段刪掉（查核發現原文是爬樹、跟主線無關）。
+  `Tokay`、`gecko` 依站主要求加進 `lexicon.json`，用英文念。
+- `check-audio` 一直把「十億」聽成「十一」、「撕貼紙」聽成「是貼紙」、「腳趾」聽成「餃子」：改說法比重錄有效。
+- 旁白 12:56；插圖報價 US$1.71（三 take 上限 US$5.14），2026-11-09 開始 `keyframes --takes 3`。
+- 容器磁碟只剩約 6 GB，`.git` 裡有舊備份留下的約 4.8 GB loose objects（舊 tobranch 寫法），清理指令被自動模式擋下，等站主決定。
