@@ -28,7 +28,7 @@ scope:
 - [x] 稿子：獨立查核 `verify-1.md`、盲評 14 題全過、`lint` 0 錯誤，Claude 依站主授權核准。
 - [x] 旁白兩個聲音、`check-audio`，核准；角色設定圖沿用系列。
 - [x] 插圖畫完、另一個代理逐張放大檢查、分鏡評分 ≥ 49／70，核准分鏡。
-- [ ] 配樂（`sothatswhy-bed-r2.m4a`）→ 合成 → `qa` 11 項 → 成片送站主（`final`）。
+- [x] 配樂（`sothatswhy-bed-r2.m4a`）→ 合成 → `qa` 11 項 → 成片送站主（`final`）。
 - [ ] 上架確認、八語翻譯與配音、八語縮圖、語言包，站主核准。
 - [ ] 每過一關備份到 `transfer/sothatswhy-p17-gecko-feet`（`docs/videos/explainer-series/backup/tobranch.sh`）。
 
@@ -57,3 +57,5 @@ scope:
   第四輪把腳趾捲起、小毛角度、頭髮粗細改成圖解重畫，結果長出臉和假字，退回原提示詞；只留下撕貼紙與四張重抽的角色。
   **坑：`keyframes --shot` 重畫會用同一個檔名蓋掉先前挑中的 take**，挑中的圖要先備份或另存。4 張舊圖靠伺服器同提示詞重現救回（byte 相同），4 張用放大檢查留下的副本補回（`*-pick.jpg`）。
   已備份到 `transfer/sothatswhy-p17-gecko-feet`（20799d61，verify 0）。
+- 2026-11-09：合成 24271 格（約 13:29），-14 LUFS；`qa` 11／11（警告：縮圖大字與標題前 10 字重複，縮圖在關鍵影格前定案，未改）。
+  先備份成片再 `review-push --gate final`，已送 /admin/videos 等站主核准；核准後 `review-pull` → `package` → `--gate publish`。
