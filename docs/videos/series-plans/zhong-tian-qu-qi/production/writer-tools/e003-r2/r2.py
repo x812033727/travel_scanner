@@ -171,16 +171,18 @@ SHOTS = [
          lines=[],
          motion="his thumb presses into the red ink paste, then presses down hard on the blank corner, leaving one red thumbprint, and lifts away",
          zh="手部特寫、慢推（第一格就是紙角與紅印泥）：只拍空白紙角（寫字的部分在畫面外）；許硯的拇指按進紅印泥，再重重按在紙角留下紅指印，拇指抬起"),
-    # e903 live fix1 (2026-11-09, both d1 seeds failed review-picks-a: he said 「我帶人來收房」 square into the lens, 1102
-    # opened the fan and its face grew calligraphy, the servants showed their faces): a side tracking shot level with his
-    # walk, the camera by the gate on screen right and 60-70 degrees off his eyeline when he looks back; the sheet goes into
-    # his sleeve before he starts walking; the fan is in his right hand folded shut from the first frame (no draw from the
-    # belt to write) and only its closed tip points; the servants are backs with their heads above the frame; no push in.
-    dict(loc="yard_late_m", cam="Medium shot, tracking", chars=["qianyuanwai"], night="yard_late",
-         comp=f"side medium shot level with his walk, the camera by the yard gate on screen right tracking sideways with him, Qian Yuanwai seen in profile facing screen right, framed from the knees up, {FAN}, held in his right hand from the first frame, the written sheet in his left hand; {QIAN_FACE}; at the right edge by the gate the grey-clad servants in {SERV}, seen only from behind, their heads above the top of the frame",
+    # e903 live fix2 (2026-11-09, both fix1 seeds failed review-picks: the folded fan was wide open from the first frame
+    # in both, one raised it to point, the servants showed their faces, 1202 turned square to the lens for 5.5-8.0 s; the
+    # tracking shot turned him to the lens twice and the fan opened three times out of three): the prop and the sheet
+    # leave the shot and are never named (the word alone draws one in); both hands clasped behind his back; the servants
+    # are already out of the gate, the gate open on the empty path as in s16; locked, the camera behind his left
+    # shoulder about 70 degrees off his eyeline; no walking; only a small jab of the index finger and a chin lift on
+    # 「收房」; he speaks from the first second so the line ends before the last half second.
+    dict(loc="yard_late_m", cam="Medium shot, locked", chars=["qianyuanwai"], night="yard_late",
+         comp=f"medium shot from behind his left shoulder, the camera about 70 degrees off his eyeline, Qian Yuanwai standing still at the open yard gate on screen right, his back half turned to the camera, framed from the knees up, both hands clasped behind his back; his head turned back over his shoulder, his face in profile toward screen left, looking at Xu Yan off screen left, never the lens; {QIAN_FACE}, his lips thin, no teeth; beyond the open gate only the empty dirt path outside, nobody else in the frame",
          lines=[("qianyuanwai", "許秀才，三日後太陽一落，我帶人來收房。", "拖長音")],
-         motion=f"he tucks the sheet into his left sleeve first, then walks right toward the gate; he stops and turns only his head and shoulders back toward Xu Yan off screen left, his face in profile toward screen left, the camera 60-70 degrees off his eyeline, eyes on him, never the lens, drawling the line, no teeth; on 「收房」 he points the closed fan at him; it never opens; {NOSMILE}",
-         zh="側面中景、跟拍（2026-11-09 真人版 fix1：d1 兩支都在「我帶人來收房」正面直視鏡頭，1102 扇子打開、扇面有毛筆字，家丁的臉很清楚）：鏡頭在畫右院門邊，跟他的走向平行、橫著跟拍，錢員外側面朝畫右、膝蓋以上；先把字據收進左袖再起步走向院門；停步後只轉頭與肩、回頭看畫外左邊的許硯，臉保持側臉、鏡頭偏離他的視線 60–70°，不看鏡頭，不推近。扇子第一格就合著拿在右手（不寫從腰帶抽出），說「收房」時用合著的扇尖一指，整鏡不打開、扇面空白。家丁在畫右院門邊只拍背影、頭在畫面上緣外。表情：QIAN_FACE，拖長音、不露齒；從頭到最後一格都不笑（NOSMILE）。台詞不變"),
+         motion=f"he stays standing at the gate, his feet not moving, and starts speaking at once in the first second, drawling the line to Xu Yan off screen left with his face in profile, eyes on him, never the lens, his hands clasped behind his back; on 「收房」 he jabs his index finger once toward him and lifts his chin; the line ends well before the last half second; {NOSMILE}",
+         zh="中景、固定（2026-11-09 真人版 fix2：fix1 兩支都從第一格就把摺扇整把打開、一支舉扇指人，家丁正面露臉，1202 在 5.5–8.0 秒轉成正面對鏡頭；追拍兩次都把他轉向鏡頭，扇子三次都打開）：扇子與字據整鏡拿掉，提示詞裡一個字都不寫（寫了這個字就會畫出來），字據已收好；雙手背在身後。家丁已出院門、不入鏡，門外小路空著，接 s16 的空門。固定機位，鏡頭在他左肩後方、偏離視線約 70°；他站在畫右院門口、半背向鏡頭，整段不走動，只把頭轉過肩、側臉朝畫左看畫外的許硯，不看鏡頭。說「收房」時只用食指朝他一點、下巴一抬。第一秒就開口，讓台詞在最後 0.5 秒前講完。表情：QIAN_FACE，嘴唇薄、嘴角往下、不露齒；從頭到最後一格都不笑（NOSMILE）。台詞不變"),
     dict(loc="yard_late_cu", cam="Medium close-up, locked", chars=["qinshuang"], night="yard_late",
          comp=f"medium close-up of Qin Shuang standing on screen left beside the upright wooden gate post on screen right, framed from the chest up the whole shot with her belt below the bottom edge of the frame, her face hard: brows drawn down straight, eyes narrowed, mouth a flat line; {CHOP} buried in the post at her shoulder height with its handle toward her, the one knife in the frame; her right hand open and empty, raised just beside the handle; beyond the post only the open gate and the empty dirt path outside, the visitors already gone",
          lines=[("qinshuang", "手印按了，三天後拿不出二十兩，這房子就沒了。", "冷")],
