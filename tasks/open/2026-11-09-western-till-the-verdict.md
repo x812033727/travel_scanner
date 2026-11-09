@@ -27,7 +27,8 @@ scope:
 - [x] 改編規格：劇名、Port Merrow 的世界、人物對照、法律程序修正、文化調整、規格差異、第一季篇章對照（`western/README.md`）。
 - [x] 站主決定畫面比例與集數：16:9、第一季 60 集（2026-11-09）。
 - [x] 英文設定集、第一季總綱與 60 集英文逐集細綱（`western/setting.json`、`outline.json`、`season-01.json`），`validate.mjs --season 1` 通過。
-- [ ] 英文 `cast.json`（外貌、聲音、場景、道具提示詞）。
+- [x] 英文 `production/cast.json`（外貌、換裝、聲音候選、路人、場景、道具提示詞）。
+- [ ] 定妝照試鏡，鎖臉後填 `portrait`。
 - [ ] 前三集英文劇本與分鏡，照 animation-preproduction 鎖定，三鏡小樣報價。
 
 ## Steps
@@ -37,7 +38,8 @@ scope:
 - [x] 站主回覆兩個決定。
 - [x] 改編對照表 `western/GLOSSARY.md`。
 - [x] 英文設定集、總綱與第一季 60 集細綱（七個代理平行改寫，合併後統一天數與進度條）。
-- [ ] 英文 cast.json。
+- [x] 英文 cast.json。
+- [ ] 定妝照試鏡與四個主角的聲音試聽。
 - [ ] 前三集劇本、分鏡、小樣。
 
 ## How to verify
@@ -55,3 +57,6 @@ scope:
 - 案件進度條有六格（Report → Charges → Investigation → Arraignment → Trial → Sentencing）：停在 Report 時是 5 stages to sentencing，Charges 時是 4。
 - 角色族裔：Nora 與母親為愛爾蘭裔白人；Pell 一家與 Moretti 祖孫為義大利裔；Sienna 印度裔；Dana 奈及利亞裔；Theo 韓裔；Reyes 墨西哥裔；Judith Hale 非裔。Elias 隨母姓的設定改成「自己改姓 Ashford」，因為 Rosa 仍姓 Pell。
 - 「撤告」：美國的刑事案被害人不能自己撤，Grant 的條件寫成 "Drop the case and the house is yours"，指民事訴訟。
+- cast.json 的聲音都是 Gemini TTS 的候選（名字已對過 `apps/api/app/video_speech/gemini.py`），還沒試聽：Nora Despina、Elias Charon、Grant Algieba、Peg Gacrux。
+- 生成時不放任何可讀文字（文件、招牌、帳本、瓶底的氣泡名字），要讓觀眾讀的字一律後製加。
+- Nora 第 19 集剪成齊肩；Sienna 一律用左手寫字、翻頁（第 50 集的伏筆）；Elias 左手背的疤到第 60 集才露。

@@ -1,0 +1,850 @@
+{
+  "schema_version": 1,
+  "series": "2025-15-xingde-xiangyu-western",
+  "purpose": "Till the Verdict Do Us Part, season one (episodes 1–60): the shared look, character appearances (English prompts for image and video models), voices, extras, sets and props. Every episode's video.json copies the characters it uses from here (id, name, appearance, voice; costume changes through shot_looks) and never rewrites them, so faces do not drift. Story facts come from ../season-01.json and ../GLOSSARY.md.",
+  "owner_notes": [
+    "Owner 2026-11-09: 16:9; season one only, 60 episodes; English written natively, not dubbed from Mandarin.",
+    "plan.json: episodes 90–180 seconds, chapter finales at least 120; 3–5 hooks an episode; production on MiniMax Hailuo image-to-video, photoreal live-action, diverse Western cast.",
+    "setting.json advertiser_safety and glamour: no blood, no medical procedure, no violence toward people, no bed scenes, no bare backs or low necklines; glass is smashed only when it is a fake, in gloves and goggles, into a steel drum; beauty is in faces, hands and furnace light.",
+    "No readable text is ever generated in an image or clip: documents, signs, receipts, ledgers and the bubble name are blank or illegible in generation; any words the viewer must read are added in post.",
+    "Voices are Gemini TTS candidates, not approved: audition Nora, Elias, Grant and Peg on the site before episode 1 (task 2026-11-09-western-till-the-verdict).",
+    "Portraits (portrait) are empty until the screen test locks a face per character."
+  ],
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action modern American drama, film still, natural cinematic light, realistic skin and fabric texture, soft flattering light on faces, shallow depth of field; Pacific Northwest overcast grey-blue daylight and rain in season one; the Glass House cold blue and reflective; the Ashford house grey concrete with warm pools of lamplight; Remelt Studio warm orange furnace glow against cold window light",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, letters, words, readable signs, subtitles, watermark, logo, brand names, license plates, extra fingers, deformed hands, blood, gore, injury, medical procedure, ultrasound screen, nudity, cleavage, low neckline, bare back, see-through clothing, wet clothes, bed scene, fantasy glow effects, sparkles",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces, clothes, scars and props stay the same; glass and molten glass move with real weight and heat shimmer; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "nora",
+      "setting_id": "nora-quinn",
+      "name": "Nora Quinn",
+      "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, tiny healed burn marks on the inside of both wrists, long dark chestnut hair loose past her shoulders, a cream cable-knit sweater, soft grey trousers, flat shoes",
+      "shot_looks": [
+        {
+          "id": "pregnant",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, tiny healed burn marks on the inside of both wrists, five months pregnant with a visible rounded belly, long dark chestnut hair loose past her shoulders, a loose cream cable-knit sweater dress, soft slippers"
+        },
+        {
+          "id": "hospital",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, tiny healed burn marks on the inside of both wrists, pale and tired, long dark chestnut hair loose and slightly tangled, a plain light blue hospital gown under a cream cardigan, no makeup"
+        },
+        {
+          "id": "motel",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, tiny healed burn marks on the inside of both wrists, long dark chestnut hair in a loose low knot, a cream knit sweater under a camel wool coat, jeans, tired but steady eyes"
+        },
+        {
+          "id": "shoulder",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, tiny healed burn marks on the inside of both wrists, dark chestnut hair cut to a clean shoulder-length bob, a cream knit sweater under a camel wool coat, dark trousers, level calm eyes (from episode 19)"
+        },
+        {
+          "id": "gown",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, tiny healed burn marks on the inside of both wrists, dark chestnut shoulder-length hair smoothed back behind her ears, a misty-grey floor-length gown with a modest high boat neckline and long sleeves, no jewelry, composed and still"
+        },
+        {
+          "id": "work",
+          "appearance": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, tiny healed burn marks on the inside of both wrists, dark chestnut shoulder-length hair tied in a low ponytail, clear safety goggles pushed up on her head, a dark canvas work apron over a grey henley with the sleeves rolled to the elbows, dark work trousers, sturdy boots"
+        },
+        {
+          "id": "nineteen",
+          "appearance": "a 19-year-old white Irish-American girl, slender, fair skin with faint freckles, soft grey-green eyes, long dark chestnut hair in a high ponytail, a faded T-shirt and a too-big leather apron, safety goggles on her forehead (flashback, twelve years ago)"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Despina",
+        "style": "General American accent, natural conversational pace, clear diction; 31-year-old woman, soft, steady and unhurried; in season one she apologizes too often and her sentences trail down; when she states a fact in public her voice goes quiet and very clear, never shrill"
+      },
+      "portrait": null,
+      "s1_episodes": "1–60",
+      "notes": "Hair: long until episode 18; cut to shoulder length in episode 19 and stays there. Season one look changes with the story: pregnant (1), hospital (2–5), motel coat (6–20), gown (26–30), work apron once Remelt opens (31 on). Glamour: furnace light on her goggles, the side of her face as she turns the blowpipe."
+    },
+    {
+      "id": "elias",
+      "setting_id": "elias-ashford",
+      "name": "Elias Ashford",
+      "appearance": "a 34-year-old Italian-American man, handsome, about 188 cm tall, lean with straight shoulders, olive skin, close-cropped dark brown hair, dark brown eyes, a defined jaw, thin silver wire-framed glasses, stands very upright, a charcoal three-piece suit, white shirt, no tie, his left hand usually in his trouser pocket",
+      "shot_looks": [
+        {
+          "id": "turtleneck",
+          "appearance": "a 34-year-old Italian-American man, handsome, about 188 cm tall, lean with straight shoulders, olive skin, close-cropped dark brown hair, dark brown eyes, a defined jaw, thin silver wire-framed glasses, stands very upright, a black merino turtleneck and charcoal trousers, a dark wool overcoat, his left hand usually in his pocket"
+        },
+        {
+          "id": "furnace",
+          "appearance": "a 34-year-old Italian-American man, handsome, about 188 cm tall, lean with straight shoulders, olive skin, close-cropped dark brown hair, dark brown eyes, a defined jaw, thin silver wire-framed glasses, stands very upright, a black T-shirt with the sleeves pushed up, a leather apron, heat-resistant gloves; with the left glove off, an old pale healed burn scar across the back of his left hand"
+        },
+        {
+          "id": "soot",
+          "appearance": "a lean 22-year-old Italian-American young man at a glass furnace, face smudged with soot so his features are hard to read, a sleeveless undershirt and a leather apron, a fresh bandage across the back of his left hand (flashback 'Soot', twelve years ago; never a clear face in season one)"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "General American accent, natural conversational pace, clear diction; 34-year-old man, low, sparse and exact; every sentence sounds like a contract clause; he never raises his voice; with Nora he slows down by half a beat"
+      },
+      "portrait": null,
+      "s1_episodes": "2, 10, 15–22, 24–27, 29–31, 35, 37, 44, 49, 55–56, 58–60",
+      "notes": "The scar on the back of his LEFT hand is hidden until episode 60 (gloves or hand in pocket; thread s01-t15). In episode 2 only the scarred hand dialing 911 is shown, never his face."
+    },
+    {
+      "id": "grant",
+      "setting_id": "grant-whitlock",
+      "name": "Grant Whitlock",
+      "appearance": "a 37-year-old white American man, good-looking in a polished way, sandy-blond hair neatly side-parted, clean-shaven, a warm practiced smile, rimless glasses, a light stone-colored tailored suit, a pale blue open-collar shirt, clear glass cufflinks, leans slightly forward when he talks",
+      "shot_looks": [
+        {
+          "id": "rain",
+          "appearance": "a 37-year-old white American man, good-looking in a polished way, sandy-blond hair neatly side-parted, clean-shaven, a warm practiced smile, rimless glasses, a navy raincoat over his light suit, hair damp, holding a dripping black umbrella"
+        },
+        {
+          "id": "young",
+          "appearance": "a 25-year-old white American man, sandy-blond side-parted hair, clean-shaven, an eager salesman's smile, a cheap grey suit and a lanyard, rimless glasses (flashback, Pell Glassworks sales manager twelve years ago)"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Algieba",
+        "style": "General American accent, natural conversational pace, clear diction; 37-year-old man, warm, smooth and even like a keynote speech, calls her 'Nor'; when cornered his sentences get short and clipped but he never shouts"
+      },
+      "portrait": null,
+      "s1_episodes": "1, 3–5, 8–9, 11–12, 18–20, 22, 26–31, 45, 57, 59–60",
+      "notes": "Model-husband image: soft lighting on him in public, colder light when he is alone."
+    },
+    {
+      "id": "sienna",
+      "setting_id": "sienna-vale",
+      "name": "Sienna Vale",
+      "appearance": "a 27-year-old Indian-American woman, striking, warm brown skin, a sharp jet-black chin-length bob, bold red lipstick, a slim gold watch on her LEFT wrist, a bright red tailored pantsuit with a modest neckline, pointed heels",
+      "shot_looks": [
+        {
+          "id": "yellow",
+          "appearance": "a 27-year-old Indian-American woman, striking, warm brown skin, a sharp jet-black chin-length bob, bold red lipstick, a slim gold watch on her LEFT wrist, a canary-yellow tailored blazer and matching trousers with a modest neckline, a tablet in her right hand, turning pages with her LEFT hand"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Zephyr",
+        "style": "General American accent, natural conversational pace, clear diction; 27-year-old woman, fast, bright and a little barbed, laughs before she says the cruel part"
+      },
+      "portrait": null,
+      "s1_episodes": "6–7, 19–20, 22, 26, 28, 50",
+      "notes": "She is left-handed: always write, sign and turn pages with her LEFT hand on screen (the payoff in episode 50)."
+    },
+    {
+      "id": "peg",
+      "setting_id": "peg-whitlock",
+      "name": "Margaret \"Peg\" Whitlock",
+      "appearance": "a 62-year-old white American woman, short permed grey hair, a sharp lined face, reading glasses on a beaded chain against her chest, a washed-out oatmeal cardigan over a plain blouse, dark slacks, sensible shoes, a small worn ledger and a pair of knitting needles in her hands",
+      "shot_looks": [
+        {
+          "id": "coat",
+          "appearance": "a 62-year-old white American woman, short permed grey hair, a sharp lined face, reading glasses on a beaded chain against her chest, a long brown quilted coat over her cardigan, pulling a small old wheeled suitcase, ledger tucked under her arm"
+        }
+      ],
+      "voice": {
+        "provider": "gemini",
+        "name": "Gacrux",
+        "style": "General American accent, natural conversational pace, clear diction; 62-year-old woman from a small Washington town, quick, blunt and dry; every kind thing comes out as a complaint; when she finally speaks about the hallway her voice drops and slows"
+      },
+      "portrait": null,
+      "s1_episodes": "1, 5, 8–16, 18–25, 34–35, 37, 39–40, 42, 44–45, 48, 50–53, 57–58",
+      "notes": "Her plain gold wedding band is on her left hand until episode 15, when she pawns it (thread s01-t13, paid off in 57). Her ledger lines are read aloud by her, never shown as readable text."
+    },
+    {
+      "id": "dana",
+      "setting_id": "dana-okafor",
+      "name": "Dana Okafor",
+      "appearance": "a 35-year-old Black Nigerian-American woman, deep brown skin, sharp intelligent eyes, hair in a neat high bun, a fitted black blazer over a white T-shirt, black trousers, white sneakers, three thick case files held against her chest",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "General American accent, natural conversational pace, clear diction; 35-year-old woman attorney, fast, cool and funny, finishes other people's sentences"
+      },
+      "portrait": null,
+      "s1_episodes": "17, 25, 29, 34, 36, 41–43, 48–50, 58",
+      "notes": "She wrote clause two."
+    },
+    {
+      "id": "theo",
+      "setting_id": "theo-park",
+      "name": "Theo Park",
+      "appearance": "a 29-year-old Korean-American man, neat black hair, round tortoiseshell glasses, a light blue button-down shirt under a grey knit sweater vest, khakis, always holding a tablet",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "General American accent, natural conversational pace, clear diction; 29-year-old man, flat, slow and earnestly literal, reads his observation log in a deadpan voice"
+      },
+      "portrait": null,
+      "s1_episodes": "16–17, 20–22, 24–25, 30, 34–35, 38, 45, 55, 58–59",
+      "notes": "Comic relief. His 'Mrs. Ashford Observation Log' is read aloud, not shown."
+    },
+    {
+      "id": "rosa",
+      "setting_id": "rosa-pell",
+      "name": "Rosa Pell",
+      "appearance": "a 63-year-old Italian-American woman, short salt-and-pepper hair, olive skin, laugh lines, a stained white apron over a dark sweater, an old silver bangle on her right wrist, often holding a soup ladle",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "General American accent, natural conversational pace, clear diction; 63-year-old woman, hearty and loud, scolds like she is feeding you"
+      },
+      "portrait": null,
+      "s1_episodes": "46–47, 49",
+      "notes": "In season one she looks at Nora a beat too long and says nothing about who she is."
+    },
+    {
+      "id": "walter",
+      "setting_id": "walter-pell",
+      "name": "Walter Pell",
+      "appearance": "a 55-year-old Italian-American man, thick rough hands, grey stubble, fine lines around his eyes from furnace heat, a heavy leather apron over a work shirt, warm furnace light on his face (flashback only)",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Rasalgethi",
+        "style": "General American accent, natural conversational pace, clear diction; 55-year-old man, gravelly, slow and kind; flashback lines only"
+      },
+      "portrait": null,
+      "s1_episodes": "28",
+      "notes": "Flashback only (episode 28)."
+    },
+    {
+      "id": "claire",
+      "setting_id": "claire-quinn",
+      "name": "Claire Quinn",
+      "appearance": "a 52-year-old white Irish-American woman, long grey-streaked chestnut hair pinned up, Nora's grey-green eyes, a loose natural linen shirt, fine healed burn marks on her fingertips (flashback only)",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Vindemiatrix",
+        "style": "General American accent, natural conversational pace, clear diction; 52-year-old woman, gentle, low and unhurried; flashback lines only"
+      },
+      "portrait": null,
+      "s1_episodes": "40",
+      "notes": "Flashback only (episode 40)."
+    },
+    {
+      "id": "gus",
+      "setting_id": "gus-moretti",
+      "name": "Gus Moretti",
+      "appearance": "a 70-year-old Italian-American man, stooped, a bald crown with white hair at the sides, reading glasses, a sleeveless white undershirt and old work trousers, both forearms and hands covered in old pale healed burn scars",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "General American accent, natural conversational pace, clear diction; 70-year-old man, slow and gravelly, old-timer plain talk, short sentences"
+      },
+      "portrait": null,
+      "s1_episodes": "31–34, 36–37, 39–40, 54–56",
+      "notes": "Throws his back out in episode 54."
+    },
+    {
+      "id": "sparks",
+      "setting_id": "rocco-moretti",
+      "name": "Rocco \"Sparks\" Moretti",
+      "appearance": "a 20-year-old Italian-American young man, buzz cut, a small silver stud earring, a black T-shirt, grey work pants, tan heat-protective sleeves on his forearms",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "General American accent, natural conversational pace, clear diction; 20-year-old man, loud, eager and always in a hurry"
+      },
+      "portrait": null,
+      "s1_episodes": "33–41, 46–48, 51, 54–57, 59–60",
+      "notes": "His crooked glass pieces become straight in episode 56 (thread s01-t26)."
+    },
+    {
+      "id": "dr-brandt",
+      "setting_id": "helen-brandt",
+      "name": "Dr. Helen Brandt",
+      "appearance": "a 48-year-old white German-American woman, short silver-blond bob, rectangular glasses, a white doctor's coat over navy scrubs, a calm attentive face",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Erinome",
+        "style": "General American accent, natural conversational pace, clear diction; 48-year-old woman doctor, even, precise and warm; pauses one beat before she speaks"
+      },
+      "portrait": null,
+      "s1_episodes": "2, 11–12, 33",
+      "notes": "'I'm so sorry.' (episode 2). Her six-month furnace ban is set in episode 33."
+    },
+    {
+      "id": "reyes",
+      "setting_id": "marcus-reyes",
+      "name": "Marcus Reyes",
+      "appearance": "a 45-year-old Mexican-American man, close-cropped black hair greying at the temples, a dark navy suit, white shirt, a thick case file tucked under his arm",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "General American accent, natural conversational pace, clear diction; 45-year-old male prosecutor, hard, short and fair; 'Bring me evidence, not a story.'"
+      },
+      "portrait": null,
+      "s1_episodes": "14, 53",
+      "notes": ""
+    },
+    {
+      "id": "fisk",
+      "setting_id": "leonard-fisk",
+      "name": "Leonard Fisk",
+      "appearance": "a 52-year-old white American man, slicked-back grey-brown hair, a sharp grey suit, gold-rimmed glasses, a black fountain pen always in his hand",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "General American accent, natural conversational pace, clear diction; 52-year-old male attorney, slow, smooth and formal, polite in a way that is a threat"
+      },
+      "portrait": null,
+      "s1_episodes": "6–8, 20, 25, 42–43, 50",
+      "notes": ""
+    },
+    {
+      "id": "crane",
+      "setting_id": "victor-crane",
+      "name": "Victor Crane",
+      "appearance": "a 61-year-old white American man, short and stocky, ruddy face, a dark band-collar jacket, a red casino-style poker chip with no lettering rolling across his knuckles",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "General American accent, natural conversational pace, clear diction; 61-year-old man, loud, laughs while he threatens"
+      },
+      "portrait": null,
+      "s1_episodes": "26",
+      "notes": "One appearance in season one (episode 26, launch front row)."
+    },
+    {
+      "id": "hale",
+      "setting_id": "judith-hale",
+      "name": "Judith Hale",
+      "appearance": "a 58-year-old Black American woman, short silver-white natural hair, a long black tunic, a single glass brooch at her collar, an appraising gaze",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "General American accent, natural conversational pace, clear diction; 58-year-old woman, cool and slow, every word deliberate"
+      },
+      "portrait": null,
+      "s1_episodes": "—",
+      "notes": "Not in season one (season two Harbor Lights); defined here so the face is locked."
+    },
+    {
+      "id": "penrose",
+      "setting_id": "douglas-penrose",
+      "name": "Douglas Penrose",
+      "appearance": "a 56-year-old white American man, neatly combed grey hair, a navy suit, a pale blue tie, a kindly smile",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "General American accent, natural conversational pace, clear diction; 56-year-old man, mild, courteous and easygoing"
+      },
+      "portrait": null,
+      "s1_episodes": "—",
+      "notes": "Not in season one; defined so the face is locked for later seasons."
+    },
+    {
+      "id": "nurse-kim",
+      "setting_id": "s01-nurse-kim",
+      "name": "Nurse Joanne Kim",
+      "appearance": "a Korean-American woman around 30, pale blue scrubs, short black hair tucked behind her ears, a round kind face, gentle eyes",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "General American accent, natural conversational pace, clear diction; 30-year-old nurse, very soft and gentle"
+      },
+      "portrait": null,
+      "s1_episodes": "2–3",
+      "notes": "Puts the half-knitted hat into a paper bag (episode 2)."
+    },
+    {
+      "id": "cole",
+      "setting_id": "s01-driver-cole",
+      "name": "Cole",
+      "appearance": "a 30-year-old Black American man, close-cropped hair, a black suit, white gloves, eyes down",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "General American accent, natural conversational pace, clear diction; 30-year-old driver, polite, few words, never meets your eye"
+      },
+      "portrait": null,
+      "s1_episodes": "1",
+      "notes": ""
+    },
+    {
+      "id": "dale",
+      "setting_id": "s01-pharmacist-dale",
+      "name": "Dale Hutchins",
+      "appearance": "a 40-year-old white American man, thick black-framed glasses, a white pharmacist's coat with two pens clipped in the breast pocket, meticulous",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "General American accent, natural conversational pace, clear diction; 40-year-old pharmacist, by-the-book, reads records in a level monotone"
+      },
+      "portrait": null,
+      "s1_episodes": "12–13",
+      "notes": ""
+    },
+    {
+      "id": "bev",
+      "setting_id": "s01-bev",
+      "name": "Bev",
+      "appearance": "a 55-year-old white American woman, short curly auburn-grey hair, a floral blouse, reading glasses on a beaded chain, behind a motel front desk with a bowl of peppermints",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "General American accent, natural conversational pace, clear diction; 55-year-old motel owner, chatty, nosy and soft-hearted"
+      },
+      "portrait": null,
+      "s1_episodes": "9, 14–16, 19–20",
+      "notes": "Second witness at the courthouse (episode 20)."
+    },
+    {
+      "id": "ray",
+      "setting_id": "s01-lighting-ray",
+      "name": "Ray",
+      "appearance": "a 30-year-old Filipino-American man, a black T-shirt and black cargo pants, a headset microphone, black gaffer tape around one wrist",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Achird",
+        "style": "General American accent, natural conversational pace, clear diction; 30-year-old lighting tech, quick and friendly"
+      },
+      "portrait": null,
+      "s1_episodes": "27",
+      "notes": ""
+    },
+    {
+      "id": "lyle",
+      "setting_id": "s01-reporter-lyle",
+      "name": "Lyle Becker",
+      "appearance": "a 30-year-old white American man, a DSLR camera on a strap with no logo, a plaid shirt, a backwards plain baseball cap, chewing gum",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "General American accent, natural conversational pace, clear diction; 30-year-old blogger, fast and pushy, talks in headlines"
+      },
+      "portrait": null,
+      "s1_episodes": "26, 28–29, 46–47, 57",
+      "notes": ""
+    },
+    {
+      "id": "hank",
+      "setting_id": "s01-supplier-hank",
+      "name": "Hank Doyle",
+      "appearance": "a 50-year-old white American man, buzz cut, a grey work jacket, white sand in the creases of his fingers, avoids eye contact",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "General American accent, natural conversational pace, clear diction; 50-year-old supplier, mumbling, uncomfortable"
+      },
+      "portrait": null,
+      "s1_episodes": "38–39",
+      "notes": ""
+    },
+    {
+      "id": "fiona",
+      "setting_id": "s01-ferry-fiona",
+      "name": "Fiona Marsh",
+      "appearance": "a 40-year-old Chinese-American woman, sleek low ponytail, a white shirt under a navy blazer, an ID badge on a lanyard with no readable text, a thick spec binder",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "General American accent, natural conversational pace, clear diction; 40-year-old project officer, crisp and businesslike"
+      },
+      "portrait": null,
+      "s1_episodes": "38, 46, 54, 56–57",
+      "notes": ""
+    },
+    {
+      "id": "wexler",
+      "setting_id": "s01-examiner-wexler",
+      "name": "Arthur Wexler",
+      "appearance": "a 55-year-old white American man, grey hair parted at the side, a grey sweater vest over a white shirt, black sleeve protectors, a magnifying loupe and a clear comparison ruler",
+      "shot_looks": [],
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "General American accent, natural conversational pace, clear diction; 55-year-old document examiner, slow, exact, slightly fussy"
+      },
+      "portrait": null,
+      "s1_episodes": "43, 50",
+      "notes": "'The tracing was likely done left-handed.' (episode 50)"
+    }
+  ],
+  "extras": [
+    {
+      "id": "installers",
+      "name": "Curtain installers",
+      "appearance": "two men in plain grey work overalls with no lettering, carrying heavy dark curtain rolls",
+      "voice": null,
+      "episodes": "6–7",
+      "note": "No dialogue; backs or hands only."
+    },
+    {
+      "id": "judge",
+      "name": "Superior Court judge",
+      "appearance": "a white-haired judge in a black robe at the bench, seen in medium shot",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "General American accent, natural conversational pace, clear diction; judge, dry and procedural"
+      },
+      "episodes": "20",
+      "note": "One or two lines entering the decree."
+    },
+    {
+      "id": "clerk",
+      "name": "County Clerk",
+      "appearance": "a middle-aged county clerk at a service window, cardigan, no name tag text",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "General American accent, natural conversational pace, clear diction; clerk, cheerful and quick"
+      },
+      "episodes": "20",
+      "note": "Off-center, shoulders and hands."
+    },
+    {
+      "id": "pawnbroker",
+      "name": "Pawnbroker",
+      "appearance": "a 60-year-old pawnbroker behind a glass counter, cardigan, jeweler's loupe on his forehead",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "General American accent, natural conversational pace, clear diction; pawnbroker, bored and transactional"
+      },
+      "episodes": "15",
+      "note": ""
+    },
+    {
+      "id": "bank-teller",
+      "name": "Bank teller",
+      "appearance": "a young bank teller behind a counter, plain blazer, no logo",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "General American accent, natural conversational pace, clear diction; teller, polite and apologetic"
+      },
+      "episodes": "15",
+      "note": ""
+    },
+    {
+      "id": "police-officer",
+      "name": "Desk officer",
+      "appearance": "a uniformed police desk officer with a plain uniform and no readable badge text",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "General American accent, natural conversational pace, clear diction; officer, tired and procedural"
+      },
+      "episodes": "14",
+      "note": ""
+    },
+    {
+      "id": "launch-guests",
+      "name": "Launch guests",
+      "appearance": "well-dressed guests in muted evening wear holding up phones with blank screens, at a product launch",
+      "voice": null,
+      "episodes": "26–29",
+      "note": "Crowd; no readable screens."
+    },
+    {
+      "id": "reporters",
+      "name": "Reporters",
+      "appearance": "a cluster of reporters with cameras and microphones with no logos",
+      "voice": null,
+      "episodes": "28–29, 46–47",
+      "note": "Crowd."
+    },
+    {
+      "id": "ferry-crowd",
+      "name": "Maiden-voyage crowd",
+      "appearance": "a crowd in rain jackets under a new ferry terminal's glass roof, looking up",
+      "voice": null,
+      "episodes": "57",
+      "note": "Crowd."
+    }
+  ],
+  "sets": [
+    {
+      "id": "glass-house-ext",
+      "name": "The Glass House, exterior",
+      "prompt": "a modern single-story house made almost entirely of floor-to-ceiling glass on a grassy bluff above grey Puget Sound water, a slim black steel frame, a gravel drive with one tall black lamppost by the front door, overcast Pacific Northwest light, no text"
+    },
+    {
+      "id": "glass-house-living",
+      "name": "The Glass House, living room and dining table",
+      "prompt": "inside a glass-walled modern house: pale oak floor, a long pale wood dining table, a low grey sofa, grey sea and sky through every wall, cool blue daylight, minimal decor, a cream vase on a shelf, no text"
+    },
+    {
+      "id": "glass-house-nursery",
+      "name": "The Glass House, nursery",
+      "prompt": "a small half-finished nursery in a glass house: a white crib, a rocking chair with a basket of knitting, one huge floor-to-ceiling window onto the grey sea, soft cold light, no text"
+    },
+    {
+      "id": "glass-house-bedroom",
+      "name": "The Glass House, bedroom",
+      "prompt": "a minimal bedroom with glass walls onto the sea at night, a low bed, a bare nightstand with a glass of water, reflections of the room in the dark glass, no text"
+    },
+    {
+      "id": "hallway",
+      "name": "Merrow General, seventh-floor hallway",
+      "prompt": "a long empty hospital corridor at night, pale green-grey walls, a row of closed doors, linoleum floor, and at the very end one ceiling light that flickers, no readable signs"
+    },
+    {
+      "id": "hospital-room",
+      "name": "Merrow General, seventh-floor room",
+      "prompt": "a quiet single hospital room at dawn, a bed by a rain-streaked window, a plain chair, soft grey light, no monitors showing data, no readable text"
+    },
+    {
+      "id": "exam-room",
+      "name": "Merrow General, OB-GYN exam room",
+      "prompt": "a clean bright exam room, a desk with a small lamp, two chairs, a white wall, no medical procedure visible, no readable text"
+    },
+    {
+      "id": "pharmacy",
+      "name": "Merrow General, outpatient pharmacy",
+      "prompt": "a hospital outpatient pharmacy counter with a glass partition, plain white shelving of unlabeled boxes behind, fluorescent light, no readable labels"
+    },
+    {
+      "id": "motel-room",
+      "name": "Harborview Motor Inn, room with two beds",
+      "prompt": "a modest old roadside motel room: two twin beds with faded quilts, a small table by the window, a lamp, rain on the window, a neon glow from outside with no readable letters"
+    },
+    {
+      "id": "motel-front",
+      "name": "Harborview Motor Inn, front desk and lot",
+      "prompt": "a small 1970s harbor motel: a wood-paneled front office with a desk and a bowl of peppermints, a two-story row of doors along an open walkway, a wet parking lot, a black sedan across the street, a neon sign with no readable letters"
+    },
+    {
+      "id": "police-desk",
+      "name": "Port Merrow Police, front desk",
+      "prompt": "a small police station lobby with a front counter behind glass, plastic chairs, notice boards with no readable text"
+    },
+    {
+      "id": "prosecutor",
+      "name": "Merrow County Prosecutor's Office",
+      "prompt": "a government office: a cluttered desk stacked with case files, blinds over a window onto a grey civic plaza, a corridor of frosted-glass doors with no readable text"
+    },
+    {
+      "id": "pawnshop",
+      "name": "Harbor pawnshop",
+      "prompt": "a narrow pawnshop with glass display cases of rings and watches, warm yellow light, no readable signs"
+    },
+    {
+      "id": "courtroom",
+      "name": "Merrow County Superior Court, courtroom",
+      "prompt": "a wood-paneled courtroom: the judge's bench, two counsel tables, a gallery of benches, tall windows with grey light, no readable text or seals"
+    },
+    {
+      "id": "clerk-office",
+      "name": "County Clerk's office",
+      "prompt": "a county clerk's office across a courthouse hallway: a service window, a counter with forms, a bench, soft fluorescent light, no readable signs"
+    },
+    {
+      "id": "courthouse-steps",
+      "name": "Courthouse front steps",
+      "prompt": "the wide stone steps of a classical civic courthouse under an overcast sky, columns, wet pavement, no readable inscription"
+    },
+    {
+      "id": "ashford-house-ext",
+      "name": "The Ashford house on the hill, exterior",
+      "prompt": "a stark modern house of grey board-formed concrete on a wooded hillside, very few small windows, a long flat roof, mist in the firs, no text"
+    },
+    {
+      "id": "ashford-dining",
+      "name": "The Ashford house, long dining table and kitchen",
+      "prompt": "inside a grey concrete house: a very long dark walnut dining table under one pendant lamp, a professional steel kitchen behind, almost no windows, warm pools of lamplight against cold concrete, no text"
+    },
+    {
+      "id": "ashford-study",
+      "name": "The Ashford house, study door and hallway",
+      "prompt": "a dim concrete hallway ending at a closed dark wood study door with a strip of light under it, a small table beside it, no text"
+    },
+    {
+      "id": "ashford-guest",
+      "name": "The Ashford house, guest room",
+      "prompt": "a plain guest room in a concrete house: a neat bed, one narrow vertical window, a floor-length mirror, a suitcase by the wall, no text"
+    },
+    {
+      "id": "launch-stage",
+      "name": "Whitlock Home flagship store, launch stage",
+      "prompt": "a sleek home-goods flagship store turned into a launch venue: a low white stage, a plinth with a cream glass vase under a spotlight, rows of guests, a lighting booth at the back, logos replaced by blank panels, no readable text"
+    },
+    {
+      "id": "backstage",
+      "name": "Whitlock Home, backstage corridor",
+      "prompt": "a narrow white backstage corridor with cables taped to the floor, a fire door, harsh overhead light, a man standing at the far end, no readable signs"
+    },
+    {
+      "id": "pell-ext",
+      "name": "Kiln Row and Pell Glassworks, exterior",
+      "prompt": "a rundown waterfront street of old red-brick industrial buildings, a tall rusted steel door with a faded painted sign whose letters are worn illegible, next door a small shuttered studio with a dusty window, a chowder shack on the corner, grey harbor light"
+    },
+    {
+      "id": "remelt",
+      "name": "Remelt Studio (Pell Glassworks main floor)",
+      "prompt": "inside an old brick glassworks: a large round glass furnace with a glowing orange mouth ('Number Three'), steel blowpipes on a rack, a workbench with tools, an annealing oven, a wall of engraved clear glass panels (the evidence wall), a long horizontal glass tube with a few glass beads mounted on the brick wall, a light box on a long table, warm orange furnace light against cold blue window light, no readable text"
+    },
+    {
+      "id": "remelt-cold",
+      "name": "Pell Glassworks before relighting",
+      "prompt": "the same old brick glassworks cold and abandoned: the round furnace under a dusty canvas tarp, cobwebs, dust in thin daylight from high windows, stacked old sand sacks, no text"
+    },
+    {
+      "id": "pell-flashback",
+      "name": "Pell Glassworks twelve years ago",
+      "prompt": "the same brick glassworks alive and busy twelve years ago: several glowing furnaces, workers in leather aprons, a sooty young man at Furnace No. 3, warm hazy golden light, no text"
+    },
+    {
+      "id": "rosas",
+      "name": "Rosa's chowder shack",
+      "prompt": "a tiny corner chowder shack: a counter with four stools, steaming pots, a chalkboard with no readable writing, a window onto the wet street, warm yellow light"
+    },
+    {
+      "id": "ferry-terminal",
+      "name": "New ferry terminal, main hall",
+      "prompt": "a new ferry terminal hall with a soaring glass roof and a long chandelier of blue glass panels hanging overhead, rain outside, crowds, no readable signs"
+    },
+    {
+      "id": "ashford-boardroom",
+      "name": "Ashford Construction, top-floor boardroom",
+      "prompt": "a minimal top-floor boardroom with a long table and a wall of glass over the grey harbor, no logos, no text"
+    },
+    {
+      "id": "sand-supply",
+      "name": "Doyle Sand & Batch",
+      "prompt": "a small industrial supply yard and office: pallets of plain unlabeled sand sacks, a forklift, a dusty counter, no readable signs"
+    }
+  ],
+  "props": [
+    {
+      "id": "half-pill",
+      "name": "The half pill in a tissue",
+      "prompt": "half of a small round white tablet with a faint shallow engraved line, resting in a crumpled white tissue",
+      "note": "Generic tablet; never a real drug name or packaging."
+    },
+    {
+      "id": "two-pills",
+      "name": "Real pill and fake pill",
+      "prompt": "two small round white tablets side by side under a desk lamp, almost identical, the left one's engraved line slightly shallower",
+      "note": "Episode 11 comparison."
+    },
+    {
+      "id": "knit-hat",
+      "name": "The half-knitted baby hat",
+      "prompt": "a tiny half-knitted baby hat in soft cream wool, still on two wooden knitting needles, a loose tail of yarn",
+      "note": ""
+    },
+    {
+      "id": "glass-bird",
+      "name": "The crooked glass bird",
+      "prompt": "a small clear hand-blown glass bird, slightly lopsided, one wing lower than the other",
+      "note": "Appears in the dream; the real one is Elias's keepsake (later seasons)."
+    },
+    {
+      "id": "keepsake",
+      "name": "The Keepsake block",
+      "prompt": "a heavy rectangular block of thick clear cast glass the size of a brick, slightly greenish, with a faint shadow of something folded inside",
+      "note": "Never show what is inside in season one."
+    },
+    {
+      "id": "forever-vase",
+      "name": "The Forever vase",
+      "prompt": "a tall elegant cream-white hand-blown glass vase with a soft swelling body; turned over, a tiny row of air bubbles in the thick base",
+      "note": "The bubbles spell her initials and date: show as a pattern, add any letters in post."
+    },
+    {
+      "id": "clauses",
+      "name": "The three clauses",
+      "prompt": "a single sheet of heavy white paper with three short numbered paragraphs and a signature line, text not readable",
+      "note": "Add any readable text in post, never in generation."
+    },
+    {
+      "id": "ledger",
+      "name": "Peg's ledger",
+      "prompt": "a small worn brown pocket ledger with a pencil tucked in its spine",
+      "note": ""
+    },
+    {
+      "id": "peg-ring",
+      "name": "Peg's wedding ring",
+      "prompt": "a plain thin worn gold wedding band",
+      "note": ""
+    },
+    {
+      "id": "case-tracker",
+      "name": "The case tracker",
+      "prompt": "a long horizontal clear glass tube mounted on brick, six evenly spaced small brass marks along it, one or two clear glass beads inside",
+      "note": "Stage names added in post if needed; beads: Report (until 49), Charges (50 on)."
+    },
+    {
+      "id": "evidence-panels",
+      "name": "Evidence wall panels",
+      "prompt": "clear glass panels the size of a book hung on a steel rack against brick, two of them engraved with short lines of frosted text that is not readable",
+      "note": "Two panels from episode 51."
+    },
+    {
+      "id": "light-box",
+      "name": "The light box",
+      "prompt": "a large flat white light box on a long table, two paper documents laid on it with signatures glowing through",
+      "note": ""
+    },
+    {
+      "id": "blowpipe",
+      "name": "Blowpipe with a glowing gather",
+      "prompt": "a long steel glassblowing pipe with a glowing orange gather of molten glass at the end",
+      "note": ""
+    },
+    {
+      "id": "receipt",
+      "name": "Confectionery receipt",
+      "prompt": "a small crumpled thermal receipt with faded print, not readable",
+      "note": "Peg's evidence (episode 52)."
+    },
+    {
+      "id": "invitation",
+      "name": "Launch invitation",
+      "prompt": "a heavy cream card invitation in a matching envelope, elegant blank face",
+      "note": "'Mrs. Ashford' in post only."
+    },
+    {
+      "id": "marriage-application",
+      "name": "Sienna's marriage application",
+      "prompt": "a folded government form, not readable, folded twice into a man's breast pocket",
+      "note": ""
+    },
+    {
+      "id": "poker-chip",
+      "name": "Crane's poker chip",
+      "prompt": "a red casino-style poker chip with no lettering",
+      "note": ""
+    },
+    {
+      "id": "examiner-tools",
+      "name": "Examiner's loupe and ruler",
+      "prompt": "a brass-rimmed magnifying loupe and a clear plastic comparison ruler on paper",
+      "note": ""
+    },
+    {
+      "id": "chandelier",
+      "name": "Ferry terminal chandelier",
+      "prompt": "a long chandelier of twenty-four hand-blown deep blue glass panels hanging in a row, lit from within",
+      "note": ""
+    }
+  ]
+}

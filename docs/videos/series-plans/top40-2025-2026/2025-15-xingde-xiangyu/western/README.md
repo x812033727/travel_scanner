@@ -152,6 +152,7 @@
 | `outline.json`／[`outline.md`](outline.md) | 第一季總綱與六個篇章（只收第一季） |
 | `season-01.json`／[`season-01.md`](season-01.md) | 第一季 60 集英文逐集細綱 |
 | [`episodes.csv`](episodes.csv) | 逐集總表 |
+| [`production/cast.json`](production/cast.json) | 製作共用的提示詞：畫風、27 個角色的外貌與換裝（英文）、Gemini 聲音候選、路人、30 個場景、19 件道具 |
 
 ```bash
 node docs/videos/series-plans/top40-2025-2026/lib/validate.mjs docs/videos/series-plans/top40-2025-2026/2025-15-xingde-xiangyu/western --season 1
@@ -162,6 +163,6 @@ node docs/videos/series-plans/top40-2025-2026/lib/build.mjs docs/videos/series-p
 
 ## 下一步
 
-1. 寫英文 `cast.json`（外貌、聲音、場景、道具提示詞），照中文版各劇 `production/` 的做法。
+1. 試鏡：用 `production/cast.json` 畫 Nora、Elias、Grant、Peg 的定妝照，鎖臉後填 `portrait`。
 2. 前三集英文劇本加分鏡，照 `animation-preproduction` 的鎖定流程做三鏡小樣，花錢前報價。
 3. 英文配音選角：Nora、Elias、Grant、Peg 四個聲線先試聽。
