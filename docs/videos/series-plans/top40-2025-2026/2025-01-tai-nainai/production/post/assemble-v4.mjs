@@ -327,7 +327,7 @@ const graph = [
   // Music ducking under dialogue: `duck_ratio` and `duck_release_ms` in the edit list (defaults 8 and 350 ms, as before).
   `[mus][key]sidechaincompress=threshold=0.02:ratio=${edit.duck_ratio ?? 8}:attack=15:release=${edit.duck_release_ms ?? 350}:makeup=1[ducked]`,
   `${sfxParts.join("")}amix=inputs=${sfxParts.length}:normalize=0:duration=longest[fx]`,
-  `[dlg][ducked][fx]amix=inputs=3:normalize=0:duration=first,loudnorm=I=-14:TP=-2:LRA=11,aresample=48000[mix]`,
+  `[dlg][ducked][fx]amix=inputs=3:normalize=0:duration=first,loudnorm=I=-14:TP=-2:LRA=11,aresample=48000,alimiter=limit=0.75:level=false:attack=2:release=60[mix]`,  // 一次過的 loudnorm 遇到短促的大聲（第 1 集 c48 摔盤）會衝到 -0.9 dBFS，後面加 limiter 壓在 -2.5（2026-11-09）
 ].join(";");
 const fmt = (s) => { const ms = Math.round(s * 1000); const h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, sec = Math.floor(ms / 1000) % 60; return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")},${String(ms % 1000).padStart(3, "0")}`; };
 if (DUB) {
