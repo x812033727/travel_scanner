@@ -434,7 +434,7 @@ doc = {
                        "本集插圖由 AI 生成，畫的是示意，不是顯微照片，也不是量測。片中的數字大多來自以大守宮（Tokay gecko）做的研究，是大約的數字，換一種壁虎不一定一樣。"
                        "看到壁虎請不要去抓牠。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["壁虎", "大守宮", "凡得瓦力", "鐵氟龍", "生物力學", "科普", "原來如此事務所"],
-        "video_id": None},
+        "video_id": "mtfFC-LhM0A"},
     "thumbnail": {"template": "thumb", "data": {"headline": "黏得住\n**怎麼走？**", "sub": "腳底沒有膠", "shot": "kid-ceiling", "subject": "right"}},
     "sources": [
         {"title": "Autumn et al. (2000), Adhesive force of a single gecko foot-hair, Nature 405: 681–685", "url": "https://doi.org/10.1038/35015073", "checked_on": CHECKED},

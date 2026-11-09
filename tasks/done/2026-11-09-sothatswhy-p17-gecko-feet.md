@@ -1,13 +1,13 @@
 ---
 id: 2026-11-09-sothatswhy-p17-gecko-feet
 title: 原來如此事務所對話版：P17 壁虎黏得住，怎麼又能走得動？
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5.5-focused-hopper
 claimed_at: 2026-11-09T00:00:54Z
 created_at: 2026-11-09T00:00:49Z
-completed_at:
+completed_at: 2026-11-09T15:26:26Z
 branch: claude/focused-hopper-zq70n8
 depends_on: []
 scope:
@@ -29,7 +29,7 @@ scope:
 - [x] 旁白兩個聲音、`check-audio`，核准；角色設定圖沿用系列。
 - [x] 插圖畫完、另一個代理逐張放大檢查、分鏡評分 ≥ 49／70，核准分鏡。
 - [x] 配樂（`sothatswhy-bed-r2.m4a`）→ 合成 → `qa` 11 項 → 成片送站主（`final`）。
-- [ ] 上架確認、八語翻譯與配音、八語縮圖、語言包，站主核准。
+- [x] 上架確認、八語翻譯與配音、八語縮圖、語言包，站主核准。
 - [x] 每過一關備份到 `transfer/sothatswhy-p17-gecko-feet`（`docs/videos/explainer-series/backup/tobranch.sh`）。
 
 ## How to verify
@@ -69,3 +69,4 @@ scope:
 - 2026-11-09：站主另開系列備份 repo；P17 全部工作目錄再推一份到 `x812033727/mokaair-video-backup-sothatswhy` 的 `transfer/sothatswhy-p17-gecko-feet`（a75a3734，`coverage.sh` 0/0）。
 - 2026-11-09：八語打包後上架包內容變了（metadata 34f08c → 6817d0），站上判定舊的上架核准對不上，重送 `--gate publish`；
   站主核准語言包與新的上架包。全部關卡核准，剩上傳 YouTube、記下影片網址後 `npm run tasks -- done`。
+- 2026-11-09：上架 YouTube，影片 ID `mtfFC-LhM0A`（https://youtu.be/mtfFC-LhM0A），已寫進 `build_scenes.py` 的 `youtube.video_id`。結案。
