@@ -133,7 +133,7 @@ kid("kid-main-q", K("holding her yellow pencil in both hands and staring at it w
 
 # ---------- 第一章：先看鉛筆留下什麼 ----------
 chief("chief-start", C("tapping the tip of a yellow pencil with one finger, a curious smile", close=True),
-      c("你剛剛問筆芯怎麼這麼容易掉，", "接住上一句"), c("把筆芯拆開來看，它其實是兩樣東西混在一起的。", None, "S:mix"), chapter="筆芯裡不只有碳")
+      c("差在哪？線索就在你這支筆芯裡。", "賣關子"), c("把筆芯拆開來看，它其實是兩樣東西混在一起的。", None, "S:mix"), chapter="筆芯裡不只有碳")
 kid("kid-which-q", K("holding up two fingers with a curious face", close=True),
     k("哪兩樣？", "句尾上揚"))
 scene("two-powders", "Close-up of two small neat heaps on a plain wooden board, one heap of shiny dark grey powder with a metallic sheen and one heap of soft pale grey clay powder, " + DAY,
@@ -365,7 +365,7 @@ chief("chief-answer", C("sitting on the edge of a desk and leaning forward with 
 kid("kid-got-it", K("holding up her yellow pencil proudly with a big confident grin", where=DESK),
     k("我懂了！", "恍然大悟", "P:enough"), k("就像你說的，", "篤定"), k("真的差在怎麼排！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
-      c("說得好，而且是你自己想通的。", "笑"), c("我覺得這就是材料最有意思的地方。"))
+      c("說得好，你把整件事串起來了。", "笑"), c("我覺得這就是材料最有意思的地方。"))
 kid("kid-redraw-q", K("holding up her smudged drawing with a hopeful face", where=DESK),
     k("那我的畫，以後還會糊嗎？", "句尾上揚"))
 chief("chief-drawing-back", C("holding up a smudged child's drawing on a plain white drawing sheet with a kind smile"),
