@@ -109,8 +109,8 @@
 | 項目 | 中文版 | 歐美版建議 | 誰決定 |
 | --- | --- | --- | --- |
 | 語言 | 國語配音 | **英文原寫、英文配音**，不從中文翻譯配音；台詞節奏與笑點要重寫 | 已定方向 |
-| 畫面比例 | 16:9（plan.json 的建議，未定） | 上 ReelShort、DramaBox 這類平台用 **9:16**；只上 YouTube 用 16:9。兩種都要的話，**以 9:16 構圖、16:9 補邊**比反過來好做 | **站主** |
-| 集數 | 5 季 × 60 集 | 先做**第一季 60 集**（剛好停在 *"Twelve years"* 那個認人的懸念），數字好再做下一季；歐美平台單一作品多在 60–100 集，60 集是合適的單位 | **站主** |
+| 畫面比例 | 16:9（plan.json 的建議，未定） | **16:9**（站主 2026-11-09 定案；先上 YouTube，之後要上直式平台再另外裁） | 已定 |
+| 集數 | 5 季 × 60 集 | **第一季 60 集**（站主 2026-11-09 定案；停在 *"Twelve years"* 那個認人的懸念），數字好再做下一季 | 已定 |
 | 單集 | 90–180 秒 | 平台上 **60–120 秒**較常見；中文版每集 3–5 個鉤子的密度夠，可以照原集數、把文戲剪短 | 寫英文劇本時定 |
 | 畫風 | 真人電影感，東亞演員 | 真人電影感，**多元種族的歐美演員**；`cast.json` 全部重寫 | 已定方向 |
 | 製作路線 | 海螺（MiniMax Hailuo）圖生影片 | 不變；真人電影感能不能撐住，先看《恁祖媽今年18》的試鏡結果（`tasks/open/2026-11-06-tai-nainai-screen-test.md`） | 依試鏡結果 |
@@ -140,10 +140,28 @@
 - **Cliffhanger**：門鎖換了。Leonard Fisk 遞上財產協議書：*"You already signed the house over, Mrs. Whitlock."*
   — *"I never signed that."* 坡道下，Peg 提著行李追上來：*"I'm going with her."* — *"Mom!"* — *"Make your own dinner, Grant."*
 
+## 英文版檔案
+
+這個目錄就是英文版的企劃目錄，形狀跟中文版相同，用同一套 `lib/validate.mjs` 與 `lib/build.mjs`：
+
+| 檔 | 內容 |
+| --- | --- |
+| [`GLOSSARY.md`](GLOSSARY.md) | 改編對照表：人名與 id、地名、物件、程序改法、一定要落地的台詞；英文版的寫作以它為準 |
+| `plan.json` | 英文版規格（16:9、第一季 60 集） |
+| `setting.json`／[`setting.md`](setting.md) | 英文設定集：世界、規則、18 位人物（多元種族的真人外貌提示詞）、12 條謎團 |
+| `outline.json`／[`outline.md`](outline.md) | 第一季總綱與六個篇章（只收第一季） |
+| `season-01.json`／[`season-01.md`](season-01.md) | 第一季 60 集英文逐集細綱 |
+| [`episodes.csv`](episodes.csv) | 逐集總表 |
+
+```bash
+node docs/videos/series-plans/top40-2025-2026/lib/validate.mjs docs/videos/series-plans/top40-2025-2026/2025-15-xingde-xiangyu/western --season 1
+node docs/videos/series-plans/top40-2025-2026/lib/build.mjs docs/videos/series-plans/top40-2025-2026/2025-15-xingde-xiangyu/western --check
+```
+
+只驗第一季要加 `--season 1`：設定集的 12 條謎團有一半在第二到五季才揭，不帶這個參數，檢查器會要求每條謎團都在已寫的季裡揭一次。
+
 ## 下一步
 
-1. 站主決定**畫面比例**與**先做幾集**（上表兩個「站主」欄）。
-2. 寫英文 `cast.json`（外貌、聲音、場景、道具提示詞）與第一季 60 集英文逐集細綱，照中文版
-   `season-01.json` 的欄位與 `lib/validate.mjs` 的規則（鉤子、懸念類型、每集進度）。
-3. 前三集英文劇本加分鏡，照 `animation-preproduction` 的鎖定流程做三鏡小樣，花錢前報價。
-4. 英文配音選角：Nora、Elias、Grant、Peg 四個聲線先試聽。
+1. 寫英文 `cast.json`（外貌、聲音、場景、道具提示詞），照中文版各劇 `production/` 的做法。
+2. 前三集英文劇本加分鏡，照 `animation-preproduction` 的鎖定流程做三鏡小樣，花錢前報價。
+3. 英文配音選角：Nora、Elias、Grant、Peg 四個聲線先試聽。
