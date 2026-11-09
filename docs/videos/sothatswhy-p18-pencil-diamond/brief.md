@@ -62,7 +62,7 @@
 
 ## 縮圖（畫關鍵影格之前定好，explainer-series/README.md）
 
-`thumbnail.data`：`headline`「都是碳／**差在哪？**」、`sub`「鉛筆芯和鑽石」、`shot` `kid-grey-hand`（小問 waist-up，攤開手掌側邊黑黑的手、另一手拿黃色鉛筆、張嘴驚訝）、`subject: "right"`。
+`thumbnail.data`：`headline`「都含碳／**差在哪？**」、`sub`「鉛筆芯和鑽石」、`shot` `kid-grey-hand`（小問 waist-up，攤開手掌側邊黑黑的手、另一手拿黃色鉛筆、張嘴驚訝）、`subject: "right"`。
 標題與副標都短，翻成 en／ja／pt／id 也不容易撞到右上的系列標記。
 
 ## 查核清單（結果在 `claims.md`）

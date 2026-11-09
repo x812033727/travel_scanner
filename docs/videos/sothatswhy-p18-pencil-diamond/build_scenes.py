@@ -294,7 +294,7 @@ scene("hammer-chip", "Close-up of a small steel hammer lying on a smooth steel b
 kid("kid-frame-break-q", K("holding the bars of a sturdy red playground climbing frame with a surprised face", where=PARK),
     k("攀爬架也會裂？", "驚訝"))
 chief("chief-weak-way", C("tilting one flat hand slowly to one side, a thoughtful smile", close=True),
-      c("他們說，鑽石裡有幾個方向，碳跟碳離得比較遠，"), c("順著那些方向，就比較容易裂開。"))
+      c("他們說，鑽石裡有幾個方向，跨過去牽著的手比較少，"), c("順著那些方向，就比較容易裂開。"))
 scene("cleave-line", "Close-up of a small clear rough diamond crystal resting on a smooth steel block, a thin bright line of light running straight across it where it will split, a small steel chisel lying beside it, " + DAY,
       c("切鑽石的人，有時就是順著這種方向，故意把它敲開。"))
 
@@ -355,7 +355,7 @@ kid("kid-direction-q", K("turning her yellow pencil sideways in her fingers with
 model("stack-glow", "Medium shot from the side of " + STACK + ", a soft warm golden glow running along the top net only" + FLATDRAW,
       c("沿著一張網跑很順，"), c("要從這一層跳到下一層，就難多了。"))
 chief("chief-hundred", C("holding one flat hand still and sliding the other hand smoothly across it, a pleased smile"),
-      c("量出來，沿著層走，大約比穿過層，好走上百倍。", "數字放慢", "P:dir"))
+      c("量出來，沿著層走，比穿過層好走幾百到上千倍。", "數字放慢", "P:dir"))
 kid("kid-long-q", K("stretching her two hands far apart with a curious face", where=DESK),
     k("線畫很長的話，", "追問"), k("燈還會亮嗎？", "句尾上揚", "S:long"))
 scene("stroke-long", "Close-up of a very long winding thick dark grey pencil stroke on a plain white drawing sheet, a round battery at one end and a tiny LED glowing faintly at the other end, " + DAY,
@@ -448,7 +448,7 @@ doc = {
                        "接著讓這個模型去猜：哪一個會滑、哪一個比較硬、最硬是不是就打不破，最後用一條鉛筆線讓小燈亮起來，看排法怎麼連導電都改掉。\n\n"
                        "本集插圖由 AI 生成，積木是示意的模型，真的碳不是木球。數字是大約的數字。鉛筆線導電的小實驗只用小電池，千萬不要接家裡的插座。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["鉛筆", "鑽石", "石墨", "碳", "硬度", "導電", "科普", "原來如此事務所"]},
-    "thumbnail": {"template": "thumb", "data": {"headline": "都是碳\n**差在哪？**", "sub": "鉛筆芯和鑽石", "shot": "kid-grey-hand", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "都含碳\n**差在哪？**", "sub": "鉛筆芯和鑽石", "shot": "kid-grey-hand", "subject": "right"}},
     "sources": [
         {"title": "USGS Professional Paper 1802-J (2017), Graphite (Robinson et al.), Critical Mineral Resources of the United States", "url": "https://pubs.usgs.gov/pp/1802/j/pp1802j.pdf", "checked_on": CHECKED},
         {"title": "USGS General Interest Publication, Gemstones: Mineral gemstones (Mohs hardness scale)", "url": "https://pubs.usgs.gov/gip/gemstones/mineral.html", "checked_on": CHECKED},

@@ -163,7 +163,7 @@
 
 ## 來源
 
-1. Robinson, G. R., Jr., Hammarstrom, J. M. & Olson, D. W. (2017). Graphite. Chap. J of *Critical Mineral Resources of the United States*, USGS Professional Paper 1802-J. https://pubs.usgs.gov/pp/1802/j/pp1812j.pdf（2026-11-09 用 curl 下載 PDF、`pdftotext` 讀 Introduction、Mineralogy、表 J2、圖 J1）
+1. Robinson, G. R., Jr., Hammarstrom, J. M. & Olson, D. W. (2017). Graphite. Chap. J of *Critical Mineral Resources of the United States*, USGS Professional Paper 1802-J. https://pubs.usgs.gov/pp/1802/j/pp1802j.pdf（2026-11-09 用 curl 下載 PDF、`pdftotext` 讀 Introduction、Mineralogy、表 J2、圖 J1）
 2. USGS, *Gemstones* (General Interest Publication), Mineral Gemstones. https://pubs.usgs.gov/gip/gemstones/mineral.html（2026-11-09 用 curl 讀全文）
 3. Chemistry LibreTexts, 13.7 Network Covalent Atomic Solids: Carbon and Silicates（Tro, *Structure and Properties* map）. https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Structure_and_Properties_(Tro)/13%3A_Phase_Diagrams_and_Crystalline_Solids/13.07%3A_Network_Covalent_Atomic_Solids-_Carbon_and_Silicates（2026-11-09 讀）
 4. Chemistry LibreTexts, Covalent Network Solids（Inorganic Chemistry supplemental module）. https://chem.libretexts.org/Bookshelves/Inorganic_Chemistry/Supplemental_Modules_and_Websites_(Inorganic_Chemistry)/Crystal_Lattices/Lattice_Basics/Covalent_Network_Solids（2026-11-09 讀）
