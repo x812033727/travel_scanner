@@ -8,13 +8,14 @@
 #
 #   coverage.sh transfer/curio-h24 ~/mokaair-work/videos/curio-h24 curio-h24
 #
-# REF is a commit you already have or, as above, a branch name on origin (fetched into a
+# REF is a commit you already have or, as above, a branch name on $BACKUP_REMOTE (default origin; fetched into a
 # temporary object directory, so nothing is left in .git).
 #
 # Prints MISSING / MISMATCH lines and the two counts; exits non-zero unless both are 0.
 # Without SRC_DIR (pass "-") it only checks the branch itself: every .SPLIT note matches
 # its parts. That is the check to run when the work folder is already gone.
 set -euo pipefail
+R=${BACKUP_REMOTE:-origin}  # the backup repository: a remote name or URL (../BACKUP-BRANCHES.md)
 parts() { # $1 = commit, $2 = path of the split original: its .partNN pieces in order
   git ls-tree --name-only "$1" -- "$(dirname "$2")/" | awk -v p="$2.part" 'index($0, p) == 1 && substr($0, length(p) + 1) ~ /^[0-9]+$/' | sort
 }
@@ -28,9 +29,9 @@ if C=$(git rev-parse -q --verify "$REF^{commit}" 2>/dev/null); then :; else
   WORK=$(mktemp -d); trap 'rm -rf "$WORK"' EXIT
   export GIT_OBJECT_DIRECTORY=$WORK/objects GIT_ALTERNATE_OBJECT_DIRECTORIES=$(cd "$(git rev-parse --git-common-dir)" && pwd)/objects
   mkdir -p "$GIT_OBJECT_DIRECTORY"
-  C=$(git ls-remote origin "refs/heads/$REF" | cut -f1)
-  [ -n "$C" ] || { echo "no branch $REF on origin" >&2; exit 2; }
-  git fetch -q --refmap= --no-write-fetch-head origin "refs/heads/$REF"
+  C=$(git ls-remote "$R" "refs/heads/$REF" | cut -f1)
+  [ -n "$C" ] || { echo "no branch $REF on $R" >&2; exit 2; }
+  git fetch -q --refmap= --no-write-fetch-head "$R" "refs/heads/$REF"
 fi
 missing=0; bad=0
 split_ok() { # $1 = path of the original file inside the tree

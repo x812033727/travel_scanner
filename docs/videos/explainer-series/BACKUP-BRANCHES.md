@@ -16,6 +16,29 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
 - **之後才產生或補上的檔案也要補進同一條分支**（2026-11-07）。
 - **沒備份完、沒核對完不准刪**（2026-11-07）。
 
+## 備份放在哪個 repo
+
+站主 2026-11-09「另開備份 repo」：travel_scanner 推送時 GitHub 警告接近容量上限，新的備份改放每個系列自己的私人 repo，
+分支命名與核對方式不變：
+
+| 系列 | 備份 repo |
+| --- | --- |
+| 奇聞檔案局（`curio-*`） | `x812033727/mokaair-video-backup` |
+| 原來如此事務所（`sothatswhy-*`） | `x812033727/mokaair-video-backup-sothatswhy` |
+| 種田（AI 劇） | `x812033727/drama-backup-zt` |
+| 祖媽（AI 劇） | `x812033727/drama-backup-tn` |
+
+兩支工具用環境變數 `BACKUP_REMOTE` 指定 repo（remote 名稱或網址，不設就是 `origin`）：
+
+```bash
+git remote add backup-sothatswhy https://github.com/x812033727/mokaair-video-backup-sothatswhy.git   # 一次
+BACKUP_REMOTE=backup-sothatswhy docs/videos/explainer-series/backup/tobranch.sh transfer/<slug> ~/mokaair-work/videos/<slug> <slug> "<slug>: <關卡>"
+BACKUP_REMOTE=backup-sothatswhy docs/videos/explainer-series/backup/coverage.sh transfer/<slug> ~/mokaair-work/videos/<slug> <slug>
+```
+
+session 要能推那個 repo（`add_repo`，`access: "push"`）。travel_scanner 上已有的 `transfer/*`、`claude/backup-*` 分支
+照下面的規則保留不動；要搬過去或刪掉，先問站主。
+
 ## 分支怎麼命名
 
 | 分支 | 放什麼 |
