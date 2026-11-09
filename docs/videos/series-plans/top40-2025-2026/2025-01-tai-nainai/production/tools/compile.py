@@ -68,7 +68,7 @@ LAMP_SIZE = (" It is the same lamp in every shot, exactly the lamp shown in the 
              "standing on a plain square dark red-brown wooden base; about thirty centimetres tall in all, small on the long altar table, and there is only this one lamp in the hall, "
              "no lantern, no cap, no other lamp anywhere.")
 NIGHT = (" It is late at night: the sky and everything outdoors are dark, almost black, with no daylight anywhere and no beam of daylight through any window;"
-         " the only light comes from lamps, lanterns and bulbs.")  # 第 2 集審稿：門房亮著的窗被舊句「every window dark」打架（2026-11-08）
+         " the only light comes from lamps and bulbs.")  # 第 4 集審稿：寫 lanterns 等於邀請燈籠（2026-11-09）  # 第 2 集審稿：門房亮著的窗被舊句「every window dark」打架（2026-11-08）
 EN_NAMES = {
     "yuetang-18": "Shen Yuetang", "yuetang-96": "Shen Yuetang at ninety-six", "yuqin": "Shen Yuqin", "jianbang": "Shen Jianbang",
     "zhiyuan": "Shen Zhiyuan", "xiaoman": "Shen Xiaoman", "fubo": "Fu Bo", "jianye": "Shen Jianye", "meifeng": "Lin Meifeng",
@@ -302,10 +302,13 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
             set_id = e.get("set") or (sc["sets"][0] if sc["sets"] else None)
             if set_id:
                 lamp = e.get("lamp")
-                names = ([f"set-{set_id}-lamp{lamp}-t1.png"] if lamp else []) + [f"set-{set_id}-t1.png"]
-                images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
-                anchors.append(f"the location shown in <Picture {len(images)}> is the set, keeping its layout and props")
-            lamp_text = f" The brass oil lamp shows {cast['lamp']['levels'][str(e['lamp'])]}; the light stays as it is through the shot." if e.get("lamp") and not e.get("lamp_changes") else ""
+                # `set_variant`（第 4 集審稿 2026-11-09）：白天的戲附白天版場景圖（set-<場景>-day-t1.png），反方向的鏡附那個方向的圖（例如 doors）
+                variant = e.get("set_variant")
+                names = ([f"set-{set_id}-{variant}-t1.png"] if variant else []) + ([f"set-{set_id}-lamp{lamp}-t1.png"] if lamp else []) + [f"set-{set_id}-t1.png"]
+                if not e.get("no_set"):  # `no_set: true`：燈不入鏡、背景只有暗牆的近景不附場景圖（第 4 集 c45、c46）
+                    images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
+                    anchors.append(f"the location shown in <Picture {len(images)}> is the set, keeping its layout and props")
+            lamp_text = f" The brass oil lamp shows {cast['lamp']['levels'][str(e['lamp'])]}; the light stays as it is through the shot." if e.get("lamp") and not e.get("lamp_changes") and not e.get("lamp_quiet") else ""  # `lamp_quiet`：燈的亮度句會帶出銅鏡與藥櫃，畫面裡沒有它們的鏡不加（第 4 集 c43、c44）
             # 燈不在畫面裡的鏡（shots-en.json 寫 "lamp_in_frame": false，或正文寫了 lamp … out of the frame / no lamp）只說光從畫外來：
             # 第 3 集草稿 c01、c05、c07、c11、c14、c16 都因為固定的那段燈的描述，在手邊多畫一盞玻璃燈（2026-11-08 審草稿）
             offscreen = e.get("lamp_in_frame") is False or re.search(r"\blamp (?:itself )?is (?:out of|off) (?:the )?(?:frame|screen)\b|\bno lamp\b", e["prompt"], re.I)
@@ -337,6 +340,7 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
             pf = work / "prompts" / f"{s['id']}.txt"
             pf.write_text(body, encoding="utf-8")
             secs = max(5, min(10, int(-(-((s["seconds"] or 5) + 0.5) // 1))))
+            if e.get("clip_seconds"): secs = int(e["clip_seconds"])  # 長台詞的原聲鏡多買幾秒（第 4 集審稿：模型常晚 1–3 秒才開口）
             if voiced(e["prompt"], s["dialogue"])[1].count(True):
                 secs = max(secs, 6)  # 開口說話的鏡至少買 6 秒：模型常在片段最後一格還沒講完（第 1 集原聲版 c05、c25、c27）
             jobs.append({"id": s["id"], "title": f"tai-nainai-e{ep:03d} {s['id']} ref2va", "inference_mode": "reference",
