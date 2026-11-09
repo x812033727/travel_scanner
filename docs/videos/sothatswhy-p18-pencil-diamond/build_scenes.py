@@ -153,7 +153,7 @@ kid("kid-mine-graphite", K("holding up a short stubby yellow pencil with a proud
 kid("kid-graphite-q", K("rubbing the grey side of one palm with a finger of her other hand, a thinking face", where=DESK),
     k("所以黑黑的是石墨？", "句尾上揚"))
 chief("chief-carbon", C("nodding with one hand open towards the viewer", close=True),
-      c("對。你手上那層，大部分就是石墨，"), c("而石墨，是由碳組成的。"))
+      c("對。你手上那層，大部分就是石墨，"), c("就是我說，跟鑽石一樣的那種碳。"))
 kid("kid-slick", K("rubbing her grey fingertip and thumb together with a curious face", close=True, where=DESK),
     k("我手上這層，摸起來滑滑的！", "發現"))
 chief("chief-slick", C("rubbing her fingertip and thumb together with a curious smile", close=True),
@@ -163,7 +163,7 @@ kid("kid-diamond-guess", K("raising one finger with a confident know-it-all grin
 kid("kid-ring", K("holding a tiny sparkling ring between her finger and thumb and gazing at it", close=True),
     k("我媽媽的戒指上，", "想起來"), k("就有一小顆！"))
 scene("gem-close", "Close-up of " + GEM + " sitting on a smooth pale stone, clear as water, with soft sparkles, " + DAY,
-      c("你媽媽那顆，也不是別的東西。"), c("鑽石幾乎全部都是碳。"))
+      c("你媽媽那顆，也不是別的東西。"), c("就是我剛說的，幾乎全是碳。"))
 kid("kid-better-guess", K("tilting her head with a hopeful grin, one finger on her chin", close=True),
     k("那是比較厲害的碳？", "再猜"))
 chief("chief-same-carbon", C("holding up two identical small plain wooden balls, one in each hand, a playful smile"),
@@ -213,7 +213,7 @@ kid("kid-strong-soft-q", K("holding a flat wooden building-toy net in both hands
 chief("chief-soft-where", C("holding two flat hands one above the other and sliding the top one, a knowing smile", close=True),
       c("因為軟的地方不在網裡面，"), c("在層跟層的中間。好，現在換鑽石。"))
 model("toy-frame", "Medium shot of " + FRAME + ", standing on a sunny wooden table, " + DAY,
-      c("同一盒積木，可是每一顆球，四隻手全部牽滿，"), c("伸向四個不同的方向，"))
+      c("同一盒積木，可是每一顆球，四隻手全部牽滿，"), c("伸向四個不同的方向。"))
 kid("kid-all-used-q", K("holding up four fingers and looking at them with a curious face", close=True),
     k("四隻手都用光了？", "句尾上揚"))
 chief("chief-frame", C("lacing the fingers of both hands together firmly with a confident smile", close=True),
@@ -365,11 +365,9 @@ kid("kid-enough-q", K("looking down at her pencil in her hands with a thinking f
 
 # ---------- 收尾 ----------
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the girl"),
-      c("你說呢？小問，你能把案子說破嗎？", "笑"), chapter="原來差在排法")
+      c("你說呢？小問，你來說說看。", "笑"), chapter="原來差在排法")
 kid("kid-got-it", K("holding up her yellow pencil proudly with a big confident grin", where=DESK),
-    k("我懂了！", "恍然大悟"), k("不只看是碳，還要看怎麼排！", "篤定", "P:enough"), k("一層一層疊的，會滑！", "開心"))
-kid("kid-got-it-2", K("pointing at a red playground climbing frame behind her with a big proud grin", where=PARK),
-    k("連成攀爬架的，很硬！", "開心", "P:main"), k("有空手的，還會導電！", "開心"))
+    k("我懂了！", "恍然大悟", "P:enough"), k("不只看是碳，還要看怎麼排！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好，而且是你自己想通的。", "笑"), c("我覺得這就是材料最有意思的地方。"))
 kid("kid-redraw-q", K("holding up her smudged drawing with a hopeful face", where=DESK),
