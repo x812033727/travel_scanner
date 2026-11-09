@@ -30,8 +30,10 @@ ${t.description}
   } else {
     const v = JSON.parse(readFileSync(`${R}/docs/videos/zhong-tian-qu-qi-e${pad(a)}/video.json`, "utf8"));
     const W = `${V}/zhong-tian-qu-qi-e${pad(a)}-dh/cut`;
-    dir = `${OUT}/zhong-tian-qu-qi-e${pad(a)}`; mp4 = `${W}/e${pad(a)}-dh.mp4`; srt = `${W}/e${pad(a)}-dh.zh-TW.srt`;
-    meta = { slug: `zhong-tian-qu-qi-e${pad(a)}`, title: `種田娶妻打天下 第${a}集 | CC字幕`, description: v.youtube.description, category: "drama", note: `種田娶妻打天下 第${a}集（3D 國漫版，海螺手工製作）` };
+    // A working number whose video.json carries another slug (e901 = zhong-tian-qu-qi-e001-r2, the remake) imports under that slug.
+    const own = v.slug && v.slug !== `zhong-tian-qu-qi-e${pad(a)}` ? v.slug : null;
+    dir = `${OUT}/${own ?? `zhong-tian-qu-qi-e${pad(a)}`}`; mp4 = `${W}/e${pad(a)}-dh.mp4`; srt = `${W}/e${pad(a)}-dh.zh-TW.srt`;
+    meta = { slug: own ?? `zhong-tian-qu-qi-e${pad(a)}`, title: own ? `${v.youtube.title} | CC字幕` : `種田娶妻打天下 第${a}集 | CC字幕`, description: v.youtube.description, category: "drama", note: `種田娶妻打天下 第${a}集（3D 國漫版，海螺手工製作）` };
     // An episode's titles and descriptions come from youtube-locales/<l>.json; its captions and dubs
     // are already in the folder (dub.sh), so only the description is written (e036, 2026-11-01: the
     // languages batch went out without them).

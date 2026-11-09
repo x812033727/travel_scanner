@@ -97,6 +97,9 @@ for (const scene of video.scenes) {
   }
   let dur = lines.length ? LEAD + lines.reduce((a, l) => a + l.len, 0) + GAP * (lines.length - 1) + TAIL : Math.min(scene.action_seconds ?? scene.data?.action_seconds ?? 2, ACTION_MAX);
   dur = Math.max(dur, MIN, edit.min?.[scene.id] ?? 0);
+  // `frame_round: true` (e001-r2 on): every shot a whole number of 24 fps frames, so the stream-copied concat stays at
+  // exactly 24 fps instead of drifting to 23.976 (season 1 lost ~5 frames a 100 s cut); off for episodes already dubbed.
+  if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
   const src = scene.data?.source;
   const clip = src ? firstTake(path.join(work, "clips"), src.shot) : pick(path.join(work, "clips"), scene.id);
   const still = pick(path.join(work, "first-frames"), src ? src.shot : scene.id);
@@ -114,7 +117,9 @@ for (const scene of video.scenes) {
     return p;
   });
   if (DUB) { starts[scene.id] = { start: t, dur }; report.push(`${scene.id} ${t.toFixed(2)} +${dur.toFixed(2)}s`); t += dur; continue; }
-  const decor = `${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}`;
+  // `flash: {"s03": 0.35}`: the shot ends in a white flash of that many seconds (a lightning cut the clip did not draw, e001-r2 c03).
+  const flashOut = edit.flash?.[scene.id] ? `,fade=t=out:st=${Math.max(0, dur - edit.flash[scene.id]).toFixed(3)}:d=${edit.flash[scene.id]}:color=white` : "";
+  const decor = `${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}${flashOut}`;
   let vf, note;
   if (clip) {
     const from = src ? Number(src.from_s ?? 0) : 0;
@@ -255,6 +260,8 @@ if (DUB) {
   process.exit(0);
 }
 const srtFile = out.replace(/\.mp4$/, ".zh-TW.srt");
+// Where every line landed (absolute start, length, shot, speaker): audio-qa.py checks it against the shots.
+writeFileSync(out.replace(/\.mp4$/, ".lines.json"), JSON.stringify(lineAt, null, 1) + "\n");
 writeFileSync(srtFile, srt.map((c, i) => `${i + 1}\n${fmt(c.start)} --> ${fmt(c.end)}\n${c.text}\n`).join("\n"));
 writeFileSync(path.join(segDir, "mix-graph.txt"), graph);
 // Subtitles ride as a soft zh-TW track (CC), the owner's choice; burn_subtitles draws them instead.
