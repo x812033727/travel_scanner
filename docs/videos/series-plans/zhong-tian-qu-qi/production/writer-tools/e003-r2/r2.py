@@ -50,6 +50,8 @@ LOC = {
     # Live prep (2026-11-08): medium shots whose compositions grew with the expressions and the gaze keep the set to one
     # short line (route-a.md: the 1000-character cap).
     "yard_dusk_m": "In the dirt yard of the Xu farmhouse at dusk, the house eaves on screen left with strips of dried vegetables hanging under them, a wooden table in the middle, a stone well at the back right, dark orange sunset light from screen right casting very long shadows",
+    # e903 live fix3 (2026-11-09, cut review 二-9): the kitchen as the set picture and the chosen s33-s38 takes draw it.
+    "kitchen_brick": "Inside the small earthen kitchen of the Xu farmhouse at night, one red-brick stove with a black iron wok on its top and its fire mouth at the front, split firewood stacked in a pile beside it, lit only by the warm orange glow of the stove fire",
     "kitchen_s": "Inside the small earthen kitchen of the Xu farmhouse at night, a clay stove on screen right with its fire mouth facing left and the fire burning inside it, lit only by the warm orange glow of the stove fire",
 }
 LIGHT = {
@@ -124,13 +126,17 @@ SHOTS = [
          lines=[("xuyan", "慢著。這張字據，錢員外最好別寫。", "聲音一沉")],
          motion=f"Xu Yan strides in from screen left to the table, slaps his right hand flat on the blank sheet and looks up at Qian on screen right, speaking to him in profile, eyes on him, never the lens, his lips pressing together between phrases; Qian's eyes narrow further and his lips stay closed; {NOSMILE}",
          zh="中景、固定（2026-11-08 真人版：原本中景推到中近景；改成兩人隔著桌子側面相對的雙人鏡，不對單張臉正面推近）：許硯（書生袍已乾、袖子捲到手肘）從左大步走到桌邊，右手啪地按住空白的紙，抬頭看錢員外；錢員外在畫右邊緣、側面朝畫左。表情：許硯聲音一沉：眉往下壓、眼睛瞇起盯著錢員外、下巴收緊，字句之間嘴抿著；錢員外 QIAN_FACE（嘴閉、嘴角往下、眼睛又冷又硬、眉壓低），聽到後眼睛再瞇；兩人從頭到最後一格都不笑（NOSMILE）"),
-    # Live prep (2026-11-08): locked; Qian leans in three-quarter toward Xu Yan's face, never toward the lens (e002 live:
-    # a villain's face large toward the lens laughed).
-    dict(loc="yard_late_m", cam="Over-the-shoulder medium shot, locked", chars=["qianyuanwai", "xuyan"], night="yard_late",
-         comp=f"over-the-shoulder shot from behind Xu Yan's shoulder and his rolled-up sleeve in the left foreground, Xu Yan's face turned away from the camera; Qian Yuanwai on screen right across the wooden table, framed from the chest up with space above his head so that his whole head stays inside the frame as he leans in, his body and face turned three-quarter toward Xu Yan at the left of the frame, his eyes on Xu Yan, never the lens, {QIAN_FACE}, {FAN} in his right hand",
+    # e903 live fix3 (2026-11-09, cut review 二-4: in the over-the-shoulder shot he pressed Xu Yan with an amiable smile
+    # from 4.7 s to the last frame, the line running to the end so nothing can be trimmed; the fan turned white then
+    # brown inside the shot): the side two-shot across the table of s06 (the design that held), both in profile and small
+    # in the frame, the camera square to their eyelines; the face is QIAN_FACE plus a part-by-part scowl with no teeth;
+    # the fan leaves the shot and is never named (s11 fix1: written tucked shut, it still came out open), so he slaps his
+    # palm on the table instead; the blank sheet of s06 stays on the table.
+    dict(loc="yard_late_m", cam="Medium shot, locked", chars=["qianyuanwai", "xuyan"], night="yard_late",
+         comp="side medium shot across the wooden table, the camera square to their eyelines, both seen from the waist up and small in the frame; Xu Yan on screen left in profile facing screen right, his sleeves rolled up to the elbows, his face hard: brows drawn down, eyes on Qian, jaw set; Qian Yuanwai on screen right in profile facing screen left toward Xu Yan, never the lens, both hands empty, scowling: his brows knotted down hard, his eyes narrowed and cold, his lips pressed thin, the corners of his mouth pulled down, no teeth showing; one blank sheet of pale yellow paper flat on the table between them",
          lines=[("qianyuanwai", "怎麼？欠債還錢天經地義，你還想賴帳不成？", "逼問")],
-         motion=f"Qian smacks the folded fan down on the table and leans forward over it toward Xu Yan, his face stopping a hand's width from Xu Yan's and staying in three-quarter profile toward him; he speaks to Xu Yan with his lips thin, the corners of his mouth pulled down, no teeth, his brows clamping lower on 「賴帳不成」; {NOSMILE}",
-         zh="過肩（許硯肩後拍錢員外）、固定（2026-11-08 真人版：原本慢推）：錢員外把扇子往桌上一拍，身子往前傾，臉湊近許硯，臉一直四分之三朝許硯、不朝鏡頭。表情：QIAN_FACE，嘴唇薄、嘴角往下、不露齒，說「賴帳不成」時眉頭再壓；從頭到最後一格都不笑（NOSMILE）"),
+         motion=f"Qian slaps his right palm flat on the table and leans over it toward Xu Yan, staying in profile, his eyes on him, never the lens, speaking through a clenched jaw, his lips closing thin between phrases, his brows clamping lower on 「賴帳不成」; Xu Yan does not move, his lips closed; {NOSMILE}",
+         zh="側面雙人中景、固定（2026-11-09 真人版 fix3，成片審查二-4：d1 選的那支從 4.7 秒到最後一格都和氣地笑著逼問，台詞到鏡尾、剪不掉；扇子在鏡內從白色變淺褐）：改成跟 s06 一樣隔著桌子的側面雙人鏡，鏡頭垂直兩人的視線，兩人都是側臉、腰以上、在畫面裡小小的；錢員外在畫右側臉朝畫左看許硯、不看鏡頭。扇子整鏡拿掉、英文一個字都不寫（s11 fix1 寫了合著插腰帶，還是畫成打開的圓扇），拍桌改成右手掌往桌上一拍，再隔著桌子往許硯傾身；s06 那張空白的紙留在桌上。表情：嘴閉、嘴角往下、眉往下鎖緊、眼睛瞇起又冷、嘴唇抿薄、不露齒，說「賴帳不成」時眉再壓；許硯眉往下壓、看著他、嘴閉著不動；兩人從頭到最後一格都不笑（NOSMILE），不寫任何笑的字。台詞不變"),
     dict(loc="yard_late_cu", cam="Medium close-up, locked", chars=["xuyan"], night="yard_late",
          comp=f"medium close-up of Xu Yan standing at the wooden table, framed from the chest up with space above his head, his sleeves rolled up to the elbows, a little sweat on his brow, {BELT}, his body and face turned three-quarter to screen right toward Qian Yuanwai off screen right, the camera about 40 degrees off his eyeline, his eyes on Qian, never the lens; his face set: brows straight and low, eyes fixed and hard, jaw firm, lips pressing together between phrases; his right hand rests flat on one blank sheet of pale yellow paper on the table at the bottom edge of the frame, his left hand empty; behind him only the bamboo fence and the autumn tree of the same yard",
          lines=[("xuyan", "不賴帳。大衡律配婚篇，她們三個的名字記在縣衙名冊上。", "慢條斯理")],
@@ -190,11 +196,16 @@ SHOTS = [
          zh="中近景、固定（2026-11-08 真人版：原本慢推；說話時頭與肩四分之三轉向畫外左邊的許硯、鏡頭偏約 40°、不看鏡頭；眉往下壓成直線、眼睛瞇起、嘴抿成線，說「房子就沒了」時鼻子出一口氣；不笑 NOSMILE）（2026-11-07 第四輪重設計，原全景）：秦霜胸口以上站在門柱左邊、腰帶在畫面下緣外；第一格右手空著、張開停在刀柄旁；她握住刀柄把柴刀從門柱拔下、刃朝下往下收出畫面（插回腰帶右邊），再回頭看畫外左邊的許硯；錢員外與家丁已經走了（出門留給 s15 的結尾與腳步聲），許硯不入鏡；冷（結尾）"),
     # ---- scene 2: the novice pack, the same yard at dusk (dark orange light from the right). Axis: Xu Yan sits at the left of
     # the table facing right, Tang Xiaotang across on the right; c26 he walks to the well at the back right, left of A-ling.
-    dict(chapter="新手禮包", loc="yard_dusk_m", cam="Full shot, slow push in", chars=["tangxiaotang", "xuyan"], night="yard_dusk",
-         comp=f"full shot past strips of dried vegetables hanging under the eaves in the foreground, Tang Xiaotang on screen right, {TANG}, the small gold abacus hanging at her waist, in three-quarter profile toward Xu Yan on screen left, her eyes on him, worried: her brows knitted upward in the middle, her eyes wide, her lips pressed tight between words; and Xu Yan on screen left, his sleeves rolled up to the elbows, {BELT}, both hands empty, his thumbs clean, his brows drawn together, his lips pressed, his eyes on her",
+    # e903 live fix3 (2026-11-09, cut review 二-6 and 二-8: she said 「三天賺二十兩？」 square into the lens for about one
+    # second from the first frame; at the cut to s18 two bowls and the abacus on the table vanished and the background
+    # changed): the same side angle as the chosen s18 fix1 take (the camera square to the table line, the eaves on screen
+    # left), she walks in from screen right already in profile facing screen left toward Xu Yan from the first frame; the
+    # abacus stays at her waist and the tabletop stays bare, like s18; her costume is the portrait's, written out.
+    dict(chapter="新手禮包", loc="yard_dusk_m", cam="Full shot, locked", chars=["tangxiaotang", "xuyan"], night="yard_dusk",
+         comp="side full shot of the wooden table, the camera square to the table line about 60 degrees off her eyeline, both small in the frame; Tang Xiaotang on screen right in profile facing screen left toward Xu Yan from the first frame, never the lens, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, the small gold abacus hanging at her waist, worried: brows drawn together, eyes wide on him, lips pressed tight between words; Xu Yan standing on screen left in profile facing her, his sleeves rolled up to the elbows, his brows drawn together, his lips pressed; the bare tabletop between them",
          lines=[("tangxiaotang", "三天賺二十兩？你家米缸都快見底了。", "倒抽一口氣")],
-         motion=f"Tang Xiaotang walks to the table, unhooks the abacus from her waist, sets it down and sits, sucking in a sharp breath on 「二十兩」, her eyes on Xu Yan, never the lens; Xu Yan sits down across from her with a heavy breath out, his lips closed; {NOSMILE}",
-         zh="全景、慢推、前景屋簷下的菜乾：唐小棠（t2）走到木桌邊，把金算盤從腰間解下放在桌上，坐下；許硯（拇指印泥已擦乾淨）跟著坐到對面；發愁、不笑。真人版（2026-11-08）：唐小棠四分之三朝畫左的許硯、眼睛看他、不看鏡頭。表情：唐小棠眉頭中間往上皺、眼睛睜大、字句之間嘴抿緊，說「二十兩」時倒抽一口氣；許硯眉頭皺著、嘴抿著看她，坐下時重重出一口氣；從頭到最後一格都不笑（NOSMILE）。全景臉小（情緒句至少中近景的規則），這鏡是走位進場，結構不動"),
+         motion=f"Tang Xiaotang speaks at once, walking left to the table in profile, eyes on Xu Yan, never the lens, sucking in a sharp breath on 「二十兩」; she sits down on the right side of the bare table, the abacus staying at her waist; Xu Yan sits down across from her with a heavy breath out, his lips closed; {NOSMILE}",
+         zh="側面全景、固定（2026-11-09 真人版 fix3，成片審查二-6、二-8：d1 選的那支第一格起約一秒正面對鏡頭講「三天賺二十兩？」；接 s18 時桌上的兩個碗與金算盤不見、背景也換了）：改成跟 s18 fix1 選定那支同一個側面方向（鏡頭垂直桌子的線、屋簷在畫左），鏡頭偏離她的視線約 60°；唐小棠第一格就是側臉朝畫左的許硯，從畫右走到桌邊、一邊走一邊開口，不看鏡頭；金算盤留在腰間、不放上桌，桌面空著，接 s18 的空桌；服裝照定妝照寫明：交領短襦闔上、百褶裙繫蝴蝶結。許硯在畫左側臉朝她，跟著坐下、重重出一口氣、嘴閉著。表情：唐小棠眉頭皺、眼睛睜大看他、字句之間嘴抿緊，「二十兩」倒抽一口氣；兩人都不笑（NOSMILE）。台詞不變"),
     # e903 live fix1 (2026-11-09, both d1 seeds failed review-picks-a: 1101 said the line square into the lens and smiled
     # at the end, 1102 grinned at 0 s and 3.8 s and smiled with closed lips at 5.8 s while still speaking, so nothing can be
     # trimmed): the side two-shot across the table like s06 (the camera square to their eyelines, both in profile, small
@@ -231,11 +242,15 @@ SHOTS = [
                 ("tangxiaotang", "你發什麼呆？眼睛直直盯著空氣看。", "狐疑")],
          motion=f"first Xu Yan stares at the empty air, clenches his jaw and gives one small nod; then Tang Xiaotang raises her right hand and waves it slowly back and forth a hand's width before his eyes, tilting her head, the back of her head still toward us; he blinks twice, his brows jumping up, and turns his eyes to her; his lips stay closed the whole shot; {NOSMILE}",
          zh="過肩（唐小棠背後拍許硯）、慢推（2026-11-07 第四輪重設計，原雙人鏡；長鏡買 10 秒；2026-11-08 真人版：許硯身體四分之三朝右前景的她、眼睛盯著空氣不看鏡頭，眨眼時眉毛一跳；NOSMILE）：唐小棠背對鏡頭在右前景（丸子頭、立領），她的台詞是背影；許硯胸口以上、頭上留空，臭著臉盯著空氣、咬牙、輕輕點頭（心裡話，嘴閉著）；接著唐小棠舉右手在他眼前一掌寬處慢慢晃、歪頭，許硯眨兩下眼轉過來看她。重抽時拿掉許硯的定妝照與 angle-b、唐小棠的兩張 angle"),
-    dict(loc="yard_dusk_cu", cam="Reverse close-up, locked", chars=["xuyan"], night="yard_dusk",
-         comp="reverse close-up of Xu Yan alone, sitting at the left side of the wooden table, his sleeves rolled up to the elbows, his body and face turned three-quarter to screen right toward Tang Xiaotang off screen right, the camera about 40 degrees off his eyeline, his eyes on her across the table, never the lens; eager and earnest: his brows lifted, his eyes wide and bright, his jaw firm, leaning in; he is the only person in the frame, and the right side of the frame holds only the soft out-of-focus eaves in the dark orange dusk; behind him only the eaves of the same yard",
+    # e903 live fix3 (2026-11-09, cut review 二-5: he grinned with his teeth through the whole line in the close-up, the
+    # line spanning the shot): "eager", "brows lifted" and "eyes wide and bright" played as a grin, so the face is written
+    # intent, part by part; a side medium shot like the chosen s18 fix1 take, the camera about 60 degrees off his eyeline,
+    # his face smaller; the light kept dim (the d1 pick was brighter and more golden than s22).
+    dict(loc="yard_dusk_cu", cam="Medium shot, locked", chars=["xuyan"], night="yard_dusk",
+         comp="side medium shot of Xu Yan alone, sitting at the left side of the wooden table, seen from the waist up and small in the frame with space above his head, in profile facing screen right toward Tang Xiaotang off screen right, the camera about 60 degrees off his eyeline, never the lens, his sleeves rolled up to the elbows, both shoulders of his robe whole and smooth; intent: brows drawn slightly together, eyes fixed on her, jaw firm, lips pressing together between phrases; the right side of the frame holds only the dim eaves in the fading dark orange dusk",
          lines=[("xuyan", "我在想一個買賣。我會做比皂角好洗十倍的肥皂。", "認真")],
-         motion=f"he turns his head to her and with both hands shapes one small square block in the air above the table, his brows jumping up on 「好洗十倍」 with one quick firm nod; {NOSMILE}",
-         zh="近景反打、固定（2026-11-08 真人版：原本慢推）：許硯四分之三側向畫右、朝畫外右邊的唐小棠，鏡頭偏約 40°，不看鏡頭；回過神轉頭看她，兩手在桌上比出一塊方方的東西。表情：認真又興奮：眉毛揚起、眼睛睜大發亮、下巴收緊、身子往前，說「好洗十倍」時眉毛一跳、快快點一下頭；從頭到最後一格都不笑（NOSMILE）"),
+         motion=f"he stays in profile toward her, eyes on her, never the lens, and with both hands shapes one small square block in the air above the table, giving one firm nod on 「好洗十倍」, his lips pressing together after the line; {NOSMILE}",
+         zh="側面中景、固定（2026-11-09 真人版 fix3，成片審查二-5：d1 選的那支整句露齒笑、最後一格也笑，台詞橫跨整鏡、剪不掉）：近景改成側面中景，跟 s18 fix1 選定那支同方向，許硯腰以上、在畫面裡小小的、頭上留空，正側面朝畫右、看畫外右邊的唐小棠，鏡頭偏離視線約 60°，不看鏡頭；兩手在桌上比出一塊方方的東西，「好洗十倍」點一下頭。拿掉 eager、brows lifted、eyes wide and bright（被演成咧嘴笑），表情改成逐部位寫：眉頭微皺、眼睛定在她身上、下巴收緊、字句之間嘴抿著，講完嘴抿住；從頭到最後一格都不笑（NOSMILE）。袍子兩肩完整（成片審查二-14：肩膀破洞）；暮色寫暗一點（d1 比 s22 亮、偏金黃）。台詞不變"),
     dict(loc="yard_dusk", cam="Insert close-up, slow push in", chars=["tangxiaotang"], nospeak=["tangxiaotang"], night="yard_dusk",
          comp="insert close-up of Tang Xiaotang's hand and the small gold abacus on the wooden table, the shot opens directly on the abacus from its very first frame: the palm-sized abacus with its gold frame and wooden beads lying on the table, her right forefinger on the beads, the cuff of her peach-pink brocade sleeve; only the hand, sleeve and abacus are in the frame, her face out of the frame above, her ruqun one closed garment from the high collar to the waist; behind it only the out-of-focus tabletop of the same yard",
          lines=[("tangxiaotang", "真比皂角好十倍，那就不愁沒有人買。", "畫外，精明")],
@@ -317,24 +332,35 @@ SHOTS = [
          lines=[("aling", "那今晚這句呢？也是說來好聽的？", "冷，不看他")],
          motion=f"she turns the knife over on the whetstone with both hands, its edge outward, and strokes the other side along the stone, forward and back, her eyes staying on the blade the whole shot, a short cold breath out through her nose on 「也是說來好聽的」; the knife stays flat on the stone to the end; {NOSMILE}",
          zh="中近景、固定（2026-11-08 真人版：原本慢推；側臉朝畫外左邊的許硯、眼睛一直看刀、不看鏡頭（劇本「不看他」，自動補的「看著對方」以此為準）；眉頭微皺、嘴抿緊、下巴繃著，說「也是說來好聽的」時鼻子冷冷出一口氣；不笑 NOSMILE）（2026-11-07 第四輪重設計，原雙人中景：一支刀變大菜刀舉起、一支越軸）：同 s35 的機位與景別，只拍阿令（許硯在畫外左邊蹲著）；短刀在矮凳上的磨石翻面、磨另一面（刀刃朝外），眼睛一直看刀、刀一直平貼磨石；火只在她身後右邊的灶口裡"),
-    dict(loc="kitchen", cam="Reverse close-up, locked", chars=["xuyan"], night="kitchen_fire",
-         comp="reverse close-up of Xu Yan squatting, his sleeves rolled up to the elbows, one stick of firewood in his hand, his body and face turned three-quarter to screen right toward A-ling off screen right, the camera about 40 degrees off his eyeline, never the lens; earnest: his brows drawn together and lifted in the middle, his eyes fixed on her, his jaw firm, his lips pressing together between phrases, the firelight on his face; behind him only the earthen wall of the same kitchen",
+    # e903 live fix3 (2026-11-09, cut review 二-7 and 八-1: the episode's closing promise, he was nearly frontal with a
+    # faint pleased smile at 1.6 s and on the last frame, the line running to the end; the stick vanished without being
+    # fed in): a side medium shot from his left about 65 degrees off his eyeline, in profile toward A-ling off screen
+    # right, smaller in the frame; "lifted in the middle" goes (no upward face word); the kitchen is written as the set
+    # picture and the chosen s33-s37 takes show it (the red-brick stove with its black iron wok, the stacked firewood).
+    dict(loc="kitchen_brick", cam="Medium shot, locked", chars=["xuyan"], night="kitchen_fire",
+         comp="medium shot from his left side, the camera about 65 degrees off his eyeline, Xu Yan squatting on screen left in profile facing screen right toward A-ling off screen right, never the lens, framed from his knees up with space above his head, his sleeves rolled up to the elbows, both shoulders of his robe whole and smooth, one split stick of firewood in his right hand; earnest: brows drawn together, eyes steady on her, jaw firm, lips pressing together between phrases; the fire mouth of the red-brick stove at the right edge of the frame lighting his face",
          lines=[("xuyan", "這句不是。妳犯過什麼事，妳不說，我就不問。", "認真")],
-         motion=f"he feeds the stick into the fire mouth, the fire flares up brighter, and he turns his head to A-ling off screen right and speaks to her, giving one slow nod on 「我就不問」; {NOSMILE}",
-         zh="反打近景、固定（2026-11-08 真人版：原本慢推）：許硯四分之三側向畫右、朝畫外右邊的阿令，鏡頭偏約 40°，不看鏡頭；把手上的柴添進灶口，火一下子亮起來，他轉頭看阿令；認真。表情：眉頭往中間皺又往上、眼睛定在她身上、下巴收緊、字句之間嘴抿著，「我就不問」時慢慢點一下頭；從頭到最後一格都不笑（NOSMILE）"),
-    # Live prep (2026-11-08): "until she faces him squarely" turned the face to the lens in e002 live s34; she ends in
-    # three-quarter profile toward him, the camera locked about 40 degrees off her eyeline. Her last look written as the
-    # series LESSONS ask (guarded, wary, a flicker of defiance), as face movements.
-    dict(loc="kitchen_cu", cam="Low-angle close-up, locked", chars=["aling"], night="kitchen",
-         comp=f"low-angle close-up, the shot opens directly on A-ling's face and shoulders filling the frame from its very first frame and holds that size to the end, seen from the height of the stove fire; A-ling sitting on the low stool with her face in profile toward the stove on screen right, {ALING}, her hands resting in her lap below the bottom edge of the frame, her face closed and cold: brows drawn low and straight, lips pressed together, jaw tight; the fire inside the stove mouth at the right edge lighting her face from below in orange; behind her only the dark roof beams of the same kitchen",
+         motion=f"he pushes the stick into the fire mouth until it is inside, the fire flares brighter, and still in profile, eyes on A-ling off screen right, never the lens, he speaks to her, giving one slow nod on 「我就不問」, his lips pressed together after the line; {NOSMILE}",
+         zh="側面中景、固定（2026-11-09 真人版 fix3，成片審查二-7、八-1：第 3 集最後一句承諾，d1 選的那支臉幾乎正面、1.6 秒與最後一格嘴角帶淺笑，台詞到鏡尾、剪不掉；手上的柴沒塞進灶口就不見）：近景改成從他左邊拍的中景，鏡頭偏離視線約 65°，許硯蹲在畫左、正側面朝畫右、看畫外右邊的阿令，膝蓋以上、在畫面裡小一點，不看鏡頭；先把柴整根推進畫右紅磚灶的火口、火一亮，再說，「我就不問」慢慢點一下頭。拿掉「眉心往上」（不寫任何往上的臉部字），表情：眉頭皺、眼睛穩穩看她、下巴收緊、字句之間嘴抿著，講完嘴抿住；從頭到最後一格都不笑（NOSMILE）。灶房照場景圖與 s33–s37 選定片段寫（紅磚灶、黑鐵鍋、堆起的劈柴，kitchen_brick）；袍子兩肩完整（成片審查二-14）。台詞不變"),
+    # e903 live fix3 (2026-11-09, cut review 二-9, 二-11 and 八-3: the low angle from the fire showed roof beams and a
+    # lattice window, a different room, and her face came out rounder with heavier lipstick than s33-s37): the framing of
+    # s35 and s37 (the chosen takes): a medium close-up from her left front about 45 degrees off her eyeline, the red-brick
+    # stove and its fire mouth behind her, the one short knife lying flat on the whetstone on the low bench, her hands
+    # resting on it; the same three A-ling pictures and the same set picture as s35/s37 (unchanged); natural, no make-up.
+    dict(loc="kitchen_brick", cam="Medium close-up, locked", chars=["aling"], night="kitchen",
+         comp=f"medium close-up from her left front, the same framing as before, the camera about 45 degrees off her eyeline: A-ling sitting on the low stool before the fire mouth of the red-brick stove, {ALING}, framed from the top of her head down to the whetstone, her face bare of make-up; at the bottom of the frame {KNIFE} lies flat on one long wet grey whetstone on a low wooden bench before her, both her hands resting on it; her face closed and cold: brows drawn low and straight, lips pressed together, jaw tight, her eyes down on the blade",
          lines=[("aling", "錢員外要的是人，你點個頭債就清了，為何不押我們？", "很輕")],
-         motion=f"she turns her head and shoulders from the stove on screen right until she is in three-quarter profile toward Xu Yan off screen left, the camera about 40 degrees off her eyeline, her eyes on him, never the lens; guarded and wary: her eyes narrowing as they search his face, her lips pressing together between words, her chin lifting a little on 「為何不押我們」; her face fills most of the frame the whole shot; {NOSMILE}",
-         zh="低角度近景（灶火高度）、固定（2026-11-08 真人版：原本慢推、「轉到正對許硯」；第 2 集 s34「正對他」讓臉轉向鏡頭，改成轉到四分之三朝畫外左邊的許硯、鏡頭偏約 40°、不看鏡頭。表情：起初眉壓低成直線、嘴抿緊、下巴繃著；轉過來後戒備：眼睛微瞇打量他的臉、字句之間嘴抿著，「為何不押我們」時下巴微抬帶一點不服；不笑 NOSMILE）（2026-11-07 第四輪重設計：兩輪都拉遠成中景、刀變長彎刀）：第一格就是臉與肩，整鏡不拉遠；阿令從側臉朝灶轉過來正對畫外左邊的許硯；短刀不入鏡（兩手在畫面下緣外的膝上），「刀橫放膝上」不拍；冷（結尾，懸念到第 4 集）"),
-    dict(loc="kitchen_cu", cam="Medium close-up to close-up, slow push in", chars=["xuyan"], night="kitchen_fire", act=3,
-         comp="medium close-up, closing in to a close-up by the end, of Xu Yan squatting before the fire mouth of the clay stove at the right edge of the frame, his sleeves rolled up to the elbows, one split stick of firewood held still in his right hand just before the fire mouth, his face turned to A-ling off screen right, never the lens, troubled: his brows knotted, his eyes darting down to the fire and back to her, his jaw working; the fire burning inside the stove mouth; behind him only the earthen wall of the same kitchen",
+         motion=f"her hands stay still on the knife flat on the whetstone; she lifts her eyes, then her head, and looks at Xu Yan off screen left, her face three-quarter toward him, never the lens, guarded: eyes narrowing as they search his face, lips pressing together between words, her chin lifting a little on 「為何不押我們」; {NOSMILE}",
+         zh="中近景、固定（2026-11-09 真人版 fix3，成片審查二-9、二-11、八-3：低角度從灶火高度往上拍，拍到屋樑與格子窗、像另一間房，阿令的臉也比 s33–s37 圓、口紅濃）：改用 s35、s37 選定片段的取景：從她左前方拍、鏡頭偏離視線約 45°，頭頂到磨石都在畫面裡，身後是紅磚灶與火口（kitchen_brick）；短刀（KNIFE）平放在矮木凳上的磨石上、兩手按著不動；臉素淨、不化妝。她先抬眼再抬頭，四分之三朝畫外左邊的許硯、不看鏡頭；戒備：眼睛微瞇打量他的臉、字句之間嘴抿著，「為何不押我們」時下巴微抬；從頭到最後一格都不笑（NOSMILE）。參考圖跟 s35、s37 一樣（阿令三張加灶房場景圖，不改）。台詞不變"),
+    # e903 live fix3 (2026-11-09, cut review 二-9 and 八-3: a yellow mud stove and the night yard through a door behind
+    # him, a different room from s31-s38): the kitchen written as the set picture and the chosen s33-s38 takes (the
+    # red-brick stove with its black iron wok on top, the fire mouth at the front, the stacked split firewood), the camera
+    # from his left side about 60 degrees off his eyeline, in profile; the push stops at a medium close-up.
+    dict(loc="kitchen_brick", cam="Medium close-up, slow push in", chars=["xuyan"], night="kitchen_fire", act=3,
+         comp="medium close-up from his left side, the camera about 60 degrees off his eyeline, Xu Yan squatting in profile facing screen right before the fire mouth of the red-brick stove at the right edge of the frame, its black iron wok on top, his sleeves rolled up to the elbows, both shoulders of his robe whole and smooth, one split stick of firewood held still in his right hand just before the fire mouth, his face turned to A-ling off screen right, never the lens, troubled: his brows knotted, his eyes darting down to the fire and back to her, his jaw working; behind him only the stacked split firewood",
          lines=[],
          motion=f"his lips part as if to answer, then press shut again and he swallows, his throat bobbing, the stick held still before the fire mouth; only then the fire pops and a burst of bright sparks flies out of the stove mouth, lighting up his face; the stick stays in his hand to the end; {NOSMILE}",
-         zh="近景、慢推（中近景推到近景）：許硯右手拿一根柴停在灶口前（不放進去，第 4 集 c01 才放），張口要答又停住；然後灶口啪地爆出一串火星照亮他的臉。表情（2026-11-08 真人版）：眉頭打結、眼睛往火瞄一下又回到她、下顎動了動，張口又抿住、嚥一下口水；臉朝畫外右邊的阿令、不看鏡頭；不笑（NOSMILE）"),
+         zh="中近景、慢推（2026-11-09 真人版 fix3，成片審查二-9、八-3：d1 選的那支是土黃色泥灶、身後門外是夜裡的院子，跟 s31–s38 像兩間房）：灶房照場景圖與 s33–s38 選定片段寫：紅磚灶、灶上黑鐵鍋、火口在前、身後堆起的劈柴（kitchen_brick）；鏡頭在他左邊、偏離視線約 60°，許硯蹲著、正側面朝畫右的灶口，臉朝畫外右邊的阿令、不看鏡頭；慢推停在中近景。動作不變：右手拿一根柴停在灶口前（不放進去，第 4 集 c01 才放），張口要答又抿住、嚥口水，灶口啪地爆出一串火星照亮他的臉。表情：眉頭打結、眼睛往火瞄一下又回到她、下顎動了動；不笑（NOSMILE）；袍子兩肩完整（成片審查二-14）"),
 ]
 
 HEAD = [
