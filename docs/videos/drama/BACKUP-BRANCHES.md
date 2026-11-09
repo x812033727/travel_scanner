@@ -27,6 +27,7 @@
 
 - 雲端 session 要先把 repo 接進來（`add_repo`，要 push 權限），才能推。
 - `travel_scanner` 裡舊的 `transfer/*` 分支，要等新 repo 的分支由另一個代理逐檔核對完、站主同意後才刪。刪分支之後 GitHub 不會馬上釋放空間。
+- 種田 2026-11-09 已把 `travel_scanner` 的 83 條 `transfer/zt-*` 全部搬到 `drama-backup-zt`（連同歷史；最大的 `zt-shared`、`zt-live-e001`、`zt-live-e002` 一次推會斷線，改成照提交順序一個一個推）。兩邊每條分支的最新提交 SHA 完全相同；git 以內容算 SHA，相同即內容與歷史都相同。種田的 `bk-episode.sh`、`verify-episode.py` 已改推、改核對新 repo。
 - 祖媽的備份工具（scratchpad 的 `tn-bk.py`）預設推到 `drama-backup-tn`，也可以用環境變數 `TN_BACKUP_REMOTE` 指定別的 repo。
 
 ## 分支怎麼命名
