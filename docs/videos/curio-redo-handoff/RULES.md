@@ -55,3 +55,5 @@
 - 站主 2026-11-08：縮圖的主要物件不能被字擋住。參考「原來如此」系列，改用左右分開的 C 版型：video.json 的 thumbnail.data 加 "layout": "c", "tone": "navy"（左 40% 深藍底放字，右 60% 放圖）。右欄會裁掉插圖左邊，所以縮圖用的那一景要畫成主體在畫面右側、左邊留白（提示詞寫 on the right side of the frame, a plain pale wall on the left）。八語縮圖要逐語預覽：外語字長，放不下就縮短 i18n/<locale>.json 的 thumbnail 字（B02 的 id、th、vi 就改過）。
 - 分鏡核准後不要再跑 keyframes（就算沒有重畫，它也會改寫 manifest 的 generated_at，讓核准失效）。要確認狀態用 status。
 - 站主 2026-11-08：角色設定用原本選的（W03 候選 E），不要再問；look 只在本機 approve，不 review-push。
+- 審圖的 keyframes/zoom/ 一支約 2 GB，但照 PR #2048 也要備份，不要刪（B02／B03 刪了，備份裡因此缺這一項）。硬碟不夠就先備份到 transfer 分支再清別的。
+- qa 的連結檢查用 Mokaair-editorial 的 User-Agent；NPR 主站會卡住它（一般瀏覽器正常），改用 NPR 自己的純文字版 https://text.npr.org/<文章編號>。
