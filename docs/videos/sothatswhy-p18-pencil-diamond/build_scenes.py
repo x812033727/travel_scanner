@@ -363,9 +363,9 @@ kid("kid-enough-q", K("looking down at her pencil in her hands with a thinking f
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the girl"),
       c("你說呢？小問，你來說說看。", "笑"), chapter="小問說出了答案")
 kid("kid-got-it", K("holding up her yellow pencil proudly with a big confident grin", where=DESK),
-    k("我懂了！", "恍然大悟", "P:enough"), k("就像你說的，", "篤定"), k("真的差在怎麼排！", "篤定", "P:main"))
+    k("我懂了！", "恍然大悟", "P:enough"), k("我的筆芯跟媽媽的鑽石，", "篤定"), k("碳一樣，排法不一樣！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
-      c("說得好，你把整件事串起來了。", "笑"), c("我覺得這就是材料最有意思的地方。"))
+      c("說得好，你把鉛筆跟鑽石連起來了。", "笑"), c("我覺得這就是材料最有意思的地方。"))
 kid("kid-redraw-q", K("holding up her smudged drawing with a hopeful face", where=DESK),
     k("那我的畫，以後還會糊嗎？", "句尾上揚"))
 chief("chief-drawing-back", C("holding up a smudged child's drawing on a plain white drawing sheet with a kind smile"),
