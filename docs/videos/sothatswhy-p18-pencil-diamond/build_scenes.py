@@ -121,7 +121,7 @@ kid("kid-smudge-q", K("holding a yellow pencil up close to her face and squintin
 scene("gem-velvet", "Close-up of " + GEM + " resting on a dark blue velvet cloth, catching the sunlight with tiny rainbow glints, " + DAY,
       c("這個等一下會揭曉。跟你說件怪事：這層黑黑的東西，", "賣關子"), c("跟亮晶晶的鑽石，都是碳組成的。"))
 kid("kid-no-way", K("shaking her head with both hands up and a disbelieving frown", where=HOME),
-    k("騙人！鑽石那麼硬，", "不相信"), k("鉛筆芯一擦就掉耶！"))
+    k("騙人！鑽石那麼硬，", "不相信"), k("鉛筆芯一碰就掉耶！"))
 chief("chief-tease", C("holding up one finger with a mysterious playful smile", close=True),
       c("沒騙你。還有更怪的：最硬的鑽石，其實也有怕的東西。", "接住上一句，賣關子", "S:hammer"))
 scene("stroke-tease", "Close-up of " + STROKE + ", a yellow pencil lying beside it on a sunny wooden desk, " + DAY,
@@ -185,7 +185,7 @@ kid("kid-my-blocks", K("holding a few wooden balls joined by sticks in her hands
 kid("kid-squeeze-guess", K("squeezing her two fists together tightly with a confident grin", close=True),
     k("我猜鑽石的碳，", "很有把握的錯猜"), k("是被擠得比較緊！", None, "S:squeeze"))
 chief("chief-squeeze", C("squeezing a soft round stress ball in one hand with a fair-minded smile"),
-      c("這個猜法先記著，等一下量給你看。"), c("不過最大的差別，在每顆碳牽幾隻手。"))
+      c("這個想法先記著，等一下量給你看。"), c("不過最大的差別，在每顆碳牽幾隻手。"))
 chief("chief-four-hands", C("holding up four fingers with a friendly smile", close=True),
       c("每一顆碳，最多能牽四隻手。"))
 model("flat-net", "Close-up of " + NET + " on a sunny table, " + DAY,
@@ -207,7 +207,7 @@ kid("kid-far-q", K("holding her two flat hands far apart one above the other wit
 chief("chief-far-later", C("raising one finger with a patient smile", close=True),
       c("先記住，等一下推一推就知道。"))
 kid("kid-strong-soft-q", K("holding a flat wooden building-toy net in both hands and squeezing it with a puzzled face", where=HOME),
-    k("網子很牢，", "不解"), k("整疊怎麼會軟？", "句尾上揚"))
+    k("網子很牢，", "不解"), k("疊起來怎麼會軟？", "句尾上揚"))
 chief("chief-soft-where", C("holding two flat hands one above the other and sliding the top one, a knowing smile", close=True),
       c("因為軟的地方不在網裡面，"), c("在層跟層的中間。鑽石可就不一樣了。"))
 model("toy-frame", "Medium shot of " + FRAME + ", standing on a sunny wooden table, " + DAY,
@@ -305,7 +305,7 @@ kid("kid-on-purpose", K("covering her open mouth with both hands in amazement", 
 chief("chief-use-weak", C("tapping one finger on a small clear crystal held in her other hand, a knowing smile", close=True),
       c("對，他們就是利用它最怕的那幾個方向。"))
 kid("kid-more-q", K("holding her yellow pencil up beside her face with an eager curious face", where=DESK),
-    k("硬和碎都猜過了，", "追問"), k("模型還能猜別的嗎？", "章尾停住，句尾上揚", "S:more"))
+    k("會不會滑、會不會裂，", "追問"), k("模型還能猜別的嗎？", "章尾停住，句尾上揚", "S:more"))
 
 # ---------- 第四章：還有哪個性質能檢驗 ----------
 chief("chief-lamp-back", C("holding up a small round battery between two fingers with a playful smile", close=True),
