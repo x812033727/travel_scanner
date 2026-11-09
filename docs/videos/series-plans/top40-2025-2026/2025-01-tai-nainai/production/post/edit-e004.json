@@ -1,5 +1,5 @@
 {
- "_note": "《恁祖媽今年18》第 4 集剪接表（post/assemble-v4.mjs），2026-11-09 照種田拍法的 47 鏡分鏡（約 147 秒）。沿用站主定的（照第 1–3 集）：不放片名卡、集數、人名條，畫面不放字；不裁切放大；慢放不超過 1.1 倍；CC 軟字幕；看得到嘴的台詞用模型原聲（voice.json，15 句），心裡話 t004001、t004006、t004018 與門外外送員 t004010 錄音。 min 照分鏡秒數，min_is_cut true。c18 的心裡話 spill 到 c19，c44 的 spill 到 c45。c27 外送員在門外喊，line_far。 配樂：分鏡寫的 warm 沒有這首（系列只有 comedy、memory、suspense、tension），改成：第一場 memory 清晨，c08 踢盆斷一拍（只留院子底噪），c09–c12 tension；第二場洗衣間 comedy，熬粥到外送 memory，林美鳳搶外送到珍珠 comedy，c37–c40 memory；第三場 memory，c47 換 suspense 停在長音。 音效：系列音效庫沒有水聲，c01、c04、c05 的水聲省略，用衣料聲；c08 只有木盆翻倒的重擊。報信鈴 c02 比前後高 6 dB 以上（-10）。 2026-11-09 第一輪獨立選片後：c10、c16、c22、c23、c26 不用（skip）：c10 看鏡頭、c16 按的是門框、c22 嘴在動、c23 與 c26 戒指跑到別人手上；c21 → c24 與 c15 → c17 的事都交代得到，拿掉省下補拍的點數。 c19 與 c33 左右翻（hflip，畫面沒有字、戒指看不到），讓玉琴在桌子右端、林美鳳在畫面左；c47 右上角的流蘇燈用跟著鏡頭移動的模糊塊蓋掉（不裁切）。c16 拿掉後洗衣機的『喀』與轉動聲移到 c15 尾與 c17。",
+ "_note": "《恁祖媽今年18》第 4 集剪接表（post/assemble-v4.mjs），2026-11-09 照種田拍法的 47 鏡分鏡（約 147 秒）。沿用站主定的（照第 1–3 集）：不放片名卡、集數、人名條，畫面不放字；不裁切放大；慢放不超過 1.1 倍；CC 軟字幕；看得到嘴的台詞用模型原聲（voice.json，15 句），心裡話 t004001、t004006、t004018 與門外外送員 t004010 錄音。 min 照分鏡秒數，min_is_cut true。c18 的心裡話 spill 到 c19，c44 的 spill 到 c45。c27 外送員在門外喊，line_far。 配樂：分鏡寫的 warm 沒有這首（系列只有 comedy、memory、suspense、tension），改成：第一場 memory 清晨，c08 踢盆斷一拍（只留院子底噪），c09–c12 tension；第二場洗衣間 comedy，熬粥到外送 memory，林美鳳搶外送到珍珠 comedy，c37–c40 memory；第三場 memory，c47 換 suspense 停在長音。 音效：系列音效庫沒有水聲，c01、c04、c05 的水聲省略，用衣料聲；c08 只有木盆翻倒的重擊。報信鈴 c02 比前後高 6 dB 以上（-10）。 2026-11-09 第一輪獨立選片後：c10、c16、c22、c23、c26 不用（skip）：c10 看鏡頭、c16 按的是門框、c22 嘴在動、c23 與 c26 戒指跑到別人手上；c21 → c24 與 c15 → c17 的事都交代得到，拿掉省下補拍的點數。 c19 與 c33 左右翻（hflip，畫面沒有字、戒指看不到），讓玉琴在桌子右端、林美鳳在畫面左；c47 右上角的流蘇燈用跟著鏡頭移動的模糊塊蓋掉（不裁切）。c16 拿掉後洗衣機的『喀』與轉動聲移到 c15 尾與 c17。 2026-11-09 獨立審片後（不花錢的修正）：c05（書包變成另一個包）、c31（人太小、前景像第二個林美鳳、尾巴停格）、c46（第三種油壺與黃蠟燭）不用；c08 剪短 0.3 秒避開木盆融化；c17 的洗衣機改成滾筒悶響加房間底噪，deng-hum 只留給燈；c45、c47 的腳步調大；c44 心裡話 +2 dB；c47 模糊塊壓暗成牆上的陰影。",
  "tempo": 1.07,
  "slow_max": 1.1,
  "interpolate": false,
@@ -16,7 +16,7 @@
   "c05": 2.0,
   "c06": 2.5,
   "c07": 2.5,
-  "c08": 2.0,
+  "c08": 1.7,
   "c09": 5.0,
   "c10": 2.0,
   "c11": 4.0,
@@ -209,12 +209,6 @@
    "gain": -30
   },
   {
-   "file": "cloth1",
-   "at": "c05",
-   "off": 0.4,
-   "gain": -26
-  },
-  {
    "file": "impactWood_light_000",
    "at": "c06",
    "off": 0.6,
@@ -329,24 +323,6 @@
    "gain": -28
   },
   {
-   "file": "footstep_concrete_000",
-   "at": "c31",
-   "off": 0.3,
-   "gain": -24
-  },
-  {
-   "file": "footstep_concrete_001",
-   "at": "c31",
-   "off": 0.6,
-   "gain": -24
-  },
-  {
-   "file": "footstep_concrete_000",
-   "at": "c31",
-   "off": 0.9,
-   "gain": -25
-  },
-  {
    "file": "cloth2",
    "at": "c32",
    "off": 0.3,
@@ -410,19 +386,13 @@
    "file": "footstep_wood_000",
    "at": "c45",
    "off": 2.0,
-   "gain": -24
-  },
-  {
-   "file": "cloth1",
-   "at": "c46",
-   "off": 0.3,
-   "gain": -24
+   "gain": -14
   },
   {
    "file": "footstep_wood_000",
    "at": "c47",
    "off": 0.4,
-   "gain": -24
+   "gain": -18
   },
   {
    "file": "metalLatch",
@@ -431,21 +401,50 @@
    "gain": -18
   },
   {
-   "file": "deng-hum",
+   "file": "impactSoft_heavy_000",
    "at": "c17",
-   "off": 0.0,
-   "gain": -22
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "c17",
+   "off": 1.5,
+   "gain": -25
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "c17",
+   "off": 2.6,
+   "gain": -24
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "c17",
+   "off": 3.7,
+   "gain": -25
+  },
+  {
+   "synth": "room",
+   "at": "c17",
+   "off": 0,
+   "to": "c17",
+   "gain": -12,
+   "fade": 0.3
   }
  ],
  "own_voice": "docs/videos/tai-nainai-e004/voice.json",
  "frame_round": true,
  "min_is_cut": true,
  "skip": [
+  "c05",
   "c10",
   "c16",
   "c22",
   "c23",
-  "c26"
+  "c26",
+  "c31",
+  "c46"
  ],
  "spill": [
   "c04",
@@ -456,7 +455,9 @@
  "speaker_gain": {
   "yuetang-18": -3.5
  },
- "line_gain": {},
+ "line_gain": {
+  "t004018": 2
+ },
  "line_far": [
   "t004010"
  ],
