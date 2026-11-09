@@ -113,6 +113,12 @@
    "gain": -26
   },
   {
+   "file": "cloth1",
+   "at": "s11",
+   "off": 7.0,
+   "gain": -24
+  },
+  {
    "file": "paper_03",
    "at": "s13",
    "off": 0.5,
@@ -125,15 +131,9 @@
    "gain": -22
   },
   {
-   "file": "paper_02",
+   "file": "cloth1",
    "at": "s15",
-   "off": 0.4,
-   "gain": -20
-  },
-  {
-   "file": "footstep_concrete_001",
-   "at": "s15",
-   "off": 1.4,
+   "off": 4.45,
    "gain": -24
   },
   {
@@ -275,6 +275,12 @@
    "gain": -26
   },
   {
+   "file": "impactWood_light_000",
+   "at": "s36",
+   "off": 0.25,
+   "gain": -28
+  },
+  {
    "file": "knifeSlice",
    "at": "s37",
    "off": 1.5,
@@ -313,8 +319,9 @@
   "s38": 0.5
  },
  "voice_until": {
+  "s15": 5.4,
   "s17": 3.6,
   "s30": 5.6
  },
- "_note": "live action, built 2026-11-09 from edit-dh-e903.json (CG) the way e902 was converted: clip_voice (the model's own voice for on-screen lines; every shot with no on-screen line -- s01 s03 s05 s10 s14 s19 s20 s21 s22 s24 s25 s27 s28 s31 s32 s40 -- has its own audio muted and takes the recorded lines, which covers the gibberish the pickers flagged), no punch-in, slow-down <= 1.1. Effects re-timed on the picked live drafts as trimmed by picks.json (offsets from the start of each trimmed shot, frames at 0.25 s plus the draft's own sound): s01 knife already quivering at the first frame; s03 sleeve yank 0.6, Xiao He runs off 3.3; s05 paper flat 0.1, brush dips 3.6; s06 walk-in 0.25, hand slaps the paper 1.0; s07 fan slapped on the table 2.2; s14 thumb 0.7; s16 knife pulled from the post 2.55; s17 abacus down 4.3, he sits 5.0; s20 grab at the air 1.25; s22 her hand waves 2.9; s26 walks over 3.7, takes the bucket 5.0; s27 bucket pulled away 1.3, grabs air 2.0; s29 she walks off 4.7 (the CG wood knock dropped: no such action); s31 door pushed 1.0, steps 3.2; s32 three strokes; s34 lamp set down 1.0, crouch 2.0; s38 the log goes in 0.4; s40 the spark burst at 4.45 takes the bell. s11, s15, s18, s36 are being reshot (fix1): their effects are kept from the CG list (only s15 had any) -- to re-time after fix1, along with voice_skip/voice_until for those four. voice_skip: s06 (footstep and paper slap before 2.07 s), s37 (onset 2.04 s), s38 (onset 0.75 s; a 0-0.24 s blip). voice_until: s17 (line ends 3.32, abacus and bench after), s30 (line ends 5.22, a sigh at 6.26). Music: the CG cues all fit their tracks (tension 105 s of 117 s, comedy 88 of 121, suspense 63 of 111 with s11/s15 at 8 s and s36 at 6.6 s), so not split; re-check after fix1."
+ "_note": "live action, built 2026-11-09 from edit-dh-e903.json (CG) the way e902 was converted: clip_voice (the model's own voice for on-screen lines; every shot with no on-screen line -- s01 s03 s05 s10 s14 s19 s20 s21 s22 s24 s25 s27 s28 s31 s32 s40 -- has its own audio muted and takes the recorded lines, which covers the gibberish the pickers flagged), no punch-in, slow-down <= 1.1. Effects re-timed on the picked live drafts as trimmed by picks.json (offsets from the start of each trimmed shot, frames at 0.25 s plus the draft's own sound): s01 knife already quivering at the first frame; s03 sleeve yank 0.6, Xiao He runs off 3.3; s05 paper flat 0.1, brush dips 3.6; s06 walk-in 0.25, hand slaps the paper 1.0; s07 fan slapped on the table 2.2; s14 thumb 0.7; s16 knife pulled from the post 2.55; s17 abacus down 4.3, he sits 5.0; s20 grab at the air 1.25; s22 her hand waves 2.9; s26 walks over 3.7, takes the bucket 5.0; s27 bucket pulled away 1.3, grabs air 2.0; s29 she walks off 4.7 (the CG wood knock dropped: no such action); s31 door pushed 1.0, steps 3.2; s32 three strokes; s34 lamp set down 1.0, crouch 2.0; s38 the log goes in 0.4; s40 the spark burst at 4.45 takes the bell. Reshot shots (picks 2026-11-09): s11 fix1 9031202 (no trim, crop in the cut) -- arm thrown out to point at 7.0; s15 fix2 9031302 start@2.4 -- no paper, no fan, he stands at the gate, so the CG paper and footsteps are gone and only the jab of the finger at 4.45 is kept; s18 fix1 9031201 start@1.5 -- both seated and still, no effect; s36 fix1 9031202 -- picks up the stick at 0.25. Their own speech measured clean (s11 0.58-7.72, s18 0.29-3.95, s36 0.43-5.36); s15's line ends 5.38 s, 0.22 s before the clip end, so voice_until 5.4. voice_skip: s06 (footstep and paper slap before 2.07 s), s37 (onset 2.04 s), s38 (onset 0.75 s; a 0-0.24 s blip). voice_until: s17 (line ends 3.32, abacus and bench after), s15 (see above), s30 (line ends 5.22, a sigh at 6.26). Music: with the final shot lengths the CG cues still fit their tracks (tension s01-s16 102.8 s of 117.3, comedy s17-s30 86.0 of 121.3, suspense s31-s40 63.0 of 111.3), so not split."
 }
