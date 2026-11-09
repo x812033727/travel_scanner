@@ -12,6 +12,7 @@ branch: claude/focused-hopper-zq70n8
 depends_on: []
 scope:
   - docs/videos/sothatswhy-p17-gecko-feet
+  - docs/videos/lexicon.json
 ---
 
 # 原來如此事務所對話版：P17 壁虎黏得住，怎麼又能走得動？
