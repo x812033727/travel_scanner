@@ -112,25 +112,19 @@ chief("chief-look", C("leaning forward with a curious smile, one hand on her chi
 kid("kid-stuck-q", K("tilting her head and squinting up at the ceiling with a puzzled frown", close=True, where=HOME),
     k("有！貼得平平的！", "用力點頭"), k("牠的腳是黏住的嗎？", "好奇"), k("那要走的時候，腳怎麼拔起來？", "句尾上揚"))
 critter("gecko-lift", "Close-up looking up at " + GECKO + " walking upside down across a plain white sunny ceiling, one front foot lifted a little off the ceiling, the other three feet flat",
-        c("這就是今天的問題：腳能黏住天花板，", "放慢"), c("下一步，怎麼又抬得起來？", "問句", "S:main"))
+        c("這就是今天的案子：腳能黏住天花板，", "放慢"), c("下一步，怎麼又抬得起來？", "問句", "S:main"))
 kid("kid-glue-guess", K("raising one finger with a confident know-it-all grin", close=True),
     k("我知道！", "很有把握"), k("牠的腳底有膠水！", "很有把握的錯猜", "S:glue"))
 critter("dusty-sill", "Close-up of " + GECKO + " walking along a dusty sunny windowsill with soft little specks of grey dust and a few crumbs around its feet, " + DAY,
         c("那你想想看，牠整天在灰塵裡爬來爬去，"), c("腳底要是有膠，不早就沾成一團了？", "賣關子", "S:dirty"))
 kid("kid-slip-q", K("hugging her knees and looking up thoughtfully", close=True, where=HOME),
-    k("對耶……那牠也有怕的地方嗎？", "想了一下"), k("有沒有牠黏不太住的地方？", "好奇", "S:slip"))
+    k("對耶……", "想了一下"), k("那有沒有牠也黏不太住的地方？", "好奇", "S:slip"))
 chief("chief-promise", C("smiling warmly with one hand open towards the viewer", close=True),
       c("有，而且在你家就找得到。", "賣關子"), c("還有，牠每次抬腳，都會先做一個小動作。", "賣關子", "S:move"))
 
 # ---------- 第一章：先排除一灘膠水 ----------
-chief("chief-old-q", C("holding up a small old-fashioned scroll tied with a ribbon, a playful smile", close=True),
-      c("你剛剛猜的膠水，其實很多人都猜過。", "接住上一句"), c("兩千多年前，古希臘有一位很愛觀察動物的學者，"), chapter="腳底找不到膠水")
-critter("aristotle-tree", "Medium shot of " + GECKO + " climbing head-down on the trunk of a big sunny olive tree, its toes spread flat on the bark, " + DAY,
-        c("叫亞里斯多德。他就記下過，壁虎能頭朝下爬樹。"))
-kid("kid-old-q", K("leaning forward with wide curious eyes", close=True),
-    k("那他知道答案嗎？", "句尾上揚"))
 chief("chief-glue-check", C("holding up a small tube of glue with a playful doubtful look"),
-      c("他沒有答案，後來的人也猜了很久。"), c("那就來查查你的膠水說。"))
+      c("你剛剛猜的膠水，其實很多人都猜過。", "接住上一句"), c("那就來查查你的膠水說。"), chapter="腳底找不到膠水")
 scene("glue-tube", "Close-up of a small squeezed tube of glue with a thick shiny drop of glue oozing out of its tip onto a pale wooden table, " + DAY,
       c("如果靠膠水，腳底就得有地方，一直冒出膠來。"))
 scene("toe-pad-dry", "Close-up of the underside of one small cartoon gecko foot pressed on clear glass, wide rounded toe tips with neat rows of smooth pale flaps, clean and dry, plain pale cream background, " + DAY,
@@ -143,14 +137,18 @@ scene("toe-drop", "Close-up of one round clear water drop sitting high and round
       c("而且牠的腳趾很怕水，"), c("水滴在上面，會縮成圓圓的一顆。"))
 kid("kid-dry-q", K("touching the back of her own hand with a surprised face", close=True),
     k("所以牠的腳是乾的？", "句尾上揚"))
+chief("chief-water-guess", C("holding up a small glass pane with a thin wet tissue stuck flat to it, a curious smile", close=True),
+      c("對，乾乾的。可是有人猜，空氣裡的水氣，"), c("會在腳和牆中間留下薄薄一層，像濕紙貼在玻璃上。"))
 scene("two-tiles", "Medium shot of two plain smooth square tiles side by side on a table, the left tile with a flat thin spread-out puddle of water, the right tile with round beaded water drops, " + DAY,
-      c("對，乾乾的。研究的人還準備了兩種表面，"), c("一種很愛沾水，一種很怕水。"))
+      c("研究的人就準備了兩種表面，"), c("一種很愛沾水，一種很怕水。"))
 critter("tokay-tiles", "Medium shot of " + GECKO + " clinging calmly to a smooth plain tilted tile, feet spread flat, sunny bright room",
       c("讓壁虎的腳趾去黏，兩種黏得一樣好。"))
 kid("kid-mean-q", K("scrunching her face in thought with both hands on her cheeks", close=True),
     k("這代表什麼？", "句尾上揚"))
 chief("chief-mean", C("holding up both palms side by side like a fair comparison"),
       c("如果靠一層水，愛沾水的那種，應該黏得好很多。"), c("結果兩種差不多，代表主要不是靠一層水。"))
+chief("chief-humid", C("holding her palm out flat in soft morning sunlight with a thoughtful smile", close=True),
+      c("不過也有研究發現，空氣裡的濕氣，"), c("還是會幫上一點忙。"))
 kid("kid-suction-guess", K("pressing a round plastic suction-cup hook onto a bathroom tile with a hopeful grin", close=True),
     k("那是不是吸盤？", "再猜"), k("像浴室的掛鉤那樣？", "句尾上揚", "S:suction"))
 scene("suction-hook", "Close-up of a round clear plastic suction-cup hook stuck on a smooth white bathroom tile, beside a small cartoon gecko foot with wide rounded toe tips on the same tile, " + DAY,
@@ -160,19 +158,27 @@ chief("chief-honest", C("holding one hand on her chest with an honest serious sm
 kid("kid-oily-q", K("raising her eyebrows with a gotcha grin", close=True),
     k("那不就是膠水嗎？", "抓到了"))
 scene("faint-print", "Close-up of a clean clear glass pane in sunlight with the faintest soft shimmering little gecko footprint on it, barely visible, " + DAY,
-      c("不是。那層油少到眼睛看不到，"), c("要用很精密的儀器，才查得出是什麼。"))
+      c("不是。那層油少到眼睛看不到，"), c("腳底又沒有會分泌的腺體，跟一灘膠水不一樣。"))
 chief("chief-still-checking", C("shaking her head gently with a kind honest smile", close=True),
-      c("到底有沒有幫上忙，研究的人還在查。"))
+      c("至於那層油有沒有幫上忙，研究的人還在查。"))
 chief("chief-sticker", C("holding up " + STICKER + " between two fingers with a playful smile"),
-      c("所以，你可以把壁虎的腳，"), c("想成一張不用膠的貼紙。"))
+      c("沒有膠，也沒有吸盤，"), c("你可以把壁虎的腳，想成一張不用膠的貼紙。"))
 kid("kid-sticker-q", K("holding " + STICKER + " up to one eye and squinting at it", close=True),
     k("不用膠的貼紙？", "不解"), k("那這張貼紙靠什麼黏？", "章尾停住，句尾上揚", "S:what"))
 
 # ---------- 第二章：把腳畫大，接觸怎麼變多 ----------
 chief("chief-draw-big", C("holding a big round magnifying glass up beside her face with a curious smile", close=True),
-      c("我們把那隻腳，畫大來看。", "接住上一句"), chapter="五十萬根小毛一起拉")
+      c("我們把那隻腳，畫大來看。", "接住上一句"), c("不過先說，研究的人最常看的，是另一種大壁虎，"), chapter="五十萬根小毛一起拉")
+chief("chief-tokay", C("holding a small soft plush toy of a chubby blue-grey gecko with orange spots, smiling", close=True),
+      c("叫大守宮，英文叫 Tokay gecko。"))
+critter("tokay-intro", "Medium shot of " + TOKAY + " sitting calmly on a sunny tree trunk, " + DAY,
+        c("牠的身體，大約是你家天花板上那隻的兩三倍長。"))
+kid("kid-mine-q", K("pointing back over her shoulder towards her home with a curious face", close=True),
+    k("那我家天花板上那隻，", "好奇"), k("也是這樣嗎？", "句尾上揚", "S:species"))
+chief("chief-later", C("holding up one finger with a patient smile", close=True),
+      c("先記住這個問題，最後我們回來看。"))
 scene("toe-flaps", "Close-up of the underside of one cartoon gecko toe drawn large, wide and rounded, covered in neat curved rows of soft pale flaps stacked like little folded blankets, plain pale cream background, flat 2D cartoon drawing",
-      c("牠的腳趾底下，有一排一排的皮，"), c("像疊起來的小毯子。"))
+      c("大守宮的腳趾底下，有一排一排的皮，"), c("像疊起來的小毯子。"))
 scene("flap-bristles", "Close-up of " + BRISTLES + " growing from one soft pale flap of a gecko toe, plain pale cream background",
       c("每一排上面，長滿很細很細的毛，"), c("一根大約只有你頭髮的十分之一粗。"))
 kid("kid-how-many-q", K("holding up one strand of her own hair between two fingers with wide eyes", close=True),
@@ -209,20 +215,10 @@ scene("weak-pull", "Close-up of one big cartoon fingertip barely touching a smoo
       c("因為這一下很弱，又要近到看不見才有。"), c("你的手只碰到幾個點，根本感覺不到。"))
 chief("chief-name", C("raising one finger with a gentle smile like sharing a secret", close=True),
       c("這種靠得很近才有的小拉力，"), c("科學家叫做凡得瓦力。"))
-chief("chief-humid", C("holding her palm out flat in soft morning sunlight with a thoughtful smile", close=True),
-      c("雖然主要不是靠水，"), c("不過也有研究發現，空氣裡的濕氣會幫上一點忙。"))
 scene("tips-sparks", "Close-up of " + BRISTLES + " lying flat against a smooth surface, " + TIPS + ", " + SPARK,
       c("一個小扁片拉一下，弱到不行，"), c("可是壁虎的腳上，有好多好多個小扁片一起拉。"))
 kid("kid-how-many-tips-q", K("spreading all ten fingers wide with a curious face", close=True),
     k("好多是多少個？", "句尾上揚"))
-chief("chief-tokay", C("holding a small soft plush toy of a chubby blue-grey gecko with orange spots, smiling", close=True),
-      c("要看是哪一種壁虎。這些研究，大多用一種大壁虎，"), c("叫大守宮，英文叫 Tokay gecko。"))
-critter("tokay-intro", "Medium shot of " + TOKAY + " sitting calmly on a sunny tree trunk, " + DAY,
-        c("大守宮的身體，大約是你家天花板上那隻的兩三倍長。"))
-kid("kid-mine-q", K("pointing back over her shoulder towards her home with a curious face", close=True),
-    k("那我家天花板上那隻，", "好奇"), k("也是這樣嗎？", "句尾上揚", "S:species"))
-chief("chief-later", C("holding up one finger with a patient smile", close=True),
-      c("先記住這個問題，最後我們回來看。"))
 critter("tokay-wall", "Medium shot of " + TOKAY + " clinging to a smooth sunny wall, all four feet spread flat, " + DAY,
         c("一隻大守宮，四隻腳的腳趾全部加起來，"), c("大約有十億個小扁片。", "數字放慢"))
 kid("kid-billion", K("throwing both arms wide open with a huge amazed face", close=True),
@@ -238,7 +234,7 @@ critter("one-toe", "Close-up of " + TOKAY + " hanging calmly from a smooth glass
 kid("kid-one-toe", K("hanging from one finger hooked on a door frame with a strained funny face", where=HOME),
     k("我一根手指，", "好笑"), k("撐不住我自己！"))
 chief("chief-sticker-back", C("holding up " + STICKER + " beside her face, a warm smile", close=True),
-      c("這就是那張不用膠的貼紙："), c("貼得夠近，貼得夠多。", None, "P:what"))
+      c("這就是那張不用膠的貼紙。", None, "P:what"))
 kid("kid-letgo-q", K("frowning and pulling hard at her own sleeve stuck to nothing, puzzled", close=True),
     k("這麼黏，", "擔心"), k("牠的腳不就拔不起來了？", "章尾停住，句尾上揚", "S:letgo"))
 
@@ -268,7 +264,7 @@ kid("kid-fast", K("blinking with her mouth open in amazement", close=True),
 critter("climb-fast", "Medium shot of a slim little pale grey cartoon gecko running straight up a smooth sunny white wall, legs a quick soft blur, " + DAY,
         c("有一種小壁虎在實驗裡往牆上衝，"), c("每隻腳一秒大約能貼上、放開十五次。"))
 kid("kid-grip-q", K("pressing one flat palm onto a wall and looking at it curiously", close=True, where=HOME),
-    k("那牠踩下去的時候，", "追問"), k("怎麼又黏回去？", "句尾上揚", "S:grip"))
+    k("那壁虎踩下去的時候，", "追問"), k("怎麼又黏回去？", "句尾上揚", "S:grip"))
 scene("foot-press", "Close-up of one cartoon gecko foot with wide rounded toe tips pressing down flat onto a smooth sunny white wall, toes spread open, " + DAY,
       c("反過來就好。腳趾先放平貼上，"), c("再往身體這邊，輕輕拖一下。"))
 scene("bristles-lay", "Close-up of " + BRISTLES + " all leaning over together and lying flat against a smooth surface, " + SPARK,
@@ -277,12 +273,10 @@ kid("kid-tap-q", K("tapping one fingertip lightly on a table with a curious frow
     k("只拍上去，", "試探"), k("不拖呢？", "句尾上揚"))
 scene("bristles-stand", "Close-up of " + BRISTLES + " standing upright and loose above a smooth surface, the tiny tips barely touching it, plain pale cream background",
       c("那就黏得很少。這些小毛平常是不太黏的，"), c("要拖一下，才像打開開關。", None, "P:grip"))
-chief("chief-switch", C("holding " + STICKER + " flat on her palm with a bright smile", close=True),
-      c("所以這張不用膠的貼紙，跟一般貼紙最不一樣："), c("有開關。往裡拖就黏，翻起來就放。"))
 kid("kid-ceiling-q", K("looking straight up at the ceiling with a worried frown", where=HOME),
     k("可是倒掛的時候，", "擔心"), k("身體一直往下墜，", "擔心"), k("不會把腳撕下來嗎？", "句尾上揚", "S:ceiling"))
 critter("ceiling-feet", "Close-up looking up at " + GECKO + " resting upside down on a sunny white ceiling, its front feet and back feet spread wide apart and gripping firmly, " + DAY,
-        c("研究的人看到，牠倒掛的時候，"), c("腳和腳趾會朝相反方向，互相往裡拉。"))
+        c("研究的人看到，牠倒掛的時候，"), c("兩邊的腳朝相反的方向，一起往身體這邊拉。"))
 chief("chief-maybe", C("holding her two fists close together and pulling gently towards each other, a thoughtful face"),
       c("他們認為，這可能就是讓小毛一直保持拖著，"), c("不被體重撕開的辦法。", None, "P:ceiling"))
 chief("chief-dust-back", C("brushing a little dust off her cardigan sleeve with a playful smile", close=True),
@@ -302,7 +296,7 @@ scene("dust-left", "Close-up of a few tiny round grey specks of dust resting on 
 scene("dust-stays", "Close-up of a clean cartoon gecko toe with wide rounded tip lifted above smooth glass, a few tiny round grey specks of dust left sitting on the glass below it, " + DAY,
       c("所以一踩一放，灰塵就被玻璃留下來了。"))
 critter("flick-dust", "Medium shot of " + TOKAY + " walking across a clean clear glass pane, its toes curling up as it lifts each foot, a short trail of tiny grey specks of dust behind it, " + DAY,
-        c("另一個研究讓壁虎自己在玻璃上走，"), c("發現腳趾能往上捲的時候，灰塵掉得快一倍，"))
+        c("另一個研究讓壁虎自己在玻璃上走，"), c("腳趾能往上捲，灰塵掉得比不能捲的時候快一倍，"))
 chief("chief-eighty", C("holding up one hand with fingers spread and a bright smile", close=True),
       c("大約走四步，就回到原本抓力的八成左右。", None, "P:dirty"))
 kid("kid-dusty-sticker", K("holding up a dusty crumpled yellow sticker with a sad pout", close=True),
@@ -318,7 +312,7 @@ kid("kid-where-q", K("standing with her hands on her hips and a curious face", w
 scene("pan", "Close-up of a plain round dark grey nonstick frying pan with a smooth shiny coating, sitting on a stove in a bright sunny kitchen, " + DAY,
       c("就在廚房。不沾鍋上那層很滑的塗層，", "接住上一句"), c("常是一種叫鐵氟龍的材料。"))
 critter("teflon-slip", "Close-up of " + GECKO + " sliding backwards across a flat smooth shiny dark grey slab with a surprised face, its toes splayed, " + DAY,
-        c("研究的人讓壁虎去抓平平的乾鐵氟龍，"), c("再輕輕往後拉，連壁虎都會滑。", None, "P:slip"))
+        c("研究的人讓壁虎抓住平平的乾鐵氟龍，"), c("再把牠輕輕往後拉，連壁虎都會滑。", None, "P:slip"))
 kid("kid-slip", K("pretending to slip with her arms flailing and a funny surprised face", close=True),
     k("連壁虎都滑！", "大驚"))
 scene("teflon-tips", "Close-up of " + BRISTLES + " lying on a very smooth shiny dark grey surface, only a few faint tiny sparkles where the tips touch",
@@ -326,7 +320,7 @@ scene("teflon-tips", "Close-up of " + BRISTLES + " lying on a very smooth shiny 
 kid("kid-wet-guess", K("holding a dripping wet sponge with a confident grin", close=True, where=KITCHEN),
     k("那再沾水，", "推理"), k("一定滑得更厲害！", "很有把握的錯猜", "S:wet"))
 critter("teflon-wet", "Close-up of " + GECKO + " clinging calmly to a smooth shiny dark grey slab under clear shallow water, little bubbles around it, " + DAY,
-        c("怪就怪在這裡。把鐵氟龍泡在水裡，"), c("牠反而抓得好上好幾倍。"))
+        c("怪就怪在這裡。把鐵氟龍泡在水裡，"), c("牠反而抓得好上好幾倍。", None, "P:wet"))
 kid("kid-why-q", K("scratching her head with a very puzzled face", close=True),
     k("為什麼？", "句尾上揚"))
 chief("chief-unknown", C("shrugging gently with open palms and an honest smile"),
@@ -335,36 +329,34 @@ critter("glass-wet", "Close-up of " + GECKO + " on a clear glass pane covered in
         c("換成普通玻璃，結果就倒過來。"), c("玻璃一泡水，抓力少了一大半。"))
 kid("kid-opposite", K("holding her two hands up flipped opposite ways with a surprised grin", close=True, where=KITCHEN),
     k("跟鐵氟龍剛好相反！", "驚訝"))
-scene("wet-toe", "Close-up of one cartoon gecko foot with wide rounded toe tips dripping wet, little water drops falling off it, beside smooth glass, " + DAY,
-      c("要是腳趾自己整個濕透，"), c("抓力更是掉到只剩一點點。", None, "P:wet"))
 kid("kid-rain-q", K("holding an open umbrella under falling rain on a covered balcony, curious face", close=True),
     k("所以下雨天，", "推理"), k("牠會比較難爬？", "句尾上揚"))
 chief("chief-rain", C("nodding gently with a thoughtful smile"),
       c("很可能。研究的人提醒，"), c("對住在又熱又濕地方的壁虎，水恐怕是個大麻煩。"))
 kid("kid-rough-q", K("rubbing her palm on a rough stone wall with a curious face", close=True),
-    k("那粗粗的牆呢？", "追問"), k("應該更好抓吧？", "句尾上揚", "S:rough"))
+    k("那不下雨，換成粗粗的牆呢？", "追問"), k("應該更好抓吧？", "句尾上揚", "S:rough"))
+chief("chief-hills", C("holding a big round magnifying glass up to a rough stone wall with a curious smile", close=True),
+      c("不一定。還記得牆畫大，像一片小山丘嗎？", "點名回呼"))
 scene("fine-rough", "Close-up of " + BRISTLES + " resting on a surface of very fine tightly packed little bumps drawn large, only a few faint sparkles where the tips touch",
-      c("不一定。研究發現，有一種很細很細的粗糙，"), c("黏起來反而最差，比更平的、更粗的都差。"))
-critter("bumpy-wall", "Close-up of " + GECKO + " gripping a wavy bumpy pale wall with rounded ridges, its toes bending over the ridges, " + DAY,
-        c("大一點的凸起，如果剛好跟腳趾上那一排排的皮差不多大，"), c("抓力也會掉得剩下很少很少。", None, "P:rough"))
+      c("研究發現，有一種很細很細的小山丘，"), c("黏起來反而最差，比更平的、更粗的都差。", None, "P:rough"))
 chief("chief-species", C("holding a small tan plush toy gecko in one hand and a big blue-grey plush toy gecko with orange spots in the other, smiling", close=True),
-      c("還記得你家天花板上那隻壁虎嗎？", "點名回呼"), c("家裡常見的，多半是另外幾種比較小的壁虎。"))
+      c("還記得你問，你家天花板上那隻是不是也這樣？", "點名回呼"), c("家裡常見的，多半是另外幾種比較小的壁虎。"))
 critter("home-gecko", "Close-up of " + GECKO + " resting on a sunny white ceiling near a window, its wide rounded toe tips spread flat, " + DAY,
         c("牠們的腳趾底下，也有一排一排的皮。"), c("可是剛剛那些實驗，大多是在大守宮身上做的。"))
 kid("kid-same-q", K("tilting her head with a thinking face", close=True),
     k("所以換一種，", "推理"), k("就不一定一樣？", "句尾上揚"))
 chief("chief-padless", C("holding up one finger with a calm smile", close=True),
-      c("對，數字不一定一樣。"), c("而且，不是每一種壁虎都有那一排排的皮，"))
-critter("padless", "Close-up of a slim sandy-brown cartoon gecko with thin slender toes and small claws standing on warm sunny desert sand, " + DAY,
-        c("有些壁虎的腳底，根本沒有。", None, "P:species"))
+      c("對，數字不一定一樣。"), c("而且，不是每一種壁虎都有那一排排的皮。", None, "P:species"))
+critter("padless", "Close-up of a slim sandy-brown cartoon gecko with thin slender toes and small claws standing on warm sunny desert sand beside a small upright glass pane, " + DAY,
+        c("有一種沒有這排皮的壁虎，連光滑的玻璃都爬不上去。"))
 
 # ---------- 收尾 ----------
-chief("chief-answer", C("smiling warmly at the viewer with one hand open, filling the frame", close=True),
-      c("不管哪一種，有那排皮的壁虎，", "接住上一句"), c("用的都是同一招。小問，你能把案子說破嗎？", "笑"), chapter="小問把案子說破")
+chief("chief-answer", C("sitting on the edge of a desk and leaning towards the girl with an inviting grin, one hand gesturing to her"),
+      c("不管哪一種，有那排皮的壁虎，", "接住上一句"), c("用的都是同一招。小問，你能把案子說破嗎？", "笑"), chapter="說放就放的腳")
 kid("kid-got-it", K("holding one hand up flat and curling her fingertips back like a peeling sticker, a proud grin", close=True, where=KITCHEN),
-    k("我懂了！牠不是黏得很死，", "恍然大悟"), k("是腳趾一捲，小毛翻過大約三十度，", "篤定"), k("就自己放手了！", "開心", "P:main"))
+    k("我懂了！", "恍然大悟"), k("牠厲害的不是黏，", "篤定"), k("是腳趾一捲，說放就放！", "開心", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
-      c("我覺得最厲害的，不是黏得牢，是說放就放。", "意見，輕鬆"))
+      c("說得好，這也是我最佩服的地方。", "笑"))
 critter("little-gecko-back", "Medium shot of a slim little pale grey cartoon gecko trotting up a smooth sunny white wall, one foot lifted with its toes curled up, " + DAY,
         c("還記得那隻一秒貼放十五次的小壁虎嗎？", "點名回呼"), c("牠每一步都在放手。"))
 chief("chief-watch", C("crouching a little and pointing up at a sunny window frame, whispering with a gentle smile"),
