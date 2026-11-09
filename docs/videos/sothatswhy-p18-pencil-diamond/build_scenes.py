@@ -211,7 +211,7 @@ chief("chief-far-later", C("raising one finger with a patient smile", close=True
 kid("kid-strong-soft-q", K("holding a flat wooden building-toy net in both hands and squeezing it with a puzzled face", where=HOME),
     k("網子很牢，", "不解"), k("整疊怎麼會軟？", "句尾上揚"))
 chief("chief-soft-where", C("holding two flat hands one above the other and sliding the top one, a knowing smile", close=True),
-      c("因為軟的地方不在網裡面，"), c("在層跟層的中間。好，現在換鑽石。"))
+      c("因為軟的地方不在網裡面，"), c("在層跟層的中間。鑽石可就不一樣了。"))
 model("toy-frame", "Medium shot of " + FRAME + ", standing on a sunny wooden table, " + DAY,
       c("同一盒積木，可是每一顆球，四隻手全部牽滿，"), c("伸向四個不同的方向。"))
 kid("kid-all-used-q", K("holding up four fingers and looking at them with a curious face", close=True),
@@ -363,7 +363,7 @@ kid("kid-enough-q", K("looking down at her pencil in her hands with a thinking f
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the girl"),
       c("你說呢？小問，你來說說看。", "笑"), chapter="小問說出了答案")
 kid("kid-got-it", K("holding up her yellow pencil proudly with a big confident grin", where=DESK),
-    k("我懂了！", "恍然大悟", "P:enough"), k("不只看是碳，還要看怎麼排！", "篤定", "P:main"))
+    k("我懂了！", "恍然大悟", "P:enough"), k("就像你一開始說的，", "篤定"), k("真的差在怎麼排！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好，而且是你自己想通的。", "笑"), c("我覺得這就是材料最有意思的地方。"))
 kid("kid-redraw-q", K("holding up her smudged drawing with a hopeful face", where=DESK),
@@ -379,7 +379,7 @@ chief("chief-which-smudge", C("nodding with an encouraging smile, one finger rai
 kid("kid-smudge-guess", K("holding up a short dark pencil next to a long pale pencil with a sure, cheeky grin", where=DESK),
     k("我猜黑的那支！", "很有把握"), k("石墨比較多！", "得意"))
 chief("chief-more-clay", C("giving a small approving nod with a warm smile, holding a pale pencil", close=True),
-      c("猜得有道理：淡的那支，黏土比較多。"))
+      c("猜得有道理。還記得嗎？淡的那支，黏土比較多。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("原來如此！", "開心大聲"))
