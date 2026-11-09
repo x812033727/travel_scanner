@@ -126,7 +126,7 @@
 | 2 | 11–20 | 婚約三條 | **Three Clauses** | 三個月後的法院：*"I'll sign the divorce. The house, I'll see you in court."* 走廊對面，Elias 已經在等 |
 | 3 | 21–30 | 一生 | **Forever** | 後台走廊：*"That's not my signature."* — *"Then prove it."* Elias 站在走廊盡頭，沒有走過來 |
 | 4 | 31–40 | 回爐 | **Remelt** | 砂料被斷貨，Gus 拖出十二年沒開的麻袋：*"I still remember the Pell recipe."* |
-| 5 | 41–50 | 描 | **Traced** | 鑑定報告最後一行：*"The forger was likely left-handed."* |
+| 5 | 41–50 | 描 | **Traced** | 鑑定報告最後一行：*"The tracing was likely done left-handed."* |
 | 6 | 51–60 | 十二年不見 | **Twelve Years** | Elias 摘下隔熱手套，左手背的燙疤；Grant 的笑僵住 |
 
 ## 第 1 集英文樣稿（只示範語氣，不是定稿）
