@@ -174,7 +174,7 @@ chief("chief-tokay", C("holding a small soft plush toy of a chubby blue-grey gec
 critter("tokay-intro", "Medium shot of " + TOKAY + " sitting calmly on a sunny tree trunk, " + DAY,
         c("牠的身體，大約是你家天花板上那隻的兩三倍長。"))
 kid("kid-mine-q", K("pointing back over her shoulder towards her home with a curious face", close=True),
-    k("那我家天花板上那隻，", "好奇"), k("也是這樣嗎？", "句尾上揚", "S:species"))
+    k("那我家天花板上那隻，", "好奇"), k("腳也跟大守宮一樣嗎？", "句尾上揚", "S:species"))
 chief("chief-later", C("holding up one finger with a patient smile", close=True),
       c("先記住這個問題，最後我們回來看。"), c("現在，我們把大守宮的腳畫大來看。"))
 scene("toe-flaps", "Close-up of the underside of one cartoon gecko toe drawn large, wide and rounded, covered in neat curved rows of soft pale flaps stacked like little folded blankets, plain pale cream background, flat 2D cartoon drawing",
@@ -234,7 +234,7 @@ critter("one-toe", "Close-up of " + TOKAY + " hanging calmly from a smooth glass
 kid("kid-one-toe", K("hanging from one finger hooked on a door frame with a strained funny face", where=HOME),
     k("我一根手指，", "好笑"), k("撐不住我自己！"))
 chief("chief-sticker-back", C("holding up " + STICKER + " beside her face, a warm smile", close=True),
-      c("這就是那張不用膠的貼紙。", None, "P:what"))
+      c("對，所以我才說，牠的腳是一張不用膠的貼紙。", None, "P:what"))
 kid("kid-letgo-q", K("frowning and pulling hard at her own sleeve stuck to nothing, puzzled", close=True),
     k("這麼黏，", "擔心"), k("牠的腳不就拔不起來了？", "章尾停住，句尾上揚", "S:letgo"))
 
@@ -248,7 +248,7 @@ critter("toe-curl", "Close-up of " + GECKO + " on a sunny white wall, one foot w
 kid("kid-tape-q", K("peeling the edge of " + STICKER + " off the back of her hand with a curious face", close=True),
     k("像撕貼紙，", "推理"), k("從邊邊開始掀？", "句尾上揚", "S:tape"))
 chief("chief-tape", C("nodding slowly with one finger raised", close=True),
-      c("看起來很像。不過研究的人發現，"), c("真正的開關，藏在每一根小毛身上。"))
+      c("看起來很像。不過研究的人發現，"), c("真正讓牠放手的開關，藏在每一根小毛身上。"))
 scene("bristle-lean", "Close-up of one very fine pale cream bristle drawn large, leaning over at a low slant against a smooth surface, its tiny flat spoon-shaped tips lying flat, " + SPARK + ", plain pale cream background, flat 2D cartoon drawing",
       c("小毛黏著的時候，是斜斜躺下來的。"))
 scene("bristle-up", "Close-up of one very fine pale cream bristle drawn large, standing up tall and steep from a smooth surface, its tiny flat spoon-shaped tips lifted clear and free, plain pale cream background, flat 2D cartoon drawing",
@@ -314,7 +314,7 @@ critter("teflon-slip", "Close-up of " + GECKO + " sliding backwards across a fla
 kid("kid-slip", K("pretending to slip with her arms flailing and a funny surprised face", close=True),
     k("連壁虎都滑！", "大驚"))
 scene("teflon-tips", "Close-up of " + BRISTLES + " lying on a very smooth shiny dark grey surface, only a few faint tiny sparkles where the tips touch",
-      c("這種表面很特別，小扁片在上面，很難拉出那個小拉力。"))
+      c("這種表面很特別，小扁片在上面，"), c("很難拉出凡得瓦力那種小拉力。"))
 kid("kid-wet-guess", K("holding a dripping wet sponge with a confident grin", close=True, where=KITCHEN),
     k("那再沾水，", "推理"), k("一定滑得更厲害！", "很有把握的錯猜", "S:wet"))
 critter("teflon-wet", "Close-up of " + GECKO + " clinging calmly to a smooth shiny dark grey slab under clear shallow water, little bubbles around it, " + DAY,
