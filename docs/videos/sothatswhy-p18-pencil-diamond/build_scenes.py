@@ -119,7 +119,7 @@ chief("chief-look", C("leaning forward with a curious smile, one hand on her chi
 kid("kid-smudge-q", K("holding a yellow pencil up close to her face and squinting at its dark tip", where=DESK),
     k("鉛筆芯怎麼這麼容易掉？", "句尾上揚", "S:smudge"))
 scene("gem-velvet", "Close-up of " + GEM + " resting on a dark blue velvet cloth, catching the sunlight with tiny rainbow glints, " + DAY,
-      c("這要從一件怪事說起：這層黑黑的東西，", "賣關子"), c("跟亮晶晶的鑽石，都是碳組成的。"))
+      c("跟你說件怪事：這層黑黑的東西，", "賣關子"), c("跟亮晶晶的鑽石，都是碳組成的。"))
 kid("kid-no-way", K("shaking her head with both hands up and a disbelieving frown", where=HOME),
     k("騙人！鑽石那麼硬，", "不相信"), k("鉛筆芯一擦就掉耶！"))
 chief("chief-tease", C("holding up one finger with a mysterious playful smile", close=True),
@@ -133,7 +133,7 @@ kid("kid-main-q", K("holding her yellow pencil in both hands and staring at it w
 
 # ---------- 第一章：先看鉛筆留下什麼 ----------
 chief("chief-start", C("tapping the tip of a yellow pencil with one finger, a curious smile", close=True),
-      c("你剛剛問筆芯怎麼這麼容易掉，", "接住上一句"), c("先拆開來看：它其實是兩樣東西混在一起的。", None, "S:mix"), chapter="筆芯裡不只有碳")
+      c("你剛剛問筆芯怎麼這麼容易掉，", "接住上一句"), c("把筆芯拆開來看，它其實是兩樣東西混在一起的。", None, "S:mix"), chapter="筆芯裡不只有碳")
 kid("kid-which-q", K("holding up two fingers with a curious face", close=True),
     k("哪兩樣？", "句尾上揚"))
 scene("two-powders", "Close-up of two small neat heaps on a plain wooden board, one heap of shiny dark grey powder with a metallic sheen and one heap of soft pale grey clay powder, " + DAY,
