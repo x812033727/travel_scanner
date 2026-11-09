@@ -330,3 +330,4 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - Bash 的 `run_in_background` 沒給 `timeout` 時只跑 30 分鐘就被停（2026-11-08 e902 精修，等 GPU 有貨時被停掉，pod 已開著在付錢）。拍攝、精修一律帶 `timeout: 7200000`。
 - **備份腳本在磁碟快滿時假裝成功（2026-11-08）**：容器寫入額度只剩 1.3 GB，`bk-episode.sh shared` 切 220 MB 的檔只寫出第一段，`git hash-object` 失敗卻沒停，回報 OK；是 `verify-episode.py` 抓到 `zt-shared` 少了 part01、part02。腳本已改成切檔或寫入失敗就 FAIL 停下。推備份前先 `df -h /`，要留得下整條分支的物件（共用分支約 1.5 GB）；`.git/objects/pack/tmp_pack_*` 是中斷的 fetch 留下的，可以刪。
 - **挑片檔的 choice 欄只能放種子、KEEP 或 RETAKE（第 3 集真人版 fix2，2026-11-09）**：代理把 `9031302 start@2.4` 整串寫進 choice 欄，`refine-prep.py` 不認得就默默略過，s15 沒進 picks.json，精修迴圈以為「全部都有了」一直空轉。剪點一律寫在 reason 欄；`refine-prep.py` 現在遇到不認得的 choice 會直接中止。
+- **成片音量差一點沒過（第 3 集真人版，2026-11-09）**：`assemble-v4.mjs` 的 loudnorm 是單段式，第 3 集出來 -15.3 LUFS（要 -14±1）。不用重剪：先量一次 `loudnorm=print_format=json`，再用量到的值做第二段（`linear=true`，`TP=-2.2` 以免峰值超過 -1.0），畫面與字幕軌 `-c copy`，只重壓聲音。原檔留在 `cut/v0/`。
