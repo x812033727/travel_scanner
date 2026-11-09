@@ -67,3 +67,5 @@ scope:
   備份 `transfer/sothatswhy-p17-gecko-feet` 206b42b5（verify 0）後送語言包，`review-files --dry-run --gate languages`：dub／縮圖／字幕／說明各 8。
   剩：站主核准語言、上傳 YouTube、記下影片網址後 `npm run tasks -- done`。
 - 2026-11-09：站主另開系列備份 repo；P17 全部工作目錄再推一份到 `x812033727/mokaair-video-backup-sothatswhy` 的 `transfer/sothatswhy-p17-gecko-feet`（a75a3734，`coverage.sh` 0/0）。
+- 2026-11-09：八語打包後上架包內容變了（metadata 34f08c → 6817d0），站上判定舊的上架核准對不上，重送 `--gate publish`；
+  站主核准語言包與新的上架包。全部關卡核准，剩上傳 YouTube、記下影片網址後 `npm run tasks -- done`。
