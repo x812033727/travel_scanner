@@ -66,3 +66,4 @@ scope:
   用 `/api/video/reviews/<slug>` 的 `locales` 照 `writeLanguages()` 寫進工作目錄後重打包，才有 8 軌。
   備份 `transfer/sothatswhy-p17-gecko-feet` 206b42b5（verify 0）後送語言包，`review-files --dry-run --gate languages`：dub／縮圖／字幕／說明各 8。
   剩：站主核准語言、上傳 YouTube、記下影片網址後 `npm run tasks -- done`。
+- 2026-11-09：站主另開系列備份 repo；P17 全部工作目錄再推一份到 `x812033727/mokaair-video-backup-sothatswhy` 的 `transfer/sothatswhy-p17-gecko-feet`（a75a3734，`coverage.sh` 0/0）。

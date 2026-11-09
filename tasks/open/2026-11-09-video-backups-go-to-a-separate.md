@@ -25,7 +25,7 @@ travel_scanner 推送時 GitHub 警告 "Repository is approaching its size quota
 
 - [x] `tobranch.sh`、`coverage.sh` 用 `BACKUP_REMOTE` 推到／讀自另一個 repo，不設時行為不變（`origin`）。
 - [x] `BACKUP-BRANCHES.md` 寫明各系列的備份 repo 與用法。
-- [ ] P17 備份推到 `mokaair-video-backup-sothatswhy` 並通過 `coverage.sh`。
+- [x] P17 備份推到 `mokaair-video-backup-sothatswhy` 並通過 `coverage.sh`（a75a3734，missing 0、mismatches 0）；系列配樂（r2 與漏掉的 P02 bed）推到同一 repo 的 `transfer/sothatswhy-shared`（05143595，核對 0）。
 - [ ] AI 劇的 `docs/videos/drama/BACKUP-BRANCHES.md` 也改指向 `drama-backup-*`（另開票，不在本票 scope）。
 - [ ] 主 repo 上已有的 `transfer/*`、`claude/backup-*` 要不要搬、要不要刪：等站主決定。
 
@@ -40,3 +40,7 @@ travel_scanner 推送時 GitHub 警告 "Repository is approaching its size quota
 ## Notes
 
 Findings, decisions and dead ends, so the next agent does not repeat them.
+
+- 2026-11-09：建 repo 的 API 回 403（GitHub App 不能建 repo），站主自己給了四個系列的備份 repo。
+  不必 clone 備份 repo：在 travel_scanner 加 remote（`git remote add backup-sothatswhy <url>`）直接推，省磁碟；session 要先 `add_repo` push 權限。
+  `tobranch.sh` 的暫存物件在整次執行結束才刪，3.5 GB 的工作目錄要留約 3.5 GB 空間。
