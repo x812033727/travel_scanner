@@ -15,13 +15,25 @@
     "performance": "像跟騎車的朋友聊一家公司：開場對觀眾講、帶點挑釁，「一台都不賣」停一拍；堺那章輕快帶笑；美國熱潮加快；「它多的，是怎麼賣」停一拍；兩次召回收乾、不煽情，罪名放慢；疫情那章越講越快，「越早下單越好」意味深長；崩盤放慢，「它知道」短而落地；斯圖加特像揭曉謎底；結尾乾脆。"
   },
   "subtitles": {
-    "burn_in": true
+    "burn_in": false
   },
   "look": {
     "preset": "cute-mystery"
   },
   "theme": "paper",
-  "characters": [],
+  "characters": [
+    {
+      "id": "researcher",
+      "name": "Ada",
+      "appearance": "a friendly cartoon grown woman with a calm grown-up face, a short loose black bob, round red glasses, a mustard-yellow knit cardigan over a white blouse, dark grey trousers and brown loafers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sulafat",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。"
+      },
+      "sheet_prompt": "one full-body character portrait of a single person standing in the centre third of the frame, turned three-quarters toward the viewer, both hands tucked into her cardigan pockets, thick clean dark outlines, plain deep navy background"
+    }
+  ],
   "music": {
     "prompt": "light, curious, a little mysterious, no vocals",
     "gain_db": -20,
@@ -30,18 +42,34 @@
   "scenes": [
     {
       "id": "open-you",
-      "chapter": "一九二一年二月，堺開了一間鐵工廠",
+      "chapter": "一台車都不賣的零件公司",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a young rider in a cycling cap crouching beside a road bike outside a small bike shop, pointing at the plain unmarked rear gear cluster with a curious grin, soft overcast morning light",
+        "prompt": "Medium shot of a young rider in a mustard-yellow cycling jersey crouching beside a road bike on a sunny street, pointing at its shiny rear gears with a curious grin",
         "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "t001",
-          "text": "你騎的公路車，變速器很可能出自同一家日本公司。",
+          "text": "你騎的公路車，踩到一半換個檔，那個變速器，很可能出自同一家日本公司。",
           "emotion": "對觀眾說，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one shiny silver bicycle gear standing upright on a red velvet cushion on the right side of the frame, a plain pale wall on the left, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "這家公司叫 Shimano，就是創辦人的姓：島野。"
         }
       ]
     },
@@ -49,14 +77,15 @@
       "id": "open-share",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bike mechanic in a grey apron in a small workshop holding up a shiny unmarked chainring, eyebrows raised in amazement, rows of wheels hanging behind him, soft lamp light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a big golden pie on a wooden kitchen table with only one thin slice cut away, a shiny silver bicycle gear resting on top, morning sun",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t002",
-          "text": "日經估計，運動車零件全球約八成五是它的。",
+          "id": "t003",
+          "text": "日經估計，運動車的零件，全球大約八成五是它的。",
           "emotion": "數字放慢"
         }
       ]
@@ -65,84 +94,32 @@
       "id": "open-nobike",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a quiet bike shop floor with one bare bicycle frame on a stand, a shop assistant beside it shrugging with palms up and a puzzled smile, soft grey daylight from a front window",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t003",
-          "text": "可是它一台完整的車都不賣。",
-          "emotion": "停一拍，反常"
-        }
-      ]
-    },
-    {
-      "id": "open-sakai",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a narrow 1920s harbour-town street of low wooden workshops in winter, an old woman in a padded jacket sweeping the doorstep of a workshop with a blank new wooden sign, her breath visible, mild overcast light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t004",
-          "text": "一九二一年二月，堺市一個年輕人開了間鐵工廠。",
-          "emotion": "沉穩進場景",
-          "say": "一九二一年二月，大阪的界市，一個年輕人開了間鐵工廠。",
-          "say_for": "2fa5cd106c57"
-        }
-      ]
-    },
-    {
-      "id": "open-repair",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Meiji-era mechanic in a kimono with tied-back sleeves crouching beside a tall old bicycle, holding up a wrench and grinning, soft daylight from an open shopfront",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t005",
-          "text": "這座城的打鐵手藝，明治就在修進口車。"
-        }
-      ]
-    },
-    {
-      "id": "open-gear",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a pair of oily hands holding up a small plain steel gear, the face out of frame, a workbench blurred behind, warm lamp light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t006",
-          "text": "隔年，它做起腳踏車的小齒輪。"
-        }
-      ]
-    },
-    {
-      "id": "open-1951",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a 1950s office worker in a small office carrying a tall stack of plain files from one wooden cabinet to another, peeking over the top with raised eyebrows, soft window light",
+        "prompt": "Medium shot of a bike shop assistant in a green apron shrugging with palms up beside a counter piled with loose shiny gears and chains, an empty bike stand behind her",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t007",
-          "text": "三十年後，它併了島野自轉車這家公司。",
-          "emotion": "放慢"
-        },
+          "id": "t004",
+          "text": "可是你想不到，它一台完整的腳踏車都不賣。",
+          "emotion": "停一拍，反常"
+        }
+      ]
+    },
+    {
+      "id": "open-revenue",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bulging plain brown leather pouch tied shut, smooth blank gold discs piled around it beside one silver bicycle gear on a workbench, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
         {
-          "id": "t008",
-          "text": "名字裡就有自轉車，那它現在為什麼不賣車？",
-          "emotion": "問句，說不通"
+          "id": "t005",
+          "text": "就算這樣，連釣具在內，二〇二五年它的營收，還是有四千六百六十二億日圓。",
+          "emotion": "數字放慢"
         }
       ]
     },
@@ -150,14 +127,14 @@
       "id": "open-wait",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bike factory manager in a work vest sighing with arms crossed among bare bicycle frames with no wheels, soft overcast light through high windows",
-        "camera": "push in",
+        "prompt": "Medium shot of a bike factory worker in overalls sitting on an empty parts shelf with his chin in his hand, bare bike frames lined up behind him, soft morning light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t009",
-          "text": "後來，有車廠說零件要等四百天。",
+          "id": "t006",
+          "text": "更怪的是，它這一路並不平順：疫情那兩年，有車廠說它的零件要等四百天。",
           "emotion": "預告，收著"
         }
       ]
@@ -166,85 +143,280 @@
       "id": "open-fine",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stern government official in a dark suit at a desk bringing down a heavy rubber stamp on an unmarked document, face turned our way, soft window light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a wooden judge's gavel resting on top of a very thick closed book with a plain grey cover, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t010",
-          "text": "後來，美國一個委員會找上了它。",
+          "id": "t007",
+          "text": "還有，美國一個管產品安全的委員會，找上了它。",
           "emotion": "預告，壓低"
         }
       ]
     },
     {
       "id": "open-promise",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "text": "105 年",
-        "kicker": "1921 年 2 月，大阪府堺市",
-        "sub": "一台車都不賣，憑什麼？"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, smiling and holding a thick plain-covered old ledger open, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "今天我們就來聊聊：一台車都不賣的 Shimano，憑什麼讓別人的車替它賺錢？",
+          "emotion": "承諾句，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "sakai-era",
+      "chapter": "一九二一年，堺的一間鐵工廠",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one small rounded wooden house with a grey tiled roof beside a bare winter tree under a pale sky, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "故事的起點，要回到一九二一年二月，大阪府的堺市。",
+          "emotion": "沉穩進場景",
+          "say": "故事的起點，要回到一九二一年二月，大阪府的界市。",
+          "say_for": "69790dc301ad"
+        }
+      ]
+    },
+    {
+      "id": "sakai-kofun",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a huge keyhole-shaped ancient burial mound covered in green trees and circled by a still moat, seen from a hill on a clear day",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "堺市政府說，大約一千六百年前，這裡蓋起了一大片古墳。",
+          "say": "界市政府說，大約一千六百年前，這裡蓋起了一大片古墳。",
+          "say_for": "05b862a7eb51"
+        }
+      ]
+    },
+    {
+      "id": "sakai-iron",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old Japanese blacksmith in a leather apron hammering a red-hot iron bar on an anvil in a wooden smithy, sunlight from the doorway",
+        "camera": "tilt up",
+        "visual": "still"
       },
       "lines": [
         {
           "id": "t011",
-          "text": "這份檔案，把它一百零五年的帳翻給你看。",
-          "emotion": "承諾句，篤定"
-        },
-        {
-          "id": "t012",
-          "text": "不賣車的 Shimano，憑什麼讓別人的車替它賺錢？",
-          "emotion": "問句上揚，停一拍"
+          "text": "蓋古墳靠的打鐵功夫，後來拿去做鐵砲、做菜刀。"
         }
       ]
     },
     {
-      "id": "rule-unknown",
-      "chapter": "一句話：絕對不要跟客戶競爭",
+      "id": "sakai-repair",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a thin plain folder lying open on a dusty archive shelf, a clerk's hand lifting an empty page, the clerk's puzzled face behind it, soft lamp light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t013",
-          "text": "那家島野自轉車做什麼，紀錄沒寫。",
-          "emotion": "老實",
-          "say": "那家公司做什麼，紀錄沒寫。",
-          "say_for": "a2f7316b1b5f"
-        }
-      ]
-    },
-    {
-      "id": "rule-reporter",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a newspaper reporter in a short-sleeved shirt in a warm tropical newsroom writing in a notebook, eyebrows raised at what he hears, a ceiling fan above, soft indoor light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t014",
-          "text": "找得到的，是《海峽時報》引過的一句話，出自島野家的人：",
-          "emotion": "轉述"
-        }
-      ]
-    },
-    {
-      "id": "rule-finger",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a single plain steel gear resting on an open blank notebook on a worn workbench, a pencil and a small oil can beside it, soft lamp light",
+        "prompt": "Medium shot of a Japanese mechanic in a work apron repairing the wheel of an old high-framed bicycle in a wooden workshop, set in the Meiji era, morning light",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
+          "id": "t012",
+          "text": "到了明治時代，這門手藝又拿去修什麼？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t013",
+          "text": "國外進口的腳踏車。"
+        }
+      ]
+    },
+    {
+      "id": "sakai-ada",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding up a small silver bicycle gear, surprised smile, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "從古墳一路接到腳踏車，我第一次讀到，也愣了一下。",
+          "emotion": "自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "sakai-founder",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small rounded iron lathe standing alone on a plain wooden workshop floor, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
           "id": "t015",
+          "text": "一份企業史整理說，就在這座城裡，一個二十六歲的年輕人，靠一台車床開了間鐵工廠。"
+        }
+      ]
+    },
+    {
+      "id": "sakai-farm",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a farmer's straw hat left on a plain wooden workbench beside a blacksmith's hammer, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "他叫島野庄三郎。一本美國公司史辭典說，他沒跟父親種田，跑去鐵工廠當學徒。"
+        }
+      ]
+    },
+    {
+      "id": "sakai-freewheel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one small silver bicycle gear lying beside a hammer on a plain wooden workbench, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "開業第二年，它開始做一樣腳踏車零件，是什麼？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t018",
+          "text": "後輪的飛輪。"
+        }
+      ]
+    },
+    {
+      "id": "sakai-coast",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young rider in a mustard-yellow cycling jersey coasting down a sunny country road with both feet resting still on the pedals, smiling, the wheels spinning",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "你騎到一半停下腳，輪子還繼續轉，靠的就是它。",
+          "emotion": "對觀眾，輕快"
+        }
+      ]
+    },
+    {
+      "id": "sakai-1951",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two plain grey boxes joined snugly into one long box on a wooden table, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "一九五一年，它併了一家公司，名字叫島野自轉車。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "sakai-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, frowning skeptically at a small bicycle bell, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "名字裡就有自轉車，那它現在為什麼不賣車？",
+          "emotion": "問句，說不通"
+        }
+      ]
+    },
+    {
+      "id": "sakai-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty plain wooden box with its lid open on a bare shelf, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "那家島野自轉車做什麼，紀錄沒寫；找得到的，是另一條線索。",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "rule-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young reporter in a linen jacket leaning forward to listen closely, hands folded, plain office wall behind, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "新加坡《海峽時報》，引過島野家的人一句話：",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "rule-quote",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two shiny silver bicycle gears meshing neatly side by side on a clean wooden workbench, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t024",
           "text": "創辦人說過，絕對、絕對不要跟客戶競爭。",
           "emotion": "一字一字，放慢"
         }
@@ -254,18 +426,17 @@
       "id": "rule-when",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a librarian in a cardigan in a quiet archive on a grey afternoon resting her hand on a closed plain album, a thoughtful look, soft lamp light",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, hugging a very thick plain-covered old book, smiling softly, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t016",
-          "text": "那句話是哪一年說的，我查不到；"
-        },
-        {
-          "id": "t017",
-          "text": "創辦人一九五八年過世，這句話留了下來。"
+          "id": "t025",
+          "text": "那句話是哪一年說的，查不到；創辦人一九五八年過世，這句話留了下來。"
         }
       ]
     },
@@ -273,14 +444,14 @@
       "id": "rule-you",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bicycle factory owner in a 1950s suit at his desk holding a plain gear between two fingers and squinting at it suspiciously, soft window light",
-        "camera": "tilt up",
+        "prompt": "Medium shot of a bike builder in a canvas apron in his bright workshop, arms crossed, giving a doubtful sideways look at a plain grey box on the counter",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t018",
-          "text": "換成你是車廠，會想跟一個也在賣車的對手買零件嗎？",
+          "id": "t026",
+          "text": "換成你是車廠，會想跟一個也在賣車的對手，買零件嗎？",
           "emotion": "對觀眾，問句"
         }
       ]
@@ -289,14 +460,17 @@
       "id": "rule-guess",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bicycle shop clerk in a cardigan behind a counter holding a single plain gear in one hand and an empty hand raised in an honest shrug, soft daylight",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, shaking her head gently with a knowing smile, hands relaxed, against a plain wall, in soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t019",
-          "text": "我猜不會。這是我的推測；我找得到的，只有那一句。",
+          "id": "t027",
+          "text": "我猜不會；不過這是我的推測，紀錄裡只有那一句話。",
           "emotion": "自己的看法"
         }
       ]
@@ -305,45 +479,15 @@
       "id": "rule-family",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a corridor with six plain empty picture frames with nothing inside them, a young office worker walking past and glancing up at them with curiosity, soft window light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Wide shot of a long neat row of empty plain wooden picture frames on a bare pale wall, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t020",
-          "text": "一份企業史整理說，到今天六任社長，全是島野家的人。"
-        }
-      ]
-    },
-    {
-      "id": "rule-freewheel",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a pair of hands fitting a small toothed steel gear onto the hub of a bicycle back wheel on a workbench, the face out of frame, warm lamp light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t021",
-          "text": "開頭那種小齒輪，叫飛輪。"
-        }
-      ]
-    },
-    {
-      "id": "rule-coast",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a 1920s delivery boy coasting downhill on an old bicycle with his feet off the pedals and legs stuck out, laughing, mild overcast light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t022",
-          "text": "你騎到一半停下腳，輪子還繼續轉，靠的就是它。",
-          "emotion": "對觀眾，輕快"
+          "id": "t028",
+          "text": "一份企業史整理說，到今天六任社長，全都是島野家的人。"
         }
       ]
     },
@@ -351,31 +495,35 @@
       "id": "rule-where",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a small 1950s harbour with cargo ships at dusk, a dock worker sitting on a wooden crate staring out to sea with his chin in his hand, soft blue evening light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger, eyebrows lifted, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t023",
-          "text": "可是不跟客戶搶，客戶要去哪裡找？",
+          "id": "t029",
+          "text": "可是只做零件、又不跟客戶搶，那客戶要去哪裡找？",
           "emotion": "問句，收著"
         }
       ]
     },
     {
       "id": "abroad-ny",
-      "chapter": "一九六五年，它把公司開到了紐約",
+      "chapter": "一九六五年，把公司開到紐約",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a busy 1960s city street corner between tall buildings, a young salesman in a narrow suit holding a small sample case and looking up at the skyscrapers in wonder, mild overcast light",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Wide shot of a row of tall rounded city buildings under a bright blue sky with a few puffy clouds, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t024",
-          "text": "在海外。一九六五年三月，它在紐約開了一家公司。",
+          "id": "t030",
+          "text": "答案在海外。一九六五年三月，它在紐約開了一家公司。",
           "emotion": "回答上一章"
         }
       ]
@@ -384,14 +532,15 @@
       "id": "abroad-stuttgart",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1960s shopkeeper in a brown work coat in a bicycle parts warehouse unpacking a wooden crate of small empty boxes, delighted face, soft window light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of one plain grey parcel tied with string alone on a bare wooden counter, plain wall behind, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t025",
-          "text": "一九六七年，德國一家公司當上它的德國總代理。"
+          "id": "t031",
+          "text": "一九六七年，德國一家公司，當上它在德國的總代理。"
         }
       ]
     },
@@ -399,14 +548,17 @@
       "id": "abroad-remember",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a blank brass nameplate beside the door of an old stone building on a grey morning, a postman in a cap about to knock and glancing back with a knowing look, soft overcast light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, pressing one finger to her lips with a secretive smile, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t026",
-          "text": "先記住這家德國公司。",
+          "id": "t032",
+          "text": "先記住這家德國公司，故事走到最後，它會再出現一次。",
           "emotion": "前向鉤子，壓低"
         }
       ]
@@ -415,15 +567,32 @@
       "id": "abroad-reel",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a factory worker in a white cap at a workbench holding up a shiny fishing reel in one hand and a bicycle gear in the other, comparing them with a bemused look, soft lamp light",
-        "camera": "pan right",
+        "prompt": "Close-up of a fishing rod with a shiny silver reel attached, resting across a wooden dock by a calm blue lake, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "一九七〇年，它還做起一樣跟腳踏車無關的東西：釣魚的捲線器。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "abroad-reel-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful old fisherman in a straw hat on a sunny riverbank happily reeling in a line with a shiny silver reel",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t027",
-          "text": "一九七〇年，它還做起了釣魚的捲線器，這門副業到今天都還在。",
-          "emotion": "帶笑"
+          "id": "t034",
+          "text": "你沒聽錯，是釣魚。這門副業後來會長到多大，我們後面再說。",
+          "emotion": "對觀眾"
         }
       ]
     },
@@ -431,56 +600,20 @@
       "id": "abroad-boom",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1970s bike shop owner in a striped shirt behind the counter grinning at an overflowing cash drawer, a row of plain bicycles behind him, soft indoor light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t028",
-          "text": "美國那時候有多瘋？",
-          "emotion": "問句"
-        },
-        {
-          "id": "t029",
-          "text": "一九七二年，美國人買的腳踏車，比汽車還多。",
-          "emotion": "加快"
-        }
-      ]
-    },
-    {
-      "id": "abroad-dusseldorf",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young office worker at one of two desks in a small 1970s office answering a heavy telephone with a surprised look, a stack of blank paper with no writing beside him, soft grey daylight",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t030",
-          "text": "同一年，它在西德開了歐洲公司；"
-        },
-        {
-          "id": "t031",
-          "text": "一本美國公司史辭典說，一開始只有兩個員工。",
-          "emotion": "帶一點好笑"
-        }
-      ]
-    },
-    {
-      "id": "abroad-two",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young clerk in a 1970s office juggling two heavy telephones at once, one at each ear, a flustered grin, soft grey daylight",
+        "prompt": "Wide shot of many happy cyclists riding down a broad tree-lined avenue, two old cars parked at the side, soft daylight",
         "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t032",
-          "text": "兩個人，大概連接電話都要輪班。",
-          "emotion": "開玩笑"
+          "id": "t035",
+          "text": "美國那時候有多瘋？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t036",
+          "text": "一九七二年，美國人買的腳踏車，比汽車還多。",
+          "emotion": "加快"
         }
       ]
     },
@@ -488,49 +621,14 @@
       "id": "abroad-singapore",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a new 1970s factory hall with rows of empty workbenches, one worker in a white cap and overalls switching on a machine and smiling, soft light through skylights",
-        "camera": "pan left",
+        "prompt": "Medium shot of factory workers in light shirts assembling shiny bicycle gears at a long table in a bright airy hall, set in 1973 Singapore",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t033",
-          "text": "一九七三年，它在新加坡開了第一座日本以外的組裝工廠；"
-        }
-      ]
-    },
-    {
-      "id": "abroad-california",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a salesman in a 1970s wide-collared shirt hanging a plain sign outside a small single-storey office, looking back over his shoulder with a thumbs up, mild hazy daylight",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t034",
-          "text": "工廠有了，美國的客人呢？",
-          "emotion": "問句"
-        },
-        {
-          "id": "t035",
-          "text": "一九七四年，它把銷售辦公室開到加州。"
-        }
-      ]
-    },
-    {
-      "id": "abroad-ride",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a long coastal road on a mild hazy afternoon, a cyclist in 1970s shorts and a headband pedalling toward us and waving, low hills behind",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t036",
-          "text": "那本辭典的評語是：剛好接上美國這一波熱潮。"
+          "id": "t037",
+          "text": "一九七三年，它在新加坡，開了第一座日本以外的組裝工廠。"
         }
       ]
     },
@@ -538,50 +636,52 @@
       "id": "abroad-topgroup",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a plain silver rear derailleur with no markings on a cloth on a workbench under a hanging lamp, a pair of hands turning it over, the face out of frame",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a shiny silver bicycle crankset with its chainring and a rear derailleur laid on a soft blue cloth, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t037",
-          "text": "一位美國老技師寫過：它最高階的那組零件，"
-        },
-        {
           "id": "t038",
-          "text": "一九七三年就有了名字，"
+          "text": "一位美國老技師寫過：它最高階的那組零件叫 Dura-Ace，一九七三年就有了名字。"
         }
       ]
     },
     {
-      "id": "abroad-topgroup-b",
+      "id": "abroad-flop",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young racer in a 1980s wool jersey at a bike shop counter lifting a new plain silver derailleur out of a box with a delighted grin, soft window light",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Close-up of a small deflated blue balloon lying limp on a wooden workbench beside a shiny bicycle gear, grey overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
           "id": "t039",
-          "text": "卻要到一九八四年才真正成功。那年發生了什麼？",
+          "text": "可是這組零件，要到一九八四年才真正成功。"
+        },
+        {
+          "id": "t040",
+          "text": "那年發生了什麼？",
           "emotion": "問句"
         }
       ]
     },
     {
       "id": "index-first",
-      "chapter": "一九八四年，換檔變成撥一格就到位",
+      "chapter": "一九八四年，撥一格就到位",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a road racer in a 1980s wool jersey at a race start line, one hand on a thin lever on the bike frame, grinning, mild overcast morning light",
-        "camera": "tilt down",
+        "prompt": "Close-up of a bare hand pressing a small gear lever on a plain silver road bike handlebar, plain wall behind, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t040",
-          "text": "它在最高階那一組上，放了一個新東西：段數定位。",
+          "id": "t041",
+          "text": "一九八四年，它在 Dura-Ace 上，放了一個新東西：段數定位。",
           "emotion": "揭曉"
         }
       ]
@@ -590,13 +690,13 @@
       "id": "index-old",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a rider in a cycling cap frowning down at a thin shift lever on a plain bicycle frame, one gloved hand resting on it, soft grey daylight",
-        "camera": "pull out",
+        "prompt": "Medium shot of a rider in a wool jersey frowning and reaching down to a small lever on the bike frame, quiet country road, soft daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t041",
+          "id": "t042",
           "text": "以前換檔靠手感；段數定位，就是撥一格、換一檔。"
         }
       ]
@@ -605,13 +705,13 @@
       "id": "index-you",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young office worker in a helmet stopped at a city crossing on a commuter bike, glancing down at her thumb on the shifter with a satisfied smile, soft overcast morning light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a young rider in a mustard-yellow cycling jersey clicking the gear lever and grinning as the bike surges up a gentle green hill, sunny day",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t042",
+          "id": "t043",
           "text": "你現在換檔撥一下就到位，用的就是這個想法。",
           "emotion": "對觀眾"
         }
@@ -621,13 +721,14 @@
       "id": "index-ask",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bike factory buyer in a 1980s office leaning back in his chair with a plain silver derailleur in one hand, squinting skeptically, desk lamp light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of two almost identical shiny silver bicycle gears lying side by side on a plain wooden workbench, bright window light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t043",
+          "id": "t044",
           "text": "可是好零件不只一家會做，它到底多了什麼？",
           "emotion": "問句"
         }
@@ -637,19 +738,15 @@
       "id": "index-sets",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a 1980s salesman in a suit grinning and holding up one open box of plain silver bike parts, soft lamp light, full frame",
-        "camera": "push in",
+        "prompt": "Medium shot of a factory worker lifting a matching set of shiny bicycle parts out of a plain grey crate, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t044",
-          "text": "它多的，是怎麼賣。",
-          "emotion": "短句，揭曉"
-        },
-        {
           "id": "t045",
-          "text": "同一本辭典寫，它把撥桿和變速器配成一整組，"
+          "text": "它多的，是怎麼賣。同一本辭典寫，它把撥桿和變速器配成一整組，",
+          "emotion": "短句，揭曉"
         }
       ]
     },
@@ -657,19 +754,35 @@
       "id": "index-line",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a worker in overalls on a bicycle assembly line nodding as he fits a plain silver gear onto a plain unbranded bike frame, soft light from high windows",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, giving a confident thumbs-up with a bright smile, against a plain wall, in soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
           "id": "t046",
-          "text": "整組賣給車廠。"
-        },
+          "text": "整組賣給車廠。我的看法是，這一招比任何一個新零件都厲害。",
+          "emotion": "自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "index-sum",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shiny road bicycle with a gleaming silver gear set leaning against a plain sunlit wall on a quiet street",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
         {
           "id": "t047",
-          "text": "我的看法是，這一招比任何一個新零件都厲害。",
-          "emotion": "自己的看法"
+          "text": "車不是它賣的；可是車上那一整組零件，是它賣的。",
+          "emotion": "小結"
         }
       ]
     },
@@ -677,14 +790,17 @@
       "id": "index-rival-q",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small parts maker in a cluttered garage workshop peering through a gap in a tall stack of boxes with a wary look, soft afternoon light from a door",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, arms folded, curious half-smile, against a plain wall, in soft daylight",
         "camera": "drift",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
           "id": "t048",
-          "text": "整組賣，別人要怎麼插得進來？",
+          "text": "整組都包了，別家的零件，要怎麼插得進來？",
           "emotion": "問句"
         }
       ]
@@ -693,14 +809,14 @@
       "id": "index-rival",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young engineer in a small workshop at night holding up a twist-grip bicycle shifter, eager grin, a single desk lamp",
-        "camera": "tilt down",
+        "prompt": "Close-up of a hand twisting the plain rubber grip on a bicycle handlebar, plain wall behind, soft daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "t049",
-          "text": "一九八七年，芝加哥冒出一家新公司，做轉把式的變速器。",
+          "text": "一九八七年，芝加哥冒出一家新公司叫 SRAM，做轉把式的變速器。",
           "emotion": "轉折"
         }
       ]
@@ -709,14 +825,15 @@
       "id": "index-court",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a lawyer in a dark suit in a wood-panelled courthouse hallway carrying a tall stack of blank folders, determined face, soft window light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Close-up of a wooden judge's gavel resting on its round block on a plain wooden bench, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
           "id": "t050",
-          "text": "這家小公司在加州告 Shimano 違反反托拉斯法。"
+          "text": "這家小公司在加州，告 Shimano 違反反托拉斯法。"
         }
       ]
     },
@@ -724,29 +841,18 @@
       "id": "index-settle",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of two hands shaking over an unmarked document and a fountain pen on a polished table, one in a grey sleeve and one in a dark sleeve, soft daylight",
-        "camera": "pan left",
+        "prompt": "Close-up of two hands in suit sleeves shaking firmly across a polished table by a bright window in a quiet office",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
           "id": "t051",
           "text": "一九九一年，雙方庭外和解，條件沒有公開。"
-        }
-      ]
-    },
-    {
-      "id": "index-mix",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a mechanic at a workbench holding two differently shaped derailleurs, one in each hand, weighing them with a playful grin, soft window light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
+        },
         {
           "id": "t052",
-          "text": "之後，車廠可以混搭別家的零件了。"
+          "text": "之後，車廠就可以混搭別家的零件了。"
         }
       ]
     },
@@ -754,8 +860,8 @@
       "id": "index-sti",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a road bike handlebar with a combined brake and shift lever, a rider's hand pushing the lever sideways, the rider's focused face behind it, soft overcast light",
-        "camera": "push in",
+        "prompt": "Close-up of a single road bike brake lever with a small gear paddle tucked behind it on a curved drop handlebar, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -769,18 +875,15 @@
       "id": "index-cut",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a government clerk in a 1990s office pinning a wordless notice onto a cork board, glancing over her shoulder with a worried look, soft overhead light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a very thick closed book with a plain grey cover on a bare desk, a long silver bicycle crank arm lying across it, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
           "id": "t054",
-          "text": "一九九七年，美國消費品安全委員會發出一份公告，"
-        },
-        {
-          "id": "t055",
-          "text": "主角，是一根曲柄。",
+          "text": "一九九七年，美國消費品安全委員會發出一份公告，主角是一根曲柄。",
           "emotion": "斷在事件前"
         }
       ]
@@ -790,14 +893,14 @@
       "chapter": "一九九七年，四十九個品牌的曲柄",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a rider's foot on a pedal with the plain metal crank arm in focus, the rider looking down at it with curiosity, soft overcast light",
-        "camera": "drift",
+        "prompt": "Close-up of a bicycle's silver crank arm and black pedal turning beside the shiny chainring, soft daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t056",
-          "text": "曲柄，就是你踩踏板時跟著轉的那根金屬臂。",
+          "id": "t055",
+          "text": "曲柄，就是你踩踏板時，跟著一起轉的那根金屬臂。",
           "emotion": "對觀眾，解釋"
         }
       ]
@@ -806,14 +909,15 @@
       "id": "crank-broken",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a mountain biker sitting on a dirt trail holding a snapped metal crank arm, staring at it in shock, a small scrape on one knee, soft overcast afternoon light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of a snapped silver bicycle crank arm lying in two pieces on grey pavement, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t057",
-          "text": "公告說，北美有超過一百萬根，"
+          "id": "t056",
+          "text": "公告說，北美有超過一百萬根這種曲柄，裝在腳踏車上，"
         }
       ]
     },
@@ -821,13 +925,13 @@
       "id": "crank-broken-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a first-aid volunteer in a vest on a forest trail opening a small kit with a concerned face, a bicycle lying on its side behind her, soft overcast light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young rider sitting on the curb rubbing a scraped knee beside a bike with a broken crank, grey overcast afternoon",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t058",
+          "id": "t057",
           "text": "已經有六百三十多件斷掉的報告，二十二個人受傷。",
           "emotion": "放慢"
         }
@@ -837,62 +941,20 @@
       "id": "crank-whose",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a 1990s bike shop with a long row of mountain bikes in many colours, a young shop worker walking along the row and scratching his head, soft indoor light",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Wide shot of a long row of many different colourful mountain bikes lined up in a bright warehouse under tall skylights",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t059",
+          "id": "t058",
           "text": "這些曲柄，裝在誰的車上？",
           "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "crank-stats",
-      "template": "stats",
-      "data": {
-        "title": "1997 年 7 月，美國的召回公告",
-        "stats": [
-          {
-            "value": "100 萬+",
-            "label": "北美的曲柄"
-          },
-          {
-            "value": "630+",
-            "label": "斷裂報告"
-          },
-          {
-            "value": "22 人",
-            "label": "受傷"
-          },
-          {
-            "value": "49 個",
-            "label": "品牌"
-          }
-        ],
-        "source": "美國消費品安全委員會 1997-07-01"
-      },
-      "lines": [
+        },
         {
-          "id": "t060",
+          "id": "t059",
           "text": "兩百多款車，掛著至少四十九個品牌。"
-        }
-      ]
-    },
-    {
-      "id": "crank-world",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a 1990s bike shop worker in a polo shirt lifting a mountain bike off a rack with a worried face, a stack of shipping boxes behind him, soft indoor light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t061",
-          "text": "當時的報導說，北美加歐洲要召回兩百五十萬台登山車。"
         }
       ]
     },
@@ -900,13 +962,13 @@
       "id": "crank-giant",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bike shop owner in a plain apron with no logo holding a bicycle crank up to the light and squinting at it anxiously, soft lamp light",
-        "camera": "push in",
+        "prompt": "Medium shot of a young rider in a mustard-yellow cycling jersey in a bike shop leaning closer with wide eyes, bright window light",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t062",
+          "id": "t060",
           "text": "名單上，有一個你一定認得的名字：捷安特。",
           "emotion": "對觀眾"
         }
@@ -916,13 +978,16 @@
       "id": "crank-opinion",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a pile of plain bicycle crank arms on a workshop floor, a mechanic kneeling behind them with both hands on his head, soft overcast light from a doorway",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, frowning thoughtfully at a silver bicycle crank in her hands, against a plain wall, in soft daylight",
         "camera": "pan right",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t063",
+          "id": "t061",
           "text": "我覺得，這是大家都用它的另一面：一根出事，所有品牌一起出事。",
           "emotion": "自己的看法"
         }
@@ -932,15 +997,16 @@
       "id": "crank-fine",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a woman official in a 1990s grey suit reading out a blank press release at a small podium, calm face, soft daylight",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Close-up of a wooden judge's gavel resting on top of a very thick closed book with a plain grey cover, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t064",
-          "text": "沒想到，事情還沒完。一九九九年，委員會宣布，",
-          "emotion": "升級"
+          "id": "t062",
+          "text": "沒想到，事情還沒完。還記得開頭那個委員會嗎？一九九九年，它找上門了。",
+          "emotion": "升級，回呼"
         }
       ]
     },
@@ -948,13 +1014,14 @@
       "id": "crank-fine-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a hand writing with a fountain pen on a plain unprinted slip of paper, a company accountant's tight-lipped face behind it, soft window light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of a small plain leather purse with a few gold coins spilling out onto a wooden desk, soft window light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t065",
+          "id": "t063",
           "text": "Shimano 的美國公司，同意付十五萬美元的民事罰款。"
         }
       ]
@@ -963,30 +1030,22 @@
       "id": "crank-crime",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a blank wall calendar grid with no numbers and many squares crossed out, a clerk's finger pointing at one late square, the clerk's frustrated face beside it, soft lamp light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger with a serious look, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t066",
-          "text": "委員會指控的，不是曲柄會斷，是報得太晚：",
+          "id": "t064",
+          "text": "更怪的是，委員會指控的，不是曲柄會斷，是報得太晚：",
           "emotion": "揭曉"
-        }
-      ]
-    },
-    {
-      "id": "crank-crime-c",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an investigator in a 1990s office spreading blank incident reports across a long table, frowning, soft overcast window light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
+        },
         {
-          "id": "t067",
-          "text": "它早就知道有人受傷，卻沒有及時通報。"
+          "id": "t065",
+          "text": "它早知道有人受傷，卻沒及時通報。"
         }
       ]
     },
@@ -994,13 +1053,13 @@
       "id": "crank-deny",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a company spokesman in a 1990s suit at a press table calmly shaking his head, a glass of water and a plain folder in front of him, soft lamp light",
-        "camera": "tilt up",
+        "prompt": "Close-up of an open hand raised palm-out in a polite stop gesture in front of a plain wall, soft daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t068",
+          "id": "t066",
           "text": "Shimano 否認曲柄有缺陷，也否認違反通報義務。"
         }
       ]
@@ -1009,52 +1068,16 @@
       "id": "crank-small",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a few sheets of plain paper money with no printing and a few plain coins on a big polished boardroom table, tiny against the empty wood, an accountant's amused face leaning in, soft window light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of one small smooth blank gold disc alone in the middle of a huge empty wooden table, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t069",
-          "text": "這筆錢，我猜它不痛不癢；",
-          "emotion": "帶一點好笑"
-        },
-        {
-          "id": "t070",
-          "text": "這個數字，留著跟另一張罰單比。",
-          "emotion": "收著"
-        }
-      ]
-    },
-    {
-      "id": "taiwan-q",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a small plain parts box on a shop counter with a sticker-free lid, a young shop clerk's hand lifting the lid and her curious face behind, soft window light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t071",
-          "text": "那它在台灣，又是什麼角色？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "taiwan-office",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a sales clerk in a small city office at a desk with boxed bike parts stacked behind her, answering a phone with a cheerful face, soft window light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t072",
-          "text": "二〇〇二年，它在台中設了台灣禧瑪諾；你在台灣碰到的，是賣零件的那一站。",
-          "emotion": "對觀眾"
+          "id": "t067",
+          "text": "這筆錢，我猜它不痛不癢；這個數字，先留著跟另一張罰單比。",
+          "emotion": "帶一點好笑，收著"
         }
       ]
     },
@@ -1062,13 +1085,14 @@
       "id": "crank-turn",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a quiet city street at night with a shuttered bike shop under a blank signboard with no writing, a lone cyclist in a face mask riding past and glancing sideways in surprise, soft streetlamp light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Wide shot of an empty red roller coaster track climbing a steep hill against a bright blue sky, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t073",
+          "id": "t068",
           "text": "真正讓它坐上雲霄飛車的，是二〇二〇年。",
           "emotion": "斷在事件前"
         }
@@ -1079,14 +1103,14 @@
       "chapter": "一百歲那年，營收多了四成四",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a woman in a face mask in a bike shop doorway holding a new bicycle by the handlebars with an empty paper tag, beaming, soft overcast daylight",
-        "camera": "pull out",
+        "prompt": "Wide shot of a park path with families riding shiny new bicycles under a clear spring sky, soft daylight",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t074",
-          "text": "疫情一來，腳踏車的需求突然往上衝。",
+          "id": "t069",
+          "text": "疫情一來，腳踏車的需求突然往上衝。那年八月，日經一篇評論的標題是：",
           "emotion": "加快"
         }
       ]
@@ -1095,28 +1119,14 @@
       "id": "boom-nissan",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a stock trader in a shirt and tie at a desk with two blank glowing screens, jaw dropped, soft screen light at night",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of an old brass balance scale on a wooden table, one small silver bicycle gear outweighing a big black car tyre on the other pan",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t075",
-          "text": "那年八月，日經一篇評論的標題是："
-        }
-      ]
-    },
-    {
-      "id": "boom-nissan-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a businessman at a desk staring in surprise at a tiny metal gear resting on top of a small car model, desk lamp light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t076",
+          "id": "t070",
           "text": "這家做腳踏車零件的公司，市值超過了日產汽車。",
           "emotion": "放慢"
         }
@@ -1126,81 +1136,55 @@
       "id": "boom-react",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young woman on a sofa in the evening reading a newspaper with a wordless headline, rubbing her eyes and reading it again, soft lamp light",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, staring wide-eyed at a small silver gear in her open palm, against a plain wall, in soft daylight",
         "camera": "push in",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t077",
-          "text": "做齒輪的比做汽車的值錢，這個標題我看了兩遍。",
+          "id": "t071",
+          "text": "做齒輪的比做汽車的值錢，這個標題，我看了兩遍。",
           "emotion": "自己的反應"
         }
       ]
     },
     {
-      "id": "boom-ask",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a bike factory buyer in an office holding a phone to his ear, eyes closed in disbelief, a wall of empty shelves behind him, soft overcast light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t078",
-          "text": "訂單多到什麼程度？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
       "id": "boom-400",
-      "template": "big",
-      "data": {
-        "text": "400 天",
-        "kicker": "歐美車廠對《金融時報》說",
-        "sub": "高階零件，從下單到出貨"
-      },
-      "lines": [
-        {
-          "id": "t079",
-          "text": "開頭那四百天，就是這時候：《金融時報》引述歐美車廠說，",
-          "emotion": "回呼"
-        },
-        {
-          "id": "t080",
-          "text": "高階零件從下單到出貨，要等這麼久。"
-        }
-      ]
-    },
-    {
-      "id": "boom-taiwan",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bike factory supervisor in a polo shirt standing beside a row of bare frames waiting for parts, arms crossed, worried frown, soft light through high windows",
+        "prompt": "Medium shot of a bike factory worker in overalls sitting on an empty parts shelf with his chin in his hand, bare bike frames lined up behind him, soft morning light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t081",
-          "text": "報導也點名，台灣的巨大和美利達，都受到衝擊；"
+          "id": "t072",
+          "text": "訂單多到什麼程度？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t073",
+          "text": "還記得開頭那四百天嗎？就是這時候。",
+          "emotion": "回呼"
         }
       ]
     },
     {
-      "id": "boom-lemond",
+      "id": "boom-400-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a warehouse worker in a flannel shirt in a half-empty bike warehouse holding up a nearly empty parts bin, raised eyebrows, soft overcast light from a loading door",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Wide shot of a very long line of plain grey boxes stretching far away across a sunny warehouse floor",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t082",
-          "text": "同一篇說，美國一家小車廠上半年拿到的貨少了八成。"
+          "id": "t074",
+          "text": "《金融時報》引述歐美車廠說，高階零件從下單到出貨，要等這麼久。"
         }
       ]
     },
@@ -1208,19 +1192,15 @@
       "id": "boom-you",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a teenage boy in a hoodie at a bike shop counter staring at an empty display stand, his shoulders slumped, a shop clerk's hand pointing at a plain waiting list, soft daylight",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young rider in a mustard-yellow jersey at the end of a long queue of plain-shirted people by a plain shop door, sighing, soft daylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t083",
-          "text": "如果你那兩年想買新車卻被叫去排隊，",
+          "id": "t075",
+          "text": "如果你那兩年想買新車，卻被叫去排隊，原因有一部分在這裡。",
           "emotion": "對觀眾"
-        },
-        {
-          "id": "t084",
-          "text": "原因有一部分在這裡。"
         }
       ]
     },
@@ -1228,34 +1208,20 @@
       "id": "boom-pr",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a company spokesman in a modern factory office holding a blank clipboard and smiling confidently, machines behind a glass wall, soft daylight",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of a small white megaphone lying on a tidy wooden desk beside a cup of tea, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t085",
+          "id": "t076",
           "text": "Shimano 自己怎麼說？",
           "emotion": "問句"
         },
         {
-          "id": "t086",
+          "id": "t077",
           "text": "公關說，產能已經大幅擴充，"
-        }
-      ]
-    },
-    {
-      "id": "boom-output",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a busy modern factory floor at night with machines running, one worker in a cap and gloves lifting a tray of finished silver gears with a tired but proud grin, soft overhead light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t087",
-          "text": "二〇二〇年第四季的產量，是公司史上最高；"
         }
       ]
     },
@@ -1263,14 +1229,17 @@
       "id": "boom-order",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a hand dropping a thick unmarked order form into a wire tray already piled high, a busy clerk's face behind it, soft lamp light",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, leaning in, knowing half-smile, beckoning with one hand, against a plain wall, in soft daylight",
         "camera": "push in",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t088",
-          "text": "還請客戶，越早下單越好。",
+          "id": "t078",
+          "text": "二〇二〇年第四季的產量，是公司史上最高；還請客戶，越早下單越好。",
           "emotion": "放慢，意味深長"
         }
       ]
@@ -1279,19 +1248,16 @@
       "id": "boom-century",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a factory worker in a white cap with puffed cheeks blowing out one candle on a small gear-shaped cake, soft indoor light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a tall plain white birthday cake topped with one shiny silver bicycle gear on a sunny table, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t089",
-          "text": "二〇二一年它滿一百歲，營收多了四成四，",
+          "id": "t079",
+          "text": "二〇二一年它滿一百歲，營收多了四成四，營業利益多了將近八成。",
           "emotion": "數字放慢"
-        },
-        {
-          "id": "t090",
-          "text": "營業利益多了將近八成。"
         }
       ]
     },
@@ -1299,78 +1265,53 @@
       "id": "boom-plant",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a construction site for a new factory under a mild overcast sky, a site engineer in a hard hat holding rolled wordless plans and pointing ahead with excitement",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Close-up of a small plain white factory building with one chimney beside a little palm tree on a green lawn, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t091",
-          "text": "新上任的社長對日經說，要投資約兩百億日圓，在新加坡蓋新廠。"
-        }
-      ]
-    },
-    {
-      "id": "boom-high-q",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young analyst in a modern office in the afternoon leaning toward a window with a pair of binoculars, eyebrows raised in anticipation, soft overcast light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t092",
-          "text": "這波熱潮，最高衝到哪裡？",
-          "emotion": "問句"
+          "id": "t080",
+          "text": "新上任的社長對日經說，要投資約兩百億日圓，在新加坡蓋一座新廠。"
         }
       ]
     },
     {
       "id": "boom-peak",
-      "template": "stats",
+      "template": "shot",
       "data": {
-        "title": "疫情前後",
-        "stats": [
-          {
-            "value": "3,632 億",
-            "label": "2019 年營收（日圓）"
-          },
-          {
-            "value": "6,289 億",
-            "label": "2022 年營收（日圓）"
-          },
-          {
-            "value": "26.9%",
-            "label": "2022 年營業利益率"
-          }
-        ],
-        "source": "日經亞洲 2024；Shimano 2023 年度決算短信"
+        "prompt": "Close-up of a huge red balloon floating high, tied by a string to a small plain grey box on a sunny table",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t093",
-          "text": "二〇二二年，營收衝到六千兩百八十九億日圓；",
-          "emotion": "數字放慢"
+          "id": "t081",
+          "text": "這波熱潮，最高衝到哪裡？",
+          "emotion": "問句"
         },
         {
-          "id": "t094",
-          "text": "疫情前的二〇一九年，只有三千六百三十二億。"
+          "id": "t082",
+          "text": "二〇二二年，營收衝到六千兩百八十九億日圓；",
+          "emotion": "數字放慢"
         }
       ]
     },
     {
-      "id": "boom-margin",
+      "id": "boom-peak-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an accountant in a modern office at night stacking coins into a tall tower on a desk, delighted grin, desk lamp light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Close-up of a small flat purse lying next to a fat bulging purse on a wooden table, warm afternoon sun",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t095",
-          "text": "每一百塊營收，有將近二十七塊是營業利益。"
+          "id": "t083",
+          "text": "疫情前的二〇一九年，只有三千六百三十二億。"
         }
       ]
     },
@@ -1378,14 +1319,14 @@
       "id": "boom-margin-you",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a small business owner in an apron leaning back in a chair behind a shop counter with his hands behind his head, smiling dreamily, soft afternoon light",
-        "camera": "pan left",
+        "prompt": "Medium shot of a cheerful shopkeeper in an apron leaning back in her chair with hands behind her head, smiling in a sunny shop",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t096",
-          "text": "你做生意做到這樣，大概也會覺得好日子不會結束吧？",
+          "id": "t084",
+          "text": "你做生意做到這樣，大概也會覺得，好日子不會結束吧？",
           "emotion": "對觀眾，帶笑"
         }
       ]
@@ -1394,35 +1335,33 @@
       "id": "boom-cool",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a worried factory manager looking up at a plain thermometer with no numbers on the wall, its red line low, soft grey daylight",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a big red balloon starting to sag and drift lower above a wooden table, grey overcast light",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t097",
-          "text": "同年十月的財報，多了一句話："
-        },
-        {
-          "id": "t098",
-          "text": "需求還算穩，但開始有降溫的跡象。",
+          "id": "t085",
+          "text": "同年十月的財報，多了一句話：需求還算穩，但開始有降溫的跡象。",
           "emotion": "收著"
         }
       ]
     },
     {
       "id": "bust-freeze",
-      "chapter": "二〇二三年，新工廠開工，車卻賣不掉",
+      "chapter": "二〇二三年，熱潮變成急凍",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a huge warehouse packed with boxed bicycles stacked to the ceiling, a forklift driver sitting idle in his seat with his chin in his hand, soft overcast light from roof windows",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a crumpled red rubber balloon skin, completely empty and flat, on a frosty wooden table, pale winter daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t099",
-          "text": "降溫，很快變成了急凍。",
+          "id": "t086",
+          "text": "降溫，很快變成了急凍。二〇二三年，營收少了快四分之一，",
           "emotion": "接住，短句"
         }
       ]
@@ -1431,29 +1370,15 @@
       "id": "bust-freeze-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a finance manager in a modern office tearing a page off a blank desk calendar with no numbers, grim face, a plain unlabelled chart line sloping down on the wall behind her, soft grey daylight",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of a thin flat empty purse lying alone on a cold grey stone windowsill on a grey winter morning, pale light",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t100",
-          "text": "二〇二三年，營收少了快四分之一，營業利益直接砍半；"
-        }
-      ]
-    },
-    {
-      "id": "bust-parts",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a factory worker in a white cap standing beside a still assembly line, holding an empty tray and shrugging, soft grey daylight",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t101",
-          "text": "腳踏車零件這一塊，掉了將近三成。"
+          "id": "t087",
+          "text": "營業利益直接砍半；腳踏車零件這一塊，掉了將近三成。"
         }
       ]
     },
@@ -1461,18 +1386,14 @@
       "id": "bust-reason",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a thick empty financial report lying open on a desk, a finger tracing one line, a tired manager's face behind it, desk lamp light at night",
-        "camera": "tilt down",
+        "prompt": "Wide shot of a showroom wall packed with rows of unsold new bicycles and one bored clerk leaning on the counter, soft daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t102",
-          "text": "財報說的是：熱潮降溫，市場上的庫存還是太多；"
-        },
-        {
-          "id": "t103",
-          "text": "北美的完成車，零售也一直很弱。"
+          "id": "t088",
+          "text": "財報說的是：熱潮降溫，市場上的庫存還是太多；北美的完成車，零售也一直很弱。"
         }
       ]
     },
@@ -1480,30 +1401,15 @@
       "id": "bust-you",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a bike shop owner in a sweater sitting on a stool in a shop crowded with unsold new bicycles, chin on his fist, sighing, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a young rider in a mustard-yellow cycling jersey walking past a big open warehouse full of rows of dusty new bikes, overcast day",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t104",
-          "text": "你可以想像：疫情時拚命訂的零件，裝成了車，",
+          "id": "t089",
+          "text": "你可以想像：疫情時拚命訂的零件，裝成了車，停在倉庫和車行裡，等不到人買。",
           "emotion": "對觀眾"
-        }
-      ]
-    },
-    {
-      "id": "bust-you-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a long row of new bicycles in plastic wrap standing in a dim storeroom, one stock clerk with a clipboard counting them with a weary face, soft overcast light from a high window",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t105",
-          "text": "停在倉庫和車行裡，等不到人買。"
         }
       ]
     },
@@ -1511,14 +1417,17 @@
       "id": "bust-plant",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a brand-new factory hall with gleaming machines standing still, one worker in a fresh uniform sitting on an empty crate and looking around with a puzzled half-smile, soft light through skylights",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising her eyebrows, gesturing to one side, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t106",
-          "text": "還記得新加坡那座新工廠嗎？它就在這一年開始運轉。",
+          "id": "t090",
+          "text": "還記得新加坡那座新工廠嗎？它偏偏就在這一年開始運轉。",
           "emotion": "回呼，轉折"
         }
       ]
@@ -1527,31 +1436,16 @@
       "id": "bust-plant-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a shiny new machine's unlabelled start button with a worker's finger hovering over it and his hesitant face behind, soft overhead light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Wide shot of a large new white factory building beside green tropical trees under a grey cloudy sky, its wide loading yard quiet and empty",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t107",
-          "text": "熱潮時下的決定，偏偏在急凍的時候到位。",
+          "id": "t091",
+          "text": "熱潮時下的決定，在急凍的時候到位。",
           "emotion": "自己的感慨"
-        }
-      ]
-    },
-    {
-      "id": "bust-cut",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a crowded warehouse at night, a lone security guard walking past stacked boxes with a flashlight and glancing back uneasily, soft torch light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t108",
-          "text": "同一年九月，一個老問題又回來了。",
-          "emotion": "斷在事件前"
         }
       ]
     },
@@ -1559,14 +1453,16 @@
       "id": "recall-notice",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a woman official at a government office desk holding up a blank notice sheet with a serious face, soft overcast window light",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Close-up of a silver bicycle crank arm with its chainring lying alone on a bare grey desk, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t109",
-          "text": "九月二十一日，委員會又發了召回公告。"
+          "id": "t092",
+          "text": "同一年九月二十一日，委員會又發了一份召回公告。又是曲柄。",
+          "emotion": "斷在事件前"
         }
       ]
     },
@@ -1574,15 +1470,15 @@
       "id": "recall-crank",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a hollow silver bicycle crank arm on a mechanic's bench with a thin crack along a glued seam, the mechanic leaning in with a magnifying glass and worried eyes, desk lamp light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of a silver bicycle crank arm broken into two separate hollow halves lying apart on a grey workbench, soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t110",
-          "text": "又是曲柄。這次是十一速、用黏合做的中空曲柄。",
-          "emotion": "短句"
+          "id": "t093",
+          "text": "這次是十一速、用黏合做的中空曲柄，問題是會分離。"
         }
       ]
     },
@@ -1590,18 +1486,19 @@
       "id": "recall-count",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a bike shop service area with a long row of bicycles waiting on stands, a mechanic in an apron looking down the row with wide eyes, soft indoor light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Wide shot of long metal shelves stacked high with plain grey boxes in a sunny warehouse with tall windows",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t111",
+          "id": "t094",
           "text": "這次有多少？",
           "emotion": "問句"
         },
         {
-          "id": "t112",
+          "id": "t095",
           "text": "美國六十八萬組，加拿大再八萬組。"
         }
       ]
@@ -1610,30 +1507,16 @@
       "id": "recall-count-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a thick stack of plain warranty cards on a service counter, a clerk's hand fanning them out, her astonished face behind, soft daylight",
-        "camera": "pan left",
-        "visual": "still"
+        "prompt": "Close-up of a huge heap of silver bicycle cranks piled on a wooden floor in a bright storeroom with tall windows",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t113",
-          "text": "公告說，曲柄分離的通報有四千五百一十九件。",
+          "id": "t096",
+          "text": "公告說，曲柄分離的通報，有四千五百一十九件。",
           "emotion": "數字放慢"
-        }
-      ]
-    },
-    {
-      "id": "recall-global",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a cycling magazine newsroom on a grey afternoon, an editor in a cardigan pinning a plain unlabelled world map to a wall and stepping back with a low whistle",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t114",
-          "text": "單車媒體說，算上全世界，是兩百八十萬組。"
         }
       ]
     },
@@ -1641,13 +1524,14 @@
       "id": "recall-price",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a cyclist in a modern jersey at a bike shop counter holding a shiny new crankset in its box, wincing at a plain price tag with no numbers, soft window light",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a gleaming silver bicycle crank resting in an open velvet-lined box on a shop counter, bright window light",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t115",
+          "id": "t097",
           "text": "這些曲柄賣了十一年多，一組兩百七十到一千五百美元。"
         }
       ]
@@ -1656,35 +1540,15 @@
       "id": "recall-you",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a road cyclist in a modern jersey kneeling beside her bike in a garage at night, checking the crank arm with a phone torch, concerned face, soft lamp light",
-        "camera": "pan right",
+        "prompt": "Medium shot of a young rider in a mustard-yellow cycling jersey kneeling to look closely at the crank of a road bike in a sunny garage",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t116",
-          "text": "如果你那幾年買過它比較貴的曲柄，",
+          "id": "t098",
+          "text": "如果你那幾年買過它比較貴的曲柄，這份公告值得你回頭查一下。",
           "emotion": "對觀眾，認真"
-        },
-        {
-          "id": "t117",
-          "text": "這份公告值得你回頭查一下。"
-        }
-      ]
-    },
-    {
-      "id": "recall-cost-q",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a company accountant in a modern office in the morning opening a thick empty ledger and pulling a face of dread, soft window light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t118",
-          "text": "這一次，它付了多少代價？",
-          "emotion": "問句"
         }
       ]
     },
@@ -1692,14 +1556,20 @@
       "id": "recall-cost",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an accountant pressing keys on a big desk calculator with a blank display and a long unprinted paper roll curling onto the floor, his shocked face behind it, desk lamp light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of a fat purse lying on its side on a wooden table, smooth blank gold discs pouring out of its opening, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t119",
-          "text": "光是免費檢查這一項，當年就認了一百七十六億日圓的損失。"
+          "id": "t099",
+          "text": "這一次代價多大？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t100",
+          "text": "光是免費檢查，當年就認了一百七十六億日圓的損失。"
         }
       ]
     },
@@ -1707,36 +1577,35 @@
       "id": "bust-question",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a journalist in a modern newsroom at night leaning forward with a notebook and pen, eyebrows raised in a pointed question, desk lamp light",
+        "prompt": "Close-up of one tall stack of smooth blank gold discs starting to topple on a wooden table, soft daylight",
         "camera": "pull out",
-        "visual": "still"
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t120",
-          "text": "問題來了：這場崩盤，它事前不知道嗎？",
+          "id": "t101",
+          "text": "問題來了：這場崩盤，它事前真的不知道嗎？",
           "emotion": "升級，問句"
         }
       ]
     },
     {
       "id": "bust-quote",
-      "template": "big",
+      "template": "shot",
       "data": {
-        "text": "早就料到",
-        "kicker": "Shimano 會長對日經亞洲說（2024）",
-        "sub": "We had anticipated that there would eventually be a slump"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, nodding slowly, knowing look, hands folded, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t121",
-          "text": "它知道。二〇二四年，會長島野容三對日經說：",
-          "emotion": "揭曉"
-        },
-        {
-          "id": "t122",
-          "text": "我們早就料到，總有一天會崩。",
-          "emotion": "放慢，落地"
+          "id": "t102",
+          "text": "它知道。二〇二四年，會長島野容三對日經說：我們早就料到，總有一天會崩。",
+          "emotion": "揭曉，放慢落地"
         }
       ]
     },
@@ -1744,18 +1613,18 @@
       "id": "bust-why",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a line worker in a cap glancing up wide-eyed at a fast-moving production line of plain metal parts, soft light from high windows",
-        "camera": "pan left",
+        "prompt": "Medium shot of a line worker in light overalls glancing up at a fast busy assembly line of bicycle gears, bright factory light",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t123",
+          "id": "t103",
           "text": "那為什麼還一直擴產？",
           "emotion": "問句"
         },
         {
-          "id": "t124",
+          "id": "t104",
           "text": "他說，高峰時只能先拚產量，其他計畫往後延。"
         }
       ]
@@ -1764,50 +1633,213 @@
       "id": "bust-2024",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a salesman in a quiet bike shop at dusk polishing the same unsold bike again, bored expression, soft lamp light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a small potted seedling drooping a little on a grey stone windowsill, pale overcast light",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t125",
-          "text": "那一年，營收又少了一點。"
+          "id": "t105",
+          "text": "二〇二四年，營收又少了一點。到這裡，你可能會覺得，它要一路往下了。"
         }
       ]
     },
     {
-      "id": "late-class",
-      "chapter": "二〇二六年，同一種指控又來了",
+      "id": "rebound",
+      "chapter": "最大的客戶，在斯圖加特",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a judge in a black robe in a wood-panelled courtroom closing a thick plain case file with a calm nod, soft window light",
-        "camera": "push in",
+        "prompt": "Close-up of a small potted seedling standing up straight again with two fresh green leaves on a sunny windowsill",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "可是二〇二五年，營收多了百分之三點四，就是開頭那個四千六百六十二億。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "rebound-reel",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful old fisherman in a straw hat on a sunny riverbank holding a fishing rod with a plain silver reel, soft daylight",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t126",
-          "text": "曲柄那條線，走完了嗎？",
+          "id": "t107",
+          "text": "還記得一九七〇年的捲線器嗎？這一年，釣具占了營收將近四分之一。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "rebound-profit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a slightly thin leather purse with a few smooth blank gold discs beside it on a wooden table, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "不過，營業利益少了兩成，賺得沒有營收看起來那麼好。"
+        }
+      ]
+    },
+    {
+      "id": "lange-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a very thick closed plain book, tapping its cover, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "那一年，誰向它買得最多？",
           "emotion": "問句"
         },
         {
-          "id": "t127",
-          "text": "今年二月，美國法院批准了這款曲柄集體訴訟的和解，"
+          "id": "t110",
+          "text": "它的年度報告裡，最大客戶那一欄，寫著一個德國名字。"
         }
       ]
     },
     {
-      "id": "late-class-b",
+      "id": "lange-reveal",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a courthouse corridor on a grey morning, three empty chairs in a row outside a closed door, a court clerk carrying files past them and glancing over, soft overcast light",
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, with a delighted knowing smile, pointing at the viewer, against a plain wall, in soft daylight",
         "camera": "pan right",
-        "visual": "still"
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t128",
-          "text": "被告除了它，還有兩家大車廠。"
+          "id": "t111",
+          "text": "還記得一九六七年，那家當上德國總代理的公司嗎？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "lange-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old stone shop front with one tall plain window and a plain wooden door, soft daylight",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "它叫 Paul Lange，在斯圖加特，一九四九年成立。"
+        }
+      ]
+    },
+    {
+      "id": "lange-buy",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a bulging plain leather pouch tied shut, smooth blank gold discs piled around it on a wooden counter, plain wall behind, soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "二〇二五年，它一家就向 Shimano 買了將近五百四十億日圓，",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "lange-card",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one big round red balloon rising high above a row of small plain balloons on a sunny table by a window",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "占營收百分之十一點六，是 Shimano 最大的一個客戶。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "lange-react",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, drawing a sharp breath, both hands raised in surprise, against a plain wall, in soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "這個答案，我一開始也沒猜到：前一年它還不到一成，年報連名字都沒列。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "lange-europe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two plain round balloons tied to a wooden table, a big red one floating high and a small wrinkled blue one sagging low, soft daylight",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "一年之間，德國的營收多了快四成；同一年，中國少了三分之一。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "late-start",
+      "chapter": "二〇二六年，同一種指控又來了",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, opening a very thick plain book with both hands, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "故事到這裡，還沒有結束。二〇二六年，前面埋下的兩條線，一起回來了。",
+          "emotion": "收著"
         }
       ]
     },
@@ -1815,14 +1847,17 @@
       "id": "late-nikkei",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a frowning newspaper reporter at a desk holding a red pen over a page covered only in grey squiggle lines, soft daylight from a window",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, raising one finger as if recalling something, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t129",
-          "text": "還記得那句越早下單越好嗎？",
+          "id": "t118",
+          "text": "還記得那句「越早下單越好」嗎？三月一日，日經寫得更直接：",
           "emotion": "回呼"
         }
       ]
@@ -1831,17 +1866,13 @@
       "id": "late-nikkei-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a columnist in a grey sweater typing at a laptop in a newsroom on a rainy morning, lips pressed together, a mug of tea beside her, soft overcast window light",
+        "prompt": "Medium shot of a cheerful factory worker pushing yet another new bike onto a showroom floor already packed with bikes, bright morning light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t130",
-          "text": "三月一日，日經寫得更直接："
-        },
-        {
-          "id": "t131",
+          "id": "t119",
           "text": "Shimano 沒能勸住車廠，別在熱潮裡生產過頭。",
           "emotion": "放慢"
         }
@@ -1851,30 +1882,18 @@
       "id": "late-opinion",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a parts supplier in a work jacket standing outside a closed factory gate with a small box of gears, a helpless smile, mild overcast light",
-        "camera": "pull out",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, sighing with a small rueful smile, both hands open, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t132",
-          "text": "我的看法是，這是做零件最難的地方：",
+          "id": "t120",
+          "text": "我的看法是，這是做零件最難的地方：車是客戶做的，要做多少，輪不到你說了算。",
           "emotion": "自己的看法"
-        }
-      ]
-    },
-    {
-      "id": "late-opinion-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a bicycle factory planner at a whiteboard in a meeting room drawing a tall arrow upward with a marker, eager face, soft daylight",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t133",
-          "text": "車是客戶做的，要做多少，輪不到你說了算。"
         }
       ]
     },
@@ -1882,14 +1901,15 @@
       "id": "late-fine",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a government official in a dark suit at a podium in a press room holding up a wordless sheet of paper, firm expression, soft overhead light",
-        "camera": "tilt up",
-        "visual": "still"
+        "prompt": "Close-up of a wooden judge's gavel on top of a very thick closed book with a smooth plain grey cover, soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t134",
-          "text": "然後是開頭那個委員會：三月十六日，它找上門了。",
+          "id": "t121",
+          "text": "然後，是開頭那個委員會。三月十六日，它又找上門了。",
           "emotion": "回呼"
         }
       ]
@@ -1898,14 +1918,16 @@
       "id": "late-fine-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a fountain pen signing at the bottom of a long plain agreement on a conference table, the signer's tense face reflected in the polished wood, soft daylight",
-        "camera": "push in",
-        "visual": "still"
+        "prompt": "Close-up of a big heavy sack of smooth blank gold discs on a wooden desk, a small puff of dust around it, soft daylight",
+        "camera": "pan left",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t135",
-          "text": "Shimano 同意付一千一百五十萬美元的民事罰款。"
+          "id": "t122",
+          "text": "Shimano 同意付一千一百五十萬美元的民事罰款。",
+          "emotion": "數字放慢"
         }
       ]
     },
@@ -1913,18 +1935,19 @@
       "id": "late-same",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an old dusty rubber stamp and a new shiny rubber stamp side by side on a desk, a clerk's hand hovering over them, the clerk's wry face behind, soft lamp light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Close-up of two identical plain grey boxes sitting side by side on a bare wooden desk, soft overcast light from a tall window",
+        "camera": "tilt up",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t136",
+          "id": "t123",
           "text": "指控呢？",
           "emotion": "問句"
         },
         {
-          "id": "t137",
+          "id": "t124",
           "text": "跟一九九九年一模一樣：沒有立刻通報。",
           "emotion": "放慢"
         }
@@ -1934,31 +1957,18 @@
       "id": "late-react",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a quiet archive reading room on a grey afternoon, a researcher in a sweater holding up a plain page and staring at it with her mouth slightly open, soft overcast window light",
-        "camera": "drift",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, gazing out of a bright window, quiet and thoughtful, against a plain wall, in soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t138",
+          "id": "t125",
           "text": "中間隔了二十七年；這是整份檔案裡，我最在意的地方。",
           "emotion": "自己的反應"
-        }
-      ]
-    },
-    {
-      "id": "late-claim",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a government lawyer in a dark suit at a long table tapping a wordless folder with one finger, eyebrows raised, soft overhead light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t139",
-          "text": "那 Shimano 怎麼說？",
-          "emotion": "問句"
         }
       ]
     },
@@ -1966,14 +1976,14 @@
       "id": "late-deny",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a company lawyer in a grey suit at a conference table sliding a blank document forward and shaking her head calmly, soft daylight",
-        "camera": "pull out",
+        "prompt": "Close-up of a hand raised palm-out in a polite stop gesture in front of a plain bare wall, soft overcast light",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t140",
-          "text": "它在和解協議裡寫明，這不代表它承認指控；"
+          "id": "t126",
+          "text": "這一次，Shimano 在和解協議裡寫明，這不代表它承認指控；"
         }
       ]
     },
@@ -1981,205 +1991,46 @@
       "id": "late-safe",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a cheerful mechanic in a bike shop wheeling a repaired road bike forward with a thumbs up, soft daylight",
-        "camera": "pan left",
+        "prompt": "Medium shot of a smiling bike mechanic handing a gleaming new silver crank to a rider across a sunny shop counter",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t141",
-          "text": "它在協議裡也說，檢查換新開始後，就沒有受傷通報了。"
+          "id": "t127",
+          "text": "它也說，檢查換新開始以後，就沒有消費者受傷的通報了。"
         }
       ]
     },
     {
       "id": "late-compare",
-      "template": "compare",
+      "template": "shot",
       "data": {
-        "title": "同一種指控，兩張罰單",
-        "left": {
-          "heading": "1999 年",
-          "points": [
-            "15 萬美元",
-            "曲柄斷裂、22 人受傷"
-          ]
-        },
-        "right": {
-          "heading": "2026 年",
-          "points": [
-            "1,150 萬美元",
-            "4,519 件曲柄分離"
-          ]
-        },
-        "verdict": "兩次都沒有承認",
-        "source": "美國消費品安全委員會 1999-07-07、2026-03-16"
+        "prompt": "Close-up of a tiny thin purse beside an enormous bulging sack of gold coins on a wooden table, bright morning sun",
+        "camera": "push in",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t142",
+          "id": "t128",
           "text": "前面那十五萬美元，這一次變成七十多倍。",
           "emotion": "回呼，數字放慢"
         }
       ]
     },
     {
-      "id": "late-cut",
+      "id": "close-question",
+      "chapter": "不跟客戶搶的生意",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an office courier at dawn carrying a thick empty bound report up the steps of a government building, glancing back over his shoulder, mild overcast morning light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t143",
-          "text": "罰單來的隔天，它交出一份年度報告。"
-        }
-      ]
-    },
-    {
-      "id": "late-cut-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an unmarked table on an open report page with one row circled in red pencil, a reader's surprised eyes peering over the top of the page, soft lamp light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t144",
-          "text": "最大客戶那一欄，寫著一個德國名字。",
-          "emotion": "斷在事件前"
-        }
-      ]
-    },
-    {
-      "id": "lange-reveal",
-      "chapter": "最大的客戶，在斯圖加特",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a warehouse manager in a grey work coat in a vast parts warehouse, standing between tall shelves of blank boxes and waving with a proud smile, soft light from high windows",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t145",
-          "text": "還記得一九六七年那家德國代理商嗎？",
-          "emotion": "回呼"
-        }
-      ]
-    },
-    {
-      "id": "lange-name",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a long loading dock on a grey morning with a row of delivery trucks, a dispatcher in a hi-vis vest holding a clipboard high and grinning, soft overcast light",
+        "prompt": "Medium shot of a young rider in a mustard-yellow jersey standing beside a road bike leaned on a wall, looking down at its gears, soft daylight",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t146",
-          "text": "它叫保羅朗格，在斯圖加特，一九四九年成立。"
-        }
-      ]
-    },
-    {
-      "id": "lange-buy",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a forklift driver in a parts warehouse lifting a tall pallet of small plain boxes, leaning out of the cab with a big grin, soft light from high windows",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t147",
-          "text": "去年，它一家就買了將近五百四十億日圓。",
-          "emotion": "數字放慢"
-        }
-      ]
-    },
-    {
-      "id": "lange-card",
-      "template": "big",
-      "data": {
-        "text": "11.6%",
-        "kicker": "2025 年，Shimano 最大的客戶",
-        "sub": "保羅朗格（Paul Lange & Co.），斯圖加特的代理商"
-      },
-      "lines": [
-        {
-          "id": "t148",
-          "text": "百分之十一點六，是 Shimano 最大的一個客戶。",
-          "emotion": "放慢"
-        }
-      ]
-    },
-    {
-      "id": "lange-react-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young woman in a cardigan at a kitchen table in the evening holding a cup of tea and laughing at herself, a blank notebook with a crossed-out guess in front of her, soft lamp light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t149",
-          "text": "這個答案，我一開始也沒猜到。",
-          "emotion": "自己的反應"
-        }
-      ]
-    },
-    {
-      "id": "lange-before",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of last year's thin plain report lying beside this year's thick one on a desk, a reader's finger tapping the thin one, her surprised face behind, soft lamp light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t150",
-          "text": "前一年它還不到一成，年報連名字都沒列。"
-        },
-        {
-          "id": "t151",
-          "text": "一年之間，德國那邊多了多少？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "lange-europe",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a commuter in a rain jacket on a city street wheeling a new bicycle out of a shop, delighted grin, soft overcast light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t152",
-          "text": "德國的營收多了快四成；同一年，中國少了三分之一。",
-          "emotion": "轉折"
-        }
-      ]
-    },
-    {
-      "id": "close-question",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young rider in a cycling cap at dusk outside a small bike shop holding one single small plain gear in his open palm, looking thoughtful, soft lamp light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t153",
+          "id": "t129",
           "text": "回到開頭的問題：一台車都不賣，它憑什麼？",
           "emotion": "問句，放慢"
         }
@@ -2189,14 +2040,17 @@
       "id": "close-answer",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a matched set of plain silver bicycle parts laid out neatly in an open wooden box on a workbench, a mechanic's hands spreading them out, soft window light",
-        "camera": "pan right",
-        "visual": "still"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, smiling warmly, hand on her heart, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t154",
-          "text": "我的答案是：還記得創辦人那句話嗎？",
+          "id": "t130",
+          "text": "我的答案是：還記得創辦人那句「絕對不要跟客戶競爭」嗎？",
           "emotion": "答案，回呼"
         }
       ]
@@ -2205,14 +2059,14 @@
       "id": "close-answer-b",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a bicycle factory floor with rows of frames on stands, a line worker fitting plain silver parts onto one frame and nodding with quiet confidence, soft light from high windows",
-        "camera": "drift",
+        "prompt": "Medium shot of a factory worker bolting a shiny gear set onto a bicycle frame on a bright assembly line, soft daylight",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t155",
-          "text": "不跟客戶搶，車廠才放心把它的零件裝上自己的車；",
+          "id": "t131",
+          "text": "不跟客戶搶，車廠才放心，把它的零件裝上自己的車；",
           "emotion": "清楚"
         }
       ]
@@ -2221,37 +2075,110 @@
       "id": "close-answer-c",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a delivery driver in a rain jacket stacking plain parts boxes onto a hand trolley beside a van on a cobbled street, glancing up with a satisfied smile, soft overcast light",
-        "camera": "tilt down",
-        "visual": "still"
+        "prompt": "Close-up of the plain wooden door of an old stone shop with a plain stone front on a cobbled street, soft daylight",
+        "camera": "pull out",
+        "visual": "still",
+        "nobody": true
       },
       "lines": [
         {
-          "id": "t156",
+          "id": "t132",
           "text": "再讓代理商替它，把零件賣進德國這樣的市場。"
+        }
+      ]
+    },
+    {
+      "id": "close-flip",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a silver bicycle crank arm with a pedal, thoughtful, against a plain wall, in soft daylight",
+        "camera": "pan right",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "可是這也有另一面。還記得一九九七年那根曲柄嗎？大家都用它，就一起出事；"
+        }
+      ]
+    },
+    {
+      "id": "close-flip-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sunny bike warehouse packed to the ceiling with rows of new bicycles, quiet and still",
+        "camera": "tilt down",
+        "visual": "still",
+        "nobody": true
+      },
+      "lines": [
+        {
+          "id": "t134",
+          "text": "可是熱潮裡，車廠要做多少，它勸得住嗎？",
+          "emotion": "問句"
         },
         {
-          "id": "t157",
-          "text": "連釣具在內，二〇二五年它營收四千六百六十二億日圓。",
-          "emotion": "數字放慢"
+          "id": "t135",
+          "text": "勸不住。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "close-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, smiling gently and nodding at the viewer, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t136",
+          "text": "不賣車，讓它賺到別人的車；也讓它，跟著別人的車一起起落。",
+          "emotion": "金句，落地"
         }
       ]
     },
     {
       "id": "close-outro",
-      "template": "outro",
+      "template": "shot",
       "data": {
-        "title": "2025 年營收 4,662 億日圓",
-        "cta": "參考資料在說明欄"
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, smiling and holding up a small shiny bicycle gear, against a plain wall, in soft daylight",
+        "camera": "drift",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
       },
       "lines": [
         {
-          "id": "t158",
-          "text": "你現在騎的那台車，變速器是哪一家的？留言告訴我。",
+          "id": "t137",
+          "text": "好啦，這就是今天的故事。你現在騎的那台車，變速器是哪一家的？留言告訴我。",
           "emotion": "親近"
-        },
+        }
+      ]
+    },
+    {
+      "id": "close-subscribe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of Ada with her wavy black bob with a side fringe and round red glasses, holding a very thick plain book against her chest, warm smile, against a plain wall, in soft daylight",
+        "camera": "push in",
+        "visual": "still",
+        "characters": [
+          "researcher"
+        ]
+      },
+      "lines": [
         {
-          "id": "t159",
+          "id": "t138",
           "text": "每一份檔案都附出處，想繼續一起翻，就訂閱。",
           "emotion": "乾脆"
         }
@@ -2260,38 +2187,68 @@
   ],
   "loops": [
     {
-      "setup": "t002",
-      "payoff": "t155",
+      "setup": "t003",
+      "payoff": "t131",
       "what": "運動車零件估計八成五，它一台車都不賣，憑什麼"
     },
     {
-      "setup": "t008",
-      "payoff": "t015",
-      "what": "名字裡就有腳踏車，為什麼一台都不賣"
+      "setup": "t004",
+      "payoff": "t129",
+      "what": "一台完整的車都不賣"
     },
     {
-      "setup": "t009",
-      "payoff": "t079",
+      "setup": "t005",
+      "payoff": "t106",
+      "what": "二〇二五年營收四千六百六十二億"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t073",
       "what": "有車廠說要等四百天，那是什麼時候"
     },
     {
-      "setup": "t010",
-      "payoff": "t134",
-      "what": "後來，美國一個委員會找上了它"
+      "setup": "t007",
+      "payoff": "t062",
+      "what": "美國一個委員會找上了它"
     },
     {
-      "setup": "t023",
-      "payoff": "t024",
-      "what": "不跟客戶競爭，客戶在哪裡"
+      "setup": "t007",
+      "payoff": "t121",
+      "what": "委員會第二次找上門"
     },
     {
-      "setup": "t026",
-      "payoff": "t145",
-      "what": "先記住的那家德國代理商"
+      "setup": "t008",
+      "payoff": "t129",
+      "what": "不賣車的 Shimano，憑什麼讓別人的車替它賺錢"
     },
     {
-      "setup": "t039",
-      "payoff": "t040",
+      "setup": "t021",
+      "payoff": "t022",
+      "what": "名字裡就有自轉車，為什麼不賣車"
+    },
+    {
+      "setup": "t024",
+      "payoff": "t130",
+      "what": "絕對不要跟客戶競爭"
+    },
+    {
+      "setup": "t029",
+      "payoff": "t030",
+      "what": "不跟客戶搶，客戶在哪裡"
+    },
+    {
+      "setup": "t032",
+      "payoff": "t111",
+      "what": "先記住的那家德國總代理"
+    },
+    {
+      "setup": "t034",
+      "payoff": "t107",
+      "what": "捲線器這門副業後來多大"
+    },
+    {
+      "setup": "t040",
+      "payoff": "t041",
       "what": "最高階那組在一九八四年發生了什麼"
     },
     {
@@ -2300,49 +2257,49 @@
       "what": "整組賣，別人怎麼插得進來"
     },
     {
-      "setup": "t055",
-      "payoff": "t056",
-      "what": "公告的主角是一根曲柄，出了什麼事"
+      "setup": "t054",
+      "payoff": "t055",
+      "what": "公告的主角是一根曲柄"
     },
     {
-      "setup": "t070",
-      "payoff": "t142",
+      "setup": "t067",
+      "payoff": "t128",
       "what": "十五萬美元要跟另一張罰單比"
     },
     {
-      "setup": "t088",
-      "payoff": "t129",
+      "setup": "t061",
+      "payoff": "t133",
+      "what": "一根出事，所有品牌一起出事"
+    },
+    {
+      "setup": "t078",
+      "payoff": "t118",
       "what": "越早下單越好，後來怎麼了"
     },
     {
-      "setup": "t098",
-      "payoff": "t099",
-      "what": "降溫的跡象，後來變成什麼"
-    },
-    {
-      "setup": "t091",
-      "payoff": "t106",
+      "setup": "t080",
+      "payoff": "t090",
       "what": "熱潮時說要蓋的新工廠"
     },
     {
-      "setup": "t108",
-      "payoff": "t110",
-      "what": "急凍那年回來的老問題"
+      "setup": "t085",
+      "payoff": "t086",
+      "what": "降溫的跡象，後來變成什麼"
     },
     {
-      "setup": "t120",
-      "payoff": "t121",
+      "setup": "t101",
+      "payoff": "t102",
       "what": "這場崩盤，它事前知不知道"
     },
     {
-      "setup": "t144",
-      "payoff": "t146",
-      "what": "年度報告最大客戶欄的德國名字"
+      "setup": "t105",
+      "payoff": "t106",
+      "what": "是不是要一路往下"
     },
     {
-      "setup": "t151",
-      "payoff": "t152",
-      "what": "前一年還不到一成，德國那邊多了多少"
+      "setup": "t110",
+      "payoff": "t112",
+      "what": "最大客戶那一欄的德國名字"
     }
   ],
   "youtube": {
@@ -2370,7 +2327,9 @@
       "headline": "一台車\n**都不賣**",
       "tag": "品牌奇聞",
       "sub": "營收 4662 億日圓",
-      "shot": "open-share"
+      "shot": "open-name",
+      "layout": "c",
+      "tone": "navy"
     }
   },
   "sources": [
