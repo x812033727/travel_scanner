@@ -103,15 +103,16 @@ c64｜主菜前兩句：su03「告 Suno 的，一組是握有貓王 Elvis Presle
 c65｜mc03 提示詞的解釋改「使用者輸入給 AI 的那段文字，叫提示詞」，移到 mc-guard、緊接在用到它的 mc39 之前（mc-terms 場景刪掉；mc-guard 的第一個畫面狀態變成 mc38＋mc03，keys 數量不變）｜SUNO｜2026-11-08｜mc03
 c66｜mc11「這部法律的英文全名，意思是確保肖像、聲音與影像安全，縮寫起來就是 ELVIS」：SUV 寫了全名「Ensuring Likeness Voice and Image Security (ELVIS) Act」，旁白念意思不念英文（確保＝Ensuring、肖像＝Likeness、聲音＝Voice、影像＝Image、安全＝Security）｜SUNO；SUV｜2026-11-08｜mc11
 c67｜mc43「好，這點算你一分，至少 Suno 說得出它怎麼擋」：Kai 的論點是 Suno 有防護，給他的分要是這一點；依 c36（發言人描述了兩種防護），不說防護有效（mc42 剛說沒人測過）｜SUV｜2026-11-08｜mc43；卡片 mc-kai2b「At least it says how it blocks」
-c68｜mc72「好，誰對誰錯先吵到這裡，接下來看錢」：串場。mc51 拆開：Kai mc73「那這樣下來，誰會吃虧？」，Sola mc51「訴狀的原話是，Suno 想讓人類的創意變得過時」（c29「aims to make human creativity obsolete」，明說是訴狀原話）；mc52／mc53 移到 mc-lose2（kicker 改「Kai's side」），mc54 自己一張 mc-lose3｜SUV｜2026-11-08｜mc72, mc73, mc51
+c68｜mc72「好，誰對誰錯先吵到這裡，接下來看錢」：串場。mc51 拆開：Kai mc73「那這樣下來，誰會吃虧？」，Sola mc51「照訴狀的說法，Suno 想讓人類的創意變得過時」（c29「aims to make human creativity obsolete」；查核第 2 輪：原稿「訴狀的原話是」改回「照訴狀的說法」，因為這句是中譯而且只取了半句，原文主詞是「Suno's ravenous race to the bottom」，SUNO 自己也標「大意是」）；mc52／mc53 移到 mc-lose2（kicker 改「Kai's side」），mc54 自己一張 mc-lose3｜SUV｜2026-11-08｜mc72, mc73, mc51
 c69｜mc57 改由 Kai 說「而且 Presley 那一案用的，是美國田納西州的法律」：Sola 在 mc09 已經講過（c25）｜SUNO；SUV｜2026-11-08｜mc57
 c70｜ny08「一種叫 trifle 的分層甜點」：VNY 原文就是 trifle（「in this sweet dessert trifle」），不是提拉米蘇；英文照念（字典加 trifle: null）｜NYT；VNY｜2026-11-08｜ny08
-c71｜ny17 改「同意一半，記者也說用量和時間，還是要自己跟原食譜對一次」（c17）；ny16 改成 Kai 的意見「我覺得它比一般聊天 AI 好用，至少不會把原食譜蓋掉」：「不會把原食譜蓋掉」＝c10，Sola 在 ny04 已經講過；卡片 ny-check kicker 改「Kai's verdict」、text「Useful, but check it」（副廚的評語不再出現在旁白與卡片）｜NYT；VNY｜2026-11-08｜ny16, ny17
+c71｜ny17 改「同意一半，記者也說用量和時間，還是要自己跟原食譜對一次」（c17）；ny16 改成 Kai 的意見「我覺得它真的好用，至少不會把原食譜蓋掉」：「真的好用」照 VNY「genuinely helpful」，「不會把原食譜蓋掉」＝c10，Sola 在 ny04 已經講過（查核第 2 輪：原稿「比一般聊天 AI 好用」是 VNY 沒做的比較，還暗示聊天 AI 會蓋掉原食譜，改掉）；卡片 ny-check kicker 改「The verdict」（查核第 2 輪：原稿「Kai's verdict」把 Sola 補的「but check it」也算到 Kai 頭上）、text「Useful, but check it」（副廚的評語不再出現在旁白與卡片）｜NYT；VNY｜2026-11-08｜ny16, ny17
 c72｜af01「主角是一套叫 Artex 的 AI 工具，它會自己去找電腦系統的弱點」＝c46，Artex 是什麼移到第一句；af02「研究人員發現好幾百套 Artex，就這樣露在公開網路上」＝c45；af03 改「Artex 是開源的工具」（c46）｜ART；TC6｜2026-11-08｜af01, af02, af03
 c73｜af08「資安公司 Censys 找到超過 800 套 Artex，從網路就連得進去，登入還不用密碼」＝c49（原來 af09「而且登入還不用密碼」併進來；af09 改成 Kai 的反應）｜ART；TC6｜2026-11-08｜af08
-c74｜af15 拆成兩句：af15「TechCrunch 還說，連攻擊用的工具，也一起露出來了」、af31「其中一種，是藏在受害者網路裡的惡意程式」（c51，implants＝hidden malicious software；不講怎麼用）｜ART；TC6｜2026-11-08｜af15, af31
-c75｜af19「部分原因是，這個駭客把放 Artex 的資料夾，設成誰都能打開」：c52 的「open directory hosting the system」，白話是一個網路上誰都能瀏覽的資料夾，裡面放著那套 Artex｜ART；TC6｜2026-11-08｜af19
+c74｜af15 拆成兩句：af15「TechCrunch 還說，攻擊用的工具也露出來了」、af31「這些工具裡，有藏在受害者網路裡的惡意程式」（查核第 2 輪：af31 原稿「其中一種」單獨聽不知道指什麼，重說「這些工具」；af15 縮短，讓 af-kit 留在 13 秒內）（c51，implants＝hidden malicious software；不講怎麼用）｜ART；TC6｜2026-11-08｜af15, af31
+c75｜af19「部分原因是，這個駭客放 Artex 的資料夾，留在網路上誰都能打開」：c52 的「the hacker had left an "open directory" hosting the system」，白話是一個網路上誰都能瀏覽的資料夾，裡面放著那套 Artex（查核第 2 輪：原稿「設成」說成刻意設定，原文是 left，改「留在」）｜ART；TC6｜2026-11-08｜af19
 c76｜ct12「Cybertruck 的銷量，大約只有產線規劃的十分之一」（c8；拿掉「賣不好」一詞，意思不變）｜TSLA；DC7｜2026-11-08｜ct12
+c77｜outro 留言題 ou02「AI 該先問歌手嗎？留言告訴我們。」（查核第 2 輪：盲聽修改把「留言說」改成「留言告訴我們」後 outro 變 13.0 秒，拿掉「用歌手的聲音」壓到 12.0 秒，仍是三句；問題跟卡片「Should AI ask first?」一致，不含事實主張）｜—｜2026-11-09｜ou02
 
 ## 笑點（無事實主張）
 
@@ -154,13 +155,13 @@ c76｜ct12「Cybertruck 的銷量，大約只有產線規劃的十分之一」�
 - mc67（Kai）改「我還是站 AI 這邊，學本身沒有錯；要不要先問，等法院說。」：Kai 到最後都沒改立場；卡片 mc-view2 kicker「Kai's last word」。
 - su07（Kai）新增「好，AI 跟人學唱歌差在哪，現在可以吵了。」：串場，把開場的問題重說一次，不往回指。
 - af09（Kai）改「連密碼都不用？這是駭客工具，還是公共圖書館？」：誇張的反應，接 af08（c49）。
-- af32（Kai）新增「我覺得研究人員太客氣了，工具放在網上還不鎖，本身就是問題。」：Kai 的意見；研究人員的原話（c50）沒有被改寫。
+- af32（Kai）新增「我覺得不管是誰在用，工具放在網上還不鎖，本身就是問題。」：Kai 的意見。查核第 2 輪：原稿「研究人員太客氣了」暗示研究人員沒把外露當問題，可是 TC6 明寫外露「increasing the chance that someone will find and misuse them」，改成不評論研究人員；「不管是誰在用」接 af12（c50）。
 - af20（Sola）改「打個比方，就像小偷把作案行程表貼上網，還設成公開。」：開頭標明是比方。「小偷」指 c52 那一個被歸因的駭客，不是所有 Artex 的使用者。
 
 ## 我懷疑但沒動的事
 
 - 「2027 年年中左右」：DC7 寫「next year」、發文 2026-11-06，換算成 2027；TSLA 標題也寫 2027 年中。
-- ny-check 的 kicker：查核第 1 輪對回 VNY，副廚的比喻就是 The Verge 的評語（「works well as a sous chef, but it's not the head chef」），kicker 改成「The Verge's verdict」（見 c17）。
+- ny-check 的 kicker：查核第 1 輪對回 VNY，副廚的比喻就是 The Verge 的評語（「works well as a sous chef, but it's not the head chef」），kicker 改成「The Verge's verdict」（見 c17）。盲聽修改第 2 輪拿掉副廚，查核第 2 輪 kicker 改「The verdict」（見 c71）。
 - 標題：查核第 1 輪改成「Elvis, Eminem rights holders vs. Suno」，縮圖副標與 su-lead 卡片一起改（見 c61）。
 - mc02「你輸入文字，它生成音樂和歌詞」：來源沒有描述 Suno 怎麼用，是從「prompts」「generates music and lyrics」推的一般描述。查核第 1 輪：留。SUV 的發言人說「we do not allow prompts for specific artists' names and songs」（使用者用文字下提示）、原告說「generates music and lyrics」與「in seconds」，三點合起來就是這句；沒有說到任何操作細節。
 - 「貓王」：Elvis Presley 在台灣的通稱；旁白第一次說「貓王 Elvis Presley」。
@@ -181,3 +182,4 @@ c76｜ct12「Cybertruck 的銷量，大約只有產線規劃的十分之一」�
 - 查核第 1 輪（2026-11-08，`verify-1.md`）：改了 c9、c11、c15、c16、c17、c18、c26、c27、c31、c33、c36、c48、c52、c60、c61 與四個笑點（ct06 key、mc14、mc22 卡片、af11）；outro 13.0 → 12.3 秒；`lint` 0 錯誤、3 條警告（同第 1 稿），估 13.6 分鐘、150 句，最長畫面狀態 12.9 秒。
 - 待做（第 1 輪之前寫的）：另派查核代理照 `prompts/verifier-video.md` 逐句對回原始來源並做笑點檢查；盲讀；Whisper 第二意見與試聽。
 - 盲聽修改第 2 輪（2026-11-09，保留查核第 1 輪的全部改動）：77 個場景、154 句（Kai 43 句，Sola 佔 72%，原本約 80%）；`lint` 0 錯誤、同樣 3 條警告；估 14.0 分鐘，最長畫面狀態 13.0 秒（outro），其次 12.9 秒。刪掉 su02、mc28–mc31（Isbell 與著作權）；mc-terms、su-q、mc-isb、mc-isb2 四個場景拿掉，新增 mo-q、mc-lose3、af-open2、af-kai。字典加 trifle（null）。本輪改過的事實句（c62–c76）要再交查核代理對一次。
+- 查核第 2 輪（2026-11-09，`verify-2.md`）：改了 4 個事實句（mc51、ny16、af19、af31／af15）、1 張卡片 kicker（ny-check）、1 個笑點／意見（af32）與 outro 的 ou02；outro 13.0 → 12.0 秒；最長畫面狀態 12.9 秒；`lint` 0 錯誤、3 條警告（同前）。
