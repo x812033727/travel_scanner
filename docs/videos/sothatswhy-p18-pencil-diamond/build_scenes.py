@@ -119,7 +119,7 @@ chief("chief-look", C("leaning forward with a curious smile, one hand on her chi
 kid("kid-smudge-q", K("holding a yellow pencil up close to her face and squinting at its dark tip", where=DESK),
     k("鉛筆芯怎麼這麼容易掉？", "句尾上揚", "S:smudge"))
 scene("gem-velvet", "Close-up of " + GEM + " resting on a dark blue velvet cloth, catching the sunlight with tiny rainbow glints, " + DAY,
-      c("跟你說件怪事：這層黑黑的東西，", "賣關子"), c("跟亮晶晶的鑽石，都是碳組成的。"))
+      c("這個等一下會揭曉。跟你說件怪事：這層黑黑的東西，", "賣關子"), c("跟亮晶晶的鑽石，都是碳組成的。"))
 kid("kid-no-way", K("shaking her head with both hands up and a disbelieving frown", where=HOME),
     k("騙人！鑽石那麼硬，", "不相信"), k("鉛筆芯一擦就掉耶！"))
 chief("chief-tease", C("holding up one finger with a mysterious playful smile", close=True),
@@ -168,12 +168,10 @@ kid("kid-better-guess", K("tilting her head with a hopeful grin, one finger on h
     k("那是比較厲害的碳？", "再猜"))
 chief("chief-same-carbon", C("holding up two identical small plain wooden balls, one in each hand, a playful smile"),
       c("碳就是碳。石墨裡的碳，跟鑽石裡的碳，", None, "P:diamond"), c("一顆一顆拿出來比，是一模一樣的。"))
-chief("chief-ingredients", C("shrugging with open palms and a knowing smile", close=True),
-      c("裡面是什麼東西，科學家叫做成分。"))
 kid("kid-where-q", K("crossing her arms with a puzzled frown", where=HOME),
     k("那到底差在哪裡？", "句尾上揚"))
 chief("chief-arrange", C("holding a small wooden box of building toys with a curious smile"),
-      c("差在這些碳，是怎麼排、怎麼手牽手的。"))
+      c("我的猜法是：差在這些碳怎麼排。"))
 kid("kid-build-q", K("leaning forward with both fists under her chin and wide doubtful eyes", close=True),
     k("排法不一樣，", "懷疑"), k("就差這麼多嗎？", "章尾停住，句尾上揚", "S:build"))
 
@@ -335,7 +333,7 @@ scene("stroke-path", "Close-up of " + STROKE + ", a soft warm golden glow runnin
 kid("kid-diamond-lamp-q", K("holding up a tiny clear crystal between two fingers with a curious face", close=True, where=DESK),
     k("那鑽石呢？", "追問"), k("它沒有空手，", "推理"), k("我猜不會亮！", "很有把握", "S:dlamp"))
 scene("gem-dark", "Close-up of " + GEM + " sitting between two short wires on a sunny wooden desk, one wire running to a round battery, a tiny unlit LED beside it, " + DAY,
-      c("猜得對。四隻手全部牽滿，電子被牢牢抓住，跑不動。"), c("所以一般的鑽石，幾乎不導電，燈不會亮。", None, "P:dlamp"))
+      c("猜得對。還記得嗎？手都牽滿了，電子跑不動。"), c("所以一般的鑽石，幾乎不導電，燈不會亮。", None, "P:dlamp"))
 chief("chief-blue", C("holding one hand on her chest with an honest smile", close=True),
       c("老實說，有一種很少見的藍色鑽石，"), c("裡面混了一點別的東西，會導一點電。"))
 kid("kid-blue-q", K("raising her eyebrows high with an amazed open-mouthed face", close=True),
@@ -377,7 +375,7 @@ kid("kid-two-patches", K("rubbing one fingertip across a small shaded pencil pat
 chief("chief-which-smudge", C("nodding with an encouraging smile, one finger raised", close=True),
       c("對，看看哪一塊比較容易糊。"))
 kid("kid-smudge-guess", K("holding up a short dark pencil next to a long pale pencil with a sure, cheeky grin", where=DESK),
-    k("我猜黑的那支！", "很有把握"), k("石墨比較多！", "得意"))
+    k("我猜黑的那支！", "很有把握"), k("你說過，黑的石墨多！", "得意"))
 chief("chief-more-clay", C("giving a small approving nod with a warm smile, holding a pale pencil", close=True),
       c("猜得有道理。還記得嗎？淡的那支，黏土比較多。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
