@@ -14,6 +14,21 @@
 - **舊畫風的檔案另開分支，不跟新的混在一起**：「3D CG 時期的全部檔案就另外開分支吧 不要跟真人的混再一起」（2026-11-08）。
 - **刪本機檔案的條件**（2026-11-07）：要備份核對過，**而且**這集已送上後台，並確認成片、字幕、封面都在。兩件都成立才刪，而且只刪那一集。
 
+## 備份放在哪個 repo（站主 2026-11-09）
+
+`travel_scanner` 快到 GitHub 的容量上限，站主為每個系列各開了一個私人備份 repo。之後的備份分支一律推到該系列的 repo；分支命名照下面〈分支怎麼命名〉不變。
+
+| 系列 | 備份 repo |
+| --- | --- |
+| 種田（`zt`） | `x812033727/drama-backup-zt` |
+| 祖媽（`tn`） | `x812033727/drama-backup-tn` |
+| 奇聞檔案局 | `x812033727/mokaair-video-backup` |
+| 原來如此 | `x812033727/mokaair-video-backup-sothatswhy` |
+
+- 雲端 session 要先把 repo 接進來（`add_repo`，要 push 權限），才能推。
+- `travel_scanner` 裡舊的 `transfer/*` 分支，要等新 repo 的分支由另一個代理逐檔核對完、站主同意後才刪。刪分支之後 GitHub 不會馬上釋放空間。
+- 祖媽的備份工具（scratchpad 的 `tn-bk.py`）預設推到 `drama-backup-tn`，也可以用環境變數 `TN_BACKUP_REMOTE` 指定別的 repo。
+
 ## 分支怎麼命名
 
 | 分支 | 放什麼 |
