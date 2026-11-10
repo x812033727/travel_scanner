@@ -24,9 +24,9 @@ test("a still marked nobody adds the person question; a cast adds one identity q
   assert.equal(checks[2].cost, 10, "a person where none may be is a redraw fault");
 });
 
-test("only the cute-mystery look is wordless, and nobody is a true-or-absent shot field", () => {
+test("the cute-mystery and cute-cartoon looks are wordless, and nobody is a true-or-absent shot field", () => {
   assert.equal(wordlessLook({ look: { preset: "cute-mystery" } }), true);
-  assert.equal(wordlessLook({ look: { preset: "cute-cartoon" } }), false);
+  assert.equal(wordlessLook({ look: { preset: "cute-cartoon" } }), true);
   assert.equal(wordlessLook({}), false);
   const doc = explainerFixture();
   const index = doc.scenes.findIndex((scene) => scene.template === "shot");

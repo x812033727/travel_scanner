@@ -299,12 +299,18 @@ const UTM_PARAM = /^utm_/i;
  * alone (ntm.gov.tw/cp.aspx?n=5444 and ?n=5445 are two pages); only the tags this tool adds
  * (utm_*) say nothing about which page it is.
  */
+const LINE_ANCHOR = /^#L\d+(?:-L\d+)?$/;
+
 export function urlKey(url) {
   try {
     const parsed = new URL(url);
     for (const name of [...parsed.searchParams.keys()]) if (UTM_PARAM.test(name)) parsed.searchParams.delete(name);
     const query = parsed.searchParams.toString();
-    return `${parsed.protocol}//${parsed.hostname.toLowerCase()}${parsed.pathname.replace(/\/+$/, "")}${query ? `?${query}` : ""}`;
+    // A line anchor (#L12 or #L12-L40, as GitHub and code viewers write it) names a different
+    // passage of the same file, so two sources that cite two passages are two sources; any other
+    // fragment is a place on the same page.
+    const lines = LINE_ANCHOR.test(parsed.hash) ? parsed.hash : "";
+    return `${parsed.protocol}//${parsed.hostname.toLowerCase()}${parsed.pathname.replace(/\/+$/, "")}${query ? `?${query}` : ""}${lines}`;
   } catch {
     const [path, query = ""] = String(url).replace(/#.*$/, "").split("?");
     const kept = query.split("&").filter((pair) => pair && !UTM_PARAM.test(pair));

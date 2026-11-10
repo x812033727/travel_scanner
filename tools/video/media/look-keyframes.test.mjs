@@ -1396,7 +1396,7 @@ test("illustrated slides are judged by yes/no fault checks once the server takes
   assert.ok(checks.filter((item) => item.cost < 10).every((item) => 10 - item.cost >= 4), "a second-look flaw alone never fails a take");
   assert.match(checks.find((item) => item.key === "style").question, /labelled "style plate"/);
   assert.match(keyframeChecks().find((item) => item.key === "style").question, /the style the context describes/);
-  assert.match(checks.find((item) => item.key === "anatomy").question, /more than five.*hidden or left out by the style does not count/);
+  assert.match(checks.find((item) => item.key === "anatomy").question, /more than five.*eyes that do not match.*hidden or left out by the style does not count/);
   // What the server computes from the answers (apps/api/app/video_media/judge.py), so the bar keeps its meaning.
   const total = checks.reduce((sum, item) => sum + item.weight, 0);
   const overall = (...faults) => Math.round((checks.reduce((sum, item) => sum + (faults.includes(item.key) ? 10 - item.cost : 10) * item.weight, 0) / total) * 100) / 100;
@@ -1800,7 +1800,7 @@ test("a cute explainer's stills are judged by the nine fault checks the illustra
     assert.ok(site.state.judges.length > 0);
     // No style plate on this route: the style question is the context's, not a plate's.
     // The cute-mystery look goes to every language with no words on screen: made-up writing fails too.
-    for (const request of site.state.judges) assert.deepEqual(request.rubric, keyframeChecks({ wordless: preset === "cute-mystery" }), preset);
+    for (const request of site.state.judges) assert.deepEqual(request.rubric, keyframeChecks({ wordless: true }), preset);
     assert.match(site.state.images[0].prompt, /Style: cute Taiwanese YouTube explainer cartoon/);
     assert.ok(site.state.images.every((request) => request.references.length === 0), "no style plate and no sheet");
     // An older server without the checks still scores them on the rubric.
@@ -1853,10 +1853,10 @@ test("a cute-mystery still is judged with its four zoomed quadrants beside it; w
   for (const request of failingSite.state.judges) assert.deepEqual(request.files.map((each) => each.label), ["keyframe"]);
   assert.match(fallback.out.stdout, /warning: zoomed crops could not be made; judged on the whole picture\n/);
 
-  // The cute-cartoon look asks neither question and gets no crops.
+  // A look that is not wordless (flat-explainer) asks neither question and gets no crops; cute-cartoon is wordless now.
   const cartoon = sandbox("fixture-explainer", "explainer");
   rewrite(cartoon, (doc) => {
-    doc.look = { preset: "cute-cartoon" };
+    doc.look = { preset: "flat-explainer" };
     doc.subtitles = { burn_in: false };
   });
   const cartoonSite = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 9, passed: true }) });
