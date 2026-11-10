@@ -65,6 +65,8 @@ def main(cut, stem):
         print(f"{level:4} {kind:9} {what}")
     log = (cut / "final.log").read_text(encoding="utf-8") if (cut / "final.log").exists() else ""
     rows = re.findall(r"^([sc]\d+[a-z]?) [\d.]+ \+([\d.]+)s (\S+)(.*)$", log, re.M)
+    # a still is logged "still sNN-t1.png": key it by its picture, not by the word (e904 s12/s23/s40 read as one reused clip)
+    rows = [(s, d, r.split()[0] if c == "still" and r.split() else c, r) for s, d, c, r in rows]
     for shot, dur, clip, rest in rows:
         h = re.search(r"held ([\d.]+)s", rest)
         if h and float(h.group(1)) > 0.2:
