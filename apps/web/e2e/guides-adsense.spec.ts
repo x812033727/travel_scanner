@@ -349,6 +349,62 @@ test("life article contents remain usable after reader scrolling on desktop and 
   }
 });
 
+test("continuation links navigate before analytics answers and retain the source and target", async ({ page, site }) => {
+  site.enabled = false;
+  const events: Array<{ name: string; path: string; content_link?: { placement: string; target_path: string } }> = [];
+  const releases: Array<() => void> = [];
+  await page.route("**/api/travel/analytics/config", route => route.fulfill({ json: {
+    first_party_enabled: true, ga4_enabled: false, content_link_click_enabled: true,
+  } }));
+  await page.route("**/api/travel/analytics/events", async route => {
+    const batch = route.request().postDataJSON().events;
+    events.push(...batch);
+    if (batch.some((event: { name: string }) => event.name === "content_link_click")) {
+      await new Promise<void>(resolve => releases.push(resolve));
+    }
+    await route.fulfill({ status: 202, json: { accepted: batch.length, enabled: true } }).catch(() => undefined);
+  });
+  try {
+    await page.goto(`${canonical}/zh-TW/life/${newsStories[0].slug}`);
+    await expect.poll(() => events.some(event => event.name === "page_view")).toBe(true);
+    const link = page.getByTestId("related-grid").getByRole("link", { name: newsStories[2].title });
+    await link.focus();
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(`${canonical}/zh-TW/life/${newsStories[2].slug}`);
+    await expect(page.getByRole("heading", { name: newsStories[2].title, level: 1 })).toBeVisible();
+    await expect.poll(() => events.filter(event => event.name === "content_link_click")).toEqual([
+      expect.objectContaining({ path: `/zh-TW/life/${newsStories[0].slug}`, content_link: { placement: "related", target_path: `/life/${newsStories[2].slug}` } }),
+    ]);
+    releases.splice(0).forEach(release => release());
+    const topic = page.locator('a[data-content-link="topic"]').first();
+    await expect(topic).toHaveAttribute("href", "/zh-TW/life/topics/tech-news");
+    await topic.click();
+    await expect(page).toHaveURL(`${canonical}/zh-TW/life/topics/tech-news`);
+    await expect(page.getByTestId("news-desk")).toBeVisible();
+    await expect.poll(() => events.filter(event => event.name === "content_link_click").length).toBe(2);
+    expect(events.filter(event => event.name === "content_link_click")[1].content_link).toEqual({ placement: "topic", target_path: "/life/topics/tech-news" });
+  } finally {
+    releases.splice(0).forEach(release => release());
+  }
+});
+
+test("a legacy analytics API leaves continuation navigation usable without new events", async ({ page, site }) => {
+  site.enabled = false;
+  const names: string[] = [];
+  await page.route("**/api/travel/analytics/config", route => route.fulfill({ json: { first_party_enabled: true, ga4_enabled: false } }));
+  await page.route("**/api/travel/analytics/events", route => {
+    const batch = route.request().postDataJSON().events;
+    names.push(...batch.map((event: { name: string }) => event.name));
+    return route.fulfill({ status: 202, json: { accepted: batch.length, enabled: true } });
+  });
+  await page.goto(`${canonical}/zh-TW/life/${newsStories[0].slug}`);
+  await expect.poll(() => names.includes("page_view")).toBe(true);
+  await page.getByTestId("related-grid").getByRole("link", { name: newsStories[2].title }).click();
+  await expect(page.getByRole("heading", { name: newsStories[2].title, level: 1 })).toBeVisible();
+  await expect.poll(() => names.filter(name => name === "page_view").length).toBe(2);
+  expect(names).not.toContain("content_link_click");
+});
+
 test("FAQ contents links reach the authored questions before related reading", async ({ page, site }) => {
   site.enabled = false;
   await page.goto(`${canonical}${faqPath}`);

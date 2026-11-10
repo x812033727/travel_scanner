@@ -24,6 +24,7 @@ import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { citiesForCountry, destinationSeeds, type CatalogTranslator } from "@/lib/destinations";
 import { contentBlockLink } from "@/lib/content-blocks";
+import { contentAnalyticsCopy } from "@/lib/content-analytics";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
 import { splitArticleExtras, guideTopicHref, guideSection,
   guideHeadings, guideHref, guideListHref, readingMinutes,
@@ -257,8 +258,10 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   // destination keeps the travel handover after it; a travel article's list replaces the
   // same-city cards it used to end with, which an API without the list still supplies.
   const seriesRelated = (state.series?.related ?? []).map((item) => item.slug);
+  const continuation = contentAnalyticsCopy(locale);
   const grid = state.related?.length
-    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={state.related} kindLabels={kindLabels} exclude={seriesRelated} />
+    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={state.related} kindLabels={kindLabels} exclude={seriesRelated}
+      lead={continuation.readingLead} actionLabel={continuation.readNext} />
     : null;
   const cited = state.backlinks?.length ? <Backlinks heading={t("guides.citedBy")} items={state.backlinks} /> : null;
   const handover = kind === "life"
@@ -311,6 +314,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   }
   const extras = splitArticleExtras(state.document.blocks);
   const labels: GuideArticleLabels = {
+    topicHeading: continuation.topicHeading,
     ...kindLabels,
     updated: t("guides.updated"),
     sources: t("guides.sources"), checkedOn: t("guides.checkedOn"),

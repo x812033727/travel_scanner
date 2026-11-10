@@ -1,6 +1,8 @@
 import { render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { renderTopicHub, topicHubMetadata } from "./topic-hub-page";
+import { topicFeedCopy } from "@/lib/topic-feed";
+import { siteUrl } from "@/lib/seo";
 
 /**
  * The topic hub is the page that ranks for a topic. Its rules: the label is the API's,
@@ -54,6 +56,20 @@ beforeEach(() => {
 });
 
 describe("the topic hub", () => {
+  it("offers and advertises a localized Atom subscription for a news topic", async () => {
+    render(await renderTopicHub(route({ topic: "ai-news", locale: "ja" })));
+    expect(screen.getByTestId("topic-feed-subscription")).toBeTruthy();
+    expect(screen.getByText(topicFeedCopy("ja").title)).toBeTruthy();
+    const metadata = await topicHubMetadata(route({ topic: "ai-news", locale: "ja" }));
+    expect(metadata.alternates?.types?.["application/atom+xml"]).toEqual([{ url: `${siteUrl}/ja/life/topics/ai-news/feed.xml`, title: "Mokaair — AI 新聞與趨勢" }]);
+  });
+
+  it("does not offer an unsupported subscription on non-news topics", async () => {
+    render(await renderTopicHub(route()));
+    expect(screen.queryByTestId("topic-feed-subscription")).toBeNull();
+    expect((await topicHubMetadata(route())).alternates?.types).toBeUndefined();
+  });
+
   it("offers both orders as links, newest first by default, and reads a ?sort= view as reordered", async () => {
     render(await renderTopicHub(route()));
     const latest = screen.getByRole("link", { name: "最新優先" });

@@ -16,7 +16,7 @@ import { Link } from "@/i18n/navigation";
 import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination, guideAffiliateModules, guideAffiliatePlacement } from "@/lib/guide-affiliate";
 import {
-  guideHeadings, guideListHref, guideTopicHref, partnerClickPath, splitGuideBlocks,
+  guideHeadings, guideSection, guideTopicHref, partnerClickPath, splitGuideBlocks,
   type GuideArticleState, type GuideKind,
   splitArticleExtras,
 } from "@/lib/guides";
@@ -47,6 +47,7 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   faq?: string;
   /** The line under the sources that links the owner's tip page, when one is set. */
   support?: SupportLinkLabels;
+  topicHeading?: string;
 };
 
 /** Fewer level-2 headings than this and a table of contents is longer than the scroll it saves. */
@@ -346,18 +347,22 @@ export function GuideArticle({
       {related}
 
       {state.topics.length ? (
-        <ul className="flex flex-wrap gap-2 border-t border-[var(--line)] pt-6">
+        <section className="border-t border-[var(--line)] pt-6">
+        {labels.topicHeading ? <h2 className="mb-3 text-lg font-semibold">{labels.topicHeading}</h2> : null}
+        <ul className="flex flex-wrap gap-2">
           {state.topics.map((topic) => (
             <li key={topic.slug}>
               <Link
                 className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] px-3 py-1 text-sm text-[var(--muted)]"
-                href={guideListHref(state.kind, topic.slug)}
+                href={guideTopicHref(guideSection(state.kind), topic.slug)}
+                data-content-link="topic"
               >
                 {topic.label}
               </Link>
             </li>
           ))}
         </ul>
+        </section>
       ) : null}
 
       {document.sources.length ? (

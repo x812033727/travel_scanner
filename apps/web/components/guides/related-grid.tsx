@@ -11,18 +11,21 @@ export const RELATED_GRID_LIMIT = 4;
  * for the series navigation above it, which already lists a lesson's own related lessons.
  */
 export function RelatedGrid({
-  heading, items, kindLabels, exclude = [],
+  heading, items, kindLabels, exclude = [], lead, actionLabel,
 }: {
   heading: string;
   items: readonly ArticleReference[];
   kindLabels: Record<GuideKind, string>;
   exclude?: readonly string[];
+  lead?: string;
+  actionLabel?: string;
 }) {
   const shown = items.filter((item) => !exclude.includes(item.slug)).slice(0, RELATED_GRID_LIMIT);
   if (!shown.length) return null;
   return (
     <section data-testid="related-grid" aria-labelledby="related-grid-heading" className="border-t border-[var(--line)] pt-8">
       <h2 id="related-grid-heading" className="text-xl font-bold tracking-tight">{heading}</h2>
+      {lead ? <p className="mt-2 leading-7 text-[var(--muted)]">{lead}</p> : null}
       <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {shown.map((item) => (
           <li key={`${item.kind}:${item.slug}`} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
@@ -30,9 +33,10 @@ export function RelatedGrid({
               <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--ink)]">{kindLabels[item.kind]}</span>
             </p>
             <h3 className="mt-2 font-bold">
-              <Link className="text-[var(--teal)] underline" href={guideHref(item.kind, item.slug)}>{item.title}</Link>
+              <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={guideHref(item.kind, item.slug)} data-content-link="related">{item.title}</Link>
             </h3>
             {item.description ? <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{item.description}</p> : null}
+            {actionLabel ? <p className="mt-3 text-sm text-[var(--muted)]" aria-hidden="true">{actionLabel} →</p> : null}
           </li>
         ))}
       </ul>

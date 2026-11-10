@@ -67,6 +67,7 @@ EVENT_NAMES = (
     "discovery_empty",
     "content_saved",
     "post_published",
+    "content_link_click",
 )
 COUNTED_EVENT_NAMES = tuple(name for name in EVENT_NAMES if name != "page_view")
 # What the admin funnel walks. Every step after the first is counted as the sessions
@@ -207,6 +208,7 @@ async def public_config(session: AsyncSession) -> AnalyticsConfigResponse:
         first_party_enabled=settings.analytics_enabled,
         ga4_enabled=bool(settings.ga4_enabled and measurement_id),
         ga4_measurement_id=measurement_id,
+        content_link_click_enabled=True,
     )
 
 
@@ -281,7 +283,8 @@ async def ingest_events(
                 ),
                 "is_bot": is_bot,
                 "environment": _environment(settings),
-                "properties_json": {},
+                # A separate, closed schema, not the generic server-event properties.
+                "properties_json": item.content_link.model_dump() if item.content_link else {},
             }
         )
     accepted = 0

@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, Query, Request, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.analytics.affiliates import affiliate_report
+from app.analytics.content import content_report
 from app.analytics.schemas import (
     AnalyticsConfigResponse,
     AnalyticsEventBatch,
@@ -11,8 +12,9 @@ from app.analytics.schemas import (
     AnalyticsRange,
 )
 from app.analytics.service import dashboard, ingest_events, public_config
-from app.auth.service import AdminUser
+from app.auth.service import AdminUser, require_capability
 from app.db import get_session
+from app.models import User
 
 router = APIRouter(prefix="/analytics", tags=["analytics"])
 admin_router = APIRouter(prefix="/admin/analytics", tags=["admin analytics"])
@@ -65,3 +67,16 @@ async def get_affiliate_report(
     _ = user
     response.headers["Cache-Control"] = "no-store"
     return await affiliate_report(session, range)
+
+
+@admin_router.get("/content")
+async def get_content_report(
+    user: Annotated[User, Depends(require_capability("analytics.read"))],
+    session: Session,
+    response: Response,
+    range: Annotated[AnalyticsRange, Query()] = "30d",
+    include_bots: bool = False,
+) -> dict[str, Any]:
+    _ = user
+    response.headers["Cache-Control"] = "no-store"
+    return await content_report(session, range, include_bots)

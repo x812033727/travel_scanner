@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { ListingEmpty, ListingToolbar } from "@/components/guides/listing-toolbar";
 import { NewsDesk } from "@/components/guides/news-desk";
+import { TopicFeedSubscription } from "@/components/guides/topic-feed-subscription";
 import { SeriesRow } from "@/components/guides/series-row";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
@@ -18,6 +19,7 @@ import type { SeriesSummary } from "@/lib/guide-series";
 import { getGuideList, getGuideTopicList, getSeriesIndex, hubIsEmpty } from "@/lib/guides.server";
 import { HREFLANG_DEFAULT, localeUrl } from "@/lib/seo";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
+import { topicFeedPath } from "@/lib/topic-feed";
 
 export type TopicHubRoute = { locale: Locale; section: GuideSection; topic: string; cursor?: string; sort?: string };
 
@@ -91,6 +93,9 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
     description: topic?.description || t("topicHubDescription", { topic: label }),
     alternates: {
       canonical: localeUrl(route.locale, path),
+      ...(topic && isNewsTopic(route.section, route.topic) ? {
+        types: { "application/atom+xml": [{ url: localeUrl(route.locale, topicFeedPath(route.topic)), title: `Mokaair — ${label}` }] },
+      } : {}),
       // Only the languages with something under the topic, for the reason an article page
       // lists only its published translations: hreflang pointing at a `noindex` page is a
       // contradiction. `x-default` belongs to English only while English has the topic.
@@ -171,6 +176,8 @@ export async function renderTopicHub(
         </nav>
         <h1 className="text-4xl font-bold tracking-tight">{label}</h1>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{lead}</p>
+
+        {news && topic ? <TopicFeedSubscription locale={locale} href={localeUrl(locale, topicFeedPath(route.topic))} /> : null}
 
         {!vocabulary.available ? (
           <p className="mt-6 leading-7 text-[var(--muted)]">{t("guides.topicUnavailable")}</p>

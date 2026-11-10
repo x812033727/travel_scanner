@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { api } from "@/lib/api";
+import { AdminContentAnalytics } from "./admin-content-analytics";
 
 type Range = "24h" | "7d" | "30d" | "90d" | "12m";
 type Metric = Record<string, number | null | Record<string, number | null>>;
@@ -66,11 +67,13 @@ export function AdminAnalyticsPanel() {
   const [affiliates, setAffiliates] = useState<AffiliateReport>();
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(true);
+  const [contentRefresh, setContentRefresh] = useState(0);
   const number = useMemo(() => new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }), [locale]);
   const date = useMemo(() => new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Taipei" }), [locale]);
   const weekdays = useMemo(() => Array.from({ length: 7 }, (_, index) => new Intl.DateTimeFormat(locale, { weekday: "short", timeZone: "UTC" }).format(new Date(Date.UTC(2026, 7, 31 + index)))), [locale]);
   const load = useCallback(async () => {
     setLoading(true);
+    setContentRefresh((value) => value + 1);
     try {
       // The affiliate ledger is a separate, smaller read; a failure there must not blank
       // the whole dashboard, so it degrades to "section absent".
@@ -108,6 +111,8 @@ export function AdminAnalyticsPanel() {
       <section className="grid gap-6 xl:grid-cols-[1.15fr_.85fr]"><div className="rounded-[1.75rem] border border-[var(--line)] bg-[var(--ink)] p-5 text-white shadow-sm"><h2 className="text-xl font-bold">{t("funnel")}</h2><p className="mt-1 text-sm text-white/65">{t(data.source === "raw" ? "funnelRaw" : "funnelRollup")}</p><ol className="mt-5 space-y-3">{data.funnel?.map((item, index) => <li key={item.step}><div className="mb-1 flex justify-between text-sm"><span>{index + 1}. {t(`funnelSteps.${item.step}`)}</span><strong>{number.format(item.sessions)} · {item.conversion_rate}%</strong></div><div className="h-3 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-[var(--coral)]" style={{ width: `${Math.max(2, item.conversion_rate)}%` }} /></div></li>)}</ol></div><div className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm"><h2 className="text-xl font-bold">{t("authoritative")}</h2><p className="mt-1 text-sm text-[var(--muted)]">{t("authoritativeHelp")}</p><dl className="mt-5 grid grid-cols-2 gap-3">{Object.entries(data.authoritative).map(([key, value]) => <div key={key} className="rounded-xl bg-[var(--paper)] p-3"><dt className="text-xs text-[var(--muted)]">{t(`authoritativeMetrics.${key}`)}</dt><dd className="mt-1 text-xl font-bold">{number.format(value)}</dd></div>)}</dl></div></section>
 
       <div className="grid min-w-0 max-w-full gap-6 lg:grid-cols-2"><Ranking title={t("rankings.pages")} rows={data.top_pages} /><Ranking title={t("rankings.sources")} rows={data.referrers} /><Ranking title={t("rankings.devices")} rows={data.devices} /><Ranking title={t("rankings.locales")} rows={data.locales} /><Ranking title={t("rankings.countries")} rows={data.countries} /><Ranking title={t("rankings.utm")} rows={data.utm_sources} /></div>
+
+      <AdminContentAnalytics range={range} includeBots={includeBots} refreshKey={contentRefresh} />
 
       {affiliates && <section aria-labelledby="affiliate-clicks-heading" className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-6">
         <div className="flex flex-wrap items-start justify-between gap-3">

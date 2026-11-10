@@ -347,7 +347,8 @@ describe("GuideArticle in the lifestyle section", () => {
   it("links its topic chips at the lifestyle listing, not a /guides one", () => {
     const { container } = draw(life);
     expect(within(container.querySelector("header")!).getByRole("link", { name: "AI 工具" }).getAttribute("href")).toBe("/ai");
-    expect(screen.getAllByRole("link", { name: "AI 工具" }).map(link => link.getAttribute("href"))).toContain("/life?topic=ai");
+    const topic = screen.getAllByRole("link", { name: "AI 工具" }).find(link => link.getAttribute("data-content-link") === "topic");
+    expect(topic?.getAttribute("href")).toBe("/ai");
   });
 
   it("keeps a folded mobile contents copy with the same authored section targets", () => {

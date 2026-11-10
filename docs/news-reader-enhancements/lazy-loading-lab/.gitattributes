@@ -1,0 +1,17 @@
+# Receipts hash the exact captured bytes, including the original line endings.
+experiment/** -text
+
+# Publication receipts also bind these exact bytes.
+article.md -text
+draft.json -text
+sources.json -text
+AUTHOR-NOTES.md -text
+review-1.md -text
+review-evidence/** -text
+PUBLICATION-REBIND.md -text
+PUBLICATION-MANIFEST.json -text
+
+# This file is also a hash-bound publication artifact.
+.gitattributes -text
+# Preserve normal whitespace checks while accepting captured CRLF bytes.
+** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

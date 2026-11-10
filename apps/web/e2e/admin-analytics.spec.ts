@@ -1,5 +1,16 @@
 import { expect, test } from "@playwright/test";
 import { pretendSignedIn } from "./session";
+import { readFileSync } from "node:fs";
+
+// Playwright executes tests in Node; load the dedicated JSON catalogs explicitly.
+const contentAnalyticsCopy = (locale: string): { title: string } => JSON.parse(readFileSync(new URL(`../lib/content-analytics-messages/${locale}.json`, import.meta.url), "utf8"));
+
+const content = {
+  range: "30d", timezone: "Asia/Taipei", available: true, reason: null,
+  from: "2026-10-11T00:00:00Z", to: "2026-11-10T00:00:00Z", retention_days: 90,
+  window_clipped: false, first_recorded_at: "2026-11-09T00:00:00Z", total_clicks: 9,
+  rows: [{ source_path: "/life/long-news-source-with-a-clear-reader-task", target_path: "/life/related-tutorial-with-a-complete-public-title", placement: "related", locale: "zh-TW", clicks: 9 }],
+};
 
 const dashboard = {
   range: "30d", timezone: "Asia/Taipei", source: "raw",
@@ -22,6 +33,10 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ id: "admin", email: "admin@example.com", is_admin: true }) }));
   await page.route("**/api/travel/analytics/config", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ first_party_enabled: false, ga4_enabled: false, ga4_measurement_id: null }) }));
   await page.route("**/api/travel/admin/analytics/dashboard**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(dashboard) }));
+  await page.route("**/api/travel/admin/analytics/content**", route => {
+    const range = new URL(route.request().url()).searchParams.get("range");
+    return route.fulfill({ json: range === "12m" ? { ...content, range, available: false, reason: "raw_window_only", total_clicks: 0, rows: [] } : content });
+  });
 });
 
 for (const [locale, title] of [
@@ -32,6 +47,8 @@ for (const [locale, title] of [
     await page.goto(`/${locale}/admin/analytics`);
     await expect(page.getByRole("heading", { name: title })).toBeVisible();
     await expect(page.getByText("128", { exact: true }).first()).toBeVisible();
+    await expect(page.getByTestId("content-analytics").getByRole("heading", { name: contentAnalyticsCopy(locale).title })).toBeVisible();
+    await expect(page.getByTestId("content-clicks-total")).toHaveText("9");
   });
 }
 
@@ -40,6 +57,10 @@ for (const width of [320, 390]) {
     await page.setViewportSize({ width, height: 780 });
     await page.goto("/zh-TW/admin/analytics");
     await expect(page.getByRole("heading", { name: "流量與產品分析" })).toBeVisible();
+    const section = page.getByTestId("content-analytics");
+    await section.scrollIntoViewIfNeeded();
+    await expect(section.getByText(content.rows[0].source_path)).toBeVisible();
+    expect(await section.getByText(content.rows[0].target_path).evaluate(node => node.getBoundingClientRect().right)).toBeLessThanOrEqual(width);
     await page.getByRole("button", { name: "12 個月" }).click();
     await page.getByRole("checkbox", { name: "包含機器流量" }).check();
     await expect(page.locator("html")).toHaveJSProperty(
@@ -47,5 +68,15 @@ for (const width of [320, 390]) {
       await page.locator("html").evaluate((node) => node.clientWidth),
     );
     await expect(page.getByRole("table", { name: "星期與小時熱區" })).toBeAttached();
+    await expect(section.getByText(/目前沒有 12 個月/)).toBeVisible();
+    await expect(page.getByTestId("content-clicks-total")).toHaveCount(0);
   });
 }
+
+test("a failed continuation report leaves the existing analytics visible", async ({ page }) => {
+  await page.route("**/api/travel/admin/analytics/content**", route => route.fulfill({ status: 503, json: { detail: "unavailable" } }));
+  await page.goto("/zh-TW/admin/analytics");
+  await expect(page.getByText("128", { exact: true }).first()).toBeVisible();
+  await expect(page.getByTestId("content-analytics").getByText(/目前無法取得續讀資料/)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "核心產品漏斗" })).toBeVisible();
+});
