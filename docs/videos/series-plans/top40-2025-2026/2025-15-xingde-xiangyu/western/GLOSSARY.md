@@ -30,7 +30,7 @@ Decided by the owner: **9:16 vertical** (2026-11-10; was 16:9 on 2026-11-09), **
 | `wei-shuzhen` | `peg-whitlock` | Margaret "Peg" Whitlock | 62, Grant's mother, retired bookkeeper, ledger and knitting needles. Blunt, dry, small-town. Nora calls her "Peg"; in tender moments "Mom". |
 | `liang-qiuchi` | `dana-okafor` | Dana Okafor | 35, attorney, Elias's old partner; Nora's lawyer. Clause two is hers. |
 | `zhuo-fan` | `theo-park` | Theo Park | 29, Elias's assistant; keeps a deadpan log ("Mrs. Ashford Observation Log"). |
-| `qi-mu` | `rosa-pell` | Rosa Pell | 63, Elias's mother; runs **Rosa's**, a chowder shack at the corner of Kiln Row. Old silver bangle. |
+| `qi-mu` | `rosa-pell` | Rosa Pell | 63, Elias's mother; runs **Rosa's**, a chowder shack at the corner of Kiln Row. Old silver bangle. In season one she is only ever "Rosa": her surname would give away who Elias is (m08, season three). |
 | `pei-changgeng` | `walter-pell` | Walter Pell | Master glassblower (flashback); took the fall twelve years ago, died in prison six years ago. 「裴師傅」 = "Walter" / "Mr. Pell" / "the old master". |
 | `qiao-suxin` | `claire-quinn` | Claire Quinn | Nora's mother, glass artist (flashback); studio **Claire Quinn Glass**. |
 | `zhong-bo` | `gus-moretti` | Gus Moretti | 70, old furnace man at Pell. |
@@ -98,8 +98,8 @@ Season-one guests (keep the `s01-` prefix):
    Episode 19 ends with Nora signing the three clauses and filing for divorce. **Episode 20 opens
    "Ninety days later"** with a short montage (the motel, Peg's ledger, physical therapy, Nora sketching
    at the motel table) and then the courthouse: the judge enters the divorce decree in one courtroom;
-   across the hall at the County Clerk, Elias is waiting for the marriage licence. Peg is the witness both
-   times; Bev from the motel is the second witness. "I'll sign the divorce. The house — I'll see you in court."
+   across the hall a judge marries them (the three-day licence wait passed during the ninety days). A divorce decree
+   needs no witness: Peg and Bev come along, and Peg signs the marriage licence as witness. "I'll sign the divorce. The house — I'll see you in court."
 2. **Dr. Brandt's ban** is "no hot furnace for **six months**", so it is still in force when Kiln Row opens
    (chapter 4) and lifts early in what would be season two.
 3. **Reporting the crime.** Nora reports to the police; Deputy Prosecutor Marcus Reyes reviews it and
@@ -114,6 +114,12 @@ Season-one guests (keep the `s01-` prefix):
    him (thread s01-t36) and loses.
 7. **Advertiser safety is unchanged**: no blood, no medical procedure, no violence toward people, no bed
    scenes; glass is only smashed when it is a fake, in gloves and goggles, into a steel drum.
+
+## Decisions from the 2026-11-10 review
+
+`review/2026-11-10-season-01.md` is binding: the "at Mom's" alibi (Peg backs it in ep 5, breaks it in ep 10, tells the
+whole call in ep 52), one slap per season (ep 18, Peg → Grant: "That's for the hallway."), grief played full, Grant on
+screen in chapters 4–5, readable text spoken aloud or added in post, no wrist burn marks on Nora, and the US-procedure fixes.
 
 ## Lines that must land (use these, polish freely)
 
