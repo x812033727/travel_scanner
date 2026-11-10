@@ -109,7 +109,8 @@ describe("the lifestyle listing", () => {
     expect(screen.queryByRole("link", { name: "其他" })).toBeNull();
     // 500 / 80 / 40 decide which tiles draw; none of them reaches the page.
     expect(screen.getByTestId("topic-tiles").textContent).not.toMatch(/\d/);
-    expect(screen.getByRole("heading", { level: 2, name: "全部文章" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 2, name: "實用新知" })).toBeTruthy();
+    expect(screen.queryByRole("heading", { level: 2, name: "全部文章" })).toBeNull();
   });
 
   it("leaves the series to the topic hubs, while still reading the registry to place Gemini", async () => {
@@ -136,7 +137,7 @@ describe("the lifestyle listing", () => {
     expect(screen.getByRole("link", { name: "Gemini 第一課" }).getAttribute("href")).toBe(`/life/${catalogue.articles[0].slug}`);
   });
 
-  it("opens with the latest twenty stories by the day the news happened, one line each, on the plain page only", async () => {
+  it("opens with dated news in event order on the plain page only", async () => {
     const topic = [{ slug: "ai-news", label: "AI 新聞與趨勢", section: "life" as const }];
     const newer = { ...summary, slug: "ai-news-siri-20260914", title: "Siri AI 隨 iOS 27 推出", topics: topic, news_date: "2026-09-14" };
     const older = { ...summary, slug: "ai-news-devday-20260710", title: "OpenAI DevDay 重點", topics: topic, news_date: "2026-07-10" };
@@ -246,6 +247,51 @@ describe("the lifestyle listing", () => {
     render(await LifeHubPage({ params, searchParams: search({ topic: "ai" }) }));
     expect(screen.getByRole("link", { name: "看更多" }).getAttribute("href"))
       .toBe("/life?topic=ai&cursor=abc%3D%3D");
+  });
+
+  it("moves three existing knowledge cards ahead of topics without repeating them in the remaining listing", async () => {
+    const articles = Array.from({ length: 5 }, (_, index) => ({ ...summary, slug: `knowledge-${index}`, title: `Knowledge ${index}` }));
+    listing(articles);
+    render(await LifeHubPage({ params, searchParams: search() }));
+    const rail = screen.getByTestId("life-knowledge");
+    expect(within(rail).getAllByRole("link").map(link => link.getAttribute("href")))
+      .toEqual(["/life/knowledge-0", "/life/knowledge-1", "/life/knowledge-2"]);
+    for (const article of articles) expect(screen.getAllByRole("link", { name: article.title })).toHaveLength(1);
+    expect(rail.compareDocumentPosition(screen.getByTestId("topic-tiles")) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "更多文章" })).toBeTruthy();
+  });
+
+  it.each<Record<string, string>>([{ topic: "ai" }, { cursor: "next" }])("keeps discovery off filtered/cursor pages: %o", async (filters) => {
+    render(await LifeHubPage({ params, searchParams: search(filters) }));
+    expect(screen.queryByTestId("life-knowledge")).toBeNull();
+    expect(screen.queryByTestId("life-reading-jumps")).toBeNull();
+    expect(screen.queryByTestId("life-more-news")).toBeNull();
+    expect(screen.getByRole("heading", { name: "全部文章" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: summary.title })).toBeTruthy();
+  });
+
+  it("keeps the existing page cursor when every first-page article moves into knowledge", async () => {
+    mocks.list.mockImplementation(async (_locale: string, filters: { topic?: string }) => ({
+      articles: filters.topic ? [] : [summary], next_cursor: filters.topic ? null : "next", available: true,
+    }));
+    render(await LifeHubPage({ params, searchParams: search() }));
+    expect(screen.getByRole("link", { name: "看更多" }).getAttribute("href")).toBe("/life?cursor=next");
+    expect(screen.queryByText("這裡還沒有已發布的內容。")).toBeNull();
+  });
+
+  it("does not invent a knowledge rail or anchor when the curated read is unavailable", async () => {
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: false });
+    render(await LifeHubPage({ params, searchParams: search() }));
+    expect(screen.queryByTestId("life-knowledge")).toBeNull();
+    expect(screen.queryByTestId("life-reading-jumps")).toBeNull();
+  });
+
+  it("keeps time-limited articles in the ordinary listing without promoting them into knowledge", async () => {
+    const timed = { ...summary, slug: "time-limited", title: "Time-limited information", valid_until: "2099-12-31" };
+    listing([timed, summary]);
+    render(await LifeHubPage({ params, searchParams: search() }));
+    expect(within(screen.getByTestId("life-knowledge")).queryByRole("link", { name: timed.title })).toBeNull();
+    expect(screen.getByRole("link", { name: timed.title }).closest("section")?.getAttribute("aria-labelledby")).toBe("life-listing-heading");
   });
 });
 

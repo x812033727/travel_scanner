@@ -4,15 +4,16 @@ import { guideHref, type GuideSummary } from "@/lib/guides";
 
 /** Preserve event-date order when the first story gets more space. Missing artwork and
  * undated evergreen entries stay readable without invented assets or dates. */
-export function NewsList({ articles, className = "mt-4", lead = false, titleTag: Title = "p" }: {
+export function NewsList({ articles, className = "mt-4", lead = false, titleTag: Title = "p", start = 1 }: {
   articles: readonly GuideSummary[];
   className?: string;
   lead?: boolean;
   titleTag?: "h2" | "h3" | "h4" | "p";
+  start?: number;
 }) {
   if (!articles.length) return null;
   return (
-    <ol className={`${className} divide-y divide-[var(--line)]`} data-testid="news-list">
+    <ol start={start} className={`${className} divide-y divide-[var(--line)]`} data-testid="news-list">
       {articles.map((article, index) => {
         const prominent = lead && index === 0;
         return (

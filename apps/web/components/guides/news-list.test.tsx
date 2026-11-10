@@ -47,6 +47,12 @@ describe("the news list", () => {
     expect(container.innerHTML).toBe("");
   });
 
+  it("allows a continuation list to preserve its native position without a lead", () => {
+    render(<NewsList articles={[story("seventh", "Seventh story", "2026-09-14")]} start={7} />);
+    expect(screen.getByTestId("news-list").getAttribute("start")).toBe("7");
+    expect(screen.queryByTestId("news-lead")).toBeNull();
+  });
+
   it("promotes only the first story without repeating it or changing the chronology", () => {
     const first = { ...story("first", "First story", "2026-09-14"), hero: { src: "/guides/first/hero.webp", alt: "Cover", width: 1600, height: 900, credit: null } };
     render(<NewsList articles={[first, story("next", "Next story", "2026-09-12")]} lead />);
