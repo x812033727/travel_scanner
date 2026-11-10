@@ -1,0 +1,11 @@
+# 不同作者獨立來源覆核
+
+PASS（來源與創作差異；新原圖仍須驗收）。
+
+Root重開固定Amundsen L12776–12793以sledge-meters檢查距離、強調估算不等於精確極點；L12976–12982記器材固定在雪橇。文本沒有指定黃銅齒輪、木盒或圓表盤，故新prompt只作1911時代相容機械示意，不把外形當原件復原或畫精密讀值。這可去除明確現代綠光電子面板的重大時代矛盾，保留原里程推估敘事。109句不變；44實際1餘2，45已有2ready且第二未judge、只餘1，其他61才零次。
+
+對HEAD逐景逆套唯一目標後完整scene相同，口播/情緒、camera/look及其他KEEP場景不變。沒有媒體、manifest或付費修改，原預算不變。
+
+- video.json SHA 5509935b8221d28d9c2c737440dd95a99fc4ab73e3e559ca8a3345481be0f356
+- script.md SHA f973e8c0210be9c5657fe12b574af2d79e3cb24aa3a75a59bcf380957381d99a
+- claims.md SHA 08abf41624312d214bbdb5d82fd2df40d220a279217e2f5fa81801c25869f7f6

@@ -1,0 +1,26 @@
+{
+  "reader": "B",
+  "round": "S60 R2 isolated blind",
+  "verdict": { "yes": 8, "total": 13 },
+  "sha256": {
+    "brief.md": "357f2c2706bd1fca6c77e9ccad45771a745ddadc91ba41da4d73f656ab2c5acc",
+    "script.md": "1ac4ee6548edae5a61f507c4e99edd75f5a81668d9acfa418b0ec22de8ea8b91",
+    "video.json": "bf8d95565857f0a8b976ef6f2d89e730fd88fabcab44201e75a05bd67dabba9c",
+    "narrative_questionnaire_stdout": "a2105c01d34ac221c702ed92b92c3939355576fffe67c34c911d5035b8f24494"
+  },
+  "answers": [
+    { "id": "scene_first", "yes": true, "scenes": ["s60001", "s60002", "s60003", "s60004"] },
+    { "id": "no_spoiler", "yes": false, "scenes": ["s60006", "s60047"] },
+    { "id": "one_line", "yes": false, "scenes": ["s60060", "s60061", "s60063"] },
+    { "id": "no_toc", "yes": true, "scenes": ["s60005", "s60008"] },
+    { "id": "chapters_link", "yes": false, "scenes": ["s60060", "s60061", "s60075", "s60076", "s60078"] },
+    { "id": "open_loops", "yes": true, "scenes": ["s60014", "s60031", "s60055", "s60074", "s60098"] },
+    { "id": "payoffs", "yes": false, "scenes": ["s60007", "s60055", "s60057", "s60065", "s60068"] },
+    { "id": "no_recap", "yes": false, "scenes": ["s60038", "s60051", "s60066", "s60029", "s60085", "s60086", "s60074", "s60075"] },
+    { "id": "chapters_are_events", "yes": true, "scenes": ["s60001", "s60009", "s60026", "s60043", "s60061", "s60076", "s60090"] },
+    { "id": "outro_no_next", "yes": true, "scenes": ["s60108", "s60109", "s60110"] },
+    { "id": "opening_hooks", "yes": true, "scenes": ["s60005", "s60007", "s60008"] },
+    { "id": "one_thread", "yes": true, "scenes": ["s60014", "s60043", "s60072", "s60101"] },
+    { "id": "no_detour", "yes": true, "scenes": ["s60018", "s60024", "s60078", "s60087"] }
+  ]
+}

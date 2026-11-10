@@ -1,0 +1,35 @@
+{
+  "round": 3,
+  "method": "mergePanelVerdicts OR of two isolated official R3 ballots on identical creative and panel hashes",
+  "binding": {
+    "narrative_hash": "32016f2214c8fe16",
+    "script_hash": "35e5d2132fa62f070c86acfee3ac81987624041b9e343f4b39b2b9863afb9da8",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "0f5df10d6912d7a13081ada691687fdb923ac74c5c530d328f4006b6f702c027"
+  },
+  "readers": [
+    {
+      "reader": "a",
+      "answers_sha256": "2837e31573ef9bd1db19c1a05342fcbba8fa30a5fbf80f4ba40d0c9372889b37",
+      "official_receipt_sha256": "7a1ccb94d8d428189d06d74891bc03bce7945c47d5a7fcbe763aac73e1b62cb7",
+      "yes": 12,
+      "failed": [
+        "no_recap"
+      ]
+    },
+    {
+      "reader": "b",
+      "answers_sha256": "3f5993474a3f266387ab87f6c2766e86af513ec3ee4ee5fda78a99cf31b8e9f9",
+      "official_receipt_sha256": "86c390d7a647423c15b9c3d92f06742be28f642c1d7fcb1a9ccdf52010b22449",
+      "yes": 12,
+      "failed": [
+        "no_recap"
+      ]
+    }
+  ],
+  "merged_yes": 12,
+  "failed": [
+    "no_recap"
+  ],
+  "passed": false
+}
