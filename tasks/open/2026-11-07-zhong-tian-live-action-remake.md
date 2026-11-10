@@ -36,6 +36,8 @@ CG 的重抽佇列（`scratchpad/chainR`–`chainU`）已經停掉，pod 也停�
 - [x] 3. 第 1 集三鏡小樣 s23–s25：草稿 6 支（US$0.67），挑 s23-02、s24-01、s25-01，精修（US$1.09），配上原錄音給站主看（`_live-pilot/…/st2/pilot-refined.mp4`）。站主：「是可以 不過語音好像對不上」——真人畫面過關；嘴形與配音差一秒多，原因是模型的嘴照它自己生的語音在動（從 1.2–1.8 秒開始）。台詞改成從草稿語音的開始處放、長度對齊後重做給站主看（`pilot-aligned.mp4`）。正式剪接要把這個對齊做進 `assemble-v4.mjs`。
 - [ ] 4. 鎖定：換掉提示詞的畫風句，重建 manifest，preflight 0 錯。
 - [ ] 5. 第 1–6 集逐集做，每集上限 US$28。
+  - 2026-11-10 13:32 UTC 第 4 集：站主「第 4 集送上後台」。雲端上的匯入資料夾 `zhong-tian-qu-qi-import/zhong-tian-qu-qi-e004-r2/` 還是 CG 版（170.8 秒、CG 季封面），改用真人成片 `_live-e904/.../cut/e904-live.mp4`（223.64 秒）、`e904-live.zh-TW.srt`、舊 session 做的真人封面 `_scratchpad2/thumb4/thumbnail.png`（唐小棠，「第4集　這是妳的退路」），CG 三檔移到 `cg-old/`，以 `import --force` 送上，等站主審成片。`review-files --gate final` 抓回：封面、字幕逐位元相同，預覽 223.64 秒、抽格與成片同畫面。
+  - 2026-11-10 第 5 集：50 支舊草稿從雲端取回，補拍 28 支；三輪獨立挑片＋重拍（fix1 14 鏡：柴刀從 chopping knife 改寫成 firewood machete；fix2 4 鏡改構圖；fix3 s35 s37 s40），精修前獨立審片 `colab/runs/e905-live/pick-review.md`，剪接表 `hailuo/edit-dh-e905-live.json`，精修進行中（Colab `zt-live`）。站主 13:3x：雲端硬碟在備份中，第 5 集之後的新檔先留在本機，之後再補傳。
   - 2026-11-08 第 2 集：草稿、fix1–fix3 重拍、兩輪獨立審片後，站主看 v2 預覽同意，22:38 以 `import --force` 送上後台（`zhong-tian-qu-qi-e002-r2`，封面 s38 真人畫面「第2集　債主上門，要拿人抵」，舊 CG 檔在匯入資料夾 `cg-old/`）；`review-files` 抓回封面、字幕逐位元相同，預覽 247.25 秒。花費約 US$26.6。站主接受、未重拍的：s18 刀刃朝胸口與道具不見、s26 視線近鏡頭（`colab/runs/e902-live/cut-review-2.md`）。
   - 2026-11-08 唐小棠服裝照定妝照（交領短襦闔上、百褶裙），`pilot.py` 的 `TANG_LIVE` 已改，第 3 集 80 支提示詞已重建，開拍等站主。
   - 2026-11-07 17:13 站主「開始拍第1集」：`runpod/live/d1` 78 支草稿（39 鏡、種子 9011101／102），`scratchpad/e901live.sh`；剪接用 `assemble-v4.mjs` 的 `clip_voice: true`（草稿原聲、字幕跟開口時間）。
