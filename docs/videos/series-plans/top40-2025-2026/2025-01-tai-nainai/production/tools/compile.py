@@ -251,6 +251,20 @@ def find_ref(refs: Path, names: list[str], size: tuple[int, int], placeholders: 
     return refs / names[-1]
 
 
+def variant_ref(refs: Path, set_id: str, variant: str | None, placeholders: bool, missing: list[str]) -> None:
+    """`set_variant` 指定的場景圖（例如白天版 set-<場景>-day-t1.png）一定要有：找不到就列進缺圖、讓 --manifest 停下，
+    不再默默退回夜版（第 6 集審稿 2026-11-10：白天的正廳會拿到夜裡點燈籠的圖）。--placeholders 時畫一張灰底代替。"""
+    if not variant:
+        return
+    path = refs / f"set-{set_id}-{variant}-t1.png"
+    if path.is_file():
+        return
+    if placeholders:
+        write_png(path, (1920, 1088))
+    else:
+        missing.append(path.name)
+
+
 SPEAK = re.compile(r"speaks a (?:short |very short |second )?Mandarin line")
 
 
@@ -306,6 +320,7 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                 # `set_variant`（第 4 集審稿 2026-11-09）：白天的戲附白天版場景圖（set-<場景>-day-t1.png），反方向的鏡附那個方向的圖（例如 doors）
                 variant = e.get("set_variant")
                 names = ([f"set-{set_id}-{variant}-t1.png"] if variant else []) + ([f"set-{set_id}-lamp{lamp}-t1.png"] if lamp else []) + [f"set-{set_id}-t1.png"]
+                variant_ref(refs, set_id, variant, args.placeholders, missing)
                 if not e.get("no_set"):  # `no_set: true`：燈不入鏡、背景只有暗牆的近景不附場景圖（第 4 集 c45、c46）
                     images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
                     anchors.append(f"the location shown in <Picture {len(images)}> is the set, keeping its layout and props")
@@ -328,7 +343,9 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                                   (r"key ring", "prop-fubo-yaoshichuan-t1.png", "key ring"),
                                   # 第 5 集審稿（2026-11-09）：油壺與十八歲照片也每鏡附道具圖，免得每鏡各畫各的
                                   (r"\boil can\b", "prop-tong-youhu-t1.png", "oil can"),
-                                  (r"(?:portrait photograph|eighteen-year-old'?s? photograph)", "prop-shibasui-zhao-t1.png", "photograph")):
+                                  (r"(?:portrait photograph|eighteen-year-old'?s? photograph)", "prop-shibasui-zhao-t1.png", "photograph"),
+                                  # 第 6 集審稿（2026-11-10）：托盤、紫砂小壺與三只白瓷小茶杯每鏡同一套，附道具圖
+                                  (r"purple-clay teapot", "prop-zisha-tuopan-t1.png", "tray with the purple-clay teapot and teacups")):
                 if re.search(rx, e["prompt"], re.I) and len(images) < 4:
                     images.append(find_ref(refs, [ref], (1024, 1024), args.placeholders, missing))
                     lamp_text += f" The {name} looks exactly as in <Picture {len(images)}>."
@@ -340,6 +357,7 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                 # 參照路線至少要一張圖（h3.sh check：reference_images must list 1-9 images）；沒有臉、沒有道具圖的插鏡附場景圖，
                 # 只說是這個房間的一小角（第 5 集 c20、c34、c38，2026-11-09）
                 variant = e.get("set_variant")
+                variant_ref(refs, set_id, variant, args.placeholders, missing)
                 names = ([f"set-{set_id}-{variant}-t1.png"] if variant else []) + [f"set-{set_id}-t1.png"]
                 images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
                 anchors.append("the room shown in <Picture 1> is the location, keeping its light and furniture; only a small part of it is seen")
