@@ -101,6 +101,11 @@
 
 ## 七、備份分支
 
+> **2026-11-10 起停用，改傳雲端硬碟。** 每一集的所有製作檔用 `docs/videos/ai-drama-drive/todrive.sh` 傳到
+> `AI劇/恁祖媽今年18/第NNN集/製作檔/<工作資料夾名>/`，跨集共用的（參考圖、音效、配樂、試鏡、腳本與工具）傳到
+> `AI劇/恁祖媽今年18/_共用/製作檔/`，要印出 `0 differences`；不再推 `transfer/tn-*`。規則在
+> [`docs/videos/AI-DRAMA-DRIVE.md`](../../../../AI-DRAMA-DRIVE.md)。下面的表留作紀錄（哪些東西歸哪一集仍照它分）；舊分支由主機搬家。
+
 通則在 [`docs/videos/drama/BACKUP-BRANCHES.md`](../../../../drama/BACKUP-BRANCHES.md)（站主 2026-11-08：「我想要先統一種田跟祖媽」）。
 
 | 分支 | 放什麼 |
