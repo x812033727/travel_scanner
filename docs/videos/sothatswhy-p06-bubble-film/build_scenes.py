@@ -112,7 +112,7 @@ def bub(id, prompt, *lines, chapter=None):
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 # The first picture is the problem itself (owner from P08 on): a round bubble leaving a square wand, nobody in it.
 bub("square-wand", "Close-up of " + WAND + " standing in " + BOTTLE + " on a sunny balcony railing, green potted plants and blue sky behind",
-    k("所長！我把鐵絲彎成方框，", "委屈又興奮，跑進來報案的語氣"), chapter="方框吹出的圓泡泡")
+    k("所長！我剛在陽台彎了方框，", "委屈又興奮，跑進來報案的語氣"), chapter="方框吹出的圓泡泡")
 bub("round-from-square", "Close-up of a perfectly round soap bubble just floating free from " + WAND + ", the square loop still shiny and wet, sunny balcony and blue sky behind",
     k("吹出來的泡泡還是圓的！", "不服氣"))
 bub("swirl-bubble", "Close-up of " + BUBBLE + " floating in the sunny air above a balcony, the colours swirling across its surface, blue sky behind",
