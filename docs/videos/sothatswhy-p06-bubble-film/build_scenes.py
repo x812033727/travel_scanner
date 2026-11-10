@@ -339,7 +339,7 @@ kid("kid-two-q", K("holding the square wire wand in one hand and the small clear
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the viewer"),
       c("有。你自己找找看：方框跟變黑，哪裡一樣？", "笑"), chapter="小問把方框跟變黑連起來了")
 kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her", where=BALCONY),
-    k("我懂了！", "恍然大悟", "P:two"), k("我剛剛看到的，", "篤定"), k("從方框到頭頂變黑，", "篤定"), k("全是同一層皮！", "篤定", "P:main"))
+    k("原來如此！", "恍然大悟"), k("全是同一層皮：", "篤定", "P:main"), k("它一縮，就變圓；", "篤定"), k("它一薄，就換色！", "篤定", "P:two"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好，是你自己連起來的。", "笑"))
 bub("bubble-thinning", "Close-up of a round soap bubble on a square silver wire loop shimmering with soft bands of gold, magenta and blue, a small dark grey cap just starting at its very top, sunny balcony background",
@@ -350,7 +350,7 @@ chief("chief-observe", C("nodding with an encouraging smile, one finger raised",
       c("好啊。這次把泡泡留在框上，背後找一面深色的牆，", "轉向觀眾"), c("看看頂上變黑之前，最後一個顏色是什麼。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
-    k("原來如此！", "開心大聲"))
+    k("好，我去吹！", "開心大聲"))
 chief("outro-chief", "Waist-up medium shot of the chief holding up a silver wire square bubble wand with a curious smile, filling the frame, a plain pale wall behind her, bright morning light",
       c("你的泡泡變黑之前，最後是什麼顏色？", "問句上揚，像聊天"), c("留言告訴我們。"))
 chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a warm smile, a plain pale wall behind her, bright morning light",
