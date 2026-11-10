@@ -323,7 +323,7 @@ chief("chief-second-test", C("holding up two fingers with a warm pleased smile",
 kid("kid-tell-q", K("looking back and forth between two bubbles with a puzzled frown", where=BALCONY),
     k("那我怎麼分得出來，", "追問"), k("是哪一種在變？", "句尾上揚", "S:tell"))
 chief("chief-tell", C("holding her head very still and pointing at her own eye with a playful smile", close=True),
-      c("頭不動，顏色還在慢慢往下流，是皮在變薄；"), c("泡泡不動，你一歪頭顏色就跳，是方向在變。", None, "P:tell"))
+      c("還記得往下流的顏色嗎？那是皮在變薄；"), c("泡泡不動，你一歪頭顏色就跳，是方向在變。", None, "P:tell"))
 chief("chief-honest", C("holding a silver wire square bubble wand with a colourful bubble on it at arm's length, an honest thoughtful smile"),
       c("還有一件事要老實說：顏色跟厚薄有關，"), c("可是光看顏色，沒辦法準準地量出皮有多厚。"))
 kid("kid-why-not", K("tilting her head with a curious frown", where=HOME),
@@ -341,7 +341,7 @@ kid("kid-two-q", K("holding the square wire wand in one hand and the small clear
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the viewer"),
       c("是同一層皮，做了兩件事。你來說說看？", "笑"), chapter="小問說出了答案")
 kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her", where=BALCONY),
-    k("我懂了！", "恍然大悟", "P:two"), k("我那顆泡泡，", "篤定"), k("先被皮拉成圓的，", "篤定"), k("再一邊變薄，", "篤定"), k("一邊換顏色！", "篤定", "P:main"))
+    k("我懂了！", "恍然大悟", "P:two"), k("我那天看到的，", "篤定"), k("從方框到頭頂變黑，", "篤定"), k("全是同一層皮！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好，是你自己連起來的。", "笑"))
 bub("bubble-thinning", "Close-up of a round soap bubble on a square silver wire loop shimmering with soft bands of gold, magenta and blue, a small dark grey cap just starting at its very top, sunny balcony background",
