@@ -817,6 +817,7 @@ def _image(slug: str, prompt: str = "a suitcase on four wheels") -> ImageJobIn:
 async def test_a_series_pictures_use_its_own_model_and_nothing_else_does(
     db: async_sessionmaker[AsyncSession], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    monkeypatch.setattr(media_jobs, "enforce_paid_intake", AsyncMock())
     await _series(db, "stories", "story", [(1, "story-rolling-case", "started")])
     await _series(db, "saga", "series", [(1, "saga-one", "started")])
     vendor = FakeImages()
@@ -914,6 +915,7 @@ def _media_app(session: Any) -> FastAPI:
 async def test_the_media_status_estimates_a_story_s_pictures_at_the_corrected_price(
     db: async_sessionmaker[AsyncSession], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    monkeypatch.setattr(media_jobs, "enforce_paid_intake", AsyncMock())
     await _series(db, "stories", "story", [(1, "story-rolling-case", "started")])
     monkeypatch.setattr(media_jobs, "provider_for", lambda runtime, name, kind: FakeImages())
     redis = fakeredis.aioredis.FakeRedis()
@@ -939,6 +941,8 @@ async def test_the_media_status_estimates_a_story_s_pictures_at_the_corrected_pr
 async def test_pictures_and_judge_calls_have_the_hourly_limits_a_story_needs(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    monkeypatch.setattr(media_api, "enforce_paid_intake", AsyncMock())
+    monkeypatch.setattr(media_jobs, "enforce_paid_intake", AsyncMock())
     limits: list[tuple[str, int]] = []
 
     async def limit(namespace: str, identifier: str, *, limit: int, window_seconds: int) -> None:
