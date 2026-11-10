@@ -76,10 +76,14 @@ describe("a published article", () => {
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("成田機場到東京車站怎麼走");
     expect(screen.getByText("Skyliner 最快。")).toBeTruthy();
     expect(screen.getByRole("link", { name: "京成電鐵時刻表" }).getAttribute("href")).toBe("https://www.keisei.co.jp/");
-    // The topic chip under the body, and the breadcrumb's topic crumb above it.
-    expect(screen.getAllByRole("link", { name: "交通" }).map((link) => link.getAttribute("href"))).toEqual([
-      "/guides/topics/transport", "/guides/howto?topic=transport",
-    ]);
+    // Both entry points use the canonical hub; the footer remains a tracked topic link.
+    const topicLinks = screen.getAllByRole("link", { name: "交通" });
+    expect(topicLinks).toHaveLength(2);
+    const breadcrumbTopic = topicLinks.find((link) => link.closest("nav"));
+    const footerTopic = topicLinks.find((link) => link.getAttribute("data-content-link") === "topic");
+    expect(breadcrumbTopic?.getAttribute("href")).toBe("/guides/topics/transport");
+    expect(footerTopic?.getAttribute("href")).toBe("/guides/topics/transport");
+    expect(footerTopic).not.toBe(breadcrumbTopic);
   });
 
   it("declares only the locales that are genuinely published", async () => {
