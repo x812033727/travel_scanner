@@ -1,0 +1,35 @@
+{
+  "slug": "curio-s59",
+  "round": "R4",
+  "creative_sha256": {
+    "research.md": "d0077504f3dbe828363158a25c7e7dade955089f49dbb03a734893739e12467e",
+    "brief.md": "9d68d7b4dad27f56b6dbc53f7890bc0db84590de3e445302f8f4836c286ac1e3",
+    "claims.md": "e19a8aa75c7d61bbba54b4d747db3b7025ac34599964ac0c4c115fbacd8d8c0b",
+    "video.json": "108db5d8ae5b540e396b1e9add3490c7ac8761e1aaa7dfd76b172edbadaba226",
+    "script.md": "5b18eb40b5c3434599abbd939d3231fc30837e360bfaff0ea00d23cdca89cf48"
+  },
+  "narrative": {
+    "status": "PASS",
+    "readers": 2,
+    "fixed_or_yes": 13,
+    "required_failed": [],
+    "official_record_sha256": "2a9ecd16b5879e8169f77751430d69716fad7d36ff9853bef4bcdc4888e42d4a"
+  },
+  "source_and_claims": {
+    "status": "PASS",
+    "independent_review_sha256": "6a90a86efe7553ee408f736fd814d44f87ff298eac71cdd288da057d154faef7"
+  },
+  "written_visual": {
+    "status": "HOLD",
+    "independent_review_sha256": "6a90a86efe7553ee408f736fd814d44f87ff298eac71cdd288da057d154faef7",
+    "blocker": {
+      "scene": "s59027",
+      "detail": "Prompt directs a finger along the groove where the spoken mechanism calls for a needle/contact reading the trace."
+    }
+  },
+  "pre_media_policy": {
+    "status": "HOLD",
+    "paid_media_allowed": false,
+    "reason": "s59027 written-visual contradiction requires prompt-only repair and fresh visual review on the new video.json hash"
+  }
+}

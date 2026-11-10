@@ -1,0 +1,133 @@
+{
+  "slug": "curio-s59",
+  "round": "R3",
+  "rule": "official fixed OR: one cited YES from either reader passes a criterion",
+  "creative_sha256": {
+    "research.md": "ad5baec33ae786da9d103eecadca9f16c9f23f00d4041bde158e1e2697958efb",
+    "brief.md": "f2086e64ffd56c5c2d8ea072d7122ffd7d7a2c2290c3413cf54a8ea2a8e35b4f",
+    "claims.md": "75f3c81a1cfba0250c8fe2d291765acdeb098dd6f37e8fc34bb17632e62356e9",
+    "video.json": "542c5d17330d2344fd588bfe839b636642f37da80c97a9f34d29ace013c75ec5",
+    "script.md": "86d6b9883dc24ba55b2c4c66ad390755610999a84dd354e1c02aa8c0f8cbc1f3"
+  },
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "ballots": [
+    {
+      "reader": "a",
+      "original_ballot_path": "../r3-blind-a.md",
+      "original_ballot_sha256": "5ab3e4a99ca0df9ec139e352a19b147ca1a2d8040aaf14734090450ce9744e36",
+      "original_answer_path": "../r3-blind-a-answers.json",
+      "original_answer_sha256": "74e45ae2000bb9628a53c121dcd06f8deaca21a570bd7db3ecde5f8db2d87801",
+      "raw_copy_sha256": "5ab3e4a99ca0df9ec139e352a19b147ca1a2d8040aaf14734090450ce9744e36",
+      "answer_copy_sha256": "74e45ae2000bb9628a53c121dcd06f8deaca21a570bd7db3ecde5f8db2d87801",
+      "yes": 12,
+      "failed": [
+        "no_recap"
+      ],
+      "no_recap_evidence": "[s59025] 這只是讓聲音推動玩具，還沒有把剛說過的字句保存下來。"
+    },
+    {
+      "reader": "b",
+      "original_ballot_path": "../r3-blind-b.md",
+      "original_ballot_sha256": "958183170d8470b0c8d9302c040d5ebec187bb6ae05bb7b78a42a9c11e45b23e",
+      "original_answer_path": "../r3-blind-b/answers.json",
+      "original_answer_sha256": "5c8d149b111d66cd1daa433151d0cbf356839afdf0e338bcf9b31637fb8a7a15",
+      "raw_copy_sha256": "958183170d8470b0c8d9302c040d5ebec187bb6ae05bb7b78a42a9c11e45b23e",
+      "answer_copy_sha256": "5c8d149b111d66cd1daa433151d0cbf356839afdf0e338bcf9b31637fb8a7a15",
+      "yes": 12,
+      "failed": [
+        "no_recap"
+      ],
+      "no_recap_evidence": "[s59083] already says the academy members invite Puskas into the secretary's room to repeat the demonstration under their stated conditions. [s59085] restates the condition-setting; [s59088] again say"
+    }
+  ],
+  "merged_answer_sha256": "b7ba20f5d3594fd579c727d635119761706788a100cf75ddd8823cc0309d810f",
+  "merged": {
+    "passed": false,
+    "yes": 12,
+    "failed": [
+      "no_recap"
+    ],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "yes": true,
+        "evidence": "[s59001] 一八七八年三月十一日，巴黎科學院裡，普斯卡斯準備轉動一台圓筒機。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "yes": true,
+        "evidence": "[s59008] 幾位院士走進秘書室，請普斯卡斯重試；在那裡又會怎樣？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "yes": true,
+        "evidence": "[s59075] 難題其實變得更窄：人聲究竟留在錫箔上，還是有人趁著搖柄替喇叭口補聲？",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_toc",
+        "yes": true,
+        "evidence": "[s59052] 錄完後把針放回痕跡開頭，再轉同一個圓筒。",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "yes": true,
+        "evidence": "[s59078] 開場輪到杜蒙塞爾的那一刻，他真的沒有做出剛才的效果。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "yes": true,
+        "evidence": "[s59060] 錫箔每播一次，壓痕就可能變淺；如果手柄的轉速也變了，又會怎樣？",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "yes": true,
+        "evidence": "[s59098] 練習幾次後，他說自己也能讓機器把話還回來。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "yes": false,
+        "evidence": "讀者一：[s59025] 這只是讓聲音推動玩具，還沒有把剛說過的字句保存下來。；讀者二：[s59083] already says the academy members invite Puskas into the secretary's room to repeat the demonstration under their stated conditions. [s59085] restates the condition-setting; [s59088] again say",
+        "yes_readers": 0
+      },
+      {
+        "id": "chapters_are_events",
+        "yes": true,
+        "evidence": "[s59089] 秘書室裡，普斯卡斯照要求重新讓機器發聲。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "yes": true,
+        "evidence": "[s59109] 原始資料和頻道連結都在說明欄；喜歡歷史謎題，訂閱奇聞檔案局。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "yes": true,
+        "evidence": "[s59007] 愛迪生後來提到一張十八美元的草圖；它究竟做出了什麼？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "yes": true,
+        "evidence": "[s59107] 那個說話者的嘴，終於能和喇叭裡的聲音分開看：箔上的壓痕自己推動薄片。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "yes": true,
+        "evidence": "[s59076] 科學院於是請杜蒙塞爾自己動手；若換人仍有聲音，疑問就少了一層。",
+        "yes_readers": 2
+      }
+    ]
+  },
+  "policy_gate": "NOT_RUN because required narrative criterion no_recap failed"
+}

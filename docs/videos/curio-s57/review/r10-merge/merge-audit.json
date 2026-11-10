@@ -1,0 +1,587 @@
+{
+  "frozen_sha256": {
+    "research.md": "9663d4a0ea66b1fef3c6e3a0550b8b08cf169a68b1736ad6005d6408ac2cd667",
+    "brief.md": "0c8284f9bbceb9e751784086a1db35a8c072c9b80f4b75729a2bca15df4ec4bd",
+    "claims.md": "2c06451d321b3b662af365463452b2fcc989babd0007cb010fdb4bc08579f556",
+    "video.json": "0275fe764a2a79ee0d122780853bb3bfa21922c86a4f650475c7dc6c1fb39d2f",
+    "script.md": "1b6252886bff6b17a03cd82da67f95cf51aa3c2a1a4ea606d005b9d0e2bb7474"
+  },
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "readers": [
+    {
+      "source": "docs/videos/curio-s57/review/r10-blind-a.md",
+      "sha256": "363b3bd2668b6a91ce1642fafde6bf384aefb6f9d75a9744eb36d3b195b20822",
+      "copied_sha256": "363b3bd2668b6a91ce1642fafde6bf384aefb6f9d75a9744eb36d3b195b20822",
+      "passed": false,
+      "failed": [
+        "one_line"
+      ],
+      "rows": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[s57001] 一八七二年三月，一本日記被壓上五道封印。",
+          "raw_reason": "s57001–s57004 put us in March 1872 with a sealed diary handed to Stanley as his party prepares to leave. This is a concrete act and immediate question.",
+          "cited_ids": [
+            "s57001",
+            "s57004"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57001",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[s57001] 一八七二年三月，一本日記被壓上五道封印。",
+          "raw_reason": "s57001–s57010 stop before Livingston's choice and final fate. s57004, s57008–s57010 ask about them without giving the answers.",
+          "cited_ids": [
+            "s57001",
+            "s57010",
+            "s57004",
+            "s57008",
+            "s57010"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57001",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[s57063] 史丹利說，抵達後第二天就問他想不想返國。",
+          "raw_reason": "s57063–s57068 recount Stanley's early appeal to return home and Livingston's competing wish to finish. s57069 then opens Livingston's diary account; s57072–s57079 go back over that same appeal and decision. The diary adds useful evidence, but this is still a second pass through one encounter, contrary to the row's “沒有回頭把同一段再講一次.” s57028–s57032 also step backward from the Ujiji predicament to Bennett's earlier commission before the strands meet.",
+          "cited_ids": [
+            "s57063",
+            "s57068",
+            "s57069",
+            "s57072",
+            "s57079",
+            "s57028",
+            "s57032"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57063",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[s57023] 這時，他等得到從海岸來的援手嗎？",
+          "raw_reason": "s57023, s57035, s57069, and s57138 pose questions about people, evidence, and goods in the story. They do not announce an episode outline or list the coming sections.",
+          "cited_ids": [
+            "s57023",
+            "s57035",
+            "s57069",
+            "s57138"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57023",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[s57005] 幾個月前，兩人還一起搭船、走長路。",
+          "raw_reason": "The preview's illness and missing supplies in s57005–s57007 lead into s57011. Later chapter joins answer or continue the preceding beat: s57035→s57036 (messenger), s57062→s57063 (question), s57083→s57084 (route), s57112→s57113 (eastward obstacle), s57138→s57139 (what arrived first), and s57164→s57165 (writing finished).",
+          "cited_ids": [
+            "s57005",
+            "s57007",
+            "s57011",
+            "s57035",
+            "s57036",
+            "s57062",
+            "s57063",
+            "s57083",
+            "s57084",
+            "s57112",
+            "s57113",
+            "s57138",
+            "s57139",
+            "s57164",
+            "s57165"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57005",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[s57017] 市場就在眼前，下一段路的貨在哪裡？",
+          "raw_reason": "Unanswered questions and turns occur throughout the body, for example s57017, s57023, s57035, s57045, s57057, s57069, s57075, s57090, s57107, s57122, s57134, s57147, s57164, and s57175. The gaps are short relative to the one-sentence scene length; no apparent 90-second span is left without a live question or turn.",
+          "cited_ids": [
+            "s57017",
+            "s57023",
+            "s57035",
+            "s57045",
+            "s57057",
+            "s57069",
+            "s57075",
+            "s57090",
+            "s57107",
+            "s57122",
+            "s57134",
+            "s57147",
+            "s57164",
+            "s57175"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57017",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[s57004] 日記已要出發，主人又會往哪裡去？",
+          "raw_reason": "The diary/owner split from s57004 resolves in s57167 and s57182; the supply-choice and return questions of s57008–s57010 gain the goods at s57139–s57142, his continuing plan at s57149–s57156, and the last refusal at s57176–s57182. Local questions also get new facts: s57035→s57036, s57045→s57046, s57069→s57072–s57079, s57090→s57091, s57107→s57135–s57136, s57117→s57120, s57122→s57127, s57128→s57133, s57134→s57143–s57144, s57138→s57139, s57147→s57149–s57151, s57164→s57165–s57166, s57169→s57172, and s57183→s57187. The lake-source question s57075 receives the explicit evidentiary limit at s57076 and s57091–s57093.",
+          "cited_ids": [
+            "s57004",
+            "s57167",
+            "s57182",
+            "s57008",
+            "s57010",
+            "s57139",
+            "s57142",
+            "s57149",
+            "s57156",
+            "s57176",
+            "s57182",
+            "s57035",
+            "s57036",
+            "s57045",
+            "s57046",
+            "s57069",
+            "s57072",
+            "s57079",
+            "s57090",
+            "s57091",
+            "s57107",
+            "s57135",
+            "s57136",
+            "s57117",
+            "s57120",
+            "s57122",
+            "s57127",
+            "s57128",
+            "s57133",
+            "s57134",
+            "s57143",
+            "s57144",
+            "s57138",
+            "s57139",
+            "s57147",
+            "s57149",
+            "s57151",
+            "s57164",
+            "s57165",
+            "s57166",
+            "s57169",
+            "s57172",
+            "s57183",
+            "s57187",
+            "s57075",
+            "s57076",
+            "s57091",
+            "s57093"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57004",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "no_recap",
+          "yes": true,
+          "evidence": "[s57167] 還記得開場那本日記嗎？三月十四日，李文斯頓把它封好，託給正要出發的史丹利。",
+          "raw_reason": "The March diary seal reappears at s57167 with an explicit opening callback. s57069 names the prior persuasion before the diary adds Livingston's own reasoning in s57072–s57079; this is a substantive second source, even though it causes the separate `one_line` problem above. s57127 (54 days) and s57129 (300-plus miles) are different measures, and s57143–s57144 advance the cloth accounting.",
+          "cited_ids": [
+            "s57167",
+            "s57069",
+            "s57072",
+            "s57079",
+            "s57127",
+            "s57129",
+            "s57143",
+            "s57144"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57167",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[s57036] 蘇西跑回來，說他看見一個英國人。",
+          "raw_reason": "“蘇西跑來報信,” “先往湖的北邊,” “史丹利把貨交給他,” and “日記走了，人留下” name actions or outcomes. “五道封印” and “烏吉吉的空箱” name the concrete revelations that begin the narrative.",
+          "cited_ids": [],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57036",
+          "conversion": "optional chapter-title reason; chose s57036 from named Susi event"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[s57187] 一八七三年五月初，他在內陸去世。",
+          "raw_reason": "s57187–s57189 close on Livingston's death, the provenance of the account, and the diary's later publication; they mention no next video, episode, or file.",
+          "cited_ids": [
+            "s57187",
+            "s57189"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57187",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[s57001] 一八七二年三月，一本日記被壓上五道封印。",
+          "raw_reason": "After s57001, s57004 asks where the diary's owner goes, s57008 asks if supplies change his mind, s57009 asks his reply to Stanley's appeal, and s57010 asks why the men part. These are specific later moments held before resolution.",
+          "cited_ids": [
+            "s57001",
+            "s57004",
+            "s57008",
+            "s57009",
+            "s57010"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57001",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[s57019] 可他的人告訴他，託管的布和珠子被賣了。",
+          "raw_reason": "The opening's diary-and-owner question stays tied to Livingston's choice. Missing supplies at s57019–s57022, Stanley's arrival at s57036–s57046, the return appeal at s57063–s57079, aid at s57139–s57151, and the departure at s57167–s57182 all move that same concrete dilemma.",
+          "cited_ids": [
+            "s57019",
+            "s57022",
+            "s57036",
+            "s57046",
+            "s57063",
+            "s57079",
+            "s57139",
+            "s57151",
+            "s57167",
+            "s57182"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57019",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[s57091] 有人先說湖水流出去，隔天又說流進來。",
+          "raw_reason": "The apparent side passages serve the choice: the conflicting lake testimony at s57091–s57093 explains why the inquiry remains open; the cargo check at s57133–s57144 establishes the material conditions; the letters and sealed diary at s57165–s57168 prepare the split. The flag bearer's mention at s57040 is brief arrival detail, not a separate segment.",
+          "cited_ids": [
+            "s57091",
+            "s57093",
+            "s57133",
+            "s57144",
+            "s57165",
+            "s57168",
+            "s57040"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57091",
+          "conversion": "first valid scene ID cited in raw reason"
+        }
+      ]
+    },
+    {
+      "source": "docs/videos/curio-s57/review/r10-clean-blind-b.md",
+      "sha256": "8a4f6a302b8fc0464eb0c38ba7aa2f13aa10f961f211ce11e262d518c557c7b1",
+      "copied_sha256": "8a4f6a302b8fc0464eb0c38ba7aa2f13aa10f961f211ce11e262d518c557c7b1",
+      "passed": false,
+      "failed": [
+        "no_recap"
+      ],
+      "rows": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[s57001] 一八七二年三月，一本日記被壓上五道封印。",
+          "raw_reason": "`s57001` puts a diary under five seals in March 1872; `s57002–s57003` identify the people and the coastal departure. The first four lines are a specific action and its immediate question.",
+          "cited_ids": [
+            "s57001",
+            "s57002",
+            "s57003"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57001",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[s57001] 一八七二年三月，一本日記被壓上五道封印。",
+          "raw_reason": "`s57001–s57010` reveal the diary handoff but hold back Livingston's route, his answer to persuasion, and the reason for the split (`s57004`, `s57008–s57010`). His final fate first appears at `s57187`.",
+          "cited_ids": [
+            "s57001",
+            "s57010",
+            "s57004",
+            "s57008",
+            "s57010",
+            "s57187"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57001",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[s57011] 一八七一年晚秋，李文斯頓帶病回到烏吉吉，要找繼續考察的補給。",
+          "raw_reason": "After the opening preview, `s57011` returns to Ujiji in late 1871. The action then follows the meeting, the first refusal (`s57063–s57082`), the lake trip (`s57084–s57112`), the eastward supply trip (`s57113–s57138`), aid and plans (`s57139–s57164`), and the March parting (`s57165–s57182`). The later appeals at `s57108–s57110` and `s57176–s57177` are later attempts, identified as such, rather than a replay of the first conversation.",
+          "cited_ids": [
+            "s57011",
+            "s57063",
+            "s57082",
+            "s57084",
+            "s57112",
+            "s57113",
+            "s57138",
+            "s57139",
+            "s57164",
+            "s57165",
+            "s57182",
+            "s57108",
+            "s57110",
+            "s57176",
+            "s57177"
+          ],
+          "invalid_ids": [
+            "s57082"
+          ],
+          "chosen_scene_id": "s57011",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[s57004] 日記已要出發，主人又會往哪裡去？",
+          "raw_reason": "The opening questions at `s57004` and `s57008–s57010` ask what happens to the diary, aid, and travelers. Chapter-end questions such as `s57083`, `s57138`, and `s57164` ask about the next action in the story; none announces a list or the video's structure.",
+          "cited_ids": [
+            "s57004",
+            "s57008",
+            "s57010",
+            "s57083",
+            "s57138",
+            "s57164"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57004",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[s57010] 兩人到了同一個路口，為何走成兩條路？",
+          "raw_reason": "`s57010→s57011` moves from the split-road question to Livingston's illness and supply problem; `s57035→s57036` answers who ran up; `s57062→s57063` reveals Stanley's question; `s57083→s57084` answers where they went; `s57112→s57113` begins the eastward supply road; `s57138→s57139` answers what arrived; `s57164→s57165` answers what he finished before surrendering the diary.",
+          "cited_ids": [
+            "s57010",
+            "s57011",
+            "s57035",
+            "s57036",
+            "s57062",
+            "s57063",
+            "s57083",
+            "s57084",
+            "s57112",
+            "s57113",
+            "s57138",
+            "s57139",
+            "s57164",
+            "s57165"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57010",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[s57004] 日記已要出發，主人又會往哪裡去？",
+          "raw_reason": "The continuing home-versus-expedition question starts at `s57004` and remains active. Specific unresolved turns recur frequently: missing goods `s57017`, coastal help `s57023`, recognition `s57045`, return home `s57049`, lake evidence `s57090`, old boxes `s57107`, convoy reunion `s57117`, missing workers `s57147`, and the departure `s57169`. The largest gap between explicit question scenes is about ten scenes (`s57035→s57045`); the core question spans the longer passages.",
+          "cited_ids": [
+            "s57004",
+            "s57017",
+            "s57023",
+            "s57045",
+            "s57049",
+            "s57090",
+            "s57107",
+            "s57117",
+            "s57147",
+            "s57169",
+            "s57035",
+            "s57045"
+          ],
+          "invalid_ids": [
+            "s57049"
+          ],
+          "chosen_scene_id": "s57004",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[s57063] 史丹利說，抵達後第二天就問他想不想返國。",
+          "raw_reason": "The distant opening questions are answered through the refused return and unfinished research (`s57063–s57082`), aid that enables another expedition (`s57139–s57156`), the diary's departure (`s57167–s57182`), and his death inland (`s57183→s57187`). Other concrete question/payoff pairs include `s57035→s57036`, `s57045→s57046–s57047`, `s57069→s57072`, `s57090→s57091`, `s57107→s57135–s57136`, `s57117→s57118–s57120`, `s57122→s57127`, `s57128→s57133`, `s57134→s57143–s57144`, `s57147→s57149`, `s57164→s57165–s57166`, and `s57169→s57172`. The later old-box answer names the original boxes, and the diary return explicitly calls back to the opening at `s57167`.",
+          "cited_ids": [
+            "s57063",
+            "s57082",
+            "s57139",
+            "s57156",
+            "s57167",
+            "s57182",
+            "s57183",
+            "s57187",
+            "s57035",
+            "s57036",
+            "s57045",
+            "s57046",
+            "s57047",
+            "s57069",
+            "s57072",
+            "s57090",
+            "s57091",
+            "s57107",
+            "s57135",
+            "s57136",
+            "s57117",
+            "s57118",
+            "s57120",
+            "s57122",
+            "s57127",
+            "s57128",
+            "s57133",
+            "s57134",
+            "s57143",
+            "s57144",
+            "s57147",
+            "s57149",
+            "s57164",
+            "s57165",
+            "s57166",
+            "s57169",
+            "s57172",
+            "s57167"
+          ],
+          "invalid_ids": [
+            "s57082"
+          ],
+          "chosen_scene_id": "s57063",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[s57006] 相遇前，他虛弱到每走一步都難受。",
+          "raw_reason": "`s57006` says that before the meeting Livingston was so weak that every step hurt; `s57014` says pain accompanied every step again. `s57007` previews his need to provision the next leg, while `s57011` restates that he returned ill to Ujiji to find supplies. Neither body return identifies the opening preview as a callback. This repeats specific facts under the panel's rule, even though `s57167` does correctly name its callback to the opening diary.",
+          "cited_ids": [
+            "s57006",
+            "s57014",
+            "s57007",
+            "s57011",
+            "s57167"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57006",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[s57036] 蘇西跑回來，說他看見一個英國人。",
+          "raw_reason": "The titles describe a seal, missing boxes, Susi's message, a decision, the northward lake trip, the long eastward trip, Stanley's handoff, and the diary's departure. Each names an event or discovery in the sequence.",
+          "cited_ids": [],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57036",
+          "conversion": "optional chapter-title reason; chose s57036 from named Susi event"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[s57183] 留下的人，最後等到了回家那天嗎？",
+          "raw_reason": "`s57183–s57189` close with Livingston's fate and the published diary; they do not mention another episode or file.",
+          "cited_ids": [
+            "s57183",
+            "s57189"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57183",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[s57001] 一八七二年三月，一本日記被壓上五道封印。",
+          "raw_reason": "After `s57001`, the opening leaves at least four later moments unresolved: where the diary's owner goes (`s57004`), whether supplies change his mind (`s57008`), how he answers persuasion (`s57009`), and why the men separate (`s57010`).",
+          "cited_ids": [
+            "s57001",
+            "s57004",
+            "s57008",
+            "s57009",
+            "s57010"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57001",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[s57019] 可他的人告訴他，託管的布和珠子被賣了。",
+          "raw_reason": "Livingston's ability and choice to keep exploring carries from the opening through the lost goods (`s57019–s57023`), Stanley's aid and appeal (`s57063–s57082`), the lake work (`s57084–s57097`), the supply trip (`s57113–s57149`), and the parting and fate (`s57155–s57189`).",
+          "cited_ids": [
+            "s57019",
+            "s57023",
+            "s57063",
+            "s57082",
+            "s57084",
+            "s57097",
+            "s57113",
+            "s57149",
+            "s57155",
+            "s57189"
+          ],
+          "invalid_ids": [
+            "s57082"
+          ],
+          "chosen_scene_id": "s57019",
+          "conversion": "first valid scene ID cited in raw reason"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[s57028] 遠在這次相遇前，另一條尋人路已經啟動。",
+          "raw_reason": "The Bennett commission (`s57028–s57033`) explains why aid arrives. The lake evidence (`s57084–s57097`) explains why Livingston wants to stay; the difficult eastward trip (`s57113–s57133`) leads to the goods that let him do it. Even the short news and health passage (`s57053–s57060`) affects his ability to decide and travel. No chapter becomes an unrelated list.",
+          "cited_ids": [
+            "s57028",
+            "s57033",
+            "s57084",
+            "s57097",
+            "s57113",
+            "s57133",
+            "s57053",
+            "s57060"
+          ],
+          "invalid_ids": [],
+          "chosen_scene_id": "s57028",
+          "conversion": "first valid scene ID cited in raw reason"
+        }
+      ]
+    }
+  ],
+  "merged_answers_sha256": "729dceae630ee9473b800c3a2b2cbf5a4db038fab7fb83fab268f313ed738544",
+  "merged_passed": true,
+  "merged_failed": [],
+  "excluded": [
+    "r10-supplemental-a.md",
+    "r10-supplemental-b.md"
+  ],
+  "source_review": "r10-source-independent.md",
+  "source_review_sha256": "def084a1a4a53625fecc892abb61a80f9d7fe9f002cefab8f15ea497a046062d",
+  "source_verdict": "source and claims PASS; written visuals HOLD"
+}

@@ -1,0 +1,263 @@
+{
+  "slug": "curio-s58",
+  "round": "R9",
+  "rule": "official fixed OR: a cited YES from either reader passes a criterion",
+  "creative_sha256": {
+    "research.md": "b26201dd469744fe10c8d259beb93ebcda23609fdb6bc989a6f1d784d9f9779e",
+    "brief.md": "5afefc8547bc4fb4a597bcfc99e4e93bcec7631ad237085af78b596aa269a21f",
+    "claims.md": "35c33785728e092c6f4d4a22c9076f05cee92b7bdde36ca2563cad2db0fb142b",
+    "video.json": "b392e57b9056df90ccda3242b95ca659aaa0395348b8c0c2210984fe885e3924",
+    "script.md": "d9bd044c1261ab76f3ad32a098e8c50aadfc05473d223aac3d61a621223afd6d"
+  },
+  "creative_matches_at_transcription": true,
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "ballots": [
+    {
+      "reader": "a",
+      "original_path": "../r9-blind-a.md",
+      "original_sha256": "24f1d8da3305f6d977a33f7a2bf6936f791a666f9ba1e1b30e8458fefddf3c2e",
+      "raw_copy_sha256": "24f1d8da3305f6d977a33f7a2bf6936f791a666f9ba1e1b30e8458fefddf3c2e",
+      "answer_sha256": "f6acf72bc7264bca771e5be9a3e2959a7be1aa00a2bbac87a538f3a7456d527d",
+      "yes": 11,
+      "no": [
+        "no_recap",
+        "no_detour"
+      ],
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[s58001] 一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[s58010] 小球已不見了，大球還被地面拉住，鴿子等著被放飛。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[s58031] 十一月十二日，攝影師達格隆載著縮微器材從巴黎出發。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[s58033] 任務還沒開始，兩球已把他的機器分開裝載。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[s58056] 附近村民帶來衣帽，讓他們換掉飛行裝束，好避開普軍搜查。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[s58074] 士兵要箱子敞著等軍官，這時機器還保得住嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[s58075] 達格隆說，箱子敞開期間，幾件重要儀器又不見了。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[s58061] 他和同伴保住第二輛車，往田間逃。；[s58062] 第二輛車還在，追兵又近；他們能躲在哪裡？"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[s58040] 他看見達蓋爾號下降，最後落在農舍牆邊。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[s58146] 那是他報告的一段鳥程，沒有量出每封私信多久抵達。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[s58007] 如果乘客想從空中回報，消息要怎麼繫到鳥身上？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[s58030] 這隻鳥只帶一張紙；換成許多回信，牠還能負得起嗎？"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[s58144] 他另記下一段鴿子單趟飛行，那一段用了多久？"
+        }
+      ]
+    },
+    {
+      "reader": "b",
+      "original_path": "../r9-blind-b.md",
+      "original_sha256": "1d765c9032bd9fa0186e65db5ae4958eb382fda679ac296601cf42a9f6e7be0a",
+      "raw_copy_sha256": "1d765c9032bd9fa0186e65db5ae4958eb382fda679ac296601cf42a9f6e7be0a",
+      "answer_sha256": "9da7fa415f0d37fe5454651fe238b06d90b92e2758643ebdfe0ab054469416d8",
+      "yes": 11,
+      "no": [
+        "one_line",
+        "no_recap"
+      ],
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[s58001] 一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[s58010] 小球已不見了，大球還被地面拉住，鴿子等著被放飛。"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[s58079] 十一月二十一日，達格隆終於抵達圖爾。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[s58055] 氣球不能再飛；倖存器材要經過佔領區，第一步怎麼避開搜查？"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[s58080] 這時，達格隆手裡已有一片透明薄膜樣本；當地郵務仍用什麼拍？"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[s58099] 圖爾的郵政檢查員監督製作，調整流程後能趕出多少份？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[s58086] 他拿出透明薄膜樣本，進城後這麼小的字看得清嗎？"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[s58088] 達格隆報告，當地負責人看樣後採用薄膜做電文。；[s58089] 原先紙張縮拍的電文便停下，郵務改收透明薄膜。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[s58040] 他看見達蓋爾號下降，最後落在農舍牆邊。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[s58146] 那是他報告的一段鳥程，沒有量出每封私信多久抵達。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[s58006] 同一個吊籃裡，郵袋和鴿子的任務為何不同？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[s58030] 這隻鳥只帶一張紙；換成許多回信，牠還能負得起嗎？"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[s58093] 薄膜有了，路上丟失的機器又從哪裡補？"
+        }
+      ]
+    }
+  ],
+  "merged_answer_sha256": "47f879a2f9f749df58d82f5077b540e8c714a6cd0b26c5b44666363f1ddcdcfb",
+  "merged": {
+    "passed": false,
+    "yes": 12,
+    "failed": [
+      "no_recap"
+    ],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "yes": true,
+        "evidence": "[s58001] 一八七〇年十月二十八日，巴黎一個氣球籃裡塞了幾袋信。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_spoiler",
+        "yes": true,
+        "evidence": "[s58010] 小球已不見了，大球還被地面拉住，鴿子等著被放飛。",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_line",
+        "yes": true,
+        "evidence": "[s58031] 十一月十二日，攝影師達格隆載著縮微器材從巴黎出發。",
+        "yes_readers": 1
+      },
+      {
+        "id": "no_toc",
+        "yes": true,
+        "evidence": "[s58033] 任務還沒開始，兩球已把他的機器分開裝載。",
+        "yes_readers": 2
+      },
+      {
+        "id": "chapters_link",
+        "yes": true,
+        "evidence": "[s58056] 附近村民帶來衣帽，讓他們換掉飛行裝束，好避開普軍搜查。",
+        "yes_readers": 2
+      },
+      {
+        "id": "open_loops",
+        "yes": true,
+        "evidence": "[s58074] 士兵要箱子敞著等軍官，這時機器還保得住嗎？",
+        "yes_readers": 2
+      },
+      {
+        "id": "payoffs",
+        "yes": true,
+        "evidence": "[s58075] 達格隆說，箱子敞開期間，幾件重要儀器又不見了。",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_recap",
+        "yes": false,
+        "evidence": "讀者一：[s58061] 他和同伴保住第二輛車，往田間逃。；[s58062] 第二輛車還在，追兵又近；他們能躲在哪裡？；讀者二：[s58088] 達格隆報告，當地負責人看樣後採用薄膜做電文。；[s58089] 原先紙張縮拍的電文便停下，郵務改收透明薄膜。",
+        "yes_readers": 0
+      },
+      {
+        "id": "chapters_are_events",
+        "yes": true,
+        "evidence": "[s58040] 他看見達蓋爾號下降，最後落在農舍牆邊。",
+        "yes_readers": 2
+      },
+      {
+        "id": "outro_no_next",
+        "yes": true,
+        "evidence": "[s58146] 那是他報告的一段鳥程，沒有量出每封私信多久抵達。",
+        "yes_readers": 2
+      },
+      {
+        "id": "opening_hooks",
+        "yes": true,
+        "evidence": "[s58007] 如果乘客想從空中回報，消息要怎麼繫到鳥身上？",
+        "yes_readers": 2
+      },
+      {
+        "id": "one_thread",
+        "yes": true,
+        "evidence": "[s58030] 這隻鳥只帶一張紙；換成許多回信，牠還能負得起嗎？",
+        "yes_readers": 2
+      },
+      {
+        "id": "no_detour",
+        "yes": true,
+        "evidence": "[s58093] 薄膜有了，路上丟失的機器又從哪裡補？",
+        "yes_readers": 1
+      }
+    ]
+  }
+}

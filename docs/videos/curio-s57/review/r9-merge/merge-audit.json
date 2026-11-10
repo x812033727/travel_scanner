@@ -1,0 +1,282 @@
+{
+  "round": "R9",
+  "slug": "curio-s57",
+  "rule": "fixed OR: any valid YES for a panel passes it",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "creative_sha256": {
+    "research.md": "9663d4a0ea66b1fef3c6e3a0550b8b08cf169a68b1736ad6005d6408ac2cd667",
+    "brief.md": "c7900d23f61699c506abbde288aadbe2d32c0e5020721a2e2c44ee04ff2876ea",
+    "claims.md": "241f5a2fa4b25e977baf832907213b7be98cda7a9cfa55ea58331f0a31466beb",
+    "video.json": "940046297c87511a82c9e42eb5d0c0fbcf8bdaa9b5528ce17234ac77c7cf8588",
+    "script.md": "7edc924366e588787794e9c2ceac53ce8f5131188f19aa9c0a71a3543c326b43"
+  },
+  "raw_ballots": [
+    {
+      "reader": "A",
+      "file": "r9-blind-a.md",
+      "sha256": "ac7e4aa9bbbff21bd96570e57a51af737f36b60da62a87ecffaa0ee14302a656",
+      "copy_sha256": "ac7e4aa9bbbff21bd96570e57a51af737f36b60da62a87ecffaa0ee14302a656",
+      "yes": 11,
+      "no": [
+        "no_spoiler",
+        "no_recap"
+      ]
+    },
+    {
+      "reader": "B",
+      "file": "r9-blind-b.md",
+      "sha256": "540740845cd2c5332d93574310a8a38a860633ca6c0865bcb029b28077072279",
+      "copy_sha256": "540740845cd2c5332d93574310a8a38a860633ca6c0865bcb029b28077072279",
+      "yes": 12,
+      "no": [
+        "no_recap"
+      ]
+    }
+  ],
+  "ballot_a_sha256": "ecf010566e2ee7e4a45119677b8d8e47a3d766601a6d85892560ca356f137b51",
+  "ballot_b_sha256": "9eb0702cfd6386cd0377fceb334597d2379e6d101bfda74e780e4c8499f264e8",
+  "citations": [
+    {
+      "reader": "B",
+      "panel": "scene_first",
+      "vote": "YES",
+      "raw_reason": "[s57001], script line 9:「一八七二年三月，一本日記被壓上五道封印。」A dated, physical action opens the story; [s57002], line 13, names the person handing over the diary.",
+      "chosen_scene_id": "s57001",
+      "exact_spoken_line": "一八七二年三月，一本日記被壓上五道封印。",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "no_spoiler",
+      "vote": "YES",
+      "raw_reason": "[s57004], line 21:「日記已要出發，主人又會往哪裡去？」The first chapter shows the handoff and departure starting but withholds where Livingston goes and why the two men part.",
+      "chosen_scene_id": "s57004",
+      "exact_spoken_line": "日記已要出發，主人又會往哪裡去？",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "one_line",
+      "vote": "YES",
+      "raw_reason": "[s57083], line 319:「不過兩人接著同路；他們先往哪裡去？」After the early 1872 preview, the account follows their encounter, joint travel, supplies, and separation in sequence. The later persuasion is introduced as another attempt, not a replay: [s57108], line 393:「史丹利後來又寫到，自己試著勸他返家。」",
+      "chosen_scene_id": "s57083",
+      "exact_spoken_line": "不過兩人接著同路；他們先往哪裡去？",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "no_toc",
+      "vote": "YES",
+      "raw_reason": "[s57157], line 553:「史丹利接下來要去的，反而是海岸。」Here “接下來” names Stanley's next journey inside the story. I found no spoken sentence that announces the video's chapter order or a list of topics.",
+      "chosen_scene_id": "s57157",
+      "exact_spoken_line": "史丹利接下來要去的，反而是海岸。",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "chapters_link",
+      "vote": "YES",
+      "raw_reason": "[s57035], line 147:「第一個把消息帶到屋前的，會是誰？」is answered by the next chapter's first line, [s57036], line 153:「蘇西跑回來，說他看見一個英國人。」The other chapter starts likewise take up the prior question or action: s57010→s57011 (earlier origin of the decision), s57062→s57063, s57083→s57084, s57112→s57113, s57138→s57139, and s57164→s57165.",
+      "chosen_scene_id": "s57035",
+      "exact_spoken_line": "第一個把消息帶到屋前的，會是誰？",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "open_loops",
+      "vote": "YES",
+      "raw_reason": "[s57122], line 447:「先等人，再等病好；這趟找貨的路究竟要走多久？」This is one of the continuing unresolved questions in the travel chapter; questions, turns, or escalations recur throughout the body well within roughly 90 seconds of narration.",
+      "chosen_scene_id": "s57122",
+      "exact_spoken_line": "先等人，再等病好；這趟找貨的路究竟要走多久？",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "payoffs",
+      "vote": "YES",
+      "raw_reason": "The long opening question [s57004], line 21:「日記已要出發，主人又會往哪裡去？」gets a named object-and-person answer in [s57182], line 643:「日記走向海岸，主人仍留在內陸。」The later old-box question also gets a new result: [s57136], line 487:「一核對，李文斯頓原有貨物仍然短少；舊箱沒有完整等著他。」The other questions receive local answers or later named outcomes.",
+      "chosen_scene_id": "s57004",
+      "exact_spoken_line": "日記已要出發，主人又會往哪裡去？",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "no_recap",
+      "vote": "NO",
+      "raw_reason": "[s57002], line 13:「日記主人李文斯頓，把它交給史丹利保管。」The body repeats that handoff at [s57167], line 587:「隔天，史丹利要走，他把封好的日記託給對方。」That line adds timing, but it states the same handoff again without naming the opening preview at the point the story returns to it. The explicit “回看開場那本日記” comes only at [s57189], line 659, after this repeat. Under the question's strict opening-preview callback exception, this is a failure.",
+      "chosen_scene_id": "s57167",
+      "exact_spoken_line": "隔天，史丹利要走，他把封好的日記託給對方。",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "chapters_are_events",
+      "vote": "YES",
+      "raw_reason": "[s57139], line 501:「就在抵達當天，史丹利的新援助已經先交到李文斯頓手上。」“史丹利把貨交給他” describes that event; the other chapter titles similarly name a sealing, news delivery, decision, journey, or separation rather than an explanatory function.",
+      "chosen_scene_id": "s57139",
+      "exact_spoken_line": "就在抵達當天，史丹利的新援助已經先交到李文斯頓手上。",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "outro_no_next",
+      "vote": "YES",
+      "raw_reason": "[s57189], line 659:「回看開場那本日記：它的文字後來收入《最後日記》；這場分路，也留下李文斯頓自己的說法。」The ending closes this account and never names another video, episode, or file to come.",
+      "chosen_scene_id": "s57189",
+      "exact_spoken_line": "回看開場那本日記：它的文字後來收入《最後日記》；這場分路，也留下李文斯頓自己的說法。",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "opening_hooks",
+      "vote": "YES",
+      "raw_reason": "After the first scene, three distinct unresolved later moments are [s57004], line 21:「日記已要出發，主人又會往哪裡去？」; [s57008], line 37:「如果物資回來，他就會改變主意嗎？」; and [s57009], line 41:「史丹利若勸他回家，他會怎麼回答？」Each stops before its answer.",
+      "chosen_scene_id": "s57004",
+      "exact_spoken_line": "日記已要出發，主人又會往哪裡去？",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "one_thread",
+      "vote": "YES",
+      "raw_reason": "[s57010], line 45:「兩人到了同一個路口，為何走成兩條路？」The same concrete choice drives the search, illness, return-home attempts, supply journey, and final parting; [s57182], line 643:「日記走向海岸，主人仍留在內陸。」closes it.",
+      "chosen_scene_id": "s57010",
+      "exact_spoken_line": "兩人到了同一個路口，為何走成兩條路？",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "B",
+      "panel": "no_detour",
+      "vote": "YES",
+      "raw_reason": "[s57122], line 447:「先等人，再等病好；這趟找貨的路究竟要走多久？」The detailed eastward journey remains about securing supplies for Livingston's continued expedition, whose delivery is stated at [s57139], line 501:「就在抵達當天，史丹利的新援助已經先交到李文斯頓手上。」Other chapters also advance the meeting, the choice, or its outcome; none becomes an unrelated catalogue.",
+      "chosen_scene_id": "s57122",
+      "exact_spoken_line": "先等人，再等病好；這趟找貨的路究竟要走多久？",
+      "conversion": "first cited scene except no_recap uses its cited repeat s57167"
+    },
+    {
+      "reader": "A",
+      "panel": "scene_first",
+      "vote": "YES",
+      "raw_reason": "第一句就給出時間、具體文件與封印動作；接著交代持有人和出發中的隊伍。",
+      "chosen_scene_id": "s57001",
+      "exact_spoken_line": "一八七二年三月，一本日記被壓上五道封印。",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "no_spoiler",
+      "vote": "NO",
+      "raw_reason": "第一章已說出補給幾乎全失；烏吉吉一章才安排託管貨物失去的揭曉。這句沒有停在結果之前。",
+      "chosen_scene_id": "s57007",
+      "exact_spoken_line": "他原有的補給，又幾乎全不在了。",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "one_line",
+      "vote": "YES",
+      "raw_reason": "開場預告後，故事沿相遇、勸歸、同行、找貨、交貨與分路推進；這句接續抵達貨站的行程，沒有重講同一段經過。",
+      "chosen_scene_id": "s57139",
+      "exact_spoken_line": "就在抵達當天，史丹利的新援助已經先交到李文斯頓手上。",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "no_toc",
+      "vote": "YES",
+      "raw_reason": "這裡的「接下來」問故事裡會發生的事，沒有宣告影片將如何分段或列出後面的內容。",
+      "chosen_scene_id": "s57052",
+      "exact_spoken_line": "找人已經成功；接下來會把人帶回去嗎？",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "chapters_link",
+      "vote": "YES",
+      "raw_reason": "這一章首句直接回答上一章留下的『先送到的是什麼』；其餘章首也承接上一章的動作、物件或疑問。",
+      "chosen_scene_id": "s57139",
+      "exact_spoken_line": "就在抵達當天，史丹利的新援助已經先交到李文斯頓手上。",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "open_loops",
+      "vote": "YES",
+      "raw_reason": "正文持續以出發、找人、勸歸、找貨、交貨與告別的未決問題掛鉤，未見超過九十秒的無鉤段落。",
+      "chosen_scene_id": "s57122",
+      "exact_spoken_line": "先等人，再等病好；這趟找貨的路究竟要走多久？",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "payoffs",
+      "vote": "YES",
+      "raw_reason": "這句給出剛問的找貨行程長度；其餘較久的掛鉤也在回收時點名原本的人、物或疑問並給出新結果。",
+      "chosen_scene_id": "s57127",
+      "exact_spoken_line": "李文斯頓後來把整段從烏吉吉到貨站的行程，算成五十四天。",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "no_recap",
+      "vote": "NO",
+      "raw_reason": "前面已說他很久沒收到歐洲消息；這句加上『兩年』，仍把沒收到消息這個事實說了第二次，且不是點名回呼。",
+      "chosen_scene_id": "s57055",
+      "exact_spoken_line": "李文斯頓說，自己已兩年沒聽到那些消息。",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "chapters_are_events",
+      "vote": "YES",
+      "raw_reason": "『蘇西跑來報信』正是發生的事；其餘章名也指向封印、失貨、分路、移動、交貨或告別等具體事件與揭曉。",
+      "chosen_scene_id": "s57036",
+      "exact_spoken_line": "蘇西跑回來，說他看見一個英國人。",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "outro_no_next",
+      "vote": "YES",
+      "raw_reason": "結尾回到本集日記和分路，沒有提到下一支影片、下一集或下一份檔案。",
+      "chosen_scene_id": "s57189",
+      "exact_spoken_line": "回看開場那本日記：它的文字後來收入《最後日記》；這場分路，也留下李文斯頓自己的說法。",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "opening_hooks",
+      "vote": "YES",
+      "raw_reason": "第一個場景之後，開場依次留下物資回來後的選擇、史丹利的勸歸，以及兩人分路原因等三個尚未揭曉的時刻。",
+      "chosen_scene_id": "s57008",
+      "exact_spoken_line": "如果物資回來，他就會改變主意嗎？",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "one_thread",
+      "vote": "YES",
+      "raw_reason": "李文斯頓為何未隨史丹利返家貫穿各章；北行、東行和補給都接在他的研究選擇上。",
+      "chosen_scene_id": "s57087",
+      "exact_spoken_line": "北行查水路，正是他不願先返家的研究一部分。",
+      "conversion": "verbatim structured source vote"
+    },
+    {
+      "reader": "A",
+      "panel": "no_detour",
+      "vote": "YES",
+      "raw_reason": "找人、行路、清點與交貨的段落都推動他能否繼續考察及是否返家的問題，沒有整段無關的旁支或朗讀清單。",
+      "chosen_scene_id": "s57140",
+      "exact_spoken_line": "布和小船，讓未完的水路考察有了工具。",
+      "conversion": "verbatim structured source vote"
+    }
+  ],
+  "merged_answers_sha256": "5f1d2e6eb37207c5b8b1348b0a51daa93093ac5c9b4562ee00c10f7962a5bcc4",
+  "merged_yes": 12,
+  "merged_failed": [
+    "no_recap"
+  ],
+  "source_receipt": "r9-source-independent.md",
+  "source_receipt_sha256": "d2fda8086cb857de4c1476561cc5d4def915ed17d3f681f2ca461058268be814",
+  "note": "no_recap evidence compressed to show both unchanged NO reasons within official 200-char field"
+}

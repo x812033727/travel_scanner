@@ -1,0 +1,53 @@
+{
+  "slug": "curio-s59",
+  "round": "R1",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node /workspace/travel_scanner/tools/video/cli.mjs narrative --slug curio-s59 --answers /workspace/travel_scanner/docs/videos/curio-s59/review/r1-merge/merged-answers.json --workdir /tmp/curio-s59-r1-merge-formal-yjj76v --json",
+  "workdir": "/tmp/curio-s59-r1-merge-formal-yjj76v",
+  "official_record_path": "/tmp/curio-s59-r1-merge-formal-yjj76v/curio-s59/review/narrative.json",
+  "creative_sha256_before": {
+    "research.md": "f3ab0acd1e0bbf4124b7897b07604897d38068095a72530a2e2071e4b968f566",
+    "brief.md": "c03bd176667ff1ca5180f5f9591869f1e8e58ca7e7454fa8d723913c7a3ed133",
+    "claims.md": "e221beb8befe971381ef306aa89433f37021cbb88e3692f6c51409568211083a",
+    "video.json": "e780262318e4b6860637a173c07258d7b3019e0d077200aabc35d8b6b1fc0e54",
+    "script.md": "c61844a2e079285b8ad98a150e7ac49fa03dca9939dab10a81748fabcf4336d5"
+  },
+  "creative_sha256_after": {
+    "research.md": "f3ab0acd1e0bbf4124b7897b07604897d38068095a72530a2e2071e4b968f566",
+    "brief.md": "c03bd176667ff1ca5180f5f9591869f1e8e58ca7e7454fa8d723913c7a3ed133",
+    "claims.md": "e221beb8befe971381ef306aa89433f37021cbb88e3692f6c51409568211083a",
+    "video.json": "e780262318e4b6860637a173c07258d7b3019e0d077200aabc35d8b6b1fc0e54",
+    "script.md": "c61844a2e079285b8ad98a150e7ac49fa03dca9939dab10a81748fabcf4336d5"
+  },
+  "creative_unchanged": true,
+  "ballot_sha256": {
+    "a": "9b8e1af4a52a29355ab248537a21963c9882cf32707543bdad0b98335e5c854b",
+    "b": "635aa75586d59e743e0c0490f384f60b66d3cdccb90f11fcbbbe4a8f38904280"
+  },
+  "merged_answers_sha256": "77ed0e2c2c96fa09fc4979956c848d4c2b37ecdf76a9b0cb615af5474eb98a57",
+  "stdout_sha256": "f8e5eee111841ff32279a390e4b20f77f767f2b233a1ea26008ba9e7070df527",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "official_record_sha256": "7363ba0030b5d0db6bd8c841a07608da3c8a399fc0fe44620b55be7b182ff83e",
+  "exit_code": 1,
+  "cli_passed": false,
+  "cli_failed": [
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s59054] 他寫這聲音略顯細弱，卻能傳到房間各處；可同一張錫箔能這樣說上幾遍？；讀者二：[s59054] 他寫這聲音略顯細弱，卻能傳到房間各處；可同一張錫箔能這樣說上幾遍？"
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[s59103] 手搖的速度若變了，回來的音調會跟著變；這是杜蒙塞爾寫下的器械特性。；讀者二：[s59103] 手搖的速度若變了，回來的音調會跟著變；這是杜蒙塞爾寫下的器械特性。"
+    }
+  ],
+  "cli_advisory": [],
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "panel_narration_sha256": "71fc8ad8ddb8db90da8be0a64751f6dc53e9a87997914e2b709ad825ef8f94e0",
+  "narrative_hash": "760c02fbbc32039b",
+  "official_round": 1
+}

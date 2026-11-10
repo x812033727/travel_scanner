@@ -1,0 +1,38 @@
+{
+  "requested_slug": "curio-s57",
+  "requested_workdir": "/tmp/curio-s57-r5-merge-formal-20261020",
+  "command": [
+    "node",
+    "tools/video/cli.mjs",
+    "narrative",
+    "--slug",
+    "curio-s57",
+    "--answers",
+    "/workspace/travel_scanner/docs/videos/curio-s57/review/r5-merge/merged-answers.json",
+    "--workdir",
+    "/tmp/curio-s57-r5-merge-formal-20261020",
+    "--json"
+  ],
+  "pre_sha256": {
+    "research.md": "9663d4a0ea66b1fef3c6e3a0550b8b08cf169a68b1736ad6005d6408ac2cd667",
+    "brief.md": "25cf00d5d86c8703c459fc1de8774f7adef27059fe4006c93a1b40d7ba14e43f",
+    "claims.md": "c238f42f44a612ef92c15a1f14f9ad4d0ef86e8f88724888ceecbba016a65230",
+    "video.json": "07bebbb202143a25f9d942565303da91859c431c402a31c36f6d2824d9d060d9",
+    "script.md": "464ba2b1bb7dfd5aedaaf3727e4fcaae28d598050e132e72f1dd1bb99b163452"
+  },
+  "pre_matches": true,
+  "ran": true,
+  "exit_code": 1,
+  "record_present": true,
+  "record_path": "/tmp/curio-s57-r5-merge-formal-20261020/curio-s57/review/narrative.json",
+  "record_sha256": "275ca3727588b91e264723490f5fa093b893ee8d42e9497e91c5d15104854f10",
+  "post_sha256": {
+    "research.md": "9663d4a0ea66b1fef3c6e3a0550b8b08cf169a68b1736ad6005d6408ac2cd667",
+    "brief.md": "25cf00d5d86c8703c459fc1de8774f7adef27059fe4006c93a1b40d7ba14e43f",
+    "claims.md": "c238f42f44a612ef92c15a1f14f9ad4d0ef86e8f88724888ceecbba016a65230",
+    "video.json": "07bebbb202143a25f9d942565303da91859c431c402a31c36f6d2824d9d060d9",
+    "script.md": "464ba2b1bb7dfd5aedaaf3727e4fcaae28d598050e132e72f1dd1bb99b163452"
+  },
+  "post_matches": true,
+  "note": "resolveWorkdir appends slug to --workdir root"
+}
