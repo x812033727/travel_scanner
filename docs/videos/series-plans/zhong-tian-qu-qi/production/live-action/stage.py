@@ -34,6 +34,9 @@ for shot, p in sorted(picks.items()):
     vf = []
     if p.get("crop"):
         w, h, x, y = (int(v) for v in p["crop"].split(":")); k = 1312 / 960
+        # e905: a picker wrote 1920x1080 numbers and ffmpeg failed on a box bigger than the picture; stop here instead
+        if x + w > 960 or y + h > 544:
+            sys.exit(f"{shot}: crop {p['crop']} is outside the 960x544 draft (write crop= in draft pixels)")
         vf = ["-vf", f"crop={round(w * k)}:{round(h * k)}:{round(x * k)}:{round(y * k)},scale=1312:736:flags=lanczos,setsar=1"]
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{start:.3f}", *cut, "-i", str(pic),
                     "-ss", f"{start:.3f}", *cut, "-i", p["draft"],
