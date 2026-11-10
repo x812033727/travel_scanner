@@ -118,8 +118,26 @@
   {
    "file": "metalPot1",
    "at": "s13",
-   "off": 0.55,
+   "off": 1.5,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s14",
+   "off": 0.28,
+   "gain": -28
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s14",
+   "off": 9.0,
    "gain": -22
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s14",
+   "off": 9.3,
+   "gain": -24
   },
   {
    "file": "footstep_grass_001",
@@ -136,7 +154,7 @@
   {
    "file": "impactWood_light_000",
    "at": "s16",
-   "off": 3.6,
+   "off": 0.65,
    "gain": -22
   },
   {
@@ -162,6 +180,18 @@
    "at": "s17",
    "off": 1.6,
    "gain": -20
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s19",
+   "off": 1.75,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s19",
+   "off": 3.55,
+   "gain": -26
   },
   {
    "file": "impactWood_light_001",
@@ -190,25 +220,37 @@
   {
    "file": "rustle03",
    "at": "s26",
-   "off": 0.1,
+   "off": 0.15,
    "gain": -24
   },
   {
-   "file": "impactMetal_heavy_000",
-   "at": "s27",
-   "off": 0.15,
-   "gain": -20
+   "file": "rustle03",
+   "at": "s26",
+   "off": 0.9,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s26",
+   "off": 2.3,
+   "gain": -26
+  },
+  {
+   "file": "cloth2",
+   "at": "s26",
+   "off": 4.5,
+   "gain": -26
   },
   {
    "file": "metalPot2",
    "at": "s28",
-   "off": 3.05,
+   "off": 2.3,
    "gain": -22
   },
   {
    "file": "cloth1",
    "at": "s28",
-   "off": 4.6,
+   "off": 3.85,
    "gain": -26
   },
   {
@@ -315,16 +357,14 @@
   "s05": 0.6,
   "s09": 0.8,
   "s15": 2.0,
-  "s26": 0.7,
   "s29": 2.0,
   "s34": 1.0
  },
  "voice_until": {
   "s25": 5.0,
-  "s27": 5.85,
   "s37": 6.2
  },
- "_note": "live action, built 2026-11-09 from edit-dh-e904.json (CG) the way e903-live was built from e903: clip_voice, no punch-in, slow-down <= 1.1, music tail 0.3 on every cue but the last. Picks: colab/runs/e904-live/review-picks-a.tsv (s01-s20) and review-picks-b.tsv (s21-s40), drafts runpod/live/d1/out/<shot>-<seed>.mp4; no crop= in either file. Muted (no on-screen speaker, so clip_voice finds no onscreen line and drops the clip's own audio, which covers the model gibberish the pickers flagged): s02 s03 s13 s24 (system and inner voice only), s08 s20 (Xu Yan nospeak + off-screen), s23 (Xu Yan off-screen, not in the shot's characters), s12 (system), s17 s31 s38 s40 (no line). Mixed: s14 has Tang Xiaotang on screen plus Xu Yan's inner line zq904a16, so the clip's audio plays whole -- the reshoot must be silent before her line (voice_skip only moves subtitles, it does not mute). Effects re-timed on the picked live drafts as trimmed by the picks (offsets from the start of each trimmed shot; frames at 0.25 s plus the draft's own sound, silencedetect -35 dB and a 20 ms envelope): s01 log shoved into the fire 0.3 (new, the take is silent there), flame climbs 0.5 (fire-1, CG 0.3); s02 system bell 0.1 unchanged; s05 he rises from the crouch 0.5; s06 she rises 0.6 (new), blade into the sheath 2.7 (CG 0.6); s08 her steps to the door 0.7 and 1.5 (new; muted shot); s09 the CG footstep dropped (she never steps out, trimmed at 5.0); s10 the CG jar-lid effect dropped (the lid is in the trimmed-off 0-2.4 s); s11 ladle back into the jar 4.85 (new); s13 pot lifted off the stove 0.55; s15 Tang Xiaotang runs out 0.25, skirt 0.5; s16 box set on the table 3.6 (CG 0.8); s17 latch 0.55, lid 1.0, gold shows 1.6; s20 lid shut 1.3 (CG 0.6), thumb on the latch 2.75 (new); s25 she walks off 5.4 (new); s26 ash already pouring at the first frame 0.1; s27 the wok clang at the gate 0.15, before his shout (he never bumps the frame in the take, the pickers asked for it anyway; CG 0.8 would sit under his first word); s28 the wok drops out of frame lower right: metalPot2 at 3.05 layered on the take's own dull thud at 3.06 (-22, lower than CG -18), shoulder pat 4.6 (new); s30 fingers on the wok rim 1.55 (new, over the take's faint touch at 1.6); s31 her heavy steps 0.5 and 2.6 at the gate (second new); s32 the pig hits the ground 4.12, aligned to the take's own thud at 4.14 (-20, CG -14 would double it); s34 brushes the hair off her shoulder 2.0 (new), turns and walks out 5.9 (new); s35 hand over the wok rim 4.8 (no real contact, the clang is the effect's); s36 stirring and fire from the first frame, unchanged; s37 the walk-off 6.65 (new, the take's own faint steps at 6.66 and 7.86); s39 the dropped firewood 0.2 (the take keeps the bundle in his arms the whole shot, so the effect is placed before his line as if a few sticks fell below frame). Speech measured on the trimmed drafts: s01 0.87-6.24, s04 1.72-6.03, s05 0.81-5.08, s06 2.02-6.58, s07 0.46-6.01, s09 0.97-5.0, s10 0.53-5.29, s11 2.22-6.58, s15 2.38-9.85, s16 0.2-4.68, s18 0.39-5.08, s21 0.78-6.58, s22 0.72-5.25, s25 0.42-4.77, s26 0.87-5.08, s27 0.49-5.8, s28 1.66-6.58, s29 2.32-5.9, s30 2.79-6.14, s32 2.21-6.58 (first half said while still carrying the pig), s33 2.33-6.17, s34 1.28-5.36, s35 0.67-5.71, s36 0.32-5.66, s37 1.28-5.88, s39 2.23-6.58. voice_skip: s04 s09 (an encoder click at 0.19 that silencedetect counts as sound), s05 (0.22 click, rising rustle), s15 (0.25 click, her running steps), s26 (ash and crowd under -35 dB rms but over it in peaks to 0.54), s29 (crowd murmur 0-1.45), s34 (her scoff 0-0.34 is not in the line). voice_until: s25 (footsteps 6.35 after the line), s27 (breath and ambience 5.86-6.58), s37 (walk-off steps 6.66, 7.86). TODO, not final -- CG-list effects left as they were: s14, s19, s23, s38, s40 (being reshot, colab/runs/e904-live/fix1/spec.json; re-time s38 creak3 0.4 / splash_02 1.0 and s40 splash_01 0.5 / bell 1.6 on the new takes, and check s14's audio before Tang's line), s12 (to become a still slow push-in from an eye frame; its system line zq904a13 needs 3.55 s, longer than the planned 3.2). s24 uses only start@4.75 (1.83 s clean, the rest is a double exposure): its system line zq904a27 needs 2.41 s, slow_max 1.1 gives 2.02 s and the last ~0.4 s is a held frame -- freeze/slow it in the cut (bell 0.1 unchanged). Music (shot lengths from the trimmed picks, recorded-line minimums for muted shots, storyboard lengths for the TODO shots): suspense s01-s09 50.6 s of 111.3, comedy s26-s35 61.3 of 121.3, tension s36-s40 28.2 (34.3 if the reshoots run 6.6 s) of 117.3 -- fit; warm s10-s25 93.6 s (96.6 with 6.6 s reshoots) of a 58.9 s track -- TOO SHORT: it runs out about 1 s into s19 and leaves ~35 s of digital silence. Not split here; options: warm s10-s17 (52.8 s + tail fits) and a second cue for s18-s25 (40.8 s, e.g. cue-river 65.3 s from the music folder) or a longer warm render. Music (2026-11-09): cue-warm is 58.9 s but s10-s25 runs about 94 s live, so warm plays twice like e902's comedy: s10-s16 in the house, restarting at s17 as Tang Xiaotang hurries into the sunny yard with the casket (each part under 59 s; recheck once the fix1 retakes are in). Stills (2026-11-10, after fix1 and fix2 failed twice): s12, s23 and s40 have no clip and are slow moves on a still in _live-e904/.../first-frames: s12 from refined s24 at 5.5 s (the clean eyes, the same eyes as s24); s23 from fix1 s23-9041202 at 1.0 s (profile, lips closed, no smile; the picker checked that frame); s40 from fix1 s38-9041202 at 3.5 s cropped 668:376:150:96 (his back, both feet on the stool, the bucket over the wok; no head turn, carried by the sound), min 3.0 s. s24 keeps only start 4.75 (1.8 s) and is held on its last frame by the assembler to fit the system line. fix2 picks: s14 9041302 (whole take, Tang's hand on the door, her line off screen), s19 9041301 (over her shoulder, five ingots). cue-warm opens with 0.44 s of digital silence (the restart at s17 left a 0.26 s hole), so both warm parts start at offset 0.45. The s16/s17 seam still had 0.11 s of digital silence (the first warm fading out, the second fading in from zero over a quiet start of s17), so the first warm's tail is 0.5 and the second fades in over 0.15 s. Cut review 1 (colab/runs/e904-live/cut-review.md §六, 2026-11-10, no paid service): trims and the s08 reframe are in colab/runs/e904-live/review1-trims.tsv, read last by refine-prep.py (same seeds as the picks): s11 start@2.1 (the smile at c0-1.0 and 0.7 s of silent mouthing are gone, the line starts at c0.12), s14 end-before@10.6 (both recorded lines end at c8.92), s25 end-before@5.45 (the grin to camera), s08 crop=640:360:0:50 on the 960x544 draft = 1280x720 at x0 y100 of the cut (Xu Yan, lit and closed-mouthed at x>=1440, never enters; the review's y300 cut off Aling's head; chosen over moving zq904a09 because no key lets a line run into s09 and his 2.46 s line would outlast the shot). Effects: s17 metalLatch and handleCoins -20/-22 -> -12, plus impactBell_heavy_001 -20 at 1.6 as the bright accent on the gold; s11 ladle 4.85 -> 2.75 (the new start); s25 footsteps 5.4 -> 5.0; s38 creak3 0.4 -> 1.35 (first foot on the stool), a second creak3 at 2.3 (-26, second foot), splash_02 1.0 -> 2.9 (bucket over the wok); s40 splash_01 -26 -> -18, bell -20 -> -12. Music: both warm cues -17 -> -15, comedy tail 0.3 -> 0.6. New keys in assemble-v4.mjs: line_at (s03 zq904a03 at 2.3 so the inner voice waits until his open mouth closes, zq904a04 follows at 5.76; s15 zq904a19's subtitle at 6.28 = the voice onset, it was 0.66 s early), vf (s05: a mask built in the graph -- the door rect x1372-1718 y190-885 minus a profile of Aling's face, neck and robe that follows her drift -- darkens and cools the daylit doorway to a dim night, checked at 1 fps on 4x crops; s40: black from 2.2 s), still_move (s40: slow push 1.0->1.035 to the bell, a jolt +0.06 over frames 37-40 on the bell at 1.6 with a 6/5 px decaying shake, then the cut to black lets the bell ring out). Review 二-10 (last word at the clip end): s11 and s18 drafts carry speech at -13..-28 dB until 6.45 s and drop to -72 dB in the last 50 ms, so the decay is clipped; min s11 4.7 / s18 5.25 hold the last frame about 0.2 s so the next shot does not start on the cut syllable (no audio exists past 6.5 s to restore it; patching the word from the recording would change the voice, see review 二-9). s16 and s26 left for the reshoot. Not done here: s13 swap (paid refine), s20 hflip (no mirroring: Song robes), s16/s19/s26/s27/s28 (being reshot). After the change cut-qa flags the intended s40 black (0.75 s) and the s11/s24 holds, cut-jumps flags the s40 cut to black; the -80 dB silence scan finds nothing. s40 bell -6 (at -12 it was still about 13 LU under Xu Yan's shout in s39; the cliffhanger hit has to land on the black).",
+ "_note": "live action, built 2026-11-09 from edit-dh-e904.json (CG) the way e903-live was built from e903: clip_voice, no punch-in, slow-down <= 1.1, music tail 0.3 on every cue but the last. Picks: colab/runs/e904-live/review-picks-a.tsv (s01-s20) and review-picks-b.tsv (s21-s40), drafts runpod/live/d1/out/<shot>-<seed>.mp4; no crop= in either file. Muted (no on-screen speaker, so clip_voice finds no onscreen line and drops the clip's own audio, which covers the model gibberish the pickers flagged): s02 s03 s13 s24 (system and inner voice only), s08 s20 (Xu Yan nospeak + off-screen), s23 (Xu Yan off-screen, not in the shot's characters), s12 (system), s17 s31 s38 s40 (no line). Mixed: s14 has Tang Xiaotang on screen plus Xu Yan's inner line zq904a16, so the clip's audio plays whole -- the reshoot must be silent before her line (voice_skip only moves subtitles, it does not mute). Effects re-timed on the picked live drafts as trimmed by the picks (offsets from the start of each trimmed shot; frames at 0.25 s plus the draft's own sound, silencedetect -35 dB and a 20 ms envelope): s01 log shoved into the fire 0.3 (new, the take is silent there), flame climbs 0.5 (fire-1, CG 0.3); s02 system bell 0.1 unchanged; s05 he rises from the crouch 0.5; s06 she rises 0.6 (new), blade into the sheath 2.7 (CG 0.6); s08 her steps to the door 0.7 and 1.5 (new; muted shot); s09 the CG footstep dropped (she never steps out, trimmed at 5.0); s10 the CG jar-lid effect dropped (the lid is in the trimmed-off 0-2.4 s); s11 ladle back into the jar 4.85 (new); s13 pot lifted off the stove 0.55; s15 Tang Xiaotang runs out 0.25, skirt 0.5; s16 box set on the table 3.6 (CG 0.8); s17 latch 0.55, lid 1.0, gold shows 1.6; s20 lid shut 1.3 (CG 0.6), thumb on the latch 2.75 (new); s25 she walks off 5.4 (new); s26 ash already pouring at the first frame 0.1; s27 the wok clang at the gate 0.15, before his shout (he never bumps the frame in the take, the pickers asked for it anyway; CG 0.8 would sit under his first word); s28 the wok drops out of frame lower right: metalPot2 at 3.05 layered on the take's own dull thud at 3.06 (-22, lower than CG -18), shoulder pat 4.6 (new); s30 fingers on the wok rim 1.55 (new, over the take's faint touch at 1.6); s31 her heavy steps 0.5 and 2.6 at the gate (second new); s32 the pig hits the ground 4.12, aligned to the take's own thud at 4.14 (-20, CG -14 would double it); s34 brushes the hair off her shoulder 2.0 (new), turns and walks out 5.9 (new); s35 hand over the wok rim 4.8 (no real contact, the clang is the effect's); s36 stirring and fire from the first frame, unchanged; s37 the walk-off 6.65 (new, the take's own faint steps at 6.66 and 7.86); s39 the dropped firewood 0.2 (the take keeps the bundle in his arms the whole shot, so the effect is placed before his line as if a few sticks fell below frame). Speech measured on the trimmed drafts: s01 0.87-6.24, s04 1.72-6.03, s05 0.81-5.08, s06 2.02-6.58, s07 0.46-6.01, s09 0.97-5.0, s10 0.53-5.29, s11 2.22-6.58, s15 2.38-9.85, s16 0.2-4.68, s18 0.39-5.08, s21 0.78-6.58, s22 0.72-5.25, s25 0.42-4.77, s26 0.87-5.08, s27 0.49-5.8, s28 1.66-6.58, s29 2.32-5.9, s30 2.79-6.14, s32 2.21-6.58 (first half said while still carrying the pig), s33 2.33-6.17, s34 1.28-5.36, s35 0.67-5.71, s36 0.32-5.66, s37 1.28-5.88, s39 2.23-6.58. voice_skip: s04 s09 (an encoder click at 0.19 that silencedetect counts as sound), s05 (0.22 click, rising rustle), s15 (0.25 click, her running steps), s26 (ash and crowd under -35 dB rms but over it in peaks to 0.54), s29 (crowd murmur 0-1.45), s34 (her scoff 0-0.34 is not in the line). voice_until: s25 (footsteps 6.35 after the line), s27 (breath and ambience 5.86-6.58), s37 (walk-off steps 6.66, 7.86). TODO, not final -- CG-list effects left as they were: s23, s38, s40 (being reshot, colab/runs/e904-live/fix1/spec.json; re-time s38 creak3 0.4 / splash_02 1.0 and s40 splash_01 0.5 / bell 1.6 on the new takes) [s14 and s19 resolved 2026-11-10, see the last paragraph], s12 (to become a still slow push-in from an eye frame; its system line zq904a13 needs 3.55 s, longer than the planned 3.2). s24 uses only start@4.75 (1.83 s clean, the rest is a double exposure): its system line zq904a27 needs 2.41 s, slow_max 1.1 gives 2.02 s and the last ~0.4 s is a held frame -- freeze/slow it in the cut (bell 0.1 unchanged). Music (shot lengths from the trimmed picks, recorded-line minimums for muted shots, storyboard lengths for the TODO shots): suspense s01-s09 50.6 s of 111.3, comedy s26-s35 61.3 of 121.3, tension s36-s40 28.2 (34.3 if the reshoots run 6.6 s) of 117.3 -- fit; warm s10-s25 93.6 s (96.6 with 6.6 s reshoots) of a 58.9 s track -- TOO SHORT: it runs out about 1 s into s19 and leaves ~35 s of digital silence. Not split here; options: warm s10-s17 (52.8 s + tail fits) and a second cue for s18-s25 (40.8 s, e.g. cue-river 65.3 s from the music folder) or a longer warm render. Music (2026-11-09): cue-warm is 58.9 s but s10-s25 runs about 94 s live, so warm plays twice like e902's comedy: s10-s16 in the house, restarting at s17 as Tang Xiaotang hurries into the sunny yard with the casket (each part under 59 s; recheck once the fix1 retakes are in). Stills (2026-11-10, after fix1 and fix2 failed twice): s12, s23 and s40 have no clip and are slow moves on a still in _live-e904/.../first-frames: s12 from refined s24 at 5.5 s (the clean eyes, the same eyes as s24); s23 from fix1 s23-9041202 at 1.0 s (profile, lips closed, no smile; the picker checked that frame); s40 from fix1 s38-9041202 at 3.5 s cropped 668:376:150:96 (his back, both feet on the stool, the bucket over the wok; no head turn, carried by the sound), min 3.0 s. s24 keeps only start 4.75 (1.8 s) and is held on its last frame by the assembler to fit the system line. fix2 picks: s14 9041302 (whole take, Tang's hand on the door, her line off screen), s19 9041301 (over her shoulder, five ingots). cue-warm opens with 0.44 s of digital silence (the restart at s17 left a 0.26 s hole), so both warm parts start at offset 0.45. The s16/s17 seam still had 0.11 s of digital silence (the first warm fading out, the second fading in from zero over a quiet start of s17), so the first warm's tail is 0.5 and the second fades in over 0.15 s. Cut review 1 (colab/runs/e904-live/cut-review.md §六, 2026-11-10, no paid service): trims and the s08 reframe are in colab/runs/e904-live/review1-trims.tsv, read last by refine-prep.py (same seeds as the picks): s11 start@2.1 (the smile at c0-1.0 and 0.7 s of silent mouthing are gone, the line starts at c0.12), s14 end-before@10.6 (both recorded lines end at c8.92), s25 end-before@5.45 (the grin to camera), s08 crop=640:360:0:50 on the 960x544 draft = 1280x720 at x0 y100 of the cut (Xu Yan, lit and closed-mouthed at x>=1440, never enters; the review's y300 cut off Aling's head; chosen over moving zq904a09 because no key lets a line run into s09 and his 2.46 s line would outlast the shot). Effects: s17 metalLatch and handleCoins -20/-22 -> -12, plus impactBell_heavy_001 -20 at 1.6 as the bright accent on the gold; s11 ladle 4.85 -> 2.75 (the new start); s25 footsteps 5.4 -> 5.0; s38 creak3 0.4 -> 1.35 (first foot on the stool), a second creak3 at 2.3 (-26, second foot), splash_02 1.0 -> 2.9 (bucket over the wok); s40 splash_01 -26 -> -18, bell -20 -> -12. Music: both warm cues -17 -> -15, comedy tail 0.3 -> 0.6. New keys in assemble-v4.mjs: line_at (s03 zq904a03 at 2.3 so the inner voice waits until his open mouth closes, zq904a04 follows at 5.76; s15 zq904a19's subtitle at 6.28 = the voice onset, it was 0.66 s early), vf (s05: a mask built in the graph -- the door rect x1372-1718 y190-885 minus a profile of Aling's face, neck and robe that follows her drift -- darkens and cools the daylit doorway to a dim night, checked at 1 fps on 4x crops; s40: black from 2.2 s), still_move (s40: slow push 1.0->1.035 to the bell, a jolt +0.06 over frames 37-40 on the bell at 1.6 with a 6/5 px decaying shake, then the cut to black lets the bell ring out). Review 二-10 (last word at the clip end): s11 and s18 drafts carry speech at -13..-28 dB until 6.45 s and drop to -72 dB in the last 50 ms, so the decay is clipped; min s11 4.7 / s18 5.25 hold the last frame about 0.2 s so the next shot does not start on the cut syllable (no audio exists past 6.5 s to restore it; patching the word from the recording would change the voice, see review 二-9). s16 and s26 left for the reshoot [done 2026-11-10, last paragraph]. Not done here: s20 hflip (no mirroring: Song robes) [the s13 swap and the s16/s19/s26/s27/s28 reshoots are in, last paragraph]. After the change cut-qa flags the intended s40 black (0.75 s) and the s11/s24 holds, cut-jumps flags the s40 cut to black; the -80 dB silence scan finds nothing. s40 bell -6 (at -12 it was still about 13 LU under Xu Yan's shout in s39; the cliffhanger hit has to land on the black). Re-time on the new picks (2026-11-10, frames every 0.25 s on the trimmed takes, 1/12 s around each contact; offsets from the start of the trimmed shot; no assembler run, no paid service): picks s13 d1 s13-9041102 start@2.0 (6.0 s), s14 fix2 s14-9041302 end-before@10.6, s16 fix3 s16-9041401 start@1.0 end-before@5.0, s19 fix4 s19-9041502 start@0.0 end-before@5.5 (replaces fix2 9041301 above), s26 fix3 s26-9041401 start@0.5 end-before@5.5, s27 fix3 s27-9041402 start@0.0 end-before@4.65, s28 fix4 s28-9041501 start@0.0 end-before@5.5. Audio per assemble-v4's onscreen rule against docs/videos/zhong-tian-qu-qi-e004-r2/video.json: s13 (a14 inner, a15 system), s14 (a16 inner, a17 Tang 畫外; characters are only xuyan, so the 'Mixed' s14 above no longer applies and the take's own sound before her line is gone), s16 and s19 (Tang nospeak), s26 and s28 (Xu Yan nospeak) are muted and carry recorded lines from LEAD 0.12; s27 keeps the clip voice (Erniu on screen, speech 0.33-4.32 by silencedetect, silent before 0.33, so no voice_skip). s13: the pot is already up in his hands at the first frame and turns toward the window; metalPot1 0.55 -> 1.5 (-22 -> -24) where his top hand shifts over the rim, inside the 0.8 s pause of a14 (speech 0.12-4.02, a15 4.14-5.49 with its ding at 3.92). s14: Tang's fingers close on the door frame at 0.28 (impactWood_light_000 -28, new; the take's own touch was at 0.31) under a16 0.12-3.44; a17 3.56-8.93, he looks up at 4.75-5.0; her hand leaves the frame 8.75-8.96, so her running steps footstep_grass_001 9.0 (-22) and 9.3 (-24), new, after her line and into s15's 0.25 steps. s16: the casket lands on the table at 0.67 (1.67 raw): impactWood_light_000 3.6 -> 0.65 (-22), and line_at zq904a20 0.8 so 許硯 starts after the knock instead of under it (0.8-3.90; the shot becomes 4.125 s, a 0.125 s hold on the last frame). s19: the casket slides 0-1.75 and stops before him: impactWood_light_000 1.75 (-28, new, under the end of 這點不過是零頭); her hands come back off it 3.5-3.75: cloth1 3.55 (-26, new); a22 0.12-4.58, no line_at (the push goes with 拿去還). s26: ash pours from the first basket 0.15 (rustle03 0.1 -> 0.15, -24), he tips it out 0.75-1.75 (rustle03 0.9 -26, new), the empty basket goes back 2.3 (cloth1 -26, new), he takes the next basket 4.5 (cloth2 -26, new); a29 0.12-3.87; voice_skip s26 0.7 removed (the shot is muted, the key only applied to the old voiced take). s27: impactMetal_heavy_000 0.15 dropped -- Erniu already stands in the yard with the wok on his back and nothing strikes the gate or the wok; voice_until s27 5.85 removed (the take ends at 4.65 and its speech ends at 4.32 before a detected silence). s28: Erniu swings the wok off 0.5-1.5, it leaves the frame downward 1.82-1.9 and his hands bottom out at 2.3 (the take's own muted thud at 2.35): metalPot2 3.05 -> 2.3 (-22); line_at zq904a31 0.75 so the line's 0.68 s pause after 好兄弟 sits on the landing (二牛 0.75-1.16, 好兄弟 1.69-2.13, thud 2.3, 這口鍋的情我記下了 2.80-4.45); Xu Yan's hand lands on his shoulder at 3.85 (cloth1 4.6 -> 3.85, -26) and leaves at 4.8. Gains stay in the file's -28..-22 range for under-line touches. Music with the new lengths (s13 6.0, s14 10.58, s16 4.125, s19 5.5, s26 5.0, s27 4.67, s28 5.5; the other shots from the 2026-11-10 02:22 live report): warm s10-s16 44.6 s + 0.5 tail and warm s17-s25 42.6 s + 0.3 tail, each under the 58.46 s left after offset 0.45; comedy s26-s35 57.9 s + 0.6 of 121.3 -- all cues hold.",
  "min": {
   "s11": 4.7,
   "s18": 5.25,
@@ -332,7 +372,9 @@
  },
  "line_at": {
   "zq904a03": 2.3,
-  "zq904a19": 6.28
+  "zq904a19": 6.28,
+  "zq904a20": 0.8,
+  "zq904a31": 0.75
  },
  "vf": {
   "s05": "split[dm0][dm1];[dm1]eq=brightness=-0.20:gamma=0.55:saturation=0.3,colorbalance=rm=-0.04:bm=0.07:rh=-0.06:bh=0.09[dm2];color=c=black:s=480x270:r=24,format=gray,geq=lum=between((X*4)\\,1372\\,1718)*between((Y*4)\\,190\\,885)*(1-gte((Y*4)\\,285+40*min(1\\,T))*gte((X*4)\\,if(lt((Y*4)\\,330)\\,1412+(-4)*min(1\\,max(0\\,((Y*4)-285)/45))\\,if(lt((Y*4)\\,400)\\,1408+(-12)*min(1\\,max(0\\,((Y*4)-330)/70))\\,if(lt((Y*4)\\,455)\\,1396+(-14)*min(1\\,max(0\\,((Y*4)-400)/55))\\,if(lt((Y*4)\\,470)\\,1382+(2)*min(1\\,max(0\\,((Y*4)-455)/15))\\,if(lt((Y*4)\\,490)\\,1384+(32)*min(1\\,max(0\\,((Y*4)-470)/20))\\,if(lt((Y*4)\\,510)\\,1416+(30)*min(1\\,max(0\\,((Y*4)-490)/20))\\,if(lt((Y*4)\\,535)\\,1446+(32)*min(1\\,max(0\\,((Y*4)-510)/25))\\,if(lt((Y*4)\\,560)\\,1478+(-6)*min(1\\,max(0\\,((Y*4)-535)/25))\\,if(lt((Y*4)\\,600)\\,1472+(-34)*min(1\\,max(0\\,((Y*4)-560)/40))\\,if(lt((Y*4)\\,650)\\,1438+(-26)*min(1\\,max(0\\,((Y*4)-600)/50))\\,if(lt((Y*4)\\,700)\\,1412+(-15)*min(1\\,max(0\\,((Y*4)-650)/50))\\,1397+(-11)*min(1\\,max(0\\,((Y*4)-700)/185)))))))))))))+if(lt((Y*4)\\,470)\\,(18+12*max(0\\,(420-(Y*4))/90))*min(1\\,T)\\,4*min(T\\,4))-5)*lte((X*4)\\,if(lt((Y*4)\\,480)\\,1545\\,1665)))*255,scale=1920:1080:flags=bilinear,boxblur=4[dm3];[dm2][dm3]alphamerge[dm4];[dm0][dm4]overlay=format=auto",
