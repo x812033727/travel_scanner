@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { SearchForm } from "@/components/guides/search-form";
-import { NewsDesk } from "@/components/guides/news-desk";
+import { LifeKnowledge, LifeNewsPreview, LifeReadingJumps } from "@/components/guides/life-discovery";
 import { TopicTiles } from "@/components/guides/topic-tiles";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
@@ -14,6 +14,7 @@ import { getGuideList, getGuideTopics, getSeriesIndex, hubIsEmpty } from "@/lib/
 import { localeUrl } from "@/lib/seo";
 import { getGeminiHubReference, getVisibleGeminiSeries, filterGeminiArticleLinks } from "@/lib/gemini-series.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
+import { lifeArticleKey, lifeDiscoveryCopy, selectLifeKnowledge } from "@/lib/life-discovery";
 
 type Params = { locale: Locale };
 type Search = { topic?: string; cursor?: string };
@@ -26,7 +27,8 @@ const listFor = (locale: Locale, search: Search) =>
   getGuideList(locale, { kind: "life", topic: search.topic, cursor: search.cursor, sort: "curated" }, 24);
 
 /** The section opens with its news: the latest twenty stories of the news topic by the day
- *  the news happened (`sort=news`), one line each, with the topic hub as "see all". Not by
+ *  the news happened (`sort=news`), with six visible and the rest in native details, plus
+ *  the topic hub as "see all". Not by
  *  publication time -- a batch import publishes a week of stories in the same minute -- and
  *  only dated stories: the topic's evergreen pieces (a sources list, a yearly timeline) are
  *  not news. Only on the plain first page: a `?topic=` or `?cursor=` view is already somewhere
@@ -127,6 +129,10 @@ export default async function LifeHubPage(
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
   };
+  const discovery = lifeDiscoveryCopy(locale);
+  const knowledge = showNews && list.available ? selectLifeKnowledge(list.articles) : [];
+  const knowledgeKeys = new Set(knowledge.map(lifeArticleKey));
+  const otherArticles = list.articles.filter((article) => !knowledgeKeys.has(lifeArticleKey(article)));
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;
 
   return (
@@ -145,14 +151,16 @@ export default async function LifeHubPage(
         <header className="grid gap-5 border-b border-[var(--line)] pb-8 md:grid-cols-[minmax(0,1fr)_22rem] md:items-end">
           <div>
             <h1 className="text-4xl font-bold tracking-tight md:text-5xl">{t("guides.lifeHubTitle")}</h1>
-            <p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("guides.lifeHubIntro")}</p>
+            <p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{showNews ? discovery.intro : t("guides.lifeHubIntro")}</p>
           </div>
           <SearchForm q="" section="life" action={`/${locale}/search/articles`}
             labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }} />
         </header>
 
+        {showNews ? <LifeReadingJumps locale={locale} news={news.length > 0} knowledge={knowledge.length > 0} /> : null}
+
         {news.length ? (
-          <section className="mt-10" aria-labelledby="life-news-heading" data-testid="life-news">
+          <section id="life-news" className="mt-10 scroll-mt-36" aria-labelledby="life-news-heading" data-testid="life-news">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
               <h2 id="life-news-heading" className="text-2xl font-bold tracking-tight">{t("guides.latestNews")}</h2>
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
@@ -167,10 +175,12 @@ export default async function LifeHubPage(
                 ))}
               </div>
             </div>
-            <NewsDesk articles={news} topics={topics.filter((topic) => newsHubs.some((hub) => hub.slug === topic.slug))}
-              topicsLabel={t("guides.browseTopics")} />
+            <LifeNewsPreview articles={news} topics={topics.filter((topic) => newsHubs.some((hub) => hub.slug === topic.slug))}
+              topicsLabel={t("guides.browseTopics")} locale={locale} />
           </section>
         ) : null}
+
+        <LifeKnowledge articles={knowledge} labels={cardLabels} locale={locale} />
 
         <TopicTiles
           section="life"
@@ -179,17 +189,17 @@ export default async function LifeHubPage(
           labels={{ heading: t("guides.browseTopics"), more: t("guides.subtopicsMore") }}
         />
 
-        <section className="mt-10" aria-labelledby="life-listing-heading">
-          <h2 id="life-listing-heading" className="text-2xl font-bold tracking-tight">{t("guides.allArticles")}</h2>
-          {list.articles.length ? (
+        {otherArticles.length || list.next_cursor || !knowledge.length ? <section className="mt-10" aria-labelledby="life-listing-heading">
+          <h2 id="life-listing-heading" className="text-2xl font-bold tracking-tight">{knowledge.length ? discovery.otherArticles : t("guides.allArticles")}</h2>
+          {otherArticles.length ? (
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {list.articles.map((article) => (
+              {otherArticles.map((article) => (
                 <GuideCard key={article.slug} article={article} labels={cardLabels} />
               ))}
             </ul>
-          ) : (
+          ) : !knowledge.length ? (
             <p className="mt-4 leading-7 text-[var(--muted)]">{t("guides.empty")}</p>
-          )}
+          ) : null}
 
           {list.next_cursor ? (
             <p className="mt-8">
@@ -198,7 +208,7 @@ export default async function LifeHubPage(
               </Link>
             </p>
           ) : null}
-        </section>
+        </section> : null}
       </main>
     </>
   );
