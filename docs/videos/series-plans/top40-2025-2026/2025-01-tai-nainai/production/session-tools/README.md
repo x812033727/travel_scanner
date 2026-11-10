@@ -20,8 +20,8 @@
 - 雲端環境「Mokaair」已設好 `RCLONE_CONFIG_VIDEOBACKUP_*`（rclone 直接用 `videobackup:`）；`apt-get install -y rclone` 就能用。
 - **第 1–5 集的製作檔還沒傳上雲端硬碟**（前一個 session 讀不到那組變數）。它們最後一次推到舊的備份分支
   （`drama-backup-tn` 的 `transfer/tn-e00N`、`transfer/tn-shared`），主機正在把那些分支搬到雲端硬碟。
-  第 4、5 集與 shared 的分支是最新的（獨立代理逐檔核對 0 缺 0 錯）；第 1 集也是最新的；
-  **第 2、3 集的分支比最後的本機舊**（第 2 集約 34 個檔：新的 c15 片段、v3 成片與匯入包等）——見交接票。
+  站主同意最後再推一次，第 1–5 集與 shared 的分支都是前一個 session 本機的最終狀態（獨立代理逐檔核對 0 缺 0 錯；第 2、3 集的修正片段在 shared 的 `_scratchpad/fix4/`）。
+  確認主機搬家後這些都在雲端硬碟 `AI劇/恁祖媽今年18/` 底下。
 - `tn-drive.py`：照 `tn-bk.py` 的分集規則用硬連結排出每一集，交給 `todrive.sh` 傳。工作資料夾換了，先設 `TN_WORK`。
 
 ## 工具（從前一個 scratchpad 收進來；路徑改成 `$TN_WORK`，預設 `~/mokaair-work/videos/_tn-work`）

@@ -45,8 +45,9 @@ The session that made 《恁祖媽今年18》 episodes 1–5 ended on 2026-11-10
 - Their production files were never copied to Google Drive (the old session could not read the rclone variables).
   Their latest copies are on the retired backup branches in `drama-backup-tn`; the host is moving those branches to Drive.
   Branches `transfer/tn-e001`, `tn-e004`, `tn-e005`, `tn-shared` match the final local files (independently checked).
-  `transfer/tn-e002` and `transfer/tn-e003` are older than the final local files (e002: about 34 files — the new c15 take,
-  the v3 cut and the import folder; e003 not checked). Whatever the old session decided about those is recorded below.
+  `transfer/tn-e002` and `transfer/tn-e003` were brought up to date in one last push the owner allowed (2026-11-10 07:11 UTC;
+  e002 5884 files, e003 4301 files) and independently checked: 0 missing, 0 mismatched. Every branch of this series is now the final
+  state of the old session's files; the episode 2/3 polish takes in `_scratchpad/fix4/` are on `tn-shared` (checked 04:46 UTC).
 - Episode 6 is storyboarded and reviewed (37 shots) and nothing has been spent; the prepared manifests are in `session-tools/e006/`.
 - Cap from episode 6: 40 CU (owner 2026-11-10).
 
