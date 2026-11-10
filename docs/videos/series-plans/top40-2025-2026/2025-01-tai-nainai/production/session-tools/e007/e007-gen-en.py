@@ -25,17 +25,19 @@ BUDS = "small white wireless earbuds with no logo in her ears"
 PBAG = "a plain white paper bag of schoolbooks with nothing printed on it hugged to her chest in both arms, no school bag"
 LD = ("Director Lin, a thin man of thirty-five in a black baseball cap with no logo, an olive utility jacket over a grey T-shirt, a black camera with no logo on a strap "
       "around his neck")
-STICK = ("a black selfie stick in his right hand with a phone with no logo on its tip, the back of the phone toward the camera and its screen facing him, the screen never seen")
+STICK = ("a black selfie stick in his right hand with a phone on its tip; the phone's plain black back faces the camera, no logo")
 HXY = ("He Xiaoyang, a polished high-school girl with long straight light-brown hair worn loose and no bangs, in a slim-tailored navy school blazer over a white shirt with a navy "
-       "ribbon tie, a navy pleated skirt below the knee, white socks and black school shoes")
+       "necktie, a navy pleated skirt below the knee, white socks and black school shoes")
 HXY_UP = ("He Xiaoyang, a polished high-school girl with long straight light-brown hair worn loose and no bangs, in a slim-tailored navy school blazer over a white shirt "
-          "with a navy ribbon tie")
+          "with a navy necktie")
 SBAG = "Xiaoman's plain navy school bag with nothing written on it, its main zip open"
 BELLS = "the little brass bells on a faded red cord clipped to the zip pull of its front pocket"
-TEA = "a clear plastic cup of pale brown milk tea with a straw, no logo and nothing printed on it"
+TEA = "a clear plastic cup with no lid and one straw, full of pale brown milk tea, no logo and nothing printed on it"
 MF = ("Lin Meifeng with big glossy dark chestnut shoulder-length curls, a pearl necklace, red nails and a fitted wine-red long-sleeved knit dress with a high round neckline")
 MF_FULL = MF + ", black low heels"
-ROBE = "a plain off-white cotton burial robe with a high stand-up collar, fabric frog buttons and long sleeves, no embroidery and nothing written on it"
+ROBE = ("a plain off-white cotton burial robe with a high stand-up collar, no V-neck, a side frog-button fastening, long sleeves, mid-calf length with slits at both "
+        "sides, no embroidery and nothing written on it")
+FOLDED = "the same plain off-white cotton burial robe, high stand-up collar and side frog-button fastening, folded neatly"
 DRIVER = "the bus driver in a plain light-blue work shirt with no lettering, only the back of his head and his shoulder seen, his face never in the frame"
 
 NOSMILE = "no smile, lips together, no teeth showing"
@@ -64,7 +66,7 @@ LANE_WIDE = ("seen from the lane looking north at the street front of the old Sh
 YARD = "The inner stone courtyard of the old Shen house at dusk, just after dark"
 YARD_WIDE = ("seen from the back door of the main hall looking north as in the courtyard picture: a round stone table with a few stone stools in the middle on the sunken "
              "stone floor; an old well with a small wooden roof on the left; bamboo drying poles leaning on the right; covered corridors with dark red pillars on both "
-             "sides, warm yellow lamplight on their walls; at the far end the ancestral hall's lattice doors above stone steps, the faintest dim red candle glow behind them; "
+             "sides, warm yellow lamplight on their walls; at the far end the ancestral hall's dark lattice doors above stone steps; "
              "deep blue sky")
 Y_MF = "behind her only the out-of-focus corridor pillars and warm yellow lamplight"
 Y_YT = "behind her only the out-of-focus door frame and warm yellow light from the hall"
@@ -112,9 +114,9 @@ shot("c03", B1, camera="Medium close-up, slow push in to a medium close-up", cha
     motion="The bus sways; Yuetang sways with it and straightens, her eyes on the back of the bus.")
 shot("c04", B1, camera="Medium shot, locked", characters=["yuetang-18"], no_set=True, action_seconds=3, prompt=(
     f"{BUS}; behind her only the out-of-focus glass of the front door and the morning street. Exactly one person in the whole frame, seen side-on from the waist up: {YT_UP}, "
-    "standing at the front of the bus; in the first frame her bare right hand with no ring has already laid one coin flat on top of a small plain grey box fixed to a yellow "
-    "pole, the face of the box turned away from the camera; her left hand out of the frame. Brows lifted a little, eyes looking down at the coin, lips closed, chin tucked, "
-    f"{NOSMILE}. In the first second she presses the coin once with her right forefinger and waits, tilting her head slightly; nothing happens. Her lips stay closed. "
+    "standing at the front of the bus; in the first frame one coin already lies flat on top of a small plain grey box fixed to a yellow "
+    "pole, the face of the box turned away from the camera, her bare right hand with no ring resting beside the coin; her left hand out of the frame. Brows lifted a little, eyes looking down at the coin, lips closed, chin tucked, "
+    f"{NOSMILE}. In the first second she waits and tilts her head slightly, her hand still; nothing happens. Her lips stay closed. "
     "End: halfway through the head tilt."),
     motion="She lays the coin on the card reader, presses it and waits, puzzled.")
 shot("c05", B1, camera="Medium shot, locked", characters=["yuetang-18"], no_set=True, action_seconds=5, prompt=(
@@ -122,13 +124,13 @@ shot("c05", B1, camera="Medium shot, locked", characters=["yuetang-18"], no_set=
     f"people in the whole frame, one face. In the left foreground, out of focus, {DRIVER}, sitting at the big steering wheel with both hands on it. On screen right, standing "
     f"by a yellow pole at the top of the front-door steps, {YT_UP}, in three-quarter profile toward the driver at screen left. Shen Yuetang: brows raised, eyes fixed on "
     f"the back of his head, lips closed, chin slightly tucked, {NOSMILE}. In the first second the driver lifts his right hand off the wheel and jabs a finger toward screen "
-    "right across the aisle, then slaps the hand back on the wheel; he says something over his shoulder without turning his head, his face never in the frame; she glances "
+    "right across the aisle, then slaps the hand back on the wheel; his head stays facing the windshield, his face never in the frame; she glances "
     "at his pointing finger and back to his head. Her lips stay closed. The camera holds a static shot. End: his hand back on the wheel, her eyes on him."),
     motion="The driver jabs a finger toward the coin box without turning round; she looks from his finger back to him.")
 shot("c06", B1, camera="Low-angle medium close-up, slow push in to a medium close-up", characters=["yuetang-18"], no_set=True, clip_seconds=10,
      addressee="the driver below and beyond the left edge of the frame, well off to the left of the lens", prompt=(
     f"{BUS}; seen from low beside the driver's seat looking up, behind her only the out-of-focus bus ceiling and a row of hanging straps. Exactly one person in the whole "
-    f"frame, a medium close-up from the chest up: {YT_UP}, {RING}, standing at the front, her hands folded at her waist below the bottom edge of the frame; early light "
+    f"frame, a medium close-up from the chest up: {YT_UP}, standing at the front, both hands out of the frame below the bottom edge; early light "
     "slanting from screen right across half her face. Back very straight, chin lifted a little, eyes clear and fixed on the driver far below to the left, brows level, lips "
     f"pressing together between the place names, steady breath, {NOSMILE}; the same face from the first frame to the last. {OPEN.capitalize()}. Shen Yuetang, turned toward "
     "him in three-quarter profile, speaks a short Mandarin line, slowly, her voice falling at the end, her lips, jaw and cheeks moving clearly with every syllable, giving "
@@ -139,13 +141,13 @@ shot("c07", B1, camera="Medium close-up, slow push in", characters=["lindao"], n
     f"{BUS}; behind him only the out-of-focus bus windows and early morning light; the camera in the aisle to his front right. Exactly one person in the whole frame, a "
     f"medium close-up from the chest up: {LD}, standing in the aisle, {STICK}, held out in front of his face at screen left. Brows shot up high, eyes wide and bright on "
     f"the phone, mouth corners stretched up, quick excited breaths. {OPEN_M.capitalize()}. Director Lin, in profile toward the phone, speaks a short Mandarin line, in an "
-    "excited half-whisper, his lips, jaw and cheeks moving clearly with every syllable, and points his left hand toward screen right where she stands out of the frame. "
+    "excited half-whisper, his lips, jaw and cheeks moving clearly with every syllable, and points his left hand toward screen left where she stands out of the frame; the phone's cool light falls faintly on his face. "
     "End: his eyes on the phone, his left hand pointing."),
     motion="The live-streamer whispers excitedly into his phone, pointing at the girl off screen.")
 shot("c08", B1, camera="Over-the-shoulder medium close-up, slow push in", characters=["yuetang-18", "lindao"], ref_characters=["yuetang-18", "lindao"], no_set=True,
-     clip_seconds=8, prompt=(
+     clip_seconds=9, prompt=(
     f"{BUS}; {BUS_FRONT}. Exactly two people in the whole frame. Over Director Lin's left shoulder: {LD_FG}. On screen left, {MCU.format(who='she')}: {YT_UP}, "
-    f"{RING}; early light from screen right on her face. Brows lifted slightly, eyes curious on the phone he holds just beyond the right edge of the frame, lips pressing "
+    f"both hands out of the frame; early light from screen right on her face. Brows lifted slightly, eyes curious on the phone he holds just beyond the right edge of the frame, lips pressing "
     f"together between phrases, chin pushed forward a little, {NOSMILE}. In the first second she leans forward a little; {OPEN}. Shen Yuetang, turned to Director Lin at "
     "screen right in three-quarter profile, speaks a short Mandarin line, earnestly, her lips, jaw and cheeks moving clearly with every syllable. Director Lin's lips stay "
     "closed. End: leaning in, her eyes on the phone."),
@@ -161,14 +163,14 @@ shot("c09", B1, camera="Over-the-shoulder medium close-up, locked", characters=[
 shot("c10", B1, camera="Point-of-view medium shot, locked", characters=["xiaoman"], no_set=True, action_seconds=3, prompt=(
     f"{BUS}; {BUS_BACK}; an out-of-focus yellow pole and blue seat backs in the foreground. Exactly one person in the whole frame: {XM_UP}, {BUDS}, in the first frame still "
     f"sitting in the blue window seat at the back, {PBAG}; the street outside the window slowing down. Brows pressed down, eyes lowered, lips pressed tight, chin tucked, "
-    f"{NOSMILE}. In the first second the bus brakes and she stands up with the bag and turns to walk toward the rear door at screen right, never looking toward the front. "
+    f"{NOSMILE}. In the first second the bus brakes and she stands up with the bag and turns to walk toward the rear door at screen left, never looking toward the front. "
     "Her lips stay closed. The camera holds a static shot. End: halfway through turning to walk."),
     motion="As the bus brakes, Xiaoman gets up with her bag and heads for the rear door.")
 shot("c11", B1, camera="Medium close-up, locked", characters=["yuetang-18"], no_set=True, action_seconds=4, prompt=(
-    f"{BUS}; {BUS_FRONT}. Exactly one person in the whole frame, a medium close-up from the chest up: {YT_UP}, standing by a yellow pole at the front. Eyes following the girl "
-    f"far off to the right of the lens, brows level, lips closed, chin slightly tucked, steady breath, {NOSMILE}; the same face from the first frame to the last. In the "
-    "first second her head turns to screen right after the girl and she takes one slow, steady, weighted step toward screen right. Her lips stay closed. The camera holds a "
-    "static shot. End: halfway through the step."),
+    f"{BUS}; {BUS_FRONT}. Exactly one person in the whole frame, a medium close-up from the chest up: {YT_UP}, standing by a yellow pole at the front. In the first frame her eyes are on the girl "
+    f"far off to the left of the lens, brows level, lips closed, chin slightly tucked, steady breath, {NOSMILE}; the same face from the first frame to the last. In the "
+    "first second her head turns to screen right and she is about to set off: her weight shifts to the right and one foot is just lifting. Her lips stay closed. The camera holds a "
+    "static shot. End: just setting off, weight on the right."),
     motion="Her eyes on the girl, she takes a slow step after her toward the rear door.")
 
 # ---- 第二場：校門口 ----
@@ -190,7 +192,7 @@ shot("c13", B2, camera="Over-the-shoulder medium close-up, slow push in", charac
     motion="Shaking the bag so the bells ring, she tells Xiaoman the bag spent the night with her.")
 shot("c14", B2, camera="Medium close-up, locked", characters=["xiaoman"], no_set=True, action_seconds=3, prompt=(
     f"{SCHOOL}; behind her only the out-of-focus street and cold morning light. Exactly one person in the whole frame, a medium close-up from the chest up: {XM_UP}, the white "
-    "paper bag hugged to her chest at the bottom edge of the frame. Brows pushed up and together, eyes red-rimmed, lips pressed tight and trembling, chin pulled in, tight "
+    "paper bag hugged to her chest at the bottom edge of the frame. Brows pushed up and together, eyes glistening with tears, no redness, no red marks, lips pressed tight and trembling, chin pulled in, tight "
     f"breath, {NOSMILE}; the same face from the first frame to the last. In the first second she hugs the bag harder to her chest and shrinks back half a step, her eyes "
     "fixed on the other girl far off to the right of the lens. Her lips stay closed. The camera holds a static shot. End: shrunk back, hugging the bag."),
     motion="Xiaoman hugs her paper bag and shrinks back, near tears.")
@@ -204,7 +206,7 @@ shot("c15", B2, camera="Medium close-up, slow push in", characters=["hexiaoyang"
     motion="Holding the milk tea over the open bag, she sweetly says the bag deserves a drink too.")
 shot("c16", B2, camera="Medium shot, locked", characters=["hexiaoyang"], no_set=True, action_seconds=3, prompt=(
     f"{SCHOOL}; behind her only the out-of-focus cream school wall. Exactly one person in the whole frame, seen side-on from the waist up in profile facing screen left: "
-    f"{HXY_UP}, her right hand holding the handle of {SBAG}, mouth up; in the first frame the cup in her left hand is already tipped over the opening and pale brown milk "
+    f"{HXY_UP}, her right hand holding the handle of {SBAG}, mouth up; in the first frame the lidless cup in her left hand is already tipped over the opening and pale brown milk "
     "tea is pouring into the bag. Eyes looking down into the bag, one mouth corner curled up, lips closed with no teeth showing, chin raised. In the first second the tea "
     "pours in and the cup runs empty, and she flicks the empty cup down. Her lips stay closed. The camera holds a static shot. End: halfway through the flick."),
     motion="She pours the whole cup of milk tea into the open school bag and flicks the empty cup.")
@@ -228,7 +230,7 @@ shot("c19", B2, camera="Over-the-shoulder medium close-up, slow push in", charac
      clip_seconds=8, prompt=(
     f"{SCHOOL}; behind her only the out-of-focus cream school wall and the iron gate. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: {YT_RFG}. On "
     f"screen right, {MCU.format(who='she')}: {XM_UP}, the white paper bag hugged to her chest, in the first frame already turned round to face Shen Yuetang. Pale and "
-    "frightened from the first frame: brows pushed up and together, eyes wide and wet, lips trembling, chin pulled in, no smile, no teeth showing; the same frightened face "
+    "frightened from the first frame: brows pushed up and together, eyes wide and glistening with tears, no redness, no red marks, lips trembling, chin pulled in, no smile, no teeth showing; the same frightened face "
     "to the last frame. In the first second she backs off half a step; her lips are closed until she starts, and she starts within the first second. Shen Xiaoman, turned "
     "to Shen Yuetang at screen left in three-quarter profile, speaks a short Mandarin line, low and shaking, her lips, jaw and cheeks moving clearly with every syllable. "
     "Shen Yuetang's lips stay closed. End: her frightened eyes on Shen Yuetang."),
@@ -248,16 +250,16 @@ shot("c21", B2, camera="Medium shot, slow push in", characters=["yuetang-18"], n
 shot("c22", B2, camera="Over-the-shoulder medium close-up, locked", characters=["hexiaoyang", "yuetang-18"], ref_characters=["hexiaoyang", "yuetang-18"], no_set=True,
      clip_seconds=8, prompt=(
     f"{SCHOOL}; behind her only the out-of-focus cream school wall and the guard booth. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: {YT_RFG}. "
-    f"On screen right, {MCU.format(who='she')}: {HXY_UP}, the empty clear plastic cup in her left hand at the bottom edge of the frame. One brow raised, eyes running down "
+    f"On screen right, {MCU.format(who='she')}: {HXY_UP}, the empty lidless clear plastic cup with its straw in her left hand at the bottom edge of the frame. One brow raised, eyes running down "
     "Shen Yuetang's clothes from head to foot, mouth corners pulled down, chin raised, no smile, no teeth showing. In the first second her eyes look Shen Yuetang up and "
     "down; her lips are closed until she starts, and she starts within the first second. He Xiaoyang, turned to Shen Yuetang at screen left in three-quarter profile, speaks "
     "a short Mandarin line, with contempt, her lips, jaw and cheeks moving clearly with every syllable. Shen Yuetang's lips stay closed. The camera holds a static shot. "
     "End: her eyes on Shen Yuetang."),
     motion="Looking her up and down, the girl asks what she is to Xiaoman's family, dressed like that.")
 shot("c23", B2, camera="Over-the-shoulder medium close-up, slow push in", characters=["yuetang-18", "hexiaoyang"], ref_characters=["yuetang-18", "hexiaoyang"], no_set=True,
-     clip_seconds=8, prompt=(
-    f"{SCHOOL}; {STREET}. Exactly two people in the whole frame. Over He Xiaoyang's left shoulder: {HXY_FG}. On screen left, {MCU.format(who='she')}: {YT_UP}, {RING}, the "
-    "wet school bag in her left hand below the bottom edge of the frame. Back very straight, eyes on the girl's eyes and then dropping once to the empty cup in her hand, "
+     clip_seconds=9, prompt=(
+    f"{SCHOOL}; {STREET}. Exactly two people in the whole frame. Over He Xiaoyang's left shoulder: {HXY_FG}. On screen left, {MCU.format(who='she')}: {YT_UP}, both "
+    "hands below the bottom edge of the frame, the wet school bag in her left hand. Back very straight, eyes on the girl's eyes and then dropping once to the empty cup in her hand, "
     f"brows level, lips pressing together between the two sentences, chin lifted slightly, steady breath, {NOSMILE}; the same face from the first frame to the last. "
     f"{OPEN.capitalize()}. Shen Yuetang, turned to He Xiaoyang at screen right in three-quarter profile, speaks a short Mandarin line, low and slow, word by word, her lips, "
     "jaw and cheeks moving clearly with every syllable. He Xiaoyang's lips stay closed. End: her eyes on the girl."),
@@ -267,20 +269,20 @@ shot("c23", B2, camera="Over-the-shoulder medium close-up, slow push in", charac
 shot("c24", B3L, camera="Wide shot, slow push in", characters=["yuetang-18"], action_seconds=4, prompt=(
     f"{LANE}, {LANE_WIDE}. Exactly one person in the whole frame: {YT}, the navy school bag hanging from her left hand with a dried dark milk-tea stain on it, her right hand "
     "empty, dust on her black cloth shoes. Eyelids a little heavy, brows level, lips closed, breathing a little hard but back straight, no smile, no teeth showing. In the "
-    "first frame the lane is empty; from the first second she walks in from the right edge of the frame, slow but upright, to the black-lacquered gate and stops, lifting "
+    "first frame she is already in the lane on screen right, walking upright toward the black-lacquered gate; from the first second she walks slowly up to it and stops, lifting "
     "her eyes to it. Her lips stay closed. End: halfway through looking up at the gate."),
-    motion="Tired but upright, she walks into the lane from the right and stops at the black gate.")
+    motion="Tired but upright, she walks up the lane to the black gate and stops.")
 shot("c25", B3, camera="Wide shot, slow push in", characters=["meifeng", "yuetang-18"], action_seconds=3, prompt=(
     f"{YARD}, {YARD_WIDE}. Exactly two people in the whole frame, one face. In the right foreground, seen only from behind, {YT}, the navy school bag hanging from her left "
-    f"hand, her face unseen. In the middle, standing by the round stone table, {MF_FULL}, holding a neatly folded plain off-white cotton garment in both hands. Lin Meifeng: "
+    f"hand, her face unseen. In the middle, standing by the round stone table, {MF_FULL}, holding {FOLDED} in both hands. Lin Meifeng: "
     "one brow arched, eyes lifting to fix on the woman in the doorway, red lips curled up at one corner with no teeth showing, chin raised. In the first frame Shen Yuetang "
     "has just stopped in the doorway; in the first second Lin Meifeng looks up at her and lifts the folded white garment to her chest. Everyone's lips stay closed. "
     "End: the garment held up at her chest."),
     motion="Lin Meifeng looks up from the stone table and lifts the folded white garment as Yuetang comes in.")
 shot("c26", B3, camera="Over-the-shoulder medium close-up, locked", characters=["meifeng", "yuetang-18"], ref_characters=["meifeng", "yuetang-18"], no_set=True,
      clip_seconds=8, prompt=(
-    f"{YARD}; {Y_MF}. Exactly two people in the whole frame. Over Shen Yuetang's left shoulder: {YT_LFG}. On screen left, {MCU.format(who='she')}: {MF}, holding a neatly "
-    "folded plain off-white cotton garment at her chest in both hands. Mouth corners pulled up into a fake smile with no teeth showing, eyes not smiling and coldly fixed on "
+    f"{YARD}; {Y_MF}. Exactly two people in the whole frame. Over Shen Yuetang's left shoulder: {YT_LFG}. On screen left, {MCU.format(who='she')}: {MF}, holding "
+    f"{FOLDED} at her chest in both hands. Mouth corners pulled up into a fake smile with no teeth showing, eyes not smiling and coldly fixed on "
     "Shen Yuetang, brows arched high, chin raised. Her lips are closed until she starts, and she starts within the first second. Lin Meifeng, turned to Shen Yuetang at "
     "screen right in three-quarter profile, speaks a short Mandarin line, drawling the end, her lips, jaw and cheeks moving clearly with every syllable. Shen Yuetang's lips "
     "stay closed. The camera holds a static shot. End: the fake smile, her eyes on Shen Yuetang."),
@@ -302,12 +304,12 @@ shot("c28", B3, camera="Low-angle medium close-up, locked", characters=["yuetang
 shot("c29", B3, camera="Over-the-shoulder medium shot, slow push in from a medium shot to a medium close-up", characters=["meifeng", "yuetang-18"],
      ref_characters=["meifeng", "yuetang-18"], no_set=True, clip_seconds=8, prompt=(
     f"{YARD}; behind her only the out-of-focus round stone table and corridor pillars; warm yellow corridor light. Exactly two people in the whole frame. Over Shen Yuetang's "
-    f"left shoulder: {YT_LFG}, the navy school bag hanging from her left hand soft at the right frame edge. On screen left: {MF}, gripping {ROBE} by its shoulders, shaken "
-    "open. Brows shot up, eyes glaring at Shen Yuetang, mouth corners pulled down as she talks, chin thrust forward, no smile. In the first second she takes one step "
-    "forward and shakes the robe at her; her lips are closed until she starts, and she starts within the first second. Lin Meifeng, turned to Shen Yuetang at screen right "
+    f"left shoulder: {YT_LFG}. On screen left: {MF}, in the first frame already standing still by the round stone table, gripping {ROBE} by "
+    "its shoulders, shaken open and held out toward Shen Yuetang. Brows shot up, eyes glaring at Shen Yuetang, mouth corners pulled down as she talks, chin thrust forward, no smile. In the first second she gives the robe "
+    "one shake at her, without stepping; her lips are closed until she starts, and she starts within the first second. Lin Meifeng, turned to Shen Yuetang at screen right "
     "in three-quarter profile, speaks a short Mandarin line, her voice rising high, her lips, jaw and cheeks moving clearly with every syllable. Shen Yuetang in the "
     "foreground does not move; her lips stay closed. End: the robe held out at her, her eyes on Shen Yuetang."),
-    motion="Stepping forward and shaking the robe at her, Lin Meifeng demands where she got the old lady's burial robe.")
+    motion="Shaking the robe at her, Lin Meifeng demands where she got the old lady's burial robe.")
 
 ORDER = ["camera", "characters", "looks", "ref_characters", "set", "set_variant", "no_set", "lamp", "lamp_in_frame", "lamp_quiet", "no_face",
          "action_seconds", "clip_seconds", "addressee", "prompt", "motion"]
