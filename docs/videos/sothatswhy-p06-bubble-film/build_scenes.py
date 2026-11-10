@@ -233,7 +233,7 @@ kid("kid-colour-q", K("holding the small clear bottle of bubble liquid up to the
 
 # ---------- 第三章：沒有顏料的顏色 ----------
 chief("chief-clear", C("pouring a little clear liquid from a small bottle into her cupped palm, a curious smile"),
-      c("好問題。你這瓶泡泡水，倒在手上是什麼顏色？", "接住上一句"), chapter="沒有顏料的顏色")
+      c("好問題。你這瓶泡泡水，倒在手上是什麼顏色？", "接住上一句"), chapter="透明的泡泡水，變出了顏色")
 kid("kid-clear", K("holding out her cupped palm with a little clear liquid in it and a surprised face", close=True, where=HOME),
     k("透明的，", "看了看"), k("像水一樣！"))
 kid("kid-tension-guess", K("snapping her fingers with a confident know-it-all grin", where=BALCONY),
@@ -279,7 +279,7 @@ kid("kid-proof-q", K("putting both hands on her hips with a doubtful challenging
 
 # ---------- 第四章：顏色跟著時間，還是跟著你的眼睛 ----------
 chief("chief-watch", C("holding up a silver wire square bubble wand with a bubble hanging on it, an inviting smile"),
-      c("拿你那一瓶來試。把泡泡吹在框上，先別讓它飛走，", "接住上一句"), c("頭不要動，盯著它看。", "轉向觀眾"), chapter="顏色跟著時間，還是跟著眼睛")
+      c("拿你那一瓶來試。把泡泡吹在框上，先別讓它飛走，", "接住上一句"), c("頭不要動，盯著它看。", "轉向觀眾"), chapter="歪一下頭，顏色也跟著變")
 kid("kid-stripes", K("holding a silver wire square bubble wand with a big bubble hanging on it and staring at it with wide eyes", where=BALCONY),
     k("顏色變成一條一條的，", "驚訝"), k("橫橫的！"))
 bub("bubble-stripes", "Close-up of a big round soap bubble hanging from a square silver wire loop, its surface covered in neat horizontal bands of colour: pale gold at the top, then magenta, blue and green towards the bottom, sunny balcony background",
@@ -287,7 +287,7 @@ bub("bubble-stripes", "Close-up of a big round soap bubble hanging from a square
 kid("kid-moving", K("leaning close to a bubble hanging on her square wire wand with a fascinated face", where=BALCONY),
     k("而且它們一直往下跑！", "發現"))
 chief("chief-time", C("sliding one flat hand slowly downward through the air, a pleased smile", close=True),
-      c("時間一過，皮一直變薄，顏色就一條一條往下換。"), c("這是第一個檢驗：厚薄變，顏色就變。", None, "P:test"))
+      c("時間一過，皮一直變薄，顏色就一條一條往下換。"), c("猜法過關了：厚薄變，顏色就變。", None, "P:test"))
 kid("kid-swirl-q", K("drawing small swirls in the air with one finger and a curious face", where=BALCONY),
     k("那一開始，", "想起來"), k("顏色為什麼會打轉？", "句尾上揚"))
 bub("swirl-flow", "Close-up of a big round soap bubble on a square silver wire loop, soft breeze lines beside it, its pink, green, blue and gold colours swirling across the surface like marbled paint, sunny balcony background",
@@ -321,7 +321,7 @@ chief("chief-slant", C("drawing a slanted line in the air with one fingertip, a 
 kid("kid-again-path", K("pointing up with one finger and a bright realising grin", where=BALCONY),
     k("又是多走的路！", "恍然"))
 chief("chief-second-test", C("holding up two fingers with a warm pleased smile", close=True),
-      c("對，這是第二個檢驗。我原本只猜到厚薄，"), c("你的歪頭，幫我們多找到一個：方向。"))
+      c("對，這下又多了一條線索。我原本只猜到厚薄，"), c("你的歪頭，幫我們多找到一個：方向。"))
 kid("kid-tell-q", K("looking back and forth between two bubbles with a puzzled frown", where=BALCONY),
     k("那我怎麼分得出來，", "追問"), k("是哪一種在變？", "句尾上揚", "S:tell"))
 chief("chief-tell", C("holding her head very still and pointing at her own eye with a playful smile", close=True),
@@ -341,9 +341,9 @@ kid("kid-two-q", K("holding the square wire wand in one hand and the small clear
 
 # ---------- 收尾 ----------
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the viewer"),
-      c("你說呢？小問，你來說說看。", "笑"), chapter="小問說出了答案")
+      c("是同一層皮，做了兩件事。你來說說看？", "笑"), chapter="小問說出了答案")
 kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her", where=BALCONY),
-    k("我懂了！", "恍然大悟", "P:two"), k("方框管不住它，", "篤定"), k("因為皮自己會縮圓！", "篤定"), k("頭頂變黑，", "篤定"), k("是皮快薄到底了！", "篤定", "P:main"))
+    k("我懂了！", "恍然大悟", "P:two"), k("我那顆泡泡，", "篤定"), k("先被皮拉成圓的，", "篤定"), k("再一邊變薄，", "篤定"), k("一邊換顏色！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好，是你自己連起來的。", "笑"), c("我覺得最好玩的是：你看到的顏色，"))
 bub("bubble-thinning", "Close-up of a round soap bubble on a square silver wire loop shimmering with soft bands of gold, magenta and blue, a small dark grey cap just starting at its very top, sunny balcony background",
