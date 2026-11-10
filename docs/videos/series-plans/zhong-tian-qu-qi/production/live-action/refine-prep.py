@@ -33,6 +33,9 @@ for tsv in sys.argv[2:]:
             picks[shot] = {"seed": int(choice), "trim": {k: float(v) for k, v in trim.items()}, **({"crop": crop.group(1)} if crop else {})}
         elif choice == "RETAKE":
             picks.pop(shot, None)
+        elif not choice.startswith("KEEP"):
+            # e903 fix2: "9031302 start@2.4" in the choice column was skipped silently and the shot never refined
+            sys.exit(f"{tsv}: {shot}: choice {choice!r} is not a seed, KEEP or RETAKE (trims go in the reason column)")
 for shot, p in picks.items():
     src = next((f for f in sorted(glob.glob(str(LIVE / "*" / "out" / f"{shot}-{p['seed']}.mp4")))), None)
     if not src:
