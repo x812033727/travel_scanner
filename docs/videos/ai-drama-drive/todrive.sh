@@ -18,8 +18,9 @@
 # --check copies nothing: the coverage check, run by an agent that did not make the episode, over
 # the same SRC_DIR and DEST. Every file of SRC_DIR has to be in DEST with the same hash.
 #
-# The rclone config comes from TODRIVE_RCLONE_CONFIG (or rclone's own default). It is a token the
-# owner made for backups; it never goes into the repository or a chat.
+# The remote comes from rclone's environment: a cloud session has RCLONE_CONFIG_VIDEOBACKUP_* set by
+# the owner (docs/videos/AI-DRAMA-DRIVE.md §session 用的權杖). TODRIVE_RCLONE_CONFIG may name a config
+# file instead. The token never goes into the repository or a chat.
 set -euo pipefail
 CHECK_ONLY=0
 if [ "${1:-}" = "--check" ]; then CHECK_ONLY=1; shift; fi

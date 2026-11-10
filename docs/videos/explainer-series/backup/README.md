@@ -1,5 +1,7 @@
 # 備份工具
 
+> **2026-11-10 起停用。** 站主：備份不再推分支，製作的所有檔案由做片的 session 用 [`todrive.sh`](../../ai-drama-drive/todrive.sh) 直接傳到雲端硬碟 `AI劇/<名稱>/<集數>/製作檔/`，規則在 [`AI-DRAMA-DRIVE.md`](../../AI-DRAMA-DRIVE.md)。`tobranch.sh` 會拒絕執行。下面是舊規則，留作紀錄；「要備份什麼」的清單仍然適用，目的地改成雲端硬碟。
+
 規則在 [`../BACKUP-BRANCHES.md`](../BACKUP-BRANCHES.md)。兩支腳本都只用 git 的物件與索引，不動工作樹。它們推到、讀自
 **執行時所在 checkout 的 `origin`**，所以要在該系列備份 repo 的 clone 裡執行（奇聞是 `x812033727/mokaair-video-backup`，
 各系列見 BACKUP-BRANCHES.md〈備份推到哪個 repo〉），腳本本身從 `travel_scanner` 的 checkout 叫：

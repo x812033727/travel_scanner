@@ -19,6 +19,14 @@ scope:
   - docs/videos/BACKUP.md
   - docs/videos/AI-DRAMA-DRIVE.md
   - docs/videos/ai-drama-drive
+  - AGENTS.md
+  - .agents/skills/curio-episode/SKILL.md
+  - .claude/skills/curio-episode/SKILL.md
+  - .agents/skills/minimax-h3-runpod/references/route-a.md
+  - docs/videos/explainer-series
+  - docs/videos/so-thats-why/dialogue-pilot-20261103
+  - docs/videos/series-plans/zhong-tian-qu-qi/production/README.md
+  - docs/videos/zhong-tian-qu-qi-e001-r2/brief.md
 ---
 
 # AI 劇雲端硬碟備份改成 AI劇/<名稱>/<集數>/，製作檔由 session 直接傳
@@ -50,7 +58,8 @@ scope:
 - [x] `target.py`、`admin_status.py`：新的排法與版本判斷；測試。
 - [x] `backup.mjs`：合併搬移（`lsf` → 空的用 `moveto`，有檔用 `move --backup-dir _舊版/<時間>-搬移`）；測試。
 - [x] compose：`VIDEO_BRANCH_MIRROR: "off"`。
-- [ ] 文件與 `todrive.sh`。
+- [x] 文件與 `todrive.sh`。
+- [x] 叫所有製作影片的 session 不要再推分支：AGENTS.md、curio-episode、route-a、舊規則文件加停用標記，`tobranch.sh`／`coverage.sh` 改成拒絕。
 - [ ] PR、站主合併與部署。
 - [ ] 一次性搬家（主機跑，`gh` 讀私人 repo、主機的 rclone 寫雲端硬碟）。
 - [ ] 核對、刪分支。
@@ -69,6 +78,8 @@ node --test tools/video/automation/backup.test.mjs
 - 對照表（132 條分支、約 158 GB）站主 2026-11-10 確認：一條多集的依路徑拆到各集、看不出集數的放 `_共用/`；
   整個 repo 副本的五條只取比 main 多的檔；`tn-series-assets` 裡的種田音效庫照搬；奇聞只用代碼不加標題。
 - `zt-e9NN-media*`、`zt-e001-r2-media`、`zt-cg-e001`～`e006` 是 r2 slug 先做的 3D 重做（路徑都在 `runpod/`），歸 3D 版。
-- session 寫雲端硬碟：Colab 用 `drive.mount()`；Claude Code session 用另建的備份權杖（環境變數，不進 repo）。
-  主機那把權杖是整個雲端硬碟的完整權限，`root_folder_id` 不是權限邊界，不發給 session。
+- session 寫雲端硬碟：Colab 用 `drive.mount()`；Claude Code session 用主機那把 `videobackup`（站主 2026-11-10「用同一把就好」，放雲端環境變數，不進 repo）。
+  那把是整個雲端硬碟的完整權限，外洩時撤銷會連主機一起停，站主接受。
 - 搬移與同一輪的複製都會用 `_舊版/<時間>/`；搬移改用 `_舊版/<時間>-搬移/`，否則複製會蓋掉搬移移進去的檔（測試抓到的）。
+- 搬家（2026-11-10 01:35 UTC 起，主機 `/root/drive-migration/`）：前 45 條約每小時 4 GB，小檔多的分支被 `--tpslimit 5` 卡住；
+  03:07 起主機那份改成 `--tpslimit 10 --transfers 8 --checkers 16` 重跑（帳本跳過已完成的）。repo 的 `migrate.py` 仍是保守值。

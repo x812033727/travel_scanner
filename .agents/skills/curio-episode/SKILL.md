@@ -285,8 +285,9 @@ W03（Garmin）重畫十二輪分鏡、花了約 US$28 才過，量到的做法�
 
 ## 交接
 
-備份分支（`transfer/<slug>`）、刪工作資料夾的條件與跟原來如此事務所統一的規則在
-`docs/videos/explainer-series/`（README.md、BACKUP-BRANCHES.md），兩邊衝突時以那裡為準。
+備份（2026-11-10 起）：整個工作資料夾用 `docs/videos/ai-drama-drive/todrive.sh` 傳到雲端硬碟
+`AI劇/奇聞檔案局/<代碼>/製作檔/`，規則在 `docs/videos/AI-DRAMA-DRIVE.md`；**不要再推 `transfer/*` 分支**
+（`tobranch.sh` 會拒絕）。跟原來如此事務所統一的其他規則仍在 `docs/videos/explainer-series/README.md`。
 
 做到一半要停，把狀態寫進看板的票：哪幾景的插圖過了、哪幾景卡在哪一題、花了多少、下一步。不要只寫
 在對話或 PR 描述裡；下一個接手的模型（Claude 或 Codex）讀的是票和這份 skill。
