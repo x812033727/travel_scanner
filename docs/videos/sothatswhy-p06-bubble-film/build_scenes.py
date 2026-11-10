@@ -135,13 +135,13 @@ chief("chief-tease", C("holding up one finger with a mysterious playful smile", 
 bub("dark-top-tease", "Close-up of a round soap bubble resting on a square silver wire loop, its lower half shimmering in pink, green and gold bands and its very top a small smooth dark grey patch, sunny balcony background",
     c("頂上變黑也不是隨便黑的，它在跟你說一件事。", "賣關子", "S:dark"))
 chief("chief-promise", C("holding up a silver wire bubble wand with a square loop beside her face with a warm inviting smile"),
-      c("你每次吹泡泡，這些事都在你眼前發生，", "轉向觀眾"), c("答案就藏在泡泡外面那一層薄薄的皮裡。"))
+      c("你每次吹泡泡，這些事都在你眼前發生，", "轉向觀眾"), c("今天就用你這支方框跟這瓶，把它們全部找出來。"))
 kid("kid-main-q", K("holding the square wire bubble wand in both hands and staring at it with a puzzled face", where=BALCONY),
-    k("一層皮，", "想不通"), k("怎麼管形狀又管顏色？", "句尾上揚", "S:main"))
+    k("全部？", "想不通"), k("一支方框就夠？", "句尾上揚", "S:main"))
 
 # ---------- 第一章：一直想縮小的那層皮 ----------
 chief("chief-start", C("tapping the square loop of a silver wire bubble wand with one finger, a curious smile", close=True),
-      c("管形狀的那一半，藏在你吹泡泡的第一步。你是怎麼吹的？", "接住上一句"), chapter="一直想縮小的那層皮")
+      c("夠。就從你吹泡泡的第一步看。你是怎麼吹的？", "接住上一句"), chapter="一直想縮小的那層皮")
 kid("kid-dip", K("dipping a silver wire square bubble wand into a small clear bottle with a concentrating face", where=BALCONY),
     k("沾一下泡泡水，", "示範"), k("框裡就有一片薄薄的皮！"))
 bub("film-in-wand", "Close-up of " + WAND + " held level in the sunny air, a flat shiny transparent soap film stretched across the square loop like a tiny window, a faint rainbow sheen on it",
@@ -301,7 +301,7 @@ chief("chief-no-light", C("cupping both empty hands open towards the viewer with
 kid("kid-black-pop", K("covering her mouth with both hands and wide worried eyes", where=BALCONY),
     k("所以變黑，", "緊張"), k("就是快破了？", "句尾上揚"))
 chief("chief-black", C("holding her thumb and finger almost touching with a serious kind smile", close=True),
-      c("它在說：我已經薄到快撐不住了。", None, "P:dark"), c("有一間科學博物館說，這時候頂上的皮，"))
+      c("它在說：我已經薄到快撐不住了。", None, "P:dark"), c("美國舊金山一間科學博物館說，這時候頂上的皮，"))
 chief("chief-thin", C("squinting closely at the tiny gap between her thumb and finger with a playful amazed face", close=True),
       c("大約只有一毫米的四萬分之一。"), c("不過不是一黑就馬上破，常常還會撐一下下。"))
 kid("kid-quick", K("leaning in close with wide eager eyes and both fists under her chin", where=BALCONY),
@@ -339,13 +339,13 @@ kid("kid-two-q", K("holding the square wire wand in one hand and the small clear
 
 # ---------- 收尾 ----------
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the viewer"),
-      c("是同一層皮，做了兩件事。你來說說看？", "笑"), chapter="小問說出了答案")
+      c("是同一層皮，做了兩件事。你來說說看？", "笑"), chapter="同一層皮，做了兩件事")
 kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her", where=BALCONY),
     k("我懂了！", "恍然大悟", "P:two"), k("我那天看到的，", "篤定"), k("從方框到頭頂變黑，", "篤定"), k("全是同一層皮！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好，是你自己連起來的。", "笑"))
 bub("bubble-thinning", "Close-up of a round soap bubble on a square silver wire loop shimmering with soft bands of gold, magenta and blue, a small dark grey cap just starting at its very top, sunny balcony background",
-    c("我覺得最好玩的是：每顆泡泡，都像一個會變色的小時鐘。"))
+    c("我覺得最好玩的是：你天天吹的泡泡，藏了這麼多事。"))
 kid("kid-blow-again", K("dipping the square wire wand into her small clear bottle with an excited grin", where=BALCONY),
     k("我要再吹一顆！", "興奮"))
 chief("chief-observe", C("nodding with an encouraging smile, one finger raised", close=True),
@@ -359,7 +359,7 @@ chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a war
       c("想一起找生活裡的為什麼，就訂閱原來如此事務所。", "誠懇"))
 
 # ---------- assemble ----------
-WHAT = {"main": "一層皮，怎麼管形狀又管顏色", "square": "框是方的，泡泡為什麼是圓的",
+WHAT = {"main": "方框吹出圓泡泡、顏色轉、頭頂變黑，一支方框就找得出原因嗎", "square": "框是方的，泡泡為什麼是圓的",
         "paint": "泡泡水沒有顏色，泡泡為什麼有顏色", "push": "兩顆泡泡黏在一起，中間的牆往哪邊彎",
         "dark": "泡泡頂上變黑，是在說什麼", "guess": "這層皮是不是一直想把自己縮小",
         "shrink": "泡泡吹到一半停下來，會怎樣", "box": "包成方盒子不行嗎",
