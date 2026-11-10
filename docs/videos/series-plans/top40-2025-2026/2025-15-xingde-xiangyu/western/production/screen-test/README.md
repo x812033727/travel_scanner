@@ -67,3 +67,19 @@ bash $K/h3.sh stop --session ttv-st1 && bash $K/bootstrap.sh patch && bash $K/h3
 ```
 
 `runs/` 是這次送出的 manifest、進度檔與正文（`<W>` 是工作資料夾）；圖與片段不進 repo（repo 容量接近上限）。
+
+## 直式小樣（2026-11-10，站主點頭，上限 6 CU）
+
+第 1 集 c06–c08（`vpilot.py`），全程直式三段式：Ref2VA hero 544×960 → σ0.5 補細節 736×1312 → SeedVR2 7B 到 1080×1920（PR #2067 修好的放大筆記本）。
+場景圖先畫直式臥室 1088×1920 兩張，選 a（玻璃牆在右、床頭櫃在床與玻璃之間、陰天灰海）。參考圖：`assets/refs/nora-portrait.jpg` ＋直式臥室。
+
+| 鏡 | 草稿第一次 | 改寫後重跑 | 成片 |
+| --- | --- | --- | --- |
+| c06 咬藥、說 "My pill tastes sweet today." | 先喝水才咬，杯裡的水變褐色 | 寫「不喝水、杯子留在腿上、水保持清澈」後正確：咬、停、皺眉、說話 | 可用 |
+| c07 吐半顆藥在面紙 | 可用 | — | 可用；藥片被畫成小花形、中間帶黃，正式拍要寫「plain white, no markings, no colour」 |
+| c08 對著光看半顆藥 | 「half white tablet」被畫成**平板電腦** | 改寫「a tiny half of a white pill, smaller than a fingernail (a medicine pill, not a device)」後正確 | 可用；尾端有一點笑，正式拍再加強「not smiling」 |
+
+- **直式構圖成立**：臉、懷孕的身形、玻璃屋與陰天在 9:16 裡都守住；三支成片都是 1080×1920、124 格（5.17 秒）。
+- **教訓**：`tablet` 這個字會被讀成平板，藥一律寫 pill 並寫大小；「不喝水」要寫成水杯在哪、水是什麼顏色。
+- **時間**（G4）：出圖 session 約 12 分鐘；片段 session 約 28 分鐘（草稿 3 支＋重跑 2 支、補細節 3 支、SeedVR2 每支 123–236 秒）。
+- **點數**：帳號 b 餘額 2,271.34 → 2,263.56（−7.8），其中有一段同帳號另一個 runtime 也在跑（16:34 時 `active_assignments` 2）；這次小樣本身約 5–6 CU，在 6 CU 上限內。
