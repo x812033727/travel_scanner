@@ -53,3 +53,11 @@ CG 的重抽佇列（`scratchpad/chainR`–`chainU`）已經停掉，pod 也停�
 - CG 版最後的狀態都已備份：`transfer/zt-e90N-media-20261107`（第 1–6 集）、`transfer/zt-series-media-20261107`、`transfer/zt-import-dubs-review-20261107`，全部 verify-bk 都是 missing=0、differ=0。
   後來又補了 `…-20261107b`，內容是第 1 集 fix3 的部分草稿與今天畫的定妝照。
 - 改定妝照的教訓（畫風要寫系列自己的；舊提示詞照抄會把 CG 畫成真人）已經寫進 storyboard-shot-spec 與 route-a。
+
+## 交接（2026-11-10 06:55 UTC，舊 session 結束前）
+
+- **備份規則已改**（站主 2026-11-10，PR #2059）：不再推任何備份分支；製作檔用 `docs/videos/ai-drama-drive/todrive.sh` 傳到 `videobackup:AI劇/種田娶妻打天下（真人版）/第00N集/製作檔/<工作資料夾名>/`，要 0 differences。環境 Mokaair 已有 `RCLONE_CONFIG_VIDEOBACKUP_*` 與裝 rclone 的 setup script。
+- **第 4 集**（`zhong-tian-qu-qi-e004-r2`）：成片 223.6 秒已做完、兩輪獨立審片修好（`colab/runs/e904-live/cut-review.md`、`cut-review-2.md`），預覽給站主看過，站主說「繼續」。**還沒送上後台**（import 被自動權限擋下，要站主明說「第 4 集送上後台」）；**製作檔沒有任何備份**（舊 session 讀不到 videobackup）。剪接表 `hailuo/edit-dh-e904-live.json`、挑片 `colab/runs/e904-live/*` 都在 repo；本機的片段、精修、成片在舊 session 的機器上，新 session 拿不到，要重做就照 repo 的挑片與剪接表重新拍、重精修（約 US$10）。
+- **第 5 集**（`zhong-tian-qu-qi-e005-r2`）：拍攝稿已照第 4 集教訓改好（commit c46132110），`colab/runs/e905-live/spec.json` 在 repo；草稿 78 支拍到約 44 支，本機檔案也在舊機器上。新 session 照 chain905live 的步驟（r2 → st1-ep.sh 905 DRY → pilot.py → retake.py → colab-jobs.json 加 output_path）重建清單後再拍。
+- **教訓**全在 `.agents/skills/minimax-h3-runpod/references/route-a.md` 最後幾十條（也同步到 PR #2047）。
+- Colab：自己的 session 名 `zt-live`；另一個對話在用 Colab 拍祖媽，不要動它。
