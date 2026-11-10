@@ -124,6 +124,9 @@ for (const scene of video.scenes) {
   // after the action, but who does speak on screen (e001 live fix1 s12, s14) -- their lines take the clip's voice.
   const onscreen = (l) => l.speaker !== "xitong" && (scene.data?.characters ?? []).includes(l.speaker)
     && (!(scene.data?.nospeak ?? []).includes(l.speaker) || (edit.voice_on ?? []).includes(scene.id))
+    // `voice_off: ["s27"]`: shots whose clip voice is not the character's (e904 live review 2: Erniu's s27 take spoke at
+    // about 314 Hz, twice his usual pitch) -- the recorded line is laid instead and the clip's own audio is muted
+    && !(edit.voice_off ?? []).includes(scene.id)
     && !/嘴閉著|內心獨白|畫外/.test(l.emotion ?? "");
   const useClip = Boolean(edit.clip_voice && clip);
   const voiced = useClip && lines.some(onscreen) && hasAudio(clip);  // otherwise the clip's own (invented) speech is muted
