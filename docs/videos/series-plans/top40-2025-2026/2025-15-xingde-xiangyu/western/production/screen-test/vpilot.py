@@ -41,15 +41,15 @@ NORA = ("Nora: a 31-year-old white Irish-American woman, slender, fair skin with
 
 SHOTS = [
     {"id": "e001-c06", "composition": "Vertical 9:16 frame. In the bedroom shown in <Picture 2>: a medium close-up of Nora sitting up against the white wall at the head of the bed, "
-     "from her waist to a hand's width above her head, the rain-dotted glass wall on screen right; she holds a glass of water in her left hand. She is the only person in the frame.",
-     "action": "She puts a small white tablet in her mouth and bites down without drinking; halfway through the bite she stops, her brows draw together, and she looks down at the glass. "
+     "from her waist to a hand's width above her head, the rain-dotted glass wall on screen right; she holds a glass of clear water in her left hand, resting at her lap. She is the only person in the frame.",
+     "action": "She puts one tiny round white pill in her mouth and bites down on it; she does NOT drink, the glass stays in her left hand at her lap and the water in it stays clear and colourless. Halfway through the bite she stops, her brows draw together, and she looks down at the glass. "
      "Nora speaks an English line, \"My pill tastes sweet today.\", low and puzzled, her lips moving clearly with each word. The camera pushes in with small amplitude at slow speed, from her waist to her chest."},
     {"id": "e001-c07", "composition": "Vertical 9:16 frame. An extreme close-up insert in the same bedroom: Nora's right palm, in a cream knit cuff, holds an open white tissue; only the lower edge of her chin and mouth "
      "at the top of the frame, her face not in frame. The first frame is the open tissue.",
-     "action": "Her mouth comes down to the tissue and gently lets the remaining half tablet drop onto its centre; the half white tablet lands with its bitten edge up. She does not speak. The camera holds a static shot."},
+     "action": "Her mouth comes down to the tissue and gently lets the remaining half of the tiny white pill drop onto its centre; the half pill, smaller than a fingernail, lands with its bitten edge up. She does not speak. The camera holds a static shot."},
     {"id": "e001-c08", "composition": "Vertical 9:16 frame. A close-up in profile of Nora standing at the floor-to-ceiling glass wall of the same bedroom, her face in the upper third of the frame, "
      "raindrops and the grey sea on the glass; cold blue morning light on her profile. She is the only person in the frame.",
-     "action": "She raises the half white tablet between her right thumb and forefinger to the light, narrows her eyes, slowly turns her fingers to look at the broken edge, then lowers her hand a little. "
+     "action": "Between her right thumb and forefinger she holds a tiny half of a white pill, smaller than a fingernail (a medicine pill, not a device or a card); she raises it to the light, narrows her eyes, slowly turns her fingers to look at its broken edge, then lowers her hand a little. Nothing else is in her hands. "
      "Her mouth stays closed; she is not smiling. The camera pushes in with small amplitude at slow speed, from her chest to her face."},
 ]
 
