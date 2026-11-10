@@ -69,8 +69,8 @@ node --test tools/video/automation/backup.test.mjs
 - 對照表（132 條分支、約 158 GB）站主 2026-11-10 確認：一條多集的依路徑拆到各集、看不出集數的放 `_共用/`；
   整個 repo 副本的五條只取比 main 多的檔；`tn-series-assets` 裡的種田音效庫照搬；奇聞只用代碼不加標題。
 - `zt-e9NN-media*`、`zt-e001-r2-media`、`zt-cg-e001`～`e006` 是 r2 slug 先做的 3D 重做（路徑都在 `runpod/`），歸 3D 版。
-- session 寫雲端硬碟：Colab 用 `drive.mount()`；Claude Code session 用另建的備份權杖（環境變數，不進 repo）。
-  主機那把權杖是整個雲端硬碟的完整權限，`root_folder_id` 不是權限邊界，不發給 session。
+- session 寫雲端硬碟：Colab 用 `drive.mount()`；Claude Code session 用主機那把 `videobackup`（站主 2026-11-10「用同一把就好」，放雲端環境變數，不進 repo）。
+  那把是整個雲端硬碟的完整權限，外洩時撤銷會連主機一起停，站主接受。
 - 搬移與同一輪的複製都會用 `_舊版/<時間>/`；搬移改用 `_舊版/<時間>-搬移/`，否則複製會蓋掉搬移移進去的檔（測試抓到的）。
 - 搬家（2026-11-10 01:35 UTC 起，主機 `/root/drive-migration/`）：前 45 條約每小時 4 GB，小檔多的分支被 `--tpslimit 5` 卡住；
   03:07 起主機那份改成 `--tpslimit 10 --transfers 8 --checkers 16` 重跑（帳本跳過已完成的）。repo 的 `migrate.py` 仍是保守值。
