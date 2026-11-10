@@ -655,11 +655,11 @@ test("the paper fixture uses every new field and is valid for its templates", ()
 
 // The two story series wear the bold look of the high-view story channels (2026-10-25): layout d
 // by default on a curio- or story- slug, a choice elsewhere, and never in the rotation.
-test("a curio- or story- slug takes the bold thumbnail layout by default; other slugs keep the rotation and may ask for it", () => {
+test("a story- slug takes the bold thumbnail layout by default, a curio- slug that names it keeps it; other slugs keep the rotation and may ask for it", () => {
   const data = { headline: "船在走\n**人沒了**", tag: "歷史懸案", sub: "十個人全部消失", shot: "x" };
   assert.equal(THUMB_BOLD_LAYOUT, "d");
   assert.ok(!THUMB_LAYOUTS.includes(THUMB_BOLD_LAYOUT), "not in the rotation: no other series' thumbnail moves");
-  const curio = thumbnailHtml({ template: "thumb", data }, { background: "https://video.local/k.png", slug: "curio-h01-v2" });
+  const curio = thumbnailHtml({ template: "thumb", data: { ...data, layout: "d" } }, { background: "https://video.local/k.png", slug: "curio-h01-v2" });
   assert.match(curio, /<div class="thumb-subject layout-d tone-[a-z]+ from-shot">/);
   assert.match(curio, /<div class="thumb column layout-d tone-[a-z]+"><div class="tag">/, "the pill stays in the markup; the theme hides it");
   const story = thumbnailHtml({ template: "thumb", data: { ...data, brand: "Crocs" } }, { slug: "story-everyday-crocs-c01" });
@@ -675,7 +675,7 @@ test("a curio- or story- slug takes the bold thumbnail layout by default; other 
 
 // The split layout (2026-11-08): the words on a panel of their own, the picture beside them, and
 // only where a video names it, so no thumbnail already drawn moves.
-test("the split thumbnail layout keeps the words off the picture and is chosen by name alone", () => {
+test("the split thumbnail layout keeps the words off the picture, is the curio default and otherwise chosen by name", () => {
   const data = { headline: "鋼琴廠\n**造機車**", tag: "品牌檔案", sub: "分出去的營收 5 倍多", shot: "x" };
   assert.equal(THUMB_SPLIT_LAYOUT, "e");
   assert.ok(!THUMB_LAYOUTS.includes(THUMB_SPLIT_LAYOUT), "not in the rotation");
@@ -687,10 +687,14 @@ test("the split thumbnail layout keeps the words off the picture and is chosen b
   assert.match(split, /<h1 class="fit[ "]/, "a long translated headline shrinks inside the panel");
   const centred = thumbnailHtml({ template: "thumb", data: { ...data, layout: "e" } }, { background: "https://video.local/k.png", slug: "curio-b01" });
   assert.match(centred, new RegExp(`style="--focus:${THUMB_FOCUS_DEFAULT}%"`));
-  // No default moves: a curio slug without a layout keeps d, and only layout e carries the CSS.
-  const bold = thumbnailHtml({ template: "thumb", data }, { background: "https://video.local/k.png", slug: "curio-b01" });
+  // Since 2026-11-10 a curio slug without a layout takes e (focus at the default); a story slug
+  // keeps d, and only layout e carries the focus.
+  const curioDefault = thumbnailHtml({ template: "thumb", data }, { background: "https://video.local/k.png", slug: "curio-b01" });
+  assert.match(curioDefault, /<div class="thumb-subject layout-e tone-[a-z]+ from-shot" style="--focus:50%">/);
+  const bold = thumbnailHtml({ template: "thumb", data }, { background: "https://video.local/k.png", slug: "story-everyday-crocs-c01" });
   assert.match(bold, /layout-d/);
   assert.doesNotMatch(bold, /layout-e|--focus/);
+  assert.doesNotMatch(thumbnailHtml({ template: "thumb", data }, { slug: "ai-term-token" }), /layout-e/, "other slugs only by name");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus: 0 } }), []);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus: 100 } }), []);
   // A line in a script without word spaces keeps the break the writer made, and shrinks instead.

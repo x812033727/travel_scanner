@@ -115,7 +115,7 @@ def project(slug: str, **fields: Any) -> VideoProject:
 @pytest.mark.parametrize(
     ("video", "key", "folder", "tier"),
     [
-        (project("curio-h01", category="explainer"), "curio", "奇聞檔案局/curio-h01", "full"),
+        (project("curio-h01", category="explainer"), "curio", "AI劇/奇聞檔案局/H01", "full"),
         (
             project(
                 "ou-de-jianghu-ep-3",
@@ -152,13 +152,31 @@ def project(slug: str, **fields: Any) -> VideoProject:
         (
             project("zhong-tian-qu-qi-e033", category="drama"),
             "zhong-tian-qu-qi",
-            "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033",
+            "AI劇/種田娶妻打天下/第033集",
             "full",
         ),
         (
             project("zhong-tian-qu-qi-e001-005-v2", category="drama"),
             "zhong-tian-qu-qi",
-            "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e001-005-v2",
+            "AI劇/種田娶妻打天下/第001-005集",
+            "full",
+        ),
+        (
+            project("zhong-tian-qu-qi-e001-r2", category="drama"),
+            "zhong-tian-qu-qi-r2",
+            "AI劇/種田娶妻打天下（真人版）/第001集",
+            "full",
+        ),
+        (
+            project("tai-nainai-e004", category="drama"),
+            "tai-nainai",
+            "AI劇/恁祖媽今年18/第004集",
+            "full",
+        ),
+        (
+            project("curio-s01-short", shorts_line="cut", shorts_series="curio"),
+            "curio",
+            "Shorts/奇聞檔案局/curio-s01-short",
             "full",
         ),
         (project("nothing-said"), "other", "其他/nothing-said", "full"),
@@ -175,31 +193,57 @@ def test_each_video_is_filed_under_its_series_with_the_owners_default_tier(
 def test_overrides_win_and_a_folder_once_used_survives_a_rename() -> None:
     video = project("curio-h02", category="explainer")
     named = resolve_target(video, tiers={"curio": "full"}, folder_names={"curio": "奇聞"})
-    assert (named.folder, named.tier) == ("奇聞/curio-h02", "full")
-    video.backup = {"state": "done", "folder": "奇聞檔案局/curio-h02"}
+    assert (named.folder, named.tier) == ("AI劇/奇聞/H02", "full")
+    video.backup = {"state": "done", "folder": "AI劇/奇聞檔案局/H02"}
     kept = resolve_target(video, tiers={"curio": "off"}, folder_names={"curio": "奇聞"})
-    assert (kept.folder, kept.tier) == ("奇聞檔案局/curio-h02", "off")
+    assert (kept.folder, kept.tier) == ("AI劇/奇聞檔案局/H02", "off")
 
 
-def test_an_imported_drama_backed_up_flat_under_drama_moves_into_its_series_folder_once() -> None:
+def test_a_backup_filed_before_ai_drama_moves_there_once_and_a_later_rename_sticks() -> None:
     video = project("zhong-tian-qu-qi-e031", category="drama")
-    video.backup = {"state": "done", "folder": "drama/zhong-tian-qu-qi-e031"}
-    moving = resolve_target(video)
-    assert (moving.folder, moving.moved_from, moving.shared_folder) == (
-        "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e031",
-        "drama/zhong-tian-qu-qi-e031",
-        "drama/zhong-tian-qu-qi/_共用",
-    )
+    for earlier in ("drama/zhong-tian-qu-qi-e031", "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e031"):
+        video.backup = {"state": "done", "folder": earlier}
+        moving = resolve_target(video)
+        assert (moving.folder, moving.moved_from, moving.shared_folder) == (
+            "AI劇/種田娶妻打天下/第031集",
+            earlier,
+            "AI劇/種田娶妻打天下/_共用",
+        )
     video.backup = {"state": "done", "folder": moving.folder}
     assert resolve_target(video).moved_from is None, "once moved, the stored folder is the new one"
     # A tier set for the whole category holds for each drama until the drama has its own.
     assert resolve_target(video, tiers={"drama": "off"}).tier == "off"
     own = {"drama": "off", "zhong-tian-qu-qi": "basic"}
     assert resolve_target(video, tiers=own).tier == "basic"
-    # Any other folder an earlier backup used stays, as for every series.
-    video.backup = {"state": "done", "folder": "種田/zhong-tian-qu-qi-e031"}
-    kept = resolve_target(video)
-    assert (kept.folder, kept.moved_from) == ("種田/zhong-tian-qu-qi-e031", None)
+    # The live-action remake falls back to the category's tier too.
+    remake = project("zhong-tian-qu-qi-e002-r2", category="drama")
+    assert resolve_target(remake, tiers={"drama": "basic"}).tier == "basic"
+    # Renaming the drama later does not split its episodes: one under AI劇/ stays.
+    kept = resolve_target(video, folder_names={"zhong-tian-qu-qi": "種田"})
+    assert (kept.folder, kept.moved_from) == ("AI劇/種田娶妻打天下/第031集", None)
+
+
+def test_an_older_version_goes_under_old_versions_and_the_latest_holds_the_folder() -> None:
+    older = project("curio-h03")
+    assert resolve_target(older, superseded=True).folder == "AI劇/奇聞檔案局/H03/_舊版/curio-h03"
+    # Backed up before 2026-11-10 under its own slug: moved straight into _舊版.
+    older.backup = {"state": "done", "folder": "奇聞檔案局/curio-h03"}
+    moving = resolve_target(older, superseded=True)
+    assert (moving.folder, moving.moved_from) == (
+        "AI劇/奇聞檔案局/H03/_舊版/curio-h03",
+        "奇聞檔案局/curio-h03",
+    )
+    # Already in the episode folder when the later version came: the later copy put its files
+    # under _舊版/<時間>/, so nothing moves and its next backup goes under _舊版/<slug>.
+    older.backup = {"state": "done", "folder": "AI劇/奇聞檔案局/H03"}
+    stays = resolve_target(older, superseded=True)
+    assert (stays.folder, stays.moved_from) == ("AI劇/奇聞檔案局/H03/_舊版/curio-h03", None)
+    later = project("curio-h03-v2", backup={"state": "done", "folder": "奇聞檔案局/curio-h03-v2"})
+    assert (resolve_target(later).folder, resolve_target(later).moved_from) == (
+        "AI劇/奇聞檔案局/H03",
+        "奇聞檔案局/curio-h03-v2",
+    )
+    assert status.superseded_among([older, later, project("curio-h04")]) == {"curio-h03"}
 
 
 def test_the_chosen_languages_name_the_files_a_backup_must_hold() -> None:
@@ -472,7 +516,7 @@ async def test_a_complete_report_is_done_and_one_missing_a_chosen_dub_is_partial
     site: Site,
 ) -> None:
     await site.add(project("curio-h01", locales={"en": {"metadata": True, "dub": True}}))
-    folder = "奇聞檔案局/curio-h01"
+    folder = "AI劇/奇聞檔案局/H01"
     short = await report(site, "curio-h01", **done(folder, descriptions=["en"], captions=["en"]))
     assert (short.state, short.complete) == ("partial", False)
     assert short.missing == ["dubs/en"] and short.error and "dubs/en" in short.error
@@ -491,7 +535,7 @@ async def test_a_done_backup_reads_stale_once_the_owner_chooses_another_language
     site: Site,
 ) -> None:
     await site.add(project("curio-h04"))
-    await report(site, "curio-h04", **done("奇聞檔案局/curio-h04"))
+    await report(site, "curio-h04", **done("AI劇/奇聞檔案局/H04"))
     async with site.factory() as session:
         video = await session.scalar(select(VideoProject).where(VideoProject.slug == "curio-h04"))
         assert video is not None
@@ -505,7 +549,7 @@ async def test_a_done_backup_reads_stale_once_the_owner_chooses_another_language
 async def test_a_fuller_tier_than_the_one_copied_reads_stale(site: Site) -> None:
     await site.add(project("curio-h05"))
     await save(site, tiers={"curio": "basic"})
-    await report(site, "curio-h05", **{**done("奇聞檔案局/curio-h05"), "tier": "basic"})
+    await report(site, "curio-h05", **{**done("AI劇/奇聞檔案局/H05"), "tier": "basic"})
     await save(site, tiers={"curio": "full"})
     async with site.factory() as session:
         view = await status.video_status(session, "curio-h05")
@@ -517,18 +561,18 @@ async def test_reports_the_site_cannot_trust_are_refused(site: Site) -> None:
     await site.add(project("not-uploaded", youtube_video_id=None))
     cases = [
         ("not-uploaded", done("其他/not-uploaded"), "video_backup_not_ready"),
-        ("curio-h06", done("奇聞/curio-h06"), "video_backup_folder_changed"),
+        ("curio-h06", done("AI劇/奇聞/H06"), "video_backup_folder_changed"),
         (
             "curio-h06",
-            {**done("奇聞檔案局/curio-h06"), "files_hash": None},
+            {**done("AI劇/奇聞檔案局/H06"), "files_hash": None},
             "video_backup_report_incomplete",
         ),
         (
             "curio-h06",
-            {**done("奇聞檔案局/curio-h06"), "contents": None},
+            {**done("AI劇/奇聞檔案局/H06"), "contents": None},
             "video_backup_report_incomplete",
         ),
-        ("curio-h06", done("奇聞檔案局/../curio-h06"), "video_backup_folder_invalid"),
+        ("curio-h06", done("AI劇/奇聞檔案局/../H06"), "video_backup_folder_invalid"),
     ]
     for slug, fields, code in cases:
         with pytest.raises(AppError) as refused:
@@ -536,23 +580,23 @@ async def test_reports_the_site_cannot_trust_are_refused(site: Site) -> None:
         assert refused.value.code == code, fields
     await save(site, tiers={"curio": "off"})
     with pytest.raises(AppError) as off:
-        await report(site, "curio-h06", **done("奇聞檔案局/curio-h06"))
+        await report(site, "curio-h06", **done("AI劇/奇聞檔案局/H06"))
     assert off.value.code == "video_backup_tier_off"
 
 
 async def test_the_first_folder_sticks_after_the_series_is_renamed(site: Site) -> None:
     await site.add(project("curio-h07"))
-    await report(site, "curio-h07", state="pending", folder="奇聞檔案局/curio-h07", tier="full")
+    await report(site, "curio-h07", state="pending", folder="AI劇/奇聞檔案局/H07", tier="full")
     await save(site, folder_names={"curio": "奇聞"})
-    kept = await report(site, "curio-h07", **done("奇聞檔案局/curio-h07"))
-    assert (kept.folder, kept.state) == ("奇聞檔案局/curio-h07", "done")
+    kept = await report(site, "curio-h07", **done("AI劇/奇聞檔案局/H07"))
+    assert (kept.folder, kept.state) == ("AI劇/奇聞檔案局/H07", "done")
 
 
 async def test_failures_are_audited_once_and_quota_blocks_record_the_free_space(
     site: Site,
 ) -> None:
     await site.add(project("curio-h08"))
-    folder = "奇聞檔案局/curio-h08"
+    folder = "AI劇/奇聞檔案局/H08"
     for attempts in (3, 4):
         failed = await report(
             site,
@@ -590,13 +634,13 @@ async def test_the_summary_says_all_backed_up_only_when_every_uploaded_video_is_
     await site.add(project("draft-only", youtube_video_id=None))
     await site.add(project("dropped", youtube_video_id=None, dropped_at=datetime.now(UTC)))
     await site.confirm("dropped")
-    await report(site, "curio-a", **done("奇聞檔案局/curio-a"))
+    await report(site, "curio-a", **done("AI劇/奇聞檔案局/curio-a"))
     async with site.factory() as session:
         summary = await status.status(session)
     assert (summary.uploaded, summary.all_backed_up) == (2, False)
     assert summary.counts["done"] == 1 and summary.counts["not_queued"] == 1
     assert [video.slug for video in summary.videos] == ["curio-b"]
-    await report(site, "curio-b", state="pending", folder="奇聞檔案局/curio-b", tier="full")
+    await report(site, "curio-b", state="pending", folder="AI劇/奇聞檔案局/curio-b", tier="full")
     async with site.factory() as session:
         video = await session.scalar(select(VideoProject).where(VideoProject.slug == "curio-b"))
         assert video is not None and video.backup is not None
@@ -608,7 +652,7 @@ async def test_the_summary_says_all_backed_up_only_when_every_uploaded_video_is_
     async with site.factory() as session:
         late = await status.status(session)
     assert late.videos[0].overdue and late.counts["pending"] == 1
-    await report(site, "curio-b", **done("奇聞檔案局/curio-b"))
+    await report(site, "curio-b", **done("AI劇/奇聞檔案局/curio-b"))
     async with site.factory() as session:
         finished = await status.status(session)
         everything = await status.status(session, everything=True)
@@ -630,7 +674,7 @@ async def test_the_worker_config_lists_every_uploaded_video_with_its_target(site
     async with site.factory() as session:
         config = await status.worker_config(session)
     [video] = config.videos
-    assert (video.slug, video.folder, video.tier) == ("curio-h09", "奇聞檔案局/curio-h09", "full")
+    assert (video.slug, video.folder, video.tier) == ("curio-h09", "AI劇/奇聞檔案局/H09", "full")
     assert video.expected.captions == ["ko"] and video.backup is None
 
 
@@ -649,13 +693,37 @@ async def test_the_worker_moves_a_flat_drama_backup_and_its_report_stores_the_ne
     async with site.factory() as session:
         [video] = (await status.worker_config(session)).videos
     assert (video.folder, video.moved_from) == (
-        "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e034",
+        "AI劇/種田娶妻打天下/第034集",
         "drama/zhong-tian-qu-qi-e034",
     )
     await report(site, "zhong-tian-qu-qi-e034", state="pending", folder=video.folder, tier="full")
     async with site.factory() as session:
         [moved] = (await status.worker_config(session)).videos
     assert (moved.folder, moved.moved_from) == (video.folder, None)
+
+
+async def test_the_site_files_an_episodes_older_version_under_old_versions_everywhere_alike(
+    site: Site,
+) -> None:
+    await save(site, enabled=True)
+    await lock(site)
+    await site.add(project("curio-h13"))
+    await site.add(project("curio-h13-v2", youtube_video_id=None))
+    async with site.factory() as session:
+        alone = {video.slug: video.folder for video in (await status.worker_config(session)).videos}
+    # The later version is not ready yet: the published one keeps the episode folder.
+    assert alone == {"curio-h13": "AI劇/奇聞檔案局/H13"}
+    await site.confirm("curio-h13-v2")
+    async with site.factory() as session:
+        both = {video.slug: video.folder for video in (await status.worker_config(session)).videos}
+        one = await status.video_status(session, "curio-h13")
+    assert both == {
+        "curio-h13": "AI劇/奇聞檔案局/H13/_舊版/curio-h13",
+        "curio-h13-v2": "AI劇/奇聞檔案局/H13",
+    }
+    assert one.folder == both["curio-h13"], "one video's view agrees with the worker's list"
+    kept = await report(site, "curio-h13", **done(both["curio-h13"]))
+    assert kept.folder == both["curio-h13"]
 
 
 async def test_a_video_ready_to_upload_is_backed_up_before_youtube_and_again_after_a_revision(
@@ -678,12 +746,12 @@ async def test_a_video_ready_to_upload_is_backed_up_before_youtube_and_again_aft
 
     # curio-h11's Japanese dub is still being made; curio-h12 waits for its confirmation.
     assert await listed() == [("curio-h10", None), ("lab-short-2", None)]
-    view = await report(site, "curio-h10", **done("奇聞檔案局/curio-h10"))
+    view = await report(site, "curio-h10", **done("AI劇/奇聞檔案局/H10"))
     assert view.state == "done" and view.youtube_video_id is None
     await site.supersede("curio-h10")
     assert await listed() == [("lab-short-2", None)], "a revision waits until it is ready again"
     with pytest.raises(AppError) as refused:
-        await report(site, "curio-h10", **done("奇聞檔案局/curio-h10"))
+        await report(site, "curio-h10", **done("AI劇/奇聞檔案局/H10"))
     assert refused.value.code == "video_backup_not_ready"
     await site.confirm("curio-h10")
     assert await listed() == [("curio-h10", None), ("lab-short-2", None)]
@@ -849,7 +917,7 @@ async def test_the_owner_and_the_worker_go_through_the_routes(site: Site) -> Non
         config = await client.get("/api/v1/video/automation/backup/config")
         reported = await client.post(
             "/api/v1/video/automation/backup/curio-route/report",
-            json=done("奇聞檔案局/curio-route"),
+            json=done("AI劇/奇聞檔案局/curio-route"),
         )
         detail = await client.get("/api/v1/admin/video-backup/status/curio-route")
         stray = await client.post(

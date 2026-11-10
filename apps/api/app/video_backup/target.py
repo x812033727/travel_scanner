@@ -35,7 +35,19 @@ DEFAULT_FOLDER_NAMES: dict[str, str] = {
     "ai-terms": "AI 名詞十分鐘",
     "story": "品牌故事",
     OTHER: "其他",
+    "zhong-tian-qu-qi": "種田娶妻打天下",
+    "zhong-tian-qu-qi-r2": "種田娶妻打天下（真人版）",
+    "tai-nainai": "恁祖媽今年18",
 }
+# The owner, 2026-11-10: every drama, and the two explainer series, under AI劇/<名稱>/<集數>/
+# (docs/videos/BACKUP.md §資料夾排法). Any imported drama (a <series>-e033 slug) joins them.
+AI_DRAMA = "AI劇"
+AI_DRAMA_SERIES = frozenset(
+    {"zhong-tian-qu-qi", "zhong-tian-qu-qi-r2", "tai-nainai", "curio", "sothatswhy"}
+)
+# An episode's older versions, inside its folder: <集數>/_舊版/<slug>/ for a whole superseded
+# version, and <集數>/_舊版/<時間>/ for the files a later copy replaced (the worker's).
+OLD_VERSIONS = "_舊版"
 # Slug prefixes of the series that are not long-drama series rows.
 SLUG_PREFIXES: tuple[tuple[str, str], ...] = (
     ("curio-", "curio"),
@@ -46,9 +58,16 @@ SLUG_PREFIXES: tuple[tuple[str, str], ...] = (
 SERIES_KEY_PATTERN = r"^[a-z0-9][a-z0-9-]{0,39}$"
 SERIES_KEY = re.compile(SERIES_KEY_PATTERN)
 # An imported drama's episodes and compilations: <series>-e033, <series>-e001-005, -v2 after a
-# remake. The owner, 2026-11-01: each drama has its own folder under drama/, not every episode
-# side by side in it ("我的雲端硬碟\AI\備份\drama\zhong-tian-qu-qi").
-DRAMA_EPISODE = re.compile(r"^(?P<series>[a-z0-9][a-z0-9-]*?)-e\d{3}(?:-\d{3})?(?:-v\d+)?$")
+# revision, and -r2 for a remake, which is a drama of its own: zhong-tian-qu-qi-e001-r2 is the
+# live-action 種田 (the owner, 2026-11-10: "當成另一部劇").
+DRAMA_EPISODE = re.compile(
+    r"^(?P<series>[a-z0-9][a-z0-9-]*?)-e(?P<first>\d{3})(?:-(?P<last>\d{3}))?"
+    r"(?:-(?P<remake>r\d+))?(?:-v(?P<version>\d+))?$"
+)
+# An explainer episode's code, which names its folder: curio-h01, curio-w01-dolby-licensing,
+# sothatswhy-p17-gecko-feet. They have no running episode number.
+EPISODE_CODE = re.compile(r"^(?:curio|sothatswhy)-(?P<code>[a-z]\d{2})(?=-|$)")
+VERSION = re.compile(r"-v(?P<version>\d+)$")
 # What Google Drive for desktop cannot write on the owner's Windows PC, so a folder with it
 # would never reach G:.
 FORBIDDEN = re.compile(r'[<>:"|?*\\\x00-\x1f\x7f]')
@@ -140,8 +159,33 @@ def drama_series(project: VideoProject) -> str | None:
     if project.shorts_line is not None or project.series_slug or project.category != "drama":
         return None
     match = DRAMA_EPISODE.match(project.slug)
-    series = match["series"] if match else None
-    return series if series and SERIES_KEY.match(series) else None
+    if not match:
+        return None
+    series = f"{match['series']}-{match['remake']}" if match["remake"] else match["series"]
+    return series if SERIES_KEY.match(series) else None
+
+
+def version_stem(slug: str) -> tuple[str, int]:
+    """A slug without its -vN, and N (1 when it has none): curio-h01-v2 is version 2 of
+    curio-h01, and both are filed in one episode folder."""
+    match = VERSION.search(slug)
+    return (slug[: match.start()], int(match["version"])) if match else (slug, 1)
+
+
+def is_ai_drama(project: VideoProject, key: str) -> bool:
+    return project.shorts_line is None and (key in AI_DRAMA_SERIES or bool(drama_series(project)))
+
+
+def ai_episode_folder(project: VideoProject) -> str:
+    """第033集, 第001-005集 for a compilation, the code (H01) for an explainer, else the slug."""
+    match = DRAMA_EPISODE.match(project.slug)
+    if match:
+        last = f"-{match['last']}" if match["last"] else ""
+        return f"第{match['first']}{last}集"
+    if project.episode_number is not None:
+        return f"第{project.episode_number:03d}集"
+    code = EPISODE_CODE.match(project.slug)
+    return code["code"].upper() if code else version_stem(project.slug)[0]
 
 
 def series_key(project: VideoProject) -> str:
@@ -183,9 +227,13 @@ def resolve_target(
     *,
     tiers: Mapping[str, str] | None = None,
     folder_names: Mapping[str, str] | None = None,
+    superseded: bool = False,
 ) -> Target:
     """Where ``project`` goes and how much of it. A folder already used stays: renaming a series
-    later must not split one video between two folders. The tier follows the settings now."""
+    later must not split one video between two folders. The tier follows the settings now.
+
+    ``superseded``: a later version of the same episode is backed up too, so this one is filed
+    under the episode's _舊版/ and the episode folder itself holds the latest."""
     key = series_key(project)
     names = folder_names or {}
     chosen = (tiers or {}).get(key)
@@ -194,19 +242,32 @@ def resolve_target(
         # until they set one for the drama itself.
         chosen = (tiers or {}).get(project.category or OTHER)
     tier: Tier = chosen if chosen in TIERS else DEFAULT_TIER
+    if is_ai_drama(project, key):
+        return _ai_drama_target(project, key, tier, names, superseded)
     series = series_folder(key, project.shorts_line is not None, names)
+    folder = stored_folder(project) or f"{series}/{episode_folder(project)}"
+    return Target(key, folder, tier, f"{posixpath.dirname(folder)}/{SHARED}")
+
+
+def _ai_drama_target(
+    project: VideoProject, key: str, tier: Tier, names: Mapping[str, str], superseded: bool
+) -> Target:
+    """AI劇/<名稱>/<集數>/. A backup filed anywhere outside AI劇/ before 2026-11-10 is moved here
+    once, by the worker (``moved_from``); one already under AI劇/ stays where it is, except that
+    the episode folder itself goes to the latest version once a later one is backed up (the later
+    copy has already put this version's files under _舊版/<時間>/, so nothing moves)."""
+    drama = f"{AI_DRAMA}/{series_folder(key, False, names)}"
+    episode = f"{drama}/{ai_episode_folder(project)}"
+    default = f"{episode}/{OLD_VERSIONS}/{project.slug}" if superseded else episode
+    stored = stored_folder(project)
     moved_from = None
-    if drama_series(project):
-        # drama/<series>/<episode>, the category's folder first.
-        category = series_folder(project.category or OTHER, False, names)
-        series = f"{category}/{series}"
-        # Backed up before 2026-11-01 straight under drama/: moved once, by the worker.
-        flat = f"{category}/{episode_folder(project)}"
-        if stored_folder(project) == flat:
-            moved_from = flat
-    default = f"{series}/{episode_folder(project)}"
-    folder = default if moved_from else stored_folder(project) or default
-    return Target(key, folder, tier, f"{posixpath.dirname(folder)}/{SHARED}", moved_from)
+    folder = default
+    if stored and stored != default:
+        if not stored.startswith(f"{AI_DRAMA}/"):
+            moved_from = stored
+        elif not (superseded and stored == episode):
+            folder = stored
+    return Target(key, folder, tier, f"{drama}/{SHARED}", moved_from)
 
 
 # --- what a backup must hold ------------------------------------------------------------------

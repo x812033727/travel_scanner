@@ -1,5 +1,5 @@
 // The backup (docs/videos/BACKUP.md): every video on YouTube or ready to upload is copied to the
-// owner's Google Drive, under AI/備份/<series>/<episode>/, with rclone, and the tidy keeps a
+// owner's Google Drive, under AI/備份/<series>/<episode>/ (AI劇/<名稱>/<集數>/ for the dramas), with rclone, and the tidy keeps a
 // video's files on the host until Drive has them. The site holds the settings, the list of videos
 // and each one's folder and tier (apps/api/app/video_backup); this file does the copying, once a
 // round, before the tidy. A video being revised is off the site's list until it is ready again,
@@ -464,18 +464,28 @@ async function freeBytes(job) {
 }
 
 /**
- * A video the site files somewhere new (an imported drama moved from drama/<episode> into
- * drama/<series>/<episode>, 2026-11-01): its Drive folder is moved there, server side and without
+ * A video the site files somewhere new (into AI劇/<名稱>/<集數>/, 2026-11-10, or an older version
+ * into that episode's _舊版/<slug>/): its Drive folder is moved there, server side and without
  * an upload, and the site is told the new folder, which from then on is the one it stores. A
  * folder that is not in Drive (never backed up, or moved already) counts as moved. Returns
  * whether the video may be backed up this round.
+ *
+ * The new folder may already hold another version of the episode (H01/ with H01/_舊版/curio-h01/
+ * in it). Then nothing in it is overwritten: the moving folder's own _舊版/ joins the episode's
+ * (a name already there stays behind, in the old folder), and a file of the same name with other
+ * content goes to _舊版/<時間>-搬移/ before the moving one takes its place, as a copy does (its
+ * own folder: the copy that follows in the same round uses _舊版/<時間>/ and would replace it).
  */
 async function moveFolder(job, video, copy) {
   const from = video.moved_from;
   if (typeof from !== "string" || !from || from === video.folder || from.split("/").includes("..")) return true;
   if (!copy) return false;
-  const moved = await job.rclone(["moveto", `${job.remote}:${remoteJoin(job.prefix, from)}`, `${job.remote}:${remoteJoin(job.prefix, video.folder)}`]);
-  const absent = moved.code !== 0 && /directory not found|not found|doesn't exist/i.test(`${moved.stderr}\n${moved.stdout}`);
+  const source = `${job.remote}:${remoteJoin(job.prefix, from)}`;
+  const target = `${job.remote}:${remoteJoin(job.prefix, video.folder)}`;
+  const there = await job.rclone(["lsf", target, "--max-depth", "1"]);
+  const occupied = there.code === 0 && there.stdout.trim() !== "";
+  const moved = occupied ? await mergeFolder(job, source, target) : await job.rclone(["moveto", source, target]);
+  const absent = moved.code !== 0 && NOT_FOUND.test(`${moved.stderr}\n${moved.stdout}`);
   if (moved.code !== 0 && !absent) {
     job.lines.push(`backup: ${video.slug}: could not move ${from} to ${video.folder} (${why(moved)}); the next round tries again`);
     return false;
@@ -487,6 +497,15 @@ async function moveFolder(job, video, copy) {
   if (state && typeof state === "object") saveBackupState(workdir, { ...state, state: "pending", folder: video.folder, queued_at: job.now.toISOString() });
   await tellSite(job, video.slug, { state: "pending", folder: video.folder, tier: video.tier });
   return true;
+}
+
+const NOT_FOUND = /directory not found|not found|doesn't exist/i;
+
+/** moveFolder into a folder that already holds files: nothing there is overwritten. */
+async function mergeFolder(job, source, target) {
+  const olds = await job.rclone(["move", `${source}/${OLD_VERSIONS}`, `${target}/${OLD_VERSIONS}`, "--ignore-existing", "--delete-empty-src-dirs", "--tpslimit", "5", "--retries", "5"]);
+  if (olds.code !== 0 && !NOT_FOUND.test(`${olds.stderr}\n${olds.stdout}`)) return olds;
+  return job.rclone(["move", source, target, "--checksum", "--backup-dir", `${target}/${OLD_VERSIONS}/${stamp(job.now)}-搬移`, "--exclude", `/${OLD_VERSIONS}/**`, "--delete-empty-src-dirs", "--tpslimit", "5", "--retries", "5"]);
 }
 
 async function tellSite(job, slug, body) {

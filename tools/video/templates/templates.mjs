@@ -684,8 +684,9 @@ export const THUMB_LAYOUTS = ["a", "b", "c"];
  * The bold layout the two story series wear by default (2026-10-25, the owner trying the look of
  * the story channels with hundreds of thousands of views): the picture fills the frame, the
  * headline is yellow with a black outline, the second line white with the same outline, no label
- * pill. A curio- or story- slug takes it unless data.layout names another; it is not in the
- * rotation, so no other series' thumbnail moves.
+ * pill. A story- slug takes it unless data.layout names another (a curio- slug took it until
+ * 2026-11-10 and now takes the split layout below); it is not in the rotation, so no other
+ * series' thumbnail moves.
  */
 export const THUMB_BOLD_LAYOUT = "d";
 export const isBoldThumbSlug = (slug) => /^(?:curio|story)-/.test(slug ?? "");
@@ -694,11 +695,13 @@ export const isBoldThumbSlug = (slug) => /^(?:curio|story)-/.test(slug ?? "");
  * by the words", after So That's Why's thumbnails): a solid panel on the left holds the bold
  * layout's yellow headline and white sub line, the picture fills the right panel and nothing is
  * laid over it. `data.focus` (0 to 100, THUMB_FOCUS_DEFAULT) is where the picture sits across its
- * panel, so a subject left of centre can be brought in. A video takes it only by naming it in
- * `data.layout`; no slug defaults to it, so no thumbnail already drawn moves. Its CSS is inline
- * (THUMB_SPLIT_CSS) for the same reason.
+ * panel, so a subject left of centre can be brought in. Since 2026-11-10 (the owner: "應該用新版
+ * 縮圖", after two curio redos were drawn in the old look because nobody wrote the layout) every
+ * curio- slug takes it unless `data.layout` names another; a video that must keep an older look
+ * names it ("d"). Other slugs take it only by naming it. Its CSS is inline (THUMB_SPLIT_CSS).
  */
 export const THUMB_SPLIT_LAYOUT = "e";
+export const isSplitThumbSlug = (slug) => /^curio-/.test(slug ?? "");
 export const THUMB_FOCUS_DEFAULT = 50;
 const isFocus = (value) => Number.isInteger(value) && value >= 0 && value <= 100;
 // In the split panel a line the writer broke with "\n" stays one line when its script has no word
@@ -987,7 +990,7 @@ export function thumbnailHtml(thumbnail, { background = null, subject = null, se
   if (own) return page(seriesThumbnailBody(data, own, background), THUMB_SIZE, [background ? THUMB_BACKGROUND_CSS : "", background && THUMB_SERIES_SUBJECTS.includes(data.subject) ? THUMB_SUBJECT_CSS : "", data.layout === "right" ? THUMB_RIGHT_CSS : "", THUMB_SERIES_CSS[series]].join(""), { locale });
   if (data.layout === THUMB_AI_LAYOUT) return page(aiThumbnailBody(data, { background, subject, locale, slug, aiSeries }), THUMB_SIZE, THUMB_AI_CSS, { locale });
   const rotation = thumbnailRotation(slug, offset);
-  const layout = THUMB_LAYOUTS.includes(data.layout) || data.layout === THUMB_BOLD_LAYOUT || data.layout === THUMB_SPLIT_LAYOUT ? data.layout : isBoldThumbSlug(slug) ? THUMB_BOLD_LAYOUT : rotation.layout;
+  const layout = THUMB_LAYOUTS.includes(data.layout) || data.layout === THUMB_BOLD_LAYOUT || data.layout === THUMB_SPLIT_LAYOUT ? data.layout : isSplitThumbSlug(slug) ? THUMB_SPLIT_LAYOUT : isBoldThumbSlug(slug) ? THUMB_BOLD_LAYOUT : rotation.layout;
   const tone = THUMB_TONES.includes(data.tone) ? data.tone : rotation.tone;
   const classes = `layout-${layout} tone-${tone}`;
   const split = layout === THUMB_SPLIT_LAYOUT;
