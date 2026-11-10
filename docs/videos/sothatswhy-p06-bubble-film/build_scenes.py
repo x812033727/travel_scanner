@@ -229,13 +229,11 @@ chief("chief-pressure", C("nodding with one hand open towards the viewer", close
 kid("kid-small-wins", K("jumping up with both arms raised high and a surprised delighted grin", where=PARK),
     k("小的反而贏了！", "驚訝"))
 kid("kid-colour-q", K("holding the small clear bottle of bubble liquid up to the light with a puzzled face", where=BALCONY),
-    k("形狀我懂了。", "想一想"), k("可是泡泡水沒有顏色，", "不解"), k("顏色從哪來？", "章尾停住，句尾上揚"))
+    k("形狀我懂了。", "想一想"), k("可是你說泡泡水沒顏色，", "不解"), k("顏色從哪來？", "章尾停住，句尾上揚"))
 
 # ---------- 第三章：沒有顏料的顏色 ----------
 chief("chief-clear", C("pouring a little clear liquid from a small bottle into her cupped palm, a curious smile"),
-      c("好問題。你這瓶泡泡水，倒在手上是什麼顏色？", "接住上一句"), chapter="透明的泡泡水，變出了顏色")
-kid("kid-clear", K("holding out her cupped palm with a little clear liquid in it and a surprised face", close=True, where=HOME),
-    k("透明的，", "看了看"), k("像水一樣！"))
+      c("好問題。顏料是沒有，那你先猜猜看，顏色從哪來？", "接住上一句"), chapter="透明的泡泡水，變出了顏色")
 kid("kid-tension-guess", K("snapping her fingers with a confident know-it-all grin", where=BALCONY),
     k("我知道了！", "很有把握"), k("是皮拉得太緊，", "很有把握的錯猜"), k("才變彩色的？", "句尾上揚", "S:tension"))
 chief("chief-not-tension", C("shaking her head gently with a kind smile, one hand raised", close=True),
