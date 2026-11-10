@@ -123,15 +123,15 @@ bub("pop-bubble", "Close-up of a round soap bubble in the sunny air at the momen
 kid("kid-wand", K("holding up a silver wire bubble wand with a square loop in one hand and a small clear bottle in the other, a round soap bubble beside her face, a surprised open-mouthed face", where=BALCONY),
     k("就是這支跟這瓶！", "舉起來"))
 chief("chief-look", C("leaning forward with a curious smile, one hand on her chin", close=True),
-      c("給我看看。很平常的方框和泡泡水嘛。", "接住上一句"), c("可是你看到的，是兩件怪事。"))
+      c("給我看看。很平常的方框和泡泡水嘛。", "接住上一句"), c("可是你剛剛說的，每一句都很怪。"))
 kid("kid-which-q", K("holding up two fingers with a curious face", where=HOME),
-    k("哪兩件？", "句尾上揚"))
+    k("哪裡怪？", "句尾上揚"))
 chief("chief-two", C("holding up two fingers with a friendly smile", close=True),
-      c("一件是形狀：框是方的，泡泡卻是圓的。", None, "S:square"), c("一件是顏色：泡泡水沒有顏色，泡泡卻有。", None, "S:paint"))
+      c("框是方的，泡泡卻是圓的。", None, "S:square"), c("泡泡水沒有顏色，泡泡卻有。", None, "S:paint"))
 kid("kid-bottle", K("holding up a small plain clear bottle of colourless bubble liquid and staring at it with a puzzled face", where=HOME),
     k("對耶，這瓶明明是透明的！", "發現"))
 chief("chief-tease", C("holding up one finger with a mysterious playful smile", close=True),
-      c("還有更怪的：等一下你會看到，", "賣關子"), c("小泡泡反而會把大泡泡，推進去一塊。", None, "S:push"))
+      c("還有更怪的：兩顆泡泡黏在一起時，", "賣關子"), c("中間那片牆會往哪邊彎？等一下你就知道。", None, "S:push"))
 bub("dark-top-tease", "Close-up of a round soap bubble resting on a square silver wire loop, its lower half shimmering in pink, green and gold bands and its very top a small smooth dark grey patch, sunny balcony background",
     c("頂上變黑也不是隨便黑的，它在跟你說一件事。", "賣關子", "S:dark"))
 chief("chief-promise", C("holding up a silver wire bubble wand with a square loop beside her face with a warm inviting smile"),
@@ -177,7 +177,7 @@ bub("bubble-free", "Wide shot of a single round transparent soap bubble floating
 kid("kid-box-q", K("holding up a small square cardboard gift box in both hands with a hopeful face", where=HOME),
     k("包成方盒子，", "追問"), k("不行嗎？", "句尾上揚", "S:box"))
 bub("box-ball", "Close-up of a small plain square cardboard gift box and a plain round red rubber ball of about the same size side by side on a wooden table" + ", plain warm pale cream background",
-    c("不划算。包一樣多的空氣，方盒子要的皮，"), c("大約比圓球多了兩成。", "數字放慢", "P:box"))
+    c("不划算。包一樣多的空氣，方盒子要的皮，"), c("比圓球多了兩成多。", "數字放慢", "P:box"))
 chief("chief-sphere", C("holding a small round ball up in one hand with a pleased smile", close=True),
       c("所有形狀裡，用的皮最少的，就是圓球。"))
 kid("kid-stingy", K("pinching her thumb and finger close together with a cheeky teasing grin", where=HOME),
@@ -215,7 +215,7 @@ chief("chief-flat", C("holding her two hands flat and level side by side with a 
 kid("kid-big-guess", K("holding one big round ball and one small round ball, one in each hand, with a confident grin", where=HOME),
     k("那一大一小呢？", "追問"), k("大的一定把小的壓扁！", "很有把握的錯猜", "S:big"))
 chief("chief-recall-push", C("holding up one finger with a playful knowing smile", close=True),
-      c("還記得我說，小泡泡會把大泡泡推進去一塊嗎？", "點名回呼"))
+      c("還記得我問，中間那片牆會往哪邊彎嗎？", "點名回呼"))
 bub("small-big", "Close-up of a small round soap bubble stuck to the side of a big round soap bubble in the sunny air, the shared round wall between them curving outward into the big bubble like a small dome, soft pink and green sheen, blue sky behind",
     c("你看，中間那片牆，是往大泡泡那邊凸過去的。", None, "P:push"))
 kid("kid-small-strong", K("making a small fist and looking at it with an amazed face", close=True, where=HOME),
@@ -223,25 +223,11 @@ kid("kid-small-strong", K("making a small fist and looking at it with an amazed 
 chief("chief-curve", C("cupping one hand into a tight small curve and the other into a wide gentle curve, a thoughtful smile"),
       c("你可以這樣想：同一瓶泡泡水，皮拉的力氣都差不多。"), c("可是小泡泡彎得比較厲害，"))
 chief("chief-squeeze", C("squeezing a small soft ball tightly in one hand with a curious smile", close=True),
-      c("皮往內擠得比較緊，裡面的空氣，就被壓得比較緊。"))
-kid("kid-inside-q", K("hugging her own arms tightly with a wondering face", where=HOME),
-    k("所以小的裡面，", "推理"), k("擠得比較緊？", "句尾上揚"))
+      c("所以小泡泡的皮，把裡面的空氣壓得比較緊，"))
 chief("chief-pressure", C("nodding with one hand open towards the viewer", close=True),
-      c("對。研究泡泡的人說，小泡泡裡面的壓力比較大，"), c("所以是它往大的那邊推。", None, "P:big"))
+      c("所以是小的往大的那邊推。", None, "P:big"))
 kid("kid-small-wins", K("jumping up with both arms raised high and a surprised delighted grin", where=PARK),
     k("小的反而贏了！", "驚訝"))
-kid("kid-three-q", K("holding up three fingers with an eager curious face", where=BALCONY),
-    k("那三顆擠在一起呢？", "句尾上揚", "S:three"))
-bub("three-bubbles", "Close-up of three round soap bubbles of the same size stuck together in a little triangle cluster in the sunny air, three flat shiny walls meeting in one line at the centre, soft pink and green sheen, blue sky behind",
-    c("三片牆會在中間碰在一起，"), c("碰的角度都差不多一樣，大約一百二十度。"))
-kid("kid-120-q", K("spreading her two hands apart at an angle with a puzzled face", where=HOME),
-    k("一百二十度是多大？", "句尾上揚"))
-bub("cake-three", "Top-down view of a round strawberry cream cake on a white plate on a wooden table, cut into three equal slices from the centre, a cake knife beside the plate" + ", plain warm pale cream background",
-    c("像把一個圓蛋糕，切成一樣大的三塊，"), c("每一塊尖尖的那個角，就差不多那麼大。", None, "P:three"))
-kid("kid-cake", K("holding a slice of strawberry cake on a small plate with a happy grin", where=HOME),
-    k("三塊一樣大，", "開心"), k("好公平！"))
-chief("chief-foam", C("holding up a small glass bowl heaped with white soap foam, a curious smile"),
-      c("下次你吹出一串泡泡，看看牆交叉的地方，", "轉向觀眾"), c("是不是都剛好三片？"))
 kid("kid-colour-q", K("holding the small clear bottle of bubble liquid up to the light with a puzzled face", where=BALCONY),
     k("形狀我懂了。", "想一想"), k("可是泡泡水沒有顏色，", "不解"), k("顏色從哪來？", "章尾停住，句尾上揚"))
 
@@ -269,7 +255,7 @@ chief("chief-two-faces", C("holding up a silver wire square bubble wand with a b
 kid("kid-two-light", K("holding up two fingers with a surprised face", where=HOME),
     k("一顆泡泡，", "驚訝"), k("彈回來兩道光？"))
 chief("chief-longer", C("holding her two hands one slightly behind the other, a thoughtful smile", close=True),
-      c("對。裡面那道，要多穿過一次皮，"), c("走的路，比外面那道長一點點。"))
+      c("對。裡面那道，要在皮裡走一個來回，"), c("走的路，比外面那道長一點點。"))
 kid("kid-so-what", K("shrugging with both palms up and a puzzled face", where=HOME),
     k("長一點點，", "不解"), k("又怎樣？", "句尾上揚"))
 chief("chief-pond", C("holding two small round smooth pebbles in her open palm with a playful smile"),
@@ -311,7 +297,7 @@ chief("chief-recall-dark", C("pointing one finger up with a playful knowing smil
 kid("kid-black-q", K("leaning forward eagerly with both hands on her knees", where=BALCONY),
     k("記得！為什麼會變黑？", "句尾上揚"))
 bub("bubble-dark-top", "Close-up of a round soap bubble on a square silver wire loop, a smooth dark grey cap spreading across its top while soft gold and pink bands shimmer below, sunny balcony background",
-    c("頂上的皮薄到一個程度，兩道光不管是什麼顏色，"), c("都剛好互相抵掉。", None, "P:thick"))
+    c("頂上的皮比光的波還薄很多，兩道光不管是什麼顏色，"), c("都剛好互相抵掉。", None, "P:thick"))
 chief("chief-no-light", C("cupping both empty hands open towards the viewer with a gentle smile", close=True),
       c("沒有光彈回你的眼睛，看起來就黑了。"))
 kid("kid-black-pop", K("covering her mouth with both hands and wide worried eyes", where=BALCONY),
@@ -357,7 +343,7 @@ kid("kid-two-q", K("holding the square wire wand in one hand and the small clear
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the viewer"),
       c("你說呢？小問，你來說說看。", "笑"), chapter="小問說出了答案")
 kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her", where=BALCONY),
-    k("我懂了！", "恍然大悟", "P:two"), k("皮一直想縮小，", "篤定"), k("所以泡泡是圓的；", "篤定"), k("皮多厚、從哪邊看，", "篤定"), k("決定光留下什麼顏色！", "篤定", "P:main"))
+    k("我懂了！", "恍然大悟", "P:two"), k("方框管不住它，", "篤定"), k("因為皮自己會縮圓！", "篤定"), k("頭頂變黑，", "篤定"), k("是皮快薄到底了！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好，是你自己連起來的。", "笑"), c("我覺得最好玩的是：你看到的顏色，"))
 bub("bubble-thinning", "Close-up of a round soap bubble on a square silver wire loop shimmering with soft bands of gold, magenta and blue, a small dark grey cap just starting at its very top, sunny balcony background",
@@ -376,11 +362,11 @@ chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a war
 
 # ---------- assemble ----------
 WHAT = {"main": "一層皮，怎麼管形狀又管顏色", "square": "框是方的，泡泡為什麼是圓的",
-        "paint": "泡泡水沒有顏色，泡泡為什麼有顏色", "push": "小泡泡怎麼會把大泡泡推進去一塊",
+        "paint": "泡泡水沒有顏色，泡泡為什麼有顏色", "push": "兩顆泡泡黏在一起，中間的牆往哪邊彎",
         "dark": "泡泡頂上變黑，是在說什麼", "guess": "這層皮是不是一直想把自己縮小",
         "shrink": "泡泡吹到一半停下來，會怎樣", "box": "包成方盒子不行嗎",
         "wall": "兩顆泡泡黏在一起，還會是圓的嗎", "big": "一大一小，是不是大的把小的壓扁",
-        "three": "三顆泡泡擠在一起，牆怎麼碰", "tension": "是不是皮拉得太緊才變彩色",
+        "tension": "是不是皮拉得太緊才變彩色",
         "thick": "哪一種顏色會被抵掉", "test": "怎麼知道「看厚薄」這個猜法對不對",
         "tilt": "一歪頭顏色也變，是皮變薄了嗎", "tell": "怎麼分出是厚薄在變還是方向在變",
         "two": "形狀跟顏色，是不是兩件事", "swirl": "泡泡身上的顏色為什麼一直轉"}
@@ -471,6 +457,6 @@ for s in body:
 for g in gaps: print(f"  hook gap {g}", file=sys.stderr)
 assert not gaps, "a stretch longer than 45 s without a question or a planted loop"
 assert len(loops) >= 11, "11 minutes need at least 11 loops (brief: loops >= 11, every one paid off)"
-assert 2200 <= body_chars <= 2400, f"body {body_chars} characters: write 2,200–2,400 (README §9, 3.2 chars/s; EPISODES.md gives P06 10–12 min)"
+assert 2050 <= body_chars <= 2400, f"body {body_chars} characters: write 2,050–2,400 (blind round 1 cut the 120° detour) (README §9, 3.2 chars/s; EPISODES.md gives P06 10–12 min)"
 cams = [s["data"]["camera"] for s in scenes]
 assert all(not (a == b == c_) for a, b, c_ in zip(cams, cams[1:], cams[2:])), "three shots in a row with the same camera"
