@@ -186,8 +186,6 @@ chief("chief-stingy", C("laughing softly with one hand raised, a playful smile",
       c("對泡泡皮來說，能縮就縮，多一點都不肯。", "笑"))
 bub("many-wands", "Close-up of three simple silver wire bubble wands lying side by side on a balcony table, one with a square loop, one with a triangle loop and one with a star-shaped loop, a perfectly round soap bubble floating up above each one, sunny balcony background",
     c("所以你的方框，只管得住框裡那一片皮。", None, "P:square"))
-kid("kid-mine-round", K("waving the square wire wand happily in the air with a big grin", where=BALCONY),
-    k("所以我的方框，", "恍然"), k("怎麼吹都是圓的！"))
 chief("chief-limit", C("holding up one deflated red balloon with an honest serious smile", close=True),
       c("先說清楚，氣球皮只是比喻。氣球放完氣，皮會鬆掉；"), c("泡泡皮不管縮得多小，都一直在拉。"))
 kid("kid-always-q", K("hugging a big round beach ball with a wondering face", where=HOME),
@@ -319,7 +317,7 @@ chief("chief-slant", C("drawing a slanted line in the air with one fingertip, a 
 kid("kid-again-path", K("pointing up with one finger and a bright realising grin", where=BALCONY),
     k("又是多走的路！", "恍然"))
 chief("chief-second-test", C("holding up two fingers with a warm pleased smile", close=True),
-      c("對，這下又多了一條線索。我原本只猜到厚薄，"), c("你的歪頭，幫我們多找到一個：方向。"))
+      c("對，這下又多了一條線索。我原本只猜到厚薄，"), c("沒想到你歪個頭，就把我的猜法補齊了。"))
 kid("kid-tell-q", K("looking back and forth between two bubbles with a puzzled frown", where=BALCONY),
     k("那我怎麼分得出來，", "追問"), k("是哪一種在變？", "句尾上揚", "S:tell"))
 chief("chief-tell", C("holding her head very still and pointing at her own eye with a playful smile", close=True),
@@ -341,7 +339,7 @@ kid("kid-two-q", K("holding the square wire wand in one hand and the small clear
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the viewer"),
       c("是同一層皮，做了兩件事。你來說說看？", "笑"), chapter="同一層皮，做了兩件事")
 kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her", where=BALCONY),
-    k("我懂了！", "恍然大悟", "P:two"), k("我那天看到的，", "篤定"), k("從方框到頭頂變黑，", "篤定"), k("全是同一層皮！", "篤定", "P:main"))
+    k("我懂了！", "恍然大悟", "P:two"), k("我剛剛看到的，", "篤定"), k("從方框到頭頂變黑，", "篤定"), k("全是同一層皮！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好，是你自己連起來的。", "笑"))
 bub("bubble-thinning", "Close-up of a round soap bubble on a square silver wire loop shimmering with soft bands of gold, magenta and blue, a small dark grey cap just starting at its very top, sunny balcony background",
