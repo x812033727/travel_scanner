@@ -185,7 +185,7 @@ kid("kid-stingy", K("pinching her thumb and finger close together with a cheeky 
 chief("chief-stingy", C("laughing softly with one hand raised, a playful smile", close=True),
       c("對泡泡皮來說，能縮就縮，多一點都不肯。", "笑"))
 bub("many-wands", "Close-up of three simple silver wire bubble wands lying side by side on a balcony table, one with a square loop, one with a triangle loop and one with a star-shaped loop, a perfectly round soap bubble floating up above each one, sunny balcony background",
-    c("泡泡一離開框，就沒有東西撐著它的角了。", None, "P:square"))
+    c("所以你的方框，只管得住框裡那一片皮。", None, "P:square"))
 kid("kid-mine-round", K("waving the square wire wand happily in the air with a big grin", where=BALCONY),
     k("所以我的方框，", "恍然"), k("怎麼吹都是圓的！"))
 chief("chief-limit", C("holding up one deflated red balloon with an honest serious smile", close=True),
@@ -343,9 +343,9 @@ chief("chief-answer", C("sitting on the edge of a desk and leaning forward with 
 kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her", where=BALCONY),
     k("我懂了！", "恍然大悟", "P:two"), k("我那顆泡泡，", "篤定"), k("先被皮拉成圓的，", "篤定"), k("再一邊變薄，", "篤定"), k("一邊換顏色！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
-      c("說得好，是你自己連起來的。", "笑"), c("我覺得最好玩的是：你看到的顏色，"))
+      c("說得好，是你自己連起來的。", "笑"))
 bub("bubble-thinning", "Close-up of a round soap bubble on a square silver wire loop shimmering with soft bands of gold, magenta and blue, a small dark grey cap just starting at its very top, sunny balcony background",
-    c("其實就是這層皮，正在一點一點變薄的樣子。"))
+    c("我覺得最好玩的是：每顆泡泡，都像一個會變色的小時鐘。"))
 kid("kid-blow-again", K("dipping the square wire wand into her small clear bottle with an excited grin", where=BALCONY),
     k("我要再吹一顆！", "興奮"))
 chief("chief-observe", C("nodding with an encouraging smile, one finger raised", close=True),
