@@ -185,7 +185,7 @@ kid("kid-stingy", K("pinching her thumb and finger close together with a cheeky 
 chief("chief-stingy", C("laughing softly with one hand raised, a playful smile", close=True),
       c("對泡泡皮來說，能縮就縮，多一點都不肯。", "笑"))
 bub("many-wands", "Close-up of three simple silver wire bubble wands lying side by side on a balcony table, one with a square loop, one with a triangle loop and one with a star-shaped loop, a perfectly round soap bubble floating up above each one, sunny balcony background",
-    c("所以不管框是什麼形狀，", None, "P:square"), c("飛出去的泡泡，都會被拉成圓的。"))
+    c("泡泡一離開框，就沒有東西撐著它的角了。", None, "P:square"))
 kid("kid-mine-round", K("waving the square wire wand happily in the air with a big grin", where=BALCONY),
     k("所以我的方框，", "恍然"), k("怎麼吹都是圓的！"))
 chief("chief-limit", C("holding up one deflated red balloon with an honest serious smile", close=True),
@@ -287,7 +287,7 @@ bub("bubble-stripes", "Close-up of a big round soap bubble hanging from a square
 kid("kid-moving", K("leaning close to a bubble hanging on her square wire wand with a fascinated face", where=BALCONY),
     k("而且它們一直往下跑！", "發現"))
 chief("chief-time", C("sliding one flat hand slowly downward through the air, a pleased smile", close=True),
-      c("時間一過，皮一直變薄，顏色就一條一條往下換。"), c("猜法過關了：厚薄變，顏色就變。", None, "P:test"))
+      c("時間一過，皮一直變薄，顏色就一條一條往下換。"), c("還記得我的猜法嗎？它過關了。", None, "P:test"))
 kid("kid-swirl-q", K("drawing small swirls in the air with one finger and a curious face", where=BALCONY),
     k("那一開始，", "想起來"), k("顏色為什麼會打轉？", "句尾上揚"))
 bub("swirl-flow", "Close-up of a big round soap bubble on a square silver wire loop, soft breeze lines beside it, its pink, green, blue and gold colours swirling across the surface like marbled paint, sunny balcony background",
