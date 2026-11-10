@@ -333,11 +333,11 @@ kid("kid-loop", K("spinning one finger in small circles in the air with a curiou
 chief("chief-clue", C("nodding with a calm honest smile, one finger raised", close=True),
       c("對，所以顏色只能當線索，不能當尺。"))
 kid("kid-two-q", K("holding the square wire wand in one hand and the small clear bottle in the other, looking from one to the other with a thinking face", where=BALCONY),
-    k("所以形狀跟顏色，", "推理"), k("其實是兩件事？", "章尾停住，句尾上揚", "S:two"))
+    k("那形狀跟顏色，", "推理"), k("到底有沒有關係？", "章尾停住，句尾上揚", "S:two"))
 
 # ---------- 收尾 ----------
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the viewer"),
-      c("你自己找找看：方框跟變黑，有沒有一樣的地方？", "笑"), chapter="小問把方框跟變黑連起來了")
+      c("有。你自己找找看：方框跟變黑，哪裡一樣？", "笑"), chapter="小問把方框跟變黑連起來了")
 kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her", where=BALCONY),
     k("我懂了！", "恍然大悟", "P:two"), k("我剛剛看到的，", "篤定"), k("從方框到頭頂變黑，", "篤定"), k("全是同一層皮！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
