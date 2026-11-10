@@ -56,3 +56,7 @@ Self-heals after 2026-11-12T15:00Z, but the same fixture will bite again wheneve
   creates a trip departing 2026-11-10 and expects no issues; once that day is past in the trip's timezone
   `search_criteria` reports `trip_dates_past`. Pinned `search_criteria.datetime.now()` to 2026-11-01 in that test.
   Reproduced against a local PostgreSQL 16 and Redis (fails without, all 25 integration tests in the file pass with it).
+- 2026-11-10: a third one in `full-stack-smoke`: `e2e/full-stack.spec.ts` "a saved trip searches flights from its own
+  criteria" picks 2026-11-10 to 11-14 against the real API, so the editor opened on "today" (day 2, no flight card) and the
+  API would refuse to search a past departure. The browser clock cannot pin the server, so that test now picks dates 30–34
+  days from today. Not reproduced locally (needs the whole stack); CI is the check.
