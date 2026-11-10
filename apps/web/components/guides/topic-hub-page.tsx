@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { ListingEmpty, ListingToolbar } from "@/components/guides/listing-toolbar";
-import { NewsList } from "@/components/guides/news-list";
+import { NewsDesk } from "@/components/guides/news-desk";
 import { SeriesRow } from "@/components/guides/series-row";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
@@ -157,7 +157,7 @@ export async function renderTopicHub(
           itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) }))),
         ]}
       />
-      <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+      <main className={`mx-auto px-5 py-10 md:px-8 ${news ? "max-w-6xl" : "max-w-5xl"}`}>
         <nav aria-label={t("guides.breadcrumb")} className="text-[length:var(--text-meta)] text-[var(--muted)]">
           <ol className="flex flex-wrap items-center gap-1">
             {trail.slice(0, -1).map((crumb) => (
@@ -194,7 +194,9 @@ export async function renderTopicHub(
 
         {list.articles.length ? (
           news ? (
-            <NewsList articles={list.articles} className="mt-6" />
+            <NewsDesk articles={list.articles} lead={!route.cursor} active={route.topic} titleTag="h2"
+              topics={vocabulary.topics.filter((item) => isNewsTopic(section, item.slug) && (item.count === undefined || item.count > 0 || item.slug === route.topic))}
+              topicsLabel={t("guides.browseTopics")} />
           ) : (
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {list.articles.map((article) => (

@@ -89,6 +89,42 @@ const faqArticle = {
   related: [{ kind: "howto", slug: "tokyo-long", title: longArticle.document.title }],
 };
 
+const newsTopics = [
+  { slug: "ai-news", label: "AI 新聞", section: "life", count: 2 },
+  { slug: "tech-news", label: "科技新聞", section: "life", count: 3 },
+];
+const newsHero = {
+  src: "/guides/adobe-podcast-audio/hero.jpg", alt: "音訊工具示意圖", width: 1600, height: 900, credit: null,
+};
+const newsStories = [
+  { slug: "fixture-news-lead", title: "AI 工具的新功能，先看使用條件", news_date: "2026-11-08", topics: newsTopics, hero: newsHero },
+  { slug: "fixture-news-audio", title: "錄音工具更新：如何確認處理結果", news_date: "2026-11-07", topics: [newsTopics[0]], hero: newsHero },
+  { slug: "fixture-news-no-image", title: "沒有圖片的科技新聞仍然可以閱讀", news_date: "2026-11-06", topics: [newsTopics[1]], hero: null },
+  { slug: "fixture-news-older", title: "上一頁新聞之後的較早報導", news_date: "2026-11-05", topics: [newsTopics[1]], hero: null },
+].map((story) => ({
+  ...story, kind: "life", destination_id: null, destination_label: null,
+  description: `${story.title}，以官方說明核對適用範圍與限制。`,
+  published_at: "2026-11-10T05:00:00Z", valid_until: null, featured: false,
+}));
+const newsArticle = (slug: string) => {
+  const story = newsStories.find((entry) => entry.slug === slug)!;
+  return {
+    ...article, ...story, locale: "zh-TW", published_locales: ["zh-TW"],
+    document: {
+      ...article.document, title: story.title, description: story.description, hero: story.hero,
+      blocks: [
+        { type: "summary", items: ["先核對適用範圍。", "保留原始檔案以便比較。"] },
+        ...["這次更新的內容", "使用前先確認", "接下來可以怎麼做"].flatMap((heading, section) => [
+          { type: "heading", level: 2, text: heading },
+          ...(section === 1 ? [paragraph(`Reference: https://example.test/${"long-reference-segment".repeat(12)}`)] : []),
+          ...Array.from({ length: 5 }, (_, index) => paragraph(`第 ${section + 1} 節第 ${index + 1} 段：先閱讀官方說明，再以自己的工作流程確認差異。`.repeat(5))),
+        ]),
+      ],
+    },
+    related: [{ kind: "life", slug: newsStories[2].slug, title: newsStories[2].title }],
+  };
+};
+
 type Fixture = { origin: string; enabled: boolean; cmp: boolean; adRequests: string[] };
 
 /**
@@ -129,7 +165,15 @@ const test = base.extend<{ site: Fixture }>({
       else if (url.pathname === "/api/v1/guides/howto/tokyo-long") result = longArticle;
       else if (url.pathname === "/api/v1/guides/howto/tokyo-linked") result = linkedArticle;
       else if (url.pathname === "/api/v1/guides/howto/tokyo-faq") result = faqArticle;
-      else if (url.pathname.startsWith("/api/v1/guides/topics")) result = { items: [] };
+      else if (url.pathname.startsWith("/api/v1/guides/life/fixture-news-")) result = newsArticle(url.pathname.split("/").at(-1)!);
+      else if (url.pathname.startsWith("/api/v1/guides/topics")) result = { topics: url.searchParams.get("section") === "life" ? newsTopics : [] };
+      else if (url.pathname === "/api/v1/guides" && (url.searchParams.get("kind") === "life" || url.searchParams.get("section") === "life")) {
+        const topic = url.searchParams.get("topic");
+        // A separate curated result keeps the news lead from also appearing in the all-article grid.
+        const rows = url.searchParams.has("cursor") ? newsStories.slice(3)
+          : topic ? newsStories.slice(0, 3).filter((story) => story.topics.some((entry) => entry.slug === topic)) : [];
+        result = { articles: rows, next_cursor: topic === "tech-news" && !url.searchParams.has("cursor") ? "older+fixture" : null };
+      }
       else if (url.pathname.startsWith("/api/v1/guides")) result = { articles: [], total: 0 };
       else if (url.pathname === "/api/v1/runtime/site-visibility") result = Object.fromEntries(siteFeatureKeys.map((key) => [`${key}_enabled`, true]));
       else if (url.pathname === "/api/v1/usage-catalog") result = defaultUsageCatalog;
@@ -178,6 +222,131 @@ const test = base.extend<{ site: Fixture }>({
       await new Promise<void>((resolve) => upstream.close(() => resolve()));
     }
   },
+});
+
+test("the news desk keeps event dates and one lead while opening real article links", async ({ page, site }, testInfo) => {
+  site.enabled = false;
+  await page.goto(`${canonical}/zh-TW/life`);
+  const desk = page.getByTestId("news-desk");
+  const list = desk.getByTestId("news-list");
+  const lead = list.getByTestId("news-lead");
+  await expect(lead.getByRole("link", { name: newsStories[0].title, exact: true })).toBeVisible();
+  await expect(list.getByRole("link", { name: newsStories[0].title, exact: true })).toHaveCount(1);
+  await expect(list.locator("time")).toHaveText(["2026-11-08", "2026-11-07", "2026-11-06"]);
+  await expect(list).not.toContainText("2026-11-10");
+  await expect(list).toContainText(newsStories[1].description);
+  await expect(lead.locator("img")).toBeVisible();
+  await expect.poll(() => lead.locator("img").evaluate((node) => (node as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+  await expect(lead.locator("img")).toHaveCSS("object-fit", "contain");
+  const width = page.viewportSize()!.width;
+  if (width < 768) {
+    const headline = await lead.getByRole("heading").boundingBox();
+    const artwork = await lead.locator("img").boundingBox();
+    expect(headline!.y + headline!.height).toBeLessThanOrEqual(artwork!.y);
+  }
+  expect(await page.evaluate(() => window.innerWidth)).toBeLessThanOrEqual(width);
+  expect(await list.evaluate((node) => node.getBoundingClientRect().right)).toBeLessThanOrEqual(width);
+  const leadLink = lead.getByRole("link", { name: newsStories[0].title, exact: true });
+  await leadLink.focus();
+  await page.keyboard.press("Shift+Tab");
+  await page.keyboard.press("Tab");
+  await expect(leadLink).toBeFocused();
+  const outline = await leadLink.evaluate((node) => {
+    const style = getComputedStyle(node), box = node.getBoundingClientRect();
+    const extent = parseFloat(style.outlineOffset) + parseFloat(style.outlineWidth);
+    const clippedBy: string[] = [];
+    for (let ancestor = node.parentElement; ancestor; ancestor = ancestor.parentElement) {
+      const parentStyle = getComputedStyle(ancestor), bounds = ancestor.getBoundingClientRect();
+      if ((["hidden", "clip"].includes(parentStyle.overflowX) && (box.left - extent < bounds.left || box.right + extent > bounds.right))
+        || (["hidden", "clip"].includes(parentStyle.overflowY) && (box.top - extent < bounds.top || box.bottom + extent > bounds.bottom))) clippedBy.push(ancestor.tagName);
+    }
+    return { style: style.outlineStyle, clippedBy };
+  });
+  expect(outline.style).not.toBe("none");
+  expect(outline.clippedBy).toEqual([]);
+  await testInfo.attach("news-lead-keyboard-focus", { body: await page.screenshot(), contentType: "image/png" });
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(`${canonical}/zh-TW/life/${newsStories[0].slug}`);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(newsStories[0].title);
+});
+
+test("news category navigation and its cursor keep text-only articles reachable", async ({ page, site }) => {
+  site.enabled = false;
+  await page.goto(`${canonical}/zh-TW/life`);
+  await page.getByTestId("news-desk").locator('a[href="/zh-TW/life/topics/tech-news"]').first().click();
+  await expect(page).toHaveURL(`${canonical}/zh-TW/life/topics/tech-news`);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("科技新聞");
+  const list = page.getByTestId("news-list");
+  await expect(list.getByRole("link", { name: newsStories[2].title, exact: true })).toBeVisible();
+  await expect(list.getByRole("link", { name: newsStories[1].title, exact: true })).toHaveCount(0);
+  await page.locator('main a[href$="?cursor=older%2Bfixture"]').click();
+  await expect(page).toHaveURL(`${canonical}/zh-TW/life/topics/tech-news?cursor=older%2Bfixture`);
+  await expect(page.getByTestId("news-lead")).toHaveCount(0);
+  await expect(page.getByTestId("news-list").getByRole("link", { name: newsStories[3].title, exact: true })).toBeVisible();
+  await expect(page.getByTestId("news-list").locator("time")).toHaveText(["2026-11-05"]);
+  await page.goBack();
+  await page.getByTestId("news-list").getByRole("link", { name: newsStories[2].title, exact: true }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(newsStories[2].title);
+  await expect(page.locator("article > figure")).toHaveCount(0);
+});
+
+test("life article contents remain usable after reader scrolling on desktop and narrow mobile", async ({ page, site }) => {
+  site.enabled = false;
+  await page.goto(`${canonical}/zh-TW/life/${newsStories[0].slug}`);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(newsStories[0].title);
+  await expect(page.locator("#article-summary")).toContainText("保留原始檔案以便比較。");
+  const desktop = page.getByTestId("article-contents-desktop");
+  const mobile = page.getByTestId("article-contents-mobile");
+  if (page.viewportSize()!.width >= 1024) {
+    await expect(desktop).toBeVisible();
+    await expect(mobile).toBeHidden();
+    // Scroll where a reader does, then use the sticky contents without scrolling back up.
+    await page.mouse.move(300, 450);
+    await page.mouse.wheel(0, 1000);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(500);
+    const contentsBox = await desktop.locator("nav").boundingBox();
+    expect(contentsBox!.y).toBeGreaterThanOrEqual(0);
+    expect(contentsBox!.y).toBeLessThan(page.viewportSize()!.height / 2);
+    await desktop.locator('a[href="#section-3"]').click();
+  } else {
+    await expect(desktop).toBeHidden();
+    await mobile.locator("summary").click();
+    await mobile.locator('a[href="#section-3"]').click();
+  }
+  await expect(page).toHaveURL(/#section-3$/);
+  const target = page.locator("h2#section-3");
+  await expect(target).toBeInViewport();
+  expect(await target.evaluate((node) => {
+    const box = node.getBoundingClientRect();
+    return node.contains(document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2));
+  })).toBe(true);
+
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.evaluate(() => { document.documentElement.dataset.textSize = "largest"; });
+  await expect(desktop).toBeHidden();
+  await mobile.locator("summary").scrollIntoViewIfNeeded();
+  if (!(await mobile.evaluate((node) => (node as HTMLDetailsElement).open))) await mobile.locator("summary").click();
+  await mobile.locator('a[href="#section-2"]').click();
+  await expect(page).toHaveURL(/#section-2$/);
+  await expect(page.locator("h2#section-2")).toBeInViewport();
+  expect(await page.evaluate(() => window.innerWidth)).toBeLessThanOrEqual(320);
+  const body = await page.locator("article").boundingBox();
+  expect(body!.x).toBeGreaterThanOrEqual(0);
+  expect(body!.x + body!.width).toBeLessThanOrEqual(320);
+  // The article box can fit while its text escapes. Measure rendered text fragments,
+  // including an unbroken reference URL, and the actual contents controls separately.
+  for (const locator of [page.locator("h2#section-2"), page.locator("h2#section-2 + p"), mobile.locator("summary"), mobile.locator('a[href="#section-2"]')]) {
+    const edges = await locator.evaluate((node) => {
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      return Array.from(range.getClientRects(), rect => ({ left: rect.left, right: rect.right }));
+    });
+    expect(edges.length).toBeGreaterThan(0);
+    for (const edge of edges) {
+      expect(edge.left).toBeGreaterThanOrEqual(0);
+      expect(edge.right).toBeLessThanOrEqual(320);
+    }
+  }
 });
 
 test("FAQ contents links reach the authored questions before related reading", async ({ page, site }) => {

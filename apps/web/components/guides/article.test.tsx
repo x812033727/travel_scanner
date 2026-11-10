@@ -46,7 +46,7 @@ const document = {
 
 function draw(
   overrides: Record<string, unknown> = {},
-  extra: { readingTime?: string; adsense?: AdsenseConfig; labels?: Partial<GuideArticleLabels>; geminiSeries?: VisibleGeminiSeries | null; related?: ReactNode } = {},
+  extra: { readingTime?: string; adsense?: AdsenseConfig; labels?: Partial<GuideArticleLabels>; geminiSeries?: VisibleGeminiSeries | null; related?: ReactNode; contentsInSidebar?: boolean } = {},
 ) {
   return render(
     <GuideArticle
@@ -55,6 +55,7 @@ function draw(
       adsense={extra.adsense}
       geminiSeries={extra.geminiSeries}
       related={extra.related}
+      contentsInSidebar={extra.contentsInSidebar}
       state={{
         slug: "tokyo-esim", kind: "howto", locale: "zh-TW", status: "published",
         destination_id: "tokyo", destination_label: "東京",
@@ -344,8 +345,22 @@ describe("GuideArticle in the lifestyle section", () => {
   });
 
   it("links its topic chips at the lifestyle listing, not a /guides one", () => {
-    draw(life);
-    expect(screen.getByRole("link", { name: "AI 工具" }).getAttribute("href")).toBe("/life?topic=ai");
+    const { container } = draw(life);
+    expect(within(container.querySelector("header")!).getByRole("link", { name: "AI 工具" }).getAttribute("href")).toBe("/ai");
+    expect(screen.getAllByRole("link", { name: "AI 工具" }).map(link => link.getAttribute("href"))).toContain("/life?topic=ai");
+  });
+
+  it("keeps a folded mobile contents copy with the same authored section targets", () => {
+    const { container } = draw({
+      ...life,
+      document: { ...document, blocks: [1, 2, 3].map(number => ({ type: "heading", level: 2, text: `Section ${number}` })) },
+    }, { contentsInSidebar: true });
+    const details = screen.getByTestId("article-contents-mobile");
+    expect(details.hasAttribute("open")).toBe(false);
+    const links = [...details.querySelectorAll("a")];
+    expect(links.map(link => link.getAttribute("href"))).toEqual(["#section-1", "#section-2", "#section-3"]);
+    for (const link of links) expect(container.querySelector(link.getAttribute("href")!)?.textContent).toBe(link.textContent?.replace(/^\d+\. /, ""));
+    expect(container.querySelectorAll("nav")).toHaveLength(1);
   });
 
   it("renders whatever the page handed it to read next", () => {

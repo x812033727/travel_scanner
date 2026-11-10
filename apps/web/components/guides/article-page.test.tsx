@@ -102,6 +102,38 @@ describe("Codex articles on the shared page", () => {
   });
 });
 
+describe("the editorial reading layout", () => {
+  const slug = "news-layout-example";
+
+  it("links both contents copies to the same unique body headings without changing their order", async () => {
+    mocks.article.mockResolvedValue({ ...state, slug, series: null });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug }));
+    const desktop = screen.getByTestId("article-contents-desktop");
+    const mobile = screen.getByTestId("article-contents-mobile");
+    const targets = (element: HTMLElement) => [...element.querySelectorAll("a")].map(link => link.getAttribute("href"));
+    expect(targets(desktop)).toEqual(["#section-1", "#section-2", "#section-3"]);
+    expect(targets(mobile)).toEqual(targets(desktop));
+    for (const target of targets(desktop)) expect(container.querySelectorAll(target!)).toHaveLength(1);
+    expect([...container.querySelectorAll("article h2")].map(heading => heading.textContent)).toEqual(["Step 1", "Step 2", "Step 3"]);
+    expect(mobile.hasAttribute("open")).toBe(false);
+  });
+
+  it("does not add an empty sidebar or contents to a short article", async () => {
+    mocks.article.mockResolvedValue({ ...state, slug, series: null, document: { ...document, blocks: document.blocks.slice(0, 2) } });
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug }));
+    expect(screen.queryByTestId("article-contents-desktop")).toBeNull();
+    expect(screen.queryByTestId("article-contents-mobile")).toBeNull();
+  });
+
+  it("keeps the travel article's single inline contents", async () => {
+    mocks.article.mockResolvedValue({ ...state, slug, kind: "howto", series: null });
+    render(await renderGuideArticle({ locale: "en", kind: "howto", slug }));
+    expect(screen.queryByTestId("article-contents-desktop")).toBeNull();
+    expect(screen.queryByTestId("article-contents-mobile")).toBeNull();
+    expect(screen.getAllByRole("navigation", { name: "目錄" })).toHaveLength(1);
+  });
+});
+
 describe("further reading", () => {
   const ref = (slug: string, title: string, kind: "life" | "howto" = "life") =>
     ({ kind, slug, title, description: `${title} 的描述` });

@@ -16,7 +16,7 @@ import { Link } from "@/i18n/navigation";
 import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination, guideAffiliateModules, guideAffiliatePlacement } from "@/lib/guide-affiliate";
 import {
-  guideHeadings, guideListHref, partnerClickPath, splitGuideBlocks,
+  guideHeadings, guideListHref, guideTopicHref, partnerClickPath, splitGuideBlocks,
   type GuideArticleState, type GuideKind,
   splitArticleExtras,
 } from "@/lib/guides";
@@ -68,7 +68,7 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * synchronous and renders directly under React Testing Library.
  */
 export function GuideArticle({
-  state, labels, related, readingTime, adsense, seriesHub, geminiSeries = null,
+  state, labels, related, readingTime, adsense, seriesHub, geminiSeries = null, contentsInSidebar = false,
 }: {
   state: GuideArticleState & { document: NonNullable<GuideArticleState["document"]> };
   labels: GuideArticleLabels;
@@ -79,8 +79,11 @@ export function GuideArticle({
   readingTime?: string | null;
   /** Disabled, or absent, means no slot AND no reserved space anywhere in the body. */
   adsense?: AdsenseConfig;
+  /** The page renders the desktop contents beside the article; keep a folded mobile copy. */
+  contentsInSidebar?: boolean;
 }) {
   const { document } = state;
+  const editorial = state.kind === "life" && !state.series && !geminiSeries && !seriesHub;
   const geminiMember = geminiSeries ? visibleGeminiMember(geminiSeries, state.slug, state.locale, state.kind) : undefined;
   const isGeminiHub = geminiSeries && state.kind === "life" && state.locale === geminiSeries.locale && state.slug === geminiSeries.hubSlug;
   // First publication is never drawn; it is only the date "updated" has to beat before it
@@ -176,24 +179,29 @@ export function GuideArticle({
   const showAffiliate = Boolean(affiliateDestination) && affiliateModules.length > 0 && !state.expired;
 
   return (
-    <article className="space-y-6 break-words [overflow-wrap:anywhere]">
+    <article className={`${editorial ? "space-y-8" : "space-y-6"} break-words [overflow-wrap:anywhere]`}>
       {geminiMember && geminiSeries ? <GeminiNavigation series={geminiSeries} number={geminiMember.number} position="top" /> : null}
       <header>
         <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
           <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--ink)]">
             {labels[state.kind]}
           </span>
+          {editorial && state.topics[0] ? (
+            <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline-offset-4 hover:underline" href={guideTopicHref("life", state.topics[0].slug)}>
+              {state.topics[0].label}
+            </Link>
+          ) : null}
           {state.destination_label ? (
             <Link className="underline" href={`/destinations/${state.destination_id}`}>
               {state.destination_label}
             </Link>
           ) : null}
         </p>
-        <h1 className="mt-3 text-3xl font-bold">{document.title}</h1>
-        <p className="mt-3 leading-7 text-[var(--muted)]">{document.description}</p>
+        <h1 className={editorial ? "mt-4 text-3xl font-bold leading-snug tracking-tight sm:text-4xl lg:text-5xl lg:leading-tight" : "mt-3 text-3xl font-bold"}>{document.title}</h1>
+        <p className={editorial ? "mt-5 text-lg leading-8 text-[var(--muted)]" : "mt-3 leading-7 text-[var(--muted)]"}>{document.description}</p>
         {isGeminiHub ? <a href="#series-directory" className="mt-3 inline-flex min-h-11 items-center text-[var(--teal)] underline">{geminiCopy.start}</a> : null}
         {(modified && modified > published) || readingTime ? (
-          <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--muted)]">
+          <p className={`${editorial ? "mt-5 border-b border-[var(--line)] pb-6" : "mt-3"} flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--muted)]`}>
             {modified && modified > published ? (
               <span>{labels.updated}: <time dateTime={modified}>{modified}</time></span>
             ) : null}
@@ -233,7 +241,7 @@ export function GuideArticle({
       {state.series?.current && !geminiMember ? <SeriesStart series={state.series} locale={state.locale} /> : null}
       {seriesHub}
       {isGeminiHub && geminiSeries ? <GeminiSeriesIndex series={geminiSeries} /> : null}
-      {headings.length >= CONTENTS_MIN_HEADINGS && !state.series ? (
+      {headings.length >= CONTENTS_MIN_HEADINGS && !state.series && !contentsInSidebar ? (
         <nav aria-label={labels.contents} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] px-4 py-3">
           <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">{labels.contents}</p>
           <ol className="mt-2 space-y-1 leading-7">
@@ -244,6 +252,20 @@ export function GuideArticle({
             ))}
           </ol>
         </nav>
+      ) : null}
+      {headings.length >= CONTENTS_MIN_HEADINGS && contentsInSidebar ? (
+        <details className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 lg:hidden" data-testid="article-contents-mobile">
+          <summary className="min-h-11 cursor-pointer font-semibold">{labels.contents}</summary>
+          <nav aria-label={labels.contents}>
+            <ol className="mt-2 space-y-1 leading-7">
+              {headings.map((heading, index) => (
+                <li key={heading.id}>
+                  <a href={`#${heading.id}`} className="inline-flex min-h-11 items-center text-[var(--teal)] underline-offset-4 hover:underline">{index + 1}. {heading.text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </details>
       ) : null}
       {state.series?.current && headings.length >= CONTENTS_MIN_HEADINGS ? <details className="rounded-2xl border border-[var(--line)] p-4 lg:hidden">
         <summary className="min-h-11 cursor-pointer font-semibold">{labels.contents}</summary>
