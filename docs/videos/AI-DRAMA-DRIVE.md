@@ -83,8 +83,45 @@ docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "<目的地>/AI劇/<名�
 | 在哪裡做片 | 怎麼寫雲端硬碟 |
 | --- | --- |
 | Colab | `from google.colab import drive; drive.mount('/content/drive')`，站主用自己的帳號登入；目的地寫 `/content/drive/MyDrive/AI/備份/AI劇/…` |
-| Claude Code 雲端 session | 站主另建一把備份用的 rclone 權杖，放在 session 的環境變數或 secret，指向 `TODRIVE_RCLONE_CONFIG`；目的地寫 `<remote>:AI劇/…`（remote 鎖在 `AI/備份`）。權杖不進 repo、不貼進對話 |
+| Claude Code 雲端 session | 站主另建一把備份用的 rclone 權杖 `aidrama`（下面〈session 用的權杖〉），放在雲端環境的環境變數 `TODRIVE_RCLONE_CONF`；目的地寫 `aidrama:AI劇/…`（remote 鎖在 `AI/備份`）。權杖不進 repo、不貼進對話 |
 | 站主的電腦 | 目的地直接寫 `G:/我的雲端硬碟/AI/備份/AI劇/…` |
+
+### session 用的權杖
+
+主機已經有一把 `videobackup`（`/etc/travel-scanner/rclone-videos/rclone.conf`，2026-10-22 站主建的，影片備份與舊分支搬家都用它），
+但雲端 session 跑在 Anthropic 的容器裡，讀不到主機的檔。把那把複製給 session 也能用，代價是：整個雲端硬碟的完整權限出現在每一個
+session 裡，外洩時撤銷它會連主機的影片備份一起停。所以另建一把只給 session 用的 `aidrama`。
+
+rclone 只有兩種權限可選：`drive.file` 只看得到 rclone 自己建的檔，看不到主機建的 `AI劇/`，會另建一個同名資料夾（2026-10-15 就是因為這樣
+選了完整權限）；`drive` 是整個雲端硬碟。所以 `aidrama` 也是完整權限，靠「跟主機分開、隨時可撤銷」控制風險。
+
+要站主本人在自己的電腦上做（Google 的同意只能在有瀏覽器的地方按）。開一個獨立的終端機視窗，不要在 Claude app 的 Terminal 面板裡做
+（那裡的畫面代理讀得到）。用戶端密鑰與權杖不貼進任何對話。
+
+1. **OAuth 用戶端（選用，建議做）**：Google Cloud 專案 `mokaair-studio-sync` → API 和服務 → 憑證 → 建立憑證 → OAuth 用戶端 ID →
+   電腦版應用程式，名稱 `drive-backup-sessions`。跟主機分開的用戶端，外洩時刪掉它不影響主機。想省事也可以用主機那個用戶端，
+   但到 myaccount.google.com/permissions 撤銷時會連主機一起撤。同意畫面已是正式版、Drive API 已啟用（〈主機設定〉，BACKUP.md），
+   權杖不會七天就失效。
+2. **`AI/備份` 的資料夾 ID**：瀏覽器打開 drive.google.com → AI → 備份，網址 `drive.google.com/drive/folders/<ID>` 的 `<ID>`。
+3. **建 remote**：`rclone config` → `n` → 名稱 `aidrama` → 類型 `drive` → `client_id`、`client_secret` 填第 1 步的（沒做第 1 步就填主機那組）
+   → `scope` 選 `1`（drive）→ `root_folder_id` 填第 2 步的 ID → `service_account_file` 留空 → 進階設定 `n` → 自動設定 `y`（瀏覽器同意）
+   → 共用雲端硬碟 `n`。
+4. **測試**：`rclone lsd aidrama:` 看得到 `AI劇` 等資料夾，`rclone lsd aidrama:AI劇` 看得到各部劇。
+5. **放進雲端環境**：`rclone config show aidrama` 印出的整段（`[aidrama]` 那幾行），貼進 Claude Code 雲端環境設定的環境變數
+   `TODRIVE_RCLONE_CONF`。
+
+每個 session 開始時（或寫進環境的 setup script）：
+
+```bash
+command -v rclone || curl -fsSL https://rclone.org/install.sh | sudo bash
+mkdir -p ~/.config && printf '%s\n' "$TODRIVE_RCLONE_CONF" > ~/.config/rclone-aidrama.conf
+chmod 600 ~/.config/rclone-aidrama.conf
+export TODRIVE_RCLONE_CONFIG=~/.config/rclone-aidrama.conf
+docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "aidrama:AI劇/<名稱>/<集數>/製作檔/<工作資料夾名>"
+```
+
+**外洩時**：Cloud Console 刪掉 `drive-backup-sessions` 用戶端（或到 myaccount.google.com/permissions 移除存取權），再照上面重建；
+主機用的是另一個用戶端，影片備份不受影響。
 
 ## 怎麼確認完整
 

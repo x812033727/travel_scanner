@@ -72,3 +72,5 @@ node --test tools/video/automation/backup.test.mjs
 - session 寫雲端硬碟：Colab 用 `drive.mount()`；Claude Code session 用另建的備份權杖（環境變數，不進 repo）。
   主機那把權杖是整個雲端硬碟的完整權限，`root_folder_id` 不是權限邊界，不發給 session。
 - 搬移與同一輪的複製都會用 `_舊版/<時間>/`；搬移改用 `_舊版/<時間>-搬移/`，否則複製會蓋掉搬移移進去的檔（測試抓到的）。
+- 搬家（2026-11-10 01:35 UTC 起，主機 `/root/drive-migration/`）：前 45 條約每小時 4 GB，小檔多的分支被 `--tpslimit 5` 卡住；
+  03:07 起主機那份改成 `--tpslimit 10 --transfers 8 --checkers 16` 重跑（帳本跳過已完成的）。repo 的 `migrate.py` 仍是保守值。
