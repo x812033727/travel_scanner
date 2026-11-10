@@ -1,13 +1,13 @@
 ---
 id: 2026-11-10-mokaair-news-article-layout
 title: Implement approved Mokaair news and article layouts
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: codex-news-layout
 claimed_at: 2026-11-10T11:31:26Z
 created_at: 2026-11-10T11:30:52Z
-completed_at:
+completed_at: 2026-11-10T12:05:41Z
 branch: codex/mokaair-news-layout-20261110
 depends_on: []
 scope:
@@ -36,14 +36,14 @@ The owner approved the Mokaair news-list and article preview after studying Kocp
 
 - [x] News uses a lead story, thumbnails, descriptions and usable topic links, preserving event-date chronology and pagination.
 - [x] Lifestyle articles provide readable typography, a desktop contents rail and a folded mobile contents list; travel and series behavior remains intact.
-- [ ] Relevant checks and desktop/mobile browser verification pass; a reviewable PR carries the implementation without merging or deploying.
+- [x] Relevant checks and desktop/mobile browser verification pass; a reviewable PR carries the implementation without merging or deploying.
 
 ## Steps
 
 - [x] Check active branches, worktrees, remote heads and open PR file scopes; create isolated worktree from b5f713f57.
 - [x] Implement news and article layouts with existing catalog strings and content.
 - [x] Validate components, five-language catalogs, build and browser interactions.
-- [ ] Record evidence and open a PR with no-auto-merge.
+- [x] Record evidence and open a PR with no-auto-merge.
 
 ## How to verify
 
@@ -61,3 +61,4 @@ Run web lint, i18n, TypeScript, unit tests, production build, task checks and th
 - Final isolated capture: 16 pages and 18 PNGs across all five locales, desktop/mobile/320px/dark, zero page errors, keyboard focus clippedBy=[]. Root and independent layout_review both inspected final images; no blocking visual findings. Original captures are preserved in before-fix/.
 - Local evidence: C:/Users/x8120/.codex/tmp/mokaair-news-layout-20261110/ (build-final.log, before-fix/, final/e2e-results.json, final/visual-results.json and PNGs). All browser/fixture processes were closed.
 - Pre-PR audit repeated: origin/main still b5f713f57; no matching open PR scope or competing news/layout branch. Initial parallel broad guide-test attempt was interrupted during memory pressure; it is not counted as a pass. All relevant focused cases were completed separately.
+- PR: https://github.com/x812033727/travel_scanner/pull/2061, opened with no-auto-merge. CI is tracked on the PR; closing this implementation ticket does not authorize merge or deployment.
