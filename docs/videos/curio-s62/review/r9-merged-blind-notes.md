@@ -1,0 +1,3 @@
+# S62 R9 dual-reader merge
+
+Final script572bbb5066df994cf3ad36a567f76c97095aff47066cf43babefaf929edd5198. ReaderA13yes; readerB11yes,2no(payoffs,no_recap). Preserve both exact reports and official receipts. Per curio-episode rule, a question fails only when both readers answer no; OR merge13/13 PASS. B found delayed callbacks insufficient and late crowding recap; A judged payoffs and new concluding inference adequate. No claim unanimous13/13. First pre-unit readers did not assess finalunitcorrections; these finalfreshreaders did. Two separate source verifiers PASS for7listenerchanges and4unitfixes (10unique). No owner listening claimed.

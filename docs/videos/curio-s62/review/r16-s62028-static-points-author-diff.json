@@ -1,0 +1,35 @@
+{
+  "slug": "curio-s62",
+  "scene": "s62028",
+  "role": "prompt-author-candidate",
+  "date_utc": "2026-10-22",
+  "old_prompt": "Medium shot, in an Italian setting in 1610, a quiet sky watcher tilts the tube slightly to follow a pale line of lights, on a small stone balcony, soft light from clear dark air. The adult European scholar wears a wool doublet and a white linen ruff.",
+  "new_prompt": "Medium shot on a small stone balcony in Italy on a clear winter night in January 1610: one adult European scholar in a wool doublet and white linen ruff looks through a plain telescope toward several separate small, steady round light points near one brighter point in the dark sky.",
+  "reason": "R15 selected art depicted one moving luminous body with a long tail instead of separate steady Jovian-adjacent points",
+  "source": {
+    "path": "/tmp/curio-s62-sidereal.txt",
+    "sha256": "74fc9b817b64bc33415c6a44100c30f48952bc531d380682e5f4f1a26cc56fb5",
+    "lines": "1267-1277"
+  },
+  "changes": [
+    "docs/videos/curio-s62/video.json: scenes[27].data.prompt only",
+    "docs/videos/curio-s62/claims.md: s62028 visual field prompt mirror only"
+  ],
+  "video_sha256_before": "9fa0b2fc205310c5389b4611043be82c2590b773a3d6df7f58e2acf3c6a5a257",
+  "video_sha256_after": "2466bb7c424dbb777eb2f7ec65d7fc2eeb1b32d5c922ecdf001fd0c414f56a17",
+  "claims_sha256_before": "1565041acc73dedfbe70c3bec542ba49d621ff4e437dc804b5332e2bcf561354",
+  "claims_sha256_after": "6df99ac40890be2649ba10498d58561384e19d74a2e794b2bfaf6d534785ab45",
+  "script_sha256_unchanged": "bb125a43aa15e2fcbda3f25b7e137d6ae81cb97f5a35973f8702a8774231f766",
+  "manifest_sha256_unchanged": "fed66bbb5805a62a120e2369488408c72ee756ea7945e51efb5e86ee2d6cea76",
+  "actual_attempts_used": 1,
+  "actual_attempts_remaining": 2,
+  "stop_present": true,
+  "jobs_empty": true,
+  "paid_media_started_after_repair": false,
+  "s62030": "1 image ready, not judged, no selected",
+  "lint": {
+    "errors": 0,
+    "warnings": 3
+  },
+  "disposition": "Independent paper review before paid take"
+}
