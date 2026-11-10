@@ -6,86 +6,411 @@
   "world": {
     "realm": "A fictional modern port city, Port Merrow, on Puget Sound in Washington State (fictional Merrow County): a glass house on the bluff, Merrow General Hospital, the old glassworks district on Kiln Row, a new harbor promenade, the Port Merrow Museum of Art, the County Prosecutor's Office and Superior Court. Rain, ferries, grey-green water. It maps to no real city, hospital, court, company or person. Legal procedure (report, charges, investigation, arraignment, custody, trial, conviction review) stays at common-sense level and never cites real statutes; “my prenatal medication” is generic and never names a real drug, ingredient or dose.",
     "regions": [
-      { "id": "glass-house", "name": "The Glass House", "what": "The house Grant built for her on the bluff over the water: glass on every side, anyone can see in. In season one Sienna hangs heavy curtains; in season two the court gives it back to Nora; the season-five reconciliation dinner happens here." },
-      { "id": "hallway", "name": "Merrow General, seventh-floor hallway", "what": "Where she lost the baby. The light at the far end never stops flickering. In season five it is torn out and replaced with a glass corridor she designed." },
-      { "id": "pell-glassworks", "name": "Kiln Row — Pell Glassworks (Remelt Studio)", "what": "The glassworks where she apprenticed at nineteen, closed twelve years ago. Elias bought it back and leases it to her; Furnace No. 3 is lit again. On the wall: the evidence wall and the case tracker, a glass tube with beads. Next door is her mother's shuttered studio, Claire Quinn Glass." },
-      { "id": "ashford-house", "name": "The Ashford house on the hill", "what": "Grey board-formed concrete, very few windows. She moves into the guest room with her ex-mother-in-law; the long dining table is the two mothers' battlefield. In season five it gains a window she blew." },
-      { "id": "whitlock-flagship", "name": "Whitlock Home flagship store", "what": "Grant's brand. The Forever vase sits in the brightest case; the launch stage and the shareholder meetings are here." },
-      { "id": "courthouse", "name": "Merrow County Prosecutor's Office and Superior Court", "what": "Deputy Prosecutor Reyes's office, the civil courtroom and the main courtroom; the case moves one stage forward each season." },
-      { "id": "museum", "name": "Port Merrow Museum of Art, storage", "what": "Where twelve “antique” lamps were bought twelve years ago; the last one is still locked in storage." },
-      { "id": "rosas", "name": "Rosa's", "what": "A chowder shack at the corner of Kiln Row that Rosa Pell has kept open for twelve years; where the two mothers make peace." }
+      {
+        "id": "glass-house",
+        "name": "The Glass House",
+        "what": "The house Grant built for her on the bluff over the water: glass on every side, anyone can see in. In season one Sienna hangs heavy curtains; in season two the court gives it back to Nora; the season-five reconciliation dinner happens here."
+      },
+      {
+        "id": "hallway",
+        "name": "Merrow General, seventh-floor hallway",
+        "what": "Where she lost the baby. The light at the far end never stops flickering. In season five it is torn out and replaced with a glass corridor she designed."
+      },
+      {
+        "id": "pell-glassworks",
+        "name": "Kiln Row — Pell Glassworks (Remelt Studio)",
+        "what": "The glassworks where she apprenticed at nineteen, closed twelve years ago. Elias bought it back and leases it to her; Furnace No. 3 is lit again. On the wall: the evidence wall and the case tracker, a glass tube with beads. Next door is her mother's shuttered studio, Claire Quinn Glass."
+      },
+      {
+        "id": "ashford-house",
+        "name": "The Ashford house on the hill",
+        "what": "Grey board-formed concrete, very few windows. She moves into the guest room with her ex-mother-in-law; the long dining table is the two mothers' battlefield. In season five it gains a window she blew."
+      },
+      {
+        "id": "whitlock-flagship",
+        "name": "Whitlock Home flagship store",
+        "what": "Grant's brand. The Forever vase sits in the brightest case; the launch stage and the shareholder meetings are here."
+      },
+      {
+        "id": "courthouse",
+        "name": "Merrow County Prosecutor's Office and Superior Court",
+        "what": "Deputy Prosecutor Reyes's office, the civil courtroom and the main courtroom; the case moves one stage forward each season."
+      },
+      {
+        "id": "museum",
+        "name": "Port Merrow Museum of Art, storage",
+        "what": "Where twelve “antique” lamps were bought twelve years ago; the last one is still locked in storage."
+      },
+      {
+        "id": "rosas",
+        "name": "Rosa's",
+        "what": "A chowder shack at the corner of Kiln Row that Rosa Pell has kept open for twelve years; where the two mothers make peace."
+      }
     ],
     "rules": [
-      { "id": "r1", "name": "The three clauses", "rule": "One: this marriage ends on the day Grant Whitlock is sentenced. Two: I open doors — venues, lawyers, invitations; I don't design for you, testify for you, or decide for you. Three: when the Pell case goes to trial, you tell the truth.", "cost": "The faster she wins, the sooner the marriage ends; neither of them can be the first to say “stay.” Clause three makes her wonder in season four whether he married her for her or for the evidence in her hands." },
-      { "id": "r2", "name": "I open doors. You walk through them.", "rule": "All he can give her is a way in. She only enters blind competitions, never uses the name Mrs. Ashford, and pays the rent on Furnace No. 3 and the examiner's fees herself. Dana's reason: “If he fights for you once, the defense calls you a bought witness.”", "cost": "She often loses for lack of a name; he can only watch her take the hits. In season four he cannot give her a single explanation or a single plot of land, and that is where the misunderstanding starts." },
-      { "id": "r3", "name": "Only the legal road", "rule": "Evidence comes only through court-appointed examiners, records requests, and witnesses who hand it to the prosecutor themselves. No hidden cameras, no wiretaps, no violence; the villains are only ever beaten by a verdict.", "cost": "Slow; Grant is always a step ahead. In season two Sparks climbs a fence to take photos: they can't be authenticated, Sparks is charged with trespass, and the judge sanctions Nora's side." },
-      { "id": "r4", "name": "Glass talks", "rule": "Her edge is craft: the bubble signature in a vase's base, the flick at the end of her signature, the stress rainbow of badly annealed glass under polarized light, the exact softening heat needed to open sealed glass — all taught by Walter Pell and her mother.", "cost": "Every proof has to be done in public or in front of an examiner; one slip and she loses everything. In season one Dr. Brandt bans her from a hot furnace for six months; in season four, opening the glass block, forty degrees too hot and the furnace log chars." },
-      { "id": "r5", "name": "Two ledgers", "rule": "Elias needs the furnace log in her hands to clear his father; she needs his doors to put her ex-husband in prison. The two revenge lines need each other.", "cost": "Every time she learns something about him she has to ask again: is this a deal, or something else? Until the verdict, neither can say it out loud." }
+      {
+        "id": "r1",
+        "name": "The three clauses",
+        "rule": "One: this marriage ends on the day Grant Whitlock is sentenced. Two: I open doors — venues, lawyers, invitations; I don't design for you, testify for you, or decide for you. Three: when the Pell case goes to trial, you tell the truth.",
+        "cost": "The faster she wins, the sooner the marriage ends; neither of them can be the first to say “stay.” Clause three makes her wonder in season four whether he married her for her or for the evidence in her hands."
+      },
+      {
+        "id": "r2",
+        "name": "I open doors. You walk through them.",
+        "rule": "All he can give her is a way in. She only enters blind competitions, never uses the name Mrs. Ashford, and pays the rent on Furnace No. 3 and the examiner's fees herself. Dana's reason: “If he fights for you once, the defense calls you a bought witness.”",
+        "cost": "She often loses for lack of a name; he can only watch her take the hits. In season four he cannot give her a single explanation or a single plot of land, and that is where the misunderstanding starts."
+      },
+      {
+        "id": "r3",
+        "name": "Only the legal road",
+        "rule": "Evidence comes only through court-appointed examiners, records requests, and witnesses who hand it to the prosecutor themselves. No hidden cameras, no wiretaps, no violence; the villains are only ever beaten by a verdict.",
+        "cost": "Slow; Grant is always a step ahead. In season two Sparks climbs a fence to take photos: they can't be authenticated, Sparks is charged with trespass, and the judge sanctions Nora's side."
+      },
+      {
+        "id": "r4",
+        "name": "Glass talks",
+        "rule": "Her edge is craft: the bubble signature in a vase's base, the flick at the end of her signature, the stress rainbow of badly annealed glass under polarized light, the exact softening heat needed to open sealed glass — all taught by Walter Pell and her mother.",
+        "cost": "Every proof has to be done in public or in front of an examiner; one slip and she loses everything. In season one Dr. Brandt bans her from a hot furnace for six months; in season four, opening the glass block, forty degrees too hot and the furnace log chars."
+      },
+      {
+        "id": "r5",
+        "name": "Two ledgers",
+        "rule": "Elias needs the furnace log in her hands to clear his father; she needs his doors to put her ex-husband in prison. The two revenge lines need each other.",
+        "cost": "Every time she learns something about him she has to ask again: is this a deal, or something else? Until the verdict, neither can say it out loud."
+      }
     ],
     "factions": [
-      { "id": "remelt", "name": "Remelt", "what": "Nora, her ex-mother-in-law Peg Whitlock, old furnace man Gus Moretti, apprentice Rocco “Sparks” Moretti; Furnace No. 3 on Kiln Row." },
-      { "id": "ashford-construction", "name": "Ashford Construction", "what": "Elias Ashford, his assistant Theo Park, attorney Dana Okafor; Rosa's chowder shack is their back porch." },
-      { "id": "whitlock-home", "name": "Whitlock Home", "what": "Grant Whitlock, brand director Sienna Vale, attorney Leonard Fisk; the money behind them is Victor Crane of Crane Development." },
-      { "id": "officials", "name": "The law and the professions", "what": "Deputy Prosecutor Marcus Reyes, Dr. Helen Brandt, public-art review chair Judith Hale, arts commissioner Douglas Penrose." }
+      {
+        "id": "remelt",
+        "name": "Remelt",
+        "what": "Nora, her ex-mother-in-law Peg Whitlock, old furnace man Gus Moretti, apprentice Rocco “Sparks” Moretti; Furnace No. 3 on Kiln Row."
+      },
+      {
+        "id": "ashford-construction",
+        "name": "Ashford Construction",
+        "what": "Elias Ashford, his assistant Theo Park, attorney Dana Okafor; Rosa's chowder shack is their back porch."
+      },
+      {
+        "id": "whitlock-home",
+        "name": "Whitlock Home",
+        "what": "Grant Whitlock, brand director Sienna Vale, attorney Leonard Fisk; the money behind them is Victor Crane of Crane Development."
+      },
+      {
+        "id": "officials",
+        "name": "The law and the professions",
+        "what": "Deputy Prosecutor Marcus Reyes, Dr. Helen Brandt, public-art review chair Judith Hale, arts commissioner Douglas Penrose."
+      }
     ]
   },
   "characters": [
-    { "id": "nora-quinn", "name": "Nora Quinn", "role": "Lead. Glass designer; at nineteen she learned glassblowing from Walter Pell at Pell Glassworks, then spent six years as a stay-at-home wife (“Nora Whitlock”). After she is set up to lose her baby and walks out with nothing, she signs a revenge marriage contract and relights Furnace No. 3 on Kiln Row.", "age": "31", "appearance": "Photoreal 31-year-old white woman of Irish-American descent, slender build, fair skin with faint freckles, soft grey-green eyes, dark chestnut hair — long at first, cut to shoulder length in season one, tied in a low ponytail at work with safety goggles pushed up on her head; tiny healed burn marks on the inside of her wrists from glassblowing. Season one: cream knit sweaters; after Remelt opens: a dark canvas work apron and rolled-up sleeves. Her gaze moves from yielding to still and level.", "voice": "Soft, steady, unhurried; in season one she says “sorry” too often; from season two, one fact per sentence.", "arc": "From the woman who kept house for her husband and gave her name away, to the woman who puts him in front of a judge with her own glass and her own evidence and lights up that hallway; in the end she learns that being loved is not the same as owing someone." },
-    { "id": "elias-ashford", "name": "Elias Ashford", "role": "Male lead. CEO of Ashford Construction; born Elias Pell, son of master glassblower Walter Pell, and the boy at the furnace twelve years ago they called “Soot.” In love with her for twelve years; he opens doors and never walks them for her.", "age": "34", "appearance": "Photoreal 34-year-old Italian-American man, tall and lean with straight shoulders, olive skin, close-cropped dark hair, dark brown eyes, thin wire-framed glasses, a charcoal suit or a black turtleneck; when he rolls up his sleeves, an old burn scar across the back of his left hand. Stands upright and never leans on walls.", "voice": "Low, sparse, exact; in season one every sentence sounds like a contract clause; by season five he can say “I want.”", "arc": "From the man who sees her as a key and hands her three clauses, to the man who, on the day of the verdict, slides signed divorce papers across the table to keep his word and waits for her to decide; he clears his father's name and finally says “twelve years” out loud." },
-    { "id": "grant-whitlock", "name": "Grant Whitlock", "role": "Villain. Nora's ex-husband, founder of Whitlock Home, the press's model husband. Twelve years ago he was the sales manager at Pell Glassworks — to the old Pell hands, “Mr. Whitlock from sales,” or just “Sales.” Calls Nora “Nor.”", "age": "37", "appearance": "Photoreal 37-year-old white American man, sandy-blond neatly parted hair, clean-shaven, a warm practiced smile, rimless glasses, light-colored tailored suits, glass cufflinks; on stage he always leans slightly forward.", "voice": "Warm, even, like a keynote speech; when cornered his sentences get short.", "arc": "From the flawless model husband to the man identified by the glass he stole and every name he traced, standing at sentencing while the judge reads out eleven years in state prison." },
-    { "id": "sienna-vale", "name": "Sienna Vale", "role": "The other woman; Whitlock Home brand director, left-handed. Grant uses her as the hand that traces signatures, a figurehead and a scapegoat; later she becomes the key that brings him down. Signs her texts “S.”", "age": "27", "appearance": "Photoreal 27-year-old Indian-American woman, warm brown skin, sharp jet-black bob, red lipstick, bright tailored suits, a watch on her left wrist; from season four, no makeup, a black jacket and a face mask.", "voice": "Fast, bright, a little barbed; quieter from season four.", "arc": "From the woman who moves into the Glass House and hangs curtains, to the woman who puts a plane ticket on the prosecutor's desk and walks into the Prosecutor's Office on her own." },
-    { "id": "peg-whitlock", "name": "Margaret “Peg” Whitlock", "role": "Nora's ex-mother-in-law, Grant's mother, retired bookkeeper; on the day Nora walks out with nothing, Peg packs a suitcase and walks out with her. Nora calls her “Peg”; in tender moments, “Mom.”", "age": "62", "appearance": "Photoreal 62-year-old white American woman from a small Washington town, short permed grey hair, reading glasses on a chain against her chest, a washed-out cardigan; always carries a ledger and a pair of knitting needles.", "voice": "Quick, blunt, dry small-town American; every kind thing she says comes out as a complaint.", "arc": "From the mother-in-law who nitpicks, to the mother who runs Nora's books and says on the witness stand, “I raised him. I'm testifying.” Her last prison visit, she brings only a bowl of soup." },
-    { "id": "dana-okafor", "name": "Dana Okafor", "role": "Attorney, Elias's old partner, Nora's lawyer. “If he fights for you once, the defense calls you a bought witness” — clause two is hers.", "age": "35", "appearance": "Photoreal 35-year-old Black woman of Nigerian-American descent, deep brown skin, hair in a neat high bun, a black blazer over sneakers, always carrying three case files against her chest.", "voice": "Fast, cool, funny.", "arc": "From thinking Nora is just Elias's chess piece, to becoming her best friend and her toughest lawyer." },
-    { "id": "theo-park", "name": "Theo Park", "role": "Elias's assistant; records everything, reports everything, and keeps a deadpan “Mrs. Ashford Observation Log.”", "age": "29", "appearance": "Photoreal 29-year-old Korean-American man, neat black hair, round tortoiseshell glasses, button-down shirt under a knit sweater vest, never without his tablet.", "voice": "Flat, slow, earnestly funny.", "arc": "The comic relief; in season four he is first to discover the recording has been dug up; in season five he hides behind the kitchen door to watch the proposal." },
-    { "id": "rosa-pell", "name": "Rosa Pell", "role": "Elias's mother, Walter Pell's wife; after her husband went to prison she opened Rosa's, a chowder shack at the corner of Kiln Row, and has kept it going for twelve years.", "age": "63", "appearance": "Photoreal 63-year-old Italian-American woman, short salt-and-pepper hair, olive skin, a stained apron, an old silver bangle on her wrist.", "voice": "Hearty and loud.", "arc": "From the shack owner who recognizes Nora at first sight and says nothing, to “the other mom” who scolds both kids every day side by side with Peg." },
-    { "id": "walter-pell", "name": "Walter Pell (flashback)", "role": "Master glassblower at Pell Glassworks, Elias's father; twelve years ago he took the fall for Grant and went to prison; he died there of illness six years ago. Called “Walter,” “Mr. Pell,” or “the old master.”", "age": "55 in flashback", "appearance": "Photoreal 55-year-old Italian-American man, thick rough hands, a leather apron, fine lines around his eyes baked in by furnace heat, grey stubble.", "voice": "Two lines in flashback: “Whatever you make, leave your name inside it.” “Glass doesn't lie. People do.”", "arc": "Lives only in flashbacks, the furnace log and twelve lamps; in season five the prosecutor's Conviction Integrity Unit reviews his case and the court vacates his conviction." },
-    { "id": "claire-quinn", "name": "Claire Quinn (flashback)", "role": "Nora's mother, a glass artist who ran Claire Quinn Glass and was Walter Pell's old friend; died seven years ago, leaving the land on Kiln Row in a trust and the glass block called the Keepsake.", "age": "52 in flashback", "appearance": "Photoreal 52-year-old white Irish-American woman, long grey-streaked hair pinned up, a linen shirt, fine burn marks on her fingertips; Nora's grey-green eyes.", "voice": "One line in flashback: “Glass has to cool slowly. So do people.”", "arc": "Lives only in flashbacks, the trust deed and the glass block; the note in season four." },
-    { "id": "gus-moretti", "name": "Gus Moretti", "role": "Old furnace man at Pell's who never left after it closed; he hides photos of the twelve lamps taken before they shipped.", "age": "70", "appearance": "Photoreal 70-year-old Italian-American man, stooped, reading glasses, a sleeveless undershirt, both forearms and hands covered in old healed burn scars.", "voice": "Slow and gravelly, old-timer plain talk.", "arc": "From the man guarding a cold furnace, to the man who tells the story of the last night in season three; in episode 300 he puts the unsigned envelope in her hands." },
-    { "id": "rocco-moretti", "name": "Rocco “Sparks” Moretti", "role": "Apprentice at Remelt Studio, Gus's grandson; everyone calls him “Sparks.”", "age": "20", "appearance": "Photoreal 20-year-old Italian-American young man, buzz cut, a small stud earring, work pants, heat-protective sleeves on his forearms.", "voice": "Loud and in a hurry.", "arc": "From the hothead apprentice whose fence-climbing photos get thrown out, to the craftsman who leads the crew blowing three hundred glass panels for the whole corridor in season five." },
-    { "id": "helen-brandt", "name": "Dr. Helen Brandt", "role": "OB-GYN at Merrow General, Nora's doctor.", "age": "48", "appearance": "Photoreal 48-year-old white woman of German-American descent, short silver-blond bob, glasses, a white coat; pauses for a beat before she speaks.", "voice": "Even, precise, warm.", "arc": "In season one she says, “What I prescribed doesn't taste sweet.” In season five she testifies, and officiates the wedding." },
-    { "id": "marcus-reyes", "name": "Marcus Reyes", "role": "Deputy Prosecutor, Merrow County Prosecutor's Office.", "age": "45", "appearance": "Photoreal 45-year-old Mexican-American man, close-cropped black hair greying at the temples, a dark suit, a case file tucked under his arm.", "voice": "Hard and short: “Bring me evidence, not a story.”", "arc": "From the man who declines to file on her first report, to the man who walks in with an arrest warrant just as dessert is served and says, “He was careful enough to fool even you.”" },
-    { "id": "leonard-fisk", "name": "Leonard Fisk", "role": "Grant's attorney.", "age": "52", "appearance": "Photoreal 52-year-old white American man, slicked-back hair, a grey suit, gold-rimmed glasses, a fountain pen always in hand.", "voice": "Slow and smooth.", "arc": "In season one he blocks the Glass House door with papers; in season five, at the dinner table, he reads what is under the plates, caps his fountain pen and withdraws." },
-    { "id": "victor-crane", "name": "Victor Crane", "role": "Chairman of Crane Development and Grant's money man; wants to bulldoze all of Kiln Row for luxury condos. Always flipping a poker chip through his fingers.", "age": "61", "appearance": "Photoreal 61-year-old white American man, short and stocky, ruddy face, a band-collar jacket, a poker chip rolling across his knuckles, a big laugh.", "voice": "Loud; threatens while laughing.", "arc": "In season two he bids against her at the sheriff's sale; at the season-five reconciliation dinner he hands over bank records to save himself." },
-    { "id": "judith-hale", "name": "Judith Hale", "role": "Chair of the city's public-art review board, a senior glass artist, and the judge of the blind competitions.", "age": "58", "appearance": "Photoreal 58-year-old Black American woman, short silver-white natural hair, a long black tunic, a single glass brooch.", "voice": "Cool and slow: “I judge the glass, not whose wife made it.”", "arc": "Gives her the first public commission in season two; opens the envelope for the blind corridor competition in season five." },
-    { "id": "douglas-penrose", "name": "Douglas Penrose", "role": "City arts commissioner; twelve years ago, head of collections at the Port Merrow Museum of Art.", "age": "56", "appearance": "Photoreal 56-year-old white American man, neatly combed grey hair, a navy suit, a kindly smile.", "voice": "Mild and courteous.", "arc": "Hands out the Harbor Lights award in season two, promises “full cooperation” in season three, cuts the ribbon on the corridor in season five; in episode 300, the torn last page of the furnace log carries his signature from twelve years ago." }
+    {
+      "id": "nora-quinn",
+      "name": "Nora Quinn",
+      "role": "Lead. Glass designer; at nineteen she learned glassblowing from Walter Pell at Pell Glassworks, then spent six years as a stay-at-home wife (“Nora Whitlock”). After she is set up to lose her baby and walks out with nothing, she signs a revenge marriage contract and relights Furnace No. 3 on Kiln Row.",
+      "age": "31",
+      "appearance": "Photoreal 31-year-old white woman of Irish-American descent, slender build, fair skin with faint freckles, soft grey-green eyes, dark chestnut hair — long at first, cut to shoulder length in season one, tied in a low ponytail at work with safety goggles pushed up on her head; tiny healed burn marks on the inside of her wrists from glassblowing. Season one: cream knit sweaters; after Remelt opens: a dark canvas work apron and rolled-up sleeves. Her gaze moves from yielding to still and level.",
+      "voice": "Soft, steady, unhurried; in season one she says “sorry” too often; from season two, one fact per sentence.",
+      "arc": "From the woman who kept house for her husband and gave her name away, to the woman who puts him in front of a judge with her own glass and her own evidence and lights up that hallway; in the end she learns that being loved is not the same as owing someone."
+    },
+    {
+      "id": "elias-ashford",
+      "name": "Elias Ashford",
+      "role": "Male lead. CEO of Ashford Construction; born Elias Pell, son of master glassblower Walter Pell, and the boy at the furnace twelve years ago they called “Soot.” In love with her for twelve years; he opens doors and never walks them for her.",
+      "age": "34",
+      "appearance": "Photoreal 34-year-old Italian-American man, tall and lean with straight shoulders, olive skin, close-cropped dark hair, dark brown eyes, thin wire-framed glasses, a charcoal suit or a black turtleneck; when he rolls up his sleeves, an old burn scar across the back of his left hand. Stands upright and never leans on walls.",
+      "voice": "Low, sparse, exact; in season one every sentence sounds like a contract clause; by season five he can say “I want.”",
+      "arc": "From the man who sees her as a key and hands her three clauses, to the man who, on the day of the verdict, slides signed divorce papers across the table to keep his word and waits for her to decide; he clears his father's name and finally says “twelve years” out loud."
+    },
+    {
+      "id": "grant-whitlock",
+      "name": "Grant Whitlock",
+      "role": "Villain. Nora's ex-husband, founder of Whitlock Home, the press's model husband. Twelve years ago he was the sales manager at Pell Glassworks — to the old Pell hands, “Mr. Whitlock from sales,” or just “Sales.” Calls Nora “Nor.”",
+      "age": "37",
+      "appearance": "Photoreal 37-year-old white American man, sandy-blond neatly parted hair, clean-shaven, a warm practiced smile, rimless glasses, light-colored tailored suits, glass cufflinks; on stage he always leans slightly forward.",
+      "voice": "Warm, even, like a keynote speech; when cornered his sentences get short.",
+      "arc": "From the flawless model husband to the man identified by the glass he stole and every name he traced, standing at sentencing while the judge reads out eleven years in state prison."
+    },
+    {
+      "id": "sienna-vale",
+      "name": "Sienna Vale",
+      "role": "The other woman; Whitlock Home brand director, left-handed. Grant uses her as the hand that traces signatures, a figurehead and a scapegoat; later she becomes the key that brings him down. Signs her texts “S.”",
+      "age": "27",
+      "appearance": "Photoreal 27-year-old Indian-American woman, warm brown skin, sharp jet-black bob, red lipstick, bright tailored suits, a watch on her left wrist; from season four, no makeup, a black jacket and a face mask.",
+      "voice": "Fast, bright, a little barbed; quieter from season four.",
+      "arc": "From the woman who moves into the Glass House and hangs curtains, to the woman who puts a plane ticket on the prosecutor's desk and walks into the Prosecutor's Office on her own."
+    },
+    {
+      "id": "peg-whitlock",
+      "name": "Margaret “Peg” Whitlock",
+      "role": "Nora's ex-mother-in-law, Grant's mother, retired bookkeeper; on the day Nora walks out with nothing, Peg packs a suitcase and walks out with her. Nora calls her “Peg”; in tender moments, “Mom.”",
+      "age": "62",
+      "appearance": "Photoreal 62-year-old white American woman from a small Washington town, short permed grey hair, reading glasses on a chain against her chest, a washed-out cardigan; always carries a ledger and a pair of knitting needles.",
+      "voice": "Quick, blunt, dry small-town American; every kind thing she says comes out as a complaint.",
+      "arc": "From the mother-in-law who nitpicks, to the mother who runs Nora's books and says on the witness stand, “I raised him. I'm testifying.” Her last prison visit, she brings only a bowl of soup."
+    },
+    {
+      "id": "dana-okafor",
+      "name": "Dana Okafor",
+      "role": "Attorney, Elias's old partner, Nora's lawyer. “If he fights for you once, the defense calls you a bought witness” — clause two is hers.",
+      "age": "35",
+      "appearance": "Photoreal 35-year-old Black woman of Nigerian-American descent, deep brown skin, hair in a neat high bun, a black blazer over sneakers, always carrying three case files against her chest.",
+      "voice": "Fast, cool, funny.",
+      "arc": "From thinking Nora is just Elias's chess piece, to becoming her best friend and her toughest lawyer."
+    },
+    {
+      "id": "theo-park",
+      "name": "Theo Park",
+      "role": "Elias's assistant; records everything, reports everything, and keeps a deadpan “Mrs. Ashford Observation Log.”",
+      "age": "29",
+      "appearance": "Photoreal 29-year-old Korean-American man, neat black hair, round tortoiseshell glasses, button-down shirt under a knit sweater vest, never without his tablet.",
+      "voice": "Flat, slow, earnestly funny.",
+      "arc": "The comic relief; in season four he is first to discover the recording has been dug up; in season five he hides behind the kitchen door to watch the proposal."
+    },
+    {
+      "id": "rosa-pell",
+      "name": "Rosa Pell",
+      "role": "Elias's mother, Walter Pell's wife; after her husband went to prison she opened Rosa's, a chowder shack at the corner of Kiln Row, and has kept it going for twelve years.",
+      "age": "63",
+      "appearance": "Photoreal 63-year-old Italian-American woman, short salt-and-pepper hair, olive skin, a stained apron, an old silver bangle on her wrist.",
+      "voice": "Hearty and loud.",
+      "arc": "From the shack owner who recognizes Nora at first sight and says nothing, to “the other mom” who scolds both kids every day side by side with Peg."
+    },
+    {
+      "id": "walter-pell",
+      "name": "Walter Pell (flashback)",
+      "role": "Master glassblower at Pell Glassworks, Elias's father; twelve years ago he took the fall for Grant and went to prison; he died there of illness six years ago. Called “Walter,” “Mr. Pell,” or “the old master.”",
+      "age": "55 in flashback",
+      "appearance": "Photoreal 55-year-old Italian-American man, thick rough hands, a leather apron, fine lines around his eyes baked in by furnace heat, grey stubble.",
+      "voice": "Two lines in flashback: “Whatever you make, leave your name inside it.” “Glass doesn't lie. People do.”",
+      "arc": "Lives only in flashbacks, the furnace log and twelve lamps; in season five the prosecutor's Conviction Integrity Unit reviews his case and the court vacates his conviction."
+    },
+    {
+      "id": "claire-quinn",
+      "name": "Claire Quinn (flashback)",
+      "role": "Nora's mother, a glass artist who ran Claire Quinn Glass and was Walter Pell's old friend; died seven years ago, leaving the land on Kiln Row in a trust and the glass block called the Keepsake.",
+      "age": "52 in flashback",
+      "appearance": "Photoreal 52-year-old white Irish-American woman, long grey-streaked hair pinned up, a linen shirt, fine burn marks on her fingertips; Nora's grey-green eyes.",
+      "voice": "One line in flashback: “Glass has to cool slowly. So do people.”",
+      "arc": "Lives only in flashbacks, the trust deed and the glass block; the note in season four."
+    },
+    {
+      "id": "gus-moretti",
+      "name": "Gus Moretti",
+      "role": "Old furnace man at Pell's who never left after it closed; he hides photos of the twelve lamps taken before they shipped.",
+      "age": "70",
+      "appearance": "Photoreal 70-year-old Italian-American man, stooped, reading glasses, a sleeveless undershirt, both forearms and hands covered in old healed burn scars.",
+      "voice": "Slow and gravelly, old-timer plain talk.",
+      "arc": "From the man guarding a cold furnace, to the man who tells the story of the last night in season three; in episode 300 he puts the unsigned envelope in her hands."
+    },
+    {
+      "id": "rocco-moretti",
+      "name": "Rocco “Sparks” Moretti",
+      "role": "Apprentice at Remelt Studio, Gus's grandson; everyone calls him “Sparks.”",
+      "age": "20",
+      "appearance": "Photoreal 20-year-old Italian-American young man, buzz cut, a small stud earring, work pants, heat-protective sleeves on his forearms.",
+      "voice": "Loud and in a hurry.",
+      "arc": "From the hothead apprentice whose fence-climbing photos get thrown out, to the craftsman who leads the crew blowing three hundred glass panels for the whole corridor in season five."
+    },
+    {
+      "id": "helen-brandt",
+      "name": "Dr. Helen Brandt",
+      "role": "OB-GYN at Merrow General, Nora's doctor.",
+      "age": "48",
+      "appearance": "Photoreal 48-year-old white woman of German-American descent, short silver-blond bob, glasses, a white coat; pauses for a beat before she speaks.",
+      "voice": "Even, precise, warm.",
+      "arc": "In season one she says, “What I prescribed doesn't taste sweet.” In season five she testifies, and officiates the wedding."
+    },
+    {
+      "id": "marcus-reyes",
+      "name": "Marcus Reyes",
+      "role": "Deputy Prosecutor, Merrow County Prosecutor's Office.",
+      "age": "45",
+      "appearance": "Photoreal 45-year-old Mexican-American man, close-cropped black hair greying at the temples, a dark suit, a case file tucked under his arm.",
+      "voice": "Hard and short: “Bring me evidence, not a story.”",
+      "arc": "From the man who declines to file on her first report, to the man who walks in with an arrest warrant just as dessert is served and says, “He was careful enough to fool even you.”"
+    },
+    {
+      "id": "leonard-fisk",
+      "name": "Leonard Fisk",
+      "role": "Grant's attorney.",
+      "age": "52",
+      "appearance": "Photoreal 52-year-old white American man, slicked-back hair, a grey suit, gold-rimmed glasses, a fountain pen always in hand.",
+      "voice": "Slow and smooth.",
+      "arc": "In season one he blocks the Glass House door with papers; in season five, at the dinner table, he reads what is under the plates, caps his fountain pen and withdraws."
+    },
+    {
+      "id": "victor-crane",
+      "name": "Victor Crane",
+      "role": "Chairman of Crane Development and Grant's money man; wants to bulldoze all of Kiln Row for luxury condos. Always flipping a poker chip through his fingers.",
+      "age": "61",
+      "appearance": "Photoreal 61-year-old white American man, short and stocky, ruddy face, a band-collar jacket, a poker chip rolling across his knuckles, a big laugh.",
+      "voice": "Loud; threatens while laughing.",
+      "arc": "In season two he bids against her at the sheriff's sale; at the season-five reconciliation dinner he hands over bank records to save himself."
+    },
+    {
+      "id": "judith-hale",
+      "name": "Judith Hale",
+      "role": "Chair of the city's public-art review board, a senior glass artist, and the judge of the blind competitions.",
+      "age": "58",
+      "appearance": "Photoreal 58-year-old Black American woman, short silver-white natural hair, a long black tunic, a single glass brooch.",
+      "voice": "Cool and slow: “I judge the glass, not whose wife made it.”",
+      "arc": "Gives her the first public commission in season two; opens the envelope for the blind corridor competition in season five."
+    },
+    {
+      "id": "douglas-penrose",
+      "name": "Douglas Penrose",
+      "role": "City arts commissioner; twelve years ago, head of collections at the Port Merrow Museum of Art.",
+      "age": "56",
+      "appearance": "Photoreal 56-year-old white American man, neatly combed grey hair, a navy suit, a kindly smile.",
+      "voice": "Mild and courteous.",
+      "arc": "Hands out the Harbor Lights award in season two, promises “full cooperation” in season three, cuts the ribbon on the corridor in season five; in episode 300, the torn last page of the furnace log carries his signature from twelve years ago."
+    }
   ],
   "beasts": [],
   "mysteries": [
-    { "id": "m01", "question": "What was the sweet pill?", "setup_season": 1, "reveal_season": 1, "answer": "Not the prenatal medication Dr. Brandt prescribed: a near-perfect lookalike with the imprint off by one stroke, made of sugar. The half she bit, tasted sweet and spat into a tissue has no active ingredient at all. The hospital pharmacy pickup log shows the real pills were collected every month — each pickup signed by Grant Whitlock. They never reached her." },
-    { "id": "m02", "question": "Whose signature is on the property agreement?", "setup_season": 1, "reveal_season": 1, "answer": "Not hers. It was traced stroke by stroke from the signature on her pre-marriage design sketches: every stroke hesitates, and it lacks the flick at the end she picked up from glassblowing. The agreement is dated the night she was under anesthesia at Merrow General; the transfer of the Forever design rights was traced by the same hand. The court-appointed examiner confirms the forgery, the court freezes the transfers of the Glass House and the accounts, and the forgery charge is filed." },
-    { "id": "m03", "question": "Why did her mother-in-law pack a suitcase and leave with her?", "setup_season": 1, "reveal_season": 1, "answer": "The day Nora came home from the hospital, Peg found a receipt from a confectionery in her son's car — “Prop tablets, qty 100” — and that night overheard him on the phone: “That's taken care of.” Thirty-four years ago she sat alone all night in a hallway at Merrow General herself, and her husband never came. “I'm not doing it for you. I'm doing it for the baby. I was one day late.”" },
-    { "id": "m04", "question": "Why didn't Grant want the baby?", "setup_season": 1, "reveal_season": 2, "answer": "The land under her mother's studio, Claire Quinn Glass, is held in a trust. The trust clause says that when the beneficiary's first child is born, the trust accounts open to the beneficiary. Grant had long since used a traced beneficiary consent to pledge the land to Victor Crane's Crane Development for cash. The moment the baby was born, the books would have to balance — and the fake pledge would surface." },
-    { "id": "m05", "question": "Who traced the signature?", "setup_season": 1, "reveal_season": 2, "answer": "Sienna Vale, left-handed. For three months Grant left a “delivery receipt” on her desk every day for her to practice signing — so she could sign for deliveries on his behalf, he said. She only learned she had been tracing a property agreement the day she was named a defendant in the forgery case. The person who handed the stack of practice sheets from her drawer to the prosecutor was Grant's own lawyer." },
-    { "id": "m06", "question": "Who called the ambulance that night?", "setup_season": 1, "reveal_season": 2, "answer": "Elias. He had driven to the Glass House that night to drop an anonymous commission letter in the mailbox, and saw her holding onto the lamppost by the gate. He called 911, sat until dawn under the flickering light at the end of the hallway, paid the bill, and left before Grant arrived. He never sent the letter." },
-    { "id": "m07", "question": "Twelve years ago, in the Pell Glassworks antique-lamp case, who really faked them?", "setup_season": 2, "reveal_season": 3, "answer": "The twelve lamps were antique-style reproductions Walter Pell made to order, and each base carries his bubble mark, “PELL · REPRO,” visible only under the raking light of a light box. The order came from the sales manager, Grant Whitlock, supposedly for a hotel lobby. Grant tore off the “Reproduction” tags, attached a fake appraisal certifying them as century-old lamps, and sold them through a shell company to the Port Merrow Museum of Art. When it came out, he traced Walter's signature on the shipping order and let the old master go to prison for it. That money was Whitlock Home's first capital." },
-    { "id": "m08", "question": "Who is Elias Ashford, and why does he own Pell Glassworks?", "setup_season": 1, "reveal_season": 3, "answer": "He is Walter Pell's son, born Elias Pell; after his father went to prison he changed his surname to Ashford. Twelve years ago he was the soot-covered boy at Furnace No. 3 they called “Soot.” He worked abroad, built a company, came back to Port Merrow three years ago and bought Pell's at a sheriff's sale, to clear his father's name." },
-    { "id": "m09", "question": "Why did Grant marry her?", "setup_season": 2, "reveal_season": 4, "answer": "He knew that the night before his arrest Walter had handed the furnace log to “that apprentice.” Courting her, marrying her, keeping her away from the furnace, spending three days “helping clear out” her mother's house after the funeral — it was all to find the log. When he couldn't, he kept her where he could see her. The court seizes her mother's old ledgers from a safe in the Glass House basement." },
-    { "id": "m10", "question": "Where is the furnace log?", "setup_season": 3, "reveal_season": 4, "answer": "Inside her mother's glass block, the Keepsake. The oilpaper packet nineteen-year-old Nora carried home for Walter that night, her mother fused into glass — and the block was the only thing Nora took when she walked out with nothing. Under the light box she sees the shadow of paper; she asks the prosecutor and the examiner to be present and opens the seal in Furnace No. 3. Page 37 reads “Antique-style lamps x12, REPRODUCTIONS — ordered by G. Whitlock,” with his own signature. The last page has been torn out." },
-    { "id": "m11", "question": "Who ordered the hundred sugar tablets?", "setup_season": 1, "reveal_season": 5, "answer": "Sienna, on the Whitlock Home account, copying a single pill Grant gave her; he said they were props for a Forever candy-jar display. She kept his voice memo: “Same color, same imprint. Exactly the same.” The order number matches the receipt Peg found in her son's car; on that basis the prosecutor adds an assault charge." },
-    { "id": "m12", "question": "When did Elias start loving her?", "setup_season": 1, "reveal_season": 5, "answer": "The summer she was nineteen. A gather of hot glass slid off her blowpipe and he put out his left hand to block it, which left the scar; all she remembers is “someone pulled me back.” She gave her first crooked glass bird to Soot at the furnace, and he kept it for twelve years. The day she stood outside the courthouse and said, “Everything Walter Pell made has his name inside it,” he never let go. Every piece she sold before her marriage, he bought under an alias; once she married he stopped and never came near. The unsent letter reads: “Miss Quinn, I'd like to commission a lamp. — Someone who watched you blow glass at Pell's.”" }
+    {
+      "id": "m01",
+      "question": "What was the sweet pill?",
+      "setup_season": 1,
+      "reveal_season": 1,
+      "answer": "Not the prenatal medication Dr. Brandt prescribed: a near-perfect lookalike with the imprint off by one stroke, made of sugar. The half she bit, tasted sweet and spat into a tissue has no active ingredient at all. The hospital pharmacy pickup log shows the real pills were collected every month — each pickup signed by Grant Whitlock. They never reached her."
+    },
+    {
+      "id": "m02",
+      "question": "Whose signature is on the property agreement?",
+      "setup_season": 1,
+      "reveal_season": 1,
+      "answer": "Not hers. It was traced stroke by stroke from the signature on her pre-marriage design sketches: every stroke hesitates, and it lacks the flick at the end she picked up from glassblowing. The agreement is dated the night she was under anesthesia at Merrow General; the transfer of the Forever design rights was traced by the same hand. The court-appointed examiner confirms the forgery, the court freezes the transfers of the Glass House and the accounts, and the forgery charge is filed."
+    },
+    {
+      "id": "m03",
+      "question": "Why did her mother-in-law pack a suitcase and leave with her?",
+      "setup_season": 1,
+      "reveal_season": 1,
+      "answer": "The day Nora came home from the hospital, Peg found a receipt from a confectionery in her son's car — “Prop tablets, qty 100” — and that night overheard him on the phone: “That's taken care of.” Thirty-four years ago she sat alone all night in a hallway at Merrow General herself, and her husband never came. “I'm not doing it for you. I'm doing it for the baby. I was one day late.”"
+    },
+    {
+      "id": "m04",
+      "question": "Why didn't Grant want the baby?",
+      "setup_season": 1,
+      "reveal_season": 2,
+      "answer": "The land under her mother's studio, Claire Quinn Glass, is held in a trust. The trust clause says that when the beneficiary's first child is born, the trust accounts open to the beneficiary. Grant had long since used a traced beneficiary consent to pledge the land to Victor Crane's Crane Development for cash. The moment the baby was born, the books would have to balance — and the fake pledge would surface."
+    },
+    {
+      "id": "m05",
+      "question": "Who traced the signature?",
+      "setup_season": 1,
+      "reveal_season": 2,
+      "answer": "Sienna Vale, left-handed. For three months Grant left a “delivery receipt” on her desk every day for her to practice signing — so she could sign for deliveries on his behalf, he said. She only learned she had been tracing a property agreement the day she was named a defendant in the forgery case. The person who handed the stack of practice sheets from her drawer to the prosecutor was Grant's own lawyer."
+    },
+    {
+      "id": "m06",
+      "question": "Who called the ambulance that night?",
+      "setup_season": 1,
+      "reveal_season": 2,
+      "answer": "Elias. He had driven to the Glass House that night to drop an anonymous commission letter in the mailbox, and saw her holding onto the lamppost by the gate. He called 911, sat until dawn under the flickering light at the end of the hallway, paid the bill, and left before Grant arrived. He never sent the letter."
+    },
+    {
+      "id": "m07",
+      "question": "Twelve years ago, in the Pell Glassworks antique-lamp case, who really faked them?",
+      "setup_season": 2,
+      "reveal_season": 3,
+      "answer": "The twelve lamps were antique-style reproductions Walter Pell made to order, and each base carries his bubble mark, “PELL · REPRO,” visible only under the raking light of a light box. The order came from the sales manager, Grant Whitlock, supposedly for a hotel lobby. Grant tore off the “Reproduction” tags, attached a fake appraisal certifying them as century-old lamps, and sold them through a shell company to the Port Merrow Museum of Art. When it came out, he traced Walter's signature on the shipping order and let the old master go to prison for it. That money was Whitlock Home's first capital."
+    },
+    {
+      "id": "m08",
+      "question": "Who is Elias Ashford, and why does he own Pell Glassworks?",
+      "setup_season": 1,
+      "reveal_season": 3,
+      "answer": "He is Walter Pell's son, born Elias Pell; after his father went to prison he changed his surname to Ashford. Twelve years ago he was the soot-covered boy at Furnace No. 3 they called “Soot.” He worked abroad, built a company, came back to Port Merrow three years ago and bought Pell's at a sheriff's sale, to clear his father's name."
+    },
+    {
+      "id": "m09",
+      "question": "Why did Grant marry her?",
+      "setup_season": 2,
+      "reveal_season": 4,
+      "answer": "He knew that the night before his arrest Walter had handed the furnace log to “that apprentice.” Courting her, marrying her, keeping her away from the furnace, spending three days “helping clear out” her mother's house after the funeral — it was all to find the log. When he couldn't, he kept her where he could see her. The court seizes her mother's old ledgers from a safe in the Glass House basement."
+    },
+    {
+      "id": "m10",
+      "question": "Where is the furnace log?",
+      "setup_season": 3,
+      "reveal_season": 4,
+      "answer": "Inside her mother's glass block, the Keepsake. The oilpaper packet nineteen-year-old Nora carried home for Walter that night, her mother fused into glass — and the block was the only thing Nora took when she walked out with nothing. Under the light box she sees the shadow of paper; she asks the prosecutor and the examiner to be present and opens the seal in Furnace No. 3. Page 37 reads “Antique-style lamps x12, REPRODUCTIONS — ordered by G. Whitlock,” with his own signature. The last page has been torn out."
+    },
+    {
+      "id": "m11",
+      "question": "Who ordered the hundred sugar tablets?",
+      "setup_season": 1,
+      "reveal_season": 5,
+      "answer": "Sienna, on the Whitlock Home account, copying a single pill Grant gave her; he said they were props for a Forever candy-jar display. She kept his voice memo: “Same color, same imprint. Exactly the same.” The order number matches the receipt Peg found in her son's car; on that basis the prosecutor adds an assault charge."
+    },
+    {
+      "id": "m12",
+      "question": "When did Elias start loving her?",
+      "setup_season": 1,
+      "reveal_season": 5,
+      "answer": "The summer she was nineteen. A gather of hot glass slid off her blowpipe and he put out his left hand to block it, which left the scar; all she remembers is “someone pulled me back.” She gave her first crooked glass bird to Soot at the furnace, and he kept it for twelve years. The day she stood outside the courthouse and said, “Everything Walter Pell made has his name inside it,” he never let go. Every piece she sold before her marriage, he bought under an alias; once she married he stopped and never came near. The unsent letter reads: “Miss Quinn, I'd like to commission a lamp. — Someone who watched you blow glass at Pell's.”"
+    }
   ],
   "tones": [
-    { "id": "quzheng", "name": "Evidence revenge", "how": "She wins only by evidence and procedure: the pharmacy pickup log, the examiner's report, bubbles, polarized light, the furnace log, a voice memo. At least one piece of evidence lands per chapter, and a few engraved panels go up on the evidence wall each season. No vigilante justice, nothing obtained illegally." },
-    { "id": "dalian", "name": "Public unmasking", "how": "Launches, press conferences, shareholder meetings, dinners: the lie collapses in front of a crowd — the evidence comes out, the other side lets something slip. Only fakes get smashed, never people." },
-    { "id": "zhuanye", "name": "Craft turns the tables", "how": "She wins with glass: the bubble signature, live glassblowing, polarized light, fusing and opening seals. She only enters blind competitions and never uses the name Mrs. Ashford; he never designs or decides for her." },
-    { "id": "chengyao", "name": "Standing beside her", "how": "In public he steps up next to her — “It's a blind competition. I don't even know which piece is hers.” — and then steps back. He opens doors; she walks through them." },
-    { "id": "xianhun", "name": "Married first, in love later", "how": "Three clauses, separate rooms, one long dining table. The feeling moves one notch at a time: a plate of pasta, a note under it that says “Salty,” a light left on, a name that slips out." },
-    { "id": "anlian", "name": "Secret devotion", "how": "Twelve years of quiet love hidden in objects: the burn scar, “Soot,” the crooked glass bird, the man who sat all night at the end of the hallway, an unsent letter. A little shows each season; season five lays it all out." },
-    { "id": "poxi", "name": "Mother-in-law alliance", "how": "Her ex-mother-in-law packs a suitcase and leaves with her — sharp-tongued, good with numbers, fiercely loyal. From season two the two mothers, Peg and Rosa, go from bickering to teaming up; the warmth and the laughs live at the dinner table." },
-    { "id": "ganren", "name": "Restrained grief", "how": "The loss of the baby is only ever a hallway, a half-knitted hat and a flickering light; her mother's note, Walter's letter from prison, a mother on the witness stand. Once or twice a season, never milked." },
-    { "id": "xiju", "name": "Comedy", "how": "Theo's deadpan, Sparks's loud mouth, Peg's sharp tongue, the two moms sniping. At least one laugh per episode, placed right before or after the heaviest scenes." }
+    {
+      "id": "quzheng",
+      "name": "Evidence revenge",
+      "how": "She wins only by evidence and procedure: the pharmacy pickup log, the examiner's report, bubbles, polarized light, the furnace log, a voice memo. At least one piece of evidence lands per chapter, and a few engraved panels go up on the evidence wall each season. No vigilante justice, nothing obtained illegally."
+    },
+    {
+      "id": "dalian",
+      "name": "Public unmasking",
+      "how": "Launches, press conferences, shareholder meetings, dinners: the lie collapses in front of a crowd — the evidence comes out, the other side lets something slip. Only fakes get smashed, never people."
+    },
+    {
+      "id": "zhuanye",
+      "name": "Craft turns the tables",
+      "how": "She wins with glass: the bubble signature, live glassblowing, polarized light, fusing and opening seals. She only enters blind competitions and never uses the name Mrs. Ashford; he never designs or decides for her."
+    },
+    {
+      "id": "chengyao",
+      "name": "Standing beside her",
+      "how": "In public he steps up next to her — “It's a blind competition. I don't even know which piece is hers.” — and then steps back. He opens doors; she walks through them."
+    },
+    {
+      "id": "xianhun",
+      "name": "Married first, in love later",
+      "how": "Three clauses, separate rooms, one long dining table. The feeling moves one notch at a time: a plate of pasta, a note under it that says “Salty,” a light left on, a name that slips out."
+    },
+    {
+      "id": "anlian",
+      "name": "Secret devotion",
+      "how": "Twelve years of quiet love hidden in objects: the burn scar, “Soot,” the crooked glass bird, the man who sat all night at the end of the hallway, an unsent letter. A little shows each season; season five lays it all out."
+    },
+    {
+      "id": "poxi",
+      "name": "Mother-in-law alliance",
+      "how": "Her ex-mother-in-law packs a suitcase and leaves with her — sharp-tongued, good with numbers, fiercely loyal. From season two the two mothers, Peg and Rosa, go from bickering to teaming up; the warmth and the laughs live at the dinner table."
+    },
+    {
+      "id": "ganren",
+      "name": "Grief, played full",
+      "how": "Owner 2026-11-10: no need for restraint. The loss of the baby, her mother's note, Walter's letter from prison and a mother on the witness stand are played at full emotional volume: tears, breakdowns, screaming at Grant, Peg sobbing in the hallway. Still nothing graphic (see advertiser_safety)."
+    },
+    {
+      "id": "xiju",
+      "name": "Comedy",
+      "how": "Theo's deadpan, Sparks's loud mouth, Peg's sharp tongue, the two moms sniping. At least one laugh per episode, placed right before or after the heaviest scenes."
+    }
   ],
   "advertiser_safety": {
-    "goal": "YouTube advertiser-friendly (no yellow icon), following YouTube's advertiser-friendly content guidelines: violence, adult content, shocking content, profanity, dangerous acts and sensitive events are avoided or toned down.",
+    "goal": "YouTube advertiser-friendly (no yellow icon) is the only limit (owner 2026-11-10: drop 'restrained / not tear-jerking / safe-feeling'; only avoid limited ads). Follow YouTube's advertiser-friendly content guidelines: no graphic violence or gore, no sexual content, no strong profanity, no self-harm, no shocking medical imagery.",
     "rules": [
-      "The loss of the baby is shown only through the seventh-floor hallway at Merrow General, a half-knitted baby hat, the flickering light at the end and Dr. Brandt's “I'm so sorry.” No blood, no medical procedures, no ultrasound images. Public titles and thumbnails never use the words “miscarriage” or “abortion”; write “that night” or “the hallway.”",
+      "The loss of the baby can be played openly and loudly: she can say “I lost my baby”, sob in the hospital bed, scream at Grant, break down in the hallway. Never show blood, a medical procedure, an ultrasound image or anything graphic. Public titles and thumbnails avoid the words “miscarriage” and “abortion” (write “that night”, “the hallway”, “what he took from me”).",
       "“My prenatal medication” is generic: no real drug name, ingredient or dose ever appears. The sugar tablets appear only as a receipt, an order and a voice memo; their making is never shown or explained.",
-      "Crimes (forgery, fraud, breach of trust, infringement, assault) are handled only through documents, evidence, the Prosecutor's Office and the courtroom. No fights, no vigilante justice; custody and sentencing are one line, one door and a pane of glass in the visiting room.",
+      "Crimes are resolved through evidence and the courts, never vigilante justice. Heated confrontations are fine: shouting, a thrown drink, one slap in a dramatic moment, being shoved out of a door; no injuries shown, no weapons, no fights, no blood. Custody and sentencing can be shown fully (handcuffs, the courtroom, the visiting room).",
       "The antique-lamp case twelve years ago is fraud, not an accident; nobody was hurt. It is shown only through old newspapers, a photo and the bubbles in a lamp base.",
       "Glass is only smashed when it is a fake, by someone in gloves and goggles, into a steel drum, never toward a person. Glassblowing and furnace work always show proper protective gear; burn scars are shown only healed.",
       "Her grief is never written as self-harm: no rooftops, bridges or lone walks along the water's edge as suggestive images. Suicide and self-harm never appear anywhere in the series.",
-      "The contract marriage means separate rooms; intimacy goes no further than holding hands, hugs and one kiss on the forehead in season five. The affair is shown only through a marriage application and newly hung curtains. No bed scenes, no undressing or bathing.",
-      "No profanity in dialogue. Jabs like “walked out with nothing” and “Divorced at noon, married to a billionaire by five” are fine; no slurs against any group, no shaming of women's bodies.",
+      "The contract marriage keeps separate rooms; romance can go as far as kisses (no sexual content, no bed scenes, no undressing or bathing). The affair is shown through the marriage application, the curtains, texts and Sienna in the Glass House.",
+      "Mild language only (“damn”, “hell”, “bastard” at most, sparingly); no f-words or slurs, no shaming of women's bodies. Jabs like “walked out with nothing” and “Divorced at noon, married to a billionaire by five” are fine.",
       "Fictional city and institutions: nothing maps to a real city, hospital, court, company or person; legal procedure stays at common-sense level and cites no real statutes. Every upload is marked “altered or synthetic content.”",
       "Public titles (youtube_title) and thumbnails never use the words “miscarriage”, “abortion”, “blood”, “suicide”, “kill”, “dead baby”, “sexy” or “nude.”"
     ]

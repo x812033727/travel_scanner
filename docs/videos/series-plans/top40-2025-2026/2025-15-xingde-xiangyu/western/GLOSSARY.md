@@ -13,9 +13,10 @@ Decided by the owner: **9:16 vertical** (2026-11-10; was 16:9 on 2026-11-09), **
 
 - Dialogue is spoken American English: short, concrete, a line under about ten words. No translated
   idioms ("my mother-in-law's tofu-knife mouth"); find the English equivalent or cut it.
-- Keep the restraint: grief is a hallway, a half-knitted hat and a flickering light. Never write the
-  word "miscarriage", "abortion", "blood", "suicide", "kill", "dead baby", "sexy", "nude" in a
-  `youtube_title`; say "that night", "the hallway", "what he did".
+- Owner 2026-11-10: **no need for restraint, tears or comfort; only avoid YouTube's yellow icon.** Grief,
+  rage and humiliation play at full volume (sobbing, screaming, a slap, a thrown drink, handcuffs). Still never
+  graphic: no blood, no medical procedure, no ultrasound, no self-harm, no sexual content, no f-words. Never write
+  "miscarriage", "abortion", "blood", "suicide", "kill", "dead baby", "sexy", "nude" in a `youtube_title`.
 - Money is US dollars. Dates and seasons follow the Pacific Northwest (rain, ferries, grey water).
 
 ## Characters (id → name)

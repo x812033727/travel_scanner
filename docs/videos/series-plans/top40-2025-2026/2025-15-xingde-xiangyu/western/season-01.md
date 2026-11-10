@@ -84,7 +84,7 @@
 - 觀眾帶走的問題：No phone. Who does she call?
 - 奇觀：In the dream the Glass House splits pane by pane from the roof down, the shards hanging in the air without falling; a crooked glass bird drops through them and a hand catches it cleanly.
 - 顏值：Morning light through the floor-to-ceiling glass: Nora in a cream knit sweater, long hair loose, holds the half pill up to the window and squints at the imprint, her profile as still as glass.
-- 調性：Restrained grief、Mother-in-law alliance、Evidence revenge、Comedy｜主角：有得有失｜張力 4-2-3-3-5
+- 調性：Grief, played full、Mother-in-law alliance、Evidence revenge、Comedy｜主角：有得有失｜張力 4-2-3-3-5
 - 出場：Nora Quinn、Grant Whitlock、Margaret “Peg” Whitlock、Cole｜場景：The Glass House (bedroom, dining table, nursery)、The Glass House front door
 - 埋：m01、m12、s01-t01、s01-t02｜收：—
 - 狀態：Day 1, morning to late night；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill (not yet known as evidence) | Ledger: —] Today's pill tasted sweet and one letter of the imprint was faint; Grant says they changed the coating; Cole took her phone in for repair; the Forever label doesn't carry her name；接下去：The half pill in her coat pocket, the half-knitted hat, the big nursery window, the empty nightstand at midnight
@@ -104,7 +104,7 @@
 - 觀眾帶走的問題：Where was her husband?
 - 奇觀：A rainy night on the drive: the lamppost at the Glass House door flickering, headlights breaking through the rain to stop at her feet; Merrow General's seventh floor, a long windowless hallway, the light at its end going bright, dark, bright.
 - 顏值：Rain runs down her long hair as she holds the lamppost and looks up; the headlights wash her pale profile cold blue.
-- 調性：Restrained grief、Secret devotion｜主角：受挫｜張力 5-4-3-4-5
+- 調性：Grief, played full、Secret devotion｜主角：受挫｜張力 5-4-3-4-5
 - 出場：Nora Quinn、Elias Ashford、Dr. Helen Brandt、Nurse Joanne Kim｜場景：The Glass House front door and lamppost、The drive down the bluff in the rain、Merrow General, seventh-floor hallway
 - 埋：m06、s01-t03、s01-t07｜收：—
 - 狀態：Night of Day 1 into the early hours of Day 2；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill (in her coat pocket) | Ledger: —] She lost the baby on the seventh floor; a stranger whose face she never saw saved her; her husband never showed up all night；接下去：The hat in the paper bag, the flickering light at the end of the hall, the figure on the bench beneath it, the tissue in her coat pocket
@@ -124,7 +124,7 @@
 - 觀眾帶走的問題：Who is S.? Why the curtains?
 - 奇觀：The seventh-floor hallway at dawn, the light at the end still flickering; a dripping black umbrella propped by the door, a small puddle on the floor reflecting the flicker.
 - 顏值：Dawn light slices through the blinds onto her pale profile and the long hair spread on the pillow. She watches that phone, and for the first time her eyes go cold.
-- 調性：Restrained grief、Evidence revenge｜主角：有得有失｜張力 4-3-4-3-4
+- 調性：Grief, played full、Evidence revenge｜主角：有得有失｜張力 4-3-4-3-4
 - 出場：Nora Quinn、Grant Whitlock、Nurse Joanne Kim｜場景：Merrow General, seventh-floor room、Merrow General, seventh-floor hallway
 - 埋：s01-t04｜收：s01-t03
 - 狀態：Day 2, early morning；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill (in her coat pocket) | Ledger: —] He says he spent the night at his mom's with a dead phone, yet it keeps buzzing; a man who left no name called the ambulance; someone signing “S.” has measured for curtains；接下去：“S.” and the curtains, the phone face down on the nightstand, the half pill in her coat pocket
@@ -143,7 +143,7 @@
 - 觀眾帶走的問題：Will he find the half pill?
 - 奇觀：A brand-new phone glows on the white sheet; the contacts list scrolls down, row after empty row.
 - 顏值：Propped up in the hospital bed, she writes Dr. Brandt's office extension on her palm in ballpoint, lashes lowered, the fine glassblowing burns on the inside of her wrist faint in the morning light.
-- 調性：Evidence revenge、Restrained grief｜主角：有得有失｜張力 3-3-4-4-5
+- 調性：Evidence revenge、Grief, played full｜主角：有得有失｜張力 3-3-4-4-5
 - 出場：Nora Quinn、Grant Whitlock｜場景：Merrow General, seventh-floor room
 - 埋：m01｜收：s01-t02
 - 狀態：Day 2, morning；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill (in her coat pocket) | Ledger: —] The old phone “couldn't be fixed” and the new one has no numbers in it; he doesn't believe the pill was sweet; she has memorized Dr. Brandt's extension；接下去：His hand stopped on her coat pocket, the extension written on her palm
@@ -163,7 +163,7 @@
 - 觀眾帶走的問題：What did Peg find in the car?
 - 奇觀：At the end of the windowless seventh-floor hallway, an old woman in a worn cardigan stands under the flickering light, palm flat against a blank wall; each time the light blinks, her shadow breaks.
 - 顏值：Nora sits on the edge of the bed, coat pulled around her shoulders, watching Peg's back through the doorway, long hair over her cream sweater, her wariness slowly turning to confusion.
-- 調性：Mother-in-law alliance、Restrained grief、Comedy｜主角：贏｜張力 4-3-4-3-5
+- 調性：Mother-in-law alliance、Grief, played full、Comedy｜主角：贏｜張力 4-3-4-3-5
 - 出場：Nora Quinn、Grant Whitlock、Margaret “Peg” Whitlock｜場景：Merrow General, seventh-floor room、Merrow General, end of the seventh-floor hallway、Grant's car
 - 埋：m03、s01-t05｜收：—
 - 狀態：Day 2, midday (before discharge)；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill (safe) | Ledger: —] She kept the half pill; Peg plans to stay a month; Peg stood a long time at the wall at the end of the hall; the audience sees Peg tuck a receipt from her son's car into her ledger；接下去：The receipt folded small in the ledger, the car Grant booked to take Nora home
@@ -183,7 +183,7 @@
 - 觀眾帶走的問題：Then who signed it?
 - 奇觀：In the house made of glass, installers hang heavy grey curtains panel by panel; the sea view disappears piece by piece and the room keeps getting darker.
 - 顏值：She stands in the middle of the darkening living room, hospital bag held to her chest, the last strip of sea light on her face as if that's about to be taken too.
-- 調性：Evidence revenge、Restrained grief｜主角：受挫｜張力 4-4-3-4-5
+- 調性：Evidence revenge、Grief, played full｜主角：受挫｜張力 4-4-3-4-5
 - 出場：Nora Quinn、Leonard Fisk、Sienna Vale｜場景：The Glass House (front door, living room)
 - 埋：m02、s01-t08｜收：s01-t04
 - 狀態：Day 2, afternoon；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill | Ledger: —] The locks are changed; the separate property agreement carries her signature and gives Grant the house, the accounts and the Forever design rights; Sienna is hanging curtains in the Glass House; Fisk says everything inside is community property；接下去：The divorce papers waiting for her signature, the Keepsake block on the shelf, curtains closing one panel at a time
@@ -203,7 +203,7 @@
 - 觀眾帶走的問題：Does she sign the divorce?
 - 奇觀：Grey fabric swallows the nursery window inch by inch until the last strip of sea light slips out through the gap, leaving only the ceiling light.
 - 顏值：Nora lifts the Keepsake block in both hands; afternoon light passes through it and lays a pale green glow on her fingertips and chin.
-- 調性：Evidence revenge、Restrained grief｜主角：有得有失｜張力 4-3-4-4-5
+- 調性：Evidence revenge、Grief, played full｜主角：有得有失｜張力 4-3-4-4-5
 - 出場：Nora Quinn、Leonard Fisk、Sienna Vale｜場景：The Glass House (living room, nursery doorway, study, front door)
 - 埋：m05、s01-t06｜收：s01-t08
 - 狀態：Day 2, afternoon；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill | Ledger: —] In ten minutes she took only the Keepsake block and a folder of pre-marriage sketches; the nursery got curtains too; Fisk wants the divorce papers signed on the spot; the audience sees Sienna sign left-handed；接下去：That pen, the car idling at the bottom of the drive
@@ -223,7 +223,7 @@
 - 觀眾帶走的問題：Why is Peg going with her?
 - 奇觀：On the long coastal drive, suitcase wheels clatter on the asphalt; up top, the Glass House closes its curtains one panel at a time.
 - 顏值：She rolls her suitcase down the hill, sea wind tangling her long hair, the glass block in her arms catching the sunset, her back very straight.
-- 調性：Mother-in-law alliance、Restrained grief、Comedy｜主角：贏｜張力 4-3-4-4-5
+- 調性：Mother-in-law alliance、Grief, played full、Comedy｜主角：贏｜張力 4-3-4-4-5
 - 出場：Nora Quinn、Grant Whitlock、Margaret “Peg” Whitlock、Leonard Fisk｜場景：The Glass House front door、The coastal drive down the bluff
 - 埋：m03｜收：s01-t06
 - 狀態：Day 2, dusk；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill | Ledger: —] She rejects the property agreement and won't sign the divorce papers; Peg left her son's car to go with her；接下去：Grant shouting “Mom!” on the drive, two suitcases
@@ -242,7 +242,7 @@
 - 觀眾帶走的問題：What's in Peg's ledger?
 - 奇觀：Dusk at a bus stop: an old woman and a young one, two suitcases side by side; across the harbor the cranes light up in a row of red.
 - 顏值：Under the motel's yellow lamp she sits on the edge of the bed with her hair down, holding the glass block; the red neon outside blinks on and off across her face.
-- 調性：Mother-in-law alliance、Comedy、Restrained grief｜主角：有得有失｜張力 4-2-3-3-4
+- 調性：Mother-in-law alliance、Comedy、Grief, played full｜主角：有得有失｜張力 4-2-3-3-4
 - 出場：Nora Quinn、Margaret “Peg” Whitlock、Grant Whitlock、Bev｜場景：The coastal drive down the bluff、A bus stop、The Harborview Motor Inn (front desk, room)
 - 埋：m03｜收：—
 - 狀態：Day 2, night；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill | Ledger: Room $89 (Peg paid)] Peg checks into the Harborview Motor Inn with her; Peg hid a paper in her ledger；接下去：The paper inside the ledger cover, the half pill in Nora's coat pocket
@@ -262,7 +262,7 @@
 - 觀眾帶走的問題：What does Peg know?
 - 奇觀：Under the lamp, an unfolded tissue holds the bitten half pill, imprint up, smaller than a lens of the reading glasses beside it.
 - 顏值：She sits on the edge of the bed holding the half pill up to the lamp, long hair over one shoulder, and for the first time her eyes say she will see this through.
-- 調性：Restrained grief、Mother-in-law alliance、Evidence revenge｜主角：贏｜張力 3-3-4-4-5
+- 調性：Grief, played full、Mother-in-law alliance、Evidence revenge｜主角：贏｜張力 3-3-4-4-5
 - 出場：Nora Quinn、Margaret “Peg” Whitlock、Elias Ashford｜場景：The Harborview Motor Inn (room with two beds)、Across the street from the motel
 - 埋：m01、m03、s01-t14｜收：s01-t01、s01-t07、m01
 - 狀態：Day 2, late night；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill (sweet) | Ledger: $467 left (Peg's cash)] The half pill is still here, and it's sweet; Peg says they'll see the doctor tomorrow but won't say what she knows; the hat went into Peg's knitting bag；接下去：Dr. Brandt at Merrow General tomorrow; the black car with its lights off across the street
@@ -284,7 +284,7 @@
 - 觀眾帶走的問題：Will he spot her in the lobby?
 - 奇觀：Hard white lamplight on a black desk mat: two near-identical white pills side by side, one stroke of the imprint deep, the other shallow.
 - 顏值：Nora sits in the window light of the exam room, hands folded on her knees, chin slightly raised as she listens, eyes very still.
-- 調性：Evidence revenge、Restrained grief、Mother-in-law alliance｜主角：贏｜張力 4-3-4-3-5
+- 調性：Evidence revenge、Grief, played full、Mother-in-law alliance｜主角：贏｜張力 4-3-4-3-5
 - 出場：Nora Quinn、Dr. Helen Brandt、Margaret “Peg” Whitlock、Grant Whitlock｜場景：Merrow General, OB-GYN exam room、Merrow General, waiting area、Merrow General, lobby
 - 埋：m01、s01-t09、s01-t10｜收：m01
 - 狀態：Day 3, morning；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill (at the lab) | Ledger: $196] Dr. Brandt says her prescription isn't sweet and the imprint is different; the half pill is at the lab for three days; Grant came to the hospital to see Dr. Brandt's assistant；接下去：Grant walking toward her in the lobby; the lab result in three days
@@ -323,7 +323,7 @@
 - 觀眾帶走的問題：Will Peg try to stop her?
 - 奇觀：On the white motel sheets, a bitten half pill, a lab report and a pickup log signed with one name, in a row, swept by the red pulse of the neon sign.
 - 顏值：Waist-length hair loose over her shoulders, Nora kneels by the bed squaring each page; red neon catches her eyes from the side, and they are no longer meek.
-- 調性：Evidence revenge、Restrained grief、Mother-in-law alliance｜主角：贏｜張力 5-3-4-4-5
+- 調性：Evidence revenge、Grief, played full、Mother-in-law alliance｜主角：贏｜張力 5-3-4-4-5
 - 出場：Nora Quinn、Margaret “Peg” Whitlock、Dale Hutchins｜場景：Merrow General, outpatient pharmacy、Harborview Motor Inn (double room)
 - 埋：m04、s01-t11｜收：m01｜揭曉：m01
 - 狀態：Day 6, evening；[Evidence wall 0/12 (no wall yet) | Tracker: no report | 5 stages to sentencing | Exhibits: half a pill + lab report + pickup log | Ledger: $159] m01: the daily pill was a sugar copy; Grant signed for the real pills every month and they never reached her; that night wasn't bad luck; when he heard she was pregnant he asked the due date first；接下去：The manila envelope; Peg's hands frozen mid-fold
@@ -685,7 +685,7 @@
 - 觀眾帶走的問題：Who's holding the flashlight?
 - 奇觀：A whole row of dead glassworks on Kiln Row, steel doors rusted dark red; morning light slants through broken high windows into a sheet of hanging dust.
 - 顏值：Nora at the PELL GLASSWORKS door, shoulder-length hair lifted by the wind off the water, looking up at the faded letters with twelve-year-old light in her eyes.
-- 調性：Restrained grief、Craft turns the tables｜主角：有得有失｜張力 4-3-4-3-5
+- 調性：Grief, played full、Craft turns the tables｜主角：有得有失｜張力 4-3-4-3-5
 - 出場：Nora Quinn、Elias Ashford、Grant Whitlock、Gus Moretti｜場景：Kiln Row、Pell Glassworks, steel door、Claire Quinn Glass, front door、Flashback: Pell's door twelve years ago
 - 埋：m08、s01-t31｜收：—
 - 狀態：Day 109 (ten days after the wedding), early morning；[Evidence wall 0/12 (no wall yet) | Tracker: none yet (complaint filed today) | 5 stages to sentencing | Furnace No. 3: cold 12 years | Chandelier: —] Elias brings her to Pell's on Kiln Row, bought at auction; next door is her mother's locked studio, Claire Quinn Glass; this is where she met Grant, then Pell's sales manager；接下去：The flashlight in the dead plant, the furnace under the tarp, the rusted lock on Claire Quinn Glass
@@ -705,7 +705,7 @@
 - 觀眾帶走的問題：Can Number Three ever relight?
 - 奇觀：The tarp slides off a brick furnace two people tall; twelve years of dust falls like snow; the furnace mouth is pitch black.
 - 顏值：She presses her palm to the cold brick, hair falling beside her face, eyes closed for a beat, the thin burn scar inside her wrist against the brick.
-- 調性：Restrained grief、Craft turns the tables｜主角：有得有失｜張力 4-3-4-3-4
+- 調性：Grief, played full、Craft turns the tables｜主角：有得有失｜張力 4-3-4-3-4
 - 出場：Nora Quinn、Gus Moretti｜場景：Pell Glassworks (main floor, Furnace No. 3)
 - 埋：m08、s01-t25｜收：—
 - 狀態：Day 109 (ten days after the wedding), morning；[Evidence wall 0/12 (no wall yet) | Tracker: none yet (complaint filed, awaiting review) | 5 stages to sentencing | Furnace No. 3: cold 12 years | Chandelier: —] Gus has guarded Pell's for twelve years and remembers what she said on the courthouse steps; nobody has lit Number Three in twelve years；接下去：Cold Number Three; the twelve years Gus won't talk about
@@ -725,7 +725,7 @@
 - 觀眾帶走的問題：Will it land on her?
 - 奇觀：The practice furnace glows orange; a glowing gather hangs from the pipe tip like a small sun in the dim plant.
 - 顏值：She stands behind the safety line, goggles pushed up on her head, apron tied tight, signalling with her hands and calling the count, furnace light in her eyes.
-- 調性：Craft turns the tables、Comedy、Restrained grief｜主角：有得有失｜張力 3-3-4-4-5
+- 調性：Craft turns the tables、Comedy、Grief, played full｜主角：有得有失｜張力 3-3-4-4-5
 - 出場：Nora Quinn、Dr. Helen Brandt、Rocco “Sparks” Moretti、Gus Moretti｜場景：Merrow General, follow-up clinic、Pell Glassworks (practice furnace)
 - 埋：m12、s01-t26｜收：—
 - 狀態：Day 110 (eleven days after the wedding)；[Evidence wall 0/12 (no wall yet) | Tracker: none yet (complaint awaiting review) | 5 stages to sentencing | Furnace No. 3: cold | Chandelier: —] Dr. Brandt: six months, no hot furnace (ten weeks left); Sparks is her hands; chalk on the wall: CROOKED — 1；接下去：The hot glass falling at her feet; CROOKED on the wall
@@ -765,7 +765,7 @@
 - 觀眾帶走的問題：Does that break clause two?
 - 奇觀：On the long boardroom table at Ashford Construction: a lease, an old wedding ring and a furnace estimate in a row; all of Port Merrow beyond the floor-to-ceiling windows.
 - 顏值：She signs the lease, the last stroke flicking outward like finishing a glass cane; hair beside her face, the first hint of certainty at her mouth.
-- 調性：Craft turns the tables、Restrained grief、Comedy｜主角：贏｜張力 4-3-4-3-4
+- 調性：Craft turns the tables、Grief, played full、Comedy｜主角：贏｜張力 4-3-4-3-4
 - 出場：Nora Quinn、Margaret “Peg” Whitlock、Elias Ashford、Rocco “Sparks” Moretti、Theo Park｜場景：Pell Glassworks、Ashford Construction, top-floor boardroom
 - 埋：s01-t28｜收：s01-t27
 - 狀態：Day 113 (fourteen days after the wedding)；[Evidence wall 0/12 (no wall yet) | Tracker: Report | 5 stages to sentencing | Furnace No. 3: cold, burner needs repair | Chandelier: —] Grant's old wedding ring pays one month; she leases Pell's at market rate; Elias says the furnace is the landlord's equipment — he repairs it, she lights it；接下去：The REPAIRS line; a studio with no name yet
@@ -805,7 +805,7 @@
 - 觀眾帶走的問題：Why did he come to watch?
 - 奇觀：Furnace No. 3 lights for the first time in twelve years; orange light pours out and floods the red brick, the glass tube and the twelve empty slots.
 - 顏值：Firelight on the goggles pushed up on her forehead, hair lifted by the heat; she stands in the glow with color in her face for the first time.
-- 調性：Craft turns the tables、Restrained grief、Comedy｜主角：贏｜張力 4-3-5-3-4
+- 調性：Craft turns the tables、Grief, played full、Comedy｜主角：贏｜張力 4-3-5-3-4
 - 出場：Nora Quinn、Gus Moretti、Rocco “Sparks” Moretti、Margaret “Peg” Whitlock、Elias Ashford｜場景：Remelt Studio (Furnace No. 3, steel door)
 - 埋：m08｜收：s01-t25、s01-t28
 - 狀態：Day 116 (seventeen days after the wedding), dawn；[Evidence wall 0/12 | Tracker: Report | 5 stages to sentencing | Furnace No. 3: lit, day 1 | Chandelier: —] Number Three is lit; the studio is called Remelt; Elias came to watch the lighting and left without coming in；接下去：His back at the steel door; Number Three burning
@@ -845,7 +845,7 @@
 - 觀眾帶走的問題：Where will she find sand?
 - 奇觀：Remelt at midnight: Number Three's fire reflected in a row of empty sand bins; the old wall clock's hands meet at twelve.
 - 顏值：She sits on the floor by the empty bins, back to the red brick, firelight jumping on her profile, phone still in hand, eyes dry.
-- 調性：Craft turns the tables、Comedy、Restrained grief｜主角：受挫｜張力 4-4-4-4-5
+- 調性：Craft turns the tables、Comedy、Grief, played full｜主角：受挫｜張力 4-4-4-4-5
 - 出場：Nora Quinn、Hank Doyle、Margaret “Peg” Whitlock、Rocco “Sparks” Moretti、Gus Moretti｜場景：Remelt Studio (Furnace No. 3, sand bins)
 - 埋：s01-t30｜收：—
 - 狀態：Day 126 (twenty-seven days after the wedding), the night before the deadline；[Evidence wall 0/12 | Tracker: Report | 5 stages to sentencing | Furnace No. 3: lit, day 11 | Chandelier: 9 hours to deadline, no sand] Every supplier in town is out because Whitlock Home is their biggest client; the furnace can't stop；接下去：Empty bins; midnight on the wall
@@ -865,7 +865,7 @@
 - 觀眾帶走的問題：Will this blue win the ferry?
 - 奇觀：Morning light through a fresh sheet of blue glass turns the whole red brick wall harbor-dawn blue; the tracker tube and the twelve slots glow blue too.
 - 顏值：She kneels at the scale, spoon by spoon, sleeves rolled up, white powder on the thin burn scar inside her wrist, furnace light on her focused profile.
-- 調性：Craft turns the tables、Restrained grief、Comedy｜主角：贏｜張力 5-4-4-3-5
+- 調性：Craft turns the tables、Grief, played full、Comedy｜主角：贏｜張力 5-4-4-3-5
 - 出場：Nora Quinn、Gus Moretti、Rocco “Sparks” Moretti、Margaret “Peg” Whitlock、Claire Quinn (flashback)｜場景：Remelt Studio (storeroom, Furnace No. 3, annealer)
 - 埋：—｜收：s01-t30
 - 狀態：Day 127 (twenty-eight days after the wedding), dawn (deadline day)；[Evidence wall 0/12 | Tracker: Report | 5 stages to sentencing | Furnace No. 3: lit, day 12 | Chandelier: 1 test sheet, entry delivered] Pell's old batch and the recipe Gus remembers make harbor-dawn blue; the first sheet makes the deadline；接下去：The blue sheet they delivered; the blind competition result
@@ -947,7 +947,7 @@
 - 觀眾帶走的問題：Will he eat it?
 - 奇觀：The concrete hallway is dark except for a line of light under the study door; on the floor, a bowl of pasta still steaming.
 - 顏值：Under the warm kitchen light, low ponytail, she plates the pasta; steam blurs her profile, and there's an ease at the corner of her mouth she hasn't noticed.
-- 調性：Married first, in love later、Mother-in-law alliance、Restrained grief｜主角：有得有失｜張力 2-3-3-3-4
+- 調性：Married first, in love later、Mother-in-law alliance、Grief, played full｜主角：有得有失｜張力 2-3-3-3-4
 - 出場：Nora Quinn、Margaret “Peg” Whitlock、Elias Ashford｜場景：The Ashford house on the hill (kitchen, living room, outside the study)
 - 埋：s01-t33｜收：—
 - 狀態：Day 140, 1 a.m.；[Evidence wall 0/12 | Tracker: Report | 5 stages to sentencing | Furnace No. 3: lit, day 25 | Chandelier: results tomorrow] She's waiting on the report and the ferry result; she left a bowl of pasta outside the study; Peg is knitting something very small late at night；接下去：The bowl outside the study, the chair that creaked
@@ -1007,7 +1007,7 @@
 - 觀眾帶走的問題：How does Rosa know her?
 - 奇觀：Steam from the big pot at Rosa's rolls out the door and down Kiln Row, blurring the retreating reporters and their cameras.
 - 顏值：She eats in the shack's steam, hair tucked behind her ear; the heat brings some color back to her pale face, and her eyes finally ease.
-- 調性：Comedy、Restrained grief、Married first, in love later｜主角：贏｜張力 4-2-3-3-4
+- 調性：Comedy、Grief, played full、Married first, in love later｜主角：贏｜張力 4-2-3-3-4
 - 出場：Nora Quinn、Rosa Pell、Rocco “Sparks” Moretti、Lyle Becker｜場景：Kiln Row、Rosa's, the chowder shack on the corner of Kiln Row
 - 埋：s01-t35、m08｜收：s01-t34
 - 狀態：Day 141, morning；[Evidence wall 0/12 | Tracker: Report | 5 stages to sentencing | Furnace No. 3: lit, day 26 | Chandelier: 0/24 made] Rosa ran off the reporters and fed her chowder; Rosa said "You've gotten thin," like she knows her；接下去："You've gotten thin," the question Rosa won't answer
@@ -1027,7 +1027,7 @@
 - 觀眾帶走的問題：What's hidden in Peg's ledger?
 - 奇觀：Three papers side by side on the light box: the six-year-old marriage certificate, the bank card from age eighteen, the traced agreement. The same name three times; only one pauses at every stroke.
 - 顏值：She holds the certificate copy to the light box; light through the paper lights her eyes as she looks at her twenty-five-year-old signature, face perfectly still.
-- 調性：Evidence revenge、Mother-in-law alliance、Restrained grief、Comedy｜主角：贏｜張力 3-3-4-3-4
+- 調性：Evidence revenge、Mother-in-law alliance、Grief, played full、Comedy｜主角：贏｜張力 3-3-4-3-4
 - 出場：Nora Quinn、Dana Okafor、Margaret “Peg” Whitlock、Rocco “Sparks” Moretti｜場景：Remelt Studio (light box, Furnace No. 3)
 - 埋：m03｜收：s01-t32
 - 狀態：Day 144；[Evidence wall 0/12 | Tracker: Report | 5 stages to sentencing | Furnace No. 3: lit, day 29 | Chandelier: 3/24 made] The examiner gets the bank signature card and the six-year-old marriage certificate as exemplars, and both signatures flick; Peg was the witness on the certificate; Peg reaches for something in her ledger and stops；接下去：The ledger Peg touched and let go, the two exemplars sent to Wexler
@@ -1067,7 +1067,7 @@
 - 觀眾帶走的問題：Whose left hand traced her?
 - 奇觀：In the glass tube on the brick wall, a bead slides from Report to Charges and stops with a ding; beside it the twelve empty slots of the evidence rack shine in the furnace light.
 - 顏值：She reads the report's last line at the light box, lit from below, hair falling onto the page; when she lifts her eyes they're cold as glass fresh from the annealer.
-- 調性：Evidence revenge、Craft turns the tables、Restrained grief｜主角：贏｜張力 4-3-5-4-5
+- 調性：Evidence revenge、Craft turns the tables、Grief, played full｜主角：贏｜張力 4-3-5-4-5
 - 出場：Nora Quinn、Dana Okafor、Margaret “Peg” Whitlock、Arthur Wexler、Leonard Fisk、Sienna Vale｜場景：Remelt Studio (light box, case tracker tube, evidence rack)
 - 埋：m05｜收：m02、s01-t36｜揭曉：m02
 - 狀態：Day 151；[Evidence wall 0/12 (two panels to engrave) | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit, day 36 | Chandelier: 9/24 made] m02: both signatures are traced, signed the night she was under anesthesia; the transfers of the Glass House and the accounts are frozen; the forgery charge is filed; the tracing was likely done left-handed, and she thinks of Sienna；接下去：That left hand, two panels to engrave
@@ -1089,7 +1089,7 @@
 - 觀眾帶走的問題：Will Peg hand over that slip?
 - 奇觀：Two engraved panels slot into the first two places on the twelve-slot steel rack; Number Three's firelight passes through the letters and throws “Pills” and “Signature” across the red brick wall.
 - 顏值：She bends over the glass with the engraving pen, goggles pushed up on her head, sleeves rolled; with every stroke the furnace light jumps on her lashes.
-- 調性：Evidence revenge、Mother-in-law alliance、Restrained grief、Comedy｜主角：贏｜張力 3-3-4-3-5
+- 調性：Evidence revenge、Mother-in-law alliance、Grief, played full、Comedy｜主角：贏｜張力 3-3-4-3-5
 - 出場：Nora Quinn、Rocco “Sparks” Moretti、Margaret “Peg” Whitlock｜場景：Remelt Studio (evidence wall, Furnace No. 3)
 - 埋：m03｜收：—
 - 狀態：Day 152: the day after the report, into the night；[Evidence wall 2/12 | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit day 37 | Chandelier: 10/24] The prosecutor's office adds the pickup log and the examiner's report to the file; the first two panels are engraved; the left-hand lead goes to the prosecutor; Peg pulls a slip of paper out of her ledger；接下去：The slip in Peg's hand; the empty third slot
@@ -1109,7 +1109,7 @@
 - 觀眾帶走的問題：Can this receipt sink him?
 - 奇觀：The light box shines up through a crumpled receipt; “Replica tablets”, “100” and the number in the corner glow as if they were etched in glass.
 - 顏值：The moment she hugs Peg, her shoulder-length hair against Peg's worn cardigan, the furnace lights them from behind and their two shadows merge into one.
-- 調性：Restrained grief、Mother-in-law alliance｜主角：有得有失｜張力 4-4-5-4-5
+- 調性：Grief, played full、Mother-in-law alliance｜主角：有得有失｜張力 4-4-5-4-5
 - 出場：Nora Quinn、Margaret “Peg” Whitlock｜場景：Remelt Studio (light box, evidence wall)
 - 埋：m11｜收：m03、s01-t05｜揭曉：m03
 - 狀態：Day 152: same night, late；[Evidence wall 2/12 | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit day 37 | Chandelier: 10/24] m03: Peg found a receipt for “Replica tablets, 100 count” (no. 0417-100) in Grant's car and heard him say “That thing's taken care of”; thirty-four years ago she sat in the same hallway all night; she says she was one day late；接下去：The receipt; the prosecutor tomorrow
@@ -1149,7 +1149,7 @@
 - 觀眾帶走的問題：Who keeps Number Three lit?
 - 奇觀：In Number Three's firelight a sack of cullet spills across the floor, blue and clear shards everywhere, reflecting an old man sitting on the ground.
 - 顏值：She crouches beside Gus with a hand on his back, her apron dusted white, and looks back at the roaring furnace; for the first time her eyes show a flicker of panic.
-- 調性：Restrained grief、Craft turns the tables、Comedy｜主角：受挫｜張力 4-3-4-4-5
+- 調性：Grief, played full、Craft turns the tables、Comedy｜主角：受挫｜張力 4-3-4-4-5
 - 出場：Nora Quinn、Fiona Marsh、Rocco “Sparks” Moretti、Gus Moretti｜場景：Remelt Studio (Furnace No. 3, cot)
 - 埋：s01-t37、s01-t38｜收：—
 - 狀態：Day 155: two days later, night；[Evidence wall 2/12 | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit day 40 | Chandelier: 12/24, 7 days to the maiden voyage] The maiden voyage moves up to next Friday; Gus throws out his back; Number Three can't go cold；接下去：A furnace with no one to watch it tonight; twelve panels to go
@@ -1169,7 +1169,7 @@
 - 觀眾帶走的問題：Can Sparks do it without her?
 - 奇觀：Remelt at night: a gloved figure feeds the furnace mouth shovel by shovel, and the firelight throws his shadow across the whole evidence wall, over the two engraved panels.
 - 顏值：Elias, work sleeves rolled to the forearm, pushes the furnace door shut in thick gloves; his thin-framed glasses catch the fire and sweat runs down his temple. He doesn't look back.
-- 調性：Married first, in love later、Craft turns the tables、Comedy、Restrained grief｜主角：贏｜張力 4-3-3-4-5
+- 調性：Married first, in love later、Craft turns the tables、Comedy、Grief, played full｜主角：贏｜張力 4-3-3-4-5
 - 出場：Nora Quinn、Elias Ashford、Gus Moretti、Rocco “Sparks” Moretti、Theo Park｜場景：Remelt Studio (Furnace No. 3, cot)
 - 埋：m08｜收：s01-t38
 - 狀態：Day 155 to Day 161: that night through dawn six days later；[Evidence wall 2/12 | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit day 46 | Chandelier: 23/24, maiden voyage tomorrow night] Elias says Gus called him; seven nights he tends only the fire and never touches the chandelier; the last panel goes to Sparks alone；接下去：The blowpipe in Sparks's hands; the last panel
@@ -1189,7 +1189,7 @@
 - 觀眾帶走的問題：Grant on her big night?
 - 奇觀：Remelt before dawn: twenty-four panels of early-morning harbor blue lined up on the wooden rack; the first daylight comes through the high windows and all twenty-four light up at once.
 - 顏值：She stands behind the safety line with her arms folded, goggles up on her head, biting her lip as Sparks blows the last panel; when the glass comes out, her eyes smile first.
-- 調性：Craft turns the tables、Comedy、Restrained grief｜主角：贏｜張力 5-3-3-3-4
+- 調性：Craft turns the tables、Comedy、Grief, played full｜主角：贏｜張力 5-3-3-3-4
 - 出場：Nora Quinn、Rocco “Sparks” Moretti、Gus Moretti、Elias Ashford、Fiona Marsh｜場景：Remelt Studio (Furnace No. 3, wooden rack, cot)
 - 埋：—｜收：s01-t26、s01-t37
 - 狀態：Day 161: the morning before the maiden voyage；[Evidence wall 2/12 | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit day 46 | Chandelier: 24/24, crated] Sparks blows his first straight piece; the chandelier is complete; the maiden voyage sponsor is Whitlock Home and Grant will give a speech；接下去：Twenty-four crates; Grant onstage tomorrow night
@@ -1210,7 +1210,7 @@
 - 觀眾帶走的問題：Is he coming to her door?
 - 奇觀：The three-story ferry terminal hall: twenty-four blue panels light up together and wash the whole space in harbor-dawn blue, while outside the glass wall a ferry sounds its horn and docks.
 - 顏值：She stands in the back row looking up at her own light, work jacket, shoulder-length hair, blue light all over her face; she doesn't smile, but her eyes shine like glass.
-- 調性：Public unmasking、Mother-in-law alliance、Craft turns the tables、Restrained grief｜主角：贏｜張力 4-4-4-3-5
+- 調性：Public unmasking、Mother-in-law alliance、Craft turns the tables、Grief, played full｜主角：贏｜張力 4-4-4-3-5
 - 出場：Nora Quinn、Fiona Marsh、Grant Whitlock、Margaret “Peg” Whitlock、Lyle Becker、Rocco “Sparks” Moretti｜場景：New ferry terminal, main hall、The car home
 - 埋：s01-t40｜收：s01-t13、s01-t39
 - 狀態：Day 162: the next night (maiden voyage)；[Evidence wall 2/12 | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit day 47 | Chandelier: lit] The ferry chandelier is her first public work, the blind-review envelope read “Remelt”; Peg's wedding ring is back on her hand; Nora won't drop the case; Grant wants to talk face to face；接下去：Grant's “face to face”
@@ -1230,7 +1230,7 @@
 - 觀眾帶走的問題：Will he only tend the fire?
 - 奇觀：Remelt late at night, Number Three's fire the only light; steam off a bowl of pasta and the heat from the furnace mouth twist together in the air, and the two engraved panels flicker bright and dark.
 - 顏值：Elias at the furnace mouth, black work clothes, heat gloves, the fire turning his profile orange; when he says “As long as it's lit, I'm here,” his eyes behind the lenses aren't on her.
-- 調性：Married first, in love later、Mother-in-law alliance、Restrained grief、Comedy｜主角：有得有失｜張力 3-3-4-3-4
+- 調性：Married first, in love later、Mother-in-law alliance、Grief, played full、Comedy｜主角：有得有失｜張力 3-3-4-3-4
 - 出場：Nora Quinn、Dana Okafor、Elias Ashford、Theo Park、Margaret “Peg” Whitlock｜場景：Remelt Studio (Furnace No. 3)、Ashford Construction, top floor、The Ashford house on the hill (living room)
 - 埋：m12｜收：—
 - 狀態：Day 163: the day after the maiden voyage；[Evidence wall 2/12 | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit day 48 | Chandelier: lit, final payment pending] Grant comes to Remelt tomorrow at 8 p.m.; Elias won't fight for her, only tend the furnace; he says as long as the fire's lit, he's there；接下去：Tomorrow at eight; the heat gloves by the furnace
@@ -1250,7 +1250,7 @@
 - 觀眾帶走的問題：What does he want inside?
 - 奇觀：Remelt's steel door swings slowly open; the Kiln Row streetlight outside and Number Three's fire inside meet at the threshold, where a man in a pale suit stands on the line.
 - 顏值：She holds a cold blowpipe between the furnace and the door, shoulder-length hair, work apron, goggles pushed up; when the door creaks she doesn't turn around, and her wrist keeps turning.
-- 調性：Public unmasking、Restrained grief｜主角：有得有失｜張力 4-4-4-4-5
+- 調性：Public unmasking、Grief, played full｜主角：有得有失｜張力 4-4-4-4-5
 - 出場：Nora Quinn、Theo Park、Rocco “Sparks” Moretti、Elias Ashford、Grant Whitlock｜場景：Remelt Studio (Furnace No. 3, steel door, evidence wall)
 - 埋：m08｜收：s01-t40
 - 狀態：Day 165: two days later, 8 p.m.；[Evidence wall 2/12 | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit day 50 | Chandelier: lit, final payment pending] Grant is at Remelt's door; she teaches Sparks the wrist turn with an empty blowpipe, Dr. Brandt's ban still in force; Elias is at the furnace with his back to the door；接下去：The hand on the steel door; the figure at the furnace
@@ -1270,7 +1270,7 @@
 - 觀眾帶走的問題：Who was Elias at Pell's?
 - 奇觀：Number Three's fire pours out of the furnace mouth onto a left hand just stripped of its heat glove, an old burn scar across the back; behind it, on the red brick, the two engraved panels catch the same fire.
 - 顏值：Elias turns at the fire and pulls off the heat glove finger by finger; under the rolled cuff the old scar on the back of his left hand shows, and his eyes behind the lenses are locked on Grant.
-- 調性：Public unmasking、Restrained grief、Secret devotion｜主角：贏｜張力 4-4-4-5-5
+- 調性：Public unmasking、Grief, played full、Secret devotion｜主角：贏｜張力 4-4-4-5-5
 - 出場：Nora Quinn、Grant Whitlock、Elias Ashford、Rocco “Sparks” Moretti｜場景：Remelt Studio (evidence wall, Furnace No. 3 furnace mouth)
 - 埋：m08、m06、m12｜收：s01-t15
 - 狀態：Day 165: same night；[Evidence wall 2/12 | Tracker: Charges | 4 stages to sentencing | Furnace No. 3: lit day 50 | Chandelier: lit, first commission complete] She won't drop the case; Grant recognizes Elias; “Sales” is what only Pell's people called Grant twelve years ago, so Elias was at Pell's back then; Dr. Brandt's ban still in force, and Sparks can blow a straight piece；接下去：She has to ask Elias where he was twelve years ago; the burn scar; a Grant who stops smiling from tonight on

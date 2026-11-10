@@ -85,21 +85,21 @@ Nora Quinn is thirty-one. At nineteen she learned to blow glass from master Walt
 - **Married first, in love later**：Three clauses, separate rooms, one long dining table. The feeling moves one notch at a time: a plate of pasta, a note under it that says “Salty,” a light left on, a name that slips out.
 - **Secret devotion**：Twelve years of quiet love hidden in objects: the burn scar, “Soot,” the crooked glass bird, the man who sat all night at the end of the hallway, an unsent letter. A little shows each season; season five lays it all out.
 - **Mother-in-law alliance**：Her ex-mother-in-law packs a suitcase and leaves with her — sharp-tongued, good with numbers, fiercely loyal. From season two the two mothers, Peg and Rosa, go from bickering to teaming up; the warmth and the laughs live at the dinner table.
-- **Restrained grief**：The loss of the baby is only ever a hallway, a half-knitted hat and a flickering light; her mother's note, Walter's letter from prison, a mother on the witness stand. Once or twice a season, never milked.
+- **Grief, played full**：Owner 2026-11-10: no need for restraint. The loss of the baby, her mother's note, Walter's letter from prison and a mother on the witness stand are played at full emotional volume: tears, breakdowns, screaming at Grant, Peg sobbing in the hallway. Still nothing graphic (see advertiser_safety).
 - **Comedy**：Theo's deadpan, Sparks's loud mouth, Peg's sharp tongue, the two moms sniping. At least one laugh per episode, placed right before or after the heaviest scenes.
 
 ## 不黃標（廣告友善）
 
-YouTube advertiser-friendly (no yellow icon), following YouTube's advertiser-friendly content guidelines: violence, adult content, shocking content, profanity, dangerous acts and sensitive events are avoided or toned down.
+YouTube advertiser-friendly (no yellow icon) is the only limit (owner 2026-11-10: drop 'restrained / not tear-jerking / safe-feeling'; only avoid limited ads). Follow YouTube's advertiser-friendly content guidelines: no graphic violence or gore, no sexual content, no strong profanity, no self-harm, no shocking medical imagery.
 
-- The loss of the baby is shown only through the seventh-floor hallway at Merrow General, a half-knitted baby hat, the flickering light at the end and Dr. Brandt's “I'm so sorry.” No blood, no medical procedures, no ultrasound images. Public titles and thumbnails never use the words “miscarriage” or “abortion”; write “that night” or “the hallway.”
+- The loss of the baby can be played openly and loudly: she can say “I lost my baby”, sob in the hospital bed, scream at Grant, break down in the hallway. Never show blood, a medical procedure, an ultrasound image or anything graphic. Public titles and thumbnails avoid the words “miscarriage” and “abortion” (write “that night”, “the hallway”, “what he took from me”).
 - “My prenatal medication” is generic: no real drug name, ingredient or dose ever appears. The sugar tablets appear only as a receipt, an order and a voice memo; their making is never shown or explained.
-- Crimes (forgery, fraud, breach of trust, infringement, assault) are handled only through documents, evidence, the Prosecutor's Office and the courtroom. No fights, no vigilante justice; custody and sentencing are one line, one door and a pane of glass in the visiting room.
+- Crimes are resolved through evidence and the courts, never vigilante justice. Heated confrontations are fine: shouting, a thrown drink, one slap in a dramatic moment, being shoved out of a door; no injuries shown, no weapons, no fights, no blood. Custody and sentencing can be shown fully (handcuffs, the courtroom, the visiting room).
 - The antique-lamp case twelve years ago is fraud, not an accident; nobody was hurt. It is shown only through old newspapers, a photo and the bubbles in a lamp base.
 - Glass is only smashed when it is a fake, by someone in gloves and goggles, into a steel drum, never toward a person. Glassblowing and furnace work always show proper protective gear; burn scars are shown only healed.
 - Her grief is never written as self-harm: no rooftops, bridges or lone walks along the water's edge as suggestive images. Suicide and self-harm never appear anywhere in the series.
-- The contract marriage means separate rooms; intimacy goes no further than holding hands, hugs and one kiss on the forehead in season five. The affair is shown only through a marriage application and newly hung curtains. No bed scenes, no undressing or bathing.
-- No profanity in dialogue. Jabs like “walked out with nothing” and “Divorced at noon, married to a billionaire by five” are fine; no slurs against any group, no shaming of women's bodies.
+- The contract marriage keeps separate rooms; romance can go as far as kisses (no sexual content, no bed scenes, no undressing or bathing). The affair is shown through the marriage application, the curtains, texts and Sienna in the Glass House.
+- Mild language only (“damn”, “hell”, “bastard” at most, sparingly); no f-words or slurs, no shaming of women's bodies. Jabs like “walked out with nothing” and “Divorced at noon, married to a billionaire by five” are fine.
 - Fictional city and institutions: nothing maps to a real city, hospital, court, company or person; legal procedure stays at common-sense level and cites no real statutes. Every upload is marked “altered or synthetic content.”
 - Public titles (youtube_title) and thumbnails never use the words “miscarriage”, “abortion”, “blood”, “suicide”, “kill”, “dead baby”, “sexy” or “nude.”
 
