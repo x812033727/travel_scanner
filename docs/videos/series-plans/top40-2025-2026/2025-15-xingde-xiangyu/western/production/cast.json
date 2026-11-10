@@ -7,8 +7,8 @@
     "plan.json: episodes 90–180 seconds, chapter finales at least 120; 3–5 hooks an episode; production on MiniMax Hailuo image-to-video, photoreal live-action, diverse Western cast.",
     "setting.json advertiser_safety and glamour: no blood, no medical procedure, no violence toward people, no bed scenes, no bare backs or low necklines; glass is smashed only when it is a fake, in gloves and goggles, into a steel drum; beauty is in faces, hands and furnace light.",
     "No readable text is ever generated in an image or clip: documents, signs, receipts, ledgers and the bubble name are blank or illegible in generation; any words the viewer must read are added in post.",
-    "Voices are Gemini TTS candidates, not approved: audition Nora, Elias, Grant and Peg on the site before episode 1 (task 2026-11-09-western-till-the-verdict).",
-    "Portraits (portrait) are empty until the screen test locks a face per character."
+    "Owner 2026-11-10: dialogue follows the built-in route of 種田 and 恁祖媽: silent H3 clips, voices from the site's Gemini TTS, no lip-sync model; the on-screen speaker is written 'mouth talking', lines often sit on reaction shots marked off-screen.",
+    "Owner 2026-11-10 ('照內建的'): voices are the cast.json defaults (Nora Despina, Elias Charon, Grant Algieba, Peg Gacrux); portraits are the screen-test default picks in assets/refs/ (Nora b, Elias a, Grant a, Peg a). Other characters get portraits when first drawn."
   ],
   "look": {
     "preset": "custom",
@@ -58,7 +58,7 @@
         "name": "Despina",
         "style": "General American accent, natural conversational pace, clear diction; 31-year-old woman, soft, steady and unhurried; in season one she apologizes too often and her sentences trail down; when she states a fact in public her voice goes quiet and very clear, never shrill"
       },
-      "portrait": null,
+      "portrait": "assets/refs/nora-portrait.jpg",
       "s1_episodes": "1–60",
       "notes": "Hair: long until episode 18; cut to shoulder length in episode 19 and stays there. Season one look changes with the story: pregnant (1), hospital (2–5), motel coat (6–20), gown (26–30), work apron once Remelt opens (31 on). Glamour: furnace light on her goggles, the side of her face as she turns the blowpipe."
     },
@@ -86,7 +86,7 @@
         "name": "Charon",
         "style": "General American accent, natural conversational pace, clear diction; 34-year-old man, low, sparse and exact; every sentence sounds like a contract clause; he never raises his voice; with Nora he slows down by half a beat"
       },
-      "portrait": null,
+      "portrait": "assets/refs/elias-portrait.jpg",
       "s1_episodes": "2, 10, 15–22, 24–27, 29–31, 35, 37, 44, 49, 55–56, 58–60",
       "notes": "The scar on the back of his LEFT hand is hidden until episode 60 (gloves or hand in pocket; thread s01-t15). In episode 2 only the scarred hand dialing 911 is shown, never his face."
     },
@@ -110,7 +110,7 @@
         "name": "Algieba",
         "style": "General American accent, natural conversational pace, clear diction; 37-year-old man, warm, smooth and even like a keynote speech, calls her 'Nor'; when cornered his sentences get short and clipped but he never shouts"
       },
-      "portrait": null,
+      "portrait": "assets/refs/grant-portrait.jpg",
       "s1_episodes": "1, 3–5, 8–9, 11–12, 18–20, 22, 26–31, 45, 57, 59–60",
       "notes": "Model-husband image: soft lighting on him in public, colder light when he is alone."
     },
@@ -150,7 +150,7 @@
         "name": "Gacrux",
         "style": "General American accent, natural conversational pace, clear diction; 62-year-old woman from a small Washington town, quick, blunt and dry; every kind thing comes out as a complaint; when she finally speaks about the hallway her voice drops and slows"
       },
-      "portrait": null,
+      "portrait": "assets/refs/peg-portrait.jpg",
       "s1_episodes": "1, 5, 8–16, 18–25, 34–35, 37, 39–40, 42, 44–45, 48, 50–53, 57–58",
       "notes": "Her plain gold wedding band is on her left hand until episode 15, when she pawns it (thread s01-t13, paid off in 57). Her ledger lines are read aloud by her, never shown as readable text."
     },

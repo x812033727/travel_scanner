@@ -35,6 +35,8 @@ Qwen-Image-Edit 畫定妝照與場景，H3 Ref2VA 三段式的前兩段（960×5
   分鏡照 `storyboard-shot-spec.md`：說話的人在畫面上寫「嘴在說話」、其他人「嘴閉著」；台詞放在反應鏡上標「畫外」；心裡話標「心裡話，嘴閉著」。
   嘴是「在說話」，不是逐字對上；說話的正臉大特寫少用、短句為主。
 
+- **聲音與定妝照照預設**（站主「照內建的」）：聲音用 `cast.json` 的預設（Nora Despina、Elias Charon、Grant Algieba、Peg Gacrux）；定妝照用這次選的 Nora b、Elias a、Grant a、Peg a，與三套換裝、三個場景一起存進 `../assets/refs/`。
+
 ## 點數
 
 帳號 b 餘額 2,297.22 → 2,278.22（−19.0）。但同一帳號另有一個不是這次開的 runtime 一直在跑（`rate_per_hour` 10.05、`active_assignments` 1，試鏡前後都在），
@@ -44,7 +46,7 @@ Qwen-Image-Edit 畫定妝照與場景，H3 Ref2VA 三段式的前兩段（960×5
 
 站台 Gemini TTS，四個主角各三個候選（台詞在 `audition/`，風格是 `cast.json` 的 voice.style）：
 Nora Despina／Kore／Aoede、Elias Charon／Alnilam／Orus、Grant Algieba／Achird／Schedar、Peg Gacrux／Vindemiatrix／Sulafat。
-共 2,820 個計費字元。樣本已交站主，等站主選。
+共 2,820 個計費字元。樣本已交站主；站主 2026-11-10 定用預設。
 
 ## 重跑
 

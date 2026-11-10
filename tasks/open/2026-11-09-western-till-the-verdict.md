@@ -29,7 +29,7 @@ scope:
 - [x] 英文設定集、第一季總綱與 60 集英文逐集細綱（`western/setting.json`、`outline.json`、`season-01.json`），`validate.mjs --season 1` 通過。
 - [x] 英文 `production/cast.json`（外貌、換裝、聲音候選、路人、場景、道具提示詞）。
 - [x] 定妝照試鏡（2026-11-10，約 9 CU，`production/screen-test/README.md`）。
-- [ ] 站主看試鏡、選四個主角的聲音；選定後填 `cast.json` 的 voice 與 `portrait`。
+- [x] 站主定案（2026-11-10「照內建的」）：聲音用 cast.json 預設、定妝照用試鏡預設，存 `production/assets/refs/`、填 `portrait`；台詞照內建、不對嘴。
 - [ ] 前三集英文劇本與分鏡，照 animation-preproduction 鎖定，三鏡小樣報價。
 
 ## Steps
