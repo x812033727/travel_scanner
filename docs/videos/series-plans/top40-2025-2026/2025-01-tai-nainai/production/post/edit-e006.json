@@ -1,5 +1,5 @@
 {
- "_note": "《恁祖媽今年18》第 6 集剪接表（post/assemble-v4.mjs），2026-11-10 照種田拍法的 37 鏡分鏡，首格路線 Colab H3（1312×736，不精修；c12 是參照路線草稿、沒有臉，lanczos 放大）。沿用站主定的：不放片名卡、集數、人名條，畫面不放字；不裁切放大；慢放不超過 1.1 倍；CC 軟字幕；看得到嘴的台詞用模型原聲。拿掉 c16、c17、c20、c29、c33、c37（首格或片段畫不出來，前後鏡交代得到）；c20 的心裡話 t006012 在工作用的 video.json 副本裡移到 c21（c21 只用沒人說話的 0–3.4 秒、月棠低頭看手），spill 延到 c22 開口之前。c40 小滿「掉了」改用錄音（模型念得像「丟了」）。配樂：分鏡寫的 warm 沒有這首（系列只有 comedy、memory、suspense、tension）；第一場 tension 兩段（場長約 69 秒、曲子 61 秒）、第二場 memory、第三場前半 memory 接後半 suspense，c41 收掉音樂、只留小滿的哭聲。調色：第一、二場是白天，用 lift；第三場飯廳夜戲 indoor。已知瑕疵交站主看片：c41 月棠站在小滿身後扶肩（側面相對的版本畫不出來）、c01 托盤只有一只杯、c36 月棠左手兩枚戒指（右手光著）、c38 沒走到小滿面前、c05 開口前約 0.8 秒嘴動沒聲。",
+ "_note": "《恁祖媽今年18》第 6 集剪接表（post/assemble-v4.mjs），2026-11-10 照種田拍法的 37 鏡分鏡，首格路線 Colab H3（1312×736，不精修；c12 是參照路線草稿、沒有臉，lanczos 放大）。沿用站主定的：不放片名卡、集數、人名條，畫面不放字；不裁切放大；慢放不超過 1.1 倍；CC 軟字幕；看得到嘴的台詞用模型原聲。拿掉 c16、c17、c20、c29、c33、c37（首格或片段畫不出來，前後鏡交代得到）；c20 的心裡話 t006012 在工作用的 video.json 副本裡移到 c21（c21 只用沒人說話的 0–3.4 秒、月棠低頭看手），spill 延到 c22 開口之前。c40 小滿「掉了」改用錄音（模型念得像「丟了」）。配樂：分鏡寫的 warm 沒有這首（系列只有 comedy、memory、suspense、tension）；第一場 tension 兩段（場長約 69 秒、曲子 61 秒）、第二場 memory、第三場前半 memory 接後半 suspense，c41 收掉音樂、只留小滿的哭聲。調色：第一、二場是白天，用 lift；第三場飯廳夜戲 indoor。已知瑕疵交站主看片：c41 月棠站在小滿身後扶肩（側面相對的版本畫不出來）、c01 托盤只有一只杯、c36 月棠左手兩枚戒指（右手光著）、c38 沒走到小滿面前、c05 開口前約 0.8 秒嘴動沒聲。 第一次組片獨立審片後（不花錢）：c41 放回草稿自己的哭聲（sfx-own/c41-cry.wav）；c08、c27、c15、c35、c22 剪頭（開口前空太久）、c12 插鏡縮到 2.5 秒、c23 加長到「向」講完、c40 剪到「掉了」後就切；c38、c41 調亮（lift）；第一場與第三場中間的配樂改交叉淡接；拿掉 c06 的推杯聲（畫面沒推）、c05 放杯聲與 c01 腳步聲調小；c32 尾加一聲很輕的瓷碟聲。交站主決定：c34「虎口鬆了」少了 c33／c37 知遠抓枸杞的畫面（插鏡兩輪都出亂碼字幕、方向錯）、c18 句中約 1 秒嘴動無聲、c39 月棠兩手都有戒指、飯廳吊燈各鏡不一、皮夾 c06／c08 酒紅與 c12／c14 深棕。",
  "tempo": 1.07,
  "slow_max": 1.1,
  "interpolate": false,
@@ -23,7 +23,9 @@
    "c21",
    "c22",
    "c23",
-   "c24"
+   "c24",
+   "c38",
+   "c41"
   ]
  },
  "default_grade": "indoor",
@@ -65,7 +67,8 @@
  "duck_ratio": 3.5,
  "duck_release_ms": 900,
  "sfx_dirs": [
-  "<VIDEO_WORKDIR>/_series/tai-nainai/sfx"
+  "<VIDEO_WORKDIR>/_series/tai-nainai/sfx",
+  "<VIDEO_WORKDIR>/_tn-work/e006-post/sfx-own"
  ],
  "music": [
   {
@@ -75,8 +78,8 @@
    "offset": 0,
    "gain": -18,
    "fade_in": 0.8,
-   "tail": 0.3,
-   "fade_out": 0.6
+   "tail": 1.0,
+   "fade_out": 1.0
   },
   {
    "cue": "tension",
@@ -84,9 +87,10 @@
    "to": "c15",
    "offset": 20.0,
    "gain": -18,
-   "fade_in": 0.6,
+   "fade_in": 1.0,
    "tail": 0.8,
-   "fade_out": 1.2
+   "fade_out": 1.2,
+   "from_off": -0.6
   },
   {
    "cue": "memory",
@@ -105,8 +109,8 @@
    "offset": 40.0,
    "gain": -18,
    "fade_in": 0.8,
-   "tail": 0.3,
-   "fade_out": 0.8
+   "tail": 1.0,
+   "fade_out": 1.0
   },
   {
    "cue": "suspense",
@@ -114,9 +118,10 @@
    "to": "c40",
    "offset": 0,
    "gain": -17,
-   "fade_in": 0.6,
+   "fade_in": 1.0,
    "tail": 0.4,
-   "fade_out": 1.0
+   "fade_out": 1.0,
+   "from_off": -0.6
   }
  ],
  "sfx": [
@@ -148,25 +153,19 @@
    "file": "footstep_wood_000",
    "at": "c01",
    "off": 0.4,
-   "gain": -22
+   "gain": -28
   },
   {
    "file": "footstep_wood_000",
    "at": "c01",
    "off": 1.2,
-   "gain": -23
+   "gain": -29
   },
   {
    "file": "impactPlate_light_000",
    "at": "c05",
    "off": 0.3,
-   "gain": -24
-  },
-  {
-   "file": "dishes_01",
-   "at": "c06",
-   "off": 0.4,
-   "gain": -26
+   "gain": -30
   },
   {
    "file": "impactWood_light_001",
@@ -227,6 +226,18 @@
    "at": "c32",
    "off": 0.6,
    "gain": -28
+  },
+  {
+   "file": "c41-cry",
+   "at": "c41",
+   "off": 0.0,
+   "gain": 8
+  },
+  {
+   "file": "dishes_02",
+   "at": "c32",
+   "off": 4.6,
+   "gain": -34
   }
  ],
  "own_voice": "/root/mokaair-work/videos/_tn-work/e006-post/voice-work.json",
