@@ -52,3 +52,12 @@ The session that made 《恁祖媽今年18》 episodes 1–5 ended on 2026-11-10
 
 - [ ] confirm the host migration put `transfer/tn-e00N` and `tn-shared` under `AI劇/恁祖媽今年18/` on Drive
 - [ ] episode 6: pictures → stills → clips → pick → fix → refine → cut → review → import → todrive.sh
+
+## 2026-11-10 第 6 集進度（接手的 session）
+
+- 站主 2026-11-10：**第 6 集上限放寬到 55 CU**（首格兩輪後 28 張只定 22 張、已用 10.7 CU 時問的；選「上限再放寬到 55 點」）。RULES.md 第四節在 #2047 分支，合併後補一列。
+- 場景圖：正廳白天 zt-day-2、飯廳 fanting-1、托盤 tray-1，已進 `assets/refs/`（舊飯廳在 `assets/refs/orig/`）。
+- 首格：第一輪 56 張定 17 鏡，第二輪（`redo_stills.py`）22 張定 5 鏡，第三輪（`redo3_stills.py`，c41 從 c38 修圖）6 鏡各三個種子。挑圖都交獨立代理。
+- 整集反覆的錯：飯廳燈畫成紅流蘇燈籠、鐘面數字、月棠臉太正面、前景虛焦肩膀寫在句尾就畫不出來、眼淚畫成紅色。
+- CU：場景圖＋首格第一輪 7.54、第二輪 2.34（含關機後補扣 0.82），累計 10.70（2384.25 → 2373.55）。
+- 錄音 25 句在 `$TN_WORK/e006voice/`（只有 t006012 用錄音，其餘用原聲）。
