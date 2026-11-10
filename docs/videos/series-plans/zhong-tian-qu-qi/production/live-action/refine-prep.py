@@ -27,6 +27,10 @@ picks = {}
 for tsv in sys.argv[2:]:
     for line in Path(tsv).read_text(encoding="utf-8").splitlines()[1:]:
         shot, choice, reason = (line.split("\t") + ["", ""])[:3]
+        # e904 fix3: a picker wrote "end@5.0"; only start@ and end-before@ are read, so the end trim was silently lost
+        bad = [t for t in re.findall(r"([\w-]+)@[0-9.]+", reason) if t not in ("start", "end-before")] if choice.isdigit() else []
+        if bad:
+            sys.exit(f"{tsv}: {shot}: unknown trim {bad} (use start@S and end-before@E)")
         if choice.isdigit():
             trim = dict(re.findall(r"(start|end-before)@([0-9.]+)", reason))
             crop = re.search(r"crop=(\d+:\d+:\d+:\d+)", reason)  # a reframe in the cut (e001 live fix2 s01)
