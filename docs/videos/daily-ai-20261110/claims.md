@@ -90,6 +90,31 @@ c56｜s004 回扣 j007（c15 的六年）｜—｜—｜s004
 c57｜s006 Mokaair 網站的完整整理：四篇站上文章，說明欄列網址｜—｜—｜s006
 c58｜outro：o001「保護人又不嚇跑人的，是規則」是節目的答案（意見），回答 q001；o002 留言題｜節目｜—｜o001, o002
 
+## 盲聽修改第 2 輪（第一次聽的讀者 6/10；保留查核第 1 輪的全部改動）
+
+直接改 `video.json`，沒有重跑 build.mjs。下面是改過、新增的事實句與它們的依據；拿掉的句子列在最後。本輪改過的事實句（c59–c74）要再交查核代理對一次。
+
+c59｜hk01／hk02 拆成兩句：「川普上了美國電視新聞節目《60 分鐘》，談 AI 安全。」「他說，政府警告過一位 AI 公司老闆『準備坐牢』。」＝c2、c20；「美國電視新聞節目」是對《60 分鐘》的解釋｜TRUMP；TV｜2026-11-09｜hk01, hk02
+c60｜a011「用量上限會受你跟 Logic Pro 內建 AI 助理對話的複雜度影響」＝c10；「內建 AI 助理」：AV「It has a built-in AI assistant」，APPLE「Logic Pro 內建 AI 助理」｜APPLE；AV｜2026-11-09｜a011
+c61｜m003「川普說，有人向政府舉報某人用 AI 做壞事，政府那邊就很強硬地打電話給對方」；m004「他說，政府跟對方講：……」。原話只說「reported to us」「We called them」，「us／we」讀成政府，依據是 TV 對同一段話的描述「He claimed the DOJ is managing that risk」「Trump claims the DOJ told a top AI executive」；旁白說「政府」不說「司法部」，不替他指定是哪個單位打的。查核可決定要不要改成「他說『我們』」｜TRUMP；TV｜2026-11-09｜m003, m004
+c62｜m009「風險遠沒有那些 AI 主管說的那麼真實」：「as they talk」的 they＝前一句的「AI executives」（TV「Asked about AI executives' warnings…」）｜TRUMP；TV｜2026-11-09｜m009
+c63｜m043「台灣，報導完全沒提到；亞洲只提到中國。」m069「那是川普自己的說法：他說中國沒有護欄，他們的護欄就是習近平說了算。」＝c35，照查核第 1 輪的譯法，只把「是他的說法」講在前面｜TRUMP；TV｜2026-11-09｜m043, m069；卡片 mc-asia
+c64｜f002「紐交所的母公司 ICE 在規劃新平台，要交易記在區塊鏈上的股票」：DN「The platform, which the NYSE's parent Intercontinental Exchange previously said it was developing, is designed to allow 24/7 trading … of tokenized securities」；「記在區塊鏈上的股票」是代幣化證券的白話（c43）。卡片 fm-intro「NYSE's parent plans / on-chain shares」，key「On-chain stock venue」（不再寫 NYSE 選了 Avalanche）｜NYSE；DN｜2026-11-09｜f002；卡片 fm-intro
+c65｜f042「Avalanche 這條區塊鏈的開發公司說，這個平台的帳，會記在 Avalanche 上」＝c40（Ava Labs 說 Avalanche 是清算公司的 core ledger technology）；f011「替買賣雙方對帳、交割的清算公司，會拿 Avalanche 當核心帳本」＝c40；「清算公司＝替買賣雙方對帳、交割的公司」：解釋｜NYSE；DN｜2026-11-09｜f042, f011；卡片 fm-books、fm-ledger
+c66｜f043「一筆股票買賣成交以後，還要確定錢和股票真的換手，這一步叫清算和結算」：NYSE callout「買賣成交後，確認雙方該交付什麼，並實際完成股票與款項交換的步驟」；f003「區塊鏈這次被放進的就是這一步，Decrypt 叫它市場的管線」＝c41｜NYSE；DN｜2026-11-09｜f043, f003；卡片 fm-plain、fm-why
+c67｜f041 改由 Kai 說區塊鏈的解釋（內容不變，解釋）；f015 Kai「股票還是那張股票，只是記帳的地方換了」、f016 Sola「差不多」＝c44｜—｜—｜f041, f015, f016
+c68｜f049「他說，平台會支援在好幾條區塊鏈上市的股票」、f021「記錄和結算交易的那本帳，他說有條件」＝c46（f021 拆成兩句）；f039 Kai「我覺得這很務實……」：意見｜NYSE；DN｜2026-11-09｜f049, f021, f039
+c69｜f026「這是華爾街老牌機構把核心設施，搬上公有區塊鏈的跡象」＝c47；f047「公有，就是誰都看得到帳上的紀錄，不像銀行的帳只放在自己家裡」：解釋，不出自來源（DN 只寫「public blockchains」）。注意 c46 Lee 說帳本要「能控管誰可以參與」，f047 講的是看得到紀錄，不是誰都能參與；查核要確認兩句聽起來不矛盾｜DN｜2026-11-09｜f026, f047；卡片 fm-public
+c70｜f040 Kai「放進交易的底層，比只把一檔股票包成代幣實在」：意見；比較的兩邊照 DN「puts a blockchain underneath the clearing and settlement layer … rather than just wrapping a single fund or stock in a token」｜DN｜—｜f040；卡片 fm-kai3
+c71｜f029「ICE 還跟加密貨幣交易所 OKX，在規劃另一個代幣化股票平台」＝c49（ICE 在 f002 已介紹）；f036「美股七巨頭，是包括 Apple 和 Meta 在內的七家大型科技股統稱」（查核第 1 輪「統稱」的說法）；f048「這七家全都選擇，不讓自己的股票在 ICE 和 OKX 的平台上代幣化」＝DN「Every Magnificent Seven stock … opted out of having its shares tokenized on the venue」，把「那裡」改成平台名｜NYSE；DN｜2026-11-09｜f029, f036, f048；卡片 fm-catch
+c72｜f030「代幣化股票確實有人要，但還不容易順利買賣」：DN「An IMF study found tokenized stocks show genuine demand yet remain volatile and illiquid」，取 genuine demand 與 illiquid；「不易順利買賣」是 NYSE 文章對流動性不足的解釋。volatile（價格波動）仍不唸。卡片 fm-imf「Real demand, / hard to trade」，kicker「Per an IMF study」現在對得上 IMF 的用字｜NYSE；DN｜2026-11-09｜f030；卡片 fm-imf
+c73｜j010 Kai「飛機退役的引擎，換個地方繼續上班」：擬人；事實是 DJ「seeking older machines and retired aircraft engines that can be rebuilt for stationary power production」（j001 已說在找退役噴射引擎）｜JET；DJ｜2026-11-09｜j010
+c74｜outro：o001「我說靠規則，Kai 說先讓產業跑，出事再依法罰」：兩位主持人的立場（m063、m066），不是事實主張；o002「你站哪一邊？留言告訴我們。」；卡片 outro「Rules first, or speed?」｜節目｜—｜o001, o002
+
+意見句（沒有事實主張）：a004「我可以接受，至少還能自己決定要不要加買」（接 c5）；m005「這種事不是應該走正式程序嗎？一通電話就算數？」；m013「最可怕的是不知道風險算大還是算小」；m032 Kai 說護欄的解釋（照 TRUMP）並說「我同意要有，只是不要多到跑不動」；m037；m047「罰則寫清楚最重要，罰多少都比一通電話好猜」；m052「公司連下一通會打給誰都不知道」；m056 Sola「規則寫太複雜，最先撐不住的確實是小公司」；f004；f010；f045；f046；f034。
+
+拿掉的句子：a013（ap-joke 場景）、j013（je-hot 場景，c18 不再出現在旁白）、m006、m067、m042、m044、m068、m059、m038–m041（mc-si、mc-joke3 兩個場景，c34 不再出現；這也拿掉了查核第 1 輪改過的 m038「但這還不是全部」與 m041 措辭）、f024、f037。卡片 mc-rails2 改成 Kai 的護欄立場，mc-joke2、mc-cost 改字（見笑點）。
+
 ## 笑點（無事實主張）
 
 給查核代理做笑點檢查：每個笑點前一行的事實、笑點本身、為什麼不算新的事實。沒有新的數字、沒有雙關與諧音、沒有替真人編的話、不打一般人。
@@ -117,6 +142,16 @@ c58｜outro：o001「保護人又不嚇跑人的，是規則」是節目的答�
 - f033（Sola）「打個比方，就像捷運站先蓋好了，乘客還在路上。」：類比，接 f032（c51）。f034（Kai）「我還是覺得先蓋好比較好，總比人到了沒車坐好。」：Kai 的意見，接同一個類比；不是投資看法。
 - s004（Sola）「今天最有耐心的，是在等新渦輪機的資料中心，小一下訂，小六才到貨。」：回扣 j007。s005（Kai）「等它到貨，我的老問題，大家應該都會背了。」：誇張，沒有新的事實。查核第 1 輪：原「好幾百次」是一個新的數量（平日一集、六年其實上千集），改成不帶數字的說法。
 
+盲聽修改第 2 輪（笑點改打政策與做法，不打人；兩位主持人互相吐槽）：
+- m005（Kai）改「等一下，這種事不是應該走正式程序嗎？一通電話就算數？」：原本「連晚安吻都幫人家安排好了？」笑的是他的用字；改成 Kai 替產業質疑做法，接 c22、c23。
+- m012（Sola）改「同一段話裡，風險沒那麼真實，處理方法卻是坐牢警告。」：笑的是說法與做法對不上，不說「他」；事實照 c26、c23。m013（Kai）改「對做 AI 的公司來說，最可怕的是不知道風險算大還是算小。」：Kai 的立場（可預期性），不是反應。
+- m033（Sola，對 Kai）「你要的護欄，最好都裝在別人的車道上。」：接 m032 Kai「要有，只是不要多到跑不動」，吐槽 Kai，沒有事實主張。原本 Kai「你看，連他都說……」把 Kai 跟川普綁在一起，拿掉。
+- m036（Sola）改「打個比方，就像考試範圍還沒公布，被當的通知已經先寄出來了。」：拿掉「老師打電話」（太像在指某個人），只留順序的對比：規則（c33 沒說內容）還沒有、警告（c23）已經來了。m037（Kai）改「對想創業的人來說，這種課根本不敢選。」：Kai 的立場。卡片「Fail notice: sent」。
+- m051（Sola）改「所以照報導，這套管法目前沒有一條寫下來的規則，只有一通電話。」：依 c36（報導沒有罰款、預算、法案）；「照報導」照查核第 1 輪保留。m052（Kai）改「而且公司連下一通會打給誰都不知道，這最嚇人。」：Kai 的立場，不再說「沒人證實」（c30 已在 m019、m020 講）。卡片「Written rules: / none reported」。
+- SI 那段（m038–m041）整段拿掉：本來笑點打在主持人身上，但緊貼著他的用字，讀者聽成在笑他。
+- f016（Sola，對 Kai）「差不多，Kai 今天難得一次講對。」；f050（Sola，對 Kai）「難得，你這次沒有先問要不要換手機。」：回扣固定梗。f046（Kai 回嘴）「那我先幫它準備工作服。」：接 f019 的擬人。
+- j010（Kai）「飛機退役的引擎，換個地方繼續上班。」：擬人，見 c73。
+
 ## 我懷疑但沒動的事
 
 - f002：DN 標題是「NYSE Taps Avalanche」，宣布的卻是 Ava Labs（「Ava Labs … said Monday」），內文沒有 NYSE 自己的公告，只有 Dennis Lee 的談話。撰稿時把原本的「NYSE 選了一條叫 Avalanche 的區塊鏈」改成「NYSE 的新交易平台，要用一條叫 Avalanche 的區塊鏈來記帳」，f011 再說是 Avalanche 背後的公司說的；卡片 fm-intro「NYSE picks / Avalanche」照 DN 標題留著，查核可決定要不要改。
@@ -139,3 +174,4 @@ c58｜outro：o001「保護人又不嚇跑人的，是規則」是節目的答�
 - 卡片組合：big 49、quote 8、bullets 7、compare 4、stats 3、steps 2、title 1、outro 1；lint 沒有再報跟 daily-ai-20261106 的投影片順序相似（11/9 是 86%）。
 - 新加的發音字典詞（null）：Avalanche、Follow、Logic、Money、NYSE、Pack、SI、Usage。
 - 待做：另派查核代理照 `prompts/verifier-video.md` 逐句對回原始來源並做笑點檢查；盲讀；Whisper 第二意見與試聽。
+- 盲聽修改第 2 輪（2026-11-10，保留查核第 1 輪的全部改動，直接改 `video.json`）：75 個場景、147 句（Kai 36 句）；`lint` 0 錯誤、1 條警告（開場章節長度，同前）；估 14.0 分鐘，最長畫面狀態 12.8 秒（ap-complex、tr-lead），outro 12.0 秒；三個檢查都是 0 行，`big` 卡每行 ≤22 字。卡片：big 50、quote 6、bullets 7、compare 5、stats 3、steps 2、title 1、outro 1，lint 沒報投影片順序相似。字典拿掉 SI（旁白不再念）。本輪改過的事實句 c59–c74 要再交查核代理對一次。
