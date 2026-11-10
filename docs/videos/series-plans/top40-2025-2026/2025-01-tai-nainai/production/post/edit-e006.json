@@ -1,0 +1,253 @@
+{
+ "_note": "《恁祖媽今年18》第 6 集剪接表（post/assemble-v4.mjs），2026-11-10 照種田拍法的 37 鏡分鏡，首格路線 Colab H3（1312×736，不精修；c12 是參照路線草稿、沒有臉，lanczos 放大）。沿用站主定的：不放片名卡、集數、人名條，畫面不放字；不裁切放大；慢放不超過 1.1 倍；CC 軟字幕；看得到嘴的台詞用模型原聲。拿掉 c16、c17、c20、c29、c33、c37（首格或片段畫不出來，前後鏡交代得到）；c20 的心裡話 t006012 在工作用的 video.json 副本裡移到 c21（c21 只用沒人說話的 0–3.4 秒、月棠低頭看手），spill 延到 c22 開口之前。c40 小滿「掉了」改用錄音（模型念得像「丟了」）。配樂：分鏡寫的 warm 沒有這首（系列只有 comedy、memory、suspense、tension）；第一場 tension 兩段（場長約 69 秒、曲子 61 秒）、第二場 memory、第三場前半 memory 接後半 suspense，c41 收掉音樂、只留小滿的哭聲。調色：第一、二場是白天，用 lift；第三場飯廳夜戲 indoor。已知瑕疵交站主看片：c41 月棠站在小滿身後扶肩（側面相對的版本畫不出來）、c01 托盤只有一只杯、c36 月棠左手兩枚戒指（右手光著）、c38 沒走到小滿面前、c05 開口前約 0.8 秒嘴動沒聲。",
+ "tempo": 1.07,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "punch": false,
+ "grades": {
+  "lift": [
+   "c01",
+   "c04",
+   "c05",
+   "c06",
+   "c07",
+   "c08",
+   "c09",
+   "c10",
+   "c11",
+   "c12",
+   "c14",
+   "c15",
+   "c18",
+   "c19",
+   "c21",
+   "c22",
+   "c23",
+   "c24"
+  ]
+ },
+ "default_grade": "indoor",
+ "finish": "vignette=angle=PI/5,noise=alls=3:allf=t,format=yuv420p",
+ "names": {},
+ "min": {
+  "c04": 7.0,
+  "c05": 6.5,
+  "c06": 3.08,
+  "c07": 5.5,
+  "c08": 7.5,
+  "c09": 7.9,
+  "c10": 3.1,
+  "c11": 7.0,
+  "c15": 7.6,
+  "c18": 6.5,
+  "c21": 3.4,
+  "c22": 7.4,
+  "c23": 5.5,
+  "c24": 7.0,
+  "c25": 3.5,
+  "c26": 5.9,
+  "c27": 9.1,
+  "c28": 4.6,
+  "c31": 4.0,
+  "c32": 5.4,
+  "c34": 4.4,
+  "c35": 7.7,
+  "c36": 9.0,
+  "c38": 3.0,
+  "c39": 5.2,
+  "c40": 2.68,
+  "c41": 2.4,
+  "c12": 4.6,
+  "c01": 2.5,
+  "c14": 7.0,
+  "c19": 8.5
+ },
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/tai-nainai/sfx"
+ ],
+ "music": [
+  {
+   "cue": "tension",
+   "from": "c01",
+   "to": "c08",
+   "offset": 0,
+   "gain": -18,
+   "fade_in": 0.8,
+   "tail": 0.3,
+   "fade_out": 0.6
+  },
+  {
+   "cue": "tension",
+   "from": "c09",
+   "to": "c15",
+   "offset": 20.0,
+   "gain": -18,
+   "fade_in": 0.6,
+   "tail": 0.8,
+   "fade_out": 1.2
+  },
+  {
+   "cue": "memory",
+   "from": "c18",
+   "to": "c24",
+   "offset": 0,
+   "gain": -17,
+   "fade_in": 1.0,
+   "tail": 0.8,
+   "fade_out": 1.2
+  },
+  {
+   "cue": "memory",
+   "from": "c25",
+   "to": "c31",
+   "offset": 40.0,
+   "gain": -18,
+   "fade_in": 0.8,
+   "tail": 0.3,
+   "fade_out": 0.8
+  },
+  {
+   "cue": "suspense",
+   "from": "c32",
+   "to": "c40",
+   "offset": 0,
+   "gain": -17,
+   "fade_in": 0.6,
+   "tail": 0.4,
+   "fade_out": 1.0
+  }
+ ],
+ "sfx": [
+  {
+   "synth": "room",
+   "at": "c01",
+   "off": 0,
+   "to": "c15",
+   "gain": -17,
+   "fade": 0.4
+  },
+  {
+   "synth": "room",
+   "at": "c18",
+   "off": 0,
+   "to": "c24",
+   "gain": -17,
+   "fade": 0.4
+  },
+  {
+   "synth": "room",
+   "at": "c25",
+   "off": 0,
+   "to": "c41",
+   "gain": -16,
+   "fade": 0.4
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c01",
+   "off": 0.4,
+   "gain": -22
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c01",
+   "off": 1.2,
+   "gain": -23
+  },
+  {
+   "file": "impactPlate_light_000",
+   "at": "c05",
+   "off": 0.3,
+   "gain": -24
+  },
+  {
+   "file": "dishes_01",
+   "at": "c06",
+   "off": 0.4,
+   "gain": -26
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "c08",
+   "off": 0.6,
+   "gain": -24
+  },
+  {
+   "file": "cloth1",
+   "at": "c12",
+   "off": 0.5,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "c14",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c14",
+   "off": 6.4,
+   "gain": -22
+  },
+  {
+   "file": "dishes_02",
+   "at": "c15",
+   "off": 0.6,
+   "gain": -24
+  },
+  {
+   "file": "cloth1",
+   "at": "c22",
+   "off": 0.5,
+   "gain": -26
+  },
+  {
+   "file": "metalPot1",
+   "at": "c25",
+   "off": 0.6,
+   "gain": -24
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "c28",
+   "off": 0.8,
+   "gain": -24
+  },
+  {
+   "file": "paper_02",
+   "at": "c31",
+   "off": 0.0,
+   "gain": -16
+  },
+  {
+   "file": "dishes_01",
+   "at": "c32",
+   "off": 0.6,
+   "gain": -28
+  }
+ ],
+ "own_voice": "/root/mokaair-work/videos/_tn-work/e006-post/voice-work.json",
+ "frame_round": true,
+ "min_is_cut": true,
+ "skip": [
+  "c16",
+  "c17",
+  "c20",
+  "c29",
+  "c33",
+  "c37"
+ ],
+ "spill": [
+  "c21"
+ ],
+ "spill_lead": {},
+ "speaker_gain": {
+  "yuetang-18": -3.5
+ },
+ "line_gain": {},
+ "line_far": [],
+ "end_black": 1.2
+}
