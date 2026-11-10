@@ -1,0 +1,72 @@
+{
+  "reader": "R5 isolated blind B",
+  "recorded_at_utc": "2026-10-22T03:34:13.493433+00:00",
+  "command": [
+    "node",
+    "tools/video/cli.mjs",
+    "narrative",
+    "--slug",
+    "curio-s63",
+    "--answers",
+    "docs/videos/curio-s63/review/r5-isolated-blind-b.raw.json",
+    "--workdir",
+    "/tmp/s63-r5-blind-b-isolated",
+    "--json"
+  ],
+  "isolated_bound_path": "/tmp/s63-r5-blind-b-isolated/curio-s63/review/narrative.json",
+  "files": {
+    "official_panel": {
+      "path": "/tmp/curio-official-13-panel-20261022.json",
+      "sha256": "15cfd34356840ae8036c91bc9d8b29f210be52aa761f28379a2bd9ed263fa5ad"
+    },
+    "blind_packet": {
+      "path": "/tmp/s63-r5-blind-packet.json",
+      "sha256": "aef582dee63644d2e153e9a04d397b3fc0f7065e5565dc47bb33fd849cb01133"
+    },
+    "script": {
+      "path": "docs/videos/curio-s63/script.md",
+      "sha256": "dee3cb408979b3ca7dff85fb00e63915c2e54e555a0ee22e776e28fc97556c0f"
+    },
+    "raw_ballot": {
+      "path": "docs/videos/curio-s63/review/r5-isolated-blind-b.raw.json",
+      "sha256": "bf10e21653ebaaf58fae5830a8e97c76b60b8a2ad48ca42b577c81e50b55592f"
+    },
+    "ballot_hash_record": {
+      "path": "docs/videos/curio-s63/review/r5-isolated-blind-b.raw.sha256",
+      "sha256": "d2f47b4fbcb438bebc28ec401dcddaa433f743fd12c55cc5e3aaf9d7aeeab5d4"
+    },
+    "cli_stdout": {
+      "path": "docs/videos/curio-s63/review/r5-isolated-blind-b.stdout.json",
+      "sha256": "067f42703ffbc99f9c38616671d2f919af4ab80a80b652408256597ad1fad81a"
+    },
+    "cli_stderr": {
+      "path": "docs/videos/curio-s63/review/r5-isolated-blind-b.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cli_exit": {
+      "path": "docs/videos/curio-s63/review/r5-isolated-blind-b.exit.txt",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "bound_record": {
+      "path": "docs/videos/curio-s63/review/r5-isolated-blind-b.bound.json",
+      "sha256": "8398ac70ca1e34e10e2d6599533b68b67a296bf373f8fb6e88179ca2402c834f"
+    }
+  },
+  "panel_narration_sha256": "221d78d7d9ea3a8da4c93e6d3bf812bd72c2a85bd583a7e72704f77e11e70d35",
+  "binding": {
+    "narrative_hash": "8c08e7cbbba9a5d0",
+    "script_hash": "b390207850d2d3152fa3d2b4a1cef3e979dae5e7eb29835d4c29fd2aed9d4483",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "221d78d7d9ea3a8da4c93e6d3bf812bd72c2a85bd583a7e72704f77e11e70d35",
+    "round": 1
+  },
+  "yes_count": 11,
+  "question_count": 13,
+  "failed": [
+    "payoffs",
+    "no_recap"
+  ],
+  "advisory": [],
+  "passed": false,
+  "exit_code": 1
+}

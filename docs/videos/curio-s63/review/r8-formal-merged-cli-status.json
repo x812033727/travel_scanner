@@ -1,0 +1,36 @@
+{
+  "recorded_at_utc": "2026-10-22T04:26:59.180335+00:00",
+  "reader": "merged",
+  "packet_sha256": "9386b749d8380b9fe7ec01ba94e0ae4113d74d1b68f85f166c2c5a32b5e09a5f",
+  "raw_ballot_sha256": "de2a2eb37bd4a2c29cc8e956a5179d76b7f7371c0d23e4356b509a8bcb28d0d7",
+  "command": [
+    "node",
+    "tools/video/cli.mjs",
+    "narrative",
+    "--slug",
+    "curio-s63",
+    "--answers",
+    "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r8-formal-merged-answers.json",
+    "--workdir",
+    "/tmp/s63-r8-merged-isolated-x6grui1o",
+    "--json"
+  ],
+  "cwd": "/tmp/travel_scanner_curio_s63",
+  "isolated_workdir": "/tmp/s63-r8-merged-isolated-x6grui1o",
+  "exit_code": 0,
+  "failed_required_ids": [],
+  "advisory_ids": [],
+  "bound_record_metadata": {
+    "round": 1,
+    "narrative_hash": "09e2ab55b95db7c1",
+    "script_hash": "c9aca3a2a7aee85b7da8c092681eb3256d4d64bc0d40b56f8b4b572d25941b6a",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "1c16f2729eb05749a3dc0172a89fd0e4cd8dc370346a0b34c4485e5edcb6a633"
+  },
+  "sha256": {
+    "bound_record": "dcc8b360f73b893c800b37a0a0f8b529562912f57115cf5ce02746c35882db3d",
+    "cli_stdout": "55d6b425666dbf5a2548db37a6cac9268f0646abe325a0f0c14d8994cb9ed4fd",
+    "cli_stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cli_exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  }
+}

@@ -1,0 +1,29 @@
+"""Independent CPU ASR: accepts a locale and WAV paths, never an intended script."""
+import pathlib
+import subprocess
+import sys
+
+import numpy as np
+import sherpa_onnx
+
+model_dir = pathlib.Path('/tmp/curio-sensevoice-model/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17')
+locale, *clips = sys.argv[1:]
+language = {'zh-TW': 'zh', 'zh-CN': 'zh'}.get(locale, locale.split('-')[0])
+recognizer = sherpa_onnx.OfflineRecognizer.from_sense_voice(
+    model=str(model_dir / 'model.int8.onnx'),
+    tokens=str(model_dir / 'tokens.txt'),
+    num_threads=2,
+    use_itn=True,
+    debug=False,
+    language=language,
+)
+for clip in clips:
+    pcm = subprocess.check_output([
+        'ffmpeg', '-v', 'error', '-i', clip,
+        '-f', 'f32le', '-ac', '1', '-ar', '16000', 'pipe:1',
+    ])
+    stream = recognizer.create_stream()
+    stream.accept_waveform(16000, np.frombuffer(pcm, dtype=np.float32))
+    recognizer.decode_stream(stream)
+    text = ' '.join(stream.result.text.split())
+    print(f'{pathlib.Path(clip).name} {text}', flush=True)
