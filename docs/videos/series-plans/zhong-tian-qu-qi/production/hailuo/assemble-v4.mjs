@@ -175,6 +175,27 @@ for (const scene of video.scenes) {
     dur = Math.max(dur, cursor - GAP + (voiced ? 0 : TAIL));  // no blank tail after the model's own speech (祖媽 e002)
     if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
   }
+  // `line_at`: {line id: seconds into the shot} (e904 live review 1). A recorded line starts there and the lines after it
+  // follow with the usual gap (s03: the inner voice waits until his open mouth has closed); on a line the clip voices, it
+  // only moves the subtitle start (and the line before it ends there), since the speech span split by text length can be
+  // off (s15 #17 was 0.66 s early).
+  const lineAt0 = (l) => edit.line_at?.[l.id];
+  if (lines.some((l) => lineAt0(l) !== undefined)) {
+    if (voiced) {
+      const live = lines.filter((l) => l.voiceAt !== undefined);
+      live.forEach((l, i) => {
+        if (lineAt0(l) === undefined) return;
+        const end = l.voiceAt + l.len;
+        if (i > 0) live[i - 1].len = Math.max(0.3, lineAt0(l) - live[i - 1].voiceAt);
+        l.voiceAt = l.placeAt = lineAt0(l); l.len = Math.max(0.3, end - l.voiceAt);
+      });
+    } else {
+      let c = LEAD;
+      for (const l of lines) { if (lineAt0(l) !== undefined) c = lineAt0(l); l.placeAt = c; c += l.len + GAP; }
+      dur = Math.max(dur, c - GAP + TAIL);
+      if (edit.frame_round) dur = Math.max(1, Math.round(dur * 24)) / 24;
+    }
+  }
   // a system line lives on the shot's panel, unless `subtitle_lines` names it (e001 live s37 a44: not on the panel)
   const panelOnly = (l) => l.speaker === "xitong" && overlays[scene.id] && !(edit.subtitle_lines ?? []).includes(l.id);
   const placed = lines.map((l, i) => {
@@ -189,7 +210,11 @@ for (const scene of video.scenes) {
   if (DUB) { starts[scene.id] = { start: t, dur }; report.push(`${scene.id} ${t.toFixed(2)} +${dur.toFixed(2)}s`); t += dur; continue; }
   // `flash: {"s03": 0.35}`: the shot ends in a white flash of that many seconds (a lightning cut the clip did not draw, e001-r2 c03).
   const flashOut = edit.flash?.[scene.id] ? `,fade=t=out:st=${Math.max(0, dur - edit.flash[scene.id]).toFixed(3)}:d=${edit.flash[scene.id]}:color=white` : "";
-  const decor = `${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}${flashOut}`;
+  // `vf`: {shot: filters} run on the 1920x1080 picture before the grade (e904 live s05: a feathered mask darkens and cools
+  // the daylit doorway of a night kitchen; s40: the still cuts to black). It may branch with labels of its own
+  // ("split[a][b];...;[a][c]overlay"), as long as it ends in a single unlabelled output.
+  const shotVf = edit.vf?.[scene.id] ? `${edit.vf[scene.id]},` : "";
+  const decor = `${shotVf}${GRADES[gradeOf(scene.id)]},${FINISH}${panelFilters(scene.id)}${nameCard(scene.id)}${titleCard(scene.id)}${subs}${flashOut}`;
   let vf, note;
   if (clip) {
     const from = src ? Number(src.from_s ?? 0) : 0;
@@ -225,7 +250,10 @@ for (const scene of video.scenes) {
     if (!still) throw new Error(`${scene.id}: no clip and no first frame`);
     const frames = Math.ceil(dur * 24) + 2;
     args.push("-i", still);
-    vf = `[0:v]scale=3840:2160:flags=lanczos,zoompan=${stillMove(scene.id, frames)}:d=${frames}:s=1920x1080:fps=24,format=yuv420p,trim=duration=${dur.toFixed(3)},setpts=PTS-STARTPTS,${decor}[v]`;
+    // `still_move`: {shot: zoompan z/x/y} replaces the built-in move; F stands for the frame count (e904 live s40: a slow
+    // push that jolts in with a short shake on the bell)
+    const move = edit.still_move?.[scene.id]?.replace(/\bF\b/g, String(frames)) ?? stillMove(scene.id, frames);
+    vf = `[0:v]scale=3840:2160:flags=lanczos,zoompan=${move}:d=${frames}:s=1920x1080:fps=24,format=yuv420p,trim=duration=${dur.toFixed(3)},setpts=PTS-STARTPTS,${decor}[v]`;
     note = `still ${path.basename(still)}`;
   }
   const amix = [];
