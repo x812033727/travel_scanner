@@ -11,10 +11,12 @@
 # PREFIX is relative to ~/mokaair-work/videos/ (see ../BACKUP-BRANCHES.md), never an
 # absolute path. Commit trailers come from TOBRANCH_TRAILERS (e.g. the session's
 # Co-Authored-By and Claude-Session lines); nothing session-specific is hardcoded.
+# BACKUP_REMOTE names the repository the branch lives in (a remote name or URL, default origin).
 # Runs from inside any checkout of the repository; the working tree is not touched.
 # GitHub refuses a push over 2 GB, so new blobs are committed and pushed in batches of
 # about TOBRANCH_BATCH_BYTES (default 1.5 GB); each batch is its own fast-forward commit.
 set -euo pipefail
+R=${BACKUP_REMOTE:-origin}  # the backup repository: a remote name or URL (../BACKUP-BRANCHES.md)
 parts() { # $1 = commit, $2 = path of the split original: its .partNN pieces in order
   git ls-tree --name-only "$1" -- "$(dirname "$2")/" | awk -v p="$2.part" 'index($0, p) == 1 && substr($0, length(p) + 1) ~ /^[0-9]+$/' | sort
 }
@@ -33,9 +35,9 @@ WORK=$(mktemp -d); trap 'rm -rf "$WORK"' EXIT
 REPO_OBJECTS=$(cd "$(git rev-parse --git-common-dir)" && pwd)/objects
 export GIT_OBJECT_DIRECTORY=$WORK/objects GIT_ALTERNATE_OBJECT_DIRECTORIES=$REPO_OBJECTS
 mkdir -p "$GIT_OBJECT_DIRECTORY"
-remote_head() { git ls-remote origin "refs/heads/$B" | cut -f1; }
+remote_head() { git ls-remote "$R" "refs/heads/$B" | cut -f1; }
 P=$(remote_head)
-if [ -n "$P" ]; then git fetch -q --refmap= --no-write-fetch-head origin "refs/heads/$B"; fi
+if [ -n "$P" ]; then git fetch -q --refmap= --no-write-fetch-head "$R" "refs/heads/$B"; fi
 export GIT_INDEX_FILE=$WORK/index
 if [ -n "$P" ]; then git read-tree "$P"; fi
 BATCH=${TOBRANCH_BATCH_BYTES:-1500000000}
@@ -49,9 +51,9 @@ flush() { # commit and push what is in the index so far
   C=$(printf '%s%s\n%s' "$MSG" "$([ "$batch" -gt 1 ] && echo " (batch $batch)")" "${TOBRANCH_TRAILERS:+
 $TOBRANCH_TRAILERS
 }" | git commit-tree "$T" ${P:+-p "$P"})
-  git push -q origin "$C:refs/heads/$B"
-  # push also sets refs/remotes/origin/$B, which would point into the temporary objects
-  git update-ref -d "refs/remotes/origin/$B" 2>/dev/null || true
+  git push -q "$R" "$C:refs/heads/$B"
+  # push also sets refs/remotes/$R/$B, which would point into the temporary objects
+  git update-ref -d "refs/remotes/$R/$B" 2>/dev/null || true
   P=$C; pending=0
 }
 while IFS= read -r -d '' f; do

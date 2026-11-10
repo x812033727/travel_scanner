@@ -34,6 +34,14 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
   兩邊分支頭一致就是內容一致；`tobranch.sh` 每個 commit 不超過約 1.5 GB，所以逐個推不會碰到 2 GB 的單次上限）。
   搬完、核對一致之後，要不要從 `travel_scanner` 刪掉由站主決定。
 
+也可以不 clone：兩支工具用環境變數 `BACKUP_REMOTE` 指定 repo（remote 名稱或網址，不設就是 `origin`）：
+
+```bash
+git remote add backup-sothatswhy https://github.com/x812033727/mokaair-video-backup-sothatswhy.git   # 一次
+BACKUP_REMOTE=backup-sothatswhy docs/videos/explainer-series/backup/tobranch.sh transfer/<slug> ~/mokaair-work/videos/<slug> <slug> "<slug>: <關卡>"
+BACKUP_REMOTE=backup-sothatswhy docs/videos/explainer-series/backup/coverage.sh transfer/<slug> ~/mokaair-work/videos/<slug> <slug>
+```
+
 ## 分支怎麼命名
 
 | 分支 | 放什麼 |
