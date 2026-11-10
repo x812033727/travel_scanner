@@ -336,6 +336,13 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                 lamp_text += " The ancestral tablets are plain dark wood with nothing carved or written on them."
             if re.search(r"\bat night\b|^\s*night\b|\bdeep in the night\b", e["prompt"], re.I):  # 第 2 集審稿：c48、c49 以「Night, seen from」開頭，沒加到夜景句
                 lamp_text += NIGHT  # 第 1 集 c14：正廳的場景圖是白天畫的，門外亮得像白天（2026-11-07）
+            if not images and set_id:
+                # 參照路線至少要一張圖（h3.sh check：reference_images must list 1-9 images）；沒有臉、沒有道具圖的插鏡附場景圖，
+                # 只說是這個房間的一小角（第 5 集 c20、c34、c38，2026-11-09）
+                variant = e.get("set_variant")
+                names = ([f"set-{set_id}-{variant}-t1.png"] if variant else []) + [f"set-{set_id}-t1.png"]
+                images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
+                anchors.append("the room shown in <Picture 1> is the location, keeping its light and furniture; only a small part of it is seen")
             tags = ", ".join(f"<Picture {i}>" for i in range(1, len(images))) + (f" and <Picture {len(images)}>" if len(images) > 1 else "<Picture 1>")
             # 沒有參考圖的鏡（沒有臉、不附場景圖的插鏡）不寫「<Picture 1> are referenced throughout」：那張圖不存在（第 5 集審稿）
             body = ((f"For the target video, {tags} are referenced throughout.\n\n" if images else "")
