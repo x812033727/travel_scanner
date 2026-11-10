@@ -231,9 +231,9 @@ kid("kid-colour-q", K("holding the small clear bottle of bubble liquid up to the
 
 # ---------- 第三章：沒有顏料的顏色 ----------
 chief("chief-clear", C("pouring a little clear liquid from a small bottle into her cupped palm, a curious smile"),
-      c("好問題。顏料是沒有，可是有一樣東西，一直照在泡泡上。", "接住上一句"), chapter="透明的泡泡水，變出了顏色")
+      c("好問題。顏料是沒有，那泡泡身上除了這層皮，還有什麼？", "接住上一句"), chapter="透明的泡泡水，變出了顏色")
 kid("kid-tension-guess", K("snapping her fingers with a confident know-it-all grin", where=BALCONY),
-    k("我知道了！", "很有把握"), k("是皮拉得太緊，", "很有把握的錯猜"), k("才變彩色的？", "句尾上揚", "S:tension"))
+    k("只有皮啊！", "很有把握"), k("是皮拉得太緊，", "很有把握的錯猜"), k("才變彩色的？", "句尾上揚", "S:tension"))
 chief("chief-not-tension", C("shaking her head gently with a kind smile, one hand raised", close=True),
       c("很多人會這樣猜。可是這股往內拉的力氣，管的是形狀，", None, "P:tension"), c("顏色要找另一個角色：光。"))
 kid("kid-white-q", K("shading her eyes with one hand and looking up at the sunny sky with a curious face", where=BALCONY),
