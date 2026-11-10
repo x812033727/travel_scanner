@@ -337,7 +337,7 @@ kid("kid-two-q", K("holding the square wire wand in one hand and the small clear
 
 # ---------- 收尾 ----------
 chief("chief-answer", C("sitting on the edge of a desk and leaning forward with an inviting grin, one hand open towards the viewer"),
-      c("是同一層皮，做了兩件事。你來說說看？", "笑"), chapter="同一層皮，做了兩件事")
+      c("是同一層皮，做了兩件事。你來說說看？", "笑"), chapter="小問把方框跟變黑連起來了")
 kid("kid-got-it", K("holding up the square wire bubble wand proudly with a big confident grin, a round bubble floating beside her", where=BALCONY),
     k("我懂了！", "恍然大悟", "P:two"), k("我剛剛看到的，", "篤定"), k("從方框到頭頂變黑，", "篤定"), k("全是同一層皮！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
