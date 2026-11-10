@@ -52,3 +52,7 @@ Self-heals after 2026-11-12T15:00Z, but the same fixture will bite again wheneve
   would have failed the next day). The other specs using `editorFixture` (readability, planner-route-tones,
   korea-dual-maps, planner-calm) do not name a day chip. Reproduced at 2026-11-10T16:00Z (11-11 in Tokyo): without the
   clock the planner-premium test fails on `DAY 1`; with it all four runs (desktop + mobile) pass.
+- 2026-11-10: the same date bomb in the API: `tests/test_integration_postgres_redis.py::test_search_from_trip`
+  creates a trip departing 2026-11-10 and expects no issues; once that day is past in the trip's timezone
+  `search_criteria` reports `trip_dates_past`. Pinned `search_criteria.datetime.now()` to 2026-11-01 in that test.
+  Reproduced against a local PostgreSQL 16 and Redis (fails without, all 25 integration tests in the file pass with it).
