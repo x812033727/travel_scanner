@@ -6,7 +6,8 @@
 
 | 檔案 | 內容 |
 | --- | --- |
-| [`BACKUP-BRANCHES.md`](BACKUP-BRANCHES.md) | 備份分支：放什麼、什麼時候推、怎麼核對、什麼時候才能刪工作目錄 |
+| [`../AI-DRAMA-DRIVE.md`](../AI-DRAMA-DRIVE.md) | **備份（2026-11-10 起）**：所有檔案傳到雲端硬碟 `AI劇/<名稱>/<代碼>/製作檔/`，不再推分支 |
+| [`BACKUP-BRANCHES.md`](BACKUP-BRANCHES.md) | 已停用的備份分支規則（要備份什麼的清單仍適用） |
 | [`backup/`](backup/) | 備份工具（推分支、核對、涵蓋檢查） |
 
 系列自己的規則：

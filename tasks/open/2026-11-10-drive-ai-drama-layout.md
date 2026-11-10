@@ -19,6 +19,14 @@ scope:
   - docs/videos/BACKUP.md
   - docs/videos/AI-DRAMA-DRIVE.md
   - docs/videos/ai-drama-drive
+  - AGENTS.md
+  - .agents/skills/curio-episode/SKILL.md
+  - .claude/skills/curio-episode/SKILL.md
+  - .agents/skills/minimax-h3-runpod/references/route-a.md
+  - docs/videos/explainer-series
+  - docs/videos/so-thats-why/dialogue-pilot-20261103
+  - docs/videos/series-plans/zhong-tian-qu-qi/production/README.md
+  - docs/videos/zhong-tian-qu-qi-e001-r2/brief.md
 ---
 
 # AI 劇雲端硬碟備份改成 AI劇/<名稱>/<集數>/，製作檔由 session 直接傳
@@ -50,7 +58,8 @@ scope:
 - [x] `target.py`、`admin_status.py`：新的排法與版本判斷；測試。
 - [x] `backup.mjs`：合併搬移（`lsf` → 空的用 `moveto`，有檔用 `move --backup-dir _舊版/<時間>-搬移`）；測試。
 - [x] compose：`VIDEO_BRANCH_MIRROR: "off"`。
-- [ ] 文件與 `todrive.sh`。
+- [x] 文件與 `todrive.sh`。
+- [x] 叫所有製作影片的 session 不要再推分支：AGENTS.md、curio-episode、route-a、舊規則文件加停用標記，`tobranch.sh`／`coverage.sh` 改成拒絕。
 - [ ] PR、站主合併與部署。
 - [ ] 一次性搬家（主機跑，`gh` 讀私人 repo、主機的 rclone 寫雲端硬碟）。
 - [ ] 核對、刪分支。
