@@ -1,13 +1,13 @@
 ---
 id: 2026-11-03-admin-upload-zip-fails-to-download
 title: Admin upload zip fails to download for a 460 MB package
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-5-package-zip
 claimed_at: 2026-11-04T00:05:51Z
 created_at: 2026-11-03T23:48:44Z
-completed_at:
+completed_at: 2026-11-04T01:03:23Z
 branch: fix/admin-package-zip-prune
 depends_on: []
 scope:
@@ -51,9 +51,9 @@ final/publish/languages twice on 11/3 after a re-cut), a 422, a timeout in nginx
 
 ## Definition of done
 
-- [ ] 「全部下載」 on /admin/videos downloads a complete zip for a package with a final cut and eight dub tracks
+- [x] 「全部下載」 on /admin/videos downloads a complete zip for a package with a final cut and eight dub tracks
       (~460 MB), and the zip opens.
-- [ ] When an entry cannot be served, the page says which file and why instead of a browser download failure.
+- [x] When an entry cannot be served, the page says which file and why instead of a browser download failure.
 
 ## Steps
 
@@ -99,8 +99,18 @@ Fix (owner chose "wait a week"): the store wipe waits `PREVIEW_RETENTION` (7 day
 (latest of backup `checked_at`, languages decision, any review decision, publish time; no readable
 backup time keeps the files). The page asks `GET /admin/videos/<slug>/package` (Next `?check=1`)
 before the download and lists each missing file with `gone` / `not_shown` and the Drive folder.
-The 11/3 files were copied back into the store from the worker's surviving
-`video_work/daily-ai-20261103/upload/` after the deploy.
+Shipped in #2008 (squash 642859503), deployed 2026-11-04 01:00 UTC with #2006, no migration;
+host-verify 11/11 PASS.
+
+Restore and check (2026-11-04 01:02 UTC): the 37 files of the package were copied back into the store
+(`/var/lib/docker/volumes/travel_scanner_video_reviews/_data/daily-ai-20261103/<sha256>`, 10001:10001,
+644) from the worker's surviving `video_work/daily-ai-20261103/upload/`, each matched against the
+SHA-256 the reviews list. Inside the api container, `package_check_for_admin` answered
+`ok: True, missing: [], bytes: 481252868, drive_folder: ai-news/daily-ai-20261103`, and `stream_zip`
+over the same 37 entries (final.mp4 included) wrote a 481,257,224-byte zip in 8.1 s; `testzip` clean,
+37/37 entries match their SHA-256. `_done_since` is 2026-11-03 23:05:58 UTC, so the store keeps the
+files until 2026-11-10 23:05 UTC. Not checked by an agent: the download through nginx and the Next
+route in a browser (needs the owner's admin session) -- the owner's next 「全部下載」 is that check.
 
 Follow-up not done here: the worker's `tidy.mjs` still clears `video_work/<slug>/` the moment the
 three conditions hold (BACKUP.md); the review store no longer depends on it, but the 11/3 restore
