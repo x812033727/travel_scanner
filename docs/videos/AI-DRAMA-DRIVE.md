@@ -14,7 +14,7 @@
 3. **傳到哪裡**：`AI劇/<名稱>/<集數>/製作檔/<工作資料夾名>/`。名稱：`種田娶妻打天下`、`種田娶妻打天下（真人版）`、
    `恁祖媽今年18`、`原來如此事務所`、`奇聞檔案局`。集數 `第033集`；奇聞、原來如此沒有集數的用代碼 `H01`、`P17`。
    跨集共用的（參考圖、音效、配樂庫、試鏡、腳本）放 `AI劇/<名稱>/_共用/製作檔/`。
-4. **怎麼傳**：Colab 用 `drive.mount()`；Claude Code 雲端 session 照〈session 用的權杖〉設好 `TODRIVE_RCLONE_CONFIG`，然後
+4. **怎麼傳**：Colab 用 `drive.mount()`；Claude Code 雲端 session 的環境已有 `RCLONE_CONFIG_VIDEOBACKUP_*`（〈session 用的權杖〉），裝好 rclone 後
 
    ```bash
    docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "videobackup:AI劇/<名稱>/<集數>/製作檔/<工作資料夾名>"
@@ -102,7 +102,7 @@ docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "<目的地>/AI劇/<名�
 | 在哪裡做片 | 怎麼寫雲端硬碟 |
 | --- | --- |
 | Colab | `from google.colab import drive; drive.mount('/content/drive')`，站主用自己的帳號登入；目的地寫 `/content/drive/MyDrive/AI/備份/AI劇/…` |
-| Claude Code 雲端 session | 主機那把 `videobackup` 的設定放在雲端環境的環境變數 `TODRIVE_RCLONE_CONF`（下面〈session 用的權杖〉）；目的地寫 `videobackup:AI劇/…`（remote 鎖在 `AI/備份`）。權杖不進 repo、不貼進對話 |
+| Claude Code 雲端 session | 主機那把 `videobackup` 的設定放在雲端環境的環境變數 `RCLONE_CONFIG_VIDEOBACKUP_*`（下面〈session 用的權杖〉）；目的地寫 `videobackup:AI劇/…`（remote 鎖在 `AI/備份`）。權杖不進 repo、不貼進對話 |
 | 站主的電腦 | 目的地直接寫 `G:/我的雲端硬碟/AI/備份/AI劇/…` |
 
 ### session 用的權杖
@@ -112,26 +112,30 @@ docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "<目的地>/AI劇/<名�
 的環境裡；外洩時撤銷它，主機的影片備份也會停，要照 [`BACKUP.md`](BACKUP.md)〈主機設定〉重新授權後再發一次。
 （另建一把也幫不了多少：rclone 的 `drive.file` 權限看不到主機建的 `AI劇/`，所以另建的也一樣是完整權限，只差在可以單獨撤銷。）
 
-**放進雲端環境（站主做一次）**：用自己的終端機 SSH 到主機（埠 7788），`sudo cat /etc/travel-scanner/rclone-videos/rclone.conf`，
-把整段（`[videobackup]` 那幾行）貼進 Claude Code 雲端環境設定的環境變數 `TODRIVE_RCLONE_CONF`。不要在 Claude 的對話或 Claude app 的
-Terminal 面板裡印它（畫面代理讀得到），也不要貼進任何對話。主機上的檔不動。
+**放進雲端環境（站主做一次）**：rclone 可以完全用環境變數設定一個 remote（`RCLONE_CONFIG_<名稱>_<欄位>`），每個欄位一行，
+不需要設定檔，也不怕環境設定頁不收多行內容。用自己的終端機 SSH 到主機（埠 7788），印成這個格式：
+
+```bash
+sudo awk -F' = ' '/^\[/{next} NF==2{print "RCLONE_CONFIG_VIDEOBACKUP_" toupper($1) "=" $2}' /etc/travel-scanner/rclone-videos/rclone.conf
+```
+
+印出的 5～6 行（`RCLONE_CONFIG_VIDEOBACKUP_TYPE=drive`、`_CLIENT_ID`、`_CLIENT_SECRET`、`_SCOPE`、`_TOKEN={…}`、`_ROOT_FOLDER_ID`）原樣貼進
+Claude Code 雲端環境（例如 Mokaair）設定的環境變數，存檔；之後新開的 session 才有。不要在 Claude 的對話或 Claude app 的 Terminal 面板裡印它
+（畫面代理讀得到），也不要貼進任何對話。主機上的檔不動。
 
 **每個 session 開始時**（或寫進環境的 setup script）：
 
 ```bash
 command -v rclone || curl -fsSL https://rclone.org/install.sh | sudo bash
-mkdir -p ~/.config && printf '%s\n' "$TODRIVE_RCLONE_CONF" > ~/.config/rclone-videobackup.conf
-chmod 600 ~/.config/rclone-videobackup.conf
-export TODRIVE_RCLONE_CONFIG=~/.config/rclone-videobackup.conf
-rclone --config "$TODRIVE_RCLONE_CONFIG" lsd videobackup:AI劇      # 看得到各部劇就對了
+rclone lsd videobackup:AI劇      # 看得到各部劇就對了；看不到 videobackup 就是這個 session 沒帶到環境變數，請站主確認後重開
 docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "videobackup:AI劇/<名稱>/<集數>/製作檔/<工作資料夾名>"
 ```
 
-remote 鎖在 `AI/備份`（`root_folder_id`），所以目的地從 `AI劇/` 寫起。rclone 會在 session 自己那份設定裡更新短期的 access token，
-不會碰主機的檔；長期的 refresh token 兩邊共用。
+不需要 `TODRIVE_RCLONE_CONFIG`：rclone 直接從環境變數讀到 `videobackup`。remote 鎖在 `AI/備份`（`root_folder_id`），所以目的地從
+`AI劇/` 寫起。rclone 在記憶體裡更新短期的 access token，不寫任何檔、不碰主機；長期的 refresh token 兩邊共用。
 
 **外洩時**：到 myaccount.google.com/permissions 移除 `mokaair-studio-sync` 的雲端硬碟存取權，照〈主機設定〉重建主機的 `videobackup`，
-再把新的設定貼回雲端環境。
+再用上面的指令印一次、把雲端環境的 `RCLONE_CONFIG_VIDEOBACKUP_*` 換掉。
 
 ## 怎麼確認完整
 
