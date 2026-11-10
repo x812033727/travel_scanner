@@ -28,7 +28,8 @@ scope:
 - [x] 站主決定畫面比例與集數：16:9、第一季 60 集（2026-11-09）。
 - [x] 英文設定集、第一季總綱與 60 集英文逐集細綱（`western/setting.json`、`outline.json`、`season-01.json`），`validate.mjs --season 1` 通過。
 - [x] 英文 `production/cast.json`（外貌、換裝、聲音候選、路人、場景、道具提示詞）。
-- [ ] 定妝照試鏡，鎖臉後填 `portrait`。
+- [x] 定妝照試鏡（2026-11-10，約 9 CU，`production/screen-test/README.md`）。
+- [ ] 站主看試鏡、選四個主角的聲音；選定後填 `cast.json` 的 voice 與 `portrait`。
 - [ ] 前三集英文劇本與分鏡，照 animation-preproduction 鎖定，三鏡小樣報價。
 
 ## Steps
@@ -39,7 +40,8 @@ scope:
 - [x] 改編對照表 `western/GLOSSARY.md`。
 - [x] 英文設定集、總綱與第一季 60 集細綱（七個代理平行改寫，合併後統一天數與進度條）。
 - [x] 英文 cast.json。
-- [ ] 定妝照試鏡與四個主角的聲音試聽。
+- [x] 定妝照試鏡與四個主角的聲音試聽（樣本已交站主）。
+- [ ] 依試鏡結果改 cast.json：Nora 拿掉手腕燙痕、Elias 的疤改獨立插鏡、陰天寫進每鏡正文。
 - [ ] 前三集劇本、分鏡、小樣。
 
 ## How to verify
@@ -60,3 +62,4 @@ scope:
 - cast.json 的聲音都是 Gemini TTS 的候選（名字已對過 `apps/api/app/video_speech/gemini.py`），還沒試聽：Nora Despina、Elias Charon、Grant Algieba、Peg Gacrux。
 - 生成時不放任何可讀文字（文件、招牌、帳本、瓶底的氣泡名字），要讓觀眾讀的字一律後製加。
 - Nora 第 19 集剪成齊肩；Sienna 一律用左手寫字、翻頁（第 50 集的伏筆）；Elias 左手背的疤到第 60 集才露。
+- 2026-11-10 試鏡：選 Nora b、Elias a、Grant a、Peg a；四支片段臉都守住、三支說話鏡嘴有動；細小傷痕會被畫成紅點或紅色傷口（見 screen-test README〈學到的〉）。
