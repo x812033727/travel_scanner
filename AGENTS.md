@@ -55,6 +55,9 @@ made it to the owner's Google Drive under `AI/備份/AI劇/<名稱>/<集數>/製
 `docs/videos/ai-drama-drive/todrive.sh`. Do not push `transfer/*` or `claude/backup-*`
 branches any more, to this repository or to the backup repositories: `tobranch.sh` refuses.
 Read [`docs/videos/AI-DRAMA-DRIVE.md`](docs/videos/AI-DRAMA-DRIVE.md) before backing anything up.
+Rules and lessons are different: their only original is this repository, and Drive gets a read-only
+copy on its own (`docs/videos/rules-sync/`). Write a lesson into the matching `docs/videos/lessons/`
+file (all dramas, the two explainer series, or one drama) or the episode's `NOTES.md`, never into Drive.
 
 ## Where things are
 
