@@ -141,7 +141,7 @@ kid("kid-main-q", K("holding the square wire bubble wand in both hands and stari
 
 # ---------- 第一章：一直想縮小的那層皮 ----------
 chief("chief-start", C("tapping the square loop of a silver wire bubble wand with one finger, a curious smile", close=True),
-      c("夠。就從你吹泡泡的第一步看。你是怎麼吹的？", "接住上一句"), chapter="一直想縮小的那層皮")
+      c("夠。來，你是怎麼吹的？吹給我看看。", "接住上一句"), chapter="一直想縮小的那層皮")
 kid("kid-dip", K("dipping a silver wire square bubble wand into a small clear bottle with a concentrating face", where=BALCONY),
     k("沾一下泡泡水，", "示範"), k("框裡就有一片薄薄的皮！"))
 bub("film-in-wand", "Close-up of " + WAND + " held level in the sunny air, a flat shiny transparent soap film stretched across the square loop like a tiny window, a faint rainbow sheen on it",
