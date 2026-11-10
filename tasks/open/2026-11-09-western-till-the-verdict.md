@@ -25,7 +25,8 @@ scope:
 ## Definition of done
 
 - [x] 改編規格：劇名、Port Merrow 的世界、人物對照、法律程序修正、文化調整、規格差異、第一季篇章對照（`western/README.md`）。
-- [x] 站主決定畫面比例與集數：16:9、第一季 60 集（2026-11-09）。
+- [x] 站主決定畫面比例與集數：第一季 60 集（2026-11-09）；畫面 **9:16 直式**（2026-11-10 改定，原 16:9）。
+- [ ] 直式小樣：H3 Ref2VA 544×960 → 736×1312 還沒在 repo 試過（試鏡是 16:9）。
 - [x] 英文設定集、第一季總綱與 60 集英文逐集細綱（`western/setting.json`、`outline.json`、`season-01.json`），`validate.mjs --season 1` 通過。
 - [x] 英文 `production/cast.json`（外貌、換裝、聲音候選、路人、場景、道具提示詞）。
 - [x] 定妝照試鏡（2026-11-10，約 9 CU，`production/screen-test/README.md`）。

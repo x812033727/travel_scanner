@@ -6,7 +6,7 @@ object and procedure becomes. Where the Chinese text and this file disagree, thi
 file is silent, adapt the Chinese faithfully and naturally for an American audience — do not invent
 new plot.
 
-Decided by the owner on 2026-11-09: **16:9**, **season one only (60 episodes)**, English written natively
+Decided by the owner: **9:16 vertical** (2026-11-10; was 16:9 on 2026-11-09), **season one only (60 episodes)**, English written natively
 (not translated for dubbing), photoreal live-action look with a diverse Western cast.
 
 ## Tone of the English

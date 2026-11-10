@@ -13,6 +13,7 @@
   build.py st2 [--work DIR]
       Clips, second stage: frame 0 of each draft cover-cropped to 1312x736 as the keyframe, sigma 0.5 (needs ffmpeg).
 
+--vertical (st1, st2) builds the 9:16 version the owner chose on 2026-11-10: 544x960 drafts, 736x1312 refine, into st1v/ and st2v/.
 Same method as 2025-01-tai-nainai/production/screen-test/build.py (its lessons are in that README and in
 .agents/skills/minimax-h3-colab/references/lessons.md). The image tool turns "/" in output names into "-", so files are r1-<id>.png.
 Work dir defaults to $VIDEO_WORKDIR/_series/till-the-verdict/screen-test (~/mokaair-work/videos/... when unset).
@@ -39,6 +40,7 @@ PORTRAIT = (1248, 1664)
 SET = (1920, 1088)
 DRAFT = (960, 544)
 INSERT = (1312, 736)
+SUFFIX = ""  # "v" with --vertical
 
 REAL = (
     "Style: a photorealistic live-action photograph for a modern American prestige TV drama, shot on a cinema camera with an 85mm lens, "
@@ -181,7 +183,7 @@ SHOTS = [
 
 def st1(cast: dict, work: Path, pick: dict, placeholders: bool) -> dict:
     jobs = []
-    (work / "st1" / "prompts").mkdir(parents=True, exist_ok=True)
+    (work / f"st1{SUFFIX}" / "prompts").mkdir(parents=True, exist_ok=True)
     for n, shot in enumerate(SHOTS):
         refs, anchors = [], []
         for pid, look, name in shot["who"]:
@@ -201,13 +203,13 @@ def st1(cast: dict, work: Path, pick: dict, placeholders: bool) -> dict:
             f"Initial composition: {shot['composition']} {FACES_RULE} {shot['action']} {CLIP_TAIL}\n"
             "overall_soundscape: N/A\nnon_diegetic_music: N/A\n"
         )
-        pf = work / "st1" / "prompts" / f"{shot['id']}.txt"
+        pf = work / f"st1{SUFFIX}" / "prompts" / f"{shot['id']}.txt"
         pf.write_text(prompt, encoding="utf-8")
         jobs.append({
             "id": shot["id"], "title": f"till-the-verdict screen test {shot['id']} ref2va", "inference_mode": "reference",
             "reference_images": refs, "prompt_file": f"prompts/{shot['id']}.txt",
             "prompt_sha256": hashlib.sha256(pf.read_bytes()).hexdigest(), "duration_seconds": shot["seconds"],
-            "width": DRAFT[0], "height": DRAFT[1], "output_path": str(work / "st1" / "out" / f"{shot['id']}.mp4"), "seed": 713000 + n,
+            "width": DRAFT[0], "height": DRAFT[1], "output_path": str(work / f"st1{SUFFIX}" / "out" / f"{shot['id']}.mp4"), "seed": 713000 + n,
         })
     return {"jobs": jobs}
 
@@ -215,23 +217,23 @@ def st1(cast: dict, work: Path, pick: dict, placeholders: bool) -> dict:
 def st2(work: Path) -> dict:
     if not shutil.which("ffmpeg"):
         sys.exit("build.py: st2 needs ffmpeg")
-    st1m = json.loads((work / "st1" / "st1.json").read_text(encoding="utf-8"))
+    st1m = json.loads((work / f"st1{SUFFIX}" / "st1.json").read_text(encoding="utf-8"))
     jobs = []
-    (work / "st2" / "keyframes").mkdir(parents=True, exist_ok=True)
-    (work / "st2" / "prompts").mkdir(parents=True, exist_ok=True)
+    (work / f"st2{SUFFIX}" / "keyframes").mkdir(parents=True, exist_ok=True)
+    (work / f"st2{SUFFIX}" / "prompts").mkdir(parents=True, exist_ok=True)
     for j in st1m["jobs"]:
         draft = Path(j["output_path"])
         if not draft.is_file():
             print(f"skip {j['id']}: no draft at {draft}")
             continue
-        key = work / "st2" / "keyframes" / f"{j['id']}.png"
+        key = work / f"st2{SUFFIX}" / "keyframes" / f"{j['id']}.png"
         w, h = INSERT
         subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(draft), "-frames:v", "1",
                         "-vf", f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h}", str(key)], check=True)
         shot = next(s for s in SHOTS if s["id"] == j["id"])
         prompt = (f"Live-action. The scene shown in <Picture 1> continues, preserving every face, costume, prop and the set layout. "
                   f"{shot['composition']} {shot['action']} {CLIP_TAIL}\n")
-        pf = work / "st2" / "prompts" / f"{j['id']}.txt"
+        pf = work / f"st2{SUFFIX}" / "prompts" / f"{j['id']}.txt"
         pf.write_text(prompt, encoding="utf-8")
         jobs.append({"id": j["id"], "input_video": str(draft), "first_frame": str(key), "prompt_file": str(pf),
                      "output_name": f"{j['id']}.mp4", "seed": j["seed"], "sigma_start": 0.5, "steps": 10})
@@ -244,14 +246,18 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--work")
     ap.add_argument("--pick", action="append", default=[], help="role=take, e.g. nora=b")
     ap.add_argument("--placeholders", action="store_true")
+    ap.add_argument("--vertical", action="store_true", help="9:16: 544x960 drafts, 736x1312 refine")
     a = ap.parse_args(argv)
+    global DRAFT, INSERT, SUFFIX
+    if a.vertical:
+        DRAFT, INSERT, SUFFIX = (544, 960), (736, 1312), "v"
     pick = dict(p.split("=", 1) for p in a.pick)
     work = work_dir(a.work)
     work.mkdir(parents=True, exist_ok=True)
     cast = load_cast()
     manifest = {"r1": lambda: r1(cast, work), "r2": lambda: r2(cast, work, pick, a.placeholders),
                 "st1": lambda: st1(cast, work, pick, a.placeholders), "st2": lambda: st2(work)}[a.round]()
-    out = {"r1": work / "r1.json", "r2": work / "r2.json", "st1": work / "st1" / "st1.json", "st2": work / "st2" / "st2.json"}[a.round]
+    out = {"r1": work / "r1.json", "r2": work / "r2.json", "st1": work / f"st1{SUFFIX}" / "st1.json", "st2": work / f"st2{SUFFIX}" / "st2.json"}[a.round]
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{out}: {len(manifest['jobs'])} jobs")
