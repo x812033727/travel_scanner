@@ -172,8 +172,8 @@ SHOTS = [
         "id": "e060-scar", "who": [("elias", "furnace", "Elias")], "set": "remelt", "seconds": 6,
         "composition": "Inside an old brick glassworks lit by the orange glow of a round furnace mouth on screen left: a medium close-up of Elias standing at the furnace, "
         "a heavy heat-resistant glove on each hand, cold blue window light on the brick behind him. He is the only person in the frame.",
-        "action": "He turns from the furnace toward the camera and slowly pulls the glove off his left hand, revealing an old pale healed burn scar across the back of his left hand, "
-        "five fingers, the scar clearly visible in the furnace light. Elias speaks an English line, \"Hello, Sales.\", low and even, his lips moving clearly with each syllable. "
+        "action": "He turns from the furnace toward the camera and slowly pulls the glove off his left hand, and lifts it to look at it, the BACK of the hand toward the camera at chest height: "
+        "a faint, flat, smooth silvery-white patch of old healed burn skin, years old, no redness, no stitches, no wound; five fingers; the hand stays small in the frame, his face stays the focus. Elias speaks an English line, \"Hello, Sales.\", low and even, his lips moving clearly with each syllable. "
         "The camera pushes in with small amplitude at slow speed.",
     },
 ]
