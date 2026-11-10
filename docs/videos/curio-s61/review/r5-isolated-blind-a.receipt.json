@@ -1,0 +1,20 @@
+{
+  "reader": "a",
+  "script_sha256": "f0b56d78a14ca5ccf6c87e0c95cf8947cd5ffbe1cc2c1f70e566f28e42771da5",
+  "frozen_raw_path": "docs/videos/curio-s61/review/r5-isolated-blind-a.raw.json",
+  "frozen_before_protocol_or_cli_inspection": true,
+  "pre_freeze_exposure": ["docs/videos/curio-s61/script.md", "sha256sum of the same script"],
+  "pre_freeze_excluded": ["brief", "video.json", "loops", "claims", "sources", "prior reviews", "other agent messages", "task history", "CLI schema"],
+  "raw_score": "11/13 on independently phrased criteria, not the official panel",
+  "isolation_caveat": "The official 13-question wording was unavailable during this script-only freeze; raw criteria were formulated independently and must not be misrepresented as official wording.",
+  "post_freeze_exposure": [
+    "cloud-environment-onboarding:setup skill",
+    "repository AGENTS.md",
+    "repository search output that included an S61 task summary of prior narrative review failures",
+    "youtube-video narrative CLI JSON with official questions and timed narration",
+    "parent message that source review found a spoken-fact HOLD requiring R6"
+  ],
+  "formal_bound_json": "not produced: parent requested diagnostic-only handoff after a spoken-fact HOLD; official questions were first seen after the independently phrased raw answers were frozen, and post-freeze review exposure would compromise a new official blind verdict",
+  "creative_files_edited": false,
+  "commit_or_push": false
+}

@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "from": "S61 R1 frozen author candidate",
+  "to": "S61 R2 narrow source correction",
+  "method": "exact one-line replacements at recorded 1-based line positions; applying each before to after is reversible",
+  "files": [
+    {
+      "path": "docs/videos/curio-s61/brief.md",
+      "before_sha256": "de0c48e97ee3652f6a573800c692535d19a09daddfc6ffe6df4763ae2e3abf01",
+      "after_sha256": "91ff577923a5cac28728b3c67b86ab52e9d9b628afe435f5be7d43b74c57426d",
+      "replacements": [
+        {
+          "line": 11,
+          "before": "**一句答案：**參與救援的 Samuel Henry Prince 在 1920 年研究記下，首爆後有人警告海軍造船廠火藥庫可能受火勢威脅，居民往空地跑，部分消防與救援人員仍留守。他把第二次沒有爆炸歸於一支海軍砲兵隊灌水處理火藥庫。本片只有 Prince 固定文本，故把這一因果明說為他的記錄與歸因，不冒稱另核軍方行動報告。",
+          "after": "**一句答案：**參與救援的 Samuel Henry Prince 在 1920 年研究記下，首爆後有人警告海軍造船廠火藥庫可能受火勢威脅，居民往空地跑，部分消防與救援人員仍留守。他把第二次沒有爆炸歸於一整支砲兵隊灌水處理火藥庫。本片只有 Prince 固定文本，故把這一因果明說為他的記錄與歸因，不冒稱另核軍方行動報告。"
+        },
+        {
+          "line": 35,
+          "before": "1. **第二次警報：30–60 秒濃縮開場。** 定在爆後不久的街上，有人喊海軍火藥庫有危險、群眾往 Common 走；預告先前那艘起火的船、消防員和一個灌水決定。停在「第二次到底炸了沒？」後接固定 5 秒品牌動畫。",
+          "after": "1. **第二次警報：30–60 秒濃縮開場。** 定在爆後不久的街上，有人喊海軍造船廠的火藥庫有危險、群眾往 Common 走；預告先前那艘起火的船、消防員和一個灌水決定。停在「第二次到底炸了沒？」後接固定 5 秒品牌動畫。"
+        },
+        {
+          "line": 38,
+          "before": "4. **消息沿街跑到 Common。** Prince 記海軍火藥庫危險警報、士兵叫人往開闊地去；有救援器具放下、店鋪敞開，也有人仍奔向受災區。章末問：真正會燒到的火藥庫，誰敢留下？",
+          "after": "4. **消息沿街跑到 Common。** Prince 記海軍造船廠火藥庫危險警報、士兵叫人往開闊地去；有救援器具放下、店鋪敞開，也有人仍奔向受災區。章末問：真正會燒到的火藥庫，誰敢留下？"
+        }
+      ]
+    },
+    {
+      "path": "docs/videos/curio-s61/research.md",
+      "before_sha256": "bc666f28e7c53d4e7951aa7c2031b1d5195598f7e0d730754bcc055159c3752b",
+      "after_sha256": "a012983fabf32d076941412c791f650e84a8c5f9b96b8554aa3fdce913799c9c",
+      "replacements": [
+        {
+          "line": 22,
+          "before": "| P08 | Prince 說一個海軍砲兵隊志願灌水處理火藥庫，並把第二次沒有爆炸歸於此。 | [P L1824–1836](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836)。本次未另得軍方行動紀錄；不能憑一本書補造誰下令、幾點灌水、閥門或精確火距。 |",
+          "after": "| P08 | Prince 說一整支砲兵隊志願灌水處理海軍造船廠內的火藥庫，並把第二次沒有爆炸歸於此。 | [P L1824–1836](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836)。本次未另得軍方行動紀錄；不能憑一本書補造誰下令、幾點灌水、閥門或精確火距。 |"
+        }
+      ]
+    },
+    {
+      "path": "docs/videos/curio-s61/video.json",
+      "before_sha256": "54c44520fb12e0b5a82d8f6a1443a8e23b45d64168dc465448aed74e3e743766",
+      "after_sha256": "800a8c7476bee77fad9b97e8a23e5b7e26007cfcf32e5ee471db371257fec134",
+      "replacements": [
+        {
+          "line": 250,
+          "before": "        \"prompt\": \"Medium shot of one middle-aged rescue worker pointing toward an open field while a distant naval worker carries a hose, overcast light\",",
+          "after": "        \"prompt\": \"Medium shot of one middle-aged rescue worker pointing toward an open field while a distant unmarked volunteer moves toward a low storehouse, overcast light\","
+        },
+        {
+          "line": 663,
+          "before": "          \"text\": \"火從港邊擴開；普林斯寫的第二個地點是海軍火藥庫。\",",
+          "after": "          \"text\": \"火從港邊擴開；普林斯寫的第二個地點是海軍造船廠的火藥庫。\","
+        },
+        {
+          "line": 973,
+          "before": "        \"prompt\": \"Medium shot of one middle-aged naval worker rolling a plain hose toward a low magazine doorway, smoke far behind, afternoon light\",",
+          "after": "        \"prompt\": \"Medium shot of one middle-aged unmarked volunteer approaching a low magazine doorway inside the naval yard, smoke far behind, afternoon light\","
+        },
+        {
+          "line": 1033,
+          "before": "          \"text\": \"第二張是行動：他寫，一支海軍砲兵隊自願去灌水。\",",
+          "after": "          \"text\": \"第二張是行動：他寫，一整支砲兵隊自願去灌水。\","
+        },
+        {
+          "line": 1038,
+          "before": "        \"prompt\": \"Medium shot of one grey-haired naval gunner carrying a coiled hose toward a low storehouse while others remain distant, overcast light\",",
+          "after": "        \"prompt\": \"Medium shot of one grey-haired artillery volunteer leading a few adult teammates toward a low storehouse in the naval yard, overcast light\","
+        },
+        {
+          "line": 1118,
+          "before": "        \"prompt\": \"Wide shot of one middle-aged naval worker looking at a quiet magazine with smoke fading beyond the yard, cloudy light\",",
+          "after": "        \"prompt\": \"Wide shot of one middle-aged unmarked volunteer looking at a quiet magazine with smoke fading beyond the yard, cloudy light\","
+        },
+        {
+          "line": 1680,
+          "before": "        \"prompt\": \"Medium shot of one mature-faced naval worker beside a coiled hose in a quiet yard, smoke gone, soft dusk light\",",
+          "after": "        \"prompt\": \"Medium shot of one mature-faced unmarked volunteer beside a quiet magazine in the yard, smoke gone, soft dusk light\","
+        },
+        {
+          "line": 1744,
+          "before": "        \"prompt\": \"Close shot of one middle-aged naval worker setting down a plain hose beside a closed yard door, soft dusk light\",",
+          "after": "        \"prompt\": \"Close shot of one middle-aged artillery volunteer pausing beside a closed low magazine door, soft dusk light\","
+        },
+        {
+          "line": 1824,
+          "before": "    \"description\": \"1917 年 12 月 6 日，哈利法克斯港一次爆炸後，又有人警告海軍造船廠的火藥庫可能爆炸。為何群眾往空地跑？第二次巨響有沒有來？本集跟著 1920 年參與救援者 Samuel H. Prince 的實地研究查核。\\n\\nPrince 記下火藥庫處置並把第二次沒有爆炸歸於一支海軍砲兵隊的灌水；本片未另取得軍方完整行動卷宗，故這是他的研究歸因。原創卡通是概念示意，不是 1917 年現場照片。查核作者候選：2026-10-22。\\n\\n固定全文：https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt\\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\",",
+          "after": "    \"description\": \"1917 年 12 月 6 日，哈利法克斯港一次爆炸後，又有人警告海軍造船廠的火藥庫可能爆炸。為何群眾往空地跑？第二次巨響有沒有來？本集跟著 1920 年參與救援者 Samuel H. Prince 的實地研究查核。\\n\\nPrince 記下火藥庫處置並把第二次沒有爆炸歸於一整支砲兵隊的灌水；本片未另取得軍方完整行動卷宗，故這是他的研究歸因。原創卡通是概念示意，不是 1917 年現場照片。查核作者候選：2026-10-22。\\n\\n固定全文：https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt\\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\","
+        }
+      ]
+    },
+    {
+      "path": "docs/videos/curio-s61/script.md",
+      "before_sha256": "698990fdcca3a566b5d38f34955e38dd86ee9f742195f686469f9315e1d46cff",
+      "after_sha256": "1f55c9182b1aac974cecea31d7755b1c310da29db651a6993aa310da9bb63fc9",
+      "replacements": [
+        {
+          "line": 149,
+          "before": "旁白（自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白）：火從港邊擴開；普林斯寫的第二個地點是海軍火藥庫。",
+          "after": "旁白（自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白）：火從港邊擴開；普林斯寫的第二個地點是海軍造船廠的火藥庫。"
+        },
+        {
+          "line": 245,
+          "before": "旁白（自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白）：第二張是行動：他寫，一支海軍砲兵隊自願去灌水。",
+          "after": "旁白（自然說書；把 Prince 的親歷、轉引與推論分開，不擬演受難者對白）：第二張是行動：他寫，一整支砲兵隊自願去灌水。"
+        },
+        {
+          "line": 441,
+          "before": "narrative e5563c0c54de1148",
+          "after": "narrative 946c1c8bbc7a0f5f"
+        },
+        {
+          "line": 442,
+          "before": "speech bacbc753f1968d3c",
+          "after": "speech 93322deef13d8545"
+        }
+      ]
+    },
+    {
+      "path": "docs/videos/curio-s61/claims.md",
+      "before_sha256": "4cf21255556663e5fe0d2b05d2323edff5ad2c94291674d2158d5fb7a43d6f3c",
+      "after_sha256": "5087fd10009f997c135f420c2c09ba0ebd3a59ea996296f0ac31aa15006c681f",
+      "replacements": [
+        {
+          "line": 15,
+          "before": "| s61009 | 一條是人群如何逃，另一條是有人怎麼處理火藥庫。 | [P06](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1356-L1406)、[P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Medium shot of one middle-aged rescue worker pointing toward an open field while a distant naval worker carries a hose, overcast light。原創示意，不是現場照片、原始命令或可核的個案重建。 |",
+          "after": "| s61009 | 一條是人群如何逃，另一條是有人怎麼處理火藥庫。 | [P06](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1356-L1406)、[P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Medium shot of one middle-aged rescue worker pointing toward an open field while a distant unmarked volunteer moves toward a low storehouse, overcast light。原創示意，不是現場照片、原始命令或可核的個案重建。 |"
+        },
+        {
+          "line": 41,
+          "before": "| s61035 | 火從港邊擴開；普林斯寫的第二個地點是海軍火藥庫。 | [P04](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L842-L873)、[P05](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L951-L974) | Medium shot of one mature-faced naval sentry scanning smoke beyond a low yard wall, afternoon light。原創示意，不是現場照片、原始命令或可核的個案重建。 |",
+          "after": "| s61035 | 火從港邊擴開；普林斯寫的第二個地點是海軍造船廠的火藥庫。 | [P04](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L842-L873)、[P05](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L951-L974) | Medium shot of one mature-faced naval sentry scanning smoke beyond a low yard wall, afternoon light。原創示意，不是現場照片、原始命令或可核的個案重建。 |"
+        },
+        {
+          "line": 60,
+          "before": "| s61054 | 普林斯留下的答案，指向海軍造船廠裡的一個動作。 | [P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Medium shot of one middle-aged naval worker rolling a plain hose toward a low magazine doorway, smoke far behind, afternoon light。原創示意，不是現場照片、原始命令或可核的個案重建。 |",
+          "after": "| s61054 | 普林斯留下的答案，指向海軍造船廠裡的一個動作。 | [P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Medium shot of one middle-aged unmarked volunteer approaching a low magazine doorway inside the naval yard, smoke far behind, afternoon light。原創示意，不是現場照片、原始命令或可核的個案重建。 |"
+        },
+        {
+          "line": 64,
+          "before": "| s61058 | 第二張是行動：他寫，一支海軍砲兵隊自願去灌水。 | [P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Medium shot of one grey-haired naval gunner carrying a coiled hose toward a low storehouse while others remain distant, overcast light。原創示意，不是現場照片、原始命令或可核的個案重建。 |",
+          "after": "| s61058 | 第二張是行動：他寫，一整支砲兵隊自願去灌水。 | [P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Medium shot of one grey-haired artillery volunteer leading a few adult teammates toward a low storehouse in the naval yard, overcast light。原創示意，不是現場照片、原始命令或可核的個案重建。 |"
+        },
+        {
+          "line": 69,
+          "before": "| s61063 | 能說的是，他的研究把灌水和未再爆炸連在一起。 | [P05](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L951-L974)、[P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Wide shot of one middle-aged naval worker looking at a quiet magazine with smoke fading beyond the yard, cloudy light。原創示意，不是現場照片、原始命令或可核的個案重建。 |",
+          "after": "| s61063 | 能說的是，他的研究把灌水和未再爆炸連在一起。 | [P05](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L951-L974)、[P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Wide shot of one middle-aged unmarked volunteer looking at a quiet magazine with smoke fading beyond the yard, cloudy light。原創示意，不是現場照片、原始命令或可核的個案重建。 |"
+        },
+        {
+          "line": 104,
+          "before": "| s61098 | 普林斯把這點歸於砲兵隊灌水，而不是命運忽然放過。 | [P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Medium shot of one mature-faced naval worker beside a coiled hose in a quiet yard, smoke gone, soft dusk light。原創示意，不是現場照片、原始命令或可核的個案重建。 |",
+          "after": "| s61098 | 普林斯把這點歸於砲兵隊灌水，而不是命運忽然放過。 | [P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Medium shot of one mature-faced unmarked volunteer beside a quiet magazine in the yard, smoke gone, soft dusk light。原創示意，不是現場照片、原始命令或可核的個案重建。 |"
+        },
+        {
+          "line": 108,
+          "before": "| s61102 | 他筆下的謎底，是有人在火藥庫灌水，讓第二聲沒來。 | [P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Close shot of one middle-aged naval worker setting down a plain hose beside a closed yard door, soft dusk light。原創示意，不是現場照片、原始命令或可核的個案重建。 |",
+          "after": "| s61102 | 他筆下的謎底，是有人在火藥庫灌水，讓第二聲沒來。 | [P08](https://github.com/GITenberg/Catastrophe-and-Social-ChangeBased-Upon-a-Sociological-Study-of-the-Halifax-Disaster_37580/blob/befb706982ba1be631a52d4f686be301c2de7f34/37580.txt#L1824-L1836) | Close shot of one middle-aged artillery volunteer pausing beside a closed low magazine door, soft dusk light。原創示意，不是現場照片、原始命令或可核的個案重建。 |"
+        }
+      ]
+    },
+    {
+      "path": "tasks/open/2026-10-22-source-and-draft-s61-halifax-second.md",
+      "before_sha256": "652ec7b4b4ba2c73cccad627f4f53bedc0c180b44b11f5e2d5f5c34e34ecc9cb",
+      "after_sha256": "04240d8f1bdf29991b84cffb5e9cb094c48a619aa4a6a4b72f36bec3ff6758e5",
+      "replacements": [
+        {
+          "line": 44,
+          "before": "2026-10-22: The GITenberg fixed copy was downloaded through the GitHub API to `/tmp/s61-halifax-prince.txt` and its SHA-256 checked. The book's preface (L90–110) says it is a social study, not a complete disaster history; Prince says he participated in Halifax rescue (L766–773). It records the powder-magazine warning (L951–974), crowd/army movement (L1356–1406), and attributes the absence of a second explosion to a naval battery flooding the magazine (L1824–1836). The candidate explicitly attributes that causal claim to Prince; no independent military action log was obtainable in this task. It does not name a precise order, valve, distance, death toll from the warning, or identifiable survivor in art.",
+          "after": "2026-10-22: The GITenberg fixed copy was downloaded through the GitHub API to `/tmp/s61-halifax-prince.txt` and its SHA-256 checked. The book's preface (L90–110) says it is a social study, not a complete disaster history; Prince says he participated in Halifax rescue (L766–773). It records the powder-magazine warning (L951–974), crowd/army movement (L1356–1406), and attributes the absence of a second explosion to an entire artillery battery volunteering to flood the magazine in the naval yard (L1824–1836). The candidate explicitly attributes that causal claim to Prince; no independent military action log was obtainable in this task. It does not name a precise order, valve, distance, death toll from the warning, or identifiable survivor in art."
+        }
+      ]
+    }
+  ]
+}
