@@ -50,6 +50,8 @@ const GRADES = {
   office: "eq=contrast=1.08:saturation=0.72:gamma=0.97,colorbalance=rs=-0.03:bs=0.05:rh=-0.01:bh=0.02",
   // 暗場的主觀鏡用：indoor 的 gamma 0.90 加對比把第 1 集 c27 壓成全黑（獨立審片 2，2026-11-08）
   lift: "eq=contrast=1.10:saturation=0.80:gamma=1.12:brightness=-0.01,colorbalance=rh=0.03:gh=0.01:bh=-0.03",
+  // dim：夜戲裡牆面平亮、讀起來像白天的鏡壓暗、加暗角（祖媽第 5 集 c21、c25、c40 審片，2026-11-10）
+  dim: "eq=contrast=1.12:saturation=0.74:gamma=0.80:brightness=-0.06,colorbalance=rs=-0.02:bs=0.03:rh=0.035:gh=0.01:bh=-0.04,vignette=angle=PI/4",
 };
 const gradeOf = (id) => { for (const [g, ids] of Object.entries(edit.grades ?? {})) if (ids.includes(id)) return g; return edit.default_grade ?? "day"; };
 const FINISH = edit.finish ?? "vignette=angle=PI/4.6,noise=alls=5:allf=t,format=yuv420p";
