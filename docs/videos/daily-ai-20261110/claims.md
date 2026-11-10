@@ -19,8 +19,8 @@ c3｜Kai 的問題（政府打電話叫老闆準備坐牢，是保護我們還�
 
 ### Apple
 
-c4｜據 The Verge，Apple 更新 Logic Pro，加入「Buy More Usage」選項，一次買斷 49.99 美元（AV「has updated Logic Pro with an option to "Buy More Usage" for a one-time purchase price of $49.99」）；「做音樂的軟體」＝APPLE「音樂製作軟體 Logic Pro」｜APPLE；AV｜2026-11-09｜a001, a005；卡片 ap-what、ap-price
-c5｜Apple 有些 AI 功能有用量上限，用完要付錢才能繼續用（AV「continue accessing certain Apple Intelligence features that have usage limits」；APPLE「依賴雲端模型的功能，在用完額度後可能要額外付費才能繼續使用」）｜APPLE；AV｜2026-11-09｜a002；卡片 ap-first
+c4｜據 The Verge，Apple 更新 Logic Pro，加入「Buy More Usage」選項，單次購買 49.99 美元（查核第 1 輪：原「一次買斷」聽起來像永久擁有，可是用量包 12 個月過期，改「單次購買」）（AV「has updated Logic Pro with an option to "Buy More Usage" for a one-time purchase price of $49.99」）；「做音樂的軟體」＝APPLE「音樂製作軟體 Logic Pro」｜APPLE；AV｜2026-11-09｜a001, a005；卡片 ap-what、ap-price
+c5｜Apple 有些 AI 功能有用量上限，用完了可以付錢加買來繼續用（查核第 1 輪：原「要付錢才能繼續用」比來源強，來源只說用量包「allow users to continue accessing」，站上文章也寫「可能」）（AV「continue accessing certain Apple Intelligence features that have usage limits」；APPLE「依賴雲端模型的功能，在用完額度後可能要額外付費才能繼續使用」）｜APPLE；AV｜2026-11-09｜a002；卡片 ap-first
 c6｜Apple 把它叫 Intelligence Usage Pack（AV「These Intelligence Usage Packs, as Apple calls them」）｜APPLE；AV｜2026-11-09｜a005；卡片 ap-price title
 c7｜沒用完的額度按月滾存，購買 12 個月後到期（AV「any unused additional usage will roll over from month to month, but will expire 12 months after it was purchased」，引 Apple 官網）｜APPLE；AV｜2026-11-09｜a006；卡片 ap-price
 c8｜有上限是因為這些功能依賴 OpenAI 或 Google Gemini 的雲端模型（AV「have usage limits because they rely on cloud-based AI models from OpenAI or Google Gemini」）；「雲端模型＝在遠端伺服器上跑的 AI」照 APPLE 的解釋｜APPLE；AV｜2026-11-09｜a007, a008；卡片 ap-why
@@ -47,19 +47,19 @@ c20｜據 The Verge，川普在美國電視專訪《60 分鐘》談到 AI 安全
 
 c21｜「想像一下，一家大型 AI 公司的老闆接到一通政府打來的電話」：節目設定的情境；「這通電話的內容，是川普自己在節目上說的」（c23）｜TRUMP；TV｜2026-11-09｜m001, m002；卡片 mc-scene
 c22｜川普說，有人被舉報用 AI 做壞事，他們很強硬地打電話過去（TV「We had a situation where somebody was reported to us to be doing something bad with AI. We called them very strongly」）。卡片 mc-call 引原話片段「'Something bad / with AI'」｜TRUMP；TV｜2026-11-09｜m003；卡片 mc-call
-c23｜他說他們對對方說「Get ready to go to jail. Please give your wife a kiss good night.」（旁白中譯「準備去坐牢吧，今晚記得親一下你太太，說晚安」；卡片 mc-quote1 用原文）｜TRUMP；TV｜2026-11-09｜m004；卡片 mc-quote1
-c24｜節目問他 AI 主管們對自家模型安全的警告（TV「Asked about AI executives' warnings about their models' safety on 60 Minutes」）；旁白「主管們警告自家模型不安全」｜TRUMP；TV｜2026-11-09｜m007；卡片 mc-ask
+c23｜他說他們對對方說「Get ready to go to jail. Please give your wife a kiss good night.」（旁白中譯「準備去坐牢吧。請給你太太一個晚安吻。」；查核第 1 輪：原譯「今晚記得……說晚安」加了「今晚」「記得」「說晚安」，放在引號裡要照原話，改成逐句直譯；卡片 mc-quote1 用原文）｜TRUMP；TV｜2026-11-09｜m004；卡片 mc-quote1
+c24｜節目問他 AI 主管們對自家模型安全的警告（TV「Asked about AI executives' warnings about their models' safety on 60 Minutes」）；旁白「主管們對自家模型安全提出警告」（查核第 1 輪：原「警告自家模型不安全」把「warnings about their models' safety」說成定論，改回來源的說法）｜TRUMP；TV｜2026-11-09｜m007；卡片 mc-ask
 c25｜「AI 安全＝AI 被拿去做壞事，或出錯傷到人的風險」：解釋（TRUMP 的「護欄」解釋是安全規範，AI 安全本身來源沒定義；查核要確認不超出）｜—｜—｜m008；卡片 mc-term
 c26｜他回答「I think that the risk is not nearly as real as it– as they talk, and I think the risk can be managed, and it's managed.」（旁白「風險遠沒有他們說的那麼真實，風險可以管理，而且已經在管理了」；卡片 mc-risk 引後半）｜TRUMP；TV｜2026-11-09｜m009；卡片 mc-risk
 c27｜他說是司法部在管這個風險（TV「He claimed the DOJ is managing that risk」）；「司法部＝負責起訴聯邦犯罪的政府部門」：解釋｜TRUMP；TV｜2026-11-09｜m010, m011；卡片 mc-doj
 c28｜他不肯說出對象或公司，只說是一家 AI 公司的負責人，「One of the big ones」（TV「Trump refused to name the person or company…but said it was the leader of an AI company, "One of the big ones."」）｜TRUMP；TV｜2026-11-09｜m014, m015；卡片 mc-who
-c29｜他說被威脅逮捕後「this person totally changed everything」（旁白「這個人完全改變了做法」，照 TRUMP 的中譯）；改了什麼，他沒說，報導也沒寫（TV 確實沒有）｜TRUMP；TV｜2026-11-09｜m016, m018；卡片 mc-changed
+c29｜他說被威脅逮捕後「this person totally changed everything」（旁白「這個人完全改變了一切」；查核第 1 輪：原「改變了做法」照 TRUMP 的中譯，但放在引號裡，「做法」是加的，改成直譯「everything」）；改了什麼，他沒說，報導也沒寫（TV 確實沒有）｜TRUMP；TV｜2026-11-09｜m016, m018；卡片 mc-changed
 c30｜這些只是川普的說法，經 The Verge 轉述；報導沒有第二個來源，也沒有司法部或當事公司的回應（TRUMP callout「本文僅依據 The Verge 的報導……為川普的自述，報導中沒有第二個來源，也沒有司法部的回應」；TV 內文也沒有任何回應）。「那家公司的回應」：TV 沒有，TRUMP FAQ「報導中沒有司法部或當事公司的回應」｜TRUMP；TV｜2026-11-09｜m019, m020, m062；卡片 mc-check、mc-unsure
 c31｜兩人的立場是意見：Kai「站產業這邊」「坐牢的威脅會嚇跑想做 AI 的人」；Sola「總要有人能讓 AI 公司負責」「威脅不是規則」；mc-rules 規則寫清楚的三件事（什麼算做錯、誰來查、怎麼申訴）是節目的整理，不出自來源｜節目｜—｜m021–m029；卡片 mc-sides、mc-rules
 c32｜他說「I don't mind guardrails, but I don't want to put us in a deep second position.」（旁白「不介意設護欄，但不想讓美國遠遠落到第二名」）；「護欄＝替 AI 發展設下的安全規範和限制」照 TRUMP 的解釋。m030「跟你很像」：Kai 的「寫完別人早就跑到前面」與「不想落到第二」都講速度，是節目的對照｜TRUMP；TV｜2026-11-09｜m030, m031, m032；卡片 mc-rails、mc-rails2
 c33｜他說「absolutely would」與民主黨合作談 AI 安全（TV「60 Minutes's Ross Douthat went on to ask if Trump would work with Democrats on AI safety, and Trump said he "absolutely would"」）；要設什麼護欄、什麼時候設，報導沒提（TRUMP 表格「未提到具體法案或時程」「未說明護欄的內容」）｜TRUMP；TV｜2026-11-09｜m034, m035, s002；卡片 mc-dems
-c34｜他說習近平「all in to SI, as I call it, because it really is super intelligence. It's a much better name, I think, because it's not artificial.」（旁白「全力投入他所謂的 SI，超級智慧」「這個名字比較好，因為它不是人工的」；TV「Eventually he said」，旁白不說「節目最後」）｜TRUMP；TV｜2026-11-09｜m038, m039；卡片 mc-si
-c35｜亞洲：報導只提中國；他說「China has no guardrails, by the way. […] They have the guardrails that whatever President Xi says goes.」（旁白「中國沒有護欄，只有習近平說了算」）；台灣報導完全沒提｜TRUMP；TV｜2026-11-09｜m043, m044；卡片 mc-asia
+c34｜他說習近平「all in to SI, as I call it, because it really is super intelligence. It's a much better name, I think, because it's not artificial.」（旁白「全力投入他所謂的 SI，超級智慧」「這個名字比較好，因為它不是人工的」；TV「Eventually he said」，旁白不說「節目最後」；查核第 1 輪：m038 開頭「更怪的是」是節目替他的話下評語，改成中性的「但這還不是全部，他還說」）｜TRUMP；TV｜2026-11-09｜m038, m039；卡片 mc-si
+c35｜亞洲：報導只提中國；他說「China has no guardrails, by the way. […] They have the guardrails that whatever President Xi says goes.」（旁白「川普說中國沒有護欄，他們的護欄就是習近平說了算」；查核第 1 輪：原「只有習近平說了算」漏掉他把習近平的話說成中國的「護欄」，改成照原句的兩段）；台灣報導完全沒提｜TRUMP；TV｜2026-11-09｜m043, m044；卡片 mc-asia
 c36｜錢：報導沒有罰款、預算、具體法案或時間表（TV 全文沒有；TRUMP「未附具體措施」「未提到具體法案或時程」）｜TRUMP；TV｜2026-11-09｜m048, m049, m050；卡片 mc-money
 c37｜誰贏誰輸是兩人的意見：Kai「做 AI 的人」「小公司」；Sola「看不到改了什麼的一般人」（依 c29）；m056「規則要寫得連小公司都看得懂」是 Sola 的意見｜節目｜—｜m053–m056；卡片 mc-lose、mc-small
 c38｜接下來看三件事是節目的整理：電話有沒有人證實（c30）、護欄會不會寫成規則（c33）、「已經在管理」是怎麼管（c26）｜節目｜—｜m057–m061；卡片 mc-next
@@ -67,7 +67,7 @@ c39｜結尾：Kai 不改立場（m063、m064 是意見）；Sola「我的看法
 
 ## Follow the Money
 
-c40｜據 Decrypt，Ava Labs 週一說，Avalanche 會是 NYSE 關聯數位交易平台背後清算公司的「core ledger technology」（DN「Ava Labs, the company behind Avalanche, said Monday that the blockchain will serve as the "core ledger technology" for the clearing firm behind an NYSE-affiliated digital trading venue」；DN 標題「NYSE Taps Avalanche」）。f002「NYSE 的新交易平台，要用一條叫 Avalanche 的區塊鏈來記帳」：平台是「NYSE-affiliated」、用它的是平台背後的清算公司，f011 補「Avalanche 背後的公司說，它會是這個平台清算公司的核心帳本」｜NYSE；DN｜2026-11-09｜f002, f011；卡片 fm-intro、fm-ledger
+c40｜據 Decrypt，Ava Labs 週一說，Avalanche 會是 NYSE 關聯數位交易平台背後清算公司的「core ledger technology」（DN「Ava Labs, the company behind Avalanche, said Monday that the blockchain will serve as the "core ledger technology" for the clearing firm behind an NYSE-affiliated digital trading venue」；DN 標題「NYSE Taps Avalanche」）。f002「紐約證券交易所 NYSE 規劃中的新平台，要用一條叫 Avalanche 的區塊鏈來記帳」（DN 導言「The New York Stock Exchange is turning to Avalanche to power the behind-the-scenes plumbing of its forthcoming tokenized securities platform」）：平台是「NYSE-affiliated」、用它的是平台背後的清算公司，f011 補「Avalanche 背後的公司說，它會是這個平台清算公司的核心帳本」。查核第 1 輪：原 f002「紐約證券交易所，也就是 NYSE 的新交易平台」聽起來像「NYSE＝新交易平台」，也沒說平台還在規劃；卡片 fm-intro 原「NYSE picks Avalanche」把 Ava Labs 的宣布寫成 NYSE 的決定（NYSE 沒有自己的公告，只有 Dennis Lee 的談話），改成「Avalanche for an / NYSE-linked venue」，key「Avalanche for NYSE venue」｜NYSE；DN｜2026-11-09｜f002, f011；卡片 fm-intro、fm-ledger
 c41｜重要在於區塊鏈被放在清算與結算這一層、讓交易最終完成的「管線」，不只是把單一基金或股票做成代幣（DN「puts a blockchain underneath the clearing and settlement layer, the plumbing that finalizes trades, rather than just wrapping a single fund or stock in a token」）｜NYSE；DN｜2026-11-09｜f003, f025；卡片 fm-why、fm-pipes
 c42｜成交、清算、結算三步：清算＝確認雙方該交付什麼；結算＝實際完成股票與款項交換（NYSE callout「清算與結算：買賣成交後，確認雙方該交付什麼，並實際完成股票與款項交換的步驟」）。網購的對照是節目的類比｜NYSE｜2026-11-09｜f005–f009；卡片 fm-steps、fm-shop
 c43｜帳本＝記錄每筆交易、誰擁有什麼的總紀錄（NYSE）；代幣化＝把股票、基金等傳統資產發行成區塊鏈上的代幣（DN「Tokenization, the practice of issuing traditional assets as blockchain-based tokens」；NYSE）；「區塊鏈＝很多台電腦一起保管、寫上去就很難改的帳本」：解釋，不出自來源｜NYSE；DN｜2026-11-09｜f013, f041, f014；卡片 fm-terms
@@ -76,7 +76,7 @@ c45｜設計目標：全天候交易、清算與結算，須待監管核准（DN
 c46｜NYSE 數位發行主管 Dennis Lee：交易所是「picking the right technology for each job」，平台會支援在多種區塊鏈上市的股票，但記錄與結算交易的帳本要快、可靠、能控管誰可以參與（DN）。旁白不唸名字；卡片 source 寫名字｜NYSE；DN｜2026-11-09｜f020, f021, f022, f023；卡片 fm-quote、fm-needs
 c47｜Decrypt 說這是華爾街最老牌的機構把核心市場基礎設施搬上公有區塊鏈的跡象（DN「one of the clearest signs yet that Wall Street's oldest institutions are moving core market infrastructure onto public blockchains」）；旁白「核心設施」｜NYSE；DN｜2026-11-09｜f026；卡片 fm-sign
 c48｜這筆合作的金額報導沒寫（DN、NYSE 都沒有任何金額）｜NYSE；DN｜2026-11-09｜f027
-c49｜ICE 與 OKX 計劃設立代幣化股票平台；七巨頭（包括 Apple 與 Meta）全都選擇不讓股票在該平台代幣化（DN「ICE and crypto exchange OKX are planning a 24/7 tokenized stock venue under an SEC exemption」「Every Magnificent Seven stock, including Apple and Meta, opted out of having its shares tokenized on the venue」）。「美股七巨頭＝七家最大的科技公司」：解釋（Magnificent Seven 是市場慣稱）。f029「母公司 ICE」：DN「the NYSE's parent Intercontinental Exchange」｜NYSE；DN｜2026-11-09｜f029, f036；卡片 fm-catch
+c49｜ICE 與 OKX 計劃設立代幣化股票平台；七巨頭（包括 Apple 與 Meta）全都選擇不讓股票在該平台代幣化（DN「ICE and crypto exchange OKX are planning a 24/7 tokenized stock venue under an SEC exemption」「Every Magnificent Seven stock, including Apple and Meta, opted out of having its shares tokenized on the venue」）。「美股七巨頭＝七家大型科技公司的統稱」：解釋（Magnificent Seven 是市場慣稱；查核第 1 輪：原「七家最大的科技公司」說成市值排名，慣稱不等於前七大，改「統稱」）。f029「NYSE 的母公司 ICE」：DN「the NYSE's parent Intercontinental Exchange」（查核第 1 輪補「NYSE 的」，原「母公司 ICE」沒說是誰的母公司）。DN 的「with 67 companies in all joining them」不念：可讀成「連同七巨頭共 67 家」或「另有 67 家」，站上文章寫成後者，來源沒說清楚｜NYSE；DN｜2026-11-09｜f029, f036；卡片 fm-catch
 c50｜IMF 研究：代幣化股票有真實需求，但不平均（DN「Research shows the appetite for tokenized stocks is real but uneven. An IMF study found tokenized stocks show genuine demand…」）。波動與流動性那半句不唸（太接近價格）｜NYSE；DN｜2026-11-09｜f030；卡片 fm-imf
 c51｜Decrypt 的提醒：基礎設施到位可能比市場需求跟上還快（DN「the infrastructure may be arriving faster than the markets to fill it」）｜NYSE；DN｜2026-11-09｜f032；卡片 fm-early
 c52｜「不是投資建議，也不推薦任何代幣或平台」：節目聲明（NYSE 文末同樣聲明）｜節目｜—｜f035；卡片 fm-note
@@ -95,7 +95,7 @@ c58｜outro：o001「保護人又不嚇跑人的，是規則」是節目的答�
 給查核代理做笑點檢查：每個笑點前一行的事實、笑點本身、為什麼不算新的事實。沒有新的數字、沒有雙關與諧音、沒有替真人編的話、不打一般人。
 
 - a010（Kai）「一家人什麼都能分，就這包 AI 不能分？」：誇張的反應，接 a009（c9）。笑的是 Apple 的規則，不是家人。
-- a012（Sola）「打個比方，就像計程車跳表，聊得越複雜，跳得越快。」：類比，接 a011（c10）；「打個比方」標明。注意：Apple 說的是「上限受複雜度影響」，不是按對話計費；跳表對的是「越複雜、額度用得越快」，查核要確認這個類比沒有暗示 Apple 按次收費。
+- a012（Sola）「打個比方，就像手機流量，聊得越複雜，掉得越快。」：類比，接 a011（c10）；「打個比方」標明。查核第 1 輪：原「計程車跳表，跳得越快」是邊用邊付錢，聽起來像 Apple 按對話計費；實際是一包固定額度、用得快就早用完，手機流量（有上限、可以加買）對得上。
 - a013（Kai）「原來跟 AI 講話，要講簡單一點才省錢！」：誇張的推論，接 c10；「省錢」是玩笑，Apple 沒有這樣說。
 - a015（Kai）「我有一個每集都要問的老問題：所以我要不要換手機？」：固定梗（11/6 起），這一句先交代它是每集都問的老問題；a016（Sola）「不用，這次要你掏錢的不是手機，是 AI 的額度。」接 c4、c5。
 - j007（Sola）「打個比方，就像小一的時候下訂，小六畢業才送到。」：類比，接 j006（c15 的六年）；台灣小學六年，沒有新數字；s004 回扣。
@@ -103,19 +103,19 @@ c58｜outro：o001「保護人又不嚇跑人的，是規則」是節目的答�
 - j015（Kai）「老問題又來了，所以我要不要換手機？」；j016（Sola）「不用，今天連資料中心都在找二手的。」：固定梗第二次，接 c12。
 - t002（Kai）「好，叫人準備坐牢算保護還是嚇人，現在可以吵了。」：串場，把開場的問題重說一次。
 - m005（Kai）「連晚安吻都幫人家安排好了？」：反應，接 m004（c23 的原話「Please give your wife a kiss good night」）；笑的是有權力的人說的話，不改原話。
-- m012（Sola）「所以風險沒那麼真實，可是已經真實到，要打電話叫人準備坐牢。」：把 c26 與 c22、c23 兩句他自己的話放在一起，笑政策說法前後對不上；不說他說謊，不評他的政治立場。m013（Kai）「所以風險到底是有，還是沒有？我聽到頭都暈了。」：反應。
+- m012（Sola）「所以風險沒那麼真實，可是已經真實到，要打電話叫人準備坐牢。」：把 c26 與 c22、c23 兩句他自己的話放在一起，笑政策說法前後對不上；不說他說謊，不評他的政治立場。卡片 mc-joke1 原「real enough for jail」讀成有人坐牢，查核第 1 輪改「yet a jail warning」。m013（Kai）「所以風險到底是有，還是沒有？我聽到頭都暈了。」：反應。
 - m017（Kai）「有用？我看是把人嚇到不敢動吧。」：Kai 的意見（他的立場），接 c29；不是在說那位負責人做了什麼。m018（Sola）「改了什麼，他沒說，報導也沒寫。」：事實（c29）。
 - m036（Sola）「打個比方，就像考試範圍還沒公布，老師已經先打電話說你會被當。」：類比，接 m034、m035（c33 護欄沒說內容）與 c22、c23（警告電話）；笑的是政策順序，不是任何人的政治立場。m037（Kai）「這種課，我一定第一個退選！」：誇張，假設語氣。
-- m040（Sola）「身為一個 AI 主持人，我得承認，我就是人工的。」；m041（Kai）「我也是，至少我們的名字很誠實。」：接 m039（c34）；笑點打在主持人自己身上（兩位主持人是 AI，說明欄已揭露），不笑川普的用詞。
-- m051（Sola）「所以這場 AI 安全的談話，到目前為止唯一的成本，是一通電話。」：誇張，接 c36（沒有罰款、預算、法案）；「成本」是比喻，沒有金額。m052（Kai）「而且那通電話，還沒人證實有打過。」：事實（c30），補刀。
+- m040（Sola）「身為一個 AI 主持人，我得承認，我就是人工的。」；m041（Kai）「我也是，至少 AI 這個名字，用在我們身上很誠實。」（查核第 1 輪：原「我們的名字」會聽成 Sola、Kai 這兩個名字，改說清楚是「AI」這個名字）：接 m039（c34）；笑點打在主持人自己身上（兩位主持人是 AI，說明欄已揭露），不笑川普的用詞。
+- m051（Sola）「所以照報導，這場談話到目前為止唯一的成本，是一通電話。」：誇張，接 c36（沒有罰款、預算、法案）；「成本」是比喻，沒有金額。m052（Kai）「而且那通電話，除了他自己，沒人證實過。」：事實（c30），補刀。查核第 1 輪：報導沒寫不等於沒有，m051 補「照報導」；原 m052「還沒人證實有打過」漏了川普本人就是說有打的人，補「除了他自己」；卡片原「The policy's cost」把一段談話說成政策，改「Cost in the report: / one phone call」。
 - m059（Kai）「第一件，我賭會有很多公關在開會。」：猜想，沒有事實主張，不指任何一家公司。
 - m068（Kai）「連預算都沒有？」：反應，接 m049（c36）。
 - f010（Kai）「所以 Avalanche，是在幫股票送包裹？」：想歪，接 f009 的網購類比；f011 用來源更正（c40）。
 - f018（Kai）「我覺得這很酷，交易終於不用下班了！」：擬人，接 f017（c45 的全天候）；f019（Sola）「監管機關還沒點頭之前，它連第一天上班都還沒排。」：接 c45（待核准、沒說上線時間），擬人，沒有新日期。
 - f024（Kai）「那錢流去哪？」；f025（Sola）「所以今天跟的不是錢，是錢走的管線。」：接 f027（c48）與 c41（Decrypt 的「plumbing」）。
-- f031（Kai）「Apple 今天出場兩次，一次在賣 AI 加量包，一次在拒絕被代幣化。」：callback，兩件事都是本集照來源講過的事實（c4、c49）；「今天」指這一集，不是說兩件事都發生在同一天（OKX-ICE 的退出不是 11/9 的事），查核要確認聽起來不像同一天。
+- f031（Kai）「Apple 這一集出場兩次，一次在賣 AI 加量包，一次在拒絕被代幣化。」：callback，兩件事都是本集照來源講過的事實（c4、c49）。查核第 1 輪：原「今天」會聽成兩件事同一天發生（DN 沒寫 OKX-ICE 退出的日期，不是 11/9 的新聞），旁白改「這一集」，卡片「twice today」改「on air twice」。
 - f033（Sola）「打個比方，就像捷運站先蓋好了，乘客還在路上。」：類比，接 f032（c51）。f034（Kai）「我還是覺得先蓋好比較好，總比人到了沒車坐好。」：Kai 的意見，接同一個類比；不是投資看法。
-- s004（Sola）「今天最有耐心的，是在等新渦輪機的資料中心，小一下訂，小六才到貨。」：回扣 j007。s005（Kai）「等它到貨，我的老問題，應該已經問了好幾百次。」：誇張（每集問一次、六年），沒有新的事實；「好幾百次」不是統計。
+- s004（Sola）「今天最有耐心的，是在等新渦輪機的資料中心，小一下訂，小六才到貨。」：回扣 j007。s005（Kai）「等它到貨，我的老問題，大家應該都會背了。」：誇張，沒有新的事實。查核第 1 輪：原「好幾百次」是一個新的數量（平日一集、六年其實上千集），改成不帶數字的說法。
 
 ## 我懷疑但沒動的事
 
