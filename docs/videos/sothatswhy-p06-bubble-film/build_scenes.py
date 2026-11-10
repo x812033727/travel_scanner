@@ -433,7 +433,7 @@ doc = {
         {"title": "Virginia Tech / James Madison University Bubble Physics, Properties of Bubbles", "url": "https://www1.phys.vt.edu/bubble/properties-of-bubbles.html", "checked_on": CHECKED},
         {"title": "Virginia Tech / James Madison University Bubble Physics, Introduction and Basic Information (Young-Laplace, Plateau laws)", "url": "https://www1.phys.vt.edu/bubble/basic-information.html", "checked_on": CHECKED},
         {"title": "Wolfram MathWorld, Double Bubble", "url": "https://mathworld.wolfram.com/DoubleBubble.html", "checked_on": CHECKED},
-        {"title": "HyperPhysics (Georgia State University), Soap Film Interference", "url": "https://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/soapfilm.html", "checked_on": CHECKED},
+        {"title": "HyperPhysics (Georgia State University), Soap Film Interference", "url": "https://hyperphysics.gsu.edu/hbase/phyopt/soapfilm.html", "checked_on": CHECKED},
         {"title": "University of Colorado Boulder Physics Undergraduate Labs, Interference in a Soap Film (demo 6D30.20)", "url": "https://physicslabs.colorado.edu/demos/optics/interference/thin-films/interference-in-a-soap-film/", "checked_on": CHECKED},
     ],
     "assets": [],
