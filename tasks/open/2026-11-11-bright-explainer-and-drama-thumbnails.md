@@ -90,5 +90,11 @@ Render any 種田 or 祖媽 episode and any `sothatswhy-` episode and look at `t
   thumbnails carry it) but held it to one line at 170 px that shrinks instead of wrapping, the
   picture anchored at 18% from the top and the shade starting lower, so the headline never climbs
   onto the face. `DRAMA_THUMB_HEADLINE.maxLines` is 1 and qa measures one line.
+- Fourth pass, from the curio and So That's Why sessions' review on the PR (2026-11-11 14:00):
+  curio stays on layout `e` (no change needed: `isDramaThumbDoc` excludes curio-/story-); the So
+  That's Why emphasis outline went from 14 px to 9 px because the navy outline filled the counters
+  of dense characters (「圓」「暈」); the drama layout's MOKAAIR sits on a dark plate because white
+  letters alone vanished on a bright picture. The two-line drama headline they flagged was already
+  one line since the third pass.
 - 種田 e003's chosen keyframe has a calm face; the look needs the most expressive shot — pick
   `data.shot` for the face, not the scene.

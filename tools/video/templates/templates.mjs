@@ -989,7 +989,9 @@ const THUMB_SERIES_CSS = {
     "body{background:linear-gradient(160deg,#8fd3ff 0%,#bfe6ff 38%,#ffe2a8 70%,#ff9a62 100%)}" +
     ".thumb-scrim{background:linear-gradient(90deg,rgba(255,250,240,.9) 0%,rgba(255,250,240,.72) 46%,rgba(255,250,240,0) 72%)}" +
     `.thumb h1{color:#1f2a44;font-size:${SERIES_THUMB_HEADLINE.fontSize}px;line-height:${SERIES_THUMB_HEADLINE.lineHeight};-webkit-text-stroke:14px #fff;paint-order:stroke fill}` +
-    ".thumb em{color:#e8b64c;-webkit-text-stroke:14px #1f2a44;paint-order:stroke fill}" +
+    // The emphasis is outlined thinner than the headline (9 px, not 14): a 14 px navy outline filled
+    // the counters of a dense character (P06 「圓」, P21 「暈」) and it read as a solid block on a phone.
+    ".thumb em{color:#e8b64c;-webkit-text-stroke:9px #1f2a44;paint-order:stroke fill}" +
     ".thumb .sub{align-self:flex-start;color:#fff;background:#1f2a44;font-size:56px;font-weight:900;padding:12px 28px;border-radius:14px;max-height:none}" +
     ".thumb .brand{color:#1f2a44;letter-spacing:.12em}" +
     // The stamp sits beside the series' name at the bottom left (2026-11-11): at the top right of
@@ -1040,7 +1042,8 @@ const THUMB_DRAMA_CSS =
   ".thumb.column.layout-f .tag{position:absolute;left:0;top:44px;border-radius:0;padding:12px 30px 12px 48px;background:var(--drama);color:#fff;font-size:44px;font-weight:900;letter-spacing:.04em;box-shadow:0 6px 18px rgba(0,0,0,.35)}" +
   `.thumb.column.layout-f h1{color:#ffd400;font-size:${DRAMA_THUMB_HEADLINE.fontSize}px;line-height:${DRAMA_THUMB_HEADLINE.lineHeight};max-height:${Math.round(DRAMA_THUMB_HEADLINE.fontSize * DRAMA_THUMB_HEADLINE.lineHeight * DRAMA_THUMB_HEADLINE.maxLines)}px;letter-spacing:.02em;white-space:nowrap;-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 10px 24px rgba(0,0,0,.5)}` +
   ".thumb.column.layout-f .sub{color:#fff;font-size:64px;font-weight:900;max-height:90px;-webkit-text-stroke:10px #000;paint-order:stroke fill}" +
-  ".thumb.column.layout-f .brand{left:auto;right:40px;top:48px;bottom:auto;font-size:28px;letter-spacing:.12em;color:rgba(255,255,255,.9);text-shadow:0 2px 8px rgba(0,0,0,.6)}";
+  // The mark on a dark plate: white letters alone vanished on a bright picture (a sky).
+  ".thumb.column.layout-f .brand{left:auto;right:40px;top:48px;bottom:auto;font-size:26px;letter-spacing:.12em;color:#fff;background:rgba(0,0,0,.45);padding:6px 14px;border-radius:8px}";
 
 const THUMB_MARQUE_CSS =
   ".thumb .marque{align-self:stretch;font-weight:900;line-height:1.05;color:var(--orange);white-space:nowrap;overflow:hidden;letter-spacing:.01em;" +
