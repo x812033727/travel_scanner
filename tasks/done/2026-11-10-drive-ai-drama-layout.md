@@ -1,13 +1,13 @@
 ---
 id: 2026-11-10-drive-ai-drama-layout
 title: AI 劇雲端硬碟備份改成 AI劇/<名稱>/<集數>/，製作檔由 session 直接傳
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-11-10T01:25:17Z
 created_at: 2026-11-10T01:25:09Z
-completed_at:
+completed_at: 2026-11-11T04:28:02Z
 branch: claude/drive-ai-drama-layout
 depends_on: []
 scope:
@@ -49,9 +49,9 @@ scope:
 - [x] 網站給 worker 的資料夾是 `AI劇/<名稱>/<集數>/`；`-r2` 是「種田娶妻打天下（真人版）」；較舊的版本在 `<集數>/_舊版/<slug>/`。
 - [x] 之前放在別處的備份，worker 在雲端硬碟搬過來一次；搬進已有檔案的資料夾時不覆蓋任何檔。
 - [x] worker 的分支鏡像關掉（從沒成功跑過：`fs.copyFileSync is not a function`）。
-- [ ] `docs/videos/AI-DRAMA-DRIVE.md`：要備份什麼、放哪裡、session 怎麼傳（`todrive.sh`）、怎麼核對、何時刪分支。
-- [ ] 舊分支照 `docs/videos/ai-drama-drive/legacy-branches.tsv` 搬到雲端硬碟，逐檔核對 0、另一個代理涵蓋檢查 0。
-- [ ] 站主同意後刪除已核對的分支。
+- [x] `docs/videos/AI-DRAMA-DRIVE.md`：要備份什麼、放哪裡、session 怎麼傳（`todrive.sh`）、怎麼核對、何時刪分支。
+- [x] 舊分支照 `docs/videos/ai-drama-drive/legacy-branches.tsv` 搬到雲端硬碟，逐檔核對 0、另一個代理涵蓋檢查 0。
+- [x] 站主同意後刪除已核對的分支。
 
 ## Steps
 
@@ -60,9 +60,9 @@ scope:
 - [x] compose：`VIDEO_BRANCH_MIRROR: "off"`。
 - [x] 文件與 `todrive.sh`。
 - [x] 叫所有製作影片的 session 不要再推分支：AGENTS.md、curio-episode、route-a、舊規則文件加停用標記，`tobranch.sh`／`coverage.sh` 改成拒絕。
-- [ ] PR、站主合併與部署。
-- [ ] 一次性搬家（主機跑，`gh` 讀私人 repo、主機的 rclone 寫雲端硬碟）。
-- [ ] 核對、刪分支。
+- [x] PR、站主合併（#2057）。部署排在 graph16 發布之後（暫停檔 `/root/travel-scanner-deploy.hold`），由部署流程處理，不擋本票。
+- [x] 一次性搬家（主機跑，`gh` 讀私人 repo、主機的 rclone 寫雲端硬碟）。
+- [x] 核對、刪分支。
 
 ## How to verify
 
@@ -83,3 +83,6 @@ node --test tools/video/automation/backup.test.mjs
 - 搬移與同一輪的複製都會用 `_舊版/<時間>/`；搬移改用 `_舊版/<時間>-搬移/`，否則複製會蓋掉搬移移進去的檔（測試抓到的）。
 - 搬家（2026-11-10 01:35 UTC 起，主機 `/root/drive-migration/`）：前 45 條約每小時 4 GB，小檔多的分支被 `--tpslimit 5` 卡住；
   03:07 起主機那份改成 `--tpslimit 10 --transfers 8 --checkers 16` 重跑（帳本跳過已完成的）。repo 的 `migrate.py` 仍是保守值。
+- 2026-11-11 結案：對照表補到 152 條（182.7 GB、227,914 個檔），逐檔核對 0；獨立代理涵蓋檢查 152 條＋travel_scanner 104 條全部安全，
+  抽 69 檔比對內容相同。站主同意後刪除 254 條（travel_scanner 104、備份 repo 150）；四個備份 repo 改成只有 README 的 `main`。
+  `tn-e003` 與 `curio-shared` 在核對後又有新推送，重搬一次再核對（帳本 `/root/drive-migration/ledger-merged.json`）。
