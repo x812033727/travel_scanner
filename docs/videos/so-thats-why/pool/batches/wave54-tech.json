@@ -1,0 +1,591 @@
+{
+  "batch_id": "wave54-tech-20261111",
+  "created_on": "2026-11-11",
+  "scope": "數光子的感測器、家用網路共用 IP 與『同樣的統計摘要、不同的圖』：替長題 G19、G05、G14 補日常入口、耗盡數據與真實可公開的資料案例；十來源（廠商新聞稿、官方公告、RFC 與 Autodesk 研究論文）。",
+  "sources": [
+    {
+      "id": "T54-S001",
+      "url": "https://www.sony-semicon.com/en/news/2023/2023030601.html",
+      "canonical_url": "https://www.sony-semicon.com/en/news/2023/2023030601.html",
+      "title": "Sony Semiconductor Solutions to Release SPAD Depth Sensor for Smartphones ... (IMX611)",
+      "publisher": "Sony Semiconductor Solutions 新聞稿",
+      "version": "2023-03-06（頁面註明為歷史參考）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤後全文閱讀",
+      "reading_scope": "全文：說明、主要特色、規格表與註腳",
+      "locator": "正文第1–6段；Main Features；Key Specifications 表與註*1–*7",
+      "summary": "IMX611 是給智慧型手機的直接飛行時間（dToF）SPAD 深度感測器：SPAD 像素用雪崩倍增把單一入射光子的電子放大；dToF 量光從光源出發、被物體反射回到感測器的時間來得距離。光子偵測效率 28%（940 nm，手機雷射常用波長），可偵測很弱的反射光，因此能用較低雷射功率；用途含暗處自動對焦、背景散景、廣角與望遠切換、AR 遮擋與手勢。10 µm 像素、23,000 有效像素，距離誤差小於 0.1%（30 fps、室內），距離換算在感測器邏輯晶片內完成。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "廠商新聞稿；28% 為『截至發表時手機用 SPAD 深度感測器中最高』的自我宣稱；未說明用於哪一款手機；未公布暗計數或後脈衝數值。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/sony_2023030601.html.html",
+        "sha256_prefix": "031b38c84bac7f8f",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T54-S002",
+      "url": "https://www.apple.com/newsroom/2020/03/apple-unveils-new-ipad-pro-with-lidar-scanner-and-trackpad-support-in-ipados/",
+      "canonical_url": "https://www.apple.com/newsroom/2020/03/apple-unveils-new-ipad-pro-with-lidar-scanner-and-trackpad-support-in-ipados/",
+      "title": "Apple unveils new iPad Pro with breakthrough LiDAR Scanner and brings trackpad support to iPadOS",
+      "publisher": "Apple Newsroom",
+      "version": "2020-03-18",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤後全文閱讀（另以 WebFetch 對照）",
+      "reading_scope": "LiDAR Scanner 段與應用例段",
+      "locator": "『Breakthrough LiDAR Scanner』小節第1–3段",
+      "summary": "iPad Pro 的 LiDAR 掃描器可量到 5 公尺外物體的距離，室內外皆可，『以光子層級、奈秒速度運作』；深度點與相機、動態感測器資料結合，用於 AR 即時擺放、人物遮擋與量尺 App 自動量身高。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "官方新聞稿未說明偵測器種類（未提 SPAD 或供應商）；不可據此說 iPad 用 Sony 晶片或 SPAD，拆解報告為付費二手資料未採。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/apple.html",
+        "sha256_prefix": "42dbba92eee9b768",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T54-S003",
+      "url": "https://arxiv.org/abs/1810.02275",
+      "canonical_url": "https://arxiv.org/abs/1810.02275",
+      "doi": "10.1016/j.nima.2019.162796",
+      "title": "Characterisation of a large area silicon photomultiplier",
+      "publisher": "Nagai、Alispach、Barbano、Coco、della Volpe、Heller、Montaruli、Njoh、Troyano-Pujadas、Renier（日內瓦大學、CERN）；Nucl. Instrum. Meth. A 948 (2019) 162796",
+      "version": "arXiv v4 2020-01-09 作者稿",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（arXiv PDF），pdftotext 全文",
+      "reading_scope": "摘要、§1–2（感測器與表1）、§4.5 暗計數、提示串音、後脈衝與延遲串音（Fig.16–20）、§5 PDE（Fig.23、26–29）、§6 結論與表2",
+      "locator": "表1；§2 末段（暗計數可做現場校準）；§4.5 式(21)–(28)、Fig.18–20 圖說；§5.3；表2",
+      "summary": "日內瓦大學實測 Hamamatsu S10943-2832(X)（SST-1M 伽瑪射線望遠鏡相機用，約 94 mm² 大面積六角 SiPM）：完全沒光時以 0.5 光電子門檻計到的暗計數約 26.5 kHz/mm²，門檻提到 1.5 光電子降到約 1.7 kHz/mm²，兩者之比即提示光學串音機率（工作點約 6.5%）；串音光子約 2% 抵達鄰近微單元高場區。後脈衝：以 20 µs 波形量主脈衝後第一個脈衝的時間差，扣掉隨機暗計數後得後脈衝時間常數約 6.8 ns、5 µs 內機率 <2%；微單元未恢復時的後脈衝振幅小於 1 光電子（Fig.20）。PDE＝量子效率×填充率×觸發機率，472 nm 實測約 35.5%。作者說暗計數可用於現場校準，降得太低反而拉長累積校準統計的時間。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "特定大面積望遠鏡用 SiPM（較舊 LCT2 製程），不是手機感測器，數字不可套到手機；室溫實驗室條件；表1 為廠商值、表2 為實測值。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/nagai.pdf",
+        "sha256_prefix": "121e1746348e3607",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T54-S004",
+      "url": "https://www.icann.org/en/system/files/press-materials/release-03feb11-en.pdf",
+      "canonical_url": "https://www.icann.org/resources/press-material/release-2011-02-03-en",
+      "title": "Available Pool of Unallocated IPv4 Internet Addresses Now Completely Emptied",
+      "publisher": "ICANN（與 NRO、IAB、Internet Society 聯合宣布）新聞稿",
+      "version": "2011-02-03",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（ICANN 新聞頁連到的 PDF），pdftotext 全文",
+      "reading_scope": "全文",
+      "locator": "第1–7段",
+      "summary": "2011 年 2 月 3 日 IANA 中央池最後的 IPv4 位址分配完畢：最後五個區塊平分給五個區域網際網路註冊機構（RIR），之後由 RIR 繼續分到 ISP 等；IPv4 總數約 43 億；IPv6 位址池比 IPv4 大十億兆倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "新聞稿；『中央池用完』不等於各 RIR 當時已無位址；ICANN 新聞頁 HTML 只有標題，全文在 PDF。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/icann2011.pdf",
+        "sha256_prefix": "32ccee6501ac6d08",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T54-S005",
+      "url": "https://www.ripe.net/publications/news/the-ripe-ncc-has-run-out-of-ipv4-addresses/",
+      "canonical_url": "https://www.ripe.net/publications/news/the-ripe-ncc-has-run-out-of-ipv4-addresses/",
+      "title": "The RIPE NCC has run out of IPv4 Addresses",
+      "publisher": "RIPE NCC（歐洲、中東與部分中亞的 RIR）新聞稿",
+      "version": "2019-11-25",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤後全文閱讀",
+      "reading_scope": "全文",
+      "locator": "全文第1–6段",
+      "summary": "RIPE NCC 2019-11-25 宣布 IPv4 用盡：2012 年起已進入最後一個 /8、只發 /22；之後回收的位址只按候補名單、每家新會員一個 /24。近年出現 IPv4 轉售市場與更多電信級 NAT（CGNAT），兩者都有成本與取捨，都沒解決『IPv4 不夠每個人用』的根本問題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "區域機構，非全球數據；未給家用 NAT 普及率數字。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/ripe.html",
+        "sha256_prefix": "555de536bbedde95",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T54-S006",
+      "url": "https://www.rfc-editor.org/rfc/rfc6888.txt",
+      "canonical_url": "https://www.rfc-editor.org/rfc/rfc6888.txt",
+      "title": "Common Requirements for Carrier-Grade NATs (CGNs) (RFC 6888, BCP 127)",
+      "publisher": "IETF；Perreault 等",
+      "version": "2013-04",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 純文字全文",
+      "reading_scope": "§1 引言、§2 術語、§3 REQ-1 至 REQ-4 前段",
+      "locator": "§1 第1–4段；§2 CGN 定義與注",
+      "summary": "IPv4 短缺下 ISP 讓多個用戶共用一個公有 IPv4：每戶拿私有位址，由 ISP 網路裡的 NAT 轉換；用戶家中再有一台 NAT 時就是兩層 NAT。CGN 不由用戶管理，用戶幾乎無法控制；『carrier-grade』是位置而非品質。因為用戶沒有獨立 IPv4，CGN 對用戶之間與對外通訊造成實質限制，有些應用需大改、有些完全無法運作。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "最低互通要求文件，作者明言不是 IETF 背書 CGN；未給部署率數據。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/rfc6888.txt",
+        "sha256_prefix": "d457f77ec6d4bd0b",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T54-S007",
+      "url": "https://www.rfc-editor.org/rfc/rfc6598.txt",
+      "canonical_url": "https://www.rfc-editor.org/rfc/rfc6598.txt",
+      "title": "IANA-Reserved IPv4 Prefix for Shared Address Space (RFC 6598, BCP 153)",
+      "publisher": "IETF；Weil 等",
+      "version": "2012-04",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 純文字全文",
+      "reading_scope": "摘要、IESG 註、§1 引言、§3、§7 IANA",
+      "locator": "摘要；§1；§7",
+      "summary": "因 IPv4 幾近耗盡、ISP 部署 CGN，IETF 另劃一段 /10『共享位址空間』100.64.0.0/10，用來編號 CGN 與用戶端設備（家用路由器）之間的介面；它和 RFC 1918 私有位址一樣不在全球路由，但只限 ISP 網路使用。IESG 註明仍致力於部署 IPv6。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只規定位址用途；『看到路由器外側是 100.64–100.127 就代表在 CGN 後面』是推論，片中若用需標為可能情況。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/rfc6598.txt",
+        "sha256_prefix": "b04d16c5c98b8932",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T54-S008",
+      "url": "https://www.rfc-editor.org/rfc/rfc4787.txt",
+      "canonical_url": "https://www.rfc-editor.org/rfc/rfc4787.txt",
+      "title": "Network Address Translation (NAT) Behavioral Requirements for Unicast UDP (RFC 4787, BCP 127)",
+      "publisher": "IETF；Audet & Jennings",
+      "version": "2007-01",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 純文字全文",
+      "reading_scope": "§4.3 Mapping Refresh 全段（REQ-5、REQ-6 前段）",
+      "locator": "§4.3（第11–12頁）",
+      "summary": "映射計時器指沒有封包經過 NAT 時映射還能維持多久，各家 NAT 的值差很大；REQ-5：UDP 映射計時器不得少於 2 分鐘（知名埠的特定應用可較短），建議預設 5 分鐘以上，理由是避免太頻繁的刷新封包；有些 NAT 只在內往外有封包時刷新。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "規範要求，不是實測；實際家用路由器值可能不同。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/rfc4787.txt",
+        "sha256_prefix": "5db82ec5f0d6b9b0",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T54-S009",
+      "url": "https://www.rfc-editor.org/rfc/rfc5382.txt",
+      "canonical_url": "https://www.rfc-editor.org/rfc/rfc5382.txt",
+      "title": "NAT Behavioral Requirements for TCP (RFC 5382, BCP 142)",
+      "publisher": "IETF；Guha 等",
+      "version": "2008-10",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 純文字全文",
+      "reading_scope": "§5 REQ-5 與其理由段",
+      "locator": "第10頁 REQ-5、Justification",
+      "summary": "NAT 無法判斷 TCP 連線兩端是否還在時，可在閒置一段時間後丟棄會話，但已建立連線的閒置逾時不得少於 2 小時 4 分鐘、半開或關閉中的不得少於 4 分鐘；用意是讓應用以預設每 2 小時一次的保活封包就能讓 NAT 知道連線還活著，多出的 4 分鐘留給途中封包。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "規範要求；實際設備不一定遵守。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/rfc5382.txt",
+        "sha256_prefix": "c67083f71f70458d",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "T54-S010",
+      "url": "https://www.research.autodesk.com/app/uploads/2023/03/same-stats-different-graphs.pdf_rec2hRjLLGgM7Cn2T.pdf",
+      "canonical_url": "https://www.research.autodesk.com/app/uploads/2023/03/same-stats-different-graphs.pdf_rec2hRjLLGgM7Cn2T.pdf",
+      "doi": "10.1145/3025453.3025912",
+      "title": "Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing",
+      "publisher": "Matejka & Fitzmaurice（Autodesk Research）；CHI 2017",
+      "version": "作者上傳之會議論文 PDF",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 PDF，pdftotext 全文",
+      "reading_scope": "全文",
+      "locator": "Introduction、Related Work（Anscombe 三個舊觀念）、Method、Example 1、2、3、6（Fig.1、5、6、9）、Limitations",
+      "summary": "Anscombe 四重奏是四組各 11 點、平均、標準差、相關都相同但圖完全不同的資料，Anscombe 沒交代怎麼造的。作者從 Cairo 的『Datasaurus』恐龍散布圖出發，每次把點挪一點點、只接受統計量到小數兩位不變的移動，跑 20 萬次（筆電約 10 分鐘），造出一打外形完全不同、平均／標準差／相關都相同的資料。換成中位數、四分位距與 Spearman 相關一樣能被騙（Fig.5）；一維例子中六組形狀不同的分布畫出完全相同的盒形圖（Fig.9）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "資料是演算法刻意生成的教學資料，不是自然量到的；Anscombe 三個觀念是本文轉述 1973 年原文（原文未讀）。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/samestats.pdf",
+        "sha256_prefix": "b2dc59a53071d5a1",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T54-001",
+      "question": "手機相機在暗處還能對準焦、拍出背景模糊，靠的是一個會「數光子」的晶片嗎？",
+      "domain": "光學感測",
+      "mechanism_key": "sensing.spad.smartphone_dtof_photon_detection_efficiency",
+      "answer_target": "Sony 2023 年為智慧型手機發表的 IMX611 是一種直接飛行時間（dToF）深度感測器：量光從光源發出、被物體反射回到感測器要多久來算距離；它的像素是單光子雪崩二極體（SPAD），一顆光子進來激發的電子會像雪崩一樣被放大。廠商標示在手機雷射常用的 940 nm 波長下，光子偵測效率是 28%，也就是同波長每 100 顆光子約 28 顆被記到；越高越能抓住微弱的反射光，雷射光源就能開小一點、整支手機系統更省電。用途列了暗處自動對焦、背景散景、廣角望遠切換與 AR 遮擋。",
+      "scope": "廠商新聞稿；28% 為發表時手機用 SPAD 深度感測器中的自稱最高；未說用在哪款手機；不推論任何品牌手機內部用此晶片。",
+      "source_ids": [
+        "T54-S001"
+      ],
+      "source_locator": "S001 正文第1–6段、註*2、規格表",
+      "premise_status": "screened",
+      "notes": "目標 G19 開場鉤子（審查列缺『日常入口』）；原角色 hook。28 顆／100 顆是 PDE 定義的直接改寫，不是另算。 原提案 F3-001。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；數字與用途都對，只改一處歸屬：940 nm 是量 PDE 的波長、手機雷射常用，不是 IMX611 發出的雷射。仍不可說任何品牌手機用這顆晶片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "數單顆光子不是實驗室專利，就在手機背面；而且它天生就漏掉大多數光子。",
+        "visual": "手機背面的感測器特寫→雷射點打到牆上又彈回、計時器跳奈秒；100 顆光子小球進來，只有 28 顆亮起。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T54-002",
+      "question": "平板的 LiDAR 量 5 公尺外的牆，官方說它「以光子層級」運作是什麼意思？",
+      "domain": "光學感測",
+      "mechanism_key": "sensing.lidar.tablet_photon_level_nanosecond_ranging",
+      "answer_target": "Apple 2020 年發表 iPad Pro 的 LiDAR 掃描器時說，它能量到周圍最遠 5 公尺物體的距離，室內外都能用，並且『以光子層級、奈秒速度』運作；深度點再和相機與動作感測器資料合併，用來即時擺放 AR 物件、讓人物遮住虛擬物，量尺 App 也能自動量出一個人的身高。",
+      "scope": "官方未說明偵測器種類或供應商；只可說『官方形容以光子層級運作』，不可說 iPad 用 SPAD 或 Sony 晶片。",
+      "source_ids": [
+        "T54-S002"
+      ],
+      "source_locator": "S002 『Breakthrough LiDAR Scanner』第1–3段",
+      "premise_status": "screened",
+      "notes": "目標 G19 開場鉤子的第二個日常例；與 T54-001 合用時只算 0.5 條。 原提案 F3-002。非作者覆核 V7（2026-11-11）照覆核意見改字後收；原文說『最遠 5 公尺』，不是『5 公尺外』；其餘照錄。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾手上的平板，官方就說它在數光子、算奈秒。",
+        "visual": "量尺 App 量身高的畫面（自製示意，不用 Apple 素材），疊上 0–5 m 刻度。",
+        "seconds": [
+          20,
+          30
+        ]
+      }
+    },
+    {
+      "id": "T54-003",
+      "question": "單光子感測器放在全黑的盒子裡，為什麼每秒還會「看到」上萬次光？",
+      "domain": "光學感測",
+      "mechanism_key": "sensing.sipm.dark_count_rate_threshold_crosstalk_measurement",
+      "answer_target": "日內瓦大學實測一顆約 94 平方毫米的 Hamamatsu 大面積 SiPM：完全沒有光時，把門檻設在半顆光子的訊號高度，每平方毫米每秒仍計到約 2.65 萬次暗計數，來自熱產生的載子自行觸發雪崩。把門檻提高到 1.5 顆光子，計數降到約 1,700 次——剩下的是一次暗計數又連帶讓鄰居一起觸發；兩個門檻的比值就是光學串音機率，這顆元件在工作電壓下約 6.5%。",
+      "scope": "特定望遠鏡用 SiPM、室溫實驗室；廠商另標每通道 2.8–5.6 MHz；不可套用到手機感測器。",
+      "source_ids": [
+        "T54-S003"
+      ],
+      "source_locator": "S003 表2；§4.5 式(21)、Fig.16–17；表1",
+      "premise_status": "screened",
+      "notes": "目標 G19 新章『沒光也在數』（原企劃沒有暗計數；E2273 範圍明言與熱生暗計數分開）；原角色 turn。補審查列『缺實際訊號資料』。 原提案 F3-003。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照原稿收；數字與因果都出自原文；範圍明寫是望遠鏡用大面積 SiPM、不可套到手機，符合要求。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能數一顆光子的東西，連一顆都沒有時也在數；而換個門檻，就能把『自己數』和『鄰居跟著數』分開。",
+        "visual": "黑盒子裡的感測器計數器狂跳；門檻線從 0.5 拉到 1.5，計數條從 26.5k 掉到 1.7k（依表2數值重繪）。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "T54-004",
+      "question": "光子已經數過了，怎麼確定後面多出來的那一下是「餘震」而不是新光子？",
+      "domain": "光學感測",
+      "mechanism_key": "sensing.sipm.afterpulse_time_constant_amplitude_measurement",
+      "answer_target": "同一實驗錄下 20 微秒長的波形，只挑主脈衝前 5 微秒都沒訊號的，量主脈衝之後第一個脈衝隔多久。隨機暗計數的間隔分布是一條指數曲線；扣掉它，多出來集中在很短時間內的就是後脈衝，時間常數約 6.8 奈秒，5 微秒內出現的機率不到 2%。後脈衝若在微單元還沒恢復時發生，振幅會小於一顆光子的高度，所以畫『振幅對延遲』的圖，就能把又早又矮的後脈衝和約一顆光子高、來得較晚的隨機暗計數分開。",
+      "scope": "特定元件；較新製程後脈衝更少；機率依過電壓而變。",
+      "source_ids": [
+        "T54-S003"
+      ],
+      "source_locator": "S003 §4.5.2 式(24)–(28)、Fig.18–20 圖說",
+      "premise_status": "screened",
+      "notes": "目標 G19『上一顆留下的尾巴』章的實測資料（E2273 只講機制）；機制不重計，只算實測與振幅判別 1 條。 原提案 F3-004。非作者覆核 V7（2026-11-11）照覆核意見改字後收；機制已由 E2273 承載，本核心只增實測數字與振幅判別。改掉『真的新光子』：全黑量測裡被分開的是隨機暗計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "餘震有指紋：來得太快、而且矮一截。",
+        "visual": "二維散點圖示意（延遲 vs 振幅）：矮、早的一群標『後脈衝』，1 光電子高的一群標『暗計數』。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T54-005",
+      "question": "單光子感測器的暗計數既然是雜訊，為什麼工程師不想把它降到零？",
+      "domain": "光學感測",
+      "mechanism_key": "sensing.sipm.dark_counts_used_for_in_situ_calibration",
+      "answer_target": "日內瓦團隊為伽瑪射線望遠鏡相機設計這顆 SiPM 時用的是當時的 LCT2 製程，暗計數略高；他們評估只要校準得當，不會明顯影響相機表現。而且他們說暗計數本身可以拿來在現場校準：暗計數若再降低，要累積到精確校準所需的統計量，花的時間反而更長。",
+      "scope": "作者對自己相機的判斷；不推論所有應用都歡迎暗計數。",
+      "source_ids": [
+        "T54-S003"
+      ],
+      "source_locator": "S003 §2 末段",
+      "premise_status": "screened",
+      "notes": "目標 G19 第二個轉折（雜訊也是工具）；原角色 turn。 原提案 F3-005。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；刪去原文沒有的機制句，只留作者自己的判斷與理由。只有一句話，算 0.5 條，是小轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多數人眼中的雜訊，被工程師拿來校準：降得太低，校準反而要等更久。",
+        "visual": "暗計數脈衝一個個落進計數桶，旁邊沙漏計時：計數越少、桶子裝滿要等越久。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "T54-006",
+      "question": "雪崩時晶片自己發的光，有多少會跑去叫醒隔壁？",
+      "domain": "光學感測",
+      "mechanism_key": "sensing.sipm.optical_crosstalk_photon_fraction",
+      "answer_target": "從串音機率對電壓的擬合，作者推得雪崩中每個穿過接面的載子約有 1.28×10⁻⁷ 的機率放出一顆能抵達鄰近微單元高電場區的光子；對照能量夠高的光子放出機率，約 2% 的放出光子真的到得了鄰居。串音主要由電洞觸發，暗計數則電子電洞都有。",
+      "scope": "模型擬合推得，不是直接量到光子路徑；特定元件。",
+      "source_ids": [
+        "T54-S003"
+      ],
+      "source_locator": "S003 §4.5.1 Fig.17 後段；§5.3 結論",
+      "premise_status": "screened",
+      "notes": "目標 G19『鄰居也跟著報到』章的量化；E2274 已有機制，只算 0.5–1 條；若片長超出 11 分鐘先刪此核心。 原提案 F3-006。非作者覆核 V7（2026-11-11）照原稿收；照原文；但是模型擬合值、偏技術，E2274 已有機制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "隔壁被叫醒的機率很小，但每秒雪崩夠多時就天天發生。",
+        "visual": "微單元格子：中央雪崩發出光點，少數抵達鄰格。",
+        "seconds": [
+          25,
+          40
+        ]
+      }
+    },
+    {
+      "id": "T54-007",
+      "question": "全世界的 IPv4 位址到底有多少，什麼時候發完的？",
+      "domain": "網路",
+      "mechanism_key": "network.ipv4.central_pool_exhaustion_2011",
+      "answer_target": "IPv4 位址總共約 43 億個。2011 年 2 月 3 日，管理全球位址的 IANA 把中央池最後五個區塊平分給五個區域網際網路註冊機構，中央池正式清空；之後由各區域機構再分給 ISP、大學、政府與企業，分完就沒有了。同一份新聞稿說下一代 IPv6 的位址池比 IPv4 大十億兆倍。",
+      "scope": "中央池清空不等於各區域當天就沒有位址。",
+      "source_ids": [
+        "T54-S004"
+      ],
+      "source_locator": "S004 第1–7段",
+      "premise_status": "screened",
+      "notes": "目標 G05 開場（審查列『IPv4 耗盡數據撐開場』）；原角色 hook。 原提案 F3-007。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；答案照原文；只刪 payoff 裡原文沒有的因果（耗盡→家裡只分到一個），那一步要由 T54-008／T54-009 交代。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "43 億看似很多，中央池卻在 2011 年就發完了。",
+        "visual": "倉庫最後五箱貨被分到五個地區（新聞稿自己的比喻），計數 4,300,000,000 歸零。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T54-008",
+      "question": "IPv4 都用完了，新網路還怎麼上線？",
+      "domain": "網路",
+      "mechanism_key": "network.ipv4.rir_runout_transfer_market_cgnat",
+      "answer_target": "區域網際網路註冊機構之一的 RIPE NCC 在 2019 年 11 月 25 日宣布 IPv4 用盡：從 2012 年進入最後一個 /8 區塊起，每家新網路只能拿到一小段（/22）；之後只剩倒閉或歸還而回收的位址，排進候補名單，而且只有從沒拿過它分配的 IPv4 的會員能排，每家一段 /24。它指出近年出現 IPv4 轉售市場，也越來越多用電信級 NAT（CGNAT），兩者都有成本與取捨，都沒解決『IPv4 不夠每個人用』的根本問題。",
+      "scope": "單一區域機構；不給全球 CGNAT 普及率。",
+      "source_ids": [
+        "T54-S005"
+      ],
+      "source_locator": "S005 全文第1–6段",
+      "premise_status": "screened",
+      "notes": "目標 G05 開場到 CGN 章的橋；與 T54-007 合用時只算 0.5–1 條。 原提案 F3-008。非作者覆核 V7（2026-11-11）照覆核意見改字後收；補正候補名單資格，刪去原文沒寫的『歐洲』。與 T54-007 重疊，合用只算 0.5 條，用作通往 CGN 章的橋。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "位址不夠時有兩條路：花錢買，或讓更多人擠同一個。",
+        "visual": "候補名單排隊畫面；兩條岔路標『轉售市場』『CGNAT』。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "T54-009",
+      "question": "你家路由器對外的那個 IP，會不會其實也和鄰居共用？",
+      "domain": "網路",
+      "mechanism_key": "network.nat.carrier_grade_nat_double_layer",
+      "answer_target": "IETF 的 RFC 6888 說，IPv4 短缺下預期會有更多 ISP 讓多個用戶共用一個公有 IPv4：每戶先拿到私有位址，由 ISP 網路裡的 NAT 轉換；家裡再有一台路由器做 NAT，就變成兩層 NAT。這台電信級 NAT 不歸用戶管理，用戶能控制的很少甚至沒有；『電信級』指的是位置而不是品質。因為用戶沒有自己的 IPv4，它會限制用戶之間與對外的連線，有些應用要大改，有些完全無法運作。",
+      "scope": "標準文件，作者聲明非 IETF 背書；不給部署比例；不談 IPv6 轉換。",
+      "source_ids": [
+        "T54-S006"
+      ],
+      "source_locator": "S006 §1 第1–4段；§2 CGN 定義",
+      "premise_status": "screened",
+      "notes": "目標 G05 新轉折章『外面那個 IP 也是共用的』；原角色 turn。 原提案 F3-009。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；兩處措辭貼回原文；CGN 普及的現況由 T54-008（RIPE 說越來越多用）支持，不由 RFC 6888 支持。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為全家共用一個 IP 已經很省，結果整條街也可能共用同一個。",
+        "visual": "家→家用 NAT→ISP 的 NAT→網際網路，兩道轉換門；鄰居家的線也接到第二道門。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "T54-010",
+      "question": "電信級 NAT 和家用路由器之間，用的是哪一段位址？",
+      "domain": "網路",
+      "mechanism_key": "network.nat.shared_address_space_100_64",
+      "answer_target": "RFC 6598 因 ISP 部署電信級 NAT，另外保留 100.64.0.0/10 這段『共享位址空間』，專門用來編號 ISP 的 NAT 與用戶家中設備之間的介面。它和家裡常見的私有位址一樣不在全球路由，但預定用在 ISP 網路裡；IESG 也在文件中註明，這類應急做法只能幫忙解決短期的營運問題，IETF 仍致力於部署 IPv6。",
+      "scope": "只規定用途；『路由器外側顯示 100.64 開頭就是在 CGN 後面』是推論，片中須說『可能』。",
+      "source_ids": [
+        "T54-S007"
+      ],
+      "source_locator": "S007 摘要、IESG 註、§1、§7",
+      "premise_status": "screened",
+      "notes": "目標 G05 CGN 章的具體線索；與 T54-009 合用算 1 條。 原提案 F3-010。非作者覆核 V7（2026-11-11）照覆核意見改字後收；措辭貼回 IESG Note。G05 最終組合不用（『100.64 開頭就在 CGN 後面』只能說可能，觀眾難自行驗證，且片長已足），留池備用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有一段位址專門用來接『你家的出口』和『ISP 的出口』。",
+        "visual": "路由器設定頁的外部位址欄（自製示意），標示 100.64.0.0/10 範圍。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "T54-011",
+      "question": "一段時間沒傳資料，路由器為什麼可能把回程的路忘了？",
+      "domain": "網路",
+      "mechanism_key": "network.nat.udp_mapping_timer_requirement",
+      "answer_target": "NAT 記住『哪個內部裝置用了哪個對外連接埠』的映射，沒有封包經過時只會保留一段時間，而且各家 NAT 的值差很大。RFC 4787 要求 UDP 映射至少保留 2 分鐘（知名埠上少數特定應用可更短），建議預設 5 分鐘以上，理由是免得應用太頻繁地送刷新封包；至於什麼封包能讓保留時間重算，各家也不同，有的看內往外、有的看外往內，規範要求至少內往外的封包要能延長。",
+      "scope": "規範下限，不是實測；家用設備可能不同。",
+      "source_ids": [
+        "T54-S008"
+      ],
+      "source_locator": "S008 §4.3 REQ-5 與其後兩段",
+      "premise_status": "screened",
+      "notes": "目標 G05『把回信走一遍』章改寫成轉折：回程靠映射，映射會過期；原角色 turn。取代審查指為回顧的 90 秒。 原提案 F3-011。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；改正刷新方向的敘述。這是 G05 回程那一章的真轉折（回程靠映射，映射會過期），取代被指為回顧的 90 秒。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回信能找到你，是因為門口有人記著；你太久不出聲，他就忘了。",
+        "visual": "NAT 表格中一列倒數計時，歸零後回程封包被擋在門外。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T54-012",
+      "question": "TCP 連線放著不動幾小時，NAT 規定至少要記多久？",
+      "domain": "網路",
+      "mechanism_key": "network.nat.tcp_established_idle_timeout",
+      "answer_target": "RFC 5382 規定，NAT 判斷不出 TCP 連線兩端是否還在時，可以把閒置的會話丟掉，但已建立的連線至少要閒置 2 小時 4 分鐘才可丟、半開或正在關閉的至少 4 分鐘；這樣應用照預設每 2 小時送一次保活封包，NAT 就知道連線還活著，多出的 4 分鐘留給還在路上的封包。",
+      "scope": "規範下限；實際設備不一定遵守。",
+      "source_ids": [
+        "T54-S009"
+      ],
+      "source_locator": "S009 REQ-5 與 Justification",
+      "premise_status": "screened",
+      "notes": "目標 G05 映射過期段的對照（UDP 2 分鐘 vs TCP 2 小時 4 分）；若片長超過 11 分鐘先刪。 原提案 F3-012。非作者覆核 V7（2026-11-11）照覆核意見改字後收；答案照原文；只改 payoff 的自算倍數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個門口，UDP 的規範下限是 2 分鐘，TCP 的已建立連線卻至少 2 小時 4 分。",
+        "visual": "兩個計時器並排：UDP 2:00、TCP 2:04:00。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "T54-013",
+      "question": "平均、標準差、相關都一樣的兩組資料，畫出來可以一組是恐龍、一組是靶心嗎？",
+      "domain": "統計與圖表",
+      "mechanism_key": "data.summary_stats.datasaurus_same_stats_different_shapes",
+      "answer_target": "Anscombe 1973 年提出四組各 11 點、平均、標準差和相關都相同但圖完全不同的資料，卻沒交代怎麼造的。Autodesk 研究員 2017 年寫了一個方法：每次把點挪一點點，只接受讓這些統計量到小數第二位都不變的移動，同時把點往指定形狀推。從一團普通的點雲出發跑 20 萬次（筆電約 10 分鐘），就做出星星、圓圈、靶心、直線、交叉等外形完全不同、摘要數字卻一樣的一組資料；換成從 Cairo 畫的『Datasaurus』恐龍散布圖出發，也能做出另一組和恐龍統計量相同、外形卻截然不同的資料。",
+      "scope": "演算法刻意生成的教學資料，不是自然量測；是二維散布圖，與本題一維包裹重量需說明是『同一道理的公開例』。",
+      "source_ids": [
+        "T54-S010"
+      ],
+      "source_locator": "S010 Introduction、Related Work、Method、Example 1（Fig.1、3、4）、Example 3（Fig.6）",
+      "premise_status": "screened",
+      "notes": "目標 G14 開場（審查列『缺真實可公開案例，例如 Anscombe 或 Datasaurus 原文』）；原角色 hook。 原提案 F3-013。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；核心本身有用，回應第一輪『缺真實可公開案例』；但答案把兩個例子的數字與形狀混在一起，『恐龍和星星同統計』原文不支持，必須改成兩組分開敘述。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "摘要數字一模一樣，圖卻可以是一隻恐龍，也可以是一個靶心。",
+        "visual": "依論文 Fig.6 重繪：恐龍點雲逐步變成靶心與交叉，旁邊五個統計量完全不動；星星那組另依 Fig.1 標明是另一組統計量。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T54-014",
+      "question": "改用中位數和盒形圖，就不會被騙了嗎？",
+      "domain": "統計與圖表",
+      "mechanism_key": "data.summary_stats.robust_stats_and_identical_boxplots",
+      "answer_target": "同一篇研究把要保持不變的統計量換成中位數、四分位距與等級相關，照樣做出外形截然不同的資料；一維例子裡，六組分布一組是常態、一組往左擠、一組往右擠、兩組擠到兩端、一組散在範圍內任意位置，畫出來的盒形圖卻完全一樣——第一、第三四分位數、中位數和鬚的位置都相同。",
+      "scope": "生成資料；盒形圖為 Tukey 型（鬚到 1.5 倍四分位距內最遠點）。",
+      "source_ids": [
+        "T54-S010"
+      ],
+      "source_locator": "S010 Example 2（Fig.5）、Example 6（Fig.9）",
+      "premise_status": "screened",
+      "notes": "目標 G14 第二章『最高最低一樣，大家仍能很不一樣』換成真實出處，並成為轉折：穩健統計量也會丟形狀；原角色 turn。 原提案 F3-014。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；只修六組分布的描述。這是 G14 的真轉折：改用中位數與盒形圖一樣會丟形狀，且 Fig.9 是一維，正好接包裹重量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換一種摘要只是換一種盲點：六座不同的山，盒形圖一模一樣。",
+        "visual": "依論文 Fig.9 重繪六個分布點條，下方同一個盒形圖重複六次。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T54-015",
+      "question": "1970 年代的統計學家，為什麼覺得「看圖」是作弊？",
+      "domain": "統計與圖表",
+      "mechanism_key": "data.graphs.anscombe_three_notions",
+      "answer_target": "Matejka 與 Fitzmaurice 轉述 Anscombe 1973 年〈統計分析中的圖〉開頭列的三個當時流行觀念：數值計算精確、圖很粗略；每種資料只有一套正確的計算；做複雜計算是美德，真的去看資料是作弊。Anscombe 用四重奏反駁這些觀念。",
+      "scope": "轉述，Anscombe 原文（JSTOR）未讀；片中標『據後人轉述』。",
+      "source_ids": [
+        "T54-S010"
+      ],
+      "source_locator": "S010 Related Work 第1段",
+      "premise_status": "screened",
+      "notes": "目標 G14 開場到收尾的回收句；只算 0.5 條。 原提案 F3-015。非作者覆核 V7（2026-11-11）照原稿收；照原文轉述，範圍已要求片中標『據後人轉述』。只算 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看圖曾被當作弊，四組小資料把這個想法翻過來。",
+        "visual": "三行舊觀念字卡逐行被劃掉（本系列不放字卡則改旁白＋插圖）。",
+        "seconds": [
+          20,
+          30
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "T54-NA001",
+      "question": "手機的 ToF 測距模組（ST FlightSense）用 SPAD 陣列怎麼量距離？",
+      "existing_ids": [
+        "T54-001"
+      ],
+      "source_ids": [],
+      "reason": "st.com 資料表與產品頁對 curl 斷線、WebFetch 回 503，未讀；改用 Sony IMX611 官方新聞稿作日常入口。 原提案 F3-NA002。",
+      "reentry_condition": "可讀到 ST 官方資料表時再補第二個手機例。",
+      "reading_status": "未讀（連線被拒／503）"
+    },
+    {
+      "id": "T54-NA002",
+      "question": "iPad／iPhone 的 LiDAR 是不是 Sony 的 SPAD 晶片？",
+      "existing_ids": [
+        "T54-002"
+      ],
+      "source_ids": [],
+      "reason": "只有 TechInsights、Yole 等付費拆解報告與部落格轉述，非官方或原研究，不採；T54-002 範圍已註明不可說 iPad 用 SPAD。 原提案 F3-NA003。",
+      "reentry_condition": "Apple 或供應商官方文件明示。",
+      "reading_status": "只見搜尋摘要"
+    },
+    {
+      "id": "T54-NA003",
+      "question": "Sony 車用 SPAD LiDAR 感測器 IMX459 能量多遠？",
+      "existing_ids": [
+        "T54-001"
+      ],
+      "source_ids": [],
+      "reason": "車用光達不是觀眾日常入口，且只讀到轉載與搜尋摘要；不補。 原提案 F3-NA004。",
+      "reentry_condition": "若 G19 改走車用情境再讀 Sony 原稿。",
+      "reading_status": "只見搜尋摘要"
+    }
+  ]
+}
