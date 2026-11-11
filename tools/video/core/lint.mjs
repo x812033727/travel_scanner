@@ -5,7 +5,7 @@
 // passes one route's check does not fail the other's.
 import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
-import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
+import { curioProblems, curioWarnings, isCurio, pacingWarnings } from "./curio.mjs";
 import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isNarratedExplainer, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { DEFAULT_CADENCE, isNarrated, isStorySeries, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
@@ -570,6 +570,7 @@ export function lintVideo(doc, context = {}) {
   // word, illustrations for most of the body, no long run of cards (core/curio.mjs).
   for (const problem of curioProblems(doc)) error(problem.path, problem.message);
   for (const problem of curioWarnings(doc)) warn(problem.path, problem.message);
+  for (const problem of pacingWarnings(doc)) warn(problem.path, problem.message);
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);
