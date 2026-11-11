@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { ROOT, DIR, hash, intake, assemble, loadDraft, buildPool, urlsIn, normalizeUrl, linkStatuses, validateEditorial } from './core.mjs';
+import { ROOT, DIR, hash, intake, assemble, loadDraft, buildPool, urlsIn, normalizeUrl, linkStatuses, validateEditorial, topicCheckLimits, splitLocator, SCOPE_NOT_SCOPED } from './core.mjs';
+import { renderQuestions, renderThemes } from './render.mjs';
 import { validateThemes, renderHtml, renderDedup, renderProducible, producibleData } from './render.mjs';
 import { writeBaseline, readBaseline, validateBaseline } from './history.mjs';
 import { openStore, ingest, search, lookup } from './store.mjs';
@@ -235,6 +236,78 @@ test('the producible list keeps only fully selected themes and lists the other s
   const html = renderProducible(pool, themes);
   assert.equal(html.match(/<\/script>/g).length, 2);
   assert.match(html, /^<!doctype html>/);
+});
+
+test('a theme the material review holds back (reserve or merge) is valid but never on the producible list', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '1931 年貝奇莫號在北極冰原漂了幾十年？'), candidate('N102', 'Carroll Deering 號擱淺時船員去了哪裡？'), candidate('N103', '惡魔島三名逃犯的木筏後來在哪裡找到？'), candidate('N104', '佛蘭南群島燈塔看守人消失前寫了什麼？')] };
+  const pool = buildPool(fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 4, ids: ['N101', 'N102', 'N103', 'N104'] } }));
+  const review = { reviewed_on: '2026-11-11', review: 'reviews/material-20261111.json' };
+  const themes = { episodes: [
+    theme('T01', ['N101'], 10, { material: { verdict: 'ready', ...review } }),
+    theme('T02', ['N102'], 10, { material: { verdict: 'reserve', missing: '缺第二個升級關卡', ...review } }),
+    theme('T03', ['N103'], 10, { material: { verdict: 'merge', missing: '只有一個轉折', merge_with: ['N104'], ...review } }),
+    theme('T04', ['N104'], 10),
+  ] };
+  validateThemes(themes, pool);
+  assert.deepEqual(producibleData(pool, themes).themes.map((episode) => episode.id), ['T01', 'T04'], 'ready and never-reviewed themes stay; reserve and merge wait');
+  const broken = (material) => ({ episodes: [theme('T01', ['N101'], 10, { material })] });
+  assert.throws(() => validateThemes(broken({ verdict: 'maybe', ...review }), pool), /material needs a verdict/);
+  assert.throws(() => validateThemes(broken({ verdict: 'reserve', ...review }), pool), /says what is missing/);
+  assert.throws(() => validateThemes(broken({ verdict: 'merge', missing: 'x', ...review }), pool), /names what it merges with/);
+});
+
+test('a long finding is kept whole: answer_target is not cut at 800 characters', () => {
+  const finding = `${'紀錄'.repeat(450)}最後一句是結論。`;
+  const root = fixture({ topics: [topic('M10', '馬爾法的燈', 'checked', { finding })], checks: { M10: checkFile(['https://example.org/marfa']) } });
+  const row = intake(root).records.find((record) => record.id === 'M10');
+  assert.ok(finding.length > 800);
+  assert.equal(row.answer_target, finding);
+  assert.match(row.answer_target, /最後一句是結論。$/);
+});
+
+test('legacy scope comes from the limits a topic-check states, or is marked plainly as not yet scoped', () => {
+  const limited = `${checkFile(['https://example.org/a'])}\n## 來源不一致與不能講的事\n\n- 年份兩說。\n- **不能講**：「解開了」；「第一篇」。\n\n## 給撰稿的提醒\n\n- **不說滿**：\n  - 不說「二十年後拆掉」。\n  - 不說「續約七十年」。\n- 其他提醒。\n`;
+  const silent = checkFile(['https://example.org/b']);
+  const root = fixture({ topics: [topic('M10', '馬爾法的燈', 'checked', { risk: '在世人物：不畫臉' }), topic('M11', '沒寫限制的題', 'checked'), topic('M12', '沒查過的題')], checks: { M10: limited, M11: silent } });
+  const rows = new Map(intake(root).records.map((record) => [record.id, record]));
+  const m10 = rows.get('M10');
+  assert.equal(m10.scope_source, `${BANK}/topic-checks/M10.md`);
+  assert.match(m10.scope, /不能講：「解開了」；「第一篇」/);
+  assert.match(m10.scope, /不說滿：不說「二十年後拆掉」。；不說「續約七十年」。/);
+  assert.match(m10.scope, /風險：在世人物：不畫臉$/);
+  assert.doesNotMatch(m10.scope, /待查|年份兩說|其他提醒/);
+  assert.equal(m10.scope_status, undefined);
+  for (const id of ['M11', 'M12']) {
+    const row = rows.get(id);
+    assert.equal(row.scope_status, 'not_yet_scoped', id);
+    assert.ok(row.scope.startsWith(SCOPE_NOT_SCOPED), id);
+    assert.deepEqual(row.card_facts_to_verify, ['年份']);
+    assert.doesNotMatch(row.scope, /待查：/);
+  }
+  assert.deepEqual(topicCheckLimits('## 流傳但查不到（旁白標成流傳）\n\n- 刻在墓裡：沒有。\n- 停電：只有據說。\n\n## 下一節\n- 不算\n'), ['流傳但查不到：刻在墓裡：沒有。；停電：只有據說。']);
+  assert.deepEqual(topicCheckLimits(silent), []);
+  // The marker reaches the views reviewers read.
+  const pool = assemble(intake(root));
+  assert.match(renderQuestions(pool), /範圍未界定/);
+  assert.match(renderThemes({ episodes: [theme('T01', ['M11'])] }, pool), /M11（[^）]*範圍未界定）/);
+  // Screening research replaces the marker with its own scope.
+  const batch = { batch_id: 'legacy1', sources: [source('S1', 'https://example.org/one')], candidates: [], legacy_updates: [{ id: 'M12', answer_target: '查到的紀錄', scope: '不主張的事', source_ids: ['S1'], source_locator: 'S1 第一段', premise_status: 'screened', editorial: { role: 'episode_core', payoff: 'a', visual: 'b', minutes: [8, 10] } }] };
+  write(root, `${DIR}/batches/wave1.json`, batch);
+  const screened = intake(root).records.find((record) => record.id === 'M12');
+  assert.equal(screened.scope, '不主張的事');
+  assert.equal(screened.scope_status, undefined);
+});
+
+test('a batch source_locator is split so each source reference keeps its own locator', () => {
+  const split = splitLocator('A1-S001：1804 圖會；寛政七年；A1-S002：1800 南畝；S003、S004：兩份報紙', ['A1-S001', 'A1-S002', 'A1-S003', 'A1-S004', 'A1-S005']);
+  assert.equal(split.get('A1-S001'), 'A1-S001：1804 圖會；寛政七年');
+  assert.equal(split.get('A1-S002'), 'A1-S002：1800 南畝');
+  assert.equal(split.get('A1-S003'), 'S003、S004：兩份報紙');
+  assert.equal(split.get('A1-S004'), 'S003、S004：兩份報紙');
+  assert.equal(split.get('A1-S005'), 'A1-S001：1804 圖會；寛政七年；A1-S002：1800 南畝；S003、S004：兩份報紙', 'an unnamed source keeps the whole string');
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '橡樹島錢坑從哪年開始挖？')] };
+  const row = intake(fixture({ batch })).records.find((record) => record.id === 'N101');
+  assert.deepEqual(row.source_refs.map((ref) => ref.locator), ['S1 第一段', 'S2 第二段']);
 });
 
 test('the committed pool export is internally consistent', { skip: !fs.existsSync(path.join(ROOT, DIR, 'manifest.json')) }, () => {

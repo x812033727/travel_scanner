@@ -69,6 +69,11 @@ test("every Mokaair link carries the video's UTM once, and the same page is link
   assert.equal(urlKey("https://www.ntm.gov.tw/cp.aspx?Create=1&n=5444"), "https://www.ntm.gov.tw/cp.aspx?Create=1&n=5444");
   assert.equal(urlKey("nope"), "nope");
   assert.equal(urlKey("nope/?utm_source=x&a=1#f"), "nope?a=1");
+  const file = "https://github.com/o/r/blob/abc/74723-0.txt";
+  assert.notEqual(urlKey(`${file}#L6523-L6581`), urlKey(`${file}#L7940-L8780`), "two passages of one file are two sources");
+  assert.equal(urlKey(`${file}?utm_source=youtube#L12`), `${file}#L12`, "a line anchor is kept, the UTM is not");
+  assert.equal(urlKey(`${file}#readme`), file, "any other fragment is the same page");
+  assert.equal(unlinkedSources([{ title: "a", url: file }, { title: "b", url: `${file}#L1-L9` }, { title: "c", url: `${file}#L20-L30` }]).length, 3, "the whole file and two passages are all listed");
   const article = "https://mokaair.com/zh-TW/life/x?utm_source=youtube&utm_medium=video&utm_campaign=c";
   const body = "https://mokaair.com/zh-TW/life/x?utm_source=youtube\n鉤子。\n給誰看。\n\n完整文章：https://mokaair.com/zh-TW/life/x\n索引：https://mokaair.com/zh-TW/life/ai-terms-index\n🔗 https://mokaair.com/zh-TW/life/ai-terms-index/\n結尾。";
   assert.deepEqual(dedupeLinks(body, article), { body: "鉤子。\n給誰看。\n\n索引：https://mokaair.com/zh-TW/life/ai-terms-index\n結尾。", mentioned: false }, "link-only lines of the article and of a page already linked are dropped");

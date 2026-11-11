@@ -10,6 +10,7 @@ from sqlalchemy import func, select, text, update
 from sqlalchemy.exc import DBAPIError
 
 import app.trips.router as trips_router_module
+import app.trips.search_criteria as search_criteria_module
 from app.ai.itinerary import (
     AIItineraryPlanner,
     AIItineraryRequest,
@@ -2360,6 +2361,14 @@ async def _start_on_fresh_connections() -> None:
     get_redis.cache_clear()
 
 
+class _FrozenBeforeTrip(datetime):
+    """`datetime` whose `now()` is 2026-11-01 09:00, before every fixture trip."""
+
+    @classmethod
+    def now(cls, tz=None):  # type: ignore[override]
+        return datetime(2026, 11, 1, 9, 0, tzinfo=tz or UTC)
+
+
 async def _blank_trip(
     client: AsyncClient, headers: dict[str, str], **overrides: object
 ) -> dict[str, object]:
@@ -2382,6 +2391,9 @@ async def _blank_trip(
 async def test_search_from_trip(monkeypatch: pytest.MonkeyPatch) -> None:
     """`POST /searches` with a `trip_id` searches what the trip says, for its owner only."""
     monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *a, **k: None)
+    # The trip departs 2026-11-10: pin "today" before it so trip_dates_past
+    # never depends on the real date.
+    monkeypatch.setattr(search_criteria_module, "datetime", _FrozenBeforeTrip)
     await _start_on_fresh_connections()
     owner = await _signed_in_headers("search-from-trip-owner")
     other = await _signed_in_headers("search-from-trip-other")
