@@ -196,7 +196,7 @@ kid("kid-clock-q", K("holding a small phone up close and peering at it with narr
     k("我的手機裡，", "懷疑"), k("有原子鐘嗎？", "句尾上揚", "S:clock"))
 chief("chief-watch-fast", C("tapping " + WATCH + " on her wrist with a playful smile"),
       c("沒有，手機裡沒有那麼準的鐘。", "接住上一句", "P:clock"),
-      c("回到公園。假設你的錶快了一秒，"))
+      c("回到公園。假設你的錶慢了一秒，"))
 obj("wristwatch", "Close-up of a child's wrist wearing " + WATCH + ", resting on a wooden park bench in sunshine",
     c("每一聲哨子，你都以為它走得比較短，"),
     c("每個朋友，聽起來都近了三百多公尺。"))
@@ -204,11 +204,11 @@ kid("kid-all-close", K("looking around in confusion with both hands raised, a sm
     k("大家一起變近？", "困惑"), k("那我到底在哪？"))
 chief("chief-no-match", C("spreading her hands with an honest puzzled smile"),
       c("你找不到一個點，跟每個朋友的距離都對得上。"),
-      c("所以多聽第四個朋友，"),
-      c("把你的錶快了多少，也當成一個要算的答案。", None, "P:four"))
+      c("所以要多聽一個朋友，"),
+      c("把你的錶差了多少，也當成一個要算的答案。", None, "P:four"))
 chief("chief-four-unknowns", C("counting on her fingers with a thoughtful smile", close=True),
-      c("東西、南北、高低，再加上錶差多少，"),
-      c("四個不知道的數，要四個朋友才解得出來。"))
+      c("換回衛星：東西、南北、高低，再加上錶差多少，"),
+      c("四個不知道的數，要四顆衛星才解得出來。"))
 kid("kid-four-got", K("clapping her hands together with a bright realising grin", where=PARK),
     k("原來第四顆衛星，", "恍然大悟"), k("是來幫手機對錶的！", None, "P:three"))
 chief("chief-practice", C("giving a small thumbs-up with a pleased smile", close=True),
@@ -219,7 +219,7 @@ chief("chief-best-fit", C("bringing both open hands slowly together in front of 
 kid("kid-sky-q", K("tilting her head back and looking up at the open sky with a hopeful face", where=PARK),
     k("天上隨時都有，", "追問"), k("四顆給我聽嗎？", "句尾上揚", "S:sky"))
 obj("satellite-sky-wide", "Wide shot of a bright blue sky over a sunny green park, one cute cartoon satellite with golden solar wings floating high among soft white clouds",
-    c("美國政府的 GPS 網站說，衛星排在二十四個固定的位置，"),
+    c("美國政府的 GPS 網站說，衛星的基本排法有二十四個位置，"),
     c("地球上幾乎任何地方，都看得到至少四顆。", None, "P:sky"))
 kid("kid-geometry-q", K("holding up four fingers with a thinking face", close=True, where=PARK),
     k("那同樣是四顆，", "追問"), k("每次都一樣準嗎？", "句尾上揚", "S:geometry"))
@@ -250,7 +250,7 @@ kid("kid-then-why", K("pointing across a sunny street with a frustrated frown", 
     k("那我的手機，", "不服氣"), k("怎麼會差到對街？", "句尾上揚"))
 chief("chief-ure-not", C("holding up one finger with an honest careful smile", close=True),
       c("官方特別說明：訊號的誤差，不等於你手上的誤差。", None, "P:signal"),
-      c("還要加上衛星的位置、遮擋、大氣，跟手機本身。"))
+      c("還要看衛星排得好不好、有沒有被擋、大氣，跟手機本身。"))
 chief("chief-mooc", C("holding a small phone out towards the viewer with a friendly smile"),
       c("史丹佛的一門線上課，讓上千個人，在一百個國家用手機量。"),
       c("開闊的地方，平均差大約五公尺。"))
@@ -265,7 +265,7 @@ obj("glass-wall", "Close-up of a tall smooth glass building wall reflecting the 
     c("回到公園：哨聲撞到一面牆，繞了遠路才到你耳朵，"),
     c("你就以為那個朋友比較遠。這叫多路徑。", None, "P:echo"))
 chief("chief-echo-where", C("holding a small phone close to a pale wall with a thoughtful smile"),
-      c("教材說，天線越靠近會反射的東西，越嚴重；"),
+      c("教材說，主要是因為天線太靠近會反射的東西；"),
       c("從很低的地方斜斜進來的衛星，影響最大。"))
 kid("kid-iono-q", K("pointing high up at the sky with a curious face", where=PARK),
     k("那天上那段路呢？", "追問"), k("也會走歪嗎？", "句尾上揚", "S:iono"))
@@ -288,7 +288,8 @@ chief("chief-sa", C("shaking her head with a calm reassuring smile", close=True)
       c("美國政府的 GPS 網站回答：沒有。", None, "P:military"),
       c("以前曾經故意讓民用的變不準，二〇〇〇年就停了。"))
 chief("chief-augment", C("holding a small phone up beside her face with a proud bright smile"),
-      c("而且民用的加上增強系統，甚至可以比軍用的還準。"))
+      c("GPS 以外，另外幫忙提高準確度的，叫增強系統；"),
+      c("民用的加上它，甚至可以比軍用的還準。"))
 kid("kid-rel-q", K("holding " + WATCH + " up to her ear with a curious face", close=True, where=PARK),
     k("那衛星的原子鐘，", "追問"), k("自己會不會不準？", "句尾上揚", "S:relativity"))
 chief("chief-rel", C("holding a small golden pocket watch with a smooth plain face up beside her face, a curious smile"),
@@ -329,10 +330,10 @@ chief("chief-36", C("tapping " + WATCH + " on her wrist and waiting patiently wi
 kid("kid-36", K("walking briskly in mid-step with a small phone in her hand and a cheeky grin", where=STREET),
     k("三十六秒，", "笑"), k("我都走到對街了！"))
 chief("chief-starts", C("nodding with an amused smile, one hand open", close=True),
-      c("所以接收機分冷、暖、熱三種開機。"),
-      c("什麼都不知道的時候，要把整片天空找一遍；"))
+      c("所以接收機開機有分冷、熱。"),
+      c("什麼都不知道，叫冷開機，要把整片天空找一遍；"))
 chief("chief-canyon", C("holding a small phone up and looking at it with a patient smile"),
-      c("手上已經有精確的衛星位置，就不用再等廣播。"),
+      c("手上已經有精確的衛星位置，叫熱開機，不用再等廣播。"),
       c("在大樓中間，訊號斷斷續續，等待還會更久。", None, "P:slow"))
 kid("kid-assist-q", K("holding a small phone up proudly with a bright grin", where=CORNER),
     k("可是我的手機，", "不服氣"), k("一打開就有藍點耶！", None, "S:assist"))
@@ -367,10 +368,10 @@ chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open
       c("你自己說說看，從那個哨子遊戲說起。", "笑"), chapter="走到公園，小問想通了")
 kid("kid-got-it", K("holding " + WHISTLE + " up proudly with a big confident grin", where=PARK),
     k("原來如此！", "恍然大悟"), k("衛星像吹哨子的朋友，", "篤定"),
-    k("手機聽訊號走了多久，"), k("就算出離每顆多遠。", "篤定", "P:main"))
+    k("手機聽訊號走了多久，"), k("再多聽一顆來對錶，"), k("就知道我在哪裡！", "篤定", "P:main"))
 kid("kid-got-it-2", K("pointing back towards tall glass buildings in the distance with a knowing grin", where=PARK),
     k("在大樓中間，衛星被擋、", "篤定"), k("訊號又會反彈，"),
-    k("時間一算錯一點點，"), k("藍點就跳到對街了！", "篤定", "P:jump"))
+    k("時間多算了一點點，"), k("藍點就跳到對街了！", "篤定", "P:jump"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好。我覺得最神奇的是：", "笑"),
       c("你手上這支手機，每次定位，都在幫自己對錶。"))
