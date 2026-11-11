@@ -1,0 +1,1877 @@
+{
+  "schema_version": 1,
+  "slug": "daily-ai-20261110",
+  "format": "slides",
+  "category": "ai-news",
+  "theme": "paper",
+  "target_minutes": [
+    12,
+    15
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像脫口秀主持人跟搭檔 Kai 聊昨天的新聞：冷面、毒舌，用最平靜的口氣講最荒謬的事；事實句穩、清楚，笑點句短、冷淡、慢半拍，講完留一拍給 Kai；日期、公司名與數字前停半拍；「據報導」「他說」「他自己的說法」語氣保留，引述川普的話平穩照念、不模仿、不加戲；主菜開頭那通電話的場景放慢、靠近；「我的看法是」放穩，「我不知道」「我不確定」放輕；最後「訊號收到」乾脆收。"
+  },
+  "host": {
+    "name": "Sola"
+  },
+  "cohost": {
+    "id": "kai",
+    "name": "Kai",
+    "voice": {
+      "provider": "gemini",
+      "name": "Puck",
+      "style": "台灣國語，年輕男生，好奇、反應大、有點吐槽，常想歪，像跟朋友聊天"
+    }
+  },
+  "subtitles": {
+    "burn_in": false,
+    "speaker_prefix": false
+  },
+  "music": {
+    "track": "techsignal-bed.mp3",
+    "sha256": "9bc49615189bc364a010da6532f4df837b1378ebb1690e4071e7f28e7acf4c76"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Tech Signal 11/10｜Trump on AI safety and a jail warning",
+    "description": "兩位主持人皆為 AI 合成語音、配樂為 AI 生成，內容依官方來源與媒體報導整理；節目文稿由 Claude 撰寫。\n\nMokaair 文章：\nhttps://mokaair.com/zh-TW/life/ai-news-trump-60-minutes-ai-20261109\nhttps://mokaair.com/zh-TW/life/ai-news-apple-intelligence-usage-packs-20261109\nhttps://mokaair.com/zh-TW/life/ai-news-used-jet-engine-turbines-20261109\nhttps://mokaair.com/zh-TW/life/crypto-news-nyse-avalanche-settlement-20261109\n\n本集引述的川普發言，依 The Verge 對《60 分鐘》專訪的報導；司法部警告 AI 公司負責人一事是他本人的說法，報導中沒有第二個來源，也沒有司法部或當事公司的回應。Follow the Money 單元只說明清算、結算與代幣化是什麼，不談價格與漲跌，不構成投資建議，也不推薦任何代幣、平台或股票。",
+    "tags": [
+      "Tech Signal",
+      "科技訊號",
+      "AI 安全",
+      "川普",
+      "60 Minutes",
+      "Apple",
+      "資料中心",
+      "NYSE",
+      "Avalanche",
+      "代幣化"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "Jail **threat**?",
+      "sub": "Trump on AI safety, 60 Minutes",
+      "layout": "ai"
+    }
+  },
+  "sources": [
+    {
+      "title": "The Verge: Trump's 60 Minutes interview on AI safety",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1029802/trump-60-minutes-ai",
+      "checked_on": "2026-11-09"
+    },
+    {
+      "title": "The Verge: Apple's Intelligence Usage Packs",
+      "url": "https://www.theverge.com/tech/1030084/apple-intelligence-usage-packs-ai-features-creator-studio-logic-pro",
+      "checked_on": "2026-11-09"
+    },
+    {
+      "title": "Decrypt: AI data centers buy used jet engines",
+      "url": "https://decrypt.co/382890/ai-data-centers-used-jet-engines-power-turbines",
+      "checked_on": "2026-11-09"
+    },
+    {
+      "title": "Decrypt: NYSE taps Avalanche for settlement",
+      "url": "https://decrypt.co/382833/nyse-avalanche-settle-tokenized-stock-platform",
+      "checked_on": "2026-11-09"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "q001",
+      "payoff": "o001",
+      "what": "保護我們還是嚇跑創新：開場問，片尾兩邊各答"
+    },
+    {
+      "setup": "j007",
+      "payoff": "s004",
+      "what": "新渦輪機小一下訂、小六到貨，片尾回扣"
+    },
+    {
+      "setup": "a015",
+      "payoff": "s005",
+      "what": "Kai 的固定梗「要不要換手機」：先交代，再問，片尾回扣"
+    },
+    {
+      "setup": "m021",
+      "payoff": "m063",
+      "what": "Kai 站產業這邊，到最後都沒改"
+    },
+    {
+      "setup": "a001",
+      "payoff": "f031",
+      "what": "Apple 在 Monologue 與錢的單元各出場一次"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "intro",
+      "template": "title",
+      "chapter": "Monologue：AI 加量包與二手噴射引擎",
+      "data": {
+        "tag": "Tech Signal",
+        "title": "Tech Signal\n**Tuesday, Nov 10**",
+        "subtitle": "The signal in today's tech news",
+        "key": "Tech Signal · Nov 10"
+      },
+      "lines": [
+        {
+          "id": "d001",
+          "text": "今天是 11 月 10 日，星期二。",
+          "emotion": "明亮、穩，像每天固定打招呼"
+        },
+        {
+          "id": "d002",
+          "text": "這裡是 Tech Signal 科技訊號，從一堆雜訊裡，挑出今天真正重要的訊號。",
+          "emotion": "固定開場句，輕快不趕"
+        }
+      ]
+    },
+    {
+      "id": "mo-hi",
+      "template": "big",
+      "data": {
+        "kicker": "Hello",
+        "text": "Sola and Kai,\n**two AI hosts**",
+        "key": "Hosted by Sola and Kai"
+      },
+      "lines": [
+        {
+          "id": "hi01",
+          "text": "我是 Sola。"
+        },
+        {
+          "id": "hi02",
+          "speaker": "kai",
+          "text": "我是 Kai。",
+          "emotion": "輕鬆、帶笑"
+        }
+      ]
+    },
+    {
+      "id": "mo-topic",
+      "template": "big",
+      "data": {
+        "kicker": "Today's main course",
+        "text": "Trump on AI safety:\n**a jail warning**",
+        "key": "Today: Trump, AI safety"
+      },
+      "lines": [
+        {
+          "id": "hk01",
+          "text": "今天的主菜：川普上了美國電視新聞節目《60 分鐘》，談 AI 安全。",
+          "emotion": "清楚、穩，一句講完"
+        },
+        {
+          "id": "hk02",
+          "text": "他說，政府警告過一位 AI 公司老闆「準備坐牢」。"
+        }
+      ]
+    },
+    {
+      "id": "mo-q",
+      "template": "big",
+      "data": {
+        "kicker": "Today's question",
+        "text": "Protecting us,\n**or scaring builders?**",
+        "key": "Protect us, or scare AI?"
+      },
+      "lines": [
+        {
+          "id": "q001",
+          "speaker": "kai",
+          "text": "如果 AI 公司做錯事，政府就打電話叫老闆準備坐牢，這是在保護我們，還是嚇跑創新？",
+          "emotion": "替觀眾追問，問句停在半空"
+        },
+        {
+          "id": "q002",
+          "text": "這題，等一下主菜吵給你聽。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "mo-day",
+      "template": "big",
+      "data": {
+        "kicker": "Yesterday, Nov 9",
+        "text": "Two quick ones\n**first**",
+        "key": "First, two headlines"
+      },
+      "lines": [
+        {
+          "id": "q003",
+          "text": "先看昨天，11 月 9 日的另外兩則新聞。",
+          "emotion": "切換段落，輕快"
+        }
+      ]
+    },
+    {
+      "id": "ap-what",
+      "template": "big",
+      "data": {
+        "kicker": "Apple · via The Verge",
+        "text": "Logic Pro sells\n**more AI usage**",
+        "key": "Apple sells extra AI use"
+      },
+      "lines": [
+        {
+          "id": "a001",
+          "text": "第一則，據 The Verge，Apple 在做音樂的軟體 Logic Pro 裡，開始賣 AI 功能的額外用量。"
+        }
+      ]
+    },
+    {
+      "id": "ap-first",
+      "template": "big",
+      "data": {
+        "kicker": "Why it matters",
+        "text": "AI has a cap.\n**Pay to go past it**",
+        "key": "Hit the cap? Pay more"
+      },
+      "lines": [
+        {
+          "id": "a002",
+          "text": "這代表 Apple 有些 AI 功能有用量上限，用完了，可以付錢加買來繼續用。"
+        },
+        {
+          "id": "a004",
+          "speaker": "kai",
+          "text": "我可以接受，至少還能自己決定要不要加買。",
+          "emotion": "認真，有自己的意見"
+        }
+      ]
+    },
+    {
+      "id": "ap-price",
+      "template": "stats",
+      "data": {
+        "title": "Intelligence Usage Pack",
+        "stats": [
+          {
+            "value": "$49.99",
+            "label": "One-time purchase"
+          },
+          {
+            "value": "12 mo",
+            "label": "Then it expires",
+            "note": "unused use rolls over"
+          }
+        ],
+        "source": "The Verge, Nov 9, 2026",
+        "keys": [
+          "$49.99, one time",
+          "Expires after 12 months"
+        ]
+      },
+      "lines": [
+        {
+          "id": "a005",
+          "text": "Apple 叫它 Intelligence Usage Pack，單次購買，49.99 美元。"
+        },
+        {
+          "id": "a006",
+          "text": "沒用完的額度會每個月往下滾，可是買了 12 個月後就過期。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ap-why",
+      "template": "big",
+      "data": {
+        "kicker": "Why a limit",
+        "text": "Cloud models from\n**OpenAI, Gemini**",
+        "key": "It runs on cloud models"
+      },
+      "lines": [
+        {
+          "id": "a007",
+          "text": "有上限，是因為有些功能交給 OpenAI 或 Google Gemini 的雲端模型來算。"
+        },
+        {
+          "id": "a008",
+          "text": "雲端模型，就是在遠端伺服器上跑的 AI。"
+        }
+      ]
+    },
+    {
+      "id": "ap-family",
+      "template": "big",
+      "data": {
+        "kicker": "The fine print",
+        "text": "Your account only.\n**No Family Sharing**",
+        "key": "No Family Sharing"
+      },
+      "lines": [
+        {
+          "id": "a009",
+          "text": "而且用量包只限買的那個 Apple 帳號用，不支援家人共享。"
+        },
+        {
+          "id": "a010",
+          "speaker": "kai",
+          "text": "一家人什麼都能分，就這包 AI 不能分？",
+          "emotion": "誇張地抗議"
+        }
+      ]
+    },
+    {
+      "id": "ap-complex",
+      "template": "big",
+      "data": {
+        "kicker": "Apple says",
+        "text": "The limit depends on\n**how complex you chat**",
+        "key": "Complex chats use more"
+      },
+      "lines": [
+        {
+          "id": "a011",
+          "text": "Apple 說，用量上限會受你跟 Logic Pro 內建 AI 助理對話的複雜度影響。"
+        },
+        {
+          "id": "a012",
+          "text": "打個比方，就像手機流量，聊得越複雜，掉得越快。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "ap-gag",
+      "template": "big",
+      "data": {
+        "kicker": "Kai's old question",
+        "text": "New phone?\n**No. It's the AI quota**",
+        "key": "Not your phone this time"
+      },
+      "lines": [
+        {
+          "id": "a015",
+          "speaker": "kai",
+          "text": "我有一個每集都要問的老問題：所以我要不要換手機？",
+          "emotion": "固定梗，認真地問"
+        },
+        {
+          "id": "a016",
+          "text": "不用，這次要你掏錢的不是手機，是 AI 的額度。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "je-what",
+      "template": "big",
+      "data": {
+        "kicker": "Decrypt, Nov 9",
+        "text": "AI data centers want\n**used jet engines**",
+        "key": "Used jet engines wanted"
+      },
+      "lines": [
+        {
+          "id": "j001",
+          "text": "第二則，據 Decrypt，蓋 AI 資料中心的公司，正在找二手發電渦輪機，連退役噴射引擎都找。"
+        }
+      ]
+    },
+    {
+      "id": "je-term",
+      "template": "bullets",
+      "data": {
+        "title": "The short version",
+        "items": [
+          "New gear: a long wait",
+          "Gas turbine: gas in, power out"
+        ],
+        "source": "Decrypt, Nov 9, 2026",
+        "keys": [
+          "New power gear is slow",
+          "Turbine: burns gas"
+        ]
+      },
+      "lines": [
+        {
+          "id": "j002",
+          "text": "原因很簡單，資料中心要電，可是新的發電設備要等太久。"
+        },
+        {
+          "id": "j003",
+          "text": "燃氣渦輪機，就是燒天然氣，帶動發電機發電的機器。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "je-wait",
+      "template": "stats",
+      "data": {
+        "title": "New gas turbines, US",
+        "stats": [
+          {
+            "value": "6 yrs",
+            "label": "Average wait",
+            "note": "per Wood Mackenzie"
+          }
+        ],
+        "source": "Decrypt, Nov 9, 2026",
+        "key": "A six-year wait"
+      },
+      "lines": [
+        {
+          "id": "j006",
+          "text": "Decrypt 引述一家能源顧問公司說，在美國，新的燃氣渦輪機平均要等六年才交貨。"
+        }
+      ]
+    },
+    {
+      "id": "je-joke",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's analogy",
+        "text": "Ordered in grade one,\n**here by graduation**",
+        "key": "Grade one to graduation"
+      },
+      "lines": [
+        {
+          "id": "j007",
+          "text": "打個比方，就像小一的時候下訂，小六畢業才送到。",
+          "emotion": "冷淡、慢半拍"
+        },
+        {
+          "id": "j008",
+          "speaker": "kai",
+          "text": "等到交貨，資料中心裡的晶片都要過時了吧！",
+          "emotion": "誇張"
+        }
+      ]
+    },
+    {
+      "id": "je-aero",
+      "template": "big",
+      "data": {
+        "kicker": "One way around",
+        "text": "Generators built\n**from jet-engine tech**",
+        "key": "Jet-engine tech, on land"
+      },
+      "lines": [
+        {
+          "id": "j009",
+          "text": "其中一條路，是拿飛機噴射引擎的技術，改成發電機。"
+        },
+        {
+          "id": "j010",
+          "speaker": "kai",
+          "text": "這招聰明，飛機退役的引擎，換個地方繼續上班。",
+          "emotion": "眼睛一亮，有自己的意見"
+        }
+      ]
+    },
+    {
+      "id": "je-used",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Used: the upside",
+          "icon": "clock",
+          "points": [
+            "Cheaper",
+            "Maybe faster"
+          ]
+        },
+        "right": {
+          "heading": "Used: the catch",
+          "icon": "warning",
+          "points": [
+            "Limited supply",
+            "Maintenance",
+            "Pollution permits"
+          ]
+        },
+        "source": "Decrypt, Nov 9, 2026",
+        "keys": [
+          "Used: cheaper, faster",
+          "Scarce, and permits"
+        ]
+      },
+      "lines": [
+        {
+          "id": "j011",
+          "text": "Decrypt 也說，二手的渦輪機比較便宜，也可能比較快拿到。"
+        },
+        {
+          "id": "j012",
+          "text": "可是二手的數量有限，維護是問題，還要過污染許可這一關。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "je-gag",
+      "template": "big",
+      "data": {
+        "kicker": "Kai's old question",
+        "text": "New phone?\n**No. Old engines**",
+        "key": "Old engines, not phones"
+      },
+      "lines": [
+        {
+          "id": "j015",
+          "speaker": "kai",
+          "text": "老問題又來了，所以我要不要換手機？",
+          "emotion": "固定梗，認真地問"
+        },
+        {
+          "id": "j016",
+          "text": "不用，今天連資料中心都在找二手的。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "tr-lead",
+      "template": "big",
+      "data": {
+        "kicker": "Trump · via The Verge",
+        "text": "Trump on 60 Minutes:\n**risk 'can be managed'**",
+        "key": "Trump: AI risk managed"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "第三則就是主菜，據 The Verge，川普在美國電視專訪裡談到 AI 安全。"
+        },
+        {
+          "id": "t002",
+          "speaker": "kai",
+          "text": "好，叫人準備坐牢算保護還是嚇人，現在可以吵了。",
+          "emotion": "摩拳擦掌"
+        }
+      ]
+    },
+    {
+      "id": "mc-scene",
+      "template": "big",
+      "chapter": "Main Course：一通電話，管得住 AI 嗎？",
+      "data": {
+        "kicker": "Main Course",
+        "text": "One phone call,\n**one AI boss**",
+        "key": "Picture the phone call"
+      },
+      "lines": [
+        {
+          "id": "m001",
+          "text": "想像一下，一家大型 AI 公司的老闆，接到一通政府打來的電話。",
+          "emotion": "放慢、靠近"
+        },
+        {
+          "id": "m002",
+          "text": "這通電話的內容，是川普自己在節目上說的。"
+        }
+      ]
+    },
+    {
+      "id": "mc-call",
+      "template": "big",
+      "data": {
+        "kicker": "Trump's account",
+        "text": "'Something bad\n**with AI'**",
+        "key": "Reported: 'bad with AI'"
+      },
+      "lines": [
+        {
+          "id": "m003",
+          "text": "川普說，有人向政府舉報某人用 AI 做壞事，政府那邊就很強硬地打電話給對方。"
+        }
+      ]
+    },
+    {
+      "id": "mc-quote1",
+      "template": "quote",
+      "data": {
+        "kicker": "Trump, retelling the call",
+        "quote": "Get ready to go to jail. Please give your wife a kiss good night.",
+        "source": "Quoted by The Verge, Nov 9, 2026",
+        "key": "Retold: 'go to jail'"
+      },
+      "lines": [
+        {
+          "id": "m004",
+          "text": "他說，政府跟對方講：「準備去坐牢吧。請給你太太一個晚安吻。」"
+        },
+        {
+          "id": "m005",
+          "speaker": "kai",
+          "text": "等一下，這種事不是應該走正式程序嗎？一通電話就算數？",
+          "emotion": "不以為然，替產業說話"
+        }
+      ]
+    },
+    {
+      "id": "mc-ask",
+      "template": "big",
+      "data": {
+        "kicker": "The question asked",
+        "text": "AI bosses warn\n**about their models**",
+        "key": "Bosses warn on safety"
+      },
+      "lines": [
+        {
+          "id": "m007",
+          "text": "節目問他，AI 公司的主管們對自家模型安全提出警告，他怎麼看。"
+        }
+      ]
+    },
+    {
+      "id": "mc-term",
+      "template": "big",
+      "data": {
+        "kicker": "One term",
+        "text": "AI safety:\n**misuse, or harm**",
+        "key": "AI safety, plainly"
+      },
+      "lines": [
+        {
+          "id": "m008",
+          "text": "這裡說的 AI 安全，指的是 AI 被拿去做壞事，或出錯傷到人的風險。"
+        }
+      ]
+    },
+    {
+      "id": "mc-risk",
+      "template": "quote",
+      "data": {
+        "kicker": "His answer",
+        "quote": "…and I think the risk can be managed, and it's managed.",
+        "source": "Trump on 60 Minutes, quoted by The Verge",
+        "key": "'It's managed'"
+      },
+      "lines": [
+        {
+          "id": "m009",
+          "text": "他回答，風險遠沒有那些 AI 主管說的那麼真實，風險可以管理，而且已經在管理了。"
+        }
+      ]
+    },
+    {
+      "id": "mc-doj",
+      "template": "big",
+      "data": {
+        "kicker": "Who manages it",
+        "text": "The Justice Dept.,\n**per The Verge's report**",
+        "key": "DOJ, per The Verge"
+      },
+      "lines": [
+        {
+          "id": "m010",
+          "text": "據 The Verge 的報導，他的意思是，現在管這個風險的是美國司法部。"
+        },
+        {
+          "id": "m011",
+          "text": "司法部，就是負責起訴聯邦犯罪的政府部門。"
+        }
+      ]
+    },
+    {
+      "id": "mc-joke1",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's take",
+        "text": "Not that real,\n**yet a jail warning**",
+        "key": "Low risk, yet jail talk"
+      },
+      "lines": [
+        {
+          "id": "m012",
+          "text": "同一段話裡，風險沒那麼真實，他舉的例子卻是坐牢警告。",
+          "emotion": "冷淡、慢半拍"
+        },
+        {
+          "id": "m013",
+          "speaker": "kai",
+          "text": "對做 AI 的公司來說，最可怕的是不知道風險算大還是算小。",
+          "emotion": "認真，替產業說話"
+        }
+      ]
+    },
+    {
+      "id": "mc-who",
+      "template": "quote",
+      "data": {
+        "kicker": "Who it was",
+        "quote": "One of the big ones.",
+        "source": "Trump on 60 Minutes, quoted by The Verge",
+        "key": "No name, no company"
+      },
+      "lines": [
+        {
+          "id": "m014",
+          "text": "問題來了，對象是誰？川普不肯說名字，也不肯說是哪家公司。"
+        },
+        {
+          "id": "m015",
+          "text": "他只說，是一家 AI 公司的負責人，「大公司之一」。"
+        }
+      ]
+    },
+    {
+      "id": "mc-changed",
+      "template": "quote",
+      "data": {
+        "kicker": "After the call, he says",
+        "quote": "…this person totally changed everything.",
+        "source": "Trump on 60 Minutes, quoted by The Verge",
+        "key": "'Changed everything'"
+      },
+      "lines": [
+        {
+          "id": "m016",
+          "text": "他還說，被威脅要逮捕以後，「這個人完全改變了一切」。"
+        },
+        {
+          "id": "m017",
+          "speaker": "kai",
+          "text": "有用？我看是把人嚇到不敢動吧。",
+          "emotion": "不以為然"
+        },
+        {
+          "id": "m018",
+          "text": "改了什麼，他沒說，報導也沒寫。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "mc-check",
+      "template": "bullets",
+      "data": {
+        "title": "How solid is it?",
+        "items": [
+          "Trump's own account",
+          "No second source, no reply"
+        ],
+        "source": "The Verge, Nov 9, 2026",
+        "keys": [
+          "Only his account",
+          "No second source"
+        ]
+      },
+      "lines": [
+        {
+          "id": "m019",
+          "text": "先講清楚，這些都只是川普自己的說法，經 The Verge 轉述。"
+        },
+        {
+          "id": "m020",
+          "text": "報導裡沒有第二個來源，也沒有司法部或那家公司的回應。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "mc-sides",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Kai: let it run",
+          "icon": "lightning",
+          "points": [
+            "Speed builds good AI",
+            "Jail threats scare builders"
+          ]
+        },
+        "right": {
+          "heading": "Sola: someone answers",
+          "icon": "document",
+          "points": [
+            "Hold AI firms to account",
+            "But threats aren't rules"
+          ]
+        },
+        "keys": [
+          "Kai: let industry run",
+          "Sola: rules, not threats"
+        ]
+      },
+      "lines": [
+        {
+          "id": "m021",
+          "speaker": "kai",
+          "text": "我先選邊，我站產業這邊，AI 要跑得快，才做得出好東西。",
+          "emotion": "自信"
+        },
+        {
+          "id": "m022",
+          "speaker": "kai",
+          "text": "一通電話就叫老闆準備坐牢，下一個想做 AI 的人，還敢做嗎？"
+        },
+        {
+          "id": "m023",
+          "text": "我站另一邊，總要有人能讓 AI 公司，為做錯的事負責。",
+          "reveal": 1
+        },
+        {
+          "id": "m024",
+          "text": "可是威脅，不是規則。"
+        }
+      ]
+    },
+    {
+      "id": "mc-rules",
+      "template": "bullets",
+      "data": {
+        "title": "A rule spells out",
+        "items": [
+          "What counts as wrong",
+          "Who checks",
+          "How to push back"
+        ],
+        "keys": [
+          "Threat vs. rule",
+          "What counts as wrong",
+          "Who checks it",
+          "How to push back"
+        ]
+      },
+      "lines": [
+        {
+          "id": "m025",
+          "text": "規則至少會寫清楚三件事。"
+        },
+        {
+          "id": "m026",
+          "text": "什麼事算做錯。",
+          "reveal": 1
+        },
+        {
+          "id": "m027",
+          "text": "誰來查。",
+          "reveal": 1
+        },
+        {
+          "id": "m028",
+          "text": "被查的人，要怎麼申訴。",
+          "reveal": 1
+        },
+        {
+          "id": "m029",
+          "speaker": "kai",
+          "text": "規則寫那麼細，等你寫完，別人早就跑到前面了。",
+          "emotion": "不服氣"
+        }
+      ]
+    },
+    {
+      "id": "mc-rails",
+      "template": "quote",
+      "data": {
+        "kicker": "On guardrails",
+        "quote": "I don't mind guardrails, but I don't want to put us in a deep second position.",
+        "source": "Trump on 60 Minutes, quoted by The Verge",
+        "key": "'Deep second position'"
+      },
+      "lines": [
+        {
+          "id": "m030",
+          "text": "這一點，川普在節目上的說法跟你很像，你猜他怎麼說？"
+        },
+        {
+          "id": "m031",
+          "text": "他說，他不介意設護欄，但不想讓美國遠遠落到第二名。"
+        }
+      ]
+    },
+    {
+      "id": "mc-rails2",
+      "template": "big",
+      "data": {
+        "kicker": "Kai on guardrails",
+        "text": "Some guardrails,\n**not so many we stall**",
+        "key": "Kai: rails, not brakes"
+      },
+      "lines": [
+        {
+          "id": "m032",
+          "text": "護欄就是替 AI 設的安全規範和限制，我同意要有，只是不要多到跑不動。",
+          "emotion": "認真",
+          "speaker": "kai"
+        },
+        {
+          "id": "m033",
+          "text": "你要的護欄，最好都裝在別人的車道上。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "mc-dems",
+      "template": "big",
+      "data": {
+        "kicker": "Also on the show",
+        "text": "Work with Democrats?\n**'Absolutely would'**",
+        "key": "'Absolutely would'"
+      },
+      "lines": [
+        {
+          "id": "m034",
+          "text": "他也說，他「絕對願意」跟民主黨合作，一起談 AI 安全。"
+        },
+        {
+          "id": "m035",
+          "text": "可是要設什麼護欄、什麼時候設，報導裡完全沒有提到。"
+        }
+      ]
+    },
+    {
+      "id": "mc-joke2",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's analogy",
+        "text": "Syllabus: not out.\n**Fail notice: sent**",
+        "key": "Rules TBA, warnings sent"
+      },
+      "lines": [
+        {
+          "id": "m036",
+          "text": "打個比方，就像考試範圍還沒公布，被當的通知已經先寄出來了。",
+          "emotion": "冷淡、慢半拍"
+        },
+        {
+          "id": "m037",
+          "speaker": "kai",
+          "text": "對想創業的人來說，這種課根本不敢選。",
+          "emotion": "誇張，替創業的人說話"
+        }
+      ]
+    },
+    {
+      "id": "mc-asia",
+      "template": "big",
+      "data": {
+        "kicker": "Taiwan & Asia",
+        "text": "China: in his framing.\n**Taiwan: not mentioned**",
+        "key": "Taiwan: not mentioned"
+      },
+      "lines": [
+        {
+          "id": "m043",
+          "text": "台灣，報導完全沒提到；亞洲只提到中國。"
+        },
+        {
+          "id": "m069",
+          "text": "那是川普自己的說法：他說中國沒有護欄，他們的護欄就是習近平說了算。"
+        }
+      ]
+    },
+    {
+      "id": "mc-money",
+      "template": "bullets",
+      "data": {
+        "title": "Not in the report",
+        "items": [
+          "Fines",
+          "A budget",
+          "A bill or a timeline"
+        ],
+        "source": "The Verge, Nov 9, 2026",
+        "keys": [
+          "Where's the money?",
+          "No fines named",
+          "No budget",
+          "No bill, no timeline"
+        ]
+      },
+      "lines": [
+        {
+          "id": "m047",
+          "speaker": "kai",
+          "text": "我覺得對公司來說，罰則寫清楚最重要，罰多少都比一通電話好猜，不是嗎？",
+          "emotion": "認真，替產業說話"
+        },
+        {
+          "id": "m048",
+          "text": "報導裡沒有提到罰款。",
+          "reveal": 1
+        },
+        {
+          "id": "m049",
+          "text": "也沒有預算。",
+          "reveal": 1
+        },
+        {
+          "id": "m050",
+          "text": "更沒有具體的法案或時間表。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "mc-cost",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's take",
+        "text": "Written rules:\n**none reported**",
+        "key": "Written rules: not cited"
+      },
+      "lines": [
+        {
+          "id": "m051",
+          "text": "所以照報導，這套管法只講到一通電話，沒提到寫下來的規則。",
+          "emotion": "冷淡、慢半拍"
+        },
+        {
+          "id": "m052",
+          "speaker": "kai",
+          "text": "而且公司連下一通會打給誰都不知道，這最嚇人。",
+          "emotion": "認真"
+        }
+      ]
+    },
+    {
+      "id": "mc-lose",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Kai: who loses",
+          "icon": "warning",
+          "points": [
+            "People building AI",
+            "Bosses waiting for a call"
+          ]
+        },
+        "right": {
+          "heading": "Sola: who loses",
+          "icon": "person",
+          "points": [
+            "The public",
+            "No one can check the change"
+          ]
+        },
+        "keys": [
+          "Kai: builders lose",
+          "Sola: we can't check"
+        ]
+      },
+      "lines": [
+        {
+          "id": "m053",
+          "speaker": "kai",
+          "text": "我覺得輸的是做 AI 的人，老闆不知道哪天會接到電話。"
+        },
+        {
+          "id": "m054",
+          "text": "我覺得一般人也輸了：那個人改了什麼，我們看不到，也沒辦法檢查。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "mc-small",
+      "template": "big",
+      "data": {
+        "kicker": "Kai's point",
+        "text": "More rules:\n**small firms hit first**",
+        "key": "Kai: startups hit first"
+      },
+      "lines": [
+        {
+          "id": "m055",
+          "speaker": "kai",
+          "text": "大公司請得起律師，規則一多，最先倒的不就是小公司嗎？",
+          "emotion": "反擊"
+        },
+        {
+          "id": "m056",
+          "text": "這點我同意，規則寫太複雜，最先撐不住的確實是小公司。"
+        }
+      ]
+    },
+    {
+      "id": "mc-next",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "The call",
+            "detail": "confirmed?",
+            "icon": "search"
+          },
+          {
+            "title": "Guardrails",
+            "detail": "in writing?",
+            "icon": "document"
+          },
+          {
+            "title": "The risk",
+            "detail": "managed how?",
+            "icon": "gear"
+          }
+        ],
+        "source": "The Verge, Nov 9, 2026",
+        "keys": [
+          "Three things to watch",
+          "Does anyone confirm it?",
+          "Guardrails, in writing?",
+          "Managed how, exactly?"
+        ]
+      },
+      "lines": [
+        {
+          "id": "m057",
+          "text": "接下來，看三件事。",
+          "emotion": "收束，節奏放穩"
+        },
+        {
+          "id": "m058",
+          "text": "第一，司法部或那家公司，會不會出來證實這通電話。",
+          "reveal": 1
+        },
+        {
+          "id": "m060",
+          "text": "第二，他說要跟民主黨談的護欄，會不會變成寫下來的規則。",
+          "reveal": 1
+        },
+        {
+          "id": "m061",
+          "text": "第三，他說「已經在管理」的風險，到底是怎麼管的。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "mc-unsure",
+      "template": "big",
+      "data": {
+        "kicker": "What we don't know",
+        "text": "Did the call happen?\n**Only his word**",
+        "key": "Only his word, so far"
+      },
+      "lines": [
+        {
+          "id": "m062",
+          "text": "這通電話到底有沒有打、打給誰，我不知道，目前只有他自己的說法。",
+          "emotion": "放輕，承認不確定"
+        }
+      ]
+    },
+    {
+      "id": "mc-kai-last",
+      "template": "big",
+      "data": {
+        "kicker": "Kai's last word",
+        "text": "Let it run.\n**Punish real harm later**",
+        "key": "Kai: still lets it run"
+      },
+      "lines": [
+        {
+          "id": "m063",
+          "speaker": "kai",
+          "text": "我還是站產業這邊，先讓它跑，真的出事再依法處理。",
+          "emotion": "不讓步"
+        },
+        {
+          "id": "m064",
+          "speaker": "kai",
+          "text": "用坐牢嚇人，只會讓做新東西的人先跑掉。"
+        }
+      ]
+    },
+    {
+      "id": "mc-view",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's view",
+        "text": "Accountable, yes.\n**Kai's worry is real**",
+        "key": "Sola: both are real"
+      },
+      "lines": [
+        {
+          "id": "m065",
+          "text": "我的看法是，AI 公司當然要能被究責，Kai 擔心的嚇跑創新，也是真的。",
+          "emotion": "放穩"
+        }
+      ]
+    },
+    {
+      "id": "mc-view2",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's view",
+        "text": "Written rules,\n**not phone calls**",
+        "key": "Sola: rules, not calls"
+      },
+      "lines": [
+        {
+          "id": "m066",
+          "text": "可是能讓人負責、又不把人嚇跑的，是寫下來、大家都看得到的規則，不是一通電話。",
+          "emotion": "放穩"
+        }
+      ]
+    },
+    {
+      "id": "fm-intro",
+      "template": "big",
+      "chapter": "Follow the Money：股票的帳本搬上區塊鏈",
+      "data": {
+        "kicker": "Follow the Money",
+        "text": "NYSE's parent plans\n**on-chain shares**",
+        "key": "On-chain stock venue"
+      },
+      "lines": [
+        {
+          "id": "f001",
+          "text": "好，來到 Follow the Money。",
+          "emotion": "切換段落，輕快"
+        },
+        {
+          "id": "f002",
+          "text": "據 Decrypt，紐交所的母公司 ICE 在規劃新平台，要交易記在區塊鏈上的股票。"
+        }
+      ]
+    },
+    {
+      "id": "fm-books",
+      "template": "big",
+      "data": {
+        "kicker": "Ava Labs says",
+        "text": "Avalanche\n**keeps the books**",
+        "key": "Avalanche keeps books"
+      },
+      "lines": [
+        {
+          "id": "f042",
+          "text": "Avalanche 這條區塊鏈的開發公司說，這個平台的帳，會記在 Avalanche 上。"
+        },
+        {
+          "id": "f045",
+          "speaker": "kai",
+          "text": "老牌交易所跟區塊鏈，我本來以為是兩個世界。",
+          "emotion": "驚訝"
+        }
+      ]
+    },
+    {
+      "id": "fm-plain",
+      "template": "big",
+      "data": {
+        "kicker": "In plain words",
+        "text": "After the trade:\n**money and shares swap**",
+        "key": "Money and shares swap"
+      },
+      "lines": [
+        {
+          "id": "f043",
+          "text": "一筆股票買賣成交以後，還要確定錢和股票真的換手，這一步叫清算和結算。"
+        }
+      ]
+    },
+    {
+      "id": "fm-why",
+      "template": "big",
+      "data": {
+        "kicker": "Why it matters",
+        "text": "Not a product.\n**The plumbing**",
+        "key": "It's the plumbing"
+      },
+      "lines": [
+        {
+          "id": "f003",
+          "text": "重要的是，區塊鏈這次被放進的就是這一步，Decrypt 叫它市場的管線。"
+        }
+      ]
+    },
+    {
+      "id": "fm-steps",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Trade",
+            "detail": "a deal is made",
+            "icon": "chat"
+          },
+          {
+            "title": "Clearing",
+            "detail": "who owes what",
+            "icon": "checklist"
+          },
+          {
+            "title": "Settlement",
+            "detail": "the swap",
+            "icon": "arrow"
+          }
+        ],
+        "keys": [
+          "A trade has three steps",
+          "Trade: a deal is made",
+          "Clearing: who owes what",
+          "Settlement: the swap"
+        ]
+      },
+      "lines": [
+        {
+          "id": "f004",
+          "speaker": "kai",
+          "text": "我一直以為成交就結束了，後面還有什麼？",
+          "emotion": "意外"
+        },
+        {
+          "id": "f005",
+          "text": "對，一筆交易其實分三步。"
+        },
+        {
+          "id": "f006",
+          "text": "第一步是成交，買方和賣方說好了。",
+          "reveal": 1
+        },
+        {
+          "id": "f007",
+          "text": "第二步是清算，算清楚誰該交什麼給誰。",
+          "reveal": 1
+        },
+        {
+          "id": "f008",
+          "text": "第三步是結算，股票和錢真的交換過去，這筆交易才算完成。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "fm-shop",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's analogy",
+        "text": "Checkout, tally,\n**parcel arrives**",
+        "key": "Like an online order"
+      },
+      "lines": [
+        {
+          "id": "f009",
+          "text": "打個比方，你網購按下結帳是成交，平台對好帳是清算，錢扣了、包裹到了，才是結算。"
+        }
+      ]
+    },
+    {
+      "id": "fm-ledger",
+      "template": "big",
+      "data": {
+        "kicker": "Ava Labs says",
+        "text": "Avalanche:\n**the core ledger**",
+        "key": "Avalanche: core ledger"
+      },
+      "lines": [
+        {
+          "id": "f010",
+          "speaker": "kai",
+          "text": "所以 Avalanche 管的，是對帳跟交割那兩段？",
+          "emotion": "想通了"
+        },
+        {
+          "id": "f011",
+          "text": "對，替買賣雙方對帳、交割的清算公司，會拿 Avalanche 當核心帳本。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "fm-terms",
+      "template": "bullets",
+      "data": {
+        "title": "Three terms",
+        "items": [
+          "Ledger: who owns what",
+          "Blockchain: a shared ledger",
+          "Tokenized: a stock as a token"
+        ],
+        "keys": [
+          "Ledger: the record",
+          "Blockchain: shared book",
+          "Tokens: on-chain stock"
+        ]
+      },
+      "lines": [
+        {
+          "id": "f013",
+          "text": "帳本，就是記下每筆交易、誰擁有什麼的總紀錄。",
+          "reveal": 1
+        },
+        {
+          "id": "f041",
+          "text": "區塊鏈我知道，就是很多台電腦一起保管、寫上去就很難改的帳本。",
+          "reveal": 1,
+          "speaker": "kai",
+          "emotion": "搶答"
+        },
+        {
+          "id": "f014",
+          "text": "代幣化，就是把股票、基金這些傳統資產，發行成區塊鏈上的代幣。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "fm-same",
+      "template": "big",
+      "data": {
+        "kicker": "Kai checks",
+        "text": "Same stock,\n**new way to record it**",
+        "key": "Same stock, new record"
+      },
+      "lines": [
+        {
+          "id": "f015",
+          "speaker": "kai",
+          "text": "所以股票還是那張股票，只是記帳的地方換了。",
+          "emotion": "總結"
+        },
+        {
+          "id": "f016",
+          "text": "差不多，Kai 今天難得一次講對。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "fm-247",
+      "template": "stats",
+      "data": {
+        "title": "The platform's design goal",
+        "stats": [
+          {
+            "value": "24/7",
+            "label": "Trade, clear, settle",
+            "note": "pending approval"
+          }
+        ],
+        "source": "Decrypt, Nov 9, 2026",
+        "key": "24/7, pending approval"
+      },
+      "lines": [
+        {
+          "id": "f017",
+          "text": "平台的設計目標，是全天候交易、清算和結算，但要先等監管機關核准。"
+        }
+      ]
+    },
+    {
+      "id": "fm-kai",
+      "template": "big",
+      "data": {
+        "kicker": "Kai's take",
+        "text": "An exchange\n**that never clocks out**",
+        "key": "Kai: never clocks out"
+      },
+      "lines": [
+        {
+          "id": "f018",
+          "speaker": "kai",
+          "text": "我覺得這很酷，交易終於不用下班了！",
+          "emotion": "興奮"
+        },
+        {
+          "id": "f019",
+          "text": "監管機關還沒點頭之前，它連第一天上班都還沒排。",
+          "emotion": "冷淡、慢半拍"
+        },
+        {
+          "id": "f046",
+          "speaker": "kai",
+          "text": "那我先幫它準備工作服。",
+          "emotion": "不服輸"
+        }
+      ]
+    },
+    {
+      "id": "fm-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "NYSE's head of digital issuance",
+        "quote": "…picking the right technology for each job.",
+        "source": "Dennis Lee, quoted by Decrypt, Nov 9, 2026",
+        "key": "Picking the right tech"
+      },
+      "lines": [
+        {
+          "id": "f020",
+          "text": "NYSE 負責數位發行的主管說，交易所是在替每一項工作，挑合適的技術。"
+        }
+      ]
+    },
+    {
+      "id": "fm-needs",
+      "template": "bullets",
+      "data": {
+        "title": "The ledger must be",
+        "items": [
+          "Fast and reliable",
+          "Able to control who joins"
+        ],
+        "source": "Decrypt, Nov 9, 2026",
+        "keys": [
+          "Many chains, one ledger",
+          "Fast and reliable",
+          "Controls who takes part"
+        ]
+      },
+      "lines": [
+        {
+          "id": "f049",
+          "text": "他說，平台會支援在好幾條區塊鏈上市的股票。"
+        },
+        {
+          "id": "f021",
+          "text": "可是記錄和結算交易的那本帳，他說有條件，你猜是什麼？"
+        },
+        {
+          "id": "f022",
+          "text": "要快，也要可靠。",
+          "reveal": 1
+        },
+        {
+          "id": "f023",
+          "text": "還要能控管誰可以參與。",
+          "reveal": 1
+        },
+        {
+          "id": "f039",
+          "speaker": "kai",
+          "text": "我覺得這很務實，股票可以在好幾條鏈上，記帳的那本要最穩。",
+          "emotion": "認真，有自己的意見"
+        }
+      ]
+    },
+    {
+      "id": "fm-sign",
+      "template": "big",
+      "data": {
+        "kicker": "Decrypt's read",
+        "text": "Wall Street's oldest\n**moves to a blockchain**",
+        "key": "Old exchange, new pipes"
+      },
+      "lines": [
+        {
+          "id": "f026",
+          "text": "Decrypt 說，這是華爾街老牌機構把核心設施，搬上公有區塊鏈的跡象。"
+        }
+      ]
+    },
+    {
+      "id": "fm-public",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Public blockchain",
+          "icon": "globe",
+          "points": [
+            "Usually open to view"
+          ]
+        },
+        "right": {
+          "heading": "This platform's ledger",
+          "icon": "lock",
+          "points": [
+            "Controls who joins"
+          ]
+        },
+        "key": "Public, but gated entry"
+      },
+      "lines": [
+        {
+          "id": "f047",
+          "text": "公有區塊鏈一般誰都看得到紀錄，但 NYSE 主管說，這本帳仍要控管誰能參與。"
+        }
+      ]
+    },
+    {
+      "id": "fm-kai3",
+      "template": "big",
+      "data": {
+        "kicker": "Kai's take",
+        "text": "The plumbing beats\n**one more token**",
+        "key": "Kai: plumbing first"
+      },
+      "lines": [
+        {
+          "id": "f040",
+          "speaker": "kai",
+          "text": "我覺得放進交易的底層，比只把一檔股票包成代幣實在。",
+          "emotion": "認真，有自己的意見"
+        },
+        {
+          "id": "f050",
+          "text": "難得，你這次沒有先問要不要換手機。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "fm-pipes",
+      "template": "big",
+      "data": {
+        "kicker": "Follow the money",
+        "text": "Not the money.\n**The pipes it uses**",
+        "key": "The pipes, not the money"
+      },
+      "lines": [
+        {
+          "id": "f027",
+          "text": "不過這筆合作誰付誰多少錢，報導沒寫。"
+        },
+        {
+          "id": "f025",
+          "text": "所以今天跟的不是錢，是錢走的管線。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "fm-catch",
+      "template": "bullets",
+      "data": {
+        "title": "Not so fast",
+        "items": [
+          "OKX-ICE venue: planned",
+          "Magnificent Seven: Apple, Meta…",
+          "All seven opted out"
+        ],
+        "source": "Decrypt, Nov 9, 2026",
+        "keys": [
+          "Not so fast",
+          "OKX-ICE venue, planned",
+          "The Magnificent Seven",
+          "All seven opted out"
+        ]
+      },
+      "lines": [
+        {
+          "id": "f028",
+          "text": "不過問題來了，有幾個地方要先講清楚。"
+        },
+        {
+          "id": "f029",
+          "text": "第一，ICE 還跟加密貨幣交易所 OKX，在規劃另一個代幣化股票平台。",
+          "reveal": 1
+        },
+        {
+          "id": "f036",
+          "text": "美股七巨頭，是包括 Apple 和 Meta 在內的七家大型科技股統稱。",
+          "reveal": 1
+        },
+        {
+          "id": "f048",
+          "text": "這七家全都選擇，不讓自己的股票在 ICE 和 OKX 的平台上代幣化。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "fm-apple",
+      "template": "big",
+      "data": {
+        "kicker": "Callback",
+        "text": "Apple, on air twice:\n**top-ups, opt-outs**",
+        "key": "Apple: on air twice"
+      },
+      "lines": [
+        {
+          "id": "f031",
+          "speaker": "kai",
+          "text": "Apple 這一集出場兩次，一次在賣 AI 加量包，一次在拒絕被代幣化。",
+          "emotion": "誇張地數"
+        }
+      ]
+    },
+    {
+      "id": "fm-imf",
+      "template": "big",
+      "data": {
+        "kicker": "Per an IMF study",
+        "text": "Real demand,\n**hard to trade**",
+        "key": "Real demand, hard trades"
+      },
+      "lines": [
+        {
+          "id": "f030",
+          "text": "第二，國際貨幣基金的研究發現，代幣化股票確實有人要，但還不容易順利買賣。"
+        }
+      ]
+    },
+    {
+      "id": "fm-early",
+      "template": "big",
+      "data": {
+        "kicker": "Decrypt's caution",
+        "text": "The pipes may come\n**before the demand**",
+        "key": "Pipes before demand"
+      },
+      "lines": [
+        {
+          "id": "f032",
+          "text": "等一下，Decrypt 還有一個提醒：管線蓋好的速度，可能比需求跟上還快。"
+        },
+        {
+          "id": "f033",
+          "text": "打個比方，就像捷運站先蓋好了，乘客還在路上。",
+          "emotion": "冷淡、慢半拍"
+        }
+      ]
+    },
+    {
+      "id": "fm-kai2",
+      "template": "big",
+      "data": {
+        "kicker": "Kai's take",
+        "text": "Build it first,\n**riders will come**",
+        "key": "Kai: build it first"
+      },
+      "lines": [
+        {
+          "id": "f034",
+          "speaker": "kai",
+          "text": "我還是支持先蓋，等乘客到齊才開工，就來不及了。",
+          "emotion": "堅持"
+        }
+      ]
+    },
+    {
+      "id": "fm-note",
+      "template": "big",
+      "data": {
+        "kicker": "To be clear",
+        "text": "Not advice.\n**Just the plumbing**",
+        "key": "Not investment advice"
+      },
+      "lines": [
+        {
+          "id": "f035",
+          "text": "最後提醒，這段只講錢走的管線，不是投資建議，也不推薦任何代幣或平台。"
+        }
+      ]
+    },
+    {
+      "id": "so-take",
+      "template": "compare",
+      "chapter": "Sign-off：今天最重要的訊號",
+      "data": {
+        "left": {
+          "heading": "Most important",
+          "icon": "lightning",
+          "points": [
+            "Trump on AI safety"
+          ]
+        },
+        "right": {
+          "heading": "Least sure",
+          "icon": "search",
+          "points": [
+            "Which guardrails"
+          ]
+        },
+        "keys": [
+          "Today's top signal",
+          "Least sure: guardrails"
+        ]
+      },
+      "lines": [
+        {
+          "id": "s001",
+          "text": "說一句真心話，今天最重要的，是川普談 AI 安全的那段話。",
+          "emotion": "放慢放穩"
+        },
+        {
+          "id": "s002",
+          "text": "我最不確定的，是他說要跟民主黨談的護欄，會長什麼樣子，報導完全沒說。",
+          "emotion": "放輕，承認不確定",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "so-tip",
+      "template": "big",
+      "data": {
+        "kicker": "Our advice",
+        "text": "Buying AI top-ups?\n**Check sharing, expiry**",
+        "key": "Check sharing and expiry"
+      },
+      "lines": [
+        {
+          "id": "s003",
+          "text": "節目的建議是，買任何 AI 加量包之前，先看能不能跟家人共用，還有多久會過期。"
+        }
+      ]
+    },
+    {
+      "id": "so-call",
+      "template": "big",
+      "data": {
+        "kicker": "Callback",
+        "text": "Most patient today:\n**the turbine buyers**",
+        "key": "Waiting since grade one"
+      },
+      "lines": [
+        {
+          "id": "s004",
+          "text": "今天最有耐心的，是在等新渦輪機的資料中心，小一下訂，小六才到貨。",
+          "emotion": "冷淡、慢半拍"
+        },
+        {
+          "id": "s005",
+          "speaker": "kai",
+          "text": "等它到貨，我的老問題，大家應該都會背了。",
+          "emotion": "笑"
+        }
+      ]
+    },
+    {
+      "id": "so-site",
+      "template": "big",
+      "data": {
+        "kicker": "Full stories",
+        "text": "Today's stories\n**on Mokaair**",
+        "key": "Articles in description"
+      },
+      "lines": [
+        {
+          "id": "s006",
+          "text": "今天的完整整理在 Mokaair 網站，連結放在說明欄。",
+          "emotion": "輕鬆提醒"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "Rules first, or speed?",
+        "lines": [
+          "Which side are you on? Tell us"
+        ],
+        "cta": "Subscribe to Tech Signal",
+        "key": "Rules or speed? Tell us"
+      },
+      "lines": [
+        {
+          "id": "o001",
+          "text": "我說靠規則，Kai 說先讓產業跑，出事再依法罰。"
+        },
+        {
+          "id": "o002",
+          "speaker": "kai",
+          "text": "你站哪一邊？留言告訴我們。"
+        },
+        {
+          "id": "o003",
+          "text": "訂閱 Tech Signal。訊號收到。",
+          "emotion": "乾脆、帶笑地收"
+        }
+      ]
+    }
+  ]
+}
