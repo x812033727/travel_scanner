@@ -38,7 +38,7 @@ test('a new brief carries current rules but cannot masquerade as a production ap
   assert.equal(program.plans.find((plan) => plan.id === 'P22').tier, 'conditional');
   // The 2026-11-11 material review (owner-approved): a reserve or merge plan, or a topic that leads to one, gets no brief.
   assert.throws(() => episodeBrief(catalog, program, 'P22'), /held by the material review \(reserve\)/);
-  assert.throws(() => episodeBrief(catalog, program, 'P16'), /held by the material review \(merge\).*merge with P24/);
+  assert.throws(() => episodeBrief(catalog, program, 'P16'), /held by the material review \(reserve\).*合併審查/, 'the P16 + P24 merge did not hold, so both wait');
   const p16topic = program.plans.find((plan) => plan.id === 'P16').topics[0];
   assert.throws(() => episodeBrief(catalog, program, p16topic), /held by the material review/);
   assert.equal(episodeBrief(catalog, program, 'P20').plan.material.verdict, 'ready', 'a ready plan still gets its brief');
