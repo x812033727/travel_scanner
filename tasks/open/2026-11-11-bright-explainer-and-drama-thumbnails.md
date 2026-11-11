@@ -19,6 +19,7 @@ scope:
   - tools/video/core/explainer-cute.test.mjs
   - docs/videos/so-thats-why/thumbnails.md
   - docs/videos/thumbnail-looks-20261111
+  - docs/videos/packaging-refresh-20261111
 ---
 
 # Thumbnails: So That's Why on a bright ground, AI dramas full-frame face with a coloured drama strip
@@ -51,6 +52,7 @@ The owner saw three samples (P14, 種田 e003, 祖媽 e018) and said: 「我怎�
 - [x] QA measures the bright series headline at its new 150 px and a layout `f` headline across
       the frame with an 8-character cap.
 - [ ] The owner looks at the first real episode thumbnails drawn after merge.
+- [x] Rules for re-titling and re-drawing the thumbnails of videos already on the channel, for other sessions to apply: `docs/videos/packaging-refresh-20261111/README.md` (owner 2026-11-11: 「標題跟縮圖規則開到PR我再請其他對話改就好」).
 
 ## Steps
 
