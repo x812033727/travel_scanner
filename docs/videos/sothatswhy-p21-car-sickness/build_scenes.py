@@ -163,7 +163,7 @@ chief("chief-limit", C("putting a clear plastic cup of water down on a small tab
 kid("kid-eyes-q", K("pointing at her own eyes with two fingers and a curious face", close=True, where=HOME),
     k("那眼睛呢？", "追問"), k("眼睛也會告訴大腦嗎？", "句尾上揚", "S:eyes"))
 chief("chief-eyes", C("pointing at her own eye with one finger and a friendly smile", close=True),
-      c("會。眼睛看外面的東西怎麼跑，也在告訴大腦你在動。"), c("腳底跟肌肉，也會報告。"))
+      c("會。眼睛看外面的東西怎麼跑，也在告訴大腦你在動。"), c("腳底跟肌肉，也會告訴大腦。"))
 kid("kid-walk-q", K("walking forward in mid-step along a sunny park path with a curious face", where="in a sunny park"),
     k("那我走路的時候呢？", "句尾上揚"))
 obj("walk-cup", "Close-up of a child's small hand carrying " + CUP + " along a sunny park path, the water gently rippling, trees and grass blurred behind",
