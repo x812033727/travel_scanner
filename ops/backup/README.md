@@ -5,8 +5,8 @@ and only when a migration was about to run, onto the same disk, and nothing back
 host files that are not in git. `backup.py run`, started by `travel-scanner-backup.timer`
 once a night, writes one directory per run under `/var/backups/travel-scanner/nightly/`,
 verifies everything it wrote, and records the result in `/var/lib/travel-scanner-backup/last.json`.
-The copy to Google Drive is the next task (`offsite.py`, the plan in
-`docs/ops/auto-deploy-and-cloud-backup-plan.md`); it reads complete run directories only.
+`offsite.py`, started by `travel-scanner-offsite.timer` 90 minutes later, copies the complete
+runs to Google Drive (section "Offsite copy" below).
 
 ## One run
 
@@ -97,6 +97,39 @@ docker rm -f restore-drill
 The full drill from a blank machine, with the offsite copy and the config bundle
 (`age -d -i mokaair-backup.key config.tar.age | tar -t`), is `docs/ops/backup-restore-runbook.md`,
 written by the offsite task.
+
+## Offsite copy
+
+Owner decision 2026-11-11: the runs go to the owner's Google Drive **unencrypted**, through the
+same rclone remote the video backups use (`videobackup`, rooted at `AI/備份`), into
+`AI/備份/主機/資料庫/nightly/<ts>/`. That remote's token has full Drive scope; anyone who can open
+the owner's Google account can read every dump. The plan's `crypt` remote and own OAuth client
+(`docs/ops/auto-deploy-and-cloud-backup-plan.md`) were not taken; switching later is
+`OFFSITE_REMOTE=<crypt remote>:...` in `backup.env`.
+
+| Step | What |
+| --- | --- |
+| list | local runs with a `manifest.json` (never `.partial`); runs on Drive that have their `manifest.json` |
+| upload | each local run Drive lacks, oldest first: `rclone copy` without `manifest.json`, then `manifest.json` alone |
+| check | `rclone check --one-way` local against Drive (MD5); a difference fails the run |
+| retention | after every upload is verified, keep the newest `OFFSITE_RETENTION` (14) run folders on Drive and `purge` the rest (Drive's trash keeps them 30 days) |
+| state | `last.json`: `offsite` (time, remote, newest, uploaded, bytes, pruned) or `offsite_failure` (time, stage, reason) |
+
+rclone is not installed on the host: it runs from `travel-scanner-video-worker:local` with
+`/etc/travel-scanner/rclone-videos` mounted read-only (copied inside the container, because
+rclone rewrites the token on refresh), like `docs/videos/rules-sync/sync.mjs`. A run Drive
+already has is skipped, so a night the upload missed is taken the next day. The settings are the
+`OFFSITE_*` lines in `backup.env`; an empty `OFFSITE_REMOTE` turns it off.
+
+```bash
+sudo python3 /opt/travel-scanner-backup/offsite.py run --dry-run
+sudo systemctl start travel-scanner-offsite.service      # what the timer does
+journalctl -u travel-scanner-offsite --since -2d
+```
+
+Restoring from Drive: copy one run back (`rclone copy videobackup:主機/資料庫/nightly/<ts> <dir>`
+from the worker image), check the hashes against its `manifest.json`, then the restore drill
+above.
 
 ## Tests
 
