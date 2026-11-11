@@ -18,7 +18,7 @@
 0.643 m → 「還不到六十五公分」；4.9 m → 「大約五公尺」；−4.4647 × 10⁻¹⁰ × 86,400 秒 = 38.58 微秒 → 「三十八微秒」；38.58 微秒 × 光速 = 11.56 km → 「十一公里多」；
 「九成九以上」是 Navipedia「more than 99.9%」的保守說法。
 
-**本集不做的事**：不講選擇性可用性的歷史細節（只用 GPS.gov 一句「2000 年停了」）；不講相對論的歷史與公式，只講要修的那一點（約 42 秒）；
+**本集不做的事**：不講選擇性可用性的歷史細節（只用 GPS.gov 一句「2000 年停了」）；不講相對論的歷史與公式，只講要修的那一點（約 50 秒）；
 不給手機首次定位的秒數（廠商數字不一，Navipedia [13] 也這麼說）；不念 URE、DOP、SUPL、TTFF 這些縮寫；不放 A58。
 
 ## C01 衛星不知道你在哪，只往下廣播；手機只聽【官方說明】【接收機實際做法】
@@ -38,14 +38,14 @@
 
 ## C03 哨子遊戲【示意，撰稿自己的比喻】【理想示意】
 
-- **可用說法**：p030–p032、p062–p069、p109–p110、p121–p123、p153、p167、p185
+- **可用說法**：p030–p032、p056（「哨子報的時間」）、p076–p083、p128–p129、p136、p141–p143、p152、p167
 - **來源**：比喻本身不是主張；對應 [7] 的「時間差算距離」。
-- **限度**：真的 GPS 訊號是無線電，跑得跟光一樣快（C05）；高低兩支哨子（p121）只借來想像「兩個頻率被拖慢的程度不同」，空氣裡的聲音並不會這樣（C12）。
-  公園是平面，三個朋友就夠算「東西、南北＋錶差」；所以第四顆衛星那段明說「換回衛星：東西、南北、高低，再加上錶差多少」（p070–p071），不說四個朋友。
+- **限度**：真的 GPS 訊號是無線電，跑得跟光一樣快（C05）；高低兩支哨子（p136、p141）只借來想像「兩個頻率被拖慢的程度不同」，空氣裡的聲音並不會這樣（C12）。
+  公園是平面，三個朋友就夠算「東西、南北＋錶差」；所以第四顆衛星那段明說「換回衛星：東西、南北、高低，再加上錶差多少」（p084–p085），不說四個朋友。
 
 ## C04 衛星帶原子鐘，訊號裡寫著發射時刻；大約兩萬公里高；訊號通常走 60–90 毫秒【官方說明＋研究文獻】
 
-- **可用說法**：p033–p038
+- **可用說法**：p033–p038。p033「原子鐘，就是非常非常準的鐘」是給八歲小孩的定義，對應 FAA「atomic clocks that provide extremely accurate time」。
 - **來源**：[7]、[4]、[14]
 - **原文**：FAA [7]：「GPS satellites carry atomic clocks that provide extremely accurate time. The time information is placed in the codes broadcast by the satellite so that a receiver can continuously determine the time the signal was broadcast.」
   GPS.gov Space Segment [4]：「at an altitude of approximately 20,200 km (12,550 miles)」。
@@ -54,15 +54,15 @@
 
 ## C05 訊號跟光一樣快，一秒約三十萬公里；差百萬分之一秒，距離差三百公尺【物理常數＋換算】
 
-- **可用說法**：p009–p010（開場預告）、p040–p042（回收）、p045（片名）
+- **可用說法**：p009–p010（開場預告）、p040–p042（回收）
 - **來源**：[17]；[7]（距離由時間差算出）
 - **原文**：NIST [17]：speed of light in vacuum「299 792 458 m s⁻¹」（exact）。
 - **注意**：299,792,458 × 10⁻⁶ = 299.8 m → 「三百公尺」**四捨五入**。大氣會讓訊號稍慢（C11），所以 FAA 說接收機要扣電離層與對流層延遲；片中「跟光一樣快」是在真空裡的說法。
-  開場 p010 說「距離就差三百公尺」，不說「位置」：時間誤差先變成距離（偽距）誤差，位置最後偏多少還要乘上幾何的放大倍數（C09）。片名與 p045「差一點時間，位置差很遠」是定性的說法。
+  開場 p010 說「距離就差三百公尺」，不說「位置」：時間誤差先變成距離（偽距）誤差，位置最後偏多少還要乘上幾何的放大倍數（C09）。片名「位置怎麼差那麼遠」是定性的說法（第二輪刪掉了 p045 的「這就是今天的題目」）。
 
 ## C06 只聽一顆只知道距離，可能在一整圈（太空裡是一整顆球面）上；兩三顆疊起來縮小範圍；畫圓圈只是示意【理想示意】
 
-- **可用說法**：p046–p053（p053「先說清楚，畫圓圈只是幫你想像的示意。」）
+- **可用說法**：p059–p067（p067「先說清楚，畫圓圈只是幫你想像的示意。」）
 - **來源**：[7]、[9]
 - **原文**：FAA [7]：「With information about the ranges to three satellites and the location of the satellite when the signal was sent, the receiver can compute its own three-dimensional position.」
   Navipedia [9]：「The positioning principle is based on solving a geometric problem from the measured ranges to the satellites, with known coordinates.」
@@ -70,16 +70,16 @@
 
 ## C07 三顆要靠一顆跟 GPS 同步的原子鐘；手機沒有；多量第四顆就不用；四個未知數：東西、南北、高低、鐘差【官方說明＋教材】【接收機實際做法】
 
-- **可用說法**：p054–p073
+- **可用說法**：p068–p087
 - **來源**：[7]、[9]
 - **原文**：FAA [7]：「An atomic clock synchronized to GPS is required in order to compute ranges from these three signals. However, by taking a measurement from a fourth satellite, the receiver avoids the need for an atomic clock. Thus, the receiver uses four satellites to compute latitude, longitude, altitude, and time.」
   Navipedia [9]：「The right side contains the four unknown parameters: The receiver coordinates (x,y,z) and the receiver clock offset δt.」
-- **注意**：「手機裡沒有那麼準的鐘」（p061）是由 FAA「avoids the need for an atomic clock」推得：一般接收機沒有原子鐘，**撰稿推論**，沒有給手機鐘的誤差數字。
-  p063–p064 的「錶慢一秒，每個朋友都近了三百多公尺」是哨子遊戲裡的算術（聲音每秒約 322 m，C02），不是 GPS 數字。
+- **注意**：「手機裡沒有那麼準的鐘」（p075）是由 FAA「avoids the need for an atomic clock」推得：一般接收機沒有原子鐘，**撰稿推論**，沒有給手機鐘的誤差數字。
+  p077–p078 的「錶慢一秒，每個朋友都近了三百多公尺」是哨子遊戲裡的算術（聲音每秒約 322 m，C02），不是 GPS 數字。
 
 ## C08 真的手機不是在畫圓圈，是把四個答案一起算；衛星超過四顆就找一個跟大家最合得來的答案【教材】【接收機實際做法】
 
-- **可用說法**：p074–p076
+- **可用說法**：p088–p090（p088 用「還記得剛剛那些圓圈嗎？」回呼 p067，不再重講示意）
 - **來源**：[9]
 - **原文**：Navipedia [9]：方程「defines a non linear system, which a usual resolution technique consists of linearising the geometric range … in the neighbourhood of a point … corresponding to an approximate receiver position」；
   「In general, an over-dimensioned system is obtained (for n > 4), which can be solved using the Least Squares adjustment.」
@@ -87,7 +87,7 @@
 
 ## C09 基本排法 24 個位置，幾乎任何地方看得到至少四顆；位置誤差約＝量距離的誤差×放大倍數；倍數看相對位置；太差算不出；五顆以上不比四顆差【官方規格】
 
-- **可用說法**：p077–p087
+- **可用說法**：p091–p101
 - **來源**：[4]、[6]
 - **原文**：GPS.gov Space Segment [4]：「This 24-slot arrangement ensures users can view at least four satellites from virtually any point on the planet.」
   SPS PS [6] B.2.1：「Accuracy = UERE x DOP (B-1) … a simple approximation」；Glossary：「Dilution of Precision (DOP). The magnifying effect on GPS position error induced by mapping URE into a position solution … through the relative satellite-to-receiver geometry.」
@@ -98,14 +98,14 @@
 
 ## C10 大樓擋住一部分衛星，能用的變少，放大倍數可能變大【撰稿推論，連接兩個官方說法】
 
-- **可用說法**：p088–p091
+- **可用說法**：p102–p105
 - **來源**：[1]、[6]
 - **原文**：GPS.gov [1]：常見原因「Satellite signal blockage due to buildings, bridges, trees, etc.」；SPS PS [6] B.2.4.3.4（五顆以上不比四顆差）。
 - **注意**：「被擋 → 能用的少 → 倍數可能變大」是由這兩句推得，**撰稿推論**，所以說「可能」。沒有說衛星會擠到哪一邊。
 
 ## C11 訊號本身的誤差：承諾 95% 在 2 公尺內；2021-04-20 實際不到 65 公分；訊號誤差不等於使用者精度【官方說明】
 
-- **可用說法**：p092–p101
+- **可用說法**：p106–p111、p117–p120。p120「手上的誤差，還要加上路上的事：擋住、反彈，跟大氣」只列這一章接著講的三件事（擋住在 C10、反彈在 C13、大氣在 C14），衛星幾何已在第二章講過
 - **來源**：[1]
 - **原文**：GPS.gov [1]：「the government commits to broadcasting the GPS signal in space with a daily global average user range error (URE) of ≤2.0 m (6.6 ft.), with 95% probability … On April 20, 2021, the global average URE across all satellites was ≤0.643 m (2.1 ft.), 95% of the time.」
   「To be clear, URE is not user accuracy. User accuracy depends on a combination of satellite geometry, URE, and local factors such as signal blockage, atmospheric conditions, and receiver design features/quality.」
@@ -113,7 +113,7 @@
 
 ## C12 手機開闊天空平均約 5 公尺；城市裡誤差跟大樓高度很相關【研究摘要，經 GPS.gov 引用】
 
-- **可用說法**：p102–p104
+- **可用說法**：p121–p123
 - **來源**：[8]、[1]
 - **原文**：ION 摘要 [8]（van Diggelen & Enge, ION GNSS+ 2015）：MOOC「created by the authors for Stanford University」；「In this lab, with over one thousand participants in one hundred countries, the measured mean accuracy, remarkably, came to 4.9 meters. Even more interesting, the accuracy in urban areas showed a remarkable correlation with building height.」
   GPS.gov [1]：「GPS-enabled smartphones are typically accurate to within a 4.9 m (16 ft.) radius under open sky … However, their accuracy worsens near buildings, bridges, and trees.」
@@ -122,47 +122,47 @@
 
 ## C13 多路徑：訊號撞到牆反彈才進手機；主要是天線太靠近反射物；低仰角的衛星影響最大【官方說明＋教材】
 
-- **可用說法**：p105–p112
+- **可用說法**：p124–p131
 - **來源**：[1]、[10]
 - **原文**：GPS.gov [1]：「Signals reflected off buildings or walls ("multipath")」列為常見原因。
   Navipedia [10]：「The interference by multipath is generated when a signal arrives, by different ways, at the antenna … Its principal cause is the antenna closeness to the reflecting structures, and it is important when the signal comes from the satellite with low elevation.」
-- **注意**：Navipedia 說碼量測的多路徑「Typically, it is less than 2 or 3 meters」、超過 15 公尺很難觀察；片中**沒有**念這兩個數字，也沒有說多路徑單獨就會把人放到對街（收尾 p189–p192 小問把遮擋、反彈與時間合在一起說）。
+- **注意**：Navipedia 說碼量測的多路徑「Typically, it is less than 2 or 3 meters」、超過 15 公尺很難觀察；片中**沒有**念這兩個數字，也沒有說多路徑單獨就會把人放到對街（收尾 p185–p186 小問只說「訊號撞牆晚到一點點，手機就把我算到對街了」，是她自己的經驗；舊版收尾把遮擋、反彈與時間合在一起說）。
   「繞了遠路才到 → 以為比較遠」對應 [10] 的「arrives, by different ways」。
 
 ## C14 電離層延遲；單頻只能用模型、效應可達幾十公尺；廣播模型約修一半；延遲與頻率有關，雙頻可去掉 99.9% 以上【教材】
 
-- **可用說法**：p113–p123
+- **可用說法**：p132–p143。p136「衛星用不同的頻率送訊號，就像哨子有高音和低音」是「頻率」第一次出現時的說明：GPS.gov [1]「two GPS radio frequencies: L1 and L2」「a third civil signal at the L5 frequency」；高音低音是**比喻**。片中不再說「接收機」，改說「只聽一個頻率的話」（p137）
 - **來源**：[11]、[12]
 - **原文**：Navipedia [11]：「As the ionosphere is a dispersive media, the GNSS signals refraction depends on its frequencies (as the squared inverse). This dependence on the signal frequency allows us to remove its effect up to more than 99.9% using two frequency measurements … But, single frequency receivers have to apply an ionospheric prediction model to remove (as much as possible) this effect, that can reach up to several teens of meters」。
   Navipedia [12]：「GPS satellites broadcast the parameters of the Klobuchar ionospheric model for single frequency users … estimated to reduce about the 50% RMS ionospheric range error worldwide.」
-- **注意**：照素材審視：「可達數十公尺」是**效應本身**，不是修正後的殘差（p117–p118 這樣說）。「全世界平均大約修掉一半」＝50% RMS 的估計，**簡化**。高低兩支哨子是**示意**（C03）。
+- **注意**：照素材審視：「可達數十公尺」是**效應本身**，不是修正後的殘差（p137–p138 這樣說）；p139 的「估計」照查核 F 系列附註。「全世界平均大約修掉一半」＝50% RMS 的估計，**簡化**。高低兩支哨子是**示意**（C03）。
   片中**沒有**說「多數手機只收一個頻率」：那句只在典藏頁，而且現在已有雙頻手機。
 
-## C15 政府沒有故意讓民用的變差，2000 年停了；增強系統是 GPS 以外幫忙提高準確度的系統，民用加上它可以比軍用準【官方說明（現行頁）】
+## C15 政府沒有故意讓民用的變差，2000 年停了；訊號本身變差的話會到處都偏，不會專挑大樓中間【官方說明（現行頁）＋撰稿推論】
 
-- **可用說法**：p124–p129
-- **來源**：[1]、[5]
-- **原文**：GPS.gov [1]：「Doesn't the Government Degrade Civilian GPS Accuracy? No. During the 1990s, GPS employed a feature called Selective Availability that intentionally degraded civilian accuracy on a global basis. In May 2000 … the U.S. government ended its use of Selective Availability」；
-  「With augmentation systems, civilian users can actually receive better GPS accuracy than the military.」
-  GPS.gov [5]：「A GPS augmentation is any system that aids GPS by providing accuracy, integrity, availability, or any other improvement … that is not inherently part of GPS itself.」
-- **注意**：素材審視提到的「軍民 URE 相同、多數民用單頻、軍用雙頻」**只在** archive.gps.gov 典藏頁 [2]（頁首寫 2025 年 2 月後沒有更新），現行 node/70 已刪；今天重查仍是這樣，所以**片中不用**，改用現行頁還在的兩句。
-  「增強系統」不加「地面」（原文沒有）。
+- **可用說法**：p112–p116（第二輪移到第三章「衛星送得很準」之後，當作小問的錯猜「會不會給我們的，故意弄不準？」）
+- **來源**：[1]
+- **原文**：GPS.gov [1]：「Doesn't the Government Degrade Civilian GPS Accuracy? No. During the 1990s, GPS employed a feature called Selective Availability that intentionally degraded civilian accuracy on a global basis. In May 2000 … the U.S. government ended its use of Selective Availability」。
+- **注意**：p114 照查核 F02 的改法「美國政府的 GPS 網站說：沒有故意把民用的弄差。」（不回答「軍用是不是比較準」）。
+  p116「而且訊號本身變差，到處都會偏，不會專挑大樓中間」是**撰稿推論**：GPS.gov 說選擇性可用性是「on a global basis」降低民用精度，而藍點只在大樓中間跳，所以這不是她看到的原因。
+  第二輪**刪掉**了增強系統兩句（p128–p129 舊版）：跟藍點為什麼跳無關。來源 [5] 仍列在文末，但片中已不用。
+  素材審視提到的「軍民 URE 相同、多數民用單頻、軍用雙頻」**只在** archive.gps.gov 典藏頁 [2]（頁首寫 2025 年 2 月後沒有更新），現行 node/70 已刪；片中不用。
 
 ## C16 衛星的鐘因相對論要修：重力弱→走快，速度快→走慢，合起來還是快；每天約 38 微秒；光在這段時間跑 11 公里多；有些鐘發射前在地面調慢，有些入軌後量了把修正寫進廣播【研究回顧＋換算】
 
-- **可用說法**：p130–p144（約 42 秒，企劃上限約 90 秒）
+- **可用說法**：p043–p058（約 50 秒，企劃上限約 90 秒）。第二輪移到第一章「三百公尺」之後，當作「衛星報的時間能不能信」：小問「差一點點都不行！那衛星的錶，真的那麼準嗎？」→ 修正 → 「時間能信了，那聽一顆衛星…」
 - **來源**：[15]
 - **原文**：Ashby [15]：「+2.5046 × 10⁻¹⁰ − 6.9693 × 10⁻¹⁰ = −4.4647 × 10⁻¹⁰. The negative sign in this result means that the standard clock in orbit is beating too fast, primarily because its frequency is gravitationally blueshifted.」
   「for a GPS satellite clock, the gravitational blueshift is greater」（低軌道則是速度的時間膨脹較大）。
   「This adjustment is accomplished on the ground before the clock is placed in orbit.」
   「It has become common practice not to apply such offsets to Rubidium clocks … Instead, after such clocks are placed in orbit their frequencies are measured and the actual frequency corrections needed are incorporated in the clock correction polynomial」。
 - **注意**：「一天約 38 微秒」是 4.4647 × 10⁻¹⁰ × 86,400 秒 = 38.58 微秒的**換算**（原文沒寫這個數，可重算）；「十一公里多」是 38.58 微秒 × 光速 = 11.56 km 的換算。
-  **不說**「不修的話每天定位會飄 11 公里」（舊查核包 A38 明令不報；接收機的鐘差未知數會吸收共同的偏差，實際影響不是這麼簡單）。片中只說「光在這段時間可以跑十一公里多，所以一定要修」。
+  **不說**「不修的話每天定位會飄 11 公里」（舊查核包 A38 明令不報；接收機的鐘差未知數會吸收共同的偏差，實際影響不是這麼簡單）。片中只說「光在這段時間可以跑十一公里多」與「不修的話，哨子報的時間，一天就錯這麼多」（p056）：錯的是衛星報的**時間**（換成距離十一公里多），不是定位結果。
   「地球拉得比較沒那麼用力」是重力位較高的口語說法，**簡化**。Ashby 是 2003 年的 review，不宣稱是現行規格。
 
 ## C17 位置還需要衛星在哪、鐘差多少，寫在廣播電文裡；每秒 50 位元；一整框 30 秒重複；收齊前三段最久約 36 秒【官方規格＋研究文獻】
 
-- **可用說法**：p145–p157
+- **可用說法**：p144–p157。p154「鐘差跟衛星在哪，放在每一輪最前面的三段」交代了「三段」是什麼（Subframe 1 鐘差、2–3 星曆），p155 才說「傳統的做法要聽完這三段」；片中不說「接收機」
 - **來源**：[6]、[14]、[7]
 - **原文**：SPS PS [6] §2.2：「the LNAV data also clocked at 50 bps」；Fig. 2.2-1：Subframe 1「Satellite Clock Correction Terms」、Subframe 2–3「Ephemeris Parameters」、「Frame (30 sec repeat)」。
   Blay et al. [14] §2：「Conventional GNSS receivers need to receive the data from the first three subframes of the 30 second navigation frame to solve for time and position. For the GPS L1 C/A signal, it can take as long as 36 seconds」。
@@ -203,8 +203,8 @@
 
 ## C22 收尾：小問的答案、所長的意見【回收，意見標成意見】
 
-- **可用說法**：p184–p194。p193–p194「我覺得最神奇的是：你手上這支手機，每次定位，都在幫自己對錶。」是所長的**意見**，內容對應 C07（每次解算都把鐘差當未知數）。
-  p191「時間多算了一點點」是小問把多路徑（繞遠路＝量到的時間變長，C13）說成自己的話。
+- **可用說法**：p183–p188。p187–p188「說得好。還記得那支慢一秒的錶嗎？我覺得最神奇的是：手機每次定位，都在幫自己對錶。」是所長的**意見**，內容對應 C07（每次解算都把鐘差當未知數）。
+  p185–p186「訊號撞牆晚到一點點，手機就把我算到對街了」是小問把多路徑（繞遠路＝量到的時間變長，C13）說成自己的話；第二輪拿掉了逐條回顧（哨子、第四顆、被擋）。
 
 ## 來源
 
