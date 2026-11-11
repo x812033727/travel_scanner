@@ -103,3 +103,21 @@ test('episode assembly fails closed on reused, omitted, excluded or over-budget 
   input.plans[0].chapters[1].seconds += 60;
   assert.throws(() => buildProgram(catalog, ROOT, input), /duration budget mismatch/);
 });
+
+test('pool support names selected pool cores and a chapter of its own plan, and travels with the brief', () => {
+  const { catalog, program } = readProgram();
+  const pool = JSON.parse(readFileSync(path.join(ROOT, 'docs/videos/so-thats-why/pool/pool.json'), 'utf8'));
+  const selected = new Set(pool.candidates.filter((row) => row.selected).map((row) => row.id));
+  const supported = program.plans.filter((plan) => plan.pool_support?.length);
+  assert.deepEqual(supported.map((plan) => plan.id), ['P03', 'P09', 'P10', 'P26']);
+  for (const plan of supported) {
+    for (const item of plan.pool_support) {
+      assert.ok(selected.has(item.id), `${plan.id}: ${item.id} must be a selected core in the so-thats-why pool`);
+      assert.ok(plan.chapters.some((chapter) => chapter.title === item.chapter), `${plan.id}: ${item.chapter} is one of its chapters`);
+    }
+  }
+  assert.deepEqual(episodeBrief(catalog, program, 'P26').pool_support.map(({ id }) => id), ['H3060', 'H3061']);
+  const input = { plans: structuredClone(program.plans), outside: structuredClone(program.dispositions.filter((entry) => entry.disposition !== 'episode')) };
+  input.plans.find((plan) => plan.id === 'P26').pool_support[0].chapter = '不存在的章節';
+  assert.throws(() => buildProgram(catalog, ROOT, input), /pool support H3060/);
+});
