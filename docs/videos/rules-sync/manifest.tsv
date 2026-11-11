@@ -1,0 +1,53 @@
+# 規則與教訓 → 雲端硬碟（AI/備份/）的對照表。說明見 README.md。
+# 欄位：pattern（repo 路徑，可用 * ** {a,b}）、drive（雲端資料夾；結尾 .md 是指定檔名；{episode} 依資料夾名算集數；- 是刻意不傳）、except（不含這些）、note
+# 一個檔符合幾列就傳到幾個地方。watch.txt 列出的檔，每一個都必須至少符合這裡一列。
+pattern	drive	except	note
+# ── 第 0 層：所有 AI 劇共用 ──
+docs/videos/lessons/shared.md	AI劇/_共用規則/教訓/教訓.md		跨劇的教訓
+.agents/skills/animation-preproduction/**/*.md	AI劇/_共用規則/規則/animation-preproduction/		前製、審劇本
+.agents/skills/animation-camera/**/*.md	AI劇/_共用規則/規則/animation-camera/		鏡頭與提示詞
+.agents/skills/animation-production/**/*.md	AI劇/_共用規則/規則/animation-production/		製作流程
+.agents/skills/minimax-h3-colab/**/*.md	AI劇/_共用規則/規則/minimax-h3-colab/		H3（Colab）
+.agents/skills/minimax-h3-runpod/**/*.md	AI劇/_共用規則/規則/minimax-h3-runpod/		H3（RunPod）
+docs/videos/{AI-DRAMA-DRIVE,BACKUP,DRAMA,DRAMA-FLOW,SERIES,LONG-ANIME-PRODUCTION}.md	AI劇/_共用規則/規則/		備份與漫劇路線
+.agents/skills/animation-production/references/{error-catalogue,post-mortem}.md	AI劇/_共用規則/教訓/		錯誤目錄、檢討（規則那份也有）
+.agents/skills/animation-camera/references/model-misreads.md	AI劇/_共用規則/教訓/		模型誤讀
+.agents/skills/minimax-h3-colab/references/lessons.md	AI劇/_共用規則/教訓/minimax-h3-lessons.md		H3 教訓
+# ── 解說系列共用（奇聞＋原來如此）：兩邊各放一份 ──
+docs/videos/explainer-series/README.md	AI劇/奇聞檔案局/_規則與教訓/規則/解說系列共用/
+docs/videos/explainer-series/README.md	AI劇/原來如此事務所/_規則與教訓/規則/解說系列共用/
+docs/videos/lessons/explainer.md	AI劇/奇聞檔案局/_規則與教訓/教訓/解說系列共用教訓.md
+docs/videos/lessons/explainer.md	AI劇/原來如此事務所/_規則與教訓/教訓/解說系列共用教訓.md
+docs/videos/explainer-series/BACKUP-BRANCHES.md	-		2026-11-10 停用的分支備份規則
+# ── 奇聞檔案局 ──
+docs/videos/lessons/curio.md	AI劇/奇聞檔案局/_規則與教訓/教訓/教訓.md
+.agents/skills/curio-episode/**/*.md	AI劇/奇聞檔案局/_規則與教訓/規則/curio-episode/
+.agents/skills/curio-episode/references/w03-lessons.md	AI劇/奇聞檔案局/_規則與教訓/教訓/
+docs/videos/history-curiosity/*.md	AI劇/奇聞檔案局/_規則與教訓/規則/history-curiosity/
+docs/videos/story-everyday-moleskine-c03/reviews/curio-rules-recut.md	AI劇/奇聞檔案局/_規則與教訓/規則/
+docs/videos/curio-five-recuts-20261012/*.md	AI劇/奇聞檔案局/_規則與教訓/批次紀錄/curio-five-recuts-20261012/
+docs/videos/curio-next-five-20261016/*.md	AI劇/奇聞檔案局/_規則與教訓/批次紀錄/curio-next-five-20261016/
+# ── 原來如此事務所 ──
+docs/videos/lessons/sothatswhy.md	AI劇/原來如此事務所/_規則與教訓/教訓/教訓.md
+docs/videos/so-thats-why/*.md	AI劇/原來如此事務所/_規則與教訓/規則/so-thats-why/
+docs/videos/so-thats-why/refresh-20261101/*.md	AI劇/原來如此事務所/_規則與教訓/規則/so-thats-why/refresh-20261101/
+docs/videos/so-thats-why/series-sheets/*.md	AI劇/原來如此事務所/_規則與教訓/規則/so-thats-why/series-sheets/
+docs/videos/so-thats-why/dialogue-pilot-20261103/*.md	AI劇/原來如此事務所/_規則與教訓/批次紀錄/dialogue-pilot-20261103/
+docs/videos/sothatswhy-t26/production-record.md	AI劇/原來如此事務所/_規則與教訓/批次紀錄/sothatswhy-t26/		第二季 T26 單集製作紀錄
+docs/videos/sothatswhy-t27/{production-record,visual-production}.md	AI劇/原來如此事務所/_規則與教訓/批次紀錄/sothatswhy-t27/		第二季 T27 單集製作紀錄
+# ── 種田娶妻打天下（3D） ──
+docs/videos/lessons/zhong-tian-qu-qi.md	AI劇/種田娶妻打天下/_規則與教訓/教訓/教訓.md
+docs/videos/series-plans/zhong-tian-qu-qi/*.md	AI劇/種田娶妻打天下/_規則與教訓/規則/		設定、大綱、各季
+docs/videos/series-plans/zhong-tian-qu-qi/production/*.md	AI劇/種田娶妻打天下/_規則與教訓/規則/production/	docs/videos/series-plans/zhong-tian-qu-qi/production/r2-bible-*.md	分鏡規則、第一季檢討與修正清單
+docs/videos/series-plans/zhong-tian-qu-qi/production/{season1-review,season1-fix-list}.md	AI劇/種田娶妻打天下/_規則與教訓/教訓/		第一季檢討（規則那份也有）
+# ── 種田娶妻打天下（真人版） ──
+docs/videos/lessons/zhong-tian-qu-qi-r2.md	AI劇/種田娶妻打天下（真人版）/_規則與教訓/教訓/教訓.md
+docs/videos/series-plans/zhong-tian-qu-qi/production/r2-bible-*.md	AI劇/種田娶妻打天下（真人版）/_規則與教訓/規則/		r2 的角色與場景設定
+docs/videos/series-plans/zhong-tian-qu-qi/{setting,authoring}.md	AI劇/種田娶妻打天下（真人版）/_規則與教訓/規則/原作設定/		和 3D 版同一份原作設定
+# ── 恁祖媽今年18 ──
+docs/videos/lessons/tai-nainai.md	AI劇/恁祖媽今年18/_規則與教訓/教訓/教訓.md
+docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/*.md	AI劇/恁祖媽今年18/_規則與教訓/規則/
+docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/*.md	AI劇/恁祖媽今年18/_規則與教訓/規則/production/
+docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/screen-test/*.md	AI劇/恁祖媽今年18/_規則與教訓/規則/production/screen-test/		試鏡決定
+# ── 第 2 層：單集的製作紀錄（依資料夾名算集數，放 <集數>/教訓/<slug>-<檔名>） ──
+docs/videos/{curio,sothatswhy,zhong-tian-qu-qi,tai-nainai}-*/{NOTES,PRODUCTION-NOTES,production-record,lessons}.md	{episode}

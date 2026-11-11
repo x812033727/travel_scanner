@@ -10,6 +10,9 @@ export const DISPOSITIONS = { episode: '組成影片', shorts: '改短片', rese
 const definition = 'tools/video/so-thats-why/episode-plan.mjs';
 const read = (root, name) => readFileSync(path.join(root, DIRECTORY, name), 'utf8');
 
+// The 2026-11-11 material review (episode-plan.mjs MATERIAL_REVIEW; owner-approved): reserve and merge plans get no brief.
+export const MATERIAL_VERDICTS = Object.freeze({ ready: '可成題', merge: '待合併', reserve: '後備' });
+
 export function buildProgram(catalog, root = ROOT, input = { plans, outside }) {
   const active = catalog.episodes.filter((entry) => entry.active);
   const used = new Set();
@@ -19,6 +22,7 @@ export function buildProgram(catalog, root = ROOT, input = { plans, outside }) {
     planIds.add(plan.id);
     if (!Object.hasOwn(TIERS, plan.tier) || !plan.topics.length || !plan.question || !plan.join || !plan.cut || !plan.risk || !plan.evidence || !plan.visual) throw new Error(`${plan.id}: missing editorial decision`);
     if (plan.production_ready !== false || plan.status !== 'EPISODE_PLAN_NOT_SCRIPT') throw new Error(`${plan.id}: plan cannot grant production approval`);
+    if (plan.material && (!Object.hasOwn(MATERIAL_VERDICTS, plan.material.verdict) || !plan.material.reviewed_on || (plan.material.verdict !== 'ready' && !plan.material.missing) || (plan.material.verdict === 'merge' && !plan.material.merge_with?.length))) throw new Error(`${plan.id}: material review needs a verdict, its date, what is missing and, for a merge, what it merges with`);
     if (plan.chapters.length < 5 || plan.chapters.some((chapter) => !chapter.title || !chapter.new_information || !Number.isInteger(chapter.seconds) || chapter.seconds <= 0)) throw new Error(`${plan.id}: incomplete chapters`);
     const total = plan.chapters.reduce((sum, chapter) => sum + chapter.seconds, 0);
     if (total !== plan.target_body_seconds || total < 480 || plan.planning_range_seconds.length !== 2 || plan.planning_range_seconds[0] > total || plan.planning_range_seconds[1] < total) throw new Error(`${plan.id}: duration budget mismatch`);
@@ -67,6 +71,10 @@ export function episodeBrief(catalog, program, id, root = ROOT) {
     if (decision?.disposition !== 'episode') throw new Error(`${id} excluded by duration review: ${decision?.reason}`);
     plan = program.plans.find((entry) => entry.id === decision.episode_id);
   }
+  if (plan.material && plan.material.verdict !== 'ready') {
+    const merge = plan.material.merge_with?.length ? `; merge with ${plan.material.merge_with.join(', ')} first` : '';
+    throw new Error(`${plan.id} is held by the material review (${plan.material.verdict}): ${plan.material.missing}${merge}`);
+  }
   return {
     status: 'EDITORIAL_BRIEF_NOT_IMPORT_READY', id: plan.id, requested_id: id,
     title: `${plan.title}｜原來如此事務所`, plan,
@@ -90,9 +98,10 @@ export function renderProgram(program) {
     '下列機制與畫面是待查核的寫作安排，來源入口在題庫與逐集 brief；不是本輪完成的 30 集科學／醫學／工程事實核准。', '',
     '| 企劃 | 題目 | 合入素材 | 正文目標／範圍 | 梯次 |', '| --- | --- | --- | --- | --- |',
   ];
-  for (const p of program.plans) lines.push(`| [${p.id}](#${p.id.toLowerCase()}) | ${p.title} | ${p.topics.join('＋')} | ${p.minutes} 分／${p.range.join('–')} 分 | ${TIERS[p.tier]} |`);
+  for (const p of program.plans) lines.push(`| [${p.id}](#${p.id.toLowerCase()}) | ${p.title} | ${p.topics.join('＋')} | ${p.minutes} 分／${p.range.join('–')} 分 | ${TIERS[p.tier]}${p.material ? `；素材審視：${MATERIAL_VERDICTS[p.material.verdict]}` : ''} |`);
   for (const p of program.plans) {
-    lines.push('', `<a id="${p.id.toLowerCase()}"></a>`, `## ${p.id} ${p.title}`, '',
+    const material = p.material ? [`**素材審視（2026-11-11）：** ${MATERIAL_VERDICTS[p.material.verdict]}，新節奏估約 ${p.material.est_minutes} 分`, p.material.missing ? `；${p.material.verdict === 'ready' ? '寫稿前要先補' : '缺'}：${p.material.missing}` : '', p.material.merge_with?.length ? `；合併對象：${p.material.merge_with.join('、')}` : '', '。'].join('') : '';
+    lines.push('', `<a id="${p.id.toLowerCase()}"></a>`, `## ${p.id} ${p.title}`, '', ...(material ? [material, ''] : []),
       `**觀眾一路追問：** ${p.question}`, '',
       `**如何組成一集：** ${p.join}`, '',
       `**來源素材：** ${p.topics.join('、')}。**正文目標：** ${p.minutes} 分（估計範圍 ${p.range.join('–')} 分）；口語稿粗估 ${p.estimated_spoken_characters.join('–')} 字，試讀優先於字數；至少 ${p.minimum_loops} 個伏筆回收。`, '',
