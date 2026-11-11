@@ -114,7 +114,7 @@ def obj(id, prompt, *lines, chapter=None):
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 # The first picture is the problem itself: the family car on the winding mountain road to grandma's.
 obj("car-mountain", "Wide shot of a small rounded family car driving along a winding green mountain road on a sunny morning, tea bushes and blue sky around it",
-    k("所長！我坐車去阿嬤家，", "委屈又急，跑進來報案的語氣"), chapter="去阿嬤家的山路")
+    k("所長，我跟你說喔！", "委屈又急，跑進來報案的語氣"), k("我坐車去阿嬤家，", "委屈"), chapter="去阿嬤家的山路")
 # Thumbnail shot (fixed before keyframes, explainer-series/README.md): the kid big and centred, the comic in hand.
 kid("kid-reading-open", K("giggling at " + COMIC + " held close to her face", close=True, where=CAR),
     k("看漫畫看到一半，", "難受"))
@@ -141,13 +141,13 @@ kid("kid-ear-guess", K("cupping one hand behind her ear with a worried little fr
 chief("chief-opposite", C("shaking her head gently with a kind smile, one hand raised", close=True),
       c("那叫內耳。不一定喔，研究暈車的人發現，", "接住上一句"), c("內耳的平衡功能完全不能用的人，才完全不會暈。", None, "P:broken"))
 chief("chief-almost-all", C("opening both arms wide towards the viewer with a reassuring smile"),
-      c("內耳好好的人，幾乎每一個都可能暈。"))
+      c("耳朵裡面好好的人，幾乎每一個都可能暈。"))
 kid("kid-working", K("touching her own ear with one finger and a surprised delighted face", close=True, where=HOME),
     k("所以我會暈，", "驚訝"), k("是耳朵有在認真？"))
 chief("chief-working", C("nodding with a warm amused smile", close=True),
       c("可以這麼說：會暈，代表它一直在工作。", "笑"))
 kid("kid-ear-q", K("tilting her head with one hand on her ear and a curious face", where=HOME),
-    k("那內耳，", "追問"), k("到底在做什麼？", "句尾上揚", "S:ear"))
+    k("那耳朵裡面，", "追問"), k("到底在做什麼？", "句尾上揚", "S:ear"))
 chief("chief-inside", C("holding her thumb and finger a tiny gap apart beside her ear, a curious smile", close=True),
       c("你耳朵很深的地方，有幾條很細的小管子和小袋子，"), c("裡面裝著液體。"))
 chief("chief-cup", C("holding up a clear plastic cup of water in one hand with a friendly smile"),
@@ -159,9 +159,9 @@ chief("chief-grains", C("tipping a clear plastic cup of water gently in one hand
 chief("chief-brain-reads", C("pretending to steer a car with both hands, then braking with a surprised laughing face"),
       c("大腦就看它們怎麼晃，知道你在轉、在加速，還是在煞車。", None, "P:ear"))
 chief("chief-limit", C("putting a clear plastic cup of water down on a small table with an honest serious smile"),
-      c("先說清楚，杯子只是比喻。真的內耳很小很小，"), c("而且管轉彎的地方，跟管加速的地方，是分開的。"))
+      c("先說清楚，杯子只是比喻。真的耳朵裡面很小很小，"), c("而且管轉彎的地方，跟管加速的地方，是分開的。"))
 kid("kid-eyes-q", K("pointing at her own eyes with two fingers and a curious face", close=True, where=HOME),
-    k("那眼睛呢？", "追問"), k("眼睛也會報告嗎？", "句尾上揚", "S:eyes"))
+    k("那眼睛呢？", "追問"), k("眼睛也會告訴大腦嗎？", "句尾上揚", "S:eyes"))
 chief("chief-eyes", C("pointing at her own eye with one finger and a friendly smile", close=True),
       c("會。眼睛看外面的東西怎麼跑，也在告訴大腦你在動。"), c("腳底跟肌肉，也會報告。"))
 kid("kid-walk-q", K("walking forward in mid-step along a sunny park path with a curious face", where="in a sunny park"),
@@ -339,7 +339,7 @@ kid("kid-neuron-q", K("pointing at her own forehead with a curious face", close=
 chief("chief-neurons", C("holding a clear plastic cup of water still in one hand and pointing at it with the other, a thoughtful smile"),
       c("猴子的腦裡有一群細胞，被別人帶著動時，反應特別大；"), c("自己動的時候，它們就比較安靜。"))
 chief("chief-neuron-limit", C("tilting her head with an honest thoughtful smile", close=True),
-      c("研究的人猜，這可能就是比對預想的地方。"), c("可是它們怎麼讓人想吐，還沒找到。", None, "P:neuron"))
+      c("研究的人推測，大腦可能就是在這裡比對、找不同。"), c("可是它們怎麼讓人想吐，還沒找到。", None, "P:neuron"))
 kid("kid-final-q", K("holding " + COMIC + " on her lap and looking straight ahead with a thinking face", where=CAR),
     k("所以我看漫畫會暈，", "推理"), k("到底是怎麼回事？", "章尾停住，句尾上揚"))
 
@@ -366,7 +366,7 @@ chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a war
 WHAT = {"main": "坐車看漫畫，頭暈肚子怪，到底怎麼了", "dad": "爸爸開同一台車，為什麼一點事都沒有",
         "blind": "遮住眼睛坐車，會不會暈", "sofa": "坐在沙發上不動，只看賽車畫面會不會暈",
         "broken": "會暈車是不是內耳不好", "ear": "內耳到底在做什麼",
-        "eyes": "眼睛也會報告嗎", "liar": "看漫畫時，是誰在說謊",
+        "eyes": "眼睛也會告訴大腦嗎", "liar": "看漫畫時，是誰在說謊",
         "close": "閉上眼睛是不是就不會吵", "who": "眼睛閉起來了，還在跟誰吵",
         "window": "看窗外會不會比較好", "reverse": "反過來，眼睛說在動、身體說沒動會怎樣",
         "vection": "沒在動，為什麼會覺得在動", "game": "自己玩和看錄影，誰比較不暈",
