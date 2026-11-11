@@ -12,6 +12,7 @@ branch:
 depends_on: []
 scope:
   - apps/web/e2e/navigation.spec.ts
+  - apps/web/e2e/readability.spec.ts
 ---
 
 # Pin the clock in the planner weather readability and itinerary drag-handle e2e tests
