@@ -31,6 +31,7 @@ from app.news_automation.policy import (
 )
 from app.news_automation.schemas import Entry, FetchResult, Vertical
 from app.news_automation.service import settings_row
+from app.news_automation.supplemental import is_supplemental_url, supplemental_urls
 
 Enqueue = Callable[[UUID], Awaitable[None]]
 # What one unreachable, refused or unreadable page raises: HTTP status and transport
@@ -205,7 +206,7 @@ def _corroborating_link(link: str, primary: str) -> bool:
     if urlsplit(link).path.casefold().endswith(NON_ARTICLE_SUFFIXES):
         return False
     # Pages of the primary page's own site are not a second source (owner decision,
-    # 2026-09-24), so they are not fetched at all.
+    # 2026-09-24). A separate opt-in path may read official supplemental documents.
     return evidence_site(link) != evidence_site(primary)
 
 
@@ -561,6 +562,10 @@ async def scan_source(
             deferred = False
             if not exact_duplicate_id:
                 seen_urls = {canonical}
+                supplemental = supplemental_urls(
+                    detail_source, canonical, links, excluded_suffixes=NON_ARTICLE_SUFFIXES
+                )
+                attempted_supplemental: set[str] = set()
                 for found in links:
                     link = found
                     linked_source = by_host.get(_host(link))
@@ -570,19 +575,23 @@ async def scan_source(
                         link = repository_root(link) or ""
                         if not link:
                             continue
+                    is_supplement = link in supplemental
                     if (
                         linked_source is None
                         or linked_source.role != "evidence"
                         or link in seen_urls
+                        or link in attempted_supplemental
                         or len(linked_rows) >= 4
-                        or not _corroborating_link(link, canonical)
+                        or (not is_supplement and not _corroborating_link(link, canonical))
                     ):
                         continue
+                    if is_supplement:
+                        attempted_supplemental.add(link)
                     try:
                         linked = await fetcher.fetch(
                             link,
-                            allowed_hosts=allowed_hosts,
-                            allowed_redirect_hosts=allowed_redirects,
+                            allowed_hosts={_host(canonical)} if is_supplement else allowed_hosts,
+                            allowed_redirect_hosts=set() if is_supplement else allowed_redirects,
                         )
                     except PAGE_ERRORS as error:
                         skipped.append(f"{link} ({type(error).__name__})")
@@ -605,12 +614,23 @@ async def scan_source(
                         linked.body, linked.url, linked_source.config_json
                     )
                     linked_title, linked_text = linked_page.title, linked_page.text
+                    linked_body_hash = body_fingerprint(linked_page)
+                    if is_supplement and (
+                        not is_supplemental_url(detail_source, canonical, linked.url)
+                        or urlsplit(linked.url).path.casefold().endswith(NON_ARTICLE_SUFFIXES)
+                        or linked_body_hash is None
+                    ):
+                        skipped.append(f"{link} (supplemental page outside scope or unreadable)")
+                        continue
                     # Two links that redirect to one page would repeat an evidence URL,
                     # and a redirect can land back on the primary page's own site.
                     if (
                         not linked_text.strip()
                         or linked.url in seen_urls
-                        or not _corroborating_link(linked.url, canonical)
+                        or (
+                            not is_supplement
+                            and not _corroborating_link(linked.url, canonical)
+                        )
                     ):
                         continue
                     seen_urls.update({link, linked.url})
@@ -623,7 +643,7 @@ async def scan_source(
                             etag=linked.etag,
                             last_modified=linked.last_modified,
                             content_hash=content_fingerprint(linked_text),
-                            body_hash=body_fingerprint(linked_page),
+                            body_hash=linked_body_hash,
                             excerpt=evidence_excerpt(linked_text),
                         )
                     )

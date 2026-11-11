@@ -13,6 +13,8 @@ describe("RelatedGrid", () => {
     render(
       <RelatedGrid
         heading="同主題延伸閱讀"
+        lead="從相關文章繼續了解"
+        actionLabel="接著閱讀"
         items={[item("a", "甲"), item("b", "乙", "howto"), item("c", "丙", "intel", null), item("d", "丁"), item("e", "戊")]}
         kindLabels={kindLabels}
       />,
@@ -20,6 +22,8 @@ describe("RelatedGrid", () => {
     const section = screen.getByRole("region", { name: "同主題延伸閱讀" });
     expect(within(section).getAllByRole("listitem")).toHaveLength(4);
     expect(within(section).getByRole("link", { name: "乙" }).getAttribute("href")).toBe("/guides/howto/b");
+    expect(within(section).getByText("從相關文章繼續了解")).toBeTruthy();
+    expect(within(section).getByRole("link", { name: "乙" }).getAttribute("data-content-link")).toBe("related");
     expect(within(section).getByText("攻略")).toBeTruthy();
     expect(within(section).queryByRole("link", { name: "戊" })).toBeNull();
     // A reference without a description draws none, rather than an empty line.

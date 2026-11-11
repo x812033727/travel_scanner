@@ -1,0 +1,186 @@
+{
+  "status": "CONTENT_PREVIEW_INDEPENDENT_V2_REVIEW_PASS_NOT_PUBLISHED",
+  "checked_on": "2026-11-10",
+  "locale": "zh-TW",
+  "title": "圖片還沒捲到就下載？20 張圖實測 loading=lazy 的載入時機",
+  "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "network_method": "curl.exe -L --max-time 45 --silent --show-error; status/final_url/bytes observed directly, complete HTML saved; comments/scripts/styles removed before body reading",
+  "sources": [
+    {
+      "title": "MDN：HTMLImageElement loading 屬性",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading",
+      "checked_on": "2026-11-10",
+      "status": 200,
+      "final_url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading",
+      "body_read": true,
+      "snapshot": "<home>/.codex/tmp/mokaair-news-upgrade-20261110/lab-article/evidence/mdn-loading.html",
+      "sha256": "ea3f5bcb3a94680c099a1b760d4dca35337210cfe0db3a39aba8d36a348453e4",
+      "bytes": 161444,
+      "extracted_text": "<home>/.codex/tmp/mokaair-news-upgrade-20261110/lab-article/evidence/mdn-loading.txt",
+      "extracted_text_sha256": "5cefa1f7e51e7a1b460c9ecb0a57f61ce60069753392e569811a9362b7f6881a",
+      "supports": [
+        "loading 是瀏覽器提示",
+        "此頁為 HTMLImageElement.loading 的技術說明，非行銷宣稱"
+      ],
+      "fetched_at_utc_from_local_file_mtime": "2026-11-10T13:05:16.911180+00:00",
+      "publication_storage": "PRIVATE_ONLY_NOT_DISTRIBUTED; hash describes the retained original external-source capture, not a file shipped in this package"
+    },
+    {
+      "title": "WHATWG HTML：Lazy loading attributes",
+      "url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html#lazy-loading-attributes",
+      "checked_on": "2026-11-10",
+      "status": 200,
+      "final_url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html#lazy-loading-attributes",
+      "body_read": true,
+      "snapshot": "<home>/.codex/tmp/mokaair-news-upgrade-20261110/lab-article/evidence/whatwg-loading.html",
+      "sha256": "5d3789691359a86309dac90ab346de11efa9ad754a7ebcaf9a5bae1a192444a4",
+      "bytes": 81244,
+      "extracted_text": "<home>/.codex/tmp/mokaair-news-upgrade-20261110/lab-article/evidence/whatwg-loading.txt",
+      "extracted_text_sha256": "d80cf33c6da5f568e9dd419da5f32e375e78aea06c16a05031d42a8de1bd2b0d",
+      "supports": [
+        "停用 scripting 時 will lazy load 回傳 false",
+        "此行為與避免透過請求推測捲動位置有關",
+        "lazy load scroll margin 為實作決定，可考量裝置、捲動、網路及偏好"
+      ],
+      "fetched_at_utc_from_local_file_mtime": "2026-11-10T13:05:18.106912+00:00",
+      "publication_storage": "PRIVATE_ONLY_NOT_DISTRIBUTED; hash describes the retained original external-source capture, not a file shipped in this package"
+    },
+    {
+      "title": "Google web.dev：Browser-level image lazy loading for the web",
+      "url": "https://web.dev/articles/browser-level-image-lazy-loading",
+      "checked_on": "2026-11-10",
+      "status": 200,
+      "final_url": "https://web.dev/articles/browser-level-image-lazy-loading",
+      "body_read": true,
+      "snapshot": "<home>/.codex/tmp/mokaair-news-upgrade-20261110/lab-article/evidence/webdev-loading.html",
+      "sha256": "3db6dc863593e453b1e1bbb51113309b6baeb85be3a66b47e16b2bb836e63f03",
+      "bytes": 201067,
+      "extracted_text": "<home>/.codex/tmp/mokaair-news-upgrade-20261110/lab-article/evidence/webdev-loading.txt",
+      "extracted_text_sha256": "918ec954f0bb2fb5d74ae86a3614e9e9066f0284d84e15323b593b565ed9071b",
+      "supports": [
+        "原生 loading 不需自行編寫 lazy-loading JavaScript",
+        "首屏圖片不應一律 lazy",
+        "width 與 height 預留空間",
+        "eager 為正常載入，不代表比其他正常圖片更快"
+      ],
+      "fetched_at_utc_from_local_file_mtime": "2026-11-10T13:05:17.006234+00:00",
+      "publication_storage": "PRIVATE_ONLY_NOT_DISTRIBUTED; hash describes the retained original external-source capture, not a file shipped in this package"
+    },
+    {
+      "title": "圖片延遲載入怎麼設：讓重要內容先顯示",
+      "url": "https://mokaair.com/zh-TW/life/lazy-loading-images",
+      "checked_on": "2026-11-10",
+      "status": 200,
+      "final_url": "https://mokaair.com/zh-TW/life/lazy-loading-images",
+      "body_read": true,
+      "snapshot": "<home>/.codex/tmp/mokaair-news-upgrade-20261110/lab-article/evidence/mokaair-related.html",
+      "sha256": "407f4370a73d2225175c5c06307fb14d4cb3ea3de00a1a7593c64c803b0cf7a8",
+      "bytes": 475603,
+      "extracted_text": "<home>/.codex/tmp/mokaair-news-upgrade-20261110/lab-article/evidence/mokaair-related.txt",
+      "extracted_text_sha256": "b47821b7b6d147d33bba1fba00bca480d08b9511a38624a4b3a75dd122b56dff",
+      "supports": [
+        "只核對延伸閱讀的標題、公開 URL 與內文涵蓋首屏、尺寸及 WordPress 分工",
+        "不把既有教學當成本次實測或外部規格的證據"
+      ],
+      "fetched_at_utc_from_local_file_mtime": "2026-11-10T13:05:17.881062+00:00",
+      "publication_storage": "PRIVATE_ONLY_NOT_DISTRIBUTED; hash describes the retained original external-source capture, not a file shipped in this package"
+    }
+  ],
+  "experiment": {
+    "run_id": "2026-11-10T12-52-37-220Z",
+    "receipt_sha256": "4fff96b602a1733848c60930ad3c4d99fec897a270f1c9ea07480b09c75da0ee",
+    "executed_by": "Separate experiment agent; article author did not execute these browser runs",
+    "source_brief": "experiment/RESULTS-BRIEF.md",
+    "source_brief_sha256": "9e068b8b6e5dbe5c4311f868ee13864ec6fc3d0dae88f7ce800e567c8502d790",
+    "evidence": [
+      {
+        "path": "experiment/runs/2026-11-10T12-52-37-220Z/receipt.json",
+        "sha256": "4fff96b602a1733848c60930ad3c4d99fec897a270f1c9ea07480b09c75da0ee",
+        "bytes": 1419,
+        "original_sha256": "ca402a83accabe19b73d89f41f799bebaf685dedb64e7d3e17a984b778dc41a9",
+        "original_bytes": 885,
+        "publication_kind": "PUBLICATION_DERIVED_NOT_NEW_EXPERIMENT"
+      },
+      {
+        "path": "experiment/runs/2026-11-10T12-52-37-220Z/results.json",
+        "sha256": "60e340a2e4a2e2100dc9de8a40ec33017dc529cf99112bd5b7f0fb17c638aca9",
+        "bytes": 441910
+      },
+      {
+        "path": "experiment/runs/2026-11-10T12-52-37-220Z/results.csv",
+        "sha256": "5c833726d26e6028ef3ed5e61e5a43e15ea9a366fe6efa71a33bd29948c991ac",
+        "bytes": 1544
+      },
+      {
+        "path": "experiment/runs/2026-11-10T12-52-37-220Z/server-requests.json",
+        "sha256": "ba704282ea0bbc47e8109ce434e7963f0cdc8c4707c0de5bff59a95c6c25d7e0",
+        "bytes": 98247
+      },
+      {
+        "path": "experiment/runs/2026-11-10T12-52-37-220Z/browser-requests.json",
+        "sha256": "3ba779101d6ff137d733979434ad984289cd8740adbd6f970010ce3cd6d21a2f",
+        "bytes": 83059
+      },
+      {
+        "path": "experiment/runs/2026-11-10T12-52-37-220Z/environment.json",
+        "sha256": "bf9c0cbf113dc7a9edb2ca7ef7c6a482b139192c3f5fda138f40e8faedcb218b",
+        "bytes": 1390,
+        "original_sha256": "4c81b4ffa5f1c739e019e12d6c75c13491b2fcad601021129c75920998e78731",
+        "original_bytes": 803,
+        "publication_kind": "PUBLICATION_DERIVED_NOT_NEW_EXPERIMENT"
+      },
+      {
+        "path": "experiment/runs/2026-11-10T12-52-37-220Z/verification.json",
+        "sha256": "67743edd73fe02960b3943e4427ce529df0dd6f0d13057a44c06d87a64509ddc",
+        "bytes": 14866,
+        "original_sha256": "fd46293cb7c807d623869a2eeab0cb66fd35320316199112cbc550147e27380f",
+        "original_bytes": 14866,
+        "publication_kind": "NEW_CONSISTENCY_CHECK_OF_PUBLIC_DERIVATIVE_NOT_BROWSER_RUN"
+      },
+      {
+        "path": "experiment/runs/2026-11-10T12-52-37-220Z/experiment-plan.md",
+        "sha256": "d3f845e5b61938eee8d69cc63cbacd344124ea4b7e63e342aa9ad2d6e7e2fb52",
+        "bytes": 3630
+      }
+    ],
+    "observations": [
+      "Both viewports: three repetitions for each of eager-js, lazy-js, lazy-nojs; 18 total cases",
+      "Lazy condition retains first image eager and marks remaining 19 lazy",
+      "Initial lazy-js requested/loaded=2; other conditions requested/loaded=20",
+      "Second image below viewport nevertheless loaded; third far image unrequested in initial lazy-js",
+      "After End: lazy-js loaded 17 or 18, final image loaded in every case; End may traverse intermediate viewports",
+      "After complete traversal: loaded=20 in all cases",
+      "165 post-run checks concern evidence consistency, not 165 browser experiments"
+    ],
+    "original_receipt_sha256": "ca402a83accabe19b73d89f41f799bebaf685dedb64e7d3e17a984b778dc41a9",
+    "original_source_brief_sha256": "9fec3d2697333dda8f6b8bc38833b0f52e8e6f01e3046c0d0ecc7f753d0bcaa3"
+  },
+  "unverified_or_excluded": [
+    "No bandwidth percentage, page-speed multiplier, LCP, SEO or business improvement measured",
+    "No physical mobile device, Safari, Firefox or other Edge build tested",
+    "No real photographs, internet conditions, production site or third-party lazy-loader tested",
+    "No fixed pixel preloading threshold derived",
+    "No claim that End teleports without traversing intermediate viewports",
+    "No claim all screenshots were individually visually reviewed by article author",
+    "Two-image code is an authored illustration, not a separately executed experiment; placeholder image URLs require replacement",
+    "Public lab URL/download is not available; do not invent one or put local paths into public sources"
+  ],
+  "validation": {
+    "guide_document": "PASS",
+    "article_md": "Rendered from the same draft.json blocks to preserve text/table/code parity",
+    "article_sha256": "c5d1921ab2e1a94f131967bab73348484d3e2dfd38593a10dc1ba1a09aa5ce64",
+    "draft_sha256": "dbc15e22ce69249465d3d7719b312646dd3e855bac129a4cc8702395ee2a3810",
+    "not_run": [
+      "pack ingest",
+      "pack lint requiring a content bundle and assets",
+      "publication",
+      "sample code browser test"
+    ]
+  },
+  "publication_rebind": {
+    "kind": "PUBLICATION_DERIVED_NOT_NEW_EXPERIMENT",
+    "rebound_at_utc": "2026-11-10T13:18:39.307437+00:00",
+    "original_sources_sha256": "d18bb841a71613650f9497448b33c63cbe2dbe7519b6fdb66e92c3788495ec03",
+    "note": "Article/draft unchanged. External HTML/text retained privately; local evidence paths made package-relative and derivative artifact hashes rebound. Original hashes below remain historical, not hashes claimed for changed files."
+  }
+}

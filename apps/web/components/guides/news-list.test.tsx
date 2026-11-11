@@ -25,13 +25,13 @@ describe("the news list", () => {
     expect(within(rows[0]).getByRole("link", { name: "Siri AI 隨 iOS 27 推出" }).getAttribute("href")).toBe("/life/ai-news-siri-20260914");
   });
 
-  it("shows the news day, never the publication time, and no description or position", () => {
+  it("shows the news day and description, never the publication time or a ranking", () => {
     // Imported in one batch: both stories published in the same minute.
     render(<NewsList articles={[story("a", "甲", "2026-07-01", "2026-09-16T05:00:00Z")]} />);
     const list = screen.getByTestId("news-list");
     expect(list.textContent).toContain("2026-07-01");
     expect(list.textContent).not.toContain("2026-09-16");
-    expect(list.textContent).not.toContain("甲的描述");
+    expect(list.textContent).toContain("甲的描述");
     expect(list.tagName).toBe("OL");
   });
 
@@ -45,5 +45,17 @@ describe("the news list", () => {
   it("draws nothing without a story", () => {
     const { container } = render(<NewsList articles={[]} />);
     expect(container.innerHTML).toBe("");
+  });
+
+  it("promotes only the first story without repeating it or changing the chronology", () => {
+    const first = { ...story("first", "First story", "2026-09-14"), hero: { src: "/guides/first/hero.webp", alt: "Cover", width: 1600, height: 900, credit: null } };
+    render(<NewsList articles={[first, story("next", "Next story", "2026-09-12")]} lead />);
+    expect(screen.getAllByTestId("news-lead")).toHaveLength(1);
+    expect(screen.getAllByRole("link", { name: "First story" })).toHaveLength(1);
+    const cover = screen.getByTestId("news-lead").querySelector("img");
+    expect(cover?.getAttribute("loading")).toBe("eager");
+    expect(cover?.getAttribute("alt")).toBe("");
+    expect(within(screen.getByTestId("news-list")).getAllByRole("listitem").map(row => row.querySelector("time")?.dateTime))
+      .toEqual(["2026-09-14", "2026-09-12"]);
   });
 });

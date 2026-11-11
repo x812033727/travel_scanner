@@ -1,0 +1,148 @@
+{
+  "title": "圖片還沒捲到就下載？20 張圖實測 loading=lazy 的載入時機",
+  "description": "網站加了 loading=lazy，為什麼還沒捲到的圖片已經下載？Mokaair 用同一部 Windows 電腦上的 Edge，對 20 張測試圖完成 18 次本機觀察：啟用 JavaScript 的 lazy 組初始載入 2 張，停用後則載入全部 20 張。本文拆解提前載入、捲到底與停用腳本三種情境，附設定範例及檢查方法；這次沒有測頁速、流量節省率或實體手機。",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "替文章圖片加上 loading=lazy（延後載入）後，看到視窗外的圖片已經下載，先別急著判定設定失效。Mokaair 在 2026 年 11 月 10 日完成一組本機實驗：啟用網頁腳本（JavaScript，簡稱 JS）時，lazy 組尚未捲動就載入第 1、2 張圖，其中第 2 張還在視窗下方；更遠的第 3 張則尚未發出圖片請求。"
+    },
+    {
+      "type": "paragraph",
+      "text": "對網站經營者與入門前端來說，真正要確認的是：重要圖片有沒有被延後，後段圖片是否在需要時出現，以及測試條件有沒有改變瀏覽器行為。"
+    },
+    {
+      "type": "summary",
+      "items": [
+        "這次 lazy 組在 JavaScript 啟用、尚未捲動時載入 2/20；其中一張已在視窗外，提前載入不等於失效。",
+        "JavaScript 停用時，lazy 組初始載入 20/20；逐段捲完整頁後，各組也都是 20/20。",
+        "初始圖片數量不等於整篇流量或速度。本次只有 Edge、本機 SVG 與兩種 CSS 視窗，沒有測實體手機或網站效能。"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "怎麼測：同一頁面配置，換載入屬性與腳本開關"
+    },
+    {
+      "type": "paragraph",
+      "text": "我們用同一部 Windows 電腦的 Edge，自動操作一份有 20 張圖片的頁面配置，改變載入屬性、JavaScript 開關與可視範圍（CSS viewport）。兩種視窗是 1440×900 與 390×844，裝置像素比均為 1；後者只是窄視窗，沒有啟用手機裝置模擬，也沒有拿實體手機測試。"
+    },
+    {
+      "type": "paragraph",
+      "text": "每頁放 20 張自製 SVG，圖檔尺寸都是 1200×675，HTML 已寫好 width 與 height。對照頁全部設 eager（正常載入）；lazy 頁保留第 1 張 eager，其餘 19 張設 lazy。兩頁素材、尺寸與位置相同，第 2 張稍離首屏，第 3 張前刻意留了 6000px 空白，讓近處與遠處的圖片能分開觀察。"
+    },
+    {
+      "type": "paragraph",
+      "text": "兩種視窗各測三個條件：全部 eager 且啟用 JavaScript、lazy 組且啟用 JavaScript、lazy 組但停用 JavaScript；每個條件重複 3 次，共 18 次。每次建立新的瀏覽器 context，關閉快取並阻擋 service worker，圖片從本機 HTTP 供應，沒有網路限速。這不是在 Mokaair 正式網站上做的效能測試。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "結果：初始 2 張，讀完整頁仍是 20 張"
+    },
+    {
+      "type": "paragraph",
+      "text": "開頁到 DOMContentLoaded 後等 3 秒，先記錄未捲動狀態；再按 End 到頁尾，等 1 秒記錄；接著回頂部，每次捲動 700px、間隔 80ms，逐段到頁尾後再等 1 秒。表中的「載入」採圖片 complete 為真、naturalWidth 大於 0 的判定，初始數量另與伺服器收到的圖片請求交叉核對。"
+    },
+    {
+      "type": "table",
+      "header": ["條件／CSS 視窗", "初始載入", "End 後", "逐段捲完"],
+      "rows": [
+        ["全 eager＋JS／1440×900", "20/20", "20/20", "20/20"],
+        ["lazy 組＋JS／1440×900", "2/20", "17–18/20", "20/20"],
+        ["lazy 組停用 JS／1440×900", "20/20", "20/20", "20/20"],
+        ["全 eager＋JS／390×844", "20/20", "20/20", "20/20"],
+        ["lazy 組＋JS／390×844", "2/20", "17–18/20", "20/20"],
+        ["lazy 組停用 JS／390×844", "20/20", "20/20", "20/20"]
+      ],
+      "caption": "2026-11-10 本機實測；每列重複 3 次。lazy 組首張 eager、其餘 19 張 lazy；範圍表示三次觀察的最小至最大值。"
+    },
+    {
+      "type": "paragraph",
+      "text": "兩種視窗的 lazy 組在 JavaScript 啟用、尚未捲動時都是 2/20；第 3 張尚未請求。停用 JavaScript 後則初始就有 20/20。按 End 後，lazy＋JS 組累計載入 17–18 張，最後一張在每次測試都成功載入；但 End 操作可能經過中間視窗，不能解讀成瀏覽器瞬間跳到底時只下載末尾幾張。逐段捲完整頁後，各組都是 20/20。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "還沒看到就下載，以及關掉 JavaScript 後全載入，怎麼解釋？"
+    },
+    {
+      "type": "rich_paragraph",
+      "inlines": [
+        {"type": "text", "text": "MDN 將 loading 說明為給瀏覽器的提示；WHATWG HTML 規格也把提前載入的距離交由瀏覽器實作決定，並列出裝置、捲動、網路與偏好等考量。因此，這次第 2 張在視窗外先載入，與「在讀者看到之前準備圖片」的設計一致。不能拿這兩種視窗的位置反推出固定的像素門檻。參考："},
+        {"type": "link", "text": "MDN loading", "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading"},
+        {"type": "text", "text": "、"},
+        {"type": "link", "text": "HTML 延遲載入規格", "url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html#lazy-loading-attributes"},
+        {"type": "text", "text": "。"}
+      ]
+    },
+    {
+      "type": "rich_paragraph",
+      "inlines": [
+        {"type": "text", "text": "停用 JavaScript 是另一個容易漏掉的條件。HTML 規格明定，停用 scripting 時不採用這個延遲載入機制，理由涉及避免透過圖片請求追蹤捲動位置。這不代表網站得自行寫一套 JavaScript 才能使用 loading=lazy；原生機制仍由瀏覽器處理。本輪以頁內標記確認腳本沒有執行，再由自動化介面讀取 DOM，沒有為了讀取結果而重新開啟頁內 JavaScript。參考："},
+        {"type": "link", "text": "HTML 延遲載入規格", "url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html#lazy-loading-attributes"},
+        {"type": "text", "text": "。"}
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "網站怎麼改：先留首圖，再挑後段圖片"
+    },
+    {
+      "type": "rich_paragraph",
+      "inlines": [
+        {"type": "text", "text": "先檢查讀者進頁面立刻會看到的圖片，保留正常載入；較後面的圖片才考慮 lazy，並填入符合素材比例的 width、height，預留版面空間。web.dev 也提醒不要延遲首屏圖片，尤其是可能成為最大內容繪製（LCP）的圖片。這是官方實作建議；本次所有測試都保留首張 eager，沒有比較首圖改成 lazy 對 LCP 的影響。參考："},
+        {"type": "link", "text": "Google 的原生圖片延遲載入說明", "url": "https://web.dev/articles/browser-level-image-lazy-loading"},
+        {"type": "text", "text": "。"}
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "下面是編輯依實驗原理整理的縮短示範碼，供測試頁觀察一張近圖與一張遠圖。請換成自己可取得、同為 1200×675 的圖片，或同步改正尺寸；6000px 空白只用來拉開距離，不要放進正式文章。這段兩張圖片的示範沒有另跑實測，也不會重現表中的 20 張計數；表格來自原始 SVG 實驗頁。"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "label": "測試頁片段：首張正常載入，遠處圖片使用 lazy",
+      "code": "<style>\n  .test-image {\n    display: block;\n    width: 100%;\n    max-width: 720px;\n    height: auto;\n  }\n  .test-gap { height: 6000px; }\n</style>\n\n<img class=\"test-image\" src=\"/images/cover.jpg\"\n     width=\"1200\" height=\"675\" loading=\"eager\"\n     alt=\"木作收納盒的完成外觀\">\n\n<!-- 只供測試拉開距離；正式頁面請用實際正文取代。 -->\n<div class=\"test-gap\" aria-hidden=\"true\"></div>\n\n<img class=\"test-image\" src=\"/images/step.jpg\"\n     width=\"1200\" height=\"675\" loading=\"lazy\"\n     alt=\"木作收納盒組裝側板的步驟\">"
+    },
+    {
+      "type": "paragraph",
+      "text": "若你用的是網站後台或外掛，不必先找一個「全站全部延遲」開關。先請負責版型的人確認實際輸出的圖片標記，對照不同螢幕寬度，找出哪些圖片一進頁面就會出現。這次實驗能提供的是驗收思路，不能替任何一套外掛、網站版型或瀏覽器保證效果。"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "自己檢查時，保存三個時間點"
+    },
+    {
+      "type": "paragraph",
+      "text": "以下是建議的人工檢查流程，與本次已執行的自動化實驗分開：在測試站打開瀏覽器的 Network 面板，停用快取後重新載入，先不要捲動，記下圖片請求；再到頁尾，記下最後一張是否出現；最後回頂部逐段讀完，確認每張圖都可用。另開一次停用 JavaScript 的條件，重新載入後比較，避免把兩種條件混在同一份紀錄。"
+    },
+    {
+      "type": "paragraph",
+      "text": "紀錄至少寫下瀏覽器版本、視窗尺寸、JavaScript 與快取狀態、圖片位置、觀察時間點及請求清單。只有「還沒下載」也不夠：要確認它在遠處時確實延後、捲到附近能順利載入。如果你想回答的是網站有沒有變快，還需要另外量測真實圖片、網路條件與頁面指標，不能直接把本篇的張數換成效能結論。"
+    },
+    {
+      "type": "callout",
+      "tone": "info",
+      "title": "這次量到的範圍",
+      "text": "本輪使用一部 Windows 電腦的 Edge 157.0.4341.42，以不顯示視窗的 headless 模式執行，素材為本機小型 SVG。未測 Safari、Firefox、實體手機、真實網速、照片、JavaScript lazy-loader 程式庫、LCP 或 SEO。初始載入 2/20 不代表整篇節省九成流量，也不能推算頁速倍數；逐段捲完整頁後，所有組別仍載入 20/20。"
+    },
+    {
+      "type": "paragraph",
+      "text": "需要把這套檢查帶回網站設定，可接著閱讀下面的既有教學，處理圖片空間、首屏判斷與 WordPress 工具分工。這次新增的是可核對的載入行為觀察，不代表舊教學提到的所有工具都已由本次實驗測過。"
+    },
+    {
+      "type": "link",
+      "text": "圖片延遲載入怎麼設：讓重要內容先顯示",
+      "url": "https://mokaair.com/zh-TW/life/lazy-loading-images"
+    }
+  ],
+  "sources": [
+    {"title": "MDN：HTMLImageElement loading 屬性", "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading", "checked_on": "2026-11-10"},
+    {"title": "WHATWG HTML：Lazy loading attributes", "url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html#lazy-loading-attributes", "checked_on": "2026-11-10"},
+    {"title": "Google web.dev：Browser-level image lazy loading for the web", "url": "https://web.dev/articles/browser-level-image-lazy-loading", "checked_on": "2026-11-10"}
+  ]
+}

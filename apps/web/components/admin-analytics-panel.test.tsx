@@ -28,6 +28,7 @@ const affiliates = {
 function stubFetch(report: unknown = affiliates) {
   vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
     const url = String(input);
+    if (url.includes("/admin/analytics/content")) return new Response("unavailable", { status: 503 });
     if (url.includes("/admin/analytics/affiliates")) {
       return report ? new Response(JSON.stringify(report)) : new Response("nope", { status: 503 });
     }
@@ -66,5 +67,7 @@ describe("AdminAnalyticsPanel", () => {
     render(<AdminAnalyticsPanel />);
     expect((await screen.findAllByText("42")).length).toBeGreaterThan(0);
     expect(screen.queryByTestId("affiliate-total")).toBeNull();
+    expect(await screen.findByText(/目前無法取得續讀資料/)).toBeTruthy();
+    expect(screen.getByText("核心產品漏斗")).toBeTruthy();
   });
 });

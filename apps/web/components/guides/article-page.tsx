@@ -10,7 +10,7 @@ import { depthCopy } from "@/lib/codex-learning/units";
 import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { publishedGeminiSeries } from "@/lib/gemini-series-projection";
-import { GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
+import { CONTENTS_MIN_HEADINGS, GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { Breadcrumb } from "@/components/guides/breadcrumb";
 import { Backlinks, RelatedGrid } from "@/components/guides/related-grid";
@@ -24,6 +24,7 @@ import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { citiesForCountry, destinationSeeds, type CatalogTranslator } from "@/lib/destinations";
 import { contentBlockLink } from "@/lib/content-blocks";
+import { contentAnalyticsCopy } from "@/lib/content-analytics";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
 import { splitArticleExtras, guideTopicHref, guideSection,
   guideHeadings, guideHref, guideListHref, readingMinutes,
@@ -257,8 +258,10 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   // destination keeps the travel handover after it; a travel article's list replaces the
   // same-city cards it used to end with, which an API without the list still supplies.
   const seriesRelated = (state.series?.related ?? []).map((item) => item.slug);
+  const continuation = contentAnalyticsCopy(locale);
   const grid = state.related?.length
-    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={state.related} kindLabels={kindLabels} exclude={seriesRelated} />
+    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={state.related} kindLabels={kindLabels} exclude={seriesRelated}
+      lead={continuation.readingLead} actionLabel={continuation.readNext} />
     : null;
   const cited = state.backlinks?.length ? <Backlinks heading={t("guides.citedBy")} items={state.backlinks} /> : null;
   const handover = kind === "life"
@@ -311,6 +314,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   }
   const extras = splitArticleExtras(state.document.blocks);
   const labels: GuideArticleLabels = {
+    topicHeading: continuation.topicHeading,
     ...kindLabels,
     updated: t("guides.updated"),
     sources: t("guides.sources"), checkedOn: t("guides.checkedOn"),
@@ -338,6 +342,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const series = useApiDirectory ? await getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : null;
   if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
   const headings = guideHeadings(state.document.blocks);
+  const editorialContents = kind === "life" && !state.series && !isHub && !geminiSeries && headings.length >= CONTENTS_MIN_HEADINGS;
   const seriesDirectory = isCodexHub
     ? <LearningHub locale={locale} entries={learningEntries(locale, series?.entries ?? [])} available={Boolean(series)} />
     : useApiDirectory
@@ -395,10 +400,10 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
           }),
         ]}
       />
-      <main className={`mx-auto px-5 py-10 md:py-14 ${state.series ? "max-w-6xl" : "max-w-3xl"}`}>
+      <main className={`mx-auto px-5 py-10 md:py-14 ${state.series || editorialContents ? "max-w-6xl" : "max-w-3xl"}`}>
         <Breadcrumb trail={trail} current={state.document.title} label={t("guides.breadcrumb")} />
-        <div className={state.series?.current ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]" : ""}>
-        <div className="min-w-0">
+        <div className={editorialContents ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-12" : state.series?.current ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]" : ""}>
+        <div className={editorialContents ? "mx-auto w-full min-w-0 max-w-3xl lg:mx-0" : "min-w-0"}>
         <GuideArticle
           geminiSeries={geminiSeries}
           state={{ ...state, document: state.document }}
@@ -408,12 +413,30 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
           labels={labels}
           adsense={adsense}
           seriesHub={seriesDirectory}
+          contentsInSidebar={editorialContents}
         />
         </div>
         {state.series?.current ? <aside className="hidden lg:block"><nav aria-label={labels.contents} className="sticky top-24 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
           <a href={`/${locale}${guideHref(state.series.hub.kind, state.series.hub.slug)}`} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{copy.back}</a>
           <h2 className="mt-2 font-semibold">{labels.contents}</h2><ol className="mt-3 space-y-2 text-sm leading-6">{headings.map(heading => <li key={heading.id}><a href={`#${heading.id}`} className="underline">{heading.text}</a></li>)}</ol>
         </nav></aside> : null}
+        {editorialContents ? (
+          <aside className="hidden min-w-0 lg:block" data-testid="article-contents-desktop">
+            <nav aria-label={labels.contents} className="sticky top-28 max-h-[calc(100dvh-9rem)] overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
+              <h2 className="border-b border-[var(--line)] pb-3 font-semibold">{labels.contents}</h2>
+              <ol className="mt-3 space-y-1 text-sm leading-6">
+                {headings.map((heading, index) => (
+                  <li key={heading.id}>
+                    <a href={`#${heading.id}`} className="flex min-h-11 gap-3 py-2 text-[var(--teal)] underline-offset-4 [overflow-wrap:anywhere] hover:underline">
+                      <span aria-hidden="true" className="shrink-0 tabular-nums text-[var(--muted)]">{String(index + 1).padStart(2, "0")}</span>
+                      <span>{heading.text}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </aside>
+        ) : null}
         </div>
         <p className="mt-10">
           <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={listing.path}>

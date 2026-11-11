@@ -348,3 +348,20 @@ def run_cleanup() -> None:
             await _close_resources()
 
     asyncio.run(run())
+
+
+def run_freshness() -> None:
+    from app.news_automation.freshness import run_checks
+
+    async def run() -> None:
+        try:
+            async with SessionFactory() as session:
+                fetcher = SafeNewsFetcher(rate_limiter=RedisHostRateLimiter(get_redis()))
+                try:
+                    await run_checks(session, fetcher)
+                finally:
+                    await fetcher.close()
+        finally:
+            await _close_resources()
+
+    asyncio.run(run())

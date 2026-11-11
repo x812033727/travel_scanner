@@ -11,7 +11,7 @@ from app.auth.service import require_capability
 from app.db import get_session
 from app.infra import get_redis
 from app.models import User
-from app.news_automation import jobs, service
+from app.news_automation import freshness, jobs, service
 from app.news_automation.assets import public_asset
 from app.news_automation.models import NewsCandidate, NewsSource
 from app.news_automation.schemas import (
@@ -37,6 +37,17 @@ ContentManager = Annotated[User, Depends(require_capability("content.manage"))]
 
 admin_router = APIRouter(prefix="/admin/news", tags=["admin news automation"])
 public_router = APIRouter(prefix="/news-assets", tags=["news assets"])
+
+
+@admin_router.get("/freshness", response_model=freshness.FreshnessReport)
+async def freshness_report(
+    user: ContentReader,
+    session: Session,
+    view: freshness.FreshnessView = "all",
+    page: int = Query(default=1, ge=1, le=10000),
+) -> freshness.FreshnessReport:
+    del user
+    return await freshness.report(session, view=view, page=page)
 
 
 @admin_router.get("/sources", response_model=list[SourceView])

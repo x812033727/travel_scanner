@@ -19,6 +19,15 @@ from app.news_automation.scanner import claim_due_sources
 logger = logging.getLogger(__name__)
 
 
+def enqueue_freshness(queue: Queue, day: str) -> None:
+    job_id = f"news-freshness-{day}"
+    if queue.fetch_job(job_id) is None:
+        queue.enqueue(
+            "app.news_automation.jobs.run_freshness", job_id=job_id,
+            job_timeout=900, result_ttl=86_400, failure_ttl=604_800,
+        )
+
+
 def jev_budget_left(budget: int, now: datetime | None = None) -> bool:
     """Whether today's Jev budget still has room, read from the counter Jev calls spend.
 
@@ -78,6 +87,10 @@ async def main_async() -> None:
                 # container restart that would follow also loses nothing but this minute.
                 logger.exception("news scheduler tick failed")
             day = datetime.now(UTC).date().isoformat()
+            try:
+                enqueue_freshness(queue, day)
+            except Exception:
+                logger.exception("news freshness scheduling failed")
             cleanup_id = f"news-retention-{day}"
             if queue.fetch_job(cleanup_id) is None:
                 queue.enqueue(

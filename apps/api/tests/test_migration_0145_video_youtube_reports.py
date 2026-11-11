@@ -13,8 +13,10 @@ import pytest
 import sqlalchemy as sa
 from alembic.migration import MigrationContext
 from alembic.operations import Operations
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.pool import NullPool
 
-from app.db import engine
+from app.config import get_settings
 from app.video_youtube.models import (
     VideoYoutubeReport,
     VideoYoutubeReportJob,
@@ -73,13 +75,19 @@ async def test_upgrade_and_downgrade_are_idempotent() -> None:
         with Operations.context(MigrationContext.configure(connection)):
             getattr(migration, direction)()
 
-    async with engine.begin() as connection:
-        await connection.run_sync(run, "upgrade")
-        await connection.run_sync(run, "upgrade")
-        tables = await connection.run_sync(lambda sync: sa.inspect(sync).get_table_names())
-        assert set(TABLES) <= set(tables)
-        await connection.run_sync(run, "downgrade")
-        await connection.run_sync(run, "downgrade")
-        tables = await connection.run_sync(lambda sync: sa.inspect(sync).get_table_names())
-        assert not set(TABLES) & set(tables)
-        await connection.run_sync(run, "upgrade")
+    # The next integration module has its own event loop. Do not leave this test's
+    # asyncpg connection in the application's shared pool for that loop to reuse.
+    migration_engine = create_async_engine(get_settings().database_url, poolclass=NullPool)
+    try:
+        async with migration_engine.begin() as connection:
+            await connection.run_sync(run, "upgrade")
+            await connection.run_sync(run, "upgrade")
+            tables = await connection.run_sync(lambda sync: sa.inspect(sync).get_table_names())
+            assert set(TABLES) <= set(tables)
+            await connection.run_sync(run, "downgrade")
+            await connection.run_sync(run, "downgrade")
+            tables = await connection.run_sync(lambda sync: sa.inspect(sync).get_table_names())
+            assert not set(TABLES) & set(tables)
+            await connection.run_sync(run, "upgrade")
+    finally:
+        await migration_engine.dispose()

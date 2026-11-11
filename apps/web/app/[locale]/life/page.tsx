@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
-import { HubHero } from "@/components/guides/hub-hero";
-import { NewsList } from "@/components/guides/news-list";
+import { SearchForm } from "@/components/guides/search-form";
+import { NewsDesk } from "@/components/guides/news-desk";
 import { TopicTiles } from "@/components/guides/topic-tiles";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
@@ -141,14 +141,15 @@ export default async function LifeHubPage(
           itemList(locale, list.articles.map((article) => ({ name: article.title, path: guideHref(article.kind, article.slug) }))),
         ]}
       />
-      <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
-        <HubHero
-          title={t("guides.lifeHubTitle")}
-          intro={t("guides.lifeHubIntro")}
-          section="life"
-          action={`/${locale}/search/articles`}
-          labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }}
-        />
+      <main className="mx-auto max-w-6xl px-5 py-10 md:px-8">
+        <header className="grid gap-5 border-b border-[var(--line)] pb-8 md:grid-cols-[minmax(0,1fr)_22rem] md:items-end">
+          <div>
+            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">{t("guides.lifeHubTitle")}</h1>
+            <p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("guides.lifeHubIntro")}</p>
+          </div>
+          <SearchForm q="" section="life" action={`/${locale}/search/articles`}
+            labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }} />
+        </header>
 
         {news.length ? (
           <section className="mt-10" aria-labelledby="life-news-heading" data-testid="life-news">
@@ -166,7 +167,8 @@ export default async function LifeHubPage(
                 ))}
               </div>
             </div>
-            <NewsList articles={news} />
+            <NewsDesk articles={news} topics={topics.filter((topic) => newsHubs.some((hub) => hub.slug === topic.slug))}
+              topicsLabel={t("guides.browseTopics")} />
           </section>
         ) : null}
 

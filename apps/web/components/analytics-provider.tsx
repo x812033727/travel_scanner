@@ -5,10 +5,11 @@ import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ANALYTICS_SESSION_KEY, type AnalyticsEventName } from "@/lib/analytics";
+import { contentPath, type ContentLink } from "@/lib/content-analytics";
 import { isPrivateRoute } from "@/lib/private-routes";
 import { useThirdPartyAudience } from "@/lib/third-party-audience";
 
-type Config = { first_party_enabled: boolean; ga4_enabled: boolean; ga4_measurement_id?: string | null };
+type Config = { first_party_enabled: boolean; ga4_enabled: boolean; ga4_measurement_id?: string | null; content_link_click_enabled?: boolean };
 type PendingEvent = {
   event_id: string;
   name: AnalyticsEventName;
@@ -19,6 +20,7 @@ type PendingEvent = {
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
+  content_link?: ContentLink;
 };
 
 declare global {
@@ -90,7 +92,7 @@ function initializeGa4(measurementId: string, campaign: Campaign) {
   window.gtag("config", measurementId, { send_page_view: false, page_location: cleanLocation, allow_google_signals: false, allow_ad_personalization_signals: false });
 }
 
-function sendGa4Event(name: AnalyticsEventName, path: string, language: string, campaign: Campaign | null = null) {
+function sendGa4Event(name: Exclude<AnalyticsEventName, "content_link_click">, path: string, language: string, campaign: Campaign | null = null) {
   const mapped = { registration_completed: "sign_up", search_completed: "search", outbound_click: "click", page_view: "page_view", discover_requested: "generate_lead", login_resumed: "login" }[name];
   window.gtag?.("event", mapped, { page_path: path, page_location: ga4Location(path, campaign), language, transport_type: "beacon" });
 }
@@ -155,8 +157,12 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
     }).catch(() => { /* Analytics never blocks product actions. */ });
   }, [config?.first_party_enabled]);
 
-  const emit = useCallback((name: AnalyticsEventName) => {
+  const emit = useCallback((name: AnalyticsEventName, contentLink?: ContentLink) => {
     if (!config || privacyOptOut()) return;
+    if (name === "content_link_click" && (
+      !config.first_party_enabled || config.content_link_click_enabled !== true ||
+      isPrivateRoute(pathname) || !contentPath(pathname, true) || !contentLink
+    )) return;
     const path = sanitizedPath(pathname);
     if (!path) return;
     if (!campaign.current) campaign.current = initialCampaign();
@@ -168,12 +174,13 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
       locale: allowedLocales.has(locale) ? locale : "zh-TW",
       referrer: document.referrer || undefined,
       ...campaign.current,
+      ...(contentLink ? { content_link: contentLink } : {}),
     };
     if (config.first_party_enabled) {
       queue.current.push(event);
-      queueMicrotask(() => flush());
+      queueMicrotask(() => flush(name === "content_link_click"));
     }
-    if (config.ga4_enabled && config.ga4_measurement_id && window.gtag && ga4Allowed) {
+    if (name !== "content_link_click" && config.ga4_enabled && config.ga4_measurement_id && window.gtag && ga4Allowed) {
       sendGa4Event(name, path, event.locale, ga4Campaign(name));
     }
   }, [config, flush, ga4Allowed, ga4Campaign, locale, pathname]);
@@ -195,22 +202,33 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const listener = (event: Event) => {
       const name = (event as CustomEvent<{ name?: AnalyticsEventName }>).detail?.name;
-      if (name && name !== "page_view") emit(name);
+      if (name && name !== "page_view" && name !== "content_link_click") emit(name);
     };
     const click = (event: MouseEvent) => {
+      if (event.type === "auxclick" && event.button !== 1) return;
       const target = event.target instanceof Element ? event.target.closest("a,form") : null;
       if (!target) return;
       const href = target instanceof HTMLAnchorElement ? target.href : target instanceof HTMLFormElement ? target.action : "";
       const opensNew = target.getAttribute("target") === "_blank";
       try {
+        const placement = target.getAttribute("data-content-link");
+        if (target instanceof HTMLAnchorElement && (placement === "related" || placement === "topic")) {
+          const url = new URL(href, location.href);
+          const path = !url.search && !url.hash && url.origin === location.origin ? contentPath(url.pathname) : null;
+          const matches = path && (placement === "related" ? contentPath(path, true) : path === "/ai" || /^\/(?:life|guides)\/topics\//.test(path));
+          if (path && matches) emit("content_link_click", { placement, target_path: path });
+        }
+        if (event.type === "auxclick") return;
         if (href && (opensNew || new URL(href, location.href).origin !== location.origin)) emit("outbound_click");
       } catch { /* Ignore malformed third-party links. */ }
     };
     window.addEventListener("travel:analytics", listener);
     document.addEventListener("click", click, true);
+    document.addEventListener("auxclick", click, true);
     return () => {
       window.removeEventListener("travel:analytics", listener);
       document.removeEventListener("click", click, true);
+      document.removeEventListener("auxclick", click, true);
     };
   }, [emit]);
 

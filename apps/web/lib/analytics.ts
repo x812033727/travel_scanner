@@ -4,7 +4,8 @@ export type AnalyticsEventName =
   | "search_completed"
   | "outbound_click"
   | "discover_requested"
-  | "login_resumed";
+  | "login_resumed"
+  | "content_link_click";
 
 /** Where the browser keeps the id it reports events under; see AnalyticsProvider. */
 export const ANALYTICS_SESSION_KEY = "travel_analytics_session";
@@ -27,7 +28,7 @@ export function analyticsSessionId(): string | null {
   }
 }
 
-export function trackAnalytics(name: Exclude<AnalyticsEventName, "page_view">) {
+export function trackAnalytics(name: Exclude<AnalyticsEventName, "page_view" | "content_link_click">) {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new CustomEvent("travel:analytics", { detail: { name } }));
 }
