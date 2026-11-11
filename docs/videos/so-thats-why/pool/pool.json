@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-11-pool-3584",
+  "revision": "2026-11-11-pool-3615",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3974,
-    "canonical_questions": 3813,
-    "eligible_candidates": 3643,
-    "selected_candidates": 3584,
+    "raw_records": 4005,
+    "canonical_questions": 3844,
+    "eligible_candidates": 3674,
+    "selected_candidates": 3615,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 4961,
-    "current_research_source_urls": 2008,
-    "selected_source_urls": 3179,
-    "new_suggestions_not_added": 2298,
+    "source_urls": 4980,
+    "current_research_source_urls": 2030,
+    "selected_source_urls": 3198,
+    "new_suggestions_not_added": 2304,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "91d1b7305d0a9eb5b1935cf2b87a276fa101410add3f44e656ea522be057a1b5"
+      "sha256": "f8e2c2b0b509b99d490088d16a3c34539a0ee35ff4056ff959d9f421120c30df"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -420,6 +420,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3558.json.gz",
       "sha256": "403b8bd42f3f84aec1ef954ded4b4b507e206406ad1b9a56702ba7e69ae3d838"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3584.json",
+      "sha256": "f822f63f2f87410142bfdd276627d28a00992a22554b322a3f159ee0bd30aea0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-11-3584.json.gz",
+      "sha256": "c91168846f26d2c89e0978125f849cd269086007d6cd81ddd0dfed13c2fba5eb"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1874,6 +1882,18 @@
       "sha256": "9edbf65de8f65666dd12a3d56b5b82421e433d2cce73cb25723dd56e0d8e3e56"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave53-human.json",
+      "sha256": "859a925195e35b8399fbf3360faeb0148b031a0c10ceced5fdaa65c39d11285c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave53-physics.json",
+      "sha256": "bfcbba48de02cfe180725f24c257fe8d0052909780f4e9419c64aabaea2aab29"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave53-tech.json",
+      "sha256": "cfb353363a978b7c5f345057d51496511c33f292236c0e76f359bd0d99af5b99"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave6-mechanisms.json",
       "sha256": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2"
     },
@@ -1959,11 +1979,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "46d1f602ff1934389fef290c5adf3c4528484c5b0565b7db21b92e5a02290ea6"
+      "sha256": "03f39eb0b6f3e9cef51d32e1021c91516cc42e6d0b1c02fb7646d1ebbfa8a7b4"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "9f6ea9a188ef96be53ab2b861e67152405320bd9be241a5cc2b457dccba5a36f"
+      "sha256": "75f7e8ddc805a539cd6b24e523da5d87c28ae6093fc3729454b08d93bd15be78"
     }
   ],
   "sources": [
@@ -8715,6 +8735,32 @@
       ]
     },
     {
+      "id": "SRC-1178ab59ef78d986",
+      "url": "https://jcaa.caa-aca.ca/index.php/jcaa/article/download/1486/1230/1620",
+      "readings": [
+        {
+          "canonical_url": "https://jcaa.caa-aca.ca/index.php/jcaa/article/download/1486/1230/1620",
+          "title": "Testing of ANR Earmuffs",
+          "publisher": "Cui、Behar、Kunov、Wong（多倫多大學）；Canadian Acoustics 30(3):124–125 (2002)",
+          "version": "期刊兩頁短文 PDF（掃描 OCR 文字層）",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，pdftotext 全文",
+          "reading_scope": "全文兩頁",
+          "locator": "§1 Introduction；§4 Discussion",
+          "summary": "主動降噪耳罩以回授迴路把侵入的聲音以180度相位反向重新送出，降低該頻段聲壓；因技術限制只在約500 Hz以下有效；高頻由被動插入損失擋，兩者合起來得寬頻衰減；作者指出傷害聽力的能量多在500 Hz以上，單靠 ANR 不降低聽損風險，但能減少低頻對語音的向上遮蔽而提升語音清晰度（引 Kryter 1994）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2002年耳罩、只示範一款耳機結果；遮蔽與清晰度是前言引述，非本文量測。",
+          "author_cache": {
+            "file": "scratchpad/f2src/jcaa.pdf",
+            "sha256_prefix": "4d41ee4eb04f7b3f",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-physics-20261111",
+          "original_url": "https://jcaa.caa-aca.ca/index.php/jcaa/article/download/1486/1230/1620"
+        }
+      ]
+    },
+    {
       "id": "SRC-117fb7666da8dc04",
       "url": "https://pubmed.ncbi.nlm.nih.gov/12826076/",
       "readings": [
@@ -9809,6 +9855,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sciencetimes.co.kr/nscvrg/view/menu/248?searchCategory=220&nscvrgSn=35001"
+        }
+      ]
+    },
+    {
+      "id": "SRC-14659a6d225f2c0a",
+      "url": "https://gssc.esa.int/navipedia/index.php/Code_Based_Positioning_(SPS)",
+      "readings": [
+        {
+          "canonical_url": "https://gssc.esa.int/navipedia/index.php/Code_Based_Positioning_(SPS)",
+          "title": "Code Based Positioning (SPS)",
+          "publisher": "ESA Navipedia（作者 J. Sanz Subirana 等，加泰隆尼亞理工大學）",
+          "version": "oldid=12251",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，HTML 轉文字",
+          "reading_scope": "全頁",
+          "locator": "導言與第17–31行（四個未知數）、幾何矩陣說明",
+          "summary": "定位是解幾何問題：由至少四顆衛星的偽距求接收機三個座標與接收機鐘差；方程右邊四個未知數是 x、y、z 與鐘差 δt；超過四顆用最小平方。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "ESA 主辦的教育維基，作者為大學研究者；非同儕審查期刊，作為教材級來源。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://gssc.esa.int/navipedia/index.php/Code_Based_Positioning_(SPS)"
         }
       ]
     },
@@ -11422,6 +11489,27 @@
       ]
     },
     {
+      "id": "SRC-17f1a1f30c232473",
+      "url": "https://letsencrypt.org/how-it-works/",
+      "readings": [
+        {
+          "canonical_url": "https://letsencrypt.org/how-it-works/",
+          "title": "How It Works",
+          "publisher": "Let's Encrypt (ISRG)",
+          "version": "頁面標 Last updated: August 2, 2025",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，HTML 轉文字全頁讀",
+          "reading_scope": "全頁：Domain Validation、Issuance、Revocation",
+          "locator": "Domain Validation 段、Issuance 段",
+          "summary": "ACME 客戶端先向 CA 證明控制網域：在該網域下放 DNS 記錄或在 http 網址固定路徑放檔案；CA 從多個網路視角檢查挑戰；驗證本身不能用 HTTPS，因此用多視角降低被攻擊風險；簽發後 CA 把憑證送進多個公開 Certificate Transparency 日誌；撤銷以 CRL 公布。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一 CA 的做法說明；其他 CA 的 OV/EV 審核不在此頁；不證明網站內容可信（與 A55 既有 Chromium 來源一致）。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://letsencrypt.org/how-it-works/"
+        }
+      ]
+    },
+    {
       "id": "SRC-17f9192ccbbec4f5",
       "url": "https://pubmed.ncbi.nlm.nih.gov/23000611/",
       "readings": [
@@ -12135,6 +12223,27 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave7-optics-20261101",
           "original_url": "https://www.opto-e.com/en/basics/scheimpflug-optics"
+        }
+      ]
+    },
+    {
+      "id": "SRC-19bd137c37b8b5e1",
+      "url": "https://gssc.esa.int/navipedia/index.php/TTFF",
+      "readings": [
+        {
+          "canonical_url": "https://gssc.esa.int/navipedia/index.php/TTFF",
+          "title": "TTFF",
+          "publisher": "ESA Navipedia",
+          "version": "oldid=13355",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，HTML 轉文字",
+          "reading_scope": "全頁",
+          "locator": "定義、冷暖熱啟動、TTFF 組成、末段",
+          "summary": "首次定位時間指開機到輸出解；需追蹤至少四顆衛星並解碼導航電文；已有有效電文就不必再解碼；冷啟動（全空搜尋）、暖啟動（有曆書，可由 Assisted GNSS 等取得）、熱啟動（有精確星曆）；電文結構與速率影響解碼時間，都市峽谷會中斷或阻擋。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "教材級；廠商 TTFF 數字不統一，片中不給秒數。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://gssc.esa.int/navipedia/index.php/TTFF"
         }
       ]
     },
@@ -14708,6 +14817,33 @@
       ]
     },
     {
+      "id": "SRC-200bfc13f6e7993c",
+      "url": "https://navi.ion.org/content/68/1/217",
+      "readings": [
+        {
+          "canonical_url": "https://navi.ion.org/content/68/1/217",
+          "doi": "10.1002/navi.412",
+          "title": "Deriving Accurate Time from Assisted GNSS Using Extended Ambiguity Resolution",
+          "publisher": "Blay、Wang、Akos；NAVIGATION: Journal of the Institute of Navigation 68(1):217–229 (2021)",
+          "version": "期刊正式版 HTML 全文，CC BY",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200（226,281 bytes）HTML 全文轉文字",
+          "reading_scope": "Abstract、§1 Introduction、§2 Review of A-GNSS（2.1–2.3）、§4.2–4.3、§5 Conclusion",
+          "locator": "§1 第1段、§2 第1段、§2.1 末段、§2.3 首句",
+          "summary": "傳統接收機要收 30 秒電文框的前三個子框才能解時間與位置，L1 C/A 最長約 36 秒；A-GNSS 把星曆等改由網路（手機通常經 SUPL 協定）送來，只需毫秒級訊號資料就能定位；沒有精確時間時，每差一秒偽距錯約 800 公尺（引 van Diggelen 2009），需把粗時間當第五個未知數，因此至少要五顆衛星；訊號傳播時間約 60–90 毫秒。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "800 m/秒與五狀態解法是文中回顧 van Diggelen 的方法，非本文新實驗；本文主題是奈秒授時，片中只用回顧段。",
+          "author_cache": {
+            "file": "scratchpad/f2src/navi68.html",
+            "sha256_prefix": "77148f4d602327f7",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://navi.ion.org/content/68/1/217"
+        }
+      ]
+    },
+    {
       "id": "SRC-201ae927dec6320f",
       "url": "https://www.law.go.kr/LSW/lsRvsDocInfoR.do?lsiSeq=246569&chrClsCd=010202",
       "readings": [
@@ -15347,6 +15483,27 @@
       ]
     },
     {
+      "id": "SRC-21e355d94371e7a6",
+      "url": "https://gssc.esa.int/navipedia/index.php/Ionospheric_Delay",
+      "readings": [
+        {
+          "canonical_url": "https://gssc.esa.int/navipedia/index.php/Ionospheric_Delay",
+          "title": "Ionospheric Delay",
+          "publisher": "ESA Navipedia（Sanz Subirana 等，UPC）",
+          "version": "2026-11-11 線上版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，HTML 轉文字",
+          "reading_scope": "全頁文字（公式略）",
+          "locator": "第2段、末段",
+          "summary": "電離層約60至2000多公里，電子密度日間受太陽輻射升高；訊號延遲與頻率平方成反比（頻散），雙頻量測可移除99.9%以上；單頻接收機只能用預測模型，此效應可達數十公尺。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "教材級；未讀 NeQuick 頁。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://gssc.esa.int/navipedia/index.php/Ionospheric_Delay"
+        }
+      ]
+    },
+    {
       "id": "SRC-21e696ccaa303a80",
       "url": "https://foreignpolicy.com/2021/11/27/pepsi-navy-soviet-ussr/",
       "readings": [
@@ -15456,6 +15613,33 @@
           "locator": "docs/videos/so-thats-why/topic-checks/s3-A51-A63.md#A55",
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc8446"
+        },
+        {
+          "retrieval_url": "https://www.rfc-editor.org/rfc/rfc8446.txt",
+          "canonical_url": "https://www.rfc-editor.org/rfc/rfc8446",
+          "doi": "10.17487/RFC8446",
+          "title": "The Transport Layer Security (TLS) Protocol Version 1.3 (RFC 8446)",
+          "publisher": "IETF / E. Rescorla, RFC Editor",
+          "version": "2018-08 Standards Track；純文字正式版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，全文純文字在本機逐段讀",
+          "reading_scope": "§1、§1.2、§2（含Fig.1）、§2.3、§4.4.2–4.4.2.4、§4.4.3開頭、§5.2–5.5、§6.1、附錄C.2、E.1、E.2、E.3、E.5開頭",
+          "locator": "§1 三個性質與「不隱藏長度」；§2 Fig.1 與三階段；§2.3 IMPORTANT NOTE；§5.2 additional_data；§5.3 64位序號；§6.1 close_notify；C.2；E.1–E.3、E.5",
+          "summary": "TLS 1.3 規格：握手先交換金鑰，ServerHello 之後全部加密（含憑證）；CertificateVerify 以私鑰簽整段握手、Finished 綁定身分與金鑰；每筆紀錄 AEAD 保護，附加資料是紀錄標頭，nonce 由各方向 64 位序號混入，亂序或重送導致解密失敗而斷線；不隱藏長度、可填充；close_notify 防截斷；0-RTT 不保證跨連線不被重播。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "規格只定義協定，憑證路徑驗證交給 RFC 5280（§4.4.2.4 明寫 out of scope）；不描述瀏覽器實作或部署比例；PSK、0-RTT 細節只讀到 §2.3 與 E.5 開頭。",
+          "access_notes": "與池中 LEG-A55 的歷史來源 SRC-221ec34b296ae4b8 是同一份 RFC 8446；以同一網址追加本輪閱讀紀錄，不另立來源。實際下載的是 RFC Editor 純文字版。LEG-A55 原有的『防偷看與竄改』一句不重算。",
+          "refreshes_source_id": "SRC-221ec34b296ae4b8",
+          "applies_to_candidate_ids": [
+            "LEG-A55"
+          ],
+          "author_cache": {
+            "file": "scratchpad/f2src/rfc8446.txt",
+            "sha256_prefix": "47871bc8820a2c3b",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-tech-20261111",
           "original_url": "https://www.rfc-editor.org/rfc/rfc8446"
         }
       ]
@@ -15860,6 +16044,33 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://home.cern/science/computing/the-birth-of-the-web/\\nhttps://info.cern.ch/\\nhttp://info.cern.ch/hypertext/WWW/TheProject.html\\nhttps://developer.mozilla.org/en-US/docs/Web/URI/Guides/Choosing_between_www_and_non-www_URLs"
+        }
+      ]
+    },
+    {
+      "id": "SRC-22ca28ea105074a9",
+      "url": "https://par.nsf.gov/servlets/purl/10295963",
+      "readings": [
+        {
+          "canonical_url": "https://par.nsf.gov/servlets/purl/10295963",
+          "doi": "10.1038/s41586-021-03407-4",
+          "title": "Multistable inflatable origami structures at the metre scale",
+          "publisher": "Melancon、Gorissen、García-Mora、Hoberman、Bertoldi；Nature 592:545–550 (2021)",
+          "version": "NSF Public Access Repository 典藏的期刊排版 PDF（10頁）",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200（4,369,638 bytes），pdftotext 全文",
+          "reading_scope": "Abstract、Triangular facets 段（頁546）、Metre-scale functional structures 段（頁548–550）",
+          "locator": "頁546 左欄末至右欄；頁549 Fig.3d/Fig.4 正文",
+          "summary": "剛性三角面與理想鉸鏈組成的閉合多面體不是完全不能動，就是展開時體積不變；改用硬面配可伸長鉸鏈，平板與展開兩種相容狀態之間面與鉸鏈必須變形，形成能量障壁而雙穩態；用4毫米瓦楞塑膠板刻痕當鉸鏈做出的拱門，摺起20公分高、30公分寬，充氣後成60公分高、150公分寬，突然洩壓仍維持形狀，抽真空才摺回；帳篷式庇護所平摺1.0×2.0×0.25公尺，充氣先到屋頂內摺的穩定態，再加壓屋頂向外翻成2.5×2.6×2.6公尺，可開門不影響結構。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "大型結構是示範原型，未報告長期耐候；壓力數據主要來自公分級樣品。",
+          "author_cache": {
+            "file": "scratchpad/f2src/melancon.pdf",
+            "sha256_prefix": "e7d5c6c95a082251",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-physics-20261111",
+          "original_url": "https://par.nsf.gov/servlets/purl/10295963"
         }
       ]
     },
@@ -16336,6 +16547,33 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.britannica.com/science/bioluminescence/Firefly-bioluminescence"
+        }
+      ]
+    },
+    {
+      "id": "SRC-247e7b4f3db436ce",
+      "url": "https://www.rfc-editor.org/rfc/rfc9849.txt",
+      "readings": [
+        {
+          "canonical_url": "https://www.rfc-editor.org/rfc/rfc9849",
+          "doi": "10.17487/RFC9849",
+          "title": "TLS Encrypted Client Hello (RFC 9849)",
+          "publisher": "IETF / Rescorla、Oku、Sullivan、Wood，RFC Editor",
+          "version": "2026-03 Standards Track",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，純文字",
+          "reading_scope": "Abstract、§1 Introduction 全段",
+          "locator": "§1 第1–4段",
+          "summary": "TLS 1.3 雖加密大部分握手（含伺服器憑證），ClientHello 裡明文的 SNI 會洩漏目標網域，是 TLS 1.3 最敏感的未加密資訊；ECH 用伺服器公鑰加密 ClientHello；ECH 本身不足以隱藏伺服器身分，明文 DNS 查詢與伺服器 IP 仍可能露出；同一 IP 常承載多網域時 SNI 是主要明確訊號。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀引言，未讀部署（§8）與安全分析；RFC 不提供各瀏覽器或網站啟用比例，片中不可說「現在都已加密網域」。",
+          "author_cache": {
+            "file": "scratchpad/f2src/rfc9849.txt",
+            "sha256_prefix": "56cf7f40c41b2566",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc9849.txt"
         }
       ]
     },
@@ -19037,6 +19275,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://museum.mof.gov.tw/singlehtml/bcc65f6b73e146d1976722c240a4feb4?cntId=2bbbe2271ced43dd82574238b802e6f2"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2a771805b810651c",
+      "url": "https://certificate.transparency.dev/howctworks/",
+      "readings": [
+        {
+          "canonical_url": "https://certificate.transparency.dev/howctworks/",
+          "title": "How CT Works",
+          "publisher": "Certificate Transparency project (certificate.transparency.dev)",
+          "version": "2026-11-11 線上版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，HTML 轉文字全頁",
+          "reading_scope": "ecosystem、step by step 1–8、Web PKI 段",
+          "locator": "step 3–8",
+          "summary": "CA 簽發前把預簽憑證送公開、只增不刪的日誌，取得 SCT；Chrome 與 Safari 要求至少 2 個 SCT（依憑證效期）；任何人可跑監測者，網域主人訂閱後可得知自己網域被簽了哪些憑證、發現未授權簽發。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "專案說明頁（Google 主導的開放專案），非標準文件；MMD 24 小時等細節片中不用。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://certificate.transparency.dev/howctworks/"
         }
       ]
     },
@@ -23277,6 +23536,27 @@
       ]
     },
     {
+      "id": "SRC-33623e716cf535e7",
+      "url": "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/gps/howitworks",
+      "readings": [
+        {
+          "canonical_url": "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/gps/howitworks",
+          "title": "Satellite Navigation - GPS - How It Works",
+          "publisher": "U.S. Federal Aviation Administration",
+          "version": "2026-11-11 線上版（頁面未標日期）",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，HTML 轉文字全文",
+          "reading_scope": "全頁正文",
+          "locator": "正文第2段",
+          "summary": "基本 GPS 服務約 7.0 公尺、95% 時間；衛星帶原子鐘，訊號載有發射時刻；接收機以接收與發射時間差算距離，須扣除電離層與對流層的延遲；三顆衛星的距離加衛星位置可算三維位置，但需要與 GPS 同步的原子鐘；多量第四顆衛星就不需要原子鐘，因此用四顆算經緯度、高度與時間。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "官方科普頁，未給公式；31 顆衛星數會變，片中不用。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/gps/howitworks"
+        }
+      ]
+    },
+    {
       "id": "SRC-3365459867250929",
       "url": "https://sleepeducation.org/sleep-disorders/jet-lag/",
       "readings": [
@@ -24680,6 +24960,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.airbus.com/en/newsroom/press-releases/2020-06-airbus-concludes-attol-with-fully-autonomous-flight-tests"
+        }
+      ]
+    },
+    {
+      "id": "SRC-36b62e0fc92155e0",
+      "url": "https://www.nber.org/system/files/working_papers/w17030/w17030.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.nber.org/system/files/working_papers/w17030/w17030.pdf",
+          "title": "Heuristic Thinking and Limited Attention in the Car Market",
+          "publisher": "Lacetera、Pope、Sydnor；NBER Working Paper 17030",
+          "version": "2011-05 工作論文版（後刊 American Economic Review 2012）；本輪讀的是 NBER 版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，pdftotext 全文",
+          "reading_scope": "Abstract、Introduction（頁1–4）、§2 模型要點、§5 inattention 估計段落",
+          "locator": "Introduction 第2–3段；§5.1",
+          "summary": "分析超過2,200萬筆二手車批發拍賣：里程跨過每個一萬英里整數時售價不連續下跌，約150–200美元（79,900–79,999英里比80,000–80,100英里平均貴約210美元，卻只比79,800–79,899便宜約10美元）；跨千英里也有較小下跌；估計『不注意』參數約0.31；賣方會在跨門檻前把車送拍，出現量的尖峰；證據最符合最終零售買家的部分不注意。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "工作論文版，期刊版數字可能略有差異；對象是里程數不是標價，片中只當『左位數換到高金額市場還在嗎』的檢驗。",
+          "author_cache": {
+            "file": "scratchpad/f2src/lps.pdf",
+            "sha256_prefix": "04e4a85423d0fe9a",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-human-20261111",
+          "original_url": "https://www.nber.org/system/files/working_papers/w17030/w17030.pdf"
         }
       ]
     },
@@ -33204,6 +33510,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1622536/000162828025030559/a20250611pressreleasebusin.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4cc0a932e68eee14",
+      "url": "https://archive.gps.gov/technical/ps/2020-SPS-performance-standard.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://archive.gps.gov/technical/ps/2020-SPS-performance-standard.pdf",
+          "title": "Global Positioning System Standard Positioning Service Performance Standard, 5th Edition",
+          "publisher": "U.S. DoD（GPS.gov 發布；現行版連結見 https://www.gps.gov/node/205）",
+          "version": "5th Edition, April 2020",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200（2,166,466 bytes），pdftotext 版面文字",
+          "reading_scope": "§2.2.1–2.2.2.1（訊號與 LNAV 電文）、§3.8.1 PDOP、A.8.2、B.2.1、B.2.3、B.2.4.1–B.2.4.3.4、B.2.5",
+          "locator": "頁11–12 Fig.2.2-1；頁57 Table 3.8-1；頁A-52；頁B-5至B-11",
+          "summary": "LNAV 電文 50 bps，一框 30 秒重複，子框1為鐘差修正、子框2–3為星曆；位置／時間精度近似＝UERE×DOP；DOP 是衛星對使用者幾何的度量（PDOP/HDOP/VDOP/TDOP），幾何太差甚至無法解；用五顆以上衛星的 DOP 至少不比四顆差；標準承諾全球 PDOP≤6 的可用度 ≥98%。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "規格文件，公式為近似（誤差需零均值常態同 UERE）；不描述手機實作。",
+          "author_cache": {
+            "file": "scratchpad/f2src/sps2020.pdf",
+            "sha256_prefix": "908dc28561b9b16d",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://archive.gps.gov/technical/ps/2020-SPS-performance-standard.pdf"
         }
       ]
     },
@@ -44392,6 +44724,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave16-wave-sensing-20261102",
           "original_url": "https://ece-classes.usc.edu/ee591/library/Hahn-SpinEchoes.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6808d2f9bf0efda5",
+      "url": "https://pub.dega-akustik.de/DAGA_2019/data/articles/000202.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://pub.dega-akustik.de/DAGA_2019/data/articles/000202.pdf",
+          "title": "Acoustic Performance Testing of ANC Headsets",
+          "publisher": "Sethi、Poschen、Kettler（HEAD acoustics GmbH）；DAGA 2019 Rostock 論文集 pp.915–918",
+          "version": "會議論文集 PDF",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，pdftotext 全文",
+          "reading_scope": "全文四頁：方法、Table 1、Fig.2–5、ambient listening、quality pie 定義",
+          "locator": "頁915 Table 1；頁916 正文",
+          "summary": "人工頭量四款（兩耳罩、兩入耳）：主動降噪最大時對飛機與咖啡廳噪音降約15–21 dB，被動多為3–6 dB（一款入耳被動達約13 dB）；被動隔音通常只對200 Hz以上有效，低頻要靠 ANC；有些耳機 ANC 效果小得多；戴眼鏡會漏聲使耳罩 ANC 變差；強 ANC 也會壓低較高頻的說話聲，需要通透／環境模式。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "廠商實驗室的會議論文，非同儕審查期刊；耳機型號匿名；只四款。",
+          "author_cache": {
+            "file": "scratchpad/f2src/daga.pdf",
+            "sha256_prefix": "5fd28f5a98c0fee5",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-physics-20261111",
+          "original_url": "https://pub.dega-akustik.de/DAGA_2019/data/articles/000202.pdf"
         }
       ]
     },
@@ -55810,6 +56168,27 @@
       ]
     },
     {
+      "id": "SRC-83a85b316583711e",
+      "url": "https://gssc.esa.int/navipedia/index.php/Klobuchar_Ionospheric_Model",
+      "readings": [
+        {
+          "canonical_url": "https://gssc.esa.int/navipedia/index.php/Klobuchar_Ionospheric_Model",
+          "title": "Klobuchar Ionospheric Model",
+          "publisher": "ESA Navipedia（Sanz Subirana 等，UPC）",
+          "version": "2026-11-11 線上版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，HTML 轉文字",
+          "reading_scope": "導言與模型假設段",
+          "locator": "導言、『estimated to reduce about the 50% RMS』句",
+          "summary": "GPS 衛星廣播 Klobuchar 模型參數給單頻使用者；此經驗模型估計全球約減少 50% 的電離層測距誤差（RMS），假設電子集中在 350 公里薄層。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "演算法步驟未逐條讀；片中只用「廣播模型大約修掉一半」。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://gssc.esa.int/navipedia/index.php/Klobuchar_Ionospheric_Model"
+        }
+      ]
+    },
+    {
       "id": "SRC-83a99909d4d6121a",
       "url": "https://doi.org/10.1016/j.cell.2008.02.049",
       "readings": [
@@ -58476,6 +58855,33 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://sweden.se/life/swedish-language/swedish-glossary"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8a7e2503ca55c6ea",
+      "url": "https://www.rfc-editor.org/rfc/rfc5280.txt",
+      "readings": [
+        {
+          "canonical_url": "https://www.rfc-editor.org/rfc/rfc5280.txt",
+          "doi": "10.17487/RFC5280",
+          "title": "Internet X.509 PKI Certificate and CRL Profile (RFC 5280)",
+          "publisher": "IETF / Cooper 等，RFC Editor",
+          "version": "2008-05 Standards Track",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，純文字",
+          "reading_scope": "§6.1 Basic Path Validation 前四頁（目標、條件 a–d、信任錨為輸入）",
+          "locator": "§6.1 印刷頁72–73",
+          "summary": "路徑驗證的主要目標是以信任錨的公鑰，驗證目標憑證中名稱與公鑰的綁定；需一串憑證：每張的主體是下一張的簽發者、第一張由信任錨簽發、最後一張是目標、每張在當時有效；信任錨是演算法的輸入，不在路徑裡驗證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "未讀 §6.1.1 之後的逐步演算法、撤銷與名稱限制；哪些根被信任由瀏覽器／系統信任庫決定，RFC 不規定清單。",
+          "author_cache": {
+            "file": "scratchpad/f2src/rfc5280.txt",
+            "sha256_prefix": "a2f2628c0a83b873",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc5280.txt"
         }
       ]
     },
@@ -73574,6 +73980,27 @@
       ]
     },
     {
+      "id": "SRC-ae51473c0e1154f7",
+      "url": "https://gssc.esa.int/navipedia/index.php/Multipath",
+      "readings": [
+        {
+          "canonical_url": "https://gssc.esa.int/navipedia/index.php/Multipath",
+          "title": "Multipath",
+          "publisher": "ESA Navipedia（Sanz Subirana 等，UPC）",
+          "version": "oldid=11617",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，HTML 轉文字",
+          "reading_scope": "全頁含 Fig.2 說明",
+          "locator": "第1–3段、Fig.2 說明",
+          "summary": "訊號經不同路徑到天線即多路徑，主因是天線靠近反射物，低仰角衛星最嚴重；碼量測理論上可達數百公尺但超過約15公尺難觀察，典型小於2–3公尺；靜止接收機的多路徑特徵每恆星日重複，顯示其幾何性質；改善天線、遠離反射物可減輕。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "教材級；1998 年巴塞隆納單頻接收機資料示例。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://gssc.esa.int/navipedia/index.php/Multipath"
+        }
+      ]
+    },
+    {
       "id": "SRC-ae565be7a10846c9",
       "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/8605049",
       "readings": [
@@ -76498,6 +76925,33 @@
           "locator": "docs/videos/so-thats-why/topic-checks/s3-B51-B63.md#B62",
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
+          "original_url": "https://doi.org/10.1509/jmkr.43.1.39"
+        },
+        {
+          "retrieval_url": "https://business.columbia.edu/sites/default/files-efs/pubfiles/1200/goalgradient.pdf",
+          "canonical_url": "https://doi.org/10.1509/jmkr.43.1.39",
+          "doi": "10.1509/jmkr.43.1.39",
+          "title": "The Goal-Gradient Hypothesis Resurrected: Purchase Acceleration, Illusionary Goal Progress, and Customer Retention",
+          "publisher": "Kivetz、Urminsky、Zheng；Journal of Marketing Research 43(1):39–58 (2006)",
+          "version": "哥倫比亞商學院放置的期刊排版全文（21頁）",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，pdftotext 全文",
+          "reading_scope": "Abstract、Introduction、The Café RP（Method、Results、Table 2 segment 段、Discussion）、Illusion of Progress（field experiment 與 process tests）、Customer Retention 段落",
+          "locator": "頁41–49、頁52–53",
+          "summary": "大學咖啡店集點：949張集滿卡、約一萬次購買，隨章數累積購買間隔縮短，最後比第一次快約20%（0.7天）；拿『透明卡』（買咖啡不換獎勵）的對照組沒有加速；換到第二張卡時頭兩次又變慢（集點重置）；108位顧客隨機拿10格卡或送2格的12格卡，同樣要買10杯，送格組12.7天集滿、對照15.6天，約快20%；問卷顯示送格不影響加入意願；分群：58%顯著加速，7%與6%兩群幾乎不受距離影響；未集滿而被收購卡的人較少加速；第一張加速越強的人越可能再集第二張且回來得較快。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一校園咖啡店與音樂評分網站；12格卡實驗 n=108；分群為模型估計。　非作者覆核 V5 重讀更正摘要三處：透明卡（42 人）對照組不是只『沒有加速』，而是越接近集滿越慢；被買回的 73 張未集滿卡，卡主沒有加速甚至變慢；『送格不影響加入意願』是另一個以餐廳集點卡為情境的問卷，不是那 108 位顧客。核心依更正後的說法撰寫。",
+          "access_notes": "與池中 LEG-B62 的歷史來源 SRC-b6543e5552abf38f（DOI 網址）是同一篇論文；以 DOI 網址追加本輪閱讀紀錄，不另立來源。實際讀的是哥倫比亞商學院放置的期刊排版全文。LEG-B62 已有的『越近買越快、先送幾格集得更快』定性句不重算。",
+          "refreshes_source_id": "SRC-b6543e5552abf38f",
+          "applies_to_candidate_ids": [
+            "LEG-B62"
+          ],
+          "author_cache": {
+            "file": "scratchpad/f2src/kivetz2006.pdf",
+            "sha256_prefix": "2fbe7e5c6c23d3ce",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-human-20261111",
           "original_url": "https://doi.org/10.1509/jmkr.43.1.39"
         }
       ]
@@ -92788,6 +93242,33 @@
       ]
     },
     {
+      "id": "SRC-dc1291586b773dd1",
+      "url": "https://arxiv.org/abs/0707.4550",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/0707.4550",
+          "doi": "10.1007/s10035-007-0062-2",
+          "title": "The flow rate of granular materials through an orifice",
+          "publisher": "Mankoc、Janda、Arévalo、Pastor、Zuriguel、Garcimartín、Maza（納瓦拉大學）；後刊 Granular Matter 9:407–414 (2007)",
+          "version": "arXiv v1 2007-07-31 作者稿",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200（arXiv PDF），pdftotext 全文",
+          "reading_scope": "Abstract、§I Introduction 全段、§II.A 三維筒倉與量測方法、Fig.1、§IV Conclusions 首段",
+          "locator": "§I 第1–4段；§II.A；Fig.1",
+          "summary": "與流體相反，筒倉靠重力出料時流量不隨料層高度改變：料層高於約1.2倍筒徑後，底壓因 Janssen 效應飽和，流量約為定值；Beverloo 定律流量∝(D0−k·dp)^{5/2}，可用『出口上方有一個自由落體區，由一道拱界定』解釋；量出的落下顆粒數對時間是直線；出口與顆粒直徑比約5以下會因成拱而間歇卡住；在1.5到100倍粒徑的大範圍內，Beverloo 需對大、小出口用不同常數，作者改提含指數修正的新式。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "『流量與料高無關』是前言對既有文獻的陳述（本文實驗刻意把料位保持在約兩倍筒徑以上）；自由落體拱是『看似合理』的解釋，不是本文實測；平底圓筒倉而非沙漏外形。　非作者覆核 V5：出口與粒徑比約 5 的卡住門檻引自同團隊前作，撰稿標『先前研究』。",
+          "author_cache": {
+            "file": "scratchpad/f2src/mankoc.pdf",
+            "sha256_prefix": "9329d3bc6a597856",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-physics-20261111",
+          "original_url": "https://arxiv.org/abs/0707.4550"
+        }
+      ]
+    },
+    {
       "id": "SRC-dc2493397c727ad0",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7968841/fullTextXML",
       "readings": [
@@ -93504,6 +93985,27 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://u.ae/en/information-and-services/environment-and-energy/Natural-resources/water-"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ddb622173ca898fd",
+      "url": "https://letsencrypt.org/certificates/",
+      "readings": [
+        {
+          "canonical_url": "https://letsencrypt.org/certificates/",
+          "title": "Chains of Trust",
+          "publisher": "Let's Encrypt (ISRG)",
+          "version": "頁面標 Last updated: July 8, 2026",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200，HTML 轉文字",
+          "reading_scope": "Root CAs、Subordinate (Intermediate) CAs 段（含 Chains 列）",
+          "locator": "Root CAs 首段；YE1 的 Chains 列",
+          "summary": "根金鑰離線保存，訂戶憑證由中繼 CA 簽發；根憑證雖有到期日，Root Program 與信任庫可在日期後繼續信任或提前終止；列出 EE ← 中繼 ← 根 的鏈。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "鏈名與日期會變；片中只講「一張簽一張、根在信任庫」，不念具體憑證名。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://letsencrypt.org/certificates/"
         }
       ]
     },
@@ -99290,6 +99792,28 @@
       ]
     },
     {
+      "id": "SRC-eb0125ccd9f7e18d",
+      "url": "https://www.gps.gov/node/70",
+      "readings": [
+        {
+          "canonical_url": "https://www.gps.gov/node/70",
+          "title": "GPS Accuracy (FAQ)",
+          "publisher": "GPS.gov / U.S. National Coordination Office for Space-Based PNT",
+          "version": "現行 node/70 與 archive 版不完全相同：military 題的 URE 與單／雙頻句只在 archive 版。",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200（node/70 與 archive 版兩次）",
+          "reading_scope": "全頁 FAQ 七題",
+          "locator": "How accurate／Why wrong place／commitment／military 題",
+          "summary": "接收精度取決於衛星幾何、遮擋、大氣與接收機設計；手機開闊天空通常約 4.9 公尺半徑，靠近建築、橋、樹變差；常見原因：遮擋、室內地下、牆面反射（multipath）；很多時候 GPS 正常而是地圖軟體錯；政府承諾的是太空訊號：每日全球平均 URE ≤2.0 m（95%），2021-04-20 實際 ≤0.643 m；URE 不是使用者精度；軍民 URE 相同，差在軍用雙頻可修正大氣扭曲。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "4.9 m 引 ION 來源，本輪未讀該原文；數字為 2021 年頁面版本，播出前重查。",
+          "access_notes": "非作者覆核 V5 兩版都重抓：military 題的『軍民 URE 相同、多數民用單頻、軍用雙頻』只在 archive.gps.gov/systems/gps/performance/accuracy/（2025 年 2 月後未更新的典藏頁），現行 node/70 已刪這兩句；作者原紀錄說兩版文字相同，不正確。播出前重查。",
+          "origin": "wave53-tech-20261111",
+          "original_url": "https://www.gps.gov/node/70"
+        }
+      ]
+    },
+    {
       "id": "SRC-eb02eb6cb26dc898",
       "url": "https://pubmed.ncbi.nlm.nih.gov/12717008/",
       "readings": [
@@ -101358,6 +101882,35 @@
           "locator": "docs/videos/so-thats-why/season2/B27.md#B27",
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
+          "original_url": "https://www.kellogg.northwestern.edu/faculty/anderson_e/htm/personalpage_files/Papers/Effects_of_9_Price_Endings_on_Retail_Sales.pdf"
+        },
+        {
+          "canonical_url": "https://www.kellogg.northwestern.edu/faculty/anderson_e/htm/personalpage_files/Papers/Effects_of_9_Price_Endings_on_Retail_Sales.pdf",
+          "doi": "10.1023/A:1023581927405",
+          "identity_urls": [
+            "https://link.springer.com/article/10.1023/A:1023581927405"
+          ],
+          "title": "Effects of $9 Price Endings on Retail Sales: Evidence from Field Experiments",
+          "publisher": "Anderson & Simester；Quantitative Marketing and Economics 1:93–110 (2003)",
+          "version": "作者頁提供的期刊版掃描 PDF（18頁，ABI/INFORM 重製）",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl GET 200；文字層只有頁首，pdftoppm 110 dpi 轉圖逐頁目讀",
+          "reading_scope": "頁93–105（PDF 1–13）：Abstract、Introduction 與試驗表、§2 Overview、Study 1 全段與 Table 1–2、Study 2 與 Table 4–5、Study 3 與 Table 7、§4 Discussion 首頁",
+          "locator": "頁94 Pilot table；頁97–99 Study 1；頁99–102 Study 2；頁102–105 Study 3",
+          "summary": "兩家同集團女裝郵購目錄（均價約50美元），把同品項的價格版本隨機寄給不同顧客；試驗：四件洋裝 $9 尾數賣66件，各降或升5美元（移除9尾數）賣46與45件，約多40%，而相差10美元的兩個處理組幾乎沒差；Study 1 每版2萬名顧客、27個品項，9尾數約增需求35%；Study 2 每版31,250人、120品項，平均增15%，新品22%對舊品10%；Study 1、2 價格係數不顯著；Study 3 每版9萬人、308品項，9尾數增7%，價格係數顯著為負；新品已有『Sale』字樣時再加9尾數只增3.9%，無 Sale 時8.5%，作者稱為待驗的初步結果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "同一集團兩家目錄、美國女裝、1990年代末；價格變動受管理層限制（Study 1 只能改前後各10頁、1美元級距）；Study 3 的 Sale 交互作用品項少；作者自己保留『為何是9』的解釋問題。PDF 是作者頁轉載的資料庫重製，掃描影像需撰稿時再核表格數字。",
+          "access_notes": "與池中 LEG-B27 的歷史來源 SRC-f03130ce50fe3ee4（同一網址）是同一份 PDF，以同一網址追加本輪閱讀紀錄；LEG-B27 另列的 Springer 頁 SRC-72e5c18b45e5f4c2 是同一篇論文（同 DOI）的出版者頁，網址不同所以來源 id 無法合併，記在 identity_urls。LEG-B27 已有的『情境相依、新品較強、Sale 可能削弱』定性句不重算。",
+          "refreshes_source_id": "SRC-f03130ce50fe3ee4",
+          "applies_to_candidate_ids": [
+            "LEG-B27"
+          ],
+          "author_cache": {
+            "file": "scratchpad/f2src/as2003.pdf",
+            "sha256_prefix": "faa6dd46a62ad7e5",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave53-human-20261111",
           "original_url": "https://www.kellogg.northwestern.edu/faculty/anderson_e/htm/personalpage_files/Papers/Effects_of_9_Price_Endings_on_Retail_Sales.pdf"
         }
       ]
@@ -262351,6 +262904,1374 @@
       "production_ready": false
     },
     {
+      "id": "H53-001",
+      "question": "把 39 元改成 34 元，賣得比較多嗎？郵購目錄的第一個試驗",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.pricing.nine_ending_catalog_pilot",
+      "answer_target": "一家女裝郵購目錄把同一本目錄印成三版，隨機寄給不同顧客：四件洋裝在原版用 9 結尾（39、49、59、79 美元），另兩版把每件價格改高或改低 5 美元（每版有升有降），9 結尾就沒了。9 結尾條件共賣出 66 件，低 5 美元的條件 46 件、高 5 美元的條件 45 件，約多四成；而高低兩種條件相差 10 美元，銷量幾乎一樣。這個結果讓目錄經理同意擴大做三個正式實驗。",
+      "scope": "美國、1990年代末、單一目錄四件洋裝；件數小，作者自己把它當動機而非結論。",
+      "source_locator": "S001 頁93–94 Introduction 與 Pilot study 表",
+      "premise_status": "screened",
+      "notes": "目標 P30 第一章「99 和 100 比的不只差額」；補 MATERIAL_REVIEW『郵購實驗的原文樣本與條件』。LEG-B27 已有『情境相依的需求效果』概括，本核心新增試驗設計與數字，不重複計算概括句。 原提案 F2-020。非作者覆核 V5（2026-11-11）照原稿收；新事實（LEG-B27 只有概括句），算 2 條。H53-S001 與池中 SRC-f03130ce50fe3ee4（同一網址）、SRC-72e5c18b45e5f4c2（同 DOI）是同一文獻，併入時合併來源 id。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "便宜 5 元沒多賣，貴 5 元也沒少賣，卻是那個 9 讓銷量多了四成。",
+        "visual": "三本同樣的目錄寄往三群信箱，同一件洋裝標不同價；銷量長條以原表數字畫。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f03130ce50fe3ee4",
+          "origin": "wave53-human-20261111",
+          "locator": "S001 頁93–94 Introduction 與 Pilot study 表",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H53-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H53-002",
+      "question": "9 結尾的效果，換個商品、加上『特價』字樣還在嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.pricing.nine_ending_moderators_new_items_sale_cue",
+      "answer_target": "同一集團兩家目錄的三個隨機實驗：每版寄 2 萬、31,250、9 萬名顧客，9 結尾分別讓需求增加約 35%、15%、7%。第二個實驗裡新品增約 22%，已上架過幾季的舊品只約 10%；前兩個實驗的價格係數都不顯著，作者據此說顧客對 9 尾數比對實際價差更敏感，但第三個實驗價格變動範圍大、樣本大，價格效果就顯著出現。已經標『Reg $X SALE $Y』的新品再改 9 尾數只多 3.9%，沒有特價標示時多 8.5%，作者自己稱這是品項少的初步結果。",
+      "scope": "美國女裝郵購、同集團兩目錄；百分比為模型估計；Sale 交互作用為暫定。",
+      "source_locator": "S001 頁97–99 Study 1 與 Table 2；頁99–102 Study 2 與 Table 4；頁102–105 Study 3 與 Table 7、第4節前",
+      "premise_status": "screened",
+      "notes": "目標 P30 第二章「換個價格情境還有效嗎」；補章節缺的條件與反例。LEG-B27 已有『新品較強、Sale 可能削弱』定性句，本核心算 1.5 條新事實（數字與價格係數轉折）。 原提案 F2-021。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；數字與歸因都對。LEG-B27 已有新品較強／Sale 削弱的定性句，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "效果是真的，但越熟悉的商品、越大的價差、越明顯的特價牌，都讓它變小。",
+        "visual": "三個實驗並排的效果長條（35／15／7%），新品與舊品分色；特價牌疊上去時長條縮短（標『暫定』）。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f03130ce50fe3ee4",
+          "origin": "wave53-human-20261111",
+          "locator": "S001 頁97–99 Study 1 與 Table 2；頁99–102 Study 2 與 Table 4；頁102–105 Study 3 與 Table 7、第4節前",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H53-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H53-003",
+      "question": "左邊那位數字的影響，在一台上萬美元的二手車上也看得到嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.left_digit.used_car_odometer_thresholds",
+      "answer_target": "研究者分析超過 2,200 萬筆美國二手車批發拍賣：里程每跨過一個萬英里整數，售價就不連續地掉約 150 到 200 美元；例如 79,900 多英里的車比 80,000 出頭的貴約 210 美元，卻只比 79,800 多英里的便宜約 10 美元。跨千英里也有較小的跳動。估計出的『不注意』程度約 0.31；賣方也懂，快跨門檻前送拍的車明顯變多。作者說多項證據都指向最終買車的消費者只看了左邊的數字。",
+      "scope": "NBER 2011 工作論文版（期刊版 AER 2012 未讀）；對象是里程數不是價格標籤。",
+      "source_locator": "S002 Abstract；Introduction 第2–3段；§5 估計段",
+      "premise_status": "screened",
+      "notes": "目標 P30 第二章：同一個左位數機制換到高金額、專業買家的市場還在不在——是檢驗不是另舉一例。若片長超標，壓成 40 秒。 原提案 F2-022。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；數字對；問句『幾十萬元』暗示台幣、改成美元；『最符合』改回原文強度。對象是里程數不是標價，只能當『同一個左位數讀法換到大金額』的檢驗，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連花大錢、慢慢挑的二手車，左邊那位數一變，價格就跳一階。",
+        "visual": "里程表從 79,999 翻到 80,000 的瞬間，價格曲線出現台階（依原文描述的形狀示意）。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-36b62e0fc92155e0",
+          "origin": "wave53-human-20261111",
+          "locator": "S002 Abstract；Introduction 第2–3段；§5 估計段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H53-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H53-004",
+      "question": "集點卡越接近集滿，人真的買得越快嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.reward.goal_gradient_cafe_field_data",
+      "answer_target": "大學咖啡店的集點計畫收回 949 張集滿的 10 格卡、約一萬次購買：隨著章越蓋越多，兩次購買的間隔越來越短，最後一次比第一次平均快約 20%（0.7 天）。拿『只記錄、不換獎勵』透明卡的 42 位對照顧客不但沒有加速，越接近集滿反而買得越慢；集滿換完獎勵後，第二張卡的頭幾次又變慢，像重新起跑。",
+      "scope": "單一校園咖啡店；加速是平均值。",
+      "source_locator": "S003 頁42–43 Method 與 Results；頁45 postreward resetting 段；頁46 transparent cards 結果",
+      "premise_status": "screened",
+      "notes": "目標 P30 第三章「離集滿只差一次又改了什麼」；補 MATERIAL_REVIEW 要的原文數據。LEG-B62 已有『越近買越快』定性句，本核心新增對照組與重置兩條。 原提案 F2-023。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；對照組結果要寫準：是減速。LEG-B62 已有『越近買越快』，算 1.5 條（對照組與重置）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "推你的不是咖啡，是那張卡上剩下的空格。",
+        "visual": "集點卡格子逐格蓋章，下方時間軸的間隔逐漸縮短；換卡後間隔又拉長。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6543e5552abf38f",
+          "origin": "wave53-human-20261111",
+          "locator": "S003 頁42–43 Method 與 Results；頁45 postreward resetting 段；頁46 transparent cards 結果",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H53-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H53-005",
+      "question": "先送你兩格，要買的杯數一樣，為什麼集得更快？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.reward.illusionary_progress_proportional_distance",
+      "answer_target": "同一家咖啡店把 108 位顧客隨機分兩組：一組拿 10 格空卡，一組拿 12 格卡但已送 2 格，兩組都還要買 10 杯。送格組平均 12.7 天集滿，空卡組 15.6 天，快了約 20%。作者用『剩下的比例』解釋：剩 10/12 比剩 10/10 感覺近。另一個以餐廳集點卡為情境的問卷則顯示，送格並沒有讓人更想加入，排除了『只是比較喜歡那張卡』的解釋。",
+      "scope": "n=108；與 Nunes & Drèze 2006 洗車實驗同類，但後者原文本輪未讀，不用其 34%／19% 數字。",
+      "source_locator": "S003 頁48 A Field Experiment of Illusionary Goal Progress；Process Tests 段；頁49 討論",
+      "premise_status": "screened",
+      "notes": "目標 P30 第三章。是 P30 兩機制的橋：價格的左位數與集點的剩餘比例，都是『真實數量沒變，呈現方式變了，決定就變』。 原提案 F2-024。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；標清楚兩個研究；與 LEG-B62『先送幾格集得更快』重疊，算 1.5 條（數據與排除解釋）。Nunes & Drèze 未讀，不用其數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要走的路一樣長，只是起點畫得往前一點。",
+        "visual": "兩張卡並排：10 格空卡與 12 格先蓋 2 格，下方兩條等長的待走路徑。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6543e5552abf38f",
+          "origin": "wave53-human-20261111",
+          "locator": "S003 頁48 A Field Experiment of Illusionary Goal Progress；Process Tests 段；頁49 討論",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H53-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H53-006",
+      "question": "集點真的推得動每個人嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.reward.goal_gradient_heterogeneity_retention",
+      "answer_target": "同一份咖啡店資料分群後，約 58% 的會員有明顯加速，另有 29% 方向相同但不顯著，還有兩群（7%、6%）幾乎不受剩幾格影響。研究助理用每張 4 美元買回的 73 張未集滿卡，主人沒有加速，甚至越集越慢；而第一張卡加速越明顯的人，越可能再集第二張，回來得也越快。",
+      "scope": "模型估計的分群；單一店家。",
+      "source_locator": "S003 頁47 Table 2 分群段；頁47 buyback 段；Customer Retention 段",
+      "premise_status": "screened",
+      "notes": "目標 P30 第四章「兩個推力什麼時候推不動」；補章節缺的『限制與個體差異的研究細節』。 原提案 F2-025。作者標為界線，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；『較少出現加速』改成原文的『沒有加速、甚至變慢』。算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張卡，對一部分人是油門，對另一部分人只是一張紙。",
+        "visual": "一群顧客剪影，各自的購買間隔曲線：多數往下彎，少數是平的。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6543e5552abf38f",
+          "origin": "wave53-human-20261111",
+          "locator": "S003 頁47 Table 2 分群段；頁47 buyback 段；Customer Retention 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H53-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P53-001",
+      "question": "沙從小孔流出，為什麼不像水那樣越流越慢？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.height_independent_beverloo",
+      "answer_target": "納瓦拉大學團隊在論文前言整理數十年的筒倉研究：與液體相反，顆粒靠重力從底孔流出時，流量不隨料層高度變；料層高過約 1.2 倍筒徑後，底部壓力因 Janssen 效應而飽和，流量大致固定。決定流量的是出口：工程上沿用的 Beverloo 經驗式說流量和（出口直徑減去幾顆粒徑）的 5/2 次方成正比；作者認為一個看似合理的解釋是，出口上方有一個由拱界定的自由落體區，顆粒在拱下才開始加速。",
+      "scope": "乾燥、粒徑大於約 0.5 毫米的單一粒徑顆粒；『與高度無關』是原文前言整理既有文獻（本文實驗刻意把料位保持在約兩倍筒徑以上），不是本文量測；自由落體拱是原文『看似合理』的解釋；平底筒倉，不是沙漏外形，片中不可說沙漏已被直接量過。",
+      "source_locator": "S001 §I 第1–3段（式1）",
+      "premise_status": "screened",
+      "notes": "目標 C2-11 開場與第二章；補審查列的關鍵缺口『乾沙出口流率與料高無關（Beverloo 定律）』，並把 F10003 的 Janssen 底力飽和接到流量。 原提案 F2-026。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；答案要把『前言整理既有研究』與『筒倉』寫進句子，不能讓觀眾以為是沙漏的直接量測；Janssen 底壓飽和已由 F10003 支持，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沙漏的節奏由出口那一小圈決定，上面堆多高都一樣。",
+        "visual": "水鐘水位下降、流速變慢 vs 沙柱下降、流速固定的並排；出口上方畫一道虛線拱（標示為解釋模型）。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc1291586b773dd1",
+          "origin": "wave53-physics-20261111",
+          "locator": "S001 §I 第1–3段（式1）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P53-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P53-002",
+      "question": "量沙漏的流量時，看到的是一條直線嗎？出口小到多少就開始卡？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.linear_discharge_jamming_threshold",
+      "answer_target": "納瓦拉大學團隊把筒倉出口換成不同大小，秤落下的玻璃珠：出口夠大時，落下的顆粒數對時間是一條直線，任何時刻量都一樣；出口與顆粒直徑比約 5 以下，就會因為成拱而一陣一陣卡住，只能用每段崩流的量除以時間算流量。把出口從 1.5 倍到 100 倍粒徑都量過後，他們發現 Beverloo 式對大出口和小出口得用不同常數，因此改提一個帶指數修正的新式。",
+      "scope": "實驗室筒倉與玻璃、鉛、塑膠珠；比值約 5 的門檻引自同團隊前作。",
+      "source_locator": "S001 §II.A 方法段與 Fig.1；Abstract；§I 末段；§IV 首段",
+      "premise_status": "screened",
+      "notes": "目標 C2-11 第三、四章銜接（連續流→間歇卡住）；Rc≈5 引自同團隊前作，撰稿標『先前研究』；Beverloo 改式只留一句或不用。 原提案 F2-027。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；事實對，但『Beverloo 要換常數、改提新式』是建模細節，『≈5 卡住』引自前作；對觀眾不是轉折，只算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一條直線，出口一縮小就斷成一段一段的階梯。",
+        "visual": "落下顆粒數對時間：大出口是平滑直線、小出口是階梯（依 Fig.1 形狀示意）。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc1291586b773dd1",
+          "origin": "wave53-physics-20261111",
+          "locator": "S001 §II.A 方法段與 Fig.1；Abstract；§I 末段；§IV 首段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P53-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P53-003",
+      "question": "硬板拼成的摺紙，為什麼能像開關一樣停在兩個形狀？",
+      "domain": "材料與結構",
+      "mechanism_key": "origami.bistable_closed_polyhedra_stiff_facets_stretchable_hinges",
+      "answer_target": "如果三角形面完全不能變形、摺線是理想鉸鏈，閉合的摺紙多面體不是根本動不了，就是展開時體積不變。研究者改用硬面配上可伸長的鉸鏈，並挑選特定角度的三角形：平板和展開兩個形狀都剛好相容，但兩者之間的路上面和鉸鏈必須被迫變形，形成一道能量障壁，於是它會停在兩個穩定形狀之一，而且可以用灌氣切換。",
+      "scope": "Nature 2021；能量分析以幾何與公分級實驗為主。",
+      "source_locator": "S002 頁546 Triangular facets 段（『either rigid or volume invariant』至 energy barrier 句）",
+      "premise_status": "screened",
+      "notes": "目標 C3-09『扣在一起，難走的路變硬』與 P44-004（按翻頂點雙穩）之間；回答同一問題：面不能伸長時，結構只能在幾條路之間選，被逼變形的那段路就是障壁。 原提案 F2-028。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；與 C3-09『需要伸長的路變硬』是同一問題的延伸（障壁就是被迫伸長的代價），不是名稱相近；算 1 條（與 P44-004 的雙穩概念部分重疊）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "面不肯被拉長，路中間就多了一座山，兩邊各是一個可以停下來的谷。",
+        "visual": "平板與展開兩個狀態之間畫一條能量曲線，中間凸起；三角面在凸起處被擠歪（示意）。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-22ca28ea105074a9",
+          "origin": "wave53-physics-20261111",
+          "locator": "S002 頁546 Triangular facets 段（『either rigid or volume invariant』至 energy barrier 句）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P53-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P53-004",
+      "question": "摺紙原理能做出可以住人的大結構嗎？",
+      "domain": "材料與結構",
+      "mechanism_key": "origami.metre_scale_inflatable_bistable_shelter",
+      "answer_target": "研究團隊用 4 毫米瓦楞塑膠板、刻痕當摺線，做出公尺級原型：一座拱門摺起時 20 公分高、30 公分寬，灌氣後展成 60 公分高、150 公分寬，突然洩氣也維持形狀，要抽真空才摺回；一座帳篷式庇護所平摺時 1.0×2.0×0.25 公尺，灌氣後先停在屋頂內摺的穩定形狀，再加壓屋頂向外翻，成為 2.5×2.6×2.6 公尺，展開後開門也不影響結構。",
+      "scope": "示範原型，材料是 4 毫米瓦楞塑膠板（不是紙），未報告耐候與長期使用；不說已商品化。",
+      "source_locator": "S002 頁549 Fig.3d 正文與 Fig.4 正文",
+      "premise_status": "screened",
+      "notes": "目標 C3-09，補 V3 審查要求的『實測的大型展開結構，答同一個挑路問題』：雙穩讓它不必一直灌氣，正是『限制哪條路、哪個狀態就穩』。 原提案 F2-029。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；材料是瓦楞塑膠板不是紙，片中不能說『紙帳篷』；尺寸串算 1.5 條。是 C3-09 V3 要的『實測大型展開結構』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的摺紙道理放大到一頂帳篷：灌一口氣翻過山頭，就自己站住。",
+        "visual": "原型照片式的原創插畫：平摺的板包 → 第一階段 → 屋頂外翻的完整帳篷（尺寸標註）。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-22ca28ea105074a9",
+          "origin": "wave53-physics-20261111",
+          "locator": "S002 頁549 Fig.3d 正文與 Fig.4 正文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P53-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P53-005",
+      "question": "降噪耳機對飛機轟聲和旁人說話，效果一樣嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.anc.headset_measured_active_passive_bands",
+      "answer_target": "聲學測試公司用人工頭量四款耳機（兩款耳罩、兩款入耳）：主動降噪開到最大時，對飛機與咖啡廳噪音的衰減約 15 到 21 dB，只靠被動隔音多半只有 3 到 6 dB，一款入耳被動就有約 13 dB。被動隔音通常只對 200 Hz 以上有效，更低的頻率要靠主動降噪；有些耳機的 ANC 效果小得多；戴眼鏡會讓耳罩漏聲、降噪變差；而降噪很強的耳機也會壓低較高頻的說話聲，所以才有通透或環境模式。",
+      "scope": "DAGA 2019 會議論文、廠商實驗室、四款匿名耳機；非同儕審查期刊。",
+      "source_locator": "S003 頁915 Table 1 與其說明；頁916 正文",
+      "premise_status": "screened",
+      "notes": "目標 P19 第三章「說話與低頻轟聲為何不同」；補 MATERIAL_REVIEW『非單一品牌的頻率效果資料或受控實測』與『被動隔音的來源』。 原提案 F2-030。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；廠商實驗室會議論文、四款匿名；算 2 條。補不起 P19（見 targets）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "低頻靠電子抵消，高頻靠耳罩擋，兩套系統各管一段。",
+        "visual": "頻率軸上兩塊色帶：低頻 ANC、200 Hz 以上被動；四款耳機的衰減長條。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6808d2f9bf0efda5",
+          "origin": "wave53-physics-20261111",
+          "locator": "S003 頁915 Table 1 與其說明；頁916 正文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P53-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P53-006",
+      "question": "降噪耳機擋不住說話聲，為什麼戴著反而比較聽得清楚別人講話？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.anc.low_frequency_feedback_masking_release",
+      "answer_target": "主動降噪耳罩用回授迴路，把漏進來的聲音以 180 度相位反向再送出，抵消該頻段；受技術限制，只在約 500 Hz 以下有效，更高頻要靠耳罩本身擋。多倫多大學的作者指出，正因如此單靠主動降噪並不降低聽力受損風險，因為傷耳的能量多在 500 Hz 以上；但壓掉低頻轟聲能減少它對語音的『向上遮蔽』，在機艙、引擎室這類環境反而提高語音清晰度。",
+      "scope": "2002 年耳罩研究；遮蔽與清晰度是作者前言引述 Kryter 1994，非本文量測；聽損風險說法不推到現代耳機音樂音量。",
+      "source_locator": "S004 §1 Introduction；§4 Discussion",
+      "premise_status": "screened",
+      "notes": "目標 P19 第一、三章；是轉折候選（說話聲還在不是失敗，甚至被『放出來』）。遮蔽段需另找原始研究才能當主轉折。 原提案 F2-031。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；低頻有效與 LEG-S86 部分重疊，算 1 條；遮蔽釋放只是前言引述，不能當主轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "抵消的是低頻，留下的說話聲少了轟聲的遮擋，反而更清楚。",
+        "visual": "反相波形相加變平的示意；頻譜上低頻被削平，語音頻段露出來。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-1178ab59ef78d986",
+          "origin": "wave53-physics-20261111",
+          "locator": "S004 §1 Introduction；§4 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P53-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-001",
+      "question": "連 HTTPS 網站的第一秒，瀏覽器和伺服器先做了什麼，才開始加密？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.handshake_key_exchange_then_encrypt",
+      "answer_target": "TLS 1.3 的握手第一步是交換金鑰：瀏覽器在 ClientHello 裡送出隨機數和 Diffie-Hellman 金鑰分享，伺服器在 ServerHello 回自己的分享，兩邊各自算出同一把共用秘密；從這之後的握手訊息全部加密，連伺服器的憑證也是。所有公鑰交換都具前向保密：就算伺服器的長期金鑰日後外洩，只要當次的連線金鑰已刪除，過去錄下的流量也解不開。",
+      "scope": "TLS 1.3（RFC 8446）；舊版 TLS 1.2 的明文憑證與靜態 RSA 交換不在此列；不教數學。",
+      "source_locator": "S001 §1.2（ServerHello 後全加密、前向保密）、§2 Fig.1 與三階段、附錄 E.1 Forward secret 段",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三章「雙方怎麼建立保護」；補 MATERIAL_REVIEW 缺的握手與金鑰交換。A55 既有 RFC 8446 摘要只支持『防偷看與竄改』一句，本核心是新事實。 原提案 F2-001。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；新事實（A55 只有『防偷看與竄改』一句），算 2 條。前向保密在 psk_ke 模式不成立，不在本片範圍，scope 已排除 PSK。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鎖頭出現前，雙方先在大家看得到的線上算出一把只有彼此知道的鑰匙。",
+        "visual": "固定連線圖：兩端各丟出一半顏色、混出同色；之後的箭頭全部上鎖色（原創示意，不畫數學）。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §1.2（ServerHello 後全加密、前向保密）、§2 Fig.1 與三階段、附錄 E.1 Forward secret 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-002",
+      "question": "伺服器把憑證送來就好，為什麼還要再簽一次名？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.certificateverify_finished_binding",
+      "answer_target": "憑證只是公開的文件，誰都能轉寄。TLS 1.3 要伺服器再送 CertificateVerify：用憑證公鑰對應的私鑰，對到目前為止的整段握手簽名，證明它真的持有私鑰；接著 Finished 是對整段握手的訊息驗證碼，把端點身分和剛交換的金鑰綁在一起。中間有人改過任何握手訊息，簽名或驗證碼就對不上，連線中止。",
+      "scope": "伺服器端憑證驗證；用戶端憑證另議；不展開簽章演算法。",
+      "source_locator": "S001 §2（Certificate、CertificateVerify、Finished 定義）、§4.4.3 開頭",
+      "premise_status": "screened",
+      "notes": "目標 P29 第二章「怎麼知道正在和誰說話」。把 G38 I3082（驗證只綁鑰匙）對到 TLS 的實際做法；I3082 本身是 libsodium 來源，合併時只留一句。 原提案 F2-002。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1 條。G38 I3082（libsodium 驗證只綁鑰匙）在 P29 只留概念一句，不另計。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能出示證件不夠，還得當場用只有本人有的私鑰簽一次。",
+        "visual": "轉寄的憑證影本 vs 當場簽名的對照；握手訊息串起一條封條。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §2（Certificate、CertificateVerify、Finished 定義）、§4.4.3 開頭",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-003",
+      "question": "瀏覽器怎麼決定一張憑證可以信？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.pki.certification_path_trust_anchor",
+      "answer_target": "憑證是一串互相簽名的文件：網站憑證由中繼 CA 簽，中繼由根 CA 簽。驗證時每一張的主體必須是下一張的簽發者、第一張要由信任錨簽發、每張都要在有效期內；信任錨本身不在路徑裡驗證，而是預先放在瀏覽器或作業系統的信任庫。以 Let's Encrypt 為例，根金鑰離線保存，日常憑證都由中繼簽發；根要不要繼續被信，由各家 Root Program 和信任庫決定，不只看憑證上的到期日。TLS 規格本身把詳細驗證交給這套 X.509 規則。",
+      "scope": "網頁 PKI；不講企業自簽或憑證釘選；鏈名不念。",
+      "source_locator": "S003 §6.1 條件 a–d 與信任錨為輸入；S005 Root CAs 段與 Chains 列；S001 §4.4.2.4 首句、附錄 C.2",
+      "premise_status": "screened",
+      "notes": "目標 P29 第二章；補 MATERIAL_REVIEW『憑證機構與信任鏈的官方說明』。 原提案 F2-003。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1.5 條：A55 已有『用憑證確認你連到的是這個網址』，本核心只新增信任鏈與信任庫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鎖頭背後是一條簽名接力，最上面那一棒是你的裝置事先決定要信的。",
+        "visual": "三張卡片由下往上連線，最上一張放進裝置裡的『信任庫』抽屜。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-8a7e2503ca55c6ea",
+          "origin": "wave53-tech-20261111",
+          "locator": "S003 §6.1 條件 a–d 與信任錨為輸入；S005 Root CAs 段與 Chains 列；S001 §4.4.2.4 首句、附錄 C.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ddb622173ca898fd",
+          "origin": "wave53-tech-20261111",
+          "locator": "S003 §6.1 條件 a–d 與信任錨為輸入；S005 Root CAs 段與 Chains 列；S001 §4.4.2.4 首句、附錄 C.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S003 §6.1 條件 a–d 與信任錨為輸入；S005 Root CAs 段與 Chains 列；S001 §4.4.2.4 首句、附錄 C.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-004",
+      "question": "憑證機構發憑證前，到底查了什麼？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.pki.domain_validation_acme",
+      "answer_target": "以免費自動發證的 Let's Encrypt 為例，申請者只要證明自己控制這個網域：在網域下放一筆指定的 DNS 記錄，或在 http 網址的固定路徑放一個檔案；CA 會從多個網路位置同時檢查，降低驗證路上被人攔截的風險，因為這一步本身不能用 HTTPS。通過後就能為該網域簽發憑證。它查的是『你管得了這個網址』，不是網站的經營者好不好、內容可不可信。",
+      "scope": "網域驗證（DV）流程；OV/EV 另有人工審核，未讀；不說所有 CA 都只做 DV。",
+      "source_locator": "S004 Domain Validation 段、Issuance 段",
+      "premise_status": "screened",
+      "notes": "目標 P29 第二章轉折：給 A55 既有『鎖頭不代表可信』（Chromium 2023）一個機制來源，不重複計算該句。 原提案 F2-004。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：部分概念同 LEG-A55（鎖頭不代表可信），本核心只補機制。算 1 條；『鎖頭不代表可信』那句已在 A55，不重算。是 P29 的真轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "詐騙網站也拿得到鎖頭，因為發證只問你管不管得了那個網址。",
+        "visual": "申請者在自家網址放一張小紙條，CA 從三個方向望遠鏡同時看。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-17f1a1f30c232473",
+          "origin": "wave53-tech-20261111",
+          "locator": "S004 Domain Validation 段、Issuance 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-005",
+      "question": "如果有憑證機構簽錯了憑證，誰會發現？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.pki.certificate_transparency_logs",
+      "answer_target": "要讓 Chrome 和 Safari 接受，公開憑證在簽發時要先送進公開、只增不刪的 Certificate Transparency 日誌，日誌回一張時間戳記（SCT）；這兩家瀏覽器依憑證效期要求至少兩張 SCT。任何人都能架監測服務，網域主人訂閱後，自己網域的新憑證一進日誌就會收到通知，可以抓到未授權的簽發。信任鏈不是只靠『CA 不出錯』，還多了一本公開帳。",
+      "scope": "網頁 PKI 現行做法；不講 Merkle tree 細節與 MMD。",
+      "source_locator": "S006 step 3–8；S004 Issuance 段末句（送多個公開 CT 日誌）",
+      "premise_status": "screened",
+      "notes": "目標 P29 第二章的第二個轉折（信任不是盲信）。若片長超過 14 分，此核心可降為 20 秒一句。 原提案 F2-005。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；數字對，但主詞過寬；改成『要讓 Chrome、Safari 接受』。照企劃壓到 20 秒時算 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "整個網路的憑證都記在一本誰都能翻的帳上。",
+        "visual": "每張新憑證先蓋章進一本公開帳冊，網站主人拿放大鏡翻自己的名字。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-2a771805b810651c",
+          "origin": "wave53-tech-20261111",
+          "locator": "S006 step 3–8；S004 Issuance 段末句（送多個公開 CT 日誌）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-17f1a1f30c232473",
+          "origin": "wave53-tech-20261111",
+          "locator": "S006 step 3–8；S004 Issuance 段末句（送多個公開 CT 日誌）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-006",
+      "question": "加密的資料被人錄下來、原封不動再送一次，會被接受嗎？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.record_sequence_number_nonce",
+      "answer_target": "TLS 1.3 讓收發兩個方向各自維護一個 64 位元的紀錄序號，從 0 開始、每筆加一、換鑰時歸零；每筆紀錄的 nonce 由序號和一把秘密初始向量混成。因為雙方各自記序號，重送一筆已收過的紀錄、或讓第 N+1 筆先到，都會讓解密驗證失敗，接收方必須以 bad_record_mac 中止連線。單看每一封都『驗證成功』不夠，順序本身也被保護了。",
+      "scope": "TLS 1.3 一般（1-RTT）資料；0-RTT 例外見 T53-010；TCP 層的重傳不是攻擊者重送。",
+      "source_locator": "S001 §5.3 全段、§5.2 末（bad_record_mac）、附錄 E.2 Order protection/non-replayability 與其說明",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三章；照 G38 審查要求把 I3084（libsodium 獨立訊息可被重播）對到 TLS 的紀錄序號，合併時以本核心取代 I3084。 原提案 F2-006。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：取代 G38 I3084（同一概念的 TLS 版）。取代 G38 I3084（libsodium），算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每一封信都編了只有雙方知道的流水號，抽換順序就拆不開。",
+        "visual": "信件傳送帶，每封背面有隱形號碼；換位的那封打開瞬間碎掉。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §5.3 全段、§5.2 末（bad_record_mac）、附錄 E.2 Order protection/non-replayability 與其說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-007",
+      "question": "加密後，封包外面那些看得到的欄位，能被偷改嗎？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.aead_additional_data_record_header",
+      "answer_target": "TLS 1.3 只用『帶附加資料的認證加密』（AEAD），每筆紀錄外面有一段明文標頭（類型、版本、長度），這段標頭被當成附加資料一起算進驗證；解密和驗證是同一個動作，沒有另外的完整性檢查，只要密文或標頭被改一點，就只會得到錯誤，連線中止。看得到的欄位不等於可以改的欄位。",
+      "scope": "TLS 1.3 紀錄層；不比較各 AEAD 演算法。",
+      "source_locator": "S001 §1.2 第一點（只剩 AEAD）、§5.2 additional_data 定義與『There is no separate integrity check』",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三章；把 G38 I3087（附加資料）與 I3083（解得開還要驗證）對到 TLS；合併時這兩個 libsodium 核心只留一句或不用。 原提案 F2-007。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：取代 G38 I3087、I3083。取代 G38 I3087／I3083，算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "信封上的字雖然看得到，但和信紙封在同一個封條裡。",
+        "visual": "透明信封上的地址欄與信紙一起被一條封條貫穿。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §1.2 第一點（只剩 AEAD）、§5.2 additional_data 定義與『There is no separate integrity check』",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-008",
+      "question": "HTTPS 加密了內容，旁人還能從流量看出什麼？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.length_not_hidden_traffic_analysis",
+      "answer_target": "TLS 規格自己寫明：它不隱藏傳送資料的長度。端點可以在加密紀錄裡填充零位元組、甚至送只有填充的假流量來掩飾長度與沉默，但規格不規定要填多少；觀察封包長度和時間的流量分析仍可能推出資訊，在可能內容不多時特別容易，例如一個固定片庫的影音網站。",
+      "scope": "規格層面的限制；不給實際攻擊成功率。",
+      "source_locator": "S001 §1 Confidentiality 段、§5.4、附錄 E.3 第1–2段",
+      "premise_status": "screened",
+      "notes": "目標 P29 第四章「保護在哪裡結束」。對應 G38『長度外露』的通用概念，但改用 TLS 原文。片長超標時優先刪此核心。 原提案 F2-008。作者標為界線，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：概念同 G38 I3073、I3089（以 TLS 原文取代）。取代 G38 I3073／I3089 的長度外露概念，不另算 G38；算 1 條。若片長要刪，與 T53-011 同章時保留一句即可。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "內容封起來了，信有多厚、多久寄一封還是看得到。",
+        "visual": "一排不同厚度的密封信封，旁觀者拿尺量。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §1 Confidentiality 段、§5.4、附錄 E.3 第1–2段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-009",
+      "question": "連線突然斷掉，瀏覽器怎麼知道資料收完了沒？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.close_notify_truncation",
+      "answer_target": "TLS 1.3 規定雙方關閉寫入前都要送一個加密的 close_notify 警示，宣告『我不會再送了』；如果底層連線先斷、沒收到 close_notify，接收方無法知道所有資料都到了。規格明說這是為了防止截斷攻擊：有人在中途掐斷連線，讓你以為一段資料已經完整。",
+      "scope": "TLS 層的規定；各應用（如 HTTP）怎麼處理提早斷線，未讀。",
+      "source_locator": "S001 §6.1 全段",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三或第四章；照 G38 審查要求把 I3086（TAG_FINAL）對到 TLS 的 close_notify，合併時取代 I3086。 原提案 F2-009。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：取代 G38 I3086。取代 G38 I3086；算 1 條，但對觀眾是最不必要的一條，P29 若壓到 12 分建議只留一句（見 targets）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "收完要有一聲『講完了』，不是線斷了就算完。",
+        "visual": "傳送帶最後一封是蓋著『完』的信；另一條傳送帶被剪刀剪斷，沒有那封。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §6.1 全段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-010",
+      "question": "TLS 1.3 為了快一點，在哪裡放鬆了保護？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.zero_rtt_replay_exception",
+      "answer_target": "TLS 1.3 新增 0-RTT 模式：回訪的用戶端用先前共享的金鑰，在第一個封包就夾帶資料，省掉一次來回。規格用『重要提醒』標明代價：這些早期資料不具前向保密，也不保證跨連線不被重播；攻擊者可以把它錄下重送，讓購買或轉帳之類有副作用的請求重複發生，或改變它和其他請求的先後。規格要求伺服器自己負責防範。",
+      "scope": "TLS 1.3 規格；不宣稱哪些網站開了 0-RTT。",
+      "source_locator": "S001 §1.2 0-RTT 點、§2.3 IMPORTANT NOTE、附錄 E.5 開頭",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三章轉折：前一核心剛說序號防重播，這裡是規格自己承認的例外，會改變觀眾『每封都防重播』的結論。 原提案 F2-010。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；真轉折（改變『每封都防重播』的結論），算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為了省一個來回，最新的協定也故意留了一扇可以被重播的小門。",
+        "visual": "一般信件走有流水號的傳送帶；一張『搶先送出』的便條繞過編號口。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §1.2 0-RTT 點、§2.3 IMPORTANT NOTE、附錄 E.5 開頭",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-011",
+      "question": "就算全程 HTTPS，旁人還看得到我在連哪個網站嗎？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.sni_plaintext_ech",
+      "answer_target": "TLS 1.3 把大部分握手都加密了，連伺服器憑證也是，但 ClientHello 裡的伺服器名稱指示（SNI）仍是明文，會直接露出你要連的網域；TLS 1.3 規格要求用戶端在適用時送出它，因為伺服器可以要求有這個欄位。2026 年 3 月發布的 RFC 9849（加密的 ClientHello，ECH）說明：許多伺服器在同一個 IP 上放很多網域，SNI 因此是旁觀者判斷你連到哪裡的主要明確訊號；ECH 用伺服器公鑰把 ClientHello 加密，但它也寫明 ECH 單獨不夠，明文 DNS 查詢和伺服器 IP 仍可能洩漏網域，要配合加密 DNS。",
+      "scope": "協定層面；不說現在多少網站或瀏覽器已啟用 ECH；不涉及 VPN。",
+      "source_locator": "S002 §1 第1、4段；S001 §4.4.2.2 server_name 句、附錄 E.1 Protection of endpoint identities",
+      "premise_status": "screened",
+      "notes": "目標 P29 第四章；補 MATERIAL_REVIEW『HTTPS 仍會露出的資訊（網域名稱、SNI）查核』，並修正 A55 查核包『本次未深入查核，不講』的空缺。 原提案 F2-011。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；歸屬要改；算 1.5 條。片中不可說 ECH 已普及（無部署來源）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "信封封好了，但信封外的收件網址一直是明寫的，直到最近才有辦法遮。",
+        "visual": "封好的信，外面一張寫著網址的標籤；新的做法把標籤也放進第二層信封，但郵差仍看得到寄往哪棟大樓。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-247e7b4f3db436ce",
+          "origin": "wave53-tech-20261111",
+          "locator": "S002 §1 第1、4段；S001 §4.4.2.2 server_name 句、附錄 E.1 Protection of endpoint identities",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S002 §1 第1、4段；S001 §4.4.2.2 server_name 句、附錄 E.1 Protection of endpoint identities",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-012",
+      "question": "手機又沒有原子鐘，怎麼用衛星的時間量距離？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.positioning.four_unknowns_receiver_clock",
+      "answer_target": "GPS 衛星帶原子鐘，訊號裡寫著發射時刻；接收機用收到時刻減發射時刻算距離，還要扣掉電離層與對流層造成的延遲。三顆衛星的距離就能定出三維位置，但前提是接收機也有一顆和 GPS 同步的原子鐘。多量第四顆衛星就不需要：接收機把自己的鐘差當成第四個未知數，和經度、緯度、高度一起解。",
+      "scope": "標準定位服務（碼量測）；超過四顆時用最小平方，不教矩陣。",
+      "source_locator": "S007 正文第2段；S010 導言與『four unknown parameters』句",
+      "premise_status": "screened",
+      "notes": "目標 P13 第一、二章「一顆衛星還不能找到你／多加訊號怎麼縮小答案」；補 MATERIAL_REVIEW『接收機時鐘偏差與第四顆衛星』。A38 C1（Ashby 偽距段）只講時間與距離相關，本核心新增鐘差未知數與第四顆。 原提案 F2-012。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：部分同 LEG-A38（傳播時間換距離）。LEG-A38 已有『飛行時間×光速＝距離』，本核心只算第四顆／鐘差未知數與大氣延遲，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第四顆衛星不是為了位置，而是替你手上那顆不準的鐘解題。",
+        "visual": "三個球面交出兩點；加第四個球面時，手機的鐘指針跟著被調到對的位置。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-33623e716cf535e7",
+          "origin": "wave53-tech-20261111",
+          "locator": "S007 正文第2段；S010 導言與『four unknown parameters』句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-14659a6d225f2c0a",
+          "origin": "wave53-tech-20261111",
+          "locator": "S007 正文第2段；S010 導言與『four unknown parameters』句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-013",
+      "question": "同樣看到四顆衛星，為什麼有時準、有時偏很多？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.accuracy.dop_geometry_times_uere",
+      "answer_target": "GPS 官方性能標準把定位精度近似寫成『測距誤差 × DOP』。DOP（精度稀釋因子）是衛星相對使用者的幾何好壞的量度：同樣的測距誤差，幾何不同，放大的倍數就不同；幾何太差時甚至解不出位置。標準也寫明，用五顆以上衛星算出的 DOP 一定不比只用四顆差。政府承諾全球 98% 以上的時間 PDOP 在 6 以下。",
+      "scope": "SPS PS 2020；公式為近似（誤差零均值、同大小）；不給手機實際 DOP。",
+      "source_locator": "S009 §3.8.1 Table 3.8-1；A.8.2；B.2.1 式 B-1；B.2.4.1；B.2.4.3.4",
+      "premise_status": "screened",
+      "notes": "目標 P13 第二章（位置幾何）。 原提案 F2-013。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；刪去來源沒有的擠／散說法，或另找教材來源後再加；圖可畫但要標『示意』。算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一把尺量得一樣準，衛星站的位置決定錯誤被放大幾倍。",
+        "visual": "四顆衛星不同排法下交會區大小的對照（標明為原創示意、非標準內容；擠／散與放大倍數的對應需另有教材來源才可念出）。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4cc0a932e68eee14",
+          "origin": "wave53-tech-20261111",
+          "locator": "S009 §3.8.1 Table 3.8-1；A.8.2；B.2.1 式 B-1；B.2.4.1；B.2.4.3.4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-014",
+      "question": "GPS 訊號只差兩公尺，為什麼手機常差更多？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.accuracy.ure_vs_user_accuracy",
+      "answer_target": "美國政府承諾的是太空中的訊號：每日全球平均測距誤差（URE）95% 在 2.0 公尺內，2021 年 4 月 20 日實際約 0.643 公尺。官方特別說明 URE 不等於使用者精度：手上的位置還取決於衛星幾何，以及遮擋、大氣和接收機設計這些在地因素。GPS.gov 引述的資料說，開闊天空下的 GPS 手機通常約 4.9 公尺半徑，靠近建築、橋和樹就變差；FAA 對基本 GPS 服務的說法是約 7.0 公尺、95% 時間。",
+      "scope": "官方數字有版本日期；4.9 m 原始 ION 來源本輪未讀。",
+      "source_locator": "S008 How accurate、commitment 兩題；S007 正文第2段",
+      "premise_status": "screened",
+      "notes": "目標 P13 第三章開頭（誤差從哪來）。 原提案 F2-014。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；措辭貼回原文；算 2 條。4.9 m 的 ION 原文未讀，標『gps.gov 引述』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "衛星送得很準，誤差多半是在最後一段路和你手上產生的。",
+        "visual": "從太空到手機的一條線分段上色：太空段細、地面段變粗。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb0125ccd9f7e18d",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 How accurate、commitment 兩題；S007 正文第2段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-33623e716cf535e7",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 How accurate、commitment 兩題；S007 正文第2段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-014"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-015",
+      "question": "在高樓之間，GPS 為什麼會把你放到對街？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.error.multipath_reflection",
+      "answer_target": "訊號從牆面或水面反射後才進天線，就是多路徑；GPS.gov 把它和建築、橋、樹的遮擋、室內地下使用並列為最常見的定位變差原因。教材指出多路徑主要來自天線靠近反射物，低仰角的衛星最嚴重；碼量測的多路徑典型小於 2 到 3 公尺，超過 15 公尺很少見。靜止接收機每個恆星日看到幾乎一樣的多路徑型態，因為衛星和反射面的幾何每天重複。",
+      "scope": "教材級數值；都市峽谷的實際偏差另依環境。",
+      "source_locator": "S008 Why wrong place 題；S011 第1–3段、Fig.2 說明",
+      "premise_status": "screened",
+      "notes": "目標 P13 第三章「時間和路徑如何帶偏位置」；補 MATERIAL_REVIEW『多路徑…誤差來源的官方說明』。 原提案 F2-015。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "訊號繞了遠路，接收機卻以為它走直線。",
+        "visual": "直射與反射兩條路徑到手機，反射那條多出的長度標成虛線。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb0125ccd9f7e18d",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 Why wrong place 題；S011 第1–3段、Fig.2 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ae51473c0e1154f7",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 Why wrong place 題；S011 第1–3段、Fig.2 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-015"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-016",
+      "question": "軍用 GPS 比較準，是因為衛星送給軍方比較好的訊號嗎？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.error.ionosphere_dual_frequency",
+      "answer_target": "不是。GPS.gov 舊版說明（2025 年 2 月後未更新的典藏頁）寫：軍用與民用訊號的測距誤差一樣，差別在多數民用裝置只收一個頻率、軍用收兩個；現行頁面仍保留『用兩個頻率可修正大氣造成的扭曲』。訊號穿過電離層會被延遲，延遲和頻率平方成反比，所以比較兩個頻率就能把電離層效應去掉 99.9% 以上；單頻接收機只能用預測模型估這個可達數十公尺的效應，衛星廣播的 Klobuchar 模型全球平均大約修掉一半。加上增強系統，民用甚至可以比軍用更準。",
+      "scope": "Klobuchar 50% 為全球 RMS 估計；不談選擇性可用性歷史細節。",
+      "source_locator": "S008 archive.gps.gov/systems/gps/performance/accuracy/ 的 military 題（現行 gps.gov/node/70 已刪 URE 相同與單／雙頻兩句）；S012 末段；S013 導言",
+      "premise_status": "screened",
+      "notes": "目標 P13 第三章（大氣誤差）；這是轉折：一般以為差在衛星訊號，其實差在接收端用幾個頻率。 原提案 F2-016。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；三處要改；locator 必須指 archive 版並註明現行頁已改寫，播出前重查。算 2 條（O3057 雷達測高雙頻是不同應用，不重複）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一顆衛星，差別在你用一個耳朵還是兩個耳朵聽。",
+        "visual": "兩種顏色的訊號穿過一層霧，慢的那條拖得比較長，比較兩條就知道霧多厚。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb0125ccd9f7e18d",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 archive.gps.gov/systems/gps/performance/accuracy/ 的 military 題（現行 gps.gov/node/70 已刪 URE 相同與單／雙頻兩句）；S012 末段；S013 導言",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-21e355d94371e7a6",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 archive.gps.gov/systems/gps/performance/accuracy/ 的 military 題（現行 gps.gov/node/70 已刪 URE 相同與單／雙頻兩句）；S012 末段；S013 導言",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-83a85b316583711e",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 archive.gps.gov/systems/gps/performance/accuracy/ 的 military 題（現行 gps.gov/node/70 已刪 URE 相同與單／雙頻兩句）；S012 末段；S013 導言",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-016"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-017",
+      "question": "GPS 剛打開時，為什麼要等那麼久才定位？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.ttff.navigation_message_rate",
+      "answer_target": "定位除了量距離，還要知道衛星在哪、鐘差多少，這些寫在衛星廣播的導航電文裡：傳輸速率只有每秒 50 位元，一整框 30 秒才重複一次，鐘差修正在第一子框、星曆在第二、三子框。傳統接收機要收齊前三個子框，最長約 36 秒。冷啟動什麼都沒有要全天搜尋，暖啟動有曆書，熱啟動已有精確星曆，就不必再等電文；都市峽谷裡訊號斷斷續續，等待會更久。",
+      "scope": "GPS L1 C/A 與 LNAV；其他系統電文不同；不給手機 TTFF 秒數。",
+      "source_locator": "S009 §2.2.1、§2.2.2.1 Fig.2.2-1；S015 §2 第1段；S014 冷暖熱啟動段與末段",
+      "premise_status": "screened",
+      "notes": "目標 P13 第四章「為什麼有時定位慢或飄」；補 MATERIAL_REVIEW『輔助 GPS』前提。 原提案 F2-017。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1.5 條（等待電文的事實與 T53-018 的 A-GPS 部分相接，不重算）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "衛星每秒只念 50 個字，聽完一輪地址簿要半分鐘。",
+        "visual": "衛星像慢速電報機吐紙條，第一到第三段紙條收齊才亮綠燈。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4cc0a932e68eee14",
+          "origin": "wave53-tech-20261111",
+          "locator": "S009 §2.2.1、§2.2.2.1 Fig.2.2-1；S015 §2 第1段；S014 冷暖熱啟動段與末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-200bfc13f6e7993c",
+          "origin": "wave53-tech-20261111",
+          "locator": "S009 §2.2.1、§2.2.2.1 Fig.2.2-1；S015 §2 第1段；S014 冷暖熱啟動段與末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-19bd137c37b8b5e1",
+          "origin": "wave53-tech-20261111",
+          "locator": "S009 §2.2.1、§2.2.2.1 Fig.2.2-1；S015 §2 第1段；S014 冷暖熱啟動段與末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-017"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-018",
+      "question": "手機怎麼做到一開地圖就有位置？代價是什麼？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.agnss.network_assistance_coarse_time",
+      "answer_target": "輔助 GPS 把星曆、鐘差等原本要從衛星慢慢收的資料，改由網路送來，手機通常經 SUPL 協定透過行動網路取得；接收機只要收幾毫秒訊號就能定位，不必等完整電文。但這樣就沒有從電文讀出的精確時間。一篇 2021 年的導航期刊論文回顧 van Diggelen 2009 年的方法指出：時間每差一秒，算出的偽距會錯約 800 公尺，因為衛星一直在動；所以要把粗略時間當成第五個未知數，至少需要五顆衛星。",
+      "scope": "A-GNSS 一般原理（van Diggelen 方法，經 Blay 等 2021 回顧）；不談各手機實作與隱私。",
+      "source_locator": "S015 §1 第1段、§2 第1段、§2.1 末段（800 m、五顆）",
+      "premise_status": "screened",
+      "notes": "目標 P13 第四章；補 MATERIAL_REVIEW『輔助 GPS／網路輔助定位的來源』。800 m/秒是文中引述 van Diggelen 2009，撰稿標『研究回顧指出』。這是轉折：省下等待，換來時間又變成未知數，回扣片名『差一點時間』。 原提案 F2-018。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；把歸屬寫進答案；『因為衛星在移動』原文是用衛星速度／偽距變化率推，保留但不展開。算 2 條，是真轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "網路幫你抄好衛星的地址簿，但手機得多找一顆衛星來校時。",
+        "visual": "手機從基地台收到一本小冊子；畫面上多亮起第五顆衛星。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-200bfc13f6e7993c",
+          "origin": "wave53-tech-20261111",
+          "locator": "S015 §1 第1段、§2 第1段、§2.1 末段（800 m、五顆）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-018"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T53-019",
+      "question": "導航把你帶到錯的路口，一定是 GPS 定位錯了嗎？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.user.mapping_error_vs_positioning",
+      "answer_target": "GPS.gov 特別提醒：很多情況下裝置的 GPS 硬體運作正常，錯的是地圖軟體——圖畫錯、店家標錯、缺路缺樓、門牌位置估錯；美國政府無法修正消費裝置的地圖錯誤，要回報給地圖供應者。",
+      "scope": "官方 FAQ 敘述，不給比例。",
+      "source_locator": "S008 Why wrong place 題後半",
+      "premise_status": "screened",
+      "notes": "目標 P13 收尾前的界線：把『定位』與『地圖』分開（企劃風險欄要求分清）。 原提案 F2-019。作者標為界線，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1 條，作收尾前的界線。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "點在對的地方，地圖畫錯了，看起來一樣是『GPS 不準』。",
+        "visual": "藍點落在正確位置，底下的地圖道路歪了一格。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb0125ccd9f7e18d",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 Why wrong place 題後半",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T53-019"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -394640,6 +396561,1095 @@
       ]
     },
     {
+      "id": "H53-001",
+      "question": "把 39 元改成 34 元，賣得比較多嗎？郵購目錄的第一個試驗",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.pricing.nine_ending_catalog_pilot",
+      "answer_target": "一家女裝郵購目錄把同一本目錄印成三版，隨機寄給不同顧客：四件洋裝在原版用 9 結尾（39、49、59、79 美元），另兩版把每件價格改高或改低 5 美元（每版有升有降），9 結尾就沒了。9 結尾條件共賣出 66 件，低 5 美元的條件 46 件、高 5 美元的條件 45 件，約多四成；而高低兩種條件相差 10 美元，銷量幾乎一樣。這個結果讓目錄經理同意擴大做三個正式實驗。",
+      "scope": "美國、1990年代末、單一目錄四件洋裝；件數小，作者自己把它當動機而非結論。",
+      "source_locator": "S001 頁93–94 Introduction 與 Pilot study 表",
+      "premise_status": "screened",
+      "notes": "目標 P30 第一章「99 和 100 比的不只差額」；補 MATERIAL_REVIEW『郵購實驗的原文樣本與條件』。LEG-B27 已有『情境相依的需求效果』概括，本核心新增試驗設計與數字，不重複計算概括句。 原提案 F2-020。非作者覆核 V5（2026-11-11）照原稿收；新事實（LEG-B27 只有概括句），算 2 條。H53-S001 與池中 SRC-f03130ce50fe3ee4（同一網址）、SRC-72e5c18b45e5f4c2（同 DOI）是同一文獻，併入時合併來源 id。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "便宜 5 元沒多賣，貴 5 元也沒少賣，卻是那個 9 讓銷量多了四成。",
+        "visual": "三本同樣的目錄寄往三群信箱，同一件洋裝標不同價；銷量長條以原表數字畫。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f03130ce50fe3ee4",
+          "origin": "wave53-human-20261111",
+          "locator": "S001 頁93–94 Introduction 與 Pilot study 表",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ]
+    },
+    {
+      "id": "H53-002",
+      "question": "9 結尾的效果，換個商品、加上『特價』字樣還在嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.pricing.nine_ending_moderators_new_items_sale_cue",
+      "answer_target": "同一集團兩家目錄的三個隨機實驗：每版寄 2 萬、31,250、9 萬名顧客，9 結尾分別讓需求增加約 35%、15%、7%。第二個實驗裡新品增約 22%，已上架過幾季的舊品只約 10%；前兩個實驗的價格係數都不顯著，作者據此說顧客對 9 尾數比對實際價差更敏感，但第三個實驗價格變動範圍大、樣本大，價格效果就顯著出現。已經標『Reg $X SALE $Y』的新品再改 9 尾數只多 3.9%，沒有特價標示時多 8.5%，作者自己稱這是品項少的初步結果。",
+      "scope": "美國女裝郵購、同集團兩目錄；百分比為模型估計；Sale 交互作用為暫定。",
+      "source_locator": "S001 頁97–99 Study 1 與 Table 2；頁99–102 Study 2 與 Table 4；頁102–105 Study 3 與 Table 7、第4節前",
+      "premise_status": "screened",
+      "notes": "目標 P30 第二章「換個價格情境還有效嗎」；補章節缺的條件與反例。LEG-B27 已有『新品較強、Sale 可能削弱』定性句，本核心算 1.5 條新事實（數字與價格係數轉折）。 原提案 F2-021。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；數字與歸因都對。LEG-B27 已有新品較強／Sale 削弱的定性句，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "效果是真的，但越熟悉的商品、越大的價差、越明顯的特價牌，都讓它變小。",
+        "visual": "三個實驗並排的效果長條（35／15／7%），新品與舊品分色；特價牌疊上去時長條縮短（標『暫定』）。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f03130ce50fe3ee4",
+          "origin": "wave53-human-20261111",
+          "locator": "S001 頁97–99 Study 1 與 Table 2；頁99–102 Study 2 與 Table 4；頁102–105 Study 3 與 Table 7、第4節前",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ]
+    },
+    {
+      "id": "H53-003",
+      "question": "左邊那位數字的影響，在一台上萬美元的二手車上也看得到嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.left_digit.used_car_odometer_thresholds",
+      "answer_target": "研究者分析超過 2,200 萬筆美國二手車批發拍賣：里程每跨過一個萬英里整數，售價就不連續地掉約 150 到 200 美元；例如 79,900 多英里的車比 80,000 出頭的貴約 210 美元，卻只比 79,800 多英里的便宜約 10 美元。跨千英里也有較小的跳動。估計出的『不注意』程度約 0.31；賣方也懂，快跨門檻前送拍的車明顯變多。作者說多項證據都指向最終買車的消費者只看了左邊的數字。",
+      "scope": "NBER 2011 工作論文版（期刊版 AER 2012 未讀）；對象是里程數不是價格標籤。",
+      "source_locator": "S002 Abstract；Introduction 第2–3段；§5 估計段",
+      "premise_status": "screened",
+      "notes": "目標 P30 第二章：同一個左位數機制換到高金額、專業買家的市場還在不在——是檢驗不是另舉一例。若片長超標，壓成 40 秒。 原提案 F2-022。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；數字對；問句『幾十萬元』暗示台幣、改成美元；『最符合』改回原文強度。對象是里程數不是標價，只能當『同一個左位數讀法換到大金額』的檢驗，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連花大錢、慢慢挑的二手車，左邊那位數一變，價格就跳一階。",
+        "visual": "里程表從 79,999 翻到 80,000 的瞬間，價格曲線出現台階（依原文描述的形狀示意）。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-36b62e0fc92155e0",
+          "origin": "wave53-human-20261111",
+          "locator": "S002 Abstract；Introduction 第2–3段；§5 估計段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ]
+    },
+    {
+      "id": "H53-004",
+      "question": "集點卡越接近集滿，人真的買得越快嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.reward.goal_gradient_cafe_field_data",
+      "answer_target": "大學咖啡店的集點計畫收回 949 張集滿的 10 格卡、約一萬次購買：隨著章越蓋越多，兩次購買的間隔越來越短，最後一次比第一次平均快約 20%（0.7 天）。拿『只記錄、不換獎勵』透明卡的 42 位對照顧客不但沒有加速，越接近集滿反而買得越慢；集滿換完獎勵後，第二張卡的頭幾次又變慢，像重新起跑。",
+      "scope": "單一校園咖啡店；加速是平均值。",
+      "source_locator": "S003 頁42–43 Method 與 Results；頁45 postreward resetting 段；頁46 transparent cards 結果",
+      "premise_status": "screened",
+      "notes": "目標 P30 第三章「離集滿只差一次又改了什麼」；補 MATERIAL_REVIEW 要的原文數據。LEG-B62 已有『越近買越快』定性句，本核心新增對照組與重置兩條。 原提案 F2-023。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；對照組結果要寫準：是減速。LEG-B62 已有『越近買越快』，算 1.5 條（對照組與重置）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "推你的不是咖啡，是那張卡上剩下的空格。",
+        "visual": "集點卡格子逐格蓋章，下方時間軸的間隔逐漸縮短；換卡後間隔又拉長。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6543e5552abf38f",
+          "origin": "wave53-human-20261111",
+          "locator": "S003 頁42–43 Method 與 Results；頁45 postreward resetting 段；頁46 transparent cards 結果",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ]
+    },
+    {
+      "id": "H53-005",
+      "question": "先送你兩格，要買的杯數一樣，為什麼集得更快？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.reward.illusionary_progress_proportional_distance",
+      "answer_target": "同一家咖啡店把 108 位顧客隨機分兩組：一組拿 10 格空卡，一組拿 12 格卡但已送 2 格，兩組都還要買 10 杯。送格組平均 12.7 天集滿，空卡組 15.6 天，快了約 20%。作者用『剩下的比例』解釋：剩 10/12 比剩 10/10 感覺近。另一個以餐廳集點卡為情境的問卷則顯示，送格並沒有讓人更想加入，排除了『只是比較喜歡那張卡』的解釋。",
+      "scope": "n=108；與 Nunes & Drèze 2006 洗車實驗同類，但後者原文本輪未讀，不用其 34%／19% 數字。",
+      "source_locator": "S003 頁48 A Field Experiment of Illusionary Goal Progress；Process Tests 段；頁49 討論",
+      "premise_status": "screened",
+      "notes": "目標 P30 第三章。是 P30 兩機制的橋：價格的左位數與集點的剩餘比例，都是『真實數量沒變，呈現方式變了，決定就變』。 原提案 F2-024。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；標清楚兩個研究；與 LEG-B62『先送幾格集得更快』重疊，算 1.5 條（數據與排除解釋）。Nunes & Drèze 未讀，不用其數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要走的路一樣長，只是起點畫得往前一點。",
+        "visual": "兩張卡並排：10 格空卡與 12 格先蓋 2 格，下方兩條等長的待走路徑。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6543e5552abf38f",
+          "origin": "wave53-human-20261111",
+          "locator": "S003 頁48 A Field Experiment of Illusionary Goal Progress；Process Tests 段；頁49 討論",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ]
+    },
+    {
+      "id": "H53-006",
+      "question": "集點真的推得動每個人嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.reward.goal_gradient_heterogeneity_retention",
+      "answer_target": "同一份咖啡店資料分群後，約 58% 的會員有明顯加速，另有 29% 方向相同但不顯著，還有兩群（7%、6%）幾乎不受剩幾格影響。研究助理用每張 4 美元買回的 73 張未集滿卡，主人沒有加速，甚至越集越慢；而第一張卡加速越明顯的人，越可能再集第二張，回來得也越快。",
+      "scope": "模型估計的分群；單一店家。",
+      "source_locator": "S003 頁47 Table 2 分群段；頁47 buyback 段；Customer Retention 段",
+      "premise_status": "screened",
+      "notes": "目標 P30 第四章「兩個推力什麼時候推不動」；補章節缺的『限制與個體差異的研究細節』。 原提案 F2-025。作者標為界線，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；『較少出現加速』改成原文的『沒有加速、甚至變慢』。算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張卡，對一部分人是油門，對另一部分人只是一張紙。",
+        "visual": "一群顧客剪影，各自的購買間隔曲線：多數往下彎，少數是平的。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave53-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6543e5552abf38f",
+          "origin": "wave53-human-20261111",
+          "locator": "S003 頁47 Table 2 分群段；頁47 buyback 段；Customer Retention 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+      ]
+    },
+    {
+      "id": "P53-001",
+      "question": "沙從小孔流出，為什麼不像水那樣越流越慢？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.height_independent_beverloo",
+      "answer_target": "納瓦拉大學團隊在論文前言整理數十年的筒倉研究：與液體相反，顆粒靠重力從底孔流出時，流量不隨料層高度變；料層高過約 1.2 倍筒徑後，底部壓力因 Janssen 效應而飽和，流量大致固定。決定流量的是出口：工程上沿用的 Beverloo 經驗式說流量和（出口直徑減去幾顆粒徑）的 5/2 次方成正比；作者認為一個看似合理的解釋是，出口上方有一個由拱界定的自由落體區，顆粒在拱下才開始加速。",
+      "scope": "乾燥、粒徑大於約 0.5 毫米的單一粒徑顆粒；『與高度無關』是原文前言整理既有文獻（本文實驗刻意把料位保持在約兩倍筒徑以上），不是本文量測；自由落體拱是原文『看似合理』的解釋；平底筒倉，不是沙漏外形，片中不可說沙漏已被直接量過。",
+      "source_locator": "S001 §I 第1–3段（式1）",
+      "premise_status": "screened",
+      "notes": "目標 C2-11 開場與第二章；補審查列的關鍵缺口『乾沙出口流率與料高無關（Beverloo 定律）』，並把 F10003 的 Janssen 底力飽和接到流量。 原提案 F2-026。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；答案要把『前言整理既有研究』與『筒倉』寫進句子，不能讓觀眾以為是沙漏的直接量測；Janssen 底壓飽和已由 F10003 支持，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沙漏的節奏由出口那一小圈決定，上面堆多高都一樣。",
+        "visual": "水鐘水位下降、流速變慢 vs 沙柱下降、流速固定的並排；出口上方畫一道虛線拱（標示為解釋模型）。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc1291586b773dd1",
+          "origin": "wave53-physics-20261111",
+          "locator": "S001 §I 第1–3段（式1）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ]
+    },
+    {
+      "id": "P53-002",
+      "question": "量沙漏的流量時，看到的是一條直線嗎？出口小到多少就開始卡？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.linear_discharge_jamming_threshold",
+      "answer_target": "納瓦拉大學團隊把筒倉出口換成不同大小，秤落下的玻璃珠：出口夠大時，落下的顆粒數對時間是一條直線，任何時刻量都一樣；出口與顆粒直徑比約 5 以下，就會因為成拱而一陣一陣卡住，只能用每段崩流的量除以時間算流量。把出口從 1.5 倍到 100 倍粒徑都量過後，他們發現 Beverloo 式對大出口和小出口得用不同常數，因此改提一個帶指數修正的新式。",
+      "scope": "實驗室筒倉與玻璃、鉛、塑膠珠；比值約 5 的門檻引自同團隊前作。",
+      "source_locator": "S001 §II.A 方法段與 Fig.1；Abstract；§I 末段；§IV 首段",
+      "premise_status": "screened",
+      "notes": "目標 C2-11 第三、四章銜接（連續流→間歇卡住）；Rc≈5 引自同團隊前作，撰稿標『先前研究』；Beverloo 改式只留一句或不用。 原提案 F2-027。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；事實對，但『Beverloo 要換常數、改提新式』是建模細節，『≈5 卡住』引自前作；對觀眾不是轉折，只算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一條直線，出口一縮小就斷成一段一段的階梯。",
+        "visual": "落下顆粒數對時間：大出口是平滑直線、小出口是階梯（依 Fig.1 形狀示意）。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc1291586b773dd1",
+          "origin": "wave53-physics-20261111",
+          "locator": "S001 §II.A 方法段與 Fig.1；Abstract；§I 末段；§IV 首段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ]
+    },
+    {
+      "id": "P53-003",
+      "question": "硬板拼成的摺紙，為什麼能像開關一樣停在兩個形狀？",
+      "domain": "材料與結構",
+      "mechanism_key": "origami.bistable_closed_polyhedra_stiff_facets_stretchable_hinges",
+      "answer_target": "如果三角形面完全不能變形、摺線是理想鉸鏈，閉合的摺紙多面體不是根本動不了，就是展開時體積不變。研究者改用硬面配上可伸長的鉸鏈，並挑選特定角度的三角形：平板和展開兩個形狀都剛好相容，但兩者之間的路上面和鉸鏈必須被迫變形，形成一道能量障壁，於是它會停在兩個穩定形狀之一，而且可以用灌氣切換。",
+      "scope": "Nature 2021；能量分析以幾何與公分級實驗為主。",
+      "source_locator": "S002 頁546 Triangular facets 段（『either rigid or volume invariant』至 energy barrier 句）",
+      "premise_status": "screened",
+      "notes": "目標 C3-09『扣在一起，難走的路變硬』與 P44-004（按翻頂點雙穩）之間；回答同一問題：面不能伸長時，結構只能在幾條路之間選，被逼變形的那段路就是障壁。 原提案 F2-028。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；與 C3-09『需要伸長的路變硬』是同一問題的延伸（障壁就是被迫伸長的代價），不是名稱相近；算 1 條（與 P44-004 的雙穩概念部分重疊）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "面不肯被拉長，路中間就多了一座山，兩邊各是一個可以停下來的谷。",
+        "visual": "平板與展開兩個狀態之間畫一條能量曲線，中間凸起；三角面在凸起處被擠歪（示意）。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-22ca28ea105074a9",
+          "origin": "wave53-physics-20261111",
+          "locator": "S002 頁546 Triangular facets 段（『either rigid or volume invariant』至 energy barrier 句）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ]
+    },
+    {
+      "id": "P53-004",
+      "question": "摺紙原理能做出可以住人的大結構嗎？",
+      "domain": "材料與結構",
+      "mechanism_key": "origami.metre_scale_inflatable_bistable_shelter",
+      "answer_target": "研究團隊用 4 毫米瓦楞塑膠板、刻痕當摺線，做出公尺級原型：一座拱門摺起時 20 公分高、30 公分寬，灌氣後展成 60 公分高、150 公分寬，突然洩氣也維持形狀，要抽真空才摺回；一座帳篷式庇護所平摺時 1.0×2.0×0.25 公尺，灌氣後先停在屋頂內摺的穩定形狀，再加壓屋頂向外翻，成為 2.5×2.6×2.6 公尺，展開後開門也不影響結構。",
+      "scope": "示範原型，材料是 4 毫米瓦楞塑膠板（不是紙），未報告耐候與長期使用；不說已商品化。",
+      "source_locator": "S002 頁549 Fig.3d 正文與 Fig.4 正文",
+      "premise_status": "screened",
+      "notes": "目標 C3-09，補 V3 審查要求的『實測的大型展開結構，答同一個挑路問題』：雙穩讓它不必一直灌氣，正是『限制哪條路、哪個狀態就穩』。 原提案 F2-029。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；材料是瓦楞塑膠板不是紙，片中不能說『紙帳篷』；尺寸串算 1.5 條。是 C3-09 V3 要的『實測大型展開結構』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的摺紙道理放大到一頂帳篷：灌一口氣翻過山頭，就自己站住。",
+        "visual": "原型照片式的原創插畫：平摺的板包 → 第一階段 → 屋頂外翻的完整帳篷（尺寸標註）。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-22ca28ea105074a9",
+          "origin": "wave53-physics-20261111",
+          "locator": "S002 頁549 Fig.3d 正文與 Fig.4 正文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ]
+    },
+    {
+      "id": "P53-005",
+      "question": "降噪耳機對飛機轟聲和旁人說話，效果一樣嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.anc.headset_measured_active_passive_bands",
+      "answer_target": "聲學測試公司用人工頭量四款耳機（兩款耳罩、兩款入耳）：主動降噪開到最大時，對飛機與咖啡廳噪音的衰減約 15 到 21 dB，只靠被動隔音多半只有 3 到 6 dB，一款入耳被動就有約 13 dB。被動隔音通常只對 200 Hz 以上有效，更低的頻率要靠主動降噪；有些耳機的 ANC 效果小得多；戴眼鏡會讓耳罩漏聲、降噪變差；而降噪很強的耳機也會壓低較高頻的說話聲，所以才有通透或環境模式。",
+      "scope": "DAGA 2019 會議論文、廠商實驗室、四款匿名耳機；非同儕審查期刊。",
+      "source_locator": "S003 頁915 Table 1 與其說明；頁916 正文",
+      "premise_status": "screened",
+      "notes": "目標 P19 第三章「說話與低頻轟聲為何不同」；補 MATERIAL_REVIEW『非單一品牌的頻率效果資料或受控實測』與『被動隔音的來源』。 原提案 F2-030。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；廠商實驗室會議論文、四款匿名；算 2 條。補不起 P19（見 targets）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "低頻靠電子抵消，高頻靠耳罩擋，兩套系統各管一段。",
+        "visual": "頻率軸上兩塊色帶：低頻 ANC、200 Hz 以上被動；四款耳機的衰減長條。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6808d2f9bf0efda5",
+          "origin": "wave53-physics-20261111",
+          "locator": "S003 頁915 Table 1 與其說明；頁916 正文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ]
+    },
+    {
+      "id": "P53-006",
+      "question": "降噪耳機擋不住說話聲，為什麼戴著反而比較聽得清楚別人講話？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.anc.low_frequency_feedback_masking_release",
+      "answer_target": "主動降噪耳罩用回授迴路，把漏進來的聲音以 180 度相位反向再送出，抵消該頻段；受技術限制，只在約 500 Hz 以下有效，更高頻要靠耳罩本身擋。多倫多大學的作者指出，正因如此單靠主動降噪並不降低聽力受損風險，因為傷耳的能量多在 500 Hz 以上；但壓掉低頻轟聲能減少它對語音的『向上遮蔽』，在機艙、引擎室這類環境反而提高語音清晰度。",
+      "scope": "2002 年耳罩研究；遮蔽與清晰度是作者前言引述 Kryter 1994，非本文量測；聽損風險說法不推到現代耳機音樂音量。",
+      "source_locator": "S004 §1 Introduction；§4 Discussion",
+      "premise_status": "screened",
+      "notes": "目標 P19 第一、三章；是轉折候選（說話聲還在不是失敗，甚至被『放出來』）。遮蔽段需另找原始研究才能當主轉折。 原提案 F2-031。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；低頻有效與 LEG-S86 部分重疊，算 1 條；遮蔽釋放只是前言引述，不能當主轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "抵消的是低頻，留下的說話聲少了轟聲的遮擋，反而更清楚。",
+        "visual": "反相波形相加變平的示意；頻譜上低頻被削平，語音頻段露出來。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave53-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-1178ab59ef78d986",
+          "origin": "wave53-physics-20261111",
+          "locator": "S004 §1 Introduction；§4 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+      ]
+    },
+    {
+      "id": "T53-001",
+      "question": "連 HTTPS 網站的第一秒，瀏覽器和伺服器先做了什麼，才開始加密？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.handshake_key_exchange_then_encrypt",
+      "answer_target": "TLS 1.3 的握手第一步是交換金鑰：瀏覽器在 ClientHello 裡送出隨機數和 Diffie-Hellman 金鑰分享，伺服器在 ServerHello 回自己的分享，兩邊各自算出同一把共用秘密；從這之後的握手訊息全部加密，連伺服器的憑證也是。所有公鑰交換都具前向保密：就算伺服器的長期金鑰日後外洩，只要當次的連線金鑰已刪除，過去錄下的流量也解不開。",
+      "scope": "TLS 1.3（RFC 8446）；舊版 TLS 1.2 的明文憑證與靜態 RSA 交換不在此列；不教數學。",
+      "source_locator": "S001 §1.2（ServerHello 後全加密、前向保密）、§2 Fig.1 與三階段、附錄 E.1 Forward secret 段",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三章「雙方怎麼建立保護」；補 MATERIAL_REVIEW 缺的握手與金鑰交換。A55 既有 RFC 8446 摘要只支持『防偷看與竄改』一句，本核心是新事實。 原提案 F2-001。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；新事實（A55 只有『防偷看與竄改』一句），算 2 條。前向保密在 psk_ke 模式不成立，不在本片範圍，scope 已排除 PSK。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鎖頭出現前，雙方先在大家看得到的線上算出一把只有彼此知道的鑰匙。",
+        "visual": "固定連線圖：兩端各丟出一半顏色、混出同色；之後的箭頭全部上鎖色（原創示意，不畫數學）。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §1.2（ServerHello 後全加密、前向保密）、§2 Fig.1 與三階段、附錄 E.1 Forward secret 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-002",
+      "question": "伺服器把憑證送來就好，為什麼還要再簽一次名？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.certificateverify_finished_binding",
+      "answer_target": "憑證只是公開的文件，誰都能轉寄。TLS 1.3 要伺服器再送 CertificateVerify：用憑證公鑰對應的私鑰，對到目前為止的整段握手簽名，證明它真的持有私鑰；接著 Finished 是對整段握手的訊息驗證碼，把端點身分和剛交換的金鑰綁在一起。中間有人改過任何握手訊息，簽名或驗證碼就對不上，連線中止。",
+      "scope": "伺服器端憑證驗證；用戶端憑證另議；不展開簽章演算法。",
+      "source_locator": "S001 §2（Certificate、CertificateVerify、Finished 定義）、§4.4.3 開頭",
+      "premise_status": "screened",
+      "notes": "目標 P29 第二章「怎麼知道正在和誰說話」。把 G38 I3082（驗證只綁鑰匙）對到 TLS 的實際做法；I3082 本身是 libsodium 來源，合併時只留一句。 原提案 F2-002。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1 條。G38 I3082（libsodium 驗證只綁鑰匙）在 P29 只留概念一句，不另計。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能出示證件不夠，還得當場用只有本人有的私鑰簽一次。",
+        "visual": "轉寄的憑證影本 vs 當場簽名的對照；握手訊息串起一條封條。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §2（Certificate、CertificateVerify、Finished 定義）、§4.4.3 開頭",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-003",
+      "question": "瀏覽器怎麼決定一張憑證可以信？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.pki.certification_path_trust_anchor",
+      "answer_target": "憑證是一串互相簽名的文件：網站憑證由中繼 CA 簽，中繼由根 CA 簽。驗證時每一張的主體必須是下一張的簽發者、第一張要由信任錨簽發、每張都要在有效期內；信任錨本身不在路徑裡驗證，而是預先放在瀏覽器或作業系統的信任庫。以 Let's Encrypt 為例，根金鑰離線保存，日常憑證都由中繼簽發；根要不要繼續被信，由各家 Root Program 和信任庫決定，不只看憑證上的到期日。TLS 規格本身把詳細驗證交給這套 X.509 規則。",
+      "scope": "網頁 PKI；不講企業自簽或憑證釘選；鏈名不念。",
+      "source_locator": "S003 §6.1 條件 a–d 與信任錨為輸入；S005 Root CAs 段與 Chains 列；S001 §4.4.2.4 首句、附錄 C.2",
+      "premise_status": "screened",
+      "notes": "目標 P29 第二章；補 MATERIAL_REVIEW『憑證機構與信任鏈的官方說明』。 原提案 F2-003。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1.5 條：A55 已有『用憑證確認你連到的是這個網址』，本核心只新增信任鏈與信任庫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鎖頭背後是一條簽名接力，最上面那一棒是你的裝置事先決定要信的。",
+        "visual": "三張卡片由下往上連線，最上一張放進裝置裡的『信任庫』抽屜。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-8a7e2503ca55c6ea",
+          "origin": "wave53-tech-20261111",
+          "locator": "S003 §6.1 條件 a–d 與信任錨為輸入；S005 Root CAs 段與 Chains 列；S001 §4.4.2.4 首句、附錄 C.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ddb622173ca898fd",
+          "origin": "wave53-tech-20261111",
+          "locator": "S003 §6.1 條件 a–d 與信任錨為輸入；S005 Root CAs 段與 Chains 列；S001 §4.4.2.4 首句、附錄 C.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S003 §6.1 條件 a–d 與信任錨為輸入；S005 Root CAs 段與 Chains 列；S001 §4.4.2.4 首句、附錄 C.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-004",
+      "question": "憑證機構發憑證前，到底查了什麼？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.pki.domain_validation_acme",
+      "answer_target": "以免費自動發證的 Let's Encrypt 為例，申請者只要證明自己控制這個網域：在網域下放一筆指定的 DNS 記錄，或在 http 網址的固定路徑放一個檔案；CA 會從多個網路位置同時檢查，降低驗證路上被人攔截的風險，因為這一步本身不能用 HTTPS。通過後就能為該網域簽發憑證。它查的是『你管得了這個網址』，不是網站的經營者好不好、內容可不可信。",
+      "scope": "網域驗證（DV）流程；OV/EV 另有人工審核，未讀；不說所有 CA 都只做 DV。",
+      "source_locator": "S004 Domain Validation 段、Issuance 段",
+      "premise_status": "screened",
+      "notes": "目標 P29 第二章轉折：給 A55 既有『鎖頭不代表可信』（Chromium 2023）一個機制來源，不重複計算該句。 原提案 F2-004。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：部分概念同 LEG-A55（鎖頭不代表可信），本核心只補機制。算 1 條；『鎖頭不代表可信』那句已在 A55，不重算。是 P29 的真轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "詐騙網站也拿得到鎖頭，因為發證只問你管不管得了那個網址。",
+        "visual": "申請者在自家網址放一張小紙條，CA 從三個方向望遠鏡同時看。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-17f1a1f30c232473",
+          "origin": "wave53-tech-20261111",
+          "locator": "S004 Domain Validation 段、Issuance 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-005",
+      "question": "如果有憑證機構簽錯了憑證，誰會發現？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.pki.certificate_transparency_logs",
+      "answer_target": "要讓 Chrome 和 Safari 接受，公開憑證在簽發時要先送進公開、只增不刪的 Certificate Transparency 日誌，日誌回一張時間戳記（SCT）；這兩家瀏覽器依憑證效期要求至少兩張 SCT。任何人都能架監測服務，網域主人訂閱後，自己網域的新憑證一進日誌就會收到通知，可以抓到未授權的簽發。信任鏈不是只靠『CA 不出錯』，還多了一本公開帳。",
+      "scope": "網頁 PKI 現行做法；不講 Merkle tree 細節與 MMD。",
+      "source_locator": "S006 step 3–8；S004 Issuance 段末句（送多個公開 CT 日誌）",
+      "premise_status": "screened",
+      "notes": "目標 P29 第二章的第二個轉折（信任不是盲信）。若片長超過 14 分，此核心可降為 20 秒一句。 原提案 F2-005。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；數字對，但主詞過寬；改成『要讓 Chrome、Safari 接受』。照企劃壓到 20 秒時算 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "整個網路的憑證都記在一本誰都能翻的帳上。",
+        "visual": "每張新憑證先蓋章進一本公開帳冊，網站主人拿放大鏡翻自己的名字。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-2a771805b810651c",
+          "origin": "wave53-tech-20261111",
+          "locator": "S006 step 3–8；S004 Issuance 段末句（送多個公開 CT 日誌）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-17f1a1f30c232473",
+          "origin": "wave53-tech-20261111",
+          "locator": "S006 step 3–8；S004 Issuance 段末句（送多個公開 CT 日誌）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-006",
+      "question": "加密的資料被人錄下來、原封不動再送一次，會被接受嗎？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.record_sequence_number_nonce",
+      "answer_target": "TLS 1.3 讓收發兩個方向各自維護一個 64 位元的紀錄序號，從 0 開始、每筆加一、換鑰時歸零；每筆紀錄的 nonce 由序號和一把秘密初始向量混成。因為雙方各自記序號，重送一筆已收過的紀錄、或讓第 N+1 筆先到，都會讓解密驗證失敗，接收方必須以 bad_record_mac 中止連線。單看每一封都『驗證成功』不夠，順序本身也被保護了。",
+      "scope": "TLS 1.3 一般（1-RTT）資料；0-RTT 例外見 T53-010；TCP 層的重傳不是攻擊者重送。",
+      "source_locator": "S001 §5.3 全段、§5.2 末（bad_record_mac）、附錄 E.2 Order protection/non-replayability 與其說明",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三章；照 G38 審查要求把 I3084（libsodium 獨立訊息可被重播）對到 TLS 的紀錄序號，合併時以本核心取代 I3084。 原提案 F2-006。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：取代 G38 I3084（同一概念的 TLS 版）。取代 G38 I3084（libsodium），算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每一封信都編了只有雙方知道的流水號，抽換順序就拆不開。",
+        "visual": "信件傳送帶，每封背面有隱形號碼；換位的那封打開瞬間碎掉。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §5.3 全段、§5.2 末（bad_record_mac）、附錄 E.2 Order protection/non-replayability 與其說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-007",
+      "question": "加密後，封包外面那些看得到的欄位，能被偷改嗎？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.aead_additional_data_record_header",
+      "answer_target": "TLS 1.3 只用『帶附加資料的認證加密』（AEAD），每筆紀錄外面有一段明文標頭（類型、版本、長度），這段標頭被當成附加資料一起算進驗證；解密和驗證是同一個動作，沒有另外的完整性檢查，只要密文或標頭被改一點，就只會得到錯誤，連線中止。看得到的欄位不等於可以改的欄位。",
+      "scope": "TLS 1.3 紀錄層；不比較各 AEAD 演算法。",
+      "source_locator": "S001 §1.2 第一點（只剩 AEAD）、§5.2 additional_data 定義與『There is no separate integrity check』",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三章；把 G38 I3087（附加資料）與 I3083（解得開還要驗證）對到 TLS；合併時這兩個 libsodium 核心只留一句或不用。 原提案 F2-007。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：取代 G38 I3087、I3083。取代 G38 I3087／I3083，算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "信封上的字雖然看得到，但和信紙封在同一個封條裡。",
+        "visual": "透明信封上的地址欄與信紙一起被一條封條貫穿。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §1.2 第一點（只剩 AEAD）、§5.2 additional_data 定義與『There is no separate integrity check』",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-008",
+      "question": "HTTPS 加密了內容，旁人還能從流量看出什麼？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.length_not_hidden_traffic_analysis",
+      "answer_target": "TLS 規格自己寫明：它不隱藏傳送資料的長度。端點可以在加密紀錄裡填充零位元組、甚至送只有填充的假流量來掩飾長度與沉默，但規格不規定要填多少；觀察封包長度和時間的流量分析仍可能推出資訊，在可能內容不多時特別容易，例如一個固定片庫的影音網站。",
+      "scope": "規格層面的限制；不給實際攻擊成功率。",
+      "source_locator": "S001 §1 Confidentiality 段、§5.4、附錄 E.3 第1–2段",
+      "premise_status": "screened",
+      "notes": "目標 P29 第四章「保護在哪裡結束」。對應 G38『長度外露』的通用概念，但改用 TLS 原文。片長超標時優先刪此核心。 原提案 F2-008。作者標為界線，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：概念同 G38 I3073、I3089（以 TLS 原文取代）。取代 G38 I3073／I3089 的長度外露概念，不另算 G38；算 1 條。若片長要刪，與 T53-011 同章時保留一句即可。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "內容封起來了，信有多厚、多久寄一封還是看得到。",
+        "visual": "一排不同厚度的密封信封，旁觀者拿尺量。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §1 Confidentiality 段、§5.4、附錄 E.3 第1–2段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-009",
+      "question": "連線突然斷掉，瀏覽器怎麼知道資料收完了沒？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.close_notify_truncation",
+      "answer_target": "TLS 1.3 規定雙方關閉寫入前都要送一個加密的 close_notify 警示，宣告『我不會再送了』；如果底層連線先斷、沒收到 close_notify，接收方無法知道所有資料都到了。規格明說這是為了防止截斷攻擊：有人在中途掐斷連線，讓你以為一段資料已經完整。",
+      "scope": "TLS 層的規定；各應用（如 HTTP）怎麼處理提早斷線，未讀。",
+      "source_locator": "S001 §6.1 全段",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三或第四章；照 G38 審查要求把 I3086（TAG_FINAL）對到 TLS 的 close_notify，合併時取代 I3086。 原提案 F2-009。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：取代 G38 I3086。取代 G38 I3086；算 1 條，但對觀眾是最不必要的一條，P29 若壓到 12 分建議只留一句（見 targets）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "收完要有一聲『講完了』，不是線斷了就算完。",
+        "visual": "傳送帶最後一封是蓋著『完』的信；另一條傳送帶被剪刀剪斷，沒有那封。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §6.1 全段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-010",
+      "question": "TLS 1.3 為了快一點，在哪裡放鬆了保護？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.zero_rtt_replay_exception",
+      "answer_target": "TLS 1.3 新增 0-RTT 模式：回訪的用戶端用先前共享的金鑰，在第一個封包就夾帶資料，省掉一次來回。規格用『重要提醒』標明代價：這些早期資料不具前向保密，也不保證跨連線不被重播；攻擊者可以把它錄下重送，讓購買或轉帳之類有副作用的請求重複發生，或改變它和其他請求的先後。規格要求伺服器自己負責防範。",
+      "scope": "TLS 1.3 規格；不宣稱哪些網站開了 0-RTT。",
+      "source_locator": "S001 §1.2 0-RTT 點、§2.3 IMPORTANT NOTE、附錄 E.5 開頭",
+      "premise_status": "screened",
+      "notes": "目標 P29 第三章轉折：前一核心剛說序號防重播，這裡是規格自己承認的例外，會改變觀眾『每封都防重播』的結論。 原提案 F2-010。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；真轉折（改變『每封都防重播』的結論），算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "為了省一個來回，最新的協定也故意留了一扇可以被重播的小門。",
+        "visual": "一般信件走有流水號的傳送帶；一張『搶先送出』的便條繞過編號口。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S001 §1.2 0-RTT 點、§2.3 IMPORTANT NOTE、附錄 E.5 開頭",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-011",
+      "question": "就算全程 HTTPS，旁人還看得到我在連哪個網站嗎？",
+      "domain": "資訊與網路",
+      "mechanism_key": "net.tls13.sni_plaintext_ech",
+      "answer_target": "TLS 1.3 把大部分握手都加密了，連伺服器憑證也是，但 ClientHello 裡的伺服器名稱指示（SNI）仍是明文，會直接露出你要連的網域；TLS 1.3 規格要求用戶端在適用時送出它，因為伺服器可以要求有這個欄位。2026 年 3 月發布的 RFC 9849（加密的 ClientHello，ECH）說明：許多伺服器在同一個 IP 上放很多網域，SNI 因此是旁觀者判斷你連到哪裡的主要明確訊號；ECH 用伺服器公鑰把 ClientHello 加密，但它也寫明 ECH 單獨不夠，明文 DNS 查詢和伺服器 IP 仍可能洩漏網域，要配合加密 DNS。",
+      "scope": "協定層面；不說現在多少網站或瀏覽器已啟用 ECH；不涉及 VPN。",
+      "source_locator": "S002 §1 第1、4段；S001 §4.4.2.2 server_name 句、附錄 E.1 Protection of endpoint identities",
+      "premise_status": "screened",
+      "notes": "目標 P29 第四章；補 MATERIAL_REVIEW『HTTPS 仍會露出的資訊（網域名稱、SNI）查核』，並修正 A55 查核包『本次未深入查核，不講』的空缺。 原提案 F2-011。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；歸屬要改；算 1.5 條。片中不可說 ECH 已普及（無部署來源）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "信封封好了，但信封外的收件網址一直是明寫的，直到最近才有辦法遮。",
+        "visual": "封好的信，外面一張寫著網址的標籤；新的做法把標籤也放進第二層信封，但郵差仍看得到寄往哪棟大樓。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-247e7b4f3db436ce",
+          "origin": "wave53-tech-20261111",
+          "locator": "S002 §1 第1、4段；S001 §4.4.2.2 server_name 句、附錄 E.1 Protection of endpoint identities",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-221ec34b296ae4b8",
+          "origin": "wave53-tech-20261111",
+          "locator": "S002 §1 第1、4段；S001 §4.4.2.2 server_name 句、附錄 E.1 Protection of endpoint identities",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-012",
+      "question": "手機又沒有原子鐘，怎麼用衛星的時間量距離？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.positioning.four_unknowns_receiver_clock",
+      "answer_target": "GPS 衛星帶原子鐘，訊號裡寫著發射時刻；接收機用收到時刻減發射時刻算距離，還要扣掉電離層與對流層造成的延遲。三顆衛星的距離就能定出三維位置，但前提是接收機也有一顆和 GPS 同步的原子鐘。多量第四顆衛星就不需要：接收機把自己的鐘差當成第四個未知數，和經度、緯度、高度一起解。",
+      "scope": "標準定位服務（碼量測）；超過四顆時用最小平方，不教矩陣。",
+      "source_locator": "S007 正文第2段；S010 導言與『four unknown parameters』句",
+      "premise_status": "screened",
+      "notes": "目標 P13 第一、二章「一顆衛星還不能找到你／多加訊號怎麼縮小答案」；補 MATERIAL_REVIEW『接收機時鐘偏差與第四顆衛星』。A38 C1（Ashby 偽距段）只講時間與距離相關，本核心新增鐘差未知數與第四顆。 原提案 F2-012。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；近鄰：部分同 LEG-A38（傳播時間換距離）。LEG-A38 已有『飛行時間×光速＝距離』，本核心只算第四顆／鐘差未知數與大氣延遲，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第四顆衛星不是為了位置，而是替你手上那顆不準的鐘解題。",
+        "visual": "三個球面交出兩點；加第四個球面時，手機的鐘指針跟著被調到對的位置。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-33623e716cf535e7",
+          "origin": "wave53-tech-20261111",
+          "locator": "S007 正文第2段；S010 導言與『four unknown parameters』句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-14659a6d225f2c0a",
+          "origin": "wave53-tech-20261111",
+          "locator": "S007 正文第2段；S010 導言與『four unknown parameters』句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-013",
+      "question": "同樣看到四顆衛星，為什麼有時準、有時偏很多？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.accuracy.dop_geometry_times_uere",
+      "answer_target": "GPS 官方性能標準把定位精度近似寫成『測距誤差 × DOP』。DOP（精度稀釋因子）是衛星相對使用者的幾何好壞的量度：同樣的測距誤差，幾何不同，放大的倍數就不同；幾何太差時甚至解不出位置。標準也寫明，用五顆以上衛星算出的 DOP 一定不比只用四顆差。政府承諾全球 98% 以上的時間 PDOP 在 6 以下。",
+      "scope": "SPS PS 2020；公式為近似（誤差零均值、同大小）；不給手機實際 DOP。",
+      "source_locator": "S009 §3.8.1 Table 3.8-1；A.8.2；B.2.1 式 B-1；B.2.4.1；B.2.4.3.4",
+      "premise_status": "screened",
+      "notes": "目標 P13 第二章（位置幾何）。 原提案 F2-013。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；刪去來源沒有的擠／散說法，或另找教材來源後再加；圖可畫但要標『示意』。算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一把尺量得一樣準，衛星站的位置決定錯誤被放大幾倍。",
+        "visual": "四顆衛星不同排法下交會區大小的對照（標明為原創示意、非標準內容；擠／散與放大倍數的對應需另有教材來源才可念出）。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4cc0a932e68eee14",
+          "origin": "wave53-tech-20261111",
+          "locator": "S009 §3.8.1 Table 3.8-1；A.8.2；B.2.1 式 B-1；B.2.4.1；B.2.4.3.4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-014",
+      "question": "GPS 訊號只差兩公尺，為什麼手機常差更多？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.accuracy.ure_vs_user_accuracy",
+      "answer_target": "美國政府承諾的是太空中的訊號：每日全球平均測距誤差（URE）95% 在 2.0 公尺內，2021 年 4 月 20 日實際約 0.643 公尺。官方特別說明 URE 不等於使用者精度：手上的位置還取決於衛星幾何，以及遮擋、大氣和接收機設計這些在地因素。GPS.gov 引述的資料說，開闊天空下的 GPS 手機通常約 4.9 公尺半徑，靠近建築、橋和樹就變差；FAA 對基本 GPS 服務的說法是約 7.0 公尺、95% 時間。",
+      "scope": "官方數字有版本日期；4.9 m 原始 ION 來源本輪未讀。",
+      "source_locator": "S008 How accurate、commitment 兩題；S007 正文第2段",
+      "premise_status": "screened",
+      "notes": "目標 P13 第三章開頭（誤差從哪來）。 原提案 F2-014。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；措辭貼回原文；算 2 條。4.9 m 的 ION 原文未讀，標『gps.gov 引述』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "衛星送得很準，誤差多半是在最後一段路和你手上產生的。",
+        "visual": "從太空到手機的一條線分段上色：太空段細、地面段變粗。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb0125ccd9f7e18d",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 How accurate、commitment 兩題；S007 正文第2段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-33623e716cf535e7",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 How accurate、commitment 兩題；S007 正文第2段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-015",
+      "question": "在高樓之間，GPS 為什麼會把你放到對街？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.error.multipath_reflection",
+      "answer_target": "訊號從牆面或水面反射後才進天線，就是多路徑；GPS.gov 把它和建築、橋、樹的遮擋、室內地下使用並列為最常見的定位變差原因。教材指出多路徑主要來自天線靠近反射物，低仰角的衛星最嚴重；碼量測的多路徑典型小於 2 到 3 公尺，超過 15 公尺很少見。靜止接收機每個恆星日看到幾乎一樣的多路徑型態，因為衛星和反射面的幾何每天重複。",
+      "scope": "教材級數值；都市峽谷的實際偏差另依環境。",
+      "source_locator": "S008 Why wrong place 題；S011 第1–3段、Fig.2 說明",
+      "premise_status": "screened",
+      "notes": "目標 P13 第三章「時間和路徑如何帶偏位置」；補 MATERIAL_REVIEW『多路徑…誤差來源的官方說明』。 原提案 F2-015。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "訊號繞了遠路，接收機卻以為它走直線。",
+        "visual": "直射與反射兩條路徑到手機，反射那條多出的長度標成虛線。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb0125ccd9f7e18d",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 Why wrong place 題；S011 第1–3段、Fig.2 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ae51473c0e1154f7",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 Why wrong place 題；S011 第1–3段、Fig.2 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-016",
+      "question": "軍用 GPS 比較準，是因為衛星送給軍方比較好的訊號嗎？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.error.ionosphere_dual_frequency",
+      "answer_target": "不是。GPS.gov 舊版說明（2025 年 2 月後未更新的典藏頁）寫：軍用與民用訊號的測距誤差一樣，差別在多數民用裝置只收一個頻率、軍用收兩個；現行頁面仍保留『用兩個頻率可修正大氣造成的扭曲』。訊號穿過電離層會被延遲，延遲和頻率平方成反比，所以比較兩個頻率就能把電離層效應去掉 99.9% 以上；單頻接收機只能用預測模型估這個可達數十公尺的效應，衛星廣播的 Klobuchar 模型全球平均大約修掉一半。加上增強系統，民用甚至可以比軍用更準。",
+      "scope": "Klobuchar 50% 為全球 RMS 估計；不談選擇性可用性歷史細節。",
+      "source_locator": "S008 archive.gps.gov/systems/gps/performance/accuracy/ 的 military 題（現行 gps.gov/node/70 已刪 URE 相同與單／雙頻兩句）；S012 末段；S013 導言",
+      "premise_status": "screened",
+      "notes": "目標 P13 第三章（大氣誤差）；這是轉折：一般以為差在衛星訊號，其實差在接收端用幾個頻率。 原提案 F2-016。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；三處要改；locator 必須指 archive 版並註明現行頁已改寫，播出前重查。算 2 條（O3057 雷達測高雙頻是不同應用，不重複）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一顆衛星，差別在你用一個耳朵還是兩個耳朵聽。",
+        "visual": "兩種顏色的訊號穿過一層霧，慢的那條拖得比較長，比較兩條就知道霧多厚。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb0125ccd9f7e18d",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 archive.gps.gov/systems/gps/performance/accuracy/ 的 military 題（現行 gps.gov/node/70 已刪 URE 相同與單／雙頻兩句）；S012 末段；S013 導言",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-21e355d94371e7a6",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 archive.gps.gov/systems/gps/performance/accuracy/ 的 military 題（現行 gps.gov/node/70 已刪 URE 相同與單／雙頻兩句）；S012 末段；S013 導言",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-83a85b316583711e",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 archive.gps.gov/systems/gps/performance/accuracy/ 的 military 題（現行 gps.gov/node/70 已刪 URE 相同與單／雙頻兩句）；S012 末段；S013 導言",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-017",
+      "question": "GPS 剛打開時，為什麼要等那麼久才定位？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.ttff.navigation_message_rate",
+      "answer_target": "定位除了量距離，還要知道衛星在哪、鐘差多少，這些寫在衛星廣播的導航電文裡：傳輸速率只有每秒 50 位元，一整框 30 秒才重複一次，鐘差修正在第一子框、星曆在第二、三子框。傳統接收機要收齊前三個子框，最長約 36 秒。冷啟動什麼都沒有要全天搜尋，暖啟動有曆書，熱啟動已有精確星曆，就不必再等電文；都市峽谷裡訊號斷斷續續，等待會更久。",
+      "scope": "GPS L1 C/A 與 LNAV；其他系統電文不同；不給手機 TTFF 秒數。",
+      "source_locator": "S009 §2.2.1、§2.2.2.1 Fig.2.2-1；S015 §2 第1段；S014 冷暖熱啟動段與末段",
+      "premise_status": "screened",
+      "notes": "目標 P13 第四章「為什麼有時定位慢或飄」；補 MATERIAL_REVIEW『輔助 GPS』前提。 原提案 F2-017。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1.5 條（等待電文的事實與 T53-018 的 A-GPS 部分相接，不重算）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "衛星每秒只念 50 個字，聽完一輪地址簿要半分鐘。",
+        "visual": "衛星像慢速電報機吐紙條，第一到第三段紙條收齊才亮綠燈。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4cc0a932e68eee14",
+          "origin": "wave53-tech-20261111",
+          "locator": "S009 §2.2.1、§2.2.2.1 Fig.2.2-1；S015 §2 第1段；S014 冷暖熱啟動段與末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-200bfc13f6e7993c",
+          "origin": "wave53-tech-20261111",
+          "locator": "S009 §2.2.1、§2.2.2.1 Fig.2.2-1；S015 §2 第1段；S014 冷暖熱啟動段與末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-19bd137c37b8b5e1",
+          "origin": "wave53-tech-20261111",
+          "locator": "S009 §2.2.1、§2.2.2.1 Fig.2.2-1；S015 §2 第1段；S014 冷暖熱啟動段與末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-018",
+      "question": "手機怎麼做到一開地圖就有位置？代價是什麼？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.agnss.network_assistance_coarse_time",
+      "answer_target": "輔助 GPS 把星曆、鐘差等原本要從衛星慢慢收的資料，改由網路送來，手機通常經 SUPL 協定透過行動網路取得；接收機只要收幾毫秒訊號就能定位，不必等完整電文。但這樣就沒有從電文讀出的精確時間。一篇 2021 年的導航期刊論文回顧 van Diggelen 2009 年的方法指出：時間每差一秒，算出的偽距會錯約 800 公尺，因為衛星一直在動；所以要把粗略時間當成第五個未知數，至少需要五顆衛星。",
+      "scope": "A-GNSS 一般原理（van Diggelen 方法，經 Blay 等 2021 回顧）；不談各手機實作與隱私。",
+      "source_locator": "S015 §1 第1段、§2 第1段、§2.1 末段（800 m、五顆）",
+      "premise_status": "screened",
+      "notes": "目標 P13 第四章；補 MATERIAL_REVIEW『輔助 GPS／網路輔助定位的來源』。800 m/秒是文中引述 van Diggelen 2009，撰稿標『研究回顧指出』。這是轉折：省下等待，換來時間又變成未知數，回扣片名『差一點時間』。 原提案 F2-018。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；把歸屬寫進答案；『因為衛星在移動』原文是用衛星速度／偽距變化率推，保留但不展開。算 2 條，是真轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "網路幫你抄好衛星的地址簿，但手機得多找一顆衛星來校時。",
+        "visual": "手機從基地台收到一本小冊子；畫面上多亮起第五顆衛星。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-200bfc13f6e7993c",
+          "origin": "wave53-tech-20261111",
+          "locator": "S015 §1 第1段、§2 第1段、§2.1 末段（800 m、五顆）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
+      "id": "T53-019",
+      "question": "導航把你帶到錯的路口，一定是 GPS 定位錯了嗎？",
+      "domain": "導航與時間",
+      "mechanism_key": "gnss.user.mapping_error_vs_positioning",
+      "answer_target": "GPS.gov 特別提醒：很多情況下裝置的 GPS 硬體運作正常，錯的是地圖軟體——圖畫錯、店家標錯、缺路缺樓、門牌位置估錯；美國政府無法修正消費裝置的地圖錯誤，要回報給地圖供應者。",
+      "scope": "官方 FAQ 敘述，不給比例。",
+      "source_locator": "S008 Why wrong place 題後半",
+      "premise_status": "screened",
+      "notes": "目標 P13 收尾前的界線：把『定位』與『地圖』分開（企劃風險欄要求分清）。 原提案 F2-019。作者標為界線，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；算 1 條，作收尾前的界線。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "點在對的地方，地圖畫錯了，看起來一樣是『GPS 不準』。",
+        "visual": "藍點落在正確位置，底下的地圖道路歪了一格。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave53-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb0125ccd9f7e18d",
+          "origin": "wave53-tech-20261111",
+          "locator": "S008 Why wrong place 題後半",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+      ]
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -405878,6 +408888,37 @@
       "T52-004": "T52-004",
       "T52-005": "T52-005",
       "T52-006": "T52-006",
+      "H53-001": "H53-001",
+      "H53-002": "H53-002",
+      "H53-003": "H53-003",
+      "H53-004": "H53-004",
+      "H53-005": "H53-005",
+      "H53-006": "H53-006",
+      "P53-001": "P53-001",
+      "P53-002": "P53-002",
+      "P53-003": "P53-003",
+      "P53-004": "P53-004",
+      "P53-005": "P53-005",
+      "P53-006": "P53-006",
+      "T53-001": "T53-001",
+      "T53-002": "T53-002",
+      "T53-003": "T53-003",
+      "T53-004": "T53-004",
+      "T53-005": "T53-005",
+      "T53-006": "T53-006",
+      "T53-007": "T53-007",
+      "T53-008": "T53-008",
+      "T53-009": "T53-009",
+      "T53-010": "T53-010",
+      "T53-011": "T53-011",
+      "T53-012": "T53-012",
+      "T53-013": "T53-013",
+      "T53-014": "T53-014",
+      "T53-015": "T53-015",
+      "T53-016": "T53-016",
+      "T53-017": "T53-017",
+      "T53-018": "T53-018",
+      "T53-019": "T53-019",
       "J6001": "J6001",
       "J6002": "J6002",
       "J6003": "J6003",
@@ -434150,6 +437191,81 @@
         "a": "T52-006",
         "b": "LEG-A36",
         "reason": "『30% 是碼字不是面積』已是 LEG-A36 的核心；T52-006 只保留 Reed-Solomon 適合集中突發錯誤的官方說法與 25% 算例，問的是同樣大小的損傷為何集中的比零散的好修（V4 2026-11-11）。"
+      },
+      {
+        "a": "T53-004",
+        "b": "LEG-A55",
+        "reason": "LEG-A55 問 HTTPS 多保護了什麼，已有『鎖頭不代表網站可信』（Chromium 2023 舊查核）；T53-004 只補機制：Let's Encrypt 發證前驗的是網域控制權（DNS 記錄或固定路徑檔案、多個網路視角），所以詐騙站也拿得到鎖頭，那句不重計。（V5 2026-11-11）"
+      },
+      {
+        "a": "T53-012",
+        "b": "LEG-A38",
+        "reason": "LEG-A38 是傳播時間換距離與相對論修正；T53-012 只算接收機鐘差是第四個未知數、所以要第四顆衛星，以及大氣延遲要扣除，傳播時間那句不重計。（V5 2026-11-11）"
+      },
+      {
+        "a": "T53-016",
+        "b": "O3057",
+        "reason": "O3057 是衛星雷達測高用兩種頻率扣電離層延遲；T53-016 是 GPS 軍民差別在接收端收一個還是兩個頻率、Klobuchar 廣播模型約修一半，應用與問題不同。（V5 2026-11-11）"
+      },
+      {
+        "a": "T53-006",
+        "b": "I3084",
+        "reason": "I3084 是 libsodium 獨立驗證的訊息可被重播或換序（函式庫用法）；T53-006 是 TLS 1.3 每筆紀錄的 64 位元序號混入 nonce、亂序或重送就解密失敗。概念相同、系統不同；P29 改用 T53-006，I3084 留在 G38。（V5 2026-11-11）"
+      },
+      {
+        "a": "T53-007",
+        "b": "I3087",
+        "reason": "I3087 是 libsodium 附加資料參與認證；T53-007 是 TLS 1.3 把紀錄標頭當附加資料、沒有另外的完整性檢查。P29 改用 T53-007，I3087 與 I3083 留在 G38。（V5 2026-11-11）"
+      },
+      {
+        "a": "T53-009",
+        "b": "I3086",
+        "reason": "I3086 是 libsodium secretstream 的結束標記；T53-009 是 TLS 的 close_notify 防截斷。P29 改用 T53-009，I3086 留在 G38。（V5 2026-11-11）"
+      },
+      {
+        "a": "T53-008",
+        "b": "I3089",
+        "reason": "I3089 是一般加密格式的密文長度反映原文長度；T53-008 是 RFC 8446 明寫 TLS 不隱藏長度、可填充與流量分析例子。P29 改用 T53-008，I3089 與 I3073 留在 G38。（V5 2026-11-11）"
+      },
+      {
+        "a": "H53-001",
+        "b": "LEG-B27",
+        "reason": "LEG-B27 只有尾數價格效果情境相依的概括句；H53-001 是 Anderson & Simester 郵購目錄的先導試驗設計與數字（66 對 46、45 件，約多四成），概括句不重計。（V5 2026-11-11）"
+      },
+      {
+        "a": "H53-002",
+        "b": "LEG-B27",
+        "reason": "LEG-B27 已有『新品較強、特價字樣可能削弱』定性句；H53-002 是三個大規模目錄試驗的樣本、效果大小與價格係數由不顯著轉顯著，只算 1.5 條。（V5 2026-11-11）"
+      },
+      {
+        "a": "H53-004",
+        "b": "LEG-B62",
+        "reason": "LEG-B62 已有『越接近集滿買越快』；H53-004 新增透明卡對照組反而減速與換卡後重置，只算這兩條。（V5 2026-11-11）"
+      },
+      {
+        "a": "H53-005",
+        "b": "LEG-B62",
+        "reason": "LEG-B62 已提先送兩格集得更快的結論；H53-005 是 108 人隨機試驗的天數與『剩下比例』解釋，以及另一份情境問卷排除『只是比較喜歡那張卡』，只算數據與排除解釋。（V5 2026-11-11）"
+      },
+      {
+        "a": "P53-001",
+        "b": "F10003",
+        "reason": "F10003 是顆粒柱底部受力因 Janssen 效應飽和（浸水柱）；P53-001 是筒倉文獻整理的出料流量與料高無關與 Beverloo 經驗式，底力飽和那句不重計。（V5 2026-11-11）"
+      },
+      {
+        "a": "P53-002",
+        "b": "P43-002",
+        "reason": "P43-002 是跨出口的珠子鏈何時成為真正阻流的拱；P53-002 是出料顆粒數對時間呈直線、出口與粒徑比約 5 以下（引自前作）轉為間歇卡住，沒有比值門檻的重疊。（V5 2026-11-11）"
+      },
+      {
+        "a": "P53-003",
+        "b": "P44-004",
+        "reason": "P44-004 是規則摺紋按翻頂點切換剛度；P53-003 是硬面配可伸長鉸鏈的閉合多面體，兩個相容形狀之間被迫變形形成能量障壁而雙穩，雙穩概念部分重疊，只算 1 條。（V5 2026-11-11）"
+      },
+      {
+        "a": "P53-006",
+        "b": "LEG-S86",
+        "reason": "LEG-S86 是開著降噪仍聽得到說話（抵消受頻率與佩戴影響）；P53-006 是回授式主動降噪只在約 500 Hz 以下有效、壓低低頻可減少對語音的向上遮蔽（前言引述），低頻有效那句部分重疊，只算 1 條。（V5 2026-11-11）"
       }
     ],
     "excluded": [
@@ -435149,6 +438265,20 @@
         "questions": [
           "DNA 聚合酶會接字，為什麼還需要另一種酵素先寫開頭？",
           "DNA 寫錯一個字，複製酵素怎麼邊寫邊退回修正？"
+        ]
+      },
+      {
+        "id": "H53-004~H53-006",
+        "a": "H53-004",
+        "b": "H53-006",
+        "question_score": 0.16,
+        "answer_score": 0.11,
+        "key_score": 0.615,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "集點卡越接近集滿，人真的買得越快嗎？",
+          "集點真的推得動每個人嗎？"
         ]
       },
       {
@@ -436969,6 +440099,20 @@
         "questions": [
           "兩家公司都用同一段內網 IP，網路接在一起時可能發生什麼事？",
           "私有 IP 明明不能直接全球通行，為什麼網路還需要它？"
+        ]
+      },
+      {
+        "id": "H53-001~H53-002",
+        "a": "H53-001",
+        "b": "H53-002",
+        "question_score": 0,
+        "answer_score": 0.088,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把 39 元改成 34 元，賣得比較多嗎？郵購目錄的第一個試驗",
+          "9 結尾的效果，換個商品、加上『特價』字樣還在嗎？"
         ]
       },
       {
@@ -442450,10 +445594,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-11-pool-3584",
-    "target_count": 3584,
+    "revision": "2026-11-11-pool-3615",
+    "target_count": 3615,
     "reviewed_on": "2026-11-11",
-    "reason": "從3558續接；2026-11-11 第二輪素材審視替近門檻長題與企劃補一手來源，27 個提案經非作者覆核（V4），26 個收入、1 個以自製測試為主而退回；改字依覆核意見，同一事實已在舊核心者不重計。",
+    "reason": "從3584續接；2026-11-11 第三輪素材審視替企劃 P29、P13、P30、P19 與組題 C3-09、C2-11 補原文來源，31 個提案經非作者覆核（V5）全部收入（照原稿 18、改字後 13）；改字依覆核意見，同一事實已在舊核心者不重計，RFC 8446、Anderson & Simester 2003、Kivetz 等 2006 併入舊來源 id 作新閱讀紀錄。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -446038,7 +449182,38 @@
       "T52-003",
       "T52-004",
       "T52-005",
-      "T52-006"
+      "T52-006",
+      "T53-001",
+      "T53-002",
+      "T53-003",
+      "T53-004",
+      "T53-005",
+      "T53-006",
+      "T53-007",
+      "T53-008",
+      "T53-009",
+      "T53-010",
+      "T53-011",
+      "T53-012",
+      "T53-013",
+      "T53-014",
+      "T53-015",
+      "T53-016",
+      "T53-017",
+      "T53-018",
+      "T53-019",
+      "H53-001",
+      "H53-002",
+      "H53-003",
+      "H53-004",
+      "H53-005",
+      "H53-006",
+      "P53-001",
+      "P53-002",
+      "P53-003",
+      "P53-004",
+      "P53-005",
+      "P53-006"
     ],
     "overflow": [
       {
@@ -472162,6 +475337,87 @@
       "reading_status": "S005 已讀；自製測試（原 F1-S026，腳本與兩份結果 JSON）由 V4 逐筆核對，但依規則不列為來源。",
       "origin": "wave52-tech-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+    },
+    {
+      "id": "H53-NA001",
+      "question": "先送兩格的洗車集點卡，集滿率真的是 34% 對 19% 嗎？",
+      "existing_ids": [
+        "H53-005",
+        "LEG-B62"
+      ],
+      "source_ids": [],
+      "reason": "Nunes & Drèze 2006 原文三處取得失敗：USC 作者檔憑證過期且 http 版 404；Wayback 快照經代理連線被重置；WebFetch 回 503／不支援 archive.org。二手站轉述不算讀，34%／19% 不入片。 原提案 F2-NA001。",
+      "reentry_condition": "取得 JCR 原文或作者稿全文，核 Study 1 卡數、條件與兌換率。",
+      "reading_status": "未讀（只有搜尋摘要）。",
+      "origin": "wave53-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+    },
+    {
+      "id": "H53-NA002",
+      "question": "2.99 和 3.00 的左位數效應，在實驗室裡的條件與樣本是什麼？",
+      "existing_ids": [
+        "LEG-B27"
+      ],
+      "source_ids": [],
+      "reason": "Thomas & Morwitz 2005（JCR）沒有免費全文；OUP 只給摘要；sagepub 上 2020 年左位數綜述 PDF 回 403（不繞過）。本輪改以已讀全文的郵購實驗（H53-001／H53-002）與二手車研究（H53-003）承擔左位數的數據。 原提案 F2-NA002。",
+      "reentry_condition": "取得 Thomas & Morwitz 原文五個實驗的方法與結果頁。",
+      "reading_status": "只有既有摘要級紀錄。",
+      "origin": "wave53-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave53-human.json"
+    },
+    {
+      "id": "P53-NA001",
+      "question": "三浦摺（Miura-ori）怎麼讓太空薄膜一拉就展開？",
+      "existing_ids": [
+        "P53-004"
+      ],
+      "source_ids": [],
+      "reason": "Miura 1985 ISAS Report 618 在 JAXA 機構典藏，網站 2026-10-28 起系統維護回 503；core.ac.uk 鏡像 403。未讀不入。 原提案 F2-NA003。",
+      "reentry_condition": "JAXA 典藏恢復後讀 SA0035000.pdf。",
+      "reading_status": "未讀。",
+      "origin": "wave53-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+    },
+    {
+      "id": "P53-NA002",
+      "question": "水沖不掉的油，肥皂怎麼帶它走？（P22 補料）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪未研究。P22 從 5.6 分要到 8.5 分需約 6 條新事實加第二個轉折（硬水皂垢對照），本輪時間優先給最接近門檻的目標；不硬補。 原提案 F2-NA006。 企劃 P22 在 tools/video/so-thats-why/episode-plan.mjs，不是素材池核心。",
+      "reentry_condition": "化學教材級的硬水與肥皂、界面張力與乳化來源，加一個真轉折。",
+      "reading_status": "未讀。",
+      "origin": "wave53-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave53-physics.json"
+    },
+    {
+      "id": "T53-NA001",
+      "question": "GPS 介面規格裡的電文結構（IS-GPS-200）",
+      "existing_ids": [
+        "T53-017"
+      ],
+      "source_ids": [
+        "T53-S009"
+      ],
+      "reason": "navcen.uscg.gov 的 IS-GPS-200N 與 GPS FAQ 本輪回 403；改用 SPS 性能標準 2020 §2.2 的電文結構說明（已讀），不另立核心。 原提案 F2-NA004。",
+      "reentry_condition": "需要逐位元結構時再讀 IS-GPS-200。",
+      "reading_status": "403。",
+      "origin": "wave53-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
+    },
+    {
+      "id": "T53-NA002",
+      "question": "TLS 1.3 的 PSK 與連線恢復怎麼運作？",
+      "existing_ids": [
+        "T53-010"
+      ],
+      "source_ids": [
+        "T53-S001"
+      ],
+      "reason": "與 P29 核心問題（路上的人看得到、改得了、冒充得了什麼）只在 0-RTT 例外處相交；細節是協定機制清單，會讓片子變密碼學課（企劃風險欄）。 原提案 F2-NA005。",
+      "reentry_condition": "無。",
+      "reading_status": "§2.2 未讀。",
+      "origin": "wave53-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave53-tech.json"
     },
     {
       "id": "J6-NA001",
