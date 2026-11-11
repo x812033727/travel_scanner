@@ -1,7 +1,7 @@
 ---
 id: 2026-11-11-redo-thumbnails-and-titles-for-curio
 title: Redo thumbnails and titles for curio v2 videos with high impressions and sub-1% CTR
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-opus-cloud-channel-review
@@ -32,15 +32,15 @@ Buying ads for them first would only cover up the packaging problem.
 
 ## Definition of done
 
-- [ ] Each video has a new thumbnail and title that follow the series look (`curio-episode` skill) and the
+- [x] Each video has a new thumbnail and title that follow the series look (`curio-episode` skill) and the
       title pattern from `docs/videos/channel-review-20261025-story-series/README.md`.
 - [ ] The owner has approved and changed them in Studio (changing public videos is the owner's call).
 - [ ] 7 and 14 days later, the CTR is compared with the numbers above and written in Notes.
 
 ## Steps
 
-- [ ] Read `curio-episode` and `youtube-video` (thumbnail rules).
-- [ ] Draft two title and thumbnail options per video and hand them to the owner.
+- [x] Read `curio-episode` and `youtube-video` (thumbnail rules).
+- [x] Draft two title and thumbnail options per video and hand them to the owner (`docs/videos/curio-s01/thumbnail-redo-20261111.md`, `docs/videos/curio-s11/thumbnail-redo-20261111.md`; JPGs in each episode's Drive backup under `thumbnails-redo-20261111/`).
 - [ ] After the change, re-read `channel_reach_basic` with `tools/video/youtube-reports/cli.mjs`.
 
 ## How to verify
@@ -51,3 +51,5 @@ then weight CTR by impressions.
 ## Notes
 
 Never publish the computed CTRs (YouTube developer policy on derived metrics, `docs/videos/YOUTUBE-REPORTS.md`).
+
+- 2026-11-11: the review store had already purged the v2 finals, so the cuts came from the Drive backup (`rclone backend copyid`). Frames were cropped to remove the burned-in subtitles and the top-right watermark, then drawn with `thumbnailHtml` layout e in a local Chromium. Upload and the 14-day readback are still the owner's (status: review).
