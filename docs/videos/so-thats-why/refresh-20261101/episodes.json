@@ -7,7 +7,7 @@
   "source_catalog_sha256": "035f21f294997cf878522af06adfe3be33f1a3d8626ebaf5683eb6510afd5590",
   "definition": {
     "file": "tools/video/so-thats-why/episode-plan.mjs",
-    "sha256": "17ea649b3f65bc54b9008d67a0931bddcc4ab417ab5dd431fba75fd4fe7ac8a2"
+    "sha256": "5344ca19d52970ac6d4350131885641ee35cc7a41a2d4220499cdc72ba6527fb"
   },
   "counts": {
     "source_pool": 100,
@@ -212,10 +212,17 @@
       "material": {
         "verdict": "ready",
         "est_minutes": 9.4,
-        "missing": "缺應用程式回報「完成」與作業系統實際寫入（快取刷新）之間差別的一般性官方來源，現有只有 Windows 移除政策與 Apple 退出說明；NIST SP 800-88 Rev. 2、Windows／macOS TRIM 預設需撰稿當日重查",
+        "missing": "應用程式回報「完成」與實際寫入的差別，一般性來源由素材池 I3002（SQLite〈Atomic Commit〉：寫入可能停在作業系統快取，同步才送往持久儲存）補上，但它是資料庫文件，主例的 Windows／macOS 寫入快取仍要各自的官方說明；NIST SP 800-88 Rev. 2、Windows／macOS TRIM 預設需撰稿當日重查",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
+      "pool_support": [
+        {
+          "id": "I3002",
+          "chapter": "進度條到終點了",
+          "use": "寫入呼叫成功不等於資料已在持久儲存：寫入可能停在作業系統快取，同步才依序送出（SQLite〈Atomic Commit〉第 2、3.2–3.7 節）；補素材審視列的一般性來源缺口，但主例系統仍要自己的官方說明。"
+        }
+      ],
       "target_body_seconds": 780,
       "planning_range_seconds": [
         720,
@@ -615,6 +622,18 @@
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
+      "pool_support": [
+        {
+          "id": "I8006",
+          "chapter": "最慢的一段怎麼拖住全程",
+          "use": "路由器怎麼分辨正常突發與一直塞住的隊列（RFC 8289 CoDel 觀察一段時間內的最低排隊延遲）；給緩衝模型一個有標準文件的例子，不給設定或速度承諾。"
+        },
+        {
+          "id": "I8007",
+          "chapter": "最慢的一段怎麼拖住全程",
+          "use": "大檔與短訊息分隊輪流送，短流不必排在大流積壓之後（RFC 8290）；只講機制，不保證每個使用者公平。不補 CDN 缺口。"
+        }
+      ],
       "target_body_seconds": 900,
       "planning_range_seconds": [
         840,
@@ -682,10 +701,22 @@
       "material": {
         "verdict": "ready",
         "est_minutes": 10.6,
-        "missing": "捲簾快門與螢幕或燈光頻閃條紋的來源；A50 只有一篇摩爾紋研究，缺手機實拍成功／失敗對照的真實紀錄",
+        "missing": "捲簾快門逐行曝光的來源由素材池 P20006（Axis 全域與捲簾快門白皮書）補上，燈光或螢幕頻閃條紋要從它推論，仍需一份直接講頻閃條紋的來源；A50 只有一篇摩爾紋研究，缺手機實拍成功／失敗對照的真實紀錄",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
+      "pool_support": [
+        {
+          "id": "P20006",
+          "chapter": "哪些東西是相機重建的",
+          "use": "逐行曝光讓短閃光只照到部分列（Axis 白皮書）；是捲簾快門與條紋的機制來源，燈光或螢幕頻閃仍要直接來源。"
+        },
+        {
+          "id": "P20001",
+          "chapter": "哪些東西是相機重建的",
+          "use": "Bayer 陣列各點只量一種顏色，邊緣補值會冒出原本沒有的彩邊（Microsoft Research 去馬賽克論文）；把「相機重建」講具體，不把摩爾紋歸到這個原因。"
+        }
+      ],
       "target_body_seconds": 900,
       "planning_range_seconds": [
         840,
@@ -1764,6 +1795,18 @@
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
+      "pool_support": [
+        {
+          "id": "H3060",
+          "chapter": "邊角與反覆載入遇在一起",
+          "use": "裂長、外加應力與材料斷裂韌性一起決定裂紋何時快速擴大（UNSW 材料學院教材）；接在應力集中之後，回答「已經有裂紋時何時失控」。不引用公式，不由外觀判斷實物安全。"
+        },
+        {
+          "id": "H3061",
+          "chapter": "圓角是不是萬能答案",
+          "use": "同樣有缺口，銅先塑性變形、玻璃直接裂（UNSW 教材的銅棒與玻璃棒對照）；把材料放回工程邊界，只作這組對照，不把所有金屬或陶瓷一概分類。"
+        }
+      ],
       "target_body_seconds": 720,
       "planning_range_seconds": [
         660,

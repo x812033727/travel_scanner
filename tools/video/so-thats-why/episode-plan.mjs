@@ -310,10 +310,10 @@ const rows = [
 // its own rules require before writing.
 export const MATERIAL_REVIEW = Object.freeze({
   P01: { verdict: 'ready', est_minutes: 10.7, missing: 'S78 只有 DOE 與 ENERGY STAR 兩個概論頁，缺鍋底材質、複合鍋底與爐面受熱的逐主張查核；A68、A45 的舊查核需依當期版本（ISO/IEC 14443、Qi／Qi2、Apple 支援頁）重讀' },
-  P03: { verdict: 'ready', est_minutes: 9.4, missing: '缺應用程式回報「完成」與作業系統實際寫入（快取刷新）之間差別的一般性官方來源，現有只有 Windows 移除政策與 Apple 退出說明；NIST SP 800-88 Rev. 2、Windows／macOS TRIM 預設需撰稿當日重查' },
+  P03: { verdict: 'ready', est_minutes: 9.4, missing: '應用程式回報「完成」與實際寫入的差別，一般性來源由素材池 I3002（SQLite〈Atomic Commit〉：寫入可能停在作業系統快取，同步才送往持久儲存）補上，但它是資料庫文件，主例的 Windows／macOS 寫入快取仍要各自的官方說明；NIST SP 800-88 Rev. 2、Windows／macOS TRIM 預設需撰稿當日重查' },
   P04: { verdict: 'reserve', est_minutes: 8.3, missing: 'S80 只有 NASA〈What is microgravity〉一頁的題級閱讀，無逐主張查核；缺第二個有條件說明的微重力燃燒實驗（例如太空站燃燒研究的具體結果）；缺軌道高度重力仍約九成等數值的當期核對' },
   P09: { verdict: 'ready', est_minutes: 10.6, missing: 'CDN 與邊緣快取的官方說明（決定第二章能否成立）；端到端吞吐量由最慢一段決定的教材來源；A10 的海纜數字（TeleGeography 99%、台灣海纜數）需當期重查' },
-  P10: { verdict: 'ready', est_minutes: 10.6, missing: '捲簾快門與螢幕或燈光頻閃條紋的來源；A50 只有一篇摩爾紋研究，缺手機實拍成功／失敗對照的真實紀錄' },
+  P10: { verdict: 'ready', est_minutes: 10.6, missing: '捲簾快門逐行曝光的來源由素材池 P20006（Axis 全域與捲簾快門白皮書）補上，燈光或螢幕頻閃條紋要從它推論，仍需一份直接講頻閃條紋的來源；A50 只有一篇摩爾紋研究，缺手機實拍成功／失敗對照的真實紀錄' },
   P12: { verdict: 'reserve', est_minutes: 7.8, missing: 'qrcode.com 上結構（定位、校正、時序圖形、靜區、遮罩、格式資訊）的逐主張查核；自製 QR 碼在不同等級與遮擋位置的實測紀錄（含失敗例）' },
   P13: { verdict: 'reserve', est_minutes: 7.4, missing: 'GPS 定位幾何、接收機時鐘偏差與第四顆衛星的官方來源（gps.gov 或 USCG NAVCEN）；多路徑、電離層等誤差來源的官方說明；輔助 GPS／網路輔助定位的來源' },
   P16: { verdict: 'reserve', est_minutes: 6.9, missing: '合併審查（2026-11-11）不成立：建議的核心問題『長波怎麼被水深與海岸塑形』，在潮汐這半邊沒有任何現有素材回答：S82 只有兩個 NOAA 頁面，講的是引力差異與三種潮型因地而異，『潮汐也是受海盆控制的長波』那章 NOAA 教學還沒逐主張讀，港口潮位紀錄也沒有。少了這座橋，前半講月亮的引力、後半講海嘯在淺水變高，是兩個問題接在一起，『海嘯不是潮汐』只是一句命名對照，撐不起轉場。只算回答同一核心的事實（潮型因地而異加 S83 單一 JetStream 頁的傳播與淺化）約 9 條，估約 7.3 分；審查的 10.2 分是把引力模型與大小潮（大小潮的來源段落也缺）一起算進去，而且兩個海灣的近岸紀錄缺了，第四章只能靠示意圖重講。要合必須先補港口潮位紀錄與兩灣近岸紀錄，所以現在是後備。' },
@@ -328,6 +328,29 @@ export const MATERIAL_REVIEW = Object.freeze({
   P28: { verdict: 'ready', est_minutes: 8.9, missing: '附條件的馬達與引擎轉矩－轉速曲線來源（企劃寫明沒找到曲線就暫緩）；工程教材對傳動比的說明' },
   P29: { verdict: 'reserve', est_minutes: 6.9, missing: 'TLS 1.3 握手、金鑰交換與完整性的可讀教材來源；憑證機構與信任鏈的官方說明；HTTPS 仍會露出的資訊（網域名稱、SNI）查核' },
   P30: { verdict: 'reserve', est_minutes: 7.8, missing: '左位數與郵購實驗的原文樣本與條件（現有多為書目與摘要）；先送幾格（endowed progress）原文數據未讀；把兩種機制接成同一個決定的研究或情境，避免只是兩個名詞相接' },
+});
+
+// Material from the so-thats-why topic pool (docs/videos/so-thats-why/pool) that a plan may use, named by
+// pool core id and the plan chapter it serves (2026-11-11 pool review, owner: 「企劃改動另開票做」). These are
+// selected pool cores with their own source readings; they support a chapter or fill a gap the plan's material
+// review named, and never count as a new topic or lengthen the plan. catalog.test.mjs checks each id is a
+// selected core in the pool.
+export const POOL_SUPPORT = Object.freeze({
+  P03: [
+    { id: 'I3002', chapter: '進度條到終點了', use: '寫入呼叫成功不等於資料已在持久儲存：寫入可能停在作業系統快取，同步才依序送出（SQLite〈Atomic Commit〉第 2、3.2–3.7 節）；補素材審視列的一般性來源缺口，但主例系統仍要自己的官方說明。' },
+  ],
+  P09: [
+    { id: 'I8006', chapter: '最慢的一段怎麼拖住全程', use: '路由器怎麼分辨正常突發與一直塞住的隊列（RFC 8289 CoDel 觀察一段時間內的最低排隊延遲）；給緩衝模型一個有標準文件的例子，不給設定或速度承諾。' },
+    { id: 'I8007', chapter: '最慢的一段怎麼拖住全程', use: '大檔與短訊息分隊輪流送，短流不必排在大流積壓之後（RFC 8290）；只講機制，不保證每個使用者公平。不補 CDN 缺口。' },
+  ],
+  P10: [
+    { id: 'P20006', chapter: '哪些東西是相機重建的', use: '逐行曝光讓短閃光只照到部分列（Axis 白皮書）；是捲簾快門與條紋的機制來源，燈光或螢幕頻閃仍要直接來源。' },
+    { id: 'P20001', chapter: '哪些東西是相機重建的', use: 'Bayer 陣列各點只量一種顏色，邊緣補值會冒出原本沒有的彩邊（Microsoft Research 去馬賽克論文）；把「相機重建」講具體，不把摩爾紋歸到這個原因。' },
+  ],
+  P26: [
+    { id: 'H3060', chapter: '邊角與反覆載入遇在一起', use: '裂長、外加應力與材料斷裂韌性一起決定裂紋何時快速擴大（UNSW 材料學院教材）；接在應力集中之後，回答「已經有裂紋時何時失控」。不引用公式，不由外觀判斷實物安全。' },
+    { id: 'H3061', chapter: '圓角是不是萬能答案', use: '同樣有缺口，銅先塑性變形、玻璃直接裂（UNSW 教材的銅棒與玻璃棒對照）；把材料放回工程邊界，只作這組對照，不把所有金屬或陶瓷一概分類。' },
+  ],
 });
 
 const budgets = {
@@ -345,6 +368,7 @@ export const plans = rows.map((row) => {
   return {
     ...row, status: 'EPISODE_PLAN_NOT_SCRIPT', production_ready: false,
     ...(MATERIAL_REVIEW[row.id] ? { material: { ...MATERIAL_REVIEW[row.id], reviewed_on: '2026-11-11', review: 'docs/videos/so-thats-why/material-20261111/review.json' } } : {}),
+    ...(POOL_SUPPORT[row.id] ? { pool_support: POOL_SUPPORT[row.id] } : {}),
     target_body_seconds: row.minutes * 60,
     planning_range_seconds: row.range.map((minutes) => minutes * 60),
     estimated_spoken_characters: [Math.round(row.minutes * 3300 / 13), Math.round(row.minutes * 3500 / 13)],
