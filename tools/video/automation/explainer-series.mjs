@@ -62,10 +62,8 @@ curious viewer would ask, answered`,
   synthetic-media disclosure would not cover.`,
   shape: `- Structure (docs/videos/so-thats-why/README.md §一集長什麼樣), in this order. The lengths
   are for the 10-minute target; with another "target_minutes" the condensation and the close keep
-  theirs and the three middle parts scale in the same proportion. The parts together aim at
-  the target, but the material decides the length (owner, 2026-11-11): never pad with repeats,
-  recaps or slow lines to reach it. Write 10 to 13 minutes when the material carries that far;
-  under 8 minutes the owner is warned and decides.
+  theirs and the three middle parts scale in the same proportion. The parts together reach
+  the target and never fall under 8 minutes.
   1. The condensation, ${OPENING_CHAPTER_SECONDS[0]} to ${OPENING_CHAPTER_SECONDS[1]} seconds: the question put the counter-intuitive way
      over the most striking picture, then three or four of the reasons' most surprising facts,
      each over the picture of the chapter that pays it off and left without its why, then the
@@ -109,8 +107,7 @@ it teases, each cut off before its result (「開場濃縮：…」, no later ch
 away); the open loops it plants (「鉤子：<what is held back> → 第 N 章回收」, at least three,
 the condensation's teasers among them); the chapters (one reason each, in
 the order of 原因) with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole
-aimed at "series.target_minutes"; the material decides, never padding, and under 8 minutes the
-owner is warned; over it is fine); each chapter's key
+aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's key
 pictures as "picture: one person doing one thing, and where / camera"; where a number, a timeline
 or a contrast card sits; and the closing (the answer, the comment question and the subscribe
 invitation; never what the next episode is about).
@@ -184,9 +181,8 @@ stands best today each have their place,`,
   shape: `- Structure (owner, 2026-11-05: the ten steps of the series shape rule below, which replace the
   file told in three sections), in this order. The lengths are for the 10-minute target; with
   another "target_minutes" the first chapter and the close keep theirs and the parts between
-  scale in the same proportion. The parts together aim at the target, but the material decides
-  the length (owner, 2026-11-11): never pad with repeats, recaps or slow lines to reach it. Write 10 to 13 minutes
-  when the material carries that far; under 8 minutes the owner is warned and decides.
+  scale in the same proportion. The parts together reach the target and
+  never fall under 8 minutes.
   1. The first chapter, ${STORY_OPENING_CHAPTER_SECONDS[0]} to ${STORY_OPENING_CHAPTER_SECONDS[1]} seconds: the hook and the promise (steps 1 and 2).
      No greeting. The channel intro plays after it.
   2. The era and the origin, about 1.5 minutes (step 3): the year, the place and how things
@@ -286,8 +282,7 @@ at least eight for ten minutes, about one for every 75 seconds of the body, thre
 in the first chapter); then the chapters of the ten steps (the era and the origin, the first rise and
 fall, two to four escalating stages, the biggest turn, the comeback, 「故事還沒結束」, the theme,
 the close), telling every line of 原因 where it falls in time, with estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the
-whole aimed at "series.target_minutes"; the material decides, never padding, and under 8 minutes
-the owner is warned; over it is fine); each chapter's
+whole aimed at "series.target_minutes", never under 8 minutes; over it is fine); each chapter's
 key pictures as "picture: one subject doing one thing, and where / camera" (a number drawn as a
 picture, never a card); and the closing: 「存檔」 when the records settle it, 「未結」 when they do
 not, then the comment question and the subscribe invitation; never what the next file is about.
@@ -327,9 +322,8 @@ export const explainerProfile = (preset) => (Object.hasOwn(EXPLAINER_SERIES_PROF
 
 /** What every stage of a profiled series reads first: the series, the length, the rules. */
 const common = (p) => `
-${p.opening} with a 10-minute production target (or the explicit "target_minutes"; the material
-decides the length and nothing is padded to reach it: there is no minimum, and a body under 8
-minutes, excluding intro/outro, is flagged for the owner) by a
+${p.opening} with a 10-minute production target (or the explicit "target_minutes"; actual narration
+body and finished cut must each be at least 8 minutes, excluding intro/outro from the body) by a
 single narrator in synthesized Taiwanese Mandarin over cute cartoon illustrations drawn by an
 image model, a new picture about every 4 to 7 seconds, ${p.screen ?? `with cards for numbers and contrasts between
 them`} and switchable captions (CC) in four languages; nothing is burned into the picture. There is

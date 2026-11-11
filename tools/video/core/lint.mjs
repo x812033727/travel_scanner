@@ -5,7 +5,7 @@
 // passes one route's check does not fail the other's.
 import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
-import { CONTENT_EPISODE_MINUTES, CONTENT_LENGTH_WARN_MINUTES, curioProblems, curioWarnings, followsContentLength, isCurio, pacingWarnings } from "./curio.mjs";
+import { curioProblems, curioWarnings, isCurio, pacingWarnings } from "./curio.mjs";
 import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isNarratedExplainer, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { DEFAULT_CADENCE, isNarrated, isStorySeries, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
@@ -515,9 +515,7 @@ export function lintVideo(doc, context = {}) {
     else warn("scenes", `${problem} (estimated; the real check runs on the synthesized timeline)`);
   }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
-  // A content-led series (奇聞檔案局, 原來如此事務所) has no floor, so its storytelling is read from five minutes.
-  const contentLength = followsContentLength(doc);
-  const episodeLengthForNarrative = minutes >= (contentLength ? CONTENT_EPISODE_MINUTES : MIN_EPISODE_MINUTES) || isA01CompactStory(doc) || isC08ApprovedShortStory(doc) || isC20ApprovedShortStory(doc);
+  const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc) || isC08ApprovedShortStory(doc) || isC20ApprovedShortStory(doc);
   const opening = chapters[0]?.seconds;
   // A brand story, a 奇聞檔案局 episode and a narrator's explainer are narrated and open on their
   // hook and promise even when their pictures have a cast (such as the series' silent researcher).
@@ -537,16 +535,13 @@ export function lintVideo(doc, context = {}) {
   // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
   // minute and the voice speaks about 300, so a script that clears it here can still come out
   // short: qa's assemble item measures the cut.
-  // 奇聞檔案局 and 原來如此事務所 have no floor (owner, 2026-11-11: length follows the material,
-  // quality first); under eight minutes the owner is warned and decides whether it goes on.
-  const floor = contentLength ? 0 : isC08ApprovedShortStory(doc) ? 4 : isC20ApprovedShortStory(doc) ? 5 : needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
-  if (contentLength && minutes < CONTENT_LENGTH_WARN_MINUTES) warn("scenes", `about ${minutes.toFixed(1)} minutes, under ${CONTENT_LENGTH_WARN_MINUTES} minutes: the owner decides whether it goes on as it is; if the material has more, write it (never pad with pauses, recaps or repeats)`);
+  const floor = isC08ApprovedShortStory(doc) ? 4 : isC20ApprovedShortStory(doc) ? 5 : needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
   if (low < floor) error("target_minutes", `starts at ${low} minutes; every episode but a drama's runs at least ${floor}`);
   if (minutes < floor) error("scenes", `about ${minutes.toFixed(1)} minutes; every episode but a drama's runs at least ${floor}: write more narration`);
   // Where the floor holds it is the only length rule (owner, 2026-10-04): the upper end of
   // target_minutes is what the writer aims at, not a limit, so running over it is not warned. A
   // drama, a brand story and a long anime keep their own lengths on both sides.
-  else if (!contentLength && (minutes < low || (minutes > high && !needsMinimumLength(doc)))) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
+  else if (minutes < low || (minutes > high && !needsMinimumLength(doc))) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
   // The script's shape (episodeScriptProblems) and its storytelling (core/narrative.mjs) are read
   // on an episode: a narrated zh-TW video (slides, an explainer, a brand story; isNarrated) of
   // MIN_EPISODE_MINUTES or more, or the exact A01 compact story at any draft estimate. The
