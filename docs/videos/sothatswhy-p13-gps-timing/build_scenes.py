@@ -310,7 +310,7 @@ obj("two-whistles", "Close-up of two whistles lying side by side on a wooden par
     c("比一比兩聲差多少，就知道路上被拖了多久，"),
     c("電離層的效應，可以去掉九成九以上。", None, "P:iono"))
 kid("kid-slow-q", K("holding a small phone up and tapping it impatiently with a bored pout", where=CORNER),
-    k("那為什麼地圖剛打開，", "抱怨"), k("藍點要等很久才出來？", "章尾停住，句尾上揚", "S:slow"))
+    k("還有，為什麼地圖剛打開，", "抱怨"), k("藍點要等很久才出來？", "章尾停住，句尾上揚", "S:slow"))
 
 # ---------- 第四章：等很久、飄來飄去，還是地圖畫錯？ ----------
 chief("chief-almanac", C("holding up two fingers with a calm explaining smile", close=True),
@@ -336,7 +336,7 @@ chief("chief-canyon", C("holding a small phone up and looking at it with a patie
       c("手上已經有精確的衛星位置，叫熱開機，不用再等廣播。"),
       c("在大樓中間，訊號斷斷續續，等待還會更久。", None, "P:slow"))
 kid("kid-assist-q", K("holding a small phone up proudly with a bright grin", where=CORNER),
-    k("可是我的手機，", "不服氣"), k("一打開就有藍點耶！", None, "S:assist"))
+    k("可是有時候，", "不服氣"), k("一打開就有藍點耶！", None, "S:assist"))
 obj("cell-tower", "Wide shot of a tall slim grey cell tower with small antennas on a green hill under a bright blue sky, a sunny city of tall glass buildings below",
     c("那多半是輔助 GPS。手機透過行動網路，"),
     c("先拿到衛星的位置和鐘差，"),
