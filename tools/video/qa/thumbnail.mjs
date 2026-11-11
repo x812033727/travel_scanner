@@ -47,9 +47,10 @@ export const HEADLINE = {
   tolerance: 0.215,
 };
 // A series' thumbnail (templates.mjs THUMB_SERIES) keeps the full-width column: `.thumb` less
-// its left padding (72) and `.thumb.series`'s right padding (340), three lines high, at the
-// series' own headline size (SERIES_THUMB_HEADLINE, 150 px since the 2026-11-11 bright look).
-export const HEADLINE_SERIES = { ...HEADLINE, ...SERIES_THUMB_HEADLINE, maxHeight: 460, width: THUMB_SIZE.width - 72 - 340 };
+// its left padding (72) and `.thumb.series`'s right padding (340), two lines high (the stamp and
+// the series' name hold the bottom), at the series' own headline size (SERIES_THUMB_HEADLINE,
+// 150 px since the 2026-11-11 bright look).
+export const HEADLINE_SERIES = { ...HEADLINE, fontSize: SERIES_THUMB_HEADLINE.fontSize, lineHeight: SERIES_THUMB_HEADLINE.lineHeight, maxHeight: SERIES_THUMB_HEADLINE.maxHeight, width: THUMB_SIZE.width - 72 - 340 };
 // The drama layout (templates.mjs THUMB_DRAMA_LAYOUT): the headline runs across the frame in the
 // bottom third, two lines at most; drama-craft.md asks for 4–8 characters.
 export const HEADLINE_DRAMA = {

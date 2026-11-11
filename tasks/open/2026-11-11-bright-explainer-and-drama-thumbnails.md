@@ -77,5 +77,12 @@ Render any 種田 or 祖媽 episode and any `sothatswhy-` episode and look at `t
   10+ days stale (2026-10-14 to 2026-11-01) with no activity.
 - Layout and CSS are not in the visual hash, so approved storyboards and cuts stay valid; the
   thumbnail key follows the HTML, so the next render redraws the thumbnail in the new look.
+- Second pass (edge cases rendered through the real renderer): the stamp at the column's top
+  right covered a 5-character first line, every English headline, and the picture under
+  `subject: "right"`, so it moved beside the series' name at the bottom left (112 px); the column
+  keeps 160 px clear at the bottom, the headline box is two lines (330 px, `SERIES_THUMB_HEADLINE`),
+  and the sub line stays on one line (fitText shrinks it) — before, a two-line sub plate ran into
+  the series' name and the renderer reported it. Drama headlines use `text-wrap: balance`, so seven
+  characters break 3+4, not 5+2.
 - 種田 e003's chosen keyframe has a calm face; the look needs the most expressive shot — pick
   `data.shot` for the face, not the scene.

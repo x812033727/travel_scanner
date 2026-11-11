@@ -662,7 +662,7 @@ export const THUMB_SERIES = {
   sothatswhy: { brand: "原來如此事務所", stamp: ["原來", "如此"], headlineMax: 10, headlineLines: 2 },
 };
 /** So That's Why's headline as THUMB_SERIES_CSS sets it (2026-11-11); qa/thumbnail.mjs measures with the same numbers. */
-export const SERIES_THUMB_HEADLINE = { fontSize: 150, lineHeight: 1.08 };
+export const SERIES_THUMB_HEADLINE = { fontSize: 150, lineHeight: 1.08, maxHeight: 330, bottom: 160 };
 export const THUMB_PILLARS = ["business", "science", "travel", "tech"];
 /** A series' thumbnail keeps the full-width text column and may mirror it (the stamp follows). */
 export const THUMB_SERIES_LAYOUTS = ["left", "right"];
@@ -989,14 +989,19 @@ const THUMB_SERIES_CSS = {
     ".thumb em{color:#e8b64c;-webkit-text-stroke:14px #1f2a44;paint-order:stroke fill}" +
     ".thumb .sub{align-self:flex-start;color:#fff;background:#1f2a44;font-size:56px;font-weight:900;padding:12px 28px;border-radius:14px;max-height:none}" +
     ".thumb .brand{color:#1f2a44;letter-spacing:.12em}" +
+    // The stamp sits beside the series' name at the bottom left (2026-11-11): at the top right of
+    // the column it covered a first line of five characters or an English headline, and the
+    // picture when `subject` narrows it to the right. The column keeps clear of the two.
+    `.thumb.series{padding-bottom:${SERIES_THUMB_HEADLINE.bottom}px;gap:20px}.thumb.series h1{max-height:${SERIES_THUMB_HEADLINE.maxHeight}px}` +
+    ".thumb.series .sub{white-space:nowrap}" +
     ".thumb-stamp{background:rgba(255,255,255,.35)}" +
     ".thumb .tag{background:#e8b64c;color:#1f2a44}" +
     ".thumb .tag.pillar-science{background:#f6efe3;color:#1f2a44}" +
     ".thumb .tag.pillar-travel{background:#1f2a44;color:#e8b64c;box-shadow:inset 0 0 0 3px #e8b64c}" +
     ".thumb .tag.pillar-tech{background:#1f2a44;color:#f6efe3;box-shadow:inset 0 0 0 3px #f6efe3}" +
-    ".thumb-stamp{position:absolute;left:785px;top:75px;width:150px;height:150px;transform:rotate(-8deg);border:9px solid #d8452f;border-radius:10px;" +
-    "color:#d8452f;opacity:.9;display:grid;grid-template-rows:1fr 1fr;place-items:center;font-size:52px;font-weight:900;line-height:1;letter-spacing:.04em}" +
-    ".thumb.layout-right~.thumb-stamp{left:auto;right:785px}",
+    ".thumb-stamp{position:absolute;left:340px;bottom:26px;width:112px;height:112px;transform:rotate(-8deg);border:7px solid #d8452f;border-radius:8px;" +
+    "color:#d8452f;opacity:.92;display:grid;grid-template-rows:1fr 1fr;place-items:center;font-size:38px;font-weight:900;line-height:1;letter-spacing:.04em}" +
+    ".thumb.layout-right~.thumb-stamp{left:auto;right:340px}",
 };
 // The text column on the right and the scrim mirrored, for a picture whose subject is on the left.
 const THUMB_RIGHT_CSS =
@@ -1030,7 +1035,7 @@ const THUMB_DRAMA_CSS =
   '.thumb-subject.layout-f::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.8) 100%)}' +
   `.thumb.column.layout-f{right:0;padding:48px ${DRAMA_THUMB_HEADLINE.right}px 70px ${DRAMA_THUMB_HEADLINE.left}px;justify-content:flex-end;gap:10px}` +
   ".thumb.column.layout-f .tag{position:absolute;left:0;top:44px;border-radius:0;padding:12px 30px 12px 48px;background:var(--drama);color:#fff;font-size:44px;font-weight:900;letter-spacing:.04em;box-shadow:0 6px 18px rgba(0,0,0,.35)}" +
-  `.thumb.column.layout-f h1{color:#ffd400;font-size:${DRAMA_THUMB_HEADLINE.fontSize}px;line-height:${DRAMA_THUMB_HEADLINE.lineHeight};max-height:${Math.round(DRAMA_THUMB_HEADLINE.fontSize * DRAMA_THUMB_HEADLINE.lineHeight * DRAMA_THUMB_HEADLINE.maxLines)}px;letter-spacing:.02em;-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 10px 24px rgba(0,0,0,.5)}` +
+  `.thumb.column.layout-f h1{color:#ffd400;font-size:${DRAMA_THUMB_HEADLINE.fontSize}px;line-height:${DRAMA_THUMB_HEADLINE.lineHeight};max-height:${Math.round(DRAMA_THUMB_HEADLINE.fontSize * DRAMA_THUMB_HEADLINE.lineHeight * DRAMA_THUMB_HEADLINE.maxLines)}px;letter-spacing:.02em;text-wrap:balance;-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 10px 24px rgba(0,0,0,.5)}` +
   ".thumb.column.layout-f .sub{color:#fff;font-size:64px;font-weight:900;max-height:90px;-webkit-text-stroke:10px #000;paint-order:stroke fill}" +
   ".thumb.column.layout-f .brand{left:auto;right:40px;top:48px;bottom:auto;font-size:28px;letter-spacing:.12em;color:rgba(255,255,255,.9);text-shadow:0 2px 8px rgba(0,0,0,.6)}";
 

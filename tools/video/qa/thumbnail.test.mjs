@@ -9,7 +9,7 @@ import { thumbnailSourceHash } from "../core/translations.mjs";
 import { THUMBNAIL_MAX_BYTES } from "../render/cli.mjs";
 import { thumbnailItem } from "./cli.mjs";
 import { THEME_FILE } from "../render/plan.mjs";
-import { THUMB_HEADLINE_MAX } from "../templates/templates.mjs";
+import { thumbnailHtml, THUMB_HEADLINE_MAX } from "../templates/templates.mjs";
 import { jpegBytes, pngBytes } from "./test-images.mjs";
 import { atPhoneWidth, CHANNEL_RULES_LOCALE, HEADLINE, HEADLINE_SERIES, headlineLayout, headlineRule, headlineSizeEstimate, headlineSplitWords, headlineTokens, imageSize, MAX_BYTES, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, thumbnailChecks, TITLE_HEAD_CHARS, titleOverlap } from "./thumbnail.mjs";
 
@@ -86,7 +86,11 @@ test("the numbers the estimate rests on are the theme's and the renderer's", () 
   const h1 = /\.thumb h1 \{([^}]*)\}/.exec(theme)[1];
   assert.match(h1, new RegExp(`font-size: ${HEADLINE.fontSize}px`));
   assert.match(h1, new RegExp(`line-height: ${HEADLINE.lineHeight}\\b`));
-  assert.match(h1, new RegExp(`max-height: ${HEADLINE_SERIES.maxHeight}px`));
+  assert.match(h1, /max-height: 460px/, "the theme's own box, which the series no longer uses");
+  // The series' box is its own CSS since the 2026-11-11 bright look: two lines above the stamp.
+  const series = thumbnailHtml({ template: "thumb", data: { headline: "x" } }, { series: "sothatswhy" });
+  assert.match(series, new RegExp(`\\.thumb\\.series h1\\{max-height:${HEADLINE_SERIES.maxHeight}px\\}`));
+  assert.match(series, new RegExp(`\\.thumb h1\\{color:#1f2a44;font-size:${HEADLINE_SERIES.fontSize}px;line-height:${HEADLINE_SERIES.lineHeight};`));
   assert.match(theme, /\.thumb \{ position: absolute; inset: 0; padding: 64px 72px;/);
   assert.match(theme, /\.thumb\.series \{ padding-right: 340px; \}/);
   assert.equal(HEADLINE_SERIES.width, 1280 - 72 - 340);
