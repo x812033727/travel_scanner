@@ -347,7 +347,9 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                                   # 第 6 集審稿（2026-11-10）：托盤、紫砂小壺與三只白瓷小茶杯每鏡同一套，附道具圖
                                   (r"purple-clay teapot", "prop-zisha-tuopan-t1.png", "tray with the purple-clay teapot and teacups"),
                                   # 第 7 集審稿（2026-11-10）：林美鳳抖開的壽衣要跟第 1–3 集一樣（立領、側邊盤扣、不是 V 領）
-                                  (r"burial (?:robe|clothes|garment)", "prop-shouyi-t1.png", "burial robe")):
+                                  (r"burial (?:robe|clothes|garment)", "prop-shouyi-t1.png", "burial robe"),
+                                  # 第 7 集實拍（2026-11-11）：小滿的書包每鏡畫成不同的包（托特包、黑提袋、翻蓋包），第 8 集起附同一張道具圖
+                                  (r"flap school bag", "prop-shubao-t1.png", "flap school bag")):
                 if re.search(rx, e["prompt"], re.I) and len(images) < 4:
                     images.append(find_ref(refs, [ref], (1024, 1024), args.placeholders, missing))
                     lamp_text += f" The {name} looks exactly as in <Picture {len(images)}>."
