@@ -303,6 +303,33 @@ const rows = [
   },
 ];
 
+// The 2026-11-11 material review of the plans not yet made (docs/videos/so-thats-why/material-20261111/README.md),
+// approved by the owner the same day: the eight-minute floor stays, and a plan whose material would need padding
+// waits (reserve) or waits to be merged (merge) instead of getting a brief. est_minutes is the reviewer's estimate
+// of non-repeating lines at 4.5 characters a second, not a test read; a ready plan's `missing` names sources
+// its own rules require before writing.
+export const MATERIAL_REVIEW = Object.freeze({
+  P01: { verdict: 'ready', est_minutes: 10.7, missing: 'S78 只有 DOE 與 ENERGY STAR 兩個概論頁，缺鍋底材質、複合鍋底與爐面受熱的逐主張查核；A68、A45 的舊查核需依當期版本（ISO/IEC 14443、Qi／Qi2、Apple 支援頁）重讀' },
+  P03: { verdict: 'ready', est_minutes: 9.4, missing: '缺應用程式回報「完成」與作業系統實際寫入（快取刷新）之間差別的一般性官方來源，現有只有 Windows 移除政策與 Apple 退出說明；NIST SP 800-88 Rev. 2、Windows／macOS TRIM 預設需撰稿當日重查' },
+  P04: { verdict: 'reserve', est_minutes: 8.3, missing: 'S80 只有 NASA〈What is microgravity〉一頁的題級閱讀，無逐主張查核；缺第二個有條件說明的微重力燃燒實驗（例如太空站燃燒研究的具體結果）；缺軌道高度重力仍約九成等數值的當期核對' },
+  P09: { verdict: 'ready', est_minutes: 10.6, missing: 'CDN 與邊緣快取的官方說明（決定第二章能否成立）；端到端吞吐量由最慢一段決定的教材來源；A10 的海纜數字（TeleGeography 99%、台灣海纜數）需當期重查' },
+  P10: { verdict: 'ready', est_minutes: 10.6, missing: '捲簾快門與螢幕或燈光頻閃條紋的來源；A50 只有一篇摩爾紋研究，缺手機實拍成功／失敗對照的真實紀錄' },
+  P12: { verdict: 'reserve', est_minutes: 7.8, missing: 'qrcode.com 上結構（定位、校正、時序圖形、靜區、遮罩、格式資訊）的逐主張查核；自製 QR 碼在不同等級與遮擋位置的實測紀錄（含失敗例）' },
+  P13: { verdict: 'reserve', est_minutes: 7.4, missing: 'GPS 定位幾何、接收機時鐘偏差與第四顆衛星的官方來源（gps.gov 或 USCG NAVCEN）；多路徑、電離層等誤差來源的官方說明；輔助 GPS／網路輔助定位的來源' },
+  P16: { verdict: 'merge', est_minutes: 6.9, missing: '選定港口的 NOAA 潮位站紀錄（日潮、半日潮、混合潮各一）；NOAA 潮汐教學其他章節（潮汐是長週期波、海盆影響）的逐主張閱讀；大小潮的來源段落', merge_with: ['P24'] },
+  P19: { verdict: 'reserve', est_minutes: 5.7, missing: '聲學教材或學術來源（主動噪音控制、相位抵消、延遲限制）；非單一品牌的頻率效果資料或受控實測；被動隔音的來源' },
+  P20: { verdict: 'ready', est_minutes: 9.1, missing: '尖端與間隙局部場增強的物理教材示意來源（現有查核說「尖端容易冒火」，但沒有教材級的場分布說明）；製造商使用說明需指定一組機型' },
+  P21: { verdict: 'ready', est_minutes: 10.0, missing: '視覺誘發暈動（車內看螢幕、模擬器）的權威醫學或研究來源；醫學來源需撰稿當期重查（NHS、CDC 等版本）' },
+  P22: { verdict: 'reserve', est_minutes: 5.6, missing: '硬水與肥皂（皂垢）對照的化學教材來源；界面張力、乳化與分散的教材來源；第二個轉折（目前只有「清水不是完全沒用」一個修正）' },
+  P24: { verdict: 'merge', est_minutes: 6.3, missing: '兩個海灣或事件的官方近岸紀錄（逐數值核對）；NOAA 以外第二個傳播來源（例如 NOAA 海嘯中心或 UNESCO 教材）；S83 逐主張查核', merge_with: ['P16'] },
+  P25: { verdict: 'ready', est_minutes: 11.3, missing: '500 系退役時程、N700ST 上線計畫需撰稿當日重查；鼻長數字需逐一對到車型（N700S 鼻長無一手出處）' },
+  P26: { verdict: 'ready', est_minutes: 9.1, missing: '客艙加壓與壓差數值的工程教材或主管機關來源；彗星號以外的現代窗戶設計與檢查資料（第四章的材料與製造邊界）' },
+  P27: { verdict: 'reserve', est_minutes: 6.9, missing: '授權、清算、結算各步驟的卡組織或銀行官方流程說明；取消、退款與爭議款的官方流程；指定一個制度（例如台灣收單）的來源，避免泛化' },
+  P28: { verdict: 'ready', est_minutes: 8.9, missing: '附條件的馬達與引擎轉矩－轉速曲線來源（企劃寫明沒找到曲線就暫緩）；工程教材對傳動比的說明' },
+  P29: { verdict: 'reserve', est_minutes: 6.9, missing: 'TLS 1.3 握手、金鑰交換與完整性的可讀教材來源；憑證機構與信任鏈的官方說明；HTTPS 仍會露出的資訊（網域名稱、SNI）查核' },
+  P30: { verdict: 'reserve', est_minutes: 7.8, missing: '左位數與郵購實驗的原文樣本與條件（現有多為書目與摘要）；先送幾格（endowed progress）原文數據未讀；把兩種機制接成同一個決定的研究或情境，避免只是兩個名詞相接' },
+});
+
 const budgets = {
   9: [45, 90, 125, 120, 125, 35],
   11: [45, 125, 150, 155, 150, 35],
@@ -317,6 +344,7 @@ export const plans = rows.map((row) => {
   const durations = budgets[row.minutes];
   return {
     ...row, status: 'EPISODE_PLAN_NOT_SCRIPT', production_ready: false,
+    ...(MATERIAL_REVIEW[row.id] ? { material: { ...MATERIAL_REVIEW[row.id], reviewed_on: '2026-11-11', review: 'docs/videos/so-thats-why/material-20261111/review.json' } } : {}),
     target_body_seconds: row.minutes * 60,
     planning_range_seconds: row.range.map((minutes) => minutes * 60),
     estimated_spoken_characters: [Math.round(row.minutes * 3300 / 13), Math.round(row.minutes * 3500 / 13)],
