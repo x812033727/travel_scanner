@@ -109,7 +109,7 @@ test('pool support names selected pool cores and a chapter of its own plan, and 
   const pool = JSON.parse(readFileSync(path.join(ROOT, 'docs/videos/so-thats-why/pool/pool.json'), 'utf8'));
   const selected = new Set(pool.candidates.filter((row) => row.selected).map((row) => row.id));
   const supported = program.plans.filter((plan) => plan.pool_support?.length);
-  assert.deepEqual(supported.map((plan) => plan.id), ['P03', 'P04', 'P09', 'P10', 'P12', 'P26']);
+  assert.deepEqual(supported.map((plan) => plan.id), ['P03', 'P04', 'P09', 'P10', 'P12', 'P13', 'P26', 'P29']);
   for (const plan of supported) {
     for (const item of plan.pool_support) {
       assert.ok(selected.has(item.id), `${plan.id}: ${item.id} must be a selected core in the so-thats-why pool`);
