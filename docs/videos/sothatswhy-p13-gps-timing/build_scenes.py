@@ -293,22 +293,19 @@ chief("chief-echo-where", C("holding a small phone close to a pale wall with a t
       c("歐洲太空總署的導航教材說，"),
       c("主要是因為天線太靠近會反射的東西；"),
       c("從很低的地方斜斜進來的衛星，影響最大。"))
-kid("kid-iono-q", K("pointing high up at the sky with a curious face", where=PARK),
-    k("那天上那段路呢？", "追問"), k("也會走歪嗎？", "句尾上揚", "S:iono"))
+kid("kid-iono-q", K("pointing high up at the sky with a suspicious frown", where=PARK),
+    k("會不會是天上那段路，", "猜"), k("把我的藍點弄歪？", "句尾上揚", "S:iono"))
 obj("haze-sky", "Wide shot of a bright blue sky with a soft shimmering band of pale violet haze high above the white clouds, " + SAT.replace("one cute", "a cute").replace(" floating high in a deep blue sky above soft white clouds", "") + " above the haze",
-    c("會。訊號要穿過高空一層叫電離層的地方，"),
-    c("在那裡會被拖慢。"),
-    c("衛星用不同的頻率送訊號，就像哨子有高音和低音。"))
-chief("chief-guess-model", C("shrugging with both palms up and an honest smile"),
-      c("只聽一個頻率的話，只能靠預先估好的修正去猜，"),
-      c("這個效應可以到幾十公尺。"))
-chief("chief-model-half", C("holding her hand flat and lowering it halfway with an honest smile", close=True),
-      c("衛星廣播的修正，估計全世界平均約修掉一半。"),
-      c("可是拖慢多少，跟頻率有關。同時聽兩個頻率，"))
+    c("天上會拖慢訊號：高空有一層叫電離層的地方。", "接住上一句"),
+    c("只聽一個頻率，就像只聽一種音高，這個效應可以到幾十公尺。"))
+chief("chief-model-half", C("sweeping one flat hand slowly and evenly across in front of her with a calm smile", close=True),
+      c("可是它是整片天空慢慢變，不會在兩棟大樓之間突然跳。"),
+      c("衛星廣播的修正，估計全世界平均約修掉一半；"))
 obj("two-whistles", "Close-up of two whistles lying side by side on a wooden park bench in sunshine, one big silver whistle and one small golden whistle, each on a red cord",
-    c("就像同一個朋友，吹高低兩支哨子；"),
-    c("比一比兩聲差多少，就知道路上被拖了多久，"),
-    c("電離層的效應，可以去掉九成九以上。", None, "P:iono"))
+    c("同時聽高低兩個頻率，就像比一比兩支哨子，"),
+    c("電離層的效應，可以去掉九成九以上。"))
+kid("kid-towers-back", K("looking up at the tall glass towers beside her with a knowing little nod", where=STREET),
+    c("所以把你甩到對街的，不是天上，是旁邊那些大樓。", None, "P:iono"))
 kid("kid-slow-q", K("holding a small phone up and tapping it impatiently with a bored pout", where=CORNER),
     k("還有我重開地圖那次，", "抱怨"), k("藍點怎麼等那麼久？", "章尾停住，句尾上揚", "S:slow"))
 
@@ -355,6 +352,9 @@ chief("chief-800", C("spreading her arms wide apart with a serious amazed face")
 chief("chief-fifth", C("counting on her fingers with an encouraging smile", close=True),
       c("對。所以有些手機把現在是哪一刻，也當成要算的答案。"),
       c("這是第五個不知道的數，要至少五顆衛星。", None, "P:cost"))
+obj("corner-phone", "Close-up of a child's small hand holding " + PHONE + " at a sunny street corner, tall smooth glass towers rising behind",
+    c("你在街角一打開就看到的藍點，可能就是這樣算出來的。"),
+    k("難怪它有時候一下就出來！", "恍然"))
 kid("kid-final-q", K("standing still and looking up from a small phone with a thinking face", where=STREET),
     k("所以我的藍點跳到對街，", "推理"), k("到底是怎麼回事？", "章尾停住，句尾上揚"))
 

@@ -38,9 +38,9 @@
 
 ## C03 哨子遊戲【示意，撰稿自己的比喻】【理想示意】
 
-- **可用說法**：p030–p032、p057（「哨子報的時間」）、p077–p084、p129–p130、p138、p143–p145、p154、p169
+- **可用說法**：p030–p032、p057（「哨子報的時間」）、p077–p084、p129–p130、p137（「就像只聽一種音高」）、p140、p154、p169
 - **來源**：比喻本身不是主張；對應 [7] 的「時間差算距離」。
-- **限度**：真的 GPS 訊號是無線電，跑得跟光一樣快（C05）；高低兩支哨子（p138、p143）只借來想像「兩個頻率被拖慢的程度不同」，空氣裡的聲音並不會這樣（C12）。
+- **限度**：真的 GPS 訊號是無線電，跑得跟光一樣快（C05）；高低兩支哨子（p137、p140）只借來想像「兩個頻率被拖慢的程度不同」，空氣裡的聲音並不會這樣（C12）。
   公園是平面，三個朋友就夠算「東西、南北＋錶差」；所以第四顆衛星那段明說「換回衛星：東西、南北、高低，再加上錶差多少」（p085–p086），不說四個朋友。
 
 ## C04 衛星帶原子鐘，訊號裡寫著發射時刻；大約兩萬公里高；訊號通常走 60–90 毫秒【官方說明＋研究文獻】
@@ -126,16 +126,17 @@
 - **來源**：[1]、[10]
 - **原文**：GPS.gov [1]：「Signals reflected off buildings or walls ("multipath")」列為常見原因。
   Navipedia [10]：「The interference by multipath is generated when a signal arrives, by different ways, at the antenna … Its principal cause is the antenna closeness to the reflecting structures, and it is important when the signal comes from the satellite with low elevation.」
-- **注意**：Navipedia 說碼量測的多路徑「Typically, it is less than 2 or 3 meters」、超過 15 公尺很難觀察；片中**沒有**念這兩個數字，也沒有說多路徑單獨就會把人放到對街（收尾 p183–p184 小問只說「訊號撞牆晚到一點點，手機就把我算到對街了」，是她自己的經驗；舊版收尾把遮擋、反彈與時間合在一起說）。
+- **注意**：Navipedia 說碼量測的多路徑「Typically, it is less than 2 or 3 meters」、超過 15 公尺很難觀察；片中**沒有**念這兩個數字，也沒有說多路徑單獨就會把人放到對街（收尾 p182–p183 小問只說「訊號撞牆晚到一點點，手機就把我算到對街了」，是她自己的經驗；舊版收尾把遮擋、反彈與時間合在一起說）。
   「繞了遠路才到 → 以為比較遠」對應 [10] 的「arrives, by different ways」。
 
 ## C14 電離層延遲；單頻只能用模型、效應可達幾十公尺；廣播模型約修一半；延遲與頻率有關，雙頻可去掉 99.9% 以上【教材】
 
-- **可用說法**：p134–p145。p138「衛星用不同的頻率送訊號，就像哨子有高音和低音」是「頻率」第一次出現時的說明：GPS.gov [1]「two GPS radio frequencies: L1 and L2」「a third civil signal at the L5 frequency」；高音低音是**比喻**。片中不再說「接收機」，改說「只聽一個頻率的話」（p139）
+- **可用說法**：p134–p142。第七輪（盲評 no_detour）改成小問的錯猜「會不會是天上那段路，把我的藍點弄歪？」，所長幾句排除後交回大樓：p136 電離層拖慢訊號；p137「只聽一個頻率，就像只聽一種音高，這個效應可以到幾十公尺」（「頻率」第一次出現時用音高說明：GPS.gov [1]「two GPS radio frequencies: L1 and L2」「a third civil signal at the L5 frequency」）；p138「可是它是整片天空慢慢變，不會在兩棟大樓之間突然跳」；p139 廣播修正估計約修一半；p140–p141 雙頻（高低兩支哨子）去掉九成九以上；p142「所以把你甩到對街的，不是天上，是旁邊那些大樓」。片中不說「接收機」
 - **來源**：[11]、[12]
 - **原文**：Navipedia [11]：「As the ionosphere is a dispersive media, the GNSS signals refraction depends on its frequencies (as the squared inverse). This dependence on the signal frequency allows us to remove its effect up to more than 99.9% using two frequency measurements … But, single frequency receivers have to apply an ionospheric prediction model to remove (as much as possible) this effect, that can reach up to several teens of meters」。
   Navipedia [12]：「GPS satellites broadcast the parameters of the Klobuchar ionospheric model for single frequency users … estimated to reduce about the 50% RMS ionospheric range error worldwide.」
-- **注意**：照素材審視：「可達數十公尺」是**效應本身**，不是修正後的殘差（p139–p140 這樣說）；p141 的「估計」照查核 F 系列附註。「全世界平均大約修掉一半」＝50% RMS 的估計，**簡化**。高低兩支哨子是**示意**（C03）。
+- **注意**：照素材審視：「可達數十公尺」是**效應本身**，不是修正後的殘差（p137 這樣說）；p139 的「估計」照查核 F 系列附註。「全世界平均大約修掉一半」＝50% RMS 的估計，**簡化**。高低兩支哨子是**示意**（C03）。
+  p138「整片天空慢慢變，不會在兩棟大樓之間突然跳」是**撰稿推論**：Navipedia [11] 說電離層是高空的一層（約 60 到 2,000 多公里），[12] 的廣播模型把它當成 350 公里高的薄層、白天照半餘弦平滑變化；兩棟大樓之間相隔幾十公尺，訊號穿過的是同一片電離層。來源沒有直接寫「不會在大樓之間跳」。p142 是由此與 C10、C13 得出的結論，同樣是**撰稿推論**。
   片中**沒有**說「多數手機只收一個頻率」：那句只在典藏頁，而且現在已有雙頻手機。
 
 ## C15 政府沒有故意讓民用的變差，2000 年停了；訊號本身變差的話會到處都偏，不會專挑大樓中間【官方說明（現行頁）＋撰稿推論】
@@ -162,16 +163,16 @@
 
 ## C17 位置還需要衛星在哪、鐘差多少，寫在廣播電文裡；每秒 50 位元；一整框 30 秒重複；收齊前三段最久約 36 秒【官方規格＋研究文獻】
 
-- **可用說法**：p146–p159。p156「鐘差跟衛星在哪，放在每一輪最前面的三段」交代了「三段」是什麼（Subframe 1 鐘差、2–3 星曆），p157 才說「傳統的做法要聽完這三段」；片中不說「接收機」
+- **可用說法**：p143–p156。p153「鐘差跟衛星在哪，放在每一輪最前面的三段」交代了「三段」是什麼（Subframe 1 鐘差、2–3 星曆），p154 才說「傳統的做法要聽完這三段」；片中不說「接收機」
 - **來源**：[6]、[14]、[7]
 - **原文**：SPS PS [6] §2.2：「the LNAV data also clocked at 50 bps」；Fig. 2.2-1：Subframe 1「Satellite Clock Correction Terms」、Subframe 2–3「Ephemeris Parameters」、「Frame (30 sec repeat)」。
   Blay et al. [14] §2：「Conventional GNSS receivers need to receive the data from the first three subframes of the 30 second navigation frame to solve for time and position. For the GPS L1 C/A signal, it can take as long as 36 seconds」。
   FAA [7]：「The signal contains data that a receiver uses to compute the locations of the satellites」。
-- **注意**：「位元＝資料裡最小的一格，只能是或不是」是一般定義（p154），不另外引用。「一個字一個字慢慢念」是**比喻**。只講 GPS L1 C/A 的舊電文，不講其他系統。
+- **注意**：「位元＝資料裡最小的一格，只能是或不是」是一般定義（p151），不另外引用。「一個字一個字慢慢念」是**比喻**。只講 GPS L1 C/A 的舊電文，不講其他系統。
 
 ## C18 冷開機要找遍天空；已有精確衛星位置（熱開機）不用再等；都市峽谷訊號斷續，等更久【教材】
 
-- **可用說法**：p160–p163
+- **可用說法**：p157–p160
 - **來源**：[13]
 - **原文**：Navipedia [13]：「in case the receiver already has a valid navigation message, it does not need to decode it」；「Cold start: … no information is available at the receiver and therefore the receiver entails a full search of the sky」；
   「Hot start: … the receiver has both accurate ephemeris and information on frequency offset as well as an accurate initial solution」；「in harsh environments, such as urban canyons, the signals may suffer interruptions or even obstruction blocking the TTFF process」。
@@ -179,14 +180,14 @@
 
 ## C19 輔助 GPS：手機透過行動網路先拿到衛星位置與鐘差；只要幾毫秒的訊號就能定位【研究文獻】【接收機實際做法】
 
-- **可用說法**：p164–p169
+- **可用說法**：p161–p166
 - **來源**：[14]
 - **原文**：Blay et al. [14] §2：「With the A-GNSS technique, receivers can solve for position with only milliseconds of IF data, receiving the navigation data message via an alternate source … the precise orbital and clock parameters, also known as the assistance data … For the mobile phone, this data is typically provided through the cellular network using the Secure User Plane Location (SUPL) protocol」。
-- **注意**：「typically」→ 片中說「手機透過行動網路」，沒說每支手機都這樣；SUPL 不念。p169「有人先把每個朋友站在哪傳訊息給你」是**比喻**。
+- **注意**：「typically」→ 片中說「手機透過行動網路」，沒說每支手機都這樣；SUPL 不念。p166「有人先把每個朋友站在哪傳訊息給你」是**比喻**。
 
 ## C20 代價：沒有從電文讀到精確時間；衛星在動，時間錯 → 算出的衛星位置錯；每差一秒距離錯約 800 公尺；把時間當第五個未知數，要至少五顆衛星【研究回顧】
 
-- **可用說法**：p170–p178
+- **可用說法**：p167–p175
 - **來源**：[14]
 - **原文**：Blay et al. [14] §2.1：「the problem is that the time is in error, so the normal four-state least squares algorithm can not solve for the receiver position and common bias … For each one second of error, the pseudoranges would be incorrect on the order of 800 m (Van Diggelen, 2009). There is hope though, as we know the velocities of the satellites, and thus the pseudorange rate.」
   「Since there are now five columns of the H matrix, there now must be at least five satellites to solve for δx.」
@@ -196,12 +197,12 @@
 
 ## C21 （第三輪刪除）藍點對了導航還帶錯路
 
-盲評 no_detour：跟「藍點為什麼跳」無關，整段（舊 p177–p180）與 loop `map` 一起刪掉。GPS.gov [1] 的地圖錯誤一段片中已不用。
+盲評 no_detour：跟「藍點為什麼跳」無關，整段（舊 p174–p179）與 loop `map` 一起刪掉。GPS.gov [1] 的地圖錯誤一段片中已不用。
 
 ## C22 收尾：小問的答案、所長的意見【回收，意見標成意見】
 
-- **可用說法**：p181–p186。p185–p186「說得好。還記得那支慢一秒的錶嗎？我覺得最神奇的是：手機每次定位，都在幫自己對錶。」是所長的**意見**，內容對應 C07（每次解算都把鐘差當未知數）。
-  p183–p184「訊號撞牆晚到一點點，手機就把我算到對街了」是小問把多路徑（繞遠路＝量到的時間變長，C13）說成自己的話；第二輪拿掉了逐條回顧（哨子、第四顆、被擋）。
+- **可用說法**：p180–p185。p184–p185「說得好。還記得那支慢一秒的錶嗎？我覺得最神奇的是：手機每次定位，都在幫自己對錶。」是所長的**意見**，內容對應 C07（每次解算都把鐘差當未知數）。
+  p182–p183「訊號撞牆晚到一點點，手機就把我算到對街了」是小問把多路徑（繞遠路＝量到的時間變長，C13）說成自己的話；第二輪拿掉了逐條回顧（哨子、第四顆、被擋）。
 
 ## 來源
 

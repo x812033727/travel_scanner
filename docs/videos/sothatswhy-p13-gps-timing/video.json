@@ -63,7 +63,7 @@
  "loops": [
   {
    "setup": "p004",
-   "payoff": "p184",
+   "payoff": "p183",
    "what": "藍點為什麼會跳到對街"
   },
   {
@@ -143,22 +143,22 @@
   },
   {
    "setup": "p135",
-   "payoff": "p145",
+   "payoff": "p142",
    "what": "天上那段路會不會也走歪"
   },
   {
-   "setup": "p147",
-   "payoff": "p163",
+   "setup": "p144",
+   "payoff": "p160",
    "what": "地圖剛打開，藍點為什麼要等很久"
   },
   {
-   "setup": "p165",
-   "payoff": "p168",
+   "setup": "p162",
+   "payoff": "p165",
    "what": "為什麼我的手機一打開就有藍點"
   },
   {
-   "setup": "p171",
-   "payoff": "p178",
+   "setup": "p168",
+   "payoff": "p175",
    "what": "不用等的辦法有沒有缺點"
   }
  ],
@@ -1845,7 +1845,7 @@
    "id": "kid-iono-q",
    "template": "shot",
    "data": {
-    "prompt": "Waist-up medium shot of the girl in a sunny green park pointing high up at the sky with a curious face, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "prompt": "Waist-up medium shot of the girl in a sunny green park pointing high up at the sky with a suspicious frown, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
     "camera": "drift",
     "visual": "still",
     "characters": [
@@ -1856,13 +1856,13 @@
     {
      "id": "p134",
      "speaker": "kid",
-     "text": "那天上那段路呢？",
-     "emotion": "追問"
+     "text": "會不會是天上那段路，",
+     "emotion": "猜"
     },
     {
      "id": "p135",
      "speaker": "kid",
-     "text": "也會走歪嗎？",
+     "text": "把我的藍點弄歪？",
      "emotion": "句尾上揚"
     }
    ]
@@ -1881,41 +1881,13 @@
     {
      "id": "p136",
      "speaker": "chief",
-     "text": "會。訊號要穿過高空一層叫電離層的地方，"
+     "text": "天上會拖慢訊號：高空有一層叫電離層的地方。",
+     "emotion": "接住上一句"
     },
     {
      "id": "p137",
      "speaker": "chief",
-     "text": "在那裡會被拖慢。"
-    },
-    {
-     "id": "p138",
-     "speaker": "chief",
-     "text": "衛星用不同的頻率送訊號，就像哨子有高音和低音。"
-    }
-   ]
-  },
-  {
-   "id": "chief-guess-model",
-   "template": "shot",
-   "data": {
-    "prompt": "Waist-up medium shot of the chief shrugging with both palms up and an honest smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
-    "camera": "pull out",
-    "visual": "still",
-    "characters": [
-     "chief"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p139",
-     "speaker": "chief",
-     "text": "只聽一個頻率的話，只能靠預先估好的修正去猜，"
-    },
-    {
-     "id": "p140",
-     "speaker": "chief",
-     "text": "這個效應可以到幾十公尺。"
+     "text": "只聽一個頻率，就像只聽一種音高，這個效應可以到幾十公尺。"
     }
    ]
   },
@@ -1923,7 +1895,7 @@
    "id": "chief-model-half",
    "template": "shot",
    "data": {
-    "prompt": "Head-and-shoulders close-up of the chief holding her hand flat and lowering it halfway with an honest smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "prompt": "Head-and-shoulders close-up of the chief sweeping one flat hand slowly and evenly across in front of her with a calm smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
     "camera": "pan right",
     "visual": "still",
     "characters": [
@@ -1932,14 +1904,14 @@
    },
    "lines": [
     {
-     "id": "p141",
+     "id": "p138",
      "speaker": "chief",
-     "text": "衛星廣播的修正，估計全世界平均約修掉一半。"
+     "text": "可是它是整片天空慢慢變，不會在兩棟大樓之間突然跳。"
     },
     {
-     "id": "p142",
+     "id": "p139",
      "speaker": "chief",
-     "text": "可是拖慢多少，跟頻率有關。同時聽兩個頻率，"
+     "text": "衛星廣播的修正，估計全世界平均約修掉一半；"
     }
    ]
   },
@@ -1955,20 +1927,33 @@
    },
    "lines": [
     {
-     "id": "p143",
+     "id": "p140",
      "speaker": "chief",
-     "text": "就像同一個朋友，吹高低兩支哨子；"
+     "text": "同時聽高低兩個頻率，就像比一比兩支哨子，"
     },
     {
-     "id": "p144",
-     "speaker": "chief",
-     "text": "比一比兩聲差多少，就知道路上被拖了多久，",
-     "pause_after_ms": 500
-    },
-    {
-     "id": "p145",
+     "id": "p141",
      "speaker": "chief",
      "text": "電離層的效應，可以去掉九成九以上。"
+    }
+   ]
+  },
+  {
+   "id": "kid-towers-back",
+   "template": "shot",
+   "data": {
+    "prompt": "Waist-up medium shot of the girl on a sunny sidewalk between tall smooth glass towers, looking up at the tall glass towers beside her with a knowing little nod, bright daylight, the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood, exactly matching her reference sheet: the same little girl every time, short black bob with straight bangs, navy raincoat with mustard-yellow hood, long navy trousers, hood folded down behind her neck, bare short black bob uncovered and hanging free, simple dot-like cartoon eyes as on the reference sheet, a round young child face with big round matching eyes looking the same way, flat 2D cel-shaded cartoon drawing with ink outlines",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [
+     "kid"
+    ]
+   },
+   "lines": [
+    {
+     "id": "p142",
+     "speaker": "chief",
+     "text": "所以把你甩到對街的，不是天上，是旁邊那些大樓。"
     }
    ]
   },
@@ -1985,13 +1970,13 @@
    },
    "lines": [
     {
-     "id": "p146",
+     "id": "p143",
      "speaker": "kid",
      "text": "還有我重開地圖那次，",
      "emotion": "抱怨"
     },
     {
-     "id": "p147",
+     "id": "p144",
      "speaker": "kid",
      "text": "藍點怎麼等那麼久？",
      "emotion": "章尾停住，句尾上揚"
@@ -2012,13 +1997,13 @@
    },
    "lines": [
     {
-     "id": "p148",
+     "id": "p145",
      "speaker": "chief",
      "text": "因為光知道距離還不夠，",
      "emotion": "接住上一句"
     },
     {
-     "id": "p149",
+     "id": "p146",
      "speaker": "chief",
      "text": "還要知道衛星現在在哪、它的鐘差多少。"
     }
@@ -2036,12 +2021,12 @@
    },
    "lines": [
     {
-     "id": "p150",
+     "id": "p147",
      "speaker": "chief",
      "text": "這些寫在衛星的廣播裡，可是它講得很慢，"
     },
     {
-     "id": "p151",
+     "id": "p148",
      "speaker": "chief",
      "text": "一秒只有五十個位元。"
     }
@@ -2060,18 +2045,18 @@
    },
    "lines": [
     {
-     "id": "p152",
+     "id": "p149",
      "speaker": "kid",
      "text": "位元是什麼？",
      "emotion": "句尾上揚"
     },
     {
-     "id": "p153",
+     "id": "p150",
      "speaker": "chief",
      "text": "資料裡最小的一格，只能是或不是。"
     },
     {
-     "id": "p154",
+     "id": "p151",
      "speaker": "chief",
      "text": "就像那個朋友報他站在哪裡，一個字一個字慢慢念。"
     }
@@ -2090,12 +2075,12 @@
    },
    "lines": [
     {
-     "id": "p155",
+     "id": "p152",
      "speaker": "chief",
      "text": "一整輪要三十秒，才從頭再講一次；"
     },
     {
-     "id": "p156",
+     "id": "p153",
      "speaker": "chief",
      "text": "鐘差跟衛星在哪，放在每一輪最前面的三段。"
     }
@@ -2114,18 +2099,18 @@
    },
    "lines": [
     {
-     "id": "p157",
+     "id": "p154",
      "speaker": "chief",
      "text": "傳統的做法要聽完這三段，最久要等大約三十六秒。"
     },
     {
-     "id": "p158",
+     "id": "p155",
      "speaker": "kid",
      "text": "等那麼久，",
      "emotion": "笑"
     },
     {
-     "id": "p159",
+     "id": "p156",
      "speaker": "kid",
      "text": "我都走到對街了！"
     }
@@ -2144,12 +2129,12 @@
    },
    "lines": [
     {
-     "id": "p160",
+     "id": "p157",
      "speaker": "chief",
      "text": "所以開機有分冷、熱。"
     },
     {
-     "id": "p161",
+     "id": "p158",
      "speaker": "chief",
      "text": "什麼都不知道，叫冷開機，要把整片天空找一遍；"
     }
@@ -2168,13 +2153,13 @@
    },
    "lines": [
     {
-     "id": "p162",
+     "id": "p159",
      "speaker": "chief",
      "text": "手上已經有精確的衛星位置，叫熱開機，不用再等廣播。",
      "pause_after_ms": 500
     },
     {
-     "id": "p163",
+     "id": "p160",
      "speaker": "chief",
      "text": "在大樓中間，訊號斷斷續續，等待還會更久。"
     }
@@ -2193,13 +2178,13 @@
    },
    "lines": [
     {
-     "id": "p164",
+     "id": "p161",
      "speaker": "kid",
      "text": "可是有時候，",
      "emotion": "不服氣"
     },
     {
-     "id": "p165",
+     "id": "p162",
      "speaker": "kid",
      "text": "一打開就有藍點耶！"
     }
@@ -2217,20 +2202,20 @@
    },
    "lines": [
     {
-     "id": "p166",
+     "id": "p163",
      "speaker": "chief",
      "text": "那多半是輔助 GPS。手機透過行動網路，",
      "say": "那多半是輔助 G P S。手機透過行動網路，",
      "say_for": "266ca74113ad"
     },
     {
-     "id": "p167",
+     "id": "p164",
      "speaker": "chief",
      "text": "先拿到衛星的位置和鐘差，",
      "pause_after_ms": 500
     },
     {
-     "id": "p168",
+     "id": "p165",
      "speaker": "chief",
      "text": "只要收幾毫秒的訊號，就能算出位置。"
     }
@@ -2249,7 +2234,7 @@
    },
    "lines": [
     {
-     "id": "p169",
+     "id": "p166",
      "speaker": "chief",
      "text": "就像有人先把每個朋友站在哪，傳訊息給你。"
     }
@@ -2268,13 +2253,13 @@
    },
    "lines": [
     {
-     "id": "p170",
+     "id": "p167",
      "speaker": "kid",
      "text": "那就不用等了！",
      "emotion": "開心"
     },
     {
-     "id": "p171",
+     "id": "p168",
      "speaker": "kid",
      "text": "有沒有缺點？",
      "emotion": "句尾上揚"
@@ -2294,12 +2279,12 @@
    },
    "lines": [
     {
-     "id": "p172",
+     "id": "p169",
      "speaker": "chief",
      "text": "有。你沒有從廣播裡，讀到精確的時間。"
     },
     {
-     "id": "p173",
+     "id": "p170",
      "speaker": "chief",
      "text": "衛星一直在動，時間錯一點，算出的衛星位置就錯。"
     }
@@ -2318,17 +2303,17 @@
    },
    "lines": [
     {
-     "id": "p174",
+     "id": "p171",
      "speaker": "chief",
      "text": "一篇導航期刊的論文，引用這個方法發明人的估算："
     },
     {
-     "id": "p175",
+     "id": "p172",
      "speaker": "chief",
      "text": "時間每差一秒，算出的距離就錯大約八百公尺。"
     },
     {
-     "id": "p176",
+     "id": "p173",
      "speaker": "kid",
      "text": "又是時間！",
      "emotion": "驚訝"
@@ -2348,15 +2333,39 @@
    },
    "lines": [
     {
-     "id": "p177",
+     "id": "p174",
      "speaker": "chief",
      "text": "對。所以有些手機把現在是哪一刻，也當成要算的答案。",
      "pause_after_ms": 500
     },
     {
-     "id": "p178",
+     "id": "p175",
      "speaker": "chief",
      "text": "這是第五個不知道的數，要至少五顆衛星。"
+    }
+   ]
+  },
+  {
+   "id": "corner-phone",
+   "template": "shot",
+   "data": {
+    "prompt": "Close-up of a child's small hand holding a small phone showing a simple pattern of pale green and grey blocks with one glowing blue dot at a sunny street corner, tall smooth glass towers rising behind, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours, clean empty corners",
+    "camera": "push in",
+    "visual": "still",
+    "characters": [],
+    "nobody": true
+   },
+   "lines": [
+    {
+     "id": "p176",
+     "speaker": "chief",
+     "text": "你在街角一打開就看到的藍點，可能就是這樣算出來的。"
+    },
+    {
+     "id": "p177",
+     "speaker": "kid",
+     "text": "難怪它有時候一下就出來！",
+     "emotion": "恍然"
     }
    ]
   },
@@ -2373,13 +2382,13 @@
    },
    "lines": [
     {
-     "id": "p179",
+     "id": "p178",
      "speaker": "kid",
      "text": "所以我的藍點跳到對街，",
      "emotion": "推理"
     },
     {
-     "id": "p180",
+     "id": "p179",
      "speaker": "kid",
      "text": "到底是怎麼回事？",
      "emotion": "章尾停住，句尾上揚"
@@ -2400,7 +2409,7 @@
    },
    "lines": [
     {
-     "id": "p181",
+     "id": "p180",
      "speaker": "chief",
      "text": "你剛剛就走在那兩排大樓中間，你說呢？",
      "emotion": "笑"
@@ -2420,20 +2429,20 @@
    },
    "lines": [
     {
-     "id": "p182",
+     "id": "p181",
      "speaker": "kid",
      "text": "原來如此！",
      "emotion": "恍然大悟"
     },
     {
-     "id": "p183",
+     "id": "p182",
      "speaker": "kid",
      "text": "訊號撞牆晚到一點點，",
      "emotion": "篤定",
      "pause_after_ms": 500
     },
     {
-     "id": "p184",
+     "id": "p183",
      "speaker": "kid",
      "text": "手機就把我算到對街了！",
      "emotion": "篤定"
@@ -2453,13 +2462,13 @@
    },
    "lines": [
     {
-     "id": "p185",
+     "id": "p184",
      "speaker": "chief",
      "text": "說得好。還記得那支慢一秒的錶嗎？",
      "emotion": "笑"
     },
     {
-     "id": "p186",
+     "id": "p185",
      "speaker": "chief",
      "text": "我覺得最神奇的是：手機每次定位，都在幫自己對錶。"
     }
@@ -2477,7 +2486,7 @@
    },
    "lines": [
     {
-     "id": "p187",
+     "id": "p186",
      "speaker": "kid",
      "text": "公園到了！",
      "emotion": "開心"
@@ -2497,7 +2506,7 @@
    },
    "lines": [
     {
-     "id": "p188",
+     "id": "p187",
      "speaker": "kid",
      "text": "我要跟同學玩哨子遊戲！",
      "emotion": "開心大聲"
@@ -2517,13 +2526,13 @@
    },
    "lines": [
     {
-     "id": "p189",
+     "id": "p188",
      "speaker": "chief",
      "text": "你在哪裡看過藍點亂跳？",
      "emotion": "問句上揚，像聊天"
     },
     {
-     "id": "p190",
+     "id": "p189",
      "speaker": "chief",
      "text": "留言告訴我們。"
     }
@@ -2542,7 +2551,7 @@
    },
    "lines": [
     {
-     "id": "p191",
+     "id": "p190",
      "speaker": "chief",
      "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
      "emotion": "誠懇"
