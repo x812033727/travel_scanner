@@ -450,6 +450,7 @@ doc = {
         {"title": "GPS.gov, GPS Accuracy (FAQ, current page)", "url": "https://www.gps.gov/node/70", "checked_on": CHECKED},
         {"title": "GPS.gov, Frequently Asked Questions (satellites are one-way beacons)", "url": "https://www.gps.gov/faq", "checked_on": CHECKED},
         {"title": "GPS.gov, Space Segment (about 20,200 km; 24 slots, at least four in view)", "url": "https://www.gps.gov/space-segment", "checked_on": CHECKED},
+        {"title": "GPS.gov, Augmentation Systems (what a GPS augmentation is)", "url": "https://www.gps.gov/augmentation-systems", "checked_on": CHECKED},
         {"title": "U.S. DoD, GPS Standard Positioning Service Performance Standard, 5th ed. (April 2020)", "url": "https://archive.gps.gov/technical/ps/2020-SPS-performance-standard.pdf", "checked_on": CHECKED},
         {"title": "FAA, Satellite Navigation - GPS - How It Works", "url": "https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/gps/howitworks", "checked_on": CHECKED},
         {"title": "van Diggelen & Enge (2015), The World's first GPS MOOC and Worldwide Laboratory using Smartphones, ION GNSS+ 2015 (abstract)", "url": "https://www.ion.org/publications/abstract.cfm?articleID=13079", "checked_on": CHECKED},
