@@ -1,0 +1,91 @@
+{
+  "batch_id": "wave54-human-20261111",
+  "created_on": "2026-11-11",
+  "scope": "被告知『很甜』再喝淡糖水：替組題 C1-12 補預期改變甜味強度的腦電圖研究；兩來源（其中代糖研究只用在未收紀錄）。C1-12 經覆核仍為後備。",
+  "sources": [
+    {
+      "id": "H54-S001",
+      "url": "https://doi.org/10.1111/psyp.13299",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6392116/fullTextXML",
+      "canonical_url": "https://doi.org/10.1111/psyp.13299",
+      "doi": "10.1111/psyp.13299",
+      "title": "Intensity expectation modifies gustatory evoked potentials to sweet taste: Evidence of bidirectional assimilation in early perceptual processing",
+      "publisher": "Wilton、Stancak、Giesbrecht、Thomas、Kirkham（利物浦大學、Unilever）；Psychophysiology 56(3) e13299 (2019)",
+      "version": "期刊正式版，CC BY 4.0，PMC6392116",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST fullTextXML 200，剝標籤後全文自讀",
+      "reading_scope": "Abstract、§1 Introduction、§2.1–2.3 受試者與刺激、§3.1 行為結果、§4 Discussion 與 §4.4 Limitations；sLORETA 細節略讀",
+      "locator": "§2.1（16 名女性）；§2.3（0.05 M／0.3 M 蔗糖，同溫度、計算機給液）；§3.1.1 強度評分交互作用；§3.1.2 愉悅度無差；Abstract 與 §4 P1 振幅",
+      "summary": "每次給糖水前先給視覺提示預告『淡甜』或『很甜』；被預告很甜卻拿到淡糖水時，強度評分上升，反過來被預告淡甜卻拿到濃糖水時評分下降；腦電早期 P1 成分（源定位於右側島葉）也跟著預期走：預告很甜的淡糖水，P1 接近真的濃糖水。同一實驗中愉悅度評分沒有隨預告改變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "16 名年輕女性、單一場次；愉悅度在實驗中整體穩定，作者自認無法推論對喜好的影響；只測蔗糖兩個濃度。",
+      "author_cache": {
+        "file": "scratchpad/f4src/PMC6392116.xml",
+        "sha256_prefix": "0981c50bdeea5af8",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H54-S002",
+      "url": "https://doi.org/10.1523/JNEUROSCI.1121-25.2026",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13022526/fullTextXML",
+      "canonical_url": "https://doi.org/10.1523/JNEUROSCI.1121-25.2026",
+      "doi": "10.1523/JNEUROSCI.1121-25.2026",
+      "title": "Expectation Modulates Hedonic Experiences and Midbrain Responses to Sweet Flavor",
+      "publisher": "Mainetto、Westwater、Ziauddeen、Diederen、Fletcher（劍橋等）；Journal of Neuroscience 46(12) e1121252026 (2026)",
+      "version": "期刊正式版，CC BY 4.0，PMC13022526",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST fullTextXML 200，剝標籤後全文自讀",
+      "reading_scope": "Abstract、Significance、Introduction 末段、Methods 受試者篩選、Behavioral results；fMRI 分析段略讀",
+      "locator": "篩選 99 人取 27 名分不出糖與代糖檸檬水者；probabilistic task 正確率隨預期；deterministic task 預期糖時代糖愉悅度與中腦反應上升",
+      "summary": "只找本來分不出含糖與代糖檸檬水的受試者；提示說『多半是糖』時辨認正確率跟著提示走，誤以為是糖時，代糖的愉悅度與中腦反應都上升。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受試者經篩選為分不出兩者的人，不能推到一般人；只用於 not_added 判斷。",
+      "author_cache": {
+        "file": "scratchpad/f4src/PMC13022526.xml",
+        "sha256_prefix": "b49d0bbfb0a8ed20",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H54-001",
+      "question": "被告知『這杯很甜』再喝淡糖水，覺得更甜只是嘴上說說，還是腦子真的嚐得不一樣？",
+      "domain": "感官與味覺",
+      "mechanism_key": "taste.expectation.intensity_assimilation_early_erp",
+      "answer_target": "利物浦大學讓 16 名年輕女性在每口糖水前先看顏色提示：預告『淡甜』或『很甜』，實際給 0.05 或 0.3 莫耳的蔗糖水，兩者都在室溫、由電腦控制的給液器送入口中。被預告很甜卻拿到淡糖水時，強度評分比正確預告時高；被預告淡甜卻拿到濃糖水時，評分比正確預告時低。腦電圖在嚐到後約 100–150 毫秒的早期 P1 成分（左側頂葉電極）也跟著預告走：預告很甜的淡糖水，反應較接近正確預告的濃糖水，反之亦然。這個時段的源定位估計最強在右側島葉的味覺皮質，但預告效果在源的層級未達顯著。同一實驗裡，愉悅度評分沒有隨預告改變。",
+      "scope": "16 名年輕女性、單一場次、只有蔗糖兩個濃度；愉悅度整體穩定，作者無法推論喜好；P1 交互作用來自頭皮電極，源定位的交互作用 p=0.08，不能說成『島葉被預期改變』。",
+      "source_ids": [
+        "H54-S001"
+      ],
+      "source_locator": "S001 Abstract；§2.1、§2.3；§3.1.1–3.1.2；§4、§4.4",
+      "premise_status": "screened",
+      "notes": "目標 C1-12（風味不是只靠舌頭）：取代被剔除的 R42002，排在 R42011（標價提高喜歡、不提高強度）之後成為轉折：價錢改的是喜歡，『很甜』的提示改的卻是強度，連早期腦波都變。 原提案 F4-012。作者標為轉折，依本池欄位記為 segment。非作者覆核 V6（2026-11-11）照覆核意見改字後收；行為結果與 P1 結果忠於原文，但島葉一句要降級成估計、未達顯著。與 R42011（價籤改喜歡不改強度）互補而非重複，與 H54-NA001 的代糖研究也不同答案。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "預期不只改你嘴上給的分數，連舌頭訊號剛進大腦的那一刻都被往預期拉。",
+        "visual": "原創：提示卡→糖水→評分三格流程；P1 波形示意（標明為示意，非原圖）；與 R42011 的『喜歡 vs 強度』二分表。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H54-NA001",
+      "question": "分不出糖和代糖的人，聽說是糖就覺得比較好喝嗎？",
+      "existing_ids": [
+        "R42011"
+      ],
+      "source_ids": [
+        "H54-S002"
+      ],
+      "reason": "核心答案『預期提高喜歡程度』與 R42011（標價提高喜歡、強度不變）相同；樣本又是刻意篩選出分不出兩者的人。放進 C1-12 只是同一答案的另一例，不算轉折。 原提案 F4-NA001。",
+      "reentry_condition": "若另開『代糖』題，可作為『感官不可靠時預期接手辨認』的來源。",
+      "reading_status": "S002 全文已讀（Europe PMC XML）。"
+    }
+  ]
+}
