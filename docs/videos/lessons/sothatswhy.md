@@ -30,3 +30,7 @@
   repo 的 Playwright 若比容器內建的新，`render` 找不到瀏覽器，把 `/opt/pw-browsers/chromium_headless_shell-<內建版>` 連結成 repo 要的版本號，不要另外安裝。
 - **2026-11-10，sothatswhy-p06-bubble-film，接手 session：長時間的步驟會被背景時限停掉。** 背景指令預設 30 分鐘、最多 2 小時；116 景 × 3 take 的插圖約 4.5 小時。
   用 `setsid nohup … & disown` 脫離 shell 跑，再用 until 迴圈等完成檔；`keyframes` 重跑會保留已畫的景。雲端硬碟備份不要跟 render／assemble 同時跑（會出現 differences），等寫檔的步驟結束再傳。
+- **2026-11-11，sothatswhy-p21-car-sickness，接手 session：session 閒著時容器會被收回，脫離的程序跟著死。** 監看的 until 迴圈到 2 小時被停掉之後，
+  session 沒有任何在跑的背景指令，容器在半小時內兩次重開（`uptime` 0 分鐘、沒有 node 程序、沒有完成檔），`setsid` 的插圖也一起沒了。
+  工作目錄 `/root/mokaair-work` 與 repo 都還在，`LEASE` 記的是舊 boot id，直接重跑 `keyframes` 就從斷點接著畫。長步驟跑著時一定要同時有一個
+  harness 追蹤的背景監看（`run_in_background`，上限 2 小時，到期就再開一個），只靠 `send_later` 排的檢查不夠：它在閒著的容器重開後才觸發。
