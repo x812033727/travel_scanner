@@ -23,6 +23,7 @@ import { isC08ApprovedShortStory, isC20ApprovedShortStory } from "../core/durati
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { DEFAULT_LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
+import { followsContentLength } from "../core/curio.mjs";
 import { alwaysLocales, captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
 import { isStory } from "../core/story.mjs";
@@ -284,7 +285,7 @@ export async function run(command, args, ctx) {
 
   const items = [];
   let who = null;
-  const assemble = assembleItem({ checks, current: audioCurrent && checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, finalSha256, minMinutes: needsMinimumLength(doc) && !isC08ApprovedShortStory(doc) && !isC20ApprovedShortStory(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined });
+  const assemble = assembleItem({ checks, current: audioCurrent && checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, finalSha256, minMinutes: needsMinimumLength(doc) && !followsContentLength(doc) && !isC08ApprovedShortStory(doc) && !isC20ApprovedShortStory(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined });
   // Pictures kept with the judge's remarks once their prompt fixes were spent (keyframes
   // --accept-best) ride on the assemble item as one warning: the cut is of them, the items are the
   // server's fixed eleven, and the owner decides on the cut (the review goes up for a manual review).

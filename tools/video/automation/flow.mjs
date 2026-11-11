@@ -22,7 +22,7 @@ import { assembledAudioProblems, audioEvidenceProblems } from "../core/audio-evi
 import { appliedBranding, brandingCurrent, readBranding } from "../core/branding.mjs";
 import { craftChecks } from "../core/craft.mjs";
 import { hasCast, illustrated, isDrama, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
-import { CURIO_MUSIC, CURIO_PRESET, SERIES_PACING } from "../core/curio.mjs";
+import { CONTENT_LENGTH_WARN_MINUTES, CURIO_MUSIC, CURIO_PRESET, followsContentLength, SERIES_PACING } from "../core/curio.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
@@ -4027,7 +4027,7 @@ export class Automation {
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     const timeline = estimateTimeline(video);
     const minutes = timeline.total_frames / FPS / 60;
-    if (state.compilation || !isNarrated(video, this.seriesJson(state)) || narrationLocale(video) !== NARRATION_LOCALE || minutes < MIN_EPISODE_MINUTES) return null;
+    if (state.compilation || !isNarrated(video, this.seriesJson(state)) || narrationLocale(video) !== NARRATION_LOCALE || minutes < (followsContentLength(video) ? CONTENT_LENGTH_WARN_MINUTES : MIN_EPISODE_MINUTES)) return null;
     const file = path.join(this.workdir(state.slug), ...NARRATIVE_REVIEW);
     const saved = readJson(file, null);
     if (saved?.passed && narrativeReviewMatches(saved, video)) return null;
