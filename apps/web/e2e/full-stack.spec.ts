@@ -180,8 +180,7 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.locator(".calm-new-trip-name > summary").click();
   await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
   await page.getByLabel("目的地").fill("日本東京");
-  // A day a month ahead: a fixed date stops existing on the calendar once it passes in Tokyo
-  // (2026-11-10 did), and pickTripDay then walks months forward until the test times out.
+  // A day relative to today: a fixed 2026-11-10 became a past, disabled day in the calendar.
   const tripDay = isoDaysFromToday(30);
   await pickTripDay(page, tripDay);
   await pickTripDay(page, tripDay);
