@@ -1,13 +1,13 @@
 ---
 id: 2026-11-11-curio-pool-data-truncated-answer-target
 title: Curio pool data: truncated answer_target, placeholder scope, missing ids found by the material review
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-cloud-channel-review
 claimed_at: 2026-11-11T02:16:53Z
 created_at: 2026-11-11T02:15:11Z
-completed_at:
+completed_at: 2026-11-11T02:33:07Z
 branch: claude/youthful-albattani-m1ih5z
 depends_on: []
 scope:
@@ -29,11 +29,18 @@ data problems that made reviewers fall back on other files:
 
 ## Definition of done
 
-- [ ] `answer_target` is no longer truncated (find where the 800-character cut happens in `tools/video/curio/pool/core.mjs` intake, or store the full text), and the export is rebuilt.
-- [ ] Legacy scopes are filled from their topic-checks, or marked plainly as not yet scoped.
-- [ ] The dangling ids are resolved or removed from notes. P19/P20 material is restored or the merge note is corrected.
-- [ ] `node tools/video/curio/pool/cli.mjs check` and `node --test tools/video/curio/pool/pool.test.mjs` pass.
+- [x] `answer_target` is no longer truncated (find where the 800-character cut happens in `tools/video/curio/pool/core.mjs` intake, or store the full text), and the export is rebuilt.
+- [x] Legacy scopes are filled from their topic-checks, or marked plainly as not yet scoped.
+- [x] The dangling ids are resolved or removed from notes. P19/P20 material is restored or the merge note is corrected.
+- [x] `node tools/video/curio/pool/cli.mjs check` and `node --test tools/video/curio/pool/pool.test.mjs` pass.
 
 ## Notes
 
-Filed by the channel review session (draft PR #2069). Not started.
+Filed by the channel review session (draft PR #2069).
+- Done 2026-11-11:
+  - The 800-character cut in `core.mjs` is removed, which affected 30 ids (the longest is now M14 at 1,588 characters).
+  - Scope comes from the topic-checks' limit sections for 76 ids. The rest is marked `scope_status: not_yet_scoped`.
+  - The dangling-id notes are corrected. No material was invented: P19 and P20 are cards only, so T24's empty 1919 chapter was cut.
+  - `splitLocator` now gives each source its own locator.
+  - selection revision `2026-11-11-curio-pool-761`. Counts are unchanged; `cli.mjs check` passes and pool.test passes 23/23.
+- Left for a new task: other dangling ids (N194, N210) and the old revision stamps in topics.json.
