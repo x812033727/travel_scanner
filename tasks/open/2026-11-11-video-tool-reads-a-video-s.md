@@ -1,14 +1,14 @@
 ---
 id: 2026-11-11-video-tool-reads-a-video-s
 title: Video tool reads a video's audience retention curve from the YouTube Analytics API
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-cloud-channel-review
+claimed_at: 2026-11-11T02:17:12Z
 created_at: 2026-11-11T01:22:56Z
 completed_at:
-branch:
+branch: claude/youthful-albattani-m1ih5z
 depends_on: []
 scope:
   - apps/api/app/video_youtube
@@ -18,7 +18,6 @@ scope:
   - .agents/skills/youtube-channel-reports/SKILL.md
   - .claude/skills/youtube-channel-reports/SKILL.md
 ---
-
 
 # Video tool reads a video's audience retention curve from the YouTube Analytics API
 

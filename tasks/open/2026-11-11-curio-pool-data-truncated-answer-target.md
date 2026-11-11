@@ -1,20 +1,19 @@
 ---
 id: 2026-11-11-curio-pool-data-truncated-answer-target
 title: Curio pool data: truncated answer_target, placeholder scope, missing ids found by the material review
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-cloud-channel-review
+claimed_at: 2026-11-11T02:16:53Z
 created_at: 2026-11-11T02:15:11Z
 completed_at:
-branch:
+branch: claude/youthful-albattani-m1ih5z
 depends_on: []
 scope:
   - docs/videos/history-curiosity/pool
   - tools/video/curio/pool
 ---
-
 
 # Curio pool data: truncated answer_target, placeholder scope, missing ids found by the material review
 

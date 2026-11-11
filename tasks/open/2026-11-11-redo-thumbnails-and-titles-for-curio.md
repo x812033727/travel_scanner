@@ -1,14 +1,14 @@
 ---
 id: 2026-11-11-redo-thumbnails-and-titles-for-curio
 title: Redo thumbnails and titles for curio v2 videos with high impressions and sub-1% CTR
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-cloud-channel-review
+claimed_at: 2026-11-11T02:17:13Z
 created_at: 2026-11-11T00:03:53Z
 completed_at:
-branch:
+branch: claude/youthful-albattani-m1ih5z
 depends_on: []
 scope:
   - docs/videos/curio-s01
