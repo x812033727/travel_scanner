@@ -1,0 +1,141 @@
+{
+ "_note": "《恁祖媽今年18》第 8 集剪接表（post/assemble-v4.mjs），2026-11-11 照種田拍法的 29 鏡分鏡，首格路線 Colab H3 smooth（1312×736，不精修），片段剪到台詞長度＋1.5 秒。沿用站主定的：不放片名卡、集數、人名條，畫面不放字；不裁切放大；慢放不超過 1.1 倍；CC 軟字幕；看得到嘴的台詞用模型原聲（voice.json）。拿掉 c05、c11、c19（首格兩輪都畫不出來的無台詞全景與反應鏡；c06、c20、c21 交代得到）。c26、c28 的門縫是 build.sh 疊的遮罩（session-tools/e008/door_mask.py，縫中心照實拍的小滿放在 47%）。首格只能勉強用的三鏡：c07 壽衣像硬殼夾、c10 駝背靠片段動作、c14 抱腰靠片段動作。",
+ "tempo": 1.07,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "punch": false,
+ "grades": {},
+ "default_grade": "indoor",
+ "finish": "vignette=angle=PI/5,noise=alls=3:allf=t,format=yuv420p",
+ "names": {},
+ "min": {},
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/tai-nainai/sfx"
+ ],
+ "music": [
+  {
+   "cue": "tension",
+   "from": "c01",
+   "to": "c12",
+   "offset": 0,
+   "gain": -19,
+   "fade_in": 0.8,
+   "tail": 0.8,
+   "fade_out": 1.0
+  },
+  {
+   "cue": "memory",
+   "from": "c13",
+   "to": "c15",
+   "offset": 0,
+   "gain": -19,
+   "from_off": -0.4,
+   "fade_in": 0.8,
+   "tail": 0.8,
+   "fade_out": 1.0
+  },
+  {
+   "cue": "tension",
+   "from": "c16",
+   "to": "c18",
+   "offset": 20,
+   "gain": -19,
+   "from_off": -0.3,
+   "fade_in": 0.6,
+   "tail": 0.6,
+   "fade_out": 1.0
+  },
+  {
+   "cue": "suspense",
+   "from": "c20",
+   "to": "c29",
+   "offset": 0,
+   "gain": -18,
+   "fade_in": 1.2,
+   "tail": 1.0,
+   "fade_out": 1.0
+  }
+ ],
+ "sfx": [
+  {
+   "synth": "room",
+   "at": "c01",
+   "off": 0,
+   "to": "c18",
+   "gain": -17,
+   "fade": 0.4
+  },
+  {
+   "synth": "room",
+   "at": "c20",
+   "off": 0,
+   "to": "c29",
+   "gain": -17,
+   "fade": 0.4
+  },
+  {
+   "file": "cloth1",
+   "at": "c03",
+   "off": 0.3,
+   "gain": -20
+  },
+  {
+   "file": "cloth2",
+   "at": "c18",
+   "off": 0.3,
+   "gain": -21
+  },
+  {
+   "file": "baoxinling-muffled",
+   "at": "c21",
+   "off": 0.6,
+   "gain": -20
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "c22",
+   "off": 1.0,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c23",
+   "off": 0.3,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c23",
+   "off": 1.2,
+   "gain": -25
+  }
+ ],
+ "own_voice": "docs/videos/tai-nainai-e008/voice.json",
+ "frame_round": true,
+ "min_is_cut": true,
+ "skip": [
+  "c05",
+  "c11",
+  "c19",
+  "c25"
+ ],
+ "spill": [
+  "c27",
+  "c29"
+ ],
+ "spill_lead": {
+  "c29": 1.2
+ },
+ "speaker_gain": {
+  "yuetang-18": -3.5
+ },
+ "line_gain": {},
+ "line_far": [
+  "t008018",
+  "t008020"
+ ],
+ "end_black": 1.2,
+ "mix_gain": 4.9
+}
