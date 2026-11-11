@@ -75,7 +75,7 @@
 - **原文**：FAA [7]：「An atomic clock synchronized to GPS is required in order to compute ranges from these three signals. However, by taking a measurement from a fourth satellite, the receiver avoids the need for an atomic clock. Thus, the receiver uses four satellites to compute latitude, longitude, altitude, and time.」
   Navipedia [9]：「The right side contains the four unknown parameters: The receiver coordinates (x,y,z) and the receiver clock offset δt.」
 - **注意**：「手機裡沒有那麼準的鐘」（p076）是由 FAA「avoids the need for an atomic clock」推得：一般接收機沒有原子鐘，**撰稿推論**，沒有給手機鐘的誤差數字。
-  p077–p079 的「哨子是聲音，錶慢一秒；聲音一秒跑三百多公尺，每個朋友都像近了這麼多」是哨子遊戲裡的算術（聲音每秒約 322 m，C02），不是 GPS 數字。
+  p077–p079 的「哨子是聲音，錶慢一秒；還記得雷聲三秒一公里？每個朋友都像近了三百多公尺」是哨子遊戲裡的算術（聲音每秒約 322 m，C02），不是 GPS 數字。
 
 ## C08 真的手機不是在畫圓圈，是把四個答案一起算；衛星超過四顆就找一個跟大家最合得來的答案【教材】【接收機實際做法】
 

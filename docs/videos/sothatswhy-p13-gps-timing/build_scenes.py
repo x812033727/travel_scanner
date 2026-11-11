@@ -126,7 +126,7 @@ obj("phone-dot", "Close-up of a child's small hand holding " + PHONE + " on a su
     k("地圖上的藍點，", "不可思議"), k("突然跳到對面那條街！", None, "S:jump"), chapter="大樓中間，藍點跳到對街")
 # Thumbnail shot (fixed before keyframes, explainer-series/README.md): the kid big and centred, the phone in hand.
 kid("kid-dot-puzzled", K("holding a small phone up in front of her chest with both hands and frowning at it in puzzlement, in the exact centre of the picture", where=STREET),
-    k("可是我明明在這邊，", "不服氣"), k("它又跳回來了。", "困惑"))
+    k("可是我明明在這邊，", "不服氣"), k("重開地圖，藍點還等好久！", "困惑"))
 chief("chief-listen", C("leaning forward with a curious smile, one hand on her chin", close=True),
       c("這在大樓中間很常見。", "接住上一句"),
       c("你叫車的時候，可能也看過車停在對面。", "轉向觀眾"))
@@ -218,7 +218,7 @@ chief("chief-watch-fast", C("tapping " + WATCH + " on her wrist with a playful s
       c("回到公園。哨子是聲音，假設你的錶慢了一秒，"))
 obj("wristwatch", "Close-up of a child's wrist wearing " + WATCH + ", resting on a wooden park bench in sunshine",
     c("每一聲哨子，你都以為它走得比較短，"),
-    c("聲音一秒跑三百多公尺，每個朋友都像近了這麼多。"))
+    c("還記得雷聲三秒一公里？每個朋友都像近了三百多公尺。"))
 kid("kid-all-close", K("looking around in confusion with both hands raised, a small phone in one hand", where=PARK),
     k("大家一起變近？", "困惑"), k("那我到底在哪？"))
 chief("chief-no-match", C("spreading her hands with an honest puzzled smile"),
@@ -310,7 +310,7 @@ obj("two-whistles", "Close-up of two whistles lying side by side on a wooden par
     c("比一比兩聲差多少，就知道路上被拖了多久，"),
     c("電離層的效應，可以去掉九成九以上。", None, "P:iono"))
 kid("kid-slow-q", K("holding a small phone up and tapping it impatiently with a bored pout", where=CORNER),
-    k("剛剛在路口重開地圖，", "抱怨"), k("藍點等好久才出來！", "章尾停住，句尾上揚", "S:slow"))
+    k("還有我重開地圖那次，", "抱怨"), k("藍點怎麼等那麼久？", "章尾停住，句尾上揚", "S:slow"))
 
 # ---------- 第四章：等很久、飄來飄去，還是地圖畫錯？ ----------
 chief("chief-almanac", C("holding up two fingers with a calm explaining smile", close=True),
