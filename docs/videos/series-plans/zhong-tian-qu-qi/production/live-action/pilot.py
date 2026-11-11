@@ -47,6 +47,8 @@ LIVE_LOOK = {  # cast.json text -> the live-action text the screen test drew (sc
     "her ruqun one closed garment from the high collar to the waist": "her peach-pink high-waisted ruqun with its light short jacket",
     "framed from the chin up, her high stand-up collar closed at her throat": "framed from the chest up",
     "in her peach-pink brocade ruqun, one closed garment from the high stand-up collar to the waist": "in her peach-pink high-waisted ruqun with its light short jacket",
+    # e006 r2 s29 writes the closed garment longer (opaque, fastened at her throat, no opening below the collar)
+    "her peach-pink brocade ruqun one closed opaque garment from the high stand-up collar fastened at her throat down to the waist, no opening, cutout or skin below the collar": "her peach-pink high-waisted ruqun with its light short jacket",
 }
 # A soaked character (e001 r2's SOAKED phrase, s05-s11): the closing lock to the reference pictures, which show a dry robe
 # and a neat topknot, left him only damp in the live drafts (e901 live cut review 2026-11-08, item 19). Where the shot
