@@ -16,6 +16,8 @@
 
 報表會晚 48–72 小時，所以週一看到的資料大約到前一週的週五。
 
+部署之後（站主也要在 Google Cloud 啟用 YouTube Analytics API），每週檢討對上週公開滿 7 天的新片跑 `node tools/video/youtube-reports/cli.mjs retention --slug <slug> --organic`：找出前 30% 裡第一個大幅掉人的秒數，扣掉頻道片頭後，對回 `docs/videos/<slug>/` 的稿子是哪一句（`docs/videos/YOUTUBE-REPORTS.md` §觀眾續看曲線）。
+
 ## 改動
 
 | 日期 | 系列／影片 | 改了什麼 | 預期 | 回來看 | 結論 |
