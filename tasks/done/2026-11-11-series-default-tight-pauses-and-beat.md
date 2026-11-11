@@ -1,13 +1,13 @@
 ---
 id: 2026-11-11-series-default-tight-pauses-and-beat
 title: Series default: tight pauses and beat still motion for curio and sothatswhy episodes
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-cloud-channel-review
 claimed_at: 2026-11-11T00:43:31Z
 created_at: 2026-11-11T00:34:59Z
-completed_at:
+completed_at: 2026-11-11T00:59:57Z
 branch: claude/youthful-albattani-m1ih5z
 depends_on: []
 scope:
@@ -35,14 +35,14 @@ The owner asked on 2026-11-11 to make both the series default for 奇聞檔案�
 - [x] A new host episode of either series (cute-mystery or cute-cartoon preset) gets both settings when the writer wrote neither.
 - [x] A local curio- or sothatswhy- drama without them is warned by lint, and nothing is changed behind an approved timeline.
 - [x] The skill says so.
-- [ ] The duration review is rebound by an independent reviewer (flow.mjs, lint.mjs and automation.test.mjs are bound).
+- [x] The duration review is rebound by an independent reviewer (flow.mjs, lint.mjs and automation.test.mjs are bound).
 
 ## Steps
 
 - [x] `core/curio.mjs`: `SERIES_PACING`, `isPacedSeries`, `pacingWarnings`; `core/lint.mjs` calls it.
 - [x] `automation/flow.mjs` `settle()`: `PACED_PRESETS` adds the copy when absent; the writer's own choice stays.
 - [x] Tests in `core/curio.test.mjs` and `automation/automation.test.mjs`.
-- [ ] Independent duration review increment.
+- [x] Independent duration review increment (claude-review-series-pacing-20261111, PASS).
 
 ## How to verify
 
