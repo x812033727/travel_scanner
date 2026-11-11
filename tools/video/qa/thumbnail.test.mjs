@@ -47,8 +47,9 @@ test("the headline estimate follows the renderer's shrink in the channel's colum
   assert.deepEqual(headlineTokens("1,000 元").map((token) => token?.text).slice(0, 2), ["1,000", " "]);
   assert.ok(headlineSizeEstimate("字".repeat(400)) >= HEADLINE.fontSize * HEADLINE.minScale, "never below the renderer's floor");
   // A series keeps the full-width column: ten glyphs a line on two lines at the theme's size.
-  assert.equal(headlineSizeEstimate("冰為什麼\n會**浮**？", HEADLINE_SERIES), HEADLINE.fontSize);
-  assert.equal(headlineSizeEstimate("一二三四五六\n七八九十", HEADLINE_SERIES), HEADLINE.fontSize, "six a line, the series' own rule");
+  assert.equal(HEADLINE_SERIES.fontSize, 150, "the series' bright look sets its headline larger than the channel's");
+  assert.equal(headlineSizeEstimate("冰為什麼\n會**浮**？", HEADLINE_SERIES), HEADLINE_SERIES.fontSize);
+  assert.equal(headlineSizeEstimate("一二三四五\n六七八九", HEADLINE_SERIES), HEADLINE_SERIES.fontSize, "five a line, the series' own rule");
   assert.ok(headlineSizeEstimate("一二三四五六\n七八九十") < HEADLINE.fontSize, "the channel's column cannot");
   assert.equal(headlineRule("sothatswhy"), HEADLINE_SERIES);
   assert.equal(headlineRule(null), HEADLINE);

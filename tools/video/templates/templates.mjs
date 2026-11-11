@@ -5,6 +5,7 @@
 // every item is there from the start. Elements that appear in a state get the `enter` class, and
 // the renderer freezes that entrance animation frame by frame (tools/video/render/browser.mjs).
 import { LOCALE_FONTS, SLIDE_FAMILY } from "../render/fonts.mjs";
+import { EXPLAINER_PRESETS } from "../core/drama.mjs";
 import { ICON_CSS, ICON_NAMES, icon, isIconName } from "./icons.mjs";
 import { stateReveals, TERMINAL_CSS, TERMINAL_SPEC, terminalBody } from "./terminal/terminal.mjs";
 
@@ -660,6 +661,8 @@ export const pageCss = (scene, state, own = templateCss(scene)) => own + (isText
 export const THUMB_SERIES = {
   sothatswhy: { brand: "原來如此事務所", stamp: ["原來", "如此"], headlineMax: 10, headlineLines: 2 },
 };
+/** So That's Why's headline as THUMB_SERIES_CSS sets it (2026-11-11); qa/thumbnail.mjs measures with the same numbers. */
+export const SERIES_THUMB_HEADLINE = { fontSize: 150, lineHeight: 1.08 };
 export const THUMB_PILLARS = ["business", "science", "travel", "tech"];
 /** A series' thumbnail keeps the full-width text column and may mirror it (the stamp follows). */
 export const THUMB_SERIES_LAYOUTS = ["left", "right"];
@@ -702,6 +705,44 @@ export const isBoldThumbSlug = (slug) => /^(?:curio|story)-/.test(slug ?? "");
  */
 export const THUMB_SPLIT_LAYOUT = "e";
 export const isSplitThumbSlug = (slug) => /^curio-/.test(slug ?? "");
+/**
+ * The drama layout (the owner, 2026-11-11, after seeing a sample: "你做的縮圖比較好"): the
+ * keyframe fills the frame, a face first (drama-craft.md: 15 of the 16 most viewed reference
+ * thumbnails are a face filling the frame, 14 carry a 4–8 character title in the bottom third);
+ * the headline is one big yellow line with a black outline in the bottom third; the episode's
+ * `tag` (the drama's name) is a strip at the top left in the drama's own colour, so the episodes
+ * of one drama look alike and two dramas apart. A drama (isDramaThumbDoc) takes it unless
+ * data.layout names another; the colour is the drama's (DRAMA_THUMB_ACCENTS by slug, else one
+ * of DRAMA_THUMB_PALETTE by the slug's hash), or data.accent. Its CSS is inline (THUMB_DRAMA_CSS).
+ */
+export const THUMB_DRAMA_LAYOUT = "f";
+/** Each drama's strip colour, by the slug its episodes start with (owner 2026-11-11: 種田 orange, 祖媽 red). */
+export const DRAMA_THUMB_ACCENTS = { "zhong-tian-qu-qi": "#e8731c", "tai-nainai": "#d62e4c" };
+/** A drama not in DRAMA_THUMB_ACCENTS takes one of these by the hash of its slug's drama part. */
+export const DRAMA_THUMB_PALETTE = ["#2f7de1", "#7b4fd6", "#1f9d6b", "#c9302c"];
+const isAccent = (value) => typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value);
+/**
+ * Whether a video is an AI drama for its thumbnail: a drama-format video that is not an explainer
+ * (curio, brand stories and So That's Why wear their own looks) and not a curio- or story- slug.
+ */
+export function isDramaThumbDoc(doc) {
+  if (doc?.format !== "drama") return false;
+  if (/^(?:curio|story)-/.test(doc.slug ?? "")) return false;
+  return !EXPLAINER_PRESETS.includes(doc.look?.preset);
+}
+/** The strip colour of a drama's thumbnail: data.accent, else the drama's, else one of the palette by the slug. */
+export function dramaAccent(slug, accent = null) {
+  if (isAccent(accent)) return accent.toLowerCase();
+  const name = String(slug ?? "");
+  for (const [prefix, colour] of Object.entries(DRAMA_THUMB_ACCENTS)) if (name === prefix || name.startsWith(`${prefix}-`)) return colour;
+  // The drama is the slug less its episode (「-e003」, 「-e018-r2」), so its episodes share a colour.
+  const drama = name.replace(/-e\d+.*$/, "");
+  let hash = 2166136261;
+  for (const char of drama) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
+  return DRAMA_THUMB_PALETTE[hash % DRAMA_THUMB_PALETTE.length];
+}
+/** The drama layout's headline as THUMB_DRAMA_CSS sets it; qa/thumbnail.mjs measures with the same numbers. */
+export const DRAMA_THUMB_HEADLINE = { fontSize: 190, lineHeight: 1.05, left: 56, right: 72, maxLines: 2 };
 export const THUMB_FOCUS_DEFAULT = 50;
 const isFocus = (value) => Number.isInteger(value) && value >= 0 && value <= 100;
 // In the split panel a line the writer broke with "\n" stays one line when its script has no word
@@ -902,11 +943,12 @@ function ownThumbnailProblems(thumbnail, series) {
   const data = thumbnail.data ?? {};
   const problems = [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"];
   const own = THUMB_SERIES[series];
-  const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT, THUMB_SPLIT_LAYOUT, THUMB_AI_LAYOUT];
+  const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT, THUMB_SPLIT_LAYOUT, THUMB_DRAMA_LAYOUT, THUMB_AI_LAYOUT];
   if (data.layout !== undefined && !layouts.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${layouts.join(", ")}`);
   if (data.subject !== undefined && (!own || !THUMB_SERIES_SUBJECTS.includes(data.subject))) problems.push(own ? `thumbnail.data.subject must be one of ${THUMB_SERIES_SUBJECTS.join(", ")}` : "thumbnail.data.subject is a series thumbnail's option");
   if (data.layout === THUMB_AI_LAYOUT && isText(data.headline) && data.headline.includes("\n")) problems.push("thumbnail.data.headline takes one line in the AI look: the subject, then the **hook**; remove the line break");
   if (data.focus !== undefined && !isFocus(data.focus)) problems.push("thumbnail.data.focus must be a whole number from 0 (the picture's left edge) to 100 (its right edge)");
+  if (data.accent !== undefined && (own || !isAccent(data.accent))) problems.push(own ? "thumbnail.data.accent is a drama thumbnail's option" : "thumbnail.data.accent must be a colour written #rrggbb");
   if (data.tone !== undefined && !THUMB_TONES.includes(data.tone)) problems.push(`thumbnail.data.tone must be one of ${THUMB_TONES.join(", ")}`);
   if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
   if (data.capture !== undefined && !captureRef(data.capture)) problems.push('thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture');
@@ -934,11 +976,20 @@ const THUMB_BACKGROUND_CSS =
 
 // So That's Why (docs/videos/so-thats-why/look.md): cream, ink navy, stamp red, mustard. Inline
 // for the same reason as the keyframe CSS: no other video's thumbnail key moves.
+// Since 2026-11-11 on a bright ground (the owner chose a sample over the ink-navy scrim; the
+// 2026-11-01 refresh, refresh-20261101/SPEC.md, had asked for 亮底、高對比): a cream scrim on the
+// text side of the keyframe, or a sky-to-sunset ground without one; the headline ink navy with a
+// white outline, the emphasised word mustard outlined in navy; the sub line white on an ink-navy
+// plate; the stamp kept, the series' mark.
 const THUMB_SERIES_CSS = {
   sothatswhy:
-    ".thumb-scrim{background:linear-gradient(90deg,rgba(31,42,68,.94) 0%,rgba(31,42,68,.7) 48%,rgba(31,42,68,.1) 100%)}" +
-    ".thumb h1{color:#f6efe3}.thumb em{color:#e8b64c}.thumb .sub{color:#e9dfcd}" +
-    ".thumb .brand{color:#e8b64c;letter-spacing:.12em}" +
+    "body{background:linear-gradient(160deg,#8fd3ff 0%,#bfe6ff 38%,#ffe2a8 70%,#ff9a62 100%)}" +
+    ".thumb-scrim{background:linear-gradient(90deg,rgba(255,250,240,.9) 0%,rgba(255,250,240,.72) 46%,rgba(255,250,240,0) 72%)}" +
+    `.thumb h1{color:#1f2a44;font-size:${SERIES_THUMB_HEADLINE.fontSize}px;line-height:${SERIES_THUMB_HEADLINE.lineHeight};-webkit-text-stroke:14px #fff;paint-order:stroke fill}` +
+    ".thumb em{color:#e8b64c;-webkit-text-stroke:14px #1f2a44;paint-order:stroke fill}" +
+    ".thumb .sub{align-self:flex-start;color:#fff;background:#1f2a44;font-size:56px;font-weight:900;padding:12px 28px;border-radius:14px;max-height:none}" +
+    ".thumb .brand{color:#1f2a44;letter-spacing:.12em}" +
+    ".thumb-stamp{background:rgba(255,255,255,.35)}" +
     ".thumb .tag{background:#e8b64c;color:#1f2a44}" +
     ".thumb .tag.pillar-science{background:#f6efe3;color:#1f2a44}" +
     ".thumb .tag.pillar-travel{background:#1f2a44;color:#e8b64c;box-shadow:inset 0 0 0 3px #e8b64c}" +
@@ -969,6 +1020,20 @@ const THUMB_SPLIT_CSS =
   ".thumb.column.layout-e .brand{left:52px;bottom:44px;color:var(--paper);opacity:.85}" +
   ".thumb.column.layout-e .keep-lines{white-space:nowrap}";
 
+// The drama layout (THUMB_DRAMA_LAYOUT): the keyframe over the whole frame, held to its upper
+// part where the face is; a shade on the bottom third under the headline; the drama's strip at the
+// top left in --drama; the channel's mark small at the top right, clear of YouTube's duration
+// badge at the bottom right.
+const THUMB_DRAMA_CSS =
+  ".thumb-subject.layout-f{width:100%}" +
+  ".thumb-subject.layout-f img{object-position:center 25%}" +
+  '.thumb-subject.layout-f::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.8) 100%)}' +
+  `.thumb.column.layout-f{right:0;padding:48px ${DRAMA_THUMB_HEADLINE.right}px 70px ${DRAMA_THUMB_HEADLINE.left}px;justify-content:flex-end;gap:10px}` +
+  ".thumb.column.layout-f .tag{position:absolute;left:0;top:44px;border-radius:0;padding:12px 30px 12px 48px;background:var(--drama);color:#fff;font-size:44px;font-weight:900;letter-spacing:.04em;box-shadow:0 6px 18px rgba(0,0,0,.35)}" +
+  `.thumb.column.layout-f h1{color:#ffd400;font-size:${DRAMA_THUMB_HEADLINE.fontSize}px;line-height:${DRAMA_THUMB_HEADLINE.lineHeight};max-height:${Math.round(DRAMA_THUMB_HEADLINE.fontSize * DRAMA_THUMB_HEADLINE.lineHeight * DRAMA_THUMB_HEADLINE.maxLines)}px;letter-spacing:.02em;-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 10px 24px rgba(0,0,0,.5)}` +
+  ".thumb.column.layout-f .sub{color:#fff;font-size:64px;font-weight:900;max-height:90px;-webkit-text-stroke:10px #000;paint-order:stroke fill}" +
+  ".thumb.column.layout-f .brand{left:auto;right:40px;top:48px;bottom:auto;font-size:28px;letter-spacing:.12em;color:rgba(255,255,255,.9);text-shadow:0 2px 8px rgba(0,0,0,.6)}";
+
 const THUMB_MARQUE_CSS =
   ".thumb .marque{align-self:stretch;font-weight:900;line-height:1.05;color:var(--orange);white-space:nowrap;overflow:hidden;letter-spacing:.01em;" +
   "padding-bottom:14px;border-bottom:8px solid var(--orange);max-height:200px}";
@@ -984,30 +1049,32 @@ const THUMB_MARQUE_CSS =
  * and `data.tone` do not. `locale` is the caption locale a translated thumbnail is for: Korean,
  * Simplified Chinese and Japanese are set in their own font (page).
  */
-export function thumbnailHtml(thumbnail, { background = null, subject = null, series = null, locale = null, slug = null, offset = 0, aiSeries = null } = {}) {
+export function thumbnailHtml(thumbnail, { background = null, subject = null, series = null, locale = null, slug = null, offset = 0, aiSeries = null, drama = false } = {}) {
   const data = thumbnail.data;
   const own = THUMB_SERIES[series] ?? null;
   if (own) return page(seriesThumbnailBody(data, own, background), THUMB_SIZE, [background ? THUMB_BACKGROUND_CSS : "", background && THUMB_SERIES_SUBJECTS.includes(data.subject) ? THUMB_SUBJECT_CSS : "", data.layout === "right" ? THUMB_RIGHT_CSS : "", THUMB_SERIES_CSS[series]].join(""), { locale });
   if (data.layout === THUMB_AI_LAYOUT) return page(aiThumbnailBody(data, { background, subject, locale, slug, aiSeries }), THUMB_SIZE, THUMB_AI_CSS, { locale });
   const rotation = thumbnailRotation(slug, offset);
-  const layout = THUMB_LAYOUTS.includes(data.layout) || data.layout === THUMB_BOLD_LAYOUT || data.layout === THUMB_SPLIT_LAYOUT ? data.layout : isSplitThumbSlug(slug) ? THUMB_SPLIT_LAYOUT : isBoldThumbSlug(slug) ? THUMB_BOLD_LAYOUT : rotation.layout;
+  const named = [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT, THUMB_SPLIT_LAYOUT, THUMB_DRAMA_LAYOUT].includes(data.layout);
+  const layout = named ? data.layout : drama ? THUMB_DRAMA_LAYOUT : isSplitThumbSlug(slug) ? THUMB_SPLIT_LAYOUT : isBoldThumbSlug(slug) ? THUMB_BOLD_LAYOUT : rotation.layout;
   const tone = THUMB_TONES.includes(data.tone) ? data.tone : rotation.tone;
   const classes = `layout-${layout} tone-${tone}`;
   const split = layout === THUMB_SPLIT_LAYOUT;
+  const dramaLook = layout === THUMB_DRAMA_LAYOUT;
   const focus = isFocus(data.focus) ? data.focus : THUMB_FOCUS_DEFAULT;
   const kind = THUMB_SUBJECTS.includes(subject) ? subject : THUMB_SUBJECTS[1];
   // A brand story's company (THUMB_BRAND_MAX) in place of the tag; one that cannot be drawn is render's to report (thumbnailProblems).
   const marque = isText(data.brand) && !brandProblem(data.brand) ? data.brand : null;
   const body = [
     `<div class="thumb-subject ${classes}${background ? ` from-${kind}` : ""}"${split ? ` style="--focus:${focus}%"` : ""}>${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
-    `<div class="thumb column ${classes}">`,
+    `<div class="thumb column ${classes}"${dramaLook ? ` style="--drama:${dramaAccent(slug, data.accent)}"` : ""}>`,
     marque ? `<div class="marque fit" style="font-size:${brandFontSize(marque)}px">${escapeHtml(marque.trim())}</div>` : data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
     `<h1 class="fit${split && KEEP_LINE_SCRIPTS.test(data.headline ?? "") ? " keep-lines" : ""}">${richText(data.headline)}</h1>`,
     data.sub ? `<div class="sub fit${split && THAI_SCRIPT.test(data.sub) ? " keep-lines" : ""}">${richText(data.sub)}</div>` : "",
     `<div class="brand">${BRAND}</div>`,
     "</div>",
   ].join("");
-  return page(body, THUMB_SIZE, [marque ? THUMB_MARQUE_CSS : "", split ? THUMB_SPLIT_CSS : ""].join(""), { locale });
+  return page(body, THUMB_SIZE, [marque ? THUMB_MARQUE_CSS : "", split ? THUMB_SPLIT_CSS : "", dramaLook ? THUMB_DRAMA_CSS : ""].join(""), { locale });
 }
 
 /**
