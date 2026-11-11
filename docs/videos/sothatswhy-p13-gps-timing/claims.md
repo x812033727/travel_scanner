@@ -122,7 +122,7 @@
 
 ## C13 多路徑：訊號撞到牆反彈才進手機；主要是天線太靠近反射物；低仰角的衛星影響最大【官方說明＋教材】
 
-- **可用說法**：p125–p133。p131 把「教材」說清楚是誰的：「歐洲太空總署的導航教材說」（ESA Navipedia，ESA 主辦、大學研究者撰寫）。
+- **可用說法**：p125–p133。p131 把「教材」說清楚是誰的：「歐洲太空總署發起的導航百科說」（ESA Navipedia，ESA 主辦、大學研究者撰寫）。
 - **來源**：[1]、[10]
 - **原文**：GPS.gov [1]：「Signals reflected off buildings or walls ("multipath")」列為常見原因。
   Navipedia [10]：「The interference by multipath is generated when a signal arrives, by different ways, at the antenna … Its principal cause is the antenna closeness to the reflecting structures, and it is important when the signal comes from the satellite with low elevation.」
@@ -131,7 +131,7 @@
 
 ## C14 電離層延遲；單頻只能用模型、效應可達幾十公尺；廣播模型約修一半；延遲與頻率有關，雙頻可去掉 99.9% 以上【教材】
 
-- **可用說法**：p134–p142。第七輪（盲評 no_detour）改成小問的錯猜「會不會是天上那段路，把我的藍點弄歪？」，所長幾句排除後交回大樓：p136 電離層拖慢訊號；p137「只聽一個頻率，就像只聽一種音高，這個效應可以到幾十公尺」（「頻率」第一次出現時用音高說明：GPS.gov [1]「two GPS radio frequencies: L1 and L2」「a third civil signal at the L5 frequency」）；p138「可是它是整片天空慢慢變，不會在兩棟大樓之間突然跳」；p139 廣播修正估計約修一半；p140–p141 雙頻（高低兩支哨子）去掉九成九以上；p142「所以把你甩到對街的，不是天上那段路」。片中不說「接收機」
+- **可用說法**：p134–p142。第七輪（盲評 no_detour）改成小問的錯猜「會不會是天上那段路，把我的藍點弄歪？」，所長幾句排除後交回大樓：p136 電離層拖慢訊號；p137「只聽一個頻率，就像只聽一種音高，這個效應可以到幾十公尺」（「頻率」第一次出現時用音高說明：GPS.gov [1]「two GPS radio frequencies: L1 and L2」「a third civil signal at the L5 frequency」）；p138「可是它是整片天空慢慢變，不會在兩棟大樓之間突然跳」；p139 廣播修正估計約修一半；p140–p141 雙頻（高低兩支哨子）去掉九成九以上；p142「所以把你甩到對街的，多半不是天上那段路」。片中不說「接收機」
 - **來源**：[11]、[12]
 - **原文**：Navipedia [11]：「As the ionosphere is a dispersive media, the GNSS signals refraction depends on its frequencies (as the squared inverse). This dependence on the signal frequency allows us to remove its effect up to more than 99.9% using two frequency measurements … But, single frequency receivers have to apply an ionospheric prediction model to remove (as much as possible) this effect, that can reach up to several teens of meters」。
   Navipedia [12]：「GPS satellites broadcast the parameters of the Klobuchar ionospheric model for single frequency users … estimated to reduce about the 50% RMS ionospheric range error worldwide.」
@@ -145,7 +145,7 @@
 - **來源**：[1]
 - **原文**：GPS.gov [1]：「Doesn't the Government Degrade Civilian GPS Accuracy? No. During the 1990s, GPS employed a feature called Selective Availability that intentionally degraded civilian accuracy on a global basis. In May 2000 … the U.S. government ended its use of Selective Availability」。
 - **注意**：p115 照查核 F02 的改法「美國政府的 GPS 網站說：沒有故意把民用的弄差。」（不回答「軍用是不是比較準」）。
-  p117「而且訊號本身變差，到處都會偏，不會專挑大樓中間」是**撰稿推論**：GPS.gov 說選擇性可用性是「on a global basis」降低民用精度，而藍點只在大樓中間跳，所以這不是她看到的原因。
+  p117「而且就算訊號變差，也是到處都偏，不會專挑大樓中間」是**撰稿推論**：GPS.gov 說選擇性可用性是「on a global basis」降低民用精度，而藍點只在大樓中間跳，所以這不是她看到的原因。
   第二輪**刪掉**了增強系統兩句（p129–p130 舊版）：跟藍點為什麼跳無關。來源 [5] 仍列在文末，但片中已不用。
   素材審視提到的「軍民 URE 相同、多數民用單頻、軍用雙頻」**只在** archive.gps.gov 典藏頁 [2]（頁首寫 2025 年 2 月後沒有更新），現行 node/70 已刪；片中不用。
 

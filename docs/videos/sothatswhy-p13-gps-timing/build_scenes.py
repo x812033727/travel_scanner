@@ -271,7 +271,7 @@ chief("chief-sa", C("shaking her head with a calm reassuring smile", close=True)
       c("美國政府的 GPS 網站說：沒有故意把民用的弄差。", None, "P:military"),
       c("以前曾經故意讓民用的變不準，二〇〇〇年就停了。"))
 kid("kid-then-why", K("pointing across a sunny street with a frustrated frown", where=CORNER),
-    c("而且訊號本身變差，到處都會偏，不會專挑大樓中間。"),
+    c("而且就算訊號變差，也是到處都偏，不會專挑大樓中間。"),
     k("那我的手機，", "不服氣"), k("怎麼會差到對街？", "句尾上揚"))
 chief("chief-ure-not", C("holding up one finger with an honest careful smile", close=True),
       c("官方特別說明：訊號的誤差，不等於你手上的誤差。", None, "P:signal"),
@@ -290,7 +290,7 @@ obj("glass-wall", "Close-up of a tall smooth glass building wall reflecting the 
     c("回到公園：哨聲撞到一面牆，繞了遠路才到你耳朵，"),
     c("你就以為那個朋友比較遠。這叫多路徑。", None, "P:echo"))
 chief("chief-echo-where", C("holding a small phone close to a pale wall with a thoughtful smile"),
-      c("歐洲太空總署的導航教材說，"),
+      c("歐洲太空總署發起的導航百科說，"),
       c("主要是因為天線太靠近會反射的東西；"),
       c("從很低的地方斜斜進來的衛星，影響最大。"))
 kid("kid-iono-q", K("pointing high up at the sky with a suspicious frown", where=PARK),
@@ -305,7 +305,7 @@ obj("two-whistles", "Close-up of two whistles lying side by side on a wooden par
     c("同時聽高低兩個頻率，就像比一比兩支哨子，"),
     c("電離層的效應，可以去掉九成九以上。"))
 kid("kid-towers-back", K("looking up at the tall glass towers beside her with a knowing little nod", where=STREET),
-    c("所以把你甩到對街的，不是天上那段路。", None, "P:iono"))
+    c("所以把你甩到對街的，多半不是天上那段路。", None, "P:iono"))
 kid("kid-slow-q", K("holding a small phone up and tapping it impatiently with a bored pout", where=CORNER),
     k("還有我重開地圖那次，", "抱怨"), k("藍點怎麼等那麼久？", "章尾停住，句尾上揚", "S:slow"))
 
@@ -428,12 +428,12 @@ doc = {
     "youtube": {
         "category_id": 27, "made_for_kids": False, "default_language": "zh-TW",
         "title": "GPS 差一點時間，位置怎麼差那麼遠？｜原來如此事務所",
-        "description": "小問走路去公園找同學，走在兩排大樓中間，手機地圖上的藍點突然跳到對面那條街，過一下又跳回來。手機到底怎麼用時間，知道你在哪裡？\n\n"
+        "description": "小問走路去公園找同學，走在兩排大樓中間，手機地圖上的藍點突然跳到對面那條街，重開地圖還等好久。手機到底怎麼用時間，知道你在哪裡？\n\n"
                        "這一集，所長和小問跟著同一段路走，用一個「公園吹哨子」的遊戲來想：聽到哨聲晚了多久，就知道離那個朋友多遠。"
                        "衛星就是帶著原子鐘的朋友，訊號跑得跟光一樣快，所以時間只差百萬分之一秒，距離就差三百公尺，連衛星時鐘那一點相對論的差都一定要先修好；"
                        "手機沒有原子鐘，所以要多聽第四顆衛星，把自己的錶差多少也一起算出來。"
-                       "接著看藍點為什麼會偏：衛星送得很準，在大樓中間把藍點甩到對街的，多半是大樓擋住和牆面反彈；高空的電離層也會拖慢訊號，但它整片天空一起變，大多修得掉；"
-                       "最後是剛開地圖時為什麼要等，以及手機怎麼靠網路省下等待，卻得多找一顆衛星。\n\n"
+                       "接著看藍點為什麼會偏：衛星送得很準，在大樓中間把藍點甩到對街的，多半是大樓擋住和牆面反彈；高空的電離層也會拖慢訊號，但它是整片天空慢慢變，不會在大樓之間突然跳，而且修得掉一部分，同時聽兩個頻率幾乎全修掉；"
+                       "最後是剛開地圖時為什麼要等，以及手機怎麼靠網路省下等待，有些手機卻得多找一顆衛星。\n\n"
                        "畫圓圈找交點只是示意，真正的接收機是把位置和時間一起估算出來；插圖由 AI 生成，是示意，不是實際的衛星位置。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["GPS", "衛星定位", "手機地圖", "原子鐘", "多路徑", "電離層", "相對論", "科普", "原來如此事務所"]},
     "thumbnail": {"template": "thumb", "data": {"headline": "藍點\n**跳到對街？**", "sub": "差百萬分之一秒，差三百公尺", "shot": "kid-dot-puzzled", "subject": "right"}},
