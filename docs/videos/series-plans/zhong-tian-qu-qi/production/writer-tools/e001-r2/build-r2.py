@@ -5,9 +5,10 @@ her face buried); and it never writes brief.md over the hand-written one.
 Usage: python3 build-r2.py r2                      (this folder's r2.py: e001 r2, internal number 901)
        python3 build-r2.py ../e002-r2/r2.py         (any r2 episode: the spec sets EP = 90N and SLUG)
 """
+from pathlib import Path
 import importlib, importlib.util, json, os, re, subprocess, sys
 
-REPO = "/home/user/travel_scanner"
+REPO = str(Path(__file__).resolve().parents[7])  # e906 prep: a hard-coded /home/user/travel_scanner wrote into another checkout
 HERE = os.path.dirname(os.path.abspath(__file__))
 P = f"{REPO}/docs/videos/series-plans/zhong-tian-qu-qi"
 H = f"{P}/production/hailuo"

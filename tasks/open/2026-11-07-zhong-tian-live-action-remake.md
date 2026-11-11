@@ -18,6 +18,8 @@ scope:
 
 ## Why
 
+**站主 2026-11-11：「之後都用真人版」**——第 7 集起所有新做的集數都走真人版路線（Ref2VA 草稿→獨立挑片與重拍→精修前審片→σ0.5 精修→clip_voice 剪接→成片三輪審片），不再做 3D CG。
+
 站主 2026-11-07：「種田改成真人版重做」「不要用動畫的」。3D CG 版第 1–6 集 r2 的重抽一直卡在同樣的錯（參考圖帶笑、道具每鏡不一樣），站主決定整部改成真人版。
 CG 的重抽佇列（`scratchpad/chainR`–`chainU`）已經停掉，pod 也停了（這次 pod 計 US$11.50），兩個定時自查都改成不准重開 CG 佇列。
 計畫在 `docs/videos/series-plans/zhong-tian-qu-qi/production/live-action-plan.md`。
