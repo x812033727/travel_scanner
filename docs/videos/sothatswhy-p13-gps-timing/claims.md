@@ -105,7 +105,7 @@
 
 ## C11 訊號本身的誤差：承諾 95% 在 2 公尺內；2021-04-20 實際不到 65 公分；訊號誤差不等於使用者精度【官方說明】
 
-- **可用說法**：p107–p112、p118–p121。p121「手上的誤差，還要加上路上的事：擋住、反彈，跟大氣」只列這一章接著講的三件事（擋住在 C10、反彈在 C13、大氣在 C14），衛星幾何已在第二章講過
+- **可用說法**：p107–p112、p118–p121。p121「手上的誤差，還要加上訊號在路上遇到的事」不再列清單，路上的事由這一章接著一件一件講（反彈在 C13、高空的電離層在 C14，擋住已在 C10）
 - **來源**：[1]
 - **原文**：GPS.gov [1]：「the government commits to broadcasting the GPS signal in space with a daily global average user range error (URE) of ≤2.0 m (6.6 ft.), with 95% probability … On April 20, 2021, the global average URE across all satellites was ≤0.643 m (2.1 ft.), 95% of the time.」
   「To be clear, URE is not user accuracy. User accuracy depends on a combination of satellite geometry, URE, and local factors such as signal blockage, atmospheric conditions, and receiver design features/quality.」
@@ -151,7 +151,7 @@
 
 ## C16 衛星的鐘因相對論要修：重力弱→走快，速度快→走慢，合起來還是快；每天約 38 微秒；光在這段時間跑 11 公里多；有些鐘發射前在地面調慢，有些入軌後量了把修正寫進廣播【研究回顧＋換算】
 
-- **可用說法**：p043–p059。p054「一微秒，就是百萬分之一秒」是「微秒」第一次出現時的說明（10⁻⁶ 秒，與開場 p010 的「百萬分之一秒」接上）（約 55 秒，企劃上限約 90 秒）。第二輪移到第一章「三百公尺」之後，當作「衛星報的時間能不能信」：小問「差一點點都不行！那衛星的錶，真的那麼準嗎？」→ 修正 → 「時間能信了，那聽一顆衛星…」
+- **可用說法**：p043–p059。p054「一微秒，就是開頭那個百萬分之一秒」是「微秒」第一次出現時的說明（10⁻⁶ 秒，與開場 p010 的「百萬分之一秒」接上）（約 55 秒，企劃上限約 90 秒）。第二輪移到第一章「三百公尺」之後，當作「衛星報的時間能不能信」：小問「差一點點都不行！那衛星的錶，真的那麼準嗎？」→ 修正 → 「時間能信了，那聽一顆衛星…」
 - **來源**：[15]
 - **原文**：Ashby [15]：「+2.5046 × 10⁻¹⁰ − 6.9693 × 10⁻¹⁰ = −4.4647 × 10⁻¹⁰. The negative sign in this result means that the standard clock in orbit is beating too fast, primarily because its frequency is gravitationally blueshifted.」
   「for a GPS satellite clock, the gravitational blueshift is greater」（低軌道則是速度的時間膨脹較大）。
@@ -187,7 +187,7 @@
 
 ## C20 代價：沒有從電文讀到精確時間；衛星在動，時間錯 → 算出的衛星位置錯；每差一秒距離錯約 800 公尺；把時間當第五個未知數，要至少五顆衛星【研究回顧】
 
-- **可用說法**：p167–p175
+- **可用說法**：p167–p177。p176–p177（第七輪加）把第五個未知數接回藍點：「你在街角一打開就看到的藍點，可能就是這樣算出來的。」「難怪它有時候一下就出來！」——「可能」配合查核要求的「有些手機」，不說每支手機都這樣
 - **來源**：[14]
 - **原文**：Blay et al. [14] §2.1：「the problem is that the time is in error, so the normal four-state least squares algorithm can not solve for the receiver position and common bias … For each one second of error, the pseudoranges would be incorrect on the order of 800 m (Van Diggelen, 2009). There is hope though, as we know the velocities of the satellites, and thus the pseudorange rate.」
   「Since there are now five columns of the H matrix, there now must be at least five satellites to solve for δx.」
