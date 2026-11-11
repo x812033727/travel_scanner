@@ -125,19 +125,19 @@ obj("driver-view", "Wide view from the back seat of a small family car between t
 chief("chief-listen", C("leaning forward with a curious smile, one hand on her chin", close=True),
       c("同一台車、同一條路，只有你在暈？", "接住上一句"))
 chief("chief-tease-blind", C("holding a soft pastel sleep mask up in one hand and winking playfully"),
-      c("還有更怪的：遮住眼睛的乘客，照樣會暈；", "賣關子", "S:blind"))
+      c("還有更怪的：遮住眼睛坐車，會不會暈？", "賣關子", "S:blind"))
 chief("chief-tease-sofa", C("sitting very still on a sofa holding a game controller, a puzzled playful face"),
-      c("坐在沙發上不動，看賽車畫面，也有人會暈。", "賣關子", "S:sofa"))
+      c("坐在沙發上不動，只看賽車畫面，又會不會暈？", "賣關子", "S:sofa"))
 kid("kid-me-too", K("pointing at herself with a surprised face", where=HOME),
-    k("不是只有我？", "句尾上揚"))
+    k("我猜都不會！", "篤定的錯猜"))
 chief("chief-promise", C("holding a clear plastic cup of water up beside her face with a warm inviting smile"),
-      c("你會暈，絕對不是你一個人。", "轉向觀眾"), c("就用這一趟，找出你身上是誰跟誰在吵架。"))
+      c("先別猜。你會暈，絕對不是你一個人。", "轉向觀眾"), c("今天就用去阿嬤家這一趟，把原因找出來。"))
 kid("kid-main-q", K("holding " + COMIC + " against her chest and frowning with a puzzled tilted head", where=CAR),
-    k("我的眼睛跟身體，", "想不通"), k("在吵架？", "句尾上揚", "S:main"))
+    k("我的頭跟肚子，", "想不通"), k("到底怎麼了？", "句尾上揚", "S:main"))
 
 # ---------- 第一章：眼睛和耳朵，各說各的 ----------
 kid("kid-ear-guess", K("cupping one hand behind her ear with a worried little frown", close=True, where=HOME),
-    k("身體那邊，是誰在吵？", "擔心"), k("我聽說是耳朵裡面不好？", "擔心的錯猜", "S:broken"), chapter="眼睛和耳朵，各說各的")
+    k("會暈車，", "擔心"), k("我聽說是耳朵裡面不好？", "擔心的錯猜", "S:broken"), chapter="眼睛和耳朵，各說各的")
 chief("chief-opposite", C("shaking her head gently with a kind smile, one hand raised", close=True),
       c("那叫內耳。不一定喔，研究暈車的人發現，", "接住上一句"), c("內耳的平衡功能完全不能用的人，才完全不會暈。", None, "P:broken"))
 chief("chief-almost-all", C("opening both arms wide towards the viewer with a reassuring smile"),
@@ -305,7 +305,7 @@ kid("kid-differ-q", K("looking back over her shoulder towards the front seat wit
 chief("chief-first-unknown", C("holding up one finger with a serious kind smile", close=True),
       c("這個問題，研究也還沒完全解開。", "接住上一句"), chapter="最會暈和最不會暈，差了一萬倍")
 chief("chief-range", C("spreading her arms very wide apart with an amazed smile"),
-      c("有研究估計，最容易暈和最不容易暈的人，差了大約一萬倍。"))
+      c("研究暈車幾十年的科學家估計，最會暈和最不會暈的人，"), c("暈的程度可以差到一萬倍。"))
 kid("kid-wow", K("throwing both hands up with wide amazed eyes", close=True, where=HOME),
     k("一萬倍！", "驚訝"))
 chief("chief-age", C("holding one hand low and then raising it with a friendly smile"),
@@ -347,11 +347,11 @@ kid("kid-final-q", K("holding " + COMIC + " on her lap and looking straight ahea
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
       c("你自己說說看，從你的漫畫，到那杯水。", "笑"), chapter="快到阿嬤家，小問想通了")
 kid("kid-got-it", K("holding " + COMIC + " up proudly with a big confident grin", where=CAR),
-    k("原來如此！", "恍然大悟"), k("眼睛跟耳朵說的不一樣，", "篤定"))
+    k("原來如此！", "恍然大悟"), k("就像那杯水：眼睛跟耳朵說的不一樣，", "篤定"))
 kid("kid-got-it-2", K("pretending to turn a big steering wheel with both hands and laughing", where=HOME),
-    k("大腦一對不上，", "篤定"), k("我就暈了！", "篤定", "P:main"), k("開車的爸爸先知道要轉彎，"), k("所以他不暈！"))
+    k("大腦一對不上，", "篤定"), k("我就暈了！", "篤定", "P:main"), k("還記得爸爸？他先知道要轉彎，"), k("所以他不暈！"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
-      c("說得好。我覺得最好玩的是：", "笑"), c("你會暈，是因為你的身體一直很認真，在算你怎麼動。"))
+      c("說得好。還記得一開始我說，會暈代表它一直在工作嗎？", "笑"), c("我覺得最好玩的是：你的身體一直很認真在算你怎麼動。"))
 obj("grandma-house", "Wide shot of a small family car parked in front of a cosy old Taiwanese brick farmhouse with a red-tiled roof, potted plants and green hills, sunny afternoon",
     k("到阿嬤家了！", "開心"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
@@ -363,8 +363,8 @@ chief("outro-wave", "Waist-up medium shot of the chief waving goodbye with a war
       c("想一起找生活裡的為什麼，就訂閱原來如此事務所。", "誠懇"))
 
 # ---------- assemble ----------
-WHAT = {"main": "坐車看漫畫，眼睛跟身體到底在吵什麼", "dad": "爸爸開同一台車，為什麼一點事都沒有",
-        "blind": "遮住眼睛的乘客為什麼照樣會暈", "sofa": "坐在沙發上不動，看賽車畫面為什麼也會暈",
+WHAT = {"main": "坐車看漫畫，頭暈肚子怪，到底怎麼了", "dad": "爸爸開同一台車，為什麼一點事都沒有",
+        "blind": "遮住眼睛坐車，會不會暈", "sofa": "坐在沙發上不動，只看賽車畫面會不會暈",
         "broken": "會暈車是不是內耳不好", "ear": "內耳到底在做什麼",
         "eyes": "眼睛也會報告嗎", "liar": "看漫畫時，是誰在說謊",
         "close": "閉上眼睛是不是就不會吵", "who": "眼睛閉起來了，還在跟誰吵",
