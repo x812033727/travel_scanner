@@ -67,7 +67,14 @@ FLAT = ", simple hand-drawn flat 2D children's cartoon illustration with clean i
 HOOD = ", hood down, short black bob hanging free"
 EXTRA = {}
 # Whole-prompt rewrites after a visual review. Empty until this episode's keyframes are drawn and checked.
-REWRITE = {}
+# 2026-11-11 zoom check: no usable take among three (review/zoom-check/verdict-A..D.json)
+REWRITE = {
+    'satellite-sky': 'Wide shot of one simple cartoon satellite shaped like a shiny silver box with a small round white dish antenna on top and two wide flat golden solar wings, all smooth plain metal panels, floating high in a deep blue daytime sky above soft white clouds, the satellite small in the centre of the frame, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours',
+    'chief-whistle-game': 'Waist-up medium shot of the chief blowing a small shiny silver referee whistle held to her lips with one hand, cheeks puffed and eyes smiling, a red cord hanging from the whistle, a plain pale wall behind her, bright daylight, the chief is a middle-aged woman with round black glasses, dark hair with one grey streak tied in a low ponytail, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse and navy trousers, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours',
+    'satellite-high': 'Wide shot of one simple cartoon satellite shaped like a shiny silver box with a small round white dish antenna on top and two wide flat golden solar wings, all smooth plain metal panels, floating high in a deep blue daytime sky above soft white clouds, the satellite small in the centre of the frame, a tiny sunny city with tall glass buildings far below under the clouds, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours',
+    'chief-no-match': 'Waist-up medium shot of a middle-aged woman with round black glasses, dark hair with a grey streak tied in a low ponytail, a yellow pencil tucked behind one ear, a mustard-yellow cardigan over a white blouse and navy trousers, standing in front of a plain pale cream wall in bright daylight, both palms turned up at shoulder height in a gentle shrug, an honest warm apologetic smile, clean empty space around her, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours',
+    'kid-towers-back': 'Waist-up medium shot of a little 8-year-old girl on a sunny sidewalk beside tall smooth glass towers, tilting her head back to look up at the towers with a small satisfied smile, bright daylight, smooth glass facades with simple window grids and a clear blue sky. The girl has a short black bob with straight blunt bangs and one small curl of cowlick on top, a round young face with simple dot-like eyes and rosy cheeks, a navy raincoat jacket with a mustard-yellow hood folded down behind her neck, her black bob uncovered and hanging free, simple flat 2D cel-shaded cartoon drawing with clean ink outlines and flat colours',
+}
 def _shot(id, prompt, chars, lines, chapter):
     prompt = REWRITE.get(id, prompt + EXTRA.get(id, ""))
     assert not BANNED.search(prompt), (id, BANNED.search(prompt).group(0))
