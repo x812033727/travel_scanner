@@ -15,6 +15,7 @@ scope:
   - apps/web/e2e/readability.spec.ts
   - apps/web/e2e/planner-calm.spec.ts
   - apps/web/e2e/trip-stay-areas.spec.ts
+  - apps/web/e2e/full-stack.spec.ts
 ---
 
 # Pin the clock in the planner weather readability and itinerary drag-handle e2e tests
@@ -33,6 +34,9 @@ on PR #2060's run 43064874170 (head a2c557f91, which changes no web code):
 - planner-browser (run 43064874469): `e2e/planner-calm.spec.ts:40`, `:59`, `:78` and
   `e2e/trip-stay-areas.spec.ts:123` (`.calm-optional-arrangements > summary` never appears, 30 s
   timeout), on desktop and mobile — the planner's sections depend on which trip day is today.
+- full-stack-smoke (run 43066531384): `e2e/full-stack.spec.ts:27` creates a trip 2026-11-11 to 11-12,
+  moves an item to 11-12 (the API confirms it), reloads, then waits 90 s for
+  `getByRole("button", { name: /DAY 2/ })` — 11-12 is today in Tokyo, which the planner labels 今天.
 
 #2066 (ce6efa991) froze the page clock at 2026-11-01 for the itinerary-editor specs for the same
 reason, but not in these two places.
