@@ -45,7 +45,7 @@
 
 ## C04 衛星帶原子鐘，訊號裡寫著發射時刻；大約兩萬公里高；訊號通常走 60–90 毫秒【官方說明＋研究文獻】
 
-- **可用說法**：p033–p038。p033「原子鐘，就是非常非常準的鐘」是給八歲小孩的定義，對應 FAA「atomic clocks that provide extremely accurate time」。
+- **可用說法**：p033–p038。p038「一毫秒是千分之一秒」是「毫秒」第一次出現時的說明。p033「原子鐘，就是非常非常準的鐘」是給八歲小孩的定義，對應 FAA「atomic clocks that provide extremely accurate time」。
 - **來源**：[7]、[4]、[14]
 - **原文**：FAA [7]：「GPS satellites carry atomic clocks that provide extremely accurate time. The time information is placed in the codes broadcast by the satellite so that a receiver can continuously determine the time the signal was broadcast.」
   GPS.gov Space Segment [4]：「at an altitude of approximately 20,200 km (12,550 miles)」。
@@ -54,11 +54,11 @@
 
 ## C05 訊號跟光一樣快，一秒約三十萬公里；差百萬分之一秒，距離差三百公尺【物理常數＋換算】
 
-- **可用說法**：p009–p010（開場預告）、p040–p042（回收）
+- **可用說法**：p009–p011（開場只問「時間只差百萬分之一秒，你猜，距離會差多少？」，小問錯猜「差一兩公尺吧？」）、p040–p042（第一次說出三百公尺，就在算出來的地方：「所以剛剛那百萬分之一秒，光就跑了大約三百公尺，不是一兩公尺。」）
 - **來源**：[17]；[7]（距離由時間差算出）
 - **原文**：NIST [17]：speed of light in vacuum「299 792 458 m s⁻¹」（exact）。
 - **注意**：299,792,458 × 10⁻⁶ = 299.8 m → 「三百公尺」**四捨五入**。大氣會讓訊號稍慢（C11），所以 FAA 說接收機要扣電離層與對流層延遲；片中「跟光一樣快」是在真空裡的說法。
-  開場 p010 說「距離就差三百公尺」，不說「位置」：時間誤差先變成距離（偽距）誤差，位置最後偏多少還要乘上幾何的放大倍數（C09）。片名「位置怎麼差那麼遠」是定性的說法（第二輪刪掉了 p045 的「這就是今天的題目」）。
+  第三輪（盲評 no_spoiler）把開場的結果拿掉，只留問題。p042 說的是「光跑了」三百公尺＝距離（偽距）誤差，不說「位置」：位置最後偏多少還要乘上幾何的放大倍數（C09）。片名「位置怎麼差那麼遠」是定性的說法（第二輪刪掉了 p045 的「這就是今天的題目」）。
 
 ## C06 只聽一顆只知道距離，可能在一整圈（太空裡是一整顆球面）上；兩三顆疊起來縮小範圍；畫圓圈只是示意【理想示意】
 
@@ -122,7 +122,7 @@
 
 ## C13 多路徑：訊號撞到牆反彈才進手機；主要是天線太靠近反射物；低仰角的衛星影響最大【官方說明＋教材】
 
-- **可用說法**：p125–p133
+- **可用說法**：p125–p133。p131 把「教材」說清楚是誰的：「歐洲太空總署的導航教材說」（ESA Navipedia，ESA 主辦、大學研究者撰寫）。
 - **來源**：[1]、[10]
 - **原文**：GPS.gov [1]：「Signals reflected off buildings or walls ("multipath")」列為常見原因。
   Navipedia [10]：「The interference by multipath is generated when a signal arrives, by different ways, at the antenna … Its principal cause is the antenna closeness to the reflecting structures, and it is important when the signal comes from the satellite with low elevation.」
@@ -150,7 +150,7 @@
 
 ## C16 衛星的鐘因相對論要修：重力弱→走快，速度快→走慢，合起來還是快；每天約 38 微秒；光在這段時間跑 11 公里多；有些鐘發射前在地面調慢，有些入軌後量了把修正寫進廣播【研究回顧＋換算】
 
-- **可用說法**：p043–p059（約 50 秒，企劃上限約 90 秒）。第二輪移到第一章「三百公尺」之後，當作「衛星報的時間能不能信」：小問「差一點點都不行！那衛星的錶，真的那麼準嗎？」→ 修正 → 「時間能信了，那聽一顆衛星…」
+- **可用說法**：p043–p059。p054「一微秒，就是百萬分之一秒」是「微秒」第一次出現時的說明（10⁻⁶ 秒，與開場 p010 的「百萬分之一秒」接上）（約 55 秒，企劃上限約 90 秒）。第二輪移到第一章「三百公尺」之後，當作「衛星報的時間能不能信」：小問「差一點點都不行！那衛星的錶，真的那麼準嗎？」→ 修正 → 「時間能信了，那聽一顆衛星…」
 - **來源**：[15]
 - **原文**：Ashby [15]：「+2.5046 × 10⁻¹⁰ − 6.9693 × 10⁻¹⁰ = −4.4647 × 10⁻¹⁰. The negative sign in this result means that the standard clock in orbit is beating too fast, primarily because its frequency is gravitationally blueshifted.」
   「for a GPS satellite clock, the gravitational blueshift is greater」（低軌道則是速度的時間膨脹較大）。
@@ -194,12 +194,9 @@
 - **注意**：800 m 是 Blay 等 2021 引述 van Diggelen 2009，不是 Blay 自己的實驗；片中說「一篇導航期刊的論文回顧一個常用的方法」，把歸屬講出來。van Diggelen 2009 原書沒讀。
   「量出的距離就錯」＝偽距（pseudorange）錯，**簡化**。
 
-## C21 藍點對了導航還帶錯路：常常是地圖錯，不是 GPS 硬體【官方說明】
+## C21 （第三輪刪除）藍點對了導航還帶錯路
 
-- **可用說法**：p177(已刪)–p180(已刪)
-- **來源**：[1]
-- **原文**：GPS.gov [1]：「In many cases, a device's GPS hardware is working fine, but its mapping software is faulty. For example, users are often misled by: Incorrectly drawn maps; Mislabeled businesses and other points of interest; Missing roads, buildings, communities, etc.」
-- **注意**：不給比例；控制在約 10 秒內（企劃要求 25 秒內）。
+盲評 no_detour：跟「藍點為什麼跳」無關，整段（舊 p177–p180）與 loop `map` 一起刪掉。GPS.gov [1] 的地圖錯誤一段片中已不用。
 
 ## C22 收尾：小問的答案、所長的意見【回收，意見標成意見】
 
