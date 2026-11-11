@@ -34,3 +34,8 @@
   session 沒有任何在跑的背景指令，容器在半小時內兩次重開（`uptime` 0 分鐘、沒有 node 程序、沒有完成檔），`setsid` 的插圖也一起沒了。
   工作目錄 `/root/mokaair-work` 與 repo 都還在，`LEASE` 記的是舊 boot id，直接重跑 `keyframes` 就從斷點接著畫。長步驟跑著時一定要同時有一個
   harness 追蹤的背景監看（`run_in_background`，上限 2 小時，到期就再開一個），只靠 `send_later` 排的檢查不夠：它在閒著的容器重開後才觸發。
+- **2026-11-11，sothatswhy-p21-car-sickness，接手 session：站上還沒有這一集的紀錄時，qa 的 policy 會要「有示範」。** 站上判定要不要問示範，看的是
+  `VideoProject` 那一列的 category／format（`apps/api/app/video_automation/judge.py` `policy_questions_for`）；沒有那一列就當教學片問，
+  P21 第一次 qa 得「有示範 0.23」沒過。`video.json` 寫的 `explainer`／`drama` 要推過一次才進站：先跑
+  `review-push --slug <slug> --report-only`（不送任何關卡），再跑 qa，就變「有示範：不適用（解說）」。成片最後淡出的那 1.6 秒會被
+  silencedetect 算成最長空檔，不是台詞之間的空檔，看時間點再判斷。
