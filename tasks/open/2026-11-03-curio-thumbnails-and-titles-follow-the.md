@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - .agents/skills/curio-episode/SKILL.md
   - .claude/skills/curio-episode/SKILL.md
+  - .agents/skills/curio-episode/references/thumbnail-2026-11-03.md
   - tools/video/automation/explainer-series.mjs
   - tools/video/automation/explainer-series.test.mjs
   - tools/video/qa/thumbnail.mjs
@@ -73,3 +74,5 @@ out this way without hand fixes.
   (reviewer `claude-pr-review-curio-thumb-20261103`, DURATION_ONLY PASS) is in
   `docs/videos/long-form/review.md`. The other Windows-local `test:tools` failures (backup, tts,
   adult_english, elementary) are in untouched files.
+- The SKILL.md body hit the 300-line limit after main grew it; the 2026-11-03 thumbnail rules now live in
+  `.agents/skills/curio-episode/references/thumbnail-2026-11-03.md` (references exist only under `.agents`).
