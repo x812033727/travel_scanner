@@ -78,7 +78,7 @@
   },
   {
    "setup": "p013",
-   "payoff": "p184",
+   "payoff": "p177",
    "what": "坐車看漫畫，眼睛跟身體到底在吵什麼"
   },
   {
@@ -138,17 +138,17 @@
   },
   {
    "setup": "p141",
-   "payoff": "p155",
+   "payoff": "p153",
    "what": "為什麼同一台車有人很會暈、有人不會"
   },
   {
-   "setup": "p158",
-   "payoff": "p166",
+   "setup": "p156",
+   "payoff": "p164",
    "what": "對不上，為什麼偏偏是想吐"
   },
   {
-   "setup": "p170",
-   "payoff": "p174",
+   "setup": "p166",
+   "payoff": "p170",
    "what": "大腦裡有沒有負責比對的地方"
   }
  ],
@@ -461,7 +461,7 @@
     {
      "id": "p011",
      "speaker": "chief",
-     "text": "今天就用去阿嬤家這一趟，把原因找出來。"
+     "text": "就用這一趟，找出你身上是誰跟誰在吵架。"
     }
    ]
   },
@@ -486,7 +486,7 @@
     {
      "id": "p013",
      "speaker": "kid",
-     "text": "在吵什麼？",
+     "text": "在吵架？",
      "emotion": "句尾上揚"
     }
    ]
@@ -513,7 +513,7 @@
     {
      "id": "p015",
      "speaker": "kid",
-     "text": "我聽說是內耳不好？",
+     "text": "我聽說是耳朵裡面不好？",
      "emotion": "擔心的錯猜"
     }
    ]
@@ -533,7 +533,7 @@
     {
      "id": "p016",
      "speaker": "chief",
-     "text": "不一定。研究暈車的人發現，",
+     "text": "那叫內耳。不一定喔，研究暈車的人發現，",
      "emotion": "接住上一句",
      "pause_after_ms": 500
     },
@@ -885,7 +885,7 @@
   },
   {
    "id": "chief-nobody-lies",
-   "chapter": "看漫畫的時候，改了哪一邊",
+   "chapter": "漫畫跟著小問一起晃",
    "template": "shot",
    "data": {
     "prompt": "Head-and-shoulders close-up of the chief holding up two fingers with a calm friendly smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -1868,7 +1868,7 @@
     {
      "id": "p111",
      "speaker": "chief",
-     "text": "在電影院看大銀幕、玩虛擬實境、開駕駛模擬器，都有人遇過。"
+     "text": "在電影院看大銀幕、玩虛擬實境，都有人遇過。"
     }
    ]
   },
@@ -2214,7 +2214,7 @@
     {
      "id": "p134",
      "speaker": "kid",
-     "text": "咦？為什麼？",
+     "text": "咦，沒用耶！",
      "emotion": "驚訝"
     }
    ]
@@ -2300,7 +2300,7 @@
   },
   {
    "id": "chief-first-unknown",
-   "chapter": "同一台車，為什麼有人不會暈",
+   "chapter": "最會暈和最不會暈，差了一萬倍",
    "template": "shot",
    "data": {
     "prompt": "Head-and-shoulders close-up of the chief holding up one finger with a serious kind smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -2435,31 +2435,7 @@
     {
      "id": "p149",
      "speaker": "chief",
-     "text": "對，你剛好在那個年紀。女生也比男生容易一點，"
-    },
-    {
-     "id": "p150",
-     "speaker": "chief",
-     "text": "不過這個差別，比年紀的差別小得多。"
-    }
-   ]
-  },
-  {
-   "id": "chief-migraine",
-   "template": "shot",
-   "data": {
-    "prompt": "Waist-up medium shot of the chief pressing a folded cool towel to her forehead with her eyes closed and a calm face, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
-    "camera": "push in",
-    "visual": "still",
-    "characters": [
-     "chief"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p151",
-     "speaker": "chief",
-     "text": "常偏頭痛、內耳有毛病的人，也比較容易暈。"
+     "text": "對，你剛好在那個年紀。"
     }
    ]
   },
@@ -2475,7 +2451,7 @@
    },
    "lines": [
     {
-     "id": "p152",
+     "id": "p150",
      "speaker": "chief",
      "text": "雙胞胎研究還發現，誰比較會暈，很大一部分跟遺傳有關。"
     }
@@ -2494,15 +2470,15 @@
    },
    "lines": [
     {
-     "id": "p153",
+     "id": "p151",
      "speaker": "kid",
-     "text": "那是哪個地方，",
+     "text": "所以會不會暈，",
      "emotion": "追問"
     },
     {
-     "id": "p154",
+     "id": "p152",
      "speaker": "kid",
-     "text": "讓我比較會暈？",
+     "text": "有一部分是天生的？",
      "emotion": "句尾上揚"
     }
    ]
@@ -2520,9 +2496,9 @@
    },
    "lines": [
     {
-     "id": "p155",
+     "id": "p153",
      "speaker": "chief",
-     "text": "這就不知道了。研究的人說，背後真正的原因還不清楚。"
+     "text": "有一部分是。可是到底差在哪裡，研究還不清楚。"
     }
    ]
   },
@@ -2538,7 +2514,7 @@
    },
    "lines": [
     {
-     "id": "p156",
+     "id": "p154",
      "speaker": "chief",
      "text": "那份遊覽車調查也看到：年紀越大、越常坐車的人，越少暈。"
     }
@@ -2557,13 +2533,13 @@
    },
    "lines": [
     {
-     "id": "p157",
+     "id": "p155",
      "speaker": "kid",
      "text": "可是對不上，",
      "emotion": "追問"
     },
     {
-     "id": "p158",
+     "id": "p156",
      "speaker": "kid",
      "text": "為什麼偏偏是想吐？",
      "emotion": "句尾上揚"
@@ -2583,12 +2559,12 @@
    },
    "lines": [
     {
-     "id": "p159",
+     "id": "p157",
      "speaker": "chief",
-     "text": "這個也還沒定案。說得出它怎麼被引起，"
+     "text": "老實說，還沒有人知道。說得出它怎麼被引起，"
     },
     {
-     "id": "p160",
+     "id": "p158",
      "speaker": "chief",
      "text": "卻說不出，身體為什麼要用想吐來反應。"
     }
@@ -2607,12 +2583,12 @@
    },
    "lines": [
     {
-     "id": "p161",
+     "id": "p159",
      "speaker": "chief",
      "text": "有人提過一個猜法：有些毒會讓感覺亂掉，"
     },
     {
-     "id": "p162",
+     "id": "p160",
      "speaker": "chief",
      "text": "身體乾脆吐掉比較保險，暈車是不小心被晃動觸發了。"
     }
@@ -2631,13 +2607,13 @@
    },
    "lines": [
     {
-     "id": "p163",
+     "id": "p161",
      "speaker": "kid",
      "text": "所以大腦以為，",
      "emotion": "驚訝"
     },
     {
-     "id": "p164",
+     "id": "p162",
      "speaker": "kid",
      "text": "我吃壞東西了？",
      "emotion": "句尾上揚"
@@ -2657,39 +2633,15 @@
    },
    "lines": [
     {
-     "id": "p165",
+     "id": "p163",
      "speaker": "chief",
      "text": "這只是一個猜法。有證據支持它，也有證據跟它對不上，",
      "pause_after_ms": 500
     },
     {
-     "id": "p166",
+     "id": "p164",
      "speaker": "chief",
-     "text": "到現在還沒定案。"
-    }
-   ]
-  },
-  {
-   "id": "chief-sway",
-   "template": "shot",
-   "data": {
-    "prompt": "Waist-up medium shot of the chief swaying slightly to one side while standing, with a curious smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
-    "camera": "push in",
-    "visual": "still",
-    "characters": [
-     "chief"
-    ]
-   },
-   "lines": [
-    {
-     "id": "p167",
-     "speaker": "chief",
-     "text": "還有一派不同意感覺衝突，認為暈車跟身體穩不穩有關："
-    },
-    {
-     "id": "p168",
-     "speaker": "chief",
-     "text": "有實驗看到，人在覺得不舒服以前，身體就晃得比較厲害。"
+     "text": "所以為什麼偏偏是想吐，答案還是：不知道。"
     }
    ]
   },
@@ -2706,13 +2658,13 @@
    },
    "lines": [
     {
-     "id": "p169",
+     "id": "p165",
      "speaker": "kid",
      "text": "那大腦裡，",
      "emotion": "追問"
     },
     {
-     "id": "p170",
+     "id": "p166",
      "speaker": "kid",
      "text": "有負責吵架的地方嗎？",
      "emotion": "句尾上揚"
@@ -2732,12 +2684,12 @@
    },
    "lines": [
     {
-     "id": "p171",
+     "id": "p167",
      "speaker": "chief",
      "text": "猴子的腦裡有一群細胞，被別人帶著動時，反應特別大；"
     },
     {
-     "id": "p172",
+     "id": "p168",
      "speaker": "chief",
      "text": "自己動的時候，它們就比較安靜。"
     }
@@ -2756,13 +2708,13 @@
    },
    "lines": [
     {
-     "id": "p173",
+     "id": "p169",
      "speaker": "chief",
      "text": "研究的人猜，這可能就是比對預想的地方。",
      "pause_after_ms": 500
     },
     {
-     "id": "p174",
+     "id": "p170",
      "speaker": "chief",
      "text": "可是它們怎麼讓人想吐，還沒找到。"
     }
@@ -2781,13 +2733,13 @@
    },
    "lines": [
     {
-     "id": "p175",
+     "id": "p171",
      "speaker": "kid",
      "text": "所以我看漫畫會暈，",
      "emotion": "推理"
     },
     {
-     "id": "p176",
+     "id": "p172",
      "speaker": "kid",
      "text": "到底是怎麼回事？",
      "emotion": "章尾停住，句尾上揚"
@@ -2808,7 +2760,7 @@
    },
    "lines": [
     {
-     "id": "p177",
+     "id": "p173",
      "speaker": "chief",
      "text": "你自己說說看，從你的漫畫，到那杯水。",
      "emotion": "笑"
@@ -2828,31 +2780,16 @@
    },
    "lines": [
     {
-     "id": "p178",
+     "id": "p174",
      "speaker": "kid",
      "text": "原來如此！",
      "emotion": "恍然大悟"
     },
     {
-     "id": "p179",
+     "id": "p175",
      "speaker": "kid",
-     "text": "就像你剛剛說的：漫畫跟著我晃，",
+     "text": "眼睛跟耳朵說的不一樣，",
      "emotion": "篤定"
-    },
-    {
-     "id": "p180",
-     "speaker": "kid",
-     "text": "眼睛說沒動；"
-    },
-    {
-     "id": "p181",
-     "speaker": "kid",
-     "text": "耳朵裡的水，"
-    },
-    {
-     "id": "p182",
-     "speaker": "kid",
-     "text": "說在轉彎！"
     }
    ]
   },
@@ -2869,27 +2806,27 @@
    },
    "lines": [
     {
-     "id": "p183",
+     "id": "p176",
      "speaker": "kid",
-     "text": "跟大腦猜的對不上，",
+     "text": "大腦一對不上，",
      "emotion": "篤定",
      "pause_after_ms": 500
     },
     {
-     "id": "p184",
+     "id": "p177",
      "speaker": "kid",
      "text": "我就暈了！",
      "emotion": "篤定"
     },
     {
-     "id": "p185",
+     "id": "p178",
      "speaker": "kid",
-     "text": "還記得爸爸嗎？他自己轉彎，"
+     "text": "開車的爸爸先知道要轉彎，"
     },
     {
-     "id": "p186",
+     "id": "p179",
      "speaker": "kid",
-     "text": "所以他猜得到！"
+     "text": "所以他不暈！"
     }
    ]
   },
@@ -2906,13 +2843,13 @@
    },
    "lines": [
     {
-     "id": "p187",
+     "id": "p180",
      "speaker": "chief",
      "text": "說得好。我覺得最好玩的是：",
      "emotion": "笑"
     },
     {
-     "id": "p188",
+     "id": "p181",
      "speaker": "chief",
      "text": "你會暈，是因為你的身體一直很認真，在算你怎麼動。"
     }
@@ -2930,7 +2867,7 @@
    },
    "lines": [
     {
-     "id": "p189",
+     "id": "p182",
      "speaker": "kid",
      "text": "到阿嬤家了！",
      "emotion": "開心"
@@ -2950,7 +2887,7 @@
    },
    "lines": [
     {
-     "id": "p190",
+     "id": "p183",
      "speaker": "kid",
      "text": "我要先去找阿嬤！",
      "emotion": "開心大聲"
@@ -2970,13 +2907,13 @@
    },
    "lines": [
     {
-     "id": "p191",
+     "id": "p184",
      "speaker": "chief",
      "text": "你坐車或看什麼的時候，最容易暈？",
      "emotion": "問句上揚，像聊天"
     },
     {
-     "id": "p192",
+     "id": "p185",
      "speaker": "chief",
      "text": "留言告訴我們。"
     }
@@ -2995,7 +2932,7 @@
    },
    "lines": [
     {
-     "id": "p193",
+     "id": "p186",
      "speaker": "chief",
      "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
      "emotion": "誠懇"
