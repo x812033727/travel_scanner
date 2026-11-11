@@ -6,6 +6,11 @@ const cell = (value) => String(value ?? '').replaceAll('|', '／').replaceAll('\
 const STATUS = { selected: '入選', held: '暫緩', reserve: '候補（待研究）', produced: '已製作／製作中', shorts: '轉 Shorts', excluded: '淘汰／轉出' };
 const STATUS_ORDER = ['selected', 'held', 'reserve', 'shorts', 'excluded', 'produced'];
 const THEME_STATUSES = new Set(['selected', 'held', 'reserve']);
+// The material review (reviews/material-20261111.md; owner 2026-11-11): the eight-minute floor stays, and a
+// theme whose material would need padding waits (reserve) or waits to be merged (merge) instead of being made.
+export const MATERIAL_VERDICTS = Object.freeze({ ready: '可成題', merge: '待合併', reserve: '後備' });
+/** Whether a theme may be made: its material review says ready (a theme never reviewed counts as ready, as before). */
+export const materialReady = (episode) => (episode.material?.verdict ?? 'ready') === 'ready';
 const sourceLabel = (source, reading) => reading.origin.startsWith('legacy:') ? `${new URL(source.url).hostname}${new URL(source.url).pathname}`.slice(0, 90) : reading.title;
 const mmss = (seconds) => `${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, '0')}`;
 
@@ -17,6 +22,12 @@ export function validateThemes(themes, pool) {
   for (const episode of themes.episodes) {
     for (const key of ['id', 'title', 'core_question', 'connection', 'boredom_risk', 'drop_if', 'evidence_gaps']) if (!episode[key]) throw new Error(`${episode.id}: missing ${key}`);
     if (episode.production_ready !== false || episode.status !== 'EDITORIAL_THEME_NOT_SCRIPT') throw new Error('A theme cannot grant production approval');
+    if (episode.material !== undefined) {
+      const material = episode.material;
+      if (!Object.hasOwn(MATERIAL_VERDICTS, material?.verdict) || !material.reviewed_on || !material.review) throw new Error(`${episode.id}: material needs a verdict (${Object.keys(MATERIAL_VERDICTS).join(', ')}), reviewed_on and review`);
+      if (material.verdict !== 'ready' && !material.missing) throw new Error(`${episode.id}: a ${material.verdict} theme says what is missing`);
+      if (material.verdict === 'merge' && !material.merge_with?.length) throw new Error(`${episode.id}: a merge theme names what it merges with`);
+    }
     const [lo, hi] = episode.range_minutes ?? [];
     if (!Number.isFinite(episode.target_minutes) || !Number.isFinite(lo) || !Number.isFinite(hi) || lo < LONG_MIN || hi > LONG_MAX || lo > episode.target_minutes || hi < episode.target_minutes) throw new Error(`${episode.id}: a long episode is ${LONG_MIN}–${LONG_MAX} minutes and its range must contain the target; shorter material goes to a sibling theme or Shorts`);
     if (!episode.candidate_ids?.length || new Set(episode.candidate_ids).size !== episode.candidate_ids.length) throw new Error(`${episode.id}: theme needs unique candidate ids`);
@@ -97,13 +108,15 @@ export function renderDedup(pool) {
 
 export function renderThemes(themes, pool) {
   const byId = new Map(pool.candidates.map((row) => [row.id, row]));
-  const lines = ['# 從素材池排出的影片題案', '', `${themes.episodes.length} 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。`, '', `**片長規則：** 長片 ${LONG_MIN}–${LONG_MAX} 分鐘，看素材決定。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 ${LONG_MIN} 分鐘的轉 Shorts 或留在後備。`, '', '「來源待補」的題案裡有還沒研究的候補題：要先查核、改成入選，才能寫企劃。', '', '| ID | 題案 | 正文估計 | 核心題數 | 來源 |', '| --- | --- | --- | --- | --- |'];
+  const lines = ['# 從素材池排出的影片題案', '', `${themes.episodes.length} 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。`, '', `**片長規則：** 長片 ${LONG_MIN}–${LONG_MAX} 分鐘，看素材決定。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 ${LONG_MIN} 分鐘的轉 Shorts 或留在後備。`, '', '「來源待補」的題案裡有還沒研究的候補題：要先查核、改成入選，才能寫企劃。', '', '**素材審視（2026-11-11）：** 「待合併」與「後備」的題案素材撐不起 8 分鐘不重複的旁白，先不成題；缺什麼寫在各題的審視欄（[reviews/material-20261111.md](reviews/material-20261111.md)）。結尾章 30–60 秒，只講答案與留言問題，不用回顧填時間。', '', '| ID | 題案 | 正文估計 | 核心題數 | 來源 | 素材審視 |', '| --- | --- | --- | --- | --- | --- |'];
   for (const episode of themes.episodes) {
     const readiness = themeReadiness(episode, pool);
-    lines.push(`| ${episode.id} | ${cell(episode.title)} | ${mmss(episode.target_minutes * 60)}（範圍 ${mmss(episode.range_minutes[0] * 60)}–${mmss(episode.range_minutes[1] * 60)}；未試讀） | ${episode.candidate_ids.length} | ${readiness.ready ? '已有可追溯來源' : `來源待補：${readiness.unsourced.join('、')}`} |`);
+    lines.push(`| ${episode.id} | ${cell(episode.title)} | ${mmss(episode.target_minutes * 60)}（範圍 ${mmss(episode.range_minutes[0] * 60)}–${mmss(episode.range_minutes[1] * 60)}；未試讀） | ${episode.candidate_ids.length} | ${readiness.ready ? '已有可追溯來源' : `來源待補：${readiness.unsourced.join('、')}`} | ${episode.material ? MATERIAL_VERDICTS[episode.material.verdict] : '未審'} |`);
   }
   for (const episode of themes.episodes) {
-    lines.push('', `## ${episode.id} ${episode.title}`, '', `**追問：** ${episode.core_question}`, '', `**為什麼接成一集：** ${episode.connection}`, '', '| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |', '| --- | --- | --- | --- | --- |');
+    const material = episode.material;
+    const verdict = material ? [`**素材審視：** ${MATERIAL_VERDICTS[material.verdict]}`, material.missing ? `；缺：${cell(material.missing)}` : '', material.merge_with?.length ? `；合併對象：${material.merge_with.join('、')}` : ''].join('') : '';
+    lines.push('', `## ${episode.id} ${episode.title}`, ...(verdict ? ['', verdict] : []), '', `**追問：** ${episode.core_question}`, '', `**為什麼接成一集：** ${episode.connection}`, '', '| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |', '| --- | --- | --- | --- | --- |');
     for (const chapter of episode.chapters) lines.push(`| ${cell(chapter.title)} | ${chapter.seconds} | ${cell(chapter.new_information)} | ${chapter.candidate_ids.join('、')} | ${cell(chapter.cut_if ?? '')} |`);
     lines.push('', '**用到的題與來源：**', '');
     for (const id of episode.candidate_ids) {
@@ -151,7 +164,7 @@ export function producibleData(pool, themes) {
   const byId = new Map(pool.candidates.map((row) => [row.id, row]));
   const used = new Set(themes.episodes.flatMap((episode) => episode.candidate_ids));
   const short = (text, n) => { const value = (text ?? '').trim(); return value.length <= n ? value : `${value.slice(0, n)}…`; };
-  const ready = themes.episodes.filter((episode) => episode.candidate_ids.every((id) => byId.get(id)?.selected));
+  const ready = themes.episodes.filter((episode) => materialReady(episode) && episode.candidate_ids.every((id) => byId.get(id)?.selected));
   return {
     revision: pool.revision, axes: pool.axes,
     themes: ready.map((episode) => ({ id: episode.id, title: episode.title, minutes: episode.target_minutes, q: episode.core_question, chapters: episode.chapters.length, cores: episode.candidate_ids.map((id) => ({ id, axis: byId.get(id).axis, q: byId.get(id).question })) })),

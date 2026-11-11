@@ -237,6 +237,24 @@ test('the producible list keeps only fully selected themes and lists the other s
   assert.match(html, /^<!doctype html>/);
 });
 
+test('a theme the material review holds back (reserve or merge) is valid but never on the producible list', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '1931 年貝奇莫號在北極冰原漂了幾十年？'), candidate('N102', 'Carroll Deering 號擱淺時船員去了哪裡？'), candidate('N103', '惡魔島三名逃犯的木筏後來在哪裡找到？'), candidate('N104', '佛蘭南群島燈塔看守人消失前寫了什麼？')] };
+  const pool = buildPool(fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 4, ids: ['N101', 'N102', 'N103', 'N104'] } }));
+  const review = { reviewed_on: '2026-11-11', review: 'reviews/material-20261111.json' };
+  const themes = { episodes: [
+    theme('T01', ['N101'], 10, { material: { verdict: 'ready', ...review } }),
+    theme('T02', ['N102'], 10, { material: { verdict: 'reserve', missing: '缺第二個升級關卡', ...review } }),
+    theme('T03', ['N103'], 10, { material: { verdict: 'merge', missing: '只有一個轉折', merge_with: ['N104'], ...review } }),
+    theme('T04', ['N104'], 10),
+  ] };
+  validateThemes(themes, pool);
+  assert.deepEqual(producibleData(pool, themes).themes.map((episode) => episode.id), ['T01', 'T04'], 'ready and never-reviewed themes stay; reserve and merge wait');
+  const broken = (material) => ({ episodes: [theme('T01', ['N101'], 10, { material })] });
+  assert.throws(() => validateThemes(broken({ verdict: 'maybe', ...review }), pool), /material needs a verdict/);
+  assert.throws(() => validateThemes(broken({ verdict: 'reserve', ...review }), pool), /says what is missing/);
+  assert.throws(() => validateThemes(broken({ verdict: 'merge', missing: 'x', ...review }), pool), /names what it merges with/);
+});
+
 test('the committed pool export is internally consistent', { skip: !fs.existsSync(path.join(ROOT, DIR, 'manifest.json')) }, () => {
   // Hash checks only: the full rebuild (`cli.mjs check`) depends on topics.json, which other tasks edit.
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'manifest.json'), 'utf8'));
