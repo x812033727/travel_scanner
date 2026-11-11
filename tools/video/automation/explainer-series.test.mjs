@@ -123,16 +123,16 @@ test("one table maps each explainer preset to its variants; every name fits the 
 // names said as written, and nobody living or dead since 1956 drawn. An unfinished 奇聞檔案局
 // one-off on the host stops with video_ai_receipt_input_changed at its next stage after the deploy.
 const SERIES_TEXT_PINS = {
-  "planner:bible-explainer-cartoon": [6347, "f9afae8a35b9fee5d247b6bb2a4b0729b47fd20c1f9d195eab42a76adf7ac0d2"],
-  "writer:explainer-cartoon": [27161, "24625a430c23d15dc2428d2195c3947b5a18a59b51ab7b9e6e30bcd85b4264f5"],
-  "verifier:explainer-cartoon": [4305, "6f41570e5090987327a200b7790a6ecdec88c8a0350de2ca49b74cb4e7ca95db"],
-  "planner:discuss-cartoon": [7074, "a489aa308db647b7d936eeeddcac14bed5fda21c4f2765d76acb338cc44a97f6"],
-  "writer:discuss-cartoon": [25626, "19bacf8358177a1a461c5b46643211041f91969434eba8a89404524084a17fca"],
-  "planner:bible-explainer-mystery": [9560, "96629ae4e51040e354111f8659249f1526c57070993a5025c1fbf1e58564adb6"],
-  "writer:explainer-mystery": [36805, "c6e691c253e08bb14b5b9a0f3f15ebe8ae05f082e27a6f85600300deebae243c"],
-  "verifier:explainer-mystery": [6433, "e84a1810dab0b060272622dae14a95879470965678851713608fc5ac60dc4b2a"],
-  "planner:discuss-mystery": [10189, "615cac5cc3db625e6106081948ac8a43bddb397b06ced096bb9236201b0d1b0e"],
-  "writer:discuss-mystery": [35342, "0efe4f8d2f530ae8be4afa2f578f74adaf9e44b6f754e84fe208fc22c7c2f780"],
+  "planner:bible-explainer-cartoon": [6458, "b10347de7e8e5c0be41ac7709b86e98118331a43b9aec88d64cf4e399e75d65f"],
+  "writer:explainer-cartoon": [27414, "951a66e69d430b1201766799d53060595a00c057678cbcf5a1c2c83136ba3248"],
+  "verifier:explainer-cartoon": [4361, "868cb378ad2c063064dae1e4c43c237589578b0282aaafc1971bd2cc28b79ba2"],
+  "planner:discuss-cartoon": [7185, "f05f0526ee4a00a125b6c97a0991a6c3c6e0a947d7550c486c68d51310b31547"],
+  "writer:discuss-cartoon": [25879, "250735392f7c00b8f9def4681b1bad13aecaf425b28b264b6da3936d043bc1d7"],
+  "planner:bible-explainer-mystery": [9671, "346b407eff02f8dfd4cf0221ac2078b02d0f4452bfe9e11ca7113514fa41ef12"],
+  "writer:explainer-mystery": [37056, "caff463aa2b2ee09c5938f26f69116278be21b9faa108d4503bd77ee1d5a9a7b"],
+  "verifier:explainer-mystery": [6489, "17b79a90e64ee05988df69e955e58be20b2832b93592c1c233e6b16100638106"],
+  "planner:discuss-mystery": [10300, "a05f7d6a9d900e85b7637e61c523adac4b475152e8541e89b4e26a90ee13e630"],
+  "writer:discuss-mystery": [35593, "da28b154687df639687220bcbcc5cccefa8e367892b7b8f4fa4f82c346e7b3b6"],
 };
 
 test("the ten texts of the two profiled series are the pinned ones, composed with no genre section", () => {
@@ -210,7 +210,9 @@ test("each series' texts name their own series, look, cards and rules, and nothi
       assert.match(text, /ONE person doing ONE concrete thing/);
       assert.match(text, /Never a still life or an empty scene on its own/);
       assert.match(text, /at least a third of the lines carry one \(lint warns below\s+that\)/);
-      assert.match(text, /never fall under 8 minutes/, `${key}: the parts scale with target_minutes and keep the floor`);
+      assert.match(text, /the material decides\s+the length \(owner, 2026-11-11\): never pad/, `${key}: the parts scale with target_minutes; no floor`);
+      assert.match(text, /under 8 minutes the owner is warned and decides/, `${key}: under eight minutes is the owner's call`);
+      assert.doesNotMatch(text, /never fall under 8 minutes|at least 8 minutes/, `${key}: no eight-minute floor left`);
     }
   }
   const text = (stage, variant) => instructionsFor(stage, "drama", "", variant);

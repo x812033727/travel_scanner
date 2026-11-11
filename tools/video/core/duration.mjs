@@ -169,7 +169,7 @@ export function knowledgeDurationProblems({ doc, timeline, presented = timeline,
   const shortC08 = isC08ApprovedShortStory(doc);
   const shortC20 = isC20ApprovedShortStory(doc);
   // 奇聞檔案局 and 原來如此事務所 run as long as their material (owner, 2026-11-11): the body and
-  // cut are still bound to the narration above, but no length is required (lint flags under five minutes).
+  // cut are still bound to the narration above, but no length is required (lint flags under eight minutes).
   const minimumSeconds = followsContentLength(doc) ? 0 : shortC08 ? C08_SHORT_MIN_BODY_SECONDS : shortC20 ? C20_SHORT_MIN_BODY_SECONDS : compactA01 ? A01_COMPACT_BODY_SECONDS[0] : KNOWLEDGE_MIN_SECONDS;
   const minimumFrames = minimumSeconds * FPS;
   if (timeline.total_frames < minimumFrames) {

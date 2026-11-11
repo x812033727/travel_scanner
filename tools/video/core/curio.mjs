@@ -47,9 +47,12 @@ export function pacingWarnings(doc) {
 
 /**
  * Below this many minutes an episode of a content-led series is flagged for the owner; it is a
- * warning, never a refusal (owner, 2026-11-11: 「先以品質為主 除非少於五分鐘以下再警示我」).
+ * warning, never a refusal (owner, 2026-11-11: the target stays ten minutes, the material decides,
+ * 10 to 13 when it carries that far, and 「低於 8 分鐘時 lint 會提醒你，讓你決定要不要上」).
  */
-export const CONTENT_LENGTH_WARN_MINUTES = 5;
+export const CONTENT_LENGTH_WARN_MINUTES = 8;
+/** From this many minutes a content-led draft is read as an episode (its shape and storytelling checks run). */
+export const CONTENT_EPISODE_MINUTES = 5;
 const CONTENT_LENGTH_PRESETS = new Set([CURIO_PRESET, "cute-cartoon"]);
 
 /**
@@ -57,9 +60,12 @@ const CONTENT_LENGTH_PRESETS = new Set([CURIO_PRESET, "cute-cartoon"]);
  * explainer of 奇聞檔案局 (cute-mystery) or 原來如此事務所 (cute-cartoon). The owner dropped the
  * floor for these two on 2026-11-11, after the producer review found viewers leaving in the first
  * minute and padding to eight minutes only thinned the script. A brand story (category "story")
- * wears the same look and keeps its own 13-minute rule; flat-explainer keeps the floor.
+ * wears the same look and keeps its own 13-minute rule (by category, slug or series); flat-explainer keeps the floor.
  */
-export const followsContentLength = (doc) => isExplainer(doc) && CONTENT_LENGTH_PRESETS.has(doc.look?.preset);
+export const followsContentLength = (doc) => isExplainer(doc) && CONTENT_LENGTH_PRESETS.has(doc.look?.preset)
+  // A brand story drawn in the cute-mystery look keeps its rules even when its category is
+  // "explainer" (the owner's short C08 and C20 revisions carry their own exact bands).
+  && !/^story-/.test(doc.slug ?? "") && !/^brand-stories/.test(doc.series?.slug ?? "");
 
 // The bookends are not the body: the opening title, chapter cards and the outro card.
 const FRAMES = new Set(["title", "chapter", "outro"]);

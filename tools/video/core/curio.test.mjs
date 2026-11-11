@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_MUSIC, CURIO_PRESET, curioProblems, curioWarnings, isCurio, isPacedSeries, pacingWarnings, SERIES_PACING } from "./curio.mjs";
+import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_MUSIC, CURIO_PRESET, curioProblems, curioWarnings, CONTENT_LENGTH_WARN_MINUTES, followsContentLength, isCurio, isPacedSeries, pacingWarnings, SERIES_PACING } from "./curio.mjs";
 import { resolveLook } from "./drama.mjs";
 import { fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
@@ -80,4 +80,17 @@ test("a curio- or sothatswhy- drama without the series pacing is warned, with th
   assert.deepEqual(pacingWarnings({ slug: "daily-ai-20261029", format: "drama" }), []);
   const context = { lexicon: fixtureLexicon(), brief: fixtureBrief(), others: [], translations: {} };
   assert.ok(!lintVideo(fixture(), context).warnings.some((problem) => problem.path === "still_motion"));
+});
+
+test("only 奇聞檔案局 and 原來如此 explainers follow their content's length; brand stories and flat-explainer keep the floor", () => {
+  assert.equal(CONTENT_LENGTH_WARN_MINUTES, 8);
+  const episode = (look, more = {}) => ({ format: "drama", slug: "curio-x01", look: { preset: look }, ...more });
+  assert.equal(followsContentLength(episode("cute-mystery")), true);
+  assert.equal(followsContentLength(episode("cute-cartoon", { slug: "sothatswhy-p05" })), true);
+  assert.equal(followsContentLength(episode("cute-mystery", { slug: "anything-the-host-named" })), true, "a host episode is known by its look");
+  assert.equal(followsContentLength(episode("flat-explainer")), false);
+  assert.equal(followsContentLength(episode("cute-mystery", { category: "story" })), false, "a brand story");
+  assert.equal(followsContentLength(episode("cute-mystery", { slug: "story-everyday-kikkoman-c08-short-v8", category: "explainer" })), false, "a story- slug");
+  assert.equal(followsContentLength(episode("cute-mystery", { series: { slug: "brand-stories-everyday-reversals", episode: 8 } })), false, "a brand-stories series");
+  assert.equal(followsContentLength({ ...episode("cute-mystery"), format: "slides" }), false, "the old slides pilots");
 });

@@ -11,6 +11,7 @@ import { composeShotPrompt, promptOverhead, shotPromptBudget } from "../media/pr
 import { IMAGE_SIZES } from "../media/stages.mjs";
 import { HEADLINE, HEADLINE_SERIES, headlineRule } from "../qa/thumbnail.mjs";
 import { thumbnailSeries } from "../render/plan.mjs";
+import { followsContentLength } from "./curio.mjs";
 import { EPISODE_SERIES, episodeSeries, ILLUSTRATED_SERIES } from "../shorts/episode.mjs";
 import { thumbnailProblems } from "../templates/templates.mjs";
 import { DIALOGUE_EXPLAINER_PRESETS, EXPLAINER_PRESET, EXPLAINER_PRESETS, explainerSeries, hasCast, isCuteExplainer, isDialogueExplainer, isExplainer, isExplainerPreset, isKnowledgeLongform, isNarratedExplainer, keyframeKey, lookHash, needsMinimumLength, pictureVarietyProblems, PRESET_NAMES, PRESETS, resolveLook, timesSilentShots } from "./drama.mjs";
@@ -105,6 +106,8 @@ test("each of the three presets is held to the explainer's rules: no cast but th
     assert.equal(isExplainer(doc), true, preset);
     assert.equal(hasCast(doc), false, preset);
     assert.equal(needsMinimumLength(doc), true, preset);
+    // 奇聞檔案局 and 原來如此 drop the floor for a warning under eight minutes (owner, 2026-11-11).
+    assert.equal(followsContentLength(doc), preset !== "flat-explainer", preset);
     assert.equal(isKnowledgeLongform(doc), true, preset);
     assert.equal(timesSilentShots(doc), false, preset);
     assert.equal(briefSectionsFor("drama", preset), BRIEF_SECTIONS_EXPLAINER, preset);
@@ -133,12 +136,20 @@ test("each of the three presets is held to the explainer's rules: no cast but th
     // presets that wear that identity lint as it does; cute-mystery takes the channel's rules.
     if (explainerSeries(doc) !== "sothatswhy") continue;
     const linted = lintVideo(doc);
-    assert.deepEqual(linted.errors, baseline.errors, preset);
+    // The fixture runs under a minute: flat-explainer is refused for it, a content-led look warned.
+    const floorRule = (problem) => /every episode but a drama's runs at least/.test(problem.message);
+    if (followsContentLength(doc)) {
+      assert.equal(linted.errors.some(floorRule), false, `${preset}: no floor`);
+      assert.ok(linted.warnings.some((warning) => /under 8 minutes: the owner decides/.test(warning.message)), `${preset}: warned under eight minutes`);
+    }
+    assert.deepEqual(linted.errors.filter((error) => !floorRule(error)), baseline.errors.filter((error) => !floorRule(error)), preset);
     // The fixture is written for the flat look; a cute look is also held to the picture-variety
     // rules (explainer-cute.test.mjs), which warn about it and add nothing for flat-explainer.
     const variety = pictureVarietyProblems(doc).warnings.map((warning) => warning.message);
     assert.equal(variety.length, preset === "flat-explainer" ? 0 : 2, preset);
-    assert.deepEqual(linted.warnings.filter((warning) => !variety.includes(warning.message)), baseline.warnings, preset);
+    // Length is the one rule the content-led looks read differently (asserted above).
+    const lengthRule = (warning) => /^about [0-9.]+ minutes/.test(warning.message);
+    assert.deepEqual(linted.warnings.filter((warning) => !variety.includes(warning.message) && !lengthRule(warning)), baseline.warnings.filter((warning) => !lengthRule(warning)), preset);
   }
   assert.equal(briefSectionsFor("drama", "ink-wash").includes("問題"), false);
 });

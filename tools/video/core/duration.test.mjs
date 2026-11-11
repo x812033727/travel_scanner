@@ -69,12 +69,23 @@ test("eight minutes passes exactly; one frame short fails without rounding or tr
   assert.match(problems[1], /final cut is 14399 frames/);
 });
 
-test("a cute explainer is held to the same 480 measured seconds as flat-explainer", () => {
-  const mystery = { format: "drama", slug: "curio-example", look: { preset: "cute-mystery" }, characters: [] };
-  assert.deepEqual(knowledgeDurationProblems({ ...cut(), doc: mystery }), []);
-  const problems = knowledgeDurationProblems({ ...cut(14_399), doc: mystery });
-  assert.ok(problems.length > 0, "one frame short of eight minutes is refused");
+test("奇聞檔案局 and 原來如此 run as long as their material; a brand story in the same look keeps the 480 seconds", () => {
+  // Owner, 2026-11-11: quality first, no floor for these two series (lint warns under five minutes).
+  for (const preset of ["cute-mystery", "cute-cartoon"]) {
+    const episode = { format: "drama", slug: "curio-example", look: { preset }, characters: [] };
+    assert.deepEqual(knowledgeDurationProblems({ ...cut(), doc: episode }), [], preset);
+    assert.deepEqual(knowledgeDurationProblems({ ...cut(14_399), doc: episode }), [], `${preset}: one frame short of eight minutes is fine`);
+    assert.deepEqual(knowledgeDurationProblems({ ...cut(4 * 60 * 30), doc: episode }), [], `${preset}: four minutes is not refused either`);
+    // The measured cut is still bound to the current narration.
+    const stale = cut(9_000);
+    assert.ok(knowledgeDurationProblems({ ...stale, doc: episode, checks: { ...stale.checks, speech_hash: "older" } }).length > 0, `${preset}: a stale cut is still refused`);
+  }
+  const story = { format: "drama", slug: "story-example", category: "explainer", look: { preset: "cute-mystery" }, characters: [] };
+  const problems = knowledgeDurationProblems({ ...cut(14_399), doc: story });
+  assert.ok(problems.length > 0, "a story- slug in the same look: one frame short of eight minutes is refused");
   assert.match(problems[0], /14399 frames/);
+  const series = { ...story, slug: "curio-looking", series: { slug: "brand-stories-everyday-reversals", episode: 1 } };
+  assert.ok(knowledgeDurationProblems({ ...cut(14_399), doc: series }).length > 0, "a brand-stories series keeps the floor");
 });
 
 test("only the exact A01 pilot identity and per-video target use the compact band", () => {
