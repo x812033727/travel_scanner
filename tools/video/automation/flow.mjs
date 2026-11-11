@@ -22,7 +22,7 @@ import { assembledAudioProblems, audioEvidenceProblems } from "../core/audio-evi
 import { appliedBranding, brandingCurrent, readBranding } from "../core/branding.mjs";
 import { craftChecks } from "../core/craft.mjs";
 import { hasCast, illustrated, isDrama, isExplainerPreset, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
-import { CURIO_MUSIC, CURIO_PRESET } from "../core/curio.mjs";
+import { CURIO_MUSIC, CURIO_PRESET, SERIES_PACING } from "../core/curio.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
@@ -629,6 +629,13 @@ export function settledVoice(voice) {
 const SERIES_MUSIC = Object.freeze({ [CURIO_PRESET]: CURIO_MUSIC });
 
 /**
+ * The explainer series that take the series pacing (core/curio.mjs SERIES_PACING), by style
+ * preset: 奇聞檔案局 (cute-mystery) and 原來如此事務所 (cute-cartoon). The owner set it on
+ * 2026-11-05 and made it the default on 2026-11-11, after no episode written since had opted in.
+ */
+const PACED_PRESETS = new Set([CURIO_PRESET, "cute-cartoon"]);
+
+/**
  * video.json as the owner's settings say it must be, whatever the model returned. A drama
  * (docs/videos/DRAMA.md) also takes the settings tab's style preset and whether music is made,
  * uses selectable CC, and its narrator voice is the drama part's when the owner chose
@@ -682,6 +689,12 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       // A series with a music bed of its own carries it under every episode, whether or not the
       // writer remembered "music" (the owner's switch below still takes it off).
       if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
+      // The same series close the gaps between sentences and move their stills in beats, unless
+      // the writer chose otherwise.
+      if (PACED_PRESETS.has(preset)) {
+        if (settled.pauses === undefined) settled.pauses = { ...SERIES_PACING.pauses };
+        if (settled.still_motion === undefined) settled.still_motion = SERIES_PACING.still_motion;
+      }
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
     // asks for burn-in. Explicit legacy video.json files remain readable by assemble.

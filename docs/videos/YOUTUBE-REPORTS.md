@@ -5,10 +5,11 @@ session 從站台讀這些數字，分析哪支影片、哪種題材、哪種標
 Google 的授權，也不需要任何 Google 憑證。
 
 - 程式：`apps/api/app/video_youtube/reporting.py`（Google 的呼叫）、`reports.py`（同步與讀取）、
-  `admin_reports_api.py`（路由）、`models.py`（三張表，migration 0145）。
+  `admin_reports_api.py`（路由）、`models.py`（三張表，migration 0145）；單支影片的觀眾續看曲線是
+  `analytics.py`（YouTube Analytics API 的呼叫）與 `retention.py`（見下方〈觀眾續看曲線〉）。
 - 網站轉送：`apps/web/app/api/video/youtube-reports`（只轉送影片工具權杖，不轉 cookie）。
 - 後台：`/admin/videos` 設定分頁的 YouTube 卡片多一段「頻道報表」。
-- 工具：`node tools/video/youtube-reports/cli.mjs`（`overview`、`sync`、`rows`、`videos`、`traffic`、`export`）。
+- 工具：`node tools/video/youtube-reports/cli.mjs`（`overview`、`sync`、`rows`、`videos`、`traffic`、`retention`、`export`）。
   `videos` 與 `traffic` 在 AI 那一端把原始列加總成每支影片的成效與流量來源，輸出時標明是自行計算；
   `codes.mjs` 把流量來源、播放位置、裝置、作業系統的數字代碼對成名稱（2026-11-02 讀的維度頁）。
 - AI 的做法：skill `youtube-channel-reports`（`.agents/skills/youtube-channel-reports/SKILL.md`）。
@@ -50,8 +51,9 @@ YouTube Analytics 有兩半：Analytics API 是即時查詢，Reporting API 是�
 | `channel_end_screens` | 片尾畫面元素的曝光與點擊 |
 
 不收 `channel_combined`（每個維度同時展開，最大的一份，其他報表已經回答它的問題）。報表**沒有**
-逐秒的觀眾留存曲線（那是 Analytics API 的 `audienceWatchRatio`），也沒有「選擇觀看還是滑走」
-（只有 Studio 看得到）；需要時照 `tasks/open/2026-09-28-video-shorts-analytics.md` 從 Studio 匯出。
+逐秒的觀眾留存曲線：那一條由站台即時問 Analytics API（下方〈觀眾續看曲線〉），不存。也沒有
+「選擇觀看還是滑走」（只有 Studio 看得到）；需要時照 `tasks/open/2026-09-28-video-shorts-analytics.md`
+從 Studio 匯出。
 
 ## 保存與同步
 
@@ -92,4 +94,47 @@ YouTube Analytics 有兩半：Analytics API 是即時查詢，Reporting API 是�
 | --- | --- |
 | `GET youtube-reports` | 連結狀態、是否有 Analytics、上次同步、每種報表涵蓋的日期與欄位、站台已上 YouTube 的影片（slug、標題、分類、是否 Shorts、系列、公開時間）、政策說明 |
 | `POST youtube-reports/sync` | `{"force": bool, "limit": 1–400}`；每小時 30 次 |
+| `GET youtube-reports/retention` | `video_id`（一支）、`start`、`end`（太平洋日，可省：上架日到今天）、`organic=true`（只看自然流量）；站台當場問 YouTube Analytics API，回 100 點原值與影片長度；每小時 60 次 |
 | `GET youtube-reports/rows` | `report`（家族或類型 id）、`start`、`end`（太平洋日，含頭尾，最多 120 天）、`video_id`（可重複，最多 50）、`format=json|csv`；JSON 最多 5 萬列、CSV 50 萬列，超過時 `truncated: true` |
+
+## 觀眾續看曲線（Analytics API，2026-11-11 讀的官方文件）
+
+每天的報表檔只有平均值，看不出觀眾在哪一句走掉。單支影片的續看曲線由站台用已存的頻道授權即時問
+**YouTube Analytics API v2** 的 `reports.query`（`GET https://youtubeanalytics.googleapis.com/v2/reports`），
+範圍同樣是 `yt-analytics.readonly`，**不用新的同意畫面**；Google 的憑證不離開站台，工具只拿到結果。
+
+- 查詢：`ids=channel==MINE`、`dimensions=elapsedVideoTimeRatio`、
+  `metrics=audienceWatchRatio,relativeRetentionPerformance`、`filters=video==<id>`（自然流量再加
+  `;audienceType==ORGANIC`）、`startDate`、`endDate`（太平洋日）。
+- 官方的限制：`video` 篩選**一次只能一支**（不能逗號列多支）；`audienceType` 只有 `ORGANIC`、
+  `AD_INSTREAM`、`AD_INDISPLAY`，資料從 2013-09-25 起；`elapsedVideoTimeRatio` 固定回 **100 點**
+  （0.01 到 1.0）。文件沒寫最低觀看數，但觀看太少時 YouTube 不回任何列，站台回 404
+  `video_youtube_retention_no_data`。Analytics API 有自己的每日配額（跟 Data API 的單位分開），
+  一條曲線是一次查詢。
+- 欄位意思：`audienceWatchRatio` 是「這一刻被看的次數 ÷ 影片觀看數」，觀眾倒回去重看時會超過 1；
+  `relativeRetentionPerformance` 是 0–1，跟 YouTube 上長度相近的影片比（0.5 是中位數，越高越好）。
+- 站台先用 videos.list（Data API 1 單位）讀這支影片：不是已連結頻道的影片直接拒絕（404
+  `video_youtube_retention_other_channel`），並把 YouTube 的影片長度（`contentDetails.duration`）一起回，
+  讓工具把比例換成秒。
+- 錯誤：授權沒有 Analytics → 409 與報表一樣的「重新連結」（工具 exit 3）；專案沒啟用 **YouTube
+  Analytics API**（跟 Reporting API 是兩個 API，要分開啟用）→ 503 `video_youtube_analytics_disabled`；
+  配額 → 429；其他 403 → `video_youtube_retention_forbidden`。工具對站台與 YouTube 的拒絕 exit 4。
+- **站主要做一次**：Google Cloud 專案「API 和服務」→「程式庫」啟用 **YouTube Analytics API**。
+
+```bash
+node tools/video/youtube-reports/cli.mjs retention --video gkl0vABh1_c --organic
+node tools/video/youtube-reports/cli.mjs retention --slug curio-s04-v2 --from 2026-11-01 --to 2026-11-09 --format csv --out "$TMPDIR/s04.csv"
+```
+
+工具印出 100 點（經過比例、秒數、audience watch ratio、relative performance）與**第一個大掉點**：
+前 30% 之內相鄰兩點之間 audience watch ratio 掉最多的一段，寫成比例，知道長度時也寫成秒
+（`--duration` 優先，否則用站台回的 YouTube 影片長度）。第一點是 1%：0 到 1% 之間走掉的人看不到，
+要看第一點本身的值。秒數、掉點與「掉了多少比例」都是工具自己算的，輸出標明 self-computed，
+**跟報表的衍生數字一樣只給站主看，不放公開頁面或影片說明**（上方〈授權、刪除與 YouTube 的政策〉）。
+
+**每週檢討怎麼用**（`docs/videos/channel-changes/README.md`）：對上週新片（自然流量，`--organic`）
+各跑一次，把第一個大掉點的秒數對回那一集的台詞：成片的字幕檔（上傳包裡的 `.srt`）或工作區的
+`timeline.json` 找出那幾秒是哪一句（`docs/videos/<slug>/video.json` 的 `scenes[].lines[].id` 對回稿子）。
+注意成片若前面有頻道片頭（`BRANDING.md`），YouTube 的秒數包含片頭，`timeline.json` 只算正文，
+要先扣掉片頭長度。把「掉在哪一句、那句在做什麼（鉤子、承諾句、鋪陳）」寫進製片單，
+要改的開票。

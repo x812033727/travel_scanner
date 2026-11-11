@@ -6,6 +6,14 @@ const cell = (value) => String(value ?? '').replaceAll('|', '／').replaceAll('\
 const STATUS = { selected: '入選', held: '暫緩', reserve: '候補（待研究）', produced: '已製作／製作中', shorts: '轉 Shorts', excluded: '淘汰／轉出' };
 const STATUS_ORDER = ['selected', 'held', 'reserve', 'shorts', 'excluded', 'produced'];
 const THEME_STATUSES = new Set(['selected', 'held', 'reserve']);
+// The material review (reviews/material-20261111.md; owner 2026-11-11): the eight-minute floor stays, and a
+// theme whose material would need padding waits (reserve) or waits to be merged (merge) instead of being made.
+export const MATERIAL_VERDICTS = Object.freeze({ ready: '可成題', merge: '待合併', reserve: '後備' });
+/** Whether a theme may be made: its material review says ready (a theme never reviewed counts as ready, as before). */
+export const materialReady = (episode) => (episode.material?.verdict ?? 'ready') === 'ready';
+// 舊題沒有查核檔寫下限制時，core 給的是明白的「尚未界定範圍」標記，不是假的範圍；輸出頁都要看得到。
+const NOT_SCOPED_LABEL = '範圍未界定';
+const notScoped = (row) => row.scope_status === 'not_yet_scoped';
 const sourceLabel = (source, reading) => reading.origin.startsWith('legacy:') ? `${new URL(source.url).hostname}${new URL(source.url).pathname}`.slice(0, 90) : reading.title;
 const mmss = (seconds) => `${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, '0')}`;
 
@@ -17,6 +25,12 @@ export function validateThemes(themes, pool) {
   for (const episode of themes.episodes) {
     for (const key of ['id', 'title', 'core_question', 'connection', 'boredom_risk', 'drop_if', 'evidence_gaps']) if (!episode[key]) throw new Error(`${episode.id}: missing ${key}`);
     if (episode.production_ready !== false || episode.status !== 'EDITORIAL_THEME_NOT_SCRIPT') throw new Error('A theme cannot grant production approval');
+    if (episode.material !== undefined) {
+      const material = episode.material;
+      if (!Object.hasOwn(MATERIAL_VERDICTS, material?.verdict) || !material.reviewed_on || !material.review) throw new Error(`${episode.id}: material needs a verdict (${Object.keys(MATERIAL_VERDICTS).join(', ')}), reviewed_on and review`);
+      if (material.verdict !== 'ready' && !material.missing) throw new Error(`${episode.id}: a ${material.verdict} theme says what is missing`);
+      if (material.verdict === 'merge' && !material.merge_with?.length) throw new Error(`${episode.id}: a merge theme names what it merges with`);
+    }
     const [lo, hi] = episode.range_minutes ?? [];
     if (!Number.isFinite(episode.target_minutes) || !Number.isFinite(lo) || !Number.isFinite(hi) || lo < LONG_MIN || hi > LONG_MAX || lo > episode.target_minutes || hi < episode.target_minutes) throw new Error(`${episode.id}: a long episode is ${LONG_MIN}–${LONG_MAX} minutes and its range must contain the target; shorter material goes to a sibling theme or Shorts`);
     if (!episode.candidate_ids?.length || new Set(episode.candidate_ids).size !== episode.candidate_ids.length) throw new Error(`${episode.id}: theme needs unique candidate ids`);
@@ -62,11 +76,13 @@ export function renderSources(pool) {
 export function renderQuestions(pool) {
   const rows = pool.candidates;
   const lines = [`# 奇聞檔案局素材池：${rows.length} 個核心題`, '', `入選 ${pool.counts.selected_candidates}、暫緩 ${pool.counts.held_candidates}、候補 ${pool.counts.reserve_candidates}、轉 Shorts ${pool.counts.shorts_candidates}、淘汰或轉出 ${pool.counts.excluded_cores}、已製作或製作中 ${pool.counts.produced_cores}。合併進別題的 ${pool.counts.alias_records} 筆原始紀錄列在主題的「合併原題」。`, '', '「入選」是有可追溯來源、可以排進題案的題，不是已核准的劇本；「候補」是題目卡還沒查、要先研究的題；「已製作」只當去重對象。', '', '[可搜尋清單](index.html) · [影片題案與片長](THEMES.md) · [去重紀錄](DEDUP.md) · [來源索引](SOURCES.md)', ''];
+  const unscoped = rows.filter(notScoped).length;
+  if (unscoped) lines.push(`「${NOT_SCOPED_LABEL}」的 ${unscoped} 題是還沒有查核檔寫下哪些話不能講的舊題，製作前要先查核並寫下限制。`, '');
   for (const axis of Object.keys(pool.axes)) {
     const group = rows.filter((row) => row.axis === axis).sort((a, b) => STATUS_ORDER.indexOf(a.pool_status) - STATUS_ORDER.indexOf(b.pool_status) || a.id.localeCompare(b.id, 'en', { numeric: true }));
     if (!group.length) continue;
     lines.push(`## ${axis} ${pool.axes[axis]}（${group.length}）`, '', '| ID | 狀態 | 題目 | 合併原題 | 素材估計 | 來源數 |', '| --- | --- | --- | --- | --- | --- |');
-    for (const row of group) lines.push(`| [${row.id}](index.html#${row.id}) | ${STATUS[row.pool_status]} | ${cell(row.question)} | ${row.aliases.join('、')} | ${row.editorial ? `${row.editorial.minutes.join('–')} 分` : ''} | ${new Set(row.source_refs.map((ref) => ref.source_id)).size} |`);
+    for (const row of group) lines.push(`| [${row.id}](index.html#${row.id}) | ${STATUS[row.pool_status]}${notScoped(row) ? `<br>${NOT_SCOPED_LABEL}` : ''} | ${cell(row.question)} | ${row.aliases.join('、')} | ${row.editorial ? `${row.editorial.minutes.join('–')} 分` : ''} | ${new Set(row.source_refs.map((ref) => ref.source_id)).size} |`);
     lines.push('');
   }
   return `${lines.join('\n').trimEnd()}\n`;
@@ -97,20 +113,22 @@ export function renderDedup(pool) {
 
 export function renderThemes(themes, pool) {
   const byId = new Map(pool.candidates.map((row) => [row.id, row]));
-  const lines = ['# 從素材池排出的影片題案', '', `${themes.episodes.length} 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。`, '', `**片長規則：** 長片 ${LONG_MIN}–${LONG_MAX} 分鐘，看素材決定。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 ${LONG_MIN} 分鐘的轉 Shorts 或留在後備。`, '', '「來源待補」的題案裡有還沒研究的候補題：要先查核、改成入選，才能寫企劃。', '', '| ID | 題案 | 正文估計 | 核心題數 | 來源 |', '| --- | --- | --- | --- | --- |'];
+  const lines = ['# 從素材池排出的影片題案', '', `${themes.episodes.length} 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。`, '', `**片長規則：** 長片 ${LONG_MIN}–${LONG_MAX} 分鐘，看素材決定。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 ${LONG_MIN} 分鐘的轉 Shorts 或留在後備。`, '', '「來源待補」的題案裡有還沒研究的候補題：要先查核、改成入選，才能寫企劃。', '', '**素材審視（2026-11-11）：** 「待合併」與「後備」的題案素材撐不起 8 分鐘不重複的旁白，先不成題；缺什麼寫在各題的審視欄（[reviews/material-20261111.md](reviews/material-20261111.md)）。結尾章 30–60 秒，只講答案與留言問題，不用回顧填時間。', '', '| ID | 題案 | 正文估計 | 核心題數 | 來源 | 素材審視 |', '| --- | --- | --- | --- | --- | --- |'];
   for (const episode of themes.episodes) {
     const readiness = themeReadiness(episode, pool);
-    lines.push(`| ${episode.id} | ${cell(episode.title)} | ${mmss(episode.target_minutes * 60)}（範圍 ${mmss(episode.range_minutes[0] * 60)}–${mmss(episode.range_minutes[1] * 60)}；未試讀） | ${episode.candidate_ids.length} | ${readiness.ready ? '已有可追溯來源' : `來源待補：${readiness.unsourced.join('、')}`} |`);
+    lines.push(`| ${episode.id} | ${cell(episode.title)} | ${mmss(episode.target_minutes * 60)}（範圍 ${mmss(episode.range_minutes[0] * 60)}–${mmss(episode.range_minutes[1] * 60)}；未試讀） | ${episode.candidate_ids.length} | ${readiness.ready ? '已有可追溯來源' : `來源待補：${readiness.unsourced.join('、')}`} | ${episode.material ? MATERIAL_VERDICTS[episode.material.verdict] : '未審'} |`);
   }
   for (const episode of themes.episodes) {
-    lines.push('', `## ${episode.id} ${episode.title}`, '', `**追問：** ${episode.core_question}`, '', `**為什麼接成一集：** ${episode.connection}`, '', '| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |', '| --- | --- | --- | --- | --- |');
+    const material = episode.material;
+    const verdict = material ? [`**素材審視：** ${MATERIAL_VERDICTS[material.verdict]}`, material.missing ? `；缺：${cell(material.missing)}` : '', material.merge_with?.length ? `；合併對象：${material.merge_with.join('、')}` : ''].join('') : '';
+    lines.push('', `## ${episode.id} ${episode.title}`, ...(verdict ? ['', verdict] : []), '', `**追問：** ${episode.core_question}`, '', `**為什麼接成一集：** ${episode.connection}`, '', '| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |', '| --- | --- | --- | --- | --- |');
     for (const chapter of episode.chapters) lines.push(`| ${cell(chapter.title)} | ${chapter.seconds} | ${cell(chapter.new_information)} | ${chapter.candidate_ids.join('、')} | ${cell(chapter.cut_if ?? '')} |`);
     lines.push('', '**用到的題與來源：**', '');
     for (const id of episode.candidate_ids) {
       const row = byId.get(id);
       const ids = [...new Set(row.source_refs.map((ref) => ref.source_id))];
       const links = ids.slice(0, 3).map((sourceId) => { const source = pool.sources.find((item) => item.id === sourceId); return `[${new URL(source.url).hostname}](${source.url})`; });
-      lines.push(`- ${id}（${STATUS[row.pool_status]}）${cell(row.question)}${row.aliases.length ? `；合併原題 ${row.aliases.join('、')}` : ''} — ${links.length ? links.join('、') : '還沒有來源'}`);
+      lines.push(`- ${id}（${STATUS[row.pool_status]}${notScoped(row) ? `；${NOT_SCOPED_LABEL}` : ''}）${cell(row.question)}${row.aliases.length ? `；合併原題 ${row.aliases.join('、')}` : ''} — ${links.length ? links.join('、') : '還沒有來源'}`);
     }
     lines.push('', `**可能無聊的地方：** ${episode.boredom_risk}`, '', `**撤案條件：** ${episode.drop_if}`, '', `**待補證據：** ${episode.evidence_gaps}`);
   }
@@ -123,7 +141,7 @@ export function renderThemes(themes, pool) {
 export function renderHtml(pool, themes) {
   const shown = pool.candidates.filter((row) => row.pool_status !== 'excluded');
   const sourceIds = new Set(shown.flatMap((row) => row.source_refs.map((ref) => ref.source_id)));
-  const slim = (row) => ({ id: row.id, axis: row.axis, domain: row.domain, question: row.question, hook: row.hook, answer_target: row.answer_target, scope: row.scope, notes: row.notes, pool_status: row.pool_status, status_label: STATUS[row.pool_status], aliases: row.question_variants.map((variant) => ({ id: variant.id, question: variant.question })), editorial: row.editorial ?? null, disposition: row.disposition, production: row.production.locators.slice(0, 3), source_refs: row.source_refs.map((ref) => ({ source_id: ref.source_id, origin: ref.origin, locator: ref.locator })) });
+  const slim = (row) => ({ id: row.id, axis: row.axis, domain: row.domain, question: row.question, hook: row.hook, answer_target: row.answer_target, scope: row.scope, scope_status: row.scope_status ?? null, notes: row.notes, pool_status: row.pool_status, status_label: STATUS[row.pool_status], aliases: row.question_variants.map((variant) => ({ id: variant.id, question: variant.question })), editorial: row.editorial ?? null, disposition: row.disposition, production: row.production.locators.slice(0, 3), source_refs: row.source_refs.map((ref) => ({ source_id: ref.source_id, origin: ref.origin, locator: ref.locator })) });
   const payload = JSON.stringify({ candidates: shown.map(slim), sources: pool.sources.filter((source) => sourceIds.has(source.id)).map((source) => ({ id: source.id, url: source.url, readings: source.readings.map((reading) => ({ origin: reading.origin, title: reading.title, publisher: reading.publisher, accessed_on: reading.accessed_on, locator: reading.locator, limitations: reading.limitations ?? '' })) })), themes: themes.episodes.map((episode) => ({ id: episode.id, title: episode.title, candidate_ids: episode.candidate_ids })), axes: pool.axes, statuses: STATUS }).replaceAll('<', '\\u003c');
   return `<!doctype html>
 <html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>奇聞檔案局素材池</title>
@@ -140,7 +158,7 @@ for(const [k,v] of Object.entries(data.axes)){const o=document.createElement('op
 for(const [k,v] of Object.entries(data.statuses)){if(k==='excluded')continue;const o=document.createElement('option');o.value=k;o.textContent=v;status.append(o)}
 for(const t of data.themes){const o=document.createElement('option');o.value=t.id;o.textContent=t.id+' '+t.title;theme.append(o)}
 function el(tag,text,cls){const e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e}
-function render(){const term=q.value.trim().toLocaleLowerCase();const t=data.themes.find(x=>x.id===theme.value);const rows=data.candidates.filter(x=>(!axis.value||x.axis===axis.value)&&(!status.value||x.pool_status===status.value)&&(!t||t.candidate_ids.includes(x.id))&&(!term||(x.id+' '+x.question+' '+x.hook+' '+x.answer_target+' '+JSON.stringify(x.aliases)).toLocaleLowerCase().includes(term)));results.replaceChildren();document.getElementById('count').textContent='找到 '+rows.length+' 筆 · 顯示 '+Math.min(rows.length,limit)+' 筆';for(const row of rows.slice(0,limit)){const card=el('article','');card.id=row.id;card.append(el('span',row.id,'tag'),el('span',row.domain,'tag'),el('span',row.status_label,'tag'),el('h2',row.question));if(row.hook)card.append(el('p',row.hook));if(row.editorial)card.append(el('p','素材估計：'+row.editorial.minutes.join('–')+' 分鐘（'+(row.editorial.role==='chapter'?'撐不起單集，要跟兄弟題併':'可當一集的主幹')+'；未試讀）','muted'));if(row.disposition)card.append(el('p','處置：'+row.disposition.reason,'muted'));const detail=el('details','');detail.append(el('summary','紀錄怎麼說、合併的原題與來源'));const body=el('div','','detail');if(row.answer_target)body.append(el('p','紀錄：'+row.answer_target));body.append(el('p','範圍：'+row.scope,'muted'));if(row.notes)body.append(el('p',row.notes,'muted'));for(const a of row.aliases)body.append(el('p','合併原題 '+a.id+'：'+a.question,'muted'));for(const p of row.production)body.append(el('p','製作位置：'+p,'muted'));const ul=el('ul','','sources');for(const id of [...new Set(row.source_refs.map(x=>x.source_id))]){const s=sources.get(id);const refs=row.source_refs.filter(x=>x.source_id===id);const reading=s.readings.find(x=>refs.some(r=>r.origin===x.origin))||s.readings[0];const li=el('li','');const a=el('a',reading.origin.startsWith('legacy:')?(new URL(s.url).hostname+new URL(s.url).pathname).slice(0,80):reading.title);a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';li.append(a,el('small',' — '+reading.publisher+' · '+(reading.accessed_on||'歷史引用，本輪未讀')));for(const ref of refs)li.append(el('div','定位：'+ref.locator,'muted'));if(reading.limitations)li.append(el('div','限制：'+reading.limitations,'muted'));ul.append(li)}if(!row.source_refs.length)body.append(el('p','還沒有可追溯來源。','muted'));body.append(ul);detail.append(body);card.append(detail);results.append(card)}more.hidden=rows.length<=limit}
+function render(){const term=q.value.trim().toLocaleLowerCase();const t=data.themes.find(x=>x.id===theme.value);const rows=data.candidates.filter(x=>(!axis.value||x.axis===axis.value)&&(!status.value||x.pool_status===status.value)&&(!t||t.candidate_ids.includes(x.id))&&(!term||(x.id+' '+x.question+' '+x.hook+' '+x.answer_target+' '+JSON.stringify(x.aliases)).toLocaleLowerCase().includes(term)));results.replaceChildren();document.getElementById('count').textContent='找到 '+rows.length+' 筆 · 顯示 '+Math.min(rows.length,limit)+' 筆';for(const row of rows.slice(0,limit)){const card=el('article','');card.id=row.id;card.append(el('span',row.id,'tag'),el('span',row.domain,'tag'),el('span',row.status_label,'tag'),el('h2',row.question));if(row.hook)card.append(el('p',row.hook));if(row.editorial)card.append(el('p','素材估計：'+row.editorial.minutes.join('–')+' 分鐘（'+(row.editorial.role==='chapter'?'撐不起單集，要跟兄弟題併':'可當一集的主幹')+'；未試讀）','muted'));if(row.disposition)card.append(el('p','處置：'+row.disposition.reason,'muted'));if(row.scope_status==='not_yet_scoped')card.append(el('span','範圍未界定','tag'));const detail=el('details','');detail.append(el('summary','紀錄怎麼說、合併的原題與來源'));const body=el('div','','detail');if(row.answer_target)body.append(el('p','紀錄：'+row.answer_target));body.append(row.scope_status==='not_yet_scoped'?el('p','範圍未界定：'+row.scope,'warning'):el('p','範圍：'+row.scope,'muted'));if(row.notes)body.append(el('p',row.notes,'muted'));for(const a of row.aliases)body.append(el('p','合併原題 '+a.id+'：'+a.question,'muted'));for(const p of row.production)body.append(el('p','製作位置：'+p,'muted'));const ul=el('ul','','sources');for(const id of [...new Set(row.source_refs.map(x=>x.source_id))]){const s=sources.get(id);const refs=row.source_refs.filter(x=>x.source_id===id);const reading=s.readings.find(x=>refs.some(r=>r.origin===x.origin))||s.readings[0];const li=el('li','');const a=el('a',reading.origin.startsWith('legacy:')?(new URL(s.url).hostname+new URL(s.url).pathname).slice(0,80):reading.title);a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';li.append(a,el('small',' — '+reading.publisher+' · '+(reading.accessed_on||'歷史引用，本輪未讀')));for(const ref of refs)li.append(el('div','定位：'+ref.locator,'muted'));if(reading.limitations)li.append(el('div','限制：'+reading.limitations,'muted'));ul.append(li)}if(!row.source_refs.length)body.append(el('p','還沒有可追溯來源。','muted'));body.append(ul);detail.append(body);card.append(detail);results.append(card)}more.hidden=rows.length<=limit}
 for(const control of [q,axis,status,theme])control.addEventListener('input',()=>{limit=50;render()});more.addEventListener('click',()=>{limit+=50;render()});if(location.hash){try{q.value=decodeURIComponent(location.hash.slice(1))}catch{q.value=''}}render();
 </script></html>
 `;
@@ -151,7 +169,7 @@ export function producibleData(pool, themes) {
   const byId = new Map(pool.candidates.map((row) => [row.id, row]));
   const used = new Set(themes.episodes.flatMap((episode) => episode.candidate_ids));
   const short = (text, n) => { const value = (text ?? '').trim(); return value.length <= n ? value : `${value.slice(0, n)}…`; };
-  const ready = themes.episodes.filter((episode) => episode.candidate_ids.every((id) => byId.get(id)?.selected));
+  const ready = themes.episodes.filter((episode) => materialReady(episode) && episode.candidate_ids.every((id) => byId.get(id)?.selected));
   return {
     revision: pool.revision, axes: pool.axes,
     themes: ready.map((episode) => ({ id: episode.id, title: episode.title, minutes: episode.target_minutes, q: episode.core_question, chapters: episode.chapters.length, cores: episode.candidate_ids.map((id) => ({ id, axis: byId.get(id).axis, q: byId.get(id).question })) })),

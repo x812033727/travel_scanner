@@ -20,6 +20,31 @@ export const CURIO_MAX_CARD_RUN = 3;
  */
 export const CURIO_MUSIC = Object.freeze({ prompt: "light, curious, a little mysterious, no vocals", gain_db: -20, duck_db: -10 });
 
+/**
+ * The pacing both narrated cartoon series take (owner, 2026-11-05; made the series default on
+ * 2026-11-11): no gap between sentences and a short one between scenes, so the cut's silence
+ * falls from 7-10% to the reference channels' 3% or less, and stills that hold and then move
+ * (push, pan, pull) instead of one slow glide. Until then each video.json had to opt in, and none
+ * of the episodes made after the rule did (.agents/skills/producer/references/pace-targets.md).
+ */
+export const SERIES_PACING = Object.freeze({ pauses: Object.freeze({ line_ms: 0, scene_ms: 150 }), still_motion: "beat" });
+
+/** Whether a video belongs to a series that takes SERIES_PACING: 奇聞檔案局 (curio-) and 原來如此事務所 (sothatswhy-). */
+export const isPacedSeries = (doc) => /^(curio|sothatswhy)-/.test(doc?.slug ?? "");
+
+/**
+ * What a paced series' drama is missing of SERIES_PACING, as lint warnings. A local video is
+ * never changed behind its back: tightening the pauses moves the timeline an owner may already
+ * have approved, so the warning names the fields and the re-approval they cost.
+ */
+export function pacingWarnings(doc) {
+  if (!isPacedSeries(doc) || doc.format !== "drama") return [];
+  const warnings = [];
+  if (doc.pauses === undefined) warnings.push({ path: "pauses", message: `this series closes the gaps between sentences (owner, 2026-11-05): add "pauses": ${JSON.stringify(SERIES_PACING.pauses)}; the timeline moves, so the narration and storyboard go back to the owner (the voice is not re-recorded)` });
+  if (doc.still_motion === undefined) warnings.push({ path: "still_motion", message: `this series' stills hold and then move instead of gliding (owner, 2026-11-05): add "still_motion": "${SERIES_PACING.still_motion}" (only the cut changes; no picture is redrawn)` });
+  return warnings;
+}
+
 // The bookends are not the body: the opening title, chapter cards and the outro card.
 const FRAMES = new Set(["title", "chapter", "outro"]);
 
