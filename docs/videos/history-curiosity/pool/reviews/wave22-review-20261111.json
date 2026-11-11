@@ -1,0 +1,462 @@
+{
+  "batch": "batches/wave22-20261111.json",
+  "reviewed_on": "2026-11-11",
+  "method": "四位沒有參與研究的覆核代理（R221：B1；R222：B2；R223：B4；R224：B3）逐題至少重開一個關鍵來源、用素材池搜尋或批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核者補讀的三筆來源以 B1-S033、B4-S024、B4-S025 收錄。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 19,
+    "ADOPT": 5,
+    "NEEDS_CHECK": 1
+  },
+  "verdicts": [
+    {
+      "id": "N2481",
+      "agent": "B1",
+      "reviewer": "R221",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B1-S001 https://zh.wikisource.org/wiki/周秦行紀論；另重開 B1-S004 https://www.cambridge.org/core/journals/journal-of-chinese-history/article/niuli-factional-strife-the-origins-of-a-historiographical-fiction/1845DBAD83C09083145C816B8DE768E6",
+      "reopen_result": "〈周秦行紀論〉頁面確有『及至戲德宗為沈婆兒，以代宗皇后為沈婆，令人骨戰，可謂無禮於其君甚矣』、『兩角犢子恣狂顛』之讖（原注：李公常呼牛僧孺曰太牢）、『所恨未暇族之，而餘又罷』、『須以太牢少長咸寘於法』（頁面作『鹹寘』，旁白照通行字『咸寘』即可），以及『《周秦行紀》附於下』『亦書《行紀》之跡於後』；但該頁本身沒有錄出《行紀》全文。Höckelmann 一文確實寫『Most scholars reject the authorship of the tale and essay』，注中說傅璇琮、周建國否定論為李德裕作但仍收入集中；張洎（933–996）《賈氏談錄》說故事是李黨韋瓘所作；《舊唐書》說德裕南遷後在《窮愁志》『引里俗犢子之讖』斥僧孺；全文主旨是牛李黨爭為五代北宋以後成形的史學虛構。候選的事實都對得上。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池與 wave21、B2、B4 都沒有《周秦行紀》、牛僧孺、李德裕或牛李黨爭（grep pool.json 與 batches/*.json 皆 0；搜尋索引顯示 stale，改用 grep）。同類偽作題 N2443、N2444 答案不同。題目本身好：三層紙上證據（故事→指控→作者都有疑），兩個真轉折（張洎的韋瓘說；Höckelmann 指出論也被否定、黨爭本身是後世敘事），片長 9–11 分鐘誠實。改的是兩處說過頭：原題『差點讓宰相被滅族』不成立（論只說『恨未暇族之』）；原 hook『主張滅族的人反而成了把故事保存下來的人』預設了論是李德裕寫的、又忽略《太平廣記》另有傳本，跟候選自己的 scope 互相矛盾，改成兩頭都可能是偽託。製作前照候選 notes 讀《太平廣記》卷489 全文。"
+    },
+    {
+      "id": "N2482",
+      "agent": "B1",
+      "reviewer": "R221",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B1-S011 https://zh.wikisource.org/wiki/夢溪筆談/補筆談；另重開 B1-S015 林智莉 PDF（政大中文學報第 8 期，pdftotext 讀頁 110–114 與注 40–42、55）",
+      "reopen_result": "《補筆談》卷三雜誌鍾馗條確有『臣鍾馗氏，即武舉不捷之土也』（轉錄本作『土』）、『熙寧五年，上令畫工摹搨鐫板，印賜兩府輔臣各一本』、『有石誌，乃宋征西將軍宗愨母鄭夫人墓』、『愨有妹名鍾馗』、『「鍾馗」字亦作「鍾葵」』（轉錄本把皇祐寫成皇祜）。林智莉一文確實說最早文獻是《太上洞淵神咒經》〈斬鬼第七〉，並引周繇〈夢舞鍾馗賦〉、張說（667–730）與劉禹錫謝表；但她把《事物紀原》標為（1078–1085），即與沈括同時代、甚至可能早於《補筆談》，並說《事物紀原》《天中記》所載與補筆談『大同小異』，只多了『終南進士』與『虛耗』兩項；《天中記》注出已佚的《唐逸史》，林認為『由故事結構的緊密看來，應是經過修飾』。所以候選說撞殿階、終南進士是『更晚的書才加上的』，在年代上站不住。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.payoff"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池、wave21、B2、B4 都沒有鍾馗、鍾葵、終葵（grep 皆 0）。N804（日本幽靈沒有腳）可當『鬼的樣子是誰定的』兄弟。紙上證據本身就是故事（沈括自留反證、唐代謝表、明清考據兩派），兩個轉折成立，片長 9–11 分鐘誠實。改兩處事實：宗愨是 5 世紀人，距開元約兩百多年，不是三百年；『撞殿階、終南進士是更晚的書才加的』與林智莉標的《事物紀原》年代（1078–1085）及《天中記》注出《唐逸史》不合，改成『不在沈括抄的題記裡』。"
+    },
+    {
+      "id": "N2483",
+      "agent": "B1",
+      "reviewer": "R221",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B1-S005 https://zh.wikisource.org/wiki/晉書/卷082；另重開 B1-S010 https://zh.wikisource.org/wiki/太平廣記/卷第321，並自己查了 https://zh.wikisource.org/wiki/世說新語/排調",
+      "reopen_result": "《晉書》干寶傳確有『寶父先有所寵侍婢，母甚妒忌，及父亡，母乃生推婢於墓中』、『寶兄嘗病氣絕，積日不冷，後遂悟』、『名為《搜神記》，凡三十卷』、『卿可謂鬼之董狐』、序文『亦安敢謂無失實者哉』。《太平廣記》卷321 宋定伯條首句『南陽宋定伯，年少時，夜行逢鬼』，條末注『出《列異傳》』，屬實。但《世說新語·排調》第 19 條已有干寶向劉真長敘《搜神記》、劉說『卿可謂鬼之董狐』；劉孝標注引《孔氏志怪》記干寶父婢『伏棺上，就視猶煖，漸有氣息』、後言父常給飲食，干寶因此撰書。也就是說，侍婢復活這段在唐修《晉書》之前已有 5–6 世紀的紀錄，而且最早的出處本身就是一部志怪。候選把『寫下這段身世的是唐朝的《晉書》』當成第一個轉折，說得不完整。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池只在別題的摘要裡提到《搜神記》（轆轤首、舌切雀、嶺南摭怪的序），沒有以干寶或《搜神記》本身為題的；F25 蒲松齡茶攤同類不同答案；wave21、B2、B4 沒有。前提成立，宋定伯出《列異傳》等關鍵點重開屬實。缺漏是覆核者自己查到的：《世說新語》與劉孝標注引《孔氏志怪》比《晉書》早記了侍婢故事。這不推翻題目，反而讓鉤子更好（證明鬼書可信的身世，最早也寫在鬼書裡），但原題與原 hook 暗示唐修《晉書》是唯一來源，必須改。改後三個轉折：身世最早出自志怪；正史採它而被劉知幾批評；今本是輯本、名篇掛別書。片長 8.5–10 分鐘誠實，不要加長。"
+    },
+    {
+      "id": "N2484",
+      "agent": "B1",
+      "reviewer": "R221",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B1-S018 https://zh.wikisource.org/wiki/夷堅志/夷堅丙志序；另重開 B1-S021 https://zh.wikisource.org/wiki/夷堅志/夷堅支庚序",
+      "reopen_result": "〈丙志序〉確有『然得於容易，或急於滿卷秩成編，故頗違初心』、『如甲志中人為飛禽，乙志中建昌黃氏寃、馮當可、江毛心事，皆大不然，其究乃至於誣善』、『蓋以告者過，或予聽焉不審，為竦然以慚』、『但談鬼神之事足矣，毋庸及其它』，二十卷二百六十七事，乾道七年五月十八日。〈支庚序〉確有『越四十四日』、『凡百三十有五事』、『雖予亦自駭其敏也』；但借來的筆記是『鄉士吳潦伯秦』拿出的、他先人（時軒居士）的筆記，洪邁『剽取三之一為三卷』——是取那份筆記的三分之一編成三卷，不是『全書三分之一抄自一位亡友』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池只在 N447（密陽阿娘）提到《夷堅志》〈解三娘〉，沒有以洪邁或《夷堅志》成書為題的；wave21、B2、B4 沒有。這題是最好的那種：作者自己的序就是紙上證據，乙志序→丙志序的反轉是真轉折，支丁、支庚序再加一層，片長 9–11 分鐘誠實。改的是讀過頭的地方：原題『三分之一是照抄一位亡友的筆記』把『剽取三之一為三卷』讀錯，筆記也不是洪邁亡友的而是吳潦先人的；notes 把支甲序與支庚序講成矛盾也不對。可與 N2483 排成主題，但各自單做。"
+    },
+    {
+      "id": "N2485",
+      "agent": "B1",
+      "reviewer": "R221",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B1-S025 https://www.gutenberg.org/cache/epub/48511/pg48511.txt（Burton 1870 全文）；另重開 B1-S026 https://en.wikisource.org/wiki/The_Katha_Sarit_Sagara/Chapter_75 與 B1-S028 https://www.dawn.com/news/1702619",
+      "reopen_result": "Burton 書名頁確為『ADAPTED BY RICHARD F. BURTON』；序說 Baital-Pachisi 是 Twenty-five (tales of a) Baital——『a Vampire or evil spirit which animates dead bodies』，注 5 說梵文作 Vétála-pancha-Vinshatí、Baital 是 Vétála 的現代形式；『to clothe the skeleton with flesh and blood』在序中；目錄是 Introduction、Vampire's First 到 Eleventh Story、Conclusion，共 11 個故事；Introduction 說苦行者把他『suspended him head downwards from a mimosa tree in a cemetery』。Tawney 第 75 章：國王 Trivikramasena、乞士 Kṣāntiśīla、猴子吃果子掉出寶石、『you will find an aśoka-tree. On it there is a dead man hanging up』、『that made the corpse utter a loud demoniac laugh』、『the Vetála in the corpse』；本章只示範一次『國王答話打破沉默、它就離肩』，一般規則在 B1-S027。Dawn 專欄確有 Platts 所述 Jai Singh 請 Surat 譯成 Braj、Gian Chand Jain 定 1740、Gilchrist 請 Mazhar Ali Khan Vila 譯成淺白烏爾都語、Lallu Lal 協助、1803 年 Fort William College 出版供英國官員學習；另說 Forbes 1862 年在倫敦出了印地語本並追溯到 Somadeva。",
+      "changed_fields": [
+        "question",
+        "scope",
+        "editorial.payoff"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池沒有 Vetāla、Baital、Vikram（grep 皆 0）；wave15 擋下的是泰國 1918 年王族譯本，擋的理由是『不是泰國民間故事、譯者是王族』，本題講印度原典到 Burton，不碰泰國，沒有重提。F34、N187、N681 同屬吸血鬼但答案不同。重開的三個來源都撐得住答案。改的是原題的因果暗示：『它變成英文的 vampire，中間經過一本 1803 年課本』等於說 Burton 用了那本，候選自己的 scope 也承認底本不明；另外 vampire 這個標籤是不是 Burton 首創沒查過，payoff 不能講成『名字是 Burton 貼上去的』。片長偏緊（8.5–10），F 軸前三分之二說框架故事與一兩則謎題、後三分之一打開檔案，誠實可撐；不要再加長。"
+    },
+    {
+      "id": "N2486",
+      "agent": "B1",
+      "reviewer": "R221",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B1-S029 https://www.ocf.berkeley.edu/~culturalanalysis/volume8/vol8_article3.html；另重開 B1-S030 Marzolph PDF（pdftotext，頁 119–121）與 B1-S031 Lang 本（gutenberg pg128.txt 行 8889–8972）",
+      "reopen_result": "Al-Rawi 確實說 Galland『embellished the ghoul with a new feature that became a standard description of this creature in the West』，引 1798 英譯：ghouls 在『want of prey, will sometimes go in the night into burying grounds, and feed upon dead bodies』；Amina『preferred to accompany the ghouls in the graveyard at night』，阿拉伯文化裡沒有這種角色；Lane 沒引阿拉伯文獻、Chauvin 只引 Sidi Nouman、OED 定義；al-Jāḥiẓ 說孤單的人會把小東西看成巨大；al-Mas'ūdī 說偶蹄如山羊；al-Damīrī 說鬣狗愛挖墳；但 1667 年麥加的動物出自 al-'Aṣāmī，不是 al-Damīrī，那隻動物傷了一名婦人後被打死、因為不知道是什麼而叫它 ghoul；Al-Rawi 說 Galland 筆下的 ghoul 是男性，並提到 Galland 可能從 Ḥannā Diyāb 聽到鬣狗之說。Marzolph 頁 121 確有 Sīdī Nuʿmān 嵌在 The Caliph's Night Adventures（1709 年 5 月 10 日講述）、AT 449、與核心故事〈第三位老人〉相似、只有〈烏木馬〉有阿拉伯手稿傳統（晚於 Galland）；但頁 119 也寫：Galland 1711 年 1 月 10 日的筆記說他是照 Hanna 給他的阿拉伯文本譯完第十冊的故事，第十冊包含〈哈里發夜遊〉與 Sīdī Nuʿmān，學者因此懷疑這些故事也有過書面阿拉伯文本。Lang 本確寫 Amina 用一根針一粒一粒挑米、墳場裡是『hideous female ghoul』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池沒有 ghoul、食屍鬼、Sidi Nouman（grep 皆 0）；F31（阿拉丁手稿）同樣出自 Diyab，但答案是阿拉丁手稿真偽，本題是一個怪物特徵的來源，兩題可排成主題；wave21、B2、B4 沒有。前提與兩個轉折（古典 ghūl 不吃屍；吃屍那篇沒有留下阿拉伯原稿、到底是 Diyab 還是 Galland 加的分不出來）成立，片長 9–10 分鐘大致誠實。改三處讀過頭：原 hook『從來沒有阿拉伯文的版本』與 Marzolph 頁 119 的 1711 年筆記不合；『女 ghoul』只是 Lang 本，Al-Rawi 引的 Galland 系統是男性；1667 年麥加一事 Al-Rawi 歸 al-'Aṣāmī。"
+    },
+    {
+      "id": "N2501",
+      "agent": "B2",
+      "reviewer": "R222",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B2-S002 https://centerforinquiry.s3.amazonaws.com/wp-content/uploads/sites/29/2001/05/22164829/p20.pdf（Nickell 全文 pp.20–21, 66）；B2-S001 https://www.bsanz.org/…/SP_2015-Vol39-No3-1_Vening.pdf（Vening pp.133–135）；B2-S003 坎貝爾敦市府頁（curl 被 Akamai 擋，WebFetch 讀到後段）",
+      "reopen_result": "Nickell 頁面確實寫：審判紀錄（Supreme Criminal Court 1827，刊於 Sydney Gazette 2 月 5 日）『完全沒提到鬼』；警員 George Looland 作證『前一年 10 月 20 日』在 Fisher 圍場角落幾根籬笆橫木上看到血才去搜，兩名原住民追蹤者看到水面疑似『白人的油』、用鐵棒探出位置；最早的版本鬼坐在『籬笆』橫木上，後來變成橋的欄杆，1950 年代起 6 月 17 日午夜在橋邊守夜；1836 年 3 月 1 日 Tegg’s Monthly 之前已有 1832 年 9 月 Hill’s Life 的匿名詩；狄更斯版改成 Penrith、Smith。Vening p.133–134：詩分兩次刊出（9 月 14 日題目誤植為 Spirit，9 月 21 日全文），題注寫的是『Campbell Town 一位叫 F***** 的 Sheriff & Bailiff 被殺』；人名 Fredro、Wurlo/Wurlow、Falvonis；1968 年 Hadgraft 與 Webby 才認出詩的重要性；1846 年 6 月以『Felix』之名修訂加註重刊於 Bell’s Life；推定作者 James Riley。市府頁（引 Liston）：6 月 17 日失蹤、9 月 17 日被捕、2 月 2 日 Forbes 審理、陪審團十五分鐘、2 月 5 日處決、『thinking him a horse in the wheat crop』、Robinson 的記述『寫於事後十多年、他獲釋之後』『Only Robinson mentioned the ghost』『Strange that an injured spirit should appear only to a half tipsy man』、Farley 1841 年死、其妻說他編的；Tegg 版見證人 John Hurley、坐在籬笆上。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池與 wave21、wave22 各檔都沒有 Fisher’s Ghost；N681 Croglin Grange 只是同姓的 Fisher 上尉。同類『傳說比事件晚』（G05、G09）答案不同。三個來源互相獨立（同時代審訊報導經 Nickell 轉引、文學史家 Vening、地方史家 Liston 經市府轉述），兩個轉折（法庭只有血跡與追蹤者、六年後的詩才有鬼；每一版搬地點換人名、作者成謎）都在重開的頁面上。片長 9–11 分鐘可信：法庭、詩、Tegg、狄更斯、籬笆變橋、作者推定各一章，沒有重複。只修一個日期矛盾與一個來源沒給的年份。"
+    },
+    {
+      "id": "N2502",
+      "agent": "B2",
+      "reviewer": "R222",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B2-S005 https://www.loc.gov/resource/sn85042373/1911-01-04/ed-1/?sp=5（The Evening Times 1911-01-04 p.5，經 loc.gov JSON 取得 tile.loc.gov ALTO 全文；chroniclingamerica 的 ocr.txt 與 B2-S004 的 st=text 頁回 Cloudflare 驗證或 403，沒有繞過）；B2-S006 en.wikipedia SS Waratah",
+      "reopen_result": "頁面確實寫：London, Jan. 4 電訊，貿易部調查庭『正在倫敦舉行』；Waratah 1909 年 7 月在德班與開普敦之間失蹤，92 名乘客、119 名船員；Sawyer 從墨爾本訂到開普敦，船搖晃、向右舷傾斜、很久才回正，『He had already made up his mind to quit the ship at Durban』，之後某天早上的夢讓他更不安；夢裡穿著從沒見過的服裝的人揮著沾血的劍，消失又出現、共三次；下午茶告訴一位女士，她說夢見劍是警告，『這堅定了』他下船的決心；勸 Mrs. 與 Miss Hay，母女起爭執後不再勸；到德班前幾天又夢見兩道大浪、第三道更大的把船翻覆；到德班坐人力車去 Marine Hotel，在陽台上（下文斷在版面）。維基百科：電報『Booked Cape Town, Thought Waratah Top-Heavy, Landed Durban, Claude』那一句沒有附註；夢最早見報寫『John Bull 1910 年 1 月 22 日』但註腳引的是 Evening Standard 1910 年 1 月 20 日，兩者不合；調查 1910 年 12 月在 Caxton Hall，證詞互相矛盾。",
+      "changed_fields": [
+        "answer_target",
+        "editorial",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池裡沒有 Waratah 或 Sawyer；N464（林肯的夢）、N467、N706 是預言文本或回憶錄，不是同時代的證詞，答案不同。前提成立，最強的轉折（先決定下船、夢只是加強）就在重開的報紙證詞裡。但研究代理把電報與夢最早見報這兩件事放進 answer_target，只有維基百科可依，而且電報那句沒附註、見報日期自相矛盾，所以移到 scope。B2-S004 與 B2-S005 是同一電訊，不算兩個獨立來源。單集撐得住約 8–9.5 分鐘；與 N2506 合為一集更順（見 theme_suggestions）。"
+    },
+    {
+      "id": "N2503",
+      "agent": "B2",
+      "reviewer": "R222",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B2-S009 https://archive.org/details/sim_current-opinion_1888-08_1_2（Internet Archive djvu 全文，編者閒談欄與 p.154 起的轉載與腳註）；B2-S010 https://archive.org/details/in.ernet.dli.2015.89667（Osborn 1924 第一章 pp.1–3）",
+      "reopen_result": "Current Literature 1888 年 8 月的編者閒談確實寫：請讀者翻到 p.154 讀〈The Man-Eating Tree〉，『多年前由 Edmund Spencer 替 N. Y. World 寫的』；Spencer 在 World 時寫過許多『看起來像真的』、陰沉的故事，『master of the horrible』，接近愛倫坡；這個 Crinoida Dajeeana『馬達加斯加的魔鬼樹』被到處轉載，害很多人去找 Dr. Friedlowsky 的著作；起因是與朋友談話時他主張只要極度誇大一個熟悉甚至美麗的東西就能製造恐怖，拿含羞草示範；魔鬼樹只是放大的捕蠅草；Spencer 約兩年前死在巴爾的摩。研究代理沒寫的一點：同一期 p.154 起把整篇故事全文重刊，腳註說『每期要重刊一篇被遺忘的名作，成千讀者想要一份〈食人樹〉』。Osborn 1924 第一章確實寫『大部分時候我會誠實…這章標題是為了抓住你的興趣』『我不知道這棵樹是否存在』『走遍全島沒看到食人樹』；但同一頁他也寫各族都對他講過它的故事、傳教士說無法理解各族為何都相信、『不可能的東西卻不是不可能』，並說 Liche 的信『1880 年首次由 New York World 在美國刊出』、信是『1878 年』從馬達加斯加寫的。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池與 wave21、wave22 都沒有食人樹或 Edmund Spencer；N310 斐濟美人魚是巴納姆自招、N383 植物羊是標本，答案不同。前提成立，1888 年的作者揭露與 Osborn 1924 的開章我都重開讀到。改兩處：Current Literature 不只是點名，還把故事全文重刊（這讓『沒人注意』更有意思，也更正確）；Osborn 不是單純的懷疑者，他同頁替『可能存在』講話，照實講才不會說滿。『被遺忘一百多年』與 Ley 猜錯源頭只靠 hoaxes.org，降為轉述。片長 8.5–10 分鐘可信：World 1874、假刊物、轉載鏈、1888、Osborn 1924、Ley 1955 各一章。"
+    },
+    {
+      "id": "N2504",
+      "agent": "B2",
+      "reviewer": "R222",
+      "verdict": "ADOPT",
+      "key_source_reopened": "B2-S014 https://archive.org/details/journalof121419101912east（Williams 1912, pp.123–125，djvu 全文）；B2-S015／B2-S016 https://archive.org/details/journalof345819121914east（Hickes 1913 與 Percival 1914, p.128）",
+      "reopen_result": "Williams 確實寫：『幾年前』Nandi 遠征剛結束後在 Uasingishu 與表親同行，濃霧突然散開，80 碼外一隻坐著的大獸，『姿勢就像動物園裡討麵包的熊』，近 5 呎；前半身毛厚、後半身幾乎光滑，頭長而尖『exactly like that of a bear』；開槍沒中；幾週後給同行的 boy 看各國動物圖鑑，他停在棕熊那頁；Nandi 人叫它 Chemosit；在奈洛比給一位老 Nandi 僕人看《Jungle Book》插畫，他立刻指著『Baloo, the Indian bear』；Kakumega 一帶另有 Shivuverre。Hickes 1913 確實寫：Clifford Hill 在鐵路第一次測量時帶的荷蘭少年在 Koora 平原（71 哩）遇到一隻，說不出樣子，Hill 給他看動物圖畫書，他挑了熊；工程師在排水管放水的泥地看到怪腳印，被描述成熊的腳印。Percival 1914 p.128 確實寫：Sotik 的怪獸『和我的 pointer 狗差不多大、會用後腳站、很兇』，給看蜜獾的圖就解決了；他認為它由黑猩猩（為基礎）、蜜獾、豹、獅、狒狒、野豬、野犬拼成；白人在高原上認不出的動物都被算成它；『支持它存在最有力的一點是它有本地名字，且在 Nandi 人中廣為人知』。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池與 wave21、wave22 都沒有 Nandi bear 或 Chemosit；L12、L32、N1582 是別的答案。三篇同一份會刊的原文我都重開，研究代理的轉述準確，也沒把『多年前』說成 1905 年。兩個轉折都是真的：1913 年主編說『包圍圈在縮小』、另一次目擊也是從圖畫書挑熊；1914 年狩獵官把它拆成七種已知動物，還說最有力的證據只是『有名字』。片長 8.5–10 分鐘誠實，題材對 L 軸新鮮，scope 已處理殖民軍事與當地信仰。"
+    },
+    {
+      "id": "N2505",
+      "agent": "B2",
+      "reviewer": "R222",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B2-S012／B2-S013 https://archive.org/details/tasmanianjourna3roya（Tasmanian Journal 第 3 卷 djvu 全文：Gunn pp.147–149、Macleay pp.275–278、Tasmanian Society 會議紀錄 1847 年 2 月 24 日與 9 月 29 日）",
+      "reopen_result": "Gunn 文確實寫各部族名 Bunyip、Bunyup、Katenpai、Kayan-prati、Tumutba、Tunatpan，像小公牛、頭頸像鴯鶓、鬃尾像馬、腳像海豹、在水下打洞產桶大的卵，『他們的畫與細節並不一致』；『上個月（一月）』Athol Fletcher 在 Murrumbidgee 河岸撿到頭骨，給看的原住民都說是 Bunyip，經 Curr 寄到 Launceston；Grant 的信抬頭『19th February, 1846』，說非常幼小、可能是胎兒，有人說是『大約七年前』引進的駱駝幼體，惋惜殖民地沒有博物館。但文末 Gunn 署名『Launceston, 20th February, 1847』，而同卷 Tasmanian Society 的會議紀錄寫『1847 年 2 月 24 日，Gunn 展示了 Curr 寄來、Fletcher 在 Murrumbidgee 河岸找到的頭骨』——所以 OCR 的 1847 很可能不是錯字，反而是 Grant 信上的 1846 與 Gunn 署名打架；Macleay 1847 年信說頭骨上的題字寫『1846 年在下 Murrumbidgee 撿到』。Macleay 確實判為新鮮、不是化石、馬的胎兒、眼位畸形，與 Hawkesbury 漂來的母馬胎頭骨（兩眼合一）並列為兩個極端，並說即使是新種也是喜草地、群居的奇蹄獸，不是獨居水棲的 Bunyip。研究代理沒寫的：同卷 1847 年 9 月 29 日會議紀錄收了總督 La Trobe 給 Gunn 的信，在 Macleay 之後仍說『越來越相信我們的水裡有兩種大型未知動物』，並寄上兩張原住民在沙上與紙上畫的 Bunyip 草圖。",
+      "changed_fields": [
+        "answer_target",
+        "editorial",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池與 wave21、wave22 都沒有 Bunyip。前提成立，但研究代理把年份說反：同一卷的會議紀錄支持 1847 年初，『18 個月』不成立，改成照實說紀錄打架。補上 La Trobe 1847 年 9 月的信，讓章節有第二個轉折（博物學家說不是，總督仍然相信）。單獨只有約 5 分鐘，要排兄弟題：N1582（Ameghino 憑一塊皮宣布地懶還活著）共同問題『一件標本能不能證明活的怪獸？』，兩者都是殖民地博物學家面對一件來歷說不清的遺物，一個說存在、一個說不存在，接得上。但 N1582 是 8–11 分鐘的單集，合併要把它壓到約 7 分鐘、總長不超過 13 分鐘，需站主同意；不同意就不收本題（不轉 Shorts）。"
+    },
+    {
+      "id": "N2506",
+      "agent": "B2",
+      "reviewer": "R222",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "B2-S018 https://www.loc.gov/resource/sn97067613/1886-08-12/ed-1/?sp=4 與 B2-S017 https://www.loc.gov/resource/sn82016412/1886-10-06/ed-1/?sp=4（經 loc.gov JSON 取得 tile.loc.gov ALTO 全文）；B2-S019 https://archive.org/details/eruptiontarawer00genegoog（djvu 全文）；B2-S020 Te Ara（WebFetch 回 403，沒有繞過）",
+      "reopen_result": "News and Citizen 1886-08-12 確實寫（摘自 Auckland Bell 與 Star）：噴發『六天前』遊客在 Wairoa 過夜，清晨湖水漲、退、又漲，一位住了 60 年的老毛利婦人說從沒見過，求他們別下湖；湖上出現一艘載滿人的大戰舟，喊了又喊都不理，並行約兩哩後突然消失；船上的毛利人說全湖沒有這樣的戰舟，叫它幽靈或魔鬼，說預示凶兆；『唯一可能的解釋是遠方水面物體的海市蜃樓』。Daily Bulletin 1886-10-06 標題〈The Phantom Horse〉確實寫：『人人都聽過噴發前幾天在湖上看到的幽靈獨木舟』，Sophia 告訴記者她看到了、知道是凶兆，回程對 McRae 說自己不會再去幾趟階地。Smith 報告 p.20 確實列了『若能理解就該當作警告』的徵兆（Rotokakahi 1881 年 4 月與 1883 年 10 月的突漲 4 呎、1880 年 3 月海灣死魚等），全文 OCR 找不到 phantom 或獨木舟目擊；值得一提的是同一份報告後面也收了 Taupo 湖的 taniwha 傳說，所以它不是完全不收毛利傳說。Te Ara 頁對 WebFetch 回 403。",
+      "changed_fields": [
+        "answer_target",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池與 wave21、wave22 都沒有 Tarawera 或幽靈獨木舟；G11 飛翔的荷蘭人答案不同。噴發後的『六天』報導、Sophia 的話、海市蜃樓解釋、Smith 徵兆清單裡沒有它，我都重開讀到，這部分成立。但題目與鉤子的『六天 vs 十一天』只有 Te Ara 的搜尋摘要，Te Ara 與 Papers Past 都擋自動讀取，研究代理自己也標 needs_check，所以維持待查：補讀到 11 天版本的原文才可成片；讀不到就照上面的暫改講，題目也去掉『十一天』。章節本身約 3–5 分鐘，兄弟題 N2502 是真的接得上（見 theme_suggestions），單獨不收。"
+    },
+    {
+      "id": "N2521",
+      "agent": "B3",
+      "reviewer": "R224",
+      "verdict": "ADOPT",
+      "key_source_reopened": "B3-S003 https://archive.org/details/bim_eighteenth-century_memoirs-of-commonl_psalmanazar-george_1765（全文 djvu.txt）；另重開 B3-S004 https://taiwaninsight.org/2021/10/19/george-psalmanazar-and-the-fake-history-of-taiwan/",
+      "reopen_result": "頁面上確實寫了：回憶錄說他決定讓描述『在多數細節上與其他作者的記述衝突，particularly that it belonged to Japan』，除了 Dr. Innes 給的 Varenius 日本志外沒有其他幫助，他和書商催稿，『I was scarcely allowed two months to write the whole』，所以書才寫得 crude、absurd；同書另段說 Halley、Mead、Woodward 對他的揭發『very far from being candid, or even just』。Taiwan Insight 文：1703 年 8 月 11 日首次受邀出席皇家學會，紀錄說他像『a young Dutch-man』；1704 年 2 月 2 日再次受邀，遇耶穌會士 Jean de Fontaney；Halley 拿出 1667 年的東亞地圖、問夏至陽光是否直射煙囪；Newman 1705 年 6 月 20 日把與 Griffith 的通信交給學會，學會『neither published their conclusion nor notified their colleagues』。該文另提到他 1747 年在 Bowen 名下的《A Complete System of Geography》為冒充道歉。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：素材池與 B1、B2、B4、wave21 都查無 Psalmanazar／福爾摩沙冒充者；N1843（Tavernier 抄弟弟手稿）、N2381（Gil Pérez）核心不同。重開的兩個來源都撐得住 answer_target 的關鍵句（兩個月、Varenius、刻意說屬日本、學會紀錄的日期與 Halley）。三份一手文本（初版、第二版新序、死後回憶錄）各自是一個轉折，8.5–10.5 分鐘誠實。可選補充：B3-S004 說他 1747 年在 Bowen 名下的地理書裡公開道歉，可作為『死後回憶錄』之前的一句過場（scope 不說 1706 年認錯仍正確）。風險照 risk 欄：只講 1704 年的書，不延伸今日主權。"
+    },
+    {
+      "id": "N2522",
+      "agent": "B3",
+      "reviewer": "R224",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B3-S007 https://www.asc.ohio-state.edu/mcculloch.2/arch/AmerAntiq（PDF 以 pdftotext 解出全文，讀第 1 節與摘要）",
+      "reopen_result": "頁面上確實寫了：反駁稿投給《American Antiquity》，被以『far outside the expertise and interests of the readership』拒登；Thomas 稱刻字『beyond question letters of the Cherokee alphabet』；Gordon 倒讀為第一、二世紀古希伯來字；碳定年 2σ 範圍『32 cal A.D. – 769 cal A.D.』；Mainfort 與 Kwas（2004: 765）在 Macoy 1870 年《General History, Cyclopedia, and Dictionary of Freemasonry》p. 169 找到一幅插圖，倒過來看與 Bat Creek『remarkably similar』，第二個字都以 LYHW- 開頭、同用第一次猶太戰爭錢幣字體；但 Macoy 那行讀作 QDSh LYHWH（出埃及記 39:30），第一個字三個字母、Bat Creek 只有兩個且沒有 shin；Cross 說 Macoy 那行『copied from the coin script of the First Jewish Revolt … and is fairly well done』，但『Cross is not quoted as believing』Bat Creek 抄自 Macoy；Bat Creek 有分字符號、Macoy 沒有；Mertz 1964 的讀法也提到。",
+      "changed_fields": [
+        "question",
+        "hook"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內查無 Bat Creek、切羅基、土墩；N781、N785、H38、N2443 是同類不同核心。來源撐得住 answer_target。只改兩處說過頭的地方：question 的『幾乎一樣的一行字』與 hook 的『找到它的原稿』等於替偽造說定案，可是反方來源明說兩行字的第一個字、字母數與分字符號都不同，Cross 也沒說 Bat Creek 是抄的；scope 自己也寫『不說已確定偽造』，所以 question、hook 改成『驚人地相似』並點出爭議還在。三個轉折（切羅基→希伯來→共濟會辭典→反駁被拒登）加上 Thomas 自己在同一份報告裡教訓 Grave Creek 的伏筆，8.5–10 分鐘誠實。反方作者在世，不畫、不評論其人。"
+    },
+    {
+      "id": "N2523",
+      "agent": "B3",
+      "reviewer": "R224",
+      "verdict": "ADOPT",
+      "key_source_reopened": "B3-S008 https://www.zobodat.at/pdf/Bericht-Naturforsch-Ges-Bamberg_69_0089-0119.pdf（Mäuser，以 pdftotext 解出全文）",
+      "reopen_result": "頁面上確實寫了：1725 年 5 月 31 日三名 Eibelstadt 少年來訪，Beringer 自述幾個月內收到約 2000 塊；Mäuser 認為『wahrscheinlich waren es weniger』；書名頁日期是 1726 年 5 月，第一次審訊在 1726 年 4 月 15 日（Kirchner 1935）；Beringer 4 月 13 日向 Würzburg 主教座堂參事會申請調查，4 月 15 日訊問 Niclaus Hehn（18 歲）、弟 Valentin（14 歲）與 Christian Zänger（17 歲）；Hehn 兄弟否認自己刻過，Zänger 說 Roderique 刻、他只打磨，帶來打磨粉，抱怨還欠他 8 天工錢，並講到在 v. Eckhart 家的聚會；Mäuser 推論 Beringer 在審訊後從印刷商抽回原稿、加入第 12 章；試刻中等圖案平均約 2 小時一塊；現存『knapp 450』塊；Hepp 1890 年說 Roderique 與 Beringer 之妻有私情『entbehrt jeder sachlichen Grundlage』；回收印張賣給 Bamberg 書商 Tobias Goebhardt 配新書名頁。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內查無 Beringer、符茲堡、謊石；H35 皮爾當人、N723 Altamira、N309 獨角獸角核心不同（這題是受害者自己的書與審訊紀錄互相印證、出版時間成了謎）。重開的論文每個關鍵數字都對得上，研究代理也照論文把『書在審訊後才印』標為推論、刪掉流行的『刻著自己名字的石頭』，處理得很好。兩個轉折（書裡第 12 章、檔案館的審訊紀錄）再加上 2000 塊被試刻質疑與 1767 年的『第二版』，8.5–10.5 分鐘誠實。可補一個細節：Zänger 在審訊時說有人答應給他很多錢，要他作證是 Hehn 兄弟刻的（論文同頁），能加強『少年被當棋子』的段落。"
+    },
+    {
+      "id": "N2524",
+      "agent": "B3",
+      "reviewer": "R224",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B3-S011 https://newsarchive.berkeley.edu/news/media/releases/2003/02/18_drake.shtml；另重開 B3-S012 https://www2.lbl.gov/Science-Articles/Archive/NSD-Drakes-plate.html",
+      "reopen_result": "頁面上確實寫了：Dane『instigated the hoax』，Barron『designed the fake plate』，Clark『reportedly designed the layout … and chiseled the lettering』；作者們『believe』某個參與者（可能是 Dane 與 Noll、Dressler）在背面用螢光漆寫了『ECV』；『an elaborate joke that got terribly out of hand』；『the tricksters tried to warn Bolton indirectly, he disregarded the warnings』；Noll 的陳述『typed and signed by him in May 1954』，點名 Clark 與 Barron；『the organization's leaders did not sanction the joke』。LBL：Helen Michel 與 Frank Asaro 用中子活化分析，鋅偏高、鎳鈷銀金鉛鐵等雜質遠低於 16 世紀英國製法，『most probably manufactured between the last half of the nineteenth century and the early part of the twentieth』；鑽樣看到『fine strips of metal』，厚度『too homogeneous for something that would have been hammered out』。",
+      "changed_fields": [
+        "hook",
+        "question"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內德瑞克題只有 N610（保齡球名言）與 N2263（卡塔通博閃電），核心不同；H37、H38 是長期學界真偽之爭，這題是惡作劇者同伴的陳述加實驗室與口述檔翻案。兩個重開的來源都撐得住 answer_target。只改兩處：hook 把『在背面用螢光漆簽了名』說成事實，新聞稿只說作者們『相信』是某人漆的，改成『可能』並標出 2003 年研究；question 的『加州把它當成州史最珍貴的文物』本次各來源的 locator 都沒有這句（B3-S010 的 limitations 只說前言代表『多數史家接受為真』），改成有來源的說法。三個轉折（第二個撿到的人、1977 年中子活化、2003 年的惡作劇陳述）實在，9–10.5 分鐘誠實。"
+    },
+    {
+      "id": "N2525",
+      "agent": "B3",
+      "reviewer": "R224",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B3-S013 https://archive.org/details/b24880826（Holmes 1899，全文 djvu.txt，pp. 459–462 一段）；另重開 B3-S014 Cambridge 摘要頁",
+      "reopen_result": "頁面上確實寫了：Walker 醫生的說法是 1883 年寫給 Hudson 醫生的信（由 Holmes 轉引），說他曾託朋友告訴 Whitney 頭骨是在 Salt Spring Valley 靠近地表找到的、不是礦井，又說同時期找到的洞穴裡有同樣的頭骨，是原住民墓地；Hudson 後來拜訪 Walker，認為他『had little actual knowledge』、他『the whole affair was a fabrication and a joke on Whitney』的說法根據薄弱；Hudson 訪 Scribner 與 Mattison，兩週後 Scribner『with … a refreshed memory』到 Stockton 補充：Mattison 太太嫌頭骨髒，丈夫拿到 Scribner 店裡；合夥人 Henry Matthews 吃了 Jones 開的藥瀉得很慘而記恨，把頭骨、半腐半石化的木頭與礦石裝進空馬鈴薯袋送給 Jones，Jones 丟到後院淋雨數月。Holmes 自己 1899 年在當地訪問：Murphys 旅館老闆 Sperry（Whitney 的朋友、相信頭骨為真）說某天看到 Jones 從對面診所出來把一顆破頭骨扔到街心，說他發現裡面有蜘蛛網、認定是 Scribner 一夥的惡作劇，後來又撿回去；當地其他人都不信，愛講 Scribner 一夥人對朋友、尤其對 Jones 的惡作劇。Cambridge 摘要：傳統衰變計數與 AMS 兩種放射性碳分析顯示晚全新世，沒給年數；標本在哈佛皮博迪博物館。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內查無 Calaveras；H35 皮爾當人、N543 爪哇人、N506 北京人核心不同。重開的 Holmes 原文撐得住瀉藥與馬鈴薯袋的版本，但原 answer_target 把『Walker 醫生斷言是捏造』寫成 Holmes 1899 年在當地記下的，其實是 Walker 1883 年寫給 Hudson 的信、由 Holmes 轉引，而且 Hudson 認為他所知不多，所以改寫第一個轉折。同時補上 Holmes 親自訪到的 Sperry 證詞（Jones 發現蜘蛛網、把頭骨扔到街心），這是相信 Whitney 的人講出來的惡作劇證據，比原稿更有力，也讓『好幾個版本』有實據。改後 8.5–10 分鐘誠實。遺骨照 scope 不畫；原文對原住民的貶稱不沿用。與 N2522 同屬『1890 年代史密森尼學者拆掉古美洲人證據』，兩題都能單獨成集，可排在相鄰檔期。"
+    },
+    {
+      "id": "N2526",
+      "agent": "B3",
+      "reviewer": "R224",
+      "verdict": "ADOPT",
+      "key_source_reopened": "B3-S024 https://archive.archaeology.org/online/features/hoaxes/saitaphernes_tiara.html；另以 loc.gov 全文服務重開 B3-S019（Omaha Daily Bee 1903-05-24 p.1）與 B3-S020（New-York Tribune 1903-05-31 p.4）",
+      "reopen_result": "頁面上確實寫了：Archaeology 網頁：1896 年 2 月在維也納展示後，羅浮宮 4 月 1 日付 20 萬法郎；銘文說是 Olbia 獻給斯基泰王 Saitaphernes；Vesselovsky 與 Furtwängler 公開斥為偽作；Rouchomovsky 在巴黎說出所用的兩本書、分三段做好再焊接，調查者給他一片金子要他證明手藝；羅浮宮仍擁有、不展出。Omaha Bee 的 New York World 電訊：受命鑑定的 Clermont-Ganneau『has given his decision without helping matters much』，金匠已示範手藝，『yet Ganneau and the directors of the Louvre museum are unconvinced』，有人建議從粗糙的內面取幾粒金來分析。Tribune 巴黎通訊：Rouchomovsky 以金石棺與能活動的銀骷髏在沙龍得到三等獎章，並答應回奧德薩後做一件金器送給法國兒童保護協會。（WebFetch 直接開 loc.gov 頁面回 403，改用 loc.gov 頁面的 fo=json 取得官方全文服務網址讀 OCR，沒有繞過任何驗證。）",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：wave21 not_added 因來源讀不到而擱置的就是這題，本批補上 1903 年 3–9 月的報紙全文，擱置理由已解除；N108 水晶頭骨核心不同。重開的三個來源都對得上。四個轉折（假自首者、真金匠示範、兩家電訊打架、偽造者得獎帶動流行）都是紙上軌跡本身，9–10.5 分鐘誠實。Archaeology 網頁其實寫了委託者 Hochmann 的名字（Rouchomovsky 說被他騙去做），scope 要不講名字可以保留，若要講只能說『金匠自己說』。"
+    },
+    {
+      "id": "N2527",
+      "agent": "B3",
+      "reviewer": "R224",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B3-S025 https://archive.archaeology.org/online/features/hoaxes/warriors.html；另重開 B3-S026 https://time.com/archive/6624981/art-fallen-warriors/",
+      "reopen_result": "頁面上確實寫了：Archaeology：陶像經博物館採購代理 John Marshall 買進；1936 年古董商 Pietro Tozzi 寫信給 Richter，說在羅馬聽說是假的，寫下『Fioravanti--Riccardi Bros.』，Richter 稱之為『absurd story』；重組後只有一個通氣孔；Parsons 1959 年開始自己查；1961 年 1 月 5 日 Fioravanti 在羅馬美國領事館簽下宣誓書；von Bothmer 拿出缺拇指的石膏手模，Fioravanti 拿出保存多年的陶拇指，『fitted perfectly』；博物館聲明在 1961 年情人節發出；沒有這三尊的價格。TIME：Binns 判釉為古希臘黑釉；Noble 驗出現代著色劑二氧化錳；『In 1914, they went to work on their masterpieces』；展出『more than 30 years』；Fioravanti 說經銷商一尊至少拿到 4 萬美元，『all we got … was a few hundred』。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內查無 Etruscan、伊特拉斯坎、大都會陶像。兩個來源都撐得住，只修小地方：TIME 說『1914 年開始做』不是『做成』；4 萬美元與『幾百』是 Fioravanti 自己的估計，要標明；補上 Richter 把 Tozzi 的信當成荒謬傳聞（這正是『為什麼要等到 1961 年』的答案之一）與 Parsons 1959 年起追查。單做只有 3.5–5 分鐘，研究代理誠實標成 chapter；兄弟題 N2526 真的同一個核心問題（博物館國寶被證明是假，靠的是做假的人親手證明：一個當場再做、一個掏出缺的那一塊），而且兩題都有『專家先被警告卻不理』的同一條線（1896 年 Furtwängler、1936 年 Tozzi），可以成題案。若不成題案，此題退回 not_added，不單獨成集。"
+    },
+    {
+      "id": "N2528",
+      "agent": "B3",
+      "reviewer": "R224",
+      "verdict": "ADOPT",
+      "key_source_reopened": "B3-S028 https://archive.org/details/sim_illustrated-london-news_1855-03-03_26_730（全文 djvu.txt）",
+      "reopen_result": "頁面上確實寫了：Owen 投書：朋友寄來 Luscombe『on or about the 8th of last month』一個較完整印子的描圖，是獾的後腳，有肉墊與五個小爪；前後腳印疊在一起就像單排腳印；一隻動物一夜走 100 英里『as improbable as that one badger only should have been awake and hungry』；『The onus of the proof … rests with the assertor』。Withecombe 牧師的信：村民天黑不敢出門，認定是『the Devil's walk』，他在講道時趁機提袋鼠的傳聞來安撫，『a kangaroo was \"in the wind\"』。Topsham 醫生（2 月 26 日）：看到腳趾與肉墊，Exeter 的朋友認出是水獺；動物很矮，從離地八九吋的灌木下穿過，鄰村還鑽過一條六吋排水管；『we did not notice any in a direct line, but in alternate steps, forming two parallel lines』；他也看到足跡上了矮牆和棚屋的瓦頂。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內查無 Devon 1855 的腳印（L34 澤西惡魔、L38 博德明荒原、N1043 德文郡鬧鬼屋核心不同），B1、B2、B4、wave21 也沒有。重開的 3 月 3 日那期每個細節都對得上，連研究代理沒寫的一點也支持題目：主張水獺說的醫生自己也看到足跡上了瓦頂，所以『越過屋頂』本身不是問題，『一直線』才是被拆掉的那一項。三週來信層層推翻，9–10.5 分鐘誠實。照靈異守則不畫魔鬼、不嘲笑村民。"
+    },
+    {
+      "id": "N2541",
+      "agent": "B4",
+      "reviewer": "R223",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B4-S001 https://thjcs.site.nthu.edu.tw/p/16-1452-41567.php?Lang=en（1990 年論文英文摘要）；B4-S002 Morgan 2017 PDF 第 110–114 行；B4-S007 臺北天文刊物 PDF 第 31–33 頁與註 7；B4-S003／S004／S005 維基文庫 漢書卷084、卷026、晉書卷013 原始碼；另補一個獨立轉述：The World of Chinese〈Sky Signal〉（2020-08）https://www.theworldofchinese.com/2020/08/sky-signal",
+      "reopen_result": "頁面上確實寫了：1990 年摘要說翟方進因所報的『熒惑守心』被要求負責、成帝令其自殺；『According to our calculations, Mars was then located far from Scorpius』，因此『obviously fabricated by someone to attain his own political aim』，火星在報告時間前後位於烏鴉座與室女座之間，古人相信天象可以不照推算，所以未必有人懷疑。Morgan 原句：Huang Yi-long (1991)『seventeen of twenty-three incidents recorded in the Standard Histories never happened, while most of the forty times this did happen in history go unrecorded』。臺北刊物：『現代學者研究出這一年並未發生熒惑守心，而是發生了「熒惑守太微, 犯東上相」』、距 γ Vir 0.2 度、『原文「火守舍」並不等於守心，亦可能與兩年後的熒惑守心混淆』、仍『無法排除…是一種鬥垮翟方進的政治陰謀』，註 7 是劉次沅、吳立旻 2008《自然科學史研究》27(4):513。維基文庫原文：卷026 末段『二年春，熒惑守心。二月乙丑，丞相翟方進欲塞災異，自殺。二月丙戌，宮車晏駕。』；卷084『二年春熒惑守心，尋奏記言…』與『郎賁麗善為星，言大臣宜當之』（研究代理說正文沒回傳，其實在卷084 原始碼裡）、『即日自殺』；晉書卷013『往者熒惑守心而文帝崩…案三國史並無熒惑守心之文，疑是入太微』。The World of Chinese 另外獨立轉述：張嘉鳳、黃一農算出前 7 年沒有熒惑守心；劉次沅、吳立旻從正史收集 25 條熒惑守心，超過一半有誤（年份差幾年、傳抄錯或捏造），是否為政治目的捏造學界仍在爭。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有熒惑守心或翟方進；N1661 是記下看不到的日食，N2364 只在 scope 提到熒惑星祭。關鍵數字確實是二手，但它們不是撐起這一集的骨架：骨架是《漢書》兩卷的原文（我逐字對過）、1990 年論文的一手摘要（火星遠離心宿、推論捏造）、《晉書》唐初史官的按語，這三樣都是一手或一手摘要。二手的只有 17/23 與 2008 年的細節，而 2008 年那一層我找到了第二篇獨立轉述（25 條超過一半有誤），所以仍然過得了門檻，只要旁白說『據轉述』，撰稿前補讀原文。要改的是第二轉折的說法：2008 年的太微、東上相在室女座，跟 1990 年算出的位置一致，修正的是『捏造』還是『誤載』，不是火星的位置。片長：《漢書》兩段、宋景公與王充、1990、1991、晉書按語、2008 各一段，約 9–10 分鐘，誠實。"
+    },
+    {
+      "id": "N2542",
+      "agent": "B4",
+      "reviewer": "R223",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B4-S008 https://belleten.gov.tr/tam-metin-pdf/1224/eng（Sayılı 1956，pdftotext 英文論文第 429–447 頁與英譯第 480–483 頁，第 122–155 聯）",
+      "reopen_result": "頁面上確實寫了：英譯第 124–131 聯，彗星『on the first night of Ramaḍân』、回曆 985 年出現，『In the apogee of the firmament it remained for forty days』，出現在人馬宮、尾巴朝東，把凶兆『像蠍子一樣』射向敵人；第 132–139 聯塔基丁徹夜推算，報告『joyful tidings for you concerning the conquest of Persia』，『for Persia it is a bolt of misfortune』，因此受賞。第 140–155 聯：蘇丹問觀測結果，塔基丁說兀魯伯曆表多可疑處、已修正，第 145 聯『From now on, order the abolishment of the Observatory, To the consternation of the ill-wishers and the jealous』；蘇丹召侍衛長，命海軍司令帶海軍兵工部隊『pull it down from its apogee to the perigee』，儀器被打碎、釘子被拔出。論文正文：1577 年 11 月 12 日、『demolished in January 1580』、書成於 1581 年 10 月 28 日；Sayılı 說塔基丁建議關台『not corroborated by our other sources』，詩人謹慎是怕得罪『the Shaykh al Islam and his friends who had sealed the fate of the Observatory』，又推測塔基丁可能事先被告知或被徵詢，判斷同意甚至建議拆台最明智；而且 Sayılı 讀這首詩的結論是它『brings religious fanaticism and fatalism into prominence as the cause』，瘟疫與戰事失利『served to discredit astrology』。第 719 聯附近另說這同一顆 1577 年彗星在歐洲也引出『彗星屬於月上天界』的看法（註 59）。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "hook"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有塔基丁或伊斯坦堡觀測所，彗星題 P06、N1104、N1565、N2282 答案都不同。一手詩的英譯就在 Sayılı 論文裡，我逐聯對過，日期、四十天、吉兆受賞、第 145 聯塔基丁請求廢台、海軍拆台全都寫在上面。要改的是第一轉折的偏向：原稿把 Sayılı 寫得好像只是在替『塔基丁自己提議』加註腳，但 Sayılı 明白說謝赫伊斯蘭一派『決定了觀測所的命運』，而且整首詩把宗教狂熱擺在前面。照實講反而更好：一份紀錄同時有『台長自己提議』與『宗教派決定』，答案才真的是三說並存。兩個轉折成立（一手詩對後世故事、Ata'i 晚出），8.5–9.5 分鐘可信。與 N2543 的薩法維一章有天然的接點：阿拔斯的三天替身國王也是由一顆彗星的凶兆引起的（TDV〈Noktaviyye〉），兩題都是十六世紀末伊斯蘭宮廷占星師怎麼解讀彗星。"
+    },
+    {
+      "id": "N2543",
+      "agent": "B4",
+      "reviewer": "R223",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B4-S012 https://iris.uniroma1.it/retrieve/4190a76b-17e5-456a-8374-ef014e604eea/Verderame_The-Substitute-King_2020.pdf（pdftotext 全文）；B4-S015 Browne 1924 djvu 文字第 975–1000 行；補一個學術來源取代 B4-S017 的搜尋摘要：Hamid Algar〈NOKTAVİYYE〉，TDV İslâm Ansiklopedisi 第 33 冊（2007）頁 204–205，https://islamansiklopedisi.org.tr/noktaviyye（經摘要工具讀取）；旁證 https://kureansiklopedi.com/tr/detay/noktaviyye。B4-S017 的德黑蘭大學網站本輪仍回連線重置，沒讀到。",
+      "reopen_result": "頁面上確實寫了：Verderame：新亞述史料以給以撒哈頓、亞述巴尼拔的學者書信為主，『at least five performances of the ritual can be documented in a period of thirteen years (679–666 BCE)』；有一封信『states clearly that a proper ritual for the solar eclipse is not known』；替身在位 100 天，真王稱『the farmer』照常理政；Ṣallaja 陰謀由替身國王本人在『農夫』面前告發（SAA X 2）；結局信上只寫『he went to his fate』，死法是 Verderame 的推測；伊辛 Erra-imitti 與園丁 Enlil-bani 的編年史原句，並提醒它屬於第一千紀後半的巴比倫文本、巴比倫沒有 šar pūḫi 紀錄。Damqî：SAA X 352 原信是 Mār-Issar 事後報告『[I] have heard that before these ceremonies a prophetess had prophesied, saying to the son of the prelate, Damqî: “You will take over the kingship!”』，儀式成功、阿卡德人害怕；『被選中是因為這個預言、同時除掉政敵』是 Verderame 的解讀，信本身是事後提到預言。Browne 第 7–8 頁：回曆 1002/1593–4，首席占星師 Jalal 預言王位上的人有災，建議國王退位幾天、找一個該死的人讓星象應驗，Yusufi 當三天國王後被處死；Malcolm 說『probably a Christian』是錯的，他屬於 Nuqtawiyya，詳見《Alam-ara-yi Abbasi》。Algar（TDV）：宮廷占星師 Celâleddîn-i Yezdî 從天上出現的一顆彗星，判斷阿拔斯在 1002 年 Zilkade 7–10 日（1594 年 7 月 25–28 日）有生命危險，建議這三天由別人代坐王位；阿拔斯先問被俘的點派信徒 Derviş Yûsufî Tarkişdûz 這顆彗星代表什麼，得到的回答是『很快會有一位點派信徒掌權』，於是選他坐三天王位，之後廢黜並送上絞架。TDV 沒有提千年或回曆 1000 年的預期。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.minutes",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有替身國王、亞述或點派題，P10、N2401 是另一種『讓預言成真』。亞述與伊辛兩章由 Verderame 的學術論文撐住，我全文重讀過，數字與引文都對；只有 Damqî 一段要改：原信是 Mar-Issar 事後回報『聽說女先知說過』，『因為預言而選他』是 Verderame 的解讀，旁白要標成學者解讀。研究代理自己說波斯一章只靠搜尋摘要，我判斷原稿那樣還不夠過門檻（第二轉折完全建立在讀不到的摘要上）；但我找到並讀了 Hamid Algar 為 TDV 伊斯蘭百科寫的〈Noktaviyye〉條目，它獨立說出最關鍵的一點：阿拔斯先問點派俘虜 Yusufi 彗星代表什麼，對方答『點派很快要掌權』，然後他就被扶上王位三天。這比原稿的說法還好，而且來源是學者寫的百科條目。改寫之後三章圍繞同一個問題（凶兆怎麼靠安排現實來應驗），轉折有三個（Damqî 的預言、伊辛故事晚出、Malcolm 的錯與點派的回答），9.5–11 分鐘誠實。原稿『點派預言 1593 年掌權』與『千年』不要講，TDV 沒有。"
+    },
+    {
+      "id": "N2544",
+      "agent": "B4",
+      "reviewer": "R223",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B4-S018 https://tunguska.tsc.ru/files/4780/MainPart/4-Ideas-Become-Bizarre.pdf（curl 被連線重置，改用 WebFetch 存下 PDF 後 pdftotext，第 65–80 頁）；B4-S019 https://tunguska.tsc.ru/ru/science/bib/1960-69/1963/flor（網頁全文）",
+      "reopen_result": "頁面上確實寫了：Rubtsov 第 4 章：Kazantsev 1945 年 8 月從奧地利回國、開車經過匈牙利時從收音機聽到廣島；回莫斯科後 Sytin 告訴他沒有坑、中心有直立的樹；他問 Tamm 含鈾隕石能否像原子彈一樣爆炸，『No, replied Tamm, it’s absolutely impossible. Only atomic bombs can explode as atomic bombs – or at least a similar device built by someone』；短篇〈The Explosion〉1946 年初刊於《Vokrug Sveta》，倒樹面積高估四倍（『up to 8,000 km2』）、爆炸高度低估為 350 m，飛船假說『mentioned almost in passing at the very end』；Krinov 陪他去天文館，1948 年 1 月開講座辯論；1948 年 2 月全蘇天文大地學會莫斯科分會討論，Parenago 說飛船對一般隕石『30–70』；Krinov、Staniukovich、Fedynsky 在《莫斯科共青團員報》撰文，帶政治指控；1951 年夏 Mikhaylov 在《Ogonyok》說是虛構，同年秋講座停辦；1957 年 7 月 Yavnel 在 Kulik 的土樣找到含鎳 10.5% 的顆粒，報刊宣布找到隕石；科學院決定派隊，原因除了 Yavnel，還有五十週年與 Sputnik 之後飛船說在年輕知識分子中很流行、讓 KMET 擔心；1958 年 Florensky 帶隊，報告『We were unable to find traces of a ground explosion』。Florensky 1963：1958 年考察證明通古斯不屬於成坑型、衝擊波中心在空中；1958 年後大眾的興趣很大部分來自『the fantastic suggestion of a nuclear origin』；Zolotov 自己承認當代落塵差異『fully explains』樹與表土放射性的差別；Baranov 的年輪分析『definitely point to a contemporary nature for the radioactive contamination』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：H03 的答案是空爆、本體氣化，本題是外星飛船說的作者鏈與它逼出的檢驗，兩題可排成一組但答案不同；池內其他外星題（U32、N145）是別的事件。Rubtsov 的章節我重新讀到了（curl 被重置，改用 WebFetch 下載），每一個年份、30–70、8000 km²、350 m、1951 年《Ogonyok》、講座停辦、Yavnel 10.5% 都在頁面上；Florensky 1963 的一手英譯也撐住第三轉折與年輪分析。只改一個誇大的字：Rubtsov 說派隊有三個原因（Yavnel 的發現、五十週年、飛船說流行），不是小說『逼』出來的。Rubtsov 對外星說態度開放，研究代理已在 scope 標明他的評語只是作者觀點，正確。三個轉折都會改變結論，9–11 分鐘可信。"
+    },
+    {
+      "id": "N2545",
+      "agent": "B4",
+      "reviewer": "R223",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "B4-S021 https://eap-iea.org/index.php/eap/article/download/1330/1236/1469（Stajić 2025，pdftotext 第 419–432 頁）；B4-S022 Review of Reviews 1899 djvu 文字第 29695–29875、31140–31150 行",
+      "reopen_result": "頁面上確實寫了：Stajić：最早、也是唯一在 Tarabić 家某人生前寫下的紀錄是 Milićević 1894《Život Srba seljaka》第 77 頁一小段，沒有具體預言，先知名叫 Lazo/Lazar；Kazimirović 說是筆誤，Stajić 認為不太可能。Stead 1899 寫『烏日采的先知』（沒有名字、沒有提克雷姆納），而且 Stajić 特別指出：文章刊出時，男孩米蘭稱王、戰敗、解散議會、稱王又失冠、結婚生子離婚這些事都已經發生了，只有『三次遇刺第三次成功』指向未來；這篇文章在塞爾維亞國內沒有回響，政治利用要到三年後 Todorović 才開始。1903 年政變後第一天，Todorović 主編的《Ogledalo》就開始刊〈黑色預言〉，政變前一個字都沒登過；連載 300 期沒交代卷宗；1906 年 Mijatović 寫新王『vladati oko tri godine i zatim nestati』；1909 年 Đorđević 說宣布米蘭退位的那次會議沒人提過先知，但 Stajić 提醒他是公開的無神論者、厭惡迷信，說法也要保留；1916 年薩洛尼卡的《Velika Srbija》把預言歸給 Miloš，而 Miloš 在米海洛遇刺前 14 年就死了；1928 年 Kazimirović 在《Vreme》說卷宗存在，兩天後國家檔案館館長 Odavić 介入、雜誌聲明檔案館從未收過；他引 Mijatović 1902 年文章時加上『Mitar Tarabić』，原文只有『Mateja iz Kremana』，Stajić 稱之為有意的竄改。Stead 原刊：『They have killed my Prince— they have killed my Prince!』、兩小時後電報到、醫生的筆記『still in manuscript』；『Twice his life would be attempted by assassins, and twice he would escape. The third time the assassins would be successful』，並說米蘭已遇刺兩次。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有克雷姆納預言；同類『預言是事後寫的』有 N403、N401、N961、P26，答案不同，本題多了一個在事前登出、而且沒應驗的英文版本和逐年可點名的改寫者。兩個來源我都重開了：Stajić 2025 是貝爾格勒大學研究所的同儕審查論文，Stead 1899 是原刊掃描，研究代理寫的年份、人名、300 期、1906 三年說、1916 Miloš、1928 檔案館否認與改名都在頁面上。要改的有兩處：一是 Stead 那份『預言』刊出時大半已成過去，只有第三次遇刺指向未來，原稿寫得像整串都是事前預言；二是 Đorđević 的否認，Stajić 自己要讀者保留。政治風險：這則預言今天在塞爾維亞仍被引用，但 scope 只講到 1928 年、不碰 1990 年代以後，1903 年政變也不在不收名單上，可以收。四層改寫各成一段，10–12 分鐘誠實。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N2483",
+        "N2484"
+      ],
+      "shared_question": "鬼故事集的作者怎麼證明自己寫的是真的，又在哪裡露了餡？",
+      "why_it_flows": "同一個問題的兩個答案：干寶用家裡的復活故事當證明，而那段身世最早也寫在志怪裡、今本還是後人拼的；洪邁在序裡從『有據依』退到『只談鬼神』再自認愛奇之過。洪邁乙志序自己點名干寶《搜神》『不能無寓言』，兩集之間有現成的接點。兩題各自撐得起單集，主題只是排播順序。"
+    },
+    {
+      "ids": [
+        "N2485",
+        "N2486",
+        "F34"
+      ],
+      "shared_question": "一個東方或民間的怪物，是在哪一手翻譯或改寫裡變成西方今天認得的樣子？",
+      "why_it_flows": "三題都是『怪物的招牌特徵是譯者或作者添的』：Vetāla 在 Burton 的『改編』裡成了 vampire；ghūl 在 Galland／Diyab 的〈Sidi Nouman〉裡開始吃屍；F34 的吸血鬼從 1732 年報紙到 1819 年 Lord Ruthven。核心問題相同、答案各異，可排成一個播放清單。"
+    },
+    {
+      "ids": [
+        "N2486",
+        "F31"
+      ],
+      "shared_question": "Ḥannā Diyāb 1709 年在巴黎講給 Galland 的故事，給歐洲留下了什麼？",
+      "why_it_flows": "兩題的關鍵證據都是 Galland 1709 年日記與 Marzolph 的整理：F31 是阿拉丁沒有更早的阿拉伯原稿，N2486 是食屍鬼的墳場一幕出自同一位說書人的另一個故事；同一批文件，兩個不同的答案。"
+    },
+    {
+      "ids": [
+        "N2482",
+        "N804"
+      ],
+      "shared_question": "鬼神的樣子是誰定下來的？",
+      "why_it_flows": "鍾馗的身世一層一層加上去、日本幽靈無腳早於圓山應舉，都是『大家以為的起點其實不是起點』，而且都由一條筆記或一本舊書推翻；可排成『鬼的樣子』系列，但各自單做。"
+    },
+    {
+      "ids": [
+        "N2502",
+        "N2506"
+      ],
+      "shared_question": "災難前的警告，是事前還是事後被寫下的？",
+      "why_it_flows": "兩題的『預兆』都是在災難後才見報：Sawyer 的夢出現在一年多後的調查庭證詞，而且他自己說夢之前就決定下船；Tarawera 的幽靈獨木舟出現在噴發後的報導，同一年的官方徵兆清單列了湖水突漲等自然警告，卻沒有它。兩題對照的都是『同時代紀錄寫的是自然的理由，超自然的預兆是後來加上或並存的』。N2502 壓到約 8 分鐘、N2506 約 4–5 分鐘，合計 12–13 分鐘；N2506 補讀前，天數對照那段要刪。"
+    },
+    {
+      "ids": [
+        "N2505",
+        "N1582"
+      ],
+      "shared_question": "一件標本能不能證明活的怪獸存在？",
+      "why_it_flows": "兩題都是殖民地博物學家面對一件來歷說不清的遺物：Bunyip 頭骨被 Macleay 判成畸形馬胎、連『是不是 Bunyip』都拆掉，但總督仍相信；Ameghino 拿一塊皮宣布地懶還活著，七支隊伍出發，標本從哪來至今說不清。一個說不存在、一個說存在，順序排 N2505 先、N1582 後。N1582 現在是 8–11 分鐘的單集，要壓到約 7 分鐘、總長不超過 13 分鐘，需站主同意；另一個選項是 N2504（南迪熊）同樣是『殖民地博物學家把當地人說的怪獸對上已知動物』，但它自己撐得起單集，不建議為了 N2505 拆它。"
+    },
+    {
+      "ids": [
+        "N2541",
+        "N2543"
+      ],
+      "shared_question": "凶兆指向君王時，古代宮廷怎麼找人替他承擔，又怎麼讓紀錄看起來『應驗』？",
+      "why_it_flows": "熒惑守心主丞相或君王有禍，成帝要翟方進擔下來；亞述的月食、薩法維的彗星，則是讓替身國王坐上王位再死。三個案例都是『把君王的凶兆轉給另一個人』，差別在漢代是事後在史書裡找對應的天象，亞述與波斯是事前安排現實。"
+    },
+    {
+      "ids": [
+        "N2542",
+        "N2543"
+      ],
+      "shared_question": "十六世紀末伊斯蘭宮廷的占星師怎麼解讀彗星，解讀之後發生了什麼？",
+      "why_it_flows": "1577 年伊斯坦堡的彗星被塔基丁讀成吉兆，之後觀測所被拆；1594 年伊斯法罕一帶的彗星被讀成阿拔斯的死兆，於是有了三天的替身國王。相隔十七年、兩個敵對帝國、同一種天象，可以並看（N2543 的波斯一章可在 N2542 片尾延伸）。"
+    },
+    {
+      "ids": [
+        "N2545",
+        "N403"
+      ],
+      "shared_question": "東歐王朝的『準確預言』，最早的文字紀錄到底寫了什麼？",
+      "why_it_flows": "研究代理已提出：阿貝爾修士的審訊紀錄沒說中，封匣故事出自 1931 年；克雷姆納唯一事前登出的預言沒說中，準的都是 1902 年以後寫的。兩題的方法都是把版本按年份排開。"
+    },
+    {
+      "ids": [
+        "N2544",
+        "H03"
+      ],
+      "shared_question": "通古斯為什麼沒有坑，而『外星飛船』這個答案是誰、在哪一年加上去的？",
+      "why_it_flows": "H03 講物理（空爆、本體氣化），N2544 講飛船說從 1946 年小說到 1958 年考察的作者鏈；1958 年考察否定地面撞擊，正好是兩題的交會點。"
+    },
+    {
+      "ids": [
+        "N2526",
+        "N2527"
+      ],
+      "title": "怎麼證明那是我做的？羅浮宮的金冠與大都會的武士",
+      "shared_question": "博物館的國寶被證明是假的，最後靠的是做假的人親手證明——為什麼專家早被警告卻不信，非要等偽造者自己出面？",
+      "why_it_flows": "兩題同一個核心問題，各有新的理解：金冠是偽造者被要求當場再做一次，而且當時的報紙說專家仍不信、偽造者反而得獎走紅；武士是 1936 年就有人寫信點名卻被當成荒謬傳聞，到 1961 年一根保存四十多年的陶拇指才讓博物館認帳。兩題都有『先被警告卻不理』（1896 年 Furtwängler、1936 年 Tozzi）的同一條線。N2526 約 9–10.5 分鐘當主章，N2527 約 3.5–5 分鐘接在後面，合計約 13–15 分鐘，不必壓短金冠。"
+    }
+  ]
+}

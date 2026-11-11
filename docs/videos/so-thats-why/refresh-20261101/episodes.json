@@ -7,7 +7,7 @@
   "source_catalog_sha256": "035f21f294997cf878522af06adfe3be33f1a3d8626ebaf5683eb6510afd5590",
   "definition": {
     "file": "tools/video/so-thats-why/episode-plan.mjs",
-    "sha256": "5344ca19d52970ac6d4350131885641ee35cc7a41a2d4220499cdc72ba6527fb"
+    "sha256": "b5bb59ed6eb10d3e860fabca4bd4f44bf200520295b479d660985962ab3d7296"
   },
   "counts": {
     "source_pool": 100,
@@ -241,10 +241,10 @@
         "S80",
         "S48"
       ],
-      "minutes": 15,
+      "minutes": 11,
       "range": [
-        14,
-        16
+        10,
+        12
       ],
       "tier": "pilot",
       "question": "軌道上仍有重力，熟悉的上下為什麼卻變得不同？",
@@ -257,22 +257,22 @@
         },
         {
           "title": "不是飛到沒有重力",
-          "seconds": 190,
+          "seconds": 125,
           "new_information": "以軌道與地面落體對照重力和支撐感"
         },
         {
           "title": "一直掉，怎麼不撞上",
-          "seconds": 210,
+          "seconds": 150,
           "new_information": "用側向速度與軌道幾何補完漂浮答案"
         },
         {
           "title": "把一團火帶入同樣條件",
-          "seconds": 215,
+          "seconds": 155,
           "new_information": "比較地面浮力對流與微重力條件"
         },
         {
           "title": "火焰變了能告訴你什麼",
-          "seconds": 205,
+          "seconds": 150,
           "new_information": "看實驗影像與適用條件，分清微重力和完全無重力"
         },
         {
@@ -288,22 +288,39 @@
       "status": "EPISODE_PLAN_NOT_SCRIPT",
       "production_ready": false,
       "material": {
-        "verdict": "reserve",
-        "est_minutes": 8.3,
-        "missing": "S80 只有 NASA〈What is microgravity〉一頁的題級閱讀，無逐主張查核；缺第二個有條件說明的微重力燃燒實驗（例如太空站燃燒研究的具體結果）；缺軌道高度重力仍約九成等數值的當期核對",
+        "verdict": "ready",
+        "est_minutes": 10.6,
+        "missing": "第二輪（2026-11-11）由素材池 P52-008～010 補上（NASA 微重力頁逐主張讀過、太空站 FLEX 液滴實驗的「冷焰」）；企劃從 15 分縮成約 11 分；仍缺一句有來源的「為什麼冷焰只在微重力下看得到」，補不到就把那章收短；NASA 頁的軌道高度是 2012 年的數字，撰稿時用 NASA 原句不自算",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
-      "target_body_seconds": 900,
+      "pool_support": [
+        {
+          "id": "P52-008",
+          "chapter": "不是飛到沒有重力",
+          "use": "太空站高度的重力仍約地面九成（NASA〈What is microgravity〉，與 S80 同一頁的逐主張閱讀）；不另算新事實，只把 S80 的題級閱讀補成逐主張。"
+        },
+        {
+          "id": "P52-009",
+          "chapter": "把一團火帶入同樣條件",
+          "use": "NASA 太空站事實頁的軌道與實驗條件；交代火焰實驗在什麼條件下做。"
+        },
+        {
+          "id": "P52-010",
+          "chapter": "火焰變了能告訴你什麼",
+          "use": "太空站 FLEX 液滴實驗：看得見的火焰熄滅後，看不見的「冷焰」繼續燒，氧與氦的比例改變結局（NASA 技術報告）；是素材審視要求的第二個有條件說明的燃燒結果。"
+        }
+      ],
+      "target_body_seconds": 660,
       "planning_range_seconds": [
-        840,
-        960
+        600,
+        720
       ],
       "estimated_spoken_characters": [
-        3808,
-        4038
+        2792,
+        2962
       ],
-      "minimum_loops": 13
+      "minimum_loops": 10
     },
     {
       "id": "P05",
@@ -797,10 +814,10 @@
       "topics": [
         "A36"
       ],
-      "minutes": 13,
+      "minutes": 9,
       "range": [
-        12,
-        14
+        9,
+        10
       ],
       "tier": "next",
       "question": "它怎麼先找到方向，再從損傷裡讀回訊息？",
@@ -813,22 +830,22 @@
         },
         {
           "title": "先找到哪一塊是碼",
-          "seconds": 150,
+          "seconds": 90,
           "new_information": "定位、方向與取樣先於內容"
         },
         {
-          "title": "黑白格如何承載訊息",
-          "seconds": 185,
-          "new_information": "以短訊息示例介紹編碼與額外資訊"
+          "title": "訊息裝在哪裡",
+          "seconds": 125,
+          "new_information": "只用公開說明講資料區與 8 位元碼字，不講沒有公開全文的遮罩與格式資訊"
         },
         {
           "title": "缺了為什麼能補",
-          "seconds": 180,
+          "seconds": 120,
           "new_information": "用小型可驗算示例理解冗餘與糾錯"
         },
         {
           "title": "同樣遮一塊，結果為何不同",
-          "seconds": 185,
+          "seconds": 125,
           "new_information": "區分損傷位置、等級與定位失敗"
         },
         {
@@ -837,29 +854,41 @@
           "new_information": "回答片頭問題，回收已埋伏筆，留一個相關觀察題；不再開新支線。"
         }
       ],
-      "visual": "真正生成的 QR 與解碼結果；手畫概念碼須明標非有效 QR。",
+      "visual": "真正生成的 QR 與解碼結果；手畫概念碼須明標非有效 QR。自製的遮擋測試只能標「本片自製示範」，不當成研究結果引用。",
       "risk": "把糾錯比例當任何遮擋都成功的保證。",
       "cut": "不教行銷與支付詐騙清單；缺少成功及失敗對照就退回 treatment。",
       "evidence": "查標準制定方的公開說明；實測需記錄編碼等級、資料量與遮擋位置。",
       "status": "EPISODE_PLAN_NOT_SCRIPT",
       "production_ready": false,
       "material": {
-        "verdict": "reserve",
-        "est_minutes": 7.8,
-        "missing": "qrcode.com 上結構（定位、校正、時序圖形、靜區、遮罩、格式資訊）的逐主張查核；自製 QR 碼在不同等級與遮擋位置的實測紀錄（含失敗例）",
+        "verdict": "ready",
+        "est_minutes": 9.3,
+        "missing": "第二輪（2026-11-11）由素材池 T52-005、T52-006 補上（qrcode.com 逐主張讀過的定位比例、校正圖形、4 格靜區，以及糾錯適合集中的「突發」損傷）；時序圖形、格式資訊與遮罩沒有公開全文（ISO 要付費），企劃從 13 分縮成約 9 分、第二章只講資料區；自製遮擋測試只能當示範，不算來源",
         "reviewed_on": "2026-11-11",
         "review": "docs/videos/so-thats-why/material-20261111/review.json"
       },
-      "target_body_seconds": 780,
+      "pool_support": [
+        {
+          "id": "T52-005",
+          "chapter": "先找到哪一塊是碼",
+          "use": "定位圖形 1:1:3:1:1 的比例是調查印刷品後選的、校正圖形、4 格靜區（qrcode.com 逐主張閱讀）。"
+        },
+        {
+          "id": "T52-006",
+          "chapter": "同樣遮一塊，結果為何不同",
+          "use": "糾錯以碼字為單位，適合集中的「突發」損傷，散開的損傷更傷（qrcode.com）；自製遮擋測試只當「本片自製示範」，不當研究結果。"
+        }
+      ],
+      "target_body_seconds": 540,
       "planning_range_seconds": [
-        720,
-        840
+        540,
+        600
       ],
       "estimated_spoken_characters": [
-        3300,
-        3500
+        2285,
+        2423
       ],
-      "minimum_loops": 11
+      "minimum_loops": 8
     },
     {
       "id": "P13",

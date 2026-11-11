@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-03-pool-3558",
+  "revision": "2026-11-11-pool-3584",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3948,
-    "canonical_questions": 3787,
-    "eligible_candidates": 3617,
-    "selected_candidates": 3558,
+    "raw_records": 3974,
+    "canonical_questions": 3813,
+    "eligible_candidates": 3643,
+    "selected_candidates": 3584,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 4941,
-    "current_research_source_urls": 1985,
-    "selected_source_urls": 3159,
-    "new_suggestions_not_added": 2291,
+    "source_urls": 4961,
+    "current_research_source_urls": 2008,
+    "selected_source_urls": 3179,
+    "new_suggestions_not_added": 2298,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "89504987fc0e26c6d81050be0fdd7ee2694f60542ba2c48f42028d92c962d6c7"
+      "sha256": "91d1b7305d0a9eb5b1935cf2b87a276fa101410add3f44e656ea522be057a1b5"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -414,6 +414,14 @@
       "sha256": "f9c5a46e3127b42187ebc41306f9a1e2df9c2166b2fff5e9f2d8dabd0e6b8025"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3558.json",
+      "sha256": "c11a8b5cf64b37511849bcad5d289550cd7396acf1ad9577a746320da527ffc7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3558.json.gz",
+      "sha256": "403b8bd42f3f84aec1ef954ded4b4b507e206406ad1b9a56702ba7e69ae3d838"
+    },
+    {
       "file": "docs/videos/so-thats-why/episodes.json",
       "sha256": "24153bf341e6780ff5c1ef7007b9960320bacf8865834ca49931c1c73419f252"
     },
@@ -443,7 +451,7 @@
     },
     {
       "file": "docs/videos/so-thats-why/refresh-20261101/episodes.json",
-      "sha256": "62fd7ca7e4d2173a8c26bb8e0e1686ad1e4b89c3ce590c4c9f96b737c7f9dd6f"
+      "sha256": "cc93873ab953b4a494bc4d09bdce6d7a0b6d5f5e8d3df8922424ba765a22d41f"
     },
     {
       "file": "docs/videos/so-thats-why/week2/B01.md",
@@ -1850,6 +1858,22 @@
       "sha256": "9b2fee6bd84aca1b142b7f6a65bd10be9ab6c35b93d59ed117c7917213d775f0"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave52-earth.json",
+      "sha256": "c7863c699e0017623d89b035ae016a25d06e564c0846d801b1ddc76de0ee6478"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave52-life.json",
+      "sha256": "bfdd9dabb95ca7a0a4c7ab4fa96aefe19edb8b589ee8170da58a9295850a92d4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave52-physics.json",
+      "sha256": "d6a4c95ba5eedfb6307be8dec908bb5428b48358aaa1b4dd1fbbff9d1add38e2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave52-tech.json",
+      "sha256": "9edbf65de8f65666dd12a3d56b5b82421e433d2cce73cb25723dd56e0d8e3e56"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave6-mechanisms.json",
       "sha256": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2"
     },
@@ -1935,11 +1959,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "1d502020cfc30793524ae35ff39c472ff31c97ff57ca4f8c95486abf462219a6"
+      "sha256": "46d1f602ff1934389fef290c5adf3c4528484c5b0565b7db21b92e5a02290ea6"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "457df4fb1b173a38829970dfcc7f5492a2fdeb2b81cbb0e35fc1dc1033389fea"
+      "sha256": "9f6ea9a188ef96be53ab2b861e67152405320bd9be241a5cc2b457dccba5a36f"
     }
   ],
   "sources": [
@@ -2185,6 +2209,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-animals-ecology-20261101",
           "original_url": "https://openstax.org/books/biology-2e/pages/47-4-preserving-biodiversity"
+        }
+      ]
+    },
+    {
+      "id": "SRC-00bbee1249e0a6fa",
+      "url": "https://www.nlsc.gov.tw/cp.aspx?n=1483",
+      "readings": [
+        {
+          "canonical_url": "https://www.nlsc.gov.tw/cp.aspx?n=1483",
+          "title": "高程控制",
+          "publisher": "內政部國土測繪中心",
+          "version": "網頁當期版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，【一】【二】【三】【四】(四) 逐段讀",
+          "reading_scope": "臺灣一等水準測量介紹【一】–【四】(四)",
+          "locator": "【一】臺灣高程系統及高程基準之訂定；【二】臺灣水準原點之建立",
+          "summary": "臺灣水準點高程採正高；高程基準定義在 1990-01-01 標準大氣環境下，以基隆潮位站 1957–1991 年潮汐資料化算，名為 TWVD2001；建立基準需超過 18.6 年潮位紀錄；民國 90 年於基隆海門公園設水準原點 K999（主）/K998（副），103 年因道路工程遷至海科館對面 K997/K996；一等水準網 2065 個新點，以 K999 固定平差；101 年聯測顯示彰雲嘉屏下陷點與 98 年公告差逾 −200 mm 者 11 點。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "官方說明；未讀技術報告全文。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/nlsc_height.html",
+            "sha256_prefix": "6b993382006f909a",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-earth-20261111",
+          "original_url": "https://www.nlsc.gov.tw/cp.aspx?n=1483"
         }
       ]
     },
@@ -3547,6 +3597,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nlsc.gov.tw/cp.aspx?n=1486"
+        },
+        {
+          "canonical_url": "https://www.nlsc.gov.tw/cp.aspx?n=1486",
+          "title": "玉山高度測量",
+          "publisher": "內政部國土測繪中心",
+          "version": "網頁當期版（更新日期 115-11-02），摘錄自 93 年玉山正高測量作業報告、105–106 年檢測說明、111 年檢測",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，全文逐段讀",
+          "reading_scope": "前言、一 92年正高測量、二 105–106年檢測、三 111年檢測、四 歷年衛星定位",
+          "locator": "各節『作業成果』『結語』段",
+          "summary": "高程分以橢球面起算的幾何高（衛星定位）與以大地水準面起算的正高（水準測量）。玉山 3952.382 m 為民國 67 年三角高程結果；92 年以 TWVD2001 由塔塔加一等水準點 X121 全程水準測量並以重力做正高改正，得 3951.798±0.072 m，少 0.584 m 是方法差異不是山變矮；主峰石碑頂約 3952.8 m（三角點較低）。105、106 年重測 3952.481、3952.430±0.045 m，起算點 X121 公告高程比 92 年多 0.104 m；與 92 年差約 63 cm 超過衛星幾何高變化（主峰約 1.38 cm/年、北峰 0.55 cm/年，15 年 8.3–20.7 cm），不代表長高 63 cm，92 年可能因觀測拖 4 個月、臨時點未埋樁、缺重複觀測，真正原因已無法確認。111 年 3952.433±0.046 m。之後每年兩次衛星定位監測幾何高變化。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "政府機關自述；92 年誤差原因為專家推測。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/nlsc_yushan.html",
+            "sha256_prefix": "020a91854dd49575",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-earth-20261111",
+          "original_url": "https://www.nlsc.gov.tw/cp.aspx?n=1486"
         }
       ]
     },
@@ -4094,6 +4164,33 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nih.gov/news-events/news-releases/brain-may-actively-forget-during-dream-sleep"
+        }
+      ]
+    },
+    {
+      "id": "SRC-05766474c1366c08",
+      "url": "https://doi.org/10.1088/0026-1394/52/2/310",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1088/0026-1394/52/2/310",
+          "doi": "10.1088/0026-1394/52/2/310",
+          "title": "Calibration campaign against the international prototype of the kilogram in anticipation of the redefinition of the kilogram part I: comparison of the international prototype with its official copies",
+          "publisher": "Stock、Barat、Davis、Picard、Milton（BIPM）；Metrologia 52, 310–316 (2015)",
+          "version": "期刊正式版，OPEN ACCESS（CC BY 3.0）",
+          "accessed_on": "2026-11-11",
+          "read_via": "iopscience 期刊 PDF 200（OpenAlex 標 hybrid OA），pdftotext 全文逐段讀",
+          "reading_scope": "Abstract、1 Introduction、4 清洗、5 質量比較、Fig2–3 圖說、6、7 Summary",
+          "locator": "Abstract；Sec.1 第3–4段；Sec.4 Table5 前後；Sec.5 Fig2 圖說與 no.25/73 段；Sec.6；Sec.7",
+          "summary": "國際原器自第三次定期驗證（1988–1992）後鎖在保險箱未用，BIPM 日常校準靠一組鉑銥工作標準器維持『as-maintained』單位，其不確定度由 2.3 µg 增為 2013 年估 7 µg。2014『特別校準』：清洗洗滌移除國際原器 16.8 µg、七個原器平均 15 µg（標準差 2 µg）；清洗後六個正式複本相對原器的質量自第三次驗證以來平均只變 −1 µg（標準差 3 µg），第二、三次驗證看到的複本逐漸變重趨勢沒有再現；但 BIPM 工作標準器都比 1992 年輕，特殊用途原器 no.25 少 18 µg、no.73 少 33 µg，使 2014 年 BIPM 維持的質量單位相對原器偏了 35 µg。清洗後原器質量回升，國際原器初期約 0.02 µg/天。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀 Part I；35 µg 偏移的詳細分析在後續論文未讀。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/stock2015.pdf",
+            "sha256_prefix": "b2d86bbc8742dd30",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-physics-20261111",
+          "original_url": "https://doi.org/10.1088/0026-1394/52/2/310"
         }
       ]
     },
@@ -12099,6 +12196,33 @@
       ]
     },
     {
+      "id": "SRC-19f9bdf3a9d9d8c2",
+      "url": "https://doi.org/10.3389/fpls.2013.00473",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3389/fpls.2013.00473",
+          "doi": "10.3389/fpls.2013.00473",
+          "title": "Studying the oxidation of water to molecular oxygen in photosynthetic and artificial systems by time-resolved membrane-inlet mass spectrometry",
+          "publisher": "Shevela、Messinger；Frontiers in Plant Science 4:473 (2013)",
+          "version": "期刊正式版（PMC3840314，CC BY）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 全文 XML 200；讀碳酸氫根受質假說段與水交換段",
+          "reading_scope": "碳酸氫根是否為受質一節；H₂¹⁸O 交換段",
+          "locator": "『Metzner (1978) suggested…』段起至 Hillier et al. 2006 段",
+          "summary": "Metzner 1978 提出碳酸氫根才是 O₂ 的直接受質；此說長期被排除，因 ¹⁸O 水與碳酸氫根的同位素平衡太慢，無法解釋早期標記結果（Ruben 1941、Stemler 與 Radmer 1975 等）；但 PSII 附近發現碳酸酐酶活性後必須重驗，因標記可能經酶快速交換『逃』到濃度高好幾個數量級的水裡。時間解析膜入口質譜：Clausen 等 2005 在 H₂¹⁸O 標記、去除 CO₂/碳酸氫根下，閃光仍產生典型振盪的 ¹⁸O-O₂，且未見 CO₂ 釋出；Hillier 等 2006 以 ¹⁸O/¹³C 標記碳酸氫根檢驗；兩者都排除碳酸氫根是生理上重要的受質。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "綜述；Clausen 2005、Hillier 2006 原文未讀。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/PMC3840314.xml",
+            "sha256_prefix": "823d016563c82a26",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-life-20261111",
+          "original_url": "https://doi.org/10.3389/fpls.2013.00473"
+        }
+      ]
+    },
+    {
       "id": "SRC-1a0df10f608e304a",
       "url": "https://www.nedcc.org/about/nedcc-stories/bcm",
       "readings": [
@@ -18683,6 +18807,32 @@
       ]
     },
     {
+      "id": "SRC-29af13cc5e42f279",
+      "url": "https://www.qrcode.com/en/codes/model12.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.qrcode.com/en/codes/model12.html",
+          "title": "QR Code Model 1 and Model 2",
+          "publisher": "DENSO WAVE qrcode.com",
+          "version": "網頁當期版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，全文逐句讀",
+          "reading_scope": "全頁",
+          "locator": "Model 2 段",
+          "summary": "Model 1 最大版本 14（73×73）可存 1,167 數字；Model 2 為改良版，藉嵌入的校正圖形（alignment pattern），在曲面或斜角讀取造成影像變形時仍能有效讀取，最大版本 40（177×177）、7,089 數字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "未給校正圖形的位置規則與數量。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/codes_model12.html",
+            "sha256_prefix": "9247e4ae6db315f5",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-tech-20261111",
+          "original_url": "https://www.qrcode.com/en/codes/model12.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-29c5888f74c8d90e",
       "url": "https://d-nb.info/1209740354/34",
       "readings": [
@@ -20664,6 +20814,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Ware/3_80_02_10/exports/msp430ware_3_80_02_10/captivate/docs/users_guide/html/CapTIvate_Technology_Guide_html/markdown/ch_design_guide.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2e9766d79876b35a",
+      "url": "https://www.qrcode.com/en/howto/code.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.qrcode.com/en/howto/code.html",
+          "title": "Point for determining the code area",
+          "publisher": "DENSO WAVE qrcode.com",
+          "version": "網頁當期版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，全文逐句讀",
+          "reading_scope": "全頁",
+          "locator": "Securing Margin 段與計算例",
+          "summary": "QR 需四周 4 模組寬、不印任何東西的留白（quiet zone）；例：50 英數字 M 級需版本 3（版本 2 M 級只存 38 字），400 dpi 每模組 4 點＝0.254 mm，29 模組＝7.366 mm，加 8 模組留白＝9.398 mm 見方。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "未說明留白不足時讀取器如何失敗；自製測試的失敗例只當示範，不列為來源（見 T52-NA002）。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/howto_code.html",
+            "sha256_prefix": "3358d8b619f3b0e9",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-tech-20261111",
+          "original_url": "https://www.qrcode.com/en/howto/code.html"
         }
       ]
     },
@@ -23733,6 +23909,32 @@
       ]
     },
     {
+      "id": "SRC-35696e68dc8a84e7",
+      "url": "https://physicstoday.aip.org/obituaries/martin-david-kamen",
+      "readings": [
+        {
+          "canonical_url": "https://physicstoday.aip.org/obituaries/martin-david-kamen",
+          "title": "Martin David Kamen（obituary）",
+          "publisher": "Physics Today 56(5), 74 (2003)，AIP",
+          "version": "網頁全文",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，全文去標籤讀",
+          "reading_scope": "全文",
+          "locator": "『A 1941 paper he wrote with Ruben…』段",
+          "summary": "1941 年 Kamen 與 Ruben 等人以穩定同位素氧-18 發表的論文，推翻了光合作用放出的 O₂ 來自二氧化碳的普遍看法，證明 O₂ 來自水。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "訃聞一句話，無實驗細節；1941 JACS 原文（63:877–879）付費未讀。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/kamen_obit.html",
+            "sha256_prefix": "678d9132f234b752",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-life-20261111",
+          "original_url": "https://physicstoday.aip.org/obituaries/martin-david-kamen"
+        }
+      ]
+    },
+    {
       "id": "SRC-356c48ce3476ca64",
       "url": "https://docs.python.org/3/library/weakref.html",
       "readings": [
@@ -26159,6 +26361,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.qrcode.com/en/about/standards.html"
+        },
+        {
+          "canonical_url": "https://www.qrcode.com/en/about/standards.html",
+          "title": "QR Code Standardization",
+          "publisher": "DENSO WAVE qrcode.com",
+          "version": "網頁當期版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，HTML 全文逐句讀",
+          "reading_scope": "全頁含 Outline Specification 表",
+          "locator": "Outline Specification 表、標準化年表",
+          "summary": "符號 21×21 至 177×177 模組（每版每邊 +4）；數字最多 7,089、英數 4,296、位元組 2,953、漢字 1,817；L/M/Q/H 約可還原 7/15/25/30% 碼字；結構化連接最多 16 個；1997 AIM、1999 JIS X 0510、2000 ISO/IEC 18004；DENSO WAVE 對標準化 QR 不行使專利 2938338。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "沒有定位、時序、格式資訊、遮罩的逐項說明；那些只在付費 ISO 規格。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/about_standards.html",
+            "sha256_prefix": "8075589ca8d1abe9",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-tech-20261111",
+          "original_url": "https://www.qrcode.com/en/about/standards.html"
         }
       ]
     },
@@ -28320,6 +28542,33 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://tim.blog/2021/09/03/james-dyson-transcript/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3fc8284f902a675b",
+      "url": "https://doi.org/10.1371/journal.pone.0307485",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0307485",
+          "doi": "10.1371/journal.pone.0307485",
+          "title": "External gas-assisted mold temperature control and optimization molding parameters for improving weld line strength in polyamide plastics",
+          "publisher": "Nguyen Truong Giang 等；PLOS ONE 19(8): e0307485 (2024)",
+          "version": "期刊正式版（PMC11340943，CC BY）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 全文 XML 200，讀摘要、材料、Table 1、3 Results 填充時間段、Conclusion",
+          "reading_scope": "Abstract、2 材料與方法、Table 1、Results 首段、Conclusion",
+          "locator": "Table 1（20 組 UTS/伸長率）；Results『Compared to the UTS value of the composite without … weld line, which is 80 MPa』",
+          "summary": "PA6（Libolon N200）ASTM D638 試片，雙澆口造成結合線；含結合線試片抗拉強度 36.5–62.3 MPa，對照無結合線約 80 MPa（作者原文用 composite 字樣但材料為純 PA6）；以外部熱氣把模面加熱到 173°C 時最佳 62.3 MPa、伸長率 582.6%，不加熱 45.1 MPa；熔體溫度是影響最大的因子、填充時間最小。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一材料與試片；模溫效果非單調（111°C 43.0、153°C 47.7 MPa）；『80 MPa』原文寫 composite，存在用詞不一致。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/PMC11340943.xml",
+            "sha256_prefix": "c59c1f9ea7c3656d",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-physics-20261111",
+          "original_url": "https://doi.org/10.1371/journal.pone.0307485"
         }
       ]
     },
@@ -31063,6 +31312,32 @@
       ]
     },
     {
+      "id": "SRC-476aa08953451936",
+      "url": "https://www.qrcode.com/en/history/index.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.qrcode.com/en/history/index.html",
+          "title": "History of QR Code",
+          "publisher": "DENSO WAVE qrcode.com",
+          "version": "網頁當期版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200（/en/history/ 目錄式網址 403，改讀 index.html 200），Section 1 全段逐句讀",
+          "reading_scope": "Section 1 開發故事；Section 2 只讀開頭",
+          "locator": "Section 1『position detecting pattern』『1:1:3:1:1』段",
+          "summary": "開發者原昌宏以方形位置偵測圖形解決讀取速度；選方形因最不常出現在表單等印刷品；團隊把傳單、雜誌、紙箱上的圖樣化成黑白，統計黑白寬度比，找出最少出現的 1:1:3:1:1 作為偵測圖形寬度比，藉此不論掃描角度 360° 都能判定方向；一年半後完成約可存 7,000 數字的碼，讀取比其他碼快 10 倍以上；1994 發表。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "公司自述史，非獨立史料；『快10倍』無測試條件。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/q_hist.html",
+            "sha256_prefix": "084967452d0efd38",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-tech-20261111",
+          "original_url": "https://www.qrcode.com/en/history/index.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-4797cf174819587f",
       "url": "https://www.gi.alaska.edu/alaska-science-forum/sun-dogs-and-light-shafts",
       "readings": [
@@ -32381,6 +32656,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1016/j.culher.2018.07.015"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4b79ef36d06f32c2",
+      "url": "https://www.jedec.org/sites/default/files/Alvin_Cox%20%5BCompatibility%20Mode%5D_0.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.jedec.org/sites/default/files/Alvin_Cox%20%5BCompatibility%20Mode%5D_0.pdf",
+          "title": "JEDEC SSD Specifications Explained",
+          "publisher": "Alvin Cox（Seagate；JEDEC JC-64.8 主席），JEDEC 網站公開簡報；溫度表頁標『Material submitted by Intel』",
+          "version": "簡報 PDF（56 頁，無日期）",
+          "accessed_on": "2026-11-11",
+          "read_via": "jedec.org PDF 200；pdftotext 全文，第 27 頁表格為圖片，以 pdftoppm 150 dpi 轉圖目讀",
+          "reading_scope": "全簡報；第 23–27 頁 endurance rating、application classes、溫度與保存表；extrapolation requirements 頁",
+          "locator": "p.23 Endurance rating 條件 1–4；p.25 classes 表；p.27 Temperatures and data retention 兩表；Extrapolation 條件 3–4",
+          "summary": "JESD218：TBW 額定的條件之一是 SSD 在寫滿額定量後『斷電保存資料達類別要求時間』；Client 類：使用 40°C 每天 8 小時、斷電保存 30°C 1 年；Enterprise：55°C 24 小時、斷電 40°C 3 個月。依 Intel 的去捕獲（detrapping）保存加速模型（JESD47/JEP122 正式模型）的週數表：Client 使用溫度 40°C 時，斷電溫度 25°C≈105 週、30°C≈52 週、35°C≈26、40°C≈14、45°C≈7、50°C≈4、55°C≈2 週；同一斷電 30°C，使用溫度 25°C 只有 28 週、55°C 達 199 週。保存驗證須同時涵蓋溫度加速機制（1.1 eV）與非溫度加速機制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "簡報是標準委員會說明而非標準全文（JESD218 需註冊下載未讀）；表值是磨損到額定 TBW 後的要求模型，不是新碟或任何品牌實測；溫度表為 Intel 提供資料。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/jedec_cox.pdf",
+            "sha256_prefix": "15b4a0048da5c00b",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-tech-20261111",
+          "original_url": "https://www.jedec.org/sites/default/files/Alvin_Cox%20%5BCompatibility%20Mode%5D_0.pdf"
         }
       ]
     },
@@ -35280,6 +35581,32 @@
       ]
     },
     {
+      "id": "SRC-51c62203d9927995",
+      "url": "https://ntrs.nasa.gov/citations/20140006750",
+      "readings": [
+        {
+          "canonical_url": "https://ntrs.nasa.gov/citations/20140006750",
+          "title": "Cool-flame Extinction During N-Alkane Droplet Combustion in Microgravity",
+          "publisher": "Nayagam、Dietrich、Hicks、Williams；Central States Section of the Combustion Institute 2014 Spring Technical Meeting（NASA NTRS 20140006750）",
+          "version": "2014-03 會議論文全文 PDF",
+          "accessed_on": "2026-11-11",
+          "read_via": "NTRS API /api/citations/20140006750/downloads/20140006750.pdf（200, application/pdf），pdftotext 全文逐段讀",
+          "reading_scope": "Abstract、1 Introduction、2 Experiments、3.1 n-decane、3.2 n-octane、3.3 n-heptane 開頭；Fig1–3 圖說",
+          "locator": "2 Experiments；3 Results 首段；3.1 R377/R374/R379/R383；3.2 R298/R694/R698/R707",
+          "summary": "ISS 上 Combustion Integrated Rack 的 MDCA（燃燒室自由容積約 95 L），以對針釋放自由漂浮液滴、熱絲點火；FLEX 至今完成三百多次液滴燃燒，初徑約 1.5–5 mm、壓力 0.5–3 atm。大的正烷烴液滴先有可見熱焰，熱焰因輻射熄滅後，相機與 UV 相機都看不到火焰，但寬頻與窄頻輻射計仍記錄放熱，液滴以稍慢速率（例 n-decane 0.41→0.33 mm²/s）繼續準穩態燃燒，稱『冷焰』，最後在有限直徑熄滅、剩餘液滴只蒸發；與 NTC（負溫度係數）低溫化學、引擎爆震相關。氧濃度提高到 25% 時避開輻射熄滅、改以微爆結束；降到 17%、14% 熄滅更早；氦稀釋 75% 時熱焰一瞬即滅、冷焰也很快結束。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "會議論文，非期刊同儕審查定稿；n-heptane 細節引用作者 2012 期刊論文（Combustion and Flame 159，未讀）。冷焰為輻射計推得，無影像；限於特定燃料、壓力、氧與稀釋氣體。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/ntrs_coolflame.pdf",
+            "sha256_prefix": "15037323e9a1e546",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-physics-20261111",
+          "original_url": "https://ntrs.nasa.gov/citations/20140006750"
+        }
+      ]
+    },
+    {
       "id": "SRC-51ddec85edfc4c79",
       "url": "https://www.sec.gov/Archives/edgar/data/92344/000009234496000004/0000092344-96-000004.txt",
       "readings": [
@@ -36702,6 +37029,33 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "nature-20261101",
           "original_url": "https://www.noaa.gov/jetstream/synoptic/origin-of-wind"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5588889ff38d31db",
+      "url": "https://doi.org/10.3390/polym16162318",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/polym16162318",
+          "doi": "10.3390/polym16162318",
+          "title": "Study of Injection Molding Process to Improve Geometrical Quality of Thick-Walled Polycarbonate Optical Lenses by Reducing Sink Marks",
+          "publisher": "Vanek、Ovsik、Stanek、Hanzlik、Pata；Polymers 16, 2318 (2024)",
+          "version": "期刊正式版（PMC11360770，CC BY 4.0）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 全文 XML 200，去標籤逐段讀",
+          "reading_scope": "Abstract、2 Materials and Methods（材料、模具、模擬條件、量測）、3.3–3.5、Table 6–8、4 Discussion 開頭、5 Conclusions",
+          "locator": "2.2 Materials；Table 2；2.7 量測（−0.578 mm 例）；3.3 驗證參數範圍；Table 6–8",
+          "summary": "真實零件案例：Covestro Makrolon LED 2245 聚碳酸酯光學透鏡，厚 12.5/16.5/20.5 mm，P20 鋼模、Arburg 470 E；驗證範圍射出壓力 60–100 MPa、保壓 48–80 MPa、熔體 250–300°C、模溫 80–120°C。以 3D 掃描量平面側縮痕：最佳條件下實測 0.412±0.018、1.053±0.111、1.616±0.138 mm，越厚越深；模擬預測 0.348/0.481/0.600 mm，越厚低估越多（Moldflow 對純厚壁區甚至偵測不到縮痕，改用 Cadmould）。提高射出壓力與模溫、降低熔體溫度可減小縮痕；12.5 mm 以射出壓力影響最大，較厚件改由熔體溫度主導，作者解釋為厚件冷卻時的體積收縮比壓力與保壓的作用更主導。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一材料與幾何；DOE 兩水準；正文差值（0.574、1.000 mm）與 Table 8（0.572、1.061 mm）不一致，引用以表為準。透鏡不是盒子，只能作『厚區縮痕』的真實例。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/PMC11360770.xml",
+            "sha256_prefix": "7966c6a97ef4c8da",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-physics-20261111",
+          "original_url": "https://doi.org/10.3390/polym16162318"
         }
       ]
     },
@@ -41027,6 +41381,33 @@
       ]
     },
     {
+      "id": "SRC-60443e97108bf54c",
+      "url": "https://doi.org/10.1007/s11120-024-01111-8",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s11120-024-01111-8",
+          "doi": "10.1007/s11120-024-01111-8",
+          "title": "Bicarbonate is a key regulator but not a substrate for O2 evolution in Photosystem II",
+          "publisher": "Vinyard、Govindjee；Photosynthesis Research 162: 93–99 (2024)",
+          "version": "期刊正式版（PMC11413114，CC BY 4.0）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 全文 XML 200，全文逐段讀",
+          "reading_scope": "Introduction、熱力學段、結構段、結論",
+          "locator": "Introduction 第2段；『PSII electron donor side has not been shown to have any high affinity bicarbonate binding sites』段",
+          "summary": "1940 年代初研究（Ruben 等 1941；Vinogradov 與 Teis 1941）發現放出 O₂ 的同位素組成與水幾乎相同，結論氧來自水；作者承認系統可能有自發或生物促成的同位素混合（Metzner 1975 的討論）。Warburg 與 Krippahl 1958 發現光反應需要碳酸氫根，重新挑戰氧的來源。熱力學上 OEC（+1.1 V）可氧化碳酸氫根（+0.7 V）或水（+0.9 V）兩者，所以不能單靠能量判定；冷凍電鏡、同步輻射與 XFEL 高解析結構都未在 OEC 附近看到結合的碳酸氫根。研究者已有共識 O₂ 只來自水，碳酸氫根是重要調節者；但以碳酸氫根為受質的假說近年（2021–2024）又有人提出。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "觀點文章；作者一方立場明確；不能說爭議完全消失。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/PMC11413114.xml",
+            "sha256_prefix": "cef4f373b7959023",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-life-20261111",
+          "original_url": "https://doi.org/10.1007/s11120-024-01111-8"
+        }
+      ]
+    },
+    {
       "id": "SRC-605c53edf2b8ae01",
       "url": "https://www.pbs.org/wgbh/nova/pisa/interventions.html",
       "readings": [
@@ -42450,6 +42831,32 @@
           },
           "origin": "wave16-bio-structures-20261102",
           "original_url": "https://doi.org/10.1098/rsos.170475"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6466b59ea2a077bf",
+      "url": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/",
+      "readings": [
+        {
+          "canonical_url": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/",
+          "title": "Space Station Facts and Figures",
+          "publisher": "NASA",
+          "version": "Page Last Updated: Jul 16, 2024",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，正文逐句讀",
+          "reading_scope": "頁首事實段",
+          "locator": "『five miles per second』段",
+          "summary": "太空站以每秒約 5 英里飛行，約每 90 分鐘繞地一圈，24 小時 16 圈、經歷 16 次日出日落。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "頁面沒有軌道高度數字。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/nasa_issfacts.html",
+            "sha256_prefix": "8c66ef8715307bea",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-physics-20261111",
+          "original_url": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
         }
       ]
     },
@@ -46256,6 +46663,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://apod.nasa.gov/apod/ap000725.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6da74d2707d5c910",
+      "url": "https://www.nobelprize.org/uploads/2018/06/advanced-medicineprize2009.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.nobelprize.org/uploads/2018/06/advanced-medicineprize2009.pdf",
+          "title": "Advanced Information: Maintenance of chromosomes by telomeres and the enzyme telomerase",
+          "publisher": "Nobel Assembly at Karolinska Institutet（nobelprize.org）",
+          "version": "2009 年諾貝爾生理醫學獎科學背景 PDF（12 頁）",
+          "accessed_on": "2026-11-11",
+          "read_via": "nobelprize.org PDF 200，pdftotext 全文逐段讀",
+          "reading_scope": "摘要、Introduction、Setting the stage、Further developments、Significance（Cancer、Ageing、Hereditary disease）",
+          "locator": "Introduction 與 Fig.1；Further developments（EST1）；Cancer 段；Ageing 段",
+          "summary": "DNA 聚合酶需要現成引子，因此線性染色體末端無法完整複製；Watson 與 Olovnikov 各自指出新股會留下單股尾巴、染色體會隨時間變短，Olovnikov 並連到人類體細胞在培養中的有限分裂壽命；多數原核生物與病毒是環狀基因組而避開此問題。Szostak 與 Blackburn 把四膜蟲 rDNA 末端片段接到線性酵母質體兩端，使其在酵母中穩定（1982）；Greider 與 Blackburn 1985 在四膜蟲萃取液中測到加上 TTGGGG 重複的活性（端粒酶），並找到 RNA 中 CAACCCCAA 作模板。Szostak 的酵母 EST1（ever shorter telomeres）突變端粒逐代變短、染色體流失增加並延遲衰老。80–90% 癌症端粒酶活性升高；把端粒酶導入正常人類培養細胞可延長壽命，但生物體老化是多因素過程。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "諾貝爾委員會綜述，非原研究；1982/1985 原論文未讀。不得外推為抗老方法。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/nobel2009_adv.pdf",
+            "sha256_prefix": "bd3ccf2eef043e05",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-life-20261111",
+          "original_url": "https://www.nobelprize.org/uploads/2018/06/advanced-medicineprize2009.pdf"
         }
       ]
     },
@@ -68546,6 +68979,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.qrcode.com/en/about/error_correction.html"
+        },
+        {
+          "canonical_url": "https://www.qrcode.com/en/about/error_correction.html",
+          "title": "Error correction feature",
+          "publisher": "DENSO WAVE（QR Code 開發方）qrcode.com",
+          "version": "網頁當期版（無日期）",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，HTML 全文去標籤逐句讀；等級百分比表為圖片未讀，改由 T52-S004 文字表核對。",
+          "reading_scope": "全頁",
+          "locator": "Error Correction Feature 段、Reed-Solomon 註腳",
+          "summary": "QR 糾錯以 Reed-Solomon 碼加在原資料上；可在位元組（碼字）層級修正、適合集中的突發錯誤；一碼字=8 位元；例：100 資料碼字要修 50 個需 100 個 RS 碼字，總 200 碼字可修 50 → 25%＝Q 級；以總碼字比例表示因為髒污也可能落在 RS 碼字上；工廠易髒選 Q/H，乾淨大資料量選 L，M（15%）最常用。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "廠商說明頁、非標準全文；ISO/IEC 18004 需購買未讀。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/about_error_correction.html",
+            "sha256_prefix": "44e25f08579ea5f6",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-tech-20261111",
+          "original_url": "https://www.qrcode.com/en/about/error_correction.html"
         }
       ]
     },
@@ -72756,6 +73209,32 @@
       ]
     },
     {
+      "id": "SRC-ad540a9ec31edfcb",
+      "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf",
+          "title": "The International System of Units (SI Brochure)",
+          "publisher": "BIPM",
+          "version": "第 9 版，PDF 標題 version 4.01 EN",
+          "accessed_on": "2026-11-11",
+          "read_via": "BIPM 文件庫 PDF 200，pdftotext 後讀公斤定義、Appendix 4 與 2018 CGPM Resolution 1",
+          "reading_scope": "2.3.1 公斤定義段；CGPM 2018 Resolution 1 與 Appendix 2；Appendix 4 實現方式段",
+          "locator": "公斤定義段（『The previous definition of the kilogram…』）；Resolution 1 Appendix 2；Appendix 4『Kibble balance』『silicon sphere』段",
+          "summary": "公斤以固定普朗克常數 h＝6.626 070 15×10⁻³⁴ J s 定義；舊定義讓原器質量恰為 1 kg、h 要量，新定義讓 h 精確、原器質量反而要量；採用時原器質量＝1 kg、相對標準不確定度 1×10⁻⁸；自 2019-05-20 生效。實現方式之一是 Kibble 秤（舊稱瓦特秤）：以質量、當地重力加速度與速度表示的機械功率，和以約瑟夫森與量子霍爾效應量測的電功率相比，mgv＝Ch；另一是數約 1 公斤矽球裡的原子數（體積、晶格常數、矽原子與電子質量比）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "正式文件但只讀相關節；未讀 CCM 的 mise en pratique 細則。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/si9.pdf",
+            "sha256_prefix": "5442eea2c680caf7",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-physics-20261111",
+          "original_url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-ad77630b540a0f53",
       "url": "https://askabiologist.asu.edu/leafcutter-castes",
       "readings": [
@@ -73698,6 +74177,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://ops.fhwa.dot.gov/freewaymgmt/ramp_metering/about.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b037257bada48d3d",
+      "url": "https://ws.moi.gov.tw/001/Upload/OldFile_NLSC/up_page/file/%E6%8E%A7%E5%88%B6%E6%B8%AC%E9%87%8F%E8%AA%B2/%E5%85%A7%E6%94%BF%E9%83%A8%E5%9C%8B%E5%9C%9F%E6%B8%AC%E7%B9%AA%E4%B8%AD%E5%BF%83105%E5%B9%B4%E5%8F%8A106%E5%B9%B4%E7%8E%89%E5%B1%B1%E6%AD%A3%E9%AB%98%E6%AA%A2%E6%B8%AC%E4%BD%9C%E6%A5%AD%E8%AA%AA%E6%98%8E-1070208.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://ws.moi.gov.tw/001/Upload/OldFile_NLSC/up_page/file/%E6%8E%A7%E5%88%B6%E6%B8%AC%E9%87%8F%E8%AA%B2/%E5%85%A7%E6%94%BF%E9%83%A8%E5%9C%8B%E5%9C%9F%E6%B8%AC%E7%B9%AA%E4%B8%AD%E5%BF%83105%E5%B9%B4%E5%8F%8A106%E5%B9%B4%E7%8E%89%E5%B1%B1%E6%AD%A3%E9%AB%98%E6%AA%A2%E6%B8%AC%E4%BD%9C%E6%A5%AD%E8%AA%AA%E6%98%8E-1070208.pdf",
+          "title": "105年及106年玉山正高檢測作業說明",
+          "publisher": "內政部國土測繪中心",
+          "version": "107-02-08 PDF",
+          "accessed_on": "2026-11-11",
+          "read_via": "moi 檔案庫 PDF 200，pdftotext 後讀成果表",
+          "reading_scope": "作業成果與表1歷年玉山正高、幾何高及重力",
+          "locator": "表1；成果（二）幾何高值",
+          "summary": "S026（玉山主峰三角點）106 年正高 3952.430 m、同年幾何高（橢球高）3978.613 m，兩者差約 26.2 m；92/105/106 年幾何高 3978.560/3978.583/3978.613 m；主峰重力 977954–977955 mgal，比 X121 低約 324–326 mgal。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "26.2 m 差為我由表值相減（即該點大地起伏），報告本身未用這個詞說明；只讀成果節。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/yushan105.pdf",
+            "sha256_prefix": "51d9b997cbebcda9",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-earth-20261111",
+          "original_url": "https://ws.moi.gov.tw/001/Upload/OldFile_NLSC/up_page/file/%E6%8E%A7%E5%88%B6%E6%B8%AC%E9%87%8F%E8%AA%B2/%E5%85%A7%E6%94%BF%E9%83%A8%E5%9C%8B%E5%9C%9F%E6%B8%AC%E7%B9%AA%E4%B8%AD%E5%BF%83105%E5%B9%B4%E5%8F%8A106%E5%B9%B4%E7%8E%89%E5%B1%B1%E6%AD%A3%E9%AB%98%E6%AA%A2%E6%B8%AC%E4%BD%9C%E6%A5%AD%E8%AA%AA%E6%98%8E-1070208.pdf"
         }
       ]
     },
@@ -81904,6 +82409,32 @@
       ]
     },
     {
+      "id": "SRC-c3704fdfafcf7a5c",
+      "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/",
+      "readings": [
+        {
+          "canonical_url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/",
+          "title": "What Is Microgravity? (Grades 5-8)",
+          "publisher": "NASA STEM Team",
+          "version": "2012-02-15 文章（頁面框架 2026 當期）",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，正文去標籤逐句讀",
+          "reading_scope": "正文各節：Is There Gravity in Space?、Why Do Objects Float、How Can Spacecraft Fall Around Earth、Why Does NASA Study、Can Microgravity Be Found on Earth",
+          "locator": "『about 90 percent』段、Fire burns differently 段",
+          "summary": "太空站軌道高度 200–250 英里，該高度地球重力約為地面的 90%，100 磅的人爬梯到站高度約 90 磅；漂浮是因為自由落體而非沒有重力；微重力下火焰較圓。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "2012 年兒童教育頁，高度範圍偏舊；我用 g(h)=g0·(R/(R+h))²、R=6371 km 自行核算：200 英里(322 km)≈0.906、250 英里(402 km)≈0.885，與『約 90%』相符（計算非來源原文）。『火焰較圓』無條件說明，不單獨引用。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/nasa_micro.html",
+            "sha256_prefix": "032a4fbd40b079a1",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-physics-20261111",
+          "original_url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/"
+        }
+      ]
+    },
+    {
       "id": "SRC-c374483c435e6c7b",
       "url": "https://www.fai.org/news/baumgartner%E2%80%99s-records-ratified-fai",
       "readings": [
@@ -88697,6 +89228,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave12-interfaces-20261101",
           "original_url": "https://arxiv.org/pdf/1406.3203"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d32747305eacb09e",
+      "url": "https://www.bipm.org/en/history-si/kilogram",
+      "readings": [
+        {
+          "canonical_url": "https://www.bipm.org/en/history-si/kilogram",
+          "title": "Historical perspective: Unit of mass, kilogram",
+          "publisher": "BIPM",
+          "version": "網頁當期版",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 200，全文逐句讀",
+          "reading_scope": "全頁",
+          "locator": "Historical perspective 段",
+          "summary": "1889 定義：公斤＝國際公斤原器（鉑銥合金）的質量，存於 BIPM；同時製作 40 個相似原器，校準後分配給會員國；1901 第3屆 CGPM 確認公斤是質量單位；1946 第二次定期驗證發現各國原器平均與國際原器逐漸偏離，1989–1991 第三次驗證確認，最初一批的中位差約 25 微克；2018 第26屆 CGPM 決議以普朗克常數重新定義。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "二手摘要頁；第三次驗證原報告（Girard 1994, Metrologia）未讀。注意：媒體常用的『約 50 微克』是另一個比較（原器 vs 六個正式複本、2007 BIPM 說法，見台灣標檢局雙月刊轉述），兩數不可混用。頁面寫『大多數』複本分給會員國、部分留在 BIPM；沒有『保險箱』一詞（出自 P52-S003）。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/bipm_494cfd.html",
+            "sha256_prefix": "b5f33d9dd4a5ddc4",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-physics-20261111",
+          "original_url": "https://www.bipm.org/en/history-si/kilogram"
         }
       ]
     },
@@ -96867,6 +97424,32 @@
       ]
     },
     {
+      "id": "SRC-e712106b83906f1a",
+      "url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8827/16gb-ddr4-sdram.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8827/16gb-ddr4-sdram.pdf",
+          "title": "16Gb: x4, x8, x16 DDR4 SDRAM（MT40A4G4/2G8/1G16）datasheet",
+          "publisher": "Micron Technology（DigiKey 轉載 PDF）",
+          "version": "資料手冊 PDF（JESD79-4 相容）",
+          "accessed_on": "2026-11-11",
+          "read_via": "DigiKey PDF 200，pdftotext；讀 Features 與 Refresh/TCR 相關段",
+          "reading_scope": "Features；Important Notes（tREFI）；REFRESH Command 段",
+          "locator": "Features『64ms, 8192-cycle refresh up to 85°C』；tREFI 註記",
+          "summary": "DDR4 規格要求 0–85°C 間 64 ms 內發 8,192 次刷新命令，平均間隔 tREFI＝7.8125 µs；85–95°C 須 32 ms 內 8,192 次（tREFI 3.906 µs）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "廠商資料手冊，非 JEDEC 標準本體；不給單一電容實際保持時間。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/micron_16gb.pdf",
+            "sha256_prefix": "e47c5421e1a8417e",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-tech-20261111",
+          "original_url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8827/16gb-ddr4-sdram.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-e71edf32e2f45adc",
       "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1487099/pdf",
       "readings": [
@@ -98142,6 +98725,33 @@
           ],
           "origin": "wave47-physics-20261103",
           "original_url": "https://doi.org/10.1002/adom.201900442"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e9f5065a6391012e",
+      "url": "https://doi.org/10.3390/polym15204102",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/polym15204102",
+          "doi": "10.3390/polym15204102",
+          "title": "Weld Line Strength of Polyamide Fiberglass Composite at Different Processing Parameters in Injection Molding Technique",
+          "publisher": "Nguyen Van-Thuc 等；Polymers 15, 4102 (2023)",
+          "version": "期刊正式版（PMC10610415，CC BY 4.0）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 全文 XML 200，讀摘要、材料、討論末段與結論",
+          "reading_scope": "Abstract、2 材料、3 討論末段（fiber bridging）、4 Conclusions",
+          "locator": "Abstract；2 Materials（Akulon K224-G6 110 MPa）；Conclusions",
+          "summary": "PA6＋30% 玻纖（DSM Akulon K224-G6，型錄抗拉 110 MPa）：結合線試片最佳實驗 76.8 MPa，ANN＋GA 預測最佳 85.1 MPa；保壓壓力對結合線強度影響最大、熔體溫度對伸長率影響最大；提高模溫讓結合線區連接較好、伸長率大增。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "110 MPa 是型錄值，不是同批無結合線試片；只作輔證。",
+          "author_cache": {
+            "file": "scratchpad/f1cache/PMC10610415.xml",
+            "sha256_prefix": "8521a27b7e1499ba",
+            "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave52-physics-20261111",
+          "original_url": "https://doi.org/10.3390/polym15204102"
         }
       ]
     },
@@ -260589,6 +261199,1158 @@
       "production_ready": false
     },
     {
+      "id": "S52-001",
+      "question": "玉山從 3952.382 公尺變成 3951.798 公尺，是山變矮了嗎？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.yushan_height_method_change_trig_vs_leveling_twvd2001",
+      "answer_target": "3952.382 公尺是民國 67 年做全台三角點測量時，順便用三角高程法算出的。民國 92 年國土測繪中心改用新的 2001 臺灣高程基準，從塔塔加的一等水準點 X121 出發，沿 14.5 公里步道全程做水準測量，並在各點量重力做正高改正，得到 3951.798±0.072 公尺。少了 0.584 公尺，官方明說主要是測量方法不同，不是山變矮。中心也提醒：這是主峰三角點的高度，若以山頂石碑頂點算約 3952.8 公尺。",
+      "scope": "限國土測繪中心公告；石碑頂高度為『約』值。不談板塊造山速率。",
+      "source_locator": "S001 一、【一】【三】【四】。",
+      "premise_status": "screened",
+      "notes": "填 G15 開場與第三章『這個高度到底碰到哪裡』（三角點 vs 石碑頂）；補上審稿要的『真實同山兩高度案例』。約 2–3 條新事實。 原提案 F1-005。非作者覆核 V4（2026-11-11）照原稿收；官方一手資料，逐句相符。這正是第一輪要的『同一座山的真實兩個高度』，pool 內沒有玉山或 TWVD 的核心，不重複。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一座山的數字改了，先問量法和量到哪一點，而不是山動了沒。",
+        "visual": "玉山主峰三角點與石碑相對位置示意；兩條測量路線（三角高程視線 vs 一站站水準尺）",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave52-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-043ef21c5fb67a18",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 一、【一】【三】【四】。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S52-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S52-002",
+      "question": "同一天、同一顆三角點，玉山為什麼同時有 3952 公尺和 3978 公尺兩個高度？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.yushan_orthometric_vs_ellipsoidal_height_geoid_separation",
+      "answer_target": "國土測繪中心區分兩種高：衛星定位量到的是從數學橢球面起算的幾何高（橢球高），水準測量得到的是從大地水準面（約略平均海水面）起算的正高。民國 106 年玉山主峰三角點 S026 的正高是 3952.430 公尺，同年衛星定位求得的幾何高是 3978.613 公尺，兩者相差約 26.2 公尺——不是誤差，而是兩個零點在玉山一帶本來就不在同一高度。量重力也看得出山頂特別：主峰重力值比塔塔加起點低約 325 mgal，所以水準高差還要做正高改正。",
+      "scope": "26.2 m 由官方表值相減而得，屬該點兩參考面的差，不外推到全台固定差值。重力只作『需要改正』的證據，不推導公式。",
+      "source_locator": "S001 前言；S002 表1、成果（二）。",
+      "premise_status": "screened",
+      "notes": "填 G15 第一章『山沒動，零點先換了』，把 M2080/M2082 的抽象參考面變成同一點的兩個實數。約 2 條新事實（同點雙高 26 m；重力差需改正）。 原提案 F1-006。非作者覆核 V4（2026-11-11）照原稿收；數字讀得到，26.2 m 是作者用兩個官方值相減，scope 已標明。和 M2080/M2082 講同一個概念，但這條給的是同一點的兩個實數，計約 1.5 條新事實。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩個高度都對，只是從不同的『零』量起。",
+        "visual": "同一山頂剖面：橢球面、大地水準面兩條線與 3978.613／3952.430 兩根量尺；不畫比例誇大要標示",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave52-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-043ef21c5fb67a18",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 前言；S002 表1、成果（二）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b037257bada48d3d",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 前言；S002 表1、成果（二）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S52-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S52-003",
+      "question": "玉山重測差了 63 公分，官方為什麼不說它長高了？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.yushan_remeasurement_63cm_gnss_rate_check_and_datum_update",
+      "answer_target": "民國 105、106 年重測得 3952.481 與 3952.430 公尺，採後者 3952.430±0.045 公尺，比 92 年多約 63 公分。官方用衛星追蹤資料檢查：主峰幾何高平均每年上升約 1.38 公分、北峰追蹤站約 0.55 公分，15 年頂多 8.3–20.7 公分，解釋不了 63 公分；加上這次起算的 X121 依新公告比 92 年高了 0.104 公尺。專家討論後認為 92 年可能因觀測拖了 4 個月、點位是沒埋樁的臨時點、缺重複觀測而偏差，但真正原因已無法確認。民國 111 年再測為 3952.433±0.046 公尺，與 106 年幾乎一致；之後每年兩次用衛星定位監測幾何高變化，水準測量則配合一等水準點重新公告（約 5–6 年）再做。",
+      "scope": "地殼上升速率相對金門追蹤站；不宣稱玉山確定每年長高多少。92 年誤差原因屬官方推測。",
+      "source_locator": "S001 二【三】、三【三】【四】、四；S002 表1。",
+      "premise_status": "screened",
+      "notes": "填 G15 第二章『連零點也有適用的時點』（起算點公告值會更新）與第四章『解析度不是準確度證書，需獨立檢核點』——用衛星速率獨立檢核水準結果。取代範圍不合的 M2083。約 3 條新事實。 原提案 F1-007。非作者覆核 V4（2026-11-11）照覆核意見改字後收；轉折是真的：差了 63 cm，官方用獨立的衛星速率檢查後判斷不是長高。只有最後一句把『加做衛星監測』說成『改用衛星』，要改。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個新數字要先過獨立檢核；檢核不過時，誠實說『原因已無法確認』。",
+        "visual": "四次結果時間軸（3952.382/3951.798/3952.430/3952.433）配誤差棒；衛星速率可解釋的範圍色帶",
+        "seconds": [
+          70,
+          100
+        ]
+      },
+      "origin": "wave52-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-043ef21c5fb67a18",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 二【三】、三【三】【四】、四；S002 表1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b037257bada48d3d",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 二【三】、三【三】【四】、四；S002 表1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S52-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S52-004",
+      "question": "台灣說的『海拔』，零點到底在哪個海邊、用哪幾年的海水？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.twvd2001_keelung_tide_1957_1991_benchmark_origin",
+      "answer_target": "台灣水準點採正高系統，高程基準叫 2001 臺灣高程基準（TWVD2001）：定義在 1990 年 1 月 1 日標準大氣環境下，用基隆潮位站 1957 到 1991 年的潮汐資料算出平均海水面。建立基準要超過 18.6 年的潮位紀錄。民國 90 年在基隆海門公園設水準原點 K999 作為所有水準點的起源，全台 2065 個一等水準點以它為固定點平差；103 年因道路工程，原點遷到海科館對面的 K997。",
+      "scope": "只談本島；離島各自以當地潮位站設基準不展開。不推估現在基隆海面與零點差多少（該數字來源未讀）。",
+      "source_locator": "S003【一】【二】【三】。",
+      "premise_status": "screened",
+      "notes": "填 G15 第一章與第二章：補審稿點名的 TWVD2001 官方來源。約 2 條新事實（基隆 1957–1991 平均海面、1990-01-01 標準大氣；原點 K999→K997 與 2065 點）。 原提案 F1-008。非作者覆核 V4（2026-11-11）照原稿收；官方原文逐句相符，補上第一輪點名的 TWVD2001 官方來源。和 M2082（地方平均海面不等於全球等位面）是同一章的具體例，不重複。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『海拔零』是一段歲月的平均，被固定在一顆埋在地下的點上。",
+        "visual": "基隆潮位曲線多年平均成一條線→水準原點→沿路水準點網延伸到塔塔加 X121→玉山",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-00bbee1249e0a6fa",
+          "origin": "wave52-earth-20261111",
+          "locator": "S003【一】【二】【三】。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S52-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L52-001",
+      "question": "科學家是怎麼在發現端粒以前，就猜到染色體每複製一次都會變短？",
+      "domain": "基因複製",
+      "mechanism_key": "end_replication_problem_watson_olovnikov_prediction_circular_genomes",
+      "answer_target": "DNA 聚合酶一定要有現成的引子才能開工，所以線性 DNA 最末端無法完整複製。James Watson 和 Alexei Olovnikov 各自指出這個矛盾：新合成的分子會留下單股尾巴，染色體會隨分裂越來越短；Olovnikov 還把它和人類體細胞在培養皿裡只能分裂有限次數連起來。多數細菌和病毒的基因組是環狀的，根本沒有末端，因此避開了這個難題。",
+      "scope": "限諾貝爾委員會綜述；不給具體分裂次數；不推到人類壽命。",
+      "source_locator": "S001 Introduction 與 Fig.1。",
+      "premise_status": "screened",
+      "notes": "填 G27 第七章『把同一套修補法移到染色體邊界』的觀眾入口與開場鉤子（審稿要的教材外來源）。約 2 條新事實（預言與有限分裂；環狀基因組避開）。與 V3027 機制相同處不重算。 原提案 F1-016。非作者覆核 V4（2026-11-11）照原稿收；近鄰：部分重疊 V3027（末端複製問題），原文相符。末端複製問題本身已在 V3027，新增的是『在發現端粒之前就被預言』與『環狀基因組避開』，計約 1.5 條。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "問題在機器規則裡就算得出來：只會往一個方向、又要起點，末端注定缺一截。",
+        "visual": "線性 vs 環狀 DNA 對照；每輪複製末端少一截的疊影",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6da74d2707d5c910",
+          "origin": "wave52-life-20261111",
+          "locator": "S001 Introduction 與 Fig.1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L52-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L52-002",
+      "question": "四膜蟲的染色體末端，怎麼讓酵母裡的人工線性質體不再亂重組、能長期保存？",
+      "domain": "基因複製",
+      "mechanism_key": "telomere_tetrahymena_ends_stabilize_yeast_linear_plasmid_telomerase_discovery",
+      "answer_target": "線性質體放進酵母，末端很容易和染色體重組，無法長期保存。Szostak 與 Blackburn 把單細胞纖毛蟲四膜蟲的 rDNA 末端片段接到線性酵母質體兩端，質體就能以線性形式穩定存在（1982），顯示末端結構跨物種保守。1985 年 Greider 與 Blackburn 在四膜蟲萃取液測到在 DNA 尾端加上 TTGGGG 重複的活性；後續研究確認它是帶 RNA 的酵素並命名為端粒酶，1989 年找到 RNA 裡的 CAACCCCAA 序列作為模板。Szostak 的酵母突變株 EST1（ever shorter telomeres）端粒一代代變短、染色體更易遺失，經過多代後才走向衰老（原文稱延遲出現的衰老表型）。",
+      "scope": "原論文未讀，依諾貝爾綜述；不混用原核與真核例子。",
+      "source_locator": "S001 Setting the stage、Fig.2–4 圖說、Further developments。",
+      "premise_status": "screened",
+      "notes": "填 G27 第七章：把 V3028『端粒酶自帶模板』由課本結論變成可驗證的實驗故事。約 2–3 條新事實（跨物種末端保全；TTGGGG 加成與 CAACCCCAA；EST1 變短→衰老）。 原提案 F1-017。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 V3028（端粒酶自帶 RNA 模板），故事本身有來源，能把課本結論變成實驗。但 EST1 的『提早衰老』和原文相反，年代也被合併到 1985，這兩處都必須改；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "末端不是被動地被複製，而是由一個自帶模板的酵素主動補上。",
+        "visual": "質體兩端換上四膜蟲末端前後的命運對照；TTGGGG 一段段加上的示意",
+        "seconds": [
+          65,
+          95
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6da74d2707d5c910",
+          "origin": "wave52-life-20261111",
+          "locator": "S001 Setting the stage、Fig.2–4 圖說、Further developments。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L52-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L52-003",
+      "question": "既然端粒變短會讓細胞停止分裂，補回端粒酶能讓人不老嗎？",
+      "domain": "基因複製",
+      "mechanism_key": "telomerase_cancer_80_90pct_and_ageing_caveats",
+      "answer_target": "諾貝爾委員會的整理指出：80–90% 的癌症端粒酶活性升高，沒有升高的腫瘤常用另一種延長端粒的方式，這和癌細胞能無限分裂一致；端粒太短會誘發衰老與細胞死亡，被認為是防止失控增生的保護機制。把端粒酶導入正常人類培養細胞可以延長其分裂壽命，但生物體老化受很多因素影響，端粒長度與組織維持的關係也不是絕對；遺傳性端粒酶缺陷（如先天性角化不良症）則會出現類似早衰的症狀。",
+      "scope": "明確不推薦任何抗老產品或療法；癌症疫苗等臨床資訊停在 2009 年，不更新、不引用。",
+      "source_locator": "S001 Cancer、Ageing、Hereditary disease 段。",
+      "premise_status": "screened",
+      "notes": "填 G27 結尾的限制段（企劃要求『不得外推為抗老』），把限制本身變成轉折：同一機制在癌細胞是失控、在正常細胞是剎車。約 2 條新事實。 原提案 F1-018。非作者覆核 V4（2026-11-11）照原稿收；內容相符，明確擋住抗老外推。但它回答的是『醫學意義』這個不同的問題，只能當 G27 結尾 20–30 秒的限制，所以我只計 1 條事實（F1 計 2 條）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "末端變短是剎車；拿掉剎車不等於返老還童。",
+        "visual": "細胞分裂計數器在『有/無端粒酶』兩路的分岔；不出現產品或人像",
+        "seconds": [
+          45,
+          70
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6da74d2707d5c910",
+          "origin": "wave52-life-20261111",
+          "locator": "S001 Cancer、Ageing、Hereditary disease 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L52-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L52-004",
+      "question": "1941 年的科學家怎麼知道，植物放出的氧氣來自水而不是二氧化碳？",
+      "domain": "植物光能",
+      "mechanism_key": "photosynthesis_oxygen18_tracer_1941_ruben_kamen",
+      "answer_target": "1941 年 Ruben、Kamen 等人用穩定同位素氧-18 標記，發表論文推翻了『光合作用放出的 O₂ 來自 CO₂』的普遍看法；同年 Vinogradov 與 Teis 的研究也被綜述列為同一結論的出處。後來的綜述這樣概括：放出的氧氣同位素組成和所用的水幾乎一樣，所以氧來自水。",
+      "scope": "1941 JACS 原文（63:877–879）付費未讀，實驗細節（藻種、濃度）不寫；只用綜述與訃聞轉述的結論。片中不得演成『我們做了同位素實驗』。",
+      "source_locator": "S002 正文第5段；S003 Introduction 第2段。",
+      "premise_status": "screened",
+      "notes": "填 G29 第一、二章『氧原子從哪來』的科學史開場（審稿點名缺的來源，以可靠二手史料滿足；原文未讀列為限制）。約 2 條新事實。 原提案 F1-019。非作者覆核 V4（2026-11-11）照覆核意見改字後收；核心事實讀得到；國籍與『獨立』是來源沒有的補充，要刪。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "追得到原子的來路，才知道總反應式兩端怎麼配對。",
+        "visual": "兩瓶標色實驗示意：重氧在水 vs 重氧在 CO₂，放出氧的顏色跟著水走（明標歷史示意）",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-35696e68dc8a84e7",
+          "origin": "wave52-life-20261111",
+          "locator": "S002 正文第5段；S003 Introduction 第2段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-60443e97108bf54c",
+          "origin": "wave52-life-20261111",
+          "locator": "S002 正文第5段；S003 Introduction 第2段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L52-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L52-005",
+      "question": "『氧來自水』後來被挑戰過嗎？碳酸氫根為什麼一度被懷疑才是真正的來源？",
+      "domain": "植物光能",
+      "mechanism_key": "photosynthesis_bicarbonate_substrate_challenge_isotope_mixing",
+      "answer_target": "1958 年 Warburg 與 Krippahl 發現光反應需要碳酸氫根，氧的來源因此被重新挑戰；1978 年 Metzner 更提出碳酸氫根才是 O₂ 的直接受質，水只是事後補充它。這個假說原本被排除，理由是 ¹⁸O 水和碳酸氫根交換同位素太慢，不可能解釋早期標記結果；但後來在光系統 II 附近發現碳酸酐酶活性，標記可能被酵素快速交換、『逃』進濃度高得多的水裡，舊實驗必須重驗。熱力學也幫不了忙：光系統 II 的放氧中心（約 +1.1 V）既能氧化水（+0.9 V），也能氧化碳酸氫根（+0.7 V）。",
+      "scope": "電位值依 S003；不寫具體 S 態機制。",
+      "source_locator": "S003 Introduction、熱力學段；S004 碳酸氫根受質段。",
+      "premise_status": "screened",
+      "notes": "填 G29：在『氧從水來』之後加入真轉折（結論被挑戰、檢驗方法本身受質疑）。約 2–3 條新事實。 原提案 F1-020。非作者覆核 V4（2026-11-11）照原稿收；逐句相符。這是 G29 的真轉折：『氧來自水』曾被重新挑戰，而且挑戰的正是檢驗方法本身。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個漂亮的同位素結果，也可能被『標記偷偷交換』推翻，所以要重驗。",
+        "visual": "兩條可能路徑（水直接 vs 經碳酸氫根）與碳酸酐酶交換箭頭；電位階梯示意",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-60443e97108bf54c",
+          "origin": "wave52-life-20261111",
+          "locator": "S003 Introduction、熱力學段；S004 碳酸氫根受質段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-19f9bdf3a9d9d8c2",
+          "origin": "wave52-life-20261111",
+          "locator": "S003 Introduction、熱力學段；S004 碳酸氫根受質段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L52-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L52-006",
+      "question": "現在的實驗怎麼重新確認氧氣只來自水？還有人不同意嗎？",
+      "domain": "植物光能",
+      "mechanism_key": "photosynthesis_trmims_flash_oxygen18_structures_no_bicarbonate_consensus",
+      "answer_target": "時間解析膜入口質譜讓研究者能在每一次閃光後看放出的氧：Clausen 等人（2005）在水標上 ¹⁸O、並把 CO₂ 與碳酸氫根去除後，閃光仍產生典型、隨閃光次數振盪的 ¹⁸O 氧氣，也沒看到 CO₂ 釋出；Hillier 等人（2006）直接用 ¹⁸O/¹³C 標記的碳酸氫根檢驗，兩者都排除碳酸氫根是生理上重要的受質。高解析的冷凍電鏡與 X 光結構也沒在放氧中心附近看到結合的碳酸氫根。研究社群的共識是氧只來自水、碳酸氫根是重要調節者；不過碳酸氫根受質說在 2021–2024 年又有人重提。",
+      "scope": "原研究（Clausen 2005、Hillier 2006）未讀，依兩篇綜述；不宣稱爭議完全終結。",
+      "source_locator": "S004 碳酸氫根受質段（Clausen 2005、Hillier 2006）；S003 結構段與共識段。",
+      "premise_status": "screened",
+      "notes": "填 G29 開頭直覺箭頭的最終改正前一段，使『氧從水來』從課本宣告變成經過挑戰與重驗的結論。約 2 條新事實。 原提案 F1-021。非作者覆核 V4（2026-11-11）照原稿收；兩篇綜述都讀得到，F1 也沒宣稱讀過原研究。scope 不說爭議完全終結，正確。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "結論活下來，是因為更精細的方法再測了一次。",
+        "visual": "閃光序列與 ¹⁸O-O₂ 振盪曲線示意（標示意）；結構圖放氧中心周圍『沒有碳酸氫根』",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-60443e97108bf54c",
+          "origin": "wave52-life-20261111",
+          "locator": "S004 碳酸氫根受質段（Clausen 2005、Hillier 2006）；S003 結構段與共識段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-19f9bdf3a9d9d8c2",
+          "origin": "wave52-life-20261111",
+          "locator": "S004 碳酸氫根受質段（Clausen 2005、Hillier 2006）；S003 結構段與共識段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L52-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-001",
+      "question": "全世界的公斤原器，明明存放在 BIPM，為什麼各國的複本會慢慢跟它對不上？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_prototype_copies_divergence_periodic_verification",
+      "answer_target": "1889 年起，公斤就等於存放在 BIPM 的一顆鉑銥合金國際原器的質量；同時做了 40 顆相似原器，校準後大多分給會員國，部分留在 BIPM。1946 年第二次定期驗證時發現，各國原器平均而言正逐漸偏離國際原器；1989–1991 年第三次驗證確認這個趨勢，最初那批原器與國際原器的中位差約 25 微克。（以下是旁白推論，不是頁面引述：因為定義就是那顆原器，原器自己變了也無從察覺，只能看到『大家相對它在動』。）",
+      "scope": "25 微克是第三次驗證最初一批原器的中位差，不是國際原器變輕 25 微克；片中不用 50 微克（來源未逐句讀）。『保險箱』一說出自 P52-S003，不歸給本頁。不說原器失準造成日常秤錯。",
+      "source_locator": "S001 Historical perspective 段。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章『最高那一顆也不是永遠的答案』前半，接在 M2057 之後，取代抽象敘述。約 2 條新事實（40 顆複本與分配；1946/1991 驗證與 25 µg）。 原提案 F1-001。非作者覆核 V4（2026-11-11）照覆核意見改字後收；數字與年代都對得上 BIPM 頁。要改的是兩處措辭比原文多（全數分給會員國、保險箱），以及原 F1-S025 只是摘要工具讀到的，不能掛在來源裡。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "基準本身會不會動，只能從一群複本的相對漂移間接看出來。",
+        "visual": "時間軸：1889 分配 40 顆→1946、1991 兩次回 BIPM 比較，散點圖相對原器偏移（示意，數值只標 25 µg 中位）",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d32747305eacb09e",
+          "origin": "wave52-physics-20261111",
+          "locator": "S001 Historical perspective 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-002",
+      "question": "把公斤改成用普朗克常數定義後，那顆國際公斤原器還是不是剛好一公斤？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_planck_constant_definition_prototype_now_measured",
+      "answer_target": "2018 年第 26 屆 CGPM 決議、2019 年 5 月 20 日生效：把普朗克常數 h 固定為 6.626 070 15×10⁻³⁴ J s，再搭配已用常數定義的秒與公尺，推出公斤。舊定義讓原器恰為 1 公斤、h 要靠實驗量；新定義反過來，h 精確，原器的質量變成要量的東西。選定的 h 數值讓採用當下原器仍是 1 公斤，但帶有 1×10⁻⁸ 的相對標準不確定度。",
+      "scope": "只講定義與原器角色的對調；不展開其他基本單位改定義。",
+      "source_locator": "S002 公斤定義段；CGPM 2018 Resolution 1 Appendix 2；生效日。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章；與既有 M2058（改定義後實物角色）部分重疊，只算 1 條新事實（原器反成被量者＋1e-8）。 原提案 F1-002。非作者覆核 V4（2026-11-11）照原稿收；逐句相符。和 M2058（定義與量值傳遞是不同層次）主題相近，只多出『原器反成被量者、1e-8』這一點，計 1 條新事實，F1 自己也是這樣算。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "定義與被量的東西對調：常數成了尺，原器成了被量的砝碼。",
+        "visual": "天平兩端翻轉動畫：1889『原器=1 kg，h=?』↔ 2019『h=固定，原器=1 kg±10 µg』",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ad540a9ec31edfcb",
+          "origin": "wave52-physics-20261111",
+          "locator": "S002 公斤定義段；CGPM 2018 Resolution 1 Appendix 2；生效日。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-003",
+      "question": "沒有了標準砝碼，實驗室要怎麼從一個常數『做出』一公斤？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_realization_kibble_balance_silicon_sphere",
+      "answer_target": "SI 手冊舉了兩種實現方式。Kibble 秤（舊稱瓦特秤）把質量 m、當地重力加速度 g 與速度 v 構成的機械功率，和用約瑟夫森效應與量子霍爾效應量到的電功率相比，得到 mgv＝Ch 的關係，h 就是普朗克常數。另一種是數一顆約一公斤的矽球裡有多少原子：量球的體積、晶格常數，再配合矽原子與電子的質量比等常數算出質量。任何能把質量和 h、光速、銫頻率連起來的物理方程式，原則上都可以用。",
+      "scope": "只說原理層級；不給任何實驗室的實測不確定度；不說家用秤會用到 Kibble 秤。",
+      "source_locator": "S002 Appendix 4『Kibble balance』『silicon sphere』段。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章後半（原企劃缺 Kibble 秤／矽球來源）。約 2 條新事實。 原提案 F1-003。非作者覆核 V4（2026-11-11）照覆核意見改字後收；原理描述正確，只有『主要』一詞是原文沒有的。Kibble 秤與矽球正是第一輪點名缺的來源，補上後 G13 第三章不必抽象講。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "定義不再綁一個物件，但仍要有人用儀器把它做出來，再往下傳。",
+        "visual": "Kibble 秤兩模式示意（秤重/移動線圈）與矽球數原子示意，標『原理示意』",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ad540a9ec31edfcb",
+          "origin": "wave52-physics-20261111",
+          "locator": "S002 Appendix 4『Kibble balance』『silicon sphere』段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-004",
+      "question": "國際公斤原器真的在變輕嗎？2014 年把它拿出來一比，結果出乎意料在哪？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.ipk_extraordinary_calibration_cleaning_and_working_standard_offset",
+      "answer_target": "國際原器自 1992 年起鎖在保險箱沒用，BIPM 平常用一組鉑銥工作標準器維持質量單位，不確定度從 2.3 微克漸增到 2013 年估計的 7 微克。2014 年為改定義做『特別校準』：先清洗洗滌，國際原器被洗掉 16.8 微克的表面污染，七顆原器平均 15 微克；洗乾淨後，六個正式複本相對原器的質量自第三次驗證以來平均只變了 −1 微克，過去看到的『複本逐漸變重』趨勢沒有再現。BIPM 的工作標準器和專供特殊用途的原器，這次全都比第三次驗證（1988–1992）時輕，其中特殊用途原器 no.73 少了 33 微克，使 BIPM 維持的質量單位相對原器偏了 35 微克。洗完後原器質量又會回升，國際原器最初約每天 0.02 微克。",
+      "scope": "限 BIPM Part I 結果；35 微克偏移的完整分析在後續論文未讀。不得說『原器被證明沒變』，原器本身無法相對於自身檢驗；只能說原器與正式複本表現一致。",
+      "source_locator": "S003 Abstract；Sec.1；Sec.4 Table5；Sec.5 Fig2 圖說與 no.25/73；Sec.6；Sec.7。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章到第四章的橋：『最高那一顆』與『把偏差扣掉之後』之間的真轉折——漂移來自使用鏈而非鎖住的頂端，也接上修正值與不確定度。約 3 條新事實（清洗 15 µg；複本只變 −1 µg 趨勢未再現；工作標準器使單位偏 35 µg／不確定度 2.3→7 µg）。 原提案 F1-004。非作者覆核 V4（2026-11-11）照覆核意見改字後收；這條是 G13 最好的轉折（被懷疑的頂端和複本彼此一致，反而是使用中的那一層偏了 35 µg），數字全部讀得到。唯一錯誤是把 33 µg 那顆特殊用途原器說成工作標準器，必須改。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "最常被懷疑的頂端很穩，天天被摸的中間層才是誤差來源。",
+        "visual": "Fig2 型折線：六複本 1889→1946→1991→2014 相對原器（2014 回到一致）；對照工作標準器下降箭頭；清洗前後秤量動畫",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-05766474c1366c08",
+          "origin": "wave52-physics-20261111",
+          "locator": "S003 Abstract；Sec.1；Sec.4 Table5；Sec.5 Fig2 圖說與 no.25/73；Sec.6；Sec.7。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-005",
+      "question": "透明塑膠透鏡做得越厚，表面那個凹陷為什麼越深，連模擬軟體都算不準？",
+      "domain": "塑膠製造",
+      "mechanism_key": "injection_thick_polycarbonate_lens_sink_depth_measured_vs_simulated",
+      "answer_target": "捷克研究團隊用 Covestro 的 Makrolon LED 2245 聚碳酸酯，在 P20 鋼模裡射出 12.5、16.5、20.5 公釐三種厚的光學透鏡，用 3D 掃描量平面側的縮痕。即使在模擬找出的最佳條件下，實測縮痕仍有 0.41、1.05、1.62 公釐，越厚越深；模擬只預測 0.35、0.48、0.60 公釐，越厚低估越多，作者推測模擬沒算到冷卻到室溫時的額外收縮，也可能是軟體材料資料的誤差，作者說確切原因目前無法確認；其中一套常用軟體甚至偵測不到純厚壁區的縮痕。",
+      "scope": "限此材料、幾何與 DOE 兩水準；正文差值與 Table 8 不一致，以表為準。透鏡不是盒子，作『厚區縮痕』真實例。原刊圖為 CC BY，可依授權引用但另行確認。",
+      "source_locator": "S004 2.2、Table 2、2.7、Table 7–8、Discussion。",
+      "premise_status": "screened",
+      "notes": "填 G24 第三章『灌滿之後，為什麼還要補料』審稿要的有條件實物案例（縮痕）。約 2 條新事實（實測深度隨厚度；模擬低估擴大）。 原提案 F1-013。非作者覆核 V4（2026-11-11）照覆核意見改字後收；數字全對。補上作者自己的保留，避免把一個推測說成結論。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "凹痕深淺記錄的是厚處冷卻時的體積收縮，連電腦都容易低估。",
+        "visual": "三片透鏡剖面與實測/模擬深度條形對照（依 Table 8 重畫）；掃描色圖示意",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5588889ff38d31db",
+          "origin": "wave52-physics-20261111",
+          "locator": "S004 2.2、Table 2、2.7、Table 7–8、Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-006",
+      "question": "想消除厚件縮痕，一直加大保壓壓力就有用嗎？",
+      "domain": "塑膠製造",
+      "mechanism_key": "injection_thick_part_sink_melt_temperature_dominates_over_pressure",
+      "answer_target": "同一研究的統計分析顯示：提高射出壓力和模具溫度、降低熔體溫度，都能讓縮痕變淺。但最重要的因子隨厚度改變——12.5 公釐的透鏡以射出壓力影響最大；16.5 和 20.5 公釐則換成熔體溫度最重要。作者解釋，件越厚，冷卻時本身的體積收縮越主導，壓力和保壓能補償的比例就越小。",
+      "scope": "結論限其參數範圍（射出 60–100 MPa、保壓 48–80 MPa、熔體 250–300°C、模溫 80–120°C）；不給一般工廠設定建議。",
+      "source_locator": "S004 3.3 驗證範圍；Table 6 與其前後討論。",
+      "premise_status": "screened",
+      "notes": "填 G24 第三章的轉折：補料不是萬能，與 D2131/D2133（澆口凝固後無法補料）互補。1–2 條新事實。 原提案 F1-014。非作者覆核 V4（2026-11-11）照原稿收；逐句相符，是 G24 第三章『補料不是萬能』的真轉折；參數範圍已寫進 scope。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "補料能救薄處，救不了大塊材料自己冷縮。",
+        "visual": "因子重要度排名在三種厚度間換位的動畫（依 Table 6）",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5588889ff38d31db",
+          "origin": "wave52-physics-20261111",
+          "locator": "S004 3.3 驗證範圍；Table 6 與其前後討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-007",
+      "question": "塑膠零件上那條細線，實際上會讓它弱多少？",
+      "domain": "塑膠製造",
+      "mechanism_key": "injection_weld_line_tensile_strength_loss_and_mold_heating_pa6",
+      "answer_target": "越南團隊用 PA6 尼龍做雙澆口拉伸試片，讓兩股熔體在中間相遇形成結合線。含結合線的試片抗拉強度依製程介於約 36 到 62 MPa，對照沒有結合線的約 80 MPa；把模面用外部熱氣加熱到 173°C 時最好，達 62.3 MPa、伸長率約 580%，不加熱時約 45 MPa。另一篇加 30% 玻纖的 PA6，結合線試片最好也只有 76.8 MPa，型錄強度是 110 MPa，且保壓壓力是影響最大的因子。",
+      "scope": "限兩篇單一材料試片研究；PA6 對照值作者原文用語不一致；玻纖件 110 MPa 是型錄值非同批對照。模溫效果非單調。不由外觀判定任何產品強度。",
+      "source_locator": "S005 Table 1、Results 首段、Conclusion；S006 Abstract、2、Conclusions。",
+      "premise_status": "screened",
+      "notes": "填 G24 第二章『兩股流動碰面會留下什麼』與第五章『看見一條線，能判定它壞了嗎』的有條件數據，並補審稿要的第二個工程來源（保壓與結合線強度）。約 2–3 條新事實。 原提案 F1-015。非作者覆核 V4（2026-11-11）照原稿收；數字逐一對過；scope 已標明對照值與型錄值不是同批對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一條線的強弱，取決於兩股熔體相遇時還夠不夠熱。",
+        "visual": "雙澆口試片充填動畫→結合線→拉伸斷在線上；強度條形圖（有/無結合線、不同模溫）",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-3fc8284f902a675b",
+          "origin": "wave52-physics-20261111",
+          "locator": "S005 Table 1、Results 首段、Conclusion；S006 Abstract、2、Conclusions。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e9f5065a6391012e",
+          "origin": "wave52-physics-20261111",
+          "locator": "S005 Table 1、Results 首段、Conclusion；S006 Abstract、2、Conclusions。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-008",
+      "question": "太空站上的重力只少一成，太空人為什麼還會飄？",
+      "domain": "science",
+      "mechanism_key": "orbit.iss_altitude_gravity_ninety_percent_free_fall",
+      "answer_target": "NASA 的說明：太空站軌道高度在 200 到 250 英里時，那裡的地球重力約是地面的 90%，一個在地面 100 磅的人若能爬梯到太空站高度，仍有約 90 磅重；這和既有 LEG-S80 所綁 NASA Glenn 頁自己寫的『250 英里處 88.8%』相符，只作交叉核對。太空站約 90 分鐘繞地一圈、一天 16 圈，也就是一天看到 16 次日出日落；漂浮是因為站和人一起自由落體，而不是沒有重力。",
+      "scope": "NASA 教育頁為 2012 年版，高度範圍偏舊；不做自行的平方反比核算。九成重力已在 LEG-S80 的來源，本核心新事實只計週期數字（約 0.5 條）。不談潮汐力。",
+      "source_locator": "S007 Is There Gravity in Space? 段；S008 頁首事實段。",
+      "premise_status": "screened",
+      "notes": "P04 第一、二章：S80 當期核對＋週期數字，新事實計 0.5 條，不是 2 條。 原提案 F1-022。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 LEG-S80（同一組事實已在其 NASA Glenn 來源），完成了第一輪要求的『九成重力當期核對』，但這不是新事實：既有 S80 來源已有 88.8%。作者的平方反比核算是自己算的，只能當旁證，不能當來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "重力幾乎都還在，只是你和地板一起在掉。",
+        "visual": "地球與太空站比例示意（不畫自行核算的曲線）；體重計在梯頂讀約 90 磅；一天繞 16 圈、16 次日出日落的軌道圈。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c3704fdfafcf7a5c",
+          "origin": "wave52-physics-20261111",
+          "locator": "S007 Is There Gravity in Space? 段；S008 頁首事實段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6466b59ea2a077bf",
+          "origin": "wave52-physics-20261111",
+          "locator": "S007 Is There Gravity in Space? 段；S008 頁首事實段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-009",
+      "question": "太空站上的火焰熄滅了，燃料為什麼還在『燒』？",
+      "domain": "science",
+      "mechanism_key": "combustion.iss_flex_cool_flame_after_radiative_extinction",
+      "answer_target": "NASA 在太空站燃燒整合架上的 FLEX 實驗，讓 1.5 到 5 公釐的燃料液滴在約 95 公升的燃燒室裡自由漂浮、用熱絲點火，已做了三百多次。大顆的正烷烴液滴（如正癸烷、正庚烷）先燒出可見的熱焰，熱焰因輻射散熱而熄滅後，彩色相機與紫外相機都看不到火了，但寬頻與窄頻輻射計仍量到放熱，液滴繼續縮小，直徑平方的縮小速率從每秒 0.41 降為 0.33 平方公釐（例：正癸烷、0.5 大氣壓、21% 氧），研究者稱為『冷焰』，最後在某個直徑突然停止，剩下的液滴只是蒸發。冷焰屬於與引擎爆震相關的低溫化學。",
+      "scope": "限所列燃料、壓力 0.5–1 atm 等條件；冷焰由輻射計推得、無影像；n-heptane 細節原期刊論文未讀。不說所有太空火焰都會變冷焰；不推到太空站防火規範。",
+      "source_locator": "S009 1 Introduction；2 Experiments；3 首段；3.1 R377。",
+      "premise_status": "screened",
+      "notes": "填 P04 第四章『火焰變了能告訴你什麼』：審稿要的第二個有條件的太空站燃燒結果。約 2–3 條新事實。與 LEG-S48（近球形火焰、無 cool flame 支線）不重複。 原提案 F1-023。非作者覆核 V4（2026-11-11）照覆核意見改字後收；內容讀得到，有條件也寫明。單位描述與儀器名稱要照原文。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有浮力對流，火焰可以安靜到看不見卻還在放熱。",
+        "visual": "D² 對時間的直線兩段斜率（依 Fig1a 重畫）與『可見焰熄滅』標記；輻射計曲線",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-51c62203d9927995",
+          "origin": "wave52-physics-20261111",
+          "locator": "S009 1 Introduction；2 Experiments；3 首段；3.1 R377。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P52-010",
+      "question": "同一顆太空液滴，多一點氧或加一點氦，火焰的結局為什麼完全不同？",
+      "domain": "science",
+      "mechanism_key": "combustion.iss_flex_oxygen_helium_conditions_change_extinction_mode",
+      "answer_target": "同一組 FLEX 實驗改變周圍氣體：改氧的試次是正癸烷：0.5 大氣壓下把氧濃度從 21% 提高到 25%，火焰更靠近液滴、溫度更高，就不再發生輻射熄滅，而是燒到很小時液滴微爆；降到 17%、14% 時，熱焰和冷焰都更早熄滅。加氦的試次是正辛烷：在一大氣壓、氧固定 21% 下用氦取代氮，氦導熱好、帶走熱量，燃燒加快但兩段時間都縮短；氦加到 75% 時，熱焰點著不到一秒就滅、冷焰也很快結束。",
+      "scope": "限論文所列個別試次（R374、R379、R383、R694、R698、R707）；不歸納成通用規律數值。",
+      "source_locator": "S009 3.1 Fig1b–d；3.2 Fig2a–d。",
+      "premise_status": "screened",
+      "notes": "填 P04 第四章『分清條件』：同一微重力下火焰行為仍由氣體條件決定，避免『微重力火焰都一樣』。約 2 條新事實。 原提案 F1-024。非作者覆核 V4（2026-11-11）照覆核意見改字後收；數字與條件都對，只是兩組實驗是不同燃料，原稿沒寫，容易被聽成同一顆液滴。它正好支撐企劃要求的『不能說所有微重力火焰都一樣』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "微重力只拿掉了對流，結局還由氧和導熱決定。",
+        "visual": "四格小圖：21%/25%/17%/14% 氧的熄滅方式；氦比例滑桿",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-51c62203d9927995",
+          "origin": "wave52-physics-20261111",
+          "locator": "S009 3.1 Fig1b–d；3.2 Fig2a–d。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P52-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T52-001",
+      "question": "SSD 拔下來放抽屜，資料保證能放多久？標準是怎麼定的？",
+      "domain": "半導體記憶",
+      "mechanism_key": "flash_ssd_jesd218_power_off_retention_requirement_end_of_life",
+      "answer_target": "JEDEC 的 SSD 標準 JESD218 把『斷電保存』寫進耐寫額定（TBW）的條件：硬碟寫滿額定的資料量之後，仍要能在斷電下保存資料一段規定時間。消費級（Client）類別假設使用時 40°C、每天 8 小時，要求斷電放在 30°C 時保存 1 年；企業級假設 55°C 全天使用，只要求斷電 40°C 保存 3 個月。所以『一年』是磨損到盡頭時的最低要求，不是新碟的實際壽命。",
+      "scope": "限 JEDEC 公開簡報轉述；JESD218 本文需註冊未讀。不給任何品牌的保存天數。",
+      "source_locator": "S001 p.23 條件4；p.25 classes 表。",
+      "premise_status": "screened",
+      "notes": "填 G17 審稿點名缺的『斷電後保存期限』，放在第四章『沒有機械零件也會磨損』之後作真轉折：磨損與保存是連動的。約 2 條新事實。 原提案 F1-009。非作者覆核 V4（2026-11-11）照原稿收；簡報原文相符；『一年是磨損到額定量時的最低要求』是由條件 4 直接推得，合理。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "快閃記憶的保存是有期限的，而且是用『用到最舊時』來保證。",
+        "visual": "Client/Enterprise 兩欄規格卡：使用溫度×時數、斷電溫度×時間（示意卡，標 JESD218）",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b79ef36d06f32c2",
+          "origin": "wave52-tech-20261111",
+          "locator": "S001 p.23 條件4；p.25 classes 表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T52-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T52-002",
+      "question": "同一顆舊 SSD 斷電放著，放在 25°C 跟放在 55°C，資料能撐的時間差多少？",
+      "domain": "半導體記憶",
+      "mechanism_key": "flash_retention_arrhenius_temperature_acceleration_table",
+      "answer_target": "JEDEC 簡報附的週數表（依 Intel 的去捕獲保存加速模型，即 JESD47/JEP122 採用的模型）：消費級碟在 40°C 下用到額定壽命後，斷電放在 25°C 約可保存 105 週，30°C 約 52 週，40°C 約 14 週，55°C 只剩約 2 週——溫度每升 5°C 大約砍半。驗證時規定要同時考慮受溫度加速（活化能 1.1 eV）和不受溫度加速的兩類漏失機制。",
+      "scope": "表值為模型要求，不是實測；只適用磨損到額定 TBW 的情況。不推到 USB 隨身碟或記憶卡的具體天數。",
+      "source_locator": "S001 p.27 Client 表 40°C 欄；Extrapolation 條件 4。",
+      "premise_status": "screened",
+      "notes": "填 G17 審稿要的『斷電放久也會慢慢漏，熱的時候更快』那個轉折。約 2 條新事實。 原提案 F1-010。非作者覆核 V4（2026-11-11）照原稿收；我轉圖重讀表格，數字一致；『每升 5°C 約砍半』與表值相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "資料沒在動，電子卻在慢慢逃；越熱逃得越快。",
+        "visual": "以表值畫『斷電溫度 vs 週數』階梯長條，標『JEDEC 簡報模型值』",
+        "seconds": [
+          45,
+          70
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b79ef36d06f32c2",
+          "origin": "wave52-tech-20261111",
+          "locator": "S001 p.27 Client 表 40°C 欄；Extrapolation 條件 4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T52-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T52-003",
+      "question": "SSD 用的時候越熱，斷電後的保存週數反而越長？",
+      "domain": "半導體記憶",
+      "mechanism_key": "flash_retention_higher_cycling_temperature_longer_retention_detrapping_model",
+      "answer_target": "同一張 JEDEC 週數表裡，斷電溫度固定在 30°C 時，若碟子平常在 25°C 下使用只能保存約 28 週，在 55°C 下使用卻可到約 199 週；企業級表也同方向。這組數字來自 Intel 的去捕獲保存模型。",
+      "scope": "只轉述表值與模型名稱；表沒有說明原因，『高溫使用反而保存較久』的機制沒有可讀的一手來源，片中只報表值、不解釋。不鼓勵用高溫使用硬碟。",
+      "source_locator": "S001 p.27 Client 表 30°C 列；表註『detrapping retention mechanism』。",
+      "premise_status": "screened",
+      "notes": "填 G17 第四章後的第二個轉折（測試或改變『熱一定壞』的結論）。1 條新事實（反向效應），機制句保守。需非作者覆核表格判讀。 原提案 F1-011。非作者覆核 V4（2026-11-11）照覆核意見改字後收；表值正確，但機制解釋在來源裡找不到，是作者補寫的。刪掉機制句後只剩 1 條事實（反向的表值），可以作 G17 的小轉折，不能單獨撐一章。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個溫度，在寫入時與存放時效果相反。",
+        "visual": "表格同列左右兩端高亮（28 週 vs 199 週）；兩個溫度計：『用的時候』『放的時候』",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b79ef36d06f32c2",
+          "origin": "wave52-tech-20261111",
+          "locator": "S001 p.27 Client 表 30°C 列；表註『detrapping retention mechanism』。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T52-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T52-004",
+      "question": "電腦的記憶體每秒要『重寫』自己幾次？溫度高時規格要多勤？",
+      "domain": "半導體記憶",
+      "mechanism_key": "dram_refresh_64ms_8192_commands_halved_above_85c",
+      "answer_target": "DDR4 記憶體規格要求：在 0 到 85°C 之間，每 64 毫秒內要送出 8,192 次刷新命令，平均每 7.8 微秒一次；溫度在 85 到 95°C 時，時限縮成 32 毫秒，刷新間隔也減半。換算下來，每一格電容每秒至少被重新補電十幾次；規格在 85°C 以上要求刷新次數加倍。",
+      "scope": "限 Micron DDR4 資料手冊引述的規格；『每秒十幾次』由 1000/64≈15.6 換算。不給單一電容實際保持時間。漏電隨溫度變快若要講，須另附來源（E2282 的來源只支持『會漏電』，不支持溫度關係）。",
+      "source_locator": "S002 Features；tREFI 註記段。",
+      "premise_status": "screened",
+      "notes": "填 G17 第一章『先找到一種會漏的記憶』審稿要的 DRAM 刷新規格數值；與 T52-002 成對：DRAM 以毫秒計、快閃以週計，但都怕熱。1–2 條新事實。 原提案 F1-012。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 E2282（DRAM 要刷新的機制），規格數字讀得到，是第一輪點名缺的 DRAM 刷新數值。和 E2282 是同一章，只算 1 條新事實；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "會漏的記憶靠不停補；熱時漏得快就補得更勤。",
+        "visual": "64 ms 時間條上 8,192 個小刻度，溫度超過 85°C 時刻度加倍",
+        "seconds": [
+          35,
+          60
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e712106b83906f1a",
+          "origin": "wave52-tech-20261111",
+          "locator": "S002 Features；tREFI 註記段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T52-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T52-005",
+      "question": "QR Code 三個角的方框，為什麼偏偏是黑白 1:1:3:1:1 的比例？",
+      "domain": "tech",
+      "mechanism_key": "qr.finder_pattern_1_1_3_1_1_ratio_survey_360_orientation",
+      "answer_target": "QR Code 開發方 DENSO WAVE 的說法：開發者原昌宏為了讓讀取器快速找到碼，加入方形的位置偵測圖形；選方形是因為它最不容易出現在表單等印刷品上。團隊把傳單、雜誌、紙箱上的圖樣化成黑白，日復一日統計黑白寬度的比例，找出印刷品上最少出現的 1:1:3:1:1，作為偵測圖形的寬度比，讀取器只要搜尋這個比例，不論從 360 度哪個角度掃都能判定方向。Model 2 另外嵌入校正圖形，讓印在曲面或斜拍變形時仍能讀。而且碼的四周要留 4 個模組寬、什麼都不印的留白。",
+      "scope": "公司自述史；『快 10 倍』不引用。校正圖形只講用途，不講位置規則（規格未讀）。",
+      "source_locator": "S005 Section 1；S006 Model 2 段；S007 Securing Margin。",
+      "premise_status": "screened",
+      "notes": "填 P12 第一章『先找到哪一塊是碼』的逐主張官方來源。約 2 條新事實（1:1:3:1:1 由統計選出、360°；校正圖形抗變形）。 原提案 F1-025。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 LEG-A36（定位圖形幫助找位置與方向），原文相符。『從印刷品統計選出 1:1:3:1:1』與校正圖形是新事實，『辨認方向』本身 A36 已有。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先要『認得出這是碼』，所以選一個世上最少見的黑白節奏。",
+        "visual": "掃描線穿過定位框得 1:1:3:1:1 的黑白寬度條；印刷品統計示意",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-476aa08953451936",
+          "origin": "wave52-tech-20261111",
+          "locator": "S005 Section 1；S006 Model 2 段；S007 Securing Margin。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-29af13cc5e42f279",
+          "origin": "wave52-tech-20261111",
+          "locator": "S005 Section 1；S006 Model 2 段；S007 Securing Margin。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2e9766d79876b35a",
+          "origin": "wave52-tech-20261111",
+          "locator": "S005 Section 1；S006 Model 2 段；S007 Securing Margin。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T52-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T52-006",
+      "question": "同樣大小的損傷，為什麼一整塊污漬有時比零散的小點更好修？",
+      "domain": "tech",
+      "mechanism_key": "qr.reed_solomon_codewords_v3_block_vs_scattered_damage_tests",
+      "answer_target": "DENSO WAVE 的官方說明：QR Code 的糾錯以 Reed-Solomon 碼加在原資料上，以 8 位元一個『碼字』為單位修正，官方說它適合集中的突發錯誤；例如 100 個資料碼字加 100 個修正碼字共 200 個，可修其中 50 個，也就是 25%（Q 級），各等級的比例都以總碼字計。",
+      "scope": "『30% 是碼字不是面積』已是 LEG-A36 的核心，本核心只保留『集中與零散』這個新點。示範只代表一個版本 3 的數位碼與兩個桌面解碼器（qrcode 8.2、OpenCV 5.0.0.93、zxing-cpp 3.1.1），片中標『本片自製示範』，不當發現引用。不說任何遮擋比例都保證成功。",
+      "source_locator": "S003 Error Correction Feature；S004 Outline 表。",
+      "premise_status": "screened",
+      "notes": "P12 第三、四章『缺了為什麼能補』『同樣一塊損傷，結果為何不同』。示範素材：F1 自製 QR 遮擋與翻轉測試（scratchpad f1scripts/qrtest.py、qrtest2.py；f1qr/results*.json）只當畫面示範，不在 source_ids，旁白不得把測試結果講成研究發現；刪除『版本 3 的 H 級最多只能修 22 個碼字』。 原提案 F1-026。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：核心答案『30% 是碼字不是面積』與 LEG-A36 重複；改寫後只保留『集中與零散』這個新點，有來源的新內容只有『適合集中突發錯誤』和 25% 算例，原題目則是 A36 已經做過的。自製測試結果我逐筆核對過，可以拿來在畫面上示範，但依本 pool 規則不能當成研究發現引用，所以重寫成以 S001 為主、測試只當畫面。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣大小的損傷，集中成一塊時落在較少的碼字裡，零散的小點卻可能各打壞一個碼字。",
+        "visual": "原創碼字格示意：同面積的一整塊污漬與散點各覆蓋幾個碼字；『本片自製示範』標示的桌面解碼成功與失敗對照。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a3e33a4da681fd18",
+          "origin": "wave52-tech-20261111",
+          "locator": "S003 Error Correction Feature；S004 Outline 表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3b3b895769003367",
+          "origin": "wave52-tech-20261111",
+          "locator": "S003 Error Correction Feature；S004 Outline 表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T52-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -391960,6 +393722,924 @@
       ]
     },
     {
+      "id": "S52-001",
+      "question": "玉山從 3952.382 公尺變成 3951.798 公尺，是山變矮了嗎？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.yushan_height_method_change_trig_vs_leveling_twvd2001",
+      "answer_target": "3952.382 公尺是民國 67 年做全台三角點測量時，順便用三角高程法算出的。民國 92 年國土測繪中心改用新的 2001 臺灣高程基準，從塔塔加的一等水準點 X121 出發，沿 14.5 公里步道全程做水準測量，並在各點量重力做正高改正，得到 3951.798±0.072 公尺。少了 0.584 公尺，官方明說主要是測量方法不同，不是山變矮。中心也提醒：這是主峰三角點的高度，若以山頂石碑頂點算約 3952.8 公尺。",
+      "scope": "限國土測繪中心公告；石碑頂高度為『約』值。不談板塊造山速率。",
+      "source_locator": "S001 一、【一】【三】【四】。",
+      "premise_status": "screened",
+      "notes": "填 G15 開場與第三章『這個高度到底碰到哪裡』（三角點 vs 石碑頂）；補上審稿要的『真實同山兩高度案例』。約 2–3 條新事實。 原提案 F1-005。非作者覆核 V4（2026-11-11）照原稿收；官方一手資料，逐句相符。這正是第一輪要的『同一座山的真實兩個高度』，pool 內沒有玉山或 TWVD 的核心，不重複。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一座山的數字改了，先問量法和量到哪一點，而不是山動了沒。",
+        "visual": "玉山主峰三角點與石碑相對位置示意；兩條測量路線（三角高程視線 vs 一站站水準尺）",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave52-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-043ef21c5fb67a18",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 一、【一】【三】【四】。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+      ]
+    },
+    {
+      "id": "S52-002",
+      "question": "同一天、同一顆三角點，玉山為什麼同時有 3952 公尺和 3978 公尺兩個高度？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.yushan_orthometric_vs_ellipsoidal_height_geoid_separation",
+      "answer_target": "國土測繪中心區分兩種高：衛星定位量到的是從數學橢球面起算的幾何高（橢球高），水準測量得到的是從大地水準面（約略平均海水面）起算的正高。民國 106 年玉山主峰三角點 S026 的正高是 3952.430 公尺，同年衛星定位求得的幾何高是 3978.613 公尺，兩者相差約 26.2 公尺——不是誤差，而是兩個零點在玉山一帶本來就不在同一高度。量重力也看得出山頂特別：主峰重力值比塔塔加起點低約 325 mgal，所以水準高差還要做正高改正。",
+      "scope": "26.2 m 由官方表值相減而得，屬該點兩參考面的差，不外推到全台固定差值。重力只作『需要改正』的證據，不推導公式。",
+      "source_locator": "S001 前言；S002 表1、成果（二）。",
+      "premise_status": "screened",
+      "notes": "填 G15 第一章『山沒動，零點先換了』，把 M2080/M2082 的抽象參考面變成同一點的兩個實數。約 2 條新事實（同點雙高 26 m；重力差需改正）。 原提案 F1-006。非作者覆核 V4（2026-11-11）照原稿收；數字讀得到，26.2 m 是作者用兩個官方值相減，scope 已標明。和 M2080/M2082 講同一個概念，但這條給的是同一點的兩個實數，計約 1.5 條新事實。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩個高度都對，只是從不同的『零』量起。",
+        "visual": "同一山頂剖面：橢球面、大地水準面兩條線與 3978.613／3952.430 兩根量尺；不畫比例誇大要標示",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave52-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-043ef21c5fb67a18",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 前言；S002 表1、成果（二）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b037257bada48d3d",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 前言；S002 表1、成果（二）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+      ]
+    },
+    {
+      "id": "S52-003",
+      "question": "玉山重測差了 63 公分，官方為什麼不說它長高了？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.yushan_remeasurement_63cm_gnss_rate_check_and_datum_update",
+      "answer_target": "民國 105、106 年重測得 3952.481 與 3952.430 公尺，採後者 3952.430±0.045 公尺，比 92 年多約 63 公分。官方用衛星追蹤資料檢查：主峰幾何高平均每年上升約 1.38 公分、北峰追蹤站約 0.55 公分，15 年頂多 8.3–20.7 公分，解釋不了 63 公分；加上這次起算的 X121 依新公告比 92 年高了 0.104 公尺。專家討論後認為 92 年可能因觀測拖了 4 個月、點位是沒埋樁的臨時點、缺重複觀測而偏差，但真正原因已無法確認。民國 111 年再測為 3952.433±0.046 公尺，與 106 年幾乎一致；之後每年兩次用衛星定位監測幾何高變化，水準測量則配合一等水準點重新公告（約 5–6 年）再做。",
+      "scope": "地殼上升速率相對金門追蹤站；不宣稱玉山確定每年長高多少。92 年誤差原因屬官方推測。",
+      "source_locator": "S001 二【三】、三【三】【四】、四；S002 表1。",
+      "premise_status": "screened",
+      "notes": "填 G15 第二章『連零點也有適用的時點』（起算點公告值會更新）與第四章『解析度不是準確度證書，需獨立檢核點』——用衛星速率獨立檢核水準結果。取代範圍不合的 M2083。約 3 條新事實。 原提案 F1-007。非作者覆核 V4（2026-11-11）照覆核意見改字後收；轉折是真的：差了 63 cm，官方用獨立的衛星速率檢查後判斷不是長高。只有最後一句把『加做衛星監測』說成『改用衛星』，要改。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個新數字要先過獨立檢核；檢核不過時，誠實說『原因已無法確認』。",
+        "visual": "四次結果時間軸（3952.382/3951.798/3952.430/3952.433）配誤差棒；衛星速率可解釋的範圍色帶",
+        "seconds": [
+          70,
+          100
+        ]
+      },
+      "origin": "wave52-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-043ef21c5fb67a18",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 二【三】、三【三】【四】、四；S002 表1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b037257bada48d3d",
+          "origin": "wave52-earth-20261111",
+          "locator": "S001 二【三】、三【三】【四】、四；S002 表1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+      ]
+    },
+    {
+      "id": "S52-004",
+      "question": "台灣說的『海拔』，零點到底在哪個海邊、用哪幾年的海水？",
+      "domain": "量測與地圖",
+      "mechanism_key": "geodesy.twvd2001_keelung_tide_1957_1991_benchmark_origin",
+      "answer_target": "台灣水準點採正高系統，高程基準叫 2001 臺灣高程基準（TWVD2001）：定義在 1990 年 1 月 1 日標準大氣環境下，用基隆潮位站 1957 到 1991 年的潮汐資料算出平均海水面。建立基準要超過 18.6 年的潮位紀錄。民國 90 年在基隆海門公園設水準原點 K999 作為所有水準點的起源，全台 2065 個一等水準點以它為固定點平差；103 年因道路工程，原點遷到海科館對面的 K997。",
+      "scope": "只談本島；離島各自以當地潮位站設基準不展開。不推估現在基隆海面與零點差多少（該數字來源未讀）。",
+      "source_locator": "S003【一】【二】【三】。",
+      "premise_status": "screened",
+      "notes": "填 G15 第一章與第二章：補審稿點名的 TWVD2001 官方來源。約 2 條新事實（基隆 1957–1991 平均海面、1990-01-01 標準大氣；原點 K999→K997 與 2065 點）。 原提案 F1-008。非作者覆核 V4（2026-11-11）照原稿收；官方原文逐句相符，補上第一輪點名的 TWVD2001 官方來源。和 M2082（地方平均海面不等於全球等位面）是同一章的具體例，不重複。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『海拔零』是一段歲月的平均，被固定在一顆埋在地下的點上。",
+        "visual": "基隆潮位曲線多年平均成一條線→水準原點→沿路水準點網延伸到塔塔加 X121→玉山",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-00bbee1249e0a6fa",
+          "origin": "wave52-earth-20261111",
+          "locator": "S003【一】【二】【三】。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+      ]
+    },
+    {
+      "id": "L52-001",
+      "question": "科學家是怎麼在發現端粒以前，就猜到染色體每複製一次都會變短？",
+      "domain": "基因複製",
+      "mechanism_key": "end_replication_problem_watson_olovnikov_prediction_circular_genomes",
+      "answer_target": "DNA 聚合酶一定要有現成的引子才能開工，所以線性 DNA 最末端無法完整複製。James Watson 和 Alexei Olovnikov 各自指出這個矛盾：新合成的分子會留下單股尾巴，染色體會隨分裂越來越短；Olovnikov 還把它和人類體細胞在培養皿裡只能分裂有限次數連起來。多數細菌和病毒的基因組是環狀的，根本沒有末端，因此避開了這個難題。",
+      "scope": "限諾貝爾委員會綜述；不給具體分裂次數；不推到人類壽命。",
+      "source_locator": "S001 Introduction 與 Fig.1。",
+      "premise_status": "screened",
+      "notes": "填 G27 第七章『把同一套修補法移到染色體邊界』的觀眾入口與開場鉤子（審稿要的教材外來源）。約 2 條新事實（預言與有限分裂；環狀基因組避開）。與 V3027 機制相同處不重算。 原提案 F1-016。非作者覆核 V4（2026-11-11）照原稿收；近鄰：部分重疊 V3027（末端複製問題），原文相符。末端複製問題本身已在 V3027，新增的是『在發現端粒之前就被預言』與『環狀基因組避開』，計約 1.5 條。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "問題在機器規則裡就算得出來：只會往一個方向、又要起點，末端注定缺一截。",
+        "visual": "線性 vs 環狀 DNA 對照；每輪複製末端少一截的疊影",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6da74d2707d5c910",
+          "origin": "wave52-life-20261111",
+          "locator": "S001 Introduction 與 Fig.1。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ]
+    },
+    {
+      "id": "L52-002",
+      "question": "四膜蟲的染色體末端，怎麼讓酵母裡的人工線性質體不再亂重組、能長期保存？",
+      "domain": "基因複製",
+      "mechanism_key": "telomere_tetrahymena_ends_stabilize_yeast_linear_plasmid_telomerase_discovery",
+      "answer_target": "線性質體放進酵母，末端很容易和染色體重組，無法長期保存。Szostak 與 Blackburn 把單細胞纖毛蟲四膜蟲的 rDNA 末端片段接到線性酵母質體兩端，質體就能以線性形式穩定存在（1982），顯示末端結構跨物種保守。1985 年 Greider 與 Blackburn 在四膜蟲萃取液測到在 DNA 尾端加上 TTGGGG 重複的活性；後續研究確認它是帶 RNA 的酵素並命名為端粒酶，1989 年找到 RNA 裡的 CAACCCCAA 序列作為模板。Szostak 的酵母突變株 EST1（ever shorter telomeres）端粒一代代變短、染色體更易遺失，經過多代後才走向衰老（原文稱延遲出現的衰老表型）。",
+      "scope": "原論文未讀，依諾貝爾綜述；不混用原核與真核例子。",
+      "source_locator": "S001 Setting the stage、Fig.2–4 圖說、Further developments。",
+      "premise_status": "screened",
+      "notes": "填 G27 第七章：把 V3028『端粒酶自帶模板』由課本結論變成可驗證的實驗故事。約 2–3 條新事實（跨物種末端保全；TTGGGG 加成與 CAACCCCAA；EST1 變短→衰老）。 原提案 F1-017。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 V3028（端粒酶自帶 RNA 模板），故事本身有來源，能把課本結論變成實驗。但 EST1 的『提早衰老』和原文相反，年代也被合併到 1985，這兩處都必須改；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "末端不是被動地被複製，而是由一個自帶模板的酵素主動補上。",
+        "visual": "質體兩端換上四膜蟲末端前後的命運對照；TTGGGG 一段段加上的示意",
+        "seconds": [
+          65,
+          95
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6da74d2707d5c910",
+          "origin": "wave52-life-20261111",
+          "locator": "S001 Setting the stage、Fig.2–4 圖說、Further developments。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ]
+    },
+    {
+      "id": "L52-003",
+      "question": "既然端粒變短會讓細胞停止分裂，補回端粒酶能讓人不老嗎？",
+      "domain": "基因複製",
+      "mechanism_key": "telomerase_cancer_80_90pct_and_ageing_caveats",
+      "answer_target": "諾貝爾委員會的整理指出：80–90% 的癌症端粒酶活性升高，沒有升高的腫瘤常用另一種延長端粒的方式，這和癌細胞能無限分裂一致；端粒太短會誘發衰老與細胞死亡，被認為是防止失控增生的保護機制。把端粒酶導入正常人類培養細胞可以延長其分裂壽命，但生物體老化受很多因素影響，端粒長度與組織維持的關係也不是絕對；遺傳性端粒酶缺陷（如先天性角化不良症）則會出現類似早衰的症狀。",
+      "scope": "明確不推薦任何抗老產品或療法；癌症疫苗等臨床資訊停在 2009 年，不更新、不引用。",
+      "source_locator": "S001 Cancer、Ageing、Hereditary disease 段。",
+      "premise_status": "screened",
+      "notes": "填 G27 結尾的限制段（企劃要求『不得外推為抗老』），把限制本身變成轉折：同一機制在癌細胞是失控、在正常細胞是剎車。約 2 條新事實。 原提案 F1-018。非作者覆核 V4（2026-11-11）照原稿收；內容相符，明確擋住抗老外推。但它回答的是『醫學意義』這個不同的問題，只能當 G27 結尾 20–30 秒的限制，所以我只計 1 條事實（F1 計 2 條）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "末端變短是剎車；拿掉剎車不等於返老還童。",
+        "visual": "細胞分裂計數器在『有/無端粒酶』兩路的分岔；不出現產品或人像",
+        "seconds": [
+          45,
+          70
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6da74d2707d5c910",
+          "origin": "wave52-life-20261111",
+          "locator": "S001 Cancer、Ageing、Hereditary disease 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ]
+    },
+    {
+      "id": "L52-004",
+      "question": "1941 年的科學家怎麼知道，植物放出的氧氣來自水而不是二氧化碳？",
+      "domain": "植物光能",
+      "mechanism_key": "photosynthesis_oxygen18_tracer_1941_ruben_kamen",
+      "answer_target": "1941 年 Ruben、Kamen 等人用穩定同位素氧-18 標記，發表論文推翻了『光合作用放出的 O₂ 來自 CO₂』的普遍看法；同年 Vinogradov 與 Teis 的研究也被綜述列為同一結論的出處。後來的綜述這樣概括：放出的氧氣同位素組成和所用的水幾乎一樣，所以氧來自水。",
+      "scope": "1941 JACS 原文（63:877–879）付費未讀，實驗細節（藻種、濃度）不寫；只用綜述與訃聞轉述的結論。片中不得演成『我們做了同位素實驗』。",
+      "source_locator": "S002 正文第5段；S003 Introduction 第2段。",
+      "premise_status": "screened",
+      "notes": "填 G29 第一、二章『氧原子從哪來』的科學史開場（審稿點名缺的來源，以可靠二手史料滿足；原文未讀列為限制）。約 2 條新事實。 原提案 F1-019。非作者覆核 V4（2026-11-11）照覆核意見改字後收；核心事實讀得到；國籍與『獨立』是來源沒有的補充，要刪。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "追得到原子的來路，才知道總反應式兩端怎麼配對。",
+        "visual": "兩瓶標色實驗示意：重氧在水 vs 重氧在 CO₂，放出氧的顏色跟著水走（明標歷史示意）",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-35696e68dc8a84e7",
+          "origin": "wave52-life-20261111",
+          "locator": "S002 正文第5段；S003 Introduction 第2段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-60443e97108bf54c",
+          "origin": "wave52-life-20261111",
+          "locator": "S002 正文第5段；S003 Introduction 第2段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ]
+    },
+    {
+      "id": "L52-005",
+      "question": "『氧來自水』後來被挑戰過嗎？碳酸氫根為什麼一度被懷疑才是真正的來源？",
+      "domain": "植物光能",
+      "mechanism_key": "photosynthesis_bicarbonate_substrate_challenge_isotope_mixing",
+      "answer_target": "1958 年 Warburg 與 Krippahl 發現光反應需要碳酸氫根，氧的來源因此被重新挑戰；1978 年 Metzner 更提出碳酸氫根才是 O₂ 的直接受質，水只是事後補充它。這個假說原本被排除，理由是 ¹⁸O 水和碳酸氫根交換同位素太慢，不可能解釋早期標記結果；但後來在光系統 II 附近發現碳酸酐酶活性，標記可能被酵素快速交換、『逃』進濃度高得多的水裡，舊實驗必須重驗。熱力學也幫不了忙：光系統 II 的放氧中心（約 +1.1 V）既能氧化水（+0.9 V），也能氧化碳酸氫根（+0.7 V）。",
+      "scope": "電位值依 S003；不寫具體 S 態機制。",
+      "source_locator": "S003 Introduction、熱力學段；S004 碳酸氫根受質段。",
+      "premise_status": "screened",
+      "notes": "填 G29：在『氧從水來』之後加入真轉折（結論被挑戰、檢驗方法本身受質疑）。約 2–3 條新事實。 原提案 F1-020。非作者覆核 V4（2026-11-11）照原稿收；逐句相符。這是 G29 的真轉折：『氧來自水』曾被重新挑戰，而且挑戰的正是檢驗方法本身。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個漂亮的同位素結果，也可能被『標記偷偷交換』推翻，所以要重驗。",
+        "visual": "兩條可能路徑（水直接 vs 經碳酸氫根）與碳酸酐酶交換箭頭；電位階梯示意",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-60443e97108bf54c",
+          "origin": "wave52-life-20261111",
+          "locator": "S003 Introduction、熱力學段；S004 碳酸氫根受質段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-19f9bdf3a9d9d8c2",
+          "origin": "wave52-life-20261111",
+          "locator": "S003 Introduction、熱力學段；S004 碳酸氫根受質段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ]
+    },
+    {
+      "id": "L52-006",
+      "question": "現在的實驗怎麼重新確認氧氣只來自水？還有人不同意嗎？",
+      "domain": "植物光能",
+      "mechanism_key": "photosynthesis_trmims_flash_oxygen18_structures_no_bicarbonate_consensus",
+      "answer_target": "時間解析膜入口質譜讓研究者能在每一次閃光後看放出的氧：Clausen 等人（2005）在水標上 ¹⁸O、並把 CO₂ 與碳酸氫根去除後，閃光仍產生典型、隨閃光次數振盪的 ¹⁸O 氧氣，也沒看到 CO₂ 釋出；Hillier 等人（2006）直接用 ¹⁸O/¹³C 標記的碳酸氫根檢驗，兩者都排除碳酸氫根是生理上重要的受質。高解析的冷凍電鏡與 X 光結構也沒在放氧中心附近看到結合的碳酸氫根。研究社群的共識是氧只來自水、碳酸氫根是重要調節者；不過碳酸氫根受質說在 2021–2024 年又有人重提。",
+      "scope": "原研究（Clausen 2005、Hillier 2006）未讀，依兩篇綜述；不宣稱爭議完全終結。",
+      "source_locator": "S004 碳酸氫根受質段（Clausen 2005、Hillier 2006）；S003 結構段與共識段。",
+      "premise_status": "screened",
+      "notes": "填 G29 開頭直覺箭頭的最終改正前一段，使『氧從水來』從課本宣告變成經過挑戰與重驗的結論。約 2 條新事實。 原提案 F1-021。非作者覆核 V4（2026-11-11）照原稿收；兩篇綜述都讀得到，F1 也沒宣稱讀過原研究。scope 不說爭議完全終結，正確。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "結論活下來，是因為更精細的方法再測了一次。",
+        "visual": "閃光序列與 ¹⁸O-O₂ 振盪曲線示意（標示意）；結構圖放氧中心周圍『沒有碳酸氫根』",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-60443e97108bf54c",
+          "origin": "wave52-life-20261111",
+          "locator": "S004 碳酸氫根受質段（Clausen 2005、Hillier 2006）；S003 結構段與共識段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-19f9bdf3a9d9d8c2",
+          "origin": "wave52-life-20261111",
+          "locator": "S004 碳酸氫根受質段（Clausen 2005、Hillier 2006）；S003 結構段與共識段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+      ]
+    },
+    {
+      "id": "P52-001",
+      "question": "全世界的公斤原器，明明存放在 BIPM，為什麼各國的複本會慢慢跟它對不上？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_prototype_copies_divergence_periodic_verification",
+      "answer_target": "1889 年起，公斤就等於存放在 BIPM 的一顆鉑銥合金國際原器的質量；同時做了 40 顆相似原器，校準後大多分給會員國，部分留在 BIPM。1946 年第二次定期驗證時發現，各國原器平均而言正逐漸偏離國際原器；1989–1991 年第三次驗證確認這個趨勢，最初那批原器與國際原器的中位差約 25 微克。（以下是旁白推論，不是頁面引述：因為定義就是那顆原器，原器自己變了也無從察覺，只能看到『大家相對它在動』。）",
+      "scope": "25 微克是第三次驗證最初一批原器的中位差，不是國際原器變輕 25 微克；片中不用 50 微克（來源未逐句讀）。『保險箱』一說出自 P52-S003，不歸給本頁。不說原器失準造成日常秤錯。",
+      "source_locator": "S001 Historical perspective 段。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章『最高那一顆也不是永遠的答案』前半，接在 M2057 之後，取代抽象敘述。約 2 條新事實（40 顆複本與分配；1946/1991 驗證與 25 µg）。 原提案 F1-001。非作者覆核 V4（2026-11-11）照覆核意見改字後收；數字與年代都對得上 BIPM 頁。要改的是兩處措辭比原文多（全數分給會員國、保險箱），以及原 F1-S025 只是摘要工具讀到的，不能掛在來源裡。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "基準本身會不會動，只能從一群複本的相對漂移間接看出來。",
+        "visual": "時間軸：1889 分配 40 顆→1946、1991 兩次回 BIPM 比較，散點圖相對原器偏移（示意，數值只標 25 µg 中位）",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d32747305eacb09e",
+          "origin": "wave52-physics-20261111",
+          "locator": "S001 Historical perspective 段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "P52-002",
+      "question": "把公斤改成用普朗克常數定義後，那顆國際公斤原器還是不是剛好一公斤？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_planck_constant_definition_prototype_now_measured",
+      "answer_target": "2018 年第 26 屆 CGPM 決議、2019 年 5 月 20 日生效：把普朗克常數 h 固定為 6.626 070 15×10⁻³⁴ J s，再搭配已用常數定義的秒與公尺，推出公斤。舊定義讓原器恰為 1 公斤、h 要靠實驗量；新定義反過來，h 精確，原器的質量變成要量的東西。選定的 h 數值讓採用當下原器仍是 1 公斤，但帶有 1×10⁻⁸ 的相對標準不確定度。",
+      "scope": "只講定義與原器角色的對調；不展開其他基本單位改定義。",
+      "source_locator": "S002 公斤定義段；CGPM 2018 Resolution 1 Appendix 2；生效日。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章；與既有 M2058（改定義後實物角色）部分重疊，只算 1 條新事實（原器反成被量者＋1e-8）。 原提案 F1-002。非作者覆核 V4（2026-11-11）照原稿收；逐句相符。和 M2058（定義與量值傳遞是不同層次）主題相近，只多出『原器反成被量者、1e-8』這一點，計 1 條新事實，F1 自己也是這樣算。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "定義與被量的東西對調：常數成了尺，原器成了被量的砝碼。",
+        "visual": "天平兩端翻轉動畫：1889『原器=1 kg，h=?』↔ 2019『h=固定，原器=1 kg±10 µg』",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ad540a9ec31edfcb",
+          "origin": "wave52-physics-20261111",
+          "locator": "S002 公斤定義段；CGPM 2018 Resolution 1 Appendix 2；生效日。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "P52-003",
+      "question": "沒有了標準砝碼，實驗室要怎麼從一個常數『做出』一公斤？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.kilogram_realization_kibble_balance_silicon_sphere",
+      "answer_target": "SI 手冊舉了兩種實現方式。Kibble 秤（舊稱瓦特秤）把質量 m、當地重力加速度 g 與速度 v 構成的機械功率，和用約瑟夫森效應與量子霍爾效應量到的電功率相比，得到 mgv＝Ch 的關係，h 就是普朗克常數。另一種是數一顆約一公斤的矽球裡有多少原子：量球的體積、晶格常數，再配合矽原子與電子的質量比等常數算出質量。任何能把質量和 h、光速、銫頻率連起來的物理方程式，原則上都可以用。",
+      "scope": "只說原理層級；不給任何實驗室的實測不確定度；不說家用秤會用到 Kibble 秤。",
+      "source_locator": "S002 Appendix 4『Kibble balance』『silicon sphere』段。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章後半（原企劃缺 Kibble 秤／矽球來源）。約 2 條新事實。 原提案 F1-003。非作者覆核 V4（2026-11-11）照覆核意見改字後收；原理描述正確，只有『主要』一詞是原文沒有的。Kibble 秤與矽球正是第一輪點名缺的來源，補上後 G13 第三章不必抽象講。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "定義不再綁一個物件，但仍要有人用儀器把它做出來，再往下傳。",
+        "visual": "Kibble 秤兩模式示意（秤重/移動線圈）與矽球數原子示意，標『原理示意』",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ad540a9ec31edfcb",
+          "origin": "wave52-physics-20261111",
+          "locator": "S002 Appendix 4『Kibble balance』『silicon sphere』段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "P52-004",
+      "question": "國際公斤原器真的在變輕嗎？2014 年把它拿出來一比，結果出乎意料在哪？",
+      "domain": "量測與資料判讀",
+      "mechanism_key": "metrology.ipk_extraordinary_calibration_cleaning_and_working_standard_offset",
+      "answer_target": "國際原器自 1992 年起鎖在保險箱沒用，BIPM 平常用一組鉑銥工作標準器維持質量單位，不確定度從 2.3 微克漸增到 2013 年估計的 7 微克。2014 年為改定義做『特別校準』：先清洗洗滌，國際原器被洗掉 16.8 微克的表面污染，七顆原器平均 15 微克；洗乾淨後，六個正式複本相對原器的質量自第三次驗證以來平均只變了 −1 微克，過去看到的『複本逐漸變重』趨勢沒有再現。BIPM 的工作標準器和專供特殊用途的原器，這次全都比第三次驗證（1988–1992）時輕，其中特殊用途原器 no.73 少了 33 微克，使 BIPM 維持的質量單位相對原器偏了 35 微克。洗完後原器質量又會回升，國際原器最初約每天 0.02 微克。",
+      "scope": "限 BIPM Part I 結果；35 微克偏移的完整分析在後續論文未讀。不得說『原器被證明沒變』，原器本身無法相對於自身檢驗；只能說原器與正式複本表現一致。",
+      "source_locator": "S003 Abstract；Sec.1；Sec.4 Table5；Sec.5 Fig2 圖說與 no.25/73；Sec.6；Sec.7。",
+      "premise_status": "screened",
+      "notes": "填 G13 第三章到第四章的橋：『最高那一顆』與『把偏差扣掉之後』之間的真轉折——漂移來自使用鏈而非鎖住的頂端，也接上修正值與不確定度。約 3 條新事實（清洗 15 µg；複本只變 −1 µg 趨勢未再現；工作標準器使單位偏 35 µg／不確定度 2.3→7 µg）。 原提案 F1-004。非作者覆核 V4（2026-11-11）照覆核意見改字後收；這條是 G13 最好的轉折（被懷疑的頂端和複本彼此一致，反而是使用中的那一層偏了 35 µg），數字全部讀得到。唯一錯誤是把 33 µg 那顆特殊用途原器說成工作標準器，必須改。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "最常被懷疑的頂端很穩，天天被摸的中間層才是誤差來源。",
+        "visual": "Fig2 型折線：六複本 1889→1946→1991→2014 相對原器（2014 回到一致）；對照工作標準器下降箭頭；清洗前後秤量動畫",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-05766474c1366c08",
+          "origin": "wave52-physics-20261111",
+          "locator": "S003 Abstract；Sec.1；Sec.4 Table5；Sec.5 Fig2 圖說與 no.25/73；Sec.6；Sec.7。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "P52-005",
+      "question": "透明塑膠透鏡做得越厚，表面那個凹陷為什麼越深，連模擬軟體都算不準？",
+      "domain": "塑膠製造",
+      "mechanism_key": "injection_thick_polycarbonate_lens_sink_depth_measured_vs_simulated",
+      "answer_target": "捷克研究團隊用 Covestro 的 Makrolon LED 2245 聚碳酸酯，在 P20 鋼模裡射出 12.5、16.5、20.5 公釐三種厚的光學透鏡，用 3D 掃描量平面側的縮痕。即使在模擬找出的最佳條件下，實測縮痕仍有 0.41、1.05、1.62 公釐，越厚越深；模擬只預測 0.35、0.48、0.60 公釐，越厚低估越多，作者推測模擬沒算到冷卻到室溫時的額外收縮，也可能是軟體材料資料的誤差，作者說確切原因目前無法確認；其中一套常用軟體甚至偵測不到純厚壁區的縮痕。",
+      "scope": "限此材料、幾何與 DOE 兩水準；正文差值與 Table 8 不一致，以表為準。透鏡不是盒子，作『厚區縮痕』真實例。原刊圖為 CC BY，可依授權引用但另行確認。",
+      "source_locator": "S004 2.2、Table 2、2.7、Table 7–8、Discussion。",
+      "premise_status": "screened",
+      "notes": "填 G24 第三章『灌滿之後，為什麼還要補料』審稿要的有條件實物案例（縮痕）。約 2 條新事實（實測深度隨厚度；模擬低估擴大）。 原提案 F1-013。非作者覆核 V4（2026-11-11）照覆核意見改字後收；數字全對。補上作者自己的保留，避免把一個推測說成結論。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "凹痕深淺記錄的是厚處冷卻時的體積收縮，連電腦都容易低估。",
+        "visual": "三片透鏡剖面與實測/模擬深度條形對照（依 Table 8 重畫）；掃描色圖示意",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5588889ff38d31db",
+          "origin": "wave52-physics-20261111",
+          "locator": "S004 2.2、Table 2、2.7、Table 7–8、Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "P52-006",
+      "question": "想消除厚件縮痕，一直加大保壓壓力就有用嗎？",
+      "domain": "塑膠製造",
+      "mechanism_key": "injection_thick_part_sink_melt_temperature_dominates_over_pressure",
+      "answer_target": "同一研究的統計分析顯示：提高射出壓力和模具溫度、降低熔體溫度，都能讓縮痕變淺。但最重要的因子隨厚度改變——12.5 公釐的透鏡以射出壓力影響最大；16.5 和 20.5 公釐則換成熔體溫度最重要。作者解釋，件越厚，冷卻時本身的體積收縮越主導，壓力和保壓能補償的比例就越小。",
+      "scope": "結論限其參數範圍（射出 60–100 MPa、保壓 48–80 MPa、熔體 250–300°C、模溫 80–120°C）；不給一般工廠設定建議。",
+      "source_locator": "S004 3.3 驗證範圍；Table 6 與其前後討論。",
+      "premise_status": "screened",
+      "notes": "填 G24 第三章的轉折：補料不是萬能，與 D2131/D2133（澆口凝固後無法補料）互補。1–2 條新事實。 原提案 F1-014。非作者覆核 V4（2026-11-11）照原稿收；逐句相符，是 G24 第三章『補料不是萬能』的真轉折；參數範圍已寫進 scope。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "補料能救薄處，救不了大塊材料自己冷縮。",
+        "visual": "因子重要度排名在三種厚度間換位的動畫（依 Table 6）",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5588889ff38d31db",
+          "origin": "wave52-physics-20261111",
+          "locator": "S004 3.3 驗證範圍；Table 6 與其前後討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "P52-007",
+      "question": "塑膠零件上那條細線，實際上會讓它弱多少？",
+      "domain": "塑膠製造",
+      "mechanism_key": "injection_weld_line_tensile_strength_loss_and_mold_heating_pa6",
+      "answer_target": "越南團隊用 PA6 尼龍做雙澆口拉伸試片，讓兩股熔體在中間相遇形成結合線。含結合線的試片抗拉強度依製程介於約 36 到 62 MPa，對照沒有結合線的約 80 MPa；把模面用外部熱氣加熱到 173°C 時最好，達 62.3 MPa、伸長率約 580%，不加熱時約 45 MPa。另一篇加 30% 玻纖的 PA6，結合線試片最好也只有 76.8 MPa，型錄強度是 110 MPa，且保壓壓力是影響最大的因子。",
+      "scope": "限兩篇單一材料試片研究；PA6 對照值作者原文用語不一致；玻纖件 110 MPa 是型錄值非同批對照。模溫效果非單調。不由外觀判定任何產品強度。",
+      "source_locator": "S005 Table 1、Results 首段、Conclusion；S006 Abstract、2、Conclusions。",
+      "premise_status": "screened",
+      "notes": "填 G24 第二章『兩股流動碰面會留下什麼』與第五章『看見一條線，能判定它壞了嗎』的有條件數據，並補審稿要的第二個工程來源（保壓與結合線強度）。約 2–3 條新事實。 原提案 F1-015。非作者覆核 V4（2026-11-11）照原稿收；數字逐一對過；scope 已標明對照值與型錄值不是同批對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一條線的強弱，取決於兩股熔體相遇時還夠不夠熱。",
+        "visual": "雙澆口試片充填動畫→結合線→拉伸斷在線上；強度條形圖（有/無結合線、不同模溫）",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-3fc8284f902a675b",
+          "origin": "wave52-physics-20261111",
+          "locator": "S005 Table 1、Results 首段、Conclusion；S006 Abstract、2、Conclusions。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e9f5065a6391012e",
+          "origin": "wave52-physics-20261111",
+          "locator": "S005 Table 1、Results 首段、Conclusion；S006 Abstract、2、Conclusions。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "P52-008",
+      "question": "太空站上的重力只少一成，太空人為什麼還會飄？",
+      "domain": "science",
+      "mechanism_key": "orbit.iss_altitude_gravity_ninety_percent_free_fall",
+      "answer_target": "NASA 的說明：太空站軌道高度在 200 到 250 英里時，那裡的地球重力約是地面的 90%，一個在地面 100 磅的人若能爬梯到太空站高度，仍有約 90 磅重；這和既有 LEG-S80 所綁 NASA Glenn 頁自己寫的『250 英里處 88.8%』相符，只作交叉核對。太空站約 90 分鐘繞地一圈、一天 16 圈，也就是一天看到 16 次日出日落；漂浮是因為站和人一起自由落體，而不是沒有重力。",
+      "scope": "NASA 教育頁為 2012 年版，高度範圍偏舊；不做自行的平方反比核算。九成重力已在 LEG-S80 的來源，本核心新事實只計週期數字（約 0.5 條）。不談潮汐力。",
+      "source_locator": "S007 Is There Gravity in Space? 段；S008 頁首事實段。",
+      "premise_status": "screened",
+      "notes": "P04 第一、二章：S80 當期核對＋週期數字，新事實計 0.5 條，不是 2 條。 原提案 F1-022。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 LEG-S80（同一組事實已在其 NASA Glenn 來源），完成了第一輪要求的『九成重力當期核對』，但這不是新事實：既有 S80 來源已有 88.8%。作者的平方反比核算是自己算的，只能當旁證，不能當來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "重力幾乎都還在，只是你和地板一起在掉。",
+        "visual": "地球與太空站比例示意（不畫自行核算的曲線）；體重計在梯頂讀約 90 磅；一天繞 16 圈、16 次日出日落的軌道圈。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c3704fdfafcf7a5c",
+          "origin": "wave52-physics-20261111",
+          "locator": "S007 Is There Gravity in Space? 段；S008 頁首事實段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6466b59ea2a077bf",
+          "origin": "wave52-physics-20261111",
+          "locator": "S007 Is There Gravity in Space? 段；S008 頁首事實段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "P52-009",
+      "question": "太空站上的火焰熄滅了，燃料為什麼還在『燒』？",
+      "domain": "science",
+      "mechanism_key": "combustion.iss_flex_cool_flame_after_radiative_extinction",
+      "answer_target": "NASA 在太空站燃燒整合架上的 FLEX 實驗，讓 1.5 到 5 公釐的燃料液滴在約 95 公升的燃燒室裡自由漂浮、用熱絲點火，已做了三百多次。大顆的正烷烴液滴（如正癸烷、正庚烷）先燒出可見的熱焰，熱焰因輻射散熱而熄滅後，彩色相機與紫外相機都看不到火了，但寬頻與窄頻輻射計仍量到放熱，液滴繼續縮小，直徑平方的縮小速率從每秒 0.41 降為 0.33 平方公釐（例：正癸烷、0.5 大氣壓、21% 氧），研究者稱為『冷焰』，最後在某個直徑突然停止，剩下的液滴只是蒸發。冷焰屬於與引擎爆震相關的低溫化學。",
+      "scope": "限所列燃料、壓力 0.5–1 atm 等條件；冷焰由輻射計推得、無影像；n-heptane 細節原期刊論文未讀。不說所有太空火焰都會變冷焰；不推到太空站防火規範。",
+      "source_locator": "S009 1 Introduction；2 Experiments；3 首段；3.1 R377。",
+      "premise_status": "screened",
+      "notes": "填 P04 第四章『火焰變了能告訴你什麼』：審稿要的第二個有條件的太空站燃燒結果。約 2–3 條新事實。與 LEG-S48（近球形火焰、無 cool flame 支線）不重複。 原提案 F1-023。非作者覆核 V4（2026-11-11）照覆核意見改字後收；內容讀得到，有條件也寫明。單位描述與儀器名稱要照原文。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有浮力對流，火焰可以安靜到看不見卻還在放熱。",
+        "visual": "D² 對時間的直線兩段斜率（依 Fig1a 重畫）與『可見焰熄滅』標記；輻射計曲線",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-51c62203d9927995",
+          "origin": "wave52-physics-20261111",
+          "locator": "S009 1 Introduction；2 Experiments；3 首段；3.1 R377。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "P52-010",
+      "question": "同一顆太空液滴，多一點氧或加一點氦，火焰的結局為什麼完全不同？",
+      "domain": "science",
+      "mechanism_key": "combustion.iss_flex_oxygen_helium_conditions_change_extinction_mode",
+      "answer_target": "同一組 FLEX 實驗改變周圍氣體：改氧的試次是正癸烷：0.5 大氣壓下把氧濃度從 21% 提高到 25%，火焰更靠近液滴、溫度更高，就不再發生輻射熄滅，而是燒到很小時液滴微爆；降到 17%、14% 時，熱焰和冷焰都更早熄滅。加氦的試次是正辛烷：在一大氣壓、氧固定 21% 下用氦取代氮，氦導熱好、帶走熱量，燃燒加快但兩段時間都縮短；氦加到 75% 時，熱焰點著不到一秒就滅、冷焰也很快結束。",
+      "scope": "限論文所列個別試次（R374、R379、R383、R694、R698、R707）；不歸納成通用規律數值。",
+      "source_locator": "S009 3.1 Fig1b–d；3.2 Fig2a–d。",
+      "premise_status": "screened",
+      "notes": "填 P04 第四章『分清條件』：同一微重力下火焰行為仍由氣體條件決定，避免『微重力火焰都一樣』。約 2 條新事實。 原提案 F1-024。非作者覆核 V4（2026-11-11）照覆核意見改字後收；數字與條件都對，只是兩組實驗是不同燃料，原稿沒寫，容易被聽成同一顆液滴。它正好支撐企劃要求的『不能說所有微重力火焰都一樣』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "微重力只拿掉了對流，結局還由氧和導熱決定。",
+        "visual": "四格小圖：21%/25%/17%/14% 氧的熄滅方式；氦比例滑桿",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave52-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-51c62203d9927995",
+          "origin": "wave52-physics-20261111",
+          "locator": "S009 3.1 Fig1b–d；3.2 Fig2a–d。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+      ]
+    },
+    {
+      "id": "T52-001",
+      "question": "SSD 拔下來放抽屜，資料保證能放多久？標準是怎麼定的？",
+      "domain": "半導體記憶",
+      "mechanism_key": "flash_ssd_jesd218_power_off_retention_requirement_end_of_life",
+      "answer_target": "JEDEC 的 SSD 標準 JESD218 把『斷電保存』寫進耐寫額定（TBW）的條件：硬碟寫滿額定的資料量之後，仍要能在斷電下保存資料一段規定時間。消費級（Client）類別假設使用時 40°C、每天 8 小時，要求斷電放在 30°C 時保存 1 年；企業級假設 55°C 全天使用，只要求斷電 40°C 保存 3 個月。所以『一年』是磨損到盡頭時的最低要求，不是新碟的實際壽命。",
+      "scope": "限 JEDEC 公開簡報轉述；JESD218 本文需註冊未讀。不給任何品牌的保存天數。",
+      "source_locator": "S001 p.23 條件4；p.25 classes 表。",
+      "premise_status": "screened",
+      "notes": "填 G17 審稿點名缺的『斷電後保存期限』，放在第四章『沒有機械零件也會磨損』之後作真轉折：磨損與保存是連動的。約 2 條新事實。 原提案 F1-009。非作者覆核 V4（2026-11-11）照原稿收；簡報原文相符；『一年是磨損到額定量時的最低要求』是由條件 4 直接推得，合理。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "快閃記憶的保存是有期限的，而且是用『用到最舊時』來保證。",
+        "visual": "Client/Enterprise 兩欄規格卡：使用溫度×時數、斷電溫度×時間（示意卡，標 JESD218）",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b79ef36d06f32c2",
+          "origin": "wave52-tech-20261111",
+          "locator": "S001 p.23 條件4；p.25 classes 表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ]
+    },
+    {
+      "id": "T52-002",
+      "question": "同一顆舊 SSD 斷電放著，放在 25°C 跟放在 55°C，資料能撐的時間差多少？",
+      "domain": "半導體記憶",
+      "mechanism_key": "flash_retention_arrhenius_temperature_acceleration_table",
+      "answer_target": "JEDEC 簡報附的週數表（依 Intel 的去捕獲保存加速模型，即 JESD47/JEP122 採用的模型）：消費級碟在 40°C 下用到額定壽命後，斷電放在 25°C 約可保存 105 週，30°C 約 52 週，40°C 約 14 週，55°C 只剩約 2 週——溫度每升 5°C 大約砍半。驗證時規定要同時考慮受溫度加速（活化能 1.1 eV）和不受溫度加速的兩類漏失機制。",
+      "scope": "表值為模型要求，不是實測；只適用磨損到額定 TBW 的情況。不推到 USB 隨身碟或記憶卡的具體天數。",
+      "source_locator": "S001 p.27 Client 表 40°C 欄；Extrapolation 條件 4。",
+      "premise_status": "screened",
+      "notes": "填 G17 審稿要的『斷電放久也會慢慢漏，熱的時候更快』那個轉折。約 2 條新事實。 原提案 F1-010。非作者覆核 V4（2026-11-11）照原稿收；我轉圖重讀表格，數字一致；『每升 5°C 約砍半』與表值相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "資料沒在動，電子卻在慢慢逃；越熱逃得越快。",
+        "visual": "以表值畫『斷電溫度 vs 週數』階梯長條，標『JEDEC 簡報模型值』",
+        "seconds": [
+          45,
+          70
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b79ef36d06f32c2",
+          "origin": "wave52-tech-20261111",
+          "locator": "S001 p.27 Client 表 40°C 欄；Extrapolation 條件 4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ]
+    },
+    {
+      "id": "T52-003",
+      "question": "SSD 用的時候越熱，斷電後的保存週數反而越長？",
+      "domain": "半導體記憶",
+      "mechanism_key": "flash_retention_higher_cycling_temperature_longer_retention_detrapping_model",
+      "answer_target": "同一張 JEDEC 週數表裡，斷電溫度固定在 30°C 時，若碟子平常在 25°C 下使用只能保存約 28 週，在 55°C 下使用卻可到約 199 週；企業級表也同方向。這組數字來自 Intel 的去捕獲保存模型。",
+      "scope": "只轉述表值與模型名稱；表沒有說明原因，『高溫使用反而保存較久』的機制沒有可讀的一手來源，片中只報表值、不解釋。不鼓勵用高溫使用硬碟。",
+      "source_locator": "S001 p.27 Client 表 30°C 列；表註『detrapping retention mechanism』。",
+      "premise_status": "screened",
+      "notes": "填 G17 第四章後的第二個轉折（測試或改變『熱一定壞』的結論）。1 條新事實（反向效應），機制句保守。需非作者覆核表格判讀。 原提案 F1-011。非作者覆核 V4（2026-11-11）照覆核意見改字後收；表值正確，但機制解釋在來源裡找不到，是作者補寫的。刪掉機制句後只剩 1 條事實（反向的表值），可以作 G17 的小轉折，不能單獨撐一章。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個溫度，在寫入時與存放時效果相反。",
+        "visual": "表格同列左右兩端高亮（28 週 vs 199 週）；兩個溫度計：『用的時候』『放的時候』",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b79ef36d06f32c2",
+          "origin": "wave52-tech-20261111",
+          "locator": "S001 p.27 Client 表 30°C 列；表註『detrapping retention mechanism』。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ]
+    },
+    {
+      "id": "T52-004",
+      "question": "電腦的記憶體每秒要『重寫』自己幾次？溫度高時規格要多勤？",
+      "domain": "半導體記憶",
+      "mechanism_key": "dram_refresh_64ms_8192_commands_halved_above_85c",
+      "answer_target": "DDR4 記憶體規格要求：在 0 到 85°C 之間，每 64 毫秒內要送出 8,192 次刷新命令，平均每 7.8 微秒一次；溫度在 85 到 95°C 時，時限縮成 32 毫秒，刷新間隔也減半。換算下來，每一格電容每秒至少被重新補電十幾次；規格在 85°C 以上要求刷新次數加倍。",
+      "scope": "限 Micron DDR4 資料手冊引述的規格；『每秒十幾次』由 1000/64≈15.6 換算。不給單一電容實際保持時間。漏電隨溫度變快若要講，須另附來源（E2282 的來源只支持『會漏電』，不支持溫度關係）。",
+      "source_locator": "S002 Features；tREFI 註記段。",
+      "premise_status": "screened",
+      "notes": "填 G17 第一章『先找到一種會漏的記憶』審稿要的 DRAM 刷新規格數值；與 T52-002 成對：DRAM 以毫秒計、快閃以週計，但都怕熱。1–2 條新事實。 原提案 F1-012。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 E2282（DRAM 要刷新的機制），規格數字讀得到，是第一輪點名缺的 DRAM 刷新數值。和 E2282 是同一章，只算 1 條新事實；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "會漏的記憶靠不停補；熱時漏得快就補得更勤。",
+        "visual": "64 ms 時間條上 8,192 個小刻度，溫度超過 85°C 時刻度加倍",
+        "seconds": [
+          35,
+          60
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e712106b83906f1a",
+          "origin": "wave52-tech-20261111",
+          "locator": "S002 Features；tREFI 註記段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ]
+    },
+    {
+      "id": "T52-005",
+      "question": "QR Code 三個角的方框，為什麼偏偏是黑白 1:1:3:1:1 的比例？",
+      "domain": "tech",
+      "mechanism_key": "qr.finder_pattern_1_1_3_1_1_ratio_survey_360_orientation",
+      "answer_target": "QR Code 開發方 DENSO WAVE 的說法：開發者原昌宏為了讓讀取器快速找到碼，加入方形的位置偵測圖形；選方形是因為它最不容易出現在表單等印刷品上。團隊把傳單、雜誌、紙箱上的圖樣化成黑白，日復一日統計黑白寬度的比例，找出印刷品上最少出現的 1:1:3:1:1，作為偵測圖形的寬度比，讀取器只要搜尋這個比例，不論從 360 度哪個角度掃都能判定方向。Model 2 另外嵌入校正圖形，讓印在曲面或斜拍變形時仍能讀。而且碼的四周要留 4 個模組寬、什麼都不印的留白。",
+      "scope": "公司自述史；『快 10 倍』不引用。校正圖形只講用途，不講位置規則（規格未讀）。",
+      "source_locator": "S005 Section 1；S006 Model 2 段；S007 Securing Margin。",
+      "premise_status": "screened",
+      "notes": "填 P12 第一章『先找到哪一塊是碼』的逐主張官方來源。約 2 條新事實（1:1:3:1:1 由統計選出、360°；校正圖形抗變形）。 原提案 F1-025。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 LEG-A36（定位圖形幫助找位置與方向），原文相符。『從印刷品統計選出 1:1:3:1:1』與校正圖形是新事實，『辨認方向』本身 A36 已有。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先要『認得出這是碼』，所以選一個世上最少見的黑白節奏。",
+        "visual": "掃描線穿過定位框得 1:1:3:1:1 的黑白寬度條；印刷品統計示意",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-476aa08953451936",
+          "origin": "wave52-tech-20261111",
+          "locator": "S005 Section 1；S006 Model 2 段；S007 Securing Margin。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-29af13cc5e42f279",
+          "origin": "wave52-tech-20261111",
+          "locator": "S005 Section 1；S006 Model 2 段；S007 Securing Margin。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2e9766d79876b35a",
+          "origin": "wave52-tech-20261111",
+          "locator": "S005 Section 1；S006 Model 2 段；S007 Securing Margin。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ]
+    },
+    {
+      "id": "T52-006",
+      "question": "同樣大小的損傷，為什麼一整塊污漬有時比零散的小點更好修？",
+      "domain": "tech",
+      "mechanism_key": "qr.reed_solomon_codewords_v3_block_vs_scattered_damage_tests",
+      "answer_target": "DENSO WAVE 的官方說明：QR Code 的糾錯以 Reed-Solomon 碼加在原資料上，以 8 位元一個『碼字』為單位修正，官方說它適合集中的突發錯誤；例如 100 個資料碼字加 100 個修正碼字共 200 個，可修其中 50 個，也就是 25%（Q 級），各等級的比例都以總碼字計。",
+      "scope": "『30% 是碼字不是面積』已是 LEG-A36 的核心，本核心只保留『集中與零散』這個新點。示範只代表一個版本 3 的數位碼與兩個桌面解碼器（qrcode 8.2、OpenCV 5.0.0.93、zxing-cpp 3.1.1），片中標『本片自製示範』，不當發現引用。不說任何遮擋比例都保證成功。",
+      "source_locator": "S003 Error Correction Feature；S004 Outline 表。",
+      "premise_status": "screened",
+      "notes": "P12 第三、四章『缺了為什麼能補』『同樣一塊損傷，結果為何不同』。示範素材：F1 自製 QR 遮擋與翻轉測試（scratchpad f1scripts/qrtest.py、qrtest2.py；f1qr/results*.json）只當畫面示範，不在 source_ids，旁白不得把測試結果講成研究發現；刪除『版本 3 的 H 級最多只能修 22 個碼字』。 原提案 F1-026。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：核心答案『30% 是碼字不是面積』與 LEG-A36 重複；改寫後只保留『集中與零散』這個新點，有來源的新內容只有『適合集中突發錯誤』和 25% 算例，原題目則是 A36 已經做過的。自製測試結果我逐筆核對過，可以拿來在畫面上示範，但依本 pool 規則不能當成研究發現引用，所以重寫成以 S001 為主、測試只當畫面。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣大小的損傷，集中成一塊時落在較少的碼字裡，零散的小點卻可能各打壞一個碼字。",
+        "visual": "原創碼字格示意：同面積的一整塊污漬與散點各覆蓋幾個碼字；『本片自製示範』標示的桌面解碼成功與失敗對照。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave52-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a3e33a4da681fd18",
+          "origin": "wave52-tech-20261111",
+          "locator": "S003 Error Correction Feature；S004 Outline 表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3b3b895769003367",
+          "origin": "wave52-tech-20261111",
+          "locator": "S003 Error Correction Feature；S004 Outline 表。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+      ]
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -403172,6 +405852,32 @@
       "P51-002": "P51-002",
       "P51-003": "P51-003",
       "P51-004": "P51-004",
+      "S52-001": "S52-001",
+      "S52-002": "S52-002",
+      "S52-003": "S52-003",
+      "S52-004": "S52-004",
+      "L52-001": "L52-001",
+      "L52-002": "L52-002",
+      "L52-003": "L52-003",
+      "L52-004": "L52-004",
+      "L52-005": "L52-005",
+      "L52-006": "L52-006",
+      "P52-001": "P52-001",
+      "P52-002": "P52-002",
+      "P52-003": "P52-003",
+      "P52-004": "P52-004",
+      "P52-005": "P52-005",
+      "P52-006": "P52-006",
+      "P52-007": "P52-007",
+      "P52-008": "P52-008",
+      "P52-009": "P52-009",
+      "P52-010": "P52-010",
+      "T52-001": "T52-001",
+      "T52-002": "T52-002",
+      "T52-003": "T52-003",
+      "T52-004": "T52-004",
+      "T52-005": "T52-005",
+      "T52-006": "T52-006",
       "J6001": "J6001",
       "J6002": "J6002",
       "J6003": "J6003",
@@ -431414,6 +434120,36 @@
         "a": "P51-001",
         "b": "I12009",
         "reason": "I12009為液滴併入液面後頸縮留下子滴的部分合併；P51-001是熱板上懸浮液滴最終爆炸或起飛的分歧，控制量為雜質成殼與尺寸。"
+      },
+      {
+        "a": "T52-004",
+        "b": "E2282",
+        "reason": "E2282 問 DRAM 為什麼要刷新（電容漏電的機制）；T52-004 只報 DDR4 規格的刷新次數、間隔與 85°C 以上加倍。E2282 的來源只支持『會漏電』，不支持溫度關係，兩者不重計（V4 2026-11-11）。"
+      },
+      {
+        "a": "L52-001",
+        "b": "V3027",
+        "reason": "V3027 是末端複製限制的課本機制；L52-001 是 Watson 與 Olovnikov 在發現端粒前的預言、與有限分裂的連結，以及環狀基因組避開末端問題。機制相同處不重算（V4 2026-11-11）。"
+      },
+      {
+        "a": "L52-002",
+        "b": "V3028",
+        "reason": "V3028 是端粒酶自帶 RNA 模板的課本結論；L52-002 是四膜蟲末端穩定酵母線性質體（1982）、1985 年加 TTGGGG 的活性、1989 年找到模板與 EST1 多代後衰老的實驗史（V4 2026-11-11）。"
+      },
+      {
+        "a": "P52-008",
+        "b": "LEG-S80",
+        "reason": "LEG-S80 問太空人為什麼一直掉卻沒撞上地球，其 NASA Glenn 來源已有 250 英里處 88.8% 重力；P52-008 只是當期核對，新事實僅太空站約 90 分鐘一圈、一天 16 次日出日落，計 0.5 條（V4 2026-11-11）。"
+      },
+      {
+        "a": "T52-005",
+        "b": "LEG-A36",
+        "reason": "LEG-A36 問 QR Code 缺一角為何還讀得出（定位圖形辨認方向、糾錯以碼字計）；T52-005 是開發方自述的 1:1:3:1:1 比例由印刷品統計選出、Model 2 校正圖形抗變形與 4 模組留白，辨認方向本身不重計（V4 2026-11-11）。"
+      },
+      {
+        "a": "T52-006",
+        "b": "LEG-A36",
+        "reason": "『30% 是碼字不是面積』已是 LEG-A36 的核心；T52-006 只保留 Reed-Solomon 適合集中突發錯誤的官方說法與 25% 算例，問的是同樣大小的損傷為何集中的比零散的好修（V4 2026-11-11）。"
       }
     ],
     "excluded": [
@@ -439714,10 +442450,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-03-pool-3558",
-    "target_count": 3558,
-    "reviewed_on": "2026-11-03",
-    "reason": "從3542續接；新題經非作者來源與條件覆核，證據不足者併入同研究核心，同核變體不重計，片長依資訊推進。",
+    "revision": "2026-11-11-pool-3584",
+    "target_count": 3584,
+    "reviewed_on": "2026-11-11",
+    "reason": "從3558續接；2026-11-11 第二輪素材審視替近門檻長題與企劃補一手來源，27 個提案經非作者覆核（V4），26 個收入、1 個以自製測試為主而退回；改字依覆核意見，同一事實已在舊核心者不重計。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -443276,7 +446012,33 @@
       "P51-001",
       "P51-002",
       "P51-003",
-      "P51-004"
+      "P51-004",
+      "P52-001",
+      "P52-002",
+      "P52-003",
+      "P52-004",
+      "P52-005",
+      "P52-006",
+      "P52-007",
+      "P52-008",
+      "P52-009",
+      "P52-010",
+      "S52-001",
+      "S52-002",
+      "S52-003",
+      "S52-004",
+      "L52-001",
+      "L52-002",
+      "L52-003",
+      "L52-004",
+      "L52-005",
+      "L52-006",
+      "T52-001",
+      "T52-002",
+      "T52-003",
+      "T52-004",
+      "T52-005",
+      "T52-006"
     ],
     "overflow": [
       {
@@ -469299,6 +472061,107 @@
       "reading_status": "舊庫完整問答/條件或歷史退題比較；有本批source_ids者按該來源已列指定範圍。",
       "origin": "wave51-physics-20261103",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave51-physics.json"
+    },
+    {
+      "id": "S52-NA001",
+      "question": "2020 年中尼共同公布聖母峰 8848.86 公尺雪面高",
+      "existing_ids": [
+        "S52-001",
+        "S52-002"
+      ],
+      "source_ids": [],
+      "reason": "G15 已有玉山官方一手資料可涵蓋『同山兩高度』與『量到哪個面』，聖母峰屬重複例；未讀官方公告。",
+      "reentry_condition": "若要國際例，再讀尼泊爾測量局或中方官方公告全文。",
+      "reading_status": "未讀。",
+      "origin": "wave52-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+    },
+    {
+      "id": "S52-NA002",
+      "question": "基隆平均海水面已比 TWVD2001 零點高出數公分",
+      "existing_ids": [
+        "S52-004"
+      ],
+      "source_ids": [],
+      "reason": "數字（67.3 mm / 89.9 mm）只出現在搜尋摘要所引的研究，兩處不一致且未讀原文。",
+      "reentry_condition": "讀國土測繪中心高程基準檢測報告原文的潮位分析章。",
+      "reading_status": "只見 WebSearch 摘要。",
+      "origin": "wave52-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave52-earth.json"
+    },
+    {
+      "id": "L52-NA001",
+      "question": "Ruben 等 1941 原始實驗的藻種、重氧濃度與數據",
+      "existing_ids": [
+        "L52-004"
+      ],
+      "source_ids": [
+        "L52-S002",
+        "L52-S003"
+      ],
+      "reason": "JACS 原文付費；eScholarship 相關 PDF 回 403；只以兩篇綜述與訃聞轉述結論。",
+      "reentry_condition": "合法取得 JACS 63:877 全文。",
+      "reading_status": "未讀原文。",
+      "origin": "wave52-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave52-life.json"
+    },
+    {
+      "id": "P52-NA001",
+      "question": "台灣的國家公斤原器編號與目前質量追溯鏈怎麼走？",
+      "existing_ids": [
+        "M2001"
+      ],
+      "source_ids": [],
+      "reason": "搜尋未找到國家度量衡標準實驗室公開的原器編號或追溯鏈頁面；標檢局雙月刊 195 期 p.126 只經摘要工具讀，不是可記錄的逐句閱讀，不列為來源（原 F1-S025 已移除）。G13 不需此段也能成立。",
+      "reentry_condition": "找到 NML/標檢局官方追溯圖或報告並逐段讀。",
+      "reading_status": "WebSearch 結果與標檢局 p.126 摘要；未讀全文。",
+      "origin": "wave52-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+    },
+    {
+      "id": "P52-NA002",
+      "question": "FLEX 冷焰對太空站防火程序的意涵",
+      "existing_ids": [
+        "P52-009"
+      ],
+      "source_ids": [],
+      "reason": "只見 APS 摘要搜尋片段；Springer 2014 論文頁出現 bot 驗證，未繞過。",
+      "reentry_condition": "讀到 Dietrich 等 2014 Microgravity Sci. Technol. 全文或 NASA 正式說明。",
+      "reading_status": "link.springer.com 回傳 Client Challenge，未讀。",
+      "origin": "wave52-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave52-physics.json"
+    },
+    {
+      "id": "T52-NA001",
+      "question": "QR Code 時序圖形、格式資訊雙份、遮罩圖形的規格細節",
+      "existing_ids": [
+        "LEG-A36",
+        "T52-006"
+      ],
+      "source_ids": [
+        "T52-S004"
+      ],
+      "reason": "qrcode.com 公開頁沒有時序圖形、格式資訊與遮罩的文字說明，ISO/IEC 18004 需付費；不能用教學網站冒充官方。自製測試的結果只能當示範（見 T52-NA002），不另立核心。",
+      "reentry_condition": "取得 ISO/IEC 18004 或 JIS X 0510 正文。",
+      "reading_status": "qrcode.com 各頁已讀；規格未讀。",
+      "origin": "wave52-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
+    },
+    {
+      "id": "T52-NA002",
+      "question": "QR Code 只遮掉一個角，為什麼糾錯再高也救不回來？",
+      "existing_ids": [
+        "LEG-A36",
+        "T52-005"
+      ],
+      "source_ids": [
+        "T52-S007"
+      ],
+      "reason": "非作者覆核 V4 退回：核心幾乎全靠本工作階段的自製 QR 測試，而本素材池只收有可讀紀錄的外部來源，自製測試只能當畫面示範、不能當發現引用；『只遮一個角，糾錯再高也救不回來』把一次桌面測試講成通則，LEG-A36 也刻意不說『少一角必敗』。S005 的留白事實已併入 T52-005；旋轉都讀得到的結果可當 T52-005『360° 判定方向』的示範；定位角與留白破壞可當 P12 第三章的示範畫面，旁白只能說『在本片這次測試裡，兩個解碼器都讀不到』。格式資訊與時序線的結果不入片。",
+      "reentry_condition": "取得 ISO/IEC 18004 或 JIS X 0510 正文，或有可讀的外部研究測過定位圖形與格式資訊損傷。",
+      "reading_status": "S005 已讀；自製測試（原 F1-S026，腳本與兩份結果 JSON）由 V4 逐筆核對，但依規則不列為來源。",
+      "origin": "wave52-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave52-tech.json"
     },
     {
       "id": "J6-NA001",
