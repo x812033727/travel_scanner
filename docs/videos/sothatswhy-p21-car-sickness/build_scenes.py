@@ -139,7 +139,7 @@ kid("kid-main-q", K("holding " + COMIC + " against her chest and frowning with a
 kid("kid-ear-guess", K("cupping one hand behind her ear with a worried little frown", close=True, where=HOME),
     k("我聽說會暈車，", "擔心"), k("是內耳不好？", "擔心的錯猜", "S:broken"), chapter="眼睛和耳朵，各說各的")
 chief("chief-opposite", C("shaking her head gently with a kind smile, one hand raised", close=True),
-      c("剛好相反。研究暈車的人發現，", "接住上一句"), c("內耳的平衡功能完全不能用的人，才完全不會暈。", None, "P:broken"))
+      c("不一定。研究暈車的人發現，", "接住上一句"), c("內耳的平衡功能完全不能用的人，才完全不會暈。", None, "P:broken"))
 chief("chief-almost-all", C("opening both arms wide towards the viewer with a reassuring smile"),
       c("內耳好好的人，幾乎每一個都可能暈。"))
 kid("kid-working", K("touching her own ear with one finger and a surprised delighted face", close=True, where=HOME),
@@ -215,7 +215,7 @@ chief("chief-forward", C("pointing straight forward past the viewer with one arm
 kid("kid-front-q", K("pointing forward between the two front seats with a surprised face", where=CAR),
     k("所以重點是前面，", "發現"), k("不是窗戶？", "句尾上揚"))
 chief("chief-seat", C("nodding with a calm smile, one open hand forward", close=True),
-      c("對。那個實驗裡，坐哪一排，反而沒有明顯差別。"))
+      c("對。那個實驗裡，坐哪個位子，反而沒有明顯差別。"))
 chief("chief-my-guess", C("drawing a gentle curve in the air with one fingertip, a curious smile"),
       c("我的想法是：前面的路一彎，眼睛先看到，"), c("大腦就猜得到，杯子裡的水等一下要晃。"))
 chief("chief-holland", C("holding a small plain tablet up at eye level with both hands and a curious smile", close=True),
@@ -237,7 +237,7 @@ chief("chief-control", C("nodding with an encouraging smile, one finger raised",
 obj("own-cup", "Close-up of an adult hand holding " + CUP + " steady while turning a corner along a sunny hallway, the water surface calm and level",
     c("研究的人認為：自己要轉彎，大腦早就知道，"), c("杯子裡的水一晃，剛好跟它猜的一樣。", None, "P:dad"))
 chief("chief-cue", C("cupping one hand beside her mouth as if calling out softly, a friendly smile", close=True),
-      c("還有實驗是先用聲音提醒，下一步要往哪動。"), c("知道接下來會怎樣的人，也比較不暈。"))
+      c("還有實驗用聲音先提醒：什麼時候、要往哪動。"), c("有提醒的時候，同一群人也比較不暈。"))
 kid("kid-dad-says", K("cupping both hands around her mouth and calling out with a cheerful grin", where=CAR),
     k("就像爸爸先喊一聲，", "笑"), k("要轉彎囉？", "句尾上揚"))
 chief("chief-cue-limit", C("raising one hand with a gentle honest smile", close=True),
@@ -281,7 +281,7 @@ kid("kid-either-way", K("sitting cross-legged on a sofa cushion holding both pal
 chief("chief-works", C("nodding with a warm pleased smile", close=True),
       c("對，這是感覺衝突說得通的地方。"))
 chief("chief-game-test", C("holding a game controller out towards the viewer with an inviting smile"),
-      c("還有一個實驗：兩個人看一模一樣的賽車畫面，"), c("一個自己玩，一個看錄下來的影片。"))
+      c("還有一個實驗：兩個人看一模一樣的開車遊戲畫面，"), c("一個自己玩，一個看錄下來的影片。"))
 kid("kid-game-guess", K("holding a game controller up proudly with a confident grin", where=HOME),
     k("自己玩的，", "很有把握"), k("比較不暈？", "句尾上揚", "S:game"))
 chief("chief-game", C("giving a small thumbs-up with a pleased smile", close=True),
@@ -317,7 +317,7 @@ kid("kid-eight", K("holding up eight fingers with a surprised realising face", w
 chief("chief-women", C("nodding with a gentle smile, one hand open", close=True),
       c("對，你剛好在那個年紀。女生也比男生容易一點，"), c("不過這個差別，比年紀的差別小得多。"))
 chief("chief-migraine", C("pressing a folded cool towel to her forehead with her eyes closed and a calm face"),
-      c("常偏頭痛的人，也比較容易暈。"))
+      c("常偏頭痛、內耳有毛病的人，也比較容易暈。"))
 obj("twin-shoes", "Close-up of two identical pairs of small yellow children's sneakers standing side by side on a sunny doorstep",
     c("雙胞胎研究還發現，誰比較會暈，很大一部分跟遺傳有關。"))
 kid("kid-which-part", K("tapping her own head with one finger and a curious frown", close=True, where=HOME),
@@ -337,11 +337,11 @@ kid("kid-ate-wrong", K("covering her mouth with both hands and wide surprised ey
 chief("chief-poison-limit", C("raising one hand with an honest careful smile", close=True),
       c("這只是一個猜法。有證據支持它，也有證據跟它對不上，"), c("到現在還沒定案。", None, "P:vomit"))
 chief("chief-sway", C("swaying slightly to one side while standing, with a curious smile"),
-      c("另一派認為，暈車跟身體穩不穩有關："), c("有實驗看到，人在覺得不舒服以前，身體就晃得比較厲害。"))
+      c("還有一派不同意感覺衝突，認為暈車跟身體穩不穩有關："), c("有實驗看到，人在覺得不舒服以前，身體就晃得比較厲害。"))
 kid("kid-neuron-q", K("pointing at her own forehead with a curious face", close=True, where=HOME),
     k("那大腦裡，", "追問"), k("有負責吵架的地方嗎？", "句尾上揚", "S:neuron"))
 chief("chief-neurons", C("holding a clear plastic cup of water still in one hand and pointing at it with the other, a thoughtful smile"),
-      c("研究的人找到一群腦細胞，被別人帶著動時，反應特別大；"), c("自己動的時候，它們就比較安靜。"))
+      c("猴子的腦裡有一群細胞，被別人帶著動時，反應特別大；"), c("自己動的時候，它們就比較安靜。"))
 chief("chief-neuron-limit", C("tilting her head with an honest thoughtful smile", close=True),
       c("他們猜，這可能就是比對預想的地方。"), c("可是它們怎麼讓人想吐，還沒找到。", None, "P:neuron"))
 kid("kid-final-q", K("holding " + COMIC + " on her lap and looking straight ahead with a thinking face", where=CAR),
