@@ -6,7 +6,9 @@ import { forwardToSpeech, problem } from "../../speech/forward";
 // passed on, each checked here, so nothing else reaches the API's query string.
 const VIDEO = /^[A-Za-z0-9_-]{6,20}$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
-const TIMEOUT_MS = 60_000;
+// The API makes up to three Google calls in a row (token refresh, videos.list, reports.query), each
+// allowed 30 s (apps/api/app/video_youtube/client.py TIMEOUT), so the proxy waits longer than their sum.
+const TIMEOUT_MS = 120_000;
 
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams;
