@@ -239,11 +239,11 @@ obj("sky-strip", "Low angle view looking straight up between two tall plain glas
 kid("kid-signal-q", K("holding a small phone out at arm's length and frowning at it", where=STREET),
     k("所以藍點跳走，", "推理"), k("是衛星的訊號不準？", "章尾停住，句尾上揚", "S:signal"))
 
-# ---------- 第三章：訊號在最後一段路走歪 ----------
+# ---------- 第三章：時鐘和路上，怎麼帶偏藍點 ----------
 chief("chief-signal-good", C("shaking her head with a confident smile, one hand raised", close=True),
       c("衛星送得其實很準。", "接住上一句"),
-      c("美國政府承諾，訊號本身的誤差，"),
-      c("九成五的時間在兩公尺以內。"), chapter="訊號在最後一段路走歪")
+      c("美國政府承諾，所有衛星平均，訊號本身的誤差，"),
+      c("九成五的時間在兩公尺以內。"), chapter="時鐘和路上，怎麼帶偏藍點")
 chief("chief-2021", C("holding a small toy satellite model up proudly with a bright smile"),
       c("二〇二一年四月二十日實際量到的，還不到六十五公分。"))
 kid("kid-then-why", K("pointing across a sunny street with a frustrated frown", where=CORNER),
@@ -276,7 +276,7 @@ chief("chief-guess-model", C("shrugging with both palms up and an honest smile")
       c("只聽一個頻率的接收機，只能用模型去猜，"),
       c("這個效應可以到幾十公尺。"))
 chief("chief-model-half", C("holding her hand flat and lowering it halfway with an honest smile", close=True),
-      c("衛星自己廣播的修正模型，全世界平均大約修掉一半。"),
+      c("衛星廣播的修正模型，估計全世界平均約修掉一半。"),
       c("可是拖慢多少，跟頻率有關。同時聽兩個頻率，"))
 obj("two-whistles", "Close-up of two whistles lying side by side on a wooden park bench in sunshine, one big silver whistle and one small golden whistle, each on a red cord",
     c("就像同一個朋友，吹高低兩支哨子；"),
@@ -285,7 +285,7 @@ obj("two-whistles", "Close-up of two whistles lying side by side on a wooden par
 kid("kid-military-q", K("crossing her arms with a suspicious pout", where=CORNER),
     k("我聽說軍用的比較準，", "懷疑"), k("給我們的比較爛？", "句尾上揚", "S:military"))
 chief("chief-sa", C("shaking her head with a calm reassuring smile", close=True),
-      c("美國政府的 GPS 網站回答：沒有。", None, "P:military"),
+      c("美國政府的 GPS 網站說：沒有故意把民用的弄差。", None, "P:military"),
       c("以前曾經故意讓民用的變不準，二〇〇〇年就停了。"))
 chief("chief-augment", C("holding a small phone up beside her face with a proud bright smile"),
       c("GPS 以外，另外幫忙提高準確度的，叫增強系統；"),
@@ -293,7 +293,7 @@ chief("chief-augment", C("holding a small phone up beside her face with a proud 
 kid("kid-rel-q", K("holding " + WATCH + " up to her ear with a curious face", close=True, where=PARK),
     k("那衛星的原子鐘，", "追問"), k("自己會不會不準？", "句尾上揚", "S:relativity"))
 chief("chief-rel", C("holding a small golden pocket watch with a smooth plain face up beside her face, a curious smile"),
-      c("會，原因很有名：相對論。我們只講需要修的那一點。"))
+      c("從地面看，它走得比較快，原因很有名：相對論。"))
 obj("satellite-clock", "Wide shot of " + SAT + ", far above a big round green and blue planet curve at the bottom of the frame",
     c("衛星在很高的地方，地球拉得比較沒那麼用力，"),
     c("鐘會走快一點；它又跑得很快，跑快的鐘會慢一點。"),
@@ -301,7 +301,7 @@ obj("satellite-clock", "Wide shot of " + SAT + ", far above a big round green an
 chief("chief-38", C("holding up her thumb and finger a tiny gap apart with a serious smile", close=True),
       k("快多少？", "追問"),
       c("照一篇 GPS 相對論的回顧換算，"),
-      c("衛星的鐘一天大約快三十八微秒。"))
+      c("衛星的鐘一天快了三十八微秒多。"))
 kid("kid-38", K("shrugging with both palms up and a doubtful grin", where=PARK),
     k("三十八微秒，", "不以為意"), k("很短吧？"))
 chief("chief-11km", C("pointing one finger at the viewer with a playful raised eyebrow"),
@@ -338,7 +338,7 @@ chief("chief-canyon", C("holding a small phone up and looking at it with a patie
 kid("kid-assist-q", K("holding a small phone up proudly with a bright grin", where=CORNER),
     k("可是我的手機，", "不服氣"), k("一打開就有藍點耶！", None, "S:assist"))
 obj("cell-tower", "Wide shot of a tall slim grey cell tower with small antennas on a green hill under a bright blue sky, a sunny city of tall glass buildings below",
-    c("那是輔助 GPS。手機透過行動網路，"),
+    c("那多半是輔助 GPS。手機透過行動網路，"),
     c("先拿到衛星的位置和鐘差，"),
     c("只要收幾毫秒的訊號，就能算出位置。", None, "P:assist"))
 chief("chief-friend-text", C("holding a small phone up beside her face and pretending to read a message with a cheerful smile"),
@@ -349,11 +349,11 @@ chief("chief-cost", C("raising one hand with an honest careful smile", close=Tru
       c("有。你沒有從廣播裡，讀到精確的時間。"),
       c("衛星一直在動，時間錯一點，算出的衛星位置就錯。"))
 chief("chief-800", C("spreading her arms wide apart with a serious amazed face"),
-      c("一篇導航期刊的論文回顧一個常用的方法："),
-      c("時間每差一秒，量出的距離就錯大約八百公尺。"),
+      c("一篇導航期刊的論文，引用這個方法發明人的估算："),
+      c("時間每差一秒，算出的距離就錯大約八百公尺。"),
     k("又是時間！", "驚訝"))
 chief("chief-fifth", C("counting on her fingers with an encouraging smile", close=True),
-      c("對。所以手機把現在大概是哪一刻，也當成要算的答案。"),
+      c("對。所以有些手機把現在是哪一刻，也當成要算的答案。"),
       c("這是第五個不知道的數，要至少五顆衛星。", None, "P:cost"))
 kid("kid-map-q", K("looking down at a small phone with a doubtful frown", where=CORNER),
     k("那藍點對了，", "追問"), k("導航還帶錯路呢？", "句尾上揚", "S:map"))
@@ -441,7 +441,7 @@ doc = {
                        "這一集，所長和小問跟著同一段路走，用一個「公園吹哨子」的遊戲來想：聽到哨聲晚了多久，就知道離那個朋友多遠。"
                        "衛星就是帶著原子鐘的朋友，訊號跑得跟光一樣快，所以時間只差百萬分之一秒，距離就差三百公尺；"
                        "手機沒有原子鐘，所以要多聽第四顆衛星，把自己的錶差多少也一起算出來。"
-                       "接著看藍點為什麼會偏：衛星送得很準，誤差多半在最後一段路——大樓擋住、牆面反彈、高空的電離層，還有衛星時鐘要修的相對論；"
+                       "接著看藍點為什麼會偏：衛星送得很準，藍點偏多半是訊號離開衛星以後的事——大樓擋住、牆面反彈、高空的電離層；另外，衛星時鐘還有一點相對論的差，一定要先修好；"
                        "最後是剛開地圖時為什麼要等、手機怎麼靠網路省下等待卻得多找一顆衛星，以及藍點對了、地圖卻畫錯的時候。\n\n"
                        "畫圓圈找交點只是示意，真正的接收機是把位置和時間一起估算出來；插圖由 AI 生成，是示意，不是實際的衛星位置。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["GPS", "衛星定位", "手機地圖", "原子鐘", "多路徑", "電離層", "相對論", "科普", "原來如此事務所"]},
