@@ -163,7 +163,7 @@
 
 ## C17 位置還需要衛星在哪、鐘差多少，寫在廣播電文裡；每秒 50 位元；一整框 30 秒重複；收齊前三段最久約 36 秒【官方規格＋研究文獻】
 
-- **可用說法**：p143–p156。p153「鐘差跟衛星在哪，放在每一輪最前面的三段」交代了「三段」是什麼（Subframe 1 鐘差、2–3 星曆），p154 才說「傳統的做法要聽完這三段」；片中不說「接收機」
+- **可用說法**：p143–p156。p153「衛星的鐘差多少、衛星在哪，放在每一輪最前面的三段」交代了「三段」是什麼（Subframe 1 鐘差、2–3 星曆），p154 才說「傳統的做法要聽完這三段」；片中不說「接收機」
 - **來源**：[6]、[14]、[7]
 - **原文**：SPS PS [6] §2.2：「the LNAV data also clocked at 50 bps」；Fig. 2.2-1：Subframe 1「Satellite Clock Correction Terms」、Subframe 2–3「Ephemeris Parameters」、「Frame (30 sec repeat)」。
   Blay et al. [14] §2：「Conventional GNSS receivers need to receive the data from the first three subframes of the 30 second navigation frame to solve for time and position. For the GPS L1 C/A signal, it can take as long as 36 seconds」。

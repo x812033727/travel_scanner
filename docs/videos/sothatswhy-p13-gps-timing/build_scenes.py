@@ -183,7 +183,7 @@ obj("satellite-clock", "Wide shot of " + SAT + ", far above a big round green an
     c("兩個加起來，還是快。"))
 chief("chief-38", C("holding up her thumb and finger a tiny gap apart with a serious smile", close=True),
       k("快多少？", "追問"),
-      c("照一篇 GPS 相對論的回顧換算，"),
+      c("一篇 GPS 相對論的回顧算出來，"),
       c("衛星的鐘一天快了三十八微秒多。"),
       c("一微秒，就是開頭那個百萬分之一秒。"))
 kid("kid-38", K("shrugging with both palms up and a doubtful grin", where=PARK),
@@ -195,12 +195,12 @@ obj("satellite-workshop", "Wide shot of one cute cartoon satellite with two wide
     c("所以有些衛星的鐘，上去之前就先在地面調慢；"),
     c("有些上去以後再量，把修正寫進廣播裡。"))
 kid("kid-one-q", K("holding up one finger with a hopeful questioning face", where=PARK),
-    k("時間能信了，", "追問"), k("那聽一顆衛星，"), k("就知道我在哪了？", "句尾上揚", "S:one"))
+    k("時間可以相信了，", "追問"), k("那聽一顆衛星，"), k("就知道我在哪了？", "句尾上揚", "S:one"))
 obj("rope-ring", "Wide shot of a long red jump rope laid out in one big round ring on a sunny green park lawn, " + WHISTLE + " lying in the middle of the ring",
     c("還不行。只聽一個朋友，你只知道離他多遠，", "接住上一句", "P:one"),
     c("你可能在他周圍一整圈的任何地方。"), c("換到太空，是一整顆大球的表面。"))
 obj("hoops-lawn", "Wide shot of three big hula hoops in red, yellow and blue lying overlapping on a sunny green park lawn, soft trees behind",
-    c("再聽第二個、第三個朋友，幾圈疊在一起，"),
+    c("接著聽第二個、第三個朋友，幾個圈疊在一起，"),
     c("能站的地方就縮小了。"),
     c("先說清楚，畫圓圈只是幫你想像的示意。"))
 kid("kid-three-q", K("holding up three fingers with a confident grin", where=PARK),
@@ -220,7 +220,7 @@ obj("wristwatch", "Close-up of a child's wrist wearing " + WATCH + ", resting on
     c("每一聲哨子，你都以為它走得比較短，"),
     c("還記得雷聲三秒一公里？每個朋友都像近了三百多公尺。"))
 kid("kid-all-close", K("looking around in confusion with both hands raised, a small phone in one hand", where=PARK),
-    k("大家一起變近？", "困惑"), k("那我到底在哪？"))
+    k("大家都變近了？", "困惑"), k("那我到底在哪？"))
 chief("chief-no-match", C("spreading her hands with an honest puzzled smile"),
       c("你找不到一個點，跟每個朋友的距離都對得上。"),
       c("所以要多聽一個朋友，"),
@@ -236,7 +236,7 @@ chief("chief-practice", C("giving a small thumbs-up with a pleased smile", close
 chief("chief-best-fit", C("bringing both open hands slowly together in front of her with a satisfied smile", close=True),
       c("聽到的衛星超過四顆，它就找一個跟大家最合得來的答案。"))
 kid("kid-sky-q", K("tilting her head back and looking up at the open sky with a hopeful face", where=PARK),
-    k("天上隨時都有，", "追問"), k("四顆給我聽嗎？", "句尾上揚", "S:sky"))
+    k("天上隨時都有，", "追問"), k("至少四顆嗎？", "句尾上揚", "S:sky"))
 obj("satellite-sky-wide", "Wide shot of a bright blue sky over a sunny green park, one cute cartoon satellite with golden solar wings floating high among soft white clouds",
     c("美國政府的 GPS 網站說，衛星的基本排法有二十四個位置，"),
     c("地球上幾乎任何地方，都看得到至少四顆。", None, "P:sky"))
@@ -317,12 +317,12 @@ obj("whistle-bench", "Close-up of " + WHISTLE + " lying on a wooden park bench i
     c("這些寫在衛星的廣播裡，可是它講得很慢，"),
     c("一秒只有五十個位元。"))
 kid("kid-bit-q", K("tilting her head with a puzzled face, one finger on her chin", close=True, where=PARK),
-    k("位元是什麼？", "句尾上揚"),
+    k("位元是什麼東西？", "句尾上揚"),
     c("資料裡最小的一格，只能是或不是。"),
     c("就像那個朋友報他站在哪裡，一個字一個字慢慢念。"))
 chief("chief-36", C("tapping " + WATCH + " on her wrist and waiting patiently with a wry smile"),
       c("一整輪要三十秒，才從頭再講一次；"),
-      c("鐘差跟衛星在哪，放在每一輪最前面的三段。"))
+      c("衛星的鐘差多少、衛星在哪，放在每一輪最前面的三段。"))
 kid("kid-36", K("walking briskly in mid-step with a small phone in her hand and a cheeky grin", where=STREET),
     c("傳統的做法要聽完這三段，最久要等大約三十六秒。"),
     k("等那麼久，", "笑"), k("我都走到對街了！"))
