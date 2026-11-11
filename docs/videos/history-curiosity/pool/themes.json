@@ -7383,6 +7383,238 @@
           ]
         }
       ]
+    },
+    {
+      "id": "T115",
+      "title": "新羅人貼在門上的兩首詩：鼻荊郎與志鬼",
+      "core_question": "新羅人貼在門上防鬼、防火的文字寫的是誰？這個人的故事又是從哪裡來的？",
+      "connection": "N2563 與 N2564 回答同一個問題：門上貼的咒詞背後是誰的故事、從哪裡來。鼻荊郎那章把《三國遺事》的鬼故事放回《三國史記》，同一位眞智王一邊是荒淫被廢、死後化鬼，一邊只記病逝；志鬼那章把相思燒身追回漢譯《大智度論》，原型是漁夫與公主、教訓也不同。兩章都是從一道門上的咒追到更早的文本（覆核 R231 建議）。",
+      "boredom_risk": "兩段都是『咒詞→故事→更早的文本』，第二段要用論典原文與新羅版的差異推進，不重講史書對照。",
+      "drop_if": "任一章的關鍵原文在製作前重開對不上就刪那章；剩一章時不單獨成題。",
+      "evidence_gaps": "題目已經過篩選研究與非作者覆核（batches/wave23-20261111.json，覆核在 reviews/wave23-review-20261111.json）；寫企劃前仍要照系列流程逐主張查核。鼻荊郎那首詩本身與『聖帝』一句沒讀到，題目不引詩句，製作前對讀刊本；志鬼咒詞的原文沒讀到；《大智度論》的作者與成書地點有爭議，只稱漢譯佛教論典。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 11,
+      "range_minutes": [
+        10,
+        12
+      ],
+      "candidate_ids": [
+        "N2563",
+        "N2564"
+      ],
+      "chapters": [
+        {
+          "title": "開場：門上的兩張紙",
+          "seconds": 55,
+          "new_information": "新羅人在門上貼一首詩防鬼、貼一道咒防火：寫的是誰？",
+          "candidate_ids": [
+            "N2563",
+            "N2564"
+          ]
+        },
+        {
+          "title": "鼻荊郎：鬼王的兒子",
+          "seconds": 150,
+          "new_information": "《三國遺事》說眞智王荒淫被國人廢，死後回來找生前想要的女人，生下會指揮群鬼的鼻荊；鄉俗把寫他的詞貼在門上辟鬼。",
+          "candidate_ids": [
+            "N2563"
+          ]
+        },
+        {
+          "title": "同一位國王，正史只有一行",
+          "seconds": 135,
+          "new_information": "《三國史記》只記眞智王某年七月十七日薨；他是太宗武烈王金春秋的祖父，正史自己就這樣寫。",
+          "candidate_ids": [
+            "N2563"
+          ]
+        },
+        {
+          "title": "志鬼：燒成火鬼的人",
+          "seconds": 130,
+          "new_information": "志鬼愛上善德女王，在塔下睡著，醒來看見她留下的手鐲，心火把自己燒成火鬼；人們把咒詞貼在門上防火。",
+          "candidate_ids": [
+            "N2564"
+          ]
+        },
+        {
+          "title": "更早的同型故事",
+          "seconds": 130,
+          "new_information": "漢譯《大智度論》卷十四：捕魚師愛上公主拘牟頭，婬火內發自燒而死，論典的教訓是『女人之心不擇貴賤』。",
+          "candidate_ids": [
+            "N2564"
+          ]
+        },
+        {
+          "title": "收尾：門上的紙寫的是誰",
+          "seconds": 60,
+          "new_information": "兩張紙背後都是比咒詞更早的文本；留言問題：你家門上貼過什麼？",
+          "candidate_ids": [
+            "N2563",
+            "N2564"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T116",
+      "title": "南美兩個大名字從哪來：Patagonia 與 Brazil",
+      "core_question": "南美最南端與最大國家的名字，是看見什麼取的，還是從舊世界帶過去的？",
+      "connection": "N2583 與 N2584 回答同一個問題：這兩個地名是看見當地取的，還是從舊世界帶來的。Patagonia 常說是麥哲倫看到大腳，學者追到 1512 年騎士小說裡狗臉鹿腳的怪物；Brazil 常說因染布木頭得名，這個字卻早在 1193 年義大利商約、1325 年海圖上的幻島就有了。一個來自小說、一個來自商品標籤（覆核 R232 建議）。",
+      "boredom_risk": "兩段都是『常見說法→更早的紀錄』，第二段要用商約、海圖與葡萄牙史家的抱怨推進，不重講巨人。",
+      "drop_if": "任一章的關鍵來源在製作前重開對不上就刪那章；剩一章時 N2583 單獨做 9–11 分鐘版，N2584 不單獨成題。",
+      "evidence_gaps": "題目已經過篩選研究與非作者覆核（batches/wave23-20261111.json，覆核在 reviews/wave23-review-20261111.json）；寫企劃前仍要照系列流程逐主張查核。María Rosa Lida 1962 年過世，不入畫；Babcock 自己說 grana de Brasill 不一定指染料木，不畫紅色顆粒；巨人身高只照實際量測者的紀錄，不推論平均身高。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 13,
+      "range_minutes": [
+        12,
+        13
+      ],
+      "candidate_ids": [
+        "N2583",
+        "N2584"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩個名字的課本說法",
+          "seconds": 55,
+          "new_information": "大腳的人、染布的木頭：課本這樣解釋南美兩個最有名的名字。",
+          "candidate_ids": [
+            "N2583",
+            "N2584"
+          ]
+        },
+        {
+          "title": "麥哲倫船上的巨人",
+          "seconds": 150,
+          "new_information": "Pigafetta 寫水手只到那人的腰；『大腳』的解釋出自 Gómara、Oviedo 這些後來的史家，研究者稱為民間詞源。",
+          "candidate_ids": [
+            "N2583"
+          ]
+        },
+        {
+          "title": "1512 年的騎士小說",
+          "seconds": 155,
+          "new_information": "1952 年 Lida 指出 Primaleón 裡有狗臉、鹿腳的怪物 Patagón，麥哲倫的船長可能讀過；名字更像一個綽號。",
+          "candidate_ids": [
+            "N2583"
+          ]
+        },
+        {
+          "title": "拿尺量的人量到什麼",
+          "seconds": 120,
+          "new_information": "沒量過的說是巨人；FitzRoy、Musters 這些實際量過的人記下的是很高的人，不是巨人。",
+          "candidate_ids": [
+            "N2583"
+          ]
+        },
+        {
+          "title": "魔鬼改的名字",
+          "seconds": 110,
+          "new_information": "1576 年 Gândavo 抱怨：這塊地本來叫聖十字，是魔鬼讓大家改叫一根染布木頭的名字。",
+          "candidate_ids": [
+            "N2584"
+          ]
+        },
+        {
+          "title": "比巴西早三百年的 Brasil",
+          "seconds": 145,
+          "new_information": "1193 年義大利商約、馬可波羅記的種子、1325 年海圖上愛爾蘭外海的幻島：這個字先在舊世界活了三百年。",
+          "candidate_ids": [
+            "N2584"
+          ]
+        },
+        {
+          "title": "收尾：小說與商品標籤",
+          "seconds": 45,
+          "new_information": "一個名字來自小說，一個來自商品標籤；留言問題：你住的地方名字是怎麼來的？",
+          "candidate_ids": [
+            "N2583",
+            "N2584"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T117",
+      "title": "怎麼證明一份莎士比亞手稿是假的？Ireland 與 Collier",
+      "core_question": "一份「新發現」的莎士比亞手稿，學者要用什麼證據證明它是假的？",
+      "connection": "N2604 與 N2605 回答同一個問題：怎麼證明一份『發現』的莎士比亞手稿是假的。Ireland 父子 1795 年的文件靠全倫敦名流背書，Malone 用一個名字的拼法與年代拆穿，兒子說了實話父親卻到死不信；Collier 1852 年的 Perkins 對開本靠他的學術聲望，大英博物館用顯微鏡與一滴水證明墨水寫在現代鉛筆線上面。一個靠拼字與年代，一個靠哪一層在上面（覆核 R233 建議）。",
+      "boredom_risk": "兩段都是『發現→背書→拆穿』，第二段要用顯微鏡與洗墨的實物證據推進，不重講名流背書。",
+      "drop_if": "任一章的關鍵原文在製作前重開對不上就刪那章；剩一章時 N2604 單獨做 9–10 分鐘版，N2605 不單獨成題。",
+      "evidence_gaps": "題目已經過篩選研究與非作者覆核（batches/wave23-20261111.json，覆核在 reviews/wave23-review-20261111.json）；寫企劃前仍要照系列流程逐主張查核。『環球劇場不在河邊』是 Malone 1796 年的主張，照他說；Collier 曾多次公開展示對開本，不說他不讓人檢查；18 世紀掃描是 OCR，引文要對頁面圖。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 13,
+      "range_minutes": [
+        12,
+        13
+      ],
+      "candidate_ids": [
+        "N2604",
+        "N2605"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩份找到的莎士比亞",
+          "seconds": 55,
+          "new_information": "一份是女王的親筆信與《李爾王》原稿，一份是寫滿當時人訂正的對開本：都被當成大發現。",
+          "candidate_ids": [
+            "N2604",
+            "N2605"
+          ]
+        },
+        {
+          "title": "1795：兒子找到的手稿",
+          "seconds": 160,
+          "new_information": "版畫商在家展出兒子『找到』的文件，Boswell 跪下親吻，二十位名人簽字作證。",
+          "candidate_ids": [
+            "N2604"
+          ]
+        },
+        {
+          "title": "Malone 的一個拼字",
+          "seconds": 155,
+          "new_information": "Malone 1796 年的 Inquiry 從萊斯特伯爵名字的拼法與信中的年代拆穿女王信；隔年新發現的劇本在舞台上一句台詞讓全場爆笑。",
+          "candidate_ids": [
+            "N2604"
+          ]
+        },
+        {
+          "title": "說了實話的兒子",
+          "seconds": 100,
+          "new_information": "兒子坦承一切是他做的，父親到死都不相信。",
+          "candidate_ids": [
+            "N2604"
+          ]
+        },
+        {
+          "title": "1852：學者公布的對開本",
+          "seconds": 120,
+          "new_information": "最有名的莎士比亞學者 Collier 公布 1632 年對開本，頁邊上千條『當時的人』的手寫訂正。",
+          "candidate_ids": [
+            "N2605"
+          ]
+        },
+        {
+          "title": "一滴水與一條鉛筆線",
+          "seconds": 145,
+          "new_information": "大英博物館洗掉《理查二世》第 36 頁一個字母的墨水，底下的現代鉛筆線連續不斷：古老的墨水是後來寫上去的。",
+          "candidate_ids": [
+            "N2605"
+          ]
+        },
+        {
+          "title": "收尾：拼字與層次",
+          "seconds": 45,
+          "new_information": "一個靠拼字與年代，一個靠哪一層在上面；留言問題：你覺得哪一種最難造假？",
+          "candidate_ids": [
+            "N2604",
+            "N2605"
+          ]
+        }
+      ]
     }
   ]
 }
