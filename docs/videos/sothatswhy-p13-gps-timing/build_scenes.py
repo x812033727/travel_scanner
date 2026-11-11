@@ -132,12 +132,12 @@ chief("chief-listen", C("leaning forward with a curious smile, one hand on her c
       c("你叫車的時候，可能也看過車停在對面。", "轉向觀眾"))
 chief("chief-tease", C("holding a small phone up beside her face with a playful knowing smile"),
       c("更怪的是：手機算你在哪裡，靠的是時間。", "賣關子"),
-      c("時間只差百萬分之一秒，距離就差三百公尺。", "數字放慢", "S:micro"))
+      c("時間只差百萬分之一秒，你猜，距離會差多少？", "數字放慢", "S:micro"))
 kid("kid-wow", K("throwing both hands up with wide amazed eyes, a small phone in one hand", close=True, where=STREET),
-    k("差那麼遠？", "驚訝"))
+    k("差一兩公尺吧？", "篤定的錯猜"))
 chief("chief-promise", C("holding up one finger with a warm inviting smile"),
       c("而且手機要聽的衛星，至少要四顆。", "賣關子", "S:four"),
-      c("第四顆在幫的，其實是你手上的手機。", "賣關子"))
+      c("多出來的那一顆，到底在幫誰？", "賣關子"))
 kid("kid-main-q", K("looking down at a small phone in her hand with a thinking frown", where=CORNER),
     k("手機到底怎麼用時間，", "想不通"), k("知道我在哪裡？", "句尾上揚", "S:main"))
 
@@ -167,11 +167,11 @@ kid("kid-travel-q", K("shading her eyes with one hand and gazing up at the sky w
     k("衛星那麼遠，", "好奇"), k("訊號要走多久？", "句尾上揚", "S:travel"))
 obj("satellite-high", "Wide shot of " + SAT + ", a tiny sunny city with tall glass buildings far below under the clouds",
     c("衛星大約在兩萬公里高。訊號從衛星跑到你手上，"),
-    c("通常只要六十到九十毫秒。", "數字放慢", "P:travel"),
+    c("通常只要六十到九十毫秒，一毫秒是千分之一秒。", "數字放慢", "P:travel"),
     k("一眨眼都不到！", "驚訝"))
 chief("chief-light", C("sweeping one flat hand quickly past her face with a bright amazed smile"),
       c("因為它跟光跑得一樣快，一秒大約三十萬公里。"),
-      c("剛剛那三百公尺，就是這樣來的："), c("差百萬分之一秒，光就多跑那麼遠。", None, "P:micro"))
+      c("所以剛剛那百萬分之一秒，"), c("光就跑了大約三百公尺，不是一兩公尺。", None, "P:micro"))
 kid("kid-rel-q", K("holding " + WATCH + " up to her ear with a curious face", close=True, where=PARK),
     k("差一點點都不行！", "驚訝"), k("那衛星的錶，", "追問"), k("真的那麼準嗎？", "句尾上揚", "S:relativity"))
 chief("chief-rel", C("holding a small golden pocket watch with a smooth plain face up beside her face, a curious smile"),
@@ -184,7 +184,8 @@ obj("satellite-clock", "Wide shot of " + SAT + ", far above a big round green an
 chief("chief-38", C("holding up her thumb and finger a tiny gap apart with a serious smile", close=True),
       k("快多少？", "追問"),
       c("照一篇 GPS 相對論的回顧換算，"),
-      c("衛星的鐘一天快了三十八微秒多。"))
+      c("衛星的鐘一天快了三十八微秒多。"),
+      c("一微秒，就是百萬分之一秒。"))
 kid("kid-38", K("shrugging with both palms up and a doubtful grin", where=PARK),
     k("那也太短了吧？", "不以為意"))
 chief("chief-11km", C("pointing one finger at the viewer with a playful raised eyebrow"),
@@ -289,7 +290,8 @@ obj("glass-wall", "Close-up of a tall smooth glass building wall reflecting the 
     c("回到公園：哨聲撞到一面牆，繞了遠路才到你耳朵，"),
     c("你就以為那個朋友比較遠。這叫多路徑。", None, "P:echo"))
 chief("chief-echo-where", C("holding a small phone close to a pale wall with a thoughtful smile"),
-      c("教材說，主要是因為天線太靠近會反射的東西；"),
+      c("歐洲太空總署的導航教材說，"),
+      c("主要是因為天線太靠近會反射的東西；"),
       c("從很低的地方斜斜進來的衛星，影響最大。"))
 kid("kid-iono-q", K("pointing high up at the sky with a curious face", where=PARK),
     k("那天上那段路呢？", "追問"), k("也會走歪嗎？", "句尾上揚", "S:iono"))
@@ -353,11 +355,6 @@ chief("chief-800", C("spreading her arms wide apart with a serious amazed face")
 chief("chief-fifth", C("counting on her fingers with an encouraging smile", close=True),
       c("對。所以有些手機把現在是哪一刻，也當成要算的答案。"),
       c("這是第五個不知道的數，要至少五顆衛星。", None, "P:cost"))
-kid("kid-map-q", K("looking down at a small phone with a doubtful frown", where=CORNER),
-    k("那藍點對了，", "追問"), k("導航還帶錯路呢？", "句尾上揚", "S:map"))
-chief("chief-map", C("holding a small phone and tilting her head with an honest smile"),
-      c("不一定是 GPS 的錯。官方網站說，很多時候硬體沒問題，"),
-      c("錯的是地圖：路畫錯、店標錯，或少了一條路。", None, "P:map"))
 kid("kid-final-q", K("standing still and looking up from a small phone with a thinking face", where=STREET),
     k("所以我的藍點跳到對街，", "推理"), k("到底是怎麼回事？", "章尾停住，句尾上揚"))
 
@@ -390,8 +387,7 @@ WHAT = {"main": "手機怎麼用時間，知道我在哪裡", "jump": "藍點為
         "signal": "藍點跳走，是不是衛星訊號不準", "echo": "大樓是不是把訊號吃掉了",
         "iono": "天上那段路會不會也走歪", "military": "是不是故意給民眾不準的訊號",
         "relativity": "衛星的錶真的那麼準嗎", "slow": "地圖剛打開，藍點為什麼要等很久",
-        "assist": "為什麼我的手機一打開就有藍點", "cost": "不用等的辦法有沒有缺點",
-        "map": "藍點對了，導航為什麼還帶錯路"}
+        "assist": "為什麼我的手機一打開就有藍點", "cost": "不用等的辦法有沒有缺點"}
 scenes, loops_s, loops_p, n, beats = [], {}, {}, 0, 0
 for sc in S:
     lines = []
@@ -437,7 +433,7 @@ doc = {
                        "衛星就是帶著原子鐘的朋友，訊號跑得跟光一樣快，所以時間只差百萬分之一秒，距離就差三百公尺，連衛星時鐘那一點相對論的差都一定要先修好；"
                        "手機沒有原子鐘，所以要多聽第四顆衛星，把自己的錶差多少也一起算出來。"
                        "接著看藍點為什麼會偏：衛星送得很準，藍點偏多半是訊號離開衛星以後的事——大樓擋住、牆面反彈、高空的電離層；"
-                       "最後是剛開地圖時為什麼要等、手機怎麼靠網路省下等待卻得多找一顆衛星，以及藍點對了、地圖卻畫錯的時候。\n\n"
+                       "最後是剛開地圖時為什麼要等，以及手機怎麼靠網路省下等待，卻得多找一顆衛星。\n\n"
                        "畫圓圈找交點只是示意，真正的接收機是把位置和時間一起估算出來；插圖由 AI 生成，是示意，不是實際的衛星位置。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["GPS", "衛星定位", "手機地圖", "原子鐘", "多路徑", "電離層", "相對論", "科普", "原來如此事務所"]},
     "thumbnail": {"template": "thumb", "data": {"headline": "藍點\n**跳到對街？**", "sub": "差百萬分之一秒，差三百公尺", "shot": "kid-dot-puzzled", "subject": "right"}},
