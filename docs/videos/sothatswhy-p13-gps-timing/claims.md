@@ -126,12 +126,12 @@
 - **來源**：[1]、[10]
 - **原文**：GPS.gov [1]：「Signals reflected off buildings or walls ("multipath")」列為常見原因。
   Navipedia [10]：「The interference by multipath is generated when a signal arrives, by different ways, at the antenna … Its principal cause is the antenna closeness to the reflecting structures, and it is important when the signal comes from the satellite with low elevation.」
-- **注意**：Navipedia 說碼量測的多路徑「Typically, it is less than 2 or 3 meters」、超過 15 公尺很難觀察；片中**沒有**念這兩個數字，也沒有說多路徑單獨就會把人放到對街（收尾 p182–p183 小問只說「訊號撞牆晚到一點點，手機就把我算到對街了」，是她自己的經驗；舊版收尾把遮擋、反彈與時間合在一起說）。
+- **注意**：Navipedia 說碼量測的多路徑「Typically, it is less than 2 or 3 meters」、超過 15 公尺很難觀察；片中**沒有**念這兩個數字，也沒有說多路徑單獨就會把人放到對街（收尾 p182–p183 小問只說「剛剛那個撞牆的訊號，晚到一點點，就把我算到對街」，是她自己的經驗；舊版收尾把遮擋、反彈與時間合在一起說）。
   「繞了遠路才到 → 以為比較遠」對應 [10] 的「arrives, by different ways」。
 
 ## C14 電離層延遲；單頻只能用模型、效應可達幾十公尺；廣播模型約修一半；延遲與頻率有關，雙頻可去掉 99.9% 以上【教材】
 
-- **可用說法**：p134–p142。第七輪（盲評 no_detour）改成小問的錯猜「會不會是天上那段路，把我的藍點弄歪？」，所長幾句排除後交回大樓：p136 電離層拖慢訊號；p137「只聽一個頻率，就像只聽一種音高，這個效應可以到幾十公尺」（「頻率」第一次出現時用音高說明：GPS.gov [1]「two GPS radio frequencies: L1 and L2」「a third civil signal at the L5 frequency」）；p138「可是它是整片天空慢慢變，不會在兩棟大樓之間突然跳」；p139 廣播修正估計約修一半；p140–p141 雙頻（高低兩支哨子）去掉九成九以上；p142「所以把你甩到對街的，不是天上，是旁邊那些大樓」。片中不說「接收機」
+- **可用說法**：p134–p142。第七輪（盲評 no_detour）改成小問的錯猜「會不會是天上那段路，把我的藍點弄歪？」，所長幾句排除後交回大樓：p136 電離層拖慢訊號；p137「只聽一個頻率，就像只聽一種音高，這個效應可以到幾十公尺」（「頻率」第一次出現時用音高說明：GPS.gov [1]「two GPS radio frequencies: L1 and L2」「a third civil signal at the L5 frequency」）；p138「可是它是整片天空慢慢變，不會在兩棟大樓之間突然跳」；p139 廣播修正估計約修一半；p140–p141 雙頻（高低兩支哨子）去掉九成九以上；p142「所以把你甩到對街的，不是天上那段路」。片中不說「接收機」
 - **來源**：[11]、[12]
 - **原文**：Navipedia [11]：「As the ionosphere is a dispersive media, the GNSS signals refraction depends on its frequencies (as the squared inverse). This dependence on the signal frequency allows us to remove its effect up to more than 99.9% using two frequency measurements … But, single frequency receivers have to apply an ionospheric prediction model to remove (as much as possible) this effect, that can reach up to several teens of meters」。
   Navipedia [12]：「GPS satellites broadcast the parameters of the Klobuchar ionospheric model for single frequency users … estimated to reduce about the 50% RMS ionospheric range error worldwide.」
@@ -202,7 +202,7 @@
 ## C22 收尾：小問的答案、所長的意見【回收，意見標成意見】
 
 - **可用說法**：p180–p185。p184–p185「說得好。還記得那支慢一秒的錶嗎？我覺得最神奇的是：手機每次定位，都在幫自己對錶。」是所長的**意見**，內容對應 C07（每次解算都把鐘差當未知數）。
-  p182–p183「訊號撞牆晚到一點點，手機就把我算到對街了」是小問把多路徑（繞遠路＝量到的時間變長，C13）說成自己的話；第二輪拿掉了逐條回顧（哨子、第四顆、被擋）。
+  p182–p183「剛剛那個撞牆的訊號，晚到一點點，就把我算到對街」是小問把多路徑（繞遠路＝量到的時間變長，C13）說成自己的話；第二輪拿掉了逐條回顧（哨子、第四顆、被擋）。
 
 ## 來源
 

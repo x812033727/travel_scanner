@@ -305,7 +305,7 @@ obj("two-whistles", "Close-up of two whistles lying side by side on a wooden par
     c("同時聽高低兩個頻率，就像比一比兩支哨子，"),
     c("電離層的效應，可以去掉九成九以上。"))
 kid("kid-towers-back", K("looking up at the tall glass towers beside her with a knowing little nod", where=STREET),
-    c("所以把你甩到對街的，不是天上，是旁邊那些大樓。", None, "P:iono"))
+    c("所以把你甩到對街的，不是天上那段路。", None, "P:iono"))
 kid("kid-slow-q", K("holding a small phone up and tapping it impatiently with a bored pout", where=CORNER),
     k("還有我重開地圖那次，", "抱怨"), k("藍點怎麼等那麼久？", "章尾停住，句尾上揚", "S:slow"))
 
@@ -362,8 +362,8 @@ kid("kid-final-q", K("standing still and looking up from a small phone with a th
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
       c("你剛剛就走在那兩排大樓中間，你說呢？", "笑"), chapter="走到公園，小問想通了")
 kid("kid-got-it", K("pointing back towards tall glass buildings in the distance with a big confident grin", where=PARK),
-    k("原來如此！", "恍然大悟"), k("訊號撞牆晚到一點點，", "篤定"),
-    k("手機就把我算到對街了！", "篤定", "P:jump"))
+    k("原來如此！", "恍然大悟"), k("剛剛那個撞牆的訊號，", "篤定"),
+    k("晚到一點點，就把我算到對街！", "篤定", "P:jump"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好。還記得那支慢一秒的錶嗎？", "笑"),
       c("我覺得最神奇的是：手機每次定位，都在幫自己對錶。"))
