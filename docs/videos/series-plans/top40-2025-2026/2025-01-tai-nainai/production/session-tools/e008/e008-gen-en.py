@@ -49,8 +49,7 @@ MCU = "a medium close-up from the chest up, {who} filling about half of the fram
 YARD = "The inner stone courtyard of the old Shen house at dusk, just after dark"
 YARD_WIDE = ("seen from the back door of the main hall looking north as in the courtyard picture: a round stone table with a few stone stools in the middle on "
              "the sunken stone floor; an old well with a small wooden roof on the left; bamboo drying poles leaning on the right; covered corridors with dark red "
-             "pillars on both sides, warm yellow light glowing on their walls; at the far end the ancestral hall's dark lattice doors above stone steps; deep "
-             "blue sky")
+             "pillars on both sides, warm yellow light glowing on their walls; at the far end the ancestral hall's dark lattice doors above stone steps")
 Y_LEFT = "behind {w} only out-of-focus dark red corridor pillars and warm yellow light glowing on a wall"
 Y_YT = "behind her only out-of-focus corridor pillars and a dark wall"
 KIT = "The kitchen of the old Shen house late at night"
@@ -60,7 +59,7 @@ KIT_WIDE = ("seen from the front of the room toward the back wall as in the kitc
             "hanging on the walls")
 CORR = "The covered corridor of the old Shen house late at night"
 CORR_WIDE = ("seen along the corridor as in the corridor picture: on the left wall a row of dark red wooden doors, dark red pillars and rolled-up bamboo blinds; "
-             "on the right wall a long wooden bench and one small wall lamp with a white shade; at the far end an open doorway onto the dark courtyard; a green "
+             "on the right wall a long wooden bench; two small wall lamps with white shades, one far on the left and one on the right; at the far end an open doorway onto the dark courtyard; a green "
              "metal bin with a lid beside it, nothing written on it")
 CRACK = "the near dark red wooden door on the left wall stands open a finger's width, flickering white light coming through the crack"
 
@@ -82,12 +81,12 @@ def shot(sid, base, **kw):
 # ---- 第一場：院子 ----
 shot("c01", Y, camera="Over-the-shoulder medium close-up, slow push in", characters=["meifeng", "yuetang-18"], ref_characters=["meifeng", "yuetang-18"], no_set=True,
      clip_seconds=10, prompt=(
-    f"{YARD}; {Y_LEFT.format(w='her')}. Exactly two people in the whole frame. Over Shen Yuetang's left shoulder: {YT_LFG}. On screen left, "
-    f"{MCU.format(who='she')}: {MF}; {NOTWEAR}. In the first frame she is already standing still by the round stone table, gripping {ROBE} by its shoulders and "
-    "holding it out toward Shen Yuetang. Brows shot up, eyes glaring at Shen Yuetang, mouth corners pulled down, chin thrust forward, chest heaving, no smile, no "
-    f"teeth. In the first second she gives the robe one hard shake; {OPEN_F}. Lin Meifeng, turned to Shen Yuetang at screen right in three-quarter profile, chin "
-    "up, speaks a short Mandarin line, shouting for the whole house to hear, her lips, jaw and cheeks moving clearly with every syllable. Shen Yuetang's lips stay "
-    "closed. End: the robe held out, her eyes on Shen Yuetang."),
+    f"{YARD}; {Y_LEFT.format(w='her')}. Exactly two people in the whole frame. Over Shen Yuetang's shoulder: only the back of her head with glossy black hair "
+    f"soft at the right frame edge, no face, no ear, no earring. On screen left, {MCU.format(who='she')}: {MF}; {NOTWEAR}. In the first frame she is "
+    f"already standing still, both hands holding {ROBE} up in front of her chest toward Shen Yuetang, her lips closed. Brows shot up, eyes glaring at Shen "
+    "Yuetang, mouth corners pulled down, chin thrust forward, chest heaving, no smile, no teeth. In the first second she gives the robe one hard shake toward "
+    f"her; {OPEN_F}. Lin Meifeng, turned to Shen Yuetang at screen right in three-quarter profile, chin up, speaks a short Mandarin line, shouting for the whole "
+    "house to hear, her lips, jaw and cheeks moving clearly with every syllable. Shen Yuetang's lips stay closed. End: the robe held up, her eyes on Shen Yuetang."),
     motion="Shaking the burial robe at the nanny, Lin Meifeng shouts for the whole house to come and see the thief.")
 shot("c02", Y, camera="Medium close-up, locked", characters=["yuetang-18"], no_set=True, action_seconds=2, prompt=(
     f"{YARD}; {Y_YT}; warm yellow wall light from screen left on half her face. Exactly one person in the whole frame, a medium close-up from the chest up: "
@@ -97,14 +96,14 @@ shot("c02", Y, camera="Medium close-up, locked", characters=["yuetang-18"], no_s
     motion="She steps half a step toward Lin Meifeng, her eyes going from her face down to the burial robe.")
 shot("c03", Y, camera="Medium two-shot, locked", characters=["meifeng", "yuetang-18"], no_set=True, action_seconds=2, prompt=(
     f"{YARD}; seen side-on by the round stone table, {Y_LEFT.format(w='them')}. Exactly two people in the whole frame, facing each other side-on, never looking at "
-    f"the camera. On screen left {MF}; {NOTWEAR}; her right hand still grips one shoulder of {ROBE}. On screen right {YT_FULL}; in the first frame her bare right "
-    f"hand already holds the other shoulder of the robe, and {BAG_STAIN} hangs from her left hand. Lin Meifeng: one brow raised, eyes narrowed, red lips twisted to "
-    f"one side, no teeth. Shen Yuetang: brows level, eyes on Lin Meifeng's face, lips closed, chin tucked, {NOSMILE}. In the first second Lin Meifeng's hand lets go "
-    "and Shen Yuetang draws the robe in front of her, slow and steady, while Lin Meifeng steps half a step back. Everyone's lips stay closed. End: halfway through "
-    "the step back."),
-    motion="Lin Meifeng lets go of the robe and Yuetang draws it to herself.")
+    f"the camera. On screen left {MF}; {NOTWEAR}; her right hand still holds one shoulder of {ROBE}. On screen right {YT_UP}; in the first frame her bare right "
+    "hand already holds the other shoulder of the robe; her left hand is out of the frame. Lin Meifeng: one brow raised, eyes narrowed, red lips twisted to one "
+    f"side, no teeth. Shen Yuetang: brows level, eyes on Lin Meifeng's face, lips closed, chin tucked, {NOSMILE}. In the first second Shen Yuetang draws the robe "
+    "toward herself, slow and steady, and Lin Meifeng's fingers slide off its shoulder. Everyone's lips stay closed. The camera holds a static shot. End: the "
+    "moment her fingers slip off."),
+    motion="Yuetang draws the robe to herself and Lin Meifeng's fingers slide off it.")
 shot("c04", Y, camera="Over-the-shoulder medium close-up, slow push in", characters=["yuetang-18", "meifeng"], ref_characters=["yuetang-18", "meifeng"], no_set=True,
-     clip_seconds=8, prompt=(
+     clip_seconds=9, prompt=(
     f"{YARD}; {Y_YT}. Exactly two people in the whole frame. Over Lin Meifeng's right shoulder: {MF_RFG}. On screen right, {MCU.format(who='she')}: {YT_UP}, "
     f"holding {FOLDED} against her chest with both hands. Brows level, eyes fixed on Lin Meifeng, lips pressing together between phrases, chin slightly tucked, "
     f"steady breath, {NOSMILE}; the same face from the first frame to the last. {OPEN_F.capitalize()}. Shen Yuetang, turned to Lin Meifeng at screen left in "
@@ -127,10 +126,10 @@ shot("c06", Y, camera="Over-the-shoulder medium close-up, locked", characters=["
     "a short Mandarin line, impatiently, his lips, jaw and cheeks moving clearly with every syllable. Shen Yuetang's lips stay closed. The camera holds a static "
     "shot. End: his eyes on her."),
     motion="Jianye jabs a finger at the robe: the dead woman's things are her estate.")
-shot("c07", Y, camera="Low-angle medium close-up, slow push in to a medium close-up", characters=["yuetang-18"], no_set=True, clip_seconds=10,
+shot("c07", Y, camera="Low-angle medium shot, slow push in to a medium close-up", characters=["yuetang-18"], no_set=True, clip_seconds=10,
      addressee="Shen Jianye beyond the left edge of the frame, well off to the left of the lens", prompt=(
-    f"{YARD}; seen from stone-table height looking up, behind her only out-of-focus corridor pillars and the deep blue sky. Exactly one person in the whole frame, "
-    f"a medium close-up from the chest up: {YT_UP}, holding {FOLDED} against her chest; warm yellow wall light from screen left on half her face. Back very "
+    f"{YARD}; seen from stone-table height looking up, behind her only out-of-focus corridor pillars and dark eaves. Exactly one person in the whole frame, "
+    f"at first a medium shot from the waist up: {YT_UP}, holding {FOLDED} against her chest; warm yellow wall light from screen left on half her face. Back very "
     f"straight, chin lifted a little, eyes fixed on the man far off to the left, brows level, lips pressing together between words, steady breath, {NOSMILE}; the "
     f"same face from the first frame to the last. {OPEN_F.capitalize()}. Shen Yuetang, turned toward him in three-quarter profile, speaks a short Mandarin line, "
     "slowly, word by word, her lips, jaw and cheeks moving clearly with every syllable. End: her eyes still on him."),
@@ -151,13 +150,13 @@ shot("c09", Y, camera="Medium close-up, locked", characters=["yuetang-18"], no_s
     "Shen Yuetang, turned toward her in three-quarter profile, speaks a short Mandarin line in an old woman's voice, very slow and soft, her voice sinking at the "
     "end, her lips, jaw and cheeks moving clearly with every syllable. The camera holds a static shot. End: her eyes still on her."),
     motion="In the old lady's slow, soft voice, she repeats what was said at dinner that night.")
-shot("c10", Y, camera="Medium shot over the shoulder, slow push in", characters=["yuetang-18", "meifeng"],
-     ref_characters=["yuetang-18", "meifeng"], no_set=True, clip_seconds=10, prompt=(
+shot("c10", Y, camera="Medium shot over the shoulder, locked", characters=["yuetang-18", "meifeng"],
+     ref_characters=["yuetang-18", "meifeng"], no_set=True, clip_seconds=12, prompt=(
     f"{YARD}; {Y_YT}. Exactly two people in the whole frame. Over Lin Meifeng's right shoulder: {MF_RFG}. On screen right, from the waist up: {YT_UP}; in the "
     f"first frame she is already stooping a little like an old woman, both hands holding {FOLDED} folded in front of her waist. Brows drooping, eyelids half "
     f"lowered, lips pressing together between phrases, chin pushed forward, slow breath, {NOSMILE}; the same face from the first frame to the last. "
     f"{OPEN_F.capitalize()}. Shen Yuetang, turned to Lin Meifeng at screen left in three-quarter profile, speaks a short Mandarin line in a deliberately slow, "
-    "old-sounding drawl, her lips, jaw and cheeks moving clearly with every syllable, her back staying slightly stooped. Lin Meifeng's lips stay closed. End: "
+    "old-sounding drawl, her lips, jaw and cheeks moving clearly with every syllable, her back staying slightly stooped. Lin Meifeng's lips stay closed. The camera holds a static shot. End: "
     "still stooping, her eyes on Lin Meifeng."),
     motion="Stooping like an old woman, she mimics Lin Meifeng mimicking the old lady that night.")
 shot("c11", Y, camera="Medium two-shot, locked", characters=["meifeng", "jianye"], no_set=True, action_seconds=2, prompt=(
@@ -177,22 +176,22 @@ shot("c12", Y, camera="Over-the-shoulder medium close-up, locked", characters=["
     motion="With a forced laugh she says anyone could make that up from one line overheard at the door.")
 shot("c13", Y, camera="Wide shot, slow push in", characters=["yuqin"], action_seconds=4, prompt=(
     f"{YARD}, {YARD_WIDE}. Exactly two people in the whole frame, one face. FIRST, at the right edge of the foreground, seen only from behind and out of focus: a "
-    "young woman's back in a moon-white high-collared shirt and an ankle-length navy skirt, one thick black braid down her right shoulder, her face unseen. In the "
-    f"middle right, in the first frame already halfway across the stone floor from the right-hand corridor: {YQ}, both hands on the wheels. Brows pushed up and "
-    "together, eyes bright and glistening with tears, no redness, no red marks, staring straight at the young woman, mouth open in a cry. In the first second she "
-    "shoves the wheels hard and the wheelchair rolls fast toward the young woman at the front right, her mouth open in a cry; the young woman's back does not move. "
-    "End: halfway across."),
-    motion="Yuqin wheels herself across the courtyard toward Yuetang, crying out.")
-shot("c14", Y, camera="Medium two-shot, locked", characters=["yuqin", "yuetang-18"], no_set=True, clip_seconds=8, prompt=(
+    "young woman's back in a moon-white high-collared shirt and an ankle-length navy skirt, one thick black braid down her right shoulder, her face unseen. On the "
+    f"right, on the raised walkway of the right-hand corridor, not yet down the step: {YQ}, both hands on the wheels, coming toward the foreground. Brows pushed up "
+    "and together, eyes bright and glistening with tears, no redness, no red marks, staring straight at the young woman, mouth open in a cry. In the first second "
+    "she gives the wheels one hard push and the wheelchair rolls along the walkway toward the foreground; the young woman's back does not move. End: halfway "
+    "through the push."),
+    motion="Yuqin pushes her wheelchair along the corridor toward Yuetang, crying out.")
+shot("c14", Y, camera="Medium two-shot, locked", characters=["yuqin", "yuetang-18"], no_set=True, clip_seconds=9, prompt=(
     f"{YARD}; seen side-on, {Y_LEFT.format(w='them')}. Exactly two people in the whole frame. On screen left {YQ}; in the first frame her arms are already wrapped "
     f"around the young woman's waist and her face is lifted from her side toward her, in three-quarter profile toward the upper right. On screen right {YT_UP}, "
-    "standing and bending toward her, her bare right hand already resting on the old woman's back, the folded white robe tucked under her left arm. Shen Yuqin: "
+    "standing and bending toward her, her bare right hand already resting on the old woman's back, her left hand down out of the frame. Shen Yuqin: "
     "brows pushed up and together, eyes glistening with tears, no redness, no red marks, certain and fixed on the young woman's face, mouth corners pulled down. "
     f"Shen Yuetang: brows drawn gently up and together, eyes looking down at her, lips closed, {NOSMILE}. {OPEN_F.capitalize()}. Shen Yuqin, turned to Shen "
     "Yuetang in three-quarter profile, speaks a short Mandarin line, crying and certain, her lips, jaw and cheeks moving clearly with every syllable; Shen Yuetang "
     "pats her back once. Shen Yuetang's lips stay closed. The camera holds a static shot. End: holding each other."),
     motion="Holding her round the waist, Yuqin cries: Mama, why did you take so long to come back?")
-shot("c15", Y, camera="Medium close-up, slow push in", characters=["yuetang-18"], no_set=True, clip_seconds=8,
+shot("c15", Y, camera="Medium close-up, slow push in", characters=["yuetang-18"], no_set=True, clip_seconds=9,
      addressee="Shen Yuqin below the lower left edge of the frame", prompt=(
     f"{YARD}; {Y_YT}; seen from slightly low. Exactly two people in the whole frame, one face. FIRST, at the lower left edge of the frame, very close to the lens "
     "and out of focus: the back of an old woman's short silver-white hair, only the back of her head, no face. On screen right, a medium close-up from the chest "
@@ -230,11 +229,11 @@ shot("c18", Y, camera="Over-the-shoulder medium close-up, slow push in", charact
 # ---- 第二場：廚房到東迴廊 ----
 shot("c19", K, camera="Wide shot, slow push in", characters=["yuetang-18", "fubo"], action_seconds=3, prompt=(
     f"{KIT}, {KIT_WIDE}; a corner of the wooden table in the lower foreground. Exactly two people in the whole frame. On screen right at the sink, side-on: "
-    f"{YT_FULL}, her sleeves folded back to the wrists, both hands holding {BAG} down in the water of the sink. On screen left, in the first frame already "
-    f"stepping in through the open door: {FB_FULL}, {KEYS}. Shen Yuetang: brows slightly drawn, eyes down on the bag, lips closed, {NOSMILE}. Fu Bo: brows lifted, "
-    "eyes on the bag in her hands, lips closed, no smile, no teeth. In the first second she lifts the bag out of the water and wrings a strap, water dripping back "
-    "into the sink; he takes one step toward her and stops. Everyone's lips stay closed. End: he stops."),
-    motion="Late at night she wrings out the washed school bag at the sink as Fu Bo comes in with his keys.")
+    f"{YT_FULL}, her sleeves folded back to the wrists; in the first frame both hands already hold {BAG_WET} up above the sink, the bells hanging clear of the "
+    f"water. On screen left, in the first frame already stepping in through the open door: {FB_FULL}, {KEYS}. Shen Yuetang: brows slightly drawn, eyes down on "
+    f"the bag, lips closed, {NOSMILE}. Fu Bo: brows lifted, eyes on the bag in her hands, lips closed, no smile, no teeth. In the first second she presses her "
+    "palm once on the flap of the bag; he takes one step toward her and stops. Everyone's lips stay closed. End: he stops."),
+    motion="Late at night she holds the washed school bag over the sink as Fu Bo comes in with his keys.")
 shot("c20", K, camera="Medium close-up, locked", characters=["fubo"], no_set=True, clip_seconds=10,
      addressee="Shen Yuetang beyond the right edge of the frame, well off to the right of the lens", prompt=(
     f"{KIT}; behind him only the out-of-focus open door in the left wall and the dark night beyond it. Exactly one person in the whole frame, a medium close-up "
@@ -248,7 +247,7 @@ shot("c21", K, camera="Medium close-up, slow push in", characters=["yuetang-18"]
     f"{KIT}; behind her only the out-of-focus black window and white wall tiles. Exactly one person in the whole frame, a medium close-up from the chest up: "
     f"{YT_UP}, her sleeves folded back to the wrists; her left hand holds {BAG_WET} up at chest height, and her bare right hand already cups the bells. Brows "
     f"level, eyes on the old man far off to the left, lips pressing together between phrases, chin slightly tucked, {NOSMILE}; the same face from the first frame "
-    f"to the last. In the first second she gives the bag one small shake of water; {OPEN_F}. Shen Yuetang, turned toward him in three-quarter profile, speaks a "
+    f"to the last. In the first second she lifts the bag a little; {OPEN_F}. Shen Yuetang, turned toward him in three-quarter profile, speaks a "
     "short Mandarin line, calmly and briefly, her lips, jaw and cheeks moving clearly with every syllable. End: the bag held up, her eyes on him."),
     motion="Holding up the washed bag, she says only that it got dirty and she is taking it back to her.")
 shot("c22", K, camera="Medium close-up, locked", characters=["fubo"], no_set=True, clip_seconds=10,
@@ -280,13 +279,13 @@ shot("c25", C, camera="Medium close-up, locked", characters=["yuetang-18"], no_s
     "from the first frame to the last. In the first second her right hand tightens around the bells and she draws the bag in against her chest. Her lips stay closed. The camera holds a static shot. "
     "End: the bells held silent in her fist."),
     motion="She clamps the bells in her fist and draws the bag to her chest so nothing rings.")
-shot("c26", C, camera="Point-of-view medium shot, locked", characters=["xiaoman"], looks={"xiaoman": "home"}, set="shenjia-xiaomanfang", no_set=True, no_face=True, action_seconds=4, prompt=(
-    "A teenage girl's small bedroom late at night, seen through a finger-wide crack of a door: the out-of-focus edges of the dark red wooden door fill the left "
-    f"and right of the frame. Through the crack: {XM}, sitting on the edge of a single bed, only her back, shoulders and ponytail seen; a phone in her hands, its "
-    "screen facing her and never seen; an empty hook on the wall above the bed head; a lit desk lamp on a desk; white light from the phone flickering on the "
-    "wall. Nobody else is in the room. In the first second her shoulders start to heave and her head sinks. Her face is never in the frame. The camera holds a "
-    "static shot. End: head bowed, shoulders shaking."),
-    motion="Through the crack, Xiaoman sits on her bed with her back to the door, shoulders shaking as a video plays.")
+shot("c26", C, camera="Point-of-view medium shot, locked", characters=["xiaoman"], looks={"xiaoman": "home"}, set="shenjia-xiaomanfang", no_face=True, action_seconds=4, prompt=(
+    "A teenage girl's small bedroom late at night as in the bedroom picture, seen from the doorway: a single bed, an empty hook on the wall above the bed head, "
+    f"a desk with a lit desk lamp, nothing written anywhere. Exactly one person in the whole frame: {XM}, sitting at the foot of the bed with her back to the "
+    "camera, only her back, shoulders and ponytail seen; both hands hold a phone at her chest, its screen facing her and never seen; faint white light from the "
+    "phone on the wall. In the first second her shoulders start to heave and her head sinks. Her face is never in the frame. The camera holds a static shot. "
+    "End: head bowed, shoulders shaking."),
+    motion="Xiaoman sits on her bed with her back to the door, shoulders shaking as a video plays.")
 shot("c27", C, camera="Close-up, slow push in", characters=["yuetang-18"], no_set=True, action_seconds=4, prompt=(
     f"{CORR}; behind her only the out-of-focus dark corridor. Exactly one person in the whole frame, a close-up of her face and shoulders: {YT_UP}, her hands "
     "below the bottom edge of the frame; white light from the crack flickering on her face from the left. Brows slowly drawing together, eyes fixed on the crack "
@@ -294,12 +293,13 @@ shot("c27", C, camera="Close-up, slow push in", characters=["yuetang-18"], no_se
     "frame to the last. In the first second her chin tucks in and she blinks once, her eyes never leaving the crack. Her lips stay closed. End: her eyes on the "
     "crack."),
     motion="Lit by the flicker from the crack, she understands what the girl is afraid of.")
-shot("c28", C, camera="Point-of-view medium shot, locked", characters=["xiaoman"], looks={"xiaoman": "home"}, set="shenjia-xiaomanfang", no_set=True, no_face=True, action_seconds=3, prompt=(
-    "A teenage girl's small bedroom late at night, seen through a finger-wide crack of a door: the out-of-focus edges of the dark red wooden door fill the left "
-    f"and right of the frame. Through the crack: {XM}, sitting on the edge of a single bed, the phone lying on her knees, its screen facing up and never seen; an "
-    "empty hook on the wall above the bed head; a lit desk lamp. Nobody else is in the room. In the first second she wraps both arms around her knees and buries "
-    "her face; the phone's light falls on the backs of her hands. Her face is never in the frame. The camera holds a static shot. End: face buried in her knees."),
-    motion="Through the crack, Xiaoman hugs her knees and buries her face.")
+shot("c28", C, camera="Point-of-view medium shot, locked", characters=["xiaoman"], looks={"xiaoman": "home"}, set="shenjia-xiaomanfang", no_face=True, action_seconds=3, prompt=(
+    "A teenage girl's small bedroom late at night as in the bedroom picture, seen from the doorway: a single bed, an empty hook on the wall above the bed head, "
+    f"a desk with a lit desk lamp, nothing written anywhere. Exactly one person in the whole frame: {XM}, sitting at the foot of the bed with her back to the "
+    "camera; in the first frame both hands still hold the phone at her chest, its screen facing her and never seen. In the first second she lays the phone on "
+    "her lap and buries her head in both hands; the phone's light falls on the backs of her hands. Her face is never in the frame. The camera holds a static "
+    "shot. End: her head in her hands."),
+    motion="Xiaoman puts the phone down on her lap and buries her head in her hands.")
 shot("c29", C, camera="Close-up, slow push in", characters=["yuetang-18"], no_set=True, action_seconds=5, prompt=(
     f"{CORR}; behind her only the dark corridor. Exactly one person in the whole frame, a close-up of her face and shoulders: {YT_UP}, the bag and her "
     "clenched right hand below the bottom edge of the frame; the phone light from the crack flickering on her face from the left. Eyes wide and fixed on the crack "

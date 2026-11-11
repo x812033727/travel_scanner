@@ -5,12 +5,16 @@
 26 stills cover 29 shots: c04 also serves c18 (her over Lin Meifeng's shoulder, robe at her chest), c20 also serves c22 (Fu Bo at the kitchen
 door), c26 also serves c28 (the door-crack point of view).
 
-refs: names under assets/refs/; `E7PICK:<shot>` is $TN_WORK/e007ff/pick/<shot>.png (episode 7's picked first frame); `PICK:<shot>` is
-$TN_WORK/e008ff/pick/<shot>.png. `prop-shubao-t1.png` (the school bag, cut from E7PICK:c18 and cleaned) does not exist yet: the coordinator draws it first.
+refs: names under assets/refs/; `E7PICK:<name>` is $TN_WORK/e007ff/pick/<name>.png (episode 7; `c29-last` is the last frame of the c29 clip,
+extracted by the coordinator); `PICK:<shot>` is $TN_WORK/e008ff/pick/<shot>.png.
+
+Two batches. Batch 2 (`"batch": 2`) edits a first frame picked in batch 1 so the same person keeps the same face: c10 <- PICK:c04, c12 <- PICK:c08,
+c09 <- PICK:c02, c29 <- PICK:c27. Draw a batch-2 still only after the shot it edits is picked. `prop-shubao-t1.png` (the school bag, cut from E7PICK:c18 and cleaned) does not exist yet: the coordinator draws it first.
 
 What episode 7's four rounds taught (handoff ticket, last section of 2026-11-11; e007/redo*_stills.py):
 - redrawing a whole frame almost always fails; editing the closest picture usually works. So every wide (c05, c13, c19, c23) and the
-  door-crack view (c26) is an EDIT of the set picture (`latent: image1`) that only puts people in; c01 is an edit of episode 7's c29 pick.
+  bedroom view (c26) is an EDIT of the set picture (`latent: image1`) that only puts people in; c01 is an edit of the last frame of episode 7's c29.
+- the door crack of c26/c28 is not drawn by the model: the edit adds a soft-edged mask (script.md〈剪接〉).
 - close shots are kept simple: one clear person and at most one blurred shoulder or back of a head, written FIRST ("FIRST, at the RIGHT edge ...");
   the foreground person is never named and is "only the back of the head, no face, no ear, no earring".
 - at most two visible faces; a third person is only a back at the frame edge. "ONLY ONE <person>" against doubles; the people count goes last.
@@ -78,19 +82,20 @@ YT_BACK_R = ("FIRST, at the RIGHT edge of the foreground, cut by the frame edge 
 S = []
 
 
-def still(shot, refs, prompt, shares=(), latent=None):
+def still(shot, refs, prompt, shares=(), latent=None, batch=None):
     s = {"shot": shot, "shares_with": list(shares), "refs": refs, "prompt": prompt}
     if latent:
         s["latent"] = latent
+    if batch:
+        s["batch"] = batch
     S.append(s)
 
 
 # ---- 第一場：院子 ----
-still("c01", ["E7PICK:c29"], (
-    "Edit image 1. Only change: the woman in wine-red lifts her chin a little higher and draws a breath as if about to shout, eyebrows still raised high, "
-    "eyes still glaring toward screen right, lips still closed, not smiling. She still holds the white robe up by its shoulders, held out toward screen "
-    "right, and is NOT wearing it. The blurred shoulder at the right edge shows only the back of the head: no ear, no earring. " + NOLANTERN + " " + KEEP
-    + NOTEXT), latent="image1")
+still("c01", ["E7PICK:c29-last"], (
+    "Edit image 1. Exactly two changes. One: the blurred person at the right edge shows only the back of her head with glossy black hair: no face, no ear, "
+    "no cheek, no earring. Two: the woman in wine-red has her lips closed. She still holds the white robe up in front of her chest with both hands and is NOT "
+    "wearing it. " + NOLANTERN + " " + KEEP + NOTEXT), latent="image1")
 still("c02", [YT_P], (
     f"{PRE} {YARD}; behind her only out-of-focus corridor pillars and a dark wall. {MCU}: the young woman from image 1, alone, {YT}, her hands below the "
     "bottom edge of the frame; warm yellow light from screen left on half her face. Her face in three-quarter profile turned toward screen left, eyes "
@@ -108,7 +113,7 @@ still("c04", [YT_P, ROBE_P], (
     + NOLANTERN + " " + OTS), shares=["c18"])
 still("c05", [YARD_SET, MF_P, JY_P], (
     "Edit image 1: keep the courtyard exactly as it is (the round stone table and stools, the old well on the left, the bamboo poles on the right, the dark "
-    "red corridor pillars, the dark lattice doors at the far end, the deep blue dusk sky), with warm yellow light glowing on the corridor walls and no "
+    "red corridor pillars, the dark lattice doors at the far end), with warm yellow light glowing on the corridor walls and no "
     f"lanterns, lamps or candles anywhere, and put people into it. {YT_BACK_R} In the middle, standing by the left side of the round stone table: ONLY ONE "
     f"woman, the woman from image 2, {MF}, black low heels, her hands empty, her face toward the young woman, one brow raised, one corner of her red lips "
     "curled up, no teeth. On the left, just stepping in from the left corridor toward her: ONLY ONE man, the man from image 3, " + JY + ", polished brown "
@@ -125,35 +130,35 @@ still("c08", [MF_P], (
     f"{PRE} {YARD}. {FG_YT_L} On screen left, {MCU}: the woman from image 1, alone, {MF}, her arms folded across her chest, her hands empty; behind her only "
     "out-of-focus dark red pillars and warm yellow wall light. Her {face}, one brow cocked, eyes half-lidded, one corner of her red lips curled up in a sneer, "
     "no teeth, chin raised high. ".replace("{face}", FACE_R) + NOLANTERN + " " + OTS))
-still("c09", [YT_P], (
-    f"{PRE} {YARD}; behind her only out-of-focus corridor pillars and a dark wall. {MCU}: the young woman from image 1, alone, {YT}, the edge of a folded "
-    f"white cloth at her chest at the bottom edge of the frame; warm yellow light from screen left on her face. Her {FACE_L}, eyes darkened, brows lowered "
-    f"a little, chin tucked, {NOSMILE}. " + NOLANTERN + " " + ONE_F))
-still("c10", [YT_P, ROBE_P], (
-    f"{PRE} {YARD}. {FG_MF_R} On screen right, a MEDIUM SHOT from the waist up: the young woman from image 1, alone, {YT}, a navy ankle-length skirt, "
-    f"stooping a little like an old woman, both hands holding {ROBE_FOLD} in front of her waist; behind her only out-of-focus corridor pillars and a dark "
-    f"wall. Her {FACE_L}, brows drooping, eyelids half lowered, chin pushed forward, {NOSMILE}. " + NOLANTERN + " " + OTS))
+still("c09", ["PICK:c02"], (
+    "Edit image 1. Exactly two changes. One: at the bottom edge of the frame, the top edge of a neatly folded off-white cloth held against her chest. Two: "
+    "her eyes darken, brows lowered a little, lips closed, not smiling. Her face stays in three-quarter profile toward screen left. " + NOLANTERN + " " + KEEP
+    + NOTEXT), latent="image1", batch=2)
+still("c10", ["PICK:c04"], (
+    "Edit image 1. Exactly two changes. One: the young woman stoops a little like an old woman, her back slightly bent, chin pushed forward. Two: the folded "
+    "white robe moves down from her chest to in front of her waist, held in both hands. Her face stays in three-quarter profile toward screen left, eyelids "
+    "half lowered, lips closed, not smiling, no earrings. " + NOLANTERN + " " + KEEP + NOTEXT), latent="image1", batch=2)
 still("c11", [MF_P, JY_P], (
     f"{PRE} {YARD}; behind them only out-of-focus dark red pillars and warm yellow wall light. A medium two-shot from the waist up, both facing screen "
     f"right, never looking at the camera: in front on screen left ONLY ONE woman, the woman from image 1, {MF}, her arms folded across her chest; half a "
     f"step behind her on her right ONLY ONE man, the man from image 2, {JY}. The woman: a frozen sneer, eyes wide, brows up, mouth corners stiffly curled, "
     "no teeth. The man: brows raised, eyes wide, lips closed, no smile, no teeth. There are exactly two people in the picture. " + NOLANTERN + " " + NOTEXT))
-still("c12", [MF_P], (
-    f"{PRE} {YARD}. {FG_YT_L} On screen left, {MCU}: the woman from image 1, alone, {MF}, her hands down at her sides; behind her only out-of-focus dark red "
-    f"pillars and warm yellow wall light. Her {FACE_R}; a forced dry laugh: mouth corners yanked up, lips closed, no teeth, eyes not laughing and staring, "
-    "brows arched high, chin raised. " + NOLANTERN + " " + OTS))
+still("c12", ["PICK:c08"], (
+    "Edit image 1. Exactly two changes. One: the woman in wine-red unfolds her arms; her hands hang down at her sides. Two: her face becomes a forced dry "
+    "laugh: mouth corners yanked up, lips closed, no teeth, eyes not laughing and staring, brows arched high. " + NOLANTERN + " " + KEEP + NOTEXT),
+    latent="image1", batch=2)
 still("c13", [YARD_SET, YQ_P], (
     "Edit image 1: keep the courtyard exactly as it is (the round stone table and stools, the old well, the bamboo poles, the dark red corridor pillars, the "
-    "dark lattice doors at the far end, the deep blue dusk sky), with warm yellow light glowing on the corridor walls and no lanterns, lamps or candles "
-    f"anywhere, and put people into it. {YT_BACK_R} In the middle right, on the stone floor halfway between the right-hand corridor and the young woman: "
-    f"ONLY ONE old woman, the old woman from image 2, {YQ}, both hands on the wheels, rolling toward the young woman; her face toward the young woman, brows "
+    "dark lattice doors at the far end), with warm yellow light glowing on the corridor walls and no lanterns, lamps or candles "
+    f"anywhere, and put people into it. {YT_BACK_R} On the right, on the raised walkway of the right-hand corridor, not yet down the "
+    f"step: ONLY ONE old woman, the old woman from image 2, {YQ}, both hands on the wheels, coming toward the foreground; her face toward the young woman, brows "
     "pushed up and together, eyes glistening with tears, no redness, no red marks, mouth open in a cry. There are exactly two people in the picture: the "
     "young woman seen from behind and the old woman; no other person anywhere. " + NOTEXT), latent="image1")
 still("c14", [YQ_P, YT_P], (
     f"{PRE} {YARD}; seen side-on, behind them only out-of-focus dark red pillars and warm yellow wall light. A medium two-shot: on screen left ONLY ONE "
     f"old woman, the old woman from image 1, {YQ}, her arms wrapped around the young woman's waist, her face lifted toward her in three-quarter profile "
     f"toward the upper right; on screen right ONLY ONE young woman, the young woman from image 2, {YT}, standing and bending toward her, her bare right hand "
-    "resting on the old woman's back, a folded white cloth under her left arm. The old woman: brows pushed up and together, eyes glistening with tears, no "
+    "resting on the old woman's back, her left hand down out of the frame. The old woman: brows pushed up and together, eyes glistening with tears, no "
     "redness, no red marks, mouth corners pulled down, lips closed. The young woman: brows drawn gently up and together, eyes looking down at her, "
     f"{NOSMILE}. Neither looks at the camera. There are exactly two people in the picture. " + NOLANTERN + " " + NOTEXT))
 still("c15", [YT_P], (
@@ -168,14 +173,17 @@ still("c16", [JY_P], (
 still("c17", [JB_P], (
     f"{PRE} {YARD}; behind him only the out-of-focus wooden door frame of the main hall and warm light inside. {MCU}: the man from image 1, alone, {JB}, "
     "standing in the doorway, his right hand holding a phone with no logo to his ear, its plain black back outward. His {face}, brows knitted tight, eyes "
-    "staring behind his glasses, face pale, lips slightly parted, not smiling, no teeth. ".replace("{face}", FACE_L) + ONE_M))
+    "staring behind his glasses, face pale, lips slightly parted, not smiling, no teeth. The phone's screen is against his cheek; only its plain black back "
+    "is seen. ".replace("{face}", FACE_L) + "There is exactly one person in the picture; no second person anywhere. No subtitles, no captions, no text, "
+    "letters, numbers or signs anywhere in the picture."))
 
 # ---- 第二場：廚房到東迴廊 ----
 still("c19", [KIT_SET, YT_P, FB_P], (
     "Edit image 1: keep the kitchen exactly as it is (the open door in the left wall with the dark night beyond, the white sink under the black window, "
     "white tiles, the old gas stove, the doorway to the laundry nook, the square wooden table with stools, one bare light bulb, nothing on the walls) and "
     f"put two people into it. On screen right at the sink, side-on: ONLY ONE young woman, the young woman from image 2, {YT_FULL}, her sleeves folded back "
-    "to the wrists, both hands holding a navy flap school bag with a big round brass clasp down in the sink, eyes down on the bag, brows slightly drawn, "
+    "to the wrists, both hands holding a washed, damp navy flap school bag with a big round brass clasp up above the sink, the little brass bells hanging "
+    "clear of the water, eyes down on the bag, brows slightly drawn, "
     f"{NOSMILE}. On screen left, just stepping in through the open door: ONLY ONE old man, the old man from image 3, {FB}, black trousers and black cloth "
     "shoes, an old bronze-coloured key ring in his right hand, his face toward her, brows lifted, eyes on the bag, lips closed, not smiling. There are "
     "exactly two people in the picture; no other person anywhere. " + NOTEXT), latent="image1")
@@ -189,8 +197,8 @@ still("c21", [YT_P, BAG_P], (
     f"bare right hand cups the little brass bells hanging beside its clasp. Her {FACE_L}, brows level, eyes on someone far off to the left, chin slightly "
     f"tucked, {NOSMILE}. " + ONE_F))
 still("c23", [CORR_SET, YT_P, BAG_P], (
-    "Edit image 1: keep the corridor exactly as it is at night (the dark red doors, pillars and rolled-up bamboo blinds on the left, the wooden bench and "
-    "the small white-shaded wall lamp on the right, the open doorway onto the dark courtyard at the far end, the green bin with nothing written on it, the "
+    "Edit image 1: keep the corridor exactly as it is at night (the dark red doors, pillars and rolled-up bamboo blinds on the left, the wooden bench on "
+    "the right, the two small white-shaded wall lamps, the open doorway onto the dark courtyard at the far end, the green bin with nothing written on it, the "
     "near left door open a finger's width with flickering white light in the crack) and put ONLY ONE young woman into it: the young woman from image 2, "
     f"{YT_FULL}, halfway along the corridor walking toward the camera, the navy flap school bag of image 3 hanging from her left hand, her face turned "
     f"toward the crack of the door on the left, brows slightly drawn, {NOSMILE}, never looking at the camera. There is exactly one person in the picture; "
@@ -207,20 +215,17 @@ still("c25", [YT_P, BAG_P], (
     f"pressed tight, jaw set, {NOSMILE}. " + ONE_F))
 still("c26", [ROOM_SET, XM_P], (
     "Edit image 1: keep the small bedroom exactly as it is late at night (the single bed, the empty hook on the wall above the bed head, the desk with the "
-    "lit desk lamp, nothing written anywhere) and make it a view through a finger-wide crack of a door: the out-of-focus edges of a dark red wooden door "
-    "fill the left and right of the frame. Through the crack: ONLY ONE girl, wearing the clothes of the girl in image 2 (an oversized light grey hoodie, "
-    "loose black track pants, a high ponytail), sitting on the edge of the bed with her back to the door, head bowed, only her back, shoulders and ponytail "
-    "seen, her face never in the frame; a phone in her hands, its screen facing her and never seen; faint white light from the phone on the wall. There is "
-    "exactly one person in the picture. " + NOTEXT), shares=["c28"], latent="image1")
+    "lit desk lamp, nothing written anywhere, the same camera angle) and put ONLY ONE girl into it, wearing the clothes of the girl in image 2 (an oversized "
+    "light grey hoodie, loose black track pants, a high ponytail): she sits at the foot of the bed with her back to the camera, head bowed, only her back, "
+    "shoulders and ponytail seen, her face never in the frame; both hands hold a phone at her chest, its screen facing her and never seen; faint white light "
+    "from the phone on the wall. No door in the picture. There is exactly one person in the picture. " + NOTEXT), shares=["c28"], latent="image1")
 still("c27", [YT_P], (
     f"{PRE} Late at night in a dark covered corridor; behind her only darkness. A CLOSE-UP of her face and shoulders: the young woman from image 1, alone, "
     f"{YT}; cold white light from screen left on her face. Her {FACE_L}, eyes fixed on something beyond the left edge with a faint shine of tears and no "
     f"redness, brows drawing together, lips pressed, jaw set, {NOSMILE}. " + ONE_F))
-still("c29", [YT_P], (
-    f"{PRE} Late at night in a dark covered corridor; behind her only darkness. A tight CLOSE-UP of her face: the young woman from image 1, alone, {YT}; "
-    f"flickering cold white light from screen left on her face. Her {FACE_L}, eyes wide and fixed on something beyond the left edge, brows pressed down, "
-    f"lips pressed tight, jaw set, breath held, {NOSMILE}. " + ONE_F))
-
+still("c29", ["PICK:c27"], (
+    "Edit image 1. Only change: her eyes open wide and stay fixed toward screen left, brows pressed down, lips pressed tight, not smiling. "
+    + KEEP + NOTEXT), latent="image1", batch=2)
 
 def main():
     OUT.write_text(json.dumps(S, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
