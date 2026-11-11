@@ -15,6 +15,7 @@ scope:
   - apps/web/e2e/readability.spec.ts
   - apps/web/e2e/planner-calm.spec.ts
   - apps/web/e2e/trip-stay-areas.spec.ts
+  - apps/web/e2e/full-stack.spec.ts
 ---
 
 # e2e：行程拖曳與天氣可讀性測試沒有固定時鐘，2026-11-11 東京換日後必失敗
@@ -40,4 +41,4 @@ web-e2e 從 2026-11-11 17:00 UTC（東京已是 11-12）起固定失敗四項：
 
 本機用 next dev 跑 mobile-chromium 時，navigation.spec 另有三個 30 秒逾時（:10、:945、:1003），拿掉這次修改也一樣，看起來是 dev 伺服器第一次編譯太慢，CI 用 build 版不受影響。夾具有寫死日期的測試都要固定時鐘。
 
-補充：重跑後 planner-browser 另有 planner-calm.spec（三項）與 trip-stay-areas.spec（一項）同樣因為沒固定時鐘失敗，一起在 page.goto 前固定為 2026-11-01T03:00Z，本機兩個 project 10 項全過。其餘引用 2026-11-11 的 spec（planner-route-tones、korea-dual-maps、travel-services、full-stack）在換日後的 CI 都通過，沒有改。
+補充：重跑後 planner-browser 另有 planner-calm.spec（三項）與 trip-stay-areas.spec（一項）同樣因為沒固定時鐘失敗，一起在 page.goto 前固定為 2026-11-01T03:00Z，本機兩個 project 10 項全過。full-stack-smoke 接著在 full-stack.spec 失敗（「DAY 2」被改標成「今天」），登入之後、進行程頁之前固定時鐘；這支要真的 API 與資料庫，本機沒跑，靠 CI 驗證。其餘引用 2026-11-11 的 spec（planner-route-tones、korea-dual-maps、travel-services）在換日後的 CI 都通過，沒有改。
