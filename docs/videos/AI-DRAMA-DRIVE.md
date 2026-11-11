@@ -149,7 +149,7 @@ docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "videobackup:AI劇/<名�
 ## 舊的 transfer/* 分支
 
 四個備份 repo（`drama-backup-zt`、`drama-backup-tn`、`mokaair-video-backup`、`mokaair-video-backup-sothatswhy`）裡的
-132 條分支，約 158 GB，照 [`ai-drama-drive/legacy-branches.tsv`](ai-drama-drive/legacy-branches.tsv) 搬到 `<集數>/製作檔/<分支名>/`
+132 條分支（後來補到 152 條），約 158 GB，照 [`ai-drama-drive/legacy-branches.tsv`](ai-drama-drive/legacy-branches.tsv) 搬到 `<集數>/製作檔/<分支名>/`
 （站主 2026-11-10 確認）。歸法：
 
 - 種田：`zt-cg-eNNN`、`zt-eNNN-media`、`-parity`、`-refs` 歸 3D 原版；`zt-e9NN-media*`、`zt-e001-r2-media`、`zt-cg-e001`～`e006`
@@ -164,5 +164,10 @@ docs/videos/ai-drama-drive/todrive.sh <工作資料夾> "videobackup:AI劇/<名�
 搬家在主機上跑（主機的 rclone 權杖寫雲端硬碟、`gh` 讀私人 repo），一條分支做完逐檔核對；全部做完由另一個代理對每條分支做
 涵蓋檢查（分支最新一版的每個檔都在雲端硬碟、雜湊相同）。兩樣都是 0，把要刪的分支列給站主，站主同意後才刪。
 GitHub 刪分支之後不會馬上釋放 repo 空間。
+
+**2026-11-11 完成。** 對照表後來補了 20 條（對照表之後新推的分支、`archive/travel_scanner/*` 封存副本、travel_scanner 上
+兩條較舊的版本），共 152 條、182.7 GB、227,914 個檔，逐檔核對都是 0；另一個代理的涵蓋檢查 152 條加 travel_scanner 104 條
+全部安全，抽 69 個檔（約 4 GB）比對內容也相同。站主同意後分兩批刪除：travel_scanner 104 條、四個備份 repo 150 條。
+四個備份 repo 現在只剩一條只有 README 的 `main`（寫明雲端硬碟的位置、不要再推分支）。之後的製作檔只走雲端硬碟。
 
 主機 worker 的分支鏡像（[`BACKUP.md`](BACKUP.md)〈AI 劇的分支鏡像〉）2026-11-10 關掉，它從沒成功跑過。
