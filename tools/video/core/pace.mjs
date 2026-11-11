@@ -1,14 +1,25 @@
 // Narration speed for the two narrated cartoon series (.agents/skills/producer/references/pace-targets.md):
-// 奇聞檔案局 (curio-) and 原來如此事務所 (sothatswhy-) speak at least 4.5 characters a second, the
-// reference channel measured 5.06. Gemini voices take no rate; their pace is only what the written
+// 奇聞檔案局 (curio-) and 原來如此事務所 (sothatswhy-) speak fast (PACE_FLOORS below); the reference
+// channel measured 5.06 characters a second. Gemini voices take no rate; their pace is only what the written
 // style asks for, and P06 (2026-11-11) asked for 「一秒四到五個字」 and came out at 3.74. Nothing
 // measured it until then, so `tts` reports it here once the takes are in.
 
-/** The floor both series keep (owner, 2026-11-11: 「之後都調快」). */
-export const PACE_MIN_CHARS_PER_SECOND = 4.5;
+/**
+ * The floor each series keeps, by slug prefix (owner, 2026-11-11: 「之後都調快」). 奇聞檔案局 keeps the
+ * 4.5 of pace-targets.md. 原來如此事務所's owner heard three styles of the same P06 script (3.74,
+ * 4.39 and 4.95 characters a second) and chose the 4.39 one, so its floor is 4.3: that style passes
+ * with room for one episode's spread, and the 3.74 it replaced is still warned.
+ */
+export const PACE_FLOORS = Object.freeze({ curio: 4.5, sothatswhy: 4.3 });
+export const PACE_MIN_CHARS_PER_SECOND = PACE_FLOORS.curio;
 
-/** Whether a video belongs to a series that keeps PACE_MIN_CHARS_PER_SECOND. */
-export const isPacedNarration = (doc) => /^(curio|sothatswhy)-/.test(doc?.slug ?? "");
+const seriesOf = (doc) => /^(curio|sothatswhy)-/.exec(doc?.slug ?? "")?.[1] ?? null;
+
+/** Whether a video belongs to a series with a floor in PACE_FLOORS. */
+export const isPacedNarration = (doc) => seriesOf(doc) !== null;
+
+/** The floor a video's series keeps, or null. */
+export const paceFloor = (doc) => PACE_FLOORS[seriesOf(doc)] ?? null;
 
 // Han characters only, as the episodes' build_scenes.py counts them: punctuation, Latin words and
 // digits are left out, so a line full of numbers does not look faster than it is.
@@ -45,8 +56,9 @@ export function narrationPace(doc, timeline) {
  * tts again) re-records and goes back to the owner.
  */
 export function paceWarning(doc, timeline) {
-  if (!isPacedNarration(doc)) return null;
+  const floor = paceFloor(doc);
+  if (floor === null) return null;
   const pace = narrationPace(doc, timeline);
-  if (!pace || pace.rate >= PACE_MIN_CHARS_PER_SECOND) return null;
-  return `narration speaks ${pace.rate.toFixed(2)} characters a second (${pace.chars} characters in ${pace.seconds.toFixed(1)} s of speech); this series keeps at least ${PACE_MIN_CHARS_PER_SECOND} (pace-targets.md). Ask for a faster pace in each voice's style, then tts again; the narration goes back to the owner`;
+  if (!pace || pace.rate >= floor) return null;
+  return `narration speaks ${pace.rate.toFixed(2)} characters a second (${pace.chars} characters in ${pace.seconds.toFixed(1)} s of speech); this series keeps at least ${floor} (pace-targets.md). Ask for a faster pace in each voice's style, then tts again; the narration goes back to the owner`;
 }

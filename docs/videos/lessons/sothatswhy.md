@@ -7,6 +7,9 @@
 
 這份會自動同步到雲端硬碟 `AI劇/原來如此事務所/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 
+- **2026-11-11，sothatswhy-p06-bubble-film，站主決定：語速調快。** 規則是 ≥ 4.5 字／秒，P06 只有 3.74；Gemini 配音沒有語速參數，style 寫「一秒四到五個字」講不到。
+  用 P06 全稿只換 style 實測三種：3.74、4.39、4.95；站主聽過選 4.39 那種（「像節目主持人，一秒五個字以上，句與句緊接、不拖長尾音」），原來如此的門檻改成 4.3。
+  寫法在 dialogue-pilot README §4；`tts` 結尾會印語速。style 要寫得比目標快（寫「一秒五個字以上」才講到 4.4），模型會打折扣。
 - **2026-11-11，sothatswhy-p06-bubble-film，站主發現：縮圖的人被字擋住。** 系列縮圖 `subject: "right"` 只取插圖正中約 38% 寬放在右邊；
   `kid-wand` 的小問偏左，九語縮圖都只看得到欄杆和一隻手。換成 `kid-square-q`（人和方框都在中間）。下次挑縮圖鏡頭前，先用 PIL 把候選圖裁中間 38% 看一次。
   換 `thumbnail.data.shot` 會改到 visual_hash，插圖、分鏡、組裝都變「過期」：`keyframes --shot <那一景>`（不畫新圖）→ 用累積的 `pins.json` 再 `repin`

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { PACE_MIN_CHARS_PER_SECOND, hanCount, narrationPace, paceWarning } from "./pace.mjs";
+import { PACE_FLOORS, hanCount, narrationPace, paceFloor, paceWarning } from "./pace.mjs";
 
 const RATE = 24000;
 const doc = (slug, lines) => ({ slug, scenes: [{ id: "s1", lines: lines.map(([id, text]) => ({ id, text })) }] });
@@ -23,7 +23,16 @@ test("a slow sothatswhy or curio narration is warned, a fast one is not", () => 
   const lines = [["p1", "一二三四五六七"]];
   assert.match(paceWarning(doc("sothatswhy-p06", lines), timeline([["p1", 2]])), /3\.50 characters a second/);
   assert.match(paceWarning(doc("curio-h01", lines), timeline([["p1", 2]])), /at least 4\.5/);
-  assert.equal(paceWarning(doc("sothatswhy-p06", lines), timeline([["p1", 7 / PACE_MIN_CHARS_PER_SECOND]])), null);
+  assert.equal(paceWarning(doc("curio-h01", lines), timeline([["p1", 7 / PACE_FLOORS.curio]])), null);
+});
+
+test("each series keeps its own floor: 原來如此 passes the 4.39 style the owner chose, 奇聞 does not", () => {
+  const lines = [["p1", "一".repeat(439)]];
+  assert.equal(paceFloor(doc("sothatswhy-p07", lines)), 4.3);
+  assert.equal(paceFloor(doc("curio-h01", lines)), 4.5);
+  assert.equal(paceWarning(doc("sothatswhy-p07", lines), timeline([["p1", 100]])), null);
+  assert.match(paceWarning(doc("curio-h01", lines), timeline([["p1", 100]])), /4\.39 characters a second/);
+  assert.match(paceWarning(doc("sothatswhy-p06", [["p1", "一".repeat(374)]]), timeline([["p1", 100]])), /at least 4\.3/);
 });
 
 test("other series and unrecorded narration get no warning", () => {
