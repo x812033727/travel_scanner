@@ -1,13 +1,13 @@
 ---
 id: 2026-11-10-drive-rules-sync
 title: 規則與教訓同步到雲端硬碟（AI劇/_共用規則、各劇 _規則與教訓）
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5
 claimed_at: 2026-11-10T13:18:12Z
 created_at: 2026-11-10T13:18:10Z
-completed_at:
+completed_at: 2026-11-11T05:51:01Z
 branch: claude/drive-rules-sync
 depends_on: []
 scope:
@@ -28,14 +28,14 @@ scope:
 - [x] repo 是唯一正本；`docs/videos/rules-sync/manifest.tsv` 寫明每份規則／教訓放雲端哪裡（第 0 層共用、解說系列共用兩邊各一份、各劇、各集）。
 - [x] `watch.txt` 範圍內的檔沒有去處時 `npm run test:docs-videos` 失敗（不會漏）。
 - [x] `docs/videos/lessons/` 每層一份教訓檔。
-- [ ] 主機第一次同步完成、核對 0 差異；每小時的 cron 裝好。
+- [x] 主機第一次同步完成、核對 0 差異；每小時的 cron 裝好。
 
 ## Steps
 
 - [x] `sync.mjs`（讀 origin/main、staging、`rclone sync` 只動同步專用資料夾、`--backup-dir`、`rclone check`）與測試。
 - [x] 對照表、watch、教訓檔、README。
-- [ ] PR、站主合併。
-- [ ] 合併後：主機跑第一次同步（等分支搬家結束，免得搶上傳）、裝 cron。
+- [x] PR、站主合併（#2064）。
+- [x] 合併後：主機跑第一次同步（等分支搬家結束，免得搶上傳）、裝 cron。
 
 ## How to verify
 
@@ -52,3 +52,4 @@ node docs/videos/rules-sync/sync.mjs --dry-run
 - 用 `rclone sync` 而不是 copy：只限三種同步專用資料夾（filter），被換掉或刪掉的檔進 `AI劇/_舊版-規則同步/<時間>/`，沒有東西真的被刪。
 - 副本開頭的說明不放 commit 碼，否則每次合併每個檔都會變、`_舊版` 會塞滿。
 - AGENTS.md 的指引另外補在 #2059（那個任務的 scope 有 AGENTS.md）。
+- 2026-11-11 結案：#2064 合併後主機手動同步 `169 files, 180 copies at 38c734f35c94, 0 differences`；站主自己裝了 cron（`/etc/cron.d/rules-sync`，每小時第 23 分，flock，log `/var/log/rules-sync.log`，worktree `/root/rules-sync-runner` 每次先 checkout origin/main），第一次排程同步 `169 files, 180 copies at 03b7b4eae650, 0 differences`。
