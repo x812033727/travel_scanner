@@ -137,7 +137,7 @@ kid("kid-main-q", K("holding " + COMIC + " against her chest and frowning with a
 
 # ---------- 第一章：眼睛和耳朵，各說各的 ----------
 kid("kid-ear-guess", K("cupping one hand behind her ear with a worried little frown", close=True, where=HOME),
-    k("我聽說會暈車，", "擔心"), k("是內耳不好？", "擔心的錯猜", "S:broken"), chapter="眼睛和耳朵，各說各的")
+    k("身體那邊，是誰在吵？", "擔心"), k("我聽說是內耳不好？", "擔心的錯猜", "S:broken"), chapter="眼睛和耳朵，各說各的")
 chief("chief-opposite", C("shaking her head gently with a kind smile, one hand raised", close=True),
       c("不一定。研究暈車的人發現，", "接住上一句"), c("內耳的平衡功能完全不能用的人，才完全不會暈。", None, "P:broken"))
 chief("chief-almost-all", C("opening both arms wide towards the viewer with a reassuring smile"),
@@ -175,7 +175,7 @@ kid("kid-liar-q", K("holding " + COMIC + " up and peering over it with narrowed 
 chief("chief-nobody-lies", C("holding up two fingers with a calm friendly smile", close=True),
       c("沒有人說謊，只是它們看到的不一樣。", "接住上一句"), chapter="看漫畫的時候，改了哪一邊")
 kid("kid-reading", K("looking down at " + COMIC + " held close to her face, completely absorbed", where=CAR),
-    k("我一直盯著漫畫，", "回想"))
+    k("我一直盯著漫畫看耶！", "回想"))
 chief("chief-comic", C("holding a small red comic close in front of her chest and swaying gently with it, a thoughtful smile"),
       c("漫畫拿在你手上，跟著你一起晃。"), c("眼睛盯著它，報告的是：沒在動。"))
 obj("cup-turn", "Close-up of " + CUP + " in the cup holder of a small family car on a bend, the water surface tilted and sloshing, a curving green mountain road visible through the side window",
@@ -301,9 +301,9 @@ chief("chief-boundary", C("holding her two hands apart as if measuring something
 kid("kid-differ-q", K("looking back over her shoulder towards the front seat with a wondering face", where=CAR),
     k("那為什麼同一台車，", "追問"), k("有人很會暈，"), k("有人一點都不會？", "章尾停住，句尾上揚", "S:differ"))
 
-# ---------- 第四章：這個解釋還回答不了的事 ----------
+# ---------- 第四章：同一台車，為什麼有人不會暈 ----------
 chief("chief-first-unknown", C("holding up one finger with a serious kind smile", close=True),
-      c("這是還沒解開的第一件事。", "接住上一句"), chapter="這個解釋還回答不了的事")
+      c("這個問題，研究也還沒完全解開。", "接住上一句"), chapter="同一台車，為什麼有人不會暈")
 chief("chief-range", C("spreading her arms very wide apart with an amazed smile"),
       c("有研究估計，最容易暈和最不容易暈的人，差了大約一萬倍。"))
 kid("kid-wow", K("throwing both hands up with wide amazed eyes", close=True, where=HOME),
@@ -329,7 +329,7 @@ obj("coach-again", "Wide shot of a big friendly round-nosed tour coach parked at
 kid("kid-vomit-q", K("holding both hands over her tummy with a queasy face", where=CAR),
     k("可是對不上，", "追問"), k("為什麼偏偏是想吐？", "句尾上揚", "S:vomit"))
 chief("chief-second-unknown", C("holding up two fingers with a serious kind smile", close=True),
-      c("這是第二件還沒解開的事。說得出它怎麼被引起，"), c("卻說不出，身體為什麼要用想吐來反應。"))
+      c("這個也還沒定案。說得出它怎麼被引起，"), c("卻說不出，身體為什麼要用想吐來反應。"))
 chief("chief-poison", C("holding up a small green leaf between two fingers and studying it with a thoughtful smile"),
       c("有人提過一個猜法：有些毒會讓感覺亂掉，"), c("身體乾脆吐掉比較保險，暈車是不小心被晃動觸發了。"))
 kid("kid-ate-wrong", K("covering her mouth with both hands and wide surprised eyes", close=True, where=HOME),
@@ -343,17 +343,17 @@ kid("kid-neuron-q", K("pointing at her own forehead with a curious face", close=
 chief("chief-neurons", C("holding a clear plastic cup of water still in one hand and pointing at it with the other, a thoughtful smile"),
       c("猴子的腦裡有一群細胞，被別人帶著動時，反應特別大；"), c("自己動的時候，它們就比較安靜。"))
 chief("chief-neuron-limit", C("tilting her head with an honest thoughtful smile", close=True),
-      c("他們猜，這可能就是比對預想的地方。"), c("可是它們怎麼讓人想吐，還沒找到。", None, "P:neuron"))
+      c("研究的人猜，這可能就是比對預想的地方。"), c("可是它們怎麼讓人想吐，還沒找到。", None, "P:neuron"))
 kid("kid-final-q", K("holding " + COMIC + " on her lap and looking straight ahead with a thinking face", where=CAR),
     k("所以我看漫畫會暈，", "推理"), k("到底是怎麼回事？", "章尾停住，句尾上揚"))
 
 # ---------- 收尾 ----------
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
-      c("你自己說說看，從你的漫畫，到那杯水。", "笑"), chapter="小問自己說出答案")
+      c("你自己說說看，從你的漫畫，到那杯水。", "笑"), chapter="快到阿嬤家，小問想通了")
 kid("kid-got-it", K("holding " + COMIC + " up proudly with a big confident grin", where=CAR),
-    k("原來如此！", "恍然大悟"), k("漫畫跟著我晃，", "篤定"), k("眼睛說沒動；"), k("耳朵裡的水，"), k("說在轉彎！"))
+    k("原來如此！", "恍然大悟"), k("就像你剛剛說的：漫畫跟著我晃，", "篤定"), k("眼睛說沒動；"), k("耳朵裡的水，"), k("說在轉彎！"))
 kid("kid-got-it-2", K("pretending to turn a big steering wheel with both hands and laughing", where=HOME),
-    k("跟大腦猜的對不上，", "篤定"), k("我就暈了！", "篤定", "P:main"), k("爸爸自己轉彎，"), k("所以他猜得到！"))
+    k("跟大腦猜的對不上，", "篤定"), k("我就暈了！", "篤定", "P:main"), k("還記得爸爸嗎？他自己轉彎，"), k("所以他猜得到！"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好。我覺得最好玩的是：", "笑"), c("你會暈，是因為你的身體一直很認真，在算你怎麼動。"))
 obj("grandma-house", "Wide shot of a small family car parked in front of a cosy old Taiwanese brick farmhouse with a red-tiled roof, potted plants and green hills, sunny afternoon",
