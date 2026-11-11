@@ -45,6 +45,11 @@ export function renderDedup(pool) {
   return `${lines.join('\n')}\n`;
 }
 
+// The material review (reviews/material-20261111.md; owner 2026-11-11): the eight-minute floor stays for a
+// long episode, and a long theme whose material would need padding waits (reserve), waits for a named partner
+// (merge) or is dropped, instead of being made. Short explainers are not reviewed against that floor.
+export const MATERIAL_VERDICTS = Object.freeze({ ready: '可成題', merge: '待合併', reserve: '後備', drop: '淘汰' });
+
 export function validateThemes(themes, pool) {
   if (!Array.isArray(themes.episodes) || !themes.episodes.length) throw new Error('Theme list is empty');
   if (new Set(themes.episodes.map((episode) => episode.id)).size !== themes.episodes.length) throw new Error('Duplicate theme id');
@@ -58,12 +63,19 @@ export function validateThemes(themes, pool) {
     if (!episode.chapters?.length || episode.chapters.length < minimumChapters || episode.chapters.some((chapter) => !chapter.title || !Number.isInteger(chapter.seconds) || chapter.seconds <= 0 || !chapter.new_information || !chapter.candidate_ids?.length || chapter.candidate_ids.some((id) => !episode.candidate_ids.includes(id)))) throw new Error(`${episode.id}: every chapter needs selected evidence and a new judgement`);
     if (Math.abs(episode.chapters.reduce((sum, chapter) => sum + chapter.seconds, 0) - episode.target_minutes * 60) > 1e-9) throw new Error(`${episode.id}: invalid time budget`);
     if (episode.range_minutes[0] > episode.target_minutes || episode.range_minutes[1] < episode.target_minutes) throw new Error(`${episode.id}: time range does not include target`);
+    if (episode.material !== undefined) {
+      const material = episode.material;
+      if (!Object.hasOwn(MATERIAL_VERDICTS, material?.verdict) || !material.reviewed_on || !material.review || !Number.isFinite(material.est_minutes)) throw new Error(`${episode.id}: material needs a verdict (${Object.keys(MATERIAL_VERDICTS).join(', ')}), est_minutes, reviewed_on and review`);
+      if (material.verdict !== 'ready' && !material.missing) throw new Error(`${episode.id}: a ${material.verdict} theme says what is missing`);
+      if (material.verdict === 'merge' && !material.merge_with) throw new Error(`${episode.id}: a merge theme names what it merges with`);
+      if (material.verdict === 'ready' && material.est_minutes < 8.5) throw new Error(`${episode.id}: a ready long theme carries at least 8.5 minutes of material`);
+    }
   }
   return themes;
 }
 
 export function renderThemes(themes, pool) {
-  const lines = ['# 從素材池挑出的影片主題', '', `${themes.episodes.length} 組編輯候選；由來源、共同追問與章節推進選出，不是點閱率預測或已核准影片。時間是正文估計，尚未試讀；每章須再拆成 30–45 秒內有資訊推進的節拍。標題只是包裝提案，未查的例子不可寫成事實。`, '', '| 順序 | 主題 | 正文估計 | 素材數 |', '| --- | --- | --- | --- |'];
+  const lines = ['# 從素材池挑出的影片主題', '', `${themes.episodes.length} 組編輯候選；由來源、共同追問與章節推進選出，不是點閱率預測或已核准影片。時間是正文估計，尚未試讀；每章須再拆成 30–45 秒內有資訊推進的節拍。標題只是包裝提案，未查的例子不可寫成事實。`, '', '**素材審視（2026-11-11）：** 長題照 8 分鐘下限逐題重算，素材撐不起不重複旁白的列為後備、待合併或淘汰，缺什麼寫在各題審視欄（[reviews/material-20261111.md](reviews/material-20261111.md)）。短題不受此下限審視，欄位寫「未審」。', '', '| 順序 | 主題 | 正文估計 | 素材數 | 素材審視 |', '| --- | --- | --- | --- | --- |'];
   for (const episode of themes.episodes) {
     const seconds = episode.chapters.reduce((sum, chapter) => sum + chapter.seconds, 0);
     const duration = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
@@ -71,10 +83,12 @@ export function renderThemes(themes, pool) {
       const total = Math.round(minutes * 60);
       return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
     }).join('–');
-    lines.push(`| ${episode.id} | ${episode.title} | ${duration}（工作範圍 ${range}；分:秒；未試讀） | ${episode.candidate_ids.length} |`);
+    lines.push(`| ${episode.id} | ${episode.title} | ${duration}（工作範圍 ${range}；分:秒；未試讀） | ${episode.candidate_ids.length} | ${episode.material ? `${MATERIAL_VERDICTS[episode.material.verdict]}（素材約 ${episode.material.est_minutes} 分）` : '未審'} |`);
   }
   for (const episode of themes.episodes) {
-    lines.push('', `## ${episode.id} ${episode.title}`, '', `**追問：** ${episode.core_question}`, '', `**為什麼能接成一集：** ${episode.connection}`, '', '| 段落 | 秒數預算 | 新增理解 | 使用素材 |', '| --- | --- | --- | --- |');
+    const material = episode.material;
+    const verdict = material ? [`**素材審視：** ${MATERIAL_VERDICTS[material.verdict]}，素材約 ${material.est_minutes} 分`, material.missing ? `；缺：${material.missing}` : '', material.merge_with ? `；合併對象：${material.merge_with}` : ''].join('') : '';
+    lines.push('', `## ${episode.id} ${episode.title}`, '', ...(verdict ? [verdict, ''] : []), `**追問：** ${episode.core_question}`, '', `**為什麼能接成一集：** ${episode.connection}`, '', '| 段落 | 秒數預算 | 新增理解 | 使用素材 |', '| --- | --- | --- | --- |');
     for (const chapter of episode.chapters) lines.push(`| ${chapter.title} | ${chapter.seconds} | ${chapter.new_information} | ${chapter.candidate_ids.join('、')} |`);
     for (const variantId of episode.variant_budget_ids ?? []) {
       const variant = pool.raw_records.find((row) => row.id === variantId);
