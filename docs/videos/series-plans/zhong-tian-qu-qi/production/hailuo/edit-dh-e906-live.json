@@ -1,0 +1,512 @@
+{
+ "tempo": 1.0,
+ "grades": {},
+ "default_grade": "dh",
+ "finish": "vignette=angle=PI/5,format=yuv420p",
+ "names": {},
+ "punch": false,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/zhong-tian-qu-qi/sfx"
+ ],
+ "name_whoosh": "swish-9",
+ "music": [
+  {
+   "cue": "comedy",
+   "from": "s01",
+   "to": "s16",
+   "offset": 0,
+   "gain": -17,
+   "fade_out": 0.25,
+   "tail": 2.75
+  },
+  {
+   "cue": "comedy",
+   "from": "s18",
+   "to": "s18",
+   "offset": 24.0,
+   "gain": -17,
+   "fade_in": 0.15,
+   "fade_out": 0.6,
+   "tail": 0.3
+  },
+  {
+   "cue": "tension",
+   "from": "s19",
+   "to": "s30",
+   "offset": 0,
+   "gain": -16,
+   "fade_out": 0.6,
+   "tail": 1.35
+  },
+  {
+   "cue": "warm",
+   "from": "s31",
+   "from_off": 3.5,
+   "to": "s34",
+   "offset": 0.45,
+   "gain": -15,
+   "fade_out": 0.8,
+   "tail": 0.8
+  },
+  {
+   "cue": "suspense",
+   "from": "s35",
+   "to": "s40",
+   "offset": 59.9,
+   "gain": -15,
+   "fade_out": 1.2
+  }
+ ],
+ "sfx": [
+  {
+   "file": "impactWood_light_000",
+   "at": "s01",
+   "off": 3.1,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s01",
+   "off": 4.15,
+   "gain": -26
+  },
+  {
+   "file": "handleCoins2",
+   "at": "s02",
+   "off": 3.6,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s04",
+   "off": 0.72,
+   "gain": -32
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 4.2,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 4.75,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s05",
+   "off": 5.3,
+   "gain": -28
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s05",
+   "off": 5.85,
+   "gain": -28
+  },
+  {
+   "file": "cloth2",
+   "at": "s12",
+   "off": 6.5,
+   "gain": -22
+  },
+  {
+   "file": "paper_01",
+   "at": "s13",
+   "off": 5.05,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "s13",
+   "off": 5.5,
+   "gain": -28
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s14",
+   "off": 0.3,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s14",
+   "off": 0.75,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s14",
+   "off": 1.2,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "s14",
+   "off": 2.95,
+   "gain": -20
+  },
+  {
+   "file": "cloth1",
+   "at": "s14",
+   "off": 6.45,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s15",
+   "off": 0.8,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "s15",
+   "off": 1.6,
+   "gain": -26
+  },
+  {
+   "file": "impactBell_heavy_001",
+   "at": "s17",
+   "off": 2.75,
+   "gain": -12
+  },
+  {
+   "file": "birds",
+   "at": "s17",
+   "off": 0,
+   "gain": -30,
+   "to": "s17"
+  },
+  {
+   "file": "Wind",
+   "at": "s17",
+   "off": 0,
+   "gain": -30,
+   "to": "s17"
+  },
+  {
+   "file": "paper_02",
+   "at": "s18",
+   "off": 3.3,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s18",
+   "off": 3.9,
+   "gain": -24
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s18",
+   "off": 4.35,
+   "gain": -24
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s18",
+   "off": 4.85,
+   "gain": -24
+  },
+  {
+   "file": "rustle03",
+   "at": "s18",
+   "off": 5.15,
+   "gain": -22
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s18",
+   "off": 5.4,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_000",
+   "at": "s18",
+   "off": 5.9,
+   "gain": -26
+  },
+  {
+   "file": "footstep_grass_001",
+   "at": "s18",
+   "off": 6.35,
+   "gain": -28
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s19",
+   "off": 0.25,
+   "gain": -26
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s19",
+   "off": 0.7,
+   "gain": -26
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s19",
+   "off": 1.15,
+   "gain": -26
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s19",
+   "off": 1.6,
+   "gain": -26
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s19",
+   "off": 2.05,
+   "gain": -28
+  },
+  {
+   "file": "swish-7",
+   "at": "s19",
+   "off": 2.5,
+   "gain": -26
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "s19",
+   "off": 2.72,
+   "gain": -20
+  },
+  {
+   "file": "paper_02",
+   "at": "s21",
+   "off": 4.5,
+   "gain": -28
+  },
+  {
+   "file": "paper_04",
+   "at": "s21",
+   "off": 5.7,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s22",
+   "off": 2.05,
+   "gain": -26
+  },
+  {
+   "file": "cloth2",
+   "at": "s22",
+   "off": 2.35,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "s23",
+   "off": 2.2,
+   "gain": -28
+  },
+  {
+   "file": "cloth2",
+   "at": "s23",
+   "off": 3.85,
+   "gain": -28
+  },
+  {
+   "file": "paper_02",
+   "at": "s24",
+   "off": 4.5,
+   "gain": -26
+  },
+  {
+   "file": "rustle03",
+   "at": "s25",
+   "off": 3.6,
+   "gain": -28
+  },
+  {
+   "file": "paper_01",
+   "at": "s26",
+   "off": 0.34,
+   "gain": -24
+  },
+  {
+   "file": "paper_03",
+   "at": "s26",
+   "off": 1.38,
+   "gain": -24
+  },
+  {
+   "file": "paper_02",
+   "at": "s26",
+   "off": 2.54,
+   "gain": -24
+  },
+  {
+   "file": "paper_01",
+   "at": "s27",
+   "off": 4.0,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "s30",
+   "off": 3.3,
+   "gain": -26
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "s30",
+   "off": 4.3,
+   "gain": -26
+  },
+  {
+   "file": "paper_02",
+   "at": "s30",
+   "off": 5.6,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "s31",
+   "off": 0.72,
+   "gain": -8
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "s31",
+   "off": 3.5,
+   "gain": -10
+  },
+  {
+   "file": "impactWood_heavy_002",
+   "at": "s31",
+   "off": 3.5,
+   "gain": -16
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s32",
+   "off": 0.62,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s32",
+   "off": 1.44,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s32",
+   "off": 2.22,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s32",
+   "off": 3.04,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_000",
+   "at": "s32",
+   "off": 3.8,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_001",
+   "at": "s32",
+   "off": 4.58,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s34",
+   "off": 4.78,
+   "gain": -28
+  },
+  {
+   "file": "footstep_concrete_003",
+   "at": "s34",
+   "off": 5.6,
+   "gain": -30
+  },
+  {
+   "file": "footstep_concrete_002",
+   "at": "s34",
+   "off": 6.3,
+   "gain": -32
+  },
+  {
+   "file": "Wind",
+   "at": "s35",
+   "off": 0,
+   "gain": -28,
+   "to": "s40"
+  },
+  {
+   "file": "rustle03",
+   "at": "s35",
+   "off": 0.2,
+   "gain": -28
+  },
+  {
+   "file": "paper_03",
+   "at": "s36",
+   "off": 0.15,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "s39",
+   "off": 0.6,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_heavy_002",
+   "at": "s40",
+   "off": 11.85,
+   "gain": -12
+  }
+ ],
+ "frame_round": true,
+ "clip_voice": true,
+ "voice_skip": {
+  "s14": 3.6,
+  "s20": 1.5
+ },
+ "voice_until": {
+  "s08": 6.0,
+  "s13": 4.4,
+  "s18": 3.6,
+  "s40": 10.8
+ },
+ "voice_off": [
+  "s19"
+ ],
+ "min": {
+  "s29": 6.8,
+  "s40": 12.75
+ },
+ "line_at": {
+  "zq906a10": 6.07,
+  "zq906a18": 3.1,
+  "zq906a20": 2.3,
+  "zq906a31": 1.25,
+  "zq906a39": 1.0,
+  "zq906a41": 7.71
+ },
+ "vf": {
+  "s24": "hflip",
+  "s31": "split[sl0][sl1];[sl1]crop=360:270:858:435,format=gray,split[sl2][sl3];[sl3]gblur=sigma=6[sl4];[sl2][sl4]blend=all_mode=subtract,gblur=sigma=0.8,geq=lum='clip((lum(X,Y)-5)*14,0,230)*clip((T-3.05)/0.35,0,1)'[sl5];color=c=0xD42A18:s=360x270:r=24,format=rgba[sl6];[sl6][sl5]alphamerge[sl7];[sl0]format=gbrp[sl8];[sl8][sl7]overlay=858:435:format=gbrp:shortest=1,format=yuv420p",
+  "s35": "split[vb0][vb1];[vb1]crop=400:720:1520:360,gblur=sigma=8,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((T-3.0)/0.4,0,1)*clip((5.5-T)/0.25,0,1)*clip((X+1520-(1520+60*clip((T-4.4)/0.2,0,1)+100*clip((T-4.95)/0.3,0,1)))/40,0,1)*clip(Y/40,0,1)'[vb2];[vb0]format=rgba[vb3];[vb3][vb2]overlay=1520:360,format=yuv420p",
+  "s36": "split[tg0][tg1];[tg1]crop=400:220:1500:240,gblur=sigma=4,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((X+1500-(if(lt(T,0),1610,if(lt(T,0.5),(1610+(-15)*(T-0)/0.5),if(lt(T,1.5),(1595+(-25)*(T-0.5)/1.0),if(lt(T,2),(1570+(-15)*(T-1.5)/0.5),if(lt(T,3),(1555+(35)*(T-2)/1),if(lt(T,4),(1590+(35)*(T-3)/1),if(lt(T,5),(1625+(25)*(T-4)/1),if(lt(T,5.5),(1650+(30)*(T-5)/0.5),if(lt(T,6.6),(1680+(50)*(T-5.5)/1.1),1730))))))))))+6)/8,0,1)*clip((if(lt(T,0),1680,if(lt(T,0.5),(1680+(-10)*(T-0)/0.5),if(lt(T,1.5),(1670+(-25)*(T-0.5)/1.0),if(lt(T,2),(1645+(-15)*(T-1.5)/0.5),if(lt(T,3),(1630+(35)*(T-2)/1),if(lt(T,4),(1665+(35)*(T-3)/1),if(lt(T,5),(1700+(50)*(T-4)/1),if(lt(T,5.5),(1750+(25)*(T-5)/0.5),if(lt(T,6.6),(1775+(50)*(T-5.5)/1.1),1825)))))))))+6-X-1500)/8,0,1)*clip((Y+240-(if(lt(T,0),285,if(lt(T,0.5),(285+(5)*(T-0)/0.5),if(lt(T,1.5),(290+(10)*(T-0.5)/1.0),if(lt(T,2),(300+(5)*(T-1.5)/0.5),if(lt(T,3),(305+(10)*(T-2)/1),if(lt(T,4),(315+(7)*(T-3)/1),if(lt(T,5),(322+(8)*(T-4)/1),if(lt(T,5.5),(330+(5)*(T-5)/0.5),if(lt(T,6.6),(335+(10)*(T-5.5)/1.1),345))))))))))+6)/8,0,1)*clip((if(lt(T,0),355,if(lt(T,0.5),(355+(-12)*(T-0)/0.5),if(lt(T,1.5),(343+(2)*(T-0.5)/1.0),if(lt(T,2),(345+(5)*(T-1.5)/0.5),if(lt(T,3),(350+(8)*(T-2)/1),if(lt(T,4),(358+(10)*(T-3)/1),if(lt(T,5),(368+(17)*(T-4)/1),if(lt(T,5.5),(385+(7)*(T-5)/0.5),if(lt(T,6.6),(392+(20)*(T-5.5)/1.1),412)))))))))+4-Y-240)/6,0,1)'[tg2];[tg0]format=rgba[tg3];[tg3][tg2]overlay=1500:240,format=yuv420p",
+  "s40": "fade=t=out:st=11.85:d=0.9"
+ },
+ "_note": "live action, written 2026-11-11 from edit-dh-e905-live.json / e904-live (no assembler run, no paid service, no Colab/RunPod): clip_voice, no punch-in, slow-down <= 1.1, music tail 0.3-ish except where noted. Picks: _live-e906/zhong-tian-qu-qi-e906-dh/picks.json (review-picks-a/b.tsv, fix1..fix5/review-picks.tsv, review5-trims.tsv; pre-refine review colab/runs/e906-live/pick-review.md). Every offset below is measured on the picked draft (runpod/live/{d1,fix1..fix5}/out/<shot>-<seed>.mp4) after its trim, from the first frame of the trimmed shot: frames every 0.25 s (1/8 s at s35/s36 boxes), the draft's own sound as 20 ms RMS onsets, and silencedetect -35 dB / 0.25 s exactly as assemble-v4's speechSpans; pitch by autocorrelation. Trimmed lengths: s02 6.35 (end-before), s04 6.3, s06 4.17 (start 2.4), s07 5.08 (start 1.5), s09 10.12, s11 4.67 (start 0.5), s12 s14 s25 s35 8.0, s16 5.4, s22 4.9, s23 4.68 (start 1.9), s26 3.18 (start 3.4), s27 5.08, s28 6.0, s31 5.18 (start 1.4), s32 4.8, s33 4.3 (0.9-5.2), s36 6.6 (start 1.4), s37 5.2, s38 10.12, s40 12.25, the rest 6.58. Muted (assemble-v4 onscreen rule against docs/videos/zhong-tian-qu-qi-e006-r2/video.json; the clip's own audio is dropped and the recorded line plays from LEAD 0.12 or its line_at): s10 s16 s33 (inner), s11 s17 s31 s32 (system), s15 (xiaohe 畫外), s26 (no line), s34 (tang 畫外), s39 (xuyan nospeak, back to camera), s19 (voice_off, below). Every muted shot holds its recorded line + 0.46 s except s33: a33 3.94 + 0.46 = 4.40 s on a 4.30 s take -> slowed 1.027 (under slow_max). voice_off s19: Zhao's take voice is 296 Hz median against 113-152 Hz in his own s21/s24/s28/s30 takes and 157 Hz in the recording (the e904 s27 case); he is a small figure at the top of the steps with no readable mouth, so the clip is muted and zq906a20 (3.45 s) is laid at line_at 2.3, where the take's 站住 starts and the iron ruler comes up (2.5-2.75); ends 5.75. Speech on the trimmed drafts (voiced shots): s01 0.32-3.71, s02 0.84-6.33, s03 1.71-6.25, s04 1.21-6.29, s05 0.84-5.01 (4.41-5.01 is voiced 133-213 Hz, his line on the walk-away, kept), s06 0.71-4.17 (decays to -64 by the cut), s07 0.59-4.72, s08 0.54-4.26, s09 0.64-4.08 Xu Yan / 6.07-9.69 A-ling, s12 0.32-7.35, s13 0.37-4.31, s14 3.80-7.69, s18 0.27-3.54, s20 2.12-6.3, s21 0.73-6.22, s22 0.52-4.9 (-40 dB at the 4.9 cut, not held), s23 0.43-2.88, s24 1.86-6.3, s25 1.60-7.55, s27 0.63-3.28, s28 0.29-5.15, s29 0.84-6.58, s30 0.45-5.29, s35 1.02-4.68, s36 0.0-5.98, s37 2.05-4.60, s38 1.97-8.92, s40 1.56-6.42 / 7.71-10.64. voice_skip: s14 3.6 (a -0..0.25 click and a 213 Hz grunt at 2.9 as the hoe lands at 2.96; his line starts 3.80), s20 1.5 (an unvoiced -38 dB breath at 0.79-1.02; the line starts 2.12). voice_until: s08 6.0 (noise 6.39-6.58), s13 4.4 (a steady -30 dB 380 Hz call with cupped hands 5.5-6.58 after the line ends at 4.31; it still plays, only the subtitle stops), s18 3.6 (running steps 4.36-6.58 after 現在就進縣衙 ends 3.54), s40 10.8 (the drink at 12.2 and the 0.5 s hold would stretch 明日日落見 to the black). line_at: zq906a10 6.07 (s09: the speech split by text length would put A-ling's subtitle ~1.5 s early; her speech starts at 6.07), zq906a41 7.71 (s40 second line, after the 1.3 s pause), zq906a18 3.1 (s17: the eye's smile is gone and the red is up by 2.75-3.0; the comedy stops at 2.75 under impactBell_heavy_001, the auto ding lands 2.88, the line 3.1-5.91), zq906a20 2.3 (s19, above), zq906a31 1.25 (s31: the stamp lands at 0.72 -- the draft's own -10 dB thud and the frames agree -- and the script wants a 0.5 s pause before the system line; ends 3.33), zq906a39 1.0 (s39: the basket goes down out of frame 0.25-0.65 and he looks up at 1.0; ends 5.65). min: s29 6.8 -- the last syllable of 九錢 is at -11..-16 dB until 40 ms before the draft's 6.58 end and drops to -65 (cut by the clip end, like e904 s11/s18); a 0.21 s hold keeps s30 from starting on the cut word. s40 12.75 -- the episode's last shot: he tips the cup back at 11.25-12.25; vf fades to black from 11.85 over 0.9 s (black at 12.75, 0.5 s held frame under the fade) with impactWood_heavy_002 -12 at 11.85 as the low last hit and suspense fading on its own decay. vf (1920x1080 picture after the stage crop; draft 960x544 coordinates x2, y x1.985 rounded to x2): s24 hflip -- his eyes and the push of the papers go screen right while Xu Yan is screen left in s20/s21; Zhao wears the round collar, so the mirror has no left-over-right lapel (his sword hilt changes hip). s36 -- the fake red characters at the top of the notice, local gblur sigma 4 inside a box keyed per second because the push moves the paper (the review's 1.4 s / 8.0 s box at x2 = 1540,300,140x70 -> 1690,340,160x80 missed the characters by 40-80 px in the middle of the shot and covered his fingertips at 0.5-2.0): x0-x1/y0-y1 = 0 s 1610-1680/285-355, 0.5 1595-1670/290-343, 1.5 1570-1645/300-345, 2 1555-1630/305-350, 3 1590-1665/315-358, 4 1625-1700/322-368, 5 1650-1750/330-385, 5.5 1680-1775/335-392, 6.6 1730-1825/345-412, linear between, 6-8 px feather; the bottom edge stays above the fingertips except about 6.3-6.6 where the tips rise into the lower row; the red handprint stays sharp. s31 -- the pale embossed seal frame turned vermilion: in the box 858-1218 x 435-705 (the square's corners at about (878,540) (1050,453) (1190,570) (1010,685), camera locked) the luma high-pass (frame minus gblur 6, x14) is the alpha of a 0xD42A18 layer, ramped in 3.05-3.4 as the stamp clears the box (it is lifted at 2.75-3.0), overlaid in gbrp. s35 -- the vendors working the stall behind (3.4-5.5), gblur sigma 8 on x 1520-1920 y 360-1080 (the review's 760,180 200x200 x2, extended to the frame bottom so the table edge is not a hard line), alpha in 3.0-3.4, out 5.25-5.5, top feather 40 px; its left edge moves 1520 -> 1580 (4.4-4.6) -> 1680 (4.95-5.25) and the left feather is 40 px so Tang Xiaotang's right sleeve, which crosses x 1520-1600 from 4.5, is not blurred; the standing vendor at x 1500-1600 is soft only to 4.5. s40 fade (above). Not mirrored: s34 (A-ling and Tang cross collars) and s38 (Qian's cross-collar brocade), accepted per the pre-refine review. Effects (all offsets from the trimmed shot start): s01 soap onto the board 3.1 (hand down 3.0, off 3.25), palms brushed 4.15; s02 abacus comes up into frame 3.6 (3.5-3.75); s04 one bead click 0.72 at -32 on a -46 dB draft onset (no flick is visible in this take); s05 his steps to Qin Shuang 4.2-5.85; s12 red cloth pulled off the pole 6.5 (6.25-6.75); s13 papers on the table 5.05, foot on the bench 5.5; s14 steps 0.3-1.2, hoe planted 2.95 (the take's own -11 dB thud at 2.96), chest pat 6.45; s15 bow 0.8, up 1.6; s17 bell -12 at 2.75 (music stops); s18 婚書 grabbed 3.3, steps 3.9-6.35, basket lifted 5.15; s19 steps up the stone 0.25-2.05 (muted take), ruler swung 2.5 and stopped 2.72; s21 papers taken 4.5, turned 5.7; s22 pats on the empty chest 2.05 2.35; s23 sleeve tug 2.2, wrist grip 3.85; s24 papers pushed down 4.5 (4.0-5.25); s25 hand into the basket 3.6; s26 three wraps on the draft's own paper onsets 0.34 1.38 2.54; s27 a packet taken 4.0; s30 packets into the robe 3.3, seal off the table 4.3, 婚書 handed 5.6; s31 stamp impactWood_heavy_000 -8 at 0.72 and the 午時鼓 3.5 as impactSoft_heavy_000 -10 + impactWood_heavy_002 -16 (the library has no drum: both are under 150 Hz for 85 % of their energy; listen); s32 six steps down on the draft's own onsets 0.62-4.58; s34 A-ling's steps 4.78 5.6 6.3 (draft onsets); s35 Wind -28 bed s35-s40 (street air) and the empty basket 0.2; s36 paper pressed 0.15; s39 basket on the flagstones 0.6 (draft onset 0.64); s17 birds -30 + Wind -30 under the music stop (birds.wav is 70 % digital silence). Music (cue lengths: comedy 121.26 s, audible to 118.5; tension 117.32, to 114.7; warm 58.91 with 0.44 s digital silence at the head; suspense 111.33, -40 dB from 108.7; night and river not used -- the script asks for comedy/tension/suspense). Shot starts from the trimmed picks above with the holds: comedy s01-s16 + 2.75 tail = 0-106.92 s of the cue (fits, 11.6 s spare), fade 0.25 so it stops dead on the s17 bell (script: c17 音樂一頓、重音); s17 has no music after 2.75; comedy again on s18 only from 24.0 s (an energetic part, -8..-10 dB; restarting where it stopped would land on the track's closing cadence at 107-112), 6.88 s; tension s19-s30 + 1.35 tail = 72.9 s of 117.3 (fits), fade 0.6 from s31 0.75, i.e. it drops right after the stamp at 0.72; warm (script: 蓋印一個重音後轉亮) from s31 3.5 with the drum, offset 0.45, to s34 + 0.8 = 18.25 s of 58.46 (fits); s31 0.72-3.5 is stamp, ding and system line without music (intended); suspense s35-s40 = 49.25 s, offset 59.9 so the cue ends inside its own decay (100-108.7 s: -20..-29 dB) on the black -- script: c40 收在低音; 59.9 + 49.25 = 109.15 < 111.33 (fits). Total 259.08 s. Not decided here: s18 Xu Yan's take voice is 225 Hz median (his other takes 102-137, the recording 166), probably the shout -- listen before deciding on voice_off; s24 5.4-6.3 might be a cold laugh rather than words (subtitle runs to the cut); the s31 red makes the seal's inner glyph-like lines more legible (script: 印文不畫) -- look at it on the refined clip; the s35 box was checked on the draft only and the refined frame can differ by a few px."
+}
