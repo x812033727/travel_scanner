@@ -310,7 +310,7 @@ obj("two-whistles", "Close-up of two whistles lying side by side on a wooden par
     c("比一比兩聲差多少，就知道路上被拖了多久，"),
     c("電離層的效應，可以去掉九成九以上。", None, "P:iono"))
 kid("kid-slow-q", K("holding a small phone up and tapping it impatiently with a bored pout", where=CORNER),
-    k("還有，為什麼地圖剛打開，", "抱怨"), k("藍點要等很久才出來？", "章尾停住，句尾上揚", "S:slow"))
+    k("剛剛在路口重開地圖，", "抱怨"), k("藍點等好久才出來！", "章尾停住，句尾上揚", "S:slow"))
 
 # ---------- 第四章：等很久、飄來飄去，還是地圖畫錯？ ----------
 chief("chief-almanac", C("holding up two fingers with a calm explaining smile", close=True),
