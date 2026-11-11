@@ -22,6 +22,8 @@ test("contextual itinerary picker adds repeatedly, undoes, moves across meals an
     }
     return route.fulfill({ json: trip });
   });
+  // The fixture trip is 2026-11-11–12 in Asia/Tokyo; pin the browser clock so "DAY 2" is never relabelled "今天".
+  await page.clock.setFixedTime(new Date("2026-11-01T03:00:00Z"));
   await page.goto("/zh-TW/trips/intuitive-trip");
   await page.getByRole("button", { name: "排序行程", exact: true }).click();
   const insert = page.getByRole("button", { name: "在 午餐・河畔食堂 前插入新安排" });
