@@ -136,7 +136,7 @@ chief("chief-tease", C("holding a small phone up beside her face with a playful 
 kid("kid-wow", K("throwing both hands up with wide amazed eyes, a small phone in one hand", close=True, where=STREET),
     k("差一兩公尺吧？", "篤定的錯猜"))
 chief("chief-promise", C("holding up one finger with a warm inviting smile"),
-      c("而且手機要聽的衛星，至少要四顆。", "賣關子", "S:four"),
+      c("比你猜的多很多。而且手機要聽的衛星，至少要四顆。", "賣關子", "S:four"),
       c("多出來的那一顆，到底在幫誰？", "賣關子"))
 kid("kid-main-q", K("looking down at a small phone in her hand with a thinking frown", where=CORNER),
     k("手機到底怎麼用時間，", "想不通"), k("知道我在哪裡？", "句尾上揚", "S:main"))
@@ -185,7 +185,7 @@ chief("chief-38", C("holding up her thumb and finger a tiny gap apart with a ser
       k("快多少？", "追問"),
       c("照一篇 GPS 相對論的回顧換算，"),
       c("衛星的鐘一天快了三十八微秒多。"),
-      c("一微秒，就是百萬分之一秒。"))
+      c("一微秒，就是開頭那個百萬分之一秒。"))
 kid("kid-38", K("shrugging with both palms up and a doubtful grin", where=PARK),
     k("那也太短了吧？", "不以為意"))
 chief("chief-11km", C("pointing one finger at the viewer with a playful raised eyebrow"),
@@ -215,10 +215,10 @@ kid("kid-clock-q", K("holding a small phone up close and peering at it with narr
     k("我的手機裡，", "懷疑"), k("有原子鐘嗎？", "句尾上揚", "S:clock"))
 chief("chief-watch-fast", C("tapping " + WATCH + " on her wrist with a playful smile"),
       c("沒有，手機裡沒有那麼準的鐘。", "接住上一句", "P:clock"),
-      c("回到公園。假設你的錶慢了一秒，"))
+      c("回到公園。哨子是聲音，假設你的錶慢了一秒，"))
 obj("wristwatch", "Close-up of a child's wrist wearing " + WATCH + ", resting on a wooden park bench in sunshine",
     c("每一聲哨子，你都以為它走得比較短，"),
-    c("每個朋友，聽起來都近了三百多公尺。"))
+    c("聲音一秒跑三百多公尺，每個朋友都像近了這麼多。"))
 kid("kid-all-close", K("looking around in confusion with both hands raised, a small phone in one hand", where=PARK),
     k("大家一起變近？", "困惑"), k("那我到底在哪？"))
 chief("chief-no-match", C("spreading her hands with an honest puzzled smile"),
@@ -275,7 +275,7 @@ kid("kid-then-why", K("pointing across a sunny street with a frustrated frown", 
     k("那我的手機，", "不服氣"), k("怎麼會差到對街？", "句尾上揚"))
 chief("chief-ure-not", C("holding up one finger with an honest careful smile", close=True),
       c("官方特別說明：訊號的誤差，不等於你手上的誤差。", None, "P:signal"),
-      c("手上的誤差，還要加上路上的事：擋住、反彈，跟大氣。"))
+      c("手上的誤差，還要加上訊號在路上遇到的事。"))
 chief("chief-mooc", C("holding a small phone out towards the viewer with a friendly smile"),
       c("史丹佛的一門線上課，讓上千個人，在一百個國家用手機量。"),
       c("開闊的地方，平均差大約五公尺。"))
@@ -284,7 +284,7 @@ obj("city-towers", "Wide shot of a sunny city street lined with very tall smooth
 kid("kid-echo-q", K("pointing up at a tall glass building with a suspicious frown", where=STREET),
     k("是大樓把訊號，", "猜"), k("吃掉了嗎？", "句尾上揚", "S:echo"))
 chief("chief-echo", C("bouncing one flat hand off the other palm with a curious smile", close=True),
-      c("有時候是擋住；有時候更麻煩，"),
+      c("還記得那條天空的縫嗎？有時候是擋住；有時候更麻煩，"),
       c("訊號撞到牆，反彈以後才進你的手機。"))
 obj("glass-wall", "Close-up of a tall smooth glass building wall reflecting the bright sun and the blue sky, a small green street tree in front of it",
     c("回到公園：哨聲撞到一面牆，繞了遠路才到你耳朵，"),
