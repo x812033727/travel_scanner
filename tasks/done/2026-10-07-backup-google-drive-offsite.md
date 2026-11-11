@@ -19,6 +19,8 @@ scope:
   - docs/ops/backup-restore-runbook.md
   - ops/backup/install.sh
   - ops/backup/test_backup.py
+  - .agents/skills/prod-host-ops/SKILL.md
+  - .claude/skills/prod-host-ops/SKILL.md
   - ops/backup/backup.env.example
   - ops/backup/travel-scanner-offsite.service
   - ops/backup/travel-scanner-offsite.timer
