@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { GET as overview } from "./route";
+import { GET as retention } from "./retention/route";
 import { GET as rows } from "./rows/route";
 import { POST as sync } from "./sync/route";
 
@@ -48,5 +49,26 @@ describe("YouTube channel reports proxy", () => {
     const anonymous = await overview(new NextRequest(BASE, { headers: { Cookie: "travel_access=session" } }));
     expect(anonymous.status).toBe(401);
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("forwards a retention query with only its known values, and refuses a bad one before the API", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
+      const headers = new Headers(init?.headers);
+      expect(headers.get("authorization")).toBe(`Bearer ${TOKEN}`);
+      expect(headers.has("cookie")).toBe(false);
+      calls.push(`${new URL(url).pathname}${new URL(url).search}`);
+      return Response.json({ ok: true });
+    }));
+    const good = await retention(new NextRequest(`${BASE}/retention?video_id=gkl0vABh1_c&start=2026-10-30&end=2026-11-07&organic=true&extra=1`, { headers: auth }));
+    expect(good.status).toBe(200);
+    expect(calls).toEqual(["/api/v1/video/youtube-reports/retention?video_id=gkl0vABh1_c&start=2026-10-30&end=2026-11-07&organic=true"]);
+    const bad = await Promise.all([
+      retention(new NextRequest(`${BASE}/retention?video_id=a%20b`, { headers: auth })),
+      retention(new NextRequest(`${BASE}/retention?video_id=gkl0vABh1_c&start=yesterday`, { headers: auth })),
+      retention(new NextRequest(`${BASE}/retention?video_id=gkl0vABh1_c&organic=maybe`, { headers: auth })),
+    ]);
+    expect(bad.map((response) => response.status)).toEqual([422, 422, 422]);
+    expect(calls).toHaveLength(1);
   });
 });

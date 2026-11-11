@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_MUSIC, CURIO_PRESET, curioProblems, curioWarnings, isCurio } from "./curio.mjs";
+import { CURIO_MAX_CARD_RUN, CURIO_MIN_SHOT_SHARE, CURIO_MUSIC, CURIO_PRESET, curioProblems, curioWarnings, isCurio, isPacedSeries, pacingWarnings, SERIES_PACING } from "./curio.mjs";
 import { resolveLook } from "./drama.mjs";
 import { fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
@@ -65,4 +65,19 @@ test("a curio- slug without a music bed is warned, with the series' track to add
   const context = { lexicon: fixtureLexicon(), brief: fixtureBrief(), others: [], translations: {} };
   assert.ok(lintVideo({ ...fixture(), slug: "curio-x01" }, context).warnings.some((problem) => problem.path === "music"));
   assert.ok(!lintVideo(fixture(), context).warnings.some((problem) => problem.path === "music"));
+});
+
+test("a curio- or sothatswhy- drama without the series pacing is warned, with the fields to add; anything else is not", () => {
+  assert.equal(isPacedSeries({ slug: "curio-h24" }), true);
+  assert.equal(isPacedSeries({ slug: "sothatswhy-p05-down-jacket" }), true);
+  assert.equal(isPacedSeries({ slug: "daily-ai-20261029" }), false);
+  const missing = pacingWarnings({ slug: "curio-h24", format: "drama" });
+  assert.deepEqual(paths(missing), ["pauses", "still_motion"]);
+  assert.ok(missing[0].message.includes(JSON.stringify(SERIES_PACING.pauses)), missing[0].message);
+  assert.deepEqual(paths(pacingWarnings({ slug: "sothatswhy-p05-down-jacket", format: "drama", pauses: { line_ms: 0 } })), ["still_motion"]);
+  assert.deepEqual(pacingWarnings({ slug: "curio-h24", format: "drama", ...SERIES_PACING }), []);
+  assert.deepEqual(pacingWarnings({ slug: "curio-h01", format: "slides" }), [], "the old slides pilots move their pictures another way");
+  assert.deepEqual(pacingWarnings({ slug: "daily-ai-20261029", format: "drama" }), []);
+  const context = { lexicon: fixtureLexicon(), brief: fixtureBrief(), others: [], translations: {} };
+  assert.ok(!lintVideo(fixture(), context).warnings.some((problem) => problem.path === "still_motion"));
 });
