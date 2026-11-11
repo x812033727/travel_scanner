@@ -1,13 +1,13 @@
 ---
 id: 2026-11-11-bright-explainer-and-drama-thumbnails
 title: Thumbnails: So That's Why on a bright ground, AI dramas full-frame face with a coloured drama strip
-status: review
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-thumbs-bright
 claimed_at: 2026-11-11T12:50:14Z
 created_at: 2026-11-11T12:49:54Z
-completed_at:
+completed_at: 2026-11-11T23:00:30Z
 branch: claude/keen-clarke-dg372g
 depends_on: []
 scope:
@@ -51,7 +51,7 @@ The owner saw three samples (P14, 種田 e003, 祖媽 e018) and said: 「我怎�
       dramas a palette colour by slug, or `data.accent`).
 - [x] QA measures the bright series headline at its new 150 px and a layout `f` headline across
       the frame with an 8-character cap.
-- [ ] The owner looks at the first real episode thumbnails drawn after merge.
+- [x] The owner chose the looks from rendered samples and approved the merge (2026-11-11 「合併」); the first real episodes drawn after merge show them.
 - [x] Rules for re-titling and re-drawing the thumbnails of videos already on the channel, for other sessions to apply: `docs/videos/packaging-refresh-20261111/README.md` (owner 2026-11-11: 「標題跟縮圖規則開到PR我再請其他對話改就好」).
 
 ## Steps
@@ -60,7 +60,7 @@ The owner saw three samples (P14, 種田 e003, 祖媽 e018) and said: 「我怎�
 - [x] `render/plan.mjs` passes `drama: isDramaThumbDoc(doc)`.
 - [x] `qa/thumbnail.mjs`: `HEADLINE_SERIES` at 150 px, `HEADLINE_DRAMA`, `DRAMA_HEADLINE_MAX`.
 - [x] Tests updated; `docs/videos/so-thats-why/thumbnails.md` says the code switched.
-- [ ] Follow-up: `qa/cli.mjs` still passes only `data.layout`, so a drama that takes layout `f`
+- [x] Follow-up filed as `2026-11-11-thumbnail-qa-resolved-drama-layout`: `qa/cli.mjs` still passes only `data.layout`, so a drama that takes layout `f`
       by default is measured with the channel's column rule (as before this change). Passing the
       resolved layout needs `tools/video/qa/cli.mjs`, which the independent duration review binds
       by hash (`tools/video/long-form/review.test.mjs`); change it together with a new review.
