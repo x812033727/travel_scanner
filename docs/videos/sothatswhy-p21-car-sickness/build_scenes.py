@@ -269,7 +269,7 @@ chief("chief-train", C("holding the edge of an imaginary window with a curious s
 obj("train-window", "Medium view out of the window of a bright local train standing at a sunny platform, a neighbouring blue and white train right beside it sliding slowly past, its windows a smooth blur",
     c("你會突然覺得，是自己這列在動。"))
 kid("kid-train", K("gripping the window ledge with a surprised laughing face", where=TRAIN),
-    k("有！我以為出發了！", "笑"))
+    k("有！我以為車子開了！", "笑"))
 chief("chief-vection", C("waving one hand past her eyes with a playful smile", close=True),
       c("那叫自己在動的錯覺。眼睛一下子，就騙過大腦了。", None, "P:vection"))
 chief("chief-vection-limit", C("holding her two hands side by side with an honest thoughtful smile"),

@@ -357,7 +357,7 @@
 
 #### 75. kid-train
 
-【小問】（笑）有！我以為出發了！
+【小問】（笑）有！我以為車子開了！
 
 #### 76. chief-vection
 
@@ -563,5 +563,5 @@
 
 【所長】（誠懇）想一起找生活裡的為什麼，就訂閱原來如此事務所。
 
-narrative f8968546ad90b586
-speech 0df2b25d64bf3eff
+narrative a0dc527ebbe39c3f
+speech 38a35a9911505818
