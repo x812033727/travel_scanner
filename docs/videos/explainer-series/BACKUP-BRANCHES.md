@@ -1,5 +1,7 @@
 # 旁白解說系列的備份分支
 
+> **2026-11-10 起停用。** 站主：備份不再推分支，製作的所有檔案由做片的 session 用 [`todrive.sh`](../ai-drama-drive/todrive.sh) 直接傳到雲端硬碟 `AI劇/<名稱>/<集數>/製作檔/`，規則在 [`AI-DRAMA-DRIVE.md`](../AI-DRAMA-DRIVE.md)。`tobranch.sh` 會拒絕執行。下面是舊規則，留作紀錄；「要備份什麼」的清單仍然適用，目的地改成雲端硬碟。
+
 適用：在雲端 session 製作的奇聞檔案局（`curio-*`）與原來如此事務所（`sothatswhy-*`）。容器隨時會被收掉，
 本機檔案只有推到 GitHub 才算安全。主機上影片的雲端硬碟備份是另一條路線，見 [`../BACKUP.md`](../BACKUP.md)。
 AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHES.md)（PR #2047），命名與核對方式跟它一致。
@@ -33,14 +35,6 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
 - 已經在 `travel_scanner` 上的 `transfer/*` 分支，用逐個 commit 推送的方式原樣搬到對應的備份 repo（commit 編號相同，
   兩邊分支頭一致就是內容一致；`tobranch.sh` 每個 commit 不超過約 1.5 GB，所以逐個推不會碰到 2 GB 的單次上限）。
   搬完、核對一致之後，要不要從 `travel_scanner` 刪掉由站主決定。
-
-也可以不 clone：兩支工具用環境變數 `BACKUP_REMOTE` 指定 repo（remote 名稱或網址，不設就是 `origin`）：
-
-```bash
-git remote add backup-sothatswhy https://github.com/x812033727/mokaair-video-backup-sothatswhy.git   # 一次
-BACKUP_REMOTE=backup-sothatswhy docs/videos/explainer-series/backup/tobranch.sh transfer/<slug> ~/mokaair-work/videos/<slug> <slug> "<slug>: <關卡>"
-BACKUP_REMOTE=backup-sothatswhy docs/videos/explainer-series/backup/coverage.sh transfer/<slug> ~/mokaair-work/videos/<slug> <slug>
-```
 
 ## 分支怎麼命名
 

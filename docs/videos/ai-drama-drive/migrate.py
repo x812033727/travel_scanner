@@ -229,9 +229,9 @@ def migrate(row: dict[str, str], ledger: dict[str, dict[str, object]], dry_run: 
         if dry_run:
             return True
         stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
-        flags = ["--links", "--tpslimit", "5", "--retries", "5", "--exclude", f"/{OLD}/**"]
+        flags = ["--links", "--tpslimit", "10", "--retries", "5", "--exclude", f"/{OLD}/**"]
         copied = rclone(["copy", "/stage", f"{REMOTE}:", "--checksum", "--drive-chunk-size", "64M",
-                         "--transfers", "4", "--backup-dir", f"{REMOTE}:{OLD}/{stamp}", *flags], stage)
+                         "--transfers", "8", "--checkers", "16", "--backup-dir", f"{REMOTE}:{OLD}/{stamp}", *flags], stage)
         if copied.returncode != 0:
             raise RuntimeError(f"rclone copy: {copied.stderr.strip()[-400:]}")
         checked = rclone(["check", "/stage", f"{REMOTE}:", "--one-way", *flags], stage)

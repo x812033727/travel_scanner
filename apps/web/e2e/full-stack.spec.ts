@@ -80,6 +80,12 @@ test("manual insertion and single-stop cross-day move persist through the real A
 });
 
 // The trip calendar only renders one month; walk forward until the day exists.
+function isoDaysFromToday(days: number) {
+  const date = new Date();
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
 async function pickTripDay(page: Page, iso: string) {
   const toggle = page.getByRole("group", { name: "旅行日期", exact: true }).getByRole("button");
   if (await toggle.getAttribute("aria-expanded") !== "true") await toggle.click();
@@ -275,8 +281,11 @@ test("a saved trip searches flights from its own criteria and takes a quote back
   await page.locator(".calm-new-trip-name > summary").click();
   await page.getByLabel("旅程名稱").fill("東京查機票");
   await page.getByLabel("目的地").fill("日本東京");
-  await pickTripDay(page, "2026-11-10");
-  await pickTripDay(page, "2026-11-14");
+  // Dates relative to today: the real API refuses to search a trip whose departure has
+  // passed in its timezone, and the editor opens on "today" when it falls inside the trip,
+  // so fixed dates broke this test once 2026-11-10 arrived in Tokyo.
+  await pickTripDay(page, isoDaysFromToday(30));
+  await pickTripDay(page, isoDaysFromToday(34));
   await expect(page.getByRole("group", { name: "旅行日期", exact: true }).getByRole("button")).toContainText("5 天");
   await createBlankTrip(page);
   const tripUrl = page.url();
