@@ -132,7 +132,7 @@ chief("chief-listen", C("leaning forward with a curious smile, one hand on her c
       c("你叫車的時候，可能也看過車停在對面。", "轉向觀眾"))
 chief("chief-tease", C("holding a small phone up beside her face with a playful knowing smile"),
       c("更怪的是：手機算你在哪裡，靠的是時間。", "賣關子"),
-      c("時間只差百萬分之一秒，位置就差三百公尺。", "數字放慢", "S:micro"))
+      c("時間只差百萬分之一秒，距離就差三百公尺。", "數字放慢", "S:micro"))
 kid("kid-wow", K("throwing both hands up with wide amazed eyes, a small phone in one hand", close=True, where=STREET),
     k("差那麼遠？", "驚訝"))
 chief("chief-promise", C("holding up one finger with a warm inviting smile"),
@@ -233,7 +233,7 @@ chief("chief-five", C("nodding with a confident smile, one finger raised", close
       c("標準也寫：用五顆以上去算，倍數一定不會比四顆差。", None, "P:geometry"))
 kid("kid-sky-strip", K("looking straight up with her mouth open in surprise", where=STREET),
     k("我在大樓中間，", "發現"), k("天空只剩一條縫！"))
-obj("sky-strip", "Low view looking straight up between two tall plain glass buildings with smooth unmarked walls, a narrow strip of bright blue sky between them",
+obj("sky-strip", "Low angle view looking straight up between two tall plain glass buildings with smooth unmarked walls, a narrow strip of bright blue sky between them",
     c("對，大樓擋住了一部分衛星，"),
     c("能用的變少，放大的倍數就可能變大。"))
 kid("kid-signal-q", K("holding a small phone out at arm's length and frowning at it", where=STREET),
