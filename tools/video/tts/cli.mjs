@@ -21,6 +21,7 @@ import { PILOT_SLUGS, SpeechError, speechStatus, synthesize, synthesizeAligned }
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
 import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
 import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts, voiceFields } from "./requests.mjs";
+import { paceWarning } from "../core/pace.mjs";
 import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
 import { buildNarration, flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "./synthesis.mjs";
 import { readCache, takeCurrent } from "./takes.mjs";
@@ -553,6 +554,8 @@ async function tts(args, ctx) {
   if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   if (timings.size) ctx.stdout.write(`${timings.size} of ${timeline.lines.length} lines carry measured character times; their CC cues start on the spoken character\n`);
   if (fallbacks.length) ctx.stdout.write(`line-by-line fallback for: ${fallbacks.join(", ")}\n`);
+  const pace = paceWarning(doc, timeline);
+  if (pace) ctx.stdout.write(`pace: ${pace}\n`);
   if (chapters.length) {
     // The problems come last, so a caller that reports the last line names one.
     ctx.stdout.write(`next: lengthen or merge the short chapters in video.json, then tts again (unchanged clips are reused)\n`);

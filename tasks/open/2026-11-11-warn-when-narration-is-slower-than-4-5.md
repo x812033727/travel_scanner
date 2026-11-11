@@ -1,11 +1,11 @@
 ---
 id: 2026-11-11-warn-when-narration-is-slower-than-4-5
 title: 影片工具：旁白語速低於 4.5 字／秒時警告（奇聞、原來如此）
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5.5-p06-p18-handoff
+claimed_at: 2026-11-11T02:34:33Z
 created_at: 2026-11-11T01:41:35Z
 completed_at:
 branch:
@@ -13,7 +13,7 @@ depends_on: []
 scope:
   - tools/video/core/pace.mjs
   - tools/video/core/pace.test.mjs
-  - tools/video/core/lint.mjs
+  - tools/video/tts/cli.mjs
 ---
 
 # 影片工具：旁白語速低於 4.5 字／秒時警告（奇聞、原來如此）
