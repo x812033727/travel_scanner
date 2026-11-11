@@ -709,7 +709,8 @@ export const isSplitThumbSlug = (slug) => /^curio-/.test(slug ?? "");
  * The drama layout (the owner, 2026-11-11, after seeing a sample: "你做的縮圖比較好"): the
  * keyframe fills the frame, a face first (drama-craft.md: 15 of the 16 most viewed reference
  * thumbnails are a face filling the frame, 14 carry a 4–8 character title in the bottom third);
- * the headline is one big yellow line with a black outline in the bottom third; the episode's
+ * the headline is one big yellow line with a black outline in the bottom third, shrunk rather
+ * than wrapped so it never climbs onto the face; the episode's
  * `tag` (the drama's name) is a strip at the top left in the drama's own colour, so the episodes
  * of one drama look alike and two dramas apart. A drama (isDramaThumbDoc) takes it unless
  * data.layout names another; the colour is the drama's (DRAMA_THUMB_ACCENTS by slug, else one
@@ -742,7 +743,9 @@ export function dramaAccent(slug, accent = null) {
   return DRAMA_THUMB_PALETTE[hash % DRAMA_THUMB_PALETTE.length];
 }
 /** The drama layout's headline as THUMB_DRAMA_CSS sets it; qa/thumbnail.mjs measures with the same numbers. */
-export const DRAMA_THUMB_HEADLINE = { fontSize: 190, lineHeight: 1.05, left: 56, right: 72, maxLines: 2 };
+// One line (2026-11-11, the owner: "AI劇的字跟圖解決一下"): two lines at 190 px stood 400 px tall
+// and covered the chin and the face; one line that shrinks instead stays in the bottom third.
+export const DRAMA_THUMB_HEADLINE = { fontSize: 170, lineHeight: 1.1, left: 56, right: 72, maxLines: 1 };
 export const THUMB_FOCUS_DEFAULT = 50;
 const isFocus = (value) => Number.isInteger(value) && value >= 0 && value <= 100;
 // In the split panel a line the writer broke with "\n" stays one line when its script has no word
@@ -1031,11 +1034,11 @@ const THUMB_SPLIT_CSS =
 // badge at the bottom right.
 const THUMB_DRAMA_CSS =
   ".thumb-subject.layout-f{width:100%}" +
-  ".thumb-subject.layout-f img{object-position:center 25%}" +
-  '.thumb-subject.layout-f::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.8) 100%)}' +
+  ".thumb-subject.layout-f img{object-position:center 18%}" +
+  '.thumb-subject.layout-f::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 78%,rgba(0,0,0,.82) 100%)}' +
   `.thumb.column.layout-f{right:0;padding:48px ${DRAMA_THUMB_HEADLINE.right}px 70px ${DRAMA_THUMB_HEADLINE.left}px;justify-content:flex-end;gap:10px}` +
   ".thumb.column.layout-f .tag{position:absolute;left:0;top:44px;border-radius:0;padding:12px 30px 12px 48px;background:var(--drama);color:#fff;font-size:44px;font-weight:900;letter-spacing:.04em;box-shadow:0 6px 18px rgba(0,0,0,.35)}" +
-  `.thumb.column.layout-f h1{color:#ffd400;font-size:${DRAMA_THUMB_HEADLINE.fontSize}px;line-height:${DRAMA_THUMB_HEADLINE.lineHeight};max-height:${Math.round(DRAMA_THUMB_HEADLINE.fontSize * DRAMA_THUMB_HEADLINE.lineHeight * DRAMA_THUMB_HEADLINE.maxLines)}px;letter-spacing:.02em;text-wrap:balance;-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 10px 24px rgba(0,0,0,.5)}` +
+  `.thumb.column.layout-f h1{color:#ffd400;font-size:${DRAMA_THUMB_HEADLINE.fontSize}px;line-height:${DRAMA_THUMB_HEADLINE.lineHeight};max-height:${Math.round(DRAMA_THUMB_HEADLINE.fontSize * DRAMA_THUMB_HEADLINE.lineHeight * DRAMA_THUMB_HEADLINE.maxLines)}px;letter-spacing:.02em;white-space:nowrap;-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 10px 24px rgba(0,0,0,.5)}` +
   ".thumb.column.layout-f .sub{color:#fff;font-size:64px;font-weight:900;max-height:90px;-webkit-text-stroke:10px #000;paint-order:stroke fill}" +
   ".thumb.column.layout-f .brand{left:auto;right:40px;top:48px;bottom:auto;font-size:28px;letter-spacing:.12em;color:rgba(255,255,255,.9);text-shadow:0 2px 8px rgba(0,0,0,.6)}";
 

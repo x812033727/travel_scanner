@@ -6,8 +6,8 @@
 | --- | --- | --- |
 | `drama-zhong-tian-qu-qi-e003.jpg` | AI 劇 layout `f` | 滿版關鍵影格、下三分之一黃字黑邊大字、左上種田橘色劇名條、右上 MOKAAIR |
 | `drama-tai-nainai-e018.jpg` | AI 劇 layout `f` | 同上，祖媽紅色劇名條；含淚特寫是這個版型要的那種臉 |
-| `drama-long-headline-balanced.jpg` | AI 劇 layout `f` | 7 字標題平均斷成兩行（聘禮是／三塊肥皂），不會斷成 5＋2 |
-| `drama-en.jpg` | AI 劇 layout `f` | 英文版：劇名條與標題都換成譯文，長字自動縮 |
+| `drama-long-headline.jpg` | AI 劇 layout `f` | 7 字標題仍是一行，字縮小而不換行，不會往上蓋到臉 |
+| `drama-en.jpg` | AI 劇 layout `f` | 英文版：劇名條與標題都換成譯文，一行、自動縮字 |
 | `sothatswhy-p14-no-keyframe.jpg` | 原來如此亮底 | 沒有關鍵影格：天藍到夕陽橘漸層、墨藍白邊大字、芥末黃強調、墨藍副標色塊 |
 | `sothatswhy-over-a-keyframe.jpg` | 原來如此亮底 | 鋪在關鍵影格上：字那側奶油色遮罩。示範用的底圖是祖媽 c14；主體在中間時會被字壓到，正式出圖用主體在右側的鏡頭，或 `data.subject: "right"` |
 | `sothatswhy-subject-right.jpg` | 原來如此亮底 | `data.subject: "right"`：圖縮到右側 38%，字與人分開 |
@@ -26,3 +26,5 @@
 - `sothatswhy-p06-final.jpg`、`-p18-final.jpg`、`-p21-final.jpg`：定案版畫在 P06、P18、P21 實際的縮圖鏡頭上（都寫 `data.subject: "right"`）。
 
 這個 PR 合併後，P06、P18 要重 render 縮圖並重送上架關卡（已核准的縮圖是舊版），P21 直接用新版；由那條 session 處理。
+
+AI 劇的標題固定一行（2026-11-11 站主「AI劇的字跟圖解決一下」）：兩行 190px 的大字高約 400px，會蓋到下巴與臉；改成 170px 一行、放不下就縮字，底圖往上對齊（`object-position: center 18%`），臉留在上半部。參考片 16 支裡 14 支有字，所以保留字、不拿掉。

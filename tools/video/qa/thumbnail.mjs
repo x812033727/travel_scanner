@@ -52,7 +52,7 @@ export const HEADLINE = {
 // 150 px since the 2026-11-11 bright look).
 export const HEADLINE_SERIES = { ...HEADLINE, fontSize: SERIES_THUMB_HEADLINE.fontSize, lineHeight: SERIES_THUMB_HEADLINE.lineHeight, maxHeight: SERIES_THUMB_HEADLINE.maxHeight, width: THUMB_SIZE.width - 72 - 340 };
 // The drama layout (templates.mjs THUMB_DRAMA_LAYOUT): the headline runs across the frame in the
-// bottom third, two lines at most; drama-craft.md asks for 4–8 characters.
+// bottom third on one line, shrunk rather than wrapped; drama-craft.md asks for 4–8 characters.
 export const HEADLINE_DRAMA = {
   ...HEADLINE,
   fontSize: DRAMA_THUMB_HEADLINE.fontSize,
@@ -257,7 +257,7 @@ export const CHANNEL_RULES_LOCALE = "zh-TW";
  * `locale` names a locale's own thumbnail (CHANNEL_RULES_LOCALE or null is the video's own).
  * `layout` is the thumbnail's layout as drawn (data.layout, or the drama layout a drama takes
  * without one): the AI look (THUMB_AI_LAYOUT) holds the headline to one line across the frame
- * instead of six characters in the column; the drama layout (THUMB_DRAMA_LAYOUT) to two big lines
+ * instead of six characters in the column; the drama layout (THUMB_DRAMA_LAYOUT) to one big line
  * across the frame and at most DRAMA_HEADLINE_MAX characters.
  */
 export function thumbnailChecks({ bytes, headline, title = null, series = null, locale = null, layout = null }) {

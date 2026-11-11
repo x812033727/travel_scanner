@@ -84,5 +84,9 @@ Render any 種田 or 祖媽 episode and any `sothatswhy-` episode and look at `t
   and the sub line stays on one line (fitText shrinks it) — before, a two-line sub plate ran into
   the series' name and the renderer reported it. Drama headlines use `text-wrap: balance`, so seven
   characters break 3+4, not 5+2.
+- Third pass (owner: 「AI劇的字跟圖解決一下，是不是AI劇就不要字?」): kept the text (14 of 16 reference
+  thumbnails carry it) but held it to one line at 170 px that shrinks instead of wrapping, the
+  picture anchored at 18% from the top and the shade starting lower, so the headline never climbs
+  onto the face. `DRAMA_THUMB_HEADLINE.maxLines` is 1 and qa measures one line.
 - 種田 e003's chosen keyframe has a calm face; the look needs the most expressive shot — pick
   `data.shot` for the face, not the scene.
