@@ -1,13 +1,13 @@
 ---
 id: 2026-11-12-tai-nainai-e001-e008-shots-en
 title: 恁祖媽今年18 第1-8集原稿（#2086）合併後：補記已知瑕疵、跨集鏡號，cast.json 跟上裁定
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-elegant-ritchie
 claimed_at: 2026-11-12T16:01:23Z
 created_at: 2026-11-12T14:43:25Z
-completed_at:
+completed_at: 2026-11-12T16:10:31Z
 branch: claude/elegant-ritchie-vpnwqm
 depends_on: []
 scope:
