@@ -160,7 +160,7 @@ obj("classroom-pass", "Wide shot of a sunny classroom with rows of small wooden 
 kid("kid-open-note", K("holding up a small folded open letter and peeking inside it with a sly grin", close=True, where=CLASS),
     k("信沒封起來的話……", "想像"))
 chief("chief-chrome-help", C("holding a small phone up beside her face with a serious honest smile"),
-      c("Chrome 瀏覽器的說明就這樣寫：沒有私密連線的網站，"),
+      c("Chrome 瀏覽器說明寫：沒有私人連線的網站，"),
       c("別人可能看到、也可能改掉你傳的東西。", None, "P:see"))
 kid("kid-nice", K("crossing her arms with a doubtful pout", where=CLASS),
     k("可是我的同學", "不服氣"), k("人都很好啊！"))
@@ -345,10 +345,10 @@ obj("envelope-house", "Close-up of a small cream envelope with a round red wax s
 chief("chief-ech", C("holding up two small envelopes, one tucked inside the other, with a pleased smile"),
       c("二〇二六年三月，一份新的規格正式發布，就在做這件事："),
       c("把收件人的名字，也放進裡面一層信封。", None, "P:ech"))
-obj("tall-building", "Wide shot of one tall plain cream apartment building with many identical windows on a sunny street, small green trees in front",
+obj("server-cabinet", "Wide shot of one plain cream metal cabinet holding a neat stack of flat grey server boxes with tiny green lights, in a bright clean room with pale walls",
     c("可是它自己也寫，光這樣還不夠。"),
     c("信最後送到哪一台網站的機器，路上還是看得到；"))
-chief("chief-same-building", C("holding both hands up shaped like a little roof with a thoughtful smile", close=True),
+chief("chief-same-machine", C("holding one small plain grey box in both hands with a thoughtful smile", close=True),
       c("不過很多網站常常共用同一台，"),
       c("所以信封上的名字，才是最明白的線索。"))
 obj("street-ask-2", "Wide shot of a sunny crossroads with small shops and green trees, a friendly cartoon postman standing alone on the pavement pointing down a side street",
@@ -370,13 +370,13 @@ kid("kid-spot", K("pointing at a small tablet in her other hand with wide eyes a
 
 # ---------- 收尾 ----------
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
-      c("沒錯，這種只能靠你自己看。", "點頭"), c("那多一個 S，你的密碼在路上差了什麼？", "笑"), chapter="小問看清楚了")
+      c("沒錯，這種封條管不到，要靠你自己看。", "點頭"), c("那多一個 S，你的密碼在路上差了什麼？", "笑"), chapter="小問看清楚了")
 kid("kid-got-it", K("holding a small sealed cream envelope up proudly with a big confident grin", where=CAFE),
     k("原來如此！", "恍然大悟"), k("就像剛剛那封封好的信，", "篤定"),
     k("同學照樣傳，卻讀不到，", "篤定"), k("也冒充不了那個網址！", None, "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好。我覺得最妙的是，這個封條你每天都在用，"),
-      c("卻從來沒有看見它。"))
+      c("卻從來沒有看清楚它。"))
 obj("cafe-table", "Wide shot of a sunny café table by a big window with a mug of cocoa and a small tablet lying face down, a potted plant on the windowsill",
     k("我先去跟媽媽說，", "開心"), k("那個連結是假的！"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
