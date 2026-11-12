@@ -313,4 +313,8 @@
 - **外貌句只寫長相**：Grant 基本款與 `young` 的外貌句拿掉了 `a warm practiced smile`、`leans slightly forward when he talks`、`an eager salesman's smile`；他練過的溫和臉、往前傾的姿勢寫在每一鏡的表情與動作欄。
 - **第 4 集**（寫稿者定）：補 "I'll call my old number."（觀眾才知道她打給誰）與 "I asked for Dr. Brandt. Where is she?"（呼叫鈕不放對講聲）。值班醫生說話時把夾板放在床尾、出門時拿走，那一鏡寫 `its clip empty`。Grant 整集站著，白手帕一直在胸前口袋。停號錄音用 Gemini（Leda，電話濾波，嘴不入鏡）。值班醫生原聲；`cast.json` 的 Orus 只當備案與語氣參考。
 - **第 5 集**（寫稿者定）：跳時間後 Nora 坐在床緣、穿灰拖鞋，白毯 `folded at the foot of the bed`。Peg 在走廊盡頭用掉口袋裡的面紙（所以車上找面紙），戴婚戒的左手貼牆；帳本在車上已攤在腿上。車上從儀表板中間往後座拍，Cole 只露右下角的白手套。
+- **第 6–7 集**（寫稿者定）：派遣員那句是 "A deputy's on the way. Please wait outside."（Gemini Autonoe，電話濾波，Nora 的嘴不入鏡），她坐到台階上才有原因。
+  Sienna 拿工人的灰色夾板、左手翻頁說 "page four"。扯下的窗簾寫 `…thick matte fabric, torn down and heaped on the floor`；扯下的是矮櫃上方那片，第 7 集玻璃磚一直在那道金光裡。
+  大門從第 6 集第三場起一直往屋裡開著。Fisk 加一只錶 `a plain silver wristwatch on his left wrist, its face turned toward him`。
+  第 8 集 c17 Nora 才第一次看見坡底的白車，所以第 7 集最後兩鏡白車只在背景、她一直盯著筆。
 
