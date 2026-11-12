@@ -66,7 +66,7 @@
 
 **場頭**：
 - **地點與場景圖**：下坡車道的坡底與海岸路的路肩 `coastal-drive`（待畫；格局同第 8 集第四場）：`a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` 停在車道口、車頭朝上坡，右後門開著；更遠的路肩停著沒有字的白色廂型車；海岸路往畫面左延伸、沿著海。**往山下一律往畫面左**。
-- **時間與天氣**：第 2 天 19:00–19:04，最後的金紅夕照從畫面右（海那邊、坡上）低低照來；地面乾。
+- **時間與天氣**：第 2 天 19:00–19:04，最後的金紅夕照從畫面右（海那邊、坡上）低低照來；路肩的柏油與碎石還有一點白天留下的濕（接第 8 集「地面還有一點濕」，同一刻），映著夕照；之後到公車站一路變乾。
 - **軸線**：鏡頭在車的右側（Nora 那側）；Nora 與 Peg 在畫面左前、臉朝畫面左的海岸路；Grant 在畫面右後的車門邊、臉朝畫面左；工人在更遠的廂型車邊；Cole 在駕駛座。
 - **在場的人**：Nora、Peg、Grant；Cole（只有白手套與後腦，c06）；兩個工人（c05，工頭露臉、另一人背影）。
 - **這場要講完的事**：Grant 要媽上車；Peg 頭也不回叫他晚飯自己做，當著司機與工人的面（結尾：「Make your own dinner, Grant.」，兩個女人走了）。
@@ -75,7 +75,7 @@
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c01 | 中景、固定（接第 8 集最後一鏡的同一刻、同一個鏡位）；鏡頭在路肩上、兩個女人的前側方；直式前後疊開：前景左是 Nora 與 Peg（臉朝畫面左；Peg 離鏡頭較近、在 Nora 右邊），畫面右後是白車與 Grant，更遠是白色廂型車 | 共三個露臉的有名字的人。前景左：Nora（`discharge`，`a camel wool coat with deep pockets, worn open`，灰色軟拖鞋），右手拖著 `a mid-size navy soft-sided rolling suitcase, reaching just above her knee, no logo`，`a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside, held against her chest in her left arm`，側臉朝畫面左：眉毛平、眼睛濕、嘴唇抿緊；她與鏡頭之間、半步後（畫面上在她右邊）：Peg（`coat`，玳瑁框眼鏡戴在臉上、深棕色平底鞋），`a plain beige canvas tote bag with no print, hanging from her left shoulder`，右手握著 `a large old tan hard-shell rolling suitcase, reaching her hip, scuffed corners, no logo` 的拉桿，側臉朝畫面左、不回頭：眉頭壓得很硬、喘著、嘴唇抿成一條線；畫面右後：Grant（基本款、深棕色皮鞋）站在打開的右後門邊，`a black phone with no logo, about the size of his palm` 垂在右手，第一格嘴還張著、眉毛高挑、眼睛睜大；三張臉都 `no smile at any moment, until the last frame`；白車前座方向盤上一雙白手套（Cole，虛焦、不露臉）；更遠的路肩：白色廂型車，兩個灰色工作服的工人站在車邊（臉很小、虛焦）；最後的金紅夕照從畫面右照來 | Grant 從車門邊往畫面左跨出一步，嘴閉上；兩個女人沒動；剪在他跨到一半；三人都嘴閉著；最後：Grant 離開車門一步，站在柏油上 | — | 約 2.5 秒 |
+| c01 | 中景、固定（接第 8 集最後一鏡的同一刻、同一個鏡位）；鏡頭在路肩上、兩個女人的前側方；直式前後疊開：前景左是 Nora 與 Peg（臉朝畫面左；Peg 離鏡頭較近、在 Nora 右邊），畫面右後是白車與 Grant，更遠是白色廂型車 | 共三個露臉的有名字的人。前景左：Nora（`discharge`，`a camel wool coat with deep pockets, worn open`，灰色軟拖鞋），右手拖著 `a mid-size navy soft-sided rolling suitcase, reaching just above her knee, no logo`，`a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside, held against her chest in her left arm`，側臉朝畫面左：眉毛平、眼睛濕、嘴唇抿緊；她與鏡頭之間、半步後（畫面上在她右邊）：Peg（`coat`，玳瑁框眼鏡戴在臉上、深棕色平底鞋），`a plain beige canvas tote bag with no print, hanging from her left shoulder`，右手握著 `a large old tan hard-shell rolling suitcase, reaching her hip, scuffed corners, no logo` 的拉桿，側臉朝畫面左、不回頭：眉頭壓得很硬、喘著、嘴唇抿成一條線；畫面右後：Grant（基本款、深棕色皮鞋）站在打開的右後門邊，`a black phone with no logo, about the size of his palm` 垂在右手，第一格嘴還張著、眉毛高挑、眼睛睜大；三張臉都 `no smile at any moment, until the last frame`；白車前座方向盤上一雙白手套（Cole，虛焦、不露臉）；更遠的路肩：白色廂型車，兩個灰色工作服的工人站在車邊（臉很小、虛焦）；路肩的柏油還有一點濕、映著金紅的光（`the roadside asphalt still a little damp, catching the low red-gold light`）；最後的金紅夕照從畫面右照來 | Grant 從車門邊往畫面左跨出一步，嘴閉上；兩個女人沒動；剪在他跨到一半；三人都嘴閉著；最後：Grant 離開車門一步，站在柏油上 | — | 約 2.5 秒 |
 | c02 | 中近景、固定；直式，臉在上三分之一；身後是打開的白色車門與草坡（虛焦） | Grant（基本款，細圓金屬框眼鏡），站在車門前一步；`a black phone with no logo, about the size of his palm` 垂在右手；夕照從畫面右照在他臉上；四分之三側臉朝畫面左外媽媽的背影；眉心往上擠、眼睛睜大、嘴角繃平、下巴收緊，`no smile at any moment, until the last frame` | Grant 身子往前一傾、左手往身後打開的車門一指（動作一），嘴在說話（壓著火、短）（動作二）；說完左手在車門上拍一下，嘴閉上；最後：他的左手按在車門上 | Grant（壓著火、短）：Mom, get in the car.（媽，上車）（原聲）（→ 答在 c03） | 約 3 秒 |
 | c03 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；身後是往畫面左延伸的海岸路與海（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上、木珠項鍊），`a plain beige canvas tote bag with no print, hanging from her left shoulder`；右手握著箱子的拉桿（在下緣外）；夕照從畫面右照在她的側臉；四分之三側臉朝畫面左（背對身後的兒子）、眼睛看著前面的路，不回頭、不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線）；眉毛壓平、下巴抬起、嘴唇在字與字之間抿緊、鼻子吐一口氣，`no smile at any moment, until the last frame` | 第一格 Peg 就開口，嘴在說話（乾、頭也不回）；說完把箱子往前一拉，嘴閉上；最後：她已經邁出第一步 | Peg（乾、頭也不回）：Make your own dinner, Grant.（晚飯自己做，Grant）（原聲）（結尾）← 因為 c02 | 約 3.5 秒 |
 | c04 | 插鏡、低角度特寫、跟拍（往畫面左）；**第一格就是兩只行李箱的輪子**；直式；柏油路肩 | `a large old tan hard-shell rolling suitcase, reaching her hip, scuffed corners, no logo` 與 `a mid-size navy soft-sided rolling suitcase, reaching just above her knee, no logo` 並排；Peg 的深棕色平底鞋、Nora 的灰色軟拖鞋；金紅的光貼著路面；畫面裡沒有臉 | 兩只箱子的輪子同時滾起來、往畫面左；剪在輪子滾出第一圈；畫面上沒有嘴；最後：兩只箱子並排往畫面左走 | — | 約 2 秒 |
@@ -132,7 +132,7 @@
 ### 第四場：房間，然後回到櫃台（約 51.5 秒）
 
 **場頭**：
-- **地點與場景圖**：c25–c33 Harborview Motor Inn 房間 `motel-room`（待畫，夜、檯燈版）：門從外面的走道開進來（畫面左前），門邊一扇窗、厚窗簾、中間留一道縫；窗下一張小桌兩把椅子。兩張單人床並排、床頭靠右牆：**靠窗那張是 Nora 的、靠浴室那張是 Peg 的**，中間一個床頭櫃、一盞 `a small motel bedside lamp with a pale yellow shade, warm light`，兩床相隔一臂；舊碎花被；浴室門在後牆左邊、往裡開。行李箱在各自的床尾。紅霓虹從窗簾縫照進來，落在 Nora 的床與床頭櫃上。窗外乾、黑（`cast.json` 的 `motel-room` 句子裡的 rain on the window 本集不用，寫 `a dry dark window`）。
+- **地點與場景圖**：c25–c33 Harborview Motor Inn 房間 `motel-room`（待畫，夜、檯燈版）：門從外面的走道開進來（畫面左前），門邊一扇窗、厚窗簾、中間留一道縫；窗下一張小桌兩把椅子。兩張單人床並排、**床頭靠左牆**（從門口往裡看；從床尾往床頭拍時，靠窗那張在畫面左，同第 10 集）：**靠窗那張是 Nora 的、靠浴室那張是 Peg 的**，中間一個床頭櫃、一盞 `a small motel bedside lamp with a pale yellow shade, warm light`，兩床相隔一臂；舊碎花被；浴室門在後牆左邊、往裡開。行李箱在各自的床尾。紅霓虹從窗簾縫照進來，落在 Nora 的床與床頭櫃上。窗外乾、黑（`cast.json` 的 `motel-room` 句子裡的 rain on the window 本集不用，寫 `a dry dark window`）。
   c34–c43 回到同一個櫃台（格局同第三場；兩只行李箱已經在房間裡）。
 - **時間與天氣**：c25–c33 第 2 天 20:15–20:20；c34–c43 20:40–20:45；夜、乾；房間只有檯燈與紅霓虹，櫃台只有暖黃檯燈與窗外的紅霓虹；整場維持夜色。
 - **軸線**：房間：c25 從門口往裡拍，Nora 的床在前、Peg 的床在後、浴室門在後牆左邊；c26–c30 從浴室門縫往外看，Peg 的床近、Nora 的床遠。櫃台：同第三場，Peg 在 Nora 左邊（從客人這邊看是畫面左）；Bev 的鏡從客人肩後拍，Nora 與 Peg 的單人鏡從櫃台後拍、刷卡機在畫框外。
@@ -272,7 +272,7 @@
 ### 2. 本集需要的參考圖
 
 - 定妝照：`nora-portrait.jpg`（r3）、`grant-portrait.jpg`（平臉，r3）、`peg-coat.jpg`（有）。**Nora `discharge` 全身參考圖待畫**。**Bev 待畫，必須先畫**（六鏡原聲、正臉）。**工頭 `installer-lead` 待畫**（c05 露臉）。
-- 場景：**公車站 `bus-stop`**（藍色暮光、對岸起重機的紅燈；人行道寫乾的）、**汽車旅館櫃台 `motel-front`**（木板牆、櫃台左端薄荷糖碗、右端刷卡機背對客人、掛鑰匙的木板、門邊的窗；不放黑車）、**汽車旅館房間 `motel-room`**（夜、檯燈版；兩張單人床、床頭靠右牆、浴室門在後牆左邊、窗簾中間一道縫、窗下小桌）、坡底路肩 `coastal-drive` 都待畫。浴室裡只要一面素白磁磚牆。
+- 場景：**公車站 `bus-stop`**（藍色暮光、對岸起重機的紅燈；人行道寫乾的）、**汽車旅館櫃台 `motel-front`**（木板牆、櫃台左端薄荷糖碗、右端刷卡機背對客人、掛鑰匙的木板、門邊的窗；不放黑車）、**汽車旅館房間 `motel-room`**（夜、檯燈版；兩張單人床、床頭靠左牆、浴室門在後牆左邊、窗簾中間一道縫、窗下小桌）、坡底路肩 `coastal-drive` 都待畫。浴室裡只要一面素白磁磚牆。
 - 道具：玻璃磚與兩只行李箱建議先畫；卡夾、兩張卡、現金、刷卡機、薄荷糖碗、房間鑰匙、帳本、收據、檯燈在 `cast.json` 有提示詞、沒有圖。
 - 沒有參考圖、只拍背影或手：Cole（c06）、另一個工人（c05）。
 
