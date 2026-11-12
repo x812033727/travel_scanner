@@ -140,6 +140,9 @@ kid("kid-guess", K("raising one finger with a very confident grin", where=OFFICE
 chief("chief-tease", C("holding up one finger with a playful knowing smile"),
     c("很多人都這樣猜。可是我跟你說，", "賣關子"),
     c("那些太空人，其實一直在往下掉。", "放慢", "S:falling"))
+chief("chief-hooks", C("counting on her fingers with a playful mysterious smile"),
+    c("等一下你會看到，一根點著的蠟燭，掉進一口很深的井。", None, "S:well"),
+    c("還有一團火，熄了以後，竟然還在燒。", "賣關子", "S:ghost"))
 chief("chief-promise", C("tilting her head with an inviting smile, one open hand towards the viewer", close=True),
     c("你也猜猜看：人一直在掉，火為什麼也跟著變了？", "轉向觀眾", "S:main"))
 kid("kid-not-falling", K("crossing her arms with a doubtful pout", where=OFFICE),
@@ -247,7 +250,7 @@ chief("chief-well", C("raising both eyebrows with an excited smile, one hand rai
     c("會。美國太空總署真的讓火一起掉過。", "接住上一句"),
     c("他們有一口很深的井，東西可以在裡面一直掉五秒多。"), chapter="把蠟燭丟進很深的井")
 obj("deep-shaft", "Low angle wide shot looking straight down into a very deep round smooth concrete shaft, simple cartoon rings of soft light fading far down into the dark bottom",
-    c("他們把點著的蠟燭放進去，跟著一起往下掉，"),
+    c("他們把點著的蠟燭放進去，跟著一起往下掉，", None, "P:well"),
     c("火很快就不尖了，變成圓圓的一團。", None, "P:firefall"))
 kid("kid-try-fire", K("bouncing on her toes with an excited grin, both fists clenched", where=YARD),
     k("我也要在家丟蠟燭！", "興奮"))
@@ -306,13 +309,9 @@ kid("kid-out-q", K("folding her arms with a satisfied little nod", where=YARD),
 
 # ---------- 第四章：火熄了，那一滴還在變小 ----------
 chief("chief-not-quite", C("holding up one finger with a mysterious smile", close=True),
-    c("太空站上有一組實驗，發現不一定。", "接住上一句"),
-    c("他們在一個大約九十五公升的燃燒室裡，"), chapter="火熄了，那一滴還在變小")
+    c("太空站上有一組實驗，發現不一定。", "接住上一句"), chapter="火熄了，那一滴還在變小")
 obj("drop-float", "Close-up of " + DROP + ", two thin wires reaching towards it from both sides",
-    c("讓一小滴燃料自己飄著，用燒熱的電線點火。"),
-    k("一小滴有多小？", "句尾上揚", "S:size"))
-chief("chief-size", C("holding her thumb and finger a tiny gap apart with a careful smile", close=True),
-    c("大約一公釐半到五公釐。他們點過三百多次。", "接住上一句", "P:size"))
+    c("他們讓一小滴燃料自己飄著，用燒熱的電線點火。"))
 obj("drop-glow", "Close-up of " + DROP + ", a bright soft orange glowing flame ball surrounding the drop",
     c("有一次，一滴大約四公釐的燃料，先燒出看得見的火，"),
     c("燒了大約十五秒，那團火忽然熄了。"))
@@ -323,7 +322,7 @@ obj("drop-dark", "Close-up of " + DROP + ", the glow gone, the dim chamber quiet
     c("還量得到那一滴在放出熱。", None, "P:out"))
 chief("chief-shrink", C("bringing her two hands slowly closer together with a curious smile"),
     c("而且那一滴還在變小，只是變得慢一點。"),
-    c("研究的人，把它叫做冷焰。"))
+    c("研究的人，把它叫做冷焰。", None, "P:ghost"))
 kid("kid-cold-q", K("hugging herself and shivering playfully with a curious grin", close=True, where=YARD),
     k("冷的火？", "好奇"), k("摸起來是冰的嗎？", "句尾上揚", "S:cold"))
 chief("chief-cold", C("laughing softly and shaking her head", close=True),
@@ -345,13 +344,14 @@ kid("kid-same-q", K("holding the small tablet with a thinking face", where=YARD)
 chief("chief-gas", C("holding up one finger with a careful smile", close=True),
     c("不是。同一組實驗，換掉周圍的氣體，結局就變了。", "接住上一句"))
 obj("drop-pop", "Close-up of " + DROP + ", a fierce bright orange flame hugging the drop closely, the tiny drop bursting into a few even tinier droplets",
-    c("氧氣多一點，液滴燒到很小時，會自己爆開；"))
-chief("chief-helium", C("laughing and shaking her head, one hand fanning heat away from her face"),
-    c("把很多氮氣換成很會帶走熱的氦氣，火不到一秒就熄。"))
+    c("像是氧氣多一點，液滴燒到很小時，會自己爆開。"))
 kid("kid-depends", K("clapping her hands together with a bright realising grin", close=True, where=YARD),
     k("所以火會變成什麼樣子，", "恍然"), k("還要看旁邊是什麼氣體！", None, "P:same"))
+chief("chief-zero-ask", C("tilting her head with a playful questioning smile, one open hand towards the girl"),
+    c("對。那還記得零重力嗎？你自己判斷呢？", "接住上一句"))
+kid("kid-zero", K("raising one finger with a proud confident grin", close=True, where=YARD),
+    k("我也知道了：不能叫零重力！", "得意"), k("還記得那九成嗎？重力一直在！"))
 chief("chief-zero", C("giving a warm thumbs-up with a proud smile", close=True),
-    k("我也知道了：不能叫零重力！", "得意"), k("還記得那九成嗎？重力一直在！"),
     c("對。美國太空總署也說，叫零重力會讓人誤會。", None, "P:zero"))
 kid("kid-final-q", K("looking down at the small tablet with a thinking face", where=YARD),
     k("那太空人一直在掉，", "推理"), k("火為什麼也變了？", "章尾停住，句尾上揚"))
@@ -383,10 +383,11 @@ WHAT = {"main": "人一直在掉，火為什麼也跟著變了", "round": "影�
         "firefall": "火在掉的時候也會變嗎", "whyround": "為什麼一掉火就變圓",
         "up": "是不是重力把火往上拉", "blue": "看到的火為什麼是藍色的",
         "last": "太空裡的火會不會一直燒下去", "out": "火熄了是不是就不燒了",
-        "size": "實驗的一小滴燃料有多小", "cold": "冷焰摸起來是不是冰的",
+        "cold": "冷焰摸起來是不是冰的",
         "why": "為什麼要到太空才看得清楚冷焰", "same": "太空裡的火是不是都一樣",
         "scale": "太空人在太空站站上體重計是多少", "ground": "不去太空，在地上能不能飄起來",
-        "ball": "太空的蠟燭火是不是一整顆圓球"}
+        "ball": "太空的蠟燭火是不是一整顆圓球",
+        "well": "點著的蠟燭掉進很深的井會怎樣", "ghost": "哪一團火熄了以後還在燒"}
 # Latin terms the Mandarin voice must spell letter by letter (P13 GPS, P29 HTTPS/TLS). This episode says
 # 美國太空總署 (the usual Taiwanese name) instead of NASA, so no spoken line carries a Latin term; the loop stays
 # so a later edit that adds one is spelled and carries say_for.
