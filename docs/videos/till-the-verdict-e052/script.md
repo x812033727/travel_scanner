@@ -71,7 +71,7 @@ Nora 繞過工作台，把她拉進懷裡：「Mom.」Peg 抓著她的袖子哭�
 | c02 | 插鏡、特寫、慢推（從燈箱的一角推到收據）；**第一格就是燈箱面上那張發白的小紙**；直式；鏡頭貼著工作台邊、從紙的側面平拍，焦點在 Peg 正要離開紙的指尖 | `a small thermal receipt about as long as her finger, its faded print far too faint to make out, pressed flat on the glowing light box, the paper shining white`；Peg 的右手食指（燕麥色袖口）壓在紙角；畫面裡沒有臉 | Peg 的食指從紙角慢慢抬起來；剪在指尖離開紙；畫面上沒有嘴；最後：小紙平躺在燈箱上、整張發白 | — | 約 2.5 秒 |
 | c03 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她灰色亨利衫的左肩與低馬尾在畫框右下緣、虛焦、不露臉）；直式，Peg 的臉在上三分之一，下緣是燈箱的邊（虛焦）；身後是虛焦的紅磚與磚上的光紋 | Peg（`visit`，玳瑁框眼鏡戴在臉上），站在燈箱另一側；帆布袋在左肩；`cold white light from below on her chin and cheekbones, steady warm light from the hanging work lamp on her face, the furnace glow only along her cheek`；四分之三側臉朝畫面右、眼睛看著 Nora；眉毛放平、眼睛不眨、嘴唇在字之間抿薄、聲音平、乾，像念帳，`no smile at any moment, until the last frame` | Peg 看著 Nora，嘴在說話（平、乾，像念帳）；說完右手食指在燈箱的邊上點一下，嘴閉上；最後：她看著 Nora，食指停在燈箱邊 | Peg（平、乾，像念帳）：Prop pills.（道具藥）（原聲）← 因為第 51 集 c42 的 "What goes on it?" | 約 2.5 秒 |
 | c04 | 特寫、慢推（從下巴到眉的特寫推到眼睛與嘴）；同 c03 的鏡位；直式；**第一格就是 Peg 的臉，整鏡不拉遠** | Peg（`visit`，玳瑁框眼鏡）；燈箱從下往上的白光在下巴與顴骨、工作燈的暖光在額頭；眼睛還在 Nora 身上；眉頭壓低、下巴繃住、嘴唇在字前抿緊、聲音平，`no smile at any moment, until the last frame` | Peg 嘴在說話（平、短）；說完下巴往燈箱上的紙一點，嘴閉上；最後：她的眼睛從 Nora 落到紙上 | Peg（平、短）：A hundred.（一百顆）（原聲） | 約 2.5 秒 |
-| c05 | 中景、慢推（從中景推到中近景）；交代位置；鏡頭在工作台右側、靠大門那邊，往左牆斜拍；直式前後疊開：前景下緣是燈箱發光的面與攤平的小紙（虛焦），畫面左是燈箱另一側的 Peg 與她身後的紅磚，畫面右是 Nora；爐口的橘光在畫面右後 | 共兩人。Peg（`visit`，玳瑁框眼鏡，帆布袋在左肩）站在燈箱靠左牆那一側，兩手垂在燈箱邊；眼睛看著畫面右的 Nora、嘴唇抿著、下巴繃住，`no smile at any moment, until the last frame`。Nora（`work`：齊肩髮綁低馬尾、護目鏡推在頭頂、深色帆布圍裙、灰色亨利衫、工作靴）在燈箱靠右牆那一側，眼睛盯著燈箱上的紙、眉頭往中間收、嘴唇微張、呼吸變淺，`no smile at any moment, until the last frame`；身後的高木凳；兩張臉都有燈箱從下往上的白光與工作燈的暖光；左牆磚上兩片模糊的橘色光紋 | Nora 的兩手扶著桌沿（動作一，左手 `a plain narrow white-gold band with no stone, on her left ring finger`），慢慢坐到身後的高木凳上（動作二）；剪在坐下一半；兩人都嘴閉著；最後：Nora 坐在凳子上、兩手放在燈箱邊（左手 `a plain narrow white-gold band with no stone, on her left ring finger`），Peg 站著 | — | 約 3 秒 |
+| c05 | 中景、慢推（從中景推到中近景）；交代位置；鏡頭在工作台右側、靠大門那邊，往左牆斜拍；直式前後疊開：前景下緣是燈箱發光的面與攤平的小紙（虛焦），畫面左是燈箱另一側的 Peg 與她身後的紅磚，畫面右是 Nora；爐口的橘光在畫面右後 | 共兩人。Peg（`visit`，玳瑁框眼鏡，帆布袋在左肩）站在燈箱靠左牆那一側，兩手垂在燈箱邊；眼睛看著畫面右的 Nora、嘴唇抿著、下巴繃住，`no smile at any moment, until the last frame`。Nora（`work`：齊肩髮綁低馬尾、護目鏡推在頭頂、深色帆布圍裙、灰色亨利衫、工作靴）在燈箱靠右牆那一側，眼睛盯著燈箱上的紙、眉頭往中間收、嘴唇微張、呼吸變淺，`no smile at any moment, until the last frame`；身後 `a plain wooden shop stool about as high as her hip`；兩張臉都有燈箱從下往上的白光與工作燈的暖光；左牆磚上兩片模糊的橘色光紋 | Nora 的兩手扶著桌沿（動作一，左手 `a plain narrow white-gold band with no stone, on her left ring finger`），慢慢坐到身後的高木凳上（動作二）；剪在坐下一半；兩人都嘴閉著；最後：Nora 坐在凳子上、兩手放在燈箱邊（左手 `a plain narrow white-gold band with no stone, on her left ring finger`），Peg 站著 | — | 約 3 秒 |
 | c06 | 近景、慢推（從胸上推到肩上）；同 c03 的鏡位（Nora 坐下了，她的左肩在畫框右下緣更低）；直式，Peg 的臉在上三分之一 | Peg（`visit`，玳瑁框眼鏡）；燈箱的白光從下往上、工作燈的暖光在臉上；四分之三側臉朝畫面右下、眼睛看著坐下的 Nora；眉毛放平、眼睛不眨、嘴唇在字之間抿緊、聲音平、乾，`no smile at any moment, until the last frame` | Peg 看著 Nora，嘴在說話（平、乾）；說完兩手扶住燈箱的邊（左手 `a faint pale band of skin on her left ring finger where a ring used to be`），嘴閉上；最後：她兩手扶著燈箱邊、看著 Nora | Peg（平、乾）：The day you left the hospital.（妳出院那天）（原聲） | 約 3.5 秒 |
 | c07 | 近景、固定；從 Peg 的右肩後拍（她燕麥色開襟衫的右肩與灰髮在畫框左下緣、虛焦、不露臉）；直式，Nora 的臉在上三分之一；身後是虛焦的黑高窗與右牆木架上一排暗藍的面板 | Nora（`work`），坐在高木凳上；燈箱的白光從下往上、工作燈的暖光在臉上，爐火從畫面左後只在臉頰邊；眼睛從燈箱上的紙抬到畫面左上的 Peg；眉頭收緊、眼睛定住、嘴唇閉緊、呼吸停一拍，`no smile at any moment, until the last frame` | Nora 的眼睛從紙抬到 Peg 臉上（動作一），兩手在燈箱邊收緊（動作二，左手 `a plain narrow white-gold band with no stone, on her left ring finger`）；剪在眼睛抬起來；嘴閉著；最後：她看著 Peg | — | 約 2.5 秒 |
 | c08 | 近景、慢推（從胸上推到肩上）；同 c03 的鏡位；直式，Peg 的臉在上三分之一 | Peg（`visit`，玳瑁框眼鏡）；燈箱的白光從下往上；四分之三側臉朝畫面右下、眼睛看著 Nora；眉頭壓低、嘴唇在字之間抿薄、下巴一動不動、聲音平，`no smile at any moment, until the last frame` | Peg 嘴在說話（平、一字一字）；說完右手食指把燈箱上的紙往 Nora 那邊推近一指寬，嘴閉上；最後：她的食指離開紙、看著 Nora | Peg（平、一字一字）：It was in his car.（在他車上）（原聲） | 約 3 秒 |
@@ -167,6 +167,17 @@ Nora 繞過工作台，把她拉進懷裡：「Mom.」Peg 抓著她的袖子哭�
 - **Peg 埋在 Nora 的左肩**（靠鏡頭那側，bible〈第 51–55 集審稿後補定〉）：右側臉與眼鏡的右鏡腳朝鏡頭；她聽到 "Mom." 的臉放在埋下去之前的 c41。
 - **c13 Nora 的臉**：寫成 "I was at Mom's" 的謊在她臉上對上了（第 3 集），不加台詞。
 
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e051-e055-storyboard.md` 與 bible〈第 51–55 集審稿後補定〉改的。本集還沒錄、沒拍，沒有要重抽的片段；**台詞沒有改，不用重錄**。
+- **c39–c40 "Mom."**（嚴重）：c39 收尾 Nora 兩手扶住 Peg 的上臂；c40 改成乾淨的單人近景（同 c44 的鏡位，Peg 在畫框左外），只說 "Mom."，說完把 Peg 往懷裡帶一點、嘴閉上；下巴靠上 Peg 的頭髮留到 c44。
+- **c41、c43、c47**：Peg 的臉埋在 Nora 的**左**肩（靠鏡頭那側），右側臉與眼鏡的右鏡腳朝鏡頭；c41 鏡位改到 Peg 的右前方。〈這集接在哪〉的 52→53 一起改（bible 的接點以〈第 51–55 集審稿後補定〉為準）。
+- **c28 走廊那句**：改成乾淨的單人近景，不帶 Nora 的肩（c30 同一個鏡位）。
+- **短喊的收尾**：c18、c20、c22、c24 喊完都寫收尾動作與「嘴閉上」；c33 收尾改成右手按住燈箱的邊。
+- **戒指與戒痕**：Nora 左手入鏡的 c05、c07、c16、c17、c29、c35、c39、c40 補戒指句；Peg 左手入鏡的 c06、c12、c23、c24、c28、c31、c32、c39、c43、c47 補戒痕句。
+- **凳子**：照 `cast.json` 的 `shop-stool` 句。
+- 鏡數與秒數不變：47 鏡、136 秒。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**。
@@ -216,8 +227,8 @@ Nora 繞過工作台，把她拉進懷裡：「Mom.」Peg 抓著她的袖子哭�
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `work`（齊肩髮綁低馬尾、護目鏡推在頭頂、深色帆布圍裙、灰色亨利衫）；c11 起眼睛濕、c16 起臉頰有淚痕；左手無名指 Elias 的戒指 | c05、c07、c11、c13、c16–c18、c20–c23、c26、c29、c35、c39–c40、c44–c45、c47（c03–c04、c06、c08、c10、c12、c14–c15、c24–c25、c28、c30、c32–c33、c36–c37 只有肩；c09、c38、c42 只有手） | 已有（`nora-work.jpg`） |
-| Peg | `visit`（玳瑁框眼鏡戴在臉上，哭也戴著）；帆布袋在左肩；左手無名指一圈淡色皮膚；c27 起眼睛濕、c30 起臉頰有淚痕 | c03–c06、c08、c10、c12、c14–c15、c19、c23–c25、c28、c30–c33、c36–c37、c39、c41、c43、c45、c47（c07、c17–c18、c20–c22、c26、c29、c35、c40 只有肩；c01–c02、c27、c38、c42 只有手） | 已有 |
+| Nora | `work`（齊肩髮綁低馬尾、護目鏡推在頭頂、深色帆布圍裙、灰色亨利衫）；c11 起眼睛濕、c16 起臉頰有淚痕；左手無名指 Elias 的戒指；c40 是乾淨的單人近景 | c05、c07、c11、c13、c16–c18、c20–c23、c26、c29、c35、c39–c40、c44–c45、c47（c03–c04、c06、c08、c10、c12、c14–c15、c24–c25、c28、c30、c32–c33、c36–c37 只有肩；c09、c38、c42 只有手） | 已有（`nora-work.jpg`） |
+| Peg | `visit`（玳瑁框眼鏡戴在臉上，哭也戴著）；帆布袋在左肩；左手無名指一圈淡色皮膚；c27 起眼睛濕、c30 起臉頰有淚痕；c41 起臉埋在 Nora 的左肩、右側臉朝鏡頭 | c03–c06、c08、c10、c12、c14–c15、c19、c23–c25、c28、c30–c33、c36–c37、c39、c41、c43、c45、c47（c07、c17–c18、c20–c22、c26、c29、c35、c40 只有肩；c01–c02、c27、c38、c42 只有手） | 已有 |
 
 ### 2. 本集需要的參考圖
 
@@ -245,7 +256,7 @@ Nora 繞過工作台，把她拉進懷裡：「Mom.」Peg 抓著她的袖子哭�
 - **時間**：第 152 天（8/15 週六）23:41 收據攤平 → 約 23:55 吼 → 第 153 天（8/16 週日）約 00:15 抱 → 00:40 本集最後一刻。夜、乾。
 - **錢**：本集沒有進出；Nora 約 $4,400、Peg 約 $2,300，都不說出口。
 - **收據**（"Prop tablets, qty 100"、order no. 0417-100，不入鏡、不念）：攤平在燈箱上，c38 推到 Nora 那一側；離開時 Nora 把它夾回 Peg 的帳本封皮（不拍）；第 53 集 Peg 自己交給 Reyes。
-- **Peg**：眼鏡戴在臉上；左手一圈淡色皮膚；帳本（封皮夾層挑開）在燈箱旁的桌角；帆布袋在左肩。她說出口的：那一夜的電話（"If Nora asks, I was with you all night."、"That thing's taken care of."）、出院那天在他車上找到收據、三十四年前的走廊。
+- **Peg**：眼鏡戴在臉上；左手一圈淡色皮膚；帳本（封皮夾層挑開）在燈箱旁的桌角；帆布袋在左肩；最後一刻臉埋在 Nora 的左肩。她說出口的：那一夜的電話（"If Nora asks, I was with you all night."、"That thing's taken care of."）、出院那天在他車上找到收據、三十四年前的走廊。
 - **證物牆**：2/12；第三格還空著。**進度條**：Charges。
 - **誰知道了什麼**：Nora 知道收據、那一夜的電話（第 3 集 "at Mom's" 是 Grant 要 Peg 圓的謊）、Peg 三十四年前的走廊（bible〈誰知道了什麼〉第 52 集）。
 - **下一集接**：第 53 集跳到第 154 天（8/17 週一）10:00 Reyes 的辦公室：收據在 Reyes 手指間、檯燈下；Nora 換 `blazer`；Peg 的帳本攤在她膝上。
