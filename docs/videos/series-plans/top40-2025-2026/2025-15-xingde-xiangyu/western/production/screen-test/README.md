@@ -109,3 +109,26 @@ bash $K/h3.sh stop --session ttv-st1 && bash $K/bootstrap.sh patch && bash $K/h3
 - 圖在雲端硬碟 `AI/備份/AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/screen-test/`（`todrive.sh` 23 files, 0 differences）。
 - 站主 2026-11-12 照建議選 Nora b、Grant b、Nora 工作服 a，已換進 `../assets/refs/`、重算 `SHA256SUMS`。
 
+## 原聲小樣（2026-11-12，站主點頭，上限 6 CU）
+
+站主改用模型原聲之後，先驗 H3 會不會照寫的英文講、同一個角色跨鏡的聲音一不一致、短喊怎麼做。`voicepilot.py st1`：Ref2VA hero 第一段草稿 544×960、6 秒，
+只給定妝照一張（場景用文字寫），7 支取自 2026-11-12 審過的分鏡；同一個角色每支都寫同一句聲音描述。
+
+| 支 | 台詞（寫的） | Whisper 聽到的 | 音高中位數 |
+| --- | --- | --- | --- |
+| e001-c07-a Nora | My pill tastes sweet today. | 同 | 198 Hz |
+| e001-c07-b Nora（同上，另一個種子） | 同上 | 同 | 189 Hz |
+| e001-c44 Nora | The score line's too faint. That's not right. | 同 | 198 Hz |
+| e003-c27 Nora | Your phone died? Then what's that? | 同 | 205 Hz |
+| e002-c13 Nora 短喊 | Help! Somebody! | **Help! Help! Somebody!** | 340 Hz（喊） |
+| e003-c12 Grant | We're still young, Nor. We'll try again. | 同 | 93 Hz |
+| e001-c36 Peg | Soup's in the fridge. Salt it yourself. | 同 | 176 Hz |
+
+- **台詞**：七支都照寫的英文講，沒有亂編、沒有多講；只有短喊多喊了一聲 "Help!"。說話在片段第 1.1–3.9 秒開始（前面是寫在台詞前的動作），講完到片尾還有 0.6–1.2 秒安靜。
+- **同一個角色**：Nora 四支（含兩個種子）音高都在 189–205 Hz；音高相近不等於音色相同，**要站主聽**（`review/till-the-verdict-voicepilot.mp4`，46 秒）。
+- **短喊**：原文寫進說話句，畫面上**沒有**燒出字幕或文字；但會多喊一兩個字。所以原聲的短喊照寫原文，剪接時剪掉多的那一聲。
+- **表情**：Grant 寫了 `no smile at any moment`，四格都在笑：說話句裡的 `warm`、`like a keynote` 把笑帶出來了。Grant 的說話句不寫 warm、keynote、smooth，改寫他的臉（眉心提高、嘴角平）與「聲音平穩、低」。其他六支沒有不該有的笑。
+- **景別**：寫 close-up 的短喊拍成全身、c07 拍成中景：只給定妝照、沒有場景圖時景別會拉遠；正式拍照分鏡給場景圖，並寫「第一格就是○○的臉與肩膀，整鏡不拉遠」。
+- **時間與點數**：Colab 又分到 A100（RTX PRO 6000，每小時約 10 CU）；7 支草稿約 16 分鐘，帳號 b 餘額 2,018.25 → 2,015.74（約 −2.5，入帳可能延遲）。
+- 備份：`AI/備份/AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/voicepilot/`（草稿、提示詞、進度、轉錄腳本、給站主的合輯）。
+
