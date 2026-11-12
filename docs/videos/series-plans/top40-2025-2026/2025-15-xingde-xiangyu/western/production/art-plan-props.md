@@ -200,3 +200,15 @@
 `a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched`、`a small motel bedside lamp with a pale yellow shade, warm light`、`a dark wooden gavel`、
 `a single sheet of heavy cream paper lying flat on a small wooden table, seen edge-on, print not readable`（結婚證書）、`a thin stack of white papers, held so only the backs or edges show`（離婚申請）。
 第 36、37 集劇本另有「螺絲起子」「點火鈕」兩句標「待加進 `cast.json`」。
+
+## 2026-11-12 稽核後補（`../review/2026-11-12-ref-audit-e001-e020.md`）
+
+- **道具圖帶手**（定案 12）：手對不上的鏡不傳道具圖，只寫道具句。
+  - `half-pill` 畫著一根光指尖，第 11 集 c01、c21 是 Brandt 戴藍手套的手，不傳。
+  - `knit-hat` 畫著 Peg 拿針的兩隻手，只給她在織的鏡。
+  - `nora-suitcase` 旁邊站著一雙穿黑長褲的腿，拍到 Nora 腿腳的鏡不傳。
+- **`camel-coat` 重畫**（第二批）：`a camel wool coat with deep pockets, worn open by a slender young woman over a cream knit sweater and blue jeans, seen from the front from the collarbones to the knees, her head out of the frame; the coat reaches her knees, the deep front pockets at her hips.`（第 11–19 集是毛衣配牛仔褲。）
+- **`peg-knitting`**：第 11 集的長度是 `about as long as her hand`，跟本表「前臂長」那張不同，第 11 集不傳。
+- **`canvas-tote`**：圖裡背在開襟衫上，穿 `coat` 的鏡不傳。
+- **`grant-phone`**：螢幕上沒有字；第 3 集的訊息是後製浮在手機旁的泡泡，不在螢幕上（`cast.json` 已改）。
+- **`fisk-watch`**：已加進 `cast.json`，句子是 `a plain silver wristwatch on his left wrist, its face turned toward him`。

@@ -51,7 +51,7 @@
 | P0 | `nora:night-coat` | 2 | 全身 | 〔FULL〕〔FACE1〕She is: a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, five months pregnant, long dark chestnut hair loose and wet from rain, a loose cream cable-knit sweater dress under an open camel wool coat, soft cream slippers on her feet, her clothes clean and dry under the coat. She is the only person in the frame. 〔REAL〕 | — | R1，bible 第 1–3 集先畫第一位。image 1 `nora-portrait.jpg`、`latent: empty`、1088×1920；也是「從胸像畫全身」的試驗。外貌句的 "pain only in her face and posture" 不寫（定妝照是平臉）。 |
 | P0 | `nora:hospital` | 2 | 胸像 | 〔LOOK〕 a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face, pale and tired, long dark chestnut hair loose and slightly tangled, a faded white hospital patient gown with a small pale blue diamond print, a round snap neckline and short sleeves, under a cream cardigan, no makeup. She is the only person in the frame. 〔REAL〕 | — | R1。image 1 `nora-portrait.jpg`、`latent: image1`、1248×1664。第 2–5 集（第 3 集清單：從修好的圖出）。在床上多半是胸上，所以畫胸像；病人服不露腿。 |
 | P0 | `dr-brandt` | 2 | 胸像 | 〔BLANK〕〔BUST〕She is: a 48-year-old white German-American woman, short silver-blond bob, rectangular glasses, a white doctor's coat over navy scrubs. She is the only person in the frame. 〔REAL〕 | Peg（戴眼鏡的短髮白人女性；第 11–12 集不同框）、書記官（不同集） | R1。第 2、11、12、33 集原聲。方框眼鏡。 |
-| P0 | `nurse-kim` | 2 | 胸像 | 〔BLANK〕〔BUST〕She is: a Korean-American woman around 30, pale blue scrubs, short black hair tucked behind her ears, a round kind face, gentle eyes. She is the only person in the frame. 〔REAL〕 | Theo（都是韓裔，不同集） | R1。第 2–3 集原聲。 |
+| P0 | `nurse-kim` | 2 | 胸像 | 〔BLANK〕〔BUST〕She is: a Korean-American woman around 30, pale blue scrubs, black hair parted in the middle and pulled back into a low knot, a round kind face, gentle eyes. She is the only person in the frame. 〔REAL〕 | Theo（都是韓裔，不同集） | R1。第 2–3 集原聲。 |
 | P0 | `grant:rain` | 3 | 胸像 | 〔LOOK〕 a 37-year-old white American man, good-looking in a polished way, sandy-blond hair side-parted and damp, clean-shaven, thin round metal-rim glasses with drops on the lenses, a light stone-colored suit with a wet collar. He is the only person in the frame. 〔REAL〕 | Elias（細金屬框眼鏡、灰西裝） | R2。image 1 `grant-portrait.jpg`、`latent: image1`（第 3、4 集清單：只換頭髮與鏡片）。第 3–5、18–19 集。驗收：嘴角平，不能回到 r1 的微笑。 |
 | P0 | `on-call-doctor` | 4 | 胸像 | 〔BLANK〕〔BUST〕He is: a 45-year-old Black American man, a shaved head, a short greying beard, no glasses, a white doctor's coat over light grey scrubs. He is the only person in the frame. 〔REAL〕 | Cole（不同集）、警探（都是光頭，不同集） | R2。第 4 集四鏡原聲。夾板不畫。 |
 | 已有 | `peg:coat` `peg-coat.jpg` | 5 | 胸像 | 已有（r2 `peg-coat-a`） | Bev | 第 5、8、9、11–19 集出門。 |
@@ -173,3 +173,16 @@ Grant 細圓金屬框、Elias 細銀絲框、Fisk 金框、Theo 圓玳瑁框、D
 - **Nora `hospital` 畫胸像**、**Sienna 另畫一張全身**（看得到左腕的錶）：bible 沒寫，前者是場景多半在床上，後者是胸像看不到手。
 - **Nora `pregnant` 全身**列為可省：bible 沒列，直式小樣證明只給定妝照也守得住。
 - **出場集數以 bible 與劇本為準**：Dale 第 11 集（`cast.json` 寫 12–13）、書記官第 19 集（`cast.json` 寫 20）。`cast.json` 的這兩處要另開票改，這份不動它。
+
+## 2026-11-12 稽核後補（`../review/2026-11-12-ref-audit-e001-e020.md`）
+
+- **特寫只給胸像**，所以換髮型的造型除了全身照，還要一張胸像。胸像以 `nora-portrait.jpg` 為 image 1、`latent: image1`，只改髮型：
+  - `nora:motel`：`her long dark chestnut hair pulled back into a loose low knot at the nape of her neck, no hair on her shoulders`。胸像不畫那一縷鬆出來的頭髮，那是第 16 集鏡上的事。
+  - `nora:shoulder`、`nora:decree`：照 `cast.json` 的髮型句。
+  - 三張胸像都順手把額頭那片細點移回鼻樑（`faint freckles across the nose only, a smooth clear forehead`）。
+- **`elias:overcoat`**（第 15–19 集）：胸像與全身，以 `elias-portrait.jpg` 或選定的全身照為 image 1，只改 `a dark charcoal wool overcoat, worn open, over the suit`。全身照寫 `his left hand in the overcoat's left pocket`。#72 那張不穿大衣的全身照不給第 15–19 集用。
+- **Peg `coat` 全身**：以 `peg-coat.jpg` 為 image 1，畫成全身，看得出大衣的長度；項鍊寫 `a long brown wooden-bead necklace with no pendant`。
+- **第二批要先畫的臉**：Theo、Dana、Dale、警探、Reyes、兩位法官、當鋪老闆、銀行行員。Bev 在 `screen-test/art.py` a3（第一批）。
+- **已完成或重畫中**：
+  - Cole、Kim、值班醫生、Fisk 已在 `assets/refs/`。
+  - Kim 的嘴角、Grant 的 `rain`、Nora 出院造型加大衣，在 `screen-test/redraw.py` a5。
