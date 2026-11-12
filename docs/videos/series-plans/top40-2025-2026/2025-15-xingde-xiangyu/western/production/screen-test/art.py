@@ -11,7 +11,7 @@ Rounds (the owner approved this batch on 2026-11-12, cap 35 CU; each round <= 12
              locked portrait, latent empty: art-plan-people.md 〈怎麼畫〉)
   a3         Bev, the installer lead, and Sienna's full body from the picked Sienna portrait (--pick sienna=a|b)
   a4         fixes after a1+a2 (drawn together as a12): Sienna's portrait and Nora's hospital gown redrawn, made-up lettering
-             edited off the picked Dr. Brandt and deputy (--pick dr-brandt= deputy=); run before a3
+             edited off the picked Dr. Brandt, deputy and motel office (--pick dr-brandt= deputy= mfront-night=); run before a3
   s1 s2 s3   sets used in episodes 1-10, vertical 1088x1920 on a grey canvas (vpilot.py set); s1 also edits the existing
              vertical morning bedroom (#1, vpilot set-bedroom-v-a) into its night version
   s4         「改自」 light/state versions, latent image1 on the picked bases (--pick liv-day= room-night= liv-gold-a= nur-day= mroom-night=)
@@ -109,6 +109,13 @@ FIXES = [
     ("dr-brandt", "the white doctor's coat is completely plain: no embroidered letters, no name, no logo and no pen on it, smooth plain white fabric where they were."),
     ("deputy", "the badge is a plain smooth gold six-pointed star with no letters, words or engraving; the shoulder patch is a plain dark green shield shape "
      "with no letters; the small name bar above the pocket is a blank plain brass bar. Nothing written anywhere."),
+]
+# Sets with readable lettering on the picked take: the same one-change edit, in the same a4 run.
+SET_FIX = ("Edit image 1: keep the room, the camera position, the layout, every object and the light exactly the same. Change only one thing:")
+SET_FIXES = [
+    ("mfront-night", "s3-set-motel-front-mfront-night-v-{take}.png",
+     "remove the glowing neon sign with letters from the top left: plain wood paneling continues there, lit by the same red glow from outside. "
+     "No letters or numbers anywhere, and the small card reader's screen is turned away and dark."),
 ]
 # Not drawn: the dispatcher (voice only, cast.json extras), the other installer (backs only), Nora `pregnant` full body
 # (選 in the plan: the vertical pilot kept her face and shape from the portrait alone).
@@ -266,8 +273,8 @@ def rounds() -> dict[str, dict]:
         picks = sorted({p[5] for p in items if p[4] == "full-pick"})
         out[r] = {"kind": "people", "items": [p[0] for p in items], "images": 2 * len(items), "picks": picks, "after": []}
     items = [p[0] for p in PEOPLE if p[6] == "a4"]
-    out["a4"] = {"kind": "fix", "items": items + [f"{i} (fix)" for i, _ in FIXES], "images": 2 * (len(items) + len(FIXES)),
-                 "picks": [i for i, _ in FIXES], "after": []}
+    out["a4"] = {"kind": "fix", "items": items + [f"{i} (fix)" for i, _ in FIXES] + [f"{i} (fix)" for i, _, _ in SET_FIXES],
+                 "images": 2 * (len(items) + len(FIXES) + len(SET_FIXES)), "picks": [i for i, _ in FIXES] + [i for i, _, _ in SET_FIXES], "after": ["s3"]}
     for r, ns in SET_ROUNDS.items():
         rows = [sets[n] for n in ns]
         picks = sorted({sets[row["base"]]["ver"] for row in rows if row["base"] and row["base"] != 1 and len(set_takes(sets[row["base"]])) > 1})
@@ -354,6 +361,13 @@ def fix_round(work: Path, pick: dict[str, str], placeholders: bool) -> list[dict
         for t, take in enumerate(("a", "b")):
             jid = f"{item}-fix-{take}"
             jobs.append(build.job(jid, f"{item} fix {take}", [ref], prompt, BUST, 715000 + 2 * pos + t, f"a4-{jid}.png", latent="image1"))
+    for pos, (item, src, change) in enumerate(SET_FIXES):
+        ref = src.format(take=picked(pick, item))
+        need(work / ref, SETV, placeholders, "draw that set round first")
+        prompt = f"{SET_FIX} {change} {build.REAL}"
+        for t, take in enumerate(("a", "b")):
+            jid = f"{item}-fix-{take}"
+            jobs.append(build.job(jid, f"{item} fix {take}", [ref], prompt, SETV, 715100 + 2 * pos + t, f"a4-{jid}.png", latent="image1"))
     return jobs
 
 
