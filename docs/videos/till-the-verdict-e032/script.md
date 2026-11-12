@@ -18,9 +18,9 @@
 
 ## 這集接在哪
 
-接第 31 集最後一鏡 c43（bible〈接點表〉31→32：Pell's 廠內，第 109 天約 06:10，從大門往裡拍：Nora 站在推開的鐵門裡三步、右手舉到眉前擋光，深處蓋著帆布的三號爐前約兩步，一束手電筒的白光打在她臉上；拿手電筒的人只見齊胸的手電筒、右手、下巴與嘴），**同一刻**。c01 同一個方向，光束放低、落到地上（bible〈必修〉第 32 集）。門外黑車停在門前，Elias 在駕駛座講電話（c22 才從門縫看到）。
+接第 31 集最後一鏡 c41（bible〈接點表〉31→32：Pell's 廠內，第 109 天約 06:10，從大門往裡拍：Nora 站在推開的鐵門裡三步、右手舉到眉前擋光，深處蓋著帆布的三號爐前約兩步，一束手電筒的白光打在她臉上；拿手電筒的人只見齊胸的手電筒、右手、下巴與嘴），**同一刻**。c01 同一個方向，光束放低、落到地上（bible〈必修〉第 32 集）。門外黑車停在門前，Elias 在駕駛座講電話（c22 才從門縫看到）。
 第 109 天：06:10–06:25 廠房中間的長木工作台邊 → 06:25–06:40 三號爐前。門外是金色的清晨。
-最後一鏡 c43 照〈接點表〉32→33：三號爐前，約 06:40。帆布堆在爐腳，灰塵還在高窗的光柱裡往下落；Nora（`shoulder`）面對爐子站著，右手手掌平貼在冰冷的紅磚上、手指張開，眼睛閉著，臉上有淚痕，頭髮垂在臉邊；Gus（基本款）在她左邊一步，右手剛從磚上拿開，看著她的手。第 33 集跳到三天後的診間，第一鏡是她的兩隻手掌平放在膝蓋上。
+最後一鏡 c41 照〈接點表〉32→33：三號爐前，約 06:40。帆布堆在爐腳，灰塵還在高窗的光柱裡往下落；Nora（`shoulder`）面對爐子站著，右手手掌平貼在冰冷的紅磚上、手指張開，眼睛閉著，臉上有淚痕，頭髮垂在臉邊；Gus（基本款）在她左邊一步，右手剛從磚上拿開，看著她的手。第 33 集跳到三天後的診間，第一鏡是她的兩隻手掌平放在膝蓋上。
 
 ## 角色與參考圖
 
@@ -36,7 +36,7 @@
 ## 分鏡與台詞
 
 景別與運鏡寫中文給人讀；正文由製作端照 `minimax-h3-colab/references/motion-quality.md` 第二節改寫成英文，每一鏡的英文正文寫「vertical 9:16 frame」與光：
-c01–c43 寫 `early morning inside a cold, dim old brick glassworks, thin gold shafts of sunlight slanting in from the high windows above the open doors, faint cold white daylight from the high windows on the right wall, dust hanging in the shafts, the light stays unchanged`；c22 另寫 `bright gold dawn street beyond the dark doorway`。
+c01–c41 寫 `early morning inside a cold, dim old brick glassworks, thin gold shafts of sunlight slanting in from the high windows above the open doors, faint cold white daylight from the high windows on the right wall, dust hanging in the shafts, the light stays unchanged`；c22 另寫 `bright gold dawn street beyond the dark doorway`。
 
 **欄位怎麼讀**：
 - 「畫面裡有誰」寫位置、服裝、道具、表情、狀態。**每張露臉的臉都寫表情，寫成臉怎麼動**：眉、眼、嘴角、下巴、呼吸至少兩處。本集沒有可以笑的鏡：每張露臉的臉都加 `no smile at any moment, until the last frame`，表情句不寫任何嘴角往上的字。
@@ -96,7 +96,7 @@ c01–c43 寫 `early morning inside a cold, dim old brick glassworks, thin gold 
 - **軸線**：兩人走到爐前，**面對爐子：Gus 在左（爐子左前、吹管架那邊）、Nora 在右**（從大門那頭看）。c25、c28 從他們身後與右前方拍；c30 起近景的鏡頭在**爐子右側（北邊）**、往南拍：爐面在畫面右，**Nora 離鏡頭近、側臉朝畫面右；Gus 在她身後較遠、畫面左**，他看她時臉朝畫面右前方。
 - **在場的人**：Nora、Gus。
 - **這場要講完的事**：Gus 扯下帆布，十二年的灰在光柱裡往下落，爐口黑得看不到底；他拍拍冰冷的磚說十二年沒人點過她；她把右手手掌平貼在磚上、閉上眼睛（結尾："Nobody's lit her in twelve years."，懸念：三號爐還點得著嗎）。
-- **配樂**：c25 一段很慢的弦；c28 扯帆布時停一拍、只剩帆布滑下來的聲音；c29 起弦回來、慢慢往上；c35 那句之後一拍安靜；c38 手貼上去時一個鋼琴單音；c39–c43 弦撐住、最後停在一個沒有解開的和弦上。
+- **配樂**：c25 一段很慢的弦；c28 扯帆布時停一拍、只剩帆布滑下來的聲音；c29 起弦回來、慢慢往上；c35 那句之後一拍安靜；c38 手貼上去時一個鋼琴單音；c39–c41 弦撐住、最後停在一個沒有解開的和弦上。
 - **離開這場**：本集結尾；第 33 集跳到三天後（第 112 天）的診間。
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |

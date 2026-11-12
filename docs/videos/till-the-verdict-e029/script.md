@@ -25,7 +25,7 @@
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3）；**全身參考圖 `gown` 待畫** | `gown`（齊肩短髮往後梳到耳後、霧灰落地長禮服、高船領、長袖）；`a small misty-grey satin clutch about the size of her hand` 夾在左腋下（c35 起拿在左手）；c01–c28 `white cotton handling gloves on both her hands`（戒指在手套裡，不寫）；**c29 脫下手套起**左手無名指 `a plain narrow white-gold band with no stone, on her left ring finger`；整集眼睛濕、臉頰有淚痕，每一鏡再寫；腳上是她 `decree` 的鞋 `low nude flat shoes`（裸色平底鞋；禮服盒裡沒有鞋），露出來的鏡寫這句，裙襬蓋住腳的鏡寫「落地的裙襬蓋住鞋面」；**一鏡都不笑**；原聲 |
+| Nora | `assets/refs/nora-portrait.jpg`（r3）；**全身參考圖 `gown` 待畫** | `gown`（齊肩短髮往後梳到耳後、霧灰落地長禮服、高船領、長袖）；`a small misty-grey satin clutch about the size of her hand` 夾在左腋下（c32 起拿在左手）；c01–c28 `white cotton handling gloves on both her hands`（戒指在手套裡，不寫）；**c29 脫下手套起**左手無名指 `a plain narrow white-gold band with no stone, on her left ring finger`；整集眼睛濕、臉頰有淚痕，每一鏡再寫；腳上是她 `decree` 的鞋 `low nude flat shoes`（裸色平底鞋；禮服盒裡沒有鞋），露出來的鏡寫這句，裙襬蓋住腳的鏡寫「落地的裙襬蓋住鞋面」；**一鏡都不笑**；原聲 |
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 基本款（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣、深棕色皮鞋）；自己的 `a black handheld microphone with no logo` 在右手；**可以笑的只有 c01 第一格與 c18 第一格練過的閉嘴微笑**，說話的那一刻嘴角放平；說話句寫「聲音平穩、低」，不寫 warm、keynote、smooth；原聲 |
 | Sienna | **待畫**（第 4–10 集清單；要看得到左腕的錶） | 基本款紅色套裝（暖棕膚色、黑色齊下巴短髮、紅唇、**左腕**細金錶、鮮紅合身套裝、尖頭高跟鞋）；講台邊，左手空著；提詞卡散在腳邊；本集不笑；不說話 |
 | Lyle Becker | **待畫，必須先畫** | 30 歲白人男性、格子襯衫、反戴的素面棒球帽、深色球鞋；不戴眼鏡；`a black phone held up sideways, seen from the back, its screen a soft white glow` 在左手（直播）；第一排右邊靠走道，c19 起站到右側走道、第二排最右端旁；不笑；原聲（c11、c20 兩句） |
@@ -77,11 +77,11 @@ c36–c41 寫 `a narrow white service corridor, harsh white ceiling light at the
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c01 | 中近景、慢推（從中近景推到近景）；鏡頭在第一排前、略偏右的低處往上拍；直式，Grant 的臉在上三分之一；前景右下緣是展示台白色的邊（虛焦）；身後是舞台後牆的大螢幕（虛焦）；**第一格接第 28 集最後一鏡**：他右手已經舉著麥克風 | Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣），站在台中偏左；右手 `a black handheld microphone with no logo`，舉在嘴前；`a wide dark screen above the back of the stage showing only a short curved row of glowing points, nothing readable` 在他身後虛焦；四分之三側臉朝畫面右下、眼睛看著右側走道前段的記者（畫框外），不看鏡頭；**第一格是練過的閉嘴微笑**，開口那一刻嘴角放平、眉心微微往上提、眼皮半垂、聲音平穩、低、慢 | Grant 嘴在說話（平穩、低、慢）（動作一）；說完頭往畫面右（Nora 那邊）輕輕一偏、眼睛垂下（動作二），嘴閉上；最後：他的頭偏向畫面右，麥克風還在嘴前 | Grant（平穩、低、慢）：My ex-wife hasn't quite recovered.（我前妻還沒完全走出來）（原聲） | 約 3.5 秒 |
-| c02 | 近景、固定；同 c01 的鏡位；直式，臉在上三分之一；**第一格就是 Grant 的臉與肩膀，整鏡不拉遠** | Grant（基本款，細圓金屬框眼鏡）；右手的麥克風在嘴前；眼睛看著畫面右下外的記者；眉心提著、聲音平穩、低，`no smile at any moment, until the last frame` | Grant 嘴在說話（平穩、低），說到最後一個字時被打斷：嘴停在半開、沒說完；眼睛一下從記者跳到畫面右外的 Nora；最後：他的嘴半開、眼睛看著畫面右 | Grant（平穩、低，被打斷）：From losing our—（失去我們的——）（原聲） | 約 2.5 秒 |
+| c02 | 近景、固定；同 c01 的鏡位；直式，臉在上三分之一；**第一格就是 Grant 的臉與肩膀，整鏡不拉遠** | Grant（基本款，細圓金屬框眼鏡）；右手的麥克風在嘴前；眼睛看著畫面右下外的記者；眉心提著、聲音平穩、低，`no smile at any moment, until the last frame` | Grant 嘴在說話（平穩、低），說到 "our" 就停在破折號（動作一）；嘴閉上，眼睛從記者轉向畫面右外的 Nora（動作二）；剪在破折號後嘴閉上；最後：他嘴閉著、看著畫面右 | Grant（平穩、低，被打斷）：From losing our—（失去我們的——）（原聲） | 約 2.5 秒 |
 | c03 | 插鏡、手部特寫、固定；**第一格就是主持人拿著麥克風的手**；直式；鏡頭在台右邊緣、與手同高 | 主持人只有手與黑色晚宴外套的袖口、臉不入鏡，手裡 `a black handheld microphone with no logo`；Nora 的右手 `white cotton handling gloves on both her hands` 從畫面左伸進來；後景是燈箱的白光（虛焦）；畫面裡沒有臉 | Nora 戴手套的右手握住麥克風（動作一），主持人的手張開、鬆手（動作二）；不搶、不拉；剪在主持人的手指鬆開；畫面上沒有嘴；最後：麥克風在 Nora 的右手，主持人的手空著停在畫面右下 | — | 約 2 秒 |
 | c04 | 近景、慢推（從胸上推到肩上）；鏡頭在第一排前、她右前方的低處；直式，臉在上三分之一；身後是舞台後牆與大螢幕的光點（虛焦）；同一個大廳 | Nora（`gown`：齊肩短髮往後梳到耳後、霧灰長禮服的高船領），站在展示台右邊；`a small misty-grey satin clutch about the size of her hand, tucked under her left arm`；右手 `white cotton handling gloves on both her hands` 握著 `a black handheld microphone with no logo`、舉到嘴前；眼睛濕、臉頰有淚痕；舞台頂光照在她臉上；四分之三側臉朝畫面左的 Grant、眼睛釘著他；眉頭壓低、眼睛睜大不眨、下巴往前、嘴張得大、每個字都咬住、聲音大而清楚（不是尖叫），`no smile at any moment, until the last frame` | Nora 看著 Grant，嘴在說話（全集最大聲）（動作一）；說完下巴不收、胸口起伏（動作二），嘴閉上；最後：她喘著、看著畫面左 | Nora（全集最大聲，清楚，不是尖叫；不是短喊，剪接剪掉多喊的字）：Don't you dare talk about my baby.（不准你拿我的孩子說嘴）（原聲）← 因為 c02 | 約 4 秒 |
 | c05 | 近景、固定；同 c01 的鏡位；直式，臉在上三分之一 | Grant（基本款，細圓金屬框眼鏡）；右手的麥克風；眉毛一下挑起、嘴半開又閉上、喉嚨一動、眼睛看著畫面右外的 Nora，`no smile at any moment, until the last frame` | Grant 舉著麥克風的右手慢慢垂到胸前；剪在手垂到一半；嘴閉著；最後：麥克風在他胸前 | — | 約 2 秒 |
-| c06 | 全景、高角度、慢推（從全景推到中景）；鏡頭在大廳最後面的高處、往舞台拍；直式前後疊開：下半是一排排客人的背影與後腦（虛焦），上半是亮著的舞台 | `launch-guests`：一排排背影、不露臉；前排 `two or three phones held up in the dark, seen from the back or the side, only their soft white glows`（三支，背面）；台上三個小小的人影、臉看不清：畫面左講台邊的紅色套裝、台中偏左的淺石色西裝、展示台右邊的霧灰長禮服；展示台的燈箱亮著，大螢幕上一排光點；全場燈亮 | 一排排背影一動不動，前排三支手機的白光慢慢再舉高一點；剪在手機舉到最高；**整鏡沒有聲音**；最後：全場靜止 | — | 約 2.5 秒 |
+| c06 | 全景、高角度、慢推（從全景推到中景）；鏡頭在大廳最後面的高處、往舞台拍；直式前後疊開：下半是一排排客人的背影與後腦（虛焦），上半是亮著的舞台 | `launch-guests`：一排排背影、不露臉；前排 `two or three phones held up, seen from the back or the side, only their soft white glows`（三支，背面；全場燈亮的版本）；台上三個小小的人影、臉看不清：畫面左講台邊的紅色套裝、台中偏左的淺石色西裝、展示台右邊的霧灰長禮服；展示台的燈箱亮著，大螢幕上一排光點；全場燈亮 | 一排排背影一動不動，前排三支手機的白光慢慢再舉高一點；剪在手機舉到最高；**整鏡沒有聲音**；最後：全場靜止 | — | 約 2.5 秒 |
 | c07 | 近景、固定；鏡頭在 Elias 右前方、比他的眼睛低一點；直式，臉在上三分之一；前景下緣是第一排白椅的椅背（虛焦），擋住他的膝與左手；身後是後幾排客人的肩（虛焦） | Elias（基本款：深棕色頭髮往後梳、橄欖膚色、細銀絲框眼鏡、炭灰窗格紋三件式、白襯衫開領、白色口袋巾），坐在第二排最右端；**左手在膝上、被前排椅背擋住、在畫框外**，右手搭在右邊膝上；全場燈亮；四分之三側臉朝畫面右上、眼睛看著台上的 Nora（畫框外），不看鏡頭；眉毛放平、眼睛不眨、下巴微收、呼吸很慢，`no smile at any moment, until the last frame` | Elias 搭在膝上的右手手指慢慢收緊；剪在手指收緊；嘴閉著；最後：他坐著不動，看著畫面右上 | — | 約 2.5 秒 |
 | c09 | 近景、慢推（從胸上推到肩上）；同 c04 的鏡位；直式，臉在上三分之一；身後是舞台後牆與大螢幕的光點（虛焦） | Nora（`gown`），站在展示台右邊；手拿包夾在左腋下；右手 `white cotton handling gloves on both her hands` 握著主持人的麥克風；眼睛濕、臉頰有淚痕；四分之三側臉朝畫面左的 Grant、眼睛看著他；眉毛放平、聲音壓得很低、兩句之間停一拍、下巴在第二句時抬起，`no smile at any moment, until the last frame` | Nora 看著 Grant，嘴在說話（低，中間停一拍）（動作一）；說完握著麥克風的右手放低到腰前（動作二），嘴閉上；最後：麥克風垂在她腰前，她看著 Grant | Nora（壓低、中間停一拍）：I made that vase. For you.（那個花瓶是我做的。做給你的）（原聲） | 約 4.5 秒 |
 | c10 | 插鏡、特寫、固定；**第一格就是 Lyle 舉著的手機背面**；直式；鏡頭在他左肩後、低；後景是亮著的舞台（虛焦） | Lyle 的左手（格子襯衫袖口）舉著 `a black phone held up sideways, seen from the back, its screen a soft white glow`；後景台上展示台右邊一個小小的霧灰人影（虛焦、臉看不清）；畫面裡沒有清楚的臉 | Lyle 的左手把手機舉高一點、穩住（直播）；剪在手機停住；畫面上沒有嘴；最後：手機舉在畫面中間、背面朝鏡頭 | — | 約 2 秒 |
@@ -132,12 +132,12 @@ c36–c41 寫 `a narrow white service corridor, harsh white ceiling light at the
 | --- | --- | --- | --- | --- | --- |
 | c28 | 中景、低角度、跟拍（從上往下）；鏡頭在舞台右端台階下、往上拍；直式：上半是台階頂與她的臉，下半是台階與霧灰裙襬；前景右是台階的黑色扶手（虛焦） | Nora（`gown`：霧灰長禮服；裙襬提起一點，露出 `low nude flat shoes`）；手拿包夾在左腋下；右手 `white cotton handling gloves on both her hands` 輕輕提起一點裙襬；眼睛濕、臉頰有淚痕；眼睛看著台階下畫面右外的側門；眉毛放平、嘴唇閉著、下巴抬著、呼吸慢，`no smile at any moment, until the last frame` | Nora 一階一階走下台階；剪在她踩上最後一階的一半；嘴閉著；最後：她走到台階底 | — | 約 2.5 秒 |
 | c29 | 插鏡、手部特寫、固定；**第一格就是她兩隻戴著白棉手套的手**；直式；身後是側門邊的白牆（虛焦） | Nora 的兩手 `white cotton handling gloves on both her hands`，霧灰長袖的袖口；手拿包的一角在畫面左上（夾在左腋下）；畫面裡沒有臉 | 右手把左手的手套拉下來（動作一），左手把右手的手套拉下來（動作二）；剪在第二隻手套離開指尖；畫面上沒有嘴；最後：`a pair of white cotton handling gloves` 揉在她的右手，左手無名指 `a plain narrow white-gold band with no stone, on her left ring finger` | — | 約 2.5 秒 |
-| c30 | 中近景、固定；鏡頭在側門對面、略偏 Nora 這側；直式，Theo 的臉在上三分之一；從 Nora 右肩後拍，前景左下緣是她的霧灰右肩與齊肩髮（虛焦、不露臉）；身後是側門邊的白牆 | Theo（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心），站在側門邊；左手把 `a slim tablet in a plain grey case, its screen turned away` 平舉向她、螢幕朝她；四分之三側臉朝畫面左下的 Nora、眼睛看著她；眉毛平平、嘴唇平、聲音平、慢、一本正經，`no smile at any moment, until the last frame` | Theo 把平板遞到她胸前的高度（動作一），嘴在說話（平、慢）（動作二）；說完右手食指點一下平板的邊，嘴閉上；最後：平板平舉在兩人之間、螢幕朝她 | Theo（平、慢、一本正經）：Dana. For you.（Dana。給妳的）（原聲） | 約 3 秒 |
+| c30 | 中近景、固定；側面：鏡頭在 Theo 左側、與他平行；直式，Theo 的臉在上三分之一；平板只見機身的側邊；身後是側門邊的白牆 | Theo（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心），站在側門邊；左手把 `a slim tablet in a plain grey case, its screen turned away` 平舉向畫面左外的她、螢幕朝她，鏡頭只拍到機身的灰色側邊；側臉朝畫面左、眼睛看著畫框外的 Nora；眉毛平平、嘴唇平、聲音平、慢、一本正經，`no smile at any moment, until the last frame` | Theo 把平板遞到她胸前的高度（動作一），嘴在說話（平、慢）（動作二）；說完右手食指點一下平板的邊，嘴閉上；最後：平板平舉向畫面左、只見側邊 | Theo（平、慢、一本正經）：Dana. For you.（Dana。給妳的）（原聲） | 約 3 秒 |
 | c31 | 中近景、慢推（從中近景推到近景）；**Dana 的事務所**；鏡頭在桌子這側；直式，臉在上三分之一；身後是窗與轉暗的港口（虛焦）；前景下緣是木桌的邊與一疊淺黃卷宗（虛焦） | Dana（35 歲黑人女性、高髮髻、黑色合身西裝外套配白 T 恤，不戴眼鏡），站在窗前；右手 `a black phone with no logo, about the size of her palm` 貼近嘴、在錄語音；綠燈罩檯燈的暖光從畫面左下照在她臉上；四分之三側臉朝畫面左、眼睛看著桌上背對鏡頭的筆電（畫框外），不看鏡頭；眉毛一挑、說得快、俐落、兩句之間停一拍，`no smile at any moment, until the last frame` | Dana 對著手機，嘴在說話（快、俐落，兩句之間停一拍）；說完下巴點一下，嘴閉上；最後：手機還貼在嘴邊 | Dana（快、俐落，語音）：You wore gloves. You held your own name.（妳戴了手套。妳拿的是自己的名字）（原聲，後製加電話濾波） | 約 4 秒 |
-| c32 | 近景、慢推（從胸上推到肩上）；鏡頭在 Theo 身側、往 Nora 拍；直式，臉在上三分之一；身後是台階與舞台的邊（虛焦） | Nora（`gown`）；右手揉著 `a pair of white cotton handling gloves`；手拿包夾在左腋下；眼睛濕、臉頰有淚痕；眼睛看著畫面右的平板背面；眉頭慢慢鬆開、鼻子吐出一口長氣、下巴垂下一點、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 握著手套的右手按到胸前；剪在手按住；嘴閉著；最後：她右手按在胸前，聽著 | — | 約 2.5 秒 |
-| c33 | 近景、固定；同 c30 的鏡位；直式，臉在上三分之一 | Theo（圓玳瑁框眼鏡）；左手的平板還平舉著、螢幕朝她；眼睛從平板背面抬到畫面左的 Nora；眉毛平平、嘴唇平、眨一下眼，`no smile at any moment, until the last frame` | Theo 的眼睛從平板抬到她臉上；剪在眼睛停住；嘴閉著；最後：他看著她，平板還舉著 | — | 約 2 秒 |
+| c32 | 近景、慢推（從胸上推到肩上）；鏡頭在 Theo 身側、往 Nora 拍；直式，臉在上三分之一；身後是台階與舞台的邊（虛焦） | Nora（`gown`）；右手揉著 `a pair of white cotton handling gloves`；手拿包夾在左腋下；眼睛濕、臉頰有淚痕；平板螢幕的一點白光照在她的下巴；眼睛看著畫面右的平板；眉頭慢慢鬆開、鼻子吐出一口長氣、下巴垂下一點、嘴唇閉著，`no smile at any moment, until the last frame` | 左手從腋下拿下 `a small misty-grey satin clutch about the size of her hand`（動作一），右手把白手套放進左手、跟手拿包一起握著（動作二）；剪在手套放進左手；嘴閉著；最後：手拿包與手套都在她左手，她聽著 | — | 約 2.5 秒 |
+| c33 | 近景、固定；同 c30 的鏡位（Theo 左側的側面）；直式，臉在上三分之一 | Theo（圓玳瑁框眼鏡）；左手的平板還平舉著、螢幕朝她，只見機身側邊；眼睛從平板抬到畫面左外的 Nora；眉毛平平、嘴唇平、眨一下眼，`no smile at any moment, until the last frame` | Theo 的眼睛從平板抬到她臉上；剪在眼睛停住；嘴閉著；最後：他看著她，平板還舉著 | — | 約 2 秒 |
 | c34 | 近景、慢推（從胸上推到肩上）；同 c31 的鏡位；直式，臉在上三分之一 | Dana（高髮髻、黑西裝外套）；右手的手機貼近嘴；檯燈的暖光；四分之三側臉朝畫面左的筆電；眉毛放平、嘴說得乾脆、下巴一收，`no smile at any moment, until the last frame` | Dana 嘴在說話（乾脆、篤定）（動作一）；說完把手機從嘴邊放低、拇指按一下螢幕停止錄音（動作二），嘴閉上；最後：手機在她右手、放低到胸前，螢幕朝下 | Dana（乾脆、篤定，語音）：That letter's got nothing.（那封信抓不到妳什麼）（原聲，後製加電話濾波）（結尾） | 約 3.5 秒 |
-| c35 | 中景、固定；鏡頭在大廳這側、與側門斜對；直式：畫面右是灰色側門與門邊的白牆，Nora 在中間 | 臉清楚的只有 Nora（側臉）。Nora（`gown`，落地的裙襬蓋住鞋面），眼睛濕、臉頰有淚痕；左手從腋下拿下 `a small misty-grey satin clutch about the size of her hand`、右手把 `a pair of white cotton handling gloves` 放進左手、一起握著；Theo 在畫面右緣、只見針織背心的肩與放低的平板（臉在畫框外）；側臉朝畫面右的門、眼睛看著門；眉毛放平、下巴抬起、吸一口氣，`no smile at any moment, until the last frame` | Nora 把手套與手拿包一起換到左手握著（動作一），右手推開側門、走進去（動作二）；剪在她跨過門檻一半；嘴閉著；最後：她走進門裡，左手拿著手拿包與手套 | — | 約 2.5 秒 |
+| c35 | 中景、固定；鏡頭在大廳這側、與側門斜對；直式：畫面右是灰色側門與門邊的白牆，Nora 在中間 | 臉清楚的只有 Nora（側臉）。Nora（`gown`，落地的裙襬蓋住鞋面），眼睛濕、臉頰有淚痕；左手握著 `a small misty-grey satin clutch about the size of her hand` 與 `a pair of white cotton handling gloves`；Theo 在畫面右緣、只見針織背心的肩與放低的平板（臉在畫框外）；側臉朝畫面右的門、眼睛看著門；眉毛放平、下巴抬起、吸一口氣，`no smile at any moment, until the last frame` | Nora 右手推開側門（動作一），跨進門檻（動作二）；剪在她跨過門檻一半；嘴閉著；最後：她走進門裡，左手拿著手拿包與手套 | — | 約 2.5 秒 |
 
 ### 第四場：He has something to show you.（約 16.5 秒）
 
@@ -180,7 +180,7 @@ c36–c41 寫 `a narrow white service corridor, harsh white ceiling light at the
 - **c37、c40 Cole 傳話**：細綱的「Grant 傳簡訊」照審稿改司機傳話；Cole 的眼睛看著她（bible〈人物與參考圖〉）。
 - **c41 燈泡**：寫慢（`dimming once, slowly, and coming back`），燈下的人虛焦、背光；細綱的 "a light flickers once" 不寫閃。
 - **選角**：Crane、Lyle、Cole 要定妝照；主持人、記者、工作人員、客人不露清楚的臉。**依 bible 建議，站主 2026-11-12 照建議定案**（〈要站主決定的〉第 7 條）。
-- **帳**：本集不說錢（bible〈帳〉：Peg 約 $217、Nora 約 $26）；細綱的 "$1,080 left" 不用。**依 bible 建議，站主 2026-11-12 照建議定案**（〈要站主決定的〉第 6 條）。
+- **帳**：本集不說錢（bible〈帳〉：Peg 約 $1,403、Nora 約 $26）；細綱的 "$1,080 left" 不用。**依 bible 建議，站主 2026-11-12 照建議定案**（〈要站主決定的〉第 6 條）。
 - **Peg 的手機**：她在車上看直播用的是她自己那支（第 23 集換了號碼的那支）。**依 bible 建議，站主 2026-11-12 照建議定案**（〈要站主決定的〉第 1 條，A）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
@@ -193,11 +193,21 @@ c36–c41 寫 `a narrow white service corridor, harsh white ceiling light at the
 - **c24 麥克風還回去**：她下台前把主持人那支放回主持人手裡；主持人留在台上。
 - **c26 Grant 的麥克風**：被記者圍住時垂在他右手；他之後從側門先進了後台，麥克風留在台上（不拍；第 30 集走廊裡他兩手空著）。
 - **c27 抬走的分法**：bible 寫「連罩帶瓶抬下台」；本集寫成前面的工作人員兩手捧著直立的 No. 1、後面的捧著空的玻璃罩，從**舞台左端**的台階下去（不走右邊的側門，免得跟第三、四場的 Nora 與走廊撞在一起）。Sienna 留在講台邊（背影虛焦），之後從舞台左端下台（不拍）。
-- **c29 手套**：右手拉下左手的、左手拉下右手的，揉在右手；c35 換到左手跟手拿包一起握著（接〈接點表〉29→30）。
-- **c30 平板**：Theo 左手平舉、螢幕朝她，他不交給她；語音從平板放出來。Theo 留在側門邊，之後跟 Elias 從外面繞到走廊盡頭（第 30 集）。
+- **c29 手套**：右手拉下左手的、左手拉下右手的，揉在右手；c32 換到左手跟手拿包一起握著（接〈接點表〉29→30）。
+- **c30 平板**：Theo 左手平舉、螢幕朝她，鏡頭在他左側的側面，只見機身側邊；他不交給她；語音從平板放出來。Theo 留在側門邊，之後跟 Elias 從外面繞到走廊盡頭（第 30 集）。
 - **c31、c34 Dana**：她站在窗前（窗在身後），看著桌上背對鏡頭的筆電（剛看完直播）錄語音，最後拇指按一下停止錄音。
 - **c36 Cole 從右牆邊跨出來擋住她**；c38 他的手停在她手臂前一掌，沒有碰到。
 - **鞋**：照 bible（第 24–25 集已改）：禮服盒裡沒有鞋，Nora 穿她 `decree` 的 `low nude flat shoes`；露出來的鏡（c28 提裙下台階、c36 走路的鞋跟）寫這句，裙襬蓋住腳的鏡（c35）寫「落地的裙襬蓋住鞋面」；Lyle 深色球鞋、Crane 與 Cole 黑皮鞋、工作人員黑工作鞋。請主控補進 bible。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e025-e030-storyboard.md` 與 bible〈第 25–30 集審稿後補定〉改的。本集還沒錄、沒拍，沒有要重抽的片段；台詞沒改，不必重錄。
+- **c02**：被打斷的句子停在破折號，嘴閉上、眼睛轉向畫面右外的 Nora；剪在破折號。
+- **c06**：前排手機改用全場燈亮的句子 `two or three phones held up, seen from the back or the side, only their soft white glows`。
+- **c30、c33**：鏡頭改到 Theo 左側的側面，平板只見機身側邊（原本從 Nora 右肩後拍，螢幕會朝著鏡頭）。c32 寫平板的一點白光照在她下巴。
+- **c32、c35**：手套與手拿包換到左手，從 c35 移到 c32；c35 只留推開側門與跨進門檻（一鏡不超過兩個動作）。
+- **帳**：注意事項的 Peg 改成約 $1,403（7/1 退休金已進帳）。
+- Peg 在車上看的直播寫成「發表會一開場就有的直播」（bible〈第 25–30 集審稿後補定〉）。
 
 ### 配音
 
@@ -259,7 +269,7 @@ c36–c41 寫 `a narrow white service corridor, harsh white ceiling light at the
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `gown`（霧灰長禮服）＋手拿包（左腋下，c35 起左手）；c01–c28 白棉手套；c29 起左手無名指 Elias 的戒指；整集眼睛濕、臉頰有淚痕；鞋是 `decree` 的 `low nude flat shoes`（c28、c36 露出，c35 裙襬蓋住） | c04、c09、c24、c28、c32、c35–c36、c39（c03、c29、c38 只有手；c06、c27 很小或不在；c37 只有肩） | 已有；**要畫全身參考圖 `gown`** |
+| Nora | `gown`（霧灰長禮服）＋手拿包（左腋下，c32 起左手）；c01–c28 白棉手套；c29 起左手無名指 Elias 的戒指；整集眼睛濕、臉頰有淚痕；鞋是 `decree` 的 `low nude flat shoes`（c28、c36 露出，c35 裙襬蓋住） | c04、c09、c24、c28、c32、c35–c36、c39（c03、c29、c38 只有手；c06、c27 很小或不在；c37 只有肩） | 已有；**要畫全身參考圖 `gown`** |
 | Grant | 基本款（細圓金屬框眼鏡）＋自己的麥克風（右手） | c01–c02、c05、c12、c18（c06、c17、c26 很小或虛焦；c36、c41 燈下的人影虛焦） | 已有 |
 | Sienna | 基本款紅色套裝；左手空著；提詞卡散在腳邊 | c13（c06、c27 很小或背影） | 要畫定妝照（要看得到左腕的錶） |
 | Lyle | 格子襯衫、反戴的素面棒球帽、深色球鞋；直播手機在左手 | c11、c20（c10 只有手；c19 背影） | 要畫定妝照 |
@@ -300,7 +310,7 @@ c36–c41 寫 `a narrow white service corridor, harsh white ceiling light at the
 
 - **時間**：第 108 天（7/2 週四）20:32 燈亮、Grant 重新開口 → 20:33 她拿過麥克風 → 約 20:37 Crane 離席 → 20:37–20:40 記者圍 Elias、No. 1 抬下台 → 20:40–20:44 側門、Dana 的語音 → 20:45 走廊頭，Cole 擋住她。日落 21:10。
 - **錢**：本集不說出口；Peg 約 $1,403（7/1 退休金已進帳）、Nora 自己約 $26；Nora 欠 Peg 一半菜錢約 $80、欠 Ashford 一件禮服（bible〈帳〉）。
-- **手機與平板**：Peg 在巷子裡的車上用她自己的手機看 Lyle 的直播（不入鏡，只留第 26 集 c35 那一鏡）；Nora 沒有手機，Dana 的語音傳到 Theo 的平板；Lyle 的手機一直在直播（左手）。
+- **手機與平板**：Peg 在巷子裡的車上用她自己的手機看發表會一開場就有的直播（不入鏡，只留第 26 集 c35 那一鏡）；Nora 沒有手機，Dana 的語音傳到 Theo 的平板；Lyle 的手機一直在直播（左手）。
 - **No. 1**：c27 工作人員抬下台（從舞台左端），之後在 Whitlock Home 手上；第 31 集起不在她手上；證據是現場與 Lyle 的直播畫面。大螢幕停在那一排光點。
 - **麥克風**：主持人那支 c03 到她手上、c24 還回主持人；Grant 自己那支留在台上（他之後進後台，不拍）。
 - **手套、手拿包**：c29 在側門邊脫下手套，c35 跟手拿包一起拿在左手；律師函（兩頁釘在一起、三折，第二頁是協議簽名頁的影本）還在手拿包裡。
