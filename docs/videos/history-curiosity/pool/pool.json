@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "series": "奇聞檔案局",
-  "revision": "2026-11-12-curio-pool-1411",
+  "revision": "2026-11-12-curio-pool-1412",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "axes": {
     "H": "歷史懸案",
@@ -19,15 +19,15 @@
     "canonical_cores": 1752,
     "alias_records": 16,
     "produced_cores": 48,
-    "selected_candidates": 1411,
+    "selected_candidates": 1412,
     "held_candidates": 42,
-    "reserve_candidates": 136,
+    "reserve_candidates": 134,
     "shorts_candidates": 89,
-    "excluded_cores": 26,
+    "excluded_cores": 27,
     "new_batch_records": 1437,
     "source_urls": 11938,
     "current_research_source_urls": 7114,
-    "selected_source_urls": 10308,
+    "selected_source_urls": 10314,
     "new_suggestions_not_added": 2723,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
@@ -999,6 +999,10 @@
       "sha256": "3b97db73c647b9388e80d34d56c8d7531cb3a5d2fb359837ad38c422194811d9"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/batches/wave47-decisions-20261112.json",
+      "sha256": "75f58af6963a24ce85139eb135f95355028484815a9b751dcaac704e49504a9a"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/batches/wave5-20261102.json",
       "sha256": "d98622ca45a3708929bb9f71e515f5242d107fe4d48abdb9d4fdfa33ce34778e"
     },
@@ -1424,11 +1428,11 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/dedup-decisions.json",
-      "sha256": "99f4f802c1386054c8c021e3affb7537e9ecd68d6b105655a658d0e026433b61"
+      "sha256": "e1b055f47eef5e2fa5f523909c3cc09f8bd0523c90e64d308734b3d0f3fd6d3c"
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "5eacac9ef33ecdedc1ecd529ce3982e54ae2e4fe2c2de569f9f3e04296bc32e1"
+      "sha256": "b1a5278cce9af18fcf58c8e17bcbb1fdb28cc1951fa35f4c215327863e6131ef"
     }
   ],
   "sources": [
@@ -202266,6 +202270,19 @@
           "limitations": "OCR 有缺字（Dix 一句不完整）；是 19 年後的自述，報紙恐慌細節多為他的轉述與『it is related』，不是當年調查；倫敦犀牛一事本輪未查證。",
           "origin": "wave45-20261112",
           "original_url": "https://archive.org/details/sim_harpers-weekly_1893-06-03_37_1902"
+        },
+        {
+          "title": "T. B. Connery, 'A Famous Newspaper Hoax'（Harper's Weekly 37, no.1902, 1893-06-03, pp.534–535）",
+          "publisher": "Harper's Weekly / Internet Archive",
+          "accessed_on": "2026-11-12",
+          "read_via": "wave45 覆核 R457 重開：archive.org metadata API 列出檔案後，下一次呼叫才下載 _djvu.txt，逐字讀全文（與 ZA7-S004 同一份）",
+          "reading_scope": "整篇文章（OCR 第 5255–5760 行左右）逐段讀",
+          "locator": "pp.534–535",
+          "summary": "前 Herald 總編 Connery 19 年後自承：點子是他的，起因是某天早上在動物園看到工人把一隻豹從運獸車移進籠子時失手、豹滑到車與籠之間，很快被鐵棍趕回；他原想登文責罵，改想『a harmless little hoax, with just enough semblance of reality to give a salutary warning』；先交給 O'Connor 寫，嫌太明顯是假的，改交 Joseph I. C. Clarke 寫成；替現任老闆 Bennett 開脫。轉引 Times：「In some cases」家長沒讀完就衝去學校接孩子（R457 改正：不是「許多家長」）。自述當天：孩子拿著報紙跑來說『what a dreadful thing』、太太不讓孩子上學、理髮店客人臉上抹著泡沫衝出去、電車乘客抓著手杖下車、報童喊號外，他趕回報社停印號外；警察總監 Walling 只看標題就電令各分局；『it is related』Times 的編輯帶兩把手槍出門；Dix 那段 OCR 有缺字；說擔心有人嚇死但沒有，發行量『did not drop by so much as one subscriber』；還說不久後倫敦動物園的犀牛真的跑出來過。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "OCR 有缺字（Dix 一句不完整）；是 19 年後的自述，報紙恐慌細節多為他的轉述與『it is related』，不是當年調查；倫敦犀牛一事本輪未查證。 本筆只為記錄站主決定而重列，沒有新讀任何來源。",
+          "origin": "wave47-decisions-20261112",
+          "original_url": "https://archive.org/details/sim_harpers-weekly_1893-06-03_37_1902"
         }
       ]
     },
@@ -380134,9 +380151,9 @@
       "hook": "一份報紙在頭版說動物園的猛獸全跑出來了——然後在同一篇文章的最後一段，自己說這全是假的。",
       "case_key": "case.central_park_zoo_escape_hoax_herald_1874",
       "answer_target": "1874 年 11 月 9 日 New York Herald 的第 3 版（S006 說當時前兩版固定是廣告，第 3 版就是頭版）刊出〈AWFUL CALAMITY. The Wild Animals Broken Loose from Central Park〉，標題群有〈PROCLAMATION BY THE MAYOR〉、〈Governor Dix Shoots the Bengal Tiger in the Streets〉；內文說看守 Chris. Anderson 用手杖戳犀牛 Pete 引發暴動（ZA7-S001）。同一篇最後一段〈THE MORAL OF THE WHOLE〉寫『Of course the entire story given above is a pure fabrication. Not one word of it is true』，說這是作者隔著鐵欄看籠子時浮現的畫面（ZA7-S001；Connery 1893 轉錄同一句，ZA7-S004）。別家報紙隔天就看穿：Alexandria Gazette 說是『rather a pointless hoax』（ZA7-S002），Wilmington Daily Commercial 的社論氣的是它拿父母擔心孩子的心情開玩笑（ZA7-S003）；Connery 1893 年轉錄的 New York Times 當年評論寫『In some cases the children had just gone to school, and without waiting to read through the six columns… parents rushed off to bring back their little ones』，並說『throughout three or four columns』故事都寫得像真的（ZA7-S004）。流傳的『持槍上街』，Museum of Hoaxes 寫『Armed men rushed into the streets』但沒附出處（ZA7-S006）；目前能追到的是前總編 Connery 1893 年在 Harper's Weekly 的自述：點子是他的，起因是看到工人把一隻豹從運獸車移進籠子時失手；先交 O'Connor 寫、嫌一開頭就露餡，改交 Joseph I. C. Clarke；他自己的孩子拿著報紙說『what a dreadful thing』、太太不讓孩子上學、理髮店裡抹了泡沫的客人沒穿外套就衝出門、電車上有人聽完就抓著手杖下車；警察總監 Walling 只瞄了標題就電令各分局；『it is related』Times 的編輯帶著一對手槍出門；他還說 Dix 將軍當天早上真的帶槍出門（OCR 此句殘缺，Museum of Hoaxes 轉錄為『armed with a rifle』）；他擔心有人嚇死但『none such ever occurred』，發行量『so far as I was able to learn』一個訂戶都沒掉（ZA7-S004、ZA7-S006）。轉折：Connery 的摘要說『the elephant Pete』，原刊寫的是『Pete, the rhinoceros』；他說 Dix 射的是豹，原刊標題寫 Bengal Tiger（ZA7-S004、ZA7-S001）——19 年後的回憶，連自己那篇騙局的細節都記錯。共和黨大象：流傳說法是 Nast 看了騙局才畫出〈The Third-Term Panic〉；Museum of Hoaxes 指出那幅漫畫比騙局早刊出、不可能受它啟發，也說有人反過來猜騙局受漫畫啟發，但 Herald 從未證實（ZA7-S006）。本輪讀到 Harper's Weekly 封面日期 1874-11-07 的那一號確有『An Ass, having put on the Lion's skin… frightening all the foolish Animals』的圖說（ZA7-S005），封面日期早於 11 月 9 日（『早一週』是 S006 的說法，封面日期只早兩天）。",
-      "scope": "本題在 wave40 被研究代理 U6 放進 not_added：原文整篇是猛獸咬死、踩死市民的細節，U6 寫明『若站主同意只講報社怎麼收尾、別家報紙怎麼罵再重提』——收之前要先得到站主同意。片中只講：標題、最後一段的自白、別家報紙與 Times 的反應、Connery 的自述與記錯、大象的時序。原文的死傷名單、咬傷與遺體描寫一句都不唸、不畫，也不唸死傷數字；Times 評論裡轉引的兒童傷亡句子不唸。不說『全城大恐慌』是確定的事實：當年反應只讀到外地報紙與 Connery 轉錄的 Times 片段，Times 1874 原報導全文沒讀；不說 Dix 真的帶槍出門（只說 Connery 這麼說，且該句 OCR 殘缺）；不說是騙局『發明』了共和黨大象，也不說騙局受漫畫啟發；倫敦犀牛逃出一事未查證，不放。畫面：空街上的老虎、報童、報紙標題、理髮椅上滿臉泡沫的客人背影、驢披獅皮嚇跑森林動物；不畫血、屍體、咬傷，不畫特定真人的臉。",
+      "scope": "本題在 wave40 被研究代理 U6 放進 not_added：原文整篇是猛獸咬死、踩死市民的細節，U6 寫明『若站主同意只講報社怎麼收尾、別家報紙怎麼罵再重提』——收之前要先得到站主同意。片中只講：標題、最後一段的自白、別家報紙與 Times 的反應、Connery 的自述與記錯、大象的時序。原文的死傷名單、咬傷與遺體描寫一句都不唸、不畫，也不唸死傷數字；Times 評論裡轉引的兒童傷亡句子不唸。不說『全城大恐慌』是確定的事實：當年反應只讀到外地報紙與 Connery 轉錄的 Times 片段，Times 1874 原報導全文沒讀；不說 Dix 真的帶槍出門（只說 Connery 這麼說，且該句 OCR 殘缺）；不說是騙局『發明』了共和黨大象，也不說騙局受漫畫啟發；倫敦犀牛逃出一事未查證，不放。畫面：空街上的老虎、報童、報紙標題、理髮椅上滿臉泡沫的客人背影、驢披獅皮嚇跑森林動物；不畫血、屍體、咬傷，不畫特定真人的臉。 站主 2026-11-12 同意依 wave40 U6 的條件收：片中只講標題、文末自白、別家報紙與 Times 的反應、Connery 19 年後的自述與記錯、大象的時序；原文的猛獸咬死、踩死市民段落一律不唸、不畫、不轉述，也不唸傷亡數字。",
       "source_locator": "S001：原刊標題群、Pete the rhinoceros 一段、文末自白；S002、S003：1874-11-10、11 的外地報紙；S004：Connery 1893（起因、作者、當天見聞、轉錄的 Times 評論、Dix 一句、elephant Pete）；S005：Harper's Weekly 1874-11-07 圖說；S006：流傳版本、Dix『armed with a rifle』轉錄、大象時序",
-      "premise_status": "needs_check",
+      "premise_status": "screened",
       "editorial": {
         "role": "episode_core",
         "payoff": "報紙在同一篇文章最後一段就說了實話，騙到的是只看標題的人；我們記得的恐慌細節，大多是始作俑者 19 年後自己說的——而他連自己那篇騙局裡誰是犀牛都記錯了。",
@@ -380147,7 +380164,7 @@
         ]
       },
       "risk": "原文有大量虐殺描寫，片中一律不唸、不畫（wave40 U6 不收的理由，需站主同意才可做）；Bennett、Connery、Clarke、Dix、Walling、Nast 的卒年本輪來源頁都沒讀到，不入畫，只畫背影或報紙；不提任何現代政黨評價。",
-      "notes": "去重：池中 not_added 已有同案（wave40 研究代理 U6：「1874 年《紐約先驅報》『中央公園動物園猛獸脫逃』假新聞，讀者真的帶槍上街？」，因血腥內容不收，條件是站主同意只講報社收尾與別家報紙的罵）——研究代理原稿寫『池中沒有同案』是漏查。candidates 中沒有同案；最近的是月球騙局（1835 Sun）與馬達加斯加食人樹，答案不同。Times 1874-11-10/11 全文不在 Chronicling America，只讀到 Connery 轉錄的片段。（研究代理 ZA7；非作者覆核 R457：改正 Connery 轉錄的 Times 是『In some cases』不是『許多家長』；補 Connery 自己把犀牛 Pete 記成大象、把老虎記成豹；補 Dix 帶槍一句只出自 Connery；補 wave40 不收紀錄。待站主同意後才可收）",
+      "notes": "去重：池中 not_added 已有同案（wave40 研究代理 U6：「1874 年《紐約先驅報》『中央公園動物園猛獸脫逃』假新聞，讀者真的帶槍上街？」，因血腥內容不收，條件是站主同意只講報社收尾與別家報紙的罵）——研究代理原稿寫『池中沒有同案』是漏查。candidates 中沒有同案；最近的是月球騙局（1835 Sun）與馬達加斯加食人樹，答案不同。Times 1874-11-10/11 全文不在 Chronicling America，只讀到 Connery 轉錄的片段。（研究代理 ZA7；非作者覆核 R457：改正 Connery 轉錄的 Times 是『In some cases』不是『許多家長』；補 Connery 自己把犀牛 Pete 記成大象、把老虎記成豹；補 Dix 帶槍一句只出自 Connery；補 wave40 不收紀錄。待站主同意後才可收） 站主決定（2026-11-12）：wave45 覆核 R457 判 NEEDS_CHECK 的唯一理由是需站主同意；內容轉折已核對。依站主「你建議決定」，協調者建議收、附上述條件。",
       "origin": "wave45-20261112",
       "domain": "M 奇異現象與科學",
       "bank_status": null,
@@ -380192,21 +380209,29 @@
           "origin": "wave45-20261112",
           "locator": "S006：流傳版本、Dix『armed with a rifle』轉錄、大象時序",
           "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-cea16e131f1e8459",
+          "origin": "wave47-decisions-20261112",
+          "locator": "pp.534–535（Connery 1893 自述；R457 逐字重讀）",
+          "supports": "重查補到的來源：支持題目前提；完整劇本仍需逐主張查核。"
         }
       ],
-      "eligible": false,
+      "eligible": true,
       "local_references": [
-        "docs/videos/history-curiosity/pool/batches/wave45-20261112.json"
+        "docs/videos/history-curiosity/pool/batches/wave45-20261112.json",
+        "docs/videos/history-curiosity/pool/batches/wave47-decisions-20261112.json"
       ],
-      "selected": false,
-      "pool_status": "reserve",
+      "rechecked_in": "wave47-decisions-20261112",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N5081"
       ],
       "disposition": null,
-      "exclusion_reason": "還沒有可追溯來源：題目卡是起草時憑既有知識寫的，要先研究才能選入。",
+      "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false
     },
@@ -385712,14 +385737,18 @@
         "docs/videos/history-curiosity/pool/batches/wave47-20261112.json"
       ],
       "selected": false,
-      "pool_status": "reserve",
+      "pool_status": "excluded",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "N5364"
       ],
-      "disposition": null,
-      "exclusion_reason": "還沒有可追溯來源：題目卡是起草時憑既有知識寫的，要先研究才能選入。",
+      "disposition": {
+        "disposition": "drop",
+        "reason": "站主決定（2026-11-12，交由協調者依建議決定）：克拉科夫市集廣場 2026 年 11 月 7–8 日剛發生致命攻擊，號聲因此停奏；「守望者在廣場上被殺、曲子為他中斷」的傳說與近期傷亡事件直接相連，即使片中一字不提，觀眾也會聯想。另外「誰最先寫下這一箭」目前只有記者與城市導覽的二手說法，1920–30 年代導遊書原件都沒讀到。",
+        "reentry": "事件過後足夠久、站主認為適合，而且讀到任一本 1920–30 年代波蘭文導遊書原件，才重提。"
+      },
+      "exclusion_reason": "站主決定（2026-11-12，交由協調者依建議決定）：克拉科夫市集廣場 2026 年 11 月 7–8 日剛發生致命攻擊，號聲因此停奏；「守望者在廣場上被殺、曲子為他中斷」的傳說與近期傷亡事件直接相連，即使片中一字不提，觀眾也會聯想。另外「誰最先寫下這一箭」目前只有記者與城市導覽的二手說法，1920–30 年代導遊書原件都沒讀到。",
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false
     },
@@ -526995,9 +527024,9 @@
       "hook": "一份報紙在頭版說動物園的猛獸全跑出來了——然後在同一篇文章的最後一段，自己說這全是假的。",
       "case_key": "case.central_park_zoo_escape_hoax_herald_1874",
       "answer_target": "1874 年 11 月 9 日 New York Herald 的第 3 版（S006 說當時前兩版固定是廣告，第 3 版就是頭版）刊出〈AWFUL CALAMITY. The Wild Animals Broken Loose from Central Park〉，標題群有〈PROCLAMATION BY THE MAYOR〉、〈Governor Dix Shoots the Bengal Tiger in the Streets〉；內文說看守 Chris. Anderson 用手杖戳犀牛 Pete 引發暴動（ZA7-S001）。同一篇最後一段〈THE MORAL OF THE WHOLE〉寫『Of course the entire story given above is a pure fabrication. Not one word of it is true』，說這是作者隔著鐵欄看籠子時浮現的畫面（ZA7-S001；Connery 1893 轉錄同一句，ZA7-S004）。別家報紙隔天就看穿：Alexandria Gazette 說是『rather a pointless hoax』（ZA7-S002），Wilmington Daily Commercial 的社論氣的是它拿父母擔心孩子的心情開玩笑（ZA7-S003）；Connery 1893 年轉錄的 New York Times 當年評論寫『In some cases the children had just gone to school, and without waiting to read through the six columns… parents rushed off to bring back their little ones』，並說『throughout three or four columns』故事都寫得像真的（ZA7-S004）。流傳的『持槍上街』，Museum of Hoaxes 寫『Armed men rushed into the streets』但沒附出處（ZA7-S006）；目前能追到的是前總編 Connery 1893 年在 Harper's Weekly 的自述：點子是他的，起因是看到工人把一隻豹從運獸車移進籠子時失手；先交 O'Connor 寫、嫌一開頭就露餡，改交 Joseph I. C. Clarke；他自己的孩子拿著報紙說『what a dreadful thing』、太太不讓孩子上學、理髮店裡抹了泡沫的客人沒穿外套就衝出門、電車上有人聽完就抓著手杖下車；警察總監 Walling 只瞄了標題就電令各分局；『it is related』Times 的編輯帶著一對手槍出門；他還說 Dix 將軍當天早上真的帶槍出門（OCR 此句殘缺，Museum of Hoaxes 轉錄為『armed with a rifle』）；他擔心有人嚇死但『none such ever occurred』，發行量『so far as I was able to learn』一個訂戶都沒掉（ZA7-S004、ZA7-S006）。轉折：Connery 的摘要說『the elephant Pete』，原刊寫的是『Pete, the rhinoceros』；他說 Dix 射的是豹，原刊標題寫 Bengal Tiger（ZA7-S004、ZA7-S001）——19 年後的回憶，連自己那篇騙局的細節都記錯。共和黨大象：流傳說法是 Nast 看了騙局才畫出〈The Third-Term Panic〉；Museum of Hoaxes 指出那幅漫畫比騙局早刊出、不可能受它啟發，也說有人反過來猜騙局受漫畫啟發，但 Herald 從未證實（ZA7-S006）。本輪讀到 Harper's Weekly 封面日期 1874-11-07 的那一號確有『An Ass, having put on the Lion's skin… frightening all the foolish Animals』的圖說（ZA7-S005），封面日期早於 11 月 9 日（『早一週』是 S006 的說法，封面日期只早兩天）。",
-      "scope": "本題在 wave40 被研究代理 U6 放進 not_added：原文整篇是猛獸咬死、踩死市民的細節，U6 寫明『若站主同意只講報社怎麼收尾、別家報紙怎麼罵再重提』——收之前要先得到站主同意。片中只講：標題、最後一段的自白、別家報紙與 Times 的反應、Connery 的自述與記錯、大象的時序。原文的死傷名單、咬傷與遺體描寫一句都不唸、不畫，也不唸死傷數字；Times 評論裡轉引的兒童傷亡句子不唸。不說『全城大恐慌』是確定的事實：當年反應只讀到外地報紙與 Connery 轉錄的 Times 片段，Times 1874 原報導全文沒讀；不說 Dix 真的帶槍出門（只說 Connery 這麼說，且該句 OCR 殘缺）；不說是騙局『發明』了共和黨大象，也不說騙局受漫畫啟發；倫敦犀牛逃出一事未查證，不放。畫面：空街上的老虎、報童、報紙標題、理髮椅上滿臉泡沫的客人背影、驢披獅皮嚇跑森林動物；不畫血、屍體、咬傷，不畫特定真人的臉。",
+      "scope": "本題在 wave40 被研究代理 U6 放進 not_added：原文整篇是猛獸咬死、踩死市民的細節，U6 寫明『若站主同意只講報社怎麼收尾、別家報紙怎麼罵再重提』——收之前要先得到站主同意。片中只講：標題、最後一段的自白、別家報紙與 Times 的反應、Connery 的自述與記錯、大象的時序。原文的死傷名單、咬傷與遺體描寫一句都不唸、不畫，也不唸死傷數字；Times 評論裡轉引的兒童傷亡句子不唸。不說『全城大恐慌』是確定的事實：當年反應只讀到外地報紙與 Connery 轉錄的 Times 片段，Times 1874 原報導全文沒讀；不說 Dix 真的帶槍出門（只說 Connery 這麼說，且該句 OCR 殘缺）；不說是騙局『發明』了共和黨大象，也不說騙局受漫畫啟發；倫敦犀牛逃出一事未查證，不放。畫面：空街上的老虎、報童、報紙標題、理髮椅上滿臉泡沫的客人背影、驢披獅皮嚇跑森林動物；不畫血、屍體、咬傷，不畫特定真人的臉。 站主 2026-11-12 同意依 wave40 U6 的條件收：片中只講標題、文末自白、別家報紙與 Times 的反應、Connery 19 年後的自述與記錯、大象的時序；原文的猛獸咬死、踩死市民段落一律不唸、不畫、不轉述，也不唸傷亡數字。",
       "source_locator": "S001：原刊標題群、Pete the rhinoceros 一段、文末自白；S002、S003：1874-11-10、11 的外地報紙；S004：Connery 1893（起因、作者、當天見聞、轉錄的 Times 評論、Dix 一句、elephant Pete）；S005：Harper's Weekly 1874-11-07 圖說；S006：流傳版本、Dix『armed with a rifle』轉錄、大象時序",
-      "premise_status": "needs_check",
+      "premise_status": "screened",
       "editorial": {
         "role": "episode_core",
         "payoff": "報紙在同一篇文章最後一段就說了實話，騙到的是只看標題的人；我們記得的恐慌細節，大多是始作俑者 19 年後自己說的——而他連自己那篇騙局裡誰是犀牛都記錯了。",
@@ -527008,7 +527037,7 @@
         ]
       },
       "risk": "原文有大量虐殺描寫，片中一律不唸、不畫（wave40 U6 不收的理由，需站主同意才可做）；Bennett、Connery、Clarke、Dix、Walling、Nast 的卒年本輪來源頁都沒讀到，不入畫，只畫背影或報紙；不提任何現代政黨評價。",
-      "notes": "去重：池中 not_added 已有同案（wave40 研究代理 U6：「1874 年《紐約先驅報》『中央公園動物園猛獸脫逃』假新聞，讀者真的帶槍上街？」，因血腥內容不收，條件是站主同意只講報社收尾與別家報紙的罵）——研究代理原稿寫『池中沒有同案』是漏查。candidates 中沒有同案；最近的是月球騙局（1835 Sun）與馬達加斯加食人樹，答案不同。Times 1874-11-10/11 全文不在 Chronicling America，只讀到 Connery 轉錄的片段。（研究代理 ZA7；非作者覆核 R457：改正 Connery 轉錄的 Times 是『In some cases』不是『許多家長』；補 Connery 自己把犀牛 Pete 記成大象、把老虎記成豹；補 Dix 帶槍一句只出自 Connery；補 wave40 不收紀錄。待站主同意後才可收）",
+      "notes": "去重：池中 not_added 已有同案（wave40 研究代理 U6：「1874 年《紐約先驅報》『中央公園動物園猛獸脫逃』假新聞，讀者真的帶槍上街？」，因血腥內容不收，條件是站主同意只講報社收尾與別家報紙的罵）——研究代理原稿寫『池中沒有同案』是漏查。candidates 中沒有同案；最近的是月球騙局（1835 Sun）與馬達加斯加食人樹，答案不同。Times 1874-11-10/11 全文不在 Chronicling America，只讀到 Connery 轉錄的片段。（研究代理 ZA7；非作者覆核 R457：改正 Connery 轉錄的 Times 是『In some cases』不是『許多家長』；補 Connery 自己把犀牛 Pete 記成大象、把老虎記成豹；補 Dix 帶槍一句只出自 Connery；補 wave40 不收紀錄。待站主同意後才可收） 站主決定（2026-11-12）：wave45 覆核 R457 判 NEEDS_CHECK 的唯一理由是需站主同意；內容轉折已核對。依站主「你建議決定」，協調者建議收、附上述條件。",
       "origin": "wave45-20261112",
       "domain": "M 奇異現象與科學",
       "bank_status": null,
@@ -527053,12 +527082,20 @@
           "origin": "wave45-20261112",
           "locator": "S006：流傳版本、Dix『armed with a rifle』轉錄、大象時序",
           "supports": "支持選題前提；完整劇本仍需逐主張查核。"
+        },
+        {
+          "source_id": "SRC-cea16e131f1e8459",
+          "origin": "wave47-decisions-20261112",
+          "locator": "pp.534–535（Connery 1893 自述；R457 逐字重讀）",
+          "supports": "重查補到的來源：支持題目前提；完整劇本仍需逐主張查核。"
         }
       ],
-      "eligible": false,
+      "eligible": true,
       "local_references": [
-        "docs/videos/history-curiosity/pool/batches/wave45-20261112.json"
-      ]
+        "docs/videos/history-curiosity/pool/batches/wave45-20261112.json",
+        "docs/videos/history-curiosity/pool/batches/wave47-decisions-20261112.json"
+      ],
+      "rechecked_in": "wave47-decisions-20261112"
     },
     {
       "id": "N5082",
@@ -547702,6 +547739,12 @@
         "id": "N2327",
         "disposition": "shorts",
         "reason": "覆核後只撐得起一章（R203），沒有同核心的兄弟題，轉 Shorts。Shorts 只講占婆塔「不用灰漿」：外側接縫用天然樹脂、內側是黏土，義大利修復團隊否認找到「失傳配方」；米蘭理工的研究只讀到摘要。"
+      },
+      {
+        "id": "N5364",
+        "disposition": "drop",
+        "reason": "站主決定（2026-11-12，交由協調者依建議決定）：克拉科夫市集廣場 2026 年 11 月 7–8 日剛發生致命攻擊，號聲因此停奏；「守望者在廣場上被殺、曲子為他中斷」的傳說與近期傷亡事件直接相連，即使片中一字不提，觀眾也會聯想。另外「誰最先寫下這一箭」目前只有記者與城市導覽的二手說法，1920–30 年代導遊書原件都沒讀到。",
+        "reentry": "事件過後足夠久、站主認為適合，而且讀到任一本 1920–30 年代波蘭文導遊書原件，才重提。"
       }
     ],
     "cross_series": [
@@ -551318,10 +551361,10 @@
     "method": "exact normalized questions + authored core-answer merges + lexical candidate pairs (title, finding, case key) reviewed by an editor; cross-series lexical pairs against the so-thats-why pool; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-curio-pool-1411",
+    "revision": "2026-11-12-curio-pool-1412",
     "reviewed_on": "2026-11-12",
-    "reason": "題庫中有可追溯來源（已查核、或有集數研究檔）且未製作、未淘汰的題，加上各批新題與重查（wave1、wave2、wave3 重查、wave4、wave5、wave6、wave7、wave8、wave9、wave10、wave11、wave12、wave13、wave14、wave15、wave16、wave17、wave18、wave19、wave20、wave21、wave22、wave23、wave24、wave25、wave26、wave27、wave28、wave29、wave30、wave31、wave32、wave33、wave34、wave35、wave36、wave37、wave38、wave39、wave40、wave41、wave42、wave43、wave44、wave45、wave46、wave47）中經非作者覆核通過（ADOPT／ADOPT_WITH_CHANGES 且前提 screened）的題。入選只代表可以排題案、可以開始寫企劃前的查核，不是劇本核准。另加站主 2026-11-02 解除鎖定的重做題（remake-unlocks.json）；這些題是舊題，寫稿前照系列流程查核，已有新稿的沿用。",
-    "target_count": 1411,
+    "reason": "從1411續接；2026-11-12 站主決定（交由協調者依建議）：N5081 1874 年中央公園猛獸騙局依 wave40 條件收；N5364 克拉科夫號聲退件。舊說明：題庫中有可追溯來源（已查核、或有集數研究檔）且未製作、未淘汰的題，加上各批新題與重查（wave1、wave2、wave3 重查、wave4、wave5、wave6、wave7、wave8、wave9、wave10、wave11、wave12、wave13、wave14、wave15、wave16、wave17、wave18、wave19、wave20、wave21、wave22、wave23、wave24、wave25、wave26、wave27、wave28、wave29、wave30、wave31、wave32、wave33、wave34、wave35、wave36、wave37、wave38、wave39、wave40、wave41、wave42、wave43、wave44、wave45、wave46、wave47）中經非作者覆核通過（ADOPT／ADOPT_WITH_CHANGES 且前提 screened）的題。入選只代表可以排題案、可以開始寫企劃前的查核，不是劇本核准。另加站主 2026-11-02 解除鎖定的重做題（remake-unlocks.json）；這些題是舊題，寫稿前照系列流程查核，已有新稿的沿用。",
+    "target_count": 1412,
     "ids": [
       "F01",
       "F02",
@@ -552733,7 +552776,8 @@
       "N5381",
       "N5384",
       "N5385",
-      "N5401"
+      "N5401",
+      "N5081"
     ],
     "held": [
       {
