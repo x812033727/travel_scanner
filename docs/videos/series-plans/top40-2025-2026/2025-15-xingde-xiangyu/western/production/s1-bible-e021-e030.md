@@ -19,7 +19,7 @@
 - **No. 1 念成 "Number One"**：台詞與說話句一律寫 `Forever Number One`、`Number One`，不寫 "No. 1"（數字會被畫成字）。中文欄位可以寫 No. 1。
 - **手機**（〈要站主決定的〉第 1 條，這份照建議 A 寫）：第 22 集半夜響的是 **Peg 的手機**，它一直掛在 Grant 的家庭方案下（"Family plan. His idea."）；第 23 集 Nora 拔掉的是 Peg 那支的 SIM 卡，再用自己的錢替 Peg 那支換一個新號碼（"Phone line." "Thirty."）。
   Nora 的白手機**一直鎖在 Bev 的抽屜裡**，這十集不出現；**Nora 這十集沒有手機**（所以第 29 集 Grant 要傳話只能叫 Cole、Dana 的語音要傳到 Theo 的平板）。
-- **Nora 這十集一鏡都不笑**（s01-t18 到第 45 集才收）：第 24 集細綱的 "laughs through the tears" 寫成「含著淚從鼻子吐出一口氣、嘴唇抿著、嘴角不往上」；第 25 集 glamour 的 "the corner of her mouth moves, barely" 寫成「下唇往內一抿、一邊嘴角收緊」。兩處都照寫 `no smile at any moment, until the last frame`（〈要站主決定的〉第 8 條）。
+- **Nora 這十集一鏡都不笑**（s01-t18 到第 45 集才收）：第 24 集細綱的 "laughs through the tears" 寫成 `lips pressed together and pulled flat, the corners of her mouth drawn down and tight, a wet breath out through her nose, brows still knotted`；第 25 集 glamour 的 "the corner of her mouth moves, barely" 寫成 `her lower lip drawn in under her teeth, both corners of her mouth pressed down`（2026-11-12 審稿後改：不寫任何嘴角字的否定句，也不寫「一邊嘴角」）。兩處都照寫 `no smile at any moment, until the last frame`（〈要站主決定的〉第 8 條）。
   **可以笑的只有**：Grant 練過的閉嘴微笑（第 26 集在台上、第 28 集最後一鏡「笑回到臉上」、第 29 集第一鏡、第 30 集遞影本前與 "Then prove it." 之後，**說話的那一刻嘴角放平**）；Grant 第 22 集在 Sienna 身後笑出聲（虛焦）；
   Sienna 第 22 集電話裡閉嘴的笑（她的聲音設定是「先笑再說最狠的」，笑在句前、說話時嘴角放平）與第 26 集台上閉嘴的笑；Crane 第 26、28 集張嘴大笑；旗艦店店員招呼客人的禮貌閉嘴笑（第 23 集第一次開口前）。Theo 是面無表情的喜劇，Peg、Elias、Dana、Cole、保全、Lyle 都不笑。
 - **Elias 的左手**：這十集都是夏天，沒有大衣（只有第 21 集最後他從外面回來、在玄關把大衣掛上那一鏡寫大衣道具句）。站著時**左手插在褲子左口袋**；坐著時左手在畫框外或在桌下（第 22 集細綱 "left hand under the table" 照寫）；開車時左手在車窗下緣以下；
@@ -234,7 +234,7 @@
 | Forever No. 1 | `a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling, its lip tilted very slightly to one side` | 第 1–3 集原句接一句「瓶口微微歪」。在罩裡接 `, under a clear glass display dome on a glowing white light box`；倒過來接 `, standing upside down on a glowing white light box`。 |
 | 工廠的 Forever | `a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling` | 第 1–3 集原句不改；在層板上接 `, one of many identical ones on a lit white shelf`；倒拿接 `, held upside down in her hands`。 |
 | 一整面牆的 Forever | `rows of identical tall cream-white glass vases about as tall as a forearm on lit white shelves from floor to ceiling` | 第 23 集交代鏡。 |
-| 空的瓶底 | `the thick round glass base of a cream-white vase seen from below, clear and smooth, no bubbles inside` | 第 23 集每一支都是；插鏡。 |
+| 空的瓶底 | `the thick round glass base of a cream-white vase seen from below, solid clear glass all the way through, smooth and plain` | 第 23 集每一支都是；插鏡。 |
 | 亮起來的瓶底 | `the thick round glass base of a cream-white vase seen from above, light rising through it from below, a short curved line of tiny air bubbles inside the glass glowing like pinpoints, nothing readable` | 第 28 集；"N.Q." 只在 `still` 插鏡後製。光點不會動。 |
 | 大螢幕 | `a wide dark screen above the back of the stage showing only a short curved row of glowing points, nothing readable` | 第 28–29 集；第 26 集開燈時寫 `a wide screen above the back of the stage showing a soft image of a cream-white vase, nothing readable`。 |
 | 玻璃罩 | `a clear glass display dome a hand taller than the vase, as wide as her two hands spread side by side` | 第 26–29 集；掀起放下後接 `, set down on the black stage floor`。 |
@@ -455,7 +455,7 @@ Nora 的白手機還在 Bev 的抽屜；禮服掛在她的客房衣櫃；毛線�
 
 ## 寫稿時補定的事（2026-11-12）
 
-- **第 24–25 集**（寫稿者定）：Ashford 家大廳樓梯最下面一級在書房三級台階右邊兩步，沿左牆往玄關那頭爬上迴廊；二樓走廊從鏡子往回看兩扇門都在畫面左（近的是 Nora 的房、遠的是 Peg 的房），壁燈在右牆靠鏡子那頭。
+- **第 24–25 集**（寫稿者定）：Ashford 家大廳樓梯最下面一級在書房三級台階右邊兩步，沿左牆往玄關那頭爬上迴廊；二樓走廊照〈場景格局〉與第 21、22 集：**從鏡子往回看兩扇門在畫面右**（近的是 Nora 的房、遠的是 Peg 的房），壁燈在畫面左（2026-11-12 審稿後改，第 24 集跟著對調）。
   禮服盒裡只有禮服與手拿包，配她自己 `decree` 的 `low nude flat shoes`；裙襬蓋住時寫明。爐上的鑄鐵鍋與木勺另有道具句；俯拍時請帖背面朝上；掛斷的手機螢幕是暗的。
   `dana-office` 要多畫傍晚版（第 25 集 18:40 天還亮；夜版給第 29 集）。書房檯燈先亮後關；禮服盒第 24 集留在她房裡、第 25 集在長桌上。
   寫稿者新加、站主 2026-11-12 照建議定案的兩句：第 25 集 c13 "Fisk."、c21 "Dana, can they keep me out?"。
@@ -468,4 +468,10 @@ Nora 的白手機還在 Bev 的抽屜；禮服掛在她的客房衣櫃；毛線�
 - **第 26–28 集**（寫稿者定）：發表會一開場就有網路直播（Lyle 第 28 集才自己開直播）；Peg 在車上看手機那鏡在 Grant 說 "She lost our baby" 之後。第 27 集 Grant 句前從鼻子一聲乾笑、說話時不笑。
   新道具 `glove-tray`、`launch-screen`（關燈後的大螢幕），新場景 `backstage-alley`（第 30 集 c24 的後巷），都已加進 `cast.json`。她站在展示台後面向觀眾，玻璃罩在她右腳邊（從觀眾席看在畫面左下）；Grant 退到舞台左的陰影裡；從觀眾席拍的鏡，鏡頭一律放在右側（燈控室那側）。
   回憶裡的三號爐用 `furnace-no3` 的句子加點著的版本；第 28 集 Elias 補兩鏡（不說話）；Crane 在暗廳說話時臉由身邊一支手機的白光照亮。第 27 集 c16 上台階時露出鞋尖。
+
+## 審稿後補定（2026-11-12，`../review/2026-11-12-e021-e025-storyboard.md`）
+
+- 二樓走廊從鏡子往回看門在畫面右、壁燈在畫面左（第 24 集照改）。`vase-base-blank` 改寫成 `solid clear glass all the way through, smooth and plain`（不寫 no bubbles）。
+- 第 22 集 c14 Theo "Whitlock Home's launch. For Mr. and Mrs. Ashford."；第 24 集 c03 Elias "For the launch on Thursday."（觀眾才知道是誰的發表會、哪天）。
+- 道具句補：木勺 `a plain wooden spoon as long as her forearm`、爐上鑄鐵鍋 `a heavy black cast-iron pot with a lid on the stove`、抱在胸前的禮服 `the mist-grey gown folded over her forearms against her chest`（已加進 `cast.json`）。旗艦店招牌帶寫空白。
 
