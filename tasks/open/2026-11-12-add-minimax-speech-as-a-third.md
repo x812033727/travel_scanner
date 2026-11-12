@@ -1,7 +1,7 @@
 ---
 id: 2026-11-12-add-minimax-speech-as-a-third
 title: Add MiniMax speech as a third narration voice provider
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-opus-5.5-minimax-speech
