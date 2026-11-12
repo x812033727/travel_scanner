@@ -270,7 +270,17 @@ for (const scene of video.scenes) {
   });
   args.push("-f", "lavfi", "-t", dur.toFixed(3), "-i", "anullsrc=r=48000:cl=stereo");
   const silence = placed.length + 1;
-  const voice = voiced ? [`[0:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS[cv]`] : [];
+  // `clip_af`: {shot: {from: s, af: filters}} runs filters on the clip's own voice from `from` seconds into the shot (e908
+  // live cut review 2: s19 Qin Shuang answered in Tang Xiaotang's register, s22 Xu Yan ~9 semitones high -- rubberband
+  // pitch with formant=preserved keeps the timing, so the lips still match). Applied here, not in stage.py, so a re-stage
+  // of the clips cannot undo it.
+  const caf = voiced ? edit.clip_af?.[scene.id] : null;
+  const voice = !voiced ? [] : caf
+    ? [`[0:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS,asplit[cva][cvb]`,
+      `[cva]atrim=end=${Number(caf.from).toFixed(3)},asetpts=PTS-STARTPTS[cv1]`,
+      `[cvb]atrim=start=${Number(caf.from).toFixed(3)},asetpts=PTS-STARTPTS,${caf.af},aresample=48000,aformat=channel_layouts=stereo[cv2]`,
+      `[cv1][cv2]concat=n=2:v=0:a=1[cv]`]
+    : [`[0:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS[cv]`];
   const mixIn = `${placed.map((_, i) => `[a${i}]`).join("")}${voiced ? "[cv]" : ""}[${silence}:a]`;
   const graph = [vf, ...amix, ...voice, `${mixIn}amix=inputs=${placed.length + (voiced ? 1 : 0) + 1}:normalize=0:duration=longest,atrim=duration=${dur.toFixed(3)}[a]`].join(";");
   args.push("-filter_complex", graph, "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-c:a", "pcm_s16le", "-t", dur.toFixed(3), seg.replace(/\.mp4$/, ".mkv"));
