@@ -187,6 +187,11 @@ TRIP_ROUTE_USER_WINDOW_SECONDS = 3_600
 TRIP_ROUTE_MAX_ITEMS = 12
 
 
+def trip_today() -> date:
+    """Today's date for the blank-trip start check; tests pin it (tests/conftest.py)."""
+    return datetime.now(UTC).date()
+
+
 class SaveTripRequest(BaseModel):
     source: str = "search"
     planning_mode: Literal["ai_draft", "manual_blank"] = "ai_draft"
@@ -222,7 +227,7 @@ class SaveTripRequest(BaseModel):
             if self.end_date < self.start_date:
                 raise ValueError("end_date must not be before start_date")
             # One day of slack so a client just west of UTC is not rejected.
-            if self.start_date < datetime.now(UTC).date() - timedelta(days=1):
+            if self.start_date < trip_today() - timedelta(days=1):
                 raise ValueError("開始日期不可早於今天")
             if (self.end_date - self.start_date).days > 60:
                 raise ValueError("blank trips may be at most 61 days")
