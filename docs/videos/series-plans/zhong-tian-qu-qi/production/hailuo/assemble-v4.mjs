@@ -67,7 +67,8 @@ const COLORS = { panel: "0x5ec8ff", task: "0xffd75e", affection: "0xff8fb8", rew
 function panelFilters(shot) {
   const items = (overlays[shot] ?? []).slice(0, 2);
   if (!items.length) return "";
-  const h = 70 + 64 * items.length, y0 = 120, start = 0.15;
+  // `at` on the first overlay item: when the panel appears (e907 cut review: a fixed 0.15 put "已賺 6 兩" two seconds before the money went in)
+  const h = 70 + 64 * items.length, y0 = 120, start = Number(items[0].at ?? 0.15);
   let f = `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x0b2a4a@0.62:t=fill:enable='gte(t,${start})'`;
   f += `,drawbox=x=(iw-1000)/2:y=${y0}:w=1000:h=${h}:color=0x7fd6ff@0.9:t=3:enable='gte(t,${start})'`;
   items.forEach((item, i) => {
