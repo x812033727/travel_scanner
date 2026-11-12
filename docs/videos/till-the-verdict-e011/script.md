@@ -11,7 +11,7 @@
 ## 劇情
 
 第三天早上十點，Merrow General 婦產科診間。桌燈冷白的光打在黑色桌墊上：兩顆白色的藥，一顆咬過的半顆、一顆完整。Dr. Brandt 的筆尖停在它們上方：「What I prescribed isn't sweet.」院內藥師 Dale 拿放大鏡看完：「And the imprint's one stroke shallow.」
-Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂開：「Is that why I lost my baby?」很久，Brandt 才說：「I can't say that yet.」Nora 兩手摀住嘴，哭出聲。
+Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂開：「Is that pill why I lost my baby?」很久，Brandt 才說：「I can't say that yet.」Nora 兩手摀住嘴，哭出聲。
 門外的候診區，Peg 聽見哭聲，猛地站起來，帳本從膝上滑到地上。她撿起帳本走到門前，手掌貼著門，沒有推開：「I'll be downstairs.」
 診間裡，Brandt 用鑷子把半顆藥放回夾鏈袋，整包封進外送實驗室的防拆封袋，填好監管紀錄：「Sign here. So nobody can say we swapped it.」Nora 抬起下巴簽了，Brandt 也簽，撕下粉紅副本給她：「Outside lab. Three days.」
 十點四十五，Nora 走出一樓的電梯，看見大廳另一頭 Grant 把一束玫瑰和一個禮盒交給 Brandt 的助理：「My wife's not herself.」「Whatever she says, don't take it seriously.」她背貼著柱子躲著；他轉身，朝她的柱子走過來。候診椅上的 Peg 抬起頭，看見了兒子。
@@ -78,7 +78,7 @@ Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂�
 | c05 | 中景、固定；大鏡位：鏡頭在房間南側、往北拍；直式：畫面左是書桌後的 Brandt 與她右後的 Dale，畫面右是書桌前的 Nora，中間是書桌、檯燈與桌墊（藥很小、看不清） | 共三人。畫面左：Dr. Brandt（白袍、`blue nitrile gloves`）坐在書桌後，兩手放在桌墊兩邊：眉頭收著、眼睛看著 Nora、嘴唇閉緊；她右後：Dale（粗黑框眼鏡、白色藥師袍、黑色平底皮鞋）站著，`a small black pocket magnifier about the size of his thumb` 在右手、垂在身側：眉毛壓平、眼睛垂著、嘴唇閉著；畫面右：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐色平底短靴）坐在椅上：眉心往上提、嘴唇微張、呼吸停住；三張臉都 `no smile at any moment, until the last frame`；桌上 `a small black desk lamp casting hard white light`、`a black desk mat`；窗的灰光從畫面左；門在畫面右緣、關著 | Dale 往後退半步；Nora 的右手從膝上滑到自己平坦的肚子上；剪在她的手停住；三人都嘴閉著；最後：Dale 退後半步站著，Nora 的右手按在肚子上 | — | 約 2.5 秒 |
 | c06 | 近景、慢推（從胸上推到肩上）；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，Nora 的臉在上三分之一；身後是關著的淺木門（素的） | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在椅上，右手按著平坦的肚子；窗的灰光從畫面左照在她臉上；四分之三側臉朝畫面左的 Brandt、眼睛看著她，不看鏡頭；呼吸停住、眉心往上擠、下巴開始發抖、眼眶一下湧滿，`no smile at any moment, until the last frame`；Brandt 只有肩、不露臉 | Nora 的手指在肚子上的毛衣抓緊；剪在抓緊的一下；嘴閉著；最後：她看著 Brandt，眼眶湧滿 | — | 約 2.5 秒 |
 | c07 | 近景、固定；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一；身後是窗與灰白的天光 | Dr. Brandt（銀金色短鮑伯頭、長方框眼鏡、白袍；`blue nitrile gloves`），坐在書桌後，兩手放在桌上；桌燈冷白的光從下面；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉毛放平、眼睛定在她臉上、嘴唇在字之間抿緊、句尾點一下頭，`no smile at any moment, until the last frame`；Nora 只有肩與髮髻、不露臉 | Brandt 看著 Nora，嘴在說話（低、很準）；說完兩手在桌上交疊，嘴閉上；最後：她兩手交疊、看著 Nora | Dr. Brandt（低、很準）：You called my line at seven. Good.（妳七點打了我的分機。很好）（原聲） | 約 4 秒 |
-| c08 | 近景、慢推（從胸上推到臉）；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，Nora 的臉在上三分之一；身後是關著的淺木門 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在椅上，右手還按著肚子；窗的灰光；四分之三側臉朝畫面左的 Brandt、眼睛看著她，不看鏡頭；眉心往上擠成一團、下巴發抖、嘴唇在字之間抖、第一滴眼淚滑下來、聲音在句中裂開，`no smile at any moment, until the last frame`；Brandt 只有肩、不露臉 | Nora 看著 Brandt，嘴在說話（聲音在句中裂開、很輕）；說完嘴還張著、一口氣卡住；最後：她張著嘴等，臉頰開始濕 | Nora（聲音裂開、很輕）：Is that why I lost my baby?（所以我才失去孩子的嗎？）（原聲）（→ 答在 c10） | 約 4 秒 |
+| c08 | 近景、慢推（從胸上推到臉）；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，Nora 的臉在上三分之一；身後是關著的淺木門 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在椅上，右手還按著肚子；窗的灰光；四分之三側臉朝畫面左的 Brandt、眼睛看著她，不看鏡頭；眉心往上擠成一團、下巴發抖、嘴唇在字之間抖、第一滴眼淚滑下來、聲音在句中裂開，`no smile at any moment, until the last frame`；Brandt 只有肩、不露臉 | Nora 看著 Brandt，嘴在說話（聲音在句中裂開、很輕）；說完嘴還張著、一口氣卡住；最後：她張著嘴等，臉頰開始濕 | Nora（聲音裂開、很輕）：Is that pill why I lost my baby?（我是因為那顆藥才失去孩子的嗎？）（原聲）（→ 答在 c10） | 約 4 秒 |
 | c09 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍；`blue nitrile gloves`），坐在書桌後；桌燈冷白的光；四分之三側臉朝畫面右的 Nora，眼睛先看著她、再垂到畫面右下外的桌墊；喉嚨吞一下、下巴收緊、嘴唇抿薄、長長吸一口氣，`no smile at any moment, until the last frame` | 很長的安靜：Brandt 的眼睛從 Nora 臉上垂到桌墊，交疊的兩手鬆開、平放在桌上；剪在手放平的一下；嘴閉著；最後：她兩手平放在桌上，眼睛垂著 | — | 約 3 秒 |
 | c10 | 近景、固定；同 c09 的鏡位（Nora 的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍；`blue nitrile gloves`）；桌燈冷白的光；第一格眼睛垂著，然後抬起來、四分之三側臉朝畫面右的 Nora、看著她，不看鏡頭；眉心往上提、嘴唇在字之間抿緊、聲音放得很低很慢，`no smile at any moment, until the last frame` | Brandt 抬眼看 Nora，嘴在說話（很低、很慢）；說完眼睛不離開她、輕輕搖一下頭，嘴閉上；最後：她看著 Nora | Dr. Brandt（很低、很慢）：I can't say that yet.（現在還不能這樣說）（原聲）← 因為 c08（結尾） | 約 3 秒 |
 | c11 | 近景、固定；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，**頭上留出空間，彎下去後整個頭仍在畫面裡**；身後是關著的淺木門 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在椅上；窗的灰光；四分之三側臉朝畫面左；眉心往上擠、嘴扭曲、眼睛緊閉、眼淚一串滑下來、肩膀一抽，`no smile at any moment, until the last frame`；臉頰濕；Brandt 只有肩、不露臉 | Nora 兩手抬起摀住嘴（動作一），整個人往前彎、哭出聲（動作二，沒有字）；剪在第二次抽氣；最後：她彎著腰、兩手摀著嘴在哭 | — | 約 4 秒 |
@@ -108,26 +108,26 @@ Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂�
 ### 第三場：診間，封袋（約 31 秒）
 
 **場頭**：
-- **地點與場景圖**：同一個診間（格局同第一場）；桌墊上：半顆藥、真藥、鑷子、攤開的夾鏈袋；c22 起加 `a clear tamper-evident specimen pouch about the size of her hand, a red seal strip across the top, no readable print`；c24 起加 `a folded pale pink carbon-copy form about the size of her hand, print not readable`（攤開平放，見〈欄位怎麼讀〉的紙）。
+- **地點與場景圖**：同一個診間（格局同第一場）；桌墊上：半顆藥、真藥、鑷子、攤開的夾鏈袋；c22 起加 `a clear tamper-evident specimen pouch about the size of her hand, a red seal strip across the top, no readable print`；c24 起加 `a folded pale pink carbon-copy form about the size of her hand, print not readable, lying flat`（攤開平放在書桌上，見〈欄位怎麼讀〉的紙）。
 - **時間與天氣**：第 3 天 10:15–10:35，陰、乾；窗的灰光從畫面左、桌燈冷白；整場維持白天的灰光。
 - **軸線**：同第一場：Brandt 在畫面左、Nora 在畫面右、門在 Nora 身後的畫面右；Dale 在 Brandt 右後。
-- **在場的人**：Nora、Dr. Brandt、Dale（站在原處；只在 c20 的背景虛焦，之後不入鏡）。
+- **在場的人**：Nora、Dr. Brandt、Dale（站在 Brandt 右後原處，本場不入鏡）。
 - **這場要講完的事**：Brandt 把半顆藥封進外送實驗室的袋子、填監管紀錄，兩人簽名；Nora 拿到粉紅副本，三天後有結果（結尾：「Outside lab. Three days.」）。
 - **配樂**：c20 安靜；c23 封條壓下去一個很輕的高音；c27 顏值鏡頭一段緩、穩的鋼琴；c29 停在一個和弦上。
 - **離開這場**：c30 Nora 握著副本站起來；過了十來分鐘（10:45），接第四場：她走出一樓的電梯。
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c20 | 中近景、慢推（從中近景推到近景）；從 Brandt 的右肩後拍（她的白袍肩與銀金色短髮在畫框左下緣、虛焦）；直式，Nora 在畫面右上；身後是關著的淺木門 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在椅上，兩手從嘴上放下；臉頰濕、眼睛紅腫、幾縷頭髮鬆在臉旁；窗的灰光；第一格她的臉還埋在手裡，然後抬起來，頭轉向畫面右後的門（她聽見門外 Peg 的聲音）；眉心往上提、嘴唇微張、吸一口氣，`no smile at any moment, until the last frame`；畫面左後很遠、虛焦的 Dale 站著（白袍、粗黑框眼鏡，嘴閉著）；Brandt 只有肩、不露臉 | Nora 從手裡抬起臉（動作一），頭轉向畫面右後的門（動作二）；剪在頭轉到一半；嘴閉著；最後：她看著畫面右後的門 | — | 約 2.5 秒 |
+| c20 | 中近景、慢推（從中近景推到近景）；從 Brandt 的右肩後拍（她的白袍肩與銀金色短髮在畫框左下緣、虛焦）；直式，Nora 在畫面右上；身後是關著的淺木門 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在椅上，兩手從嘴上放下；臉頰濕、眼睛紅腫、幾縷頭髮鬆在臉旁；窗的灰光；第一格她的臉還埋在手裡，然後抬起來，頭轉向畫面右後的門（她聽見門外 Peg 的聲音）；眉心往上提、嘴唇微張、吸一口氣，`no smile at any moment, until the last frame`；她身後只有關著的淺木門；Brandt 只有肩、不露臉 | Nora 從手裡抬起臉（動作一），頭轉向畫面右後的門（動作二）；剪在頭轉到一半；嘴閉著；最後：她看著畫面右後的門 | — | 約 2.5 秒 |
 | c21 | 插鏡、手部特寫、固定；**第一格就是桌墊上兩顆藥與戴手套的手**；直式；鏡頭在桌面上方斜斜往下 | `a black desk mat`；`a small black desk lamp casting hard white light` 的光圈；左邊 `a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), on a black desk mat`，右邊 `a tiny whole round white pill, smaller than a fingernail, plain white with one clean line across it, no colour, no markings (a medicine pill, not a device), on a black desk mat`，兩顆只占畫面一小塊；Brandt 的右手（`blue nitrile gloves`、白袍袖口）拿著 `flat white plastic tweezers as long as her finger`，左手撐開 `a small clear zip-top plastic bag about the size of her palm`；畫面裡沒有臉 | 鑷子夾起半顆藥（動作一），放進撐開的夾鏈袋（動作二）；真藥留在桌墊右邊；剪在半顆藥落進袋子；畫面上沒有嘴；最後：半顆藥在袋子裡，真藥還在桌墊上 | — | 約 2.5 秒 |
 | c22 | 插鏡、手部特寫、固定；**第一格就是戴手套的兩手拿著夾鏈袋**；直式 | Brandt 的兩手（`blue nitrile gloves`、白袍袖口）；`a small clear zip-top plastic bag about the size of her palm, the half pill sealed inside`；`a clear tamper-evident specimen pouch about the size of her hand, a red seal strip across the top, no readable print` 平放在桌墊上、袋口開著；桌燈的白光；畫面裡沒有臉 | 她的手指沿著拉鍊把夾鏈袋封好（動作一），把它整包滑進防拆封袋（動作二）；剪在夾鏈袋滑進一半；畫面上沒有嘴；最後：夾鏈袋在防拆封袋裡 | — | 約 2.5 秒 |
 | c23 | 插鏡、特寫、固定；**第一格就是防拆封袋的紅色封條**；直式 | `a clear tamper-evident specimen pouch about the size of her hand, a red seal strip across the top, no readable print`，裡面是 `a small clear zip-top plastic bag about the size of her palm, the half pill sealed inside`；Brandt 戴手套的右手拇指（`blue nitrile gloves`）；桌燈的白光；畫面裡沒有臉 | 她的拇指把紅色封條沿著袋口一路壓下去、封死；剪在拇指壓到袋口另一頭；畫面上沒有嘴；最後：封好的防拆封袋平放在桌墊上 | — | 約 2 秒 |
-| c24 | 插鏡、手部特寫、固定；鏡頭貼著桌面的高度、從桌邊平拍；**第一格就是筆尖與紙邊**；直式 | `a folded pale pink carbon-copy form about the size of her hand, print not readable` 攤開平放在書桌上，只見紙邊與一點粉紅，紙面 `far out of focus, only soft pale grey blur and shadow`；Brandt 的右手（`blue nitrile gloves`、白袍袖口）拿著 `a plain silver ballpoint pen as long as her hand`，筆尖在紙邊上寫；後面是封好的 `a clear tamper-evident specimen pouch about the size of her hand, a red seal strip across the top, no readable print`；焦點在筆尖與戴手套的手指；畫面裡沒有臉 | 筆尖在紙上寫了一行、停下；剪在筆尖停下；畫面上沒有嘴；最後：筆尖停在紙上 | — | 約 2.5 秒 |
-| c25 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（銀金色短鮑伯頭、長方框眼鏡、白袍；`blue nitrile gloves`），坐在書桌後；兩手把攤開的粉紅表格（下緣外、只見一角紙邊）連同 `a plain silver ballpoint pen as long as her hand` 推向畫面右的 Nora；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉毛放平、眼睛定在她臉上、嘴唇在字之間抿緊、下巴微抬，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Brandt 把表格與筆推向 Nora（動作一），嘴在說話（清楚、一字一字）（動作二）；說完右手食指在紙邊點一下，嘴閉上；最後：表格與筆在 Nora 那一邊的桌緣 | Dr. Brandt（清楚、一字一字）：Sign here. So nobody can say we swapped it.（簽這裡。這樣就沒人能說是我們掉包的）（原聲） | 約 4.5 秒 |
+| c24 | 插鏡、手部特寫、固定；鏡頭貼著桌面的高度、從桌邊平拍；**第一格就是筆尖與紙邊**；直式 | `a folded pale pink carbon-copy form about the size of her hand, print not readable, lying flat`，在書桌上，只見紙邊與一點粉紅，紙面 `far out of focus, only soft pale grey blur and shadow`；Brandt 的右手（`blue nitrile gloves`、白袍袖口）拿著 `a plain silver ballpoint pen as long as her hand`，筆尖在紙邊上寫；後面是封好的 `a clear tamper-evident specimen pouch about the size of her hand, a red seal strip across the top, no readable print`；焦點在筆尖與戴手套的手指；畫面裡沒有臉 | 筆尖在紙上寫了一行、停下；剪在筆尖停下；畫面上沒有嘴；最後：筆尖停在紙上 | — | 約 2.5 秒 |
+| c25 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（銀金色短鮑伯頭、長方框眼鏡、白袍；`blue nitrile gloves`），坐在書桌後；兩手把 `a folded pale pink carbon-copy form about the size of her hand, print not readable, lying flat`（下緣外、只見一角紙邊）連同 `a plain silver ballpoint pen as long as her hand` 推向畫面右的 Nora；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉毛放平、眼睛定在她臉上、嘴唇在字之間抿緊、下巴微抬，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Brandt 把表格與筆推向 Nora（動作一），嘴在說話（清楚、一字一字）（動作二）；說完右手食指在紙邊點一下，嘴閉上；最後：表格與筆在 Nora 那一邊的桌緣 | Dr. Brandt（清楚、一字一字）：Sign here. So nobody can say we swapped it.（簽這裡。這樣就沒人能說是我們掉包的）（原聲） | 約 4.5 秒 |
 | c26 | 近景、固定；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，Nora 的臉在上三分之一 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在椅上；臉頰還濕、眼睛紅；窗的灰光；四分之三側臉朝畫面左下的表格；眉頭收緊、眼睛不眨、下巴開始抬起來、吸一口長氣，`no smile at any moment, until the last frame`；Brandt 只有肩、不露臉 | Nora 用掌根抹掉臉頰上最後一道淚（動作一），右手伸向畫面左下的筆（動作二）；剪在手伸到一半；嘴閉著；最後：她的右手拿起筆 | — | 約 2.5 秒 |
-| c27 | 近景、低角度、慢推（從胸上推到臉）；顏值鏡頭；鏡頭在桌緣高度、從她右前方往上拍；直式，臉在上三分之一，下緣只到她的右手與筆尖（紙在畫框外） | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在窗光裡；右手拿著 `a plain silver ballpoint pen as long as her hand`，筆尖在下緣動（紙與簽名都在畫框外）；淚痕在臉頰上半乾；窗的灰光從畫面左把她的半邊臉照亮；四分之三側臉朝畫面左下、眼睛垂在筆尖上；下巴慢慢抬起來、眼睛忽然定住不眨、嘴唇閉緊、呼吸放慢，`no smile at any moment, until the last frame` | Nora 一邊簽（筆尖在下緣外動）、一邊把下巴抬起來，眼睛定住；剪在下巴抬到最高；嘴閉著；最後：她抬著下巴，眼睛很定 | — | 約 3.5 秒 |
-| c28 | 插鏡、手部特寫、固定；鏡頭貼著桌面的高度、從桌邊平拍；**第一格就是戴手套的手與筆尖**；直式 | 攤開的 `a folded pale pink carbon-copy form about the size of her hand, print not readable`，只見紙邊，紙面 `far out of focus, only soft pale grey blur and shadow`；Brandt 的右手（`blue nitrile gloves`、白袍袖口）拿著 `a plain silver ballpoint pen as long as her hand`；焦點在筆尖與手指；畫面裡沒有臉 | 筆尖在紙邊簽一下（動作一），她的左手把最上面那張粉紅副本沿著虛線撕下來（動作二）；剪在撕到一半；畫面上沒有嘴；最後：撕下的粉紅副本在她左手 | — | 約 2.5 秒 |
-| c29 | 近景、固定；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍；`blue nitrile gloves`），坐在書桌後；左手把 `a folded pale pink carbon-copy form about the size of her hand, print not readable` 摺好、遞向畫面右的 Nora；右手按在封好的 `a clear tamper-evident specimen pouch about the size of her hand, a red seal strip across the top, no readable print` 上（下緣）；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉毛放平、嘴唇在字之間抿緊、點一下頭，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Brandt 把摺好的副本遞出去，嘴在說話（短、確定）；說完點一下頭、右手把防拆封袋拉到自己面前，嘴閉上；最後：副本伸在 Nora 面前，防拆封袋在 Brandt 手邊 | Dr. Brandt（短、確定）：Outside lab. Three days.（外面的實驗室。三天）（原聲）（結尾） | 約 3.5 秒 |
+| c27 | 近景、低角度、慢推（從胸上推到臉）；顏值鏡頭；鏡頭在桌緣高度、從她右前方往上拍；直式，臉在上三分之一，下緣只到她的右手與筆尖（紙在畫框外） | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在窗光裡；右手拿著 `a plain silver ballpoint pen as long as her hand`，筆尖在下緣動（紙與簽名都在畫框外）；淚痕在臉頰上半乾；窗的灰光從畫面左把她的半邊臉照亮；四分之三側臉朝畫面左下、眼睛垂在筆尖上；下巴慢慢抬起來、眼睛忽然定住不眨、嘴唇閉緊、呼吸放慢，`no smile at any moment, until the last frame` | Nora 一邊簽（筆尖在下緣外動）、一邊把下巴抬起來，眼睛定住；剪在下巴抬到最高；嘴閉著；最後：她抬著下巴，眼睛很定（簽完筆擱回表格上，c28 第一格接） | — | 約 3.5 秒 |
+| c28 | 插鏡、手部特寫、固定；鏡頭貼著桌面的高度、從桌邊平拍；**第一格就是戴手套的手與筆尖**；直式 | `a folded pale pink carbon-copy form about the size of her hand, print not readable, lying flat`，在書桌上，只見紙邊，紙面 `far out of focus, only soft pale grey blur and shadow`；第一格 `a plain silver ballpoint pen as long as her hand` 擱在表格上（Nora 簽完放下的）；Brandt 的右手（`blue nitrile gloves`、白袍袖口）伸進來；焦點在筆尖與手指；畫面裡沒有臉 | Brandt 從表格上拿起筆（動作一），筆尖在紙邊簽一下（動作二）；剪在筆尖停住；畫面上沒有嘴；最後：筆停在紙邊，表格還平放在桌上 | — | 約 2.5 秒 |
+| c29 | 近景、固定；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍；`blue nitrile gloves`），坐在書桌後；第一格她的左手已經撕下最上面那張粉紅副本，把 `a folded pale pink carbon-copy form about the size of her hand, print not readable` 摺好、遞向畫面右的 Nora；右手按在封好的 `a clear tamper-evident specimen pouch about the size of her hand, a red seal strip across the top, no readable print` 上（下緣）；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉毛放平、嘴唇在字之間抿緊、點一下頭，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Brandt 把摺好的副本遞出去，嘴在說話（短、確定）；說完點一下頭、右手把防拆封袋拉到自己面前，嘴閉上；最後：副本伸在 Nora 面前，防拆封袋在 Brandt 手邊 | Dr. Brandt（短、確定）：Outside lab. Three days.（外面的實驗室。三天）（原聲）（結尾） | 約 3.5 秒 |
 | c30 | 中近景、固定；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，**頭上留出空間，站起來後整個頭仍在畫面裡** | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），坐在椅上；左手接過 `a folded pale pink carbon-copy form about the size of her hand, print not readable`；眼睛紅、臉頰的淚痕半乾；窗的灰光；四分之三側臉朝畫面左的 Brandt；眉頭收緊、下巴抬著、嘴唇閉緊、吸一口氣，`no smile at any moment, until the last frame`；Brandt 只有肩、不露臉 | Nora 的左手把副本握緊在胸前（動作一），站起來（動作二）；剪在站到一半；嘴閉著；最後：她站著，左手握著摺起來的粉紅副本 | — | 約 2.5 秒 |
 
 ### 第四場：一樓大廳，柱子後面（約 30 秒）
@@ -185,6 +185,15 @@ Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂�
 - **大廳的柱子**：Nora 躲在柱子靠入口那面的右半邊（bible 的「柱子右側（大廳這面）」），Grant 從右後的走道口朝柱子與電梯走來、還沒繞過柱角；Peg 在畫面右後的候診椅。Grant 一直沒看到 Peg（他在跟助理說話）。
 - **c36**：Grant 交完禮盒扣上西裝的一顆扣子（兩手空了的收尾動作）。
 
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e011-e015-storyboard.md` 與 bible〈第 11–15 集審稿後補定〉改的。本集還沒錄、沒拍，沒有要重錄或重抽的鏡。
+- **c08 台詞改了**：「Is that why I lost my baby?」→「Is that pill why I lost my baby?」（前一句是 "You called my line at seven."，that 會被聽成七點那通電話）。8 個字、秒數不變（4 秒）。**要重錄**（還沒錄，照新句錄）。
+- **c20**：拿掉背景虛焦的 Dale（位置跟軸線不合），她身後只有關著的淺木門。場頭〈在場的人〉與造型清單一起改。
+- **c24–c28**：粉紅表格平放時道具句後接 `, lying flat`（bible 補定）；c25 推過去的表格也照抄。
+- **c27→c29 筆與副本的去向**：c27 Nora 簽完把筆擱回表格上；c28 第一格 Brandt 從表格上拿起筆、簽一下；撕下副本移到 c29 第一格（已撕下、在她左手），c29 摺好遞出。每鏡仍是兩個動作以內。
+- 鏡數與秒數不變：41 鏡／117.5 秒。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**（bible〈全劇固定〉：第 11–20 集沒有 Gemini）。
@@ -238,7 +247,7 @@ Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂�
 | --- | --- | --- | --- |
 | Nora | `motel`（低髮髻、奶油色毛衣、藍色牛仔褲、棕褐色平底短靴）＋道具句 `a camel wool coat with deep pockets, worn open`；c11 起臉頰濕、眼睛紅 | c02、c05–c06、c08、c11、c13、c20、c26–c27、c30–c31、c33、c35、c40–c41（c03–c04、c07、c09–c10、c25、c29 只有肩） | `motel` 已改（拿掉大衣與表情）；要畫全身參考圖 |
 | Dr. Brandt | 基本款（白袍罩深藍手術服、銀金色短鮑伯頭、長方框眼鏡）＋ `blue nitrile gloves` | c03、c05、c07、c09–c10、c25、c29（c01、c21–c24、c28 只有戴手套的手；c06、c08、c11、c20、c26、c30 只有肩） | 外貌句已拿掉表情；手套寫在每鏡 |
-| Dale | 基本款（粗黑框眼鏡、白色藥師袍、胸前兩支筆）＋放大鏡 | c04–c05、c12（c20 遠處虛焦） | 外貌句已拿掉 "meticulous" |
+| Dale | 基本款（粗黑框眼鏡、白色藥師袍、胸前兩支筆）＋放大鏡 | c04–c05、c12 | 外貌句已拿掉 "meticulous" |
 | Peg | `coat`（長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、深棕色平底鞋）；帆布袋左肩；婚戒左手；新毛線（手掌長）；帳本 | c14–c15、c17–c19、c39、c41（c16 只有膝與鞋） | 帆布袋、帳本、毛線、婚戒寫在每鏡 |
 | Grant | 基本款（淺石色西裝、淺藍開領襯衫、細的圓金屬框眼鏡、深棕色皮鞋）；花束（右手）、禮盒（左手），c36 起兩手空 | c32、c34、c36、c38、c41（c37 虛焦） | 外貌句不帶笑；練過的閉嘴微笑寫在每鏡 |
 | 醫生助理 | 深藍手術服、深色馬尾（背影） | c32、c34、c36–c37 | 不畫，只拍背影與肩以下 |
@@ -270,7 +279,7 @@ Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂�
 
 - **時間**：第 3 天（3/19 週四）10:00 診間（從第 10 集 23:50 跳過來）→ 10:10 候診區 Peg 聽見哭聲 → 10:15–10:35 封袋、簽監管紀錄 → 10:45 一樓大廳。陰、乾。第 12 集接同一刻。
 - **半顆藥**：桌墊左邊（c01）→ 鑷子夾回夾鏈袋、封好（c21–c22）→ 防拆封袋、封條（c22–c23）→ Brandt 留著送外面的實驗室（監管鏈；第 12 集只有報告回來，藥不再出現）。**真藥**：Dale 帶回藥局（不拍）。化驗費院方付（不必說）。
-- **監管紀錄的粉紅副本**：Brandt 撕下、摺好給 Nora（c28–c29）→ 她左手握著（c30 起）；第 12 集大廳她收進大衣左口袋。
+- **監管紀錄的粉紅副本**：平放在書桌上填寫、簽名（c24–c28，道具句接 `, lying flat`）→ Brandt 撕下、摺好給 Nora（c29）→ 她左手握著（c30 起）；第 12 集大廳她收進大衣左口袋。
 - **錢**：Peg 早上預付第 3–5 晚 $267、公車來回 $8、吃 $12 → 剩 **$180**（bible〈帳〉；不念、不拍）。
 - **Peg**：婚戒在左手；眼鏡戴在臉上；帆布袋左肩（毛線在裡面，手掌長）；帳本在大廳她的膝上、鉛筆在右手；身旁空椅上兩個紙杯（她在樓下買的）。
 - **手機**：Nora 的新手機（白色，Grant 的家庭方案）在大衣左口袋，開著（不拍）；她早上 07:10 用它打 Brandt 的分機（c07 一句交代）。Grant 的黑手機在西裝內袋（不拿出來）。
