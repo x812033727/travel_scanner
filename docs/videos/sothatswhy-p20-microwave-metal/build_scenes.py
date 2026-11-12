@@ -122,7 +122,7 @@ def obj(id, prompt, *lines, chapter=None):
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；結果都不先講）----------
 obj("box-table", "Close-up of " + BOX + " on a wooden kitchen counter beside " + OVEN,
-    k("所長！阿嬤做的滷肉飯！", "急著報案的語氣"),
+    k("你看！阿嬤做的滷肉飯！", "急著報案的語氣"),
     k("我拿去事務所的微波爐熱喔！", "開心"), chapter="阿嬤的便當盒，先別按")
 chief("chief-stop", C("holding up one hand like a gentle stop with a kind smile", close=True),
     c("等一下，先別按。你看盒子上面。", "叮嚀"),
@@ -148,7 +148,7 @@ chief("chief-look-in", C("gesturing towards an open microwave oven beside her wi
     c("是嗎？那你看看裡面的牆，亮亮的。", "接住上一句"),
     k("是金屬做的嗎？", "句尾上揚"), chapter="打開微波爐的門，裡面亮亮的")
 obj("oven-walls", "Close-up of " + OPEN + ", soft daylight shining on the smooth metal walls",
-    c("是。美國的食品藥物管理署說，", "接住上一句"),
+    c("是。美國管食品安全的食藥署說，", "接住上一句"),
     c("微波爐裡面是金屬，微波碰到它會彈回來。"))
 kid("kid-wave-q", K("tilting her head with a curious face, one finger on her cheek", close=True, where=KITCHEN),
     k("微波是什麼？", "句尾上揚"),
@@ -166,10 +166,10 @@ obj("oven-plate", "Close-up of " + OPEN + ", a plain white bowl of rice on the t
 kid("kid-more-wrong", K("looking around the open microwave with wide surprised eyes, mouth in a little o", where=KITCHEN),
     k("整台都是金屬耶！", "驚訝"), k("它都沒冒火花？", "句尾上揚"))
 chief("chief-not-more", C("shaking her head gently with a kind smile, one palm raised", close=True),
-    c("對，沒冒。所以不是金屬越多，火花就越大。", None, "P:more"),
+    c("對，沒冒火花。所以不是金屬越多，火花就越大。", None, "P:more"),
     c("還記得門上那片網子嗎？它也是金屬。", None, "P:mesh"))
 obj("door-mesh", "Close-up of the window of a microwave oven door covered with a dark grey metal mesh of many tiny round holes, a plain white bowl of rice faintly visible behind it",
-    k("有洞耶！", "發現"), k("微波不會跑出來嗎？", "句尾上揚", "S:hole"))
+    k("上面有小洞耶！", "發現"), k("微波不會跑出來嗎？", "句尾上揚", "S:hole"))
 chief("chief-wavelength", C("holding her two hands about a ruler's length apart with a curious smile"),
     c("一位物理學教授說，微波的一個波，", "接住上一句"),
     c("大約有十二公分長。"))
@@ -195,7 +195,7 @@ obj("tray-slosh", "Close-up of " + TRAY + " held level on a kitchen counter, the
     c("電子在牆裡這樣來回跑，微波就被彈回去了。", None, "P:bounce"),
     k("那網子有洞，也能彈嗎？", "句尾上揚", "S:meshbounce"))
 chief("chief-mesh-again", C("holding up a small square of fine dark metal mesh between two fingers with a knowing smile", close=True),
-    c("能。教授說，洞小到擋不住電子跑，", "接住上一句"),
+    c("可以。教授說，網子的洞很小，電子照樣跑，", "接住上一句"),
     c("網子就跟一整片金屬一樣，把微波彈回去。", None, "P:meshbounce"))
 kid("kid-heat-q", K("looking down at " + BOXK + " in her hands with a hungry thinking face", where=KITCHEN),
     k("那彈來彈去的微波，", "想不通"), k("怎麼把飯變熱？", "章尾停住，句尾上揚", "S:heat"))
@@ -206,7 +206,7 @@ obj("rice-bowl", "Close-up of a plain white bowl of steaming " + FOOD + " on a w
     c("就推著裡面的水，一直晃。"), chapter="滷肉飯裡的水，被推著晃")
 chief("chief-water", C("wiggling the fingers of both hands quickly in front of her chest with a bright smile"),
     c("食藥署說，水被推著晃，互相摩擦就生出熱。", None, "P:heat"),
-    k("像水盤那樣晃？", "聯想"))
+    k("像那盤水那樣晃？", "聯想"))
 chief("chief-water2", C("tipping one flat hand left and right with a pleased smile", close=True),
     c("有點像。晃的是水分子，就是水最小最小的一顆。"),
     c("所以水分多的食物，像新鮮蔬菜，熱得比較快。"))
@@ -230,12 +230,12 @@ kid("kid-crowd-q", K("squeezing her two fists together with a curious frown", cl
 chief("chief-ptray", C("holding " + PTRAY + " level in both hands with an excited smile"),
     c("看這個尖尖的水盤，我一樣左右晃。", "接住上一句"))
 obj("ptray-splash", "Close-up of " + PTRAY + " on a kitchen counter, the water rushing into the pointed corner, piling up high and splashing over the tip in a little spray of droplets",
-    k("水都擠到尖角了！", "驚訝"), k("還濺出去了！", "驚訝"))
+    k("水都擠到角角去了！", "驚訝"), k("還濺出去了！", "驚訝"))
 chief("chief-textbook", C("holding up one finger with a bright clear smile"),
     c("大學的物理課本說，金屬上越尖的地方，", "接住上一句"),
     c("電荷擠得越多，周圍的推力也越強。"))
 kid("kid-charge-q", K("tilting her head with a puzzled face", close=True, where=KITCHEN),
-    k("電荷是什麼？", "句尾上揚"),
+    k("什麼是電荷？", "句尾上揚"),
     c("就是那些帶著電的東西，像剛剛的電子。"))
 obj("fork-spark", "Close-up of " + FORK + " lying on a round glass plate inside a microwave oven, " + SPARK + " flashing at the tips of the prongs, an illustration",
     c("推力強到一個程度，空氣也擋不住，", None),
@@ -245,7 +245,7 @@ kid("kid-lightning", K("covering her mouth with both hands and wide amazed eyes"
     c("課本也說，那是像閃電一樣的放電。"),
     k("叉子有四個尖尖的頭耶！", "發現", "S:prongs"))
 chief("chief-prongs", C("holding up " + FORK + " and touching the tips of its prongs with one finger, a knowing smile", close=True),
-    c("對，每一個尖頭，都是電荷會擠過去的地方。", None, "P:prongs"))
+    c("對，每個尖尖的叉子頭，電荷都會擠過去。", None, "P:prongs"))
 chief("chief-spoon", C("holding up " + SPOON + " with a gentle smile", close=True),
     k("那湯匙呢？", "追問"),
     c("物理學教授說，湯匙夠厚、頭又圓圓的，"))
@@ -268,7 +268,7 @@ obj("foil-two", "Wide shot of a crumpled ball of shiny aluminium foil with many 
     c("一家家電公司說，薄的、皺的、邊很尖的金屬，", "接住上一句"))
 chief("chief-foil", C("holding up a crumpled ball of shiny aluminium foil in one hand with a careful face", close=True),
     c("會把能量集中起來，冒出火花。", None, "P:foil"),
-    c("皺一次，就多出很多小尖角。"))
+    c("揉皺了，就多出很多尖尖的小角。"))
 kid("kid-flatfoil-q", K("holding up a flat smooth sheet of shiny aluminium foil in both hands with a hopeful face", where=KITCHEN),
     k("那平平的鋁箔就沒事？", "句尾上揚", "S:flatfoil"))
 obj("foil-flat", "Close-up of a flat smooth sheet of shiny aluminium foil lying on a wooden counter, its thin straight edges catching the light",
@@ -310,7 +310,7 @@ kid("kid-whose", K("holding her chin with a thinking face", close=True, where=KI
     k("所以要看是哪一台！", "恍然"),
     c("對。食藥署也說，每台微波爐的說明，"))
 chief("chief-fda-manual", C("tapping a thin grey booklet with one finger and a warm smile"),
-    c("會寫可以用哪些容器。"),
+    c("上面寫著可以用哪些容器。"),
     c("它還說，一般不要放金屬鍋子或鋁箔。"))
 obj("food-uneven", "Close-up of a plain white bowl of " + FOOD + " half covered by a shiny metal pot lid, the uncovered half steaming and the covered half pale",
     c("因為微波被彈開，飯會熱得不平均。"),
