@@ -28,8 +28,8 @@
 ## 站主的規則（原話）
 
 - 「每部劇統一放 AI劇/<劇名>/<集數>/」（2026-11-10）。
-- 「備份都要備份到所有東西，之後需要重製可能的所有東西」（2026-11-10）。內容照兩份分支規則：AI 劇是 #2047 的
-  `docs/videos/drama/BACKUP-BRANCHES.md`，奇聞與原來如此是 [`explainer-series/BACKUP-BRANCHES.md`](explainer-series/BACKUP-BRANCHES.md)。
+- 「備份都要備份到所有東西，之後需要重製可能的所有東西」（2026-11-10）。內容照兩份分支規則：AI 劇是
+  [`drama/BACKUP-BRANCHES.md`](drama/BACKUP-BRANCHES.md)，奇聞與原來如此是 [`explainer-series/BACKUP-BRANCHES.md`](explainer-series/BACKUP-BRANCHES.md)。
   差別只在目的地從分支改成雲端硬碟。
 - 種田的真人重拍版（`-r2`）「當成另一部劇」；同一集的改版放同一個資料夾，舊版進 `_舊版/`。
 - 製作檔由**做片的 session 直接傳雲端硬碟**，不由主機 worker 從 GitHub 搬。

@@ -120,3 +120,5 @@ npm run test:tools && npm run test:web
   owner code that stops the run. Fixed both ways: the tool aligns Azure voices only, and the
   align route answers a MiniMax voice `video_align_voice_unsupported`, which an older tool
   already reads as "go to /speech".
+- Superseded on 2026-11-12: main's #2083 pins "today" for the fixture trips, so after merging main
+  this branch takes main's `trip-editor.test.tsx` and `test_trip_creation.py` unchanged.

@@ -105,10 +105,12 @@ function intentPreview(version: number) {
   };
 }
 
-// The fixture trips run 2026-11-11..12, and the planner shows its arrival and optional blocks only
-// for days that have not passed: pin the day before them, or the file fails once 11-11 is over.
+// The fixture trips are dated 2026-11-11 and 11-12, and the editor treats today and past days
+// differently, so these tests broke the day the dates arrived. Only Date is faked: the
+// timers testing-library waits on stay real.
 beforeEach(() => {
-  vi.setSystemTime(new Date("2026-11-10T03:00:00Z"));
+  vi.useFakeTimers({ toFake: ["Date"] });
+  vi.setSystemTime(new Date("2026-11-01T03:00:00Z"));
 });
 
 afterEach(() => {

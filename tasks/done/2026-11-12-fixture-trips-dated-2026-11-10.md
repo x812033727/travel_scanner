@@ -1,13 +1,13 @@
 ---
 id: 2026-11-12-fixture-trips-dated-2026-11-10
 title: Fixture trips dated 2026-11-10/11 expired: API integration and e2e travel-services fail on main
-status: open
+status: done
 priority: P1
 area: api
 owner:
 claimed_at:
 created_at: 2026-11-12T02:05:59Z
-completed_at:
+completed_at: 2026-11-12T06:42:05Z
 branch:
 depends_on: []
 scope:
@@ -50,9 +50,9 @@ Already handled elsewhere: `apps/web/components/trip-editor.test.tsx` (pinned cl
 
 ## Definition of done
 
-- [ ] No API or e2e test depends on a fixture trip date staying in the future: dates are
+- [x] No API or e2e test depends on a fixture trip date staying in the future: dates are
   relative to today, or the clock is pinned before the fixture dates.
-- [ ] `api-tests` (4 shards) and `web-e2e` (3 shards) are green on `main`.
+- [x] `api-tests` (4 shards) and `web-e2e` (3 shards) are green on `main`.
 
 ## Steps
 
@@ -70,3 +70,8 @@ Already handled elsewhere: `apps/web/components/trip-editor.test.tsx` (pinned cl
 
 Filed from the #2081 session (MiniMax speech), which does not fix these, to keep that PR to its
 own change.
+
+Fixed on main by #2083 (2026-11-12): `apps/api/tests/conftest.py` pins `trip_today()` in
+`app/trips/router.py` to 2026-11-01 for every test, and `e2e/travel-services.spec.ts` pins the
+browser clock. #2081 merged main and dropped its own stop-gaps (the relative dates in
+`test_trip_creation.py`, the 2026-11-10 pin in `trip-editor.test.tsx`) in favour of main's.
