@@ -474,12 +474,12 @@ async function tts(args, ctx) {
   // A phrase-sized request in an Azure voice asks speech/align first: the WAV and when each
   // written unit is spoken, in the one paid call. A site that cannot time it answers null without
   // charging, and the body goes to speech as before. A scene-sized request (ALIGNED_MAX_CHARACTERS)
-  // and every Gemini voice (no aligner is live) go straight to speech. Either route is the one
+  // and every Gemini or MiniMax voice (no word boundaries, no aligner is live) go straight to speech. Either route is the one
   // journal entry for its body, so a lost answer holds the request, and an answer the journal
   // kept comes back without timing.
   const journal = openSpeechJournal(path.join(audioDir, JOURNAL_DIR), { now: ctx.now });
   const send = journal.wrap(async (body) => {
-    const phrase = providerOf(body.voice) !== "gemini" && alignedCharacters(body) <= ALIGNED_MAX_CHARACTERS;
+    const phrase = providerOf(body.voice) === "azure" && alignedCharacters(body) <= ALIGNED_MAX_CHARACTERS;
     const aligned = phrase ? await synthesizeAligned({ ...options, body }) : null;
     return aligned ?? synthesize({ ...options, body });
   });

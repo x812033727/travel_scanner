@@ -28,6 +28,8 @@ scope:
   - tasks/open/2026-11-12-add-minimax-speech-as-a-third.md
   - apps/web/components/trip-editor.test.tsx
   - apps/api/tests/test_trip_creation.py
+  - apps/api/app/video_speech/align_api.py
+  - apps/api/tests/test_video_speech_align.py
 ---
 
 # Add MiniMax speech as a third narration voice provider
@@ -112,3 +114,9 @@ npm run test:tools && npm run test:web
   The trip-editor fix is the same hunk as open PR #2060 (pin the system time to 2026-11-10);
   the API test now takes dates relative to today. `tools/deploy-host-verify.test.mjs` fails only
   in this cloud container (its awk panics on `REcompile()`), not on GitHub's Ubuntu runners.
+- Codex review on #2081 found that a phrase-sized MiniMax request (<= 59 characters) went to
+  `/speech/align` first (`tts/cli.mjs` aligned every non-Gemini voice), where `align_api.py`
+  checked it against the Azure allowlist and refused it as `video_speech_voice_not_allowed`, an
+  owner code that stops the run. Fixed both ways: the tool aligns Azure voices only, and the
+  align route answers a MiniMax voice `video_align_voice_unsupported`, which an older tool
+  already reads as "go to /speech".
