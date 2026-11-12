@@ -33,6 +33,7 @@ export const AREAS = {
   login: ["tts", "2026-09-24-video-tts-azure"],
   tts: ["tts", "2026-09-24-video-tts-azure"],
   audition: ["tts", "2026-09-24-video-tts-azure"],
+  "minimax-quota": ["tts", "2026-11-12-add-minimax-speech-as-a-third"],
   "check-audio": ["tts", "2026-09-24-video-audio-check"],
   render: ["render", "2026-09-24-video-render-slides"],
   assemble: ["assemble", "2026-09-24-video-assemble-package"],
@@ -113,6 +114,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   login [--name N] [--paste | --token-file F] [--colab] [--runpod]  pair with the site: allow the printed code on the admin card
   audition --text-file F [--voices V] [--style T] [--slug S] [--workdir D]
                                                    compare voices; A01/B18 pilot samples require their exact budgeted --slug
+  minimax-quota [--json]                           what is left of the owner's MiniMax M Plan (speech, images, video), as MiniMax reports it
   check-audio --slug S [--locale L] [--threshold 0.5] [--force] [--second-opinion "PROGRAM ARGS"]  transcribe every line; Jev judges the ones that differ; a second transcriber rechecks what Jev doubts
   dub --slug S [--locale en,ja,ko] [--format m4a|mp3|wav] [--dry-run] [--redo F [--keep-fitting]] [--line-by-line] [--force] [--style T]
                                                    a YouTube audio track per locale: the translation read by the
