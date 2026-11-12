@@ -197,7 +197,7 @@
   "made_for_kids": false,
   "default_language": "zh-TW",
   "title": "網址多一個 S，資料在路上差了什麼？｜原來如此事務所",
-  "description": "小問在咖啡店用免費網路登入遊戲，媽媽叫她先看網址開頭是不是 https。可是不就多一個 S 嗎？密碼還不是一樣要傳出去？\n\n這一集，所長和小問用「上課傳信」來想：信要經過好幾個同學的手，就像你的資料要經過咖啡店的機器和網路公司。先看怎麼確定對面真的是那個網站（網站的證件、發證件的機構只查你管不管得了網址、一路簽到瀏覽器內建的根憑證、公開的登記帳本），再看兩邊怎麼在大家眼前調出只有彼此知道的秘密、怎麼把每封信封好又編上號，以及規格自己承認的例外；最後看封條管不到的地方：信有多厚、寄給哪個網站，還有最重要的——HTTPS 只保護路上，不保證網站是好人，詐騙網站一樣有。\n\n調顏料只是比喻，真正的做法是數學；插圖由 AI 生成，是示意。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-12",
+  "description": "小問在咖啡店用免費網路登入遊戲，媽媽叫她先看網址開頭是不是 https。可是不就多一個 S 嗎？密碼還不是一樣要傳出去？\n\n這一集，所長和小問用「上課傳信」來想：信要經過好幾個同學的手，就像你的資料要經過咖啡店的機器和網路公司。先看怎麼確定對面真的是那個網站（網站的證件、免費發證件的機構只查你管不管得了網址、一路簽到瀏覽器內建的根憑證、公開的登記帳本），再看兩邊怎麼在大家眼前調出只有彼此知道的秘密、怎麼把每封信封好又編上號，以及規格自己承認的例外；最後看封條管不到的地方：信有多厚、寄給哪個網站，還有最重要的——HTTPS 只保護路上，不保證網站是好人，詐騙網站一樣有。\n\n調顏料只是比喻，真正的做法是數學；插圖由 AI 生成，是示意。每個說法的出處列在下方參考資料。\n\n資料截至 2026-11-12",
   "tags": [
    "HTTPS",
    "TLS",
@@ -747,7 +747,7 @@
   },
   {
    "id": "chief-impostor",
-   "chapter": "對面真的是遊戲公司嗎",
+   "chapter": "小問想確認，對面是不是遊戲公司",
    "template": "shot",
    "data": {
     "prompt": "Head-and-shoulders close-up of the chief raising one hand with an honest careful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -1990,7 +1990,7 @@
   },
   {
    "id": "chief-length",
-   "chapter": "封條管不到的地方",
+   "chapter": "封好的信，還被看到了什麼",
    "template": "shot",
    "data": {
     "prompt": "Head-and-shoulders close-up of the chief holding her thumb and finger apart as if measuring thickness, a careful smile, a plain pale wall behind her, bright daylight, the chief is a slim young woman of about thirty with glossy jet-black hair tied in a low ponytail, round black glasses, a yellow pencil tucked behind her ear, a mustard-yellow cardigan over a white blouse, flat 2D cel-shaded cartoon drawing with ink outlines",
@@ -2425,25 +2425,20 @@
     {
      "id": "p182",
      "speaker": "kid",
-     "text": "同學還是幫我傳，",
+     "text": "密碼變成封好的紙條，",
      "emotion": "篤定"
     },
     {
      "id": "p183",
      "speaker": "kid",
-     "text": "可是拆不開、改不掉，",
+     "text": "同學照樣傳，卻讀不到，",
      "emotion": "篤定",
      "pause_after_ms": 500
     },
     {
      "id": "p184",
      "speaker": "kid",
-     "text": "也冒充不了！"
-    },
-    {
-     "id": "p185",
-     "speaker": "kid",
-     "text": "寄給誰，要我自己看清楚！"
+     "text": "也冒充不了那個網址！"
     }
    ]
   },
@@ -2460,14 +2455,14 @@
    },
    "lines": [
     {
-     "id": "p186",
+     "id": "p185",
      "speaker": "chief",
-     "text": "說得好。我覺得最厲害的是："
+     "text": "說得好。我覺得最妙的是，這個封條你每天都在用，"
     },
     {
-     "id": "p187",
+     "id": "p186",
      "speaker": "chief",
-     "text": "一路上都是不認識的人在傳，信裡寫什麼，卻不用靠他們守密。"
+     "text": "卻從來沒有看見它。"
     }
    ]
   },
@@ -2483,13 +2478,13 @@
    },
    "lines": [
     {
-     "id": "p188",
+     "id": "p187",
      "speaker": "kid",
      "text": "我先去跟媽媽說，",
      "emotion": "開心"
     },
     {
-     "id": "p189",
+     "id": "p188",
      "speaker": "kid",
      "text": "那個連結是假的！"
     }
@@ -2508,7 +2503,7 @@
    },
    "lines": [
     {
-     "id": "p190",
+     "id": "p189",
      "speaker": "kid",
      "text": "下次打密碼，我先看名字！",
      "emotion": "開心大聲"
@@ -2528,13 +2523,13 @@
    },
    "lines": [
     {
-     "id": "p191",
+     "id": "p190",
      "speaker": "chief",
      "text": "你收過名字很像、卻是假的網址嗎？",
      "emotion": "問句上揚，像聊天"
     },
     {
-     "id": "p192",
+     "id": "p191",
      "speaker": "chief",
      "text": "留言告訴我們。"
     }
@@ -2553,7 +2548,7 @@
    },
    "lines": [
     {
-     "id": "p193",
+     "id": "p192",
      "speaker": "chief",
      "text": "想一起找生活裡的為什麼，就訂閱原來如此事務所。",
      "emotion": "誠懇"

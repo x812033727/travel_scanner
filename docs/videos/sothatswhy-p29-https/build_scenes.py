@@ -183,7 +183,7 @@ kid("kid-seal-guess", K("pressing a small cream envelope shut between her palms 
 chief("chief-impostor", C("raising one hand with an honest careful smile", close=True),
       c("封起來，也要封給對的人。", "接住上一句", "P:sealonly"),
       c("要是傳到一半，有人假裝是遊戲公司收下，"),
-      c("你封得再好，也是把信交給他。"), chapter="對面真的是遊戲公司嗎")
+      c("你封得再好，也是把信交給他。"), chapter="小問想確認，對面是不是遊戲公司")
 obj("street-ask", "Wide shot of a sunny crossroads with small shops and green trees, one tiny cartoon child on the pavement asking the way from a friendly cartoon postman who points down a side street",
     c("而且出發前，平板要先問「這個網址在哪裡」，"),
     c("那一問的回答，也可能被路上的人動手腳。"))
@@ -325,7 +325,7 @@ kid("kid-nothing-q", K("hugging a small sealed envelope to her chest with a prou
 
 # ---------- 第四章：封條管不到的地方 ----------
 chief("chief-length", C("holding her thumb and finger apart as if measuring thickness, a careful smile", close=True),
-      c("還看得到一些。規格寫得很直接：它不隱藏資料的長度。", "接住上一句", "P:nothing"), chapter="封條管不到的地方")
+      c("還看得到一些。規格寫得很直接：它不隱藏資料的長度。", "接住上一句", "P:nothing"), chapter="封好的信，還被看到了什麼")
 obj("thick-thin", "Close-up of four small cream envelopes with red wax seals lying side by side on a sunny wooden desk, from one very thin to one very fat and puffy",
     c("信有多厚、多久寄一封，路上的人還是看得到。"),
     k("看厚度，", "不相信"), k("能看出什麼？", "句尾上揚", "S:thick"))
@@ -373,12 +373,11 @@ kid("kid-spot", K("pointing at a small tablet in her other hand with wide eyes a
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
       c("那你說，多一個 S，你的密碼在路上差了什麼？", "笑"), chapter="小問看清楚了")
 kid("kid-got-it", K("holding a small sealed cream envelope up proudly with a big confident grin", where=CAFE),
-    k("原來如此！", "恍然大悟"), k("同學還是幫我傳，", "篤定"),
-    k("可是拆不開、改不掉，", "篤定"), k("也冒充不了！", None, "P:main"),
-    k("寄給誰，要我自己看清楚！"))
+    k("原來如此！", "恍然大悟"), k("密碼變成封好的紙條，", "篤定"),
+    k("同學照樣傳，卻讀不到，", "篤定"), k("也冒充不了那個網址！", None, "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
-      c("說得好。我覺得最厲害的是："),
-      c("一路上都是不認識的人在傳，信裡寫什麼，卻不用靠他們守密。"))
+      c("說得好。我覺得最妙的是，這個封條你每天都在用，"),
+      c("卻從來沒有看見它。"))
 obj("cafe-table", "Wide shot of a sunny café table by a big window with a mug of cocoa and a small tablet lying face down, a potted plant on the windowsill",
     k("我先去跟媽媽說，", "開心"), k("那個連結是假的！"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
@@ -453,7 +452,7 @@ doc = {
         "title": "網址多一個 S，資料在路上差了什麼？｜原來如此事務所",
         "description": "小問在咖啡店用免費網路登入遊戲，媽媽叫她先看網址開頭是不是 https。可是不就多一個 S 嗎？密碼還不是一樣要傳出去？\n\n"
                        "這一集，所長和小問用「上課傳信」來想：信要經過好幾個同學的手，就像你的資料要經過咖啡店的機器和網路公司。"
-                       "先看怎麼確定對面真的是那個網站（網站的證件、發證件的機構只查你管不管得了網址、一路簽到瀏覽器內建的根憑證、公開的登記帳本），"
+                       "先看怎麼確定對面真的是那個網站（網站的證件、免費發證件的機構只查你管不管得了網址、一路簽到瀏覽器內建的根憑證、公開的登記帳本），"
                        "再看兩邊怎麼在大家眼前調出只有彼此知道的秘密、怎麼把每封信封好又編上號，以及規格自己承認的例外；"
                        "最後看封條管不到的地方：信有多厚、寄給哪個網站，還有最重要的——HTTPS 只保護路上，不保證網站是好人，詐騙網站一樣有。\n\n"
                        "調顏料只是比喻，真正的做法是數學；插圖由 AI 生成，是示意。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
