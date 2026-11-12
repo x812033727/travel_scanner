@@ -31,7 +31,7 @@
 | --- | --- | --- |
 | Nora | `assets/refs/nora-portrait.jpg`（r3）；全身參考圖 `shoulder` 待畫 | 整集 `shoulder`（齊肩短髮、奶油色毛衣、深色長褲、棕褐短靴），夏天、沒有大衣；旗艦店裡把頭髮塞在耳後；左手無名指每一鏡拍到就寫 `a plain narrow white-gold band with no stone, on her left ring finger`；本集**一鏡都不笑**；原聲 |
 | Peg | `assets/refs/peg-portrait.jpg`（`visit`） | 只在 Ashford 家（第一、二、四場）：`visit`（直的短灰髮往一邊梳、玳瑁框老花眼鏡**每一鏡戴在臉上**、長的棕色木珠項鍊、洗舊的燕麥色開襟衫、平底包鞋），沒有圍裙；拍到左手就寫 `a faint pale band of skin on her left ring finger where a ring used to be`；帳本照道具句；不笑；原聲 |
-| 旗艦店店員 | **待畫，必須先畫**（extras `store-clerk`；bible 先畫順序第 4） | 23 歲白人女性、白金色頭髮梳成光滑的低馬尾、淺灰眼睛、合身黑襯衫配黑長褲；沒有名牌；c13 第一次開口前禮貌的閉嘴笑、不露齒，**說話時嘴角放平**，之後不笑；原聲 |
+| 旗艦店店員 | **待畫，必須先畫**（extras `store-clerk`；bible 先畫順序第 4） | 23 歲白人女性、白金色頭髮梳成光滑的低馬尾、淺灰眼睛、合身黑襯衫配黑長褲；沒有名牌；c13–c14 第一次開口前禮貌的閉嘴笑、不露齒，**說話時嘴角放平**，之後不笑；原聲 |
 | 兩個客人 | 不畫（extras `shoppers`） | c27 回頭的兩個人，夏天便服、虛焦、看不清臉；不說話 |
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3）當**海報的臉**的參考 | 只在櫥窗海報上（c11），不是本人 |
 
