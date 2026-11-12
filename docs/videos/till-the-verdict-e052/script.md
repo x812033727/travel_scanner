@@ -170,7 +170,7 @@ Nora 繞過工作台，把她拉進懷裡：「Mom.」Peg 抓著她的袖子哭�
 ### 配音
 
 - **本集沒有 Gemini 錄音**。
-- **二十二鏡都是原聲**：Peg 十五鏡（c03、c04、c06、c08、c10、c12、c14、c15、c24、c25、c28、c30、c32、c33、c36、c37 共十六鏡）、Nora 五鏡（c18、c20、c21、c22、c40）。每支**至少買 6 秒**，剪接照台詞長度剪，**不放慢、不加空白尾巴**。
+- **二十一鏡都是原聲**：Peg 十六鏡（c03、c04、c06、c08、c10、c12、c14、c15、c24、c25、c28、c30、c32、c33、c36、c37）、Nora 五鏡（c18、c20、c21、c22、c40）。每支**至少買 6 秒**，剪接照台詞長度剪，**不放慢、不加空白尾巴**。
 - 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：Peg 平常乾、直；c03–c15 平平地念、像念帳，**念 Grant 的話不學他**；c24–c25 大聲、破掉；c28 起照 `cast.json`「when she finally speaks about the hallway her voice drops and slows」壓低、放慢。Nora c18–c22 大聲、破掉、帶哭腔（不是尖叫）；c40 很低、很輕。
 - **短喊**：c18 "Five months?"、c20 "Reyes threw me out!"、c24 "He's my son!" 原文寫進說話句，剪接剪掉多喊的字（bible〈全劇固定〉短喊）。
 - **6 個字以內的句子**（c03、c04、c06、c08、c15、c18、c20、c21、c22、c24、c25、c30、c32、c33、c36、c37、c40）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上。c40 "Mom." 只有一個字，第一批草稿先聽有沒有多講。
