@@ -85,3 +85,19 @@ bash $K/h3.sh stop --session ttv-st1 && bash $K/bootstrap.sh patch && bash $K/h3
 - **教訓**：`tablet` 這個字會被讀成平板，藥一律寫 pill 並寫大小；「不喝水」要寫成水杯在哪、水是什麼顏色。
 - **時間**（G4）：出圖 session 約 12 分鐘；片段 session 約 28 分鐘（草稿 3 支＋重跑 2 支、補細節 3 支、SeedVR2 每支 123–236 秒）。
 - **點數**：帳號 b 餘額 2,271.34 → 2,263.56（−7.8），其中有一段同帳號另一個 runtime 也在跑（16:34 時 `active_assignments` 2）；這次小樣本身約 5–6 CU，在 6 CU 上限內。
+
+## 定妝照修圖 r3（2026-11-12，站主點頭）
+
+分鏡二審（`../../review/2026-11-12-e001-e003-storyboard-r2.md`）抓到參考圖會蓋過文字：`nora-portrait.jpg` 左頰與頸部的小紅痕（像傷口），
+`nora-work.jpg` 同樣的紅痕，`grant-portrait.jpg` 閉嘴微笑。`build.py r3`：Qwen-Image-Edit，`latent: image1`，每張「exactly one change」兩個種子。
+
+| 圖 | a | b | 建議 |
+| --- | --- | --- | --- |
+| Nora 定妝照 | 紅痕沒了，但右頰多出一片紅點 | 臉頰與脖子都乾淨，其他照原圖 | **b** |
+| Grant 定妝照 | 嘴角仍微微上揚 | 嘴閉著、嘴角平、眼鏡不變 | **b** |
+| Nora 工作服 | 脖子乾淨，兩頰的雀斑帶一點紅 | 兩頰的紅更明顯 | **a** |
+
+- Colab 這次分到 A100（RTX PRO 6000），每小時約 10 CU；出圖 session 約 15 分鐘，帳號 b 餘額 2,020.63 → 2,019.08（約 −1.6）。
+- 圖在雲端硬碟 `AI/備份/AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/screen-test/`（`todrive.sh` 23 files, 0 differences）。
+- 站主選定後換進 `../assets/refs/`、重算 `SHA256SUMS`。
+
