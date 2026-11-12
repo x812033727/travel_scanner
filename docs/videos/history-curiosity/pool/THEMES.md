@@ -15,7 +15,7 @@
 | T03 | 兩顆星被說成外星東西，論文其實寫了什麼？ | 8:30（範圍 8:00–10:00；未試讀） | 2 | 已有可追溯來源 | 可成題 |
 | T04 | 火星上有生命嗎？兩份最有名的證據後來怎麼了 | 9:00（範圍 8:00–11:00；未試讀） | 2 | 已有可追溯來源 | 可成題 |
 | T06 | 沒有來的空襲：防空怎麼自己製造出目標？ | 12:00（範圍 9:30–13:00；未試讀） | 3 | 已有可追溯來源 | 可成題 |
-| T09 | 北歐人比哥倫布早到美洲：兩件假證據與一件真證據 | 11:00（範圍 9:00–12:00；未試讀） | 3 | 已有可追溯來源 | 可成題 |
+| T09 | 北歐人比哥倫布早到美洲：兩件假證據與一件真證據 | 13:00（範圍 11:00–13:00；未試讀） | 4 | 已有可追溯來源 | 可成題 |
 | T10 | 看不見的東西，是怎麼被拍進照片裡的？ | 11:00（範圍 10:00–13:00；未試讀） | 3 | 已有可追溯來源 | 可成題 |
 | T11 | 十三號星期五與消失的四樓：不吉利是什麼時候寫進文件的？ | 9:00（範圍 8:00–10:00；未試讀） | 2 | 已有可追溯來源 | 可成題 |
 | T12 | 格林兄弟的初版，後來改掉了什麼？ | 11:30（範圍 10:00–13:00；未試讀） | 4 | 已有可追溯來源 | 可成題 |
@@ -290,6 +290,7 @@
 | 開場：一張地圖、一塊石頭、一根木頭 | 60 | 三件『北歐人到過美洲』的證據。 | H37、H38、S22 |  |
 | 文蘭地圖：耶魯吵了 56 年 | 150 | 1965 年公布、1985 年的反駁，2021 年耶魯自己宣布是 20 世紀的墨水。 | H37 |  |
 | 肯辛頓石碑：判假、判真、照抄薩迦 | 120 | 1899 年專家判假、1910 年州歷史學會判真、後來指出內容照《格陵蘭人薩迦》寫。 | H38 |  |
+| Yarmouth 石：同一行刻痕，四種語言 | 120 | 新斯科細亞 1812 年的一塊石頭，被讀成維京符文、古日文、巴斯克文、邁錫尼文；1897 年一哩外又翻出前 13 個記號相同的第二塊。館方記下，最早發現它的醫生家族一直說那是他開的玩笑，挪威符文學者判定那不是符文。 | N3665 |  |
 | 蘭塞奧茲牧草地：真的遺址 | 150 | 1960 年代挖到的北歐房屋遺址。 | S22 |  |
 | 1021 年：一次宇宙射線事件定出的年份 | 120 | 993 年的碳十四尖峰定出砍樹那年；1021 是砍樹年，不是抵達年。 | S22 |  |
 | 結檔：真假證據差在哪 | 60 | 三件證據放在一起看。 | H37、H38、S22 |  |
@@ -299,12 +300,13 @@
 - H37（入選）為什麼耶魯大學 1965 年公布的「文蘭地圖」，吵了 56 年，2021 年才由耶魯自己宣布是假的？ — [news.yale.edu](https://news.yale.edu/2021/09/01/analysis-unlocks-secret-vinland-map-its-fake)、[library.yale.edu](https://library.yale.edu/news/beinecke-librarys-vinland-map-determined-be-fake?page=1)、[pre1600ms.beinecke.library.yale.edu](https://pre1600ms.beinecke.library.yale.edu/docs/pre1600.ms350a.htm)
 - H38（入選）為什麼 1898 年明尼蘇達農夫挖到的肯辛頓石碑，被專家判假、又被歷史學會判真，吵了一百二十幾年？ — [www.mnhs.org](https://www.mnhs.org/mnopedia/search/index/thing/kensington-runestone)、[www.runforum.nordiska.uu.se](https://www.runforum.nordiska.uu.se/blog/kensington-and-the-greenland-saga/)、[www.cambridge.org](https://www.cambridge.org/core/journals/antiquity/article/kensington-stone/206B16D3A5643F4315C05C9DF68EC040)
 - S22（入選）為什麼一塊在 1021 年被砍的木頭，能證明北歐人比哥倫布早四百多年到美洲？ — [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8770119/)、[parks.canada.ca](https://parks.canada.ca/lhn-nhs/nl/meadows/culture)
+- N3665（入選）加拿大新斯科細亞 Yarmouth 港邊一塊刻著十幾個記號的石頭，被讀成維京人的符文『Harko 的兒子對眾人說話』，後來又被讀成古日文、巴斯克文、邁錫尼文；1897 年一哩外竟又冒出第二塊，前 13 個記號一模一樣——最早發現它的醫生家裡，卻一直流傳著一句話。 — [archive.org](https://archive.org/details/cihm_02280)、[archive.org](https://archive.org/details/prehistoricmanre00wilsrich)、[www.yarmouthcountymuseum.ca](https://www.yarmouthcountymuseum.ca/_files/ugd/458c37_0d86dd1529464da3a10575ae82041b1f.pdf)
 
 **可能無聊的地方：** 石碑段要壓到 120 秒以內。
 
 **撤案條件：** 三題都已有可讀來源；製作前重開時對不上的那章刪掉，剩不到兩章撤回。
 
-**待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave2-legacy-20261101.json、reviews/wave2-review-20261101.json）；寫企劃前仍要照系列流程逐主張查核。
+**待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave2-legacy-20261101.json、reviews/wave2-review-20261101.json）；寫企劃前仍要照系列流程逐主張查核。 2026-11-12 wave36 加入 N3665 Yarmouth 符文石一章（覆核 R364 建議；batches/wave36-20261112.json）：判定方只經館方說明、沒有年份，片中說「館方記下」。
 
 ## T10 看不見的東西，是怎麼被拍進照片裡的？
 

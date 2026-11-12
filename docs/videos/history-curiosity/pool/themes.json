@@ -382,18 +382,19 @@
       "connection": "同一個問題的兩面：H37 文蘭地圖與 H38 肯辛頓石碑是兩件被拆穿的假證據（拆穿理由不同：墨水 vs 敘事來源），S22 是蘭塞奧茲牧草地與 1021 年的木頭。先假後真，答案才完整。",
       "boredom_risk": "石碑段要壓到 120 秒以內。",
       "drop_if": "三題都已有可讀來源；製作前重開時對不上的那章刪掉，剩不到兩章撤回。",
-      "evidence_gaps": "題目已經過篩選研究與非作者覆核（batches/wave2-legacy-20261101.json、reviews/wave2-review-20261101.json）；寫企劃前仍要照系列流程逐主張查核。",
+      "evidence_gaps": "題目已經過篩選研究與非作者覆核（batches/wave2-legacy-20261101.json、reviews/wave2-review-20261101.json）；寫企劃前仍要照系列流程逐主張查核。 2026-11-12 wave36 加入 N3665 Yarmouth 符文石一章（覆核 R364 建議；batches/wave36-20261112.json）：判定方只經館方說明、沒有年份，片中說「館方記下」。",
       "status": "EDITORIAL_THEME_NOT_SCRIPT",
       "production_ready": false,
-      "target_minutes": 11,
+      "target_minutes": 13,
       "range_minutes": [
-        9,
-        12
+        11,
+        13
       ],
       "candidate_ids": [
         "H37",
         "H38",
-        "S22"
+        "S22",
+        "N3665"
       ],
       "chapters": [
         {
@@ -420,6 +421,14 @@
           "new_information": "1899 年專家判假、1910 年州歷史學會判真、後來指出內容照《格陵蘭人薩迦》寫。",
           "candidate_ids": [
             "H38"
+          ]
+        },
+        {
+          "title": "Yarmouth 石：同一行刻痕，四種語言",
+          "seconds": 120,
+          "new_information": "新斯科細亞 1812 年的一塊石頭，被讀成維京符文、古日文、巴斯克文、邁錫尼文；1897 年一哩外又翻出前 13 個記號相同的第二塊。館方記下，最早發現它的醫生家族一直說那是他開的玩笑，挪威符文學者判定那不是符文。",
+          "candidate_ids": [
+            "N3665"
           ]
         },
         {
