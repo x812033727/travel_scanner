@@ -54,6 +54,8 @@ const GRADES = {
   dim: "eq=contrast=1.12:saturation=0.74:gamma=0.80:brightness=-0.06,colorbalance=rs=-0.02:bs=0.03:rh=0.035:gh=0.01:bh=-0.04,vignette=angle=PI/4",
 };
 const gradeOf = (id) => { for (const [g, ids] of Object.entries(edit.grades ?? {})) if (ids.includes(id)) return g; return edit.default_grade ?? "day"; };
+// 動態的 loudnorm 會把沒有對白的段落拉到跟對白一樣大（祖媽第 7 集開場公車底噪先大後小，2026-11-11 審片）；剪接表給 `mix_gain`（dB）就改成固定增益，後面的 alimiter 照舊擋峰值。
+const MASTER = edit.mix_gain != null ? `volume=${edit.mix_gain}dB` : "loudnorm=I=-14:TP=-2:LRA=11";
 const FINISH = edit.finish ?? "vignette=angle=PI/4.6,noise=alls=5:allf=t,format=yuv420p";
 
 const COLORS = { panel: "0x5ec8ff", task: "0xffd75e", affection: "0xff8fb8", reward: "0xffe08a", penalty: "0xff6b6b" };
@@ -332,7 +334,7 @@ const graph = [
   // Music ducking under dialogue: `duck_ratio` and `duck_release_ms` in the edit list (defaults 8 and 350 ms, as before).
   `[mus][key]sidechaincompress=threshold=0.02:ratio=${edit.duck_ratio ?? 8}:attack=15:release=${edit.duck_release_ms ?? 350}:makeup=1[ducked]`,
   `${sfxParts.join("")}amix=inputs=${sfxParts.length}:normalize=0:duration=longest[fx]`,
-  `[dlg][ducked][fx]amix=inputs=3:normalize=0:duration=first,loudnorm=I=-14:TP=-2:LRA=11,aresample=48000,alimiter=limit=0.75:level=false:attack=2:release=60[mix]`,  // 一次過的 loudnorm 遇到短促的大聲（第 1 集 c48 摔盤）會衝到 -0.9 dBFS，後面加 limiter 壓在 -2.5（2026-11-09）
+  `[dlg][ducked][fx]amix=inputs=3:normalize=0:duration=first,${MASTER},aresample=48000,alimiter=limit=0.75:level=false:attack=2:release=60[mix]`,  // 一次過的 loudnorm 遇到短促的大聲（第 1 集 c48 摔盤）會衝到 -0.9 dBFS，後面加 limiter 壓在 -2.5（2026-11-09）
 ].join(";");
 const fmt = (s) => { const ms = Math.round(s * 1000); const h = Math.floor(ms / 3600000), m = Math.floor(ms / 60000) % 60, sec = Math.floor(ms / 1000) % 60; return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")},${String(ms % 1000).padStart(3, "0")}`; };
 if (DUB) {
