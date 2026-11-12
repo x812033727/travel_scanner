@@ -59,7 +59,7 @@
 | 玻璃屋客廳與餐桌 | `assets/refs/set-glass-house-living.jpg` | 淺橡木地板、長淺木餐桌（畫面右）、低矮灰沙發（畫面左），三面落地玻璃外是灰海；陰天冷藍光。直式構圖取餐桌一角加一扇玻璃。 |
 | 玻璃屋臥室 | 待畫（`cast.json` 的 `glass-house-bedroom`） | 矮床、床頭櫃（床的左邊）、整面玻璃牆對著夜海；房門在床尾右側，門外走廊有一盞夜燈。 |
 | 玻璃屋嬰兒房 | 待畫（`glass-house-nursery`） | 白色嬰兒床、搖椅、一整面落地窗（就是 Peg 嫌太大的那面）。 |
-| 玻璃屋門口與車道（夜雨） | `assets/refs/set-glass-house-ext.jpg` 改夜雨版，待畫 | 黑色鋼框玻璃門、門右邊一根黑色燈柱（燈會閃）、碎石車道往畫面左下彎下去。 |
+| 玻璃屋門口與車道（夜雨） | `assets/refs/set-glass-house-ext.jpg` 改夜雨版，待畫 | 黑色鋼框玻璃門、門右邊一根黑色燈柱（燈會閃）、門外是門墊，下面兩級台階；碎石車道往畫面左下彎下去。大門**往屋裡拉開**（第 1、2 集同一扇門）。 |
 | 救護車內 | 待畫（新增） | 只拍她的臉與上半身、頂燈冷白；不拍醫療器材特寫，不拍處置。 |
 | Merrow General 七樓走廊 | 待畫（`hallway`） | 長走廊、沒有窗、灰綠牆、一排關著的門；盡頭天花板一盞燈一閃一閃；盡頭左邊一張長椅。護理站在走廊中段右邊。 |
 | Merrow General 七樓病房 | 待畫（`hospital-room`） | 單人房、床頭靠左牆、右邊一扇百葉窗；床頭櫃在床的右邊；門在床尾右側、開向走廊。點滴架在床頭左側（只當背景，不拍針頭）。 |
@@ -130,7 +130,7 @@ main 2026-11-12 收進種田拍法與共用的分鏡規則（`docs/videos/drama/
 - **原聲下的畫外**：第 1 集 Grant 只在電話與電視裡（Gemini Algieba，電話聲處理過）；第 3 集他露臉說話用原聲。兩個聲音不同，電話與電視的濾波蓋得過去，第一批草稿出來時再請站主聽。
   第 2 集 Elias 全部是畫外（Gemini Charon）。其他角色在畫面上說的話都寫在說話的人自己的鏡上。
 - **原聲的短句**：6 個字以內的短句放進 6 秒的片段，模型會把空檔講滿。短句後面寫一個收尾動作與「嘴閉上」；短喊照種田寫成「張嘴喊」不放原文，第一批草稿驗會不會講出多餘的字。
-- **拿在手上的道具**：道具句照抄到描述本身為止，再接手的位置，例如傘 `…, dripping, in his right hand, tip down`、雨衣 `over his left forearm`、紙袋 `in his left hand`；放下以後才寫整句（含 `propped against the door frame`）。空了的杯子寫道具句再加 `empty`。
+- **拿在手上的道具**：道具句照抄到描述本身為止，再接手的位置，例如傘 `…, dripping, in his right hand, tip down`、雨衣 `over his left forearm`、紙袋 `in his left hand`；放下以後才寫整句（含 `propped against the door frame`）。空了的杯子把 `half full of clear water` 換成 `empty`（`a clear plastic hospital cup about the size of her fist, empty`）；蓋上的白毯在道具句後接 `opened out over her legs`。
 - **數字念出來的台詞**：原聲正文裡寫成字（`nine-one-one`），免得數字被畫成字。
 - **第 2 集的分工**（重拆時定）：長椅上的人第 2 集醫院那場是一個背光剪影：第一次出現坐著、聽到尖叫站起來、之後椅子空著、Kim 說「No answer」後坐回去；從不露臉。
   燈柱：她左肩靠著燈柱、右手橫過身前抓住，近景裡燈柱一律在畫面右。走廊上她往畫面左走、右手撐牆。
@@ -141,4 +141,7 @@ main 2026-11-12 收進種田拍法與共用的分鏡規則（`docs/videos/drama/
   電話那場她右手拿手機貼右耳、臉朝畫面右外的海，鏡頭拍得到手機背面。深夜的床頭櫃從晚上起就是空的（早上的杯子與藥她白天收走了）；臥室門整晚半開。
   可以笑的只有：Nora 兩鏡閉嘴、不露齒的小笑，與電視廣告裡的 Grant；其他鏡都寫不笑。
 - **Peg 的 look**：`visit`、`coat` 的外貌句已改成跟定妝照一致（眼鏡戴在臉上），並拿掉帆布袋、行李箱、帳本；這些道具寫在每一鏡（`cast.json` 的 `canvas-tote` 等）。
-
+- **「I was on the floor! Alone!」**（站主 2026-11-12）：第 3 集台詞照細綱不改；第 2 集燈柱那場補一鏡（c13b）她左肩貼著燈柱滑坐到門前最上面那級濕台階上，之後那場她一直坐著，衣服乾淨。
+  門口：門墊，下面兩級濕石台階，燈柱立在最上面那級的右端。
+- **定妝照**（站主 2026-11-12）：開拍前重修兩張：`nora-portrait.jpg` 去掉左頰與頸部的小紅痕（像傷口）；`grant-portrait.jpg` 改成平臉、嘴閉著、嘴角平（原圖嘴角微揚）。
+  Grant 的眼鏡照原圖是細金屬圓框，`cast.json` 已把 rimless 改成 `thin round metal-rim glasses`（細綱與設定集的英文還寫 rimless，以這裡為準）。
