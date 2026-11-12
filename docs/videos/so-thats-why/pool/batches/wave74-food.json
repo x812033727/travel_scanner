@@ -1,0 +1,1311 @@
+{
+  "batch_id": "wave74-food-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十四輪從零研究的新長題（廚房、發酵）：豆腐與鹽滷（F82／V85）、老麵的菌（F95／V98），都留後備。",
+  "sources": [
+    {
+      "id": "K74-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8215186/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.heliyon.2021.e07239",
+      "title": "Direct comparison of the tofu-like precipitate formation by adding different coagulants: magnesium chloride and glucono-δ-lactone",
+      "publisher": "Heliyon 7:e07239（2021）；Arii Y、Sano Y、Nishizawa K（武庫川女子大學；Arii 現屬龍谷大學）",
+      "version": "出版社開放取用版（CC BY；PMC8215186 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 https://www.ebi.ac.uk/europepmc/webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 工具預設標頭，200），python 去標籤轉文字（參考文獻清單另存於 XML）",
+      "reading_scope": "全文（摘要、前言、方法、結果 3.1–3.4、討論、結論）；圖只讀圖說",
+      "locator": "摘要；3.1（MgCl2 6–8 mM 沉澱效率 10→60%、9 mM 平台、11 mM 降到 50%、中點 7.4 mM；GDL 7–8 mM 升到 60%、10 mM 約 70%、中點 7.9 mM）；3.3（8 mM 光滑、20 mM 粗糙）；3.4（中點 pH：MgCl2 6.3、GDL 6.0）；討論",
+      "summary": "同一條件下比較鹽滷主成分 MgCl2 與葡萄糖酸內酯（GDL）讓加熱豆漿（市售豆漿 50 g 蛋白質/L，85 °C）沉澱成「類豆腐沉澱」：兩者在 0–20 mM 範圍內沉澱效率、上清蛋白下降、尿素可溶蛋白的變化幾乎一樣，中點濃度分別 7.4 與 7.9 mM；低濃度（8 mM）沉澱表面光滑、高濃度（20 mM）粗糙。但兩者造成的 pH 差很多：上清蛋白下降的中點 pH，MgCl2 為 6.3、GDL 為 6.0，作者因此在本篇寫「pH 下降不是 MgCl2 形成類豆腐沉澱的絕對必要條件」，並提出共同的起始因素是蛋白質表面電荷下降。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "離心管中的模型「類豆腐沉澱」，不是做成一塊豆腐、沒有量口感；用的是市售豆漿；「pH 下降不是絕對必要」這個結論已被同一作者 2024 年在固定 pH 的實驗中修正（見 F82-S003），片中要說明先後。 覆核 V85（2026-11-12）：publisher 改為「Arii Y、Sano Y、Nishizawa K（武庫川女子大學；Nishizawa 現址龍谷大學）」，刪「Arii 現屬龍谷大學」。",
+      "author_cache": {
+        "file": "f82src/PMC8215186.txt（原始 PMC8215186.xml）",
+        "sha256_prefix": "71ecf09572bf0e76",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6154514/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.heliyon.2018.e00817",
+      "title": "Divalent magnesium cation concentrations determine the formation of tofu-like precipitates with differing urea solubilities",
+      "publisher": "Heliyon 4:e00817（2018）；Arii Y、Nishizawa K（武庫川女子大學）",
+      "version": "出版社開放取用版（CC BY；PMC6154514 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 https://www.ebi.ac.uk/europepmc/webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 工具預設標頭，200），python 去標籤轉文字（參考文獻清單另存於 XML）",
+      "reading_scope": "全文（摘要、前言、方法、結果與討論 3.1–3.7、結論）；圖只讀圖說",
+      "locator": "3.1（尿素可溶蛋白 0–7 mM 上升、7 mM 轉折、12 mM 最低）；3.4–3.6（只有 Mg2+ 能形成尿素不溶沉澱；NaCl 單獨 ≥100 mM 可形成尿素可溶沉澱；7 mM MgCl2 與 100 mM NaCl 時尿素可溶蛋白都約 75%）；表 1 引日本食品成分表；結論",
+      "summary": "在 80 °C 加熱的市售豆漿裡加不同濃度的鎂鹽：低於約 7 mM MgCl2 時形成的沉澱可溶於 2 M 尿素（作者先前把它對應到表面光滑、類似嫩豆腐的模型），高於 7 mM 轉為不溶於尿素的沉澱（對應粗糙、類似板豆腐的模型）。把氯離子固定、換掉鈉與鎂的比例，發現只有 Mg2+ 能做出不溶沉澱；只加 NaCl（約 100 mM 以上）也能做出可溶沉澱，作者推論可溶沉澱靠「鹽析」、不溶沉澱靠鎂在蛋白質羧基之間的鹽橋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「光滑沉澱≈嫩豆腐、粗糙沉澱≈板豆腐」是作者自己寫的推測模型（we speculate），不是實際豆腐的比較；鹽橋是推論，未直接觀察；與 F82-S001、F82-S003 同一研究群（Arii 群合計封頂 2.0）。表 1 的鈉鎂鈣含量引自日本食品成分表，不算本篇結果。",
+      "author_cache": {
+        "file": "f82src/PMC6154514.txt（原始 PMC6154514.xml）",
+        "sha256_prefix": "2c3fc74af896abf4",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11535762/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.heliyon.2024.e39319",
+      "title": "The role of pH decrease in tofu-like precipitate formation using magnesium chloride",
+      "publisher": "Heliyon 10:e39319（2024）；Arii Y（龍谷大學）",
+      "version": "出版社開放取用版（CC BY；PMC11535762 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 https://www.ebi.ac.uk/europepmc/webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 工具預設標頭，200），python 去標籤轉文字（參考文獻清單另存於 XML）",
+      "reading_scope": "全文（前言、方法、結果 3.1–3.5、討論、結論）；圖只讀圖說，表 1 全讀",
+      "locator": "3.1（無緩衝液時 pH 6.5→6.1；固定 pH 6.5 時 0 與 20 mM 上清蛋白無顯著差 p=0.7202；固定 pH 6.2 稍降）；表 1（20 mM：濕重 54.7%／18.9%／37.5%）；3.4（固定 pH 下不形成尿素不溶沉澱）；討論（MgCl2 使豆漿氫離子增加量為蒸餾水中的 4.12 倍）；結論",
+      "summary": "用緩衝液把加熱豆漿的 pH 固定，再加 0–20 mM MgCl2：不固定 pH 時，pH 隨 MgCl2 由 6.5 逐步降到 6.1，蛋白質照常沉澱；固定在 pH 6.5 時，加到 20 mM 上清蛋白也沒有顯著減少（p = 0.7202）；固定在 pH 6.2 時只稍微減少，而且都沒有形成尿素不溶的沉澱。20 mM 時濕沉澱重量：不固定 pH 54.7%、pH 6.5 18.9%、pH 6.2 37.5%。作者換算 20 mM MgCl2 讓豆漿增加的氫離子是讓蒸餾水增加的 4.12 倍，結論改為「pH 下降是 MgCl2 形成類豆腐沉澱的必要因素」，並把舊的機制示意圖更新。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一作者、離心管模型；緩衝液本身（500 mM Tris-maleate）也提高離子強度，作者以同離子強度比較排除，但只是一組對照；氫離子從哪裡來作者說未知；與 F82-S001、F82-S002 同研究群。 覆核 V85（2026-11-12）：publisher 改為「Arii Y（武庫川女子大學）」；limitations 加「固定 pH 6.5 時濕沉澱仍小幅顯著增加；討論說 20 mM 不支持 USP 形成，與 3.4 說固定 pH 下有 USP 形成前後不一」「本篇沒有寫 2021 年結論錯誤，只寫 pH 角色仍不清楚並更新 [5] 的示意圖」。",
+      "author_cache": {
+        "file": "f82src/PMC11535762.txt（原始 PMC11535762.xml）",
+        "sha256_prefix": "6fc6a50bbe44a8c8",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11952863/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.fochx.2025.102365",
+      "title": "Metal ions binding and colloidal destabilization in the model systems: Implication on the magnesium chloride coagulation mechanism in tofu making",
+      "publisher": "Food Chemistry: X 27:102365（2025）；Li Q、Hua Y、Li X、Kong X、Zhang C、Chen Y（江南大學）",
+      "version": "出版社開放取用版（CC BY-NC-ND；PMC11952863 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 https://www.ebi.ac.uk/europepmc/webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 工具預設標頭，200），python 去標籤轉文字（參考文獻清單另存於 XML）",
+      "reading_scope": "全文（摘要、前言、方法、結果與討論 3.1–3.3、結論）；表 1–2 全讀，圖只讀圖說",
+      "locator": "Highlights；3.1.4（MgCl2 滴入 BSA 幾乎無結合熱）；3.2.2（4 mg/mL 蛋白質脫脂豆漿：加 1.0 mM 時未結合 Mg2+ 近 0、加 4.0 mM 時約 2.3 mM）；3.3.1（加熱到 90 °C 濁度增量最低；115 °C 無增量）；3.3.2（臨界 ζ 電位約 −11 mV；加熱豆漿臨界蛋白質濃度 8 mg/mL）；結論",
+      "summary": "用等溫滴定熱量計與 ζ 電位研究鎂離子怎麼讓脫脂豆漿凝集：把 MgCl2 滴進牛血清白蛋白（BSA，當作與大豆蛋白電性相近的替身）幾乎量不到結合；豆漿中的植酸、檸檬酸、多酚等小分子才是大部分鎂的去處——蛋白質 4 mg/mL 的脫脂豆漿加 1.0 mM 鎂時，算出未被結合的鎂幾乎是零，加 4.0 mM 時約剩 2.3 mM。只有沒被小分子搶走的鎂會中和蛋白質顆粒的負電；ζ 電位升到約 −11 mV 時濁度與粒徑突然增加。加熱過（≥85 °C）的脫脂豆漿要蛋白質超過約 8 mg/mL 才明顯凝集；115 °C 加熱的完全不再增加。作者結論：「蛋白質—鎂—蛋白質橋」幾乎不形成，關鍵是膠體失穩。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "模型系統：脫脂豆漿、以 BSA 代替大豆蛋白做結合實驗，25 °C 量測，蛋白質濃度遠低於做豆腐的豆漿；「不形成橋」是從 BSA 推到大豆蛋白的推論；與 Arii 群的鹽橋推論互相矛盾，片中只能呈現為兩個研究群的不同解釋。結論中『去掉小分子可得較不苦、較滑的豆腐』是作者推測，不入片。 覆核 V85（2026-11-12）：summary 與 limitations 加「植酸加到 6 倍，濁度只稍降、粒徑幾乎不變，作者寫植酸含量對鎂凝集影響小」「本篇未引用 Arii 群、未研究 pH」；−26 mV 註明是 BSA 系統。",
+      "author_cache": {
+        "file": "f82src/PMC11952863.txt（原始 PMC11952863.xml）",
+        "sha256_prefix": "925d01aff7eb9120",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S005",
+      "url": "https://www.jstage.jst.go.jp/article/jsbbs/53/3/53_3_217/_pdf/-char/en",
+      "canonical_url": "https://doi.org/10.1270/jsbbs.53.217",
+      "title": "Seed Protein Content and Consistency of Tofu Prepared with Different Magnesium Chloride Concentrations in Six Japanese Soybean Varieties",
+      "publisher": "Breeding Science 53:217–223（2003）；Toda K、Ono T、Kitamura K、Hajika M、Takahashi K、Nakamura Y（日本作物研究所、岩手大學）；日本育種學會（J-STAGE）",
+      "version": "J-STAGE 正式排版 PDF（7 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（jstage soymilk heating protein particles tofu…）結果列出 J-STAGE 文章頁；文章頁上的 PDF 連結以 curl 工具預設標頭下載（200、application/pdf），pdftotext 轉文字",
+      "reading_scope": "全文 7 頁（摘要、前言、方法、結果、討論）；表 2 數值欄 pdftotext 排版錯亂，只採用正文與摘要寫出的數值",
+      "locator": "摘要（>0.20% 開始變硬、約 0.40% 最硬；r = 0.87 與 r = 0.27；Fukuyutaka 平均 0.34%、Sachiyutaka 平均 0.45%）；Results 第 2–3 段；Discussion 第 2 段（超過最適量後破斷應力下降，業者常用 0.25%）",
+      "summary": "六個日本大豆品種、每品種 9–10 批，做成鹽滷（MgCl2）豆腐量破斷應力：豆漿中 MgCl2 超過 0.20% 豆腐開始變硬，約 0.40% 最硬，最適濃度因品種與栽培條件不同；Fukuyutaka 平均 0.34% 就到最硬，Sachiyutaka 平均要 0.45%。種子蛋白質含量和「最硬值」強相關（r = 0.87），但和業者常用的 0.25% MgCl2 做出的硬度幾乎無關（r = 0.27）：蛋白質最高的 Sachiyutaka 在 0.25% 反而做出最軟的豆腐。加超過最適量，破斷應力反而下降，作者寫「過量凝固劑可能做出較軟的豆腐」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗室小量豆腐（50 g 豆、圓柱模），只用 MgCl2；硬度用破斷應力，不是試吃；品種差異的原因（植酸、新豆 pH 等）作者列為可能因素，未在本篇量測；表格數值因 PDF 排版只引正文。 覆核 V85（2026-11-12）：summary 加「排除 Sachiyutaka 後，0.25% 硬度與蛋白質含量顯著相關（r = 0.52）」；limitations 加「0.25% 為業者常用量是業者口述」「過量變軟依圖 2 兩批樣品與討論」。",
+      "author_cache": {
+        "file": "f82src/jsbbs53_217.raw.txt（版面版 jsbbs53_217.txt；原始 jsbbs53_217.pdf）",
+        "sha256_prefix": "ddf707dd33cc4f75",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10831496/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.fochx.2024.101137",
+      "title": "Mathematical modeling of optimal coagulant dosage for tofu preparation using MgCl2",
+      "publisher": "Food Chemistry: X 21:101137（2024）；Chen J、Cai L 等（吉林農業大學、國家大豆產業技術體系）",
+      "version": "出版社開放取用版（CC BY-NC-ND；PMC10831496 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 https://www.ebi.ac.uk/europepmc/webservices/rest/{PMCID}/fullTextXML 取 JATS 全文（curl 工具預設標頭，200），python 去標籤轉文字（參考文獻清單另存於 XML）",
+      "reading_scope": "摘要、前言、方法（最適凝固劑測定）、結果第一節與表 1、表 2；其後相關分析與迴歸只讀摘要與 Highlights 的寫法",
+      "locator": "方法 Determination of optimal coagulant concentration（以攪拌渦流消失判定）；表 1（30 品種 1.62–2.77 g/L）；摘要（與組胺酸、7S、11S 鹼性次單元正相關，與離胺酸負相關，迴歸誤差 10% 內）",
+      "summary": "30 個中國大豆品種，各自煮成豆漿後以幫浦等速加入 1 mol/L MgCl2，到攪拌渦流消失為止，量出每種豆漿需要的鹽滷量：最少 1.62 g/L、最多 2.77 g/L，品種間差異顯著。作者再把用量與成分做迴歸，用量與組胺酸、7S 球蛋白、11S 鹼性次單元等正相關、與離胺酸負相關。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「最適量」以渦流消失這個操作定義，不是用口感或硬度；迴歸是 30 個品種的相關，不是因果；只讀到相關分析的摘要層級（方法、表 1 讀全）。研究動機含廢水金屬離子，片中不談。 覆核 V85（2026-11-12）：summary 補「品種來自黑龍江、河南、吉林、山西、安徽」與「表 1 未註明無水或六水」。",
+      "author_cache": {
+        "file": "f82src/PMC10831496.txt（原始 PMC10831496.xml）",
+        "sha256_prefix": "ea2f952c4d4ff5e4",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5071761/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep35718",
+      "title": "Aggregation of soy protein-isoflavone complexes and gel formation induced by glucono-δ-lactone in soymilk",
+      "publisher": "Scientific Reports 6:35718（2016）；Hsia SY、Hsiao YH、Li WT、Hsieh JF（輔仁大學食品科學系、國家中醫藥研究所）",
+      "version": "出版社開放取用版（CC BY；PMC5071761 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 ncbi.nlm.nih.gov 的 PMC 頁；改以 Europe PMC REST（文件記載 API）的 /PMC5071761/fullTextXML 取 JATS 全文（curl 預設標頭，200），python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、結果與討論、方法）；只採用蛋白質與 pH 的部分",
+      "locator": "Results 第 1 段與圖 1 圖說（0 mM 時沉澱 0.12 mg/mL；4 mM GDL 約 90.1% 蛋白進入沉澱；pH 6.6、6.3、5.9、5.6、5.4、5.2）；第 2 段（接近等電點）",
+      "summary": "輔仁大學團隊在 85 °C 把 0–10 mM 葡萄糖酸內酯（GDL）加進脫脂加熱豆漿：沒加時沉澱裡只有 0.12 mg/mL 蛋白質；加到 4 mM、pH 由 6.6 降到 5.9 時，約 90.1% 的豆漿蛋白進了沉澱。2、4、6、8、10 mM 對應 pH 6.3、5.9、5.6、5.4、5.2。作者解釋為 GDL 水解成葡萄糖酸、pH 接近大豆蛋白次單元的等電點，電荷被中和後聚集。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "脫脂豆漿、離心沉澱，不是成形的豆腐；本篇另有大段異黃酮結果，屬營養與健康脈絡，不入片；等電點數值是引用前人，不算本篇。",
+      "author_cache": {
+        "file": "f82src/PMC5071761.txt（原始 PMC5071761.xml）",
+        "sha256_prefix": "fe42acb4ce729b11",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S008",
+      "url": "https://www.jstage.jst.go.jp/article/fstr/26/3/26_445/_html/-char/en",
+      "canonical_url": "https://doi.org/10.3136/fstr.26.445",
+      "title": "Effect of Two-step Heat Treatment Processes on the Formation of Protein Particles and Oil Droplets in Soymilk",
+      "publisher": "Food Science and Technology Research 26(3):445–450（2020）；Shimoyamada M（靜岡縣立大學）、Shikano H、Mogami S（宮城大學）等；日本食品科學工學會（J-STAGE）",
+      "version": "J-STAGE 全文 HTML（OPEN ACCESS、FULL-TEXT HTML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（jstage soymilk heating protein particles tofu…）結果列出此全文 HTML 頁；curl 工具預設標頭下載（200），python 去標籤轉文字",
+      "reading_scope": "全文 HTML（摘要、前言、方法、結果與討論）；圖只讀圖說",
+      "locator": "摘要；Results 第 2 段（一段 100 °C：1 500 × g 沉澱約 1.56%）；第 3 段（152 000 × g 蛋白顆粒：100 °C 一段 8.2%，70→100 °C 15.1%，80→100 °C 16.8%，先高後低與一段相當）；第 4 段（一段加熱油滴單峰約 0.4 µm，兩段加熱變多峰；先低後高主峰 1–10 µm）",
+      "summary": "把實驗室做的生豆漿用兩段溫度加熱：先 70 或 80 °C 再 100 °C，超高速離心分出的「蛋白質顆粒」比例是 15.1% 與 16.8%，約是只加熱 100 °C（8.2%）的兩倍；順序倒過來（先 100 °C 再 70 或 80 °C）就和一段差不多。豆漿裡的油滴（油體）一段加熱時是約 0.4 µm 的單峰，兩段加熱都出現 1 µm 以上的聚集或合併；先低後高的主分布落在 1–10 µm。作者結論：加熱的溫度順序對豆漿品質很重要。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用一個品種（Miyagishirome）、只量顆粒比例與粒徑，沒有做成豆腐；分離出的 7S、11S 單獨加熱的結果與豆漿不一致，作者自己說機制待查；與同作者 2015 年歐姆加熱一文同群。",
+      "author_cache": {
+        "file": "f82src/fstr_26_26_445.txt（原始 fstr_26_26_445.html）",
+        "sha256_prefix": "5defc4e0776d9a91",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S009",
+      "url": "https://www.jstage.jst.go.jp/article/fstr/24/4/24_677/_html/-char/ja",
+      "canonical_url": "https://doi.org/10.3136/fstr.24.677",
+      "title": "Effect of Oleosins on the Stability of Oil Bodies in Soymilk",
+      "publisher": "Food Science and Technology Research 24(4):677–685（2018）；Idogawa S（太子食品工業、東北大學）、Abe N、Abe K、Fujii T（東北大學）",
+      "version": "J-STAGE 全文 HTML（オープンアクセス）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（jstage soymilk heating…）結果列出此全文 HTML 頁（日文介面、英文內文）；curl 工具預設標頭下載（200），python 去標籤轉文字",
+      "reading_scope": "摘要、前言、方法全讀；結果只讀第一節（Stability of oil bodies and soymilk protein particles、表 1 說明）與摘要；TEM 與 N 端定序細節未逐段讀",
+      "locator": "摘要；前言（磨豆時油體被認為不破、分散進豆漿）；結果第一節（papain 消化後豆漿油體蛋白質約剩 40%、粒徑變小）",
+      "summary": "東北大學與豆腐廠的研究者追蹤豆漿製程中的油體：油體表面有一層特有蛋白油質蛋白（oleosin）加上吸附的豆漿蛋白，穿透式電顯看到表面被蛋白質包覆；蛋白質濃度低於 2.5 mg/mL 時，油質蛋白與豆漿蛋白的結合對膠體穩定特別重要。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到結果第一節與摘要，算薄；作者之一屬豆腐公司；細節屬生化，片中只用『豆漿裡的油不是游離油，而是一顆顆包著蛋白質的天然小油滴』一句。",
+      "author_cache": {
+        "file": "f82src/fstr_24_24_677.txt（原始 fstr_24_24_677.html）",
+        "sha256_prefix": "4e39c14df1f9bc35",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S010",
+      "url": "https://www.jstage.jst.go.jp/article/fstr/30/3/30_FSTR-D-23-00230/_html/-char/en",
+      "canonical_url": "https://doi.org/10.3136/fstr.FSTR-D-23-00230",
+      "title": "Crack expansion dynamics of freeze-dried soybean curd during rehydration",
+      "publisher": "Food Science and Technology Research 30(3)（2024）；Hirakawa M、Teshima H、Ikuta T、Takahashi K（九州大學航空宇宙工學、I2CNER）",
+      "version": "J-STAGE 全文 HTML",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（jstage 凍り豆腐 凍結 たん白質…）結果列出此全文 HTML 頁；curl 工具預設標頭下載（200），python 去標籤轉文字",
+      "reading_scope": "全文 HTML（摘要、前言、方法、結果與討論、結論）；補充資料 Table S1 未讀；圖只讀圖說",
+      "locator": "方法（市售凍乾絹豆腐約 15 mm 方塊、製程中已有約 0.1 mm 裂縫、−22 °C 以下急凍）；Results 第 1 段（20、40 °C 各 15 塊 0 塊碎裂，70 °C 1/15，100 °C 6/15；100 °C 約 10 s 水由裂縫吸入，20 °C 超過 70 s；氣泡來自樣品內部空氣）；圖 4 圖說（146、95、62、59 s）；模型（黏度隨溫度下降使吸水快 1.5、2.2、2.9 倍）；結論",
+      "summary": "九州大學熱流工程團隊把市售冷凍乾燥絹豆腐丟進 20、40、70、100 °C 的水：完全濕透平均要 146、95、62、59 秒；20 與 40 °C 各 15 塊沒有一塊裂開，70 °C 有 1 塊、100 °C 有 6 塊沿著製程留下的細裂縫裂成兩半以上。熱水經裂縫吸水比多孔本體快得多（100 °C 約 10 秒），本體與裂縫吸水速度與軟硬不同，應力集中在裂縫尖端把豆腐撐開；冒出的氣泡是樣品裡原本的空氣，在 70 °C 或除氣過的 100 °C 水中也有，不是沸騰造成，也不是碎裂原因。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "對象是速食用的凍乾絹豆腐（含澱粉、安定劑），不是傳統凍豆腐或高野豆腐；裂縫分布每塊不同；不給泡法建議、不提產品。",
+      "author_cache": {
+        "file": "f82src/fstr_30_30_FSTR-D-23-00230.txt（原始 fstr_30_30_FSTR-D-23-00230.html）",
+        "sha256_prefix": "43e5460ea8a80e50",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S011",
+      "url": "https://www.jstage.jst.go.jp/article/cookeryscience1995/39/6/39_354/_pdf/-char/ja",
+      "canonical_url": "https://doi.org/10.11402/cookeryscience1995.39.6_354",
+      "title": "固形分濃度の低い絹ごし豆腐を用いた凍り豆腐の調整（Making Kori-tofu from Commercial Kinugoshi-tofu with Low Solid Content）",
+      "publisher": "日本調理科学会誌 39(6):354–356（2006，ノート）；大久長範、三浦僚子、大能俊久、出雲悦子（秋田縣綜合食料研究所）",
+      "version": "J-STAGE 正式排版 PDF（3 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch（jstage 凍り豆腐 凍結…）結果列出 J-STAGE 文章頁；文章頁上的 PDF 連結以 curl 工具預設標頭下載（200），pdftotext 轉文字",
+      "reading_scope": "英文摘要全讀；日文正文為雙欄、pdftotext 字序混雜，只讀得出前言（市售絹豆腐固形分約 10–12%、長野縣業者佔 95% 以上、重曹軟化法）與實驗方法；結果段落未能逐句讀",
+      "locator": "英文摘要（市售凍豆腐 H1 3.00–3.75、H2 15.60–19.10 N/cm2、H2/H1 5.2–5.5；低固形分絹豆腐在 −10 °C 容器內凍結成纖維狀、H2/H1 超過 10；固形分與 H2/H1 三次式 R2 0.9；需提高固形分超過 14%）；前言",
+      "summary": "秋田的研究者想用市售絹豆腐自製凍豆腐：市售絹豆腐固形分只有約 10–12%，直接在 −10 °C 凍成的是纖維狀、內外硬度比（H2/H1）超過 10 的凍豆腐，市售凍豆腐約 5.2–5.5；固形分與硬度比的關係可用三次式描述（R2 0.9），作者寫要把固形分提高到 14% 以上才做得好。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "短篇研究筆記；結果正文因 PDF 字序未逐句核對，只用英文摘要的數字；不給家庭製作建議。 覆核 V85（2026-11-12）：reading_scope 補「日文結論句『固形分濃度を14%以上』可辨讀，支持 14% 以上」。",
+      "author_cache": {
+        "file": "f82src/cook39_354.txt（原始 cook39_354.pdf；文章頁 cookeryscience1995_39_39_354.txt）",
+        "sha256_prefix": "7684622d56ff31bf",
+        "note": "作者快取在本工作階段暫存目錄 stw24/f82src/，未進 repo。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7837699/fullTextXML",
+      "canonical_url": "https://doi.org/10.7554/eLife.61644",
+      "title": "The diversity and function of sourdough starter microbiomes",
+      "publisher": "eLife 10:e61644（2021）；Landis, Oliverio 等，通訊作者 Wolfe（Tufts）；共同作者含 Fierer（Colorado）、Dunn（NC State）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要、eLife digest、前言、結果全部四小節、討論全段；方法只讀到關鍵資源表前段；圖表只讀圖說",
+      "locator": "摘要；結果〈Diversity of sourdough starters〉第 1–2 段；〈Geography, process parameters…〉第 1–4 段；〈Microbial composition influences dough rise〉第 3 段；討論第 2、4 段",
+      "summary": "社區科學家寄來 500 罐家用老麵（美國 429、加拿大 29、歐洲 24、澳紐 17、泰國 1）。美國本土內菌相與地理距離無相關（Mantel ρ = 0.0）；33 項飼養與環境因子合計只解釋不到 10% 的差異。每罐中位數 3 種乳酸菌／醋酸菌、1 種酵母；釀酒酵母在 77% 樣本佔真菌讀數過半。L. sanfranciscensis 多見於較老、以及向店家取得的 73 罐老麵。147 罐含醋酸菌（>1%）；40 罐功能測試中醋酸菌比例與醋味相關、與麵團膨脹速率負相關（ρ = −0.51）。兩兩共培養中 L. sanfranciscensis 只有與 K. humilis 同養時能留下。作者明寫結果與『舊金山酸種』等地域信念相反。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "家用老麵、以美國為主（歐洲僅 24 罐）；擴增子定序只到種，作者自承可能看不到菌株層級的地域性；樣本為寄送後冷凍（運送期間菌相可能變動，見 F95-S012）。醋酸菌與醋味、膨脹的關係作者寫『不是所有樣本都如此』。",
+      "author_cache": {
+        "file": "f95src/PMC7837699.txt（原始 PMC7837699.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "9a687e6114f70114",
+        "xml_sha256_prefix": "b0b9eeca870dd87a",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6968659/fullTextXML",
+      "canonical_url": "https://doi.org/10.1128/mSphere.00950-19",
+      "title": "Influences of Ingredients and Bakers on the Bacteria and Fungi in Sourdough Starters and Bread",
+      "publisher": "mSphere 5:e00950-19（2020）；Reese, Madden, Joossens, Lacaze, Dunn（通訊作者 Dunn，NC State）；Lacaze 屬 Puratos 公司",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要、Importance、前言、結果全段、討論全段；方法未讀；補充表只讀表名",
+      "locator": "前言末段（18 位烘焙師、14 國）；結果第 1、5–7 段（表 1、SourceTracker）、第 8 段（自己的手與自己的老麵）、第 9 段（酸度與風味）；討論第 4、7 段（手上乳桿菌比例）",
+      "summary": "18 位烘焙師（14 國）用同一包麵粉、同一份配方各養一罐老麵，帶到比利時聖維特取樣：老麵彼此差異大，並影響麵包的『酸』味評分；整體菌相最像麵粉；約 26% 老麵的擴增子序列變異（ASV）見於手上而不見於麵粉；烘焙師手上乳桿菌最高佔細菌讀數 88%（平均 33%），作者寫遠高於過去學生與一般人手部研究。手與『自己的』老麵乳酸菌組成較相近（p = 0.028），但無法從老麵認出是誰養的。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每人一罐、沒有非烘焙師對照、取樣時距養老麵已有時間差；作者自承 SourceTracker 有限制、可能低估未知來源；手部菌也可能來自環境或同事（作者列為不能排除）。共同作者含 Puratos 員工。 覆核 V98（2026-11-12）：limitations 加：烘焙師由 Puratos 協助招募，麵粉由單一來源寄送，取樣在 Puratos 所在的聖維特；共同作者 Lacaze 屬 Puratos。",
+      "author_cache": {
+        "file": "f95src/PMC6968659.txt（原始 PMC6968659.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "0a220c4e67681586",
+        "xml_sha256_prefix": "f8dd1470b8f07601",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S014",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7074792/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/microorganisms8020240",
+      "title": "Interactions between Kazachstania humilis Yeast Species and Lactic Acid Bacteria in Sourdough",
+      "publisher": "Microorganisms 8:240（2020）；Carbonetto, Nidelet, Guezenec, Perez, Segond, Sicard（通訊作者 Sicard，INRAE Montpellier）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要；結果 3.2–3.5 全段；結果 3.1 只讀麥芽糖一句；討論全段；方法未讀",
+      "locator": "摘要；結果 3.2.1（酵母菌數）、3.2.2、3.3.1、3.3.2（麵團高度）；討論第 2–3 段",
+      "summary": "在麵團裡把 4 株酵母（3 株 K. humilis、1 株釀酒酵母）與多株乳酸菌兩兩共養 24 小時：每一株酵母與乳酸菌同養時菌數都顯著較低（平均降為 1.87 分之一），乳酸菌則 16 組裡只有 3 組受酵母影響；酵母減少無法全用酸度解釋（過半麵團 pH > 4）。另一方面，部分 K. humilis 與 L. sanfranciscensis 的組合把麵團撐得和釀酒酵母一樣高，而 K. humilis 單獨時從未做到。作者結論：找不到正向互動證據，應重新思考『互相幫忙才共存』的假說；共存可能靠烘焙坊環境反覆帶入菌、以及糖從未被吃完。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "24 小時、單次發酵，不是長期續種；菌株數有限；麥芽糖交互作用只能推論。與 F95-S004 同屬 INRAE Sicard 群。 覆核 V98（2026-11-12）：summary 刪去『K. humilis 單獨時從未做到』，改寫：摘要說單獨時從未像釀酒酵母一樣高，但結果 3.1.2 與討論說 yB5-AC1、yB6-15 單獨時與釀酒酵母沒有差異，原文自相矛盾，不入稿；58% pH>4 限定 K. humilis 共培養。",
+      "author_cache": {
+        "file": "f95src/PMC7074792.txt（原始 PMC7074792.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "93fe08e6d498455c",
+        "xml_sha256_prefix": "2a9f460ffb3b4971",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13688844/fullTextXML",
+      "canonical_url": "https://doi.org/10.1128/aem.01030-26",
+      "title": "Lactic acid bacterium F. sanfranciscensis impairs fitness of yeast M. humilis in a synthetic wheat sourdough medium",
+      "publisher": "Appl Environ Microbiol（2026 年 10 月號）；Wittwer 等，通訊作者 Howell（墨爾本大學），共同作者 Sicard 群（INRAE Montpellier）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文；2026-10-12 版，出版說明：9 月 17 日首刊缺一句致謝，10 月 12 日補上）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要、Importance、前言、結果全段、討論全段、結論、致謝與出版說明；方法未讀",
+      "locator": "摘要；結果第 2–3 段（共培養存活數，約一個對數級）、第 5 段（M. humilis 不吃麥芽糖）、第 6 段（胺基酸）、驗證段（pH 3–6 不影響）；討論第 1–2、5、10 段",
+      "summary": "在合成小麥酸種培養液裡，把澳洲與法國老麵分離的 M. humilis（舊名 K. humilis）與 F. sanfranciscensis 共 64 種配對共養 24 小時、用流式細胞儀數活菌與死菌：細菌活菌數不受酵母影響，酵母活菌較少、死菌較多；與其中一株細菌同養時酵母約少一個對數級。酵母完全不吃麥芽糖、靠葡萄糖；胺基酸主要是細菌釋出，而不是過去假設的酵母餵細菌。把培養液用乳酸調到 pH 3–6 不影響酵母。作者結論：這對組合的關係大概是中性甚至競爭，『葡萄糖互餵』沒有直接證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只做 24 小時、單一溫度 25 °C、無麵粉澱粉酶的合成培養液；作者列為主要限制。與 F95-S003 同屬 INRAE Sicard 網（Sicard 為共同作者），兩篇合計封頂 2.0。版本有 10 月 12 日修訂（只補致謝，不影響數據）。 覆核 V98（2026-11-12）：limitations 加：pH 3–6 試驗只用一株 M. humilis（Aus_OsrY1）；『葡萄糖互餵沒有直接證據』應寫為『過去沒有研究清楚證明、已發表證據很少』（原文 no studies have clearly demonstrated／scarce）。研究群寫為 INRAE Sicard–墨爾本 Howell 合作網，法、澳不是兩個研究群。",
+      "author_cache": {
+        "file": "f95src/PMC13688844.txt（原始 PMC13688844.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "7ee26188cbe4fa13",
+        "xml_sha256_prefix": "f4a5cb0d2576f7b7",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S016",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8528097/fullTextXML",
+      "canonical_url": "https://doi.org/10.1128/Spectrum.00662-21",
+      "title": "Mechanistic Insight into Yeast Bloom in a Lactic Acid Bacteria Relaying-Community in the Start of Sourdough Microbiota Evolution",
+      "publisher": "Microbiology Spectrum 9:e00662-21（2021）；Oshiro, Tanaka, Momoda, Zendo, Nakayama（九州大學；第一作者任職山崎製パン）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要、Importance、前言、結果全段（含表 1、表 2）、討論全段；方法未讀",
+      "locator": "結果〈Time course monitoring〉第 1 段；〈In vitro examination〉段；〈Yeast-LAB pairwise cocultures using different sugar concentrations〉段；討論第 2、5 段",
+      "summary": "六批小麥麵粉加自來水從零開始養、續種 32 輪：第 0 輪乳酸菌與酵母都低於偵測限（<2 log CFU/g）；前 6 輪乳酸菌升到 8.6 log 以上、pH 降到 4 以下；酵母在乳酸菌之後才增加，各批起漲時間不同，最後一輪 6.8–7.3 log。乳酸菌分三棒接力（三棒分類沿用前言所引文獻：腸球菌、乳球菌、明串珠菌、魏斯氏菌 → 足球菌、彎曲乳桿菌 → 植物乳桿菌、短乳桿菌、L. sanfranciscensis 等），酵母在第二、三棒出現時起漲。試管中 12 株涵蓋三棒的乳酸菌全都壓低一株釀酒酵母；拿掉麥芽糖酵母大減，多加麥芽糖則救回到 6.5 log 以上。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一實驗室、單一酵母株做體外配對；麵粉只有一種；第一作者受雇於烘焙公司（文中聲明）。功能推測（PICRUSt2）只是預測。 覆核 V98（2026-11-12）：limitations『麵粉只有一種』改為『六袋日本市售小麥麵粉、每袋養一批』；補討論推測酵母可能從麵粉、自來水、器具或手少量進入。",
+      "author_cache": {
+        "file": "f95src/PMC8528097.txt（原始 PMC8528097.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "ebc2ba55e25205ef",
+        "xml_sha256_prefix": "502595d9102f774e",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S017",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10714952/fullTextXML",
+      "canonical_url": "https://doi.org/10.1128/spectrum.01370-23",
+      "title": "Cyclic pairwise interaction representing a rock–paper–scissors game maintains the population of the vulnerable yeast Saccharomyces cerevisiae within a multispecies sourdough microbiome",
+      "publisher": "Microbiology Spectrum 11:e01370-23（2023）；Oshiro, Zendo, Tashiro, Nakayama（九州大學／山崎製パン）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要、Importance、Observation 正文全段（含表 1、圖說、限制段）；補充材料未讀",
+      "locator": "正文第 5 段（31 組續種實驗）、第 7 段（表 1：70% 競爭、30% 偏害）、第 8 段（剪刀石頭布）、第 10 段（限制）",
+      "summary": "用 3 種乳酸菌、2 種酵母的所有組合（31 組）在模擬酸種培養液續種 14–18 輪並以 Lotka–Volterra 模型擬合：兩兩配對中 70% 是互相傷害的競爭、30% 是一方受害的偏害，沒有互利。釀酒酵母單獨碰上 L. fermentum 會被壓低，但三到五種同養時族群能維持：釀酒酵母、L. fermentum、P. pentosaceus 三者像剪刀石頭布一樣互剋，系統性地撐住了酵母。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "體外培養液、五株菌、一組資料；交互作用強度是模型推估；作者自承模型未納入 pH 與麥芽糖。與 F95-S005 同群（九州大學），合計封頂 2.0。 覆核 V98（2026-11-12）：limitations 加利益聲明：第一作者任職山崎製パン。另記：兩篇九州大學論文的編輯是 Kate S. Howell（墨爾本大學，S004 通訊作者）——編輯不是共同作者，不併群，只記錄。",
+      "author_cache": {
+        "file": "f95src/PMC10714952.txt（原始 PMC10714952.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "e8187d8cfe795507",
+        "xml_sha256_prefix": "a7b56d45b0ecdfe5",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S018",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5660601/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.cels.2017.09.002",
+      "title": "Yeast Creates a Niche for Symbiotic Lactic Acid Bacteria through Nitrogen Overflow",
+      "publisher": "Cell Systems 5:345–357（2017）；Ponomarova 等，通訊作者 Patil（EMBL Heidelberg）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "Summary、Highlights、前言、結果前兩小節（到〈A Genome-Scale Community Metabolic Model〉標題前）；其後結果、討論、方法未讀",
+      "locator": "Summary；結果〈Yeast Enables Growth of LAB…〉第 2–3 段；〈Yeast-LAB Interaction Is Mediated by Small Molecules〉段",
+      "summary": "在一種 35 成分的化學定義培養液（CDM35）裡，乳酸乳球菌與植物乳桿菌單獨都長不起來，與釀酒酵母同養就能長；每日續種兩週後兩種乳酸菌都還在、單獨續種的則測不到，續種超過 50 天仍穩定。只用酵母養過的濾液也能讓乳酸菌長，代表靠的是酵母釋出的小分子（摘要：主要是胺基酸，在氮源充足時溢出）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "不是酸種：化學定義培養液與葡萄汁；乳酸菌為 L. plantarum 與 L. lactis，不是 L. sanfranciscensis。只能用來說明『酵母餵細菌』在別的配對確實存在，不能推到老麵。",
+      "author_cache": {
+        "file": "f95src/PMC5660601.txt（原始 PMC5660601.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "b9b81f7dde0c02c3",
+        "xml_sha256_prefix": "e7ac69a201942669",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S019",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9472446/fullTextXML",
+      "canonical_url": "https://doi.org/10.1186/s40168-022-01301-3",
+      "title": "Metabolic framework of spontaneous and synthetic sourdough metacommunities to reveal microbial players responsible for resilience and performance",
+      "publisher": "Microbiome 10:148（2022）；Calabrese 等，通訊作者 Di Cagno（Bolzano），含 Gobbetti、De Angelis（Bari）；共同作者 Vertè 屬 Puratos 公司",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要；方法第一段（樣本來源）；結果中合成群落比較與 30 天續種兩段（第 1443、1446 行）；討論全段、結論；其餘結果（宏基因組各小節）未逐段讀",
+      "locator": "方法第 1 段（8 罐來自 Puratos 國際酸種圖書館）；結果末兩段（SDG 與 SMC-SD43 30 天續種）；討論末小節",
+      "summary": "研究者依 8 罐天然老麵的宏基因組與轉錄體資料重組兩個合成群落，每天續種 30 天：照其中一罐美國老麵（SD43）菌種名單原樣重組的 9 種群落，pH（約 4.2–4.3）與乳酸菌數始終和另一組一樣穩，但細看菌株指紋，L. sanfranciscensis 等很快消失，30 天後只剩 4 株原始菌株，54 種揮發物有 45 種改變；另一個刻意納入優勢、次要與『衛星』成員的 7 種設計群落，除一種酵母外全數留下、只有 3 種揮發物改變。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "合成群落在實驗室的模擬條件；作者以『衛星成員帶來功能冗餘』解釋，是推論。樣本來自 Puratos 的收藏，研究與產業合作。 覆核 V98（2026-11-12）：limitations 保留 Puratos 收藏與共同作者 Vertè（Puratos NV）；加註與 F95-S002 的 Puratos 共同作者 Lacaze 不是同一人、兩篇沒有共同作者，依規則不併群，但兩篇共享同一業界合作方。",
+      "author_cache": {
+        "file": "f95src/PMC9472446.txt（原始 PMC9472446.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "1ced590f2b242dc7",
+        "xml_sha256_prefix": "32c0c30d1fb704cc",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S020",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7374928/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fmicb.2020.01212",
+      "title": "Diverse Microbial Composition of Sourdoughs From Different Origins",
+      "publisher": "Frontiers in Microbiology 11:1212（2020）；Comasio, Verce, Van Kerrebroeck, De Vuyst（布魯塞爾自由大學 IMDO）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要、討論全段、資料聲明與利益聲明；結果各小節未逐段讀（只依討論引用）",
+      "locator": "摘要；討論第 1 段（同一生產者不同麵粉）、第 3 段（醋酸菌只在比利時樣本、果蠅推測）、第 3 段後半（拉比克酒廠的 Dekkera）",
+      "summary": "比較比利時、法國、英國、美國共 17 罐家用、烘焙坊與一家拉比克啤酒廠的續種老麵：同一個生產者的老麵菌相相似，即使他用不同麵粉也一樣；作者結論生產者（其場所菌群與製程）是主要因素。拉比克啤酒廠的老麵以拉比克啤酒常見的 Dekkera 酵母與醋酸菌為主，作者認為最可能來自啤酒或酒廠環境；醋酸菌只出現在比利時樣本。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "17 罐、4 國，樣本少；結果段未逐段核對，數字只取摘要與討論。『來自酒廠環境』『果蠅可能攜帶醋酸菌』是作者推論。 覆核 V98（2026-11-12）：limitations 加：拉比克啤酒廠兩罐中 G-B-WL 配方含 50% 拉比克啤酒；裸麥老麵（E-B-R）與同生產者其他罐不同，作者認為可能是裸麥麵粉的影響；結論保留『不同麵粉相對豐度不同』。",
+      "author_cache": {
+        "file": "f95src/PMC7374928.txt（原始 PMC7374928.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "811c6a0580cc300e",
+        "xml_sha256_prefix": "b1f0786b033081f3",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S021",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11434513/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/microorganisms12091872",
+      "title": "Genotypic Stability of Lactic Acid Bacteria in Industrial Rye Bread Sourdoughs Assessed by ITS-PCR Analysis",
+      "publisher": "Microorganisms 12:1872（2024）；Lutter, Kuzina, Andreson（愛沙尼亞生命科學大學，Tartu）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "以關鍵字掃讀：摘要、前言第 7、9 段、方法第 14–15 段、結果與討論第 42–43、54–62、68、70–71 段、結論；其餘段落未讀",
+      "locator": "方法第 14 段（裸麥老麵 40 多年、每日續種；小麥老麵 5–10 年重做）；結果與討論第 54、56 段；結論",
+      "summary": "一家愛沙尼亞麵包廠的裸麥老麵（40 多年前用不明商業菌元起頭、每天續種至今）與另一間房養的小麥老麵，四季取樣 66 株乳酸菌分型：有 9 個基因型同時出現在兩罐老麵，作者認為廠內環境與員工讓菌在兩罐間傳遞；裸麥老麵有 5 個基因型至少穩定半年，小麥老麵則沒有一個基因型一直在。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一工廠、一年、培養法分離；基因型分型解析度有限；裸麥老麵起頭不是自然發酵，而是商業菌元。只讀關鍵段落。 覆核 V98（2026-11-12）：summary 刪『與員工』：本篇只說廠內兩罐間可能傳遞，員工手部證據是引用 Scheirlinck 等。",
+      "author_cache": {
+        "file": "f95src/PMC11434513.txt（原始 PMC11434513.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "b7a61cb5ed4cc3c4",
+        "xml_sha256_prefix": "267f7dae0c156893",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S022",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13206629/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/foods15101745",
+      "title": "Synergistic Interaction Between Kazachstania humilis and Fructilactobacillus sanfranciscensis Modulates Metabolic Reprogramming to Enhance Mantou Functionality in Liquid Sourdough",
+      "publisher": "Foods 15:1745（2026）；Liang, Wu 等，通訊作者 Zhang Guohua（山西大學）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言第 12–13 段、結果與討論中產氣篩選（第 199 段）、菌數動態（第 239、242 段）、酸度段（第 245 段）；營養、澱粉消化與抗氧化各段只掃過、不採用",
+      "locator": "結果與討論第 199 段（28 株產氣、市售酵母 12 h）、第 239 段（細菌不受影響）、第 242 段（1:100 時酵母自 3 h 起受抑制）",
+      "summary": "為饅頭用液種，從老麵分離的 28 株 K. humilis 都能產氣，但市售釀酒酵母 12 小時就填滿杜氏管，K. humilis 最快要 12–24 小時。與 F. sanfranciscensis 同養時，細菌菌數與單養一樣（12 小時達 8.4–8.8 log CFU/g），作者明寫酵母不壓制細菌；酵母則在 1:100 接種比例下自第 3 小時起與對照分開、逐步受抑制。標題的『協同』指的是成品性質，不是菌數。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一菌株配對、短時間液種；論文其餘部分談抗性澱粉與抗氧化，屬健康性質，本題不採用。 覆核 V98（2026-11-12）：summary 刪『標題的協同指的是成品性質，不是菌數』，改為：作者在結果與結論把碳、氮代謝也稱為協同與互餵（依代謝體學推論），同時在菌數段寫共存主要靠競爭而非嚴格互利；1:1 比例下酵母沒有被明顯壓制；產氣為 72 小時內全部、7 株 12–24 小時。",
+      "author_cache": {
+        "file": "f95src/PMC13206629.txt（原始 PMC13206629.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "8a65321aa3f35622",
+        "xml_sha256_prefix": "db16e16e94f94056",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S023",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12901149/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41522-025-00909-1",
+      "title": "Shipped and shifted: modeling collection-induced bias in microbiome multi-omics using a tractable fermentation system",
+      "publisher": "npj Biofilms and Microbiomes（2026）；Meyer, Tan, Mihaila 等，通訊作者 Bokulich（蘇黎世聯邦理工學院）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要後段、前言第 1 段、結果前四小節（溫度與時間、菌群演替、組成重組、β 多樣性）；代謝體學小節之後、討論與方法未讀",
+      "locator": "結果第 1–2 小節（4、17、30 °C 存放 28 天、第 6 天醋酸菌佔優）；第 3 小節末段（兩菌相反軌跡）",
+      "summary": "為了檢驗社區科學家郵寄老麵會不會讓定序結果失真，把同一罐老麵分裝、不餵食，分別放 4、17、30 °C 達 28 天：4 °C 時一個月內細菌組成穩定、L. sanfranciscensis 一直領先；17 °C 第 14 天、30 °C 第 6 天起被醋酸菌（Acetobacter cerevisiae／malorum）超過；酵母（釀酒酵母佔 >97.5%）組成相對穩定。作者據此提醒大型郵寄採樣的偏差。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一母麵、不餵食的運輸模擬，不是正常飼養；本片只拿來說明菌群隨溫度消長與調查方法的限制，不作任何保存建議。 覆核 V98（2026-11-12）：limitations 加：基線老麵本來就含 A. cerevisiae|malorum；作者自己寫 30 °C／28 天是壓力測試，不是食用麵團的實際或安全存放情境。",
+      "author_cache": {
+        "file": "f95src/PMC12901149.txt（原始 PMC12901149.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "b5ebf4e5e63ec487",
+        "xml_sha256_prefix": "4d9382d05752b65e",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S024",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8534550/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/foods10102253",
+      "title": "Determination of Technological Parameters and Characterization of Microbiota of the Spontaneous Sourdough Fermentation of Hull-Less Barley",
+      "publisher": "Foods 10:2253（2021）；Reidzane 等（拉脫維亞生命科學與技術大學；愛沙尼亞 TFTAK 食品與發酵技術中心）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要、前言第 12–16 段（掃讀）、結果第 102、461–463 段、討論第 780–788、796 段；其餘未讀",
+      "locator": "第 781 段（菌數 3.1→8.2、4.9→7.3 log）；第 785 段（第一階段後細菌超過 70 種）；第 788、796 段（麵粉中 Pantoea 等，之後轉為 Pediococcus）",
+      "summary": "裸大麥全穀粉自然起種、三階段續種：麵粉裡數量最多的細菌是 Pantoea、Curtobacterium、Pseudomonas 等植物常見菌；第一階段後細菌種數最多（超過 70 種），以 Pantoea agglomerans 與糞腸球菌為主；第二、三階段轉為戊糖足球菌當家。乳酸菌從 3.1 升到 8.2 log CFU/g，酵母從 4.9 升到 7.3 log CFU/g。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "大麥、實驗室控溫的最佳化實驗，一批；起始時酵母高於乳酸菌，與小麥（F95-S005）不同，不能合成一條通則。 覆核 V98（2026-11-12）：summary『糞腸球菌』改『屎腸球菌（Enterococcus faecium）』。",
+      "author_cache": {
+        "file": "f95src/PMC8534550.txt（原始 PMC8534550.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "9d8f97c1e394fc57",
+        "xml_sha256_prefix": "d4d303fd6fb88ce7",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S025",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11011504/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/foods13071059",
+      "title": "Sourdough Yeast Strains Exhibit Thermal Tolerance, High Fermentative Performance, and a Distinctive Aromatic Profile in Beer Wort",
+      "publisher": "Foods 13:1059（2024）；Sánchez-Adriá, Sanmartín, Prieto, Estruch, Randez-Gil（西班牙 CSIC IATA，Valencia）",
+      "version": "出版社開放取用版（CC BY；PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，curl 預設標頭，python -I 去標籤轉文字",
+      "reading_scope": "摘要、結果與討論 3.3–3.5、結論；3.1–3.2 與方法未讀",
+      "locator": "結果與討論 3.4 第 1 段（麥芽糖全吃完、麥芽三糖 ≤8%）",
+      "summary": "兩株從老麵分離的釀酒酵母在麥汁裡把麥芽糖全部吃完，兩株市售啤酒酵母則分別剩 32%（20 °C）與 23%（37 °C）；但老麵酵母幾乎不吃麥芽三糖（不超過 8%），市售株會吃。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有兩株老麵酵母、在啤酒麥汁裡而不是麵團；只能說明這兩株的糖偏好。 覆核 V98（2026-11-12）：summary 加：32%／23% 是 48／72 小時的中途值，市售株在 4 °C 熟成期把剩下的麥芽糖也吃完；提案 F95-014 不收。",
+      "author_cache": {
+        "file": "f95src/PMC11011504.txt（原始 PMC11011504.xml，去標籤轉文字；參考文獻表省略）",
+        "sha256_prefix": "789929f69e18cb13",
+        "xml_sha256_prefix": "6c99bc2869f51efe",
+        "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；只記雜湊前 16 碼。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "K74-S026",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC11654800&format=json&resultType=core",
+      "canonical_url": "https://doi.org/10.1128/aem.01892-24",
+      "title": "Does strain-level persistence of lactobacilli in long-term back-slopped sourdoughs inform on domestication of food-fermenting lactic acid bacteria?",
+      "publisher": "Appl Environ Microbiol 91（2025，2024 線上）；Pham, Xu, Simpson, Zhang, Gänzle（亞伯達大學）",
+      "version": "Europe PMC 書目紀錄（摘要）；全文未讀",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（resultType=core）取得摘要；fullTextUrlList 列出的 europepmc.org PDF 連結回 403 Cloudflare 驗證頁，停止",
+      "reading_scope": "只讀摘要（不算全文、不立核心）",
+      "locator": "摘要",
+      "summary": "四家烘焙坊老麵相隔 3.3、11、18、19 年再取樣：三罐裡重複分到同一菌株（SNP 差 <10、19、29），第四罐差 45 個 SNP；作者認為菌株可長期延續。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要，未立核心；記入 not_added。",
+      "author_cache": {
+        "file": "f95src/PMC11654800_core.json（Europe PMC search API 回應）",
+        "sha256_prefix": "f5d17d9b1f90371c",
+        "note": "只有書目與摘要，不是全文。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K74-001",
+      "question": "煮豆漿時，先用 70～80 °C 再煮滾，和一下子就煮到 100 °C，豆漿裡會不一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.soymilk_two_step_heating_protein_particles",
+      "answer_target": "會。靜岡縣立大學、宮城大學等研究者用同一品種的實驗室生豆漿做兩段加熱：先 70 或 80 °C、再 100 °C，超高速離心分出的「蛋白質顆粒」占 15.1% 與 16.8%，約是只加熱 100 °C（8.2%）的兩倍；順序倒過來（先 100 °C 再 70 或 80 °C）就和一段差不多。一般離心的沉澱量四種做法都差不多。豆漿裡的油滴一段加熱時集中在約 0.4 µm，兩段加熱都多出 1 µm 以上的聚集，先低後高的主要分布落在 1–10 µm。",
+      "scope": "一個品種、實驗室豆漿、加熱後立刻量；沒有做成豆腐，沒有測凝固或硬度；分離的 7S、11S 結果與豆漿不一致，機制作者說待查。不給煮豆漿建議。不可接到 F82-007（江南大學加熱溫度與鎂凝集）或任何凝固結論。",
+      "source_ids": [
+        "K74-S008"
+      ],
+      "source_locator": "Results 第 2–4 段與圖 2、圖 3 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：油滴粒徑只是同一實驗的附帶分布，主事實是顆粒比例一組數字。 原提案 F82-001（目標 F82-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；數字都在原文。作者漏了「一般離心沉澱沒有差別」這個對照；且本條沒有凝固或豆腐量測，放進題中只是背景，刪出 F82-T1。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣煮到 100 °C，先溫後滾的豆漿裡，蛋白質顆粒多了一倍。",
+        "visual": "兩鍋豆漿並排，一鍋直接衝到 100 °C、一鍋先停在 70 °C 再升溫；下方動畫把豆漿蛋白聚成小顆粒，第二鍋的顆粒數多一倍。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "K74-002",
+      "question": "鹽滷要加多少，豆漿才會突然凝起來？用葡萄糖酸內酯呢？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.tofu_mgcl2_gdl_precipitation_threshold",
+      "answer_target": "在武庫川女子大學的試管實驗裡（市售豆漿、85 °C），加 MgCl2（鹽滷主成分）到 6–8 mM 之間，沉澱量從約一成跳到六成；以上清蛋白質減少來算，中點約 7.4 mM。換成葡萄糖酸內酯（GDL）也在 7–8 mM 從一成跳到六成，中點約 7.9 mM。作者寫兩者對沉澱量、上清蛋白和尿素可溶蛋白的影響「幾乎一樣」，但並不完全重合：10 mM 時鹽滷的沉澱掉回五成、表面粗糙，內酯的到七成、表面還光滑。8 mM 時兩者的沉澱表面都光滑，20 mM 時都粗糙。",
+      "scope": "離心管裡的「類豆腐沉澱」，不是一塊豆腐；mM 是最終濃度，不換算家用份量；7.4／7.9 mM 是上清蛋白下降的中點，不是沉澱重量的中點；「光滑≈嫩豆腐」是作者先前的模型類比。不說「兩條曲線疊在一起」。",
+      "source_ids": [
+        "K74-S001"
+      ],
+      "source_locator": "摘要；3.1、3.3",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：濃度門檻加外觀。Arii 群（S001–S003）合計 1.5（本條 0.5、F82-004 0.75、F82-005 0.25）。 原提案 F82-003（目標 F82-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；數字在原文，但作者把「沉澱量 10→60%」與「上清蛋白下降中點 7.4 mM」混成同一條曲線，並說兩條曲線幾乎疊在一起；原文 10 mM 時兩者重量與外觀不同。已改。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "差一兩個 mM，豆漿就從流動變成一團。",
+        "visual": "試管排成一列，鹽滷濃度由左到右遞增，到第 7 支突然從乳白液變成白色凝塊；旁邊疊上兩條幾乎重合的曲線（鹽滷、內酯）。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "K74-003",
+      "question": "鹽滷不是酸，它凝固豆漿跟「變酸」有沒有關係？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.tofu_mgcl2_requires_ph_drop_buffer_test",
+      "answer_target": "在這組試管實驗裡有關係。武庫川女子大學的 Arii 用緩衝液把熱豆漿的 pH 鎖在 6.5，再加到 20 mM 的 MgCl2：上清裡的蛋白質沒有顯著減少（p = 0.7202），濕沉澱只占 18.9%（不鎖 pH 時 54.7%），也沒有出現泡在尿素裡不散的那種沉澱；鎖在 6.2 時上清蛋白只稍微減少。不鎖 pH 時，加 MgCl2 本身就讓豆漿 pH 逐步下降（到 20 mM 時從 6.5 到 6.1），不溶型沉澱出現在 7–10 mM、pH 約 6.3 的範圍。他換算 20 mM MgCl2 讓豆漿增加的氫離子，是讓蒸餾水增加的 4.12 倍，氫離子從哪裡來還不知道。同一位作者 2021 年從「鹽滷和內酯降 pH 的幅度差很多」推論 pH 下降不是絕對必要；2024 年改用固定 pH 直接測，寫成 pH 下降是必要因素，並更新了 2021 年的機制示意圖。",
+      "scope": "單一作者、離心管模型；緩衝液（500 mM Tris-maleate）本身改變離子強度，作者只用一組同離子強度比較排除；固定 pH 6.5 時濕沉澱仍有小幅但顯著增加，原文對可溶型沉澱有無前後說法不一，片中只說「上清蛋白沒有顯著減少、沒有不溶型」。照時間順序講 2021→2024，不說「推翻」「自我修正」「證明」；不說「只差 0.4 個 pH 就凝不起來」。",
+      "source_ids": [
+        "K74-S003",
+        "K74-S001"
+      ],
+      "source_locator": "F82-S003 3.1、表 1、討論倒數第二段、結論；F82-S001 3.4 末段與摘要",
+      "premise_status": "screened",
+      "notes": "算 0.75：關鍵對照實驗與換算數字；2021 舊結論只作背景。作者單位改為武庫川女子大學。 原提案 F82-004（目標 F82-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；數字逐句相符。改正：作者寫「龍谷大學的 Arii」錯——2021、2024 兩篇 Arii 都屬武庫川女子大學，龍谷大學是 2021 年共同作者 Nishizawa 的現址；「pH 6.5→6.1 才凝」不精確（6.1 是 20 mM 時的值，不溶沉澱出現在 pH 約 6.3）；2024 篇沒寫「修正」，只能照先後並列兩篇的寫法；補上固定 pH 6.5 仍有小幅濕沉澱與原文前後不一。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鹽滷沒有讓豆漿「變酸到像醋」，但只差 0.4 個 pH，少了它就凝不起來。",
+        "visual": "兩杯豆漿各加同量鹽滷：一杯旁邊放 pH 計從 6.5 跳到 6.1、凝固；另一杯被「鎖」在 6.5，液面毫無變化。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K74-004",
+      "question": "只加食鹽，豆漿會做出和鹽滷一樣的沉澱嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.tofu_mg_vs_na_urea_insoluble_precipitate",
+      "answer_target": "不一樣。武庫川女子大學的實驗裡，不加鎂、只加 NaCl 時，上清殘留的蛋白質幾乎沒變，但 100 mM 以上時「泡 2 M 尿素會散開」那一型的蛋白達到約 74%，和 7 mM MgCl2 時的最高值（73.4%）相近；要做出泡在尿素裡也不散的那一型，只有鎂辦得到。MgCl2 在約 7 mM 是兩型的轉折。作者推測前者靠鹽析、後者靠鎂在蛋白質之間形成鹽橋。",
+      "scope": "「鹽析」「鹽橋」是作者的推測（we assumed），「光滑沉澱≈嫩豆腐、粗糙≈板豆腐」是作者自稱的推測模型；74% 是尿素可溶蛋白的比例，不是「食鹽讓四分之三蛋白沉澱」；與 F82-006 江南大學「鎂橋幾乎不形成」的說法相反，片中只並列。",
+      "source_ids": [
+        "K74-S002"
+      ],
+      "source_locator": "3.1、3.4–3.6、結論",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：7 mM 轉折與「平滑／粗糙」已由 F82-003（同群）帶出；本條新增只有「只有鎂能做出不溶型」。Arii 群合計 1.5。 原提案 F82-005（目標 F82-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；作者寫「只加食鹽也能讓豆漿沉、最多約占豆漿蛋白四分之三」不符原文：原文殘留蛋白幾乎沒變，約 74% 是尿素可溶蛋白的指標。已改問題與答案，並因與 F82-003 同群重疊下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鹽也能讓豆漿沉，但只有鎂能讓它沉得「解不開」。",
+        "visual": "兩支試管：加食鹽那支沉澱一倒尿素就散開，加鹽滷那支泡在尿素裡還是一塊。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "K74-005",
+      "question": "鹽滷是靠鎂離子把兩個蛋白質「牽手綁在一起」嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.tofu_mg_bound_by_phytate_colloid_destabilization",
+      "answer_target": "江南大學的研究者認為大多不是。他們用等溫滴定熱量計（25 °C）把 MgCl2 滴進牛血清白蛋白（拿來代替大豆蛋白、電性相近）幾乎量不到結合；鎂主要被豆漿裡的植酸、檸檬酸、多酚這些小分子結合。照這個結果計算，蛋白質 4 mg/mL 的脫脂豆漿加 1 mM 鎂時，沒被結合的鎂幾乎是零，加 4 mM 時約 2.3 mM。他們發現 ζ 電位隨「沒被結合的鎂」變化，升到約 −11 mV 時濁度和顆粒大小突然增加，所以結論是「蛋白質—鎂—蛋白質橋」幾乎不形成，關鍵是顆粒失去互斥。不過同一篇也量到：把植酸加到 6 倍，濁度只稍微下降、顆粒大小幾乎不變。",
+      "scope": "模型系統：結合實驗用牛血清白蛋白代替大豆蛋白、自由鎂是計算值、脫脂且稀釋的豆漿（4 mg/mL），遠稀於做豆腐的豆漿；與 Arii 群的鹽橋推論是兩群各自的解釋，本篇沒有引用 Arii、也沒研究 pH，不可寫成「江南大學解釋了 Arii 的 pH 結果」或「因為鎂被搶走，所以要靠降 pH」。不說「大半鹽滷被吃掉」；不談苦味與口感改良。",
+      "source_ids": [
+        "K74-S004"
+      ],
+      "source_locator": "Highlights；3.1.4；3.2.2；3.3.2；結論",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：核心推論靠 BSA 代替與計算值，且同篇植酸 6 倍幾乎不影響凝集，削弱「被搶走」的實際份量。江南大學 Hua 群合計 1.0（本條 0.75、F82-007 0.25）。 原提案 F82-006（目標 F82-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；數字在原文。改正：作者略掉同篇「植酸加到 6 倍，凝集幾乎不受影響」這個反向結果；「大半的鎂被搶走」不精確（加 4 mM 時自由鎂仍約 2.3 mM）；視覺的 −26 mV 是 BSA 不是豆漿；兩群說法只能並列，不能接成因果。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一開始加進去的鹽滷，大半先被豆漿裡的小分子吃掉了。",
+        "visual": "鎂離子小球掉進豆漿，先被一群「植酸、檸檬酸」小怪物抓走；剩下少數自由的鎂貼到蛋白質顆粒上，顆粒的負電標示由 −26 降到 −11，然後顆粒突然黏成一團。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "K74-006",
+      "question": "豆漿煮過才能點豆腐，那豆漿越濃越熟越好凝嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.tofu_heated_soymilk_protein_threshold_8mg",
+      "answer_target": "不一定。同一篇江南大學研究裡，蛋白質只有 4 mg/mL 的稀脫脂豆漿，加熱到 85 °C 以上後加鎂，濁度幾乎不增加，反而是沒加熱或只加熱到 65、75 °C 的會變濁；蛋白質濃度在約 8 mg/mL 出現轉折，超過後加熱過 85 °C 以上的豆漿加鎂濁度才明顯增加；加熱到 115 °C 的完全不增加，作者推測是蛋白質變性過頭。",
+      "scope": "稀釋的脫脂模型豆漿、只量濁度增量；遠稀於做豆腐的豆漿。不接到 F82-001 的兩段加熱。",
+      "source_ids": [
+        "K74-S004"
+      ],
+      "source_locator": "3.3.1 圖 5C 說明；3.3.2 圖 6C–D 說明",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）。Hua 群合計 1.0。 原提案 F82-007（目標 F82-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；數字與條件相符；補「只量濁度」與「115 °C 原因是作者推測」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "煮熟的豆漿要夠濃，鹽滷才抓得住。",
+        "visual": "三杯不同濃度的熟豆漿各滴入鹽滷，只有最濃的一杯出現白色雲團；旁邊標 8 mg/mL 的門檻線。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "K74-007",
+      "question": "葡萄糖酸內酯做的「內酯豆腐」，又是靠什麼凝固的？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.tofu_gdl_ph_drop_isoelectric_aggregation",
+      "answer_target": "靠讓豆漿變酸。輔仁大學團隊把葡萄糖酸內酯加進先煮過、脫脂的豆漿，85 °C 放 45 分鐘：不加時沉澱裡的蛋白質只有每毫升 0.12 毫克；加到 4 mM、pH 從 6.6 降到 5.9 時，約 90.1% 的豆漿蛋白進了沉澱。2 到 10 mM 對應的 pH 是 6.3、5.9、5.6、5.4、5.2。作者引用前人說法解釋：內酯水解成葡萄糖酸讓 pH 接近大豆蛋白的等電點，蛋白質失去電荷互斥而聚集。",
+      "scope": "脫脂、蛋白約 13 mg/mL 的豆漿，離心沉澱；與 F82-003 的 Arii 系統（市售豆漿 50 g/L）蛋白濃度不同，不比較兩篇的 mM 門檻；異黃酮結果不入片；等電點與水解機制是引用。",
+      "source_ids": [
+        "K74-S007"
+      ],
+      "source_locator": "Results 第 1–2 段與圖 1 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一實驗的劑量—pH—沉澱比例。輔仁 Hsieh 群 0.5。 原提案 F82-008（目標 F82-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；數字逐句相符；補條件（先 90 °C 加熱、85 °C 45 分鐘）與「不得和 Arii 的 mM 對比」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "內酯豆腐是真的「酸」凝的：pH 掉到 5.9，九成蛋白一起沉。",
+        "visual": "pH 刻度尺從 6.6 往下滑，滑到 5.9 時畫面中的蛋白質小球全部掉到杯底。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "K74-008",
+      "question": "鹽滷加越多、黃豆蛋白質越高，豆腐就越硬嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.tofu_mgcl2_optimum_protein_content_paradox",
+      "answer_target": "都不是。日本作物研究所與岩手大學用六個大豆品種、每品種九到十批做鹽滷豆腐：MgCl2 超過 0.20% 豆腐才開始變硬，約 0.40% 最硬，再加反而變軟（作者寫過量凝固劑可能做出較軟的豆腐）；最硬所需的量因品種與產地而異，六個品種的平均從 Fukuyutaka 的 0.34% 到 Sachiyutaka 的 0.45%。種子蛋白質含量和「最硬能有多硬」強相關（r = 0.87），但和豆腐業者常用的 0.25% 做出的硬度沒有顯著相關（r = 0.27）：蛋白質最高的 Sachiyutaka 在 0.25% 時平均做出六個品種裡最軟的豆腐。把 Sachiyutaka 拿掉，其餘五個品種在 0.25% 仍有中度相關（r = 0.52）。",
+      "scope": "實驗室小量豆腐、只用 MgCl2、以破斷應力代表硬度；「超過最適量變軟」依圖 2 的兩批樣品與討論，不是每批都畫出；0.25% 為業者常用量是業者口述；品種差異原因（新豆 pH、植酸）作者只引前人列為可能。不給選豆或配方建議。",
+      "source_ids": [
+        "K74-S005"
+      ],
+      "source_locator": "摘要；Results 第 2–3 段；Discussion 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 1.0：最適量、過量變軟、蛋白質相關的反差。Toda／Ono 群 1.0。 原提案 F82-009（目標 F82-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；主要數字都在原文。改正：作者漏寫「排除 Sachiyutaka 後 r = 0.52 顯著」——「蛋白質和 0.25% 硬度無關」主要由一個品種造成，不寫就誤導；補「過量變軟」的依據範圍與 0.25% 來源是業者口述。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "高蛋白的黃豆，用一般份量的鹽滷，做出的是最軟的豆腐。",
+        "visual": "兩條「鹽滷量—硬度」曲線：一條在 0.34% 達頂，一條要到 0.45%；在 0.25% 畫一條垂直線，高蛋白品種的點落在最低處。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "K74-009",
+      "question": "同樣一鍋豆漿的份量，不同黃豆需要的鹽滷差多少？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.tofu_optimal_mgcl2_30_varieties_range",
+      "answer_target": "吉林農業大學測了 30 個來自黑龍江、河南、吉林、山西、安徽等地的大豆品種：各自煮成豆漿後，用幫浦等速滴入 1 mol/L 的 MgCl2，直到攪拌的漩渦消失為止，最少的品種只要每公升 1.62 克，最多的要 2.77 克，品種間差異顯著。用量和組胺酸、7S 球蛋白、11S 鹼性次單元等成分正相關，和離胺酸負相關。",
+      "scope": "「最適量」是漩渦消失的操作定義，和 F82-009 的「最硬」不同，兩篇數字不可換算或合併；表未註明無水或六水；相關不是因果，相關分析只讀到摘要層級。",
+      "source_ids": [
+        "K74-S006"
+      ],
+      "source_locator": "方法；表 1；摘要",
+      "premise_status": "screened",
+      "notes": "算 0.5：一組 30 品種範圍。吉林農大群 0.5。 原提案 F82-010（目標 F82-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；數字相符；刪掉作者自行換算的「七成」，補品種來源與單位不明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "30 種黃豆、同一套做法，鹽滷用量能差到七成。",
+        "visual": "30 個豆袋排成一列，上面各插一根鹽滷用量長條，最短 1.62、最長 2.77。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "K74-010",
+      "question": "市售嫩豆腐直接冷凍，為什麼凍不出市售凍豆腐那種組織？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.kori_tofu_solid_content_fibrous_texture",
+      "answer_target": "秋田縣綜合食料研究所量過：市售凍豆腐「整體硬度÷表面硬度」約 5.2–5.5；市售絹豆腐的固形分只有約 10–12%，直接在 −10 °C 的容器裡凍，得到的是纖維狀、比值超過 10 的凍豆腐。固形分和這個比值的關係可用三次式描述（R² 0.9），作者認為要把固形分提高到 14% 以上（他們用脫水處理）才做得好。",
+      "scope": "短篇研究筆記；只讀英文摘要、前言與日文結論句；不給家庭製作或冷凍保存建議。",
+      "source_ids": [
+        "K74-S011"
+      ],
+      "source_locator": "英文摘要；前言",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：只讀到摘要層級。秋田群。 原提案 F82-011（目標 F82-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；數字相符；只讀到摘要層級，下修 0.25；問題改掉「自己凍」的居家做法語氣；離題，刪出 F82-T1。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "豆腐的「濃度」決定冰把它撐成海綿還是撐成一束束纖維。",
+        "visual": "左邊市售凍豆腐的均勻小孔，右邊稀豆腐凍出的長條纖維，中間一個固形分刻度在 14% 處畫線。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "K74-011",
+      "question": "乾燥豆腐丟進熱水，為什麼有時會「啪」地裂成兩半？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.freeze_dried_tofu_crack_rehydration_stress",
+      "answer_target": "九州大學熱流團隊把市售冷凍乾燥絹豆腐丟進不同溫度的水：完全濕透平均要 146 秒（20 °C）、95 秒（40 °C）、62 秒（70 °C）、59 秒（100 °C）。20 與 40 °C 各 15 塊沒有一塊裂開，70 °C 裂了 1 塊、100 °C 裂了 6 塊，都是沿著製程留下約 0.1 mm 的細裂縫裂開。熱水沿裂縫吸得特別快（100 °C 約 10 秒），裂縫邊已經泡軟、本體還硬，應力集中在裂縫尖端把它撐開；冒出的泡泡是豆腐裡原有的空氣，在 70 °C 或除過氣的水也有，不是沸騰造成。",
+      "scope": "市售速食用凍乾絹豆腐（含澱粉、安定劑），不是傳統凍豆腐；不給泡法建議、不提產品。",
+      "source_ids": [
+        "K74-S010"
+      ],
+      "source_locator": "方法；Results 第 1–2 段；圖 4 圖說；模型段；結論",
+      "premise_status": "screened",
+      "notes": "答案文字照作者，數字逐句相符。算 1.0。九州大學 Teshima 群。 原提案 F82-012（目標 F82-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V85（2026-11-12）改字後收；數字全對，作為單獨核心可收；但離題，刪出 F82-T1（作者自己也建議刪這章）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把它撐裂的不是沸騰，而是「一邊已經軟、一邊還硬」。",
+        "visual": "高速鏡頭風格：方塊豆腐落入滾水，水沿著一條細縫衝進去，縫尖亮紅，接著裂成兩半；旁邊 20 °C 那塊慢慢濕、完好。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K74-012",
+      "question": "舊金山酸種有名，是因為舊金山的空氣和水土養出特別的菌嗎？500 罐老麵怎麼說？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_starter_biogeography_weak",
+      "answer_target": "看不出來。2021 年一個研究團隊收集 500 罐家用老麵（美國 429 罐、加拿大 29、歐洲 24、澳紐 17、泰國 1）定序：在樣本最密的美國本土，兩罐老麵的菌相像不像，和它們相距多遠沒有關係；把老麵年齡、放哪裡、多久餵一次、用什麼穀物、氣候等 33 項因子全部加起來，也只解釋不到一成的差異。作者明寫這和『舊金山酸種』這類地域信念相反，並推測原因是老麵與麵粉本身就被大量分送、跨地域流通。",
+      "scope": "家用老麵、以美國為主；美國本土內距離無關，但全球尺度的酵母組成仍有很弱的地理訊號（ρ 0.07；全部真菌 ASV 0.23），不能說成『全世界都完全無關』；只到『種』的層級，作者自承菌株層級可能還有地域性；『分送稀釋了地域差異』是作者推論。",
+      "source_ids": [
+        "K74-S012"
+      ],
+      "source_locator": "摘要；結果〈Geography, process parameters…〉第 1、3 段；討論第 2 段",
+      "premise_status": "screened",
+      "notes": "算 1.0，Wolfe／Dunn 合作網（封頂 2.0）。 原提案 F95-001（目標 F95-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；數字與條件都在原文；補上全球尺度的弱地理訊號，避免寫成『到處都無關』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為老麵的個性來自城市的空氣，500 罐的地圖說：地點幾乎決定不了裡面是誰。",
+        "visual": "美國地圖撒滿 429 個點，點的顏色（菌相）隨機分布、沒有成片；旁邊一根『33 項因子合計 <10%』的短柱。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K74-013",
+      "question": "以舊金山命名的乳酸菌，在世界各地的老麵裡出現，它是怎麼跑過去的？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_sanfranciscensis_spread_by_sharing",
+      "answer_target": "線索在老麵的來歷。同一份 500 罐調查裡，L. sanfranciscensis（舊名 Lactobacillus sanfranciscensis，今 Fructilactobacillus sanfranciscensis）一出現多半就是優勢菌，而且特別常見於比較老的老麵，以及 73 罐從烘焙坊或其他商業來源取得的老麵；較新的老麵則常由植物乳桿菌、短乳桿菌當家。作者推論這種菌適應商業烘焙的條件，隨著老麵被分送而散布到各地家庭。",
+      "scope": "相關性（指標物種強度 0.267、0.043 都低）；『隨分送散布』『被烘焙師世代選出』都是作者推論；不講 1971 年命名史（原文未讀到）。",
+      "source_ids": [
+        "K74-S012"
+      ],
+      "source_locator": "結果〈Diversity…〉第 2 段；〈Geography…〉第 4–5 段；討論第 4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5，Wolfe／Dunn 網內。 原提案 F95-002（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；原文相符；只把兩處推論標明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "名字叫舊金山，靠的不是舊金山，而是人把老麵一罐罐分出去。",
+        "visual": "一罐老麵分裝成小罐，被寄往各地的箭頭；標籤上的菌名放大。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "K74-014",
+      "question": "醋酸菌在老麵裡做了什麼？為什麼有的老麵聞起來特別像醋、發得也比較慢？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_acetic_bacteria_vinegar_slow_rise",
+      "answer_target": "500 罐裡有 147 罐含醋酸菌（佔細菌 1% 以上），過去許多老麵綜述幾乎沒提到它們。挑 40 罐做同一種麵團測試：醋酸菌比例越高，揮發氣味越偏醋味，麵團膨脹速率越慢（相關係數 −0.51）。作者推測醋酸等產物可能抑制了酵母或乳酸菌，但也寫明不是每一罐都如此。",
+      "scope": "相關性；40 罐子樣本；作者自承關係『不直接』。",
+      "source_ids": [
+        "K74-S012"
+      ],
+      "source_locator": "結果〈Diversity…〉第 3 段；〈Microbial composition influences dough rise〉第 3 段；討論第 6 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者原估 0.75）：同一研究的第二個發現，壓低以免同篇過度計數。Wolfe／Dunn 網內。 原提案 F95-003（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）照原稿收；原文相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "老麵的醋味常常不是乳酸菌，而是一群以前被漏看的醋酸菌。",
+        "visual": "兩罐老麵並排在刻度管裡上升，一快一慢；慢的那罐上方畫出醋瓶圖示。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "K74-015",
+      "question": "同一包麵粉、同一份配方，交給不同國家的烘焙師養老麵，會養出一樣的菌嗎？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_same_flour_different_bakers",
+      "answer_target": "不會。2020 年的實驗請 14 國 18 位專業烘焙師用同一包麵粉、同一份配方各養一罐老麵，約一個月後帶到比利時同一處取樣：老麵的菌相彼此差異很大，差異也反映在用同一配方烤出的麵包『酸』味評分上（其他四項風味則沒有關聯）；整體來說，老麵的菌最像當初那包麵粉。",
+      "scope": "每人一罐、沒有重複；風味只有『酸』這一項與菌相有顯著關聯；烘焙師由 Puratos 公司協助招募、麵粉與取樣場地也與該公司有關（業界合作）。",
+      "source_ids": [
+        "K74-S013"
+      ],
+      "source_locator": "前言末段；結果第 1、5 段、第 9 段；討論第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 F95-005 同一實驗，兩條合計 1.25；Dunn 實驗室，Wolfe／Dunn 網內合計封頂 2.0。 原提案 F95-004（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；補『專業』『約一個月』『其他風味無關』與業界合作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "原料一樣，結果卻不一樣——那差在哪裡？",
+        "visual": "18 個一樣的玻璃罐從同一袋麵粉出發，最後顏色各異；麵包切面旁打上『酸』分數。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "K74-016",
+      "question": "烘焙師的手上，真的有老麵裡的菌嗎？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_baker_hand_microbes_shared",
+      "answer_target": "有，而且多得不尋常。同一實驗裡，老麵中約 26% 的序列變異（ASV）在烘焙師手上找得到、在麵粉裡卻沒有；烘焙師手上的序列讀數最多有 88%（平均 33%）屬於乳桿菌屬，作者寫這遠高於過去對學生或一般民眾手部的調查。烘焙師的手和自己那罐老麵的乳酸菌組成比和別人的接近，但效果很弱，研究者無法從老麵認出是誰養的。作者推測交換可能是雙向的，但也寫明這個實驗不是設計來驗證這一點。",
+      "scope": "相關性；沒有非烘焙師對照；手是在養老麵約一個月後才採樣；手上的菌也可能來自空氣、設備或同事（作者列為不能排除）；SourceTracker 有限制。不談衛生、健康。",
+      "source_ids": [
+        "K74-S013"
+      ],
+      "source_locator": "結果第 5–8 段（表 1、SourceTracker、圖 6）；討論第 3、6–7 段",
+      "premise_status": "screened",
+      "notes": "算 0.75：本題的意外點之一（手上 88%、26% 只與手共有）。Dunn 實驗室，網內封頂。 原提案 F95-005（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；88% 是手上序列讀數中乳桿菌屬的比例（原文 sequence reads），補上取樣時間差與『雙向交換未經驗證』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "老麵的『手感』可能不是比喻：烘焙師的手和老麵在交換菌。",
+        "visual": "手掌特寫，皮膚上的菌點逐漸變成和老麵同色；一條雙向箭頭連到玻璃罐。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "K74-017",
+      "question": "換了麵粉，老麵的菌就換了嗎？在啤酒廠裡養的老麵又會長出什麼？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_producer_house_microbiota",
+      "answer_target": "多半不會整個換掉。比利時研究團隊比較比利時、法國、英國、美國共 17 罐續種老麵：四位用多種麵粉的生產者裡，同一位生產者的老麵菌種組成彼此相似，作者結論影響最大的是生產者——他的場所菌群與做法；不過比例仍隨麵粉不同，一家烘焙坊的裸麥老麵也明顯和其他幾罐不一樣。一家拉比克啤酒廠的兩罐老麵（其中一罐配方裡就加了一半拉比克啤酒），酵母都是拉比克啤酒熟成常見的 Dekkera，還有醋酸菌；醋酸菌也只出現在比利時的樣本。",
+      "scope": "17 罐、4 國；『場所菌群』與『酒廠環境帶來醋酸菌』是作者推論；啤酒廠有一罐直接加了啤酒，不能說成『只靠空氣』；結果段未逐段核對。",
+      "source_ids": [
+        "K74-S020"
+      ],
+      "source_locator": "摘要；討論第 1、3 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：同生產者跨麵粉相似有原文自己的保留（比例不同、裸麥例外），酒廠例子因一罐加了啤酒而弱化。VUB De Vuyst 群。 原提案 F95-006（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；作者漏了啤酒廠老麵 G-B-WL 配方含 50% 拉比克啤酒，以及作者自己寫的麵粉影響保留；改寫並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "老麵像它的主人和它住的房子：在啤酒廠裡，它就長出啤酒廠的菌。",
+        "visual": "同一個麵包師傅面前三袋不同麵粉、三罐顏色一樣的老麵；切到啤酒廠木桶旁的一罐老麵。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "K74-018",
+      "question": "一碗麵粉加水，最先長起來的是哪些菌？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_flour_plant_bacteria_first",
+      "answer_target": "不是做麵包的主角。拉脫維亞的研究用裸大麥全穀粉自然起種：麵粉裡數量最多的細菌是 Pantoea、Curtobacterium、Pseudomonas 這類植物上常見的菌；第一次續種後細菌種類最多（超過 70 種），以成團泛菌與屎腸球菌為主；到第二、三次續種才換成戊糖足球菌當家。乳酸菌從每克 3.1 升到 8.2 個對數級，酵母從 4.9 升到 7.3。",
+      "scope": "大麥、實驗室控溫的一批、只續種三次；起始時酵母比乳酸菌多，和小麥的研究（F95-008）不同，不能合成一條通則。不談衛生或安全。",
+      "source_ids": [
+        "K74-S024"
+      ],
+      "source_locator": "第 781、785、788、796 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單批、三步，答案一句。另作者把 Enterococcus faecium 譯成『糞腸球菌』，應為屎腸球菌；scope 原寫『和 F95-009 不同』，應為 F95-008。 原提案 F95-007（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；改正菌名（E. faecium＝屎腸球菌）與交叉參照，下修條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "老麵的第一棒，是一群跟著麥子從田裡來的植物細菌。",
+        "visual": "麥穗→麵粉→玻璃罐，罐裡先是一群桿狀小菌（標『植物上的菌』），幾天後換成圓球成對的足球菌。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "K74-019",
+      "question": "從零開始養老麵，乳酸菌和酵母誰先到？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_lab_relay_then_yeast",
+      "answer_target": "乳酸菌先，而且是好幾棒接力。日本研究者用小麥麵粉加自來水從零養了六批、續種 32 輪：剛拌好時乳酸菌和酵母都少到測不出來；前 6 輪乳酸菌就升到每克 8.6 個對數級以上、pH 掉到 4 以下；酵母要等乳酸菌起來之後才增加，每批起漲的時間不一樣，最後都到 6.8–7.3 個對數級。文獻把這種接力分三棒（先是腸球菌、乳球菌、明串珠菌、魏斯氏菌等屬，接著足球菌、彎曲乳桿菌屬，最後是植物乳桿菌、短乳桿菌、果糖乳桿菌等屬），這六批裡酵母是在第二棒出現時開始增加。研究者推測酵母可能早就從麵粉、水、器具或手少量進來，等乳酸菌接力到某個階段才長起來。",
+      "scope": "六袋市售麵粉各養一批（不是『只有一種麵粉』）；單一實驗室；第一作者任職山崎製パン（論文聲明）。三棒的屬別分組是前言引用的文獻分類；『酵母從哪裡進來』是討論中的推測。",
+      "source_ids": [
+        "K74-S016"
+      ],
+      "source_locator": "結果〈Time course monitoring〉第 1 段、圖 2；前言第 4 段（三棒分類）",
+      "premise_status": "screened",
+      "notes": "算 1.0。九州大學群（與 F95-011 合計 2.25，封頂 2.0）；作者 notes 誤寫成與 F95-009、010 同群。 原提案 F95-008（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；數字相符；改正『單一麵粉』、刪去題目中原文沒回答的『味道一直在變』、補上原文對酵母來源的推測（正好回答題目）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一罐新老麵前幾週的味道一直在變，因為裡面在跑三棒接力，酵母是後來才上場的。",
+        "visual": "時間軸 0→32 輪，三種顏色的乳酸菌棒子依序交接，酵母的曲線在第二棒時才翹起。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "K74-020",
+      "question": "老麵裡的酵母和乳酸菌，不是互相餵食的好搭檔嗎？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_lab_suppress_yeast_not_mutualism",
+      "answer_target": "實驗量出來的多半不是。法國 INRAE 團隊在麵團裡把 4 株老麵酵母和多株乳酸菌兩兩同養 24 小時：每一株酵母只要和乳酸菌在一起，菌數都顯著變少（平均減為 1.87 分之一），乳酸菌則 16 組裡只有 3 組受酵母影響；酵母變少也不能全怪酸，K. humilis 的共培養麵團有 58% pH 仍高於 4。墨爾本大學與同一個法國團隊 2026 年再用 64 組配對測經典組合 M. humilis（舊名 K. humilis）與 F. sanfranciscensis：細菌活菌數不受酵母影響，酵母活菌較少、死菌較多，碰上其中一株細菌時少了約一個對數級；這種酵母一點麥芽糖都不吃，胺基酸主要是細菌放出來的，和過去假設的『酵母供胺基酸給細菌』方向相反。研究者寫，過去並沒有研究清楚證明酵母吃到了細菌放出的葡萄糖，這對組合大概是中性，甚至在競爭。",
+      "scope": "兩篇都只有 24 小時；合成培養液沒有麵粉澱粉酶；『pH 不影響酵母』只測一株，不入稿；兩篇同屬 INRAE Sicard–Howell 網（法、澳是同一網，不是兩個研究群），合計封頂 2.0。",
+      "source_ids": [
+        "K74-S014",
+        "K74-S015"
+      ],
+      "source_locator": "S003 摘要、結果 3.2.1、3.3.1、討論第 2–3 段；S004 摘要、結果第 2–3、5–6 段、討論第 1、10 段",
+      "premise_status": "screened",
+      "notes": "算 1.5（S003 0.75＋S004 0.75）：兩個研究設計（麵團、合成培養液）同方向，第二篇新增『酵母不吃麥芽糖、胺基酸由細菌供應、約一個對數級』。INRAE 網內與 F95-010 合計 2.0，已到封頂。 原提案 F95-009（目標 F95-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；數字相符；『沒有直接證據』改成原文的『沒有研究清楚證明／證據很少』，58% 限定為 K. humilis 共培養，標明法澳為同一網。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為酵母與乳酸菌互相照顧，實測多半是乳酸菌照長、酵母被壓著。",
+        "visual": "天平一邊乳酸菌數字不動，另一邊酵母數字往下掉；舊教科書的『互餵箭頭』被打一個問號。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "K74-021",
+      "question": "乳酸菌壓著酵母，老麵還發得起來嗎？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_humilis_pair_leavens",
+      "answer_target": "發得起來。同一個法國團隊量到，菌數上酵母吃虧，但幾組 K. humilis 加 L. sanfranciscensis 的組合，6 小時把麵團撐得和釀酒酵母的組合一樣高；會產氣的乳酸菌和酵母同養時，麵團都比乳酸菌單獨時高。作者也提出兩種共存的可能：烘焙坊環境一再把菌帶回老麵，以及續種時糖從來沒被吃完、搶糖不夠激烈。",
+      "scope": "6 小時麵團高度；共存解釋是作者推論。刪去『K. humilis 單獨時從未發得像釀酒酵母一樣高』：摘要這麼寫，但結果 3.1.2 與討論說兩株 K. humilis 單獨時就和釀酒酵母一樣高，原文自相矛盾，不入稿。",
+      "source_ids": [
+        "K74-S014"
+      ],
+      "source_locator": "結果 3.2.2、3.3.2；討論第 3 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：作者賴以成立『菌數輸了、成品沒輸』對比的那半句被原文結果段推翻。INRAE 網內合計 1.75。 原提案 F95-010（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；作者取了摘要的『never』，與同篇結果、討論矛盾；改寫並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "生態上是單向欺負，麵團卻照樣發——『不是好朋友』不等於『做不好麵包』。",
+        "visual": "兩支刻度管，單獨的 K. humilis 低、與乳酸菌搭配的與釀酒酵母一樣高。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "K74-022",
+      "question": "既然乳酸菌會壓酵母，為什麼老麵裡的酵母沒有被趕盡殺絕？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_maltose_and_cyclic_rps",
+      "answer_target": "日本九州大學的兩個實驗給了兩條線索。第一，糖：12 株涵蓋三棒接力的乳酸菌在試管裡全都壓低一株釀酒酵母，研究者認為主要是搶糖；把麥芽糖從培養液拿掉，酵母掉到每毫升 1.3–5.2 個對數級，多加麥芽糖則都救回到 6.5 以上。第二，三方牽制：用 3 種乳酸菌、2 種酵母的全部 31 種組合續種 14–18 輪，10 組兩兩配對（包括菌與菌、酵母與酵母）裡 7 組是互相傷害、3 組是一方受害；但釀酒酵母、L. fermentum、P. pentosaceus 三者像剪刀石頭布一樣循環相剋，三到五種同養時，單獨會被 L. fermentum 壓下去的酵母反而維持得住。",
+      "scope": "體外培養液、少數菌株、單一酵母株；剪刀石頭布是 Lotka–Volterra 模型推估，模型沒有納入 pH 與麥芽糖；兩篇第一作者任職山崎製パン。",
+      "source_ids": [
+        "K74-S016",
+        "K74-S017"
+      ],
+      "source_locator": "S005〈In vitro examination〉段、〈different sugar concentrations〉段；S006 正文第 7–8 段、表 1",
+      "premise_status": "screened",
+      "notes": "算 1.25（麥芽糖 0.5＋剪刀石頭布 0.75）。九州大學群合計 2.25，封頂 2.0，全題計數已扣。 原提案 F95-011（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；數字相符；補 10 組配對包含同界配對、模型限制與利益聲明。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "酵母活下來，不是因為有人照顧它，而是對手之間也互相牽制。",
+        "visual": "三角形三個角放三個菌，箭頭循環相剋；旁邊麥芽糖方糖被拿走時酵母人偶縮小。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "K74-023",
+      "question": "有沒有哪種酵母和乳酸菌，真的是酵母在餵細菌？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.yeast_amino_acid_overflow_feeds_lab",
+      "answer_target": "有，只是不是在老麵這組。德國 EMBL 的實驗在一種 35 種成分的培養液裡，讓乳酸乳球菌和植物乳桿菌單獨都長不起來，和釀酒酵母放在一起就能長；每天續種兩週後，兩種乳酸菌都還在，單獨續種的則已測不到，續種超過 50 天仍穩定；只用酵母養過的濾液也有同樣效果，研究者找到的原因是酵母在氮源充足時把多的胺基酸溢出來。2026 年的老麵研究特別拿這個機制去測 M. humilis 與 F. sanfranciscensis，結果方向剛好相反：胺基酸主要是細菌放出的。",
+      "scope": "不是酸種：化學定義培養液（另有葡萄汁）；菌種不同。只當轉折二的對照，不推到老麵。",
+      "source_ids": [
+        "K74-S018",
+        "K74-S015"
+      ],
+      "source_locator": "S007 Summary、結果前兩小節；S004 討論第 5 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：非老麵系統，對照句 S004 已自己做過；屬可刪的邊緣核心。EMBL Patil 群（共同作者含 ETH Sauer 實驗室，與 ETH Bokulich 群不同）。 原提案 F95-012（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；原文相符，但不回答題目本身，下修並列入 drop_if。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "互餵確實存在，但老麵裡那對招牌組合，量出來不是這樣。",
+        "visual": "酵母細胞冒出胺基酸小球、乳酸菌靠過去吃；畫面一轉到老麵組合，箭頭方向反過來。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "K74-024",
+      "question": "中國饅頭用的老麵液種裡，同一對酵母和乳酸菌也是這樣嗎？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.mantou_sourdough_humilis_inhibited",
+      "answer_target": "菌數上很像。山西大學 2026 年為饅頭液種挑菌：從老麵分出的 28 株 K. humilis 都會產氣，72 小時內都填滿小管，其中 7 株在 12–24 小時，市售釀酒酵母 12 小時就做到。把挑出的一株和 F. sanfranciscensis 同養時，細菌數和單獨養一樣（12 小時到每克 8.4–8.8 個對數級），作者寫酵母沒有壓制細菌、共存主要靠競爭而不是嚴格的互利；酵母則在 1:100 的接種比例下，從第 3 小時起被逐步抑制。不過這篇論文仍把兩者的碳、氮代謝稱為『協同』與『互餵』，和法澳團隊的結論不同調。",
+      "scope": "單一配對、短時間液種；1:1 比例下酵母沒有明顯被壓；論文的『互餵』是依代謝體學推論；其餘營養、抗性澱粉、抗氧化結果屬健康性質，一律不採用。",
+      "source_ids": [
+        "K74-S022"
+      ],
+      "source_locator": "結果與討論第 199、239、242 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：與 F95-009 結論重複，只多一個獨立研究群的菌數佐證；作者原稿說『標題的協同只是指成品』不正確——作者在結論把代謝也稱協同。山西大學 Zhang 群。 原提案 F95-013（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；改正『協同只指成品』的作者解讀、補 1:1 條件與 72 小時，並寫明本篇主張胺基酸互餵，不能列為『葡萄糖互餵沒有證據』的第三個研究群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連論文標題寫『協同』的研究，菌數畫出來也是單向的。",
+        "visual": "饅頭蒸籠冒煙，旁邊兩條菌數曲線：細菌一條平穩上升，酵母一條在 3 小時後被壓平。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "K74-025",
+      "question": "把一罐老麵的菌種名單照抄，重新組一罐，會一直維持下去嗎？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_copied_species_list_drifts",
+      "answer_target": "不會穩住。義大利研究者依一罐美國老麵的菌種名單，原樣湊出 9 種菌的合成老麵，每天續種 30 天：pH（約 4.2–4.3）和乳酸菌數一直看起來很正常，但用菌株指紋一查，L. sanfranciscensis 等很快消失，30 天後只剩 4 株原始菌株，54 種氣味分子有 45 種改變。另一組刻意放進優勢、次要和數量很少的『衛星』成員的 7 種菌設計群落，除了一種酵母，全部留到最後，氣味分子只有 3 種改變。",
+      "scope": "兩個合成群落互相比較，沒有和原本那罐 SD43 比；實驗室模擬續種；『衛星成員帶來功能冗餘』是作者解釋；樣本來自 Puratos 收藏、共同作者含 Puratos 員工（業界合作）。",
+      "source_ids": [
+        "K74-S019"
+      ],
+      "source_locator": "結果末兩段；討論末小節",
+      "premise_status": "screened",
+      "notes": "算 1.0：一個完整的對照實驗（數字同一實驗合計）。Bolzano／Bari Gobbetti 群，群內 1.0。 原提案 F95-015（目標 F95-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；數字相符；題目原寫『得到一樣的老麵』，但研究沒有和原罐比，改成『維持下去』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為知道裡面有哪些菌就能複製老麵；照名單抄的那罐，一個月就走樣了，而 pH 和菌數根本看不出來。",
+        "visual": "兩罐老麵外觀一模一樣、pH 計數字相同；X 光式透視下，一罐裡的菌一個個熄燈。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "K74-026",
+      "question": "一罐養了四十年的老麵，裡面的菌就一直不變嗎？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_industrial_genotype_transfer",
+      "answer_target": "有的留著，也有的進出。愛沙尼亞一家麵包廠的裸麥老麵 40 多年前用商業菌元起頭、每天續種至今，另一間房裡還有一罐約 4 歲的小麥老麵；研究者四季取樣 66 株乳酸菌分型：裸麥老麵有 5 個基因型至少穩定半年，小麥老麵卻沒有任何一個基因型一直都在；有 9 個基因型同時出現在兩罐裡，作者認為菌可能在廠內兩罐之間傳遞，並引用前人在麵包廠空氣、設備和工人手上找到老麵菌的研究。",
+      "scope": "單一工廠一年、培養法分離；兩罐都不是自然起種；『員工傳遞』是本篇引用前人研究，不是本篇的資料。",
+      "source_ids": [
+        "K74-S021"
+      ],
+      "source_locator": "方法第 14 段；結果與討論第 54、56 段；結論",
+      "premise_status": "screened",
+      "notes": "算 0.5。愛沙尼亞生命科學大學群。加拿大 Gänzle 群的 18 年菌株追蹤只讀到摘要，未立核心（F95-NA001）。 原提案 F95-016（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；作者把引用前人的『員工』寫成本篇結論；並補上原文結論『可長期穩定』那一半，避免只講會變。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "老麵的『老』，比較像一條一直有人進出的老街，而不是封起來的保險箱。",
+        "visual": "工廠平面圖兩個房間各一罐老麵，彩色菌點沿著人的走動路線在兩罐間移動。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "K74-027",
+      "question": "大規模老麵調查都靠郵寄樣本，寄的路上菌會變嗎？",
+      "domain": "食物與微生物",
+      "mechanism_key": "fermentation.sourdough_shipping_temperature_shift",
+      "answer_target": "會，而且方向很有規律。瑞士蘇黎世聯邦理工學院的研究者把同一罐老麵分裝、不餵食，放在 4、17、30 °C 最多 28 天，模擬郵寄：4 °C 時 L. sanfranciscensis 一直領先；17 °C 到第 14 天、30 °C 到第 6 天，原本就在罐裡、數量較少的醋酸菌反超成為最多的細菌；酵母組成相對穩定。研究者據此提醒，郵寄採樣的大調查要把運送溫度當成偏差來源。",
+      "scope": "單一母麵、不餵食的運輸模擬；作者明寫高溫長放是壓力測試，不是食用麵團的存放情境；本片只用來說明調查方法的限制，不作任何保存、衛生建議，不提『怎麼放比較好』。",
+      "source_ids": [
+        "K74-S023"
+      ],
+      "source_locator": "結果第 1–3 小節",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：方法限制，不直接回答題目；可刪。ETH Bokulich 群。 原提案 F95-017（目標 F95-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V98（2026-11-12）改字後收；補上醋酸菌原本就在罐中、作者自己的『非保存情境』聲明；下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連研究老麵的方法本身，都會被菌的消長影響——這也是為什麼結論要多個實驗室對照。",
+        "visual": "三個包裹標 4、17、30 °C，打開後罐裡細菌顏色比例不同，30 °C 那罐被醋酸菌的顏色佔滿。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "K74-NA001",
+      "question": "豆漿裡的油，是浮在上面的一層油嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V85（2026-11-12）退回：答案主句是前言引用前人、不算本篇；本篇結果作者只讀摘要與一節，算 0.25 也只能支撐「油體表面包著蛋白質」一句；問題前提（觀眾以為是浮油）是自設的稻草人；也不回答 F82-T1 的問題。不立核心；若將來用到，只在 F82-001 旁以背景一句帶過、不計條數。 原提案 F82-002。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "K74-NA002",
+      "question": "鹽滷濃度從 0 加到飽和，豆漿會經過「不凝、凝、穩定、又解開、不凝」五個階段嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "原研究 Lu 等 2021 LWT 150:112000（清華大學 Zhang 群）在 Europe PMC 查無開放全文；只在 Geng 等 2024 Foods 綜述（PMC11545762，同群）讀到轉述的五段濃度（0–3、3–8、8–50、50–210、≥210 mmol/L）。綜述轉述不算原研究，不立核心。 原提案 F82-NA001。",
+      "reentry_condition": "讀到 Lu 2021 的合法全文（作者典藏或出版社開放版），約 0.75 條，可把轉折二延伸到「加太多會整個解開」。",
+      "reading_status": "只讀到綜述轉述（PMC11545762 全文已快取）"
+    },
+    {
+      "id": "K74-NA003",
+      "question": "7S 和 11S 兩種大豆蛋白，誰讓豆腐比較硬、誰讓它比較細？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Kohyama 等 1995 BBB 59:240（J-STAGE bbb1992）PDF 為掃描影像，pdftotext 取不到文字（f82src/bbb59_240.pdf 已快取）；未逐頁看圖讀，不立核心。 原提案 F82-NA002。",
+      "reentry_condition": "逐頁讀掃描 PDF（影像）後核對 7S 網絡較細、11S 凝膠較快、7S 抑制鈣誘導離水等句子，約 0.5 條，屬新群（NFRI／京大）。",
+      "reading_status": "已下載、未讀（掃描影像）"
+    },
+    {
+      "id": "K74-NA004",
+      "question": "點豆腐時，大豆異黃酮會跟著蛋白質一起進豆腐嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "K74-S007"
+      ],
+      "reason": "F82-S007 有完整數據，但屬營養與健康脈絡，依說明第 5 條不收。 原提案 F82-NA004。",
+      "reentry_condition": "不重新進入。",
+      "reading_status": "全文已讀"
+    },
+    {
+      "id": "K74-NA005",
+      "question": "豆皮（腐皮）是豆漿表面蒸發濃縮出來的一層蛋白—脂質膜嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只找到 Liu 等 2025 Foods 綜述（PMC11942169，已快取）與以產品改良為主的開放論文，沒有找到膜形成機制的開放原研究；綜述不算。 原提案 F82-NA005。",
+      "reentry_condition": "找到豆皮成膜速率、溫度或濃度的開放原研究（例如 J-STAGE 日文「湯葉 膜形成」原研究），約 0.5–0.75 條，可成為『加熱』章的第二段。",
+      "reading_status": "只讀綜述"
+    },
+    {
+      "id": "K74-NA006",
+      "question": "生豆漿裡的蛋白質顆粒，加熱後怎麼由大變小又重新聚成 40–100 nm 的顆粒？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Ono 群 1991 Agric Biol Chem 55:2291 原文現由 Taylor & Francis 發行，搜尋只得到書目與摘要層級紀錄，未找到合法全文；不立核心。 原提案 F82-NA006。",
+      "reentry_condition": "讀到合法全文時約 0.5 條，屬 Toda／Ono 群（封頂內）。",
+      "reading_status": "只見書目紀錄"
+    },
+    {
+      "id": "K74-NA007",
+      "question": "糖其實不會熔化、只會分解，焦糖可以不經熔化做出來嗎？（候選題，未選）",
+      "existing_ids": [
+        "F4001"
+      ],
+      "source_ids": [],
+      "reason": "候選長題篩來源階段：原研究 Lee、Thomas、Schmidt 2011 J Agric Food Chem 四篇都不是開放全文，只讀到新聞稿與轉述；找不到三個研究群的開放原研究，放棄此題。 原提案 F82-NA007。",
+      "reentry_condition": "找到 Schmidt 群論文或學位論文的合法全文，加上另兩個獨立研究群的開放 DSC 原研究。",
+      "reading_status": "只讀搜尋結果摘要"
+    },
+    {
+      "id": "K74-NA008",
+      "question": "老麵裡的酵母，和市售的酵母吃糖的習慣一樣嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V98（2026-11-12）退回：作者只寫了中途取樣，漏掉市售株在熟成期把剩下的麥芽糖也吃完，『吃得一點不剩 vs 剩下 32%／23%』會讓觀眾以為是能力差異，原文其實是速度差異；只有兩株、啤酒麥汁、與題目（菌從哪來、舊金山是否獨有）無關，且主題是啤酒釀造用途。不收。 原提案 F95-014。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回"
+    },
+    {
+      "id": "K74-NA009",
+      "question": "一罐老麵裡的同一株乳酸菌，可以延續十幾二十年嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "K74-S026"
+      ],
+      "reason": "Pham 等 2025（加拿大亞伯達大學 Gänzle 群）只讀到 Europe PMC API 的摘要：三罐老麵相隔 11–18 年仍分到同一菌株。Europe PMC 書目紀錄列出的 europepmc.org PDF 連結回 403（Cloudflare 驗證頁），依規定停止，未改用其他客戶端或主機；REST fullTextXML 不提供（非開放取用子集）。只讀摘要不立核心。 原提案 F95-NA001。",
+      "reentry_condition": "經出版社或作者典藏的公開連結讀到合法全文；可立約 0.75 條，且是第四個獨立研究群，能把『老麵會變』那章改成『有的菌株真的待了 18 年，有的會換』。",
+      "reading_status": "abstract_only（europepmc.org 403）"
+    },
+    {
+      "id": "K74-NA010",
+      "question": "Lactobacillus sanfranciscensis 這個名字是怎麼來的？1971 年舊金山酸種的原始研究找到什麼？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Kline & Sugihara 1971、Sugihara 等 1971（Applied Microbiology 21，PMC377203、PMC377202）在 Europe PMC 只列 europepmc.org 的 Free 連結；同一主機剛對另一篇回 Cloudflare 驗證頁，未嘗試；REST fullTextXML 回 500（非開放取用子集）。不立核心，片中不講命名細節。 原提案 F95-NA002。",
+      "reentry_condition": "經公開連結讀到 1971 年原文（PMC 掃描檔）時，可補一條約 0.5 的歷史開場。",
+      "reading_status": "not_attempted（同主機驗證頁）"
+    },
+    {
+      "id": "K74-NA011",
+      "question": "比利時傳統老麵的乳酸菌，是否隨地區與麵粉不同？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Scheirlinck 等 2007 AEM（PMC2075033）與 2009 J Appl Microbiol（烘焙坊環境溯源）：前者 REST fullTextXML 回 500、europepmc.org 連結未嘗試，後者需訂閱。是轉折一的反方（有地域性）證據，未讀到不引用。 原提案 F95-NA003。",
+      "reentry_condition": "讀到全文可作轉折一的反方平衡，約 0.5（根特大學群）。",
+      "reading_status": "not_read"
+    },
+    {
+      "id": "K74-NA012",
+      "question": "麵粉種類和餵食頻率會改變老麵的菌嗎？（Taheri 等 2026；McKenney 等 2023）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "兩篇都屬 Dunn 實驗室（NC State），與 F95-S001、S002 同一合作網，網內已到 2.0 封頂；不再加計。Taheri 2026 的 REST 全文曾下載但未細讀，已刪除快取。 原提案 F95-NA004。",
+      "reentry_condition": "覆核若將 Wolfe 與 Dunn 實驗室分開封頂，可補讀並各加約 0.5。",
+      "reading_status": "not_read（群內封頂）"
+    },
+    {
+      "id": "K74-NA013",
+      "question": "醋酸菌在老麵裡的代謝角色（Rappaport 等 2024 mSystems）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Wolfe 實驗室，與 F95-S001 同群，封頂內不加計；下載後未細讀，已刪除快取。 原提案 F95-NA005。",
+      "reentry_condition": "同 F95-NA004。",
+      "reading_status": "not_read（群內封頂）"
+    },
+    {
+      "id": "K74-NA014",
+      "question": "日本葡萄乾酵母液老麵的香氣與存放變化（Zhang 等 2026 Foods）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "主題是麵包存放期間的香氣與保存，屬本輪不收的食物保存範圍；只讀摘要後放棄，已刪除快取。 原提案 F95-NA006。",
+      "reentry_condition": "不再進入。",
+      "reading_status": "abstract_only（主題不收）"
+    },
+    {
+      "id": "K74-NA015",
+      "question": "老麵酵母的馴化：麵包酵母分成兩條路線（Bigey 等 2021；Lebleux 等 2026；Ruffieux 等 2026 預印本）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Bigey、Lebleux 屬 INRAE Sicard 群（已封頂），Ruffieux 屬 Wolfe／Heil 網且為預印本；未讀。 原提案 F95-NA007。",
+      "reentry_condition": "若另開『老麵酵母從哪裡來、怎麼被馴化』一題，可作為核心。",
+      "reading_status": "not_read"
+    }
+  ]
+}
