@@ -113,7 +113,7 @@ c28–c29、c34、c36–c37 寫 `night, heavy charcoal-grey curtains drawn acros
 | c28 | 中景、慢推（從中景推到中近景）；鏡頭在 Sienna 的右前方、低；直式前後疊開：前景是低矮灰沙發的扶手（虛焦），中間是坐在沙發左端的 Sienna，畫面左後是長的淺色木餐桌與坐在那裡的 Grant（虛焦） | 露臉清楚的只有 Sienna。Sienna（暖棕膚色、俐落的黑色齊下巴短髮、紅唇、`a slim gold watch on her LEFT wrist`、鮮紅合身褲裝），斜靠在沙發左端；**左手**把 `a slim phone in a plain red case, about the size of her palm` 貼在**左耳**；身後每一面玻璃都拉上深灰窗簾、檯燈的暖光；矮櫃上一塊空著的地方；Grant（沙金色側分、細圓金屬框眼鏡、淺藍開領襯衫、外套脫掉）坐在畫面左後的餐桌邊，**虛焦、看不清臉**；Sienna 眼睛看著畫面右的檯燈，眉毛挑起、眼睛亮、嘴唇閉著的笑、不露齒 | Sienna 把手機貼上左耳（動作一），兩腿收到沙發上、身子往扶手一靠（動作二）；剪在她靠好；嘴閉著（閉嘴的笑）；最後：她靠著扶手、手機貼在左耳 | — | 約 2.5 秒 |
 | c29 | 近景、慢推（從胸上推到肩上）；同 c28 的鏡位，更緊；直式，**第一格就是 Sienna 的臉與肩膀，整鏡不拉遠**；身後只有拉上的深灰窗簾與檯燈的光 | Sienna（基本款：黑色齊下巴短髮、紅唇、鮮紅褲裝）；**左手**的 `a slim phone in a plain red case, about the size of her palm` 貼在**左耳**、`a slim gold watch on her LEFT wrist`；四分之三側臉朝畫面右的檯燈、眼睛看著它（說話模板的 eyes on 換成本鏡寫的視線）；第一格閉嘴的笑、不露齒，**開口時嘴角放平**；眉毛挑起、眼睛亮、聲音快、亮、帶一點刺 | Sienna 先閉嘴笑一下（動作一），嘴角放平、嘴在說話（快、亮、帶刺）（動作二）；說完右手指尖在沙發扶手上點一下，嘴閉上；最後：她等著，手機貼在左耳 | Sienna（快、亮、帶刺，電話裡）：Put Mrs. Ashford on.（叫 Ashford 太太來聽）（原聲，後製加電話濾波）（→ 答在 c32）← 因為 c27 | 約 3 秒 |
 | c30 | 近景、固定；同 c27 的鏡位；直式，Peg 的臉在上三分之一 | Peg（`visit`，玳瑁框老花眼鏡戴在臉上）；右手 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side`；檯燈的暖光；眼睛從前面移到手機上；眉頭一下擰緊、嘴唇抿成一條線、下巴往後收、鼻子重重吸一口氣，`no smile at any moment, until the last frame` | Peg 把手機從耳邊放低、看著它（動作一），掀開被子下床（動作二）；剪在她站起來一半；嘴閉著；最後：她站起來，手機在右手 | — | 約 2.5 秒 |
-| c31 | 中景、跟拍（往後退軌）；**鏡頭在走廊盡頭、鏡子的位置往回拍**；直式：深處是迴廊的黑鋼欄杆，畫面右是 Nora 房的深色木門 | Peg（`visit`，玳瑁框老花眼鏡戴在臉上、燕麥色開襟衫、平底包鞋），從畫面右深處自己的房門口朝鏡頭走來；右手把 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side` 按在胸前；壁燈的暖光；眼睛看著畫面右前方 Nora 的房門、不看鏡頭；眉頭擰緊、嘴唇抿薄、下巴往前，`no smile at any moment, until the last frame`；壁燈的暖光從畫面左 | Peg 沿走廊走過來（動作一），在 Nora 的門前停住、左手推開門（動作二）；剪在門推開一半；嘴閉著；最後：她站在 Nora 敞開的房門口 | — | 約 2.5 秒 |
+| c31 | 中景、跟拍（往後退軌）；**鏡頭在走廊盡頭、鏡子的位置往回拍**；直式：深處是迴廊的黑鋼欄杆，畫面右是 Nora 房的深色木門 | Peg（`visit`，玳瑁框老花眼鏡戴在臉上、燕麥色開襟衫、平底包鞋），從畫面右深處自己的房門口朝鏡頭走來；右手把 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side` 按在胸前；眼睛看著畫面右前方 Nora 的房門、不看鏡頭；眉頭擰緊、嘴唇抿薄、下巴往前，`no smile at any moment, until the last frame`；壁燈的暖光從畫面左 | Peg 沿走廊走過來（動作一），在 Nora 的門前停住、左手推開門（動作二）；剪在門推開一半；嘴閉著；最後：她站在 Nora 敞開的房門口 | — | 約 2.5 秒 |
 | c32 | 中近景、固定；鏡頭在 Nora 的客房裡、床尾，往門口拍；直式：畫面左是敞開的門與門口的 Peg，畫面右下是床緣的 Nora（肩與手） | 共兩人，露臉清楚的是 Peg。Peg（`visit`，玳瑁框老花眼鏡戴在臉上）站在門口，右手把 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side` 遞進來；四分之三側臉朝畫面右下的 Nora、眼睛看著她：眉頭擰緊、嘴唇抿緊，`no smile at any moment, until the last frame`；Nora（`shoulder`）坐在床緣，右手伸過去、只見她的肩、手臂與半邊臉（虛焦）；檯燈的暖光 | Peg 把手機遞過去（動作一），Nora 的右手接過來（動作二）；剪在手機換手；嘴都閉著；最後：手機在 Nora 的右手，Peg 站在門口（回應 c29：把手機交給 Mrs. Ashford） | — | 約 2.5 秒 |
 | c33 | 近景、慢推（從胸上推到肩上）；鏡頭在床尾那側、低，斜著往床頭拍；直式，Nora 的臉在上三分之一；身後是床頭櫃上的帽子與窄窗（虛焦）；同一個客房 | Nora（`shoulder`），坐在床緣；右手把 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side` 貼在右耳（離鏡頭較遠那側）；左手放在膝上，`a plain narrow white-gold band with no stone, on her left ring finger`；檯燈的暖光從畫面右；四分之三側臉朝畫面左的門口、眼睛看著前面的地板，不看鏡頭；眉毛微微一抬、眼睛定住、嘴唇閉著、呼吸放輕，`no smile at any moment, until the last frame` | Nora 把手機貼上右耳（動作一），身子不動地聽著、眼睛慢慢垂下（動作二）；剪在眼睛垂下；嘴閉著；最後：她聽著電話 | — | 約 2.5 秒 |
 | c34 | 近景、固定；同 c29 的鏡位；直式，**第一格就是 Sienna 的臉與肩膀，整鏡不拉遠** | Sienna（基本款）；**左手**的 `a slim phone in a plain red case, about the size of her palm` 貼在**左耳**、`a slim gold watch on her LEFT wrist`；四分之三側臉朝畫面右的檯燈、眼睛看著它；第一格閉嘴的笑、不露齒，**開口時嘴角放平**；眉毛一挑、眼睛瞇一點、聲音慢下來、甜、每個字都拉長一點 | Sienna 先閉嘴笑一下，嘴角放平、嘴在說話（慢、甜、拉長）；說完眼睛往畫面左後的餐桌那頭瞟一下，嘴閉上；最後：她瞟著畫面左後 | Sienna（慢、甜，電話裡）：Mrs. Ashford. Nice house.（Ashford 太太。房子不錯嘛）（原聲，後製加電話濾波） | 約 3.5 秒 |
@@ -150,6 +150,16 @@ c28–c29、c34、c36–c37 寫 `night, heavy charcoal-grey curtains drawn acros
 - **c25 外觀**：23:30 廚房已經關燈，整面牆只亮 Nora 那扇窗（第 21 集的「只亮兩扇窗」是 22:30 的事）。
 - **c40 接點鏡**：鏡頭在床頭櫃與窗之間往門口拍，毛線帽在前景；Peg 站在門口、沒有進房。
 - **規則卡**：本集只在 c05 前景（虛焦）；之後不拍。信封、座位卡、請帖留在長桌上（第 23 集 17:30 請帖還在長桌上）。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e021-e025-storyboard.md` 與 bible〈審稿後補定〉改的。本集還沒錄、沒拍，沒有要重抽的片段；**c14 台詞變長，要重錄**（3 → 4 秒）。
+- **c14**：Theo 的台詞改成 "Whitlock Home's launch. For Mr. and Mrs. Ashford."（觀眾才知道是誰的發表會）。第一場 64.5 → 65.5 秒，全集 108 → 109 秒。
+- **c08、c10、c20 與第一場場頭**：過肩寫成從 Nora 的**左肩**後、肩在畫框**右下緣**；Peg 看 Nora 朝畫面右下、看 Elias 朝畫面右遠處。
+- **c02**：Peg 站在三級台階最上面一級、背靠書房門，走下台階回座位（接第 21 集）。
+- **c05**：一鏡兩個動作：第一格 Peg 已經坐下，只推鍋、收手。
+- **c22、c36**：短句補收尾動作（c22 兩手把請帖放低一指寬；c36 左手食指在紅色手機殼上點一下）。
+- **c31 與第二場場頭**：二樓走廊從鏡子的位置往回看，門在畫面右、壁燈在畫面左。
 
 ### 配音
 

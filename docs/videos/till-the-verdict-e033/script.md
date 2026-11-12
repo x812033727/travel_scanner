@@ -47,7 +47,7 @@ c17–c36 寫 `afternoon inside an old red-brick glassworks, cold white daylight
 - 「畫面裡有誰」寫位置、服裝、道具、表情、狀態。**每張露臉的臉都寫表情，寫成臉怎麼動**：眉、眼、嘴角、下巴、呼吸至少兩處。本集可以笑的只有：c19 Sparks 露齒的大笑；其餘每張露臉的臉都加 `no smile at any moment, until the last frame`，表情句不寫任何嘴角往上的字。Nora 的華麗鏡頭寫 `lips pressed together, corners level, chin lifted`。
 - **眼淚**：c08 起 Nora 眼睛濕，c13 起哭過、臉頰濕，到 c16 每一鏡再寫一次；下午（c17 起）眼睛乾了、不寫淚。
 - **戒指**：拍到 Nora 的左手就寫 `a plain narrow white-gold band with no stone, on her left ring finger`。
-- **黃線**：c17 起拍到地上就寫 `a worn yellow safety line painted across the concrete floor`，寫清楚每個人在線的哪一邊：**練習爐那區在線內（爐子那邊）**；Nora 一直在線外（大門那邊），只有 c39–c41 左腳跨過一步。
+- **黃線**：c17 起拍到地上就寫 `a worn yellow safety line painted across the concrete floor`，再接通道句 `the worn yellow safety line turns along the back wall, leaving a narrow walkway to the storeroom door`，寫清楚每個人在線的哪一邊：**練習爐那區在線內（爐子那邊）**；Nora 一直在線外（大門那邊），只有 c39–c41 左腳跨過一步。
 - **防護**：Sparks 在線內一律 `clear wraparound safety glasses, over his eyes`、前臂隔熱護套加 `a pair of long grey heat-resistant gloves reaching to the elbow`；Gus 在熱爐邊三件都寫。熱玻璃寫 `glowing orange`，只在管口與練習爐口，管子從不指向人。
 - **道具**：畫面裡有這個道具，英文正文就一字不差照抄反引號裡那句（bible〈道具的樣子〉）；拿在手上的抄到描述為止，再接手的位置。
 - 「動作」裡，說話的人寫「嘴在說話」，臉是側面或四分之三側臉、看著聽的人；同鏡其他人寫「嘴閉著」。6 個字以內的台詞，說完寫一個收尾動作與「嘴閉上」。一鏡最多兩個動作。
@@ -187,6 +187,16 @@ c17–c36 寫 `afternoon inside an old red-brick glassworks, cold white daylight
 - **手套**（主控 2026-11-12，接第 34 集第一鏡）：Gus 在爐邊一律戴 `long tan heat-resistant gloves reaching his elbows`（c41 也戴）；Sparks 在練習爐前（c24 起）一律戴 `a pair of long grey heat-resistant gloves reaching to the elbow`（bible 會加這個道具句；c17–c23 在線外、拿冷吹管時不戴）。
 - **Gus 何時站到她右後方**：c36 他從長凳邊跨回線外、站到她右後方一步，看著她點頭（"她發現每個動作都記得" 由他這一眼交代）。
 - **c40 管子往上、朝練習爐那邊甩**，不朝人；那團玻璃往下落向鋼板。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e031-e035-storyboard.md` 與 bible〈審稿後補定〉改的。本集還沒錄、沒拍，沒有要重抽的片段。台詞沒改，**不用重錄**；鏡數、秒數不變（41 鏡、113 秒）。
+- **場景版本**：c17–c41 用新的 `remelt-cold-open`（帆布扯下），不用蓋帆布的 `remelt-cold`。
+- **Brandt 的光**（c02–c05）：`soft grey window light across her face from frame left`，桌燈只照桌面，不再從下面照她的下巴。
+- **c21 → c23**：c21 說完 "Huh?" 把安全帽掛上機車把手、翻身下車；c22 他從畫面右外走過來，Nora 才遞吹管。
+- **c38 → c40**：c38 改成中近景，Sparks 從長凳上站起來、兩手擠到管子前段；c40 第一格已經站在長凳前。
+- **黃線與通道**：每一句黃線後面接通道句 `the worn yellow safety line turns along the back wall, leaving a narrow walkway to the storeroom door`（〈欄位怎麼讀〉、場頭、c17、c24、c39、c41），Nora 一直寫在線外，只有 c39–c41 左腳跨過一步。
+- （主控同日的修正，前一版已改）Sparks 在練習爐前戴 `a pair of long grey heat-resistant gloves reaching to the elbow`。
 
 ### 配音
 
