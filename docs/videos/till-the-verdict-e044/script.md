@@ -68,17 +68,17 @@ c25–c38 寫 `night, a dark concrete walkway, a thin steady strip of warm light
 | --- | --- | --- | --- | --- | --- |
 | c01 | 全景、慢推（從全景推到中全景）；鏡頭在長桌靠玄關那頭的桌角旁、低，斜往右牆的廚房拍；直式前後疊開：**前景左下是長桌深色胡桃木的一角**（桌緣一線吊燈的暖光），中間是右牆的不鏽鋼廚房與爐子，上緣是低吊燈；畫面左後是全黑的大廳遠端 | Nora（`home`：齊肩深栗色頭髮綁低馬尾、麻灰色長袖棉上衣、炭灰寬鬆長褲、灰色毛襪），站在爐子前、四分之三背影、面向畫面右；爐上 `a tall steel pasta pot about the size of a mixing bowl, steam rising`，鍋下一小圈藍火；右手 `a pair of plain steel kitchen tongs about as long as her forearm`；吊燈的暖光從畫面左上斜照到她的肩與蒸氣；側臉很小：眼睛垂在鍋上、眉毛放平、嘴唇輕閉，`no smile at any moment, until the last frame` | Nora 用夾子從鍋裡夾起一束滴著紅醬的麵（動作一），轉身朝爐子右邊的流理台（動作二）；剪在轉身一半；嘴閉著；最後：夾子舉著一束麵、轉向流理台，蒸氣往上飄 | — | 約 2.5 秒 |
 | c02 | 插鏡、特寫、固定；**第一格就是夾子夾著的麵懸在第一只碗上方**；直式；鏡頭低、在流理台高度；同一個廚房 | Nora 的右手（麻灰色長袖口）握著 `a pair of plain steel kitchen tongs about as long as her forearm`；流理台上 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising`（剛盛好，沒有叉子）；吊燈的暖光從畫面左上；畫面裡沒有臉 | 夾子把麵放進碗裡、轉一圈盤好；剪在轉到一半；畫面上沒有嘴；最後：一碗盛好的麵在流理台上冒煙，夾子停在碗上方 | — | 約 2.5 秒 |
-| c03 | 近景、固定；鏡頭在流理台靠玄關那一端、貼著台面往大廳最裡面拍；直式，臉在上三分之一；身後是全黑的大廳遠端（虛焦）；同一個廚房、同一盞吊燈的光 | Nora（`home`，低馬尾）；四分之三側臉朝畫面右下的鍋與碗；吊燈的暖光從畫面左照在她的左頰，鍋上的蒸氣從畫面右下飄過；眼睛從碗移到鍋裡剩下的麵、眉毛微微抬起、嘴唇輕閉、慢慢眨一次眼，`no smile at any moment, until the last frame` | Nora 的眼睛從碗移到鍋裡（動作一），右手把夾子靠在鍋緣（動作二）；剪在夾子靠上鍋緣；嘴閉著；最後：她看著鍋子，夾子靠在鍋緣 | — | 約 2.5 秒 |
+| c03 | 近景、固定；鏡頭在流理台靠玄關那一端、貼著台面往大廳最裡面拍；直式，臉在上三分之一；身後是全黑的大廳遠端（虛焦）；同一個廚房、同一盞吊燈的光 | Nora（`home`，低馬尾）；四分之三側臉朝畫面右下的鍋與碗；吊燈的暖光從畫面左照在她的臉上，鍋上的蒸氣從畫面右下飄過；眼睛從碗移到鍋裡剩下的麵、眉毛微微抬起、嘴唇輕閉、慢慢眨一次眼，`no smile at any moment, until the last frame` | Nora 的眼睛從碗移到鍋裡（動作一），右手把夾子靠在鍋緣（動作二）；剪在夾子靠上鍋緣；嘴閉著；最後：她看著鍋子，夾子靠在鍋緣 | — | 約 2.5 秒 |
 | c04 | 插鏡、特寫、固定；**第一格就是流理台上第一只碗旁邊的空位與她的兩手**；直式；鏡頭在流理台高度 | Nora 的左手（麻灰色袖口）`a plain narrow white-gold band with no stone, on her left ring finger`，把 `a wide white ceramic pasta bowl about as wide as two cupped hands, empty and washed spotless` 放在第一只碗旁邊；右手的夾子從畫面右上夾著麵伸進來；第一只碗 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising` 在畫面左；畫面裡沒有臉 | 左手把空碗放到第一只碗旁邊（動作一），右手的夾子把一束麵放進空碗（動作二）；剪在麵落進碗裡；畫面上沒有嘴；最後：兩只碗並排，第二只碗裡有麵、還沒盛滿 | — | 約 2.5 秒 |
 | c05 | 插鏡、特寫、固定；**第一格就是盛滿的第二碗與她右手的指尖**；直式；鏡頭在流理台高度 | 第二只碗：`a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising`；旁邊 `a small white ceramic salt cellar about the size of her palm, coarse white salt inside`；Nora 的右手拇指與食指捏著一撮粗鹽；畫面裡沒有臉 | 右手把一撮鹽撒在第二碗的麵上；剪在鹽落到一半；畫面上沒有嘴；最後：指尖停在碗上方 | — | 約 2.5 秒 |
-| c06 | 近景、慢推（從胸上推到肩上）；同 c03 的鏡位；直式，臉在上三分之一；身後是全黑的大廳遠端（虛焦） | Nora（`home`，低馬尾）；吊燈的暖光在左頰；四分之三側臉朝畫面右下的第二碗；眉頭往中間收一點、眼睛停在碗上、嘴唇抿平、下巴往下收，像在算什麼，`no smile at any moment, until the last frame` | Nora 盯著第二碗停一拍（動作一），右手又伸向畫面右下的鹽罐（動作二）；剪在手伸到一半；嘴閉著；最後：她的右手伸向鹽罐 | — | 約 3.5 秒 |
+| c06 | 近景、慢推（從胸上推到肩上）；同 c03 的鏡位；直式，臉在上三分之一；身後是全黑的大廳遠端（虛焦） | Nora（`home`，低馬尾）；吊燈的暖光照在她臉上；四分之三側臉朝畫面右下的第二碗；眉頭往中間收一點、眼睛停在碗上、嘴唇抿平、下巴往下收，像在算什麼，`no smile at any moment, until the last frame` | Nora 盯著第二碗停一拍（動作一），右手又伸向畫面右下的鹽罐（動作二）；剪在手伸到一半；嘴閉著；最後：她的右手伸向鹽罐 | — | 約 3.5 秒 |
 | c07 | 插鏡、特寫、固定；同 c05 的鏡位；**第一格就是她捏著第二撮鹽的指尖在碗上方** | 第二碗 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising`；`a small white ceramic salt cellar about the size of her palm, coarse white salt inside`；Nora 的右手；畫面裡沒有臉 | 右手再撒一撮鹽；剪在鹽落下；畫面上沒有嘴；最後：指尖收回 | — | 約 2 秒 |
 | c08 | 插鏡、特寫、固定；**第一格就是第二碗與她右手拿著的鋼叉**；直式；鏡頭在流理台高度 | Nora 的右手（麻灰色袖口）拿著一支鋼叉；第二碗放上叉子後成為 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim`；畫面裡沒有臉 | 右手把叉子橫放在碗緣上（動作一），手收回去（動作二）；剪在手收回一半；畫面上沒有嘴；最後：叉子橫在第二碗的碗緣，一直留在畫面中間 | — | 約 2.5 秒 |
 | c09 | 近景、慢推（從胸上推到臉）；**顏值鏡頭**；鏡頭在流理台靠玄關那一端、低，側拍；直式，側臉在上三分之一，下緣是第二碗的碗緣；身後是全黑的大廳（虛焦） | Nora（`home`：齊肩深栗色頭髮綁低馬尾、麻灰色長袖棉上衣）；吊燈的暖光從畫面左上落在她的側臉與低馬尾；第二碗的蒸氣從下面飄上來、模糊了她的側臉輪廓；側臉朝畫面右下的碗、眼睛垂在碗緣；眉頭鬆開、下巴放鬆、嘴唇輕閉、呼吸慢，`no smile at any moment, until the last frame`；第二碗 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim` | Nora 的右手拇指抹掉碗緣一滴紅醬（動作一），拇指收回到身側（動作二）；剪在拇指離開碗緣；嘴閉著；最後：她低頭看著碗，蒸氣在臉前 | — | 約 4.5 秒 |
 | c10 | 中景、慢推（從中景推到中遠景，焦點從前景移到遠處）；從 Nora 的左肩後拍（她的左肩、耳後的低馬尾在畫框右下緣、虛焦、不露臉）；直式：畫面中後是全黑的大廳遠端 | 前景是 Nora 的左肩與低馬尾（`home`，麻灰色上衣）；畫面中後遠處：長桌的另一端沒入黑暗，客廳區一盞落地燈的一點暖光（沙發背是一道暗影），它左邊三級水泥台階上方、一小段黑走道的盡頭，一道很細的暖光貼著地面（書房門縫，遠、小）；吊燈的光只照到前景她的肩 | Nora 的頭轉向畫面左後的大廳遠端（動作一），停住看著那道細光（動作二）；剪在頭停住；畫面上沒有嘴；最後：她的後腦朝著遠處那道細光 | — | 約 3.5 秒 |
-| c11 | 近景、固定；同 c03 的鏡位；直式，臉在上三分之一；身後是全黑的大廳遠端（虛焦） | Nora（`home`，低馬尾）；第一格頭剛從畫面左後轉回來、四分之三側臉朝畫面右下的第二碗；吊燈的暖光在左頰；眼睛垂到碗上、眉毛放平、嘴唇抿平、鼻子短短出一口氣、下巴收，`no smile at any moment, until the last frame` | Nora 的眼睛垂回第二碗（動作一），對自己很小地點一下頭（動作二）；剪在點頭往下；嘴閉著；最後：她看著碗 | — | 約 2.5 秒 |
+| c11 | 近景、固定；同 c03 的鏡位；直式，臉在上三分之一；身後是全黑的大廳遠端（虛焦） | Nora（`home`，低馬尾）；第一格頭剛從畫面左後轉回來、四分之三側臉朝畫面右下的第二碗；吊燈的暖光照在她臉上；眼睛垂到碗上、眉毛放平、嘴唇抿平、鼻子短短出一口氣、下巴收，`no smile at any moment, until the last frame` | Nora 的眼睛垂回第二碗（動作一），對自己很小地點一下頭（動作二）；剪在點頭往下；嘴閉著；最後：她看著碗 | — | 約 2.5 秒 |
 | c12 | 插鏡、特寫、固定；**第一格就是爐子前面的旋鈕與她的右手**；直式；鏡頭低、在爐面高度 | Nora 的右手（麻灰色袖口）捏著六口爐前面一個鋼旋鈕；上方鍋底一小圈藍火，`a tall steel pasta pot about the size of a mixing bowl, steam rising`；畫面裡沒有臉 | 右手把旋鈕轉到底、藍火縮小熄掉；剪在火熄的一下；畫面上沒有嘴；最後：火熄了，鍋上還有一點蒸氣 | — | 約 2 秒 |
-| c13 | 中近景、固定；鏡頭在流理台靠玄關那一端、側拍；直式：下緣是流理台面與兩只碗，上半是 Nora；**頭上留出空間** | Nora（`home`，低馬尾、灰色毛襪）；兩手捧起第二碗 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim, held at her chest in both hands`；左手 `a plain narrow white-gold band with no stone, on her left ring finger`；她自己那碗 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising` 留在爐邊的流理台上；吊燈的暖光從畫面左；四分之三側臉朝畫面右下的碗；眉毛放平、嘴唇輕閉、呼吸慢，`no smile at any moment, until the last frame` | Nora 兩手把第二碗從流理台捧起來（動作一），往後退一步、轉向畫面左（動作二）；剪在轉身一半；嘴閉著；最後：她捧著第二碗在胸前，自己那碗留在流理台上冒煙 | — | 約 2.5 秒 |
+| c13 | 中近景、固定；鏡頭在流理台靠玄關那一端、側拍；直式：下緣是流理台面與兩只碗，上半是 Nora；**頭上留出空間** | Nora（`home`，低馬尾、灰色毛襪）；兩手捧起第二碗 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim, held at her chest in both hands`；左手 `a plain narrow white-gold band with no stone, on her left ring finger`；她自己那碗 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising` 留在爐邊的流理台上；吊燈的暖光從畫面左；四分之三側臉朝畫面右下的碗；眉毛放平、嘴唇輕閉、呼吸慢，`no smile at any moment, until the last frame` | Nora 兩手把第二碗從流理台捧起來（動作一），轉向畫面左（動作二）；剪在轉身一半；嘴閉著；最後：她捧著第二碗在胸前，自己那碗留在流理台上冒煙 | — | 約 2.5 秒 |
 | c14 | 中景、跟拍（從右往左）；鏡頭在長桌另一側（靠樓梯那側）、與她平行；直式前後疊開：前景是長桌另一側一排椅背（虛焦、往畫面左滑過），中間是深色胡桃木長桌，後面是她 | Nora（`home`：低馬尾、麻灰色長袖上衣、炭灰寬鬆長褲、**灰色毛襪**踩在磨光的水泥地上），沿長桌走向畫面左（大廳最裡面）；兩手捧著 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim, held at her chest in both hands`；她身後畫面右後是暗下來的廚房；吊燈從畫面右上照在她的肩，往左越走越暗；側臉朝畫面左、眼睛看著前方的大廳遠端；眉毛平、嘴唇閉著、下巴微抬，`no smile at any moment, until the last frame` | Nora 捧著碗、一步一步沿長桌往畫面左走；剪在她走出吊燈的光圈；嘴閉著；最後：她走到長桌遠端、半邊身子在暗裡，碗還冒煙 | （無台詞）（結尾） | 約 4 秒 |
 
 ### 第二場：What are you looking at? Bed.（約 30.5 秒）
@@ -96,7 +96,7 @@ c25–c38 寫 `night, a dark concrete walkway, a thin steady strip of warm light
 | --- | --- | --- | --- | --- | --- |
 | c15 | 中全景、慢推（從中全景推到中景）；鏡頭在電視牆那頭、低，往回拍；直式前後疊開：前景是沙發畫面右那一端的扶手（虛焦），中間是灰色長沙發與畫面左的黃銅落地燈，後面是往深處延伸的黑暗長桌與遠遠一盞吊燈 | 共兩人。Peg（`visit`：直的灰色短髮往一邊梳、玳瑁框老花眼鏡戴在臉上、長的深棕色木珠項鍊、燕麥色舊開襟衫、深色長褲、深色平底便鞋）坐在沙發畫面左那一端、`a brass floor lamp with a warm glow` 旁，兩手在膝上織 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`；眼睛垂在棒針上、眉心往上擠、嘴唇抿緊，`no smile at any moment, until the last frame`；Nora（`home`，灰色毛襪）從後面的長桌走進落地燈的光裡，兩手捧著 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim, held at her chest in both hands`，停在沙發畫面右那一半的椅背後；臉較小：眼睛落在 Peg 手上、眉毛一抬、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 走進光裡、停在沙發後（動作一）；Peg 手上的棒針交叉、繞一針（動作二）；剪在 Nora 停下；兩人都嘴閉著；最後：Nora 捧著碗站在沙發後的畫面右，Peg 低頭織著 | — | 約 4 秒 |
 | c16 | 插鏡、特寫、固定；**第一格就是 Peg 膝上的兩手與棒針**；直式；從 Nora 站的位置往下看（主觀鏡）；落地燈的暖光從畫面左上 | Peg 的兩手（燕麥色開襟衫袖口）；左手 `a faint pale band of skin on her left ring finger where a ring used to be`；`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`，奶油色的毛線從她膝上的線團拉上來；畫面裡沒有臉 | 兩根棒針交叉、右手把一圈奶油色的線繞過針尖、拉緊；剪在線拉緊；畫面上沒有嘴；最後：小帽還掛在棒針上 | — | 約 2.5 秒 |
-| c17 | 近景、固定；鏡頭在 Nora 左前方、低，往上拍；直式，臉在上三分之一，下緣是捧著的碗；身後是黑暗的長桌（虛焦）；同一盞落地燈的光 | Nora（`home`，低馬尾）；落地燈的暖光從畫面左下照在她的下巴與左頰；碗的蒸氣在下緣；四分之三側臉朝畫面左下的 Peg 的手、眼睛釘在那頂小帽上；眉毛抬起又往中間收、嘴唇微張、呼吸停住，`no smile at any moment, until the last frame` | Nora 認出那頂帽子，捧著碗的兩手手指收緊；剪在手指收緊；嘴微張、沒出聲；最後：她盯著畫面左下 | — | 約 2.5 秒 |
+| c17 | 近景、固定；鏡頭在 Nora 左前方、低，往上拍；直式，臉在上三分之一，下緣是捧著的碗；身後是黑暗的長桌（虛焦）；同一盞落地燈的光 | Nora（`home`，低馬尾）；落地燈的暖光從畫面左下照在她的下巴與臉；碗的蒸氣在下緣；四分之三側臉朝畫面左下的 Peg 的手、眼睛釘在那頂小帽上；眉毛抬起又往中間收、嘴唇微張、呼吸停住，`no smile at any moment, until the last frame` | Nora 認出那頂帽子，捧著碗的兩手手指收緊；剪在手指收緊；嘴微張、沒出聲；最後：她盯著畫面左下 | — | 約 2.5 秒 |
 | c18 | 中近景、固定；鏡頭在 Peg 右前方、低；直式，臉在上三分之一，下緣是她的膝與灰色靠墊；身後是落地燈與黑暗的牆（虛焦） | Peg（`visit`，玳瑁框老花眼鏡戴在臉上）；落地燈的暖光從畫面左上；兩手拿著 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`；第一格眼睛已經從棒針抬起來、看向畫面右上的 Nora；眉毛一跳、眼睛睜大、嘴唇抿成一條線，`no smile at any moment, until the last frame` | Peg 看見 Nora（動作一），兩手把小帽連棒針一把塞到身邊的灰色靠墊下（動作二）；剪在塞進去一半；嘴閉著；最後：她的兩手壓在靠墊上 | — | 約 2.5 秒 |
 | c19 | 插鏡、特寫、固定；**第一格就是沙發上的灰色靠墊與 Peg 的右手**；直式；落地燈的暖光從畫面左上 | `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm, half hidden under a grey sofa cushion`：靠墊邊露出一點奶油色的毛線與兩根棒針的木頭針尖；Peg 的右手（燕麥色袖口）；畫面裡沒有臉 | Peg 的右手把靠墊往下按平、按兩下；剪在第二下；畫面上沒有嘴；最後：靠墊壓著帽子，邊上還露出一點奶油色與針尖 | — | 約 2 秒 |
 | c20 | 近景、慢推（從胸上推到肩上）；同 c18 的鏡位；直式，臉在上三分之一；身後只有落地燈與黑暗的牆 | Peg（`visit`）；落地燈穩定的暖光照在她的臉；鏡片後的眼眶濕、亮，眼淚還沒掉下來；四分之三側臉朝畫面右上的 Nora；眨眼眨得用力兩次、下巴往上一抬、嘴唇抿緊、鼻子吸一口氣，`no smile at any moment, until the last frame` | Peg 用力眨兩次眼（動作一），右手食指把眼鏡往鼻樑上推（動作二）；剪在眼鏡推上去；嘴閉著；最後：她抬著下巴看著畫面右上 | — | 約 3.5 秒 |
@@ -130,7 +130,7 @@ c25–c38 寫 `night, a dark concrete walkway, a thin steady strip of warm light
 | c34 | 近景、慢推（從胸上推到臉）；鏡頭在門的右邊、地面高度；直式，臉在上三分之一，下緣是碗緣與蒸氣；身後是黑的走道（虛焦） | Nora（`home`，低馬尾），蹲在碗旁；門縫的暖光從下往上照亮她的下巴、顴骨與碗上的蒸氣；第一格眼睛垂在碗上，然後抬起來看畫面右上的門；眉心往上擠、眼睛定住、嘴唇微微張開又閉上、呼吸慢，`no smile at any moment, until the last frame` | Nora 的眼睛從碗抬到門上（動作一），嘴唇張開一下又閉上、什麼都沒說（動作二）；剪在嘴閉上；最後：她蹲著、看著門 | — | 約 4 秒 |
 | c35 | 中近景、固定；同 c32 的鏡位；直式，**頭上留出空間，站起來後整個頭仍在畫面裡** | Nora（`home`，灰色毛襪）；碗在她腳邊的地上（下緣）：`a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim, on the bare concrete floor beside a closed wooden door`；門縫的暖光從畫面右下；眉毛平、嘴唇抿平、下巴收著，`no smile at any moment, until the last frame` | Nora 站起來（動作一），轉身朝畫面左後的走道（動作二）；剪在轉身一半；嘴閉著；最後：她背向門、碗留在門右邊的地上 | — | 約 2.5 秒 |
 | c36 | 中景、固定；同 c26 的鏡位；直式前後疊開：前景右是門框與地上的碗（虛焦），中間是黑的走道，畫面左後是台階口與大廳的暖光 | Nora（`home`，低馬尾、灰色毛襪）的背影，沿走道往畫面左後走；兩手空著垂在身側；背後的大廳暖光照出她的輪廓；不露臉；前景 `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim, on the bare concrete floor beside a closed wooden door`（虛焦） | Nora 的背影沿走道往畫面左後走三步；剪在第三步；畫面上沒有嘴；最後：她走到台階口，碗在前景冒煙 | — | 約 3 秒 |
-| c37 | 近景、固定；鏡頭在台階口旁、低，往走道裡拍；直式，臉在上三分之一；身後是黑的走道與畫面右遠處門縫那一道細光（虛焦） | Nora（`home`，低馬尾），站在台階頂；大廳遠遠的暖光從畫面左照在她的左頰；第一格她面向畫面左（台階下），然後頭轉回畫面右後、看向走道盡頭的門縫光；眉心往上擠、眼睛定住、嘴唇閉著、下巴微收，`no smile at any moment, until the last frame` | Nora 回頭看一眼走道盡頭的門（動作一），再轉回畫面左、踏下第一級台階（動作二）；剪在她踏下去；嘴閉著；最後：她轉回去、往台階下走 | — | 約 3 秒 |
+| c37 | 近景、固定；鏡頭在台階口旁、低，往走道裡拍；直式，臉在上三分之一；身後是黑的走道與畫面右遠處門縫那一道細光（虛焦） | Nora（`home`，低馬尾），站在台階頂；大廳遠遠的暖光從畫面左照在她的臉上；第一格她面向畫面左（台階下），然後頭轉回畫面右後、看向走道盡頭的門縫光；眉心往上擠、眼睛定住、嘴唇閉著、下巴微收，`no smile at any moment, until the last frame` | Nora 回頭看一眼走道盡頭的門（動作一），再轉回畫面左、踏下第一級台階（動作二）；剪在她踏下去；嘴閉著；最後：她轉回去、往台階下走 | — | 約 3 秒 |
 | c38 | 插鏡、特寫、低角度、固定（接第 45 集之前的最後一刻）；**第一格就是門右邊地上的碗與門縫的光**；鏡頭貼著水泥地、在門右邊的牆角；直式：前景右是冒煙的碗，右上是關著的深色木門與門縫下一道暖光，畫面左遠處是黑的走道與台階口 | `a wide white ceramic pasta bowl about as wide as two cupped hands, heaped with spaghetti in red tomato sauce, steam rising, a steel fork laid across its rim, on the bare concrete floor beside a closed wooden door`；門縫下的暖光照著碗與蒸氣；畫面左遠處、虛焦：Nora（`home`）的背影沿走道走回餐廳那頭、越來越小，不露臉；門左邊空的小几（虛焦） | 蒸氣從碗上慢慢往上飄（動作一）；遠處 Nora 的背影走下台階、出畫面左（動作二）；然後門後椅子嘎吱一聲（只有聲音）；剪在嘎吱聲後一拍；畫面上沒有嘴；最後：碗在門邊冒煙、門關著、門縫的光不變 | （音效：門後椅子嘎吱一聲）（結尾）（懸念 → 下一集第一場） | 約 4.5 秒 |
 
 約 113 秒（1 分 53 秒）、38 鏡（第一場 14、第二場 10、第三場 14），是各鏡秒數加起來的估計；細綱 `duration_s` 115 秒，bible 目標 38–42 鏡（全章最安靜的一集，安靜的鏡到 4–4.5 秒）。
@@ -148,8 +148,8 @@ c25–c38 寫 `night, a dark concrete walkway, a thin steady strip of warm light
 - **Nora 一鏡都不笑**（bible〈全劇固定〉：第 41–44 集不笑；第 45 集才第一次笑出聲）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible〈寫稿時補定的事〉）：
-- **c05–c07 撒兩撮鹽**：她給第二碗撒一撮鹽、停一拍、又撒一撮。鋪第 45 集的 "Salty."（他嫌鹹，是因為她多撒了一撮）與第 1 集 Peg 的 "Salt it yourself."；不說出口。新道具句 `a small white ceramic salt cellar about the size of her palm, coarse white salt inside`。
-- **新道具句**：夾子 `a pair of plain steel kitchen tongs about as long as her forearm`（c01–c04）；落地燈照抄 `ashford-living` 場景句的 `a brass floor lamp with a warm glow`。
+- **c05–c07 撒兩撮鹽**：她給第二碗撒一撮鹽、停一拍、又撒一撮。鋪第 45 集的 "Salty."（他嫌鹹，是因為她多撒了一撮）與第 1 集 Peg 的 "Salt it yourself."；不說出口。新道具句 `a small white ceramic salt cellar about the size of her palm, coarse white salt inside`（`cast.json` id `salt-cellar`）。
+- **新道具句**：夾子 `a pair of plain steel kitchen tongs about as long as her forearm`（c01–c04；`cast.json` id `kitchen-tongs`）；落地燈照抄 `ashford-living` 場景句的 `a brass floor lamp with a warm glow`。
 - **兩只碗的分工**：第二只碗 c04 放上台面時是空的，用 `pasta-bowl-washed` 那句（就是第 45 集洗好回來的那只）；叉子 c08 才放上碗緣，之前碗句寫到 `steam rising` 為止。Nora 自己那碗沒有叉子，c13 起留在爐子右邊的流理台上（bible 只說「一碗留在流理台上」）。**第 45 集早上流理台上只有洗好的那一只**：她自己那碗她當晚收掉了（不拍）。
 - **c12 關火**：藍火 c01–c11 在鍋下，c12 起熄掉。
 - **c27 碗換到左手、c33 叉子轉正**：bible「放碗、橫叉子各一鏡」：叉子 c08 就橫在碗緣，c33 寫成指尖把叉子轉正、叉柄朝門，叉子句不變。
@@ -157,6 +157,13 @@ c25–c38 寫 `night, a dark concrete walkway, a thin steady strip of warm light
 - **c37 台階頂回頭一眼**：細綱只寫「走開」；加一鏡回頭（兩個動作：回頭、轉回去踏下台階），接點 c38 照 bible 不變。
 - **客廳區的軸線**：主鏡在電視牆那頭往回拍，落地燈與 Peg 在畫面左、Nora 停在沙發畫面右那一半的椅背後，書房的台階在畫面右外（從長桌看是左邊，跟 bible〈場景格局〉一致）。電視今晚關著、不入鏡。
 - **Peg 的鞋**：`visit` 的 sensible shoes 寫成深色平底便鞋。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e041-e045-storyboard.md` 改的。本集還沒錄、沒拍，沒有要重抽的片段；台詞沒變，不用重錄。
+- **c13**：一鏡三件事（再犯）：拿掉「往後退一步」，只留兩手捧起第二碗、轉向畫面左；秒數不變。
+- **光照到臉的寫法**（第 45 集審稿 c04、c27、c31 的同一類，本集一起改）：c03、c06、c11、c17、c37 拿掉「左頰」，只寫光從畫面哪一邊來、照在她臉上。
+- **道具句**：`cast.json` 2026-11-12 整理後，本集新加的兩句已收成 id：夾子 `kitchen-tongs`、鹽罐 `salt-cellar`，英文跟本稿一字不差；其他道具句（`pasta-bowl`、`pasta-bowl-washed`、`pasta-pot`、`knit-hat`、`elias-band`）沒有變。
 
 ### 配音
 
@@ -213,7 +220,7 @@ c25–c38 寫 `night, a dark concrete walkway, a thin steady strip of warm light
 - 定妝照：`nora-portrait.jpg`（r3）、`peg-portrait.jpg`（都有）。
 - **待畫的人**（照 bible 先畫順序第 2 號）：Nora `home` 全身（從 `nora-portrait.jpg`，`latent: image1`，只換衣服與髮型）。
 - **待畫的場景**（照 bible 先畫順序第 8–10 號）：一樓大廳與廚房 `ashford-dining`（**深夜一盞吊燈版**，直式，從玄關那側斜拍右牆廚房、前景長桌一角）；客廳區 `ashford-living`（**深夜落地燈版**，從電視牆那頭往回拍沙發與長桌）；書房門與走道 `ashford-study`（**深夜全黑、只有門縫光的版本**，從門右邊的牆角往回拍走道與台階口）。
-- 道具（建議先畫一張確認）：毛線帽補織中（確認是奶油色、掛在兩根棒針上，不是淡黃色、不是嬰兒鞋）；兩只寬口白瓷義大利麵碗與橫在碗緣的鋼叉。鹽罐、夾子照道具句。
+- 道具（建議先畫一張確認）：毛線帽補織中（確認是奶油色、掛在兩根棒針上，不是淡黃色、不是嬰兒鞋）；兩只寬口白瓷義大利麵碗與橫在碗緣的鋼叉。鹽罐 `salt-cellar`、夾子 `kitchen-tongs` 照道具句（`cast.json` 2026-11-12 已加）。
 - Elias 不入鏡，不需要參考圖。
 
 ### 3. 長鏡清單
@@ -235,7 +242,7 @@ c25–c38 寫 `night, a dark concrete walkway, a thin steady strip of warm light
 - **時間**：第 140 天（8/3 週一）01:00–01:08 廚房 → 約 01:10 客廳區 → 01:15–01:20 書房門前。夜，屋裡只有吊燈、落地燈、門縫的光。
 - **錢**：本集沒有錢的往來；麵與番茄罐頭是家裡的（Peg 的菜錢，不拍付錢，bible〈帳〉第 44–45 集）。Nora 身上只剩幾塊錢、帳本 Nora 欄還欠 Peg（第 142 天渡輪站訂金進帳後還清）；Peg 第 138 天領了退休金。本集都不說出口。
 - **碗**：第二碗（叉子橫在碗緣、柄朝門）在書房門右邊的水泥地上，冒煙（c38）；Nora 自己那碗留在廚房爐子右邊的流理台上（之後她自己收掉，不拍）。第 45 集早上，第二碗洗好、放回爐邊的流理台，底下壓著黃色便利貼。
-- **鍋**：在爐上，火關了（c12）。夾子靠在鍋緣，鹽罐在流理台上。
+- **鍋**：在爐上，火關了（c12）。夾子（`kitchen-tongs`）靠在鍋緣，鹽罐（`salt-cellar`）在流理台上。
 - **毛線帽**：奶油色、補織中、掛在兩根棒針上，塞在客廳沙發落地燈那一端的灰色靠墊下（c19）；第 48 集 Peg 織完放上燈箱。
 - **Nora 的戒指**：Elias 那枚素面白金戒在左手無名指。
 - **誰知道了什麼**：Nora 看見 Peg 在補那頂帽子（bible〈誰知道什麼〉）；Peg 看見 Nora 端著第二碗往書房去；書房裡的人（不入鏡）聽見了門外的動靜。

@@ -75,7 +75,7 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 | c01 | 插鏡、特寫、慢推（從特寫推到大特寫）；**第一格就是流理台上那條太陽與洗好的碗**；直式；鏡頭低、在流理台高度；太陽從畫面右上的小窗斜進來 | `a wide white ceramic pasta bowl about as wide as two cupped hands, empty and washed spotless`，在一條低斜的太陽裡發亮；碗緣底下 `a small square yellow sticky note about as wide as three of her fingers, its written side turned away, tucked under the bowl's rim, only its yellow edge showing`；不鏽鋼台面；畫面裡沒有臉 | 太陽光裡的細塵慢慢往下飄，鏡頭慢慢推近碗緣下那一角黃色；剪在推到黃色那一角；畫面上沒有嘴；最後：發亮的碗與一角黃色在畫面中間 | — | 約 2.5 秒 |
 | c02 | 中景、固定；鏡頭在流理台靠玄關那一端、貼著台面往大廳最裡面拍；直式前後疊開：前景右下是那只碗與太陽（虛焦），中間是走進來的 Nora，畫面左後是長桌與樓梯（虛焦） | Nora（`home`：齊肩深栗色頭髮綁低馬尾、麻灰色長袖棉上衣、炭灰寬鬆長褲、**灰色毛襪**），從畫面左後的大廳走進廚房、面向畫面右；太陽從畫面右上照在她的胸口；眼睛落在畫面右下的碗上；眉毛一抬、嘴唇微張、腳步放慢，`no smile at any moment, until the last frame` | Nora 從大廳走進廚房（動作一），在碗前一步停住（動作二）；剪在她停住；嘴微張、沒出聲；最後：她站在流理台前、看著碗 | — | 約 2.5 秒 |
 | c03 | 插鏡、特寫、固定；**第一格就是碗緣下的一角黃色與她右手的指尖**；直式；鏡頭在流理台高度；太陽從畫面右上 | `a wide white ceramic pasta bowl about as wide as two cupped hands, empty and washed spotless`；Nora 的右手（麻灰色袖口）指尖捏住 `a small square yellow sticky note about as wide as three of her fingers, its written side turned away` 的邊；畫面裡沒有臉 | 右手把便利貼從碗緣底下抽出來（動作一），舉起來、離開畫面上緣（動作二）；剪在紙離開碗；畫面上沒有嘴；最後：碗在太陽裡、底下空了，一直留在畫面中間 | — | 約 2.5 秒 |
-| c04 | 近景、固定；同 c02 的鏡位、較近；直式，臉在上三分之一；身後是大廳與樓梯（虛焦）；同一個廚房、同一條太陽 | Nora（`home`，低馬尾）；右手把 `a small square yellow sticky note about as wide as three of her fingers, its written side turned away, held up at her chest in her right hand`，寫字那面朝她、鏡頭只看到黃色的背面與紙邊；太陽從畫面右上照在她的右頰；四分之三側臉朝畫面右下的便利貼、眼睛盯著它；眉毛抬高、眼睛睜大、頭微微一偏、聲音慢、平、不敢相信，`no smile at any moment, until the last frame` | Nora 看著便利貼，嘴在說話（慢、平、不敢相信）（動作一）；說完嘴唇閉上、鼻子短短噴出一口氣、肩膀一抖（動作二）；最後：她看著紙，肩膀剛抖一下 | Nora（慢、平、不敢相信，念出紙上的字）：Salty.（太鹹了）（原聲） | 約 3 秒 |
+| c04 | 近景、固定；同 c02 的鏡位、較近；直式，臉在上三分之一；身後是大廳與樓梯（虛焦）；同一個廚房、同一條太陽 | Nora（`home`，低馬尾）；右手把 `a small square yellow sticky note about as wide as three of her fingers, its written side turned away, held up at her chest in her right hand`，寫字那面朝她、鏡頭只看到黃色的背面與紙邊；太陽從畫面右上照在她的臉上；四分之三側臉朝畫面右下的便利貼、眼睛盯著它；眉毛抬高、眼睛睜大、頭微微一偏、聲音慢、平、不敢相信，`no smile at any moment, until the last frame` | Nora 看著便利貼，嘴在說話（慢、平、不敢相信）（動作一）；說完嘴唇閉上、鼻子短短噴出一口氣、肩膀一抖（動作二）；最後：她看著紙，肩膀剛抖一下 | Nora（慢、平、不敢相信，念出紙上的字）：Salty.（太鹹了）（原聲） | 約 3 秒 |
 | c05 | 近景、慢推（從胸上推到臉）；**顏值鏡頭**；鏡頭在流理台靠玄關那一端、低；直式，臉在上三分之一；身後是大廳（虛焦） | Nora（`home`：低馬尾，一縷頭髮從耳邊散出來）；太陽從畫面右上照在她的臉與眼角；右手把便利貼按在胸口（黃色背面朝鏡頭）；**她笑出聲**：眼角擠出細紋、兩頰往上提、嘴張開露出上排牙齒、頭微微往後仰、一陣笑讓肩膀抖動、笑聲短而亮；左手 `a plain narrow white-gold band with no stone, on her left ring finger` 抬起來 | Nora 笑出聲、頭往後仰（動作一），左手把耳邊那縷頭髮往後撥到耳後（動作二）；剪在手撥過耳後；最後：她還在笑、左手停在耳後、戒指在太陽裡 | （笑聲，原聲；沒有台詞） | 約 5 秒 |
 | c06 | 全景、固定；鏡頭在長桌靠玄關那頭的桌角旁、低（同第 44 集 c01 的方向）；直式前後疊開：前景左下是長桌的一角，畫面右中是陽光裡的廚房與彎著腰笑的 Nora，**畫面左遠處是左牆的樓梯**，樓梯中段坐著一個小小的人影（Theo，虛焦、看不清臉） | Nora（`home`，灰色毛襪）在流理台前，彎著腰、左手撐著台面在笑，右手的便利貼按在胸口；那條太陽照在她背上與碗上；她的臉很小：眼睛笑成兩條、嘴張開；樓梯中段的 Theo 只是虛焦的人影（淺藍襯衫、灰背心），兩手平拿著平板 | Nora 彎腰撐著流理台笑（動作一）；遠處樓梯上的人影抬起頭（動作二）；剪在人影抬頭；最後：她撐著台面在笑，樓梯上的人朝廚房看 | （笑聲，原聲；沒有台詞） | 約 2.5 秒 |
 | c07 | 中近景、固定；鏡頭在流理台另一端（靠爐子那側）、斜拍；直式：下緣是不鏽鋼台面與碗，上半是 Nora；身後是大廳（虛焦） | Nora（`home`，低馬尾，頭髮撥在耳後），左前臂撐在流理台上；右手把 `a small square yellow sticky note about as wide as three of her fingers, its written side turned away, held against her chest in her right hand`；太陽從畫面右上照在她的側臉；還在笑：眼角的細紋、兩頰提著、嘴張開露出上排牙齒、肩膀一下一下抖；`a wide white ceramic pasta bowl about as wide as two cupped hands, empty and washed spotless` 在她手肘旁 | Nora 撐著台面笑到肩膀抖（動作一），慢慢直起身、深吸一口氣（動作二）；剪在吸氣；最後：她直起身、笑聲停了、嘴還張著喘氣、眼角還皺著 | （笑聲，原聲；沒有台詞） | 約 4 秒 |
@@ -85,7 +85,7 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 | c11 | 近景、固定；鏡頭在流理台靠玄關那一端、斜拍 Peg；直式，臉在上三分之一；身後是大廳（虛焦） | Peg（`visit`，玳瑁框老花眼鏡戴在臉上）；右手把 `a small square yellow sticky note about as wide as three of her fingers, its written side turned away, held up close to her glasses in her right hand`（寫字那面朝她、鏡頭只看到黃色背面）；左手 `a faint pale band of skin on her left ring finger where a ring used to be` 從台面拿起 `a wide white ceramic pasta bowl about as wide as two cupped hands, empty and washed spotless`，舉進那條太陽裡；四分之三側臉朝畫面右的碗；眼睛在便利貼與碗之間來回、瞇起、鼻翼一張、嘴唇抿緊，`no smile at any moment, until the last frame` | Peg 左手把碗舉進太陽裡、轉一圈翻看（動作一），再「叩」一聲放回台面（動作二）；剪在碗放回去；嘴閉著；最後：碗回到台面、太陽裡，便利貼還在她右手 | — | 約 3 秒 |
 | c12 | 近景、慢推（從胸上推到肩上）；同 c11 的鏡位；直式，臉在上三分之一；身後是大廳（虛焦）；同一個廚房、同一條太陽 | Peg（`visit`，玳瑁框老花眼鏡）；右手還舉著便利貼（黃色背面朝鏡頭）；柔的天光加畫面右上那條太陽照在她的臉；第一格頭已經轉向畫面左外、大廳最裡面的書房；眼睛從鏡片上方瞪著那頭、眉頭壓低、嘴唇在字之間抿薄、下巴往前、聲音乾、大聲、像在罵，`no smile at any moment, until the last frame` | Peg 瞪著畫面左外的書房，嘴在說話（乾、大聲、像在罵）（動作一）；說完右手把便利貼往畫面右的 Nora 一遞（動作二），嘴閉上；最後：便利貼遞在半空，她還瞪著書房那頭 | Peg（乾、大聲、像在罵）：Too salty? He licked the bowl clean.（太鹹？他把碗舔得一乾二淨）（原聲）（結尾）（→ 答在本句後半：她自己答） | 約 4.5 秒 |
 | c13 | 插鏡、手部特寫、固定；**第一格就是 Peg 的右手把便利貼按進 Nora 攤開的左手掌**；直式；太陽從畫面右上 | Peg 的右手（燕麥色袖口）；Nora 的左手（麻灰色袖口）`a plain narrow white-gold band with no stone, on her left ring finger`；`a small square yellow sticky note about as wide as three of her fingers, its written side turned away`；畫面裡沒有臉 | Peg 把便利貼按進 Nora 的左手掌、手收回去（動作一），Nora 的手指把它對摺成一半（動作二）；剪在對摺壓平；畫面上沒有嘴；最後：`a small square yellow sticky note about as wide as three of her fingers, its written side turned away, folded in half` 捏在 Nora 的左手指間 | — | 約 2.5 秒 |
-| c14 | 近景、固定；同 c04 的鏡位；直式，臉在上三分之一；身後是大廳（虛焦） | Nora（`home`，低馬尾、頭髮撥在耳後）；左手把摺成一半的便利貼按在胸口，`a plain narrow white-gold band with no stone, on her left ring finger`；太陽從畫面右上照在她的右頰；第一格眼睛垂在左手的紙上，然後越過畫面左的 Peg、看向畫面左外遠處（大廳最裡面的書房）；眉毛往上抬、眼睛亮、下巴放鬆、嘴唇輕閉、慢慢吸一口氣，`no smile at any moment, until the last frame` | Nora 的眼睛從紙抬到畫面左外遠處（動作一），左手拇指摸過紙摺起來的那一邊（動作二）；剪在拇指摸過去；嘴閉著；最後：她看著畫面左外遠處，紙按在胸口 | — | 約 3.5 秒 |
+| c14 | 近景、固定；同 c04 的鏡位；直式，臉在上三分之一；身後是大廳（虛焦） | Nora（`home`，低馬尾、頭髮撥在耳後）；左手把摺成一半的便利貼按在胸口，`a plain narrow white-gold band with no stone, on her left ring finger`；太陽從畫面右上照在她的臉上；第一格眼睛垂在左手的紙上，然後越過畫面左的 Peg、看向畫面左外遠處（大廳最裡面的書房）；眉毛往上抬、眼睛亮、下巴放鬆、嘴唇輕閉、慢慢吸一口氣，`no smile at any moment, until the last frame` | Nora 的眼睛從紙抬到畫面左外遠處（動作一），左手拇指摸過紙摺起來的那一邊（動作二）；剪在拇指摸過去；嘴閉著；最後：她看著畫面左外遠處，紙按在胸口 | — | 約 3.5 秒 |
 | c15 | 中全景、慢推（從中全景推到中景）；主觀鏡（從廚房往大廳最裡面看）；直式前後疊開：前景是長桌的一段（虛焦），後面是大廳最裡面：客廳區灰色沙發的背、它左邊三級水泥台階、台階上方一小段暗的走道口 | 畫面裡沒有人：三級台階上去的走道口很暗，走道盡頭關著的深色木門只看到一點邊（虛焦），門板與台階都是同一片柔的灰白天光 | 鏡頭慢慢推向台階上的走道口；剪在推到台階頂；畫面上沒有嘴；最後：走道口在畫面中間，門關著 | （無台詞） | 約 2.5 秒 |
 
 ### 第二場：一個小時像個家（約 12 秒）
@@ -93,7 +93,7 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 **場頭**：
 - **地點與場景圖**：Ashford 家一樓大廳的長桌 `ashford-dining`（同第一場，早上）：深色胡桃木長桌、吊燈關著；Nora 坐長桌左側中間她的位子（面向廚房）、Peg 坐右側靠廚房那邊、隔著桌子相對（第 23、25 集同一個座位）。桌上：`a plain glass coffee carafe about as tall as her forearm, half full of black coffee` 與兩只 `a plain white ceramic coffee mug about the size of her fist, steam rising`。玄關在長桌靠鏡頭這頭（畫面左下外）。
 - **時間與天氣**：第 140 天 約 07:40–08:00，晴；早上的天光從畫面右的廚房那頭照進來，落在桌面與兩人的臉上；整場光不變。
-- **軸線**：照第 25 集：主鏡從長桌靠玄關那頭往裡拍，**Nora 在畫面左（長桌左側）、面向畫面右；Peg 在畫面右（長桌右側）、面向畫面左**；廚房在畫面右後。Theo 從畫面右上的樓梯腳往畫面左下的玄關走出去。
+- **軸線**：照第 25 集：主鏡從長桌靠玄關那頭往裡拍，**Nora 在畫面左（長桌左側）、面向畫面右；Peg 在畫面右（長桌右側）、面向畫面左**；廚房在畫面右後；**樓梯在左牆、畫面左上**；玄關在鏡頭這頭的右邊（畫面右下外）。Theo 從畫面左上的樓梯腳往畫面右下的玄關走出去。
 - **在場的人**：Nora、Peg；Theo（c19 出門，只拍腳與手）。
 - **這場要講完的事**：這一個小時像個家：Peg 倒咖啡、把一杯推過長桌，Nora 兩手捧著，嘴角一個很小的笑；Theo 出門上班（結尾：Theo 出門，屋裡只剩兩個女人）。
 - **配樂**：c16 一段溫的、慢的鋼琴；c18 鋼琴最暖的那一句；c19 大門關上的一聲，鋼琴收住。
@@ -104,9 +104,9 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 | c16 | 插鏡、特寫、固定；**第一格就是長桌上的兩只咖啡杯與 Peg 拿著咖啡壺的手**；直式；鏡頭低、在桌面高度；早上的天光從畫面右 | Peg 的右手（燕麥色袖口）拿著 `a plain glass coffee carafe about as tall as her forearm, half full of black coffee`；左手扶著桌緣，`a faint pale band of skin on her left ring finger where a ring used to be`；深色胡桃木桌面上兩只 `a plain white ceramic coffee mug about the size of her fist, steam rising`；畫面裡沒有臉 | Peg 把咖啡倒進第一只杯子（動作一），再倒第二只（動作二）；剪在第二只倒到一半；畫面上沒有嘴；最後：兩只杯子都冒著熱氣，咖啡壺停在第二只杯子上方 | — | 約 2.5 秒 |
 | c17 | 插鏡、手部特寫、固定；**第一格就是 Peg 的右手推著一只咖啡杯滑過胡桃木桌面**；直式；鏡頭在桌面高度 | Peg 的右手（燕麥色袖口）推著 `a plain white ceramic coffee mug about the size of her fist, steam rising`；畫面左是 Nora 的兩手（麻灰色袖口），左手 `a plain narrow white-gold band with no stone, on her left ring finger`，摺成一半的便利貼 `a small square yellow sticky note about as wide as three of her fingers, its written side turned away, folded in half` 夾在左手食指與中指之間；畫面裡沒有臉 | Peg 把杯子推過桌面到 Nora 面前（動作一），Nora 的兩手圍上杯子（動作二）；剪在兩手圍住杯子；畫面上沒有嘴；最後：杯子在 Nora 兩手之間冒煙，便利貼夾在她左手指間 | — | 約 2.5 秒 |
 | c18 | 中近景、慢推（從中近景推到近景）；**交代位置**；鏡頭在長桌靠玄關那頭、低、在桌面上方；直式前後疊開：前景是長桌的桌面與一把推進桌下的椅背（虛焦），中間是隔著桌子相對的兩人 | 共兩人。Nora（`home`，低馬尾、頭髮撥在耳後）在畫面左、坐在長桌左側，側臉朝畫面右的 Peg；兩手捧著 `a plain white ceramic coffee mug about the size of her fist, steam rising`，便利貼夾在左手指間、戒指在左手；**閉嘴的小笑**：嘴唇閉著、兩邊嘴角輕輕往上、兩頰微微提起、眼睛軟下來、眼角淡淡起皺、不露齒；Peg（`visit`，玳瑁框老花眼鏡）在畫面右、坐在長桌右側，側臉朝畫面左的 Nora；右手端著自己那杯 `a plain white ceramic coffee mug about the size of her fist, steam rising` 喝一口，眼睛從鏡片上方看著 Nora、眉毛放平、嘴唇在杯緣後抿著，`no smile at any moment, until the last frame`；早上的天光從畫面右照在兩張臉 | Nora 捧著杯子抬到下巴前、對著 Peg 那個小笑（動作一）；Peg 喝一口咖啡、放下杯子（動作二）；剪在 Peg 的杯子放到桌上；兩人都嘴閉著；最後：兩人隔著桌子，Nora 捧著杯子、閉嘴笑著，Peg 看著她 | — | 約 5 秒 |
-| c19 | 插鏡、低角度、固定；**第一格就是長桌靠玄關那頭的地面與桌腳**；直式；鏡頭貼著水泥地 | Theo 的腿與手：卡其褲、棕色樂福鞋，左手垂在身側拿著 `a slim tablet in a plain grey case, its screen turned away`；他從畫面右上（樓梯那頭）走到畫面左下（玄關），經過桌腳；畫面裡沒有臉 | Theo 的腳從畫面右上走向畫面左下（動作一），走出畫面左下（動作二）；剪在他出畫；然後遠遠一聲大門關上；畫面上沒有嘴；最後：桌腳旁空了 | （無台詞）（結尾） | 約 2 秒 |
+| c19 | 插鏡、低角度、固定；**第一格就是長桌靠玄關那頭的地面與桌腳**；直式；鏡頭貼著水泥地 | Theo 的腿與手：卡其褲、棕色樂福鞋，左手垂在身側拿著 `a slim tablet in a plain grey case, its screen turned away`；他從畫面左上（樓梯那頭）走到畫面右下（玄關），經過桌腳；畫面裡沒有臉 | Theo 的腳從畫面左上走向畫面右下（動作一），走出畫面右下（動作二）；剪在他出畫；然後遠遠一聲大門關上；畫面上沒有嘴；最後：桌腳旁空了 | （無台詞）（結尾） | 約 2 秒 |
 
-### 第三場：Kiln Row.（約 60 秒）
+### 第三場：Kiln Row.（約 60.5 秒）
 
 **場頭**：
 - **地點與場景圖**：兩個地方交叉剪。
@@ -130,11 +130,11 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 | c24 | 近景、固定；從 Grant 的左肩後拍（他淺石色西裝的左肩在畫框右下緣、虛焦、不露臉）；直式，主持人的臉在上三分之一；身後是淺藍背板（虛焦） | 主持人（蜂蜜金色及肩吹整髮、鈷藍色無袖連身洋裝、小金圈耳環）；明亮的暖白燈；四分之三側臉朝畫面右的 Grant；眉毛一下挑高、眼睛睜大、嘴張開成一個圓、吸一口氣，`no smile at any moment, until the last frame` | 主持人眉毛挑高、嘴張開（動作一），身子往畫面右前傾（動作二）；剪在她傾過去；嘴張著、沒出聲；最後：她往前傾、看著 Grant | — | 約 2.5 秒 |
 | c25 | 近景、固定；鏡頭在 Peg 的左前方、低；直式，臉在上三分之一；身後是沙發的灰色椅背與畫面右後的開口（虛焦）；同一個客廳區、電視的冷光從畫面左 | Peg（`visit`，玳瑁框老花眼鏡戴在臉上）坐在沙發上；冷藍光從畫面左穩定地照在她的臉；右手的遙控器還舉著；四分之三側臉朝畫面左的電視；眉頭一下壓到底、嘴張開、呼吸停住、眼睛瞪著，`no smile at any moment, until the last frame` | Peg 的眉頭壓下來、嘴張開（動作一），舉著遙控器的右手慢慢放到膝上（動作二）；剪在手放到一半；嘴張著、沒出聲；最後：她瞪著畫面左的電視，遙控器在膝上 | — | 約 3 秒 |
 | c26 | 近景、慢推（從胸上推到肩上）；同 c24 的鏡位（Grant 的左肩在畫框右下緣）；直式，主持人的臉在上三分之一；身後是淺藍背板（虛焦）；同一個攝影棚 | 主持人（蜂蜜金色及肩吹整髮、鈷藍色洋裝、小金圈耳環），往前傾；明亮的暖白燈；四分之三側臉朝畫面右的 Grant、眼睛看著他；眉毛抬高、眼睛睜大、下巴往前、聲音清楚、往前追問，`no smile at any moment, until the last frame` | 主持人看著 Grant，嘴在說話（清楚、往前追問）；說完頭微微一偏、等他回答，嘴閉上；最後：她偏著頭看著畫面右 | 主持人（清楚、往前追問）：Where is she now?（她現在人在哪？）（原聲，後製加電視濾波）（→ 答在 c28） | 約 3 秒 |
-| c27 | 近景、固定；鏡頭在沙發前、低，往上拍沙發後的 Nora；直式，臉在上三分之一；身後是通往長桌與廚房的開口（虛焦）；同一個客廳區、電視的冷光從畫面左 | Nora（`home`，低馬尾、頭髮撥在耳後），站在沙發後；冷藍光從畫面左穩定地照在她的左頰；四分之三側臉朝畫面左的電視、眼睛釘在那頭；眉頭往中間收、嘴唇微張、呼吸停住，`no smile at any moment, until the last frame` | Nora 的眼睛釘在電視上（動作一），捏著便利貼的左手放到沙發椅背上（動作二）；剪在手放上椅背；嘴微張、沒出聲；最後：她的左手按在沙發椅背上（`a plain narrow white-gold band with no stone, on her left ring finger`，便利貼在指間） | — | 約 3 秒 |
-| c28 | 近景、慢推（從胸上推到肩上）；鏡頭在 Grant 的左前方、矮沙發旁；直式，臉在上三分之一；身後是淺藍背板（虛焦）；同一個攝影棚 | Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫），靠在矮沙發上；明亮的暖白燈；四分之三側臉朝畫面左的主持人、眼睛看著她；說之前眉毛放平、嘴唇閉著；說完**閉嘴微笑**：兩邊嘴角輕輕往上提、嘴唇閉著、不露齒、眼睛慢慢眨一次、眉毛平；聲音平穩、低 | Grant 看著主持人，嘴在說話（平穩、低，輕描淡寫）（動作一）；說完閉嘴微笑、慢慢眨一次眼（動作二）；最後：他看著畫面左、嘴閉著、嘴角提著 | Grant（平穩、低，輕描淡寫）：Kiln Row.（窯街）（原聲，後製加電視濾波）← 因為 c26 | 約 3 秒 |
-| c29 | 插鏡、特寫、固定；**第一格就是 Grant 的右手腕與袖口**；直式；明亮的暖白燈；同一個攝影棚 | Grant 的右手擱在膝上，淺石色西裝袖口、淺藍襯衫袖口 `a clear glass cufflink on his right shirt cuff`；他的左手指尖捏著那顆袖扣；畫面裡沒有臉 | 左手指尖把右袖口的玻璃袖扣轉一下（動作一），手指放開（動作二）；剪在手指放開；畫面上沒有嘴；最後：袖扣在燈下亮一下，兩手擱在膝上 | — | 約 2 秒 |
+| c27 | 近景、固定；鏡頭在沙發前、低，往上拍沙發後的 Nora；直式，臉在上三分之一；身後是通往長桌與廚房的開口（虛焦）；同一個客廳區、電視的冷光從畫面左 | Nora（`home`，低馬尾、頭髮撥在耳後），站在沙發後；冷藍光從畫面左穩定地照在她的臉上；四分之三側臉朝畫面左的電視、眼睛釘在那頭；眉頭往中間收、嘴唇微張、呼吸停住，`no smile at any moment, until the last frame` | Nora 的眼睛釘在電視上（動作一），捏著便利貼的左手放到沙發椅背上（動作二）；剪在手放上椅背；嘴微張、沒出聲；最後：她的左手按在沙發椅背上（`a plain narrow white-gold band with no stone, on her left ring finger`，便利貼在指間） | — | 約 3 秒 |
+| c28 | 近景、慢推（從胸上推到肩上）；鏡頭在 Grant 的左前方、矮沙發旁；直式，臉在上三分之一，**頭上留出空間，往後靠時整個頭仍在畫面裡**；身後是淺藍背板（虛焦）；同一個攝影棚 | Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣），坐在矮沙發上、第一格身子往畫面左微微前傾；明亮的暖白燈；四分之三側臉朝畫面左的主持人、眼睛看著她；說之前眉毛放平、嘴唇閉著；靠回沙發、嘴閉上以後才**閉嘴微笑**：兩邊嘴角輕輕往上提、嘴唇閉著、不露齒、眼睛慢慢眨一次、眉毛平；聲音平穩、低 | Grant 看著主持人，嘴在說話（平穩、低，輕描淡寫）（動作一）；說完往後靠回沙發、右手搭在扶手上，嘴閉上，然後閉嘴微笑（動作二）；最後：他靠著沙發、右手搭在扶手上、看著畫面左、嘴閉著、嘴角提著 | Grant（平穩、低，輕描淡寫）：Kiln Row.（窯街）（原聲，後製加電視濾波）← 因為 c26 | 約 3.5 秒 |
+| c29 | 插鏡、特寫、固定；**第一格就是 Grant 的右手腕與袖口**；直式；明亮的暖白燈；同一個攝影棚 | Grant 的右手搭在矮沙發的淺色扶手上，淺石色西裝袖口、淺藍襯衫袖口 `a clear glass cufflink on his right shirt cuff`；他的左手指尖捏著那顆袖扣；畫面裡沒有臉 | 左手指尖把右袖口的玻璃袖扣轉一下（動作一），手指放開、左手收回膝上（動作二）；剪在手指放開；畫面上沒有嘴；最後：袖扣在燈下亮一下，右手還搭在扶手上 | — | 約 2 秒 |
 | c30 | 近景、慢推（從胸上推到臉）；同 c25 的鏡位；直式，臉在上三分之一；身後是沙發椅背（虛焦） | Peg（`visit`，玳瑁框老花眼鏡）；冷藍光從畫面左穩定地照在她的臉；遙控器在膝上的右手裡；四分之三側臉朝畫面左的電視；鼻翼一張一張、下巴咬緊、眉頭夾緊、眼睛從鏡片後瞇成一條、呼吸變重，`no smile at any moment, until the last frame` | Peg 下巴咬緊（動作一），右手把遙控器握緊（動作二）；剪在手握緊；嘴閉著；最後：她瞪著電視、手握著遙控器 | — | 約 2.5 秒 |
-| c31 | 近景、慢推（從胸上推到臉）；同 c27 的鏡位；直式，臉在上三分之一；身後是開口（虛焦） | Nora（`home`，低馬尾）；冷藍光從畫面左照在她的左頰；**早上的笑全收掉了**：嘴唇抿平、兩邊嘴角往下拉、下巴繃住、喉嚨重重吞一下、眼睛定在電視上，`no smile at any moment, until the last frame`；左手按在沙發椅背上、捏著便利貼 | Nora 喉嚨吞一下（動作一），左手把摺好的便利貼捏緊在拳裡（動作二）；剪在手捏緊；嘴閉著；最後：她看著電視、左拳捏著紙按在椅背上 | — | 約 3 秒 |
+| c31 | 近景、慢推（從胸上推到臉）；同 c27 的鏡位；直式，臉在上三分之一；身後是開口（虛焦） | Nora（`home`，低馬尾）；冷藍光從畫面左照在她的臉上；**早上的笑全收掉了**：嘴唇抿平、兩邊嘴角往下拉、下巴繃住、喉嚨重重吞一下、眼睛定在電視上，`no smile at any moment, until the last frame`；左手按在沙發椅背上、捏著便利貼 | Nora 喉嚨吞一下（動作一），左手把摺好的便利貼捏緊在拳裡（動作二）；剪在手捏緊；嘴閉著；最後：她看著電視、左拳捏著紙按在椅背上 | — | 約 3 秒 |
 | c32 | 中近景、固定；同 c25 的方向、較遠；直式，**頭上留出空間，站起來後整個頭仍在畫面裡**；身後是沙發椅背與開口（虛焦） | Peg（`visit`，玳瑁框老花眼鏡）；冷藍光從畫面左；右手握著 `a black TV remote about as long as her hand`；眉頭夾緊、嘴唇抿成一條線、鼻子重重出氣，`no smile at any moment, until the last frame` | Peg 從沙發上站起來（動作一），左手從開襟衫左口袋掏出手機（動作二）；剪在手機拿出口袋；嘴閉著；最後：她站在沙發扶手旁，右手握遙控器、左手拿著手機 | — | 約 2.5 秒 |
 | c33 | 插鏡、手部特寫、固定；**第一格就是 Peg 左手裡的手機側面**；直式；冷藍光從畫面左 | Peg 的左手（燕麥色袖口）拿著 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side`；`a faint pale band of skin on her left ring finger where a ring used to be`；左手拇指在螢幕上點；螢幕只見側面的白光；畫面裡沒有臉 | 左手拇指點兩下撥號（動作一），手機往上抬向耳邊、出畫面上緣（動作二）；剪在手機出畫；畫面上沒有嘴；最後：手機從畫面上緣出去 | — | 約 2 秒 |
 | c34 | 中近景、固定；從 Peg 的左肩後拍（她燕麥色開襟衫的左肩、直的灰色短髮的後腦與玳瑁眼鏡的鏡腳在畫框右下緣、不露臉）；直式：前方是清水模牆，畫面左緣是電視的側面與牆上的冷藍光 | Peg 的背與後腦（`visit`）；左手把 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side, held to her left ear in her left hand`；冷藍光從畫面左照在牆上與她的髮邊；**畫面裡沒有任何臉、沒有嘴** | Peg 把手機貼在左耳聽（動作一），錄音放完、「嗶」一聲後，她把手機從耳邊拿下來、移到身前（動作二）；剪在手機離開耳朵；畫面上沒有嘴；最後：手機從耳邊拿開 | 電話裡的錄音（平、客氣，電信公司的制式錄音）：The person you are calling is not available.（您撥的用戶目前無法接聽）（Gemini Leda，`phone-recording`，電話濾波） | 約 3.5 秒 |
@@ -145,8 +145,8 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 | c39 | 插鏡、特寫、固定；**第一格就是 Peg 的右手把遙控器高舉在灰色沙發坐墊上方**；直式；冷藍光從畫面左 | Peg 的右手（燕麥色袖口）握著 `a black TV remote about as long as her hand`；下面是灰色的沙發坐墊；畫面裡沒有臉 | 右手把遙控器狠狠摔在沙發坐墊上、遙控器彈一下（動作一），躺在坐墊上（動作二）；剪在遙控器停住；畫面上沒有嘴；最後：`a black TV remote about as long as her hand, lying on a grey sofa cushion`，一直留在畫面中間，她張開的右手停在上方 | — | 約 2 秒 |
 | c40 | 中近景、慢推（從中近景推到近景）（接第 46 集之前的最後一刻）；鏡頭在沙發靠鏡頭這一端的扶手旁、低；直式：畫面左前是 Peg，畫面右後（虛焦）是沙發後站在開口的 Nora；畫面左緣是電視的側面與冷光 | 共兩人，露臉清楚的只有 Peg。Peg（`visit`，玳瑁框老花眼鏡戴在臉上）站在灰色沙發扶手旁；右手剛摔完遙控器、還張著停在身前；左手垂著拿 `an older black phone in a worn brown case, about the size of her palm`（白光剛暗）；遙控器 `a black TV remote about as long as her hand, lying on a grey sofa cushion` 在下緣；電視的冷藍光從畫面左、遠處廚房那頭的天光從畫面右後，都是穩定的光；四分之三側臉朝畫面右後的 Nora、眼睛看著她；眉頭壓著、眼眶發紅、下巴繃緊、嘴唇在字之間抿緊、聲音低、啞、一字一字，`no smile at any moment, until the last frame`；Nora（`home`，低馬尾）在畫面右後、虛焦，站在沙發後，左手捏著 `a small square yellow sticky note about as wide as three of her fingers, its written side turned away, folded in half`（黃色背面朝鏡頭），嘴閉著 | Peg 看著 Nora，嘴在說話（低、啞、一字一字）（動作一）；說完下巴一收、拿著手機的左手垂到身側（動作二），嘴閉上；Nora 嘴閉著；最後：兩人停在這一刻，遙控器在坐墊上，電視的冷光照著 | Peg（低、啞、一字一字）：I raised a coward.（我養出一個懦夫）（原聲）（結尾）（懸念 → 下一集第一場）← 因為 c37 | 約 4 秒 |
 
-約 119.5 秒（1 分 59.5 秒）、40 鏡（第一場 15、第二場 4、第三場 21），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 40–44 鏡。
-開場 10 秒四鏡（c01–c04）：c01 一條太陽照著洗亮的碗與一角黃色、c02 Nora 走進來停住、c03 她的右手從碗下抽出便利貼、c04 在第 7.5 秒 "Salty."。平均一鏡 2.99 秒。
+約 120 秒（2 分）、40 鏡（第一場 15、第二場 4、第三場 21），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 40–44 鏡。
+開場 10 秒四鏡（c01–c04）：c01 一條太陽照著洗亮的碗與一角黃色、c02 Nora 走進來停住、c03 她的右手從碗下抽出便利貼、c04 在第 7.5 秒 "Salty."。平均一鏡 3.0 秒。
 
 ## 注意事項
 
@@ -163,7 +163,7 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 - **Nora 的造型 `home`**：第 44–45 集 Ashford 家的新造型（bible〈人物與參考圖〉）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible〈寫稿時補定的事〉）：
-- **新道具句**：咖啡壺 `a plain glass coffee carafe about as tall as her forearm, half full of black coffee`、咖啡杯 `a plain white ceramic coffee mug about the size of her fist, steam rising`（c16–c18，Peg 之後收走，不拍）。
+- **新道具句**：咖啡壺 `a plain glass coffee carafe about as tall as her forearm, half full of black coffee`（`cast.json` id `coffee-carafe`）、咖啡杯 `a plain white ceramic coffee mug about the size of her fist, steam rising`（`coffee-mug`）（c16–c18，Peg 之後收走，不拍）。
 - **Peg 的手機在開襟衫左口袋**（c32）；她左手撥號、貼左耳聽錄音（c34，從她左肩後拍、不露臉）；**吼的時候把手機拿到胸前、比下巴低**（c35），手機不擋嘴（第 14 集「左手拿話筒擋嘴」的教訓）。c38 她掛斷，白光暗下去，接點 c40 的「側面白光剛暗」。
 - **遙控器**：c20 從沙發扶手拿起、c25 放到膝上、c32 站起來還握在右手、c39 摔在坐墊上，之後一直在坐墊上。
 - **c11 Peg 翻看那只碗**：她左手把碗舉到太陽裡翻看、放回台面，"He licked the bowl clean." 才有畫面上的根據；碗之後一直在爐邊的流理台上。
@@ -174,13 +174,21 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 - **主持人的鞋**：`talk-host` 外貌句沒有鞋，全景寫裸色高跟鞋。
 - **攝影棚的過肩**：Grant 的鏡從主持人右肩後（肩在畫框左下），主持人的鏡從 Grant 左肩後（肩在畫框右下），跟 bible〈場景格局〉`talk-show` 一致。
 
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e041-e045-storyboard.md` 與 `review/2026-11-12-e045-e050-storyboard.md` 改的。本集還沒錄、沒拍，沒有要重抽的片段；台詞沒變，不用重錄。
+- **第二場軸線、c19**：樓梯左右寫反。樓梯在左牆、**畫面左上**；Theo 的腳從畫面左上的樓梯腳走向**畫面右下**的玄關、從畫面右下出畫。
+- **c28**："Kiln Row." 的收尾只有臉部動作（再犯）：第一格他微微前傾，說完**往後靠回沙發、右手搭在扶手上、嘴閉上，然後才閉嘴微笑**；頭上留空；3 秒 → 3.5 秒（第三場 60 → 60.5 秒，全集 119.5 → 120 秒）。c29 跟著改：右手搭在扶手上，左手轉完袖扣收回膝上。
+- **c04、c27、c31**（同類一起改 c14）：光照到的臉頰寫反：拿掉「左頰／右頰」，只寫光從畫面哪一邊來、照在她臉上。
+- **道具句**：`cast.json` 2026-11-12 整理後，本集新加的兩句已收成 id：咖啡壺 `coffee-carafe`、咖啡杯 `coffee-mug`，英文跟本稿一字不差；其他道具句（`pasta-bowl-washed`、`sticky-note`、`ashford-tv`、`tv-remote`、`peg-phone`、`theo-tablet`、`grant-cufflink`、`elias-band`）沒有變。
+
 ### 配音
 
 - **本集唯一的 Gemini**：c34 電信公司的語音信箱 "The person you are calling is not available."（`phone-recording`，Leda，電話濾波）。那一鏡是 Peg 的背與後腦、**畫面上沒有任何嘴**；錄音後接一聲「嗶」。
 - **八鏡原聲**：Nora c04、Theo c08、Peg c12、c35、c40、Grant c23、c28、主持人 c26。每支**至少買 6 秒**（合計 48 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。c05–c07 的笑聲用那幾鏡模型自己的聲音（沒有台詞）。
 - **電視裡的兩個人**（c23、c26、c28）：原聲，後製加電視濾波（窄頻、一點房間的殘響）；客廳的鏡上沒有電視裡的台詞，電視裡的節目配樂在客廳的鏡上壓低。
 - 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：Nora c04 慢、平、不敢相信；Theo 平、慢、很低、一本正經；Peg 乾、大聲（c12）、吼到破掉（c35）、低、啞（c40）；主持人清楚、往前追問；Grant 平穩、低。
-- **Grant 的說話句**（c23、c28）只寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth（原聲小樣：這三個字會把笑帶出來）；c28 的閉嘴微笑寫在說完以後。
+- **Grant 的說話句**（c23、c28）只寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth（原聲小樣：這三個字會把笑帶出來）；c28 的閉嘴微笑寫在說完、靠回沙發、右手搭上扶手、嘴閉上以後（審稿後改）。
 - **6 個字以內的句子**（c04 "Salty."、c08、c26、c28 "Kiln Row."、c40）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上。c04 與 c28 最短，第一批草稿先聽有沒有多講。
 - **新開口的人**：主持人第一次開口，開拍前要有定妝照。
 - CC 軟字幕、不燒錄、不標說話人；字幕照剪接工具量到的開口時間放。便利貼的字只出現在 c04 的 CC（Salty.），畫面上沒有。
@@ -241,7 +249,7 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 - 定妝照：`nora-portrait.jpg`（r3）、`peg-portrait.jpg`、`grant-portrait.jpg`（平臉 r3）（都有）。
 - **待畫的人**（照 bible 先畫順序）：Nora `home` 全身（第 2 號，第 44 集同一張）；**脫口秀主持人 `talk-host`**（第 3 號）；Theo（第 11–20 集清單，還沒畫就排在前面）。
 - **待畫的場景**（照 bible 先畫順序第 8、9、11 號）：一樓大廳與廚房 `ashford-dining`（**早上一條太陽版**：爐子上方小窗斜進來的太陽落在爐子右邊的流理台；從玄關那側往大廳最裡面拍、從長桌桌尾拍兩個方向）；客廳區 `ashford-living`（**白天開著電視版**：電視只見側面與牆上的冷光，從沙發扶手旁斜拍）；脫口秀攝影棚 `talk-show`（**新增**，直式，主持人在左、Grant 在右，兩個過肩方向）。樓梯（Theo 坐在中段）用 `ashford-dining` 那道樓梯，從樓梯腳往上拍。
-- 道具：便利貼（確認畫成一張素的黃色方紙、只見背面）、洗好的白瓷碗、咖啡壺與杯子照道具句；Ashford 家的電視只拍側面。
+- 道具：便利貼（確認畫成一張素的黃色方紙、只見背面）、洗好的白瓷碗、咖啡壺 `coffee-carafe` 與杯子 `coffee-mug` 照道具句（`cast.json` 2026-11-12 已加）；Ashford 家的電視只拍側面。
 - 沒有參考圖也不露臉的：語音信箱（只有聲音）。
 
 ### 3. 長鏡清單
@@ -264,7 +272,7 @@ c22–c24、c26、c28–c29 寫 `a bright daytime television studio, warm white 
 - **錢**：本集沒有錢的往來；麵、咖啡是家裡的（Peg 的菜錢，不拍）。Nora 身上只剩幾塊錢、帳本 Nora 欄還欠 Peg（第 142 天渡輪站訂金進帳後還清）。本集都不說出口。
 - **碗**：洗好的寬口白瓷碗在爐子右邊的流理台上（c11 Peg 翻看後放回）。
 - **便利貼**：Nora 左手捏著，摺成一半（c13 起）；寫字那面一直朝內，字不入鏡。之後她把它夾進 Remelt 的草圖資料夾封面裡（第 46 集以後不拍；第 49 集可插一格它的背面）。
-- **咖啡壺與杯子**：Peg 收走（不拍）。
+- **咖啡壺與杯子**（`coffee-carafe`、`coffee-mug`）：Peg 收走（不拍）。
 - **遙控器**：躺在客廳灰色沙發的坐墊上（c39）。**Peg 的手機**：左手、垂在身側，白光暗了（c38 掛斷）。電視還開著（只見側面的冷光）。
 - **Nora 的戒指**：Elias 那枚素面白金戒在左手無名指。
 - **毛線帽**：還塞在客廳沙發落地燈那一端的靠墊下（第 44 集），本集不拍。
