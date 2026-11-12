@@ -502,4 +502,8 @@ Grant 被送達凍結令、被起訴（第 51 集起他知道）；Sienna 看見
 - **第 41–43 集**（寫稿者定，主控定案）：木凳 `a plain wooden shop stool about as high as her hip`（燈箱前一張、Dana 一張；`shop-stool`）。**工作燈照第 31–40 集的格局吊在燈箱那頭**，Dana 坐在燈箱旁第二張凳上（主控 2026-11-12）。
   41→42 接點：Dana 在畫面左（Nora 面向鏡頭時是她的右後方）。第 42 集 Grant 套好筆蓋後把筆收進西裝內袋；Peg 的單人鏡從她右邊的走道拍，守主鏡左右。
   第 43 集 Nora 坐工作台左側、Wexler 站右側、Fisk 在燈箱旁；鐵門 `pulled open about the width of one person`；Wexler 先在本子上記一行、再單手折尺（記本子要空出右手）。
+- **第 46–48 集**（寫稿者定）：第 46 集 Remelt 兩扇鐵門合不攏、中間一道一掌寬的直縫，北扇往屋裡拉開一呎；補台詞 Nora "You asked why my name wasn't on the label."、"We work. The door stays shut."、Fiona "Ms. Quinn, Fiona Marsh. The panel met at seven."、Nora "Thank you. We'll make every panel."；
+  新道具 `a plain wooden pencil as long as her hand`、`a black office desk phone with its speaker on`；Lyle 不笑（聳肩、嘴唇往旁邊一抿）；閃光打在她身上的顏值段在 c32，c33 說話時臉上只有穩定的天光。
+  第 47 集冷湯是 Rosa 早上備料備到一半的一勺冷湯底；補 Lyle "My lens!"（短喊）、Rosa "Come. Chowder's hot."；新道具 `a plain steel soup spoon`；Rosa's 的爐子在後牆偏西，早上店門開著所以門鈴不響。
+  第 48 集補 Nora "That's not before the marriage."；Nora 坐工作台北側面向南、Dana 在南側偏東、Peg 站到 Nora 左邊；三張紙由上到下是銀行卡、結婚證書、協議；Peg 用左手拍影本（右手拿摺好的眼鏡）；Sparks 換一隻新護套，第三片面板邊差四分之一吋照樣上架。
 
