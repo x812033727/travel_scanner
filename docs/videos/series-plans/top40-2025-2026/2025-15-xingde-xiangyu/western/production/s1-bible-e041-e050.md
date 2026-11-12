@@ -314,7 +314,7 @@ Furnace No. 3 第 116 天點燃算第 1 天，所以第 41 集是第 13 天、�
 | 案件進度條 | `a long clear glass tube about as long as her outstretched arms and as thick as her wrist, mounted level on the red brick wall on two plain steel brackets, a row of small plain brass bands clamped around it at even spacing, no letters` | `case-tracker`，第 31–40 集同一句（比頭高一點、靠大門那端開口）；第 41–50 集。珠子另寫 `one small amber glass bead about the size of a fingertip`（`tracker-bead`）接 `, resting inside the tube against the first brass band`，第 50 集推到 `…, against the second brass band`。推珠子：`a thin clear glass rod as long as her forearm`（`glass-rod`）。 |
 | 證據牆鋼架 | `an old steel sample rack bolted to the red brick wall below the tube, a long row of empty upright slots, each slot about the size of a hardcover book, no labels` | `evidence-rack`，第 31–40 集同一句（不寫 twelve）；第 41–50 集全空。 |
 | Elias 的戒指 | `a plain narrow white-gold band with no stone, on her left ring finger` | 同第 20 集。 |
-| 黑車 | `a long black luxury sedan with no badge, number plate out of frame` | `black-car`，同第 11–20 集；第 49 集接 `, parked at the wet curb outside a lit corner shack`。 |
+| 黑車 | `a black full-size four-door luxury sedan (not a limousine) with no badge, number plate out of frame` | `black-car`，同第 11–20 集；第 49 集接 `, parked at the wet curb outside a lit corner shack`。 |
 | 新窗簾 | `a heavy deep wine-red velvet curtain panel, hanging from ceiling to floor` | 第 50 集；還沒掛的接 `, folded in a heap on a low oak cabinet`。舊的深灰窗簾照第 4–10 集原句。 |
 | 梯子 | `a two-step aluminum ladder` | 第 50 集，工人站在上面。 |
 

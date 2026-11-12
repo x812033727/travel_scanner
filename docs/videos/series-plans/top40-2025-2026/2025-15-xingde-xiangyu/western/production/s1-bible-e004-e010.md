@@ -192,7 +192,7 @@
 | 收據 | `a small thermal receipt about as long as her finger, faded print not readable, folded small` | 第 5、9 集；只在 Peg 手裡、帳本書頁或封皮夾層。 |
 | Peg 的帳本 | `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine` | 寫字時只拍鉛筆在動、本子的紙背或側面。 |
 | Peg 的婚戒 | `a thin worn gold wedding band with one tiny old diamond, on her left ring finger` | 第 5–10 集，拍到左手就寫。 |
-| Grant 的車 | `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` | 第 5、7–9 集。 |
+| Grant 的車 | `a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame` | 第 5、7–9 集。 |
 | 叫來的車 | `a plain dark grey sedan with no markings, number plate out of frame` | 第 6 集開場；司機不入鏡。 |
 | 家門鑰匙 | `a single brass house key on a plain steel ring, about as long as her finger` | 第 6 集，右手。 |
 | 新鎖 | `a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched` | 第 6–8 集拍到門就寫。 |

@@ -92,7 +92,7 @@ SETS = {
          "number displays. Light: only the white fluorescent ceiling lights; the last light above the blank end wall is dimmer than the others. "
          f"{NOBODY}"),
         ("gcar-day", "#19",
-         "a tall vertical view of the back seat of a long pearl-white luxury sedan, seen from the dashboard between the two empty front seats "
+         "a tall vertical view of the back seat of a pearl-white full-size four-door luxury sedan (not a limousine), seen from the dashboard between the two empty front seats "
          "looking back: one single row of cream leather rear seats, the rear window right behind their headrests, a wide centre armrest console "
          "with a closed plain lid between the two seats, a plain roof lining with no sunroof, tinted side windows, no screens, no badges, logos "
          "or emblems anywhere, the top of the steering wheel at the lower right corner. Light: grey overcast noon through the tinted windows; "
@@ -129,11 +129,11 @@ SEDAN = ("a modern four-door luxury sedan of ordinary length, not a limousine an
          "a long bonnet, a short boot")
 PROPS = [
     ("grant-car", art.WIDE,
-     f"Nobody is in the frame. a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame: {SEDAN}; parked at a "
+     f"Nobody is in the frame. a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame: {SEDAN}; parked at a "
      "wet grey curb on an overcast Pacific Northwest street, seen straight from the side, the whole car in the frame, grey-blue overcast "
      "daylight, wet asphalt, the windows dark, plain grey wall behind it, no signs."),
     ("black-car", art.WIDE,
-     f"Nobody is in the frame. a long black luxury sedan with no badge, number plate out of frame: {SEDAN}; parked at a wet grey curb on an "
+     f"Nobody is in the frame. a black full-size four-door luxury sedan (not a limousine) with no badge, number plate out of frame: {SEDAN}; parked at a wet grey curb on an "
      "overcast Pacific Northwest street, seen straight from the side, the whole car in the frame, grey-blue overcast daylight, wet asphalt, "
      "the windows dark, plain grey wall behind it, no signs."),
     ("canvas-tote", art.BUST,

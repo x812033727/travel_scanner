@@ -65,7 +65,7 @@
 ### 第一場：路肩，晚飯自己做（約 20 秒）
 
 **場頭**：
-- **地點與場景圖**：下坡車道的坡底與海岸路的路肩，場景圖 `drive-foot`（重畫中，`redraw.py` s8；海岸路往畫面左沿著海、車道往畫面右爬上草坡、玻璃屋小小地在右上方；格局同第 8 集第四場；不傳 `set-coastal-drive.jpg`）：`a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` 停在車道口、車頭朝上坡，右後門開著；更遠的路肩停著沒有字的白色廂型車；海岸路往畫面左延伸、沿著海。**往山下一律往畫面左**。
+- **地點與場景圖**：下坡車道的坡底與海岸路的路肩，場景圖 `drive-foot`（重畫中，`redraw.py` s8；海岸路往畫面左沿著海、車道往畫面右爬上草坡、玻璃屋小小地在右上方；格局同第 8 集第四場；不傳 `set-coastal-drive.jpg`）：`a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame` 停在車道口、車頭朝上坡，右後門開著；更遠的路肩停著沒有字的白色廂型車；海岸路往畫面左延伸、沿著海。**往山下一律往畫面左**。
 - **時間與天氣**：第 2 天 19:00–19:04，最後的金紅夕照從畫面右（海那邊、坡上）低低照來；路肩的柏油與碎石還有一點白天留下的濕（接第 8 集「地面還有一點濕」，同一刻），映著夕照；之後到公車站一路變乾。
 - **軸線**：鏡頭在車的右側（Nora 那側）；Nora 與 Peg 在畫面左前、臉朝畫面左的海岸路；Grant 在畫面右後的車門邊、臉朝畫面左；工人在更遠的廂型車邊；Cole 在駕駛座。
 - **在場的人**：Nora、Peg、Grant；Cole（只有白手套與後腦，c06）；兩個工人（c05，工頭露臉、另一人背影）。

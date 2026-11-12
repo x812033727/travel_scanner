@@ -67,7 +67,7 @@ Nora 把紙翻到正面，念出標題：「Marriage agreement?」她把紙甩�
 ### 第一場：他走過街來（約 19 秒）
 
 **場頭**：
-- **地點與場景圖**：汽車旅館外的街 `motel-street`（待畫，夜、濕）：兩層樓的汽車旅館，一樓辦公室在停車場臨街那頭（門與門邊一扇窗，門前一級水泥台階），招牌柱在停車場入口、紅霓虹（字不入鏡）；停車場臨一條兩線道的街，**對街人行道上一盞冷白的路燈，`a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左、駕駛座的門開著**；`wet asphalt, no rain falling`；從辦公室門口到對街的黑車，過一條兩線道約 12 步。c02、c04 汽車旅館辦公室 `motel-front`（夜版；格局同第 15 集）：門與窗在畫面左，櫃台左端（靠窗）是 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`。
+- **地點與場景圖**：汽車旅館外的街 `motel-street`（待畫，夜、濕）：兩層樓的汽車旅館，一樓辦公室在停車場臨街那頭（門與門邊一扇窗，門前一級水泥台階），招牌柱在停車場入口、紅霓虹（字不入鏡）；停車場臨一條兩線道的街，**對街人行道上一盞冷白的路燈，`a black full-size four-door luxury sedan (not a limousine) with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左、駕駛座的門開著**；`wet asphalt, no rain falling`；從辦公室門口到對街的黑車，過一條兩線道約 12 步。c02、c04 汽車旅館辦公室 `motel-front`（夜版；格局同第 15 集）：門與窗在畫面左，櫃台左端（靠窗）是 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`。
 - **時間與天氣**：第 8 天 20:35–20:37，夜、地面濕、不下雨；紅霓虹從招牌柱 `a slow pulse: on for two beats, off for one`，對街路燈冷白，辦公室的窗暖黃；整場維持夜色。
 - **軸線**：c01 鏡頭在停車場招牌柱旁、往對街拍，Elias 四分之三側臉朝畫面右（旅館那邊）；c03 他從畫面左上的對街往畫面右下的辦公室走來；c04 起門口：Nora 在門內、Elias 在門外台階上。c07 起換成停車場的側面軸線（見第二場）。
 - **在場的人**：Nora、Elias、Theo；Peg 與 Bev 在辦公室裡、畫外（c02 畫面右外）。

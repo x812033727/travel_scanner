@@ -179,7 +179,7 @@
 
 **車與路程**
 
-- Elias 的黑車（`a long black luxury sedan with no badge, number plate out of frame`）：他自己開。第 21 集上山（白天）；第 26–30 集停在旗艦店後面的巷子裡、活動廳鐵門外，Peg 在後座等。
+- Elias 的黑車（`a black full-size four-door luxury sedan (not a limousine) with no badge, number plate out of frame`）：他自己開。第 21 集上山（白天）；第 26–30 集停在旗艦店後面的巷子裡、活動廳鐵門外，Peg 在後座等。
 - 法院 → Ashford 家：車程約 30 分鐘（11:15 出發、約 11:45 在山路上、12:15 到）。Ashford 家 → 旗艦店：車程約 20 分鐘；公車（山腳轉一次）約 35 分鐘。
 - Ashford 家一樓大廳：玄關到長桌近端三步；長桌約十二人座；長桌遠端左邊三級台階到書房門；樓梯沿左牆上二樓迴廊。二樓走廊從迴廊往屋子下坡那面走，Nora 的房在最裡面、走廊盡頭那面牆就是落地鏡。
 
@@ -278,7 +278,7 @@
 | 玻璃磚 | `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside` | 同第 4–10 集；第 21 集接 `, on the deep concrete windowsill`。 |
 | 檯燈（客房） | `a small concrete bedside lamp with a white shade, warm light` | 第 21–23 集。 |
 | Elias 的戒指 | `a plain narrow white-gold band with no stone, on her left ring finger` | 同第 20 集；每一鏡拍到她左手就寫。 |
-| 黑車 | `a long black luxury sedan with no badge, number plate out of frame` | `black-car`，同第 15–20 集；第 21 集接 `, climbing a wooded hill road in sunshine`；第 26–30 集接 `, parked in a narrow alley behind the store`。 |
+| 黑車 | `a black full-size four-door luxury sedan (not a limousine) with no badge, number plate out of frame` | `black-car`，同第 15–20 集；第 21 集接 `, climbing a wooded hill road in sunshine`；第 26–30 集接 `, parked in a narrow alley behind the store`。 |
 | Theo 的平板、Peg 的帳本、帆布袋、行李箱、帳本裡的當票 | 照第 4–20 集原句 | |
 
 ## 人物與參考圖

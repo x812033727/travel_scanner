@@ -262,7 +262,7 @@
 | 銀行螢幕 | `a computer monitor on the counter, its screen turned toward Nora and away from the camera` | 第 15 集；從背面或側面拍。 |
 | 薄荷糖碗 | `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands` | 同第 4–10 集；第 16 集在辦公室窗台上、兩個女人中間。 |
 | 對街的黑車（守著） | `a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible, number plate out of frame` | 同第 10 集，第 11–15 集他下車前。 |
-| 黑車（之後） | `a long black luxury sedan with no badge, number plate out of frame` | 第 15 集他下車起；接 `, parked under a dim streetlight` 或 `, at the curb below the courthouse steps`。 |
+| 黑車（之後） | `a black full-size four-door luxury sedan (not a limousine) with no badge, number plate out of frame` | 第 15 集他下車起；接 `, parked under a dim streetlight` 或 `, at the curb below the courthouse steps`。 |
 | Elias 的大衣 | `a dark charcoal wool overcoat, worn open` | 第 15–19 集，外罩基本款西裝；左手寫 `his left hand in the overcoat's left pocket`。 |
 | Theo 的平板 | `a slim tablet in a plain grey case, its screen turned away` | 第 16–17、20 集；`cast.json` 已從外貌句拿掉。寫哪隻手拿。 |
 | 三條（合約） | `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it` | 第 16–19 集；落地寫 `…, lying on wet black asphalt`；第二份同一句。 |
@@ -270,7 +270,7 @@
 | Dana 的筆 | `a plain black rollerball pen as long as her hand` | 第 17 集。 |
 | Elias 的名片 | `a plain white business card, held so only its blank back shows` | 第 17 集 Theo 遞，Nora 收進大衣左口袋；第 19 集 c24 她從口袋拿出來（寫明「Theo 給的那張」）、在左手。 |
 | Elias 的手機 | `a black phone with no logo, about the size of his palm` | 同第 2 集原句；第 19 集右手。 |
-| Grant 的車 | `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` | 同第 4–10 集；第 18 集他自己開（Cole 不在），接 `, stopped in the street beside the black car, headlights on`。 |
+| Grant 的車 | `a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame` | 同第 4–10 集；第 18 集他自己開（Cole 不在），接 `, stopped in the street beside the black car, headlights on`。 |
 | Peg 的拖鞋 | `worn beige house slippers` | 第 14 集晚上、第 15 集晚上到第 19 集停車場；外貌句的鞋照抄，句後接 `her feet in worn beige house slippers instead of shoes`。 |
 | Bev 的筆 | `a plain blue motel ballpoint pen` | 第 19 集。 |
 | 櫃台電話 | `an old beige corded desk phone` | 第 19 集。 |

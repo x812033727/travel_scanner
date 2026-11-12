@@ -61,7 +61,7 @@ Grant（基本款）坐後座右邊，黑手機在右手，轉頭看她；前座
 | Peg 的婚戒 | `a thin worn gold wedding band with one tiny old diamond, on her left ring finger` | 拍到她左手的每一鏡 |
 | Peg 的帳本 | `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine` | c35–c43（攤在腿上，只拍封面、紙背或側面） |
 | 收據 | `a small thermal receipt about as long as her finger, faded print not readable, folded small` | c38–c43 |
-| Grant 的車 | `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` | c34 |
+| Grant 的車 | `a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame` | c34 |
 | 白手帕 | `a folded white cotton handkerchief about the size of his palm`，接 `, tucked in his breast pocket` | c01–c08 拍到 Grant 胸口的鏡（基本款不帶手帕） |
 
 其他 bible 沒定句子的：c17 Peg 從大衣左口袋拿出的一張皺白面紙（`a crumpled white paper tissue`，擤完揉成一團收回口袋）；c19 保溫瓶倒出來的湯（瓶蓋杯裡淡金色的清湯、冒一點熱氣）。
@@ -183,7 +183,7 @@ Grant（基本款）坐後座右邊，黑手機在右手，轉頭看她；前座
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c34 | 全景、跟拍（跟著車從畫面右往左）；直式：下半是濕的海岸路與車，上半是陰天與路另一側的深色冷杉，左下一角是靠鏡頭這側路肩外、低處的灰色海面；前景右下緣是靠海那側路邊被風吹斜的草 | `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame`，在濕的雙線海岸路上開；車窗深色，看不到裡面的人；路面反著灰白的天光 | 車從畫面右往左開過去，輪胎帶起一點水霧；剪在車頭過了畫面中間；畫面上沒有人；最後：車身在畫面中間偏左、往左開 | — | 約 2 秒 |
+| c34 | 全景、跟拍（跟著車從畫面右往左）；直式：下半是濕的海岸路與車，上半是陰天與路另一側的深色冷杉，左下一角是靠鏡頭這側路肩外、低處的灰色海面；前景右下緣是靠海那側路邊被風吹斜的草 | `a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame`，在濕的雙線海岸路上開；車窗深色，看不到裡面的人；路面反著灰白的天光 | 車從畫面右往左開過去，輪胎帶起一點水霧；剪在車頭過了畫面中間；畫面上沒有人；最後：車身在畫面中間偏左、往左開 | — | 約 2 秒 |
 | c35 | 中景、固定；**鏡頭在儀表板中間、往後座拍**；直式：中間是中央扶手箱，畫面右是後座左邊的 Peg，畫面左是後座右邊的 Grant，兩人都在胸口以上；右下角是方向盤上緣與 Cole 戴白手套的右手（虛焦，只有手與黑西裝袖口，Cole 的臉與身體在畫框外） | 共兩人露臉。畫面右：Peg（`coat`，玳瑁框眼鏡戴在臉上），坐後座左邊，`a plain beige canvas tote bag with no print, hanging from her left shoulder`；`a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine` 攤在她腿上（只看得到封面與紙邊），左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger` 按著帳本；臉朝畫面右外的車窗：眉頭壓著、眼皮微腫、嘴唇抿緊、鼻子吸一下；畫面左：Grant（基本款），坐後座右邊，右手 `a black phone with no logo, about the size of his palm`，螢幕朝他自己、背面朝鏡頭，低頭看手機：眉頭平、眼睛垂著、嘴唇閉著；兩張臉都 `no smile at any moment, until the last frame`；畫面右的車窗外虛焦的灰海往後跑，畫面左的車窗外是往後跑的深色冷杉 | Peg 吸一下鼻子，眼睛從車窗收回來、往下看中間的扶手箱；Grant 的拇指在手機上滑；剪在 Peg 低頭的一半；兩人都嘴閉著；最後：Peg 低頭看著扶手箱，Grant 還在看手機 | — | 約 2.5 秒 |
 | c36 | 插鏡、特寫、固定（不傳車內圖、不傳定妝照）；**第一格就是方向盤上緣與兩隻白手套**；直式，方向盤橫過畫面下半、擋風玻璃外虛焦的灰色路在上半 | Cole 的兩手：白手套、黑西裝袖口，握在方向盤上；只拍手與袖口，臉與身體不入鏡；擋風玻璃外是虛焦的濕路與灰天 | 兩隻白手套把方向盤往左輕輕轉一點，再回正；剪在回正的一半；畫面上沒有嘴；最後：兩手握在方向盤上 | — | 約 2 秒 |
 | c37 | 近景、固定；從 Grant 那側拍；直式，臉在上三分之一、扶手箱在右下緣；身後是虛焦的深色車窗與往後跑的灰色海面 | Peg（`coat`，玳瑁框眼鏡戴在臉上），坐後座左邊；`a plain beige canvas tote bag with no print, hanging from her left shoulder`；腿上 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`（只看得到封面）；側臉朝畫面右、低頭看畫面右下的扶手箱；鼻子吸一下、眉頭皺著、嘴唇抿緊、找東西的樣子，`no smile at any moment, until the last frame` | Peg 的右手掀開中央扶手箱的蓋子（動作一），手伸進去摸（動作二）；剪在手伸進去的一半；嘴閉著；最後：她的右手在扶手箱裡、低頭看著 | — | 約 2.5 秒 |

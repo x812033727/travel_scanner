@@ -312,7 +312,7 @@
 | 燉菜 | `a heavy dark blue enamel stew pot with its lid on` | 第 58 集長桌上（不打開）。 |
 | Grant 的袖扣 | `a clear glass cufflink on his right shirt cuff` | 外貌句已有 clear glass cufflinks；第 59 集搭在門上、第 60 集敲玻璃的插鏡照抄這句。 |
 | Grant 的皮鞋 | `polished tan leather dress shoes` | 第 59 集踩在碎石上的插鏡（只拍腳與淺色褲腳）。 |
-| Grant 的車 | `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` | 同第 4–10 集；第 59 集接 `, its headlights on, turning the corner into the street`、`, parked on the gravel by the steel door, headlights going dark`。 |
+| Grant 的車 | `a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame` | 同第 4–10 集；第 59 集接 `, its headlights on, turning the corner into the street`、`, parked on the gravel by the steel door, headlights going dark`。 |
 | 回程的車 | `a plain dark grey sedan with no markings, number plate out of frame` | `rideshare-car` 那句（第 6 集）；第 57 集 Nora 叫的計程車。 |
 | 帆布袋、Peg 的手機、Dana 的卷宗、卷宗、Theo 的平板 | 照第 1–20 集原句 | |
 

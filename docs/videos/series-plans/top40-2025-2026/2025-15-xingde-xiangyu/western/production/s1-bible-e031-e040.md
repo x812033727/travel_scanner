@@ -174,8 +174,8 @@
 
 **車**
 
-- Elias 的黑車（`black-car`）：`a long black luxury sedan with no badge, number plate out of frame`。第 31–32 集停在 Pell's 門前的路邊，車頭朝畫面左（往 Rosa's 那個街角），副駕駛座那側靠人行道；第 32 集結尾他開走（不拍，第 33 集不在）。第 37 集他走路來、走路走（車停在街角，不入鏡）。
-- Grant 的珍珠白轎車：`a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame`。第 36 集停在 Pell's **對街**（港那側）的路邊、車頭朝畫面左，Cole 在駕駛座，只見方向盤上一隻白手套與黑袖口；從臨街窗看出去寫 `, idling at the far curb across the street`。
+- Elias 的黑車（`black-car`）：`a black full-size four-door luxury sedan (not a limousine) with no badge, number plate out of frame`。第 31–32 集停在 Pell's 門前的路邊，車頭朝畫面左（往 Rosa's 那個街角），副駕駛座那側靠人行道；第 32 集結尾他開走（不拍，第 33 集不在）。第 37 集他走路來、走路走（車停在街角，不入鏡）。
+- Grant 的珍珠白轎車：`a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame`。第 36 集停在 Pell's **對街**（港那側）的路邊、車頭朝畫面左，Cole 在駕駛座，只見方向盤上一隻白手套與黑袖口；從臨街窗看出去寫 `, idling at the far curb across the street`。
 - Gus 的小貨車（新）：`an old faded red pickup truck with no badge, number plate out of frame`，平常停在 Pell's 旁的小巷；第 40 集 08:15 載 Nora、Sparks 與樣品片去渡輪站（Peg 留在廠裡睡；Gus 開車，車裡不拍）。
 - Sparks 的機車（新）：`an old black motorbike with no badge, number plate out of frame`，第 33 集騎進大門、停在門內右邊，之後一直停在那裡（拍到大門內右側就寫）。
 
@@ -289,8 +289,8 @@
 | Peg 的帆布袋 | `a plain beige canvas tote bag with no print, hanging from her left shoulder` | 同第 1–3 集；放下寫 `…, on the bench beside her`。 |
 | Peg 的無名指 | `a faint pale band of skin on her left ring finger where a ring used to be` | 同第 11–20 集。 |
 | Elias 給的戒指 | `a plain narrow white-gold band with no stone, on her left ring finger` | 同第 20 集。 |
-| 黑車 | `a long black luxury sedan with no badge, number plate out of frame` | `black-car`，同第 11–20 集；接 `, parked at the curb in front of the steel doors`。 |
-| Grant 的車 | `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` | 同第 4–10 集；第 36 集接 `, idling at the far curb across the street, a white-gloved hand on the wheel`。 |
+| 黑車 | `a black full-size four-door luxury sedan (not a limousine) with no badge, number plate out of frame` | `black-car`，同第 11–20 集；接 `, parked at the curb in front of the steel doors`。 |
+| Grant 的車 | `a pearl-white full-size four-door luxury sedan (not a limousine) with tinted rear windows, no badge, number plate out of frame` | 同第 4–10 集；第 36 集接 `, idling at the far curb across the street, a white-gloved hand on the wheel`。 |
 | Grant 的咖啡 | `a white paper coffee cup with a lid, no logo` | 第 39 集，他右手。 |
 | Lyle 的照片（插鏡） | `a slightly grainy long-lens photo taken from across a harbor street: Nora in a grey henley and an open dark olive jacket stepping out of a narrow pawnshop door onto the sidewalk, head down` | 第 35 集全畫面插一格（不拍手機）。 |
 | 公告 | `a single printed notice sheet held so only its back shows` | 第 38 集；壓著時 `…, lying face down on the workbench under a fist-sized lump of rough green glass`。 |
