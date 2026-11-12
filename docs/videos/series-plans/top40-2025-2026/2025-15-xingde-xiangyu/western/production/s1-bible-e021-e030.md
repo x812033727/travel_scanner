@@ -474,4 +474,6 @@ Nora 的白手機還在 Bev 的抽屜；禮服掛在她的客房衣櫃；毛線�
 - 二樓走廊從鏡子往回看門在畫面右、壁燈在畫面左（第 24 集照改）。`vase-base-blank` 改寫成 `solid clear glass all the way through, smooth and plain`（不寫 no bubbles）。
 - 第 22 集 c14 Theo "Whitlock Home's launch. For Mr. and Mrs. Ashford."；第 24 集 c03 Elias "For the launch on Thursday."（觀眾才知道是誰的發表會、哪天）。
 - 道具句補：木勺 `a plain wooden spoon as long as her forearm`、爐上鑄鐵鍋 `a heavy black cast-iron pot with a lid on the stove`、抱在胸前的禮服 `the mist-grey gown folded over her forearms against her chest`（已加進 `cast.json`）。旗艦店招牌帶寫空白。
+- **第 25–30 集審稿後補定**（`../review/2026-11-12-e025-e030-storyboard.md`）：亮燈後的手機句 `two or three phones held up, seen from the back or the side, only their soft white glows`；Peg 在車上看的是「發表會一開場就有的直播」（第 30 集注意事項照這個寫）；
+  第 30 集 Elias 從盡頭卸貨門進來，第三場補一聲卸貨門關上的音效；後巷鐵門被木楔卡著沒關死，往外盪開；十九歲 Nora 的護目鏡**戴在眼睛上**（`nineteen` 外貌句已改）。
 

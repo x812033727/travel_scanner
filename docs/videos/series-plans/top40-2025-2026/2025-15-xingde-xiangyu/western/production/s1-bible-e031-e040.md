@@ -491,4 +491,6 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
 - 第 35 集 Elias 右手把筆推到估價單旁、指尖點一下簽名處（"Not until my lawyer reads it." 的起因）；估價單最後回到 Nora 手邊、對摺收進外套內袋；保付支票連同租約、筆一起推過去。
 - 說話的臉用穩定的光：Brandt `soft grey window light across her face from frame left`，檯燈只照桌面；Elias 背窗時 `face evenly lit by soft daylight off the table`。
 - 帳本那句是 "Twenty cups. Two days."（跟 decisions 一致）。
+- **第 35–40 集審稿後補定**（`../review/2026-11-12-e035-e040-storyboard.md`）：黃線通道句 `the worn yellow safety line turns along the back wall, leaving a narrow walkway to the storeroom door`，有 Nora 在場的 Remelt 鏡都寫她在通道那側或線外；
+  退火後的玻璃由 Gus 脫右手套赤手按一下再遞給她（玻璃涼到能拿，熱玻璃從不碰到人）；第 36 集玻璃管朝裡端微微傾斜、第一個銅環位置管內有一個小擋點（珠子才滾得過去、停得住，畫面不解釋）；熔融的玻璃一律橘光，藍色在冷下來後才出現。
 
