@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { TripEditor } from "./trip-editor";
 import type { Trip } from "@/lib/trip-types";
 import trips from "@/messages/zh-TW/trips.json";
@@ -105,7 +105,14 @@ function intentPreview(version: number) {
   };
 }
 
+// The fixture trips run 2026-11-11..12, and the planner shows its arrival and optional blocks only
+// for days that have not passed: pin the day before them, or the file fails once 11-11 is over.
+beforeEach(() => {
+  vi.setSystemTime(new Date("2026-11-10T03:00:00Z"));
+});
+
 afterEach(() => {
+  vi.useRealTimers();
   window.localStorage.clear();
   window.history.replaceState({}, "", window.location.href);
   vi.unstubAllGlobals();

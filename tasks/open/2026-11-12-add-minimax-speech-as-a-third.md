@@ -26,6 +26,8 @@ scope:
   - apps/web/app/api/video/speech/minimax-quota/route.ts
   - apps/web/app/api/video/speech/route.test.ts
   - tasks/open/2026-11-12-add-minimax-speech-as-a-third.md
+  - apps/web/components/trip-editor.test.tsx
+  - apps/api/tests/test_trip_creation.py
 ---
 
 # Add MiniMax speech as a third narration voice provider
@@ -104,3 +106,9 @@ npm run test:tools && npm run test:web
 - Claimed with `--force` over three stale claims whose scopes overlap `apps/api/app/video_speech`
   and `tools/video/tts` (2026-10-09-dub-skipped..., 2026-10-16-bind-story-audits...,
   2026-10-19-worker-video-languages-five): claimed 2026-10-17 to 2026-11-01, no branch on origin.
+- CI on the PR (#2081) went red in web-unit on `components/trip-editor.test.tsx` (4 tests) and
+  would in api-tests on `tests/test_trip_creation.py::test_blank_trip_preferences_are_normalized_for_persistence`:
+  both have fixture trips dated 2026-11-10/11, now past, and fail identically on `origin/main`.
+  The trip-editor fix is the same hunk as open PR #2060 (pin the system time to 2026-11-10);
+  the API test now takes dates relative to today. `tools/deploy-host-verify.test.mjs` fails only
+  in this cloud container (its awk panics on `REcompile()`), not on GitHub's Ubuntu runners.

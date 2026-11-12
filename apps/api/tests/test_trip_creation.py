@@ -1,3 +1,5 @@
+from datetime import date, timedelta
+
 import pytest
 from pydantic import ValidationError
 
@@ -11,8 +13,9 @@ def test_blank_trip_preferences_are_normalized_for_persistence() -> None:
             "source": "blank",
             "name": "首爾朋友旅行",
             "destination_name": "韓國首爾",
-            "start_date": "2026-11-10",
-            "end_date": "2026-11-15",
+            # Relative to today: a blank trip may not start in the past, so a fixed date expires.
+            "start_date": (date.today() + timedelta(days=30)).isoformat(),
+            "end_date": (date.today() + timedelta(days=35)).isoformat(),
             "travelers": {"adults": 3, "children": 1, "children_ages": [8], "rooms": 2},
             "preferences": {
                 "budget_twd": 90000,
