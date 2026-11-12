@@ -141,7 +141,27 @@ PROPS = [
      "washed-out oatmeal cardigan, seen from the side from her shoulder to her knees; the top edge of the frame cuts across her shoulder, so "
      "her neck, head and face are not in the frame at all; the bottom of the tote reaches her hip."),
 ]
-ROUNDS = {"s7": "sets", "s8": "sets", "a5": "people", "p4": "props"}
+# f1 (owner 2026-11-12 「該修就修」): the small fixes first listed for batch 2 that episodes 1-10 or the whole season use.
+# (id, refs file, size, what stays, the one change)
+FIXES = [
+    ("nora-portrait-freckles", "nora-portrait.jpg", art.BUST, "the face, eyes, hair, sweater, expression, framing, the plain grey backdrop and the lighting",
+     "her forehead is smooth and clear with no spots; her faint freckles are only across the bridge of her nose and the tops of her cheeks."),
+    ("grant-portrait-lapel", "grant-portrait.jpg", art.BUST, "the face, glasses, hair, suit, shirt, expression, framing, the plain grey backdrop and the lighting",
+     "the small dark rectangle on his left lapel is gone; both lapels are plain, bare fabric."),
+    ("peg-portrait-pendant", "peg-portrait.jpg", art.BUST, "the face, glasses, hair, cardigan, expression, framing, the plain grey backdrop and the lighting",
+     "her long brown wooden-bead necklace ends in plain beads with no pendant, no loop and no ring-shaped piece."),
+    ("peg-coat-pendant", "peg-coat.jpg", art.BUST, "the face, glasses, hair, coat, expression, framing, the plain grey backdrop and the lighting",
+     "her long brown wooden-bead necklace ends in plain beads with no pendant, no loop and no ring-shaped piece."),
+    ("door-out-gold-lock", "set-glass-house-door-out-gold.jpg", art.SETV, "the house, the door, the steps, the lamppost, the camera position and the light",
+     "the brushed-steel lock plate and handle on the door frame are completely plain and smooth, with no mark, number or letter on them."),
+    ("bus-stop-notice", "set-bus-stop.jpg", art.SETV, "the shelter, the bench, the harbor, the cranes, the camera position and the light",
+     "the paper notice on the shelter's glass is gone; that glass panel is plain clear glass like the others; the containers across the water carry no readable markings."),
+    ("bedroom-am-nightstand", "set-glass-house-bedroom-am.jpg", art.SETV, "the room, the bed, the glass wall, the sea, the camera position and the light",
+     "the small nightstand between the bed and the glass is pale oak instead of dark wood, with only a clear glass of water, a small flat white saucer and a white tissue box on it."),
+    ("ambulance-end-wall", "set-ambulance.jpg", (816, 1440), "the stretcher, the pillow, the rails, the side walls, the ceiling light, the camera position and the light",
+     "the far end of the cabin is a plain dark padded wall with no window and no lights outside."),
+]
+ROUNDS = {"s7": "sets", "s8": "sets", "a5": "people", "p4": "props", "f1": "fixes"}
 
 
 def jobs_for(name: str, work: Path) -> list[dict]:
@@ -159,6 +179,13 @@ def jobs_for(name: str, work: Path) -> list[dict]:
             for t, take in enumerate(("a", "b")):
                 jid = f"prop-{pid}-{take}"
                 jobs.append(build.job(jid, f"p4 {pid} {take}", [art.CANVAS[size]], prompt, size, 761000 + pos * 10 + t, f"p4-{jid}.png"))
+    elif ROUNDS[name] == "fixes":
+        for pos, (fid, ref, size, keep, change) in enumerate(FIXES):
+            src = art.copy_ref(work, ref)
+            prompt = f"Edit image 1: keep {keep} exactly the same. Change only this: {change} {build.REAL}"
+            for t, take in enumerate(("a", "b")):
+                jid = f"{fid}-{take}"
+                jobs.append(build.job(jid, f"f1 {fid} {take}", [src], prompt, size, 717000 + pos * 10 + t, f"f1-{jid}.png", latent="image1"))
     else:
         for pos, (pid, ref, size, keep, change) in enumerate(PEOPLE):
             src = art.copy_ref(work, ref)
@@ -180,7 +207,7 @@ def main(argv: list[str]) -> int:
     if a.list or not a.rounds:
         total = 0
         for r in ROUNDS:
-            n = 2 * (len(SETS[r]) if r in SETS else len(PROPS) if r == "p4" else len(PEOPLE))
+            n = 2 * (len(SETS[r]) if r in SETS else len(PROPS) if r == "p4" else len(FIXES) if r == "f1" else len(PEOPLE))
             total += n
             print(f"{r:4} {n:3} images {n * art.CU_PER_IMAGE:5.2f} CU")
         print(f"all  {total:3} images {total * art.CU_PER_IMAGE:5.2f} CU")
