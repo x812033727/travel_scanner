@@ -1,48 +1,122 @@
 {
-  "batch": "batches/wave26-20261112.json",
+  "batch": "batches/wave27-20261112.json",
   "reviewed_on": "2026-11-12",
-  "method": "四位沒有參與研究的覆核代理（R261：K1；R262：K2；R263：K3；R264：K4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
+  "method": "四位沒有參與研究的覆核代理（R271：M1；R272：M2；R273：M3；R274：M4）逐題至少重開一個關鍵來源、每個關鍵字跑一次素材池搜尋並 grep 批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源編入該研究代理的來源序號。",
   "counts": {
-    "ADOPT_WITH_CHANGES": 23,
-    "NEEDS_CHECK": 2
+    "ADOPT_WITH_CHANGES": 21,
+    "REJECT": 1,
+    "NEEDS_CHECK": 3
   },
   "source_renames": {
-    "R261-S001": "K1-S032",
-    "R261-S002": "K1-S033",
-    "R261-S003": "K1-S034",
-    "R261-S004": "K1-S035",
-    "R262-S001": "K2-S019",
-    "R262-S002": "K2-S020",
-    "R262-S003": "K2-S021",
-    "R262-S004": "K2-S022",
-    "R262-S005": "K2-S023",
-    "R262-S006": "K2-S024",
-    "R263-S001": "K3-S026",
-    "R263-S002": "K3-S027",
-    "R263-S003": "K3-S028",
-    "R263-S004": "K3-S029",
-    "R263-S005": "K3-S030",
-    "R263-S006": "K3-S031",
-    "R263-S007": "K3-S032",
-    "R263-S008": "K3-S033",
-    "R263-S009": "K3-S034",
-    "R264-S001": "K4-S025",
-    "R264-S002": "K4-S026",
-    "R264-S003": "K4-S027",
-    "R264-S004": "K4-S028",
-    "R264-S005": "K4-S029",
-    "R264-S006": "K4-S030",
-    "R264-S007": "K4-S031",
-    "R264-S008": "K4-S032"
+    "R271-S001": "M1-S017",
+    "R271-S002": "M1-S018",
+    "R271-S003": "M1-S019",
+    "R271-S004": "M1-S020",
+    "R271-S005": "M1-S021",
+    "R272-S001": "M2-S023",
+    "R272-S002": "M2-S024",
+    "R272-S003": "M2-S025",
+    "R272-S004": "M2-S026",
+    "R272-S005": "M2-S027",
+    "R272-S006": "M2-S028",
+    "R272-S007": "M2-S029",
+    "R272-S008": "M2-S030",
+    "R273-S001": "M3-S020",
+    "R273-S002": "M3-S021",
+    "R273-S003": "M3-S022",
+    "R273-S004": "M3-S023",
+    "R273-S005": "M3-S024",
+    "R273-S006": "M3-S025",
+    "R273-S007": "M3-S026",
+    "R273-S008": "M3-S027",
+    "R274-S001": "M4-S025",
+    "R274-S002": "M4-S026",
+    "R274-S003": "M4-S027",
+    "R274-S004": "M4-S028",
+    "R274-S005": "M4-S029"
   },
   "verdicts": [
     {
-      "id": "N2801",
-      "agent": "K1",
-      "reviewer": "R261",
+      "id": "N2881",
+      "agent": "M1",
+      "reviewer": "R271",
       "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K1-S001 https://archive.org/download/fromindiatoplan01flougoog/fromindiatoplan01flougoog_djvu.txt；K1-S002 https://archive.org/download/nouvellesobserv00flou/nouvellesobserv00flou_djvu.txt（pp.112–113 與評 Henry 的段落）；K1-S003 https://archive.org/download/lelangagemartien00henr/lelangagemartien00henr_djvu.txt（〈Le magyar〉與書末總表 pp.148–149）；新讀 K1-S033、K1-S034（本名與卒年）",
-      "reopen_result": "頁面上確實寫了：Flournoy 英譯本『In the month of December, 1894, I was invited…』、她『refusing always to accept any pecuniary compensation』、父親『was a Hungarian, and possessed a remarkable facility for languages』、1892 年 Mme N. 的圈子談火星可居與 canals、1894-10-28 Mirbel 夫人、11-25『the astronomical dream appeared at once』、『a first eclipse of nearly fifteen months』、1896-02-02、『the \"Martian\" is, in my opinion, only an infantile travesty of French』（另一處作 puerile counterfeit of French）、『objections of the 16th of October…the 2d of November (seventeen days after the suggestion…)』，全部對得上。Flournoy 1901：『une trentaine au moins de séances』（8 月底到 10 月中）、請求旁聽被拒（『trop intime』『un hérétique aux yeux de qui le martien n'est que du français déguisé』）、『13 octobre 1900』Mme J. 帶她到『une maison de banque』，對得上。Henry 的統計不只是 Flournoy 轉述：Henry 書末自己的總表（p.148–149，Au n° 287）列『réductibles au français seul 110、à l'allemand seul 25、au magyar seul 55（OCR 印成 99，但總計 248 只容得下 55）、anglais 3、source orientale 5、contaminations 29、dérivations 16、Résidu irréductible 5，總計 248』，Flournoy p.144 的轉述數字完全相同，並說文本是『41 textes』『300 termes (en chiffres ronds)』。研究稿的錯：①Henry 寫她『estime n'en pas savoir le premier mot』，但 Flournoy 在同頁腳注直接更正『Ceci d'ailleurs est inexact』，她曾向 Lemaître 念過幾個匈牙利字——研究稿把『她自認一個字都不會』當成事實寫進標題；②鉤子說火星語『有自己的文法』，與 Flournoy 的結論（文法是法語）相反；③payoff 的『四分之一』是研究者換算（55／248＝22%）；④『五年多』書上是『past five years』。本名與卒年：PSI Encyclopedia（Maraldi）寫『Catherine-Élise Muller (1861–1929)』、死於『29 June 1929』；Encyclopedia of Occultism and Parapsychology（encyclopedia.com）標題『Smith, Hélène (1861-1929)』『Pseudonym of Catherine Elise Muller of Geneva』，搜尋摘要另見 6 月 10 日一說；年份一致、日期不一。1929 年卒，可以入畫。",
+      "key_source_reopened": "M1-S001 https://files.ncas.org/condon/text/appndx-u.htm（Durant 報告全文）；M1-S003 https://www.gutenberg.org/cache/epub/17346/pg17346.txt 第 16 章；M1-S002 https://sgp.fas.org/library/ciaufo.html",
+      "reopen_result": "Durant 報告頁面上確實寫了：『Present at the initial meeting (0930 Wednesday, 14 January)』、週三上午放 Tremonton（2 July 1952）與 Great Falls（15 August 1950）影片、『approximately 1000 man hours』、『self-luminous』、『strongly to suggest birds, particularly after the Panel viewed a short film showing high reflectivity of seagulls』、『The \"debunking\" aim would result in reduction in public interest in \"flying saucers\"』、Cantril／Arthur Godfrey／Jam Handy Co.／『Walt Disney, Inc. animated cartoons』、『such organizations should be watched because of their potentially great influence on mass thinking』、『Captain Ruppelt of ATIC unofficially proposed…a. An analysts' panel of four officers b. Four officer investigators』『This proposal met with generally favorable comment』、Tab A 的『strip the Unidentified Flying Objects of the special status…and the aura of mystery』。Ruppelt 第 16 章確實寫『should be quadrupled in size』『the American public should be told every detail of every phase』『Because of military regulations, the names of the panel members…cannot be revealed』，但也寫『convened on the morning of January 12』與一段他說是報告『第一段』的引文，那段在 Tab A 裡沒有。Haines 確實寫『met from 14 to 17 January 1953』『after spending 12 hours』『even the Disney corporation』『be monitored for subversive activities』、Weber 的原句、McDonald 6 June 1966、『only minor deletions』（註 79）、1975 年『provided Spaulding with a copy』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、三個來源都重開並逐句對過。改掉的錯：『五位物理學家』頁面無據；『應受注意』弱化了原文 should be watched；『1975 年 CIA 才給了全文』與同一來源的 McDonald 1966 年已讀過相牴觸；Haines 評語的轉述是研究者的概括，改回原句。補上研究稿沒看到的兩處不一致（Ruppelt 寫 1 月 12 日開議；他引的『第一段』不在 Tab A）。淨化版公布年份仍沒讀到，scope 已寫明不寫年份。人物全部不入畫可行（放映機、海鷗、打字報告、橡皮章）。無在世人物為核心。片長 9–11 分鐘成立。"
+    },
+    {
+      "id": "N2882",
+      "agent": "M1",
+      "reviewer": "R271",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M1-S004 http://www.project1947.com/gfb/twinklereport.htm（Twinkle 結案報告全文）；M1-S005 https://archive.org/download/project-twinkle-november-1951/ProjectTwinkle-November1951_djvu.txt（掃描 OCR 的兩份公文）；M1-S003 第 4 章",
+      "reopen_result": "報告頁面確實寫了：『The gist of the findings is essentially negative』、『attended a conference at Los Alamos, 14 October 1949』、『On 2 February 1950, Dr. La Paz advised…he was unable to undertake this study』、『Contractual period - 1 April 1950 to 15 September 1950』、『Some photographic activity occurred on 27 April and 24 May, but simultaneous sightings by both cameras were not made, so that no information was gained』、『$50,000 a year』、第二期『No sightings were made by the Askania cameras』、『does not permit a conclusive opinion』、『No further fiscal expenditure』。但 Tombaugh、Whipple『從沒看過』是『Mr. B. Guildenberg…commented that…』的轉述，不是查訪兩人；La Paz 的原句是『may be of our own military origin, but if not, they are a matter of serious concern』。掃描 OCR 確實有 11 Dec 1951『nothing of a security nature has been discovered』與 19 Feb 1952『Scientific Advisory Board Secretariat has suggested that this project not be declassified…no scientific explanation for any of the \"fireballs\"…some reputable scientists still believe that the observed phenomena are man-made』。Ruppelt 確實寫『In mid-February 1949』『In the late summer of 1949, Cambridge established Project Twinkle』『Project Twinkle was a bust. Absolutely nothing was photographed』『When the Korean War started, Project Twinkle silently died』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。改掉的錯：把 Guildenberg 的轉述寫成報告查訪 Tombaugh 與 Whipple 的結果；La Paz 引句斷在一半；鉤子『什麼都沒拍到』是 Ruppelt 的話、不是報告的話，改引報告摘要。研究者標的『會議日期衝突』其實是整條時間線衝突（Ruppelt：1949 年設立、韓戰開打即止；報告：1950-04 到 1951-03），已寫成轉折並標明是對照。現代解釋仍無來源，結尾停在『當年沒有定論』，scope 已限制。archive.org 的 djvu 檔名研究稿寫的網址頁正確，文字檔實際名為 ProjectTwinkle-November1951_djvu.txt。人物不入畫可行。片長 8–9.5 分鐘成立。"
+    },
+    {
+      "id": "N2883",
+      "agent": "M1",
+      "reviewer": "R271",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M1-S006 https://files.ncas.org/condon/text/s5chap02.htm；M1-S007 https://files.ncas.org/condon/text/s6chap02.htm（§3、表 2、§6）；M1-S003 第 3 章",
+      "reopen_result": "Condon 頁面確實寫了：『This is said to have been classified \"Top Secret\" although \"Restricted\" was the general classification applicable to Project Sign at that time』『According to the unconfirmed reports』『it is said that a few clandestine copies exist. We have not been able to verify the existence of such a report.』Hartmann 一章確實寫了『At about 9:45 p.m. EST on 3 March』『some 78 reports, but only about 30 detailed letters or forms』，表 2：Report \"formation\" 17、Report cigar-shape or rocket-shape 5、Report \"windows\" 3、Refer to exhaust 2；『the two most lengthy unsolicited reports described the apparition as a cigar-shaped craft with a row of lighted windows and a fiery tail』；『The \"airship effect\" and \"excitedness effect\" apply to the Eastern Airlines case of 1948』『Hynek, as consultant to the Air Force, and Menzel and Boyd account for it as a fireball』『perfectly conceivable possibility』。Ruppelt 確實寫了四句描述、『Only one passenger was looking out of the window』、黑色封面與 TOP SECRET、『one of which I saw』；但他寫的是『A few days after the DC-3 was buzzed, the people at ATIC decided that the time had arrived to make an Estimate』，以及『A matter of days after the Estimate of the Situation was signed, sealed, and sent on its way…October 1』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立；研究者擔心的三點都在頁面上：Condon 的原句、Zond IV 的計數（3 份『windows』、5 份雪茄形、約 30 份完整報告、總檔 78 份）。改掉的錯：『幾天後 ATIC 寫出』不是 Ruppelt 的原意，而且兩份文字對 Estimate 的時間不同，已分開寫；『當晚的旁證』是 ATIC 當年的看法。Estimate 存否仍只有『一人說有、一份報告說查不到』，題目本來就以此為核心，可收。Hartmann 在世、只當作者引用；無在世人物為核心；畫面用駕駛艙剪影、黑皮文件、信件可行。片長 8–10 分鐘成立。"
+    },
+    {
+      "id": "N2884",
+      "agent": "M1",
+      "reviewer": "R271",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M1-S008 https://www.ufoscans.com/raw/British%20UFO%20Files/DEFE44-119.pdf（6 頁掃描逐頁重看）；M1-S009 https://drdavidclarke.co.uk/secret-files/flying-saucer-working-party/；新讀 M1-S019（國家檔案館研究指南）",
+      "reopen_result": "掃描每頁頁腳印『Catalogue Reference: DEFE/44/119』。封面確實是 SECRET／DISCREET、June 1951、D.S.I./J.T.I.C. REPORT No. 7、Copy No. 17、2001 年 5 月 9 日審查章。內文確實寫了：Hynek 228 件『approximately 33 per cent. were astronomical…37 per cent. were not astronomical but suggestive of other explanations, such as birds, rockets, balloons, ordinary aircraft…the remaining 30 per cent.』；Mantell『without any doubt whatever…while pursuing the planet Venus』；『full of the remains of very small beings, was ultimately admitted by its author to have been a complete fabrication』；Tangmere 1st June 1950 at 1430、『1,300–1,650 knots』、『a discrepancy of ten minutes』；Hubbard 14th August 1127（另兩名軍官『saw nothing』）、5th September 1609 與五名軍官、『about the size of a shirt button』、『an interesting example of one report inducing another』；§15 四類原因、『a singularly profitless enterprise』、『recommend very strongly that no further investigation…be undertaken, unless and until some material evidence becomes available』、署『Metropole Buildings, W.C.2』；附錄 B『on the rifle range at Tipner, Portsmouth…(× 20 magnification)…a circular shining disc…a perfectly normal aircraft』；第 1 頁有『RETAINED UNDER SECTION 3(4)』。Clarke 網頁的否認、1999／2001、Holy Grail、邱吉爾引句、Chadwell、Mainbrace 命令都在頁面上。nationalarchives.gov.uk 仍回 405；但國家檔案館研究指南（M1-S019）給了 PREM 11/855 的日期（便條 1952-07-28、回覆 08-09）與回覆原句。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，報告本身的每個數字與引文都對得上，是六題裡研究稿最準的一題。補強：邱吉爾便條的日期與空軍部回覆原句現在有國家檔案館研究指南可引（原件仍沒讀到）；補上『PREM 11/855 1986 年就已開放』這個會改變結論的細節。仍弱：『國防部否認』與發現經過只有在世的發現者一人的敘述（兩份文字同一作者），已要求旁白掛『發現者說』，且題目核心是文件、不是人。片長：報告六頁但三件案例、附錄、邱吉爾便條與發現經過合計約 18–20 條事實，8–9.5 分鐘誠實成立。人物不入畫可行（雷達螢幕、塔台剪影、望遠鏡、檔案盒）。"
+    },
+    {
+      "id": "N2885",
+      "agent": "M1",
+      "reviewer": "R271",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M1-S010 https://www.spiegel.de/politik/sie-fliegen-aber-doch-a-7a736440-0002-0001-0000-000044447768；M1-S011、M1-S012（archive.org CIAUFO 兩份 PDF 的文字層）；新讀 M1-S020、M1-S021",
+      "reopen_result": "《明鏡》頁面確實寫了：『29.03.1950』『DER SPIEGEL 13/1950』、Belluzzo『Ich selbst habe die Pläne entworfen』『Leider…sind die Pläne auf der Flucht Mussolinis nach Norditalien verlorengegangen』、Schriever 40 歲、『Damals war ich Chefpilot in Eger』、『Die Leute wußten damals nicht, worum es sich handelte』、14,40 Meter、4200 Kilometer pro Stunde、『Bis zum 15. April 1945 arbeitete Schriever an seinen Plänen. Die Zeichnungen waren abgeschlossen…Die Russen kamen eher』、『Am 4. August 1948 wurde eingebrochen』、『Wenn ich die Möglichkeit hätte, würde ich so'n Ding sofort bauen und fliegen』、傳聞段的 15 名乘員與『ungefähr 90 cm groß』。CIA 1953 譯報兩頁重複版面對照後讀得出：INFORMATION FROM FOREIGN DOCUMENTS OR RADIO BROADCASTS、WHERE PUBLISHED Athens, Brazzaville, Tehran、DATE PUBLISHED 11 Mar – 20 May 1953、UNEVALUATED INFORMATION、『Athens, I Vradyni, 13 May 53』、『present in Prague on 14 February 1945』、『an altitude of 12,400 meters within 3 minutes and a speed of 2,200 kilometers per hour』、『three experimental models…by the end of 1944』、42 meters。1954 譯報：『Capetown, Die Landstem, 9 Jan 54』『A German newspaper (not further identified)』『1,300 miles per hour within 3 minutes』『Schreiver recently died in Bremen』。",
       "changed_fields": [
         "question",
         "hook",
@@ -51,19 +125,40 @@
         "source_ids",
         "source_locator",
         "editorial.payoff",
+        "editorial.minutes",
         "risk",
         "notes"
       ],
       "duplicate_of": "",
-      "reason": "前提成立、三份一手來源逐頁對上、兩個以上轉折、9–11 分鐘。改掉『一個字都不會』（Flournoy 當頁更正）、鉤子的『自己的文法』、研究者換算的『四分之一』，補本名與卒年（可畫）。"
+      "reason": "三份文字都重開，引文對得上。問題在兩處：(1) 流傳版本『CIA 解密文件證實』研究稿沒有出處，已補一篇 2018 年的轉貼文，並發現它把表格的出刊日期欄讀成『審訊日期』、把 Klein 寫成 CIA 探員——這成為第三個轉折；(2) 鉤子『自己說他只畫完了圖』沒有限定年份，而整理舊報的網站說 Schriever 兩年後改口（原文未讀），已限定為『1950 年』。不收清單寫的是『二戰的暴行』，本題是戰後報紙傳說的文件追查，不在清單內；畫面可以完全繞開納粹符號（製圖桌、花園小屋、情報表格、剪報）。可讀文字增為五份後估 8–9.5 分鐘，保留為獨立題；但題材敏感，risk 與 notes 已寫明請站主決定，並給了改成 chapter 接 N2886 的做法。無在世人物。"
     },
     {
-      "id": "N2802",
-      "agent": "K1",
-      "reviewer": "R261",
+      "id": "N2886",
+      "agent": "M1",
+      "reviewer": "R271",
       "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K1-S004 https://archive.org/download/sim_the-edinburgh-new-philosophical-journal_april-october-1826_1/sim_the-edinburgh-new-philosophical-journal_april-october-1826_1_djvu.txt（pp.389–390）；K1-S005（Gauss 1822-03-25 信末）；K1-S006（Sartorius）；K1-S007（Littrow 1897）；K1-S008（Comptes rendus 131）；新讀 K1-S032 https://archive.org/download/11341093bsb/11341093bsb_djvu.txt（Littrow 第二卷，著錄 1835，p.205）、K1-S035",
-      "reopen_result": "1826 年短訊原文：『Gruithuisen, in a conversation with the great astronomer Gauss, after describing the regular figures he had discovered in the moon, spoke of the possibility of a correspondence with the inhabitants of the moon. He brought, he says, to Gauss's recollection, the idea he had communicated many years ago to Zimmerman. Gaus answered, that the plan of erecting a geometrical figure on the plains of Siberia corresponded with his opinion, because…a correspondence with the inhabitants of the moon could only be begun by means of such mathematical contemplations and ideas, which we and they must have in common.』沒有三角形、樹、小麥。研究稿標題寫『主意還是 Gruithuisen 自己多年前的』，原文的『he』分不出是誰（讀成 Gauss 自己多年前告訴 Zimmerman 的主意同樣通順），已改成不下判斷。Gauss 信末：『Mit 100 Stück Spiegeln, jeden zu 16 Quadratfuss Fläche, vereint gebraucht würde man gutes Heliotrop-Licht nach dem Mond schicken können. Schade, dass wir nicht einen solchen Apparat mit einem Detachement von 100 Leuten und ein paar Astronomen dahin senden können, uns zu Längenbestimmungen Zeiten zu geben.』對得上（是 1909 年刊本，不是親筆件）。Sartorius：『halb im Ernst halb im Scherz』『eben nicht sehr wahrscheinlich』『Das wäre eine Entdeckung, noch grösser als die von America…wenn wir uns mit unsern Mondnachbarn in Verbindung setzen könnten』對得上。Littrow：研究稿只讀到 1897 年第 8 版；覆核讀到第二卷初版（archive.org 著錄 1835）p.205：『hat einer unserer ausgezeichnetsten Geometer einen Vorschlag gemacht…wenn gleich Niemand, und am wenigsten [OCR 缺一詞] des Vorschlags selbst, an eine Ausführung desselben denkt』『eine der sprechendsten Figuren der Elementargeometrie, z. B. die bekannte des sogenannten Quadrats der Hypotenuse, im großen Maaßstabe, etwa auf einer weiten Ebene der Erde verzeichnet』——1835 年就有這段、沒點名、沒有撒哈拉與火，而且明寫沒人想過實行；1897 年版改成『Pythagoräischen Lehrsatz』並刪掉那句。Comptes rendus：『PRÉSIDÉE PAR M. Maurice LEVY』『cent mille francs…à celui qui, le premier, aura réussi à entrer en communication avec un astre, autre que la planète Mars』、蒙田引文、章程『Clara Goguet, veuve Guzman…prix Pierre Guzman, en souvenir de son fils』、五年利息獎首頒 1905，對得上。Crowe 原書：archive.org 兩個版本都只有借閱版（Item not available），讀不到；他的結論從 answer_target 拿掉，移到 scope 當待讀。流傳版本改用可讀的例子（Languagehat 2022 轉引 LRB 2020 書評：『in the Siberian tundra…marked out by trees and their interiors filled with wheat』『Littrow proposed digging trenches in the Sahara, filling them with kerosene』）。",
+      "key_source_reopened": "新讀 M1-S017 https://www.physics.smu.edu/~pseudo/UFOs/Scully/Cahn2.pdf（True 1956 年 8 月號雜誌頁掃描，逐頁看圖）；M1-S013 https://www.saturdaynightuforia.com/html/articles/articlehtml/anatomyofahoax-part11.html；M1-S014；新讀 M1-S018",
+      "reopen_result": "True 1956 的頁面上確實印著：導言『They were almost $400,000 ahead when TRUE's reporter broke the amazing case』；『All told, Newton and GeBauer drained $231,452.30 out of Flader』（分項 28,552.30＋152,000＋1,500＋49,400）；『The machines turned out to be the tuning units of U.S. Army radio transmitters. They still had the Signal Corps identification plates on them』；『On Friday, October 10, charges were quietly filed』『That night—October 14, 1952—FBI agents in Phoenix grabbed GeBauer. Newton was picked up the same evening in Hollywood』；『On November 10, 1953, a year and a month after they were arrested, Newton and GeBauer were brought to trial in the District Court in Denver. The charges: conducting a confidence game and conspiracy to commit a confidence game』；『The district attorney produced a doodlebug of his own, identical to one GeBauer sold Flader for $18,500. Only Keating got his at a more reasonable rate—$3.50 at a local surplus store』；『The jury arrived at its verdict in less than five hours. They found both defendants guilty on both charges』；『On April 12, 1954, their motion for a new trial was denied…It was granted June 20』；『$82,186.77』。Cahn 1952 的轉載頁確實寫了『some 60,000 copies at $2.75』、99 99/100 feet、150 tests and 10,000 degrees、36 to 42 inches、『total toll to thirty-four』、Palm Court、Dr. J.E. Hobson、『melted…at just 657 degrees Fahrenheit』、『99.5 percent pure…grade 2S…pots and pans』、Western Radio & Engineering Company、Denver Post 的『Absolute zero』。丹佛公共圖書館頁面寫『The pair were convicted of fraud in 1953』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，而且研究者標的最弱處補上了：找到 True 1956 年 8 月號的雜誌頁掃描與丹佛公共圖書館的館藏介紹，審判不再只靠大學課程網頁。改掉的錯：Flader 的金額 231,432.30 是大學網頁的轉抄錯字，雜誌頁印的是 231,452.30（四筆分項相加吻合）；定罪年份補上（1953 年 11 月 10 日開審、1953 年定罪、1952 年 10 月 14 日被捕、1954 年 6 月緩刑）；鉤子含『第一次』與 Cahn 的推論，已換成可核對的兩個事實；Cahn 印的熔點『657°F』與純鋁熔點（約 660°C）不合，加註不唸單位。仍缺判決書與報紙原版面、FBI Hottel 備忘。遺體不畫、五人不入畫可行（手帕與齒輪、坩堝與鋁鍋、兩個掛價牌的黑盒子）。無在世人物。片長 9–11 分鐘成立。"
+    },
+    {
+      "id": "N2901",
+      "agent": "M2",
+      "reviewer": "R272",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M2-S001 https://archive.org/stream/memoirsofmostmat00welw/memoirsofmostmat00welw_djvu.txt（pp.86–87 與書名頁）；M2-S002 https://archive.org/stream/remainesofgentil00aubruoft/remainesofgentil00aubruoft_djvu.txt（pp.90–92、pp.232–233）；M2-S003 https://archive.org/stream/annals00macruoft/annals00macruoft_djvu.txt（pp.70–71）；M2-S004 Gutenberg #5098 與 #9823；新讀 M2-S023（DNB〈Cary, Lucius〉）",
+      "reopen_result": "頁面上確實寫了：Welwood『There befel him an Accident, which though a Trifle in it self, and that no Weight is to be laid upon any Thing of that Nature…』『The King being at Oxford during the Civil Wars, went one Day to see the Publick Library, where he was show'd among other Books, a Virgil nobly printed, and exquisitely bound. The Lord Falkland, to divert the King…』『It is said King Charles seem'd concern'd at this Accident』『yet more suited to his Destiny』，書名頁『JAMES WELWOOD, M. D. Fellow of the College of Physicians, London… Glasgow… MDCCXLIV』。Macray『It must have been about the close of this year or beginning of the next, while the king was in winter quarters at Oxford…quoted from the earliest authority in which it is found, viz. Welwood's Memoirs, Lond. 1700. pp. 105-107』『There is no copy of Virgil now in the Library amongst those which it possessed previously to 1642, which is exquisitely bound as well as nobly printed』。Aubrey『In December 1648, K. Charles the first being in great trouble, and prisoner at Caersbroke, or to be brought to London to his Triall; Charles Prince of Wales, being then at Paris…(Mr. Cowley alwaies had a Virgil in his pocket)…The Prince understood not Latin well…I am sorry I did not take a copie of them…I thinke the pinne was put about Et si fata Jovis poscunt』『Sortes Virgilianae are in use still, but more beyond sea than in England』，軍官流言『privately putt into the Sand about White-hall』，書末註『A very different account…is given by Welwood』。Johnson『(which I take to be an argument above all the rest), Virgil has told me something to that purpose』『I cannot but suspect Cowley of having consulted on this great occasion the Virgilian lots』，#9823 註 9『It is said, that king Charles the first, and lord Falkland, being in the Bodleian library…』。研究稿的錯與漏：①最要緊——研究稿（來源摘要、答案、limitations）說 Cowley 的譯稿『Aubrey 沒抄，本輪也沒讀到』；Aubrey 同一條在 p.92 接著寫『'Twas this place』並抄了八行，標『Translated for K. Ch: II. by Mr. Abraham Cowley』，末兩行『untimely let him dy, And on an open stage unburied ly』，與他先抄的 Ogilby『the sand his grave』不同。②題目的『受審前一個月』與 risk 的『1649 年』不在讀到的頁面上。③Falkland 的結局研究稿留空：DNB 寫『On the morning of the battle of Newbury, 20 Sept. 1643…Riding at a gap in a hedge through which the enemy's bullets were pouring…he was struck down in an instant』。④Johnson 同傳（#9823）寫 Cowley 1643 年在牛津『gained the kindness and confidence of those who attended the king, and, amongst others, of lord Falkland』，兩個版本的人物是同一圈，研究稿沒用。",
       "changed_fields": [
         "question",
         "hook",
@@ -73,23 +168,111 @@
         "source_locator",
         "editorial.payoff",
         "editorial.visual",
+        "editorial.minutes",
+        "risk",
         "notes"
       ],
       "duplicate_of": "",
-      "reason": "前提成立，五份 19 世紀文本逐字對上。誰加了樹與小麥、何時加的仍沒追到（Crowe、Chambers's、Newcomb、Kahn 都沒讀到），題目只主張『讀到的紀錄裡沒有』，每個『最早』都寫成『本輪讀到最早』。補上 Littrow 1835 年版，等於把『Littrow 的撒哈拉火溝』這一半也查到本人書上。"
+      "reason": "前提成立、四份原文逐句對上、不重複。補上 Aubrey 自己抄的 Cowley 譯文（『露天的台』）與 Falkland 之死後有三個以上轉折，誠實估 8–9.5 分鐘，維持 episode_core，不需補古羅馬引子。"
     },
     {
-      "id": "N2803",
-      "agent": "K1",
-      "reviewer": "R261",
+      "id": "N2902",
+      "agent": "M2",
+      "reviewer": "R272",
       "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K1-S011 https://archive.org/download/jstor-983762/983762_djvu.txt（Lowell 1901）；K1-S009（Nature 1894-08-02）；K1-S010（Gutenberg #36）；K1-S012、K1-S013、K1-S014（loc.gov 三頁的 OCR 全文）；另用 loc.gov 搜尋 1900-12-08 到 12-20",
-      "reopen_result": "Lowell：『On a certain morning in December, 1900, paragraphs appeared in the papers throughout the United States with the startling announcement that Mars had been signaling the Earth the night before…Europe was behind America…only the time necessary for its transmittal』『The innocent cause…was a dispatch sent from Flagstaff to the writer and communicated by him through the usual channels to the astronomical world. The signaling part of it was a tale added by journalistic ingenuity…The original dispatch read: \"Projection observed last night over Icarium Mare, lasting seventy minutes.\" (Signed) \"Douglass.\"』『four hundred being seen at Flagstaff in the course of nine months』『at least sixteen degrees of longitude』『clouds』，對得上；十個字的算法成立。Nature：『it is to be expected that the old idea that the Martians are signalling to us will be revived』『Aurora…a long range of high snow-capped hills, and forest fires burning over a large area』『Without favouring the signalling idea…a better time for signalling could scarcely be chosen』，對得上；光『in the region of the planet not lighted up by the sun』。Wells：『a great light was seen on the illuminated part of the disk, first at the Lick Observatory, then by Perrotin of Nice…in the issue of Nature dated August 2』『Lavelle of Java』，對得上，但『把 Javelle 改成 Lavelle』是研究者的推論，頁面沒有。Sun 12-11：『Mr Percival Lowell has forwarded to Harvard College Observatory a despatch from Flagstaff…on the night of Dec 7 a projection was seen…north edge of Icarium Mare which lasted seventy minutes』，沒有 signal。Richmond Times 01-09：報上印『M. Wilfrid Fonvelle／Fonvcille』『which had proceeded geometrically, indicated voluntary action』，Pickering『a very strained inference』『We have no certain evidence that there is even organic life on the planet』，對得上；Pickering 引的電報字句與 Lowell 引的不同。Akron 12-28：標題『Professor Accounts For Those Supposed Signals From Mars』，人名 OCR 是『Perof. Klani marlon』，Flammarion 是研究者判讀。覆核在 Chronicling America 搜尋 12 月 8–20 日，只找到《Sun》那一則：第一個寫『信號』的報紙仍沒找到。N2421 全文比對：沒有 1894／1900 年的突起、Douglass 或 Lowell 1901，不重複。",
+      "key_source_reopened": "M2-S005 https://archive.org/stream/b29322376/b29322376_djvu.txt（書名頁、獻詞、Preface、占卜說明與腳註）；M2-S006 https://archive.org/stream/sim_british-critic-and-quarterly-theological-review_1823-08_20/…_djvu.txt（Art. IV pp.138–143）；M2-S007 https://publicdomainreview.org/collection/book-of-fate/ 與 M2-S008 https://wpsite.rosenbach.org/?p=1010（兩頁都直接取回全文，不經摘要工具）；M2-S009 Gutenberg #8118 第 18 章",
+      "reopen_result": "頁面上確實寫了：書名頁『NOW FIRST RENDERED INTO ENGLISH, FROM A [German translation] OF AN ANCIENT EGYPTIAN MANUSCRIPT FOUND IN THE YEAR 1801, BY M. SONNINI…By H. KIRCHENHOFFER, FELLOW OF THE UNIVERSITY OF PAVIA…THE TENTH EDITION…1825』；序言『It is well known that, in 1801, many French artists and literati accompanied the First Consul in his famous expedition to Egypt』『attached by a peculiar kind of gum to the left breast, a long roll of papyrus』『sent for a learned Copt…dictated its contents to Napoleon's secretary, who, in order to preserve the matter secret, translated and wrote them down in the German language』『Before each campaign, and on the eve of every battle or treaty, Napoleon consulted his favourite Oracle』『A conqueror, of noble mind and mighty power, shall spring from low condition』；腳註『instead of a reed dipped in blood, he and his friends have, invariably and without the least detriment, used a pen dipped in common ink…in a Christian land to be entirely superfluous』。British Critic『The Fourth Edition. 8vo. Pp. 68. 5s.』『when in point of fact General Bonaparte (for he was no more during that expedition) returned from Egypt in the year 1799, and the Artists and Literati who accompanied him were packed home again in consequence of the surrender of their military protectors to the British troops, about Midsummer in the year which Mynheer Kirchenhoffer cites. Be this as it may, for we will not quarrel about trifles』『very faithfully abridged as it seems, for the most part, from certain well known works』『without implying that the Book of Fate must be considered either as an innocent hoax upon the public, or as a grave and well-sustained irony upon Messrs. O'Meara and Co. we strongly advise all those careless and laughing circles…』。Public Domain Review（Kevin Dann，2022-01-25）：『On July 4, 1822…bookshops on the Strand, Piccadilly, and Fleet Street』『thirty-two…questions』『1024 moral axioms』『a dozen editions before 1840』『by November…Robert Cross Smith's The Philosophical Merlin』『cribbed from Louis-Madeleine Ripault's Report of the Commission of Arts (1800)…Abraham Rees' 1810 Cyclopedia』，Ireland 一說是直接斷言（『Of the three other books published by this author in 1822…William Henry Ireland』），沒有文獻證據。Rosenbach（Kathy Haas，2015-03-13）：『at the time of the Battle of Leipzig, no one could read hieroglyphics…Champollion's breakthrough with the Rosetta Stone came in the early 1820s』『only known in the English speaking world』『no one has actually been able to identify Kirchenhoffer』『an early nineteenth-century fabrication』。Melville：『Snugly hidden in one corner of his chest…with a red cover…from being a corporal to an emperor…a bit of chalk…marking down strokes on his chest-lid』。研究稿的錯：①轉手順序——是普魯士軍官『for a few Napoleons』賣給被俘在 Königsberg 的法國將軍，將軍是『amputation of the right arm』後過世；②書評說學者是在 1801 年仲夏前後被送回國，且對 Sonnini 主持委員會一事順著原書說；③payoff『照賣一百多年是因為買的人只要樂子』是研究者推論；④Melville 寫的是粉筆與箱蓋，不是石板與鋪位；⑤『十幾版』原文 a dozen；三十二題、1024 條其實在 PDR 頁面上（研究稿說沒有數字可用）。兩個原本只有工具摘要的網頁，內容與研究稿所述相符。",
       "changed_fields": [
         "question",
         "hook",
         "answer_target",
         "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立、不重複。兩個二手網頁已逐字重開；1822 年初版仍沒讀（1825 年第十版加 1823 年對第四版的書評足以支撐題目）。Ireland 一說維持『有研究者認為』。素材足 8–10 分鐘，由 7–9 上調，episode_core。"
+    },
+    {
+      "id": "N2903",
+      "agent": "M2",
+      "reviewer": "R272",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M2-S011 https://archive.org/stream/sim_kaleidoscope-or-literary-and-scientific-mirror_1828-08-26_9_426/…_djvu.txt（p.67）；M2-S010 https://archive.org/stream/cu31924088008333/cu31924088008333_djvu.txt（vol. II pp.329–332）；M2-S012 Gutenberg #12621（第二章與章末 NOTE）；新讀 M2-S024（DNB〈Williams, John (1753–1841)〉）、M2-S025（《泰晤士報》1828-08-16 一文的今人抄錄）",
+      "reopen_result": "頁面上確實寫了：Kaleidoscope『has led to our receiving, from a correspondent of unquestionable veracity, another history of a sleeping vision』『In the night of the 11th of May, 1812, Mr. Williams, of Scorrier-house, near Redruth…』『nor had he ever been in the lobby of the House of Commons in his life』『Mr. Michal Williams, of Trevince…gallopped out from Truro, (from which Scorrier is distant seven miles)』『About six weeks after…This place is as distinctly within my recollection, in my dream, as any room in my house』，文末『Morn. paper』；同文稱它是與『a contemporaneous tragedy which was performed nearly 300 miles from the person of the dreamer』細節相符的夢，並說它『want of every characteristic of a warning, a remedy, or any other visible usefulness』。Walpole『an attested statement, drawn up and signed by Mr. Williams in the presence of the Reverend Thomas Fisher and Mr. Charles Prideaux Brune』『About the 2nd or 3rd of May, 1812, I dreamed I was in the lobby of the House of Commons, a place well known to me』『I understood him to be Mr. Perceval』『Godolphin Mine』『On the evening of the 13th May, as far as I recollect』『in one of the print-shops, I saw a drawing』。Lang『It was first published, apparently, in The Times during the ‘silly season’ of 1828 (August 28)』『These accounts differ toto coelo』『SUNDHILL, December, 1832』『No trace of Mr. Williams's dream occurs in the contemporary London papers』，NOTE 逐字照錄《泰晤士報》1812-05-25 與 Perth Courier 05-28，並寫『The Dumfries and Galloway Courier I cannot find!』。日期矛盾的解：DNB（1900，E. I. Carlyle）『The first account of the dream appeared in the Times on 16 Aug. 1828. The date of the vision was there erroneously assigned to the night of the assassination』；今人抄錄也標 Times 16 Aug 1828〈Remarkable Coincidences〉，內文與 Kaleidoscope 逐句相同——所以 8 月 26 日的利物浦轉載沒問題，錯的是 Lang 的『August 28』。研究稿的錯與漏：①沒看出 1828 年版的夢在槍擊之後（當夜），報導自己說是『同時發生』、沒有預警性質——流傳的『事前夢見』其實只出自 1832 年的陳述；②DNB 反而採信 1832 年版（『On 2 or 3 May 1812, eight or nine days before the catastrophe』『one of the best authenticated instances of prevision or second sight』、與弟弟 William 及合夥人 Robert Were Fox 商量），這個『工具書採了晚的那份』的轉折研究稿沒有；③Lang 的章次寫成第三章，實為第二章；④1812 年報導並非『只讀到 Lang 的引述』而是 Lang 的逐字照錄，但他自己找不到 Dumfries 原報，scope 已寫明。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立。不是 N464 的重複或第二章：案子不同（Perceval 1812／Lincoln 1865），答案也不同（本題是兩份互相矛盾的文字與辭典的取捨）。日期矛盾已解（Times 1828-08-16），《泰晤士報》原報影像仍沒讀到，旁白用『1828 年 8 月的報紙』。補兩個轉折後素材足 8–9.5 分鐘，由 7–8.5 上調，episode_core。"
+    },
+    {
+      "id": "N2904",
+      "agent": "M2",
+      "reviewer": "R272",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M2-S013 https://archive.org/stream/sim_reader-a-review-of-literature-science-and-art_1863-07-04_2_27/…_djvu.txt（首篇全文）；M2-S014 https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Morrison,_Richard_James（直接取回全文，不經摘要工具）",
+      "reopen_result": "頁面上確實寫了：The Reader『In Zadkiel's Almanac for 1861 (published in October, 1860)…A most malefic position is found this month for an eminent character, who was born with the Sun in Virgo 2° 22'…a national loss is now threatened, and that there will be weeping and wailing in high places. No direct mention is here made of Prince Albert; but…may be inferred—so Zadkiel himself has since contended—from another passage…will be very evil for all persons born on or near the 26th August. Among the sufferers I regret to see the worthy Prince Consort of these realms. Let all such persons [pay] attention to their health』『Prince Albert was born on the 26th of August, 1819』『The month mentioned passed, and nothing of the kind…happened』『birthday influences extend all through the subsequent year of life』『1861 is evil for the father of the native. This last passage, it seems, was the prediction』『14th of December, 1861』『Alderman Humphrey』『31st of January, 1862…Who is Zadkiel?…Are there no means of ferreting him out, and handing him up to Bow Street as a rogue and vagabond?』『Admiral Sir Edward Belcher…duly published the next day…a certain old lieutenant of the Royal Navy, named R. I. Morrison…in 1852…The letter appeared anonymously』『The public responded…by a rush to possess the work』『Morrison v. Belcher, Knight』『in plain clothes, but with a couple of medals on his breast』『from 1804 to 1829』『the Earl of Wilton, Sir Edward Lytton Bulwer, a bishop』『It is too solemn a thing, Sir』『only 20s. of damages』『Fiftieth thousand』、五月『I anticipate a general election』、八月 Otho『[This prediction for poor Otho seems a little past date!]』、十月『[Past date again! What on earth has poor Otho now to lose?]』。DNB 全文：『brought in 1863 an action for libel in the court of queen's bench against Admiral Sir Edward Belcher, who in a letter to the Daily Telegraph had stated that the author of Zadkiel is the crystal globe seer who gulled many of our nobility about the year 1852. At the trial, on 29 June 1863…The jury returned a verdict for the plaintiff, with 20s. damages, and the lord chief justice (Sir Alexander Cockburn) refused a certificate for costs (Times, 30 June 1863, p. 13, col. 1, and 1 July, p. 11, col. 4…)』『born 15 June 1795』『died on 5 April 1874』『This six-penny pamphlet…sold annually by tens of thousands, running up sometimes to an edition of two hundred thousand copies』『entered the royal navy in 1806』。誹謗案細節全部在我讀到的頁面上。研究稿的錯：①四月條『倫敦恐有大火』——該處 OCR 是『some [f]earful gas epee or other very serious public accidents in the great city』，讀不出『火』，改成『嚴重的公共事故』；②Otho 不只八月，六、八、十月各一條，評者的『過期』註有兩處；③『顯要人物就是親王』是 Zadkiel 事後主張，原稿寫得像曆書自明；④週刊印『R. I. Morrison』，研究稿的來源摘要寫成 R. J.（DNB 的全名）；⑤DNB 有一句 Belcher 信的原話，研究稿以為『罵人的原話沒讀到』。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.visual",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "兩輪擋住它的缺口（曆書原文）由一份 1863 年週刊的逐字引文補上，引文與判決細節都在重開的頁面上；曆書原本仍沒讀，scope 已寫『兩年後一份週刊照引的原文』。不重複（先前只在 not_added）。8–10 分鐘成立，episode_core。"
+    },
+    {
+      "id": "N2905",
+      "agent": "M2",
+      "reviewer": "R272",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M2-S015 https://archive.org/stream/warprophets0000herb/warprophets0000herb_djvu.txt（第三章 pp.47–67 全章）；M2-S016 https://archive.org/stream/lintermdiaired75pariuoft/lintermdiaired75pariuoft_djvu.txt（LXXV cols.169–170）；M2-S017 https://archive.org/stream/lesfaussesnouvel01grau/lesfaussesnouvel01grau_djvu.txt（pp.323–324）；新讀 M2-S030（Péladan 生卒年）；試讀 Gallica《Le Figaro》1914-09-10 被擋",
+      "reopen_result": "頁面上確實寫了：Thurston『originally published in the Figaro』註『September 10th, 1914, and September 17th, 1914. Cf. also the issue for September 26th』『translated into almost all European languages』『may be said to have dropped from the clouds』『translated from a Latin original written somewhere about the year 1600』；譯文 v.2『a son of Luther』、v.4『a one-armed man…whose motto will be God with us』、v.7『It will not be the war that he will wage against a French sovereign…within a fortnight all the world will be involved in it』、v.11『his lieutenant, the other wicked emperor』、v.12『the curse of Pope Benedict who will be elected at the beginning of the reign of Antichrist』、v.18『Somewhere about the year 2000』、v.20『The black eagle will throw itself upon the cock』；『consisting, like its predecessor, of exactly seventeen paragraphs…as if the prophet three centuries before had foreseen that his vaticinations were going to be published in the form of short newspaper articles』；『found it among his father's papers after the death of the latter, which took place in 1890…a Premonstratensian monk of S. Michel de [F]rigolet, near Tarascon…an Abbé Donat…at Beaucaire』；『some thirty odd volumes』；『(j'ai trouvé à la traduire et à l'éclaircir). Later…(je n'ai fait que serrer un peu l'expression)』『the great monarch, the offspring of the lilies』『bitterly regretted not having struck out all mention of the present Pope, the religio depopulata of St. Malachy』；『Of the trench fighting…of the blockade by submarine…not a word is said; even Belgium is not so much as mentioned…Antwerp was still deemed impregnable』；『a hoax or a mauvaise plaisanterie…it may have been fabricated to deride rather than to mislead』；Curinier『born at Lyons 20 October, 1859』。L'Intermédiaire『C'était une simple fumisterie, ou du moins une vieille vaticination sans valeur, mise au point et cuisinée par M. Peladan, pour impressionner les esprits après la bataille de la Marne』『deux colonnes du Figaro du 10 et du 17 septembre 1914…un moine de Frigolet…un peu serré l'expression』『la limite des précisions…est la limite même des faits connus à la première quinzaine de septembre 1914』。Graux『Elle a fait le tour de la presse vers le second mois de la guerre』，腳註 Bloy『elle a le double défaut d'être trop précise et surtout d'être présentée par Peladan』。研究稿的漏與錯：①漏掉 Thurston 自己的結論——『It is probable enough that he found among his father's papers some rather lurid prediction concerning Antichrist…』『From the evidence of a certain Madame Faust it is clear enough that more than twenty years ago M. Péladan was accustomed to deliver some such Prophecy of the Twentieth Century as a recitation』『a hastily elaborated recension of the old Antichrist prophecy, adjusted to modern conditions』『There is not a scrap of evidence…that any one of the really significant features…is older than the declaration of war in August, 1914』，以及腳註指出的改編痕跡（v.7 只合 Wilhelm I、v.18 的 2000 年）；所以答案是『舊稿被改到對上時局』，不是『1914 年寫的』；②『另一位快死的皇帝』是 Thurston 的摘述，譯文作『his lieutenant, the other wicked emperor』；③研究稿說 Péladan 卒年沒讀到——法文維基文庫作者頁『(1858–1918)』，1918 年卒，可畫（生年與 Curinier 的 1859 不一）。《Le Figaro》原報：gallica.bnf.fr 回 403 驗證頁，沒有繞過，仍沒讀到。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "判斷：不是 N190／N2842 的重複，也不降為章，獨立成集。理由：案子、年代、證據都不同，且有三個不靠補料的獨有轉折（編者前後兩種說法、字面上的舊痕跡、評論者認為是舊稿改編）；wave21 不收 Orval／Lehnin 是因為沒讀到不同的答案。不收清單：一戰的戰時宣傳品不是今天兩國還在爭的事；敵基督與教宗只當文本情節、不評論教義（比照 N190）；敵意段落不念，scope 已逐句列出。最弱的一點：原報兩位都沒讀到，正文與 Péladan 的說法靠 Thurston 的譯文與引文（要點另有兩份法文來源佐證），寫稿前必須對原報或在旁白說明。8–10 分鐘成立，episode_core。"
+    },
+    {
+      "id": "N2906",
+      "agent": "M2",
+      "reviewer": "R272",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M2-S018 https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cicero/de_Divinatione/1*.html 與 2*.html；M2-S019 https://www.thelatinlibrary.com/valmax8.html；M2-S020、M2-S021（LacusCurtius 的 Suetonius Julius 與 Plutarch Caesar）；M2-S022 Gutenberg #1522；新讀 M2-S026–S007（年代）；另讀池中 S39 的製作檔 docs/videos/history-curiosity/remake-20261020/curio-s39/video.json",
+      "reopen_result": "頁面上確實寫了：Cicero I.119『While he was offering sacrifices on the day when he sat for the first time on a golden throne and first appeared in public in a purple robe, no heart was found in the vitals of the votive ox…Caesar was unmoved by this occurrence, even though Spurinna warned him to beware lest thought and life should fail him—both of which, he said, proceeded from the heart. On the following day there was no head to the liver…These portents were sent by the immortal gods to Caesar that he might foresee his death, not that he might prevent it』（無日期）；II.37『I suspect that the bull's heart, as the result of a disease, became much wasted and shrunken…Don't you think, rather, that the bull lost his heart when he saw that Caesar in his purple robe had lost his head?』；II.23『in Pompey's hall, aye, before Pompey's very statue』。Val. Max. 8.11.2『praedixerat C. Caesari ut proximos xxx dies quasi fatales caueret, quorum ultimus erat idus Martiae. eo cum forte mane uterque in domum Caluini Domiti ad officium conuenisset, Caesar Spurinnae ecquid scis idus iam Martias uenisse? at is ecquid scis illas nondum praeterisse?』。Suet. 81『the soothsayer Spurinna warned him to beware of danger, which would come not later than the Ides of March』『laughing at Spurinna and calling him a false prophet…they had of a truth come, but they had not gone』，77『They will be more favourable when I wish it; it should not be regarded as a portent, if a beast has no heart』。Plut. 63『but Strabo the philosopher says…the heart of the victim was not to be found…The following story, too, is told by many. A certain seer warned Caesar to be on his guard against a great peril on the day of the month of March which the Romans call the Ides…Well, the Ides of March are come…Ay, they are come, but they are not gone』。莎劇 I.ii『Beware the Ides of March』（占卜師兩次、Brutus 轉述一次）、III.i『The Ides of March are come.／Ay, Caesar; but not gone.』。年代（研究稿缺的）：Falconer 導言註 1『René Durand…takes the view (now generally accepted) that this work was wholly written…prior to Caesar's death, and after that event revised and published. The translator…feels convinced that the latter part of Book I and all of Book II were written after March 15, 44 B.C.』；EB1911『VALERIUS MAXIMUS…flourished in the reign of Tiberius…whom he accompanied to the East in 27』『SUETONIUS…his literary work seems to have been chiefly done in the reigns of Trajan and Hadrian (A.D. 98-138)』『PLUTARCH (c. A.D. 46–120)』。S39 製作檔：全片旁白沒有 Spurinna 與『Ides 到了』的對話，預兆只有一句『蘇埃托尼烏斯…也提到不利的祭兆』。研究稿的錯：①把 Plutarch→Suetonius 寫成『往前追』，兩人是同時代人，不能排先後；『慢慢變成』的直線演變也說得太滿；②西塞羅的玩笑譯成牛『昏了頭』，原文昏頭的是凱撒；③莎劇第三幕漏了占卜師的回話；④沒有心的祭牲 Plutarch 註明出自 Strabo。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
         "source_locator",
         "editorial.payoff",
         "editorial.minutes",
@@ -97,322 +280,165 @@
         "notes"
       ],
       "duplicate_of": "",
-      "reason": "案子與 N2421 不重複，但核心問題相同，是 N2421 的同核心兄弟題；素材照算約 22 條事實、7.5–9 分鐘，可單獨成集排在 N2421 前，不必降成章節。改掉三處研究者推論（Wells 改名、Flammarion 的名字、Lowell『最相信火星人』），標題的『全美報紙』改成 Lowell 的敘述。"
+      "reason": "前提成立、五份原文逐句對上、年代已在可讀頁面補齊。與 S39 不重複也無章可接（S39 是成片，內容是遺言考證，沒講 Spurinna）：獨立成集，不連著上架、不重講遇刺經過。素材足 8–9.5 分鐘，由 7–9 上調，episode_core。"
     },
     {
-      "id": "N2804",
-      "agent": "K1",
-      "reviewer": "R261",
-      "verdict": "NEEDS_CHECK",
-      "key_source_reopened": "K1-S015 https://www.loc.gov/resource/sn83045462/1926-10-28/ed-1/?sp=1；K1-S016（1926-10-29 p.26）；K1-S017（11-06 p.6）；K1-S018（1928-10-25 p.7）；K1-S019（1928-10-23 p.8），都讀 OCR 全文",
-      "reopen_result": "五則的引句與數字都對得上：『In return for a payment of 72 cents the British government has done its best to send a message to Mars』『prefixed with three M's…the call sign for Mars』『two words』『No known language』；『a London attorney, who became a telepathist years ago』『Oomaruru, a woman』『delivery could not be guaranteed…at \"the sender's risk\"』；1928：『1 shilling 6 pence per word. It is purely a matter of business to them』『18,700-meter wave length』『30,000-meter』、妻子的話轉引《Evening Standard》；社論『Dr. Hugh Mansfield Robinson…by the powerful Rugby radio station, and wait half an hour』『\"Love to Mars\" and \"God is Love\"』。問題在來源結構：五則都在同一份報紙，事實全部出自美聯社倫敦電，沒有英國報紙、郵政檔案或第二家通訊社。覆核搜尋到 Papers Past 的幾則紐西蘭報紙電訊（摘要顯示 1926 年那次是午夜由 Rugby 發出、按遠程船舶費率），但該站擋自動讀取（WebFetch 回空頁），沒讀到；loc.gov 搜尋第二份美國報紙逾時。",
+      "id": "N2921",
+      "agent": "M3",
+      "reviewer": "R273",
+      "verdict": "REJECT",
+      "key_source_reopened": "M3-S001 https://www.gutenberg.org/cache/epub/2272/pg2272.txt；M3-S002 https://www.gutenberg.org/cache/epub/7254/pg7254.txt（第 3.25 章）；M3-S003 https://archive.org/download/discoverylarger00schogoog/discoverylarger00schogoog_djvu.txt（導言）；新讀 M3-S027 國際法院案件頁",
+      "reopen_result": "事實面大致對得上：Raleigh 寫『a lake of salt water of 200 leagues long, like unto Mare Caspium』，全書沒有 Parime 這個湖名；Humboldt 引 Keymis『a lake, which the Jaos call Roponowini, and the Caribbees Parime…and I suppose…that this lake is no other than that which contains the town of Manoa』，寫 Hondius『as early as the year 1599』把 Rio Branco 與 Rupunuwini 之間的地峽畫成『two hundred leagues long, and forty broad』的內海，D'Anville 1748 年初版沒畫、1760 年第二版畫回，Caulin『nothing more than a river』，1818 年維也納地圖都在頁面上。但決定性的是另外幾行：Humboldt 的答案把這座湖定在『lake Amucu』與『the isthmus between the Rupunuwini (a tributary stream of the Essequibo) and the Rio Parima or Rio Branco』，也就是 Essequibo 河以西的 Rupununi 草原；同一章他還寫 Cuyuni 河是『an excellent natural boundary between the territory of Caracas and that of English Guiana』。Schomburgk 的導言開頭就自稱『As Her Majesty's Commissioner to survey the boundaries of British Guiana, I explored in 1841…』，『There is no inland sea in existence』那一段的依據是『our eight years' wanderings in Guiana between the years 1835 and 1844』，正文另有『the Boundary Expedition』字樣：研究稿的第三個轉折，本身就是劃界測量的成果。國際法院頁面列出 2026 年 5 月 4–11 日『Arbitral Award of 3 October 1899 (Guyana v. Venezuela)』的實體庭訊，案子還在審。另有一處小錯：題目說 Parime 這個名字是 Raleigh 出書『隔年』記下的，Raleigh 的書與 Keymis 的航行同在 1596 年。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "碰不收清單『今天兩國還在爭的事』，比照 N2782（Pepys 島）與 N1363。照最嚴的標準逐項試過：一、拿掉 Schomburgk，第三個轉折（實地走過、寫下『沒有內海』、1844 年紐約又有人畫回去）整段消失，結尾只剩 Humboldt 的抱怨。二、就算停在 Humboldt，答案本身仍是地點：湖是 Amucu 小湖加上 Rupununi 與 Rio Branco 之間草原的雨季氾濫，Keymis 的路線是『溯 Essequibo 二十天』，這一帶正在 Essequibo 河以西、委內瑞拉主張而蓋亞那管轄的範圍內；畫面也免不了那片草原與那條河。不講地點，題目就只剩『有一座湖在地圖上忽有忽無』，沒有答案。三、材料本身就是劃界的材料：Humboldt 同一章談 Caracas 與英屬圭亞那的天然界線，Schomburgk 以劃界專員的身分寫這篇導言，以他命名的那條線是 1899 年裁決與今天訴訟的核心；國際法院 2026 年 5 月才開完實體庭訊。scope 寫『不畫現代國界、不提 Schomburgk 線』擋不住，觀眾一查 Essequibo 或 Schomburgk 就到爭議。研究稿去重無誤（最近的 N661 是瓜塔維塔湖，不同案），事實也大致可靠，否決理由只在這一條；等訴訟結束、兩國不再爭，可以原樣重新評估。"
+    },
+    {
+      "id": "N2922",
+      "agent": "M3",
+      "reviewer": "R273",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M3-S004 https://archive.org/download/archaeologia-tracts-relating-to-antiquity_1906_60/archaeologia-tracts-relating-to-antiquity_1906_60_djvu.txt（pp. 93–110）；M3-S005 p. 378；新讀 M3-S020（Hardy 1835 年行程表）",
+      "reopen_result": "頁面上確實寫了：『crowned at Gloucester in 1216 with a golden circlet, because the crown of King John his father had been lost』是 Hope 轉述『many a popular History of England』；Coggeshall 拉丁文『capellam suam cum suis reliquiis, et quosdam summarios suos cum varia supellectili…amiserat apud Wellestrem…aestu maris nondum recedente』；Wendover『carretas omnes, bigas et summarios, cum thesauris, vasis pretiosis…ita quod nec pes unus evasit qui casum regi nuntiaret』；Matthew Paris《Historia Anglorum》『transire sine duce praesumpsit』，Hope 說這部書『not written until after 1250』；『from Sunday, 9th October, to Tuesday, the 11th…on the 12th he was at Wisbech, and later in the same day at Swineshead Abbey』；Reid 的『Low water about 12 noon. High water about 6 p.m.』；1607 年對開本插入 Fossdyke；Giles 譯本『surfeited himself with peaches and drinking new cider』。對不上或漏掉的：一、Hope 寫的是『I suggest』國王繞道，並寫『it is by no means improbable that he himself witnessed it while awaiting the landing of the train on the Lincolnshire side』，研究稿題目卻說國王『根本不在那片沙灘上』；二、Hope 明寫三份編年史『Both, however, are agreed as to the total loss of the train』，『層層加碼』是研究代理自己的對照（原文的 quosdam 對 omnes 確實支持，但要標明）；三、第二位計算者 Roberts 算出高潮 6:30，且說 10 月 12 日『would have been the best time for crossing under normal weather』，研究稿沒寫。Hardy 行程表的地名順序『King's Lynn ×3、Wisbeach. Swineshead.、Swineshead、Sleaford』與 Hope 一致。",
       "changed_fields": [
+        "question",
+        "answer_target",
         "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "去重乾淨，核心（三份編年史原文的差別、公文行程）在一手拉丁引文與兩份行程來源上站得住，8.5–10 分鐘合理。改掉題目與 payoff 對『國王不在場』的過度斷言，補潮汐的第二個算法與『當天其實適合渡過』，標明哪些是 Hope 的推論、哪些是本頻道的文本對照。現代史家的評估仍沒讀到（History Today 回 403，Jenkinson 1923、Holt 在付費期刊），寫進 scope 當上稿前必補，不影響收題。"
+    },
+    {
+      "id": "N2923",
+      "agent": "M3",
+      "reviewer": "R273",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M3-S006 https://www.gutenberg.org/cache/epub/6749/pg6749.txt（第 5 章與註 104）；M3-S007（pp. 9–18）；M3-S008（pp. 169–170、186）；M3-S009 https://www.americanheritage.com/longest-walk-david-ingrams-amazing-journey（直接抓原頁逐字讀）；新讀 M3-S021、M3-S022（Ingram 供述兩份手稿印本）、M3-S023（Quinn 的傳記條目）",
+      "reopen_result": "Champlain 的三句都在：『I am confident that most of those who mention it have not seen it, and speak of it because they have heard persons say so, who knew no more about it than they themselves』『But that any one has ever entered it there is no evidence』『there are none of the marvels there which some persons have described』，註 104 引 Lescarbot『I would fain know who hath pulled it down』。De Costa：『Aranbega』1529、Dieppe 船長 1539、Gastaldi 1556、Purchas『the reward of lying being not to be believed in truths』都在。Horsford：扉頁 1889 年 11 月 21 日、『a Tower in Weston, at the junction of Stony Brook with the Charles』、Whittier 1889 年 10 月 30 日信『I am glad to think of it as on the Charles, in our own Massachusetts』、『two or three Algonquin roots』都在。American Heritage 原頁：Quinn 引文是『appears to be impossible』與『The basic fact of his journey and survival, however, is little open to question』，出自 Quinn、Cumming、Skelton 合著的書；全文沒有 Norumbega 或 Bega 這兩個字。關鍵改正在 Ingram 自己的話：兩份手稿印本都是『Bega a countrie & a towne of that name thre quarters of a myle, ther are good store of oxe hides』，『Norumbege』只出現在『The Canniballs do most inhabite between Norumbege and Barmiah』，銀與水晶柱子寫的是『banquetting howses in the topp of them』；沒有『Norumbega 城，又叫 Bega』。那是 De Costa 的接法（M3-S008：『He also says that he saw the city of Norumbega, called Bega』）。『坐水晶椅的國王』在讀到的頁面上沒有核到。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "去重乾淨。研究代理標成未定的問題（Ingram 有沒有說 Norumbega）覆核讀手稿印本後有了答案，而且讓題目更好：『目擊者』說的是另一座鎮，城是後人接上去的。同時把 Quinn 改成兩面並列（合著書裡較寬、傳記條目裡『lied in things greater or smaller』），刪掉沒核到的『水晶椅』。Horsford 的批評者仍沒讀到，scope 已限定不下『被否定』的結論。9–11 分鐘合理。"
+    },
+    {
+      "id": "N2924",
+      "agent": "M3",
+      "reviewer": "R273",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M3-S010 https://archive.org/download/notesofbotanisto21908spru/notesofbotanisto21908spru_djvu.txt（pp. 489–516）；M3-S011、M3-S012 兩頁直接抓原頁逐字讀；新讀 M3-S024（Spruce 1861 年原刊）",
+      "reopen_result": "Spruce 的原話都在：『The whole story seemed so improbable that I paid little attention to it』『I obtained, however, indisputable evidence』『whence they disappeared about twenty years ago. So many people were admitted to copy them that at last some one, not content with a copy, carried off the originals. I have secured a copy of the Derrotero, bearing date August 14, 1827; but I can meet with no one who recollects the date of the original documents』；指南開頭『a lake, made by hand, into which the ancients threw the gold they had prepared for the ransom of the Inca when they heard of his death』；Guzmán『died about 1806 or 1808』、找到的是『silver and copper mines, which had been worked in the time of the Incas』。研究稿漏掉的一段：Wallace 評註的結論是『I am convinced that the ‘Route’ of Valverde is a genuine and thoroughly trustworthy document』，並說有心人『may still』解開寶藏問題。國家地理原頁：『If his writings are to be believed, Blake was the last person to find the gold』『It's an open question whether Valverde ever existed, Reinhard added』都在，另寫 Valverde 的事在 Atahualpa 死後『some 50 years』、黃金『buried in a secret mountain cave』。El Comercio 原頁：Rumiñahui 丟金入湖一段註明『según recoge la página Lugares Turísticos Perú』，Spruce 刊於 1860 年一句註明『según se recoge en la web Von24』，López『es más una leyenda que una realidad…no hay evidencia concreta』在。原刊：Journal of the Royal Geographical Society 第 31 卷 p. 163『Read March …, 1860』。錯處：鉤子說『抄本沒有年份』，抄本明明有日期，沒人記得的是原件的日期。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "去重乾淨（Paititi 是另一案）。主幹全在 Spruce 一手文字上，覆核補到原刊，四個轉折夠 8–9.5 分鐘。改正鉤子的事實錯誤與 payoff 的過度斷言，補 Wallace 相信指南這個研究稿沒寫的轉折（否則等於只挑了懷疑的一面），把 Rumiñahui 版本降成『報紙引旅遊網站』。兩份現代來源偏通俗，scope 已限定用途；Rumiñahui 何時進入故事仍缺，題目不靠它。"
+    },
+    {
+      "id": "N2925",
+      "agent": "M3",
+      "reviewer": "R273",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M3-S016 https://archive.org/download/coronadoexpediti00winsrich/coronadoexpediti00winsrich_djvu.txt（pp. 355–368、483、558–563）；M3-S017 https://archive.org/download/hemenwaysouthwe00bandgoog/hemenwaysouthwe00bandgoog_djvu.txt（pp. 160–162、171–172、176）；另讀池中 N1424 全文比對",
+      "reopen_result": "頁面上確實寫了：Marcos『the settlement is larger than the city of Mexico』『But finally I feared, considering the danger, and that if I should die there would be no knowledge of this land』『I was told that there is much gold there』；1539 年 9 月 2 日在 Compostela 宣誓；哈瓦那 1539 年 11 月 12 日七位證人與理髮師女婿（『having silversmiths, and that the women wore strings of gold beads』）；Castañeda『such were the curses that some hurled at Friar Marcos that I pray God may protect him from them』『crumpled all up together』；Coronado『he has not told the truth in a single thing that he said, but everything is the reverse of what he said, except the name of the city and the large stone houses』『The Seven Cities are seven little villages』『perhaps 200 houses』『it does not appear to me that there is any hope of getting gold or silver』；Cortés 的上書標題是 1540 年 6 月 25 日，Winship『so far as is known it was never substantiated』『Friar Marcos was not a liar, but it is impossible to ignore the charges against him quite as easily as Mr Bandelier has done』。Bandelier 的原話是『How many people did the young city of Mexico, founded as a Spanish town in 1524, contain fifteen years after its foundation? Hardly one thousand!』，結論是『implies not the least wilful exaggeration』。對不上的：研究稿題目與 payoff 說那句話『可能是真的』，兩位學者主張的只是不算存心誇大；Coronado 的信寫明『Three days after I captured this city』，不是『走到城下』；信上是 200 houses，不是 200 戶。N1424 的答案是七城島傳說的年份與 1424 年海圖上的 Antilia，與本題沒有重疊的文本或轉折。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial.payoff",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "與 N1424 不同案（一個是大西洋上的島與海圖，一個是 1539 年的報告與 1540 年的現場），可排成上下集。不碰不收清單：不替征服下評價，『他有沒有走到』是學術分歧不是兩群人之爭；Zuni 是現存社群，scope 已限定遠景、不評信仰、不稱『失落的城』，並把『攻下村子』照實用一句話交代而不展開戰事。改掉對 Bandelier 論點的過度引申。9–11 分鐘合理。21 世紀研究（Flint 夫婦）仍沒讀到，列為上稿前必補。"
+    },
+    {
+      "id": "N2926",
+      "agent": "M3",
+      "reviewer": "R273",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M3-S013 https://www.gutenberg.org/cache/epub/9878/pg9878.txt；M3-S014（pp. 208–211）；M3-S015（Results 與 Funding）；新讀 M3-S025（Camden 1587 年版）、M3-S026（William of Worcester 筆記 1778 年印本）",
+      "reopen_result": "Carew：『the encroaching Sea hath rauined from it, the whole Countrie of Lionnesse…in Cornish Lethowsow…fortie or sixtie fathom…Fishermen also casting their hookes thereabouts, haue drawn vp peeces of doores and windowes』在。Hunt：『No less than 140 churches』、Whitaker『reduce the number from 140 to 40』、草藥湯與念咒、Trevilian 靠馬逃出都在；但 Hunt 寫的是『The Saxon Chronicle says the Lionesse was destroyed on the 11th of November 1099』，緊接著抄的 Florence 譯文卻是『On the third of the Nones of November (1099)』，兩個日子不同，研究稿沒有點出；讀到的頁面沒有『白馬』。Barnett 2020：『as late as 12 ka, Scilly was a single island』『remained a single land mass until the start of the Late Holocene (4.2 ka to present)』『(−36%)』『during the past 1000 years』與 Lyonesse Project 都在。研究稿標成沒讀到的兩項，覆核讀到了：Camden 1587 年版『Terramque ibi infuso mari adopertam, Lionesse, ex nescio qua fabula dictam fuisse asseverant』（比 Carew 早）；William of Worcester『fuerunt 140 ecclesiae parochiales inter istum montem et Sylly submersae』（沒有 Lyonesse 這個名字，地點是 St Michael's Mount 到 Scilly）。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
         "premise_status",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "缺：美聯社以外的獨立來源（英國報紙、BT Archives 的郵政紀錄，或另一家通訊社的電訊）；1926 年是否由 Rugby 發出、費率多少，搜尋摘要與研究稿的 scope 有出入，要讀到頁面才能定。轉折也弱（郵局照章收費），4–5.5 分鐘不成集；補到來源後建議做 Shorts，或當 N2803／N2421 的一段尾聲，不佔長片名額。"
-    },
-    {
-      "id": "N2805",
-      "agent": "K1",
-      "reviewer": "R261",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K1-S021 https://www.loc.gov/resource/sn82014248/1915-02-16/ed-1/?sp=14（Borden 的國會答覆與第二晚）；K1-S020、K1-S022、K1-S023、K1-S024 的 OCR 全文",
-      "reopen_result": "Kennebec Journal：『Despite the report from Brockville today that the Dominion police there believed two toy fire balloons had been mistaken for searchlights on aeroplanes…every precaution against an aerial raid was taken here tonight. The Canadian Parliament met with windows darkened and with the Parliament grounds in absolute darkness. No lights were shown at the Royal Mint or at Rideau hall』『\"Last night at nine,\" replied the premier, \"I was called on the telephone by the mayor of Brockville, who told me that three aeroplanes had been seen to cross the St. Lawrence river…one of them played a searchlight upon Brockville which had strongly illuminated the streets for some time. I at once gave the information to the military authorities.\"』『a considerable force of troops…mobilized at Ottawa to train for service in Europe was held in readiness to fire upon any air craft』，對得上。Times-Dispatch：『at 10 o'clock to-night three aeroplanes were seen』『about sixty miles due south of Ottawa』『came from the chief of police…three or four aeroplanes…after dropping light balls』『At 11 o'clock…street lights of Ottawa turned out』『For the first night in its history, the Royal Mint was in darkness』，下一則就是齊柏林空戰戰報。Brattleboro：『shortly after 8 o'clock last night they sent up three fireworks balloons, each of which exploded high in the air above Brockville』（OCR 作 S o clock）。Harrisburg（AP）：『After an all-night watch…of the opinion to-day that the report was unfounded』『chief of police of Ogdensburg…twelve miles down the St. Lawrence』『on Friday last a farmer』。Arizona Republican（AP）：『two toy balloons』『tower light extinguished…grounds, which are usually ablaze, in absolute darkness』。研究稿的出入：鉤子『首都連續兩個晚上熄燈』——第二晚讀到的只有國會、國會山、鑄幣廠與總督官邸，沒有街燈；氣球三個與兩個兩種說法只取了三個。加拿大 Hansard：lipad.ca 回 403，沒讀到。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "事實由至少兩個不同發稿地（渥太華、Ogdensburg）與美聯社、專電互相對上，不是今天還在爭的事。4.5–6 分鐘只能當章節：接 U23（與 U03 同在 T06），排第一章正好補足 T06 原本不足 10 分鐘的問題。"
-    },
-    {
-      "id": "N2806",
-      "agent": "K1",
-      "reviewer": "R261",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K1-S028 https://www.history.com/articles/americas-first-ufo-sighting（curl 取回原頁逐段讀，不經摘要模型）；K1-S027 https://archive.org/download/historyofnewengl01wint_0/historyofnewengl01wint_0_djvu.txt（Savage 1825，p.290 正文與腳注 2、3）；K1-S025、K1-S026（Hosmer 1908 兩卷）",
-      "reopen_result": "Savage 1825 版正文逐字：『In this year one James Everell, a sober, discreet man, and two others, saw a great light in the night at Muddy River. When it stood still, it flamed up, and was about three yards square; when it ran, it was contracted into the figure of a swine: it ran as swift as an arrow towards Charlton, and so up and down about two or three hours. They were come down in their lighter about a mile, and, when it was over, they found themselves carried quite back against the tide to the place they came from. Divers other credible persons saw the same light, after, about the same place.』（頁眉 1638，Hosmer 版同文）。腳注 3：『This account of an ignis fatuus may easily be believed on testimony less respectable than that which was adduced. Some operation of the devil, or other power beyond the customary agents of nature, was probably imagined by the relaters and hearers of that age, and the wonder of being carried a mile against the tide became important corroboration of the imagination. Perhaps they were wafted, during the two or three hours' astonishment, for so moderate a distance, by the wind; but, if this suggestion be rejected, we might suppose, that the eddy, flowing always, in our rivers, contrary to the tide in the channel, rather than the meteor, carried their lighter back.』研究稿對原文與腳注的轉述都對。History.com 原頁：『The Puritans were the first to record strange shining lights in American skies』『saw a great light in the night sky』『stunned to find themselves one mile upstream—as if the light had transported them there. The men had no memory of their rowing against the tide, although it's possible they could have been carried by the wind or a reverse tidal flow』；綁架那句是引文：『\"The mysterious repositioning of the boat could suggest that they were unaware of part of their experience. Some researchers would interpret this as a possible alien abduction if it happened today,\" write Jacques Vallee and Chris Aubeck in Wonders in the Sky』；文章自己也寫了鬼火（但說光『shooting across the sky』所以不像）、1644 年的光與喊聲，並寫『Unlike the 1639 UFO, Winthrop had an explanation』，把光連到 Chaddock 的船與會招魂的水手，說船『had exploded months earlier』、死五人。Hosmer vol. II：爆炸條目是 1644 年『(January) 2』（八人在船、五人死），光是 1 月 18 日，相隔 16 天，不是幾個月；『These prodigies having some reference to the place where Captain Chaddock's pinnace was blown up a little before, gave occasion of speech of that man…professed himself to have skill in necromancy…this man was never found』，對得上。研究稿的錯：①把綁架解讀寫成文章自己的話，其實是引一本書（作者在世，不入畫）；②把『Winthrop 自己連到沉船』當成第二個轉折，但流傳版本那篇文章本身就寫了；③『一週後兩道光在 Nottles Island』——一週後的是『一道像月亮的光』與前一道相合。",
-      "changed_fields": [
-        "question",
-        "answer_target",
-        "scope",
-        "source_locator",
-        "editorial.payoff",
         "editorial.minutes",
-        "risk",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "原文與 1825 年腳注逐字對上，流傳版本重讀後改寫。答案類型與 N844／N623／U24／N507 相同，不能獨立成集、也不另開同型單集；但與 N2681 回答同一個更窄的問題（『第一宗綁架』的被帶走情節是哪一步加的），只收作 N2681 的一章（4–5.5 分鐘）。若主線認為同型題已經太多，可降為 N2681 結尾一句旁證。"
-    },
-    {
-      "id": "N2821",
-      "agent": "K2",
-      "reviewer": "R262",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K2-S001 https://archive.org/stream/greatseaserpenth00oude/greatseaserpenth00oude_djvu.txt（no. 118 全段）；K2-S002 https://archive.org/stream/zoologist06lond/zoologist06lond_djvu.txt（p. 2306–2307 與序）；另讀到研究代理沒讀到的 https://skepticalinquirer.org/2015/09/the-1848-enormous-serpent-of-the-daedalus-identified/（K2-S019）",
-      "reopen_result": "頁面上確實有：10 月 9 日消息（下午四點、60 呎＋33–40 呎、『full of large jagged teeth』、高個子站直）；艦長 10 月 11 日回函（寫給 Admiral Sir W. H. Gage；『no fins』『never… once below the surface』『had it been a man of my acquaintance…』）；Drummond 摘錄（『a most remarkable fish』『head, which, with the back fin, was the only portion… visible』『perhaps one hundred yards distant』『disappearing occasionally beneath a wave』），但同一段也寫『in fact it gave one quite the idea of a large snake or eel』，顏色（dark brown／brownish white）與艦長一致；Newman 序寫兩份『essentially corroborate』。Owen 原句是『no vertebra of a serpent larger than the ordinary pythons and boas in any museum in Europe』。1858 年軍官寫『not more than two hundred yards』『about ten minutes』『rather of a lizard than a serpentine character』，研究稿漏了。Galbreath 2015 讀得到：塞鯨、Drummond 兩幅素描 1997 年才發表、艦長『認得出臉』是誇大。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
         "editorial.payoff",
         "editorial.visual",
         "risk",
         "notes"
       ],
       "duplicate_of": "",
-      "reason": "事實大致正確，但鉤子與 payoff 把兩份紀錄的差別說成『兩種不同的動物』，與 Drummond 自己的『像大蛇或鰻魚』及主編當年的讀法不合，已改成可逐字對上的三處差異；補 1858 年軍官的第三個距離數字；補上讀到的 2015 年塞鯨說（原稿只有未讀的索引）；改正 Owen 引語與『最可靠』。去重：無同案，與 N2684 同類不同案。片長 8.5–10 分鐘可信。"
+      "reason": "研究代理標 needs_check 的理由是 Camden 沒讀到、William of Worcester 是三手；覆核兩份都讀到原文，題目因此換了起點（Carew 不是讀到的最早，Camden 1587 才是，而且 Camden 自己說名字出自『不知哪一則傳說』），premise_status 改為 screened。加上這兩份材料後照素材估 8–9.5 分鐘，過門檻，不必降成章節。仍缺 1586 年初版與 Tristan 傳奇的關係，scope 已把說法限定在『目前讀到最早』並禁止提 Tristan。"
     },
     {
-      "id": "N2822",
-      "agent": "K2",
-      "reviewer": "R262",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K2-S004 https://pubs.usgs.gov/bul/0494/report.pdf（pp. 17、29–31、42–43、58–59、89–91，pdftotext 全文）；K2-S005 https://www.memphis.edu/ceri/compendium/pdfs/bryan.pdf 與 K2-S006 …/speed.pdf（轉成圖逐頁讀）；K2-S007 USGS 摘要頁；新讀 K2-S020／S003／S004",
-      "reopen_result": "Fuller 頁面上確實寫：Shaler『says of the experiences of a friend』——『the boat hurried up, for about the space of a minute, with the velocity of the swiftest horse』『a most terrific fall… at least 6 feet perpendicular, extending across the river』『He waited five days for the fall to wear away』；『That waves of great size moved upward against the current is certain, and that the movement of the water was retrograde for the moment, at least in shallow water, is probable』；『The vibration of St. Philip's steeple caused the clock bell to ring about 10 seconds』；『not very noticeable farther north, although reported at Baltimore and even at Boston』；全文沒有波士頓的鐘。Bryan 掃描頁：『the current of which was retrograde for a few minutes, owing as is supposed, to an irruption in its bed』。Speed 掃描頁沒有倒流，有『dreadful rapid or falls』『about equal to the rapids of the Ohio』『about 7 miles below N. Madrid』，署 March 2d, 1812。USGS 頁：『gave the illusion that the river was flowing upstream』。History.com 寫『run backward for several hours』『Church bells rang in Boston』『approximately 1,000 people died』。Scientific American 2010：Hough 說『Boston newspapers carried no mention of such an occurrence』，推測與 Charlestown 混淆，震級降到約 7。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "editorial.payoff",
-        "risk",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "一手紀錄與研究稿逐句對得上（含兩份純影像掃描）。改正題目裡把 Shaler 的友人寫成『船主的朋友』；補上研究代理缺的『流傳版本長什麼樣、誰說波士頓的鐘不成立』三個可讀來源；震級並列兩種估值；人命補 Bryan 與 Shaler 的河上紀錄。去重：無同案。片長 8.5–10.5 分鐘可信。"
-    },
-    {
-      "id": "N2823",
-      "agent": "K2",
-      "reviewer": "R262",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K2-S008 https://pubs.usgs.gov/circ/1971/0646/report.pdf（pdftotext 全文）；K2-S009 https://skeptoid.com/episodes/4226；新讀 K2-S023（Nickell 2016）、K2-S024（Mansfield 生卒年）",
-      "reopen_result": "Mansfield 頁面上確實寫：『the first published account… dispatch from Linville Falls to the Charlotte Daily Observer, dated September 23, 1913』『more than two years ago』；Gaither『1908 or 1909』；Millner『never heard of them until 1910』；Sherrill『from 1909 to 1912… At no time… did I see a light or hear of one』；Harris『there is a record… since and before the days of the Civil War』；同段還有研究稿漏掉的『R. T. Claywell… says that people used to come to Burke County 60 years ago to see the lights』；Joseph Loven『moved to his present home by Loven's Hotel』（不是旅館主人）；1913 年是『Representative E. Y. Webb』要求；洪水『for several weeks no trains came within 40 or 50 miles』；『Neither the Weather Bureau nor the National Geographic Society… had sent an investigator』；『About 47 percent… automobile headlights, 33 percent to locomotive headlights, 10 percent to stationary lights, and 10 percent to brush fires』；『Automobiles were then in use in the larger towns and on some of the intervening roads』；『no one has actually observed the light on Brown Mountain when he himself was on that mountain』。全文無 Cherokee、de Brahm。Skeptoid：『unable to find any reference to such a belief outside of publications about the Brown Mountain Lights』。Nickell：解說牌的 1200 年 Cherokee 之戰『no historical record is cited』；最早見報他寫 9 月 13 日（與 Mansfield 不同）。Archives West：Mansfield, George Rogers, 1875-1947。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "editorial.payoff",
-        "editorial.visual",
-        "risk",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "與 M10 不同案、答案類型相同：不判重複，但把主軸改成本題獨有的『調查翻轉』，並注明不與 T02 同批上架、不塞進已滿的 T02。事實改正：補上被漏掉的反方證詞（Claywell）、Loven 的身分、沒有出處的鉤子、研究者自己的『正好對上』。傳說一節由一個通俗來源增為兩個，仍無一手，scope 已限縮。Mansfield 1947 年過世，可入畫。片長 8–9.5 分鐘可信（報告本身素材很足）。"
-    },
-    {
-      "id": "N2824",
-      "agent": "K2",
-      "reviewer": "R262",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K2-S010 https://archive.org/stream/edinburghnewphil13edin/edinburghnewphil13edin_djvu.txt（pp. 26–32 全文）；K2-S011 https://www.gutenberg.org/cache/epub/32800/pg32800.txt（第四章）",
-      "reopen_result": "Buckland 頁面上確實寫：『On the 26th of November 1825, one live toad was placed in each of the… twenty-four cells』『smallest was 115 grains, and of the largest 1185』『unopened until the 10th of December 1826』『No. 5… 1185… now weighed 1265… glass… slightly cracked』『No. 9… 988… increased to 1116 grains, and the glass over it was entire; but as the luting… was not particularly examined, it is probable there was some aperture』『there is a defect in these experiments… caught more than two months before… unhealthy and somewhat meagre』『examined several times during the second year through the glass covers… without removing them… always awake with their eyes open』『they are not decisive to shew…』。Gosse：『far more corroborative than contradictory of the popular belief』『petitio principii』『128 grains… 12-1/2 per cent.』、蟲殼論證、『Air… was not admitted in these later examinations; but light was』；Plant：『twenty shillings』『forty shillings』『twelve months』『advanced a little cash on account; which however I resolutely declined』『visited the quarry twice』『a total disbeliever』。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "source_locator",
-        "editorial.minutes",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "兩份來源全文實讀、引文與數字都對得上，前提成立。刪掉沒有出處的『被當成傳說的終結』，改正 Gosse 批評的確切內容，補進來源裡現成而原稿沒用的素材。片長：照素材算 8–9 分鐘，誠實、下限剛過線，改 minutes 為 [8, 9]；不需要降為 chapter，但也不要為了拉長硬補沒讀到的 Paré 或 1862 年博覽會。去重：無同案。"
-    },
-    {
-      "id": "N2825",
-      "agent": "K2",
-      "reviewer": "R262",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K2-S012 https://archive.org/stream/threevoyagesofwi54veer/threevoyagesofwi54veer_djvu.txt（日記 pp. 143–147 與導言 pp. cxliv–clv）；K2-S013 https://siebrenvanderwerf.nl/docs/2003_NZdeVeer_AO.pdf（摘要、第 1 節、附錄 A）；K2-S014 Gutenberg #5199（1915 年 5 月 8 日段）",
-      "reopen_result": "日記頁面上確實寫：『contrary to our expectation, I [the] first [of all] saw the edge of the sun』『William Barents, being a wise and well experienced pilot, would not beleeve it, esteeming it to be about fourteene daies too soone』『divers wagers were laid』『vpon the twenty seuen day… saw the sunne in his full roundnesse』『contrary to the opinions of all olde and newe writers』；25 日是『darke clowdy weather』、26 日『faire cleere weather, but in the horrison there hung a white or darke cloude』（不是兩天都有霧）。Robbertsz 法文信：『dix ou onze jours, ou plus』、署 1627 年 9 月 15 日、『qu'il reconnut sa faute』、『jusques à la fin de sa vie il est demeuré dans l'erreur』。Beke 注：上緣在地平線下 4°26′.4、異常折射『no less than 3° 49′』、相合其實在 25 日。2003 論文：『5° 26′ below the horizon』『4° 41′』『not expected until 8 February』『almost 2 h after the true conjunction』『largely explains the error of 29°』『debated for four centuries, now appears to be beyond doubt』；Kepler 是『multiple reflections at the boundary between the atmosphere and the ether』。Shackleton：『refraction… 2° above normal』『120 miles farther south』『jeers of friends』。",
-      "changed_fields": [
-        "hook",
-        "answer_target",
-        "scope",
-        "source_locator",
-        "editorial.payoff",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "三份來源逐句對得上，是本批最穩的一題。只做小改：天氣敘述、把『造成』『沒數錯』收成來源的『大致』、Kepler 一節照論文轉述寫明並標二手、補同一來源裡現成的細節。去重：無同案。片長 8.5–10 分鐘可信。"
-    },
-    {
-      "id": "N2826",
-      "agent": "K2",
-      "reviewer": "R262",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K2-S015 https://archive.org/stream/connecticuthisto00barbuoft/connecticuthisto00barbuoft_djvu.txt（pp. 526–529 全段）；K2-S016 https://connecticuthistory.org/the-surprising-prevalence-of-earthquake-activity-in-connecticut；K2-S017 https://www.science-frontiers.com/sf058/sf058g13.htm",
-      "reopen_result": "Barber 頁面上確實寫：『The Indian name of the town was Mackimoodus, which in English is the place of noises』；Hosmer 信『written August 13th, 1729』『for more than thirty years』『I have been informed… Also I was informed, that, many years past, an old Indian was asked… the Indian's God was very angry because Englishman's God was come here』『Whether it be fire or air distressed in the subterraneous caverns of the earth, cannot be known』『eight or ten sounds successively, and imitating small arms, in the space of five minutes』『several hundreds of them within twenty years』，以及研究稿漏掉的『They have in a manner ceased since the great earthquake』；居民『almost thirty six years』『18th May, 1791, about 10 o'clock, P. M.… as far distant as Boston and New York』『twenty, perhaps thirty』；《Connecticut Gazette》Aug. 20, 1790（East Haddam, Aug. 5）『It is reported, that between 20 and 30 years ago… Doct. Steel, from Great Britain… two pearls of great value, which he called Carbuncles』『The best evidence of the authenticity of this story is that it has happened agreeably to his prophecy』。ConnecticutHistory.org：1791 年寫 5 月 16 日；1968 年 3.5 之後『Six years later』設站（頁面沒有直接寫 1974）；六座；1981 年 8 月 2 日起 500 次以上；最大 2.3；Hobbamock 與女巫兩句沒有出處。Science Frontiers：1987 年 9 月 17 日至 10 月 22 日 175 次以上、像槍聲；Ebel：1979 年起微震網、四次群震、深度不到 2.3 公里、找不到斷層。池內 N122：selected、chapter、4–6 分鐘，已在 T37（後備）。",
-      "changed_fields": [
-        "question",
-        "answer_target",
-        "scope",
-        "source_locator",
-        "editorial.payoff",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "引文對得上，前提成立；4.5–6 分鐘，維持 chapter。接法改為併入既有的 T37（N121＋N122）當第三章，而不是只接 N122：三題回答同一個問題（很多人聽得到的怪聲，量測能做到哪裡），而 N122 自己的答案已把淺層小地震列為候選，本題是那一種的實例，並補上 T37 欠的 4–5 分鐘。小改年份寫法（1974→『六年後』、微震網 1979 年起）、補 Hosmer 的『大地震後幾乎停了』。現代部分來源偏弱，寫稿前應補 Ebel 或 Weston Observatory 原文。"
-    },
-    {
-      "id": "N2841",
-      "agent": "K3",
-      "reviewer": "R263",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K3-S001 archive.org Mémoires secrets t.6 OCR（1773 年 5 月 6–27 日）；K3-S003 Lalande《Bibliographie astronomique》OCR（p.537、1788 與 1798 年史）；K3-S002 Guillemin pp.455–460；新讀 K3-S026 伏爾泰信法文原文（fr.wikisource）、K3-S027《Mémoires secrets》校對本",
-      "reopen_result": "日記逐條相符：『n'a pu faire par défaut de tems』『doit reparoître dans dix-huit ans』『prières de quarante heures… à la veille d'ordonner』『Le faux énoncé de la gazette… a fait présumer… des vérités terribles』『des 60 comètes connues huit… 13,000 lieues』『1789 ou 90』『répit accordé jusqu'en 1790』『d'un contre 64,000』；校對本把最後一個數字寫成『soixante-quatre mille』，但沒收 5 月 14 日條。Lalande p.537：『le temps ne permit pas de le lire; mais il avait été annoncé, et cela produisit dans le public une terreur incroyable』；同條末句『La terreur de 1773 s'était renouvelée à Paris en 1798』不是 OCR 誤植——書裡 1798 年史另有一段：1 月 16 日新橋叫賣新彗星，其實是白天可見的金星，『On jouait la Comète ou la Fin du monde au Vaudeville』；1788 年史那段（3 月 15 日 Journal de Paris）也在。伏爾泰原文讀到：『selon une certaine prédiction de l'Académie des sciences qui n'a point été faite』『ils feront des chansons, et on jouera la comète et la fin du monde à l'Opéra-Comique』；Beuchot 註給出 4 月 21 日。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "editorial",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "不重複：CLI search『Lalande』『拉朗德』皆 []，『1773』『彗星』『Biela』回的是 N611、N2282、N2161、N2406 等別案；grep pool.json、batches、reviews、K2／K4 無同案。前提成立，日記的數字全部對得上。改正三處：一、研究代理把 1798 當成 1788 的 OCR 或筆誤，其實是兩次不同的事件，1798 年那次（金星）反而是最好的尾聲；二、題目的『最早的一顆要 1789 年以後才回來』原文是『他等的下一顆』，且日記作 60 顆、Guillemin 作 61 顆；三、伏爾泰引文原本是英譯轉引，改用法文原文（『唱小調』應為『編小調』）。Lalande 論文原件與《Gazette de France》原報仍未讀（archive.org 檢索只有另一本 1773 年小冊），已留在 scope。片長 9–11 分鐘可信。"
-    },
-    {
-      "id": "N2842",
-      "agent": "K3",
-      "reviewer": "R263",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K3-S004 La Harpe《Œuvres choisies et posthumes》t.1 OCR（pp.lxii–lxviii）；K3-S005 Sainte-Beuve《Causeries du lundi》t.5 pp.142–143；新讀 K3-S028《Bibliographie de la France》1817（pp.382–383、418）",
-      "reopen_result": "1806 年印本：『Le morceau suivant a été trouvé dans les papiers de M. de la Harpe. Il me semble que c'était hier, et c'était cependant au commencement de 1788』，文末『M. Cazotte fit sa révérence, et sortit』後面沒有後記；『mourut le lendemain 11 février 1803』。但『suppressions que l'on s'est permises dans quelques-uns de ses ouvrages』那句緊接遺囑，講的是整套著作，不是這一篇。Sainte-Beuve：『le post-scriptum qu'on a le tort de supprimer quelquefois… la prophétie de Cazotte, qui est supposée… si elle avait eu lieu』相符。1817 年公報：『cet appendice, aussi de la main de Laharpe… même feuillet et immédiatement à la suite de la prophétie, sans aucun intervalle ni signe séparatif. M. Boulard, propriétaire de l'autographe… A l'endroit supprimé par M. P…, se trouvent deux barres pour indiquer au compositeur de ne pas aller au-delà… le Journal de Paris du 17 février dernier en a cité un fragment… la Prophétie n'est que supposée… Laharpe n'a voulu ici tromper personne』；p.418：『ce n'est pas à Laharpe, mais à M. Petitot, son éditeur, qu'est due la croyance』。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "editorial",
-        "risk",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "不重複：CLI search『Cazotte』『La Harpe』『卡佐特』皆 []；grep 無。前提成立而且比研究稿更硬：研究代理沒讀到的『誰、哪一年揭出後記』補到一手——1817 年出版業公報（Beuchot）描述了手稿與兩道槓，並點名 1806 年的編者 Petitot。改正：一、研究稿把 1806 年傳記裡『做了一些刪節』當成編者對這一篇的自承，上下文不是；二、『1806 年才印出來／第一次印出來』改為『目前讀到最早的印本』；三、題目把割二十二刀等死法寫進去，違反『一句帶過』，已拿掉。公報那則 OCR 開頭破損、Boulard 的全文單行本沒讀，留在 scope。"
-    },
-    {
-      "id": "N2843",
-      "agent": "K3",
-      "reviewer": "R263",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K3-S012 Knoxville Daily Chronicle 1882-12-29 p.2；K3-S008 Tribune 1883-03-09 p.5；K3-S010 Sun 1883-03-11 p.1；K3-S011 Tribune 1883-03-11 p.1；K3-S009、S013、S014 也各重開；新讀 K3-S029 Morristown Gazette 1882-11-15、K3-S030 Daily Astorian 1882-11-03",
-      "reopen_result": "Hazen：『no storm has ever yet followed the track laid down by Wiggins for his great March 11th cyclone… Any one can prophesy… storms in March… Such statements fill lunatic asylums, and those who make them are enemies of society』。3 月 8 日電：『many timid persons are known to be prostrated with nervousness… wishes now that he had not predicted it』；信號站：『During the last ten years there have been twelve storms on an average in the month of March… In 1879 there were eighteen』。Sun：Halifax 風暴、『my prediction is fulfilled to the letter… ships of all nations should be in safe harbors by the 6th… This is for him a defeat』。Tribune：『LITTLE WIND IN ONTARIO AND QUEBEC. A HEAVY SNOWSTORM AT WIGGINS'S HOME』『velocity of the wind was 29 miles… The prediction of a flood along the river front… was not verified』。新讀到預言原話：『A great storm will strike this planet on the 9th of March next… will cross the meridian of Ottawa at noon of Sunday 11th, 1883. No vessel smaller than a Cunarder will be able to live in this tempest… all the lowlands on the Atlantic side will be submerged』，並稱他『of the Finance Department』。",
-      "changed_fields": [
-        "question",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "editorial",
-        "risk",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "不重複：CLI search『Wiggins』『威金斯』『weather prophet』『Hazen』皆 []，『風暴』回的 N2207（喀拉喀托被預言）等答案無關；grep 無。前提成立，七份報紙逐句相符。改正：一、研究稿說各報日期不同（9 或 11 日），補讀轉載的預言原話後，兩個日子在同一段裡，而且原話給了可檢驗的條件（低地淹沒、小船撐不過），比『有沒有起風』更能回答題目；二、『前一天說後悔』實為 3 月 8 日；三、職業可寫『財政部職員』，生卒年只有維基（加拿大傳記辭典確認無條目），不上旁白。1886 年報導的歧視性段落我讀過了，確實在後半，照 scope 不引。原信與給總統的信仍沒讀到。"
-    },
-    {
-      "id": "N2844",
-      "agent": "K3",
-      "reviewer": "R263",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K3-S016 DNB〈Murphy, Patrick〉（Wikisource）；K3-S015 Book of Days 1 月 20 日；新讀 K3-S032 Timbs《Predictions Realized》1862 pp.39–40",
-      "reopen_result": "DNB 逐句相符：『M.N.S., i.e. member of no society』『Fair, prob. lowest deg. of winter temp.』『forty-five editions』『3,000l., which he almost immediately lost in an unsuccessful speculation in corn』『partly right on 168 days and decidedly wrong on 197 days』『died… 1 Dec. 1847, aged 65』；它的參考書目列了 Book of Days。Book of Days：『At sunrise, the thermometer stood at 4° below zero… 17°, the highest』『is said to have cleared £3000』。Timbs 1862 同段文字更早，且多出『partly right on twenty-three days, and decidedly wrong on eight days, in January; and partly right on eight days, and decidedly wrong on twenty days, in February』。",
-      "changed_fields": [
-        "question",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "不重複：CLI search『Murphy』只回 N2525、N1823（無關），『天氣曆書』『Almanack』無同案。判定：收為 chapter、接 N2843（同問『說中一次算不算』，一個是三月有風暴、一個是一月最冷），不轉 Shorts。研究代理說『只有兩份二手』其實更弱也更強：三份工具書是一條承襲鏈（Timbs→Book of Days→DNB），但 Timbs 給了一、二月的逐月數字，說明確實有人逐日對過。全年 168／197 仍只見於 DNB、不知誰算，鉤子可以用但答案要掛 DNB 的名字；『倫敦零下 4 度』來源沒寫地點，改『倫敦一帶』。4–5.5 分鐘的估計合理。"
-    },
-    {
-      "id": "N2845",
-      "agent": "K3",
-      "reviewer": "R263",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K3-S019 Mackay（Gutenberg #24518）；K3-S017 諷刺文全文（Wikisource，Swift Works vol.17）；K3-S018 1733 年《Miscellanies》第三卷 OCR；K3-S020 Hanover 轉錄；K3-S021 Whiston 回憶錄檢索",
-      "reopen_result": "Mackay：『No little consternation was created in London in 1736 by the prophecy of the famous Whiston, that the world would be destroyed in that year, on the 13th of October. Crowds of people went out… to Islington, Hampstead… this solemn witticism of Pope and Gay is not to be depended upon』，下一段就是『In the year 1761』的地震。諷刺文：『On Tuesday the 13th of October, Mr. Whiston held his lecture, near the Royal Exchange, to an audience of fourteen worthy citizens』『on Friday next this world shall be no more… five minutes after five』『one hundred and twenty-three clergymen』『seven thousand two hundred and forty-five』，全文沒有 Islington／Hampstead。1733 年印本書名頁『MDCCXXXIII』，文內『Mr. Whiston himself… return a Shilling a piece』『Woolston… publick Recantation』俱在。Hanover：『In the year 1712… Wednesday, the 14th of October at 5 minutes after 5』。星期：我用儒略曆日數公式獨立重算，1736-10-13 為星期三；星期二的年份 1713、1719、1724、1730；以 1752-09-02＝星期三驗算通過。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "editorial",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "不重複：CLI search『Whiston』只回 N2662（Josephus 譯註，無關），『惠斯頓』[]，『1736』回的都是別案；wave21、wave24 的不收理由是『只有 Mackay 一句』，本輪文本證據已補齊，可以收。維持 chapter。改正：一、星期推算與研究代理相符，但答案裡原寫『（依 K3-S017 的星期推算）』等於把自己的算術掛在來源名下，改標為算術；二、鉤子『是從諷刺文第一句抄來的』超出證據，改成『一模一樣』；三、補一個研究稿漏掉的事實：Mackay 的 Islington／Hampstead 人群不在諷刺文裡，所以不能說整段都來自諷刺文；四、接誰：建議 N2402 優先（Mackay 同一頁的下一段），N2701 次之。1736 年報紙未讀，結論停在『Mackay 沒給出處、文本早於 1736』。"
-    },
-    {
-      "id": "N2846",
-      "agent": "K3",
-      "reviewer": "R263",
+      "id": "N2927",
+      "agent": "M3",
+      "reviewer": "R273",
       "verdict": "NEEDS_CHECK",
-      "key_source_reopened": "K3-S022 ADB〈Stifel, Michael〉（de.wikisource）；K3-S023 MacTutor；新讀 K3-S033 de Wette 編《Luthers Briefe》第四卷四封信、K3-S034 德文維基",
-      "reopen_result": "ADB 逐句相符：『findet den 19. October 1533 früh 8 Uhr』『Ein Augenzeuge hat in einem im Drucke erhaltenen Briefe beschrieben』『ein Pilatus, ein Herodes』『Abgesandte des Kurfürsten, welche den Propheten in einen Wagen setzten und nach Wittenberg führten』『Er Michel hat ein kleines Anfechtlein bekommen』『bereits 1535 oder gar schon Ende 1534 wieder als Pfarrer in Holzdorf』。MacTutor：『8 a.m. on 18 October 1533… arrested, put in jail』。路德書信一手：致 Stifel『me non tam dissentire, quam non intelligere… si dies ille ante Michaelis venerit, tu nihil peccas』；致 Menius『prophetat diem extremum hoc anno circiter Omnium Sanctorum, cum antea S. Michaelis diem praediceret: et fit concursus… Ideo vocamus hodie hominem ad nos』；10 月 24 日『Er Michel hat ein kleines Anfechtlein…』；1535 年『Er Michel Stiefel hat wieder eine Pfarre, stehet nu besser』。",
+      "key_source_reopened": "M3-S018 https://www.gutenberg.org/cache/epub/14809/pg14809.txt（前言、§157–158、§258）；M3-S019 https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/68*.html（68.14.4–5）",
+      "reopen_result": "Jordanes：『turning from its course the river Busentus near the city of Consentia…they led a band of captives into the midst of its bed to dig out a place for his grave. In the depths of this pit they buried Alaric, together with many treasures…And that none might ever know the place, they put to death all the diggers』；前言『in the year 551, probably in Constantinople』與『by his steward's loan for a three days' reading. The words I recall not』；旁註『DEATH OF ALARIC I A.D. 410』；Attila 一段『those appointed to the work』。Dio：『With the help of some captives Decebalus had diverted the course of the river, made an excavation in its bed…afterwards bringing the river back into his course…had made away with them to prevent them from disclosing anything. But Bicilis, a companion of his who knew what had been done, was seized and gave information』。兩段都對得上。對不上的是研究稿的兩句框架：『這個故事只有一個出處』沒有來源這樣說；Dio『更早』的成書年代不在頁面上。覆核另搜尋一輪，沒有找到把兩段相提並論的可讀學術文字。",
       "changed_fields": [
         "question",
         "answer_target",
         "scope",
-        "source_ids",
-        "source_locator",
         "notes"
       ],
       "duplicate_of": "",
-      "reason": "不重複：CLI search『Stifel』『施蒂費爾』『Lochau』皆 []，『1533』回 N1863（無關）；最近的 P12、N2705、N188 答案不同。宗教界線的裁定：不退回。它不是在評一個現存宗教的教義，而是一件有書信的 1533 年事件，池中已有 N2705（路德生年）、N188、P12 的前例；但 1532 年小書的書名、他拿教宗名字湊數、兩人來回引的經文都貼著教派論戰，scope 已改成一律不講。維持 NEEDS_CHECK 的理由是事實而不是界線：題目與鉤子靠的『10 月 19 日早上八點、九點來的是馬車』只有 Cantor 一份二手；我補讀到的路德書信證實了事後那句話與復職，卻顯示日子至少改過一次（聖米迦勒節→萬聖節前後），沒有 10 月 19 日。18／19 日之爭，德文維基與 ADB 都作 19 日，MacTutor 是孤例，但三者都不是一手。缺：目擊者的印行書信、Stifel 自己 1532／1553 年的文字、或 Hofmann 1968／Westphal 1997 其中一本。補到之後可升 episode_core，8–9.5 分鐘撐得起來。"
+      "reason": "缺三樣：學者對『河底埋葬是不是文學套路』的說法（或反對）、一份談 Alaric 之死史料的現代研究（才能說有沒有別的出處）、Dio 的成書年代。只有 5–6.5 分鐘，池裡沒有同核心的兄弟題；不建議接 N2922（合計超過一集上限，核心只是相近）。處置：維持 needs_check 的章節素材、不指定接誰；補齊後較適合做 Shorts，或日後有『古代史書裡的國王秘葬』同核心題再併；若批次不留沒有歸宿的章節，改列 not_added。"
     },
     {
-      "id": "N2861",
-      "agent": "K4",
-      "reviewer": "R264",
+      "id": "N2941",
+      "agent": "M4",
+      "reviewer": "R274",
       "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K4-S025 https://archive.org/stream/sim_british-magazine_1747-04_2/sim_british-magazine_1747-04_2_djvu.txt（British Magazine 1747 年 4 月號原刊，研究代理沒讀到的那篇）；另重開 K4-S001 https://www.gutenberg.org/cache/epub/9785/pg9785.txt（Scott 1832 導言、1826 序、1660 年小冊人名表與序言）、K4-S003 Hone vol. 2 cols. 582–590、K4-S002 Plot §45",
-      "reopen_result": "1747 年原刊確實寫『Some original papers having lately fallen into my hands, under the name of authentick memoirs of the memorable Joseph Collins, of Oxford, commonly known by the name of funny Joe, and now intended for the press』，逐日紀錄『I believe never was publish'd』，『Giles Sharp, their secretary… the said Giles also deposed on oath』沒有真的狗，〈secret history〉說 Collins『under the feign'd name of Giles Sharp』，馬蹄與搶劍兩事『himself alone was the witness to』；與 Hone 重刊逐字相近。Scott：『I have not found the explanation of Joe Collins… It might, however, be recovered by a stricter search than I had leisure for… neither the name of Joe Collins, nor Sharp, occurs among the dramatis personæ』；1826 年序已寫『a fellow called Trusty Joe, or some such name』；『more than forty years since I perused the tract』。1660 年小冊：入住 10 月 16 日，『Mr. Browne, their secretary』，序言的 Widows 一段在。Plot §45：『might be easily performed by combination, but some there are of them scarce reconcilable to Jugling』。",
+      "key_source_reopened": "M4-S001 https://archive.org/download/ugandaprotectora01john_1/ugandaprotectora01john_1_djvu.txt（pp.200–201、378–383）；M4-S002 biostor-107742（P.Z.S. 1901 i pp.50–52 全文）；M4-S003 biostor-107743（1901-02-19 會議）；M4-S005 monographofokapi00lank（ossicones 一節與 Plate 13 說明）；新讀 M4-S025 P.Z.S. 1901 vol. II（proceedingsofzoo19012zo：5 月 7 日、6 月 18 日 Lankester 原始短文、11 月摘要）",
+      "reopen_result": "頁面上確實寫了：Johnston 1902 p.200『the natives showed me the footprints of a large, cloven-footed animal… As, however, up to this time I believed the okapi to be an aberrant species of zebra, I turned away impatiently from these footprints, thinking them to be the spoor of a forest eland』，前一句是『I believe we were once on its track』；p.380『we believed the natives to be deceiving us』『For a time I thought we were on the track of the three-toed horse, the hipparion』『The feet, however, they said, had more than one hoof』；Eriksson『obtained from a native soldier the body of a recently killed okapi』、另一個較小的頭骨。Sclater：『two waist-belts』『Equus (?) johnstoni, sp. nov.』『all the certain evidence we as yet possess』『about 36 inches… about 30 inches… including the fringes』、信署『Fort Portal, Toro, Aug. 21, 1900』、『cut up by the native soldiers to be made into waist-belts and bandoliers. Two of these fragments were found』。Ridewood『no differences in structure could be observed』；Ewart『The conclusion arrived at is that the pieces of skin… belong to a Zebra』。對不上或要改的：（1）1900 年的信裡矮人只說牠『暗灰褐、肚子與腿有條紋』，『不只一個蹄』只出現在 1902 年的書；（2）鉤子『那正是他找了好幾天的動物』是把 Johnston 的『I believe』講成事實；（3）Lankester 1901 年 6 月原文說皮『probably, though by no means certainly, that of a male』，11 月說看不出雌雄，與 1910 年圖說的『當年被當成雌性』不合；（4）P.Z.S. 1901 ii 5 月 7 日 Sclater 已說『of course, not a Zebra, nor even a member of the family Equidae』，《The Times》寫皮與頭骨是『native soldiers』取得；（5）M4-S003 的頁碼是 pp.87–88，不是 84–85。",
       "changed_fields": [
         "question",
+        "hook",
         "answer_target",
         "scope",
         "source_ids",
         "source_locator",
-        "editorial",
+        "editorial.payoff",
+        "editorial.visual",
         "risk",
         "notes"
       ],
       "duplicate_of": "",
-      "reason": "不重複（search Woodstock、Joe Collins 皆 []；grep 無）。前提成立，研究稿的引文都對得上。改正與補強：(1) 1747 年原刊已讀到，題目的『第一次出現』改成『目前讀到最早』；(2) 補 Scott 自己那句『仔細一點也許找得到』，否則『沒找到』說過頭；(3) 補 1660 年小冊的入住日是 10 月 16 日，與 Plot、1747 年文章的 13 日不同；(4) 補 Scott 1826 年序已憑記憶寫『Trusty Joe』；(5) 新增一個從原刊讀到的轉折——Plot 認為戲法做不到的馬蹄與搶劍，1747 年文章說唯一的證人就是 Sharp 本人（標明是並排對照）；(6) 火藥與自燃混合物的配方列入不念。8–10 分鐘可成集，N2862 可當第二章。"
+      "reason": "前提成立，池中無 okapi（搜尋 okapi、㺢㹢狓回空；grep pool.json、batches、M1–M3 皆無；最近的 N541、N862、N1726 是不同案）。改正：鉤子不再把他的推測講成事實；『不只一個蹄』標明是 1902 年的事後自述；補上 1901 年 5 月 Sclater 自己改口與 6 月 Lankester 原始短文（研究者標的最弱處已補讀）；拿掉『因而被當成雌性』（Lankester 三處說法互相矛盾）；Sclater 的命名改寫成『打問號的暫名，同時說不是已知的斑馬』。卒年補上（Johnston 1927、Sclater 1913、Lankester 1929、Ewart 1933）。片長 8–10 分鐘成立。"
     },
     {
-      "id": "N2862",
-      "agent": "K4",
-      "reviewer": "R264",
+      "id": "N2942",
+      "agent": "M4",
+      "reviewer": "R274",
       "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K4-S026 https://www.gutenberg.org/cache/epub/53275/pg53275.txt（Hone《Every-Day Book》vol. 1 的校對文字版，取代 OCR 很差的 K4-S004）；另重開 K4-S005 Lang pp. xiv、118–121、K4-S006 Crowe 所錄小冊、K4-S031 Owen p. 241",
-      "reopen_result": "Hone 的結尾寫的是：『Mr. B. promised to put down the whole on paper; but he was ailing and infirm, and accident prevented the writer from caring much for a “full, true, and particular account,” which he could have had at any time, till Mr. Brayfield's death rendered it unattainable.』——姓氏 Brayfield 印出來了，而且沒寫成的原因有一半在 Hone 自己。其餘相符：『the late Mr. J. B——, at his residence in Southampton-street, Camberwell, towards the close of the year 1817』、馬毛與鐵絲、『a paper of chemical powders』、『there was a love story connected with the case』、『fond of a practical joke』。Lang：『an old Mr. Braidley, who loved his joke… We have not Mr. Braidley's attested statement』、簽名日 1 月 11 日、Ann 沒簽。Crowe 的小冊末尾六個簽名與『Not the smallest light had ever been thrown upon it』都在。Owen 確實只寫『always in the presence of Mrs. Golding and her maid』、沒提自白。",
+      "key_source_reopened": "M4-S007 https://archive.org/download/proceedingsofbos02bostuoft/proceedingsofbos02bostuoft_djvu.txt（pp.65–68、79、94–96）；M4-S006 descriptionofhyd00koch（封面、pp.9–11、書後轉載）；M4-S008 https://encyclopediaofalabama.org/?p=10891（curl 逐字重讀）",
+      "reopen_result": "Wyman 全部對得上：『measuring in all 114 feet』『five feet seven inches long』『destitute of any visible sutures』『attached laterally by cement, two bones forming incomplete zygomatic arches』『implanted into the double alveoli of the jaw by means of double roots. Here is the most positive evidence that… was no reptile, but a warm-blooded, mammiferous animal』『could never have belonged to the same individual』『casts of the cavities of a camerated shell, a species of Nautilus』。Rogers 的兩個耳蝸、Lister 信（Old Court House, Washington county, December 7th, 1845；Clark 郡 20 英里、7 英里外幾車；『could have made his skeleton three hundred feet long, as easily as one hundred and fourteen feet』；『Dr. Lister was not present at the actual exhumation』）都在。要改的：（1）Koch 的小冊 p.11 自己寫了『the molar teeth of the Hydrarchos have two distinct fangs』並拿來說牠不是蜥蜴類，原鉤子把雙根牙寫成 Wyman 才發現；（2）『a mere fabrication』是 1846-02-04 會議紀錄的話，不是 Wyman 的用字；（3）Lister 那句是紀錄的轉述，沒有引號；（4）Wyman 說種類『not so easy to decide』，沒有斷定就是 Basilosaurus；（5）小冊轉載的 Silliman 來信寫『evidently belonging to one individual… the fullest ground for confidence in its genuineness』，研究稿沒用，反而暗示改名是他留下的『痕跡』，頁面上沒有改名的理由；（6）阿拉巴馬百科的圖說逐字是『constructed with fossils from at least five Basilosaurus cetoides skeletons… destroyed in the Allied bombing of Germany during World War II』，無署名無出處；同頁的海報抄錄寫 Niblo's Garden、『weighing at least 400,000 pounds』。",
       "changed_fields": [
         "question",
         "hook",
@@ -420,201 +446,150 @@
         "scope",
         "source_ids",
         "source_locator",
-        "editorial",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "不重複（search Stockwell、Golding 皆 []）。兩個事實錯：研究稿說『B 先生的全名 Hone 沒印』『Lang 寫 Braidley 出處不明』——Hone 最後一句就印了 Brayfield，Lang 是抄錯；『年老多病沒寫成』漏了 Hone 自承沒去追。片長只有 5–7 分鐘，維持 chapter，但不照原議接 N201＋N2646：N2646 的核心是作者歸屬，接不上。改接 N2861（同一個問題：那份『招供』有沒有人見過），次選 N201。沒有兄弟題可接時就轉 Shorts，不要補料成集。"
-    },
-    {
-      "id": "N2863",
-      "agent": "K4",
-      "reviewer": "R264",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K4-S029 https://archive.org/download/TheCornishMagazine/The_Cornish_Magazine_djvu.txt（Robbins 1898 原文，研究代理沒讀到）與 K4-S030 https://archive.org/stream/b2201195x_0001/b2201195x_0001_djvu.txt（Gilbert 1817 pp. 115–119，研究代理沒讀到）；另重開 K4-S007 Hawker 與 Byles 注、K4-S008 Baring-Gould、K4-S009 Ingram",
-      "reopen_result": "Robbins：『Hawker of Morwenstow employed his genius in literary fabrication by inventing a “Diurnall” of Ruddle』（這句 1898 年就有）；抄本末『This is a copy of wt I found written by my father and signed John Ruddle. Taken by me, William Ruddle』，再抄證明署『James Wakeham』1730 年 2 月 5 日（Baring-Gould 作 Wakeman）；『Ruddle finally laid the sprite of Dorothy Dingley on July 29, 1665, and he wrote his narrative on the following September 4』；家族與莊園名『The first publication… was by C. S. Gilbert in 1817』。Robbins 刊出的印本全文裡女子就叫 Dorothy Dingley，他說抄本與 Defoe 印本只差幾處縮寫——與 Baring-Gould『Defoe 把她改成 Mrs. Veale』不合。Gilbert 1817：標題『attested by the Reverend Mr. Ruddell』，『(Mr. Bligh, of Botathen)』，『a spaniel dog』，『it answered in a voice neither very audible nor intelligible… until it spake again and gave me satisfaction』。Hawker：1 月 7–13 日條目、Exeter 主教、ring of brass、pentacle、raun、Syriac、瘟疫預言、7 月 10 日條都在；Byles 注『It is a question whether these documents ever existed outside Hawker's brain』與附錄 H『obviously a paraphrase』都在。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "editorial",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "不重複（search Botathen、Ruddle、Hawker 皆 []）。前提成立，兩個轉折現在都在覆核實讀的頁面上。改正：(1)『直到 1898 年才洗清』過頭——Gilbert 1817 已以 Ruddle 名義印出並補上 Bligh 與 Botathen，Robbins 補的是抄本與登記簿；(2) 刪『Defoe 把女鬼改名 Mrs. Veale』（只有 Baring-Gould 一句，與 Robbins 刊出的印本不合），連帶改掉與 N2646 的連結理由；(3) Wakeman→Wakeham；(4) 獵犬→spaniel；(5) Ruddle 其實寫了『gave me satisfaction』與『談了約一刻鐘』，『沒寫它說了什麼』保留但補這兩句；(6)『Hawker 造日記』最早出自 Robbins 1898，不是 1903 年的 Byles；(7) 鉤子『一百多年後』改掉（1665 到 1898 是兩百多年）。8–10 分鐘成立。"
-    },
-    {
-      "id": "N2864",
-      "agent": "K4",
-      "reviewer": "R264",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K4-S027 https://archive.org/stream/collectionsofnew08newh/collectionsofnew08newh_djvu.txt（省議會紀錄 1866 年刊本 pp. 99–100，Burr 的注所引的原件刊本）；另重開 K4-S010 Burr pp. 55–62、76",
-      "reopen_result": "刊本原文：Hannah Jones 7 月 4 日陳情『George Walton's dealing with her, who falsely accuseth her of what she is clear of… bound in a bond of the peace; since which said Walton's horse breaks into her pasture』；議會要她向 Capt. Stileman 申訴；8 月 31 日 Elizabeth Clark 證 Walton 說『Grandma Jones was a witch』；9 月 4 日 Samuel Clark 證『Goody Jones call the said Walton a wizzard… if he told her of her mother, she would throw stones at his head… Friday, the 25th of August, 1682』，另證 Walton 稱她『and all her generation were accounted witches』；Rogers 等人證當天石頭飛來、『saw no hand or person to throw them』。Burr：『waggery of some unlucky Boys』在小冊第一段；注說 12 月 Amazeen『arrested George Walton and his helpers』；『It was doubtless Secretary Chamberlain who… had put her under bond』；『earned fear and hate』；Cranfield 1682 年 10 月到任。",
-      "changed_fields": [
-        "question",
-        "hook",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "editorial",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "不重複（search Lithobolia、Chamberlain、Great Island 皆 []；『丟石頭』只回 N1643，答案無關）。單一來源的疑慮已解：議會紀錄刊本逐字對上 Burr。改正：(1) 題目的『這是北美最早的騷靈紀錄？』沒有任何來源，刪；(2) 鉤子『鎮上最多人想拿石頭丟的官員』是研究者的發揮，改依 Burr 的用語；(3) 12 月被捕的是 Walton 本人和幫手，不是『Walton 的砍柴工』；(4) 補『Hannah Jones 就是小冊的女鄰居』是 Burr 的認定；(5) 補議會紀錄裡當天有人作證看到石頭飛、沒看到人丟；(6) 畫面拿掉暗示答案的『窗外小孩影子』。8–10 分鐘成立。"
-    },
-    {
-      "id": "N2865",
-      "agent": "K4",
-      "reviewer": "R264",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K4-S012 https://archive.wvculture.org/History/crime/shuearticles.html（1897 年五則報導轉錄全頁）；另讀 K4-S028 https://www.wvencyclopedia.org/entries/2107（流傳說法的出處）與 K4-S013",
-      "reopen_result": "州檔案館頁面確實寫：問答的按語『led to the inquest and post mortem examination… It was brought out by counsel for the accused』；首問『I have heard that you had some dream or vision which led to this post mortem examination?』；『I am not going to say that; for I am not going to lie』；末段標『RE-CROSS EXAMINATION』；同日報導『There was no witness to the crime… the State rests its case for a conviction wholly on the circumstances』，列的情況沒有異象；Monroe Watchman『owing to the suspicious conduct and conversations of the prisoner, a post mortem examination was ordered』；7 月 8 日『after being out one hour and ten minutes… Though the evidence was entirely circumstantial』。e-WV：標示牌『only known case in which testimony from a ghost helped to convict a murderer』、『An examination of the exhumed body verified the ghost's tale』、Shue 1900-03-13 卒。",
-      "changed_fields": [
-        "question",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "editorial",
+        "editorial.payoff",
+        "editorial.minutes",
         "risk",
         "notes"
       ],
       "duplicate_of": "",
-      "reason": "不重複（search Greenbrier、Shue、Heaster 皆 []）。事實都對得上，前提成立。保留與否：這是 1897 年的夫殺妻命案，靈異守則 3 的限制適用；池中有 N2501、N203 兩個同型前例，當事人過世逾百年，題目講的是報紙記的交叉詢問而不是命案本身——覆核判可留，但 (1) 降為 chapter、6–8 分鐘，只接在 N2501 後面，不單獨成集；(2) scope 加嚴：不念傷勢描述、死者名字不上標題縮圖、不念報上的種族用語；(3) risk 寫明站主可直接不排。補了流傳說法的出處（原稿沒讀到），題目改成有出處的引文；補『報紙只刊了這一段，不說檢方沒問過』；Shue 卒年改成有出處的日期。仍缺法院筆錄與標示牌原文。"
+      "reason": "前提成立，池中無 Hydrarchos／Koch／Basilosaurus（搜尋回空；N2821、N2684、N1365 是海蛇目擊，不同答案）。改正五處如上；照指示把『至少五具』『二戰炸毀』『普魯士國王』全部移出答案，只在 scope 記為待補。M4-S008 的 read_via 改為逐字讀取（見 source_corrections）。卒年補上（Koch 1867、Wyman 1874、Rogers 1866、Silliman 1864）。片長 8–9.5 分鐘。"
     },
     {
-      "id": "N2866",
-      "agent": "K4",
-      "reviewer": "R264",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K4-S023 https://archive.org/stream/sim_notes-and-queries_1881-02-19_3_60/sim_notes-and-queries_1881-02-19_3_60_djvu.txt（Warren 的追查與 Broughton 的信）；另逐期重開 K4-S014–S022 與 1872-11-09（K4-S032）",
-      "reopen_result": "Broughton 的信：『You are mistaken in supposing that my story has anything to do with the so-called Berkeley Square Mystery. Its incidents happened, as I was told by my informant, in the country, and I clothed it in fictitious characters and transposed it to London, which I have since regretted』；Warren 查到該篇 1868 年 2 月刊於 Temple Bar。Lyttelton：『said to be haunted, and long unoccupied on that account. There are strange stories about it, into which this deponent cannot enter』。E. M. P. 按門鈴、老婦說有人住。Weekly Times 1873-05-04 轉錄：『a gentleman named Myers, occupying No. 50, Berkeley Square… known as the “haunted house”… eccentricity… A warrant was then issued』。J. C. M.：『We never seed none』；『of the thousands who believed in a mystery not one was at the pains to knock at the door』。Vincent：『I saw no greater ghost than myself』。St. George's 醫師：『connected with the hospital for nearly twenty years, and I never heard…』。1872-11-09 提問頁辨出：『Can your readers inform me of any houses now closed, as being haunted?… a house in Berkeley Square (London)』。",
+      "id": "N2943",
+      "agent": "M4",
+      "reviewer": "R274",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "M4-S009 https://archive.org/download/mobot31753002212675/mobot31753002212675_djvu.txt（pp.417–426）；M4-S010 https://archive.org/download/periplusofhannov00hann/periplusofhannov00hann_djvu.txt（§18 與 pp.26–27）",
+      "reopen_result": "Savage 的句子都在：『The specific name, gorilla, has been adopted, a term used by Hanno, in describing the “wild men” found on the coast of Africa, probably one of the species of the Orang』『the month of April (1847) was spent at the house of the Rev. J. L. Wilson』『I did not succeed, however, in obtaining the animal, but several crania of the two sexes, and of different ages… were received』『my account is based upon the statements of the aborigines of that region』『exceedingly ferocious, and always offensive』『A slave to an Mpongwe man, from an interior tribe, killed the male and female whose bones are the origin of this article… the man's freedom was immediately granted』『The silly stories about their carrying off women… and vanquishing the elephants… are unhesitatingly denied』。Schoff §18：『They had hairy bodies, and the interpreters called them Gorillae… So we killed them and flayed them, and brought their skins to Carthage』。pp.26–27 那段不是譯者的註，是標題〈THE NEGRITOS (The hairy people of §18)〉下整段轉引的人種學文字：『to whom we owe the term gorilla applied by him, not to the anthropoid ape so named by Du Chaillu, but to certain hairy little people seen by him on the west coast—probably the ancestors of the dwarfs still surviving in the Ogoway district』，前後是對該族群膚色、體毛、身高的描寫。",
       "changed_fields": [
+        "premise_status",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.minutes",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "站主決定。事實核對沒有錯，但嚴格照守則判：這一集的落點（第三個轉折）是『Hanno 那群「多毛的野人」是猿還是人』，而唯一讀到的『不是猿』來源，把那群被殺害剝皮的人認作一個現存非洲族群的祖先、並描寫其體貌。講這個轉折就避不開『評價族群』與殺害剝皮；拿掉它，只剩 4–5.5 分鐘（8–10 條不重複事實），不到 8 分鐘。所以不能當單集收。兩條路都要站主先點頭：（A）當一章接 N2084（orangutan 的名字），只說『名字借自一份古代航海記裡的一個詞』，不念 §18、不引 Schoff；（B）保留轉折，須先讀到現代古典學的討論並由站主看稿。站主若不想碰，就退回。池中無 gorilla／大猩猩（N2084 是紅毛猩猩的名字，不同案）。"
+    },
+    {
+      "id": "N2944",
+      "agent": "M4",
+      "reviewer": "R274",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M4-S011 https://archive.org/download/biostor-121734/biostor-121734_djvu.txt（全文）；M4-S012 jstor-4070695（全文）；M4-S013 jstor-4071278；M4-S014 jstor-4071678；M4-S015 史密森尼雜誌（curl 回 403，只能再經 WebFetch 摘要工具讀一次）；新讀 M4-S027 Schorger 1955（Internet Archive 全文搜尋片段）",
+      "reopen_result": "四篇 Auk 逐字對得上：Shufeldt『This bird is a female and now about 29 years old, and the last one of a flock of eight that we got in 1878. I have since learned that it was hatched in the Garden』『died September 1st [1914] at 1 P.M. of old age, being about 29 years old. It was almost immediately packed in ice… received in fine condition on the fourth』『a slit-like opening, one-half a centimeter in length… the right lobe of the liver and the intestine almost entirely broken up, as though it had been done with some instrument』『perhaps somewhat influenced by sentimental reasons』；全文沒有 Martha。Deane 1908：Stephan 1907-11-09 信『The original flock, which came from Michigan in 1875, consisted of twenty-six birds… one female that we obtained from Prof. Whitman's flock in 1902, which is about twelve years old』，Whitman 紀錄『one (♀) was sent to the Gardens of the Cincinnati Zoological Co.』。Deane 1909 是轉述不是引信：『leaving one male, about twenty-four years old, and the female which came from Prof. Charles O. Whitman's flock in 1902, and now about thirteen years old』。Deane 1913：『Today this bird is entirely extinct, the last survivor dying in the Zoo at Cincinnati a few days ago』『our one remaining Passenger Pigeon is still alive』。史密森尼 2011（摘要工具回報的原句）：『They froze her up in a 300 pound block of ice』『had a standing offer of $1,000 for a mate for Martha』『roped off the area around her cage』，沒有名字由來與年齡。Schorger 片段：『the celebrated Martha, named after Martha Washington. It would be difficult to find a more garbled history than that of Martha』『any one of the ages ranging from 17 to 29 years is correct. One fact is known about Martha. Her ancestors were captured in Wisconsin』『Encased in a 300-pound cake of ice』。",
+      "changed_fields": [
+        "question",
         "hook",
         "answer_target",
         "scope",
         "source_ids",
         "source_locator",
-        "notes"
-      ],
-      "duplicate_of": "",
-      "reason": "不重複（search Berkeley 為 []，『柏克萊』只回無關的加州題）。十一期逐期核過，人名、日期、引文都對得上；兩個 OCR 缺口補了一個（1872 年提問），另一個（1881-01-08 C. C. M. 一段）確實殘缺、原稿沒有引用它。『全靠讀者投書』不是弱點而是題目本身，題目也是這樣寫的。只改一處：鉤子『九年裡只有一個人去按門鈴』是研究者自己的統計，改用 J. C. M. 的原話，並在 scope 註明那是修辭（E. M. P. 就按過）；另補 C. C. M. 當期反駁『全是 Broughton』。8–10 分鐘成立。"
-    },
-    {
-      "id": "N2867",
-      "agent": "K4",
-      "reviewer": "R264",
-      "verdict": "ADOPT_WITH_CHANGES",
-      "key_source_reopened": "K4-S024 https://archive.org/stream/bub_gb_FTVrthuQa3AC/bub_gb_FTVrthuQa3AC_djvu.txt（Mirville 所印訴狀、筆錄與終局判決）；另重開 K4-S005 Lang pp. 274–281，新讀 K4-S031 Owen 1860 pp. 272–283",
-      "reopen_result": "判決（書末 Pièces justificatives，標『4 février 1851』）：『quelle que soit la cause des faits extraordinaires qui se sont produits au presbytère de Cideville… cette cause est demeurée inconnue, et qu'il n'y a dès lors à statuer que sur les conséquences』；『avait tout fait et tout dit pour faire croire au public qu'il était pour quelque chose dans leur perpétration, notamment par ses vanteries aux témoins Cheval…』；下跪『volontairement』；『deux ou trois coups de canne… légitime défense』；辭退一節『d'aussi vagues ouï-dire』；『condamnons ledit Thorel à tous les dépens』。筆錄：牧羊人一方到第 18 位證人、神父一方到第 16 位，神父一方『Le premier témoin, Charles-Jules de Mirville』。Mirville：『l'appel est encore à venir』。Lang：『Perhaps the last trial for witchcraft』、『Forty-two witnesses were heard』、1 月 28 日與 2 月 3–4 日。Owen：18＋16 位證人、1,200 法郎、2 月 4 日宣判、Mirville『was himself one of the witnesses at the trial』、『It would be difficult to find a case more explicit or better authenticated』。",
-      "changed_fields": [
-        "question",
-        "answer_target",
-        "scope",
-        "source_ids",
-        "source_locator",
-        "editorial",
+        "editorial.payoff",
         "risk",
         "notes"
       ],
       "duplicate_of": "",
-      "reason": "不重複（search Cideville、Thorel 皆 []）。不碰不收清單：這是一場民事誹謗官司，本題不評價天主教的作法，也不講驅邪；但 Mirville 全書是替驅魔辯護，scope 已明令那些段落不引。改正：(1) 題目的『經法院調查證實』是研究者自擬的『流傳說法』，沒有出處，改用 Owen 1860 的原話；(2) 證人數：筆錄與 Owen 都是 18＋16＝34，Lang 的 42 不合，題目改『三十多位』並在 scope 並列；(3) 補一個研究稿漏掉的要點——Mirville 自己是神父一方的首位證人；(4) 補訴狀四點與求償額。判決仍只有當事一方印的版本（Owen 也出自 Mirville），已在 scope 與 notes 寫明；判決文字對 Mirville 的主張並不有利（只說原因不明），覆核判可收。約 18 條事實，7–9 分鐘，維持 episode_core。"
+      "reason": "前提成立，池中無旅鴿（搜尋旅鴿回空；grep passenger pigeon、Martha、Cincinnati 皆無；N2762 渡渡鳥是不同案）。主幹的四個轉折都在當年期刊，逐字核過。補強與改正：名字、300 磅冰塊與『年齡 17–29 都可能』補到 Schorger 1955 的出處（但只有搜尋片段，已標明，上稿前要借閱核對）；1909 年那句標為 Deane 轉述；『1914 年那隻就是 1902 年那隻』標為推論；『1,000 美元懸賞』仍只有 2011 年雜誌一處，旁白說出處或不講；M4-S015 的 read_via 改成誠實寫法（見 source_corrections）。新增風險：Shufeldt 在工具書上被記為白人至上主義者，本集不替他加戲。卒年補上（Shufeldt 1934、Deane 1934、Whitman 1910）；Stephan 沒讀到。片長 8–10 分鐘成立。"
+    },
+    {
+      "id": "N2945",
+      "agent": "M4",
+      "reviewer": "R274",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "M4-S019 https://archive.org/download/accountofgeograp00saue/accountofgeograp00saue_djvu.txt（p.181）；M4-S016 jstor-2451162（全文）；M4-S018 biostor-78470（pp.181–185）；M4-S017 jstor-196797（Sauer 與 Delareff 段）；新讀 M4-S026 Nordenskiöld《Voyage of the Vega》vol. II pp.272–278",
+      "reopen_result": "Sauer p.181 逐字：『Sea cows were very numerous about the coast of Kamtshatka, and the Aleutan islands, at the time when they were first discovered; but the last of this species was killed in 1768 on Bering's island, and none have been ever seen since.』（頁眉 181，研究稿寫的『p.170 起』可改）。Stejneger 1887：『during his five days' stay』『a year and a half on Bering Island』『a stray female narwhal』『fifteen hundred as rather above than below the probable number』『nine years after the first visit, the sea-cows had been extirpated on Copper Island』『in order that Bering Island may not be devastated in the same manner as Copper Island. Of course, nobody heeded… the last sea-cow was killed within thirteen years』『in 1767 or 1768—possibly on one of Popoff's vessels』『in 1772, Dmitri Bragin』都在；越冬人數他寫的是『670 men… between 1743 and 1763』『ten [expeditions], with an aggregate of about four hundred men』『during eight months』，研究稿的『幾乎每個冬天』『住八九個月』『半數以上』是概括，已改成他的數字。Stejneger 1884 開頭寫 Nordenskiöld 反駁的是『the statement of v. Baer and Brandt』；Burdukovski『died in 1842』『nothing else than the kidneys』；第一位證人比的噴水高度是『about four feet』，第二位『2 to 3 feet』『Does not remember the year—not even approximately』；Stejneger 重算父親 1772 年前後到島。Nordenskiöld 原文（新讀）：『The latter statement however is undoubtedly incorrect』『about twenty-five years ago at Tolstoj-mys』『The animal “blew,” not through blowholes, but through the mouth』『The death-year of the Rhytina race must therefore be altered at least to 1854』；他自己引了 Sauer p.181 與 Jakovlev『on the 27th November, 1755, laid a petition before the authorities on Kamchatka』，稱之『a thoughtful act honourable to its author』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.payoff",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "前提成立，池中無 Steller 海牛（搜尋海牛回空；grep sea cow、Rytina、Stejneger、白令皆無；N309 獨角鯨牙是不同案）。研究者標的兩個弱點都補了：Nordenskiöld 的原文讀到了（全案不再只靠 Stejneger 一方，而且讀出一個新對照：他書裡的動物『從嘴噴氣、有小前肢』，三年後的問答是『從頭頂噴水、看不到前肢』；他自己也引並稱讚 Jakovlev 的請願，日期 1755-11-27）；Sauer 的頁碼核為 p.181。改正：1768 是 von Baer 與 Brandt 的結論、Sauer 是他們能引的當年文字，不寫成『只出自 Sauer』；越冬數字改用 Stejneger 的原數；噴水高度兩位證人不同；『五天』標為 Stejneger 的說法。Stejneger 的卒年仍沒讀到。片長 8–10 分鐘成立。"
+    },
+    {
+      "id": "N2946",
+      "agent": "M4",
+      "reviewer": "R274",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "M4-S020 https://www.sciencealert.com/the-last-known-tasmanian-tiger-was-just-found-in-a-museum-cupboard（curl 逐字重讀）；新讀 M4-S028 ABC News 2022-12-05（逐字）；論文 PDF（acuresearchbank.acu.edu.au）、doi 轉址的 connectsci.au、tmag.tas.gov.au、smithsonianmag.com、iflscience.com 直接讀取都回 403 或連線中斷",
+      "reopen_result": "ScienceAlert 逐字有：『illegally captured by a trapper named Elias Churchill in May of 1936, the older female thylacine was secretly sold to the now-closed Beaumaris Zoo… die of exposure just a few months later, on the night of September 7』『a male thylacine housed at the Beaumaris Zoo in 1935, his name was not Benjamin and he wasn't the last. That rumor was completely made up in the 1960s by someone who didn't even work at the zoo』『The female thylacine captured by Churchill joined the zoo shortly after 'Benjamin' made his film debut, and according to the museum's records, she outlasted the male』『in the 1980s, the body was stored away』。ABC 逐字有 Paddle：『It's an unfortunate myth… It's time to remove it from the literature. It's so appalling Kathryn [Medlock] and I haven't even mentioned it in the [research] paper』；Medlock：『It was chosen because it was the best skin in the collection, we didn't know then it was the last one』、博物館懸賞 50 鎊。兩則都沒有 Frank Darby 的名字；標本師報告、Cunningham、五張卡紙、『陷阱違法所以沒登記』只在仍讀不到原頁的史密森尼報導裡。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial.role",
+        "editorial.minutes",
+        "editorial.payoff",
+        "editorial.visual",
+        "risk",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "維持待查，缺：Paddle & Medlock 2023 論文全文（兩輪都 403），以及『Benjamin』說法的原始刊登處（Paddle 自己說論文沒提這個名字，所以『名字是編的』的根據是他的訪談與更早的著作，都沒讀）。另外兩位研究者在世，不能入畫也不能當核心，單獨不成 8 分鐘。裁定：不當單集；改成 N2944 旅鴿之後的一章（3.5–5 分鐘，『最後一隻叫什麼名字』），答案縮到 ScienceAlert 與 ABC 兩則逐字讀到的內容，Darby 的名字、認出遺骸的方法與標本師細節先拿掉。讀到論文前不排進製作。池中無袋狼／thylacine（搜尋袋狼回空）。"
     }
   ],
   "theme_suggestions": [
     {
       "ids": [
-        "N2805",
-        "U23",
-        "U03"
+        "N2885",
+        "N2886"
       ],
-      "shared_question": "一座城為一場沒有來的空襲熄燈、開火、出動戰鬥機，事後的紀錄把天上的東西解釋成什麼？",
-      "why_it_flows": "U23 與 U03 已依 THEMES T06 合一集，但兩章合計只有 7–9 分鐘。N2805（1915 渥太華）排第一章：同樣是戰時的首都、同樣是氣球被當成敵機，差別是答案當天就有、第二晚照樣熄燈；接著 1942 年洛杉磯（氣象氣球可能引發警報、打了 1,440 發）、1952 年華盛頓（雷達也會看見不存在的東西），時間順著往下、每章升一級，三章合計 11.5–15 分鐘，不靠補料。"
+      "shared_question": "1950 年 3 月飛碟熱最高點時，出面說『我知道飛碟是哪來的』的人，手上到底拿得出什麼？",
+      "why_it_flows": "只在站主不想讓 N2885（納粹德國題）單獨成集時用：兩題的起點是同一個月、同一篇《明鏡》（1950-03-29 同時記了墜毀飛碟小矮人的傳聞與 Belluzzo、Schriever 兩位『發明人』）。N2885 先當第一章（拿得出的只有一疊被偷走的圖，三年後才被別人加上試飛日期），N2886 當主體（拿得出的是一片鋁與一台剩餘無線電零件，最後進了法庭）。兩章都是『誰、哪一年加上去的』，不靠補料；合起來會超過 13 分鐘，N2885 要壓到 4–5 分鐘。"
     },
     {
       "ids": [
-        "N2681",
-        "N2806"
+        "N2884",
+        "N2881"
       ],
-      "shared_question": "被叫作『史上第一宗外星綁架』的古老紀錄裡，『被帶走』的情節是原文就有，還是後人哪一步加上去的？",
-      "why_it_flows": "N2681（里昂主教阿戈巴，9–11 分鐘）的答案是 1670 年《Gabalis》把被告改成自述被帶走的目擊者；N2806（1639 年波士頓，4–5.5 分鐘）是同一個手法的現代版：日記只寫『被逆潮帶回原處』，1825 年編者說是迴流，當代 UFO 書把它讀成失去的時間。接在 N2681 之後當一章，方法相同、年代往後、各有自己的原文對照；不建議再接 N844／N623（那兩題的答案是當年官員自己已命名或否定）。"
+      "shared_question": "陰謀論說的『祕密小組的機密報告』真的存在——打開以後，裡面寫的是什麼？",
+      "why_it_flows": "不是併成一集（兩題各自都過 8 分鐘），而是建議排成連續兩集並共用一句承諾：1951 年倫敦的六頁報告建議『別查了』，1953 年華盛頓的小組建議『剝掉神祕光環』；兩份都真的機密、真的被否認或淨化過，內容卻都是『沒有東西好藏』。接點有文字可引：英國報告整段轉述美國 Sign／Grudge 的結論，發現者說交報告時 CIA 的 Chadwell 在場，而 Chadwell 正是 Durant 紀錄裡替 Robertson 小組開場的人（M1-S001 補回的姓名）。N2882 可排第三（Robertson 小組看過 Twinkle 的資料）。"
     },
     {
       "ids": [
-        "N2803",
-        "N2421"
+        "N1424",
+        "N2925"
       ],
-      "shared_question": "報紙上的『火星在發信號』，最初那份電報或文章到底寫了什麼？",
-      "why_it_flows": "N2803 是光學的 1894 與 1900 年（一個突起、一封十個字的電報、Lowell 自己出面澄清），N2421 從 1901 年 2 月 Tesla 的文章接到 1924 年海軍電報；時間首尾相接（1900 年 12 月→1901 年 2 月），同一個『當事人寫的／報紙轉述的』對照法。兩題都夠一集，建議排成連續兩集而不是合併；N2804（1926／1928 年發電報到火星）補到第二個來源後可當第二集的尾聲。"
+      "shared_question": "『七城』是怎麼從大西洋上的一座島，變成沙漠裡一份報告上的七座城，而最早的文字各自寫了什麼？",
+      "why_it_flows": "N1424（8–11 分鐘）講到七城傳說的年份與 Antilia 島名各自多晚才出現就停；N2925（9–11 分鐘）從 1539 年有人說『第一省有七座很大的城』接下去，講報告原文、傳言、現場與後來的辯護。兩題都夠一集，建議排成連續兩集而不是合併：時間順著往下，同一個『傳說說的／紙上寫的』對照法，N2925 開頭只需一句銜接。"
     },
     {
       "ids": [
-        "N121",
-        "N122",
-        "N2826"
+        "N2925",
+        "N2923"
       ],
-      "shared_question": "一種很多人都聽得到的怪聲，認真去量之後，哪些找到了源頭、哪些到今天只能排除？",
-      "why_it_flows": "T37（N121 嗡嗡聲＋N122 巴里薩爾槍聲）目前是後備，缺口正是總量只有約 8.8 分鐘。N2826 Moodus 怪聲 4.5–6 分鐘，答的是同一題的另一種結局：N122 的答案已寫 USGS 把『淺層小地震』列為這類轟聲的來源之一，Moodus 就是被微震網對上的那一種（深度不到 2.3 公里、伴隨像槍聲的聲響）。順序可排成：陶斯量不到→溫莎找到鋼廠→巴里薩爾 1895 年徵信只能逐案排除→Moodus 從 1729 年的『聽說神在發怒』到 1979 年的微震網，當收尾。合計約 13–16 分鐘，可刪 N121 的布里斯托段回到 13 分鐘內；T37 的標題要改成不只『儀器錄不到』。不靠補料，但 N122 的 Darwin 原信與 N2826 的 Ebel 原文仍是寫稿前待補。"
+      "shared_question": "傳說中的大城，第一個被派去現場的人回來寫了什麼？",
+      "why_it_flows": "Coronado 1540 年寫『七城是七個小村』，Champlain 1604 年寫『那裡沒有某些人描寫的任何奇景』；兩題之間還有一條讀到的文本連線：Ingram 1582 年供述裡的銀與水晶柱子，De Costa 1883 年說是『在重複 Cíbola 的故事』（M3-S021）。各自夠一集，建議排成連續兩集（先 Cíbola 後 Norumbega），不合併、不靠補料。"
     },
     {
       "ids": [
-        "N2781",
-        "N2825"
+        "N2944",
+        "N2946"
       ],
-      "shared_question": "極地的冷空氣讓人看見『不該在那裡』的東西時，寫下來的人後來被怎麼對待？",
-      "why_it_flows": "兩題各自成集（N2781 Crocker Land 9–10.5 分鐘、N2825 新地島 8.5–10 分鐘），不合併，但適合排成連續兩集：同一種逆溫層的把戲，N2781 是看見了不存在的陸地、後人到同一山頂也看見；N2825 是看見了還不該出現的太陽、被說成數錯日子四百年。一個是『看見的不是真的』，一個是『看見的是真的卻沒人信』，第二集可以直接接第一集結尾的蜃景。不要再加 N622 魚津蜃氣樓（成因科普，會變成重述）。"
+      "shared_question": "『最後一隻』的名字、年齡與身分，是當年的紀錄寫的，還是後來的人補上的？",
+      "why_it_flows": "N2944（8–10 分鐘）自己成集：旅鴿『Martha』的名字不在當年期刊上、年齡有兩個、出身有三個。N2946 接在後面當第二章（3.5–5 分鐘）：袋狼『Benjamin』連性別都不對，真正的最後一隻一直在博物館的教具櫃裡。兩章都以『我們記得的那張身分證』開場、以一件實物（冰裡的鳥、櫃裡的皮）收尾。條件：N2946 仍待查，要先讀到 Paddle & Medlock 2023 才能排；讀不到就只做 N2944 單集，不影響它成立。"
     },
     {
       "ids": [
-        "N2843",
-        "N2844"
+        "N2941",
+        "N1726",
+        "N862"
       ],
-      "shared_question": "預言說中了一次，要怎麼知道那是本事還是本來就會發生？",
-      "why_it_flows": "N2844（1838 年 Murphy 說中『一月二十日最冷』，事後有人逐日對過，說錯的日子比說對多）當前史一章，接 N2843（1883 年 Wiggins 說中『三月有風暴』，信號站當場給出『三月平均十二個』）；兩題的答案都是同一個動作——拿基準機率和原話去對，N2844 4–5.5 分鐘正好當 N2843 的開場章，不需補料。"
-    },
-    {
-      "ids": [
-        "N2402",
-        "N2845"
-      ],
-      "shared_question": "Mackay《異常流行幻象》同一頁連續寫了兩場倫敦末日恐慌（『1736 年 Whiston』與『1761 年地震』），哪一場有當年的紙本可查？",
-      "why_it_flows": "兩段在 Mackay 書裡是上下相連的兩段。N2402 已考出地震恐慌其實是 1750 年、有 Walpole 當週的信；N2845 接著看上一段：Mackay 自己說唯一的記述靠不住，而那篇諷刺文早三年就印了、星期也對不上。一場年份寫錯但真有其事，一場連出處都找不到，同一個方法（回去找當年的紙）得出兩種結果。N2845 只有 5.5–7 分鐘，當 N2402 的第二章；若排題時 N2402 已滿，改接 N2701（同一群作者的另一個被當真的玩笑）。"
-    },
-    {
-      "ids": [
-        "N2861",
-        "N2862"
-      ],
-      "shared_question": "『這個鬼早就有人招了』——那份招供，到底有沒有人見過？",
-      "why_it_flows": "Woodstock 1649 的『Collins 自白』是 98 年後一篇雜誌文章轉述的未刊回憶錄，Scott 1831 年沒找到；Stockwell 1772 的『女僕自白』是 45 年後一位老先生的口頭轉述，Hone 承認沒去要書面。同一個方法（招供是誰、隔了幾年、有沒有落成文字），都在英格蘭，年代順著往下；N2862 只有 5–7 分鐘，接在 N2861 後面當第二章不必補料，合計 13–16 分鐘可視留存剪成一集或兩集。"
-    },
-    {
-      "ids": [
-        "N2501",
-        "N2865"
-      ],
-      "shared_question": "鬼魂真的在法庭上破過案嗎？審判當時的紀錄是怎麼寫的？",
-      "why_it_flows": "N2501 Fisher（1827）是審判紀錄裡完全沒有鬼、鬼是六年後的詩加上去的；N2865 Greenbrier（1897）是鬼確實進了法庭，卻是被告律師問出來的，檢方靠的是情況證據。同一個問題的兩種答案，N2865 只有 6–8 分鐘，只適合當 N2501 的第二章；兩題都是真實命案，照靈異守則 3 不提受害者細節。"
-    },
-    {
-      "ids": [
-        "N2646",
-        "N2863"
-      ],
-      "shared_question": "被算在 Defoe 頭上的鬼故事，其實是誰寫的？",
-      "why_it_flows": "N2646 Veal 夫人：被當成 Defoe 編的小冊，有事發五天的信為證，作者大概也不是 Defoe；N2863 Botathen：隨 Duncan Campbell 傳印出、常被當成 Defoe 編的敘述，其實是牧師 Ruddle 自己寫的，反而是 1867 年有人另造了一本日記。兩題各自成集，連排時第二集可以直接從『又一篇被當成 Defoe 的』開場。連結只有 Defoe，不用『Mrs. Veale 改名』那個沒有核實的說法。"
-    },
-    {
-      "ids": [
-        "N2864",
-        "N2867"
-      ],
-      "shared_question": "鬧鬼案裡被指為巫的人自己先去告官：官方紀錄對那些怪事到底說了什麼？",
-      "why_it_flows": "1682 年 Great Island：被暗指為女巫的 Hannah Jones 向議會陳情屋主誣告，紀錄裡只有互罵與一句『法院怎麼處理查不到』；1851 年 Cideville：被指為巫師的牧羊人告神父誹謗，判決第一段就寫原因不明。兩題都是後人拿去當靈異實證、而官方文件其實是一場鄰里官司。各自成集（8–10、7–9 分鐘），這組是可選的連排，不是合併。"
+      "shared_question": "一種大型動物『被科學發現』的那一刻，科學家手上到底有什麼？",
+      "why_it_flows": "不必合併，建議排成系列：N1726 尚氏鹿（只有使節團送的鹿角）、N2941 okapi（只有兩條士兵的皮帶，被暫時命名成馬）、N862 中南大羚（獵人牆上的角）。三題都是當地人早就認得、標本先於目擊，答案各不相同；N2941 放中間，因為只有它寫到『命名之後三個月就改口』。"
     }
   ]
 }
