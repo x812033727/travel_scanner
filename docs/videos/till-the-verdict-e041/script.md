@@ -20,7 +20,7 @@ Dana 走過來，把一份動議面朝下放上燈箱：「We ask for a court ex
 ## 這集接在哪
 
 接第 40 集最後一鏡 c49（已對過第 40 集 c49；bible〈接點表〉40→41：新渡輪站大廳，第 127 天 08:58，Fiona 剛說完 "Entry nine. Just made it."、Nora 兩手扶著半拆開的灰色搬家毯、大廳另一頭 Cole 把手機舉到耳邊）。**跳到第 128 天 20:40 的 Remelt**，不用字卡：
-第一鏡 c01 是鉤子（燈箱從下往上亮、兩張影本疊著、她的食指，沒有臉）；第二鏡 c02 交代時間與地方：前牆高窗外藍黑的夜、三號爐的橘光在紅磚上、Nora 換成 `work`（低馬尾、護目鏡推在頭上、帆布圍裙、袖子捲到手肘）、遠處爐邊的 Sparks 與長桌另一頭的 Dana（都虛焦）。樣品片留在渡輪站，廠裡沒有藍玻璃；Dana 帶來的兩張影本已經被 Nora 用膠帶貼在燈箱上。
+第一鏡 c01 是鉤子（燈箱從下往上亮、兩張影本疊著、她的食指，沒有臉）；第二鏡 c02 交代時間與地方：前牆高窗外藍黑的夜、三號爐的橘光在紅磚上、Nora 換成 `work`（低馬尾、護目鏡推在頭上、帆布圍裙、袖子捲到手肘）、遠處爐邊的 Sparks 與坐在燈箱旁第二張凳子上看卷宗的 Dana（都虛焦）。樣品片留在渡輪站，廠裡沒有藍玻璃；Dana 帶來的兩張影本已經被 Nora 用膠帶貼在燈箱上。
 時間：第 128 天（7/22 週三）20:40 → 約 21:40。夏夜，乾，不下雨；日落約 20:55，20:40 之後窗外由深藍轉藍黑（整集寫藍黑，不變）。
 最後一鏡 c42 照〈接點表〉41→42：Remelt，第 128 天 21:40，夜。Nora（`work`）坐在長桌靠燈箱那頭的凳子上，燈箱上一張空白的紙，她右手拿著 Dana 的黑色鋼珠筆、筆尖懸在紙上一指寬，左手平放在燈箱邊（無名指上 Elias 的戒指），臉被燈箱從下往上照亮；Dana（基本款）站在她身後、畫面左；動議面朝下放在燈箱右半；揉過又攤平的兩張影本在燈箱旁；草圖散在凳子四周的地上；Sparks 在爐邊（遠、虛焦）。第 42 集跳到第 130 天 09:00 的法庭。
 
@@ -38,7 +38,7 @@ Dana 走過來，把一份動議面朝下放上燈箱：「We ask for a court ex
 ## 分鏡與台詞
 
 景別與運鏡寫中文給人讀；正文由製作端照 `minimax-h3-colab/references/motion-quality.md` 第二節改寫成英文，每一鏡的英文正文寫「vertical 9:16 frame」與光：
-c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady orange glow on the red brick walls, the cold white glow of a light box on the long wooden workbench, one steady warm work lamp hanging over the far end of the workbench, the high windows blue-black, the night stays unchanged`。
+c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady orange glow on the red brick walls, the cold white glow of a light box on the long wooden workbench, one steady warm work lamp hanging over the light box end of the workbench, the high windows blue-black, the night stays unchanged`。
 燈箱前的臉加 `cold white light from below on her chin and cheekbones`；Dana 說話的臉寫工作燈的穩定暖光；爐火只沿著臉頰邊（說話的臉不只靠跳動的爐火照）。
 
 **欄位怎麼讀**：
@@ -58,9 +58,9 @@ c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady 
 ### 第一場：My last stroke flicks out.（約 39 秒）
 
 **場頭**：
-- **地點與場景圖**：Remelt 主廠房 `remelt`（直式夜版）：後牆正中是三號爐 `a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, an orange glow pouring from the gap of its half-open door`，爐前離爐口三大步 `a worn yellow safety line painted across the concrete floor`；中間是前後向的長木工作台，**靠爐子那頭**放 `a flat white drafting light box about the size of a large serving tray, its glass top glowing evenly from below, on the long wooden workbench`，燈箱前一張 `a plain wooden shop stool about as high as her hip`；**靠大門那頭**上方吊 `a single work lamp hanging over the workbench, steady warm light`，Dana 坐在燈下的另一張木凳上；桌下一層層板放資料夾；前牆大門上方的高窗是藍黑的夜。同一個老玻璃廠，近景都寫「同一個老玻璃廠」。
-- **時間與天氣**：第 128 天（7/22 週三）20:40–21:00，夏夜，乾；窗外藍黑；爐火的橘光在紅磚上、燈箱的冷白光從下往上、工作燈的暖光在長桌另一頭；整場光不變。
-- **軸線**：標準鏡位在工作台的右牆側（高窗那側）、往左牆拍：**三號爐在畫面右、大門在畫面左**；燈箱在工作台的畫面右段；Nora 站在燈箱後（工作台的左牆側）、面向鏡頭這邊，身後是紅磚牆與爐火的橘光；Dana 坐在工作台靠大門那頭、同一側（畫面左、遠）；Sparks 在畫面右、爐邊黃線內（遠）。Nora 看 Sparks 朝畫面右、看 Dana 朝畫面左；Dana 看 Nora 朝畫面右。草圖攤在燈箱那頭、工作台與左牆之間的水泥地上（Nora 腳邊）。燈箱的插鏡鏡頭貼著工作台靠鏡頭這側的桌邊、低、平拍。
+- **地點與場景圖**：Remelt 主廠房 `remelt`（直式夜版）：後牆正中是三號爐 `a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, an orange glow pouring from the gap of its half-open door`，爐前離爐口三大步 `a worn yellow safety line painted across the concrete floor`；中間是前後向的長木工作台，**靠爐子那頭**放 `a flat white drafting light box about the size of a large serving tray, its glass top glowing evenly from below, on the long wooden workbench`，燈箱前一張 `a plain wooden shop stool about as high as her hip`，上方吊 `a single work lamp hanging over the workbench, steady warm light`（第 31–40 集格局）；燈箱左邊（往大門那側）兩步，Dana 坐在第二張同樣的木凳上看卷宗，也在工作燈下；桌下一層層板放資料夾；前牆大門上方的高窗是藍黑的夜。同一個老玻璃廠，近景都寫「同一個老玻璃廠」。
+- **時間與天氣**：第 128 天（7/22 週三）20:40–21:00，夏夜，乾；窗外藍黑；爐火的橘光在紅磚上、燈箱的冷白光從下往上、工作燈的暖光從燈箱那頭的上方照下來；整場光不變。
+- **軸線**：標準鏡位在工作台的右牆側（高窗那側）、往左牆拍：**三號爐在畫面右、大門在畫面左**；燈箱在工作台的畫面右段；Nora 站在燈箱後（工作台的左牆側）、面向鏡頭這邊，身後是紅磚牆與爐火的橘光；Dana 坐在燈箱左邊兩步的第二張木凳上、同一側（畫面左）；Sparks 在畫面右、爐邊黃線內（遠）。Nora 看 Sparks 朝畫面右、看 Dana 朝畫面左；Dana 看 Nora 朝畫面右。草圖攤在燈箱那頭、工作台與左牆之間的水泥地上（Nora 腳邊）。燈箱的插鏡鏡頭貼著工作台靠鏡頭這側的桌邊、低、平拍。
 - **在場的人**：Nora、Dana（遠、虛焦，讀卷宗）、Sparks（爐邊、遠、虛焦）。
 - **這場要講完的事**：她看出自己的最後一筆是往外挑的，燈箱上那兩個每一轉都停；滿地婚前的草圖每一張都挑出去；那張 Forever 花瓶草圖她婚前就簽了他的姓（結尾：「I signed it with his name. Before the wedding.」）。
 - **配樂**：c01 一個很低、很冷的長音；c03–c04 一段慢的鋼琴；c09–c12 每一聲 "Flick." 一個輕的撥弦；c13 停掉，c14 一個低的大提琴音。
@@ -69,7 +69,7 @@ c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c01 | 插鏡、特寫、固定；**第一格就是發亮的燈箱玻璃與她的右手食指**；直式；鏡頭貼著工作台的桌邊、低、平拍；同一個老玻璃廠 | `a flat white drafting light box about the size of a large serving tray, its glass top glowing evenly from below, on the long wooden workbench`；上面 `two sheets of white paper laid one over the other on the glowing light box, only two soft overlapping grey shapes far out of focus`，上緣一條透明膠帶；Nora 的右手（灰色亨利領袖子捲到手肘）食指的指尖貼在紙上；焦點在指尖；畫面裡沒有臉 | 食指沿著灰影慢慢往右滑（動作一），在一個轉彎停住（動作二）；剪在指尖停住；畫面上沒有嘴；最後：指尖停在紙上 | — | 約 2.5 秒 |
-| c02 | 中景、慢推（從中景推到中近景）；交代鏡；鏡頭在工作台的右牆側、低；直式前後疊開：前景下緣是燈箱的邊（冷白光），中間是燈箱後俯身的 Nora，畫面右後是爐口的橘光，畫面左後是長桌另一頭的工作燈，上緣左邊是高窗 | 露臉清楚的只有 Nora。Nora（`work`：齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、深色帆布圍裙、灰色亨利領長袖捲到手肘），俯身在燈箱上，兩手撐在燈箱兩邊，左手 `a plain narrow white-gold band with no stone, on her left ring finger`；`cold white light from below on her chin and cheekbones`；眼眶發紅、眉頭壓低、下巴繃緊、鼻子重重呼氣，眼睛看著燈箱上的紙（畫面下緣），`no smile at any moment, until the last frame`；畫面右後、很遠、虛焦：黃線內爐口前一個戴護目鏡的年輕男人的側影（Sparks）；畫面左後、很遠、虛焦：工作燈下坐著一個高髮髻的女人低頭看卷宗（Dana）；高窗藍黑 | Nora 俯身更低（動作一），一綹頭髮從耳後滑下來、碰到燈箱的玻璃（動作二）；剪在頭髮碰到玻璃；嘴閉著；最後：她俯在燈箱上，頭髮碰著玻璃 | — | 約 2.5 秒 |
+| c02 | 中景、慢推（從中景推到中近景）；交代鏡；鏡頭在工作台的右牆側、低；直式前後疊開：前景下緣是燈箱的邊（冷白光），中間是燈箱後俯身的 Nora，畫面右後是爐口的橘光，畫面上緣是吊在燈箱上方的工作燈，上緣左邊是高窗 | 露臉清楚的只有 Nora。Nora（`work`：齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、深色帆布圍裙、灰色亨利領長袖捲到手肘），俯身在燈箱上，兩手撐在燈箱兩邊，左手 `a plain narrow white-gold band with no stone, on her left ring finger`；`cold white light from below on her chin and cheekbones`；眼眶發紅、眉頭壓低、下巴繃緊、鼻子重重呼氣，眼睛看著燈箱上的紙（畫面下緣），`no smile at any moment, until the last frame`；畫面右後、很遠、虛焦：黃線內爐口前一個戴護目鏡的年輕男人的側影（Sparks）；畫面左、兩步外、虛焦：第二張木凳上坐著一個高髮髻的女人低頭看卷宗（Dana）；高窗藍黑 | Nora 俯身更低（動作一），一綹頭髮從耳後滑下來、碰到燈箱的玻璃（動作二）；剪在頭髮碰到玻璃；嘴閉著；最後：她俯在燈箱上，頭髮碰著玻璃 | — | 約 2.5 秒 |
 | c03 | 近景、慢推（從胸上推到肩上）；鏡頭在燈箱另一邊、低；直式，臉在上三分之一，下緣是燈箱的邊；**第一格就是 Nora 的臉與肩膀，整鏡不拉遠**；身後是紅磚牆上爐火的橘光（虛焦） | Nora（`work`，低馬尾、護目鏡推在頭上）；`cold white light from below on her chin and cheekbones`；四分之三側臉朝畫面左下、眼睛看著燈箱上的紙，不看鏡頭；眼眶發紅、眉頭壓低、嘴唇在字之間抿緊、聲音低、清楚、一字一字，`no smile at any moment, until the last frame` | Nora 看著燈箱上的紙，嘴在說話（低、清楚、一字一字）；說完右手食指在紙上點一下，嘴閉上；最後：她低頭看著紙 | Nora（低、清楚，一字一字）：My last stroke flicks out.（我的最後一筆，是往外挑的）（原聲） | 約 3 秒 |
 | c04 | 中近景、固定；同 c03 的方向、退半步；直式，臉在上三分之一、**右手在胸前、整隻手留在畫面裡**；身後是紅磚牆與爐火的橘光（虛焦） | Nora（`work`，袖子捲到手肘）；`cold white light from below on her chin and cheekbones`；右手舉到胸前、拇指與食指捏在一起；四分之三側臉朝畫面左下、眼睛看著自己的右手，不看鏡頭；眉頭壓低、眼睛不眨、嘴唇在字之間抿緊、聲音低，`no smile at any moment, until the last frame` | Nora 的右手腕一轉、拇指與食指往右上一挑、張開離開（動作一），嘴在說話（低）（動作二）；說完右手放回燈箱邊，嘴閉上；最後：她的右手按在燈箱邊 | Nora（低）：Like pulling a glass rod.（像把玻璃棒抽出來）（原聲） | 約 3.5 秒 |
 | c05 | 插鏡、特寫、固定；同 c01 的鏡位；**第一格就是燈箱的玻璃與她的右手食指**；直式 | `two sheets of white paper laid one over the other on the glowing light box, only two soft overlapping grey shapes far out of focus`；Nora 的右手食指（灰色袖子捲到手肘）；焦點在指尖；畫面裡沒有臉 | 食指沿著灰影往前滑、停一下（動作一），再滑、又停一下（動作二）；剪在第二次停住；畫面上沒有嘴；最後：指尖停在紙上 | — | 約 2.5 秒 |
@@ -86,9 +86,9 @@ c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady 
 ### 第二場：He traced me.（約 40 秒）
 
 **場頭**：
-- **地點與場景圖**：同一個老玻璃廠，燈箱那頭與長桌另一頭；地上攤著草圖；爐口前黃線內是 Sparks；長桌靠大門那頭的工作燈下是 Dana，`three thick plain buff case files, stacked on the workbench`。
+- **地點與場景圖**：同一個老玻璃廠，燈箱那頭；地上攤著草圖；爐口前黃線內是 Sparks；燈箱左邊兩步、第二張木凳上是 Dana，`three thick plain buff case files, stacked on the workbench`。
 - **時間與天氣**：第 128 天約 21:00–21:20，夏夜，窗外藍黑；光同第一場，不變。
-- **軸線**：同第一場：爐子在畫面右、大門在畫面左；Nora 在燈箱後與地上的草圖堆（畫面右段），Sparks 在畫面右、爐邊（c22 走到黃線外、離燈箱兩步），Dana 在畫面左、長桌另一頭。Nora 吼 Sparks 朝畫面右；Sparks 看 Nora 朝畫面左；Dana 說話時四分之三側臉朝畫面右（Nora），Nora 看 Dana 朝畫面左。
+- **軸線**：同第一場：爐子在畫面右、大門在畫面左；Nora 在燈箱後與地上的草圖堆（畫面右段），Sparks 在畫面右、爐邊（c22 走到黃線外、離燈箱兩步），Dana 在畫面左、燈箱左邊兩步的木凳上。Nora 吼 Sparks 朝畫面右；Sparks 看 Nora 朝畫面左；Dana 說話時四分之三側臉朝畫面右（Nora），Nora 看 Dana 朝畫面左。
 - **在場的人**：Nora、Sparks、Dana。
 - **這場要講完的事**：她把影本扯下、揉掉、又攤平留作證據，對 Sparks 吼出 "He traced me."，蹲坐進草圖裡；Sparks 以為贏了，Dana 說法官看不出來；Nora 說兩個簽名彼此一模一樣，Dana 說這正是破綻：沒人簽得一樣兩次，只有描的會一樣（結尾：「Only a tracing matches.」）。
 - **配樂**：c15 一段低的弦往前推；c16–c18 每個動作一個重的撥弦；c19 吼完全部抽掉，只剩她的喘氣與爐子的低轟；c22 一個亮的短音；c23 停掉；c26 一段乾、慢的低音提琴；c28 一個轉上去的和弦。
@@ -101,13 +101,13 @@ c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady 
 | c17 | 中近景、固定；鏡頭在燈箱另一邊、低；直式，臉在上三分之一、兩手在胸前；身後是紅磚牆與爐火的橘光（虛焦） | Nora（`work`）；`cold white light from below on her chin and cheekbones`；兩手在胸前抓著 `a single photocopied white page, held so only its back shows`（兩張疊在一起，背面朝鏡頭），左手 `a plain narrow white-gold band with no stone, on her left ring finger`；眼睛看著手裡的紙、眉頭擰緊、牙關咬住、鼻子重重噴氣，`no smile at any moment, until the last frame` | Nora 兩手把兩張紙揉成一團；剪在揉到一半；嘴閉著；最後：`a single photocopied white page, held so only its back shows, crumpled into a ball`（兩張揉在一起）在她兩手裡 | — | 約 2.5 秒 |
 | c18 | 插鏡、手部特寫、固定；**第一格就是燈箱旁的工作台桌面與她兩手間的紙團**；直式；鏡頭在桌面高度、從桌邊平拍 | Nora 的兩手（灰色袖子捲到手肘），左手 `a plain narrow white-gold band with no stone, on her left ring finger`；`a single photocopied white page, held so only its back shows, crumpled into a ball`；燈箱的邊在畫面右（冷白光）；畫面裡沒有臉 | 她的兩手把紙團放到桌上、馬上攤開（動作一），兩手掌把它壓平、再壓一下（動作二）；剪在第二下壓下去；畫面上沒有嘴；最後：`a single photocopied white page, held so only its back shows, smoothed flat but still creased`，背面朝上、兩張疊著，壓在燈箱旁的桌面上，一直留在畫面中間 | — | 約 2.5 秒 |
 | c19 | 近景、固定；鏡頭在燈箱另一邊、低；直式，臉在上三分之一；身後是紅磚牆與爐火的橘光（虛焦） | Nora（`work`，低馬尾、護目鏡推在頭上）；`cold white light from below on her chin and cheekbones`；兩手還按在攤平的紙上；第一格頭已經轉向畫面右外的爐邊、四分之三側臉朝畫面右、眼睛看著 Sparks（畫框外）；眉頭壓到最低、眼睛睜大、嘴張大、脖子的筋繃起、聲音大、破，`no smile at any moment, until the last frame` | Nora 對著畫面右外的 Sparks，嘴在喊（大聲、破）；喊完兩手從紙上抬起、垂下去，嘴張著喘；最後：她的兩手垂在身側，大口喘 | Nora（大聲、破）：He traced me. Like a coloring book.（他是描的。像在描著色本）（原聲） | 約 3.5 秒 |
-| c20 | 中近景、固定；鏡頭在黃線外、往爐口拍；直式，前景下緣是 `a worn yellow safety line painted across the concrete floor`；身後是爐口的橘光 | Sparks（基本款：平頭、小銀耳釘、黑 T 恤、前臂褐色隔熱護套），站在黃線內、爐口斜前方，`clear wraparound safety glasses, over his eyes`，兩手 `a pair of long grey heat-resistant gloves reaching to the elbow`；`a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, an orange glow pouring from the gap of its half-open door` 在他身後；工作燈遠遠的暖光照在他半邊臉、爐火在另一邊；第一格他側身對著爐子，然後頭轉向畫面左的她；眉毛猛地抬起、嘴張開、眼睛睜大，`no smile at any moment, until the last frame` | Sparks 的頭轉向畫面左的燈箱（動作一），整個身子跟著轉過來（動作二）；剪在身子轉到一半；嘴張著；最後：他面向畫面左，站在黃線內 | — | 約 2 秒 |
+| c20 | 中近景、固定；鏡頭在黃線外、往爐口拍；直式，前景下緣是 `a worn yellow safety line painted across the concrete floor`；身後是爐口的橘光 | Sparks（基本款：平頭、小銀耳釘、黑 T 恤、前臂褐色隔熱護套），站在黃線內、爐口斜前方，`clear wraparound safety glasses, over his eyes`，兩手 `a pair of long grey heat-resistant gloves reaching to the elbow`；`a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, an orange glow pouring from the gap of its half-open door` 在他身後；工作燈的暖光遠遠照在他半邊臉、爐火在另一邊；第一格他側身對著爐子，然後頭轉向畫面左的她；眉毛猛地抬起、嘴張開、眼睛睜大，`no smile at any moment, until the last frame` | Sparks 的頭轉向畫面左的燈箱（動作一），整個身子跟著轉過來（動作二）；剪在身子轉到一半；嘴張著；最後：他面向畫面左，站在黃線內 | — | 約 2 秒 |
 | c21 | 中近景、慢推（從中近景推到近景）；鏡頭貼著地、在草圖堆前、低；直式：前景是地上幾張草圖（虛焦），中間是她，上緣是工作台的邊；**整個頭一直在畫面裡** | Nora（`work`，低馬尾、袖子捲到手肘），背靠著工作台的桌腳；地上 `loose sheets of heavy white drawing paper about the size of a magazine page, soft grey pencil drawings of vases and glass bowls, spread across the concrete floor, their lower corners far out of focus`；燈箱的冷白光從上面斜照在她的頭頂與肩、爐火的橘光沿著左頰；她眼睛看著畫面下方的紙、眉頭擰住、嘴張著、肩膀大大地起伏、喘到喉嚨發緊，`no smile at any moment, until the last frame` | Nora 背貼著桌腳滑下來、蹲坐進草圖堆裡（動作一），肩膀一起一伏地喘（動作二）；剪在第三次喘氣；嘴張著喘、沒有字；最後：她坐在地上的草圖中間、背靠桌腳、膝蓋屈著 | — | 約 4 秒 |
 | c22 | 中近景、慢推（從中近景推到近景）；鏡頭在燈箱那頭、往爐子拍；直式，臉在上三分之一、**頭上留空**；前景下緣是工作台的角（虛焦）；身後是黃線與爐口的橘光（虛焦） | Sparks（基本款，兩手 `a pair of long grey heat-resistant gloves reaching to the elbow`），從黃線內跨到線外、離燈箱兩步；工作燈的暖光照在臉上，爐火只在他背後；四分之三側臉朝畫面左下的 Nora、眼睛看著她；眼睛睜大發亮、眉毛高高抬起、**露齒咧嘴笑**、聲音大、急 | Sparks 用右手把護目鏡推上額頭（動作一），嘴在喊（大聲、急，咧嘴）（動作二）；說完左手握拳往空中一揮，嘴閉上；最後：`clear wraparound safety glasses, pushed up on his forehead`，他站在黃線外、左拳舉著 | Sparks（大聲、急，咧嘴）：So it's fake! We got him!（所以是假的！我們逮到他了！）（原聲）（→ 答在 c23） | 約 3.5 秒 |
-| c23 | 近景、慢推（從胸上推到肩上）；鏡頭在長桌靠大門那頭、低；直式，臉在上三分之一；前景下緣是攤開的卷宗的紙邊（虛焦） | Dana（35 歲奈及利亞裔美國女性、深棕膚色、高髮髻、黑色合身西裝外套配白 T 恤），坐在工作台另一頭的木凳上；`three thick plain buff case files, stacked on the workbench`，最上面一本攤開、紙背與紙邊朝鏡頭、虛焦；工作燈的暖光從正上方照在她臉上；四分之三側臉朝畫面右（Nora 與 Sparks 那頭），**眼睛一直看著卷宗、不抬頭**（說話模板的 eyes on 換成本鏡寫的視線）；眉毛平、嘴唇在字之間抿薄、下巴不動、聲音快、乾，`no smile at any moment, until the last frame` | Dana 看著卷宗，嘴在說話（快、乾）；說完右手翻過一頁，嘴閉上；最後：她低頭看著翻過去的那頁 | Dana（快、乾，不抬頭）：You can see it. A judge can't.（妳看得出來。法官看不出來）（原聲）← 因為 c22 | 約 3.5 秒 |
+| c23 | 近景、慢推（從胸上推到肩上）；鏡頭在工作台的右牆側、Dana 的右前方、低；直式，臉在上三分之一；前景下緣是攤開的卷宗的紙邊（虛焦） | Dana（35 歲奈及利亞裔美國女性、深棕膚色、高髮髻、黑色合身西裝外套配白 T 恤），坐在燈箱左邊兩步的第二張木凳上；`three thick plain buff case files, stacked on the workbench`，最上面一本攤開、紙背與紙邊朝鏡頭、虛焦；吊在燈箱上方的工作燈，暖光斜斜照在她臉上；四分之三側臉朝畫面右（Nora 與 Sparks 那頭），**眼睛一直看著卷宗、不抬頭**（說話模板的 eyes on 換成本鏡寫的視線）；眉毛平、嘴唇在字之間抿薄、下巴不動、聲音快、乾，`no smile at any moment, until the last frame` | Dana 看著卷宗，嘴在說話（快、乾）；說完右手翻過一頁，嘴閉上；最後：她低頭看著翻過去的那頁 | Dana（快、乾，不抬頭）：You can see it. A judge can't.（妳看得出來。法官看不出來）（原聲）← 因為 c22 | 約 3.5 秒 |
 | c24 | 近景、固定；同 c22 的鏡位；直式，臉在上三分之一 | Sparks（基本款，`clear wraparound safety glasses, pushed up on his forehead`，兩手長隔熱手套），站在黃線外；工作燈的暖光照在臉上；眼睛從畫面左遠處的 Dana 移回地上的 Nora；咧開的嘴慢慢闔上、嘴角落平、眉頭往中間擠、肩膀垮下來，到最後一格都不再笑 | Sparks 舉著的左拳慢慢放下（動作一），眼睛移到畫面左下的 Nora（動作二）；剪在拳頭放到腰；嘴閉著；最後：他兩手垂著，看著畫面左下 | — | 約 2 秒 |
-| c25 | 近景、慢推（從胸上推到肩上）；鏡頭貼著地、在她的右前方、低；直式，臉在上三分之一；前景下緣是草圖的邊（虛焦）；身後是工作台的腳與紅磚牆 | Nora（`work`），坐在草圖中間、背靠桌腳；燈箱的冷白光從上面斜照在臉上，爐火只沿著左頰邊；第一格頭已經抬起、四分之三側臉朝畫面左（長桌另一頭的 Dana）、眼睛看著她；眉頭壓低、眼睛不眨、嘴唇在字之間閉緊、聲音低、清楚、喘還沒停，`no smile at any moment, until the last frame` | Nora 看著 Dana，嘴在說話（低、清楚，一字一頓）；說完右手撐在身邊的地上，嘴閉上；最後：她撐著地、看著畫面左 | Nora（低、清楚，一字一頓）：They match each other. Perfectly.（那兩個簽名彼此一模一樣。完全一樣）（原聲）（→ 答在 c26） | 約 3 秒 |
-| c26 | 近景、慢推（從胸上推到肩上）；同 c23 的鏡位；直式，臉在上三分之一、**頭上留出空間，站起來後整個頭仍在畫面裡** | Dana（高髮髻、黑色西裝外套）；工作燈的暖光照在臉上；第一格卷宗已經闔上、她的頭正抬起來（全集第一次抬頭）；四分之三側臉朝畫面右遠處的 Nora、眼睛看著她；眉毛一抬、眼睛定住、嘴唇在字之間閉著、聲音乾、快，`no smile at any moment, until the last frame` | Dana 抬眼看著 Nora，嘴在說話（乾、快）（動作一）；說完兩手撐著桌面從木凳上站起來（動作二），嘴閉上；剪在站直；最後：她站在工作台另一頭，看著畫面右 | Dana（乾、快）：That's the tell.（那就是破綻）（原聲）← 因為 c25 | 約 3 秒 |
+| c25 | 近景、慢推（從胸上推到肩上）；鏡頭貼著地、在她的右前方、低；直式，臉在上三分之一；前景下緣是草圖的邊（虛焦）；身後是工作台的腳與紅磚牆 | Nora（`work`），坐在草圖中間、背靠桌腳；燈箱的冷白光從上面斜照在臉上，爐火只沿著左頰邊；第一格頭已經抬起、四分之三側臉朝畫面左（木凳上的 Dana）、眼睛看著她；眉頭壓低、眼睛不眨、嘴唇在字之間閉緊、聲音低、清楚、喘還沒停，`no smile at any moment, until the last frame` | Nora 看著 Dana，嘴在說話（低、清楚，一字一頓）；說完右手撐在身邊的地上，嘴閉上；最後：她撐著地、看著畫面左 | Nora（低、清楚，一字一頓）：They match each other. Perfectly.（那兩個簽名彼此一模一樣。完全一樣）（原聲）（→ 答在 c26） | 約 3 秒 |
+| c26 | 近景、慢推（從胸上推到肩上）；同 c23 的鏡位；直式，臉在上三分之一、**頭上留出空間，站起來後整個頭仍在畫面裡** | Dana（高髮髻、黑色西裝外套）；工作燈的暖光照在臉上；第一格卷宗已經闔上、她的頭正抬起來（全集第一次抬頭）；四分之三側臉朝畫面右下的 Nora、眼睛看著她；眉毛一抬、眼睛定住、嘴唇在字之間閉著、聲音乾、快，`no smile at any moment, until the last frame` | Dana 抬眼看著 Nora，嘴在說話（乾、快）（動作一）；說完兩手撐著桌面從木凳上站起來（動作二），嘴閉上；剪在站直；最後：她站在木凳旁，看著畫面右 | Dana（乾、快）：That's the tell.（那就是破綻）（原聲）← 因為 c25 | 約 3 秒 |
 | c27 | 中近景、固定；同 c23 的方向、退半步；直式，臉在上三分之一 | Dana（基本款：高髮髻、黑色合身西裝外套配白 T 恤、黑長褲），第一格已經站著、在木凳旁；`three thick plain buff case files, stacked on the workbench`；工作燈的暖光；四分之三側臉朝畫面右的 Nora、眼睛看著她；眉毛平、下巴一收、嘴唇在字之間抿薄、聲音快、清楚，`no smile at any moment, until the last frame` | Dana 看著 Nora，嘴在說話（快、清楚）（動作一）；說完右手從最上面那本卷宗裡抽出一份釘好的文件（動作二），嘴閉上；剪在文件抽出來；最後：`a few stapled white pages, held so only the backs or edges show` 在她右手、背面朝鏡頭 | Dana（快、清楚）：Nobody signs the same twice.（沒有人能簽得一模一樣兩次）（原聲） | 約 3 秒 |
 | c28 | 近景、慢推（從胸上推到肩上）；同 c27 的鏡位；直式，臉在上三分之一；下緣是她的右手與卷宗 | Dana（高髮髻、黑色西裝外套），站著；工作燈的暖光；右手把 `a few stapled white pages, held so only the backs or edges show` 拿在胸前；四分之三側臉朝畫面右的 Nora、眼睛看著她；眉毛平、眼睛不眨、嘴唇在字之間閉著、聲音低、篤定，`no smile at any moment, until the last frame` | Dana 看著 Nora，嘴在說話（低、篤定）；說完把動議在左手掌心輕敲一下，嘴閉上；最後：動議在她右手、背面朝鏡頭 | Dana（低、篤定）：Only a tracing matches.（只有描出來的，才會一模一樣）（原聲）（結尾） | 約 3 秒 |
 
@@ -116,7 +116,7 @@ c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady 
 **場頭**：
 - **地點與場景圖**：同一個老玻璃廠，燈箱那頭：`a flat white drafting light box about the size of a large serving tray, its glass top glowing evenly from below, on the long wooden workbench`；燈箱旁背面朝上壓著攤平的兩張影本；燈箱前那張 `a plain wooden shop stool about as high as her hip`；地上攤著草圖；爐口前黃線內是 Sparks。
 - **時間與天氣**：第 128 天約 21:20–21:40，夏夜，窗外藍黑；光同第一場，不變。
-- **軸線**：同第一場：爐子在畫面右、大門在畫面左；Dana 沿著工作台從畫面左走到燈箱，停在 Nora 身後、畫面左；Nora 從地上站起來、坐上燈箱前的木凳，面向鏡頭這邊；Sparks 走回爐邊黃線內（畫面右、遠）。Dana 說話時四分之三側臉朝畫面右下（Nora）；Nora 看 Dana 朝畫面左上。過肩鏡守住這個左右：c33 從 Nora 的左肩後（肩在畫框右下）拍畫面左的 Dana，c34 從 Dana 的右肩後（肩在畫框左下）拍畫面右的 Nora。
+- **軸線**：同第一場：爐子在畫面右、大門在畫面左；Dana 從木凳旁走兩步到燈箱，停在燈箱左邊、Nora 身後的畫面左；Nora 從地上站起來、坐上燈箱前的木凳，面向鏡頭這邊；Sparks 走回爐邊黃線內（畫面右、遠）。Dana 說話時四分之三側臉朝畫面右下（Nora）；Nora 看 Dana 朝畫面左上。過肩鏡守住這個左右：c33 從 Nora 的左肩後（肩在畫框右下）拍畫面左的 Dana，c34 從 Dana 的右肩後（肩在畫框左下）拍畫面右的 Nora。
 - **在場的人**：Nora、Dana、Sparks（c29 起回到爐邊，遠、虛焦）。
 - **這場要講完的事**：Dana 把聲請法院指定鑑定人的動議面朝下放上燈箱：鑑定人會要她當著他的面簽，一個抖的簽名就輸（結尾：「One shaky signature, we lose.」，懸念：她簽得出自己的名字嗎）；她坐下、拿起筆，筆尖懸在空白的紙上。
 - **配樂**：c29 低的弦；c31、c33、c35 每句之後一個低的鼓點；c36 起只剩一個很高、很細的長音；c41 筆尖往下一沉時全部抽掉；c42 一個懸著的和弦、切黑。
@@ -124,7 +124,7 @@ c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady 
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c29 | 中景、跟拍（從畫面左往右）；交代鏡；鏡頭在工作台的右牆側、低；直式前後疊開：前景下緣是工作台的木面（虛焦），中間是沿著桌邊走來的 Dana，畫面右後是燈箱的冷白光與遠處的爐口 | 露臉清楚的只有 Dana。Dana（基本款：高髮髻、黑色合身西裝外套配白 T 恤、黑長褲、白球鞋），右手拿著 `a few stapled white pages, held so only the backs or edges show`，沿著工作台從畫面左走向畫面右的燈箱；工作燈的暖光從她背後；眼睛看著畫面右下（地上的 Nora）、眉毛平、嘴唇抿薄、下巴收著，`no smile at any moment, until the last frame`；畫面右後、很遠、虛焦：Sparks 的背影走回黃線內、把護目鏡拉回眼睛上 | Dana 沿著桌邊走到燈箱旁（動作一），停在燈箱左邊（動作二）；剪在她停步；嘴閉著；最後：她站在燈箱左邊，動議在右手 | — | 約 2.5 秒 |
+| c29 | 中景、跟拍（從畫面左往右）；交代鏡；鏡頭在工作台的右牆側、低；直式前後疊開：前景下緣是工作台的木面（虛焦），中間是從木凳旁走過來的 Dana，畫面右後是燈箱的冷白光與遠處的爐口 | 露臉清楚的只有 Dana。Dana（基本款：高髮髻、黑色合身西裝外套配白 T 恤、黑長褲、白球鞋），右手拿著 `a few stapled white pages, held so only the backs or edges show`，從木凳旁走兩步到畫面右的燈箱；工作燈的暖光從斜上方照在她臉上；眼睛看著畫面右下（地上的 Nora）、眉毛平、嘴唇抿薄、下巴收著，`no smile at any moment, until the last frame`；畫面右後、很遠、虛焦：Sparks 的背影走回黃線內、把護目鏡拉回眼睛上 | Dana 走兩步到燈箱旁（動作一），停在燈箱左邊（動作二）；剪在她停步；嘴閉著；最後：她站在燈箱左邊，動議在右手 | — | 約 2.5 秒 |
 | c30 | 插鏡、特寫、固定；同 c01 的鏡位；**第一格就是發亮的燈箱玻璃與 Dana 的右手**；直式 | `a flat white drafting light box about the size of a large serving tray, its glass top glowing evenly from below, on the long wooden workbench`；Dana 的右手（黑色西裝外套袖口）；`a few stapled white pages, held so only the backs or edges show`；畫面裡沒有臉 | Dana 的右手把動議面朝下放上燈箱的右半（動作一），手掌在上面壓一下（動作二）；剪在手掌壓下去；畫面上沒有嘴；最後：`a few stapled white pages, held so only the backs or edges show, lying face down on the glowing light box`，在燈箱右半，一直留在畫面裡 | — | 約 2 秒 |
 | c31 | 近景、慢推（從胸上推到肩上）；鏡頭在燈箱前、低、往上拍；直式，臉在上三分之一；身後是紅磚牆與爐火的橘光（虛焦） | Dana（高髮髻、黑色西裝外套）；燈箱的冷白光從下面照在下巴，工作燈的暖光從後上方照在髮髻；四分之三側臉朝畫面右下的 Nora（地上）、眼睛看著她；眉毛平、眼睛不眨、嘴唇在字之間閉著、聲音快、清楚，`no smile at any moment, until the last frame` | Dana 看著地上的 Nora，嘴在說話（快、清楚）；說完右手食指在動議上點一下，嘴閉上；最後：她的食指停在動議的背面 | Dana（快、清楚）：We ask for a court examiner.（我們聲請法院指定鑑定人）（原聲） | 約 3 秒 |
 | c32 | 中近景、固定；鏡頭貼著地、在草圖堆前、低；直式，**頭上留出空間，站起來後整個頭仍在畫面裡**；前景是地上草圖的邊（虛焦） | Nora（`work`：低馬尾、護目鏡推在頭上、帆布圍裙、灰色亨利領長袖捲到手肘），坐在草圖中間；燈箱的冷白光從上面斜照；左手抓住工作台的邊，`a plain narrow white-gold band with no stone, on her left ring finger`；眼睛看著畫面左上的 Dana、眉頭壓著、嘴唇抿住、深吸一口氣，`no smile at any moment, until the last frame` | Nora 左手抓著桌邊、把自己撐起來（動作一），站直在燈箱前（動作二）；剪在站到一半；嘴閉著；最後：她站在燈箱前、左手扶著桌邊 | — | 約 2.5 秒 |
@@ -160,8 +160,8 @@ c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady 
 - **錢**：本集沒有一個數字說出口（bible〈帳〉：Peg 當票續期 $40 不拍、不念）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
-- **木凳**：接點表要她「坐在長桌靠燈箱那頭的凳子上」，bible 沒有凳子的道具句。本集寫 `a plain wooden shop stool about as high as her hip`（燈箱前一張、Dana 坐的另一張在長桌靠大門那頭）。請加進 `cast.json`。
-- **工作燈的位置**：bible〈時間線〉第 41 集寫「長桌另一頭一盞工作燈」，第 31–40 集〈場景格局〉寫燈箱那頭上方吊一盞。本集照時間線：工作燈吊在**長桌靠大門那頭**、Dana 頭上（說話的臉要穩定的暖光）；燈箱那頭的臉由燈箱的冷白光從下照。請主控定一個位置寫回兩份 bible。
+- **木凳**：接點表要她「坐在長桌靠燈箱那頭的凳子上」，bible 沒有凳子的道具句。本集寫 `a plain wooden shop stool about as high as her hip`（燈箱前一張，Dana 坐的第二張在燈箱左邊兩步）。請加進 `cast.json`。
+- **工作燈的位置**（主控 2026-11-12 定）：照第 31–40 集格局吊在燈箱那頭上方；Dana 坐在燈箱左邊兩步的第二張木凳上，說話的臉吃工作燈的穩定暖光。bible〈時間線〉第 41 集的「長桌另一頭一盞工作燈」請改掉。
 - **軸線**：標準鏡位在工作台的右牆側、往左牆拍（爐子在畫面右、大門在畫面左），所以 Nora 吼 Sparks 朝畫面右（bible〈必修〉）；背景是左牆的紅磚與爐火的橘光，不是右牆的窗。
 - **接點表 41→42 的 Dana**：bible 寫「Dana 站在她左後（畫面左）」；Nora 面向鏡頭坐著時畫面左是她的**右後方**。本集照「畫面左」寫（c42），請主控把接點表的「左後」改成「身後、畫面左」。
 - **兩張影本在燈箱上**用膠帶貼著（bible〈帳〉），c16 扯下時膠帶斷開；c17 起兩張一起揉、一起攤平，道具句照 `photocopy` 那句接 `crumpled into a ball`／`smoothed flat but still creased`，畫面上看起來是一團、一疊。
@@ -234,7 +234,7 @@ c01–c42 全部寫 `night inside an old brick glassworks, the furnace's steady 
 
 - 定妝照：`nora-portrait.jpg`（r3）、`nora-work.jpg`（r3）（都有）。
 - **待畫的人**（照 bible 先畫順序，第 21–40 集清單裡還沒畫就排在前面）：Sparks、Dana、Nora `work` 全身。
-- **待畫的場景**：Remelt 主廠房 `remelt`（直式夜版：三號爐點著、黃線、長木工作台靠爐子那頭的燈箱、長桌另一頭的吊燈、前牆高窗藍黑）。`set-remelt.jpg` 只當色調參考。
+- **待畫的場景**：Remelt 主廠房 `remelt`（直式夜版：三號爐點著、黃線、長木工作台靠爐子那頭的燈箱、燈箱上方的吊燈、前牆高窗藍黑）。`set-remelt.jpg` 只當色調參考。
 - **道具參考圖**（bible 建議先畫）：**燈箱與上面的紙**（確認畫不出字：兩張疊著的紙只剩兩個虛焦灰影）；攤在地上的草圖（只有花瓶與碗的鉛筆線、角落虛焦）；木凳。
 - 沒有參考圖也不露臉的：無。
 
