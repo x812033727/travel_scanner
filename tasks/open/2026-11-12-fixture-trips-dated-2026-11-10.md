@@ -11,6 +11,7 @@ completed_at:
 branch:
 depends_on: []
 scope:
+  - apps/api/tests/test_trip_localization_integration.py
   - apps/api/tests/test_integration_postgres_redis.py
   - apps/api/tests/test_alerts_integration.py
   - apps/web/e2e/travel-services.spec.ts
@@ -32,8 +33,10 @@ Failing there:
   trip, schedules, AI regeneration, notes, expenses, share link, reoptimize, copy shared trip,
   pasted place, search from trip, flight anchor, flight status), all `assert 422 == 201`.
 - `apps/api/tests/test_alerts_integration.py::test_an_alert_leads_back_to_the_trip_and_search_it_came_from`.
-- The other three `api-tests` shards fail too (not yet itemised; the same 18 fixed dates under
-  `apps/api/tests` are the likely cause: `grep -rn "start_date.*2026-11-1[0-2]" apps/api/tests`).
+- `apps/api/tests/test_trip_localization_integration.py::test_planned_stops_follow_the_request_locale_until_renamed`
+  (`assert 422 == 201`, shard 2 of run 43139082528).
+- The remaining shards are not itemised yet; the 18 fixed dates under `apps/api/tests` are the
+  likely cause: `grep -rn "start_date.*2026-11-1[0-2]" apps/api/tests`.
 - `apps/web/e2e/travel-services.spec.ts`: "Klook direct hotel booking stays separate from
   destination discovery" (5 locales) and "unified hotel panel preserves context and honest
   external pricing" (15), fixture trip 2026-11-11..13.
