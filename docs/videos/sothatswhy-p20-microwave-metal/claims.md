@@ -5,6 +5,8 @@
 
 **行號**以現行 `video.json` 為準（p001–p165，第二版：2026-11-12 盲評 no_recap／no_detour／no_orphans 修正後重新編號；第一版是 p001–p173）；`script.md` 是它的可讀版。
 
+**現行範圍 p001–p165（165 句）**，2026-11-12 由 `verify-2.md` 的查核代理逐條對過：每條「可用說法」的行號都對得上現行台詞。整條或部分不再用到的說法標成「現行版未使用」，原文照留作紀錄。verify-2 的必改 F01（p150）若照改，行號不變，只有本檔 C16 的注意欄要跟著看。
+
 **第二版刪掉的段落**（盲評說不推進火花的問題）：門的兩套連鎖開關、開門那一下（舊 p041–p044）；厚食物外層先熱、比較省電（舊 p064–p070，原 C09）；塑膠盒會融化（舊 p074–p076）；避雷針與高壓電線（舊 p095–p098，查核 F01 因此不再適用）。這些說法片中、說明欄、標籤與縮圖都不再出現。
 
 ## 先看這裡：找不到來源、因此沒講或小心講的事
@@ -69,7 +71,7 @@
 
 ## C06 門和門框好好的，微波不會漏出來；門關不緊、彎掉就別用【官方說明】
 
-- **可用說法**：p038–p040（第二版刪掉兩套連鎖開關與「開著門還在運轉」，下面原文留作紀錄）
+- **可用說法**：p038–p040（兩套連鎖開關與「開著門還在運轉」：**現行版未使用**，第二版刪掉舊 p041–p044，下面原文留作紀錄）
 - **來源**：[1]
 - **原文**：「Microwave energy will not leak from a microwave in good condition. A damaged microwave oven may present a risk of microwave energy leaks. Contact your microwave's manufacturer for assistance if your microwave oven has damage to its door hinges, latches, or seals」「Don't operate a microwave oven if the door does not close firmly or is bent, warped, or otherwise damaged.」「The standard also requires all ovens to have two independent interlock systems that stop the production of microwaves the moment the latch is released or the door is opened.」「Stop using a microwave oven if it continues to operate with the door open.」
 - **注意**：「門和門框好好的」＝ in good condition／hinges, latches, seals 沒壞的白話。連鎖開關（21 CFR 1030.10）片中已不講。
@@ -87,7 +89,7 @@
 - **來源**：常識（FDA [1] 用 water molecules 一詞）
 - **注意**：給八歲小孩的**簡化**；不說原子、不說形狀。查核代理請看「最小最小的一顆」是否可接受（水分子是保有水的性質的最小單位）。
 
-## C09（第二版刪除）厚的食物外層先熱、微波熱的是食物不是爐子、可能比較省電
+## C09（第二版刪除，現行版未使用）厚的食物外層先熱、微波熱的是食物不是爐子、可能比較省電
 
 - 盲評 no_detour：不推進火花的問題，舊 p064–p070 整段刪掉，片中不再講。來源 [1] 的原文見第一版（2026-11-12 之前的這個檔案）。
 
@@ -96,7 +98,7 @@
 - **可用說法**：p060–p062
 - **來源**：[1]
 - **原文**：「Glass, paper, ceramic, or plastic containers are used in microwave cooking because microwaves pass through these materials. Although such containers cannot be heated by microwaves, they can become hot from the heat of the food cooking inside.」
-- **注意**：p061 是 p024 的具名回呼（「還記得嗎？」），新增的只有「碗自己不會被加熱」與 p062「會被熱飯燙熱」。第二版刪掉塑膠盒會融化、要用微波專用容器（舊 p074–p076，盲評 no_detour）。
+- **注意**：p061 是 p024 的具名回呼（「還記得嗎？」），新增的只有「碗自己不會被加熱」與 p062「會被熱飯燙熱」。第二版刪掉塑膠盒會融化、要用微波專用容器（舊 p074–p076，盲評 no_detour）：這部分**現行版未使用**；FDA 原句「Some plastic containers should not be used in a microwave oven because they can be melted by the heat of the food inside.」留作紀錄。
 
 ## C11 微波推著金屬裡的電子來回跑，牆因此把微波彈回去；細鐵絲可能熱到燒起來；電子在尖端擠成一堆；厚湯匙導電好、留下的熱很少；湯匙通常不冒火花、叉子可能會；牆沒有尖端，只反射不冒火花【專家問答】
 
@@ -110,7 +112,7 @@
 - **可用說法**：p069–p082、p087–p088
 - **來源**：[4]，微波爐的部分接 [2]
 - **原文**：[4]「Excess charges on a nonuniform conductor become concentrated at the sharpest points. Additionally, excess charge may move on or off the conductor at the sharpest points.」「An uncharged conductor in an originally uniform electric field is polarized, with the most concentrated charge at its most pointed end.」「On a very sharply curved surface, such as shown in Figure 18.32, the charges are so concentrated at the point that the resulting electric field can be great enough to remove them from the surface.」「If the electric field is sufficiently large, the insulating properties of the surrounding material break down and it becomes conducting. For air this occurs at around 3×10^6 N/C. Air ionizes ions and electrons recombine, and we get discharge in the form of lightning sparks and corona discharge.」「the conductor should be very smooth and have as large a radius of curvature as possible.」
-- **注意**：「推力」＝電場的**簡化**（電場就是電荷在那裡受到的推拉）；片中不說「電場」這個詞，也不念 3×10⁶ N/C。教材講的是**靜電**（電荷靜止的導體）；微波爐裡電荷來回跑，套用是 Bloomfield [2] 的說法（電子在尖端擠起來、跳進空氣），兩者合起來才是片中的說法。「電荷是那些帶著電的東西，像剛剛的電子」（p076）是簡化（教材的 excess charge 也可以是正電荷）。p088「微波爐的牆又大又平」接 [2] 的 no sharp points。p081–p082「叉子有四個尖尖的頭」「每一個尖頭，都是電荷會擠過去的地方」照 [4] concentrated at the sharpest points（複數）與 [2] 的 fork，是**撰稿推論**，不說尖頭越多火花越大。第二版刪掉避雷針與高壓電線（舊 p095–p098，盲評 no_detour），查核 F01 的避雷針問題因此不再適用。
+- **注意**：「推力」＝電場的**簡化**（電場就是電荷在那裡受到的推拉）；片中不說「電場」這個詞，也不念 3×10⁶ N/C。教材講的是**靜電**（電荷靜止的導體）；微波爐裡電荷來回跑，套用是 Bloomfield [2] 的說法（電子在尖端擠起來、跳進空氣），兩者合起來才是片中的說法。「電荷是那些帶著電的東西，像剛剛的電子」（p076）是簡化（教材的 excess charge 也可以是正電荷）。p088「微波爐的牆又大又平」接 [2] 的 no sharp points。p081–p082「叉子有四個尖尖的頭」「每一個尖頭，都是電荷會擠過去的地方」照 [4] concentrated at the sharpest points（複數）與 [2] 的 fork，是**撰稿推論**，不說尖頭越多火花越大。第二版刪掉避雷針與高壓電線（舊 p095–p098，盲評 no_detour），這部分**現行版未使用**，查核 verify-1 F01 的避雷針問題因此不再適用；verify-1 另查的美國國家氣象局〈Lightning Rods〉〈Lightning Myths〉也不再需要，片中與 `sources` 都沒有它們。
 
 ## C13 兩塊金屬中間的縫越窄，電就越容易跳過去；金屬碰到牆、或靠得很近，也比較容易冒火花【教材＋廠商說明書＋撰稿推論】
 
@@ -138,7 +140,7 @@
 - **可用說法**：p128–p143、p147–p150
 - **來源**：[6]
 - **原文**：「Use foil only as directed in this manual. … When using foil in the microwave oven, keep the foil at least 1″ away from the sides of the oven.」「When microwaving, you use small strips of foil to shield thin parts, such as the tips of wings and legs on poultry, which would cook before larger parts.」Arcing is caused by：「Foil not molded to food (upturned edges act like antennas).」「Metal, such as twist-ties, poultry pins, or goldrimmed dishes, in the microwave.」「Recycled paper towels containing small metal pieces being used in the microwave.」「Remove wire twist-ties and metal handles from paper or plastic containers before placing them in the oven.」「Most glass casseroles, cooking dishes, measuring cups, custard cups, pottery or china dinnerware which does not have metallic trim or glaze with a metallic sheen can be used.」「If you see arcing, press the CLEAR/OFF pad and correct the problem.」
-- **注意**：1 英寸換算「大約兩公分半」（2.54 cm）。「容易過熟」＝ would cook before larger parts。p131 第二版把「翹起來的邊，就像一根天線」改成「翹起來的邊，就像叉子的尖端」：原文 upturned edges act like antennas、列在 Arcing is caused by 之下；說成叉子的尖端是接 C12 與 [8] sharply edged metal 的**撰稿推論**，不再用小孩沒學過的「天線」。p149–p150「怎麼處理？」「像拿掉鐵絲、把架子放正、把鋁箔貼緊」＝ correct the problem 的三個例子，各對到同一頁 Arcing is caused by 的「twist-ties」「The metal shelf not installed correctly so it touches the microwave wall」「Foil not molded to food」。p133 緊接「這是這一台的規則；你家那台，要看你家的說明書」，不把它說成通則。說明書允許 3/4 英寸以下的鋁盒餐，片中**不講**（容易被聽成「金屬都可以」）。CLEAR/OFF 說成「停止」。說明書寫 paper or plastic containers，片中說「紙盒、塑膠盒」。p153 所長把飯倒進白瓷碗、鐵絲盒放旁邊，是照這幾條做的故事動作，不是新主張。
+- **注意**：1 英寸換算「大約兩公分半」（2.54 cm）。「容易過熟」＝ would cook before larger parts。p131 第二版把「翹起來的邊，就像一根天線」改成「翹起來的邊，就像叉子的尖端」：原文 upturned edges act like antennas、列在 Arcing is caused by 之下；說成叉子的尖端是接 C12 與 [8] sharply edged metal 的**撰稿推論**，不再用小孩沒學過的「天線」。p149–p150「怎麼處理？」「像拿掉鐵絲、把架子放正、把鋁箔貼緊」＝ correct the problem 的三個例子（verify-2 F01：對小孩要加「請大人來」，因為同一本說明書說架子 "may be hot"、東西燒起來要 "keep the oven door closed"，建議句見 verify-2.md），各對到同一頁 Arcing is caused by 的「twist-ties」「The metal shelf not installed correctly so it touches the microwave wall」「Foil not molded to food」。p133 緊接「這是這一台的規則；你家那台，要看你家的說明書」，不把它說成通則。說明書允許 3/4 英寸以下的鋁盒餐，片中**不講**（容易被聽成「金屬都可以」）。CLEAR/OFF 說成「停止」。說明書寫 paper or plastic containers，片中說「紙盒、塑膠盒」。p153 所長把飯倒進白瓷碗、鐵絲盒放旁邊，是照這幾條做的故事動作，不是新主張。
 
 ## C17 另一家廠商：有些機型附的架子只能用在烤箱功能，微波時放進去可能冒火花；牆上卡的髒東西可能冒火花；馬上停下來通常不會弄壞爐子【廠商支援頁】
 
@@ -149,7 +151,7 @@
 
 ## C18 每台微波爐的說明會寫可以用哪些容器；一般不要放金屬鍋子或鋁箔，因為微波被彈開，食物熱得不平均、還可能弄壞爐子【官方說明】
 
-- **可用說法**：p123–p127
+- **可用說法**：p124–p127（p123 是小問接話「所以要看是哪一台！」）
 - **來源**：[1]
 - **原文**：「Generally, metal pans or aluminum foil should also not be used in a microwave oven, as the microwaves are reflected off these materials causing the food to cook unevenly and possibly damaging the oven. The instructions that come with each microwave oven indicate the kinds of containers to use.」「Follow the manufacturer's instruction manual for recommended operating procedures and safety precautions for your oven model.」
 - **注意**：這是全片的通用建議；說明書的鋁箔用法（C16）一定接在這句之後。第二版 p127 只講「飯會熱得不平均」，possibly damaging the oven 已在 p109 講過，不重講（盲評 no_recap）。p109「火花會燒焦東西，還可能弄壞微波爐」：弄壞爐子有 [1] possibly damaging the oven、[7] Prolonged arcing can damage the oven；「燒焦東西」接 [2] 的 overheat and begin to burn，是撰稿的口語合併。
@@ -170,7 +172,7 @@
 
 ## C21 故事設定與片尾【故事】
 
-- p001–p006、p153、p162 的滷肉飯、阿嬤、便當盒、鐵架、白碗是故事設定，不是主張。p155–p159 小問的答案是 C11–C13 的白話；p160–p161 所長的看法標成「我覺得」，依據 C01、C04–C05、C11。p163 留言題。
+- p001–p006（第二版 p002 改成「我拿去事務所的微波爐熱喔！」）、p153、p162 的滷肉飯、阿嬤、便當盒、鐵架、白碗是故事設定，不是主張。p155–p159 小問的答案是 C11–C13 的白話；p160–p161 所長的看法標成「我覺得」，依據 C01、C04–C05、C11。p163 留言題。
 
 ---
 
