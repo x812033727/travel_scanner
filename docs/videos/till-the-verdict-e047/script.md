@@ -28,7 +28,7 @@ Sparks 端著碗站在門口唏哩呼嚕：「Extra crackers?」Rosa 不回頭�
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
 | Nora | `assets/refs/nora-portrait.jpg`（r3）、`assets/refs/nora-work.jpg`（r3） | 整集 `work`（齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、深色帆布圍裙、灰色亨利領長袖、深色工作褲、工作靴）；c21 起一綹頭髮塞在左耳後；左手無名指 `a plain narrow white-gold band with no stone, on her left ring finger`；**只有 c28 一個閉嘴、不露齒的小笑**（bible〈全劇固定〉），其餘每鏡不笑；原聲 |
-| Rosa | **待畫，必須先畫**（外貌句已改，站主 2026-11-12 照建議定案） | 基本款：`a 63-year-old Italian-American woman, sturdy and broad-shouldered, olive skin, very short cropped salt-and-pepper hair, more black than grey, close to her head, thick dark eyebrows, dark brown eyes, deep lines at the corners of her eyes, no glasses, a deep wine-red cotton shirt with the sleeves rolled up under a stained white apron, an old silver bangle on her right wrist`；`a long steel soup ladle about as long as her forearm`（c01–c11 右手、c12–c14 左手、c17 起右手）；跟 Peg 分得開（橄欖膚色、黑多於灰的平頭短髮、濃眉、不戴眼鏡、酒紅衫）；**不笑**；原聲（大聲、熱） |
+| Rosa | **待畫，必須先畫**（外貌句已改，站主 2026-11-12 照建議定案） | 基本款：`a 63-year-old Italian-American woman, sturdy and broad-shouldered, olive skin, very short cropped salt-and-pepper hair, more black than grey, close to her head, thick dark eyebrows, dark brown eyes, deep lines at the corners of her eyes, no glasses, a deep wine-red cotton shirt with the sleeves rolled up under a stained white apron, an old silver bangle on her right wrist`；`a long steel soup ladle about as long as her forearm`（c01–c10 右手、c10 結尾換到左手、c11–c16 左手、c17 起右手）；跟 Peg 分得開（橄欖膚色、黑多於灰的平頭短髮、濃眉、不戴眼鏡、酒紅衫）；**不笑**；原聲（大聲、熱） |
 | Sparks | 照第 31–40 集清單 | 基本款（20 歲、平頭、小銀耳釘、黑 T 恤、灰工作褲、工作靴），`tan heat-protective sleeves on his forearms, the left sleeve torn off, his left forearm bare`；`clear wraparound safety glasses, pushed up on his forehead`；c22–c29 拿自己的一碗湯；不笑；原聲 |
 | Lyle Becker | 照第 21–30 集清單 | 基本款（30 歲白人男性、格子襯衫、反戴的素面棒球帽、不戴眼鏡、深色球鞋）；`a black DSLR camera with no logo on a plain strap`，c03 起 `…, its lens splashed with thick pale chowder`；只在第一場；不笑；原聲（c05 短喊） |
 | 記者 | 不畫（extras `press-pack`） | `two black cameras with no logos held up by hands, the reporters' faces hidden behind them`；散開時只有背影、虛焦 |
@@ -87,9 +87,9 @@ c38 寫 `overcast morning, looking from the open door into a tiny chowder shack,
 | c07 | 全景、固定；鏡頭在門縫裡、往東看出去；直式前後疊開：前景兩邊是拉開一呎的門縫的鏽紅邊（虛焦），中間是灰色的人行道與街，遠處是低海堤與港 | 三個人背對鏡頭往畫面左（北）走開：Lyle（格子襯衫、反戴的帽子、深色球鞋）的背，右手拎著相機、鏡頭還在滴；兩個記者的背（深色外套）、相機垂在手邊；街角那邊（畫面右）飄來小館的蒸氣，一層白霧從右往左飄過畫面；畫面裡沒有清楚的臉 | 三個背影往畫面左走遠（動作一），蒸氣從畫面右飄過、蓋住他們的背影（動作二）；剪在蒸氣蓋過去；最後：人行道上空了，蒸氣還在飄 | — | 約 2.5 秒 |
 | c08 | 中近景、固定；鏡頭在門內、往東拍；直式：Nora 的背在畫面中間、站在門縫裡，Sparks 在畫面右、她右後半步；門縫外是灰白的天光（虛焦），遠遠的 Rosa 是畫面右外的人行道 | 露臉的只有 Sparks。Nora（`work`）背對鏡頭；Sparks（平頭、小銀耳釘、黑 T 恤，`tan heat-protective sleeves on his forearms, the left sleeve torn off, his left forearm bare`，`clear wraparound safety glasses, pushed up on his forehead`）湊近她的右耳；門縫的灰白光穩穩照在他臉上；四分之三側臉朝畫面左（Nora）、眼睛先看門外右邊的人行道、再看她；眉毛挑高、眼睛睜大、嘴在字之間閉緊、聲音壓低、急，`no smile at any moment, until the last frame` | Sparks 往她的右耳湊過去，嘴在說話（壓低、急）；說完下巴往畫面右外的人行道一抬，嘴閉上；剪在下巴抬起；最後：他站在她右後半步、看著門外 | Sparks（壓低、急）：That's Rosa. Corner shack.（那是 Rosa。街角那間湯館的）（原聲）← 因為 c07 | 約 3.5 秒 |
 | c09 | 中景、固定；從屋裡、**Nora 的右肩後**拍（她的低馬尾與灰色亨利領的右肩在畫框左下緣、虛焦、不露臉），穿過門縫往外；直式；身後是灰色的街與低海堤（虛焦） | 露臉的只有 Rosa。Rosa（外貌照 c01，黑色舊工作鞋），右手 `a long steel soup ladle about as long as her forearm`，勺子空了、垂在身側；陰天灰白的光；她從畫面右走進來、眼睛看著門縫裡的 Nora（畫面左）；眉頭慢慢鬆開、嘴唇抿著、下巴收著，`no smile at any moment, until the last frame` | Rosa 從畫面右沿著鐵門走過來（動作一），停在門縫前一步（動作二）；剪在她停步；嘴閉著；最後：她站在門縫前、面向畫面左的 Nora | — | 約 2.5 秒 |
-| c10 | 近景、慢推（從胸上推到肩上）；同 c09 的鏡位、往前；直式，Rosa 的臉在上三分之一；**第一格就是 Rosa 的臉與肩膀，整鏡不拉遠** | Rosa（外貌照 c01）；右手湯勺垂在身側；陰天灰白的光；四分之三側臉朝畫面左的 Nora、眼睛定在她臉上；眼睛不眨、眉頭微微往中間收、嘴唇抿住、喉嚨吞一下、呼吸停住，`no smile at any moment, until the last frame` | Rosa 看著 Nora，一拍、兩拍（動作一），喉嚨吞一下（動作二）；剪在吞下去；嘴閉著；最後：她還看著畫面左 | — | 約 3 秒 |
+| c10 | 近景、慢推（從胸上推到肩上）；同 c09 的鏡位、往前；直式，Rosa 的臉在上三分之一；**第一格就是 Rosa 的臉與肩膀，整鏡不拉遠** | Rosa（外貌照 c01）；右手的空湯勺垂在身側；陰天灰白的光；四分之三側臉朝畫面左的 Nora、眼睛定在她臉上；眼睛不眨、眉頭微微往中間收、嘴唇抿住、喉嚨吞一下、呼吸停住，`no smile at any moment, until the last frame` | Rosa 看著 Nora，一拍、兩拍、喉嚨吞一下（動作一），把湯勺從右手換到左手（動作二）；剪在湯勺換到左手；嘴閉著；最後：她還看著畫面左，空湯勺在她左手、垂在身側 | — | 約 3 秒 |
 | c11 | 近景、固定；從 **Rosa 的左肩後**拍（她的椒鹽色短髮與酒紅衫的左肩在畫框右下緣、虛焦、不露臉）；直式，Nora 在畫面左、臉在上三分之一；身後是門縫裡屋子深處爐口的橘光（虛焦） | Nora（`work`：齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、深色帆布圍裙、灰色亨利領長袖），站在門縫裡、右手扶著門邊；陰天灰白的光穩穩照在臉上；四分之三側臉朝畫面右的 Rosa、眼睛看著她；眉頭往中間收、眼睛眨一下、嘴唇微張、頭微微一偏，`no smile at any moment, until the last frame` | Nora 的頭微微一偏（動作一），扶著門邊的右手鬆開（動作二）；剪在手鬆開；嘴閉著；最後：她兩手垂在身側、看著畫面右 | — | 約 2.5 秒 |
-| c12 | 近景、固定；同 c10 的鏡位；直式，臉在上三分之一 | Rosa（外貌照 c01）；陰天灰白的光；四分之三側臉朝畫面左的 Nora、眼睛看著她；眉毛一抬、下巴一點、嘴說得短、大聲、熱、像在叫自家孩子回來吃飯，`no smile at any moment, until the last frame` | Rosa 把湯勺從右手換到左手（動作一），嘴在說話（短、大聲、熱）（動作二）；說完嘴閉上；剪在句尾；最後：湯勺在她左手、垂在身側 | Rosa（短、大聲、熱）：Come. Chowder's hot.（走。湯是熱的）（原聲）（結尾）← 因為 c10 | 約 3 秒 |
+| c12 | 近景、固定；同 c10 的鏡位；直式，臉在上三分之一 | Rosa（外貌照 c01）；左手拿著空的 `a long steel soup ladle about as long as her forearm`；陰天灰白的光；四分之三側臉朝畫面左的 Nora、眼睛看著她；眉毛一抬、下巴一點、嘴說得短、大聲、熱、像在叫自家孩子回來吃飯，`no smile at any moment, until the last frame` | Rosa 看著 Nora，嘴在說話（短、大聲、熱）（動作一）；說完左手的湯勺往畫面右外的街角一指（動作二），嘴閉上；剪在湯勺指出去；最後：湯勺在她左手、指著畫面右外的街角 | Rosa（短、大聲、熱）：Come. Chowder's hot.（走。湯是熱的）（原聲）（結尾）← 因為 c10 | 約 3 秒 |
 | c13 | 插鏡、手部特寫、固定；**第一格就是 Nora 的左手肘與灰色亨利領的袖子**；直式；灰白的天光 | Nora 的左臂（灰色亨利領長袖、帆布圍裙的邊），左手 `a plain narrow white-gold band with no stone, on her left ring finger`；Rosa 的右手（酒紅色捲起的袖口、手腕一只舊銀鐲）從畫面右伸進來；畫面裡沒有臉 | Rosa 的右手搭上 Nora 的左手肘（動作一），輕輕往外一帶（動作二）；剪在 Nora 的手臂被帶動；畫面上沒有嘴；最後：Rosa 的手搭在她手肘上 | — | 約 2 秒 |
 | c14 | 全景、跟拍（從右往左）；鏡頭在人行道外側、港那邊、與三人平行；直式前後疊開：前景下緣是低海堤的水泥邊（虛焦），中間是紅磚廠房前的人行道與三個走著的人，畫面左遠處是街角冒蒸氣的小館 | Rosa（外貌照 c01，黑色舊工作鞋，左手拿著空的湯勺）右手搭著 Nora 的左手肘，走在 Nora 靠街那一側；Nora（`work`，工作靴）被她帶著走；Sparks（黑 T 恤、左前臂光著、工作靴）跟在兩人後面兩步；三張臉都很小：Rosa 眼睛看著前面的街角、嘴唇抿著；Nora 眼睛看著 Rosa 的側臉、眉頭收著；Sparks 眼睛看著小館、嘴半張；三張臉都 `no smile at any moment, until the last frame`；陰天灰白的光 | 三人沿著人行道往畫面左走（動作一），走到小館的門前、Rosa 先轉進門（動作二）；剪在 Rosa 轉進門；嘴都閉著；最後：Rosa 在門口，Nora 在她身邊，Sparks 在後面 | — | 約 2.5 秒 |
 
@@ -154,7 +154,7 @@ c38 寫 `overcast morning, looking from the open door into a tiny chowder shack,
 - **Rosa 的外貌句**：照 bible 改過的寫法（跟 Peg 分開）。**站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 9 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible；站主 2026-11-12 已同意寫稿者為補漏洞加的台詞）：
-- **冷湯從哪來**：Rosa 是做早上的湯做到一半跑出來的，湯勺裡是一勺冷的湯底（c01–c02 勺裡寫 `a splash of cold thick pale chowder, no steam`）；第 46 集 c38 她用勺背敲門。甩出去以後湯勺是空的，c17 起她用同一支湯勺在店裡舀熱湯、攪鍋。
+- **冷湯從哪來**：Rosa 是做早上的湯做到一半跑出來的，湯勺裡是一勺冷的湯底（c01–c02 勺裡寫 `a splash of cold thick pale chowder, no steam`）；第 46 集 c38 她用勺柄末端敲門、湯留在勺裡。甩出去以後湯勺是空的，c17 起她用同一支湯勺在店裡舀熱湯、攪鍋。
 - **c05 Lyle 的短喊** "My lens!"（被潑之後的反應，給一個笑點）。
 - **c12 Rosa 的一句** "Come. Chowder's hot."（第一場的結尾：她帶 Nora 走的理由；跟潑出去的冷湯對照）。
 - **新道具** `a plain steel soup spoon`（Nora 吃湯用；第 49 集她的湯匙停在半空可以用同一句）。
@@ -162,6 +162,14 @@ c38 寫 `overcast morning, looking from the open door into a tiny chowder shack,
 - **門開著**：早上 Rosa's 的門一直開著、蒸氣往街上飄，所以門鈴這集不響（第 49 集雨夜門關著，Elias 推門時才響）。
 - **門外的兩條軸線**：Rosa 對 Lyle 那一軸的鏡位在門那一側（c01 Lyle 的右肩後、c05 Rosa 的左肩後）；Rosa 走到門縫前（c09）以後換成 Rosa 對 Nora 那一軸，鏡位在兩人的南側（c10、c12 Nora 的右肩後、c11 Rosa 的左肩後）。Rosa 兩條軸都是看畫面左。
 - **店裡的視線**：Nora 坐著看 Rosa 朝畫面左、Rosa 回頭看 Nora 朝畫面右；從吧台後往門口拍時，門口的人（Sparks、Nora）看 Rosa 朝畫面右。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e045-e050-storyboard.md` 改的。本集還沒錄、沒拍，沒有要重抽的片段；台詞沒有改，不用重錄。
+- **c12**：短句沒有身體的收尾動作（再犯）。說完 "Come. Chowder's hot." 左手的湯勺往畫面右外的街角一指、嘴閉上；換手移到 c10 的結尾（c10 的吞口水跟看併成第一個動作），c12 仍是兩個動作。
+- **46→47 的湯勺**：第 46 集 c38–c40 改成勺裡一勺冷湯、c38 用勺柄敲門，本集 c01–c02 的勺裡冷湯接得上；〈這版改了什麼〉那條一起改。
+- `cast.json` 2026-11-12 的整理：本集用到的道具句都沒變；`soup-spoon` 已照本集的句子加進 `cast.json`。
+- 五張清單：〈本集需要的造型〉Rosa 那列、〈時間與帳〉的湯勺。
 
 ### 配音
 
@@ -222,7 +230,7 @@ c38 寫 `overcast morning, looking from the open door into a tiny chowder shack,
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
 | Nora | `work`；c21 起一綹頭髮塞在左耳後；左手無名指 Elias 的戒指；c28 一個閉嘴的小笑 | c11、c16、c19、c21、c28、c31–c32、c34、c36（c08、c35 背；c09–c10、c12、c24、c38 肩；c14–c15 小；c13、c20 只有手） | 已有 |
-| Rosa | 基本款（外貌句已改）＋湯勺 | c01–c02、c09–c10、c12、c14–c18、c23–c24、c27、c33、c37（c05、c11 肩；c13、c17、c22 只有手；c38 背） | **要畫定妝照** |
+| Rosa | 基本款（外貌句已改）＋湯勺（c01–c02 勺裡一勺冷湯，c03 甩出去；c10 結尾換到左手、c12 指向街角；c17 起右手在鍋裡） | c01–c02、c09–c10、c12、c14–c18、c23–c24、c27、c33、c37（c05、c11 肩；c13、c17、c22 只有手；c38 背） | **要畫定妝照** |
 | Sparks | 基本款，左臂護套扯掉，護目鏡推在額頭 | c08、c14–c15、c25–c26、c30（c22、c29 只有手） | 定妝照照第 31–40 集清單 |
 | Lyle | 基本款＋相機（c03 起鏡頭糊了湯） | c05（c01 肩、c03–c04 只有手與鞋、c07 背） | 已有（第 21–30 集清單） |
 | 記者 | `press-pack`，只有手與相機、背影 | c06、c07 | 不畫 |
@@ -252,7 +260,7 @@ c38 寫 `overcast morning, looking from the open door into a tiny chowder shack,
 
 - **時間**：第 141 天（8/4 週二）08:10 Rosa 點名 Lyle → 08:13 記者散開 → 08:14 走到街角 → 約 08:50 Nora 吃到一半起身。陰。
 - **錢**：巧達湯不收錢（不拍、不說，bible〈帳〉）；本集沒有數字說出口。
-- **東西在哪**：Lyle 的相機鏡頭糊了冷湯，他帶走；Nora 吃了一半的碗與湯匙在 Rosa's 2 號凳前的吧台上；Sparks 喝空的碗在吧台西端；蘇打餅籃少了一半；Rosa 的湯勺在她右手、在鍋裡。Remelt 北邊那一扇鐵門開著一呎；扯下的護套還在工作台桌腳邊；Sparks 的長手套在空鋼桶的桶緣。
+- **東西在哪**：Lyle 的相機鏡頭糊了冷湯，他帶走；Nora 吃了一半的碗與湯匙在 Rosa's 2 號凳前的吧台上；Sparks 喝空的碗在吧台西端；蘇打餅籃少了一半；Rosa 的湯勺（c03 甩空、c12 指向街角）c17 起在她右手、在鍋裡。Remelt 北邊那一扇鐵門開著一呎；扯下的護套還在工作台桌腳邊；Sparks 的長手套在空鋼桶的桶緣。
 - **渡輪站吊燈**：0/24 片；明天（第 142 天）簽約（不拍）。
 - **誰知道了什麼**：Nora 知道街角的女人叫 Rosa（Sparks 說的）、她說「妳瘦了」像認得她，Nora 問了、沒得到答案；只有 Rosa 自己知道她認得 Nora（為什麼認得，第一季不說）。記者都看到 Rosa 清場；Lyle 被點名、被潑。
 - **下一集接**：第 48 集跳到第 144 天（8/7 週五）16:00 的 Remelt，Dana 把兩份影本丟上燈箱。
