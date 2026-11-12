@@ -186,3 +186,10 @@
 6. GE Appliances, Spacemaker XL Microwave Oven JVM1542 Owner's Manual (49-40264). https://products-salsify.geappliances.com/image/upload/s--BEQq86so--/3842e17e8541177381e364fb66ab5c46460333f5.pdf
 7. Amana Product Help, General Arcing and Sparking - Over-the-Range Microwave. https://producthelp.amana.com/Cooking/Microwaves/Over-the-Range_Microwave/General_Arcing_and_Sparking/General_Arcing_and_Sparking_-_Over-the-Range_Microwave
 8. JennAir Product Help, Can Metal or Aluminum Foil be Used in the Microwave. https://producthelp.jennair.com/Cooking/Microwaves/Product_Info_new/Product_Information/Can_Metal_or_Aluminum_Foil_be_Used_in_the_Microwave
+
+
+## verify-2 之後的改動（2026-11-12）
+
+- p150 改「請大人來：拿掉鐵絲、架子放正、鋁箔貼緊。」（verify-2 F01：GE 說架子可能燙、要大人處理）。
+- 新增 p151「要是燒起來了，門別打開，先按停止，叫大人。」：GE JVM1542 說明書 "If materials inside the oven should ignite, keep the oven door closed, turn the oven off"；「叫大人」是兒童節目的安全措辭（verify-2 S1）。
+- 收尾「金屬牆和網子」（FDA：金屬牆與門上的金屬網把微波留在爐內，C02）；「那家家電公司」去掉重複的「剛剛」；小問總結改「就可能跳出火花」（verify-1 S5）。

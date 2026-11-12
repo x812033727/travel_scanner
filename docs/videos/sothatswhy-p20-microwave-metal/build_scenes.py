@@ -299,7 +299,7 @@ obj("rack-inside", "Close-up of " + OPEN + ", " + RACK + " standing neatly in th
     c("說明書還提醒：架子要放對位置，別碰到牆。"),
     c("就是剛剛說的：金屬碰到牆，比較容易冒火花。"))
 chief("chief-touch", C("holding her two flat hands a little apart with a careful smile", close=True),
-    c("剛剛那家家電公司也說，金屬別碰到別的金屬。"),
+    c("那家家電公司也說，金屬別碰到別的金屬。"),
     k("就像兩個水盤別靠太近！", "聯想"))
 kid("kid-allrack-q", K("pointing at a metal wire rack with a curious face", close=True, where=KITCHEN),
     k("那每台的架子，", "追問"), k("都能拿來微波嗎？", "句尾上揚", "S:allrack"))
@@ -348,8 +348,10 @@ chief("chief-spark", C("pressing one big round plain button on the front of a wh
     c("說明書說：先按停止，再把出問題的東西處理好。", None, "P:spark"),
     k("怎麼處理？", "追問"))
 obj("oven-fixed", "Close-up of " + OPEN + ", " + RACK + " standing neatly in the middle with a clear gap all around it, a small white takeaway box set aside on the counter beside the oven",
-    c("像拿掉鐵絲、把架子放正、把鋁箔貼緊。"),
+    c("請大人來：拿掉鐵絲、架子放正、鋁箔貼緊。"),
     c("那家廠商也說，馬上停下來，通常不會弄壞爐子。"))
+chief("chief-fire", C("holding up one open hand firmly with a serious caring face"),
+    c("要是燒起來了，門別打開，先按停止，叫大人。"))
 kid("kid-rice-q", K("holding " + BOXK + " up with a hungry pleading face", close=True, where=KITCHEN),
     k("那我的滷肉飯，現在怎麼辦？", "章尾停住，句尾上揚"))
 
@@ -360,10 +362,10 @@ obj("rice-pour", "Close-up of " + FOOD + " in " + BOWL + " sitting on the glass 
 kid("kid-got-it", K("holding " + BOWL + " of steaming rice up with a big confident grin", where=KITCHEN),
     k("原來如此！", "恍然大悟"), k("剛剛那些尖尖的、皺皺的，", "篤定"),
     k("還有靠得很近的金屬，", "篤定"), k("電子擠在一起，", "篤定"),
-    k("就會跳出火花！", "篤定", "P:main"))
+    k("就可能跳出火花！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
     c("說得好。我覺得最妙的是：", "笑"),
-    c("剛剛那又大又平的金屬牆，正好把微波關在爐子裡。"))
+    c("剛剛那又大又平的金屬牆和網子，正好把微波關在裡面。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("我要叫阿嬤先拔掉鐵絲！", "開心大聲"))
