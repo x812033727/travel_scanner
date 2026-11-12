@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-4074",
+  "revision": "2026-11-12-pool-4089",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 4464,
-    "canonical_questions": 4303,
-    "eligible_candidates": 4133,
-    "selected_candidates": 4074,
+    "raw_records": 4479,
+    "canonical_questions": 4318,
+    "eligible_candidates": 4148,
+    "selected_candidates": 4089,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5340,
-    "current_research_source_urls": 2391,
-    "selected_source_urls": 3545,
-    "new_suggestions_not_added": 2471,
+    "source_urls": 5355,
+    "current_research_source_urls": 2406,
+    "selected_source_urls": 3559,
+    "new_suggestions_not_added": 2489,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
@@ -2214,6 +2214,22 @@
       "sha256": "c89dd56dd701377cef7e29d2821dc8d31ea38713c4b006e4e75da86920384d06"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave67-food.json",
+      "sha256": "4f23bd260ef75a866e3f7a72621f48c6498140777fe5d4462beda2d1b524aec7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave67-human.json",
+      "sha256": "519e85ad7baffa45777f5394e714445b54021e16af16ef369a6d03f7230a659d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave67-life.json",
+      "sha256": "a4890046a8fdeb58f31052c4d3aa71e2800237e478307e1ac8bb476120bb84b3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json",
+      "sha256": "3baa06d09394c23770e3e40b0135bab325a315d03f8b1b2b74edf6b8727b24b7"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave7-animals.json",
       "sha256": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410"
     },
@@ -2287,11 +2303,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "e5cdaadbde2ee6d516ea25ece088143dd9c76877328286136cbfd2a52018e3ea"
+      "sha256": "890f51df67b0dd2fe1f2827f8878bde5af9a38884b36caf400700000421f8410"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "8d3f17cfe2727ef7ca25fad4a03febf6abb47e9ce1ae0feedc4f123ffc0ae3bf"
+      "sha256": "bad151edb3c32aade08165a3b3e34faa4afdb4d4d3c5226077e67a911500abd5"
     }
   ],
   "sources": [
@@ -5246,6 +5262,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.4077/cjp.2010.amk055"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0665b32d5c4b267f",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5834188/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0192993",
+          "title": "Deafness alters the spatial mapping of touch（Sharp、Landry、Maheu、Champoux；PLoS ONE 13(3): e0192993, 2018）",
+          "publisher": "PLOS ONE（CC BY 4.0）",
+          "version": "出版版全文（Europe PMC 開放子集 XML）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC search API 列出 PMC5834188，以 REST fullTextXML 取全文；curl 預設標頭",
+          "reading_scope": "全文",
+          "locator": "Abstract；Introduction 第 4 段（Noel & Wallace 暫時剝奪聽覺）；Methods〈Participants〉與 Table 1；Results 第 1 段（PCD 4.59 對 2.49）；Discussion 第 1–2、5 段",
+          "summary": "蒙特婁大學 Champoux 研究群：13 名先天極重度雙耳聽損成人（平均 38.4 歲，多數戴助聽器、4 人有人工電子耳）與 13 名聽力正常者，雙手各握一塊泡棉方塊、用腳踏板回答哪邊先震。交叉代價指標 PCD（0–8）聾人組平均 4.59、聽人組 2.49，差異顯著；不交叉時與不計時的反應時間兩組沒有差別。作者稱這是早期聽覺剝奪影響觸覺空間對位的第一個證據，方向與早盲者『不被騙』相反。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "每組 13 人；以腳回答（作者自承可能抬高錯誤率）；作者自己提到不少聾人在交叉時整條曲線倒過來、需排除聽不懂指示的可能，他們以口頭確認排除；SOA 只到 ±400 毫秒，看不到 N 字或長間隔恢復；『永久改變』是作者推論；助聽器使用、前庭功能未納入分析。 覆核 V33（2026-11-12）：summary 刪「不交叉時與不計時的反應時間兩組沒有差別」，改「兩組的不計時反應時間（不分姿勢）沒有差別；不交叉時正確率沒有單獨比較」；limitations 補「11 名受測前庭的聾人中 7 名（64%）前庭功能受損，作者說可能解釋部分結果；規定誤解者要剔除，但實際所有人都口頭確認、無人剔除；作者建議改用手或口頭回答」。",
+          "author_cache": {
+            "file": "f30src/PMC5834188.xml",
+            "sha256_prefix": "04fae2afe1baf01d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5834188/fullTextXML"
         }
       ]
     },
@@ -10938,6 +10980,32 @@
       ]
     },
     {
+      "id": "SRC-13c06dd8bf9f4c30",
+      "url": "https://helda.helsinki.fi/server/api/core/bitstreams/da01f93f-f336-4260-855b-844069726e47/content",
+      "readings": [
+        {
+          "canonical_url": "https://helda.helsinki.fi/server/api/core/bitstreams/da01f93f-f336-4260-855b-844069726e47/content",
+          "title": "Myofibrillar protein denaturation in freezing-thawing: Effect on thaw loss（博士論文）",
+          "publisher": "Yuemei Zhang（指導教授 Per Ertbjerg）／赫爾辛基大學食品與營養學系，EKT-series 1981，2020；HELDA 機構典藏",
+          "version": "博士論文綜合篇全文 PDF（86 頁；ISBN 978-951-51-6882-5）；收錄的四篇原始論文（Paper I–IV）全文不在檔內，只有綜合篇的方法與結果整理",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（查 Zhang & Ertbjerg 2019〈On the origin of thaw loss〉的典藏版）結果直接列出 helda.helsinki.fi 的 bitstream 網址；curl 工具預設標頭 200，pdftotext -layout",
+          "reading_scope": "摘要（i–ii 頁）、原始論文清單（v 頁）、材料方法（Study II–IV 部分）、結果與討論 5.1–5.3（40–44 頁）全文讀；前言文獻回顧瀏覽",
+          "locator": "Abstract 第 2–5 段；List of original publications；5.1 Changes in WHC（第 40–41 頁）；5.2 Myofibrillar proteins、Sarcoplasmic proteins（第 41–43 頁）；5.3 Treatment of isolated myofibrils／minced meat（第 43–44 頁）",
+          "summary": "豬背最長肌。快凍（冷金屬板／–80°C）特徵冷凍時間 12 分，慢凍（空氣／–20°C）約 174 分；慢凍的失水平均比快凍多約 30%（Study II–IV），同時分離出的肌原纖維保水力較低（快凍約高 4%）、表面疏水性較高（未凍 < 快凍 < 慢凍），作者讀為慢凍讓肌原纖維蛋白變性得更嚴重。肌漿蛋白也會在凍融中變性，但與冷凍速度無關；鮮肉和凍融肉滲出液裡的蛋白質含量沒有差別。作者提出的模型：冷凍時大部分水結冰，酸（質子）和鹽被擠進剩下沒結冰的水裡，pH 下降、離子強度升高，使結構蛋白變性；慢凍時這種情形較嚴重。模擬實驗：把新鮮絞肉同時暴露在高離子強度（相當 2 M KCl）與較低 pH（5.5 降到 5.2），肌原纖維保水力下降、疏水性上升；只有高離子強度則保水力反而上升。另一組（Study IV，當時為手稿）把快凍與慢凍的肉先放 –3°C 再解凍，放到第 7 天時，兩者的失水與肌原纖維保水力已無顯著差異。凍融後蛋白酶體活性約低 40%（Study I）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "學位論文綜合篇，原始數字多在 Paper I–IV 的圖上，綜合篇只給『約 30%』『約 4%』等摘要式數字；Paper II 的期刊接受稿（core.ac.uk）本環境 Cloudflare 403（池中 K66-NA002），沒讀到；Study IV 在論文出版時是未發表手稿；『>90% 的水結冰、未凍水裡質子與離子強度升高十倍以上』是作者的估算前提，不是量測；酸化模型是作者提出的解釋，不得說成定論；赫爾辛基 Ertbjerg 研究群與池中各研究群不同（論文審查人之一是普渡的 Brad Kim，但不是共同作者）；論文結論對產業的解凍建議（縮短 –3°C 停留）片中不引。 覆核 V32（2026-11-12）：summary 的「慢凍的失水平均比快凍多約三成」改為「慢凍的 purge loss（解凍加後續冷藏的失水總和）平均比快凍相對多約 30%，平均含 Study II、III 與未發表的 Study IV」；「快凍約高 4%」補「肌原纖維保水力的相對差，綜合篇未給原始值」。",
+          "author_cache": {
+            "file": "stw17/f29src/zhang2020_helda.pdf",
+            "sha256_prefix": "d55f09038ceff3de",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-food-20261111",
+          "original_url": "https://helda.helsinki.fi/server/api/core/bitstreams/da01f93f-f336-4260-855b-844069726e47/content"
+        }
+      ]
+    },
+    {
       "id": "SRC-13d0b334b17da7ab",
       "url": "https://www.wirelesspowerconsortium.com/media/wvsmia32/qi2-25w-news-release-v72.pdf",
       "readings": [
@@ -10979,6 +11047,32 @@
           },
           "origin": "wave56-life-20261111",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10024986/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-140c32fa2728da6c",
+      "url": "https://iastatedigitalpress.com/mmb/article/17604/galley/15852/view",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.22175/mmb.17604",
+          "title": "Effect of Postmortem Aging and Fast-Freezing on Meat Quality of Various Lamb Cuts Under Prolonged Frozen Storage and Repeated Freezing/Thawing Conditions",
+          "publisher": "Yuan H. Brad Kim、Jin-Kyu Seo、Robert Kemp、Adam Stuart（紐西蘭 AgResearch、普渡大學）／Meat and Muscle Biology 8(1):17604，2024",
+          "version": "期刊正式全文 PDF（10 頁）；CC BY 4.0",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（Meat and Muscle Biology lamb freezing ice crystal）結果直接列出此 galley 網址；curl 工具預設標頭 200，pdftotext",
+          "reading_scope": "摘要與前言、方法、失水結果段讀過；未提核心",
+          "locator": "Abstract；Experiment 1 方法；Purge loss 結果段",
+          "summary": "15 頭羔羊五種肌肉，先熟成 4 週、–18°C 乙二醇浸漬快凍，存 1 週或 24 週再解凍，失水、剪力、顏色與只熟成不冷凍的對照大致沒有差異；再凍融一次失水略增。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與 F29-S002 同屬普渡 Kim 研究群，依同一研究群合計上限不另計；只列入 not_added（F29-NA006）。",
+          "author_cache": {
+            "file": "stw17/f29src/mmb17604.pdf",
+            "sha256_prefix": "688db8b9a488f4d0",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-physics-20261111",
+          "original_url": "https://iastatedigitalpress.com/mmb/article/17604/galley/15852/view"
         }
       ]
     },
@@ -16595,6 +16689,32 @@
       ]
     },
     {
+      "id": "SRC-20726d1e6aefc39e",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4356579/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0118331",
+          "title": "Effects of aging and idiopathic Parkinson's disease on tactile temporal order judgment（Nishikawa、Shimo、Wada、Hattori、Kitazawa；PLoS ONE 10(3): e0118331, 2015）",
+          "publisher": "PLOS ONE（開放取用）",
+          "version": "出版版全文（Europe PMC 開放子集 XML）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC search API 列出 PMC4356579，以 REST fullTextXML 取全文；curl 預設標頭",
+          "reading_scope": "全文",
+          "locator": "Abstract；Methods〈Participants〉Table 1；Results〈arms-uncrossed〉（時間解析度中位數 41／96／114 毫秒）、〈arms-crossed〉（Ã 三組無差、c 與 σf 老人較大）；Discussion 第 1 段",
+          "summary": "順天堂大學（北澤研究群）：20 名年輕人（23 歲）、23 名無帕金森病的長者與 24 名帕金森病患者（皆約 67 歲）。手不交叉時，年輕人達約 84% 正確所需間隔中位數 41 毫秒，長者 96 毫秒、患者 114 毫秒；交叉時三組都有判斷倒轉，『倒轉最大機率』沒有差別，也就是短間隔被騙的程度長者與年輕人相當；但長者的一般錯誤率較高，翻轉的時間窗也較寬（中位數約 430–530 毫秒對 240 毫秒），所以間隔拉到約 1 秒仍會答錯。帕金森病與同齡長者在各項參數上都沒有差別。作者因此說基底核不是這類先後判斷的必要結構。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與 R44003、H61-001～003 同屬北澤研究群；橫斷面比較（不是追蹤同一批人）；反應時間患者較長；本題只用『老了照樣被騙、只是錯誤拖得更久』，基底核結論不用。 覆核 V33（2026-11-12）：summary「間隔拉到約 1 秒仍會答錯」改「長者的判斷倒轉遍及整個間隔範圍（到約 2 秒）」；補「長者在 catch 與單手刺激試次的錯誤率也較高（年輕人中位數 0），四個錯誤參數彼此相關」；人數補「交叉條件分析為年輕 18、長者 23、患者 16；方法段 26／24 與表 1 的 24／23 不一致」。",
+          "author_cache": {
+            "file": "f30src/PMC4356579.xml",
+            "sha256_prefix": "e0fd8612af46416c",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4356579/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-20bbf9c4178b839d",
       "url": "https://openstax.org/books/biology-2e/pages/45-2-life-histories-and-natural-selection",
       "readings": [
@@ -20463,6 +20583,32 @@
           },
           "origin": "wave22-sound-20261102",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4153988/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-28d38a37c819bc38",
+      "url": "https://www.iastatedigitalpress.com/mmb/article/21358/galley/21342/download/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.22175/mmb.21358",
+          "title": "Consumers' Sensory Assessments, Descriptive Profiling and Purchase Behavior Toward Fresh Versus Frozen Goat Meat",
+          "publisher": "Ann Colonna、Carol Lorenzen（美國奧勒岡州立大學食品創新中心、動物與牧場科學系）／Meat and Muscle Biology 10(1):21358，2026",
+          "version": "期刊正式全文 PDF（14 頁）；CC BY 4.0",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（untrained consumers fresh vs frozen meat sensory）結果直接列出此下載網址；curl 工具預設標頭 200，pdftotext",
+          "reading_scope": "全文（摘要、材料方法、Table 2–3 與結果段落）；CATA 與情緒分析段瀏覽",
+          "locator": "Abstract；Products 段（8 頭羊、左右半邊配對、真空包裝、–23°C 凍 48 小時、1.8°C 解凍約 24 小時）；Results 第 1 段與 Table 2（盲測各項喜好 P>.05）；Attribute Assessments 段與 Table 3（品質與購買意願無差異、冷凍組購買意願 3.84）",
+          "summary": "奧勒岡一處牧場的 8 頭山羊，每頭左右半邊配對：一半冷藏 2.2°C 當鮮肉，一半真空包裝在 –23°C 凍 48 小時再冷藏解凍約 24 小時；烹調後的里肌與腰脊肉給 105 位吃羊肉的消費者盲測。外觀、顏色、香氣、整體喜好、肉味、風味強度、油脂、餘味、口感、嫩度、多汁等各項喜好，鮮肉與冷凍組都沒有顯著差異（P>.05）；感知品質與購買意願也沒有差異，冷凍組的購買意願平均 3.84（5 分制，接近『可能會買』）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只凍 48 小時，幾乎沒有冷凍儲存期；山羊肉、8 頭、單一牧場；沒有受訓評審也沒有測失水；作者結論『冷凍羊肉可與鮮肉同等品質』屬行銷建議，片中不引；Table 2 的 PDF 轉文字欄位錯位，片中只引『各項都沒有顯著差異』與購買意願 3.84，不引個別分數；不得說成『凍過的肉吃不出來』。 覆核 V32（2026-11-12）：limitations 補「與 F29-S004 同方向，覆核計 0，只當一句旁證」。",
+          "author_cache": {
+            "file": "stw17/f29src/mmb21358.pdf",
+            "sha256_prefix": "bdca8b36c1e5bf3d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-food-20261111",
+          "original_url": "https://www.iastatedigitalpress.com/mmb/article/21358/galley/21342/download/"
         }
       ]
     },
@@ -33561,6 +33707,32 @@
       ]
     },
     {
+      "id": "SRC-44db14f0cbf0049e",
+      "url": "https://arxiv.org/pdf/cond-mat/0307762",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/cond-mat/0307762",
+          "title": "The number of capillary bridges in a wet granular medium",
+          "publisher": "Dimitrios Geromichalos、Mika M. Kohonen、Mario Scheel、Stephan Herminghaus（德國烏爾姆大學應用物理實驗室，Herminghaus 研究群）／arXiv 預印本",
+          "version": "arXiv:cond-mat/0307762v1（2003-07-31 上傳，4 頁）；未找到對應的期刊正式版",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（查 Kohonen、Geromichalos、Scheel、Herminghaus 的液橋論文）結果直接列出 arxiv.org/pdf/cond-mat/0307762；curl 工具預設標頭 200，pdftotext 轉文字",
+          "reading_scope": "全文（4 頁，含 Fig. 1–4 圖說與參考文獻）",
+          "locator": "第 1 頁右欄第 2–3 段（0.07% 才在幾乎每個接觸點成橋、粗糙度約 500 nm）；Fig. 1 圖說（W=0.055% 未成橋、0.2% 清楚可見）；第 2 頁 Fig. 2 與正文（N 在 Wb 附近急升後變平、緊密堆積多約 10%）；第 2 頁右欄（直方圖不超過 8，更濕時也從沒看過一顆珠子超過 9 座橋）",
+          "summary": "用折射率匹配法讓玻璃珠堆變透明：直徑 375 與 555 微米的玻璃珠泡在甲苯與二碘甲烷混合液裡（折射率 1.51，扮演一般濕沙裡『空氣』的角色），再加少量帶螢光素的水當成搭橋的液體，用顯微鏡一層層往下對焦、逐顆數每顆珠子身上的液橋。加水極少時根本沒有液橋，水先被珠子表面的粗糙處吸住（W=0.055% 時還沒成橋）；到含水量約 0.07%，幾乎每個接觸點都搭起液橋，由此推得的粗糙度約 500 奈米，和原子力顯微鏡量到的相近。每顆珠子的平均液橋數 N 在略低於 0.07% 時急升，之後曲線變平；壓得較密的堆積 N 約多 10%。在約 0.15% 時液橋數分布不超過 8，更濕時也從沒看過一顆珠子有超過 9 座液橋。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "預印本 v1，未找到同儕審查的期刊版；『空氣』換成有機液體（為了透明），不是沙也不是真的空氣；含水量 W 的基準文中未逐字定義，只能照原文寫『含水量 W』，不得與 P63-020 的約 0.2%（Pakpour 引用的模型、體積分率）或 P63-014 的油層厚度換算或比大小；4 頁短文、計數每點 20–40 顆珠子；作者 Scheel、Herminghaus 與 Scheel 2008（池中未讀原文、ESRF 摘要已計 0）同研究群，本來源是池中這一群唯一讀到的原文。 覆核 V32（2026-11-12）：version 改為「arXiv:cond-mat/0307762v1 預印本；同研究群另有 Kohonen、Geromichalos、Scheel、Schier、Herminghaus〈On capillary bridges in wet granular materials〉Physica A 339(1–2):7–15（2004，DOI 10.1016/j.physa.2004.03.047），摘要說報告玻璃珠模型的液橋配位數與體積；ScienceDirect 付費，只從 RePEc 與 ANU 研究入口（搜尋結果列出）讀到摘要，無法確認是否同組數據」。summary 的「之後曲線變平」改為「之後上升變緩（原文 becomes flatter）」；補「水先留在表面是觀察，因粗糙所致是研究者引文獻的解釋」「不超過 8 的分布：正文寫 W≈Wb、Fig. 3 圖說寫 W=0.15%，前後不一」。",
+          "author_cache": {
+            "file": "stw17/f29src/geromichalos2003.pdf",
+            "sha256_prefix": "ee19a4a2c6cdee14",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/cond-mat/0307762"
+        }
+      ]
+    },
+    {
       "id": "SRC-44dbfcbef03e5b5e",
       "url": "https://ourworldindata.org/grapher/per-capita-milk-consumption",
       "readings": [
@@ -35215,6 +35387,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/1455121/\\nhttps://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:1455121%20AND%20SRC:MED&resultType=core&format=json\\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC2647793/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4949ea4000877782",
+      "url": "https://iastatedigitalpress.com/mmb/article/16903/galley/15953/view",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.22175/mmb.16903",
+          "title": "Evaluation of Fresh and Frozen Beef Strip Loins of Equal Aging Periods for Palatability Traits",
+          "publisher": "Erin S. Beyer、Lindsey K. Decker 等、Travis G. O'Quinn（美國堪薩斯州立大學動物科學系）／Meat and Muscle Biology 8(1):16903，2024",
+          "version": "期刊正式全文 PDF（13 頁）；CC BY 4.0",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（consumer panel fresh never-frozen vs frozen beef）結果直接列出此 galley 網址；curl 工具預設標頭 200，pdftotext",
+          "reading_scope": "全文（摘要、材料方法、Table 1–8、結果、討論）",
+          "locator": "Abstract；Sample collection（冷凍組熟成後急凍、–20°C 存 1 週、2–4°C 解凍 24 小時）；Consumer sensory panels（N=144、前 4 塊不給資訊、後 4 塊貼標且一半故意貼錯）；Table 3（消費者評分）；Table 5–6 與對應段落（品質等級、標示不影響）；Table 7（受訓評審）；Table 8（剪力、烹調損失、滲出）；Discussion 倒數段（滲出增加 0.8%）",
+          "summary": "72 條 USDA Low Choice 牛的前腰脊肉，分熟成 21、28、35 天；冷凍組在相同熟成天數後急凍、–20°C 存 1 週、冷藏解凍 24 小時，與熟成天數相同的鮮肉在同一天比。144 位消費者每人吃 8 塊：前 4 塊盲測，後 4 塊貼上『曾冷凍』或『新鮮、未冷凍』，其中一半故意貼錯。盲測時消費者覺得冷凍組較嫩（65.1 對 61.4，0–100 分，P<0.05），多汁、風味、整體喜好都沒有顯著差異（多汁 64.5 對 66.0）；評為『不滿意』到『頂級』各等級的比例也一樣；貼標籤不影響任何評分。受訓評審則覺得鮮肉較多汁（初始多汁 64.0 對 60.7、持續多汁 58.5 對 54.5），冷凍組整體嫩度較高（69.3 對 65.2）。儀器：冷凍組剪力較低（3.1 對 3.4 kg）、烹調損失較高（17.1% 對 14.9%）、包裝滲出較高（1.6% 對 0.8%），作者說多出的 0.8% 實際影響很小。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只凍 1 週、–20°C、熟成後才凍，結果不能推到長期冷凍或家用冷凍；不同屠宰日（相隔一週）的牛分別當鮮肉與冷凍組；消費者是堪薩斯州招募的牛排食用者；作者結論『冷凍肉不應因食用品質被打折』是產業立場，片中只講數字；不得說成『凍過的肉吃不出來』——受訓評審吃得出多汁差；與 K66-006（羊排受訓評審）、K66-007（雞胸評審）方法不同，只並列不比分數。 覆核 V32（2026-11-12）：limitations 補「冷凍組 36 條全部來自第一個屠宰日、鮮肉組全部來自一週後的第二個屠宰日，冷凍處理與屠宰批次完全重疊」。",
+          "author_cache": {
+            "file": "stw17/f29src/mmb16903.pdf",
+            "sha256_prefix": "3196ec485986728a",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-food-20261111",
+          "original_url": "https://iastatedigitalpress.com/mmb/article/16903/galley/15953/view"
         }
       ]
     },
@@ -53029,6 +53227,32 @@
       ]
     },
     {
+      "id": "SRC-71e766022414ba67",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6169024/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1186/s12983-018-0279-4",
+          "title": "A consistent long-lasting pattern of spatial variation in egg size and shape in blue tits (Cyanistes caeruleus)（Bańbura 等；Front Zool 15:34, 2018）",
+          "publisher": "Frontiers in Zoology（BMC，CC BY）",
+          "version": "出版版全文（Europe PMC 開放子集 XML）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC search API 列出 PMC6169024，以 REST fullTextXML 取全文；curl 預設標頭",
+          "reading_scope": "全文",
+          "locator": "Abstract；Methods〈Study areas〉〈Egg measurements〉（SH＝B/L×100）；Results 第 1 段（重複性 R＝0.714）、egg shape 段與 Table 2；Discussion 第 1、6、7 段（形狀與窩卵數無關、鈣假說）",
+          "summary": "波蘭羅茲大學：2002–2013 年在相距 10 公里的城市公園與落葉林兩處巢箱，量 781 窩藍山雀蛋。蛋的大小與形狀（寬÷長的球度）在同一窩內很一致（形狀重複性 0.714）；12 年裡公園的蛋每年都比森林的大、也比較不圓（較長），控制窩卵數與蛋體積後仍成立；蛋的大小隨窩卵數變小，但形狀與窩卵數無關（作者原本預期大窩要排成數層、應有關係）。作者推測兩地鈣質與食物差異是主因。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一物種、兩個地點；量的是球度（長寬比），不是尖不尖；鈣質是作者推論，未直接操弄；與 L66-016（澳洲氣候與伸長）同屬『環境影響長寬比』但層次不同（同種族群內 vs. 310 種）。 覆核 V33（2026-11-12）：summary「12 年裡公園的蛋每年都比森林的大、也比較不圓」改「公園的蛋每年都比森林大約 5%；形狀整體略不圓（球度 76.03% 對 76.99%），模型無年份差異或趨勢，另有地點×體積交互作用」。",
+          "author_cache": {
+            "file": "f30src/PMC6169024.xml",
+            "sha256_prefix": "aaba4c0c4e5643cb",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6169024/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-71ec137da2ab11b7",
       "url": "https://webarchive.ucr.edu/urban.ucr.edu/sites/default/files/2020-05/chemical_signals_associated_with_life.pdf",
       "readings": [
@@ -66540,6 +66764,32 @@
       ]
     },
     {
+      "id": "SRC-8f3e4e6bb0b79750",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2375759",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/j.1469-7580.2007.00751.x",
+          "title": "The asymmetry of avian egg-shape: an adaptation for reproduction on dry land（Mao、Murakami、Iwasawa、Yoshizaki；J Anat 210(6): 741–748, 2007）",
+          "publisher": "Journal of Anatomy（Anatomical Society；PMC 典藏）",
+          "version": "出版版全文（PMC 網頁）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果直接列出 pmc.ncbi.nlm.nih.gov/articles/PMC2375759；curl 預設標頭取 HTML，本機轉文字（mao2007_pmc2375759.txt）",
+          "reading_scope": "全文（摘要、方法、結果、討論、圖說）",
+          "locator": "Results〈Hatching rate of embryos at various egg positions〉（84.8%、62.3%）；〈Changes of the egg-axis angle…〉（13°→19°、0.22→2.16 mL、未受精 70 天 44°）；Fig 4 圖說；〈Next, an experiment…〉（9.9／8.6／7.0°）；〈Morphology of shell membrane…〉；Discussion 第 1、2、4、6、7 段",
+          "summary": "岐阜大學（Yoshizaki 研究群）用日本鵪鶉：人工孵化時鈍端朝上傾 45° 並翻蛋，受精蛋孵化率 84.8%，顯著高於側放（0°）或尖端朝上（−45°）；任蛋自己躺著的 62.3%。自由躺著的蛋，長軸與水平的夾角在孵化頭 14 天從約 13° 慢慢升到 19°，同時鈍端的氣室從 0.22 毫升長到 2.16 毫升；未受精蛋也一樣變（70 天後達 44°），表示這是失水、內容物往尖端集中造成，與胚胎無關。把蛋固定在 13°、不讓它自己翹起來，孵化率比自由躺著的低（有翻蛋時）。電鏡下，產出前的蛋只在鈍端的內外殼膜之間有一層『中間層』，產蛋後裂開成氣室的內襯，其他部位沒有。作者結論：不對稱形讓蛋尖端朝下、鈍端朝上躺，氣室在上方擴大、利於換氣與孵化，並推測這可能是鳥類在乾燥陸地繁殖的適應。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一物種（日本鵪鶉）、人工孵化器；『為了在乾燥陸地繁殖而演化』是作者推論，沒有跨物種比較；殼膜中間層只在鈍端形成的流體剪力解釋是假說；不能推到野鳥巢中都是 13°。與 L66-013（鈍端是氣室那頭）只沾邊，答案不同：L66-013 談髒污塞孔，本篇談擺放角度與氣室、孵化率。 覆核 V33（2026-11-12）：canonical_url 由 https://doi.org/10.1111/j.1469-7580.2007.00751.x 改為 https://doi.org/10.1111/j.1469-7580.2007.00737.x；limitations 補「自由躺 62.3% 與 +45°、0° 沒有顯著差別；固定 13° 較差只在翻蛋時；失水與重心移動是作者以 might 表述的解釋；2026-11-12 覆核重抓時 pmc.ncbi.nlm.nih.gov 回 reCAPTCHA 瀏覽器驗證，未繞過，只能依作者快取」。",
+          "author_cache": {
+            "file": "f30src/pmc2375759.html",
+            "sha256_prefix": "65d7697bbf8f4586",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-life-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2375759"
+        }
+      ]
+    },
+    {
       "id": "SRC-8f4e2f81f3f81140",
       "url": "https://eng.libretexts.org/Bookshelves/Materials_Science/TLP_Library_I/12:_Creep_Deformation_of_Metals/12.7:_Designing_for_Creep_Resistance_-_Nickel_Based_Superalloys",
       "readings": [
@@ -76340,6 +76590,32 @@
       ]
     },
     {
+      "id": "SRC-a5528ec89716fc19",
+      "url": "https://www.iastatedigitalpress.com/mmb/article/id/11234/print/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.22175/mmb.11234",
+          "title": "The Effect of Aging/Freezing Sequence and Freezing Rate on Quality Attributes of Beef Loins (M. longissimus lumborum)",
+          "publisher": "Derico Setyabrata、Jacob R. Tuell、Yuan H. Brad Kim（美國普渡大學動物科學系 Kim 研究群）／Meat and Muscle Biology 3(1)，2019（Iowa State University Digital Press）",
+          "version": "期刊正式全文（出版社網站的列印版 HTML）；DC.Rights 標 CC BY-NC-ND 4.0",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（frozen beef／pork 切片、細胞內外冰晶）結果直接列出此列印頁網址；curl 工具預設標頭 200（本次沒有出現第十六輪記錄的 Anubis 驗證頁），HTML 去標籤轉文字",
+          "reading_scope": "全文（摘要、前言、材料方法、結果與討論、結論、Table 1）",
+          "locator": "Abstract；Materials and Methods 第 3 段（–75°C 低溫櫃快凍、–20°C 送風慢凍、–20°C 存 21 天、3°C 隔夜解凍）與 Histological analysis（冷凍切片 cryo-histology）；Results：Tc 段（21.5 分對 175 分）、Histological analysis 第 1–4 段與 Fig. 3–4、Purge/thaw loss 段與 Table 1；Conclusions",
+          "summary": "8 頭牛（USDA Low Choice）的腰脊肉切成 2.54 公分牛排，分五組：只熟成不冷凍（AO）、先凍再解凍後熟成（FTA）或先熟成再凍（AFT），各配快凍（–75°C 低溫櫃，通過 –1 到 –7°C 的特徵冷凍時間 Tc 21.5 分）或慢凍（–20°C 送風，Tc 175 分）；熟成為 3°C 14 天。冷凍狀態直接做冷凍切片：慢凍組清楚看到較大的細胞外冰晶，快凍組看到較小的細胞內冰晶，但先凍後熟成的快凍組也有不少細胞外冰晶。解凍後一般切片：慢凍組肌纖維間的縫明顯較大。失重（purge/thaw loss，自屠後第 2 天到處理結束的重量差，含熟成期滲出）：AO 4.14%、FF-FTA 7.24%、SF-FTA 8.64%、FF-AFT 4.42%、SF-AFT 4.90%；SF-FTA 最高，FF-FTA 次之，FF-AFT、SF-AFT 與 AO 三組彼此沒有顯著差異；冷凍速度的主效應不顯著（5.83% 對 5.77%，P=0.2327）。剪力值不受冷凍速度影響。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "失重包含熟成期間的滲出，不是單純的解凍滴失，不能和 K66 各篇的解凍損失百分比並排比；冷凍切片只有定性照片、沒有冰晶大小數字；每組 2–3 塊牛排做切片；普渡 Kim 研究群（另有 MMB 2024 羔羊研究，見 F29-NA006）與池中已用的韓國建國大學、世宗大學研究群不同；授權 CC BY-NC-ND。文中『先熟成再凍可減輕冷凍損害』是作者對產業的建議，片中不引。 覆核 V32（2026-11-12）：summary 補「冷凍切片每組 2 塊牛排、一般切片每組 3 塊，100 倍光學顯微鏡，無冰晶大小數字；論文自述冰晶位置差異已見於 Rahelić 1985、Grujić 1993，本研究是重現；8 頭牛、各處理一塊牛排」。",
+          "author_cache": {
+            "file": "stw17/f29src/mmb11234_print.html",
+            "sha256_prefix": "6a3a7e3b6d0462fb",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-food-20261111",
+          "original_url": "https://www.iastatedigitalpress.com/mmb/article/id/11234/print/"
+        }
+      ]
+    },
+    {
       "id": "SRC-a569d3a69ca32645",
       "url": "https://mcdermottlab.mit.edu/papers/Traer_McDermott_2016_reverberation.pdf",
       "readings": [
@@ -84659,6 +84935,32 @@
       ]
     },
     {
+      "id": "SRC-b752229c6d11a665",
+      "url": "https://www.marycstoddard.com/s/Stoddard-2019-Evolution-of-avian-egg-shape-underlying-mechanisms-and-the-importance-of-taxonomic-sca.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/ibi.12755",
+          "title": "Evolution of avian egg shape: underlying mechanisms and the importance of taxonomic scale（Stoddard、Sheard、Akkaynak、Yong、Mahadevan、Tobias；Ibis 161(4): 922–925, 2019，Viewpoint）",
+          "publisher": "Ibis（British Ornithologists' Union）；第一作者研究室網站所附 PDF",
+          "version": "出版版排版 PDF（第一作者實驗室網站）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果直接列出第一作者網站 PDF；curl 預設標頭；pdftotext 轉文字",
+          "reading_scope": "全文（4 頁觀點文章）",
+          "locator": "第 1 頁右欄第 2 段（納入窩卵數、巢位、巢型、發育型，全球尺度皆不顯著）；第 2 頁左欄（海鳥與鴴鷸類 HWI 不顯著）；第 2 頁右欄（『about 4%… This is true』；Birkhead 2019 的 >60% 只用孵蛋位置一項；蛋體積與 taxon 解釋 41–76%；控制蛋體積與親緣後孵蛋位置不顯著，引 Birkhead 2019 支援資訊）；第 2 頁左欄末（多數鳥蛋在洞穴、樹洞或杯狀巢，沒有滾走的大風險）；第 3 頁左欄（機制未知、提骨盆寬度待查）",
+          "summary": "Stoddard 團隊對 Birkhead 等 2019 的回應：（1）2017 年研究其實放進了窩卵數、巢位、巢型、雛鳥發育型等孵蛋相關因子，全球 1200 多種的尺度都不顯著；（2）同意 HWI 只解釋總變異約 4%，因為大部分變異由親緣、體型、蛋大小解釋，但 HWI 是控制這些之後唯一顯著的預測因子；（3）指出 Birkhead 2019『孵蛋位置解釋 >60%』的模型只放了這一個因子，另一分析中蛋體積與類群（海雀或企鵝）就解釋 41–76%，而且依 Birkhead 自己的支援資訊，控制蛋體積與親緣後，蛋形與孵蛋位置沒有顯著關係；（4）絕大多數鳥的蛋在洞穴、樹洞或杯狀巢裡，沒有滾走的大風險；（5）結論：不同分類尺度有不同規則，兩邊結果互補而非矛盾。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與 L66-S007（Stoddard 2017）同一研究群，依上一輪同篇合計 2.0 的精神，本篇只計 0.5；『約 4%』是 Birkhead 的估算、本篇承認，仍不得當成 Stoddard 2017 原文數字；Birkhead 支援資訊本輪未讀，『控制後不顯著』是本篇轉述；網站 PDF 為作者自存，是否為出版社允許的版本未另查。 覆核 V33（2026-11-12）：limitations 補「第一點（2017 年已放孵蛋因子）與 L66-014 重複；41–76% 與控制後不顯著是轉述 Birkhead 2019，不計；本文親口承認『約 4%』屬實（This is true），4% 可帶此出處唸但仍計 0」。",
+          "author_cache": {
+            "file": "f30src/stoddard2019.pdf",
+            "sha256_prefix": "647d04b92c986e16",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-life-20261111",
+          "original_url": "https://www.marycstoddard.com/s/Stoddard-2019-Evolution-of-avian-egg-shape-underlying-mechanisms-and-the-importance-of-taxonomic-sca.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-b75fbdc774430410",
       "url": "https://arxiv.org/abs/1805.02996",
       "readings": [
@@ -89958,6 +90260,32 @@
       ]
     },
     {
+      "id": "SRC-c2324a374b5901d5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8242022/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-021-92192-1",
+          "title": "Haptic awareness changes when lying down（Unwalla、Cadieux、Shore；Sci Rep 11:13479, 2021）",
+          "publisher": "Scientific Reports（CC BY 4.0）",
+          "version": "出版版全文（Europe PMC 開放子集 XML）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC search API 列出 PMC8242022，以 REST fullTextXML 取全文；curl 預設標頭",
+          "reading_scope": "全文",
+          "locator": "Abstract；Introduction 第 3–5 段；Methods〈Participants〉〈Apparatus〉〈Procedure〉；Results〈PCD〉（側躺 0.26 對坐直 1.28；矇眼 0.50 對不矇 1.04；各條件仍顯著大於 0）與〈reference frame weights〉（外部權重 task 參數 0.31、0.16）；Discussion 第 1–2 段",
+          "summary": "加拿大 McMaster 大學 Shore 研究群：兩組各 20 名大學生（實驗 1 睜眼、實驗 2 矇眼），雙手交叉與不交叉做觸覺先後判斷，坐直與向左側躺各做一次。側躺時交叉代價（PCD）從坐直的 1.28 降到 0.26，矇眼也讓它從 1.04 降到 0.50，兩者沒有交互作用；但各條件的交叉代價仍大於零。用貝氏階層模型估計，側躺主要是降低了給『外部空間座標』的權重（實驗 1 外部權重變成約 0.31 倍、實驗 2 約 0.16 倍）。作者解讀：外部座標要靠視覺與前庭（哪邊是上）一起撐，側躺讓這些訊號不一致、可靠度下降，腦就少用它。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "年輕大學生、各 20 人；只側躺一個方向；視覺、前庭與身體壓覺的貢獻作者自承無法拆開；權重是模型估計。矇眼減少代價是複製前人（Cadieux & Shore 2013）結果，與池中 H61-004『黑暗中仍會對到外部空間』不矛盾（代價仍在，只是變小），矇眼這半不另計。 覆核 V33（2026-11-12）：summary 補「1.28→0.26、1.04→0.50 是兩組 40 人的 ANOVA 主效應平均；側躺時代價仍顯著大於 0（兩組 p=0.03）；矇眼加側躺的代價不到坐直不矇眼的 5%」。",
+          "author_cache": {
+            "file": "f30src/PMC8242022.xml",
+            "sha256_prefix": "d030a9796ccf57b4",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8242022/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-c23bf2a3bc33cb7a",
       "url": "https://arxiv.org/abs/1409.0473",
       "readings": [
@@ -94929,6 +95257,58 @@
       ]
     },
     {
+      "id": "SRC-cbc922323f64a4f6",
+      "url": "https://eprints.whiterose.ac.uk/186835/1/TheShapeOfBirdsEggs.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1086/716928",
+          "title": "The Shapes of Birds' Eggs: Evolutionary Constraints and Adaptations（Montgomerie、Hemmings、Thompson、Birkhead；Am Nat 198(6): E215–E231, 2021）",
+          "publisher": "The American Naturalist（Univ. Chicago Press）；White Rose 典藏出版版，CC BY-NC",
+          "version": "出版版（典藏頁標示 Published Version，依出版社自我典藏政策）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果直接列出 White Rose 典藏 PDF；curl 預設標頭；pdftotext 轉文字（wr186835_plain.txt）",
+          "reading_scope": "全文（正文、表 1、圖說；線上補充 PDF 未讀）",
+          "locator": "Abstract；Results〈General patterns〉Elongation／Asymmetry 段（921 種新顎類、約 14% 與 8%；巢內刨坑蛋最不對稱、塚巢最低）與〈Complications〉（55 科中 24%–64% 方向相反）；〈Constraints: Pelvis〉（不對稱與骨盆無明確關係，模型解釋 6%–9% 對伸長 27%–30%）；〈Adaptations: Clutch Size〉（刨坑巢 1–4 顆時窩卵數越多越不對稱）；〈Adaptations: Incubation Site〉；Fig 6 圖說",
+          "summary": "皇后大學與謝菲爾德大學團隊量了 955 種現生鳥（39／40 目）的蛋：作者結論是『長不長』（伸長）主要受雌鳥輸卵管與身體構造（和骨盆形狀相關）的限制，『尖不尖』（不對稱）主要是對孵蛋條件的適應。在 921 種新顎類裡，整個模型只解釋伸長變異約 14%、不對稱約 8%；下在地面刨坑（scrape）的蛋最不對稱、塚巢的最低；在刨坑巢、每窩 1–4 顆的鳥，窩卵數越多蛋越不對稱（合乎『尖蛋在 3–4 顆一窩時排得比較緊』的預測）。用骨盆量測時，不對稱度與骨盆大小、形狀沒有明確關係（模型只解釋 6%–9%），伸長則有（27%–30%）。逐科看，55 個科中有 24%–64% 的關係方向與全鳥類模型相反，作者主張沒有單一因素在所有鳥身上作用都一樣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "Birkhead 研究室（含 L66-S008 學位論文的作者），依上一輪規則與 L66-011～013、015 合計封頂 3.0（目前 2.5），本篇最多再加 0.5。補充表未讀；HWI 與不對稱的關係本篇也有（加入運動方式後主效應不顯著），不另計；『尖蛋排得緊』是引 Andersson 1978 的預測。 覆核 V33（2026-11-12）：summary 補「921 種的全模型中 HWI 對不對稱的效應最大（約為窩卵數或雌鳥體重的兩倍）；全體看窩卵數對不對稱的線性效應可忽略，只在刨坑巢 1–4 顆時為正；加入運動方式後 HWI 主效應不顯著但交互作用顯著、主效應無法解讀，在地面行走與棲枝鳥中仍顯著；作者說部分支持 Stoddard 2017」；「55 科中 24%–64% 方向相反」限定為預測伸長的模型，預測不對稱為 20–27／51–55 科。",
+          "author_cache": {
+            "file": "f30src/wr186835.pdf",
+            "sha256_prefix": "6916c4b73dea1e7f",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-life-20261111",
+          "original_url": "https://eprints.whiterose.ac.uk/186835/1/TheShapeOfBirdsEggs.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cbd649f3283527c2",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6026453/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.7717/peerj.5052",
+          "title": "A new, three-dimensional geometric morphometric approach to assess egg shape（Attard、Sherratt、McDonald、Young、Vidal-García、Wroe；PeerJ 6:e5052, 2018）",
+          "publisher": "PeerJ（CC BY）",
+          "version": "出版版全文（Europe PMC 開放子集 XML）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC search API 列出 PMC6026453，以 REST fullTextXML 取全文（peerj.com 的 PDF 連結 curl 回 403，未繞過）",
+          "reading_scope": "全文",
+          "locator": "Abstract；Results 第 1–3 段（PC1 73.3%、Procrustes ANOVA 物種間 F3,51＝4.248、巢內嵌套後物種間不顯著而窩間顯著）；Fig 4 圖說",
+          "summary": "澳洲研究群用微電腦斷層掃描重建 4 種雀形目博物館蛋（每種數窩）的 3D 外形：4 種的平均形狀不同，但每種內部變異很大；把『窩』納入嵌套模型後，物種間差異不再顯著，窩與窩之間顯著不同；同一窩內的變異也『出乎意料地大』。作者提醒跨物種比較若忽略種內變異會有偏差。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "方法論文；4 種、每種約 4 窩、共 50 多顆博物館蛋；只能當『同種、同窩也不一樣』的旁證，與 L66-019 方向相近（相當一致但不一樣），只計 0.25。 覆核 V33（2026-11-12）：summary「同一窩內的變異也『出乎意料地大』」改「每一種內部的形狀範圍出乎意料地大，主要來自窩與窩之間；同窩內也有差異」。",
+          "author_cache": {
+            "file": "f30src/PMC6026453.xml",
+            "sha256_prefix": "2b28af49c6e6cc7e",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6026453/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-cbda87ba53a848ee",
       "url": "https://thailandfoundation.or.th/feet-low-head-high-a-guide-to-thai-etiquettes/",
       "readings": [
@@ -99010,6 +99390,32 @@
           ],
           "origin": "wave23-image-20261102",
           "original_url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d4f69f8b0452204a",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4124471/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/srep05985",
+          "title": "Spatio-temporal processing of tactile stimuli in autistic children（Wada、Suzuki、Takaki、Miyao、Spence、Kansaku；Sci Rep 4:5985, 2014）",
+          "publisher": "Scientific Reports（Nature Portfolio，開放取用）",
+          "version": "出版版全文（Europe PMC 開放子集 XML）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC search API 列出 PMC4124471（開放取用），以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+          "reading_scope": "全文（正文、表 1、圖說、方法）",
+          "locator": "Abstract；Results〈TOJs with the arms-uncrossed〉〈Temporal order judgments in the arms-crossed condition〉（Ã r、Ã l、SC、100–300 ms）；〈Relationship between AQ scores…〉；Table 1；Methods〈Participants〉",
+          "summary": "日本國立身障者復健中心（Kansaku 研究群，與 Spence 合作）：10 名自閉症兒童（9–15 歲，平均 11.8 歲）與 10 名配對的一般兒童做雙手交叉的觸覺先後判斷。交叉時一般兒童出現明顯的判斷倒轉，自閉症兒童倒轉小得多（模型的淨最大翻轉機率 Ã r 0.14 對 0.33、Ã l 0.17 對 0.30），差別集中在 100–300 毫秒間隔；但自閉症兒童手不交叉時的時間解析度較差（125 對 82 毫秒）、反應較慢。另 12 名男孩（平均 16.3 歲），自閉特質量表（AQ）分數越高，交叉錯覺通常越小。作者推論自閉症兒童較偏重身體本位的座標，外部空間座標的發展可能受影響。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "每組 10 人、年齡 9–15 歲跨度大；AQ 分析只有 12 名男孩；『偏重身體本位座標』是作者推論。與池中早盲、視障嬰兒『交叉代價較小』同方向，依規則只計 0.5。不得說自閉症兒童觸覺比較好（手不交叉時解析度反而較差）。 覆核 V33（2026-11-12）：summary 補「刺激在兩手無名指背面；受試者閉眼、戴耳塞並聽白噪音；AQ 分析的 12 名男孩來自輕度發展障礙自助團體（AQ 14–36）」。",
+          "author_cache": {
+            "file": "f30src/PMC4124471.xml",
+            "sha256_prefix": "787fd8c39cbae3ec",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave67-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4124471/fullTextXML"
         }
       ]
     },
@@ -297117,6 +297523,636 @@
       "production_ready": false
     },
     {
+      "id": "K67-001",
+      "question": "冰晶到底長在肉的細胞裡面還是外面？慢凍和快凍一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.frozen_meat_ice_location_cryohistology",
+      "answer_target": "美國普渡大學 2019 年把同一批牛腰脊排用兩種方式凍：–75°C 的低溫櫃（從 –1 到 –7°C 約 21.5 分鐘）和 –20°C 的送風冷凍（約 175 分鐘），趁還凍著直接切片看。慢凍的肉，清楚看到較大的冰晶長在細胞外、肌纖維之間；快凍的肉，看到較小的冰晶在細胞裡。但不是非此即彼：快凍組也看得到細胞外的冰晶，先凍後熟成那組更多。研究者說，這和更早的研究看到的一致。",
+      "scope": "定性照片、每組只切 2 塊牛排、沒有冰晶大小數字；說成「這次又看到了」而不是「第一次證明」；不和 K66-002 的冰晶半徑並排比；不說「快凍就沒有傷害」，不推薦冷凍方式、溫度或設備；–75°C、–20°C 只當實驗條件。",
+      "source_locator": "F29-S002 Materials and Methods 第 3 段與 Histological analysis（cryo-histology）；Results 的 Tc 段；Histological analysis 結果第 1、3、4 段與 Fig. 3–4",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：論文自己說是重現既有觀察；定性、樣本小；與 F29-003 同一實驗（同一批牛排），兩核心合計 0.75。 原提案 F29-002（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；原文相符，但這是對教科書現象的小樣本定性重現，且與 F29-003 同一實驗；下修為 0.25，補上「作者自己說與既有研究一致」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰晶不是到處亂刺：慢凍時大多擠在細胞外面，快凍時才小小地留在細胞裡。",
+        "visual": "左右兩張染色切片示意：左邊肌纖維之間塞著大塊白色冰，右邊每根纖維裡散著細小白點。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a5528ec89716fc19",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S002 Materials and Methods 第 3 段與 Histological analysis（cryo-histology）；Results 的 Tc 段；Histological analysis 結果第 1、3、4 段與 Fig. 3–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K67-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K67-002",
+      "question": "冷凍得快還是慢，一定會決定解凍後流多少水嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.aging_freezing_sequence_purge",
+      "answer_target": "在普渡大學這組牛排實驗裡，要看肉凍之前熟成了沒。先在 3°C 熟成 14 天才凍的，快凍和慢凍的失重（4.42% 和 4.90%）和完全沒凍、只熟成的對照（4.14%）在統計上分不開；先凍、解凍後才熟成的，失重明顯變多，這時快慢才有差：快凍 7.24%、慢凍 8.64%。這裡的失重是從屠宰後第二天到處理完的總重量差，包含熟成那兩週滲出的水。",
+      "scope": "只限這篇 8 頭牛、這個失重定義；不和 K66 各篇的解凍損失並排或相減；不說「先熟成再凍」是好方法、不給熟成或冷凍建議；不說「冷凍速度不重要」的通則；與 F29-002 同一批牛排，片中放在同一段或相鄰兩段，交代是同一個實驗。",
+      "source_locator": "F29-S002 Abstract；Purge/thaw loss 方法段；Table 1；Results 的 purge/thaw loss 第 1–3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。與 F29-002 同一實驗，合計 0.75。這是真正改變結論的結果（冰晶位置差很多，失重不一定差）。 原提案 F29-003（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；數字、條件與原文完全相符；只補「同一實驗」與樣本數的限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰晶的位置差很多，盤子裡的水卻不一定差：要看肉在冷凍之前是什麼狀態。",
+        "visual": "同一條牛腰脊切五塊牛排，五個秤；先熟成那三塊的數字幾乎一樣高，先冷凍那兩塊明顯跳高。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a5528ec89716fc19",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S002 Abstract；Purge/thaw loss 方法段；Table 1；Results 的 purge/thaw loss 第 1–3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K67-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K67-003",
+      "question": "解凍出水只是冰晶刺破細胞嗎？還是肉裡的蛋白質也被凍壞了？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.freeze_concentration_myofibril_denaturation",
+      "answer_target": "至少還有蛋白質這一筆。赫爾辛基大學一篇 2020 年的博士論文（指導教授 Per Ertbjerg）用豬背肌比較：快凍（–80°C 冷金屬板，約 12 分鐘）和慢凍（–20°C 空氣，約 174 分鐘）。慢凍的肉，解凍加後續冷藏滴出的水，平均比快凍多約三成（是比快凍那組多三成，不是肉重的三成）；同時從肉裡分離出的肌原纖維保水力較低、表面疏水性較高，作者讀成負責抓水的結構蛋白變性得更嚴重。他們提出的解釋是：水結冰時，酸和鹽被擠進還沒結冰的那一點水裡，pH 下降、鹽濃度升高，讓蛋白質變性；慢凍時比較嚴重。模擬實驗裡，把新鮮絞肉同時放在高鹽（相當 2 M 氯化鉀）和稍酸（pH 5.5 降到 5.2）的條件下，肌原纖維保水力就下降；只有高鹽、不降 pH 時反而上升。另外，鮮肉和凍融肉滴出的汁裡，蛋白質含量沒有差別。",
+      "scope": "稿中說「研究者提出的解釋」，不說定論；「約三成」照綜合篇寫法並講明是相對值，不換算、不和 K66-001／002／003 的百分比相減或並排；不說冰晶不重要；不引論文給產業的 –3°C 解凍建議，不提任何解凍或冷藏方法；「>90% 結冰、十倍以上」不當事實念。",
+      "source_locator": "F29-S003 Abstract 第 2–3 段；5.1 Changes in WHC（第 40–41 頁）；5.2 Myofibrillar proteins 第 1–2 段、Sarcoplasmic proteins（第 41–43 頁）；5.3 Treatment in minced meat（第 44 頁）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：學位論文綜合篇轉述作者自己的 Paper II、III，原始數據沒讀到；「約三成」的平均含未發表的 Study IV；模型是解釋不是量測。真正新增的是「慢凍失水較多與肌原纖維變性指標同步」與「絞肉酸＋鹽模擬」兩件事，合計 0.5。 原提案 F29-004（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；數字相符但「多流約三成」會被誤聽成絕對量，改寫成相對值；綜合篇轉述、未讀原論文，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "那灘水不只是冰晶刺破細胞：冰把酸和鹽擠在一起，連抓水的蛋白質都被泡壞了。",
+        "visual": "放大到肌原纖維：水分子一顆顆結成冰離開，剩下的小水窪裡鹽粒與 H⁺ 越擠越多，蛋白質的『手』鬆開，水滴下去。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-13c06dd8bf9f4c30",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S003 Abstract 第 2–3 段；5.1 Changes in WHC（第 40–41 頁）；5.2 Myofibrillar proteins 第 1–2 段、Sarcoplasmic proteins（第 41–43 頁）；5.3 Treatment in minced meat（第 44 頁）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K67-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K67-004",
+      "question": "一般人吃牛排，嚐得出哪塊冷凍過嗎？貼上『曾冷凍』的標籤會不會影響？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.consumer_blind_fresh_vs_frozen_beef",
+      "answer_target": "在堪薩斯州立大學 2024 年這個實驗裡，一般消費者沒有覺得冷凍的比較差。他們把熟成天數相同的牛前腰脊排分成鮮肉和冷凍組（熟成後凍、–20°C 放一週再冷藏解凍），讓 144 位消費者各吃 8 塊：前 4 塊不給資訊，冷凍組的嫩度分數反而較高（65.1 對 61.4，滿分 100），多汁、風味、整體喜好都沒有顯著差異；後 4 塊貼上「曾冷凍」或「新鮮未冷凍」，其中一半故意貼錯，標籤也沒改變任何評分。可是受過訓練的評審嚐得出差別：鮮肉的多汁分數較高（初始 64.0 對 60.7、持續 58.5 對 54.5）。要注意，冷凍組和鮮肉組來自相隔一週的兩批牛。",
+      "scope": "不得說成一般人都嚐不出冷凍過的肉：受訓評審嚐得出多汁差；只限「熟成後凍一週、–20°C」；冷凍組與鮮肉組來自不同屠宰日，要在稿中講；不和 K66-006（羊排受訓評審）、K66-007（雞胸）比分數；不引作者「冷凍肉不該被打折」的產業結論；不推薦買冷凍或鮮肉；儀器的滲出與烹調損失最多一句旁證，不唸成「只差 0.8%」的安心話。",
+      "source_locator": "F29-S004 Abstract；Sample collection 段；Consumer sensory panels 段；Table 3、Table 5–6 對應段落；Table 7；Table 8；Discussion『increase in purge … 0.8%』段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：受訓評審嚐得出多汁差與 K66-006 同方向，不重算；新增的是一般消費者盲測與故意貼錯標籤兩段，同一實驗合計 0.5。 原提案 F29-006（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；數字逐格相符；補上屠宰批次與冷凍完全重疊的限制，受訓評審部分與 K66-006 同方向，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "訓練過的舌頭分得出多汁，一般人卻覺得凍過的比較嫩；連標籤貼錯了也沒差。",
+        "visual": "兩排餐盤，一排標『曾冷凍』一排標『新鮮』，鏡頭一轉，標籤一半是反的，評分板上的數字幾乎沒動。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4949ea4000877782",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S004 Abstract；Sample collection 段；Consumer sensory panels 段；Table 3、Table 5–6 對應段落；Table 7；Table 8；Discussion『increase in purge … 0.8%』段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K67-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K67-005",
+      "question": "換成別的肉、別的人來盲測，結果也一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.consumer_blind_fresh_vs_frozen_goat",
+      "answer_target": "奧勒岡州立大學 2026 年用山羊肉做過類似的盲測，各項喜好也沒有顯著差異——但那批肉只凍了 48 小時。",
+      "scope": "只能當 F29-006 後面一句旁證，不起畫面；一定要講「只凍 48 小時」；不推到一般冷凍肉，不說成一般人都嚐不出；不引個別分數與購買意願、不引行銷建議。",
+      "source_locator": "F29-S005 Abstract；Products 段；Results 第 1 段與 Table 2；Attribute Assessments 段與 Table 3",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：只凍 48 小時、與 F29-006 同方向、沒有受訓評審，照 V22–V31 保守算法不計。 原提案 F29-007（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；原文相符，但幾乎沒有冷凍儲存期，又與 F29-006 同方向；計 0，只留一句旁證。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換一種肉、換一群人，盲測還是分不出——但這次只凍了兩天。",
+        "visual": "同一頭羊的左右兩半，一半進冰箱、一半進冷凍庫，兩盤一樣的切片端到 105 張桌上。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-28d38a37c819bc38",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S005 Abstract；Products 段；Results 第 1 段與 Table 2；Attribute Assessments 段與 Table 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K67-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H67-001",
+      "question": "自閉症的孩子雙手交叉時，被碰的先後也會說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.autism_smaller_crossed_hands_reversal",
+      "answer_target": "比較少說反。日本一項研究讓 10 名 9 到 15 歲的自閉症兒童和 10 名配對的一般發展兒童，閉眼、聽著白噪音，兩手無名指的指背各被輕敲一下，判斷哪隻手先。手不交叉時兩組都答得好，只是自閉症兒童需要的間隔稍長（約 125 對 82 毫秒）；雙手交叉後，一般發展的兒童在 100 到 300 毫秒的間隔常把順序說反，自閉症兒童說反的機率小得多（模型估的最大翻轉約 0.14 對 0.33）。另外 12 名參加發展支持團體的男孩裡，自閉特質分數越高，交叉時說反通常越少。研究者推測，這些孩子比較按「皮膚上的哪裡」來判斷，較少自動換算到外部空間。",
+      "scope": "每組 10 人、年齡跨度大；AQ 分析的 12 名男孩來自輕度發展障礙自助團體，不是一般族群；原因是作者推論。這是一項交叉手作業的結果，不是對自閉症兒童觸覺或能力的評價：不說「比較準」或「比較差」，不給任何診斷、訓練或醫療含意；不與盲人或視障嬰兒合併成「少一種能力就不被騙」。",
+      "source_locator": "F30-S001 Abstract；Results arms-crossed 段、Table 1；AQ 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：池中沒有（pool.json 無 autis／自閉／PMC4124471），但「交叉代價較小」與 H61-008、H62-001 同方向，只算 0.5。 原提案 F30-001（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字逐字相符；改兩處：刺激位置是無名指指背；AQ 男孩的來源寫明。payoff 去掉「解析度較差」的能力評價字眼，改成中性的「需要的間隔稍長」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "說反比較少，不等於各方面都比較快：手不交叉時，他們分辨先後需要的間隔反而稍長",
+        "visual": "兩條交叉時的判斷曲線：一般發展兒童在中段塌下，自閉症兒童較貼近不交叉的曲線",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave67-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4f69f8b0452204a",
+          "origin": "wave67-human-20261111",
+          "locator": "F30-S001 Abstract；Results arms-crossed 段、Table 1；AQ 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H67-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H67-002",
+      "question": "看不見的人交叉手比較不會被騙，那天生聽不見的人呢？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.congenital_deafness_larger_crossed_arm_deficit",
+      "answer_target": "這一組反而說反得更多。蒙特婁的研究找來 13 名先天極重度聽損的成人和 13 名聽力正常者，雙手各捏一塊會震動的泡棉方塊，用腳下的踏板回答哪一邊先震。雙手交叉後，聾人組的交叉代價（0 到 8 分的指標）平均 4.59，聽人組 2.49，明顯較大，不少聾人交叉時的答案整條倒過來；兩組的反應時間沒有差別。研究者認為早年的聽覺經驗可能也參與了把觸覺放進外部空間，方向和早盲者相反；但他們也提醒，受測的聾人多數前庭功能受損，可能解釋部分結果，而用腳回答本身也可能抬高錯誤率。",
+      "scope": "每組 13 人；用腳回答；「整條倒過來」研究者以口頭確認排除誤解，實際沒有剔除任何人；11 名受測前庭的聾人中 7 名前庭受損，聽覺與前庭的影響分不開；間隔只到 ±400 毫秒；「永久改變」是作者推論。這是一項交叉手作業的結果，不是對聾人觸覺或能力的評價，不說「聾人觸覺比較差」，不給醫療或助聽、復健建議；不與 H61-008 的早盲者畫成同一量尺的長條圖。",
+      "source_locator": "F30-S002 Abstract；Methods Participants、Table 1；Results 第 1 段；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：方向與池中「少了視覺→代價變小」相反，是新結論，獨立研究群；但用腳回答、整條倒過來的受試者只靠口頭確認排除誤解、前庭缺損是作者自承的混淆，證據比作者寫的弱。片中把它當「外部座標的權重會被別的感覺（含前庭）改變」的一例，與 F30-003 並排。 原提案 F30-002（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；主數字對，但作者答案加了原文沒有的「手不交叉時兩組差不多」，並漏掉原作者自己寫的前庭混淆（7／11）；「排除聽不懂指示」實為口頭確認、無人剔除。改答案與 scope，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "少一種感覺不一定比較不會說反：早盲者少說反，先天聾的這一組反而更常說反——而前庭可能也有份",
+        "visual": "兩項研究分開的兩張小圖（不同量尺不並列數值），中間用一個「外部座標權重」旋鈕連起來",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave67-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0665b32d5c4b267f",
+          "origin": "wave67-human-20261111",
+          "locator": "F30-S002 Abstract；Methods Participants、Table 1；Results 第 1 段；Discussion 第 1–2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H67-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H67-003",
+      "question": "同樣交叉雙手，躺下來做會比坐著做更不容易搞錯嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.lying_on_side_reduces_crossed_hands_deficit",
+      "answer_target": "會。加拿大 McMaster 大學找了兩組各 20 名大學生雙手交叉判斷「哪隻拇指先震」，一次坐直、一次向左側躺；一組睜眼、一組矇眼。兩組合起來看，側躺時的交叉代價從坐直的 1.28 降到 0.26，但仍大於零。研究者用模型估計，側躺主要是讓大腦少用「外部空間座標」。他們的解讀是：外部座標要靠視覺、內耳前庭和身體被壓的感覺一起告訴你哪邊是上，側躺時這些訊號彼此不一致，可靠度變低，權重就被調低；三者各占多少，他們說還分不開。",
+      "scope": "年輕大學生、各 20 人、只側躺左邊；1.28、0.26 是兩組合併的平均；權重是模型估計；視覺、前庭與身體壓覺的貢獻作者說無法拆開。矇眼降低代價是複製前人結果，不另計，也不與 H61-004「黑暗中仍會對到外部空間」矛盾（代價仍大於零）。不給睡姿或任何健康建議。",
+      "source_locator": "F30-S003 Abstract；Methods；Results PCD 段與 reference frame weights 段；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）：側躺降低交叉代價是池中沒有的新結論（pool.json 無 Unwalla／Cadieux／PMC8242022；「Shore」只出現在 H61-S003 綜述的轉引），獨立研究群（Shore，McMaster）；矇眼那半 0；權重模型併入。 原提案 F30-003（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字逐字相符，改答案寫明是兩組合併平均、補「仍大於零」與身體壓覺，role 改為 turn（它與 F30-002 一起撐轉折二）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個人、同一雙手，換個躺姿就比較少說反：外部座標是可以被調低的權重",
+        "visual": "坐直與側躺兩張示意圖並排，旁邊一個「外部座標」旋鈕被轉小",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave67-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c2324a374b5901d5",
+          "origin": "wave67-human-20261111",
+          "locator": "F30-S003 Abstract；Methods；Results PCD 段與 reference frame weights 段；Discussion 第 1–2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H67-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H67-004",
+      "question": "年紀大了，交叉手時還會把先後說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.aging_crossed_reversal_preserved_wider_flip_window",
+      "answer_target": "照樣會。日本研究比較 20 名年輕人（平均 23 歲）和 23 名約 67 歲的長者：雙手交叉時，兩組在短間隔把先後說反的程度相當；不同的是，長者說反的時間窗比較寬（中位數約 430 對 240 毫秒），間隔拉到一、兩秒仍會答錯，而且長者在只碰一隻手時也比較常答錯，所以這部分不全是交叉造成的。",
+      "scope": "橫斷面比較；只用「年紀大了照樣會說反」一句與時間窗；不提帕金森病、基底核或任何醫學結論；不說長者觸覺退化或能力不足，不給健康建議；長者的一般錯誤率較高要一起說，不能把所有錯誤都歸給交叉。",
+      "source_locator": "F30-S004 Abstract；Results arms-uncrossed 段（41／96／114 ms）、arms-crossed 段（Ã、c、σf）；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.5）：北澤研究群在本題已有 R44003 1、H61-001 0.5、H61-002 0.5、H61-003 1.0，合計 3.0，照同研究群 3.0 封頂（第十四輪 Bonn、第十六輪 Birkhead 的先例）不再加。內容可留作時間軸上的一句，讓年齡從 4 個月延到 67 歲。 原提案 F30-004（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；「約 1 秒」原文無（是到約 2 秒）、漏了長者單手也較常錯的條件、患者人數寫錯；帕金森病段落刪掉以免變成醫學內容；同研究群封頂，計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這個說反不會隨年紀消失",
+        "visual": "時間軸：4 個月、6 個月、8 歲、23 歲、67 歲，每個點只標「有沒有交叉代價」",
+        "seconds": [
+          15,
+          20
+        ]
+      },
+      "origin": "wave67-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-20726d1e6aefc39e",
+          "origin": "wave67-human-20261111",
+          "locator": "F30-S004 Abstract；Results arms-uncrossed 段（41／96／114 ms）、arms-crossed 段（Ã、c、σf）；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H67-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L67-001",
+      "question": "蛋一頭尖一頭鈍，跟孵蛋時蛋怎麼躺有關嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.quail_asymmetry_blunt_end_up_air_chamber_hatchability",
+      "answer_target": "至少在日本鵪鶉的人工孵化裡有關。岐阜大學讓鵪鶉蛋以不同角度孵：鈍端朝上傾 45 度並定時翻蛋，受精蛋孵化率 84.8%，明顯高於側放或尖端朝上。任蛋自己躺著，因為一頭尖，它會尖端略朝下、長軸傾約 13 度；孵化頭 14 天，鈍端的氣室從 0.22 毫升長到 2.16 毫升，蛋也自己慢慢翹到約 19 度，沒受精的蛋也一樣，研究者認為是失水、重心往尖端移。在有翻蛋的條件下，把蛋固定在 13 度不讓它翹，孵化率比自由躺著的低。電子顯微鏡下，殼膜只在鈍端多一層，產蛋後分成兩半、成為氣室的內襯。研究者據此推測：不對稱形讓鈍端與氣室留在上方、利於換氣與孵化，可能是鳥在乾燥陸地繁殖的適應。",
+      "scope": "單一物種、人工孵化器；自由躺著的孵化率（62.3%）與 45 度之間沒有顯著差別，不得說「自然躺法最差」；固定 13 度較差只在翻蛋時成立；演化解釋是作者推測、沒有跨物種比較；野外巢中角度不得說成 13 度。不給任何孵蛋或養禽建議。不與 L66-012（海鴉蛋在斜面放得穩）合成同一實驗。",
+      "source_locator": "F30-S005 Results（孵化率、角度與氣室、Fig 4、殼膜中間層）；Discussion 第 1、2、7 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：獨立研究群（Yoshizaki），池中無（無 PMC2375759、鵪鶉蛋孵化角度）；但單一物種、人工孵化，「為了在乾燥陸地繁殖」是推測，與「為什麼尖」的連結靠作者推論；同一實驗多個數字合計 0.75。不另申請 L66-009 的 +0.25（本篇談的是殼膜中間層，不是蛋形在峽部定形，後者是引 Sultana 2003）。 原提案 F30-005（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字相符，補回兩個漏掉的條件、把「失水造成」標回研究者推論；DOI 改正；下修 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "尖頭讓蛋自己知道怎麼躺：鈍端朝上，氣室才在上面",
+        "visual": "鵪鶉蛋側面剪影，夾角從 13° 慢慢翹到 19°，鈍端氣室逐日變大",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-8f3e4e6bb0b79750",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S005 Results（孵化率、角度與氣室、Fig 4、殼膜中間層）；Discussion 第 1、2、7 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L67-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L67-002",
+      "question": "955 種鳥的蛋放在一起，「長」和「尖」是同一件事造成的嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.elongation_constraint_asymmetry_incubation_955_species",
+      "answer_target": "研究者認為不完全是。量了 955 種鳥蛋的團隊把「長不長」和「尖不尖」分開看：長度跟雌鳥的體型、輸卵管與骨盆形狀比較有關（骨盆量測能解釋伸長變異的 27% 到 30%，對尖度只有 6% 到 9%）；尖不尖則跟孵蛋環境有關——在地上刨個淺坑就下蛋的鳥，蛋最尖，這些鳥每窩 1 到 4 顆時，窩卵數越多蛋越尖。不過同一份資料裡，翅形這個飛行指標對尖度的效應反而最大，作者也說這部分支持飛行說。而且整體模型只解釋伸長約 14%、尖度約 8%；逐科看，預測伸長的關係有 24% 到 64% 方向跟整體相反，預測尖度的也有 20 到 27 個科（共 55 科）相反。作者的結論是：沒有一個因素在所有鳥身上作用都一樣。",
+      "scope": "Birkhead 研究室（與 L66-011～013、015 同群），封頂 3.0、本篇最多 0.5；補充表未讀；「尖蛋一窩三、四顆排得緊」是引 Andersson 1978 的預測，本篇測的是相關；翅形指標對尖度效應最大必須一起說，不得把本篇說成「推翻飛行說」；解釋量低，不得說「找到答案」。",
+      "source_locator": "F30-S006 Abstract；Results Elongation／Asymmetry 段、Complications 段；Pelvis 段（6%–9% 對 27%–30%）；Clutch Size 段與 Fig 6",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：Birkhead 研究室已計 2.5，封頂 3.0。改寫答案：作者版只寫尖度跟窩卵數和孵蛋地點有關，漏掉原文「HWI 對尖度效應最大」，會讓轉折二變成「飛行說錯了」；改為「長與尖要分開問、每一群鳥規則不同」。 原提案 F30-006（目標 C13-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字對，但答案選擇性引用：漏掉同一段的「HWI 對不對稱效應最大」，並把伸長模型的 24%–64% 套到尖度上。改寫後仍可當轉折二，但轉的方向是「規則因尺度而異」，不是「飛行說被推翻」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「長」和「尖」要分開問，而且答案看你看的是哪一群鳥",
+        "visual": "形態空間圖上兩個箭頭：橫向「伸長」標體型與骨盆，縱向「尖度」標刨坑巢與翅形，旁邊一串科別的小箭頭方向各不相同",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cbc922323f64a4f6",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S006 Abstract；Results Elongation／Asymmetry 段、Complications 段；Pelvis 段（6%–9% 對 27%–30%）；Clutch Size 段與 Fig 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L67-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L67-003",
+      "question": "飛行說和孵蛋說吵了起來，到底誰對？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.taxonomic_scale_flight_vs_incubation_reply",
+      "answer_target": "提出飛行說的團隊回應：兩邊看的尺度不同，不一定衝突。他們承認，翅形指標只占全部變異約 4%，大部分由親緣、體型和蛋的大小解釋，但它是控制這些之後唯一還顯著的因子。他們也指出，對方「孵蛋位置解釋 60% 以上」的分析只放了這一個因子，並轉述對方自己的補充資料說，控制蛋的大小和親緣後就不顯著；而絕大多數鳥蛋在洞裡、樹洞或杯狀巢中，本來就沒有滾走的大風險。結論是：在整個鳥綱看到的規則，不一定適用於某一科，反之亦然。",
+      "scope": "一方的觀點文章（Viewpoint），不是新資料；「控制後不顯著」與 41–76% 是轉述對方的資料，本輪未讀原表；「約 4%」可以說「原團隊也承認」，但不計分、不畫成兩派比分；不得說哪一派被推翻。",
+      "source_locator": "F30-S007 第 1 頁右欄第 2 段；第 2 頁左欄、右欄；第 3 頁左欄",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：Stoddard 研究群一篇已計 2.0；本篇第一點與 L66-014 重複計 0，對 Birkhead 數字的轉述計 0，只把「原團隊承認 4% 並提出尺度論」這個回應算 0.25，讓轉折二有兩方對話。 原提案 F30-007（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；字句相符，但多數內容是重述自己 2017 年的結果（L66-014 已有）與轉述對方資料；計數下修到 0.25，答案改成以「原團隊承認 4%、主張尺度不同」為主。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩派其實在不同放大倍率下看同一張圖",
+        "visual": "同一張形態空間圖先看全圖、再放大到海雀企鵝一角",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b752229c6d11a665",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S007 第 1 頁右欄第 2 段；第 2 頁左欄、右欄；第 3 頁左欄",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L67-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L67-004",
+      "question": "同一種鳥，住在不同地方，蛋的形狀會不一樣嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.blue_tit_population_sphericity_calcium",
+      "answer_target": "會，但差別很小。波蘭研究者在 12 年間量了相距 10 公里的城市公園與森林兩群藍山雀、共 781 窩的蛋：同一窩裡的蛋形狀相當一致；整體看，公園的蛋略長一點（寬除以長約 76.0%，森林約 77.0%），控制窩卵數與蛋的大小後仍成立，12 年間沒有變化趨勢。蛋的大小會隨窩卵數變小，形狀卻和窩卵數無關。研究者推測兩地鈣質與食物不同是原因。",
+      "scope": "單一物種、兩個地點；量的是長寬比（球度），不是尖度；差別約一個百分點；鈣質是推論。不與 L66-016（澳洲 310 種）合成同一研究。",
+      "source_locator": "F30-S008 Abstract；Methods（SH＝B/L×100）；Results 重複性與 egg shape 段、Table 2；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：獨立研究群、池中無；但與 L66-016「環境影響長寬比」同方向，效應小，又不是本題主問的尖度。 原提案 F30-008（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；「每年都」原文只指體積；形狀差約 1 個百分點且無年份效應，改答案、下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蛋形不全由物種決定，住哪裡也有一點份",
+        "visual": "公園與森林兩顆蛋的輪廓疊在一起，差一點點",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-71e766022414ba67",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S008 Abstract；Methods（SH＝B/L×100）；Results 重複性與 egg shape 段、Table 2；Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L67-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L67-005",
+      "question": "同一種鳥的蛋，形狀都差不多嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.within_clutch_shape_variation_3d_morphometrics",
+      "answer_target": "沒有想像中一樣。澳洲研究者用電腦斷層掃描重建 4 種雀形目、共 55 顆博物館蛋的立體外形：4 種的平均形狀不同，但每一種內部的形狀範圍都出乎他們意料地大，主要來自不同窩之間；把「哪一窩」算進去之後，物種之間的差別甚至不再顯著。作者提醒，跨物種比較如果忽略種內差異，結論可能有偏差。",
+      "scope": "方法論文、4 種、每種 4 窩；只當旁證，與 L66-019、F30-008 同方向；不說「蛋形完全隨機」或「物種之間沒有差別」。",
+      "source_locator": "F30-S009 Abstract；Results 第 1–3 段；Fig 4 圖說",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：與 L66-019（同隻雌鳥相當一致但不一樣）、F30-008（族群差異）同方向，樣本 55 顆；只留作 F30-008 後面一句。 原提案 F30-009（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；「同一窩差別比預期大」原文無，改成種內、窩間；同方向小樣本，計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大研究看的是平均，同一種鳥的蛋就不一樣",
+        "visual": "四種蛋的立體掃描疊在一起",
+        "seconds": [
+          15,
+          20
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cbd649f3283527c2",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S009 Abstract；Results 第 1–3 段；Fig 4 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L67-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P67-001",
+      "question": "把濕沙變透明來數，加多少水，顆粒之間才真的搭起水橋？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.capillary_bridge_count_onset",
+      "answer_target": "一開始加的水，根本搭不成橋。德國烏爾姆大學 Herminghaus 研究群 2003 年一篇預印本，把直徑 375 和 555 微米的玻璃珠泡在折射率和玻璃一樣的有機液體裡，整堆珠子就變透明（這種液體在實驗裡代替空氣），再加一點帶螢光的水，用顯微鏡一層層往下數每顆珠子身上的水橋。水極少時一座橋也沒有，水先留在珠子表面，研究者認為是被表面的細小粗糙吸住；含水量 0.055% 時還沒成橋，到約 0.07%，幾乎每個接觸點都搭起了橋。每顆珠子的平均水橋數在這附近急升，之後上升就慢下來；壓得比較緊的珠堆大約多一成。研究者也從沒看過一顆珠子身上超過 9 座水橋。",
+      "scope": "只講這個實驗：玻璃珠、周圍是代替空氣的透明有機液體，不是海灘沙也不是水—空氣界面。片中不念 0.2%（Fig. 1b 的數字）以免與 P63-020 的「約 0.2%」撞在一起；P63-020 那句引用模型的門檻在本集改成定性念法（「水太少時液橋搭不起來」），兩個數字不得出現在同一集互相比較、換算或說誰對；也不和 P63-014 的油層厚度、P63-018 的 3% 比。含水量照原文寫「含水量」，不另加基準。不說橋數變緩「就是」強度飽和的原因（論文沒有量強度）。稿中帶一句「這是預印本；同一群人 2004 年另有期刊論文談液橋數，本片沒讀到全文」。",
+      "source_locator": "F29-S001 第 1 頁右欄第 2–3 段；Fig. 1 圖說；Fig. 2 與第 2 頁左欄末段；第 2 頁右欄（不超過 8、從沒超過 9）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：預印本；條件是玻璃珠泡在有機液體裡，不是沙也不是空氣；「水少時粗糙表面先吃掉水、搭不起橋」與 P63-020 同方向（P63-020 是引用模型、這裡是觀察，但觀眾得到的結論相同），不重算；真正新增的只有「直接數到：約 0.07% 幾乎每個接觸點同時成橋、橋數急升後上升變緩、每顆最多約 9 座」這一件事。 原提案 F29-001（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；數字與原文相符，來源取得合規、雜湊相同；但「之後就變平」說過頭、粗糙是研究者的解釋、還有相關期刊論文未讀。照 V22–V31 保守算法（預印本、條件不是沙、與 P63-020 同方向）由 0.5 下修為 0.25，並要求本集不念 P63-020 的 0.2% 數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水不是一加就變膠水：先被沙粒表面吃掉，等到某個量，橋才一下子全搭起來，之後就不再多。",
+        "visual": "一杯透明的『珠子果凍』，螢光綠的小水橋在接觸點一個個亮起來，旁邊計數器跳到 9 就停。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave67-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-44db14f0cbf0049e",
+          "origin": "wave67-physics-20261111",
+          "locator": "F29-S001 第 1 頁右欄第 2–3 段；Fig. 1 圖說；Fig. 2 與第 2 頁左欄末段；第 2 頁右欄（不超過 8、從沒超過 9）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P67-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -445690,6 +446726,501 @@
       ]
     },
     {
+      "id": "K67-001",
+      "question": "冰晶到底長在肉的細胞裡面還是外面？慢凍和快凍一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.frozen_meat_ice_location_cryohistology",
+      "answer_target": "美國普渡大學 2019 年把同一批牛腰脊排用兩種方式凍：–75°C 的低溫櫃（從 –1 到 –7°C 約 21.5 分鐘）和 –20°C 的送風冷凍（約 175 分鐘），趁還凍著直接切片看。慢凍的肉，清楚看到較大的冰晶長在細胞外、肌纖維之間；快凍的肉，看到較小的冰晶在細胞裡。但不是非此即彼：快凍組也看得到細胞外的冰晶，先凍後熟成那組更多。研究者說，這和更早的研究看到的一致。",
+      "scope": "定性照片、每組只切 2 塊牛排、沒有冰晶大小數字；說成「這次又看到了」而不是「第一次證明」；不和 K66-002 的冰晶半徑並排比；不說「快凍就沒有傷害」，不推薦冷凍方式、溫度或設備；–75°C、–20°C 只當實驗條件。",
+      "source_locator": "F29-S002 Materials and Methods 第 3 段與 Histological analysis（cryo-histology）；Results 的 Tc 段；Histological analysis 結果第 1、3、4 段與 Fig. 3–4",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：論文自己說是重現既有觀察；定性、樣本小；與 F29-003 同一實驗（同一批牛排），兩核心合計 0.75。 原提案 F29-002（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；原文相符，但這是對教科書現象的小樣本定性重現，且與 F29-003 同一實驗；下修為 0.25，補上「作者自己說與既有研究一致」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰晶不是到處亂刺：慢凍時大多擠在細胞外面，快凍時才小小地留在細胞裡。",
+        "visual": "左右兩張染色切片示意：左邊肌纖維之間塞著大塊白色冰，右邊每根纖維裡散著細小白點。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a5528ec89716fc19",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S002 Materials and Methods 第 3 段與 Histological analysis（cryo-histology）；Results 的 Tc 段；Histological analysis 結果第 1、3、4 段與 Fig. 3–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ]
+    },
+    {
+      "id": "K67-002",
+      "question": "冷凍得快還是慢，一定會決定解凍後流多少水嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.aging_freezing_sequence_purge",
+      "answer_target": "在普渡大學這組牛排實驗裡，要看肉凍之前熟成了沒。先在 3°C 熟成 14 天才凍的，快凍和慢凍的失重（4.42% 和 4.90%）和完全沒凍、只熟成的對照（4.14%）在統計上分不開；先凍、解凍後才熟成的，失重明顯變多，這時快慢才有差：快凍 7.24%、慢凍 8.64%。這裡的失重是從屠宰後第二天到處理完的總重量差，包含熟成那兩週滲出的水。",
+      "scope": "只限這篇 8 頭牛、這個失重定義；不和 K66 各篇的解凍損失並排或相減；不說「先熟成再凍」是好方法、不給熟成或冷凍建議；不說「冷凍速度不重要」的通則；與 F29-002 同一批牛排，片中放在同一段或相鄰兩段，交代是同一個實驗。",
+      "source_locator": "F29-S002 Abstract；Purge/thaw loss 方法段；Table 1；Results 的 purge/thaw loss 第 1–3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。與 F29-002 同一實驗，合計 0.75。這是真正改變結論的結果（冰晶位置差很多，失重不一定差）。 原提案 F29-003（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；數字、條件與原文完全相符；只補「同一實驗」與樣本數的限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰晶的位置差很多，盤子裡的水卻不一定差：要看肉在冷凍之前是什麼狀態。",
+        "visual": "同一條牛腰脊切五塊牛排，五個秤；先熟成那三塊的數字幾乎一樣高，先冷凍那兩塊明顯跳高。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a5528ec89716fc19",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S002 Abstract；Purge/thaw loss 方法段；Table 1；Results 的 purge/thaw loss 第 1–3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ]
+    },
+    {
+      "id": "K67-003",
+      "question": "解凍出水只是冰晶刺破細胞嗎？還是肉裡的蛋白質也被凍壞了？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.freeze_concentration_myofibril_denaturation",
+      "answer_target": "至少還有蛋白質這一筆。赫爾辛基大學一篇 2020 年的博士論文（指導教授 Per Ertbjerg）用豬背肌比較：快凍（–80°C 冷金屬板，約 12 分鐘）和慢凍（–20°C 空氣，約 174 分鐘）。慢凍的肉，解凍加後續冷藏滴出的水，平均比快凍多約三成（是比快凍那組多三成，不是肉重的三成）；同時從肉裡分離出的肌原纖維保水力較低、表面疏水性較高，作者讀成負責抓水的結構蛋白變性得更嚴重。他們提出的解釋是：水結冰時，酸和鹽被擠進還沒結冰的那一點水裡，pH 下降、鹽濃度升高，讓蛋白質變性；慢凍時比較嚴重。模擬實驗裡，把新鮮絞肉同時放在高鹽（相當 2 M 氯化鉀）和稍酸（pH 5.5 降到 5.2）的條件下，肌原纖維保水力就下降；只有高鹽、不降 pH 時反而上升。另外，鮮肉和凍融肉滴出的汁裡，蛋白質含量沒有差別。",
+      "scope": "稿中說「研究者提出的解釋」，不說定論；「約三成」照綜合篇寫法並講明是相對值，不換算、不和 K66-001／002／003 的百分比相減或並排；不說冰晶不重要；不引論文給產業的 –3°C 解凍建議，不提任何解凍或冷藏方法；「>90% 結冰、十倍以上」不當事實念。",
+      "source_locator": "F29-S003 Abstract 第 2–3 段；5.1 Changes in WHC（第 40–41 頁）；5.2 Myofibrillar proteins 第 1–2 段、Sarcoplasmic proteins（第 41–43 頁）；5.3 Treatment in minced meat（第 44 頁）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：學位論文綜合篇轉述作者自己的 Paper II、III，原始數據沒讀到；「約三成」的平均含未發表的 Study IV；模型是解釋不是量測。真正新增的是「慢凍失水較多與肌原纖維變性指標同步」與「絞肉酸＋鹽模擬」兩件事，合計 0.5。 原提案 F29-004（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；數字相符但「多流約三成」會被誤聽成絕對量，改寫成相對值；綜合篇轉述、未讀原論文，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "那灘水不只是冰晶刺破細胞：冰把酸和鹽擠在一起，連抓水的蛋白質都被泡壞了。",
+        "visual": "放大到肌原纖維：水分子一顆顆結成冰離開，剩下的小水窪裡鹽粒與 H⁺ 越擠越多，蛋白質的『手』鬆開，水滴下去。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-13c06dd8bf9f4c30",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S003 Abstract 第 2–3 段；5.1 Changes in WHC（第 40–41 頁）；5.2 Myofibrillar proteins 第 1–2 段、Sarcoplasmic proteins（第 41–43 頁）；5.3 Treatment in minced meat（第 44 頁）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ]
+    },
+    {
+      "id": "K67-004",
+      "question": "一般人吃牛排，嚐得出哪塊冷凍過嗎？貼上『曾冷凍』的標籤會不會影響？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.consumer_blind_fresh_vs_frozen_beef",
+      "answer_target": "在堪薩斯州立大學 2024 年這個實驗裡，一般消費者沒有覺得冷凍的比較差。他們把熟成天數相同的牛前腰脊排分成鮮肉和冷凍組（熟成後凍、–20°C 放一週再冷藏解凍），讓 144 位消費者各吃 8 塊：前 4 塊不給資訊，冷凍組的嫩度分數反而較高（65.1 對 61.4，滿分 100），多汁、風味、整體喜好都沒有顯著差異；後 4 塊貼上「曾冷凍」或「新鮮未冷凍」，其中一半故意貼錯，標籤也沒改變任何評分。可是受過訓練的評審嚐得出差別：鮮肉的多汁分數較高（初始 64.0 對 60.7、持續 58.5 對 54.5）。要注意，冷凍組和鮮肉組來自相隔一週的兩批牛。",
+      "scope": "不得說成一般人都嚐不出冷凍過的肉：受訓評審嚐得出多汁差；只限「熟成後凍一週、–20°C」；冷凍組與鮮肉組來自不同屠宰日，要在稿中講；不和 K66-006（羊排受訓評審）、K66-007（雞胸）比分數；不引作者「冷凍肉不該被打折」的產業結論；不推薦買冷凍或鮮肉；儀器的滲出與烹調損失最多一句旁證，不唸成「只差 0.8%」的安心話。",
+      "source_locator": "F29-S004 Abstract；Sample collection 段；Consumer sensory panels 段；Table 3、Table 5–6 對應段落；Table 7；Table 8；Discussion『increase in purge … 0.8%』段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：受訓評審嚐得出多汁差與 K66-006 同方向，不重算；新增的是一般消費者盲測與故意貼錯標籤兩段，同一實驗合計 0.5。 原提案 F29-006（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；數字逐格相符；補上屠宰批次與冷凍完全重疊的限制，受訓評審部分與 K66-006 同方向，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "訓練過的舌頭分得出多汁，一般人卻覺得凍過的比較嫩；連標籤貼錯了也沒差。",
+        "visual": "兩排餐盤，一排標『曾冷凍』一排標『新鮮』，鏡頭一轉，標籤一半是反的，評分板上的數字幾乎沒動。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4949ea4000877782",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S004 Abstract；Sample collection 段；Consumer sensory panels 段；Table 3、Table 5–6 對應段落；Table 7；Table 8；Discussion『increase in purge … 0.8%』段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ]
+    },
+    {
+      "id": "K67-005",
+      "question": "換成別的肉、別的人來盲測，結果也一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.consumer_blind_fresh_vs_frozen_goat",
+      "answer_target": "奧勒岡州立大學 2026 年用山羊肉做過類似的盲測，各項喜好也沒有顯著差異——但那批肉只凍了 48 小時。",
+      "scope": "只能當 F29-006 後面一句旁證，不起畫面；一定要講「只凍 48 小時」；不推到一般冷凍肉，不說成一般人都嚐不出；不引個別分數與購買意願、不引行銷建議。",
+      "source_locator": "F29-S005 Abstract；Products 段；Results 第 1 段與 Table 2；Attribute Assessments 段與 Table 3",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：只凍 48 小時、與 F29-006 同方向、沒有受訓評審，照 V22–V31 保守算法不計。 原提案 F29-007（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；原文相符，但幾乎沒有冷凍儲存期，又與 F29-006 同方向；計 0，只留一句旁證。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換一種肉、換一群人，盲測還是分不出——但這次只凍了兩天。",
+        "visual": "同一頭羊的左右兩半，一半進冰箱、一半進冷凍庫，兩盤一樣的切片端到 105 張桌上。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave67-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-28d38a37c819bc38",
+          "origin": "wave67-food-20261111",
+          "locator": "F29-S005 Abstract；Products 段；Results 第 1 段與 Table 2；Attribute Assessments 段與 Table 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+      ]
+    },
+    {
+      "id": "H67-001",
+      "question": "自閉症的孩子雙手交叉時，被碰的先後也會說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.autism_smaller_crossed_hands_reversal",
+      "answer_target": "比較少說反。日本一項研究讓 10 名 9 到 15 歲的自閉症兒童和 10 名配對的一般發展兒童，閉眼、聽著白噪音，兩手無名指的指背各被輕敲一下，判斷哪隻手先。手不交叉時兩組都答得好，只是自閉症兒童需要的間隔稍長（約 125 對 82 毫秒）；雙手交叉後，一般發展的兒童在 100 到 300 毫秒的間隔常把順序說反，自閉症兒童說反的機率小得多（模型估的最大翻轉約 0.14 對 0.33）。另外 12 名參加發展支持團體的男孩裡，自閉特質分數越高，交叉時說反通常越少。研究者推測，這些孩子比較按「皮膚上的哪裡」來判斷，較少自動換算到外部空間。",
+      "scope": "每組 10 人、年齡跨度大；AQ 分析的 12 名男孩來自輕度發展障礙自助團體，不是一般族群；原因是作者推論。這是一項交叉手作業的結果，不是對自閉症兒童觸覺或能力的評價：不說「比較準」或「比較差」，不給任何診斷、訓練或醫療含意；不與盲人或視障嬰兒合併成「少一種能力就不被騙」。",
+      "source_locator": "F30-S001 Abstract；Results arms-crossed 段、Table 1；AQ 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：池中沒有（pool.json 無 autis／自閉／PMC4124471），但「交叉代價較小」與 H61-008、H62-001 同方向，只算 0.5。 原提案 F30-001（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字逐字相符；改兩處：刺激位置是無名指指背；AQ 男孩的來源寫明。payoff 去掉「解析度較差」的能力評價字眼，改成中性的「需要的間隔稍長」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "說反比較少，不等於各方面都比較快：手不交叉時，他們分辨先後需要的間隔反而稍長",
+        "visual": "兩條交叉時的判斷曲線：一般發展兒童在中段塌下，自閉症兒童較貼近不交叉的曲線",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave67-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4f69f8b0452204a",
+          "origin": "wave67-human-20261111",
+          "locator": "F30-S001 Abstract；Results arms-crossed 段、Table 1；AQ 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+      ]
+    },
+    {
+      "id": "H67-002",
+      "question": "看不見的人交叉手比較不會被騙，那天生聽不見的人呢？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.congenital_deafness_larger_crossed_arm_deficit",
+      "answer_target": "這一組反而說反得更多。蒙特婁的研究找來 13 名先天極重度聽損的成人和 13 名聽力正常者，雙手各捏一塊會震動的泡棉方塊，用腳下的踏板回答哪一邊先震。雙手交叉後，聾人組的交叉代價（0 到 8 分的指標）平均 4.59，聽人組 2.49，明顯較大，不少聾人交叉時的答案整條倒過來；兩組的反應時間沒有差別。研究者認為早年的聽覺經驗可能也參與了把觸覺放進外部空間，方向和早盲者相反；但他們也提醒，受測的聾人多數前庭功能受損，可能解釋部分結果，而用腳回答本身也可能抬高錯誤率。",
+      "scope": "每組 13 人；用腳回答；「整條倒過來」研究者以口頭確認排除誤解，實際沒有剔除任何人；11 名受測前庭的聾人中 7 名前庭受損，聽覺與前庭的影響分不開；間隔只到 ±400 毫秒；「永久改變」是作者推論。這是一項交叉手作業的結果，不是對聾人觸覺或能力的評價，不說「聾人觸覺比較差」，不給醫療或助聽、復健建議；不與 H61-008 的早盲者畫成同一量尺的長條圖。",
+      "source_locator": "F30-S002 Abstract；Methods Participants、Table 1；Results 第 1 段；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：方向與池中「少了視覺→代價變小」相反，是新結論，獨立研究群；但用腳回答、整條倒過來的受試者只靠口頭確認排除誤解、前庭缺損是作者自承的混淆，證據比作者寫的弱。片中把它當「外部座標的權重會被別的感覺（含前庭）改變」的一例，與 F30-003 並排。 原提案 F30-002（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；主數字對，但作者答案加了原文沒有的「手不交叉時兩組差不多」，並漏掉原作者自己寫的前庭混淆（7／11）；「排除聽不懂指示」實為口頭確認、無人剔除。改答案與 scope，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "少一種感覺不一定比較不會說反：早盲者少說反，先天聾的這一組反而更常說反——而前庭可能也有份",
+        "visual": "兩項研究分開的兩張小圖（不同量尺不並列數值），中間用一個「外部座標權重」旋鈕連起來",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave67-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0665b32d5c4b267f",
+          "origin": "wave67-human-20261111",
+          "locator": "F30-S002 Abstract；Methods Participants、Table 1；Results 第 1 段；Discussion 第 1–2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+      ]
+    },
+    {
+      "id": "H67-003",
+      "question": "同樣交叉雙手，躺下來做會比坐著做更不容易搞錯嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.lying_on_side_reduces_crossed_hands_deficit",
+      "answer_target": "會。加拿大 McMaster 大學找了兩組各 20 名大學生雙手交叉判斷「哪隻拇指先震」，一次坐直、一次向左側躺；一組睜眼、一組矇眼。兩組合起來看，側躺時的交叉代價從坐直的 1.28 降到 0.26，但仍大於零。研究者用模型估計，側躺主要是讓大腦少用「外部空間座標」。他們的解讀是：外部座標要靠視覺、內耳前庭和身體被壓的感覺一起告訴你哪邊是上，側躺時這些訊號彼此不一致，可靠度變低，權重就被調低；三者各占多少，他們說還分不開。",
+      "scope": "年輕大學生、各 20 人、只側躺左邊；1.28、0.26 是兩組合併的平均；權重是模型估計；視覺、前庭與身體壓覺的貢獻作者說無法拆開。矇眼降低代價是複製前人結果，不另計，也不與 H61-004「黑暗中仍會對到外部空間」矛盾（代價仍大於零）。不給睡姿或任何健康建議。",
+      "source_locator": "F30-S003 Abstract；Methods；Results PCD 段與 reference frame weights 段；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（同作者）：側躺降低交叉代價是池中沒有的新結論（pool.json 無 Unwalla／Cadieux／PMC8242022；「Shore」只出現在 H61-S003 綜述的轉引），獨立研究群（Shore，McMaster）；矇眼那半 0；權重模型併入。 原提案 F30-003（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字逐字相符，改答案寫明是兩組合併平均、補「仍大於零」與身體壓覺，role 改為 turn（它與 F30-002 一起撐轉折二）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個人、同一雙手，換個躺姿就比較少說反：外部座標是可以被調低的權重",
+        "visual": "坐直與側躺兩張示意圖並排，旁邊一個「外部座標」旋鈕被轉小",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave67-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c2324a374b5901d5",
+          "origin": "wave67-human-20261111",
+          "locator": "F30-S003 Abstract；Methods；Results PCD 段與 reference frame weights 段；Discussion 第 1–2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+      ]
+    },
+    {
+      "id": "H67-004",
+      "question": "年紀大了，交叉手時還會把先後說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.aging_crossed_reversal_preserved_wider_flip_window",
+      "answer_target": "照樣會。日本研究比較 20 名年輕人（平均 23 歲）和 23 名約 67 歲的長者：雙手交叉時，兩組在短間隔把先後說反的程度相當；不同的是，長者說反的時間窗比較寬（中位數約 430 對 240 毫秒），間隔拉到一、兩秒仍會答錯，而且長者在只碰一隻手時也比較常答錯，所以這部分不全是交叉造成的。",
+      "scope": "橫斷面比較；只用「年紀大了照樣會說反」一句與時間窗；不提帕金森病、基底核或任何醫學結論；不說長者觸覺退化或能力不足，不給健康建議；長者的一般錯誤率較高要一起說，不能把所有錯誤都歸給交叉。",
+      "source_locator": "F30-S004 Abstract；Results arms-uncrossed 段（41／96／114 ms）、arms-crossed 段（Ã、c、σf）；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.5）：北澤研究群在本題已有 R44003 1、H61-001 0.5、H61-002 0.5、H61-003 1.0，合計 3.0，照同研究群 3.0 封頂（第十四輪 Bonn、第十六輪 Birkhead 的先例）不再加。內容可留作時間軸上的一句，讓年齡從 4 個月延到 67 歲。 原提案 F30-004（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；「約 1 秒」原文無（是到約 2 秒）、漏了長者單手也較常錯的條件、患者人數寫錯；帕金森病段落刪掉以免變成醫學內容；同研究群封頂，計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這個說反不會隨年紀消失",
+        "visual": "時間軸：4 個月、6 個月、8 歲、23 歲、67 歲，每個點只標「有沒有交叉代價」",
+        "seconds": [
+          15,
+          20
+        ]
+      },
+      "origin": "wave67-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-20726d1e6aefc39e",
+          "origin": "wave67-human-20261111",
+          "locator": "F30-S004 Abstract；Results arms-uncrossed 段（41／96／114 ms）、arms-crossed 段（Ã、c、σf）；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+      ]
+    },
+    {
+      "id": "L67-001",
+      "question": "蛋一頭尖一頭鈍，跟孵蛋時蛋怎麼躺有關嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.quail_asymmetry_blunt_end_up_air_chamber_hatchability",
+      "answer_target": "至少在日本鵪鶉的人工孵化裡有關。岐阜大學讓鵪鶉蛋以不同角度孵：鈍端朝上傾 45 度並定時翻蛋，受精蛋孵化率 84.8%，明顯高於側放或尖端朝上。任蛋自己躺著，因為一頭尖，它會尖端略朝下、長軸傾約 13 度；孵化頭 14 天，鈍端的氣室從 0.22 毫升長到 2.16 毫升，蛋也自己慢慢翹到約 19 度，沒受精的蛋也一樣，研究者認為是失水、重心往尖端移。在有翻蛋的條件下，把蛋固定在 13 度不讓它翹，孵化率比自由躺著的低。電子顯微鏡下，殼膜只在鈍端多一層，產蛋後分成兩半、成為氣室的內襯。研究者據此推測：不對稱形讓鈍端與氣室留在上方、利於換氣與孵化，可能是鳥在乾燥陸地繁殖的適應。",
+      "scope": "單一物種、人工孵化器；自由躺著的孵化率（62.3%）與 45 度之間沒有顯著差別，不得說「自然躺法最差」；固定 13 度較差只在翻蛋時成立；演化解釋是作者推測、沒有跨物種比較；野外巢中角度不得說成 13 度。不給任何孵蛋或養禽建議。不與 L66-012（海鴉蛋在斜面放得穩）合成同一實驗。",
+      "source_locator": "F30-S005 Results（孵化率、角度與氣室、Fig 4、殼膜中間層）；Discussion 第 1、2、7 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：獨立研究群（Yoshizaki），池中無（無 PMC2375759、鵪鶉蛋孵化角度）；但單一物種、人工孵化，「為了在乾燥陸地繁殖」是推測，與「為什麼尖」的連結靠作者推論；同一實驗多個數字合計 0.75。不另申請 L66-009 的 +0.25（本篇談的是殼膜中間層，不是蛋形在峽部定形，後者是引 Sultana 2003）。 原提案 F30-005（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字相符，補回兩個漏掉的條件、把「失水造成」標回研究者推論；DOI 改正；下修 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "尖頭讓蛋自己知道怎麼躺：鈍端朝上，氣室才在上面",
+        "visual": "鵪鶉蛋側面剪影，夾角從 13° 慢慢翹到 19°，鈍端氣室逐日變大",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-8f3e4e6bb0b79750",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S005 Results（孵化率、角度與氣室、Fig 4、殼膜中間層）；Discussion 第 1、2、7 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ]
+    },
+    {
+      "id": "L67-002",
+      "question": "955 種鳥的蛋放在一起，「長」和「尖」是同一件事造成的嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.elongation_constraint_asymmetry_incubation_955_species",
+      "answer_target": "研究者認為不完全是。量了 955 種鳥蛋的團隊把「長不長」和「尖不尖」分開看：長度跟雌鳥的體型、輸卵管與骨盆形狀比較有關（骨盆量測能解釋伸長變異的 27% 到 30%，對尖度只有 6% 到 9%）；尖不尖則跟孵蛋環境有關——在地上刨個淺坑就下蛋的鳥，蛋最尖，這些鳥每窩 1 到 4 顆時，窩卵數越多蛋越尖。不過同一份資料裡，翅形這個飛行指標對尖度的效應反而最大，作者也說這部分支持飛行說。而且整體模型只解釋伸長約 14%、尖度約 8%；逐科看，預測伸長的關係有 24% 到 64% 方向跟整體相反，預測尖度的也有 20 到 27 個科（共 55 科）相反。作者的結論是：沒有一個因素在所有鳥身上作用都一樣。",
+      "scope": "Birkhead 研究室（與 L66-011～013、015 同群），封頂 3.0、本篇最多 0.5；補充表未讀；「尖蛋一窩三、四顆排得緊」是引 Andersson 1978 的預測，本篇測的是相關；翅形指標對尖度效應最大必須一起說，不得把本篇說成「推翻飛行說」；解釋量低，不得說「找到答案」。",
+      "source_locator": "F30-S006 Abstract；Results Elongation／Asymmetry 段、Complications 段；Pelvis 段（6%–9% 對 27%–30%）；Clutch Size 段與 Fig 6",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：Birkhead 研究室已計 2.5，封頂 3.0。改寫答案：作者版只寫尖度跟窩卵數和孵蛋地點有關，漏掉原文「HWI 對尖度效應最大」，會讓轉折二變成「飛行說錯了」；改為「長與尖要分開問、每一群鳥規則不同」。 原提案 F30-006（目標 C13-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；數字對，但答案選擇性引用：漏掉同一段的「HWI 對不對稱效應最大」，並把伸長模型的 24%–64% 套到尖度上。改寫後仍可當轉折二，但轉的方向是「規則因尺度而異」，不是「飛行說被推翻」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「長」和「尖」要分開問，而且答案看你看的是哪一群鳥",
+        "visual": "形態空間圖上兩個箭頭：橫向「伸長」標體型與骨盆，縱向「尖度」標刨坑巢與翅形，旁邊一串科別的小箭頭方向各不相同",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cbc922323f64a4f6",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S006 Abstract；Results Elongation／Asymmetry 段、Complications 段；Pelvis 段（6%–9% 對 27%–30%）；Clutch Size 段與 Fig 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ]
+    },
+    {
+      "id": "L67-003",
+      "question": "飛行說和孵蛋說吵了起來，到底誰對？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.taxonomic_scale_flight_vs_incubation_reply",
+      "answer_target": "提出飛行說的團隊回應：兩邊看的尺度不同，不一定衝突。他們承認，翅形指標只占全部變異約 4%，大部分由親緣、體型和蛋的大小解釋，但它是控制這些之後唯一還顯著的因子。他們也指出，對方「孵蛋位置解釋 60% 以上」的分析只放了這一個因子，並轉述對方自己的補充資料說，控制蛋的大小和親緣後就不顯著；而絕大多數鳥蛋在洞裡、樹洞或杯狀巢中，本來就沒有滾走的大風險。結論是：在整個鳥綱看到的規則，不一定適用於某一科，反之亦然。",
+      "scope": "一方的觀點文章（Viewpoint），不是新資料；「控制後不顯著」與 41–76% 是轉述對方的資料，本輪未讀原表；「約 4%」可以說「原團隊也承認」，但不計分、不畫成兩派比分；不得說哪一派被推翻。",
+      "source_locator": "F30-S007 第 1 頁右欄第 2 段；第 2 頁左欄、右欄；第 3 頁左欄",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：Stoddard 研究群一篇已計 2.0；本篇第一點與 L66-014 重複計 0，對 Birkhead 數字的轉述計 0，只把「原團隊承認 4% 並提出尺度論」這個回應算 0.25，讓轉折二有兩方對話。 原提案 F30-007（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；字句相符，但多數內容是重述自己 2017 年的結果（L66-014 已有）與轉述對方資料；計數下修到 0.25，答案改成以「原團隊承認 4%、主張尺度不同」為主。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩派其實在不同放大倍率下看同一張圖",
+        "visual": "同一張形態空間圖先看全圖、再放大到海雀企鵝一角",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b752229c6d11a665",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S007 第 1 頁右欄第 2 段；第 2 頁左欄、右欄；第 3 頁左欄",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ]
+    },
+    {
+      "id": "L67-004",
+      "question": "同一種鳥，住在不同地方，蛋的形狀會不一樣嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.blue_tit_population_sphericity_calcium",
+      "answer_target": "會，但差別很小。波蘭研究者在 12 年間量了相距 10 公里的城市公園與森林兩群藍山雀、共 781 窩的蛋：同一窩裡的蛋形狀相當一致；整體看，公園的蛋略長一點（寬除以長約 76.0%，森林約 77.0%），控制窩卵數與蛋的大小後仍成立，12 年間沒有變化趨勢。蛋的大小會隨窩卵數變小，形狀卻和窩卵數無關。研究者推測兩地鈣質與食物不同是原因。",
+      "scope": "單一物種、兩個地點；量的是長寬比（球度），不是尖度；差別約一個百分點；鈣質是推論。不與 L66-016（澳洲 310 種）合成同一研究。",
+      "source_locator": "F30-S008 Abstract；Methods（SH＝B/L×100）；Results 重複性與 egg shape 段、Table 2；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：獨立研究群、池中無；但與 L66-016「環境影響長寬比」同方向，效應小，又不是本題主問的尖度。 原提案 F30-008（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；「每年都」原文只指體積；形狀差約 1 個百分點且無年份效應，改答案、下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蛋形不全由物種決定，住哪裡也有一點份",
+        "visual": "公園與森林兩顆蛋的輪廓疊在一起，差一點點",
+        "seconds": [
+          25,
+          30
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-71e766022414ba67",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S008 Abstract；Methods（SH＝B/L×100）；Results 重複性與 egg shape 段、Table 2；Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ]
+    },
+    {
+      "id": "L67-005",
+      "question": "同一種鳥的蛋，形狀都差不多嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.within_clutch_shape_variation_3d_morphometrics",
+      "answer_target": "沒有想像中一樣。澳洲研究者用電腦斷層掃描重建 4 種雀形目、共 55 顆博物館蛋的立體外形：4 種的平均形狀不同，但每一種內部的形狀範圍都出乎他們意料地大，主要來自不同窩之間；把「哪一窩」算進去之後，物種之間的差別甚至不再顯著。作者提醒，跨物種比較如果忽略種內差異，結論可能有偏差。",
+      "scope": "方法論文、4 種、每種 4 窩；只當旁證，與 L66-019、F30-008 同方向；不說「蛋形完全隨機」或「物種之間沒有差別」。",
+      "source_locator": "F30-S009 Abstract；Results 第 1–3 段；Fig 4 圖說",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：與 L66-019（同隻雌鳥相當一致但不一樣）、F30-008（族群差異）同方向，樣本 55 顆；只留作 F30-008 後面一句。 原提案 F30-009（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V33（2026-11-12）改字後收；「同一窩差別比預期大」原文無，改成種內、窩間；同方向小樣本，計 0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大研究看的是平均，同一種鳥的蛋就不一樣",
+        "visual": "四種蛋的立體掃描疊在一起",
+        "seconds": [
+          15,
+          20
+        ]
+      },
+      "origin": "wave67-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cbd649f3283527c2",
+          "origin": "wave67-life-20261111",
+          "locator": "F30-S009 Abstract；Results 第 1–3 段；Fig 4 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-life.json"
+      ]
+    },
+    {
+      "id": "P67-001",
+      "question": "把濕沙變透明來數，加多少水，顆粒之間才真的搭起水橋？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.capillary_bridge_count_onset",
+      "answer_target": "一開始加的水，根本搭不成橋。德國烏爾姆大學 Herminghaus 研究群 2003 年一篇預印本，把直徑 375 和 555 微米的玻璃珠泡在折射率和玻璃一樣的有機液體裡，整堆珠子就變透明（這種液體在實驗裡代替空氣），再加一點帶螢光的水，用顯微鏡一層層往下數每顆珠子身上的水橋。水極少時一座橋也沒有，水先留在珠子表面，研究者認為是被表面的細小粗糙吸住；含水量 0.055% 時還沒成橋，到約 0.07%，幾乎每個接觸點都搭起了橋。每顆珠子的平均水橋數在這附近急升，之後上升就慢下來；壓得比較緊的珠堆大約多一成。研究者也從沒看過一顆珠子身上超過 9 座水橋。",
+      "scope": "只講這個實驗：玻璃珠、周圍是代替空氣的透明有機液體，不是海灘沙也不是水—空氣界面。片中不念 0.2%（Fig. 1b 的數字）以免與 P63-020 的「約 0.2%」撞在一起；P63-020 那句引用模型的門檻在本集改成定性念法（「水太少時液橋搭不起來」），兩個數字不得出現在同一集互相比較、換算或說誰對；也不和 P63-014 的油層厚度、P63-018 的 3% 比。含水量照原文寫「含水量」，不另加基準。不說橋數變緩「就是」強度飽和的原因（論文沒有量強度）。稿中帶一句「這是預印本；同一群人 2004 年另有期刊論文談液橋數，本片沒讀到全文」。",
+      "source_locator": "F29-S001 第 1 頁右欄第 2–3 段；Fig. 1 圖說；Fig. 2 與第 2 頁左欄末段；第 2 頁右欄（不超過 8、從沒超過 9）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：預印本；條件是玻璃珠泡在有機液體裡，不是沙也不是空氣；「水少時粗糙表面先吃掉水、搭不起橋」與 P63-020 同方向（P63-020 是引用模型、這裡是觀察，但觀眾得到的結論相同），不重算；真正新增的只有「直接數到：約 0.07% 幾乎每個接觸點同時成橋、橋數急升後上升變緩、每顆最多約 9 座」這一件事。 原提案 F29-001（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V32（2026-11-12）改字後收；數字與原文相符，來源取得合規、雜湊相同；但「之後就變平」說過頭、粗糙是研究者的解釋、還有相關期刊論文未讀。照 V22–V31 保守算法（預印本、條件不是沙、與 P63-020 同方向）由 0.5 下修為 0.25，並要求本集不念 P63-020 的 0.2% 數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水不是一加就變膠水：先被沙粒表面吃掉，等到某個量，橋才一下子全搭起來，之後就不再多。",
+        "visual": "一杯透明的『珠子果凍』，螢光綠的小水橋在接觸點一個個亮起來，旁邊計數器跳到 9 就停。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave67-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-44db14f0cbf0049e",
+          "origin": "wave67-physics-20261111",
+          "locator": "F29-S001 第 1 頁右欄第 2–3 段；Fig. 1 圖說；Fig. 2 與第 2 頁左欄末段；第 2 頁右欄（不超過 8、從沒超過 9）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+      ]
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -455298,6 +456829,21 @@
       "L66-027": "L66-027",
       "L66-028": "L66-028",
       "L66-029": "L66-029",
+      "K67-001": "K67-001",
+      "K67-002": "K67-002",
+      "K67-003": "K67-003",
+      "K67-004": "K67-004",
+      "K67-005": "K67-005",
+      "H67-001": "H67-001",
+      "H67-002": "H67-002",
+      "H67-003": "H67-003",
+      "H67-004": "H67-004",
+      "L67-001": "L67-001",
+      "L67-002": "L67-002",
+      "L67-003": "L67-003",
+      "L67-004": "L67-004",
+      "L67-005": "L67-005",
+      "P67-001": "P67-001",
       "Z7001": "Z7001",
       "Z7002": "Z7002",
       "Z7003": "Z7003",
@@ -485226,6 +486772,131 @@
         "a": "L66-021",
         "b": "B2263",
         "reason": "雌雄同體仍找對象交配：近鄰，不重疊。（V31 2026-11-12）"
+      },
+      {
+        "a": "P67-001",
+        "b": "P63-020",
+        "reason": "同方向：表面粗糙使極少量水搭不起橋（P63-020 引模型、約 0.2%）。新核心只算觀察到的成橋門檻與橋數上限 0.25；本集 P63-020 的 0.2% 改定性念法。（V32 2026-11-12）"
+      },
+      {
+        "a": "P67-001",
+        "b": "P63-017",
+        "reason": "P63-017 是最大穩定角隨液量急升後飽和；P67-001 是橋數急升後變緩。兩者只能並列畫面，不得說成因果。（V32 2026-11-12）"
+      },
+      {
+        "a": "P67-001",
+        "b": "P63-014",
+        "reason": "P63-014 說大部分液體沒出力；不與 P67-001 的含水量比數字。（V32 2026-11-12）"
+      },
+      {
+        "a": "K67-001",
+        "b": "K66-002",
+        "reason": "K66-002 是冰晶大小隨冷凍速率；K67-001 是位置。不並排比數字。（V32 2026-11-12）"
+      },
+      {
+        "a": "K67-002",
+        "b": "K66-002",
+        "reason": "K66-002 說快凍各組品質與慢凍分不開的一級；K67-002 從另一研究群、另一物種給出「看條件」的例子，不合併數字。（V32 2026-11-12）"
+      },
+      {
+        "a": "K67-003",
+        "b": "K66-008",
+        "reason": "K66-008 是汁裡的粒線體酵素；K67-003 是汁裡蛋白質總量鮮凍相同。不同指標，並列不合併。（V32 2026-11-12）"
+      },
+      {
+        "a": "K67-004",
+        "b": "K66-006",
+        "reason": "同方向：受訓評審嚐得出多汁差。不重算，不比分數。（V32 2026-11-12）"
+      },
+      {
+        "a": "K67-004",
+        "b": "K66-007",
+        "reason": "雞胸評審口感有差；並列不比。（V32 2026-11-12）"
+      },
+      {
+        "a": "H67-001",
+        "b": "H61-008",
+        "reason": "同方向（交叉代價較小），所以只算 0.5（V33 2026-11-12）"
+      },
+      {
+        "a": "H67-001",
+        "b": "H62-001",
+        "reason": "同方向，研究者也用「按皮膚上的哪裡」解釋，片中不得合成同一群（V33 2026-11-12）"
+      },
+      {
+        "a": "H67-002",
+        "b": "H61-008",
+        "reason": "方向相反，不重算（V33 2026-11-12）"
+      },
+      {
+        "a": "H67-002",
+        "b": "H61-004",
+        "reason": "綜述轉述 Noel & Wallace 等的暫時剝奪結果本題不引用（V33 2026-11-12）"
+      },
+      {
+        "a": "H67-003",
+        "b": "H61-004",
+        "reason": "矇眼仍有代價，同方向不矛盾；矇眼這半不計（V33 2026-11-12）"
+      },
+      {
+        "a": "H67-004",
+        "b": "R44003",
+        "reason": "同研究群（北澤），封頂已滿（V33 2026-11-12）"
+      },
+      {
+        "a": "H67-004",
+        "b": "H61-003",
+        "reason": "同研究群（Moharramipour & Kitazawa 2021）（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-001",
+        "b": "L66-013",
+        "reason": "只沾「鈍端是氣室那頭」，答案不同（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-001",
+        "b": "L66-009",
+        "reason": "不同：L66-009 是蛋形由膜決定的模型；本篇是擺放角度、氣室與孵化率（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-002",
+        "b": "L66-014",
+        "reason": "同樣指向「分群後規則不同」，本篇補上伸長與尖度分開（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-002",
+        "b": "L66-015",
+        "reason": "同研究室，封頂內（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-003",
+        "b": "L66-014",
+        "reason": "「2017 年已放孵蛋因子、全球尺度不顯著」重複，不計（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-003",
+        "b": "L66-015",
+        "reason": "4% 的出處：本文承認屬實，可帶出處唸，計 0（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-004",
+        "b": "L66-016",
+        "reason": "同方向（環境與長寬比），只算 0.25（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-004",
+        "b": "L66-019",
+        "reason": "同窩一致性同方向，不另計（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-005",
+        "b": "L66-019",
+        "reason": "同方向（V33 2026-11-12）"
+      },
+      {
+        "a": "L67-005",
+        "b": "L67-004",
+        "reason": "同方向，併成一句（V33 2026-11-12）"
       }
     ],
     "excluded": [
@@ -485413,6 +487084,20 @@
         "questions": [
           "排風扇把空氣抽出去，新空氣會從哪裡進來？",
           "排風扇把空氣抽出去，為什麼有時會讓煙道氣流反過來？"
+        ]
+      },
+      {
+        "id": "H61-007~H67-004",
+        "a": "H61-007",
+        "b": "H67-004",
+        "question_score": 0.45,
+        "answer_score": 0.037,
+        "key_score": 0.308,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "天生看不見、後來開刀重見光明的人，交叉手還會把先後說反嗎？",
+          "年紀大了，交叉手時還會把先後說反嗎？"
         ]
       },
       {
@@ -486687,6 +488372,20 @@
         "questions": [
           "兩人用相同密碼，為什麼儲存的驗證字串可以不同？",
           "密碼演算法升級後，為什麼有時要等下次登入才更新舊紀錄？"
+        ]
+      },
+      {
+        "id": "H61-003~H67-001",
+        "a": "H61-003",
+        "b": "H67-001",
+        "question_score": 0.158,
+        "answer_score": 0.085,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同樣交叉雙手，為什麼有人幾乎全部說反，有人幾乎不受影響？",
+          "自閉症的孩子雙手交叉時，被碰的先後也會說反嗎？"
         ]
       },
       {
@@ -488255,6 +489954,20 @@
         "questions": [
           "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
           "兩份香草醛整體碳比例相近，為何對準分子上的同一個位置，差距會變大？"
+        ]
+      },
+      {
+        "id": "K67-004~K67-005",
+        "a": "K67-004",
+        "b": "K67-005",
+        "question_score": 0,
+        "answer_score": 0.106,
+        "key_score": 0.833,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一般人吃牛排，嚐得出哪塊冷凍過嗎？貼上『曾冷凍』的標籤會不會影響？",
+          "換成別的肉、別的人來盲測，結果也一樣嗎？"
         ]
       },
       {
@@ -490313,6 +492026,20 @@
         "questions": [
           "網路從 Wi-Fi 換成行動網路，連線有機會不用全部重來嗎？",
           "看見新路徑送來的資料，QUIC 為什麼不能立刻毫無保留地大量回傳？"
+        ]
+      },
+      {
+        "id": "L66-008~L67-005",
+        "a": "L66-008",
+        "b": "L67-005",
+        "question_score": 0.065,
+        "answer_score": 0.033,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雞蛋那種「一頭尖一頭鈍」，真的是鳥蛋的標準形狀嗎？",
+          "同一種鳥的蛋，形狀都差不多嗎？"
         ]
       },
       {
@@ -495052,10 +496779,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-4074",
-    "target_count": 4074,
+    "revision": "2026-11-12-pool-4089",
+    "target_count": 4089,
     "reviewed_on": "2026-11-12",
-    "reason": "從4032續接；2026-11-12 第十六輪素材審視：作者 F27（住家、廚房與日常科技）、F28（天空、地球與身邊的生物）先在全池大範圍去重（各列 23、28 個候選），再從零研究四個新長題（C12-01 冷凍肉解凍出水、C12-02 冰箱冷害、C13-01 鳥蛋形狀、C13-02 蝸牛旋向）；42 個提案經非作者覆核（F27 由 V30、F28 由 V31），全部照覆核收；四題都留後備，沒有新長題。",
+    "reason": "從4074續接；2026-11-12 第十七輪素材審視：改以補讀最接近門檻的後備組題為主，作者 F29（C9-02 濕沙、C12-01 冷凍肉）、F30（C7-01 交叉雙手、C13-01 鳥蛋）補讀不同研究群的開放原研究；16 個提案經非作者覆核（F29 由 V32、F30 由 V33），收 15 個、退回 1 個（未發表手稿、緊接解凍建議）；C9-02、C7-01 成題，C12-01、C13-01 後備。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -499130,7 +500857,22 @@
       "K66-010",
       "K66-011",
       "K66-012",
-      "K66-013"
+      "K66-013",
+      "P67-001",
+      "H67-001",
+      "H67-002",
+      "H67-003",
+      "H67-004",
+      "L67-001",
+      "L67-002",
+      "L67-003",
+      "L67-004",
+      "L67-005",
+      "K67-001",
+      "K67-002",
+      "K67-003",
+      "K67-004",
+      "K67-005"
     ],
     "overflow": [
       {
@@ -528136,6 +529878,233 @@
       "reading_status": "未讀",
       "origin": "wave66-life-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave66-life.json"
+    },
+    {
+      "id": "K67-NA001",
+      "question": "急凍的好處，解凍前多放在接近冰點的溫度一陣子，還留得住嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V32（2026-11-12）退回：未發表手稿只有結論（照 V22–V31 計 0），又緊貼解凍建議，違反本題「不給解凍或冷凍方法建議」的規則；整條刪。F29-004 的「約三成」平均含 Study IV，在 F29-004 已註明。 原提案 F29-005。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回",
+      "origin": "wave67-food-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-food.json"
+    },
+    {
+      "id": "H67-NA001",
+      "question": "3D 列印的假蛋在斜坡上，哪種形狀最不會滾走？（Hays & Hauber 2018 JEB）",
+      "existing_ids": [
+        "L66-011",
+        "L66-012"
+      ],
+      "source_ids": [],
+      "reason": "非 Birkhead 研究群的滾動檢驗，正是 V31 列的第（1）項；但 doi.org 轉址到 journals.biologists.com 時 curl（預設標頭）回 403，依規則不繞過。WebFetch 對同一頁曾回出摘要式轉述（錐度最能抑制位移、伸長與不對稱單獨看會增加位移），但那是工具轉述、沒有逐字本機快取，且 curl 已 403，不當來源、不計。Europe PMC 只有書目（非開放子集）；Hays、Ljubičić & Hauber 2020 Auk（錐度指標）的 bioone 頁回 Incapsula 機器驗證，亦未讀。 原提案 F30-NA001。",
+      "reentry_condition": "作者機構典藏或 PMC 出現可直接取得的全文，或站主允許以 WebFetch 讀取並接受無逐字快取。",
+      "reading_status": "未讀全文（curl 403；WebFetch 轉述不計）",
+      "origin": "wave67-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+    },
+    {
+      "id": "H67-NA002",
+      "question": "鳥的骨盆寬窄跟蛋形有關嗎？（Shatkovska 等 2018 J Morphol）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 只找到書目與摘要轉述（peeref、pubmed），沒有開放全文；Europe PMC 非開放。Montgomerie 2021（F30-S006）用了該篇的骨盆資料，結論已併入 F30-006（不對稱與骨盆無明確關係、伸長有），不另立核心。 原提案 F30-NA002。",
+      "reentry_condition": "出現作者典藏或開放全文。",
+      "reading_status": "只見書目與搜尋摘要",
+      "origin": "wave67-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+    },
+    {
+      "id": "H67-NA003",
+      "question": "交叉手讓先後說反的原始實驗（Yamamoto & Kitazawa 2001 Nat Neurosci）",
+      "existing_ids": [
+        "R44003"
+      ],
+      "source_ids": [],
+      "reason": "任務點名的原文；搜尋只見 PubMed 摘要與 typeset.io 上一份來源不明的 PDF（非出版社或作者機構典藏，無法確認授權），不使用；doi.org 出版社頁為付費。R44003 維持 1 條，不升 1.5。 原提案 F30-NA003。",
+      "reentry_condition": "作者機構典藏或出版社開放版本。",
+      "reading_status": "摘要",
+      "origin": "wave67-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+    },
+    {
+      "id": "H67-NA004",
+      "question": "鳥巢的類型會讓蛋殼變硬嗎？（Hung 等 2022 Ecol Lett）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 開放（PMC9315002，已取 XML），但主題是蛋殼硬度與巢的掛法、位置，不是蛋形，離題；與 Chou、Tuanmu、Hung 2025（REST 仍為非開放）同研究群。 原提案 F30-NA004。",
+      "reentry_condition": "另開『蛋殼為什麼有厚有薄、有硬有軟』題時可用。",
+      "reading_status": "摘要（全文 XML 已存未細讀）",
+      "origin": "wave67-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+    },
+    {
+      "id": "H67-NA005",
+      "question": "北極兩種濱鷸的蛋形隨經度變化（Liu 等 2023 iScience）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "上一輪 L66-NA004 已判關係弱；本輪以 REST 取全文 XML 確認重點是配偶制度與族群擴散，維持不收。 原提案 F30-NA005。",
+      "reentry_condition": "同 L66-NA004。",
+      "reading_status": "摘要與全文 XML（未逐段讀）",
+      "origin": "wave67-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+    },
+    {
+      "id": "H67-NA006",
+      "question": "交叉手效應的統合分析（Schmelter、Langenberg、Mayer、Heed 2026 Front Neurosci）",
+      "existing_ids": [
+        "H61-004"
+      ],
+      "source_ids": [],
+      "reason": "Heed 研究群，任務限定『Heed／Azañón 以外』，未讀、不收。 原提案 F30-NA006。",
+      "reentry_condition": "需要整體效應量時再議。",
+      "reading_status": "只見 Europe PMC 書目",
+      "origin": "wave67-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-human.json"
+    },
+    {
+      "id": "P67-NA001",
+      "question": "濕沙的強度為什麼在很寬的水量範圍內都差不多？（Scheel 等 2008 Nature Materials 原文）",
+      "existing_ids": [
+        "P63-NA002",
+        "P63-NA004",
+        "P64-NA004",
+        "P65-NA008"
+      ],
+      "source_ids": [],
+      "reason": "ANU Open Research 典藏頁（搜尋結果列出）的檔案標『Restricted until』，下載連結只回 HTML、提供 request-a-copy，不申請；ANU 個人網頁上的 Nature Materials PDF 是非授權副本，未開啟；ESRF Highlights 2008 與 Spotlight 58 兩頁今日 curl 200，但池中 SRC-f3ed8ff1e7055b71 已是同一頁、第十三輪 V25 判為機構摘要計 0，不重提。 原提案 F29-NA001。",
+      "reentry_condition": "出版社或典藏正式開放全文時。",
+      "reading_status": "只讀到典藏紀錄頁與機構摘要",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA002",
+      "question": "Scheel 等 2008 J. Phys.: Condens. Matter〈Liquid distribution and cohesion in wet granular assemblies beyond the capillary bridge regime〉",
+      "existing_ids": [
+        "P64-NA004"
+      ],
+      "source_ids": [],
+      "reason": "Northumbria 研究入口頁（搜尋結果列出）只有摘要與 DOI，沒有檔案；摘要說超過一半孔隙灌滿液體凝聚力才變弱，只讀摘要不算。 原提案 F29-NA002。",
+      "reentry_condition": "同 P64-NA004。",
+      "reading_status": "只讀到摘要",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA003",
+      "question": "濕顆粒剪切模數在液體 1–3% 最強（Møller & Bonn 2007 EPL）",
+      "existing_ids": [
+        "P63-NA005",
+        "P64-NA001",
+        "P65-NA006"
+      ],
+      "source_ids": [],
+      "reason": "UvA-DARE 紀錄頁（搜尋結果列出）今日重抓仍只有摘要與 DOI／handle 連結，無檔案；搜尋未見 arXiv 版。 原提案 F29-NA003。",
+      "reentry_condition": "同 P63-NA005。",
+      "reading_status": "只讀到摘要",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA004",
+      "question": "Lu、Wu、Tan 2007〈Tensile strength characteristics of unsaturated sands〉（ASCE JGGE 133(2)）作者稿",
+      "existing_ids": [
+        "P64-NA005",
+        "P65-NA008"
+      ],
+      "source_ids": [],
+      "reason": "搜尋只列出 ascelibrary 付費頁、peeref 與摘要鏡像；作者是 Lu、Wu、Tan（不是 Baltodano-Goulding，研究群屬科羅拉多礦業學院 Lu 研究室，與 P65-001 的密蘇里 Likos 研究室不同）；沒有找到作者稿或典藏全文，未開啟出版社頁。 原提案 F29-NA004。",
+      "reentry_condition": "作者或機構典藏放出接受稿時，可另立核心（不是升 P65-001，研究群不同）。",
+      "reading_status": "只讀到搜尋摘要",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA005",
+      "question": "海水與淡水濕沙乾後強度的受控對照",
+      "existing_ids": [
+        "P63-NA007",
+        "P65-NA007",
+        "P64-004"
+      ],
+      "source_ids": [],
+      "reason": "搜尋只找到加水泥的海水拌砂（韓國地盤工學會 2012）、凍結砂的鹽度與單壓強度（engrXiv 5604，與乾燥無關）、sebkha 土的乾濕循環；沒有未加膠結劑的沙在淡水／海水下乾燥後強度的受控對照。 原提案 F29-NA005。",
+      "reentry_condition": "同 P63-NA007。",
+      "reading_status": "未讀到合格來源",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA006",
+      "question": "羔羊肉先熟成再快凍，冷凍存 24 週後失水仍與未凍對照相近嗎？（Kim 等 2024 MMB）",
+      "existing_ids": [],
+      "source_ids": [
+        "P67-S002"
+      ],
+      "reason": "全文讀過；與 F29-002／F29-003 同屬普渡 Kim 研究群，該群本輪已到合計上限 1.0；內容又接近『先熟成加快凍可減少冷凍損害』的產業建議，不另立核心。 原提案 F29-NA006。",
+      "reentry_condition": "若覆核把 F29-003 刪掉，可改用它補 C12-01『放多久』一章 0.25，但不得引建議。",
+      "reading_status": "全文讀過",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA007",
+      "question": "Martino & Zaritzky 1986 Food Microstructure：冷凍牛肉的冷凍置換切片與冰晶位置",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "USU DigitalCommons 紀錄頁（搜尋結果列出）200，但頁面 citation_pdf_url 的 viewcontent 連結回 Cloudflare『Just a moment』403，未繞過；只讀到紀錄頁摘要（方法論文）。 原提案 F29-NA007。",
+      "reentry_condition": "典藏 PDF 可正常讀取時。",
+      "reading_status": "只讀到摘要",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA008",
+      "question": "Kim 等 2017 RMC 摘要：豬里肌熟成順序與冷凍速度",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "MMB 1(3):70 只是研討會摘要（1 頁），不算全文；且屬普渡 Kim 研究群。 原提案 F29-NA008。",
+      "reentry_condition": "不重入。",
+      "reading_status": "只讀到研討會摘要",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA009",
+      "question": "鱅魚頭鰓側肉與頸部肉冷凍的冰晶位置（華中農業大學，Food Chem X 2026，PMC12887370）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC REST 全文讀過（CC BY-NC-ND）：快凍在肌纖維與脂肪細胞內形成球狀小冰晶、慢凍的冰晶面積比最高 43.5%；但對象是魚頭、含脂肪細胞，與『冷凍肉』的題目差距大，且 F29-002 已補上肉類的直接觀察，不收；全文 XML 只在 f29src/cand/ 留存。 原提案 F29-NA009。",
+      "reentry_condition": "若覆核不接受 F29-002，可當魚肉旁證約 0.25。",
+      "reading_status": "全文讀過",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA010",
+      "question": "冷凍過的牛排換不同包裝，展示期間會不會比較好？（Wagoner 等 2022 Foods，PMC9564092）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文摘要讀過：比較三種包裝材料（含廠商共同作者），放進片中會變成產品比較與推薦，依本題規則不收。 原提案 F29-NA010。",
+      "reentry_condition": "不重入。",
+      "reading_status": "摘要與前言讀過",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "P67-NA011",
+      "question": "南京農業大學雪花牛肉（PMC9329981）的滴失數字表",
+      "existing_ids": [
+        "K66-011"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC fullTextXML 重抓確認：唯一的表格是揮發物（Table 1），滴失只在 Fig. 3A，沒有補充表格；K66-011 南京部分維持 0.25。 原提案 F29-NA011。",
+      "reentry_condition": "作者或期刊公開數據檔時。",
+      "reading_status": "全文讀過",
+      "origin": "wave67-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
     },
     {
       "question": "蚊子為什麼找得到人？",
