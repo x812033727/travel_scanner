@@ -113,3 +113,50 @@ class ColabCredentials(_AgentModel):
     tool: Literal["colab"]
     slot: Slot
     credentials: dict[str, Any]
+
+
+# Who holds a Colab account: a name the agent picks for itself, shown to the other agents and
+# written into the audit log. No spaces or quotes, so it reads the same in a shell and a log.
+HOLDER_PATTERN = r"^[A-Za-z0-9][A-Za-z0-9._:@-]{0,79}$"
+SLOTS: tuple[Slot, ...] = ("a", "b", "c", "d", "e")
+
+
+class ColabLease(BaseModel):
+    slot: Slot
+    holder: str = Field(pattern=HOLDER_PATTERN)
+    # The video tool token that took it, by its prefix (what the audit log records too).
+    token: str = Field(max_length=32)
+    acquired_at: int
+    expires_at: int
+
+
+class ColabLeaseRequest(BaseModel):
+    holder: str = Field(pattern=HOLDER_PATTERN)
+    # Four hours covers a batch; an episode renews (h3_detached.py does it every 30 minutes).
+    ttl_minutes: int = Field(default=240, ge=10, le=1440)
+    # Only for `auto`: skip an account with fewer compute units than this.
+    min_balance: float | None = Field(default=None, ge=0)
+
+
+class ColabReleaseRequest(BaseModel):
+    holder: str = Field(pattern=HOLDER_PATTERN)
+
+
+class ColabReleaseResult(BaseModel):
+    slot: Slot
+    released: bool
+
+
+class ColabAccountView(BaseModel):
+    slot: Slot
+    is_default: bool
+    signed_in: bool
+    compute_units: AiComputeUnits | None = None
+    usage_error: str | None = None
+    checked_at: int | None = None
+    lease: ColabLease | None = None
+
+
+class ColabAccounts(BaseModel):
+    accounts: list[ColabAccountView]
+    default: Slot | None = None
