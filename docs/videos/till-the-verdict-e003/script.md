@@ -23,7 +23,7 @@ Grant 摘下眼鏡擦：「I was at Mom's. My phone died.」話剛說完，他�
 第 2 集的懸念「Where's Grant?」在本集第一場回答：他天亮才到（c05–c12）。
 最後一鏡 c40 照〈接點表〉3→4：七樓病房，06:30；Grant（`rain` 的淺色西裝，領口與鏡片還濕）剛走回床邊，右手把黑色手機翻面蓋在床頭櫃上；Nora（`hospital`）半坐在床上，盯著那支翻面的手機；空塑膠水杯倒在床頭櫃邊。
 第 4 集開場他把翻面的手機收進口袋、從紙袋裡拿出新手機盒（細綱第 4 集 hook）：本集 c10 他把那只牛皮紙袋放在椅面上；她的駝色大衣一直搭在同一張椅背上（第 4 集他從椅子上拿起大衣）。
-第 4 集細綱那句「She's off till Monday」會改成「Dr. Brandt went off shift at six. She's off till Monday.」：第 1–3 集不用改，Dr. Brandt 在第 2 集最後一場離開病房，本集 06:10 之後都不出現，跟「六點下班」對得上。
+第 4 集細綱那句「She's off till Monday」會改成「She went off shift at six. She's back tomorrow.」：第 1–3 集不用改，Dr. Brandt 在第 2 集最後一場離開病房，本集 06:10 之後都不出現，跟「六點下班」對得上。
 
 ## 角色與參考圖
 
@@ -165,7 +165,7 @@ Grant 摘下眼鏡擦：「I was at Mom's. My phone died.」話剛說完，他�
 - **c14–c15**：Kim 不再換點滴袋（醫療處置）；改成拿一條摺好的白色薄毯蓋在 Nora 腿上；c16 的問句不變。c17 她的手從毯子上收回來。
 - **c31–c32**：補他把手機留在床頭櫃上的原因：他拿手帕擦領口、邊擦邊走出去，忘了拿。
 - **c36 台詞**：「Got the curtain measurements. Signed, S.」（把「S.」念成署名，聽得懂）。
-- **〈這集接在哪〉**：記下第 4 集「Dr. Brandt went off shift at six. She's off till Monday.」的改句；第 1–3 集不用改。
+- **〈這集接在哪〉**：記下第 4 集「She went off shift at six. She's back tomorrow.」的改句；第 1–3 集不用改。
 
 ### 2026-11-12 重審後的修改
 
