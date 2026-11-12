@@ -456,4 +456,7 @@ Bev、Sienna、Fisk 在第 4–10 集清單裡，若還沒畫，Bev 排在 3 之
   寫稿者新加、待站主看的三句：第 19 集 c42 Peg 句前加 "Sienna."（觀眾才知道照片是誰的手）；第 20 集 c08 Fisk "Decree and agreement. Sign both, Ms. Quinn."；c38 證婚法官 "I now pronounce you husband and wife."。
 - **第 11–15 集審稿後補定**（`../review/2026-11-12-e011-e015-storyboard.md`）：粉紅表格平放時道具句後接 `, lying flat`；領藥紀錄剛印出來時寫成還沒釘的散頁，Dale 釘好之後才用 stapled 的句子；
   從櫃台後拍的反打，左右跟客人那邊的主鏡相反，所以櫃台場的對話改從「櫃台前、兩人之間斜拍」；第 12 集 c31 改成 "So who switched my pills?"；當鋪 $400 維持。
+- **第 15–20 集審稿後補定**（`../review/2026-11-12-e015-e020-storyboard.md`）：第 16 集說話的臉用穩定光（辦公室窗的暖黃、對街路燈的冷白），霓虹只掃過臉頰；Theo 在 Elias 右後方半步、離鏡頭較遠；
+  第 16 集 "Walter Pell's case? That closed twelve years ago."；第 17 集 Dana 自我介紹 "Dana Okafor, attorney. Two is mine." 與 "He fights for you once, the defense calls you bought."；平板道具句 `a slim tablet in a plain grey case, its screen turned away`；
+  第 19 集 "Signed. Ten o'clock, Superior Court."；第 20 集補 Nora "I do."；"That fast?" 與 "Marriage application." 照留。Theo 的名字第 21 集以後先鋪再叫。
 
