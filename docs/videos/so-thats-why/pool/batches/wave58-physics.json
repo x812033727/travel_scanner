@@ -1,0 +1,509 @@
+{
+  "batch_id": "wave58-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "糖與鹽溶液的導電量測；太空艙模型入水試驗；行人通過窄門與高密度人流：替長題 G01 補來源（作者 F11，非作者覆核 V14），並替組題 C4-05、C4-02 補核心（作者 F12，非作者覆核 V15）；C4-02 留後備，相關核心待站主決定前不排進題案。",
+  "sources": [
+    {
+      "id": "P58-S001",
+      "url": "https://nvlpubs.nist.gov/nistpubs/jres/045/jresv45n4p299_a1b.pdf",
+      "canonical_url": "https://nvlpubs.nist.gov/nistpubs/jres/045/jresv45n4p299_a1b.pdf",
+      "title": "Dielectric Constants of Aqueous Solutions of Dextrose and Sucrose（Malmberg & Maryott）",
+      "publisher": "美國國家標準局（NBS，今 NIST）Journal of Research of the National Bureau of Standards",
+      "version": "Vol. 45, No. 4, October 1950, Research Paper 2137",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 5 頁讀完（掃描檔 OCR，字距雜亂但可讀）",
+      "locator": "§III Materials and Solutions（p.300 右欄）；摘要；Table 1",
+      "summary": "用 NBS 標準樣品 17 的蔗糖與導電度用水（暴露大氣前約 10⁻⁷ mho）配成重量百分比 10–60% 的蔗糖水，在 20、25、30 °C 以交流電橋量介電常數。為了降低導電，溶液以氫氣趕走溶解的二氧化碳；作者記載所有溶液的比導電度都在 3×10⁻⁶ mho 或更低。葡萄糖水接觸電極會被催化氧化，導電一夜可升到百倍，改用氫氣後消失。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這篇論文的目的是量介電常數，導電度只是一句實驗條件，沒有逐濃度列表；原文單位只寫 mho（比導電度，應為每公分，寫稿前要再確認）；溶液是去除二氧化碳後的實驗室樣品，不是廚房糖水（市售砂糖含灰分，導電會更高）。1950 年的量測。 覆核 V14（2026-11-12）：limitations 改寫：原文兩處都只寫 mho（specific conductivity／conductivity），全篇沒有「每公分」；以 mho/cm 讀是覆核者的判讀（當年慣例，且與同段水約 10⁻⁷ 相容）。summary 補：上限同時涵蓋葡萄糖與蔗糖溶液；葡萄糖的導電「有時」一夜多達百倍（原文 sometimes … as much as a hundredfold），不是固定升到百倍。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/nbs-jres45-malmberg-maryott.pdf",
+        "sha256_prefix": "ba80fb63f811871e",
+        "note": "文字檔 nbs-jres45-malmberg-maryott.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P58-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4887229/fullTextXML",
+      "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4887229/fullTextXML",
+      "title": "Low Electrolytic Conductivity Standards（Wu & Berezansky）",
+      "publisher": "NIST Journal of Research of the National Institute of Standards and Technology（PMC 開放全文）",
+      "version": "J. Res. NIST 100(5):521–527，1995；PMC4887229",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；Europe PMC 全文 XML 本機快取，去標籤後讀",
+      "reading_scope": "§1 Introduction 與 §2.1 逐句讀；其後各節（非水溶劑標準液的配製與結果）只瀏覽",
+      "locator": "§1 Introduction 第 2 段；§2.1 末段",
+      "summary": "NIST 說：依氫離子、氫氧根離子的極限當量導電度與水的解離常數，純水在 25 °C 的理論導電度是 0.055 μS/cm；水吸收空氣中的二氧化碳後導電度會升到 10 到 30 倍，該實驗室裡與空氣平衡的純水是 0.8 到 1.2 μS/cm。所以高品質水的導電度就在 1 μS/cm 上下，要做 5–25 μS/cm 的低導電標準液必須處理這個背景。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "文章主題是低導電標準液（氯化鉀與苯甲酸溶於 30% 正丙醇—水），純水數值是引言裡的背景說明，0.055 是理論值不是該文實測；0.8–1.2 是該實驗室的經驗值。文中「1 mg/g 氯化鈣使導電度升到約 3 μS/cm」一句的濃度單位可疑，本輪不引用。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/pmc4887229.xml",
+        "sha256_prefix": "46721425fbd1584c",
+        "note": "去標籤文字檔 pmc4887229.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P58-S003",
+      "url": "https://education.ti.com/-/media/C16DB03063A7481EA405F9B86563E998",
+      "canonical_url": "https://education.ti.com/-/media/C16DB03063A7481EA405F9B86563E998",
+      "title": "Experiment 22 Properties of Solutions: Electrolytes and Non-Electrolytes — Teacher Information（Science with TI-Nspire Technology；改編自 Chemistry with Vernier 實驗 13）",
+      "publisher": "Texas Instruments Education／Vernier Software & Technology（教師手冊頁）",
+      "version": "PDF 3 頁，未標日期；2026-11-12 擷取",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 3 頁讀完",
+      "locator": "Teacher Information 第 2、4、7、8 點；SAMPLE RESULTS 表",
+      "summary": "教師手冊：導電度探棒設在 0–20000 μS/cm 檔；各溶液都配成 0.050 M（氯化鈉是每公升 2.93 g）。範例結果：0.050 M NaCl 5214 μS/cm、CaCl2 9362、AlCl3 11707、HCl 17330、醋酸 461、硼酸 0、甲醇 0、蒸餾水 0、自來水 20–1000（隨地區）。手冊說明用出廠校正時硼酸、甲醇、蒸餾水的讀數會落在 0–30 μS/cm，通常有約 1–3 μS/cm 來自溶解的二氧化碳；改用 0–200 檔時他們讀到蒸餾水 1.0、0.05 M 甲醇 1.0、0.05 M 硼酸 3.2 μS/cm。校正用的 10,000 μS/cm 標準液是每公升溶 5.566 g 氯化鈉。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "廠商（Vernier／TI）教學手冊的「範例結果」，不是同儕審查的量測；沒有寫溫度與重複次數；非電解質用的是甲醇不是蔗糖（這份文件裡沒有糖）。不可與 F11-S001 的蔗糖數值相除成倍數：兩份是不同年代、不同儀器、不同條件。 覆核 V14（2026-11-12）：summary 的範例表補 H3PO4 6661；註明全文沒有溫度；「0–30 μS/cm」是出廠校正下的讀數範圍，二氧化碳造成的是其中通常約 1–3。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/ti-C16DB.pdf",
+        "sha256_prefix": "522b910169a16f06",
+        "note": "文字檔 ti-C16DB.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P58-S004",
+      "url": "https://www.teachengineering.org/content/nyu_/activities/nyu_probe/nyu_probe_activity1_handoutas_v2_tedl.pdf",
+      "canonical_url": "https://www.teachengineering.org/content/nyu_/activities/nyu_probe/nyu_probe_activity1_handoutas_v2_tedl.pdf",
+      "title": "Build and Test a Conductivity Probe — Lab Handout Answer Key",
+      "publisher": "TeachEngineering（美國國家科學基金會資助的 K-12 工程課程庫；紐約大學 Tandon 工學院提供）",
+      "version": "PDF 10 頁，未標日期；2026-11-12 擷取",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 10 頁讀完（Arduino 程式碼段略讀）",
+      "locator": "Part 2 材料清單與 Data Table 1；Part 3 Data Table 2；結論題 2",
+      "summary": "課堂活動的解答本：用兩段鎳鉻線當電極、9 V 電池、470 Ω 電阻與 LED 自製導電探針，測一匙糖溶成的糖水、一匙食鹽溶成的鹽水、蒸餾水與自來水。預期結果：糖水與蒸餾水 LED 不亮、無明顯現象；鹽水 LED 亮，而且鎳鉻線露出處有氣泡產生；自來水 LED 微亮、氣泡慢慢產生。接上 Arduino 讀相對數值時，糖水與蒸餾水接近 0，鹽水有讀數且探針尖端冒泡，自來水低於鹽水；解答說 LED 分不出蒸餾水與自來水，Arduino 可以。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "教學活動的「預期結果」，不是量測報告；濃度只寫「一匙」，沒有數值、溫度；氣泡是什麼氣體解答本沒有說，不可自行補上。 覆核 V14（2026-11-12）：limitations 補：解答本表一（自來水 LED 微亮、蒸餾水不亮）與結論題 2（用 LED 分不出蒸餾水與自來水）不一致。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/teacheng-nyu.pdf",
+        "sha256_prefix": "e653c130597a56e5",
+        "note": "文字檔 teacheng-nyu.txt；活動網頁 404，只讀到這份 PDF 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P58-S005",
+      "url": "https://iacr.org/submit/files/slides/2025/eurocrypt/eurocrypt2025/135/135_slides.pdf",
+      "canonical_url": "https://iacr.org/submit/files/slides/2025/eurocrypt/eurocrypt2025/135/135_slides.pdf",
+      "title": "Formal Analysis of Multi-Device Group Messaging in WhatsApp — Eurocrypt 2025 會議簡報（Albrecht、Dowling、Jones）",
+      "publisher": "國際密碼學研究協會（IACR）Eurocrypt 2025 簡報檔；作者任職倫敦國王學院與倫敦大學皇家哈洛威學院",
+      "version": "2025-05-08（論文：Eurocrypt 2025，DOI 10.1007/978-3-031-91101-9_9；ePrint 2025/794）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀（106 頁投影片，多為逐步動畫的重複頁）",
+      "reading_scope": "簡報全部文字讀完；論文全文沒有讀到（eprint.iacr.org 403、Springer 付費牆）",
+      "locator": "投影片頁碼 6（Our Work）、7–8（Sender Keys）、17（Server Controls the Group Membership）、18（Lack of Participant Consistency）、19（Results）",
+      "summary": "三位學者以逆向工程 WhatsApp 用戶端軟體加上有限的公開文件，寫出多裝置群組訊息的完整描述並做形式化安全分析。結論：一般情況下提供機密性與驗證；但「伺服器對群組成員名單有完全的控制權」，簡報註明這是至少 2017 年就公開的已知問題（引 Rösler、Mainka、Schwenk 的 EuroS&P 2018 論文）；WhatsApp 也不保證同一位使用者的各裝置看到一致的群組成員名單，裝置只知道自己送出訊息的收件人清單。作者說這兩點不符合他們對群組訊息協定的期待。另指出入侵後復原有限、以裝置撤銷作為替代。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到作者的會議簡報，不是論文全文；簡報是條列式，沒有攻擊細節與證明，片中只能引「伺服器控制群組成員名單、成員看到的名單不保證一致」這個結論，不可描述具體攻擊步驟。Rösler 等 2018 原論文本輪仍讀不到（見 blocked）。寫稿前應取得論文全文第 3、7 節核對。 覆核 V14（2026-11-12）：本輪不入池當來源；移到 not_added（對應 F11-010），reading_status 寫「只讀作者會議簡報與 ePrint 摘要；King’s College 典藏有 CC BY 的 accepted manuscript，PDF 回 403」。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/adj-eurocrypt-slides.pdf",
+        "sha256_prefix": "48dff6715b676e1e",
+        "note": "文字檔 adj-eurocrypt-slides.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P58-S006",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication260-142.pdf",
+      "canonical_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication260-142.pdf",
+      "title": "NIST Special Publication 260-142: Primary Standards and Standard Reference Materials for Electrolytic Conductivity（Shreiner & Pratt）",
+      "publisher": "NIST Standard Reference Materials 系列",
+      "version": "2004 年版",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀（OCR 文字層）",
+      "reading_scope": "§5.2 Standard Reference Materials 逐句讀；其餘只做關鍵字檢索（NaCl、sucrose）",
+      "locator": "§5.2（pp.31–32）",
+      "summary": "NIST 發行一系列電解導電度標準參考物質，水溶液的標稱值有 25、100、500、1,000、10,000、100,000 與 20,000 μS/cm。除兩種之外都是氯化鉀溶於水；25 μS/cm 那一種用鹽酸（低 pH 可抑制二氧化碳解離）；20,000 μS/cm 那一種用氯化鈉，是臨床實驗室特別要求的，因為用氯化鈉配到 20,000 μS/cm 時離子強度接近體液。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀一節；沒有給出那瓶氯化鈉標準液的濃度，不可自行換算；全文沒有蔗糖。 覆核 V14（2026-11-12）：保留為來源但不掛在任何最終核心的計數上（F11-003 不計這一句）。",
+      "author_cache": {
+        "file": "scratchpad/stw8/f11src/nist-sp260-142.pdf",
+        "sha256_prefix": "790a7b98b080e3b4",
+        "note": "文字檔 nist-sp260-142.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P58-S007",
+      "url": "https://arxiv.org/pdf/physics/0701203",
+      "canonical_url": "https://doi.org/10.1103/PhysRevE.75.046109",
+      "title": "The Dynamics of Crowd Disasters: An Empirical Study",
+      "publisher": "Helbing、Johansson、Al-Abideen／arXiv（後刊於 Physical Review E 75, 046109）",
+      "version": "arXiv:physics/0701203v2，2007-02-12",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 預設標頭取得 arXiv PDF，pdftotext 轉文字後全文閱讀",
+      "reading_scope": "全文 7 頁：摘要、資料分析與基本圖、兩次轉變、摘要與展望；圖 1–3 只讀圖說",
+      "locator": "摘要；〈Data analysis and fundamental diagram〉；〈Transition from laminar to stop-and-go and turbulent flows〉；圖 1–3 圖說；〈Summary and outlook〉",
+      "summary": "2006 年 1 月 12 日麥加米納賈馬拉特橋入口前 27.7×22.5 公尺區域的錄影分析：局部密度可超過每平方公尺 10 人而人群不完全停下；局部密度過 6 人後局部流量降為三分之一以下；11:53 前後由順流轉為走走停停的波，12:19 前後轉為往各方向的不規則位移（作者稱人群亂流），事故始於「壓力」（密度乘速度變異）到頂時。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是 arXiv 第 2 版，未對照期刊刊本；補充影片未看；臨界值依量測半徑 R 而定；密度數值經作者以身體投影面積校正前後不同，引用時要寫明是局部密度、R=1 公尺。單一事件、單一場地。 覆核 V15（2026-11-12）：limitations 加一句：原文指出亂流階段人會推擠爭空間（作者稱此狀態有時被叫作 crowd panic）；本來源不支持「事故與恐慌無關」。並加註系列敏感性：大量死亡的宗教朝覲事故，使用與否待站主決定。",
+      "author_cache": {
+        "file": "helbing2007-arxiv-physics0701203.pdf（文字檔 helbing2007.txt，sha256 前 16 碼 1c668095c45bb978）",
+        "sha256_prefix": "6978d48390865638",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P58-S008",
+      "url": "https://arxiv.org/pdf/1507.05110",
+      "canonical_url": "https://arxiv.org/pdf/1507.05110",
+      "title": "Experimental proof of Faster-is-Slower in multi-particle systems flowing through bottlenecks",
+      "publisher": "Pastor、Garcimartín、Gago、Peralta、Martín-Gómez、Ferrer、Maza、Parisi、Pugnaloni、Zuriguel／arXiv",
+      "version": "arXiv:1507.05110v1，2015-06-29",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 預設標頭取得 arXiv PDF，pdftotext 轉文字後全文閱讀",
+      "reading_scope": "全文：摘要、引言、行人／羊群／顆粒三組實驗、討論；圖 1–3 只讀圖說",
+      "locator": "摘要；行人實驗段與圖 1 圖說；羊群段與圖 2 圖說；顆粒段與圖 3 圖說；結語",
+      "summary": "95 名志願者從 69 公分寬的門離開房間，分『不碰觸、可輕碰、可輕推』三級競爭程度；競爭越高，相鄰兩人通過的平均間隔越長、長間隔的機率越高。75±10 頭羊通過 94 公分門、傾斜振動料斗裡的玻璃珠也出現同方向的結果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是 arXiv 第 1 版，期刊刊本未讀；行人實驗是受控演練、只允許『輕推』，不是真實恐慌；平均間隔的差異作者自己說只是輕微改變，差別主要在長間隔的尾巴；羊的『競爭程度』是用氣溫高低代理。",
+      "author_cache": {
+        "file": "pastor2015-arxiv-1507.05110.pdf（文字檔 pastor2015.txt，sha256 前 16 碼 39dd29f2649493a5）",
+        "sha256_prefix": "ca0b2e836090ed72",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P58-S009",
+      "url": "https://ntrs.nasa.gov/api/citations/19670027235/downloads/19670027235.pdf",
+      "canonical_url": "https://ntrs.nasa.gov/citations/19670027235",
+      "title": "Dynamic Model Investigation of Water Pressures and Accelerations Encountered During Landings of the Apollo Spacecraft",
+      "publisher": "Sandy M. Stubbs／NASA Langley Research Center，NASA Technical Note D-3980",
+      "version": "1967-09，NTRS 19670027235",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl 預設標頭經 NTRS API 取得掃描 PDF，pdftotext 讀其文字層",
+      "reading_scope": "摘要（Summary）、引言、模型與試驗條件、水壓結果、〈Investigation of Landings on Water, Sand, and Hard Clay-Gravel〉；表與圖只讀圖說",
+      "locator": "Summary；Results 水壓段（panel A 30→214→95 psi 與『flat』說明）；Water landing surface 段（圖 16(a)：4g 到 30g）；Sand／clay-gravel 段",
+      "summary": "阿波羅指揮艙四分之一比例動力模型落水試驗（數值都換算成實艙尺度）：垂直速度約 7.0 公尺／秒時，最大法向加速度由姿態兩端（約 -30°、29°）的約 4g 到接近 0°（平拍）時的約 30g；9.1 公尺／秒時最大 38g。隔熱罩上同一塊面板的平均水壓隨俯仰角由約 30 psi 升到 214 psi 再降到 95 psi，最高值出現在那塊面板近乎平拍水面的姿態；水平速度對面板壓力影響很小。沙地 49g、硬黏土礫石 42.5g。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "是四分之一比例模型、平靜淡水，不是實艙實海試驗；文字層來自 1967 年掃描件的 OCR，數字我逐處對過上下文但個別字元有誤植；38g 含隔熱罩振動、作者自己說高於剛體預期；模型隔熱罩的破壞強度沒有照比例。 覆核 V15（2026-11-12）：summary 與 locator 加註：加速度 4g→30g 出自垂直速度 23 ft/s（7.0 m/s）的一組（圖 16(a)，含 0–50 ft/s 的水平速度），面板水壓 30→214→95 psi 出自垂直速度 29.2–32.4 ft/s（8.90–9.88 m/s）的一組（圖 14(a)）；9.1 m/s 那組的加速度是 -39° 約 4g 到 -12° 的 38g，剛體理論約 22g。",
+      "author_cache": {
+        "file": "stubbs1967-nasa-tn-d-3980.pdf（文字檔 stubbs1967.txt，sha256 前 16 碼 9c70069874eb922a）",
+        "sha256_prefix": "c1c35585bf5b7beb",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P58-001",
+      "question": "糖一直加到重量的六成，糖水會變成導體嗎？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.sucrose_60pct_conductivity_below_3_micromho",
+      "answer_target": "不會，至少在這份量測裡，從一成到六成都壓在同一個很低的上限以下。美國國家標準局 1950 年為了量糖水的介電常數，用標準樣品的蔗糖和導電度用水配了重量百分比 10% 到 60% 的溶液，在 20、25、30 °C 用交流電橋量測；溶液先用氫氣飽和、趕走溶解的二氧化碳，好把導電壓低。論文對導電只記了一句：所有溶液的比導電度都在 3×10⁻⁶ mho 以下，而配溶液用的水在接觸空氣前約 10⁻⁷ mho。論文沒有逐濃度列出導電度，所以不能說濃的和淡的一樣，只能說糖加到六成仍在這個上限以下。同一段還記了葡萄糖的事：葡萄糖水一進量測槽導電就快速上升，有時一夜之間多達百倍，pH 同時明顯下降，而且只在溶液碰到電極時發生；作者懷疑是催化氧化，把空氣換成氫氣之後就穩定了。",
+      "scope": "實驗室用標準樣品蔗糖、以氫氣去除二氧化碳後的溶液；1950 年的量測，導電度只是該文的一句實驗條件（上限），沒有逐濃度列表，也沒有說明殘餘導電的來源。原文單位只寫 mho（specific conductivity），沒有寫每公分：以每公分讀（3×10⁻⁶ mho/cm，即 3 μS/cm）是當年比導電度的慣用寫法，也是唯一與同段「水約 10⁻⁷」相容的讀法，但這是覆核者的單位判讀，片中字卡要寫「原文 3×10⁻⁶ mho」並註明以每公分計。上限同時涵蓋葡萄糖與蔗糖兩種溶液。市售砂糖含少量礦物質，廚房糖水的讀數會比這高。不得與 F11-003 的鹽水讀數相除或說成倍數。",
+      "source_ids": [
+        "P58-S001"
+      ],
+      "source_locator": "§III Materials and Solutions；摘要",
+      "premise_status": "screened",
+      "notes": "算 1 條（濃度範圍、溫度與上限是同一個量測條件；葡萄糖氧化不另計）。作者原答案的「幾乎沒有差」與「只有水和雜質帶來的那一點點」刪除。 原提案 F11-001（目標 G01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字都在原文，但答案把「一個上限」寫成「濃淡沒有差」，並加了一句原文沒有的成因解釋，改字後收。單位裁定：原文字面確認不了每公分（只寫 mho）；以每公分讀是合理而且唯一說得通的讀法（若是每公尺，10⁻⁷ 會低於純水的理論值），可以用，但要在片中標成判讀。這個核心補的是 G01 缺的糖水一側：有濃度、溫度與儀器（電橋與量測槽），只是結果是上限而不是讀數。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "糖放再多也不會讓水變導體：能不能導電看的是有沒有離子，不是溶了多少東西。",
+        "visual": "同一排杯子由淡到濃（10% 到 60%），導電計的指針都貼在零旁邊；最後一杯換成淡鹽水，指針才動。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P58-002",
+      "question": "完全純的水，導電度是零嗎？放在桌上的蒸餾水呢？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.pure_water_conductivity_co2_floor",
+      "answer_target": "都不是零。NIST 的說明：依水自己解離出的氫離子與氫氧根離子來算，純水在 25 °C 的理論導電度是 0.055 μS/cm。但水一接觸空氣就吸收二氧化碳，一部分變成碳酸再解離出離子，導電度會升到原來的 10 到 30 倍；NIST 自己實驗室裡與空氣平衡的純水是 0.8 到 1.2 μS/cm，而且隨氣壓浮動，所以他們要做 5 到 25 μS/cm 的低導電標準液時，這個底就是主要的不確定來源之一。教學用探棒的手冊也對得上：蒸餾水、甲醇水溶液通常有約 1 到 3 μS/cm 來自溶解的二氧化碳（用出廠校正時讀數可能落在 0 到 30，那是校正的偏移，要做兩點校正、換細檔才量得準）。所以「不導電」的那一杯其實有一個由空氣決定的底。",
+      "scope": "25 °C；0.055 是理論值不是實測，0.8–1.2 是 NIST 該實驗室的經驗值；探棒手冊的數字是廠商範例、沒有寫溫度。兩份來源各說各的，不相減、不相除。",
+      "source_ids": [
+        "P58-S002",
+        "P58-S003"
+      ],
+      "source_locator": "S002 §1 第 2 段、§2.1 末段；S003 Teacher Information 第 7 點",
+      "premise_status": "screened",
+      "notes": "算 1 條。刪掉「得先扣掉它」。 原提案 F11-002（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；核對無誤，只改末句（原文講的是不確定度，不是扣除）並把手冊的 0–30 與 1–3 分開。與 P57-025 相鄰不重複：那裡是游離比例，這裡是導電度數值與空氣造成的底。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連「什麼都沒加」的水都有讀數，而且那個讀數主要是空氣給的。",
+        "visual": "一杯蒸餾水的導電計讀數從 0.055 慢慢爬到 1 左右，旁邊畫出二氧化碳分子溶進水、變成兩個離子。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    },
+    {
+      "id": "P58-003",
+      "question": "同樣配成 0.050 M，探棒量到的鹽水和「不會解離的東西」差多少？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.nacl_0p05m_probe_reading_vs_nonelectrolytes",
+      "answer_target": "差到不在同一個檔位上。一份導電度探棒的教師手冊把每種溶液都配成 0.050 M（氯化鈉是每公升 2.93 公克），探棒設在 0–20000 μS/cm 檔，範例結果是：氯化鈉 5214 μS/cm、鹽酸 17330、醋酸 461，而同樣 0.050 M 的甲醇、硼酸與蒸餾水都顯示 0；要換到 0–200 的細檔並重新校正才分得出來，他們讀到蒸餾水 1.0、甲醇 1.0、硼酸 3.2 μS/cm。自來水則隨地區落在 20 到 1000。同一份手冊用來校正的 10,000 μS/cm 標準液，是每公升溶 5.566 公克食鹽。手冊沒有寫量測溫度。",
+      "scope": "廠商（Vernier／TI）教學手冊的範例結果，不是同儕審查的量測；沒有寫溫度與重複次數；同表的非電解質是甲醇與硼酸，不是蔗糖。糖的數值在 F11-001（另一份文件、另一種儀器、另一個年代），兩者只能並排各報各的，不得相除、不得說「幾倍」或「幾個數量級」。NIST 用氯化鈉配 20,000 μS/cm 標準液那一句與主線無關，片中可不用。",
+      "source_ids": [
+        "P58-S003",
+        "P58-S006"
+      ],
+      "source_locator": "S003 Teacher Information 第 2、4、7、8 點與 SAMPLE RESULTS；S014 §5.2",
+      "premise_status": "screened",
+      "notes": "算 1 條（同一張範例表）；校正液配方是方法不計，NIST 那一瓶離題、不計。 原提案 F11-003（目標 G01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字全部對得上。事實數由作者的 1.5 改 1：5.566 g/L 是校正方法，NIST 的氯化鈉標準液是另一件事、與「看起來一樣的兩杯」無關。這個核心才是轉折一真正的承擔者：同一份文件、同一支探棒、同一濃度下，氯化鈉在粗檔讀到五千多，甲醇與蒸餾水要換細檔才讀到 1.0——這個對照不需要跨文件相除。作者另查到的 McGraw-Hill 解答頁（0.05 M NaCl 111.1 μS）不採用，同意作者（F11-NA001）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「看起來一樣」的兩杯，在儀器上不在同一個檔位：鹽水用粗檔讀，另一杯要換到細檔才看得到讀數。",
+        "visual": "探棒的刻度盤：0–20000 檔上鹽水指到五千多，甲醇水與蒸餾水的指針黏在 0；切到 0–200 檔，才看到 1.0。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P58-004",
+      "question": "用一顆 9 伏特電池和一顆 LED，就看得出哪一杯會導電嗎？看得出多少？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.low_voltage_probe_bubbles_at_electrodes",
+      "answer_target": "看得出有沒有，看不出多少。紐約大學提供給 TeachEngineering 的課堂活動用兩段鎳鉻線當電極，串 9 伏特電池、470 歐姆電阻和一顆 LED，解答本列的預期結果是：一匙糖溶成的糖水和蒸餾水，LED 不亮、沒有明顯現象；一匙鹽溶成的鹽水 LED 很亮，而且鎳鉻線露出的地方冒出氣泡；自來水 LED 微亮、氣泡慢慢出現。把探針改接到 Arduino 讀數值時，糖水與蒸餾水接近 0，鹽水有讀數、探針尖端冒泡。解答本說 LED 只是粗略的指示，要比較大小得靠讀數。",
+      "scope": "課堂活動解答本的「預期結果」，不是量測報告；濃度只寫「一匙」，沒有數值與溫度；氣泡是什麼氣體原文沒有說，不得自行補上。解答本的結論題 2 說「用 LED 分不出蒸餾水與自來水」，與它自己表一（自來水微亮、蒸餾水不亮）不一致，片中不引這一句。片中若自己接這個電路，那個示範仍不是來源。",
+      "source_ids": [
+        "P58-S004"
+      ],
+      "source_locator": "Part 2 材料清單與 Data Table 1；Part 3 Data Table 2；結論題 2",
+      "premise_status": "screened",
+      "notes": "算 0.5 條。 原提案 F11-004（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；內容屬實，但作者引的「LED 分不出蒸餾水與自來水」與同一份解答本的表一矛盾，刪掉這句、只留表格的四個預期觀察。算 0.5 條，同意作者：這是有出處的示範做法與該看到什麼，不是量測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "燈亮不亮只回答「有沒有離子」；電極旁的氣泡提醒你，電流穿過溶液時溶液本身在起化學變化。",
+        "visual": "四個杯子一字排開，同一支探針依序放進去：不亮、亮且冒泡、微亮、不亮。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P58-005",
+      "question": "人擠到每平方公尺快十個人，人群會像塞車那樣整個停下來嗎？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.density_flow_never_stops",
+      "answer_target": "不會，問題正出在這裡。研究者分析 2006 年 1 月 12 日麥加米納賈馬拉特橋入口前的錄影，以半徑一公尺的範圍算局部密度：局部密度可超過每平方公尺 10 人，平均速度卻始終沒有降到零。局部密度一過每平方公尺 6 人，局部流量就掉到三分之一以下，流出去的比流進來的少，人群於是越壓越緊。作者拿它和車流對照：駕駛會留安全距離、停下來，行人不會。",
+      "scope": "單一事件、單一場地（2006 年 1 月 12 日一場大型朝覲活動的事故錄影）的分析；密度是以半徑一公尺的高斯權重算的局部值，作者說最大局部密度約為平均密度的兩倍，不同國家的身體投影面積不同（作者把密度乘 0.7 才與歐洲曲線相容），數值不能直接搬到別的人群。系列限制：不用事故影像、不報傷亡數字、不評論朝覲本身、不寫成自救或現場判斷的口訣；是否使用這個案例由站主決定，決定前不排進任何題案。讀的是 arXiv v2，未對照 Phys. Rev. E 刊本。",
+      "source_ids": [
+        "P58-S007"
+      ],
+      "source_locator": "〈Data analysis and fundamental diagram〉末三段與圖 1a、1b 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：『極端密度下速度不歸零』1 條，『過 6 人後流量降為三分之一以下、出少於進』0.5 條。第二個流量高峰（9 人）與衝擊波的推論是作者解釋，不另計。池內搜尋『人群、擁擠、踩踏、疏散、密度』無同答案核心。 原提案 F12-001（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；答案逐句有原文。只算 1.5 條（速度不歸零 1；過 6 人流量降到三分之一以下、出少於進 0.5），與作者相同。第二個流量高峰與衝擊波是作者推論，不計。收進池，但加上敏感案例的使用限制，並標記待站主決定。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人不會像車一樣停下來，所以密度可以一路壓到危險的程度。",
+        "visual": "左邊車流的密度—速度曲線降到零，右邊行人的曲線在高密度處拖著一條不歸零的尾巴；下方流量曲線在 6 人處折下。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P58-006",
+      "question": "同一段錄影裡，同一片人群的走法變了幾次？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.laminar_stopgo_turbulence",
+      "answer_target": "兩次，而且都是突然變。研究者分析 11:45 到 12:30 的錄影：人流原本順順地往前；約 11:53，流出量掉到每公尺每秒 0.8 人以下時，出現一陣陣往上游傳的走走停停波，持續二十多分鐘。約 12:19，密度更高，人被整團推著往各個方向不由自主地位移，還會倒退，作者稱為「人群亂流」。作者用局部密度乘上速度變異當作「壓力」指標，亂流開始時它超過 0.02／秒²，事故始於它到頂的時候；出事的地方是平坦、幾乎開闊、沒有明顯對向人流的區域。作者由近拍錄影另外指出，進入這種狀態後，人會為了爭取空間而開始推擠，這又替擠壓的區域加進能量。",
+      "scope": "時間與門檻值都出自這一段錄影，門檻值隨量測半徑而變；作者明說第二次轉變的機制還沒有被模型重現。「壓力」是作者定義的指標，不是量到的力。不得寫成「不是因為恐慌」或「沒有人推擠」，原文沒有這個結論。系列限制同 F12-001：不用事故影像、不報傷亡數字、不評論朝覲、不寫成可供現場判斷的口訣；待站主決定是否使用。",
+      "source_ids": [
+        "P58-S007"
+      ],
+      "source_locator": "〈Transition from laminar to stop-and-go and turbulent flows〉全節；圖 2、圖 3 圖說；〈Summary and outlook〉",
+      "premise_status": "screened",
+      "notes": "算 2 條：順流→走走停停（時間、流量門檻）1 條；走走停停→亂流（不由自主位移、壓力指標、事故始於峰值）1 條。位移大小的冪律與地震的類比不另計。與 F12-001 同一篇，兩核心合計 3.5 條，沒有重算。 原提案 F12-002（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；數字都對，但作者把「不是恐慌造成」當成這篇研究的結論，原文沒有、而且原文描述了亂流階段的推擠，已改字。只算 1.5 條（兩次轉變各有時間與條件，但出自同一段錄影的同一張時間軸；壓力指標與峰值併入第二次轉變），不是作者的 2 條；與 F12-001 同一篇，兩核心合計 3 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一片人群先後換了兩種走法，第二次轉變連研究者的模型都還重現不出來。",
+        "visual": "同一個俯視框分三段：平順的軌跡線、鋸齒狀走走停停的軌跡、亂向且會倒退的軌跡；下方一條隨時間上升的『壓力』曲線標出 11:53 與 12:19。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P58-007",
+      "question": "門只有一個，大家越用力往外擠，出去得越快嗎？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.faster_is_slower_door",
+      "answer_target": "實驗裡相反。西班牙納瓦拉大學讓約 95 名志願者從一扇 69 公分寬的門離開房間，分三種規則：不准碰到別人、可以輕碰、可以輕推。越准推擠，人在門前排得越密，門柱感壓器讀到高壓的次數越多；相鄰兩人通過的平均間隔跟著變長，不過平均值只小幅改變，差得多的是特別長的停頓：越准推擠，長停頓越常出現。同一篇研究換成 75 頭左右搶著進食的羊過 94 公分寬的門，較涼、羊比較急的日子，平均間隔也比較長。作者把原因歸給門口一再出現、要過一陣子才散開的堵塞。",
+      "scope": "受控演練，只允許「輕推」，不是真實緊急情況；行人平均間隔的差別作者自己說不大，差別主要在長停頓的機率；羊的急迫程度是用氣溫代理。同篇的顆粒料斗實驗與沙漏長題 G605 的拱與堵塞同一答案，這裡不重講。讀的是 arXiv v1，刊本未讀。片中不寫成逃生建議。",
+      "source_ids": [
+        "P58-S008"
+      ],
+      "source_locator": "行人實驗段與圖 1 圖說（A–E）；羊群段與圖 2 圖說；結語第一段",
+      "premise_status": "screened",
+      "notes": "算 2 條：行人三級競爭的結果 1.5 條，羊群同向結果 0.5 條。顆粒料斗部分不計（與 G605 重疊）。池內 X35-004（門前柱子）講的是位置之間的得失，不是『越急越慢』，兩者不同答案；搜尋『越急、出口、推擠』無同答案核心。 原提案 F12-003（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；結論成立，但答案正文把「平均間隔只小幅改變」拿掉了，改回。算 1.5 條（行人三級的結果 1，羊群同向 0.5），不是作者的 2 條：行人的「平均變長」與「長停頓變多」是同一張分布的兩個讀法。X35-004（門前柱子）答案不同，不重複。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每個人都更急，整群人反而更慢。",
+        "visual": "同一扇門的兩段俯視時間條：不碰觸時一格一格等距通過，可推擠時一串擠過去後空一大段。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P58-008",
+      "question": "太空艙用同樣的垂直速度落水，挨的那一下可以差多少？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "water_entry.capsule_attitude_peak_g",
+      "answer_target": "差好幾倍，看的是艙底用什麼角度碰水。NASA 蘭利研究中心 1967 年用四分之一比例的阿波羅指揮艙動力模型做落水試驗（數值都換算成實艙尺度）。一組試驗把垂直速度固定在約每秒 7 公尺、只改艙體的俯仰角：傾得最多的兩端（約 -30 度與 29 度）最大法向加速度約 4g，艙體接近不傾斜（0 度）時約 30g。另一組試驗垂直速度較高（約每秒 9 到 10 公尺），量隔熱罩上各塊面板的水壓：同一塊面板的平均水壓隨俯仰角從約 30 psi 升到 214 psi 再降回 95 psi，最高值出現在那塊面板幾乎平貼著拍上水面的姿態。兩組試驗裡，水平速度對最大法向加速度與面板水壓的影響都很小。",
+      "scope": "四分之一比例動力模型、平靜淡水，不是實艙在海上的實測；兩組數字來自不同垂直速度的試驗（加速度 4g→30g 是約 7.0 m/s，水壓 30→214→95 psi 是 8.9–9.9 m/s），片中不得放進同一句或同一張圖比較。隔熱罩會振動，9.1 m/s 那組的最大值 38g 作者說高於剛體理論（約 22g）；7.0 m/s 那組的曲線也有同樣的振盪。「平拍」只能用在單一面板，艙體整體要說「不傾斜」。",
+      "source_ids": [
+        "P58-S009"
+      ],
+      "source_locator": "Summary；Results 水壓段（panel A）；〈Water landing surface〉段與圖 16(a) 說明",
+      "premise_status": "screened",
+      "notes": "算 2 條：同速度下加速度峰值 4g 對 30g（1 條）；同一面板水壓隨接觸角 30→214→95 psi、平拍時最大、水平速度影響小（1 條）。P54-015 是獵戶座的設計值與分析（無實測），本核心補的是有量測的艙體尺度資料——但要說明是比例模型。搜尋『太空艙、入水、阿波羅』池內無同答案核心。 原提案 F12-005（目標 C4-05，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；數字本身經頁面影像核對無誤，但答案把兩個不同垂直速度的試驗接成同一組，已拆開。算 1.5 條（同垂直速度下加速度隨傾角 4g→30g 1；面板水壓在該面板平貼時最高、水平速度影響小 0.5），不是作者的 2 條：兩者是同一份報告對同一件事（碰水角度）的兩種量法。比例模型有量測，可以補 P54-015「只有設計值」的缺口，但片中要明說是模型。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "垂直速度沒變，只換了艙體的傾角，模型量到的峰值就從約 4g 到約 30g。",
+        "visual": "同一顆艙體模型三種傾角落水的並排側視圖，下方一條『傾角—最大加速度』曲線，中間平拍處尖起。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P58-NA001",
+      "question": "0.05 M 糖水與食鹽水的導電度探棒讀數（McGraw-Hill Ryerson Probeware Investigation 5-A 教師解答頁：糖 0.0、NaCl 111.1、KCl 133.4、自來水 42.3 μS）",
+      "existing_ids": [
+        "P224"
+      ],
+      "source_ids": [],
+      "reason": "這是唯一一份同一張表裡同時有糖與鹽、又寫明濃度（0.05 M）的資料，但 NaCl 111.1 μS 與另一份寫明檔位與配法的教師手冊（F11-S003：0.050 M NaCl 5214 μS/cm）差了數十倍，表頭單位只寫 μS、沒有每公分，也沒有儀器型號與溫度；數值不可信，不當來源。糖的一側改用 NBS 1950（F11-001），鹽的一側用 F11-S003。 原提案 F11-NA001。",
+      "reentry_condition": "找到這份教材所用感測器的規格、能解釋讀數量級時才重評。",
+      "reading_status": "全文 8 頁已讀（快取 nelson-probeware5a-tr.pdf，sha256 前 16 碼 5dd31a2b739b2246）"
+    },
+    {
+      "id": "P58-NA002",
+      "question": "稀牛奶的丁達耳散射強度隨濃度變化的量測",
+      "existing_ids": [
+        "P57-026",
+        "P240",
+        "P241"
+      ],
+      "source_ids": [],
+      "reason": "沒有找到開放全文的量測。搜尋結果是 Springer 付費論文（Laser Physics 2007）、Scribd 上的學生報告、一份高中生專題網頁與 Reed College 的實驗講義（方法，沒有結果表）；都不合來源標準或沒有數據。P57-026 的定性示範維持現狀。 原提案 F11-NA002。",
+      "reentry_condition": "找到開放取用、寫明牛奶稀釋倍數與偵測角度的散射強度量測。",
+      "reading_status": "只看到搜尋摘要，未讀全文"
+    },
+    {
+      "id": "P58-NA003",
+      "question": "同一份研究同時量糖水與鹽水導電度（開放取用的化學教育論文）",
+      "existing_ids": [
+        "P224"
+      ],
+      "source_ids": [
+        "P58-S001",
+        "P58-S003"
+      ],
+      "reason": "本輪沒有找到。糖（NBS 1950，10–60 wt%，20–30 °C，≤3×10⁻⁶ mho）與鹽（教師手冊，0.050 M，5214 μS/cm，未寫溫度）來自兩份互不相干的文件，所以 G01 的第一個轉折現在兩邊各有出處，但沒有「同一台儀器、同一天」的對照，片中不得報倍數。OIML R 56、USGS TM 9-A6.3 與 NIST SP 260-142 都只有氯化鉀標準液的數值（已下載讀過相關節），不含氯化鈉濃度對導電度的表。 原提案 F11-NA003。",
+      "reentry_condition": "找到同一份開放文件裡糖與鹽並列、寫明濃度與溫度的量測（例如 CRC Handbook 的 NaCl 質量百分比對導電度表的開放版本，加上任何蔗糖讀數）。",
+      "reading_status": "OIML R 56 全文已讀；USGS TM 9-A6.3 與 NIST SP 260-142 只做關鍵字檢索與相關節"
+    },
+    {
+      "id": "P58-NA004",
+      "question": "南京一棟歷史磚造辦公樓：濕熱外氣經牆內空氣層被冷卻而結露長黴（實測加二維熱濕模擬，Energies 13(5):1177）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "這篇最對 G42 的缺口（亞洲、磚牆、冷房、空氣層、實測加模擬），但讀不到：mdpi.com 文章頁與 PDF 都 403（curl 與 WebFetch 各一次），京都大學典藏的同一檔案回的是 JavaScript 頁不是 PDF，Europe PMC 沒有收錄。只看到搜尋摘要，不算來源。 原提案 F11-NA004。",
+      "reentry_condition": "取得全文（MDPI 開放取用，換個網路環境應可讀）後可再補 1–1.5 條，並替 G42 補上牆內溫濕度的實測曲線。",
+      "reading_status": "未讀；只有搜尋結果摘要"
+    },
+    {
+      "id": "P58-NA005",
+      "question": "Signal 協定的形式化安全分析結論（Cohn-Gordon、Cremers、Dowling、Garratt、Stebila）",
+      "existing_ids": [
+        "T57-003",
+        "T57-004"
+      ],
+      "source_ids": [],
+      "reason": "只讀到摘要：Springer 的 Journal of Cryptology 頁面（2020, 33:1914–1983）顯示訂閱預覽，正文沒有；eprint.iacr.org/2016/1013 上一輪與本輪都 403；作者 Stebila 個人網站只連回這兩處。摘要說「在設計中沒有發現重大缺陷」，但只憑摘要不能當來源，也不知道模型排除了哪些東西。 原提案 F11-NA005。",
+      "reentry_condition": "取得全文後可寫一個核心：獨立學者證明了什麼、明說沒有涵蓋什麼（群組、多裝置、身分驗證）。",
+      "reading_status": "只讀摘要與頁面上零散的附錄片段（快取 cohn-gordon-jcrypt.html）"
+    },
+    {
+      "id": "P58-NA006",
+      "question": "Rösler、Mainka、Schwenk〈More is Less〉：伺服器能對 Signal／WhatsApp／Threema 的群組做什麼",
+      "existing_ids": [
+        "T57-009"
+      ],
+      "source_ids": [
+        "P58-S005"
+      ],
+      "reason": "原論文讀不到：eprint.iacr.org/2017/713.pdf 403（curl 與 WebFetch），波鴻魯爾大學的論文頁與作者碩士論文 PDF 連線被重設或 503，IEEE 版付費。它的核心結論（伺服器控制 WhatsApp 群組成員）改由後續研究者的會議簡報（F11-S010）間接引用，寫在 F11-010，並標明只有簡報。 原提案 F11-NA006。",
+      "reentry_condition": "讀到原論文全文後，可把 F11-010 升為 1 條並補 Signal、Threema 兩家當年的情形。",
+      "reading_status": "未讀；只有搜尋結果摘要"
+    },
+    {
+      "id": "P58-NA007",
+      "question": "FBI 2021 年內部文件〈Lawful Access〉：各通訊軟體能交出哪些資料",
+      "existing_ids": [
+        "T57-001"
+      ],
+      "source_ids": [],
+      "reason": "Property of the People 的文件頁可開，但文件本體在 DocumentCloud，API 回 Cloudflare 403，未繞過；只讀到新聞轉述（Rolling Stone、The Record 等），不算來源。 原提案 F11-NA007。",
+      "reentry_condition": "取得文件影本後可補「其他服務在法律程序下交出什麼」1 條，這是 G38 最值得再補的一塊。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "P58-NA008",
+      "question": "迴圈法的原始出處（Callède 等 2000）、Rennie 等 2002 的虛擬速度、Wagner & Mueller 2011、Conevski 等 2018",
+      "existing_ids": [
+        "S57-002",
+        "S57-005",
+        "S57-006"
+      ],
+      "source_ids": [],
+      "reason": "仍讀不到全文：IAHR 文件庫的兩篇（Conevski 等 River Flow 2018、Wagner & Mueller IAHR 2009）下載連結回空檔（需登入）；E3S Web of Conferences 與 MATEC 同一出版商 403；ASCE 付費。G35 的獨立比對改由巴西的兩篇研討會論文與國家手冊承擔。 原提案 F11-NA009。",
+      "reentry_condition": "取得任一篇全文可再補床載估算的獨立驗證（例如 Paraná 河與沙丘追蹤法平均差約 29% 一說，目前只在搜尋摘要看到）。",
+      "reading_status": "只讀到 IAHR 頁面上的摘要（快取 iahr-19599.html、iahr-23935.html）"
+    },
+    {
+      "id": "P58-NA009",
+      "question": "香草香氣沒換，嘴裡多一點糖，為什麼有人把香味指到舌頭上？（R42006 的全文）",
+      "existing_ids": [
+        "R42006"
+      ],
+      "source_ids": [],
+      "reason": "Lim 與 Johnson 2011（Chem Senses，10.1093/chemse/bjq125）OpenAlex 標示 closed、沒有任何開放版本；Europe PMC 只有書目。池內仍只有作者摘要，C4-06 裡不計事實。 原提案 F12-NA001。",
+      "reentry_condition": "取得刊本或作者稿全文（圖書館授權），逐段讀兩個定位實驗的結果表。",
+      "reading_status": "未讀到全文；未直接請求出版社頁面"
+    },
+    {
+      "id": "P58-NA010",
+      "question": "嘴裡有糖，從口腔後面上去的香氣會被放大嗎？",
+      "existing_ids": [
+        "R42006"
+      ],
+      "source_ids": [],
+      "reason": "Green 等 2012〈Enhancement of retronasal odors by taste〉（PMC3243899）：Europe PMC 全文 XML 回 500，NCBI efetch 回『出版社不允許下載全文 XML』；沒有讀到正文，不提核心。 原提案 F12-NA003。",
+      "reentry_condition": "能以瀏覽器讀到 PMC 頁面全文時補讀，可替 C4-06 的『嘴裡的香』一章加 1–1.5 條。",
+      "reading_status": "只見書目"
+    },
+    {
+      "id": "P58-NA011",
+      "question": "傾斜振動料斗裡的玻璃珠，推得越用力流得越慢嗎？",
+      "existing_ids": [
+        "P43-002",
+        "P43-003"
+      ],
+      "source_ids": [
+        "P58-S008"
+      ],
+      "reason": "Pastor 等 2015 的第三組實驗；答案是『驅動力越大，拱越難被震開』，與沙漏長題 G605 的拱與堵塞同一答案，不另提核心，只在 F12-003 的 scope 註明。 原提案 F12-NA006。",
+      "reentry_condition": "G605 寫稿時若要補『越用力越堵』可回來引用同一來源。",
+      "reading_status": "已讀全文"
+    }
+  ]
+}

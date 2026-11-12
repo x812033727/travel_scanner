@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-3838",
+  "revision": "2026-11-12-pool-3859",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 4228,
-    "canonical_questions": 4067,
-    "eligible_candidates": 3897,
-    "selected_candidates": 3838,
+    "raw_records": 4249,
+    "canonical_questions": 4088,
+    "eligible_candidates": 3918,
+    "selected_candidates": 3859,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5129,
-    "current_research_source_urls": 2180,
-    "selected_source_urls": 3345,
-    "new_suggestions_not_added": 2371,
+    "source_urls": 5152,
+    "current_research_source_urls": 2203,
+    "selected_source_urls": 3367,
+    "new_suggestions_not_added": 2387,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
@@ -2002,6 +2002,26 @@
       "sha256": "bac15bedc0e5200fa52457f8db0520d01f832f6a7edaf5582ddde2bda875f35d"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave58-earth.json",
+      "sha256": "ad6cbc7b7836a4f0d4f6f471ab2beffab5b3922a15474ee7b5f4f3acf27d3719"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave58-human.json",
+      "sha256": "d100ac02279283283f9617044de8a591340aa1f411f1114b900ac6b23374ff36"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave58-life.json",
+      "sha256": "a7a9c66fa145be0e1998625546fc7be34fa25c77a6490cce55e6ac6dbe0ec195"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json",
+      "sha256": "b68feaa05a6fb0da4168dd712bf37c21a0a547d789755490cea6c08763bc2826"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave58-tech.json",
+      "sha256": "777838fad904ebd2bc0463cf62cb7ad4293d4bef650a37066bcac4a1ad0d7fd4"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave6-mechanisms.json",
       "sha256": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2"
     },
@@ -2087,11 +2107,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "13f513f57775a9ec1f065d8f955bc454118e69e9d8eaac2b0ed0e51de3e07700"
+      "sha256": "d8f22d811366bc73e9980aed581e9b5d4fb2b14d68969f9246697139742d41df"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "ecc68d64f5a6ec05580b00b040e6da439f8414c14cd417d39879da564f6448bc"
+      "sha256": "da61ad9fa7bba172966d87e4767fdff67bc91861f92cec5ba19bc658ff3dc07f"
     }
   ],
   "sources": [
@@ -3291,6 +3311,32 @@
       ]
     },
     {
+      "id": "SRC-033749a62deb4214",
+      "url": "https://iacr.org/submit/files/slides/2025/eurocrypt/eurocrypt2025/135/135_slides.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://iacr.org/submit/files/slides/2025/eurocrypt/eurocrypt2025/135/135_slides.pdf",
+          "title": "Formal Analysis of Multi-Device Group Messaging in WhatsApp — Eurocrypt 2025 會議簡報（Albrecht、Dowling、Jones）",
+          "publisher": "國際密碼學研究協會（IACR）Eurocrypt 2025 簡報檔；作者任職倫敦國王學院與倫敦大學皇家哈洛威學院",
+          "version": "2025-05-08（論文：Eurocrypt 2025，DOI 10.1007/978-3-031-91101-9_9；ePrint 2025/794）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀（106 頁投影片，多為逐步動畫的重複頁）",
+          "reading_scope": "簡報全部文字讀完；論文全文沒有讀到（eprint.iacr.org 403、Springer 付費牆）",
+          "locator": "投影片頁碼 6（Our Work）、7–8（Sender Keys）、17（Server Controls the Group Membership）、18（Lack of Participant Consistency）、19（Results）",
+          "summary": "三位學者以逆向工程 WhatsApp 用戶端軟體加上有限的公開文件，寫出多裝置群組訊息的完整描述並做形式化安全分析。結論：一般情況下提供機密性與驗證；但「伺服器對群組成員名單有完全的控制權」，簡報註明這是至少 2017 年就公開的已知問題（引 Rösler、Mainka、Schwenk 的 EuroS&P 2018 論文）；WhatsApp 也不保證同一位使用者的各裝置看到一致的群組成員名單，裝置只知道自己送出訊息的收件人清單。作者說這兩點不符合他們對群組訊息協定的期待。另指出入侵後復原有限、以裝置撤銷作為替代。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到作者的會議簡報，不是論文全文；簡報是條列式，沒有攻擊細節與證明，片中只能引「伺服器控制群組成員名單、成員看到的名單不保證一致」這個結論，不可描述具體攻擊步驟。Rösler 等 2018 原論文本輪仍讀不到（見 blocked）。寫稿前應取得論文全文第 3、7 節核對。 覆核 V14（2026-11-12）：本輪不入池當來源；移到 not_added（對應 F11-010），reading_status 寫「只讀作者會議簡報與 ePrint 摘要；King’s College 典藏有 CC BY 的 accepted manuscript，PDF 回 403」。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/adj-eurocrypt-slides.pdf",
+            "sha256_prefix": "48dff6715b676e1e",
+            "note": "文字檔 adj-eurocrypt-slides.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-physics-20261111",
+          "original_url": "https://iacr.org/submit/files/slides/2025/eurocrypt/eurocrypt2025/135/135_slides.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-034dcffcc0fd5670",
       "url": "https://www.gao.gov/assets/aimd-00-290.pdf",
       "readings": [
@@ -4382,6 +4428,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "physics-20261101",
           "original_url": "https://openstax.org/books/college-physics-2e/pages/17-2-speed-of-sound-frequency-and-wavelength"
+        }
+      ]
+    },
+    {
+      "id": "SRC-056a4cfe0c9d2f5c",
+      "url": "https://science.nasa.gov/science-research/heliophysics/how-nasa-tracked-the-most-intense-solar-storm-in-decades/",
+      "readings": [
+        {
+          "canonical_url": "https://science.nasa.gov/science-research/heliophysics/how-nasa-tracked-the-most-intense-solar-storm-in-decades/",
+          "title": "How NASA Tracked the Most Intense Solar Storm in Decades",
+          "publisher": "NASA Science（NASA Goddard Space Flight Center 撰稿）",
+          "version": "2024-05 發布；2026-11-12 取得的頁面",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl 預設標頭取得網頁，去標籤後閱讀正文",
+          "reading_scope": "正文全文（去掉導覽列後約 6,000 字元）",
+          "locator": "正文：G5 與 2003 年段；極光與 26 度磁緯段；SWPC 事前通知與 ICESat-2 段",
+          "summary": "2024 年 5 月 10 日起多個日冕物質拋射幾乎同時到達地球，磁暴達 G5，是 2003 年以來首次；極光低到約 26 度磁緯都有人回報；NOAA 太空天氣預報中心事前通知電網與商用衛星業者，部分 NASA 任務預先關閉儀器或系統，ICESat-2 進入安全模式，NASA 說可能是磁暴使阻力增加。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "NASA 的新聞式說明頁，不是原研究；『26 度磁緯』『可能因阻力』都是頁面引述、尚待評估的說法；沒有電網端的事後統計。寫稿前宜補 NOAA 或 NERC 的事後檢討。 覆核 V15（2026-11-12）：author_cache 加註：2026-11-12 覆核重抓的整頁雜湊（1f13277a63fed7cf）與作者快取（1afde498519c95ba）不同，原因是頁首動態區塊；正文五處引用句逐字相同。",
+          "author_cache": {
+            "file": "nasa-may2024-storm.html（去標籤文字檔 nasa-may2024-storm.txt，sha256 前 16 碼 2064d432854d336e）",
+            "sha256_prefix": "1afde498519c95ba",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-earth-20261111",
+          "original_url": "https://science.nasa.gov/science-research/heliophysics/how-nasa-tracked-the-most-intense-solar-storm-in-decades/"
         }
       ]
     },
@@ -8608,6 +8680,32 @@
       ]
     },
     {
+      "id": "SRC-0fbd702deb51bbc0",
+      "url": "https://nvlpubs.nist.gov/nistpubs/jres/045/jresv45n4p299_a1b.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://nvlpubs.nist.gov/nistpubs/jres/045/jresv45n4p299_a1b.pdf",
+          "title": "Dielectric Constants of Aqueous Solutions of Dextrose and Sucrose（Malmberg & Maryott）",
+          "publisher": "美國國家標準局（NBS，今 NIST）Journal of Research of the National Bureau of Standards",
+          "version": "Vol. 45, No. 4, October 1950, Research Paper 2137",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 5 頁讀完（掃描檔 OCR，字距雜亂但可讀）",
+          "locator": "§III Materials and Solutions（p.300 右欄）；摘要；Table 1",
+          "summary": "用 NBS 標準樣品 17 的蔗糖與導電度用水（暴露大氣前約 10⁻⁷ mho）配成重量百分比 10–60% 的蔗糖水，在 20、25、30 °C 以交流電橋量介電常數。為了降低導電，溶液以氫氣趕走溶解的二氧化碳；作者記載所有溶液的比導電度都在 3×10⁻⁶ mho 或更低。葡萄糖水接觸電極會被催化氧化，導電一夜可升到百倍，改用氫氣後消失。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這篇論文的目的是量介電常數，導電度只是一句實驗條件，沒有逐濃度列表；原文單位只寫 mho（比導電度，應為每公分，寫稿前要再確認）；溶液是去除二氧化碳後的實驗室樣品，不是廚房糖水（市售砂糖含灰分，導電會更高）。1950 年的量測。 覆核 V14（2026-11-12）：limitations 改寫：原文兩處都只寫 mho（specific conductivity／conductivity），全篇沒有「每公分」；以 mho/cm 讀是覆核者的判讀（當年慣例，且與同段水約 10⁻⁷ 相容）。summary 補：上限同時涵蓋葡萄糖與蔗糖溶液；葡萄糖的導電「有時」一夜多達百倍（原文 sometimes … as much as a hundredfold），不是固定升到百倍。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/nbs-jres45-malmberg-maryott.pdf",
+            "sha256_prefix": "ba80fb63f811871e",
+            "note": "文字檔 nbs-jres45-malmberg-maryott.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-physics-20261111",
+          "original_url": "https://nvlpubs.nist.gov/nistpubs/jres/045/jresv45n4p299_a1b.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-0fc35ec51c5d51aa",
       "url": "https://arxiv.org/abs/2505.14172",
       "readings": [
@@ -8793,6 +8891,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave9-acoustics-20261101",
           "original_url": "https://www.bksv.com/de/knowledge/blog/sound/measuring-sound-intensity"
+        }
+      ]
+    },
+    {
+      "id": "SRC-104359397118c677",
+      "url": "https://www.energy.gov/sites/prod/files/2016/06/f32/Moisture_Problems_in_Manufactured_Housing.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.energy.gov/sites/prod/files/2016/06/f32/Moisture_Problems_in_Manufactured_Housing.pdf",
+          "title": "Moisture Problems in Manufactured Housing（Neil Moyer，Florida Solar Energy Center）",
+          "publisher": "Home Energy 雜誌 2002 年 3／4 月號，pp.24–29；美國能源部 energy.gov 存檔（Building America Industrialized Housing Partnership）",
+          "version": "2002 年 3／4 月",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 6 頁讀完（含兩個邊欄）",
+          "locator": "p.24–25 六項成因與 Table 1；p.27 Vapor retarder in the wrong location；p.28 Testing Equipment and Procedures；p.29 Solving Moisture Problems",
+          "summary": "佛羅里達太陽能中心（FSEC）在美國東南部檢查 25 棟有受潮問題的工廠預製住宅。逐項比例：室內溫度低於室外露點 100%、外殼兩側負壓 100%（量級只有 1–3 帕，用解析度 0.1 帕的數位壓力計量）、風管漏氣與回風路徑不足 100%、地板擴散 100%、防潮層位置錯 100%、除濕不足約 80%、排風扇 8%。夏天室外露點常在 75 °F 以上。負壓多半來自地板下送風管漏氣；所有牆板損壞的房子用的都是貼乙烯基面的石膏板，業界測得 3/8 吋石膏板貼 4 mil 乙烯基是 0.42 perm；聯邦 HUD 規範要求外牆在居室側設 1 perm 以下的防潮層，作者註明這在北方是暖側、在南方是冷側。4 號屋風機常開、持續 −1 帕，外牆室內板第一年全部換過、換完又壞。改善建議實施後，一家廠商回報 2000 年以後出廠送往東南部的房子沒有再出現這類問題。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "這是 FSEC 研究員寫在業界雜誌上的專文，不是技術報告全文（fsec.ucf.edu 的報告上一輪 TLS 憑證失敗，本輪未重試）；25 棟是「有問題才被找去」的樣本，不代表一般住宅的比例；沒有牆內溫濕度時間序列；房子是美國輕構造預製屋，不是 RC 或磚牆。改善成效是廠商口頭回報，作者自己寫「初步」。與 Lstiburek／Building Science Corporation 無關。 覆核 V14（2026-11-12）：summary 改：「外殼兩側負壓 100%」是文章把它列為成因的比例，同一篇記有一棟（回風管脫落，後文 9 號屋）是正壓；乙烯基面石膏板是廠商通行做法；25 棟出自四家廠商；量的是壓差與風管漏氣量。limitations 補：FSEC 的 BAIHP 與 BSC 同屬能源部 Building America 計畫下的不同團隊，作者與 Lstiburek 無隸屬，文章沒有參考文獻。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/doe-mh-moisture.pdf",
+            "sha256_prefix": "a93393f3661b7193",
+            "note": "文字檔 doe-mh-moisture.txt（版面）與 doe-mh-moisture-raw.txt（逐欄） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-human-20261111",
+          "original_url": "https://www.energy.gov/sites/prod/files/2016/06/f32/Moisture_Problems_in_Manufactured_Housing.pdf"
         }
       ]
     },
@@ -19530,6 +19654,32 @@
       ]
     },
     {
+      "id": "SRC-28e041160facdb54",
+      "url": "https://www.hydroquebec.com/learning/notions-de-base/tempete-mars-1989.html",
+      "readings": [
+        {
+          "canonical_url": "https://www.hydroquebec.com/learning/notions-de-base/tempete-mars-1989.html",
+          "title": "Understanding Electricity｜March 1989 Blackout",
+          "publisher": "Hydro-Québec（魁北克省營電力公司）教育頁",
+          "version": "無版本日期；2026-11-12 取得的頁面",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl 預設標頭取得網頁，去標籤後全文閱讀",
+          "reading_scope": "整頁正文（約 2,500 字元）",
+          "locator": "全頁：事件經過段、〈Hydro-Québec strengthens its grid〉四項措施、易受害原因段",
+          "summary": "1989 年 3 月 10 日太陽風離開太陽，12 日輸電網出現電壓波動，13 日凌晨 2:44 地磁劇烈變動、保護系統跳脫，不到一分鐘全網停電，全省停電九個多小時。事後重設保護系統並調高跳脫門檻、建即時警報、改運轉程序、加裝串聯補償。該公司說自己特別脆弱是因為位在阻擋電流入地的大片岩盾上，而且輸電線很長。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是電力公司自己的教育頁，不是事故調查報告，沒有電流、電壓數值與受影響人數；『強烈的風離開太陽』是頁面的通俗說法。寫稿前宜補 NERC 或 Boteler 2019 的技術回顧。 覆核 V15（2026-11-12）：limitations 加一句：頁面沒有「感應電流」一詞，也沒有說設備有無受損。",
+          "author_cache": {
+            "file": "hq-1989.html",
+            "sha256_prefix": "200ab74586913c83",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-earth-20261111",
+          "original_url": "https://www.hydroquebec.com/learning/notions-de-base/tempete-mars-1989.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-28e2a0fb81f985ea",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12220671/",
       "readings": [
@@ -23243,6 +23393,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-measurement-20261101",
           "original_url": "https://geodesy.noaa.gov/research/geopotential-datums/geopotential-surface.shtml"
+        }
+      ]
+    },
+    {
+      "id": "SRC-30dfd469c161cfef",
+      "url": "https://www.whatsapp.com/security/WhatsApp-Security-Whitepaper.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.whatsapp.com/security/WhatsApp-Security-Whitepaper.pdf",
+          "title": "WhatsApp Encryption Overview — Technical white paper",
+          "publisher": "WhatsApp LLC（Meta）官方技術白皮書",
+          "version": "Version 10，2026-10-30 更新（首版 2016-04-05）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+          "reading_scope": "Group Messages、Transport Security、Defining End-to-End Encryption、Implementation on WhatsApp Services、Implementation with Cloud API 五節逐句讀；Client Registration、Initiating Session Setup 略讀；其餘各節（通話、狀態、App State Syncing 等）只做關鍵字檢索",
+          "locator": "Group Messages（p.17）；Transport Security（p.35）；Defining End-to-End Encryption 與 Implementation with Cloud API（p.36）",
+          "summary": "WhatsApp 自己的說明：群組訊息用 Sender Keys——寄件人先產生一把鏈金鑰與簽章金鑰，用一對一的加密通道逐一交給每位成員；之後每則群組訊息只加密一次、簽章後把「單一份密文」交給伺服器，由伺服器做 server-side fan-out 分送給所有群組成員；有人離開時所有成員清掉 Sender Key 重來。用戶端與伺服器之間另有一層 Noise Pipes 加密通道，白皮書說它把中繼資料對「未經授權的網路觀察者」加密；伺服器只存用戶端的公開認證金鑰。白皮書也界定：與使用 Cloud API 的企業之間的通訊雖用同一套 Signal 協定加密，但因為不是直接送到企業自己控制的端點，WhatsApp 不把它視為端對端加密；用 Cloud API 時 Meta 會持有企業的私鑰。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "廠商自述，不是第三方查核；白皮書沒有列出伺服器保存哪些中繼資料，本核心不得由它推論「WhatsApp 伺服器存了什麼」；只逐句讀了五節。版本日期 2026-10-30，之後可能再改版。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/whatsapp-wp.pdf",
+            "sha256_prefix": "d4f7e87d2043246d",
+            "note": "文字檔 whatsapp-wp.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-tech-20261111",
+          "original_url": "https://www.whatsapp.com/security/WhatsApp-Security-Whitepaper.pdf"
         }
       ]
     },
@@ -38450,6 +38626,32 @@
       ]
     },
     {
+      "id": "SRC-54c027734f0912dd",
+      "url": "https://www.swpc.noaa.gov/news/geomagnetic-storm-conditions-likely-2-3-february-2022",
+      "readings": [
+        {
+          "canonical_url": "https://www.swpc.noaa.gov/news/geomagnetic-storm-conditions-likely-2-3-february-2022",
+          "title": "Geomagnetic Storm Conditions Likely 2 - 3 February, 2022",
+          "publisher": "NOAA／NWS Space Weather Prediction Center 公告",
+          "version": "2022-01-31 23:50 UTC 發布",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl 預設標頭取得網頁，去標籤後全文閱讀",
+          "reading_scope": "整則公告（約 1,300 字元）",
+          "locator": "全文",
+          "summary": "事前公告：2 月 2 日發布 G2（中等）磁暴守視，3 日為 G1（輕微）守視；來源是 1 月 29 日 M1 閃焰伴隨的全暈日冕物質拋射，預報員估速約每秒 662 公里。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是事前預報，不是事後檢討；沒有提到衛星。只用來交代『官方事前給的等級是 G2／G1』。 覆核 V15（2026-11-12）：limitations 加一句：這是 2022-01-31 23:50 UTC 的單一則預報，之後有沒有更新或升級，本輪沒有查。",
+          "author_cache": {
+            "file": "swpc-starlink-2022.html",
+            "sha256_prefix": "6e758e40a7760fd4",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-earth-20261111",
+          "original_url": "https://www.swpc.noaa.gov/news/geomagnetic-storm-conditions-likely-2-3-february-2022"
+        }
+      ]
+    },
+    {
       "id": "SRC-54cb8d7e90dafc1a",
       "url": "https://info.cern.ch/",
       "readings": [
@@ -41390,6 +41592,32 @@
       ]
     },
     {
+      "id": "SRC-5bba72a0ccc76974",
+      "url": "https://ph01.tci-thaijo.org/index.php/nakhara/article/download/264187/176219/1083759",
+      "readings": [
+        {
+          "canonical_url": "https://ph01.tci-thaijo.org/index.php/nakhara/article/download/264187/176219/1083759",
+          "title": "Computational Hygrothermal Analysis of External Wall Behavior in Naturally Ventilated and Air-conditioned Historical Buildings in Thailand（Pinich & Sreshthaputra，朱拉隆功大學建築學院）",
+          "publisher": "Nakhara: Journal of Environmental Design and Planning 25(3), Article 618（開放取用，ThaiJO）",
+          "version": "2026；DOI 10.54028/NJ202625618；2026-04-30 接受",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+          "reading_scope": "摘要、Case Study、Simulation Inputs and Settings、結果第一節（冷氣對自然通風）與結論逐句讀；材料參數表與切牆工法細節略讀",
+          "locator": "摘要；Case Study；Simulation Inputs and Settings；Comparison of Water Content…一節；Conclusion",
+          "summary": "以曼谷玫瑰聖母堂（1891–1897 年建）的外牆為例：0.60 公尺實心黏土磚加石灰粉刷，沒有防潮層，地下水沿牆上升。用 WUFI 以曼谷氣象站資料模擬 2019–2024 六年；自然通風情境的室內條件取自 2016 年在教堂內的實測，冷氣情境設 25 °C、24 小時運轉（作者稱最壞情況）。結果：牆上段頂部兩種情境都是 21.48 kg/m³；中段自然通風 39.66、冷氣 36.83；下段 210.76 對 205.63（該種磚的自由飽和含水量是 230 kg/m³）；最底部兩者相同（299.89、299.49）。作者解釋是冷氣讓室內空氣較乾、牆面蒸發變多、上升潮氣爬得較低。但把牆切斷、擋掉地下水之後，冷氣情境的上段各處反而比自然通風高約 2 kg/m³，作者歸因於室外側水汽壓較高、把水汽往有冷氣的室內推。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "純模擬，沒有以這面牆的含水量實測驗證；差值很小（2.83、5.13、約 2 kg/m³），摘要把 2.83 與 5.13 說成含水量減少，內文同一組數字說的是年波動的差，兩處說法不完全一致，片中只能說「略乾一點」；對象是百年磚造教堂，不是現代 RC 住宅；沒有模擬空氣滲入。 覆核 V14（2026-11-12）：limitations 補：內文寫模擬 2019–2024 六年，表格標題寫 5-year Period；牆最底部約 299 kg/m³ 高於同文所給磚的自由飽和含水量 230 kg/m³，原文未解釋；切牆後的成因是 could be；冷氣情境的室內相對濕度本覆核沒有找到明文。summary 的「上段各處反而比自然通風高約 2 kg/m³」維持，刪去任何「整面牆」的說法。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/nakhara-264187.pdf",
+            "sha256_prefix": "29dff442f5a6e5c5",
+            "note": "文字檔 nakhara-264187.txt（版面）與 nakhara-raw.txt（逐欄） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-human-20261111",
+          "original_url": "https://ph01.tci-thaijo.org/index.php/nakhara/article/download/264187/176219/1083759"
+        }
+      ]
+    },
+    {
       "id": "SRC-5bdd0e52cc91199d",
       "url": "https://www.formula1.com/en/teams",
       "readings": [
@@ -42845,6 +43073,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave15-food-physics-20261102",
           "original_url": "https://hu.gatech.edu/wp-content/uploads/2020/08/Hu20-rice.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5f3b3ba663c1d69d",
+      "url": "https://education.ti.com/-/media/C16DB03063A7481EA405F9B86563E998",
+      "readings": [
+        {
+          "canonical_url": "https://education.ti.com/-/media/C16DB03063A7481EA405F9B86563E998",
+          "title": "Experiment 22 Properties of Solutions: Electrolytes and Non-Electrolytes — Teacher Information（Science with TI-Nspire Technology；改編自 Chemistry with Vernier 實驗 13）",
+          "publisher": "Texas Instruments Education／Vernier Software & Technology（教師手冊頁）",
+          "version": "PDF 3 頁，未標日期；2026-11-12 擷取",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 3 頁讀完",
+          "locator": "Teacher Information 第 2、4、7、8 點；SAMPLE RESULTS 表",
+          "summary": "教師手冊：導電度探棒設在 0–20000 μS/cm 檔；各溶液都配成 0.050 M（氯化鈉是每公升 2.93 g）。範例結果：0.050 M NaCl 5214 μS/cm、CaCl2 9362、AlCl3 11707、HCl 17330、醋酸 461、硼酸 0、甲醇 0、蒸餾水 0、自來水 20–1000（隨地區）。手冊說明用出廠校正時硼酸、甲醇、蒸餾水的讀數會落在 0–30 μS/cm，通常有約 1–3 μS/cm 來自溶解的二氧化碳；改用 0–200 檔時他們讀到蒸餾水 1.0、0.05 M 甲醇 1.0、0.05 M 硼酸 3.2 μS/cm。校正用的 10,000 μS/cm 標準液是每公升溶 5.566 g 氯化鈉。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "廠商（Vernier／TI）教學手冊的「範例結果」，不是同儕審查的量測；沒有寫溫度與重複次數；非電解質用的是甲醇不是蔗糖（這份文件裡沒有糖）。不可與 F11-S001 的蔗糖數值相除成倍數：兩份是不同年代、不同儀器、不同條件。 覆核 V14（2026-11-12）：summary 的範例表補 H3PO4 6661；註明全文沒有溫度；「0–30 μS/cm」是出廠校正下的讀數範圍，二氧化碳造成的是其中通常約 1–3。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/ti-C16DB.pdf",
+            "sha256_prefix": "522b910169a16f06",
+            "note": "文字檔 ti-C16DB.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-physics-20261111",
+          "original_url": "https://education.ti.com/-/media/C16DB03063A7481EA405F9B86563E998"
         }
       ]
     },
@@ -46889,6 +47143,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.fueleconomy.gov/feg/noframes/50185.shtml"
+        }
+      ]
+    },
+    {
+      "id": "SRC-694991f0865876e3",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5507258/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0180787",
+          "title": "Differential modulation of the lactisole ‘Sweet Water Taste’ by sweeteners",
+          "publisher": "Alvarado、Nachtigal、Slack、Green／PLoS ONE 12(7): e0180787",
+          "version": "2017，10.1371/journal.pone.0180787，PMC5507258（CC BY）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl 預設標頭取得 Europe PMC 全文 XML，去標籤後閱讀",
+          "reading_scope": "摘要、引言、方法、實驗一至三結果、討論前半；圖只讀圖說",
+          "locator": "Results Experiment 1（圖 1a–1e 說明）；Experiment 2（圖 2）；Experiment 3（圖 4『requires flowing water rinses』、圖 5–6）；Discussion 談實驗三段",
+          "summary": "人先含甜味抑制劑 lactisole 再含清水，水會有甜味（sweet water taste）：甜感在第一、第二口水之間還在變強，之後逐口減弱；lactisole 之後先含蔗糖，接下來的水就完全不甜；只沾舌尖時，靜止的水不出現這種甜、流動的水才有；高效甜味劑（蔗糖素、NHDC）混著 lactisole 給，第一口水反而更甜。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "受試者共 105 人、分三個實驗，都是實驗室裡的純溶液，不是食物；lactisole 濃度（8、20 mM）作者說明高於 2006 年原研究；受器層次的解釋是作者的推論，本研究沒有做細胞實驗。池中 R42008 的來源（Galindo-Cuspinera 等 2006）本篇只在引言轉述，不算讀過原文。",
+          "author_cache": {
+            "file": "PMC5507258.xml（去標籤文字檔 PMC5507258.txt，sha256 前 16 碼 5270504159777631）",
+            "sha256_prefix": "9f9750f2c93cde39",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5507258/fullTextXML"
         }
       ]
     },
@@ -61182,6 +61462,32 @@
       ]
     },
     {
+      "id": "SRC-8aa5622b87de6ea6",
+      "url": "https://rigeo.sgb.gov.br/bitstream/doc/25770/1/manual_adcp_2025.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://rigeo.sgb.gov.br/bitstream/doc/25770/1/manual_adcp_2025.pdf",
+          "title": "Manual: Técnicas e Procedimentos para Medição de Descarga Líquida com Perfilador Acústico Doppler (ADCP)",
+          "publisher": "巴西國家水與基本衛生署（ANA）與巴西地質調查局（SGB／CPRM），國家水文氣象網（RHN）作業手冊",
+          "version": "2025（Brasília，94 頁）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+          "reading_scope": "§5.1.9 Teste de fundo móvel、§5.1.10 Método Loop、§5.1.11 Método estacionário 逐句讀；§5.1.12 與表 2 略讀；其餘章節沒有讀",
+          "locator": "§5.1.9–5.1.11（pp.32–35）",
+          "summary": "巴西國家水文網的現行規範：河底輸沙多時底追蹤會把河床的移動讀成船往上游走，流量出現負偏差；會不會偵測到動床不只看河，同樣條件下不同儀器或不同設定（頻率、單元大小）可能一台偵測到、一台沒有，所以某斷面過去沒有動床紀錄不能保證以後沒有。GPS 也有多路徑、HDOP 升高等操作者控制不了、事後處理才看得出的問題，因此每一次 ADCP 流量量測都必須附至少一次有效的動床測試。判定門檻：動床速度大於每秒 0.012 公尺，或達平均水速的 1%。優先用迴圈法；偵測到動床時船跡應改用 GNSS，GNSS 不堪用才用動床測試結果修正，手冊說這樣精度較差。迴圈法原本要求船速低於每秒 0.7 公尺，但手冊准許亞馬遜流域的大河超過：ANA、SGB 與 USGS 在當地的經驗是羅盤誤差通常遠小於 1 度，原因包括地磁傾角小、磁場干擾少、航向變化小，以及當地量測常用的木造船。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "機關作業手冊，方法本身承襲 USGS（Mueller、Wagner）的文獻，亞馬遜的經驗也有 USGS 人員參與（Mueller & East 2018），所以不是完全獨立於 USGS 的驗證，只是另一個國家機關的採用與在地修訂。只讀了三小節。 覆核 V14（2026-11-12）：summary 改：0.7 m/s 是對河寬超過 55 公尺的河；偵測到動床時「應考慮」以 GNSS 取得船跡。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/sgb-manual-adcp-2025.pdf",
+            "sha256_prefix": "9c224482bb31f235",
+            "note": "文字檔 sgb-manual-adcp-2025.txt（版面，雙欄交錯）與 sgb-manual-adcp-2025-raw.txt（逐欄，較好讀） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-earth-20261111",
+          "original_url": "https://rigeo.sgb.gov.br/bitstream/doc/25770/1/manual_adcp_2025.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-8ab115d3893b255e",
       "url": "https://www.consumerreports.org/printers/the-high-cost-of-wasted-printer-ink/",
       "readings": [
@@ -64954,6 +65260,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.visa.com/en-ae/company\\nhttps://www.visa.com.ph/pay-with-visa/find-a-card/credit-cards.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-92d0dc2a1bf52f62",
+      "url": "https://www.dora.lib4ri.ch/wsl/dload/wsl:2036/PDF/view",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s004680000072",
+          "title": "Stem radius changes and their relation to stored water in stems of young Norway spruce trees",
+          "publisher": "Zweifel、Item、Häsler／Trees 15:50–57（瑞士 WSL 機構典藏 DORA）",
+          "version": "2000，10.1007/s004680000072；機構典藏刊本 PDF",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl 預設標頭取得機構典藏 PDF，pdftotext 轉文字；讀摘要、結果與討論",
+          "reading_scope": "摘要、材料方法概要、結果（離體幹段乾燥、截面照片說明、活樹日變化與表 2 說明）、討論；圖只讀圖說",
+          "locator": "摘要；Results『Stem contraction…』段（樹皮縮到約 50%）；活樹段（ΔRD 70、74、62 µm；ODSC<2%）；Discussion 末段（約 2%、佔日蒸散 2–15%）",
+          "summary": "離體雲杉幹段乾燥 95 小時：收縮幾乎都在樹皮的彈性活組織（形成層、韌皮部、薄壁組織），樹皮組織縮到原來約一半，木質部與周皮不收縮；三棵活樹八週內日最大與最小半徑差最多 70、74、62 微米；樹皮一天能供出的水不到樹幹總含水的 2%，約為當日蒸散量的 2–15%。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 SRC-c55e22f89e8aeeac 同一篇（R40008 的來源，池內原紀錄只讀作者摘要）；本次讀到機構典藏的刊本全文。對象是幼齡挪威雲杉三棵與離體幹段，不能推到所有樹種。 覆核 V15（2026-11-12）：整合時把這次的全文閱讀加掛到池中既有來源 SRC-c55e22f89e8aeeac（同一 DOI），不另立來源；summary 的「日最大與最小半徑差最多 70、74、62 微米」保留「最多」二字。",
+          "author_cache": {
+            "file": "zweifel2000-trees-dora.pdf（文字檔 zweifel2000.txt，sha256 前 16 碼 f11af95c15629b56）",
+            "sha256_prefix": "78001a79e92b27c8",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-life-20261111",
+          "original_url": "https://www.dora.lib4ri.ch/wsl/dload/wsl:2036/PDF/view"
         }
       ]
     },
@@ -69348,6 +69680,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.usgs.gov/special-topics/water-science-school/science/rain-and-precipitation"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9d0e55ccecbf88ab",
+      "url": "https://arxiv.org/pdf/physics/0701203",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/PhysRevE.75.046109",
+          "title": "The Dynamics of Crowd Disasters: An Empirical Study",
+          "publisher": "Helbing、Johansson、Al-Abideen／arXiv（後刊於 Physical Review E 75, 046109）",
+          "version": "arXiv:physics/0701203v2，2007-02-12",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl 預設標頭取得 arXiv PDF，pdftotext 轉文字後全文閱讀",
+          "reading_scope": "全文 7 頁：摘要、資料分析與基本圖、兩次轉變、摘要與展望；圖 1–3 只讀圖說",
+          "locator": "摘要；〈Data analysis and fundamental diagram〉；〈Transition from laminar to stop-and-go and turbulent flows〉；圖 1–3 圖說；〈Summary and outlook〉",
+          "summary": "2006 年 1 月 12 日麥加米納賈馬拉特橋入口前 27.7×22.5 公尺區域的錄影分析：局部密度可超過每平方公尺 10 人而人群不完全停下；局部密度過 6 人後局部流量降為三分之一以下；11:53 前後由順流轉為走走停停的波，12:19 前後轉為往各方向的不規則位移（作者稱人群亂流），事故始於「壓力」（密度乘速度變異）到頂時。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "讀的是 arXiv 第 2 版，未對照期刊刊本；補充影片未看；臨界值依量測半徑 R 而定；密度數值經作者以身體投影面積校正前後不同，引用時要寫明是局部密度、R=1 公尺。單一事件、單一場地。 覆核 V15（2026-11-12）：limitations 加一句：原文指出亂流階段人會推擠爭空間（作者稱此狀態有時被叫作 crowd panic）；本來源不支持「事故與恐慌無關」。並加註系列敏感性：大量死亡的宗教朝覲事故，使用與否待站主決定。",
+          "author_cache": {
+            "file": "helbing2007-arxiv-physics0701203.pdf（文字檔 helbing2007.txt，sha256 前 16 碼 1c668095c45bb978）",
+            "sha256_prefix": "6978d48390865638",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/physics/0701203"
         }
       ]
     },
@@ -74671,6 +75029,32 @@
       ]
     },
     {
+      "id": "SRC-a8a5959c4725c07f",
+      "url": "https://files.abrhidro.org.br/Eventos/Trabalhos/66/SBRH2013__PAP013253.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://files.abrhidro.org.br/Eventos/Trabalhos/66/SBRH2013__PAP013253.pdf",
+          "title": "Investigação do Efeito de Fundo Móvel em Medições de Vazão no Sub-Médio São Francisco（Cidreira、Fontes、Genz、Furtunato）",
+          "publisher": "巴西水資源協會（ABRHidro）第 20 屆巴西水資源研討會（XX SBRH，2013）論文；作者任職巴西地質調查局（CPRM）薩爾瓦多分局、UFBA、UFRB",
+          "version": "2013（量測在 2012 年 1–2 月）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 8 頁讀完（葡萄牙文，附英文摘要）",
+          "locator": "Resumo；Metodologia；Tabela 2；Resultados 第 3–6 段；Conclusões",
+          "summary": "巴西聖法蘭西斯科河中游 2012 年 1 月洪水期，在七個水文站同一天、同一斷面（兩站例外，相距 300–400 公尺）用三種方法量流量：傳統流速儀（Gurley 杯式，每垂線 0.2、0.8 水深兩點）、SonTek M9 聲學剖面儀以 RTK 差分 GPS 為參考、同一台儀器以底追蹤為參考（兩種參考同時記錄）。主河五站流速都超過每秒 1 公尺、河床為黏土／砂質：GPS 參考與流速儀最多只差 2.12%（Gameleira 站），底追蹤卻一律偏低——Bom Jesus da Lapa 低 13%（流速儀 6,842、GPS 6,831、底追蹤 5,995 m³/s）、Gameleira 9%、Ibotirama 與 Morpará 約 7%、Paratinga 5%。支流格蘭德河與普雷圖河兩站流速約每秒 0.65 公尺、含沙較少，三種方法相近（底追蹤差 3% 與 1.8%）。三種方法的斷面積、河寬、水深相近，作者判斷差在水速被低估。作者仍建議不要丟掉底追蹤資料，因為 GPS 訊號品質沒有保證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研討會論文，非期刊同儕審查；單一洪水期、每站一次；作者沒有做動床測試（迴圈或定點），是由三法比較推斷動床效應；Gameleira 與 Boqueirão 兩站聲學與流速儀不在同一斷面。百分比是作者文中寫的，不要自己用表 2 重算。與 USGS 無隸屬關係，但方法引用 USGS 文獻。 覆核 V14（2026-11-12）：limitations 補：各站量測日期不同（2012-01-24 至 02-03），同一天指每站各自；表 2 的 Bom Jesus da Lapa 一列，底追蹤的斷面積（5,470 m²）與河寬（822.3 m）也小於另兩法；Gameleira 一列的平均流速與流量對不上（BT 列流速較高、流量較低）。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/sbrh2013-pap013253.pdf",
+            "sha256_prefix": "bba2af91cb1c5a94",
+            "note": "文字檔 sbrh2013-pap013253.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-earth-20261111",
+          "original_url": "https://files.abrhidro.org.br/Eventos/Trabalhos/66/SBRH2013__PAP013253.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-a8a9ed9767cf62ed",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/12-7-magnetism-in-matter",
       "readings": [
@@ -79357,6 +79741,32 @@
           "version_note": "取用日可讀頁；未沿用時效性數字或操作規則。",
           "origin": "wave7-earth-20261101",
           "original_url": "https://www.nps.gov/articles/000/lava-flow-forms.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b44029d0684c355f",
+      "url": "https://iibec.org/publication-post/air-infiltration-and-its-consequences-for-building-enclosures-in-hot-humid-climate-zones",
+      "readings": [
+        {
+          "canonical_url": "https://iibec.org/publication-post/air-infiltration-and-its-consequences-for-building-enclosures-in-hot-humid-climate-zones",
+          "title": "Air Infiltration and Its Consequences for Building Enclosures in Hot/Humid Climate Zones（David Finley & Manfred Kehrer，Wiss, Janney, Elstner Associates）",
+          "publisher": "IIBEC Interface（International Institute of Building Enclosure Consultants 技術期刊），2022 年 11 月號 pp.28–33；原發表於 2022 IIBEC 年會",
+          "version": "2022 年 11 月",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200；本機 HTML 快取，去標籤後讀正文全文（另以 WebFetch 讀過一次摘要，結論一致）",
+          "reading_scope": "正文全文；圖 3–8 與附錄圖 A.1–A.6 是色塊圖，數值只在圖上，沒有讀到數字",
+          "locator": "Hygrothermal Modeling、Results、Conclusion 三節",
+          "summary": "兩位 WJE 顧問用 WUFI Pro 6（一維熱濕耦合）模擬休士頓（氣候區 2）朝南的磚飾面木構架牆（外側 0.1 perm 的防水透氣層、R-20 棉、室內紙面石膏板），加上自訂的外氣滲入模型（由煙囪效應壓差與鼓風門量到的整棟漏氣率推算），跑 10 年、500 多種組合：室內 65–72 °F、相對濕度 50% 與 60%、75 帕下漏氣率 0–1 cfm/ft²、室內面漆 7 perm、1 perm 乳膠漆與乙烯基壁紙，以 ASHRAE 160-2016 的黴菌生長指數（3 以上不合格）判讀室內石膏板外側。結果：漏氣越少、室內溫度越高，長黴風險越低；室內側用 1 perm 以下的防潮層（Class I／II）在所有組合裡風險都明顯高於 1 perm 以上的漆；要符合 ASHRAE 160，氣密至少要到規範值（75 帕下 0.4 cfm/ft²）。作者結論：照能源法規蓋不保證不結露、不長黴。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "期刊是專業協會刊物；作者自己寫明外氣滲入模型「尚未驗證」；只模擬一個城市、一種牆（木構架，不是 RC 或磚承重牆）；具體數值只在色塊圖上，正文是定性敘述，片中不可報數字。原文 Results 一句把「較高風險」寫成 higher airtightness levels，與上下文矛盾，應是筆誤。參考文獻 8 引了 Lstiburek 的 BSD-104 當氣密標準出處，但模擬與結論是作者自己的。 覆核 V14（2026-11-12）：author_cache 註明：頁面 HTML 位元組會變（今日重抓 sha256 前綴 5c1e07a0702fb39a，與快取 f5b645f8801bb128 不同），去標籤後 635 行文字逐行相同。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/iibec-finley-kehrer-2022.html",
+            "sha256_prefix": "f5b645f8801bb128",
+            "note": "去標籤文字檔 iibec-finley-kehrer-2022.txt；PDF 版（iibec.org/wp-content/uploads/2017-04-Linster.pdf 是搜尋結果給的錯網址）轉址迴圈，未取得 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-human-20261111",
+          "original_url": "https://iibec.org/publication-post/air-infiltration-and-its-consequences-for-building-enclosures-in-hot-humid-climate-zones"
         }
       ]
     },
@@ -84411,6 +84821,32 @@
       ]
     },
     {
+      "id": "SRC-bf38042bcf52a91e",
+      "url": "https://rigeo.sgb.gov.br/bitstream/doc/17381/1/livro_importancia_integragracao_equipamentos.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://rigeo.sgb.gov.br/bitstream/doc/17381/1/livro_importancia_integragracao_equipamentos.pdf",
+          "title": "Importância da Integração de Equipamentos para Medição de Vazão em Rios com Grande Concentração de Sedimentos em Suspensão（Barbosa、Buffon、Bonotto、Pinheiro、Castro）",
+          "publisher": "巴西地質調查局（SGB／CPRM）機構典藏 RIGeo；第 12 屆全國泥沙工程會議（XII ENES）論文",
+          "version": "2016（量測在 2014-03-20、2015-02-05、2016-03-03）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 8 頁讀完（葡萄牙文，英文摘要）",
+          "locator": "§3.1；§4.1 與 Tabela 1–3；§5",
+          "summary": "亞馬遜最大支流馬德拉河 Abunã 水文站，CPRM 的水文工程師用 600 kHz 的 ADCP 加差分 GPS／RTK（後來再加單音束測深儀）在洪水期量了三次，同一趟航跡分別以底追蹤（BT）、GGA、VTG 三種參考算流量。2014 年 3 月 20 日（該河歷史大洪水，局部流速約每秒 4.5 公尺）：總流量 BT 44,569、GGA 54,370、VTG 54,142 m³/s，作者以 BT 為基準算出相對誤差 22%，斷面圖上有一大片讀不到的空白。2015 年 2 月 5 日加了測深儀：32,424 對 35,124，誤差 8%；航跡圖上 BT 與 GPS 兩條線分開，作者說這就是動床的特徵。2016 年 3 月 3 日：BT 只在兩岸附近記得到資料，總流量 14,139 對 30,644，誤差 117%；作者說若現場只帶聲學儀器，這次量測就丟了，並推測與河床大幅變動、懸浮泥沙增加有關。結語仍提醒 GPS 訊號品質也有自己的影響因素。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研討會論文；相對誤差以 BT 為分母，不是「BT 少了百分之幾」，片中要照原文說法或直接報兩個流量；2014 與 2016 兩次的差距混了「讀不到河底」與動床兩件事，作者沒有拆開，2016 年的原因是推測（pode ter condicionado）；沒有與流速儀等獨立方法比對；沒有做迴圈測試。 覆核 V14（2026-11-12）：summary 補：2014 年表 1 的實測部分（Qmedida）本身就是 36,317 對 44,383；2016 年流速約 3.5 m/s，作者說單憑流速不足以解釋；「世界上輸沙量最大的河」是該文作者的說法。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/sgb-livro-17381.pdf",
+            "sha256_prefix": "821bd0d4f3c5774f",
+            "note": "文字檔 sgb-livro-17381.txt；rigeo.cprm.gov.br 舊網域 TLS 憑證名稱不符（curl 60），改由 rigeo.sgb.gov.br 同一路徑取得 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-earth-20261111",
+          "original_url": "https://rigeo.sgb.gov.br/bitstream/doc/17381/1/livro_importancia_integragracao_equipamentos.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-bf49d4cb23734475",
       "url": "https://www.chinatimes.com/realtimenews/20220316001072-260405",
       "readings": [
@@ -85333,6 +85769,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-astronomy-20261101",
           "original_url": "https://science.nasa.gov/universe/stars/multiple-star-systems/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c1165cc7d5632818",
+      "url": "https://ntrs.nasa.gov/api/citations/19670027235/downloads/19670027235.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://ntrs.nasa.gov/citations/19670027235",
+          "title": "Dynamic Model Investigation of Water Pressures and Accelerations Encountered During Landings of the Apollo Spacecraft",
+          "publisher": "Sandy M. Stubbs／NASA Langley Research Center，NASA Technical Note D-3980",
+          "version": "1967-09，NTRS 19670027235",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl 預設標頭經 NTRS API 取得掃描 PDF，pdftotext 讀其文字層",
+          "reading_scope": "摘要（Summary）、引言、模型與試驗條件、水壓結果、〈Investigation of Landings on Water, Sand, and Hard Clay-Gravel〉；表與圖只讀圖說",
+          "locator": "Summary；Results 水壓段（panel A 30→214→95 psi 與『flat』說明）；Water landing surface 段（圖 16(a)：4g 到 30g）；Sand／clay-gravel 段",
+          "summary": "阿波羅指揮艙四分之一比例動力模型落水試驗（數值都換算成實艙尺度）：垂直速度約 7.0 公尺／秒時，最大法向加速度由姿態兩端（約 -30°、29°）的約 4g 到接近 0°（平拍）時的約 30g；9.1 公尺／秒時最大 38g。隔熱罩上同一塊面板的平均水壓隨俯仰角由約 30 psi 升到 214 psi 再降到 95 psi，最高值出現在那塊面板近乎平拍水面的姿態；水平速度對面板壓力影響很小。沙地 49g、硬黏土礫石 42.5g。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是四分之一比例模型、平靜淡水，不是實艙實海試驗；文字層來自 1967 年掃描件的 OCR，數字我逐處對過上下文但個別字元有誤植；38g 含隔熱罩振動、作者自己說高於剛體預期；模型隔熱罩的破壞強度沒有照比例。 覆核 V15（2026-11-12）：summary 與 locator 加註：加速度 4g→30g 出自垂直速度 23 ft/s（7.0 m/s）的一組（圖 16(a)，含 0–50 ft/s 的水平速度），面板水壓 30→214→95 psi 出自垂直速度 29.2–32.4 ft/s（8.90–9.88 m/s）的一組（圖 14(a)）；9.1 m/s 那組的加速度是 -39° 約 4g 到 -12° 的 38g，剛體理論約 22g。",
+          "author_cache": {
+            "file": "stubbs1967-nasa-tn-d-3980.pdf（文字檔 stubbs1967.txt，sha256 前 16 碼 9c70069874eb922a）",
+            "sha256_prefix": "c1c35585bf5b7beb",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-physics-20261111",
+          "original_url": "https://ntrs.nasa.gov/api/citations/19670027235/downloads/19670027235.pdf"
         }
       ]
     },
@@ -88494,6 +88956,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://legacy.sae.org/binaries//content/assets/cm/content/blog/sae-j3016-visual-chart_5.3.21.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c83408bf074f5ba3",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication260-142.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication260-142.pdf",
+          "title": "NIST Special Publication 260-142: Primary Standards and Standard Reference Materials for Electrolytic Conductivity（Shreiner & Pratt）",
+          "publisher": "NIST Standard Reference Materials 系列",
+          "version": "2004 年版",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀（OCR 文字層）",
+          "reading_scope": "§5.2 Standard Reference Materials 逐句讀；其餘只做關鍵字檢索（NaCl、sucrose）",
+          "locator": "§5.2（pp.31–32）",
+          "summary": "NIST 發行一系列電解導電度標準參考物質，水溶液的標稱值有 25、100、500、1,000、10,000、100,000 與 20,000 μS/cm。除兩種之外都是氯化鉀溶於水；25 μS/cm 那一種用鹽酸（低 pH 可抑制二氧化碳解離）；20,000 μS/cm 那一種用氯化鈉，是臨床實驗室特別要求的，因為用氯化鈉配到 20,000 μS/cm 時離子強度接近體液。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀一節；沒有給出那瓶氯化鈉標準液的濃度，不可自行換算；全文沒有蔗糖。 覆核 V14（2026-11-12）：保留為來源但不掛在任何最終核心的計數上（F11-003 不計這一句）。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/nist-sp260-142.pdf",
+            "sha256_prefix": "790a7b98b080e3b4",
+            "note": "文字檔 nist-sp260-142.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-physics-20261111",
+          "original_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication260-142.pdf"
         }
       ]
     },
@@ -92183,6 +92671,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave6-mechanisms-20261101",
           "original_url": "https://pergatory.mit.edu/2.007/resources/FUNdaMENTALs%20Book%20pdf/FUNdaMENTALs%20Topic%2010.PDF"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d042f64eecfecf9b",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4887229/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4887229/fullTextXML",
+          "title": "Low Electrolytic Conductivity Standards（Wu & Berezansky）",
+          "publisher": "NIST Journal of Research of the National Institute of Standards and Technology（PMC 開放全文）",
+          "version": "J. Res. NIST 100(5):521–527，1995；PMC4887229",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200；Europe PMC 全文 XML 本機快取，去標籤後讀",
+          "reading_scope": "§1 Introduction 與 §2.1 逐句讀；其後各節（非水溶劑標準液的配製與結果）只瀏覽",
+          "locator": "§1 Introduction 第 2 段；§2.1 末段",
+          "summary": "NIST 說：依氫離子、氫氧根離子的極限當量導電度與水的解離常數，純水在 25 °C 的理論導電度是 0.055 μS/cm；水吸收空氣中的二氧化碳後導電度會升到 10 到 30 倍，該實驗室裡與空氣平衡的純水是 0.8 到 1.2 μS/cm。所以高品質水的導電度就在 1 μS/cm 上下，要做 5–25 μS/cm 的低導電標準液必須處理這個背景。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "文章主題是低導電標準液（氯化鉀與苯甲酸溶於 30% 正丙醇—水），純水數值是引言裡的背景說明，0.055 是理論值不是該文實測；0.8–1.2 是該實驗室的經驗值。文中「1 mg/g 氯化鈣使導電度升到約 3 μS/cm」一句的濃度單位可疑，本輪不引用。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/pmc4887229.xml",
+            "sha256_prefix": "46721425fbd1584c",
+            "note": "去標籤文字檔 pmc4887229.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4887229/fullTextXML"
         }
       ]
     },
@@ -97876,6 +98390,32 @@
       ]
     },
     {
+      "id": "SRC-dda4b92255396ca8",
+      "url": "https://arxiv.org/pdf/1507.05110",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/pdf/1507.05110",
+          "title": "Experimental proof of Faster-is-Slower in multi-particle systems flowing through bottlenecks",
+          "publisher": "Pastor、Garcimartín、Gago、Peralta、Martín-Gómez、Ferrer、Maza、Parisi、Pugnaloni、Zuriguel／arXiv",
+          "version": "arXiv:1507.05110v1，2015-06-29",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl 預設標頭取得 arXiv PDF，pdftotext 轉文字後全文閱讀",
+          "reading_scope": "全文：摘要、引言、行人／羊群／顆粒三組實驗、討論；圖 1–3 只讀圖說",
+          "locator": "摘要；行人實驗段與圖 1 圖說；羊群段與圖 2 圖說；顆粒段與圖 3 圖說；結語",
+          "summary": "95 名志願者從 69 公分寬的門離開房間，分『不碰觸、可輕碰、可輕推』三級競爭程度；競爭越高，相鄰兩人通過的平均間隔越長、長間隔的機率越高。75±10 頭羊通過 94 公分門、傾斜振動料斗裡的玻璃珠也出現同方向的結果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "讀的是 arXiv 第 1 版，期刊刊本未讀；行人實驗是受控演練、只允許『輕推』，不是真實恐慌；平均間隔的差異作者自己說只是輕微改變，差別主要在長間隔的尾巴；羊的『競爭程度』是用氣溫高低代理。",
+          "author_cache": {
+            "file": "pastor2015-arxiv-1507.05110.pdf（文字檔 pastor2015.txt，sha256 前 16 碼 39dd29f2649493a5）",
+            "sha256_prefix": "ca0b2e836090ed72",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/1507.05110"
+        }
+      ]
+    },
+    {
       "id": "SRC-ddaeecd0961a0b63",
       "url": "https://u.ae/en/information-and-services/environment-and-energy/Natural-resources/water-",
       "readings": [
@@ -98305,6 +98845,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://en.wikipedia.org/wiki/Costco_hot_dog"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dea1726f7b1a857a",
+      "url": "https://arxiv.org/pdf/2303.02330",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/pdf/2303.02330",
+          "title": "The Solar Cause of the 2022 February 3 Geomagnetic Storm that Led to the Demise of the Starlink Satellites",
+          "publisher": "Gopalswamy、Xie、Yashiro、Akiyama（NASA Goddard Space Flight Center）／arXiv",
+          "version": "arXiv:2303.02330v1，2022-12-30 投稿",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl 預設標頭取得 arXiv PDF，pdftotext 轉文字；讀摘要、引言與討論中關於衛星的段落，太陽源區分析只略讀",
+          "reading_scope": "摘要、第 1 節引言、第 2 節開頭、討論中『The launch of the Starlink satellites…』段",
+          "locator": "摘要；Introduction 第一段；第 9 頁『The launch of the Starlink satellites occurred during the recovery phase…』",
+          "summary": "2022 年 2 月 3 日 SpaceX 發射的 49 顆星鏈衛星中 38 顆提早墜回；當時的磁暴只是中等強度（最小 Dst 約 -66 nT），發射時磁暴已在恢復期，但高層大氣密度仍偏高，2 月 4 日又來一次最小 Dst -61 nT 的磁暴再推高密度。磁暴來自 1 月 29 日一次中等速度的日冕物質拋射，約三天後到地球。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "預印本，未核對是否已刊出；摘要寫 39 顆、引言寫 49 顆中 38 顆，本紀錄採引言的說法並註明不一致；密度升高的幅度與衛星高度本篇沒有給數字，只引 Lin 等、Zhang 等、Fang 等 2022（Fang 等的 Wiley 頁回 403，未讀）。本篇主題是太陽源區，不是衛星阻力。",
+          "author_cache": {
+            "file": "gopalswamy2023-arxiv-2303.02330.pdf（文字檔 gopalswamy2023.txt，sha256 前 16 碼 ad915fdd1be72704）",
+            "sha256_prefix": "7ffc0733c72cd941",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-earth-20261111",
+          "original_url": "https://arxiv.org/pdf/2303.02330"
         }
       ]
     },
@@ -102625,6 +103191,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1005414/000119312518083225/d552404d8k.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e85539c84b518178",
+      "url": "https://www.teachengineering.org/content/nyu_/activities/nyu_probe/nyu_probe_activity1_handoutas_v2_tedl.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.teachengineering.org/content/nyu_/activities/nyu_probe/nyu_probe_activity1_handoutas_v2_tedl.pdf",
+          "title": "Build and Test a Conductivity Probe — Lab Handout Answer Key",
+          "publisher": "TeachEngineering（美國國家科學基金會資助的 K-12 工程課程庫；紐約大學 Tandon 工學院提供）",
+          "version": "PDF 10 頁，未標日期；2026-11-12 擷取",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 10 頁讀完（Arduino 程式碼段略讀）",
+          "locator": "Part 2 材料清單與 Data Table 1；Part 3 Data Table 2；結論題 2",
+          "summary": "課堂活動的解答本：用兩段鎳鉻線當電極、9 V 電池、470 Ω 電阻與 LED 自製導電探針，測一匙糖溶成的糖水、一匙食鹽溶成的鹽水、蒸餾水與自來水。預期結果：糖水與蒸餾水 LED 不亮、無明顯現象；鹽水 LED 亮，而且鎳鉻線露出處有氣泡產生；自來水 LED 微亮、氣泡慢慢產生。接上 Arduino 讀相對數值時，糖水與蒸餾水接近 0，鹽水有讀數且探針尖端冒泡，自來水低於鹽水；解答說 LED 分不出蒸餾水與自來水，Arduino 可以。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "教學活動的「預期結果」，不是量測報告；濃度只寫「一匙」，沒有數值、溫度；氣泡是什麼氣體解答本沒有說，不可自行補上。 覆核 V14（2026-11-12）：limitations 補：解答本表一（自來水 LED 微亮、蒸餾水不亮）與結論題 2（用 LED 分不出蒸餾水與自來水）不一致。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/teacheng-nyu.pdf",
+            "sha256_prefix": "e653c130597a56e5",
+            "note": "文字檔 teacheng-nyu.txt；活動網頁 404，只讀到這份 PDF 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-physics-20261111",
+          "original_url": "https://www.teachengineering.org/content/nyu_/activities/nyu_probe/nyu_probe_activity1_handoutas_v2_tedl.pdf"
         }
       ]
     },
@@ -107470,6 +108062,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://atoptics.co.uk/blog/alexanders-dark-band/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f326d2bac94beead",
+      "url": "https://www.aclu.org/sites/default/files/field_document/open_whisper_documents_0.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.aclu.org/sites/default/files/field_document/open_whisper_documents_0.pdf",
+          "title": "Open Whisper Systems subpoena documents（維吉尼亞東區聯邦檢察官函、大陪審團傳票、禁言令、OWS 回覆與附件 A、ACLU 致檢察官函、取代令）",
+          "publisher": "美國公民自由聯盟（ACLU）公布的法院與檢方文件影本；原件出自美國司法部維吉尼亞東區聯邦檢察官辦公室與該區聯邦地方法院",
+          "version": "2016（取代令蓋章日期 2016-09-29；PDF 建立於 2016-09-30）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機 PDF 快取，pdftotext 轉文字後讀（PDF 內含 OCR 文字層，20 頁）",
+          "reading_scope": "20 頁全部讀完（OCR 有錯字，日期與帳號已被塗黑）",
+          "locator": "Redacted E.D. Va. Subpoena（第 2 頁）；Redacted E.D. Va. Order；Redacted OWS Response to Subpoena 與 Attachment A；Redacted Superseding Order",
+          "summary": "檢方的大陪審團傳票要 Open Whisper Systems（Signal 當時的營運者）交出兩個帳號的：用戶姓名、地址、電話、電子郵件、付款方式、註冊 IP、IP 歷史紀錄、帳號歷史、通聯紀錄（toll records）、上下游業者、由 cookie 資料關聯到的帳號，以及其他聯絡資訊。治安法官另依 18 U.S.C. §2705(b) 下令一年內不得向任何人透露有這張傳票。OWS 由 ACLU 代理回覆：兩個號碼只有一個有 Signal 帳號；手上符合傳票的資料只有帳號建立時間與最後一次連上伺服器的日期，附件 A 就是兩行 Unix 毫秒時間戳；其餘各類資料「沒有、因此無法提供」。之後法院在檢方與 OWS 律師都同意下發出取代令，准許公開塗黑後的文件。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "文件由 OWS 的代理人 ACLU 公布，不是獨立第三方；但內容是檢方與法院的文件影本（傳票、兩份法院命令），回覆函是向 FBI 探員提出的正式回覆。文件證明的是「OWS 這樣回覆、檢方同意公開」，不是法院對 Signal 伺服器做過鑑識。只是 2016 年一案。與池中 T57-S001（signal.org/bigbrother/eastern-virginia-grand-jury/）是同一事件的不同文件：T57-S001 是營運者的說明頁，這份是該頁所附的原始文件。 覆核 V14（2026-11-12）：summary 補：公開版 Attachment A 的兩個時間戳數值已塗黑；回覆函另主張依 ECPA §2703(c)(2) 傳票只能索取特定類別；取代令有法院書記官 A TRUE COPY 戳記。limitations 註明與池中 SRC-f002daa27215b9ef（signal.org/bigbrother/eastern-virginia-grand-jury/）是同一事件的原始文件。",
+          "author_cache": {
+            "file": "scratchpad/stw8/f11src/aclu-ows-documents.pdf",
+            "sha256_prefix": "cdb2f8deade32457",
+            "note": "文字檔 aclu-ows-documents.txt；ACLU 說明文章另存 aclu-edva.html／aclu-edva.txt（只當入口） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave58-tech-20261111",
+          "original_url": "https://www.aclu.org/sites/default/files/field_document/open_whisper_documents_0.pdf"
         }
       ]
     },
@@ -278433,6 +279051,906 @@
       "production_ready": false
     },
     {
+      "id": "S58-001",
+      "question": "把同一條河同一天用三種方法各量一次，底追蹤的流量少了多少？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.sao_francisco_bt_vs_dgps_vs_current_meter",
+      "answer_target": "在巴西聖法蘭西斯科河 2012 年 1 月的洪水期，少了 5% 到 13%。巴西地質調查局的水文人員到七個水文站，每一站都在同一天先用傳統的轉杯式流速儀量，再用同一台聲學剖面儀同時記錄兩種參考：差分 GPS 與底追蹤。主河的五個站流速都超過每秒 1 公尺、河床是黏土與砂：GPS 參考的結果和流速儀最多只差 2.12%，底追蹤卻每一站都偏低，依作者文中的說法是 13%、9%、約 7%、約 7%、5%。以 Ibotirama 站為例，三個數字是每秒 6,391、6,318、5,945 立方公尺，三種方法的斷面積與河寬幾乎一樣，差在底追蹤算出的平均流速較低。兩條流速只有每秒 0.65 公尺上下、含沙較少的支流，三種方法就差不多（底追蹤差 3% 與 1.8%）。作者由此判斷主河有動床、水速被低估，但他們沒有做迴圈或定點的動床測試。",
+      "scope": "2012 年 1–2 月單一洪水期、每站一次的研討會論文（非期刊同儕審查，葡萄牙文）；各站量測日期不同，「同一天」指每站各自的同一天；動床是由三法比較推斷的（原文 pode indicar），沒有動床測試；Gameleira 與 Boqueirão 兩站聲學斷面與流速儀斷面相距 300–400 公尺。百分比照作者文中寫的，不用表 2 重算。示範站不用 Bom Jesus da Lapa（該站底追蹤的斷面積與河寬也比另兩法小，13% 不全是流速造成的），也不用 Gameleira（表列流速與流量對不上）。",
+      "source_locator": "Tabela 2；Resultados 第 3–6 段；Conclusões",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：主河五站偏低而 GPS 與流速儀相符 1 條；支流兩站三法相近 0.5 條。 原提案 F11-011（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；這是本輪最紮實的新核心：USGS 以外、全文可讀、而且多一個完全不靠聲學的第三種方法。百分比都在原文。改兩處：把「同一天」說清楚；示範站由 Bom Jesus da Lapa 換成 Ibotirama，因為前者在同一張表上面積與河寬也不同，接上「差在水速」會被看表的人抓到。算 1.5 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "GPS 和老式流速儀互相對得上，只有把河床當成岸的那個讀數少了一截——偏差不是儀器壞了，是參考在動。",
+        "visual": "一個站三根柱子：流速儀、GPS、底追蹤，前兩根等高、第三根矮一截；換到支流的站，三根等高。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a8a5959c4725c07f",
+          "origin": "wave58-earth-20261111",
+          "locator": "Tabela 2；Resultados 第 3–6 段；Conclusões",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S58-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S58-002",
+      "question": "河床動得太厲害、水又太濁的時候，底追蹤只是少算一點嗎？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.madeira_flood_bottom_track_fails",
+      "answer_target": "不只，有時是整次量測幾乎作廢。亞馬遜最大的支流馬德拉河輸沙量極高，巴西地質調查局在 Abunã 站洪水期量了三次，同一趟航跡分別用底追蹤和 GPS 兩種參考算。2014 年 3 月歷史大洪水那次，局部流速約每秒 4.5 公尺，總流量是底追蹤 44,569 對 GPS 54,370 立方公尺每秒，斷面上還有一大片讀不到。2015 年加了一台單音束測深儀幫忙找河底，兩者是 32,424 對 35,124，航跡圖上底追蹤與 GPS 的線分了岔，作者說這就是動床的樣子。2016 年 3 月那次，底追蹤只在兩岸附近記得到資料，總流量 14,139 對 30,644；作者說單憑流速解釋不了，推測是河床大幅變動、懸浮泥沙變多讓儀器讀不到河底，並寫道如果當時船上只有聲學儀器，這次量測就丟了。他們的結語同時提醒：GPS 的訊號品質也有自己的問題。",
+      "scope": "馬德拉河 Abunã 站三次洪水期量測的研討會論文（葡萄牙文）；原文的相對誤差（22%、8%、117%）以底追蹤為分母，片中直接報兩個流量、不報百分比，也不可說「少了一半」；2014、2016 兩次的差距混了「讀不到河底」與動床兩件事，作者沒有拆開，2016 年的原因是作者推測；沒有流速儀等獨立方法對照，GPS 參考的數值本身沒有被驗證；沒有做迴圈測試。「世界上輸沙量最大的河」是該文作者的說法。",
+      "source_locator": "§4.1 與 Tabela 1–3；§5",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：三次量測兩種參考的對照 1 條；2016 年底追蹤只在岸邊有資料、量測會丟 0.5 條。 原提案 F11-012（目標 G35，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字與敘述都在原文，作者自己把最大的限制（混了讀不到河底與動床）寫得很清楚。收，算 1.5 條。但角色由 turn 改 segment：這個個案裡出問題的是底追蹤、救場的是 GPS，和觀眾在前幾章已經得到的結論（河床不可靠就換 GPS）同方向，是更大的偏差加上另一種失效（聽不到河底），沒有推翻任何結論。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "修正公式的前提是儀器還聽得到河底；在世界上含沙最多的河之一，連這個前提都會沒有。",
+        "visual": "河的斷面圖：GPS 參考那張填滿顏色，底追蹤那張中間一大片空白，只有兩岸有資料。",
+        "seconds": [
+          50,
+          65
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-bf38042bcf52a91e",
+          "origin": "wave58-earth-20261111",
+          "locator": "§4.1 與 Tabela 1–3；§5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S58-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S58-003",
+      "question": "某個斷面量了好幾年都沒出現動床，以後就可以不用測了嗎？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.brazil_manual_mandatory_moving_bed_test_amazon_loop",
+      "answer_target": "巴西的國家規範說不行，每一次都要測。巴西國家水署與地質調查局 2025 年的作業手冊寫：會不會偵測到動床不只看河，還看儀器——同樣的水流條件下，頻率或單元大小不同的儀器，可能一台偵測到、一台沒有；所以某斷面過去沒有紀錄，不保證下次沒有。GPS 那一邊也有操作者控制不了、事後處理才看得出的訊號問題。因此每一次流量量測都必須附至少一次有效的動床測試，門檻是動床速度超過每秒 0.012 公尺或達平均水速的 1%；偵測到動床時應考慮改用 GPS 取得船跡，GPS 資料不堪用才拿測試結果去修正，手冊明說那樣精度較差。手冊還為亞馬遜流域開了一個例外：河寬超過 55 公尺時，繞一圈的船速原本要低於每秒 0.7 公尺，亞馬遜的大河做不到可以超過，理由是當地的羅盤誤差通常遠小於 1 度——地磁傾角小、干擾少、航向變化小，而且當地量測常用的是木造船。",
+      "scope": "巴西國家水文網 2025 年的作業規範，是規定與理由，不是量測；方法與門檻承襲 USGS 文獻（Mueller、Wagner），亞馬遜的依據是 USGS 人員參與的 Mueller & East 2018，所以不是獨立於 USGS 的驗證。「不同儀器可能一台有一台沒有」手冊沒有附數據。只讀了三小節。",
+      "source_locator": "§5.1.9–5.1.11（pp.32–35）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條。 原提案 F11-013（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；條文都在原文，小修兩處措辭。算 0.5 條，同意作者：多半是規定與條件，只有「偵測與否也取決於儀器」與亞馬遜木造船的例外算新事實，而且兩者手冊都沒有附數據。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "動床不是河的固定屬性，是「這條河、這一刻、這台儀器」的組合。",
+        "visual": "兩台不同頻率的儀器並排停在同一點：一台的船跡往上游漂，另一台停在原地。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-8aa5622b87de6ea6",
+          "origin": "wave58-earth-20261111",
+          "locator": "§5.1.9–5.1.11（pp.32–35）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S58-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S58-004",
+      "question": "1989 年魁北克大停電，保護系統一動作，到全網沒電花了多久？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.quebec_1989_trip",
+      "answer_target": "不到一分鐘。照魁北克水電公司的說明，3 月 12 日輸電網已出現電壓波動，調度中心盡力維持穩定；13 日凌晨 2:44 地磁劇烈變動，電網的保護系統被觸發，不到一分鐘就全網停電，全省黑了九個多小時。公司說自己特別容易受害有兩個原因：魁北克坐落在一大片讓電流不易入地的岩盾上，電流改走阻力較小的輸電線；而它的輸電線又特別長。事後的對策是重新校定保護系統並調高跳脫門檻、建即時警報、磁暴時降低線路與直流聯絡線的輸送量並暫停大型切換操作，並在線路上加裝串聯補償。",
+      "scope": "電力公司自己的教育頁，不是事故調查報告；沒有電流大小、受影響人數，也沒有說設備有無受損，片中不補數字、不說「設備沒壞」。「保護系統被觸發」是頁面的說法，哪一類設備先動作要另查技術回顧（NERC 報告或 Boteler 2019）。頁面沒有寫「感應電流」，機制句要引 N269 的來源。",
+      "source_locator": "全頁：事件經過、四項措施、易受害原因",
+      "premise_status": "screened",
+      "notes": "算 2 條：時間經過（2:44、不到一分鐘、九個多小時）1 條；為什麼是魁北克（岩盾、長線）與事後措施 1 條。池中 N269 只有『長導線感應電流、變壓器飽和、保護設備連鎖』的一句機制，沒有任何事件；搜尋『魁北克、停電、Quebec』無核心。 原提案 F12-007（目標 C4-07，原角色 hook；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；事實都在頁面上，但問題的主詞與 payoff 都寫得比頁面多，已改。算 1.5 條（時間經過 1；易受害的兩個原因與事後措施合計 0.5，因為是公司自述、沒有數值），不是作者的 2 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從保護系統動作到全網沒電，不到一分鐘；公司事後做的第一件事是調高跳脫門檻。",
+        "visual": "一條時間軸：3/10 太陽、3/12 電壓波動、3/13 02:44 跳脫、之後九小時全黑；地圖上岩盾與長輸電線示意。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-28e041160facdb54",
+          "origin": "wave58-earth-20261111",
+          "locator": "全頁：事件經過、四項措施、易受害原因",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S58-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S58-005",
+      "question": "2022 年 2 月讓 38 顆星鏈衛星提早墜回的那場磁暴，有多強？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.starlink_2022_moderate_storm",
+      "answer_target": "只是中等。NASA 戈達德中心的研究者整理：2 月 3 日 SpaceX 發射的 49 顆衛星裡有 38 顆提早墜回大氣。當時的磁暴最小 Dst 約 -66 nT，屬中等強度，而且發射時磁暴已進入恢復期；但恢復期裡高層大氣的密度仍明顯偏高（他們引用別的衛星的量測），2 月 4 日又來一次強度相近（最小 Dst -61 nT）的磁暴，把密度再往上推，阻力持續了好一段時間。NOAA 太空天氣預報中心 1 月 31 日發的公告，給的是 2 月 2 日 G2（中等）、3 日 G1（輕微）的守視。",
+      "scope": "衛星數在同一篇預印本裡摘要寫 39、引言寫 49 顆中 38 顆，本核心採引言，片中避開精確到個位的對比。這篇的主題是太陽源區，衛星只在引言與討論帶到：密度升高多少、衛星在多高，本篇沒有數字，片中不得寫「因為衛星很低」。SWPC 的資料只有 1 月 31 日那一則預報，不代表事件期間沒有更新。不說成「磁暴等級不可信」。預印本，未核對是否已刊出。",
+      "source_locator": "F12-S007 摘要、Introduction 第一段、第 9 頁『The launch of the Starlink satellites…』段；F12-S008 全文",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：38／49 與中等磁暴、恢復期發射（1 條）；第二場磁暴再推高密度、事前只有 G2／G1 守視（0.5 條）。池中 N266 只有『太陽活動改變衛星高度的大氣密度』一句；搜尋『星鏈、Starlink、衛星阻力』無事件核心。 原提案 F12-008（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；數字都在原文，但「衛星位置很低」沒有來源，已從 payoff 拿掉並寫進範圍。算 1.5 條，與作者相同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "損失 38 顆衛星的那一次，磁暴只有中等，而且發射時已經在消退。",
+        "visual": "Dst 曲線上兩個不深的谷（-66、-61），下方一排 49 顆剛入軌的小衛星，38 顆變灰下墜。",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dea1726f7b1a857a",
+          "origin": "wave58-earth-20261111",
+          "locator": "F12-S007 摘要、Introduction 第一段、第 9 頁『The launch of the Starlink satellites…』段；F12-S008 全文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-54c027734f0912dd",
+          "origin": "wave58-earth-20261111",
+          "locator": "F12-S007 摘要、Introduction 第一段、第 9 頁『The launch of the Starlink satellites…』段；F12-S008 全文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S58-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S58-006",
+      "question": "2024 年 5 月那場磁暴有多強？事前誰收到了通知？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.may_2024_g5_prepared",
+      "answer_target": "照 NASA 的說明，這場磁暴由幾個日冕物質拋射幾乎同時到達造成，達到最高的 G5 級，是 2003 年以來第一次；有人回報在低到約 26 度磁緯的地方看見極光，科學家還在評估它在歷史紀錄裡排第幾。事前，NOAA 太空天氣預報中心通知了電網與商用衛星的營運者，NASA 有些任務預先關掉部分儀器或系統；量測極區冰層的 ICESat-2 仍進入安全模式，NASA 說可能是磁暴使阻力增加。",
+      "scope": "NASA 的新聞式說明頁；「26 度磁緯」是回報、排名尚待評估，「可能因阻力」也是頁面的推測。電網端有沒有受損、做了哪些操作，這一頁沒有資料：片中不得說「沒有停電」或「因為有通知所以沒事」，那需要 NOAA 或 NERC 的事後檢討。",
+      "source_locator": "正文：G5／2003 年段、極光 26 度磁緯段、SWPC 通知與 ICESat-2 段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：G5、2003 年以來首次、26 度磁緯（1 條）；事前通知與 ICESat-2 安全模式（0.5 條）。池中 N268 只有『強磁暴時極光橢圓向低緯延伸』一句；本核心補事件。因果（通知→沒停電）來源不支持，已寫進 scope。 原提案 F12-009（目標 C4-07，原角色 segment；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；頁面上的事實都對，但作者的問題預設了來源沒有的前提（沒有變成大停電），改成來源答得出來的問題。算 1 條（G5、2003 年以來首次、26 度磁緯 0.5；事前通知與 ICESat-2 0.5），不是作者的 1.5 條：N268 已有「強磁暴時極光往低緯延伸」，這裡只新增這一次到多低。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "二十多年來最強的一次：極光低到約 26 度磁緯，電網與衛星業者事前收到通知。",
+        "visual": "世界地圖上極光回報點一路往低緯延伸到 26 度線；旁邊一張『事前通知』的清單與進入安全模式的衛星圖示。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-056a4cfe0c9d2f5c",
+          "origin": "wave58-earth-20261111",
+          "locator": "正文：G5／2003 年段、極光 26 度磁緯段、SWPC 通知與 ICESat-2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S58-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H58-001",
+      "question": "一位調查員在美國東南部看了 25 棟牆板發霉變軟的預製住宅，他把哪些事列為每一棟都有的成因？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.fsec_25_homes_negative_pressure_vinyl_wallboard",
+      "answer_target": "室內比室外的露點還冷、外殼兩側有負壓、風管漏氣，以及防潮層放錯邊。佛羅里達太陽能中心（FSEC）的研究工程師檢查了四家廠商 25 棟出了受潮問題的工廠預製住宅，文章把這幾項都標為「25 棟全部都有」的受潮來源。他特別強調負壓的量級很小，只有 1 到 3 帕（他們用解析度 0.1 帕的數位壓力計量），但長期下來足以造成嚴重損壞；同一篇也記了例外，有一棟因為回風管脫落反而是正壓。負壓的一大來源是地板下的送風管漏氣：冷氣送出的空氣漏到屋外，屋裡就得從各處縫隙補進室外或閣樓的空氣，而當地夏天室外露點常在華氏 75 度以上。牆板壞掉的房子用的全是貼乙烯基面的石膏板（業界團體測得 0.42 perm），不過文章也說這本來就是廠商的通行做法；當時的聯邦 HUD 規範要求外牆在居室側設 1 perm 以下的防潮層，作者註明那在北方是暖側、到了南方卻是冷側。其中一棟恆溫器故障、風機常開，持續負 1 帕，外牆的室內板第一年全部換新，修的人找不到原因，換完又壞。",
+      "scope": "美國東南部濕熱氣候的輕構造預製住宅，2002 年的業界雜誌專文（Home Energy），不是技術報告；樣本是出了問題才被檢查的 25 棟，沒有沒出問題的對照組，所以「全部都有負壓」不能說成負壓是出問題的房子才有；因果是調查者的判斷（Negative pressure is the driver）；沒有牆內溫濕度的連續紀錄，量的是壓差與風管漏氣量，不是進入牆內的水量。改善後不再發生是廠商口頭回報、作者自稱初步，而且是六項建議一起實施。",
+      "source_locator": "p.24–25 六項成因與 Table 1；p.27；p.28 邊欄",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：25 棟、負壓列為共同成因、量級 1–3 帕與一棟反例 1 條；乙烯基面板 0.42 perm 與 HUD 規範把防潮層放在南方的冷側 0.5 條。 原提案 F11-005（目標 G42，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；這是上一輪 still_missing（1）點名的東西，而且確實獨立於 Lstiburek。但作者把標題的「100%」寫成「每一棟都量到室內比室外氣壓低」，原文自己就有一棟正壓，必須改；乙烯基面板是通行做法這一句也要補，否則觀眾會以為有對照。改字後收，算 1.5 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一兩帕的負壓聽起來微不足道，卻讓整個夏天的濕空氣都往牆裡走。",
+        "visual": "一棟房子的剖面：地板下風管漏出藍色冷氣，牆縫與插座孔被吸進橘色濕空氣，停在乙烯基壁板背面結成水珠；旁邊一支壓力計顯示 −1.0 Pa。",
+        "seconds": [
+          50,
+          65
+        ]
+      },
+      "origin": "wave58-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-104359397118c677",
+          "origin": "wave58-human-20261111",
+          "locator": "p.24–25 六項成因與 Table 1；p.27；p.28 邊欄",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H58-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H58-002",
+      "question": "冷氣設得比較冷、房子比較漏氣，牆裡長黴的風險會跟著變嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.houston_wufi_air_infiltration_setpoint_mold_index",
+      "answer_target": "模擬的結果是會，三個方向都一致。兩位工程顧問用熱濕模擬軟體 WUFI，把休士頓一面朝南的磚飾面木構架牆跑了十年、五百多種組合：室內溫度華氏 65 到 72 度、相對濕度 50% 或 60%、不同的整棟漏氣率、三種室內面材（7 perm 與 1 perm 的乳膠漆、乙烯基壁紙），再用 ASHRAE 160 的黴菌生長指數判讀室內石膏板的背面。趨勢是：室外空氣滲進牆裡越少、室內設得越暖，指數越低；室內側用 1 perm 以下的面材，在所有組合裡風險都明顯高於 1 perm 以上的漆。作者的結論是氣密至少要做到規範值，而且「照能源法規蓋」不保證不結露、不長黴。要注意的是，外氣滲入那一部分的算法是作者自訂的，文章自己寫明還沒有驗證。",
+      "scope": "單一城市（休士頓，美國氣候區 2）、單一牆型（木構架加磚飾面）的一維模擬，沒有實測對照；外氣滲入模型作者自己註明尚未驗證，所以「漏氣越多越糟」這一條只能說是模擬的趨勢；具體數值只在色塊圖上、沒有讀到，片中不可報任何數字，也不可說「差很多」；若重繪那張圖要標「重繪示意，原圖為模擬結果」。專業協會刊物（IIBEC Interface）上的年會論文。華氏 65–72 度約攝氏 18–22 度是單位換算，寫稿時核對。",
+      "source_locator": "Hygrothermal Modeling、Results、Conclusion",
+      "premise_status": "screened",
+      "notes": "算 1 條（三個趨勢出自同一組模擬）。 原提案 F11-006（目標 G42，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；正文與作者摘要一致，獨立性成立。改題目與答案裡暗示有幅度的字眼：這份文章的正文只有方向、沒有數值。室內側低透濕面材那一條用的是 WUFI 既有的水汽擴散計算，可以支持轉折一；漏氣那一條靠的是未驗證的自訂模型，只能當佐證。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷氣設得越低，等於把牆的室內面變成更冷的杯壁；濕空氣只要進得來，就在那裡出事。",
+        "visual": "一張橫軸漏氣率、縱軸室內溫度的格子圖，左上（漏、冷）紅、右下（密、暖）綠；標「重繪示意，原圖為模擬結果」。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave58-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b44029d0684c355f",
+          "origin": "wave58-human-20261111",
+          "locator": "Hygrothermal Modeling、Results、Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H58-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H58-003",
+      "question": "熱帶的老磚牆牆腳一直潮，裝了冷氣之後牆會更濕嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.bangkok_brick_wall_ac_drier_rising_damp",
+      "answer_target": "這份模擬算出來是略乾一點；把地下的水切斷之後，才反過來略濕一點。朱拉隆功大學的研究者拿曼谷一座 1890 年代的磚造教堂當例子：外牆是 60 公分實心黏土磚加石灰粉刷、沒有防潮層，地下水沿著牆往上爬。他們用曼谷的氣象資料跑了 2019 到 2024 年的熱濕模擬，比較自然通風（室內條件取自 2016 年在教堂裡的實測）和冷氣 25 度、全天運轉兩種情形。牆上段的中間，含水量是每立方公尺 39.66 公斤對 36.83 公斤；上段的底部是 210.76 對 205.63；牆的最底部兩者相同。作者的解釋是冷氣讓室內空氣變乾，牆面蒸發變多，上升的潮氣就爬得矮一點。把牆橫向切斷、擋掉地下水之後，上段各處降到每立方公尺二十公斤上下，這時有冷氣的那一側反而高出約 2 公斤；作者推測是室外水汽壓較高，把水汽往有冷氣的室內推。",
+      "scope": "純模擬，沒有以這面牆的含水量實測驗證；差值很小（幾個百分點到一成），片中只能說「略乾」「略濕」，不要當成量測；百年磚造承重牆，不是現代 RC 住宅；沒有模擬空氣滲入與雨水滲漏；冷氣情境是 25 °C 全天運轉的假設。原文模擬六年、表格標題寫五年平均，兩處不一致；牆最底部的數值（約 299）高於同文給的磚飽和含水量（230），片中不引這兩個數。切牆後的原因是作者推測（could be）。",
+      "source_locator": "摘要；Simulation Inputs and Settings；結果第一節；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：單一未驗證模擬裡的小差值，只能當一句誠實的但書；作者算 1 條。 原提案 F11-007（目標 G42，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字相符，但把它列為 turn 並算 1 條太高：差值只有每立方公尺 2 到 5 公斤，來自沒有實測驗證的模擬，原文自己還有兩處不一致。它的用處是給全片一句但書（水的來源要先分清），以及補上「亞洲、磚牆」的入口；不能當成冷氣對磚牆影響的量測。改字後收，算 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷氣不是一律讓牆變潮：要看牆裡的水是從地下爬上來的，還是從外面的空氣滲進來的。",
+        "visual": "同一面磚牆的兩張剖面：左邊牆腳深藍往上漸淡，冷氣那一張藍色矮一截；把牆腳切一刀後，兩張都變淡，但冷氣那張整片略深一點。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5bba72a0ccc76974",
+          "origin": "wave58-human-20261111",
+          "locator": "摘要；Simulation Inputs and Settings；結果第一節；Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H58-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H58-004",
+      "question": "先含過甜味抑制劑，下一口清水為什麼會甜？只要嘴裡有水就會嗎？",
+      "domain": "風味從哪裡來",
+      "mechanism_key": "flavor.sweet_water_needs_flow",
+      "answer_target": "要水把抑制劑沖走才會，而且再來一口糖水就把它消掉。耶魯 John B. Pierce 實驗室讓受試者先含甜味抑制劑 lactisole 再連含幾口清水：水有甜味，第二口比第一口還甜，之後逐口變淡。如果在 lactisole 之後先含一口蔗糖水，接下來的清水就完全不甜。只用舌尖沾時，沾靜止的水沒有這種甜，舌尖放進流動的水才有。作者的解釋是抑制劑要被水帶離受器，甜的訊號才冒出來。",
+      "scope": "實驗室裡的純溶液與特定抑制劑（lactisole，8 mM，作者說明高於 2006 年原研究的濃度），不是任何食物之後喝水都會甜；「逐口變化」與「糖水消除」是全口含漱的實驗一，「靜水不甜、流水才甜」是只用舌尖的實驗三，片中分開說。受器層次的說法是作者推論，本研究沒有做細胞實驗。高效甜味劑（蔗糖素、NHDC、neotame）的結果方向不同，片中不展開。池中 R42008（2006 年 Nature，只讀摘要）的細胞結果不能由本篇引言轉述來補。",
+      "source_locator": "Results Experiment 1（圖 1a、1d）；Experiment 3（圖 4）與 Discussion 談流動的一段",
+      "premise_status": "screened",
+      "notes": "算 2 條：水的甜感隨沖洗先升後降、蔗糖可完全消除（1 條）；靜水不甜、流水才甜（1 條）。池中 R42008（Galindo-Cuspinera 等 2006，只讀摘要）講的是同一現象的首次受器研究；本核心是另一組人、另一篇全文研究的實測，答案新增『要流動』『可被蔗糖消除』兩點，不重複 R42008 的細胞結果。 原提案 F12-006（目標 C4-06，原角色 segment；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；與 R42008 是同一個現象，但 R42008 的池內紀錄只有摘要、照規則計 0；本核心是另一組人的開放全文實測，等於替這個現象補上第一份讀過全文的來源，所以收，不判重複。算 1.5 條（甜水感與逐口時程 1——這 1 條就是第四輪說「R42008 讀到全文才能計」的那一條，現在由本核心承擔；要流動、糖水可消除合計 0.5），不是作者的 2 條。用了本核心的題案就不要再把 R42008 列為計分核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有糖的甜，是受器被放開的那一下。",
+        "visual": "舌尖伸進兩個小槽：靜止的水（甜度條不動）與流動的水（甜度條升起）；另一格先糖水後清水，甜度條歸零。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-694991f0865876e3",
+          "origin": "wave58-human-20261111",
+          "locator": "Results Experiment 1（圖 1a、1d）；Experiment 3（圖 4）與 Discussion 談流動的一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H58-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L58-001",
+      "question": "樹幹一天裡縮了又脹回來，縮的是哪一層、動用了多少水？",
+      "domain": "樹幹裡的水與空氣",
+      "mechanism_key": "wood_water.bark_shrink_micrometres",
+      "answer_target": "幾乎全在樹皮。把幼齡挪威雲杉的離體幹段放在室內乾燥 95 小時，截面照片顯示樹皮裡的活組織（形成層、韌皮部、薄壁組織）縮到原來約一半，木質部和最外層的周皮沒有收縮；重新泡水後韌皮部幾乎回到原來大小。三棵活樹連續量八週，日最大與日最小半徑的差，最大的一天是 62 到 74 微米。作者據此估算，樹皮一天最多能借出的水不到樹幹總含水的 2%，約等於當天蒸散量的 2–15%。離體幹段的水勢降到約 -2.3 MPa 以下之後，失水不再全部表現成體積變化，木質部也開始失水；作者推測這時空氣被吸進管胞，並引用別人的觀察說活的雲杉很少降到這個水勢。",
+      "scope": "幼齡挪威雲杉三棵活樹與離體幹段；「縮到一半」是乾燥 95 小時的離體幹段，「62–74 微米」是活樹八週內最大的日變幅，兩者不能接成同一句。-2.3 MPa 以下空氣進入管胞是作者的推測（We assume），不是觀察到的栓塞。與 R40008 同一篇論文：R40008 已有「收縮主要在樹皮彈性組織」，本核心新增數值與那個轉折點。",
+      "source_locator": "Results『Stem contraction…』段與圖 4 圖說；活樹段（ΔRD）與表 2 說明；Discussion 末段",
+      "premise_status": "screened",
+      "notes": "算 1 條：只算新增的數值（縮到約一半、62–74 微米、不到 2%／日蒸散的 2–15%）。『收縮在樹皮』R40008 已有，不重算。來源與池中 SRC-c55e22f89e8aeeac 同一篇，池內原紀錄只讀摘要，這次讀到全文；若池方較想把閱讀掛回 R40008 而不另立核心，也可以。 原提案 F12-004（目標 C4-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；與池中 R40008 同一篇（SRC-c55e22f89e8aeeac，原紀錄只讀摘要），這次有全文閱讀。不另算結論：R40008 與本核心合計 1.5 條（收縮在樹皮 0.5、數值與日供水量 0.5、-2.3 MPa 轉折點 0.5）。建議整合時把這次的全文閱讀掛回 SRC-c55e22f89e8aeeac，本核心保留為補充核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一棵樹每天借用樹皮裡的水，量得到，但只有幾十微米。",
+        "visual": "樹幹截面圖：外圈樹皮一格縮成半格、裡面木質部不動；旁邊一條八週的半徑曲線，上下擺幅標 62–74 微米。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave58-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-92d0dc2a1bf52f62",
+          "origin": "wave58-life-20261111",
+          "locator": "Results『Stem contraction…』段與圖 4 圖說；活樹段（ΔRD）與表 2 說明；Discussion 末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L58-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P58-001",
+      "question": "糖一直加到重量的六成，糖水會變成導體嗎？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.sucrose_60pct_conductivity_below_3_micromho",
+      "answer_target": "不會，至少在這份量測裡，從一成到六成都壓在同一個很低的上限以下。美國國家標準局 1950 年為了量糖水的介電常數，用標準樣品的蔗糖和導電度用水配了重量百分比 10% 到 60% 的溶液，在 20、25、30 °C 用交流電橋量測；溶液先用氫氣飽和、趕走溶解的二氧化碳，好把導電壓低。論文對導電只記了一句：所有溶液的比導電度都在 3×10⁻⁶ mho 以下，而配溶液用的水在接觸空氣前約 10⁻⁷ mho。論文沒有逐濃度列出導電度，所以不能說濃的和淡的一樣，只能說糖加到六成仍在這個上限以下。同一段還記了葡萄糖的事：葡萄糖水一進量測槽導電就快速上升，有時一夜之間多達百倍，pH 同時明顯下降，而且只在溶液碰到電極時發生；作者懷疑是催化氧化，把空氣換成氫氣之後就穩定了。",
+      "scope": "實驗室用標準樣品蔗糖、以氫氣去除二氧化碳後的溶液；1950 年的量測，導電度只是該文的一句實驗條件（上限），沒有逐濃度列表，也沒有說明殘餘導電的來源。原文單位只寫 mho（specific conductivity），沒有寫每公分：以每公分讀（3×10⁻⁶ mho/cm，即 3 μS/cm）是當年比導電度的慣用寫法，也是唯一與同段「水約 10⁻⁷」相容的讀法，但這是覆核者的單位判讀，片中字卡要寫「原文 3×10⁻⁶ mho」並註明以每公分計。上限同時涵蓋葡萄糖與蔗糖兩種溶液。市售砂糖含少量礦物質，廚房糖水的讀數會比這高。不得與 F11-003 的鹽水讀數相除或說成倍數。",
+      "source_locator": "§III Materials and Solutions；摘要",
+      "premise_status": "screened",
+      "notes": "算 1 條（濃度範圍、溫度與上限是同一個量測條件；葡萄糖氧化不另計）。作者原答案的「幾乎沒有差」與「只有水和雜質帶來的那一點點」刪除。 原提案 F11-001（目標 G01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字都在原文，但答案把「一個上限」寫成「濃淡沒有差」，並加了一句原文沒有的成因解釋，改字後收。單位裁定：原文字面確認不了每公分（只寫 mho）；以每公分讀是合理而且唯一說得通的讀法（若是每公尺，10⁻⁷ 會低於純水的理論值），可以用，但要在片中標成判讀。這個核心補的是 G01 缺的糖水一側：有濃度、溫度與儀器（電橋與量測槽），只是結果是上限而不是讀數。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "糖放再多也不會讓水變導體：能不能導電看的是有沒有離子，不是溶了多少東西。",
+        "visual": "同一排杯子由淡到濃（10% 到 60%），導電計的指針都貼在零旁邊；最後一杯換成淡鹽水，指針才動。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0fbd702deb51bbc0",
+          "origin": "wave58-physics-20261111",
+          "locator": "§III Materials and Solutions；摘要",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P58-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P58-002",
+      "question": "完全純的水，導電度是零嗎？放在桌上的蒸餾水呢？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.pure_water_conductivity_co2_floor",
+      "answer_target": "都不是零。NIST 的說明：依水自己解離出的氫離子與氫氧根離子來算，純水在 25 °C 的理論導電度是 0.055 μS/cm。但水一接觸空氣就吸收二氧化碳，一部分變成碳酸再解離出離子，導電度會升到原來的 10 到 30 倍；NIST 自己實驗室裡與空氣平衡的純水是 0.8 到 1.2 μS/cm，而且隨氣壓浮動，所以他們要做 5 到 25 μS/cm 的低導電標準液時，這個底就是主要的不確定來源之一。教學用探棒的手冊也對得上：蒸餾水、甲醇水溶液通常有約 1 到 3 μS/cm 來自溶解的二氧化碳（用出廠校正時讀數可能落在 0 到 30，那是校正的偏移，要做兩點校正、換細檔才量得準）。所以「不導電」的那一杯其實有一個由空氣決定的底。",
+      "scope": "25 °C；0.055 是理論值不是實測，0.8–1.2 是 NIST 該實驗室的經驗值；探棒手冊的數字是廠商範例、沒有寫溫度。兩份來源各說各的，不相減、不相除。",
+      "source_locator": "S002 §1 第 2 段、§2.1 末段；S003 Teacher Information 第 7 點",
+      "premise_status": "screened",
+      "notes": "算 1 條。刪掉「得先扣掉它」。 原提案 F11-002（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；核對無誤，只改末句（原文講的是不確定度，不是扣除）並把手冊的 0–30 與 1–3 分開。與 P57-025 相鄰不重複：那裡是游離比例，這裡是導電度數值與空氣造成的底。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連「什麼都沒加」的水都有讀數，而且那個讀數主要是空氣給的。",
+        "visual": "一杯蒸餾水的導電計讀數從 0.055 慢慢爬到 1 左右，旁邊畫出二氧化碳分子溶進水、變成兩個離子。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d042f64eecfecf9b",
+          "origin": "wave58-physics-20261111",
+          "locator": "S002 §1 第 2 段、§2.1 末段；S003 Teacher Information 第 7 點",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5f3b3ba663c1d69d",
+          "origin": "wave58-physics-20261111",
+          "locator": "S002 §1 第 2 段、§2.1 末段；S003 Teacher Information 第 7 點",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P58-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P58-003",
+      "question": "同樣配成 0.050 M，探棒量到的鹽水和「不會解離的東西」差多少？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.nacl_0p05m_probe_reading_vs_nonelectrolytes",
+      "answer_target": "差到不在同一個檔位上。一份導電度探棒的教師手冊把每種溶液都配成 0.050 M（氯化鈉是每公升 2.93 公克），探棒設在 0–20000 μS/cm 檔，範例結果是：氯化鈉 5214 μS/cm、鹽酸 17330、醋酸 461，而同樣 0.050 M 的甲醇、硼酸與蒸餾水都顯示 0；要換到 0–200 的細檔並重新校正才分得出來，他們讀到蒸餾水 1.0、甲醇 1.0、硼酸 3.2 μS/cm。自來水則隨地區落在 20 到 1000。同一份手冊用來校正的 10,000 μS/cm 標準液，是每公升溶 5.566 公克食鹽。手冊沒有寫量測溫度。",
+      "scope": "廠商（Vernier／TI）教學手冊的範例結果，不是同儕審查的量測；沒有寫溫度與重複次數；同表的非電解質是甲醇與硼酸，不是蔗糖。糖的數值在 F11-001（另一份文件、另一種儀器、另一個年代），兩者只能並排各報各的，不得相除、不得說「幾倍」或「幾個數量級」。NIST 用氯化鈉配 20,000 μS/cm 標準液那一句與主線無關，片中可不用。",
+      "source_locator": "S003 Teacher Information 第 2、4、7、8 點與 SAMPLE RESULTS；S014 §5.2",
+      "premise_status": "screened",
+      "notes": "算 1 條（同一張範例表）；校正液配方是方法不計，NIST 那一瓶離題、不計。 原提案 F11-003（目標 G01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字全部對得上。事實數由作者的 1.5 改 1：5.566 g/L 是校正方法，NIST 的氯化鈉標準液是另一件事、與「看起來一樣的兩杯」無關。這個核心才是轉折一真正的承擔者：同一份文件、同一支探棒、同一濃度下，氯化鈉在粗檔讀到五千多，甲醇與蒸餾水要換細檔才讀到 1.0——這個對照不需要跨文件相除。作者另查到的 McGraw-Hill 解答頁（0.05 M NaCl 111.1 μS）不採用，同意作者（F11-NA001）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「看起來一樣」的兩杯，在儀器上不在同一個檔位：鹽水用粗檔讀，另一杯要換到細檔才看得到讀數。",
+        "visual": "探棒的刻度盤：0–20000 檔上鹽水指到五千多，甲醇水與蒸餾水的指針黏在 0；切到 0–200 檔，才看到 1.0。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5f3b3ba663c1d69d",
+          "origin": "wave58-physics-20261111",
+          "locator": "S003 Teacher Information 第 2、4、7、8 點與 SAMPLE RESULTS；S014 §5.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c83408bf074f5ba3",
+          "origin": "wave58-physics-20261111",
+          "locator": "S003 Teacher Information 第 2、4、7、8 點與 SAMPLE RESULTS；S014 §5.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P58-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P58-004",
+      "question": "用一顆 9 伏特電池和一顆 LED，就看得出哪一杯會導電嗎？看得出多少？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.low_voltage_probe_bubbles_at_electrodes",
+      "answer_target": "看得出有沒有，看不出多少。紐約大學提供給 TeachEngineering 的課堂活動用兩段鎳鉻線當電極，串 9 伏特電池、470 歐姆電阻和一顆 LED，解答本列的預期結果是：一匙糖溶成的糖水和蒸餾水，LED 不亮、沒有明顯現象；一匙鹽溶成的鹽水 LED 很亮，而且鎳鉻線露出的地方冒出氣泡；自來水 LED 微亮、氣泡慢慢出現。把探針改接到 Arduino 讀數值時，糖水與蒸餾水接近 0，鹽水有讀數、探針尖端冒泡。解答本說 LED 只是粗略的指示，要比較大小得靠讀數。",
+      "scope": "課堂活動解答本的「預期結果」，不是量測報告；濃度只寫「一匙」，沒有數值與溫度；氣泡是什麼氣體原文沒有說，不得自行補上。解答本的結論題 2 說「用 LED 分不出蒸餾水與自來水」，與它自己表一（自來水微亮、蒸餾水不亮）不一致，片中不引這一句。片中若自己接這個電路，那個示範仍不是來源。",
+      "source_locator": "Part 2 材料清單與 Data Table 1；Part 3 Data Table 2；結論題 2",
+      "premise_status": "screened",
+      "notes": "算 0.5 條。 原提案 F11-004（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；內容屬實，但作者引的「LED 分不出蒸餾水與自來水」與同一份解答本的表一矛盾，刪掉這句、只留表格的四個預期觀察。算 0.5 條，同意作者：這是有出處的示範做法與該看到什麼，不是量測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "燈亮不亮只回答「有沒有離子」；電極旁的氣泡提醒你，電流穿過溶液時溶液本身在起化學變化。",
+        "visual": "四個杯子一字排開，同一支探針依序放進去：不亮、亮且冒泡、微亮、不亮。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e85539c84b518178",
+          "origin": "wave58-physics-20261111",
+          "locator": "Part 2 材料清單與 Data Table 1；Part 3 Data Table 2；結論題 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P58-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P58-005",
+      "question": "人擠到每平方公尺快十個人，人群會像塞車那樣整個停下來嗎？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.density_flow_never_stops",
+      "answer_target": "不會，問題正出在這裡。研究者分析 2006 年 1 月 12 日麥加米納賈馬拉特橋入口前的錄影，以半徑一公尺的範圍算局部密度：局部密度可超過每平方公尺 10 人，平均速度卻始終沒有降到零。局部密度一過每平方公尺 6 人，局部流量就掉到三分之一以下，流出去的比流進來的少，人群於是越壓越緊。作者拿它和車流對照：駕駛會留安全距離、停下來，行人不會。",
+      "scope": "單一事件、單一場地（2006 年 1 月 12 日一場大型朝覲活動的事故錄影）的分析；密度是以半徑一公尺的高斯權重算的局部值，作者說最大局部密度約為平均密度的兩倍，不同國家的身體投影面積不同（作者把密度乘 0.7 才與歐洲曲線相容），數值不能直接搬到別的人群。系列限制：不用事故影像、不報傷亡數字、不評論朝覲本身、不寫成自救或現場判斷的口訣；是否使用這個案例由站主決定，決定前不排進任何題案。讀的是 arXiv v2，未對照 Phys. Rev. E 刊本。",
+      "source_locator": "〈Data analysis and fundamental diagram〉末三段與圖 1a、1b 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：『極端密度下速度不歸零』1 條，『過 6 人後流量降為三分之一以下、出少於進』0.5 條。第二個流量高峰（9 人）與衝擊波的推論是作者解釋，不另計。池內搜尋『人群、擁擠、踩踏、疏散、密度』無同答案核心。 原提案 F12-001（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；答案逐句有原文。只算 1.5 條（速度不歸零 1；過 6 人流量降到三分之一以下、出少於進 0.5），與作者相同。第二個流量高峰與衝擊波是作者推論，不計。收進池，但加上敏感案例的使用限制，並標記待站主決定。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人不會像車一樣停下來，所以密度可以一路壓到危險的程度。",
+        "visual": "左邊車流的密度—速度曲線降到零，右邊行人的曲線在高密度處拖著一條不歸零的尾巴；下方流量曲線在 6 人處折下。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9d0e55ccecbf88ab",
+          "origin": "wave58-physics-20261111",
+          "locator": "〈Data analysis and fundamental diagram〉末三段與圖 1a、1b 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P58-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P58-006",
+      "question": "同一段錄影裡，同一片人群的走法變了幾次？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.laminar_stopgo_turbulence",
+      "answer_target": "兩次，而且都是突然變。研究者分析 11:45 到 12:30 的錄影：人流原本順順地往前；約 11:53，流出量掉到每公尺每秒 0.8 人以下時，出現一陣陣往上游傳的走走停停波，持續二十多分鐘。約 12:19，密度更高，人被整團推著往各個方向不由自主地位移，還會倒退，作者稱為「人群亂流」。作者用局部密度乘上速度變異當作「壓力」指標，亂流開始時它超過 0.02／秒²，事故始於它到頂的時候；出事的地方是平坦、幾乎開闊、沒有明顯對向人流的區域。作者由近拍錄影另外指出，進入這種狀態後，人會為了爭取空間而開始推擠，這又替擠壓的區域加進能量。",
+      "scope": "時間與門檻值都出自這一段錄影，門檻值隨量測半徑而變；作者明說第二次轉變的機制還沒有被模型重現。「壓力」是作者定義的指標，不是量到的力。不得寫成「不是因為恐慌」或「沒有人推擠」，原文沒有這個結論。系列限制同 F12-001：不用事故影像、不報傷亡數字、不評論朝覲、不寫成可供現場判斷的口訣；待站主決定是否使用。",
+      "source_locator": "〈Transition from laminar to stop-and-go and turbulent flows〉全節；圖 2、圖 3 圖說；〈Summary and outlook〉",
+      "premise_status": "screened",
+      "notes": "算 2 條：順流→走走停停（時間、流量門檻）1 條；走走停停→亂流（不由自主位移、壓力指標、事故始於峰值）1 條。位移大小的冪律與地震的類比不另計。與 F12-001 同一篇，兩核心合計 3.5 條，沒有重算。 原提案 F12-002（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；數字都對，但作者把「不是恐慌造成」當成這篇研究的結論，原文沒有、而且原文描述了亂流階段的推擠，已改字。只算 1.5 條（兩次轉變各有時間與條件，但出自同一段錄影的同一張時間軸；壓力指標與峰值併入第二次轉變），不是作者的 2 條；與 F12-001 同一篇，兩核心合計 3 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一片人群先後換了兩種走法，第二次轉變連研究者的模型都還重現不出來。",
+        "visual": "同一個俯視框分三段：平順的軌跡線、鋸齒狀走走停停的軌跡、亂向且會倒退的軌跡；下方一條隨時間上升的『壓力』曲線標出 11:53 與 12:19。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9d0e55ccecbf88ab",
+          "origin": "wave58-physics-20261111",
+          "locator": "〈Transition from laminar to stop-and-go and turbulent flows〉全節；圖 2、圖 3 圖說；〈Summary and outlook〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P58-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P58-007",
+      "question": "門只有一個，大家越用力往外擠，出去得越快嗎？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.faster_is_slower_door",
+      "answer_target": "實驗裡相反。西班牙納瓦拉大學讓約 95 名志願者從一扇 69 公分寬的門離開房間，分三種規則：不准碰到別人、可以輕碰、可以輕推。越准推擠，人在門前排得越密，門柱感壓器讀到高壓的次數越多；相鄰兩人通過的平均間隔跟著變長，不過平均值只小幅改變，差得多的是特別長的停頓：越准推擠，長停頓越常出現。同一篇研究換成 75 頭左右搶著進食的羊過 94 公分寬的門，較涼、羊比較急的日子，平均間隔也比較長。作者把原因歸給門口一再出現、要過一陣子才散開的堵塞。",
+      "scope": "受控演練，只允許「輕推」，不是真實緊急情況；行人平均間隔的差別作者自己說不大，差別主要在長停頓的機率；羊的急迫程度是用氣溫代理。同篇的顆粒料斗實驗與沙漏長題 G605 的拱與堵塞同一答案，這裡不重講。讀的是 arXiv v1，刊本未讀。片中不寫成逃生建議。",
+      "source_locator": "行人實驗段與圖 1 圖說（A–E）；羊群段與圖 2 圖說；結語第一段",
+      "premise_status": "screened",
+      "notes": "算 2 條：行人三級競爭的結果 1.5 條，羊群同向結果 0.5 條。顆粒料斗部分不計（與 G605 重疊）。池內 X35-004（門前柱子）講的是位置之間的得失，不是『越急越慢』，兩者不同答案；搜尋『越急、出口、推擠』無同答案核心。 原提案 F12-003（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；結論成立，但答案正文把「平均間隔只小幅改變」拿掉了，改回。算 1.5 條（行人三級的結果 1，羊群同向 0.5），不是作者的 2 條：行人的「平均變長」與「長停頓變多」是同一張分布的兩個讀法。X35-004（門前柱子）答案不同，不重複。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每個人都更急，整群人反而更慢。",
+        "visual": "同一扇門的兩段俯視時間條：不碰觸時一格一格等距通過，可推擠時一串擠過去後空一大段。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dda4b92255396ca8",
+          "origin": "wave58-physics-20261111",
+          "locator": "行人實驗段與圖 1 圖說（A–E）；羊群段與圖 2 圖說；結語第一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P58-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P58-008",
+      "question": "太空艙用同樣的垂直速度落水，挨的那一下可以差多少？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "water_entry.capsule_attitude_peak_g",
+      "answer_target": "差好幾倍，看的是艙底用什麼角度碰水。NASA 蘭利研究中心 1967 年用四分之一比例的阿波羅指揮艙動力模型做落水試驗（數值都換算成實艙尺度）。一組試驗把垂直速度固定在約每秒 7 公尺、只改艙體的俯仰角：傾得最多的兩端（約 -30 度與 29 度）最大法向加速度約 4g，艙體接近不傾斜（0 度）時約 30g。另一組試驗垂直速度較高（約每秒 9 到 10 公尺），量隔熱罩上各塊面板的水壓：同一塊面板的平均水壓隨俯仰角從約 30 psi 升到 214 psi 再降回 95 psi，最高值出現在那塊面板幾乎平貼著拍上水面的姿態。兩組試驗裡，水平速度對最大法向加速度與面板水壓的影響都很小。",
+      "scope": "四分之一比例動力模型、平靜淡水，不是實艙在海上的實測；兩組數字來自不同垂直速度的試驗（加速度 4g→30g 是約 7.0 m/s，水壓 30→214→95 psi 是 8.9–9.9 m/s），片中不得放進同一句或同一張圖比較。隔熱罩會振動，9.1 m/s 那組的最大值 38g 作者說高於剛體理論（約 22g）；7.0 m/s 那組的曲線也有同樣的振盪。「平拍」只能用在單一面板，艙體整體要說「不傾斜」。",
+      "source_locator": "Summary；Results 水壓段（panel A）；〈Water landing surface〉段與圖 16(a) 說明",
+      "premise_status": "screened",
+      "notes": "算 2 條：同速度下加速度峰值 4g 對 30g（1 條）；同一面板水壓隨接觸角 30→214→95 psi、平拍時最大、水平速度影響小（1 條）。P54-015 是獵戶座的設計值與分析（無實測），本核心補的是有量測的艙體尺度資料——但要說明是比例模型。搜尋『太空艙、入水、阿波羅』池內無同答案核心。 原提案 F12-005（目標 C4-05，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；數字本身經頁面影像核對無誤，但答案把兩個不同垂直速度的試驗接成同一組，已拆開。算 1.5 條（同垂直速度下加速度隨傾角 4g→30g 1；面板水壓在該面板平貼時最高、水平速度影響小 0.5），不是作者的 2 條：兩者是同一份報告對同一件事（碰水角度）的兩種量法。比例模型有量測，可以補 P54-015「只有設計值」的缺口，但片中要明說是模型。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "垂直速度沒變，只換了艙體的傾角，模型量到的峰值就從約 4g 到約 30g。",
+        "visual": "同一顆艙體模型三種傾角落水的並排側視圖，下方一條『傾角—最大加速度』曲線，中間平拍處尖起。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c1165cc7d5632818",
+          "origin": "wave58-physics-20261111",
+          "locator": "Summary；Results 水壓段（panel A）；〈Water landing surface〉段與圖 16(a) 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P58-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T58-001",
+      "question": "那張要通訊軟體交資料的傳票，上面到底列了哪些東西？換回來的是什麼？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.subpoena_documents_demand_list_vs_attachment",
+      "answer_target": "公開的文件本身看得到兩邊。維吉尼亞東區聯邦大陪審團 2016 年給 Signal 營運者的傳票，要兩個電話號碼的帳號資料：用戶姓名、地址、電話、電子郵件、付款方式、註冊 IP、IP 歷史紀錄、帳號歷史、通聯紀錄、上下游業者、由 cookie 關聯到的其他帳號。治安法官同時下令一年內不得向任何人（律師除外）提起這張傳票。營運者由律師回覆：兩個號碼只有一個有帳號；手上符合的只有帳號建立時間和最後一次連上伺服器的日期，附件就是這兩行、以毫秒計的時間戳，其餘各類「沒有，因此無法提供」；回覆函還指出，清單裡有些類別依法本來就不能只用傳票索取。後來在檢方同意下，法院改發命令，准許公開塗黑後的整包文件。",
+      "scope": "2016 年美國一案；文件由營運者的代理人 ACLU 公布，內容是檢方函、傳票、兩份法院命令與回覆函的影本，取代令上有法院書記官的戳記。它證明的是當事人這樣回覆、檢方同意公開，不是法院鑑識過伺服器。公開版附件的兩個時間戳數值已塗黑。",
+      "source_locator": "Redacted E.D. Va. Subpoena；Order；OWS Response 與 Attachment A；Superseding Order",
+      "premise_status": "screened",
+      "notes": "算 1 條：傳票索取的清單 0.5，一年禁言令、只有一個號碼有帳號與檢方同意後公開 0.5。「只交出兩個時間戳」的結論已在 T57-001，不重計。 原提案 F11-008（目標 G38，原角色 hook；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；逐句相符。這份文件把 T57-001 的營運者自述接上對造與法院的文件，是上一輪 still_missing（1）要的。新增的事實只有清單與程序，算 1 條，同意作者（嚴格算至少 0.5 條，見題評）。補一句原文有、作者沒用的：回覆函對傳票範圍的法律異議。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "清單很長，回函很短：加密擋住的是內容，沒有存的東西則是連法院命令也變不出來。",
+        "visual": "一張傳票，十幾個項目逐行亮起；翻到回覆函的附件，只剩兩行數字。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f326d2bac94beead",
+          "origin": "wave58-tech-20261111",
+          "locator": "Redacted E.D. Va. Subpoena；Order；OWS Response 與 Attachment A；Superseding Order",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T58-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T58-002",
+      "question": "群組訊息也是端對端加密，那是誰負責把一則訊息送到每個成員手上？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.whatsapp_sender_keys_server_fanout_cloud_api",
+      "answer_target": "在 WhatsApp，是伺服器。它的技術白皮書寫明群組的作法：寄件人先產生一把自己的「寄件金鑰」，用一對一的加密通道逐一交給群組裡每位成員的每台裝置；之後每則群組訊息只加密一次，把單一份密文交給伺服器，由伺服器分送給所有群組成員；有人離開時，所有成員清掉寄件金鑰重來。也就是內容是鎖著的，分送這一步由伺服器做。白皮書還劃了一條線：和使用 Cloud API 的企業帳號對話，雖然用的是同一套加密協定，但訊息不是直接送到企業自己控制的端點，WhatsApp 自己不把它算作端對端加密，而且在這種情形下 Meta 會持有企業的私鑰。",
+      "scope": "WhatsApp 白皮書第 10 版（2026-10-30）的自述，不是第三方查核；白皮書沒有列出伺服器保存哪些中繼資料或名單，本核心只照字面說「分送由伺服器做」，不得延伸成「WhatsApp 伺服器存了什麼」。與 Signal 對照時要用 T57-009 的完整說法（2014 年逐人送出、伺服器不知道有群組；2019 年起把加密後的群組狀態存在伺服器），不可只拿 2014 年的舊設計對比。Cloud API 一句是白皮書的定義，不要延伸成對特定企業的指控。只逐句讀了五節。",
+      "source_locator": "Group Messages（p.17）；Defining End-to-End Encryption；Implementation with Cloud API（p.36）",
+      "premise_status": "screened",
+      "notes": "算 1 條：伺服器分送 0.5、Cloud API 不算端對端 0.5。 原提案 F11-009（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；原文相符，刪掉一句推論與一句不對等的跨文件對比後收。這是談第二個服務時用它自己的官方文件，符合上一輪 still_missing（4）。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「加密」和「誰在送信」是兩件事：內容鎖住了，名單還是得有人拿著。",
+        "visual": "一則群組訊息變成一個上鎖的包裹，交到伺服器手上，伺服器照著一張名單複製成好幾份送出去；名單畫在伺服器那一側。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave58-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-30dfd469c161cfef",
+          "origin": "wave58-tech-20261111",
+          "locator": "Group Messages（p.17）；Defining End-to-End Encryption；Implementation with Cloud API（p.36）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T58-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -419560,6 +421078,717 @@
       ]
     },
     {
+      "id": "S58-001",
+      "question": "把同一條河同一天用三種方法各量一次，底追蹤的流量少了多少？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.sao_francisco_bt_vs_dgps_vs_current_meter",
+      "answer_target": "在巴西聖法蘭西斯科河 2012 年 1 月的洪水期，少了 5% 到 13%。巴西地質調查局的水文人員到七個水文站，每一站都在同一天先用傳統的轉杯式流速儀量，再用同一台聲學剖面儀同時記錄兩種參考：差分 GPS 與底追蹤。主河的五個站流速都超過每秒 1 公尺、河床是黏土與砂：GPS 參考的結果和流速儀最多只差 2.12%，底追蹤卻每一站都偏低，依作者文中的說法是 13%、9%、約 7%、約 7%、5%。以 Ibotirama 站為例，三個數字是每秒 6,391、6,318、5,945 立方公尺，三種方法的斷面積與河寬幾乎一樣，差在底追蹤算出的平均流速較低。兩條流速只有每秒 0.65 公尺上下、含沙較少的支流，三種方法就差不多（底追蹤差 3% 與 1.8%）。作者由此判斷主河有動床、水速被低估，但他們沒有做迴圈或定點的動床測試。",
+      "scope": "2012 年 1–2 月單一洪水期、每站一次的研討會論文（非期刊同儕審查，葡萄牙文）；各站量測日期不同，「同一天」指每站各自的同一天；動床是由三法比較推斷的（原文 pode indicar），沒有動床測試；Gameleira 與 Boqueirão 兩站聲學斷面與流速儀斷面相距 300–400 公尺。百分比照作者文中寫的，不用表 2 重算。示範站不用 Bom Jesus da Lapa（該站底追蹤的斷面積與河寬也比另兩法小，13% 不全是流速造成的），也不用 Gameleira（表列流速與流量對不上）。",
+      "source_locator": "Tabela 2；Resultados 第 3–6 段；Conclusões",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：主河五站偏低而 GPS 與流速儀相符 1 條；支流兩站三法相近 0.5 條。 原提案 F11-011（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；這是本輪最紮實的新核心：USGS 以外、全文可讀、而且多一個完全不靠聲學的第三種方法。百分比都在原文。改兩處：把「同一天」說清楚；示範站由 Bom Jesus da Lapa 換成 Ibotirama，因為前者在同一張表上面積與河寬也不同，接上「差在水速」會被看表的人抓到。算 1.5 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "GPS 和老式流速儀互相對得上，只有把河床當成岸的那個讀數少了一截——偏差不是儀器壞了，是參考在動。",
+        "visual": "一個站三根柱子：流速儀、GPS、底追蹤，前兩根等高、第三根矮一截；換到支流的站，三根等高。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a8a5959c4725c07f",
+          "origin": "wave58-earth-20261111",
+          "locator": "Tabela 2；Resultados 第 3–6 段；Conclusões",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ]
+    },
+    {
+      "id": "S58-002",
+      "question": "河床動得太厲害、水又太濁的時候，底追蹤只是少算一點嗎？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.madeira_flood_bottom_track_fails",
+      "answer_target": "不只，有時是整次量測幾乎作廢。亞馬遜最大的支流馬德拉河輸沙量極高，巴西地質調查局在 Abunã 站洪水期量了三次，同一趟航跡分別用底追蹤和 GPS 兩種參考算。2014 年 3 月歷史大洪水那次，局部流速約每秒 4.5 公尺，總流量是底追蹤 44,569 對 GPS 54,370 立方公尺每秒，斷面上還有一大片讀不到。2015 年加了一台單音束測深儀幫忙找河底，兩者是 32,424 對 35,124，航跡圖上底追蹤與 GPS 的線分了岔，作者說這就是動床的樣子。2016 年 3 月那次，底追蹤只在兩岸附近記得到資料，總流量 14,139 對 30,644；作者說單憑流速解釋不了，推測是河床大幅變動、懸浮泥沙變多讓儀器讀不到河底，並寫道如果當時船上只有聲學儀器，這次量測就丟了。他們的結語同時提醒：GPS 的訊號品質也有自己的問題。",
+      "scope": "馬德拉河 Abunã 站三次洪水期量測的研討會論文（葡萄牙文）；原文的相對誤差（22%、8%、117%）以底追蹤為分母，片中直接報兩個流量、不報百分比，也不可說「少了一半」；2014、2016 兩次的差距混了「讀不到河底」與動床兩件事，作者沒有拆開，2016 年的原因是作者推測；沒有流速儀等獨立方法對照，GPS 參考的數值本身沒有被驗證；沒有做迴圈測試。「世界上輸沙量最大的河」是該文作者的說法。",
+      "source_locator": "§4.1 與 Tabela 1–3；§5",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：三次量測兩種參考的對照 1 條；2016 年底追蹤只在岸邊有資料、量測會丟 0.5 條。 原提案 F11-012（目標 G35，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字與敘述都在原文，作者自己把最大的限制（混了讀不到河底與動床）寫得很清楚。收，算 1.5 條。但角色由 turn 改 segment：這個個案裡出問題的是底追蹤、救場的是 GPS，和觀眾在前幾章已經得到的結論（河床不可靠就換 GPS）同方向，是更大的偏差加上另一種失效（聽不到河底），沒有推翻任何結論。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "修正公式的前提是儀器還聽得到河底；在世界上含沙最多的河之一，連這個前提都會沒有。",
+        "visual": "河的斷面圖：GPS 參考那張填滿顏色，底追蹤那張中間一大片空白，只有兩岸有資料。",
+        "seconds": [
+          50,
+          65
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-bf38042bcf52a91e",
+          "origin": "wave58-earth-20261111",
+          "locator": "§4.1 與 Tabela 1–3；§5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ]
+    },
+    {
+      "id": "S58-003",
+      "question": "某個斷面量了好幾年都沒出現動床，以後就可以不用測了嗎？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.brazil_manual_mandatory_moving_bed_test_amazon_loop",
+      "answer_target": "巴西的國家規範說不行，每一次都要測。巴西國家水署與地質調查局 2025 年的作業手冊寫：會不會偵測到動床不只看河，還看儀器——同樣的水流條件下，頻率或單元大小不同的儀器，可能一台偵測到、一台沒有；所以某斷面過去沒有紀錄，不保證下次沒有。GPS 那一邊也有操作者控制不了、事後處理才看得出的訊號問題。因此每一次流量量測都必須附至少一次有效的動床測試，門檻是動床速度超過每秒 0.012 公尺或達平均水速的 1%；偵測到動床時應考慮改用 GPS 取得船跡，GPS 資料不堪用才拿測試結果去修正，手冊明說那樣精度較差。手冊還為亞馬遜流域開了一個例外：河寬超過 55 公尺時，繞一圈的船速原本要低於每秒 0.7 公尺，亞馬遜的大河做不到可以超過，理由是當地的羅盤誤差通常遠小於 1 度——地磁傾角小、干擾少、航向變化小，而且當地量測常用的是木造船。",
+      "scope": "巴西國家水文網 2025 年的作業規範，是規定與理由，不是量測；方法與門檻承襲 USGS 文獻（Mueller、Wagner），亞馬遜的依據是 USGS 人員參與的 Mueller & East 2018，所以不是獨立於 USGS 的驗證。「不同儀器可能一台有一台沒有」手冊沒有附數據。只讀了三小節。",
+      "source_locator": "§5.1.9–5.1.11（pp.32–35）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條。 原提案 F11-013（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；條文都在原文，小修兩處措辭。算 0.5 條，同意作者：多半是規定與條件，只有「偵測與否也取決於儀器」與亞馬遜木造船的例外算新事實，而且兩者手冊都沒有附數據。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "動床不是河的固定屬性，是「這條河、這一刻、這台儀器」的組合。",
+        "visual": "兩台不同頻率的儀器並排停在同一點：一台的船跡往上游漂，另一台停在原地。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-8aa5622b87de6ea6",
+          "origin": "wave58-earth-20261111",
+          "locator": "§5.1.9–5.1.11（pp.32–35）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ]
+    },
+    {
+      "id": "S58-004",
+      "question": "1989 年魁北克大停電，保護系統一動作，到全網沒電花了多久？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.quebec_1989_trip",
+      "answer_target": "不到一分鐘。照魁北克水電公司的說明，3 月 12 日輸電網已出現電壓波動，調度中心盡力維持穩定；13 日凌晨 2:44 地磁劇烈變動，電網的保護系統被觸發，不到一分鐘就全網停電，全省黑了九個多小時。公司說自己特別容易受害有兩個原因：魁北克坐落在一大片讓電流不易入地的岩盾上，電流改走阻力較小的輸電線；而它的輸電線又特別長。事後的對策是重新校定保護系統並調高跳脫門檻、建即時警報、磁暴時降低線路與直流聯絡線的輸送量並暫停大型切換操作，並在線路上加裝串聯補償。",
+      "scope": "電力公司自己的教育頁，不是事故調查報告；沒有電流大小、受影響人數，也沒有說設備有無受損，片中不補數字、不說「設備沒壞」。「保護系統被觸發」是頁面的說法，哪一類設備先動作要另查技術回顧（NERC 報告或 Boteler 2019）。頁面沒有寫「感應電流」，機制句要引 N269 的來源。",
+      "source_locator": "全頁：事件經過、四項措施、易受害原因",
+      "premise_status": "screened",
+      "notes": "算 2 條：時間經過（2:44、不到一分鐘、九個多小時）1 條；為什麼是魁北克（岩盾、長線）與事後措施 1 條。池中 N269 只有『長導線感應電流、變壓器飽和、保護設備連鎖』的一句機制，沒有任何事件；搜尋『魁北克、停電、Quebec』無核心。 原提案 F12-007（目標 C4-07，原角色 hook；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；事實都在頁面上，但問題的主詞與 payoff 都寫得比頁面多，已改。算 1.5 條（時間經過 1；易受害的兩個原因與事後措施合計 0.5，因為是公司自述、沒有數值），不是作者的 2 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "從保護系統動作到全網沒電，不到一分鐘；公司事後做的第一件事是調高跳脫門檻。",
+        "visual": "一條時間軸：3/10 太陽、3/12 電壓波動、3/13 02:44 跳脫、之後九小時全黑；地圖上岩盾與長輸電線示意。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-28e041160facdb54",
+          "origin": "wave58-earth-20261111",
+          "locator": "全頁：事件經過、四項措施、易受害原因",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ]
+    },
+    {
+      "id": "S58-005",
+      "question": "2022 年 2 月讓 38 顆星鏈衛星提早墜回的那場磁暴，有多強？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.starlink_2022_moderate_storm",
+      "answer_target": "只是中等。NASA 戈達德中心的研究者整理：2 月 3 日 SpaceX 發射的 49 顆衛星裡有 38 顆提早墜回大氣。當時的磁暴最小 Dst 約 -66 nT，屬中等強度，而且發射時磁暴已進入恢復期；但恢復期裡高層大氣的密度仍明顯偏高（他們引用別的衛星的量測），2 月 4 日又來一次強度相近（最小 Dst -61 nT）的磁暴，把密度再往上推，阻力持續了好一段時間。NOAA 太空天氣預報中心 1 月 31 日發的公告，給的是 2 月 2 日 G2（中等）、3 日 G1（輕微）的守視。",
+      "scope": "衛星數在同一篇預印本裡摘要寫 39、引言寫 49 顆中 38 顆，本核心採引言，片中避開精確到個位的對比。這篇的主題是太陽源區，衛星只在引言與討論帶到：密度升高多少、衛星在多高，本篇沒有數字，片中不得寫「因為衛星很低」。SWPC 的資料只有 1 月 31 日那一則預報，不代表事件期間沒有更新。不說成「磁暴等級不可信」。預印本，未核對是否已刊出。",
+      "source_locator": "F12-S007 摘要、Introduction 第一段、第 9 頁『The launch of the Starlink satellites…』段；F12-S008 全文",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：38／49 與中等磁暴、恢復期發射（1 條）；第二場磁暴再推高密度、事前只有 G2／G1 守視（0.5 條）。池中 N266 只有『太陽活動改變衛星高度的大氣密度』一句；搜尋『星鏈、Starlink、衛星阻力』無事件核心。 原提案 F12-008（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；數字都在原文，但「衛星位置很低」沒有來源，已從 payoff 拿掉並寫進範圍。算 1.5 條，與作者相同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "損失 38 顆衛星的那一次，磁暴只有中等，而且發射時已經在消退。",
+        "visual": "Dst 曲線上兩個不深的谷（-66、-61），下方一排 49 顆剛入軌的小衛星，38 顆變灰下墜。",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dea1726f7b1a857a",
+          "origin": "wave58-earth-20261111",
+          "locator": "F12-S007 摘要、Introduction 第一段、第 9 頁『The launch of the Starlink satellites…』段；F12-S008 全文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-54c027734f0912dd",
+          "origin": "wave58-earth-20261111",
+          "locator": "F12-S007 摘要、Introduction 第一段、第 9 頁『The launch of the Starlink satellites…』段；F12-S008 全文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ]
+    },
+    {
+      "id": "S58-006",
+      "question": "2024 年 5 月那場磁暴有多強？事前誰收到了通知？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.may_2024_g5_prepared",
+      "answer_target": "照 NASA 的說明，這場磁暴由幾個日冕物質拋射幾乎同時到達造成，達到最高的 G5 級，是 2003 年以來第一次；有人回報在低到約 26 度磁緯的地方看見極光，科學家還在評估它在歷史紀錄裡排第幾。事前，NOAA 太空天氣預報中心通知了電網與商用衛星的營運者，NASA 有些任務預先關掉部分儀器或系統；量測極區冰層的 ICESat-2 仍進入安全模式，NASA 說可能是磁暴使阻力增加。",
+      "scope": "NASA 的新聞式說明頁；「26 度磁緯」是回報、排名尚待評估，「可能因阻力」也是頁面的推測。電網端有沒有受損、做了哪些操作，這一頁沒有資料：片中不得說「沒有停電」或「因為有通知所以沒事」，那需要 NOAA 或 NERC 的事後檢討。",
+      "source_locator": "正文：G5／2003 年段、極光 26 度磁緯段、SWPC 通知與 ICESat-2 段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：G5、2003 年以來首次、26 度磁緯（1 條）；事前通知與 ICESat-2 安全模式（0.5 條）。池中 N268 只有『強磁暴時極光橢圓向低緯延伸』一句；本核心補事件。因果（通知→沒停電）來源不支持，已寫進 scope。 原提案 F12-009（目標 C4-07，原角色 segment；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；頁面上的事實都對，但作者的問題預設了來源沒有的前提（沒有變成大停電），改成來源答得出來的問題。算 1 條（G5、2003 年以來首次、26 度磁緯 0.5；事前通知與 ICESat-2 0.5），不是作者的 1.5 條：N268 已有「強磁暴時極光往低緯延伸」，這裡只新增這一次到多低。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "二十多年來最強的一次：極光低到約 26 度磁緯，電網與衛星業者事前收到通知。",
+        "visual": "世界地圖上極光回報點一路往低緯延伸到 26 度線；旁邊一張『事前通知』的清單與進入安全模式的衛星圖示。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave58-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-056a4cfe0c9d2f5c",
+          "origin": "wave58-earth-20261111",
+          "locator": "正文：G5／2003 年段、極光 26 度磁緯段、SWPC 通知與 ICESat-2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+      ]
+    },
+    {
+      "id": "H58-001",
+      "question": "一位調查員在美國東南部看了 25 棟牆板發霉變軟的預製住宅，他把哪些事列為每一棟都有的成因？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.fsec_25_homes_negative_pressure_vinyl_wallboard",
+      "answer_target": "室內比室外的露點還冷、外殼兩側有負壓、風管漏氣，以及防潮層放錯邊。佛羅里達太陽能中心（FSEC）的研究工程師檢查了四家廠商 25 棟出了受潮問題的工廠預製住宅，文章把這幾項都標為「25 棟全部都有」的受潮來源。他特別強調負壓的量級很小，只有 1 到 3 帕（他們用解析度 0.1 帕的數位壓力計量），但長期下來足以造成嚴重損壞；同一篇也記了例外，有一棟因為回風管脫落反而是正壓。負壓的一大來源是地板下的送風管漏氣：冷氣送出的空氣漏到屋外，屋裡就得從各處縫隙補進室外或閣樓的空氣，而當地夏天室外露點常在華氏 75 度以上。牆板壞掉的房子用的全是貼乙烯基面的石膏板（業界團體測得 0.42 perm），不過文章也說這本來就是廠商的通行做法；當時的聯邦 HUD 規範要求外牆在居室側設 1 perm 以下的防潮層，作者註明那在北方是暖側、到了南方卻是冷側。其中一棟恆溫器故障、風機常開，持續負 1 帕，外牆的室內板第一年全部換新，修的人找不到原因，換完又壞。",
+      "scope": "美國東南部濕熱氣候的輕構造預製住宅，2002 年的業界雜誌專文（Home Energy），不是技術報告；樣本是出了問題才被檢查的 25 棟，沒有沒出問題的對照組，所以「全部都有負壓」不能說成負壓是出問題的房子才有；因果是調查者的判斷（Negative pressure is the driver）；沒有牆內溫濕度的連續紀錄，量的是壓差與風管漏氣量，不是進入牆內的水量。改善後不再發生是廠商口頭回報、作者自稱初步，而且是六項建議一起實施。",
+      "source_locator": "p.24–25 六項成因與 Table 1；p.27；p.28 邊欄",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：25 棟、負壓列為共同成因、量級 1–3 帕與一棟反例 1 條；乙烯基面板 0.42 perm 與 HUD 規範把防潮層放在南方的冷側 0.5 條。 原提案 F11-005（目標 G42，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；這是上一輪 still_missing（1）點名的東西，而且確實獨立於 Lstiburek。但作者把標題的「100%」寫成「每一棟都量到室內比室外氣壓低」，原文自己就有一棟正壓，必須改；乙烯基面板是通行做法這一句也要補，否則觀眾會以為有對照。改字後收，算 1.5 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一兩帕的負壓聽起來微不足道，卻讓整個夏天的濕空氣都往牆裡走。",
+        "visual": "一棟房子的剖面：地板下風管漏出藍色冷氣，牆縫與插座孔被吸進橘色濕空氣，停在乙烯基壁板背面結成水珠；旁邊一支壓力計顯示 −1.0 Pa。",
+        "seconds": [
+          50,
+          65
+        ]
+      },
+      "origin": "wave58-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-104359397118c677",
+          "origin": "wave58-human-20261111",
+          "locator": "p.24–25 六項成因與 Table 1；p.27；p.28 邊欄",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+      ]
+    },
+    {
+      "id": "H58-002",
+      "question": "冷氣設得比較冷、房子比較漏氣，牆裡長黴的風險會跟著變嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.houston_wufi_air_infiltration_setpoint_mold_index",
+      "answer_target": "模擬的結果是會，三個方向都一致。兩位工程顧問用熱濕模擬軟體 WUFI，把休士頓一面朝南的磚飾面木構架牆跑了十年、五百多種組合：室內溫度華氏 65 到 72 度、相對濕度 50% 或 60%、不同的整棟漏氣率、三種室內面材（7 perm 與 1 perm 的乳膠漆、乙烯基壁紙），再用 ASHRAE 160 的黴菌生長指數判讀室內石膏板的背面。趨勢是：室外空氣滲進牆裡越少、室內設得越暖，指數越低；室內側用 1 perm 以下的面材，在所有組合裡風險都明顯高於 1 perm 以上的漆。作者的結論是氣密至少要做到規範值，而且「照能源法規蓋」不保證不結露、不長黴。要注意的是，外氣滲入那一部分的算法是作者自訂的，文章自己寫明還沒有驗證。",
+      "scope": "單一城市（休士頓，美國氣候區 2）、單一牆型（木構架加磚飾面）的一維模擬，沒有實測對照；外氣滲入模型作者自己註明尚未驗證，所以「漏氣越多越糟」這一條只能說是模擬的趨勢；具體數值只在色塊圖上、沒有讀到，片中不可報任何數字，也不可說「差很多」；若重繪那張圖要標「重繪示意，原圖為模擬結果」。專業協會刊物（IIBEC Interface）上的年會論文。華氏 65–72 度約攝氏 18–22 度是單位換算，寫稿時核對。",
+      "source_locator": "Hygrothermal Modeling、Results、Conclusion",
+      "premise_status": "screened",
+      "notes": "算 1 條（三個趨勢出自同一組模擬）。 原提案 F11-006（目標 G42，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；正文與作者摘要一致，獨立性成立。改題目與答案裡暗示有幅度的字眼：這份文章的正文只有方向、沒有數值。室內側低透濕面材那一條用的是 WUFI 既有的水汽擴散計算，可以支持轉折一；漏氣那一條靠的是未驗證的自訂模型，只能當佐證。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷氣設得越低，等於把牆的室內面變成更冷的杯壁；濕空氣只要進得來，就在那裡出事。",
+        "visual": "一張橫軸漏氣率、縱軸室內溫度的格子圖，左上（漏、冷）紅、右下（密、暖）綠；標「重繪示意，原圖為模擬結果」。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave58-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b44029d0684c355f",
+          "origin": "wave58-human-20261111",
+          "locator": "Hygrothermal Modeling、Results、Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+      ]
+    },
+    {
+      "id": "H58-003",
+      "question": "熱帶的老磚牆牆腳一直潮，裝了冷氣之後牆會更濕嗎？",
+      "domain": "住家建築與室內環境",
+      "mechanism_key": "home.moisture.bangkok_brick_wall_ac_drier_rising_damp",
+      "answer_target": "這份模擬算出來是略乾一點；把地下的水切斷之後，才反過來略濕一點。朱拉隆功大學的研究者拿曼谷一座 1890 年代的磚造教堂當例子：外牆是 60 公分實心黏土磚加石灰粉刷、沒有防潮層，地下水沿著牆往上爬。他們用曼谷的氣象資料跑了 2019 到 2024 年的熱濕模擬，比較自然通風（室內條件取自 2016 年在教堂裡的實測）和冷氣 25 度、全天運轉兩種情形。牆上段的中間，含水量是每立方公尺 39.66 公斤對 36.83 公斤；上段的底部是 210.76 對 205.63；牆的最底部兩者相同。作者的解釋是冷氣讓室內空氣變乾，牆面蒸發變多，上升的潮氣就爬得矮一點。把牆橫向切斷、擋掉地下水之後，上段各處降到每立方公尺二十公斤上下，這時有冷氣的那一側反而高出約 2 公斤；作者推測是室外水汽壓較高，把水汽往有冷氣的室內推。",
+      "scope": "純模擬，沒有以這面牆的含水量實測驗證；差值很小（幾個百分點到一成），片中只能說「略乾」「略濕」，不要當成量測；百年磚造承重牆，不是現代 RC 住宅；沒有模擬空氣滲入與雨水滲漏；冷氣情境是 25 °C 全天運轉的假設。原文模擬六年、表格標題寫五年平均，兩處不一致；牆最底部的數值（約 299）高於同文給的磚飽和含水量（230），片中不引這兩個數。切牆後的原因是作者推測（could be）。",
+      "source_locator": "摘要；Simulation Inputs and Settings；結果第一節；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：單一未驗證模擬裡的小差值，只能當一句誠實的但書；作者算 1 條。 原提案 F11-007（目標 G42，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字相符，但把它列為 turn 並算 1 條太高：差值只有每立方公尺 2 到 5 公斤，來自沒有實測驗證的模擬，原文自己還有兩處不一致。它的用處是給全片一句但書（水的來源要先分清），以及補上「亞洲、磚牆」的入口；不能當成冷氣對磚牆影響的量測。改字後收，算 0.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷氣不是一律讓牆變潮：要看牆裡的水是從地下爬上來的，還是從外面的空氣滲進來的。",
+        "visual": "同一面磚牆的兩張剖面：左邊牆腳深藍往上漸淡，冷氣那一張藍色矮一截；把牆腳切一刀後，兩張都變淡，但冷氣那張整片略深一點。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5bba72a0ccc76974",
+          "origin": "wave58-human-20261111",
+          "locator": "摘要；Simulation Inputs and Settings；結果第一節；Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+      ]
+    },
+    {
+      "id": "H58-004",
+      "question": "先含過甜味抑制劑，下一口清水為什麼會甜？只要嘴裡有水就會嗎？",
+      "domain": "風味從哪裡來",
+      "mechanism_key": "flavor.sweet_water_needs_flow",
+      "answer_target": "要水把抑制劑沖走才會，而且再來一口糖水就把它消掉。耶魯 John B. Pierce 實驗室讓受試者先含甜味抑制劑 lactisole 再連含幾口清水：水有甜味，第二口比第一口還甜，之後逐口變淡。如果在 lactisole 之後先含一口蔗糖水，接下來的清水就完全不甜。只用舌尖沾時，沾靜止的水沒有這種甜，舌尖放進流動的水才有。作者的解釋是抑制劑要被水帶離受器，甜的訊號才冒出來。",
+      "scope": "實驗室裡的純溶液與特定抑制劑（lactisole，8 mM，作者說明高於 2006 年原研究的濃度），不是任何食物之後喝水都會甜；「逐口變化」與「糖水消除」是全口含漱的實驗一，「靜水不甜、流水才甜」是只用舌尖的實驗三，片中分開說。受器層次的說法是作者推論，本研究沒有做細胞實驗。高效甜味劑（蔗糖素、NHDC、neotame）的結果方向不同，片中不展開。池中 R42008（2006 年 Nature，只讀摘要）的細胞結果不能由本篇引言轉述來補。",
+      "source_locator": "Results Experiment 1（圖 1a、1d）；Experiment 3（圖 4）與 Discussion 談流動的一段",
+      "premise_status": "screened",
+      "notes": "算 2 條：水的甜感隨沖洗先升後降、蔗糖可完全消除（1 條）；靜水不甜、流水才甜（1 條）。池中 R42008（Galindo-Cuspinera 等 2006，只讀摘要）講的是同一現象的首次受器研究；本核心是另一組人、另一篇全文研究的實測，答案新增『要流動』『可被蔗糖消除』兩點，不重複 R42008 的細胞結果。 原提案 F12-006（目標 C4-06，原角色 segment；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；與 R42008 是同一個現象，但 R42008 的池內紀錄只有摘要、照規則計 0；本核心是另一組人的開放全文實測，等於替這個現象補上第一份讀過全文的來源，所以收，不判重複。算 1.5 條（甜水感與逐口時程 1——這 1 條就是第四輪說「R42008 讀到全文才能計」的那一條，現在由本核心承擔；要流動、糖水可消除合計 0.5），不是作者的 2 條。用了本核心的題案就不要再把 R42008 列為計分核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有糖的甜，是受器被放開的那一下。",
+        "visual": "舌尖伸進兩個小槽：靜止的水（甜度條不動）與流動的水（甜度條升起）；另一格先糖水後清水，甜度條歸零。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-694991f0865876e3",
+          "origin": "wave58-human-20261111",
+          "locator": "Results Experiment 1（圖 1a、1d）；Experiment 3（圖 4）與 Discussion 談流動的一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+      ]
+    },
+    {
+      "id": "L58-001",
+      "question": "樹幹一天裡縮了又脹回來，縮的是哪一層、動用了多少水？",
+      "domain": "樹幹裡的水與空氣",
+      "mechanism_key": "wood_water.bark_shrink_micrometres",
+      "answer_target": "幾乎全在樹皮。把幼齡挪威雲杉的離體幹段放在室內乾燥 95 小時，截面照片顯示樹皮裡的活組織（形成層、韌皮部、薄壁組織）縮到原來約一半，木質部和最外層的周皮沒有收縮；重新泡水後韌皮部幾乎回到原來大小。三棵活樹連續量八週，日最大與日最小半徑的差，最大的一天是 62 到 74 微米。作者據此估算，樹皮一天最多能借出的水不到樹幹總含水的 2%，約等於當天蒸散量的 2–15%。離體幹段的水勢降到約 -2.3 MPa 以下之後，失水不再全部表現成體積變化，木質部也開始失水；作者推測這時空氣被吸進管胞，並引用別人的觀察說活的雲杉很少降到這個水勢。",
+      "scope": "幼齡挪威雲杉三棵活樹與離體幹段；「縮到一半」是乾燥 95 小時的離體幹段，「62–74 微米」是活樹八週內最大的日變幅，兩者不能接成同一句。-2.3 MPa 以下空氣進入管胞是作者的推測（We assume），不是觀察到的栓塞。與 R40008 同一篇論文：R40008 已有「收縮主要在樹皮彈性組織」，本核心新增數值與那個轉折點。",
+      "source_locator": "Results『Stem contraction…』段與圖 4 圖說；活樹段（ΔRD）與表 2 說明；Discussion 末段",
+      "premise_status": "screened",
+      "notes": "算 1 條：只算新增的數值（縮到約一半、62–74 微米、不到 2%／日蒸散的 2–15%）。『收縮在樹皮』R40008 已有，不重算。來源與池中 SRC-c55e22f89e8aeeac 同一篇，池內原紀錄只讀摘要，這次讀到全文；若池方較想把閱讀掛回 R40008 而不另立核心，也可以。 原提案 F12-004（目標 C4-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；與池中 R40008 同一篇（SRC-c55e22f89e8aeeac，原紀錄只讀摘要），這次有全文閱讀。不另算結論：R40008 與本核心合計 1.5 條（收縮在樹皮 0.5、數值與日供水量 0.5、-2.3 MPa 轉折點 0.5）。建議整合時把這次的全文閱讀掛回 SRC-c55e22f89e8aeeac，本核心保留為補充核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一棵樹每天借用樹皮裡的水，量得到，但只有幾十微米。",
+        "visual": "樹幹截面圖：外圈樹皮一格縮成半格、裡面木質部不動；旁邊一條八週的半徑曲線，上下擺幅標 62–74 微米。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave58-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-92d0dc2a1bf52f62",
+          "origin": "wave58-life-20261111",
+          "locator": "Results『Stem contraction…』段與圖 4 圖說；活樹段（ΔRD）與表 2 說明；Discussion 末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-life.json"
+      ]
+    },
+    {
+      "id": "P58-001",
+      "question": "糖一直加到重量的六成，糖水會變成導體嗎？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.sucrose_60pct_conductivity_below_3_micromho",
+      "answer_target": "不會，至少在這份量測裡，從一成到六成都壓在同一個很低的上限以下。美國國家標準局 1950 年為了量糖水的介電常數，用標準樣品的蔗糖和導電度用水配了重量百分比 10% 到 60% 的溶液，在 20、25、30 °C 用交流電橋量測；溶液先用氫氣飽和、趕走溶解的二氧化碳，好把導電壓低。論文對導電只記了一句：所有溶液的比導電度都在 3×10⁻⁶ mho 以下，而配溶液用的水在接觸空氣前約 10⁻⁷ mho。論文沒有逐濃度列出導電度，所以不能說濃的和淡的一樣，只能說糖加到六成仍在這個上限以下。同一段還記了葡萄糖的事：葡萄糖水一進量測槽導電就快速上升，有時一夜之間多達百倍，pH 同時明顯下降，而且只在溶液碰到電極時發生；作者懷疑是催化氧化，把空氣換成氫氣之後就穩定了。",
+      "scope": "實驗室用標準樣品蔗糖、以氫氣去除二氧化碳後的溶液；1950 年的量測，導電度只是該文的一句實驗條件（上限），沒有逐濃度列表，也沒有說明殘餘導電的來源。原文單位只寫 mho（specific conductivity），沒有寫每公分：以每公分讀（3×10⁻⁶ mho/cm，即 3 μS/cm）是當年比導電度的慣用寫法，也是唯一與同段「水約 10⁻⁷」相容的讀法，但這是覆核者的單位判讀，片中字卡要寫「原文 3×10⁻⁶ mho」並註明以每公分計。上限同時涵蓋葡萄糖與蔗糖兩種溶液。市售砂糖含少量礦物質，廚房糖水的讀數會比這高。不得與 F11-003 的鹽水讀數相除或說成倍數。",
+      "source_locator": "§III Materials and Solutions；摘要",
+      "premise_status": "screened",
+      "notes": "算 1 條（濃度範圍、溫度與上限是同一個量測條件；葡萄糖氧化不另計）。作者原答案的「幾乎沒有差」與「只有水和雜質帶來的那一點點」刪除。 原提案 F11-001（目標 G01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字都在原文，但答案把「一個上限」寫成「濃淡沒有差」，並加了一句原文沒有的成因解釋，改字後收。單位裁定：原文字面確認不了每公分（只寫 mho）；以每公分讀是合理而且唯一說得通的讀法（若是每公尺，10⁻⁷ 會低於純水的理論值），可以用，但要在片中標成判讀。這個核心補的是 G01 缺的糖水一側：有濃度、溫度與儀器（電橋與量測槽），只是結果是上限而不是讀數。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "糖放再多也不會讓水變導體：能不能導電看的是有沒有離子，不是溶了多少東西。",
+        "visual": "同一排杯子由淡到濃（10% 到 60%），導電計的指針都貼在零旁邊；最後一杯換成淡鹽水，指針才動。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0fbd702deb51bbc0",
+          "origin": "wave58-physics-20261111",
+          "locator": "§III Materials and Solutions；摘要",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ]
+    },
+    {
+      "id": "P58-002",
+      "question": "完全純的水，導電度是零嗎？放在桌上的蒸餾水呢？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.pure_water_conductivity_co2_floor",
+      "answer_target": "都不是零。NIST 的說明：依水自己解離出的氫離子與氫氧根離子來算，純水在 25 °C 的理論導電度是 0.055 μS/cm。但水一接觸空氣就吸收二氧化碳，一部分變成碳酸再解離出離子，導電度會升到原來的 10 到 30 倍；NIST 自己實驗室裡與空氣平衡的純水是 0.8 到 1.2 μS/cm，而且隨氣壓浮動，所以他們要做 5 到 25 μS/cm 的低導電標準液時，這個底就是主要的不確定來源之一。教學用探棒的手冊也對得上：蒸餾水、甲醇水溶液通常有約 1 到 3 μS/cm 來自溶解的二氧化碳（用出廠校正時讀數可能落在 0 到 30，那是校正的偏移，要做兩點校正、換細檔才量得準）。所以「不導電」的那一杯其實有一個由空氣決定的底。",
+      "scope": "25 °C；0.055 是理論值不是實測，0.8–1.2 是 NIST 該實驗室的經驗值；探棒手冊的數字是廠商範例、沒有寫溫度。兩份來源各說各的，不相減、不相除。",
+      "source_locator": "S002 §1 第 2 段、§2.1 末段；S003 Teacher Information 第 7 點",
+      "premise_status": "screened",
+      "notes": "算 1 條。刪掉「得先扣掉它」。 原提案 F11-002（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；核對無誤，只改末句（原文講的是不確定度，不是扣除）並把手冊的 0–30 與 1–3 分開。與 P57-025 相鄰不重複：那裡是游離比例，這裡是導電度數值與空氣造成的底。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連「什麼都沒加」的水都有讀數，而且那個讀數主要是空氣給的。",
+        "visual": "一杯蒸餾水的導電計讀數從 0.055 慢慢爬到 1 左右，旁邊畫出二氧化碳分子溶進水、變成兩個離子。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d042f64eecfecf9b",
+          "origin": "wave58-physics-20261111",
+          "locator": "S002 §1 第 2 段、§2.1 末段；S003 Teacher Information 第 7 點",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5f3b3ba663c1d69d",
+          "origin": "wave58-physics-20261111",
+          "locator": "S002 §1 第 2 段、§2.1 末段；S003 Teacher Information 第 7 點",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ]
+    },
+    {
+      "id": "P58-003",
+      "question": "同樣配成 0.050 M，探棒量到的鹽水和「不會解離的東西」差多少？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.nacl_0p05m_probe_reading_vs_nonelectrolytes",
+      "answer_target": "差到不在同一個檔位上。一份導電度探棒的教師手冊把每種溶液都配成 0.050 M（氯化鈉是每公升 2.93 公克），探棒設在 0–20000 μS/cm 檔，範例結果是：氯化鈉 5214 μS/cm、鹽酸 17330、醋酸 461，而同樣 0.050 M 的甲醇、硼酸與蒸餾水都顯示 0；要換到 0–200 的細檔並重新校正才分得出來，他們讀到蒸餾水 1.0、甲醇 1.0、硼酸 3.2 μS/cm。自來水則隨地區落在 20 到 1000。同一份手冊用來校正的 10,000 μS/cm 標準液，是每公升溶 5.566 公克食鹽。手冊沒有寫量測溫度。",
+      "scope": "廠商（Vernier／TI）教學手冊的範例結果，不是同儕審查的量測；沒有寫溫度與重複次數；同表的非電解質是甲醇與硼酸，不是蔗糖。糖的數值在 F11-001（另一份文件、另一種儀器、另一個年代），兩者只能並排各報各的，不得相除、不得說「幾倍」或「幾個數量級」。NIST 用氯化鈉配 20,000 μS/cm 標準液那一句與主線無關，片中可不用。",
+      "source_locator": "S003 Teacher Information 第 2、4、7、8 點與 SAMPLE RESULTS；S014 §5.2",
+      "premise_status": "screened",
+      "notes": "算 1 條（同一張範例表）；校正液配方是方法不計，NIST 那一瓶離題、不計。 原提案 F11-003（目標 G01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；數字全部對得上。事實數由作者的 1.5 改 1：5.566 g/L 是校正方法，NIST 的氯化鈉標準液是另一件事、與「看起來一樣的兩杯」無關。這個核心才是轉折一真正的承擔者：同一份文件、同一支探棒、同一濃度下，氯化鈉在粗檔讀到五千多，甲醇與蒸餾水要換細檔才讀到 1.0——這個對照不需要跨文件相除。作者另查到的 McGraw-Hill 解答頁（0.05 M NaCl 111.1 μS）不採用，同意作者（F11-NA001）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「看起來一樣」的兩杯，在儀器上不在同一個檔位：鹽水用粗檔讀，另一杯要換到細檔才看得到讀數。",
+        "visual": "探棒的刻度盤：0–20000 檔上鹽水指到五千多，甲醇水與蒸餾水的指針黏在 0；切到 0–200 檔，才看到 1.0。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5f3b3ba663c1d69d",
+          "origin": "wave58-physics-20261111",
+          "locator": "S003 Teacher Information 第 2、4、7、8 點與 SAMPLE RESULTS；S014 §5.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c83408bf074f5ba3",
+          "origin": "wave58-physics-20261111",
+          "locator": "S003 Teacher Information 第 2、4、7、8 點與 SAMPLE RESULTS；S014 §5.2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ]
+    },
+    {
+      "id": "P58-004",
+      "question": "用一顆 9 伏特電池和一顆 LED，就看得出哪一杯會導電嗎？看得出多少？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.low_voltage_probe_bubbles_at_electrodes",
+      "answer_target": "看得出有沒有，看不出多少。紐約大學提供給 TeachEngineering 的課堂活動用兩段鎳鉻線當電極，串 9 伏特電池、470 歐姆電阻和一顆 LED，解答本列的預期結果是：一匙糖溶成的糖水和蒸餾水，LED 不亮、沒有明顯現象；一匙鹽溶成的鹽水 LED 很亮，而且鎳鉻線露出的地方冒出氣泡；自來水 LED 微亮、氣泡慢慢出現。把探針改接到 Arduino 讀數值時，糖水與蒸餾水接近 0，鹽水有讀數、探針尖端冒泡。解答本說 LED 只是粗略的指示，要比較大小得靠讀數。",
+      "scope": "課堂活動解答本的「預期結果」，不是量測報告；濃度只寫「一匙」，沒有數值與溫度；氣泡是什麼氣體原文沒有說，不得自行補上。解答本的結論題 2 說「用 LED 分不出蒸餾水與自來水」，與它自己表一（自來水微亮、蒸餾水不亮）不一致，片中不引這一句。片中若自己接這個電路，那個示範仍不是來源。",
+      "source_locator": "Part 2 材料清單與 Data Table 1；Part 3 Data Table 2；結論題 2",
+      "premise_status": "screened",
+      "notes": "算 0.5 條。 原提案 F11-004（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；內容屬實，但作者引的「LED 分不出蒸餾水與自來水」與同一份解答本的表一矛盾，刪掉這句、只留表格的四個預期觀察。算 0.5 條，同意作者：這是有出處的示範做法與該看到什麼，不是量測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "燈亮不亮只回答「有沒有離子」；電極旁的氣泡提醒你，電流穿過溶液時溶液本身在起化學變化。",
+        "visual": "四個杯子一字排開，同一支探針依序放進去：不亮、亮且冒泡、微亮、不亮。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e85539c84b518178",
+          "origin": "wave58-physics-20261111",
+          "locator": "Part 2 材料清單與 Data Table 1；Part 3 Data Table 2；結論題 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ]
+    },
+    {
+      "id": "P58-005",
+      "question": "人擠到每平方公尺快十個人，人群會像塞車那樣整個停下來嗎？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.density_flow_never_stops",
+      "answer_target": "不會，問題正出在這裡。研究者分析 2006 年 1 月 12 日麥加米納賈馬拉特橋入口前的錄影，以半徑一公尺的範圍算局部密度：局部密度可超過每平方公尺 10 人，平均速度卻始終沒有降到零。局部密度一過每平方公尺 6 人，局部流量就掉到三分之一以下，流出去的比流進來的少，人群於是越壓越緊。作者拿它和車流對照：駕駛會留安全距離、停下來，行人不會。",
+      "scope": "單一事件、單一場地（2006 年 1 月 12 日一場大型朝覲活動的事故錄影）的分析；密度是以半徑一公尺的高斯權重算的局部值，作者說最大局部密度約為平均密度的兩倍，不同國家的身體投影面積不同（作者把密度乘 0.7 才與歐洲曲線相容），數值不能直接搬到別的人群。系列限制：不用事故影像、不報傷亡數字、不評論朝覲本身、不寫成自救或現場判斷的口訣；是否使用這個案例由站主決定，決定前不排進任何題案。讀的是 arXiv v2，未對照 Phys. Rev. E 刊本。",
+      "source_locator": "〈Data analysis and fundamental diagram〉末三段與圖 1a、1b 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：『極端密度下速度不歸零』1 條，『過 6 人後流量降為三分之一以下、出少於進』0.5 條。第二個流量高峰（9 人）與衝擊波的推論是作者解釋，不另計。池內搜尋『人群、擁擠、踩踏、疏散、密度』無同答案核心。 原提案 F12-001（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；答案逐句有原文。只算 1.5 條（速度不歸零 1；過 6 人流量降到三分之一以下、出少於進 0.5），與作者相同。第二個流量高峰與衝擊波是作者推論，不計。收進池，但加上敏感案例的使用限制，並標記待站主決定。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人不會像車一樣停下來，所以密度可以一路壓到危險的程度。",
+        "visual": "左邊車流的密度—速度曲線降到零，右邊行人的曲線在高密度處拖著一條不歸零的尾巴；下方流量曲線在 6 人處折下。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9d0e55ccecbf88ab",
+          "origin": "wave58-physics-20261111",
+          "locator": "〈Data analysis and fundamental diagram〉末三段與圖 1a、1b 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ]
+    },
+    {
+      "id": "P58-006",
+      "question": "同一段錄影裡，同一片人群的走法變了幾次？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.laminar_stopgo_turbulence",
+      "answer_target": "兩次，而且都是突然變。研究者分析 11:45 到 12:30 的錄影：人流原本順順地往前；約 11:53，流出量掉到每公尺每秒 0.8 人以下時，出現一陣陣往上游傳的走走停停波，持續二十多分鐘。約 12:19，密度更高，人被整團推著往各個方向不由自主地位移，還會倒退，作者稱為「人群亂流」。作者用局部密度乘上速度變異當作「壓力」指標，亂流開始時它超過 0.02／秒²，事故始於它到頂的時候；出事的地方是平坦、幾乎開闊、沒有明顯對向人流的區域。作者由近拍錄影另外指出，進入這種狀態後，人會為了爭取空間而開始推擠，這又替擠壓的區域加進能量。",
+      "scope": "時間與門檻值都出自這一段錄影，門檻值隨量測半徑而變；作者明說第二次轉變的機制還沒有被模型重現。「壓力」是作者定義的指標，不是量到的力。不得寫成「不是因為恐慌」或「沒有人推擠」，原文沒有這個結論。系列限制同 F12-001：不用事故影像、不報傷亡數字、不評論朝覲、不寫成可供現場判斷的口訣；待站主決定是否使用。",
+      "source_locator": "〈Transition from laminar to stop-and-go and turbulent flows〉全節；圖 2、圖 3 圖說；〈Summary and outlook〉",
+      "premise_status": "screened",
+      "notes": "算 2 條：順流→走走停停（時間、流量門檻）1 條；走走停停→亂流（不由自主位移、壓力指標、事故始於峰值）1 條。位移大小的冪律與地震的類比不另計。與 F12-001 同一篇，兩核心合計 3.5 條，沒有重算。 原提案 F12-002（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；數字都對，但作者把「不是恐慌造成」當成這篇研究的結論，原文沒有、而且原文描述了亂流階段的推擠，已改字。只算 1.5 條（兩次轉變各有時間與條件，但出自同一段錄影的同一張時間軸；壓力指標與峰值併入第二次轉變），不是作者的 2 條；與 F12-001 同一篇，兩核心合計 3 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一片人群先後換了兩種走法，第二次轉變連研究者的模型都還重現不出來。",
+        "visual": "同一個俯視框分三段：平順的軌跡線、鋸齒狀走走停停的軌跡、亂向且會倒退的軌跡；下方一條隨時間上升的『壓力』曲線標出 11:53 與 12:19。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9d0e55ccecbf88ab",
+          "origin": "wave58-physics-20261111",
+          "locator": "〈Transition from laminar to stop-and-go and turbulent flows〉全節；圖 2、圖 3 圖說；〈Summary and outlook〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ]
+    },
+    {
+      "id": "P58-007",
+      "question": "門只有一個，大家越用力往外擠，出去得越快嗎？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.faster_is_slower_door",
+      "answer_target": "實驗裡相反。西班牙納瓦拉大學讓約 95 名志願者從一扇 69 公分寬的門離開房間，分三種規則：不准碰到別人、可以輕碰、可以輕推。越准推擠，人在門前排得越密，門柱感壓器讀到高壓的次數越多；相鄰兩人通過的平均間隔跟著變長，不過平均值只小幅改變，差得多的是特別長的停頓：越准推擠，長停頓越常出現。同一篇研究換成 75 頭左右搶著進食的羊過 94 公分寬的門，較涼、羊比較急的日子，平均間隔也比較長。作者把原因歸給門口一再出現、要過一陣子才散開的堵塞。",
+      "scope": "受控演練，只允許「輕推」，不是真實緊急情況；行人平均間隔的差別作者自己說不大，差別主要在長停頓的機率；羊的急迫程度是用氣溫代理。同篇的顆粒料斗實驗與沙漏長題 G605 的拱與堵塞同一答案，這裡不重講。讀的是 arXiv v1，刊本未讀。片中不寫成逃生建議。",
+      "source_locator": "行人實驗段與圖 1 圖說（A–E）；羊群段與圖 2 圖說；結語第一段",
+      "premise_status": "screened",
+      "notes": "算 2 條：行人三級競爭的結果 1.5 條，羊群同向結果 0.5 條。顆粒料斗部分不計（與 G605 重疊）。池內 X35-004（門前柱子）講的是位置之間的得失，不是『越急越慢』，兩者不同答案；搜尋『越急、出口、推擠』無同答案核心。 原提案 F12-003（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；結論成立，但答案正文把「平均間隔只小幅改變」拿掉了，改回。算 1.5 條（行人三級的結果 1，羊群同向 0.5），不是作者的 2 條：行人的「平均變長」與「長停頓變多」是同一張分布的兩個讀法。X35-004（門前柱子）答案不同，不重複。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每個人都更急，整群人反而更慢。",
+        "visual": "同一扇門的兩段俯視時間條：不碰觸時一格一格等距通過，可推擠時一串擠過去後空一大段。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dda4b92255396ca8",
+          "origin": "wave58-physics-20261111",
+          "locator": "行人實驗段與圖 1 圖說（A–E）；羊群段與圖 2 圖說；結語第一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ]
+    },
+    {
+      "id": "P58-008",
+      "question": "太空艙用同樣的垂直速度落水，挨的那一下可以差多少？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "water_entry.capsule_attitude_peak_g",
+      "answer_target": "差好幾倍，看的是艙底用什麼角度碰水。NASA 蘭利研究中心 1967 年用四分之一比例的阿波羅指揮艙動力模型做落水試驗（數值都換算成實艙尺度）。一組試驗把垂直速度固定在約每秒 7 公尺、只改艙體的俯仰角：傾得最多的兩端（約 -30 度與 29 度）最大法向加速度約 4g，艙體接近不傾斜（0 度）時約 30g。另一組試驗垂直速度較高（約每秒 9 到 10 公尺），量隔熱罩上各塊面板的水壓：同一塊面板的平均水壓隨俯仰角從約 30 psi 升到 214 psi 再降回 95 psi，最高值出現在那塊面板幾乎平貼著拍上水面的姿態。兩組試驗裡，水平速度對最大法向加速度與面板水壓的影響都很小。",
+      "scope": "四分之一比例動力模型、平靜淡水，不是實艙在海上的實測；兩組數字來自不同垂直速度的試驗（加速度 4g→30g 是約 7.0 m/s，水壓 30→214→95 psi 是 8.9–9.9 m/s），片中不得放進同一句或同一張圖比較。隔熱罩會振動，9.1 m/s 那組的最大值 38g 作者說高於剛體理論（約 22g）；7.0 m/s 那組的曲線也有同樣的振盪。「平拍」只能用在單一面板，艙體整體要說「不傾斜」。",
+      "source_locator": "Summary；Results 水壓段（panel A）；〈Water landing surface〉段與圖 16(a) 說明",
+      "premise_status": "screened",
+      "notes": "算 2 條：同速度下加速度峰值 4g 對 30g（1 條）；同一面板水壓隨接觸角 30→214→95 psi、平拍時最大、水平速度影響小（1 條）。P54-015 是獵戶座的設計值與分析（無實測），本核心補的是有量測的艙體尺度資料——但要說明是比例模型。搜尋『太空艙、入水、阿波羅』池內無同答案核心。 原提案 F12-005（目標 C4-05，原角色 turn；依本池欄位記為 segment）。非作者覆核 V15（2026-11-12）改字後收；數字本身經頁面影像核對無誤，但答案把兩個不同垂直速度的試驗接成同一組，已拆開。算 1.5 條（同垂直速度下加速度隨傾角 4g→30g 1；面板水壓在該面板平貼時最高、水平速度影響小 0.5），不是作者的 2 條：兩者是同一份報告對同一件事（碰水角度）的兩種量法。比例模型有量測，可以補 P54-015「只有設計值」的缺口，但片中要明說是模型。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "垂直速度沒變，只換了艙體的傾角，模型量到的峰值就從約 4g 到約 30g。",
+        "visual": "同一顆艙體模型三種傾角落水的並排側視圖，下方一條『傾角—最大加速度』曲線，中間平拍處尖起。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave58-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c1165cc7d5632818",
+          "origin": "wave58-physics-20261111",
+          "locator": "Summary；Results 水壓段（panel A）；〈Water landing surface〉段與圖 16(a) 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+      ]
+    },
+    {
+      "id": "T58-001",
+      "question": "那張要通訊軟體交資料的傳票，上面到底列了哪些東西？換回來的是什麼？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.subpoena_documents_demand_list_vs_attachment",
+      "answer_target": "公開的文件本身看得到兩邊。維吉尼亞東區聯邦大陪審團 2016 年給 Signal 營運者的傳票，要兩個電話號碼的帳號資料：用戶姓名、地址、電話、電子郵件、付款方式、註冊 IP、IP 歷史紀錄、帳號歷史、通聯紀錄、上下游業者、由 cookie 關聯到的其他帳號。治安法官同時下令一年內不得向任何人（律師除外）提起這張傳票。營運者由律師回覆：兩個號碼只有一個有帳號；手上符合的只有帳號建立時間和最後一次連上伺服器的日期，附件就是這兩行、以毫秒計的時間戳，其餘各類「沒有，因此無法提供」；回覆函還指出，清單裡有些類別依法本來就不能只用傳票索取。後來在檢方同意下，法院改發命令，准許公開塗黑後的整包文件。",
+      "scope": "2016 年美國一案；文件由營運者的代理人 ACLU 公布，內容是檢方函、傳票、兩份法院命令與回覆函的影本，取代令上有法院書記官的戳記。它證明的是當事人這樣回覆、檢方同意公開，不是法院鑑識過伺服器。公開版附件的兩個時間戳數值已塗黑。",
+      "source_locator": "Redacted E.D. Va. Subpoena；Order；OWS Response 與 Attachment A；Superseding Order",
+      "premise_status": "screened",
+      "notes": "算 1 條：傳票索取的清單 0.5，一年禁言令、只有一個號碼有帳號與檢方同意後公開 0.5。「只交出兩個時間戳」的結論已在 T57-001，不重計。 原提案 F11-008（目標 G38，原角色 hook；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；逐句相符。這份文件把 T57-001 的營運者自述接上對造與法院的文件，是上一輪 still_missing（1）要的。新增的事實只有清單與程序，算 1 條，同意作者（嚴格算至少 0.5 條，見題評）。補一句原文有、作者沒用的：回覆函對傳票範圍的法律異議。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "清單很長，回函很短：加密擋住的是內容，沒有存的東西則是連法院命令也變不出來。",
+        "visual": "一張傳票，十幾個項目逐行亮起；翻到回覆函的附件，只剩兩行數字。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave58-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f326d2bac94beead",
+          "origin": "wave58-tech-20261111",
+          "locator": "Redacted E.D. Va. Subpoena；Order；OWS Response 與 Attachment A；Superseding Order",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-tech.json"
+      ]
+    },
+    {
+      "id": "T58-002",
+      "question": "群組訊息也是端對端加密，那是誰負責把一則訊息送到每個成員手上？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.whatsapp_sender_keys_server_fanout_cloud_api",
+      "answer_target": "在 WhatsApp，是伺服器。它的技術白皮書寫明群組的作法：寄件人先產生一把自己的「寄件金鑰」，用一對一的加密通道逐一交給群組裡每位成員的每台裝置；之後每則群組訊息只加密一次，把單一份密文交給伺服器，由伺服器分送給所有群組成員；有人離開時，所有成員清掉寄件金鑰重來。也就是內容是鎖著的，分送這一步由伺服器做。白皮書還劃了一條線：和使用 Cloud API 的企業帳號對話，雖然用的是同一套加密協定，但訊息不是直接送到企業自己控制的端點，WhatsApp 自己不把它算作端對端加密，而且在這種情形下 Meta 會持有企業的私鑰。",
+      "scope": "WhatsApp 白皮書第 10 版（2026-10-30）的自述，不是第三方查核；白皮書沒有列出伺服器保存哪些中繼資料或名單，本核心只照字面說「分送由伺服器做」，不得延伸成「WhatsApp 伺服器存了什麼」。與 Signal 對照時要用 T57-009 的完整說法（2014 年逐人送出、伺服器不知道有群組；2019 年起把加密後的群組狀態存在伺服器），不可只拿 2014 年的舊設計對比。Cloud API 一句是白皮書的定義，不要延伸成對特定企業的指控。只逐句讀了五節。",
+      "source_locator": "Group Messages（p.17）；Defining End-to-End Encryption；Implementation with Cloud API（p.36）",
+      "premise_status": "screened",
+      "notes": "算 1 條：伺服器分送 0.5、Cloud API 不算端對端 0.5。 原提案 F11-009（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V14（2026-11-12）改字後收；原文相符，刪掉一句推論與一句不對等的跨文件對比後收。這是談第二個服務時用它自己的官方文件，符合上一輪 still_missing（4）。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「加密」和「誰在送信」是兩件事：內容鎖住了，名單還是得有人拿著。",
+        "visual": "一則群組訊息變成一個上鎖的包裹，交到伺服器手上，伺服器照著一張名單複製成好幾份送出去；名單畫在伺服器那一側。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave58-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-30dfd469c161cfef",
+          "origin": "wave58-tech-20261111",
+          "locator": "Group Messages（p.17）；Defining End-to-End Encryption；Implementation with Cloud API（p.36）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave58-tech.json"
+      ]
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -431052,6 +433281,27 @@
       "T57-007": "T57-007",
       "T57-008": "T57-008",
       "T57-009": "T57-009",
+      "S58-001": "S58-001",
+      "S58-002": "S58-002",
+      "S58-003": "S58-003",
+      "S58-004": "S58-004",
+      "S58-005": "S58-005",
+      "S58-006": "S58-006",
+      "H58-001": "H58-001",
+      "H58-002": "H58-002",
+      "H58-003": "H58-003",
+      "H58-004": "H58-004",
+      "L58-001": "L58-001",
+      "P58-001": "P58-001",
+      "P58-002": "P58-002",
+      "P58-003": "P58-003",
+      "P58-004": "P58-004",
+      "P58-005": "P58-005",
+      "P58-006": "P58-006",
+      "P58-007": "P58-007",
+      "P58-008": "P58-008",
+      "T58-001": "T58-001",
+      "T58-002": "T58-002",
       "J6001": "J6001",
       "J6002": "J6002",
       "J6003": "J6003",
@@ -460179,6 +462429,196 @@
         "a": "P57-026",
         "b": "P240",
         "reason": "牛奶是膠體；不重計。（V13 2026-11-12）"
+      },
+      {
+        "a": "P58-001",
+        "b": "P224",
+        "reason": "P224 只有一句機制（糖是中性分子、鹽給離子），沒有任何數值；本核心補量測上限，不重計機制。（V14 2026-11-12）"
+      },
+      {
+        "a": "P58-001",
+        "b": "P57-025",
+        "reason": "純水極難導電屬 P57-025；本核心只借「水約 10⁻⁷」當同段對照，不另計。（V14 2026-11-12）"
+      },
+      {
+        "a": "P58-002",
+        "b": "P57-025",
+        "reason": "「純水是極差的導體、每十億個水分子約兩個游離」已在 P57-025；本核心只算導電度數值與二氧化碳的底。（V14 2026-11-12）"
+      },
+      {
+        "a": "P58-002",
+        "b": "P266",
+        "reason": "P266 問中性水裡有沒有離子（兩者平衡），角度不同，不重複。（V14 2026-11-12）"
+      },
+      {
+        "a": "P58-003",
+        "b": "P224",
+        "reason": "機制（分子對離子）屬 P224 不重計；本核心是讀數。（V14 2026-11-12）"
+      },
+      {
+        "a": "P58-003",
+        "b": "P225",
+        "reason": "醋酸 461 對鹽酸 17330 可當 P225（強弱電解質與濃度是兩回事）的數字例子，但 P225 不在本題最終核心裡，片中只帶一句。（V14 2026-11-12）"
+      },
+      {
+        "a": "P58-004",
+        "b": "P224",
+        "reason": "同一機制的課堂示範，不重計機制。（V14 2026-11-12）"
+      },
+      {
+        "a": "H58-001",
+        "b": "H57-010",
+        "reason": "同一機制、不同調查者與建築型態（坦帕旅館，空腔比室外低 10–15 帕）；本核心不重計機制，只算 25 棟的調查結果。（V14 2026-11-12）"
+      },
+      {
+        "a": "H58-001",
+        "b": "H57-011",
+        "reason": "安養院負壓 4–11 帕與示蹤氣體屬 H57-011；兩處的帕數不可相比或相減（不同建築、不同量法）。（V14 2026-11-12）"
+      },
+      {
+        "a": "H58-001",
+        "b": "H57-009",
+        "reason": "「有冷氣的建築室內側不要貼乙烯基」的原則已在 H57-009（Lstiburek 文摘）；本核心新增的是 HUD 規範的條文與 0.42 perm，只算 0.5 條。（V14 2026-11-12）"
+      },
+      {
+        "a": "H58-001",
+        "b": "B4016",
+        "reason": "B4016 是排風負壓讓煙道倒流，同是負壓但不同後果，不重複。（V14 2026-11-12）"
+      },
+      {
+        "a": "H58-002",
+        "b": "H57-009",
+        "reason": "同一結論（冷氣建築室內側不要用低透濕面材），來源不同；本核心算「獨立模擬得到同方向」1 條，不重計原則本身。（V14 2026-11-12）"
+      },
+      {
+        "a": "H58-002",
+        "b": "H57-008",
+        "reason": "H57-008 是設定條件下的水汽壓方向，本核心是十年模擬的風險趨勢，不重複。（V14 2026-11-12）"
+      },
+      {
+        "a": "H58-003",
+        "b": "H57-013",
+        "reason": "H57-013 已有「牆腳濕不一定是上升潮氣（也可能是鹽）」；本核心是另一個方向：真的有上升潮氣時冷氣的影響。不重複。（V14 2026-11-12）"
+      },
+      {
+        "a": "H58-003",
+        "b": "H57-012",
+        "reason": "磚石牆較耐水屬 H57-012；本核心不重計。（V14 2026-11-12）"
+      },
+      {
+        "a": "H58-003",
+        "b": "H57-008",
+        "reason": "切牆後「水汽由外往內」與 H57-008 同方向，只當呼應，不另計。（V14 2026-11-12）"
+      },
+      {
+        "a": "T58-001",
+        "b": "T57-001",
+        "reason": "同一事件。T57-001 已有「2016 年、兩名使用者、只交出註冊時間與最後連線日期、2021 年又一次」；本核心只算傳票清單與禁言令、取代令。來源是 T57-S001（signal.org 說明頁）所附的原始文件，網址不同，另立來源並在 limitations 註明同一事件。（V14 2026-11-12）"
+      },
+      {
+        "a": "T58-001",
+        "b": "T57-009",
+        "reason": "T57-009 提到「拿傳票的人看得到明文群組資料」是 Signal 對同業的描述，與本核心無重複。（V14 2026-11-12）"
+      },
+      {
+        "a": "T58-002",
+        "b": "T57-009",
+        "reason": "成對不重複：T57-009 是 Signal 的群組設計沿革，本核心是 WhatsApp 的寄件金鑰與伺服器分送。（V14 2026-11-12）"
+      },
+      {
+        "a": "T58-002",
+        "b": "I3094",
+        "reason": "pool.json 以 Sender Key／fan-out 字樣命中的 I3094、I3095 是 libsodium sealed box，與群組分送無關。（V14 2026-11-12）"
+      },
+      {
+        "a": "S58-001",
+        "b": "S57-001",
+        "reason": "S57-001 是 USGS 13 筆迴圈法量到的動床速度占水速 1.63%–16.4%；本核心是另一條河的三法流量比對。兩組百分比量的東西不同（動床速度比 對 流量差），不可並成同一個範圍。（V14 2026-11-12）"
+      },
+      {
+        "a": "S58-001",
+        "b": "S57-003",
+        "reason": "S57-003 比的是迴圈修正後對 GPS；本核心比的是未修正的底追蹤對 GPS 與流速儀，不重複。（V14 2026-11-12）"
+      },
+      {
+        "a": "S58-001",
+        "b": "O3073",
+        "reason": "機制（把動床當固定河床、因而低估）屬 O3073，不重計。（V14 2026-11-12）"
+      },
+      {
+        "a": "S58-002",
+        "b": "O3072",
+        "reason": "O3072 已有「泥沙太多會衰減或遮蔽床面」；2016 年那次是這個機制的實例，機制不重計。（V14 2026-11-12）"
+      },
+      {
+        "a": "S58-002",
+        "b": "S57-004",
+        "reason": "「GPS 也有訊號問題」已在 S57-004（0.5 條）；本核心結語那一句不另計。（V14 2026-11-12）"
+      },
+      {
+        "a": "S58-002",
+        "b": "S57-001",
+        "reason": "流量差不可與 S57-001 的動床速度比例放在同一把尺上。（V14 2026-11-12）"
+      },
+      {
+        "a": "S58-003",
+        "b": "S57-004",
+        "reason": "1% 門檻與 GPS 的限制已在 S57-004，不重計。（V14 2026-11-12）"
+      },
+      {
+        "a": "S58-003",
+        "b": "S57-002",
+        "reason": "S57-002 已有「迴圈法是巴西水文人員在亞馬遜河先用的」；本核心的亞馬遜例外可接在它後面。（V14 2026-11-12）"
+      },
+      {
+        "a": "P58-005",
+        "b": "X35-001",
+        "reason": "X35-001（環道車流的走走停停）已在可成題的 G580 類車流長題；本核心只在一句裡拿車流當對照，不重講車流實驗。（V15 2026-11-12）"
+      },
+      {
+        "a": "P58-006",
+        "b": "P58-005",
+        "reason": "同一篇論文；基本圖歸 P58-005，時間上的兩次轉變歸本核心，不重算。（V15 2026-11-12）"
+      },
+      {
+        "a": "P58-007",
+        "b": "P43-002",
+        "reason": "料斗顆粒「驅動越大拱越難震開」屬 G605（可成題），本核心不寫顆粒那一組。（V15 2026-11-12）"
+      },
+      {
+        "a": "P58-007",
+        "b": "X35-004",
+        "reason": "同一研究群的門口演練；X35-004 講柱子改變各位置的等待時間，本核心講競爭程度，答案不同。（V15 2026-11-12）"
+      },
+      {
+        "a": "L58-001",
+        "b": "R40008",
+        "reason": "同一篇論文、同一結論；本核心只新增數值與水勢轉折點，兩者合計 1.5 條。（V15 2026-11-12）"
+      },
+      {
+        "a": "P58-008",
+        "b": "P54-015",
+        "reason": "P54-015 是獵戶座的設計值與分析（無實測）；本核心是阿波羅比例模型的量測，兩者不同艙、不同年代，不能寫成同一艘。（V15 2026-11-12）"
+      },
+      {
+        "a": "H58-004",
+        "b": "R42008",
+        "reason": "同一現象；R42008 只讀摘要計 0，現象那 1 條改由本核心承擔，不得兩邊各算。（V15 2026-11-12）"
+      },
+      {
+        "a": "S58-004",
+        "b": "N269",
+        "reason": "N269 是機制一句（感應電流、變壓器飽和、保護設備連鎖），本核心補事件經過，不重算機制。（V15 2026-11-12）"
+      },
+      {
+        "a": "S58-005",
+        "b": "N266",
+        "reason": "N266 是阻力機制一句，本核心補事件；高度與密度增幅仍缺（F12-NA004）。（V15 2026-11-12）"
+      },
+      {
+        "a": "S58-006",
+        "b": "N268",
+        "reason": "極光橢圓往低緯延伸的機制是 N268；本核心只補 2024 年這一次的事件資料。（V15 2026-11-12）"
       }
     ],
     "excluded": [
@@ -460520,6 +462960,20 @@
         "questions": [
           "強電解質是不是表示溶液一定很濃？",
           "弱酸是不是表示它一定比所有強酸溶液更不酸？"
+        ]
+      },
+      {
+        "id": "L58-001~R40008",
+        "a": "R40008",
+        "b": "L58-001",
+        "question_score": 0.333,
+        "answer_score": 0.116,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一天裡量到樹幹縮了又脹回來，是早上長出的木頭下午不見了嗎？",
+          "樹幹一天裡縮了又脹回來，縮的是哪一層、動用了多少水？"
         ]
       },
       {
@@ -463687,6 +466141,20 @@
         ]
       },
       {
+        "id": "H57-013~H58-003",
+        "a": "H57-013",
+        "b": "H58-003",
+        "question_score": 0.082,
+        "answer_score": 0.083,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "新房子的牆沒有漏水也會潮嗎？牆腳一片濕，一定是地下的水往上爬嗎？",
+          "熱帶的老磚牆牆腳一直潮，裝了冷氣之後牆會更濕嗎？"
+        ]
+      },
+      {
         "id": "I3059~I3061",
         "a": "I3059",
         "b": "I3061",
@@ -464174,6 +466642,20 @@
         "questions": [
           "星系團的重量，為什麼不能只把恆星加起來？",
           "恆星的殘骸為什麼可能讓旁邊的星變瘦？"
+        ]
+      },
+      {
+        "id": "L58-001~R40009",
+        "a": "R40009",
+        "b": "L58-001",
+        "question_score": 0.048,
+        "answer_score": 0.073,
+        "key_score": 0.6,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "寒夜裡雲杉的水開始結冰，為什麼量到的樹幹反而會變細？",
+          "樹幹一天裡縮了又脹回來，縮的是哪一層、動用了多少水？"
         ]
       },
       {
@@ -469207,10 +471689,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-3838",
-    "target_count": 3838,
+    "revision": "2026-11-12-pool-3859",
+    "target_count": 3859,
     "reviewed_on": "2026-11-12",
-    "reason": "從3784續接；2026-11-12 第七輪素材審視替後備長題 G52、G43、G42、G30（作者 F9）與 G08、G35、G01、G38（作者 F10）補原文來源，54 個提案經非作者覆核（F9 由 V12、F10 由 V13）全部收入（照原稿 17、改字後 37）；改字依覆核意見，同一事實已在舊核心者不重計；與池中舊來源同一網址的閱讀併入原來源 id。",
+    "reason": "從3838續接；2026-11-12 第八輪素材審視：作者 F11 替後備長題 G01、G42、G38、G35 補點名缺的來源，作者 F12 從池中既有核心新組長題並補 9 個核心；22 個提案經非作者覆核（F11 由 V14、F12 由 V15），收入 21 個（全部照覆核改字），退回 1 個（只讀到會議簡報，記為未收紀錄）。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -473049,7 +475531,28 @@
       "S57-003",
       "S57-004",
       "S57-005",
-      "S57-006"
+      "S57-006",
+      "P58-001",
+      "P58-002",
+      "P58-003",
+      "P58-004",
+      "P58-005",
+      "P58-006",
+      "P58-007",
+      "P58-008",
+      "H58-001",
+      "H58-002",
+      "H58-003",
+      "H58-004",
+      "T58-001",
+      "T58-002",
+      "S58-001",
+      "S58-002",
+      "S58-003",
+      "S58-004",
+      "S58-005",
+      "S58-006",
+      "L58-001"
     ],
     "overflow": [
       {
@@ -500193,6 +502696,229 @@
       "reading_status": "X3DH 4.2–4.3 已讀",
       "origin": "wave57-tech-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave57-tech.json"
+    },
+    {
+      "id": "S58-NA001",
+      "question": "星鏈衛星那次，高層大氣密度到底升高了多少、衛星在多高？",
+      "existing_ids": [
+        "N266"
+      ],
+      "source_ids": [
+        "S58-S005"
+      ],
+      "reason": "Fang 等 2022（Space Weather，10.1029/2022SW003193）的 Wiley 頁回 403，未讀；Gopalswamy 等只引用、沒有數字。F12-008 因此不寫密度增幅與高度。 原提案 F12-NA004。",
+      "reentry_condition": "讀到 Fang 等或 Dang 等 2022 的開放全文。",
+      "reading_status": "403，未讀",
+      "origin": "wave58-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+    },
+    {
+      "id": "S58-NA002",
+      "question": "1989 年磁暴在電網上量到多大的電流、影響多少人？",
+      "existing_ids": [
+        "N269"
+      ],
+      "source_ids": [
+        "S58-S004"
+      ],
+      "reason": "想讀 NASA、USGS、加拿大自然資源部的說明頁：舊網址都 404，USGS 回 403。只讀到魁北克水電公司的教育頁，沒有數值，所以 F12-007 不寫人數與電流。 原提案 F12-NA005。",
+      "reentry_condition": "讀到 NERC 1989 報告或 Boteler 2019（Space Weather）全文。",
+      "reading_status": "404／403，未讀",
+      "origin": "wave58-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-earth.json"
+    },
+    {
+      "id": "H58-NA001",
+      "question": "FSEC 25 棟住宅之後的改善成效",
+      "existing_ids": [],
+      "source_ids": [
+        "H58-S001"
+      ],
+      "reason": "原文只有一段廠商口頭回報（某廠 2000 年後出廠送往東南部的房子沒有再出現這類問題），作者自己寫「初步結果」，不夠獨立成核心；已併在 F11-005 的 notes 與來源摘要裡當限制說明。 原提案 F11-NA008。",
+      "reentry_condition": "讀到 FSEC 的後續技術報告（fsec.ucf.edu，TLS 憑證問題）有改善前後的量測時再立。",
+      "reading_status": "全文已讀",
+      "origin": "wave58-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+    },
+    {
+      "id": "H58-NA002",
+      "question": "上一口先壓住甜味，下一口清水為什麼有甜的餘味？（R42008 的全文）",
+      "existing_ids": [
+        "R42008"
+      ],
+      "source_ids": [
+        "H58-S004"
+      ],
+      "reason": "Galindo-Cuspinera 等 2006（Nature，10.1038/nature04765）付費，OpenAlex 無開放版本。改讀另一組人 2017 年開放全文的實測（F12-006）；2006 年原文的細胞實驗仍只有摘要與 F12-S005 引言的轉述，不計事實。 原提案 F12-NA002。",
+      "reentry_condition": "取得 Nature 原文，讀細胞鈣訊號圖與受試者評分。",
+      "reading_status": "原文未讀；只讀到他篇引言的轉述",
+      "origin": "wave58-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-human.json"
+    },
+    {
+      "id": "P58-NA001",
+      "question": "0.05 M 糖水與食鹽水的導電度探棒讀數（McGraw-Hill Ryerson Probeware Investigation 5-A 教師解答頁：糖 0.0、NaCl 111.1、KCl 133.4、自來水 42.3 μS）",
+      "existing_ids": [
+        "P224"
+      ],
+      "source_ids": [],
+      "reason": "這是唯一一份同一張表裡同時有糖與鹽、又寫明濃度（0.05 M）的資料，但 NaCl 111.1 μS 與另一份寫明檔位與配法的教師手冊（F11-S003：0.050 M NaCl 5214 μS/cm）差了數十倍，表頭單位只寫 μS、沒有每公分，也沒有儀器型號與溫度；數值不可信，不當來源。糖的一側改用 NBS 1950（F11-001），鹽的一側用 F11-S003。 原提案 F11-NA001。",
+      "reentry_condition": "找到這份教材所用感測器的規格、能解釋讀數量級時才重評。",
+      "reading_status": "全文 8 頁已讀（快取 nelson-probeware5a-tr.pdf，sha256 前 16 碼 5dd31a2b739b2246）",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA002",
+      "question": "稀牛奶的丁達耳散射強度隨濃度變化的量測",
+      "existing_ids": [
+        "P57-026",
+        "P240",
+        "P241"
+      ],
+      "source_ids": [],
+      "reason": "沒有找到開放全文的量測。搜尋結果是 Springer 付費論文（Laser Physics 2007）、Scribd 上的學生報告、一份高中生專題網頁與 Reed College 的實驗講義（方法，沒有結果表）；都不合來源標準或沒有數據。P57-026 的定性示範維持現狀。 原提案 F11-NA002。",
+      "reentry_condition": "找到開放取用、寫明牛奶稀釋倍數與偵測角度的散射強度量測。",
+      "reading_status": "只看到搜尋摘要，未讀全文",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA003",
+      "question": "同一份研究同時量糖水與鹽水導電度（開放取用的化學教育論文）",
+      "existing_ids": [
+        "P224"
+      ],
+      "source_ids": [
+        "P58-S001",
+        "P58-S003"
+      ],
+      "reason": "本輪沒有找到。糖（NBS 1950，10–60 wt%，20–30 °C，≤3×10⁻⁶ mho）與鹽（教師手冊，0.050 M，5214 μS/cm，未寫溫度）來自兩份互不相干的文件，所以 G01 的第一個轉折現在兩邊各有出處，但沒有「同一台儀器、同一天」的對照，片中不得報倍數。OIML R 56、USGS TM 9-A6.3 與 NIST SP 260-142 都只有氯化鉀標準液的數值（已下載讀過相關節），不含氯化鈉濃度對導電度的表。 原提案 F11-NA003。",
+      "reentry_condition": "找到同一份開放文件裡糖與鹽並列、寫明濃度與溫度的量測（例如 CRC Handbook 的 NaCl 質量百分比對導電度表的開放版本，加上任何蔗糖讀數）。",
+      "reading_status": "OIML R 56 全文已讀；USGS TM 9-A6.3 與 NIST SP 260-142 只做關鍵字檢索與相關節",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA004",
+      "question": "南京一棟歷史磚造辦公樓：濕熱外氣經牆內空氣層被冷卻而結露長黴（實測加二維熱濕模擬，Energies 13(5):1177）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "這篇最對 G42 的缺口（亞洲、磚牆、冷房、空氣層、實測加模擬），但讀不到：mdpi.com 文章頁與 PDF 都 403（curl 與 WebFetch 各一次），京都大學典藏的同一檔案回的是 JavaScript 頁不是 PDF，Europe PMC 沒有收錄。只看到搜尋摘要，不算來源。 原提案 F11-NA004。",
+      "reentry_condition": "取得全文（MDPI 開放取用，換個網路環境應可讀）後可再補 1–1.5 條，並替 G42 補上牆內溫濕度的實測曲線。",
+      "reading_status": "未讀；只有搜尋結果摘要",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA005",
+      "question": "Signal 協定的形式化安全分析結論（Cohn-Gordon、Cremers、Dowling、Garratt、Stebila）",
+      "existing_ids": [
+        "T57-003",
+        "T57-004"
+      ],
+      "source_ids": [],
+      "reason": "只讀到摘要：Springer 的 Journal of Cryptology 頁面（2020, 33:1914–1983）顯示訂閱預覽，正文沒有；eprint.iacr.org/2016/1013 上一輪與本輪都 403；作者 Stebila 個人網站只連回這兩處。摘要說「在設計中沒有發現重大缺陷」，但只憑摘要不能當來源，也不知道模型排除了哪些東西。 原提案 F11-NA005。",
+      "reentry_condition": "取得全文後可寫一個核心：獨立學者證明了什麼、明說沒有涵蓋什麼（群組、多裝置、身分驗證）。",
+      "reading_status": "只讀摘要與頁面上零散的附錄片段（快取 cohn-gordon-jcrypt.html）",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA006",
+      "question": "Rösler、Mainka、Schwenk〈More is Less〉：伺服器能對 Signal／WhatsApp／Threema 的群組做什麼",
+      "existing_ids": [
+        "T57-009"
+      ],
+      "source_ids": [
+        "P58-S005"
+      ],
+      "reason": "原論文讀不到：eprint.iacr.org/2017/713.pdf 403（curl 與 WebFetch），波鴻魯爾大學的論文頁與作者碩士論文 PDF 連線被重設或 503，IEEE 版付費。它的核心結論（伺服器控制 WhatsApp 群組成員）改由後續研究者的會議簡報（F11-S010）間接引用，寫在 F11-010，並標明只有簡報。 原提案 F11-NA006。",
+      "reentry_condition": "讀到原論文全文後，可把 F11-010 升為 1 條並補 Signal、Threema 兩家當年的情形。",
+      "reading_status": "未讀；只有搜尋結果摘要",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA007",
+      "question": "FBI 2021 年內部文件〈Lawful Access〉：各通訊軟體能交出哪些資料",
+      "existing_ids": [
+        "T57-001"
+      ],
+      "source_ids": [],
+      "reason": "Property of the People 的文件頁可開，但文件本體在 DocumentCloud，API 回 Cloudflare 403，未繞過；只讀到新聞轉述（Rolling Stone、The Record 等），不算來源。 原提案 F11-NA007。",
+      "reentry_condition": "取得文件影本後可補「其他服務在法律程序下交出什麼」1 條，這是 G38 最值得再補的一塊。",
+      "reading_status": "未讀",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA008",
+      "question": "迴圈法的原始出處（Callède 等 2000）、Rennie 等 2002 的虛擬速度、Wagner & Mueller 2011、Conevski 等 2018",
+      "existing_ids": [
+        "S57-002",
+        "S57-005",
+        "S57-006"
+      ],
+      "source_ids": [],
+      "reason": "仍讀不到全文：IAHR 文件庫的兩篇（Conevski 等 River Flow 2018、Wagner & Mueller IAHR 2009）下載連結回空檔（需登入）；E3S Web of Conferences 與 MATEC 同一出版商 403；ASCE 付費。G35 的獨立比對改由巴西的兩篇研討會論文與國家手冊承擔。 原提案 F11-NA009。",
+      "reentry_condition": "取得任一篇全文可再補床載估算的獨立驗證（例如 Paraná 河與沙丘追蹤法平均差約 29% 一說，目前只在搜尋摘要看到）。",
+      "reading_status": "只讀到 IAHR 頁面上的摘要（快取 iahr-19599.html、iahr-23935.html）",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA009",
+      "question": "香草香氣沒換，嘴裡多一點糖，為什麼有人把香味指到舌頭上？（R42006 的全文）",
+      "existing_ids": [
+        "R42006"
+      ],
+      "source_ids": [],
+      "reason": "Lim 與 Johnson 2011（Chem Senses，10.1093/chemse/bjq125）OpenAlex 標示 closed、沒有任何開放版本；Europe PMC 只有書目。池內仍只有作者摘要，C4-06 裡不計事實。 原提案 F12-NA001。",
+      "reentry_condition": "取得刊本或作者稿全文（圖書館授權），逐段讀兩個定位實驗的結果表。",
+      "reading_status": "未讀到全文；未直接請求出版社頁面",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA010",
+      "question": "嘴裡有糖，從口腔後面上去的香氣會被放大嗎？",
+      "existing_ids": [
+        "R42006"
+      ],
+      "source_ids": [],
+      "reason": "Green 等 2012〈Enhancement of retronasal odors by taste〉（PMC3243899）：Europe PMC 全文 XML 回 500，NCBI efetch 回『出版社不允許下載全文 XML』；沒有讀到正文，不提核心。 原提案 F12-NA003。",
+      "reentry_condition": "能以瀏覽器讀到 PMC 頁面全文時補讀，可替 C4-06 的『嘴裡的香』一章加 1–1.5 條。",
+      "reading_status": "只見書目",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "P58-NA011",
+      "question": "傾斜振動料斗裡的玻璃珠，推得越用力流得越慢嗎？",
+      "existing_ids": [
+        "P43-002",
+        "P43-003"
+      ],
+      "source_ids": [
+        "P58-S008"
+      ],
+      "reason": "Pastor 等 2015 的第三組實驗；答案是『驅動力越大，拱越難被震開』，與沙漏長題 G605 的拱與堵塞同一答案，不另提核心，只在 F12-003 的 scope 註明。 原提案 F12-NA006。",
+      "reentry_condition": "G605 寫稿時若要補『越用力越堵』可回來引用同一來源。",
+      "reading_status": "已讀全文",
+      "origin": "wave58-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-physics.json"
+    },
+    {
+      "id": "T58-NA001",
+      "question": "伺服器既然拿著群組名單，它能不能自己改名單？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V14（2026-11-12）退回：裁定：會議簡報不能算。理由有三：（一）本輪標準寫明「只讀到摘要的不算全文」，簡報是作者自己的條列摘要，沒有模型的前提、名單由誰簽、成員在介面上看得到什麼，這些正是「伺服器控制名單」這句話在片中會不會被說過頭的關鍵；（二）這句話指名一個有二十億使用者的服務有設計弱點，只憑一張投影片的一行字不夠；（三）作者的答案已經出現一句簡報上沒有的話（沒有用密碼學保護），正說明只靠簡報會自己補。簡報可以當入口與待讀清單，不當來源、不計條數、不進本題最終核心。重評條件：讀到論文全文（King’s College 典藏的 accepted manuscript 是 CC BY，換個網路環境應可讀；或 ePrint 2025/794、Rösler 等 EuroS&P 2018）第 3、7 節後，照原文寫，可算 1 條。在那之前，片中關於「伺服器能改成員」只能照 T57-009 說「Signal 的說法是」。 原提案 F11-010。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回",
+      "origin": "wave58-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave58-tech.json"
     },
     {
       "id": "J6-NA001",
