@@ -1,13 +1,13 @@
 ---
 id: 2026-11-11-pin-the-clock-in-the-planner
 title: Pin the clock in the planner weather readability and itinerary drag-handle e2e tests
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5.5-p06-p18-handoff
 claimed_at: 2026-11-12T01:47:46Z
 created_at: 2026-11-11T17:14:39Z
-completed_at:
+completed_at: 2026-11-12T02:54:43Z
 branch:
 depends_on: []
 scope:
@@ -80,4 +80,4 @@ Filed from PR #2060 (video work); that PR does not touch apps/web, so the fix be
   - API：`app/trips/router.py` 抽出 `trip_start_floor()`（新行程最早開始日＝UTC 昨天），`tests/conftest.py` 加 `pin_trip_today` fixture，把它和 `search_criteria` 的「出發日已過」都當成 2026-11-01；五個檔用 `pytest.mark.usefixtures("pin_trip_today")`。其他到期時間、時間戳仍用真實時間。本機 PostgreSQL 16 + Redis 跑這五個檔加 test_search_from_trip：70 passed；ruff、mypy app/tests 乾淨。
   - e2e：`travel-services.spec.ts` 的 Klook 訂房與統一訂房面板兩組（20 個）在測試內 `page.clock.setFixedTime(2026-11-01)`；不做整檔，整檔凍結會讓「booking panel back」三個測試的上一頁行為改變。本機 travel-services 122 個裡只剩那三個 back 測試失敗，但不固定時間也一樣失敗、CI 上是過的（dev server 的差異）。
   - `navigation.spec.ts:72` 本機通過、已固定時間，CI 那次失敗看起來是偶發，再觀察。readability／planner-calm／trip-stay-areas／full-stack 在 main（#2079）已固定時間。
-
+- 2026-11-12 02:54 UTC：PR #2060 head 8294d4e87 的 CI 24 項全綠（web-unit 1–3、web-e2e 1–3、api-tests 1–4、planner-browser、full-stack-smoke、lighthouse、smoke 等）；navigation.spec.ts:72 這次也過了，先前那次視為偶發。
