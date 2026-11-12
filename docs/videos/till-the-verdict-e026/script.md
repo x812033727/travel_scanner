@@ -17,7 +17,7 @@ Grant 拿著麥克風走到台中央：「Forever is for every woman who keeps a
 
 ## 這集接在哪
 
-接第 25 集最後一鏡（bible〈接點表〉25→26：Ashford 家長桌，第 105 天 19:30，吊燈；桌上並排 `two stapled white pages folded in thirds` 壓在打開的禮服盒底下、燙金請帖；Nora（`shoulder`）兩手剛把摺好的霧灰禮服從盒子裡拿起來抱在胸前；Peg 在畫面右後的爐邊、虛焦），**跳三天**。
+接第 25 集最後一鏡（已對過第 25 集 c38；bible〈接點表〉25→26：Ashford 家長桌，第 105 天 19:30，吊燈；桌上並排 `two stapled white pages folded in thirds` 壓在打開的禮服盒底下、燙金請帖；Nora（`shoulder`）兩手剛把摺好的霧灰禮服從盒子裡拿起來抱在胸前；Peg 在畫面右後的爐邊、虛焦），**跳三天**。
 第一鏡 c01 是第 108 天（7/2 週四）19:40 發表會入口的報到桌：交代時間的是她已經穿上那件霧灰禮服、手上是同色的手拿包（c04 第一次看到她）、入口的暖光與廳門口打來的慢閃光，不用字卡。律師函在這之前收進手拿包（不拍、不提；第 27 集細綱 "still in her clutch"）。
 開場 10 秒四鏡照 bible〈細綱必修〉：c01 帶位員的手遞出兩張座位卡 → c02 Theo "Mrs. Ashford, front row, center." → c03 "Mr. Ashford, second row, far end." → c04（第 9 秒）Nora 的臉、閃光打過來一下；接 c05 "They split you up."。
 第 108 天：19:40 入口 → 19:42–19:59 進場、坐下、燈暗一階 → 20:00–20:13 Sienna 上台 → 20:13–20:20 Grant 的台前獨白。後巷的車上 Peg 一個人等著（c35）。
@@ -27,7 +27,7 @@ Grant 拿著麥克風走到台中央：「Forever is for every woman who keeps a
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3）；**全身參考圖 `gown` 待畫**（從定妝照 `latent: image1`，只換衣服） | 整集 `gown`（霧灰長禮服、高船領、長袖，齊肩頭髮往後順到耳後；裙襬垂到地、蓋住鞋）；`a small misty-grey satin clutch about the size of her hand`：c07–c08 在左手，c12 起在腿上；**拍到左手就寫** `a plain narrow white-gold band with no stone, on her left ring finger`；c34 起眼眶滿是淚、c41 淚在臉上；**本集一鏡都不笑**；本集不說話 |
+| Nora | `assets/refs/nora-portrait.jpg`（r3）；**全身參考圖 `gown` 待畫**（從定妝照 `latent: image1`，只換衣服） | 整集 `gown`（霧灰長禮服、高船領、長袖，齊肩頭髮往後順到耳後；裙襬垂到地、蓋住鞋）；鞋是她自己 `decree` 的 `low nude flat shoes`（禮服盒裡只有禮服與手拿包），全身鏡拍到腳就寫這雙，本集每一鏡裙襬都蓋住鞋；`a small misty-grey satin clutch about the size of her hand`：c07–c08 在左手，c12 起在腿上；**拍到左手就寫** `a plain narrow white-gold band with no stone, on her left ring finger`；c34 起眼眶滿是淚、c41 淚在臉上；**本集一鏡都不笑**；本集不說話 |
 | Theo Park | **待畫，必須先畫**（bible 先畫順序 1） | 基本款（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲、棕色樂福鞋）；`a slim tablet in a plain grey case, its screen turned away`，**左手**；c01–c05 右手拿兩張座位卡，Nora 那張他留著、夾到平板背後；第二場起站在舞台右邊側門旁的牆前；面無表情、不笑；原聲 |
 | Elias | `assets/refs/elias-portrait.jpg`；全身參考圖待畫 | 基本款（炭灰窗格紋三件式、白襯衫開領、白口袋巾、細銀絲框眼鏡、深棕色頭髮往後梳），沒有大衣；**站著時左手插在褲子左口袋，坐著時左手在畫框外**；右手接座位卡、收進西裝內袋；不戴戒指；疤不出現；不笑；本集不說話 |
 | Lyle Becker | **待畫，必須先畫** | 30 歲白人男性、格子襯衫、反戴的素面棒球帽；`a black DSLR camera with no logo on a plain strap`（兩手）；站在第一排右邊靠走道的位子前；不戴眼鏡；不笑；本集不說話 |
