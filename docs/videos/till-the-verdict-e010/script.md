@@ -28,7 +28,7 @@ Nora 從大衣右口袋拿出那團白面紙，打開：咬過的半顆藥。她
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
 | Nora | `assets/refs/nora-portrait.jpg`（r3 修過），look `discharge`（全身參考圖待畫） | 奶油色粗麻花針織洋裝、灰色軟拖鞋、長髮披散微亂（垂過一邊肩膀）、素顏、臉色蒼白、眼睛哭腫；**大衣脫下**，用道具句 `a camel wool coat with deep pockets, lying across the foot of the bed`；c09 起臉頰濕；**手腕沒有燙痕、不戴戒指**；本集沒有任何一鏡笑；原聲 |
-| Peg | `assets/refs/peg-portrait.jpg`，look `visit` | 短燙灰髮、瘦而有紋路的臉、玳瑁框眼鏡**戴在臉上**（每一鏡，包括躺在床上）、長的深棕色木珠項鍊、燕麥色舊開襟衫罩著素色襯衫、深色長褲、平底包鞋；**左手無名指**婚戒（道具句，拍到左手就寫）；帆布袋在她床尾；帳本 c05 在手上、之後在床頭櫃；c10 起哭、臉頰濕；本集沒有任何一鏡笑；原聲 |
+| Peg | `assets/refs/peg-portrait.jpg`，look `visit` | 灰色直短髮撥向一邊（照定妝照，不是燙髮）、瘦而有紋路的臉、玳瑁框眼鏡**戴在臉上**（每一鏡，包括躺在床上）、長的深棕色木珠項鍊、燕麥色舊開襟衫罩著素色襯衫、深色長褲、平底包鞋；**左手無名指**婚戒（道具句，拍到左手就寫）；帆布袋在她床尾；帳本 c05 在手上、之後在床頭櫃；c10 起哭、臉頰濕；本集沒有任何一鏡笑；原聲 |
 | Elias | —（不露臉） | 只在 c19 對街黑車的駕駛座：`a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible, number plate out of frame`；不露手、不說話 |
 
 場景：Harborview Motor Inn 房間 `motel-room`（待畫，夜、檯燈版；c01–c18、c20–c46）、窗簾縫看出去的對街 `motel-window-view`（待畫；c19）。

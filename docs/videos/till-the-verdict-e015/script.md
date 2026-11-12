@@ -27,7 +27,7 @@ c15 起門外的人行道（09:40）；c21 跳到 10:30 的銀行；c31 跳到 2
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3），look `motel`（全身參考圖待畫） | 低髮髻、奶油色毛衣、牛仔褲、棕褐短靴；整集外出與辦公室裡都加道具句 `a camel wool coat with deep pockets, worn open`；c27 低髻鬆出一縷長髮從肩上滑到胸前（顏值鏡頭），之後那一縷一直在；**一鏡都不笑**；原聲 |
+| Nora | `assets/refs/nora-portrait.jpg`（r3），look `motel`（全身參考圖待畫） | 低髮髻、奶油色毛衣、牛仔褲、棕褐短靴；整集外出與辦公室裡都加道具句 `a camel wool coat with deep pockets, worn open`；c26（顏值鏡頭）一縷長髮從低髻鬆出、從肩上滑到胸前；**c27 起**那一縷一直垂在胸前（她下一次入鏡是 c28），拍到她的正面每一鏡都寫，到第 16 集 c39 她把它挽回髻裡；**一鏡都不笑**；原聲 |
 | Peg | `assets/refs/peg-coat.jpg`（`coat`） | 整集 `coat`（棕色鋪棉長大衣、玳瑁框眼鏡戴在臉上）；白天深棕色平底鞋，晚上道具句 `worn beige house slippers`（外貌句後接 `her feet in worn beige house slippers instead of shoes`）；**c01–c04 左手無名指婚戒**；**c05 起** `a faint pale band of skin on her left ring finger where a ring used to be`；c21–c28 坐著織灰藍毛線；**眼鏡每一鏡戴在臉上**；一鏡都不笑；原聲 |
 | 當鋪老闆 | **待畫，必須先畫**（extras `pawnbroker`） | 60 歲越南裔男性、稀疏的灰髮往後梳、有紋路的臉、灰色開襟衫配格子法蘭絨襯衫；放大鏡是道具；站在櫃台後；原聲 |
 | 銀行行員 | **待畫，必須先畫**（extras `bank-teller`） | 26 歲黑人女性、短的蓬鬆捲髮、小金耳釘、深藍西裝外套配白襯衫；站在櫃台後；原聲 |
@@ -36,7 +36,7 @@ c15 起門外的人行道（09:40）；c21 跳到 10:30 的銀行；c31 跳到 2
 | Theo | 待畫（第 16 集起要用） | 只在 c41 副駕駛座那側、車頂上方露出頭與肩、虛焦、看不清臉；不說話 |
 
 場景：港邊當鋪 `pawnshop`（待畫；c01–c14）、當鋪門外的港邊人行道 `harbor-sidewalk`（待畫；c15–c20）、銀行分行 `bank-branch`（待畫；c21–c30）、汽車旅館外的街 `motel-street`（待畫，夜、濕；c31、c36、c38、c41）、汽車旅館辦公室櫃台 `motel-front`（待畫，夜版；c32–c35、c37、c39–c40）。
-道具：Nora 的卡夾與她的婚戒、Peg 的婚戒與之後的淡色指痕、放大鏡、當鋪的玻璃櫃、當票、駕照、現金、Peg 的帳本、帆布袋、Peg 的新毛線、銀行螢幕、兩張卡、薄荷糖碗、檯燈、駝色大衣、拖鞋、對街的黑車、Elias 的大衣。
+道具：Nora 的卡夾與她的婚戒、Peg 的婚戒與之後的淡色指痕、放大鏡、當鋪的玻璃櫃、當票、駕照、現金與 Peg 的舊皮夾、Peg 的帳本、帆布袋、Peg 的新毛線、銀行螢幕、兩張卡、薄荷糖碗、檯燈、駝色大衣、拖鞋、對街的黑車、Elias 的大衣。
 
 ## 分鏡與台詞
 
@@ -71,7 +71,7 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
 - **軸線**：主鏡在客人這邊、兩人身後偏右，往櫃台拍：**Nora 在 Peg 左邊（畫面左，靠門）、Peg 在畫面右**，老闆在櫃台後中間偏右。兩人說話時轉向對方：Peg 看畫面左的 Nora，Nora 看畫面右的 Peg；兩人的單人鏡都在櫃台前、兩人之間斜拍。老闆的鏡從 Peg 的左肩後拍（她的肩在畫框右下緣），他看畫面右下的 Peg。
 - **在場的人**：Nora、Peg、當鋪老闆。
 - **這場要講完的事**：Nora 要當自己的婚戒，Peg 不准；Peg 當了自己的婚戒，換到四百塊、把當票夾進帳本（結尾：「Ring. Four hundred.」）。
-- **配樂**：c01 只有門外的海鷗與遠處的船笛；c05「喀」一聲之後一個低的大提琴長音；c13 帳本闔上時收掉；c14 門鈴。
+- **配樂**：c01 只有門外的海鷗與遠處的船笛；c05「喀」一聲之後一個低的大提琴長音；c13 皮夾闔上時收掉；c14 門鈴。
 - **離開這場**：c14 Peg 推門出去；接第二場，Nora 追出來。
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
@@ -88,8 +88,8 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
 | c10 | 近景、固定；同 c03 的鏡位；直式，Peg 的臉在上三分之一 | Peg（`coat`，玳瑁框眼鏡戴在臉上），站在櫃台前；暖黃燈；眼睛從畫面右上的老闆垂到絨布上的戒指，再抬起來；眉毛壓平、嘴唇抿成一條、喉嚨吞一下，`no smile at any moment, until the last frame` | Peg 看了戒指最後一眼，向老闆點一下頭；剪在頭點下去；嘴閉著；最後：她抬著頭、看著老闆 | — | 約 2.5 秒 |
 | c11 | 插鏡、手部特寫、固定；**第一格就是玻璃櫃面的邊**；直式；鏡頭很低、貼著玻璃邊斜拍 | Peg 的左手把 `a plain driver's license card, its back facing up, no readable print` 推過玻璃，`a faint pale band of skin on her left ring finger where a ring used to be`；右手拿著一支櫃台上的黑色原子筆，筆尖落在 `a small pale green pawn ticket about the size of her palm, print not readable` 上，紙面 `far out of focus, only soft pale blur`，焦點在筆尖與她的左手；暖黃燈；畫面裡沒有臉 | Peg 的左手把駕照推過去（動作一），右手的筆尖在當票上簽（只看到筆在動）（動作二）；剪在筆走到一半；畫面上沒有嘴；最後：駕照在老闆那邊，筆停在紙上 | — | 約 3 秒 |
 | c12 | 插鏡、手部特寫、固定；**第一格就是玻璃上的一小摺鈔票**；直式；從櫃台上方斜拍 | 老闆的手（灰色開襟衫袖口）把 `a small fold of worn green banknotes, faces not readable` 與 `a small pale green pawn ticket about the size of her palm, print not readable`（只見背面）放到玻璃上、推向 Peg；駕照背面朝上放在旁邊；Peg 的右手立著 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`（封底朝鏡頭、書頁不入鏡）伸進畫面，左手 `a faint pale band of skin on her left ring finger where a ring used to be`；暖黃燈；畫面裡沒有臉 | 老闆把錢、當票與駕照推過來（動作一），Peg 的左手拿起當票、夾進右手帳本的書頁裡（只見紙邊）（動作二）；剪在當票滑進書頁；畫面上沒有嘴；最後：當票在帳本裡，鈔票與駕照還在玻璃上 | — | 約 2.5 秒 |
-| c13 | 近景、固定；同 c03 的鏡位；直式，Peg 的臉在上三分之一；下緣是她胸前的帳本 | Peg（`coat`，玳瑁框眼鏡戴在臉上），站在櫃台前；右手把 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine` 立在胸前、封底朝鏡頭，書頁不入鏡（當票已夾在書頁裡）；左手把剛收的 `a small fold of worn green banknotes, faces not readable` 與背面朝上的駕照塞進帳本的封皮夾層（只見邊），`a faint pale band of skin on her left ring finger where a ring used to be`；暖黃燈；四分之三側臉朝畫面左下的帳本、眼睛垂著，不看鏡頭；眉毛壓平、嘴唇在字之間抿緊、聲音乾、平，`no smile at any moment, until the last frame` | Peg 的左手把鈔票與駕照塞進帳本封皮（動作一），嘴在說話（乾、像記帳）（動作二）；說完「啪」一聲闔上帳本，嘴閉上；最後：闔上的帳本在她右手 | Peg（乾、像記帳）：Ring. Four hundred.（戒指。四百）（原聲）（結尾）← 因為 c09 | 約 3.5 秒 |
-| c14 | 中景、固定；鏡頭在店裡、往門口拍；直式：畫面中間是關著的門（門上的玻璃透進灰白的天光、門上掛著鈴），前景下緣是玻璃櫃的一角 | 共兩人。Peg（`coat`、深棕色平底鞋，`a plain beige canvas tote bag with no print, hanging from her left shoulder`）背影，大步走出門口；Nora（`motel`，大衣敞開）在櫃台邊轉身看她，四分之三側臉朝畫面左的門：眉心往上提、嘴唇張開，`no smile at any moment, until the last frame`；灰白的天光從門上的玻璃照進來 | Peg 把帳本塞進大衣右口袋（動作一），推開門走出去、門上的鈴一響（動作二）；剪在鈴晃到一半；Nora 嘴閉著；最後：Peg 出了門、門在她身後慢慢關上，Nora 還在櫃台邊 | — | 約 2.5 秒 |
+| c13 | 近景、固定；同 c03 的鏡位；直式，Peg 的臉在上三分之一；下緣是她胸前的皮夾與帳本 | Peg（`coat`，玳瑁框眼鏡戴在臉上），站在櫃台前；右手在胸前拿著 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`（封底朝鏡頭，書頁不入鏡，當票已夾在書頁裡），帳本前面疊著攤開的 `a worn brown leather wallet about the size of her palm`（皮夾的背面朝鏡頭，用右手拇指壓著）；左手把剛收的 `a small fold of worn green banknotes, faces not readable` 與背面朝上的駕照塞進皮夾（只見邊），`a faint pale band of skin on her left ring finger where a ring used to be`；暖黃燈；四分之三側臉朝畫面左下的帳本、眼睛垂著，不看鏡頭；眉毛壓平、嘴唇在字之間抿緊、聲音乾、平，`no smile at any moment, until the last frame` | Peg 的左手把鈔票與駕照塞進皮夾（動作一），嘴在說話（乾、像記帳）（動作二）；說完「啪」一聲闔上皮夾，嘴閉上；最後：闔上的皮夾疊在帳本前面、在她右手 | Peg（乾、像記帳）：Ring. Four hundred.（戒指。四百）（原聲）（結尾）← 因為 c09 | 約 3.5 秒 |
+| c14 | 中景、固定；鏡頭在店裡、往門口拍；直式：畫面中間是關著的門（門上的玻璃透進灰白的天光、門上掛著鈴），前景下緣是玻璃櫃的一角 | 共兩人。Peg（`coat`、深棕色平底鞋，`a plain beige canvas tote bag with no print, hanging from her left shoulder`）背影，大步走出門口；Nora（`motel`，大衣敞開）在櫃台邊轉身看她，四分之三側臉朝畫面左的門：眉心往上提、嘴唇張開，`no smile at any moment, until the last frame`；灰白的天光從門上的玻璃照進來 | Peg 把皮夾與帳本一起塞進大衣右口袋（動作一），推開門走出去、門上的鈴一響（動作二）；剪在鈴晃到一半；Nora 嘴閉著；最後：Peg 出了門、門在她身後慢慢關上，Nora 還在櫃台邊 | — | 約 2.5 秒 |
 
 ### 第二場：人行道，四十年（約 18 秒）
 
@@ -133,7 +133,7 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
 | c27 | 近景、固定；鏡頭在等候椅前方、低一點；直式，Peg 的臉在上三分之一；身後是玻璃外灰色的街（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上），坐在等候椅上，兩手拿著 `a long narrow strip of slate-blue knitting on two wooden knitting needles as long as her forearm, about as long as her arm`；`a faint pale band of skin on her left ring finger where a ring used to be`；冷白的頂燈；四分之三側臉朝畫面左的櫃台與 Nora；眼睛在鏡片後面一下睜大、眉毛挑起、嘴唇微張，然後下巴繃緊，`no smile at any moment, until the last frame` | Peg 的兩根棒針停在半空（動作一），她把毛線放到腿上的帆布袋上（動作二）；剪在毛線放下去；嘴閉著；最後：毛線在她腿上，她看著 Nora | — | 約 2.5 秒 |
 | c28 | 近景、慢推（從肩上推到臉）；同 c24 的鏡位；直式，臉在上三分之一 | Nora（`motel`，大衣敞開），第一格已經從螢幕前直起身；那縷長髮垂在胸前；冷白的光；四分之三側臉朝畫面右前、眼睛從螢幕移開、看著畫面右前外的行員，不看鏡頭；眉毛壓平、眼睛冷而定、嘴唇在字之間抿薄、下巴咬緊，`no smile at any moment, until the last frame` | Nora 嘴在說話（輕、一字一字，算完了）（動作一）；說完左手蓋住櫃台上的兩張卡（動作二），嘴閉上，下巴不動；最後：她站直，左手蓋著兩張卡 | Nora（輕、一字一字）：Five days before that night.（那一晚之前五天）（原聲）（結尾）← 因為 c26 | 約 3.5 秒 |
 | c29 | 插鏡、手部特寫、固定；**第一格就是淺色櫃台上 Nora 的左手與兩張卡**；直式；從櫃台上方斜拍 | 淺色櫃台；`two plain bank cards, one dark blue and one silver, blank faces, no logos or numbers`；Nora 的左手（奶油色毛衣袖口、駝色大衣袖口）蓋在兩張卡上；冷白的頂燈；畫面裡沒有臉 | Nora 的手指把兩張卡收進掌心，握成拳頭；剪在拳頭握緊；畫面上沒有嘴；最後：兩張卡在她握緊的左手裡 | — | 約 2 秒 |
-| c30 | 中景、固定；鏡頭在銀行門口內側、往裡拍；直式：前景右緣是玻璃門的金屬框，中間是等候椅與往門口走來的 Nora | 共兩人。Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴）從櫃台那邊大步往門口走來，眼睛看著畫面右外的門；眉毛壓平、下巴咬緊、嘴唇閉緊；Peg（`coat`、深棕色平底鞋）從等候椅上站起來，把毛線塞進 `a plain beige canvas tote bag with no print`、往肩上一掛：眉頭擰著；兩張臉都 `no smile at any moment, until the last frame`；冷白的頂燈 | Nora 走過 Peg 身邊（動作一），Peg 站起來跟上（動作二）；剪在 Peg 站到一半；兩人都嘴閉著；最後：Nora 快到門口，Peg 在她身後 | — | 約 2.5 秒 |
+| c30 | 中景、固定；鏡頭在銀行門口內側、往裡拍；直式：前景右緣是玻璃門的金屬框，中間是等候椅與往門口走來的 Nora | 共兩人。Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴）從櫃台那邊大步往門口走來，那縷從低髻鬆出的深栗色長髮垂在胸前；眼睛看著畫面右外的門；眉毛壓平、下巴咬緊、嘴唇閉緊；Peg（`coat`、深棕色平底鞋）從等候椅上站起來，把毛線塞進 `a plain beige canvas tote bag with no print`、往肩上一掛：眉頭擰著；兩張臉都 `no smile at any moment, until the last frame`；冷白的頂燈 | Nora 走過 Peg 身邊（動作一），Peg 站起來跟上（動作二）；剪在 Peg 站到一半；兩人都嘴閉著；最後：Nora 快到門口，Peg 在她身後 | — | 約 2.5 秒 |
 
 ### 第四場：辦公室，對街那輛車（約 30 秒）
 
@@ -149,14 +149,14 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c31 | 全景、慢推；鏡頭在對街、旅館斜對面，往旅館拍；直式：下半是濕的兩線道與停車場，上半是兩層樓的汽車旅館，左上是招牌柱的紅光 | 遠處沒有臉：一樓辦公室的窗亮著暖黃的光，窗裡兩三個很小的人影（看不清臉）；二樓外走道一排門；招牌柱的紅霓虹一明一暗，紅光映在濕的柏油上；`wet asphalt, no rain falling`，`an empty wet street`；畫面右緣外是對街的路燈（只見它照在濕路面上的一片冷白光） | 鏡頭慢慢往辦公室亮著的窗推；紅光亮兩拍、暗一拍，濕路面上的紅光跟著一明一暗；剪在紅光第二次暗下去；畫面上沒有嘴；最後：辦公室的窗在畫面中間 | — | 約 2.5 秒 |
-| c32 | 中景、慢推（從中景推到中近景）；鏡頭在門內、兩個女人身後，往櫃台拍；直式前後疊開：前景是兩人的背，中間是櫃台，上緣是 Bev 與掛鑰匙的木板；畫面左緣是窗框 | 共三人，只有 Bev 露臉。畫面左：Nora（`motel`，`a camel wool coat with deep pockets, worn open`）的背與低髻；畫面右：Peg（`coat`，玳瑁框眼鏡戴在臉上，`worn beige house slippers`）的背；櫃台後：Bev（`bev`：圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上）：眉毛挑起、嘴唇閉著，`no smile at any moment, until the last frame`；櫃台左端 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`，右端 `a small grey card reader on the desk, its screen turned away`；暖黃檯燈；窗外的紅霓虹一明一暗 | Peg 從大衣右口袋的帳本封皮裡抽出一小摺鈔票、往櫃台上放；Bev 低頭看著；剪在 Peg 的手放到櫃台上；三人都嘴閉著；最後：Peg 的手按在櫃台上的鈔票上 | — | 約 2.5 秒 |
+| c32 | 中景、慢推（從中景推到中近景）；鏡頭在門內、兩個女人身後，往櫃台拍；直式前後疊開：前景是兩人的背，中間是櫃台，上緣是 Bev 與掛鑰匙的木板；畫面左緣是窗框 | 共三人，只有 Bev 露臉。畫面左：Nora（`motel`，`a camel wool coat with deep pockets, worn open`）的背與低髻；畫面右：Peg（`coat`，玳瑁框眼鏡戴在臉上，`worn beige house slippers`）的背，右手拿著 `a worn brown leather wallet about the size of her palm`（只見一角）；櫃台後：Bev（`bev`：圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上）：眉毛挑起、嘴唇閉著，`no smile at any moment, until the last frame`；櫃台左端 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`，右端 `a small grey card reader on the desk, its screen turned away`；暖黃檯燈；窗外的紅霓虹一明一暗 | Peg 從大衣右口袋拿出皮夾、抽出一小摺鈔票（動作一），往櫃台上放（動作二）；Bev 低頭看著；剪在 Peg 的手放到櫃台上；三人都嘴閉著；最後：Peg 的手按在櫃台上的鈔票上 | — | 約 2.5 秒 |
 | c33 | 插鏡、手部特寫、固定；**第一格就是木櫃台上的一小摺鈔票**；直式；從客人這邊、櫃台面高度拍 | Peg 的右手（棕色鋪棉大衣袖口）把 `a small fold of worn green banknotes, faces not readable` 一張一張放到木櫃台上；她的左手平平按在櫃台邊，`a faint pale band of skin on her left ring finger where a ring used to be`；暖黃檯燈；畫面裡沒有臉 | Peg 把鈔票放下（動作一），右手把那疊往 Bev 那邊推過去（動作二）；剪在鈔票推到一半；畫面上沒有嘴；最後：鈔票在櫃台中間 | — | 約 2 秒 |
 | c34 | 近景、慢推（從胸上推到肩上）；從 Peg 的左肩後拍（Peg 的灰髮後腦與左肩在畫框右下緣、虛焦）；直式，Bev 的臉在上三分之一；身後是掛鑰匙的木板 | Bev（圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上），站在櫃台後；右手把櫃台上的鈔票收過去；暖黃檯燈；四分之三側臉朝畫面左下的兩個人；說的時候眼睛往畫面左的窗瞄、下巴朝窗那邊一點、眉毛壓低、嘴唇在字之間收小、聲音壓低像在說悄悄話，`no smile at any moment, until the last frame`；Peg 只有後腦與肩、不露臉 | Bev 收起鈔票（動作一），下巴朝畫面左的窗一點、嘴在說話（壓低、愛管閒事）（動作二）；說完眼睛還盯著窗那邊，嘴閉上；最後：她看著畫面左外的窗 | Bev（壓低、愛管閒事）：That black car across the street? Five days now.（對街那輛黑車？停五天了）（原聲）（→ 答在 c36） | 約 4.5 秒 |
-| c35 | 中近景、固定；鏡頭在窗邊的牆旁、往 Nora 拍；直式，頭上留空；畫面左緣是窗框（虛焦）；身後是櫃台與檯燈（虛焦） | Nora（`motel`，大衣敞開），從櫃台前轉身走到窗前，左手扶上窗框；暖黃檯燈從畫面右、紅霓虹從窗外一明一暗照在她左頰；四分之三側臉朝畫面左的窗外；眉頭往中間收、眼睛眯起、嘴唇抿緊、呼吸放慢，`no smile at any moment, until the last frame` | Nora 從櫃台走到窗前（動作一），左手扶上窗框、往外看（動作二）；剪在手碰到窗框；嘴閉著；最後：她站在窗前、往外看 | — | 約 2.5 秒 |
+| c35 | 中近景、固定；鏡頭在窗邊的牆旁、往 Nora 拍；直式，頭上留空；畫面左緣是窗框（虛焦）；身後是櫃台與檯燈（虛焦） | Nora（`motel`，大衣敞開），從櫃台前轉身走到窗前，左手扶上窗框；那縷從低髻鬆出的深栗色長髮垂在胸前；暖黃檯燈從畫面右、紅霓虹從窗外一明一暗照在她左頰；四分之三側臉朝畫面左的窗外；眉頭往中間收、眼睛眯起、嘴唇抿緊、呼吸放慢，`no smile at any moment, until the last frame` | Nora 從櫃台走到窗前（動作一），左手扶上窗框、往外看（動作二）；剪在手碰到窗框；嘴閉著；最後：她站在窗前、往外看 | — | 約 2.5 秒 |
 | c36 | 主觀鏡、慢推（從遠景推到中遠景）；**第一格就是窗框與窗外的街**；直式：前景下緣是窗台與櫃台左端的薄荷糖碗（虛焦），上方遠處是對街；窗玻璃上只有櫃台檯燈的一點暖光 | 窗外：停車場、濕的兩線道，對街人行道上一盞冷白的路燈，燈下 `a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible, number plate out of frame`，車頭朝畫面左；紅霓虹一明一暗染在濕的柏油上；`wet asphalt, no rain falling` | 鏡頭慢慢往那輛車推近；駕駛座的暗影一動也不動；剪在推到一半；畫面上沒有嘴；最後：黑車還在路燈下 | — | 約 3 秒 |
 | c37 | 近景、固定；鏡頭在櫃台前、Peg 的左前方斜拍（Bev 在畫框外）；直式，Peg 的臉在上三分之一；身後是櫃台一角、檯燈與掛鑰匙的木板（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上、瘦而有紋路的臉、灰髮、木珠項鍊），站在櫃台前；暖黃檯燈；四分之三側臉朝畫面左的窗；她早就看過這輛車：眼睛在鏡片後面不驚訝、眉頭壓低、下巴繃緊、嘴唇抿成一條、鼻子慢慢吐一口氣，`no smile at any moment, until the last frame` | Peg 轉頭看向畫面左的窗（動作一），右手按住大衣口袋裡的帳本（動作二）；剪在手按下去；嘴閉著；最後：她看著窗那邊 | — | 約 2.5 秒 |
 | c38 | 中景、長焦、固定；鏡頭在辦公室窗內、往對街拍（窗框在畫框左緣、虛焦）；直式：畫面中間是對街路燈下的黑車駕駛座那側，只拍到車門與車門下的濕路面 | `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`；第一格駕駛座的門已經開著；一隻黑色皮鞋、深炭灰的褲腳踩在濕的柏油上，`a dark charcoal wool overcoat, worn open` 的下襬垂下來；他的右手扶著車門的上緣（白襯衫袖口、炭灰袖子），指間夾著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it`；`his left hand in the overcoat's left pocket`；臉不入鏡；路燈冷白的光從上面照下來；`wet asphalt, no rain falling` | 他的右手扶著車門上緣，從車裡站起來（動作一），第二隻腳踩到濕的路面上（動作二）；剪在第二隻腳落地；畫面上沒有臉、沒有嘴；最後：車門開著，他站在車門邊（只看得到腰以下），左手在大衣口袋、右手夾著紙 | — | 約 2.5 秒 |
-| c39 | 近景、慢推（從肩上推到臉）；同 c35 的鏡位；直式，臉在上三分之一 | Nora（`motel`，大衣敞開），站在窗前，左手扶著窗框；紅霓虹一明一暗、暖黃檯燈從畫面右；四分之三側臉朝畫面左上的窗外；眼睛一下睜大、眉毛挑起、嘴唇微張、呼吸停住，`no smile at any moment, until the last frame` | Nora 扶在窗框上的手指收緊，眼睛跟著窗外那個站起來的人往上抬；剪在眼睛抬到一半；嘴閉著；最後：她盯著窗外 | — | 約 2.5 秒 |
+| c39 | 近景、慢推（從肩上推到臉）；同 c35 的鏡位；直式，臉在上三分之一 | Nora（`motel`，大衣敞開），站在窗前，左手扶著窗框；那縷從低髻鬆出的深栗色長髮垂在胸前；紅霓虹一明一暗、暖黃檯燈從畫面右；四分之三側臉朝畫面左上的窗外；眼睛一下睜大、眉毛挑起、嘴唇微張、呼吸停住，`no smile at any moment, until the last frame` | Nora 扶在窗框上的手指收緊，眼睛跟著窗外那個站起來的人往上抬；剪在眼睛抬到一半；嘴閉著；最後：她盯著窗外 | — | 約 2.5 秒 |
 | c40 | 插鏡、特寫、固定；**第一格就是窗台上的薄荷糖碗**；直式；鏡頭在櫃台左端、貼著窗台高度 | `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`，在櫃台左端、靠窗；Bev 的手（碎花袖口）從畫面右伸進來，捏起一顆糖、停在半空；窗外的紅霓虹照在糖紙上，一明一暗；畫面裡沒有臉 | Bev 捏起一顆糖、手停在半空不動；剪在紅光暗下去的那一拍；畫面上沒有嘴；最後：那顆糖還停在她指間 | — | 約 2.5 秒 |
 | c41 | 中景（膝上）、長焦、固定（接第 16 集第一鏡的同一刻）；**從辦公室窗內往外拍**：前景是窗框、櫃台左端的薄荷糖碗，與 Nora 的右肩與後腦（虛焦，畫框右下緣）；窗玻璃上只有櫃台檯燈的一點暖光；直式：Elias 在畫面中上，路燈在他頭頂上方 | 前景：Nora（`motel`，`a camel wool coat with deep pockets, worn open`）的右肩與低髻（虛焦、不露臉）、`a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`（虛焦）。對街路燈下：`a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左，駕駛座的門開著；Elias（`elias`：34 歲義大利裔、約 188 公分、瘦、肩線直、橄欖膚色、深棕色頭髮往後梳、深棕色眼睛、細銀絲框眼鏡、炭灰窗格紋三件式西裝、白襯衫開領、白色口袋巾；`a dark charcoal wool overcoat, worn open`；黑色皮鞋）剛下車站直，站在開著的車門邊，`his left hand in the overcoat's left pocket`，右手垂在身側，拿著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it`（紙背朝鏡頭）；他抬頭看著畫面右上外的二樓窗，不看鏡頭；路燈冷白的光照亮他的臉，紅霓虹的一點紅落在他的鏡片上；臉：眉毛平、眼睛定住、下巴收、嘴唇閉著、呼吸很慢，`no smile at any moment, until the last frame`；車子另一側，副駕駛座的門也開著，Theo 的頭與肩剛從車頂上方冒出來（虛焦、看不清臉）；`wet asphalt, no rain falling` | Elias 站直、抬起頭看二樓的窗，一動不動；紅霓虹亮兩拍、暗一拍，他鏡片上的紅跟著一明一暗；剪在紅光第二次亮起；畫面上的人都嘴閉著；最後：他站在路燈下、抬頭看著二樓的窗，左手在大衣口袋 | —（無台詞）（結尾）（懸念 → 下一集第一場：他是誰） | 約 3 秒 |
 
@@ -199,7 +199,7 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
 #### 2026-11-12 審稿後的修改
 
 依 `review/2026-11-12-e011-e015-storyboard.md`、`review/2026-11-12-e015-e020-storyboard.md` 與 bible〈第 11–15 集審稿後補定〉〈第 15–20 集審稿後補定〉改的。本集還沒錄、沒拍，台詞一句都沒改，沒有要重錄或重抽的鏡。
-- **四百塊與駕照**（c12–c14、c32）：c12 Peg 的左手把當票夾進右手帳本的書頁；c13 左手把鈔票與駕照塞進帳本的封皮夾層；c14 帳本塞進大衣右口袋再出門；c32 晚上的房錢從帳本封皮裡抽出來（兩份審稿的建議合成這一種）。
+- **四百塊與駕照**（c12–c14、c32）：c12 Peg 的左手把當票夾進右手帳本的書頁。鈔票與駕照原寫塞進帳本的封皮夾層、晚上從封皮抽房錢，**跨集稽核改成放進 Peg 的皮夾**（見下一節）。
 - **當鋪的門**（場頭、c01、c07、c14）：門關著、掛著鈴，灰白的天光從門上的玻璃照進來；c14 Peg 推門出去、鈴一響。
 - **c38**：第一格車門已開，右手扶著車門上緣站起來、指間夾著合約，補 `his left hand in the overcoat's left pocket`。
 - **c41**：右手拿著合約、紙背朝鏡頭（接第 16 集 c01–c03）。
@@ -209,6 +209,13 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
 - **短句的收尾動作**：c26 右手按住櫃台邊；c28 左手蓋住兩張卡（c28 第一格已經直起身）。
 - **正面寫法**：當鋪與銀行的牆 `bare plain walls`、人行道與當鋪門的玻璃 `blank window glass`、c31 `an empty wet street`、銀行是開放式櫃台。
 - **場景 id**：人行道照 `cast.json` 的 `harbor-sidewalk` 寫（磚造店面、馬路對面的矮海堤），c15、c17 的背景與英文光句一起改。
+- 鏡數與秒數不變：41 鏡／113.5 秒。
+
+#### 2026-11-12 跨集稽核後的修改
+
+依 `review/2026-11-12-audit-e011-e020.md`（第 11–20 集跨集連戲稽核）改的。台詞一句都沒改，**沒有要重錄的**；下列鏡照新寫法抽（已抽過的要重抽）。
+- **四百塊與駕照放進 Peg 的皮夾**（c13、c14、c32，取代上一節的「塞進帳本的封皮夾層」）：c13 Peg 右手拿著帳本與攤開的 `a worn brown leather wallet about the size of her palm`（第 14 集的句子），左手把鈔票與駕照塞進皮夾，說完「啪」闔上皮夾；c14 皮夾與帳本一起塞進大衣右口袋；c32 晚上的房錢從皮夾裡抽出來。帳本封皮的夾層只放糖果工坊的收據（第 52 集的證物）。音效「帳本闔上」改「皮夾闔上」。
+- **鬆出的那縷頭髮**（角色表、清單 1、c30、c35、c39）：c26 顏值鏡頭裡鬆出來，**c27 起**是固定的樣子（她下一次入鏡是 c28），之後拍到她正面的鏡都寫；第 16 集 c39 她把它挽回髻裡，第 17–19 集不寫。
 - 鏡數與秒數不變：41 鏡／113.5 秒。
 
 ### 配音
@@ -237,7 +244,7 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
   | c09 | 放大鏡放下、戒指落在絨布上 |
   | c11 | 駕照滑過玻璃、筆尖在紙上 |
   | c12 | 鈔票與當票推過玻璃 |
-  | c13 | **帳本「啪」一聲闔上** |
+  | c13 | **皮夾「啪」一聲闔上** |
   | c14 | **門上的鈴** |
   | c15–c20 | 海鷗、海浪拍岸、腳步 |
   | c21 | 頂燈的嗡聲、遠處的印表機、棒針碰在一起 |
@@ -268,7 +275,7 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `motel`（低髮髻、奶油色毛衣、牛仔褲、棕褐短靴），整集 `a camel wool coat with deep pockets, worn open`；c26 起一縷長髮垂在胸前 | c01、c07、c14–c16、c20–c21、c24、c26、c28、c30、c32（背）、c35、c39、c41（肩與後腦）（c02、c29 只有手） | `motel` 已加；**要畫全身參考圖**；大衣是道具句 |
+| Nora | `motel`（低髮髻、奶油色毛衣、牛仔褲、棕褐短靴），整集 `a camel wool coat with deep pockets, worn open`；c26 那縷長髮鬆出來，c27 起垂在胸前（到第 16 集 c39） | c01、c07、c14–c16、c20–c21、c24、c26、c28、c30、c32（背）、c35、c39、c41（肩與後腦）（c02、c29 只有手） | `motel` 已加；**要畫全身參考圖**；大衣是道具句 |
 | Peg | `coat`；白天深棕色平底鞋、晚上 `worn beige house slippers`；眼鏡每鏡戴在臉上；c01–c04 婚戒、c05 起淡色指痕 | c01、c03、c06、c10、c13、c14–c15（背）、c17、c19、c21、c27、c30、c32（背）、c34（後腦）、c37（c04、c05、c11、c18、c33 只有手） | 帆布袋、婚戒、指痕、帳本、毛線、拖鞋寫在每鏡（外貌句不帶道具） |
 | 當鋪老闆 | extras `pawnbroker`：灰色開襟衫配格子法蘭絨襯衫 | c01（虛焦）、c09（c08、c12 只有手） | **新角色，要畫定妝照** |
 | 銀行行員 | extras `bank-teller`：深藍西裝外套配白襯衫、小金耳釘 | c21、c23、c25（c22 只有手） | **新角色，要畫定妝照** |
@@ -281,7 +288,7 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
 - 定妝照：`nora-portrait.jpg`（r3）、`peg-coat.jpg`（`coat`）、`elias-portrait.jpg` 都有。**Nora `motel` 全身參考圖、Elias 全身參考圖（188 公分、穿大衣，從定妝照 `latent: image1`）待畫**。
 - **必須先畫**（台詞在畫面上、用原聲）：**當鋪老闆**（extras `pawnbroker`）、**銀行行員**（extras `bank-teller`）、**Bev**（第 4–10 集清單，若還沒畫）。
 - 場景：**港邊當鋪 `pawnshop`**（直式、門在畫面左、關著、門上掛鈴，玻璃櫃只放手錶、戒指、銀墜子）、**當鋪門外的港邊人行道 `harbor-sidewalk`**、**銀行分行 `bank-branch`**（螢幕從側面拍）、**汽車旅館外的街 `motel-street`**（夜、濕、不下雨；對街路燈下的黑車）、**汽車旅館辦公室櫃台 `motel-front`**（夜版、窗看得到對街）都待畫。
-- 道具：Peg 的灰藍毛線（避免畫成嬰兒帽，bible 建議先畫）、Peg 的細金婚戒與 Nora 的鉑金鑽戒建議先畫；當票、駕照、放大鏡、鈔票、銀行螢幕、黑車照道具句。
+- 道具：Peg 的灰藍毛線（避免畫成嬰兒帽，bible 建議先畫）、Peg 的細金婚戒與 Nora 的鉑金鑽戒建議先畫；當票、駕照、放大鏡、鈔票、Peg 的舊皮夾（第 14 集的句子）、銀行螢幕、黑車照道具句。
 - 沒有參考圖的人：Theo（c41 只在車頂上方、虛焦）。
 
 ### 3. 長鏡清單
@@ -292,19 +299,19 @@ c32–c35、c37、c39–c40 寫 `night, a warm yellow desk lamp on the counter, 
 
 | 段落 | 配樂 | 重音 |
 | --- | --- | --- |
-| 第一場 c01–c14 | 海鷗與船笛 → 低的大提琴長音 → 收掉 | c05「喀」、c09「Four hundred.」、c13 帳本闔上 |
+| 第一場 c01–c14 | 海鷗與船笛 → 低的大提琴長音 → 收掉 | c05「喀」、c09「Four hundred.」、c13 皮夾闔上 |
 | 第二場 c15–c20 | 海鷗 → 很輕的弦 → 沒解決的和弦 | c17「Forty years on my finger.」 |
 | 第三場 c21–c30 | 頂燈的嗡聲 → 很冷的長音 → 重的低音 | c26「March twelfth.」、c28「Five days before that night.」 |
 | 第四場 c31–c41 | 霓虹低嗡 → 冷的單音 → 低沉的鼓 → 懸著的弦 | c34 Bev 那句、c38 車門打開、c41 露臉 |
 
-招牌音效：c05 戒指落在玻璃上的「喀」、c13 帳本闔上、c14 門鈴、c38 車門打開。其他見〈音樂與音效〉。
+招牌音效：c05 戒指落在玻璃上的「喀」、c13 皮夾闔上、c14 門鈴、c38 車門打開。其他見〈音樂與音效〉。
 
 ### 5. 時間與帳
 
 - **時間**：第 8 天（3/24 週二）09:30 當鋪 → 09:40 人行道 → 10:30–10:45 銀行 → （下午一陣雨，不拍）→ 20:30–20:35 汽車旅館辦公室。早上陰、乾；夜裡地面濕、不下雨。第 16 集接 20:35 同一刻。
 - **錢**：Peg 的現金早上 **$25**（接第 14 集）→ 當戒指 **+$400**（c09 念「Four hundred.」）→ 公車 $8、吃 $14 → c33 付第 7 與第 8 晚的房錢 $178（不念數字）→ 剩 **$225**。
 - **Peg 的婚戒**：c04 轉下來、c05 放在玻璃上、c09 老闆收走（在當鋪）；c05 起她左手無名指是一圈淡色的皮膚。**當票**：c12 夾進帳本書頁裡（收據在封皮夾層，兩樣不混）；每月付利息續期（台詞不說），第 57 集贖回。
-- **帳本**：c13 念「Ring. Four hundred.」，四百塊與駕照塞進封皮夾層；c14 收進大衣右口袋；c32 從封皮裡抽出房錢；字不入鏡。
+- **帳本與皮夾**：c13 念「Ring. Four hundred.」，四百塊與駕照塞進 Peg 的舊皮夾（第 14 集那個）；c14 皮夾與帳本收進大衣右口袋；c32 從皮夾抽出房錢；帳本的字不入鏡。帳本封皮的夾層只放收據，錢不放進去。
 - **Nora 的婚戒**（Grant 給的鉑金鑽戒）：c01 從卡夾的拉鍊袋拿出、c02 推過玻璃、c03 被推回、c07 握在掌心、c20 塞進大衣左口袋，之後回到卡夾（不拍）；第 35 集賣掉。
 - **卡與帳戶**：銀色那張是 Grant 信用卡的附卡，他把她除名（c23）；深藍那張是夫妻聯名支票帳戶的金融卡，帳戶在 **3/12**（那晚之前五天）被領空（c25–c28）。兩張卡 c29 握在 Nora 左手，之後收回卡夾。台詞不說 "frozen"。
 - **Peg 的灰藍毛線**：約一隻手臂長（c21、c27），坐著等人時拿出來織，c30 收回帆布袋。
