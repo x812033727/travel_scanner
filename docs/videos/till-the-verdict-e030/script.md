@@ -41,8 +41,8 @@
 ## 分鏡與台詞
 
 景別與運鏡寫中文給人讀；正文由製作端照 `minimax-h3-colab/references/motion-quality.md` 第二節改寫成英文，每一鏡的英文正文寫「vertical 9:16 frame」與光：
-c01–c22、c26–c27、c29–c46 寫 `a narrow white service corridor, harsh white ceiling light at the corridor head, the caged bulb glowing mid-way on the left wall, one ceiling light over the loading door at the far end, deep shadow between, the light stays unchanged`；
-c25、c28 加寫 `the grey steel door standing open, low orange evening sunlight pouring in through it across the floor`（c29 起鐵門關上，回到上面那句）；
+c01–c22、c29–c46 寫 `a narrow white service corridor, harsh white ceiling light at the corridor head, the caged bulb glowing mid-way on the left wall, one ceiling light over the loading door at the far end, deep shadow between, the light stays unchanged`；
+c25–c28 寫上面那句再加 `the grey steel door standing open, low orange evening sunlight pouring in through it across the floor`（c29 起鐵門關上，回到上面那句）；
 c23 寫 `inside the parked car, early evening, the alley outside in soft shadow, the phone's soft white glow on her face`；c24 寫 `early evening, a narrow brick alley in shadow, low orange sunlight slanting in from the far end of the alley`。
 
 **欄位怎麼讀**：
