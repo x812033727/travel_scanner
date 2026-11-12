@@ -22,3 +22,5 @@
 許硯 a 42001、b 42002；小禾 a 42002、b 42002。三位女主角（從沒改胸部的原圖重畫，`live-angles/out2/`，站主「照你的建議」）：唐小棠 a 43002、b 43002；秦霜 a 43001、b 43001；阿玲 a 43002、b 43001（正側面木簪不見）。
 二牛 a 44002、b 44001；錢員外 a 44002、b 44001（`live-angles/out3/`）。
 院子 `set-xujia-yuan-l2`（2026-11-08）：l1 拿掉寫著字的木牌（`live-set-fix/out/…-45002`），第 1 集 fix3 起用 l2。
+
+第 7 集（2026-11-12，`../../live-action/screen-test-e007.py`，Colab Qwen-Image-Edit，站主選）：`sunzhanggui-portrait-l1` = 37002（cast.json 的「瞇著笑眼」改成沉穩精明）、`set-chouduan-l1`（綢緞莊後巷）= 37002（37001 招牌有假字）。試鏡原圖在 `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e007/out/`。
