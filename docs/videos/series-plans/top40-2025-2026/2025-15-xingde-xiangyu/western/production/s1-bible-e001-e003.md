@@ -144,4 +144,4 @@ main 2026-11-12 收進種田拍法與共用的分鏡規則（`docs/videos/drama/
 - **「I was on the floor! Alone!」**（站主 2026-11-12）：第 3 集台詞照細綱不改；第 2 集燈柱那場補一鏡（c13b）她左肩貼著燈柱滑坐到門前最上面那級濕台階上，之後那場她一直坐著，衣服乾淨。
   門口：門墊，下面兩級濕石台階，燈柱立在最上面那級的右端。
 - **定妝照**（站主 2026-11-12）：開拍前重修兩張：`nora-portrait.jpg` 去掉左頰與頸部的小紅痕（像傷口）；`grant-portrait.jpg` 改成平臉、嘴閉著、嘴角平（原圖嘴角微揚）。
-  Grant 的眼鏡照原圖是細金屬圓框，`cast.json` 已把 rimless 改成 `thin round metal-rim glasses`（細綱與設定集的英文還寫 rimless，以這裡為準）。
+  已修好換進 `assets/refs/`（2026-11-12，screen-test README〈定妝照修圖 r3〉；`nora-work.jpg` 同樣去掉紅痕）。Grant 的眼鏡照原圖是細金屬圓框，`cast.json` 已把 rimless 改成 `thin round metal-rim glasses`（細綱與設定集的英文還寫 rimless，以這裡為準）。

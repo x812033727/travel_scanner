@@ -99,5 +99,5 @@ bash $K/h3.sh stop --session ttv-st1 && bash $K/bootstrap.sh patch && bash $K/h3
 
 - Colab 這次分到 A100（RTX PRO 6000），每小時約 10 CU；出圖 session 約 15 分鐘，帳號 b 餘額 2,020.63 → 2,019.08（約 −1.6）。
 - 圖在雲端硬碟 `AI/備份/AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/screen-test/`（`todrive.sh` 23 files, 0 differences）。
-- 站主選定後換進 `../assets/refs/`、重算 `SHA256SUMS`。
+- 站主 2026-11-12 照建議選 Nora b、Grant b、Nora 工作服 a，已換進 `../assets/refs/`、重算 `SHA256SUMS`。
 
