@@ -225,6 +225,14 @@ Grant 的白車 c06b 開進坡底（第 5 集「After one stop.」之後，18:30
 
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
 
+#### 2026-11-12 跨集稽核後的修改
+
+照 `review/2026-11-12-audit-e001-e010.md`（第 1–10 集跨集連戲稽核）。**沒有改台詞**，沒有要重錄的；還沒拍，也沒有要重抽的鏡。
+
+- **行李箱裡的衣服**（道具表、c10、注意事項）：補牛仔褲與一雙平底短靴，第 11 集 `motel` 造型的牛仔褲與短靴從這裡來：`her own cream sweaters, grey trousers and blue jeans folded into tight, sharp-edged squares, stacked perfectly flat, a pair of flat tan ankle boots tucked along one side`。
+
+#### 2026-11-12 第一版
+
 第一版，還沒有拍過，沒有要重錄或重抽的鏡。跟細綱不同、照 bible 寫的地方：
 - **c05**：Sienna 左手簽送貨單的插鏡必拍，標「必須左手」，正文寫 `her LEFT hand holds the pen, a slim gold watch on her LEFT wrist`（第 50 集的伏筆）。
 - **c06、c06b**：Sienna 說「Grant's busy.」，緊接 c06b 從她肩旁長焦拍玻璃外的坡底，白車開進來停下；Nora 盯著她左手的筆（c07），沒看見（第 8 集「Busy?」的根據）。

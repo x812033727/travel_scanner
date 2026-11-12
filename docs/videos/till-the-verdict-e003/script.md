@@ -167,6 +167,13 @@ Grant 摘下眼鏡擦：「I was at Mom's. My phone died.」話剛說完，他�
 - **c36 台詞**：「Got the curtain measurements. Signed, S.」（把「S.」念成署名，聽得懂）。
 - **〈這集接在哪〉**：記下第 4 集「She went off shift at six. She's back tomorrow.」的改句；第 1–3 集不用改。
 
+### 2026-11-12 跨集稽核後的修改
+
+照 `review/2026-11-12-audit-e001-e010.md`（第 1–10 集跨集連戲稽核）。**沒有改台詞**，沒有要重錄的；還沒拍，也沒有要重抽的鏡。
+
+- **走廊盡頭的燈**（接點、場頭、c01、c03、c06、音效）：照第 5 集寫慢脈動 `the ceiling light above the end wall pulses slowly: on for two beats, off for one`；c01「閃一下」改成「暗一拍」，c03 剪在燈暗的那一拍。
+- **空杯**（c23–c40 共 11 處）：`the empty cup lies on its side at the edge of the nightstand` 改成第 4 集的句子 `a clear plastic hospital cup about the size of her fist, empty, lying on its side at the edge of the nightstand`。
+
 ### 2026-11-12 重審後的修改
 
 照 main 2026-11-12 的規則（種田拍法、`WRITING.md`、規格錯誤表）與站主同日兩個決定（台詞用模型原聲、種田拍法重拆）改的；依據是 `review/2026-11-12-e001-e003-storyboard.md` 與 bible〈2026-11-12 重審後補定的事〉。
