@@ -17,10 +17,10 @@ import { requireProjectLease } from "../core/project-lease.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
 import { checkAudio } from "./check.mjs";
-import { PILOT_SLUGS, SpeechError, speechStatus, synthesize, synthesizeAligned } from "./client.mjs";
+import { PILOT_SLUGS, SpeechError, minimaxQuota, speechStatus, synthesize, synthesizeAligned } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
 import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
-import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts, voiceFields } from "./requests.mjs";
+import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, MINIMAX_VOICE_PREFIX, billableForRequest, planRequests, spokenParts, voiceFields } from "./requests.mjs";
 import { paceWarning } from "../core/pace.mjs";
 import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
 import { buildNarration, flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "./synthesis.mjs";
@@ -162,11 +162,15 @@ function loadLexicon(root) {
 
 /**
  * Why the server cannot narrate with this request voice right now, or null. Azure voices must be
- * on the admin card's allowlist; Gemini voices ("gemini:<name>") need only the site's Gemini key.
+ * on the admin card's allowlist; Gemini voices ("gemini:<name>") need only the site's Gemini key,
+ * and MiniMax voices ("minimax:<voice id>") only its MiniMax key.
  */
 function voiceProblem(status, voice) {
   if (voice.startsWith(GEMINI_VOICE_PREFIX)) {
     return status.gemini_configured ? null : "the site has no Gemini key yet (admin: API 與供應商設定 → AI 服務)";
+  }
+  if (voice.startsWith(MINIMAX_VOICE_PREFIX)) {
+    return status.minimax_configured ? null : "the site has no MiniMax key yet, or its server predates MiniMax voices (admin: AI 設定 → API 金鑰)";
   }
   if (!status.configured) return "the admin card 「Azure 語音（影片旁白）」 has no key or region yet";
   return status.voices.includes(voice) ? null : `voice ${voice} is not on the admin card's allowlist`;
@@ -176,6 +180,9 @@ function voiceProblem(status, voice) {
 function remainingFor(status, voice) {
   if (voice.startsWith(GEMINI_VOICE_PREFIX)) {
     return status.gemini_monthly_limit > 0 && status.gemini_used !== null ? status.gemini_monthly_limit - status.gemini_used : null;
+  }
+  if (voice.startsWith(MINIMAX_VOICE_PREFIX)) {
+    return status.minimax_monthly_limit > 0 && status.minimax_used !== null && status.minimax_used !== undefined ? status.minimax_monthly_limit - status.minimax_used : null;
   }
   return status.monthly_limit > 0 ? status.remaining : null;
 }
@@ -196,7 +203,7 @@ async function plannedBranding({ doc, series = null, workdir, values, ctx }) {
 }
 
 /** The provider whose month a request voice counts against. */
-const providerOf = (voice) => (voice.startsWith(GEMINI_VOICE_PREFIX) ? "gemini" : "azure");
+const providerOf = (voice) => (voice.startsWith(GEMINI_VOICE_PREFIX) ? "gemini" : voice.startsWith(MINIMAX_VOICE_PREFIX) ? "minimax" : "azure");
 
 /** How a speaker is named to the owner: the narrator, or a character's (or a slides cohost's) id and name. */
 function speakerName(doc, speaker) {
@@ -330,7 +337,9 @@ async function audition(args, ctx) {
   for (const voice of voices) {
     const fields = voice.startsWith(GEMINI_VOICE_PREFIX)
       ? voiceFields({ provider: "gemini", name: voice.slice(GEMINI_VOICE_PREFIX.length), style: values.style, model: values.model })
-      : voiceFields({ provider: "azure", name: voice, rate: values.rate });
+      : voice.startsWith(MINIMAX_VOICE_PREFIX)
+        ? voiceFields({ provider: "minimax", name: voice.slice(MINIMAX_VOICE_PREFIX.length), rate: values.rate, model: values.model })
+        : voiceFields({ provider: "azure", name: voice, rate: values.rate });
     const result = await send({ ...fields, segments: [{ parts, break_after_ms: 0 }] });
     requireNarrationFormat(parseWav(result.wav));
     billable += result.billable;
@@ -466,12 +475,12 @@ async function tts(args, ctx) {
   // A phrase-sized request in an Azure voice asks speech/align first: the WAV and when each
   // written unit is spoken, in the one paid call. A site that cannot time it answers null without
   // charging, and the body goes to speech as before. A scene-sized request (ALIGNED_MAX_CHARACTERS)
-  // and every Gemini voice (no aligner is live) go straight to speech. Either route is the one
+  // and every Gemini or MiniMax voice (no word boundaries, no aligner is live) go straight to speech. Either route is the one
   // journal entry for its body, so a lost answer holds the request, and an answer the journal
   // kept comes back without timing.
   const journal = openSpeechJournal(path.join(audioDir, JOURNAL_DIR), { now: ctx.now });
   const send = journal.wrap(async (body) => {
-    const phrase = providerOf(body.voice) !== "gemini" && alignedCharacters(body) <= ALIGNED_MAX_CHARACTERS;
+    const phrase = providerOf(body.voice) === "azure" && alignedCharacters(body) <= ALIGNED_MAX_CHARACTERS;
     const aligned = phrase ? await synthesizeAligned({ ...options, body }) : null;
     return aligned ?? synthesize({ ...options, body });
   });
@@ -566,9 +575,45 @@ async function tts(args, ctx) {
   return EXIT.ok;
 }
 
+/** One entry of the plan's answer as "name: key value, ...", whatever fields MiniMax sends. */
+function quotaLine(entry) {
+  if (entry === null || typeof entry !== "object" || Array.isArray(entry)) return JSON.stringify(entry);
+  const name = entry.model_name ?? entry.name ?? entry.model;
+  const fields = Object.entries(entry).filter(([key]) => !["model_name", "name", "model"].includes(key));
+  const shown = fields.map(([key, value]) => `${key} ${typeof value === "object" ? JSON.stringify(value) : value}`).join(", ");
+  return name === undefined ? shown : `${name}: ${shown}`;
+}
+
+/**
+ * `minimax-quota`: what is left of the owner's MiniMax M Plan. No MiniMax page names the
+ * answer's fields, so each list in it is printed one entry a line with the fields as sent;
+ * --json prints the server's answer whole.
+ */
+async function minimaxQuotaCommand(args, ctx) {
+  const values = parseArgs({ args, options: { json: { type: "boolean" } }, strict: true }).values;
+  const answer = await minimaxQuota(clientOptions(ctx, requireCredentials(ctx)));
+  if (values.json) {
+    ctx.stdout.write(`${JSON.stringify(answer, null, 2)}\n`);
+    return ctx.EXIT.ok;
+  }
+  ctx.stdout.write(`MiniMax M Plan, asked ${answer.host} at ${answer.checked_at}\n`);
+  const quota = answer.quota ?? {};
+  for (const [key, value] of Object.entries(quota)) {
+    if (Array.isArray(value)) {
+      ctx.stdout.write(`${key}:\n`);
+      for (const entry of value) ctx.stdout.write(`  ${quotaLine(entry)}\n`);
+    } else {
+      ctx.stdout.write(`${key}: ${typeof value === "object" ? JSON.stringify(value) : value}\n`);
+    }
+  }
+  if (!Object.keys(quota).length) ctx.stdout.write("MiniMax sent no quota fields\n");
+  return ctx.EXIT.ok;
+}
+
 export async function run(command, args, ctx) {
   try {
     if (command === "login") return await login(args, ctx);
+    if (command === "minimax-quota") return await minimaxQuotaCommand(args, ctx);
     if (command === "audition") return await audition(args, ctx);
     if (command === "check-audio") {
       // check.mjs owns the review logic and its journal; pass attribution without changing

@@ -773,6 +773,10 @@ test("h3_refine.ipynb and seedvr2_upscale.ipynb: valid notebooks whose cells com
   const upscale = JSON.parse(readFileSync(UPSCALE_NOTEBOOK, "utf8")).cells.filter((c) => c.cell_type === "code").map((c) => c.source.join("")).join("\n");
   const emptied = upscale.indexOf('for old in [*SRC.glob("*.mp4"), *DST.glob("*.mp4")]:');
   assert.ok(emptied > 0 && emptied < upscale.indexOf('for uploaded in Path("/content").glob("s3in__*.mp4"):'), "seedvr2_upscale.ipynb empties s3_in and s3_out before moving the uploads in");
+  // Vertical 9:16 dramas (Till the Verdict, 2026-11-10): a taller-than-wide clip is fitted to 1080x1920, not cropped to 1920x1080.
+  assert.match(upscale, /if height > width/);
+  assert.match(upscale, /scale=1080:-2:flags=lanczos,crop=1080:1920/);
+  assert.match(upscale, /scale=-2:1080:flags=lanczos,crop=1920:1080/);
 });
 
 test("refine.py --check: a sound manifest passes; every error that would waste a session is named, and nothing is uploaded", { skip: !POSIX }, () => {

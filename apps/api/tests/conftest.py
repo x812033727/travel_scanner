@@ -27,7 +27,7 @@ from __future__ import annotations
 
 import os
 from collections.abc import Iterator
-from datetime import UTC, date, time, timedelta, tzinfo
+from datetime import UTC, date, time, tzinfo
 from datetime import datetime as real_datetime
 
 import pytest
@@ -68,28 +68,42 @@ def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item
     items[:] = kept
 
 
-#: The day the suites whose fixture trips sit on fixed November 2026 dates take as today. Their
-#: trips start on 2026-11-10 or 11-11, which the app refuses as past once the real date moves on.
-PINNED_TRIP_TODAY = date(2026, 11, 1)
+# The fixture trips are written with fixed dates (2026-11-10 and so on), and a blank trip
+# whose start is before yesterday is refused with 422. Without this every trip-creating
+# test turned red on every branch the day its dates passed (2026-11-12). Pin the date the
+# check compares against; a test that wants the real clock can undo it with monkeypatch.
+PINNED_TRIP_TODAY = (2026, 11, 1)
+
+
+@pytest.fixture(autouse=True)
+def _pin_trip_today(monkeypatch: pytest.MonkeyPatch) -> None:
+    import sys
+    from datetime import date
+
+    # Only when a test already imported the app: importing it here would read settings
+    # before a test that sets its own environment gets the chance.
+    router = sys.modules.get("app.trips.router")
+    if router is not None:
+        monkeypatch.setattr(router, "trip_today", lambda: date(*PINNED_TRIP_TODAY))
 
 
 @pytest.fixture
 def pin_trip_today(monkeypatch: pytest.MonkeyPatch) -> Iterator[date]:
-    """Take PINNED_TRIP_TODAY as today wherever a trip's dates are checked against the clock: the
-    earliest start a new blank trip may have, and the "departure has passed" check of a search
-    from a trip. Everything else (expiries, timestamps) keeps the real clock."""
+    """Also take PINNED_TRIP_TODAY as today in the "departure has passed" check of a search from
+    a trip (app.trips.search_criteria), for the suites whose trips start on fixed November dates.
+    The autouse _pin_trip_today above covers the new-trip floor (router.trip_today); everything
+    else (expiries, timestamps) keeps the real clock."""
     import app.trips.router as trips_router
     import app.trips.search_criteria as search_criteria
+
+    pinned_day = date(*PINNED_TRIP_TODAY)
 
     class PinnedDateTime(real_datetime):
         @classmethod
         def now(cls, tz: tzinfo | None = None) -> PinnedDateTime:
-            pinned = cls.combine(PINNED_TRIP_TODAY, time(3), tzinfo=UTC)
+            pinned = cls.combine(pinned_day, time(3), tzinfo=UTC)
             return pinned.astimezone(tz) if tz else pinned
 
-    def floor() -> date:
-        return PINNED_TRIP_TODAY - timedelta(days=1)
-
-    monkeypatch.setattr(trips_router, "trip_start_floor", floor)
+    monkeypatch.setattr(trips_router, "trip_today", lambda: pinned_day)
     monkeypatch.setattr(search_criteria, "datetime", PinnedDateTime)
-    yield PINNED_TRIP_TODAY
+    yield pinned_day
