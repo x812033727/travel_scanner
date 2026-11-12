@@ -29,7 +29,7 @@
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 基本款（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣、深棕色皮鞋）；自己的 `a black handheld microphone with no logo` 在右手；**可以笑的只有 c01 第一格與 c18 第一格練過的閉嘴微笑**，說話的那一刻嘴角放平；說話句寫「聲音平穩、低」，不寫 warm、keynote、smooth；原聲 |
 | Sienna | **待畫**（第 4–10 集清單；要看得到左腕的錶） | 基本款紅色套裝（暖棕膚色、黑色齊下巴短髮、紅唇、**左腕**細金錶、鮮紅合身套裝、尖頭高跟鞋）；講台邊，左手空著；提詞卡散在腳邊；本集不笑；不說話 |
 | Lyle Becker | **待畫，必須先畫** | 30 歲白人男性、格子襯衫、反戴的素面棒球帽、深色球鞋；不戴眼鏡；`a black phone held up sideways, seen from the back, its screen a soft white glow` 在左手（直播）；第一排右邊靠走道，c19 起站到右側走道、第二排最右端旁；不笑；原聲（c11、c20 兩句） |
-| Victor Crane | **待畫，必須先畫** | 61 歲白人男性、矮壯、紅潤的臉、深色立領外套、黑皮鞋；不戴眼鏡；`a red casino-style poker chip with no lettering, about as wide as his thumb is long` 在右手指間，c14 收進外套右邊口袋；第一排最左端；**本集不笑**；原聲（c16 一句） |
+| Victor Crane | **待畫，必須先畫** | 61 歲白人男性、矮壯、紅潤的臉、深色立領外套、黑皮鞋；不戴眼鏡；`a plain solid red poker chip with a thin white edge stripe, about as wide as his thumb is long` 在右手指間，c14 收進外套右邊口袋；第一排最左端；**本集不笑**；原聲（c16 一句） |
 | Elias | `assets/refs/elias-portrait.jpg`；全身參考圖待畫 | 基本款（炭灰窗格紋三件式、白襯衫開領、白色口袋巾、細銀絲框眼鏡、深棕色頭髮往後梳），沒有大衣；**坐在第二排最右端**，左手在膝上、一律在畫框外或被前排椅背擋住；不戴戒指；疤不出現；不笑；原聲（c22） |
 | Theo Park | **待畫，必須先畫** | 基本款（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲、棕色樂福鞋）；`a slim tablet in a plain grey case, its screen turned away` 在左手；站在舞台右側側門邊的牆前；面無表情、不笑；原聲（c30） |
 | Dana Okafor | **待畫，必須先畫** | 基本款（高髮髻、黑色合身西裝外套配白 T 恤、黑長褲、白球鞋）；只在她的事務所，站在窗前，右手 `a black phone with no logo, about the size of her palm` 貼近嘴錄語音；不笑；原聲、後製電話濾波（c31、c34） |
@@ -88,7 +88,7 @@ c36–c41 寫 `a narrow white service corridor, harsh white ceiling light at the
 | c11 | 中近景、慢推（從中近景推到近景）；鏡頭在舞台前緣、他右前方的低處往下拍；直式，**頭上留出空間，舉起的手仍在畫面裡**；身後是後幾排客人的肩（虛焦） | Lyle（30 歲白人男性、格子襯衫、反戴的素面棒球帽，不戴眼鏡），坐在第一排右邊靠走道；左手 `a black phone held up sideways, seen from the back, its screen a soft white glow`；四分之三側臉朝畫面右上、眼睛看著台上的 Grant（畫框外），不看鏡頭；眉毛一挑、眼睛瞇著、下巴往前、說得快、像在下標題，`no smile at any moment, until the last frame` | Lyle 右手舉起來（動作一），嘴在說話（快、像下標題）（動作二）；說完右手還舉著，嘴閉上；最後：他舉著手、看著台上 | Lyle（快、像下標題）：Then why isn't her name on the label?（那標籤上為什麼沒有她的名字？）（原聲）（→ 答在 c12） | 約 4 秒 |
 | c12 | 近景、固定；同 c01 的鏡位；直式，臉在上三分之一 | Grant（基本款，細圓金屬框眼鏡）；右手的麥克風在胸前；眼睛從畫面右下外的 Lyle 移開；嘴唇分開、沒有聲音、喉嚨一動、眉心擠了一下，`no smile at any moment, until the last frame` | Grant 的右手把麥克風舉到一半、停住；剪在手停住；嘴張著、沒出聲（答不出）；最後：麥克風停在嘴下 | — | 約 2.5 秒 |
 | c13 | 中近景、固定；鏡頭在講台側邊、她右前方；直式，臉在上三分之一；前景左下緣是講台的邊（虛焦）；同一個舞台 | Sienna（暖棕膚色、黑色齊下巴短髮、紅唇、鮮紅合身套裝、`a slim gold watch on her LEFT wrist`），站在講台邊；腳邊 `a small stack of plain white cue cards about the size of her palm, blank on both sides, scattered on the black stage floor`（在畫面下緣、虛焦）；左手空著；眼睛從腳邊的卡片抬到畫面右的 Grant；眉頭擠在一起、嘴唇抿緊、下巴發緊、呼吸很淺，`no smile at any moment, until the last frame` | Sienna 空著的左手抓住講台的邊（動作一），眼睛抬起來看 Grant（動作二）；剪在手抓緊；嘴閉著；最後：她抓著講台、看著畫面右 | — | 約 2.5 秒 |
-| c14 | 插鏡、手部特寫、固定；**第一格就是 Crane 右手指間的籌碼**；直式；鏡頭低、在他膝上方 | Crane 的右手（短粗的手指、深色立領外套的袖口）；`a red casino-style poker chip with no lettering, about as wide as his thumb is long, stopped between his fingers`；畫面裡沒有臉 | 他的手指把籌碼收進掌心（動作一），塞進外套右邊口袋（動作二）；剪在手從口袋抽出來；畫面上沒有嘴；最後：籌碼在他外套右邊口袋裡，手空著 | — | 約 2 秒 |
+| c14 | 插鏡、手部特寫、固定；**第一格就是 Crane 右手指間的籌碼**；直式；鏡頭低、在他膝上方 | Crane 的右手（短粗的手指、深色立領外套的袖口）；`a plain solid red poker chip with a thin white edge stripe, about as wide as his thumb is long, stopped between his fingers`；畫面裡沒有臉 | 他的手指把籌碼收進掌心（動作一），塞進外套右邊口袋（動作二）；剪在手從口袋抽出來；畫面上沒有嘴；最後：籌碼在他外套右邊口袋裡，手空著 | — | 約 2 秒 |
 | c15 | 中近景、固定；鏡頭在舞台前緣、他左前方的低處；直式，**頭上留出空間，站起來後整個頭仍在畫面裡**；前景右下緣是第一排白椅的椅背（虛焦） | Crane（61 歲白人男性、矮壯、紅潤的臉、深色立領外套、黑皮鞋，不戴眼鏡），坐在第一排最左端；四分之三側臉朝畫面左上、眼睛看著台上的 Grant（畫框外），不看鏡頭；眉頭壓下來、嘴唇閉成一條線、鼻子哼出一口氣、臉頰發紅，`no smile at any moment, until the last frame` | Crane 兩手撐著扶手站起來；剪在站到一半；嘴閉著；最後：他站直，看著畫面左上 | — | 約 2.5 秒 |
 | c16 | 中近景、慢推（從中近景推到近景）；同 c15 的鏡位；直式，臉在上三分之一 | Crane（深色立領外套）；站在第一排最左端；四分之三側臉朝畫面左上的 Grant、眼睛看著他；眉頭壓低、嘴在字之間抿緊、聲音大、悶、帶著不耐煩，`no smile at any moment, until the last frame` | Crane 兩手扣上外套的扣子（動作一），嘴在說話（大、悶、不耐煩）（動作二）；說完嘴閉上；最後：外套扣好，他看著畫面左上 | Crane（大、悶、不耐煩）：Call me when this is cleaned up.（收拾乾淨了再打給我）（原聲）（結尾）← 因為 c12 | 約 4 秒 |
 | c17 | 全景、跟拍（從左往右）；鏡頭在第一排前、與舞台前緣平行；直式：下半是舞台前緣的黑邊與走過的 Crane，上半是台上（虛焦） | 臉清楚的只有 Crane（側臉）。Crane（深色立領外套、黑皮鞋）沿著舞台前緣從畫面左走到畫面右、往右側走道走；側臉朝畫面右、眼睛看著前面的走道；嘴唇閉著、下巴抬著、腳步重，`no smile at any moment, until the last frame`；台上：Grant 的淺石色西裝在上方、臉虛焦看不清 | Crane 走過舞台前緣、往畫面右；剪在他走到畫面中間；嘴閉著；最後：他往畫面右的走道走 | — | 約 2.5 秒 |
@@ -165,6 +165,8 @@ c36–c41 寫 `a narrow white service corridor, harsh white ceiling light at the
 ## 注意事項
 
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
+
+- 2026-11-12 道具句與 cast.json 對齊
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **c03 拿過麥克風**：細綱的 "snatches the host's mic" 照 bible〈全劇固定〉尺度寫成「拿過」：她握住，主持人鬆手，不搶、不推；拿的是主持人那支（Grant 一直拿著自己的）（bible〈時間線〉下方「兩支麥克風」）。

@@ -129,7 +129,7 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 | --- | --- | --- | --- | --- | --- |
 | c30 | 中近景、固定；低角度，鏡頭貼近濕的柏油；直式，頭上留空，起身後整個頭仍在畫面裡；前景下緣是地上那張紙；同一個停車場 | Theo（基本款，圓玳瑁框眼鏡，棕色樂福鞋），在 Nora 腳前（畫面左緣只見她的棕褐短靴、牛仔褲腳與垂在身側的右手，合約已從平板上拿回右手、紙背朝鏡頭）；左手把 `a slim tablet in a plain grey case, its screen turned away` 夾在腋下；地上 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, lying on wet black asphalt`；臉上是暖黃的窗光、紅霓虹落在鏡片上；眉毛平、眼睛看著地上的紙、嘴唇閉平，`no smile at any moment, until the last frame` | Theo 蹲下去（動作一），右手兩指捏起那張濕的紙、站起來（動作二）；剪在站到一半；嘴閉著；最後：他站著，濕的紙垂在右手 | — | 約 2.5 秒 |
 | c31 | 插鏡、手部特寫、固定；**第一格就是他右手捏著的濕紙與左臂夾著的平板**；直式；同一個停車場 | `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it`，濕的、一角往下垂，在 Theo 的右手（淺藍襯衫袖口、灰色針織背心）；左腋下 `a slim tablet in a plain grey case, its screen turned away`；紅霓虹照在濕紙上；畫面裡沒有臉 | Theo 把濕紙甩一下（動作一），再把它塞進平板灰色外殼的封套裡（動作二）；剪在紙塞進去一半；畫面上沒有嘴；最後：濕紙收在平板套裡，只露出一條白邊 | — | 約 2 秒 |
-| c32 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她的右肩與髮髻在畫框左下緣、虛焦）；直式，Theo 的臉在上三分之一；身後遠處虛焦：Elias 的背影已經往街上走（炭灰大衣，看不清臉） | Theo（基本款），左腋下夾著平板（套裡露一條白邊），右手兩指夾著 `a plain white business card, print not readable`（Elias 的直撥名片：全白、沒有圖案，跟第 14 集警探那張印著藍色警徽的不一樣），遞向畫面左的 Nora；臉上是暖黃的窗光、紅霓虹落在鏡片上；四分之三側臉朝畫面左、眼睛看著她；眉毛平、眼睛不眨、嘴唇在字之間抿平，`no smile at any moment, until the last frame`；Nora 的左手（駝色大衣袖口）從畫面左下伸進來 | Theo 把名片遞出去，嘴在說話（平、一本正經）；說完 Nora 的左手從他指間抽走名片，他的手停在半空，嘴閉上；最後：名片在 Nora 的左手，Theo 的右手還舉著 | Theo（平、一本正經）：His direct line.（他的直撥電話）（原聲） | 約 3 秒 |
+| c32 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她的右肩與髮髻在畫框左下緣、虛焦）；直式，Theo 的臉在上三分之一；身後遠處虛焦：Elias 的背影已經往街上走（炭灰大衣，看不清臉） | Theo（基本款），左腋下夾著平板（套裡露一條白邊），右手兩指夾著 `a plain white business card, held so only its blank back shows`（Elias 的直撥名片：全白、沒有圖案，跟第 14 集警探那張印著藍色警徽的不一樣），遞向畫面左的 Nora；臉上是暖黃的窗光、紅霓虹落在鏡片上；四分之三側臉朝畫面左、眼睛看著她；眉毛平、眼睛不眨、嘴唇在字之間抿平，`no smile at any moment, until the last frame`；Nora 的左手（駝色大衣袖口）從畫面左下伸進來 | Theo 把名片遞出去，嘴在說話（平、一本正經）；說完 Nora 的左手從他指間抽走名片，他的手停在半空，嘴閉上；最後：名片在 Nora 的左手，Theo 的右手還舉著 | Theo（平、一本正經）：His direct line.（他的直撥電話）（原聲） | 約 3 秒 |
 | c33 | 近景、固定；鏡頭在辦公室裡、貼著窗框，往 Peg 的臉拍；直式，臉在上三分之一；畫面左緣是窗框與窗台上的薄荷糖碗，畫面右下緣是另一個人的花襯衫肩膀（虛焦）；Peg 身後是辦公室裡的櫃台與掛鑰匙的木板（虛焦，鑰匙牌上沒有字） | Peg（`coat`，玳瑁框眼鏡戴在臉上，木珠項鍊），站在窗前、往畫面左外的窗外看；窗台上 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`；臉上的光：櫃台檯燈的暖黃光從畫面右、窗外的紅霓虹從畫面左一明一暗；眼睛在鏡片後面一下睜大、眉頭往中間夾緊、嘴唇抿薄、下巴往前，`no smile at any moment, until the last frame`；畫面右下緣的花襯衫肩膀是 Bev（只露肩，不露臉） | Peg 盯著窗外（那個男人往街上走、Nora 手裡拿著那張紙），兩手往窗台上一撐（動作一），轉身朝畫面右的門（動作二）；剪在轉身一半；嘴閉著；最後：她轉向門 | — | 約 2.5 秒 |
 | c34 | 遠景、慢推（從遠景推到中遠景）；鏡頭在辦公室門前的台階邊、往街拍；直式：下三分之一是停車場與濕的街，上半是對街路燈與黑車；前景下緣是辦公室門前台階的邊 | 共三人，都是背影、看不清臉：Elias（炭灰大衣、黑色皮鞋，`his left hand in the overcoat's left pocket`）走在最前、已經到街中間；Dana（黑色西裝外套、白球鞋，左臂抱卷宗）跟在他右後；Theo（灰色針織背心、卡其褲，左腋夾著平板）在最後；對街 `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左；濕的柏油映著路燈與紅霓虹 | 三個人往對街的黑車走；Elias 走到車邊，往車頭那頭走向駕駛座門；剪在 Elias 走到車頭；畫面上沒有嘴；最後：Elias 在駕駛座門邊，Dana 與 Theo 繞過車頭往人行道那側 | — | 約 3 秒 |
 | c35 | 中景、跟拍（低角度跟著她的靴子往前）；鏡頭在她右後方；直式：下半是她的棕褐短靴與濕柏油，上半是她的背影與對街的黑車 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴），背影與側面；右手拿著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in her right hand`；名片已收進大衣左口袋（不拍）；對街是路燈與黑車；臉不入鏡 | Nora 從停車場邊踏下車道、大步跟過街；剪在第三步落地；畫面上沒有嘴；最後：她走到對街、朝黑車的車尾 | — | 約 2.5 秒 |
@@ -146,6 +146,8 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 ## 注意事項
 
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
+
+- 2026-11-12 道具句與 cast.json 對齊
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **開場四鏡**（c01–c04）照 bible〈必修〉：「What do you want?」→「Him in prison.」→ 停一拍（他的眼睛）→「He owes me.」。
@@ -186,7 +188,7 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 依 `review/2026-11-12-audit-e011-e020.md`（第 11–20 集跨集連戲稽核）改的。
 - **c12（台詞改，要重錄）**：補回 GLOSSARY 必落的 "a bought witness"："He fights for you once, the defense calls you a bought witness."，一口氣說完；4.5 → 5 秒（第一場 40 → 40.5 秒，全集 113 → 113.5 秒）。〈劇情〉與〈這版改了什麼〉的引句一起改。
 - **c41（接點，要重抽）**：上一節的左右是反的。照第 17 集 c36 與 bible `motel-street`（黑車車頭朝畫面左、往港口；靠人行道那側是副駕駛座）先畫俯視圖：鏡頭在黑車這一側的人行道上、車尾後方斜拍，所以**車身往畫面左後延伸、汽車旅館與辦公室在畫面左後方隔著街、Nora 在畫面右的車尾旁（靠人行道那側）**，Peg 從畫面左後衝出來、往畫面右來，接第 18 集 c01–c02 她往畫面右衝、從左往右過街。Nora 背對鏡頭四分之三、看著畫面左前的駕駛座。〈這集接在哪〉、第三場軸線、〈這集稿子自己定〉、〈時間與帳〉一起改；第 18 集 c01 同一刻、同一個格局。
-- **c32 名片**：Elias 的名片照舊 `a plain white business card, print not readable`，註明跟第 14 集警探那張（`a white business card with a small blue police badge printed in one corner, print not readable`，在卡夾裡）不是同一張；這張收進大衣左口袋，第 19 集 c24 她拿出來打。
+- **c32 名片**：Elias 的名片照舊 `a plain white business card, held so only its blank back shows`，註明跟第 14 集警探那張（`a white business card with a small blue police badge printed in one corner, print not readable`，在卡夾裡）不是同一張；這張收進大衣左口袋，第 19 集 c24 她拿出來打。
 - **Theo 的鞋**：角色表與各鏡的「棕色皮便鞋」統一成**棕色樂福鞋**（跟第 16、20 集一樣）。
 - 鏡數 41 鏡；秒數 113 → 113.5 秒。
 

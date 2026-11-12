@@ -99,7 +99,7 @@ c35–c40 寫 `late afternoon inside the concrete house, soft daylight from the 
 ### 第三場：I made the first one.（約 66.5 秒）
 
 **場頭**：
-- **地點與場景圖**：Whitlock Home 旗艦店 `flagship-store`（待畫）：港邊市區的街角；**店外**：整面玻璃店面，櫥窗裡一張直立大海報 `a tall window poster of Grant in his light stone suit cradling a cream-white vase, no lettering anywhere`，門在店面的畫面左；**店裡**：淺色石地板；**左邊一張長白櫃台**（店員）；**右邊最亮的一面牆**：`rows of identical tall cream-white glass vases about as tall as a forearm on lit white shelves from floor to ceiling`，每格上方一條燈；門邊牆上 `a small blank brass plaque beside the door, about the size of her hand, catching the light, no engraving visible`；最裡面一道臨時白牆擋著後面的活動廳。沒有價目牌、沒有字。近景都寫「同一間店」。
+- **地點與場景圖**：Whitlock Home 旗艦店 `flagship-store`（待畫）：港邊市區的街角；**店外**：整面玻璃店面，櫥窗裡一張直立大海報 `a tall photograph of Grant in his light stone suit cradling a cream-white vase, printed edge to edge on the inside of the shop window`，門在店面的畫面左；**店裡**：淺色石地板；**左邊一張長白櫃台**（店員）；**右邊最亮的一面牆**：`rows of identical tall cream-white glass vases about as tall as a forearm on lit white shelves from floor to ceiling`，每格上方一條燈；門邊牆上 `a small smooth brass plate beside the door, about the size of her hand, seen at a steep angle, only a bright reflection on its face`；最裡面一道臨時白牆擋著後面的活動廳。沒有價目牌、沒有字。近景都寫「同一間店」。
 - **時間與天氣**：第 101 天 14:00，薄雲、亮；店外柔的白天光；店裡層板燈的冷白光加門口進來的街光；整場光不變。
 - **軸線**：店外：Nora 沿人行道從畫面右往左走向門口。**店裡的主鏡從門口往裡拍**：櫃台在畫面左、Forever 牆在畫面右、白牆在最裡面；Nora 進門後站在櫃台與牆之間，之後轉向右邊的牆。**店員在畫面左**，她看 Nora 一律朝**畫面右**；Nora 看店員一律朝**畫面左**（在牆前時回頭往左肩後看）。翻瓶底的插鏡從層板下方往上拍。出門時鏡頭在門邊、往店裡拍：黃銅牌在畫面右前景，櫃台與店員在畫面左深處。
 - **在場的人**：Nora、店員、兩個客人（c27 起在店中間，虛焦）。
@@ -109,7 +109,7 @@ c35–c40 寫 `late afternoon inside the concrete house, soft daylight from the 
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c11 | 全景、跟拍（從右往左）；鏡頭在街對面的人行道邊、低；直式前後疊開：前景是一根灰色路燈柱的邊（虛焦），中間是人行道與走過去的 Nora，後面是整面玻璃店面、櫥窗裡的大海報，店面上方一條空白的淺灰招牌帶 | Nora（`shoulder`：齊肩短髮、奶油色毛衣、深色長褲、棕褐短靴），沿人行道從畫面右往左走；櫥窗裡 `a tall window poster of Grant in his light stone suit cradling a cream-white vase, no lettering anywhere`（海報上的臉像 Grant，但很遠、偏虛焦）；店面上方一條空白的淺灰金屬招牌帶；玻璃上只見邊上一點天光；灰色的港邊街道；Nora 眼睛看著前面的櫥窗、眉毛放平、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 走到櫥窗前（動作一），停住、抬頭（動作二）；剪在她停住；嘴閉著；最後：她站在櫥窗前、仰頭看著海報 | — | 約 2.5 秒 |
+| c11 | 全景、跟拍（從右往左）；鏡頭在街對面的人行道邊、低；直式前後疊開：前景是一根灰色路燈柱的邊（虛焦），中間是人行道與走過去的 Nora，後面是整面玻璃店面、櫥窗裡的大海報，店面上方一條空白的淺灰招牌帶 | Nora（`shoulder`：齊肩短髮、奶油色毛衣、深色長褲、棕褐短靴），沿人行道從畫面右往左走；櫥窗裡 `a tall photograph of Grant in his light stone suit cradling a cream-white vase, printed edge to edge on the inside of the shop window`（海報上的臉像 Grant，但很遠、偏虛焦）；店面上方一條空白的淺灰金屬招牌帶；玻璃上只見邊上一點天光；灰色的港邊街道；Nora 眼睛看著前面的櫥窗、眉毛放平、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 走到櫥窗前（動作一），停住、抬頭（動作二）；剪在她停住；嘴閉著；最後：她站在櫥窗前、仰頭看著海報 | — | 約 2.5 秒 |
 | c12 | 近景、慢推（從胸上推到肩上）、低角度；鏡頭在人行道上、她的左前方往上拍；直式，Nora 的臉在上三分之一；**身後只有店面旁一段素的灰色水泥牆** | Nora（`shoulder`）；兩手垂在身側，`a plain narrow white-gold band with no stone, on her left ring finger`；柔的天光；四分之三側臉朝畫面右上外的海報、眼睛看著它，不看鏡頭；眉頭慢慢往下壓、下巴的肌肉一動、嘴唇抿成一條線、鼻子短短出一口氣，`no smile at any moment, until the last frame` | Nora 看著海報，下巴一繃（動作一），轉身朝畫面左的門口走（動作二）；剪在轉身一半；嘴閉著；最後：她轉向門口 | — | 約 2.5 秒 |
 | c13 | 中景、跟拍（往前推軌）；**主鏡**：鏡頭在門口、低，跟在 Nora 背後往店裡拍；直式前後疊開：前景是 Nora 的背與肩（不露臉），畫面左是長白櫃台與店員，畫面右是一整面發光的層板 | 露臉的只有店員。Nora（`shoulder`）背對鏡頭走進店裡；`rows of identical tall cream-white glass vases about as tall as a forearm on lit white shelves from floor to ceiling`（畫面右）；店員（23 歲白人女性、白金色頭髮梳成光滑的低馬尾、淺灰眼睛、合身黑襯衫配黑長褲，沒有名牌）站在畫面左的白櫃台後，抬頭看 Nora：眉毛一抬、眼睛亮、禮貌的閉嘴笑、不露齒；淺色石地板；層板燈的冷白光 | Nora 走進店裡（動作一），停在櫃台與牆之間（動作二）；店員抬頭、閉嘴的笑；剪在 Nora 停步；嘴都閉著；最後：Nora 站在店中間，店員看著她 | — | 約 2.5 秒 |
 | c14 | 近景、慢推（從胸上推到肩上）；鏡頭在店中間、靠牆那側往櫃台拍；直式，店員的臉在上三分之一；身後是櫃台後的白牆（虛焦）；同一間店 | 店員（白金色低馬尾、淺灰眼睛、合身黑襯衫），站在櫃台後；兩手放在白櫃台上；層板燈的冷白光從畫面右；四分之三側臉朝畫面右的 Nora、眼睛看著她；第一格禮貌的閉嘴笑、不露齒，**開口時嘴角放平**；眉毛抬著、聲音亮、背過的、有禮貌 | 店員先閉嘴笑一下（動作一），嘴角放平、嘴在說話（亮、背過的）（動作二）；說完右手掌心朝上往畫面右的牆一比，嘴閉上；最後：她的右手比著牆 | 店員（亮、背過的）：Forever Number One. First showing.（「一生」初號。首次展出）（原聲） | 約 3.5 秒 |
@@ -129,8 +129,8 @@ c35–c40 寫 `late afternoon inside the concrete house, soft daylight from the 
 | c28 | 近景、固定；同 c14 的方向，但店員已經在櫃台外；直式，店員的臉在上三分之一；身後是店中間（虛焦） | 店員（白金色低馬尾、合身黑襯衫），站在 Nora 身後兩步；兩手在身前交握；層板燈的冷白光從畫面右；四分之三側臉朝畫面右的 Nora；眉毛一下挑起、眼睛眨了兩下、嘴唇微張又閉上，`no smile at any moment, until the last frame` | 店員的眉毛挑起、眼睛眨兩下（動作一），交握的兩手鬆開、垂下（動作二）；剪在手垂下；嘴閉著；最後：她站著、看著畫面右的 Nora | — | 約 2.5 秒 |
 | c29 | 插鏡、特寫、低角度、固定；**第一格就是這一排最後一支花瓶的瓶底，從層板邊下方往上看**；直式；層板燈的冷白光從瓶底後面透過來 | Nora 的右手手指（奶油色毛衣袖口）沒有把它拿起來，只扣著瓶身、在層板邊上往外斜一點；`the thick round glass base of a cream-white vase seen from below, solid clear glass all the way through, smooth and plain`；畫面裡沒有臉 | Nora 的手指把最後一支在層板邊上斜出來（動作一），瓶底對著燈、停住（動作二）；剪在停住；畫面上沒有嘴；最後：瓶底對著燈，空的 | — | 約 2.5 秒 |
 | c30 | 中近景、慢推（從中近景推到近景）；同 c26 的鏡位；直式，**頭上留出空間** | Nora（`shoulder`）；右手扶著那支斜出來的花瓶；層板燈的冷白光；眼睛看著畫面右下外的瓶底；眉頭一點一點鬆開、肩膀垮下來、嘴唇微張、長長吐出一口氣，`no smile at any moment, until the last frame` | Nora 長長吐出一口氣、肩膀鬆下來（動作一），右手把花瓶在層板上扶正（動作二）；剪在花瓶站正；嘴閉著；最後：花瓶站回層板上，她的手鬆開 | — | 約 3 秒 |
-| c31 | 中近景、固定；鏡頭在門邊、往店裡拍；直式前後疊開：前景右是門邊牆上的黃銅牌（虛焦），畫面中間是朝門口走來的 Nora，畫面左深處是櫃台 | Nora（`shoulder`，棕褐短靴），朝門口走來；`a small blank brass plaque beside the door, about the size of her hand, catching the light, no engraving visible`（前景右）；層板燈與門口的街光；她的眼睛被黃銅牌的反光吸過去、看著畫面右前景外的牌子，不看鏡頭；眉毛微微一收、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 走到門前（動作一），停住、轉頭看向黃銅牌（動作二）；剪在她停住；嘴閉著；最後：她站在門前，看著畫面右的黃銅牌 | — | 約 2.5 秒 |
-| c32 | 插鏡、特寫、固定；**第一格就是門邊牆上的黃銅牌**；直式；門口的街光斜照在上面 | `a small blank brass plaque beside the door, about the size of her hand, catching the light, no engraving visible`；畫面裡沒有人 | 一道光慢慢從黃銅牌上滑過（門外有車經過）；剪在光滑過一半；畫面上沒有嘴；最後：黃銅牌反著光，空白 | — | 約 2 秒 |
+| c31 | 中近景、固定；鏡頭在門邊、往店裡拍；直式前後疊開：前景右是門邊牆上的黃銅牌（虛焦），畫面中間是朝門口走來的 Nora，畫面左深處是櫃台 | Nora（`shoulder`，棕褐短靴），朝門口走來；`a small smooth brass plate beside the door, about the size of her hand, seen at a steep angle, only a bright reflection on its face`（前景右）；層板燈與門口的街光；她的眼睛被黃銅牌的反光吸過去、看著畫面右前景外的牌子，不看鏡頭；眉毛微微一收、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 走到門前（動作一），停住、轉頭看向黃銅牌（動作二）；剪在她停住；嘴閉著；最後：她站在門前，看著畫面右的黃銅牌 | — | 約 2.5 秒 |
+| c32 | 插鏡、特寫、固定；**第一格就是門邊牆上的黃銅牌**；直式；門口的街光斜照在上面 | `a small smooth brass plate beside the door, about the size of her hand, seen at a steep angle, only a bright reflection on its face`；畫面裡沒有人 | 一道光慢慢從黃銅牌上滑過（門外有車經過）；剪在光滑過一半；畫面上沒有嘴；最後：黃銅牌反著光，空白 | — | 約 2 秒 |
 | c33 | 近景、固定；鏡頭在店中間、往櫃台拍（同 c14 的方向）；直式，店員的臉在上三分之一；身後是櫃台後的白牆（虛焦） | 店員（白金色低馬尾、合身黑襯衫），已經回到櫃台後；兩手按在櫃台上；層板燈的冷白光；四分之三側臉朝畫面右遠處門口的 Nora、眼睛看著她，再瞟向門邊的牌子；眉毛抬著、嘴唇在字之間閉平、聲音客氣、隨口、帶一點炫耀，`no smile at any moment, until the last frame` | 店員看著門口的 Nora，嘴在說話（客氣、隨口）；說完右手把櫃台上的一張空白收據紙往裡推平，嘴閉上；最後：她低下頭整理櫃台 | 店員（客氣、隨口）：Ashford built this place.（這棟樓是 Ashford 蓋的）（原聲）（結尾）← 因為 c31 | 約 3.5 秒 |
 | c34 | 近景、固定；鏡頭在門外的人行道、隔著敞開的門往裡拍；直式，Nora 的臉在上三分之一；身後是店裡發光的層板（虛焦）；**門整片開著，鏡頭與她之間只有空的門框** | Nora（`shoulder`）；**第一格門已經整片開著**，她站在門裡、右手扶著門框；門口的街光照在她臉上；第一格頭還轉向畫面左後的店員，然後轉回前面、看著畫面左外的街；眉毛壓平、眼睛定住、下巴微抬、嘴唇閉著、呼吸慢，`no smile at any moment, until the last frame` | Nora 把頭從店員那邊轉回來（動作一），右手扶著門框跨出店門（動作二）；剪在她跨出門一半；嘴閉著；最後：她走出店門 | — | 約 2.5 秒 |
 
@@ -160,6 +160,8 @@ c35–c40 寫 `late afternoon inside the concrete house, soft daylight from the 
 ## 注意事項
 
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
+
+- 2026-11-12 道具句與 cast.json 對齊
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **第一、二場的手機**：拔 SIM 卡的是 **Peg 的手機**（Grant 的家庭方案），不是細綱寫的 Grant 給 Nora 的那支；台詞 "He always knew where **we** were."（細綱是 "where I was"）；第二天 Nora 用自己的錢替 **Peg 那支**換新號碼（"Phone line." "Thirty."，$30）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 1 條、決定彙整第 3 章第 1 條）。

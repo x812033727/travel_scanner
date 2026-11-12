@@ -241,7 +241,7 @@
 | 粉筆計數 | `short white chalk strokes on the red brick, soft focus` | `chalk-tally`，右牆紅磚柱上，第 41–60 集同一句；不寫數目，Sparks 念；第 56 集新的一筆接 `, and one fresh chalk stroke set apart at the end`。 |
 | 手電筒 | `a heavy old black flashlight as long as his forearm` | 第 31–32 集，Gus 右手。 |
 | 掛鎖 | `a rusted padlock on a rusted hasp, about the size of her palm` | 第 31 集。 |
-| 名片（回憶） | `a plain white business card, print not readable` | 第 31 集，年輕的 Grant 右手遞出。 |
+| 名片（回憶） | `a plain white business card, held so only its blank back shows` | 第 31 集，年輕的 Grant 右手遞出。 |
 | Nora 的外套 | `a dark olive waxed-cotton work jacket, worn open` | 第 31–40 集出門時；在廠裡掛在長椅上方的釘子上。 |
 | Nora 的手機 | `a plain black phone in a clear case, no logo, about the size of her palm` | `nora-own-phone`，第 111 天 Peg 替她買的預付手機，第 34–60 集同一支；亮起寫 `its screen a soft white glow, seen from the side`；第 39 集砸進桶裡後接 `, its screen cracked, lying at the bottom of an empty steel bin`。 |
 | 護目鏡（Nora） | 在 `work` 外貌句裡（`clear safety goggles pushed up on her head`） | 第 34 集被拉回時寫 `her goggles knocked down onto her forehead`。 |
@@ -252,7 +252,7 @@
 | 丁腈手套 | `blue nitrile gloves` | 第 11 集原句；第 40 集 Nora 秤料。 |
 | 防塵口罩 | `a grey half-face dust respirator over her nose and mouth` | 第 40 集；推下來時 `…, pulled down under her chin`。 |
 | 舊麻袋 | `old burlap sacks about the size of a pillow, tied at the neck with twine, faded and blank` | 第 40 集；一個寫 `an old burlap sack…`。打開時裡面寫 `pale grey sand`。 |
-| 天平 | `a small old steel beam balance with a brass pan and sliding weights, its markings too fine to read` | 第 40 集，倉庫的木箱上。 |
+| 天平 | `a small old steel beam balance with a brass pan and sliding weights, its scale a soft pale blur` | 第 40 集，倉庫的木箱上。 |
 | 鈷粉 | `a small glass jar of fine deep-blue powder` / `a small steel measuring spoon` | 第 40 集；不寫白粉、不推到粉的特寫。 |
 | 鋼桶與加料鏟 | `a steel bucket` / `a long-handled steel charging shovel` | 第 40 集；第 55 集加料接 `, heaped with pale cullet`。只有 Gus、Sparks 拿。 |
 | 鋼框模 | `a shallow square steel frame mould on a flat steel table` | 第 40 集，倒進去的藍玻璃寫 `molten deep blue glass`。 |
@@ -261,7 +261,7 @@
 | 搬家毯 | `a grey quilted moving blanket` | 第 40 集，包著樣品片。 |
 | 紙筒 | `a plain grey cardboard drawing tube as long as her arm` | 第 40 集，她左腋下。 |
 | 空砂桶 | `a row of waist-high empty steel bins` | `sand-bins`，退火爐右邊；第 37 集起；踢翻寫 `…, one tipped on its side`。 |
-| 舊鐘 | `an old round wall clock with a white face and plain black bar markers, no numerals` | `wall-clock`，掛在大門上方，第 41–60 集同一句；第 39 集十二點寫 `both hands pointing straight up`；整點會敲（第 54 集十下）。 |
+| 舊鐘 | `an old round wall clock with a white face and plain black bar markers, no numerals, about as wide as a man's shoulders` | `wall-clock`，掛在大門上方，第 41–60 集同一句；第 39 集十二點寫 `both hands pointing straight up`；整點會敲（第 54 集十下）。 |
 | 黑板與粉筆 | `an old wooden-framed blackboard about as wide as her outstretched arms, leaning on the workbench, seen edge-on` / `a stub of white chalk` | 第 37 集；寫字的鏡從黑板側邊或背後拍。 |
 | 長椅 | `a long worn wooden bench against the brick wall` | Peg 的位置；第 40 集她睡在上面。 |
 | Sparks 的外套 | `a worn black zip-up work jacket` | 平常掛在機車把手上；第 40 集 `…, laid over her like a blanket`。 |
@@ -298,7 +298,7 @@
 | Fiona 的規格夾 | `a thick black spec binder about the size of a hardcover book, held against her chest, nothing on its spine` | 第 38 集；`cast.json` 外貌句裡的規格夾與識別證要拿出來（見最後一節）。 |
 | Fiona 的識別證與錶 | `an ID badge on a lanyard, turned toward her chest` / `a plain steel wristwatch on her left wrist, its face turned toward her` | 第 38、40 集。 |
 | 報名表與日期章 | `a single white form lying on the table, far out of focus` / `a rubber date stamp coming down on the top page, the page far out of focus` | 第 40 集；日期章那句同第 19 集。 |
-| Hank 的收據 | `a small pale pink carbon receipt about the size of her palm, print not readable` | 第 38–39 集。 |
+| Hank 的收據 | `a small pale pink carbon receipt about the size of her palm, folded so only its blank back shows` | 第 38–39 集。 |
 | Hank 的手機 | `a scratched black phone with no logo, about the size of his palm` | 第 38–39 集。 |
 | 素面沙袋 | `pallets stacked with plain unlabeled sand sacks` | 第 38–39 集 Doyle's 的院子。 |
 | 小帽子（候診區） | `a tiny pale yellow baby hat, half-knitted on two wooden knitting needles as long as her forearm` | 第 33 集；故意不是奶油色（Nora 那頂在 Peg 那裡，觀眾不會以為是同一頂）。 |

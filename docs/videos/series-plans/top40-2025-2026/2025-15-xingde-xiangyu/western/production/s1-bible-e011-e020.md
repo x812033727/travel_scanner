@@ -233,13 +233,13 @@
 | 藥（半顆） | `a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)` | 同第 1–10 集。在桌墊上接 `, on a black desk mat`；中文寫「藥」不寫「藥片」。 |
 | 真藥（一整顆） | `a tiny whole round white pill, smaller than a fingernail, plain white with one clean line across it, no colour, no markings (a medicine pill, not a device)` | 第 11 集；在半顆的右邊。兩顆並排時兩句都抄。 |
 | 夾鏈袋 | `a small clear zip-top plastic bag about the size of her palm` | 同第 10 集；第 11 集裝著藥時接 `, the half pill sealed inside`。 |
-| 防拆封袋 | `a clear tamper-evident specimen pouch about the size of her hand, a red seal strip across the top, no readable print` | 第 11 集，夾鏈袋裝在裡面。 |
+| 防拆封袋 | `a clear plastic pouch about the size of her hand, a red seal strip across the top, plain and unprinted` | 第 11 集，夾鏈袋裝在裡面。 |
 | 丁腈手套與鑷子 | `blue nitrile gloves` / `flat white plastic tweezers as long as her finger` | 第 11 集，Brandt。 |
 | 診間檯燈 | `a small black desk lamp casting hard white light` | 第 11–12 集書桌上。 |
 | 黑色桌墊 | `a black desk mat` | 第 11 集。 |
 | 放大鏡 | `a small black pocket magnifier about the size of his thumb` | 第 11 集 Dale；第 15 集當鋪老闆照抄同一句。 |
 | Brandt 的筆 | `a plain silver ballpoint pen as long as her hand` | 第 11 集筆尖停在兩顆藥上方；簽監管紀錄。 |
-| 監管紀錄（粉紅副本） | `a folded pale pink carbon-copy form about the size of her hand, print not readable` | 第 11–14 集。 |
+| 監管紀錄（粉紅副本） | `a pale pink carbon-copy form about the size of her hand, folded so only its blank back shows` | 第 11–14 集。 |
 | 化驗報告 | `a single white printed page, held so only its back shows` | 第 12–14 集；揉皺後 `…, crumpled into a ball`，攤平後 `…, smoothed flat but still creased`。 |
 | 領藥紀錄 | `three stapled white printed pages, held so only the backs or edges show` | 第 12–14 集；剛印好接 `, still warm from the printer`。 |
 | 牛皮紙信封 | `a plain manila envelope about the size of a magazine, no writing` | 第 13–14 集。 |
@@ -257,7 +257,7 @@
 | 卡夾、兩張卡、刷卡機 | 照第 4–10 集原句 | 第 14 集再刷一次；卡夾第 15 集拿出 Nora 的婚戒。 |
 | Nora 的婚戒（Grant 給的） | `a polished platinum wedding ring set with one round diamond as wide as a pencil` | 第 15 集，接 `, in her open palm`。 |
 | Peg 的婚戒 | `a thin worn gold wedding band with one tiny old diamond, on her left ring finger` | 同第 4–10 集，第 11–15 集；放到櫃台上寫 `a thin worn gold wedding band with one tiny old diamond, lying on the glass counter`。當掉之後的手指見〈帳〉。 |
-| 當票 | `a small pale green pawn ticket about the size of her palm, print not readable` | 第 15 集起，夾在帳本書頁裡。 |
+| 當票 | `a small pale green pawn ticket about the size of her palm, folded so only its blank back shows` | 第 15 集起，夾在帳本書頁裡。 |
 | 當鋪的玻璃櫃 | `a long glass display counter of old wristwatches, silver lockets and rings under warm light` | 第 15 集。 |
 | 銀行螢幕 | `a computer monitor on the counter, its screen turned toward Nora and away from the camera` | 第 15 集；從背面或側面拍。 |
 | 薄荷糖碗 | `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands` | 同第 4–10 集；第 16 集在辦公室窗台上、兩個女人中間。 |
@@ -268,7 +268,7 @@
 | 三條（合約） | `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it` | 第 16–19 集；落地寫 `…, lying on wet black asphalt`；第二份同一句。 |
 | Dana 的卷宗 | `three thick plain buff case files held against her chest` | 第 17、19、20 集；`cast.json` 已從外貌句拿掉。 |
 | Dana 的筆 | `a plain black rollerball pen as long as her hand` | 第 17 集。 |
-| Elias 的名片 | `a plain white business card, print not readable` | 第 17 集 Theo 遞，Nora 收進大衣左口袋；第 19 集 c24 她從口袋拿出來（寫明「Theo 給的那張」）、在左手。 |
+| Elias 的名片 | `a plain white business card, held so only its blank back shows` | 第 17 集 Theo 遞，Nora 收進大衣左口袋；第 19 集 c24 她從口袋拿出來（寫明「Theo 給的那張」）、在左手。 |
 | Elias 的手機 | `a black phone with no logo, about the size of his palm` | 同第 2 集原句；第 19 集右手。 |
 | Grant 的車 | `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` | 同第 4–10 集；第 18 集他自己開（Cole 不在），接 `, stopped in the street beside the black car, headlights on`。 |
 | Peg 的拖鞋 | `worn beige house slippers` | 第 14 集晚上、第 15 集晚上到第 19 集停車場；外貌句的鞋照抄，句後接 `her feet in worn beige house slippers instead of shoes`。 |

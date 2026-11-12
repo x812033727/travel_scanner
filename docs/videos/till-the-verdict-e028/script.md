@@ -33,7 +33,7 @@
 | Walter Pell | **待畫，必須先畫**（bible 先畫順序 11） | 55 歲義大利裔男性、粗厚的手、灰色鬍渣、眼角被爐火烤出的細紋、厚皮圍裙配工作衫；不戴眼鏡；**不要刻意畫得像 Elias**；不笑；原聲（c18） |
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 基本款（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣）＋自己的麥克風（**右手**）；關燈時在舞台左的台側陰影裡（臉只被燈箱照到一半）；c28、c38 不笑；**c44 舉起麥克風時練過的閉嘴微笑回到臉上、開口那一刻嘴角放平**，c45 嘴剛停、閉嘴微笑；說話句寫「聲音平穩、低」，不寫 warm、keynote、smooth；原聲（c44） |
 | Sienna | **待畫，必須先畫**（要看得到左腕的錶） | 基本款（暖棕膚色、黑色齊下巴短髮、紅唇、**左腕**細金錶、鮮紅合身套裝）；講台後；`a small stack of plain white cue cards about the size of her palm, blank on both sides` 在**左手**，c24 從左手滑落、之後散在她腳邊；**本集不笑**；不說話 |
-| Victor Crane | **待畫，必須先畫** | 深色立領外套；`a red casino-style poker chip with no lettering, about as wide as his thumb is long` 在右手，c26 `…, stopped between his fingers`；第一排最左端；c27 張嘴大笑再說話（bible 允許）；原聲（c27） |
+| Victor Crane | **待畫，必須先畫** | 深色立領外套；`a plain solid red poker chip with a thin white edge stripe, about as wide as his thumb is long` 在右手，c26 `…, stopped between his fingers`；第一排最左端；c27 張嘴大笑再說話（bible 允許）；原聲（c27） |
 | Lyle Becker | **待畫，必須先畫** | 格子襯衫、反戴的素面棒球帽；`a black phone held up sideways, seen from the back, its screen a soft white glow`（兩手，直播）；第一排右邊靠走道；不笑；不說話 |
 | Elias | `assets/refs/elias-portrait.jpg`；全身參考圖待畫 | 基本款（細銀絲框眼鏡），坐在第二排最右端，**左手在畫框外**；兩鏡、不說話；不笑 |
 | Ray | **待畫** | 本集只有右手（黑 T 恤袖口、手腕纏黑色膠帶）在燈控台的推桿上（c42） |
@@ -132,8 +132,8 @@ c42 寫 `a small dark lighting balcony, the cold white glow of the console's sma
 | c23 | 近景、固定；鏡頭在講台前、台下低處、略偏右；直式，臉在上三分之一；身後是舞台左端的黑暗；同一個活動廳 | Sienna（基本款紅色套裝、**左腕**細金錶），站在講台後；左手 `a small stack of plain white cue cards about the size of her palm, blank on both sides` 在胸前；燈箱的白光從畫面右遠遠照在她靠展示台那側的臉頰（穩定、很淡）；眼睛看著畫面右的她；眉毛一下抬高、眼睛睜大、嘴唇分開、下巴往後縮、呼吸停住，`no smile at any moment, until the last frame` | Sienna 的嘴唇分開、沒出聲（動作一），拿卡的左手鬆開（動作二）；剪在手指鬆開；嘴微張；最後：她的左手鬆開、卡正往下滑 | — | 約 2.5 秒 |
 | c24 | 插鏡、特寫、固定；**第一格就是 Sienna 鬆開的左手與往下滑的提詞卡**；直式；燈箱的白光從畫面右 | Sienna 的左手（鮮紅袖口）、左腕 `a slim gold watch on her LEFT wrist`；`a small stack of plain white cue cards about the size of her palm, blank on both sides` 從她左手滑出去、在畫面中間散開往下掉，落到 `…, scattered on the black stage floor`；畫面裡只有手與卡 | 提詞卡從她左手滑落（動作一），在畫面中間散開、落到舞台地板上（動作二）；剪在最後一張落地；畫面上沒有嘴；最後：`a small stack of plain white cue cards about the size of her palm, blank on both sides, scattered on the black stage floor`，左手空著懸在上方 | — | 約 2.5 秒 |
 | c25 | 中近景、固定；同 c23 的鏡位；直式；身後是舞台左端的黑暗 | Sienna（基本款紅色套裝），站在講台邊，左手空著；燈箱的淡光從畫面右（穩定）；眼睛低頭看著腳邊散開的卡；眉心擰緊、嘴唇抿緊、下巴往下，`no smile at any moment, until the last frame` | Sienna 低頭看著腳邊的卡（動作一），空著的左手慢慢垂到身側（動作二）；剪在手垂下；嘴閉著；最後：她站在講台邊、左手空著、卡散在腳邊 | — | 約 2 秒 |
-| c26 | 插鏡、手部特寫、固定；**第一格就是 Crane 右手指間翻動的籌碼**；直式；身邊一支手機螢幕的白光從旁邊照著手 | Crane 粗短的右手（深色立領外套的袖口）；`a red casino-style poker chip with no lettering, about as wide as his thumb is long, stopped between his fingers`；畫面裡只有手 | 籌碼在指間翻到一半（動作一），停住、夾在兩指之間（動作二）；剪在停住；畫面上沒有嘴；最後：籌碼停在他兩指之間 | — | 約 2 秒 |
-| c27 | 近景、慢推（從胸上推到肩上）；同第 26 集 c13 的鏡位（舞台前緣、他的右前方低處）；直式，臉在上三分之一；身後只有黑暗的觀眾席（虛焦） | Victor Crane（矮壯、紅潤的臉、深色立領外套），坐在第一排最左端；右手指間 `a red casino-style poker chip with no lettering, about as wide as his thumb is long, stopped between his fingers`；身邊一支舉起的手機螢幕的白光從他右邊照在臉上，加上舞台燈箱遠遠的淡光（都穩定）；四分之三側臉朝畫面右上舞台左的 Grant、眼睛看著他；先張嘴大笑一聲、露齒、眉毛往上衝；接著嘴在說話、聲音大、邊笑邊說 | Crane 張嘴大笑一聲（動作一），對著 Grant 嘴在說話（大聲、邊笑邊說）（動作二）；說完嘴閉上、籌碼還停在指間；最後：他看著畫面右上 | Crane（大聲、邊笑邊說）：Grant, you didn't know?（Grant，你不知道？）（原聲）（→ 答在 c28：Grant 沒有回答，下顎咬緊） | 約 3.5 秒 |
+| c26 | 插鏡、手部特寫、固定；**第一格就是 Crane 右手指間翻動的籌碼**；直式；身邊一支手機螢幕的白光從旁邊照著手 | Crane 粗短的右手（深色立領外套的袖口）；`a plain solid red poker chip with a thin white edge stripe, about as wide as his thumb is long, stopped between his fingers`；畫面裡只有手 | 籌碼在指間翻到一半（動作一），停住、夾在兩指之間（動作二）；剪在停住；畫面上沒有嘴；最後：籌碼停在他兩指之間 | — | 約 2 秒 |
+| c27 | 近景、慢推（從胸上推到肩上）；同第 26 集 c13 的鏡位（舞台前緣、他的右前方低處）；直式，臉在上三分之一；身後只有黑暗的觀眾席（虛焦） | Victor Crane（矮壯、紅潤的臉、深色立領外套），坐在第一排最左端；右手指間 `a plain solid red poker chip with a thin white edge stripe, about as wide as his thumb is long, stopped between his fingers`；身邊一支舉起的手機螢幕的白光從他右邊照在臉上，加上舞台燈箱遠遠的淡光（都穩定）；四分之三側臉朝畫面右上舞台左的 Grant、眼睛看著他；先張嘴大笑一聲、露齒、眉毛往上衝；接著嘴在說話、聲音大、邊笑邊說 | Crane 張嘴大笑一聲（動作一），對著 Grant 嘴在說話（大聲、邊笑邊說）（動作二）；說完嘴閉上、籌碼還停在指間；最後：他看著畫面右上 | Crane（大聲、邊笑邊說）：Grant, you didn't know?（Grant，你不知道？）（原聲）（→ 答在 c28：Grant 沒有回答，下顎咬緊） | 約 3.5 秒 |
 | c28 | 中近景、固定；同 c10 的鏡位（舞台左邊、台下低處）；直式；身後是舞台左端的黑幕 | Grant（基本款，細圓金屬框眼鏡），站在台側光的邊上；右手麥克風垂在身側；燈箱的白光從畫面右照著他的左半邊臉（穩定）；眼睛從畫面左下的 Crane 移回畫面右的她；下顎咬緊、鼻翼一張、眉頭壓低、嘴唇閉緊，`no smile at any moment, until the last frame` | Grant 的眼睛從 Crane 移到她（動作一），握麥克風的右手收緊（動作二）；剪在手收緊；嘴閉著；最後：他半張臉在光裡、看著畫面右 | — | 約 2.5 秒 |
 | c29 | 中景、固定；反打：鏡頭在舞台前緣、往第一排拍；直式：前景下緣是舞台的黑色邊緣，中間是第一排 | 看不清任何一張臉。`two or three phones held up in the dark, seen from the back or the side, only their soft white glows`：第一排三支手機背面朝鏡頭舉著，螢幕的白光照著拿的人的下巴（虛焦）；畫面左那支橫著舉（Lyle 的，格子襯衫的袖子、反戴的帽沿，臉在手機後面）；後面幾排是黑影 | 第三支手機也舉起來（動作一），幾支手機一起往前伸一點（動作二）；剪在往前伸；畫面上沒有嘴；最後：三支手機舉在黑暗裡、背面朝鏡頭 | — | 約 2.5 秒 |
 | c30 | 近景、慢推（從胸上推到肩上）；顏值鏡頭；鏡頭在展示台前方偏右、比燈箱低一點（往上拍）；直式：她的臉在畫面上半，下緣是燈箱的白光與倒立的花瓶（虛焦） | Nora（`gown`，`white cotton handling gloves on both her hands`，齊肩頭髮往後順到耳後），站在展示台後；燈箱的光穿過瓶底，散成細小的光點落在她濕的臉頰與睫毛上（光點不動）；臉頰有淚痕、睫毛濕；眼睛看著畫面左外的觀眾席；眉毛放平、下巴抬著、嘴唇閉著、呼吸慢，`no smile at any moment, until the last frame` | Nora 慢慢抬起臉、讓光點落在臉上（動作一），眼淚沿著臉頰往下、她不擦（動作二）；剪在眼淚滑到下巴；嘴閉著；最後：她看著畫面左外，光點在她濕的臉上 | — | 約 3 秒 |
@@ -159,6 +159,8 @@ c42 寫 `a small dark lighting balcony, the cold white glow of the console's sma
 ## 注意事項
 
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
+
+- 2026-11-12 道具句與 cast.json 對齊
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **瓶底的名字**：細綱的氣泡 "settles into two letters" 改成「燈箱的光從瓶底往上爬，光點一顆接一顆亮起來」；氣泡封在玻璃裡、不會動。"N.Q." 只在 c02 一鏡鎖死的 `still` 上後製 2D 光點，日期不上畫面、由她說 "My wedding day."。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 2 條；站主可改成連後製也不上）。

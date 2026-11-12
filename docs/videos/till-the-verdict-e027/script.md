@@ -32,7 +32,7 @@
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 基本款（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣）＋自己的麥克風（**右手**）；**本集一鏡都不笑**：c11 句前從鼻子一聲短短的乾笑、說話時嘴角放平；說話句寫「聲音平穩、低」，不寫 warm、keynote、smooth；c17 起往舞台左退開，關燈後在台側的陰影裡；原聲（c11） |
 | Ray | **待畫**（有臉、不說話） | 30 歲菲律賓裔男性、黑 T 恤、黑工作褲、耳麥、一隻手腕纏黑色膠帶；只在燈控室；不戴眼鏡；不說話；不笑 |
 | Theo | **待畫，必須先畫** | 基本款（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲、棕色樂福鞋）＋`a slim tablet in a plain grey case, its screen turned away`（**左手**）；站在舞台右邊側門旁的牆前；面無表情、不笑；本集不說話 |
-| Victor Crane | **待畫** | 深色立領外套；`a red casino-style poker chip with no lettering, about as wide as his thumb is long` 在右手指間翻；第一排最左端；本集不笑、不說話 |
+| Victor Crane | **待畫** | 深色立領外套；`a plain solid red poker chip with a thin white edge stripe, about as wide as his thumb is long` 在右手指間翻；第一排最左端；本集不笑、不說話 |
 | Sienna | **待畫**（要看得到左腕的錶） | 基本款紅色套裝；`a small stack of plain white cue cards about the size of her palm, blank on both sides` 在**左手**；講台後；本集不笑、不說話 |
 | 主持人 | 不畫（extras `launch-host`） | c18 舞台右邊緣，只拍肩以下：黑色晚宴外套、右手拿著他自己那支 `a black handheld microphone with no logo` |
 | 兩個攝影師 | 不畫（extras `reporters`，拿相機） | c10 臉被相機擋住 |
@@ -102,7 +102,7 @@ c33–c44 寫 `the hall is dark; the only light is the glowing light box on the 
 | c11 | 近景、慢推（從胸上推到肩上）；鏡頭在舞台前緣下、他的正前方偏右、低處；直式，臉在上三分之一；身後是展示台的白光與大螢幕的淡光（虛焦）；同一個活動廳 | Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫），站在舞台前緣；右手 `a black handheld microphone with no logo` 在嘴前；頂光穩定照在臉上；四分之三側臉朝畫面右下外台階前的她、眼睛看著她；句前從鼻子一聲短短的乾笑，接著眉毛挑起、嘴角放平、下巴微抬、聲音平穩、低，`no smile at any moment, until the last frame` | Grant 從鼻子乾笑一聲（動作一），看著她、嘴在說話（平穩、低）（動作二）；句子停在破折號（被打斷），嘴閉上、眼睛轉回畫面右下的她；剪在破折號；最後：麥克風在嘴前、嘴閉著、他看著畫面右下 | Grant（平穩、低，句前一聲乾笑）：My ex-wife is a little emotional—（我前妻有點激動——）（原聲）（被打斷 → c12） | 約 3.5 秒 |
 | c12 | 近景、慢推（從胸上推到肩上）；鏡頭在她前方偏右、低處（右側走道那側）；直式，臉在上三分之一；身後是舞台右端的台階與台口（虛焦），畫面左上遠處是台上 Grant 的身影（虛焦、很小、臉看不清） | Nora（`gown`）；追光從她右上方很陡地打在頭頂與右肩，臉上是觀眾席低低的暖光（穩定）；臉頰有淚痕、眼睛濕；左手手拿包、`a plain narrow white-gold band with no stone, on her left ring finger`（畫框下緣）；背對舞台、不回頭；四分之三側臉朝畫面左、眼睛看著畫面左外的觀眾席，不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線：她背對 Grant 說）；眉毛放平、眼睛不眨、嘴唇在字前閉緊、聲音低、清楚、不高，`no smile at any moment, until the last frame` | Nora 看著觀眾席，嘴在說話（低、清楚、不回頭）；說完下巴一抬，嘴閉上；最後：她背對舞台、看著畫面左外 | Nora（低、清楚，不回頭）：Give me two minutes.（給我兩分鐘）（原聲）← 因為 c11 | 約 3 秒 |
 | c13 | 特寫、慢推（從下巴到眉推到眼睛）；同 c12 的鏡位；直式；**第一格就是 Nora 的臉，整鏡不拉遠** | Nora（`gown`）；追光在頭頂與右肩，臉上是觀眾席低低的暖光（穩定）；臉頰有淚痕、眼睛濕；四分之三側臉朝畫面左、眼睛看著畫面左外的觀眾席；眉毛壓平、眼睛定住、嘴唇在字之間抿緊、聲音低、清楚，`no smile at any moment, until the last frame` | Nora 嘴在說話（低、清楚）（動作一）；說完轉身面向畫面右的台階（動作二），嘴閉上；最後：她側身朝畫面右 | Nora（低、清楚）：Then it's your mic.（之後麥克風還你）（原聲） | 約 3 秒 |
-| c14 | 近景、固定；同第 26 集 c13 的鏡位（舞台前緣、他的右前方低處）；直式，臉在上三分之一；身後只有暗下來的觀眾席（虛焦）；同一個活動廳 | Victor Crane（矮壯、紅潤的臉、深色立領外套），坐在第一排最左端；右手指間 `a red casino-style poker chip with no lettering, about as wide as his thumb is long` 還在翻；觀眾席低低的暖光穩定照在臉上；眼睛看著畫面左外台階前的她；眉毛往上衝、眼睛瞇起、嘴唇閉著、下巴往前，`no smile at any moment, until the last frame` | Crane 身子往前探（動作一），眼睛瞇起（動作二）；剪在身子探到最前；嘴閉著；最後：籌碼還在他指間翻，他看著畫面左外 | — | 約 2 秒 |
+| c14 | 近景、固定；同第 26 集 c13 的鏡位（舞台前緣、他的右前方低處）；直式，臉在上三分之一；身後只有暗下來的觀眾席（虛焦）；同一個活動廳 | Victor Crane（矮壯、紅潤的臉、深色立領外套），坐在第一排最左端；右手指間 `a plain solid red poker chip with a thin white edge stripe, about as wide as his thumb is long` 還在翻；觀眾席低低的暖光穩定照在臉上；眼睛看著畫面左外台階前的她；眉毛往上衝、眼睛瞇起、嘴唇閉著、下巴往前，`no smile at any moment, until the last frame` | Crane 身子往前探（動作一），眼睛瞇起（動作二）；剪在身子探到最前；嘴閉著；最後：籌碼還在他指間翻，他看著畫面左外 | — | 約 2 秒 |
 | c15 | 中近景、固定；鏡頭在講台前、台下低處、略偏右；直式，臉在上三分之一；身後是舞台左端的黑幕（虛焦）；同一個活動廳 | Sienna（基本款紅色套裝、**左腕**細金錶），站在講台後；左手 `a small stack of plain white cue cards about the size of her palm, blank on both sides` 按在講台上；頂光穩定；眼睛看著畫面右外台階前的她；眉頭一皺、嘴唇抿緊、下巴收，`no smile at any moment, until the last frame` | Sienna 的左手把提詞卡抓緊（動作一），往講台後退半步（動作二）；剪在退步；嘴閉著；最後：她站在講台後、卡在左手 | — | 約 2 秒 |
 | c16 | 中近景、跟拍（從下往上）、低角度；鏡頭在台階旁、低；直式：前景是黑色台階的邊（虛焦），上緣是舞台的頂光 | Nora（`gown`）：右手提起裙襬、露出 `low nude flat shoes` 的鞋尖踩上黑色台階；左手拿手拿包（`a plain narrow white-gold band with no stone, on her left ring finger`）；追光跟著；臉頰有淚痕；側臉朝畫面右上、眼睛看著台上；眉毛放平、下巴抬著、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 右手提起裙襬（動作一），一級一級走上台階（動作二）；剪在走上第二級；嘴閉著；最後：她走到台階頂，裙襬還提在右手 | — | 約 2.5 秒 |
 | c17 | 近景、固定；同 c11 的鏡位；直式，臉在上三分之一；同一個活動廳 | Grant（基本款，細圓金屬框眼鏡）；右手麥克風從嘴前放低到胸前；頂光；眼睛跟著畫面右外上台的她；眉頭一收、嘴唇抿薄、下巴繃緊、鼻子吸一口氣，`no smile at any moment, until the last frame` | Grant 把麥克風放低到胸前（動作一），往畫面左（舞台左）退半步（動作二）；剪在退步；嘴閉著；最後：他站在台中央偏左、麥克風在胸前，看著畫面右 | — | 約 2.5 秒 |
@@ -154,6 +154,8 @@ c33–c44 寫 `the hall is dark; the only light is the glowing light box on the 
 ## 注意事項
 
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
+
+- 2026-11-12 道具句與 cast.json 對齊
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **保全不抓她**（bible〈全劇固定〉尺度）：細綱 "grabs for her arm" 寫成伸手、手停在她手臂前一掌（c03 插鏡），沒有碰到。

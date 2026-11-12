@@ -240,7 +240,7 @@
 | 玻璃罩 | `a clear glass display dome a hand taller than the vase, as wide as her two hands spread side by side` | 第 26–29 集；掀起放下後接 `, set down on the black stage floor`。 |
 | 展示台 | `a waist-high white plinth whose flat top is a glowing white light box` | 第 26–29 集。 |
 | 白棉手套 | `a pair of white cotton handling gloves` | 第 27 集在展示台旁的小托盤上；戴上後寫 `white cotton handling gloves on both her hands`。 |
-| 規則卡 | `a small plain white card about the size of her palm, print not readable` | 第 21 集；拍在桌上接 `, slapped face down on the dark walnut table`。 |
+| 規則卡 | `a small plain white card about the size of her palm, held so only its blank back shows` | 第 21 集；拍在桌上接 `, slapped face down on the dark walnut table`。 |
 | Ashford 家的鑰匙 | `a single plain steel house key on a thin black leather loop, about as long as her finger` | 第 21 集，兩把一樣。 |
 | 冰箱 | `a tall double-door steel fridge standing open, its glass shelves holding only rows of plain bottled water with no labels and one plain brown bag of coffee beans` | 第 21 集。 |
 | 一桌菜 | `a home-cooked dinner on the long dark walnut table: a pot roast in a black cast-iron pot, four side dishes in plain white bowls, three place settings of white plates and plain steel cutlery` | 第 21 集最後、第 22 集；冒著熱氣接 `, steam rising`。 |
@@ -248,24 +248,24 @@
 | Peg 的圍裙 | `a plain navy cotton apron tied over her cardigan` | 第 21 集最後、第 22、25 集。 |
 | 燙金信封 | `a stiff gold-foil envelope about as long as her hand, its face blank, catching the light` | 第 22 集；取代 `cast.json` 的 `invitation`。 |
 | 請帖 | `a heavy cream invitation card with a gold edge, about as long as her hand, held so only its blank side faces the camera` | 第 22 集；平放寫 `a heavy cream invitation card with a gold edge, about as long as her hand, lying flat on the dark walnut table, seen edge-on at table height`（第 23、25 集）。 |
-| 座位卡 | `a small folded cream seat card with a gold edge, about the size of a playing card, print not readable` | 第 22、26 集。 |
+| 座位卡 | `a small folded cream seat card with a gold edge, about the size of a playing card, seen edge-on, only its gold edge catching the light` | 第 22、26 集。 |
 | 迴紋針 | `a straightened silver paper clip as long as her finger` | 第 23 集；Peg 從帳本拔下來時還是彎的：`a silver paper clip about as long as her thumb`。 |
 | SIM 卡 | `a tiny SIM card smaller than her fingernail` | 第 23 集；頂出來接 `, on a thin metal tray sliding out of the side of the phone`；丟進抽屜接 `, lying face down in an empty nightstand drawer`。 |
 | 新 SIM 卡的包裝 | `a small plain white card packet about the size of her palm, no print` | 第 23 集。 |
 | Peg 的手機 | `an older black phone in a worn brown case, about the size of her palm` | 同第 19 集原句；亮起寫 `its screen a soft white glow, seen from the side`；第 25 集開擴音寫 `…, lying on the dark walnut table, its screen a soft white glow seen from the side`；第 26–30 集車裡看直播寫 `…, held in both her hands, its screen a soft white glow lighting her face from below, seen from the back`。 |
 | Sienna 的手機 | `a slim phone in a plain red case, about the size of her palm` | 第 22 集，**左手**、貼左耳。 |
-| 櫥窗海報 | `a tall window poster of Grant in his light stone suit cradling a cream-white vase, no lettering anywhere` | 第 23 集；海報上的臉要像 Grant（給 Grant 的定妝照當參考）。 |
-| 黃銅牌 | `a small blank brass plaque beside the door, about the size of her hand, catching the light, no engraving visible` | 第 23 集。 |
+| 櫥窗海報 | `a tall photograph of Grant in his light stone suit cradling a cream-white vase, printed edge to edge on the inside of the shop window` | 第 23 集；海報上的臉要像 Grant（給 Grant 的定妝照當參考）。 |
+| 黃銅牌 | `a small smooth brass plate beside the door, about the size of her hand, seen at a steep angle, only a bright reflection on its face` | 第 23 集。 |
 | 禮服盒 | `a long flat pale grey box tied with a grey satin ribbon, about as long as her arm` | 第 24–25 集；掀開接 `, its lid lifted, misty-grey fabric folded inside`。 |
 | 手拿包 | `a small misty-grey satin clutch about the size of her hand` | 第 24 集盒裡；第 26–30 集。 |
-| 掛號信封 | `a long white envelope with a small green certified-mail sticker, no readable print` | 第 25 集。 |
+| 掛號信封 | `a long white envelope with a small plain green sticker in one corner` | 第 25 集。 |
 | 律師函 | `two stapled white pages folded in thirds, held so only the backs show` | 第 25、30 集；翻到第二頁時仍只拍紙背。 |
 | 設計權轉讓書影本、協議簽名頁影本 | `a single photocopied white page, held so only its back shows` | 第 30 集兩張同一句；撕下的那張接 `, torn from a staple at one corner`。 |
 | 兩張影本對燈 | `two thin photocopied white pages held flat together up to a bare bulb, the light shining through both, one small soft dark smudge of ink showing through where two marks sit exactly on top of each other, nothing readable` | 第 30 集 mid hook；整鏡焦點在那一團影子與她的手，字形不成形。 |
 | 鐵網燈泡 | `a bare bulb in a black wire cage on the white corridor wall` | 第 29–30 集；第 29 集寫 `…, dimming once, slowly, and coming back`。 |
 | 提詞卡 | `a small stack of plain white cue cards about the size of her palm, blank on both sides` | 第 26、28 集 Sienna **左手**；掉落後 `…, scattered on the black stage floor`。 |
 | 麥克風 | `a black handheld microphone with no logo` | Grant 一支、主持人一支；寫是誰的、哪隻手。 |
-| Crane 的籌碼 | `a red casino-style poker chip with no lettering, about as wide as his thumb is long` | 第 26、28–29 集，在他右手指間翻；第 28 集 `…, stopped between his fingers`。 |
+| Crane 的籌碼 | `a plain solid red poker chip with a thin white edge stripe, about as wide as his thumb is long` | 第 26、28–29 集，在他右手指間翻；第 28 集 `…, stopped between his fingers`。 |
 | Lyle 的相機 | `a black DSLR camera with no logo on a plain strap` | `lyle-camera`（第 46–47、57 集同一句）；第 26 集；閃光寫 `its flash firing once, soft and white`。 |
 | Lyle 的手機 | `a black phone held up sideways, seen from the back, its screen a soft white glow` | 第 28–30 集直播。 |
 | 前排的手機 | `two or three phones held up in the dark, seen from the back or the side, only their soft white glows` | 第 28 集；不寫「每一支」。 |

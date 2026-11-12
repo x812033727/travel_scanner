@@ -103,8 +103,8 @@ c36–c41 寫 `early morning inside a cold, dim old brick glassworks, thin gold 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c20 | 中景、慢推（從中景推到中近景）；**構圖跟 c19 一樣：上三分之二是雙開鐵門**；直式；同一個門口，十二年前 | 十九歲的 Nora（`nineteen`：高馬尾、霧灰色舊 T 恤、太大的皮圍裙、護目鏡推在額頭；舊的棕色工作靴），從門裡走出來；身後 `the same tall double steel doors, freshly painted dark red, standing open onto the orange glow of furnaces inside`；暖金、微霧的夏日光；眼睛看著畫面右外人行道上的人（不看鏡頭）；眉毛一抬、眼睛好奇又戒備、嘴唇閉著、呼吸穩，`no smile at any moment, until the last frame` | 十九歲的 Nora 從門裡跨出門檻（動作一），在陽光裡停步（動作二）；剪在停步；嘴閉著；最後：她站在門口外一步，看著畫面右外 | — | 約 3 秒 |
-| c21 | 近景、慢推（從胸上推到肩上）；鏡頭在人行道上、她的右前方；直式，臉在上三分之一；身後是人行道邊虛焦的白色廂型車與暖金的霧光；同一個門口，十二年前 | 年輕的 Grant（`young`：25 歲、沙金色側分、刮乾淨的臉、細圓金屬框眼鏡、廉價灰西裝、識別證掛繩、識別證翻向胸口、棕色皮鞋）；右手兩指夾著 `a plain white business card, print not readable`，背面朝鏡頭、遞向畫面左；`a plain old white van with no lettering, no badge, number plate out of frame` 在身後虛焦；暖金的光從畫面左；四分之三側臉朝畫面左的十九歲 Nora、眼睛看著她；說話前是練過的閉嘴微笑、說話時嘴角仍提著、眉毛抬起、下巴微微往前、聲音平穩、清楚、像背過的 | 第一格名片已經遞在半空；Grant 嘴在說話（平穩、清楚、像背過的）（動作一）；說完右手把名片往她面前再送半寸（動作二），嘴閉上、閉嘴的笑留著；最後：名片遞在兩人之間 | Grant（平穩、清楚，像背過的）：Grant Whitlock. Sales manager.（Grant Whitlock。業務經理）（原聲）（結尾） | 約 3.5 秒 |
-| c22 | 中景、側面雙人鏡、固定；鏡頭在人行道邊、與兩人平行；直式：十九歲的 Nora 在畫面左、年輕的 Grant 在畫面右，兩人中間後景是開著的深紅鐵門與爐火的橘光（虛焦）；同一個門口，十二年前 | 共兩人。十九歲的 Nora（`nineteen`，舊的棕色工作靴）側臉朝畫面右：眉毛放平、眼睛垂到名片上、嘴唇閉著，`no smile at any moment, until the last frame`；年輕的 Grant（`young`，棕色皮鞋）側臉朝畫面左：練過的閉嘴微笑、眉毛抬著、下巴微收；他右手的 `a plain white business card, print not readable` 背面朝鏡頭；暖金的光 | 十九歲的 Nora 用右手接過名片（動作一），低頭看著它（動作二）；Grant 的閉嘴微笑不變；剪在名片離開他的指尖；兩人嘴都閉著；最後：名片在她右手、背面朝鏡頭，她看著名片 | — | 約 3 秒 |
+| c21 | 近景、慢推（從胸上推到肩上）；鏡頭在人行道上、她的右前方；直式，臉在上三分之一；身後是人行道邊虛焦的白色廂型車與暖金的霧光；同一個門口，十二年前 | 年輕的 Grant（`young`：25 歲、沙金色側分、刮乾淨的臉、細圓金屬框眼鏡、廉價灰西裝、識別證掛繩、識別證翻向胸口、棕色皮鞋）；右手兩指夾著 `a plain white business card, held so only its blank back shows`，背面朝鏡頭、遞向畫面左；`a plain old white van with no lettering, no badge, number plate out of frame` 在身後虛焦；暖金的光從畫面左；四分之三側臉朝畫面左的十九歲 Nora、眼睛看著她；說話前是練過的閉嘴微笑、說話時嘴角仍提著、眉毛抬起、下巴微微往前、聲音平穩、清楚、像背過的 | 第一格名片已經遞在半空；Grant 嘴在說話（平穩、清楚、像背過的）（動作一）；說完右手把名片往她面前再送半寸（動作二），嘴閉上、閉嘴的笑留著；最後：名片遞在兩人之間 | Grant（平穩、清楚，像背過的）：Grant Whitlock. Sales manager.（Grant Whitlock。業務經理）（原聲）（結尾） | 約 3.5 秒 |
+| c22 | 中景、側面雙人鏡、固定；鏡頭在人行道邊、與兩人平行；直式：十九歲的 Nora 在畫面左、年輕的 Grant 在畫面右，兩人中間後景是開著的深紅鐵門與爐火的橘光（虛焦）；同一個門口，十二年前 | 共兩人。十九歲的 Nora（`nineteen`，舊的棕色工作靴）側臉朝畫面右：眉毛放平、眼睛垂到名片上、嘴唇閉著，`no smile at any moment, until the last frame`；年輕的 Grant（`young`，棕色皮鞋）側臉朝畫面左：練過的閉嘴微笑、眉毛抬著、下巴微收；他右手的 `a plain white business card, held so only its blank back shows` 背面朝鏡頭；暖金的光 | 十九歲的 Nora 用右手接過名片（動作一），低頭看著它（動作二）；Grant 的閉嘴微笑不變；剪在名片離開他的指尖；兩人嘴都閉著；最後：名片在她右手、背面朝鏡頭，她看著名片 | — | 約 3 秒 |
 
 ### 第三場：Mom's studio.（約 29 秒）
 
@@ -159,6 +159,8 @@ c36–c41 寫 `early morning inside a cold, dim old brick glassworks, thin gold 
 ## 注意事項
 
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
+
+- 2026-11-12 道具句與 cast.json 對齊
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **吵架在車外、隔著車頂**（bible〈細綱自相矛盾〉）：細綱衝突欄寫「在車上爆發」；照鉤子寫：c02 她一下車就吼 "You stood there!"，"He shoved that paper…" 那一段在她認出 Pell's 之後、Elias 下車時隔著車頂吵完；回憶放在他說完 "You need a place." 之後。

@@ -201,7 +201,7 @@
 | Fisk 的鋼筆 | `a black fountain pen with a gold clip, as long as his hand` | 第 6–8 集；`cast.json` 已從 Fisk 的外貌句拿掉，每鏡寫在哪隻手（預設右手）。 |
 | 窗簾 | `a heavy charcoal-grey curtain panel, thick matte fabric, hanging from ceiling to floor` | 扯下後寫 `…, torn down and heaped on the floor`。 |
 | 窗簾桿 | `a long black steel curtain rod, longer than a man is tall` | 第 7 集嬰兒房。 |
-| 送貨單 | `a small pale yellow delivery slip on a grey clipboard about the size of her hand, print not readable` | 第 7 集插鏡正文必寫 `her LEFT hand holds the pen, a slim gold watch on her LEFT wrist`，分鏡標「必須左手」。 |
+| 送貨單 | `a small pale yellow delivery slip on a grey clipboard about the size of her hand, the slip far out of focus, the focus on the pen tip` | 第 7 集插鏡正文必寫 `her LEFT hand holds the pen, a slim gold watch on her LEFT wrist`，分鏡標「必須左手」。 |
 | 玻璃磚 | `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside` | 抱著寫 `…, held against her chest in her left arm`。 |
 | 草圖資料夾 | `a thin grey card folder about the size of a magazine, a few sheets of drawing paper inside, only their edges showing` | 第 7 集。 |
 | 支票 | `a pale blue personal check about the size of his hand, held so only the back shows` | 第 8 集；撕開後 `…, torn in two`。 |

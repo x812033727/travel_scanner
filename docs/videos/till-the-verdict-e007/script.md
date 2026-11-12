@@ -53,7 +53,7 @@ Grant 的白車 c06b 開進坡底（第 5 集「After one stop.」之後，18:30
 | 離婚文件 | `a thin stack of white papers held by a black binder clip, a small yellow tab sticking out of one edge, held so only the backs or edges of the pages show` | c01–c34 夾在 Fisk 左腋下；c34 結尾（走廊上的背影）起在他左手，c39–c45 捏著紙邊遞給她 |
 | Fisk 的鋼筆 | `a black fountain pen with a gold clip, as long as his hand` | Fisk 每一鏡，右手 |
 | Fisk 的錶（新，見〈這版改了什麼〉） | `a plain silver wristwatch on his left wrist, its face turned toward him` | 拍到 Fisk 左腕的每一鏡都照抄，**c45 一定要有**（c01–c03、c08、c11、c24–c25、c28–c29、c34–c35、c38–c39、c41–c42、c44–c45）；c11、c24 看錶只拍手腕與他的眼睛，錶面不入鏡 |
-| 送貨單夾板 | `a small pale yellow delivery slip on a grey clipboard about the size of her hand, print not readable` | c05–c06（Sienna 右手拿著、**左手**簽；c06 只把夾板交給工頭，筆留在她左手） |
+| 送貨單夾板 | `a small pale yellow delivery slip on a grey clipboard about the size of her hand, the slip far out of focus, the focus on the pen tip` | c05–c06（Sienna 右手拿著、**左手**簽；c06 只把夾板交給工頭，筆留在她左手） |
 | 窗簾 | `a heavy charcoal-grey curtain panel, thick matte fabric, hanging from ceiling to floor` | 客廳、嬰兒房每一鏡；第 6 集扯下的那片寫 `a heavy charcoal-grey curtain panel, thick matte fabric, torn down and heaped on the floor` |
 | 窗簾桿 | `a long black steel curtain rod, longer than a man is tall` | c14、c17、c19–c21（嬰兒房） |
 | 醫院袋 | `a plain white plastic drawstring bag with no print, about the size of a bed pillow, soft and half full` | c01–c27 在沙發扶手上；c30 起繩子掛在她右手腕；c36 塞進行李箱 |
@@ -104,8 +104,8 @@ Grant 的白車 c06b 開進坡底（第 5 集「After one stop.」之後，18:30
 | c02 | 插鏡、特寫、固定；**鏡頭在紙的側邊、跟紙面一樣高，平拍**；**第一格就是紙的邊與筆尖**；直式 | 只看得到 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show` 的厚度與紙邊、Fisk 的左手（左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`）拇指壓著紙角（灰西裝袖口），以及 `a black fountain pen with a gold clip, as long as his hand` 的筆尖；紙面那一面整鏡不入鏡；畫面裡沒有臉 | 筆尖在紙面上點兩下，紙邊跟著輕輕一震；剪在第二下；畫面上沒有嘴；最後：筆尖停在紙上 | — | 約 2 秒 |
 | c03 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；前景下緣是翻開的協議的紙背；身後是暗的窗簾與沙發扶手 | Fisk（灰色西裝、金框眼鏡），左手 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show`，左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`（紙背朝鏡頭），左腋下 `a thin stack of white papers held by a black binder clip, a small yellow tab sticking out of one edge, held so only the backs or edges of the pages show`，右手 `a black fountain pen with a gold clip, as long as his hand`, in his right hand；四分之三側臉朝畫面左的 Nora；律師臉 | Fisk 嘴在說話（慢、輕）；說完把鋼筆從紙上收回、垂在身側，嘴閉上；最後：他看著她，協議還翻開著 | Fisk（慢、輕，客氣得像威脅）：It's in writing.（白紙黑字）（原聲）← 因為 c01 | 約 3 秒 |
 | c04 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；身後是暗下來的客廳與掛上窗簾的玻璃（虛焦） | Nora（`discharge`），`a camel wool coat with deep pockets, worn open`；金光橫過她的眼睛與臉頰；四分之三側臉朝畫面右的 Fisk、眼睛看著他；眼眶紅、眉頭往中間收、下巴繃緊、聲音壓低，`no smile at any moment, until the last frame` | 她嘴在說話（低、硬）；說完眼睛轉向畫面左後的餐桌那頭，嘴閉上；最後：她看著畫面左外的 Sienna | Nora（低、硬）：I want to see him.（我要見他）（原聲）（→ 答在 c06） | 約 3 秒 |
-| c05 | 插鏡、手部特寫、固定；**鏡頭很低、貼著夾板的邊平拍**；**第一格就是她的左手、筆尖與金錶**；直式；**必須左手** | Sienna 的右手（鮮紅袖口）拿著 `a small pale yellow delivery slip on a grey clipboard about the size of her hand, print not readable`；紙面 `far out of focus, only soft pale grey blur and shadow`；**her LEFT hand holds the pen, a slim gold watch on her LEFT wrist**（`a plain black ballpoint pen`）；焦點在她的左手、筆尖與左腕的細金錶；背景是虛焦的餐桌木面；畫面裡沒有臉 | 她的**左手**握著筆在紙尾劃一道，筆尖走到底；剪在筆劃到一半；畫面上沒有嘴；最後：左手的筆停在紙尾 | — | 約 2.5 秒 |
-| c06 | 中近景、固定；直式，臉在上三分之一；**她身後是玄關那側還沒掛窗簾的玻璃牆，牆外金色的車道往坡下彎（虛焦）**；前景右下緣是餐桌一角 | Sienna（鮮紅褲裝、黑色齊下巴短髮、紅唇、**左腕**細金錶），站在餐桌靠玄關那頭；右手 `a small pale yellow delivery slip on a grey clipboard about the size of her hand, print not readable`，左手捏著筆；畫面右緣伸進來工頭的灰色袖子與手；Sienna 的臉是四分之三側臉朝畫面右（Nora 那邊），但眼睛垂在夾板上、不抬頭、不看 Nora、不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線）；`brows arched and still, eyes lowered on what her hands are doing, red lips pressed closed, chin up, no smile at any moment, until the last frame`（說話時紅唇俐落地動） | Sienna 頭也不抬，嘴在說話（輕、快）；說完只把夾板遞到畫面右，工頭的手接走，**筆留在她左手**，嘴閉上；最後：她右手空了、左手還捏著筆 | Sienna（輕、快，不抬頭）：Grant's busy.（Grant 在忙）（原聲）（結尾） | 約 3.5 秒 |
+| c05 | 插鏡、手部特寫、固定；**鏡頭很低、貼著夾板的邊平拍**；**第一格就是她的左手、筆尖與金錶**；直式；**必須左手** | Sienna 的右手（鮮紅袖口）拿著 `a small pale yellow delivery slip on a grey clipboard about the size of her hand, the slip far out of focus, the focus on the pen tip`；紙面 `far out of focus, only soft pale grey blur and shadow`；**her LEFT hand holds the pen, a slim gold watch on her LEFT wrist**（`a plain black ballpoint pen`）；焦點在她的左手、筆尖與左腕的細金錶；背景是虛焦的餐桌木面；畫面裡沒有臉 | 她的**左手**握著筆在紙尾劃一道，筆尖走到底；剪在筆劃到一半；畫面上沒有嘴；最後：左手的筆停在紙尾 | — | 約 2.5 秒 |
+| c06 | 中近景、固定；直式，臉在上三分之一；**她身後是玄關那側還沒掛窗簾的玻璃牆，牆外金色的車道往坡下彎（虛焦）**；前景右下緣是餐桌一角 | Sienna（鮮紅褲裝、黑色齊下巴短髮、紅唇、**左腕**細金錶），站在餐桌靠玄關那頭；右手 `a small pale yellow delivery slip on a grey clipboard about the size of her hand, the slip far out of focus, the focus on the pen tip`，左手捏著筆；畫面右緣伸進來工頭的灰色袖子與手；Sienna 的臉是四分之三側臉朝畫面右（Nora 那邊），但眼睛垂在夾板上、不抬頭、不看 Nora、不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線）；`brows arched and still, eyes lowered on what her hands are doing, red lips pressed closed, chin up, no smile at any moment, until the last frame`（說話時紅唇俐落地動） | Sienna 頭也不抬，嘴在說話（輕、快）；說完只把夾板遞到畫面右，工頭的手接走，**筆留在她左手**，嘴閉上；最後：她右手空了、左手還捏著筆 | Sienna（輕、快，不抬頭）：Grant's busy.（Grant 在忙）（原聲）（結尾） | 約 3.5 秒 |
 | c06b | 過肩遠景、長焦、固定；**從 Sienna 右肩旁擦過**（她鮮紅的右肩在畫框左下、虛焦，不露臉），長焦往她身後玄關那側的玻璃外拍；**第一格就是玻璃外的坡底**；直式，焦點在坡底 | 前景左下：Sienna 鮮紅褲裝的右肩（虛焦）；玻璃外：金色的柏油車道沿著草坡往下彎，坡底接海岸路；`a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` 從畫面左的海岸路開進車道口；車窗暗、看不到人；草坡與海被夕照染成金橘；畫面裡沒有臉 | 白車開進車道口、停下（動作一），兩個停車燈亮起（動作二）；剪在燈亮起的一下；畫面上沒有嘴；最後：白車停在坡底的車道口、停車燈亮著 | — | 約 2 秒 |
 | c07 | 近景、固定；直式，臉在上三分之一；身後是暗下來的客廳（虛焦） | Nora（`discharge`），`a camel wool coat with deep pockets, worn open`；金光從側面照在她半邊臉；四分之三側臉朝畫面左、眼睛盯著 Sienna 左手的筆（往下看，不往她身後的玻璃外看）；眼眶紅、眉頭擰緊、下巴咬緊、鼻孔一張，`no smile at any moment, until the last frame` | 她的眼睛跟著那支筆垂下去，然後頭轉向畫面右（Fisk 往玄關走的方向）；剪在頭轉到一半；嘴閉著；最後：她的臉轉向畫面右 | — | 約 2.5 秒 |
 
@@ -197,7 +197,7 @@ Grant 的白車 c06b 開進坡底（第 5 集「After one stop.」之後，18:30
 ### 第六場：大門內側，Sign（約 28.5 秒）
 
 **場頭**：
-- **地點與場景圖**：同第二場的玄關與大門（`glass-house-door`，從屋裡看）：大門**往屋裡開著**，門上新鎖；門外是門墊、兩級寬石台階、金色的碎石前庭，車道從前庭往畫面左下彎、往坡下去；**坡底的車道口停著 Grant 的白車（停車燈亮著），它後面的路肩停著工人的白色廂型車**，從門口看都很小。深藍行李箱立在門內。近景都寫「同一扇玻璃大門」。
+- **地點與場景圖**：同第二場的玄關與大門（`glass-house-door`，從屋裡看）：大門**往屋裡開著**，門上新鎖；門外是門墊、兩級寬石台階、金色的碎石前庭，車道從前庭往畫面右下彎、往坡下去（照 `glass-house-door` 的備註：從屋裡看跟從前庭看左右相反，燈柱在最上一級台階的左端；c38 起鏡頭跟門檻平行，門外與車道都在畫面右）；**坡底的車道口停著 Grant 的白車（停車燈亮著），它後面的路肩停著工人的白色廂型車**，從門口看都很小。深藍行李箱立在門內。近景都寫「同一扇玻璃大門」。
 - **時間與天氣**：第 2 天 18:39–18:42；夕照從屋子另一頭（海那面）穿過整棟屋子打到玄關，門外的車道與坡一片金橘。
 - **軸線**：c35–c37 她在行李箱旁、面向門。c38 起**鏡頭在玄關側邊、跟門檻平行拍**：**畫面右是開著的大門與門外**、畫面左是屋裡（往海那面，夕照從那裡來）；Fisk 站到門口擋住她（**畫面右**，背對門外、看畫面左）；Nora 在門檻內（**畫面左**，看畫面右）；坡底的白車在 Fisk 身後的門外背景裡，很小；**Nora 一直看著筆、沒有往外看**（第 8 集 c17 才第一次看見它）。
 - **在場的人**：Nora、Fisk；Grant 在坡底的白車裡（車窗暗，看不到人）；工人不入鏡。
@@ -224,6 +224,8 @@ Grant 的白車 c06b 開進坡底（第 5 集「After one stop.」之後，18:30
 ## 注意事項
 
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
+
+- 2026-11-12 道具句與 cast.json 對齊（第六場場頭：從屋裡看車道往畫面右下，照 `glass-house-door` 的備註；送貨單句換新）
 
 #### 2026-11-12 跨集稽核後的修改
 

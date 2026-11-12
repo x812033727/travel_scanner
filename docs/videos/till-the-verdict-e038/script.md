@@ -150,8 +150,8 @@ c30–c31 寫 `late afternoon, low sun slanting across a gravel yard, fine white
 | c33 | 近景、慢推（從胸上推到肩上）；從 Hank 的左肩後拍（他灰色工作夾克的左肩與平頭在畫框右下緣、虛焦、不露臉）；直式，Nora 的臉在上三分之一；身後是開著的前門與亮的院子（虛焦） | Nora（`henley`，外套敞開）；從前門斜進來的光照在她的左頰；四分之三側臉朝畫面右的 Hank、眼睛看著他；眉毛放平、下巴抬著、嘴唇在字前閉緊、聲音低、平、不商量，`no smile at any moment, until the last frame` | Nora 看著 Hank，嘴在說話（低、平）（動作一）；說完右手從外套內袋拿出一小摺鈔票、放到櫃台上（動作二），嘴閉上；最後：她的右手按著櫃台上的錢 | Nora（低、平，不商量）：Twenty bags.（二十袋）（原聲）← 因為 c28 | 約 3 秒 |
 | c34 | 插鏡、特寫、固定；**第一格就是積灰的櫃台上那一小摺鈔票與 Nora 的右手**；直式；鏡頭在櫃台高度 | `a small fold of worn green banknotes, faces not readable`，在積灰的木櫃台上；Nora 的右手（灰色袖口）從錢上鬆開；Hank 的右手（灰色夾克袖口、指縫裡有白沙）從畫面右伸進來；斜光裡飄著白色的沙塵；畫面裡沒有臉 | Nora 的手從錢上收回（動作一），Hank 的手把錢拉過櫃台、拿起來（動作二）；剪在錢離開櫃台；畫面上沒有嘴；最後：錢在 Hank 手裡 | — | 約 2.5 秒 |
 | c35 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她的橄欖色外套右肩與低馬尾在畫框左下緣、虛焦、不露臉）；直式，Hank 的臉在上三分之一；身後是那扇關著的門（虛焦） | Hank（基本款：平頭、灰色工作夾克）；右手拿著那摺錢、拇指撥過去數；從前門斜進來的光照在他臉上；臉朝畫面左下、眼睛一直在手裡的錢上，**不看 Nora**（說話模板的 eyes on 換成本鏡寫的視線：看著錢）；一邊嘴角往上一提、嘴唇閉著、不露齒，眉毛放平、聲音含糊、低 | Hank 數著錢，嘴在說話（含糊、低）（動作一）；說完把錢塞進夾克胸前的口袋（動作二），嘴閉上、嘴角那一提還在；最後：他的手從口袋拿出來，眼睛在櫃台上 | Hank（含糊、低，眼睛在錢上）：Truck's Thursday.（星期四卡車送）（原聲） | 約 3.5 秒 |
-| c36 | 插鏡、特寫、固定；**第一格就是櫃台上 Hank 的右手壓著的淡粉紅收據**；直式；鏡頭在櫃台高度 | `a small pale pink carbon receipt about the size of her palm, print not readable`，在 Hank 的右手手指下（指縫裡有白沙）；積灰的木櫃台；畫面裡沒有臉 | Hank 的手指把收據推過櫃台、推到畫面左（動作一），手收回去（動作二）；剪在手收回一半；畫面上沒有嘴；最後：收據在櫃台靠她那一邊 | — | 約 2 秒 |
-| c37 | 中近景、固定；鏡頭在櫃台側面（同 c32 的方向、更近）；直式：Nora 的上半身在畫面中間，下緣是櫃台 | Nora（`henley`，外套敞開）；從前門斜進來的光；眼睛看著櫃台上的收據；眉頭往中間收一點、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 的右手從櫃台上拿起收據（動作一），收進外套右邊的外口袋（動作二）；剪在手放進口袋；嘴閉著；最後：`a small pale pink carbon receipt about the size of her palm, print not readable` 收在她的外套口袋裡 | — | 約 2.5 秒 |
+| c36 | 插鏡、特寫、固定；**第一格就是櫃台上 Hank 的右手壓著的淡粉紅收據**；直式；鏡頭在櫃台高度 | `a small pale pink carbon receipt about the size of her palm, folded so only its blank back shows`，在 Hank 的右手手指下（指縫裡有白沙）；積灰的木櫃台；畫面裡沒有臉 | Hank 的手指把收據推過櫃台、推到畫面左（動作一），手收回去（動作二）；剪在手收回一半；畫面上沒有嘴；最後：收據在櫃台靠她那一邊 | — | 約 2 秒 |
+| c37 | 中近景、固定；鏡頭在櫃台側面（同 c32 的方向、更近）；直式：Nora 的上半身在畫面中間，下緣是櫃台 | Nora（`henley`，外套敞開）；從前門斜進來的光；眼睛看著櫃台上的收據；眉頭往中間收一點、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 的右手從櫃台上拿起收據（動作一），收進外套右邊的外口袋（動作二）；剪在手放進口袋；嘴閉著；最後：`a small pale pink carbon receipt about the size of her palm, folded so only its blank back shows` 收在她的外套口袋裡 | — | 約 2.5 秒 |
 | c38 | 近景、固定；同 c33 的鏡位；直式，Nora 的臉在上三分之一 | Nora（`henley`，外套敞開）；前門的光照在她的左頰；眼睛看著畫面右的 Hank、等他抬頭；他沒抬（畫框右下緣的平頭一直低著）；眉頭擰起來一點、嘴唇抿緊、鼻子短短吸一口氣，`no smile at any moment, until the last frame` | Nora 看著低著頭的 Hank 一拍（動作一），轉身朝前門（動作二）；剪在轉身一半；嘴閉著；最後：她背半對鏡頭、面向前門 | — | 約 2.5 秒 |
 | c39 | 中景、固定；鏡頭在櫃台後、Hank 的身旁、往前門拍；直式：前景右下是櫃台的一角與 Hank 灰色夾克的肩（虛焦、不露臉），中間是開著的前門，門外是亮的院子 | Nora（`henley`，`a dark olive waxed-cotton work jacket, worn open`，工作靴）背對鏡頭，從前門走出去、走進院子的斜光裡；院子裡 `pallets stacked with plain unlabeled sand sacks`、白色的沙塵；畫面裡沒有露臉的人 | Nora 跨出前門（動作一），走進院子（動作二）；剪在她走進光裡；最後：她的背影在院子裡往街那邊走 | — | 約 2.5 秒 |
 | c40 | 插鏡、特寫、固定；**第一格就是櫃台上那支刮花的黑手機與 Hank 伸過來的右手**；直式；鏡頭在櫃台高度 | `a scratched black phone with no logo, about the size of his palm`，螢幕朝下躺在積灰的櫃台上；Hank 的右手（灰色夾克袖口、指縫裡有白沙）；畫面裡沒有臉 | Hank 的右手拿起手機（動作一），拇指在側邊按一下（動作二）；剪在手機離開櫃台；畫面上沒有嘴；最後：手機在他手裡往上抬，螢幕朝他、只見手機背面 | — | 約 2 秒 |
@@ -164,6 +164,8 @@ c30–c31 寫 `late afternoon, low sun slanting across a gravel yard, fine white
 ## 注意事項
 
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
+
+- 2026-11-12 道具句與 cast.json 對齊
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **天數**：細綱寫第 117 天（週六，渡輪站辦公室不開）；照 bible 挪到**點爐當天、第 116 天（7/10 週五）**，截止仍是第 127 天。星期與日期畫面與台詞都不說。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 9 條）。
