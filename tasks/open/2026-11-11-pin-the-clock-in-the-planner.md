@@ -11,6 +11,7 @@ completed_at:
 branch:
 depends_on: []
 scope:
+  - apps/api/tests/test_trip_localization_integration.py
   - apps/web/components/trip-editor.test.tsx
   - apps/web/e2e/navigation.spec.ts
   - apps/web/e2e/readability.spec.ts
@@ -65,3 +66,4 @@ cd apps/web && npx playwright test e2e/readability.spec.ts e2e/navigation.spec.t
 Filed from PR #2060 (video work); that PR does not touch apps/web, so the fix belongs here.
 
 - 2026-11-12：vitest 也中了。`apps/web/components/trip-editor.test.tsx` 的 partner blocks 三個測試（抵達後的安排、中間那天換票券、AI 套用後的下一步）把行程寫死在 2026-11-11，00:00 UTC 之後找不到「補充安排」「抵達後的安排」「接下來可以預訂」（PR #2060 web-unit 3/3，merge commit 039fba9e2，這個 PR 沒改 apps/）。同樣的修法：凍結時鐘或用相對日期。
+- 2026-11-12：API 也中了。`apps/api/tests/test_trip_localization_integration.py::test_planned_stops_follow_the_request_locale_until_renamed` 建 2026-11-10..12 的行程，00:40 UTC 起回 422（assert 422 == 201；PR #2060 api-tests 2/4，head 583bbd957）。修法：用相對今天的日期，或凍結 API 的時鐘。
