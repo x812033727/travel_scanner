@@ -1,7 +1,7 @@
 ---
 id: 2026-11-12-dubs-in-the-eight-languages-use
 title: Dubs in the eight languages use MiniMax voices; zh-TW narration stays Gemini
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-opus-5.5-minimax-dubs
