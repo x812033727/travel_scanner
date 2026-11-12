@@ -445,7 +445,7 @@ doc = {
                        "最後是剛開地圖時為什麼要等，以及手機怎麼靠網路省下等待，有些手機卻得多找一顆衛星。\n\n"
                        "畫圓圈找交點只是示意，真正的接收機是把位置和時間一起估算出來；插圖由 AI 生成，是示意，不是實際的衛星位置。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["GPS", "衛星定位", "手機地圖", "原子鐘", "多路徑", "電離層", "相對論", "科普", "原來如此事務所"]},
-    "thumbnail": {"template": "thumb", "data": {"headline": "藍點\n**跳到對街？**", "sub": "差百萬分之一秒，差三百公尺", "shot": "kid-dot-puzzled", "subject": "right"}},
+    "thumbnail": {"template": "thumb", "data": {"headline": "藍點\n**跳到對街？**", "sub": "差百萬分之一秒，差三百公尺", "shot": "kid-main-q", "subject": "right"}},
     "sources": [
         {"title": "GPS.gov, GPS Accuracy (FAQ, current page)", "url": "https://www.gps.gov/node/70", "checked_on": CHECKED},
         {"title": "GPS.gov, Frequently Asked Questions (satellites are one-way beacons)", "url": "https://www.gps.gov/faq", "checked_on": CHECKED},
