@@ -266,7 +266,7 @@ kid("kid-lightning", K("covering her mouth with both hands and wide amazed eyes"
     k("尖尖的有好處嗎？", "句尾上揚", "S:rod"))
 obj("rod-roof", "Wide shot of a simple cartoon house with a tall thin pointed metal rod standing on the top of its roof, grey storm clouds in the sky above",
     c("有。課本說，避雷針就故意做得尖尖的，", "接住上一句"),
-    c("讓電從尖端慢慢流走，比較不會打下大閃電。", None, "P:rod"))
+    c("讓電容易從尖端走；閃電打中它，也會順著它進地下。", None, "P:rod"))
 chief("chief-lines", C("sliding one flat hand along a smooth imaginary line in the air with a calm smile"),
     c("高壓電線反過來，做得很平滑，免得電漏到空氣裡。"))
 chief("chief-spoon", C("holding up " + SPOON + " with a gentle smile", close=True),
@@ -274,7 +274,7 @@ chief("chief-spoon", C("holding up " + SPOON + " with a gentle smile", close=Tru
     c("物理學教授說，湯匙夠厚、頭又圓圓的，"))
 obj("spoon-plate", "Close-up of " + SPOON + " lying on a round glass plate, the smooth round bowl of the spoon shining softly",
     c("通常不會冒火花；叉子就可能會。", None, "P:fork"),
-    k("跟大水盤一樣，晃一晃就好！", "恍然"))
+    k("跟大水盤一樣，水比較不會濺！", "恍然"))
 chief("chief-smooth", C("drawing a big smooth curve in the air with one hand and a calm smile"),
     c("對。課本說，又平又圓的表面，電荷比較不會跑出去。"),
     c("微波爐的牆又大又平，所以只彈回微波，不冒火花。"))
@@ -345,7 +345,7 @@ kid("kid-gold-q", K("looking up with a thinking face, one finger on her chin", c
     k("阿嬤家的碗有一圈金邊，", "想起來"), k("那種可以嗎？", "句尾上揚", "S:gold"))
 obj("gold-bowl", "Close-up of " + GOLD + " on a wooden counter, the thin gold line shining",
     c("說明書把金邊的碗，也列在會冒火花的東西裡。", "接住上一句", "P:gold"),
-    c("沒有金邊、也沒有金屬光澤的陶瓷碗，大多可以用。"))
+    c("沒有金屬邊、也沒有金屬光澤的陶瓷碗，大多可以用。"))
 chief("chief-towel", C("holding up a folded soft grey kitchen towel sheet with a surprised smile", close=True),
     k("還有看不出來的金屬嗎？", "句尾上揚", "S:hidden"),
     c("有。說明書說，回收紙做的紙巾，", "接住上一句"),
@@ -450,7 +450,7 @@ doc = {
         "description": "小問帶著阿嬤做的滷肉飯來事務所，便當盒上有一條細細的鐵絲提把，她正要放進微波爐，所長叫她先別按。可是微波爐裡本來就有一個金屬架，門上的網子是金屬，裡面的牆也是金屬。同樣是金屬，為什麼有的會冒火花，有的不會？\n\n"
                        "這一集，所長拿一盤水左右晃給小問看：微波會推著金屬裡的電子來回跑。又大又平的金屬牆，只把微波彈回去；細鐵絲、叉子的尖端、皺皺的鋁箔，電子擠在尖尖的地方，推力強到空氣也擋不住，就跳出一道小火花。兩塊金屬靠得很近、或金屬碰到爐壁，也比較容易冒火花。"
                        "微波碰到食物，推著裡面的水晃動、摩擦生熱；門上金屬網的洞比微波小很多，所以微波出不去，你卻看得到裡面。"
-                       "最後他們翻開一台微波爐的說明書：附的金屬架要怎麼放、鋁箔可以怎麼用、鐵絲提把和金邊碗為什麼要拿開，都照那一台的規則；另一家廠商的部分機型，附的架子只能用在烤箱功能。美國食品藥物管理署也說，一般不要把金屬鍋或鋁箔放進微波爐，每台微波爐的說明會寫可以用哪些容器。\n\n"
+                       "最後他們翻開一台微波爐的說明書：附的金屬架要怎麼放、鋁箔可以怎麼用、鐵絲提把和金邊碗要不要拿開，都照那一台的規則；另一家廠商的部分機型，附的架子只能用在烤箱功能。美國食品藥物管理署也說，一般不要把金屬鍋或鋁箔放進微波爐，每台微波爐的說明會寫可以用哪些容器。\n\n"
                        "片中的微波爐、叉子、鋁箔、碗和火花都是 AI 生成的示意插圖，不是實驗的照片。請不要把金屬放進微波爐試火花；你家的微波爐怎麼用，請照那一台的說明書。每個說法的出處列在下方參考資料。\n\n資料截至 " + CHECKED,
         "tags": ["微波爐", "金屬", "火花", "鋁箔", "電子", "電荷", "說明書", "科普", "原來如此事務所"]},
     "thumbnail": {"template": "thumb", "data": {"headline": "微波爐\n**冒火花？**", "sub": "同樣是金屬，差在形狀", "shot": "kid-main-q", "subject": "right"}},
