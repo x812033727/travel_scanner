@@ -51,7 +51,8 @@
 | Forever 花瓶 | `a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling` | c39（只在電視裡） |
 | Peg 的帆布袋 | `a plain beige canvas tote bag with no print, hanging from her left shoulder` | c25、c26、c28、c30、c31、c33–c36 |
 | Peg 的湯 | `a white enamel soup pot with a lid, about the size of a mixing bowl` | 整集在帆布袋裡、**不拿出來、不入鏡**；客廳那場袋子鼓鼓的，門口那場袋子是扁的（湯已放進冰箱，不拍） |
-| 駝色大衣 | `a camel wool coat with deep pockets`（`cast.json` `camel-coat`；bible 沒有這一句） | c11、c43、c44（掛在臥室門內側的掛鉤上，半顆藥包在面紙裡、在右邊口袋） |
+| 駝色大衣 | `a camel wool coat with deep pockets` | c11、c43、c44（掛在臥室門內側的掛鉤上，半顆藥包在面紙裡、在右邊口袋） |
+| Elias 的手套（夢裡，不說是誰的手） | `a man's dark brown leather glove on a left hand, a dark wool coat cuff` | c03（掌心朝上，只拍掌心與袖口） |
 
 其他只出現一兩次、bible 沒定句子的：白色小瓷碟、白色面紙盒（無字）、白色馬克杯（無字）、黑色遙控器（無字）、黑框平面電視與低矮淺木櫃，照各鏡寫的樣子。
 
@@ -96,7 +97,7 @@
 | --- | --- | --- | --- | --- | --- |
 | c01 | 全景（夢）、固定；**第一格就是一格落地玻璃**；直式，玻璃的上下框都在畫面裡，整鏡不切、不溶 | 畫面裡沒有人：玻璃屋客廳的一格落地玻璃（黑色細鋼框），外面是去飽和的灰海；只有這一格 | 一道裂紋從玻璃左上角無聲地爬到右下角；其他格玻璃都不動、不碎；不濺玻璃碴。剪在裂紋爬到右下角的一刻。最後：一格玻璃上一道對角裂紋，玻璃還在框裡 | — | 約 2.5 秒 |
 | c02 | 插鏡、特寫、固定；直式，鳥從畫面上緣掉到下緣；前景是虛焦的鋼框一角 | 畫面裡沒有人：裂了的那格玻璃在背景虛焦；一隻玻璃鳥（`a clear hand-blown glass bird about the size of a fist, one wing lower than the other`，只有一隻） | 玻璃鳥從畫面上緣翻一圈往下掉，經過裂紋前面；剪在它掉到畫面下三分之一。最後：鳥還在半空、往下緣落 | — | 約 2 秒 |
-| c03 | 插鏡、手部特寫、固定；**第一格就是張開的手掌** | 一隻戴手套的**左手**，**深棕色皮手套、掌心朝上**，從畫面下緣伸進來，深色羊毛大衣袖口；**只拍掌心與袖口，手背不入鏡**；玻璃鳥（`a clear hand-blown glass bird about the size of a fist, one wing lower than the other`）；背景是虛焦的灰海 | 玻璃鳥落進手套的掌心，手指輕輕合起來把它包住，手不晃；畫面上沒有臉、沒有嘴。最後：手套合著、鳥包在掌心裡 | — | 約 2 秒 |
+| c03 | 插鏡、手部特寫、固定；**第一格就是張開的手掌** | 一隻戴手套的**左手**（`a man's dark brown leather glove on a left hand, a dark wool coat cuff`），**深棕色皮手套、掌心朝上**，從畫面下緣伸進來，深色羊毛大衣袖口；**只拍掌心與袖口，手背不入鏡**；玻璃鳥（`a clear hand-blown glass bird about the size of a fist, one wing lower than the other`）；背景是虛焦的灰海 | 玻璃鳥落進手套的掌心，手指輕輕合起來把它包住，手不晃；畫面上沒有臉、沒有嘴。最後：手套合著、鳥包在掌心裡 | — | 約 2 秒 |
 | c04 | 眼睛大特寫、固定；**第一格就是閉著的眼睛**；前景下緣是白枕頭的一角 | Nora 的眼睛與眉（灰綠、鼻上淡雀斑），側躺在白枕頭上，冷藍晨光從畫面右邊照過來；只拍眼與眉，嘴不入鏡 | 第一格眼睛閉著一秒，然後猛地睜開，眨兩下，瞳孔在光裡一縮；眉頭跟著往上一跳、又皺回來；`no smile at any moment, until the last frame`。最後：眼睛睜著、眉心皺著 | — | 約 2 秒 |
 | c05 | 全景、俯拍、慢推（2 秒內的轉場）；同一間臥室；直式，前景下緣是床頭櫃一角，畫面右是東面玻璃與灰海 | Nora（`pregnant`，奶油色針織洋裝），第一格側躺在床的東半邊、蓋著灰色薄毯；灰色軟拖鞋在床邊地上；前景床頭櫃上：玻璃水杯（`a clear drinking glass about the size of her fist, half full of clear water`）、白色小瓷碟上一顆藥（`a tiny white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`）、白色面紙盒、淡粉色手機（`a phone in a pale pink case, about the size of her palm`，背面朝上）；表情：眉頭還皺著、張著嘴吸一口氣，`no smile at any moment, until the last frame` | Nora 兩手撐床、坐起來靠到床頭，兩手落到肚子上；嘴閉著（只有呼吸）。剪在她的背碰到床頭的一刻。最後：她靠床頭坐著、薄毯蓋到腰，床頭櫃上的東西都沒動 | — | 約 2 秒 |
 | c06 | 主觀插鏡、俯拍、固定；**第一格就是床頭櫃** | 同一間臥室的床頭櫃：玻璃水杯（`a clear drinking glass about the size of her fist, half full of clear water`，水是清的）、白色小瓷碟上一顆藥（`a tiny white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`）、白色面紙盒、淡粉色手機（`a phone in a pale pink case, about the size of her palm`，背面朝上）；Nora 的左手（奶油色針織長袖口）從畫面左下伸進來 | 左手越過手機，用拇指與食指捏起那顆藥，收出畫面；杯子沒人碰；畫面上沒有嘴。剪在手收到畫面邊的一半。最後：瓷碟空了，杯子、面紙盒、手機都留在床頭櫃上原位 | — | 約 2.5 秒 |
@@ -285,7 +286,6 @@
 
 這次稿子自己定、bible 沒寫的（請主控寫回 bible）：
 - **整顆藥的句子**（c05、c06）：bible 只有半顆；咬之前的整顆用同一句拿掉「half of」：`a tiny white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`。
-- **駝色大衣的英文**用 `cast.json` 的 `camel-coat`（`a camel wool coat with deep pockets`），bible〈道具的樣子〉沒有這一列。
 - **Peg 用基本款加帆布袋的道具句**，不用 `cast.json` 的 `visit` look：`visit` 還寫著「reading glasses on a beaded chain against her chest」，跟定妝照與 bible「眼鏡戴在臉上」衝突（`coat` look 也一樣，第 8 集要用前要改）。
 - **沒有聽的人的原聲鏡**（c07、c11、c40、c42、c44、c48）：四分之三側臉看著她面前的東西（杯子、口袋、電視、手心、床頭櫃），不看鏡頭。
 - **電話的軸線**：她右手拿手機貼右耳、臉朝畫面右外的海（舊稿看畫面左的沙發），手機背面才朝得到鏡頭。
