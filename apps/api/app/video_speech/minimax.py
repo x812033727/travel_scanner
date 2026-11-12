@@ -20,9 +20,11 @@ replaces the term, and a pause becomes MiniMax's ``<#seconds#>`` marker, which t
 only between two pieces of speech (never at the end, never two in a row). Narration text can
 never write markup of its own: angle brackets and ``#`` are dropped, and half-width parentheses
 become full-width ones, since MiniMax reads ``(laughs)`` as an interjection and ``(he2)`` as a
-pinyin override. The audio is asked for as 24 kHz 16-bit mono PCM, which gets a RIFF header
-here; the local tool resamples it to its 48 kHz grid, as it does Gemini's (48 kHz is a whole
-multiple of 24 kHz, and not of 32 or 44.1 kHz, the other rates MiniMax offers).
+pinyin override. ``language_boost`` follows the voice's language (``language_boost``), so a
+voice reads its own language's text and not Chinese. The audio is asked for as 24 kHz 16-bit
+mono PCM, which gets a RIFF header here; the local tool resamples it to its 48 kHz grid, as it
+does Gemini's (48 kHz is a whole multiple of 24 kHz, and not of 32 or 44.1 kHz, the other rates
+MiniMax offers).
 """
 
 from __future__ import annotations
@@ -60,7 +62,20 @@ SYSTEM_VOICES = (
 # A voice id as the list spells them: letters, digits, spaces, parentheses, "_", "-" and ".".
 _VOICE_NAME = re.compile(r"^[A-Za-z][A-Za-z0-9 ()_.-]{1,81}$")
 SAMPLE_RATE = 24_000
-LANGUAGE = "Chinese"
+# ``language_boost`` follows the voice: a system voice id starts with its language ("Japanese_
+# KindLady", "Chinese (Mandarin)_News_Anchor"). Until 2026-11-12 every request said "Chinese",
+# and a Japanese voice then read 同じ as Chinese (heard back as 冬至) and a Vietnamese one trailed
+# off into noise. The values are the T2A page's enum (read 2026-11-12); a voice whose language is
+# not in it, a Cantonese one apart, or a cloned voice whose id names none, gets "auto", which the
+# page says detects the language from the text.
+LANGUAGE_BOOSTS = frozenset({
+    "Chinese", "English", "Arabic", "Russian", "Spanish", "French", "Portuguese", "German",
+    "Turkish", "Dutch", "Ukrainian", "Vietnamese", "Indonesian", "Japanese", "Italian", "Korean",
+    "Thai", "Polish", "Romanian", "Greek", "Czech", "Finnish", "Hindi", "Bulgarian", "Danish",
+    "Hebrew", "Malay", "Persian", "Slovak", "Swedish", "Croatian", "Filipino", "Hungarian",
+    "Norwegian", "Slovenian", "Catalan", "Nynorsk", "Tamil", "Afrikaans",
+})  # fmt: skip
+_VOICE_LANGUAGE = re.compile(r"^([A-Za-z]+)(?: \([^)]*\))?_")
 # The marker's range on the T2A page: 0.01 to 99.99 seconds, two decimals at most.
 PAUSE_MIN_MS = 10
 PAUSE_MAX_MS = 99_990
@@ -123,6 +138,18 @@ def speech_text(segments: tuple[Segment, ...]) -> str:
     return "".join(pieces)
 
 
+def language_boost(voice: str) -> str:
+    """The ``language_boost`` a voice asks for: its language's name, Cantonese as "Chinese,Yue",
+    anything else "auto"."""
+    match = _VOICE_LANGUAGE.match(voice)
+    if not match:
+        return "auto"
+    language = match.group(1).capitalize()
+    if language == "Cantonese":
+        return "Chinese,Yue"
+    return language if language in LANGUAGE_BOOSTS else "auto"
+
+
 def request_body(text: str, voice: str, model: str, speed: float = 1.0) -> dict[str, Any]:
     return {
         "model": model,
@@ -130,7 +157,7 @@ def request_body(text: str, voice: str, model: str, speed: float = 1.0) -> dict[
         "stream": False,
         "voice_setting": {"voice_id": voice, "speed": speed},
         "audio_setting": {"sample_rate": SAMPLE_RATE, "format": "pcm", "channel": 1},
-        "language_boost": LANGUAGE,
+        "language_boost": language_boost(voice),
         "output_format": "hex",
     }
 
