@@ -86,7 +86,7 @@
 | 14 → 15 | 汽車旅館辦公室櫃台，第 7 天 20:45，暖黃檯燈、窗外紅霓虹。Bev 在櫃台後，右手捏著 Nora 的兩張卡，刷卡機背對鏡頭；Peg（`coat`，腳上米色拖鞋）在櫃台前，兩手打開她的舊皮夾，嘴剛說完 "Twenty-five."；Nora（`motel`，大衣敞開）在 Peg 左邊，看著那個皮夾。**第 15 集第一鏡跳到第 8 天 09:30 的當鋪**：早上灰白的天光從當鋪門口照進來、Peg 換成平底鞋、帆布袋在左肩，右手正在轉左手無名指上的婚戒。 |
 | 15 → 16 | 汽車旅館外的街，第 8 天 20:35，夜、地面濕、不下雨。從辦公室窗內往外拍：前景是窗框、櫃台左端的薄荷糖碗，與 Nora（`motel`，大衣敞開）的右肩與後腦（虛焦）；街對面路燈下黑車的駕駛座門開著，Elias（基本款外罩深炭灰大衣、敞開，左手插在大衣左口袋）剛下車站直、抬頭看二樓她們房間的窗，路燈照亮他的臉、紅霓虹落在鏡片上；副駕駛座的門也開著，Theo 正要下車（虛焦）。Peg（`coat`、拖鞋）與 Bev 在畫外右邊。 |
 | 16 → 17 | 辦公室門外的停車場，20:50，紅霓虹從畫面左上照下來。Nora（`motel`，大衣敞開）站在辦公室門前台階下，面向畫面右；Elias 在她面前一步半（畫面右），右手伸著第二份合約（紙背朝鏡頭），左手在大衣口袋；Theo 在他左後方半步（畫面右後），平板抱在胸前；第一份合約躺在兩人之間濕的柏油上；辦公室窗裡 Bev 與 Peg（虛焦）。 |
-| 17 → 18 | 對街路燈下、黑車旁的人行道，21:10。黑車車頭朝畫面左；Elias 剛坐進駕駛座、門關上，車窗升著；Theo 在副駕駛座、Dana 在後座（都只見車窗裡的暗影）；Nora（`motel`，大衣敞開）站在人行道邊、車的右側，右手拿著邊上有她手寫一行的第二份合約（紙背朝鏡頭），名片收進大衣左口袋；畫面右後遠處，對面辦公室的門剛被推開，Peg（`coat`、米色拖鞋）衝出來。 |
+| 17 → 18 | 對街路燈下、黑車旁的人行道，21:10。黑車車頭朝畫面左；Elias 剛坐進駕駛座、門關上，車窗升著；Theo 在副駕駛座、Dana 在後座（都只見車窗裡的暗影）；Nora（`motel`，大衣敞開）站在人行道邊、車的右側，右手拿著邊上有她手寫一行的第二份合約（紙背朝鏡頭），名片收進大衣左口袋；鏡頭在黑車這側的人行道上、車尾後方斜拍（見〈場景格局〉`motel-street`），畫面左後遠處、隔著街，對面辦公室的門剛被推開，Peg（`coat`、米色拖鞋）衝出來。第 18 集第一鏡是同一刻，從辦公室門口拍她往畫面右衝。 |
 | 18 → 19 | 對街人行道、路燈下，21:30，雨。Grant（`rain`，左頰 `a faint pink flush`）站在他的珍珠白轎車打開的駕駛座門邊（車並排停在路上、車頭朝畫面左），臉上的笑剛回來、很薄；Nora（`motel`，大衣敞開，頭髮與肩膀被雨打濕）在他面前一步，面向他（畫面左）；Peg（`coat`、拖鞋，鏡片上有雨點）在 Nora 右後半步，右手把合約藏在背後；黑車已經不在；白車的車燈從畫面左照著兩個女人。 |
 | 19 → 20 | 法院正門台階，第 9 天 10:30，陰、台階濕。Peg（`coat`，帆布袋在左肩）站在台階中段，剛念完 "'Ninety days.'"、拇指按熄螢幕，手機垂在胸前的右手裡（審稿後改，跟第 19 集 c44 一致），嘴閉著；Nora（`shoulder`，大衣敞開）在她左邊同一級，看著手機；Dana（基本款，卷宗抱在胸前）高一級、在畫面右後虛焦。**第 20 集第一鏡跳 90 天**，蒙太奇四鏡（開場 10 秒）：①四月：港邊禮品店，窗上雨，Nora（`shoulder`，大衣敞開）兩手把一張畫推過木櫃台（紙背朝鏡頭），老闆的手放上一小摺鈔票；②五月：海堤階梯在太陽下，Nora（`shoulder`，沒穿大衣）跑上台階，手沒碰扶手；③六月清晨：汽車旅館窗前小桌，陽光斜進來，桌上摺好的灰藍圍巾，Peg（`visit`）在帳本上寫、念 "Night ninety." "Nora, paid."（原聲）；④第 99 天早上：兩只行李箱拉好、立在房門邊，玻璃磚用毛衣包著擱在 Nora 的行李箱上（她們今天退房）。 |
 | 20 → 21 | 法院正門台階，第 99 天 11:15，晴。Grant（基本款）站在台階中段，右手剛把對摺兩次的結婚申請書塞進西裝左胸內袋；Sienna（基本款紅色套裝）低他一級、面向他，左手還拿著筆，閉嘴的笑剛停住；台階下的路邊（遠、虛焦）黑車後門開著，Nora（`decree`，左手無名指上 Elias 的戒指）、Peg（`visit`）、Theo 正要上車。**第 21 集跳到約 30 分鐘後、開上山的車裡**（細綱第 21 集開場）。 |
@@ -132,6 +132,7 @@
 | 99 | | | 約 $277 | 搭 Bev 的車去法院（不拍） |
 
 - 細綱的 $159（第 12–13 集）、$1,310（第 15 集）、$1,280（第 16–19 集）、$1,250（第 20 集）都以這張表為準；第 21 集的 $1,190 要跟著改（約 $215，買完自己的菜）。
+- **錢放在哪**：Peg 的現金一直在她的舊皮夾 `a worn brown leather wallet about the size of her palm`（第 14 集）；第 15 集當鋪的 $400 與駕照也塞進這個皮夾，晚上的房錢從皮夾拿（跨集稽核定）。帳本封皮的夾層只放糖果工坊的收據（第 52 集證物），錢、駕照、當票都不放進去。
 - **為什麼 Peg 第 7 天就沒錢**：她自己的支票帳戶沒被凍（不是 Grant 的），只是月底見底，退休金每月一號才進（4/1 = 第 16 天）；戒指錢是撐這八天的。寫稿者可以讓 Peg 在第 14 或 15 集說一句 "Pension's on the first."（選用）。
 - **"Nora, paid."**：第 17 集她在合約邊上加的那一行（自己付自己的）。她從第 9 天起房錢算一半，先由 Peg 墊，四月底起賣畫還給 Peg，Peg 在帳本開了一欄記她還的錢。賣畫給誰不拍、不說（m12：Elias 以化名買她的作品，第二季才揭）。
 
@@ -143,7 +144,7 @@
 
 **Peg 的婚戒與當票**
 
-- 第 11–15 集婚戒在左手無名指，每一鏡拍到左手都寫。第 15 集當鋪：她右手把戒指轉下來，「喀」一聲放在玻璃櫃上；老闆用放大鏡看、念 "Four hundred."；她簽當票（只拍筆在動、紙背）、出示駕照（背面朝鏡頭）。
+- 第 11–15 集婚戒在左手無名指，每一鏡拍到左手都寫。第 15 集當鋪：她右手把戒指轉下來，「喀」一聲放在玻璃櫃上；老闆用放大鏡看、念 "Four hundred."；她簽當票（只拍筆在動、紙背）、出示駕照（背面朝鏡頭）；$400 與駕照收進她的舊皮夾（不是帳本封皮）。
 - 從第 15 集當鋪那一鏡之後，她的左手無名指寫 `a faint pale band of skin on her left ring finger where a ring used to be`。
 - 當票：Peg 夾進帳本的書頁裡（收據在封皮夾層，兩樣不混）；帳本新的一行她念 "Ring. Four hundred."（選用）。每月付利息續期（華盛頓州當鋪借款 $250–499 每三十天收一成利息），所以第 57 集（第 162 天）還贖得回來。台詞不說借款期限。
 - Nora 自己的婚戒（Grant 給的鉑金鑽戒）：一直在卡夾的拉鍊袋裡；第 15 集她拿出來推過玻璃，Peg 推回去 "Keep it. It'll come in handy."；之後回到卡夾。第 35 集賣掉。
@@ -207,7 +208,7 @@
 | 汽車旅館房間（白天、傍晚、深夜） | 待畫（`motel-room`；第 4–10 集清單已有夜、檯燈版，要加**白天**與**清晨**版） | 照第 4–10 集：門從外面二樓走道開進來、門邊一扇窗與厚窗簾、窗下小桌兩把椅子（玻璃磚在桌上）、兩張單人床床頭靠右牆，**靠窗是 Nora 的、靠浴室是 Peg 的**，中間床頭櫃與檯燈；行李箱攤在兩張床的床尾前。軸線照第 10 集：從床尾往床頭拍，Nora 的床在畫面左、Peg 的床在畫面右，窗在畫面左外。 |
 | 汽車旅館浴室 | 待畫（新增 `motel-bathroom`） | 很小：門往裡開，進門正對白色瓷洗手台與一面素鏡，鏡上一盞燈；左邊是浴簾。剪髮那場 Nora 面向鏡子站在洗手台前，Peg 在她右後；鏡頭放在鏡子的位置往外拍（畫面裡沒有鏡子）；頭髮落進洗手台的插鏡從上往下拍盆裡，不拍臉。 |
 | 汽車旅館辦公室（櫃台） | 待畫（`motel-front`；第 4–10 集清單已有夜版，要加清晨版） | 照第 4–10 集：門在畫面左、門邊一扇窗看得到停車場與街；櫃台正對門，左端薄荷糖碗、右端背對鏡頭的刷卡機，櫃台後掛鑰匙的木板；**新**：櫃台右邊一台米色有線電話，櫃台下一個上鎖的抽屜（Nora 的手機）。從窗看出去：停車場、街、對街的路燈與黑車。 |
-| 汽車旅館外的街（夜） | 待畫（新增 `motel-street`） | 兩層樓的汽車旅館：二樓一排門與外走道、外樓梯在左端；一樓辦公室在停車場臨街那頭；招牌柱在停車場入口、紅霓虹（字不入鏡）。停車場臨一條兩線道的街，**對街人行道上一盞路燈，黑車就停在燈下、車頭朝畫面左（往港口）**。從辦公室這邊看，對街在畫面上方遠處；從對街看回來，旅館與紅霓虹是背景。第 18 集整場在對街人行道。 |
+| 汽車旅館外的街（夜） | 待畫（新增 `motel-street`） | 兩層樓的汽車旅館：二樓一排門與外走道、外樓梯在左端；一樓辦公室在停車場臨街那頭；招牌柱在停車場入口、紅霓虹（字不入鏡）。停車場臨一條兩線道的街，**對街人行道上一盞路燈，黑車就停在燈下、車頭朝畫面左（往港口）**。從辦公室這邊看，對街在畫面上方遠處；從對街看回來，旅館與紅霓虹是背景。第 18 集整場在對街人行道。**17→18 定案（跨集稽核）**：靠人行道那側是副駕駛座與後座右門，靠街那側是駕駛座；從旅館這側往對街拍（第 17 集 c36）車頭朝畫面左、Nora 在畫面右的車尾；從黑車這側的人行道、車尾後方斜拍（第 17 集 c41）車身往畫面左後延伸、旅館與辦公室在畫面左後隔著街、Nora 在畫面右的車尾旁靠人行道那側，Peg 從畫面左後衝出來往畫面右（第 18 集 c01 同一刻）。 |
 | 黑車裡 | 待畫（新增 `elias-car`） | 黑色豪華轎車：Elias 在駕駛座（左），Theo 副駕駛座，Dana 後座右邊。第 18 集從車外的 Peg 右肩後拍降下一半的車窗；第 19 集從副駕駛座往駕駛座拍 Elias 的右側臉，他的左手在畫框外；儀表板的螢幕都是暗的。 |
 | 港口警局 | 待畫（`police-desk` 大廳 + 新增 `police-hallway`） | 大廳：玻璃後的櫃台、塑膠椅（只當進場的第一鏡）。按鈴的門進去是一條很長的走廊，天花板一排日光燈往遠處延伸（細綱顏值鏡頭）；走廊右邊是開放的辦公區，警探的桌子靠走廊、桌上一台有擴音的電話與一疊卷宗；Nora 坐桌前、Peg 坐她左邊。摔信封的是走廊對面的牆。 |
 | 警局門口台階 | 待畫（新增；可共用 `courthouse-steps` 的寫法改小） | 三級寬的混凝土台階、兩旁欄杆，陰天、風大。Nora 抱著信封站在中間那級，風從畫面左吹過來。 |
@@ -249,10 +250,10 @@
 | 櫃台抽屜 | `a small wooden desk drawer with a brass keyhole` | 第 12 集 Bev 上鎖。 |
 | Peg 的新毛線 | `a long narrow strip of slate-blue knitting on two wooden knitting needles as long as her forearm` | 長度寫在句後：`, about as long as her hand`（11）、`, about as long as her forearm`（12–14）、`, about as long as her arm`（15–19）；第 20 集織完 `a long slate-blue knitted scarf, folded`。 |
 | 淺藍襯衫 | `a pale blue cotton shirt, half folded` | 第 13–14 集，Peg 摺到一半；掉在地上接 `, dropped on the carpet`。 |
-| 警探的名片 | `a plain white business card, print not readable` | 第 14 集，案號寫在背面（不入鏡）。 |
+| 警探的名片 | `a white business card with a small blue police badge printed in one corner, print not readable` | 第 14 集，案號寫在背面（不入鏡）；Nora 收進卡夾。跟 Elias 的名片不同句、不同地方（跨集稽核）。 |
 | 警探桌上的電話 | `a grey office desk phone on speaker` | 第 14 集。 |
 | Reyes 的卷宗 | `a thick plain buff case file` | 第 14 集他桌上；`cast.json` 已從 Reyes 的外貌句拿掉。 |
-| Peg 的皮夾 | `a worn brown leather wallet about the size of her palm` | 第 14 集；裡面 `a small fold of worn green banknotes, faces not readable`（第 9 集原句）。 |
+| Peg 的皮夾 | `a worn brown leather wallet about the size of her palm` | 第 14 集；裡面 `a small fold of worn green banknotes, faces not readable`（第 9 集原句）；第 15 集當鋪的錢與駕照也收進這裡。 |
 | 卡夾、兩張卡、刷卡機 | 照第 4–10 集原句 | 第 14 集再刷一次；卡夾第 15 集拿出 Nora 的婚戒。 |
 | Nora 的婚戒（Grant 給的） | `a polished platinum wedding ring set with one round diamond as wide as a pencil` | 第 15 集，接 `, in her open palm`。 |
 | Peg 的婚戒 | `a thin worn gold wedding band with one tiny old diamond, on her left ring finger` | 同第 4–10 集，第 11–15 集；放到櫃台上寫 `a thin worn gold wedding band with one tiny old diamond, lying on the glass counter`。當掉之後的手指見〈帳〉。 |
@@ -267,7 +268,7 @@
 | 三條（合約） | `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it` | 第 16–19 集；落地寫 `…, lying on wet black asphalt`；第二份同一句。 |
 | Dana 的卷宗 | `three thick plain buff case files held against her chest` | 第 17、19、20 集；`cast.json` 已從外貌句拿掉。 |
 | Dana 的筆 | `a plain black rollerball pen as long as her hand` | 第 17 集。 |
-| Elias 的名片 | `a plain white business card, print not readable` | 第 17 集 Theo 遞；第 19 集在 Nora 左手。 |
+| Elias 的名片 | `a plain white business card, print not readable` | 第 17 集 Theo 遞，Nora 收進大衣左口袋；第 19 集 c24 她從口袋拿出來（寫明「Theo 給的那張」）、在左手。 |
 | Elias 的手機 | `a black phone with no logo, about the size of his palm` | 同第 2 集原句；第 19 集右手。 |
 | Grant 的車 | `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` | 同第 4–10 集；第 18 集他自己開（Cole 不在），接 `, stopped in the street beside the black car, headlights on`。 |
 | Peg 的拖鞋 | `worn beige house slippers` | 第 14 集晚上、第 15 集晚上到第 19 集停車場；外貌句的鞋照抄，句後接 `her feet in worn beige house slippers instead of shoes`。 |
@@ -294,8 +295,8 @@
 
 | 角色 | 參考圖 | 第 11–20 集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3） | 第 11 集到第 19 集剪髮前 `motel`（低髮髻、奶油色毛衣、牛仔褲、棕褐短靴；`cast.json` 已拿掉大衣與 "tired but steady eyes"）；第 19 集剪髮後與第 20 集蒙太奇 `shoulder`；第 20 集法院 `decree`（新：象牙白細針織衫、淺灰西裝褲）。三月戶外加大衣道具句。**要畫三張全身參考圖**（`motel`、`shoulder`、`decree`，從定妝照 `latent: image1`，只換衣服與髮型）。原聲。一鏡都不笑。 |
-| Peg | `assets/refs/peg-portrait.jpg`、`assets/refs/peg-coat.jpg` | 出門 `coat`、房間裡 `visit`；第 14–19 集晚上穿拖鞋（道具句）；第 20 集 `visit`。眼鏡每一鏡戴在臉上；婚戒第 15 集當掉前在左手、之後是一圈淡色的皮膚。原聲。 |
+| Nora | `assets/refs/nora-portrait.jpg`（r3） | 第 11 集到第 19 集剪髮前 `motel`（低髮髻、奶油色毛衣、牛仔褲、棕褐短靴；`cast.json` 已拿掉大衣與 "tired but steady eyes"）；第 19 集剪髮後與第 20 集蒙太奇 `shoulder`（第 19 集 c18–c19 剪完那兩鏡還是牛仔褲，外貌句的 `dark trousers` 換 `blue jeans`）；第 20 集法院 `decree`（新：象牙白細針織衫、淺灰西裝褲）。三月戶外加大衣道具句。**要畫三張全身參考圖**（`motel`、`shoulder`、`decree`，從定妝照 `latent: image1`，只換衣服與髮型）。原聲。一鏡都不笑。 |
+| Peg | `assets/refs/peg-portrait.jpg`、`assets/refs/peg-coat.jpg` | 出門 `coat`、房間裡 `visit`；第 14–19 集晚上穿拖鞋（道具句）；第 20 集 `visit`。頭髮照 `cast.json` 寫灰色短直髮、側分（不寫捲髮或燙髮，會跟 Bev 撞臉）。眼鏡每一鏡戴在臉上；婚戒第 15 集當掉前在左手、之後是一圈淡色的皮膚。原聲。 |
 | Dr. Brandt | **待畫，必須先畫**（第 1–3 集清單已有） | 第 11、12 集：基本款（`cast.json` 已拿掉 "a calm attentive face"）。原聲。 |
 | Dale Hutchins | **待畫，必須先畫** | 第 11、12、13 集：基本款（`cast.json` 已拿掉 "meticulous"）。原聲。細綱第 11 集沒名字的藥師就是他（見〈細綱必修〉）。 |
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 第 11–12 集基本款；第 18–19 集 `rain`，巴掌後左頰 `a faint pink flush`；第 20 集基本款。原聲。 |
@@ -304,7 +305,7 @@
 | Marcus Reyes | **待畫，必須先畫** | 第 14 集：基本款（`cast.json` 已拿掉卷宗）；只在他自己的辦公室、拿話筒。原聲（後製電話濾波）。 |
 | 當鋪老闆 | **待畫，必須先畫**（extras `pawnbroker`，外貌句已改成只寫長相） | 第 15 集：60 歲越南裔男性、稀疏的灰髮往後梳、灰色開襟衫配格子法蘭絨襯衫；放大鏡是道具。原聲。 |
 | 銀行行員 | **待畫，必須先畫**（extras `bank-teller`，外貌句已改） | 第 15 集：26 歲黑人女性、短的蓬鬆捲髮、小金耳釘、深藍西裝外套。原聲。 |
-| Elias | `assets/refs/elias-portrait.jpg` | **第 15 集最後一鏡第一次露臉**。第 15–19 集基本款（炭灰窗格紋三件式西裝、白襯衫開領、白色口袋巾）加大衣道具句；第 20 集基本款、沒有大衣。`cast.json` 的頭髮已改成跟定妝照一致（往後梳，不是短平頭），並拿掉「站得很直」「左手插口袋」。**要畫一張全身參考圖**（188 公分、穿大衣，從定妝照 `latent: image1`）。原聲。疤不出現（見〈全劇固定〉）。 |
+| Elias | `assets/refs/elias-portrait.jpg` | **第 15 集最後一鏡第一次露臉**。第 15–19 集基本款（炭灰窗格紋三件式西裝、白襯衫開領、白色口袋巾）加大衣道具句；第 20 集基本款、沒有大衣。`cast.json` 的頭髮已改成跟定妝照一致（往後梳，不是短平頭），並拿掉「站得很直」「左手插口袋」。聲音標記一律「低、像念合約」，每句只變速度（慢半拍、一個詞一停、一字一字、短）。**要畫一張全身參考圖**（188 公分、穿大衣，從定妝照 `latent: image1`）。原聲。疤不出現（見〈全劇固定〉）。 |
 | Theo Park | **待畫，必須先畫** | 第 16、17、20 集：基本款（`cast.json` 已拿掉平板）。原聲；面無表情。 |
 | Dana Okafor | **待畫，必須先畫** | 第 17、19、20 集：基本款（`cast.json` 已拿掉卷宗與 "intelligent"）。原聲。 |
 | 法院書記官 | **待畫**（extras `clerk`，外貌句已改） | 第 19 集：45 歲白人女性、沙棕色短髮、小銀耳環、深藍開襟衫。只說 "Filed."（原聲）。`cast.json` 的 `episodes` 還寫 20，以這份為準（第 20 集不拍書記官）。 |
@@ -448,15 +449,16 @@ Bev、Sienna、Fisk 在第 4–10 集清單裡，若還沒畫，Bev 排在 3 之
   軸線：診間 Brandt 在畫面左、Nora 在右、門在右；大廳 Grant 轉身後在左、Peg 在右，Nora 躲在柱子靠入口那面的右半邊；藥局交代位置的鏡從側面拍、玻璃隔板側成細線，臉一律在隔板同一側拍；第 13 集 Nora 跪在兩床之間、面向自己的床。
   第 11 集 Peg 隔著關著的門說 "I'll be downstairs."（不跟 Brandt 同框）；Brandt 整場戴手套。Bev 鎖抽屜的小黃銅鑰匙收進她上衣口袋。第 13 集 Peg 的大衣攤在她床尾，第 14 集從這裡拿起。
   帳：第 11 集剩 $180（第 10 集〈時間與帳〉原寫 $196，已改成照這份）。
-- **第 14–16 集**（寫稿者定）：Reyes 的話只在他自己辦公室的鏡上（原聲，後製加電話濾波），不疊在露臉的人身上；他**右手拿話筒貼右耳**、左手翻卷宗（審稿後改：左手會擋住靠鏡頭那半張嘴）。第 14 集警探補 "Let me get the deputy prosecutor. Right now."（Reyes 的名字本集不說出口）；警局加一台影印機；Peg 的棕色大衣攤在她床上、c04 拿起穿上。
+- **第 14–16 集**（寫稿者定）：Reyes 的話只在他自己辦公室的鏡上（原聲，後製加電話濾波），不疊在露臉的人身上；他**右手拿話筒貼右耳**、左手翻卷宗（審稿後改：左手會擋住靠鏡頭那半張嘴）。第 14 集警探補 "Let me get the deputy prosecutor. Right now."（Reyes 的名字本集不說出口）；警局加一台影印機；Peg 的棕色大衣攤在她床尾（照第 13 集 c45；帆布袋在她床上）、c04 拿起穿上。
   第 15 集收選用句 "Ring. Four hundred."；加駕照道具句與一鏡 Peg 用拇指摸左手的淡色戒痕；Peg 在銀行等候椅上織毛線；黑車車頭朝畫面左、駕駛座那側朝著旅館，從辦公室看得到 Elias 下車，Theo 只從車頂上方露出頭（虛焦）。
   **Elias 的左手**：第 15 集露臉起每一鏡都插在大衣左口袋。第 16 集 c01 從停車場拍、他的視線從二樓的窗落到辦公室的窗；辦公室門前一級台階；Theo 穿棕色樂福鞋。新場景 `police-steps`、`harbor-sidewalk` 已加進 `cast.json`。
 - **第 19–20 集**（寫稿者定）：第 19 集浴室剪髮前長髮放下來，新 look `motel-down`（只換髮型，已加進 `cast.json`）。第 20 集 Dana 坐著時卷宗道具句寫 `stacked on the table`；小法庭桌上一支筆；Nora 用 Dana 的筆簽判決書；"That fast?" 照 outline 在小法庭門口；
   法庭座位 Dana 坐外側、Nora 靠中間，Fisk 靠中間、Grant 坐外側。第 20 集 153 秒（細綱 145 秒），第二章結尾，接受。
   寫稿者新加、待站主看的三句：第 19 集 c42 Peg 句前加 "Sienna."（觀眾才知道照片是誰的手）；第 20 集 c08 Fisk "Decree and agreement. Sign both, Ms. Quinn."；c38 證婚法官 "I now pronounce you husband and wife."。
 - **第 11–15 集審稿後補定**（`../review/2026-11-12-e011-e015-storyboard.md`）：粉紅表格平放時道具句後接 `, lying flat`；領藥紀錄剛印出來時寫成還沒釘的散頁，Dale 釘好之後才用 stapled 的句子；
-  從櫃台後拍的反打，左右跟客人那邊的主鏡相反，所以櫃台場的對話改從「櫃台前、兩人之間斜拍」；第 12 集 c31 改成 "So who switched my pills?"；當鋪 $400 維持。
+  從櫃台後拍的反打，左右跟客人那邊的主鏡相反，所以櫃台場的對話改從「櫃台前、兩人之間斜拍」；第 12 集 c31 改成 "So who switched my pills?"；當鋪 $400 維持，**錢與駕照收進 Peg 的舊皮夾**（審稿時一度寫成塞進帳本封皮夾層，跨集稽核改掉：封皮夾層只放收據）。
 - **第 15–20 集審稿後補定**（`../review/2026-11-12-e015-e020-storyboard.md`）：第 16 集說話的臉用穩定光（辦公室窗的暖黃、對街路燈的冷白），霓虹只掃過臉頰；Theo 在 Elias 右後方半步、離鏡頭較遠；
-  第 16 集 "Walter Pell's case? That closed twelve years ago."；第 17 集 Dana 自我介紹 "Dana Okafor, attorney. Two is mine." 與 "He fights for you once, the defense calls you bought."；平板道具句 `a slim tablet in a plain grey case, its screen turned away`；
+  第 16 集 "Walter Pell's case? That closed twelve years ago."；第 17 集 Dana 自我介紹 "Dana Okafor, attorney. Two is mine." 與 "He fights for you once, the defense calls you a bought witness."（跨集稽核補回 GLOSSARY 的 "a bought witness"）；平板道具句 `a slim tablet in a plain grey case, its screen turned away`；
   第 19 集 "Signed. Ten o'clock, Superior Court."；第 20 集補 Nora "I do."；"That fast?" 與 "Marriage application." 照留。Theo 的名字第 21 集以後先鋪再叫。
+- **2026-11-12 跨集稽核**（`../review/2026-11-12-audit-e011-e020.md`，第 11–20 集都改了，各集〈2026-11-12 跨集稽核後的修改〉列了要重錄與重抽的鏡）：第 15 集錢與駕照進皮夾；17→18 的格局見〈場景格局〉`motel-street`；第 17 集 c12 "He fights for you once, the defense calls you a bought witness."（重錄）；警探的名片另有一句、收在卡夾，第 19 集 c24 寫明打的是 Theo 給的那張；第 16 集第二場 Elias 的聲音一律「低、像念合約」，只變速度（重錄 c09、c12、c13、c15、c17、c20）；Peg 第 18–20 集寫灰色短直髮、側分；第 11 集 c41、第 12 集 c02 補婚戒，第 19 集 c11、c12、c14、c16 補戒痕；第 13→14 集 Peg 的大衣在她床尾、帆布袋 `on her bed`；第 19 集 c18–c19 還是牛仔褲；Theo 一律棕色樂福鞋；Nora 鬆出的那縷頭髮：第 15 集 c26 鬆出、c27 起固定，第 16 集 c39 她把它撥回髻裡，第 17–19 集不寫（比一路帶到第 19 集 c10 便宜，只動一鏡）。
 

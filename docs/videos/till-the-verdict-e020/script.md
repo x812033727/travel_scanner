@@ -96,7 +96,7 @@ c31–c47 寫 `daytime, one tall window of summer sunlight, warm wood walls, the
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c05 | 全景、慢推（從全景推到中景）；鏡頭在旁聽席第二排後面、往法官席拍；直式前後疊開：前景下緣是第一排兩個女人的背與木欄杆頂（虛焦），中間是兩張律師席，上緣是空著的法官席 | 前景兩人背對、不露臉：畫面左 Peg（`visit`）灰色短燙髮的後腦與燕麥色開襟衫的肩，她右邊 Bev 赤褐夾灰捲髮的後腦與碎花上衣的肩；左邊律師席：Nora（`decree`：齊肩短髮、象牙白細針織衫）與 Dana（高髮髻、黑西裝外套）的背，`three thick plain buff case files, stacked on the table`；畫面右：Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、深棕色皮鞋）走在前、Fisk（往後梳的灰棕髮、金框眼鏡、灰西裝、黑色皮鞋，左腋下夾著 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show`）跟在後，從畫面右的走道走向右邊的律師席；兩人的臉很小：Grant 眼睛看著畫面左的 Nora、嘴唇拉平，Fisk 眼睛看著前面、眉毛平，兩張臉都 `no smile at any moment, until the last frame`；高窗的白光從畫面右 | Grant 與 Fisk 走到右邊的律師席前；剪在 Grant 停步；嘴都閉著；最後：兩人站在自己的桌前，法官席空著 | — | 約 2.5 秒 |
+| c05 | 全景、慢推（從全景推到中景）；鏡頭在旁聽席第二排後面、往法官席拍；直式前後疊開：前景下緣是第一排兩個女人的背與木欄杆頂（虛焦），中間是兩張律師席，上緣是空著的法官席 | 前景兩人背對、不露臉：畫面左 Peg（`visit`）灰色短直髮（側分）的後腦與燕麥色開襟衫的肩，她右邊 Bev 赤褐夾灰捲髮的後腦與碎花上衣的肩；左邊律師席：Nora（`decree`：齊肩短髮、象牙白細針織衫）與 Dana（高髮髻、黑西裝外套）的背，`three thick plain buff case files, stacked on the table`；畫面右：Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、深棕色皮鞋）走在前、Fisk（往後梳的灰棕髮、金框眼鏡、灰西裝、黑色皮鞋，左腋下夾著 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show`）跟在後，從畫面右的走道走向右邊的律師席；兩人的臉很小：Grant 眼睛看著畫面左的 Nora、嘴唇拉平，Fisk 眼睛看著前面、眉毛平，兩張臉都 `no smile at any moment, until the last frame`；高窗的白光從畫面右 | Grant 與 Fisk 走到右邊的律師席前；剪在 Grant 停步；嘴都閉著；最後：兩人站在自己的桌前，法官席空著 | — | 約 2.5 秒 |
 | c06 | 中近景、固定；鏡頭在 Nora 那桌、越過兩桌之間往右拍；直式，**頭上留出空間**；前景左下緣是 Fisk 的灰西裝肩（虛焦、不露臉）；同一間法庭 | Grant（基本款，細圓金屬框眼鏡），站在自己的座位前；高窗的白光從他背後右邊照來；四分之三側臉朝畫面左的 Nora、眼睛看著她；下巴抬著、眉毛放平、嘴唇閉著拉平、慢慢吸一口氣，`no smile at any moment, until the last frame` | Grant 解開西裝扣子（動作一），坐下（動作二）；剪在坐下一半；嘴閉著；最後：他坐在律師席、看著畫面左 | — | 約 2.5 秒 |
 | c07 | 插鏡、特寫、固定；**第一格就是 Nora 面前的桌面**；直式；鏡頭低、在桌面高度；同一間法庭 | Fisk 的兩手（灰西裝袖口），左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`，把 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show` 與壓在它上面的 `a few stapled white pages, held so only the backs or edges show` 一起推過桌面；Nora 的兩手（象牙白細針織袖口）放在桌上；畫面裡沒有臉 | Fisk 的手把兩份一起推到她面前（動作一），手收回去（動作二）；剪在手收回一半；畫面上沒有嘴；最後：兩份疊在 Nora 面前（判決書在上、深藍封底的協議在下），一直留在畫面中間 | — | 約 2.5 秒 |
 | c08 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她的齊肩髮與象牙白右肩在畫框右下緣、虛焦、不露臉）；直式，Fisk 的臉在上三分之一；身後是對面律師席與木牆（虛焦） | Fisk（往後梳的灰棕髮、金框眼鏡、銳利的灰西裝），站在 Nora 桌邊；右手 `a black fountain pen with a gold clip, as long as his hand`，筆帽拔開、遞向她；左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`；高窗的白光從他背後；四分之三側臉朝畫面右下的 Nora、眼睛看著她；眼皮半垂、眉毛放平、嘴唇在字之間抿薄、下巴客氣地點一下，`no smile at any moment, until the last frame` | Fisk 把筆遞向她，嘴在說話（慢、正式、客氣得像威脅）；說完筆還遞著，嘴閉上；最後：筆遞在她面前 | Fisk（慢、正式、客氣得像威脅）：Decree and agreement. Sign both, Ms. Quinn.（判決書和協議。兩份都簽，Quinn 女士）（原聲）（→ 答在 c10、c11） | 約 3.5 秒 |
@@ -150,7 +150,7 @@ c31–c47 寫 `daytime, one tall window of summer sunlight, warm wood walls, the
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c31 | 中景、慢推（從中景推到中近景）；鏡頭在第二排長椅後、往法官席拍；直式前後疊開：前景下緣是第一排兩個女人的背（虛焦），中間是小木桌前的兩人與 Theo，上緣是矮的法官席與證婚的法官 | 看得到臉的只有法官與 Theo（側臉、很小）。前景背影、不露臉：畫面左 Bev 赤褐夾灰捲髮的後腦與碎花上衣的肩，畫面右 Peg（`visit`）灰色短燙髮的後腦與燕麥色開襟衫的肩；中間：Elias（畫面左，基本款，左手插在褲子左口袋）與 Nora（畫面右，`decree`）站在小木桌前、面向法官、背對鏡頭；Theo 在 Elias 左後（畫面左後），兩手捧著 `a small dark blue velvet ring box about the size of a walnut`，側臉：眉毛平、嘴唇平；法官席後：證婚的法官（52 歲菲律賓裔女性、低髮髻、小珍珠耳環、黑袍），眼睛在兩人之間移、眉毛抬著、嘴唇閉著；兩張臉都 `no smile at any moment, until the last frame`；陽光從畫面左的高窗 | Nora 往前走一步、停在 Elias 的右邊；剪在她停下；嘴都閉著；最後：兩人並排站在小木桌前 | — | 約 2.5 秒 |
+| c31 | 中景、慢推（從中景推到中近景）；鏡頭在第二排長椅後、往法官席拍；直式前後疊開：前景下緣是第一排兩個女人的背（虛焦），中間是小木桌前的兩人與 Theo，上緣是矮的法官席與證婚的法官 | 看得到臉的只有法官與 Theo（側臉、很小）。前景背影、不露臉：畫面左 Bev 赤褐夾灰捲髮的後腦與碎花上衣的肩，畫面右 Peg（`visit`）灰色短直髮（側分）的後腦與燕麥色開襟衫的肩；中間：Elias（畫面左，基本款，左手插在褲子左口袋）與 Nora（畫面右，`decree`）站在小木桌前、面向法官、背對鏡頭；Theo 在 Elias 左後（畫面左後），兩手捧著 `a small dark blue velvet ring box about the size of a walnut`，側臉：眉毛平、嘴唇平；法官席後：證婚的法官（52 歲菲律賓裔女性、低髮髻、小珍珠耳環、黑袍），眼睛在兩人之間移、眉毛抬著、嘴唇閉著；兩張臉都 `no smile at any moment, until the last frame`；陽光從畫面左的高窗 | Nora 往前走一步、停在 Elias 的右邊；剪在她停下；嘴都閉著；最後：兩人並排站在小木桌前 | — | 約 2.5 秒 |
 | c32 | 近景、慢推（從胸上推到肩上）；鏡頭在法官席旁、往 Theo 拍；直式，臉在上三分之一；身後只有木牆 | Theo（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心）；兩手捧著打開的 `a small dark blue velvet ring box about the size of a walnut`，手在抖；陽光從畫面右；四分之三側臉朝畫面左的 Elias、眼睛從盒子抬到他；眉毛平平、嘴唇平、眼睛很認真地睜著、聲音平、慢、一本正經，`no smile at any moment, until the last frame` | Theo 捧著盒子、手在抖，嘴在說話（平、慢、一本正經）；說完把盒子往畫面左遞出去，嘴閉上；最後：盒子遞在半空、還在抖 | Theo（平、慢、一本正經）：I've never held one of these.（我從來沒拿過這種東西）（原聲） | 約 3.5 秒 |
 | c33 | 插鏡、手部特寫、固定；**第一格就是 Theo 兩手捧著的打開的戒盒**；直式；同一間小法庭 | `a small dark blue velvet ring box about the size of a walnut`，打開、在 Theo 發抖的兩手裡（淺藍襯衫袖口、灰背心下襬）；Elias 的右手（白襯衫袖口、炭灰窗格紋袖子）從畫面左伸進來；盒裡 `a plain narrow white-gold band with no stone`；畫面裡沒有臉 | Elias 的右手把戒指從絨布裡拿出來；剪在戒指離開絨布；畫面上沒有嘴；最後：戒指在 Elias 的右手指間 | — | 約 2.5 秒 |
 | c34 | 插鏡、特寫、固定；**第一格就是小木桌的木面**；直式；鏡頭低、在桌面高度；後景是結婚證書的紙邊（虛焦） | Elias 的右手（白襯衫袖口、炭灰袖子）拿著 `a plain narrow white-gold band with no stone`；畫面裡沒有臉 | Elias 把戒指放到桌上（動作一），用指尖把它推向畫面左、推到 Nora 那一側（動作二）；剪在戒指停下；畫面上沒有嘴；最後：`a plain narrow white-gold band with no stone` 停在 Nora 那一側的桌面上，一直留在畫面中間 | — | 約 2.5 秒 |
@@ -233,6 +233,12 @@ c31–c47 寫 `daytime, one tall window of summer sunlight, warm wood walls, the
 - **c43**：Grant 看的是「桌邊並肩站著的兩人」（挽手在 c44 才發生）。
 - **c26、c51 的收尾動作**：c26 喊完右手往她那邊一揮、停在半空（接 c28 那隻手垂下去）；c51 塞進內袋時手掌在衣襟外按平，說完手從左胸前收回（接 c52）。
 - "That fast?" 照留（主控決定）。鏡數 52 → 53，秒數 153 → 157.5。
+
+#### 2026-11-12 跨集稽核後的修改
+
+依 `review/2026-11-12-audit-e011-e020.md`（第 11–20 集跨集連戲稽核）改的。台詞一句都沒改，**沒有要重錄的**。
+- **Peg 的頭髮**（c05、c31）：「灰色短燙髮」改成 `cast.json` 原句的灰色短直髮（側分）（`short straight grey hair swept to one side`），免得跟 Bev 的捲髮撞臉。要照新寫法抽。
+- 鏡數與秒數不變。
 
 ### 配音
 
