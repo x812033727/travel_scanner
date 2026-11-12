@@ -80,7 +80,7 @@ c01–c42 全部寫 `daytime, a fine summer drizzle running down the tall window
 | c07 | 插鏡、特寫、固定；**第一格就是桌面高度、卷宗的邊與 Dana 的右手**；直式；鏡頭貼著桌面從卷宗的側邊平拍；焦點在筆尖 | `three thick plain buff case files, stacked on the table`，最上面那本的封面只見側邊、遠遠虛焦；Dana 的右手（黑色西裝外套袖口）拿著 `a plain black rollerball pen as long as her hand`；畫面裡沒有臉 | Dana 的筆尖在卷宗封面上寫一行（動作一），筆停住（動作二）；剪在筆停住；畫面上沒有嘴；最後：筆停在卷宗上 | — | 約 2 秒 |
 | c08 | 中近景、慢推（從中近景推到近景）；鏡頭在兩張律師席之間、往畫面右斜拍；直式，**頭上留出空間，整個頭在畫面裡**；前景右下緣是 Grant 淺石色西裝的左肩（虛焦、不露臉）；身後是木牆與雨窗 | Fisk（52 歲白人男性、往後梳的灰棕髮、金框眼鏡、銳利的灰西裝），第一格已經從律師席靠中間那張椅子站起來、站在桌前；左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`；面前桌上 `a black fountain pen with a gold clip, as long as his hand` 與 `a slim black leather document folder about the size of a magazine`；雨光從畫面右；四分之三側臉朝畫面左上的法官、眼睛看著他；眼皮半垂、眉毛放平、嘴唇在字之間抿薄、聲音慢、正式、客氣得像威脅，`no smile at any moment, until the last frame` | Fisk 看著法官，嘴在說話（慢、正式）（動作一）；說完右手扣上西裝扣子（動作二），嘴閉上；最後：他站在律師席前、扣好西裝，看著畫面左上 | Fisk（慢、正式，客氣得像威脅）：Her drafts? Made after the fact.（她的草圖？事後補的）（原聲）（→ 答在 c27） | 約 3.5 秒 |
 | c09 | 近景、固定；從 Nora 的左肩後拍（她奶油色針織衫的左肩與齊肩髮在畫框右下緣、虛焦、不露臉）；直式，Dana 的臉在畫面左上三分之一；身後是木欄杆（虛焦） | Dana（35 歲奈及利亞裔美國女性、深棕膚色、高髮髻、黑色合身西裝外套），坐在律師席外側；`three thick plain buff case files, stacked on the table`；雨窗的灰白光從畫面右照在她臉上；眼睛從畫面右的 Fisk 移到 Nora；眉頭一下收緊、眼睛瞇起、嘴唇抿薄、下巴一收，`no smile at any moment, until the last frame` | Dana 把筆擱在卷宗上（動作一），身子往 Nora 那邊斜一點（動作二）；剪在身子斜過去；嘴閉著；最後：她靠向畫面右的 Nora | — | 約 2.5 秒 |
-| c10 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她奶油色針織衫的右肩與齊肩髮在畫框左下緣、虛焦、不露臉）；直式，Grant 的臉在畫面右上三分之一；身後是木牆與雨窗（虛焦） | Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝），坐在律師席外側、身子往畫面左的 Nora 探過去；右手 `a slim brushed-steel pen as long as his hand`；雨光從畫面右照在他右頰；四分之三側臉朝畫面左下的 Nora、眼睛看著她；眉心微微提起、嘴角平、嘴唇在字之間閉著拉平、聲音平穩、低，壓到只有她聽得見，`no smile at any moment, until the last frame` | Grant 探著身子看著 Nora，嘴在說話（平穩、低，壓低）；說完身子坐回椅背，嘴閉上；最後：他靠著椅背，看著畫面左 | Grant（平穩、低，壓到剛好聽得見）：Nor was always good at copying.（Nor 一向很會抄）（原聲）（→ 答在 c14） | 約 3.5 秒 |
+| c10 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她奶油色針織衫的右肩與齊肩髮在畫框左下緣、虛焦、不露臉）；直式，Grant 的臉在畫面右上三分之一；畫面中間偏右是坐在兩人之間的 Fisk 灰西裝的背與往後梳的灰棕髮後腦（虛焦、不露臉）；身後是木牆與雨窗（虛焦） | Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝），坐在律師席外側、從 Fisk 身後往畫面左的 Nora 探過去；右手 `a slim brushed-steel pen as long as his hand`；雨光從畫面右照在他右頰；四分之三側臉朝畫面左下的 Nora、眼睛看著她；眉心微微提起、嘴角平、嘴唇在字之間閉著拉平、聲音平穩、低，壓到只有她聽得見，`no smile at any moment, until the last frame` | Grant 探著身子看著 Nora，嘴在說話（平穩、低，壓低）；說完身子坐回椅背，嘴閉上；最後：他靠著椅背，看著畫面左 | Grant（平穩、低，壓到剛好聽得見）：Nor was always good at copying.（Nor 一向很會抄）（原聲）（→ 答在 c14） | 約 3.5 秒 |
 | c11 | 近景、固定；鏡頭在旁聽席第一排、Peg 右邊的走道上、往她斜拍（守住主鏡：Grant 在畫面右）；直式，臉在上三分之一；身後是欄杆與律師席（虛焦） | Peg（`visit`：直的短灰髮往一邊梳、玳瑁框老花眼鏡戴在臉上、長木珠項鍊、燕麥色開襟衫），坐在旁聽席第一排；雨窗的灰白光；眼睛從鏡片上方看著畫面右外的 Grant，不看鏡頭；眉頭壓到最低、鼻翼一張、嘴唇抿成一條線、下巴往前，`no smile at any moment, until the last frame` | Peg 兩手抓住膝上的開襟衫衣角（動作一），重重從鼻子吸一口氣（動作二）；剪在吸氣到頂；嘴閉著；最後：她兩手抓著衣角，盯著畫面右外 | — | 約 2 秒 |
 | c12 | 插鏡、手部特寫、固定；**第一格就是 Nora 交握在桌上的兩手**；直式；鏡頭在桌面高度 | Nora 的兩手（奶油色針織衫袖口），左手 `a plain narrow white-gold band with no stone, on her left ring finger`；桌面的木紋；畫面裡沒有臉 | 她的兩手鬆開（動作一），兩掌平按在桌面上（動作二）；剪在兩掌按下去；畫面上沒有嘴；最後：兩掌平按在桌上，戒指在畫面中間 | — | 約 2 秒 |
 | c13 | 中近景、固定；鏡頭在兩張律師席之間、靠欄杆那側、往畫面左的 Nora 斜拍；直式，**頭上留出空間，站起來後整個頭仍在畫面裡**；身後是木欄杆與旁聽席（虛焦） | Nora（`shoulder`），兩掌按著桌面；雨窗的灰白光照在她臉上；眼睛看著畫面右的 Grant、眉頭壓低、下巴繃緊、吸一口氣，`no smile at any moment, until the last frame` | Nora 兩手撐著桌面站起來（動作一），站直（動作二）；剪在站到一半；嘴閉著；最後：她站在律師席後，兩手離開桌面 | — | 約 2 秒 |
@@ -92,15 +92,15 @@ c01–c42 全部寫 `daytime, a fine summer drizzle running down the tall window
 | c19 | 近景、慢推（從胸上推到肩上）；同 c02 的鏡位；直式，法官的臉在上三分之一；**畫面裡只有法官** | 法官（白短髮、白鬍子、黑袍）；`a dark wooden gavel` 在右手邊；雨光從畫面右；第一格頭已經抬起（全集第一次抬頭）、四分之三側臉朝畫面左下的 Nora、眼睛看著她；眉毛一抬、眼睛定住、嘴唇在字之間閉著、聲音乾、不高，`no smile at any moment, until the last frame` | 法官看著 Nora，嘴在說話（乾、不高）；說完右手手掌平放在紙上，嘴閉上；最後：他看著畫面左下 | 法官（乾、不高）：Ms. Quinn. Sit down.（Quinn 女士。坐下）（原聲）（結尾） | 約 3 秒 |
 | c20 | 中近景、固定；鏡頭在兩張律師席之間、靠欄杆那側、往畫面左的律師席斜拍；直式，**頭上留出空間**：Dana 在畫面左、Nora 在畫面右，兩人的臉在上半 | 共兩人。Nora（`shoulder`），站著，左手 `a plain narrow white-gold band with no stone, on her left ring finger`；眼睛還看著畫面右外的 Grant、眉毛平、下巴抬著、呼吸慢，`no smile at any moment, until the last frame`；Dana（高髮髻、黑西裝外套）坐在她左邊（畫面左），抬頭看她：眉毛一抬、嘴唇閉著，`no smile at any moment, until the last frame`；`three thick plain buff case files, stacked on the table`；雨窗的灰白光從畫面右 | Nora 坐回椅子（動作一），Dana 的右手輕輕搭上 Nora 的左前臂（動作二）；剪在手搭上去；兩人都嘴閉著；最後：Nora 坐著，Dana 的右手在她左前臂上 | — | 約 2.5 秒 |
 
-### 第二場：He wants it your word against his.（約 57.5 秒）
+### 第二場：He wants it your word against his.（約 60.5 秒）
 
 **場頭**：
 - **地點與場景圖**：同一間法庭，同第一場。
 - **時間與天氣**：第 130 天 09:12–09:25，毛毛雨；雨光從畫面右，整場光不變。
 - **軸線**：同第一場。Peg 那鏡的鏡頭在 Dana 那一側的牆邊、低、沿著欄杆往畫面右斜拍：前景左下是 Dana 的後腦與肩（虛焦），Peg 在欄杆後、身子探向畫面左下的 Dana，Nora 被 Dana 的肩擋在畫框左外（守住主鏡：Dana 在畫面左）。法官講命令時看兩邊：看 Nora 那桌朝畫面左下，看 Fisk 朝畫面右下（Fisk 不入鏡）。Dana 對 Nora 說話從 Nora 的左肩後拍（肩在畫框右下），Nora 的反應從 Dana 的右肩後拍（肩在畫框左下）。
 - **在場的人**：同第一場。c34 法官敲槌之後起身離席（不拍）。
-- **這場要講完的事**：Peg 當眾揭 Grant 小時候改成績單的日期；Dana 點出 Grant 要的是各說各話；法官打斷兩邊：鑑定人自己採新的樣本、三天後在她的工作室、兩邊律師都可以到場、Fisk 要把正本交給鑑定人；Grant 套上筆蓋、對她微笑，Dana 低聲說 Fisk 會來看她簽（結尾：「Fisk will come. He'll watch you sign.」，懸念：她的手會在 Fisk 面前抖嗎）。
-- **配樂**：c21 雨聲；c22 Peg 那句後停一拍（笑點，沒有人笑）；c25 一段低、慢的弦；c27–c32 每句命令之後一個乾的低音；c34 槌聲；c37 一個低的懸音；c40 弦收緊；c42 一個懸著的和弦、切黑。
+- **這場要講完的事**：Peg 當眾揭 Grant 小時候改成績單的日期；Dana 點出 Grant 要的是各說各話；法官先要旁聽席安靜，再打斷兩邊：鑑定人自己採新的樣本、三天後在她的工作室、兩邊律師都可以到場、Fisk 要把正本交給鑑定人；Grant 套上筆蓋、對她微笑，Dana 低聲說 Fisk 會來看她簽（結尾：「Fisk will come. He'll watch you sign.」，懸念：她的手會在 Fisk 面前抖嗎）。
+- **配樂**：c21 雨聲；c22 Peg 那句後停一拍（笑點，沒有人笑）；c25 一段低、慢的弦；c26b 法官那句之後只剩雨聲；c27–c32 每句命令之後一個乾的低音；c34 槌聲；c37 一個低的懸音；c40 弦收緊；c42 一個懸著的和弦、切黑。
 - **離開這場**：本集結尾；第 43 集跳到第 133 天 10:00 的 Remelt。
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
@@ -111,6 +111,7 @@ c01–c42 全部寫 `daytime, a fine summer drizzle running down the tall window
 | c24 | 近景、固定；同 c17 的鏡位；直式，臉在上三分之一 | Fisk（往後梳的灰棕髮、金框眼鏡、灰西裝），坐著；雨光從畫面右；頭轉過去、越過左肩看向畫面左後的旁聽席；眉毛平、眼皮半垂、嘴唇抿薄，`no smile at any moment, until the last frame` | Fisk 越過左肩回頭看（動作一），把頭轉回法官席（動作二）；剪在頭轉回一半；嘴閉著；最後：他看著畫面左上 | — | 約 2 秒 |
 | c25 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她奶油色針織衫的左肩與齊肩髮在畫框右下緣、虛焦、不露臉）；直式，Dana 的臉在畫面左上三分之一；身後是木欄杆（虛焦） | Dana（高髮髻、黑色西裝外套），坐著、湊近 Nora；雨窗的灰白光從畫面右照在她臉上；四分之三側臉朝畫面右的 Nora、眼睛看著她；眉毛平、眼睛定住、嘴唇在字之間抿薄、聲音低、快，`no smile at any moment, until the last frame` | Dana 湊近 Nora，嘴在說話（低、快）；說完身子坐回去，嘴閉上；最後：她坐直、看著 Nora | Dana（低、快）：He wants it your word against his.（他要的是妳說妳的、他說他的）（原聲）← 因為 c08、c10 | 約 3.5 秒 |
 | c26 | 近景、固定；從 Dana 的右肩後拍（她黑色西裝外套的右肩與髮髻在畫框左下緣、虛焦、不露臉）；直式，Nora 的臉在畫面右上三分之一；身後是木欄杆與旁聽席（虛焦） | Nora（`shoulder`）；雨窗的灰白光；四分之三側臉朝畫面左的 Dana、眼睛看著她；眉頭往中間擠、嘴唇抿住、慢慢吐一口氣、下巴一收，`no smile at any moment, until the last frame` | Nora 看著 Dana 吐一口氣（動作一），眼睛移向畫面右上的法官席（動作二）；剪在眼睛移過去一半；嘴閉著；最後：她看著畫面右上 | — | 約 2 秒 |
+| c26b | 近景、慢推（從胸上推到肩上）；同 c02 的鏡位；直式，法官的臉在上三分之一；**畫面裡只有法官** | 法官（白短髮、白鬍子、黑袍）；面前 `a few stapled white pages, held so only the backs or edges show, lying flat on the bench, seen edge-on, far out of focus`；右手邊 `a dark wooden gavel` 擱在木座上；雨光從畫面右；第一格頭抬起來、四分之三側臉朝畫面左下、眼睛越過 Nora 那桌看向後面的旁聽席；眉毛壓低、眼睛定住、嘴唇在字之間閉著、聲音乾、不高、不容商量，`no smile at any moment, until the last frame` | 法官看著旁聽席，嘴在說話（乾、不高）（動作一）；說完右手食指在紙上敲一下（動作二），嘴閉上；最後：他的眼睛從旁聽席收回到兩張律師席 | 法官（乾、不高，不容商量）：The gallery will stay quiet.（旁聽席保持安靜）（原聲）← 因為 c22 | 約 3 秒 |
 | c27 | 近景、慢推（從胸上推到肩上）；同 c02 的鏡位；直式，法官的臉在上三分之一；**畫面裡只有法官** | 法官（白短髮、白鬍子、黑袍）；面前 `a few stapled white pages, held so only the backs or edges show, lying flat on the bench, seen edge-on, far out of focus`；雨光從畫面右；第一格頭已經抬起、四分之三側臉朝畫面左下（Nora 那桌）、眼睛在兩桌之間移；眉頭壓平、嘴唇在字之間閉著、聲音乾、打斷人的口氣，`no smile at any moment, until the last frame` | 法官看著兩桌，嘴在說話（乾、打斷）（動作一）；說完右手手掌往紙上一壓（動作二），嘴閉上；最後：他的右手壓在紙上，眼睛在兩桌之間 | 法官（乾，打斷兩邊）：The examiner takes fresh samples himself.（樣本由鑑定人自己重新採）（原聲）← 因為 c08 | 約 3.5 秒 |
 | c28 | 近景、固定；同 c02 的鏡位；直式，**第一格就是法官的臉與肩膀，整鏡不拉遠** | 法官（白短髮、白鬍子、黑袍）；雨光從畫面右；四分之三側臉朝畫面左下的 Nora、眼睛看著她；眉毛平、嘴唇在字之間閉著、兩句之間停一拍、聲音乾，`no smile at any moment, until the last frame` | 法官看著 Nora，嘴在說話（乾，兩句之間停一拍）；說完右手翻過一頁，嘴閉上；最後：他看著畫面左下 | 法官（乾，中間停一拍）：At the petitioner's studio. In three days.（在聲請人的工作室。三天後）（原聲） | 約 3.5 秒 |
 | c29 | 近景、固定；同 c06 的鏡位；直式，臉在上三分之一 | Nora（`shoulder`）；雨窗的灰白光照在臉上；四分之三側臉朝畫面右上的法官、眼睛看著他；眼睛睜大一點、喉嚨吞一下、嘴唇抿住、肩膀繃起來，`no smile at any moment, until the last frame` | Nora 吞一下口水（動作一），兩手在桌上收攏（動作二）；剪在手收攏；嘴閉著；最後：她兩手收在桌上，看著畫面右上 | — | 約 2 秒 |
@@ -128,7 +129,7 @@ c01–c42 全部寫 `daytime, a fine summer drizzle running down the tall window
 | c41 | 插鏡、手部特寫、固定；**第一格就是 Fisk 桌上打開的公事夾與他的兩手**；直式；鏡頭在桌面高度、從紙邊平拍 | `a slim black leather document folder about the size of a magazine`，打開；`a few stapled white pages, held so only the backs or edges show`，只見紙邊、遠遠虛焦；Fisk 的兩手（灰西裝袖口），左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`；畫面裡沒有臉 | Fisk 把文件滑進公事夾（動作一），手掌按在公事夾上、準備闔起（動作二）；剪在文件滑進去一半；畫面上沒有嘴；最後：文件一半在公事夾裡 | — | 約 2 秒 |
 | c42 | 中景、固定（接第 43 集之前的最後一刻）；鏡頭在旁聽席第二排、從 Peg 的右肩後往法官席拍（同 c01）；直式前後疊開：前景左下緣是 Peg 的後腦與右肩（虛焦、不露臉），中間是欄杆與兩張律師席，上緣是空著的法官席 | 露臉的只有 Grant 與 Fisk。前景背對：Peg（`visit`，直的短灰髮）；畫面左律師席：Nora（`shoulder`，齊肩短髮、奶油色針織衫）坐靠中間的背，Dana（高髮髻、黑西裝外套）坐她左邊外側、頭剛從 Nora 耳邊收回來，兩人都背對鏡頭，`three thick plain buff case files, stacked on the table`；畫面右律師席：Fisk（往後梳的灰棕髮、金框眼鏡、灰西裝）坐靠中間，兩手把文件收進 `a slim black leather document folder about the size of a magazine`，眼睛看著公事夾、嘴唇抿薄，`no smile at any moment, until the last frame`；Grant（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫）坐外側，右手剛從衣襟上收下來，眼睛看著畫面左的 Nora，閉嘴微笑（兩邊嘴角輕輕往上、嘴唇閉著、不露齒）；一道灰白的光斜落在兩張律師席中間；法官席空著 | Fisk 闔上公事夾（動作一），Grant 的閉嘴微笑留著（動作二）；剪在公事夾闔上後一拍；嘴都閉著；最後：兩張律師席停在這一刻，法官席空著，窗上的雨繼續流 | — | 約 3 秒 |
 
-約 109 秒（1 分 49 秒）、42 鏡（第一場 20、第二場 22），是各鏡秒數加起來的估計；細綱 `duration_s` 115 秒，bible 目標 38–42 鏡。
+約 112 秒（1 分 52 秒）、43 鏡（第一場 20、第二場 23），是各鏡秒數加起來的估計；細綱 `duration_s` 115 秒，bible 目標 38–42 鏡（審稿後補 c26b，多一鏡、多 3 秒）。
 開場 10 秒四鏡（c01–c04）：c01 從 Peg 的右肩後交代法庭與雨窗、c02 法官不抬頭 "Court examiner. Granted."、c03 "Arthur Wexler."、c04 在第 8.5 秒 Grant 看著 Nora 閉嘴微笑。平均一鏡 2.6 秒（c14 顏值鏡頭 4.5 秒）。
 
 ## 注意事項
@@ -158,13 +159,21 @@ c01–c42 全部寫 `daytime, a fine summer drizzle running down the tall window
 - **法槌**：c34 法官敲一下（bible：可以不敲）；之後法官起身離席，不拍。
 - **c18 旁聽席的騷動**：照第 20 集 c17 的寫法（臉都虛焦），給 Nora 站起來一個回應。
 
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e041-e045-storyboard.md` 與 bible〈第 41–45 集審稿後補定〉改的。本集還沒錄、沒拍；新增一句台詞（c26b），**要錄**；其他台詞沒改。
+- **c10**：Fisk 坐在 Nora 與 Grant 之間，畫面中間偏右加他虛焦的背與後腦，Grant 從他身後探身。
+- **c26b（新增）**：法官在命令之前先要旁聽席安靜："The gallery will stay quiet."（原聲、3 秒、← 因為 c22 Peg 那句；主控決定，美國法官通常先制止旁聽席）。
+- **接點 42→43**：bible 已補「Grant 的筆已收進西裝內袋」，跟 c37、c42 一致。
+- 鏡數 42 → 43，秒數 109 → 112。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**。
-- **十三鏡原聲**：法官七鏡（c02、c03、c19、c27、c28、c30、c32）、Nora 一鏡（c14）、Fisk 一鏡（c08）、Grant 一鏡（c10）、Peg 一鏡（c22）、Dana 二鏡（c25、c39）。每支**至少買 6 秒**（合計 78 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。
+- **十四鏡原聲**：法官八鏡（c02、c03、c19、c26b、c27、c28、c30、c32）、Nora 一鏡（c14）、Fisk 一鏡（c08）、Grant 一鏡（c10）、Peg 一鏡（c22）、Dana 二鏡（c25、c39）。每支**至少買 6 秒**（合計 84 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。
 - 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：法官乾、照程序；Nora 低、清楚（c14 每個字都咬住，不是喊）；Fisk 慢、正式、客氣得像威脅；Grant 平穩、低、壓到剛好聽得見；Peg 乾、直、大聲；Dana 低、快。
 - **Grant 的說話句**（c10）只寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth。
-- **6 個字以內的句子**（c02、c03、c08、c19、c27、c30、c39 的前半）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上。c03 "Arthur Wexler." 最短，第一批草稿先聽有沒有多講。
+- **6 個字以內的句子**（c02、c03、c08、c19、c26b、c27、c30、c39 的前半）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上。c03 "Arthur Wexler." 最短，第一批草稿先聽有沒有多講。
 - **法官第二次開口**（第 20 集起）：同一個人、同一張定妝照；跨集聲音是否一致，第一批草稿請站主聽。
 - CC 軟字幕、不燒錄、不標說話人；字幕照剪接工具量到的開口時間放。
 
@@ -188,6 +197,7 @@ c01–c42 全部寫 `daytime, a fine summer drizzle running down the tall window
   | c20 | 椅子被拉回來 |
   | c21 | 手抓住木欄杆 |
   | c22 | 指頭點在欄杆上 |
+  | c26b | 指頭敲在紙上一下 |
   | c33 | 文件在桌上疊齊 |
   | c34 | **法槌「咚」一聲** |
   | c36 | **筆帽「喀」一聲** |
@@ -196,7 +206,7 @@ c01–c42 全部寫 `daytime, a fine summer drizzle running down the tall window
 
 ### 剪接
 
-- edit 表設 `punch: false`、`interpolate: false`；`slow_max`：原聲鏡（c02、c03、c08、c10、c14、c19、c22、c25、c27、c28、c30、c32、c39）設 **1.0**，其他鏡 1.1。輸出 9:16 直式。
+- edit 表設 `punch: false`、`interpolate: false`；`slow_max`：原聲鏡（c02、c03、c08、c10、c14、c19、c22、c25、c26b、c27、c28、c30、c32、c39）設 **1.0**，其他鏡 1.1。輸出 9:16 直式。
 - 開頭不放集數、不放片名卡、不回顧、不放字卡；c01 從第 41 集懸在紙上的筆尖硬切到兩天後早上的法庭。
 - 沒有台詞的鏡剪在動作中間（各鏡「剪在」）；原聲鏡剪在收尾動作或句尾，不留空白。
 - c22 Peg 那句之後留一拍（笑點，沒有人笑）。
@@ -213,8 +223,8 @@ c01–c42 全部寫 `daytime, a fine summer drizzle running down the tall window
 | Dana | 基本款；卷宗疊在桌上；筆 | c09、c20、c25、c39（c01、c42 背；c07、c31 只有手；c22、c26 只有後腦與肩） | 要畫定妝照 |
 | Peg | `visit`（玳瑁框老花眼鏡戴在臉上）；左手戒痕 | c11、c16、c22、c35（c01、c42 背；c21 只有手） | 已有 |
 | Grant | 基本款（細圓金屬框眼鏡）＋筆 | c01、c04、c10、c15、c23、c37、c42（c36 只有手；c08、c17、c33 只有肩） | 已有 |
-| Fisk | 基本款（金框眼鏡）＋鋼筆、銀錶、公事夾 | c01、c08、c17、c24、c33、c42（c41 只有手；c04、c23 只有肩） | 要畫定妝照 |
-| 主持離婚的法官 | extras `judge` | c02、c03、c19、c27、c28、c30、c32（c34 只有手） | 要畫定妝照（第 20 集同一張） |
+| Fisk | 基本款（金框眼鏡）＋鋼筆、銀錶、公事夾 | c01、c08、c17、c24、c33、c42（c41 只有手；c04、c23 只有肩；c10 只有背與後腦） | 要畫定妝照 |
+| 主持離婚的法官 | extras `judge` | c02、c03、c19、c26b、c27、c28、c30、c32（c34 只有手） | 要畫定妝照（第 20 集同一張） |
 | 旁聽席 | 臉虛焦 | c18 | 不畫 |
 
 ### 2. 本集需要的參考圖
@@ -227,20 +237,20 @@ c01–c42 全部寫 `daytime, a fine summer drizzle running down the tall window
 
 ### 3. 長鏡清單
 
-本集沒有超過 6 秒的鏡。最長的是 c14（4.5 秒，原聲）、c22 與 c39（4 秒，原聲）。原聲鏡十三支每支買 6 秒（不是長鏡，剪到台詞長度）。
+本集沒有超過 6 秒的鏡。最長的是 c14（4.5 秒，原聲）、c22 與 c39（4 秒，原聲）。原聲鏡十四支每支買 6 秒（不是長鏡，剪到台詞長度）。
 
 ### 4. 音樂與音效
 
 | 段落 | 配樂 | 重音 |
 | --- | --- | --- |
 | 第一場 c01–c20 | 低嗡加雨聲 → 很低的弦 → 抽掉一拍 → 往上的弦 → 停一拍 → 低的大提琴 → 只剩雨聲 | c02 "Court examiner. Granted."、c10 "Nor was always good at copying."、c14 "I made your Forever vase. You copied that."、c19 "Ms. Quinn. Sit down." |
-| 第二場 c21–c42 | 雨聲 → 停一拍 → 低、慢的弦 → 每句命令一個乾的低音 → 槌聲 → 低的懸音 → 弦收緊 → 懸著的和弦、切黑 | c22 "He backdated his report cards."、c25 "He wants it your word against his."、c28 "In three days."、c34 法槌、c36 筆帽、c39 "He'll watch you sign." |
+| 第二場 c21–c42 | 雨聲 → 停一拍 → 低、慢的弦 → 只剩雨聲 → 每句命令一個乾的低音 → 槌聲 → 低的懸音 → 弦收緊 → 懸著的和弦、切黑 | c22 "He backdated his report cards."、c25 "He wants it your word against his."、c26b "The gallery will stay quiet."、c28 "In three days."、c34 法槌、c36 筆帽、c39 "He'll watch you sign." |
 
 招牌音效：c34 法槌、c36 筆帽「喀」。其他見〈音樂與音效〉。
 
 ### 5. 時間與帳
 
-- **時間**：第 130 天（7/24 週五）09:00 聽證開始 → 約 09:05 Fisk、Grant、Nora 站起來 → 約 09:12 Peg 那句 → 約 09:20 法官的命令、敲槌 → 09:25 法官離席。毛毛雨。採樣在三天後：第 133 天（7/27 週一）10:00，Remelt。
+- **時間**：第 130 天（7/24 週五）09:00 聽證開始 → 約 09:05 Fisk、Grant、Nora 站起來 → 約 09:12 Peg 那句 → 法官要旁聽席安靜 → 約 09:20 法官的命令、敲槌 → 09:25 法官離席。毛毛雨。採樣在三天後：第 133 天（7/27 週一）10:00，Remelt。
 - **錢**（都不說出口）：鑑定人的費用兩邊各半，跟報告一起請款（她那一半約 $3,750，第 151 天付）；Nora 身上只剩幾塊錢；Peg 約 $890；帳本 Nora 欄欠 Peg 約 $330（bible〈帳〉）。
 - **法院的命令**：指定文書鑑定人 Arthur Wexler；鑑定人自己採新的樣本，第 133 天在聲請人的工作室（Remelt），兩邊律師都可以到場；Fisk 把財產協議與權利轉讓書的兩份正本交給鑑定人；命令裡也允許鑑定人要第三方保管的樣本（不念，第 48 集的傳票從這裡來）。
 - **證據**：兩張影本揉過攤平、在 Remelt 的草圖資料夾裡；草圖本身法院不收作樣本，留在 Remelt。
