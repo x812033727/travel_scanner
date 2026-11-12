@@ -9,7 +9,9 @@ Rounds (the owner approved this batch on 2026-11-12, cap 35 CU; each round <= 12
   a1 a2      people, head-and-shoulders portraits on a grey canvas (build.py r1, 1248x1664), costume looks as latent image1
              edits of the locked portrait in ../assets/refs/, and Nora's first full-body pictures (1088x1920, image 1 the
              locked portrait, latent empty: art-plan-people.md 〈怎麼畫〉)
-  a3         Bev, and Sienna's full body from the picked Sienna portrait (--pick sienna=a|b)
+  a3         Bev, the installer lead, and Sienna's full body from the picked Sienna portrait (--pick sienna=a|b)
+  a4         fixes after a1+a2 (drawn together as a12): Sienna's portrait and Nora's hospital gown redrawn, made-up lettering
+             edited off the picked Dr. Brandt and deputy (--pick dr-brandt= deputy=); run before a3
   s1 s2 s3   sets used in episodes 1-10, vertical 1088x1920 on a grey canvas (vpilot.py set); s1 also edits the existing
              vertical morning bedroom (#1, vpilot set-bedroom-v-a) into its night version
   s4         「改自」 light/state versions, latent image1 on the picked bases (--pick liv-day= room-night= liv-gold-a= nur-day= mroom-night=)
@@ -91,8 +93,22 @@ PEOPLE = [
     ("sienna", "sienna", None, "She", "new", None, "a2"),
     ("deputy", "deputy", None, "She", "new", None, "a2"),
     ("sienna-full", "sienna", None, "She", "full-pick", "sienna", "a3"),
-    ("installer-lead", "installer-lead", None, "He", "new", None, "a1"),
+    ("installer-lead", "installer-lead", None, "He", "new", None, "a3"),
     ("bev", "bev", None, "She", "new", None, "a3"),
+]
+# a4 (after looking at a1+a2, 2026-11-12): the a12 run drew Sienna with the full-body template and no face, and the
+# hospital gown came out as V-neck pale blue scrubs (Nurse Kim's colour), so both are redrawn; cast.json now says a patient gown.
+PEOPLE += [
+    ("sienna", "sienna", None, "She", "new", None, "a4"),
+    ("nora-hospital", "nora", "hospital", "She", "look", "nora-portrait.jpg", "a4"),
+]
+# One-change edits of a picked take that carries made-up lettering (a reference picture with letters teaches the clip to write).
+FIX = ("Edit image 1: keep the face, hair, glasses, expression, clothes, framing, the plain grey backdrop and the lighting exactly the same. "
+       "Change only one thing:")
+FIXES = [
+    ("dr-brandt", "the white doctor's coat is completely plain: no embroidered letters, no name, no logo and no pen on it, smooth plain white fabric where they were."),
+    ("deputy", "the badge is a plain smooth gold six-pointed star with no letters, words or engraving; the shoulder patch is a plain dark green shield shape "
+     "with no letters; the small name bar above the pocket is a blank plain brass bar. Nothing written anywhere."),
 ]
 # Not drawn: the dispatcher (voice only, cast.json extras), the other installer (backs only), Nora `pregnant` full body
 # (選 in the plan: the vertical pilot kept her face and shape from the portrait alone).
@@ -249,6 +265,9 @@ def rounds() -> dict[str, dict]:
         items = [p for p in PEOPLE if p[6] == r]
         picks = sorted({p[5] for p in items if p[4] == "full-pick"})
         out[r] = {"kind": "people", "items": [p[0] for p in items], "images": 2 * len(items), "picks": picks, "after": []}
+    items = [p[0] for p in PEOPLE if p[6] == "a4"]
+    out["a4"] = {"kind": "fix", "items": items + [f"{i} (fix)" for i, _ in FIXES], "images": 2 * (len(items) + len(FIXES)),
+                 "picks": [i for i, _ in FIXES], "after": []}
     for r, ns in SET_ROUNDS.items():
         rows = [sets[n] for n in ns]
         picks = sorted({sets[row["base"]]["ver"] for row in rows if row["base"] and row["base"] != 1 and len(set_takes(sets[row["base"]])) > 1})
@@ -306,13 +325,35 @@ def people_round(name: str, work: Path, pick: dict[str, str], placeholders: bool
             if kind == "full":
                 ref = copy_ref(work, src)
             else:
-                ref = f"a2-{src}-{picked(pick, src)}.png"
-                need(work / ref, BUST, placeholders, f"draw round a2 first, or pick the other take with --pick {src}=")
+                ref = drawn(work, src, picked(pick, src), placeholders)
             refs, size, latent = [ref], FULLV, "empty"
             prompt = f"{FULL} {FACE1} {pron} is: {text}. {pron} is the only person in the frame. {build.REAL}"
         for t, take in enumerate(("a", "b")):
             jid = f"{item}-{take}"
             jobs.append(build.job(jid, f"{item} {take}", refs, prompt, size, 714000 + 2 * pos + t, f"{name}-{jid}.png", latent=latent))
+    return jobs
+
+
+def drawn(work: Path, item: str, take: str, placeholders: bool) -> str:
+    """The picked take of a person from whichever people round drew it last (a4 redraws win; a12 was a1+a2 in one run)."""
+    for r in ("a4", "a2", "a1", "a12"):
+        name = f"{r}-{item}-{take}.png"
+        if (work / name).is_file():
+            need(work / name, BUST, placeholders, "")
+            return name
+    need(work / f"a4-{item}-{take}.png", BUST, placeholders, f"draw {item} first, or pick the other take with --pick {item}=")
+    return f"a4-{item}-{take}.png"
+
+
+def fix_round(work: Path, pick: dict[str, str], placeholders: bool) -> list[dict]:
+    """a4: fixes after looking at a1+a2 (2026-11-12). Redraws come from PEOPLE; text edits change one thing on a picked take."""
+    jobs = [j for j in people_round("a4", work, pick, placeholders)]
+    for pos, (item, change) in enumerate(FIXES):
+        ref = drawn(work, item, picked(pick, item), placeholders)
+        prompt = f"{FIX} {change} {build.REAL}"
+        for t, take in enumerate(("a", "b")):
+            jid = f"{item}-fix-{take}"
+            jobs.append(build.job(jid, f"{item} fix {take}", [ref], prompt, BUST, 715000 + 2 * pos + t, f"a4-{jid}.png", latent="image1"))
     return jobs
 
 
@@ -402,7 +443,7 @@ def list_rounds() -> None:
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("round", nargs="?", choices=["a1", "a2", "a3", *SET_ROUNDS, "p1", "p2", "p3"])
+    ap.add_argument("round", nargs="?", choices=["a1", "a2", "a3", "a4", *SET_ROUNDS, "p1", "p2", "p3"])
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--work")
     ap.add_argument("--pick", action="append", default=[], help="key=a|b: a person, a set version code or a prop id, e.g. sienna=b, liv-day=a")
@@ -420,7 +461,10 @@ def main(argv: list[str]) -> int:
         if not (work / rel).is_file():
             build.write_png(work / rel, size)
     kind = rounds()[a.round]["kind"]
-    jobs = {"people": people_round, "sets": sets_round, "props": props_round}[kind](a.round, work, pick, a.placeholders)
+    if kind == "fix":
+        jobs = fix_round(work, pick, a.placeholders)
+    else:
+        jobs = {"people": people_round, "sets": sets_round, "props": props_round}[kind](a.round, work, pick, a.placeholders)
     if len(jobs) > 12:
         sys.exit(f"art.py: {a.round} has {len(jobs)} images; a round takes at most 12")
     out = work / f"{a.round}.json"

@@ -21,3 +21,17 @@ Use these as `<Picture N>` references for Ref2VA clips and as image 1 for any ne
 2026-11-12: `nora-portrait`, `nora-work` (small red marks removed) and `grant-portrait` (closed-mouth smile removed) replaced by the owner's picks from round r3; the r3 manifest is built by `../../screen-test/build.py r3`.
 
 `SHA256SUMS` covers the JPEGs in this folder.
+
+## First batch (episodes 1–10, 2026-11-12)
+
+Picked by Claude on the owner's 2026-11-12 instruction (「參考圖 你建議決定」); the manifests are built by `../../screen-test/art.py`.
+
+| File | Source take | Seed | Original PNG sha256 |
+| --- | --- | --- | --- |
+| cole-portrait.jpg | a12 cole-a — Cole | 714000 | 6993dfcb1245f737090cc0edc645da5b5a93a62dc8111aeaacd7a1f5c0e37b91 |
+| nora-night-coat.jpg | a12 nora-night-coat-b — Nora night-coat full body (ep. 2); hair dry in the picture, the clips add the rain | 714003 | d07a3fe7071e4826455a3c252d55347cb92d27eeb78f2e30d75bf4c452526ed7 |
+| nurse-kim-portrait.jpg | a12 nurse-kim-a — Nurse Kim (take b looked 45) | 714008 | bb1dd1dc8f2cb229be8bd355a70c405ad5120b248c886b66f7062f07a4e07706 |
+| grant-rain.jpg | a12 grant-rain-a — Grant rain look; the picture barely differs from the portrait, the clips add the rain | 714010 | 10eb07f55d59244638dc5afaf1b72d1ad1b3c07f0b4beaf6388fd049fc0d27d0 |
+| on-call-doctor-portrait.jpg | a12 on-call-doctor-a — on-call doctor (take b has lettering) | 714012 | 41be05ea2198343bb5cdca2d438d27ec7597e19487f8b21c5d7e5f190d803c56 |
+| nora-discharge.jpg | a12 nora-discharge-b — Nora discharge full body (eps. 6–10) | 714015 | 3c0a404763875145ff3bbc1a47b7237ab6d19fd8e2ce9deba5e3ffe7ef09eed4 |
+| fisk-portrait.jpg | a12 fisk-b — Fisk (take a too tight, a T-shirt under the suit) | 714017 | 3c3f3368828981caa48d9713817dc9ff8033f6bb5de9764578555a553fe7cfa8 |
