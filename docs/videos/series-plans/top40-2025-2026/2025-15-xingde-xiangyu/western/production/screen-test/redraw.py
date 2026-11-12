@@ -124,7 +124,24 @@ PEOPLE = [
      "the face, hair, the cream sweater dress, the slippers, the pose, the framing, the plain grey backdrop and the lighting",
      "she wears a camel wool coat with deep pockets, worn open, over the dress."),
 ]
-ROUNDS = {"s7": "sets", "s8": "sets", "a5": "people"}
+# p4: p2 drew both cars as stretch limousines and put a stranger's face over the tote; same plan sentences, the shape spelled out.
+SEDAN = ("a modern four-door luxury sedan of ordinary length, not a limousine and not stretched: two side windows on each side, "
+         "a long bonnet, a short boot")
+PROPS = [
+    ("grant-car", art.WIDE,
+     f"Nobody is in the frame. a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame: {SEDAN}; parked at a "
+     "wet grey curb on an overcast Pacific Northwest street, seen straight from the side, the whole car in the frame, grey-blue overcast "
+     "daylight, wet asphalt, the windows dark, plain grey wall behind it, no signs."),
+    ("black-car", art.WIDE,
+     f"Nobody is in the frame. a long black luxury sedan with no badge, number plate out of frame: {SEDAN}; parked at a wet grey curb on an "
+     "overcast Pacific Northwest street, seen straight from the side, the whole car in the frame, grey-blue overcast daylight, wet asphalt, "
+     "the windows dark, plain grey wall behind it, no signs."),
+    ("canvas-tote", art.BUST,
+     "a plain beige canvas tote bag with no print, hanging from her left shoulder, soft and half full: on an older woman's left shoulder over a "
+     "washed-out oatmeal cardigan, seen from the side from her shoulder to her knees; the top edge of the frame cuts across her shoulder, so "
+     "her neck, head and face are not in the frame at all; the bottom of the tote reaches her hip."),
+]
+ROUNDS = {"s7": "sets", "s8": "sets", "a5": "people", "p4": "props"}
 
 
 def jobs_for(name: str, work: Path) -> list[dict]:
@@ -136,6 +153,12 @@ def jobs_for(name: str, work: Path) -> list[dict]:
                 jid = f"{sid}-{take}"
                 seed = 750000 + (0 if name == "s7" else 100) + pos * 10 + t
                 jobs.append(build.job(jid, f"{name} {sid} {take}", [art.CANVAS[art.SETV]], prompt, art.SETV, seed, f"{name}-{jid}.png"))
+    elif ROUNDS[name] == "props":
+        for pos, (pid, size, text) in enumerate(PROPS):
+            prompt = f"{art.PROP_HEAD} {art.PROP_BLANK} {text} {art.PROP_CLEAN}"
+            for t, take in enumerate(("a", "b")):
+                jid = f"prop-{pid}-{take}"
+                jobs.append(build.job(jid, f"p4 {pid} {take}", [art.CANVAS[size]], prompt, size, 761000 + pos * 10 + t, f"p4-{jid}.png"))
     else:
         for pos, (pid, ref, size, keep, change) in enumerate(PEOPLE):
             src = art.copy_ref(work, ref)
@@ -157,7 +180,7 @@ def main(argv: list[str]) -> int:
     if a.list or not a.rounds:
         total = 0
         for r in ROUNDS:
-            n = 2 * (len(SETS[r]) if r in SETS else len(PEOPLE))
+            n = 2 * (len(SETS[r]) if r in SETS else len(PROPS) if r == "p4" else len(PEOPLE))
             total += n
             print(f"{r:4} {n:3} images {n * art.CU_PER_IMAGE:5.2f} CU")
         print(f"all  {total:3} images {total * art.CU_PER_IMAGE:5.2f} CU")

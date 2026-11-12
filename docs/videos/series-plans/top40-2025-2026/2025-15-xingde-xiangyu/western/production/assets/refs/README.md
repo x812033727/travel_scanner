@@ -57,3 +57,6 @@ Picked by Claude on the owner's 2026-11-12 instruction (「參考圖 你建議�
 | prop-knit-hat.jpg | p1 prop-knit-hat-a — half-knitted cream baby hat on two needles in Peg's hands (take b drew a sweater) | 760020 | e05b3ca9aa645313398d7a5c1d6f47c615c67f297742db5a9b42fe3ddc264736 |
 | prop-nora-suitcase.jpg | p1 prop-nora-suitcase-b — navy soft-sided suitcase by her knee (take a hard-shell) | 760041 | f26ee9e2fa91fc2a18f49b4b4d0c0ae5cace83dd65dbf3a0c61a554a54ee303f |
 | prop-peg-suitcase.jpg | p1 prop-peg-suitcase-a — old tan hard-shell suitcase (take b empty frame) | 760050 | a6121da9e3f41bac63a5cd05973f663f568c717b2be30fcf7522a00979df3da7 |
+| prop-peg-ring.jpg | p2 prop-peg-ring-b — Peg's wedding ring on an older hand (both takes close) | 760261 | 8fec9fc0e0ee73c906bf99930aed48b4404d2486f781e98d46fbfbeeb255a18e |
+| prop-ledger.jpg | p2 prop-ledger-b — small brown ledger with a pencil, in a hand for scale | 760081 | f49e9c1c57523b10c0d1e076b1ec7cbc236ba9e1e17d5d295caa0350e859782e |
+| prop-camel-coat.jpg | p2 prop-camel-coat-b — camel coat with deep patch pockets over the sweater dress (eps 1-10); the model's face is not Nora: never pass it with a face in the shot, prefer the a5 nora-discharge-coat full body | 760251 | 12f7a43eb539ac0583bd835493df136c301203abd51d8d9446a62677be68f8bc |
