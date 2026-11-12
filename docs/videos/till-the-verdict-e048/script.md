@@ -83,7 +83,7 @@ c30–c40 寫 `late night inside an old brick glassworks, the high windows black
 | c03 | 近景、固定；同 c02 的鏡位、往前；直式，臉在上三分之一 | Dana（同 c02），左臂抱著卷宗；高窗的冷白光；四分之三側臉朝畫面左的 Nora；第一格右手的食指已經懸在燈箱上方（上面那張小的灰影）；眉毛平、眼睛定住、嘴在字之間閉著、聲音俐落，`no smile at any moment, until the last frame` | Dana 看著 Nora，嘴在說話（俐落）（動作一）；說完食指在那張小影本上敲一下（動作二），嘴閉上；剪在手指敲下去；最後：她的食指按在燈箱上那張小影本上 | Dana（俐落）：Your bank signature card. Age eighteen.（妳的銀行簽名卡。十八歲那張）（原聲）← 因為 c02 | 約 3.5 秒 |
 | c04 | 近景、慢推（從胸上推到肩上）；同 c03 的鏡位；直式，臉在上三分之一 | Dana（同 c02）；高窗的冷白光；四分之三側臉朝畫面左的 Nora、眼睛看著她；眉毛往中間收一點、聲音放慢、放低，`no smile at any moment, until the last frame` | Dana 的手指移到大的那張影本上，嘴在說話（慢、低）；說完手收回卷宗上，嘴閉上；剪在手收回；最後：她兩手扶著卷宗 | Dana（慢、低）：Your marriage certificate.（妳的結婚證書）（原聲） | 約 3 秒 |
 | c05 | 近景、固定；鏡頭在工作台南側、低、在燈箱的高度往北拍；直式，臉在上三分之一；下緣是燈箱的邊；身後是右牆的高窗（虛焦） | Nora（`work`：齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、深色帆布圍裙、灰色亨利領長袖），坐在燈箱前的凳子上；`cold white light from below on her chin and cheekbones`；眼睛看著畫面右外的 Dana；整個人一縮：肩膀往上一聳、下巴往後收、眉頭一下擰緊、嘴唇抿住、呼吸一抽，`no smile at any moment, until the last frame` | Nora 肩膀一縮、往後一靠（動作一），眼睛垂到燈箱上那張大的影本（動作二）；剪在眼睛垂下；嘴閉著；最後：她看著燈箱 | — | 約 2.5 秒 |
-| c06 | 全景、慢推（從全景推到中景）；鏡頭在工作台靠爐子那頭、低、往東沿著工作台拍；直式前後疊開：前景下緣是燈箱的邊（虛焦），中間是工作台兩側的 Nora 與 Dana，遠處是兩扇鐵門、門邊的臨街窗與長凳 | 共三人。畫面左（工作台北側）：Nora（`work`，工作靴）坐在凳子上；畫面右（南側）：Dana（高髮髻、黑西裝外套、黑長褲、白球鞋）站著，左臂抱著卷宗；遠處畫面右：Peg（`visit`，玳瑁框眼鏡、燕麥色開襟衫、平底包鞋）坐在 `a long worn wooden bench against the brick wall` 上，手裡 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`（很小、虛焦）；燈箱右邊的桌面上 `a thin grey card folder about the size of a magazine, a few sheets of drawing paper inside, only their edges showing`，打開著；高窗的冷白光從畫面左；Nora 眼睛垂著、嘴唇抿住；Dana 眼睛看著 Nora、眉毛平；兩張臉都 `no smile at any moment, until the last frame` | Dana 往前傾、兩手撐在工作台上（動作一），Nora 抬起頭（動作二）；剪在 Nora 抬頭；嘴都閉著；最後：兩人隔著工作台看著對方，Peg 在遠處的長凳上 | — | 約 2.5 秒 |
+| c06 | 全景、慢推（從全景推到中景）；鏡頭在工作台靠爐子那頭、低、往東沿著工作台拍；直式前後疊開：前景下緣是燈箱的邊（虛焦），中間是工作台兩側的 Nora 與 Dana，遠處是兩扇鐵門、門邊的臨街窗與長凳 | 共三人。畫面左（工作台北側）：Nora（`work`，工作靴）坐在 `a plain wooden shop stool about as high as her hip` 上；畫面右（南側）：Dana（高髮髻、黑西裝外套、黑長褲、白球鞋）站著，左臂抱著卷宗；遠處畫面右：Peg（`visit`，玳瑁框眼鏡、燕麥色開襟衫、平底包鞋）坐在 `a long worn wooden bench against the brick wall` 上，手裡 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`（很小、虛焦）；燈箱右邊的桌面上 `a thin grey card folder about the size of a magazine, a few sheets of drawing paper inside, only their edges showing`，打開著；高窗的冷白光從畫面左；Nora 眼睛垂著、嘴唇抿住；Dana 眼睛看著 Nora、眉毛平；兩張臉都 `no smile at any moment, until the last frame` | Dana 往前傾、兩手撐在工作台上（動作一），Nora 抬起頭（動作二）；剪在 Nora 抬頭；嘴都閉著；最後：兩人隔著工作台看著對方，Peg 在遠處的長凳上 | — | 約 2.5 秒 |
 | c07 | 近景、固定；同 c05 的鏡位；直式，臉在上三分之一 | Nora（`work`）；`cold white light from below on her chin and cheekbones`；四分之三側臉朝畫面右的 Dana、眼睛看著她；眉頭擰著、下巴繃住、嘴在字之間抿緊、聲音低、卡住，`no smile at any moment, until the last frame` | Nora 看著 Dana，嘴在說話（低、卡住）；說完兩手在膝上握緊，嘴閉上；剪在手握緊；最後：她看著畫面右 | Nora（低、卡住）：That's not before the marriage.（那不算婚前）（原聲）← 因為 c04 | 約 3 秒 |
 | c08 | 近景、慢推（從胸上推到肩上）；同 c02 的鏡位，從 **Nora 的右肩旁**拍（右肩在畫框左下）；直式，Dana 在畫面右、臉在上三分之一 | Dana（同 c02），兩手撐在工作台上、往前傾；高窗的冷白光；四分之三側臉朝畫面左的 Nora、眼睛看著她；眉毛平、眼睛不眨、下巴一點、嘴在字之間閉著、聲音俐落、最後一句放慢，`no smile at any moment, until the last frame` | Dana 看著 Nora，嘴在說話（俐落，最後一句放慢）；說完直起身、左手把卷宗抱回胸前，嘴閉上；剪在卷宗抱回胸前；最後：她站直、看著畫面左 | Dana（俐落，最後一句放慢）：The day you married him counts. He was standing right there.（妳嫁他那天算數。他就站在旁邊）（原聲）← 因為 c07 | 約 5 秒 |
 | c09 | 近景、慢推（從胸上推到臉）；顏值鏡頭；同 c05 的鏡位、低；直式，臉在上三分之一；身後是右牆的高窗（虛焦） | Nora（`work`）；兩手拿著 `a single white photocopied page with a thin gold foil seal sticker in one corner, held so only its back shows, held up in front of the glowing light box, tilted edge-on to the lens, only a thin bright edge`，在胸前的高度；`cold white light from below on her chin and cheekbones`，燈箱的光從紙邊下照上她的眼睛；眼睛濕了、睫毛上一點亮、眉心往上收、嘴唇微微抖、下巴慢慢抬起，`no smile at any moment, until the last frame` | Nora 兩手把影本舉到燈箱上方（動作一），眼睛定在紙邊上、慢慢眨一次（動作二）；剪在眼睛睜開；嘴閉著；最後：她舉著影本，眼睛濕 | — | 約 3.5 秒 |
@@ -135,7 +135,7 @@ c30–c40 寫 `late night inside an old brick glassworks, the high windows black
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c30 | 全景、慢推（從全景推到中景）；鏡頭在工作台靠爐子那頭、低、往東沿著工作台拍（同 c06）；直式前後疊開：前景下緣是燈箱的邊與它的冷白光，中間是凳子上的 Nora，遠處是暗的大門與長凳 | 共兩人，臉都小。Nora（`work`，工作靴）坐在燈箱前的凳子上（畫面左），兩手平放在燈箱邊上；Peg（`visit`，玳瑁框眼鏡、燕麥色開襟衫、平底包鞋）在畫面右遠處、從長凳站起來，兩手在胸前捧著什麼（看不清）；高窗全黑；爐口的橘光從鏡頭身後照在紅磚上；Nora 眼睛垂在燈箱上、肩膀垮著；Peg 眼睛看著她、嘴唇抿著；兩張臉都 `no smile at any moment, until the last frame` | Peg 從長凳站起來（動作一），沿著工作台往 Nora 走過來（動作二）；剪在她走到工作台靠大門那頭；嘴都閉著；最後：Peg 在工作台遠端、往這邊走，Nora 在燈箱前 | — | 約 3 秒 |
+| c30 | 全景、慢推（從全景推到中景）；鏡頭在工作台靠爐子那頭、低、往東沿著工作台拍（同 c06）；直式前後疊開：前景下緣是燈箱的邊與它的冷白光，中間是凳子上的 Nora，遠處是暗的大門與長凳 | 共兩人，臉都小。Nora（`work`，工作靴）坐在燈箱前的 `a plain wooden shop stool about as high as her hip` 上（畫面左），兩手平放在燈箱邊上；Peg（`visit`，玳瑁框眼鏡、燕麥色開襟衫、平底包鞋）在畫面右遠處、從長凳站起來，兩手在胸前捧著什麼（看不清）；高窗全黑；爐口的橘光從鏡頭身後照在紅磚上；Nora 眼睛垂在燈箱上、肩膀垮著；Peg 眼睛看著她、嘴唇抿著；兩張臉都 `no smile at any moment, until the last frame` | Peg 從長凳站起來（動作一），沿著工作台往 Nora 走過來（動作二）；剪在她走到工作台靠大門那頭；嘴都閉著；最後：Peg 在工作台遠端、往這邊走，Nora 在燈箱前 | — | 約 3 秒 |
 | c31 | 近景、固定；同 c05 的鏡位（工作台南側往北）；直式，臉在上三分之一；下緣是燈箱的邊；身後是全黑的高窗 | Nora（`work`：齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、帆布圍裙）；`cold white light from below on her chin and cheekbones`，爐口的橘光沿著左頰；眼睛垂著、眼皮很重、嘴唇閉著；聽到腳步聲，眼睛轉向畫面右；眉毛微微一抬，`no smile at any moment, until the last frame` | Nora 慢慢吸一口氣（動作一），眼睛轉向畫面右的腳步聲（動作二）；剪在眼睛轉過去；嘴閉著；最後：她看著畫面右 | — | 約 2.5 秒 |
 | c32 | 中近景、固定；同 c17 的鏡位（工作台南側偏東、往東北）；直式，**頭上留空**；前景左下是 Nora 的左肩（虛焦、不露臉）與燈箱的邊；身後是全黑的高窗 | Peg（`visit`：直的短灰髮往一邊梳、`tortoiseshell reading glasses on her face`、長木珠項鍊、燕麥色開襟衫）；兩手在胸前捧著 `a cream baby hat about the size of her palm, finished, off the needles`；`cold white light from below on her chin`；四分之三側臉朝畫面左下的 Nora、眼睛看著她；眉毛垂著、嘴唇抿緊、下巴發緊、眼睛濕了一層，`no smile at any moment, until the last frame` | Peg 走進畫面、停在 Nora 左邊（動作一），兩手把帽子往燈箱那邊遞低（動作二）；剪在手遞到燈箱上方；嘴閉著；最後：帽子在她手裡、在燈箱上方 | — | 約 2.5 秒 |
 | c33 | 插鏡、特寫、固定；**第一格就是燈箱的玻璃面與 Peg 捧著帽子的手**；直式；鏡頭貼著工作台的桌邊、低、平拍；燈箱的冷白光從下往上 | `a flat white drafting light box about the size of a large serving tray, its glass top glowing evenly from below, on the long wooden workbench`；Peg 的右手（燕麥色開襟衫袖口）把 `a cream baby hat about the size of her palm, finished, off the needles` 放下；燈箱的光從下面透過毛線；畫面裡沒有臉 | Peg 把帽子輕輕放在燈箱上（動作一），右手的手指把帽緣撫平（動作二）；剪在手指撫過；畫面上沒有嘴；最後：`a cream baby hat about the size of her palm, finished, off the needles, lying on the glowing light box`，從下面透著光，Peg 的右手停在燈箱邊上 | — | 約 2.5 秒 |
@@ -144,7 +144,7 @@ c30–c40 寫 `late night inside an old brick glassworks, the high windows black
 | c36 | 插鏡、手部特寫、固定；**第一格就是燈箱上的帽子與 Nora 伸過來的左手**；直式；鏡頭貼著工作台的桌邊、低、平拍 | `a cream baby hat about the size of her palm, finished, off the needles, lying on the glowing light box`；Nora 的左手（灰色亨利領袖口），`a plain narrow white-gold band with no stone, on her left ring finger`；畫面右緣是 Peg 擱在燈箱邊上的右手（燕麥色袖口）；畫面裡沒有臉 | Nora 的指尖碰到帽子（動作一），手指在帽緣上停住、發抖（動作二）；剪在手指停住；畫面上沒有嘴；最後：她的指尖停在帽緣上，帽子還在燈箱上 | — | 約 2.5 秒 |
 | c37 | 近景、固定；同 c31 的鏡位；直式，臉在上三分之一、**頭上留空**；下緣是燈箱的邊 | Nora（`work`），眼淚滑下臉頰；`cold white light from below on her chin and cheekbones`；四分之三側臉朝畫面右上的 Peg；嘴張開哭出聲、眉心往上擠成一團、眼睛閉緊又睜開、肩膀一抽一抽，`no smile at any moment, until the last frame`；臉頰上有淚痕 | Nora 哭出聲（動作一），兩手一把抓住畫面右邊 Peg 擱在燈箱邊上的右手（動作二）；剪在兩手握緊；最後：她兩手握著 Peg 的右手、哭著 | — | 約 3.5 秒 |
 | c38 | 近景、固定；同 c32 的鏡位；直式，臉在上三分之一 | Peg（`visit`，玳瑁框眼鏡戴在臉上）；右手被 Nora 兩手握著（在下緣）；`cold white light from below on her chin`；四分之三側臉朝畫面左下的 Nora；眼淚從鏡片下面流出來、下巴皺成一團、嘴唇抿著又張開、肩膀一垮，`no smile at any moment, until the last frame` | Peg 的臉垮下來、哭出來（動作一），左手伸過去放在 Nora 的後腦上（動作二）；剪在手放上去；最後：她哭著，左手放在 Nora 的低馬尾上 | — | 約 3 秒 |
-| c39 | 中近景、固定；兩人的雙人鏡；鏡頭在工作台南側、與燈箱同高、往北拍；直式：下緣是燈箱與上面透著光的帽子，Nora 坐在畫面左、Peg 站在畫面右；身後是全黑的高窗 | 共兩人。Nora（`work`，護目鏡推在頭頂，臉頰有淚痕）坐在凳子上、低著頭，兩手握著 Peg 的右手、額頭靠到兩人握著的手上；Peg（`visit`，玳瑁框眼鏡）站在她左邊、彎著腰，左手放在 Nora 的後腦上；`a cream baby hat about the size of her palm, finished, off the needles, lying on the glowing light box`；燈箱的冷白光從下照在兩張臉上，爐口的橘光沿著 Peg 的背；兩人都在哭：Nora 眉心擠在一起、嘴張著、肩膀抖；Peg 眼淚從鏡片下流、下巴發抖、嘴唇抿著；兩張臉都 `no smile at any moment, until the last frame` | Nora 把額頭靠到握著的手上、肩膀一抽一抽（動作一）；Peg 的左手在她後腦上輕輕按著、自己的肩膀也在抖（動作二）；剪在 Nora 的肩膀抽到第二下；最後：兩人一起哭，帽子在燈箱上透著光 | — | 約 4.5 秒 |
+| c39 | 中近景、固定；兩人的雙人鏡；鏡頭在工作台南側、與燈箱同高、往北拍；直式：下緣是燈箱與上面透著光的帽子，Nora 坐在畫面左、Peg 站在畫面右；身後是全黑的高窗 | 共兩人。Nora（`work`，護目鏡推在頭頂，臉頰有淚痕）坐在 `a plain wooden shop stool about as high as her hip` 上、低著頭，兩手握著 Peg 的右手、額頭靠到兩人握著的手上；Peg（`visit`，玳瑁框眼鏡）站在她左邊、彎著腰，左手放在 Nora 的後腦上；`a cream baby hat about the size of her palm, finished, off the needles, lying on the glowing light box`；燈箱的冷白光從下照在兩張臉上，爐口的橘光沿著 Peg 的背；兩人都在哭：Nora 眉心擠在一起、嘴張著、肩膀抖；Peg 眼淚從鏡片下流、下巴發抖、嘴唇抿著；兩張臉都 `no smile at any moment, until the last frame` | Nora 把額頭靠到握著的手上、肩膀一抽一抽（動作一）；Peg 的左手在她後腦上輕輕按著、自己的肩膀也在抖（動作二）；剪在 Nora 的肩膀抽到第二下；最後：兩人一起哭，帽子在燈箱上透著光 | — | 約 4.5 秒 |
 | c40 | 插鏡、手部特寫、固定（接第 49 集之前的最後一刻）；**第一格就是燈箱右邊桌面上的帳本與 Peg 的左手**；直式；鏡頭貼著工作台的桌邊、低、平拍；燈箱的冷白光從畫面左、爐口的橘光從後面 | `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`，平放在工作台上、燈箱右邊；Peg 的左手（燕麥色開襟衫袖口）從畫面上緣落下來，`a faint pale band of skin on her left ring finger where a ring used to be`；畫面左緣是燈箱的邊與帽子的一角透著光；畫面裡沒有臉 | Peg 的左手落到帳本的棕色封皮上、手指停住（動作一），然後抬起來、離開帳本（動作二）；剪在手指離開封皮；畫面上沒有嘴；最後：帳本留在桌上，她的左手剛抬起來、停在帳本上方一點 | — | 約 3 秒 |
 
 約 119 秒（1 分 59 秒）、40 鏡（第一場 22、第二場 7、第三場 11），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 40–44 鏡。
@@ -173,6 +173,16 @@ c30–c40 寫 `late night inside an old brick glassworks, the high windows black
 - **第三片面板上架**：Nora 說邊差四分之一吋，面板照樣插進右牆木架（"Crooked. Again." 是 Sparks 認了「又是歪的」，片數照 bible 記 3/24）。
 - **Nora 畫圖**：第二場燈箱上一張空白的紙與 `a plain wooden pencil as long as her hand`（第 46 集同一句）。
 - **帳本**：第三場 Peg 先把帳本放在燈箱右邊的桌面上（不拍她放），最後一鏡她的左手摸到封皮。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e045-e050-storyboard.md` 改的。本集還沒錄、沒拍，沒有要重抽的片段；台詞沒有改，不用重錄。
+- **c01**：燈箱上的紙原本照抄 back-only 的句子、只靠虛焦。丟下去以後改寫 `two sheets of white paper laid one over the other on the glowing light box, only two soft overlapping grey shapes far out of focus`（`light-box-papers`），焦點在燈箱的邊與指尖。
+- **c03**：短句加身體的收尾動作：說完食指在那張小影本上敲一下、嘴閉上（第一格食指已經懸在燈箱上方，仍是兩個動作）。
+- **c20**：說完左手掌再往下壓一下、抬起來、嘴閉上；「啪」的一拍移到第一格。
+- **c25**：喊完兩手把面板往她那邊一送、嘴閉上；面板第一格已經舉在胸前。3 秒 → 3.5 秒，第二場 19.5 → 20 秒，全集 118.5 → 119 秒。
+- **`cast.json` 2026-11-12 的整理**：燈箱前的凳子照新條目 `shop-stool` 寫 `a plain wooden shop stool about as high as her hip`（c06、c30、c39）；帽子在本集最後一鏡之後放到證據牆鋼架最下層（`evidence-rack` 的 note），〈時間與帳〉一起改；`blue-panel-row` 第 48 集起才有（本集 c28 第三片上架，前兩片同一天稍早出爐，不拍）。
+- 五張清單：〈本集需要的參考圖〉加凳子、〈長鏡清單〉、〈時間與帳〉。
 
 ### 配音
 
@@ -239,11 +249,11 @@ c30–c40 寫 `late night inside an old brick glassworks, the high windows black
 - 定妝照：`nora-portrait.jpg`（r3）、`nora-work.jpg`（r3）、`peg-portrait.jpg`（都有）。
 - **待畫的人**：Dana（第 11–20 集清單）、Sparks（第 31–40 集清單），還沒畫就排在最前。
 - **待畫的場景**：Remelt 主廠房直式**下午版、傍晚版、深夜版**（`remelt`：燈箱在工作台靠爐子那頭、右牆高窗、左牆玻璃管與空鋼架、右牆靠大門那段的木架、前牆南角的長凳；深夜版工作燈關著）。
-- 道具若要參考圖：燈箱與上面的三張紙（確認畫不出字）、兩份認證影本的金色封籤、織完的奶油色毛線帽（確認是帽子、奶油色、不是嬰兒鞋）、藍色吊燈面板、木架上的一排藍面板、Peg 的帳本。
+- 道具若要參考圖：燈箱與上面疊著的兩張紙、排成一列的三張紙（確認畫不出字）、燈箱前的木凳（`shop-stool`）、兩份認證影本的金色封籤、織完的奶油色毛線帽（確認是帽子、奶油色、不是嬰兒鞋）、藍色吊燈面板、木架上的一排藍面板、Peg 的帳本。
 
 ### 3. 長鏡清單
 
-本集沒有超過 6 秒的鏡。最長的是 c08（5 秒，原聲）、c18、c39（4.5 秒）、c13（4 秒）。原聲鏡十四支每支買 6 秒（不是長鏡，剪到台詞長度）。
+本集沒有超過 6 秒的鏡。最長的是 c08（5 秒，原聲）、c18、c39（4.5 秒）、c13（4 秒）；c25 審稿後 3.5 秒。原聲鏡十四支每支買 6 秒（不是長鏡，剪到台詞長度）。
 
 ### 4. 音樂與音效
 
@@ -260,8 +270,8 @@ c30–c40 寫 `late night inside an old brick glassworks, the high windows black
 - **時間**：第 144 天（8/7 週五）16:00 Dana 帶來兩份影本 → 16:20 Peg 答應出庭 → 18:30 第三片面板出退火爐 → 23:30 Peg 把帽子放上燈箱。晴，日落約 20:18。Furnace No. 3 點燃第 29 天。
 - **錢**：本集沒有錢進出、沒有數字說出口（bible〈帳〉）。第 142 天渡輪站合約已簽、訂金已付房租與工錢、還了 Peg 帳本 Nora 欄（不拍、不念）。
 - **樣本**：銀行簽名卡（十八歲）與結婚證書（六年前）的**正本**由法院傳票直接送到 Wexler 手上；Dana 的兩份認證影本收進她的卷宗、帶走。揉過的財產協議影本夾回草圖資料夾，資料夾在工作台下的層板。
-- **渡輪站吊燈**：3/24（第三片在右牆木架上）。
-- **毛線帽**：Peg 補完，放在燈箱上；第 49 集起 Nora 把它放在證據牆鋼架最下層的邊上（不拍放）。
+- **渡輪站吊燈**：3/24（第三片在右牆木架上；前兩片同一天稍早出爐，不拍）。
+- **毛線帽**：Peg 補完，放在燈箱上（本集最後一鏡）；這一鏡之後 Nora 把它放在證據牆鋼架最下層的邊上（不拍放，`cast.json` `evidence-rack`），第 49–60 集都在那裡。
 - **Peg**：眼鏡戴回臉上；帳本在燈箱右邊的桌面上，收據還在封皮夾層、她摸到、沒拿出來；答應出庭作證（第二季）。
 - **進度條**：珠子還在第一個銅環（Report），證據牆全空。
 - **誰知道了什麼**：Nora、Dana、Peg 知道兩份第三方樣本、Peg 是見證人、她願意作證；Sparks 在場（第二場起知道，不拍他聽到）；Grant、Fisk 從傳票知道有兩份第三方樣本（不拍）。
