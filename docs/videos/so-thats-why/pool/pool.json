@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-3951",
+  "revision": "2026-11-12-pool-3978",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 4341,
-    "canonical_questions": 4180,
-    "eligible_candidates": 4010,
-    "selected_candidates": 3951,
+    "raw_records": 4368,
+    "canonical_questions": 4207,
+    "eligible_candidates": 4037,
+    "selected_candidates": 3978,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5239,
-    "current_research_source_urls": 2290,
-    "selected_source_urls": 3449,
-    "new_suggestions_not_added": 2419,
+    "source_urls": 5262,
+    "current_research_source_urls": 2313,
+    "selected_source_urls": 3470,
+    "new_suggestions_not_added": 2433,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
@@ -2146,6 +2146,18 @@
       "sha256": "6dd9e8b76d0b82302145b918f042b77b7a60c939ee9800b801fda4834747a4bc"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave63-human.json",
+      "sha256": "4b1eeccc31d6d37efd3454296cde0b77c0cd9409cc429f9c70e9440413c2bdfc"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json",
+      "sha256": "4278b84674b365344440be2abf2dfe791e7b6cf17deb9f163de4594393f968fd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave63-tech.json",
+      "sha256": "677a08039c78a612d5e205e14291eb2b80b3498b6fe123dafe4780bd7f8483d5"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave7-animals.json",
       "sha256": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410"
     },
@@ -2219,11 +2231,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "f1b6c6fcac5d3723ba80efffa628f512d7faeaf8c61ca715f9f0747f726b0146"
+      "sha256": "93499e94e23311e9bbd6c30861d350b07f0dafee8d39efb77a9d73fde40106c4"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "834dcc3eea9f626cd07f9cefd70c7ae0472ac49d02e1ed252fa8a91d2b5d309a"
+      "sha256": "0a38015d10b69db7904a0a678ec10ad1b83399adea5570e206c113de576bb6eb"
     }
   ],
   "sources": [
@@ -3676,6 +3688,32 @@
       ]
     },
     {
+      "id": "SRC-039b0d13e90d73ae",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5392070",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5392070",
+          "title": "Effects of speech style, room acoustics, and vocal fatigue on vocal effort",
+          "publisher": "J. Acoust. Soc. Am.（Bottalico, Graetzer, Hunter），2016；PMC 作者稿",
+          "version": "PMC 作者稿（Europe PMC 標為非開放取用）",
+          "read_via": "WebSearch 結果列出 PMC 頁；curl 被 reCAPTCHA 擋、Europe PMC fullTextXML 回 500；改用 WebFetch 讀 PMC 頁。Europe PMC 搜尋 API 取得摘要。",
+          "reading_scope": "全文經 WebFetch 讀取（方法與結果段的數字）；本機沒有逐字快取",
+          "locator": "Methods（房間 T30、反射板）；Results（ΔSPL、自評費力、疲勞）",
+          "summary": "20 名大學生在消音室（T30 0.04 s）、半殘響室（0.78 s）、殘響室（2.37 s）以正常與大聲兩種方式朗讀；在嘴前 0.5 m、45° 放兩片 56×66 cm 聚碳酸酯反射板時，聲壓級平均降 0.86 dB；殘響時間變長聲壓級也降；自評費力在有反射板時較低；作者結論是半殘響室的短期聲音疲勞最小，並說早期反射可用來降低發聲費力而不改變殘響時間。",
+          "limitations": "只經 WebFetch 讀取、沒有逐字本機快取，覆核者須重讀；朗讀不是唱歌；作者自稱初步研究，兩個房間的殘響時間不典型、反射板只測一個距離與角度。 覆核 V25（2026-11-12）：author_cache 補為 v25src/pmc_PMC5392070.html（sha256 前 16 碼 8927ba6a519defb5，2026-11-12 curl 預設標頭 GET 搜尋結果所列 PMC 頁回 200，無驗證）與轉文字 pmc_PMC5392070.txt；read_via 補 Europe PMC REST 搜尋 API 的 fullTextUrlList（europepmc.org html 與 ?pdf=render 皆 403 Cloudflare，未繞過；fullTextXML 500）。summary 改：「殘響變長聲壓級也降」只在大聲朗讀成立；全程有約 62 dB(A) 教室嘈雜人聲；自評費力的例外是大聲＋殘響室；疲勞是作業順序斜率的解讀；機構為 Michigan State University。",
+          "author_cache": {
+            "file": null,
+            "sha256_prefix": null,
+            "note": "只經 WebFetch 讀取，無逐字快取（curl 遇 reCAPTCHA，不繞過）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5392070"
+        }
+      ]
+    },
+    {
       "id": "SRC-03a172d536090c53",
       "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=K0090047",
       "readings": [
@@ -3786,6 +3824,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1016/j.cell.2020.06.031"
+        }
+      ]
+    },
+    {
+      "id": "SRC-03d03e889306b9a8",
+      "url": "https://arxiv.org/pdf/cond-mat/9801204",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/cond-mat/9801204",
+          "title": "How Sandcastles Fall",
+          "publisher": "Halsey & Levine（Exxon Research and Engineering），arXiv cond-mat/9801204，刊於 Phys. Rev. Lett. 80, 3141（1998）",
+          "version": "arXiv 預印本 v1",
+          "read_via": "WebSearch 結果列出 arXiv PDF；curl GET 200，pdftotext",
+          "reading_scope": "摘要與正文前半（破壞準則、Mohr 圓、有限尺寸結論）",
+          "locator": "摘要；正文第 2 段",
+          "summary": "理論分析：顆粒間的毛細黏著力讓沙堆的破壞位置從表面移到內部（土壤力學已知）；在無限大的沙堆極限下，臨界角其實不因黏著而改變，有限大小的沙堆臨界角才會增加；增加量由顆粒表面粗糙度決定，隨液量有三個區段，其中一段是線性，與 Hornbaker 等的主結果定性一致，但不同意其「大部分液體在接觸區外」的詮釋。",
+          "limitations": "理論文章，沒有新實驗；片中只用「黏著的好處跟堆的大小有關、會從內部壞」兩點。",
+          "author_cache": {
+            "file": "f22src/halsey_levine_9801204.pdf",
+            "sha256_prefix": "5d416b04521ad97e",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/cond-mat/9801204"
         }
       ]
     },
@@ -4713,6 +4777,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/18-3-erythrocytes"
+        }
+      ]
+    },
+    {
+      "id": "SRC-05aa62bdb65ea174",
+      "url": "https://pure.uva.nl/ws/files/31633767/Phys.RevE.98.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/PhysRevE.98.052903",
+          "title": "Ploughing friction on wet and dry sand",
+          "publisher": "Phys. Rev. E 98, 052903（Liefferink, Weber, Bonn），2018 年 11 月",
+          "version": "UvA-DARE 出版社版 PDF",
+          "read_via": "WebSearch 結果列出 dare.uva.nl 紀錄頁；紀錄頁的檔案連結即此 PDF；curl GET 200，pdftotext",
+          "reading_scope": "全文（引言、實驗、犁溝模型、冰刀延伸）",
+          "locator": "摘要；§I 引言末段；§II 實驗（半徑 52.5 mm 不鏽鋼半球、4 mm/s）；Fig. 2–3 說明",
+          "summary": "用拉力機以 4 mm/s 把半徑 52.5 mm 的光滑鋼半球拉過壓實的濕沙（ISO 679 標準沙，100–1000 µm）。滑動主要是「犁」：半球在沙上留下深溝；摩擦力隨含水量先急降後回升，犁溝寬度也同樣先窄後寬，半球陷得越深越難拉。以水沙混合物的降伏應力決定陷入深度的犁溝模型，不用可調參數就重現這個非單調變化；同一模型也可用在冰刀在冰上犁出痕跡的情形。",
+          "limitations": "同一研究群延伸 Fall 2014，算 0.75；引言重提埃及壁畫，不另計。 覆核 V25（2026-11-12）：limitations 補：論文沒有討論潤滑，片中不得說「研究證明不是潤滑」。",
+          "author_cache": {
+            "file": "f22src/uva_ploughing2018.pdf",
+            "sha256_prefix": "a561ac9e53afbf24",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://pure.uva.nl/ws/files/31633767/Phys.RevE.98.pdf"
         }
       ]
     },
@@ -9480,6 +9570,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://diamond.jp/articles/-/167226"
+        }
+      ]
+    },
+    {
+      "id": "SRC-10ffa949172bdf7d",
+      "url": "https://arxiv.org/pdf/cond-mat/0508352",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/cond-mat/0508352",
+          "title": "Maximum Angle of Stability of a Wet Granular Pile",
+          "publisher": "Nowak, Samadani, Kudrolli；arXiv cond-mat/0508352（2005），刊於 Nature Physics 1, 50–52（2005）",
+          "version": "arXiv 預印本 v1",
+          "read_via": "WebSearch 結果列出 arXiv PDF；curl GET 200，pdftotext（10 的負次方的負號在轉檔中遺失，以上下文判讀為 10⁻³）",
+          "reading_scope": "全文",
+          "locator": "第 1–3 段（旋轉鼓、玻璃珠、矽油與水）；Fig. 2 說明與其後兩段（飽和、側壁）；Albert 等模型預測段",
+          "summary": "直徑 28.5 cm 的旋轉鼓、40% 填充、半徑 0.25–1.5 mm 玻璃珠，與矽油或水混合。最大穩定角隨液體體積分率先急升，在約 10⁻³ 的量級就飽和。依先前只看表面顆粒的模型，邦德數約 5 時應有至少 90°，實際沙堆在超過約 30° 就崩落，作者認為因為濕沙堆從內部破壞。窄的裝置側壁會大幅提高角度：先前在 3.2 cm 寬裝置量到的角度比本研究高 15–20°；本研究只分析寬度大於 11.5 cm、側壁影響可忽略的資料。",
+          "limitations": "玻璃珠與矽油為主；「約 10⁻³」由轉檔遺失負號後依上下文判讀，覆核須對原 PDF 圖說；預印本。 覆核 V25（2026-11-12）：read_via 與 limitations 改：原 PDF 印的就是「saturates when Vf is on the order 1 × 10³」（V25 把第 2 頁算圖目視，v25src/nowak_crop.png），不是轉檔遺失負號；10⁻³ 只是依 Fig. 2 橫軸與 Vf=0.008 的推論，不得當原文數字引用。",
+          "author_cache": {
+            "file": "f22src/nowak_0508352.pdf",
+            "sha256_prefix": "75e11ae277f692cf",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/cond-mat/0508352"
         }
       ]
     },
@@ -32881,6 +32997,32 @@
       ]
     },
     {
+      "id": "SRC-44f60013fb043f00",
+      "url": "https://pure.uva.nl/ws/files/2365399/160672_Sliding_Friction_on_Wet_and_Dry_Sand.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/PhysRevLett.112.175502",
+          "title": "Sliding Friction on Wet and Dry Sand",
+          "publisher": "Phys. Rev. Lett. 112, 175502（Fall, Weber, Pakpour, Lenoir, Shahidzadeh, Fiscina, Wagner, Bonn），2014 年 4 月 29 日",
+          "version": "UvA-DARE 存放的出版社版 PDF（首頁為 UvA-DARE 封面），經 typeset.io 搜尋結果取得",
+          "read_via": "UvA-DARE 官方紀錄頁 https://dare.uva.nl/id/eb31aae0-48a6-4302-abc0-88bf85ead701 的下載連結（覆核 V25 取得；作者原經 typeset.io 第三方轉存檔發現，不以其為來源）",
+          "reading_scope": "全文（正文、Fig. 1–7 說明）",
+          "locator": "第 1–3 段（壁畫、濕度增摩擦的共識、近乎減半）；方法段（PVC 雪橇 11×7.5 cm、35 µm 砂紙）；Fig. 2 說明（乾沙前方堆沙）；5% 以上變難段；多分散段（10%／26%／40%）；末兩段（μ≈0.3、木對木 0.25–0.7、2500 Pa、靜摩擦最多 70%）",
+          "summary": "先前的共識是空氣濕度讓顆粒間凝結出水橋、滑動時拉斷水橋會使摩擦增加，所以乾沙應較好拖。實驗：以拉力機等速拉放了砝碼的 PVC 雪橇過三種沙，加少量水後動摩擦係數下降，乾沙時雪橇前方明顯堆起沙包，加水後堆沙減少；含水超過 5% 後又變難拉。摩擦係數與濕沙剪切模數呈反向關係，三種沙的資料落在同一條線上：越硬越好拉。加水造成的動摩擦下降，最單分散的 Nemours 沙 10%、伊朗沙 26%、最多分散的 ISO 標準沙 40%；啟動所需的力在標準沙上最多降 70%。Djehutihotep 墓約西元前 1880 年的壁畫中，有人在雪橇前往沙上倒水；有考古學者認為那是儀式，作者認為與結果不符；在最接近沙漠沙的標準沙上摩擦係數可低到約 0.3，木頭對木頭約 0.25–0.7。",
+          "limitations": "第三方網站存放的 UvA-DARE PDF，權利以 APS 為準；實驗壓力約 2500 Pa，作者估計古埃及最大約 10000 Pa，「同一量級」是作者的話；壁畫用途是作者的詮釋，片中寫「作者認為」。 覆核 V25（2026-11-12）：url 改為 UvA-DARE 官方檔 https://pure.uva.nl/ws/files/2365399/160672_Sliding_Friction_on_Wet_and_Dry_Sand.pdf（由 WebSearch 列出的官方紀錄頁 https://dare.uva.nl/id/eb31aae0-48a6-4302-abc0-88bf85ead701 的 citation_pdf_url 與下載連結取得，頁面標 Open Access；sha256 前 16 碼 605f730db3610de1，快取 v25src/uva_fall2014.pdf）；read_via 寫明 typeset.io 只是發現入口。limitations 補：「含水超過 5% 又變難」原文針對伊朗沙；2,500 Pa 與 10,000 Pa「同量級」是作者估算。",
+          "author_cache": {
+            "file": "f22src/typeset_fall2014.pdf",
+            "sha256_prefix": "56b461180a78a2f0",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。 覆核 V25 官方檔 sha256 前 16 碼 605f730db3610de1（內文與作者取得的轉存檔逐字相同，只差封面）。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://pure.uva.nl/ws/files/2365399/160672_Sliding_Friction_on_Wet_and_Dry_Sand.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-44f7b34340dd9691",
       "url": "https://pubs.rsc.org/en/content/articlehtml/2023/sm/d3sm00169e",
       "readings": [
@@ -35136,6 +35278,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "nature-20261101",
           "original_url": "https://www.usgs.gov/programs/VHP/pyroclastic-flows-move-fast-and-destroy-everything-their-path"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4b9493852efc844c",
+      "url": "https://www.arxiv.org/pdf/cond-mat/9801218",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/cond-mat/9801218",
+          "title": "Moisture induced Ageing in Granular Media",
+          "publisher": "Bocquet, Charlaix, Ciliberto, Crassous；arXiv cond-mat/9801218（1998），刊於 Nature 396, 735–737（1998）",
+          "version": "arXiv 預印本 v1",
+          "read_via": "WebSearch 結果列出 arXiv PDF；curl GET 200，pdftotext",
+          "reading_scope": "全文（實驗、濕度依賴、液橋凝結模型）",
+          "locator": "摘要；第 2–4 段（約 200 µm 玻璃珠、0.5 mm 以上無老化）；Kelvin 關係與活化凝結模型段",
+          "summary": "約 200 µm 玻璃珠放在旋轉鼓中，靜置越久，第一次崩落前的最大穩定角越大，與靜置時間的對數成正比，像固體摩擦的「老化」。濕度是關鍵：濕度很低時沒有老化，濕度越高效應越強；直徑大於 0.5 mm 的珠子除非濕度很高，否則觀察不到。作者以水氣在顆粒接觸處的縫隙裡逐步凝結成液橋（熱活化成核）解釋。",
+          "limitations": "預印本，數值與刊本可能有出入；玻璃珠不是沙；Mitarai & Nori（F22-S009）轉述同一研究，不另計。",
+          "author_cache": {
+            "file": "f22src/bocquet_9801218.pdf",
+            "sha256_prefix": "bdf16cd53bb318e6",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://www.arxiv.org/pdf/cond-mat/9801218"
         }
       ]
     },
@@ -48451,6 +48619,32 @@
       ]
     },
     {
+      "id": "SRC-6a07a4a91b444012",
+      "url": "https://angelofarina.it/Public/Papers/346-JASA-SingingVirtualVsRealRooms.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1121/10.0039807",
+          "title": "Singing in virtual versus real rooms: Is it the same?",
+          "publisher": "J. Acoust. Soc. Am. 158(5), 3645–3655（Bottalico, Wingfield, Nudelman, Farina, Glasner, Gonzales Redman），2025 年 11 月",
+          "version": "出版社排版 PDF（共同作者 Angelo Farina 個人網站存放）",
+          "read_via": "WebSearch 結果列出 angelofarina.it 的 PDF；curl GET 200，pdftotext（-layout 會吃掉負號，負號以不加 -layout 的轉檔逐一核對：STv 為 −13.28、−10.69、−4.98 dB）",
+          "reading_scope": "全文（方法、房間量測、聲學轉製、結果、討論）",
+          "locator": "§II.B–D（Table II、STv 數值）、§III.B（Table VI、VII、Fig. 4）、§IV 第二段",
+          "summary": "10 位古典聲樂研究生在三個真實房間與其虛擬重製中唱同一段詠嘆調。三房間：204 室 114.5 m³、T30 0.39 s；Smith Memorial 400 m³、1.04 s；Smith Recital Hall 6600 m³、1.75 s。演唱者位置的聲音支持度 STv（耳邊反射聲對直達聲的能量比）：小教室 −4.98 dB、中廳 −10.69 dB、大廳 −13.28 dB。問卷因素分析得「歌聲支持感」與「安靜專注」兩因子；只有畫面、沒有房間聲音的條件（V_only）支持感顯著較低（估計 −0.927，p<0.001），有虛擬房間聲音的條件與真實房間無顯著差異。顫音幅度、速率在不同條件的差異多在可察覺差異範圍內。",
+          "limitations": "只有 10 人，作者自稱初步；房間在模型中是隨機效應，作者明說不能對特定房間大小下結論。STv 是三間房各自的量測值，不得外推到浴室。共同作者網站的出版社排版版，權利以 JASA 為準。 覆核 V25（2026-11-12）：read_via 補：STv 負號在 PDF 文字層是字元 0x04（pypdfium2 與 pdftotext 皆同），同字型其他負值也是它，判為負號成立。limitations 補：Table II 的 T30 是舞台音源、觀眾席接收；Table VII 中 Control（矇眼無聲）p=0.065 未顯著，討論段稱「control 與 V_only 都顯著較低」與表不符，只能引 V_only。",
+          "author_cache": {
+            "file": "f22src/farina346.pdf",
+            "sha256_prefix": "d11fdc77e263d93a",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://angelofarina.it/Public/Papers/346-JASA-SingingVirtualVsRealRooms.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-6a268e8b39dc6f79",
       "url": "https://quoteinvestigator.com/2017/07/16/product/",
       "readings": [
@@ -53329,6 +53523,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://oia.ntut.edu.tw/p/412-1032-9107.php?Lang=zh-tw"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7544ef3b61c59168",
+      "url": "https://arxiv.org/pdf/2012.03347",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/2012.03347",
+          "title": "Analysis of the water flow inside tire grooves of a rolling car using r-PIV",
+          "publisher": "Damien Cabut、Marc Michard、Serge Simoëns、Loïc Méès、Violaine Todoroff、Corentin Hermange、Yohan Le-Chenadec（里昂中央理工 LMFA、Michelin）／arXiv:2012.03347v1 [physics.flu-dyn]",
+          "version": "arXiv 預印本 v1（2020-12-06），未確認期刊刊本",
+          "accessed_on": "2026-11-11",
+          "read_via": "WebSearch（乘用車胎水漂實驗開放全文）結果列出 arxiv.org/pdf/2012.03347；curl -L GET 200，pdftotext -layout 轉文字。",
+          "reading_scope": "全文（摘要、文獻回顧、設備、輪胎、第 4 節氣泡柱、第 6 節縱溝與橫溝流場、第 7 節自相似與渦旋機制、第 8 節結論）",
+          "locator": "§3.3 Tire model 與 Table 1（Primacy 4 新胎、溝深 6 mm、寬 12／6 mm、胎壓 2.2 bar）；§3.4（水深 8 mm、車速 8.3–19.4 m/s、每組 16 次）；§4.1 與 Figure 3（氣泡柱：寬溝兩條、窄溝一條）；§6.1（縱溝內水流方向與相對地面的車行方向相反、局部達 −0.1 V0）；§6.3 結論段（寬溝兩個反向渦旋、窄溝一個）；§6.4 與 Figure 19（橫溝在接觸區前段往外排水、後段反向吸入）；§7.2 與 Figure 21（接觸長度隨車速縮短，與 Todoroff 2018 螢光觀測一致）；§8 Conclusions",
+          "summary": "同一套透明窗折射 PIV 伸進胎溝裡：Michelin Primacy 4 新胎（溝深 6 mm）以每秒 8.3–19.4 公尺（論文原單位，未換算）滾過 8 mm 深的水窪。胎溝裡不是單純的水：螢光影像看到長條的氣泡柱，寬 12 mm 的縱溝有兩條、寬 6 mm 的有一條；流速量測顯示縱溝裡有沿溝方向的渦旋，寬溝兩個反向旋轉、窄溝一個，渦旋數跟溝的寬高比有關。縱溝內的水（地面座標）往車行的反方向流，局部可達車速的 −0.1 倍。橫溝在接觸區前段把水往外甩、在接觸區後段反而往內吸，大致隨位置線性變化。用接觸長度把座標縮放後，不同車速的縱溝速度剖面重疊（自相似）；接觸長度隨車速增加而縮短。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "預印本、未確認同儕審查；一條新胎、8 mm 學術水深（作者自稱遠高於實際）、未測磨耗胎；接觸長度隨車速縮短引自同團隊 Todoroff 2018 並與本篇 Lp 一致，旁白只說『同一團隊的觀測』；氣泡柱與渦旋的成因作者只提出可能機制。與 F21-S003 同一研究群；不獨立於 Michelin。獨立於 FHWA-RD-79-31 與 NASA 1963（只在引言引用 Horne 1963 的定義）。 覆核 V24（2026-11-12）：version 改為『arXiv v1（2020-12-06），摘要頁 Comments 註明為同儕審查前送 Physics of Fluids 的版本；arXiv 頁列相關 DOI 10.1063/5.0038834，期刊版本輪未讀』。",
+          "author_cache": {
+            "file": "f21src/arxiv2012.03347.pdf（文字：f21src/arxiv2012.03347.txt）",
+            "sha256_prefix": "b4600fe530a04710（文字 751f012c5c79dbce）",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/2012.03347"
         }
       ]
     },
@@ -66830,6 +67050,32 @@
       ]
     },
     {
+      "id": "SRC-934bf080ac946fb1",
+      "url": "https://www.psy.uni-hamburg.de/arbeitsbereiche/biologische-psychologie-und-neuropsychologie/publikationen/zusammenfassungen-artikel/faeb-15-ley-2013.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.neuropsychologia.2013.03.004",
+          "title": "Partial recovery of visual–spatial remapping of touch after restoring vision in a congenitally blind man（Facts About Eye and Brain 單頁摘要）",
+          "publisher": "Pia Ley 等／漢堡大學生物心理與神經心理學系、L V Prasad Eye Institute 的單頁摘要；原刊 Neuropsychologia 2013",
+          "version": "研究室發布的一頁通俗摘要，不是論文",
+          "accessed_on": "2026-11-11",
+          "read_via": "WebSearch 結果列出此 PDF；curl GET 200，pdftotext 轉文字。",
+          "reading_scope": "只讀到一頁摘要（約 80 字），原刊全文未讀到（未找到公開全文連結）",
+          "locator": "單頁全文",
+          "summary": "2 歲移除先天白內障的一位男性，在兩手觸碰先後判斷中也沒有交叉效應；摘要據此說快速把觸覺對到視覺空間有賴早年視覺經驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只是摘要，不算全文，不計任何事實；單一個案；只用於 not_added 紀錄。",
+          "author_cache": {
+            "file": "f21src/ley2013_summary.pdf（文字：f21src/ley2013_summary.txt）",
+            "sha256_prefix": "e62f51bad47a2467（文字 cf440754db0bd11b）",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave63-tech-20261111",
+          "original_url": "https://www.psy.uni-hamburg.de/arbeitsbereiche/biologische-psychologie-und-neuropsychologie/publikationen/zusammenfassungen-artikel/faeb-15-ley-2013.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-934da5902198a6d7",
       "url": "https://doi.org/10.1098/rspb.2021.0866",
       "readings": [
@@ -68407,6 +68653,32 @@
       ]
     },
     {
+      "id": "SRC-970edf6ac2c4f7a7",
+      "url": "https://www.frontiersin.org/articles/10.3389/fbuil.2021.666152/pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3389/fbuil.2021.666152",
+          "title": "Changes of Voice Production in Artificial Acoustic Environments",
+          "publisher": "Frontiers in Built Environment 7:666152（Sierra-Polanco, Cantor-Cutiva, Hunter, Bottalico），2021 年 5 月",
+          "version": "出版社 PDF（開放取用）",
+          "read_via": "WebSearch 結果列出 frontiersin.org 的 PDF；curl GET 200，pdftotext",
+          "reading_scope": "全文（引言、方法、Table 2–3、結果、討論）",
+          "locator": "Abstract；〈Participants〉〈Instructions and Conditions〉；〈Effects of Gain and Noise on SPL〉與 Table 3；comfort 段落",
+          "summary": "30 名 19–32 歲母語英語者在耳機模擬的 14 種條件下朗讀（不是唱歌）：自己聲音回送增益 0／+5／+10 dB、三種 T30、有無約 70 dB(A) 語音頻譜噪音。無噪音時增益 0→5、0→10 dB，聲壓級平均 −0.31、−1.41 dB(A)；無噪音時舒適度只增 3.55%、0.27%，合併所有條件的事後比較，10 dB 增益比 0 dB 高 10.52 個百分點。加入噪音，聲壓級整體 +3.49 dB(A)、舒適度 −25.31%；在噪音下增益 5、10 dB 讓舒適度分別增加 13.43%、20.77%。中等殘響（T30≈1.3 s）讓聲壓級較低、舒適與控制感較高，但殘響的效果小於增益。",
+          "limitations": "受試者是朗讀、不是唱歌；噪音是語音頻譜噪音，不是水聲，片中不得說「淋浴水聲讓你唱更大聲」是本研究測的。 覆核 V25（2026-11-12）：summary 改：殘響的效果只在摘要寫「舒適與控制感上升」；正文事後比較三種 T30 間舒適與控制感皆不顯著，聲壓級中對低僅 −0.17 dB(A)。T30 實際為低 1.13、中 1.39、高 1.90 s（摘要寫 ≈1.3）。",
+          "author_cache": {
+            "file": "f22src/frontiers_fbuil2021_666152.pdf",
+            "sha256_prefix": "542ef2af416f4c2d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://www.frontiersin.org/articles/10.3389/fbuil.2021.666152/pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-97195f880c6f1711",
       "url": "https://www.ettoday.net/news/20250723/3000664.htm",
       "readings": [
@@ -69822,6 +70094,32 @@
       ]
     },
     {
+      "id": "SRC-9a5a7a2ad54134e9",
+      "url": "https://arxiv.org/pdf/cond-mat/0601660.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/cond-mat/0601660",
+          "title": "Wet granular materials",
+          "publisher": "Advances in Physics 55, 1–45（Mitarai & Nori），2006；arXiv cond-mat/0601660",
+          "version": "arXiv 預印本 v2",
+          "read_via": "WebSearch 結果列出 arXiv PDF；curl GET 200，pdftotext",
+          "reading_scope": "§1 引言、Table 1、§2.2.1 四種含液狀態、§3.1 少量液體的休止角（含 Bocquet、Hornbaker 的轉述）",
+          "locator": "§1 第 3–6 段（乾沙堆約 35°、濕沙堆可到 90° 以上）；§2.2.1；§3.1",
+          "summary": "乾沙堆表面角約 35°，再倒也一樣，挖洞會塌；加適量水，表面角可大於乾沙，甚至 90° 以上，可挖隧道；水太少能做的形狀有限，太多則成泥水留不住形狀。依含液量分四種狀態：擺動態（顆粒間只在接觸點有液橋）、索帶態（部分孔隙充滿）、毛細態（孔隙全滿、表面液體被吸回孔隙）、漿態（完全浸沒、表面無毛細作用）；前三種有凝聚力。空氣濕度本身就可在接觸點凝結出微小液橋產生凝聚力。",
+          "limitations": "綜述，「約 35°」是教學式敘述，不是單一實驗；四狀態的界線依材料而異，片中不給百分比。",
+          "author_cache": {
+            "file": "f22src/mitarai_nori_0601660.pdf",
+            "sha256_prefix": "5f5deec9a39f9d42",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/cond-mat/0601660.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-9a5bbf43e17a2a52",
       "url": "https://doi.org/10.1038/nrgastro.2012.57",
       "readings": [
@@ -70636,6 +70934,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-chemistry-materials-20261101",
           "original_url": "https://openstax.org/books/organic-chemistry/pages/14-9-conjugation-color-and-the-chemistry-of-vision"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9bfe16d451ed56c9",
+      "url": "https://jyx.jyu.fi/bitstreams/19083343-3b37-4b3f-973f-ab7c3fe2d974/download",
+      "readings": [
+        {
+          "canonical_url": "https://jyx.jyu.fi/handle/123456789/49954",
+          "title": "Influence of virtual room acoustics on choir singing",
+          "publisher": "Psychomusicology: Music, Mind, and Brain 25(3)（Fischinger, Frieler, Louhivuori），2015；Jyväskylä 大學典藏 JYX",
+          "version": "Final Draft（作者最終稿，非出版社排版）",
+          "read_via": "WebSearch 結果列出 JYX 紀錄頁；紀錄頁的 citation_pdf_url 與下載連結指向此 bitstream；curl GET 200，pdftotext",
+          "reading_scope": "全文（方法、音準、速度與時間精準、響度、問卷、討論）",
+          "locator": "§II.A–B（23 人、三種條件）；§III.B（MAPE、Table II）；§III.D（速度 84／79.5／71.7 bpm）；§III.F（Fig. 7、問卷）；§IV 第一段",
+          "summary": "23 人的業餘資深合唱團（平均合唱經驗 29 年）戴半開放耳機，在無殘響、模擬 Concertgebouw（RT 1.77 s）、模擬西班牙大教堂（RT 4.79 s）三種條件唱 Bruckner〈Locus Iste〉。音準幾乎不受影響：只有女高音的平均絕對音高誤差達顯著，三條件 17.6／16.4／18.7 音分、效果量小。速度隨虛擬房間變大而變慢：平均 84、79.5、71.7 bpm，時間精準度下降。問卷幾乎所有項目都最偏好 1.77 s；「容易跟上拍子」隨房間變大而下降，無殘響最容易。作者稱客觀差異都很小，主觀感受受影響大得多。",
+          "limitations": "作者最終稿的 RT 為 1.77／4.79 s，JYX 紀錄頁摘要寫 1.87／5.91 s，兩者不一致，片中只寫「中等」與「很長」或標明出自最終稿；聲音經耳機與混音器回送，不是在真實房間；速度是指揮選的，作者推測與咬字清楚有關。討論段說最大房間的「受鼓勵」低於中性，與結果段 AC3 平均 3.34 不一致，此點不用。 覆核 V25（2026-11-12）：author_cache 註記：JYX bitstream 每次下載位元組不同（今日 ed31317ed15c2f59），大小與全文文字相同。",
+          "author_cache": {
+            "file": "f22src/fischinger2015.pdf",
+            "sha256_prefix": "93575b6804a99235",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://jyx.jyu.fi/bitstreams/19083343-3b37-4b3f-973f-ab7c3fe2d974/download"
         }
       ]
     },
@@ -72029,6 +72353,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://corporate.pokemon.co.jp/en/aboutus/figures/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9ec1c447595028d1",
+      "url": "https://barabasi.com/media/pub_imports/files/46.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/42831",
+          "title": "What keeps sandcastles standing?",
+          "publisher": "Nature 387, 765（Hornbaker, Albert, Albert, Barabási, Schiffer），1997 年 6 月 19 日",
+          "version": "出版社排版 PDF（共同作者 Barabási 網站存放）",
+          "read_via": "WebSearch 結果列出 barabasi.com 的 PDF；curl GET 200，pdftotext",
+          "reading_scope": "全文（一頁通訊與 Fig. 1 說明）",
+          "locator": "正文第 2–4 段；Fig. 1 說明",
+          "summary": "在直徑約 0.8 mm 的聚苯乙烯球中加入少量玉米油或真空泵油，以排空坑法量休止角。最大含油量相當於球面油層不到 50 nm（比先前研究的最低含水量少 40 倍），休止角大幅上升，在結團之前約與油層厚度成線性。以單一參數模型擬合，推得典型液橋體積很小，意味 99.9% 的液體沒有貢獻黏著力（作者推測與表面粗糙有關）；液體增加時出現越來越大的顆粒團，油層約 40 nm 以上時漏斗完全排不出去。",
+          "limitations": "用的是塑膠球與油，不是沙與水；「99.9%」是模型擬合的推論，Halsey & Levine（F22-S012）不同意此詮釋，片中須標「作者推算」。共同作者網站版。",
+          "author_cache": {
+            "file": "f22src/hornbaker1997_barabasi46.pdf",
+            "sha256_prefix": "98e413e69f64a25f",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://barabasi.com/media/pub_imports/files/46.pdf"
         }
       ]
     },
@@ -74284,6 +74634,32 @@
       ]
     },
     {
+      "id": "SRC-a43d7f194ad38fc9",
+      "url": "https://research.gold.ac.uk/id/eprint/17710/1/BegumAliSpenceBremner_GRO.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.cub.2015.08.055",
+          "title": "Human infants' ability to perceive touch in external space develops postnatally",
+          "publisher": "Jannath Begum Ali、Charles Spence、Andrew J. Bremner／Current Biology 25(20): R978–R979（2015）；Goldsmiths Research Online 典藏",
+          "version": "作者接受稿（Accepted Version，稿面寫 Resubmitted to Current Biology, August 2015），含 Supplemental Information（Figure S1、Table S1、Experimental Procedures）",
+          "accessed_on": "2026-11-11",
+          "read_via": "WebSearch 結果列出典藏紀錄頁 research.gold.ac.uk/id/eprint/17710 與 eprints-gro.gold.ac.uk 的 PDF；eprints-gro 主機經代理連不上（502）。改開紀錄頁（curl 200，頁上 citation 標記 DOI 10.1016/j.cub.2015.08.055、Accepted Version），PDF 連結取自頁上的 href；curl 200，pdftotext -layout 轉文字。",
+          "reading_scope": "全文（正文、圖說、補充資料的設計、受試者、儀器、程序、編碼與分析）",
+          "locator": "正文第 1 段（摘要式段落）；正文〈Thus, the influence of external spatial coordinates…〉段；Figure 1 圖說（ANOVA 與事後比較、單樣本 t 檢定）；Figure S1 圖說（反應潛時 729 對 1406 ms）；Supplemental〈Participants〉〈Design〉〈Procedure〉",
+          "summary": "4 個月大（17 名，104–134 天）與 6 個月大（13 名，177–220 天）的嬰兒，腳底各貼一個振動器，每次振動一隻腳 1 秒，看先動的是哪隻腳；每 5 次改變雙腳交叉或不交叉。6 個月組不交叉時比交叉時準，而且只有不交叉時高於機率；4 個月組兩種姿勢一樣準、兩種都高於機率，雙腳交叉時明顯勝過 6 個月組；不交叉時兩組沒有差別。4 個月組反應較快（平均 729 對 1406 毫秒），粗大縮腳反應的比例兩組相同（各 .12）。作者結論：觸覺的外部空間編碼在 4 到 6 個月之間出現，更早的嬰兒只按身體上的位置感覺觸碰（tactile solipsism）。作者另引文獻說 10 個月大能適應肢體姿勢改變（引用，不計）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "作者接受稿，與期刊刊本可能有編輯差異；Current Biology 的 Correspondence 短文，正文約一千字；測的是腳、不是手，量的是單一觸碰後先動哪隻腳（不是兩下先後判斷）；兩個年齡是不同的嬰兒（橫斷，不是追蹤同一批）；樣本 17＋13；各組各姿勢的平均正確率只在圖上，正文與圖說給的是合併平均（不交叉 .70、交叉 .62；4 個月 .70、6 個月 .61），旁白不得自己讀圖報數字。池中沒有同一網址或同一篇。 覆核 V24（2026-11-12）：limitations 加：『6 個月組交叉時是機率水準，不是系統性動錯；作者把轉變連到約 5 個月開始伸手，屬推測』。",
+          "author_cache": {
+            "file": "f21src/begumali2015.pdf（文字：f21src/begumali2015.txt）",
+            "sha256_prefix": "c053c4d44bac1b09（文字 e5fc45ece29f1092）",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave63-human-20261111",
+          "original_url": "https://research.gold.ac.uk/id/eprint/17710/1/BegumAliSpenceBremner_GRO.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-a450eb41e77089bf",
       "url": "https://chromium.googlesource.com/chromium/src/+/main/docs/idn.md",
       "readings": [
@@ -74600,6 +74976,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.eetimes.com/dennis-carter-behind-the-intel-inside-campaign/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a569d3a69ca32645",
+      "url": "https://mcdermottlab.mit.edu/papers/Traer_McDermott_2016_reverberation.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.1612524113",
+          "title": "Statistics of natural reverberation enable perceptual separation of sound and space",
+          "publisher": "PNAS 113(48), E7856–E7865（Traer & McDermott），2016",
+          "version": "作者實驗室網站存放的出版社 PDF（PMC5137703 亦有全文）",
+          "read_via": "WebSearch 結果列出作者實驗室 PDF 與 PMC5137703；Europe PMC fullTextXML 回 500，改抓作者 PDF；curl GET 200，pdftotext",
+          "reading_scope": "全文（摘要、量測、Fig. 2–4、知覺實驗）",
+          "locator": "Abstract；〈Results〉第 1–3 段（271 個空間、例子含浴室與電梯）；Fig. 2 說明",
+          "summary": "量了 301 個日常地點中 271 個的脈衝響應（30 個私人場所未獲准），包含電梯、森林、浴室、地鐵站、樓梯間、街角。儘管空間多樣，殘響在各頻帶都呈指數衰減，中頻殘響最久、高低頻衰減較快。聽者能從殘響聲中分辨聲源與環境；當殘響特性偏離真實環境時，這種分辨變差，不自然的殘響還會被誤當成聲源的一部分。作者推論大腦依「自然殘響」的先驗把聲音拆成聲源與環境。",
+          "limitations": "浴室只是 271 個樣本中的例子，論文沒有給浴室的單獨數值；知覺實驗用的是合成殘響與脈衝、噪音、語音等聲源，沒有測唱歌好不好聽。",
+          "author_cache": {
+            "file": "f22src/traer_mcdermott2016.pdf",
+            "sha256_prefix": "67fcce7390f2abb5",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://mcdermottlab.mit.edu/papers/Traer_McDermott_2016_reverberation.pdf"
         }
       ]
     },
@@ -79113,6 +79515,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1086/209611"
+        }
+      ]
+    },
+    {
+      "id": "SRC-aea714884cbb55fb",
+      "url": "https://iris.polito.it/retrieve/handle/11583/3009023/974098",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1121/2.0002144",
+          "title": "Singers’ likability of the acoustic environment and adaptation of singing in contemporary churches",
+          "publisher": "Proceedings of Meetings on Acoustics 58, 015006（Shtrepi 等，Politecnico di Torino），2025；CC BY-NC-ND",
+          "version": "出版社版 PDF（都靈理工機構典藏 IRIS）",
+          "read_via": "WebSearch 結果列出 iris.polito.it 的 PDF；curl GET 200，pdftotext",
+          "reading_scope": "全文前半（摘要、引言、方法 A–C、職業歌手回饋）；實驗室受試結果段未逐句讀完",
+          "locator": "§1 引言（Redman 等的兩個因子）；§2.A 末段（Faber Teater 的偏好排序）；§2.B.iii（Room Gain 與 Voice Support 未顯著不同）",
+          "summary": "米蘭四座現代教堂。職業合唱團 Faber Teater 2022 年巡演後的排序：Church 2、4 最受歡迎，因為「有足夠的聲學支持又不會太吵」；Church 1 最不受歡迎，被形容支持很少、很難與其他歌手同步；Church 3 因中頻像被「切掉」，歌手覺得得用發聲去補。作者在實驗室重建時算了 Room Gain 與 Voice Support，但四座教堂之間沒有顯著差異。引言轉述 Redman 等：歌手偏好「支持度」與「安靜度」高的房間。",
+          "limitations": "職業歌手的部分是巡演後的開放式意見與排序，不是控制實驗；Redman 等 2023 原文本作者只讀到摘要（不計）；後半的業餘歌手結果本輪未計。 覆核 V25（2026-11-12）：limitations 補：職業合唱團的排序是本文「As reported in Shtrepi et al.(ref 12)」轉述同組前作，不是本文新資料；結論段另寫 Church 1、3 是殘響較短者。今日重抓位元組雜湊 b769b82a6e7f05b7，全文文字與快取相同。",
+          "author_cache": {
+            "file": "f22src/polito_3009023.pdf",
+            "sha256_prefix": "02c361207d340543",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://iris.polito.it/retrieve/handle/11583/3009023/974098"
         }
       ]
     },
@@ -92603,6 +93031,32 @@
       ]
     },
     {
+      "id": "SRC-cb6e2aa7ab9db6e0",
+      "url": "https://hyperphysics.gsu.edu/hbase/Acoustic/revtim.html",
+      "readings": [
+        {
+          "canonical_url": "https://hyperphysics.gsu.edu/hbase/Acoustic/revtim.html",
+          "title": "Reverberation Time（HyperPhysics）",
+          "publisher": "Georgia State University，R. Nave（HyperPhysics 教材）",
+          "version": "線上教材頁（無日期）",
+          "read_via": "WebSearch 結果列出此頁；curl GET 200，HTML 轉文字",
+          "reading_scope": "全頁（定義、為何 60 dB、理想殘響時間）",
+          "locator": "〈What is a desirable reverberation time?〉段",
+          "summary": "殘響時間定義為聲源停止後聲音衰減 60 dB 所需時間；反射多的房間「live」、吸收多的房間「dead」。理想值依用途：中型多用途禮堂約 2 秒，教室應遠短於 1 秒。殘響時間受表面吸收係數強烈影響，也取決於房間容積：「You won't get a long reverberation time with a small room.」",
+          "limitations": "教材頁，未提浴室；「小房間不會有長殘響」是教材的一般敘述，片中不得替浴室給秒數。池中 B4020 等房間吸音核心可能用過 Sabine 式，本頁只取「小房間」與定義。 覆核 V25（2026-11-12）：limitations 補：吸收係數表的 Vinyl tile on concrete 是乙烯地磚，不是瓷磚；同表 Concrete block, unpainted 為 0.3–0.4，不可概括「硬面都吸得少」。",
+          "author_cache": {
+            "file": "f22src/hp_revtim.html",
+            "sha256_prefix": "672136681d91850d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://hyperphysics.gsu.edu/hbase/Acoustic/revtim.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-cb7295c2c9bf3ffd",
       "url": "https://docs.lib.purdue.edu/mepubs/55/",
       "readings": [
@@ -93503,6 +93957,32 @@
           },
           "origin": "wave57-human-20261111",
           "original_url": "https://nrc-publications.canada.ca/eng/view/ft/?id=8fe95aff-adf1-4a91-bc2e-f150870a5aee"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cd2df289dc7daa9c",
+      "url": "https://hal.science/hal-02906552v1/file/mi190321.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1051/meca/2020052",
+          "title": "Particle Image Velocimetry (PIV) measurements in a water film, application to a tire rolling through a puddle",
+          "publisher": "Damien Cabut、Marc Michard、Serge Simoëns、Violaine Todoroff、Jean Lemaître、Corentin Hermange、Yohan Le Chenadec（里昂中央理工 LMFA、Michelin）／Mechanics & Industry 20, 811（2019 卷，2020 年刊出）",
+          "version": "期刊刊本 PDF（HAL 典藏 hal-02906552v1，CC BY 4.0）",
+          "accessed_on": "2026-11-11",
+          "read_via": "WebSearch 列出期刊 PDF 與 HAL 紀錄頁；期刊網站 PDF curl 回 403（不繞過）；HAL 紀錄頁 hal.archives-ouvertes.fr/hal-02906552（轉到 hal.science）curl 200，頁上 href 給出 hal-02906552v1/file/mi190321.pdf；curl 200，pdftotext 轉文字。",
+          "reading_scope": "全文（引言、圖 1 三區說明、量測設備、輪胎與水深條件、第 3 節結果、Table 3–4、第 4 節結論）",
+          "locator": "第 1 節 Introduction 與 Figure 1 三區說明；§2（車速 8.33–22.2 m/s、水深新胎 8 mm 至磨耗胎 1.5 mm）；§3.2 Figure 10 後文（新胎與磨耗胎剖面的差異）；§3.3–3.4；§4 Summary and conclusions（臨界速度約 60 km/h 與 80 km/h 以上）",
+          "summary": "Michelin 試車場路面嵌入透明窗，用折射雷射片與螢光粒子做 PIV，量真車輪胎滾過水窪時輪胎前方的水流。輪胎前方分三區：靜止水膜；『速度鋒面』，水突然被加速、水面隆起、濺出水絲與水滴；鋒面與接觸面之間的受限區，中央的水主要被往前推，肩部被擠向兩側，其餘困進胎溝。前方水岸的往前速度與肩部的側向速度都大致隨車速線性增加；作者在結論寫，磨耗胎（水深 1.5 mm）約在 60 km/h 出現轉折（流態改變），新胎（水深 8 mm）似乎在 80 km/h 以上，並說要更多量測才能確認不是假象。磨耗胎的速度剖面每次差很多，作者歸因於橫向溝的隨機位置。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "一款夏季胎（新胎與對應磨耗胎），一個試車場、平滑地面；新胎與磨耗胎用的水深不同（8 mm 對 1.5 mm），兩者不得直接比較誰比較容易水漂；60 km/h 轉折作者自己說可能是假象、需要更多點；本篇主旨是量測方法可行性；量的是速度，不是升力或摩擦，不能說成『60 km/h 開始水漂』。與 F21-S004 同一研究群與試車場。引言轉述的『法規濕地煞車試驗用磨耗胎時有水漂』是引用 Todoroff 2018（未讀），不計、不用。 覆核 V24（2026-11-12）：summary 改為：三區示意（Figure 1）是引言整理前人研究（原文 From the previous references…），本篇量的是中央胎肋前方水岸縱向速度與胎肩側向速度；locator 加 §1 Suzuki & Fujikawa 2001 為唯一前例一句與 §3.4 誤差棒段落；『隨車速成比例』改『大致線性』。",
+          "author_cache": {
+            "file": "f21src/hal02906552.pdf（文字：f21src/hal02906552.txt）",
+            "sha256_prefix": "51df92f59eb91fbc（文字 d4d07832683c778d）",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://hal.science/hal-02906552v1/file/mi190321.pdf"
         }
       ]
     },
@@ -94534,6 +95014,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/301659/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cf9ec0194d5e7f9f",
+      "url": "https://hyperphysics.gsu.edu/hbase/Acoustic/revmod.html",
+      "readings": [
+        {
+          "canonical_url": "https://hyperphysics.gsu.edu/hbase/Acoustic/revmod.html",
+          "title": "Modeling Reverberation Time（HyperPhysics，含吸收係數表）",
+          "publisher": "Georgia State University，R. Nave（HyperPhysics 教材）",
+          "version": "線上教材頁（無日期）",
+          "read_via": "WebSearch 結果列出此頁；curl GET 200，HTML 轉文字",
+          "reading_scope": "全頁（Sabine 式、吸收係數定義、吸收係數表、Sabine 式限制）",
+          "locator": "〈Table of Absorption Coefficients〉",
+          "summary": "吸收係數 0–1，1 為完全吸收；係數隨頻率變。表（125–4000 Hz）：澆置混凝土 0.01–0.03、磚 0.03–0.07、混凝土上的乙烯地磚 0.02–0.03、厚地毯（毛氈底）0.1–0.7、中等絲絨窗簾 0.07–0.7。Sabine 式在高吸收房間會高估殘響時間，也忽略空氣吸收。",
+          "limitations": "表中沒有「磁磚」一列，片中只能說「混凝土、磚、地磚這類硬面」，不得說成浴室磁磚的實測值；表出自 Hall 教科書的轉載。",
+          "author_cache": {
+            "file": "f22src/hp_revmod.html",
+            "sha256_prefix": "c108a671f167f781",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://hyperphysics.gsu.edu/hbase/Acoustic/revmod.html"
         }
       ]
     },
@@ -105520,6 +106026,32 @@
       ]
     },
     {
+      "id": "SRC-e89f3899116890f7",
+      "url": "https://files.topslab.wisc.edu/publications/2006/Gates%20-%20dilemma%20zones.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://files.topslab.wisc.edu/publications/2006/Gates%20-%20dilemma%20zones.pdf",
+          "title": "Analysis of Dilemma Zone Driver Behavior at Signalized Intersections（TRB Paper No. 07-3351）",
+          "publisher": "Tim J. Gates、David A. Noyce、Luis Laracuente（University of Wisconsin–Madison）／TRB 2007 Annual Meeting CD-ROM",
+          "version": "TRB 2007 年會論文修訂稿（稿面：Resubmitted November 15th, 2006；Paper revised from original submittal），威斯康辛大學 TOPS Lab 檔案伺服器",
+          "accessed_on": "2026-11-11",
+          "read_via": "WebSearch（Wortman Fox 黃燈行為）結果列出此 PDF 連結（檔名含空格）；curl 以百分號編碼空格後 GET 200，pdftotext -layout 轉文字。",
+          "reading_scope": "全文（摘要、文獻回顧、方法、Table 1 路口條件、煞車反應、減速度、停或走的邏輯迴歸、Figure 9–10 旅行時間分布、結論）",
+          "locator": "Abstract；Table 1 Site Characteristics；Methodology（2.0–5.5 秒篩選）；Analysis 首段（1,001 輛、463 停／538 走、15/50/85 百分位速度 31/41/51 mph）；〈Deceleration Rate〉Figure 7 後文；邏輯迴歸 Equation 6 與其後條列、82% 預測率；Figure 9–10 後文；Conclusions",
+          "summary": "2006 年 4–8 月在威斯康辛州麥迪遜 6 個號誌路口（速限 25–50 mph、黃燈 3.5–5.0 秒）錄影，取每次黃燈第一輛停車與最後一輛通過的車共 1,001 輛（停 463、走 538）。黃燈亮時離停止線不到 2 秒的車全部通過；停車的車只有 5% 在 2.9 秒以內；通過的車只有 5% 在 4.5 秒以外、不到 1% 在 5.5 秒以外；接近速度對停與走的 85 百分位旅行時間幾乎沒影響，對 15 百分位只有中等影響。邏輯迴歸：黃燈亮時到停止線的估計時間是停或走『遠遠最強』的預測因子，單用它可預測 77%；另外隔壁車道有車通過、大型車、沒有側街等候者、較短週期、較長黃燈都使通過機率上升；整體模型預測率 82%。第一輛停車的煞車反應 15/50/85 百分位 0.7、1.0、1.6 秒，減速度 7.2、9.9、12.9 ft/s²；接近速度越快減速度越大；超過 40 mph 的停車者 69% 用了大於 10 ft/s² 的減速度，40 mph 以下只有 26%；離路口 4 秒以內停的人一半用超過 11.0 ft/s²，4 秒以外一半低於 9.3 ft/s²。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "年會修訂稿，正式刊本（TRR 2030，作者多一位 Nordheim）可能有差異，本輪未讀刊本；只有一個都會區 6 個路口；旅行時間是用黃燈亮前速度與距離估算；減速度用『速度÷煞車時間』計算的平均值。FHWA 2023 綜整（池中 SRC-fb6e42a2c378224c，T62 系列的來源）在 Table 3 摘了這篇的減速度結果，但池中沒有任何核心用到這篇，原文也是本輪才讀。第一作者 Gates 也是 NCHRP 731（T62-003、T62-005 的資料來源）的共同作者，兩批資料不同（本篇是 2006 年麥迪遜自己的錄影）。作者對 ITE 10 ft/s² 的設計建議是對美國公式的意見，不得套到台灣。內文轉述的 Chang 等 1985 數字是轉引，不計。 覆核 V24（2026-11-12）：limitations 加：『樣本先篩成黃燈亮時離停止線 2.0–5.5 秒的第一停／最後走車輛（5.5 秒以外仍通過的少數因屬闖紅燈而保留）；不到 2 秒全部通過來自初篩資料』；summary 的減速度與反應時間樣本數改為 444 輛（Table 2）；速度影響改寫為『85 百分位幾乎無影響、15 百分位中等影響（通過車 15 百分位在 35 mph 以下降到 3.5 秒、停車車在 45 mph 以上升到約 3.6 秒）』。作者寫的正式刊本『多一位 Nordheim』我未核對，刪去或標『未核』。",
+          "author_cache": {
+            "file": "f21src/gates2007.pdf（文字：f21src/gates2007.txt）",
+            "sha256_prefix": "722db80d934d187b（文字 f180e2563cb8dbf3）",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave63-tech-20261111",
+          "original_url": "https://files.topslab.wisc.edu/publications/2006/Gates - dilemma zones.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-e8ab9ed2cda4d677",
       "url": "https://www.uky.edu/~dhild/22/lect22.html",
       "readings": [
@@ -109684,6 +110216,32 @@
       ]
     },
     {
+      "id": "SRC-f1a24f7696c1a1c8",
+      "url": "https://hal.science/hal-00022654v1/file/richefeu06PRE.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/PhysRevE.73.051304",
+          "title": "Shear strength properties of wet granular materials",
+          "publisher": "Phys. Rev. E 73, 051304（Richefeu, El Youssoufi, Radjaï，Université Montpellier 2），2006；HAL hal-00022654",
+          "version": "HAL 存放稿 v1（2006-04-12 上傳）",
+          "read_via": "WebSearch 結果列出 hal-00022654 紀錄頁；紀錄頁的檔案連結即此 PDF；curl GET 200，pdftotext",
+          "reading_scope": "摘要、§II 實驗方法與結果（Fig. 2–5 說明）",
+          "locator": "§II〈Results〉第 1–3 段",
+          "summary": "直剪試驗、低圍壓（<1 kPa），材料為 0.1–0.4 mm 角狀沙與三種玻璃珠，含水量（水重／固體重）低於 0.05，都在擺動態。沙的內摩擦角約 33°，幾乎不隨含水量變；Coulomb 凝聚力隨含水量非線性上升，約在含水量 0.03 時飽和於約 600 Pa。較窄粒徑分布的玻璃珠在約 0.025 飽和、約 350 Pa；較寬分布的約 0.01、約 300 Pa；單一粒徑珠子由乾的零直接跳到約 150 Pa，與含水量無關。作者以數值模擬與模型歸因於液橋的分布。",
+          "limitations": "含水量是質量比，與 Pakpour、Nowak 的體積分率不同，片中不得互相換算或比大小；只測擺動態，不能說明太濕的情形。",
+          "author_cache": {
+            "file": "f22src/hal_richefeu2006.pdf",
+            "sha256_prefix": "ed06d7e46fd34a03",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://hal.science/hal-00022654v1/file/richefeu06PRE.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-f1acb5872250db59",
       "url": "https://doi.org/10.1121/1.3514423",
       "readings": [
@@ -110911,6 +111469,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave9-acoustics-20261101",
           "original_url": "https://pure.tue.nl/ws/files/1503964/617406.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f3ed8ff1e7055b71",
+      "url": "https://esrf.fr/UsersAndScience/Publications/Highlights/2008/materials/materials5",
+      "readings": [
+        {
+          "canonical_url": "https://esrf.fr/UsersAndScience/Publications/Highlights/2008/materials/materials5",
+          "title": "Morphological clues to wet granular pile stability（ESRF Highlights 2008）",
+          "publisher": "European Synchrotron Radiation Facility；原研究 Scheel 等，Nature Materials 7, 189（2008）",
+          "version": "機構年度研究亮點頁",
+          "read_via": "WebSearch 結果列出此頁；curl GET 200，HTML 轉文字",
+          "reading_scope": "全頁",
+          "locator": "正文第 1–5 段與 Fig. 29–30 說明",
+          "summary": "以 ID15A 光束線 X 光顯微斷層掃描看濕玻璃珠堆裡的水：顆粒間大部分空間是空氣不是水；含液量 W 大於約 0.02 時，水由液橋、三聚體與填滿的四面體縫隙在邊上黏成延伸的團簇；這些團簇內的拉普拉斯壓力在 W 約 0.02 以上趨近一個只由表面張力、潤濕角與顆粒大小形狀決定的共通值，約 5 分鐘達平衡；結果是濕顆粒堆的凝聚強度在所研究的整個範圍內大致與含液量無關，並有證據顯示對真實沙粒也成立。",
+          "limitations": "是機構寫的研究摘要，不是原論文；Nature Materials 原文的 ANU 典藏限制開放至 2037，研究者個人頁的副本授權不明，未使用（見 not_added）。只算 0.75 條。 覆核 V25（2026-11-12）：計數由 0.75 改為 0：機構研究亮點等同新聞稿，只當入口。limitations 補：「約 5 分鐘」是個別水團平衡的時間。WebSearch 另見研究者個人頁的出版社 PDF，ANU 典藏限制至 2037，授權不明，不使用。",
+          "author_cache": {
+            "file": "f22src/esrf_highlight2008_materials5.html",
+            "sha256_prefix": "a16d01fc4d9eec01",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://esrf.fr/UsersAndScience/Publications/Highlights/2008/materials/materials5"
         }
       ]
     },
@@ -114842,6 +115426,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.wtamu.edu/~cbaird/sq/2014/10/15/why-are-the-microwaves-in-a-microwave-oven-tuned-to-water/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fca3adb2027d246e",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3412320/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/srep00549",
+          "title": "How to construct the perfect sandcastle",
+          "publisher": "Scientific Reports 2, 549（Pakpour, Habibi, Møller, Bonn），2012 年 8 月 2 日；CC BY-NC-SA 3.0",
+          "version": "PMC3412320 全文 XML（Europe PMC REST）",
+          "read_via": "WebSearch 結果列出 PMC3412320；以 Europe PMC REST fullTextXML 取得全文（PMC 網頁 curl 會遇 reCAPTCHA，不繞過）",
+          "reading_scope": "全文（摘要、正文、Discussion、Methods、圖說）",
+          "locator": "Results 第 1–3 段（屈曲、h∝R^(2/3)、0.2% 門檻）；Discussion（2.5 m、20 cm 舊估計、壓實、疏水沙水下沙堡）；Methods；Fig. 1–4 說明",
+          "summary": "平均半徑 100 µm 的海灘沙加少量去離子水，在對半剖開的 PVC 管中分層壓實（每層至少敲 70 下）後拆管，逐次加高到崩塌，用 8 種直徑 0.5–7.5 cm 的管。沙柱是在自身重量下彈性屈曲而壞，最大高度與底半徑的 2/3 次方成正比（實驗指數 0.7±0.05）；圖 1 的兩根柱分別直徑 2 cm 高 27 cm、直徑 7 cm 高 60 cm。量到的剪切模數在液體體積分率約 1% 時最佳；模型指出低於約 0.2% 因顆粒表面粗糙而形成不了液橋。以典型海灘沙代入，半徑 20 cm 的圓柱可高約 2.5 m，遠高於文獻舊估計約 20 cm（與底寬無關）。普通沙泡進水裡液橋會消失；用疏水沙則水與空氣角色互換，壓實後有效密度由 1.6 降到 0.6 g/cm³，可在水下堆沙堡。",
+          "limitations": "2.5 m 是模型估算，不是實測；實驗是直立圓柱不是城堡造型；作者說拆管時的擾動讓實測略低於理論。 覆核 V25（2026-11-12）：summary 改：Fig. 1 的 2 cm／27 cm、7 cm／60 cm 是照片中的柱子，原文沒說是最大高度；2.5 m 用的是模型預測的模數與典型海灘沙參數；0.2%、液橋合併出自引用的 Møller & Bonn 2007 模型。",
+          "author_cache": {
+            "file": "f22src/PMC3412320.xml",
+            "sha256_prefix": "3ec147b0adfee468",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-12",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave63-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3412320/fullTextXML"
         }
       ]
     },
@@ -289075,6 +289685,1146 @@
       "production_ready": false
     },
     {
+      "id": "H63-001",
+      "question": "四個月大和六個月大的嬰兒，雙腳交叉時一隻腳被碰，哪一組比較會動錯腳？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.infant_crossed_feet_external_coding_emerges_4_to_6_months",
+      "answer_target": "反而是大一點的那組比較常出錯。英國 Goldsmiths 與牛津的研究者讓 17 名 4 個月大、13 名 6 個月大的嬰兒躺在嬰兒椅上，兩隻腳底各貼一個小振動器，每次只振一隻腳 1 秒，只看哪隻腳先動；每 5 次換成雙腳交叉或不交叉。6 個月大的嬰兒不交叉時動對腳的比例比交叉時高，而且只有不交叉時明顯高於亂猜，交叉時接近亂猜；4 個月大的嬰兒兩種姿勢一樣準、都高於亂猜，雙腳交叉時明顯勝過 6 個月大的嬰兒。4 個月大的反應也比較快（平均約 0.73 秒對 1.41 秒），兩組粗大縮腳動作的比例一樣。研究者據此認為：把觸碰放到『外面空間的哪一邊』，是在出生後 4 到 6 個月之間才出現；更早的嬰兒只按『身體上的哪一處』感覺觸碰。",
+      "scope": "測的是腳、單一觸碰後先動哪隻腳，不是兩手兩下的先後判斷；兩個年齡是不同的兩群嬰兒（不是追蹤同一批）；作者接受稿。不得說 4 個月大的嬰兒觸覺比較好；不得與 H62-002 的 13 名早期開刀兒童或 H62-001 的視障嬰兒合成一群，也不得說兩篇矛盾（H62-002 說出生頭 5 個月的視覺不關鍵，本篇說一般嬰兒的交叉代價 4 到 6 個月才出現，兩者講不同的事）；正文只給合併平均，不得從圖上讀出各組數字唸出來；作者引文獻說 10 個月大能適應姿勢改變，是轉引，不計。",
+      "source_locator": "F21-S001：正文第 1 段、〈Thus, the influence…〉段；Figure 1 圖說；Figure S1 圖說；Supplemental〈Participants〉〈Design〉〈Procedure〉",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：『6 個月有交叉代價』與 H62-001 視力正常嬰兒（5 個月到快 3 歲）已有交叉代價同方向，照 V22 對 H62-001 的先例不重算；真正新增的是『4 個月還沒有交叉代價、交叉時反而勝過 6 個月』這一步，加上樣本小、短篇通訊、量的是腳，計 0.75。 原提案 F21-001（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；數字、條件、主詞逐句相符，來源合規、雜湊相同；池中沒有 Begum Ali／雙腳交叉核心。但『6 個月有代價』這半與 H62-001 重疊，6 個月組交叉時是機率水準而非系統性錯，畫面與計數都要下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為小嬰兒什麼都還不會、一定比較容易搞錯；結果最小的那群反而不被交叉騙——因為他們還沒學會把觸碰放到外面的空間。",
+        "visual": "時間軸：4 個月與 6 個月兩個嬰兒俯視圖，雙腳交叉、腳底一點亮起，4 個月那隻動對腳、6 個月那隻動錯；軸上再標 H62-001、H62-002 的位置但不合併。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave63-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a43d7f194ad38fc9",
+          "origin": "wave63-human-20261111",
+          "locator": "F21-S001：正文第 1 段、〈Thus, the influence…〉段；Figure 1 圖說；Figure S1 圖說；Supplemental〈Participants〉〈Design〉〈Procedure〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H63-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-001",
+      "question": "輪胎壓進水窪時，前面那堆水到底往哪裡去？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.water_bank_flow_front_of_tire_piv",
+      "answer_target": "研究者先整理前人的研究：輪胎前方大致分三區——還沒被碰到的靜水；一道『速度鋒面』，水突然被加速、水面隆起，濺出水絲和水滴；鋒面和接地面之間被夾住的水，中央主要被往前推，靠近胎肩的被往兩側擠，剩下的進了胎溝。法國里昂中央理工與 Michelin 接著在試車場路面嵌一塊透明窗，從下面打雷射、在水裡撒螢光粒子，量真車（車速每小時約 30 到 80 公里）滾過水窪時其中兩處的水速：胎面中央前方往前推的水，和胎肩旁往側面擠的水。兩個水速大致都隨車速直線增加。研究者在結論提到，磨耗胎在 1.5 毫米水深時這條直線約在時速 60 公里出現轉折，但他們也說點數不夠、誤差很大，要再量才能確認轉折是否真的存在。",
+      "scope": "一款夏季胎的新胎與磨耗胎、平滑地面、單一試車場；新胎與磨耗胎用的水深不同（8 對 1.5 毫米），不得比較誰比較容易水漂，也不得延伸成換胎建議；量的是水的速度，不是升力或摩擦，『60 公里轉折』不得說成『60 公里開始水漂』，且要帶出作者的保留；引言轉述的法規試驗水漂不用。",
+      "source_locator": "F21-S003：§1 與 Figure 1；§2 車速與水深；§3.2–3.4；§4 Summary and conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.75）：本篇真正量到的是水岸縱向與胎肩側向兩個速度隨車速大致線性增加（一條胎、一個試車場、方法論文）；三區示意是引言整理前人、不計；60 km/h 轉折作者自己說可能是假象且誤差棒過大，計 0。 原提案 F21-004（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；來源合規、PDF 雜湊相同；但作者把引言整理的前人三區示意寫成本篇量到的結果，又加了原文不支持的『第一次』，『成比例』也說過頭。改字後只當鋪路段落，計 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『飄』之前，輪胎其實一直在跟水搶路：水不是被壓扁，而是被分成三路趕走，趕不走的就墊在前面。",
+        "visual": "透明窗下的仰視動畫：輪胎前方一道亮色鋒面、中央箭頭往前、肩部箭頭往兩側、一部分流進胎溝；車速表 30→80 km/h。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd2df289dc7daa9c",
+          "origin": "wave63-physics-20261111",
+          "locator": "F21-S003：§1 與 Figure 1；§2 車速與水深；§3.2–3.4；§4 Summary and conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-002",
+      "question": "水被擠進胎紋的溝裡之後，在溝裡是怎麼流的？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.groove_flow_bubbles_vortices_transverse_ejection",
+      "answer_target": "不是一條乾淨的水管。同一個團隊用同樣的透明窗，把雷射伸進一條新的 Michelin 夏季胎（溝深 6 毫米）的胎溝裡，讓車以每秒 8.3 到 19.4 公尺（論文原單位）開過 8 毫米深的水窪，每個條件重複 16 次。螢光影像看到溝裡有一條條長長的氣泡柱：12 毫米寬的縱溝有兩條、6 毫米寬的有一條；流速量測顯示溝裡的水沿著溝在打旋，寬溝是兩個反向的渦旋、窄溝一個，渦旋數跟溝的寬高比有關。從地面看，縱溝裡的水往車行的反方向流，局部可達車速的十分之一。橫向的小溝更特別：在接地面前段把水往外甩，到了後段反而往內吸。研究者也看到，車速越快，輪胎貼地的那一段越短。",
+      "scope": "預印本；一條新胎、8 毫米水深（作者自稱遠高於實際路況），沒有測磨耗胎；接地長度隨車速縮短是同團隊另一篇的螢光觀測、本篇量測與之一致，旁白說『同一團隊』；氣泡與渦旋的成因作者只提出可能機制，不得說成定論；不推論胎紋設計好壞、不給換胎建議。",
+      "source_locator": "F21-S004：§3.3–3.4；§4.1 Figure 3；§6.1；§6.3 結論段；§6.4 Figure 19；§7.2 Figure 21；§8",
+      "premise_status": "screened",
+      "notes": "同意 0.5（溝內兩相流與渦旋數隨溝形改變、縱溝反向流約車速一成、橫溝前排後吸合計）。與 F21-004 同一研究群、同一試車場與量測法，兩核心合計 0.75（作者 1.25），不到作者的 1.0 底線，因為 F21-004 的三區是引言整理。 原提案 F21-005（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；數字與條件相符；溝內流場是池中沒有的直接影像。版本標示要改正（有期刊 DOI，但讀到的是送審前版本）。只當鋪路，不構成轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "胎溝不是排水管，溝裡有空氣、有漩渦、有的溝前段吐水後段吸水——排水比想像的亂。",
+        "visual": "胎溝剖面動畫：寬溝裡兩條白色氣泡柱與兩個反向小漩渦，窄溝一條一個；俯視再畫橫溝前段往外、後段往內的箭頭。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-7544ef3b61c59168",
+          "origin": "wave63-physics-20261111",
+          "locator": "F21-S004：§3.3–3.4；§4.1 Figure 3；§6.1；§6.3 結論段；§6.4 Figure 19；§7.2 Figure 21；§8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-003",
+      "question": "浴室裡唱歌的「回音」，跟音樂廳的殘響是同一種東西嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.small_room_short_reverb_hard_surfaces",
+      "answer_target": "先分清楚「殘響時間」：聲音停了以後衰減 60 分貝要多久。HyperPhysics 教材說，它強烈受表面吸收影響，也取決於房間容積，並直說「小房間不會有長的殘響時間」。教材的吸收係數表裡，澆置混凝土、磚、鋪在混凝土上的乙烯地磚在 125 到 4000 赫茲大多只有 0.01 到 0.07；厚地毯、絲絨窗簾在中高頻可到 0.5 以上（但同表的未上漆空心磚也有 0.3–0.4，不是所有硬面都不吸音）。所以浴室不會有音樂廳那種長殘響；浴室實際的殘響秒數，教材與本題來源都沒有量。",
+      "scope": "教材的一般原理；不給浴室秒數、不說磁磚吸收係數（表中沒有瓷磚），不說「聲音很快很多次彈回」。",
+      "source_locator": "F22-S001〈What is a desirable reverberation time?〉；F22-S002〈Table of Absorption Coefficients〉",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：教材一句結論加一張轉載表，答案主體是定義；刪推論句後只剩「小房間不會長殘響」與材料對照。 原提案 F22-001（目標 C9-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；來源合規、雜湊相同；刪掉不在頁面上的推論，改正地磚種類並補上反例列。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "浴室的「回音」不是音樂廳那種長尾巴，而是又快又多的反彈。",
+        "visual": "俯視浴室與音樂廳兩個盒子，聲線在小盒子裡快速來回、在大盒子裡拉出長尾。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cb6e2aa7ab9db6e0",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S001〈What is a desirable reverberation time?〉；F22-S002〈Table of Absorption Coefficients〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cf9ec0194d5e7f9f",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S001〈What is a desirable reverberation time?〉；F22-S002〈Table of Absorption Coefficients〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-004",
+      "question": "房間越小，唱歌的人耳邊「房間送回來的聲音」占的比例就越高嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.voice_support_stv_small_room_high",
+      "answer_target": "在伊利諾大學一個研究的三個房間裡是這樣。研究者用假人頭在演唱者位置量「聲音支持度」：嘴巴發出、經房間反射回到耳邊的聲音，對比直接從嘴到耳的聲音的能量比。114.5 立方公尺的小教室是 −4.98 分貝，400 立方公尺的中廳 −10.69 分貝，6,600 立方公尺的音樂廳 −13.28 分貝；三個房間在觀眾席量到的殘響時間分別約 0.39、1.04、1.75 秒。殘響最短的小房間，反射聲對直達聲的比例反而最高。",
+      "scope": "三間房各自的量測值；比例不是絕對音量；最小的房間也有 114.5 立方公尺，不得外推到浴室的分貝數。",
+      "source_locator": "F22-S003 §II.B–D、Table II",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：三間房的特性量測出自方法段，與 F22-003 同一研究合計 1.5（作者 1.75）。 原提案 F22-002（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；負號、容積、殘響時間都對；把「送回最多」改成比例，並下修方法段數據的計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "殘響最短的房間，送回你耳朵的聲音反而最多。",
+        "visual": "三個房間由小到大排列，耳邊的「回送聲量條」由長變短，旁邊標殘響秒數由短變長。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6a07a4a91b444012",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S003 §II.B–D、Table II",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-005",
+      "question": "唱歌的人覺得一個房間「撐得住聲音」，靠的是耳朵聽到的，還是眼睛看到的？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.singer_support_rating_needs_room_sound",
+      "answer_target": "在這個 10 位聲樂研究生的初步研究裡，主要靠聽到的。他們在隔音小間裡唱，分別只看房間的 360 度照片（耳機沒有房間聲音）、只聽模擬的房間聲音（矇眼）、或兩者都有。只看到房間、聽不到房間回聲時，「歌聲被支持」的評分明顯較低；只要耳機裡有模擬的房間聲音，評分就和在真實房間裡沒有顯著差別。作者也提醒：沒有顯著差別不等於完全相同。",
+      "scope": "10 人、作者自稱初步；不說 VR 等於真實房間；不提「完全沒聲音也較低」（該項 p=0.065 未顯著）。",
+      "source_locator": "F22-S003 §III.B、Table VII、§IV 第二段",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：同一研究第二個結果（與 F22-002 合計 1.5）。 原提案 F22-003（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；核心結果正確；補條件定義與「無差別不等於相同」，避免引用未顯著的 control。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讓你覺得「好唱」的，是耳朵聽到的房間，不是眼睛看到的。",
+        "visual": "歌手戴 VR 頭盔，左邊只有畫面、右邊只有聲波回饋，評分表一高一低。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6a07a4a91b444012",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S003 §III.B、Table VII、§IV 第二段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-006",
+      "question": "把自己的聲音放大送回耳朵，說話的人會變大聲還是變小聲？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.sidetone_gain_lowers_voice_level",
+      "answer_target": "變小聲一點。2021 年一個實驗讓 30 名 19 到 32 歲的人戴開放式耳機朗讀，把自己的聲音額外放大 0、5、10 分貝送回耳朵。沒有噪音時，放大 5 分貝音量平均降 0.31 分貝、放大 10 分貝降 1.41 分貝（A 加權）；但安靜時自評舒適度幾乎沒變（約 +3.6 與 +0.3 個百分點，都不顯著），要把有噪音、沒噪音的條件合起來看，有增益時舒適度才顯著較高（約 +8.5 與 +10.5 個百分點）。",
+      "scope": "朗讀不是唱歌；耳機模擬，不是真實浴室；不提殘響的效果（正文事後比較不顯著）；不說「更省力」。",
+      "source_locator": "F22-S004 Abstract、〈Effects of Gain and Noise on SPL〉、Table 3、comfort 段",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：刪掉與結果段不符的殘響句；與 F22-005 同一實驗合計 1.25。 原提案 F22-004（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；主要數字正確，但殘響那句只在摘要、正文不顯著，刪。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聽得到自己，音量就自動降一點。",
+        "visual": "耳機裡的回授旋鈕往上轉，聲壓表的指針往下掉一格。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-970edf6ac2c4f7a7",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S004 Abstract、〈Effects of Gain and Noise on SPL〉、Table 3、comfort 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-007",
+      "question": "旁邊一直有噪音時，自己的聲音被送回來還有用嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.noise_raises_level_sidetone_restores_comfort",
+      "answer_target": "同一實驗加入約 70 分貝(A) 的語音頻譜噪音時，大家說話音量平均提高 3.49 分貝，自評舒適度掉了約 25 個百分點；這時把自己的聲音放大 5 或 10 分貝送回，音量降約 0.8 與 2.7 分貝，舒適度分別回升約 13 與 21 個百分點，比安靜時明顯。",
+      "scope": "噪音是語音頻譜噪音，不是水聲；片中不得說這測的是淋浴。",
+      "source_locator": "F22-S004〈Effects of Gain and Noise on SPL〉、comfort 段",
+      "premise_status": "screened",
+      "notes": "算 0.5 條，同作者。 原提案 F22-005（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確；補噪音下的音量變化。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "越吵，聽得到自己就越重要。",
+        "visual": "噪音雲籠罩說話的人，回授聲線穿過雲回到耳朵，舒適度條回升。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-970edf6ac2c4f7a7",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S004〈Effects of Gain and Noise on SPL〉、comfort 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-008",
+      "question": "嘴巴旁邊多兩面會反射的板子，說話音量會變嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.near_reflector_panels_reduce_vocal_effort",
+      "answer_target": "會小一點。2016 年的研究讓 20 名大學生在背景有教室嘈雜人聲的情況下，於消音室、殘響 0.78 秒的半殘響室、2.37 秒的殘響室朗讀；在嘴前 0.5 公尺、45 度角放兩片 56×66 公分的透明反射板時，音量平均降 0.86 分貝，三個房間都看得到，自評費力也大多較低（大聲朗讀加殘響室例外）。作者把整場實驗中音量隨作業次序上升的斜率解讀為短時間聲音疲勞，半殘響室最小；結論是靠近說話者的早期反射，可能不必改殘響時間就降低發聲費力。",
+      "scope": "朗讀不是唱歌；有背景人聲；作者自稱初步、兩個房間殘響不典型、板子只試一個距離角度；疲勞是作者解讀。",
+      "source_locator": "F22-S005 Methods、Results（ΔSPL、effort、fatigue）",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（同作者）：今日取得逐字全文並存快取，數字都對上，但只在一個距離、一種配置，且多處是解讀語。 原提案 F22-006（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；全文經 PMC 公開頁取得、逐句核對成立；補背景噪音條件與例外，疲勞改為作者解讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "近在身邊的牆，比遠處的殘響更像一支擴音器。",
+        "visual": "說話者兩側立起兩片透明板，聲線彈回耳朵，音量表少一格。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-039b0d13e90d73ae",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S005 Methods、Results（ΔSPL、effort、fatigue）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-009",
+      "question": "回聲很長的地方唱歌，音唱得比較準嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.choir_intonation_unchanged_by_virtual_reverb",
+      "answer_target": "在一個合唱實驗裡幾乎沒有差別。芬蘭一個 23 人、平均合唱 29 年的業餘合唱團戴耳機，在無殘響、模擬音樂廳（作者最終稿 1.77 秒）、模擬大教堂（4.79 秒）三種條件下唱 Bruckner 的〈Locus Iste〉。音準幾乎不受影響：只有 5 位女高音的平均絕對音高誤差達到顯著，三種條件約 17.6、16.4、18.7 音分，效果量小。作者說客觀差異都很小，主觀感受受影響大得多。",
+      "scope": "模擬的是長殘響，不是浴室；經耳機回送；秒數標「作者最終稿」。",
+      "source_locator": "F22-S006 §II.A–B、§III.B、§IV 第一段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條；與 F22-008 同一研究合計 1.75（作者 2.0）。 原提案 F22-007（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確；改題把「回聲多」限定為長殘響，避免與浴室混用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "房間改變的，主要是你覺得自己唱得怎樣，不是音準。",
+        "visual": "三條音高軌跡疊在一起幾乎重合，旁邊的「好唱嗎」評分卻高低不一。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9bfe16d451ed56c9",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S006 §II.A–B、§III.B、§IV 第一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-010",
+      "question": "回聲越長，唱起來就越舒服嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.choir_tempo_slows_long_reverb_preference_mid",
+      "answer_target": "不是。同一個合唱實驗裡，模擬的殘響越長，指揮選的速度越慢：平均每分鐘 84、79.5、71.7 拍，同步的精準度也下降，作者說這可能主要是速度變慢造成的。問卷幾乎每一項都最喜歡中等的 1.77 秒；只有「容易跟上拍子」是完全沒有殘響時最高，並隨殘響變長一路下降。",
+      "scope": "速度是指揮選的；浴室不在這三種條件裡。",
+      "source_locator": "F22-S006 §III.D、§III.F（Fig. 7）",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：同一研究合計 1.75。 原提案 F22-008（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確，補作者對時間精準度的保留，下修同研究計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回聲太多，歌會被拖慢、拍子會散。",
+        "visual": "節拍器由 84 慢到 72，聲波尾巴越拉越長，三個房間的喜好星數中間最高。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9bfe16d451ed56c9",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S006 §III.D、§III.F（Fig. 7）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-011",
+      "question": "職業歌手挑表演場地時，最在意的是什麼？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.singers_prefer_support_without_noise_churches",
+      "answer_target": "都靈理工的團隊轉述他們先前的紀錄：一個職業合唱團在米蘭四座現代教堂巡演後排序，最受歡迎的兩座「有足夠的聲學支持、又不會太吵」；最不受歡迎的一座被形容支持很少、很難和其他人唱在一起；另一座中頻像被切掉，歌手覺得得用發聲去補。",
+      "scope": "巡演後的開放式意見，本文轉述同組前作；不是控制實驗。",
+      "source_locator": "F22-S007 §2.A 末段、§2.B.iii",
+      "premise_status": "screened",
+      "notes": "算 0.5 條（作者 0.75）：轉述的質性意見。 原提案 F22-009（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；內容對上，但是轉述前作的質性排序，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "歌手要的是「被撐住」，不是「被淹沒」。",
+        "visual": "四座教堂剖面，兩座亮起綠燈標「有支持、不吵」，一座標「孤單」。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea714884cbb55fb",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S007 §2.A 末段、§2.B.iii",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-012",
+      "question": "同一個聲音加上房間的回聲，大腦怎麼分得出哪部分是聲音本身、哪部分是房間？",
+      "domain": "聲學",
+      "mechanism_key": "perception.natural_reverb_prior_separates_source_room",
+      "answer_target": "研究者認為大腦用的是「真實房間回聲的樣子」。MIT 量了 271 個日常空間（例子有浴室、電梯、樓梯間、街角）的脈衝響應：儘管空間各式各樣，回聲在各頻帶都以指數衰減，中頻拖得最久、高低頻衰減較快。聽者能從帶回聲的聲音裡分辨聲源與環境；回聲不像真實房間時分辨變差，不自然的回聲甚至被聽成聲音本身的一部分。",
+      "scope": "浴室只是樣本之一，沒有單獨數值；沒有測唱歌或好不好聽。",
+      "source_locator": "F22-S008 Abstract、Results 第 1–3 段、Fig. 2",
+      "premise_status": "screened",
+      "notes": "算 1.0 條；但與題目只間接相關（見 C9-01 cuts）。 原提案 F22-010（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確，答案改成「研究者認為」以標出推論。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你聽得出「是浴室在響」，因為大腦認得真實房間回聲的樣子。",
+        "visual": "聲波被拆成兩層：人聲一層、房間尾巴一層；把尾巴換成不自然的形狀，兩層就黏在一起。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a569d3a69ca32645",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S008 Abstract、Results 第 1–3 段、Fig. 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-013",
+      "question": "乾沙堆不出尖塔、挖不出隧道，加點水為什麼就可以？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_pile_steep_tunnel_liquid_states",
+      "answer_target": "因為液體在顆粒之間產生了凝聚力。綜述寫道：乾沙堆表面的坡大約 35 度，再倒也一樣，挖洞會塌；加適量的水，坡可以比乾沙陡得多，甚至 90 度以上，還能小心挖出隧道。但水太多就成了泥水，留不住形狀。研究者依液量把濕顆粒分成四種狀態：只在接觸點有液橋、部分孔隙灌滿、孔隙全滿但表面液體被吸回、完全泡在液體裡；前三種有凝聚力，最後一種沒有。",
+      "scope": "綜述的教學式敘述；不給四狀態的百分比界線。",
+      "source_locator": "F22-S009 §1 第 3–6 段、§2.2.1",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同作者。 原提案 F22-011（目標 C9-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；對上；把「全靠水橋」改為凝聚力，與四狀態一致。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一把沙，差的只是顆粒之間有沒有小水橋。",
+        "visual": "左邊乾沙堆塌成圓錐，右邊濕沙堆穿出一條隧道；放大到兩顆沙之間的一彎水。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9a5a7a2ad54134e9",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S009 §1 第 3–6 段、§2.2.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-014",
+      "question": "要讓一堆顆粒變得能堆陡，需要多少液體？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.nanometre_liquid_layer_raises_repose_angle",
+      "answer_target": "少得驚人。1997 年《自然》的一篇短文在直徑約 0.8 毫米的塑膠珠裡加入玉米油或真空泵油，最多只相當於珠子表面不到 50 奈米厚的油層，休止角就大幅上升，而且在結成團塊前大致與油層厚度成正比。作者用模型推算，液體裡大約 99.9% 沒有出力，真正把珠子拉在一起的只是接觸點附近的一點點。",
+      "scope": "塑膠珠與油，不是沙與水；99.9% 是模型推算，另一組理論學者不同意此詮釋。",
+      "source_locator": "F22-S010 正文第 2–4 段、Fig. 1 說明",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同作者；片中「99.9%」須標作者推算，並提 Halsey & Levine 不同意這個詮釋。 原提案 F22-012（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）照原稿收；逐句對上。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不到 50 奈米的一層油，就能讓坡陡一大截。",
+        "visual": "一顆珠子表面薄到看不見的油膜，放大到接觸點才看到一小彎；坡度計往上跳。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ec1c447595028d1",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S010 正文第 2–4 段、Fig. 1 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-014"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-015",
+      "question": "一盆乾的小珠子不加水，放著不動也會越來越「黏」嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.humidity_capillary_condensation_ageing_angle",
+      "answer_target": "在潮濕空氣裡會。里昂的實驗把約 200 微米的玻璃珠放在旋轉鼓裡，靜置越久，第一次崩落前能撐住的最大角度越大，大約與靜置時間的對數成正比；濕度很低時看不到這個現象，濕度越高越明顯，直徑大於 0.5 毫米的珠子除非非常潮濕也看不到。作者的解釋是空氣裡的水氣慢慢在顆粒接觸的細縫裡凝結成小水橋。",
+      "scope": "玻璃珠；不說沙子放著就會變硬到能堆城堡。",
+      "source_locator": "F22-S011 摘要、第 2–4 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同作者。 原提案 F22-013（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）照原稿收；逐句對上。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連空氣裡的水氣，都會慢慢在顆粒之間搭橋。",
+        "visual": "時鐘轉動，珠子接觸點上的小水珠一點點長大，坡度計慢慢上升。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b9493852efc844c",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S011 摘要、第 2–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-015"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-016",
+      "question": "濕沙堆崩塌時，是表面的沙先滾下來嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.cohesive_pile_bulk_failure_finite_size",
+      "answer_target": "理論說不是。1998 年的〈沙堡怎麼倒〉分析指出，顆粒之間有了黏著力，破壞的位置會從表面移到沙堆內部；而且在無限大的沙堆裡，臨界角其實不因黏著而改變，只有有限大小的沙堆才會變陡。換句話說，水帶來的好處跟沙堆多大有關。",
+      "scope": "理論文章，無新實驗。",
+      "source_locator": "F22-S012 摘要、正文第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5 條，同作者。 原提案 F22-014（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）照原稿收；理論文章，答案已用「理論說」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "濕沙堆不是從表面滑下來，而是從裡面斷開。",
+        "visual": "沙堆剖面，一條斜的破裂面從內部穿出，表面的沙還黏在一起整塊滑落。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-03d03e889306b9a8",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S012 摘要、正文第 2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-016"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-017",
+      "question": "實驗量到的濕沙堆最陡角度，為什麼常比理論和別人量的低？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_pile_angle_saturates_sidewall_effect",
+      "answer_target": "一個原因是容器的側壁。2005 年的旋轉鼓實驗把玻璃珠拌少量矽油或水，最大穩定角隨液量先急升、再飽和，他們刻意在飽和區做實驗（例如液體約占體積 0.008）。只看表面顆粒的舊模型預測這時應有至少 90 度，實際沙堆超過約 30 度就崩，作者認為是因為濕沙堆從內部壞掉。窄的裝置會因側壁撐高角度：別人在 3.2 公分寬的裝置裡量到的角度，比他們高 15 到 20 度。",
+      "scope": "玻璃珠為主；不引預印本的飽和點數字（原文誤植為 1 × 10³）；體積分率不與其他研究的質量含水量比較。",
+      "source_locator": "F22-S013 第 1–3 段、Fig. 2 說明與其後兩段",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：飽和點數字不能用；「從內部壞」與 F22-014 重疊。 原提案 F22-015（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；原 PDF 本身寫 10³，作者把誤植當成轉檔遺失並自行補上負號；改為不引該數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水給的陡度很快就到頂，牆壁還會讓人高估它。",
+        "visual": "透明旋轉鼓裡的珠子坡面，鼓越窄坡越陡，坡度計標出相差的角度。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-10ffa949172bdf7d",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S013 第 1–3 段、Fig. 2 說明與其後兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-017"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-018",
+      "question": "沙子越濕，越能撐住嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_sand_cohesion_saturates_friction_angle_constant",
+      "answer_target": "不會一直變強。蒙彼利埃的直剪試驗把 0.1 到 0.4 毫米的角狀沙加不同量的水：內摩擦角一直約 33 度，幾乎不隨水量變；變的是「凝聚力」，它隨含水量上升，但在水重約為沙重 3% 時就飽和在約 600 帕。玻璃珠飽和得更早；單一粒徑的珠子在他們測到的最低含水量就已經是固定值，之後不再隨水量變。",
+      "scope": "只測顆粒間只有液橋的少水範圍、圍壓低於 1 千帕；含水量是質量比，不與體積分率換算或比大小。",
+      "source_locator": "F22-S014 §II〈Results〉第 1–3 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同作者。 原提案 F22-016（目標 C9-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確；修正單一粒徑珠子的說法並刪掉編輯欄的誇大句。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "加水不是越加越強：第一點水就把力氣用完了大半。",
+        "visual": "凝聚力曲線先陡升、在 3% 處拉平；旁邊摩擦角的直線始終平平的 33 度。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f1a24f7696c1a1c8",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S014 §II〈Results〉第 1–3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-018"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-019",
+      "question": "沙堡最高能堆多高？只看沙子調得好不好嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.sandcastle_column_buckling_height_radius_two_thirds",
+      "answer_target": "還要看底有多寬。2012 年的實驗在對半剖開的管子裡壓實濕海灘沙，拆管後逐次加高到倒：沙柱是在自己的重量下像細桿一樣彎曲失穩，最大高度與底半徑的 2/3 次方成正比（實驗擬合 0.7±0.05）。論文照片裡的兩根沙柱，直徑 2 公分的高 27 公分、7 公分的高 60 公分。作者用模型預測的濕沙硬度、代入典型海灘沙，推算半徑 20 公分的圓柱可高約 2.5 公尺，遠高於舊文獻「約 20 公分、與底寬無關」的估計。",
+      "scope": "2.5 公尺是推算；實驗是直立圓柱；不教做法。",
+      "source_locator": "F22-S016 Results 第 1–2 段、Discussion、Methods、Fig. 1–2",
+      "premise_status": "screened",
+      "notes": "算 1.0 條；Pakpour 同一研究三核心合計 1.75（作者 2.0）。 原提案 F22-018（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；照片尺寸被寫成最大高度、推算基礎寫錯，已改。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沙堡倒下的方式像一根太細的竹竿，底越寬就能越高。",
+        "visual": "一排粗細不同的沙柱，細的先彎腰斷開；旁邊曲線標高度隨半徑增加。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fca3adb2027d246e",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S016 Results 第 1–2 段、Discussion、Methods、Fig. 1–2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-019"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-020",
+      "question": "濕沙最硬的時候，水占多少？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_sand_modulus_optimum_one_percent",
+      "answer_target": "同一研究量濕沙的剪切模數，最硬的時候液體只占體積約 1%。他們引用的模型指出，低於約 0.2% 時，因為沙粒表面粗糙，液橋根本搭不起來；水再多，液橋開始合併成較大的水團。作者也提到壓實能提高強度，堆沙堡的人本來就會這樣做。",
+      "scope": "體積分率；不與其他研究的質量含水量比較；不給「一桶沙配幾杯水」；題目不問「怎麼堆最好」以免成教學。",
+      "source_locator": "F22-S016 Results 第 3 段、Discussion、Methods、Fig. 3",
+      "premise_status": "screened",
+      "notes": "算 0.5 條，同作者。 原提案 F22-019（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；對上；改題避免變成操作建議，標出模型出處。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最硬的濕沙，水只占約百分之一。",
+        "visual": "模數曲線在 1% 附近冒出尖峰，兩側分別標「橋搭不起來」與「橋合併」。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fca3adb2027d246e",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S016 Results 第 3 段、Discussion、Methods、Fig. 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-020"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-021",
+      "question": "沙堡泡進水裡就散了，有沒有辦法在水底堆沙堡？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.hydrophobic_sand_underwater_castle_role_swap",
+      "answer_target": "普通沙泡進水裡，顆粒之間的水橋就消失了。但用市售的疏水沙，水和空氣的角色會對調：在水裡，換成空氣在沙粒之間搭橋，橋的拉力不變，壓實後的有效密度卻由每立方公分 1.6 克降到 0.6 克，所以能在水下堆出比陸上更誇張的沙堡。",
+      "scope": "疏水沙的示範；不教做法。",
+      "source_locator": "F22-S016 Discussion 末段、Fig. 4 說明",
+      "premise_status": "screened",
+      "notes": "算 0.25 條（作者 0.5）：示範性質，同一研究上限內下修。 原提案 F22-020（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；內容對上，屬示範，下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在水底，換空氣來當沙粒之間的橋。",
+        "visual": "水族箱裡一座疏水沙城堡，放大看沙粒之間是一個個小氣泡橋。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fca3adb2027d246e",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S016 Discussion 末段、Fig. 4 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-021"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-022",
+      "question": "在沙上拖重物，沙子濕一點會更費力嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_sand_lowers_sled_friction_stiffness",
+      "answer_target": "剛好相反，至少在少量水時。過去的看法是空氣濕氣在沙粒間凝成水橋、滑動時拉斷水橋會增加摩擦，所以乾沙比較好拖。2014 年阿姆斯特丹大學等團隊的實驗用拉力機等速拉一架放了砝碼的小雪橇過沙面：加少量水後摩擦下降，乾沙會在雪橇前面堆起一小堆沙，濕沙比較硬、堆得少；但水再多又變難拉（伊朗沙在含水超過約 5% 時），三種沙都有一個最好拉的含水量。三種沙的資料落在同一條線上：沙越硬，摩擦越小。",
+      "scope": "實驗室雪橇；不給搬運建議；「5%」只對伊朗沙。",
+      "source_locator": "F22-S017 第 1–3 段、方法段、Fig. 2 說明、5% 以上段、Fig. 7 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條（作者 1.25）；Fall 2014 兩核心合計 1.75（作者 2.0）。來源網址改為 UvA-DARE 官方檔。 原提案 F22-021（目標 C9-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；機制與數字對上；把 5% 限定到伊朗沙，下修同研究計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水不是讓沙變滑，是讓沙變硬，雪橇前面不再推出一座沙丘。",
+        "visual": "乾沙上雪橇前方隆起沙包；濕沙上雪橇前緣平順，拉力計指針掉一截。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-44f60013fb043f00",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S017 第 1–3 段、方法段、Fig. 2 說明、5% 以上段、Fig. 7 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-022"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-023",
+      "question": "古埃及壁畫裡在雪橇前倒水的人，只是在做儀式嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.egyptian_sledge_water_polydisperse_sand_friction",
+      "answer_target": "考古學界對此有爭議；這篇 2014 年的物理研究的作者認為不只是儀式。約西元前 1880 年的 Djehutihotep 墓壁畫裡，有人在雪橇前往沙上倒水。實驗中，加少量水造成的動摩擦下降，顆粒大小越整齊的沙越小、越參差的越大：10%、26%、40%，在標準沙上讓雪橇開始動所需的力最多降 70%；在顆粒最參差、最接近沙漠沙的那種沙上，摩擦係數可低到約 0.3，而木頭對木頭約 0.25 到 0.7。壁畫的意思仍是作者的詮釋，實驗沒有用古埃及的沙或雪橇。",
+      "scope": "壁畫用途是作者詮釋；不說「金字塔就是這樣蓋的」；三個百分比是三種沙各自的結果，不比大小以外的換算；不用壁畫照片。",
+      "source_locator": "F22-S017 第 1 段、Fig. 1 說明、多分散段、末兩段",
+      "premise_status": "screened",
+      "notes": "算 0.75 條，同作者。 原提案 F22-022（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字對上；把「研究認為」改為作者詮釋並寫出考古學爭議。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "壁畫裡倒水的人，可能是在幫大家省力。",
+        "visual": "仿壁畫風格的拉雪橇隊伍（不畫真實人物肖像），前方一人倒水；旁邊三種沙的下降百分比。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-44f60013fb043f00",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S017 第 1 段、Fig. 1 說明、多分散段、末兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-023"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P63-024",
+      "question": "濕沙為什麼讓東西好拖？東西陷進沙裡多深有關係嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.ploughing_friction_track_depth_yield_stress",
+      "answer_target": "2018 年同一研究群的延伸實驗發現，主要機制是「犁」：把光滑的鋼半球拉過濕沙，它一路在沙上犁出深溝；摩擦力隨含水量先急降後回升，犁溝的寬度也一樣先窄後寬，陷得越深越難拉。用水沙混合物的降伏應力決定陷多深的模型，不用調參數就重現了這個變化，作者說同一模型也能用在冰刀在冰上犁出痕跡的情形。",
+      "scope": "同一研究群延伸；不說「不是潤滑」（論文沒討論）。",
+      "source_locator": "F22-S018 摘要、§I 引言末段、§II、Fig. 2–3 說明",
+      "premise_status": "screened",
+      "notes": "算 0.5 條（作者 0.75）：非單調結果與 Fall 2014 重複。 原提案 F22-023（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；對上；刪掉論文沒有的「不是潤滑」對照，下修重複部分。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "好不好拖，看東西陷進沙裡多深。",
+        "visual": "鋼半球在三種含水量的沙上犁出寬窄不同的溝，拉力曲線同步一低一高。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-05aa62bdb65ea174",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S018 摘要、§I 引言末段、§II、Fig. 2–3 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P63-024"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T63-001",
+      "question": "黃燈一亮，駕駛人決定停或走，主要看什麼？開得快慢會改變那條界線嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.stop_go_decision_travel_time_predictor_field",
+      "answer_target": "主要看『還要幾秒才到停止線』。威斯康辛大學 2006 年在麥迪遜 6 個號誌路口（速限每小時 25 到 50 英里）錄影，取每個車道每次黃燈第一輛停下和最後一輛通過的車，只留黃燈亮時離停止線約 2 到 5.5 秒的，共 1,001 輛。初步整理時，離停止線不到 2 秒的車全部通過；在這批車裡，停下的只有 5% 在 2.9 秒以內，通過的只有 5% 在 4.5 秒以外。把時間分布按接近速度分開看，85 百分位幾乎不變，15 百分位則有中等變化（低速時通過車的 15 百分位略短）。研究者用邏輯迴歸找影響停或走的因素：黃燈亮時到停止線的估計時間『遠遠是最強的』，單用它就能猜對 77%；隔壁車道有沒有車通過、是不是大型車、側街有沒有人車在等，也有顯著影響。",
+      "scope": "美國單一都會區 6 個路口、年會修訂稿；時間是用黃燈前速度與距離估算；這是觀察停或走，不是闖紅燈或事故研究。不得換算成公里、不得與台灣 3／4／5 秒表或任何台灣路口對照、不得推出『低速路黃燈短有風險』；模型中『黃燈較長通過機率較高』一項不進片（容易被讀成黃燈長反而多人闖，原文沒有這個意思）；作者對 ITE 公式的設計建議不進片；不給駕駛建議。",
+      "source_locator": "F21-S002：Abstract；Table 1；Analysis 首段；Equation 6 後條列與 77%／82% 預測率；Figure 9–10 後文；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：時間界線與速度影響小 0.25（與 T62-004 同方向，價值在於把轉述換成可讀的原始資料，但不等於重現 FHWA 的說法）；多因素模型中隔壁車道、大型車、側街等候者 0.25。旅行時間是最強因子本身與 T62-004 同一結論，不另計。 原提案 F21-002（目標 C8-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；來源合規、雜湊相同，數字全對；池中沒有任何核心用這篇原文（T62 系列只有 FHWA 2023 綜整的轉述）。但答案與 payoff 把『85 百分位幾乎不受速度影響』擴大成『與速度無關、不管開多快』，並且漏寫 2.0–5.5 秒篩選窗；改字後收，計 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為停或走的界線會跟著車速照公式一路移動；真實錄影裡，界線的高端幾乎不動，只有低端隨速度小幅移動——決定停或走主要是在數『還有幾秒』。",
+        "visual": "路口俯視，車道上畫 2 秒、2.9 秒、4.5 秒三條時間線（不畫距離、不標公里），三種速度的車流到同一條時間線前分流。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave63-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e89f3899116890f7",
+          "origin": "wave63-tech-20261111",
+          "locator": "F21-S002：Abstract；Table 1；Analysis 首段；Equation 6 後條列與 77%／82% 預測率；Figure 9–10 後文；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T63-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T63-002",
+      "question": "公式假設停車時用一個固定的『舒適減速度』，真實的駕駛人是這樣煞車的嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.stopping_deceleration_rises_with_approach_speed",
+      "answer_target": "不是，開得越快的人煞得越重。同一份 2006 年麥迪遜錄影裡，能算出減速度的 444 輛黃燈後第一個停下的車，減速度 15、50、85 百分位是每秒平方 7.2、9.9、12.9 英尺；美國運輸工程師學會（ITE）常用的每秒平方 10 英尺，大約落在中位數。但分開看速度：接近時速超過 40 英里的停車者，69% 用了比 10 還重的煞車；40 英里以下只有 26%。離停止線 4 秒以內停的人，一半用了超過 11.0 的減速度；4 秒以外的一半低於 9.3。研究者的結論是：減速度跟接近速度、離路口多遠、反應快慢都有關，一個固定值描述不了所有人。",
+      "scope": "同一研究、同 6 個路口；減速度是『速度÷煞車時間』算出的平均值，不是最大煞車能力；不得與 T62-003 的 NCHRP 平均 10.08 相減或併成同一組數字（兩批資料）；作者『10 ft/s² 對高速路口可能偏保守』是對美國公式的設計意見，不進片，也不得與台灣條文比較（台灣第 231 條是查表，沒有寫減速度）；不給駕駛建議。",
+      "source_locator": "F21-S002：Abstract；〈Deceleration Rate〉Table 2 與 Figure 7 後文；Conclusions 減速度條列",
+      "premise_status": "screened",
+      "notes": "同意 0.5：減速度隨接近速度與距離改變是池中沒有的結論（T62-003 只有 NCHRP 平均與 85 百分位）。與 F21-002 同一研究，兩核心合計 1.0。 原提案 F21-003（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；數字與條件相符，只有樣本數寫錯（444 不是 463）；禁用項（ITE 設計建議、與台灣比較、與 T62-003 相減、駕駛建議）都已寫進 scope。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "公式裡那個『大家都一樣』的煞車力道，在錄影裡其實隨速度與距離一路變。",
+        "visual": "兩條減速度分布曲線（≤40 mph、>40 mph），中間一條 10 ft/s² 的直線，標 26% 與 69%；英制單位上字卡，不換算。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e89f3899116890f7",
+          "origin": "wave63-tech-20261111",
+          "locator": "F21-S002：Abstract；〈Deceleration Rate〉Table 2 與 Figure 7 後文；Conclusions 減速度條列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T63-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -433463,6 +435213,903 @@
       ]
     },
     {
+      "id": "H63-001",
+      "question": "四個月大和六個月大的嬰兒，雙腳交叉時一隻腳被碰，哪一組比較會動錯腳？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.infant_crossed_feet_external_coding_emerges_4_to_6_months",
+      "answer_target": "反而是大一點的那組比較常出錯。英國 Goldsmiths 與牛津的研究者讓 17 名 4 個月大、13 名 6 個月大的嬰兒躺在嬰兒椅上，兩隻腳底各貼一個小振動器，每次只振一隻腳 1 秒，只看哪隻腳先動；每 5 次換成雙腳交叉或不交叉。6 個月大的嬰兒不交叉時動對腳的比例比交叉時高，而且只有不交叉時明顯高於亂猜，交叉時接近亂猜；4 個月大的嬰兒兩種姿勢一樣準、都高於亂猜，雙腳交叉時明顯勝過 6 個月大的嬰兒。4 個月大的反應也比較快（平均約 0.73 秒對 1.41 秒），兩組粗大縮腳動作的比例一樣。研究者據此認為：把觸碰放到『外面空間的哪一邊』，是在出生後 4 到 6 個月之間才出現；更早的嬰兒只按『身體上的哪一處』感覺觸碰。",
+      "scope": "測的是腳、單一觸碰後先動哪隻腳，不是兩手兩下的先後判斷；兩個年齡是不同的兩群嬰兒（不是追蹤同一批）；作者接受稿。不得說 4 個月大的嬰兒觸覺比較好；不得與 H62-002 的 13 名早期開刀兒童或 H62-001 的視障嬰兒合成一群，也不得說兩篇矛盾（H62-002 說出生頭 5 個月的視覺不關鍵，本篇說一般嬰兒的交叉代價 4 到 6 個月才出現，兩者講不同的事）；正文只給合併平均，不得從圖上讀出各組數字唸出來；作者引文獻說 10 個月大能適應姿勢改變，是轉引，不計。",
+      "source_locator": "F21-S001：正文第 1 段、〈Thus, the influence…〉段；Figure 1 圖說；Figure S1 圖說；Supplemental〈Participants〉〈Design〉〈Procedure〉",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：『6 個月有交叉代價』與 H62-001 視力正常嬰兒（5 個月到快 3 歲）已有交叉代價同方向，照 V22 對 H62-001 的先例不重算；真正新增的是『4 個月還沒有交叉代價、交叉時反而勝過 6 個月』這一步，加上樣本小、短篇通訊、量的是腳，計 0.75。 原提案 F21-001（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；數字、條件、主詞逐句相符，來源合規、雜湊相同；池中沒有 Begum Ali／雙腳交叉核心。但『6 個月有代價』這半與 H62-001 重疊，6 個月組交叉時是機率水準而非系統性錯，畫面與計數都要下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為小嬰兒什麼都還不會、一定比較容易搞錯；結果最小的那群反而不被交叉騙——因為他們還沒學會把觸碰放到外面的空間。",
+        "visual": "時間軸：4 個月與 6 個月兩個嬰兒俯視圖，雙腳交叉、腳底一點亮起，4 個月那隻動對腳、6 個月那隻動錯；軸上再標 H62-001、H62-002 的位置但不合併。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave63-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a43d7f194ad38fc9",
+          "origin": "wave63-human-20261111",
+          "locator": "F21-S001：正文第 1 段、〈Thus, the influence…〉段；Figure 1 圖說；Figure S1 圖說；Supplemental〈Participants〉〈Design〉〈Procedure〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-human.json"
+      ]
+    },
+    {
+      "id": "P63-001",
+      "question": "輪胎壓進水窪時，前面那堆水到底往哪裡去？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.water_bank_flow_front_of_tire_piv",
+      "answer_target": "研究者先整理前人的研究：輪胎前方大致分三區——還沒被碰到的靜水；一道『速度鋒面』，水突然被加速、水面隆起，濺出水絲和水滴；鋒面和接地面之間被夾住的水，中央主要被往前推，靠近胎肩的被往兩側擠，剩下的進了胎溝。法國里昂中央理工與 Michelin 接著在試車場路面嵌一塊透明窗，從下面打雷射、在水裡撒螢光粒子，量真車（車速每小時約 30 到 80 公里）滾過水窪時其中兩處的水速：胎面中央前方往前推的水，和胎肩旁往側面擠的水。兩個水速大致都隨車速直線增加。研究者在結論提到，磨耗胎在 1.5 毫米水深時這條直線約在時速 60 公里出現轉折，但他們也說點數不夠、誤差很大，要再量才能確認轉折是否真的存在。",
+      "scope": "一款夏季胎的新胎與磨耗胎、平滑地面、單一試車場；新胎與磨耗胎用的水深不同（8 對 1.5 毫米），不得比較誰比較容易水漂，也不得延伸成換胎建議；量的是水的速度，不是升力或摩擦，『60 公里轉折』不得說成『60 公里開始水漂』，且要帶出作者的保留；引言轉述的法規試驗水漂不用。",
+      "source_locator": "F21-S003：§1 與 Figure 1；§2 車速與水深；§3.2–3.4；§4 Summary and conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.75）：本篇真正量到的是水岸縱向與胎肩側向兩個速度隨車速大致線性增加（一條胎、一個試車場、方法論文）；三區示意是引言整理前人、不計；60 km/h 轉折作者自己說可能是假象且誤差棒過大，計 0。 原提案 F21-004（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；來源合規、PDF 雜湊相同；但作者把引言整理的前人三區示意寫成本篇量到的結果，又加了原文不支持的『第一次』，『成比例』也說過頭。改字後只當鋪路段落，計 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『飄』之前，輪胎其實一直在跟水搶路：水不是被壓扁，而是被分成三路趕走，趕不走的就墊在前面。",
+        "visual": "透明窗下的仰視動畫：輪胎前方一道亮色鋒面、中央箭頭往前、肩部箭頭往兩側、一部分流進胎溝；車速表 30→80 km/h。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd2df289dc7daa9c",
+          "origin": "wave63-physics-20261111",
+          "locator": "F21-S003：§1 與 Figure 1；§2 車速與水深；§3.2–3.4；§4 Summary and conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-002",
+      "question": "水被擠進胎紋的溝裡之後，在溝裡是怎麼流的？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.groove_flow_bubbles_vortices_transverse_ejection",
+      "answer_target": "不是一條乾淨的水管。同一個團隊用同樣的透明窗，把雷射伸進一條新的 Michelin 夏季胎（溝深 6 毫米）的胎溝裡，讓車以每秒 8.3 到 19.4 公尺（論文原單位）開過 8 毫米深的水窪，每個條件重複 16 次。螢光影像看到溝裡有一條條長長的氣泡柱：12 毫米寬的縱溝有兩條、6 毫米寬的有一條；流速量測顯示溝裡的水沿著溝在打旋，寬溝是兩個反向的渦旋、窄溝一個，渦旋數跟溝的寬高比有關。從地面看，縱溝裡的水往車行的反方向流，局部可達車速的十分之一。橫向的小溝更特別：在接地面前段把水往外甩，到了後段反而往內吸。研究者也看到，車速越快，輪胎貼地的那一段越短。",
+      "scope": "預印本；一條新胎、8 毫米水深（作者自稱遠高於實際路況），沒有測磨耗胎；接地長度隨車速縮短是同團隊另一篇的螢光觀測、本篇量測與之一致，旁白說『同一團隊』；氣泡與渦旋的成因作者只提出可能機制，不得說成定論；不推論胎紋設計好壞、不給換胎建議。",
+      "source_locator": "F21-S004：§3.3–3.4；§4.1 Figure 3；§6.1；§6.3 結論段；§6.4 Figure 19；§7.2 Figure 21；§8",
+      "premise_status": "screened",
+      "notes": "同意 0.5（溝內兩相流與渦旋數隨溝形改變、縱溝反向流約車速一成、橫溝前排後吸合計）。與 F21-004 同一研究群、同一試車場與量測法，兩核心合計 0.75（作者 1.25），不到作者的 1.0 底線，因為 F21-004 的三區是引言整理。 原提案 F21-005（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；數字與條件相符；溝內流場是池中沒有的直接影像。版本標示要改正（有期刊 DOI，但讀到的是送審前版本）。只當鋪路，不構成轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "胎溝不是排水管，溝裡有空氣、有漩渦、有的溝前段吐水後段吸水——排水比想像的亂。",
+        "visual": "胎溝剖面動畫：寬溝裡兩條白色氣泡柱與兩個反向小漩渦，窄溝一條一個；俯視再畫橫溝前段往外、後段往內的箭頭。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-7544ef3b61c59168",
+          "origin": "wave63-physics-20261111",
+          "locator": "F21-S004：§3.3–3.4；§4.1 Figure 3；§6.1；§6.3 結論段；§6.4 Figure 19；§7.2 Figure 21；§8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-003",
+      "question": "浴室裡唱歌的「回音」，跟音樂廳的殘響是同一種東西嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.small_room_short_reverb_hard_surfaces",
+      "answer_target": "先分清楚「殘響時間」：聲音停了以後衰減 60 分貝要多久。HyperPhysics 教材說，它強烈受表面吸收影響，也取決於房間容積，並直說「小房間不會有長的殘響時間」。教材的吸收係數表裡，澆置混凝土、磚、鋪在混凝土上的乙烯地磚在 125 到 4000 赫茲大多只有 0.01 到 0.07；厚地毯、絲絨窗簾在中高頻可到 0.5 以上（但同表的未上漆空心磚也有 0.3–0.4，不是所有硬面都不吸音）。所以浴室不會有音樂廳那種長殘響；浴室實際的殘響秒數，教材與本題來源都沒有量。",
+      "scope": "教材的一般原理；不給浴室秒數、不說磁磚吸收係數（表中沒有瓷磚），不說「聲音很快很多次彈回」。",
+      "source_locator": "F22-S001〈What is a desirable reverberation time?〉；F22-S002〈Table of Absorption Coefficients〉",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：教材一句結論加一張轉載表，答案主體是定義；刪推論句後只剩「小房間不會長殘響」與材料對照。 原提案 F22-001（目標 C9-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；來源合規、雜湊相同；刪掉不在頁面上的推論，改正地磚種類並補上反例列。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "浴室的「回音」不是音樂廳那種長尾巴，而是又快又多的反彈。",
+        "visual": "俯視浴室與音樂廳兩個盒子，聲線在小盒子裡快速來回、在大盒子裡拉出長尾。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cb6e2aa7ab9db6e0",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S001〈What is a desirable reverberation time?〉；F22-S002〈Table of Absorption Coefficients〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-cf9ec0194d5e7f9f",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S001〈What is a desirable reverberation time?〉；F22-S002〈Table of Absorption Coefficients〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-004",
+      "question": "房間越小，唱歌的人耳邊「房間送回來的聲音」占的比例就越高嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.voice_support_stv_small_room_high",
+      "answer_target": "在伊利諾大學一個研究的三個房間裡是這樣。研究者用假人頭在演唱者位置量「聲音支持度」：嘴巴發出、經房間反射回到耳邊的聲音，對比直接從嘴到耳的聲音的能量比。114.5 立方公尺的小教室是 −4.98 分貝，400 立方公尺的中廳 −10.69 分貝，6,600 立方公尺的音樂廳 −13.28 分貝；三個房間在觀眾席量到的殘響時間分別約 0.39、1.04、1.75 秒。殘響最短的小房間，反射聲對直達聲的比例反而最高。",
+      "scope": "三間房各自的量測值；比例不是絕對音量；最小的房間也有 114.5 立方公尺，不得外推到浴室的分貝數。",
+      "source_locator": "F22-S003 §II.B–D、Table II",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：三間房的特性量測出自方法段，與 F22-003 同一研究合計 1.5（作者 1.75）。 原提案 F22-002（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；負號、容積、殘響時間都對；把「送回最多」改成比例，並下修方法段數據的計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "殘響最短的房間，送回你耳朵的聲音反而最多。",
+        "visual": "三個房間由小到大排列，耳邊的「回送聲量條」由長變短，旁邊標殘響秒數由短變長。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6a07a4a91b444012",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S003 §II.B–D、Table II",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-005",
+      "question": "唱歌的人覺得一個房間「撐得住聲音」，靠的是耳朵聽到的，還是眼睛看到的？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.singer_support_rating_needs_room_sound",
+      "answer_target": "在這個 10 位聲樂研究生的初步研究裡，主要靠聽到的。他們在隔音小間裡唱，分別只看房間的 360 度照片（耳機沒有房間聲音）、只聽模擬的房間聲音（矇眼）、或兩者都有。只看到房間、聽不到房間回聲時，「歌聲被支持」的評分明顯較低；只要耳機裡有模擬的房間聲音，評分就和在真實房間裡沒有顯著差別。作者也提醒：沒有顯著差別不等於完全相同。",
+      "scope": "10 人、作者自稱初步；不說 VR 等於真實房間；不提「完全沒聲音也較低」（該項 p=0.065 未顯著）。",
+      "source_locator": "F22-S003 §III.B、Table VII、§IV 第二段",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：同一研究第二個結果（與 F22-002 合計 1.5）。 原提案 F22-003（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；核心結果正確；補條件定義與「無差別不等於相同」，避免引用未顯著的 control。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讓你覺得「好唱」的，是耳朵聽到的房間，不是眼睛看到的。",
+        "visual": "歌手戴 VR 頭盔，左邊只有畫面、右邊只有聲波回饋，評分表一高一低。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6a07a4a91b444012",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S003 §III.B、Table VII、§IV 第二段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-006",
+      "question": "把自己的聲音放大送回耳朵，說話的人會變大聲還是變小聲？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.sidetone_gain_lowers_voice_level",
+      "answer_target": "變小聲一點。2021 年一個實驗讓 30 名 19 到 32 歲的人戴開放式耳機朗讀，把自己的聲音額外放大 0、5、10 分貝送回耳朵。沒有噪音時，放大 5 分貝音量平均降 0.31 分貝、放大 10 分貝降 1.41 分貝（A 加權）；但安靜時自評舒適度幾乎沒變（約 +3.6 與 +0.3 個百分點，都不顯著），要把有噪音、沒噪音的條件合起來看，有增益時舒適度才顯著較高（約 +8.5 與 +10.5 個百分點）。",
+      "scope": "朗讀不是唱歌；耳機模擬，不是真實浴室；不提殘響的效果（正文事後比較不顯著）；不說「更省力」。",
+      "source_locator": "F22-S004 Abstract、〈Effects of Gain and Noise on SPL〉、Table 3、comfort 段",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：刪掉與結果段不符的殘響句；與 F22-005 同一實驗合計 1.25。 原提案 F22-004（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；主要數字正確，但殘響那句只在摘要、正文不顯著，刪。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聽得到自己，音量就自動降一點。",
+        "visual": "耳機裡的回授旋鈕往上轉，聲壓表的指針往下掉一格。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-970edf6ac2c4f7a7",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S004 Abstract、〈Effects of Gain and Noise on SPL〉、Table 3、comfort 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-007",
+      "question": "旁邊一直有噪音時，自己的聲音被送回來還有用嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.noise_raises_level_sidetone_restores_comfort",
+      "answer_target": "同一實驗加入約 70 分貝(A) 的語音頻譜噪音時，大家說話音量平均提高 3.49 分貝，自評舒適度掉了約 25 個百分點；這時把自己的聲音放大 5 或 10 分貝送回，音量降約 0.8 與 2.7 分貝，舒適度分別回升約 13 與 21 個百分點，比安靜時明顯。",
+      "scope": "噪音是語音頻譜噪音，不是水聲；片中不得說這測的是淋浴。",
+      "source_locator": "F22-S004〈Effects of Gain and Noise on SPL〉、comfort 段",
+      "premise_status": "screened",
+      "notes": "算 0.5 條，同作者。 原提案 F22-005（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確；補噪音下的音量變化。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "越吵，聽得到自己就越重要。",
+        "visual": "噪音雲籠罩說話的人，回授聲線穿過雲回到耳朵，舒適度條回升。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-970edf6ac2c4f7a7",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S004〈Effects of Gain and Noise on SPL〉、comfort 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-008",
+      "question": "嘴巴旁邊多兩面會反射的板子，說話音量會變嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.near_reflector_panels_reduce_vocal_effort",
+      "answer_target": "會小一點。2016 年的研究讓 20 名大學生在背景有教室嘈雜人聲的情況下，於消音室、殘響 0.78 秒的半殘響室、2.37 秒的殘響室朗讀；在嘴前 0.5 公尺、45 度角放兩片 56×66 公分的透明反射板時，音量平均降 0.86 分貝，三個房間都看得到，自評費力也大多較低（大聲朗讀加殘響室例外）。作者把整場實驗中音量隨作業次序上升的斜率解讀為短時間聲音疲勞，半殘響室最小；結論是靠近說話者的早期反射，可能不必改殘響時間就降低發聲費力。",
+      "scope": "朗讀不是唱歌；有背景人聲；作者自稱初步、兩個房間殘響不典型、板子只試一個距離角度；疲勞是作者解讀。",
+      "source_locator": "F22-S005 Methods、Results（ΔSPL、effort、fatigue）",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（同作者）：今日取得逐字全文並存快取，數字都對上，但只在一個距離、一種配置，且多處是解讀語。 原提案 F22-006（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；全文經 PMC 公開頁取得、逐句核對成立；補背景噪音條件與例外，疲勞改為作者解讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "近在身邊的牆，比遠處的殘響更像一支擴音器。",
+        "visual": "說話者兩側立起兩片透明板，聲線彈回耳朵，音量表少一格。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-039b0d13e90d73ae",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S005 Methods、Results（ΔSPL、effort、fatigue）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-009",
+      "question": "回聲很長的地方唱歌，音唱得比較準嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.choir_intonation_unchanged_by_virtual_reverb",
+      "answer_target": "在一個合唱實驗裡幾乎沒有差別。芬蘭一個 23 人、平均合唱 29 年的業餘合唱團戴耳機，在無殘響、模擬音樂廳（作者最終稿 1.77 秒）、模擬大教堂（4.79 秒）三種條件下唱 Bruckner 的〈Locus Iste〉。音準幾乎不受影響：只有 5 位女高音的平均絕對音高誤差達到顯著，三種條件約 17.6、16.4、18.7 音分，效果量小。作者說客觀差異都很小，主觀感受受影響大得多。",
+      "scope": "模擬的是長殘響，不是浴室；經耳機回送；秒數標「作者最終稿」。",
+      "source_locator": "F22-S006 §II.A–B、§III.B、§IV 第一段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條；與 F22-008 同一研究合計 1.75（作者 2.0）。 原提案 F22-007（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確；改題把「回聲多」限定為長殘響，避免與浴室混用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "房間改變的，主要是你覺得自己唱得怎樣，不是音準。",
+        "visual": "三條音高軌跡疊在一起幾乎重合，旁邊的「好唱嗎」評分卻高低不一。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9bfe16d451ed56c9",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S006 §II.A–B、§III.B、§IV 第一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-010",
+      "question": "回聲越長，唱起來就越舒服嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.choir_tempo_slows_long_reverb_preference_mid",
+      "answer_target": "不是。同一個合唱實驗裡，模擬的殘響越長，指揮選的速度越慢：平均每分鐘 84、79.5、71.7 拍，同步的精準度也下降，作者說這可能主要是速度變慢造成的。問卷幾乎每一項都最喜歡中等的 1.77 秒；只有「容易跟上拍子」是完全沒有殘響時最高，並隨殘響變長一路下降。",
+      "scope": "速度是指揮選的；浴室不在這三種條件裡。",
+      "source_locator": "F22-S006 §III.D、§III.F（Fig. 7）",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：同一研究合計 1.75。 原提案 F22-008（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確，補作者對時間精準度的保留，下修同研究計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回聲太多，歌會被拖慢、拍子會散。",
+        "visual": "節拍器由 84 慢到 72，聲波尾巴越拉越長，三個房間的喜好星數中間最高。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9bfe16d451ed56c9",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S006 §III.D、§III.F（Fig. 7）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-011",
+      "question": "職業歌手挑表演場地時，最在意的是什麼？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.singers_prefer_support_without_noise_churches",
+      "answer_target": "都靈理工的團隊轉述他們先前的紀錄：一個職業合唱團在米蘭四座現代教堂巡演後排序，最受歡迎的兩座「有足夠的聲學支持、又不會太吵」；最不受歡迎的一座被形容支持很少、很難和其他人唱在一起；另一座中頻像被切掉，歌手覺得得用發聲去補。",
+      "scope": "巡演後的開放式意見，本文轉述同組前作；不是控制實驗。",
+      "source_locator": "F22-S007 §2.A 末段、§2.B.iii",
+      "premise_status": "screened",
+      "notes": "算 0.5 條（作者 0.75）：轉述的質性意見。 原提案 F22-009（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；內容對上，但是轉述前作的質性排序，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "歌手要的是「被撐住」，不是「被淹沒」。",
+        "visual": "四座教堂剖面，兩座亮起綠燈標「有支持、不吵」，一座標「孤單」。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea714884cbb55fb",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S007 §2.A 末段、§2.B.iii",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-012",
+      "question": "同一個聲音加上房間的回聲，大腦怎麼分得出哪部分是聲音本身、哪部分是房間？",
+      "domain": "聲學",
+      "mechanism_key": "perception.natural_reverb_prior_separates_source_room",
+      "answer_target": "研究者認為大腦用的是「真實房間回聲的樣子」。MIT 量了 271 個日常空間（例子有浴室、電梯、樓梯間、街角）的脈衝響應：儘管空間各式各樣，回聲在各頻帶都以指數衰減，中頻拖得最久、高低頻衰減較快。聽者能從帶回聲的聲音裡分辨聲源與環境；回聲不像真實房間時分辨變差，不自然的回聲甚至被聽成聲音本身的一部分。",
+      "scope": "浴室只是樣本之一，沒有單獨數值；沒有測唱歌或好不好聽。",
+      "source_locator": "F22-S008 Abstract、Results 第 1–3 段、Fig. 2",
+      "premise_status": "screened",
+      "notes": "算 1.0 條；但與題目只間接相關（見 C9-01 cuts）。 原提案 F22-010（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確，答案改成「研究者認為」以標出推論。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你聽得出「是浴室在響」，因為大腦認得真實房間回聲的樣子。",
+        "visual": "聲波被拆成兩層：人聲一層、房間尾巴一層；把尾巴換成不自然的形狀，兩層就黏在一起。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a569d3a69ca32645",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S008 Abstract、Results 第 1–3 段、Fig. 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-013",
+      "question": "乾沙堆不出尖塔、挖不出隧道，加點水為什麼就可以？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_pile_steep_tunnel_liquid_states",
+      "answer_target": "因為液體在顆粒之間產生了凝聚力。綜述寫道：乾沙堆表面的坡大約 35 度，再倒也一樣，挖洞會塌；加適量的水，坡可以比乾沙陡得多，甚至 90 度以上，還能小心挖出隧道。但水太多就成了泥水，留不住形狀。研究者依液量把濕顆粒分成四種狀態：只在接觸點有液橋、部分孔隙灌滿、孔隙全滿但表面液體被吸回、完全泡在液體裡；前三種有凝聚力，最後一種沒有。",
+      "scope": "綜述的教學式敘述；不給四狀態的百分比界線。",
+      "source_locator": "F22-S009 §1 第 3–6 段、§2.2.1",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同作者。 原提案 F22-011（目標 C9-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；對上；把「全靠水橋」改為凝聚力，與四狀態一致。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一把沙，差的只是顆粒之間有沒有小水橋。",
+        "visual": "左邊乾沙堆塌成圓錐，右邊濕沙堆穿出一條隧道；放大到兩顆沙之間的一彎水。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9a5a7a2ad54134e9",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S009 §1 第 3–6 段、§2.2.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-014",
+      "question": "要讓一堆顆粒變得能堆陡，需要多少液體？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.nanometre_liquid_layer_raises_repose_angle",
+      "answer_target": "少得驚人。1997 年《自然》的一篇短文在直徑約 0.8 毫米的塑膠珠裡加入玉米油或真空泵油，最多只相當於珠子表面不到 50 奈米厚的油層，休止角就大幅上升，而且在結成團塊前大致與油層厚度成正比。作者用模型推算，液體裡大約 99.9% 沒有出力，真正把珠子拉在一起的只是接觸點附近的一點點。",
+      "scope": "塑膠珠與油，不是沙與水；99.9% 是模型推算，另一組理論學者不同意此詮釋。",
+      "source_locator": "F22-S010 正文第 2–4 段、Fig. 1 說明",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同作者；片中「99.9%」須標作者推算，並提 Halsey & Levine 不同意這個詮釋。 原提案 F22-012（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）照原稿收；逐句對上。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不到 50 奈米的一層油，就能讓坡陡一大截。",
+        "visual": "一顆珠子表面薄到看不見的油膜，放大到接觸點才看到一小彎；坡度計往上跳。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ec1c447595028d1",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S010 正文第 2–4 段、Fig. 1 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-015",
+      "question": "一盆乾的小珠子不加水，放著不動也會越來越「黏」嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.humidity_capillary_condensation_ageing_angle",
+      "answer_target": "在潮濕空氣裡會。里昂的實驗把約 200 微米的玻璃珠放在旋轉鼓裡，靜置越久，第一次崩落前能撐住的最大角度越大，大約與靜置時間的對數成正比；濕度很低時看不到這個現象，濕度越高越明顯，直徑大於 0.5 毫米的珠子除非非常潮濕也看不到。作者的解釋是空氣裡的水氣慢慢在顆粒接觸的細縫裡凝結成小水橋。",
+      "scope": "玻璃珠；不說沙子放著就會變硬到能堆城堡。",
+      "source_locator": "F22-S011 摘要、第 2–4 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同作者。 原提案 F22-013（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）照原稿收；逐句對上。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連空氣裡的水氣，都會慢慢在顆粒之間搭橋。",
+        "visual": "時鐘轉動，珠子接觸點上的小水珠一點點長大，坡度計慢慢上升。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b9493852efc844c",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S011 摘要、第 2–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-016",
+      "question": "濕沙堆崩塌時，是表面的沙先滾下來嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.cohesive_pile_bulk_failure_finite_size",
+      "answer_target": "理論說不是。1998 年的〈沙堡怎麼倒〉分析指出，顆粒之間有了黏著力，破壞的位置會從表面移到沙堆內部；而且在無限大的沙堆裡，臨界角其實不因黏著而改變，只有有限大小的沙堆才會變陡。換句話說，水帶來的好處跟沙堆多大有關。",
+      "scope": "理論文章，無新實驗。",
+      "source_locator": "F22-S012 摘要、正文第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5 條，同作者。 原提案 F22-014（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）照原稿收；理論文章，答案已用「理論說」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "濕沙堆不是從表面滑下來，而是從裡面斷開。",
+        "visual": "沙堆剖面，一條斜的破裂面從內部穿出，表面的沙還黏在一起整塊滑落。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-03d03e889306b9a8",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S012 摘要、正文第 2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-017",
+      "question": "實驗量到的濕沙堆最陡角度，為什麼常比理論和別人量的低？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_pile_angle_saturates_sidewall_effect",
+      "answer_target": "一個原因是容器的側壁。2005 年的旋轉鼓實驗把玻璃珠拌少量矽油或水，最大穩定角隨液量先急升、再飽和，他們刻意在飽和區做實驗（例如液體約占體積 0.008）。只看表面顆粒的舊模型預測這時應有至少 90 度，實際沙堆超過約 30 度就崩，作者認為是因為濕沙堆從內部壞掉。窄的裝置會因側壁撐高角度：別人在 3.2 公分寬的裝置裡量到的角度，比他們高 15 到 20 度。",
+      "scope": "玻璃珠為主；不引預印本的飽和點數字（原文誤植為 1 × 10³）；體積分率不與其他研究的質量含水量比較。",
+      "source_locator": "F22-S013 第 1–3 段、Fig. 2 說明與其後兩段",
+      "premise_status": "screened",
+      "notes": "算 0.75 條（作者 1.0）：飽和點數字不能用；「從內部壞」與 F22-014 重疊。 原提案 F22-015（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；原 PDF 本身寫 10³，作者把誤植當成轉檔遺失並自行補上負號；改為不引該數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水給的陡度很快就到頂，牆壁還會讓人高估它。",
+        "visual": "透明旋轉鼓裡的珠子坡面，鼓越窄坡越陡，坡度計標出相差的角度。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-10ffa949172bdf7d",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S013 第 1–3 段、Fig. 2 說明與其後兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-018",
+      "question": "沙子越濕，越能撐住嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_sand_cohesion_saturates_friction_angle_constant",
+      "answer_target": "不會一直變強。蒙彼利埃的直剪試驗把 0.1 到 0.4 毫米的角狀沙加不同量的水：內摩擦角一直約 33 度，幾乎不隨水量變；變的是「凝聚力」，它隨含水量上升，但在水重約為沙重 3% 時就飽和在約 600 帕。玻璃珠飽和得更早；單一粒徑的珠子在他們測到的最低含水量就已經是固定值，之後不再隨水量變。",
+      "scope": "只測顆粒間只有液橋的少水範圍、圍壓低於 1 千帕；含水量是質量比，不與體積分率換算或比大小。",
+      "source_locator": "F22-S014 §II〈Results〉第 1–3 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同作者。 原提案 F22-016（目標 C9-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字正確；修正單一粒徑珠子的說法並刪掉編輯欄的誇大句。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "加水不是越加越強：第一點水就把力氣用完了大半。",
+        "visual": "凝聚力曲線先陡升、在 3% 處拉平；旁邊摩擦角的直線始終平平的 33 度。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f1a24f7696c1a1c8",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S014 §II〈Results〉第 1–3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-019",
+      "question": "沙堡最高能堆多高？只看沙子調得好不好嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.sandcastle_column_buckling_height_radius_two_thirds",
+      "answer_target": "還要看底有多寬。2012 年的實驗在對半剖開的管子裡壓實濕海灘沙，拆管後逐次加高到倒：沙柱是在自己的重量下像細桿一樣彎曲失穩，最大高度與底半徑的 2/3 次方成正比（實驗擬合 0.7±0.05）。論文照片裡的兩根沙柱，直徑 2 公分的高 27 公分、7 公分的高 60 公分。作者用模型預測的濕沙硬度、代入典型海灘沙，推算半徑 20 公分的圓柱可高約 2.5 公尺，遠高於舊文獻「約 20 公分、與底寬無關」的估計。",
+      "scope": "2.5 公尺是推算；實驗是直立圓柱；不教做法。",
+      "source_locator": "F22-S016 Results 第 1–2 段、Discussion、Methods、Fig. 1–2",
+      "premise_status": "screened",
+      "notes": "算 1.0 條；Pakpour 同一研究三核心合計 1.75（作者 2.0）。 原提案 F22-018（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；照片尺寸被寫成最大高度、推算基礎寫錯，已改。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沙堡倒下的方式像一根太細的竹竿，底越寬就能越高。",
+        "visual": "一排粗細不同的沙柱，細的先彎腰斷開；旁邊曲線標高度隨半徑增加。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fca3adb2027d246e",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S016 Results 第 1–2 段、Discussion、Methods、Fig. 1–2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-020",
+      "question": "濕沙最硬的時候，水占多少？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_sand_modulus_optimum_one_percent",
+      "answer_target": "同一研究量濕沙的剪切模數，最硬的時候液體只占體積約 1%。他們引用的模型指出，低於約 0.2% 時，因為沙粒表面粗糙，液橋根本搭不起來；水再多，液橋開始合併成較大的水團。作者也提到壓實能提高強度，堆沙堡的人本來就會這樣做。",
+      "scope": "體積分率；不與其他研究的質量含水量比較；不給「一桶沙配幾杯水」；題目不問「怎麼堆最好」以免成教學。",
+      "source_locator": "F22-S016 Results 第 3 段、Discussion、Methods、Fig. 3",
+      "premise_status": "screened",
+      "notes": "算 0.5 條，同作者。 原提案 F22-019（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；對上；改題避免變成操作建議，標出模型出處。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最硬的濕沙，水只占約百分之一。",
+        "visual": "模數曲線在 1% 附近冒出尖峰，兩側分別標「橋搭不起來」與「橋合併」。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fca3adb2027d246e",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S016 Results 第 3 段、Discussion、Methods、Fig. 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-021",
+      "question": "沙堡泡進水裡就散了，有沒有辦法在水底堆沙堡？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.hydrophobic_sand_underwater_castle_role_swap",
+      "answer_target": "普通沙泡進水裡，顆粒之間的水橋就消失了。但用市售的疏水沙，水和空氣的角色會對調：在水裡，換成空氣在沙粒之間搭橋，橋的拉力不變，壓實後的有效密度卻由每立方公分 1.6 克降到 0.6 克，所以能在水下堆出比陸上更誇張的沙堡。",
+      "scope": "疏水沙的示範；不教做法。",
+      "source_locator": "F22-S016 Discussion 末段、Fig. 4 說明",
+      "premise_status": "screened",
+      "notes": "算 0.25 條（作者 0.5）：示範性質，同一研究上限內下修。 原提案 F22-020（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；內容對上，屬示範，下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在水底，換空氣來當沙粒之間的橋。",
+        "visual": "水族箱裡一座疏水沙城堡，放大看沙粒之間是一個個小氣泡橋。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fca3adb2027d246e",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S016 Discussion 末段、Fig. 4 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-022",
+      "question": "在沙上拖重物，沙子濕一點會更費力嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.wet_sand_lowers_sled_friction_stiffness",
+      "answer_target": "剛好相反，至少在少量水時。過去的看法是空氣濕氣在沙粒間凝成水橋、滑動時拉斷水橋會增加摩擦，所以乾沙比較好拖。2014 年阿姆斯特丹大學等團隊的實驗用拉力機等速拉一架放了砝碼的小雪橇過沙面：加少量水後摩擦下降，乾沙會在雪橇前面堆起一小堆沙，濕沙比較硬、堆得少；但水再多又變難拉（伊朗沙在含水超過約 5% 時），三種沙都有一個最好拉的含水量。三種沙的資料落在同一條線上：沙越硬，摩擦越小。",
+      "scope": "實驗室雪橇；不給搬運建議；「5%」只對伊朗沙。",
+      "source_locator": "F22-S017 第 1–3 段、方法段、Fig. 2 說明、5% 以上段、Fig. 7 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條（作者 1.25）；Fall 2014 兩核心合計 1.75（作者 2.0）。來源網址改為 UvA-DARE 官方檔。 原提案 F22-021（目標 C9-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；機制與數字對上；把 5% 限定到伊朗沙，下修同研究計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水不是讓沙變滑，是讓沙變硬，雪橇前面不再推出一座沙丘。",
+        "visual": "乾沙上雪橇前方隆起沙包；濕沙上雪橇前緣平順，拉力計指針掉一截。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-44f60013fb043f00",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S017 第 1–3 段、方法段、Fig. 2 說明、5% 以上段、Fig. 7 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-023",
+      "question": "古埃及壁畫裡在雪橇前倒水的人，只是在做儀式嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.egyptian_sledge_water_polydisperse_sand_friction",
+      "answer_target": "考古學界對此有爭議；這篇 2014 年的物理研究的作者認為不只是儀式。約西元前 1880 年的 Djehutihotep 墓壁畫裡，有人在雪橇前往沙上倒水。實驗中，加少量水造成的動摩擦下降，顆粒大小越整齊的沙越小、越參差的越大：10%、26%、40%，在標準沙上讓雪橇開始動所需的力最多降 70%；在顆粒最參差、最接近沙漠沙的那種沙上，摩擦係數可低到約 0.3，而木頭對木頭約 0.25 到 0.7。壁畫的意思仍是作者的詮釋，實驗沒有用古埃及的沙或雪橇。",
+      "scope": "壁畫用途是作者詮釋；不說「金字塔就是這樣蓋的」；三個百分比是三種沙各自的結果，不比大小以外的換算；不用壁畫照片。",
+      "source_locator": "F22-S017 第 1 段、Fig. 1 說明、多分散段、末兩段",
+      "premise_status": "screened",
+      "notes": "算 0.75 條，同作者。 原提案 F22-022（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；數字對上；把「研究認為」改為作者詮釋並寫出考古學爭議。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "壁畫裡倒水的人，可能是在幫大家省力。",
+        "visual": "仿壁畫風格的拉雪橇隊伍（不畫真實人物肖像），前方一人倒水；旁邊三種沙的下降百分比。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-44f60013fb043f00",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S017 第 1 段、Fig. 1 說明、多分散段、末兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "P63-024",
+      "question": "濕沙為什麼讓東西好拖？東西陷進沙裡多深有關係嗎？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.ploughing_friction_track_depth_yield_stress",
+      "answer_target": "2018 年同一研究群的延伸實驗發現，主要機制是「犁」：把光滑的鋼半球拉過濕沙，它一路在沙上犁出深溝；摩擦力隨含水量先急降後回升，犁溝的寬度也一樣先窄後寬，陷得越深越難拉。用水沙混合物的降伏應力決定陷多深的模型，不用調參數就重現了這個變化，作者說同一模型也能用在冰刀在冰上犁出痕跡的情形。",
+      "scope": "同一研究群延伸；不說「不是潤滑」（論文沒討論）。",
+      "source_locator": "F22-S018 摘要、§I 引言末段、§II、Fig. 2–3 說明",
+      "premise_status": "screened",
+      "notes": "算 0.5 條（作者 0.75）：非單調結果與 Fall 2014 重複。 原提案 F22-023（目標 C9-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V25（2026-11-12）改字後收；對上；刪掉論文沒有的「不是潤滑」對照，下修重複部分。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "好不好拖，看東西陷進沙裡多深。",
+        "visual": "鋼半球在三種含水量的沙上犁出寬窄不同的溝，拉力曲線同步一低一高。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave63-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-05aa62bdb65ea174",
+          "origin": "wave63-physics-20261111",
+          "locator": "F22-S018 摘要、§I 引言末段、§II、Fig. 2–3 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+      ]
+    },
+    {
+      "id": "T63-001",
+      "question": "黃燈一亮，駕駛人決定停或走，主要看什麼？開得快慢會改變那條界線嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.stop_go_decision_travel_time_predictor_field",
+      "answer_target": "主要看『還要幾秒才到停止線』。威斯康辛大學 2006 年在麥迪遜 6 個號誌路口（速限每小時 25 到 50 英里）錄影，取每個車道每次黃燈第一輛停下和最後一輛通過的車，只留黃燈亮時離停止線約 2 到 5.5 秒的，共 1,001 輛。初步整理時，離停止線不到 2 秒的車全部通過；在這批車裡，停下的只有 5% 在 2.9 秒以內，通過的只有 5% 在 4.5 秒以外。把時間分布按接近速度分開看，85 百分位幾乎不變，15 百分位則有中等變化（低速時通過車的 15 百分位略短）。研究者用邏輯迴歸找影響停或走的因素：黃燈亮時到停止線的估計時間『遠遠是最強的』，單用它就能猜對 77%；隔壁車道有沒有車通過、是不是大型車、側街有沒有人車在等，也有顯著影響。",
+      "scope": "美國單一都會區 6 個路口、年會修訂稿；時間是用黃燈前速度與距離估算；這是觀察停或走，不是闖紅燈或事故研究。不得換算成公里、不得與台灣 3／4／5 秒表或任何台灣路口對照、不得推出『低速路黃燈短有風險』；模型中『黃燈較長通過機率較高』一項不進片（容易被讀成黃燈長反而多人闖，原文沒有這個意思）；作者對 ITE 公式的設計建議不進片；不給駕駛建議。",
+      "source_locator": "F21-S002：Abstract；Table 1；Analysis 首段；Equation 6 後條列與 77%／82% 預測率；Figure 9–10 後文；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：時間界線與速度影響小 0.25（與 T62-004 同方向，價值在於把轉述換成可讀的原始資料，但不等於重現 FHWA 的說法）；多因素模型中隔壁車道、大型車、側街等候者 0.25。旅行時間是最強因子本身與 T62-004 同一結論，不另計。 原提案 F21-002（目標 C8-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；來源合規、雜湊相同，數字全對；池中沒有任何核心用這篇原文（T62 系列只有 FHWA 2023 綜整的轉述）。但答案與 payoff 把『85 百分位幾乎不受速度影響』擴大成『與速度無關、不管開多快』，並且漏寫 2.0–5.5 秒篩選窗；改字後收，計 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為停或走的界線會跟著車速照公式一路移動；真實錄影裡，界線的高端幾乎不動，只有低端隨速度小幅移動——決定停或走主要是在數『還有幾秒』。",
+        "visual": "路口俯視，車道上畫 2 秒、2.9 秒、4.5 秒三條時間線（不畫距離、不標公里），三種速度的車流到同一條時間線前分流。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave63-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e89f3899116890f7",
+          "origin": "wave63-tech-20261111",
+          "locator": "F21-S002：Abstract；Table 1；Analysis 首段；Equation 6 後條列與 77%／82% 預測率；Figure 9–10 後文；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-tech.json"
+      ]
+    },
+    {
+      "id": "T63-002",
+      "question": "公式假設停車時用一個固定的『舒適減速度』，真實的駕駛人是這樣煞車的嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.stopping_deceleration_rises_with_approach_speed",
+      "answer_target": "不是，開得越快的人煞得越重。同一份 2006 年麥迪遜錄影裡，能算出減速度的 444 輛黃燈後第一個停下的車，減速度 15、50、85 百分位是每秒平方 7.2、9.9、12.9 英尺；美國運輸工程師學會（ITE）常用的每秒平方 10 英尺，大約落在中位數。但分開看速度：接近時速超過 40 英里的停車者，69% 用了比 10 還重的煞車；40 英里以下只有 26%。離停止線 4 秒以內停的人，一半用了超過 11.0 的減速度；4 秒以外的一半低於 9.3。研究者的結論是：減速度跟接近速度、離路口多遠、反應快慢都有關，一個固定值描述不了所有人。",
+      "scope": "同一研究、同 6 個路口；減速度是『速度÷煞車時間』算出的平均值，不是最大煞車能力；不得與 T62-003 的 NCHRP 平均 10.08 相減或併成同一組數字（兩批資料）；作者『10 ft/s² 對高速路口可能偏保守』是對美國公式的設計意見，不進片，也不得與台灣條文比較（台灣第 231 條是查表，沒有寫減速度）；不給駕駛建議。",
+      "source_locator": "F21-S002：Abstract；〈Deceleration Rate〉Table 2 與 Figure 7 後文；Conclusions 減速度條列",
+      "premise_status": "screened",
+      "notes": "同意 0.5：減速度隨接近速度與距離改變是池中沒有的結論（T62-003 只有 NCHRP 平均與 85 百分位）。與 F21-002 同一研究，兩核心合計 1.0。 原提案 F21-003（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V24（2026-11-12）改字後收；數字與條件相符，只有樣本數寫錯（444 不是 463）；禁用項（ITE 設計建議、與台灣比較、與 T62-003 相減、駕駛建議）都已寫進 scope。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "公式裡那個『大家都一樣』的煞車力道，在錄影裡其實隨速度與距離一路變。",
+        "visual": "兩條減速度分布曲線（≤40 mph、>40 mph），中間一條 10 ft/s² 的直線，標 26% 與 69%；英制單位上字卡，不換算。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave63-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e89f3899116890f7",
+          "origin": "wave63-tech-20261111",
+          "locator": "F21-S002：Abstract；〈Deceleration Rate〉Table 2 與 Figure 7 後文；Conclusions 減速度條列",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave63-tech.json"
+      ]
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -442948,6 +445595,33 @@
       "T62-011": "T62-011",
       "T62-012": "T62-012",
       "T62-013": "T62-013",
+      "H63-001": "H63-001",
+      "P63-001": "P63-001",
+      "P63-002": "P63-002",
+      "P63-003": "P63-003",
+      "P63-004": "P63-004",
+      "P63-005": "P63-005",
+      "P63-006": "P63-006",
+      "P63-007": "P63-007",
+      "P63-008": "P63-008",
+      "P63-009": "P63-009",
+      "P63-010": "P63-010",
+      "P63-011": "P63-011",
+      "P63-012": "P63-012",
+      "P63-013": "P63-013",
+      "P63-014": "P63-014",
+      "P63-015": "P63-015",
+      "P63-016": "P63-016",
+      "P63-017": "P63-017",
+      "P63-018": "P63-018",
+      "P63-019": "P63-019",
+      "P63-020": "P63-020",
+      "P63-021": "P63-021",
+      "P63-022": "P63-022",
+      "P63-023": "P63-023",
+      "P63-024": "P63-024",
+      "T63-001": "T63-001",
+      "T63-002": "T63-002",
       "Z7001": "Z7001",
       "Z7002": "Z7002",
       "Z7003": "Z7003",
@@ -472681,6 +475355,61 @@
         "a": "P62-010",
         "b": "D2104",
         "reason": "D2104 答車轍成因（壓密、剪切），本核心答車轍積水，不同答案；相鄰時旁白別重講成因。（V23 2026-11-12）"
+      },
+      {
+        "a": "H63-001",
+        "b": "H62-001",
+        "reason": "視力正常嬰兒（5 個月到快 3 歲）有交叉代價：與本篇 6 個月組同方向，不重計；兩研究受試者（手對腳、義大利對英國）不得合併。（V24 2026-11-12）"
+      },
+      {
+        "a": "H63-001",
+        "b": "H62-002",
+        "reason": "13 名早期開刀兒童長大照樣被騙（頭 5 個月視覺不關鍵）；與本篇講不同的事，不得說成矛盾，也不得合成一群。（V24 2026-11-12）"
+      },
+      {
+        "a": "T63-001",
+        "b": "T62-004",
+        "reason": "同方向：FHWA 轉述 Chang 1985 與 Wortman & Fox 1986。本篇是另一批 2006 年原始錄影，旁白要分開講，不得說本篇證實轉述的 95% 數字。（V24 2026-11-12）"
+      },
+      {
+        "a": "T63-001",
+        "b": "T62-005",
+        "reason": "本篇 2.0–5.5 秒篩選窗與 T62-005 的選擇區 2.5–5.5 秒相近，但那是作者的篩選界線，不是新量到的猶豫區，不另計。（V24 2026-11-12）"
+      },
+      {
+        "a": "T63-002",
+        "b": "T62-003",
+        "reason": "NCHRP 約 7,500 輛：反應平均 1.00 秒、減速度平均 10.08 ft/s²。兩批資料分開講，不相減、不合併。（V24 2026-11-12）"
+      },
+      {
+        "a": "P63-001",
+        "b": "P62-001",
+        "reason": "NASA 1963 的『輪胎往前推開積水、動壓隨速度平方』是概念；本篇是乘用車胎水速量測，答案不同。（V24 2026-11-12）"
+      },
+      {
+        "a": "P63-001",
+        "b": "P62-007",
+        "reason": "同在 Michelin 試車場量測，但 P62-007 是維吉尼亞理工的胎溝力感測器，研究群不同，不合併。（V24 2026-11-12）"
+      },
+      {
+        "a": "P63-002",
+        "b": "P62-007",
+        "reason": "P62-007 引文獻回顧說胎溝可能在淺水就被灌滿；本篇是 8 mm 深水下溝內流場的直接量測，答案不同，但不得用本篇證實『淺水就灌滿』。（V24 2026-11-12）"
+      },
+      {
+        "a": "P63-003",
+        "b": "B4020",
+        "reason": "B4020 談吸音對直達聲與混響場的不同影響；本核心只給殘響定義與小房間，不重講直達聲。（V25 2026-11-12）"
+      },
+      {
+        "a": "P63-013",
+        "b": "P182",
+        "reason": "P182 講乾沙流動仍是固體顆粒；本核心講乾濕對照，不重複。（V25 2026-11-12）"
+      },
+      {
+        "a": "P63-017",
+        "b": "P63-016",
+        "reason": "「從內部破壞」兩核心都講，只在一處計分。（V25 2026-11-12）"
       }
     ],
     "excluded": [
@@ -473232,6 +475961,20 @@
         "questions": [
           "短尾魷早上排出大部分發光細菌，晚上怎麼又有光可用？",
           "剛孵出的短尾魷沒有發光細菌，牠的光器怎麼開始運作？"
+        ]
+      },
+      {
+        "id": "T62-003~T63-002",
+        "a": "T62-003",
+        "b": "T63-002",
+        "question_score": 0.25,
+        "answer_score": 0.19,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "公式裡假設駕駛人反應 1 秒、減速度固定，這些數字是誰量出來的？",
+          "公式假設停車時用一個固定的『舒適減速度』，真實的駕駛人是這樣煞車的嗎？"
         ]
       },
       {
@@ -476315,6 +479058,20 @@
         ]
       },
       {
+        "id": "P63-018~P63-022",
+        "a": "P63-018",
+        "b": "P63-022",
+        "question_score": 0.087,
+        "answer_score": 0.029,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "沙子越濕，越能撐住嗎？",
+          "在沙上拖重物，沙子濕一點會更費力嗎？"
+        ]
+      },
+      {
         "id": "X2006~X2010",
         "a": "X2006",
         "b": "X2010",
@@ -477040,6 +479797,20 @@
         "questions": [
           "有些螺桿能頂起重物，重物卻不容易反過來把螺桿轉動？",
           "螺桿每次都轉一圈，平台為什麼不一定每次前進一樣遠？"
+        ]
+      },
+      {
+        "id": "P63-017~P63-018",
+        "a": "P63-017",
+        "b": "P63-018",
+        "question_score": 0,
+        "answer_score": 0.07,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "實驗量到的濕沙堆最陡角度，為什麼常比理論和別人量的低？",
+          "沙子越濕，越能撐住嗎？"
         ]
       },
       {
@@ -482059,10 +484830,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-3951",
-    "target_count": 3951,
+    "revision": "2026-11-12-pool-3978",
+    "target_count": 3978,
     "reviewed_on": "2026-11-12",
-    "reason": "從3921續接；2026-11-12 第十二輪素材審視：作者 F19 替後備組題 C6-02、C7-01、C7-02 補讀開放原研究，作者 F20 從零研究兩個新長題（C8-01 黃燈秒數、C8-02 雨天水漂）；31 個提案經非作者覆核（F19 由 V22、F20 由 V23），收入 30 個（全部照覆核），退回 1 個（併入 Z7010）；C6-02、C7-02 成題，C7-01、C8-01、C8-02 後備。",
+    "reason": "從3951續接；2026-11-12 第十三輪素材審視：作者 F21 替後備組題 C7-01、C8-01、C8-02 補讀開放原研究，作者 F22 從零研究兩個新長題（C9-01 浴室唱歌、C9-02 濕沙堆沙堡）；28 個提案經非作者覆核（F21 由 V24、F22 由 V25），收入 27 個（全部照覆核），退回 1 個（只讀到機構摘要）；C8-01 成題，C7-01、C8-02、C9-01、C9-02 後備。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -486014,7 +488785,34 @@
       "T62-013",
       "S62-001",
       "L62-001",
-      "L62-002"
+      "L62-002",
+      "P63-001",
+      "P63-002",
+      "P63-003",
+      "P63-004",
+      "P63-005",
+      "P63-006",
+      "P63-007",
+      "P63-008",
+      "P63-009",
+      "P63-010",
+      "P63-011",
+      "P63-012",
+      "P63-013",
+      "P63-014",
+      "P63-015",
+      "P63-016",
+      "P63-017",
+      "P63-018",
+      "P63-019",
+      "P63-020",
+      "P63-021",
+      "P63-022",
+      "P63-023",
+      "P63-024",
+      "H63-001",
+      "T63-001",
+      "T63-002"
     ],
     "overflow": [
       {
@@ -514363,6 +517161,187 @@
       "reading_status": "未讀到原文",
       "origin": "wave62-tech-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+    },
+    {
+      "id": "P63-NA001",
+      "question": "法規的濕地煞車試驗，用磨耗胎時也會水漂嗎？",
+      "existing_ids": [
+        "P62-007"
+      ],
+      "source_ids": [
+        "P63-S001"
+      ],
+      "reason": "Cabut 等 2019 引言轉述 Todoroff 2018（Vehicle System Dynamics，未讀），是轉引；而且容易被當成換胎建議與法規評價。 原提案 F21-NA004。",
+      "reentry_condition": "讀到 Todoroff 等 2018 原文且只談現象、不涉法規比較時再議。",
+      "reading_status": "只讀到轉述",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "P63-NA002",
+      "question": "濕沙堆裡的水長什麼樣子？為什麼多一點少一點強度差不多？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V25（2026-11-12）退回：只讀到機構摘要，不算來源全文；計 0。 原提案 F22-017。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "P63-NA003",
+      "question": "歌手喜歡一個場地，是因為「支持度」與「安靜度」，不是音色？",
+      "existing_ids": [],
+      "source_ids": [
+        "P63-S009"
+      ],
+      "reason": "Redman, Glasner, D'Orazio & Bottalico 2023（JASA 154:2256，DOI 10.1121/10.0021331）只讀到 Illinois Experts 紀錄頁的摘要，未找到公開全文；Shtrepi 2025 的轉述不算原文。 原提案 F22-NA001。",
+      "reentry_condition": "找到出版社或機構典藏的公開全文後，可補 C9-01 約 1 條。",
+      "reading_status": "只讀摘要",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "P63-NA004",
+      "question": "濕沙的強度為什麼在很寬的水量範圍內都差不多？（Scheel 等 2008 原文）",
+      "existing_ids": [],
+      "source_ids": [
+        "P63-S017"
+      ],
+      "reason": "Nature Materials 原文付費；ANU 機構典藏標示限制至 2037-12-31；搜尋結果中研究者個人頁的 PDF 授權不明，未下載使用。改用 ESRF 官方研究亮點（F22-S015），只算 0.75。 原提案 F22-NA002。",
+      "reentry_condition": "出版社或機構典藏開放後，F22-017 可升為 1–1.5 條。",
+      "reading_status": "未讀原文",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "P63-NA005",
+      "question": "濕顆粒的剪切模數在液體約 1–3% 時最佳？（Møller & Bonn 2007 EPL）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只看到 EPL 摘要頁與搜尋摘要；UvA-DARE 紀錄頁沒有檔案連結。Pakpour 2012（F22-S016）已轉述其模型，不另立核心。 原提案 F22-NA003。",
+      "reentry_condition": "找到公開全文且有 Pakpour 沒有的資料時再議。",
+      "reading_status": "只讀摘要",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "P63-NA006",
+      "question": "表面張力是什麼？水的表面張力多大？",
+      "existing_ids": [
+        "P055",
+        "P056"
+      ],
+      "source_ids": [],
+      "reason": "OpenStax College Physics 11.8 本輪讀過（第一版），但池中 SRC-8410b1e7d223764c 已是同一節（2e 版），P055、P056 等已用表面張力解釋；不另立核心，只在 C9-02 旁白一句帶過。 原提案 F22-NA004。",
+      "reentry_condition": "無。",
+      "reading_status": "全文讀（未列入 sources）",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "P63-NA007",
+      "question": "用海水堆的沙堡，乾了以後鹽會把沙粒黏住？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只見於新聞與科普轉述（大地工程師訪談），沒有找到受控實驗。 原提案 F22-NA005。",
+      "reentry_condition": "有公開的鹽水與淡水濕沙強度對照實驗時。",
+      "reading_status": "未讀原研究",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "P63-NA008",
+      "question": "浴室低音特別飽滿，是房間共振（駐波）造成的？",
+      "existing_ids": [
+        "P119",
+        "P129"
+      ],
+      "source_ids": [],
+      "reason": "只找到音響業界網站的房間模態計算，沒有教材級或研究來源量到浴室；駐波基本原理池中已有（P119、P129 等）。不收，以免把未量測的說法講成事實。 原提案 F22-NA006。",
+      "reentry_condition": "有公開的小浴室聲學量測（模態或頻率響應）時。",
+      "reading_status": "未讀到合格來源",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "P63-NA009",
+      "question": "音不準的人是因為聽不出來嗎？（Pfordresher & Brown 2007）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "作者網站 PDF 以 curl 讀取時 TLS 憑證驗證失敗、WebFetch 回 503，未讀；不關閉驗證。 原提案 F22-NA007。",
+      "reentry_condition": "能正常讀取全文時，可替 C9-01 的轉折一補「準不準主要不在聽」的旁證。",
+      "reading_status": "未讀",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "P63-NA010",
+      "question": "說話者的「房間增益」與「聲音支持度」在教室裡多大？（Pelegrín-García 等 2012）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "DTU Orbit 只有摘要（中型教室聲音支持度 −14 到 −9 dB、房間增益 0.2–0.5 dB），無公開全文。 原提案 F22-NA008。",
+      "reentry_condition": "公開全文可讀時。",
+      "reading_status": "只讀摘要",
+      "origin": "wave63-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-physics.json"
+    },
+    {
+      "id": "T63-NA001",
+      "question": "兩歲才開刀移除先天白內障的人，交叉手時會被騙嗎？（Ley 等 2013）",
+      "existing_ids": [
+        "H61-007",
+        "H62-003"
+      ],
+      "source_ids": [
+        "T63-S002"
+      ],
+      "reason": "只讀到漢堡大學研究室的一頁摘要，原刊 Neuropsychologia 全文找不到公開連結；單一個案，方向與 H61-007（晚開刀者只有觸覺時不被騙）、H62-003（七歲開刀的少女）相同。 原提案 F21-NA001。",
+      "reentry_condition": "讀到 Ley 等 2013 的開放全文（作者稿或典藏），最多算 0.5，並與 H62-003 合為『個案』一句。",
+      "reading_status": "只讀到摘要",
+      "origin": "wave63-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-tech.json"
+    },
+    {
+      "id": "T63-NA002",
+      "question": "黃燈後最後通過的車，有多少其實停得下來？",
+      "existing_ids": [],
+      "source_ids": [
+        "T63-S001"
+      ],
+      "reason": "Gates 等以假設的 1.0 秒反應與減速度推算約 15–30% 的最後通過車『可合理停下』，是對駕駛人選擇的評價，容易變成駕駛建議；本系列不放。 原提案 F21-NA002。",
+      "reentry_condition": "無。",
+      "reading_status": "全文讀",
+      "origin": "wave63-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-tech.json"
+    },
+    {
+      "id": "T63-NA003",
+      "question": "黃燈越長，駕駛人越傾向不停直接通過嗎？",
+      "existing_ids": [
+        "T62-007"
+      ],
+      "source_ids": [
+        "T63-S001"
+      ],
+      "reason": "Gates 等的邏輯迴歸中黃燈長度是顯著因子（較長→通過機率較高），但這是『進入路口』不是闖紅燈，放進片中容易被讀成『黃燈長反而多人闖』或拿來評價台灣設定；T62-007 已說『長黃燈被當綠燈』無定論。 原提案 F21-NA003。",
+      "reentry_condition": "有專門研究黃燈長度與駕駛人適應、且有闖紅燈與事故資料的開放原文時再議。",
+      "reading_status": "全文讀",
+      "origin": "wave63-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-tech.json"
+    },
+    {
+      "id": "T63-NA004",
+      "question": "台灣第 231 條的 3／4／5 秒黃燈表是怎麼推導出來的？",
+      "existing_ids": [
+        "T62-001"
+      ],
+      "source_ids": [],
+      "reason": "搜尋交通部、運輸研究所、修正總說明與對照表，只找到條文本身（池中已有）與媒體說法，沒有找到官方公開的推導或依據文件。 原提案 F21-NA005。",
+      "reentry_condition": "找到交通部或運研所公開說明此表依據的文件（例如修正總說明、研究報告）時優先補，可讓 T62-001 真正回答『台灣為什麼』。",
+      "reading_status": "未找到",
+      "origin": "wave63-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave63-tech.json"
     },
     {
       "question": "蚊子為什麼找得到人？",
