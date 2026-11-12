@@ -23,13 +23,13 @@
 接第 54 集最後一鏡 c40（bible〈接點表〉54→55：Remelt，第 155 天 22:00，鐵門關著，鐘剛敲完第十下）。**第一鏡 c01 是同一刻**：Gus（基本款，灰毛毯蓋到腰，老花眼鏡摺好勾在汗衫領口）躺在左牆黑板旁的行軍床上、頭在靠大門那頭，右手抓著 Nora 的左袖；Nora（`work`，圍裙下半一層淡色的料粉）蹲在床邊屋子中間那側；Sparks（護目鏡推在額頭）站在床尾；舊折疊手機在毯子上他左手邊；碎料掃在黑板旁的牆角；燈箱上一片藍面板樣片。c01 鐵門往裡打開。
 時間：第 155 天 22:00 Elias 到 → 約 22:20 第一次加料 → 第 156 天 02:00 Theo → 蒙太奇（第 157、159、160 天天亮前的三個時刻與兩個手套的插鏡）→ 第 161 天約 05:45 Elias 推上爐門 → 06:00 天亮前，Nora 把吹管交給 Sparks。夜裡都乾；高窗由黑轉灰（8/24 日出約 06:24）。
 最後一鏡 c41 照〈接點表〉55→56：Remelt，第 161 天 06:00，天亮前的灰藍從高窗下來，工作燈還亮著。黃線上，Nora（`work`）右手剛鬆開冷吹管、站在線外；Sparks（基本款，護目鏡戴在眼睛上、前臂褐色隔熱護套、空手）在線內，兩手握著吹管，手在抖；木架上一長排藍面板、最後一個掛勾空著；Elias（`furnace`，兩手隔熱手套）蹲在爐右邊的燃氣閥前、背對他們；Gus 用手肘撐著半坐在左牆黑板旁的行軍床上；工作台靠大門那頭的角落一疊高高、歪著的外帶盒。第 56 集第一鏡：Nora 退一步到安全線後、抱起手臂。
-（從大門往裡看，燃氣閥在爐子右邊、行軍床在左牆；bible〈接點表〉55→56 寫的「Elias 在畫面左後」「Gus 在畫面右後」跟〈場景格局〉左右相反，本稿照〈場景格局〉寫，見〈注意事項〉。）
+（從大門往裡看，燃氣閥在爐子右邊、行軍床在左牆；bible〈接點表〉55→56 寫的「Elias 在畫面左後」「Gus 在畫面右後」跟〈場景格局〉左右相反；bible〈第 51–55 集審稿後補定〉已定以〈場景格局〉為準，本稿照寫。）
 
 ## 角色與參考圖
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3）、`assets/refs/nora-work.jpg`（r3）；`work` 全身參考圖待畫 | 整集 `work`（齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、深色帆布圍裙、灰色亨利領長袖、深色工作褲、工作靴）；c01–c26 圍裙下半一層淡色的料粉（`a faint even pale dust on the lower half of her dark canvas apron`），第四場（六天後）圍裙乾淨；拍到左手就寫 `a plain narrow white-gold band with no stone, on her left ring finger`；整集在黃線外；一鏡都不笑；原聲 |
+| Nora | `assets/refs/nora-portrait.jpg`（r3）、`assets/refs/nora-work.jpg`（r3）；`work` 全身參考圖待畫 | 整集 `work`（齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、深色帆布圍裙、灰色亨利領長袖、深色工作褲、工作靴）；c01–c26 圍裙下半一層淡色的料粉（`a faint even pale dust on the lower half of her dark canvas apron`），第三場（六天後）圍裙乾淨；拍到左手就寫 `a plain narrow white-gold band with no stone, on her left ring finger`；整集在黃線外；一鏡都不笑；原聲 |
 | Elias | `assets/refs/elias-portrait.jpg`、`assets/refs/elias-furnace.jpg`；爐邊造型全身圖待畫（戴手套） | 爐邊造型 `furnace`（深棕色頭髮往後梳、細銀絲框眼鏡、黑色短袖 T 恤、棕色皮圍裙、深色工作褲、工作靴）；**每一鏡**加 `a pair of thick grey heat-resistant work gloves reaching halfway up his forearms, on both his hands`（左手一直戴著）；在黃線內；手只碰燃氣閥、壓力錶、爐門把手、自己的手套、圓鋼凳；一鏡都不笑；原聲 |
 | Gus Moretti | **待畫，必須先畫** | 基本款（白色無袖汗衫、舊工作褲），躺在行軍床上、灰毛毯蓋到腰，`small steel reading glasses, folded and hooked in the neck of his undershirt`；c40 用手肘撐著半坐；拍到手寫 `no cuts, no redness on his hands`；一鏡都不笑；原聲（c03、c04） |
 | Rocco "Sparks" Moretti | **待畫，必須先畫** | 基本款（平頭、小銀耳釘、黑 T 恤、灰工作褲、前臂褐色隔熱護套、工作靴）；線外 `clear wraparound safety glasses, pushed up on his forehead`，線內 `clear wraparound safety glasses, over his eyes`；加料時兩手 `a pair of long grey heat-resistant gloves reaching to the elbow`；第四場空手握冷吹管；本集不說話；一鏡都不笑 |
@@ -74,10 +74,10 @@ c33–c41 寫 `before dawn, cool grey-blue light falling from the high windows, 
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c01 | 全景、低角度、固定；鏡頭在行軍床邊、往大門拍；直式前後疊開：右下前景是行軍床尾的灰毛毯一角（虛焦），中間是屋子與工作台的木面，中偏左是關著的鐵門；大門上方是舊鐘 | 第一格鐵門關著。`one leaf of a pair of tall rusted double steel doors` 被門外的人用右肩頂開、往裡開；門外是黑的 Kiln Row 與對街一盞冷白的路燈；門口一個高個子的剪影（Elias），兩手垂在身側；`an old round wall clock with a white face and plain black bar markers, no numerals` 在門上方；臉還在逆光裡看不清 | 一扇鐵門被肩膀頂開、往裡盪開；剪在門開到一半；最後：門開著，門口站著一個高個子的剪影 | — | 約 2.5 秒 |
+| c01 | 全景、低角度、固定；鏡頭在行軍床邊、往大門拍；直式前後疊開：右下前景是行軍床尾的灰毛毯一角（虛焦），中間是屋子與工作台的木面，中偏左是關著的鐵門；大門上方是舊鐘 | 第一格鐵門關著。`one leaf of a pair of tall rusted double steel doors` 被門外的人用右肩頂開、往裡開；門外是黑的 Kiln Row 與對街一盞冷白的路燈；門口一個高個子的剪影（Elias），兩手垂在身側；`an old round wall clock with a white face and plain black bar markers, no numerals, about as wide as a man's shoulders` 在門上方；臉還在逆光裡看不清 | 一扇鐵門被肩膀頂開、往裡盪開；剪在門開到一半；最後：門開著，門口站著一個高個子的剪影 | — | 約 2.5 秒 |
 | c02 | 中近景、慢推（從中近景推到近景）；鏡頭在屋裡、門內幾步往門口拍；直式，**第一格就是他的臉與肩膀，整鏡不拉遠**；身後是門外的夜與冷白的路燈（虛焦） | Elias（34 歲、188 公分、橄欖膚色、深棕色頭髮往後梳、細銀絲框眼鏡、黑色短袖 T 恤、棕色皮圍裙），站在門內一步；`a pair of thick grey heat-resistant work gloves reaching halfway up his forearms, on both his hands`，兩手垂在身側；工作燈的暖光從鏡頭這邊穩穩照在他臉上，路燈只在他肩膀邊緣；四分之三側臉朝畫面右下、看著行軍床那邊的 Gus 與 Nora（不看鏡頭）；眉毛放平、下巴不動、嘴唇在字之間閉著、聲音低、話少、像念合約，`no smile at any moment, until the last frame` | Elias 看著畫面右下的行軍床，嘴在說話（低、平、像念合約）；說完往屋裡走一步、讓開門口，嘴閉上；最後：他站在門內，兩手戴著手套垂在身側 | Elias（低、平、像念合約）：Gus called me.（是 Gus 打給我的）（原聲） | 約 3 秒 |
-| c03 | 中近景、固定；鏡頭在屋子中間、往左牆拍；直式：行軍床橫在畫面中下，床頭在畫面左；身後是左牆的紅磚 | Gus（白色無袖汗衫、`small steel reading glasses, folded and hooked in the neck of his undershirt`），躺在 `a narrow old canvas army cot with a grey wool blanket, set against the brick wall well back from the furnace` 上、毛毯蓋到腰；`an old black flip phone about the size of his palm, closed, lying on the grey wool blanket beside his left hand`；工作燈穩定的暖光照在他臉上，爐火只在他額角邊緣；臉轉向畫面左外的門口、眼睛看著 Elias；眉毛慢慢抬起、眼睛眯著、嘴唇在字之間往下壓、聲音慢、粗啞，`no smile at any moment, until the last frame` | 第一格他的右手還抓著畫框右下緣 Nora 的灰色袖子；Gus 的右手鬆開她的袖子、朝門口一舉（動作一），嘴在說話（慢、粗啞）（動作二）；說完手停在半空，嘴閉上；最後：他的右手舉在毛毯上方 | Gus（慢、粗啞）：Mr. Ashford.（Ashford 先生）（原聲） | 約 3 秒 |
-| c04 | 近景、慢推（從胸上推到肩上）；同 c03 的方向；直式，Gus 的臉在上三分之一；身後是灰毛毯與紅磚 | Gus（白色無袖汗衫、老花眼鏡勾在領口），躺著；工作燈穩定的暖光照在他臉上；臉朝畫面左外的門口；眉毛放下來、眼睛濕一層、嘴唇在字之間抿緊、聲音慢、粗啞、一字一頓，`no smile at any moment, until the last frame` | Gus 看著門口，嘴在說話（慢、粗啞、一字一頓）；說完舉著的右手落回毛毯上，嘴閉上；最後：他的手在毛毯上，眼睛看著門口 | Gus（慢、粗啞、一字一頓）：The fire's yours.（火交給你了）（原聲）← 因為 c02 | 約 3 秒 |
+| c03 | 中近景、固定；鏡頭在屋子中間、往左牆拍；直式：行軍床橫在畫面中下，床頭在畫面左；身後是左牆的紅磚 | Gus（白色無袖汗衫、`small steel reading glasses, folded and hooked in the neck of his undershirt`），躺在 `a narrow old canvas army cot with a grey wool blanket, set against the brick wall well back from the furnace` 上、毛毯蓋到腰；`an old black flip phone about the size of his palm, closed, lying on the grey wool blanket beside his left hand`；工作燈穩定的暖光照在他臉上，爐火只在他額角邊緣；臉轉向畫面左外的門口、眼睛看著 Elias；眉毛慢慢抬起、眼睛眯著、嘴唇在字之間往下壓、聲音慢、粗啞，`no smile at any moment, until the last frame` | 第一格他的右手還抓著畫框右下緣 Nora 的灰色袖子；Gus 的右手鬆開她的袖子、朝門口一舉（動作一），嘴在說話（慢、粗啞）（動作二）；說完右手落回毛毯上，嘴閉上；最後：他的右手在毛毯上、眼睛看著門口 | Gus（慢、粗啞）：Mr. Ashford.（Ashford 先生）（原聲） | 約 3 秒 |
+| c04 | 近景、慢推（從胸上推到肩上）；同 c03 的方向；直式，Gus 的臉在上三分之一；身後是灰毛毯與紅磚 | Gus（白色無袖汗衫、老花眼鏡勾在領口），躺著；工作燈穩定的暖光照在他臉上；臉朝畫面左外的門口；眉毛放下來、眼睛濕一層、嘴唇在字之間抿緊、聲音慢、粗啞、一字一頓，`no smile at any moment, until the last frame` | Gus 看著門口，嘴在說話（慢、粗啞、一字一頓）；說完右手的手指在毛毯上慢慢收攏，嘴閉上；最後：他的手在毛毯上，眼睛看著門口 | Gus（慢、粗啞、一字一頓）：The fire's yours.（火交給你了）（原聲）← 因為 c02 | 約 3 秒 |
 | c05 | 近景、固定；反打：鏡頭低、在行軍床上 Gus 胸口的高度往屋子中間拍；直式，Nora 的臉在上三分之一；**爐口在畫面左後發亮**，工作台與工作燈在畫面中後（虛焦） | Nora（`work`：齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、深色帆布圍裙、灰色亨利領長袖），`a faint even pale dust on the lower half of her dark canvas apron`，蹲在床邊，左袖已經被鬆開、左手扶在床邊；工作燈從她身後上方、爐火的橘光從畫面左照在她左頰；她轉頭看向畫面右外的大門；眉頭往中間收、眼睛睜大、嘴唇微張、呼吸一停，`no smile at any moment, until the last frame` | Nora 轉頭看向畫面右外的大門（動作一），左手在床邊抓緊帆布（動作二）；剪在她的頭轉過去；嘴微張、沒出聲；最後：她看著畫面右外的大門 | — | 約 2.5 秒 |
 | c06 | 近景、固定；鏡頭在屋子中間、往行軍床尾斜拍；直式，臉在上三分之一；身後是黑板的邊與牆角的碎料（虛焦） | Sparks（平頭、小銀耳釘、黑 T 恤、前臂褐色隔熱護套），`clear wraparound safety glasses, pushed up on his forehead`，站在床尾；工作燈的暖光照在他臉上；四分之三側臉朝畫面左外的大門；眉毛一下挑到最高、嘴張開、眼睛睜大，`no smile at any moment, until the last frame` | Sparks 的眉毛挑起來、嘴張開（動作一），轉身朝畫面左的大門走（去把門推上）（動作二）；剪在轉身一半；嘴張著、沒出聲；最後：他側身往大門走 | — | 約 2 秒 |
 | c07 | 全景、慢推（從全景推到中景）；鏡頭在工作台靠大門那頭、往後牆拍；直式前後疊開：下緣前景是工作台的木面（虛焦），後面正中是三號爐的橘光 | 露臉的只有 Nora（中景、小）。Elias（黑 T 恤、棕色皮圍裙、工作靴，`a pair of thick grey heat-resistant work gloves reaching halfway up his forearms, on both his hands`）背對鏡頭、沿工作台右邊往爐子走，往畫面右後的燃氣閥去；Nora（`work`，工作靴）在畫面左中、從行軍床邊站起來，眼睛跟著他：眉頭收緊、嘴唇抿平，`no smile at any moment, until the last frame`；Gus 在她身後的行軍床上（小、虛焦）；`a worn yellow safety line painted across the concrete floor` 橫過爐前；燃氣閥在爐右 | Elias 往爐子走（動作一），Nora 從床邊站起來、往工作台靠爐子那頭走一步（動作二）；剪在 Elias 走到黃線前；嘴都閉著；最後：Elias 停在黃線前、Nora 在工作台靠爐子那頭的左前方、黃線外 | — | 約 3 秒 |
@@ -110,7 +110,7 @@ c33–c41 寫 `before dawn, cool grey-blue light falling from the high windows, 
 | --- | --- | --- | --- | --- | --- |
 | c21 | 中景、固定；鏡頭在屋子中間、往大門拍；直式：中偏左是鐵門，左下前景是工作台角（虛焦） | Theo（29 歲韓裔男性、整齊的黑髮、圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲、棕色樂福鞋），用右肩把 `one leaf of a pair of tall rusted double steel doors` 頂開一道窄縫、側身擠進來；兩手抱著 `plain white paper takeout boxes with no logo` 一疊，`a slim tablet in a plain grey case, its screen turned away` 夾在左腋下；門外是黑的街與冷白的路燈；工作燈的暖光照在他臉上；眼睛看著畫面左下的工作台角；眉毛平平、嘴唇平、眼睛很認真地睜著，`no smile at any moment, until the last frame` | Theo 側身從門縫擠進來（動作一），用腳跟把門帶回去、關到剩一道縫（動作二）；剪在門帶上；嘴閉著；最後：他抱著外帶盒站在門內 | — | 約 2.5 秒 |
 | c22 | 插鏡、特寫、固定；**第一格就是工作台靠大門那頭的木面角落**；直式；工作燈的暖光 | Theo 的兩手（淺藍襯衫袖口）把一疊外帶盒放到工作台角：`plain white paper takeout boxes with no logo, stacked on the corner of the workbench, a short stack`；畫面裡沒有臉 | Theo 的兩手把外帶盒放到台角（動作一），左手從腋下抽出平板（動作二）；剪在平板抽出來；畫面上沒有嘴；最後：外帶盒一小疊在台角，平板在他左手 | — | 約 2 秒 |
-| c23 | 近景、慢推（從胸上推到肩上）；鏡頭在工作台角的右前方；直式，臉在上三分之一；身後是屋子深處的爐口橘光與工作燈（虛焦） | Theo（圓玳瑁框眼鏡、淺藍襯衫、灰色針織背心），站在工作台角；左手 `a slim tablet in a plain grey case, its screen turned away`，右手食指點著平板背後那一面；工作燈穩定的暖光照在他臉上；四分之三側臉朝畫面左、眼睛看著平板；眉毛平平、嘴唇在字之間抿平、聲音平、慢、一本正經，`no smile at any moment, until the last frame` | Theo 看著平板，嘴在說話（平、慢、一本正經，像念公文）；說完右手食指在平板上點一下，嘴閉上；最後：他看著平板 | Theo（平、慢、一本正經）：Mrs. Ashford Observation Log. Two a.m.（Ashford 太太觀察日誌。凌晨兩點）（原聲） | 約 3.5 秒 |
+| c23 | 近景、慢推（從胸上推到肩上）；鏡頭在工作台角的右前方；直式，臉在上三分之一；身後是屋子深處的爐口橘光與工作燈（虛焦） | Theo（圓玳瑁框眼鏡、淺藍襯衫、灰色針織背心），站在工作台角；左手 `a slim tablet in a plain grey case, its screen turned away`，右手食指點著朝向他自己的螢幕那面（螢幕背對鏡頭）；工作燈穩定的暖光照在他臉上；四分之三側臉朝畫面左、眼睛看著平板；眉毛平平、嘴唇在字之間抿平、聲音平、慢、一本正經，`no smile at any moment, until the last frame` | Theo 看著平板，嘴在說話（平、慢、一本正經，像念公文）；說完右手食指在平板上點一下，嘴閉上；最後：他看著平板 | Theo（平、慢、一本正經）：Mrs. Ashford Observation Log. Two a.m.（Ashford 太太觀察日誌。凌晨兩點）（原聲） | 約 3.5 秒 |
 | c24 | 近景、固定；鏡頭在黃線外、Nora 的右前方往大門拍；直式，臉在上三分之一；身後是工作台與遠處的大門（虛焦） | Nora（`work`，護目鏡推在頭頂、深色帆布圍裙），`a faint even pale dust on the lower half of her dark canvas apron`，站在黃線外；工作燈穩穩照在她臉上；她回頭、四分之三側臉朝畫面右、看著工作台角的 Theo；一邊眉毛挑起來、眼睛眯一下、嘴唇抿平，`no smile at any moment, until the last frame` | Nora 回頭看向 Theo；剪在頭轉過去；嘴閉著；最後：她回頭看著畫面右的 Theo | — | 約 2 秒 |
 | c25 | 近景、固定；同 c23 的鏡位；直式，臉在上三分之一 | Theo（圓玳瑁框眼鏡），左手平板；工作燈穩定的暖光照在他臉上；四分之三側臉朝畫面左、眼睛看著平板；眉毛不動、嘴唇在字之間抿平、聲音平、慢，`no smile at any moment, until the last frame` | Theo 看著平板，嘴在說話（平、慢，像念公文）；說完抬眼朝畫面左遠處的爐子看一眼，嘴閉上；最後：他看著爐子那邊 | Theo（平、慢，像念公文）：Boss is babysitting a furnace.（老闆在給一座爐子當保母）（原聲）（結尾） | 約 3.5 秒 |
 | c26 | 近景、固定；同 c11 的鏡位；直式，臉在上三分之一；身後是爐子的紅磚 | Elias（細銀絲框眼鏡、黑 T 恤、棕色皮圍裙），`a pair of thick grey heat-resistant work gloves reaching halfway up his forearms, on both his hands`，蹲在燃氣閥前、黃線內；工作燈的暖光從畫面左、爐火只在他左頰邊緣；側臉朝畫面右下的壓力錶、眼睛不離錶面；眉毛放平、嘴唇閉著、下巴不動，`no smile at any moment, until the last frame` | Elias 的眼睛一直在錶上，戴手套的右手把紅色把手再扳一點點；剪在把手停住；嘴閉著；最後：他蹲在閥前、看著錶 | — | 約 2.5 秒 |
@@ -169,8 +169,19 @@ c33–c41 寫 `before dawn, cool grey-blue light falling from the high windows, 
 - **冷吹管從哪來**：平放在工作台上（Sparks 前一天收在那裡，不拍）；Nora 在線外從工作台拿起、平舉著遞過黃線，管尖朝爐子。她右手握中段遞過去，左手垂著（c36 拍到戒指）。
 - **Sparks 天亮時空手**（前臂褐色隔熱護套、護目鏡戴在眼睛上），握管的手抖才看得見；加料時（c14–c18、蒙太奇）戴長灰手套。第 56 集吹的時候戴不戴手套由第 56 集定。
 - **Gus 的老花眼鏡**：照第 54 集，摺好勾在汗衫領口；c40 他用右手肘撐起來半坐。
-- **〈接點表〉55→56 的左右**：bible 寫「Elias 在畫面左後的燃氣閥旁」「Gus 撐著半坐在行軍床上（畫面右後）」，但〈場景格局〉燃氣閥在爐子右邊、行軍床在左牆；從大門往裡看（主鏡）是 Elias 在畫面右後、Gus 在畫面左中。本稿照〈場景格局〉寫，請主控改〈接點表〉那一格並告訴第 56 集的寫稿者。
+- **〈接點表〉55→56 的左右**：bible 原本寫「Elias 在畫面左後」「Gus 在畫面右後」，跟〈場景格局〉相反；bible〈第 51–55 集審稿後補定〉已改成從大門往裡看 Elias 在畫面右後、Gus 在畫面左中，本稿照這樣寫，第 56 集也照這樣接。
 - **"Mr. Ashford"**：Gus 照房東的姓叫他（第 31–40 集 Elias 一直是房東 Ashford），不用先鋪。"Boss" 是 Theo 對 Elias 的叫法，"Mrs. Ashford" 是他日誌的名字（第 16 集起）。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e051-e055-storyboard.md`、`review/2026-11-12-e055-e060-storyboard.md` 與 bible〈第 51–55 集審稿後補定〉〈第 55–60 集審稿後補定〉改的。本集還沒錄、沒拍，台詞都沒變，沒有要重錄或重抽的鏡。
+- **c03 收尾動作**：說完舉起的右手落回毛毯上（原本停在半空）；c04 的收尾改成右手手指在毛毯上慢慢收攏。
+- **c23**：Theo 的右手食指點著**朝向他自己的螢幕那面**（螢幕背對鏡頭），不寫「平板背後那一面」（會畫成點機背）。
+- **角色表**：Nora 的圍裙「第四場」改成「第三場」（本集只有三場）。
+- **Sparks 的手套維持灰色**（主控決定：第 34–55 集已經用了；他與 Elias 的臉、髮型、衣服分得開），c14–c18、c27–c31 不改。
+- **舊鐘的道具句**照 `cast.json`（2026-11-12）加上大小：`…, no numerals, about as wide as a man's shoulders`（c01）。
+- **55→56 的左右**：bible 補定已改成照〈場景格局〉，〈這集接在哪〉與下面那條說明跟著改；鏡頭不動。
+- 鏡數、秒數不變（41 鏡、110.5 秒）。
 
 ### 配音
 
