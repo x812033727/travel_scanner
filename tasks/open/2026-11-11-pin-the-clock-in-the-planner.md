@@ -1,17 +1,19 @@
 ---
 id: 2026-11-11-pin-the-clock-in-the-planner
 title: Pin the clock in the planner weather readability and itinerary drag-handle e2e tests
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5.5-p06-p18-handoff
+claimed_at: 2026-11-12T01:47:46Z
 created_at: 2026-11-11T17:14:39Z
 completed_at:
 branch:
 depends_on: []
 scope:
-  - apps/api/tests
+  - apps/api/tests/test_trip_creation.py
+  - apps/api/tests/test_alerts_integration.py
+  - apps/api/tests/test_integration_postgres_redis.py
   - apps/api/tests/test_analytics_integration.py
   - apps/api/tests/test_trip_localization_integration.py
   - apps/web/components/trip-editor.test.tsx
@@ -70,4 +72,5 @@ Filed from PR #2060 (video work); that PR does not touch apps/web, so the fix be
 - 2026-11-12：vitest 也中了。`apps/web/components/trip-editor.test.tsx` 的 partner blocks 三個測試（抵達後的安排、中間那天換票券、AI 套用後的下一步）把行程寫死在 2026-11-11，00:00 UTC 之後找不到「補充安排」「抵達後的安排」「接下來可以預訂」（PR #2060 web-unit 3/3，merge commit 039fba9e2，這個 PR 沒改 apps/）。同樣的修法：凍結時鐘或用相對日期。
 - 2026-11-12：API 也中了。`apps/api/tests/test_trip_localization_integration.py::test_planned_stops_follow_the_request_locale_until_renamed` 建 2026-11-10..12 的行程，00:40 UTC 起回 422（assert 422 == 201；PR #2060 api-tests 2/4，head 583bbd957）。修法：用相對今天的日期，或凍結 API 的時鐘。
 - 2026-11-12：同一輪 api-tests 3/4 也一樣：`tests/test_analytics_integration.py::test_a_server_event_joins_the_browser_session_it_came_from` 建 2026-11-10..12 的行程回 422。其他 API 測試寫死的未來日期也該一併掃一次（`grep -rn '"2026-11' apps/api/tests`）。
-- 2026-11-12：api-tests 4/4 再掛 15 個（test_integration_postgres_redis.py 13 個、test_alerts_integration.py、test_trip_creation.py::test_blank_trip_preferences_are_normalized_for_persistence），全是建立開始日已過的行程時 422／SaveTripRequest 驗證錯。API 會拒絕開始日早於今天的行程，所以 apps/api/tests 裡寫死的 2026-11 日期要整批改成相對今天（或注入固定的今天）。scope 改成整個 apps/api/tests。
+- 2026-11-12：api-tests 4/4 再掛 15 個（test_integration_postgres_redis.py 13 個、test_alerts_integration.py、test_trip_creation.py::test_blank_trip_preferences_are_normalized_for_persistence），全是建立開始日已過的行程時 422／SaveTripRequest 驗證錯。API 會拒絕開始日早於今天的行程，所以 apps/api/tests 裡寫死的 2026-11 日期要整批改成相對今天（或注入固定的今天）。scope 列出這幾個檔案（整個 apps/api/tests 會跟其他進行中的票重疊）。
+- 2026-11-12（claude-opus-5.5-p06-p18-handoff）：`trip-editor.test.tsx` 整檔用 `vi.setSystemTime(2026-11-10T03:00Z)` 固定在行程前一天（afterEach `vi.useRealTimers()`），77 個全過。另一個 `opens the stay-area flow…` 也用同一組行程，一併解決。e2e 與 API 測試還沒改。
