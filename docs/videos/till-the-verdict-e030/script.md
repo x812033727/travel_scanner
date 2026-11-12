@@ -26,7 +26,7 @@
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3）；**全身參考圖 `gown` 待畫** | `gown`（齊肩短髮往後梳到耳後、霧灰落地長禮服、高船領、長袖）；全景與中景寫裙襬下的霧灰低跟鞋尖；`a small misty-grey satin clutch about the size of her hand`：c01–c13 在左手（c12 前還握著 `a pair of white cotton handling gloves`），**c14 起夾在左腋下**；c04–c15 右手（c10 起與左手）拿著轉讓書影本，c13 起右手拿撕下的第二頁，**c16 起兩張疊在一起**、c19 起在右手；左手無名指每一鏡 `a plain narrow white-gold band with no stone, on her left ring finger`；整集眼睛濕、臉頰有淚痕；**一鏡都不笑**；原聲 |
+| Nora | `assets/refs/nora-portrait.jpg`（r3）；**全身參考圖 `gown` 待畫** | `gown`（齊肩短髮往後梳到耳後、霧灰落地長禮服、高船領、長袖）；腳上是她 `decree` 的鞋 `low nude flat shoes`（裸色平底鞋；禮服盒裡沒有鞋），露出來的鏡寫這句，裙襬蓋住腳的鏡寫「落地的裙襬蓋住鞋面」；`a small misty-grey satin clutch about the size of her hand`：c01–c13 在左手（c12 前還握著 `a pair of white cotton handling gloves`），**c14 起夾在左腋下**；c04–c15 右手（c10 起與左手）拿著轉讓書影本，c13 起右手拿撕下的第二頁，**c16 起兩張疊在一起**、c19 起在右手；左手無名指每一鏡 `a plain narrow white-gold band with no stone, on her left ring finger`；整集眼睛濕、臉頰有淚痕；**一鏡都不笑**；原聲 |
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 基本款（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣、深棕色皮鞋）；兩手空著（麥克風留在台上）；`a single photocopied white page, held so only its back shows` 從西裝左胸內袋拿出；**可以笑的只有 c03 第一格（遞影本前）與 c09 說完 "Then prove it." 之後到 c15 第一格**，都是練過的閉嘴微笑，說話的那一刻嘴角放平；說話句寫「聲音平穩、低」，不寫 warm、keynote、smooth；原聲 |
 | Peg | `assets/refs/peg-portrait.jpg`（`visit`） | `visit`（直的短灰髮往一邊梳、玳瑁框老花眼鏡**戴在臉上**、燕麥色開襟衫、深色長褲、平底包鞋）；c23 起；她的手機 c23 塞進開襟衫右口袋（之後不入鏡）；帆布袋留在車上；左手 `a faint pale band of skin on her left ring finger where a ring used to be`；喘著、眼睛紅、鏡片下緣沾著淚；**只喊、不打、不碰他**；不笑；原聲（c28 短喊、c30、c32） |
 | Elias | `assets/refs/elias-portrait.jpg`；全身參考圖待畫 | 基本款（炭灰窗格紋三件式、白襯衫開領、白色口袋巾、細銀絲框眼鏡、深棕色頭髮往後梳、深色皮鞋），沒有大衣；**站在走廊盡頭最後一盞頂燈下，左手插在褲子左口袋**、一步都不動；不戴戒指；疤不出現；不笑；原聲（c43） |
@@ -72,7 +72,7 @@ c23 寫 `inside the parked car, early evening, the alley outside in soft shadow,
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c01 | 全景、慢推（從全景推到中景）；鏡頭在走廊頭、側門邊、往裡拍；直式前後疊開：前景右是 Cole 讓開的黑西裝肩（虛焦），中間是往裡走的 Nora 的背，深處是左牆的鐵門、燈泡與燈下的 Grant；**第一格接第 29 集最後一鏡** | 臉清楚的只有 Grant（遠、小）。Nora（`gown`：霧灰長禮服的背、齊肩髮，裙襬下露出霧灰低跟鞋尖），背對鏡頭；左手 `a small misty-grey satin clutch about the size of her hand` 與 `a pair of white cotton handling gloves`；Cole（黑西裝、白手套）在畫面右前、臉在畫框外；深處 `a bare bulb in a black wire cage on the white corridor wall`、旁邊灰色鐵門與 `a small dim green light box above the door, blank`；Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、深棕色皮鞋）站在燈泡下靠盡頭那側、面向她，眼睛看著走過來的她（不看鏡頭）、下巴微抬、嘴唇閉著，`no smile at any moment, until the last frame`；更遠的盡頭卸貨門關著、下面空著 | Cole 往右牆讓開半步（動作一），Nora 從他左邊走過去、往燈泡走（動作二）；剪在她走到走廊中間；嘴都閉著；最後：她往燈泡走，Grant 在燈下等著 | — | 約 2 秒 |
+| c01 | 全景、慢推（從全景推到中景）；鏡頭在走廊頭、側門邊、往裡拍；直式前後疊開：前景右是 Cole 讓開的黑西裝肩（虛焦），中間是往裡走的 Nora 的背，深處是左牆的鐵門、燈泡與燈下的 Grant；**第一格接第 29 集最後一鏡** | 臉清楚的只有 Grant（遠、小）。Nora（`gown`：霧灰長禮服的背、齊肩髮，走路時裙襬下露出 `low nude flat shoes` 的鞋跟），背對鏡頭；左手 `a small misty-grey satin clutch about the size of her hand` 與 `a pair of white cotton handling gloves`；Cole（黑西裝、白手套）在畫面右前、臉在畫框外；深處 `a bare bulb in a black wire cage on the white corridor wall`、旁邊灰色鐵門與 `a small dim green light box above the door, blank`；Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、深棕色皮鞋）站在燈泡下靠盡頭那側、面向她，眼睛看著走過來的她（不看鏡頭）、下巴微抬、嘴唇閉著，`no smile at any moment, until the last frame`；更遠的盡頭卸貨門關著、下面空著 | Cole 往右牆讓開半步（動作一），Nora 從他左邊走過去、往燈泡走（動作二）；剪在她走到走廊中間；嘴都閉著；最後：她往燈泡走，Grant 在燈下等著 | — | 約 2 秒 |
 | c02 | 插鏡、手部特寫、固定；**第一格就是 Grant 淺石色西裝的左胸前襟**；直式；燈泡的硬光從畫面左 | Grant 的右手（淺石色西裝袖口、淺藍襯衫袖口、透明玻璃袖扣）；`a single photocopied white page, held so only its back shows`；畫面裡沒有臉 | Grant 的右手從西裝左胸內袋抽出那張紙（動作一），往畫面左遞出去（動作二）；剪在紙遞到半空；畫面上沒有嘴；最後：紙在他右手、紙背朝鏡頭，遞向畫面左 | — | 約 2 秒 |
 | c03 | 近景、慢推（從胸上推到肩上）；從 Nora 右肩後拍（她的齊肩髮與霧灰右肩在畫框左下緣、虛焦、不露臉）；直式，Grant 的臉在上三分之一；身後是走廊往盡頭的陰影（虛焦） | Grant（基本款，細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫）；右手的影本遞在兩人之間（紙背朝鏡頭）；燈泡的硬光從畫面左照在他臉上；四分之三側臉朝畫面左的 Nora、眼睛看著她；**第一格是練過的閉嘴微笑**，開口那一刻嘴角放平、眉心微提、眼睛不眨、聲音平穩、低、一個字一個字放下 | Grant 看著她，嘴在說話（平穩、低）（動作一）；說完遞著紙的右手往她再送一點（動作二），嘴閉上；最後：紙遞在她面前 | Grant（平穩、低）：You signed the rights to the company before the wedding.（妳在婚禮前就把權利簽給公司了）（原聲） | 約 4.5 秒 |
 | c04 | 近景、固定；從 Grant 左肩後拍（他淺石色西裝的左肩在畫框右下緣、虛焦、不露臉）；直式，Nora 的臉在上三分之一；身後是白牆與牆上的鐵網燈泡（虛焦） | Nora（`gown`：齊肩短髮往後梳到耳後、霧灰長禮服的高船領）；眼睛濕、臉頰有淚痕；左手握著手拿包與白手套，左手無名指 `a plain narrow white-gold band with no stone, on her left ring finger`；燈泡的光從她身後照在頭髮上、白牆的光在她臉上；四分之三側臉朝畫面右的 Grant，眼睛從他臉上落到那張紙；眉頭往中間收、嘴唇閉著、呼吸停住，`no smile at any moment, until the last frame` | Nora 的右手接過那張紙（動作一），舉到眼睛的高度（動作二）；剪在紙舉到一半；嘴閉著；最後：`a single photocopied white page, held so only its back shows` 在她右手、舉在臉旁，紙背朝鏡頭 | — | 約 2.5 秒 |
@@ -158,7 +158,7 @@ c23 寫 `inside the parked car, early evening, the alley outside in soft shadow,
 | c42 | 中近景、固定；鏡頭在走廊中段、往盡頭拍；直式：Theo 在畫面右的中間，畫面左緣是 Elias 的炭灰右肩（虛焦、不露臉）；身後是卸貨門 | Theo（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲）；左手 `a slim tablet in a plain grey case, its screen turned away`，貼在身側；頂燈從上面照下來；頭轉向畫面左的 Elias、眼睛看著他；眉毛平平、嘴唇平、聲音平、慢、一本正經，`no smile at any moment, until the last frame` | Theo 看著 Elias，嘴在說話（平、慢、一本正經）（動作一）；說完下巴往走廊中段一抬（動作二），嘴閉上；最後：他看著 Elias，等他回答 | Theo（平、慢、一本正經）：Boss, aren't you going over?（老闆，你不過去嗎？）（原聲）（→ 答在 c43） | 約 3 秒 |
 | c43 | 近景、慢推（從胸上推到肩上）；同 c40 的鏡位；直式，臉在上三分之一；**畫面裡只有 Elias** | Elias（基本款，細銀絲框眼鏡；**左手插在褲子左口袋**）；頂燈從正上方；頭不轉向 Theo，眼睛一直看著畫面左外一點、燈下的 Nora，不看鏡頭；眉毛放平、下巴不動、嘴唇在字之間閉著、聲音低、平、兩個字像合約的條號，`no smile at any moment, until the last frame` | Elias 嘴在說話（低、平），這句是對身邊的 Theo 說的，眼睛不離開她；說完右手的手指在身側慢慢收攏，嘴閉上；最後：他站著不動，眼睛還在她身上 | Elias（低、平，像念條號）：Clause two.（第二條）（原聲）（結尾）（懸念 → 下一集第一場）← 因為 c42 | 約 3 秒 |
 | c44 | 近景、固定；同 c42 的鏡位；直式，臉在上三分之一 | Theo（圓玳瑁框眼鏡）；左手的平板；眼睛從 Elias 移到走廊中段的 Nora（畫框外，鏡頭旁邊）；眉毛平平、嘴唇平、眨一下眼，`no smile at any moment, until the last frame` | Theo 左手的平板垂到身側（動作一），眼睛移到走廊中段（動作二）；剪在眼睛停住；嘴閉著；最後：他看著走廊中段 | — | 約 2.5 秒 |
-| c45 | 全景、固定；鏡頭在兩個女人背後、低、往盡頭拍；直式前後疊開：前景是 Nora 與 Peg 的背（畫面左 Peg、右 Nora），中間是長長的走廊，盡頭是燈下的 Elias 與 Theo | 臉清楚的只有遠處的 Elias 與 Theo（很小）。Nora（`gown`：霧灰長禮服的背、齊肩髮，裙襬下露出霧灰低跟鞋跟）背對鏡頭，右手垂著兩張疊在一起的影本、手拿包夾在左腋下；Peg（燕麥色開襟衫的背、直的短灰髮、平底包鞋）在她左邊半步、左手扶著她的左臂；左牆上的燈泡在畫面左上、照著她們；關著的鐵門在畫面左；中段以後只有陰影與疊著的折疊椅；盡頭頂燈下 Elias（左手插在褲子左口袋）與他左邊的 Theo，都沒動，眼睛看著前景的兩個女人、不看鏡頭 | Peg 扶著 Nora 左臂的手收緊（動作一），Nora 垂著的右手把兩張紙捏緊（動作二）；盡頭的兩個人一步都不動；剪在她手指捏緊；最後：一條長走廊，兩頭各站著人 | — | 約 3 秒 |
+| c45 | 全景、固定；鏡頭在兩個女人背後、低、往盡頭拍；直式前後疊開：前景是 Nora 與 Peg 的背（畫面左 Peg、右 Nora），中間是長長的走廊，盡頭是燈下的 Elias 與 Theo | 臉清楚的只有遠處的 Elias 與 Theo（很小）。Nora（`gown`：霧灰長禮服的背、齊肩髮，站著，落地的裙襬蓋住鞋面）背對鏡頭，右手垂著兩張疊在一起的影本、手拿包夾在左腋下；Peg（燕麥色開襟衫的背、直的短灰髮、平底包鞋）在她左邊半步、左手扶著她的左臂；左牆上的燈泡在畫面左上、照著她們；關著的鐵門在畫面左；中段以後只有陰影與疊著的折疊椅；盡頭頂燈下 Elias（左手插在褲子左口袋）與他左邊的 Theo，都沒動，眼睛看著前景的兩個女人、不看鏡頭 | Peg 扶著 Nora 左臂的手收緊（動作一），Nora 垂著的右手把兩張紙捏緊（動作二）；盡頭的兩個人一步都不動；剪在她手指捏緊；最後：一條長走廊，兩頭各站著人 | — | 約 3 秒 |
 | c46 | 中近景、慢推（從中近景推到近景）；從盡頭往回拍，鏡頭在 Elias 右前方一步外（他在畫框外）、往走廊中段推；直式：Nora 的臉在上三分之一，畫面右是她左邊半步的 Peg（臉虛焦）與關著的鐵門、牆上的燈泡；**最後一鏡** | 共兩人，臉清楚的只有 Nora。Nora（`gown`：齊肩短髮往後梳到耳後、霧灰長禮服的高船領；眼睛濕、臉頰有淚痕），站在鐵網燈泡下；右手拿著疊在一起的兩張 `a single photocopied white page, held so only its back shows`（紙背朝鏡頭）、垂在胸前；`a small misty-grey satin clutch about the size of her hand, tucked under her left arm`；左手無名指 `a plain narrow white-gold band with no stone, on her left ring finger`；`a bare bulb in a black wire cage on the white corridor wall` 在她頭頂的右上方（畫面右）；眼睛看著畫面左外一點的走廊盡頭，不看鏡頭；眉毛放平、眼睛濕但定住、下巴抬著、呼吸慢下來，`no smile at any moment, until the last frame`；Peg（`visit`，玳瑁框老花眼鏡、鏡片下緣沾著淚，喘著）在她左邊半步、臉虛焦，左手扶著她的左臂；鐵門關著 | Nora 看著盡頭，吸一口氣、下巴再抬一點（動作一），握著兩張紙的右手收緊（動作二）；剪在她的手收緊後一拍；嘴閉著；最後：她站在燈下看著盡頭，Peg 在她左邊 | — | 約 4 秒 |
 
 約 125.5 秒（2 分 5.5 秒）、46 鏡（第一場 9、第二場 13、第三場 15、第四場 9），是各鏡秒數加起來的估計；細綱 `duration_s` 135 秒，bible 目標 46–50 鏡（第 3 章結尾）。
@@ -198,7 +198,7 @@ c23 寫 `inside the parked car, early evening, the alley outside in soft shadow,
 - **c35–c36 Grant 離開的路線**：往走廊頭、經過 Lyle 的手機、從側門回大廳（不拍出門）；Lyle 舉著手機跟出去、工作人員也回去（不拍）。
 - **Elias 與 Theo**：第三場時從外面繞到盡頭的卸貨門進來（不拍），c39 第一次入鏡就已經站在燈下（c39 鏡頭在 Nora 右肩旁，不是她的主觀鏡，兩人看的是鏡頭旁邊的她）；卸貨門關著。
 - **c41、c45、c46 Peg 扶著 Nora 的左臂**：用左手（淡色戒痕入鏡）。
-- **鞋**：Nora 的 `gown` 沒有寫鞋，全景寫「裙襬下露出霧灰低跟鞋尖」；Lyle 深色球鞋、Cole 黑皮鞋、工作人員黑工作鞋。請主控補進 bible。
+- **鞋**：照 bible（第 24–25 集已改）：禮服盒裡沒有鞋，Nora 穿她 `decree` 的 `low nude flat shoes`；c01 走路時露出鞋跟寫這句，c45 站著、裙襬蓋住腳寫「落地的裙襬蓋住鞋面」；Lyle 深色球鞋、Cole 黑皮鞋、工作人員黑工作鞋。請主控補進 bible。
 
 ### 配音
 
@@ -257,7 +257,7 @@ c23 寫 `inside the parked car, early evening, the alley outside in soft shadow,
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `gown`（霧灰長禮服）＋手拿包（c14 起左腋下）；左手無名指 Elias 的戒指；整集眼睛濕、臉頰有淚痕；全景寫霧灰低跟鞋尖 | c04、c07–c08、c10、c18、c20–c21、c26、c31、c38、c46（c01、c45 背影；c02–c03、c22 不在或只有肩；c06、c12–c14、c17 只有手；c16 四分之一側臉；c25、c27、c35 虛焦或很小） | 已有；**要畫全身參考圖 `gown`** |
+| Nora | `gown`（霧灰長禮服）＋手拿包（c14 起左腋下）；左手無名指 Elias 的戒指；整集眼睛濕、臉頰有淚痕；鞋是 `decree` 的 `low nude flat shoes`（c01 露出鞋跟，c45 裙襬蓋住） | c04、c07–c08、c10、c18、c20–c21、c26、c31、c38、c46（c01、c45 背影；c02–c03、c22 不在或只有肩；c06、c12–c14、c17 只有手；c16 四分之一側臉；c25、c27、c35 虛焦或很小） | 已有；**要畫全身參考圖 `gown`** |
 | Grant | 基本款（細圓金屬框眼鏡）；兩手空著；轉讓書影本從左胸內袋拿出 | c01（遠）、c03、c05、c09、c15、c19–c20、c22、c29、c33（c02、c34 只有手；c25、c27、c35–c36 虛焦或背影） | 已有 |
 | Peg | `visit`（玳瑁框眼鏡戴在臉上）；手機 c23 收進開襟衫右口袋；左手淡色戒痕；眼睛紅、鏡片下緣沾著淚 | c23–c24、c28、c30、c32、c35、c37、c41（c25 剪影；c27 很小；c45 背影；c46 虛焦） | 已有 |
 | Elias | 基本款、沒有大衣；左手插在褲子左口袋 | c40、c43（c39、c45 遠、小；c42 只有肩） | 要畫全身參考圖 |
