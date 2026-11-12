@@ -24,3 +24,5 @@
 院子 `set-xujia-yuan-l2`（2026-11-08）：l1 拿掉寫著字的木牌（`live-set-fix/out/…-45002`），第 1 集 fix3 起用 l2。
 
 第 7 集（2026-11-12，`../../live-action/screen-test-e007.py`，Colab Qwen-Image-Edit，站主選）：`sunzhanggui-portrait-l1` = 37002（cast.json 的「瞇著笑眼」改成沉穩精明）、`set-chouduan-l1`（綢緞莊後巷）= 37002（37001 招牌有假字）。試鏡原圖在 `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e007/out/`。
+
+第 8 集（2026-11-12，`../../live-action/screen-test-e008.py`，Colab Qwen-Image-Edit，站主選）：`set-biaoju-l1` = 37002（左上與右下角各有一小串假字：先裁掉右下 10% 再放大回 1312×736，左上再用 delogo 補掉）、`set-qianfu-men-l1` = 37002（大門與白外牆、燈籠、木樁同一張）、`set-qianfu-ting-l1` = 37001。試鏡原圖在 `~/mokaair-work/videos/_series/zhong-tian-qu-qi/live-screen-test-e008/out/`。
