@@ -132,3 +132,60 @@ bash $K/h3.sh stop --session ttv-st1 && bash $K/bootstrap.sh patch && bash $K/h3
 - **時間與點數**：Colab 又分到 A100（RTX PRO 6000，每小時約 10 CU）；7 支草稿約 16 分鐘，帳號 b 餘額 2,018.25 → 2,015.74（約 −2.5，入帳可能延遲）。
 - 備份：`AI/備份/AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/voicepilot/`（草稿、提示詞、進度、轉錄腳本、給站主的合輯）。
 
+
+## 第一批參考圖（第 1–10 集）
+
+站主 2026-11-12 點頭（上限 35 CU）。`art.py` 照 `../art-plan-people.md`、`../art-plan-sets.md`、`../art-plan-props.md` 把第 1–10 集要的人、場景、道具排成 12 輪 manifest；
+場景與道具的英文提示詞在建 manifest 時從企劃的表讀出來（企劃改了，下一次建的 manifest 就跟著改），人物的外貌句讀 `../cast.json`（跟企劃不同時以 `cast.json` 為準）。
+Qwen-Image-Edit、`lora: false`、20 步、CFG 4，每項兩個種子；場景的「改自」版本只畫一個種子（企劃〈估價〉）。輸出檔名是 `<輪>-<id>.png`，後面的輪從工作資料夾讀選定的那張。
+
+| 輪 | 內容 | 張數 | 約 CU | 要等 |
+| --- | --- | --- | --- | --- |
+| a1 | Cole、Nora `night-coat` 全身、Nora `hospital`、Dr. Brandt、Nurse Kim、工頭 | 12 | 3.24 | — |
+| a2 | Grant `rain`、值班醫生、Nora `discharge` 全身、Fisk、Sienna、副警長 | 12 | 3.24 | — |
+| a3 | Sienna 全身（從選定的 Sienna 胸像）、Bev | 4 | 1.08 | `--pick sienna=` |
+| s1 | #2 臥室夜（改自已有的直式臥室 a）、#5 客廳白天、#7 大門屋裡白天、#9 嬰兒房白天、#12 大門外夜雨、#14 救護車 | 11 | 2.97 | — |
+| s2 | #15 走廊、#16 病房夜、#19 白車後座、#20 大門外金光、#21 客廳金光 a、#24 大門屋裡金光 | 12 | 3.24 | — |
+| s3 | #27 書房、#28 坡道、#29 白車坡底、#30 公車站、#31 汽車旅館櫃台、#32 汽車旅館房間 | 12 | 3.24 | — |
+| s4 | 「改自」：#3、#6、#17、#18、#22、#25、#33 | 7 | 1.89 | `--pick liv-day= room-night= liv-gold-a= nur-day= mroom-night=`（#3 讀 s1 的 #2） |
+| s5 | 「改自」的「改自」：#23、#26 | 2 | 0.54 | s4 驗收過（單一種子，不用選） |
+| s6 | 優先 3：#8、#10、#11、#13、#34（站主可以刪） | 7 | 1.89 | `--pick door-in-day= liv-day=` |
+| p1 | 半顆藥、毛線帽、玻璃磚、Nora 與 Peg 的行李箱、No. 1 花瓶 | 12 | 3.24 | — |
+| p2 | 白車、黑車（1920×1088）、帳本、Peg 的戒指、帆布袋、駝色大衣 | 12 | 3.24 | — |
+| p3 | 工廠版花瓶（第 1 集電視廣告；在選定的 No. 1 上 exactly one change） | 2 | 0.54 | `--pick forever-no1=` |
+| 合計 | 不含 s6 | **98** | **26.46** | |
+| | 含 s6 | 105 | 28.35 | |
+
+- **沒排的**：調度員（只有聲音）、另一個工人（只拍背影）、Nora `pregnant` 全身（企劃標「選」）、`real-pill`（第 11 集）、`receipt`（第 5、9 集摺著照文字，圖要等 `light-box`）。
+  No. 1 花瓶第一次是第 26 集，排在 p1 是因為第 1 集的工廠版要從它改。
+- **全身照**：照企劃〈怎麼畫〉，image 1 是 `assets/refs/` 的胸像、`latent: empty`、1088×1920（〔FULL〕〔FACE1〕）；a1 的 `night-coat` 是這個做法的試驗，臉跑掉就先停。
+- **跟企劃的字不一樣的地方**（`cast.json` 為準）：Nora `night-coat` 寫 `soft slippers`（企劃寫 `soft cream slippers on her feet`）、Sienna 全身沒有 `clearly visible`；
+  Nora `hospital` 的 `cast.json` 句子同時有 `with natural light makeup` 與 `no makeup`，企劃拿掉了前者，manifest 照 `cast.json` 留著，**要改 `cast.json`**。
+  照企劃改的：副警長只留上衣、`night-coat` 拿掉 `pain only in her face and posture`，胸像另外拿掉 `wrist`（Sienna 的錶）等 `bust()` 漏掉的字。
+- s1 的 #2 從已有的直式臥室早晨版改：`art.py` 先找 `assets/refs/`，沒有就從 vpilot 的工作資料夾（`set-bedroom-v-a.png`）複製；兩處都沒有就從雲端硬碟拿回來。
+- 種子：人物 714000 起（企劃的順序，每張加一）、場景 `740000 + 格號 × 10`、道具 `760000 + 表裡的列 × 10`。
+
+```bash
+B=docs/videos/series-plans/top40-2025-2026/2025-15-xingde-xiangyu/western/production/screen-test
+K=$PWD/.agents/skills/minimax-h3-colab/scripts
+W=${VIDEO_WORKDIR:-$HOME/mokaair-work/videos}/_series/till-the-verdict/art
+python3 -I $B/art.py --list                                  # 每一輪的張數、要選的圖、約 CU
+bash $K/bootstrap.sh && bash $K/h3.sh usage
+# 不用選圖的輪（a1 a2 s1 s2 s3 p1 p2）可以在同一個 session 連跑，只冷啟動一次
+bash $K/h3.sh start --session ttv-art --gpu G4
+for r in a1 a2 s1 s2 s3 p1 p2; do
+  python3 -I $B/art.py $r && bash $K/h3.sh images-check --manifest $W/$r.json &&
+  bash $K/h3.sh images --detached --manifest $W/$r.json --output-dir $W --progress $W/$r.progress.json --session ttv-art
+done
+bash $K/h3.sh stop --session ttv-art                          # 等站主挑圖時不要開著 runtime
+# 站主挑完：選定的照 ../assets/refs/README.md 存進 assets/refs/，再跑要選圖的輪
+python3 -I $B/art.py a3 --pick sienna=b
+python3 -I $B/art.py s4 --pick liv-day=a --pick room-night=b --pick liv-gold-a=a --pick nur-day=a --pick mroom-night=b
+python3 -I $B/art.py p3 --pick forever-no1=a
+bash $K/h3.sh images --detached --manifest $W/a3.json --output-dir $W --progress $W/a3.progress.json --session ttv-art2 --new-session --stop-on-complete
+python3 -I $B/art.py s5                                       # s4 驗收過之後
+```
+
+離線試跑（不連網、不花錢）：`python3 -I $B/art.py <輪> --work <暫存資料夾> --placeholders --pick …`，選定的圖還沒畫就寫灰色替身；
+真的跑時 `art.py` 會擋下工作資料夾裡留著的替身（小於 50 KB 的檔）。2026-11-12 十二輪都試跑過、`images-check` 0 錯誤（警告只有「不是 16:9」，胸像與直式本來就不是）。
+每輪跑完照企劃的〈驗收〉挑圖，原圖照 `docs/videos/AI-DRAMA-DRIVE.md` 用 `todrive.sh` 傳到 `_共用/製作檔/`。

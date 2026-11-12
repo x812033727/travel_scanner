@@ -263,6 +263,9 @@ def rounds() -> dict[str, dict]:
 
 def need(path: Path, size: tuple[int, int], placeholders: bool, hint: str) -> None:
     if path.is_file() and path.stat().st_size:
+        # a grey stand-in from an earlier --placeholders run compresses to a few KB; a real picture is far larger
+        if not placeholders and path.stat().st_size < 50_000:
+            sys.exit(f"art.py: {path} looks like a placeholder from a dry run; delete it and draw the real picture first")
         return
     if not placeholders:
         sys.exit(f"art.py: {path} is missing; {hint} (or pass --placeholders for an offline check)")
