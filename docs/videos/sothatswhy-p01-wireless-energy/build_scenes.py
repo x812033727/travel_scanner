@@ -129,7 +129,7 @@ obj("phone-pad", "Close-up of " + PHONE + " lying face up on " + PAD + ", a tiny
     k("咦？它沒插線，也在充電耶！", "驚訝"))
 obj("pot-boil", "Close-up of " + POT + " on " + HOB + ", the noodle soup bubbling, the glass around the pot clean and shiny",
     k("所長的鍋子也滾了！", "指著"),
-    c("我把手靠近鍋子旁邊的爐面玻璃，一點都不熱。"),
+    c("我把手靠近鍋子旁邊的爐面玻璃，不覺得燙。"),
     c("你先別碰，等一下告訴你為什麼。", "叮嚀", "S:coolglass"))
 kid("kid-puzzle", K("counting on her fingers with a puzzled frown", where=OFFICE),
     k("卡片、手機、鍋子都沒插線，", "想不通"),
@@ -140,7 +140,7 @@ chief("chief-energy", C("holding up three fingers with a bright smile"),
     k("能量是什麼？", "句尾上揚"),
     c("讓燈會亮、東西會動、會變熱的那份本事。"))
 chief("chief-energy2", C("opening both hands with a warm smile", close=True),
-    c("手機要是往旁邊挪一點點，還充得到嗎？我們等等試。", "賣關子", "S:shift"))
+    c("手機要是往旁邊挪一點點，還充得到嗎？等等你就知道。", "賣關子", "S:shift"))
 chief("chief-hooks", C("counting on her fingers with a playful mysterious smile"),
     c("這口麵煮完，我再拿一口玻璃鍋上來。", None, "S:glass"),
     c("你那張卡片，離閘門多遠就不嗶了？你猜猜。", "轉向觀眾", "S:cardfar"),
@@ -220,7 +220,7 @@ obj("rect-part", "Close-up of one tiny square black electronic part on a small g
     c("要。剛剛那家廠商說，卡片的晶片裡也有整流器。"))
 chief("chief-diff", C("holding out both hands like a balance with a bright smile"),
     k("手機和卡片哪裡不一樣？", "追問", "S:diff"),
-    c("還記得嗎？卡片收到電，馬上就用掉；"),
+    c("卡片收到電，馬上就用掉；"),
     c("手機收到電，送進電池存起來，晚一點才用。", None, "P:diff"))
 obj("wheel-bell", "Wide shot of " + BASIN + " seen from above, " + WHEEL + " at the far end with one tiny brass bell on top of it",
     c("還記得水盆嗎？卡片的小水車，轉一下就敲響鈴鐺；"))
@@ -315,7 +315,7 @@ chief("chief-crooked", C("tilting one flat hand sideways with a thoughtful smile
 obj("wheel-far", "Wide shot of a very long blue plastic tub of water seen from above, faint tiny ripples, " + WHEEL + " far away at the very end, almost still",
     c("也一樣。離得越遠，穿過那圈線的磁場越少。", None, "P:far"),
     k("所以卡片要貼著閘門！", "恍然"),
-    c("對。還記得你那張卡片要多近嗎？"))
+    c("越近越好。可是一定要貼著嗎？"))
 chief("chief-cardfar", C("holding up " + CARD + " between two fingers with a bright smile"),
     c("一款做車票用的卡片晶片，規格寫最遠大約十公分，"),
     c("而且還要看卡片的線圈，和閘門那一邊。", None, "P:cardfar"))
@@ -347,7 +347,7 @@ kid("kid-got-it", K("holding " + CARD + " up high with a big confident grin", wh
     k("原來如此！", "恍然大悟"), k("是一直在變的磁場，", "篤定"),
     k("推著線圈和鍋底的電跑！", "篤定", "P:jump"))
 kid("kid-got-it2", K("counting on her fingers with a proud happy face", close=True, where=KITCHEN),
-    k("卡片、手機、鍋子，", "篤定"), k("接收的東西不一樣，", "篤定"),
+    k("卡片、手機、鍋子，", "篤定"), k("收到能量以後，", "篤定"),
     k("做的事就不一樣！", "篤定", "P:heat"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
     c("說得好。我覺得最妙的是：", "笑"),
@@ -429,6 +429,7 @@ doc = {
         "tags": ["無線充電", "電磁爐", "感應卡", "交通卡", "磁場", "電磁感應", "渦電流", "科普", "原來如此事務所"]},
     "thumbnail": {"template": "thumb", "data": {"headline": "卡片不燙\n**鍋子卻熱？**", "sub": "電怎麼隔空跑過去", "shot": "kid-main-q", "subject": "right"}},
     "sources": [
+        {"title": "Microchip, microID 13.56 MHz RFID System Design Guide (DS21299E)", "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/21299E.pdf", "checked_on": CHECKED},
         {"title": "OpenStax, College Physics 2e, 23.4 Eddy Currents and Magnetic Damping", "url": "https://openstax.org/books/college-physics-2e/pages/23-4-eddy-currents-and-magnetic-damping", "checked_on": CHECKED},
         {"title": "OpenStax, College Physics 2e, 23.2 Faraday's Law of Induction: Lenz's Law", "url": "https://openstax.org/books/college-physics-2e/pages/23-2-faradays-law-of-induction-lenzs-law", "checked_on": CHECKED},
         # HyperPhysics (farlaw.html, elepow.html) is served over http only, so it is a cross-check in claims.md, not a listed source.

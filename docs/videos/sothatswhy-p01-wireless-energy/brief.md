@@ -1,3 +1,5 @@
+> **2026-11-12 修訂註記**：verify-1 與四輪盲評後，「等一下你會看到」清單、電磁爐與瓦斯爐的效率比較、手機太熱先充到八成都已刪除；行號以現行 `video.json`（p001–p165）與 `claims.md` 為準，下方舊行號只供對照。
+
 # 卡片不燙、鍋子卻熱：電怎麼隔空過去？（原來如此事務所 對話版 P01）
 
 形式沿用 P02 起的定案：[`../so-thats-why/dialogue-pilot-20261103/README.md`](../so-thats-why/dialogue-pilot-20261103/README.md)
