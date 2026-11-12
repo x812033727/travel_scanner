@@ -483,3 +483,11 @@
 - **道具**：新增 `left-hand-sketch`、`engraving-pen`、`blank-panel`、`engraved-panel`、`firelight-strokes`、`evidence-bag`、`receipt-copy`（原稿叫 `photocopy`，跟第 30 集那兩張撞名）、`reyes-lamp`、`photocopier`、`blue-panel-row`、`crates`、`cullet-sack`、`cullet-spill`、`heat-gloves`、`elias-scar-insert`、`steel-stool`、`work-lamp`、`army-cot`、`gus-phone`、`stretcher`、`emt-clipboard`、`takeout-boxes`、`dana-phone`、`rosa-phone`、`fiona-phone`、`lectern`、`sponsor-backdrop`、`spotlight`、`competition-envelope`、`ferry`、`peg-yarn`、`stew-pot`、`grant-cufflink`、`grant-shoes`、`knitting-needle`。
   原稿這幾個 id 改用別章的：`filing-notice` → `charge-letter`、`goggles` → `sparks-glasses`、`spec-binder` → `fiona-binder`、`blowpipe-cold` → `blowpipe` 的冷版、`blue-panel`／`chalk-tally`／`wall-clock`／`gas-valve`／`charging-shovel`／`evidence-rack`／`case-tracker` 用第 31–40 集的句子、`light-box`／`pasta-bowl` 用第 41–50 集的句子、`lyle-camera` 用第 21–30 集的句子、`nora-own-phone` 用這章的句子（加了 no logo）。
   改：`chandelier`、`receipt`（note：Peg 念 "Prop pills."）、`peg-ring`、`pawn-ticket`、`grant-car` 的 note；`evidence-panels` 從 `cast.json` 拿掉。
+
+## 寫稿時補定的事（2026-11-12）
+
+- **第 54–55 集**（寫稿者定）：急救員補問答 "Pain down your legs?"／Gus "Just the back."（"Back spasm." 才有根據）。碎料袋下午送到、疊在大門內側；Gus 倒在黃線外一步，Nora 蹲在他身邊時一直在線外；行軍床本來就在黑板旁。
+  Sparks 的手機用 Grant 那句（待加 `sparks-phone`）；Gus 躺下後眼鏡摺好勾在汗衫領口。十點的鐘：長針朝上、短針指向左上（原本寫的方向是一兩點）。鐵門由 Elias、Theo 用肩膀頂開。
+  六夜蒙太奇：同一構圖三鏡，中間各插一鏡 Elias 戴手套的手（在閥上、坐在鋼凳上拉緊左手手套），中間那格 `the row two-thirds full`；把面板立上木架的是 Sparks 戴手套的手。天亮交接時 Sparks 空手握冷吹管（原本平放在工作台上）。
+  **55→56 接點表改**：從大門往裡看，Elias 在畫面右後（閥在爐右）、Gus 在畫面左中（行軍床在左牆），原表左右寫反。
+
