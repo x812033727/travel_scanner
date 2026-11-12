@@ -30,3 +30,15 @@ scope:
 - [ ] 合成、qa 11 項、`silent_share` ≤ 3%、成片送站主。
 - [ ] 八語（MiniMax 配音、縮圖字不碰人）、上架包，站主核准；YouTube 網址記下後結案。
 - [ ] 每關傳雲端硬碟 `videobackup:AI劇/原來如此事務所/P04/製作檔/sothatswhy-p04-microgravity-flame`（0 differences）。
+
+## 站主的常設指示（2026-11-12）
+
+- 「你就這樣一直做吧，不用問我，用你推薦的決定就好；新的集數你就自己挑不錯的題目來做」：除了站主保留的成片、上架、語言三關，其餘決定由 Claude 依建議自行做，做完一集接著挑下一集。
+- 「記得備份好就好」：每集收工照 todrive.sh 全量備份並用 `rclone check --one-way` 驗證 0 差異；空間不足時只刪驗證過的工作檔。
+- 2026-11-12 清理：刪掉 /home/user/mokaair-video-backup-sothatswhy（舊 transfer 分支的 P18 副本，4941 個路徑在 Drive 都有）；P13、P21 補傳 approvals.json 後 0 差異（4505、5514），P29 0 差異（4518）。
+
+## 進度
+
+- [x] 稿子：verify-1（177/4/0）、盲評四輪到 14/14、verify-2（18/0/0）、核准
+- [x] 旁白：8:06，check-audio 21→0，核准
+- [ ] 關鍵畫面（--takes 3，背景跑中）
