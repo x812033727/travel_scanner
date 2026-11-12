@@ -119,7 +119,7 @@ obj("gate-tap", "Close-up of a child's small hand holding " + CARD + " flat agai
     k("所長！我搭捷運來的！", "急著報案的語氣"),
     k("卡片在閘門上一貼，就嗶一聲。", "興奮"), chapter="一路沒插線，鍋子先滾了")
 chief("chief-cook", C("stirring a pot with long chopsticks with a cheerful smile, " + KITCHEN.rstrip(",")),
-    c("歡迎。剛好，麵快煮好了。", "笑"),
+    c("歡迎。我用電磁爐煮麵，快好了。", "笑"),
     k("媽媽的手機快沒電了。"))
 # Thumbnail shot (fixed before keyframes): the kid big and centred, the card in hand.
 kid("kid-main-q", K("holding up " + CARD + " in one hand beside her face and looking at the viewer with wide curious eyes, in the exact centre of the picture", where=OFFICE),
@@ -129,7 +129,7 @@ obj("phone-pad", "Close-up of " + PHONE + " lying face up on " + PAD + ", a tiny
     k("咦？它沒插線，也在充電耶！", "驚訝"))
 obj("pot-boil", "Close-up of " + POT + " on " + HOB + ", the noodle soup bubbling, the glass around the pot clean and shiny",
     k("所長的鍋子也滾了！", "指著"),
-    c("我把手靠近鍋子旁邊的玻璃，一點都不熱。"),
+    c("我把手靠近鍋子旁邊的爐面玻璃，一點都不熱。"),
     c("你先別碰，等一下告訴你為什麼。", "叮嚀", "S:coolglass"))
 kid("kid-puzzle", K("counting on her fingers with a puzzled frown", where=OFFICE),
     k("卡片、手機、鍋子都沒插線，", "想不通"),
