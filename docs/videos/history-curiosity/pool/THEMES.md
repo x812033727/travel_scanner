@@ -1,6 +1,6 @@
 # 從素材池排出的影片題案
 
-139 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。
+144 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。
 
 **片長規則：** 長片 8–13 分鐘，看素材決定。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 8 分鐘的轉 Shorts 或留在後備。
 
@@ -149,6 +149,11 @@
 | T143 | 「永動機不可能」是誰說的：Bessler 的女僕與 1775 年科學院的拒收 | 12:00（範圍 11:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
 | T144 | 月亮的兔子與撒灰的女孩：1911 年那本書裡兩個天上的故事 | 12:00（範圍 11:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
 | T145 | 天上的軍隊是誰加上去的：Souther Fell 的幽靈大軍與 Clyde 河邊的閱兵 | 12:30（範圍 12:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
+| T146 | 戰場上的國王真的死了嗎：Harold 的隱士傳說與 Olaf 的潛水脫逃 | 12:30（範圍 12:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
+| T147 | 水蛭與蟋蟀：掛名的動物氣象儀器，往前追是誰先說的？ | 12:30（範圍 12:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
+| T148 | 東加的島是誰釣起來的：Fison 那本書裡的釣島神與拿破崙 | 12:00（範圍 11:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
+| T149 | Māui 的故事轉手時被改了什麼：Grey 的書與太陽繩的頭髮 | 12:30（範圍 12:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
+| T150 | 動物官司最有名的兩個細節是誰加的：Autun 的老鼠與 Saint-Julien 的象鼻蟲 | 12:30（範圍 12:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
 
 ## T01 海底那幾聲怪響，後來各是誰？
 
@@ -3910,6 +3915,136 @@
 **撤案條件：** N4781 取 8.5 分鐘、N4783 取 4 分鐘；任一段關鍵原文對不上就刪那段。
 
 **待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave43-20261112.json，覆核在 reviews/wave43-review-20261112.json）；寫企劃前仍要照系列流程逐主張查核。1747 年報導是匿名；1821 年地方雜誌的「後來發現」沒有出處；Walker 1724 年初版沒讀，依 1901 年重印的 1728 年版；具名人物卒年只寫可讀頁面上確認的。
+
+## T146 戰場上的國王真的死了嗎：Harold 的隱士傳說與 Olaf 的潛水脫逃
+
+**追問：** 國王死在戰場、屍體或下落有疑問時，「其實沒死」的說法是誰最先寫下，又是誰把它說滿的？
+
+**為什麼接成一集：** N4801 與 N4802 回答同一個問題（覆核 R441 建議）：生還說和死訊幾乎同時出現，當代的文字已經在懷疑它，後來的文本才把它說滿或下了結論。N4802 只有 3–3.5 分鐘，不單獨成集。
+
+| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |
+| --- | --- | --- | --- | --- |
+| 開場：兩位沒有死的國王 | 45 | 流傳的說法：Harold 在 Hastings 沒死，當了幾十年蒙面隱士；Olaf Tryggvason 在 Svolder 跳海後潛水逃往東方。 | N4801、N4802 |  |
+| Waltham 的教士：我摸過骨頭上的傷 | 150 | 1177 年被逐的 Waltham 教士在書裡反駁「人們亂說他住在 Dover 的岩石、葬在 Chester」，還說遷葬時親手摸過骨頭上的傷。 | N4801 |  |
+| 轉折一：說他活著的書放在說他葬在這裡的修院 | 165 | 最完整的《Vita Haroldi》只有一份抄本，就放在宣稱擁有他遺骨的 Waltham 修院；同一冊還抄著「他葬在這裡」的論著。 | N4801 |  |
+| Gerald 的同一段 | 120 | 記 1188 年行程的 Gerald 把 Harold 和一位「也在 Chester 隱居終老」的皇帝寫在同一段。 | N4801 |  |
+| 轉折二：宮廷詩人自己在搖擺 | 135 | Snorri 引的 Olaf 宮廷詩人說不知該把國王當活人還是死人來讚美，「往東去了」接著卻是「南方傳來的消息說國王被殺」；1844 年的英譯多出一句「人們願意相信什麼就相信什麼」。 | N4802 |  |
+| 收尾：誰把話說滿的 | 135 | 當時的人已經在懷疑，把「沒死」說成故事、把搖擺譯成結論的是後來的文本。留言問題：你聽過哪位「其實沒死」的歷史人物？ | N4801、N4802 |  |
+
+**用到的題與來源：**
+
+- N4801（入選）英王 Harold 其實沒死在 1066 年的 Hastings，被救活後當了幾十年蒙面隱士、死在 Chester？這個故事最完整的版本《Vita Haroldi》，唯一的抄本原本放在一直宣稱擁有他遺骨的 Waltham 修院自己的書房裡，同一冊還抄著 Waltham『他葬在這裡』的論著；而在那之前，一位 1177 年被逐出 Waltham 的教士已經在書裡反駁『人們亂說他住在 Dover 的岩石、最近才死、葬在 Chester』，還說自己摸過骨頭上的傷；記 1188 年行程的 Gerald 則把 Harold 和一位『也在 Chester 隱居終老』的羅馬皇帝 Henry 寫在同一段——英譯本的注說，那位皇帝其實死在 Utrecht — [archive.org](https://archive.org/stream/vitaharoldiroman00britiala/vitaharoldiroman00britiala_djvu.txt)、[www.gutenberg.org](https://www.gutenberg.org/ebooks/1148.txt.utf-8)、[archive.org](https://archive.org/details/foundationofwalt00waltuoft)
+- N4802（入選）挪威王 Olaf Tryggvason 約西元 1000 年在 Svolder 海戰跳海，其實潛水游到盟友的船上逃往東方？Snorri 的《Heimskringla》確實記了『很多人說』，可是他引的 Olaf 宮廷詩人 Hallfreðr 自己就兩邊搖擺：說不知該把國王當活人還是死人來讚美，又說有人告訴他國王受傷『往東去了』，接著卻是『南方傳來的消息說國王被殺』；1844 年 Samuel Laing 的押韻英譯，結尾多出一句直譯本沒有的『人們願意相信什麼就相信什麼』 — [www.gutenberg.org](https://www.gutenberg.org/files/598/598.txt)、[gutenberg.org](https://gutenberg.org/ebooks/22093.epub.noimages)、[archive.org](https://archive.org/download/heimskringlaorch00snor/heimskringlaorch00snor_djvu.txt)
+
+**可能無聊的地方：** 前段走 12–13 世紀英格蘭的三份文本，後段接 Snorri 引的同時代宮廷詩人與 19 世紀英譯。
+
+**撤案條件：** N4801 取 9 分鐘、N4802 取 3.5 分鐘；任一段關鍵原文對不上就刪那段。
+
+**待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave44-20261112.json，覆核在 reviews/wave44-review-20261112.json）；寫企劃前仍要照系列流程逐主張查核。《Vita Haroldi》的成書年只有 Birch 接受 Hardy 的推估；Hallfreðr 的詩讀的是英譯；Gerald 那位「羅馬皇帝 Henry」的注是英譯者 Hoare 加的。
+
+## T147 水蛭與蟋蟀：掛名的動物氣象儀器，往前追是誰先說的？
+
+**追問：** 用動物預報天氣的「發明」與「定律」，掛名的人之前，是誰先說的？
+
+**為什麼接成一集：** N4861 與 N4865 回答同一個問題（覆核 R444 建議）：Merryweather 自己說點子來自 Jenner 的〈Signs of Rain〉，而那首詩同一段就寫蟋蟀叫得多響，正好轉進「Dolbear 定律」往回追。N4865 只有 4–5.5 分鐘，不單獨成集。
+
+| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |
+| --- | --- | --- | --- | --- |
+| 開場：會預報風暴的水蛭 | 45 | 流傳的說法：1851 年萬國博覽會展出會預報風暴的水蛭機器；數蟋蟀叫聲算氣溫是 Dolbear 1897 年發現的。 | N4861、N4865 |  |
+| 32 封憑證信 | 150 | Merryweather 自己印出的憑證信，好幾封只說風暴「會發生在這裡或其他地方」。 | N4861 |  |
+| 轉折一：氣壓計一下高一下低 | 150 | 一封說氣壓計還在升、機器卻在響，另一封改說「從氣壓計的低值看」要起風暴；收信的會長回信說他的氣壓計「太高，不像要起風暴」。 | N4861 |  |
+| 點子從哪來：一首詩 | 90 | 他自己說，近二十年前讀了 Jenner 的〈Signs of Rain〉才想到；那首詩同一段也寫蟋蟀叫得多響。 | N4861、N4865 |  |
+| 轉折二：比 Dolbear 早 16 年 | 135 | 1881 年 Salem 的 Brooks 已在《Popular Science Monthly》登出十二晚的對照表，還說規則是從報上一位署名 W. G. B. 的作者看來的；兩份規則都說每四下一度，起算數字卻不同。 | N4865 |  |
+| 收尾：掛名的那個人 | 180 | 水蛭和蟋蟀的「發明人」，都是把更早的說法放大的人。留言問題：你聽過哪個用動物看天氣的說法？ | N4861、N4865 |  |
+
+**用到的題與來源：**
+
+- N4861（入選）1851 年倫敦萬國博覽會上的『水蛭風暴預報器』真的會預告風暴嗎？發明人 Whitby 醫生 Merryweather 自己印出的 32 封『憑證信』，好幾封只說風暴『會發生在這裡或其他地方』；有一封他說氣壓計還在升、機器卻在響，另一封卻改說『從氣壓計的低值看』要起風暴；收信的哲學會會長回信說他的氣壓計『太高，不像要起風暴』；而這個點子，他自己說是近二十年前讀了一首 Jenner 的詩才來的，Cowper 1787 年也早就在信裡誇過瓶中的水蛭；今天 Whitby 博物館裡那一具，是 1951 年英國節照他的書與插圖重做的 — [archive.org](https://archive.org/details/b2804163x)、[www.victorianweb.org](https://www.victorianweb.org/victorian/technology/packer/merryweather.html)、[archive.org](https://archive.org/details/lifeofedwardjenn01barouoft)
+- N4865（入選）數蟋蟀叫聲算氣溫的『Dolbear 定律』，是物理學家 Dolbear 1897 年發現的？比他早 16 年，Salem 的 Margarette W. Brooks 已經在《Popular Science Monthly》登出十二個晚上的對照表；而她自己說，規則是從《Salem Gazette》一位署名 W. G. B. 的作者那裡看來的——兩份規則都說『每四下一度』，起算的數字卻不一樣 — [archive.org](https://archive.org/details/sim_popular-science_1881-12_20)、[archive.org](https://archive.org/details/jstor-2453256)、[en.wikipedia.org](https://en.wikipedia.org/wiki/Amos_Dolbear)
+
+**可能無聊的地方：** 前段用 Merryweather 自己印的 32 封憑證信，後段用 1881 年的讀者來信與 1897 年的短文。
+
+**撤案條件：** N4861 取 8 分鐘、N4865 取 4.5 分鐘；任一段關鍵原文對不上就刪那段。
+
+**待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave44-20261112.json，覆核在 reviews/wave44-review-20261112.json）；寫企劃前仍要照系列流程逐主張查核。1951 年重做、1952 年送到 Whitby 只經 Victorian Web 轉引；《Salem Gazette》W. G. B. 的原文沒讀；Brooks 與 W. G. B. 生卒不明，不入畫。
+
+## T148 東加的島是誰釣起來的：Fison 那本書裡的釣島神與拿破崙
+
+**追問：** 東加流傳的兩個「起源」——群島是 Maui 釣起來的、拿破崙是東加之子——最早的紀錄寫了什麼，又說明了神話能多快長出來？
+
+**為什麼接成一集：** N4901 與 N4902 回答同一個問題（覆核 R446 建議）：同一本 Fison 1904 年的書、同一句序言接上——他收拿破崙的故事，正是為了說明「一個神話可以多快建立」。N4902 只有 3.5–4.5 分鐘，不單獨成集。
+
+| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |
+| --- | --- | --- | --- | --- |
+| 開場：用舊魚鉤釣起的島 | 45 | 今天的說法：Maui 借了一支最舊最鈍的魚鉤，從海裡釣起東加群島。 | N4901 |  |
+| 1817 年：釣的是 Tangaloa | 150 | Mariner 口述的書裡，從天上垂釣的是 Tangaloa，線斷了才只剩一串小島；那支魚鉤由 Tooitonga 家族保存，「約三十年前」燒掉了。 | N4901 |  |
+| 轉折一：地底翻身的神換了名字 | 150 | 同一本書裡撐著大地、翻身就地震的神叫 Mooi；1840 年美國探險隊聽到的，釣島和翻身的都已經是 Maui。 | N4901 |  |
+| 轉折二：說書人自己說也有人說是 Tangaloa | 135 | 1904 年 Fison 記的版本裡，「有人說是 Tangaloa」指的是拉起白人之地；Fison 說每則故事只有骨架是真的傳說。 | N4901 |  |
+| 拿破崙是東加之子 | 120 | Fison 收了一則 Kolonga 的 Vave 自述：拿破崙的母親搭捕鯨船來過東加，最後被流放荒島的是威靈頓。 | N4902 |  |
+| 收尾：神話能多快長出來 | 120 | Fison 說收這則只為了說明神話能多快、多容易建立；1924 年的 Gifford 在他的採集裡找不到對應的故事。留言問題：你聽過哪個把名人接到自己家鄉的傳說？ | N4902 |  |
+
+**用到的題與來源：**
+
+- N4901（入選）東加群島是半神 Maui 用一支借來的舊魚鉤從海裡釣起來的？今天的教育部落格與報紙都這樣講；可是目前讀到最早的英文紀錄——1817 年 John Martin 根據 William Mariner 的大量口述整理的書——寫的是藝術與發明之神 Tangaloa 從天上垂釣，線斷了才只剩一串小島，而那支魚鉤由 Tooitonga 家族保存，『大約三十年前』隨房子一起燒掉；同一本書的諸神名單裡另有一位 Mooi，趴在地底撐著大地、一翻身就地震。1840 年美國探險隊聽到的已經是 Maui 釣島，而地底翻身、引起地震的也是 Maui；1904 年 Fison 記下的東加酋長 Ma'afu 版本說，有人說把『白人之地』拉上來的是 Tangaloa，但把東加從海底拉上來的『唯一確定是 Maui』；1924 年 Gifford 在書裡特地提醒讀者：別忘了 Mariner 說的是 Tangaloa — [archive.org](https://archive.org/download/b29335784_0002/b29335784_0002_djvu.txt)、[archive.org](https://archive.org/download/narrativeofunite03wilk_0/narrativeofunite03wilk_0_djvu.txt)、[archive.org](https://archive.org/download/talesfromoldfiji00fisouoft/talesfromoldfiji00fisouoft_djvu.txt)
+- N4902（入選）東加有個傳說：拿破崙是東加酋長的兒子？1904 年 Fison 出版的《Tales from Old Fiji》收了一則 Kolonga 的 Vave 自述：拿破崙的母親是美國捕鯨船上一位高大白皙的女子，回國後生下他；法國被『Uelingtoni』打敗，大祭司叫使者去美國找『紅皮膚父親的孩子』，當地年輕人帶他們去看一頭小牛戲弄他們，天生啞巴的 Napoleoni 這時才開口；最後是他在『Uatalu』抓住威靈頓、把他流放到荒島死去。Fison 說收這則只為了說明『一個神話可以多快、多容易建立起來』；1924 年出書的 Gifford 寫，他的採集裡找不到對應的故事 — [archive.org](https://archive.org/download/talesfromoldfiji00fisouoft/talesfromoldfiji00fisouoft_djvu.txt)、[archive.org](https://archive.org/download/tonganmythstales0000giff/tonganmythstales0000giff_djvu.txt)
+
+**可能無聊的地方：** 前段用 1817、1840、1904、1924 年四本書看釣島的神從 Tangaloa 變成 Maui，後段接 Fison 自己挑出來的拿破崙故事。
+
+**撤案條件：** N4901 取 8 分鐘、N4902 取 4 分鐘；任一段關鍵原文對不上就刪那段。
+
+**待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave44-20261112.json，覆核在 reviews/wave44-review-20261112.json）；寫企劃前仍要照系列流程逐主張查核。Mariner 書裡的 Mooi 書中沒寫就是 Maui，對應是比對 1840 年紀錄得出的，旁白要說「看起來」；「三位 Maui」出自 Gifford 引的東加手稿與 Collocott；人物卒年多數沒讀到，不入畫。
+
+## T149 Māui 的故事轉手時被改了什麼：Grey 的書與太陽繩的頭髮
+
+**追問：** 今天講的 Māui 故事，轉手時是誰寫的、被誰改了、又被搬到哪裡？
+
+**為什麼接成一集：** N4903 與 N4904 回答同一個問題（覆核 R446 建議）：Grey 1855 年那本書的 Māui 其實大量出自 Te Rangikāheke 的手稿、作者名沒寫出；太陽繩的頭髮版從 Gill 的 Manihiki 故事被標成社會群島、再被報紙搬到 Haleakalā。Grey 版的太陽也是 N4904 三個太陽之一。N4904 只有 4–6 分鐘，不單獨成集。
+
+| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |
+| --- | --- | --- | --- | --- |
+| 開場：Māui 打太陽 | 45 | 今天講毛利神話，常回到 1855 年 Grey 總督的《Polynesian Mythology》：Māui 用祖母的顎骨打太陽、用血當餌釣起北島。 | N4903 |  |
+| 書名頁與序言怎麼說 | 135 | 書名寫「由祭司與酋長提供」，序言說沒有哪一長段出自同一個人，翻譯忠實、只加了少數解釋的字。 | N4903 |  |
+| 轉折一：一位作者的八百頁手稿 | 165 | Curnow 寫，Grey 出版品裡的許多材料出自 Te Arawa 作者 Te Rangikāheke 的手稿；他在總督家旁領年薪寫作，Grey 改動後沒提他的名字；1851 年 Cooper 的書其實已印出他的名字。 | N4903 |  |
+| 三個島、三個太陽 | 120 | 夏威夷的太陽有十六條腿，紐西蘭是有前腳的怪物，庫克群島 Mangaia 是金髮人形、被第六條椰繩套住脖子。 | N4904 |  |
+| 轉折二：頭髮搬了兩次家 | 135 | 報紙寫的「姊妹的頭髮」其實在 Gill 1876 年同一本書的 Manihiki 故事裡；1910 年 Westervelt 標成「社會群島」，今天的報紙又放到 Haleakalā。 | N4904 |  |
+| 收尾：轉手時被改的是什麼 | 150 | 作者的名字被拿掉、故事的地點被搬走。留言問題：你聽過哪個故事，後來才知道原本出自別處？ | N4903、N4904 |  |
+
+**用到的題與來源：**
+
+- N4903（入選）Māui 用祖母的顎骨打太陽、打自己的鼻子用血當餌釣起北島——今天講毛利神話，常回到 1855 年 George Grey 總督的《Polynesian Mythology》；書名寫『由他們的祭司與酋長提供』，序言說書裡『沒有哪一長段出自同一個人』，翻譯『忠實』、他只在幾處加了解釋的字。可是研究者後來發現，Grey 1853 年歌謠集附錄的大部分散文、1854 年毛利文版的許多材料（也就是這本英譯的來源）出自同一位 Te Arawa 作者 Te Rangikāheke 的手稿：他 1835 年後才學會讀寫、約 1849–1853 年在總督家旁領年薪寫作；Grey 在 1854 年版做了『更動、合併與刪節』卻沒寫出他的名字，手稿隨 Grey 的藏書送到開普敦，直到 1906 年才有人說出他貢獻的全貌 — [archive.org](https://archive.org/download/polynesianmythol00greyuoft/polynesianmythol00greyuoft_djvu.txt)、[ojs.victoria.ac.nz](https://ojs.victoria.ac.nz/kotare/article/download/658/469)、[unescomow.nz](https://unescomow.nz/site/uploads/04-grey.pdf)
+- N4904（入選）Maui 捉太陽用的是什麼繩子？今天報紙寫夏威夷的 Maui 在 Haleakalā 用『他姊妹的頭髮』編繩套住太陽；可是夏威夷國家公園照著 1910 年 Westervelt 書裡的版本講，是母親給的十五條繩加祖母給的第十六條，套住太陽『十六條長腿』；1876 年 Gill 記的庫克群島 Mangaia 版是六條椰繩，第六條才套住一個金髮人形太陽的脖子；Grey 1855 年的紐西蘭版是亞麻繩與有前腳的怪物。『姊妹的頭髮』其實也在 Gill 1876 年同一本書裡——在標題〈The Wisdom of Manihiki〉的另一套 Maui 故事；Westervelt 1910 年轉述時把它標成『Gill 講的社會群島傳說』 — [www.deseret.com](https://www.deseret.com/2016/2/20/20582857/the-demigod-maui-and-his-islands)、[www.shakaguide.com](https://www.shakaguide.com/article/ancient-hawaiian-legend-of-maui-capturing-the-sun)、[www.nps.gov](https://www.nps.gov/hale/learn/historyculture/deities.htm)
+
+**可能無聊的地方：** 前段用 Grey 的序言與 Curnow 2008 年的研究，後段比較四本書裡的太陽與繩子。
+
+**撤案條件：** N4903 取 8 分鐘、N4904 取 4.5 分鐘；任一段關鍵原文對不上就刪那段。
+
+**待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave44-20261112.json，覆核在 reviews/wave44-review-20261112.json）；寫企劃前仍要照系列流程逐主張查核。Grey 具體改了 Māui 故事哪幾句本輪沒讀到，只能引 Curnow 的概括；Grey（1812–1898）與 Te Rangikāheke（約 1815–1896）卒年出自 Curnow，其餘人物不入畫。
+
+## T150 動物官司最有名的兩個細節是誰加的：Autun 的老鼠與 Saint-Julien 的象鼻蟲
+
+**追問：** 動物官司最常被講的兩個細節——律師說路上有貓埋伏、判決書被蟲吃掉——最早的文字到底寫了什麼？
+
+**為什麼接成一集：** N4941 與 N4942 回答同一個問題（覆核 R448 建議）：同一批來源、Evans 1906 是兩題共同的節點；一題往回追到一段私下談話，一題拆 Evans 自己的玩笑怎麼變成直述。兩題都只撐 4.5–8 分鐘，不單獨成集。
+
+| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |
+| --- | --- | --- | --- | --- |
+| 開場：替老鼠辯護的律師 | 45 | 流傳的說法：律師 Chassenée 說路上到處有貓埋伏，所以老鼠不能出庭；Saint-Julien 的象鼻蟲官司，判決書被蟲吃掉了。 | N4941、N4942 |  |
+| De Thou：一段私下談話 | 150 | 本輪讀到最早的文字不是庭審紀錄，而是一位朋友私下提醒已當上院長的他「你當律師時替老鼠辯護過」——沒有年份，也沒有判決。 | N4941 |  |
+| 轉折一：年份與辯詞是一步步加上的 | 165 | 他自己 1531 年的書只提到 Autun 一帶審過老鼠；1734 年譯註說辯詞印在另一本書裡，早就被指出是錯的；「1522 年」是 1828 年的辭典與 1906 年的附表加上去的。 | N4941 |  |
+| Saint-Julien：一場八個多月的官司 | 90 | 1587 年葡萄農重開訴訟，村民開會劃出一塊地給蟲，蟲的代理人說那地貧瘠、不收，官員指派專家去勘查。 | N4942 |  |
+| 轉折二：被吃掉的是一句玩笑 | 135 | 本輪讀到最早說紙被毀的是 1906 年的 Evans，原話是「被老鼠或某種蟲毀了」，再加上他自己的玩笑；他書末照印的最後一頁還在，寫的是判決前先勘查那塊地，還記著日期。 | N4942 |  |
+| 收尾：最有名的細節出自誰 | 165 | 貓的埋伏出自一段私下談話，被蟲吃掉的判決出自一句玩笑。留言問題：你聽過哪個「真實的荒謬官司」？ | N4941、N4942 |  |
+
+**用到的題與來源：**
+
+- N4941（入選）律師 Chassenée 替啃光莊稼的 Autun 老鼠辯護、說路上到處有貓埋伏所以老鼠不能出庭，因此一舉成名？本輪讀到寫出這段故事的最早文字是 De Thou《當代史》（據 Rosenberg，第一卷 1604 年出版），它不是庭審紀錄，而是一段轉述的私下談話：朋友在 Mérindol 的判決要不要執行時，提醒已當上院長的他『你在 Autun 當律師時替老鼠辯護過』——沒有年份、沒有判決；據 Rosenberg，Chassenée 自己 1531 年那本講怎麼審判害蟲的法律意見書，只提到 Autun 一帶審過老鼠、沒寫年份，也沒說是他辯護的；1734 年法譯本的註說那篇辯詞印在他的另一本書裡，而據 Rosenberg，1742 年就有學者指出這是錯的；『1522 年』是 19 世紀的辭典與 1906 年的附表一步步加上去的，2021 年一篇通俗文章還把一位研究者的話引反了。 — [www.gutenberg.org](https://www.gutenberg.org/cache/epub/43286/pg43286-images.html)、[archive.org](https://archive.org/download/histoireuniverse01thou/histoireuniverse01thou_djvu.txt)、[bearistotle.substack.com](https://bearistotle.substack.com/p/the-trial-of-the-rats-of-autun)
+- N4942（入選）1587 年 Saint-Julien 的葡萄農控告象鼻蟲，官司拖了八個多月，判決那一頁『被蟲吃掉了』？本輪讀到最早說紙被毀的是 1906 年的 Evans：『被老鼠或某種蟲毀了』，接著他自己開玩笑說也許是象鼻蟲派了牙尖的代表團進檔案室；1858 年的 Agnel 只說『已知的卷宗到此為止』；而 Evans 書末照印的最後一頁拉丁文還在，只是每行只剩開頭幾個字——開頭寫的是『在作出終局判決之前，首先要查明所提供那塊地的狀況』，頁上還記著勘查費和 1587 年 12 月 20 日的日期。 — [www.gutenberg.org](https://www.gutenberg.org/cache/epub/43286/pg43286-images.html)、[www.gutenberg.org](https://www.gutenberg.org/ebooks/23211.txt.utf-8)、[esoterx.com](https://esoterx.com/2016/03/27/the-lesser-of-two-weevils-a-16th-century-insect-trial/)
+
+**可能無聊的地方：** 前段追 Chassenée 的老鼠辯詞從 De Thou 到 Evans 的年份怎麼長出來，後段讀 Evans 照印的最後一頁拉丁文殘文。
+
+**撤案條件：** N4941 取 7.5 分鐘、N4942 取 5 分鐘；照覆核 R448 的界線：不評價逐出教會、詛咒、彌撒、遊行或教會法，不講儀式怎麼做、不引咒文、不畫聖體聖水，祈禱與遊行只用一句「法庭下令公開祈禱」帶過，笑點只放在文書與後來的作者身上。
+
+**待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave44-20261112.json，覆核在 reviews/wave44-review-20261112.json）；寫企劃前仍要照系列流程逐主張查核。De Thou 只讀 1734 年法譯本；Chassenée 的 Consilium primum 與 Ménabréa 1846 原書只經 Rosenberg 與 Evans 轉述；Evans 1884 年的早期版本沒讀。
 
 ## 轉 Shorts（89）
 
