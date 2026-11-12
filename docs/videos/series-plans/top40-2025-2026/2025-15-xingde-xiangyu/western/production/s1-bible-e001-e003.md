@@ -158,3 +158,9 @@ main 2026-11-12 收進種田拍法與共用的分鏡規則（`docs/videos/drama/
 - **Peg**：婚戒照 `peg-ring`（一顆很小的舊鑽）；頭髮照定妝照（灰色直短髮撥向一邊）。
 - **第 3 集的空杯**：照第 4 集的句子 `a clear plastic hospital cup about the size of her fist, empty, lying on its side at the edge of the nightstand`。
 - **湯鍋**：`cast.json` 只留 `soup-pot`（`peg-pot` 刪掉）。
+
+## 放大（站主 2026-11-12）
+
+- **製作時先不跑 SeedVR2**：每支片段做到第二段精修（736×1312）就好，剪接時拉到 1080×1920 給站主看。
+- **整季做完、站主確認後再一起放大**：精修檔與草稿（帶原聲）都留著、照集數備份到雲端硬碟，最後一次批量跑 SeedVR2 7B 到 1080×1920，換進成片重新輸出。放大那一步不改格數與音軌，剪接表照用。
+
