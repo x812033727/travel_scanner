@@ -472,4 +472,8 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
   Peg 的帳本與鉛筆分開寫兩句（鉛筆在手上時帳本句只寫到 `about the size of her palm`）。第 35 集補一鏡從對街長焦拍她低頭走出當鋪（晴天的 `harbor-sidewalk`），就是 Lyle 那張照片的角度，c26 的照片從這鏡截一格。
   當鋪老闆用一小塊黑絨布包走戒指；支票、筆與對摺的估價單放在 Nora 外套內袋；Peg 用左手食指推戒指。**Peg 站在 Nora 右邊**（第 15 集分鏡就是這樣；本 bible 若有寫左邊的地方以這條為準）。
   寫稿者新加、待站主確認：第 34 集 c24 Dana 句前 "Prosecutor's office called."（Reyes 的名字沒人說過）；第 35 集 c09 "One month. It's enough."、c31 "Number Three's burner is shot. I can't cover it."。
+- **第 39–40 集**（寫稿者定）：39→40 Nora 坐在**黃線外的右牆根**（不是黃線內的空砂桶旁）；Sparks 在第 39 集 23:50 就把歪杯子掃進鋼桶，第 40 集 c01 直接提起那個桶。
+  Remelt 的黃線在倉庫門前留一條一人寬的通道（倉庫門在黃線靠爐子那側）。第 39 集照時間線放兩聲 "Thursday."，蒙太奇五鏡；Nora 整集穿 `work`，收據從掛在牆上的外套口袋拿；供應商電話三句用 Gemini（`supplier-phone`），那幾鏡 Nora 的嘴不入鏡。
+  藍色鈷粉寫 "even dusting"（避免畫成瘀青，第一批草稿先看）。第 40 集台詞照 bible："Pell's batch. I still remember the recipe."（outline 原句是 "I still remember the Pell recipe."）。
+  寫稿者新加、待站主確認：Gus "Walter's blue. Cobalt, twelve grams."、Nora "Third charge! Now!"；選用句 "Keep your credit." 收進第 39 集。
 
