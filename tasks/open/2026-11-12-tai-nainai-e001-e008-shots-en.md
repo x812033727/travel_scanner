@@ -1,6 +1,6 @@
 ---
 id: 2026-11-12-tai-nainai-e001-e008-shots-en
-title: 恁祖媽今年18 第1-8集：shots-en.json 與 cast.json 跟上收回的新版分鏡
+title: 恁祖媽今年18 第1-8集原稿（#2086）合併後：補記已知瑕疵、跨集鏡號，cast.json 跟上裁定
 status: open
 priority: P2
 area: docs
@@ -9,44 +9,71 @@ claimed_at:
 created_at: 2026-11-12T14:43:25Z
 completed_at:
 branch:
-depends_on:
+depends_on: []
   - 2026-11-12-tai-nainai-e001-e008-recover-v2
 scope:
+  - docs/videos/tai-nainai-e001/script.md
+  - docs/videos/tai-nainai-e002/script.md
+  - docs/videos/tai-nainai-e003/script.md
+  - docs/videos/tai-nainai-e004/script.md
+  - docs/videos/tai-nainai-e005/script.md
+  - docs/videos/tai-nainai-e006/script.md
+  - docs/videos/tai-nainai-e007/script.md
+  - docs/videos/tai-nainai-e008/script.md
   - docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/cast.json
-  - docs/videos/tai-nainai-e001/shots-en.json
-  - docs/videos/tai-nainai-e002/shots-en.json
-  - docs/videos/tai-nainai-e003/shots-en.json
-  - docs/videos/tai-nainai-e004/shots-en.json
-  - docs/videos/tai-nainai-e005/shots-en.json
-  - docs/videos/tai-nainai-e006/shots-en.json
-  - docs/videos/tai-nainai-e007/shots-en.json
-  - docs/videos/tai-nainai-e008/shots-en.json
 ---
 
-# 恁祖媽今年18 第1-8集：shots-en.json 與 cast.json 跟上收回的新版分鏡
+# 恁祖媽今年18 第1-8集原稿（#2086）合併後：補記已知瑕疵、跨集鏡號，cast.json 跟上裁定
 
 ## Why
 
-`2026-11-12-tai-nainai-e001-e008-recover-v2` 把第 1–8 集照種田拍法的新版中文分鏡收回 repo（第 1–3 集原稿、第 4–8 集反推），
-但 repo 裡這八集的 `shots-en.json`（還有 `video.json`、`brief.md`）仍是 11/6 舊稿的鏡號（23–28 鏡），`compile.py` 一跑就會停；
-實際送出的英文在雲端硬碟 `AI劇/恁祖媽今年18/第00N集/製作檔/` 的 `prompts/` 與 `e004-gen-en.py` 這類檔裡。
-兩位獨立審稿者另外建議 `cast.json` 跟成片或裁定對齊：垃圾桶、廚房與洗衣間（滾筒洗衣機、鐵皮盆）、福伯第 1 集中灰的註記、
-十八歲照片 `shibasui-zhao` 刪掉「as in huiyi-1948-t1」、書包報信鈴（等站主決定 `prop-shubao-t1`）。
+第 1–8 集的 `script.md`、`shots-en.json`、`video.json` 由製作端在 PR #2086 收回 repo（取代本票原本要做的 `shots-en.json`）。
+`2026-11-12-tai-nainai-e009-e014-rewrite` 重寫第 9–60 集時，兩位獨立審稿者對照新的系列設定與主控裁定審了這八份原稿，
+找出原稿裡沒標成已知瑕疵的地方、跨集舊鏡號、和 bible 的矛盾。bible 與第 9 集開頭那一半已經在 rewrite 分支改了；
+**改原稿那一半刻意留到 #2086 合併後**，免得兩個 PR 改同一批檔而衝突。另有 `cast.json` 要跟上裁定的幾項。
 
 ## Definition of done
 
-- [ ] 第 1–8 集 `shots-en.json` 照新版中文稿的鏡號，正文取自雲端實際送出的英文；`compile.py N` 與 `lint` 0 錯。
-- [ ] `cast.json` 照 recover 票 bible 補定的裁定修改，`video.json` 重產。
+- [ ] #2086 合併後，下面兩張表裡「改稿」的條目在第 1–8 集 `script.md` 改完：已拍的不改畫面，只在〈這版改了什麼〉補「已知瑕疵：…；重拍照…」與跨集鏡號。
+- [ ] `cast.json`：`shibasui-zhao` 刪「as in huiyi-1948-t1」；`huaibiao` 手搭左肩、辮子等站主；老陳米糠改寫在圍裙與袖口；`fubo` 註第 1 集中灰；廚房（滾筒洗衣機、鐵皮盆）；`prop-tong-youhu` 補 ref；`prop-shubao`、`baoxinling` 等站主定書包鈴位置。
+- [ ] `compile.py N --check` 對得上。
 
-## Steps
+## 審稿表（第 1–4 集）
 
-- [ ] 從雲端 `prompts/` 取每鏡實際送出的英文（反推稿〈這版改了什麼〉列了每集的來源資料夾）。
-- [ ] 改 `cast.json`；重跑 `compile.py`、`lint`。
+| 集 | 鏡／段落 | 問題 | 依據 | 建議 |
+| --- | --- | --- | --- | --- |
+| 1 | 角色表、c04–c21 | 福伯寫「素面中灰唐裝／`mid-grey`」，稿裡沒有標成瑕疵 | cast `light blue-grey`；bible 11-12 節 | 改稿：補一句「已知瑕疵：中灰，重拍照淺藍灰」 |
+| 1 | 第 22、269 行 | 說第 2 集還寫舊號 c27，其實第 2 集第 18 行已經改成 c48 | e002〈這集接在哪〉 | 改稿：刪掉這半句 |
+| 1 | 第三場軸線、c47 | 軸線寫 c47 是「林美鳳往上看的主觀鏡」；表格卻是從她背後拍、林美鳳在畫面外；bible 寫的是「林美鳳在石階下遠處抬頭」 | e001 c47；bible 11-12 節 | 改稿（軸線那句）；bible 改成「林美鳳在畫面外」 |
+| 2、3 | e002 角色表、c20、c47；e003 全集 | 福伯中文寫「灰唐裝」，e002 自己的 c48 起又寫「淺藍灰」 | 裁定：不是「灰」 | 改稿（只改字；英文如果是 light blue-grey，就不算瑕疵） |
+| 2 | 場頭、c24、c30、c34 對 c12–c13 | 原稿寫「照場景圖改：樓梯不在東牆」，改在左後角落地鐘旁；c12–c13 還在東牆。bible 只把第 6 集列成已知瑕疵 | bible〈正廳〉與裁定都寫東牆；cast 寫 staircase on the right，但畫出來的 `set-shenjia-zhengting-t1` 樓梯在左 | 改 bible：已知瑕疵加上第 2 集 c24 起。第 2、6 集都照那張圖拍，要請站主定：重畫場景圖，還是 bible 改去跟圖 |
+| 2 | c23–c29、c41、c43–c50 | 阿凱扶她的左手肘；c41 還捏住戒指往外拔 | 〈先記住〉11、裁定 | 改稿：記成已知瑕疵。bible〈道具〉銀戒「阿凱試過」補註：已拍，第 9 集起不碰 |
+| 1、2 | e001 c16；e002 c14、c23、c29、c39 | 中景或中全景裡有三張有名字的人臉 | 裁定：三人只在全景 | 改稿：記成已知瑕疵 |
+| 2、4 | 建邦 `home`（e002 c24、e004 c47）；林美鳳 `home`（e004 第一場） | 寫「扣到頂」、「小翻領扣到頂」，稿裡沒有標成瑕疵 | bible 11-12 節、cast | 改稿：補上已知瑕疵 |
+| 3 | 場頭第 68 行、c36b、第 240、286 行 | 原稿已經定了：福伯開門出去「門不鎖」，c36b 沒有鎖門聲。bible〈第 1–5 集〉卻寫「c36b 從外面鎖上，照成片改」，這是從反推稿來的 | e003 原稿 | 改 bible：改回「門不鎖」（除非對過成片音軌）；〈道具〉的「每晚從外面鎖」加上第一夜例外 |
+| 4 | 固定描述、c01、c43 | 垃圾桶寫「有輪子、鉸鏈掀蓋、靠左牆」；油壺在燈的左邊 | bible 11-12 節已經列成瑕疵 | 改稿：補上已知瑕疵 |
+| 4 | c30 | 外送員露出嘴、說原聲 | 裁定：路人嘴不入鏡、用錄音 | 改稿：記成已知瑕疵 |
+| 4 | 第三場場頭、c42 | 祠堂左牆藥櫃左邊多一扇格子窗 | bible〈祠堂〉、cast `shenjia-citang` 都沒有窗 | 改稿：記成已知瑕疵 |
+| 1、3 | e001 c22、e003 c44 | 從低角度拍穿百褶裙的小滿（c22 是貼地跟在她身後） | 裁定（廣告安全） | 改稿：記成已知瑕疵 |
+| — | bible 11-12 節開頭 | 寫「第 4–8 集是反推稿」、「圓肚燈罩已改」，都過時了：第 1–8 集現在都是原稿，原稿本來就寫細高燈罩 | commit 6fc5b191 | 改 bible |
 
-## How to verify
+## 審稿表（第 5–8 集）
 
-`python3 -I docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/tools/compile.py N` 與 lint 0 錯；鏡號跟 `script.md` 一致。
+| 集 | 鏡／段落 | 問題 | 依據 | 建議 |
+|---|---|---|---|---|
+| e005 | 〈這集接在哪〉L23、第二場〈離開這場〉 | 第 6 集鏡號錯：c07、c02、c09 | e006 原稿：c04 福伯進書房（在 c12–c14 之間、畫面外交接）、c05 問、c15 答 | 改稿：c04／c05／c15 |
+| e005 | 〈下一集接〉 | 寫「晨光從院子門」「兩杯茶」 | e006 c01：晨光從右牆格扇門、三只小杯、福伯引路 | 改稿，照 e006 c01 |
+| e005 | 〈劇情〉L13、L151 | 「書房北窗」 | 裁定〈書房格局〉、bible L1091、L1150 | 改稿成「後牆正中的窗」 |
+| e006→e007 | e006 c41 | 原稿寫她站在小滿「面前」，e007 卻說成片是「身後」 | e007 L19（交接票 11-10） | bible 6→7 照原稿寫，再加註「成片站在身後，是已知瑕疵」 |
+| e006、e007 | 兩集的 L19 | 引用 bible 的舊寫法：「只有檯燈」「祠堂門裡透出燭光」 | bible 5→6、7→8 已經改了 | 改稿，刪掉這兩句 |
+| e007／e008 | e007 c13 與固定描述；e008 L56 | e007 寫鈴扣在拉鍊頭；e008 說「第 7 集定案」的是翻蓋包（`pick/c18`） | bible〈要站主決定的〉第 1 條說第 7 集是拉鍊頭 | 改 bible：第 7 集原稿寫拉鍊頭，c18 的首格是翻蓋；e007 記成已知瑕疵 |
+| e008 | L152 | 「已對過第 1 集 c08」 | e001 原稿那句在 c13；bible〈第 6–10 集〉也寫 c13 | 改稿：c13 |
+| e008→e009 | e008 c28；e009 L18、c02 | 原稿 c28：手機放到腿上、兩手抱頭；e009 寫成手機「捧在胸前」 | bible〈要站主決定的〉第 6 條：成片 c28 沒有抱頭 | 改第 9 集開頭：c02 第一格抱頭、手機在腿上（站主決定不重拍 c28 的話，就照成片） |
+| e009 | c01 | 寫「第一格接 c29 最後一格」，但 c29 是在她左前方推到特寫，c01 是側拍的腰上中景；書包在 c25 已提到胸前，c01 卻寫垂在身側 | e008 c25、c27、c29 | 改第 9 集開頭：寫「同一刻、換機位」，首格另畫，書包在胸前 |
+| e009 | L17 | 還寫「反推」「舊稿 c22」 | 裁定：不寫舊稿；第 8 集現在是原稿 | 改第 9 集開頭，刪掉括號 |
+| bible | 4→5 括號 | 把「第 5 集 c04 站在門檻上、手垂著」列成瑕疵 | e005 c03 拍了手滑下來、往前探半步 | 改 bible，刪掉這半句 |
+| e005 | c40、道具 | 一條辮卻寫「照 huiyi-1948 畫」 | huiyi-1948 是兩條辮（bible〈要站主決定的〉第 3 條） | 改 cast.json，刪「as in huiyi-1948-t1」 |
 
 ## Notes
 
-- `video.json`、`brief.md` 由 `compile.py` 產生，不在 scope 裡列，重產時一起提交（要先把它們加進 scope）。
+- 審稿報告原文在 rewrite 分支的工作 session；表格已全文抄在上面。
