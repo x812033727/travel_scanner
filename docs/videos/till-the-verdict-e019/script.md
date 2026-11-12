@@ -12,7 +12,7 @@
 
 晚上九點半，雨下在汽車旅館對街的人行道上。Grant 左頰還留著母親那一巴掌的淡紅，站在他的白車門邊等她退。Nora 臉上是雨：「Tomorrow. Ten o'clock. Superior Court.」「I'm filing for divorce.」他笑了，像她終於讓步：「About time.」，上車開走。Peg 把藏在背後的合約交回她手上。
 深夜十一點四十，浴室只有鏡上一盞燈。Peg 兩指拈起一束長髮、剪刀停在髮束上：「Cut it and there's no going back.」Nora：「I'm not going back.」一刀，長髮落進白瓷洗手台；Peg 握著那束頭髮的手在抖。剪完齊肩，她看著鏡子，第一次沒有移開視線。
-天亮前，Peg 還睡著，Nora 在窗前的小桌用汽車旅館的藍筆簽下三條。她下樓，Bev 打著呵欠把櫃台電話推給她；她撥名片上的號碼，對街的黑車又停在路燈下，車裡的 Elias 接起來。「Signed.」「Ten o'clock. Dana will meet you there.」
+天亮前，Peg 還睡著，Nora 在窗前的小桌用汽車旅館的藍筆簽下三條。她下樓，Bev 打著呵欠把櫃台電話推給她；她撥名片上的號碼，對街的黑車又停在路燈下，車裡的 Elias 接起來。「Signed. Ten o'clock, Superior Court.」「Ten o'clock. Dana will meet you there.」
 十點，法院書記官窗口。Nora 把簽好的三條交給 Dana，把離婚申請從玻璃下推進去，財產留給法官。書記官蓋章：「Filed.」Dana：「Ninety days. Earliest decree.」
 十點半，法院台階。Peg 舉起手機看了很久：Sienna 的貼文，一隻戴金錶的左手、一支筆、一張空白表格。「Sienna. Marriage application. And a pen.」再念配文：「'Ninety days.'」
 
@@ -20,7 +20,7 @@
 
 接第 18 集最後一鏡（bible〈接點表〉18→19）：對街人行道、路燈下，第 8 天（3/24 週二）21:30，雨。Grant（`rain`，左頰 `a faint pink flush`）站在他珍珠白轎車打開的駕駛座門邊（車並排停在路上、停在空著的人行道邊、車頭朝畫面左），臉上的笑剛回來、很薄；Nora（`motel`，大衣敞開，頭髮與肩膀被雨打濕）在他面前一步、面向他（畫面左）；Peg（`coat`、拖鞋，鏡片上有雨點）在 Nora 右後半步，右手把合約藏在背後；黑車已經不在，路燈下的人行道邊空著；白車的車燈打在畫面左濕亮的路面上，反光從畫面左照著兩個女人。已對過第 18 集最後一鏡（c41）：Grant 臉上是很薄的閉嘴笑、不露齒；第 18 集 Grant 握的是 Nora 的左手腕，巴掌打在他的左頰。
 第一鏡 c01 是同一刻，鏡頭收到 Nora 雨裡的臉（bible〈必修〉第 19 集開場四鏡）。本集從第 8 天 21:30 跳到 23:40 的浴室，再跳到第 9 天（3/25 週三）06:40 的房間、06:50 的辦公室、10:00 的書記官窗口、10:30 的法院台階（bible〈時間線〉）。
-最後一鏡 c44 照〈接點表〉19→20：法院正門台階，第 9 天 10:30，陰、台階濕。Peg（`coat`，帆布袋在左肩）站在台階中段，右手舉著她的手機（螢幕只見側面的白光），剛念完 "'Ninety days.'"，嘴閉著；Nora（`shoulder`，大衣敞開）在她左邊同一級，看著手機；Dana（基本款，卷宗抱在胸前）高一級、在畫面右後虛焦。第 20 集第一鏡跳九十天，是蒙太奇第一鏡（四月的禮品店）。
+最後一鏡 c44 照〈接點表〉19→20：法院正門台階，第 9 天 10:30，陰、台階濕。Peg（`coat`，帆布袋在左肩）站在台階中段，念完 "'Ninety days.'"，拇指按熄螢幕、手機垂到胸前，嘴閉著（審稿後補的收尾動作，bible 接點表寫的是手機還舉著）；Nora（`shoulder`，大衣敞開）在她左邊同一級，看著手機；Dana（基本款，卷宗抱在胸前）高一級、在畫面右後虛焦。第 20 集第一鏡跳九十天，是蒙太奇第一鏡（四月的禮品店）。
 Nora 剪髮：c18 起一律 `shoulder`，到第 60 集都不再變長（bible〈全劇固定〉）。
 
 ## 角色與參考圖
@@ -42,7 +42,7 @@ Nora 剪髮：c18 起一律 `shoulder`，到第 60 集都不再變長（bible〈
 ## 分鏡與台詞
 
 景別與運鏡寫中文給人讀；正文由製作端照 `minimax-h3-colab/references/motion-quality.md` 第二節改寫成英文，每一鏡的英文正文寫「vertical 9:16 frame」與光：
-c01–c10 寫 `night, steady rain, a dim streetlight overhead, the pearl-white car's headlights hitting the wet road at frame left and reflecting up onto the faces, the motel's red neon across the street in a slow pulse: on for two beats, off for one, wet asphalt, the night and the rain stay unchanged`；
+c01–c10 寫 `night, steady rain, a dim streetlight overhead, the pearl-white car's headlights hitting the wet road at frame left and reflecting up onto the faces, a faint red neon glow from the motel behind the camera in a slow pulse: on for two beats, off for one, wet asphalt, the night and the rain stay unchanged`；
 c11–c19 寫 `night, one warm-white bulb above the camera lighting both faces from the front, pale green tile, the dark motel room beyond the open bathroom door, the night stays unchanged`；
 c20–c23 寫 `before dawn, cold blue light through the window, the bedside lamp off, the rain has stopped, the light stays unchanged`；
 c24–c27、c29、c31 寫 `before dawn, a warm yellow desk lamp on the counter, cold blue light through the window, a wet street outside under a lit streetlight, no rain falling, the light stays unchanged`；
@@ -65,9 +65,9 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 ### 第一場：雨裡（約 25.5 秒）
 
 **場頭**：
-- **地點與場景圖**：汽車旅館對街的人行道、路燈下 `motel-street`（待畫，夜、雨版）：兩線道的濕街；對街（背景）是兩層樓的汽車旅館，二樓一排門與外走道、一樓辦公室亮著，停車場入口的招牌柱亮紅霓虹（字不入鏡）；這一側人行道上一盞路燈，路燈下的人行道邊空著（黑車第 18 集已經開走）。Grant 的 `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame, stopped in the street by the empty curb, headlights on` 並排停在路上、車頭朝畫面左（往港口），駕駛座門開著。近景都寫「同一條雨夜的街」。
-- **時間與天氣**：第 8 天（3/24 週二）21:30，夜、`steady rain`；路燈從上面照；白車的車燈朝畫面左打在濕亮的路面上，反光從畫面左照著兩個女人；對街紅霓虹 `a slow pulse: on for two beats, off for one`；整場維持夜色與雨。
-- **軸線**：鏡頭在人行道這一側：Grant 在畫面左（白車駕駛座門邊）、Nora 在畫面右、面向畫面左的他；Peg 在 Nora 右後半步（畫面右後）。拍 Nora 從 Grant 的左肩後（肩在畫框左下緣）；拍 Grant 從 Nora 的右肩後（肩在畫框右下緣）。白車開走時往畫面左。
+- **地點與場景圖**：汽車旅館對街的人行道、路燈下 `motel-street`（待畫，夜、雨版）：兩線道的濕街；**鏡頭在汽車旅館這一側往對街拍**：背景是對街空著的人行道邊與那盞路燈（黑車第 18 集已經開走）；兩層樓的汽車旅館與招牌柱的紅霓虹在鏡頭後方（字不入鏡），紅光從鏡頭這邊淡淡染在濕路上。Grant 的 `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame, stopped in the street by the empty curb, headlights on` 並排停在路上、車頭朝畫面左（往港口），駕駛座門開著、朝鏡頭這邊；白車在 Grant 的左後（畫面左），兩個女人站在車尾右邊，**白車不擋在鏡頭與三人之間**。近景都寫「同一條雨夜的街」。
+- **時間與天氣**：第 8 天（3/24 週二）21:30，夜、`steady rain`；路燈從上面照；白車的車燈朝畫面左打在濕亮的路面上，反光從畫面左照著兩個女人；鏡頭後方旅館的紅霓虹 `a slow pulse: on for two beats, off for one`，淡淡染在濕路與臉上；整場維持夜色與雨。
+- **軸線**（審稿後改，接第 18 集 c41 的鏡頭方向）：**鏡頭在汽車旅館這一側**、往對街拍：Grant 在畫面左（白車駕駛座門邊）、Nora 在畫面右、面向畫面左的他；Peg 在 Nora 右後半步（畫面右後、離鏡頭較遠）；背景是對街空著的人行道邊與路燈。拍 Nora 從 **Grant 的右肩後（肩在畫框左下緣）**；拍 Grant 從 **Nora 的左肩後（肩在畫框右下緣）**。白車開走時往畫面左。
 - **在場的人**：Nora、Grant（c06 坐進車裡，c07 開走）、Peg。
 - **這場要講完的事**：Nora 告訴 Grant 明天十點去 Superior Court 提離婚；他以為她讓步了，笑著說「早該這樣」、上車開走；Peg 把藏在背後的合約交回她手上（結尾：「About time.」）。
 - **配樂**：c01 只有雨聲與霓虹的低嗡；c02 一個低的大提琴長音進來；c04 Grant 笑的時候停掉；c07 尾燈遠去時一段低、慢的弦；c10 收在雨聲裡。
@@ -75,15 +75,15 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c01 | 近景、固定；從 Grant 的左肩後拍（他濕的淺石色西裝左肩在畫框左下緣、虛焦、不露臉）；直式，Nora 的臉在上三分之一；身後是雨夜的街與對街虛焦的紅霓虹；同一條雨夜的街 | Nora（`motel`，低髮髻被雨打濕、幾縷濕髮黏在臉頰），`a camel wool coat with deep pockets, worn open`；雨水從額頭流過臉頰到下巴、肩膀濕透；白車的車燈打在畫面左濕亮的路面上、反光從畫面左照亮她的臉，路燈從上面；四分之三側臉朝畫面左的 Grant、眼睛看著他，不看鏡頭；眉頭壓平、眼睛定住、下巴收著、嘴唇閉緊、鼻子慢慢吸一口氣，`no smile at any moment, until the last frame` | 接第 18 集最後一鏡的同一刻；Nora 眨掉睫毛上的雨，下巴慢慢抬起；剪在下巴抬到一半；嘴閉著；最後：她抬著下巴看著 Grant | — | 約 2 秒 |
-| c02 | 近景、慢推（從胸上推到肩上）；同 c01 的鏡位（Grant 的左肩在畫框左下緣、虛焦）；直式，臉在上三分之一 | Nora（`motel`，低髮髻與臉被雨打濕），`a camel wool coat with deep pockets, worn open`；雨一直落在她臉上；路面反上來的車燈白光從畫面左；四分之三側臉朝畫面左的 Grant、眼睛看著他；眉頭壓低、眼睛不眨、嘴唇在字與字之間閉緊、聲音低而清楚、一字一停，`no smile at any moment, until the last frame` | Nora 看著 Grant，嘴在說話（低、一字一停）；說完眼睛不離開他，嘴閉上；最後：她看著他，雨從下巴滴下去 | Nora（低、一字一停）：Tomorrow. Ten o'clock. Superior Court.（明天。十點。高等法院）（原聲） | 約 3 秒 |
-| c03 | 特寫、慢推（從下巴到眉的特寫推到眼睛與嘴）；同一軸線；直式；身後只有雨夜與虛焦的紅光；**第一格就是 Nora 的臉，整鏡不拉遠** | Nora（`motel`，臉與頭髮被雨打濕），雨水沿著臉頰流；路面反上來的車燈白光從畫面左；四分之三側臉朝畫面左的 Grant、眼睛看著他；眉毛放平、眼睛睜著不眨、下巴繃住、說的時候呼吸很穩，`no smile at any moment, until the last frame` | Nora 看著 Grant，嘴在說話（平、穩、不抬高聲音）；說完下巴一收，嘴閉上；最後：她看著他 | Nora（平、穩）：I'm filing for divorce.（我要提離婚）（原聲） | 約 2.5 秒 |
-| c04 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她濕的低髮髻與駝色大衣右肩在畫框右下緣、虛焦、不露臉）；直式，Grant 的臉在上三分之一；身後是白車打開的駕駛座門與斜落的雨 | Grant（`rain`：沙金色側分的頭髮濕、細圓金屬框眼鏡鏡片上有雨點、淺石色西裝領口濕），左頰 `a faint pink flush`；站在 `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame, stopped in the street by the empty curb, headlights on` 打開的駕駛座門邊、右手扶著車門上緣；路燈從上面照；四分之三側臉朝畫面右的 Nora、眼睛看著她；第一格眉心一鬆，練過的閉嘴微笑回到嘴上：嘴唇閉著、不露齒、眼皮放鬆，像她終於讓步了；聲音平穩、低 | Grant 看著 Nora，嘴在說話（平穩、低）；說完右手在車門上緣拍一下，嘴閉上，閉嘴的笑留著；最後：他扶著車門、看著她 | Grant（平穩、低，像她終於讓步）：About time.（早該這樣）（原聲）（結尾）← 因為 c03 | 約 3 秒 |
-| c05 | 插鏡、手部特寫、固定；**第一格就是 Peg 藏在背後的右手**；直式；從她身後低處拍；同一條雨夜的街 | Peg 的右手（棕色鋪棉長大衣袖口）在她背後捏著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it`，雨點打在紙背上、紙邊開始捲；路燈的光；下緣是 `worn beige house slippers` 的鞋跟在濕的人行道上；畫面裡沒有臉 | Peg 的手指把那張紙捏得更緊、紙邊皺起來；剪在手指收緊；畫面上沒有嘴；最後：紙還在她背後的右手裡 | — | 約 2 秒 |
-| c06 | 中景、固定；鏡頭在人行道上、斜對著白車的駕駛座那一側；直式：下半是白車濕亮的車身，中間是打開的門 | Grant（`rain`，深棕色皮鞋，左頰 `a faint pink flush`）側身坐進 `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame, stopped in the street by the empty curb, headlights on` 的駕駛座，只露背與後腦（臉不入鏡）；雨打在車頂上濺開；路燈從上面照 | Grant 坐進駕駛座（動作一），右手把車門拉上（動作二）；剪在門關上的一下；畫面上沒有嘴；最後：門關著，他的後腦在掛滿雨痕的車窗後面、模糊 | — | 約 2.5 秒 |
-| c07 | 遠景、低角度、慢慢跟搖（從右搖到左）；鏡頭在人行道上、兩個女人身後低處；直式前後疊開：前景是兩人的背（虛焦），中間是濕的街，上緣是對街的汽車旅館與紅霓虹 | 共兩人，都背對、不露臉。畫面右：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴，頭髮濕）的背；畫面右後半步：Peg（`coat`，`her feet in worn beige house slippers instead of shoes`）的背，右手還把合約藏在背後；`a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` 沿著濕街往畫面左開走，兩盞紅色尾燈在濕柏油上拖出紅光；`steady rain`、路燈；對街一樓辦公室亮著、紅霓虹慢脈動 | 白車往畫面左開遠、尾燈越來越小；雨打在兩人的肩上；剪在尾燈到畫面左緣；畫面上沒有嘴；最後：街上只剩雨、路燈與遠處一點紅光 | — | 約 2.5 秒 |
-| c08 | 近景、固定；直式，臉在上三分之一；身後是雨夜的街（虛焦） | Nora（`motel`，臉與頭髮被雨打濕），`a camel wool coat with deep pockets, worn open`；路面反上來的白光與尾燈的紅光從她臉上往畫面左滑走，只剩路燈；眼睛從畫面左遠處收回來、眉頭往中間收、下巴的肌肉一緊、長長吐出一口白氣，`no smile at any moment, until the last frame` | Nora 長長吐出一口氣（動作一），頭轉向畫面右的 Peg（動作二）；剪在頭轉到一半；嘴閉著；最後：她看著畫面右的 Peg | — | 約 2.5 秒 |
-| c09 | 中近景、固定；從 Nora 的左後方拍（她濕的低髮髻與左肩在畫框左下緣、虛焦、不露臉）；直式，Peg 在畫面右、臉在上三分之一 | Peg（`coat`，玳瑁框眼鏡戴在臉上、鏡片上有雨點，灰色短燙髮被雨打濕），面向畫面左的 Nora；右手從背後把 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it` 拿出來、遞向 Nora；路燈從上面；眉頭擰著、眼睛在濕鏡片後面看著 Nora、嘴唇抿薄、下巴點一下，`no smile at any moment, until the last frame` | Peg 把合約從背後拿出來遞給 Nora（動作一），點一下頭（動作二）；剪在紙遞到兩人之間；嘴閉著；最後：合約在兩人之間、紙背朝鏡頭 | — | 約 3 秒 |
+| c01 | 近景、固定；從 Grant 的右肩後拍（他濕的淺石色西裝右肩在畫框左下緣、虛焦、不露臉）；直式，Nora 的臉在上三分之一；身後是對街空著的人行道邊與路燈（虛焦）；同一條雨夜的街 | Nora（`motel`，低髮髻被雨打濕、幾縷濕髮黏在臉頰），`a camel wool coat with deep pockets, worn open`；雨水從額頭流過臉頰到下巴、肩膀濕透；白車的車燈打在畫面左濕亮的路面上、反光從畫面左照亮她的臉，路燈從上面；四分之三側臉朝畫面左的 Grant、眼睛看著他，不看鏡頭；眉頭壓平、眼睛定住、下巴收著、嘴唇閉緊、鼻子慢慢吸一口氣，`no smile at any moment, until the last frame` | 接第 18 集最後一鏡的同一刻；Nora 眨掉睫毛上的雨，下巴慢慢抬起；剪在下巴抬到一半；嘴閉著；最後：她抬著下巴看著 Grant | — | 約 2 秒 |
+| c02 | 近景、慢推（從胸上推到肩上）；同 c01 的鏡位（Grant 的右肩在畫框左下緣、虛焦）；直式，臉在上三分之一 | Nora（`motel`，低髮髻與臉被雨打濕），`a camel wool coat with deep pockets, worn open`；雨一直落在她臉上；路面反上來的車燈白光從畫面左；四分之三側臉朝畫面左的 Grant、眼睛看著他；眉頭壓低、眼睛不眨、嘴唇在字與字之間閉緊、聲音低而清楚、一字一停，`no smile at any moment, until the last frame` | Nora 看著 Grant，嘴在說話（低、一字一停）；說完右手把黏在臉頰的濕髮撥到耳後，嘴閉上；最後：她的手放下、看著他 | Nora（低、一字一停）：Tomorrow. Ten o'clock. Superior Court.（明天。十點。高等法院）（原聲） | 約 3 秒 |
+| c03 | 特寫、慢推（從下巴到眉的特寫推到眼睛與嘴）；同一軸線；直式；身後只有對街的路燈與雨（虛焦）；**第一格就是 Nora 的臉，整鏡不拉遠** | Nora（`motel`，臉與頭髮被雨打濕），雨水沿著臉頰流；路面反上來的車燈白光從畫面左；四分之三側臉朝畫面左的 Grant、眼睛看著他；眉毛放平、眼睛睜著不眨、下巴繃住、說的時候呼吸很穩，`no smile at any moment, until the last frame` | Nora 看著 Grant，嘴在說話（平、穩、不抬高聲音）；說完下巴一收，嘴閉上；最後：她看著他 | Nora（平、穩）：I'm filing for divorce.（我要提離婚）（原聲） | 約 2.5 秒 |
+| c04 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她濕的低髮髻與駝色大衣左肩在畫框右下緣、虛焦、不露臉）；直式，Grant 的臉在上三分之一；身後是對街空著的人行道邊、路燈與斜落的雨，白車打開的駕駛座門在畫面左緣（虛焦） | Grant（`rain`：沙金色側分的頭髮濕、細圓金屬框眼鏡鏡片上有雨點、淺石色西裝領口濕），左頰 `a faint pink flush`；站在 `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame, stopped in the street by the empty curb, headlights on` 打開的駕駛座門邊、右手扶著車門上緣；路燈從上面照；四分之三側臉朝畫面右的 Nora、眼睛看著她；第一格眉心一鬆，練過的閉嘴微笑回到嘴上：嘴唇閉著、不露齒、眼皮放鬆，像她終於讓步了；聲音平穩、低 | Grant 看著 Nora，嘴在說話（平穩、低）；說完右手在車門上緣拍一下，嘴閉上，閉嘴的笑留著；最後：他扶著車門、看著她 | Grant（平穩、低，像她終於讓步）：About time.（早該這樣）（原聲）（結尾）← 因為 c03 | 約 3 秒 |
+| c05 | 插鏡、手部特寫、固定；**第一格就是 Peg 藏在背後的右手**；直式；從她左側低處拍（汽車旅館這一側）；同一條雨夜的街 | Peg 的右手（棕色鋪棉長大衣袖口）在她背後捏著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it`，雨點打在紙背上、紙邊開始捲；路燈的光；下緣是 `worn beige house slippers` 的鞋跟在濕的人行道上；畫面裡沒有臉 | Peg 的手指把那張紙捏得更緊、紙邊皺起來；剪在手指收緊；畫面上沒有嘴；最後：紙還在她背後的右手裡 | — | 約 2 秒 |
+| c06 | 中景、固定；鏡頭在汽車旅館這一側的路上、斜對著白車的駕駛座那一側；直式：下半是白車濕亮的車身，中間是打開的門 | Grant（`rain`，深棕色皮鞋，左頰 `a faint pink flush`）側身坐進 `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame, stopped in the street by the empty curb, headlights on` 的駕駛座，只露背與後腦（臉不入鏡）；雨打在車頂上濺開；路燈從上面照 | Grant 坐進駕駛座（動作一），右手把車門拉上（動作二）；剪在門關上的一下；畫面上沒有嘴；最後：門關著，他的後腦在掛滿雨痕的車窗後面、模糊 | — | 約 2.5 秒 |
+| c07 | 遠景、低角度、慢慢跟搖（從右搖到左）；鏡頭在汽車旅館這一側的路邊、低；直式前後疊開：下緣是濕亮的柏油，中間是兩個女人的側身，上緣是對街空著的人行道邊與路燈 | 共兩人，側身、臉很小。畫面中間：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴，頭髮濕），側臉朝畫面左：眉頭壓平、嘴唇閉緊；畫面右、離鏡頭遠半步：Peg（`coat`，`her feet in worn beige house slippers instead of shoes`），側臉朝畫面左：眉頭擰著、嘴唇抿著，右手還把合約藏在背後；兩張臉都 `no smile at any moment, until the last frame`；`a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` 沿著濕街往畫面左開走，兩盞紅色尾燈在濕柏油上拖出紅光；`steady rain`、路燈；鏡頭後方旅館的紅霓虹淡淡染在濕路上 | 白車往畫面左開遠、尾燈越來越小；兩人的頭跟著轉向畫面左；剪在尾燈到畫面左緣；兩人都嘴閉著；最後：路燈下只剩雨與空著的人行道邊 | — | 約 2.5 秒 |
+| c08 | 近景、固定；直式，臉在上三分之一；身後是對街空著的人行道邊與路燈（虛焦） | Nora（`motel`，臉與頭髮被雨打濕），`a camel wool coat with deep pockets, worn open`；路面反上來的白光與尾燈的紅光從她臉上往畫面左滑走，只剩路燈；眼睛從畫面左遠處收回來、眉頭往中間收、下巴的肌肉一緊、長長吐出一口白氣，`no smile at any moment, until the last frame` | Nora 長長吐出一口氣（動作一），頭轉向畫面右的 Peg（動作二）；剪在頭轉到一半；嘴閉著；最後：她看著畫面右的 Peg | — | 約 2.5 秒 |
+| c09 | 中近景、固定；鏡頭在汽車旅館這一側、Nora 的左後方（她濕的低髮髻與左肩在畫框左下緣、虛焦、不露臉）；直式，Peg 在畫面右、臉在上三分之一；身後是對街的路燈（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上、鏡片上有雨點，灰色短燙髮被雨打濕），面向畫面左的 Nora；右手從背後把 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it` 拿出來、遞向 Nora；路燈從上面；眉頭擰著、眼睛在濕鏡片後面看著 Nora、嘴唇抿薄、下巴點一下，`no smile at any moment, until the last frame` | Peg 把合約從背後拿出來遞給 Nora（動作一），點一下頭（動作二）；剪在紙遞到兩人之間；嘴閉著；最後：合約在兩人之間、紙背朝鏡頭 | — | 約 3 秒 |
 | c10 | 插鏡、手部特寫、固定；**第一格就是兩人之間被雨打濕的合約背面**；直式；同一條雨夜的街 | Nora 的右手（奶油色毛衣袖口、駝色大衣袖）接過 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in her right hand`，雨點在紙背上；Peg 的手（棕色大衣袖口）鬆開；路燈的光；畫面裡沒有臉 | Nora 接過合約（動作一），把它貼在胸前、塞進敞開的大衣裡擋雨（動作二）；剪在紙滑進大衣；畫面上沒有嘴；最後：合約貼在她胸前，駝色大衣的前襟蓋著 | — | 約 2.5 秒 |
 
 ### 第二場：一刀（約 27 秒）
@@ -109,7 +109,7 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 | c18 | 近景、慢推（從胸上推到肩上）；顏值鏡頭；鏡頭在鏡子的位置；直式，臉在上三分之一；身後是開著的浴室門與暗的房間（虛焦）；**第一格就是 Nora 剪好的齊肩髮與臉，整鏡不拉遠** | Nora（**`shoulder`**：深栗色頭髮剪到齊肩、髮尾掃到下顎線；同一件奶油色毛衣）；燈從正前上方照；眼睛看著鏡頭這邊（鏡子裡的自己），整鏡不移開；第一次不躲：眉毛放平、眼睛睜著不眨、下巴收緊、嘴唇閉著、呼吸放慢，`no smile at any moment, until the last frame` | Nora 的頭往左輕輕一偏、再轉回正面，剪齊的髮尾在下顎邊晃一下；剪在髮尾停下；嘴閉著；最後：她看著鏡子，不移開 | — | 約 4 秒 |
 | c19 | 近景、固定；鏡頭在鏡子的位置；直式，Peg 的臉在上三分之一；Nora 剪短的髮尾與右肩在畫框右下緣（虛焦）；身後是暗的門口 | Peg（`visit`，玳瑁框眼鏡戴在臉上）；燈從正前上方照；眼睛看著鏡頭右邊一點（鏡子裡的 Nora）；一滴淚掛在鏡框下、眉心往上提、嘴唇發抖、下巴繃住，`no smile at any moment, until the last frame` | Peg 的右手輕輕放到 Nora 的右肩上；剪在手落到肩上；嘴閉著；最後：她的手放在 Nora 肩上，看著鏡子裡的她 | — | 約 2.5 秒 |
 
-### 第三場：天亮前，簽名與電話（約 34 秒）
+### 第三場：天亮前，簽名與電話（約 35 秒）
 
 **場頭**：
 - **地點與場景圖**：c20–c23 汽車旅館房間 `motel-room`（待畫，**清晨版**；格局同第 10 集）：門從外面二樓走道開進來、門邊一扇窗與厚窗簾、窗下小桌兩把椅子，`a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside` 在小桌上；兩張單人床床頭靠右牆，靠窗是 Nora 的、靠浴室是 Peg 的，中間床頭櫃與檯燈（關著）；行李箱攤在兩張床的床尾前。
@@ -118,7 +118,7 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 - **時間與天氣**：第 9 天（3/25 週三）06:40–06:55，天亮前（日出約 07:05）；雨停了，地面與車頂濕、不下雨；窗外是藍色的天亮前；房間的檯燈關著；辦公室亮著櫃台上的暖黃檯燈；對街路燈還亮著；紅霓虹已經熄了。整場維持天亮前的藍光。
 - **軸線**：房間：鏡頭在浴室門邊往窗拍，Peg 的床在前景右下（她側躺、背對鏡頭），Nora 坐在畫面左上的窗下小桌前、臉朝畫面右。辦公室：鏡頭在櫃台右端往門與窗拍，門與窗在畫面左，Bev 在櫃台後畫面右，Nora 站櫃台前，窗外的對街在畫面左外。黑車裡：Elias 在駕駛座，右側臉朝鏡頭，他看著擋風玻璃外的街（畫面右外）。
 - **在場的人**：房間：Nora、睡著的 Peg；辦公室：Nora、Bev；黑車裡：Elias 一個人（他回來守了一夜，Theo 不在）。
-- **這場要講完的事**：Nora 天亮前在窗前簽了三條，下樓用櫃台電話打 Theo 給的名片，對街黑車裡的 Elias 接起來；她說「Signed.」，他說十點 Dana 會在法院等她（結尾：「Ten o'clock. Dana will meet you there.」）。
+- **這場要講完的事**：Nora 天亮前在窗前簽了三條，下樓用櫃台電話打 Theo 給的名片，對街黑車裡的 Elias 接起來；她說「Signed. Ten o'clock, Superior Court.」，他說十點 Dana 會在法院等她（結尾：「Ten o'clock. Dana will meet you there.」）。
 - **配樂**：c20 安靜，只有暖氣的低嗡；c22 筆尖的聲音之後一個輕的鋼琴單音；c27 看見黑車時一個低、冷的單音；c30 他說完一段低的弦，c31 收掉。
 - **離開這場**：c31 她掛上電話、名片收進口袋；三個鐘頭後（10:00）接第四場法院書記官窗口。
 
@@ -130,12 +130,12 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 | c23 | 近景、固定；同 c21 的鏡位；直式，**頭上留出空間，站起來後整個頭仍在畫面裡**；身後是窗與藍光 | Nora（`shoulder`）；右手放下筆；眼睛轉向畫面右下外床上睡著的 Peg；眉心往上提一下、嘴唇閉緊、下巴收著、呼一口氣，`no smile at any moment, until the last frame` | Nora 看一眼畫面右下外睡著的 Peg（動作一），站起來（動作二）；剪在站到一半；嘴閉著；最後：她站著，紙與筆留在桌上 | — | 約 2.5 秒 |
 | c24 | 中景、慢推（從中景推到中近景）；鏡頭在櫃台右端、往門與窗拍；直式：前景右下是櫃台的木面與 `an old beige corded desk phone`，中間是櫃台前的空地，左邊是門與門邊的窗 | 共兩人。Nora（`shoulder`，`a camel wool coat with deep pockets, worn open`、棕褐短靴）從畫面左的門走進來；左手拿著 `a plain white business card, print not readable`（背面朝鏡頭）；Bev（圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上）在櫃台後、畫面右；櫃台左端 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`、右端 `a small grey card reader on the desk, its screen turned away`；暖黃檯燈；窗外天亮前的藍光與濕的停車場；Nora 眉頭壓平、眼睛看著櫃台上的電話、嘴唇閉緊，`no smile at any moment, until the last frame`；Bev 打一個呵欠：嘴張開、眼睛眯起、眉毛往上提，`no smile at any moment, until the last frame` | Nora 走到櫃台前停下（動作一），Bev 打一個呵欠（動作二）；剪在呵欠張到最大；Nora 嘴閉著；最後：Nora 站在櫃台前、Bev 在櫃台後 | — | 約 2.5 秒 |
 | c25 | 插鏡、手部特寫、固定；**第一格就是櫃台木面上的米色電話**；直式；暖黃檯燈；同一間辦公室 | `an old beige corded desk phone` 在木櫃台上；Bev 的右手（碎花袖口）按在電話上；畫面左緣是 Nora 的駝色大衣袖口；畫面裡沒有臉 | Bev 的手把電話沿著櫃台推向畫面左（Nora 那邊）；剪在電話滑到一半；畫面上沒有嘴；最後：電話停在 Nora 面前的櫃台上 | — | 約 2.5 秒 |
-| c26 | 插鏡、特寫、固定；**第一格就是她左手的名片背面與電話的側面**；直式；鏡頭在櫃台面高度、從電話側面平拍，按鍵面在畫框外 | Nora 的左手（駝色大衣袖口）捏著 `a plain white business card, print not readable`，背面朝鏡頭；右手的食指在電話上（只見手指往下按，按鍵面不入鏡）；話筒夾在她左肩與耳朵之間（畫框外）；暖黃檯燈；畫面裡沒有臉 | Nora 的右手食指一下一下按號碼；剪在按到第三下；畫面上沒有嘴；最後：她的手指停在電話上 | — | 約 2.5 秒 |
+| c26 | 插鏡、特寫、固定；**第一格就是她左手的名片背面與電話的側面**；直式；鏡頭在櫃台面高度、從電話側面平拍，按鍵面在畫框外 | Nora 的左手（駝色大衣袖口）捏著 `a plain white business card, print not readable`，背面朝鏡頭；右手的食指在電話上（只見手指往下按，按鍵面不入鏡）；話筒夾在她右肩與耳朵之間（畫框外）；暖黃檯燈；畫面裡沒有臉 | Nora 的右手食指一下一下按號碼；剪在按到第三下；畫面上沒有嘴；最後：她的手指停在電話上 | — | 約 2.5 秒 |
 | c27 | 主觀鏡、慢推（從遠景推到中遠景）；**第一格就是辦公室窗框與窗外**；前景是窗框與櫃台左端的薄荷糖碗（虛焦）；直式 | 窗外：濕的停車場、兩線道的街；對街路燈下 `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左；路燈還亮著、天亮前的藍光；濕的柏油、不下雨；駕駛座裡一個暗影 | 鏡頭慢慢往黑車推近；駕駛座的暗影抬起一隻手到耳邊；剪在推到一半；畫面上沒有嘴；最後：黑車在路燈下 | — | 約 3 秒 |
 | c28 | 近景、固定；鏡頭在副駕駛座、往駕駛座拍；直式，臉在上三分之一；身後是駕駛座車窗、窗外濕的街與藍光（虛焦） | Elias（基本款：188 公分、橄欖膚色、深棕色頭髮往後梳、細銀絲框眼鏡、炭灰窗格紋三件式西裝、白襯衫開領、白色口袋巾），外罩 `a dark charcoal wool overcoat, worn open`；坐在駕駛座；**左手在畫框外（車窗下緣以下）**；右手把 `a black phone with no logo, about the size of his palm` 舉到右耳；路燈與天亮前的藍光從車窗照在他的右側臉；儀表板的螢幕暗著；右側臉朝鏡頭，眼睛看著畫面右外擋風玻璃外的街，不看鏡頭；眉毛放平、眼睛不眨、下巴不動、嘴唇閉著、呼吸很慢，`no smile at any moment, until the last frame` | Elias 右手把手機舉到耳邊；剪在手機貼到耳朵；嘴閉著（在聽）；最後：手機貼在他右耳 | — | 約 3 秒 |
-| c29 | 近景、慢推（從胸上推到肩上）；鏡頭在櫃台後、Bev 那一側（Bev 在畫框外）；直式，臉在上三分之一；身後是門邊的窗與天亮前的藍光（虛焦） | Nora（`shoulder`，`a camel wool coat with deep pockets, worn open`）；右手把 `an old beige corded desk phone` 的米色話筒貼在右耳；左手捏著名片放在櫃台上；暖黃檯燈；四分之三側臉朝畫面左外的窗（對街的黑車）、眼睛看著窗外，不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線）；眉毛壓平、下巴收緊、嘴唇在字前閉緊、聲音低、平、乾脆，`no smile at any moment, until the last frame` | Nora 看著窗外，嘴在說話（低、平、乾脆）；說完左手把名片平放在櫃台上，嘴閉上；最後：她拿著話筒、看著窗外 | Nora（低、平、乾脆）：Signed.（簽了）（原聲） | 約 3 秒 |
+| c29 | 近景、慢推（從胸上推到肩上）；鏡頭在櫃台後、Bev 那一側（Bev 在畫框外）；直式，臉在上三分之一；身後是門邊的窗與天亮前的藍光（虛焦） | Nora（`shoulder`，`a camel wool coat with deep pockets, worn open`）；第一格右手從右肩上接過 `an old beige corded desk phone` 的米色話筒、貼在右耳；左手捏著名片（背面朝鏡頭）；暖黃檯燈；四分之三側臉朝畫面左外的窗（對街的黑車）、眼睛看著窗外，不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線）；眉毛壓平、下巴收緊、嘴唇在字前閉緊、聲音低、平、乾脆，`no smile at any moment, until the last frame` | Nora 右手把話筒貼到耳邊（動作一），看著窗外，嘴在說話（低、平、乾脆）（動作二）；說完嘴閉上；最後：她拿著話筒、看著窗外 | Nora（低、平、乾脆）：Signed. Ten o'clock, Superior Court.（簽了。十點，高等法院）（原聲） | 約 4 秒 |
 | c30 | 近景、慢推（從胸上推到肩上）；同 c28 的鏡位；直式，臉在上三分之一 | Elias（基本款，`a dark charcoal wool overcoat, worn open`）；`a black phone with no logo, about the size of his palm` 貼在右耳；**左手在畫框外**；藍光與路燈照在他的右側臉；眼睛看著畫面右外擋風玻璃外的街（說話模板的 eyes on 換成本鏡寫的視線）；眉毛放平、嘴唇在字與字之間閉著、下巴不動、聲音低、話少、每個字像合約、對她慢半拍，`no smile at any moment, until the last frame` | Elias 嘴在說話（低、一字一字、慢半拍）；說完把手機從耳邊放低到胸前，嘴閉上；最後：手機在他右手、放在胸前 | Elias（低、一字一字，電話裡）：Ten o'clock. Dana will meet you there.（十點。Dana 會在那裡等妳）（原聲，後製加電話濾波）（結尾）← 因為 c29 | 約 4 秒 |
-| c31 | 插鏡、手部特寫、固定；**第一格就是米色電話的話筒架**；直式；暖黃檯燈；同一間辦公室 | `an old beige corded desk phone`；Nora 的右手（駝色大衣袖口）拿著話筒；左手在櫃台上按著 `a plain white business card, print not readable`（背面朝上）；畫面裡沒有臉 | Nora 把話筒放回話筒架（動作一），左手把名片收進大衣左口袋（動作二）；剪在名片沒進口袋；畫面上沒有嘴；最後：話筒在架上，櫃台上空了 | — | 約 2.5 秒 |
+| c31 | 插鏡、手部特寫、固定；**第一格就是米色電話的話筒架**；直式；暖黃檯燈；同一間辦公室 | `an old beige corded desk phone`；Nora 的右手（駝色大衣袖口）拿著話筒；左手捏著 `a plain white business card, print not readable`（背面朝鏡頭）；畫面裡沒有臉 | Nora 把話筒放回話筒架（動作一），左手把名片收進大衣左口袋（動作二）；剪在名片沒進口袋；畫面上沒有嘴；最後：話筒在架上，櫃台上空了 | — | 約 2.5 秒 |
 
 ### 第四場：Filed.（約 19 秒）
 
@@ -158,7 +158,7 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 | c37 | 近景、慢推（從胸上推到肩上）；鏡頭在窗口旁的牆邊、兩人右前方（不隔著玻璃）；直式，Dana 的臉在上三分之一；Nora 的齊肩髮與肩在畫框右下緣（虛焦） | Dana（基本款），`three thick plain buff case files held against her chest`；高窗的灰光；四分之三側臉朝畫面右的 Nora、眼睛看著她；眉毛平、嘴唇在字之間抿一下、下巴微抬、說得快、冷靜，`no smile at any moment, until the last frame` | Dana 看著 Nora，嘴在說話（快、冷靜）；說完兩手把卷宗在胸前抱緊，嘴閉上；最後：她看著 Nora | Dana（快、冷靜）：Ninety days. Earliest decree.（九十天。最快那天判）（原聲）（結尾） | 約 3.5 秒 |
 | c38 | 近景、固定；同 c37 的鏡位；直式，Nora 的臉在上三分之一；Dana 的黑西裝肩在畫框左下緣（虛焦、不露臉） | Nora（`shoulder`，`a camel wool coat with deep pockets, worn open`）；高窗的灰光；四分之三側臉朝畫面左的 Dana；眉頭往中間收、眼睛從 Dana 移回窗口、下巴一收、吸一口氣，`no smile at any moment, until the last frame` | Nora 點一下頭（動作一），轉身離開窗口（動作二）；剪在轉身一半；嘴閉著；最後：她轉向大廳 | — | 約 2.5 秒 |
 
-### 第五場：九十天（約 17 秒）
+### 第五場：九十天（約 17.5 秒）
 
 **場頭**：
 - **地點與場景圖**：法院正門台階 `courthouse-steps`（待畫，**陰、濕版**）：寬石階、柱子、大門在台階頂；台階下是街（畫面左下）；字與徽記不入鏡。
@@ -176,10 +176,10 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 | c41 | 插鏡、特寫、慢推（從近景推到特寫）；**第一格就是那張照片，滿畫面**（當作手機裡的照片，不拍手機）；直式 | `Sienna's LEFT hand, a slim gold watch on her LEFT wrist, holding a pen above a blank white form far out of focus, on a white marble tabletop`；柔的白光；焦點在左手、金錶與筆尖，表格遠遠虛焦、只有淡淡的白；畫面裡沒有臉 | 鏡頭慢慢推向那隻左手與筆尖；照片裡的手不動（那是一張照片）；剪在推到一半；畫面上沒有嘴；最後：金錶與筆尖在畫面中間 | — | 約 2.5 秒 |
 | c42 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；Nora 的齊肩髮與駝色大衣肩在畫框右下緣（虛焦、不露臉）；身後是柱子 | Peg（`coat`，玳瑁框眼鏡戴在臉上）；右手 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side` 舉在她和 Nora 之間；四分之三側臉朝畫面右的 Nora、眼睛從螢幕抬起來看她；眉頭壓緊、嘴唇在字之間抿薄、聲音乾、平、像在念帳，`no smile at any moment, until the last frame` | Peg 看著 Nora，嘴在說話（乾、平、像念帳）；說完把手機螢幕轉向 Nora（螢幕背對鏡頭），嘴閉上；最後：手機螢幕朝著 Nora | Peg（乾、平、像念帳）：Sienna. Marriage application. And a pen.（Sienna。結婚申請書。還有一支筆）（原聲） | 約 3.5 秒 |
 | c43 | 近景、固定；直式，臉在上三分之一；身後是柱子與灰天（虛焦） | Nora（`shoulder`，`a camel wool coat with deep pockets, worn open`）；眼睛看著畫面左 Peg 轉過來的手機（螢幕背對鏡頭，只見側面的白光照在她下巴）；眉頭壓低、下巴繃緊、嘴唇閉成一條線、呼吸停一拍，`no smile at any moment, until the last frame` | Nora 的眼睛從手機抬到畫面左的 Peg 臉上；剪在眼睛抬到一半；嘴閉著；最後：她看著 Peg | — | 約 2.5 秒 |
-| c44 | 中景、固定（接第 20 集之前的最後一刻）；鏡頭在低一級、往上拍；直式：Peg 在中間、Nora 在畫面右同一級、Dana 高一級在畫面右後（虛焦）；身後是柱子與灰天 | 共三人。Peg（`coat`，玳瑁框眼鏡戴在臉上、深棕色平底鞋，`a plain beige canvas tote bag with no print, hanging from her left shoulder`），右手舉著 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side`，眼睛看著螢幕（說話模板的 eyes on 換成本鏡寫的視線）：眉毛一挑、嘴唇在字前抿緊、念的時候聲音更乾、更慢；Nora（`shoulder`，`a camel wool coat with deep pockets, worn open`、棕褐短靴）在她左邊（畫面右）看著手機：眉頭壓低、嘴唇閉緊；Dana（基本款、白球鞋，`three thick plain buff case files held against her chest`）高一級、畫面右後虛焦：眉頭收著、嘴唇閉著；三張臉都 `no smile at any moment, until the last frame`；陰天的灰光、濕台階 | Peg 看著螢幕，嘴在說話（念配文，更乾、更慢）；說完嘴閉上；Nora 與 Dana 嘴閉著；最後：Peg 舉著手機、嘴閉著，Nora 看著手機，Dana 在後面 | Peg（念配文，更乾、更慢）：'Ninety days.'（「九十天。」）（原聲）（結尾）（懸念 → 下一集第一場） | 約 3.5 秒 |
+| c44 | 中景、固定（接第 20 集之前的最後一刻）；鏡頭在低一級、往上拍；直式：Peg 在中間、Nora 在畫面右同一級、Dana 高一級在畫面右後（虛焦）；身後是柱子與灰天 | 共三人。Peg（`coat`，玳瑁框眼鏡戴在臉上、深棕色平底鞋，`a plain beige canvas tote bag with no print, hanging from her left shoulder`），右手舉著 `an older black phone in a worn brown case, about the size of her palm, its screen a soft white glow, seen from the side`，眼睛看著螢幕（說話模板的 eyes on 換成本鏡寫的視線）：眉毛一挑、嘴唇在字前抿緊、念的時候聲音更乾、更慢；Nora（`shoulder`，`a camel wool coat with deep pockets, worn open`、棕褐短靴）在她左邊（畫面右）看著手機：眉頭壓低、嘴唇閉緊；Dana（基本款、白球鞋，`three thick plain buff case files held against her chest`）高一級、畫面右後虛焦：眉頭收著、嘴唇閉著；三張臉都 `no smile at any moment, until the last frame`；陰天的灰光、濕台階 | Peg 看著螢幕，嘴在說話（念配文，更乾、更慢）（動作一）；說完拇指按熄螢幕、手機垂到胸前（動作二），嘴閉上；Nora 與 Dana 嘴閉著；最後：Peg 的手機垂在胸前、螢幕暗了，嘴閉著，Nora 看著那支手機，Dana 在後面 | Peg（念配文，更乾、更慢）：'Ninety days.'（「九十天。」）（原聲）（結尾）（懸念 → 下一集第一場） | 約 4 秒 |
 
-約 122.5 秒（2 分 2.5 秒）、44 鏡（第一場 10、第二場 9、第三場 12、第四場 7、第五場 6），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 40–44 鏡。
-開場 10 秒四鏡（c01–c04）：c01 雨裡的臉、c02 "Tomorrow. Ten o'clock. Superior Court."、c03 "I'm filing for divorce."、c04 在第 7.5 秒 Grant 的笑與 "About time."。平均一鏡 2.78 秒（剪髮兩鏡 4 秒）。
+約 124 秒（2 分 4 秒）、44 鏡（第一場 10、第二場 9、第三場 12、第四場 7、第五場 6），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 40–44 鏡。
+開場 10 秒四鏡（c01–c04）：c01 雨裡的臉、c02 "Tomorrow. Ten o'clock. Superior Court."、c03 "I'm filing for divorce."、c04 在第 7.5 秒 Grant 的笑與 "About time."。平均一鏡 2.82 秒（剪髮兩鏡 4 秒）。
 
 ## 注意事項
 
@@ -200,7 +200,7 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 - **c20 Peg 床上的灰藍毛線**長到一隻手臂長，當作時間的鐘（第 20 集織完）。**站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 7 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
-- **第一場的軸線**：鏡頭在人行道這一側，Grant 在畫面左、Nora 在畫面右、Peg 在 Nora 右後；拍 Nora 從 Grant 的左肩後、拍 Grant 從 Nora 的右肩後。c06 Grant 上車只拍背與後腦（"About time." 那一鏡之外不給他笑的機會）。
+- **第一場的軸線**：鏡頭在汽車旅館這一側（接第 18 集 c41），Grant 在畫面左、Nora 在畫面右、Peg 在 Nora 右後；拍 Nora 從 Grant 的右肩後、拍 Grant 從 Nora 的左肩後；背景是對街空著的人行道邊與路燈。c06 Grant 上車只拍背與後腦（"About time." 那一鏡之外不給他笑的機會）。
 - **剪髮前的髮型**：浴室那場 Nora 把低髮髻放下來，長髮垂到胸口才能剪，**要新開 look `motel-down`**（`motel` 只換髮型：`long dark chestnut hair let down loose, reaching her chest`），見清單 1。剪完是同一件奶油色毛衣、套 `shoulder`（外貌句寫深色長褲，浴室的鏡都只到胸口，看不到褲子）。
 - **c15–c17**：Peg 握頭髮的是左手（拍得到當掉戒指後那一圈淡色皮膚）；c17 盆裡多了好幾束、剪刀放到洗手台邊，交代剪完了。
 - **c19**：Peg 的右手放到 Nora 肩上，代替台詞收尾；這場的結尾句是 c13 "I'm not going back."。
@@ -214,13 +214,22 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 - **c42**：Peg 的句子前加一個字 "Sienna."，觀眾才知道照片是誰的（第 6–7 集的左手與金錶隔太久）。**這是本集加的字，待站主確認**；不要的話念 "Marriage application. And a pen."，秒數不變。
 - **Peg 的鞋**：第一場是拖鞋（接第 18 集），第五場出門換回深棕色平底鞋。
 
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e015-e020-storyboard.md` 與 bible〈第 15–20 集審稿後補定〉改的。本集還沒錄、沒拍，沒有要重抽的片段；c29 的台詞變長，**要重錄**（還沒錄過，照新句寫提示詞即可）。
+- **第一場的軸線**（場頭、c01–c09）：原稿越軸、白車擋在鏡頭與三人之間。鏡頭回到汽車旅館這一側（接第 18 集 c41）：Nora 的鏡從 Grant 的右肩後（肩在畫框左下緣），Grant 的鏡從 Nora 的左肩後（肩在畫框右下緣），背景是對街空著的人行道邊與路燈；旅館與紅霓虹在鏡頭後方，紅光只淡淡染過來（c01–c10 的英文光句一起改）。c07 改成從旅館這側拍兩人側身目送白車開走。
+- **c29**：台詞改成 "Signed. Ten o'clock, Superior Court."，Elias 的 "there" 才有所指；秒數 3 → 4。劇情、場頭一起改。
+- **c26 → c29**：話筒夾在她**右肩**與耳朵之間，c29 第一格右手從肩上接過來；名片一直在左手，c31 收進口袋。
+- **c02、c44 的收尾動作**：c02 說完右手把黏在臉頰的濕髮撥到耳後；c44 念完拇指按熄螢幕、手機垂到胸前（秒數 3.5 → 4）。〈這集接在哪〉與清單 5 一起改；bible〈接點表〉19→20 寫的是手機還舉著，請主控照這裡改。
+- "Marriage application." 照留（主控決定）。鏡數不變，44 鏡；秒數 122.5 → 124。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**。電話那頭的 Elias（c30）也是畫面上的人：原聲、後製加電話濾波；Nora 這頭（c29）原聲、不加濾波。
 - **十一句都是原聲**：Nora 四鏡（c02、c03、c13、c29）、Grant 一鏡（c04）、Peg 三鏡（c12、c42、c44）、Elias 一鏡（c30）、書記官一鏡（c36）、Dana 一鏡（c37）。每支**至少買 6 秒**（合計 66 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。
 - 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：Nora 低、穩、一字一停；Peg 乾、啞，c12 啞、c44 更乾更慢；Elias 低、話少、對她慢半拍；Dana 快、冷靜；書記官快、俐落。
 - **Grant 的說話句**（c04）只寫「聲音平穩、低」與臉（眉心一鬆、閉嘴的笑、不露齒），不寫 warm、keynote、smooth（原聲小樣：這三個字會把笑帶出來、還會露齒）。
-- **6 個字以內的句子**（c03、c04、c13、c29、c30、c36、c37、c42、c44）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上。c29 "Signed."、c36 "Filed." 最短，第一批草稿先聽有沒有多講。
+- **6 個字以內的句子**（c03、c04、c13、c29、c30、c36、c37、c42、c44）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上。c36 "Filed." 最短，第一批草稿先聽有沒有多講。
 - **還沒驗**（bible〈全劇固定〉）：H3 說英文的口音、同一角色跨鏡與跨集的聲音是否一致；Elias 第一次在畫面上說話（第 16 集起）與本集電話濾波後聽起來是不是同一個人。
 - CC 軟字幕、不燒錄、不標說話人；字幕照剪接工具量到的開口時間放。
 
@@ -261,7 +270,7 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 - 時間跳躍不用字卡、不溶：c10 → c11 靠浴室的燈、Nora 放下的長髮、Peg 換成開襟衫交代過了兩個鐘頭；c19 → c20 靠天亮前的藍光、剪好的頭髮、Peg 睡著交代過了一夜；c31 → c32 靠法院大廳的灰光與 Dana 交代三個鐘頭後；c38 → c39 直接切台階。
 - c14、c18 照寫的 4 秒留滿，不切碎。c41 的照片是一張照片：鏡頭慢推，照片裡的手不動。
 - c30 Elias 的台詞後製加電話濾波；c29 Nora 這頭不加。
-- c44 停在 Peg 念完、嘴閉著的一刻，切黑；第 20 集第一鏡跳九十天（四月的禮品店）。
+- c44 停在螢幕暗掉、手機垂到胸前的一刻，切黑；第 20 集第一鏡跳九十天（四月的禮品店）。
 - 調色：第一場夜雨，路燈昏黃加左邊車燈的白與對街的紅；第二場浴室暖白；第三場天亮前冷藍，辦公室裡一盞暖黃；第四、五場陰天平光。
 
 ## 五張清單
@@ -293,7 +302,7 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 
 ### 3. 長鏡清單
 
-本集沒有超過 6 秒的鏡。剪髮兩鏡 4 秒（c14、c18）、Elias 電話 4 秒（c30，原聲）。原聲鏡十一支每支買 6 秒（不是長鏡，剪到台詞長度）。
+本集沒有超過 6 秒的鏡。剪髮兩鏡 4 秒（c14、c18）；原聲 4 秒的三鏡：c29、c30、c44。原聲鏡十一支每支買 6 秒（不是長鏡，剪到台詞長度）。
 
 ### 4. 音樂與音效
 
@@ -319,6 +328,6 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 - **Nora 的新手機**：鎖在 Bev 櫃台下的抽屜，一直關機（不拍）。
 - **黑車**：第 18 集開走，第 9 天清晨又停回對街路燈下；Elias 一個人在駕駛座接電話。
 - **玻璃磚**：在房間窗下的小桌上。**行李箱**：攤在兩張床的床尾前。**房間鑰匙**：在 Peg 的大衣右口袋或床頭櫃上（不拍）。
-- **Sienna 的貼文**：空白的結婚申請與一支筆，配文 "Ninety days."；Peg 念出來（c42、c44）。
+- **Sienna 的貼文**：空白的結婚申請與一支筆，配文 "Ninety days."；Peg 念出來（c42、c44），念完按熄螢幕，手機垂在她胸前（c44）。
 - **誰知道了什麼**：Grant 以為她明天去簽字（他不知道她只提離婚、財產要上法庭）；Elias 知道她簽了，十點 Dana 陪她；Nora 與 Peg 知道最快九十天判、也知道 Sienna 在等那一天。
 - **下一集接**：第 20 集第一鏡跳九十天，蒙太奇四鏡（四月的禮品店、五月的海堤階梯、六月清晨 Peg 念帳 "Night ninety."、第 99 天立在門邊的兩只行李箱），然後是第 99 天的法院。
