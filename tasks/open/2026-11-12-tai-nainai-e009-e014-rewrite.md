@@ -64,6 +64,9 @@ scope:
   - docs/videos/tai-nainai-e058/script.md
   - docs/videos/tai-nainai-e059/script.md
   - docs/videos/tai-nainai-e060/script.md
+  - docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/s1-bible-e001-e060.md
+  - docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/REVIEW.md
+  - docs/videos/lessons/tai-nainai.md
 ---
 
 # 恁祖媽今年18 第9-60集：照種田拍法重寫分鏡並獨立審稿
