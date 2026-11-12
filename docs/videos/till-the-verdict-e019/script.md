@@ -84,7 +84,7 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 | c06 | 中景、固定；鏡頭在汽車旅館這一側的路上、斜對著白車的駕駛座那一側；直式：下半是白車濕亮的車身，中間是打開的門 | Grant（`rain`，深棕色皮鞋，左頰 `a faint pink flush`）側身坐進 `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame, stopped in the street by the empty curb, headlights on` 的駕駛座，只露背與後腦（臉不入鏡）；雨打在車頂上濺開；路燈從上面照 | Grant 坐進駕駛座（動作一），右手把車門拉上（動作二）；剪在門關上的一下；畫面上沒有嘴；最後：門關著，他的後腦在掛滿雨痕的車窗後面、模糊 | — | 約 2.5 秒 |
 | c07 | 遠景、低角度、慢慢跟搖（從右搖到左）；鏡頭在汽車旅館這一側的路邊、低；直式前後疊開：下緣是濕亮的柏油，中間是兩個女人的側身，上緣是對街空著的人行道邊與路燈 | 共兩人，側身、臉很小。畫面中間：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴，頭髮濕），側臉朝畫面左：眉頭壓平、嘴唇閉緊；畫面右、離鏡頭遠半步：Peg（`coat`，`her feet in worn beige house slippers instead of shoes`），側臉朝畫面左：眉頭擰著、嘴唇抿著，右手還把合約藏在背後；兩張臉都 `no smile at any moment, until the last frame`；`a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` 沿著濕街往畫面左開走，兩盞紅色尾燈在濕柏油上拖出紅光；`steady rain`、路燈；鏡頭後方旅館的紅霓虹淡淡染在濕路上 | 白車往畫面左開遠、尾燈越來越小；兩人的頭跟著轉向畫面左；剪在尾燈到畫面左緣；兩人都嘴閉著；最後：路燈下只剩雨與空著的人行道邊 | — | 約 2.5 秒 |
 | c08 | 近景、固定；直式，臉在上三分之一；身後是對街空著的人行道邊與路燈（虛焦） | Nora（`motel`，臉與頭髮被雨打濕），`a camel wool coat with deep pockets, worn open`；路面反上來的白光與尾燈的紅光從她臉上往畫面左滑走，只剩路燈；眼睛從畫面左遠處收回來、眉頭往中間收、下巴的肌肉一緊、長長吐出一口白氣，`no smile at any moment, until the last frame` | Nora 長長吐出一口氣（動作一），頭轉向畫面右的 Peg（動作二）；剪在頭轉到一半；嘴閉著；最後：她看著畫面右的 Peg | — | 約 2.5 秒 |
-| c09 | 中近景、固定；鏡頭在汽車旅館這一側、Nora 背後偏鏡頭這側（她濕的低髮髻與駝色大衣的背在畫框左下緣、虛焦、不露臉；不寫成 over her left shoulder，免得模型把肩放到右下）；直式，Peg 在畫面右、臉在上三分之一；身後是對街的路燈（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上、鏡片上有雨點，灰色短直髮（側分）被雨打濕），面向畫面左的 Nora；右手從背後把 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it` 拿出來、遞向 Nora；路燈從上面；眉頭擰著、眼睛在濕鏡片後面看著 Nora、嘴唇抿薄、下巴點一下，`no smile at any moment, until the last frame` | Peg 把合約從背後拿出來遞給 Nora（動作一），點一下頭（動作二）；剪在紙遞到兩人之間；嘴閉著；最後：合約在兩人之間、紙背朝鏡頭 | — | 約 3 秒 |
+| c09 | 中近景、固定；鏡頭在汽車旅館這一側、Nora 背後偏鏡頭這側（她濕的低髮髻與駝色大衣的背在畫框左下緣、虛焦、不露臉）；直式，Peg 在畫面右、臉在上三分之一；身後是對街的路燈（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上、鏡片上有雨點，灰色短直髮（側分）被雨打濕），面向畫面左的 Nora；右手從背後把 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it` 拿出來、遞向 Nora；路燈從上面；眉頭擰著、眼睛在濕鏡片後面看著 Nora、嘴唇抿薄、下巴點一下，`no smile at any moment, until the last frame` | Peg 把合約從背後拿出來遞給 Nora（動作一），點一下頭（動作二）；剪在紙遞到兩人之間；嘴閉著；最後：合約在兩人之間、紙背朝鏡頭 | — | 約 3 秒 |
 | c10 | 插鏡、手部特寫、固定；**第一格就是兩人之間被雨打濕的合約背面**；直式；同一條雨夜的街 | Nora 的右手（奶油色毛衣袖口、駝色大衣袖）接過 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in her right hand`，雨點在紙背上；Peg 的手（棕色大衣袖口）鬆開；路燈的光；畫面裡沒有臉 | Nora 接過合約（動作一），把它貼在胸前、塞進敞開的大衣裡擋雨（動作二）；剪在紙滑進大衣；畫面上沒有嘴；最後：合約貼在她胸前，駝色大衣的前襟蓋著 | — | 約 2.5 秒 |
 
 ### 第二場：一刀（約 27 秒）
@@ -113,11 +113,11 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 ### 第三場：天亮前，簽名與電話（約 35 秒）
 
 **場頭**：
-- **地點與場景圖**：c20–c23 汽車旅館房間 `motel-room`（待畫，**清晨版**；格局同第 10 集）：門從外面二樓走道開進來、門邊一扇窗與厚窗簾、窗下小桌兩把椅子，`a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside` 在小桌上；兩張單人床床頭靠右牆，靠窗是 Nora 的、靠浴室是 Peg 的，中間床頭櫃與檯燈（關著）；行李箱攤在兩張床的床尾前。
+- **地點與場景圖**：c20–c23 汽車旅館房間 `motel-room`（重畫 `mroom-night` 選定後改的**清晨版** `mroom-predawn`；格局照參考圖稽核定案 1，舊圖 `set-motel-room-night.jpg` 不傳）：從床尾沿兩床中間的走道往床頭看，兩張單人床床頭靠遠牆，中間床頭櫃與檯燈（關著）在畫面上方正中；**左牆**靠鏡頭是房門（從外面二樓走道開進來），再往裡是窗與厚窗簾（只留一道直縫）、窗下小桌兩把椅子，`a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside` 在小桌上；**右牆**遠端是浴室門，關著、沒有牌子；靠窗的左床是 Nora 的、靠浴室的右床是 Peg 的；行李箱攤在兩張床的床尾前。
   c24–c27、c29、c31 汽車旅館辦公室 `motel-front`（待畫，**清晨版**）：門在畫面左、門邊一扇窗看得到停車場與街；櫃台正對門，左端 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`、右端 `a small grey card reader on the desk, its screen turned away`，櫃台右邊 `an old beige corded desk phone`，櫃台下一個上鎖的抽屜（Nora 的手機在裡面，不拍）；暖黃檯燈；從窗看出去：濕的停車場、街、對街的路燈與 `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`。
   c28、c30 黑車裡 `elias-car`（待畫）：黑色皮椅、暗的儀表板，鏡頭在副駕駛座、往駕駛座拍 Elias 的右側臉。
 - **時間與天氣**：第 9 天（3/25 週三）06:40–06:55，天亮前（日出約 07:05）；雨停了，地面與車頂濕、不下雨；窗外是藍色的天亮前；房間的檯燈關著；辦公室亮著櫃台上的暖黃檯燈；對街路燈還亮著；紅霓虹已經熄了。整場維持天亮前的藍光。
-- **軸線**：房間：鏡頭在浴室門邊往窗拍，Peg 的床在前景右下（她側躺、背對鏡頭），Nora 坐在畫面左上的窗下小桌前、臉朝畫面右。辦公室：鏡頭在櫃台右端往門與窗拍，門與窗在畫面左，Bev 在櫃台後畫面右，Nora 站櫃台前，窗外的對街在畫面左外。黑車裡：Elias 在駕駛座，右側臉朝鏡頭，他看著擋風玻璃外的街（畫面右外）。
+- **軸線**：房間：主鏡從床尾沿兩床中間的走道往床頭拍，Nora 的床在畫面左、Peg 的床在畫面右（她側躺、面向右牆、背對走道），Nora 坐在左牆窗下的小桌前（畫面左）、臉朝畫面右（朝兩張床）；浴室門在右牆遠端、關著。辦公室：鏡頭在櫃台右端往門與窗拍，門與窗在畫面左，Bev 在櫃台後畫面右，Nora 站櫃台前，窗外的對街在畫面左外。黑車裡：Elias 在駕駛座，右側臉朝鏡頭，他看著擋風玻璃外的街（畫面右外）。
 - **在場的人**：房間：Nora、睡著的 Peg；辦公室：Nora、Bev；黑車裡：Elias 一個人（他回來守了一夜，Theo 不在）。
 - **這場要講完的事**：Nora 天亮前在窗前簽了三條，下樓用櫃台電話打 Theo 給的名片，對街黑車裡的 Elias 接起來；她說「Signed. Ten o'clock, Superior Court.」，他說十點 Dana 會在法院等她（結尾：「Ten o'clock. Dana will meet you there.」）。
 - **配樂**：c20 安靜，只有暖氣的低嗡；c22 筆尖的聲音之後一個輕的鋼琴單音；c27 看見黑車時一個低、冷的單音；c30 他說完一段低的弦，c31 收掉。
@@ -125,8 +125,8 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c20 | 中景、慢推（從中景推到中近景）；鏡頭在浴室門邊、低；直式前後疊開：前景右下是 Peg 床上蓋著淺色薄毯的側躺背影（虛焦），中間是 Nora 的床，左上是窗下的小桌與窗 | 共兩人，只有 Nora 露臉。前景：Peg（`visit`）側躺在自己的床上、背對鏡頭、蓋著淺色薄毯，只露灰色短直髮（側分）的後腦與肩（臉不入鏡）；毯子上 `a long narrow strip of slate-blue knitting on two wooden knitting needles as long as her forearm, about as long as her arm`；左上：Nora（`shoulder`：齊肩短髮、奶油色毛衣、深色長褲、棕褐短靴）坐在窗下小桌前、臉朝畫面右；`a camel wool coat with deep pockets, hanging on the back of the chair`；桌上 `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside`；窗外天亮前的藍光；Nora 眉頭往中間收、嘴唇閉緊、呼吸慢，`no smile at any moment, until the last frame` | Nora 用左手把窗簾往旁邊拉開一掌寬，藍光在小桌上變寬；剪在窗簾拉到一半；嘴閉著；最後：藍光照在小桌與她的手上 | — | 約 2.5 秒 |
-| c21 | 近景、固定；鏡頭在小桌旁、低；直式，臉在上三分之一；身後是窗與藍色的天亮前；同一個房間 | Nora（`shoulder`）；左手把 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in her left hand, held up against the blue window light` 舉在窗前：紙背朝鏡頭、窗光從後面透出三小段字的淡影；四分之三側臉朝畫面右上的紙、眼睛在紙背後慢慢往下移；眉頭擰緊、嘴唇抿薄、喉嚨吞一下，`no smile at any moment, until the last frame` | Nora 看完，把紙放平到桌上；剪在紙放下一半；嘴閉著；最後：紙平放在桌上、她的兩手在紙邊 | — | 約 3 秒 |
+| c20 | 中景、慢推（從中景推到中近景）；鏡頭在床尾、低，沿兩張床中間的走道往床頭拍；直式前後疊開：畫面右是 Peg 的床（前景是床尾的舊碎花被，虛焦），畫面左是 Nora 的床，左牆上是窗（厚窗簾只留一道直縫）與窗下的小桌；兩床之間的床頭櫃與關著的檯燈在畫面上方正中；右牆遠端是關著的浴室門 | 共兩人，只有 Nora 露臉。畫面右：Peg（`visit`）側躺在自己的床上、面向右牆、背對走道，蓋著舊碎花被，只露遠端枕頭上灰色短直髮（側分）的後腦與肩（臉不入鏡）；床尾的被上 `a long narrow strip of slate-blue knitting on two wooden knitting needles as long as her forearm, about as long as her arm`；畫面左：Nora（`shoulder`：齊肩短髮、奶油色毛衣、深色長褲、棕褐短靴）坐在左牆窗下的小桌前、臉朝畫面右（朝兩張床）；`a camel wool coat with deep pockets, hanging on the back of the chair`；桌上 `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside`；窗外天亮前的藍光；Nora 眉頭往中間收、嘴唇閉緊、呼吸慢，`no smile at any moment, until the last frame` | Nora 用左手把窗簾的直縫往旁邊拉開一掌寬，藍光在小桌上變寬；剪在窗簾拉到一半；嘴閉著；最後：藍光照在小桌與她的手上 | — | 約 2.5 秒 |
+| c21 | 近景、固定；鏡頭在小桌旁、低；直式，臉在上三分之一；身後是左牆的窗（窗簾拉開一掌寬）與藍色的天亮前；同一個房間 | Nora（`shoulder`）；左手把 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in her left hand, held up against the blue window light` 舉在窗前：紙背朝鏡頭、窗光從後面透出三小段字的淡影；四分之三側臉朝畫面右上的紙、眼睛在紙背後慢慢往下移；眉頭擰緊、嘴唇抿薄、喉嚨吞一下，`no smile at any moment, until the last frame` | Nora 看完，把紙放平到桌上；剪在紙放下一半；嘴閉著；最後：紙平放在桌上、她的兩手在紙邊 | — | 約 3 秒 |
 | c22 | 插鏡、特寫、固定；**第一格就是桌面高度、紙的側邊與筆尖**；直式；鏡頭貼著桌面從紙的側邊平拍；同一個房間 | `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, now lying flat on the small table, seen edge-on at table height, the page far out of focus, only soft pale blur`；Nora 的右手（奶油色毛衣袖口）拿著 `a plain blue motel ballpoint pen`，焦點在筆尖與手指；後景虛焦的玻璃磚透著藍光；畫面裡沒有臉 | 筆尖在紙上走一行（動作一），停住、筆抬起來（動作二）；剪在筆抬起；畫面上沒有嘴；最後：筆停在紙上方 | — | 約 3 秒 |
 | c23 | 近景、固定；同 c21 的鏡位；直式，**頭上留出空間，站起來後整個頭仍在畫面裡**；身後是窗與藍光 | Nora（`shoulder`）；右手放下筆；眼睛轉向畫面右下外床上睡著的 Peg；眉心往上提一下、嘴唇閉緊、下巴收著、呼一口氣，`no smile at any moment, until the last frame` | Nora 看一眼畫面右下外睡著的 Peg（動作一），站起來（動作二）；剪在站到一半；嘴閉著；最後：她站著，紙與筆留在桌上 | — | 約 2.5 秒 |
 | c24 | 中景、慢推（從中景推到中近景）；鏡頭在櫃台右端、往門與窗拍；直式：前景右下是櫃台的木面與 `an old beige corded desk phone`，中間是櫃台前的空地，左邊是門與門邊的窗 | 共兩人。Nora（`shoulder`，`a camel wool coat with deep pockets, worn open`、棕褐短靴）從畫面左的門走進來；左手拿著剛從大衣左口袋拿出來的、**Theo 給的那張**名片 `a plain white business card, held so only its blank back shows`（第 17 集 c32，Elias 的直撥；不是第 14 集警探那張印著藍色警徽的，那張在卡夾裡），背面朝鏡頭；Bev（圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上）在櫃台後、畫面右；櫃台左端 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`、右端 `a small grey card reader on the desk, its screen turned away`；暖黃檯燈；窗外天亮前的藍光與濕的停車場；Nora 眉頭壓平、眼睛看著櫃台上的電話、嘴唇閉緊，`no smile at any moment, until the last frame`；Bev 打一個呵欠：嘴張開、眼睛眯起、眉毛往上提，`no smile at any moment, until the last frame` | Nora 走到櫃台前停下（動作一），Bev 打一個呵欠（動作二）；剪在呵欠張到最大；Nora 嘴閉著；最後：Nora 站在櫃台前、Bev 在櫃台後 | — | 約 2.5 秒 |
@@ -235,6 +235,16 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 - **Peg 的頭髮**（c09、c20）：「灰色短燙髮」改成 `cast.json` 原句的灰色短直髮（側分），免得跟 Bev 撞臉。
 - 鏡數與秒數不變。
 
+#### 2026-11-12 參考圖稽核後的修改
+
+依 `review/2026-11-12-ref-audit-e001-e020.md`（第 1–20 集分鏡 × 已選參考圖）〈定案〉改的。台詞一句都沒改，**沒有要重錄的**；下列鏡照新寫法抽。
+- **c20–c23 房間格局**（定案 1）：舊圖 `set-motel-room-night.jpg` 不傳，照重畫的 `mroom-night`／清晨版 `mroom-predawn` 寫：床頭靠遠牆，從床尾沿兩床中間的走道拍；左牆是房門（靠鏡頭）與窗、窗下小桌，右牆遠端是關著的浴室門；Nora 的床在左、Peg 的床在右。c20 鏡位從「浴室門邊」改成床尾、Peg 改成面向右牆背對走道、蓋舊碎花被（不是淺色薄毯），窗簾是一道直縫、她拉開一掌寬；c21 身後的窗寫明窗簾拉開一掌寬。場頭與軸線一起改。
+- **c02–c04 說話的臉光要穩**（定案 11）：紅霓虹只在濕路上脈動、掃過臉頰邊，這三鏡另寫一句光；c01、c05–c10 照舊。
+- **c09**：不寫「Nora 的左後方、左肩在左下」（跟「右肩後→左下」的季規讀法相反），改成她的低髮髻與大衣的背在畫框左下緣。
+- **c36**：從 Nora 的左肩後拍，左肩改在畫框**右**下緣、書記官看畫面右下（定案 11）；第四場軸線一起改。
+- **Grant 的西裝**（定案 10）：c01、c04 與〈角色與參考圖〉的「淺石色」改成「淺灰細格紋」。
+- **〈角色與參考圖〉、場景清單、清單 1–2**：指向 `assets/refs/` 現有的檔，標出第二批待畫（Nora `motel`／`shoulder` 胸像與全身、Elias 大衣、Peg `coat` 全身、Dana、街景反打、黑車、書記處）與企劃的場景 id；`nora-night-coat.jpg` 與舊房間圖不傳；只拍手或背影的鏡不傳定妝照（定案 13）。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**。電話那頭的 Elias（c30）也是畫面上的人：原聲、後製加電話濾波；Nora 這頭（c29）原聲、不加濾波。
@@ -291,26 +301,32 @@ c32–c38 寫 `daytime, overcast grey light from tall lobby windows, soft fluore
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `motel`（低髮髻被雨打濕），`a camel wool coat with deep pockets, worn open` | c01–c04、c07–c08、c10（c07 背影、c10 只有手） | 已有；要畫全身參考圖 |
-| Nora | `motel-down`：`motel` 只把髮型換成 `long dark chestnut hair let down loose, reaching her chest`，沒穿大衣 | c11、c13–c14（c12、c16 只有頭髮或不入鏡） | **要新開 look**（只換髮型；可從 `motel` 全身參考圖出） |
-| Nora | `shoulder`（齊肩短髮、奶油色毛衣、深色長褲、棕褐短靴）；房間裡不穿大衣，辦公室、法院、台階大衣敞開 | c18 起：c18、c20–c21、c23–c24、c29、c32、c37（肩）、c38–c39、c42（肩）、c43–c44（c22、c26、c31、c33–c34 只有手） | 已有；要畫全身參考圖（bible 先畫順序第 11） |
+| Nora | `motel`（低髮髻被雨打濕），`a camel wool coat with deep pockets, worn open` | c01–c04、c07–c08、c10（c07 背影、c10 只有手） | 已有；**待畫（第二批）**：胸像與全身 |
+| Nora | `motel-down`：`motel` 只把髮型換成 `long dark chestnut hair let down loose, reaching her chest`，沒穿大衣 | c11、c13–c14（c12、c16 只有頭髮或不入鏡） | `cast.json` 已有；待畫全身（art-plan-people `nora:motel-down`，從選定的 `motel` 全身改）；全身圖選定前用 `nora-portrait.jpg`（長髮放下，剛好合） |
+| Nora | `shoulder`（齊肩短髮、奶油色毛衣、深色長褲、棕褐短靴）；房間裡不穿大衣，辦公室、法院、台階大衣敞開 | c18 起：c18、c20–c21、c23–c24、c29、c32、c37（肩）、c38–c39、c42（肩）、c43–c44（c22、c26、c31、c33–c34 只有手） | 已有；**待畫（第二批）**：胸像與全身（`nora-portrait.jpg` 是長髮，c18 起不能只傳它） |
 | Peg | `coat`（棕色鋪棉長大衣、玳瑁框眼鏡戴在臉上）＋ `her feet in worn beige house slippers instead of shoes`，鏡片上有雨點 | c05、c07、c09–c10（c05、c10 只有手，c07 背影） | 拖鞋寫在每鏡（不是 look） |
 | Peg | `visit`（燕麥色開襟衫、玳瑁框眼鏡戴在臉上）；左手無名指一圈淡色皮膚 | c11–c12、c14–c17、c19、c20（背影） | 已有 |
-| Peg | `coat`、深棕色平底鞋、帆布袋在左肩 | c39–c40、c42、c44 | 已有 |
-| Grant | `rain`，左頰 `a faint pink flush` | c04、c06（背）、c01–c03 只有肩 | 已有 |
-| Elias | 基本款＋ `a dark charcoal wool overcoat, worn open`；左手在畫框外 | c28、c30 | 要畫全身參考圖（穿大衣） |
+| Peg | `coat`、深棕色平底鞋、帆布袋在左肩 | c39–c40、c42、c44 | `peg-coat.jpg` 已有（胸像）；`coat` 全身待畫（第二批），c39 遠景要 |
+| Grant | `rain`（淺灰細格紋西裝），左頰 `a faint pink flush` | c04、c06（背）、c01–c03 只有肩 | `grant-rain.jpg` 已有（乾的）；濕的重畫版在 `redraw.py` |
+| Elias | 基本款＋ `a dark charcoal wool overcoat, worn open`；左手在畫框外 | c28、c30 | **待畫（第二批）**：大衣胸像與全身 |
 | Bev | 基本款 | c24、c25（只有手） | 要畫定妝照 |
-| Dana | 基本款＋ `three thick plain buff case files held against her chest` | c32–c33、c37–c39、c44（c33 只有手、c38 只有肩） | 要畫定妝照 |
+| Dana | 基本款＋ `three thick plain buff case files held against her chest` | c32–c33、c37–c39、c44（c33 只有手、c38 只有肩） | 要畫定妝照（第二批） |
 | 書記官 | extras `clerk` | c34–c36（c34、c35 只有手） | 要畫定妝照 |
 | Sienna | 只有照片裡的左手與金錶 | c41 | 不需要臉；她的定妝照在第 20 集要用 |
 
 ### 2. 本集需要的參考圖
 
-- 定妝照：`nora-portrait.jpg`（r3）、`peg-portrait.jpg`、`peg-coat.jpg`、`grant-portrait.jpg`（平臉 r3）、`elias-portrait.jpg`（都有）。
-- **待畫的人**（照 bible 先畫順序）：Nora 全身 `motel`、`shoulder`（與本集新開的 `motel-down`）、Elias 全身（穿大衣）、Bev、Dana、書記官。
-- **待畫的場景**：汽車旅館外的街 `motel-street`（夜、雨版，從對街人行道看回旅館）、浴室 `motel-bathroom`（從鏡子的位置往外看的那一面：洗手台、身後的門、浴簾在右）、房間 `motel-room`（**清晨版**）、辦公室 `motel-front`（**清晨版**，櫃台右邊的米色電話）、黑車裡 `elias-car`（從副駕駛座看駕駛座、天亮前）、書記官窗口 `clerk-office`、法院台階 `courthouse-steps`（**陰、濕版**）。
-- 道具：三條那張紙（背光，bible 建議先畫）；剪刀、剪下的頭髮、Peg 的灰藍毛線、米色電話、Peg 的手機在 `cast.json` 有提示詞、沒有圖。Sienna 貼文照片（c41）照道具句生成，不用她的臉。
-- 沒有參考圖也不露臉的：c06 Grant 上車只拍背；c20 Peg 背對睡著。
+- 定妝照（`assets/refs/`，都有）：`nora-portrait.jpg`（r3，長髮放下：只給 c11、c13、c14）、`peg-portrait.jpg`（`visit`）、`peg-coat.jpg`（`coat`）、`grant-rain.jpg`（c04；濕的重畫版選定後換）、`elias-portrait.jpg`（c28、c30，沒有大衣）。
+- **不要傳的圖**：`nora-night-coat.jpg`（懷孕身形、拖鞋，不能當大衣參考）；`set-motel-room-night.jpg`（舊格局：浴室門在窗那面牆、亮燈、窗簾全開、門上有牌子、窗外紅霓虹燈管）。
+- **待畫的人**：Nora `motel` 胸像與全身、`shoulder` 胸像與全身（第二批）、`motel-down` 全身；Elias 大衣胸像與全身（第二批）；Peg `coat` 全身（第二批）；Bev、Dana（第二批）、書記官。
+- **待畫的場景**：
+  - 汽車旅館外的街 `motel-street` 雨夜版的**反打**（第二批）：從旅館這側往對街看，對街空著的人行道邊、路燈、斜落的雨，**旅館、辦公室與招牌柱都不入鏡**（企劃 #51 是從辦公室那邊看，不合本集）。
+  - 浴室 `motel-bathroom`（企劃 #52 `mbath`：從鏡子的位置往外看，洗手台、身後的門、浴簾在右）。
+  - 房間 `motel-room`：重畫 `mroom-night`（`redraw.py`，定案 1 的格局）選定後改**清晨版** `mroom-predawn`（企劃 #53：檯燈關、霓虹熄、窗簾一道直縫、浴室門關著）。
+  - 辦公室 `motel-front` **清晨版** `mfront-predawn`（企劃 #54，從夜版 #31 改；櫃台右邊的米色電話寫在鏡上）。
+  - 黑車裡 `elias-car` `ecar-predawn`（企劃 #55，第二批）；書記官窗口 `clerk-office` `clerk`（企劃 #56，第二批）；法院台階 `courthouse-steps` `csteps-wet`（企劃 #57，**陰、濕版**）。
+- 道具：玻璃磚有圖 `assets/refs/prop-keepsake.jpg`（圖裡有一隻手當比例，玻璃裡有手形的影子，看片時注意；c20 可傳，c22 只在後景虛焦、不傳）。三條那張紙（背光，bible 建議先畫）；剪刀、剪下的頭髮、Peg 的灰藍毛線、米色電話、Peg 的手機在 `cast.json` 有提示詞、沒有圖。駝色大衣待畫（第二批：重畫成配毛衣與牛仔褲）。Sienna 貼文照片（c41）照道具句生成，不用她的臉。
+- **只拍手或背影、不露臉的鏡不傳定妝照**（參考圖稽核定案 13）：c05、c06（Grant 只拍背）、c10、c15–c17、c20 的 Peg（背對睡著）、c22、c25、c26、c31、c33–c35、c41。
 
 ### 3. 長鏡清單
 

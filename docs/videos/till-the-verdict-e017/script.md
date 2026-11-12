@@ -27,15 +27,17 @@ Theo 撿起地上那份濕的收進平板套，遞給她一張名片：「His di
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3），look `motel`（**全身參考圖待畫**） | 低髮髻（長髮挽在頸後）、奶油色毛衣、牛仔褲、棕褐短靴；道具句 `a camel wool coat with deep pockets, worn open`；c06 起右手拿第二份合約；c32 起名片在大衣左口袋；眼眶微紅（第 16 集甩紙之後）；**本集沒有任何一鏡笑**；原聲 |
-| Elias | `assets/refs/elias-portrait.jpg`（**全身參考圖待畫**：188 公分、穿大衣） | 基本款（深棕髮往後梳、細銀絲框眼鏡、炭灰窗格紋三件式、白襯衫開領、白色口袋巾）加 `a dark charcoal wool overcoat, worn open`；站著時每一鏡寫 `his left hand in the overcoat's left pocket`；鞋：黑色皮鞋；**左手從不出口袋、不入鏡**；遞東西與扶車門一律右手；不笑；原聲 |
-| Theo | **待畫，必須先畫**（`cast.json` `theo`） | 基本款（整齊黑髮、圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲）；鞋：棕色樂福鞋；道具 `a slim tablet in a plain grey case, its screen turned away`（每鏡寫哪隻手）；面無表情的喜劇、不笑；原聲 |
-| Dana | **待畫，必須先畫**（`cast.json` `dana`） | 基本款（一絲不亂的高髮髻、黑色合身西裝外套、白 T 恤、黑長褲、白球鞋）；道具 `three thick plain buff case files held against her chest`（左臂抱著）、`a plain black rollerball pen as long as her hand`（右手）；只有 c28 嘴角一提、不露齒，其餘不笑；原聲 |
-| Peg | `assets/refs/peg-portrait.jpg`、`assets/refs/peg-coat.jpg` | `coat`（長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、木珠項鍊）＋ `her feet in worn beige house slippers instead of shoes`；只在 c01 窗裡虛焦、c33 隔著辦公室窗的近景、c41 遠處衝出門；本集不說話 |
-| Bev | **待畫**（第 4–10 集清單） | 只在 c01 窗裡虛焦、c33 窗裡只露花襯衫的肩（虛焦）；不露臉、不說話 |
+| Nora | `assets/refs/nora-portrait.jpg`（r3；圖裡是披髮，只當臉的參考）；`motel` **胸像與全身待畫（第二批）**：低髮髻、奶油色毛衣、牛仔褲、棕褐短靴；**不可用 `nora-night-coat.jpg` 代駝色大衣**（懷孕身形、毛衣洋裝、拖鞋） | 低髮髻（長髮挽在頸後）、奶油色毛衣、牛仔褲、棕褐短靴；道具句 `a camel wool coat with deep pockets, worn open`；c06 起右手拿第二份合約；c32 起名片在大衣左口袋；眼眶微紅（第 16 集甩紙之後）；**本集沒有任何一鏡笑**；原聲 |
+| Elias | `assets/refs/elias-portrait.jpg`（只有西裝、沒有大衣）；**大衣版胸像與全身待畫（第二批）**：基本款外罩敞開的深炭灰大衣、左手在大衣左口袋、188 公分 | 基本款（深棕髮往後梳、細銀絲框眼鏡、炭灰窗格紋三件式、白襯衫開領、白色口袋巾）加 `a dark charcoal wool overcoat, worn open`；站著時每一鏡寫 `his left hand in the overcoat's left pocket`；鞋：黑色皮鞋；**左手從不出口袋、不入鏡**；遞東西與扶車門一律右手；不笑；原聲 |
+| Theo | **定妝照待畫（第二批），必須先畫**（`cast.json` `theo`；`art-plan-people.md` P1 `theo`） | 基本款（整齊黑髮、圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲）；鞋：棕色樂福鞋；道具 `a slim tablet in a plain grey case, its screen turned away`（每鏡寫哪隻手）；面無表情的喜劇、不笑；原聲 |
+| Dana | **定妝照待畫（第二批），必須先畫**（`cast.json` `dana`；`art-plan-people.md` P1 `dana`） | 基本款（一絲不亂的高髮髻、黑色合身西裝外套、白 T 恤、黑長褲、白球鞋）；道具 `three thick plain buff case files held against her chest`（左臂抱著）、`a plain black rollerball pen as long as her hand`（右手）；只有 c28 嘴角一提、不露齒，其餘不笑；原聲 |
+| Peg | `assets/refs/peg-coat.jpg`（`coat` 胸像）、`assets/refs/peg-portrait.jpg`；`coat` **全身待畫（第二批）** | `coat`（長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、木珠項鍊）＋ `her feet in worn beige house slippers instead of shoes`；只在 c01 窗裡虛焦、c33 隔著辦公室窗的近景、c41 遠處衝出門；本集不說話 |
+| Bev | **待畫**（第 4–10 集清單）；本集不露臉，不傳圖 | 只在 c01 窗裡虛焦、c33 窗裡只露花襯衫的肩（虛焦）；不露臉、不說話 |
 
-場景：Harborview Motor Inn 外的街（夜、濕、不下雨）`motel-street`（**待畫**）；辦公室外觀與窗 `motel-front`（夜版，待畫）。
-道具：三條（第一份、第二份）、Theo 的平板、Dana 的卷宗與筆、Elias 的名片、Elias 的大衣、駝色大衣、黑車、薄荷糖碗（窗裡）。
+**不傳定妝照的鏡**（參考圖稽核〈定案〉13，只拍手或背影、不露臉）：c06、c07、c09、c22、c24、c31、c34、c35、c40 不傳任何定妝照；c32 背景與 c36 的 Elias、c41 的 Nora 與 Peg 只見背影，也不傳那個人的定妝照。
+
+場景（都**待畫，第二批**，`art-plan-sets.md`）：汽車旅館外的街濕地版 `motel-street` `mstreet-wet`（#50，從辦公室這側往街拍；c02、c04、c07、c08、c10、c12–c15、c17、c19、c20、c23、c26、c28–c30、c32、c34–c36、c40）；它的**反打**（從對街人行道看回旅館，旅館與辦公室在畫面左後隔著街；c09、c38、c39、c41）；**辦公室門外**（門、一級水泥台階、門邊亮著的窗與窗台上的薄荷糖碗；c01，與背景是辦公室門窗的 c05、c11、c16、c18、c21、c25、c27）；櫃台夜版 `motel-front` `mfront-night`（#31；c33）。插鏡 c03、c06、c22、c24、c31 與背景全虛的 c37 不傳場景圖。
+道具：三條（第一份、第二份）、Theo 的平板、Dana 的卷宗與筆、Elias 的名片、Elias 的大衣、駝色大衣、黑車、薄荷糖碗（窗裡）。道具圖（`art-plan-props.md`，都**待畫**）：`clauses`、`black-car`、`camel-coat`（**第二批要重畫成配毛衣與牛仔褲**）；平板、卷宗、筆、名片、Elias 的大衣、薄荷糖碗只寫道具句、不畫。道具圖上的手跟這一鏡的手對不上時，不傳道具圖（〈定案〉12）。
 
 ## 分鏡與台詞
 
@@ -192,6 +194,15 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 - **Theo 的鞋**：角色表與各鏡的「棕色皮便鞋」統一成**棕色樂福鞋**（跟第 16、20 集一樣）。
 - 鏡數 41 鏡；秒數 113 → 113.5 秒。
 
+#### 2026-11-12 參考圖稽核後的修改
+
+依 `review/2026-11-12-ref-audit-e001-e020.md`〈定案〉改的。只改字，沒有改台詞、事件與秒數；本集的圖都在第二批，還沒畫，沒有要重抽的鏡。
+- **說話的臉光要穩**（〈定案〉11）：c01、c02、c04、c10、c12、c13、c14、c16、c17、c18、c19、c25、c26、c27、c29、c32、c37、c39 寫「臉上的光穩定」，紅霓虹只掃過髮髻或臉頰的邊緣，不照在說話的臉與鏡片上；〈欄位怎麼讀〉與第一場軸線一起改。
+- **過肩的角**（〈定案〉11）：c38 原寫「Nora 的右肩在畫框右下緣」，跟季規則（右肩在左下）衝突；改成**從 Nora 的左肩後拍、左肩在畫框右下緣**，Elias 留在左上，跟 c37（她面向畫面左）、c39（他面向畫面右）同一條軸線；第三場軸線與〈這版改了什麼〉的 c37–c39 一起改。
+- **c41 臉頰**：Nora 背對鏡頭四分之三、面向畫面左，看得到的是左頰，「右側臉的輪廓」改成「左頰的輪廓」。
+- **道具句補齊**（一字不差照 bible〈道具的樣子〉）：Elias 的大衣 c04、c20、c29、c32、c34、c36、c39（c20、c29、c39 也補 `his left hand in the overcoat's left pocket`）；駝色大衣 c05、c11、c16、c18、c21、c25、c27、c36、c37；第二份合約 c11、c16、c18、c21、c36；卷宗 c09、c12、c14、c16、c19、c26、c34；筆 c12、c14、c16、c19、c27；平板 c15、c32、c34。
+- **〈角色與參考圖〉與〈五張清單〉**：指向 `production/assets/refs/` 現有的檔；第二批要畫的（Nora `motel` 胸像與全身、Elias 大衣版胸像與全身、Peg `coat` 全身、Theo、Dana、街景濕地版與反打、辦公室門外、櫃台夜版、駝色大衣重畫）標待畫；`nora-night-coat.jpg` 不可代用；列出不傳定妝照的鏡（〈定案〉13）與不傳道具圖的條件（〈定案〉12）。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**。十八句都是原聲，寫在說話的人自己的鏡上：Nora 六鏡（c01、c16、c18、c25、c27、c37）、Elias 四鏡（c02、c04、c29、c39）、Dana 六鏡（c10、c12、c14、c17、c19、c26；c10 先報自己的名字）、Theo 二鏡（c13、c32）。每支**至少買 6 秒**（十八鏡合計 108 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。
@@ -240,18 +251,18 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `motel`（低髮髻、奶油色毛衣、牛仔褲、棕褐短靴）＋大衣道具句 `worn open`；c06 起右手拿第二份合約，c32 起名片在大衣左口袋 | c01、c05、c11、c16、c18、c21、c25、c27、c36–c37、c41（c06、c22、c24、c32 只有手，c35 背影，c38 只露肩） | `motel` 已拿掉大衣；**要畫全身參考圖** |
-| Elias | 基本款加 `a dark charcoal wool overcoat, worn open`，左手在大衣左口袋 | c01、c02–c04、c16、c20、c29、c38–c39（c06 只有右手，c34 背影，c36 只露肩與後腦，c40–c41 車裡的暗影） | 頭髮往後梳、不帶姿勢（已改）；**要畫全身參考圖** |
-| Theo | 基本款，平板每鏡寫哪隻手 | c01、c13、c15、c23、c30、c32（c24、c31 只有手，c34 背影） | **待畫定妝照** |
-| Dana | 基本款，左臂抱卷宗、右手拿筆 | c08、c10、c12、c14、c16、c17、c19、c26、c28（c09、c34 背影，c22 只有手） | **待畫定妝照** |
-| Peg | `coat`＋`her feet in worn beige house slippers instead of shoes` | c33（c01 窗裡虛焦、c41 遠處） | 拖鞋寫在每鏡 |
+| Nora | `motel`（低髮髻、奶油色毛衣、牛仔褲、棕褐短靴）＋大衣道具句 `worn open`；c06 起右手拿第二份合約，c32 起名片在大衣左口袋 | c01、c05、c11、c16、c18、c21、c25、c27、c36–c37、c41（c06、c22、c24、c32 只有手，c35 背影，c38 只露肩） | `motel` 已拿掉大衣；**`motel` 胸像與全身待畫（第二批）**；駝色大衣道具圖待重畫（第二批） |
+| Elias | 基本款加 `a dark charcoal wool overcoat, worn open`，左手在大衣左口袋 | c01、c02–c04、c16、c20、c29、c38–c39（c06 只有右手，c34 背影，c36 只露肩與後腦，c40–c41 車裡的暗影） | 頭髮往後梳、不帶姿勢（已改）；**大衣版胸像與全身待畫（第二批）** |
+| Theo | 基本款，平板每鏡寫哪隻手 | c01、c13、c15、c23、c30、c32（c24、c31 只有手，c34 背影） | **定妝照待畫（第二批）** |
+| Dana | 基本款，左臂抱卷宗、右手拿筆 | c08、c10、c12、c14、c16、c17、c19、c26、c28（c09、c34 背影，c22 只有手） | **定妝照待畫（第二批）** |
+| Peg | `coat`＋`her feet in worn beige house slippers instead of shoes` | c33（c01 窗裡虛焦、c41 遠處） | 拖鞋寫在每鏡；`coat` 全身待畫（第二批），c33 用 `peg-coat.jpg` |
 | Bev | 基本款 | c01 窗裡虛焦、c33 只露肩 | 不露臉 |
 
 ### 2. 本集需要的參考圖
 
-- 定妝照：`nora-portrait.jpg`（r3）、`elias-portrait.jpg`、`peg-portrait.jpg`、`peg-coat.jpg`（有）。**Theo、Dana 待畫，必須先畫**（兩人都在畫面上說話、用原聲）；**Nora `motel` 全身、Elias 穿大衣的全身參考圖待畫**（bible〈先畫順序〉3、8、9、10）。Bev 待畫（本集不露臉）。
-- 場景：**汽車旅館外的街 `motel-street`**（夜、地面濕、不下雨；停車場、一樓辦公室與窗、招牌柱的紅霓虹、兩線道、對街路燈與黑車）、**辦公室 `motel-front`**（夜版，c33 從窗裡往外）待畫。
-- 道具：**三條那張紙（背光、看得到三段的淡影）建議先畫**（bible〈先畫順序〉）；黑車、平板、卷宗、筆、名片在 `cast.json` 有提示詞、沒有圖。
+- 定妝照（`production/assets/refs/`，有）：`nora-portrait.jpg`（r3，披髮，只當臉）、`elias-portrait.jpg`（沒有大衣）、`peg-coat.jpg`、`peg-portrait.jpg`。**待畫（第二批）**：Theo、Dana 定妝照（兩人都在畫面上說話、用原聲，必須先畫）；Nora `motel` 胸像與全身（低髮髻）；Elias 大衣版胸像與全身；Peg `coat` 全身。Bev 待畫（本集不露臉、不傳）。`nora-night-coat.jpg` 不可代用。不傳定妝照的鏡：c06、c07、c09、c22、c24、c31、c34、c35、c40 不傳任何定妝照；c32 背景與 c36 的 Elias、c41 的 Nora 與 Peg 只見背影，也不傳那個人的定妝照（〈定案〉13）。
+- 場景（都**待畫，第二批**）：**汽車旅館外的街濕地版** `motel-street` `mstreet-wet`（`art-plan-sets.md` #50；夜、地面濕、不下雨；停車場、一樓辦公室與窗、招牌柱的紅霓虹、兩線道、對街路燈；黑車寫在鏡上）；**它的反打**（從對街人行道看回旅館，c09、c38、c39、c41）；**辦公室門外**（c01 與背景是辦公室門窗的 Nora 鏡）；**櫃台夜版** `motel-front` `mfront-night`（#31，c33 從窗裡往外）。分到哪一鏡見〈角色與參考圖〉下的場景行。
+- 道具（`art-plan-props.md`）：**`clauses`（三條那張紙，背光、看得到三段的淡影）建議先畫**（bible〈先畫順序〉）、`black-car`、`camel-coat`（第二批重畫成配毛衣與牛仔褲）待畫；平板、卷宗、筆、名片、Elias 的大衣、薄荷糖碗只寫道具句、不畫。
 - 沒有參考圖的人：Bev（只露肩）；車裡的三個暗影（c40–c41）。
 
 ### 3. 長鏡清單

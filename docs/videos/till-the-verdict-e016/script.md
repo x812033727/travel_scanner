@@ -203,6 +203,16 @@ Nora 把紙翻到正面，念出標題：「Marriage agreement?」她把紙甩�
 - **鬆出的那縷頭髮**（第 15 集 c27 起）：c07、c08、c14、c18、c19、c25、c27、c29、c31、c33、c36 補寫「一縷長髮垂在胸前」（c02、c10、c24 原來就有）；**c39 加一個動作：她右手把那縷頭髮撥回耳後、塞進低髻**，c40 起低髻收好，第 17–19 集都不寫那一縷（比把它帶到第 19 集 c10 便宜：只動一鏡，不必改三集）。要照新寫法抽：上面這些鏡與 c39、c40。
 - 鏡數與秒數不變：40 鏡／117 秒。
 
+#### 2026-11-12 參考圖稽核後的修改
+
+依 `series-plans/top40-2025-2026/2025-15-xingde-xiangyu/western/review/2026-11-12-ref-audit-e001-e020.md`〈定案〉改的。本集的圖都在第二批，這次只改字。台詞、事件、秒數都沒改。
+- **〈角色與參考圖〉與〈五張清單〉**：指向 `production/assets/refs/` 現有的檔。Nora `motel` 胸像與全身、Elias 大衣版胸像與全身、Theo、`mstreet-wet` 與它的反打、`mfront-night`、全部道具標成待畫（第二批），Bev 標成重畫中；寫清楚哪一鏡用哪一張場景圖。不能拿 `nora-night-coat`、`nora-discharge` 代用。
+- **紅霓虹落在哪一邊的臉頰**（定案 11）：光從畫面左來，原稿寫的「左頰」是錯的那一邊。Elias 的鏡（c09、c12、c13、c15、c17、c20、c26、c30、c32、c34、c38）與 Nora 的鏡（c10、c14、c18、c19、c25、c29、c31、c33、c36、c39）改成「右頰的邊（畫面左那一側）」，c02 改成右頰；Theo 的鏡（c06、c16、c35）寫「臉頰邊」。英文光句改成 `only sweeps the edge of a cheek`。
+- **c22、c23 說話的臉用穩光**（定案 11）：櫃台檯燈的暖黃穩光照在臉上，窗外紅霓虹只掃過靠窗那側的臉頰邊；英文加一句光句。c22 寫明身後的櫃台左端空著（`mfront-night` 的碗畫在那裡）。c23 的背景從「門」改成掛鑰匙的木板（`mfront-night` 的門和窗在同一面牆）。
+- **c13 的收尾動作**：「右手食指在大衣右口袋外敲一下」在胸上近景裡會出畫，改成「右手在身側微微抬起、又放回去」。
+- **不傳定妝照**（定案 13）：c04 的 Nora（只露背）、c11、c24、c28、c37，加上 c21 窗裡的小人影。
+- 要重抽：本集還沒拍，沒有要重抽的片段。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**。Elias 從本集起一律原聲（bible：第 2 集的 Charon 不再用）。
@@ -254,19 +264,23 @@ Nora 把紙翻到正面，念出標題：「Marriage agreement?」她把紙甩�
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `motel`（低髮髻、一縷長髮垂在胸前到 c39、c39 挽回髻裡，奶油色毛衣、牛仔褲、棕褐短靴）、`a camel wool coat with deep pockets, worn open`；c31 起臉頰濕 | c02、c04（背）、c07–c08、c10、c14、c18–c19、c25、c27、c29、c31、c33、c36、c39–c40（c11、c24 只有手與下巴） | `motel` 已加；**要畫全身參考圖**；大衣是道具句 |
-| Elias | `elias` 基本款加 `a dark charcoal wool overcoat, worn open`、黑色皮鞋；`his left hand in the overcoat's left pocket` | c01、c03–c05、c07–c09、c12–c13、c15、c17、c20、c26–c27、c30、c32、c34、c38、c40（c37 只有右手） | **要畫全身參考圖（188 公分、穿大衣）**；大衣與左手每鏡另寫 |
-| Theo | `theo` 基本款（圓玳瑁框眼鏡、淺藍襯衫、灰色針織背心、卡其褲）、棕色樂福鞋；平板道具句 | c03、c04（虛焦）、c06–c08、c16、c27、c35、c40（c37 只有手） | **新角色，要畫定妝照**；鞋是本集補的 |
-| Peg | `coat`、玳瑁框眼鏡戴在臉上、`worn beige house slippers`、左手淡色指痕 | c21（小人影）、c23（c22 只露肩） | 拖鞋與指痕寫在每鏡 |
-| Bev | `bev` 基本款 | c21（小人影）、c22（c23 只露肩） | 第 4–10 集清單的定妝照，若還沒畫要先畫 |
+| Nora | `motel`（低髮髻、一縷長髮垂在胸前到 c39、c39 挽回髻裡，奶油色毛衣、牛仔褲、棕褐短靴）、`a camel wool coat with deep pockets, worn open`；c31 起臉頰濕 | c02、c04（背）、c07–c08、c10、c14、c18–c19、c25、c27、c29、c31、c33、c36、c39–c40（c11、c24 只有手與下巴） | `motel` 已加；**`motel` 胸像與全身待畫（第二批；胸像不畫那一縷）**；不能用 `night-coat`、`discharge` 代用；大衣是道具句 |
+| Elias | `elias` 基本款加 `a dark charcoal wool overcoat, worn open`、黑色皮鞋；`his left hand in the overcoat's left pocket` | c01、c03–c05、c07–c09、c12–c13、c15、c17、c20、c26–c27、c30、c32、c34、c38、c40（c37 只有右手） | **大衣版胸像與全身待畫（第二批，188 公分、大衣敞開、左手插大衣左口袋）**；現有 `elias-portrait.jpg` 沒有大衣；大衣與左手每鏡另寫 |
+| Theo | `theo` 基本款（圓玳瑁框眼鏡、淺藍襯衫、灰色針織背心、卡其褲）、棕色樂福鞋；平板道具句 | c03、c04（虛焦）、c06–c08、c16、c27、c35、c40（c37 只有手） | **新角色，定妝照待畫（第二批）**；鞋是本集補的 |
+| Peg | `coat`、玳瑁框眼鏡戴在臉上、`worn beige house slippers`、左手淡色指痕 | c21（小人影）、c23（c22 只露肩） | 拖鞋與指痕寫在每鏡（本集拖鞋不入鏡）；`peg-coat.jpg` 只給 c23 |
+| Bev | `bev` 基本款 | c21（小人影）、c22（c23 只露肩） | 定妝照待畫（重畫中，第 4–10 集清單） |
 
 ### 2. 本集需要的參考圖
 
-- 定妝照：`nora-portrait.jpg`（r3）、`elias-portrait.jpg`、`peg-coat.jpg` 都有。**Nora `motel` 全身參考圖、Elias 全身參考圖（穿大衣）待畫**。
-- **必須先畫**（台詞在畫面上、用原聲）：**Theo Park**（`theo`）、**Bev**（第 4–10 集清單，若還沒畫）。
-- 場景：**汽車旅館外的街與停車場 `motel-street`**（夜、濕、不下雨；辦公室門前一級台階、亮著的窗、招牌柱的紅光、對街路燈下的黑車）、**汽車旅館辦公室 `motel-front`**（夜版、窗前）都待畫。
-- 道具：**三條那張紙（背光，看得到三段淡影）**建議先畫（bible〈先畫順序〉）；Theo 的平板、黑車、薄荷糖碗照道具句。
-- 沒有參考圖的人：無（Peg 與 Bev 在 c21 只是窗裡虛焦的小人影）。
+- 已有（`production/assets/refs/`）：`nora-portrait.jpg`（r3，只給臉，披髮）、`elias-portrait.jpg`（沒有大衣）、`peg-coat.jpg`（c23）。
+- **待畫，第二批**（要站主點頭）：
+  - Nora `motel` 胸像（從 nora-portrait 只改髮型：鬆的低髻，不畫那一縷）與全身（art-plan-people `nora:motel`）：近景、中景都要，**沒有之前 Nora 的鏡不開拍**；不能用 `nora-night-coat.jpg`、`nora-discharge.jpg` 代用（懷孕身形）。
+  - Elias 大衣版胸像與全身（`a dark charcoal wool overcoat, worn open`，左手插大衣左口袋）；art-plan-people #72 的不穿大衣全身不給本集。
+  - **Theo Park**（`theo` 胸像，c06、c35 原聲，必須先畫）。
+  - 場景：`motel-street` `mstreet-wet`（art-plan-sets #50）與它往辦公室正面拍的反打（還沒編號）、`motel-front` `mfront-night`（#31）；哪一鏡用哪張見〈角色與參考圖〉。`mfront-night` 的薄荷糖碗在櫃台左端，c22–c23 寫它在窗台上、櫃台左端空著。
+  - 道具：**`clauses`（背光的三段淡影）先畫**（art-plan-props P1）；`theo-tablet`、`elias-overcoat`、`black-car`、`peppermint-bowl`、`camel-coat`（重畫成配毛衣與牛仔褲）、`peg-ring-mark` 照道具句。
+- **重畫中**：**Bev**（第 4–10 集清單；c22 原聲）。
+- **不傳定妝照的鏡**：c04 的 Nora（只露背）、c11、c24、c28、c37（只有手、鞋或下巴），c21 窗裡的小人影。
 
 ### 3. 長鏡清單
 

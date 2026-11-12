@@ -92,7 +92,7 @@
 ### 第一場：臥室，夢與甜的藥（約 28 秒）
 
 **場頭**：
-- **地點與場景圖**：c01–c03 是夢：客廳的一格落地玻璃（`set-glass-house-living.jpg` 的玻璃牆），畫面去飽和、無聲。c04–c11 臥室 `glass-house-bedroom`（待畫）：
+- **地點與場景圖**：c01–c03 是夢：客廳的一格落地玻璃（`set-glass-house-living-liv-day.jpg` 的玻璃牆），畫面去飽和、無聲。c04–c11 臥室 `glass-house-bedroom`：
   矮床（白床單、一條灰色薄毯），床頭靠南面實牆、床尾朝北；**西面整面落地玻璃**，外面是灰海與毛毛雨；床頭櫃是掛在床頭牆上的浮板，在床的西側（坐在床上的人的左手邊、在床與玻璃之間）：
   一只玻璃水杯、一只白色小瓷碟上**只有**一顆藥（參考圖 `set-glass-house-bedroom-am.jpg` 的碟子上多一只白瓷茶杯，片段不要：碟子寫 `a small flat white saucer with only this on it:` 再接藥句）、一盒白色面紙（無字）、Nora 的淡粉色手機背面朝上；房門在床尾東北角、關著，門內側掛鉤上掛著駝色大衣；灰色軟拖鞋在床邊地上。近景與插鏡都寫「同一間臥室」，背景是白牆、玻璃與灰海，不要飯店、不要醫院。
   參考圖：c04–c10 傳 `set-glass-house-bedroom-am.jpg`（從床尾往床頭看，床在畫面左、床頭櫃在床右邊、玻璃在畫面右，跟這場的鏡頭方向一樣）；c11 在房門邊，圖裡沒有門，**不傳場景圖**。
@@ -163,12 +163,12 @@
 | c21 | 近景、慢推（從胸上推到肩上）；從門內往外拍，前景左是門框；同一扇玻璃大門 | Cole（同上）；身後是虛焦的碎石車道與雨；表情：眉毛微微抬起、眼睛低著看她的手、嘴唇說得很平，`no smile at any moment, until the last frame` | Cole 把右手（白手套）掌心朝上伸向畫面左；臉是四分之三側臉朝畫面左，嘴在說話。最後：右手停在半空、掌心朝上等著 | Cole（原聲，平）：Your phone's going in for repair, ma'am.（您的手機要送修，太太） | 約 3.5 秒（原聲，買 6 秒） |
 | c22 | 插鏡、手部特寫、固定；**第一格就是兩隻手之間的手機**；直式，她的手從上、他的手從下 | 淡粉色手機（`a phone in a pale pink case, about the size of her palm`，背面朝上）；Nora 的右手（奶油色針織袖口）從上緣、Cole 攤開的右手（白手套、黑西裝袖口）從下緣；背景是虛焦的門框與雨 | Nora 把手機放進白手套的掌心，她的手指在手機上多停半秒才放開；白手套合起來；畫面上沒有嘴。最後：手機握在 Cole 合起的右手白手套裡，她的手收出上緣 | — | 約 2.5 秒 |
 | c23 | 中近景、固定；從門內往外拍，前景兩側是門框 | Cole（同上），右手白手套握著淡粉色手機（`a phone in a pale pink case, about the size of her palm`）垂在身側；身後碎石車道與雨；表情：眼睛往下、眉毛平、說完嘴唇抿住，`no smile at any moment, until the last frame` | Cole 的臉是四分之三側臉朝畫面左、眼睛往下，嘴在說話；說完轉身往台階與車道走，嘴閉上；剪在轉身的一半。最後：他半轉身背向門，手機在右手 | Cole（原聲，低）：You'll have it back soon, ma'am.（很快就還您）（結尾） | 約 3.5 秒（原聲，買 6 秒） |
-| c24 | 中近景、慢推；從門外往內拍，她在門框裡；直式，門的上下框都在畫面裡 | Nora（`pregnant`、灰色軟拖鞋），在門內；黑色鋼框玻璃門正在關上，門玻璃上只有細雨珠；身後是冷藍的玄關；Cole 已在鏡頭後面走下車道（不入鏡）；表情：眉心往上提、眼睛看著畫面左外的車道、嘴唇先分開又抿上，`no smile at any moment, until the last frame` | Nora 把門推上，左手掌平貼在門玻璃的內側；嘴閉著。剪在門合上、鎖舌響的一刻。最後：門關著，她的左手掌貼在玻璃上、右手護著肚子 | — | 約 2.5 秒 |
+| c24 | 中近景、慢推；從門外往內拍，她在門框裡；直式，門的上下框都在畫面裡；陰天毛毛雨的灰白天光（參考圖 `door-out-gold` 是夕陽，光照這裡寫） | Nora（`pregnant`、灰色軟拖鞋），在門內；黑色鋼框玻璃門第一格已經往裡開著（`already standing open inward`），黑色把手在門的左緣（從門外看），門玻璃上只有細雨珠；身後是冷藍的玄關；Cole 已在鏡頭後面走下車道（不入鏡）；表情：眉心往上提、眼睛看著畫面左外的車道、嘴唇先分開又抿上，`no smile at any moment, until the last frame` | Nora 把門推上，左手掌平貼在門玻璃的內側；嘴閉著。剪在門合上、鎖舌響的一刻。最後：門關著，她的左手掌貼在玻璃上、右手護著肚子 | — | 約 2.5 秒 |
 
 ### 第四場：嬰兒房，Peg 嫌窗太大（約 16.5 秒）
 
 **場頭**：
-- **地點與場景圖**：嬰兒房 `glass-house-nursery`（待畫）：白色嬰兒床、一張木搖椅（椅上一只小毛線籃，籃裡沒有帽子）、**一整面落地窗對著灰海：白色素面窗框，玻璃從地板到天花板、從一邊到另一邊**（`bare white window frame, plain glass from floor to ceiling, edge to edge`）；門在南面、從走廊進來。近景都寫「同一間嬰兒房」。
+- **地點與場景圖**：嬰兒房 `glass-house-nursery`，傳重畫的 `nur-day`（待畫；現有的溫室那張不用）：平的白天花板、素白側牆；從門口看白色嬰兒床在左、一張木搖椅在右（椅上一只小毛線籃，籃裡沒有帽子）；**遠牆一整面落地窗對著灰海：黑色細鋼框，玻璃從地板到天花板、從一邊到另一邊**（`a slim black steel frame, plain glass from floor to ceiling, edge to edge`）；門在南面、從走廊進來，素白平板門。近景都寫「同一間嬰兒房」。
 - **時間與天氣**：第 1 天 15:00，陰、毛毛雨、冷藍天光。
 - **軸線**：Nora 在門口（畫面左），Peg 走進房裡兩步、側身站在窗前（畫面右）；Peg 說話時臉朝畫面左、Nora 臉朝畫面右。窗在 Peg 的身後右邊。
 - **在場的人**：Nora、Peg（已經在屋裡，她有自己的鑰匙；從客廳那邊沿走廊過來，第一格已經在嬰兒房門口）。
@@ -180,15 +180,15 @@
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c25 | 直式過肩、慢推；從走廊上 Nora 的右肩後拍（**她的右肩與長髮在畫框左下，背對鏡頭**），前景兩側是嬰兒房的門框 | 共兩人。前景：Nora（`pregnant`）的右肩與後腦；畫面中間偏右：Peg（基本款：玳瑁框老花眼鏡戴在臉上、深棕色木珠長項鍊、燕麥色開襟衫、深色長褲、平底鞋），帆布袋（`a plain beige canvas tote bag with no print, hanging from her left shoulder`，袋子鼓鼓的，裡面的東西不露出來）；她面前是整面落地窗與灰海；Peg 的三分之二背面、露一點側臉：眉頭壓低、嘴唇噘起，`no smile at any moment, until the last frame` | Peg 跨進門兩步停住，仰頭把整面窗從下往上看；剪在仰頭的一半。最後：Peg 站在房裡兩步、仰頭看窗 | — | 約 2 秒 |
-| c26 | 低角度中近景、慢推；同一間嬰兒房；**前景下緣是白色嬰兒床的欄杆**；直式，上緣是大窗的上半 | Peg（同上，眼鏡戴在臉上），側身站在窗前，左手抓著帆布袋（`a plain beige canvas tote bag with no print, hanging from her left shoulder`，鼓鼓的）的帶子、`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；身後畫面右是落地窗與灰海；表情：眉頭狠狠壓下、嘴角往下撇、說話前鼻子哼一聲，`no smile at any moment, until the last frame` | Peg 右手朝窗一揮；臉是四分之三側臉朝畫面左（門口的 Nora）、眼睛從鏡框上方看著她，嘴在說話。最後：右手放下，眼睛還在 Nora 身上 | Peg（原聲，乾、直）：My son and his glass walls. The whole bay can see in.（我兒子跟他的玻璃牆，整個海灣都看得進來） | 約 5 秒（原聲，買 6 秒） |
-| c27 | 主觀插鏡、固定；**第一格就是那面大窗**；直式，窗從地板到天花板填滿畫面 | 畫面裡沒有人：同一間嬰兒房，白色嬰兒床在下緣、木搖椅（小毛線籃，空的）在右，整面落地窗外是灰海與毛毛雨；白色素面窗框，玻璃從地板到天花板、從一邊到另一邊（`bare white window frame, plain glass from floor to ceiling, edge to edge`） | 一陣風把雨珠吹得沿著玻璃往下流；畫面上沒有嘴。最後：窗、嬰兒床、搖椅都在原位 | — | 約 2 秒 |
+| c26 | 低角度中近景、慢推；同一間嬰兒房，鏡頭在房間東側（搖椅那邊）往西拍；**前景下緣是木搖椅的扶手與空的小毛線籃**；直式，上緣是大窗的上半 | Peg（同上，眼鏡戴在臉上），側身站在窗前，左手抓著帆布袋（`a plain beige canvas tote bag with no print, hanging from her left shoulder`，鼓鼓的）的帶子、`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；身後畫面右是落地窗與灰海；表情：眉頭狠狠壓下、嘴角往下撇、說話前鼻子哼一聲，`no smile at any moment, until the last frame` | Peg 右手朝窗一揮；臉是四分之三側臉朝畫面左（門口的 Nora）、眼睛從鏡框上方看著她，嘴在說話。最後：右手放下，眼睛還在 Nora 身上 | Peg（原聲，乾、直）：My son and his glass walls. The whole bay can see in.（我兒子跟他的玻璃牆，整個海灣都看得進來） | 約 5 秒（原聲，買 6 秒） |
+| c27 | 主觀插鏡、固定；**第一格就是那面大窗**；直式，窗從地板到天花板填滿畫面 | 畫面裡沒有人：同一間嬰兒房，白色嬰兒床在左下、木搖椅（小毛線籃，空的）在右，平的白天花板，整面落地窗外是灰海與毛毛雨；黑色細鋼框，玻璃從地板到天花板、從一邊到另一邊（`a slim black steel frame, plain glass from floor to ceiling, edge to edge`） | 一陣風把雨珠吹得沿著玻璃往下流；畫面上沒有嘴。最後：窗、嬰兒床、搖椅都在原位 | — | 約 2 秒 |
 | c28 | 中近景、慢推；同一間嬰兒房，前景右是窗框的邊；直式，頭頂留空 | Peg（同上，眼鏡戴在臉上），帆布袋（`a plain beige canvas tote bag with no print, hanging from her left shoulder`）；表情：一邊眉毛在鏡框上挑起、說完嘴唇抿成一條線，`no smile at any moment, until the last frame` | Peg 右手指一下窗頂空著的窗框；臉轉回四分之三側臉朝畫面左（Nora），嘴在說話；說完手落回帆布袋帶子上，嘴閉上。最後：右手搭在帆布袋帶子上 | Peg（原聲，嫌棄）：Not even a curtain on it.（連一片窗簾都沒有） | 約 3.5 秒（原聲，買 6 秒） |
 | c29 | 中近景、慢推；從房裡往門口拍，**前景右是門框**；直式，臉在上三分之一 | Nora（`pregnant`、灰色軟拖鞋），站在嬰兒房門口，左手護著肚子；身後只有走廊白牆；表情：眉心往上提、眼睛往下一閃又抬回 Peg、說完嘴唇抿住，`no smile at any moment, until the last frame` | Nora 往前半步，右手指尖碰一下門框；臉是四分之三側臉朝畫面右（Peg），嘴在說話。最後：她站在門框邊、右手指尖搭著門框 | Nora（原聲，有點抱歉）：Grant picked it, Peg. He wanted the light.（Peg，是 Grant 選的，他想要光）（結尾） | 約 4 秒（原聲，買 6 秒） |
 
 ### 第五場：客廳，毛線帽與湯（約 18 秒）
 
 **場頭**：
-- **地點與場景圖**：同第二場的玻璃客廳（`set-glass-house-living.jpg`）：低矮灰沙發在畫面左（坐墊上是那頂毛線帽）、長木餐桌在畫面右，三面玻璃外是灰海。近景都寫「同一間玻璃客廳」。
+- **地點與場景圖**：同第二場的玻璃客廳（`set-glass-house-living-liv-day.jpg`）：低矮灰沙發在畫面左、背對鏡頭（右扶手上是那頂毛線帽）、長木餐桌在畫面右後，四面玻璃外是灰海。近景都寫「同一間玻璃客廳」。
 - **時間與天氣**：第 1 天 15:10，陰、毛毛雨、冷藍天光；屋裡沒開燈。
 - **軸線**：Peg 站在沙發旁（畫面左）、Nora 在她右邊（畫面右）；Peg 臉朝畫面右、Nora 臉朝畫面左。
 - **在場的人**：Nora、Peg。
@@ -199,16 +199,16 @@
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c30 | 直式過肩、慢推；從 Nora 左肩後拍（**她的左肩與長髮在畫框右下，背對鏡頭**） | 共兩人。前景：Nora（`pregnant`）的左肩與後腦；畫面左：Peg（基本款，眼鏡戴在臉上、木珠項鍊、燕麥色開襟衫、平底鞋），帆布袋（`a plain beige canvas tote bag with no print, hanging from her left shoulder`，鼓鼓的）站在低矮灰沙發旁；沙發坐墊上的毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；背景是長木餐桌與玻璃外的灰海；Peg 的表情：眉頭捏緊、嘴唇噘起，`no smile at any moment, until the last frame` | Peg 彎腰從沙發坐墊上拿起毛線帽；剪在她直起身的一半。最後：帽子在她兩手裡、舉在胸前 | — | 約 2.5 秒 |
+| c30 | 直式過肩、慢推；從 Nora 左肩後拍（**她的左肩與長髮在畫框右下，背對鏡頭**） | 共兩人。前景：Nora（`pregnant`）的左肩與後腦；畫面左：Peg（基本款，眼鏡戴在臉上、木珠項鍊、燕麥色開襟衫、平底鞋），帆布袋（`a plain beige canvas tote bag with no print, hanging from her left shoulder`，鼓鼓的）站在低矮灰沙發旁；沙發右扶手上的毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；背景是長木餐桌與玻璃外的灰海；Peg 的表情：眉頭捏緊、嘴唇噘起，`no smile at any moment, until the last frame` | Peg 彎腰從沙發右扶手上拿起毛線帽；剪在她直起身的一半。最後：帽子在她兩手裡、舉在胸前 | — | 約 2.5 秒 |
 | c31 | 近景、慢推（從胸上推到臉）；直式，帽子在畫面中間、臉在上方；同一間玻璃客廳，身後是虛焦的玻璃與灰海 | Peg（同上，眼鏡戴在臉上），兩手拿著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；帆布袋在左肩；表情：眉頭捏緊、嘴角往下、句子之間嘴唇繃緊，`no smile at any moment, until the last frame` | Peg 把帽子舉到眼前、用拇指撐開一圈針腳；臉是四分之三側臉朝畫面右（Nora）、眼睛從帽子移到 Nora，嘴在說話。最後：帽子還舉在她眼前、拇指撐著那圈針腳 | Peg（原聲，挑剔）：Stitches are loose. It'll come out too big.（針腳太鬆，會織得太大） | 約 4.5 秒（原聲，買 6 秒） |
 | c32 | 中近景、慢推；直式，帽子貼在胸口、在畫面下三分之一；身後是虛焦的餐桌與玻璃 | Nora（`pregnant`），站在 Peg 右邊（Peg 在畫面外左）；毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；表情：眉毛柔和放平、**嘴角輕輕往上、嘴唇閉著的小小的笑（不露齒，溫柔，不是大笑）** | Nora 伸手到畫面左邊把帽子從 Peg 手裡拿過來，兩手捧著貼到胸口；臉是四分之三側臉朝畫面左（Peg），嘴在說話；說完眼睛低下來看帽子，嘴閉上。最後：帽子在她兩手裡、貼在胸口 | Nora（原聲，輕，帶一點笑）：Then he'll grow into it.（那他就長大一點再戴） | 約 3.5 秒（原聲，買 6 秒） |
 | c33 | 中近景、慢推；直式，帆布袋在下緣、臉在上方；同一間玻璃客廳，身後是虛焦的長木餐桌與玻璃 | Peg（同上，眼鏡戴在臉上），帆布袋（`a plain beige canvas tote bag with no print, hanging from her left shoulder`，**鼓鼓的，湯鍋在裡面、不露出來**），左手抓著帶子、`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；表情：下巴抬高、眼睛在鏡片後眯起、句子之間嘴唇抿薄，`no smile at any moment, until the last frame` | Peg 用右手拍一下鼓起的帆布袋；臉是四分之三側臉朝畫面右（Nora），嘴在說話。最後：右手搭在帆布袋上，袋子還在左肩、還是鼓的 | Peg（原聲，不客氣）：Your soup last week was bland as water.（你上週的湯淡得跟水一樣） | 約 4 秒（原聲，買 6 秒） |
-| c34 | 近景、固定；直式，臉在上三分之一；身後是虛焦的灰沙發背 | Nora（`pregnant`），兩手捧著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）在胸前；表情：眉心往上提、下唇往內收、很快吸一口氣，`no smile at any moment, until the last frame` | Nora 縮一下肩膀、把帽子抱緊；臉是四分之三側臉朝畫面左（Peg），嘴在說話；說完眼睛往下看再抬回 Peg，嘴閉上。最後：帽子抱在胸口 | Nora（原聲，習慣性地道歉）：Sorry. Dr. Brandt said less salt.（抱歉，Brandt 醫生說要少鹽）（結尾） | 約 3.5 秒（原聲，買 6 秒） |
+| c34 | 近景、固定；直式，臉在上三分之一；身後是虛焦的長木餐桌與玻璃（同 c32） | Nora（`pregnant`），兩手捧著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）在胸前；表情：眉心往上提、下唇往內收、很快吸一口氣，`no smile at any moment, until the last frame` | Nora 縮一下肩膀、把帽子抱緊；臉是四分之三側臉朝畫面左（Peg），嘴在說話；說完眼睛往下看再抬回 Peg，嘴閉上。最後：帽子抱在胸口 | Nora（原聲，習慣性地道歉）：Sorry. Dr. Brandt said less salt.（抱歉，Brandt 醫生說要少鹽）（結尾） | 約 3.5 秒（原聲，買 6 秒） |
 
 ### 第六場：大門，Salt it yourself（約 8.5 秒）
 
 **場頭**：
-- **地點與場景圖**：同第三場的玻璃大門（`set-glass-house-ext.jpg`，傍晚毛毛雨）：門外是門墊，下面兩級台階；**從門內往外拍（c35–c36）**，燈柱在最上一級台階的左端，碎石車道往畫面右下彎下去；**從門外往內拍（c37）**左右相反，車道在畫面左外（Nora 看畫面左外走遠的 Peg）。近景都寫「同一扇玻璃大門」。
+- **地點與場景圖**：同第三場的玻璃大門（傍晚毛毛雨）：門外是門墊，下面兩級台階；**從門內往外拍（c35–c36）**傳重畫的 `door-in-day`（待畫；傍晚的光與玄關嵌燈寫在鏡上），燈柱在台階左邊的草地上，碎石車道往畫面右下彎下去；**從門外往內拍（c37）**傳 `set-glass-house-door-out-gold.jpg`，左右相反，燈柱在台階右邊的草地上，車道在畫面左外（Nora 看畫面左外走遠的 Peg）；那張圖是夕陽、門關著，這鏡照寫傍晚毛毛雨，門第一格寫 `already standing open inward`。近景都寫「同一扇玻璃大門」。
 - **時間與天氣**：第 1 天 17:30，天色暗一點、門外灰藍、毛毛雨；玄關開了一盞暖白的嵌燈，照在門口。
 - **軸線**：同第三場：Nora 在門內、臉朝畫面右；Peg 在門墊下的第一級台階上、回頭時臉朝畫面左。
 - **在場的人**：Nora、Peg（c36 結尾轉身走下車道）。
@@ -221,15 +221,15 @@
 | --- | --- | --- | --- | --- | --- |
 | c35 | 直式過肩、慢推；從門內 Nora 的右肩後拍（**她的右肩與長髮在畫框左下，背對鏡頭**），前景兩側是開著的大門門框 | 共兩人。前景：Nora（`pregnant`）的右肩與後腦；畫面右：Peg（基本款，眼鏡戴在臉上、平底鞋），帆布袋（`a plain beige canvas tote bag with no print, hanging from her left shoulder`，**扁的**）站在門外門墊上；身後是傍晚灰藍的碎石車道與毛毛雨；Peg 露一點側臉：眉頭壓低、嘴唇噘起，`no smile at any moment, until the last frame` | Peg 走下第一級台階、停住，開始轉頭回來看屋裡；剪在轉頭的一半。最後：她站在第一級台階上、半轉身 | — | 約 2 秒 |
 | c36 | 中近景、慢推；從門內往外拍，**前景兩側是門框**；直式，頭頂留空 | Peg（同上，眼鏡戴在臉上），帆布袋（`a plain beige canvas tote bag with no print, hanging from her left shoulder`，扁的）；玄關的暖白燈照在她臉上，身後是傍晚灰藍的車道與毛毛雨；表情：眉毛平而嚴、嘴角往下、說話前吸一下鼻子，`no smile at any moment, until the last frame` | Peg 回頭半個身子，下巴朝屋裡一抬；臉是四分之三側臉朝畫面左（門內的 Nora）、眼睛從鏡框上方看著她，嘴在說話；說完轉身要走，剪在轉身的一半，嘴閉著。最後：她背向門、半轉身，帆布袋在左肩 | Peg（原聲，乾、像在抱怨）：Soup's in the fridge. Salt it yourself.（湯在冰箱裡，鹹淡自己加）（結尾） | 約 4 秒（原聲，買 6 秒） |
-| c37 | 中近景、慢推；從門外往內拍，她在門框裡，前景是門框 | Nora（`pregnant`、灰色軟拖鞋），站在門內，右手扶著門把；身後是玄關暖白燈與冷藍的客廳；Peg 已走下車道（不入鏡）；表情：眉毛先抬一下、眼睛軟下來，**嘴角慢慢浮出一點閉著嘴的笑（不露齒）** | Nora 看著畫面左外走遠的 Peg，輕輕把門推上；嘴閉著。剪在門轉到一半。最後：門快關上，她的右手還在門把上 | — | 約 2.5 秒 |
+| c37 | 中近景、慢推；從門外往內拍，她在門框裡，前景是門框；傍晚毛毛雨、門外灰藍（參考圖 `door-out-gold` 是夕陽，光照這裡寫） | Nora（`pregnant`、灰色軟拖鞋），站在門內；門第一格已經往裡開著（`already standing open inward`），她的右手扶著門左緣（從門外看）的黑色把手；身後是玄關暖白燈與冷藍的客廳；Peg 已走下車道（不入鏡）；表情：眉毛先抬一下、眼睛軟下來，**嘴角慢慢浮出一點閉著嘴的笑（不露齒）** | Nora 看著畫面左外走遠的 Peg，輕輕把門推上；嘴閉著。剪在門轉到一半。最後：門快關上，她的右手還在門把上 | — | 約 2.5 秒 |
 
 ### 第七場：客廳，電視廣告（約 15 秒）
 
 **場頭**：
-- **地點與場景圖**：同一間玻璃客廳（`set-glass-house-living.jpg`），夜；玻璃牆是黑的；沙發對面那面實牆（通往走廊的牆）上掛一台黑框平面電視，下面一只低矮淺木櫃（**要寫進場景：參考圖裡沒有電視**；`cast.json` 的場景句已加上 TV）。
+- **地點與場景圖**：同一間玻璃客廳，夜，傳 `liv-tv`（待畫，從 `liv-day` 改：同一個機位，沙發旁一盞暖白落地燈、電視在矮櫃上）；玻璃牆是黑的；客廳**沒有實牆**（稽核定案 5）：沙發正對面、海那面黑玻璃前的長淺橡木矮櫃上**立著**一台黑框平面電視（`liv-day` 裡沒有電視，`liv-tv` 畫上之前用文字寫）。
   電視裡是白色攝影棚、白色展示台、Grant 捧著 Forever 花瓶；**電視螢幕一律虛焦、畫面柔**，字幕與商標後製。近景寫「同一間玻璃客廳」。
-- **時間與天氣**：第 1 天 19:30，夜、毛毛雨；屋裡只開沙發旁一盞暖白落地燈（畫面左），電視的白光一閃一閃照在她臉上（畫面右）。
-- **軸線**：Nora 坐在灰沙發上，臉朝電視（畫面右）；過肩鏡從她左肩後拍電視。她身後是高的灰沙發背，再後面是黑玻璃：近景只寫沙發背與暗，玻璃上只有落地燈的一點光。
+- **時間與天氣**：第 1 天 19:30，夜、毛毛雨；屋裡只開沙發旁一盞暖白落地燈（畫面左），電視的白光從畫面右照在她臉上（她說話的 c40 光要穩、不閃）。
+- **軸線**：Nora 坐在灰沙發上，臉朝電視（畫面右）；過肩鏡從她左肩後拍電視（左肩在畫框右下）。沙發背很矮（坐著時在她肩膀以下），再後面是黑玻璃：近景只寫矮沙發背與暗，玻璃上只有落地燈的一點光。
 - **在場的人**：只有 Nora；Grant 只在電視裡。
 - **覆蓋**：c38 直式過肩（Nora 的左肩與後腦在下緣，電視在上半）→ 電視的插鏡 → Nora 的反應與說話 → 遙控器插鏡 → 收尾。
 - **這場要講完的事**：廣告裡 Grant 捧著她吹的花瓶，用他自己的聲音念廣告詞，沒有她的名字（結尾：六年了，一次都沒有）。
@@ -238,11 +238,11 @@
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c38 | 直式過肩、固定；從 Nora 左肩後拍：**下緣是她的左肩與後腦（長髮）**，上半是牆上的電視 | 前景：Nora（`pregnant`）坐在灰沙發上的左肩與後腦，下緣露出她兩手拿著的毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）與棒針尖；畫面上半：實牆上的黑框電視與下面的低矮淺木櫃，**螢幕虛焦、畫面柔**的白光；暖白落地燈從畫面左照過來；她的臉不入鏡 | 廣告的白光一亮，她手上的棒針停住；剪在棒針停下的一刻。最後：兩根棒針停在帽子上，她的頭朝向電視 | — | 約 2.5 秒 |
+| c38 | 直式過肩、固定；從 Nora 左肩後拍：**她的左肩與後腦（長髮）在畫框右下**，上半是正前方矮櫃上的電視 | 前景：Nora（`pregnant`）坐在灰沙發上的左肩與後腦，下緣露出她兩手拿著的毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）與棒針尖；畫面上半：正前方、海那面黑玻璃前的長淺橡木矮櫃上立著的黑框平面電視，**螢幕虛焦、畫面柔**的白光；暖白落地燈從畫面左照過來；她的臉不入鏡 | 廣告的白光一亮，她手上的棒針停住；剪在棒針停下的一刻。最後：兩根棒針停在帽子上，她的頭朝向電視 | — | 約 2.5 秒 |
 | c39 | 插鏡、固定；**第一格就是電視螢幕**；前景下緣是低矮淺木櫃的邊；直式，螢幕在畫面上半 | 黑框電視的螢幕，**虛焦、畫面柔**：白色攝影棚、白色展示台，螢幕四周是柔和的白光（`soft white glow`）；電視裡的 Grant（基本款淺石色西裝、淡藍開領襯衫、透明玻璃袖扣）**側身站，畫面只到他的下巴以下，嘴與臉不入鏡**，兩手在胸前捧著 Forever 花瓶（`a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling`）；字幕與商標後製 | 電視裡的 Grant 把花瓶往廣告鏡頭的方向微微一捧；畫面上沒有嘴（這是廣告旁白）。最後：花瓶捧在他胸前 | Grant（Gemini，電視，廣告旁白；暖、平順）：Whitlock Home. Made to last forever.（Whitlock 家居，一生一世）（字幕與商標後製） | 約 3 秒 |
-| c40 | 近景、慢推（從胸上推到臉）；直式，臉在上三分之一；同一間玻璃客廳，**身後是高的灰沙發背，再後面只有暗，玻璃上只有落地燈的一點光** | Nora（`pregnant`），兩手握著棒針停在膝上的毛線帽上（下緣，`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；電視的白光從畫面右一閃一閃照在她臉上，落地燈的暖光從左；表情：眉頭往中間收、眼眶發亮、下巴咬緊，`no smile at any moment, until the last frame` | Nora 的手指慢慢鬆開棒針；臉是四分之三側臉朝畫面右、眼睛盯著電視，嘴在說話（很輕）。最後：棒針鬆鬆地擱在膝上的帽子上，眼睛還盯著電視 | Nora（原聲，輕，幾乎是自言自語）：I blew that vase. I was twenty-five.（那只花瓶是我吹的，那年我二十五） | 約 3.5 秒（原聲，買 6 秒） |
+| c40 | 近景、慢推（從胸上推到臉）；直式，臉在上三分之一；同一間玻璃客廳，**身後是矮的灰沙發背（在她肩膀以下），再後面只有暗，玻璃上只有落地燈的一點光** | Nora（`pregnant`），兩手握著棒針停在膝上的毛線帽上（下緣，`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；電視柔和的白光從畫面右穩定地照在她臉上（說話的臉光要穩，不閃），落地燈的暖光從左；表情：眉頭往中間收、眼眶發亮、下巴咬緊，`no smile at any moment, until the last frame` | Nora 的手指慢慢鬆開棒針；臉是四分之三側臉朝畫面右、眼睛盯著電視，嘴在說話（很輕）。最後：棒針鬆鬆地擱在膝上的帽子上，眼睛還盯著電視 | Nora（原聲，輕，幾乎是自言自語）：I blew that vase. I was twenty-five.（那只花瓶是我吹的，那年我二十五） | 約 3.5 秒（原聲，買 6 秒） |
 | c41 | 主觀插鏡、特寫、固定；**第一格就是遙控器與她的右手** | Nora 的右手（奶油色針織袖口）拿著一支黑色遙控器（無字）對著畫面右上；背景是虛焦的電視白光 | 拇指按下去，電視的白光在她手上熄掉，整隻手暗下來，只剩落地燈的暖光；畫面上沒有嘴。最後：遙控器還在她右手、手放低到膝上 | — | 約 2 秒 |
-| c42 | 中近景、慢推；直式，頭頂留空；身後是高的灰沙發背，玻璃上只有落地燈的一點光 | Nora（`pregnant`），坐在灰沙發上，電視已經黑了，只有畫面左落地燈的暖光；左手拿著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`），右手的遙控器擱在膝上；表情：眉心往上提、下唇發抖又抿住、慢慢吐一口氣，`no smile at any moment, until the last frame` | Nora 把毛線帽放到身旁的沙發坐墊上；臉是四分之三側臉朝畫面右、眼睛看著黑掉的電視，嘴在說話。最後：毛線帽留在她身旁的沙發坐墊上（畫面左下），她坐著、遙控器在右手 | Nora（原聲，輕）：Six years, and not once my name.（六年了，一次都沒有我的名字）（結尾） | 約 4 秒（原聲，買 6 秒） |
+| c42 | 中近景、慢推；直式，頭頂留空；身後是矮的灰沙發背（在她肩膀以下）與暗，玻璃上只有落地燈的一點光 | Nora（`pregnant`），坐在灰沙發上，電視已經黑了，只有畫面左落地燈的暖光；左手拿著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`），右手的遙控器擱在膝上；表情：眉心往上提、下唇發抖又抿住、慢慢吐一口氣，`no smile at any moment, until the last frame` | Nora 把毛線帽放到身旁的沙發坐墊上；臉是四分之三側臉朝畫面右、眼睛看著黑掉的電視，嘴在說話。最後：毛線帽留在她身旁的沙發坐墊上（畫面左下），她坐著、遙控器在右手 | Nora（原聲，輕）：Six years, and not once my name.（六年了，一次都沒有我的名字）（結尾） | 約 4 秒（原聲，買 6 秒） |
 
 ### 第八場：臥室，刻痕與深夜（約 24 秒）
 
