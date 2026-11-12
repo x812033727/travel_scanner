@@ -326,5 +326,5 @@
   - 第 9–10 集夜裡是乾的，對街還沒有黑車：`cast.json` 的 `bus-stop`、`motel-front`、`motel-room`、`motel-window-view` 已改成乾的、不放黑車；黑車哪一集出現由那一集的分鏡寫進畫面。
 - **審稿後補定**（2026-11-12，`../review/2026-11-12-e004-e007-storyboard.md`、`../review/2026-11-12-e007-e010-storyboard.md`）：
   第 7 集補 c06b 拍坡底白車；第 9 集 Bev 補 "Settle up before nine, ladies. Office closes then."（Nora 20:40 下樓付錢的原因）；
-  第 8–9 集 Peg 在 Nora 與鏡頭之間、半步後（畫面上在 Nora 右邊）；第 10 集關燈後的原聲：閃光一拍約一秒，暗拍時臉與嘴仍留一層淡紅光，看不清嘴再走 Gemini 備案。
+  第 8–9 集 Peg 在 Nora 與鏡頭之間、半步後（畫面上在 Nora 右邊）；第 10 集關燈後的原聲：閃光一拍約一秒，暗拍時臉與嘴仍留一層淡紅光，看不清嘴再走 Gemini 備案。  第 10 集帆布袋：c06 收好帽子後拎到 Peg 身邊的床上（道具句後接 `, on the bed beside her`），c40 推回床尾，10→11 的接點不變；c31 放到 Nora 膝上的是撐開的夾鏈袋，不是帆布袋。
 

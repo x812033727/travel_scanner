@@ -29,7 +29,7 @@ Nora 從大衣右口袋拿出那團白面紙，打開：咬過的半顆藥。她
 | --- | --- | --- |
 | Nora | `assets/refs/nora-portrait.jpg`（r3 修過），look `discharge`（全身參考圖待畫） | 奶油色粗麻花針織洋裝、灰色軟拖鞋、長髮披散微亂（垂過一邊肩膀）、素顏、臉色蒼白、眼睛哭腫；**大衣脫下**，用道具句 `a camel wool coat with deep pockets, lying across the foot of the bed`；c09 起臉頰濕；**手腕沒有燙痕、不戴戒指**；本集沒有任何一鏡笑；原聲 |
 | Peg | `assets/refs/peg-portrait.jpg`，look `visit` | 短燙灰髮、瘦而有紋路的臉、玳瑁框眼鏡**戴在臉上**（每一鏡，包括躺在床上）、長的深棕色木珠項鍊、燕麥色舊開襟衫罩著素色襯衫、深色長褲、平底包鞋；**左手無名指**婚戒（道具句，拍到左手就寫）；帆布袋在她床尾；帳本 c05 在手上、之後在床頭櫃；c10 起哭、臉頰濕；本集沒有任何一鏡笑；原聲 |
-| Elias | —（不露臉） | 只在 c19 對街黑車的駕駛座：`a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible`；不露手、不說話 |
+| Elias | —（不露臉） | 只在 c19 對街黑車的駕駛座：`a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible, number plate out of frame`；不露手、不說話 |
 
 場景：Harborview Motor Inn 房間 `motel-room`（待畫，夜、檯燈版；c01–c18、c20–c46）、窗簾縫看出去的對街 `motel-window-view`（待畫；c19）。
 道具：毛線帽、醫院袋、Peg 的帆布袋、帳本、婚戒、房間鑰匙、半顆藥、白面紙、夾鏈袋、檯燈、駝色大衣、兩只行李箱、玻璃磚、對街的黑車。
@@ -38,7 +38,7 @@ Nora 從大衣右口袋拿出那團白面紙，打開：咬過的半顆藥。她
 
 景別與運鏡寫中文給人讀；正文由製作端照 `minimax-h3-colab/references/motion-quality.md` 第二節改寫成英文，每一鏡的英文正文寫「vertical 9:16 frame」與光：
 c01–c38 寫 `night, a warm yellow bedside lamp between the beds, a slow red neon pulse through the gap in the curtains: on for two beats, off for one, a dry dark window, the night stays unchanged`；
-c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow red neon pulse through the narrow gap in the curtains: on for two beats, off for one, deep dark red-black between pulses, the night stays unchanged`。
+c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow red neon pulse through the narrow gap in the curtains: on for two beats, off for one, each beat about one second, a faint red glow stays on the faces between pulses, the night stays unchanged`。
 
 **欄位怎麼讀**：
 - 「畫面裡有誰」寫位置、服裝、道具、表情、狀態。**每張露臉的臉都寫表情，寫成臉怎麼動**：眉、眼、嘴角、下巴、呼吸至少兩處；本集沒有一張臉該笑，每張露臉的臉都加 `no smile at any moment, until the last frame`，表情句不寫任何嘴角往上的字。
@@ -52,12 +52,12 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 - 秒數：沒有台詞的鏡 2–3 秒、剪在動作中間；說話的鏡照英文每秒約 2.5 個字，加動作時間，再留半秒；原聲鏡至少買 6 秒，剪接照台詞長度剪、不放慢、不留空白尾巴；超過 6 秒的鏡標「長鏡」。
 - 每一鏡都是新的片段，不借別鏡。每一鏡的「動作」寫到這一鏡最後的樣子。
 - **直式構圖**：每場開頭一鏡交代位置（c01 從床尾、c17 窗前、c36 床頭櫃）；其餘是單人中近景、近景、插鏡與反應，多數鏡有前景（床欄、床頭櫃一角、對方的肩、窗簾邊）。一鏡最多三個露臉的有名字的人（本集最多兩個）。
-- **暗的鏡寫光**：關燈前寫檯燈從哪邊照、紅霓虹落在哪；關燈後只寫紅霓虹的慢脈動照亮哪些東西（臉、嘴、床頭櫃），亮的那兩拍看得清臉與嘴。窗前的近景寫窗簾與那道縫，不寫玻璃上的倒影。
+- **暗的鏡寫光**：關燈前寫檯燈從哪邊照、紅霓虹落在哪；關燈後只寫紅霓虹的慢脈動照亮哪些東西（臉、嘴、床頭櫃），亮的那兩拍看得清臉與嘴，暗的那一拍（約一秒）臉與嘴仍留一層淡紅光（bible〈審稿後補定〉）；Nora 的反應鏡身子轉向鏡頭四分之三，紅光從她左後方掃過左頰與下巴。窗前的近景寫窗簾與那道縫，不寫玻璃上的倒影。
 
 ### 第一場：帽子，和那個男孩（約 50 秒）
 
 **場頭**：
-- **地點與場景圖**：Harborview Motor Inn 房間 `motel-room`（待畫，夜、檯燈版；格局同第 9 集第四場）：門從外面的走道開進來，門邊一扇窗、厚窗簾、中間一道縫；窗下一張小桌兩把椅子，`a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside` 在小桌上。兩張單人床並排、床頭靠牆：**靠窗那張是 Nora 的（兩層舊碎花被）、靠浴室那張是 Peg 的（只剩一條淺色薄毯）**，中間一個床頭櫃，上面 `a small motel bedside lamp with a pale yellow shade, warm light`、`a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`（c05 之前在 Peg 手上）、`an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number`；兩床相隔一臂。兩只行李箱攤開在兩床之間的地上；`a camel wool coat with deep pockets, lying across the foot of the bed`（Nora 的床尾）；`a plain beige canvas tote bag with no print, at the foot of her bed`（Peg 的床尾）。近景都寫「同一個房間」。
+- **地點與場景圖**：Harborview Motor Inn 房間 `motel-room`（待畫，夜、檯燈版；格局同第 9 集第四場）：門從外面的走道開進來，門邊一扇窗、厚窗簾、中間一道縫；窗下一張小桌兩把椅子，`a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside` 在小桌上。兩張單人床並排、床頭靠牆：**靠窗那張是 Nora 的（兩層舊碎花被）、靠浴室那張是 Peg 的（只剩一條淺色薄毯）**，中間一個床頭櫃，上面 `a small motel bedside lamp with a pale yellow shade, warm light`、`a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`（c05 之前在 Peg 手上）、`an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number`；兩床相隔一臂。兩只行李箱攤開在兩張床的床尾前的地上；`a camel wool coat with deep pockets, lying across the foot of the bed`（Nora 的床尾）；`a plain beige canvas tote bag with no print, at the foot of her bed`（Peg 的床尾）。近景都寫「同一個房間」。
 - **時間與天氣**：第 2 天 22:40–23:05，夜、乾；只有床間的檯燈（暖黃），窗外全黑，紅霓虹從窗簾縫 `a slow pulse: on for two beats, off for one`，落在 Nora 的床與床頭櫃上；整場維持夜色。
 - **軸線**：鏡頭從床尾往床頭拍：**Nora 的床在畫面左（靠窗那邊）、Peg 的床在畫面右（靠浴室那邊）**，床頭櫃與檯燈在兩床中間；窗與窗簾縫在畫面左外。兩人各坐床緣、面對面：Nora 看畫面右的 Peg、Peg 看畫面左的 Nora。c12 起 Peg 坐到 Nora 床上、在她右邊（畫面右）。
 - **在場的人**：Nora、Peg。
@@ -67,12 +67,12 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c01 | 中景、慢推（從中景推到中近景）；鏡頭在兩張床的床尾之間、往床頭拍；直式前後疊開：前景下緣是攤開在地上的兩只行李箱，中間左右兩張床，上緣中間是床頭櫃與亮著的檯燈 | 共兩人。畫面左：Nora（`discharge`，沒穿大衣，灰色軟拖鞋），坐在自己的床緣、面向畫面右；身邊的被子上放著 `a plain white plastic drawstring bag with no print, about the size of a bed pillow, soft and half full`；床尾 `a camel wool coat with deep pockets, lying across the foot of the bed`；眉心往上提、眼皮腫、嘴唇閉著、呼吸淺；畫面右：Peg（`visit`：燕麥色舊開襟衫、玳瑁框眼鏡戴在臉上、平底包鞋），坐在自己的床緣、面向畫面左；床尾 `a plain beige canvas tote bag with no print, at the foot of her bed`；眉頭夾著、嘴角拉平、下巴往前；兩張臉都 `no smile at any moment, until the last frame`；前景地上 `a mid-size navy soft-sided rolling suitcase, reaching just above her knee, no logo` 與 `a large old tan hard-shell rolling suitcase, reaching her hip, scuffed corners, no logo` 攤開；床頭櫃上 `a small motel bedside lamp with a pale yellow shade, warm light`、`an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number`；窗簾縫的紅霓虹一明一暗落在 Nora 的床上；窗外全黑 | Peg 伸手越過兩床之間，把 Nora 身邊的醫院袋拿到自己腿上；剪在袋子移到兩床中間；兩人都嘴閉著；最後：醫院袋在 Peg 腿上 | — | 約 2.5 秒 |
+| c01 | 中景、慢推（從中景推到中近景）；鏡頭在兩張床的床尾之間、往床頭拍；直式前後疊開：前景下緣是攤開在兩張床床尾前地上的兩只行李箱，中間左右兩張床，上緣中間是床頭櫃與亮著的檯燈 | 共兩人。畫面左：Nora（`discharge`，沒穿大衣，灰色軟拖鞋），坐在自己的床緣、面向畫面右；身邊的被子上放著 `a plain white plastic drawstring bag with no print, about the size of a bed pillow, soft and half full`；床尾 `a camel wool coat with deep pockets, lying across the foot of the bed`；眉心往上提、眼皮腫、嘴唇閉著、呼吸淺；畫面右：Peg（`visit`：燕麥色舊開襟衫、玳瑁框眼鏡戴在臉上、平底包鞋），坐在自己的床緣、面向畫面左；床尾 `a plain beige canvas tote bag with no print, at the foot of her bed`；眉頭夾著、嘴角拉平、下巴往前；兩張臉都 `no smile at any moment, until the last frame`；前景地上 `a mid-size navy soft-sided rolling suitcase, reaching just above her knee, no logo` 與 `a large old tan hard-shell rolling suitcase, reaching her hip, scuffed corners, no logo` 攤開；床頭櫃上 `a small motel bedside lamp with a pale yellow shade, warm light`、`an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number`；窗簾縫的紅霓虹一明一暗落在 Nora 的床上；窗外全黑 | Peg 伸手越過兩床之間，把 Nora 身邊的醫院袋拿到自己腿上；剪在袋子移到兩床中間；兩人都嘴閉著；最後：醫院袋在 Peg 腿上 | — | 約 2.5 秒 |
 | c02 | 插鏡、手部特寫、固定；**第一格就是她腿上的白色醫院袋**；直式；同一個房間 | `a plain white plastic drawstring bag with no print, about the size of a bed pillow, soft and half full`，在 Peg 的腿上（深色長褲、開襟衫袖口）；她的左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；檯燈的暖光從畫面左上照來；畫面裡沒有臉 | Peg 鬆開束口，從袋裡抽出 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`；剪在帽子抽出一半；畫面上沒有嘴；最後：帽子在她兩手裡、在袋口上方 | — | 約 2 秒 |
 | c03 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一，帽子在下緣；身後是浴室那面牆（素色） | Peg（`visit`，玳瑁框眼鏡戴在臉上、木珠項鍊），坐在床緣；兩手把 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm` 舉到胸前；檯燈的暖光從畫面左照在她臉上；眼睛從鏡片後面看著帽子鬆掉的針腳；眉頭往中間收緊、嘴唇噘起、鼻子吸一口氣，`no smile at any moment, until the last frame` | Peg 的右手拇指沿著鬆掉的針腳摸過去；剪在拇指摸到一半；嘴閉著；最後：她看著帽子 | — | 約 2.5 秒 |
 | c04 | 近景、固定；直式，臉在上三分之一；身後是厚窗簾與那道縫（紅光一明一暗） | Nora（`discharge`），坐在自己的床緣；檯燈的暖光從畫面右照在她臉上；四分之三側臉朝畫面右的 Peg 手裡的帽子；眉心往上提、眼眶一下湧滿、下巴開始發抖、呼吸變淺，`no smile at any moment, until the last frame` | Nora 兩手在膝上絞緊；剪在手指絞到一半；嘴閉著；最後：她盯著畫面右的帽子 | — | 約 2 秒 |
 | c05 | 近景、固定；直式，臉在上三分之一；下緣是她膝上的帳本（只看得到紙背與鉛筆）；身後是浴室那面牆 | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在床緣；`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm` 擱在她左膝上；右手的鉛筆在 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine` 上寫（本子立著、紙背對鏡頭）；檯燈的暖光；四分之三側臉朝畫面左下的帳本、不看鏡頭；眉毛壓平、嘴唇在字之間抿緊、喉嚨一緊、聲音有一點啞，`no smile at any moment, until the last frame` | Peg 的鉛筆在帳本上寫（動作一），嘴在說話（乾、像記帳）；說完闔上帳本、放到畫面左的床頭櫃上（動作二），嘴閉上；最後：帳本在床頭櫃上、鑰匙旁 | Peg（乾、像記帳，有一點啞）：Hat. Mine.（帽子。我的）（原聲） | 約 3 秒 |
-| c06 | 插鏡、手部特寫、固定；**第一格就是她床尾的帆布袋**；直式；同一個房間 | `a plain beige canvas tote bag with no print, at the foot of her bed`，袋口開著、看得到裡面的毛線團與棒針；Peg 的兩手（燕麥色開襟衫袖口）拿著 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`；左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；檯燈的暖光；畫面裡沒有臉 | Peg 把帽子連棒針一起放進帆布袋、壓一下；剪在帽子沒進袋口；畫面上沒有嘴；最後：帽子在帆布袋裡，袋子留在她床尾 | — | 約 2 秒 |
+| c06 | 插鏡、手部特寫、固定；**第一格就是她床尾的帆布袋**；直式；同一個房間 | `a plain beige canvas tote bag with no print, at the foot of her bed`，袋口開著、看得到裡面的毛線團與棒針；Peg 的兩手（燕麥色開襟衫袖口）拿著 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`；左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；檯燈的暖光；畫面裡沒有臉 | Peg 把帽子連棒針一起放進帆布袋（動作一），再把袋子從床尾拎到身邊的床上（動作二）；剪在袋子提起來一半；畫面上沒有嘴；最後：帽子在帆布袋裡，`a plain beige canvas tote bag with no print, on the bed beside her`（伸手搆得到） | — | 約 2 秒 |
 | c07 | 近景、慢推（從胸上推到臉）；直式，臉在上三分之一；身後是厚窗簾與那道縫 | Nora（`discharge`），坐在床緣；檯燈的暖光從畫面右；四分之三側臉朝畫面右下的帆布袋；眉心往上擠、下巴抖、嘴唇張開、一口氣卡住、眼淚從眼眶滑下來，`no smile at any moment, until the last frame`；臉頰開始濕 | Nora 的胸口一抽，吸進一口卡住的氣；剪在吸到一半；嘴張著、沒說話；最後：她的臉轉向 Peg | — | 約 2.5 秒 |
 | c08 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；前景右下緣是床頭櫃一角與檯燈的光 | Nora（`discharge`），坐在床緣，長髮垂過一邊肩膀；臉頰濕；檯燈的暖光；四分之三側臉朝畫面右的 Peg、眼睛看著她，不看鏡頭；眉心往上擠成一團、嘴角往下扯、下巴抖、聲音一句比一句碎，`no smile at any moment, until the last frame` | Nora 看著 Peg，嘴在說話（哭腔、一句比一句碎）；第二句說完嘴還張著、再也說不出話；最後：她張著嘴、喘不上氣 | Nora（哭腔、一句比一句碎）：He was a boy, Peg. I was going to name him.（是個男孩，Peg。我本來要給他取名字的）（原聲） | 約 5 秒 |
 | c09 | 中近景、固定；直式，頭上留空；身後是厚窗簾與那道縫（紅光一明一暗） | Nora（`discharge`），坐在床緣；臉頰濕；檯燈的暖光；整個人往前折下去，兩手摀住嘴，長髮垂下來半遮著臉；露出來的眉心往上擠、眼睛緊閉、肩膀一抽一抽，哭出聲，`no smile at any moment, until the last frame` | Nora 往前彎下去、兩手摀住嘴，肩膀大起大落地抽，哭出聲（沒有字）；剪在她第三次抽氣；最後：她彎著腰、兩手摀著嘴在哭 | — | 約 5 秒 |
@@ -87,7 +87,7 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 ### 第二場：窗簾縫、半顆藥（約 52 秒）
 
 **場頭**：
-- **地點與場景圖**：同一個房間（格局同第一場）；c19 從窗簾縫看出去的對街 `motel-window-view`（待畫）：窗簾縫的前景是兩片布邊，外面是安靜、乾的街，對街路燈下 `a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible`（`cast.json` 的句子寫 wet street，本集寫乾的）。床頭櫃上：檯燈、帳本、房間鑰匙；c36 起加封好的夾鏈袋與揉皺的面紙。
+- **地點與場景圖**：同一個房間（格局同第一場）；c19 從窗簾縫看出去的對街 `motel-window-view`（待畫）：窗簾縫的前景是兩片布邊，外面是安靜、乾的街，對街路燈下 `a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible, number plate out of frame`（`cast.json` 的句子寫 wet street，本集寫乾的）。床頭櫃上：檯燈、帳本、房間鑰匙；c36 起加封好的夾鏈袋與揉皺的面紙。
 - **時間與天氣**：第 2 天 23:15–23:40，夜、乾；檯燈的暖光、紅霓虹的慢脈動；整場維持夜色。
 - **軸線**：同第一場：Nora 的床在畫面左、Peg 的床在畫面右；窗在畫面左外。c17–c20 Peg 在窗前、面向畫面左的窗外；c22 起 Peg 坐回自己的床緣、面向畫面左的 Nora，Nora 面向畫面右。
 - **在場的人**：Nora、Peg；對街黑車裡一個不動的人影（c19，不露臉）。
@@ -99,7 +99,7 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 | --- | --- | --- | --- | --- | --- |
 | c17 | 中景、固定；鏡頭在房間裡、往窗那邊拍；直式：畫面中間是厚窗簾與中間那道縫，下緣是窗下的小桌 | Peg（`visit`，玳瑁框眼鏡戴在臉上、平底包鞋），背影走到窗前；窗下小桌上 `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside`；紅霓虹從縫裡一明一暗，照在她的開襟衫與玻璃磚上；臉不入鏡 | Peg 走到窗前、兩手各抓住一邊窗簾的邊；剪在兩手抓住窗簾；畫面上沒有嘴；最後：她站在窗前、兩手抓著窗簾 | — | 約 2.5 秒 |
 | c18 | 近景、固定；鏡頭在窗邊的牆旁、往她的臉拍；直式，臉在上三分之一；畫面左緣是窗簾的布邊（虛焦） | Peg（`visit`，玳瑁框眼鏡戴在臉上），站在窗簾縫前；四分之三側臉朝畫面左的縫外、眼睛往外看，不看鏡頭；紅霓虹從縫裡一明一暗照在她的臉頰；眼睛在鏡片後面一下定住、眉頭往中間收、呼吸停住、嘴唇抿緊，`no smile at any moment, until the last frame`；臉頰還有淚痕 | Peg 正要拉窗簾，手停住，眼睛定在縫外某一點；剪在手停住的那一下；嘴閉著；最後：她盯著縫外 | — | 約 2.5 秒 |
-| c19 | 主觀鏡、慢推（從遠景推到中遠景）；**第一格就是窗簾縫**：兩片厚布邊在畫面左右（虛焦），中間一道縫看出去；直式 | 縫外：安靜、乾的街；對街 `a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible`；路燈昏黃；紅霓虹從畫面外一明一暗染在乾的路面上；畫面裡沒有看得清的臉；沒有字 | 鏡頭慢慢往那輛車推近；駕駛座的人影一動也不動；前景的窗簾邊被她的手捏得微微一晃；剪在推到一半；畫面上沒有嘴；最後：黑車還在路燈下 | — | 約 3 秒 |
+| c19 | 主觀鏡、慢推（從遠景推到中遠景）；**第一格就是窗簾縫**：兩片厚布邊在畫面左右（虛焦），中間一道縫看出去；直式 | 縫外：安靜、乾的街；對街 `a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible, number plate out of frame`；路燈昏黃；紅霓虹從畫面外一明一暗染在乾的路面上；街上只有這輛車、路燈與乾的路面 | 鏡頭慢慢往那輛車推近；駕駛座的人影一動也不動；前景的窗簾邊被她的手捏得微微一晃；剪在推到一半；畫面上沒有嘴；最後：黑車還在路燈下 | — | 約 3 秒 |
 | c20 | 近景、固定；同 c18 的鏡位；直式，臉在上三分之一 | Peg（`visit`，玳瑁框眼鏡戴在臉上）；紅光照在臉頰；下巴繃緊、嘴唇抿薄、鼻翼一張、眉頭壓低，`no smile at any moment, until the last frame` | Peg 兩手把窗簾往中間一拉、拉緊到只剩一道細縫，她臉上的紅光跟著縮成一條細線；剪在窗簾合起來的一下；嘴閉著；最後：窗簾只剩一道細縫 | — | 約 2.5 秒 |
 | c21 | 近景、固定；直式，臉在上三分之一；身後是浴室那面牆與 Peg 的床（虛焦） | Nora（`discharge`），坐在自己的床緣；臉頰濕；檯燈的暖光從畫面右；四分之三側臉朝畫面左的窗邊（Peg 的背）；眉頭往中間收、紅腫的眼睛眯著、嘴唇閉緊，`no smile at any moment, until the last frame` | Nora 用掌根抹掉臉頰上的淚，眼睛一直跟著畫面左的 Peg；剪在手抹到一半；嘴閉著；最後：她看著 Peg 的背 | — | 約 2.5 秒 |
 | c22 | 中近景、固定；直式，頭上留空；身後是浴室那面牆 | Peg（`visit`，玳瑁框眼鏡戴在臉上），從窗邊轉回來，坐到自己的床緣、面向畫面左的 Nora；檯燈的暖光從畫面左；眉毛壓平、嘴角拉平、眼睛不看 Nora、下巴收著，`no smile at any moment, until the last frame` | Peg 坐回自己的床緣，兩手放回膝上；剪在坐下去的一半；嘴閉著；最後：她坐在床緣、面向 Nora | — | 約 2.5 秒 |
@@ -109,10 +109,10 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 | c26 | 近景、固定；直式，臉在上三分之一；身後是厚窗簾與那道細縫 | Nora（`discharge`），坐在床緣；左手把打開的面紙舉到鼻子前（`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), resting in a crumpled white tissue`，很小、在下緣）；檯燈的暖光；眼睛垂在面紙上、眉頭往中間擠、鼻翼一動，`no smile at any moment, until the last frame` | Nora 把面紙湊到鼻子前聞一下；剪在吸氣的那一下；嘴閉著；最後：面紙在她鼻子前 | — | 約 2.5 秒 |
 | c27 | 插鏡、特寫、固定；**第一格就是她右手的食指懸在面紙上**；直式；畫面上緣只到她的下唇與下巴 | `a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), resting in a crumpled white tissue`，在她左手掌心、很小；她右手的食指；畫面上緣：Nora 的下唇與下巴（只有這一點臉） | 右手食指的指尖碰一下藥（動作一），再把指尖輕輕碰到舌尖（動作二）；剪在指尖碰到舌尖的那一下；最後：指尖在她唇邊 | — | 約 3 秒 |
 | c28 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；身後是厚窗簾與那道細縫 | Nora（`discharge`），坐在床緣；左手托著打開的面紙（在下緣外）；檯燈的暖光；四分之三側臉朝畫面右的 Peg、眼睛看著她，不看鏡頭；第一格眉毛一下挑高、眼睛睜大、嘴唇微張，說的時候聲音很輕，`no smile at any moment, until the last frame` | Nora 看著 Peg，嘴在說話（很輕、不敢相信）；說完右手慢慢放回膝上，嘴閉上；最後：她看著 Peg | Nora（很輕、不敢相信）：It's sweet.（是甜的）（原聲） | 約 3 秒 |
-| c29 | 近景、固定；直式，臉在上三分之一；前景左下緣是她伸出去的右手抓著 Nora 的手腕 | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在床緣，身子往前探；右手抓住 Nora 的右手腕（只看得到奶油色袖口）；檯燈的暖光；四分之三側臉朝畫面左的 Nora；眉頭壓緊、眼睛在鏡片後面發硬、嘴唇抿薄、下巴往前，`no smile at any moment, until the last frame` | 第一格她的右手已經抓住 Nora 的手腕；嘴在說話（急、壓低）；說完手還抓著，嘴閉上；最後：她抓著 Nora 的手腕 | Peg（急、壓低）：Don't.（別碰）（原聲）← 因為 c27 | 約 2.5 秒 |
-| c30 | 插鏡、手部特寫、固定；**第一格就是她床尾的帆布袋**；直式 | `a plain beige canvas tote bag with no print, at the foot of her bed`；Peg 的左手（燕麥色開襟衫袖口）伸進袋裡，`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；她的右手在畫面外（還抓著 Nora 的手腕）；檯燈的暖光；畫面裡沒有臉 | Peg 的左手從帆布袋裡抽出 `a small clear zip-top plastic bag about the size of her palm`；剪在袋子抽出來；畫面上沒有嘴；最後：夾鏈袋在她左手 | — | 約 2 秒 |
-| c31 | 近景、固定；直式，臉在上三分之一；下緣是她兩手撐開的夾鏈袋；身後是浴室那面牆 | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在床緣；第一格她已經鬆開 Nora 的手腕，兩手撐開 `a small clear zip-top plastic bag about the size of her palm` 的袋口、遞向畫面左的 Nora；左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；檯燈的暖光；四分之三側臉朝畫面左的 Nora；眉毛壓平、眼睛定在她臉上、嘴唇在字之間抿緊，`no smile at any moment, until the last frame` | Peg 把撐開的袋子往前一遞，嘴在說話（命令的口氣、低）；說完袋子停在兩人之間，嘴閉上；最後：她撐著袋口等 | Peg（命令的口氣、低）：Put it in this.（放進這裡）（原聲） | 約 3 秒 |
-| c32 | 插鏡、手部特寫、固定；**第一格就是撐開的夾鏈袋口與她托著的面紙**；直式 | Peg 的兩手撐開 `a small clear zip-top plastic bag about the size of her palm`；Nora 的左手托著打開的面紙，`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), resting in a crumpled white tissue`；檯燈的暖光；畫面裡沒有臉 | Nora 把面紙一斜、讓藥滑進袋裡（動作一），再用右手的手指把袋口沿著拉鍊壓緊封好（動作二）；剪在手指壓到袋口另一頭；畫面上沒有嘴；最後：`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), sealed inside a small clear zip-top plastic bag about the size of her palm`，在 Nora 的右手裡；揉皺的面紙在她左手 | — | 約 3 秒 |
+| c29 | 近景、固定；直式，臉在上三分之一；前景左下緣是她伸出去的右手抓著 Nora 的手腕 | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在床緣，身子往前探；右手抓住 Nora 的右手腕（只看得到奶油色袖口）；檯燈的暖光；四分之三側臉朝畫面左的 Nora；眉頭壓緊、眼睛在鏡片後面發硬、嘴唇抿薄、下巴往前，`no smile at any moment, until the last frame` | 第一格她的右手已經抓住 Nora 的手腕；嘴在說話（急、壓低）；說完把 Nora 的手腕按回她的膝上，嘴閉上；最後：她的右手按著 Nora 的手腕、壓在 Nora 膝上 | Peg（急、壓低）：Don't.（別碰）（原聲）← 因為 c27 | 約 2.5 秒 |
+| c30 | 插鏡、手部特寫、固定；**第一格就是她身邊床上的帆布袋**；直式 | `a plain beige canvas tote bag with no print, on the bed beside her`；Peg 的左手（燕麥色開襟衫袖口）伸進袋裡，`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；她的右手在畫面外（還按著 Nora 膝上的手腕）；檯燈的暖光；畫面裡沒有臉 | Peg 的左手從帆布袋裡抽出 `a small clear zip-top plastic bag about the size of her palm`；剪在袋子抽出來；畫面上沒有嘴；最後：夾鏈袋在她左手 | — | 約 2 秒 |
+| c31 | 近景、固定；直式，臉在上三分之一；下緣是她兩手撐開的夾鏈袋；身後是浴室那面牆 | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在床緣；第一格她已經鬆開 Nora 的手腕，兩手撐開 `a small clear zip-top plastic bag about the size of her palm` 的袋口、遞向畫面左的 Nora；左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；檯燈的暖光；四分之三側臉朝畫面左的 Nora；眉毛壓平、眼睛定在她臉上、嘴唇在字之間抿緊，`no smile at any moment, until the last frame` | Peg 把撐開的袋子往前一遞，嘴在說話（命令的口氣、低）；說完把撐開的袋子放到 Nora 的膝上、兩手還撐著袋口，嘴閉上；最後：撐開的夾鏈袋擱在 Nora 膝上 | Peg（命令的口氣、低）：Put it in this.（放進這裡）（原聲） | 約 3 秒 |
+| c32 | 插鏡、手部特寫、固定；**第一格就是撐開的夾鏈袋口與她托著的面紙**；直式 | Peg 的兩手撐開 `a small clear zip-top plastic bag about the size of her palm`，袋子擱在 Nora 膝上（奶油色針織洋裝）；Nora 的左手托著打開的面紙，`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), resting in a crumpled white tissue`；檯燈的暖光；畫面裡沒有臉 | Nora 把面紙一斜、讓藥滑進袋裡（動作一），再用右手的手指把袋口沿著拉鍊壓緊封好（動作二）；剪在手指壓到袋口另一頭；畫面上沒有嘴；最後：`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), sealed inside a small clear zip-top plastic bag about the size of her palm`，在 Nora 的右手裡；揉皺的面紙在她左手 | — | 約 3 秒 |
 | c33 | 近景、慢推（從胸上推到臉）；顏值鏡頭；直式，臉在上三分之一，袋子在畫面右上靠近檯燈 | Nora（`discharge`），坐在床緣；長髮垂過一邊肩膀；臉頰還濕；右手把 `a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), sealed inside a small clear zip-top plastic bag about the size of her palm` 舉向畫面右的檯燈，燈光透過袋子；四分之三側臉朝畫面右上的袋子；第一次眼神定下來：眉毛放平、眼睛睜著不眨、下巴收緊、嘴唇閉著、呼吸放慢，`no smile at any moment, until the last frame`；紅霓虹從畫面左一明一暗掃過她的另一邊臉 | Nora 把袋子慢慢舉到燈前、停住；剪在袋子停在燈前；嘴閉著；最後：她舉著袋子、看著它 | — | 約 4 秒 |
 | c34 | 近景、固定；直式，臉在上三分之一；身後是浴室那面牆 | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在床緣；檯燈的暖光從畫面左；眼睛先看著畫面左上 Nora 舉著的袋子，再落到 Nora 臉上；眉毛壓平、下巴收緊、嘴唇在字之間抿緊，`no smile at any moment, until the last frame` | Peg 的眼睛從袋子移到 Nora 臉上，嘴在說話（低、拿定主意）；說完點一下頭，嘴閉上；最後：她看著 Nora | Peg（低、拿定主意）：We see the doctor tomorrow.（我們明天去看醫生）（原聲）（結尾）← 因為 c28 | 約 3 秒 |
 | c35 | 近景、固定；直式，臉在上三分之一；身後是厚窗簾與那道細縫 | Nora（`discharge`），坐在床緣，右手還拿著封好的袋子（在下緣）；檯燈的暖光；四分之三側臉朝畫面右的 Peg；眉心往上提、眼睛在 Peg 臉上找、嘴唇微張，`no smile at any moment, until the last frame` | Nora 慢慢把舉著的袋子放低到膝上，眼睛一直看著 Peg；剪在袋子放到一半；嘴閉著；最後：袋子在她膝上，她看著 Peg | — | 約 2.5 秒 |
@@ -121,7 +121,7 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 
 **場頭**：
 - **地點與場景圖**：同一個房間（格局同第一場）；床頭櫃上：`a small motel bedside lamp with a pale yellow shade, warm light`、`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), sealed inside a small clear zip-top plastic bag about the size of her palm`（c36 起）、揉皺的白面紙、`a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`、`an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number`。窗簾拉到只剩一道細縫。
-- **時間與天氣**：第 2 天 23:45–23:50，夜、乾；c36–c38 檯燈的暖光與紅霓虹；**c39 Peg 關掉檯燈**，之後只有紅霓虹從細縫 `a slow pulse: on for two beats, off for one`，亮的兩拍照亮臉與嘴、暗的一拍是深紅黑；整場維持夜色。
+- **時間與天氣**：第 2 天 23:45–23:50，夜、乾；c36–c38 檯燈的暖光與紅霓虹；**c39 Peg 關掉檯燈**，之後只有紅霓虹從細縫 `a slow pulse: on for two beats, off for one`，一拍約一秒，亮的兩拍照亮臉與嘴，暗的一拍臉與嘴仍留一層淡紅光；Nora 的臉轉向鏡頭四分之三、紅光從她左後方掃過左頰與下巴；整場維持夜色。
 - **軸線**：同第一場：Nora 在畫面左的床緣、面向畫面右；Peg 在畫面右的床上，c41 起仰躺、頭在畫面右上（床頭），臉微微偏向畫面左的 Nora、眼睛看著天花板。
 - **在場的人**：Nora、Peg。
 - **這場要講完的事**：Nora 問 Peg 知道什麼；Peg 關了燈，在黑暗裡說破：那晚 Grant 不在她那裡（結尾：「That night. He wasn't with me.」，懸念：那他在哪？）。
@@ -134,13 +134,13 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 | c37 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；前景右下緣是床頭櫃一角與檯燈的光 | Nora（`discharge`），坐在床緣，兩手放在膝上；檯燈的暖光；四分之三側臉朝畫面右的 Peg、眼睛看著她，不看鏡頭；眉頭往中間收、眼睛在她臉上找、嘴唇在字與字之間抿緊、聲音很輕很清楚，`no smile at any moment, until the last frame` | Nora 看著 Peg，嘴在說話（輕、一字一字）；說完眼睛不離開她，嘴閉上；最後：她等著 | Nora（輕、一字一字）：Peg, what do you know?（Peg，妳知道什麼？）（原聲）（→ 答在 c43、c45） | 約 3 秒 |
 | c38 | 近景、固定；直式，臉在上三分之一；前景左下緣是床頭櫃一角與檯燈的光 | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在床緣；檯燈的暖光從畫面左；四分之三側臉朝畫面左的 Nora；眼睛在鏡片後面跟她對看一個長拍、下巴的肌肉一動、喉嚨吞一下，然後眼睛移開、垂到畫面左下的檯燈，`no smile at any moment, until the last frame` | Peg 看著 Nora、吞一下口水，眼睛移到檯燈上；剪在眼睛移到一半；嘴閉著；最後：她看著檯燈 | — | 約 2.5 秒 |
 | c39 | 插鏡、特寫、固定；**第一格就是亮著的檯燈與燈座的開關**；直式 | `a small motel bedside lamp with a pale yellow shade, warm light`；燈下的床頭櫃上：封好的夾鏈袋、揉皺的面紙、帳本、鑰匙；Peg 的右手（燕麥色開襟衫袖口）從畫面右伸進來；畫面裡沒有臉 | Peg 的手指按下開關，「喀」一聲燈滅了，只剩窗簾縫的紅霓虹落在床頭櫃上，亮兩拍、暗一拍；剪在燈滅之後紅光第一次亮起；畫面上沒有嘴；最後：檯燈熄著，紅光照著床頭櫃上的夾鏈袋與面紙 | — | 約 2 秒 |
-| c40 | 中景、固定；鏡頭在床尾；直式：兩張床在左右，床頭櫃在中間；整鏡只有紅霓虹的光 | 共兩人。燈已關。畫面左：Nora（`discharge`）坐在自己的床緣，一個被紅光勾出來的輪廓；畫面右：Peg（`visit`，玳瑁框眼鏡戴在臉上）坐在自己的床緣；紅霓虹 `a slow pulse: on for two beats, off for one` 從畫面左的細縫照進來，亮的時候照出兩人的臉：Nora 眉心提著、嘴唇微張；Peg 眉頭壓著、嘴唇閉緊；兩張臉都 `no smile at any moment, until the last frame`；暗的那一拍是深紅黑；床頭櫃上熄掉的檯燈 | 紅光亮兩拍、暗一拍；Peg 的手從開關上收回來、放到膝上；剪在紅光第二次亮起；兩人都嘴閉著；最後：兩人在紅光裡坐著 | — | 約 2.5 秒 |
+| c40 | 中景、固定；鏡頭在床尾；直式：兩張床在左右，床頭櫃在中間；整鏡只有紅霓虹的光 | 共兩人。燈已關。畫面左：Nora（`discharge`）坐在自己的床緣，身子轉向鏡頭四分之三、眼睛看著畫面右的 Peg，紅霓虹從她左後方掃過她的左頰與下巴；畫面右：Peg（`visit`，玳瑁框眼鏡戴在臉上）坐在自己的床緣；紅霓虹 `a slow pulse: on for two beats, off for one`（一拍約一秒）從畫面左的細縫照進來，亮的時候照出兩人的臉：Nora 眉心提著、嘴唇微張；Peg 眉頭壓著、嘴唇閉緊；兩張臉都 `no smile at any moment, until the last frame`；暗的那一拍兩張臉仍留一層淡紅光；床頭櫃上熄掉的檯燈；Peg 身邊床上 `a plain beige canvas tote bag with no print, on the bed beside her` | 紅光亮兩拍、暗一拍；Peg 把身邊的帆布袋推到自己床尾；剪在紅光第二次亮起；兩人都嘴閉著；最後：兩人在紅光裡坐著 | — | 約 2.5 秒 |
 | c41 | 中近景、固定；直式，頭在畫面右上（床頭）；整鏡只有紅霓虹的光 | Peg（`visit`，玳瑁框眼鏡戴在臉上），在自己的床上（靠浴室那張）；紅光一明一暗照在她身上；眉頭壓著、眼睛垂著、嘴唇閉緊、長長吐一口氣，`no smile at any moment, until the last frame` | Peg 往後躺到床上（動作一），把那條淺色薄毯拉到胸口（動作二）；剪在毯子拉到胸口；嘴閉著；最後：她仰躺著、蓋著薄毯、眼鏡戴在臉上 | — | 約 3 秒 |
-| c42 | 近景、固定；直式，臉在上三分之一；身後是厚窗簾與那道細縫；整鏡只有紅霓虹的光 | Nora（`discharge`），坐在自己的床緣、面向畫面右，兩手放在膝上；紅霓虹從她身後的細縫照過來，亮的兩拍照出她的臉：眉心往上提、眼睛一直看著畫面右的 Peg、嘴唇微張、呼吸很慢；暗的一拍只剩輪廓，`no smile at any moment, until the last frame` | 很長的安靜；紅光亮、亮、暗，又亮；Nora 兩手在膝上慢慢收緊；剪在第二輪紅光亮起；嘴閉著；最後：她坐著、看著 Peg | — | 約 4.5 秒 |
-| c43 | 近景、固定；直式，臉在上三分之一、橫在畫面裡（她仰躺）；前景下緣是薄毯的邊；整鏡只有紅霓虹的光 | Peg（`visit`，玳瑁框眼鏡戴在臉上），仰躺在床上、蓋著淺色薄毯；頭微微偏向畫面左的 Nora，四分之三側臉，眼睛睜著看天花板，不看鏡頭；紅霓虹亮的兩拍照亮她的臉與嘴、照在鏡框上：眉頭往中間收、嘴唇在字之間發抖、下巴繃緊、聲音很低很慢，`no smile at any moment, until the last frame`；暗的那一拍只剩眼鏡的一點紅 | Peg 看著天花板，嘴在說話（很低、很慢）；說完嘴閉上，下巴一緊；最後：她看著天花板 | Peg（很低、很慢）：He wasn't at my place.（他不在我那裡）（原聲）← 因為 c37 | 約 3.5 秒 |
-| c44 | 近景、固定；同 c42 的鏡位；直式，臉在上三分之一；整鏡只有紅霓虹的光 | Nora（`discharge`），坐在床緣；紅光亮的時候：呼吸一下停住、眉毛挑高、眼睛睜大、嘴唇張開，`no smile at any moment, until the last frame` | Nora 的身子往前一傾、兩手在膝上抓緊；剪在傾到一半；嘴張著、沒說話；最後：她傾著身看著 Peg | — | 約 2.5 秒 |
-| c45 | 近景、慢推（從近景推到臉）；同 c43 的鏡位；直式；整鏡只有紅霓虹的光 | Peg（`visit`，玳瑁框眼鏡戴在臉上），仰躺、蓋著淺色薄毯，頭微微偏向畫面左；眼睛睜著看天花板；紅光亮的兩拍照亮她的臉與嘴：眉心往上提、嘴唇發抖、句子之間一個停頓、一滴淚從眼角滑到鏡框下，`no smile at any moment, until the last frame` | Peg 嘴在說話（更低、一字一停）：先說兩個字、停一拍，再說後半句；說完嘴閉上，眼睛還睜著；最後：她睜著眼看天花板，紅光一明一暗 | Peg（更低、一字一停）：That night. He wasn't with me.（那一晚。他不在我身邊）（原聲）（結尾）（懸念 → 下一集第一場） | 約 4 秒 |
-| c46 | 中景、固定（接第 11 集之前的最後一刻）；鏡頭在床尾；直式：畫面左是 Nora 的床與坐著的她，畫面右是仰躺的 Peg，中間是床頭櫃，左緣是窗下的小桌與那道細縫；整鏡只有紅霓虹的光 | 共兩人。畫面右：Peg（`visit`，玳瑁框眼鏡戴在臉上）仰躺在靠浴室那張床上、蓋著淺色薄毯，眼睛睜著看天花板：眉頭收著、嘴唇閉緊；畫面左：Nora（`discharge`，沒穿大衣，灰色軟拖鞋）坐在靠窗那張床的床緣、面向 Peg，兩手放在膝上：眉心提著、眼睛看著 Peg、嘴唇閉著；兩張臉都 `no smile at any moment, until the last frame`；床頭櫃上：熄掉的 `a small motel bedside lamp with a pale yellow shade, warm light`、`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), sealed inside a small clear zip-top plastic bag about the size of her palm`、揉皺的白面紙、`a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`、`an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number`；Peg 床尾 `a plain beige canvas tote bag with no print, at the foot of her bed`（帽子在裡面）；Nora 床尾 `a camel wool coat with deep pockets, lying across the foot of the bed`；窗下小桌上 `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside`；紅霓虹從細縫一明一暗 | 紅光亮兩拍、暗一拍，又亮；Peg 眨一下眼；Nora 的胸口慢慢起伏；剪在紅光第二次暗下去；兩人都嘴閉著；最後：兩人停在這一刻 | — | 約 3.5 秒 |
+| c42 | 近景、固定；鏡頭在她右前方；直式，臉在上三分之一；身後左邊是厚窗簾與那道細縫；整鏡只有紅霓虹的光 | Nora（`discharge`），坐在自己的床緣，身子轉向鏡頭四分之三（臉朝畫面右前），兩手放在膝上；紅霓虹從她左後方的細縫掃過她的左頰與下巴，亮的兩拍照亮左頰、下巴與嘴：眉心往上提、眼睛一直看著畫面右外的 Peg、嘴唇微張、呼吸很慢；暗的一拍（約一秒）臉上仍留一層淡紅光，`no smile at any moment, until the last frame` | 很長的安靜；紅光亮、亮、暗，又亮；Nora 兩手在膝上慢慢收緊；剪在第二輪紅光亮起；嘴閉著；最後：她坐著、看著 Peg | — | 約 4.5 秒 |
+| c43 | 近景、固定；直式，臉在上三分之一、橫在畫面裡（她仰躺）；前景下緣是薄毯的邊；整鏡只有紅霓虹的光 | Peg（`visit`，玳瑁框眼鏡戴在臉上），仰躺在床上、蓋著淺色薄毯；頭微微偏向畫面左的 Nora，四分之三側臉，眼睛睜著看天花板，不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線）；紅霓虹一拍約一秒，亮的兩拍照亮她的臉與嘴、照在鏡框上：眉頭往中間收、嘴唇在字之間發抖、下巴繃緊、聲音很低很慢，`no smile at any moment, until the last frame`；暗的那一拍她的臉與嘴仍留一層淡紅光、看得到嘴在動 | Peg 看著天花板，嘴在說話（很低、很慢）；說完嘴閉上，下巴一緊；最後：她看著天花板 | Peg（很低、很慢）：He wasn't at my place.（他不在我那裡）（原聲）← 因為 c37 | 約 3.5 秒 |
+| c44 | 近景、固定；同 c42 的鏡位；直式，臉在上三分之一；整鏡只有紅霓虹的光 | Nora（`discharge`），坐在床緣，身子轉向鏡頭四分之三（臉朝畫面右前、眼睛看著畫面右外的 Peg）；紅霓虹從她左後方掃過左頰與下巴，暗的一拍臉上仍留一層淡紅光；紅光亮的時候：呼吸一下停住、眉毛挑高、眼睛睜大、嘴唇張開，`no smile at any moment, until the last frame` | Nora 的身子往前一傾、兩手在膝上抓緊；剪在傾到一半；嘴張著、沒說話；最後：她傾著身看著 Peg | — | 約 2.5 秒 |
+| c45 | 近景、慢推（從近景推到臉）；同 c43 的鏡位；直式；整鏡只有紅霓虹的光 | Peg（`visit`，玳瑁框眼鏡戴在臉上），仰躺、蓋著淺色薄毯，頭微微偏向畫面左；眼睛睜著看天花板（說話模板的 eyes on 換成本鏡寫的視線）；紅光一拍約一秒，亮的兩拍照亮她的臉與嘴，暗的一拍臉與嘴仍留一層淡紅光：眉心往上提、嘴唇發抖、句子之間一個停頓、一滴淚從眼角滑到鏡框下，`no smile at any moment, until the last frame` | Peg 嘴在說話（更低、一字一停）：先在亮拍說兩個字，停頓落在暗的那一拍（約一秒），下一個亮拍再說後半句；說完嘴閉上，眼睛還睜著；最後：她睜著眼看天花板，紅光一明一暗 | Peg（更低、一字一停）：That night. He wasn't with me.（那一晚。他不在我身邊）（原聲）（結尾）（懸念 → 下一集第一場） | 約 4 秒 |
+| c46 | 中景、固定（接第 11 集之前的最後一刻）；鏡頭在床尾；直式：畫面左是 Nora 的床與坐著的她，畫面右是仰躺的 Peg，中間是床頭櫃，左緣是窗下的小桌與那道細縫；整鏡只有紅霓虹的光 | 共兩人。畫面右：Peg（`visit`，玳瑁框眼鏡戴在臉上）仰躺在靠浴室那張床上、蓋著淺色薄毯，眼睛睜著看天花板：眉頭收著、嘴唇閉緊；畫面左：Nora（`discharge`，沒穿大衣，灰色軟拖鞋）坐在靠窗那張床的床緣、面向 Peg、身子轉向鏡頭四分之三，紅霓虹從她左後方掃過左頰與下巴，兩手放在膝上：眉心提著、眼睛看著 Peg、嘴唇閉著；兩張臉都 `no smile at any moment, until the last frame`；床頭櫃上：熄掉的 `a small motel bedside lamp with a pale yellow shade, warm light`、`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device), sealed inside a small clear zip-top plastic bag about the size of her palm`、揉皺的白面紙、`a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`、`an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number`；Peg 床尾 `a plain beige canvas tote bag with no print, at the foot of her bed`（帽子在裡面）；Nora 床尾 `a camel wool coat with deep pockets, lying across the foot of the bed`；窗下小桌上 `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside`；紅霓虹從細縫一明一暗 | 紅光亮兩拍、暗一拍，又亮；Peg 眨一下眼；Nora 的胸口慢慢起伏；剪在紅光第二次暗下去；兩人都嘴閉著；最後：兩人停在這一刻 | — | 約 3.5 秒 |
 
 約 135 秒（2 分 15 秒）、46 鏡（第一場 16、第二場 19、第三場 11），是各鏡秒數加起來的估計；細綱 `duration_s` 135 秒，bible 目標 43–47 鏡。
 開場 10 秒四鏡（c01–c04）：c01 交代時間與位置、c02 抽出帽子、c03 Peg 看針腳、c04 在第 9 秒 Nora 的反應；c05「Hat. Mine.」約第 9 秒開口。平均一鏡 2.93 秒（哭與黑暗的幾鏡 4–5 秒）。
@@ -171,8 +171,20 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 - **c17–c20**：Peg 拉窗簾是因為要睡了；她看見黑車，**什麼也沒說**，把窗簾拉到只剩一道細縫（紅霓虹還照得進來，接點表 10→11 要的）。Nora 沒看見黑車。
 - **c22**：Peg 從窗邊回到自己的床緣，單獨一鏡（轉換動作）。
 - **c27**：指尖碰藥、碰舌尖是同一隻右手的食指；c29 Peg 抓的是那隻右手腕。
+- **帆布袋的位置**：c06 收好帽子後 Peg 把帆布袋拎到身邊的床上（新的道具句尾 `, on the bed beside her`），c30 右手按著 Nora 手腕時左手搆得到；c40 關燈後推回床尾，接點表 10→11 的「帆布袋在 Peg 床尾」。
 - **c36**：關燈前 Nora 把夾鏈袋與揉皺的面紙放到床頭櫃上（接點表 10→11 的位置）。
 - **c41**：Peg 關燈後才躺下、拉毯子，單獨一鏡（轉換動作）。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e007-e010-storyboard.md` 與 bible〈審稿後補定〉改的。本集還沒錄、沒拍，沒有要重錄或重抽的鏡；台詞一句都沒改。
+- **關燈後的光**（c40、c42、c44、c46）：Nora 的身子轉向鏡頭四分之三，紅霓虹從她左後方掃過左頰與下巴；c42、c44 鏡頭在她右前方。英文光句改成 `each beat about one second, a faint red glow stays on the faces between pulses`。
+- **c43、c45**：紅光一拍約一秒，暗的那一拍臉與嘴仍留一層淡紅光；c45 句中的停頓落在暗拍。草稿還是看不清嘴，再走 bible 的 Gemini Gacrux 備案。兩鏡都註明「說話模板的 eyes on 換成本鏡寫的視線」（她看天花板）。
+- **帆布袋**（c06、c30、c40）：c06 收好帽子後把袋子拎到身邊的床上，c30 左手搆得到；c40 推回床尾，接點不變。
+- **行李箱**（場頭、c01、〈時間與帳〉）：攤在兩張床的床尾前，不是兩床之間。
+- **短句的收尾動作**：c29 說完把 Nora 的手腕按回她的膝上；c31 說完把撐開的夾鏈袋放到 Nora 膝上（指示寫「tote」，照前後鏡理解成夾鏈袋：帆布袋放到她腿上前後接不起來），c32 袋子擱在她膝上。
+- **c19**：黑車句照 bible 改成句尾加 `, number plate out of frame`（場頭、角色表一起改）；「沒有字」改成「街上只有這輛車、路燈與乾的路面」。
+- 鏡數與秒數不變：46 鏡／135 秒。
 
 ### 配音
 
@@ -218,7 +230,7 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 - 哭的鏡（c08、c09、c12、c14）照寫的秒數留滿，不切碎；c16 → c17 跳過十來分鐘，靠哭聲停了、Peg 起身交代。
 - c39 燈滅那一下全部抽掉；c40 起畫面只有紅霓虹的光，亮兩拍、暗一拍，**不快閃**；調色時暗的那一拍保留一點深紅，不要全黑。
 - c45 → c46 剪在紅光暗下去；c46 停在兩人都不動的一刻，接全黑；第 11 集跳到第 3 天上午。
-- 調色：c01–c38 檯燈暖黃加左邊的紅；c39 起只有紅與深紅黑。
+- 調色：c01–c38 檯燈暖黃加左邊的紅；c39 起只有紅；暗的那一拍臉上留一層淡紅，不全黑。
 
 ## 五張清單
 
@@ -255,13 +267,13 @@ c39 檯燈熄掉那一下起寫 `night, the lamp off, the only light is a slow r
 
 - **時間**：第 2 天 22:40（從第 9 集櫃台 20:45 跳過來）→ 22:40–23:05 帽子、崩潰、擁抱 → 23:15 窗簾與黑車 → 23:20–23:40 半顆藥 → 23:45–23:50 關燈。夜、乾。第 11 集是第 3 天（3/19 週四）上午。
 - **半顆藥**：從大衣右口袋的面紙裡拿出來（c23–c24）→ 聞、指尖碰、指尖碰舌尖（甜）→ 封進 Peg 的夾鏈袋（c32）→ 放在床頭櫃上，揉皺的面紙在旁邊（c36 起）。第 11 集她把夾鏈袋放回大衣右口袋、帶去給 Dr. Brandt。
-- **毛線帽**：從醫院袋拿出來（c02）→「Hat. Mine.」→ 進 Peg 的帆布袋（c06），帆布袋在 Peg 床尾。之後一直在 Peg 那裡（s01-t07 收在這裡）。
+- **毛線帽**：從醫院袋拿出來（c02）→「Hat. Mine.」→ 進 Peg 的帆布袋（c06）。**帆布袋**：c06 從 Peg 床尾拎到她身邊的床上（c30 從裡面拿夾鏈袋），c40 推回 Peg 床尾。之後一直在 Peg 那裡（s01-t07 收在這裡）。
 - **錢**：本集沒有金錢往來；Peg 的現金 **$467**。帳本上新的一行是「Hat. Mine.」（念出來，帳本不入字）。第 11 集要接：Peg 預付三晚 $267、公車 $4 → $196。
 - **帳本與收據**：帳本在床頭櫃上（c05 起）；收據在帳本封皮夾層裡（第 9 集），不拍。
 - **房間鑰匙**：在床頭櫃上、帳本旁。
 - **手機**：Nora 的新手機在大衣左口袋，大衣在她床尾，一直開著（不拍）。Grant 看得到這支手機在哪（第 11、12、18 集要用）。
 - **卡夾與兩張被拒的卡**：在大衣左口袋（不拍）。
-- **玻璃磚**：在窗下的小桌上。**行李箱**：兩只攤開在兩床之間的地上。**醫院袋**：在 Peg 的床上。
+- **玻璃磚**：在窗下的小桌上。**行李箱**：兩只攤開在兩張床的床尾前的地上。**醫院袋**：在 Peg 的床上。
 - **Peg**：婚戒在左手（第 15 集當掉）、眼鏡戴在臉上、帆布袋在床尾；蓋的是淺色薄毯。
 - **對街的黑車**：熄燈、駕駛座一個不動的人影（Elias，第 15 集前認不出來）；Peg 看見了、沒說，Nora 沒看見。第 11–14 集每晚都在（第 15 集 Bev 說「五天了」）。
 - **誰知道了什麼**：Nora 知道藥是甜的、Peg 要她留著證據、明天去看醫生；Peg 說破第 3 集的「I was at Mom's」與第 5 集她自己的「...Sure.」：那晚 Grant 不在她那裡（第 52 集才講整通電話）；Peg 一個人知道對街有一輛車在看。
