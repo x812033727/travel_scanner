@@ -127,7 +127,7 @@ def obj(id, prompt, *lines, chapter=None):
 
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 obj("tablet-flame", "Close-up of a child's two small hands holding " + TABLET + ", a plain pale cream wall behind",
-    k("所長！我今天在學校看影片！", "急著報案的語氣"),
+    k("所長，所長！我在學校看影片！", "急著報案的語氣"),
     k("太空人在太空站裡，飄來飄去！", "興奮"), chapter="影片裡，火圓圓的")
 # Thumbnail shot (fixed before keyframes, explainer-series/README.md): the kid big and centred, the tablet in hand.
 kid("kid-main-q", K("holding a small tablet up in front of her chest with both hands and looking at the viewer with wide amazed eyes, in the exact centre of the picture", where=OFFICE),
@@ -206,8 +206,8 @@ chief("chief-sideways", C("sweeping one flat hand quickly sideways in front of h
     c("因為它不只往下掉，還往旁邊跑得非常快。", "接住上一句"),
     c("還記得剛剛拋杯子嗎？拋得越用力，落得越遠。"), chapter="杯子拋得越快，落得越遠")
 obj("cup-far", "Wide shot of a sunny back yard lawn, " + CUP + " flying high and far in a long gentle curve over the grass, " + BASIN + " far away at the end of the lawn",
-    c("可是不管拋多快，杯子都是一邊往前、一邊往下掉。"),
-    k("那拋得超級超級快呢？", "追問", "S:fast"))
+    c("可是不管丟多快，杯子都一邊往前、一邊往下掉。"),
+    k("那丟得超級超級快呢？", "追問", "S:fast"))
 chief("chief-newton", C("shading her eyes with one hand as if looking far away, an adventurous smile"),
     c("很久以前，研究重力的科學家牛頓，就想過這件事：", "接住上一句"),
     c("在很高很高的山頂上，放一座大砲。"))
@@ -242,7 +242,7 @@ chief("chief-coaster", C("bouncing lightly on her toes with a playful grin, both
     c("也會有一小下，覺得自己飄起來。", None, "P:ground"),
     k("原來我跳彈簧床，也在掉！", "驚喜"))
 kid("kid-fire-q", K("holding the small tablet up and pointing at it with a curious frown", where=YARD),
-    k("那火呢？", "想起來"), k("火在掉的時候，也會變嗎？", "章尾停住，句尾上揚", "S:firefall"))
+    k("那火呢？", "想起來"), k("火跟著一起掉，也會變嗎？", "章尾停住，句尾上揚", "S:firefall"))
 
 # ---------- 第三章：蠟燭丟進很深的井 ----------
 chief("chief-well", C("raising both eyebrows with an excited smile, one hand raised", close=True),
@@ -250,7 +250,7 @@ chief("chief-well", C("raising both eyebrows with an excited smile, one hand rai
     c("他們有一口很深的井，東西可以在裡面一直掉五秒多。"), chapter="把蠟燭丟進很深的井")
 obj("deep-shaft", "Low angle wide shot looking straight down into a very deep round smooth concrete shaft, simple cartoon rings of soft light fading far down into the dark bottom",
     c("他們把點著的蠟燭放進去，跟著一起往下掉，", None, "P:well"),
-    c("火很快就不尖了，變成圓圓的一團。", None, "P:firefall"))
+    c("火很快就變成圓圓的一團，不再尖尖的。", None, "P:firefall"))
 kid("kid-try-fire", K("bouncing on her toes with an excited grin, both fists clenched", where=YARD),
     k("我也要在家丟蠟燭！", "興奮"))
 chief("chief-safe", C("holding up one hand like a gentle stop with a kind but firm smile", close=True),
@@ -289,7 +289,7 @@ chief("chief-candle-two", C("holding up a short white candle in one hand with a 
     c("所以火是黃的。"))
 obj("candle-pair", "Wide shot of two short white candles side by side on a wooden table, the left one with a tall yellow teardrop flame, the right one with a small round soft blue flame, a plain pale cream wall behind",
     c("在微重力裡，那根蠟燭的火是圓的、沒有煙灰，藍藍的。", None, "P:blue"),
-    c("不過這是那一根蠟燭，不是每一團太空裡的火都長這樣。"))
+    c("不過這只是一根蠟燭，不是每一團太空的火都長這樣。"))
 kid("kid-ball-q", K("making a round ball shape with both hands and a curious face", close=True, where=YARD),
     k("那它是一整顆圓球嗎？", "句尾上揚", "S:ball"))
 obj("half-ball", "Close-up of " + CANDLE + " with a small soft blue flame shaped like half a round dome sitting above the wick, a dark gap between the flame and the wax, a plain pale cream wall behind",
@@ -302,7 +302,7 @@ chief("chief-diffuse", C("moving one hand very slowly through the air with a cal
     c("溫度會慢慢降下來。"))
 obj("candle-dim", "Close-up of " + CANDLE + " with a very small faint round blue flame around the wick, tiny pale blue dots drifting slowly towards it, a plain pale cream wall behind",
     c("一九九二年，在太空中做過的蠟燭實驗，"),
-    c("大多一分鐘就熄了，可能是裝它的盒子裡氧氣快沒了。", None, "P:last"))
+    c("大多一分鐘左右火就滅了，可能是盒子裡氧氣快沒了。", None, "P:last"))
 kid("kid-out-q", K("folding her arms with a satisfied little nod", where=YARD),
     k("火熄了，", "篤定"), k("就是不燒了吧？", "章尾停住，句尾上揚", "S:out"))
 
@@ -315,15 +315,15 @@ obj("drop-glow", "Close-up of " + DROP + ", a bright soft orange glowing flame b
     c("有一次，一滴大約四公釐的燃料，先燒出看得見的火，"),
     c("燒了大約十五秒，那團火忽然熄了。"))
 kid("kid-done", K("shrugging with both palms up and a bored pout", where=YARD),
-    k("熄了，還有什麼好看的？", "不以為意"))
+    k("火都滅了，還有什麼好看的？", "不以為意"))
 obj("drop-dark", "Close-up of " + DROP + ", the glow gone, the dim chamber quiet around the drop",
-    c("相機拍不到火了。可是量熱的儀器，", "賣關子"),
-    c("還量得到那一滴在放出熱。", None, "P:out"))
+    c("相機拍不到火了。可是，", "賣關子"),
+    c("量熱的儀器發現，那一滴燃料還在發熱。", None, "P:out"))
 chief("chief-shrink", C("bringing her two hands slowly closer together with a curious smile"),
     c("而且那一滴還在變小，只是變得慢一點。"),
     c("研究的人，把它叫做冷焰。", None, "P:ghost"))
 kid("kid-cold-q", K("hugging herself and shivering playfully with a curious grin", close=True, where=YARD),
-    k("冷的火？", "好奇"), k("摸起來是冰的嗎？", "句尾上揚", "S:cold"))
+    k("火也有冷的？", "好奇"), k("摸起來是冰的嗎？", "句尾上揚", "S:cold"))
 chief("chief-cold", C("laughing softly and shaking her head", close=True),
     c("不是冰的。它只是比一般的火溫度低，", "笑", "P:cold"),
     c("幾乎看不見，卻還在燒。"))
@@ -353,7 +353,7 @@ kid("kid-zero", K("raising one finger with a proud confident grin", close=True, 
 chief("chief-zero", C("giving a warm thumbs-up with a proud smile", close=True),
     c("對。美國太空總署也說，叫零重力會讓人誤會。", None, "P:zero"))
 kid("kid-final-q", K("looking down at the small tablet with a thinking face", where=YARD),
-    k("那太空人一直在掉，", "推理"), k("火為什麼也變了？", "章尾停住，句尾上揚"))
+    k("那太空人一直在掉，", "推理"), k("那團火為什麼也變了？", "章尾停住，句尾上揚"))
 
 # ---------- 收尾 ----------
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
