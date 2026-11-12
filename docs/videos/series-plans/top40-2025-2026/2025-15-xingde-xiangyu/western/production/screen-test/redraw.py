@@ -204,10 +204,59 @@ S9_EDITS = [
      "the small wall-mounted screen near the ceiling at the top right is gone; that wall is plain."),
 ]
 
+# p7 (after p5/p6): both sedans came out as limousines a third time ("not a limousine" did not help), so they are drawn from a
+# three-quarter front view, the shape a stretch car cannot fake; Peg's portrait kept its pendant in both takes; the road
+# shoulder was drawn from above twice. The six p6 jobs a lost connection left undone run again here (from p6.json).
+SEDAN3 = ("seen from a three-quarter front angle at eye level, the whole car in the frame: a modern four-door executive sedan of ordinary "
+          "length, exactly two doors on the visible side, a short distance between the front and rear wheels, a long bonnet, a short boot")
+P7 = [
+    ("grant-car", art.WIDE, f"Nobody is in the frame. a pearl-white full-size four-door luxury sedan with tinted rear windows, no badge, number "
+     f"plate out of frame, {SEDAN3}; parked at a wet grey curb on an overcast street, plain grey wall behind it, grey-blue overcast daylight, wet asphalt, no signs."),
+    ("black-car", art.WIDE, f"Nobody is in the frame. a black full-size four-door luxury sedan with no badge, number plate out of frame, "
+     f"{SEDAN3}; parked at a wet grey curb on an overcast street, plain grey wall behind it, grey-blue overcast daylight, wet asphalt, no signs."),
+    ("drive-foot", art.SETV, "a tall vertical photograph taken standing on the gravel shoulder of a quiet two-lane coast road at the waterline, "
+     "the camera at road level looking slightly UP: the road runs away to the LEFT beside grey Puget Sound water; on the right a steep grassy "
+     "bluff rises high above the camera, a narrow paved driveway climbing it diagonally from the road toward the upper right; at the top of "
+     "the bluff, high in the frame and small against the sky, a modern single-storey glass house; a low wooden guardrail along the road, "
+     "dark firs on the bluff. Light: low red-gold sunset light from the upper right, the sun hidden behind the bluff. Nobody is in the frame; "
+     "no cars; nothing written anywhere."),
+]
+P7_EDITS = [
+    ("peg-portrait-pendant", "peg-portrait.jpg", art.BUST, "the face, glasses, hair, cardigan, expression, framing, the plain grey backdrop and the lighting",
+     "the round pendant at the end of her wooden-bead necklace is removed; the beads simply continue as one plain loop with nothing hanging from it."),
+]
+
+# l1: the plan's 「改自」 light versions, made from the redrawn bases (art.py's s4 read the old ones). The plan's sentences
+# still describe the old layouts, so each edit only says what changes; two seeds each (owner: quality first).
+# (plan #, id, base picture in the work dir — "{room}" is the picked hospital-room edit, what changes)
+L1 = [
+    (3, "bed-night", "s7-bed-north-sconce-b.png",
+     "the wall lamp is switched off. Light: deep night; the glass wall on the left is black with rain streaks; the only light is a low "
+     "warm-yellow night light in the hallway outside the half-open door at the back right, falling into the room; the room is mostly dark blue shadow."),
+    (6, "liv-tv", "s1-set-glass-house-living-liv-day-v-a.png",
+     "night: every glass wall is black with drizzle; a warm white floor lamp beside the sofa is the only lamp; a slim flat black TV stands on "
+     "the low pale oak cabinets in front of the sea-side glass, facing the sofa, its screen a soft plain white glow with nothing on it."),
+    (17, "room-dawn", "{room}",
+     "dawn after rain, overcast; the bed lamp is off; cold grey-blue light through the blinds falls across the bed in thin slanting stripes; "
+     "the hallway light through the door is dim."),
+    (18, "room-noon", "{room}",
+     "bright white noon light through the blinds falls across the bed in steep, sharp stripes; the bed lamp is off."),
+    (22, "liv-gold-b", "s7-liv-gold-a-a.png",
+     "heavy charcoal-grey curtains now also hang over the glass behind the sofa; the two short ladders stand at the next bare panel, behind "
+     "the right half of the sofa. Light: deeper amber sunset; only a few narrow strips of gold leak in between the curtains; the room is dimmer."),
+    (25, "nur-gold", "s7-nur-day-b.png",
+     "a grey two-step ladder stands in front of the window; the ceiling light is switched on. Light: the last low golden sunset light "
+     "through the big window."),
+    (33, "mroom-dark", "s8-mroom-night-a.png",
+     "the bedside lamp is switched off and the bathroom door stays closed with no light behind it. Light: dark; only a thin red neon glow "
+     "through the curtain gap falls across the left bed and the nightstand; the rest is deep shadow."),
+]
+
 # a4's lettering edit on Dr. Brandt failed twice (the coat kept an embroidered name), so she is drawn new, with the coat spelled out.
 BRANDT = ("a 48-year-old white German-American woman, short silver-blond bob, rectangular glasses, a completely plain white doctor's coat "
           "with no embroidery, no name, no badge, no logo and nothing in its pockets, over navy scrubs")
-ROUNDS = {"s7": "sets", "s8": "sets", "a5": "people", "p4": "props", "f1": "fixes", "s9": "retry"}
+PICK: dict[str, str | None] = {}
+ROUNDS = {"s7": "sets", "s8": "sets", "a5": "people", "p4": "props", "f1": "fixes", "s9": "retry", "p7": "retry2", "l1": "light"}
 
 
 def jobs_for(name: str, work: Path) -> list[dict]:
@@ -234,6 +283,34 @@ def jobs_for(name: str, work: Path) -> list[dict]:
             prompt = f"Edit image 1: keep {keep} exactly the same. Change only this: {change} {build.REAL}"
             for t, take in enumerate(("a", "b")):
                 jobs.append(build.job(f"{eid}-{take}", f"s9 {eid} {take}", [src], prompt, size, 750600 + pos * 10 + t, f"s9-{eid}-{take}.png", latent="image1"))
+    elif ROUNDS[name] == "light":
+        room = PICK.get("room")
+        if not room:
+            sys.exit("redraw.py: l1 needs --room <picked hospital-room edit, e.g. s9-room-night-iv-a.png>")
+        for n, lid, base, change in L1:
+            src = base.format(room=room)
+            if not (work / src).is_file():
+                sys.exit(f"redraw.py: {src} is not in {work}")
+            prompt = art.SET_EDIT.format(p=change, real=build.REAL)
+            for t, take in enumerate(("a", "b")):
+                jobs.append(build.job(f"{lid}-{take}", f"l1 #{n} {lid} {take}", [src], prompt, art.SETV, 740000 + n * 10 + 5 + t, f"l1-{lid}-{take}.png", latent="image1"))
+    elif ROUNDS[name] == "retry2":
+        p6 = work / "p6.progress.json"
+        if p6.is_file():
+            done = {j["id"] for j in json.loads(p6.read_text(encoding="utf-8"))["jobs"] if j["status"] == "completed"}
+            jobs += [j for j in json.loads((work / "p6.json").read_text(encoding="utf-8"))["jobs"] if j["id"] not in done]
+        for pos, (pid, size, text) in enumerate(P7):
+            if size == art.SETV:
+                prompt = art.SET_NEW.format(p=text, real=build.REAL)
+            else:
+                prompt = f"{art.PROP_HEAD} {art.PROP_BLANK} {text} {art.PROP_CLEAN}"
+            for t, take in enumerate(("a", "b")):
+                jobs.append(build.job(f"{pid}-{take}", f"p7 {pid} {take}", [art.CANVAS[size]], prompt, size, 762000 + pos * 10 + t, f"p7-{pid}-{take}.png"))
+        for pos, (eid, ref, size, keep, change) in enumerate(P7_EDITS):
+            src = art.copy_ref(work, ref)
+            prompt = f"Edit image 1: keep {keep} exactly the same. Change only this: {change} {build.REAL}"
+            for t, take in enumerate(("a", "b")):
+                jobs.append(build.job(f"{eid}-{take}", f"p7 {eid} {take}", [src], prompt, size, 762100 + pos * 10 + t, f"p7-{eid}-{take}.png", latent="image1"))
     elif ROUNDS[name] == "fixes":
         prompt = f"{build.BLANK} {build.PORTRAIT_FRAME}She is: {BRANDT}. She is the only person in the frame. {build.REAL}"
         for t, take in enumerate(("a", "b")):
@@ -260,12 +337,14 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--into")
     ap.add_argument("--work")
+    ap.add_argument("--room", help="l1: the picked hospital-room picture in the work dir")
     a = ap.parse_args(argv)
+    PICK["room"] = a.room
     work = art.work_dir(a.work)
     if a.list or not a.rounds:
         total = 0
         for r in ROUNDS:
-            n = 2 * (len(SETS[r]) if r in SETS else len(PROPS) if r == "p4" else len(FIXES) + 1 if r == "f1" else len(S9) + len(S9_EDITS) if r == "s9" else len(PEOPLE))
+            n = 2 * (len(SETS[r]) if r in SETS else len(PROPS) if r == "p4" else len(FIXES) + 1 if r == "f1" else len(S9) + len(S9_EDITS) if r == "s9" else 3 + len(P7) + len(P7_EDITS) if r == "p7" else len(L1) if r == "l1" else len(PEOPLE))
             total += n
             print(f"{r:4} {n:3} images {n * art.CU_PER_IMAGE:5.2f} CU")
         print(f"all  {total:3} images {total * art.CU_PER_IMAGE:5.2f} CU")
