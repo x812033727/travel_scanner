@@ -113,7 +113,7 @@
 - **地點與場景圖**：`assets/refs/set-glass-house-living.jpg`。淺橡木地板、長淺木餐桌在畫面右、低矮灰沙發在畫面左（沙發坐墊上放著那頂毛線帽），三面落地玻璃外是灰海；
   直式取餐桌一角加一扇玻璃。桌上：一只白色馬克杯（無字）。近景都寫「同一間玻璃客廳」，背景是玻璃、灰海與淺木桌。
 - **時間與天氣**：第 1 天 08:10，陰、毛毛雨；冷藍天光，玻璃上的雨珠；屋裡沒開燈。
-- **軸線**：Nora 坐在餐桌北端，背後是北面玻璃與灰海；她說電話時臉朝畫面右（西面玻璃與海）、眼睛看畫面右外的海；手機在右手、貼右耳，背面朝鏡頭。
+- **軸線**：Nora 坐在餐桌北端，身子側向西面玻璃與海（右手邊是北面玻璃）；說電話的近景鏡頭都在她的北側、往南拍：**西面玻璃與海在畫面右**，她身後是往南延伸的長木餐桌與遠處的灰沙發（虛焦）；她說電話時臉朝畫面右（西面玻璃與海）、眼睛看畫面右外的海；手機在右手、貼右耳，背面朝鏡頭。
 - **在場的人**：只有 Nora；**Grant 只有聲音（畫外，電話裡，Gemini）**，不入鏡。
 - **覆蓋**：c12 全景（前景沙發與毛線帽，交代她在桌邊）→ 說話的中近景 → 聽的反應 → 插鏡 → 低角度收尾。
 - **這場要講完的事**：她說藥是甜的，Grant 笑說換了糖衣；他說她的手機一直斷、今天叫 Cole 來拿；今晚發表週忙、不用等他（結尾：她答應）。
@@ -123,7 +123,7 @@
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c12 | 全景、慢推（2 秒內的轉場）；直式，**前景下緣偏左是低矮灰沙發的扶手與坐墊**，上半是長木餐桌與北面玻璃外的灰海 | 前景沙發坐墊上：毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；畫面右後：Nora（`pregnant`，奶油色針織洋裝、灰色軟拖鞋）坐在餐桌北端，桌上一只白色馬克杯（無字）與淡粉色手機（`a phone in a pale pink case, about the size of her palm`）；表情：眉頭皺著、嘴唇抿著，`no smile at any moment, until the last frame` | Nora 從桌上拿起手機往右耳舉；剪在舉到一半。最後：手機在右手、快到耳邊，毛線帽留在沙發坐墊上 | — | 約 2 秒 |
-| c13 | 中近景、慢推（從腰上推到胸上）；直式，上緣是玻璃與灰海；**前景下緣是餐桌一角與白色馬克杯** | Nora（`pregnant`），坐在餐桌北端，右手把淡粉色手機（`a phone in a pale pink case, about the size of her palm`）貼在右耳（背面朝鏡頭，螢幕看不到），左手護著肚子；身後落地玻璃、灰海、雨珠；表情：眉頭往中間皺、眼睛不安地找著畫面右外的海、嘴唇在句子之間抿緊，`no smile at any moment, until the last frame` | Nora 身子往前靠到桌邊；臉是四分之三側臉朝畫面右、眼睛看畫面右外的海，不看鏡頭；嘴在說話。最後：她靠在桌邊、手機貼耳、左手在肚子上 | Nora（原聲，試探）：Grant, my pill tasted sweet this morning. Is that normal?（Grant，今天早上的藥是甜的，這正常嗎？）（→ 答在 c14） | 約 4.5 秒（原聲，買 6 秒） |
+| c13 | 中近景、慢推（從腰上推到胸上）；鏡頭在她的北側、斜前方往南拍（跟 c14 同一邊）；直式，**畫面右邊緣是西面玻璃與灰海、雨珠**，上緣是虛焦的長木餐桌往南延伸；**前景下緣是餐桌一角與白色馬克杯** | Nora（`pregnant`），坐在餐桌北端、身子側向畫面右的西面玻璃，右手把淡粉色手機（`a phone in a pale pink case, about the size of her palm`）貼在右耳（背面朝鏡頭，螢幕看不到），左手護著肚子；身後是虛焦的長木餐桌與遠處的灰沙發；表情：眉頭往中間皺、眼睛不安地找著畫面右外的海、嘴唇在句子之間抿緊，`no smile at any moment, until the last frame` | Nora 身子往前靠到桌邊；臉是四分之三側臉朝畫面右、眼睛看畫面右外的海，不看鏡頭；嘴在說話。最後：她靠在桌邊、手機貼耳、左手在肚子上 | Nora（原聲，試探）：Grant, my pill tasted sweet this morning. Is that normal?（Grant，今天早上的藥是甜的，這正常嗎？）（→ 答在 c14） | 約 4.5 秒（原聲，買 6 秒） |
 | c14 | 直式過肩近景、慢推；從 Nora 右肩後拍：**前景是她的右肩、長髮、右耳與貼在耳上的手機背面，嘴不入鏡**；背景是虛焦的長木餐桌與遠處的灰沙發；同一間玻璃客廳 | Nora（`pregnant`），右手把手機（`a phone in a pale pink case, about the size of her palm`）貼在右耳、背面朝鏡頭；臉只露右頰的邊、眉尾與睫毛；表情：眉尾鬆下來、睫毛垂一下、肩膀隨一口長長的吐氣往下沉，`no smile at any moment, until the last frame`；眼睛看畫面右外的海 | Nora 聽著，肩膀往下一鬆；嘴不入鏡（聲音在電話裡）。最後：肩膀鬆下來、手機貼在右耳 | Grant（Gemini，電話，畫外；笑著、暖）：They changed the coating, babe. Totally normal.（他們換了糖衣，寶貝，很正常） | 約 3.5 秒 |
 | c15 | 插鏡、特寫、固定；**第一格就是貼在她右耳上的手機**；直式，手機在畫面中間，耳朵與長髮在上，下巴的邊在下緣、嘴不入鏡 | Nora 的右手（奶油色針織袖口）把淡粉色手機（`a phone in a pale pink case, about the size of her palm`）貼在右耳，背面朝鏡頭；深栗色長髮蓋著耳後；背景是虛焦的玻璃與灰海 | 她的手指收緊在手機上，拇指在淡粉色殼的邊上來回擦一下；畫面上沒有嘴。最後：手機還貼在右耳、手指握緊 | Grant（Gemini，電話，畫外）：Your phone keeps dropping my calls. Cole will pick it up today.（你的手機一直斷線，Cole 今天去拿） | 約 5 秒 |
 | c16 | 近景、慢推；直式；同一間玻璃客廳，身後只有虛焦的玻璃與雨珠；前景下緣是桌面 | Nora（`pregnant`），手機（`a phone in a pale pink case, about the size of her palm`）貼右耳；表情：眉心往上提一點、眼睛先往下再抬到畫面右外、嘴唇軟軟的，`no smile at any moment, until the last frame` | Nora 左手指尖在桌面上輕敲兩下；臉是四分之三側臉朝畫面右、看著畫面右外的海，嘴在說話（語氣軟、帶一點歉意）。最後：左手平放在桌面上、手機貼耳 | Nora（原聲，軟軟地頂一句）：It sounds fine to me right now.（現在聽起來好好的啊） | 約 3.5 秒（原聲，買 6 秒） |
