@@ -476,4 +476,7 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
   Remelt 的黃線在倉庫門前留一條一人寬的通道（倉庫門在黃線靠爐子那側）。第 39 集照時間線放兩聲 "Thursday."，蒙太奇五鏡；Nora 整集穿 `work`，收據從掛在牆上的外套口袋拿；供應商電話三句用 Gemini（`supplier-phone`），那幾鏡 Nora 的嘴不入鏡。
   藍色鈷粉寫 "even dusting"（避免畫成瘀青，第一批草稿先看）。第 40 集台詞照 bible："Pell's batch. I still remember the recipe."（outline 原句是 "I still remember the Pell recipe."）。
   寫稿者新加、待站主確認：Gus "Walter's blue. Cobalt, twelve grams."、Nora "Third charge! Now!"；選用句 "Keep your credit." 收進第 39 集。
+- **第 31–33 集**（寫稿者定）：吵架隔著車頂，鏡頭守在車頭那一側；Elias 用**右手**從西裝內袋拿手機（`cast.json` 的 `elias-phone` note 已改）。她推開的是從街上看的左扇鐵門；手電筒放在工作台靠爐子那一端。
+  帆布一角綁一條舊繩 `a frayed rope tied to one corner of the tarp`，扯下後堆在爐腳，第 33 集起收進倉庫、不入鏡。第 33 集："Huh?" 的回答是 Nora 遞一根冷的吹管給 Sparks；長凳、滾料台、還熱著的杯子另有英文句；第一筆粉筆 `a single short white chalk stroke…`。
+  Sparks 在線外拿冷吹管時不戴手套，在爐邊每一鏡都戴。鞋：Gus 舊的棕色工作靴、`nineteen` 的 Nora 工作靴、Brandt 白色軟底鞋、Sparks 黑色工作靴。回憶的廂型車 `a plain old white van with no lettering`。
 
