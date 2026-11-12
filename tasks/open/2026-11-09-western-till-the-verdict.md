@@ -22,6 +22,16 @@ scope:
   - docs/videos/till-the-verdict-e008
   - docs/videos/till-the-verdict-e009
   - docs/videos/till-the-verdict-e010
+  - docs/videos/till-the-verdict-e011
+  - docs/videos/till-the-verdict-e012
+  - docs/videos/till-the-verdict-e013
+  - docs/videos/till-the-verdict-e014
+  - docs/videos/till-the-verdict-e015
+  - docs/videos/till-the-verdict-e016
+  - docs/videos/till-the-verdict-e017
+  - docs/videos/till-the-verdict-e018
+  - docs/videos/till-the-verdict-e019
+  - docs/videos/till-the-verdict-e020
 ---
 
 # Western adaptation of Till the Verdict Do Us Part (2025-15)
@@ -58,7 +68,8 @@ scope:
 - [x] 第 4–10 集（篇章 1 剩下的）：系列設定 `production/s1-bible-e004-e010.md`、分鏡、程式檢查、兩段重疊的獨立審稿（`review/2026-11-12-e004-e007-storyboard.md`、`…-e007-e010-…`）、改稿（2026-11-12）。
 - [ ] 站主確認 `s1-bible-e004-e010.md`〈要站主決定的〉與審稿後主控先定的四件事。
 - [ ] 開拍前的定妝照與場景圖（兩份 bible〈人物與參考圖〉〈場景格局〉列的順序）。
-- [ ] 原聲小樣：驗 H3 說英文的口音、同一角色跨鏡的聲音、短喊（報價後站主點頭才做）。
+- [x] 原聲小樣（2026-11-12，約 2.5 CU，screen-test README〈原聲小樣〉）；Nora 跨鏡音色等站主聽。
+- [ ] 第 11–20 集（篇章 2）：系列設定 `production/s1-bible-e011-e020.md`（站主選 A：第 20 集同一個上午）、分鏡、審稿、改稿。
 
 ## How to verify
 
