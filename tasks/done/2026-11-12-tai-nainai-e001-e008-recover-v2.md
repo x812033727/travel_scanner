@@ -1,13 +1,13 @@
 ---
 id: 2026-11-12-tai-nainai-e001-e008-recover-v2
 title: 恁祖媽今年18 第1-8集：把雲端上的新版分鏡收回 repo
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-elegant-ritchie
 claimed_at: 2026-11-12T14:12:14Z
 created_at: 2026-11-12T14:11:24Z
-completed_at:
+completed_at: 2026-11-12T15:39:59Z
 branch: claude/elegant-ritchie-vpnwqm
 depends_on: []
 scope:
