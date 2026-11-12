@@ -27,7 +27,7 @@ scope:
 - [x] 稿子：獨立查核、盲評必過題全過、lint 0 錯誤，依站主授權核准。
 - [x] 旁白、check-audio（語速 ≥ 4.3），核准；設定圖沿用系列。
 - [x] 插圖、放大檢查、分鏡評分 ≥ 49／70，核准。放大檢查四輪＋評分後兩輪，重畫約 50 景；第一位獨立評分 47/70（角色一致 4）未過，重畫 25 景後第二位 49/70 通過，2026-11-12 18:15 依授權核准。教訓：圖片模型一寫 flame 就畫成水滴形，「a small perfectly round soft blue ball of flame sitting around its wick like a marble」只有在兩根蠟燭對比時穩定成功；所長常帶灰髮與耳環，加 chibi 尾句後較穩。
-- [ ] 合成、qa 11 項、`silent_share` ≤ 3%、成片送站主。
+- [x] 合成、qa 11 項、`silent_share` ≤ 3%、成片送站主。qa 11/11（final.mp4 8a6eaf38c9b3），silent_share 2.0%／2.2%、最長 0.98 秒；雲端硬碟 3427 檔 0 differences；2026-11-12 19:0x 送 /admin/videos 等站主審成片。
 - [ ] 八語（MiniMax 配音、縮圖字不碰人）、上架包，站主核准；YouTube 網址記下後結案。
 - [ ] 每關傳雲端硬碟 `videobackup:AI劇/原來如此事務所/P04/製作檔/sothatswhy-p04-microgravity-flame`（0 differences）。
 
@@ -42,4 +42,4 @@ scope:
 - [x] 稿子：verify-1（177/4/0）、盲評四輪到 14/14、verify-2（18/0/0）、核准
 - [x] 旁白：8:06，check-audio 21→0，核准
 - [x] 關鍵畫面與分鏡（49/70 核准）
-- [ ] 合成到 qa（背景跑中）
+- [x] 合成到 qa、備份、送審成片
