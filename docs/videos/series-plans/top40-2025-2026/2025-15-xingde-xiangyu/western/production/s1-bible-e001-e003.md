@@ -82,6 +82,11 @@
 | 黑傘（第 3 集） | `a long black umbrella about as tall as a man's hip, closed, dripping, propped against the door frame` | 不寫進 Grant 的外貌句（`rain` look 已拿掉），寫在拍到門的每一鏡。 |
 | 牛皮紙袋（第 3 集） | `a plain brown paper shopping bag about the size of a hardcover book, flat bottom, folded top, no logo` | 要裝得下第 4 集的手機盒。 |
 | 深藍雨衣（第 3 集） | `a navy raincoat folded in half` | 進病房後放在椅面上的紙袋旁，不再拿在手上。 |
+| 駝色大衣 | `a camel wool coat with deep pockets` | 第 2 集出門時**敞開不扣**（照 `night-coat`）；第 3 集搭在病房椅背上。 |
+| Elias 的手套 | `a man's dark brown leather glove on a left hand, a dark wool coat cuff` | 第 1 集夢裡與第 2 集。 |
+| Elias 的手機（第 2 集） | `a black phone with no logo, about the size of his palm` | 只在戴手套的左手裡。 |
+| 白手帕（第 3 集） | `a folded white cotton handkerchief about the size of his palm` | 從胸前口袋抽出，回來時摺好塞回去。 |
+| 白薄毯（第 3 集） | `a thin folded white cotton blanket` | Kim 蓋在 Nora 腿上。 |
 | Peg 的湯 | `a white enamel soup pot with a lid, about the size of a mixing bowl` | 整集都在她的帆布袋裡，不拿出來（見〈2026-11-12 重審後補定的事〉）。 |
 | Peg 的帆布袋 | `a plain beige canvas tote bag with no print, hanging from her left shoulder` | |
 
@@ -125,3 +130,10 @@ main 2026-11-12 收進種田拍法與共用的分鏡規則（`docs/videos/drama/
 - **原聲下的畫外**：第 1 集 Grant 只在電話與電視裡（Gemini Algieba，電話聲處理過）；第 3 集他露臉說話用原聲。兩個聲音不同，電話與電視的濾波蓋得過去，第一批草稿出來時再請站主聽。
   第 2 集 Elias 全部是畫外（Gemini Charon）。其他角色在畫面上說的話都寫在說話的人自己的鏡上。
 - **原聲的短句**：6 個字以內的短句放進 6 秒的片段，模型會把空檔講滿。短句後面寫一個收尾動作與「嘴閉上」；短喊照種田寫成「張嘴喊」不放原文，第一批草稿驗會不會講出多餘的字。
+- **拿在手上的道具**：道具句照抄到描述本身為止，再接手的位置，例如傘 `…, dripping, in his right hand, tip down`、雨衣 `over his left forearm`、紙袋 `in his left hand`；放下以後才寫整句（含 `propped against the door frame`）。空了的杯子寫道具句再加 `empty`。
+- **數字念出來的台詞**：原聲正文裡寫成字（`nine-one-one`），免得數字被畫成字。
+- **第 2 集的分工**（重拆時定）：長椅上的人第 2 集醫院那場是一個背光剪影：第一次出現坐著、聽到尖叫站起來、之後椅子空著、Kim 說「No answer」後坐回去；從不露臉。
+  燈柱：她左肩靠著燈柱、右手橫過身前抓住，近景裡燈柱一律在畫面右。走廊上她往畫面左走、右手撐牆。
+- **第 3 集的分工**：Kim 天亮前在畫外離開，Grant 到了以後再進來、說完話退出門外；Grant 的眼鏡潑水後摘下、說完戴回去；鞋：Grant 深棕色皮鞋、Kim 白色護理鞋。
+  潑水後她把空杯放下、杯子倒在床頭櫃邊，之後每一鏡都寫倒著的空杯。
+- **要站主在第一批草稿後定的**：短喊在原聲下怎麼做（第 2 集 c13、c15、c33、c39、c40，第 3 集同類）。先照「張嘴喊、不放原文」試；喊出的字不對，就選「原文放進說話句」或「這幾句改用 Gemini 疊上去」。
