@@ -18,7 +18,9 @@ import { audioReviewHtml, finalReviewHtml } from "../review/pages.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { localizedThumbnailHash, thumbnailSourceHash } from "../core/translations.mjs";
 import { compilationSection, composeMetadata, localizedThumbnailSteps, uploadChecklist } from "./metadata.mjs";
-import { captionsCurrent, checksCurrent, linkOrCopy, localeThumbnails, skippedCaptionLocales } from "./cli.mjs";
+import { captionsCurrent, checksCurrent, linkOrCopy, localeThumbnails, skippedCaptionLocales, thumbnailHashes } from "./cli.mjs";
+import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
+import { createHash } from "node:crypto";
 
 const doc = fixture();
 const timeline = { ...estimateTimeline(doc), speech_hash: "abc123" };
@@ -365,3 +367,61 @@ test("UPLOAD.md gets a language thumbnails section with Studio's steps only when
   assert.equal(localizedThumbnailSteps({}, {}), "");
   assert.doesNotMatch(uploadChecklist({ metadata, captions: [], thumbnail: false, skippedThumbnails: { ja: "x" } }), /各語言的縮圖/, "no thumbnail.jpg, nothing to localize");
 });
+
+// Ticket 2026-11-10-review-push-a-changed-thumbnail-never: the publish review is bound to the hash
+// of upload/metadata.json and the site keeps an approved review for the same hash, so a thumbnail
+// redrawn after the owner approved the package never reached the site. The package now records
+// every thumbnail's bytes, so a new thumbnail is a new metadata.json and a new review.
+test("metadata.json records each thumbnail's sha256, so a redrawn thumbnail changes the publish binding and an unchanged one does not", async (t) => {
+  const box = sandbox();
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  mkdirSync(box.workdir, { recursive: true });
+  const own = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const lexicon = JSON.parse(readFileSync(path.join(box.videos, "lexicon.json"), "utf8"));
+  const narration = writeSyntheticNarration(own, lexicon, box.workdir);
+  writeFileSync(path.join(box.workdir, "final.mp4"), Buffer.from("the finished cut"));
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: speechHash(own, lexicon), narration_sha256: narration.audio_evidence.narration_sha256, visual_hash: visualHash(own), problems: [] }));
+  mkdirSync(path.join(box.workdir, "captions"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "captions", "zh-TW.srt"), "1\n00:00:00,000 --> 00:00:01,000\nzh\n");
+  writeFileSync(path.join(box.workdir, "captions", "manifest.json"), JSON.stringify({ speech_hash: speechHash(own, lexicon), locales: { "zh-TW": { file: "captions/zh-TW.srt" } }, skipped: {} }));
+  mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visualHash(own), thumbnail: "thumbnail.jpg" }));
+  await approve({ gate: "final", docDir: box.dir, workdir: box.workdir, now: new Date("2026-11-12T00:00:00Z") });
+  const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
+  const pack = async () => {
+    const out = { stdout: "", stderr: "" };
+    const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: (text) => (out.stdout += text) }, stderr: { write: (text) => (out.stderr += text) }, now: () => new Date("2026-11-12T00:00:00Z") };
+    assert.equal(await main(["package", "--slug", box.slug], ctx), EXIT.ok, out.stderr + out.stdout);
+    const bytes = readFileSync(path.join(box.workdir, "upload", "metadata.json"));
+    return { bytes, metadata: JSON.parse(bytes) };
+  };
+
+  writeFileSync(path.join(box.workdir, "thumbnail.jpg"), Buffer.from("the first thumbnail"));
+  const first = await pack();
+  assert.deepEqual(first.metadata.thumbnail_sha256, { "thumbnail.jpg": sha("the first thumbnail") });
+  assert.deepEqual(Object.keys(first.metadata).slice(-2), ["contains_synthetic_media", "disclosure_reason"], "the disclosure stays last");
+  assert.equal(Object.keys(first.metadata).indexOf("thumbnail_sha256") + 1, Object.keys(first.metadata).indexOf("thumbnail"), "just before thumbnail, so the keys after it read as before");
+
+  const again = await pack();
+  assert.equal(sha(again.bytes), sha(first.bytes), "the same thumbnail packages byte for byte the same: an approved package stays approved");
+
+  writeFileSync(path.join(box.workdir, "thumbnail.jpg"), Buffer.from("a redrawn thumbnail"));
+  const redrawn = await pack();
+  assert.notEqual(sha(redrawn.bytes), sha(first.bytes), "a redrawn thumbnail is a new metadata.json, so review-push sends a new publish review");
+  assert.deepEqual(redrawn.metadata.thumbnail_sha256, { "thumbnail.jpg": sha("a redrawn thumbnail") });
+
+  rmSync(path.join(box.workdir, "thumbnail.jpg"));
+  const bare = await pack();
+  assert.equal(Object.hasOwn(bare.metadata, "thumbnail_sha256"), false, "no thumbnail, no key");
+});
+
+test("thumbnailHashes hashes the files that are there, in the order given, and leaves a missing one out", (t) => {
+  const dir = tempDir("package-thumbnail-hashes-");
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  mkdirSync(path.join(dir, "thumbnails"));
+  writeFileSync(path.join(dir, "thumbnail.jpg"), "A");
+  writeFileSync(path.join(dir, "thumbnails", "en.jpg"), "EN");
+  const sha = (text) => createHash("sha256").update(text).digest("hex");
+  assert.deepEqual(Object.entries(thumbnailHashes(dir, ["thumbnail.jpg", "thumbnails/en.jpg", "thumbnails/ja.jpg"])), [["thumbnail.jpg", sha("A")], ["thumbnails/en.jpg", sha("EN")]]);
+});
+
