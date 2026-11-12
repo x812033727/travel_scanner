@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-3921",
+  "revision": "2026-11-12-pool-3951",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 4311,
-    "canonical_questions": 4150,
-    "eligible_candidates": 3980,
-    "selected_candidates": 3921,
+    "raw_records": 4341,
+    "canonical_questions": 4180,
+    "eligible_candidates": 4010,
+    "selected_candidates": 3951,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5217,
-    "current_research_source_urls": 2268,
-    "selected_source_urls": 3429,
-    "new_suggestions_not_added": 2409,
+    "source_urls": 5239,
+    "current_research_source_urls": 2290,
+    "selected_source_urls": 3449,
+    "new_suggestions_not_added": 2419,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
@@ -2118,6 +2118,26 @@
       "sha256": "a5cdb28e65c96cd6d229b7fce294f2199cf2e0fdf7ffad3febe54176da6c6aa2"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave62-earth.json",
+      "sha256": "45c7229adf2760c5691331dd4d19036baac0c61d4455ffda2e6a12da2b9f0048"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave62-human.json",
+      "sha256": "f9e19ca1ba5c01614d847d6204836a6f3a1b1082d15248b13707ec34c2f0993f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave62-life.json",
+      "sha256": "05dba767a4db4898086fa200453d828371d9d242613fee1b25b87de20dae3757"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave62-physics.json",
+      "sha256": "ac5619c5869d6b93f062a2eca40406d1a4ba794e33f2f8e85248ee3d63613b79"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave62-tech.json",
+      "sha256": "6dd9e8b76d0b82302145b918f042b77b7a60c939ee9800b801fda4834747a4bc"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave7-animals.json",
       "sha256": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410"
     },
@@ -2191,11 +2211,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "2778158373812ea00fc1818c383154edd14ec9bf747ff0f2e5897eb862558399"
+      "sha256": "f1b6c6fcac5d3723ba80efffa628f512d7faeaf8c61ca715f9f0747f726b0146"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "c5f5d12af59cecc33c0d18dd5beb68ae88dd75027d3aac96e4aa661abaf42826"
+      "sha256": "834dcc3eea9f626cd07f9cefd70c7ae0472ac49d02e1ed252fa8a91d2b5d309a"
     }
   ],
   "sources": [
@@ -2991,6 +3011,32 @@
           ],
           "origin": "wave49-physics-20261103",
           "original_url": "https://doi.org/10.1103/g94g-c6tt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0222d15b24b26b32",
+      "url": "https://psyc.bbk.ac.uk/bodylab/docs/azanonEtal-childdev-2018.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/cdev.12813",
+          "title": "The Sensitive Period for Tactile Remapping Does Not Include Early Infancy（Azañón、Camacho、Morales、Longo）",
+          "publisher": "Child Development 89(4):1394–1404（2018）",
+          "version": "出版社排版刊本，存於倫敦大學伯貝克學院 Body Lab 研究室頁（WebSearch 結果連結）",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 預設標頭下載 PDF，pdftotext 轉文字",
+          "reading_scope": "全文：摘要、前言、Method（Participants、Apparatus、Procedure、Analyses、Exclusion Criteria）、Results（Cataracts Removed Before 5 Months；Case Study）、Discussion 至 LM 與 Ley 2013 的比較",
+          "locator": "p1394 摘要；p1396–1397 Method/Participants；p1398–1399 Results〈Cataracts Removed Before 5 Months of Age〉；p1399–1400〈Case Study〉與 Figure 3；p1400–1401 Discussion",
+          "summary": "13 名出生後 0.5–5.5 個月（平均 3.05 個月）就開刀移除雙眼先天白內障的兒童（測驗時平均 8.12 歲）與 24 名配對兒童做雙手先後判斷：兩組都有交叉代價（姿勢主效應顯著），組別與交互作用都不顯著，交叉代價與剝奪長短無相關。一名 6.62 歲才開刀的少女 LM（17.38 歲受測）交叉與不交叉幾乎一樣（probit 斜率 19.63 對 17.86；正確率 94.42% 對 91.67%），14 名對照組人人都有交叉代價（斜率 17.88 對 6.10；正確率 96.07% 對 81.20%）。和 12 篇已發表、2 篇未發表研究共 343 人比，LM 交叉時的表現落在前 2–3%，不交叉時只在第 73／87 百分位。作者結論：有敏感期，但不包含嬰兒最早期。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "非出版社網站的刊本副本；LM 是單一個案（與 Ley 2013 的單一個案同方向，後者本輪未讀）；早期組視力仍偏低（較好眼平均 0.32）；343 人直方圖混合不同研究、不同 SOA 範圍。 覆核 V22（2026-11-12）：read_via 補：「研究室出版頁 https://psyc.bbk.ac.uk/bodylab/publications.html（WebSearch 結果）頁上有相對連結 docs/azanonEtal-childdev-2018.pdf；同一篇另有 CORE 典藏副本 core.ac.uk/download/74205862.pdf（WebSearch 結果，未下載）」。limitations 加：「343 人含本研究 LM 的 14 名對照與 Yamamoto & Kitazawa 2001（R44003 原刊）的 20 人，共 22 個實驗；LM 對照組全女、平均 20.77 歲，不是同齡」。",
+          "author_cache": {
+            "file": "f19src/azanon2018_bbk.pdf + f19src/azanon2018_bbk_raw.txt",
+            "sha256_prefix": "a2027bb0c6fa8fea / 8ceb3217a93140d8",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-human-20261111",
+          "original_url": "https://psyc.bbk.ac.uk/bodylab/docs/azanonEtal-childdev-2018.pdf"
         }
       ]
     },
@@ -14593,6 +14639,32 @@
       ]
     },
     {
+      "id": "SRC-1cbcdafb01158bba",
+      "url": "https://rosap.ntl.bts.gov/view/dot/67508/dot_67508_DS1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://rosap.ntl.bts.gov/view/dot/67508",
+          "title": "Pavement and Geometric Design Criteria for Minimizing Hydroplaning — A Technical Summary (FHWA-RD-79-30)",
+          "publisher": "FHWA／Texas Transportation Institute，1979",
+          "version": "技術摘要 PDF（ROSA P）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 ROSA P 連結；curl GET 200，pdftotext 轉文字",
+          "reading_scope": "Summary、Chapter II 水漂速度方程一節逐段讀；其餘以關鍵字定位",
+          "locator": "Summary 中 OGFC 一段（18 psi、0.2 吋胎紋＝公路車輛中位數）；Chapter II〈Equations to predict hydroplaning speed〉與 Eq.(7) 說明 p.8–9",
+          "summary": "以約 1,300 次試驗、選出 1,038 點建立的經驗式，用胎紋深（以 1/32 吋計）、路面紋理深、水深、胎壓預測水漂速度；約 99% 觀測落在預測值 ±5 mph，相關係數 0.85。輪速掉 10% 時已幾乎是完全動態水漂。開級配鋪面在 55 mph 時只要胎壓≥18 psi、胎紋＞約 0.2 吋（5 mm，約為公路車輛胎紋中位數）抓地就足夠。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與 F20-S011 為同一研究的摘要版，事實只算一次；方程式本身不進片。 覆核 V23（2026-11-12）：limitations 補：預測式（1,300 次試驗、99% 在 ±5 mph、r＝0.85）是方法，不算事實；胎壓 18 psi 與完整報告的約 20 psi 不一致，兩者並列。",
+          "author_cache": {
+            "file": "f20src/dot_67508_DS1.txt",
+            "sha256_prefix": "61cf580f3659acaa",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-physics-20261111",
+          "original_url": "https://rosap.ntl.bts.gov/view/dot/67508/dot_67508_DS1.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-1cc082c3a66dc4ea",
       "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/textiles-costumes.html",
       "readings": [
@@ -21043,6 +21115,32 @@
       ]
     },
     {
+      "id": "SRC-2b55ea5399454ff4",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9266007/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9266007/",
+          "title": "Evaluation of Highway Hydroplaning Risk Based on 3D Laser Scanning and Water-Film Thickness Estimation",
+          "publisher": "Int J Environ Res Public Health 2022（CC BY）；同濟大學等",
+          "version": "刊本全文 XML（Europe PMC）",
+          "accessed_on": "2026-11-12",
+          "read_via": "同 F20-S013 的 Europe PMC 搜尋列出；fullTextXML curl GET 200，去標籤全文閱讀",
+          "reading_scope": "Abstract、Introduction 前段、Results 摘讀、Conclusions 全讀",
+          "locator": "Abstract；Conclusions 第二、三段",
+          "summary": "用車載光達掃描路面、以淺水方程估計水膜：有橫坡的路面，水膜越往下游邊越厚；車轍輪跡上的水膜明顯比其他地方厚，最大到 2 公分；粗糙路面窪處水膜特別厚。代入 Gallaway 與 USF 模型，車轍與粗糙區的最低水漂速度可低於 90 km/h。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "模型估算（未量車輛實際水漂）；中國高速公路四段；作者最後的駕駛建議不進片。池中 D2104 談車轍成因，本筆只用車轍積水這一點。 覆核 V23（2026-11-12）：summary 改：最大水膜厚度『可超過 2 公分』（over 2 cm）；資料在上海、為模型估計。",
+          "author_cache": {
+            "file": "f20src/PMC9266007_fullTextXML.xml",
+            "sha256_prefix": "bfb45da88fe42446",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9266007/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-2b5c01b926c0bfa2",
       "url": "https://news.uchicago.edu/story/neurological-study-reveals-cuttlefish-have-surprising-control-skin-spikes",
       "readings": [
@@ -23504,6 +23602,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://www.rfc-editor.org/rfc/rfc3629.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3068f7ef20a8e79b",
+      "url": "https://static.tti.tamu.edu/tti.tamu.edu/documents/TTI-1984-ID18474.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://static.tti.tamu.edu/tti.tamu.edu/documents/TTI-1984-ID18474.pdf",
+          "title": "Truck Tire Hydroplaning — Empirical Confirmation of Horne's Thesis",
+          "publisher": "Texas Transportation Institute（Don L. Ivey），為 ASTM F-9 研討會撰寫，1984 年 11 月",
+          "version": "TTI 文件典藏 PDF",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 static.tti.tamu.edu 連結；curl GET 200，pdftotext 轉文字",
+          "reading_scope": "全文（含 Table 1）",
+          "locator": "第 1–3 頁正文與 Table 1",
+          "summary": "1984 年 9 月 6 日，TTI 試驗拖車「Myth Buster #1」在水漂槽（水深約 1/4 吋±0.1）測卡車胎：載重只有 940 磅、胎壓 75 psi，58 mph 時輪速明顯下降（動態水漂）。同載重 20 psi 為 43 mph、40 psi 51 mph、100 psi 62 mph；載重 3,600 磅時到 62 mph（最高可達速度）都沒偵測到減速。足印寬長比約 1.4。文中稱此推翻了二十年來「卡車胎不會水漂」的說法：汽車胎載重範圍窄，卡車胎可從 600 到 6,000 磅，空車時足印形狀大變。這是 Horne 1984 年預測、尚未驗證的論點。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有 4 個水漂資料點，測試胎磨到約 2/32 吋；是研討會稿不是期刊論文。 覆核 V23（2026-11-12）：summary 改：Table 1 的 20 psi、43 mph 是新胎，其餘為磨到約 2/32 吋的舊胎；水漂判定為輪速掉 2 mph；足印寬長比 940 磅時 1.40–1.43、3,600 磅時 0.95–1.10。",
+          "author_cache": {
+            "file": "f20src/TTI-1984-ID18474.txt",
+            "sha256_prefix": "d013f99e96b93417",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-physics-20261111",
+          "original_url": "https://static.tti.tamu.edu/tti.tamu.edu/documents/TTI-1984-ID18474.pdf"
         }
       ]
     },
@@ -30955,6 +31079,32 @@
       ]
     },
     {
+      "id": "SRC-4081d470adfe2d5b",
+      "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=K0040013&flno=39",
+      "readings": [
+        {
+          "canonical_url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=K0040013&flno=39",
+          "title": "道路交通安全規則 第 39 條（汽車申請牌照檢驗項目及基準）",
+          "publisher": "交通部、內政部（全國法規資料庫）",
+          "version": "現行條文網頁",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（限 law.moj.gov.tw）列出單條頁；curl GET 200，去標籤閱讀",
+          "reading_scope": "第 39 條全文",
+          "locator": "第 39 條第三十款",
+          "summary": "自民國 103 年 1 月 1 日起，各類車輛所使用輪胎之胎面不得磨損到 CNS1431（汽車用外胎）或 CNS4959（翻修輪胎）所訂的任一胎面磨耗指示點。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "條文以磨耗指示點為準，沒有寫毫米數；新聞常說的 1.6 mm 未在本條讀到，片中不寫。與池中 SRC-9108b78ad39079b3（第 99-1 條）同一法規不同條。 覆核 V23（2026-11-12）：summary 改：第 39 條是『汽車申請牌照檢驗之項目及基準』，第三十款為檢驗基準之一；CNS4959 為『卡客車用翻修輪胎標準』；條文無毫米數。",
+          "author_cache": {
+            "file": "f20src/moj_K0040013_39.html",
+            "sha256_prefix": "e5f309c1654b3d62",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-physics-20261111",
+          "original_url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=K0040013&flno=39"
+        }
+      ]
+    },
+    {
       "id": "SRC-4085c32187ae64ab",
       "url": "https://www.lammps.org/gallery/crazing/",
       "readings": [
@@ -31956,6 +32106,32 @@
           },
           "origin": "wave55-tech-20261111",
           "original_url": "https://www.nasa.gov/missions/psyche-mission/nasas-tech-demo-streams-first-video-from-deep-space-via-laser/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4317ec20bff24730",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12693772/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12693772/",
+          "title": "Methodology for Real-Time Hydroplaning Risk Estimation Using an Intelligent Tire System: An Analytical Approach",
+          "publisher": "Sensors (Basel) 2025（CC BY）；Virginia Tech TMVS 實驗室，試驗在 Michelin Laurens 試車場",
+          "version": "刊本全文 XML（Europe PMC）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST 搜尋（(hydroplaning OR aquaplaning) AND tire AND OPEN_ACCESS:y）列出 PMC12693772；fullTextXML curl GET 200，去標籤全文閱讀",
+          "reading_scope": "全文（Introduction 全部、Methods 測試設置、Results、Model Validation、Conclusions）",
+          "locator": "Introduction 第 5–7 段（Bathelt／Wies 溝槽被淹、Sinnamon 淺水與深水、Todoroff／Veith 磨耗胎）；Results（風險在 20 mph 以上開始偏離零）；Model Validation 第一段（標準水漂試驗約 8 mm 水深不代表真實路況）；Conclusions",
+          "summary": "用嵌在胎紋溝裡的力感測器量水的升力：245/40 R18 舊胎（胎紋約 4.4–4.7 mm）。在受控 1.05 mm 水深下，水漂風險在約 20 mph 以上就開始偏離零（部分水漂開始），與 Hermange 的光學觀測一致；真實路面 45 與 65 mph 平均風險 12.6% 與 21.3%。估計這條胎的臨界水漂速度 111 mph；而 0.3 mm 水膜時先前經驗式預測要到約 190 mph 才臨界。文獻回顧：溝槽可在水膜比胎紋淺很多時就被淹滿，被淹後胎面像光面胎；多數標準化水漂試驗用約 8 mm 水深，不代表一般行車條件；磨耗胎在高速時煞車能力明顯下降，歸因於部分水漂。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一輪胎、單一車；風險指數是作者定義的流量比，不是摩擦係數；磨耗胎結論是轉述 Todoroff 與 Veith。 覆核 V23（2026-11-12）：summary 改：1.05 mm 受控水深下，本胎與 Hermange 兩條參考胎的風險都在約 30 mph 開始離零，臨界 111 mph（Gengenbach 式 102 mph）；『20 mph 以上離零』是真實路面試驗（水深未量、估 0.2–0.3 mm）以 45–65 mph 四點畫出的曲線；風險分母是鎖死輪的 choke flow。",
+          "author_cache": {
+            "file": "f20src/PMC12693772_fullTextXML.xml",
+            "sha256_prefix": "469ba9c11c62a9fb",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12693772/fullTextXML"
         }
       ]
     },
@@ -34882,6 +35058,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1016/j.culher.2018.07.015"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4b770bb74beb3f8c",
+      "url": "https://ntrs.nasa.gov/api/citations/19690011090/downloads/19690011090.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://ntrs.nasa.gov/citations/19690011090",
+          "title": "Highway and Runway Traction Studies — The Problem, History, Objectives, and NASA Program (NASA SP-5073 首篇)",
+          "publisher": "NASA Langley（Walter B. Horne）與 Tennessee Highway Research Program（E. A. Whitehurst），1969",
+          "version": "掃描 PDF（NTRS）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 NTRS 下載連結；curl GET 200，pdftotext 轉文字",
+          "reading_scope": "全文（16 頁）",
+          "locator": "〈Runway Research〉三段（1956 年 Harrin 跑步機試驗、1965 年 reverted rubber、溝槽是英國 1956 年做法）",
+          "summary": "歷史：1956 年 Harrin 在跑步機式裝置上首次定量記錄小輪胎在濕帶面上於臨界速度自行停轉；蘭利起降載重軌道 1954 年啟用；路面刻槽是英國 1956 年在機場首試，公路多為縱向、機場多為橫向；NASA 1962、1964 年在軌道上試刻槽。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與 F20-S007 對首次觀察年份寫法不同（1956 對「約 1957」），片中寫「1950 年代中後期」。",
+          "author_cache": {
+            "file": "f20src/19690011090.txt",
+            "sha256_prefix": "c7d81d65894a7536",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-physics-20261111",
+          "original_url": "https://ntrs.nasa.gov/api/citations/19690011090/downloads/19690011090.pdf"
         }
       ]
     },
@@ -40823,6 +41025,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.storm.mg/lifestyle/4956495"
+        }
+      ]
+    },
+    {
+      "id": "SRC-58e7c248abd74b7e",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10410228/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rspb.2023.1267",
+          "title": "Dim-light colour vision in the facultatively nocturnal Asian giant honeybee, Apis dorsata（Vijayan、Balamurali、Johnson、Kelber、Warrant、Somanathan）",
+          "publisher": "Proceedings of the Royal Society B 290:20231267（2023，PMC10410228，CC BY）",
+          "version": "出版社刊本（PMC 全文 XML）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 搜尋找到，fullTextXML 下載",
+          "reading_scope": "全文：摘要、§1 前言、§2 Methods（蜂群、刺激與色彩模型、白天與暗光行為測驗、統計）、§3 Results a–c、§4 Discussion、Figure 2–4 圖說",
+          "locator": "§3(a)〈Brightness of the stimulus is an unreliable cue〉；§3(b) 白天 78.9%、88.3%；§3(c) 87.5%、76.6%、44.1%；§4 Discussion 第 1、4 段與模型限制段",
+          "summary": "印度南部野生大蜜蜂訓練找藍色餵食點，再給藍色與三種亮度的灰色（不給糖）。白天 78.9±4.8% 的落點在藍色（20 隻）；訓練黃色的另一組在藍綠黃紅中 88.3±4.6% 選黃色（12 隻）。夜裡，0.1–0.2 cd/m²（比半月亮）87.5±3.9% 選藍、0.01–0.1 cd/m²（半月相當）76.6±5.9%，再暗到 0.001–0.01 cd/m² 只剩 44.1±11.2%，但每個亮度下去灰色的次數都顯著較少。用西洋蜂的感光參數算，月光與暮光下各刺激的色彩距離都小於 1 個 RNL 單位，模型預測幾乎分不出；作者說行為與模型不一致，模型參數來自西洋蜂、光譜不是現場量的，不能可靠解釋。換照明光譜後灰色與藍色的相對亮度會變，亮度不是可靠線索。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "野外蜂群、夜間不能逐隻訓練（只能整群標記）；最暗一級在箱內、樣本 17 隻、每隻約一次落點；色彩模型用西洋蜂參數；「西洋蜂暮光下色盲」是引用他人研究，本文沒有測。 覆核 V22（2026-11-12）：summary 與 limitations 改：模型用的是文獻月光與晚暮光光譜、西洋蜂參數、加入光子雜訊後兩兩距離 <1 RNL；不加雜訊時訓練色與背景可分（Fig.3a）；作者列的限制還有『模型假設亮光、未納入暗光下空間與時間累加』。刪去『最暗一級在箱內』（本輪未核到）。",
+          "author_cache": {
+            "file": "f19src/PMC10410228.xml",
+            "sha256_prefix": "6cd9f2b4bba2bc14",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10410228/fullTextXML"
         }
       ]
     },
@@ -56070,6 +56298,32 @@
       ]
     },
     {
+      "id": "SRC-7b98574ec273531f",
+      "url": "https://crashstats.nhtsa.dot.gov/Api/Public/Publication/811617",
+      "readings": [
+        {
+          "canonical_url": "https://crashstats.nhtsa.dot.gov/Api/Public/Publication/811617",
+          "title": "Tire-Related Factors in the Pre-Crash Phase (DOT HS 811 617)",
+          "publisher": "NHTSA National Center for Statistics and Analysis（Eun-Ha Choi），2012 年 4 月",
+          "version": "定稿 PDF",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 crashstats 連結；curl GET 200，pdftotext 轉文字",
+          "reading_scope": "Executive Summary 與 6.3〈Tire tread depth〉",
+          "locator": "Executive Summary 要點；§6.3 與 Figure 5",
+          "summary": "NMVCCS 2005–2007 輕型車事故：胎紋 0–2/32 吋的輪胎約 26% 裝在事故前出過輪胎問題的車上，3–4/32 吋只有 8%；0–2/32 吋的車在事故前出輪胎問題的比例是 3–4/32 吋的 3 倍。NHTSA 建議胎紋 2/32 吋時更換（FMVSS 139 磨耗指示）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "「輪胎問題」含爆胎、漏氣等，不專指水漂；只列入 not_added 參考。",
+          "author_cache": {
+            "file": "f20src/nhtsa_811617.txt",
+            "sha256_prefix": "bd13af2c84ffe712",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-tech-20261111",
+          "original_url": "https://crashstats.nhtsa.dot.gov/Api/Public/Publication/811617"
+        }
+      ]
+    },
+    {
       "id": "SRC-7b990f606f73d64a",
       "url": "https://www.noaa.gov/jetstream/lightning/lightning-safety",
       "readings": [
@@ -63177,6 +63431,32 @@
       ]
     },
     {
+      "id": "SRC-8c0a041a2dd872d0",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8612739/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.cub.2021.09.011",
+          "title": "Multisensory spatial perception in visually impaired infants（Gori、Campus、Signorini、Rivara、Bremner）",
+          "publisher": "Current Biology 31(22):5093–5101（Cell Press；PMC8612739，CC BY）",
+          "version": "出版社刊本（PMC 全文 XML）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST fullTextXML（公開文件記載的 API），curl 預設標頭；sha256 與上一輪 f18src/PMC8612739.xml 相同",
+          "reading_scope": "全文：Summary、Results and discussion 全部五節（Auditory localization；Tactile localization and body representations；Multisensory integration；Resolving crossmodal spatial conflict；The sensory phenotype）、Table 1、Figure 1–2 圖說、STAR Methods 的 Participants、Design、Apparatus",
+          "locator": "Results and discussion 首段（受試者）；〈Tactile localization and body representations〉第 2–3 段；Table 1 Tactile localization 欄；Figure 2；STAR Methods Design",
+          "summary": "10 名嚴重視障嬰兒（5–35 個月，中位 23.5）與 10 名視力正常嬰兒（8–31 個月，中位 27.0），手心各綁一個振動／發聲器，不給指示，看頭眼或手的定向反應。只有觸覺時，視力正常嬰兒在雙手交叉時反應較慢、較不準，視障嬰兒沒有這個交叉代價，兩種姿勢都和視力正常嬰兒最好的表現相當（group×posture 交互作用顯著）；只看手臂反應也一樣。聽覺定位兩組沒有差別。一手觸、一手聲衝突時，視障嬰兒偏向觸覺、視力正常嬰兒偏向聲音。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "每組 10 人、年齡跨度大；交叉代價只有圖與模型統計，正文沒有給百分比；視障組是周邊視覺病變、多數仍有極少視覺，不是全盲；研究者對原因是推測。上一輪 F18 只讀摘要（F18-NA003）。 覆核 V22（2026-11-12）：limitations 補：「原文前言引用『先天白內障移除研究顯示視覺的關鍵影響在 4–5 個月以後』，是引用，不計」。",
+          "author_cache": {
+            "file": "f19src/PMC8612739.xml",
+            "sha256_prefix": "6b0b21cb425488b0",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8612739/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-8c1007fb13af24fc",
       "url": "https://www.nesdis.noaa.gov/about/k-12-education/ice-snow/how-do-snowflakes-form",
       "readings": [
@@ -67120,6 +67400,32 @@
       ]
     },
     {
+      "id": "SRC-94c7bf337d9d2284",
+      "url": "https://onlinepubs.trb.org/onlinepubs/nchrp/docs/NCHRP03-95_FR.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://onlinepubs.trb.org/onlinepubs/nchrp/docs/NCHRP03-95_FR.pdf",
+          "title": "Guidelines for Timing Yellow and Red Intervals at Signalized Intersections — Final Report, NCHRP Project 03-95",
+          "publisher": "Transportation Research Board／NCHRP（McGee 等；後出版為 NCHRP Report 731，2012）",
+          "version": "研究團隊最終報告 PDF",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 onlinepubs.trb.org 連結；curl GET 200，pdftotext 轉文字",
+          "reading_scope": "Abstract、Executive Summary、Chapter 1〈The Dilemma Zone〉、Chapter 2 State of Practice 調查結果、Chapter 3 資料蒐集與〈Establishment of Dilemma Zone Boundaries〉逐段讀；後段統計模型只讀結論",
+          "locator": "Abstract p.viii；Executive Summary p.1–2；〈The Dilemma Zone〉p.6–7；調查重點與 Table 3–4 p.22–23；Table 11 p.36–37",
+          "summary": "現場調查 5 州 83 個路口進口道、超過 320 小時錄影、約 7,500 輛車：確認反應時間 1.0 秒、減速度 10 ft/s²；直行車 85 百分位接近速度≈速限＋7 mph，左轉≈速限−5 mph，全紅計算左轉用 20 mph。第一類兩難區（Gazis 等）：太近停不下、太遠過不去；第二類（1974 年 ITE 南區委員會）：駕駛人猶豫區，停車機率 10%–90%，多數研究落在距停止線 2.5–5.5 秒；不論黃燈多長，每次黃燈都會存在。本研究 Table 11：黃燈起亮時距停止線 2.5 秒者 7.9% 停車、5.5 秒者 93.1% 停車。北美 267 個回覆機關中 161 個（60%）沒有正式黃燈時制政策；39% 用運動學公式、18% 用依速度查表、6% 全部統一值；72% 的最短黃燈為 3 秒；最長黃燈 3–7 秒，38% 定 5 秒。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是研究團隊的最終報告，不是 NCHRP 731 刊本本身（內容對應）；英制單位。調查是 2010 年前後美國、加拿大機關自填。",
+          "author_cache": {
+            "file": "f20src/NCHRP03-95_FR.txt",
+            "sha256_prefix": "85b8c21663ff913c",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-tech-20261111",
+          "original_url": "https://onlinepubs.trb.org/onlinepubs/nchrp/docs/NCHRP03-95_FR.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-94df7f29a4606610",
       "url": "https://arxiv.org/html/2110.04206",
       "readings": [
@@ -67350,6 +67656,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://laws.e-gov.go.jp/law/135AC1000000050"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9585300c84659ad6",
+      "url": "https://igchicago.org/?p=6215",
+      "readings": [
+        {
+          "canonical_url": "https://igchicago.org/?p=6215",
+          "title": "Inspector General's Statement to City Council Committee on Pedestrian and Traffic Safety（紅燈照相計畫審查）",
+          "publisher": "City of Chicago Office of Inspector General（芝加哥市監察長辦公室）",
+          "version": "網頁聲明（2014 年 10 月 28 日發布）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 igchicago.org 連結；curl GET 200，去標籤後全文閱讀",
+          "reading_scope": "全文",
+          "locator": "〈Suggestions〉段（2014 年初接受 2.9 秒黃燈、恢復 3.0 秒硬下限）；〈Specific Anomalies〉段（排除縮短黃燈等四種原因；119th & Halsted 1,618 張、Kimball-Lincoln-McCormick 45,444 筆未記錄、Halsted-Fullerton-Lincoln 33 筆）",
+          "summary": "監察長指出：2014 年初芝加哥開始接受記錄黃燈只有 2.9 秒的違規，與公開的 3.0 秒標準不一致，引起民眾與行政聽證處的混亂和疑慮；建議恢復拒收 3.0 秒以下，CDOT 已確認永久恢復 3 秒硬下限。針對論壇報點名的「暴增」路口，現有紀錄與訪談不支持市府為了多開單而縮短黃燈；同一路口不同車道的黃燈差異符合標準。另找到三個原因：一處觸發速度設太低近兩個月多開 1,618 張；一處感應線圈長期故障，估計 45,444 筆違規沒被記錄。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "市府監察機關的國會聲明，不是完整審查報告；常見新聞說的「多開約 7.7 萬張」不在此頁，片中不用。",
+          "author_cache": {
+            "file": "f20src/igchicago_6215.html",
+            "sha256_prefix": "f74f4f1a57eab70a",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-tech-20261111",
+          "original_url": "https://igchicago.org/?p=6215"
         }
       ]
     },
@@ -68625,6 +68957,32 @@
           ],
           "origin": "wave43-physics-20261103",
           "original_url": "https://doi.org/10.1103/PhysRevLett.109.068001"
+        }
+      ]
+    },
+    {
+      "id": "SRC-982850f1ed93eaae",
+      "url": "https://law.moj.gov.tw/LawClass/LawGetFile.ashx?FileId=0000372609&lan=C",
+      "readings": [
+        {
+          "canonical_url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=K0040014&flno=231",
+          "title": "道路交通標誌標線號誌設置規則 第 231 條（完整條文檔，含黃燈表與全紅公式）",
+          "publisher": "交通部、內政部（全國法規資料庫）",
+          "version": "現行條文（第 231 條單條頁與其連結的完整條文 PDF；同站台北市法規查詢系統匯出版標示修正日期民國 115 年 3 月 11 日）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（限 law.moj.gov.tw）列出單條頁；單條頁註明「條文排版無法完整呈現，請詳閱完整條文」並連到 LawGetFile.ashx 的 PDF，curl GET 200，pdftotext 轉文字；臺北市法規查詢系統 FL012456 匯出 PDF（搜尋結果連結）只用來核對其餘條文",
+          "reading_scope": "第 231 條全文（一至八款）與第 232、233 條；完整條文 PDF 3 頁全讀",
+          "locator": "第 231 條第一款表（行車速限 50 以下：黃燈 3 秒；51–60：4 秒；61 以上：5 秒）；第二款與備註（全紅一秒以上，(W+L)/V 為原則、最短不得小於 (W+L)/2V，L 得用 6 公尺、V 得用行車速限）；第 232 條（啟動與斷電重開先全紅 3 秒）；第 233 條（週期 30–200 秒為原則）",
+          "summary": "台灣的黃燈時間「得」依速限分三段：50 公里以下 3 秒、51–60 公里 4 秒、61 公里以上 5 秒；黃燈後應有 1 秒以上全紅，直行全紅宜依 (W+L)/V 計（W：近端停止線至遠端路段起點距離；L：平均車長得採 6 公尺；V：平均車速得採速限，單位公尺／秒），以此為原則、最短不小於 (W+L)/2V；有行人時以 P（至遠端行人穿越道）取代 W。號誌啟動或斷電重開先全紅 3 秒。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "法條用「得依下表」「宜依公式」，不是逐路口實測；本來源沒有說明表格背後的推導（沒有反應時間或減速度參數）。單條網頁版表格無法顯示，以官方連結的 PDF 為準。與池中 SRC-9108b78ad39079b3／SRC-f4ee5ee56c2f4aeb 不同法規（那兩筆是道路交通安全規則）。 覆核 V23（2026-11-12）：summary 補：W 定義為『交岔路口近端停止線至遠端路段起點之距離』；條文沒有寫黃燈或全紅的目的，也沒有推導。",
+          "author_cache": {
+            "file": "f20src/moj_K0040014_231_full.txt",
+            "sha256_prefix": "6d7a7bfd0fb70cf9",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-tech-20261111",
+          "original_url": "https://law.moj.gov.tw/LawClass/LawGetFile.ashx?FileId=0000372609&lan=C"
         }
       ]
     },
@@ -78751,6 +79109,32 @@
       ]
     },
     {
+      "id": "SRC-aea8b7f0553c80dd",
+      "url": "https://ntrs.nasa.gov/api/citations/19640000612/downloads/19640000612.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://ntrs.nasa.gov/citations/19640000612",
+          "title": "Phenomena of Pneumatic Tire Hydroplaning (NASA TN D-2056)",
+          "publisher": "NASA Langley Research Center（Walter B. Horne、Robert C. Dreher），1963 年 11 月",
+          "version": "掃描 PDF（NTRS）",
+          "accessed_on": "2026-11-12",
+          "read_via": "NTRS 公開搜尋 API（api/citations/search?q=tire hydroplaning Horne）回傳此筆的 downloads 連結；curl GET 200，pdftotext 轉文字（OCR 有雜字，數字逐一對原頁）",
+          "reading_scope": "全文（Summary、Introduction、Physical Description、Derivation、Experimental Observations、Parameters、Susceptibility、Hazards）",
+          "locator": "〈Derivation of Tire Hydroplaning Speed〉式 (2)–(5) 與其後兩段；〈Spin-down of Wheel〉；〈Depth of fluid〉〈Tire-tread design〉〈Vertical load〉；〈Ground Vehicles〉；〈Loss of Braking Traction〉〈Loss of Directional Stability〉（含 Figure 30 說明：25 psi、52 mph）",
+          "summary": "水漂定義：輪胎排開積水的動量變化產生水壓，隨速度平方增大；在某臨界速度水的升力等於輪上載重，輪胎完全離地（總水漂），之下為部分水漂。簡化式 Vp＝9√p（節）＝10.35√p（英里／時，p 為胎壓 psi），前提是水深超過胎紋溝深或光面胎；與 925–22,000 磅載重、24–150 psi 的實驗資料大致相符。觀察到八種表現（含輪子自行減速到停、船首波消失、煞車與轉向力喪失）；串列輪前輪在 70% Vp 就開始減速。總水漂時阻力換算摩擦係數通常不超過 0.05。載重影響小（足印面積跟著變），由零載到滿載只改變 Vp 約 2% 以內。當時美國汽車胎壓約 16–30 psi、卡車與巴士 50–90 psi：汽車可能在遠低於 60–70 mph 的速度總水漂，卡車巴士較不易；胎壓 25 psi 的車對應水漂速度 52 mph。最小水深：平滑胎在 0.02–0.09 吋即可水漂，有紋汽車胎約需 0.2–0.3 吋。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "1963 年資料以飛機輪胎為主；簡化式假設足印平均壓力≈胎壓、升力係數 0.7，作者明說有紋胎在水深淺於溝深時缺乏資料。文中的駕駛建議（保持三倍車距）不進片。 覆核 V23（2026-11-12）：summary 補：式 (4)(5) 來自 Langley 起降載重軌道的 bogie 與鼻輪試驗；串列輪 70% Vp 是飛機起落架；9 節側風是四發噴射運輸機在雪泥跑道；載重 3–4%／2% 是飛機胎；首次實驗示範寫 1957 年 NACA 跑步機（SP-5073 寫 1956 年 Harrin）。",
+          "author_cache": {
+            "file": "f20src/19640000612.txt",
+            "sha256_prefix": "eed3a053c77ee41d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-physics-20261111",
+          "original_url": "https://ntrs.nasa.gov/api/citations/19640000612/downloads/19640000612.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-aebc97f067673f86",
       "url": "https://openstax.org/books/college-physics-2e/pages/9-3-stability",
       "readings": [
@@ -79601,6 +79985,32 @@
           },
           "origin": "wave14-animal-signals-20261101",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5816198/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b10d6d42b0bdf18d",
+      "url": "https://archive.org/download/pavementgeometri00gall/pavementgeometri00gall_djvu.txt",
+      "readings": [
+        {
+          "canonical_url": "https://archive.org/details/pavementgeometri00gall",
+          "title": "Pavement and Geometric Design Criteria for Minimizing Hydroplaning (FHWA-RD-79-31), Final Report",
+          "publisher": "Texas Transportation Institute（Gallaway、Ivey 等）／FHWA，1979 年 12 月",
+          "version": "Internet Archive 掃描本的 OCR 全文（djvu.txt）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果指向 Internet Archive 識別碼 pavementgeometri00gall；以 archive.org metadata API 取得檔案清單，下載其中的 _djvu.txt",
+          "reading_scope": "Foreword、Chapter IX〈Summary and Conclusions〉p.253–259 全讀；文獻回顧 Gengenbach 與 HPR-147 段落、Caltrans 縱向刻槽段落以關鍵字定位讀",
+          "locator": "Ch.IX p.253–257（汽車 40–80 mph、單邊水窪扭矩、1 吋深 30 呎長水窪 40–45 mph 失去接觸、拖曳力 300 lbf、OGFC 在 0.2–0.4 in/h 雨強被淹、雨停後數分鐘仍有積水、最小胎紋 55 mph 表現差、Caltrans 縱向刻槽彎道打滑事故減 90–95%）；文獻回顧〈One conclusion not drawn by Gengenbach〉段",
+          "summary": "FHWA 委託的全尺度試驗：一般而言汽車可能在 40–80 mph 間水漂，視條件而定；HPR-147 的完全動態水漂速度 45–77 mph。約 1 吋深、30 呎長的水窪在 40–45 mph 就可能失去接觸，水平阻力最高 300 lbf；只壓到車子一側的水窪產生危險的偏轉扭矩，比兩側都壓到更危險。Gengenbach 滾筒試驗：光面胎在 0.01 吋水深就水漂，有紋胎在 0.08 吋以下沒有資料顯示水漂；公路上胎紋不到 2/32 吋的胎在平均水深 0.06 吋以下未出現動態水漂。最小胎紋（尤其寬扁胎）在水深超過約 0.08 吋時 55 mph 表現差。開級配排水鋪面在 1% 橫坡外側車道外輪跡，雨強 0.2–0.4 吋／時就被淹；雨停後數分鐘仍可能有積水。加州在彎道做縱向刻槽，回報打滑類事故減 90–95%。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "OCR 文字有雜字；英制單位；1970 年代輪胎。加州 90–95% 是本報告轉述 Caltrans 的回報，非本研究量測。 覆核 V23（2026-11-12）：summary 補：量測工具是兩輪試驗拖車；OGFC 足夠摩擦的條件含水深 0.1 吋以內、胎壓約 20 psi（技術摘要寫 18 psi）；雨停後數分鐘仍有危險積水是混凝土路面的結論；原文 2/32 吋旁的 1.6 mm 只是換算，與台灣標準無關。",
+          "author_cache": {
+            "file": "f20src/ia_pavementgeometri00gall_djvu.txt",
+            "sha256_prefix": "dbc8e375495083dd",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-physics-20261111",
+          "original_url": "https://archive.org/download/pavementgeometri00gall/pavementgeometri00gall_djvu.txt"
         }
       ]
     },
@@ -81793,6 +82203,32 @@
           },
           "origin": "wave42-flavor-20261103",
           "original_url": "https://doi.org/10.1371/journal.pone.0071488"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b66e5cf2303cb95d",
+      "url": "https://ntrs.nasa.gov/api/citations/19680010151/downloads/19680010151.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://ntrs.nasa.gov/citations/19680010151",
+          "title": "Review of Causes and Alleviation of Low Tire Traction on Wet Runways (NASA TN D-4406)",
+          "publisher": "NASA Langley Research Center（Horne 等），1968 年 4 月",
+          "version": "掃描 PDF（NTRS）",
+          "accessed_on": "2026-11-12",
+          "read_via": "同 F20-S007 的 NTRS 搜尋 API 回傳 downloads 連結；curl GET 200，pdftotext 轉文字",
+          "reading_scope": "Summary、Introduction、〈Dynamic and Viscous Hydroplaning〉全節（Damp runways、Flooded runways、Vertical load and tire inflation pressure、Pavement surface texture）",
+          "locator": "Introduction 第二段；〈Damp runways〉〈Flooded runways〉兩段（Figure 6–7）；Figure 9 圖說（溝槽跑道最小水深）",
+          "summary": "NASA 區分兩種水漂：動態水漂要積水超過臨界深度、速度超過與胎壓平方根相關的臨界速度；黏性水漂只需平滑路面上的一層薄水膜，可發生在低得多的速度。蘭利軌道試驗把五種路面弄濕後掃掉積水（只剩潮濕）：平滑混凝土上的光面胎摩擦係數低到與濕冰面差不多；有粗紋理的路面損失小得多。積水 0.1–0.2 吋時大粒料瀝青在約 106 節全失抓地，符合動態水漂預測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "飛機光面胎、試驗軌道；摩擦係數以圖表呈現，片中只說「跟濕冰面差不多」不給數值。 覆核 V23（2026-11-12）：summary 補：試驗胎是 32×8.8 光面飛機胎；濕冰面是冰上噴水；另有『潮濕平滑面上光面胎的摩擦係數與完全動態水漂時相當』一句。",
+          "author_cache": {
+            "file": "f20src/19680010151.txt",
+            "sha256_prefix": "b982a3817d60daca",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-physics-20261111",
+          "original_url": "https://ntrs.nasa.gov/api/citations/19680010151/downloads/19680010151.pdf"
         }
       ]
     },
@@ -91694,6 +92130,32 @@
       ]
     },
     {
+      "id": "SRC-ca9fbcd829466329",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6949036/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1126/sciadv.aay6036",
+          "title": "Cuttlefish use stereopsis to strike at prey（Feord、Sumner、Pusdekar、Kalra、Gonzalez-Bellido、Wardill）",
+          "publisher": "Science Advances 6(2):eaay6036（2020，PMC6949036，CC BY-NC）",
+          "version": "出版社刊本（PMC 全文 XML）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 搜尋找到，fullTextXML 下載",
+          "reading_scope": "摘要、Introduction、Results 四節（含 Fig.1–4 圖說）、Discussion 第 1 段",
+          "locator": "Results〈Intact binocular cues speed up prey capture〉與 Fig.2；〈Cuttlefish also perceive 3D locations correctly when stimuli are anticorrelated…〉與 Fig.3；Introduction 末段（烏賊只有一種視色素）；Discussion 第 1 段",
+          "summary": "烏賊戴紅藍立體眼鏡看螢幕上的蝦。只給一隻眼看到蝦（擬單眼；濾片仍會漏光）時，定位階段花的時間較長、游得較遠、出擊位置離目標較近（3 隻對雙眼 5 隻），偵測、出擊與抓取階段沒有差別；作者引用 Messenger 的早年研究：單眼烏賊攻擊成功率 56%、雙眼 91%，並說雙眼線索不是唯一的深度線索。隨機點的蝦在單眼畫面裡看不出來：兩眼點紋相關或亮暗相反時（6 隻）都打到預期的立體位置，兩眼點紋不相關時從不出擊。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 SRC-24da4888fd2573ec 同一份文件（B2315 的來源），本輪重讀全文。樣本很小（3–6 隻）；擬單眼不是完全單眼；56%／91% 是引用 Messenger 1968，不是本研究。 覆核 V22（2026-11-12）：limitations 補：「Discussion 原文說很多擬單眼與雙眼烏賊表現一樣好；56%／91% 是 Messenger 的手術單眼研究」。",
+          "author_cache": {
+            "file": "f19src/PMC6949036.xml",
+            "sha256_prefix": "220a04e570f319b4",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6949036/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-caa6b9dec8fb62e2",
       "url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/383088592/PhysRevE.110.025003.pdf",
       "readings": [
@@ -95906,6 +96368,32 @@
       ]
     },
     {
+      "id": "SRC-d4181f6970d14626",
+      "url": "https://rosap.ntl.bts.gov/view/dot/87484/dot_87484_DS1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://rosap.ntl.bts.gov/view/dot/87484",
+          "title": "Development of Guidelines for Identifying and Treating Locations with a Red-Light-Running Problem (FHWA/TX-05/0-4196-2)",
+          "publisher": "Texas Transportation Institute（Bonneson、Zimmerman 等）／TxDOT，2004 年 9 月",
+          "version": "定稿 PDF（ROSA P）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 ROSA P 連結（library.ctr.utexas.edu 同份 TLS 驗證失敗，未繞過）；curl GET 200，pdftotext 轉文字",
+          "reading_scope": "Chapter 4 違規頻率模型各節（含 Figure 4-3、4-12 說明）與 Chapter 5 Time-Into-Red 一節逐段讀；其餘章節以關鍵字定位",
+          "locator": "Chapter 4〈Yellow Interval Duration〉p.4-9 與 Figure 4-12 說明；Chapter 5 Figure 5-4／5-5 與其後兩段 p.5-15–5-16",
+          "summary": "德州資料（275 小時觀測）：違規隨黃燈加長而減少，黃燈短於 3.5 秒時違規顯著增加。依其模型，黃燈加長 1.0 秒對應違規修正係數 0.4（約減 60%），適用 3.0–5.5 秒黃燈。闖紅燈事故按「進入紅燈幾秒」分佈：前 5 秒最多，之後下降，20 秒後維持小而固定；直角撞在紅燈 5–15 秒偏多，因為橫向排隊車正放行。作者推論：加長全紅只能減少紅燈頭幾秒的那一小部分直角撞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "模型預測值，與 F20-S001 轉述的 Bonneson & Son 模型（加 1 秒約減 53%）不是同一個模型，兩數字不可混用；只取方向與「3.5 秒以下明顯增加」。 覆核 V23（2026-11-12）：reading_scope 補讀第 2 章：Figure 2-4（181 個進口道，黃燈越長事故越少）與 Figure 2-8（加 1.0 秒、嚴重闖紅燈事故 MF 約 0.6、約減 40%）；Figure 5-4 資料來源是亞利桑那兩城市照相執法（左轉 22、直角 41 起）。",
+          "author_cache": {
+            "file": "f20src/dot_87484_DS1.txt",
+            "sha256_prefix": "b374664859c08fac",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-tech-20261111",
+          "original_url": "https://rosap.ntl.bts.gov/view/dot/87484/dot_87484_DS1.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-d4409ab3985420a4",
       "url": "https://www.unicode.org/faq/idn.html",
       "readings": [
@@ -99984,6 +100472,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nytimes.com/1989/05/09/business/pepsi-will-be-bartered-for-ships-and-vodka-in-deal-with-soviets.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dd97d9a15a97c2ea",
+      "url": "https://downloads.psl.noaa.gov/BLO/Air-Sea/ATOMIC/References/minor_ricoSband_2010jas3675.1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1175/2010JAS3675.1",
+          "title": "Trade Wind Cloud Evolution Observed by Polarization Radar: Relationship to Giant Condensation Nuclei Concentrations and Cloud Organization（Minor、Rauber、Göke、Di Girolamo）",
+          "publisher": "Journal of the Atmospheric Sciences 68:1075–1096（2011，AMS）",
+          "version": "出版社排版刊本，存於 NOAA PSL ATOMIC 計畫參考文獻目錄（WebSearch 結果連結）",
+          "accessed_on": "2026-11-11",
+          "read_via": "curl 預設標頭下載 PDF，pdftotext 轉文字",
+          "reading_scope": "摘要、§1 前言、§2 Analysis procedures（雲的選取、characteristic time 定義）、§3a–b 結果、§4 結論 key findings 1–3 與末段",
+          "locator": "p1075 摘要；p1076 前言（約 20 分鐘的常見說法）；p1084 characteristic time 定義；p1087〈b. Characteristic time versus height〉第 1–2 段；p1088–1089 GCN 比較；p1092–1093 key findings",
+          "summary": "RICO（2004–05 年冬，加勒比海巴布達島外的開放大西洋）用 S 波段偏極化雷達，從最早的回波一路追 76 朵信風積雲到雨下完，六天涵蓋觀測期間巨大凝結核（海鹽）濃度的全範圍。從雲生成到最大回波首次到 10 dBZ（大致代表雲裡第一次出現雨）最快約 12 分鐘、到 30 dBZ（較大的雨）最快約 22 分鐘，但也有雲要到約 170 分鐘；同一天的雲也很分散。起雨時間與高度和環境的巨大凝結核濃度無關，反而跟中尺度組織有關：長在邊界層滾渦上的雲維持 170 分鐘才到 10 dBZ，同樣海鹽濃度、長在弧狀外流邊界的雲最快 20 分鐘就到。巨大凝結核只影響雨滴大小分布（大 ZDR 只在高海鹽日出現）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "非出版社網站的刊本副本（AMS 版權）；「雲生成」定義為雷達第一次看到雲的前一個體積掃描（3–4 分鐘），10 dBZ 是作者代表第一次出現雨的門檻；只有 76 朵、六天，都是雲頂低於結冰高度的淺積雲；組織與起雨的關係是作者的解讀，不是控制實驗。 覆核 V22（2026-11-12）：title／作者欄確認第一作者為 Hilary A. Minor（Minor、Rauber、Göke、Di Girolamo 2011）；limitations 加：「樣本只收最後回波至少到 15 dBZ、孤立、在雷達 60 公里內的雲；從沒下雨的雲不在樣本裡」。 覆核 V22（2026-11-12）：read_via 補：「V22 2026-11-12 重跑 WebSearch，結果仍列出 downloads.psl.noaa.gov 的同一 PDF；重抓 sha256 2dc9237ba478b29e 相同」。",
+          "author_cache": {
+            "file": "f19src/minor2011_rico.pdf + f19src/minor2011_rico.txt",
+            "sha256_prefix": "2dc9237ba478b29e / 6b4fa63a149eb01a",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-earth-20261111",
+          "original_url": "https://downloads.psl.noaa.gov/BLO/Air-Sea/ATOMIC/References/minor_ricoSband_2010jas3675.1.pdf"
         }
       ]
     },
@@ -109368,6 +109882,32 @@
       ]
     },
     {
+      "id": "SRC-f253d3c3bef46db5",
+      "url": "https://rosap.ntl.bts.gov/view/dot/83118/dot_83118_DS1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://rosap.ntl.bts.gov/view/dot/83118",
+          "title": "Evaluation of Intersection Safety and Capacity Relevant to Signal Timing on Arizona's State Highway System (SPR-763)",
+          "publisher": "Arizona Department of Transportation Research Center／FHWA，2024–2025",
+          "version": "定稿 PDF（ROSA P）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 ROSA P 連結；curl GET 200，pdftotext 轉文字",
+          "reading_scope": "Abstract、Introduction、Pilot Study（Table 7、Naïve Approach、Flow and Cycle Length Correction、Regression Modeling、Conclusion）逐段讀；附錄未讀",
+          "locator": "Technical Report Documentation Page Abstract；p.21–25（Table 7 與 Pilot Study Before-and-after Comparison、Conclusion）",
+          "summary": "亞利桑那州公路的試辦：依現場資料重算黃燈與全紅後上線，兩個月後再蒐集（11 個左轉、7 個直行動線）。左轉黃燈平均加長 18.11%、全紅縮短 3.81%：紅燈進入減 18.3%。迴歸結果：左轉動線的全紅加長（−1.7 到 1.7 秒範圍內）與全紅期間進入路口的車變多相關（b1＝0.11，顯著）；直行全紅加長 0–0.9 秒則沒有顯著增加紅燈進入。結論列為：左轉全紅加長傾向增加紅燈進入。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "試辦樣本小（11＋7 動線），有一處前後觀察時長不同且前期在疫情車流下，作者自己列為離群；只有違規與進入次數，沒有事故結果。 覆核 V23（2026-11-12）：summary 改：『紅燈進入』是全紅期間前軸越過停止線的車數，全紅變長、計數窗也變長；左轉黃燈加長 18.11% 同時黃燈進入 +61%；迴歸 b0＝0.64 表示其他因素就讓左轉紅燈進入率降 36%；報告沒有任何駕駛人適應的說法。",
+          "author_cache": {
+            "file": "f20src/dot_83118_DS1.txt",
+            "sha256_prefix": "4ea8a33f3853f812",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-tech-20261111",
+          "original_url": "https://rosap.ntl.bts.gov/view/dot/83118/dot_83118_DS1.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-f2580714e8c186d9",
       "url": "https://www.nationalgallery.org.uk/research/publications/studying-raphael/studying-raphael-drawings-and-cartoons",
       "readings": [
@@ -110135,6 +110675,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-chemistry-materials-20261101",
           "original_url": "https://openstax.org/books/organic-chemistry/pages/11-5-characteristics-of-the-sn1-reaction"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f3ab673d9178f8dc",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4629671/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.2142/biophysics.9.85",
+          "title": "Contribution of a visual pigment absorption spectrum to a visual function: depth perception in a jumping spider（Nagata、Arikawa、Terakita）",
+          "publisher": "BIOPHYSICS 9:85–89（2013，日本生物物理學會；PMC4629671）",
+          "version": "出版社刊本（PMC 全文 XML；Review Article，原作者整理自己的 Science 2012 研究）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 搜尋找到，fullTextXML 下載",
+          "reading_scope": "全文（短文）：失焦假說、單眼實驗（Fig.3）、綠光與紅光行為實驗（Fig.4a–b，1×紅、6×紅）、理論跳距、Further questions",
+          "locator": "〈Hypothesis…〉第 2 段（單一主眼即可）；〈Behavioral test…using green and red light〉全段；〈Theoretical calculation…〉；Fig.3、Fig.4 圖說（n=4）",
+          "summary": "跳蛛主眼四層視網膜，最深兩層都含綠敏色素 Rh1，綠光只在第 1 層對焦、第 2 層永遠失焦。遮住兩隻前側眼、只剩一隻主眼的跳蛛仍能跳準。在只讓第 1、2 層有反應的單色綠光（約 520 nm）下跳得準，紅光（約 630 nm）下跳距顯著短於目標距離；研究者用純化的 Rh1 把紅綠光調成讓色素同等活化（1×紅），再把紅光加亮 6 倍，跳距與目標距離之比和 1×紅相近，所以變短是波長、不是亮度造成；依鏡片色差算出的理論跳距與實測相符。第 1、2 層影像是否真的被比較，目前沒有直接證據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 SRC-46fe6634569c86a5 同一份文件（Z7010 的來源之一），本輪重讀全文。原刊 Science 2012 未讀；Fig.4a 的比值 n=4；單眼實驗只有圖。 覆核 V22（2026-11-12）：改掛為 Z7010 的可讀全文（與 SRC-46fe6634569c86a5 同一份文件，retrieval 改經 Europe PMC fullTextXML），不另立來源給新核心。",
+          "author_cache": {
+            "file": "f19src/PMC4629671.xml",
+            "sha256_prefix": "cdc2a1e5986ac2cd",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4629671/fullTextXML"
         }
       ]
     },
@@ -113632,6 +114198,32 @@
           },
           "origin": "wave47-earth-20261103",
           "original_url": "https://esurf.copernicus.org/articles/6/1089/2018/esurf-6-1089-2018.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fb6e42a2c378224c",
+      "url": "https://rosap.ntl.bts.gov/view/dot/72449/dot_72449_DS1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://rosap.ntl.bts.gov/view/dot/72449",
+          "title": "Traffic Signal Change and Clearance Interval Pooled Fund Study: Synthesis Report (FHWA-HOP-23-037)",
+          "publisher": "美國聯邦公路總署（FHWA），2023 年 3 月；作者含 Bonneson 等",
+          "version": "定稿 PDF（ROSA P 典藏）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 ROSA P 連結；curl GET 200（工具預設標頭），pdftotext -layout 轉文字",
+          "reading_scope": "全文：Executive Summary、Chapter 1–3 全部逐段讀（含 Table 1–10、Figure 圖說）；Chapter 4–5（研究計畫、資料蒐集）只瀏覽",
+          "locator": "Executive Summary p.15–17；Ch.2〈Overview of Calculation Methods〉p.23–24、〈Overview of Vehicle Codes〉p.25、〈MUTCD〉p.26–27、〈Automated Enforcement〉p.27–28；Ch.3 Table 1 p.31–32、〈Methods Based on Behavioral Studies〉p.33–35、Table 2–3 p.37–38、〈ITE 2020 extended kinematic〉p.41–43、〈Yellow Change Interval / Performance Change〉p.53–54、Table 8–9 p.60–62、Zimmerman & Bonneson 63 起事故 p.62、Table 10 p.64",
+          "summary": "FHWA 委託的綜整：黃燈（change interval）與全紅（red clearance）70 年來沒有共識。多數機關用源自 Gazis、Herman、Maradudin（1960）的運動學公式（ITE 自 1965 年採用），也有「速限 mph÷10」經驗法、統一秒數、停車機率法。行為研究：Chang 等（1985，維吉尼亞與德州 7 路口）95% 選擇通過的車在不到約 4.5 秒內抵達停止線、與接近速度無關；Wortman & Fox（1986，亞利桑那 30/40/50 mph）約 95% 最後通過的車在黃燈起亮時距路口 4 秒以內；亞利桑那 5 路口只有約 30% 停車者近似等減速。NCHRP 731 量到平均煞車反應 1.0 秒（85 百分位 1.33）、平均減速度 10.08 ft/s²（85 百分位 12.89）。MUTCD 建議黃燈 3–6 秒。美國 39 州為允許式黃燈法、11 州限制式（西維吉尼亞全限制）。黃燈每加 1 秒：Bonneson & Zimmerman 德州 10 路口前後比較，違規至少減 50%（黃燈不超過 5.5 秒）；Retting 等賓州 2 路口減 36%。事故面：Persaud 等（2012）黃燈加 1.0 秒的 5 個路口追撞 −6.6%、直角撞 +7.6%，均不顯著；Souleyrette 等明尼亞波利斯加設全紅的 22 路口，目標事故約 +30%；單獨加長全紅平均 1.1 秒的 14 路口總事故 −20.2%（顯著）。63 起闖紅燈事故照片：對向左轉事故多在紅燈頭幾秒，直角撞除一起外都在紅燈 5 秒後。Tarnoff：8 時相、v/c 0.9 時全紅由 0.5 秒拉到 5.0 秒，平均延滯由 30.0 增至 45.6 秒／車。ITE 2020 採用 Järlström 的延伸運動學公式處理轉彎車，可能算出超過 MUTCD 上限的黃燈。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "綜整報告，多數數字是轉述原研究（Chang 1985、Wortman & Fox 1986、Persaud 2012、Souleyrette 2007、Tarnoff 2004 等原文未讀）；引用時要寫「FHWA 綜整轉述」。美國法規與英制單位；不是台灣規範。Persaud 研究未說明每路口改了幾個時相。 覆核 V23（2026-11-12）：limitations 補：（1）p.60 轉述 Bonneson & Zimmerman（2006）模型：黃燈加 1.0 秒對應致死受傷闖紅燈事故約減 40%（預測值），F20-008 必須同列；（2）p.62 的 63 起事故照片與 F20-S006 Figure 5-4 是同一批（亞利桑那兩城市），不得當兩個來源；（3）p.34『may pose risks for lower speed approaches』是 FHWA 對 Wortman & Fox 的推測語，p.16、p.137 另寫統一秒數也可能有風險、p.17 寫找不到檢驗縮短黃燈的研究；（4）Järlström 原文寫的是 self published、not peer-reviewed，未稱工程師；（5）NCHRP Table 3 分母 217。",
+          "author_cache": {
+            "file": "f20src/dot_72449_DS1.txt",
+            "sha256_prefix": "16962171124bb25d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave62-tech-20261111",
+          "original_url": "https://rosap.ntl.bts.gov/view/dot/72449/dot_72449_DS1.pdf"
         }
       ]
     },
@@ -287143,6 +287735,1338 @@
       "production_ready": false
     },
     {
+      "id": "S62-001",
+      "question": "海上的小積雲從冒出來到第一次下雨要多久？快慢是海裡吹上來的大鹽粒決定的嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.trade_cumulus_radar_rain_onset_time_organization",
+      "answer_target": "差很多，而且看起來不是鹽粒決定的。RICO 計畫在加勒比海巴布達島旁的開放大西洋，用偏極化雷達把 76 朵雲頂沒到結冰高度、後來都有下雨的信風積雲，從最早的回波一路追到雨下完。從雲生成到雲裡第一次出現雨（研究者以最大回波到 10 dBZ 為準），最快約 12 分鐘；較大的雨（30 dBZ）最快約 22 分鐘；但也有雲要到約 170 分鐘，同一天的雲就很分散。研究者挑的六天涵蓋整個計畫量到的大鹽粒濃度範圍，起雨的早晚和高度卻和大鹽粒多寡對不起來：鹽粒濃度相近的日子，長在弧狀外流邊界上的雲最快約 20 分鐘就到，長在邊界層滾渦上的雲卻維持 170 分鐘才到。大鹽粒多的日子，改變的是雨滴大小的分布。研究者的解讀是，雲怎麼排、背後的上升氣流，看起來比鹽粒更決定快慢。",
+      "scope": "RICO 六天、76 朵孤立的信風淺積雲（暖雲），樣本只收最後回波至少到 15 dBZ 的雲，從沒下雨的雲不在內；「雲生成」是雷達第一次看到雲的前一個掃描（3–4 分鐘），10 dBZ 是作者定義的起雨門檻；組織與起雨的關係是相關與作者解讀，不是控制實驗。不得說大鹽粒對下雨沒有作用（它改變滴譜），不得和 S60-003 的撒鹽實驗說成互相矛盾（那是層積雲的毛毛雨、撒播後量雨率）；不得把 12 分鐘說成一般雲的時間；不得與 S61-002 課本推算的 25 分鐘並列、相減或比倍數（不同的時間段）。第一作者 Minor，旁白若提研究者，寫「美國伊利諾大學的研究團隊」。",
+      "source_locator": "F19-S003 摘要；p1076 前言；p1084 CT 定義；p1087 §3b 第 1–2 段；p1088–1089；p1092–1093 key findings 1–3",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同意作者：實測起雨時間分布（12／22／170 分鐘）0.5；起雨快慢與大鹽粒濃度對不上、與雲的組織相關 0.5。這正是 V20 still_missing 第（2）項（非 Rosenfeld 研究群、不在亞馬遜、RICO 自己量的雲生成到第一個雷達回波），也是池中 P61-NA002 的 reentry_condition。去重：pool.json 無 2010JAS3675、Minor、characteristic time；RICO 只出現在 P61-S003 概述與 P61-NA002。 原提案 F19-001（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；來源合規（WebSearch 結果連結，今日重跑仍在結果中）、雜湊相同、數字逐句對上。收；改掉 payoff 裡與課本 25 分鐘的錯誤並列（不同時間段），補上「只收後來有下雨的雲」的選樣條件，更正第一作者。計 1.0 條，補到 C6-02 缺的 0.5 條以上。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真的拿雷達盯著海上的雲，從冒出來到第一次下雨，快的十幾分鐘、慢的將近三小時；鹽粒差不多的日子，雲排成弧狀的快、排在滾渦上的慢。",
+        "visual": "76 朵雲的起雨時間示意（只標 12、22、170 分鐘三個原文數字，註明「後來有下雨的雲」）；滾渦雲街與弧狀外流兩種雲排列的俯視示意。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave62-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd97d9a15a97c2ea",
+          "origin": "wave62-earth-20261111",
+          "locator": "F19-S003 摘要；p1076 前言；p1084 CT 定義；p1087 §3b 第 1–2 段；p1088–1089；p1092–1093 key findings 1–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S62-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H62-001",
+      "question": "還不會說話的嬰兒，雙手交叉時被碰一下，會轉錯手嗎？視力嚴重受損的嬰兒呢？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.infant_visual_impairment_crossed_hands_localization",
+      "answer_target": "視力正常的會，視力嚴重受損的不太會。義大利一項研究讓 10 名嚴重視障嬰兒（5 個月到快 3 歲）和 10 名年齡相近的視力正常嬰兒，手心各綁一個小振動器，不給任何指示，只看他們把頭、眼或手轉向哪一邊。只碰一隻手時，視力正常的嬰兒在雙手交叉時轉得比較慢、也比較常轉錯；視障嬰兒沒有這個交叉代價，兩種姿勢都跟視力正常嬰兒最好的表現差不多；只算手的反應也一樣。研究者提出的一種解釋是：視障嬰兒比較按『皮膚上的哪裡』，而不是『手平常放在空間哪一邊』來回應。",
+      "scope": "每組 10 人、年齡跨度大；視障組是周邊視覺病變、多數仍有極少量視覺，不是全盲；交叉代價只有圖與模型統計，不報百分比；原因是研究者的一種解釋。這裡測的是單一碰觸往哪隻手轉（定位），不是兩下先後判斷；不說視障嬰兒整體觸覺比較好（聲觸整合反而較弱，見 F19-NA004）。",
+      "source_locator": "F19-S001 Results 首段；〈Tactile localization and body representations〉第 2–3 段；Table 1；Figure 2；STAR Methods Design",
+      "premise_status": "screened",
+      "notes": "V22 下修為 0.5（作者 1.0）：與 H61-008 同方向（沒有視覺就沒有交叉代價），照 V21 對 H61-007 的同方向先例計 0.5；嬰兒期這個年齡是同一結果的族群，不另計。寫在轉折二之前，當「這個差別很早就出現」的一句，不當第三個同結論例子。 原提案 F19-002（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；全文合規、雜湊相同、數字對。收但下修為 0.5：結論與 H61-008 同方向；改掉「看不見」與年齡的說法，原因標為研究者的一種解釋。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "交叉手會被騙不是大人才有：還不會說話的嬰兒就看得到，而且看得見與幾乎看不見的孩子已經不一樣。",
+        "visual": "坐在家長腿上的嬰兒、手心綁小振動器，交叉與不交叉兩張示意；不放真實嬰兒影像。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave62-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-8c0a041a2dd872d0",
+          "origin": "wave62-human-20261111",
+          "locator": "F19-S001 Results 首段；〈Tactile localization and body representations〉第 2–3 段；Table 1；Figure 2；STAR Methods Design",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H62-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H62-002",
+      "question": "出生後頭幾個月看不見，長大後交叉手還會被騙嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.cataract_before_five_months_crossing_effect_intact",
+      "answer_target": "會，跟一般孩子一樣被騙。研究者在巴塞隆納一家兒童醫院，找來 13 名天生雙眼緻密白內障、出生後半個月到 5 個半月（平均約 3 個月）就開刀的孩子，平均 8 歲時跟 24 名同齡孩子一起做『兩隻手各被振動一下，哪隻先』的測驗。兩組雙手交叉時都明顯變差，兩組之間沒有差別，交叉代價的大小也跟當初看不見多久無關。研究者據此說：出生後頭 5 個月的視覺，對發展出『自動把觸覺放到外部空間』並不關鍵。",
+      "scope": "13 名（原 14 名，1 名排除）早期開刀兒童，測驗時視力仍偏低（較好眼平均 0.32）；只說『頭 5 個月沒有視覺不足以讓交叉效應消失』；『敏感期存在』的證據是同篇單一個案與前人研究，不由這組結果單獨推出；不說敏感期確切在幾歲；不與 H61-007 的受試者合併。",
+      "source_locator": "F19-S002 摘要；Method/Participants；Results〈Cataracts Removed Before 5 Months of Age〉；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同意作者：一個組間實驗，結論是池裡沒有的（最早幾個月看不見並不會讓人『不被騙』），方向與 H61-007、H61-008 相反。與 F19-004 同一篇，兩核心合計 1.5（見 F19-004）。去重：pool.json 無 cdev.12813、tactile remapping；Azañón 只出現在 Heed 與 Azañón 2014 綜述（H61-004 的來源）。 原提案 F19-003（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；來源取得合規（研究室出版頁確有連結，另有 CORE 典藏副本），雜湊相同，數字逐句對。收，改兩處措辭：受試者不是全由巴塞隆納找來；「敏感期存在」不是這組結果推出的。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為越早看見越關鍵：出生頭幾個月看不見的孩子，長大後跟大家一樣被交叉騙到；分水嶺在更後面。",
+        "visual": "時間軸：出生、5 個月、7 歲標出兩組開刀時間；兩組交叉與不交叉的示意長條（不給原文沒有的百分比）。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave62-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0222d15b24b26b32",
+          "origin": "wave62-human-20261111",
+          "locator": "F19-S002 摘要；Method/Participants；Results〈Cataracts Removed Before 5 Months of Age〉；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H62-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H62-003",
+      "question": "一直到七歲才開刀看見的人，交叉手時還會被騙嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.late_cataract_case_no_crossing_cost_population",
+      "answer_target": "這一位幾乎不被騙。同一研究裡的少女 LM 在 6 歲半過後才移除先天白內障，17 歲受測時，雙手交叉與不交叉的正確率是 91.67% 對 94.42%；14 名同性別、年齡相近的對照者每一位都有交叉代價，平均從 96.07% 掉到 81.20%。研究者再把她放進 343 名做過同類測驗的人裡比：她交叉時排在前 2 到 3%，不交叉時卻只在第 73 或 87 百分位，所以不是她觸覺特別靈敏，而是交叉沒有拖累她。",
+      "scope": "LM 是單一個案；343 人來自 12 篇已發表、2 篇未發表研究與本研究的 14 名對照，含 R44003 的原刊樣本，混合不同間隔範圍，只當比較背景，不說『一般人幾乎都被騙』；不說開刀太晚就永遠學不會（H61-007 顯示混進聲音任務仍會被騙）；不說她的出身地細節。",
+      "source_locator": "F19-S002 Method/Participants（LM）；Results〈Case Study〉；Figure 3 圖說；Discussion 第 1、4 段",
+      "premise_status": "screened",
+      "notes": "V22 下修為 0.5（作者 1.0）：單一個案，與 H61-007 實驗 1 同方向；343 人分布是背景不計。與 F19-003 同一篇合計 1.5。 原提案 F19-004（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；數字對，但作者把對照組說成同齡、把 343 人說成獨立的一般人樣本並引申『交叉代價非常普遍』。收作單一個案、0.5 條，刪掉普遍性那半題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "七歲才看見的她，交叉時反而排進前 3%——不是她比較靈，是交叉騙不了她。",
+        "visual": "LM 與 14 名對照的交叉／不交叉兩組長條；343 人分布只畫輪廓、虛線標 LM，註明『多個研究合併』。",
+        "seconds": [
+          30,
+          35
+        ]
+      },
+      "origin": "wave62-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0222d15b24b26b32",
+          "origin": "wave62-human-20261111",
+          "locator": "F19-S002 Method/Participants（LM）；Results〈Case Study〉；Figure 3 圖說；Discussion 第 1、4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H62-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L62-001",
+      "question": "烏賊只剩一隻眼看得到蝦，還抓得到嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.cuttlefish_quasi_monocular_strike_delay",
+      "answer_target": "抓得到，但調整位置比較慢。研究者讓戴紅藍眼鏡的烏賊只有一隻眼看到螢幕上的蝦（濾片還會漏一點光，所以不是完全單眼）：在調整位置的階段，牠們花比較久、游比較遠，最後出擊時離目標比較近；發現獵物、出擊和抓取階段跟兩眼都看得到時沒有差別。研究者也說，很多只用一眼的烏賊表現得跟兩眼一樣好，兩眼的線索不是唯一的距離線索。",
+      "scope": "樣本很小（擬單眼 3 隻、雙眼 5 隻）；擬單眼不是完全單眼；早年 Messenger 研究的 56%／91% 若要提，標明是另一研究、手術弄瞎一眼。隨機點紋與反相關結果屬 B2315，不在本核心重講。不寫成單眼烏賊抓不到。",
+      "source_locator": "F19-S006 Results〈Intact binocular cues speed up prey capture〉、Fig.2；〈…anticorrelated…but not uncorrelated〉、Fig.3；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5 條，同意作者：擬單眼的時間與位置差（一個實驗）。B2315 本題另計 0.5（同篇合計 1.0）。 原提案 F19-006（目標 C7-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；雜湊相同、數字對。收，但刪掉與 B2315 同答案的隨機點紋那半，補上原文『很多單眼烏賊表現一樣好』的保留。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "構造說烏賊兩眼視野有重疊；拿掉一眼的影像，定位就變慢——重疊真的被拿來用，但不是唯一的辦法。",
+        "visual": "烏賊戴紅藍眼鏡示意；兩眼與擬單眼的定位路徑並排（只畫方向、不標數字）。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave62-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca9fbcd829466329",
+          "origin": "wave62-life-20261111",
+          "locator": "F19-S006 Results〈Intact binocular cues speed up prey capture〉、Fig.2；〈…anticorrelated…but not uncorrelated〉、Fig.3；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L62-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L62-002",
+      "question": "照西洋蜂眼睛的參數算，月光下應該分不出顏色；野外的大蜜蜂真的分不出來嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.dim_light_bee_colour_model_vs_behaviour",
+      "answer_target": "分得出來。印度的研究者訓練野生大蜜蜂到藍色餵食點，再擺出藍色和三種深淺的灰色（都不給糖）。白天約 79% 的落點在藍色；夜裡光度比半月亮時約 88%、相當半月時約 77%，再暗一級（每平方公尺 0.001 到 0.01 燭光）降到約 44%，但去灰色的次數在每個光度都顯著較少。研究者算過，換照明光譜時灰與藍誰比較亮會跟著變，蜜蜂靠亮暗選不準。用西洋蜂的感光參數、文獻裡的月光與暮光光譜、再加上暗光下的光子雜訊去算，這些顏色之間的距離都小於可分辨的門檻，模型預測幾乎分不出；實際的蜜蜂卻分得出。作者說參數來自別種蜂、光譜不是現場量的、模型也沒算進暗光下的累加，不能可靠解釋這個結果。",
+      "scope": "Apis dorsata 野生蜂群、印度南部；夜間只能整群標記訓練；最暗一級 17 隻、24 次落點；百分比是原文平均值（±標準誤）。模型用的是文獻光譜，不與某一級現場光度一對一對照；不說模型錯了，只說用西洋蜂參數的模型預測與行為不一致；不說所有蜜蜂夜裡看得到顏色（西洋蜂暮光下色盲是引用他人研究）。",
+      "source_locator": "F19-S004 §3(a)–(c)；§4 Discussion 第 1、4 段與模型限制段；Figure 3–4 圖說",
+      "premise_status": "screened",
+      "notes": "V22 下修為 1.0（作者 1.5）：白天與三種夜間光度的行為結果 1.0；模型不一致是同一研究的解讀，作者自己說不能可靠解釋，不另計。補 V21 still_missing 的『一份行為測驗的開放原研究』。去重：pool.json 無 dorsata、rspb.2023.1267；夜間辨色既有 R37007（守宮）、L61-001（青蛙），答案方向相近但物種與測法不同。 原提案 F19-007（目標 C7-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；全文合規、雜湊相同、行為數字全對。收但下修為 1.0；改掉把模型的文獻光譜與半月光度一對一對照的寫法，補上模型沒算累加這條限制。它在 C7-02 是轉折二的旁證（構造／模型會低估），不是轉折本身。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照另一種蜂的眼睛參數算，月光下應該是黑白世界；把野生大蜜蜂拿去考，牠還是挑得出藍色。",
+        "visual": "四個餵食點（藍與三灰）在白天、比半月亮、半月、更暗四格中的藍色落點比例長條（只用原文百分比）；模型那格標『西洋蜂參數、文獻光譜』。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave62-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-58e7c248abd74b7e",
+          "origin": "wave62-life-20261111",
+          "locator": "F19-S004 §3(a)–(c)；§4 Discussion 第 1、4 段與模型限制段；Figure 3–4 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L62-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-001",
+      "question": "下雨天車子「飄」，到底是輪胎浮在水上嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.horne_speed_sqrt_pressure",
+      "answer_target": "全飄的那一刻是。NASA 1963 年的技術報告（TN D-2056）這樣描述：輪胎往前推開積水，水的動壓力隨速度的平方增加；到某個臨界速度，水往上推的力等於輪子承受的重量，輪胎就整個離開路面，稱為總水漂，在那之前是部分水漂。報告根據蘭利中心飛機起落架的軌道試驗，把臨界速度簡化成：水漂速度（英里／時）約等於 10.35 乘以胎壓（磅／平方吋）的平方根（以節計是 9 倍）。前提是光面或封閉花紋的胎，或水比胎紋溝深；報告說它和 925 到 22,000 磅載重、24 到 150 psi 的各種輪胎（多數是飛機胎）試驗大致相符。",
+      "scope": "飛機試驗為主的簡化式，標明；英制保留；不替觀眾算自己車的水漂速度。",
+      "source_locator": "F20-S007：〈Physical Description〉〈Derivation〉式 (2)–(5) 與其後兩段、Figure 4 說明",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：簡化式及其前提與驗證範圍；定義是概念不另算。 原提案 F20-014（目標 C8-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；常數、單位、前提全對；補標飛機試驗來源並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「飄」有一條六十年前的公式：只看胎壓，不看車重。",
+        "visual": "輪胎側面剖面，前方水楔隨速度變厚，壓力箭頭由小變大，直到輪胎底面與路面分開一條細線。",
+        "seconds": [
+          60,
+          75
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Physical Description〉〈Derivation〉式 (2)–(5) 與其後兩段、Figure 4 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-002",
+      "question": "輪胎開始水漂時，車子會出現哪些跡象？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.manifestations_spindown_friction_steering",
+      "answer_target": "NASA 1963 年的報告列出八種觀察到的表現，其中幾個：沒煞車的輪子會自己慢下來、甚至停轉——飛機串列起落架的前輪，在水漂速度的 70% 就開始減速；輪胎前方的船首浪消失；總水漂時剩下的阻力，換算成摩擦係數通常不超過 0.05，踩煞車幾乎沒有用；輪胎離地就產生不了側向力，報告的說法是方向盤『變成沒用的配件』。在一架四發噴射運輸機的雪泥跑道試驗裡，不超過 9 節的側風就讓水漂中的飛機偏航側移。",
+      "scope": "多為飛機與試驗軌道資料，旁白要說『飛機』『雪泥』；報告的三倍車距建議不進片。",
+      "source_locator": "F20-S007：〈Experimental Observations〉〈Spin-down of Wheel〉；〈Loss of Braking Traction〉〈Loss of Directional Stability〉",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：同一報告多個表現。 原提案 F20-015（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；補標飛機與雪泥。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水漂的可怕不是滑，是煞車和方向盤同時失效。",
+        "visual": "車輪特寫：輪速計指針往下掉；方向盤轉了但車頭沒轉，側風箭頭把車推偏。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Experimental Observations〉〈Spin-down of Wheel〉；〈Loss of Braking Traction〉〈Loss of Directional Stability〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-003",
+      "question": "車越重越不容易水漂嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.load_independence_car_vs_truck_1963",
+      "answer_target": "照 NASA 1963 年的分析，影響很小：輪胎是彈性體，載重增加時足印面積跟著變大，載重除以面積大約仍等於胎壓；以一條飛機胎為例，從零載到最大靜載，胎壓只升 3% 到 4%，水漂速度改變 2% 以內。決定性的是胎壓：當時美國汽車胎壓約 16 到 30 psi，卡車和巴士 50 到 90 psi；報告推論汽車可能在遠低於 60 到 70 英里的較高速限下總水漂，卡車巴士在一般公路速度較不容易；文中的例子是胎壓 25 psi 的車，對應水漂速度 52 英里／時。",
+      "scope": "1963 年的胎壓與速限；載重數字來自飛機胎；下一核心推翻其中『卡車不易水漂』。",
+      "source_locator": "F20-S007：〈Vertical load〉；〈Ground Vehicles〉；〈Loss of Directional Stability〉Figure 30 說明",
+      "premise_status": "screened",
+      "notes": "算 0.75 條。 原提案 F20-016（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；補標飛機胎，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "公式說重車沒比較安全，胎壓高的大車才比較不會飄——這句話後來被推翻了一半。",
+        "visual": "天秤一邊是小轎車、一邊是大卡車，各自標胎壓；水漂速度刻度上，卡車的標記遠在速限線之上。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Vertical load〉；〈Ground Vehicles〉；〈Loss of Directional Stability〉Figure 30 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-004",
+      "question": "大卡車胎壓那麼高，真的不會水漂嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.light_load_truck_footprint_aspect_ratio",
+      "answer_target": "會，輕載時特別會。1984 年 9 月，德州交通研究院用一台叫『Myth Buster #1』的試驗拖車，在約 1/4 吋深的水槽測一條 10.00-20 卡車胎：載重只有 940 磅、胎壓 75 psi，時速 58 英里時輪速明顯掉下來，就是動態水漂；同樣 940 磅，40 psi 在 51 英里、100 psi 在 62 英里開始（這幾次用的是磨到約 2/32 吋的舊胎；另一次 20 psi、43 英里是新胎）。換成 3,600 磅載重，開到拖車最高的 62 英里都沒有偵測到。用複寫紙拓下足印：940 磅時足印寬是長的約 1.4 倍，3,600 磅時約等寬等長。報告引述 NASA 退休工程師 Horne 剛提出的預測：汽車胎載重範圍窄，卡車胎可從 600 到 6,000 磅，輕載時足印形狀大變；報告稱這次試驗推翻了流傳二十年的『卡車胎不會水漂』。",
+      "scope": "只有 4 個水漂資料點、一條卡車胎；不推論到特定卡車事故；英制保留。",
+      "source_locator": "F20-S010：第 1–3 頁正文、Table 1",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：同一試驗主結果 1.0；足印寬長比 0.25。 原提案 F20-017（目標 C8-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；主結果對，改正新舊胎、足印方向與數據歸屬。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為高胎壓的大車不會飄；實測是空車的卡車在一般高速公路速度就飄了，關鍵是輪胎踩在地上的形狀。",
+        "visual": "兩個輪胎足印的拓印：滿載時細長、空車時又寬又短；旁邊速度表停在 58。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-3068f7ef20a8e79b",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S010：第 1–3 頁正文、Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-005",
+      "question": "路上要積多深的水，輪胎才會水漂？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.minimum_water_depth_tread_grooves",
+      "answer_target": "比很多人想的淺，而且看胎紋。NASA 1963 年整理：平滑的試驗帶配光面胎，0.02 到 0.09 吋的水就能水漂；一條有肋紋的汽車胎在試驗跑道上約要 0.2 到 0.3 吋。FHWA 1979 年的報告另外整理德國 Gengenbach 的滾筒試驗：光面胎低到 0.01 吋就水漂，有紋胎則找不到 0.08 吋以下水漂的資料——接觸面的水幾乎都塞得進溝裡；在真實公路上，胎紋不到 2/32 吋的胎，平均水深少於 0.06 吋時也沒出現動態水漂。",
+      "scope": "三種條件（跑步機試驗帶、滾筒、公路）分開講，不合併成一個門檻；英制原值，毫米換算要標；不寫 1.6 mm。",
+      "source_locator": "F20-S007：〈Depth of fluid〉〈Tire-tread design〉；F20-S011：文獻回顧〈One conclusion not drawn by Gengenbach〉段",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：NASA 最小水深 0.5；Gengenbach 轉述 0.25；公路觀察 0.5。 原提案 F20-018（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字對，禁止把兩組光面胎數字併成一個範圍。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "胎紋不是裝飾，是讓水在輪胎底下有地方躲的排水溝。",
+        "visual": "胎紋溝剖面：水層由薄變厚，先流進溝裡，溝滿了才把胎面抬起。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Depth of fluid〉〈Tire-tread design〉；F20-S011：文獻回顧〈One conclusion not drawn by Gengenbach〉段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Depth of fluid〉〈Tire-tread design〉；F20-S011：文獻回顧〈One conclusion not drawn by Gengenbach〉段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-006",
+      "question": "路面只是濕濕的、沒有積水，也會打滑得像水漂嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.viscous_thin_film_smooth_surface",
+      "answer_target": "會，那是另一種水漂。NASA 1968 年的回顧把水漂分成兩種：要積水夠深、速度夠快的『動態水漂』，和只要平滑路面上一層薄水膜、在低得多的速度也會發生的『黏性水漂』。蘭利試驗軌道把五種路面先泡水、再用硬毛掃帚掃掉積水，只剩摸起來潮濕：飛機的光面試驗胎在平滑混凝土上剎車，摩擦低到和噴了水的冰面差不多，也和完全動態水漂時差不多；紋理粗的瀝青就好得多。報告寫，多數跑道的紋理足以把這層薄膜打散。",
+      "scope": "飛機光面胎、試驗軌道；不推論到一般汽車胎的具體數值；不給摩擦係數數值。",
+      "source_locator": "F20-S008：Introduction 第二段；〈Damp runways〉段與 Figure 6",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：飛機光面胎單一試驗系列。 原提案 F20-019（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；內容對，補標飛機光面胎。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「飄」不一定要大水，光滑路面上一層薄膜就夠——這時救你的是路面的粗糙度。",
+        "visual": "放大鏡看路面：平滑混凝土上一層連續水膜；粗粒瀝青上水膜被石粒尖端戳破。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b66e5cf2303cb95d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S008：Introduction 第二段；〈Damp runways〉段與 Figure 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-007",
+      "question": "還沒到公式算的水漂速度，輪胎就完全踩在路上嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.partial_onset_low_speed_shallow_water",
+      "answer_target": "不一定。維吉尼亞理工 2025 年發表的研究，把力感測器嵌進一條用過的 245/40 R18 輪胎（胎紋約 4.4 毫米）的胎紋溝裡，量水往上推的力，再換算成『進水量占輪胎最大排水能力的比例』，作者稱為水漂風險。在 Michelin 試車場約 1.05 毫米的受控水深下，這條胎和文獻裡兩條參考胎，風險都在時速約 30 英里開始離開零，作者解讀為部分水漂開始；這條胎要到約 111 英里才算完全水漂。在一般路面（水深沒有直接量，估計零點幾毫米），用 45 到 65 英里四個量測點畫出的曲線，約 20 英里以上就離開零。論文也整理：胎紋溝可能在水膜比溝淺得多時就被灌滿，灌滿後胎面就像光面胎；多數標準化水漂試驗用約 8 毫米水深，並不代表一般行車。NASA 1963 年的飛機胎資料同樣顯示，輪子在遠低於總水漂速度時就可能開始減速。",
+      "scope": "單一輪胎、單一車；『風險』是作者定義的流量比（分母用鎖死輪的排水量），不是摩擦係數，也不是直接量到的接觸面積；30 mph 是 1.05 mm 受控水深，20 mph 是真實路面曲線的外推，兩者不得互換；作者的駕駛應用不進片。",
+      "source_locator": "F20-S013：Introduction 第 5–6 段、Results、Model Validation 第一段、Conclusions；F20-S007：〈Spin-down of Wheel〉",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：受控水深下約 30 mph 起部分水漂與 111 mph 臨界 0.75；溝槽淹沒與標準試驗水深（文獻回顧轉述）0.25。 原提案 F20-020（目標 C8-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；把兩個不同水深條件的數字併成一句，改正後轉折仍成立（受控 1 mm 水深下約 30 mph 就開始），但數字與條件要照原文。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為「飄」是過了某個速度才突然發生；量測顯示接觸面從很低的速度就開始被水一點點吃掉。",
+        "visual": "輪胎足印俯視動畫：速度表從 0 往上，足印前緣一塊塊變成水色，到 111 才整片消失。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4317ec20bff24730",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S013：Introduction 第 5–6 段、Results、Model Validation 第一段、Conclusions；F20-S007：〈Spin-down of Wheel〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S013：Introduction 第 5–6 段、Results、Model Validation 第一段、Conclusions；F20-S007：〈Spin-down of Wheel〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-008",
+      "question": "一般轎車在真實道路上，大概什麼速度會水漂？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.field_speed_range_one_sided_puddle_yaw",
+      "answer_target": "答案是一個範圍，不是一個數字。FHWA 1979 年的全尺度研究結論：汽車一般可能在每小時 40 到 80 英里之間水漂，看條件而定；它整理的德州 HPR-147 專案量到的完全動態水漂速度在 45 到 77 英里之間。用儀器化的兩輪試驗拖車量路上的水窪：約 1 吋深、30 呎長的水窪，在 40 到 45 英里就可能讓輪胎失去接觸，水平拖曳力最高到 300 磅力；只壓到車子一側的水窪量到危險程度的偏轉扭矩，研究者認為比兩側都壓到的寬水窪危險潛勢更大。",
+      "scope": "1970 年代輪胎與車、試驗拖車；英制原值；不寫成『常常』或給閃避水窪的建議。",
+      "source_locator": "F20-S011：Ch.IX p.253–254；文獻回顧 HPR-147 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：同一研究的速度範圍、水窪失去接觸與單側扭矩合計（HPR-147 為轉述，不另算）。與 F20-022、F20-023 的 OGFC 句、F20-024 的加州句同屬 FHWA-RD-79-31，四核心合計約 2.0 條。 原提案 F20-021（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字對，改掉頻率說法並標試驗拖車；同一研究跨核心不重複膨脹。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最讓車「飄」的常常不是滿地積水，而是只吃到一邊輪胎的水窪。",
+        "visual": "俯視車輛：右側兩輪壓進路邊水窪，水的阻力箭頭只在右邊，車身被拉出一個轉向角。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S011：Ch.IX p.253–254；文獻回顧 HPR-147 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-009",
+      "question": "胎紋磨淺了，在積水路上差在哪裡？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.tread_depth_threshold_taiwan_wear_indicator",
+      "answer_target": "FHWA 1979 年的研究在排水性鋪面上做的結論：胎紋最淺的胎，尤其是寬扁胎，在水深超過約 0.08 吋時，時速 55 英里就表現很差，不論路面紋理或排水好壞。同一研究寫，這種鋪面在水深 0.1 吋以內、胎紋 0.2 吋以上、胎壓約 18 到 20 psi 以上時，能在鄉間速限下提供相對高的摩擦；技術摘要說 0.2 吋大約是當時公路車輛胎紋的中位數。台灣方面，《道路交通安全規則》第 39 條『汽車申請牌照檢驗之項目及基準』第三十款寫：民國 103 年 1 月 1 日起，各類車輛所用輪胎的胎面未磨損至國家標準 CNS1431 或 CNS4959 所訂的任一胎面磨耗指示點。",
+      "scope": "1970 年代美國排水鋪面試驗；胎壓兩版本（18／約 20 psi）照實寫；台灣條文是申請牌照檢驗基準、只寫磨耗指示點，不寫毫米數、不寫 1.6 mm；不把美國的 0.2 吋與台灣法規對比，不建議何時換胎。預測式是方法，不進片。",
+      "source_locator": "F20-S011：Ch.IX p.256–257（OGFC 結論第 7 點）；F20-S012：Summary 與 p.8–9；F20-S015：第三十款",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：最淺胎紋在 0.08 吋以上水深 55 mph 表現差 0.5；台灣條文 0.5。OGFC 條件與 F20-023 同研究，不另算。 原提案 F20-022（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；刪掉隱含安全建議與法規評價的對比，改正第 39 條的性質與胎壓數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "合法的最低胎紋，和研究裡「抓地足夠」的胎紋，不是同一條線。",
+        "visual": "胎紋深度尺插進新胎與磨耗胎；磨耗胎的溝紋跟磨耗指示塊幾乎齊平。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S011：Ch.IX p.256–257（OGFC 結論第 7 點）；F20-S012：Summary 與 p.8–9；F20-S015：第三十款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1cbcdafb01158bba",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S011：Ch.IX p.256–257（OGFC 結論第 7 點）；F20-S012：Summary 與 p.8–9；F20-S015：第三十款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4081d470adfe2d5b",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S011：Ch.IX p.256–257（OGFC 結論第 7 點）；F20-S012：Summary 與 p.8–9；F20-S015：第三十款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-010",
+      "question": "同一段路，為什麼總是某幾條車道、某幾個位置特別容易飄？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.water_film_rutting_crossslope_drainage",
+      "answer_target": "因為水在路面上不是均勻的。2022 年一篇研究用車載光達掃描上海的路面，再用淺水方程估算水膜：有橫坡的路面越往下游邊越厚；有車轍的路段水膜呈兩條峰，外側車道較厚，估計最厚可超過 2 公分；代入兩種水漂模型，車轍與粗糙低窪處的最低水漂速度可以低於每小時 90 公里。FHWA 1979 年也測到：連最開放的排水性鋪面，在 1% 橫坡、外側車道的外輪跡，雨強每小時 0.2 到 0.4 吋就被淹過；它對混凝土路面的另一項結論是，大雨停後幾分鐘，路面上仍可能留有危險的積水。",
+      "scope": "光達研究是模型估計（未量實車水漂）；兩項 FHWA 結論分屬排水鋪面與混凝土路面，分開講；駕駛建議不進片。池中 D2104 講車轍成因，本核心只講車轍積水。",
+      "source_locator": "F20-S014：Abstract、Conclusions 第二、三段；F20-S011：Ch.IX p.254–255",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：光達水膜與車轍 0.75（模型）；FHWA 淹水與雨後殘留 0.25（同研究跨核心）。 原提案 F20-023（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；改正『超過 2 公分』與把兩種鋪面接在一起的句子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水漂一半看輪胎，一半看路：車轍就是路面上自己長出來的兩條小溝渠。",
+        "visual": "路面剖面的水膜色階：車轍輪跡兩條深藍，路肩側越來越深。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-2b55ea5399454ff4",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S014：Abstract、Conclusions 第二、三段；F20-S011：Ch.IX p.254–255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S014：Abstract、Conclusions 第二、三段；F20-S011：Ch.IX p.254–255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P62-011",
+      "question": "機場跑道和一些彎道上那一條條溝，是做什麼的？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.pavement_grooving_history_spinout_reduction",
+      "answer_target": "是給水逃的路。NASA 的回顧寫，路面刻槽是英國的做法，1956 年先在英國幾座機場試；公路多刻縱向、機場多刻橫向；NASA 從 1962 年起在試驗軌道上研究。NASA 1963 年報告整理英國的量測：一架 Meteor 戰鬥機要開始水漂，平滑跑道上最少要 0.17 吋的水，刻槽跑道要 0.42 吋，兩倍以上。FHWA 1979 年報告轉述加州交通局：彎道刻縱向溝之後，回報打滑甩尾類事故減少 90% 到 95%；同段也說，橫向與菱形刻槽的事故資料還沒有定論。",
+      "scope": "加州數字是報告轉述交通局回報，非本研究量測；0.17／0.42 吋是單一機型。",
+      "source_locator": "F20-S009：〈Runway Research〉；F20-S007：〈Depth of fluid〉（Figure 21：0.17／0.42 吋）；F20-S011：Ch.IX p.255",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：刻槽歷史與最小水深 0.5；加州回報 0.25（轉述、同研究跨核心）。 原提案 F20-024（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；小改：刪掉沒讀到的 1964、補標機型與加州段的保留句。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "路面上的刻痕，等於替每個輪胎多挖幾條胎紋。",
+        "visual": "跑道橫向溝槽特寫，水沿溝往兩側流走；切到彎道上的縱向溝。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b770bb74beb3f8c",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S009：〈Runway Research〉；F20-S007：〈Depth of fluid〉（Figure 21：0.17／0.42 吋）；F20-S011：Ch.IX p.255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S009：〈Runway Research〉；F20-S007：〈Depth of fluid〉（Figure 21：0.17／0.42 吋）；F20-S011：Ch.IX p.255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S009：〈Runway Research〉；F20-S007：〈Depth of fluid〉（Figure 21：0.17／0.42 吋）；F20-S011：Ch.IX p.255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P62-011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-001",
+      "question": "台灣的路口，黃燈為什麼有的 3 秒、有的 4 秒？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.taiwan_yellow_speed_band_allred_formula",
+      "answer_target": "台灣的條文是看那條路的行車速限。《道路交通標誌標線號誌設置規則》第 231 條第一款：黃燈時間「得依下表」——速限每小時 50 公里以下 3 秒、51 到 60 公里 4 秒、61 公里以上 5 秒。第二款規定黃燈結束後「應有一秒以上之全紅時間」，直行交通的全紅時間「宜依」公式（W＋L）÷V 計算：W 是路口近端停止線到遠端路段起點的距離，L 是平均車長、得用 6 公尺，V 是平均車速、得用行車速限（公尺／秒）；以這個值為原則，最短不得小於（W＋L）÷2V。條文只給表與公式，沒有寫這張表是怎麼定出來的。",
+      "scope": "現行條文用「得」「宜」；條文不說明表的推導，也不說明黃燈與全紅各自的目的（全紅的目的另見池中 T4005，不在本核心重講）。不談闖紅燈罰則與認定，不評論這張表合不合適。",
+      "source_locator": "F20-S003：第 231 條第一、二款表與備註",
+      "premise_status": "screened",
+      "notes": "算 1.0 條（原始法規，兩款合一）。刪掉作者對黃燈／全紅分工的解讀句，避免與 T4005 重複並避免把解讀當條文。 原提案 F20-001（目標 C8-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；來源合規、PDF 雜湊相同、數字逐字對上；刪掉不在條文上的分工句、改正 W 的定義。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為黃燈秒數是隨便設的；其實台灣是照速限分三段，紅燈前那一秒全紅另有公式。",
+        "visual": "台灣路口俯視，三種速限標誌各配一條黃燈秒數條；黃燈後插一格全紅，公式 (W+L)/V 浮在路口上。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-982850f1ed93eaae",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S003：第 231 條第一、二款表與備註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-002",
+      "question": "黃燈的秒數，最早是根據什麼算出來的？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.kinematic_yellow_type1_dilemma_origin",
+      "answer_target": "FHWA 2023 年的綜整報告寫：多數美國機關用的是 Gazis、Herman、Maradudin 三人 1960 年提出的運動學模型的某種版本，美國運輸工程師學會（ITE）的建議做法從 1965 年起就以它為本；報告也寫，原作者的目的是提供洞見，不是替機關訂準則，而且模型只考慮直行車。想法是：黃燈亮起時，離路口夠遠的車要能以可接受的減速度停下，夠近的車要能開過去；黃燈太短，中間就會出現「停不下、也過不去」的一段，NCHRP 報告稱為第一類兩難區。算式用反應時間、接近速度、減速度、坡度。美國號誌手冊（MUTCD）只給指引：黃燈最短 3 秒、最長 6 秒，較長的留給高速進口道；也有工程師用「速限（英里／時）除以 10」的經驗法。",
+      "scope": "美國的歷史與準則，Gazis 1960 原文未讀（付費），以 FHWA 綜整轉述；不說台灣第 231 條的表由此推得（沒有來源）。",
+      "source_locator": "F20-S001：p.23–24、p.26–27、Table 1 p.31–32；F20-S002：〈The Dilemma Zone〉p.6–7",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：模型來源與第一類兩難區 0.5（轉述）＋MUTCD 原文引句 0.25；mph÷10 是方法，不算事實。 原提案 F20-002（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；內容對得上，但幾乎全是綜整轉述，下修到 0.75；補上 FHWA 自己寫的『原作目的不是準則、只考慮直行車』，讓後面的轉折有根據。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈不是提醒你「快變紅了」那麼簡單，它的長度是為了消滅一段停不下又過不去的死區。",
+        "visual": "俯視路口前的道路，畫出『能停下』與『能通過』兩條界線；黃燈太短時兩線之間出現紅色空白帶。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：p.23–24、p.26–27、Table 1 p.31–32；F20-S002：〈The Dilemma Zone〉p.6–7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-94c7bf337d9d2284",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：p.23–24、p.26–27、Table 1 p.31–32；F20-S002：〈The Dilemma Zone〉p.6–7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-003",
+      "question": "公式裡假設駕駛人反應 1 秒、減速度固定，這些數字是誰量出來的？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.nchrp_field_prt_decel_approach_speed",
+      "answer_target": "美國 NCHRP 03-95 研究在 5 個州 80 多個路口進口道架起 20 呎高的攝影桿，錄了 320 小時以上、抽出約 7,500 輛車。只看黃燈亮後第一輛停車的車：煞車反應平均 1.00 秒（85% 在 1.33 秒內，約 2,400 輛），減速度平均每秒平方 10.08 英尺（85 百分位 12.89）。報告因此「確認」公式可沿用反應 1.0 秒、減速度 10 ft/s²。速度則不宜直接用速限：直行車的 85 百分位接近速度大約是速限再加 7 英里／時，左轉車約是速限減 5 英里／時。",
+      "scope": "英制原值，片中換算公制要標「換算」；反應時間與減速度只描述第一輛停車的車；美國 2009–2010 年資料。",
+      "source_locator": "F20-S002：Executive Summary p.1–2；F20-S001：Table 2–4 p.37–39",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：同一研究的反應時間與減速度 1.0；85 百分位速度≈速限＋7 mph 0.25（同一研究另一個數）。 原提案 F20-003（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字逐一對上；同一研究多個數字按嚴格標準合計 1.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "公式裡的「1 秒」不是拍腦袋，是幾千輛車錄影量出來的平均——但平均就代表有一半的人比較慢。",
+        "visual": "攝影桿在路邊錄影；畫面上一台車的煞車燈亮起，計時器停在 1.0 秒，旁邊分布曲線標出 1.33 秒。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-94c7bf337d9d2284",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：Executive Summary p.1–2；F20-S001：Table 2–4 p.37–39",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：Executive Summary p.1–2；F20-S001：Table 2–4 p.37–39",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-004",
+      "question": "照公式，速度越慢的路黃燈越短；真的開車的人也是這樣決定停或走嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.behavioral_go_vehicles_speed_independent",
+      "answer_target": "FHWA 2023 年綜整轉述的兩組 1980 年代美國觀察說不太是。Chang 等人在維吉尼亞與德州 7 個路口看到：決定通過的車，有 95% 在不到約 4.5 秒內抵達停止線，而且跟接近速度無關；FHWA 寫，這個發現與『速度低就給短黃燈』的運動學算法相矛盾。Wortman 與 Fox 在亞利桑那 30、40、50 英里時速的路口也看到，約 95% 最後通過的車在黃燈亮時離路口 4 秒以內。另一組亞利桑那 5 個路口的觀察：停車的人只有約三成接近公式假設的等減速。FHWA 同時提醒：各研究路口需要的黃燈並不一樣，大多落在 4 到 5 秒，直接改成統一秒數也可能有風險，還需要更多研究；它也找不到任何研究檢驗過縮短黃燈的安全效果。",
+      "scope": "全為 FHWA 綜整轉述，原研究未讀；美國 1980 年代資料。FHWA『現行算法在 40 mph 以下可能有風險』一句是 FHWA 的推測語（suggest、may），只能放在本筆 scope 供撰稿者知道，片中不念、不上字卡，也不得與台灣第 231 條的 3 秒並列、不得把 50 公里換算成英里拿來對照；不得說或暗示台灣的秒數太短。",
+      "source_locator": "F20-S001：〈Methods Based on Behavioral Studies〉p.33–35；Executive Summary p.16",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：兩組轉述研究同一結論 0.75；三成等減速 0.25。 原提案 F20-004（目標 C8-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；轉折有據、『矛盾』是 FHWA 原字；但『低速短黃燈可能有風險』雖是 FHWA 原句，卻是推測語，放進以台灣 3 秒開場的片子會變成對台灣的評價，片中不用。補上 FHWA 的反向提醒與『沒有縮短黃燈的研究』。全是轉述，下修 1.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為「速限低→黃燈短」很合理；實地看，駕駛人決定通過的時間差不多都是 4 秒左右，不管開多快。",
+        "visual": "三條速度不同的道路並排，每條上的「通過車」點雲都擠在離停止線 4 秒以內的同一條線前。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：〈Methods Based on Behavioral Studies〉p.33–35；Executive Summary p.16",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-005",
+      "question": "黃燈調得剛剛好，是不是就不會有人在路口前猶豫？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.type2_option_zone_persists_any_yellow",
+      "answer_target": "不會。另一種兩難區叫「選擇區」或第二類兩難區，是駕駛人自己猶豫停或走的那一段：1974 年 ITE 南區委員會把它定義成停車機率在 10% 到 90% 之間的距離，多數研究落在黃燈亮時距停止線 2.5 到 5.5 秒。NCHRP 的錄影也一樣：離停止線約 2.5 秒的駕駛人只有 7.9% 停車，約 5.5 秒的有 93.1% 停車。報告寫明：不論黃燈多長，每一次黃燈都會有這段猶豫區，因為不同的人對黃燈的反應本來就不同。",
+      "scope": "停車比例是 NCHRP 83 個路口的混合資料。",
+      "source_locator": "F20-S002：p.7–8；Table 11 p.36–37",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：定義與本研究量測同一主題合 1.0。 原提案 F20-005（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）照原稿收；逐句對上，無須改字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈能消滅「停不下又過不去」，但消滅不了「要不要停」的猶豫。",
+        "visual": "以秒為刻度的道路軸，2.5 到 5.5 秒間一段漸層色帶，色帶上方百分比從 7.9% 爬到 93.1%。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-94c7bf337d9d2284",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：p.7–8；Table 11 p.36–37",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-006",
+      "question": "既然有公式，為什麼不同城市的黃燈還是不一樣長？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.agency_practice_variation_permissive_restrictive",
+      "answer_target": "因為公式只是做法之一，法律對黃燈的定義也不同。NCHRP 調查北美機關：267 個回覆中 161 個（60%）說自己沒有正式的黃燈時制政策；在 217 份說明做法的回覆裡，39% 用運動學公式、18% 用依速度的查表、19% 用統一值但條件需要時例外、6% 全部同一個值。72% 的機關最短黃燈定 3 秒；最長黃燈從 3 到 7 秒都有，最多的是 5 秒（38%）。FHWA 綜整：美國 39 州是『允許式』——黃燈時進入路口、紅燈時人還在路口裡都合法；11 州是限制式，其中西維吉尼亞要求黃燈內就得能開出路口。FHWA 寫，在限制式黃燈的地方，黃燈本身也應把全紅那段算進去。",
+      "scope": "美國與加拿大 2010 年前後自填調查；台灣的認定方式不在來源，片中不推論台灣屬哪一類，也不拿台灣的速限表和美國查表作比較。",
+      "source_locator": "F20-S002：p.22–23 Table 3–4；F20-S001：〈Overview of Vehicle Codes〉p.25、Figure 7 前後 p.41–42",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：機關做法分布 0.5、黃燈法律兩類 0.5。 原提案 F20-006（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字大致對，改正分母、補 19%、刪掉與台灣不精確的類比。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈長短不只是物理問題，也是行政與法律選擇；台灣用的「依速限查表」在美國也是兩成機關的做法。",
+        "visual": "美國地圖分三色（允許／部分限制／全限制）；旁邊圓餅圖：公式 39%、查表 18%、統一值 6%、其他。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-94c7bf337d9d2284",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：p.22–23 Table 3–4；F20-S001：〈Overview of Vehicle Codes〉p.25、Figure 7 前後 p.41–42",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：p.22–23 Table 3–4；F20-S001：〈Overview of Vehicle Codes〉p.25、Figure 7 前後 p.41–42",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-007",
+      "question": "把黃燈拉長一秒，闖紅燈的人真的會變少嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.yellow_extension_reduces_violations",
+      "answer_target": "違規會少。FHWA 綜整轉述兩組前後比較：Bonneson 與 Zimmerman 在德州 10 個路口把黃燈加長 1.0 秒（加長後不超過 5.5 秒），闖紅燈至少少一半；Retting 等人在賓州 2 個路口加 1 秒，少 36%。德州另一份報告的觀測也寫：黃燈短於 3.5 秒時，闖紅燈明顯增加。至於『駕駛人摸熟了長黃燈就會把它當綠燈的延長』，FHWA 說這是交通工程師之間的經驗說法，文獻沒有定論。",
+      "scope": "違規是替代指標，不是事故；兩個百分比分屬不同研究，分開講，不合成一個範圍，也不與 S006 模型的 60% 或 Bonneson & Son 的 53% 混用。『3.5 秒』是美國德州路口資料，不得與台灣 3 秒並列評論。",
+      "source_locator": "F20-S001：p.53–54；F20-S006：Chapter 4 p.4-9（3.5 秒）",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：兩組轉述的前後研究方向一致 0.75；3.5 秒以下違規上升（原文讀到）0.5。 原提案 F20-007（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字對；改掉不在原文的機構名、把兩個百分比分開，並加上不得與台灣 3 秒並列的限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多一秒黃燈，闖紅燈就可以少三成到一半以上。",
+        "visual": "同一路口兩段縮時：黃燈 3 秒與 4 秒，紅燈亮後還衝進路口的車用紅框標出，數量對比。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：p.53–54；F20-S006：Chapter 4 p.4-9（3.5 秒）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d4181f6970d14626",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：p.53–54；F20-S006：Chapter 4 p.4-9（3.5 秒）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-008",
+      "question": "闖紅燈變少了，路口的車禍也跟著變少嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.interval_change_crash_evidence_mixed",
+      "answer_target": "證據並不一致。德州的 Bonneson 與 Zimmerman 用路口資料建的模型預測：黃燈加長 1.0 秒，闖紅燈造成的死傷事故約少 40%。可是實際改過時制的路口比較並沒有這麼整齊：FHWA 綜整轉述 Persaud 等人比較 31 個改過時制與 135 個沒改的路口，黃燈加 1.0 秒的 5 個路口，追撞少 6.6%、直角撞多 7.6%，全都不顯著；黃燈與全紅一起加長的 11 個路口，追撞多 11.7%、直角撞少 3.9%，也不顯著；只有單獨把全紅平均加長 1.1 秒的 14 個路口，總事故少 20.2%、達顯著。明尼亞波利斯一項研究，加設全紅的 22 個路口和沒設的 47 個比，目標事故反而多約 30%。FHWA 的結論是：黃燈長短對事故的影響資料有限，哪些事故類型會變、變多少，文獻並不一致。",
+      "scope": "全部是 FHWA 綜整轉述（Persaud、Souleyrette 原文未讀）＋S006 原文模型；Persaud 研究未說明每路口改了幾個時相；都是相關不是因果。片中不說『全紅會增加事故』，也不說『加長黃燈沒用』；−40% 是模型預測值。",
+      "source_locator": "F20-S001：Table 8 p.60、Souleyrette 段 p.61–62、Table 9 p.62；Executive Summary p.17",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：Persaud 同一研究多數字 0.5（轉述）；明尼亞波利斯 0.25（轉述）；B&Z 模型 −40%（S006 原文讀到）0.5。 原提案 F20-008（目標 C8-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字都對，但只挑了不利的研究；補上作者自己來源裡的 −40% 模型後，轉折仍成立（違規明確下降、事故證據不一致），而且不再是單向的。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為「黃燈長＝闖紅燈少＝車禍少」是一條直線；事故資料卻沒有乖乖跟著違規一起降。",
+        "visual": "兩根柱：違規量大幅下降；旁邊事故量的柱子上上下下、標著「不顯著」，一根全紅的柱子反而變高。",
+        "seconds": [
+          60,
+          75
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：Table 8 p.60、Souleyrette 段 p.61–62、Table 9 p.62；Executive Summary p.17",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-009",
+      "question": "紅燈後那一秒全紅，到底擋掉了哪一種車禍？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.red_light_crash_time_into_red_distribution",
+      "answer_target": "德州交通研究院的研究者拿亞利桑那兩個城市照相執法拍到的 63 起闖紅燈事故，看每一起發生在紅燈第幾秒：事故最多落在紅燈的前 5 秒，之後下降，20 秒以後小而穩定。22 起對向左轉事故多在紅燈頭幾秒；41 起直角撞除了一起，都發生在紅燈 5 秒以後，5 到 15 秒最多——研究者解釋，那時橫向排隊的車正在放行。他們因此推論：加長全紅可能減少紅燈頭幾秒那一小部分直角撞，但這類事故本來就少，直角撞的總數不一定會明顯下降。",
+      "scope": "單一資料集（63 起、亞利桑那兩城市），FHWA 綜整轉述的是同一批，不得當兩個來源；時間是照片時間戳記。",
+      "source_locator": "F20-S006：Figure 5-4 說明 p.5-15–5-16；F20-S001：p.62 Figure 22 說明",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：一組小樣本資料的分佈與作者推論。 原提案 F20-009（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；把同一批 63 起事故寫成兩個獨立來源，改正並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最危險的不是剛變紅的那一瞬間，而是橫向車已經起步之後還衝進去的人——全紅保護不到他們。",
+        "visual": "時間軸從紅燈 0 秒往右，事故點散佈：左轉事故擠在前幾秒，直角撞多在 5 秒後；全紅只罩住最前面一小格。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4181f6970d14626",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S006：Figure 5-4 說明 p.5-15–5-16；F20-S001：p.62 Figure 22 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S006：Figure 5-4 說明 p.5-15–5-16；F20-S001：p.62 Figure 22 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-010",
+      "question": "亞利桑那重算黃燈和全紅之後，在紅燈期間進路口的車變多還是變少？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.arizona_pilot_retimed_intervals_entries",
+      "answer_target": "亞利桑那州交通局依現場資料重算黃燈與全紅，上線兩個月後再觀測 11 個左轉、7 個直行動線。左轉動線平均黃燈加長約 18%、全紅縮短約 4%：黃燈期間進入的車多了 61%，紅燈期間進入的少了 18.3%。迴歸分析裡，左轉動線的全紅加長（−1.7 到 1.7 秒範圍內）與『全紅期間越過停止線的車數』增加相關、統計顯著；直行全紅加長 0 到 0.9 秒則沒有顯著增加。報告只說相關，沒有說原因；它計算的是全紅這段時間內進入的車，全紅變長，計數的時間也跟著變長。",
+      "scope": "試辦樣本小（11＋7 動線），一處路口被列為離群；只有進入次數，沒有事故；不得寫成駕駛人『更敢闖』或『適應了安全餘裕』，不得用來暗示全紅有害。",
+      "source_locator": "F20-S005：Table 7 p.22；p.23–25（Naïve Approach、Regression Modeling、Conclusion）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：單一小樣本試辦的方向性結果，含計數窗變長的限制。 原提案 F20-010（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；報告沒有支持『駕駛人會用掉安全餘裕』；改寫成報告實際量到的東西並下修。C8-01 不用本核心（它談進入次數、不談事故，也不能撐轉折二），留池備用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "安全餘裕被看見之後，可能被駕駛人用掉一部分。",
+        "visual": "左轉車道示意：全紅格子變長，紅燈後仍壓線轉進來的車點跟著變多。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f253d3c3bef46db5",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S005：Table 7 p.22；p.23–25（Naïve Approach、Regression Modeling、Conclusion）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-011",
+      "question": "黃燈和全紅都設長一點不就好了？代價是什麼？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.change_interval_lost_time_delay",
+      "answer_target": "代價是整個路口的時間。FHWA 綜整引用美國公路容量手冊：在預設條件下，每個時相的損失時間就等於黃燈加全紅，損失時間越多、延滯越大。它轉述 Tarnoff 的計算：八時相路口、車流接近容量（v/c 0.9）時，全紅從 0.5 秒拉到 5.0 秒，每輛車的平均延滯從 30.0 秒變成 45.6 秒；車流低到中等（v/c 0.5）時只多 0.6 到 1.9 秒。報告開頭也寫：太短可能不足以安全結束時相，太長會降低容量、造成高延滯。",
+      "scope": "延滯是公式計算，不是實測；轉述。",
+      "source_locator": "F20-S001：Figure 23 說明 p.63–64；Table 10 p.64；Executive Summary p.15",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：Tarnoff 計算結果（轉述）；損失時間式是方法不算。 原提案 F20-011（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；內容對；方法不算事實、計算值轉述，下修 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每一秒黃燈和全紅，都是所有方向一起不能走的時間，路口越忙越貴。",
+        "visual": "四向路口計時圓盤，每個時相之間的黃與紅切片被放大；旁邊延滯數字由 30.0 跳到 45.6。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：Figure 23 說明 p.63–64；Table 10 p.64；Executive Summary p.15",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-012",
+      "question": "黃燈差 0.1 秒，真的會有差嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.chicago_2_9s_yellow_citation_threshold",
+      "answer_target": "在芝加哥差了一整個信任問題。市監察長 2014 年向市議會報告：當年初，市府開始接受紀錄黃燈只有 2.9 秒的照相違規，與自己公開的 3.0 秒標準不一致，造成民眾與行政聽證處的混亂和疑慮；監察長建議恢復拒收 3.0 秒以下，交通局已確認永久恢復 3 秒硬下限。同一份聲明也說：針對媒體點名違規暴增的路口，紀錄與訪談不支持市府為多開單而縮短黃燈；找到的原因反而是設備——一處觸發速度設太低、多開了 1,618 張，一處感應線圈長期故障、估計 45,444 筆違規沒被記錄。",
+      "scope": "市府監察機關聲明；新聞常見的「多開約 7.7 萬張」不在本來源，不用。",
+      "source_locator": "F20-S004：〈Suggestions〉段、〈Specific Anomalies〉段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條（原始官方聲明）；聲明日期 2014-10-28 寫進稿。 原提案 F20-012（目標 C8-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）照原稿收；逐句對上；與題目的關聯較弱（是執法門檻與信任問題），在片中只占一章的一半。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈秒數一旦拿來開罰單，0.1 秒就變成公共信任問題；而真正讓數字亂掉的，是壞掉的感應器。",
+        "visual": "碼錶特寫在 2.9 與 3.0 之間跳動；切到一張罰單上的黃燈秒數欄。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9585300c84659ad6",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S004：〈Suggestions〉段、〈Specific Anomalies〉段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T62-013",
+      "question": "左轉車要先減速再轉，黃燈是不是該給得比直行長？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.ite2020_extended_equation_turning_controversy",
+      "answer_target": "美國運輸工程師學會（ITE）2020 年的建議做法認為要另算：它依據 Järlström 自行發表、未經同儕審查的文章，採用『延伸運動學公式』，把轉彎車進路口前要先減到轉彎速度算進去；接近速度等於進入速度時（多數直行車），新式就退回舊式。FHWA 綜整列出的疑慮：新式算出的左轉黃燈有時超過部分機關可接受的上限，也可能與美國號誌手冊 3 到 6 秒的範圍衝突；它假設轉彎車在反應時間內維持原速，但實務者的經驗是轉彎車在黃燈亮前就已經在減速，因此可能高估。FHWA 為此與州和地方機關發起合作研究，2023 年的第一階段報告列的是待補的研究缺口。",
+      "scope": "只講 ITE 2020 與其爭議；不稱 Järlström 為工程師，不提他與奧勒岡技師委員會的訴訟（判決頁讀不到）。",
+      "source_locator": "F20-S001：Executive Summary p.15–17；p.41–43（extended kinematic equation 與疑慮清單）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條（轉述）。 原提案 F20-013（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；改掉來源沒有、且正好是爭議點的『工程師』稱呼。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連公式本身都還在被改，而改它的人一開始不是交通局的人。",
+        "visual": "直行車與左轉車兩條軌跡，左轉軌跡在路口前先畫出減速段；兩個算出來的黃燈長度並排，一個超出 6 秒刻度。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：Executive Summary p.15–17；p.41–43（extended kinematic equation 與疑慮清單）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T62-013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -430469,6 +432393,1068 @@
       ]
     },
     {
+      "id": "S62-001",
+      "question": "海上的小積雲從冒出來到第一次下雨要多久？快慢是海裡吹上來的大鹽粒決定的嗎？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.trade_cumulus_radar_rain_onset_time_organization",
+      "answer_target": "差很多，而且看起來不是鹽粒決定的。RICO 計畫在加勒比海巴布達島旁的開放大西洋，用偏極化雷達把 76 朵雲頂沒到結冰高度、後來都有下雨的信風積雲，從最早的回波一路追到雨下完。從雲生成到雲裡第一次出現雨（研究者以最大回波到 10 dBZ 為準），最快約 12 分鐘；較大的雨（30 dBZ）最快約 22 分鐘；但也有雲要到約 170 分鐘，同一天的雲就很分散。研究者挑的六天涵蓋整個計畫量到的大鹽粒濃度範圍，起雨的早晚和高度卻和大鹽粒多寡對不起來：鹽粒濃度相近的日子，長在弧狀外流邊界上的雲最快約 20 分鐘就到，長在邊界層滾渦上的雲卻維持 170 分鐘才到。大鹽粒多的日子，改變的是雨滴大小的分布。研究者的解讀是，雲怎麼排、背後的上升氣流，看起來比鹽粒更決定快慢。",
+      "scope": "RICO 六天、76 朵孤立的信風淺積雲（暖雲），樣本只收最後回波至少到 15 dBZ 的雲，從沒下雨的雲不在內；「雲生成」是雷達第一次看到雲的前一個掃描（3–4 分鐘），10 dBZ 是作者定義的起雨門檻；組織與起雨的關係是相關與作者解讀，不是控制實驗。不得說大鹽粒對下雨沒有作用（它改變滴譜），不得和 S60-003 的撒鹽實驗說成互相矛盾（那是層積雲的毛毛雨、撒播後量雨率）；不得把 12 分鐘說成一般雲的時間；不得與 S61-002 課本推算的 25 分鐘並列、相減或比倍數（不同的時間段）。第一作者 Minor，旁白若提研究者，寫「美國伊利諾大學的研究團隊」。",
+      "source_locator": "F19-S003 摘要；p1076 前言；p1084 CT 定義；p1087 §3b 第 1–2 段；p1088–1089；p1092–1093 key findings 1–3",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同意作者：實測起雨時間分布（12／22／170 分鐘）0.5；起雨快慢與大鹽粒濃度對不上、與雲的組織相關 0.5。這正是 V20 still_missing 第（2）項（非 Rosenfeld 研究群、不在亞馬遜、RICO 自己量的雲生成到第一個雷達回波），也是池中 P61-NA002 的 reentry_condition。去重：pool.json 無 2010JAS3675、Minor、characteristic time；RICO 只出現在 P61-S003 概述與 P61-NA002。 原提案 F19-001（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；來源合規（WebSearch 結果連結，今日重跑仍在結果中）、雜湊相同、數字逐句對上。收；改掉 payoff 裡與課本 25 分鐘的錯誤並列（不同時間段），補上「只收後來有下雨的雲」的選樣條件，更正第一作者。計 1.0 條，補到 C6-02 缺的 0.5 條以上。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真的拿雷達盯著海上的雲，從冒出來到第一次下雨，快的十幾分鐘、慢的將近三小時；鹽粒差不多的日子，雲排成弧狀的快、排在滾渦上的慢。",
+        "visual": "76 朵雲的起雨時間示意（只標 12、22、170 分鐘三個原文數字，註明「後來有下雨的雲」）；滾渦雲街與弧狀外流兩種雲排列的俯視示意。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave62-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd97d9a15a97c2ea",
+          "origin": "wave62-earth-20261111",
+          "locator": "F19-S003 摘要；p1076 前言；p1084 CT 定義；p1087 §3b 第 1–2 段；p1088–1089；p1092–1093 key findings 1–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-earth.json"
+      ]
+    },
+    {
+      "id": "H62-001",
+      "question": "還不會說話的嬰兒，雙手交叉時被碰一下，會轉錯手嗎？視力嚴重受損的嬰兒呢？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.infant_visual_impairment_crossed_hands_localization",
+      "answer_target": "視力正常的會，視力嚴重受損的不太會。義大利一項研究讓 10 名嚴重視障嬰兒（5 個月到快 3 歲）和 10 名年齡相近的視力正常嬰兒，手心各綁一個小振動器，不給任何指示，只看他們把頭、眼或手轉向哪一邊。只碰一隻手時，視力正常的嬰兒在雙手交叉時轉得比較慢、也比較常轉錯；視障嬰兒沒有這個交叉代價，兩種姿勢都跟視力正常嬰兒最好的表現差不多；只算手的反應也一樣。研究者提出的一種解釋是：視障嬰兒比較按『皮膚上的哪裡』，而不是『手平常放在空間哪一邊』來回應。",
+      "scope": "每組 10 人、年齡跨度大；視障組是周邊視覺病變、多數仍有極少量視覺，不是全盲；交叉代價只有圖與模型統計，不報百分比；原因是研究者的一種解釋。這裡測的是單一碰觸往哪隻手轉（定位），不是兩下先後判斷；不說視障嬰兒整體觸覺比較好（聲觸整合反而較弱，見 F19-NA004）。",
+      "source_locator": "F19-S001 Results 首段；〈Tactile localization and body representations〉第 2–3 段；Table 1；Figure 2；STAR Methods Design",
+      "premise_status": "screened",
+      "notes": "V22 下修為 0.5（作者 1.0）：與 H61-008 同方向（沒有視覺就沒有交叉代價），照 V21 對 H61-007 的同方向先例計 0.5；嬰兒期這個年齡是同一結果的族群，不另計。寫在轉折二之前，當「這個差別很早就出現」的一句，不當第三個同結論例子。 原提案 F19-002（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；全文合規、雜湊相同、數字對。收但下修為 0.5：結論與 H61-008 同方向；改掉「看不見」與年齡的說法，原因標為研究者的一種解釋。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "交叉手會被騙不是大人才有：還不會說話的嬰兒就看得到，而且看得見與幾乎看不見的孩子已經不一樣。",
+        "visual": "坐在家長腿上的嬰兒、手心綁小振動器，交叉與不交叉兩張示意；不放真實嬰兒影像。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave62-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-8c0a041a2dd872d0",
+          "origin": "wave62-human-20261111",
+          "locator": "F19-S001 Results 首段；〈Tactile localization and body representations〉第 2–3 段；Table 1；Figure 2；STAR Methods Design",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+      ]
+    },
+    {
+      "id": "H62-002",
+      "question": "出生後頭幾個月看不見，長大後交叉手還會被騙嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.cataract_before_five_months_crossing_effect_intact",
+      "answer_target": "會，跟一般孩子一樣被騙。研究者在巴塞隆納一家兒童醫院，找來 13 名天生雙眼緻密白內障、出生後半個月到 5 個半月（平均約 3 個月）就開刀的孩子，平均 8 歲時跟 24 名同齡孩子一起做『兩隻手各被振動一下，哪隻先』的測驗。兩組雙手交叉時都明顯變差，兩組之間沒有差別，交叉代價的大小也跟當初看不見多久無關。研究者據此說：出生後頭 5 個月的視覺，對發展出『自動把觸覺放到外部空間』並不關鍵。",
+      "scope": "13 名（原 14 名，1 名排除）早期開刀兒童，測驗時視力仍偏低（較好眼平均 0.32）；只說『頭 5 個月沒有視覺不足以讓交叉效應消失』；『敏感期存在』的證據是同篇單一個案與前人研究，不由這組結果單獨推出；不說敏感期確切在幾歲；不與 H61-007 的受試者合併。",
+      "source_locator": "F19-S002 摘要；Method/Participants；Results〈Cataracts Removed Before 5 Months of Age〉；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，同意作者：一個組間實驗，結論是池裡沒有的（最早幾個月看不見並不會讓人『不被騙』），方向與 H61-007、H61-008 相反。與 F19-004 同一篇，兩核心合計 1.5（見 F19-004）。去重：pool.json 無 cdev.12813、tactile remapping；Azañón 只出現在 Heed 與 Azañón 2014 綜述（H61-004 的來源）。 原提案 F19-003（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；來源取得合規（研究室出版頁確有連結，另有 CORE 典藏副本），雜湊相同，數字逐句對。收，改兩處措辭：受試者不是全由巴塞隆納找來；「敏感期存在」不是這組結果推出的。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為越早看見越關鍵：出生頭幾個月看不見的孩子，長大後跟大家一樣被交叉騙到；分水嶺在更後面。",
+        "visual": "時間軸：出生、5 個月、7 歲標出兩組開刀時間；兩組交叉與不交叉的示意長條（不給原文沒有的百分比）。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave62-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0222d15b24b26b32",
+          "origin": "wave62-human-20261111",
+          "locator": "F19-S002 摘要；Method/Participants；Results〈Cataracts Removed Before 5 Months of Age〉；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+      ]
+    },
+    {
+      "id": "H62-003",
+      "question": "一直到七歲才開刀看見的人，交叉手時還會被騙嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.late_cataract_case_no_crossing_cost_population",
+      "answer_target": "這一位幾乎不被騙。同一研究裡的少女 LM 在 6 歲半過後才移除先天白內障，17 歲受測時，雙手交叉與不交叉的正確率是 91.67% 對 94.42%；14 名同性別、年齡相近的對照者每一位都有交叉代價，平均從 96.07% 掉到 81.20%。研究者再把她放進 343 名做過同類測驗的人裡比：她交叉時排在前 2 到 3%，不交叉時卻只在第 73 或 87 百分位，所以不是她觸覺特別靈敏，而是交叉沒有拖累她。",
+      "scope": "LM 是單一個案；343 人來自 12 篇已發表、2 篇未發表研究與本研究的 14 名對照，含 R44003 的原刊樣本，混合不同間隔範圍，只當比較背景，不說『一般人幾乎都被騙』；不說開刀太晚就永遠學不會（H61-007 顯示混進聲音任務仍會被騙）；不說她的出身地細節。",
+      "source_locator": "F19-S002 Method/Participants（LM）；Results〈Case Study〉；Figure 3 圖說；Discussion 第 1、4 段",
+      "premise_status": "screened",
+      "notes": "V22 下修為 0.5（作者 1.0）：單一個案，與 H61-007 實驗 1 同方向；343 人分布是背景不計。與 F19-003 同一篇合計 1.5。 原提案 F19-004（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；數字對，但作者把對照組說成同齡、把 343 人說成獨立的一般人樣本並引申『交叉代價非常普遍』。收作單一個案、0.5 條，刪掉普遍性那半題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "七歲才看見的她，交叉時反而排進前 3%——不是她比較靈，是交叉騙不了她。",
+        "visual": "LM 與 14 名對照的交叉／不交叉兩組長條；343 人分布只畫輪廓、虛線標 LM，註明『多個研究合併』。",
+        "seconds": [
+          30,
+          35
+        ]
+      },
+      "origin": "wave62-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0222d15b24b26b32",
+          "origin": "wave62-human-20261111",
+          "locator": "F19-S002 Method/Participants（LM）；Results〈Case Study〉；Figure 3 圖說；Discussion 第 1、4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+      ]
+    },
+    {
+      "id": "L62-001",
+      "question": "烏賊只剩一隻眼看得到蝦，還抓得到嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.cuttlefish_quasi_monocular_strike_delay",
+      "answer_target": "抓得到，但調整位置比較慢。研究者讓戴紅藍眼鏡的烏賊只有一隻眼看到螢幕上的蝦（濾片還會漏一點光，所以不是完全單眼）：在調整位置的階段，牠們花比較久、游比較遠，最後出擊時離目標比較近；發現獵物、出擊和抓取階段跟兩眼都看得到時沒有差別。研究者也說，很多只用一眼的烏賊表現得跟兩眼一樣好，兩眼的線索不是唯一的距離線索。",
+      "scope": "樣本很小（擬單眼 3 隻、雙眼 5 隻）；擬單眼不是完全單眼；早年 Messenger 研究的 56%／91% 若要提，標明是另一研究、手術弄瞎一眼。隨機點紋與反相關結果屬 B2315，不在本核心重講。不寫成單眼烏賊抓不到。",
+      "source_locator": "F19-S006 Results〈Intact binocular cues speed up prey capture〉、Fig.2；〈…anticorrelated…but not uncorrelated〉、Fig.3；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5 條，同意作者：擬單眼的時間與位置差（一個實驗）。B2315 本題另計 0.5（同篇合計 1.0）。 原提案 F19-006（目標 C7-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；雜湊相同、數字對。收，但刪掉與 B2315 同答案的隨機點紋那半，補上原文『很多單眼烏賊表現一樣好』的保留。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "構造說烏賊兩眼視野有重疊；拿掉一眼的影像，定位就變慢——重疊真的被拿來用，但不是唯一的辦法。",
+        "visual": "烏賊戴紅藍眼鏡示意；兩眼與擬單眼的定位路徑並排（只畫方向、不標數字）。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave62-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca9fbcd829466329",
+          "origin": "wave62-life-20261111",
+          "locator": "F19-S006 Results〈Intact binocular cues speed up prey capture〉、Fig.2；〈…anticorrelated…but not uncorrelated〉、Fig.3；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-life.json"
+      ]
+    },
+    {
+      "id": "L62-002",
+      "question": "照西洋蜂眼睛的參數算，月光下應該分不出顏色；野外的大蜜蜂真的分不出來嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.dim_light_bee_colour_model_vs_behaviour",
+      "answer_target": "分得出來。印度的研究者訓練野生大蜜蜂到藍色餵食點，再擺出藍色和三種深淺的灰色（都不給糖）。白天約 79% 的落點在藍色；夜裡光度比半月亮時約 88%、相當半月時約 77%，再暗一級（每平方公尺 0.001 到 0.01 燭光）降到約 44%，但去灰色的次數在每個光度都顯著較少。研究者算過，換照明光譜時灰與藍誰比較亮會跟著變，蜜蜂靠亮暗選不準。用西洋蜂的感光參數、文獻裡的月光與暮光光譜、再加上暗光下的光子雜訊去算，這些顏色之間的距離都小於可分辨的門檻，模型預測幾乎分不出；實際的蜜蜂卻分得出。作者說參數來自別種蜂、光譜不是現場量的、模型也沒算進暗光下的累加，不能可靠解釋這個結果。",
+      "scope": "Apis dorsata 野生蜂群、印度南部；夜間只能整群標記訓練；最暗一級 17 隻、24 次落點；百分比是原文平均值（±標準誤）。模型用的是文獻光譜，不與某一級現場光度一對一對照；不說模型錯了，只說用西洋蜂參數的模型預測與行為不一致；不說所有蜜蜂夜裡看得到顏色（西洋蜂暮光下色盲是引用他人研究）。",
+      "source_locator": "F19-S004 §3(a)–(c)；§4 Discussion 第 1、4 段與模型限制段；Figure 3–4 圖說",
+      "premise_status": "screened",
+      "notes": "V22 下修為 1.0（作者 1.5）：白天與三種夜間光度的行為結果 1.0；模型不一致是同一研究的解讀，作者自己說不能可靠解釋，不另計。補 V21 still_missing 的『一份行為測驗的開放原研究』。去重：pool.json 無 dorsata、rspb.2023.1267；夜間辨色既有 R37007（守宮）、L61-001（青蛙），答案方向相近但物種與測法不同。 原提案 F19-007（目標 C7-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V22（2026-11-12）改字後收；全文合規、雜湊相同、行為數字全對。收但下修為 1.0；改掉把模型的文獻光譜與半月光度一對一對照的寫法，補上模型沒算累加這條限制。它在 C7-02 是轉折二的旁證（構造／模型會低估），不是轉折本身。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "照另一種蜂的眼睛參數算，月光下應該是黑白世界；把野生大蜜蜂拿去考，牠還是挑得出藍色。",
+        "visual": "四個餵食點（藍與三灰）在白天、比半月亮、半月、更暗四格中的藍色落點比例長條（只用原文百分比）；模型那格標『西洋蜂參數、文獻光譜』。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave62-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-58e7c248abd74b7e",
+          "origin": "wave62-life-20261111",
+          "locator": "F19-S004 §3(a)–(c)；§4 Discussion 第 1、4 段與模型限制段；Figure 3–4 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-life.json"
+      ]
+    },
+    {
+      "id": "P62-001",
+      "question": "下雨天車子「飄」，到底是輪胎浮在水上嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.horne_speed_sqrt_pressure",
+      "answer_target": "全飄的那一刻是。NASA 1963 年的技術報告（TN D-2056）這樣描述：輪胎往前推開積水，水的動壓力隨速度的平方增加；到某個臨界速度，水往上推的力等於輪子承受的重量，輪胎就整個離開路面，稱為總水漂，在那之前是部分水漂。報告根據蘭利中心飛機起落架的軌道試驗，把臨界速度簡化成：水漂速度（英里／時）約等於 10.35 乘以胎壓（磅／平方吋）的平方根（以節計是 9 倍）。前提是光面或封閉花紋的胎，或水比胎紋溝深；報告說它和 925 到 22,000 磅載重、24 到 150 psi 的各種輪胎（多數是飛機胎）試驗大致相符。",
+      "scope": "飛機試驗為主的簡化式，標明；英制保留；不替觀眾算自己車的水漂速度。",
+      "source_locator": "F20-S007：〈Physical Description〉〈Derivation〉式 (2)–(5) 與其後兩段、Figure 4 說明",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：簡化式及其前提與驗證範圍；定義是概念不另算。 原提案 F20-014（目標 C8-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；常數、單位、前提全對；補標飛機試驗來源並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「飄」有一條六十年前的公式：只看胎壓，不看車重。",
+        "visual": "輪胎側面剖面，前方水楔隨速度變厚，壓力箭頭由小變大，直到輪胎底面與路面分開一條細線。",
+        "seconds": [
+          60,
+          75
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Physical Description〉〈Derivation〉式 (2)–(5) 與其後兩段、Figure 4 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-002",
+      "question": "輪胎開始水漂時，車子會出現哪些跡象？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.manifestations_spindown_friction_steering",
+      "answer_target": "NASA 1963 年的報告列出八種觀察到的表現，其中幾個：沒煞車的輪子會自己慢下來、甚至停轉——飛機串列起落架的前輪，在水漂速度的 70% 就開始減速；輪胎前方的船首浪消失；總水漂時剩下的阻力，換算成摩擦係數通常不超過 0.05，踩煞車幾乎沒有用；輪胎離地就產生不了側向力，報告的說法是方向盤『變成沒用的配件』。在一架四發噴射運輸機的雪泥跑道試驗裡，不超過 9 節的側風就讓水漂中的飛機偏航側移。",
+      "scope": "多為飛機與試驗軌道資料，旁白要說『飛機』『雪泥』；報告的三倍車距建議不進片。",
+      "source_locator": "F20-S007：〈Experimental Observations〉〈Spin-down of Wheel〉；〈Loss of Braking Traction〉〈Loss of Directional Stability〉",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：同一報告多個表現。 原提案 F20-015（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；補標飛機與雪泥。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水漂的可怕不是滑，是煞車和方向盤同時失效。",
+        "visual": "車輪特寫：輪速計指針往下掉；方向盤轉了但車頭沒轉，側風箭頭把車推偏。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Experimental Observations〉〈Spin-down of Wheel〉；〈Loss of Braking Traction〉〈Loss of Directional Stability〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-003",
+      "question": "車越重越不容易水漂嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.load_independence_car_vs_truck_1963",
+      "answer_target": "照 NASA 1963 年的分析，影響很小：輪胎是彈性體，載重增加時足印面積跟著變大，載重除以面積大約仍等於胎壓；以一條飛機胎為例，從零載到最大靜載，胎壓只升 3% 到 4%，水漂速度改變 2% 以內。決定性的是胎壓：當時美國汽車胎壓約 16 到 30 psi，卡車和巴士 50 到 90 psi；報告推論汽車可能在遠低於 60 到 70 英里的較高速限下總水漂，卡車巴士在一般公路速度較不容易；文中的例子是胎壓 25 psi 的車，對應水漂速度 52 英里／時。",
+      "scope": "1963 年的胎壓與速限；載重數字來自飛機胎；下一核心推翻其中『卡車不易水漂』。",
+      "source_locator": "F20-S007：〈Vertical load〉；〈Ground Vehicles〉；〈Loss of Directional Stability〉Figure 30 說明",
+      "premise_status": "screened",
+      "notes": "算 0.75 條。 原提案 F20-016（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；補標飛機胎，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "公式說重車沒比較安全，胎壓高的大車才比較不會飄——這句話後來被推翻了一半。",
+        "visual": "天秤一邊是小轎車、一邊是大卡車，各自標胎壓；水漂速度刻度上，卡車的標記遠在速限線之上。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Vertical load〉；〈Ground Vehicles〉；〈Loss of Directional Stability〉Figure 30 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-004",
+      "question": "大卡車胎壓那麼高，真的不會水漂嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.light_load_truck_footprint_aspect_ratio",
+      "answer_target": "會，輕載時特別會。1984 年 9 月，德州交通研究院用一台叫『Myth Buster #1』的試驗拖車，在約 1/4 吋深的水槽測一條 10.00-20 卡車胎：載重只有 940 磅、胎壓 75 psi，時速 58 英里時輪速明顯掉下來，就是動態水漂；同樣 940 磅，40 psi 在 51 英里、100 psi 在 62 英里開始（這幾次用的是磨到約 2/32 吋的舊胎；另一次 20 psi、43 英里是新胎）。換成 3,600 磅載重，開到拖車最高的 62 英里都沒有偵測到。用複寫紙拓下足印：940 磅時足印寬是長的約 1.4 倍，3,600 磅時約等寬等長。報告引述 NASA 退休工程師 Horne 剛提出的預測：汽車胎載重範圍窄，卡車胎可從 600 到 6,000 磅，輕載時足印形狀大變；報告稱這次試驗推翻了流傳二十年的『卡車胎不會水漂』。",
+      "scope": "只有 4 個水漂資料點、一條卡車胎；不推論到特定卡車事故；英制保留。",
+      "source_locator": "F20-S010：第 1–3 頁正文、Table 1",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：同一試驗主結果 1.0；足印寬長比 0.25。 原提案 F20-017（目標 C8-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；主結果對，改正新舊胎、足印方向與數據歸屬。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為高胎壓的大車不會飄；實測是空車的卡車在一般高速公路速度就飄了，關鍵是輪胎踩在地上的形狀。",
+        "visual": "兩個輪胎足印的拓印：滿載時細長、空車時又寬又短；旁邊速度表停在 58。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-3068f7ef20a8e79b",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S010：第 1–3 頁正文、Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-005",
+      "question": "路上要積多深的水，輪胎才會水漂？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.minimum_water_depth_tread_grooves",
+      "answer_target": "比很多人想的淺，而且看胎紋。NASA 1963 年整理：平滑的試驗帶配光面胎，0.02 到 0.09 吋的水就能水漂；一條有肋紋的汽車胎在試驗跑道上約要 0.2 到 0.3 吋。FHWA 1979 年的報告另外整理德國 Gengenbach 的滾筒試驗：光面胎低到 0.01 吋就水漂，有紋胎則找不到 0.08 吋以下水漂的資料——接觸面的水幾乎都塞得進溝裡；在真實公路上，胎紋不到 2/32 吋的胎，平均水深少於 0.06 吋時也沒出現動態水漂。",
+      "scope": "三種條件（跑步機試驗帶、滾筒、公路）分開講，不合併成一個門檻；英制原值，毫米換算要標；不寫 1.6 mm。",
+      "source_locator": "F20-S007：〈Depth of fluid〉〈Tire-tread design〉；F20-S011：文獻回顧〈One conclusion not drawn by Gengenbach〉段",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：NASA 最小水深 0.5；Gengenbach 轉述 0.25；公路觀察 0.5。 原提案 F20-018（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字對，禁止把兩組光面胎數字併成一個範圍。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "胎紋不是裝飾，是讓水在輪胎底下有地方躲的排水溝。",
+        "visual": "胎紋溝剖面：水層由薄變厚，先流進溝裡，溝滿了才把胎面抬起。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Depth of fluid〉〈Tire-tread design〉；F20-S011：文獻回顧〈One conclusion not drawn by Gengenbach〉段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S007：〈Depth of fluid〉〈Tire-tread design〉；F20-S011：文獻回顧〈One conclusion not drawn by Gengenbach〉段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-006",
+      "question": "路面只是濕濕的、沒有積水，也會打滑得像水漂嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.viscous_thin_film_smooth_surface",
+      "answer_target": "會，那是另一種水漂。NASA 1968 年的回顧把水漂分成兩種：要積水夠深、速度夠快的『動態水漂』，和只要平滑路面上一層薄水膜、在低得多的速度也會發生的『黏性水漂』。蘭利試驗軌道把五種路面先泡水、再用硬毛掃帚掃掉積水，只剩摸起來潮濕：飛機的光面試驗胎在平滑混凝土上剎車，摩擦低到和噴了水的冰面差不多，也和完全動態水漂時差不多；紋理粗的瀝青就好得多。報告寫，多數跑道的紋理足以把這層薄膜打散。",
+      "scope": "飛機光面胎、試驗軌道；不推論到一般汽車胎的具體數值；不給摩擦係數數值。",
+      "source_locator": "F20-S008：Introduction 第二段；〈Damp runways〉段與 Figure 6",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：飛機光面胎單一試驗系列。 原提案 F20-019（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；內容對，補標飛機光面胎。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「飄」不一定要大水，光滑路面上一層薄膜就夠——這時救你的是路面的粗糙度。",
+        "visual": "放大鏡看路面：平滑混凝土上一層連續水膜；粗粒瀝青上水膜被石粒尖端戳破。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b66e5cf2303cb95d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S008：Introduction 第二段；〈Damp runways〉段與 Figure 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-007",
+      "question": "還沒到公式算的水漂速度，輪胎就完全踩在路上嗎？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.partial_onset_low_speed_shallow_water",
+      "answer_target": "不一定。維吉尼亞理工 2025 年發表的研究，把力感測器嵌進一條用過的 245/40 R18 輪胎（胎紋約 4.4 毫米）的胎紋溝裡，量水往上推的力，再換算成『進水量占輪胎最大排水能力的比例』，作者稱為水漂風險。在 Michelin 試車場約 1.05 毫米的受控水深下，這條胎和文獻裡兩條參考胎，風險都在時速約 30 英里開始離開零，作者解讀為部分水漂開始；這條胎要到約 111 英里才算完全水漂。在一般路面（水深沒有直接量，估計零點幾毫米），用 45 到 65 英里四個量測點畫出的曲線，約 20 英里以上就離開零。論文也整理：胎紋溝可能在水膜比溝淺得多時就被灌滿，灌滿後胎面就像光面胎；多數標準化水漂試驗用約 8 毫米水深，並不代表一般行車。NASA 1963 年的飛機胎資料同樣顯示，輪子在遠低於總水漂速度時就可能開始減速。",
+      "scope": "單一輪胎、單一車；『風險』是作者定義的流量比（分母用鎖死輪的排水量），不是摩擦係數，也不是直接量到的接觸面積；30 mph 是 1.05 mm 受控水深，20 mph 是真實路面曲線的外推，兩者不得互換；作者的駕駛應用不進片。",
+      "source_locator": "F20-S013：Introduction 第 5–6 段、Results、Model Validation 第一段、Conclusions；F20-S007：〈Spin-down of Wheel〉",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：受控水深下約 30 mph 起部分水漂與 111 mph 臨界 0.75；溝槽淹沒與標準試驗水深（文獻回顧轉述）0.25。 原提案 F20-020（目標 C8-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；把兩個不同水深條件的數字併成一句，改正後轉折仍成立（受控 1 mm 水深下約 30 mph 就開始），但數字與條件要照原文。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為「飄」是過了某個速度才突然發生；量測顯示接觸面從很低的速度就開始被水一點點吃掉。",
+        "visual": "輪胎足印俯視動畫：速度表從 0 往上，足印前緣一塊塊變成水色，到 111 才整片消失。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4317ec20bff24730",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S013：Introduction 第 5–6 段、Results、Model Validation 第一段、Conclusions；F20-S007：〈Spin-down of Wheel〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S013：Introduction 第 5–6 段、Results、Model Validation 第一段、Conclusions；F20-S007：〈Spin-down of Wheel〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-008",
+      "question": "一般轎車在真實道路上，大概什麼速度會水漂？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.field_speed_range_one_sided_puddle_yaw",
+      "answer_target": "答案是一個範圍，不是一個數字。FHWA 1979 年的全尺度研究結論：汽車一般可能在每小時 40 到 80 英里之間水漂，看條件而定；它整理的德州 HPR-147 專案量到的完全動態水漂速度在 45 到 77 英里之間。用儀器化的兩輪試驗拖車量路上的水窪：約 1 吋深、30 呎長的水窪，在 40 到 45 英里就可能讓輪胎失去接觸，水平拖曳力最高到 300 磅力；只壓到車子一側的水窪量到危險程度的偏轉扭矩，研究者認為比兩側都壓到的寬水窪危險潛勢更大。",
+      "scope": "1970 年代輪胎與車、試驗拖車；英制原值；不寫成『常常』或給閃避水窪的建議。",
+      "source_locator": "F20-S011：Ch.IX p.253–254；文獻回顧 HPR-147 段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：同一研究的速度範圍、水窪失去接觸與單側扭矩合計（HPR-147 為轉述，不另算）。與 F20-022、F20-023 的 OGFC 句、F20-024 的加州句同屬 FHWA-RD-79-31，四核心合計約 2.0 條。 原提案 F20-021（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字對，改掉頻率說法並標試驗拖車；同一研究跨核心不重複膨脹。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最讓車「飄」的常常不是滿地積水，而是只吃到一邊輪胎的水窪。",
+        "visual": "俯視車輛：右側兩輪壓進路邊水窪，水的阻力箭頭只在右邊，車身被拉出一個轉向角。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S011：Ch.IX p.253–254；文獻回顧 HPR-147 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-009",
+      "question": "胎紋磨淺了，在積水路上差在哪裡？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.tread_depth_threshold_taiwan_wear_indicator",
+      "answer_target": "FHWA 1979 年的研究在排水性鋪面上做的結論：胎紋最淺的胎，尤其是寬扁胎，在水深超過約 0.08 吋時，時速 55 英里就表現很差，不論路面紋理或排水好壞。同一研究寫，這種鋪面在水深 0.1 吋以內、胎紋 0.2 吋以上、胎壓約 18 到 20 psi 以上時，能在鄉間速限下提供相對高的摩擦；技術摘要說 0.2 吋大約是當時公路車輛胎紋的中位數。台灣方面，《道路交通安全規則》第 39 條『汽車申請牌照檢驗之項目及基準』第三十款寫：民國 103 年 1 月 1 日起，各類車輛所用輪胎的胎面未磨損至國家標準 CNS1431 或 CNS4959 所訂的任一胎面磨耗指示點。",
+      "scope": "1970 年代美國排水鋪面試驗；胎壓兩版本（18／約 20 psi）照實寫；台灣條文是申請牌照檢驗基準、只寫磨耗指示點，不寫毫米數、不寫 1.6 mm；不把美國的 0.2 吋與台灣法規對比，不建議何時換胎。預測式是方法，不進片。",
+      "source_locator": "F20-S011：Ch.IX p.256–257（OGFC 結論第 7 點）；F20-S012：Summary 與 p.8–9；F20-S015：第三十款",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：最淺胎紋在 0.08 吋以上水深 55 mph 表現差 0.5；台灣條文 0.5。OGFC 條件與 F20-023 同研究，不另算。 原提案 F20-022（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；刪掉隱含安全建議與法規評價的對比，改正第 39 條的性質與胎壓數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "合法的最低胎紋，和研究裡「抓地足夠」的胎紋，不是同一條線。",
+        "visual": "胎紋深度尺插進新胎與磨耗胎；磨耗胎的溝紋跟磨耗指示塊幾乎齊平。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S011：Ch.IX p.256–257（OGFC 結論第 7 點）；F20-S012：Summary 與 p.8–9；F20-S015：第三十款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1cbcdafb01158bba",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S011：Ch.IX p.256–257（OGFC 結論第 7 點）；F20-S012：Summary 與 p.8–9；F20-S015：第三十款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-4081d470adfe2d5b",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S011：Ch.IX p.256–257（OGFC 結論第 7 點）；F20-S012：Summary 與 p.8–9；F20-S015：第三十款",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-010",
+      "question": "同一段路，為什麼總是某幾條車道、某幾個位置特別容易飄？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.water_film_rutting_crossslope_drainage",
+      "answer_target": "因為水在路面上不是均勻的。2022 年一篇研究用車載光達掃描上海的路面，再用淺水方程估算水膜：有橫坡的路面越往下游邊越厚；有車轍的路段水膜呈兩條峰，外側車道較厚，估計最厚可超過 2 公分；代入兩種水漂模型，車轍與粗糙低窪處的最低水漂速度可以低於每小時 90 公里。FHWA 1979 年也測到：連最開放的排水性鋪面，在 1% 橫坡、外側車道的外輪跡，雨強每小時 0.2 到 0.4 吋就被淹過；它對混凝土路面的另一項結論是，大雨停後幾分鐘，路面上仍可能留有危險的積水。",
+      "scope": "光達研究是模型估計（未量實車水漂）；兩項 FHWA 結論分屬排水鋪面與混凝土路面，分開講；駕駛建議不進片。池中 D2104 講車轍成因，本核心只講車轍積水。",
+      "source_locator": "F20-S014：Abstract、Conclusions 第二、三段；F20-S011：Ch.IX p.254–255",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：光達水膜與車轍 0.75（模型）；FHWA 淹水與雨後殘留 0.25（同研究跨核心）。 原提案 F20-023（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；改正『超過 2 公分』與把兩種鋪面接在一起的句子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "水漂一半看輪胎，一半看路：車轍就是路面上自己長出來的兩條小溝渠。",
+        "visual": "路面剖面的水膜色階：車轍輪跡兩條深藍，路肩側越來越深。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-2b55ea5399454ff4",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S014：Abstract、Conclusions 第二、三段；F20-S011：Ch.IX p.254–255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S014：Abstract、Conclusions 第二、三段；F20-S011：Ch.IX p.254–255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "P62-011",
+      "question": "機場跑道和一些彎道上那一條條溝，是做什麼的？",
+      "domain": "流體物理",
+      "mechanism_key": "tire.hydroplaning.pavement_grooving_history_spinout_reduction",
+      "answer_target": "是給水逃的路。NASA 的回顧寫，路面刻槽是英國的做法，1956 年先在英國幾座機場試；公路多刻縱向、機場多刻橫向；NASA 從 1962 年起在試驗軌道上研究。NASA 1963 年報告整理英國的量測：一架 Meteor 戰鬥機要開始水漂，平滑跑道上最少要 0.17 吋的水，刻槽跑道要 0.42 吋，兩倍以上。FHWA 1979 年報告轉述加州交通局：彎道刻縱向溝之後，回報打滑甩尾類事故減少 90% 到 95%；同段也說，橫向與菱形刻槽的事故資料還沒有定論。",
+      "scope": "加州數字是報告轉述交通局回報，非本研究量測；0.17／0.42 吋是單一機型。",
+      "source_locator": "F20-S009：〈Runway Research〉；F20-S007：〈Depth of fluid〉（Figure 21：0.17／0.42 吋）；F20-S011：Ch.IX p.255",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：刻槽歷史與最小水深 0.5；加州回報 0.25（轉述、同研究跨核心）。 原提案 F20-024（目標 C8-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；小改：刪掉沒讀到的 1964、補標機型與加州段的保留句。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "路面上的刻痕，等於替每個輪胎多挖幾條胎紋。",
+        "visual": "跑道橫向溝槽特寫，水沿溝往兩側流走；切到彎道上的縱向溝。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave62-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4b770bb74beb3f8c",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S009：〈Runway Research〉；F20-S007：〈Depth of fluid〉（Figure 21：0.17／0.42 吋）；F20-S011：Ch.IX p.255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-aea8b7f0553c80dd",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S009：〈Runway Research〉；F20-S007：〈Depth of fluid〉（Figure 21：0.17／0.42 吋）；F20-S011：Ch.IX p.255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b10d6d42b0bdf18d",
+          "origin": "wave62-physics-20261111",
+          "locator": "F20-S009：〈Runway Research〉；F20-S007：〈Depth of fluid〉（Figure 21：0.17／0.42 吋）；F20-S011：Ch.IX p.255",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+      ]
+    },
+    {
+      "id": "T62-001",
+      "question": "台灣的路口，黃燈為什麼有的 3 秒、有的 4 秒？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.taiwan_yellow_speed_band_allred_formula",
+      "answer_target": "台灣的條文是看那條路的行車速限。《道路交通標誌標線號誌設置規則》第 231 條第一款：黃燈時間「得依下表」——速限每小時 50 公里以下 3 秒、51 到 60 公里 4 秒、61 公里以上 5 秒。第二款規定黃燈結束後「應有一秒以上之全紅時間」，直行交通的全紅時間「宜依」公式（W＋L）÷V 計算：W 是路口近端停止線到遠端路段起點的距離，L 是平均車長、得用 6 公尺，V 是平均車速、得用行車速限（公尺／秒）；以這個值為原則，最短不得小於（W＋L）÷2V。條文只給表與公式，沒有寫這張表是怎麼定出來的。",
+      "scope": "現行條文用「得」「宜」；條文不說明表的推導，也不說明黃燈與全紅各自的目的（全紅的目的另見池中 T4005，不在本核心重講）。不談闖紅燈罰則與認定，不評論這張表合不合適。",
+      "source_locator": "F20-S003：第 231 條第一、二款表與備註",
+      "premise_status": "screened",
+      "notes": "算 1.0 條（原始法規，兩款合一）。刪掉作者對黃燈／全紅分工的解讀句，避免與 T4005 重複並避免把解讀當條文。 原提案 F20-001（目標 C8-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；來源合規、PDF 雜湊相同、數字逐字對上；刪掉不在條文上的分工句、改正 W 的定義。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為黃燈秒數是隨便設的；其實台灣是照速限分三段，紅燈前那一秒全紅另有公式。",
+        "visual": "台灣路口俯視，三種速限標誌各配一條黃燈秒數條；黃燈後插一格全紅，公式 (W+L)/V 浮在路口上。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-982850f1ed93eaae",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S003：第 231 條第一、二款表與備註",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-002",
+      "question": "黃燈的秒數，最早是根據什麼算出來的？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.kinematic_yellow_type1_dilemma_origin",
+      "answer_target": "FHWA 2023 年的綜整報告寫：多數美國機關用的是 Gazis、Herman、Maradudin 三人 1960 年提出的運動學模型的某種版本，美國運輸工程師學會（ITE）的建議做法從 1965 年起就以它為本；報告也寫，原作者的目的是提供洞見，不是替機關訂準則，而且模型只考慮直行車。想法是：黃燈亮起時，離路口夠遠的車要能以可接受的減速度停下，夠近的車要能開過去；黃燈太短，中間就會出現「停不下、也過不去」的一段，NCHRP 報告稱為第一類兩難區。算式用反應時間、接近速度、減速度、坡度。美國號誌手冊（MUTCD）只給指引：黃燈最短 3 秒、最長 6 秒，較長的留給高速進口道；也有工程師用「速限（英里／時）除以 10」的經驗法。",
+      "scope": "美國的歷史與準則，Gazis 1960 原文未讀（付費），以 FHWA 綜整轉述；不說台灣第 231 條的表由此推得（沒有來源）。",
+      "source_locator": "F20-S001：p.23–24、p.26–27、Table 1 p.31–32；F20-S002：〈The Dilemma Zone〉p.6–7",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：模型來源與第一類兩難區 0.5（轉述）＋MUTCD 原文引句 0.25；mph÷10 是方法，不算事實。 原提案 F20-002（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；內容對得上，但幾乎全是綜整轉述，下修到 0.75；補上 FHWA 自己寫的『原作目的不是準則、只考慮直行車』，讓後面的轉折有根據。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈不是提醒你「快變紅了」那麼簡單，它的長度是為了消滅一段停不下又過不去的死區。",
+        "visual": "俯視路口前的道路，畫出『能停下』與『能通過』兩條界線；黃燈太短時兩線之間出現紅色空白帶。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：p.23–24、p.26–27、Table 1 p.31–32；F20-S002：〈The Dilemma Zone〉p.6–7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-94c7bf337d9d2284",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：p.23–24、p.26–27、Table 1 p.31–32；F20-S002：〈The Dilemma Zone〉p.6–7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-003",
+      "question": "公式裡假設駕駛人反應 1 秒、減速度固定，這些數字是誰量出來的？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.nchrp_field_prt_decel_approach_speed",
+      "answer_target": "美國 NCHRP 03-95 研究在 5 個州 80 多個路口進口道架起 20 呎高的攝影桿，錄了 320 小時以上、抽出約 7,500 輛車。只看黃燈亮後第一輛停車的車：煞車反應平均 1.00 秒（85% 在 1.33 秒內，約 2,400 輛），減速度平均每秒平方 10.08 英尺（85 百分位 12.89）。報告因此「確認」公式可沿用反應 1.0 秒、減速度 10 ft/s²。速度則不宜直接用速限：直行車的 85 百分位接近速度大約是速限再加 7 英里／時，左轉車約是速限減 5 英里／時。",
+      "scope": "英制原值，片中換算公制要標「換算」；反應時間與減速度只描述第一輛停車的車；美國 2009–2010 年資料。",
+      "source_locator": "F20-S002：Executive Summary p.1–2；F20-S001：Table 2–4 p.37–39",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：同一研究的反應時間與減速度 1.0；85 百分位速度≈速限＋7 mph 0.25（同一研究另一個數）。 原提案 F20-003（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字逐一對上；同一研究多個數字按嚴格標準合計 1.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "公式裡的「1 秒」不是拍腦袋，是幾千輛車錄影量出來的平均——但平均就代表有一半的人比較慢。",
+        "visual": "攝影桿在路邊錄影；畫面上一台車的煞車燈亮起，計時器停在 1.0 秒，旁邊分布曲線標出 1.33 秒。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-94c7bf337d9d2284",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：Executive Summary p.1–2；F20-S001：Table 2–4 p.37–39",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：Executive Summary p.1–2；F20-S001：Table 2–4 p.37–39",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-004",
+      "question": "照公式，速度越慢的路黃燈越短；真的開車的人也是這樣決定停或走嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.behavioral_go_vehicles_speed_independent",
+      "answer_target": "FHWA 2023 年綜整轉述的兩組 1980 年代美國觀察說不太是。Chang 等人在維吉尼亞與德州 7 個路口看到：決定通過的車，有 95% 在不到約 4.5 秒內抵達停止線，而且跟接近速度無關；FHWA 寫，這個發現與『速度低就給短黃燈』的運動學算法相矛盾。Wortman 與 Fox 在亞利桑那 30、40、50 英里時速的路口也看到，約 95% 最後通過的車在黃燈亮時離路口 4 秒以內。另一組亞利桑那 5 個路口的觀察：停車的人只有約三成接近公式假設的等減速。FHWA 同時提醒：各研究路口需要的黃燈並不一樣，大多落在 4 到 5 秒，直接改成統一秒數也可能有風險，還需要更多研究；它也找不到任何研究檢驗過縮短黃燈的安全效果。",
+      "scope": "全為 FHWA 綜整轉述，原研究未讀；美國 1980 年代資料。FHWA『現行算法在 40 mph 以下可能有風險』一句是 FHWA 的推測語（suggest、may），只能放在本筆 scope 供撰稿者知道，片中不念、不上字卡，也不得與台灣第 231 條的 3 秒並列、不得把 50 公里換算成英里拿來對照；不得說或暗示台灣的秒數太短。",
+      "source_locator": "F20-S001：〈Methods Based on Behavioral Studies〉p.33–35；Executive Summary p.16",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：兩組轉述研究同一結論 0.75；三成等減速 0.25。 原提案 F20-004（目標 C8-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；轉折有據、『矛盾』是 FHWA 原字；但『低速短黃燈可能有風險』雖是 FHWA 原句，卻是推測語，放進以台灣 3 秒開場的片子會變成對台灣的評價，片中不用。補上 FHWA 的反向提醒與『沒有縮短黃燈的研究』。全是轉述，下修 1.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為「速限低→黃燈短」很合理；實地看，駕駛人決定通過的時間差不多都是 4 秒左右，不管開多快。",
+        "visual": "三條速度不同的道路並排，每條上的「通過車」點雲都擠在離停止線 4 秒以內的同一條線前。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：〈Methods Based on Behavioral Studies〉p.33–35；Executive Summary p.16",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-005",
+      "question": "黃燈調得剛剛好，是不是就不會有人在路口前猶豫？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.type2_option_zone_persists_any_yellow",
+      "answer_target": "不會。另一種兩難區叫「選擇區」或第二類兩難區，是駕駛人自己猶豫停或走的那一段：1974 年 ITE 南區委員會把它定義成停車機率在 10% 到 90% 之間的距離，多數研究落在黃燈亮時距停止線 2.5 到 5.5 秒。NCHRP 的錄影也一樣：離停止線約 2.5 秒的駕駛人只有 7.9% 停車，約 5.5 秒的有 93.1% 停車。報告寫明：不論黃燈多長，每一次黃燈都會有這段猶豫區，因為不同的人對黃燈的反應本來就不同。",
+      "scope": "停車比例是 NCHRP 83 個路口的混合資料。",
+      "source_locator": "F20-S002：p.7–8；Table 11 p.36–37",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：定義與本研究量測同一主題合 1.0。 原提案 F20-005（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）照原稿收；逐句對上，無須改字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈能消滅「停不下又過不去」，但消滅不了「要不要停」的猶豫。",
+        "visual": "以秒為刻度的道路軸，2.5 到 5.5 秒間一段漸層色帶，色帶上方百分比從 7.9% 爬到 93.1%。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-94c7bf337d9d2284",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：p.7–8；Table 11 p.36–37",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-006",
+      "question": "既然有公式，為什麼不同城市的黃燈還是不一樣長？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.agency_practice_variation_permissive_restrictive",
+      "answer_target": "因為公式只是做法之一，法律對黃燈的定義也不同。NCHRP 調查北美機關：267 個回覆中 161 個（60%）說自己沒有正式的黃燈時制政策；在 217 份說明做法的回覆裡，39% 用運動學公式、18% 用依速度的查表、19% 用統一值但條件需要時例外、6% 全部同一個值。72% 的機關最短黃燈定 3 秒；最長黃燈從 3 到 7 秒都有，最多的是 5 秒（38%）。FHWA 綜整：美國 39 州是『允許式』——黃燈時進入路口、紅燈時人還在路口裡都合法；11 州是限制式，其中西維吉尼亞要求黃燈內就得能開出路口。FHWA 寫，在限制式黃燈的地方，黃燈本身也應把全紅那段算進去。",
+      "scope": "美國與加拿大 2010 年前後自填調查；台灣的認定方式不在來源，片中不推論台灣屬哪一類，也不拿台灣的速限表和美國查表作比較。",
+      "source_locator": "F20-S002：p.22–23 Table 3–4；F20-S001：〈Overview of Vehicle Codes〉p.25、Figure 7 前後 p.41–42",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：機關做法分布 0.5、黃燈法律兩類 0.5。 原提案 F20-006（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字大致對，改正分母、補 19%、刪掉與台灣不精確的類比。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈長短不只是物理問題，也是行政與法律選擇；台灣用的「依速限查表」在美國也是兩成機關的做法。",
+        "visual": "美國地圖分三色（允許／部分限制／全限制）；旁邊圓餅圖：公式 39%、查表 18%、統一值 6%、其他。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-94c7bf337d9d2284",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：p.22–23 Table 3–4；F20-S001：〈Overview of Vehicle Codes〉p.25、Figure 7 前後 p.41–42",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S002：p.22–23 Table 3–4；F20-S001：〈Overview of Vehicle Codes〉p.25、Figure 7 前後 p.41–42",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-007",
+      "question": "把黃燈拉長一秒，闖紅燈的人真的會變少嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.yellow_extension_reduces_violations",
+      "answer_target": "違規會少。FHWA 綜整轉述兩組前後比較：Bonneson 與 Zimmerman 在德州 10 個路口把黃燈加長 1.0 秒（加長後不超過 5.5 秒），闖紅燈至少少一半；Retting 等人在賓州 2 個路口加 1 秒，少 36%。德州另一份報告的觀測也寫：黃燈短於 3.5 秒時，闖紅燈明顯增加。至於『駕駛人摸熟了長黃燈就會把它當綠燈的延長』，FHWA 說這是交通工程師之間的經驗說法，文獻沒有定論。",
+      "scope": "違規是替代指標，不是事故；兩個百分比分屬不同研究，分開講，不合成一個範圍，也不與 S006 模型的 60% 或 Bonneson & Son 的 53% 混用。『3.5 秒』是美國德州路口資料，不得與台灣 3 秒並列評論。",
+      "source_locator": "F20-S001：p.53–54；F20-S006：Chapter 4 p.4-9（3.5 秒）",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：兩組轉述的前後研究方向一致 0.75；3.5 秒以下違規上升（原文讀到）0.5。 原提案 F20-007（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字對；改掉不在原文的機構名、把兩個百分比分開，並加上不得與台灣 3 秒並列的限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多一秒黃燈，闖紅燈就可以少三成到一半以上。",
+        "visual": "同一路口兩段縮時：黃燈 3 秒與 4 秒，紅燈亮後還衝進路口的車用紅框標出，數量對比。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：p.53–54；F20-S006：Chapter 4 p.4-9（3.5 秒）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d4181f6970d14626",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：p.53–54；F20-S006：Chapter 4 p.4-9（3.5 秒）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-008",
+      "question": "闖紅燈變少了，路口的車禍也跟著變少嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.interval_change_crash_evidence_mixed",
+      "answer_target": "證據並不一致。德州的 Bonneson 與 Zimmerman 用路口資料建的模型預測：黃燈加長 1.0 秒，闖紅燈造成的死傷事故約少 40%。可是實際改過時制的路口比較並沒有這麼整齊：FHWA 綜整轉述 Persaud 等人比較 31 個改過時制與 135 個沒改的路口，黃燈加 1.0 秒的 5 個路口，追撞少 6.6%、直角撞多 7.6%，全都不顯著；黃燈與全紅一起加長的 11 個路口，追撞多 11.7%、直角撞少 3.9%，也不顯著；只有單獨把全紅平均加長 1.1 秒的 14 個路口，總事故少 20.2%、達顯著。明尼亞波利斯一項研究，加設全紅的 22 個路口和沒設的 47 個比，目標事故反而多約 30%。FHWA 的結論是：黃燈長短對事故的影響資料有限，哪些事故類型會變、變多少，文獻並不一致。",
+      "scope": "全部是 FHWA 綜整轉述（Persaud、Souleyrette 原文未讀）＋S006 原文模型；Persaud 研究未說明每路口改了幾個時相；都是相關不是因果。片中不說『全紅會增加事故』，也不說『加長黃燈沒用』；−40% 是模型預測值。",
+      "source_locator": "F20-S001：Table 8 p.60、Souleyrette 段 p.61–62、Table 9 p.62；Executive Summary p.17",
+      "premise_status": "screened",
+      "notes": "算 1.25 條：Persaud 同一研究多數字 0.5（轉述）；明尼亞波利斯 0.25（轉述）；B&Z 模型 −40%（S006 原文讀到）0.5。 原提案 F20-008（目標 C8-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；數字都對，但只挑了不利的研究；補上作者自己來源裡的 −40% 模型後，轉折仍成立（違規明確下降、事故證據不一致），而且不再是單向的。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為「黃燈長＝闖紅燈少＝車禍少」是一條直線；事故資料卻沒有乖乖跟著違規一起降。",
+        "visual": "兩根柱：違規量大幅下降；旁邊事故量的柱子上上下下、標著「不顯著」，一根全紅的柱子反而變高。",
+        "seconds": [
+          60,
+          75
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：Table 8 p.60、Souleyrette 段 p.61–62、Table 9 p.62；Executive Summary p.17",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-009",
+      "question": "紅燈後那一秒全紅，到底擋掉了哪一種車禍？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.red_light_crash_time_into_red_distribution",
+      "answer_target": "德州交通研究院的研究者拿亞利桑那兩個城市照相執法拍到的 63 起闖紅燈事故，看每一起發生在紅燈第幾秒：事故最多落在紅燈的前 5 秒，之後下降，20 秒以後小而穩定。22 起對向左轉事故多在紅燈頭幾秒；41 起直角撞除了一起，都發生在紅燈 5 秒以後，5 到 15 秒最多——研究者解釋，那時橫向排隊的車正在放行。他們因此推論：加長全紅可能減少紅燈頭幾秒那一小部分直角撞，但這類事故本來就少，直角撞的總數不一定會明顯下降。",
+      "scope": "單一資料集（63 起、亞利桑那兩城市），FHWA 綜整轉述的是同一批，不得當兩個來源；時間是照片時間戳記。",
+      "source_locator": "F20-S006：Figure 5-4 說明 p.5-15–5-16；F20-S001：p.62 Figure 22 說明",
+      "premise_status": "screened",
+      "notes": "算 0.75 條：一組小樣本資料的分佈與作者推論。 原提案 F20-009（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；把同一批 63 起事故寫成兩個獨立來源，改正並下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最危險的不是剛變紅的那一瞬間，而是橫向車已經起步之後還衝進去的人——全紅保護不到他們。",
+        "visual": "時間軸從紅燈 0 秒往右，事故點散佈：左轉事故擠在前幾秒，直角撞多在 5 秒後；全紅只罩住最前面一小格。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4181f6970d14626",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S006：Figure 5-4 說明 p.5-15–5-16；F20-S001：p.62 Figure 22 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S006：Figure 5-4 說明 p.5-15–5-16；F20-S001：p.62 Figure 22 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-010",
+      "question": "亞利桑那重算黃燈和全紅之後，在紅燈期間進路口的車變多還是變少？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.arizona_pilot_retimed_intervals_entries",
+      "answer_target": "亞利桑那州交通局依現場資料重算黃燈與全紅，上線兩個月後再觀測 11 個左轉、7 個直行動線。左轉動線平均黃燈加長約 18%、全紅縮短約 4%：黃燈期間進入的車多了 61%，紅燈期間進入的少了 18.3%。迴歸分析裡，左轉動線的全紅加長（−1.7 到 1.7 秒範圍內）與『全紅期間越過停止線的車數』增加相關、統計顯著；直行全紅加長 0 到 0.9 秒則沒有顯著增加。報告只說相關，沒有說原因；它計算的是全紅這段時間內進入的車，全紅變長，計數的時間也跟著變長。",
+      "scope": "試辦樣本小（11＋7 動線），一處路口被列為離群；只有進入次數，沒有事故；不得寫成駕駛人『更敢闖』或『適應了安全餘裕』，不得用來暗示全紅有害。",
+      "source_locator": "F20-S005：Table 7 p.22；p.23–25（Naïve Approach、Regression Modeling、Conclusion）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：單一小樣本試辦的方向性結果，含計數窗變長的限制。 原提案 F20-010（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；報告沒有支持『駕駛人會用掉安全餘裕』；改寫成報告實際量到的東西並下修。C8-01 不用本核心（它談進入次數、不談事故，也不能撐轉折二），留池備用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "安全餘裕被看見之後，可能被駕駛人用掉一部分。",
+        "visual": "左轉車道示意：全紅格子變長，紅燈後仍壓線轉進來的車點跟著變多。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f253d3c3bef46db5",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S005：Table 7 p.22；p.23–25（Naïve Approach、Regression Modeling、Conclusion）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-011",
+      "question": "黃燈和全紅都設長一點不就好了？代價是什麼？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.change_interval_lost_time_delay",
+      "answer_target": "代價是整個路口的時間。FHWA 綜整引用美國公路容量手冊：在預設條件下，每個時相的損失時間就等於黃燈加全紅，損失時間越多、延滯越大。它轉述 Tarnoff 的計算：八時相路口、車流接近容量（v/c 0.9）時，全紅從 0.5 秒拉到 5.0 秒，每輛車的平均延滯從 30.0 秒變成 45.6 秒；車流低到中等（v/c 0.5）時只多 0.6 到 1.9 秒。報告開頭也寫：太短可能不足以安全結束時相，太長會降低容量、造成高延滯。",
+      "scope": "延滯是公式計算，不是實測；轉述。",
+      "source_locator": "F20-S001：Figure 23 說明 p.63–64；Table 10 p.64；Executive Summary p.15",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：Tarnoff 計算結果（轉述）；損失時間式是方法不算。 原提案 F20-011（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；內容對；方法不算事實、計算值轉述，下修 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每一秒黃燈和全紅，都是所有方向一起不能走的時間，路口越忙越貴。",
+        "visual": "四向路口計時圓盤，每個時相之間的黃與紅切片被放大；旁邊延滯數字由 30.0 跳到 45.6。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：Figure 23 說明 p.63–64；Table 10 p.64；Executive Summary p.15",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-012",
+      "question": "黃燈差 0.1 秒，真的會有差嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.chicago_2_9s_yellow_citation_threshold",
+      "answer_target": "在芝加哥差了一整個信任問題。市監察長 2014 年向市議會報告：當年初，市府開始接受紀錄黃燈只有 2.9 秒的照相違規，與自己公開的 3.0 秒標準不一致，造成民眾與行政聽證處的混亂和疑慮；監察長建議恢復拒收 3.0 秒以下，交通局已確認永久恢復 3 秒硬下限。同一份聲明也說：針對媒體點名違規暴增的路口，紀錄與訪談不支持市府為多開單而縮短黃燈；找到的原因反而是設備——一處觸發速度設太低、多開了 1,618 張，一處感應線圈長期故障、估計 45,444 筆違規沒被記錄。",
+      "scope": "市府監察機關聲明；新聞常見的「多開約 7.7 萬張」不在本來源，不用。",
+      "source_locator": "F20-S004：〈Suggestions〉段、〈Specific Anomalies〉段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條（原始官方聲明）；聲明日期 2014-10-28 寫進稿。 原提案 F20-012（目標 C8-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）照原稿收；逐句對上；與題目的關聯較弱（是執法門檻與信任問題），在片中只占一章的一半。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "黃燈秒數一旦拿來開罰單，0.1 秒就變成公共信任問題；而真正讓數字亂掉的，是壞掉的感應器。",
+        "visual": "碼錶特寫在 2.9 與 3.0 之間跳動；切到一張罰單上的黃燈秒數欄。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9585300c84659ad6",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S004：〈Suggestions〉段、〈Specific Anomalies〉段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
+      "id": "T62-013",
+      "question": "左轉車要先減速再轉，黃燈是不是該給得比直行長？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.ite2020_extended_equation_turning_controversy",
+      "answer_target": "美國運輸工程師學會（ITE）2020 年的建議做法認為要另算：它依據 Järlström 自行發表、未經同儕審查的文章，採用『延伸運動學公式』，把轉彎車進路口前要先減到轉彎速度算進去；接近速度等於進入速度時（多數直行車），新式就退回舊式。FHWA 綜整列出的疑慮：新式算出的左轉黃燈有時超過部分機關可接受的上限，也可能與美國號誌手冊 3 到 6 秒的範圍衝突；它假設轉彎車在反應時間內維持原速，但實務者的經驗是轉彎車在黃燈亮前就已經在減速，因此可能高估。FHWA 為此與州和地方機關發起合作研究，2023 年的第一階段報告列的是待補的研究缺口。",
+      "scope": "只講 ITE 2020 與其爭議；不稱 Järlström 為工程師，不提他與奧勒岡技師委員會的訴訟（判決頁讀不到）。",
+      "source_locator": "F20-S001：Executive Summary p.15–17；p.41–43（extended kinematic equation 與疑慮清單）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條（轉述）。 原提案 F20-013（目標 C8-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V23（2026-11-12）改字後收；改掉來源沒有、且正好是爭議點的『工程師』稱呼。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連公式本身都還在被改，而改它的人一開始不是交通局的人。",
+        "visual": "直行車與左轉車兩條軌跡，左轉軌跡在路口前先畫出減速段；兩個算出來的黃燈長度並排，一個超出 6 秒刻度。",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "origin": "wave62-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6e42a2c378224c",
+          "origin": "wave62-tech-20261111",
+          "locator": "F20-S001：Executive Summary p.15–17；p.41–43（extended kinematic equation 與疑慮清單）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+      ]
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -439924,6 +442910,36 @@
       "L61-002": "L61-002",
       "L61-003": "L61-003",
       "P61-001": "P61-001",
+      "S62-001": "S62-001",
+      "H62-001": "H62-001",
+      "H62-002": "H62-002",
+      "H62-003": "H62-003",
+      "L62-001": "L62-001",
+      "L62-002": "L62-002",
+      "P62-001": "P62-001",
+      "P62-002": "P62-002",
+      "P62-003": "P62-003",
+      "P62-004": "P62-004",
+      "P62-005": "P62-005",
+      "P62-006": "P62-006",
+      "P62-007": "P62-007",
+      "P62-008": "P62-008",
+      "P62-009": "P62-009",
+      "P62-010": "P62-010",
+      "P62-011": "P62-011",
+      "T62-001": "T62-001",
+      "T62-002": "T62-002",
+      "T62-003": "T62-003",
+      "T62-004": "T62-004",
+      "T62-005": "T62-005",
+      "T62-006": "T62-006",
+      "T62-007": "T62-007",
+      "T62-008": "T62-008",
+      "T62-009": "T62-009",
+      "T62-010": "T62-010",
+      "T62-011": "T62-011",
+      "T62-012": "T62-012",
+      "T62-013": "T62-013",
       "Z7001": "Z7001",
       "Z7002": "Z7002",
       "Z7003": "Z7003",
@@ -469567,6 +472583,96 @@
         "a": "L61-003",
         "b": "L61-002",
         "reason": "同屬海灣扇貝、同一實驗室；一個是光學、一個是行為，分章可以，但不要說成同一研究。（V21 2026-11-12）"
+      },
+      {
+        "a": "S62-001",
+        "b": "S60-003",
+        "reason": "不同事實：S60-003 是刻意撒鹽後層積雲毛毛雨率變大（物理實驗）；本核心是信風積雲裡自然 GCN 濃度與起雨快慢對不上。不得說兩者矛盾；旁白只說「鹽粒不是唯一旋鈕」。（V22 2026-11-12）"
+      },
+      {
+        "a": "S62-001",
+        "b": "S61-002",
+        "reason": "S61-002 的 25 分鐘是碰撞開始後從 50 長到 1000 微米的理想化推算，本核心是雲生成到 10 dBZ；兩者不並列、不相減。（V22 2026-11-12）"
+      },
+      {
+        "a": "S62-001",
+        "b": "S60-002",
+        "reason": "S60-002 與 S61-001 是亞馬遜、Rosenfeld 研究群的起雨高度；本核心是海上、不同團隊、量時間。可放在轉折一之前，但不得把 RICO 的時間與亞馬遜的厚度換算比較。（V22 2026-11-12）"
+      },
+      {
+        "a": "H62-001",
+        "b": "H61-008",
+        "reason": "同方向（無視覺→無交叉代價），本核心只多了嬰兒期；兩者放同一章，H61-008 是主，本核心一句帶出。（V22 2026-11-12）"
+      },
+      {
+        "a": "H62-001",
+        "b": "H61-007",
+        "reason": "H61-007 的純觸覺情境也是同方向；不得把三者講成三個獨立的新發現。（V22 2026-11-12）"
+      },
+      {
+        "a": "H62-002",
+        "b": "H61-007",
+        "reason": "不同結論（早期開刀照樣被騙 vs 晚開刀純觸覺不被騙），不同研究、不同受試者；並列時說清各自的開刀時間。（V22 2026-11-12）"
+      },
+      {
+        "a": "H62-002",
+        "b": "H61-004",
+        "reason": "H61-004 的來源是 Heed 與 Azañón 2014 綜述，同一位研究者但不同文件；本核心不重複綜述內容。（V22 2026-11-12）"
+      },
+      {
+        "a": "H62-003",
+        "b": "H61-007",
+        "reason": "同方向（晚開刀、純觸覺不被騙）；本核心是單一個案，章內放在 H61-007 之後一句帶出。（V22 2026-11-12）"
+      },
+      {
+        "a": "H62-003",
+        "b": "R44003",
+        "reason": "343 人含 R44003 原刊的 20 人；不得把 343 人分布當成 R44003 組別資料的替代來源。（V22 2026-11-12）"
+      },
+      {
+        "a": "H62-003",
+        "b": "H61-003",
+        "reason": "個別差異已由 H61-003 講；343 人分布不重講個別差異。（V22 2026-11-12）"
+      },
+      {
+        "a": "L62-001",
+        "b": "B2315",
+        "reason": "同一篇論文、不同實驗與答案；同一章，B2315 講改視差改出擊位置與點紋（含反相關），本核心只講擬單眼的定位變慢。R37003 是 B2315 的 alias。（V22 2026-11-12）"
+      },
+      {
+        "a": "L62-002",
+        "b": "R37007",
+        "reason": "同章：守宮的夜間辨色（兩隻）；本核心是另一種動物、另一種測法，兩者不合併數字。（V22 2026-11-12）"
+      },
+      {
+        "a": "L62-002",
+        "b": "L61-001",
+        "reason": "轉折二的主核心；本核心只作旁證，不得說成『青蛙和蜜蜂都證明構造錯了』。（V22 2026-11-12）"
+      },
+      {
+        "a": "T62-001",
+        "b": "T4005",
+        "reason": "T4005 答全紅的工程目的；本核心只給台灣秒數表與全紅公式。作者原答案最後一句與 T4005 同答案，已刪；片中若要講全紅目的，引用 T4005 並另核。（V23 2026-11-12）"
+      },
+      {
+        "a": "T62-008",
+        "b": "T4005",
+        "reason": "全紅目的；本核心談全紅加長與事故的相關，不重講目的。（V23 2026-11-12）"
+      },
+      {
+        "a": "P62-004",
+        "b": "P62-003",
+        "reason": "本核心推翻 P62-003 的 1963 年推論，兩者要相鄰。（V23 2026-11-12）"
+      },
+      {
+        "a": "P62-007",
+        "b": "P62-001",
+        "reason": "P62-001 已定義部分水漂，本核心給的是實際開始的速度與水深，旁白要接成『公式算的是全飄』而不是『公式說之前沒事』。（V23 2026-11-12）"
+      },
+      {
+        "a": "P62-010",
+        "b": "D2104",
+        "reason": "D2104 答車轍成因（壓密、剪切），本核心答車轍積水，不同答案；相鄰時旁白別重講成因。（V23 2026-11-12）"
       }
     ],
     "excluded": [
@@ -470065,6 +473171,20 @@
         ]
       },
       {
+        "id": "H61-007~H62-003",
+        "a": "H61-007",
+        "b": "H62-003",
+        "question_score": 0.267,
+        "answer_score": 0.095,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "天生看不見、後來開刀重見光明的人，交叉手還會把先後說反嗎？",
+          "一直到七歲才開刀看見的人，交叉手時還會被騙嗎？"
+        ]
+      },
+      {
         "id": "L304~L306",
         "a": "L304",
         "b": "L306",
@@ -470244,6 +473364,20 @@
         "questions": [
           "陽光照到葉子後，光的能量怎麼開始進入化學反應？",
           "極光看起來像發亮的雲，它到底是什麼在發光？"
+        ]
+      },
+      {
+        "id": "T62-007~T62-012",
+        "a": "T62-007",
+        "b": "T62-012",
+        "question_score": 0.214,
+        "answer_score": 0.042,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "把黃燈拉長一秒，闖紅燈的人真的會變少嗎？",
+          "黃燈差 0.1 秒，真的會有差嗎？"
         ]
       },
       {
@@ -470709,6 +473843,20 @@
         ]
       },
       {
+        "id": "P62-003~P62-004",
+        "a": "P62-003",
+        "b": "P62-004",
+        "question_score": 0.174,
+        "answer_score": 0.13,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "車越重越不容易水漂嗎？",
+          "大卡車胎壓那麼高，真的不會水漂嗎？"
+        ]
+      },
+      {
         "id": "R41009~R41010",
         "a": "R41009",
         "b": "R41010",
@@ -470958,6 +474106,20 @@
         "questions": [
           "拉丁字母 P 和西里爾字母 Р 長得一模一樣，正規化會把它們變成同一個嗎？",
           "易混淆字的對照表更新後，舊資料庫為什麼必須重算？"
+        ]
+      },
+      {
+        "id": "P62-005~P62-009",
+        "a": "P62-005",
+        "b": "P62-009",
+        "question_score": 0.077,
+        "answer_score": 0.155,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "路上要積多深的水，輪胎才會水漂？",
+          "胎紋磨淺了，在積水路上差在哪裡？"
         ]
       },
       {
@@ -473450,6 +476612,20 @@
         "questions": [
           "抽地下水為什麼會讓地面跟著下陷？",
           "鬆散沙泥埋進地下，怎麼會變成堅硬岩石？"
+        ]
+      },
+      {
+        "id": "T62-008~T62-011",
+        "a": "T62-008",
+        "b": "T62-011",
+        "question_score": 0,
+        "answer_score": 0.08,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "闖紅燈變少了，路口的車禍也跟著變少嗎？",
+          "黃燈和全紅都設長一點不就好了？代價是什麼？"
         ]
       },
       {
@@ -476253,6 +479429,20 @@
         ]
       },
       {
+        "id": "L62-002~R37007",
+        "a": "R37007",
+        "b": "L62-002",
+        "question_score": 0.036,
+        "answer_score": 0.041,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "光暗到像淡淡月光，怎麼測出守宮選的是藍色，而不只是比較亮的一張？",
+          "照西洋蜂眼睛的參數算，月光下應該分不出顏色；野外的大蜜蜂真的分不出來嗎？"
+        ]
+      },
+      {
         "id": "R41001~R41009",
         "a": "R41001",
         "b": "R41009",
@@ -478633,6 +481823,20 @@
         ]
       },
       {
+        "id": "T4001~T62-011",
+        "a": "T4001",
+        "b": "T62-011",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "綠燈已亮，為什麼車隊不是一起動起來？",
+          "黃燈和全紅都設長一點不就好了？代價是什麼？"
+        ]
+      },
+      {
         "id": "X2006~X2031",
         "a": "X2006",
         "b": "X2031",
@@ -478847,10 +482051,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-3921",
-    "target_count": 3921,
+    "revision": "2026-11-12-pool-3951",
+    "target_count": 3951,
     "reviewed_on": "2026-11-12",
-    "reason": "從3907續接；2026-11-12 第十一輪素材審視只補讀：作者 F17 替後備組題 C5-02、C6-02 補來源，作者 F18 替上一輪因只讀到摘要而淘汰的兩組（C7-01 觸覺、C7-02 動物視覺）改讀開放原研究；15 個提案經非作者覆核（F17 由 V20、F18 由 V21），收入 14 個（全部照覆核改字），退回 1 個（與既有核心同答案）。",
+    "reason": "從3921續接；2026-11-12 第十二輪素材審視：作者 F19 替後備組題 C6-02、C7-01、C7-02 補讀開放原研究，作者 F20 從零研究兩個新長題（C8-01 黃燈秒數、C8-02 雨天水漂）；31 個提案經非作者覆核（F19 由 V22、F20 由 V23），收入 30 個（全部照覆核），退回 1 個（併入 Z7010）；C6-02、C7-02 成題，C7-01、C8-01、C8-02 後備。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -482772,7 +485976,37 @@
       "S61-002",
       "L61-001",
       "L61-002",
-      "L61-003"
+      "L61-003",
+      "P62-001",
+      "P62-002",
+      "P62-003",
+      "P62-004",
+      "P62-005",
+      "P62-006",
+      "P62-007",
+      "P62-008",
+      "P62-009",
+      "P62-010",
+      "P62-011",
+      "H62-001",
+      "H62-002",
+      "H62-003",
+      "T62-001",
+      "T62-002",
+      "T62-003",
+      "T62-004",
+      "T62-005",
+      "T62-006",
+      "T62-007",
+      "T62-008",
+      "T62-009",
+      "T62-010",
+      "T62-011",
+      "T62-012",
+      "T62-013",
+      "S62-001",
+      "L62-001",
+      "L62-002"
     ],
     "overflow": [
       {
@@ -510997,6 +514231,130 @@
       "reading_status": "概述 PDF 讀開頭兩頁與 RAIN INITIATION 一段",
       "origin": "wave61-physics-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave61-physics.json"
+    },
+    {
+      "id": "H62-NA001",
+      "question": "先天失明與後天失明的人，交叉手時誰會把先後說反？（Röder、Rösler、Spence 2004 原研究）",
+      "existing_ids": [
+        "H61-008"
+      ],
+      "source_ids": [],
+      "reason": "DOI 10.1016/j.cub.2003.12.054 經 linkinghub 轉到 cell.com，回 Cloudflare「Just a moment」403，未繞過；Oxford ORA 紀錄（上一輪快取）只有摘要、無檔案；WebSearch 只找到書目與摘要鏡像。結論已由 H61-008（PMC5430802 複製 2004 結果）與 F19-S002 的引述承擔。 原提案 F19-NA001。",
+      "reentry_condition": "能從出版社 open archive 或典藏的公開連結讀到全文時，可把早盲與晚盲的組別資料補進 H61-008 章（約 +0.5–1）。",
+      "reading_status": "abstract_only",
+      "origin": "wave62-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+    },
+    {
+      "id": "H62-NA002",
+      "question": "手臂交叉讓先後說反，原刊的組別資料是什麼？（R44003 原刊 Yamamoto & Kitazawa 2001a）",
+      "existing_ids": [
+        "R44003"
+      ],
+      "source_ids": [],
+      "reason": "Nature Neuroscience 付費牆，未嘗試繞過；WebSearch 結果中的 typeset.io PDF 是第三方轉載、授權不明，不使用。搜尋結果中的大阪大學典藏博士論文（Moharramipour 2022，北澤研究室）讀了開頭，是個別差異與腦區研究（與 H61-003 同一路線），不含 2001a 的原始組別資料，不作為 R44003 的來源。 原提案 F19-NA002。",
+      "reentry_condition": "出版社或作者典藏的公開全文出現時，R44003 由 1 升到 1.5–2。",
+      "reading_status": "abstract_only",
+      "origin": "wave62-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+    },
+    {
+      "id": "H62-NA003",
+      "question": "鳳蝶眼裡有八種感光細胞，牠是八色視嗎？（Koshitaka 等 2008 Proc R Soc B，PMC2599938）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC REST fullTextXML 回 500；Europe PMC 列出的 HTML 與 PDF 連結（europepmc.org/articles/PMC2599938）回 Cloudflare 403；DOI 轉 royalsocietypublishing.org 也是 Cloudflare 403，都未繞過。只讀到 Europe PMC 搜尋 API 的摘要：訓練後的最小可分波長差約 1 奈米、行為最符合四色視。 原提案 F19-NA003。",
+      "reentry_condition": "讀到全文時可作轉折一『構造會高估』的第二個例子（與螳螂蝦 R37005 並列），約 +1 條；只有摘要不入片。",
+      "reading_status": "abstract_only",
+      "origin": "wave62-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+    },
+    {
+      "id": "H62-NA004",
+      "question": "一手被碰、另一手同時響聲，看不見的嬰兒會轉向哪一邊？",
+      "existing_ids": [],
+      "source_ids": [
+        "H62-S001"
+      ],
+      "reason": "Gori 2021 全文讀到：視障嬰兒偏向觸覺、視力正常嬰兒偏向聲音，且只有視力正常嬰兒在衝突時變慢。與 C7-01 的問題（哪裡、哪一下先）無關，放進來會多一條聲觸整合的支線。 原提案 F19-NA004。",
+      "reentry_condition": "若日後有『看不見的孩子怎麼認識空間』題目，可作 0.5–1 條。",
+      "reading_status": "full_text",
+      "origin": "wave62-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+    },
+    {
+      "id": "H62-NA005",
+      "question": "雲滴小到 10–30 微米時，實驗室直接量到的碰撞效率是多少？",
+      "existing_ids": [
+        "S61-002"
+      ],
+      "source_ids": [],
+      "reason": "C6-02 still_missing 第（1）項沒找到開放全文：WebSearch 只找到 Mainz 垂直風洞的研討會摘要與海報（20–70 微米小滴打 550–800 微米大滴，同儕審查前的資料）與 Pruppacher 等 2007（Atmospheric Research，1–7 微米小滴，非開放）；arXiv API 查詢回 429；一次 WebSearch 被內容政策拒絕。第（3）項 Lau 與 Wu 2003 GRL 沒有公開全文（NTRS 只有同作者 2005 年另一篇）；第（4）項搜尋到的臺大大氣系 PDF 是颱風雲微物理論文，與起雨無關，未用。 原提案 F19-NA005。",
+      "reentry_condition": "讀到 10–30 微米的實驗室碰撞（合併）效率原研究全文，或中央氣象署／臺大的雲物理教材一頁，可再補 0.5 條或作在地入口。",
+      "reading_status": "not_read",
+      "origin": "wave62-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-human.json"
+    },
+    {
+      "id": "L62-NA001",
+      "question": "跳蛛在紅光下跳太短，會不會只是紅光看起來比較暗？",
+      "existing_ids": [
+        "Z7010"
+      ],
+      "source_ids": [],
+      "reason": "非作者覆核 V22（2026-11-12）退回：同一份文件、同一個實驗、同一個問題：亮度對照是 Z7010 答案的控制條件，不是新答案。併入 Z7010（F19-S005 掛為 Z7010 的可讀全文），Z7010 計 1.0。 原提案 F19-005。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回",
+      "origin": "wave62-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-life.json"
+    },
+    {
+      "id": "P62-NA001",
+      "question": "NASA 建議雨天要留三倍車距？",
+      "existing_ids": [],
+      "source_ids": [
+        "P62-S001"
+      ],
+      "reason": "是 1963 年報告根據飛機與試算給的駕駛建議；本系列不放駕駛建議，且非現行官方規定。 原提案 F20-NA004。",
+      "reentry_condition": "無。",
+      "reading_status": "全文讀",
+      "origin": "wave62-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-physics.json"
+    },
+    {
+      "id": "T62-NA001",
+      "question": "胎紋只剩 2/32 吋的車，事故前出輪胎問題的機率比較高嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "T62-S007"
+      ],
+      "reason": "NHTSA 的「輪胎問題」包含爆胎、漏氣、胎面分離，不專指水漂；放進 C8-02 會把題目拉離「為什麼會飄」，也容易滑向換胎建議。 原提案 F20-NA001。",
+      "reentry_condition": "若另開「輪胎磨耗與事故」題，可作 0.5–1 條。",
+      "reading_status": "Executive Summary 與 §6.3 全讀",
+      "origin": "wave62-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+    },
+    {
+      "id": "T62-NA002",
+      "question": "芝加哥縮短黃燈多開了 7.7 萬張罰單？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "數字只見於新聞；監察長聲明頁沒有此數字，且其調查不支持「市府縮短黃燈」。只用 F20-012 的官方內容。 原提案 F20-NA002。",
+      "reentry_condition": "讀到監察長完整報告原文且有此數字與定義時。",
+      "reading_status": "只讀到新聞摘要（搜尋結果），不算來源",
+      "origin": "wave62-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
+    },
+    {
+      "id": "T62-NA003",
+      "question": "提出新黃燈公式的工程師，真的被州政府罰款？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Järlström v. Aldridge 判決在 CourtListener，網頁回 AWS WAF 機器驗證（202 challenge），依規不繞過；其餘只有倡議團體與新聞稿。 原提案 F20-NA003。",
+      "reentry_condition": "能從其他公開法院典藏（如 govinfo）讀到判決全文時，可補成 F20-013 的 0.5 條。",
+      "reading_status": "未讀到原文",
+      "origin": "wave62-tech-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave62-tech.json"
     },
     {
       "question": "蚊子為什麼找得到人？",
