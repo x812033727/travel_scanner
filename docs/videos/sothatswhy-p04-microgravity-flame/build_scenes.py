@@ -281,7 +281,7 @@ obj("round-flame", "Close-up of " + CANDLE + " with a small round soft glowing b
     c("沒有對流往上拉，氧氣只能從四面八方慢慢靠過來。", None, "P:whyround"),
     k("跟我在影片裡看到的一樣！", "興奮"))
 obj("cabin-flame", "Wide shot " + CABIN + ", one tiny round soft blue flame glowing in the middle of the cabin inside a clear round glass globe",
-    c("對。在太空站上，沒被吹著的小火也會這樣。"))
+    c("對。在太空站上，沒被吹著的小火也常這樣。"))
 kid("kid-blue-q", K("pointing at the small tablet with a curious face", close=True, where=YARD),
     k("我看到的火，還是藍色的！", "句尾上揚", "S:blue"))
 chief("chief-candle-two", C("holding up a short white candle in one hand with a thoughtful smile"),
@@ -451,6 +451,7 @@ doc = {
         {"title": "NASA Space Station Research Integration Office, Studying Combustion and Fire Safety", "url": "https://www.nasa.gov/missions/station/iss-research/studying-combustion-and-fire-safety/", "checked_on": CHECKED},
         {"title": "NASA, Candle Flame - 1g vs Microgravity", "url": "https://www.nasa.gov/image-article/candle-flame-1g-vs-microgravity/", "checked_on": CHECKED},
         {"title": "Nayagam, Dietrich, Hicks & Williams (2014), Cool-flame Extinction During N-Alkane Droplet Combustion in Microgravity (NASA NTRS 20140006750)", "url": "https://ntrs.nasa.gov/citations/20140006750", "checked_on": CHECKED},
+        {"title": "Ross, Dietrich & Tien, Candle Flames in Microgravity: USML-1 Results - 1 Year Later (NASA NTRS 20030075810)", "url": "https://ntrs.nasa.gov/citations/20030075810", "checked_on": CHECKED},
     ],
     "assets": [],
     "scenes": scenes,
