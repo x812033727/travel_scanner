@@ -14,9 +14,9 @@
 
 首航夜，毛毛雨。渡輪碼頭大廳的燈一區一區熄掉，一長排藍面板在高處同時亮起，底下一片仰頭的剪影，沒有人說話；玻璃牆外，渡輪鳴笛靠岸。
 Fiona 站在講台上：「It was a blind review.」「The jury didn't know whose it was.」她拆開信封、抽出卡片：「Remelt. Nora Quinn.」追光掃過整個大廳，停在最後一排：Nora 穿著工作外套、頭髮放下，Peg 與 Sparks 站在她兩邊。兩張臉轉過來，三張臉轉過來。Peg 在她背上推了一下。
-她穿過人群走上台。贊助商的位置上，Grant 伸出右手、練過的閉嘴微笑：「Congratulations.」她的兩手垂在身側，從他面前走過，走到麥克風前：「Six years, I designed for a brand.」「Tonight my name's on it.」掌聲。Grant 的笑僵在臉上。記者區裡 Lyle 喊：「Mr. Whitlock, are you charged with forgery?」公關從背後托住 Grant 的手肘，帶他下台。
+她穿過人群走上台。贊助商的位置上，Grant 伸出右手、練過的笑：「Congratulations.」她的兩手垂在身側，從他面前走過，走到麥克風前：「Six years, I designed for a brand.」「Tonight my name's on it.」掌聲。Grant 的笑僵在臉上。記者區裡 Lyle 喊：「Mr. Whitlock, are you charged with forgery?」公關從背後托住 Grant 的手肘，帶他下台。
 散場後，大廳出口。Nora 把一枚舊金戒指按進 Peg 的右手掌心：「The first ferry check.」「I got it back.」Peg：「Who asked you to?」她把戒指戴回左手無名指，轉過身去，肩膀在抖，用開襟衫的袖口擦眼睛：「Stupid ring.」
-回程的計程車上，Grant 從他自己的車後座打來：「Drop the civil suit.」「Don't testify.」「The house is yours.」Nora：「The court will give it back.」掛掉。他把同樣的條件傳過來，她轉給 Dana。Peg 念 Dana 的回覆：「'He just put it in writing.'」又一則，Nora 念出來：「'Then I'll come to you.'」「'Face to face.'」
+回程的計程車上，Grant 從他自己的車後座打來：「Drop the civil suit.」「Don't testify.」「The house is yours.」Nora：「The court will give it back.」掛掉。他把同樣的條件傳過來，她轉給 Dana。Peg 念 Dana 的回覆：「Dana says, 'He just put it in writing.'」又一則，Nora 念出來：「'Then I'll come to you.'」「'Face to face.'」
 
 ## 這集接在哪
 
@@ -32,7 +32,7 @@ Fiona 站在講台上：「It was a blind review.」「The jury didn't know whos
 | Peg（`peg`） | `assets/refs/peg-portrait.jpg`（`visit`） | `visit`（玳瑁框眼鏡**每一鏡戴在臉上**、長的深棕木珠項鍊、燕麥色開襟衫）＋ `a plain beige canvas tote bag with no print, hanging from her left shoulder`（車上放在腿上）；**c32 之前**拍到左手寫 `a faint pale band of skin on her left ring finger where a ring used to be`，**c32 起**寫 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；c34 背過身哭演滿；不笑；原聲 |
 | Rocco "Sparks" Moretti（`sparks`） | **待畫，必須先畫** | 基本款（平頭、小銀耳釘、黑 T 恤、灰工作褲、前臂褐色隔熱護套）；最後一排在 Nora 右邊、出口在 Peg 左邊；不說話；不笑；散場後自己回 Gus 家（不拍），不上計程車 |
 | Fiona Marsh（`fiona`） | **待畫，必須先畫** | 基本款（光滑的低馬尾、白襯衫外罩深藍西裝外套、深色長褲、黑色平底鞋）＋ `an ID badge on a lanyard, turned toward her chest`；在講台；c15 退開、從畫面左下台，**跟 Nora 不同框**；不笑；原聲 |
-| Grant（`grant`） | `assets/refs/grant-portrait.jpg`（平臉 r3） | 基本款（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣）；**c16–c17 練過的閉嘴微笑**，**c23 笑僵住**（嘴角還提著、眼睛不動、下巴繃住），c25 起不笑；車上 `a black phone with no logo, about the size of his palm` 右手貼右耳（鏡頭在他左側）；說話句只寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth；原聲（車上那幾鏡後製電話濾波）；**跟 Lyle 不同框** |
+| Grant（`grant`） | `assets/refs/grant-portrait.jpg`（平臉 r3） | 基本款（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣）；**c16 練過的閉嘴微笑、c17 說話時練過的笑**（`his lips part on each word and close again into a practiced smile, both corners lifted, teeth hidden`），**c23 笑僵住**（嘴角還提著、眼睛不動、下巴繃住），c25 起不笑；車上 `a black phone with no logo, about the size of his palm` 右手貼右耳（鏡頭在他左側）；說話句只寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth；原聲（車上那幾鏡後製電話濾波）；**跟 Lyle 不同框** |
 | Lyle Becker（`lyle`） | **待畫**（第 21–30 集清單） | 基本款（格子襯衫、反戴素面棒球帽）＋ `a black DSLR camera with no logo on a plain strap`（掛在胸前）；嚼口香糖；記者區；不笑；原聲（一鏡） |
 | Cole（`cole`） | **待畫**（第 1–3 集清單） | 只見方向盤上的白手套（c39、c41、c43 畫面左上角） |
 | 公關（`pr-man`） | 不畫 | 只拍背影與托住手肘的手（深藍西裝、右耳透明捲線耳機） |
@@ -51,7 +51,7 @@ c38、c40、c42、c44–c48 寫 `night in the back seat of a cab, a soft steady 
 c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady warm reading light on his face, streetlights sliding only across the tinted window, the light on his face stays unchanged`。
 
 **欄位怎麼讀**：
-- 「畫面裡有誰」寫位置、服裝、道具、表情、狀態。**每張露臉的臉都寫表情，寫成臉怎麼動**：眉、眼、嘴角、下巴、呼吸至少兩處。本集可以笑的只有：c16–c17 Grant 練過的閉嘴微笑、c23 Grant 笑僵住（嘴角還提著、眼睛不動、下巴繃住）；其餘每張露臉的臉都加 `no smile at any moment, until the last frame`，表情句不寫任何嘴角往上的字。
+- 「畫面裡有誰」寫位置、服裝、道具、表情、狀態。**每張露臉的臉都寫表情，寫成臉怎麼動**：眉、眼、嘴角、下巴、呼吸至少兩處。本集可以笑的只有：c16 Grant 練過的閉嘴微笑、c17 Grant 說話時練過的笑（bible〈第 55–60 集審稿後補定〉：`his lips part on each word and close again into a practiced smile, both corners lifted, teeth hidden`，說話時嘴唇一定要動）、c23 Grant 笑僵住（嘴角還提著、眼睛不動、下巴繃住）；其餘每張露臉的臉都加 `no smile at any moment, until the last frame`，表情句不寫任何嘴角往上的字。
 - **說話的臉要穩定的光**：大廳裡說話的臉由吊燈的藍光與不動的追光（`a single hard white spotlight beam`）照亮；車裡說話的臉由手機側面的白光與車內一點穩定的暖光照亮，路燈只滑過車窗與椅背、不掃過臉。
 - **玻璃前的近景**：c30、c31、c34–c36 身後一律寫淺色石柱或石牆；玻璃牆、玻璃門只在中景以上的遠處，虛焦。
 - **戒指**：Nora 的左手寫 Elias 的戒指；Peg 的左手 c32 之前寫淡色的戒痕、c32 起寫婚戒；在 Peg 掌心時寫 `a thin worn gold wedding band with one tiny old diamond, in her open right palm`。
@@ -67,7 +67,7 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 ### 第一場：Remelt. Nora Quinn.（約 36 秒）
 
 **場頭**：
-- **地點與場景圖**：新渡輪碼頭大廳首航夜 `ferry-terminal`（待畫，直式由下往上）：三層樓高的玻璃屋頂，一整面玻璃牆面對黑色的港，玻璃上細雨；`a long chandelier of flat panels of clear deep blue glass like the harbor at dawn, hanging in a single long row high overhead, lit from within, washing the hall in soft blue light`（c02 起亮）吊在大廳正中高處；**講台**在吊燈下的一端（從人群看在畫面左）：`a plain white lectern with no logo and a slim black microphone on a short stand`，講台右邊是贊助商的位置 `a plain pale backdrop with no lettering`，台的右側有三級台階；記者區在講台右前方、台下一小塊；人群（`ferry-crowd`，穿雨衣）站滿大廳，只拍背影與剪影；**最後一排**在大廳另一頭、靠玻璃牆；渡輪 `a large white car ferry with its deck lights on, docking beyond the glass wall, no name or numbers visible` 從玻璃牆外的畫面右靠岸。近景都寫「同一個大廳」。
+- **地點與場景圖**：新渡輪碼頭大廳首航夜 `ferry-terminal`（待畫，直式由下往上）：三層樓高的玻璃屋頂，一整面玻璃牆面對黑色的港，玻璃上細雨；`a long chandelier of flat panels of clear deep blue glass like the harbor at dawn, hanging in a single long row high overhead, lit from within, washing the hall in soft blue light`（c02 起亮）吊在大廳正中高處；**講台**在吊燈下的一端（從人群看在畫面左）：`a plain white lectern with no logo and a slim black microphone on a short stand`，講台右邊是贊助商的位置 `a plain pale backdrop with no lettering`，台的右側有三級台階；記者區在講台右前方、台下一小塊；人群（`ferry-crowd`，穿雨衣）站滿大廳，只拍背影與剪影；**最後一排**在大廳另一頭、靠玻璃牆；渡輪 `a large white car ferry with its deck lights on, docking beyond the glass wall, seen far off, its plain white hull soft in the evening haze` 從玻璃牆外的畫面右靠岸。近景都寫「同一個大廳」。
 - **時間與天氣**：第 162 天（8/25 週二）21:00–21:04，夜、毛毛雨；c01 大廳的燈一區區熄掉，c02 起只剩吊燈的藍光，c05 起講台上一道追光；整場光不變。
 - **軸線**：往講台看（從人群）：講台在畫面左、贊助商背板在中偏右、台階在右；往最後一排看（從講台那頭）：最後一排在畫面中、玻璃牆在他們身後、渡輪從畫面右進來。Fiona 對人群說話朝畫面右（大廳深處）；最後一排 Nora 在中間、Peg 在她左邊（畫面左）、Sparks 在她右邊（畫面右），三人看講台朝鏡頭左邊一點。
 - **在場的人**：Fiona（講台）、人群；最後一排 Nora、Peg、Sparks（c09 起）；Grant 在贊助商的位置（本場在暗處，c15 才看清），Lyle 在記者區（c24 才拍）。
@@ -80,7 +80,7 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 | c01 | 全景、低角度、固定；鏡頭在人群後面、低、往講台那頭拍；直式：前景是人群的肩與頭的剪影（虛焦），上半是三層樓高的天花板與一排排頂燈 | 人群（`ferry-crowd`）只有背影與剪影、沒有臉；天花板的頂燈從畫面上方一區一區熄掉；吊燈還暗著、只見高處一長條深色的形狀；玻璃牆在畫面右緣，上面有細雨的痕 | 頂燈從遠到近一區熄掉（動作一），再一區熄掉（動作二）；剪在第二區熄掉；最後：大廳幾乎全暗，只剩剪影 | — | 約 2.5 秒 |
 | c02 | 大全景、仰角、固定；奇觀；**第一格就是從地面往上看的吊燈全貌**；直式：吊燈從畫面下方延伸到上方，兩邊是玻璃屋頂的鋼樑 | `a long chandelier of flat panels of clear deep blue glass like the harbor at dawn, hanging in a single long row high overhead, lit from within, washing the hall in soft blue light`；玻璃屋頂上的細雨被藍光照亮；畫面下緣只有幾個頭頂的剪影；畫面裡沒有臉 | 整排藍面板同時亮起來（動作一），藍光往下灑滿大廳（動作二）；剪在藍光灑到底；最後：整排吊燈亮著、在畫面中間 | — | 約 3 秒 |
 | c03 | 中景、低角度、慢推（從中景推到中近景）；鏡頭在人群後面、低；直式：前景是幾個肩膀與後腦（虛焦），上緣是吊燈的藍光 | 人群（`ferry-crowd`，穿雨衣）的背影與側面剪影，臉都在暗裡、只見下巴的輪廓被藍光描出一道邊；畫面裡沒有看得清的臉 | 一排排剪影慢慢仰起頭（動作一），一個人的手把雨衣的帽子往後推（動作二）；剪在仰到一半；沒有人出聲；最後：一片仰起的剪影 | — | 約 2.5 秒 |
-| c04 | 中景、固定；鏡頭在玻璃牆前、人群的最後面；直式：前景下緣是兩三個剪影的頭頂（虛焦），中間是有細雨痕的整面玻璃牆，玻璃外是黑色的港 | `a large white car ferry with its deck lights on, docking beyond the glass wall, no name or numbers visible`，從畫面右滑進來；甲板的燈在雨裡暈開；吊燈的藍光落在玻璃上；畫面裡沒有臉 | 渡輪從畫面右滑進來靠岸（動作一），船身停住（動作二）；剪在船頭停在畫面中間；汽笛長鳴；最後：渡輪停在玻璃外 | — | 約 2.5 秒 |
+| c04 | 中景、固定；鏡頭在玻璃牆前、人群的最後面；直式：前景下緣是兩三個剪影的頭頂（虛焦），中間是有細雨痕的整面玻璃牆，玻璃外是黑色的港 | `a large white car ferry with its deck lights on, docking beyond the glass wall, seen far off, its plain white hull soft in the evening haze`，從畫面右滑進來；甲板的燈在雨裡暈開；吊燈的藍光落在玻璃上；畫面裡沒有臉 | 渡輪從畫面右滑進來靠岸（動作一），船身停住（動作二）；剪在船頭停在畫面中間；汽笛長鳴；最後：渡輪停在玻璃外 | — | 約 2.5 秒 |
 | c05 | 中近景、低角度、慢推（從中近景推到近景）；鏡頭在講台左前方、低；直式，臉在上三分之一；身後是虛焦的吊燈藍光與高處的鋼樑 | Fiona（基本款：光滑的低馬尾、白襯衫外罩深藍西裝外套，`an ID badge on a lanyard, turned toward her chest`），站在 `a plain white lectern with no logo and a slim black microphone on a short stand` 後；左手拿著 `a plain cream envelope about the size of her hand`；`a single hard white spotlight beam` 從上方照在她和講台上，吊燈的藍光在她肩上；四分之三側臉朝畫面右外的大廳、眼睛看著人群；眉毛抬起、嘴唇在字之間抿薄、聲音俐落、清楚，`no smile at any moment, until the last frame` | Fiona 看著人群，嘴在說話（俐落、清楚，對全場）（動作一）；說完右手拇指挑進信封的封口（動作二），嘴閉上；最後：她低頭看信封，右手拇指在封口 | Fiona（俐落、清楚，對全場）：It was a blind review. The jury didn't know whose it was.（這是盲審。評審不知道作品是誰的）（原聲） | 約 5 秒 |
 | c06 | 插鏡、特寫、固定；**第一格就是講台上 Fiona 兩手拿著的信封**；直式；追光從上方 | `a plain cream envelope about the size of her hand`，在 Fiona 的兩手（深藍外套袖口、白襯衫袖口）；右手從信封裡抽出 `a single white card, held so only its back shows`；畫面裡沒有臉 | 右手拇指撕開封口（動作一），兩指抽出卡片、卡背朝鏡頭（動作二）；剪在卡片抽出來；畫面上沒有嘴；最後：卡片在她右手、背面朝鏡頭，信封在左手 | — | 約 2.5 秒 |
 | c07 | 近景、慢推（從胸上推到肩上）；同 c05 的鏡位；直式，臉在上三分之一；身後是虛焦的吊燈藍光 | Fiona（基本款，識別證）；右手 `a single white card, held so only its back shows`（在畫面下緣、背面朝鏡頭）；追光從上方；眼睛先看卡、再抬起來看畫面右外的大廳最深處；眉毛一抬、嘴唇在字前閉一下、聲音清楚、每個字分開，`no smile at any moment, until the last frame` | Fiona 的眼睛從卡片抬向大廳深處，嘴在說話（清楚、一字一字）（動作一）；說完把卡片插回信封、放在講台上（動作二），嘴閉上；最後：信封放在講台上，她看著畫面右外 | Fiona（清楚、一字一字）：Remelt. Nora Quinn.（Remelt。Nora Quinn）（原聲）（結尾） | 約 3.5 秒 |
@@ -107,7 +107,7 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 | c14 | 全景、跟拍（從後面跟著往前）；鏡頭在 Nora 背後、肩膀高度；直式前後疊開：前景是她的背與頭髮，兩邊是人群讓開的雨衣背影（虛焦），遠處是講台與吊燈 | Nora（`henley-down`，頭髮放下，`a dark olive waxed-cotton work jacket, worn open`，工作靴）只見背影；人群（`ferry-crowd`）的背與肩往兩邊讓開，臉都背著或在暗裡；`a single hard white spotlight beam` 跟著她，吊燈的藍光在上 | Nora 穿過人群往前走（動作一），兩邊的人側身讓開（動作二）；剪在她走到第四步；最後：她在人群中間的走道上、往講台走 | — | 約 3 秒 |
 | c15 | 中景、低角度、固定；鏡頭在台前、人群第一排後面；直式：前景下緣是兩個頭的剪影（虛焦），上面是台上：畫面左是講台，中偏右是淺色背板 | 共兩人，露臉兩人（小）。Fiona（基本款，識別證）從 `a plain white lectern with no logo and a slim black microphone on a short stand` 後退開一步、往畫面左走下台；Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣、深棕色皮鞋）站在 `a plain pale backdrop with no lettering` 前；講台上放著 `a plain cream envelope about the size of her hand`；吊燈的藍光；Fiona 眼睛看著畫面右外的台階、嘴唇閉著；Grant 眼睛看著畫面右外的台階、下巴抬著、嘴唇閉著；兩張臉都 `no smile at any moment, until the last frame` | Fiona 退開、往畫面左走出畫（動作一），Grant 扣上西裝扣子、往前站半步（動作二）；剪在 Fiona 出畫；嘴都閉著；最後：台上只有 Grant 在背板前、講台空著 | — | 約 2.5 秒 |
 | c16 | 中景、固定；同 c15 的鏡位；直式 | 共兩人，露臉兩人。Nora（`henley-down`，頭髮放下，`a dark olive waxed-cotton work jacket, worn open`，工作靴）從畫面右的三級台階走上台；Grant（基本款）在背板前、轉向她；追光跟著 Nora，吊燈的藍光；Nora 眼睛看著畫面左的講台、眉毛放平、嘴唇閉著，`no smile at any moment, until the last frame`；Grant 四分之三側臉朝畫面右的 Nora、練過的閉嘴微笑、眼睛看著她 | Nora 踏上最後一級台階（動作一），往講台走；Grant 朝她跨一步、擋在她經過的路上（動作二）；剪在 Grant 跨出去；嘴都閉著；最後：兩人在背板前相隔兩步 | — | 約 2.5 秒 |
-| c17 | 近景、慢推（從胸上推到肩上）；鏡頭在台下、低、Grant 右前方；直式，臉在上三分之一；身後是 `a plain pale backdrop with no lettering`（虛焦）與吊燈的藍光 | Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫）；右手伸出去、`a clear glass cufflink on his right shirt cuff`；吊燈的藍光與追光的餘光穩穩照在臉上；四分之三側臉朝畫面右外的 Nora、眼睛看著她；練過的閉嘴微笑：嘴唇閉著、嘴角提著、眉毛抬起、下巴微微往前；聲音平穩、低 | Grant 伸出右手（動作一），嘴在說話（平穩、低）（動作二）；說完右手停在半空，嘴閉上；最後：他的右手伸在半空、看著畫面右外 | Grant（平穩、低）：Congratulations.（恭喜）（原聲） | 約 3 秒 |
+| c17 | 近景、慢推（從胸上推到肩上）；鏡頭在台下、低、Grant 右前方；直式，臉在上三分之一；身後是 `a plain pale backdrop with no lettering`（虛焦）與吊燈的藍光 | Grant（基本款：沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫）；右手伸出去、`a clear glass cufflink on his right shirt cuff`；吊燈的藍光與追光的餘光穩穩照在臉上；四分之三側臉朝畫面右外的 Nora、眼睛看著她；練過的笑（說話時）：`his lips part on each word and close again into a practiced smile, both corners lifted, teeth hidden`、眉毛抬起、下巴微微往前；聲音平穩、低 | Grant 伸出右手（動作一），嘴在說話（平穩、低）（動作二）；說完伸在半空的右手手指收攏一下、又張開等著，嘴閉回練過的笑；最後：他的右手伸在半空、看著畫面右外 | Grant（平穩、低）：Congratulations.（恭喜）（原聲） | 約 3 秒 |
 | c18 | 插鏡、特寫、固定；**第一格就是 Grant 伸在半空的右手**；直式；鏡頭在手的高度、從側面拍 | Grant 的右手（淺石色西裝袖口、淺藍襯衫袖口，`a clear glass cufflink on his right shirt cuff`）伸在畫面左半；畫面右半、隔一步是 Nora 的兩手垂在身側（深橄欖色外套袖口），左手 `a plain narrow white-gold band with no stone, on her left ring finger`；畫面裡沒有臉 | Grant 的手在半空停著（動作一），Nora 的兩手一動不動、從他的手前面往畫面左走過去（動作二）；剪在她的手經過他的手；畫面上沒有嘴；最後：他的手還伸在半空，她的手出了畫面左 | — | 約 2.5 秒 |
 | c19 | 中近景、固定；鏡頭在台下、低；直式；身後是吊燈的藍光（虛焦） | Nora（`henley-down`，頭髮放下，`a dark olive waxed-cotton work jacket, worn open`），從畫面右走進來、走到 `a plain white lectern with no logo and a slim black microphone on a short stand` 後；追光跟著她；眼睛看著麥克風、從頭到尾不往畫面右看；眉毛放平、下巴抬起、嘴唇閉著、呼吸慢下來，`no smile at any moment, until the last frame` | Nora 走到講台後站定（動作一），兩手放到講台邊上（動作二）；剪在手放上去；嘴閉著；最後：她站在麥克風前、兩手扶著講台 | — | 約 2.5 秒 |
 | c20 | 近景、慢推（從胸上推到肩上）；顏值鏡頭；鏡頭在講台右前方、低；直式，臉在上三分之一；身後是高處的吊燈（虛焦的一長條藍） | Nora（`henley-down`：齊肩鮑伯、頭髮放下，`a dark olive waxed-cotton work jacket, worn open`），兩手扶著講台；**吊燈的藍光滿臉**、`a single hard white spotlight beam` 從上方，追光在她眼睛裡一點白；四分之三側臉朝畫面左外的大廳深處、眼睛看著遠處的人群（不看鏡頭、不看畫面右外的他）；眉毛放平、眼睛不眨、下巴抬著、嘴唇在字前閉緊、聲音安靜、非常清楚，`no smile at any moment, until the last frame` | Nora 看著大廳深處，嘴在說話（安靜、非常清楚）；說完下巴微收，嘴閉上；最後：她看著畫面左外 | Nora（安靜、非常清楚）：Six years, I designed for a brand.（六年，我替一個品牌設計）（原聲） | 約 4 秒 |
@@ -149,7 +149,7 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 - **時間與天氣**：第 162 天 22:30–22:40，夜、毛毛雨；計程車裡是手機側面的白光與一點穩定的暖光，港邊的路燈只滑過車窗與椅背；Grant 的車裡一盞小閱讀燈的穩定暖光，路燈只滑過有色車窗。
 - **軸線**：計程車：鏡頭在前座之間往後拍，**Nora 在畫面左、Peg 在畫面右**；Nora 看前方朝畫面左外、看 Peg 朝畫面右；Peg 看 Nora 朝畫面左。Nora 右手拿手機貼右耳（鏡頭在她左前方）。Grant 的車：鏡頭在後座左邊、往前右斜拍，Grant 在畫面右、方向盤與白手套在畫面左上角；他右手拿手機貼右耳（鏡頭在他左側），看著前方朝畫面左外。
 - **在場的人**：Nora、Peg（司機不入鏡）；Grant、Cole（只有白手套）。
-- **這場要講完的事**：Grant 打來開條件：撤民事、不作證、房子給她；她回「The court will give it back.」掛掉；他把條件寫成簡訊，她轉給 Dana，Dana 回「He just put it in writing.」；他又傳：「Then I'll come to you.」「Face to face.」（結尾：「'Face to face.'」，懸念：他要上門）。
+- **這場要講完的事**：Grant 打來開條件：撤民事、不作證、房子給她；她回「The court will give it back.」掛掉；他把條件寫成簡訊，她轉給 Dana，Peg 念出 Dana 的回覆「Dana says, 'He just put it in writing.'」；他又傳：「Then I'll come to you.」「Face to face.」（結尾：「'Face to face.'」，懸念：他要上門）。
 - **配樂**：c37 雨刷與輪胎的聲音，一個低的持續音；c39 Grant 開口時低音壓下來；c42 那句之後停一拍；c45 Peg 念完一個很輕的撥弦（小爽點）；c46 第二下震動，音樂抽掉；c47 念完一個懸著的低音；c48 切黑。
 - **離開這場**：本集結尾；第 58 集跳到第 163 天 09:00 的 Remelt。
 
@@ -163,7 +163,7 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 | c42 | 近景、慢推（從胸上推到肩上）；同 c40 的鏡位；直式，臉在上三分之一 | Nora（`henley-down`，頭髮放下），右手手機貼右耳；一點穩定的暖光照在她臉上；眼睛看著畫面左外的前方；眉毛放平、眼睛不眨、嘴唇在字前閉緊、聲音安靜、清楚、一字一字，`no smile at any moment, until the last frame` | Nora 看著前方，嘴在說話（安靜、清楚）（動作一）；說完右手把手機從耳邊拿下來、拇指按掉通話（動作二），嘴閉上；最後：手機在她胸前、側面的白光照著下巴 | Nora（安靜、清楚）：The court will give it back.（法院會還給我）（原聲）← 因為 c41 | 約 3.5 秒 |
 | c43 | 近景、固定；同 c39 的鏡位；直式，臉在上三分之一 | Grant（基本款，細圓金屬框眼鏡）；右手把 `a black phone with no logo, about the size of his palm` 從耳邊拿下來、放到胸前，螢幕一層側面的白光照在他下巴；畫面左上角的白手套（虛焦）；閱讀燈的穩定暖光；眼睛垂到手機側面的白光；嘴唇抿成一條線、下巴的肌肉一動、鼻子吸一口氣，`no smile at any moment, until the last frame` | Grant 把手機從耳邊拿到胸前（動作一），右手拇指在手機上打字（動作二）；剪在拇指打到一半；嘴閉著；最後：他低頭打字 | — | 約 2.5 秒 |
 | c44 | 插鏡、特寫、固定；**第一格就是 Nora 右手拿著的手機的側邊與她的拇指**；直式；鏡頭低、從手機側面平拍 | `a plain black phone in a clear case, no logo, about the size of her palm, its screen a soft white glow, seen from the side`，在 Nora 的右手（深橄欖色外套袖口）；拇指在螢幕上；畫面裡沒有臉 | 手機震一下、側面亮起白光（動作一），她的拇指按兩下、轉出去（動作二）；剪在拇指第二下；畫面上沒有嘴；最後：手機在她右手、側面的白光 | — | 約 2.5 秒 |
-| c45 | 中近景、固定；同 c38 的鏡位（前座之間），近一點；直式：兩人在畫面中，前景是椅背的邊 | 共兩人，露臉兩人。Nora（`henley-down`）在畫面左，右手把手機低低拿在兩人之間、側面的白光朝 Peg 那邊斜；Peg（`visit`，玳瑁框眼鏡，`a plain beige canvas tote bag with no print, on her lap`，左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`）在畫面右，往 Nora 那邊靠過去、眼睛從鏡片上方看著手機側面的白光；手機的白光與一點穩定的暖光照在兩張臉上；Peg 眉毛一挑、嘴唇在字之間抿薄、聲音平、乾，像念帳；Nora 眼睛看著 Peg、嘴唇閉著；兩張臉都 `no smile at any moment, until the last frame` | Peg 往手機靠過去（動作一），嘴在說話（念簡訊，平、乾）（動作二）；說完身子坐回去、下巴一抬，嘴閉上；Nora 嘴閉著；最後：Peg 坐回去、看著 Nora | Peg（念簡訊，平、乾）：'He just put it in writing.'（「他剛剛自己寫成白紙黑字了。」）（原聲）← 因為 c44 | 約 4 秒 |
+| c45 | 中近景、固定；同 c38 的鏡位（前座之間），近一點；直式：兩人在畫面中，前景是椅背的邊 | 共兩人，露臉兩人。Nora（`henley-down`）在畫面左，右手把手機低低拿在兩人之間、側面的白光朝 Peg 那邊斜；Peg（`visit`，玳瑁框眼鏡，`a plain beige canvas tote bag with no print, on her lap`，左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`）在畫面右，往 Nora 那邊靠過去、眼睛從鏡片上方看著手機側面的白光；手機的白光與一點穩定的暖光照在兩張臉上；Peg 眉毛一挑、嘴唇在字之間抿薄、聲音平、乾，像念帳；Nora 眼睛看著 Peg、嘴唇閉著；兩張臉都 `no smile at any moment, until the last frame` | Peg 往手機靠過去（動作一），嘴在說話（念簡訊，平、乾）（動作二）；說完身子坐回去、下巴一抬，嘴閉上；Nora 嘴閉著；最後：Peg 坐回去、看著 Nora | Peg（念簡訊，平、乾）：Dana says, 'He just put it in writing.'（Dana 說：「他剛剛自己寫成白紙黑字了。」）（原聲）← 因為 c44 | 約 4 秒 |
 | c46 | 插鏡、特寫、固定；同 c44 的鏡位；**第一格就是手機的側邊** | `a plain black phone in a clear case, no logo, about the size of her palm, its screen a soft white glow, seen from the side`，在 Nora 的右手；畫面裡沒有臉 | 手機又震一下、側面的白光又亮起來（動作一），她的拇指點一下（動作二）；剪在拇指點下去；畫面上沒有嘴；最後：手機在她右手、亮著 | — | 約 2 秒 |
 | c47 | 近景、慢推（從胸上推到臉）；同 c40 的鏡位；直式，臉在上三分之一；身後是深灰的布椅背（虛焦） | Nora（`henley-down`，頭髮放下，`a dark olive waxed-cotton work jacket, worn open`）；右手 `a plain black phone in a clear case, no logo, about the size of her palm, its screen a soft white glow, seen from the side` 低低拿在胸前，側面的白光照在她下巴；一點穩定的暖光；眼睛看著手機側面的白光；眉頭慢慢壓下來、嘴唇在字之間抿住、聲音低、平、一字一字，`no smile at any moment, until the last frame` | Nora 看著手機，嘴在說話（念簡訊，低、平）（動作一）；說完眼睛從手機抬起、看向畫面左外的前方（動作二），嘴閉上；最後：手機在右手、她看著前方 | Nora（念簡訊，低、平）：'Then I'll come to you.' 'Face to face.'（「那我去找妳。」「當面談。」）（原聲）（結尾）（懸念 → 下一集第一場） | 約 4 秒 |
 | c48 | 中近景、固定（接第 58 集之前的最後一刻）；同 c38 的鏡位（前座之間往後拍）；直式：前景左右是前座椅背的邊（虛焦），中間是兩人 | 共兩人，露臉兩人。Nora（`henley-down`，頭髮放下，`a dark olive waxed-cotton work jacket, worn open`）在畫面左，右手 `a plain black phone in a clear case, no logo, about the size of her palm, its screen a soft white glow, seen from the side` 在胸前，側面的白光照在她下巴；眼睛看著畫面左外的前方、眉毛壓平、嘴唇閉緊、下巴繃住；Peg（`visit`，玳瑁框眼鏡，`a plain beige canvas tote bag with no print, on her lap`）在畫面右，左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger` 放在帆布袋上；Peg 轉頭看著畫面左的 Nora、眉頭擰緊、嘴唇抿薄、下巴繃住；兩張臉都 `no smile at any moment, until the last frame`；一點穩定的暖光，港邊的路燈一道道只滑過車窗 | Peg 轉頭看著 Nora（動作一），左手在帆布袋上握緊（動作二）；剪在手握緊後一拍；嘴都閉著；最後：Nora 看著前方，Peg 看著她 | — | 約 2.5 秒 |
@@ -196,13 +196,21 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 - **車裡說話的臉**：路燈只滑過車窗與椅背，臉上是手機側面的白光與一點穩定的暖光（計程車）、一盞小閱讀燈（Grant 的車）。bible 寫「港邊的路燈一道道滑過」，不落在說話的臉上（第 16 集審稿的教訓）。
 - **c10、c11 轉頭的路人**：寫了年齡與衣著讓兩鏡的人不重複，臉都在虛焦的外圍。
 
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e055-e060-storyboard.md` 與 bible〈第 55–60 集審稿後補定〉改的。本集還沒錄、沒拍，沒有要重抽的片段。
+- **c17**：說話時「嘴唇閉著」的笑原聲嘴會不動；改成 bible 的句子 `his lips part on each word and close again into a practiced smile, both corners lifted, teeth hidden`；收尾從靜止改成動作：伸在半空的右手手指收攏一下、又張開等著。**表情與收尾改了，台詞不變**。
+- **c45**：觀眾不知道是誰回的；Peg 改念 "Dana says, 'He just put it in writing.'"（bible 補定）。**台詞變長，要重錄**（約 4 秒，仍在 6 秒片段內）。劇情、場頭、清單一起改。
+- **渡輪道具句**照 `cast.json` 的新句：`a large white car ferry with its deck lights on, docking beyond the glass wall, seen far off, its plain white hull soft in the evening haze`（c04、場頭）。
+- 鏡數與秒數不變（48 鏡、138.5 秒）。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**。
 - **十四句都是原聲**：Fiona 二鏡（c05、c07）、Grant 三鏡（c17；c39、c41 後製加電話濾波）、Nora 五鏡（c20、c21、c30、c42、c47）、Lyle 一鏡（c24）、Peg 三鏡（c31、c34、c45）。每支**至少買 6 秒**（合計 84 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**。
 - 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：Fiona 俐落、清楚；Nora 安靜、非常清楚（在公開場合說事實時聲音反而更低更清楚）；Lyle 快、衝；Peg 乾、衝，c34 啞，c45 平、像念帳；Grant 平穩、低、短。
 - **Grant 的說話句**（c17、c39、c41）只寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth（原聲小樣：這三個字會把笑帶出來）；c17 的閉嘴微笑是 bible 允許的。
-- **念簡訊**（c45、c47）：引號裡是簡訊原文，用念的語氣，不學 Dana、不學 Grant。
+- **念簡訊**（c45、c47）：引號裡是簡訊原文，用念的語氣，不學 Dana、不學 Grant；c45 Peg 先說 "Dana says," 再念（審稿後改）。
 - **6 個字以內的句子**（c07、c17、c21、c31、c34、c41、c42）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上。c17 "Congratulations." 與 c34 "Stupid ring." 最短，第一批草稿先聽有沒有多講。
 - **Fiona、Lyle** 開拍前一定要有定妝照（bible 先畫順序第 1 條）。
 - CC 軟字幕、不燒錄、不標說話人；字幕照剪接工具量到的開口時間放。
@@ -257,7 +265,7 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 | Peg | `visit`（玳瑁框眼鏡）＋帆布袋；c32 之前戒痕、c32 起婚戒 | c09、c28、c31、c33–c34、c38、c45、c48（c13、c29、c32 只有手） | 已有 |
 | Sparks | 基本款 | c09、c28、c35 | 要畫定妝照 |
 | Fiona | 基本款＋ `fiona-badge` | c05、c07、c15（c06 只有手） | 要畫定妝照 |
-| Grant | 基本款（細圓金屬框眼鏡、透明玻璃袖扣）；車上手機右手貼右耳 | c15–c17、c23、c25、c39、c41、c43（c18 只有手、c26 背） | 已有 |
+| Grant | 基本款（細圓金屬框眼鏡、透明玻璃袖扣）；車上手機右手貼右耳；c17 說話時練過的笑（審稿後改句） | c15–c17、c23、c25、c39、c41、c43（c18 只有手、c26 背） | 已有 |
 | Lyle | 基本款＋ `lyle-camera`；嚼口香糖 | c24 | 要畫定妝照 |
 | Cole | 只有方向盤上的白手套 | c39、c41、c43（虛焦） | 要畫定妝照（只用到手，可延後） |
 | 公關 | `pr-man`，背影與手 | c25–c26 | 不畫 |
@@ -268,12 +276,12 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 - 定妝照：`nora-portrait.jpg`、`nora-work.jpg`（r3）、`peg-portrait.jpg`、`grant-portrait.jpg`（平臉 r3）（都有）。
 - **待畫的人**（照 bible 先畫順序）：Sparks、Fiona、Lyle（第 1 條，開拍前一定要有）；**Nora `henley-down` 全身**（第 4 條，從第四章的 `henley` 只改頭髮）；Cole（只用白手套）。
 - **待畫的場景**：渡輪碼頭大廳首航夜 `ferry-terminal`（直式由下往上，吊燈亮與未亮兩版、講台與背板、台右側三級台階、出口的玻璃門與石柱）；計程車後座 `cab-back-seat`（夜）；Grant 的車後座 `grant-car-interior`（夜版）；計程車外 `rideshare-car` 照道具句。
-- 道具：吊燈（`chandelier`）先畫一張驗藍色與整排的樣子；Peg 的婚戒、盲審信封與卡片照道具句。
+- 道具：吊燈（`chandelier`）先畫一張驗藍色與整排的樣子；Peg 的婚戒、盲審信封與卡片照道具句。渡輪照 `cast.json` 新句（`…, seen far off, its plain white hull soft in the evening haze`，審稿後改）。
 - 沒有參考圖也不露臉的：公關（背影與手）、人群（背影、剪影、虛焦）。
 
 ### 3. 長鏡清單
 
-本集沒有超過 6 秒的鏡。最長的是 c05（5 秒，Fiona 兩句）、c39（4.5 秒，Grant 兩句）、c20、c24、c30、c45、c47（4 秒）。原聲鏡十四支每支買 6 秒（不是長鏡，剪到台詞長度）。
+本集沒有超過 6 秒的鏡（c45 審稿後台詞變長，仍是 4 秒）。最長的是 c05（5 秒，Fiona 兩句）、c39（4.5 秒，Grant 兩句）、c20、c24、c30、c45、c47（4 秒）。原聲鏡十四支每支買 6 秒（不是長鏡，剪到台詞長度）。
 
 ### 4. 音樂與音效
 
@@ -282,7 +290,7 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 | 第一場 c01–c13 | 低語 → 吊燈亮起的長弦和弦 → 汽笛 → 持續音 → 抽掉一拍 → 鼓進來 → 停 | c02 吊燈亮起、c04 汽笛、c07 "Remelt. Nora Quinn."、c09 追光找到她 |
 | 第二場 c14–c27 | 跟著腳步的鼓 → 停 → 低音 → 弦升起 → 停一拍 → 掌聲與衝上去的弦 → 抽掉 → 低的長音 | c18 不握的手、c21 "Tonight my name's on it."、c23 笑僵住、c24 Lyle 的問題 |
 | 第三場 c28–c36 | 安靜 → 鋼琴單音 → 停一拍 → 輕的弦 → 弦升起 → 收住 | c29 戒指進掌心、c32 戴上、c34 "Stupid ring." |
-| 第四場 c37–c48 | 雨與低的持續音 → 低音壓下 → 停一拍 → 輕的撥弦 → 抽掉 → 懸著的低音 | c42 "The court will give it back."、c45 "He just put it in writing."、c47 "Face to face." |
+| 第四場 c37–c48 | 雨與低的持續音 → 低音壓下 → 停一拍 → 輕的撥弦 → 抽掉 → 懸著的低音 | c42 "The court will give it back."、c45 "Dana says, 'He just put it in writing.'"、c47 "Face to face." |
 
 招牌音效：c02 吊燈亮起、c04 渡輪汽笛、c06 撕開信封、c22 掌聲、c29 戒指落進掌心。其他見〈音樂與音效〉。
 
@@ -292,7 +300,7 @@ c39、c41、c43 寫 `night in the back seat of a luxury sedan, a small steady wa
 - **錢**（bible〈帳〉，台詞不說出口）：第 162 天白天贖回 Peg 的婚戒，本金 **$400**（當月利息第 158 天已付），用的是第一筆款（第 142 天的訂金）留下的錢；回程計程車約 **$30**，Nora 付（不拍）。Nora 約 $4,400 → 約 $3,900 上下（減菜錢）；Peg 約 $2,100–2,300。
 - **戒指**：Peg 的婚戒 c32 起在她左手無名指，之後每一鏡拍到她的左手都寫婚戒句；當票在當鋪收回（不拍）。
 - **吊燈**：點亮，掛在碼頭大廳；尾款等驗收（第 58–60 集）。盲審的信封放在講台上（Fiona 收走，不拍）。
-- **簡訊**：Grant 的條件（撤民事、不作證、房子給她）是他自己寫下來的，Nora 轉給了 Dana（r3：不是偷錄）；Dana 回 "He just put it in writing."；Grant 第二則 "Then I'll come to you." "Face to face."。Dana 交不交給 Reyes 是第二季的事。
+- **簡訊**：Grant 的條件（撤民事、不作證、房子給她）是他自己寫下來的，Nora 轉給了 Dana（r3：不是偷錄）；Dana 回 "He just put it in writing."（Peg 念成 "Dana says, 'He just put it in writing.'"）；Grant 第二則 "Then I'll come to you." "Face to face."。Dana 交不交給 Reyes 是第二季的事。
 - **誰知道了什麼**：全場（與記者）聽到盲審的結果是 Remelt、Nora Quinn，看到她不握 Grant 的手、聽到 Lyle 問他偽造的事；Dana 手上有 Grant 寫下來的條件；Grant 要當面來找她。
 - **證物與進度條**：證物牆 2/12、珠子停在 Charges；本集不入鏡。
 - **人在哪**：Sparks 自己回 Gus 家（不拍）；Elias 本集不出現（夜裡守爐，不拍）。

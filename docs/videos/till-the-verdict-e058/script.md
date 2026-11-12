@@ -5,13 +5,13 @@
 格式照 `docs/videos/till-the-verdict-e020/script.md`，分鏡照 `.agents/skills/animation-preproduction/references/storyboard-shot-spec.md` 的十一項、`script-to-storyboard.md`〈拍法：種田拍法〉與 `docs/videos/drama/WRITING.md` 寫。
 劇情照 `season-01.json` 第 58 集細綱（2026-11-10 改版），名字與程序照 `GLOSSARY.md`，跟細綱不同的地方照 bible。這部**沒有系統、沒有面板**。畫面上不放集數、不放片名卡、不放字卡。
 **畫面 9:16 直式**；**台詞全部英文**（括號裡的中文只給站主看，不錄）；欄位描述用中文。外貌英文、聲音、場景的提示詞照同目錄 `cast.json`（角色 id `nora`、`dana`、`elias`、`theo`、`peg`），道具照 bible〈道具的樣子〉。**這份檔就是製作要的全部**：製作端照抄，不自己補。
-**拍法與聲音**（站主 2026-11-12）：種田拍法（一鏡約 2.5–3 秒、說話的鏡照台詞長度、剪在動作中間）；畫面上露嘴的台詞用模型原聲。開場 Dana 的電話照 bible〈全劇固定〉把她拍成畫面上的人（在 Ashford Construction 頂樓的玻璃牆前），原聲、後製加電話濾波，台詞只在她自己的鏡上；Nora 的手機開著擴音。Nora 回 Grant 的簡訊邊打邊念出來。本集**沒有 Gemini 錄音**。
+**拍法與聲音**（站主 2026-11-12）：種田拍法（一鏡約 2.5–3 秒、說話的鏡照台詞長度、剪在動作中間）；畫面上露嘴的台詞用模型原聲。開場 Dana 的電話照 bible〈全劇固定〉把她拍成畫面上的人（在 Ashford Construction 頂樓、玻璃牆邊，近景身後是素的灰牆），原聲、後製加電話濾波，台詞只在她自己的鏡上；Nora 的手機開著擴音。Nora 回 Grant 的簡訊邊打邊念出來。本集**沒有 Gemini 錄音**。
 **熱爐禁令與 clause two**（bible〈全劇固定〉）：深夜 Nora 一直在黃色安全線外，把碗放到線內側邊上那張鋼凳時腳不過線；Elias 在線內兩手戴隔熱手套，只碰燃氣閥、壓力錶、他自己的手套、鋼凳和那只碗；**他只脫右手手套，左手手套一直戴著**；疤不出現。白天在頂樓他穿基本款西裝，**左手一直插在褲子左口袋**，寫字用右手。
 **可讀的字**：手機與簡訊只有側面的白光、內容由 Nora 念；Elias 寫的紙只拍紙邊、遠遠虛焦；卷宗、平板背面、壓力錶、刻好的面板一律不出字，後製也不上。
 
 ## 劇情
 
-上午，陰天。Nora 在 Remelt 的工作台邊，一邊打字一邊念出來：「Remelt.」「Friday, eight.」手機開著擴音，Dana 在 Ashford Construction 頂樓的玻璃牆前，聲音一下拔高：「What are you negotiating?」Nora：「I'm not.」「I'm letting him look.」她看向證物牆上那兩片刻好的面板。
+上午，陰天。Nora 在 Remelt 的工作台邊，一邊打字一邊念出來：「Remelt.」「Friday, eight.」手機開著擴音，Dana 在 Ashford Construction 頂樓，聲音一下拔高：「What are you negotiating?」Nora：「I'm not.」「I'm letting him look.」她看向證物牆上那兩片刻好的面板。
 十一點，頂樓。Dana 把一份卷宗拍在長桌上：「You can't fight for her.」Elias 低頭寫字，頭也不抬：「I won't.」「Gus is still laid up.」「I tend the furnace.」Theo 在他身後半步，對著平板低聲記：「Boss.」「Furnace.」
 傍晚，Ashford 家的長餐桌。Peg 把兩根棒針往毛線球裡一插，眼睛紅、下巴繃住：「I made him.」「I get to look him in the eye.」Nora：「Not yet.」「You're my witness, not my backup.」Peg 咬著牙把棒針拔出來收好：「Then you come home and eat your stew.」Nora 點頭，手蓋上 Peg 戴回婚戒的手。
 深夜，Remelt 只剩工作燈與爐火。Elias 戴著手套看壓力錶，坐到爐邊的鋼凳上。Nora 把一碗義大利麵放在他旁邊那張鋼凳上，蒸氣和爐口的熱浪扭在一起。他脫下右手的手套、吃一口，看著火：「Salty.」她笑出聲：「Friday, you'll be here?」火光把他的側臉照成橘色，他的眼睛沒有離開爐口：「As long as it's lit, I'm here.」
@@ -60,9 +60,9 @@ c27–c39 寫 `late night inside an old brick glassworks, a single work lamp han
 ### 第一場：Friday, eight.（約 23.5 秒）
 
 **場頭**：
-- **地點與場景圖**：c01–c03、c05–c06、c08 Remelt 主廠房 `remelt`（上午陰天版）：Nora 站在長木工作台靠大門那頭；左牆靠大門那段是證物牆：`a long clear glass tube about as long as her outstretched arms and as thick as her wrist, mounted level on the red brick wall on two plain steel brackets, a row of small plain brass bands clamped around it at even spacing, no letters` 與 `one small amber glass bead about the size of a fingertip, resting inside the tube against the second brass band`，下面 `an old steel sample rack bolted to the red brick wall below the tube, a long row of upright slots, each slot about the size of a hardcover book, no labels, two clear engraved glass panels standing in the first two slots on the left, the other slots empty`，最下層邊上 `a cream baby hat about the size of her palm, finished, off the needles, resting on the bottom ledge of a steel rack`，鋼架靠大門那側的磚上 `a sheet of white drawing paper about the size of a magazine with a plain pencil outline of a left hand traced around spread fingers, no writing, taped to the red brick by one strip of masking tape`；行軍床收起來：`a folded canvas army cot leaning against the brick wall`。c04、c07 Ashford Construction 頂樓 `ashford-boardroom`：Dana 站在一整面玻璃牆前，玻璃外是灰色的港（遠、虛焦）。近景都寫「同一個廠房」「同一間頂樓」。
+- **地點與場景圖**：c01–c03、c05–c06、c08 Remelt 主廠房 `remelt`（上午陰天版）：Nora 站在長木工作台靠大門那頭；左牆靠大門那段是證物牆：`a long clear glass tube about as long as her outstretched arms and as thick as her wrist, mounted level on the red brick wall on two plain steel brackets, a row of small plain brass bands clamped around it at even spacing, no letters` 與 `one small amber glass bead about the size of a fingertip, resting inside the tube against the second brass band`，下面 `an old steel sample rack bolted to the red brick wall below the tube, a long row of upright slots, each slot about the size of a hardcover book, no labels, two clear engraved glass panels standing in the first two slots on the left, the other slots empty`，最下層邊上 `a cream baby hat about the size of her palm, finished, off the needles, resting on the bottom ledge of a steel rack`，鋼架靠大門那側的磚上 `a sheet of white drawing paper about the size of a magazine with a plain pencil outline of a left hand traced around spread fingers, no writing, taped to the red brick by one strip of masking tape`；行軍床收起來：`a folded canvas army cot leaning against the brick wall`。c04、c07 Ashford Construction 頂樓 `ashford-boardroom`：Dana 站在一整面玻璃牆邊（玻璃在她身側、畫面左外），臉朝屋裡，**身後是素的灰牆**。近景都寫「同一個廠房」「同一間頂樓」。
 - **時間與天氣**：第 163 天（8/26 週三）09:00，陰；Remelt 高窗的灰白光、爐火在後牆低低地亮；頂樓玻璃牆的灰光；整場光不變。
-- **軸線**：Remelt 照 bible〈軸線〉「證物牆的戲」：鏡頭在屋子中間往大門拍，證物牆在畫面右、大門在畫面中偏左；Nora 看證物牆朝畫面右。Dana 在玻璃牆前、臉朝屋裡（畫面右），左手拿手機貼左耳、鏡頭在她右邊。
+- **軸線**：Remelt 照 bible〈軸線〉「證物牆的戲」：鏡頭在屋子中間往大門拍，證物牆在畫面右、大門在畫面中偏左；Nora 看證物牆朝畫面右。Dana 站在玻璃牆邊（玻璃在畫面左外）、臉朝屋裡（畫面右），身後是素的灰牆，左手拿手機貼左耳、鏡頭在她右邊。
 - **在場的人**：Remelt 只有 Nora；頂樓只有 Dana（Elias 與 Theo 第二場才拍）。
 - **這場要講完的事**：Nora 回 Grant：週五八點，Remelt；Dana 問她在談什麼條件，她說她不談，只讓他看（結尾：「I'm not. I'm letting him look.」）。
 - **配樂**：c01 只有拇指打字的輕響與爐子低低的聲音；c04 Dana 那句一個短的撥弦；c05 一個低的長音；c06 證物牆那一鏡一個鋼琴單音。
@@ -73,18 +73,18 @@ c27–c39 寫 `late night inside an old brick glassworks, a single work lamp han
 | c01 | 插鏡、特寫、固定；**第一格就是 Nora 兩手拿著的手機的側邊與兩根拇指**；直式；鏡頭在手機側面、平拍；背景是虛焦的工作台木面 | `a plain black phone in a clear case, no logo, about the size of her palm, its screen a soft white glow, seen from the side`，在 Nora 的兩手（灰色亨利領長袖的袖口）；左手無名指 `a plain narrow white-gold band with no stone, on her left ring finger`；手機的白光照在拇指上；上午的灰白光從畫面右上；畫面裡沒有臉 | 兩根拇指在螢幕上打字（動作一），停一下（動作二）；剪在拇指停住；畫面上沒有嘴；最後：手機在她兩手、側面的白光 | — | 約 2.5 秒 |
 | c02 | 中近景、慢推（從中近景推到近景）；鏡頭在屋子中間、往大門拍；直式前後疊開：前景左下是工作台的木角（虛焦），中間是 Nora，畫面右後是左牆的證物牆（虛焦、遠） | Nora（`work`：齊肩髮綁低馬尾、`clear safety goggles pushed up on her head`、深色帆布圍裙、灰色亨利領長袖），站在工作台靠大門那頭，兩手拿著 `a plain black phone in a clear case, no logo, about the size of her palm, its screen a soft white glow, seen from the side`（開著擴音）；上午的灰白光從高窗；眼睛看著手機側面的白光；眉毛壓平、嘴唇在字之間抿住、聲音低、平、像在念地址，`no smile at any moment, until the last frame` | Nora 的拇指打字，嘴在說話（邊打邊念，低、平）；說完拇指點一下螢幕，嘴閉上；最後：她低頭看著手機 | Nora（邊打邊念，低、平）：Remelt.（Remelt）（原聲） | 約 2.5 秒 |
 | c03 | 近景、慢推（從胸上推到肩上）；同 c02 的鏡位；直式，臉在上三分之一；身後是虛焦的磚牆與證物牆 | Nora（`work`，護目鏡推在頭頂），兩手的手機在胸前、側面的白光照在下巴；灰白的天光；眼睛看著手機側面的白光；眉毛放平、下巴收著、嘴唇在字之間抿住、聲音低、一字一字，`no smile at any moment, until the last frame` | Nora 嘴在說話（邊打邊念，一字一字）（動作一）；說完右手拇指重重按下送出（動作二），嘴閉上；最後：拇指停在螢幕上 | Nora（邊打邊念，一字一字）：Friday, eight.（星期五，八點）（原聲） | 約 3 秒 |
-| c04 | 近景、慢推（從胸上推到肩上）；鏡頭在頂樓、Dana 右前方；直式，臉在上三分之一；身後是玻璃牆外灰色的港（遠、虛焦） | Dana（基本款：高髮髻、黑色合身西裝外套配白 T 恤），站在玻璃牆前、臉朝屋裡；左手 `a black phone with no logo, about the size of her palm` 貼左耳（手機在臉的另一側，靠鏡頭這半張嘴露著）；頂樓的灰光穩穩照在臉上；四分之三側臉朝畫面右外的屋裡、眼睛看著前方空處（電話那頭的人不在畫面，說話模板的 eyes on 換成本鏡寫的視線）；眉毛一下挑高、眼睛睜大、嘴張得快、聲音一下拔高，`no smile at any moment, until the last frame` | Dana 停下腳步（動作一），嘴在說話（聲音一下拔高、快）（動作二）；說完右手叉到腰上，嘴閉上；最後：她手機貼左耳、右手叉腰 | Dana（聲音一下拔高、快）：What are you negotiating?（妳在跟他談什麼條件？）（原聲、電話濾波）（→ 答在 c05） | 約 3.5 秒 |
-| c05 | 近景、慢推（從胸上推到臉）；同 c03 的鏡位；直式，臉在上三分之一 | Nora（`work`，護目鏡推在頭頂），手機在胸前（擴音、側面的白光）；灰白的天光穩穩照在臉上；眼睛先看著手機側面的白光，說到第二句時抬起來、看向畫面右外的證物牆；眉毛放平、眼睛不眨、嘴唇在字前閉緊、聲音低、清楚，`no smile at any moment, until the last frame` | Nora 嘴在說話（低、清楚）（動作一）；說第二句時頭轉向畫面右外的證物牆（動作二）；說完嘴閉上；最後：她看著畫面右外 | Nora（低、清楚）：I'm not. I'm letting him look.（我沒在談。我是讓他來看）（原聲）（結尾）← 因為 c04 | 約 4 秒 |
+| c04 | 近景、慢推（從胸上推到肩上）；鏡頭在頂樓、Dana 右前方；直式，臉在上三分之一；**身後只有頂樓素的灰牆（虛焦）** | Dana（基本款：高髮髻、黑色合身西裝外套配白 T 恤），站在玻璃牆邊（玻璃在畫面左外）、臉朝屋裡；左手 `a black phone with no logo, about the size of her palm` 貼左耳（手機在臉的另一側，靠鏡頭這半張嘴露著）；玻璃牆的灰光從畫面左穩穩照在臉上；四分之三側臉朝畫面右外的屋裡、眼睛看著前方空處（電話那頭的人不在畫面，說話模板的 eyes on 換成本鏡寫的視線）；眉毛一下挑高、眼睛睜大、嘴張得快、聲音一下拔高，`no smile at any moment, until the last frame` | Dana 停下腳步（動作一），嘴在說話（聲音一下拔高、快）（動作二）；說完右手叉到腰上，嘴閉上；最後：她手機貼左耳、右手叉腰 | Dana（聲音一下拔高、快）：What are you negotiating?（妳在跟他談什麼條件？）（原聲、電話濾波）（→ 答在 c05） | 約 3.5 秒 |
+| c05 | 近景、慢推（從胸上推到臉）；同 c03 的鏡位；直式，臉在上三分之一 | Nora（`work`，護目鏡推在頭頂），手機在胸前（擴音、側面的白光）；灰白的天光穩穩照在臉上；眼睛先看著手機側面的白光，說到第二句時抬起來、看向畫面右外的證物牆；眉毛放平、眼睛不眨、嘴唇在字前閉緊、聲音低、清楚，`no smile at any moment, until the last frame` | Nora 嘴在說話（低、清楚）（動作一），說第二句時眼睛抬向畫面右外的證物牆；說完右手拇指按熄手機螢幕（動作二），嘴閉上；最後：她看著畫面右外，手機的螢幕暗了 | Nora（低、清楚）：I'm not. I'm letting him look.（我沒在談。我是讓他來看）（原聲）（結尾）← 因為 c04 | 約 4 秒 |
 | c06 | 插鏡、中景、慢推（從中景推到中近景）；**第一格就是證物牆的鋼架與上方的玻璃管**；直式；鏡頭在證物牆前、低；灰白的天光從畫面左 | `an old steel sample rack bolted to the red brick wall below the tube, a long row of upright slots, each slot about the size of a hardcover book, no labels, two clear engraved glass panels standing in the first two slots on the left, the other slots empty`；兩片 `a clear glass panel about the size of a hardcover book, carrying a few soft frosted engraved strokes too small and blurred to read`；上方 `a long clear glass tube about as long as her outstretched arms and as thick as her wrist, mounted level on the red brick wall on two plain steel brackets, a row of small plain brass bands clamped around it at even spacing, no letters`、`one small amber glass bead about the size of a fingertip, resting inside the tube against the second brass band`；右邊磚上 `a sheet of white drawing paper about the size of a magazine with a plain pencil outline of a left hand traced around spread fingers, no writing, taped to the red brick by one strip of masking tape`；最下層邊上 `a cream baby hat about the size of her palm, finished, off the needles, resting on the bottom ledge of a steel rack`；畫面裡沒有人 | 鏡頭慢慢推近兩片刻好的面板，灰白的天光在玻璃邊上亮一道；剪在推到面板；最後：兩片面板在畫面中間 | — | 約 3 秒 |
-| c07 | 中近景、固定；同 c04 的方向、遠一點；直式；身後是玻璃牆外灰色的港（遠、虛焦） | Dana（基本款，高髮髻、黑西裝外套、黑長褲、白球鞋），站在玻璃牆前，左手手機從耳邊放下；頂樓的灰光；眼睛看著畫面右外屋裡的長桌那頭；眉頭壓低、嘴唇抿成一條線、鼻子重重吐一口氣，`no smile at any moment, until the last frame` | Dana 把手機從耳邊放下（動作一），轉身大步往畫面右走（動作二）；剪在轉身一半；嘴閉著；最後：她往畫面右走、手機在左手 | — | 約 2.5 秒 |
-| c08 | 中景、固定；同 c02 的鏡位；直式：前景左下是工作台的木角（虛焦），Nora 從畫面中間往畫面右的證物牆走 | Nora（`work`，護目鏡推在頭頂），右手把手機收進圍裙前口袋；`a folded canvas army cot leaning against the brick wall` 在畫面左後（虛焦）；灰白的天光；四分之三側臉朝畫面右的證物牆、眼睛看著那兩片面板；眉毛放平、下巴抬著、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 把手機收進圍裙前口袋（動作一），往證物牆走兩步（動作二）；剪在第二步；嘴閉著；最後：她站在證物牆前一步、看著面板，手機在圍裙口袋 | — | 約 2.5 秒 |
+| c07 | 中近景、固定；同 c04 的方向、遠一點；直式；**身後只有頂樓素的灰牆（虛焦）** | Dana（基本款，高髮髻、黑西裝外套、黑長褲、白球鞋），站在玻璃牆邊（玻璃在畫面左外），左手手機從耳邊放下；頂樓的灰光；眼睛看著畫面右外屋裡的長桌那頭；眉頭壓低、嘴唇抿成一條線、鼻子重重吐一口氣，`no smile at any moment, until the last frame` | Dana 把手機從耳邊放下（動作一），轉身大步往畫面右走（動作二）；剪在轉身一半；嘴閉著；最後：她往畫面右走、手機在左手 | — | 約 2.5 秒 |
+| c08 | 中景、固定；同 c02 的鏡位；直式：前景左下是工作台的木角（虛焦），Nora 從畫面中間往畫面右的證物牆走 | Nora（`work`，護目鏡推在頭頂），右手把手機收進圍裙前口袋；`a folded canvas army cot leaning against the brick wall` 在畫面右後（虛焦）；灰白的天光；四分之三側臉朝畫面右的證物牆、眼睛看著那兩片面板；眉毛放平、下巴抬著、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 把手機收進圍裙前口袋（動作一），往證物牆走兩步（動作二）；剪在第二步；嘴閉著；最後：她站在證物牆前一步、看著面板，手機在圍裙口袋 | — | 約 2.5 秒 |
 
 ### 第二場：I tend the furnace.（約 25.5 秒）
 
 **場頭**：
-- **地點與場景圖**：Ashford Construction 頂樓 `ashford-boardroom`（待畫，直式）：一張很長的會議桌，桌子遠端（最靠玻璃牆那頭）是 Elias 的位子；他身後一整面玻璃牆外是灰色的港（遠、虛焦）；牆是素的灰色。Elias 面前桌上 `a few loose white pages lying flat on the table, seen edge-on at table height, far out of focus`，右手 `a plain black ballpoint pen as long as his hand`。近景都寫「同一間頂樓」。
-- **時間與天氣**：第 163 天 11:00，陰；玻璃牆的灰光從 Elias 身後與畫面右照進來；整場光不變。
-- **軸線**：主鏡在長桌靠門那頭往玻璃牆拍：Elias 坐在桌子遠端、面向鏡頭這邊（眼睛垂在紙上）；Theo 在他右後方半步（畫面左後）；Dana 從畫面左前方走進來、停在長桌右側、Elias 的左手邊（畫面右）。Dana 看 Elias 朝畫面左；Elias 不抬頭，眼睛在紙上；Theo 看平板。
+- **地點與場景圖**：Ashford Construction 頂樓 `ashford-boardroom`（待畫，直式）：一張很長的會議桌，桌子遠端是 Elias 的位子，**他身後是素的灰牆**；長桌右側（從門口看在畫面右）一整面玻璃牆，外面是灰色的港（遠、虛焦）。**近景的身後一律是素的灰牆**，玻璃牆只在全景與中景的畫面右。Elias 面前桌上 `a few loose white pages lying flat on the table, seen edge-on at table height, far out of focus`，右手 `a plain black ballpoint pen as long as his hand`。近景都寫「同一間頂樓」。
+- **時間與天氣**：第 163 天 11:00，陰；玻璃牆的灰光從畫面右（Elias 的左邊）照進來；整場光不變。
+- **軸線**：主鏡在長桌靠門那頭往遠端的灰牆拍、玻璃牆在畫面右：Elias 坐在桌子遠端、面向鏡頭這邊（眼睛垂在紙上）；Theo 在他右後方半步（畫面左後）；Dana 從畫面左前方走進來、停在長桌右側、Elias 的左手邊（畫面右）。Dana 看 Elias 朝畫面左；Elias 不抬頭，眼睛在紙上；Theo 看平板。
 - **在場的人**：Elias、Theo（從場頭起就在）、Dana（c09 走進來，c17 拿回卷宗、往畫面左走出去）。
 - **這場要講完的事**：Dana 警告 Elias 不能替她出手（clause two）；他說他不會，Gus 還躺著，他顧爐子；Theo 記下來（結尾：「Boss.」「Furnace.」）。
 - **配樂**：c09 Dana 的腳步聲當拍子；c10 拍桌那一下全部停掉；c13 一個低的長音；c16 Theo 那句後停一拍（笑點）；c17 撥弦把她帶出去。
@@ -92,14 +92,14 @@ c27–c39 寫 `late night inside an old brick glassworks, a single work lamp han
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c09 | 全景、慢推（從全景推到中景）；鏡頭在長桌靠門那頭、低；直式前後疊開：前景是長桌的近端（虛焦），中間是走進來的 Dana，遠處是桌子另一頭的 Elias 與 Theo、身後的玻璃牆 | 共三人，露臉三人。Dana（基本款：高髮髻、黑色合身西裝外套配白 T 恤、黑長褲、白球鞋）從畫面左前方走進來，`three thick plain buff case files held against her chest`；Elias（基本款：深棕色頭髮往後梳、細銀絲框眼鏡、炭灰窗格紋三件式、白襯衫開領、白色口袋巾）坐在桌子遠端，右手 `a plain black ballpoint pen as long as his hand` 在 `a few loose white pages lying flat on the table, seen edge-on at table height, far out of focus` 上寫，左手插在褲子左口袋、在桌面下的畫框外；Theo（基本款：圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲）站在他右後方半步（畫面左後），左手 `a slim tablet in a plain grey case, its screen turned away`；玻璃牆外灰色的港；Dana 眼睛盯著 Elias、眉頭壓低、下巴繃住；Elias 眼睛垂在紙上、眉毛放平；Theo 眼睛在平板上、嘴唇平；三張臉都 `no smile at any moment, until the last frame` | Dana 沿著長桌右側大步走向 Elias（動作一），停在他左手邊的桌角（動作二）；剪在她停步；嘴都閉著；最後：Dana 站在 Elias 左手邊的桌角，Elias 低頭寫字 | — | 約 3 秒 |
+| c09 | 全景、慢推（從全景推到中景）；鏡頭在長桌靠門那頭、低；直式前後疊開：前景是長桌的近端（虛焦），中間是走進來的 Dana，遠處是桌子另一頭的 Elias 與 Theo、他們身後素的灰牆，畫面右是玻璃牆（虛焦） | 共三人，露臉三人。Dana（基本款：高髮髻、黑色合身西裝外套配白 T 恤、黑長褲、白球鞋）從畫面左前方走進來，`three thick plain buff case files held against her chest`；Elias（基本款：深棕色頭髮往後梳、細銀絲框眼鏡、炭灰窗格紋三件式、白襯衫開領、白色口袋巾）坐在桌子遠端，右手 `a plain black ballpoint pen as long as his hand` 在 `a few loose white pages lying flat on the table, seen edge-on at table height, far out of focus` 上寫，左手插在褲子左口袋、在桌面下的畫框外；Theo（基本款：圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲）站在他右後方半步（畫面左後），左手 `a slim tablet in a plain grey case, its screen turned away`；畫面右的玻璃牆外是灰色的港（虛焦）；Dana 眼睛盯著 Elias、眉頭壓低、下巴繃住；Elias 眼睛垂在紙上、眉毛放平；Theo 眼睛在平板上、嘴唇平；三張臉都 `no smile at any moment, until the last frame` | Dana 沿著長桌右側大步走向 Elias（動作一），停在他左手邊的桌角（動作二）；剪在她停步；嘴都閉著；最後：Dana 站在 Elias 左手邊的桌角，Elias 低頭寫字 | — | 約 3 秒 |
 | c10 | 插鏡、特寫、固定；**第一格就是 Elias 面前的桌面與他寫字的右手**；直式；鏡頭低、在桌面高度 | Elias 的右手（白襯衫袖口、炭灰窗格紋袖子）拿著 `a plain black ballpoint pen as long as his hand`，筆尖在 `a few loose white pages lying flat on the table, seen edge-on at table height, far out of focus` 上；Dana 的右手（黑西裝袖口）從畫面右上把一份 `a thick plain buff case file, slapped down flat on the table` 拍下來；畫面裡沒有臉 | 卷宗「啪」一聲拍在他的紙旁（動作一），他的筆尖停住一拍（動作二）；剪在筆尖停住；畫面上沒有嘴；最後：卷宗平放在他的紙旁，一直留在畫面右，筆尖停在紙上 | — | 約 2.5 秒 |
 | c11 | 近景、慢推（從胸上推到肩上）；鏡頭在長桌右側、低、Dana 前方；直式，臉在上三分之一；身後是頂樓素的灰牆（虛焦） | Dana（基本款，高髮髻），左臂抱著 `three thick plain buff case files held against her chest` 剩下的兩份，右手壓在桌上那份卷宗上；頂樓的灰光從畫面左；四分之三側臉朝畫面左下的 Elias、眼睛盯著他；眉頭擰緊、嘴唇在字之間抿薄、下巴往前、聲音快、壓低、像在提醒一個律師該懂的事，`no smile at any moment, until the last frame` | Dana 盯著 Elias，嘴在說話（快、壓低）；說完右手指尖在卷宗上敲一下，嘴閉上；最後：她的右手按在卷宗上、看著畫面左下 | Dana（快、壓低）：You can't fight for her.（你不能替她出手）（原聲）（→ 答在 c12） | 約 3 秒 |
-| c12 | 近景、慢推（從胸上推到肩上）；鏡頭在長桌另一側、低、Elias 右前方；直式，臉在上三分之一；身後是玻璃牆外灰色的港（遠、虛焦） | Elias（基本款：深棕色頭髮往後梳、細銀絲框眼鏡、炭灰窗格紋三件式、白襯衫開領），坐著；右手 `a plain black ballpoint pen as long as his hand` 在紙上；**左手插在褲子左口袋、在桌面下的畫框外**；頂樓的灰光；**頭不抬**、眼睛垂在紙上（說話模板的 eyes on 換成本鏡寫的視線）；眉毛放平、下巴不動、嘴唇在字之間閉著、聲音低、短、像念合約，`no smile at any moment, until the last frame` | Elias 低頭看著紙，嘴在說話（低、短）；說完筆尖又在紙上寫起來，嘴閉上；最後：他低頭寫字 | Elias（低、短，不抬頭）：I won't.（我不會）（原聲）← 因為 c11 | 約 2.5 秒 |
-| c13 | 近景、固定；同 c12 的鏡位；直式，臉在上三分之一 | Elias（基本款，細銀絲框眼鏡），右手寫字，左手插在褲子左口袋、在畫框外；頂樓的灰光；眼睛一直垂在紙上；眉毛放平、眼睛不眨、嘴唇在字之間閉著、聲音低、平、每個字像合約條文，`no smile at any moment, until the last frame` | Elias 寫著字，嘴在說話（低、平，像合約）（動作一）；說完右手把寫好的那一頁翻過去（動作二），嘴閉上；最後：他低頭看著新的一頁 | Elias（低、平，像合約）：Gus is still laid up. I tend the furnace.（Gus 還躺著。我顧爐子）（原聲） | 約 4.5 秒 |
+| c12 | 近景、慢推（從胸上推到肩上）；鏡頭在長桌另一側、低、Elias 右前方；直式，臉在上三分之一；**身後只有素的灰牆（虛焦）** | Elias（基本款：深棕色頭髮往後梳、細銀絲框眼鏡、炭灰窗格紋三件式、白襯衫開領），坐著；右手 `a plain black ballpoint pen as long as his hand` 在紙上；**左手插在褲子左口袋、在桌面下的畫框外**；頂樓的灰光；**頭不抬**、眼睛垂在紙上（說話模板的 eyes on 換成本鏡寫的視線）；眉毛放平、下巴不動、嘴唇在字之間閉著、聲音低、短、像念合約，`no smile at any moment, until the last frame` | Elias 低頭看著紙，嘴在說話（低、短）；說完筆尖又在紙上寫起來，嘴閉上；最後：他低頭寫字 | Elias（低、短，不抬頭）：I won't.（我不會）（原聲）← 因為 c11 | 約 2.5 秒 |
+| c13 | 近景、固定；同 c12 的鏡位；直式，臉在上三分之一；**身後只有素的灰牆（虛焦）** | Elias（基本款，細銀絲框眼鏡），右手寫字，左手插在褲子左口袋、在畫框外；頂樓的灰光；眼睛一直垂在紙上；眉毛放平、眼睛不眨、嘴唇在字之間閉著、聲音低、平、每個字像合約條文，`no smile at any moment, until the last frame` | Elias 寫著字，嘴在說話（低、平，像合約）（動作一）；說完右手把寫好的那一頁翻過去（動作二），嘴閉上；最後：他低頭看著新的一頁 | Elias（低、平，像合約）：Gus is still laid up. I tend the furnace.（Gus 還躺著。我顧爐子）（原聲） | 約 4.5 秒 |
 | c14 | 近景、固定；同 c11 的鏡位；直式，臉在上三分之一 | Dana（基本款，高髮髻），右手還按在卷宗上；頂樓的灰光；眼睛盯著畫面左下的 Elias；眉毛一挑、嘴唇抿緊、下巴往一邊歪一下、鼻子吐一口氣，`no smile at any moment, until the last frame` | Dana 的眉毛一挑（動作一），身子直起來、右手離開卷宗（動作二）；剪在直起身一半；嘴閉著；最後：她站直、看著畫面左下 | — | 約 2.5 秒 |
 | c15 | 插鏡、特寫、固定；**第一格就是 Theo 左手托著的平板背面與他的右手食指**；直式 | `a slim tablet in a plain grey case, its screen turned away`，在 Theo 的左手（淺藍襯衫袖口、灰色針織背心的下襬）；右手食指在平板另一面點；畫面裡沒有臉 | 右手食指在平板上點兩下（動作一），停住（動作二）；剪在停住；畫面上沒有嘴；最後：平板背面朝鏡頭、在他左手 | — | 約 2 秒 |
-| c16 | 近景、固定；鏡頭在 Elias 右後方、低；直式，臉在上三分之一；身後是玻璃牆外灰色的港（遠、虛焦） | Theo（基本款：圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心），站在 Elias 右後方半步；左手 `a slim tablet in a plain grey case, its screen turned away`；頂樓的灰光；眼睛垂在平板上（說話模板的 eyes on 換成本鏡寫的視線）；眉毛平平、嘴唇平、眼睛很認真地睜著、聲音很低、平、一本正經，`no smile at any moment, until the last frame` | Theo 看著平板，嘴在說話（很低、平、一本正經）；說完右手食指在平板上點一下，嘴閉上；最後：他低頭看著平板 | Theo（很低、平、一本正經）：Boss. Furnace.（老闆。爐子）（原聲）（結尾） | 約 3 秒 |
+| c16 | 近景、固定；鏡頭在 Elias 右後方、低；直式，臉在上三分之一；**身後只有素的灰牆（虛焦）** | Theo（基本款：圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心），站在 Elias 右後方半步；左手 `a slim tablet in a plain grey case, its screen turned away`；頂樓的灰光；眼睛垂在平板上（說話模板的 eyes on 換成本鏡寫的視線）；眉毛平平、嘴唇平、眼睛很認真地睜著、聲音很低、平、一本正經，`no smile at any moment, until the last frame` | Theo 看著平板，嘴在說話（很低、平、一本正經）；說完右手食指在平板上點一下，嘴閉上；最後：他低頭看著平板 | Theo（很低、平、一本正經）：Boss. Furnace.（老闆。爐子）（原聲）（結尾） | 約 3 秒 |
 | c17 | 中景、固定；同 c09 的方向、近一點；直式：前景是長桌的木面（虛焦），中間是 Dana | 共兩人，露臉兩人（Theo 在畫面外）。Dana（基本款）右手把桌上那份卷宗拿回來、疊回胸前：`three thick plain buff case files held against her chest`；Elias（基本款，細銀絲框眼鏡）在桌子遠端低頭寫字，左手插在褲子左口袋、在桌面下的畫框外；頂樓的灰光；Dana 眼睛看著 Elias、嘴唇抿著、下巴一點；Elias 眼睛垂在紙上；兩張臉都 `no smile at any moment, until the last frame` | Dana 拿回卷宗、抱回胸前（動作一），轉身往畫面左走（動作二）；剪在轉身一半；嘴都閉著；最後：Dana 往畫面左走，Elias 低頭寫字 | — | 約 2.5 秒 |
 
 ### 第三場：Then you come home and eat your stew.（約 26.5 秒）
@@ -161,7 +161,7 @@ c27–c39 寫 `late night inside an old brick glassworks, a single work lamp han
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方（站主 2026-11-12 已照 bible 與 `s1-decisions-e021-e060.md` 的建議全部定案）：
 - **c03 "Friday, eight."**（細綱 "Thursday, eight."）與 **c35 "Friday, you'll be here?"**（細綱 "Thursday"）：第 165 天是週五，天數不動、改台詞。**站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 1 條、第 8 條）。
-- **c04 Dana 的電話**：她在 Ashford Construction 頂樓的玻璃牆前（原聲加電話濾波），Nora 的手機開擴音。**站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 6 條）。
+- **c04 Dana 的電話**：她在 Ashford Construction 頂樓（原聲加電話濾波），Nora 的手機開擴音。**站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 6 條）。
 - **第三場在長餐桌**（細綱寫 "living room"）：Peg 把棒針插進桌上的**毛線球**，不插木頭桌面（bible〈細綱自相矛盾〉）；Peg 爆一次（審稿第 58 集）。
 - **c32 只脫右手手套**、吃一口才說 "Salty."（細綱「不看就說」保留成不看她）；左手手套一直戴著（bible〈全劇固定〉疤）。
 - **深夜那碗麵**：Peg 那句「回家吃燉菜」說的是週五見完面以後；這晚 Nora 在家吃過，再帶一碗麵去 Remelt（bible〈細綱自相矛盾〉）。
@@ -171,11 +171,20 @@ c27–c39 寫 `late night inside an old brick glassworks, a single work lamp han
 - **第三場 Nora 穿 `henley`**（不是 bible 寫的 `work`）：在家吃晚飯不穿圍裙、不戴護目鏡；`henley` 就是 `work` 拿掉圍裙與護目鏡（第四章已有的造型）。深夜回 Remelt 又是 `work`。
 - **兩張鋼凳的位置**：bible 只寫「爐口旁兩張」；本集寫成並排立在爐口右前方、黃線內側的邊上，第二張貼著黃線，Nora 放碗時腳不過線。第 59–60 集若用到鋼凳，照這個位置。
 - **Elias 寫字的紙與筆**：新道具句 `a plain black ballpoint pen as long as his hand`（右手）、`a few loose white pages lying flat on the table, seen edge-on at table height, far out of focus`。
-- **頂樓的位置**：Elias 坐長桌遠端、背後是玻璃牆；Dana 停在他左手邊的桌角（畫面右）；c17 Dana 拿回卷宗走出去（她拍下的那份不留在桌上）。
+- **頂樓的位置**：Elias 坐長桌遠端、背後是素的灰牆、玻璃牆在長桌右側（審稿後改）；Dana 停在他左手邊的桌角（畫面右）；c17 Dana 拿回卷宗走出去（她拍下的那份不留在桌上）。
 - **c06 證物牆的插鏡**接 "I'm letting him look."（她要他看的是這面牆）；c08 她把手機收進圍裙、走到牆前。
 - **c25–c26 Nora 點頭、手蓋上 Peg 的手**：回應 Peg 的要求（問了就答），兩枚戒指在同一鏡。
 - **c29 Elias 用戴手套的食指敲一下壓力錶**；**c32 他用左手的手套指尖把右手手套拉下來**（左手手套一直戴著、手背朝畫面外）。
 - **c36 顏值鏡頭**放在問句與回答之間，一拍不說話。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e055-e060-storyboard.md` 與 bible〈第 55–60 集審稿後補定〉改的。本集還沒錄、沒拍，沒有要重抽的片段；台詞沒有改，**不用重錄**。
+- **c04、c07、c12、c13、c16**（再犯）：近景身後是頂樓的玻璃牆；改成**身後只有素的灰牆**。頂樓的格局一起改：Elias 坐長桌遠端、身後是灰牆，玻璃牆在長桌右側（畫面右），只在 c09 這類全景、中景出現；Dana 的電話鏡站在玻璃牆邊、玻璃在畫面左外、灰光從畫面左照在臉上。場頭一起改。
+- **c05**：短句沒有收尾動作；說完右手拇指按熄手機螢幕，嘴閉上（眼睛抬向證物牆不算一個動作）。
+- **c08**：收起來的行軍床左右寫反；從屋子中間往大門拍時在**畫面右後**。
+- `cast.json` 已把本集寫的三句收成條目：`elias-pen`、`loose-pages`（句子不變）。
+- 鏡數與秒數不變（39 鏡、111.5 秒）。
 
 ### 配音
 
@@ -226,7 +235,7 @@ c27–c39 寫 `late night inside an old brick glassworks, a single work lamp han
 - c08 → c09 跳兩小時到頂樓；c17 → c18 跳到傍晚的長餐桌；c26 → c27 跳到深夜的 Remelt。
 - c36 一拍不說話留滿 3 秒，再接 c37 牆上的光影、c38 回答。
 - c39 停在她吸完氣後一拍，切黑；第 59 集跳到兩天後的黃昏。
-- 調色：上午陰天的灰白；頂樓玻璃牆的冷灰；長餐桌吊燈的暖與混凝土的冷；深夜工作燈的暖加爐火的橘。
+- 調色：上午陰天的灰白；頂樓玻璃牆的冷灰光（近景身後是素的灰牆）；長餐桌吊燈的暖與混凝土的冷；深夜工作燈的暖加爐火的橘。
 
 ## 五張清單
 
@@ -244,7 +253,7 @@ c27–c39 寫 `late night inside an old brick glassworks, a single work lamp han
 
 - 定妝照：`nora-work.jpg`、`nora-portrait.jpg`（r3）、`elias-portrait.jpg`、`elias-furnace.jpg`、`peg-portrait.jpg`（都有）。
 - **待畫的人**（照 bible 先畫順序）：Dana、Theo（第 1 條，開拍前一定要有）；Elias 爐邊造型全身（戴灰色隔熱手套，第 3 條）；Nora `work`、`henley` 全身。
-- **待畫的場景**：Remelt 直式**上午陰天版**（證物牆兩片面板、左手草圖、進度條、收起來的行軍床）與**深夜版**（工作燈、爐口、安全線、兩張鋼凳在線內側的邊上、牆上的火光刻痕）；Ashford Construction 頂樓 `ashford-boardroom`（直式，長桌與玻璃牆）；Ashford 長餐桌 `ashford-dining`（第三章若已畫就用）。
+- **待畫的場景**：Remelt 直式**上午陰天版**（證物牆兩片面板、左手草圖、進度條、收起來的行軍床）與**深夜版**（工作燈、爐口、安全線、兩張鋼凳在線內側的邊上、牆上的火光刻痕）；Ashford Construction 頂樓 `ashford-boardroom`（直式，長桌遠端身後是素的灰牆、玻璃牆在長桌右側；審稿後改）；Ashford 長餐桌 `ashford-dining`（第三章若已畫就用）。
 - 道具若要參考圖：刻好的面板（字要糊）、灰色隔熱手套（bible 建議先畫）；義大利麵用第 44 集同一只碗。
 
 ### 3. 長鏡清單
