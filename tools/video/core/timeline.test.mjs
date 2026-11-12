@@ -20,6 +20,7 @@ import {
   speechHash,
   spokenUnits,
   TAIL_MS,
+  pausesOf,
   pictureHash,
   picturesBound,
   visualHash,
@@ -259,4 +260,40 @@ test("picturesBound keeps keyframes drawn under either card look, before and aft
   assert.equal(picturesBound(pictureHash(paper), changed), false);
   assert.equal(picturesBound(undefined, paper), false);
   assert.equal(picturesBound("", paper), false);
+});
+
+test("a video may tighten the pauses between lines and scenes, never lengthen them", async () => {
+  const { PAUSE_LIMITS, validateVideo } = await import("./schema.mjs");
+  assert.deepEqual(PAUSE_LIMITS, { line_ms: DEFAULT_PAUSE_MS, scene_ms: SCENE_GAP_MS });
+  const doc = fixture();
+  const samples = estimatedSamples(doc);
+  const loose = buildTimeline(doc, samples);
+  const tight = { ...structuredClone(doc), pauses: { line_ms: 0, scene_ms: 100 } };
+  assert.deepEqual(validateVideo(tight), []);
+  const built = buildTimeline(tight, samples);
+  assert.ok(built.total_frames < loose.total_frames, "tighter pauses make a shorter timeline");
+  assert.deepEqual(pausesOf(tight), { line: 0, scene: 100 });
+  assert.deepEqual(pausesOf(doc), { line: DEFAULT_PAUSE_MS, scene: SCENE_GAP_MS });
+  assert.notEqual(speechHash(tight), speechHash(doc), "the narration's timing changed");
+  assert.equal(speechHash({ ...structuredClone(doc) }), speechHash(doc), "a video without pauses hashes as before");
+  for (const pauses of [{ line_ms: 301 }, { scene_ms: 701 }, { scene_ms: -1 }, { line_ms: 1.5 }, {}, { gap: 1 }]) {
+    assert.ok(validateVideo({ ...structuredClone(doc), pauses }).some((error) => error.path.startsWith("pauses")), JSON.stringify(pauses));
+  }
+});
+
+// The split thumbnail layout (2026-11-08) is drawn on thumbnail.jpg alone: choosing it, or its
+// focus, after the storyboard is approved leaves the pictures' hash where it was; any other layout
+// still moves it, so no video already shot changes hash.
+test("visualHash leaves out the split thumbnail layout and its focus, and nothing else", async () => {
+  const { visualHash } = await import("./timeline.mjs");
+  const base = { schema_version: 1, slug: "curio-x", thumbnail: { template: "thumb", data: { headline: "a\n**b**", sub: "c", shot: "s1" } }, scenes: [{ id: "s1", template: "shot", data: { prompt: "p" }, lines: [{ id: "t001", text: "x" }] }] };
+  const withData = (extra) => ({ ...base, thumbnail: { ...base.thumbnail, data: { ...base.thumbnail.data, ...extra } } });
+  const plain = visualHash(base);
+  assert.equal(visualHash(withData({ layout: "e" })), plain);
+  assert.equal(visualHash(withData({ layout: "e", focus: 80 })), plain);
+  assert.equal(visualHash(withData({ focus: 30 })), plain);
+  assert.equal(visualHash(withData({ brand: "Crocs" })), plain, "the brand rule stands");
+  assert.notEqual(visualHash(withData({ layout: "d" })), plain, "another layout still moves the hash");
+  assert.notEqual(visualHash(withData({ layout: "ai" })), plain);
+  assert.notEqual(visualHash(withData({ headline: "x" })), plain, "the words on the thumbnail still count");
 });

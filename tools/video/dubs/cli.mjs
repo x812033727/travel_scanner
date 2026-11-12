@@ -37,7 +37,7 @@ import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../t
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { CODECS, encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
-  DEFAULT_FORMAT, DUB_FORMATS, MAX_TEMPO,
+  DEFAULT_DUB_PROVIDER, DEFAULT_FORMAT, DUB_FORMATS, DUB_PROVIDERS, MAX_TEMPO,
   absorbOverruns, assembleTrack, bareWindow, defaultDubLocales, defaultRate, dubLocales, dubRequests, estimatedLengths, layoutDub, layoutDubTolerant, measureRate, overrunSummary, placeLines, shrinkBudgets, speechFingerprint, translationHash, windowLimit,
 } from "./plan.mjs";
 
@@ -88,9 +88,11 @@ function options(args) {
       force: { type: "boolean" },
       "line-by-line": { type: "boolean" },
       style: { type: "string" },
+      provider: { type: "string" },
     },
     strict: true,
   }).values;
+  if (values.provider !== undefined && !DUB_PROVIDERS.includes(values.provider)) throw new UsageError(`--provider must be one of ${DUB_PROVIDERS.join(", ")}`);
   if (!values.slug && !values.file) throw new UsageError("dub needs --slug (or --file for an example outside docs/videos)");
   // Which locales can be dubbed depends on the narration language, so the list is checked once the video is read.
   const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()).filter(Boolean) : null;
@@ -113,23 +115,38 @@ function geminiRemaining(status) {
   return status.gemini_monthly_limit > 0 && status.gemini_used !== null && status.gemini_used !== undefined ? status.gemini_monthly_limit - status.gemini_used : null;
 }
 
+/** MiniMax characters left this month, or null when the server sets no limit or predates MiniMax. */
+function minimaxRemaining(status) {
+  return status.minimax_monthly_limit > 0 && typeof status.minimax_used === "number" ? status.minimax_monthly_limit - status.minimax_used : null;
+}
+
+/**
+ * Who reads this run's dubs (dubs/plan.mjs DUB_PROVIDERS): --provider when given, else MiniMax
+ * when the site has a MiniMax key (the owner's choice of 2026-11-12), else Gemini as before.
+ */
+export function dubProvider(values, status) {
+  return values.provider ?? (status?.minimax_configured ? "minimax" : DEFAULT_DUB_PROVIDER);
+}
+
+const isMinimaxBody = (body) => String(body.voice).startsWith("minimax:");
+
 /** The rate a locale's last fit measured, else the estimate from the narration's own rate. */
 export function rateFor(fit, locale, doc, timeline) {
   return fit?.rates?.measured ?? defaultRate(locale, doc, timeline);
 }
 
 /** Everything one locale's dub is made from, before any audio: the script, the requests, the cache. */
-function prepare(project, locale, values, workdir) {
+function prepare(project, locale, values, workdir, provider = DEFAULT_DUB_PROVIDER) {
   // project.lexicon is filtered for the source narration; dubRequests filters the shelf's raw
   // dictionary for the target, so a Chinese dub gets its aliases back. Status plans the same way.
-  const { script, missing, requests } = dubRequests(project, locale, values.style);
+  const { script, missing, requests } = dubRequests(project, locale, values.style, provider);
   const texts = new Map();
   for (const { line } of eachLine(script)) texts.set(line.id, line.text);
   const files = dubArtifacts(workdir, locale);
   const cache = readJson(files.cache, { lines: {}, stretched: {} });
   cache.stretched ??= {};
   return {
-    locale, script, missing, requests, texts, files, cache, hash: translationHash(script), style: script.voice.style,
+    locale, provider, script, missing, requests, texts, files, cache, hash: translationHash(script), style: script.voice.style,
     // What the voice is asked to say, for status and upload to compare (speechCurrent), and the
     // --style it was asked in, so a hand-styled dub is compared in its own style.
     fingerprint: speechFingerprint(requests), styleOverride: values.style ?? null,
@@ -397,6 +414,8 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     translation_hash: dub.hash,
     speech_fingerprint: dub.fingerprint,
     style_override: dub.styleOverride,
+    // Gemini or MiniMax voices: speechCurrent plans the same provider to compare the fingerprint.
+    voice_provider: dub.provider,
     rates: { default: defaultRate(locale, project.doc, timeline), measured },
     tempo_max: tempoMax,
     windows: fitWindows(windows),
@@ -458,6 +477,8 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     // a changed target alias or dub voice marks the track stale for status and upload.
     speech_fingerprint: dub.fingerprint,
     style_override: dub.styleOverride,
+    // Gemini or MiniMax voices: speechCurrent plans the same provider to compare the fingerprint.
+    voice_provider: dub.provider,
     // What the mix carried beside the voice (docs/videos/ILLUSTRATED.md): dubsStatus compares
     // these with the script's, so a bed or a set changed after the dub marks it stale.
     mix_hash: sound.track ? mixHash(project.doc) : null,
@@ -485,7 +506,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   return EXIT.ok;
 }
 
-async function dryRun(dubs, project, timeline, ctx, credentials) {
+async function dryRun(dubs, project, timeline, ctx, status) {
   for (const dub of dubs) {
     if (dub.missing.length) {
       ctx.stdout.write(`${dub.locale}: ${dub.missing.length} lines have no current translation (${dub.missing.slice(0, 8).join(", ")}${dub.missing.length > 8 ? ", …" : ""})\n`);
@@ -503,10 +524,13 @@ async function dryRun(dubs, project, timeline, ctx, credentials) {
     ctx.stdout.write(`${dub.locale}: ${dub.requests.length} requests, ${pending.length} to synthesize; about ${now} billable characters now (${estimate} for the track)\n`);
     ctx.stdout.write(`  at ${rate} characters a second: ${sped} of ${windows.length} windows would speed up, ${over} would not fit even at ${MAX_TEMPO}x${absorbed ? `; ${absorbed}` : ""}\n`);
   }
-  if (credentials.token) {
-    const status = await speechStatus(clientOptions(ctx, credentials));
+  if (status) {
     const remaining = geminiRemaining(status);
     ctx.stdout.write(`server: Gemini ${status.gemini_configured ? "ready" : "NOT configured (admin: API 與供應商設定 → AI 服務)"}; ${remaining === null ? "no monthly limit" : `${remaining} characters left this month`}\n`);
+    if (dubs.some((dub) => dub.provider === "minimax")) {
+      const left = minimaxRemaining(status);
+      ctx.stdout.write(`server: MiniMax ${status.minimax_configured ? "ready" : "NOT configured (admin: AI 設定 → API 金鑰)"}; ${left === null ? "no monthly limit" : `${left} characters left this month`}\n`);
+    }
   } else {
     ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before synthesizing\n");
   }
@@ -547,9 +571,12 @@ async function dub(args, ctx) {
   const manual = verifiedManualPresentation({ project, workdir, timeline });
   if (!manual && !brandingCurrent(checks, selection)) throw new UsageError("channel branding changed; run assemble before dub");
   if (!manual && checks?.branding && (checks.speech_hash !== timeline.speech_hash || checks.branding.body_frames !== timeline.total_frames)) throw new UsageError("branded cut was made for another body timeline; run assemble before dub");
-  const dubs = values.locales.map((locale) => prepare(project, locale, values, workdir));
-
-  if (values["dry-run"]) return dryRun(dubs, project, timeline, ctx, readCredentials({ env: ctx.env, home: ctx.home }));
+  if (values["dry-run"]) {
+    const credentials = readCredentials({ env: ctx.env, home: ctx.home });
+    const status = credentials.token ? await speechStatus(clientOptions(ctx, credentials)) : null;
+    const provider = dubProvider(values, status);
+    return dryRun(values.locales.map((locale) => prepare(project, locale, values, workdir, provider)), project, timeline, ctx, status);
+  }
 
   const ffmpeg = { locate: ctx.ffmpeg?.locate ?? locateFfmpeg, run: ctx.ffmpeg?.run ?? runTool, tools: null };
   if (selection) {
@@ -563,10 +590,20 @@ async function dub(args, ctx) {
   const credentials = requireCredentials(ctx);
   const clientOpts = { ...clientOptions(ctx, credentials), videoSlug: doc.slug };
   const status = await speechStatus(clientOpts);
-  if (!status.gemini_configured) throw new SpeechError("the site has no Gemini key yet (admin: API 與供應商設定 → AI 服務)", { who: "owner" });
-  const remaining = geminiRemaining(status);
-  const needed = dubs.filter((dub) => !dub.missing.length).reduce((sum, dub) => sum + dub.requests.filter((request) => !request.lines.every((line) => [line.key, request.key].includes(dub.cache.lines[line.id]) && existsSync(path.join(dub.files.audio, `${line.id}.wav`)))).reduce((inner, request) => inner + billableForRequest(request.body), 0), 0);
-  if (remaining !== null && needed > remaining) throw new SpeechError(`about ${needed} billable characters needed, ${remaining} left this month`, { code: "video_speech_budget_exhausted" });
+  // The voices are chosen once the server says which keys it has (dubProvider).
+  const provider = dubProvider(values, status);
+  const dubs = values.locales.map((locale) => prepare(project, locale, values, workdir, provider));
+  const pendingRequests = dubs.filter((dub) => !dub.missing.length).flatMap((dub) => dub.requests.filter((request) => !request.lines.every((line) => [line.key, request.key].includes(dub.cache.lines[line.id]) && existsSync(path.join(dub.files.audio, `${line.id}.wav`)))));
+  const neededBy = (minimax) => pendingRequests.filter((request) => isMinimaxBody(request.body) === minimax).reduce((sum, request) => sum + billableForRequest(request.body), 0);
+  // A MiniMax run still needs Gemini for a speaker past the locale's MiniMax voices (plan.mjs).
+  const usesGemini = dubs.some((dub) => dub.requests.some((request) => !isMinimaxBody(request.body)));
+  const usesMinimax = dubs.some((dub) => dub.requests.some((request) => isMinimaxBody(request.body)));
+  if (usesGemini && !status.gemini_configured) throw new SpeechError("the site has no Gemini key yet (admin: API 與供應商設定 → AI 服務)", { who: "owner" });
+  if (usesMinimax && !status.minimax_configured) throw new SpeechError("the site has no MiniMax key yet (admin: AI 設定 → API 金鑰), or run dub --provider gemini", { who: "owner" });
+  for (const [minimax, remaining] of [[false, geminiRemaining(status)], [true, minimaxRemaining(status)]]) {
+    const needed = neededBy(minimax);
+    if (remaining !== null && needed > remaining) throw new SpeechError(`about ${needed} billable ${minimax ? "MiniMax" : "Gemini"} characters needed, ${remaining} left this month`, { code: "video_speech_budget_exhausted" });
+  }
 
   let worst = EXIT.ok;
   for (const dub of dubs) {

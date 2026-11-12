@@ -381,4 +381,11 @@ test('themes cannot reference excluded records or masquerade as approved scripts
   const fractionalMinutes = { ...short, target_minutes: 250 / 60, range_minutes: [4, 5], chapters: short.chapters.map(chapter => ({ ...chapter, seconds: 125 })) };
   assert.doesNotThrow(() => validateThemes({ episodes: [fractionalMinutes] }, pool));
   assert.throws(() => validateThemes({ episodes: [{ ...fractionalMinutes, target_minutes: 251 / 60 }] }, pool), /time budget/);
+  const review = { reviewed_on: '2026-11-11', review: 'reviews/material-20261111.json' };
+  assert.doesNotThrow(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'ready', est_minutes: 9.3 } }] }, pool));
+  assert.doesNotThrow(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'reserve', est_minutes: 7.2, missing: 'one more source' } }] }, pool));
+  assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'ready', est_minutes: 7.2 } }] }, pool), /8\.5 minutes/);
+  assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'reserve', est_minutes: 7.2 } }] }, pool), /says what is missing/);
+  assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'merge', est_minutes: 7.2, missing: 'x' } }] }, pool), /names what it merges with/);
+  assert.throws(() => validateThemes({ episodes: [{ ...theme, material: { ...review, verdict: 'maybe', est_minutes: 9 } }] }, pool), /needs a verdict/);
 });

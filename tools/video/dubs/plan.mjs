@@ -93,6 +93,52 @@ export const DUB_STYLES = {
 
 const CJK = /[぀-ヿ㐀-鿿豈-﫿ｦ-ﾟ가-힯]/u;
 
+// Who reads the dubs. The owner's choice of 2026-11-12: the eight foreign tracks in MiniMax's own
+// voices for each language, while the zh-TW narration stays in its Gemini voice. "gemini" keeps the
+// old way, one Gemini voice speaking every language with DUB_STYLES. `dub` picks MiniMax when the
+// site has a MiniMax key (dubs/cli.mjs), and the record keeps the choice as `voice_provider`, so a
+// track made either way is judged by the voices it was made with (speechCurrent).
+export const DUB_PROVIDERS = ["gemini", "minimax"];
+export const DEFAULT_DUB_PROVIDER = "gemini";
+// MiniMax system voices per dub locale, best first, from the 2026-11-12 trials on 原來如此 P14
+// (tasks/open/2026-11-12-dubs-in-the-eight-languages-use.md): each read the translation without a
+// transcription error and within 87-118 % of the Gemini dub's length, which the 1.15x fit can take.
+// The first is the narrator's; the next one goes to the next distinct voice of the video (a slides
+// cohost, or a dialogue explainer's second character, such as So That's Why's kid). A speaker past
+// the list keeps its Gemini dub voice. Vietnamese has one voice, read 15 % faster (132 % of Gemini's
+// length at its own pace, 110 % at this one, with no error).
+export const DUB_MINIMAX_VOICES = {
+  en: [{ name: "English_CalmWoman" }, { name: "English_expressive_narrator" }],
+  ja: [{ name: "Japanese_CalmLady" }, { name: "Japanese_KindLady" }],
+  ko: [{ name: "Korean_GentleWoman" }, { name: "Korean_CaringWoman" }],
+  es: [{ name: "Spanish_SereneWoman" }, { name: "Spanish_ThoughtfulLady" }],
+  pt: [{ name: "Portuguese_SereneWoman" }, { name: "Portuguese_LovelyLady" }],
+  id: [{ name: "Indonesian_ConfidentWoman" }, { name: "Indonesian_SweetGirl" }],
+  vi: [{ name: "Vietnamese_kindhearted_girl", rate: "+15%" }],
+  th: [{ name: "Thai_female_2_sample2" }, { name: "Thai_female_1_sample1" }],
+};
+
+const voiceKey = (voice) => JSON.stringify([voice?.provider ?? null, voice?.name ?? null]);
+
+/**
+ * The video's distinct source voices in the order MiniMax voices are handed out: the narrator's,
+ * then a slides cohost's, then a dialogue explainer's speaking characters as the cast lists them.
+ * Two speakers who share a zh-TW voice share their dub voice too.
+ */
+function sourceVoiceOrder(doc) {
+  const keys = [voiceKey(doc.voice)];
+  if (hasCohost(doc)) keys.push(voiceKey(doc.cohost.voice));
+  if (isDialogueExplainer(doc)) for (const character of doc.characters ?? []) if (character?.voice) keys.push(voiceKey(character.voice));
+  return [...new Set(keys)];
+}
+
+/** The MiniMax voice a source voice gets in `locale`, or null when the list has none left for it. */
+function minimaxDubVoice(doc, locale, source) {
+  const index = sourceVoiceOrder(doc).indexOf(voiceKey(source));
+  const pick = index >= 0 ? DUB_MINIMAX_VOICES[locale]?.[index] : null;
+  return pick ? { provider: "minimax", ...pick } : null;
+}
+
 // Complete letter spellings of words (App → A P P, iOS → i O S) are Mandarin aliases.
 // Acronyms (CBS → C B S) and partial spellings (OpenAI → Open A I) still apply elsewhere.
 function spellsWord(term, say) {
@@ -155,7 +201,7 @@ export function speechLexicon(lexicon, locale) {
  * a dub reads the caption translation itself, never the zh-TW spoken form. Lines whose translation
  * is missing or older than their zh-TW text are listed in `missing` and keep their zh-TW text.
  */
-export function dubScript(doc, translation, locale, style = null) {
+export function dubScript(doc, translation, locale, style = null, provider = DEFAULT_DUB_PROVIDER) {
   const missing = [];
   const scenes = doc.scenes.map((scene) => ({
     ...scene,
@@ -169,12 +215,20 @@ export function dubScript(doc, translation, locale, style = null) {
   }));
   // Each host reads their own lines in their own voice; planRequests cuts a request wherever the
   // speaker or the voice changes, so no request mixes the two.
-  const cohost = hasCohost(doc) ? { cohost: { ...doc.cohost, voice: dubVoice(doc, locale, style, doc.cohost.id) } } : {};
+  // With MiniMax each speaker takes the locale's voice for its place (minimaxDubVoice), else
+  // keeps the Gemini dub voice below; --style is a Gemini prompt and has no MiniMax field.
+  const minimax = provider === "minimax";
+  const pick = (source, gemini) => (minimax && minimaxDubVoice(doc, locale, source)) || gemini;
+  const cohost = hasCohost(doc) ? { cohost: { ...doc.cohost, voice: pick(doc.cohost.voice, dubVoice(doc, locale, style, doc.cohost.id)) } } : {};
   // A dialogue explainer's speaking characters keep their own voices, in the locale's language.
   const characters = isDialogueExplainer(doc)
-    ? doc.characters.map((character) => (character?.voice?.provider === "gemini" ? { ...character, voice: dubCharacterVoice(character, locale) } : character))
+    ? doc.characters.map((character) => (character?.voice?.provider === "gemini" ? { ...character, voice: pick(character.voice, dubCharacterVoice(character, locale)) } : character))
     : doc.characters;
-  return { doc: { ...doc, voice: dubVoice(doc, locale, style), ...cohost, ...(characters ? { characters } : {}), scenes }, missing };
+  // The pronunciation hints are zh-TW readings carried in a Gemini style; MiniMax has no field
+  // for them (core/drama.mjs voiceFor refuses them on any other voice), so its dubs go without.
+  const { pronunciation_hints, ...rest } = doc;
+  const base = minimax ? rest : doc;
+  return { doc: { ...base, voice: pick(doc.voice, dubVoice(doc, locale, style)), ...cohost, ...(characters ? { characters } : {}), scenes }, missing };
 }
 
 /** Hash of the words a dub speaks, line by line; status treats a track made from other words as stale. */
@@ -190,8 +244,8 @@ export function translationHash(script) {
  * dub of an English video gets its Chinese aliases back, for --file projects too). No requests
  * while a line has no current translation.
  */
-export function dubRequests(project, locale, style = null) {
-  const { doc: script, missing } = dubScript(project.doc, project.translations?.[locale], locale, style);
+export function dubRequests(project, locale, style = null, provider = DEFAULT_DUB_PROVIDER) {
+  const { doc: script, missing } = dubScript(project.doc, project.translations?.[locale], locale, style, provider);
   const lexicon = speechLexicon(project.shelfLexicon ?? emptyLexicon(), locale);
   return { script, missing, lexicon, requests: missing.length ? [] : planRequests(script, lexicon) };
 }
@@ -209,10 +263,10 @@ export function speechFingerprint(requests) {
 }
 
 /** The fingerprint `dub` would record for `locale` now; null when it cannot be planned (no project, a missing translation, a line too long). */
-export function dubFingerprint(project, locale, style = null) {
+export function dubFingerprint(project, locale, style = null, provider = DEFAULT_DUB_PROVIDER) {
   if (!project?.doc) return null;
   try {
-    const { missing, requests } = dubRequests(project, locale, style);
+    const { missing, requests } = dubRequests(project, locale, style, provider);
     return missing.length ? null : speechFingerprint(requests);
   } catch {
     return null;
@@ -232,13 +286,16 @@ export function dubFingerprint(project, locale, style = null) {
  * whose keys changed. The cache can run ahead of the track when a later run synthesized new clips
  * and did not finish; `legacyGuard` is false when a newer run's fit.json shows that happened.
  */
+/** The voices a dub record was made with; a record from before MiniMax dubs was Gemini's. */
+export const recordProvider = (record) => (DUB_PROVIDERS.includes(record?.voice_provider) ? record.voice_provider : DEFAULT_DUB_PROVIDER);
+
 export function speechCurrent(project, locale, record, { cache = null, legacyGuard = true } = {}) {
   if (typeof record?.speech_fingerprint === "string") {
-    return record.speech_fingerprint === dubFingerprint(project, locale, record.style_override ?? null);
+    return record.speech_fingerprint === dubFingerprint(project, locale, record.style_override ?? null, recordProvider(record));
   }
   if (!legacyGuard || !project?.doc || !cache?.lines || typeof cache.lines !== "object") return false;
   try {
-    const { missing, requests } = dubRequests(project, locale, record?.style_override ?? null);
+    const { missing, requests } = dubRequests(project, locale, record?.style_override ?? null, recordProvider(record));
     if (missing.length || !requests.length) return false;
     return requests.every((request) => request.lines.every((line) => [line.key, request.key].includes(cache.lines[line.id])));
   } catch {

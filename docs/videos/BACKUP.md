@@ -98,9 +98,22 @@ video-worker 每一輪：排入 → rclone 複製 → rclone check → 上傳 ba
 
 ## 資料夾排法
 
+**AI 劇（2026-11-10 起，站主：「每部劇統一放 AI劇/<劇名>/<集數>/」）**：種田、祖媽、原來如此、奇聞，以及之後任何匯入的劇
+（slug 是 `<劇>-e033` 這種的），一律放 `AI劇/<名稱>/<集數>/`。製作過程的所有檔案也放在同一集底下的 `製作檔/`，由做片的
+session 自己傳，規則在 [`AI-DRAMA-DRIVE.md`](AI-DRAMA-DRIVE.md)。
+
 ```
 AI/備份/
-  <系列資料夾>/
+  AI劇/
+    <名稱>/                          種田娶妻打天下、種田娶妻打天下（真人版）、恁祖媽今年18、原來如此事務所、奇聞檔案局
+      _共用/characters/…             （僅完整層級：_series/<系列>/characters）
+      _共用/製作檔/…                 （session 傳的系列共用檔）
+      第033集/  第001-005集/  H01/   集數；合集；沒有集數的用代碼（curio-h01 → H01，sothatswhy-p17-gecko-feet → P17）
+        final.mp4 …                  （跟下面一般影片相同的檔案）
+        製作檔/<來源>/…              （session 傳的製作檔，見 AI-DRAMA-DRIVE.md）
+        _舊版/<時間>/…               （之後被覆蓋的舊檔）
+        _舊版/<slug>/…               （這一集較舊的版本整支，例如 -v2 出來後的 curio-h01）
+  <系列資料夾>/                      其他系列
     _共用/characters/…              （僅完整層級：_series/<系列>/characters）
     <集數三位數>-<slug>/  或  <slug>/
       final.mp4
@@ -120,27 +133,37 @@ AI/備份/
 ```
 
 **系列鍵**依序取第一個有值的：Shorts 一律放在 `Shorts/<shorts_series 或 shorts_line>/` →
-`series_slug` → 匯入的劇（分類 `drama`、沒有 `series_slug`、slug 是 `<劇>-e033`、`<劇>-e001-005`、`-v2` 這種）的 `<劇>` →
+`series_slug` → 匯入的劇（分類 `drama`、沒有 `series_slug`、slug 是 `<劇>-e033`、`<劇>-e001-005`、`-r2`、`-v2` 這種）的 `<劇>`，
+`-r2` 這種重拍是另一部劇（`zhong-tian-qu-qi-e001-r2` 的系列鍵是 `zhong-tian-qu-qi-r2`）→
 slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`。都沒有就放「其他」。
-
-匯入的劇放在分類資料夾底下自己的資料夾：`drama/<劇>/<集>/`，例如 `drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033/`
-（站主 2026-11-01：不同劇要有不同資料夾）。在那之前備份在 `drama/<集>/` 的，網站在 worker 設定裡多給一個
-`moved_from`，worker 在 Drive 裡把舊資料夾整個搬過去（`rclone moveto`，伺服器端搬移、不重傳），再回報新資料夾；
-網站之後就記新資料夾。搬不動的那一輪不備份那支影片，免得在新位置再傳一份。
 
 | 系列鍵 | 預設資料夾名稱 |
 | --- | --- |
-| `curio` | 奇聞檔案局 |
+| `zhong-tian-qu-qi` | AI劇/種田娶妻打天下 |
+| `zhong-tian-qu-qi-r2` | AI劇/種田娶妻打天下（真人版） |
+| `tai-nainai` | AI劇/恁祖媽今年18 |
+| `sothatswhy` | AI劇/原來如此事務所 |
+| `curio` | AI劇/奇聞檔案局 |
+| 其他匯入的劇 | AI劇/<系列鍵> |
 | `ou-de-jianghu` | 偶的江湖 |
-| `sothatswhy` | 原來如此事務所 |
 | `ai-terms` | AI 名詞十分鐘 |
 | `story` | 品牌故事 |
 | `other` | 其他 |
 | 其他 | 系列鍵本身 |
 
+**同一集的版本**（`curio-h01`、`curio-h01-v2`；`<劇>-e001`、`<劇>-e001-v2`）放同一個集數資料夾：最新、而且已經上 YouTube 或
+可以上架的版本占著資料夾本身，較舊的版本放 `<集數>/_舊版/<slug>/`。較新的版本還沒能上架時，舊版留在原位。舊版本來就在集數資料夾、
+後來才有新版的，新版複製時已經把舊版的檔移到 `_舊版/<時間>/`，所以舊版不再搬，只是之後補備份改寫進 `_舊版/<slug>/`
+（`target.py` `resolve_target` 的 `superseded`，`admin_status.py` `superseded_among`）。
+
 **資料夾名稱只決定一次。** 第一次備份時，實際用到的資料夾寫進
 `video_projects.backup.folder`，之後補備份都沿用它。之後改系列顯示名稱，不會讓同一支
-影片被分到兩個資料夾。唯一的例外是上面匯入的劇從 `drama/<集>/` 搬到 `drama/<劇>/<集>/` 那一次。
+影片被分到兩個資料夾。例外只有搬進 `AI劇/` 這一次：2026-11-10 之前備份在 `AI劇/` 以外的 AI 劇集數（例如
+`drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033`、`奇聞檔案局/curio-h01`），網站在 worker 設定裡多給一個 `moved_from`，worker 在
+Drive 裡把舊資料夾整個搬過去（伺服器端搬移、不重傳），再回報新資料夾；網站之後就記新資料夾。新位置還沒有東西時用 `rclone moveto`；
+已經有別的版本時改用 `rclone move`：舊資料夾的 `_舊版/` 併進新資料夾的 `_舊版/`（同名的留在舊資料夾），同名但內容不同的檔先移到
+`_舊版/<時間>-搬移/` 再放進來，不覆蓋任何檔。搬不動的那一輪不備份那支影片，免得在新位置再傳一份。
+（2026-11-01 到 11-10 之間，匯入的劇放在 `drama/<劇>/<集>/`；更早是 `drama/<集>/`。兩種都照上面搬進 `AI劇/`。）
 
 ## 每一層備份哪些檔
 
@@ -292,7 +315,7 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
    雨聲水聲是隨機的，重做會不一樣）不屬於哪一集，上傳包不帶，主機也沒有。在存著它們的那台電腦上、每次新增或改了參考圖之後跑：
 
    ```bash
-   node tools/video/import/series-backup.mjs <VIDEO_WORKDIR>/_series/zhong-tian-qu-qi "G:/我的雲端硬碟/AI/備份/drama/zhong-tian-qu-qi/_series"
+   node tools/video/import/series-backup.mjs <VIDEO_WORKDIR>/_series/zhong-tian-qu-qi "G:/我的雲端硬碟/AI/備份/AI劇/種田娶妻打天下/_共用/製作檔/_series"
    ```
 
    只複製不一樣的檔（先比大小再比 sha256），雲端多的檔不刪（換掉的參考圖留著舊版），並在目的地寫 `SHA256SUMS`
@@ -314,6 +337,82 @@ worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts
 （`final.mp4`、`zh-TW.srt`、`cover.png`、`titles.json`）。`backup-state.json`、`backup.json` 也寫在那個 build 裡：重建出新的一版
 就是新的成片，會再備份一次，舊版照第 4 步留在雲端 `_舊版/`。tidy 跳過 `_` 開頭的資料夾，這些 Shorts 的清除由
 `2026-11-03-purge-a-video-from-the-host` 處理（票 `2026-11-03-back-up-the-worker-s-own`）。
+
+## AI 劇的分支鏡像
+
+**2026-11-10 起關閉**（compose `VIDEO_BRANCH_MIRROR: "off"`）。站主改成由做片的 session 直接把製作檔傳到
+`AI劇/<名稱>/<集數>/製作檔/`，舊分支由主機一次搬完（[`AI-DRAMA-DRIVE.md`](AI-DRAMA-DRIVE.md)）。這個鏡像在正式站從沒成功跑過：
+每一輪都在複製 rclone 設定時失敗（`fs.copyFileSync is not a function`），雲端硬碟的 `drama/*/_分支/` 沒有任何檔。以下是它原本的設計，
+留作紀錄。
+
+站主 2026-11-08：「備份到雲端的內容應該也要跟備份到分支的一樣」，同一天同意由主機 worker 鏡像分支。
+
+雲端 session 做的 AI 劇（種田 `zt`、祖媽 `tn`）每集推到 GitHub 的 `transfer/*` 分支
+（規則在 `docs/videos/drama/BACKUP-BRANCHES.md`）。審核區那條路線（上面〈匯入的影片〉）收不齊分支裡的東西：
+`clip_` 最多 120 支、組片資料最多 40 個、不能有子路徑、總共 20 GB，系列共用檔也沒有關卡可送。所以 worker
+直接把分支本身鏡像到雲端硬碟。程式在 [`branch-mirror.mjs`](../../tools/video/automation/branch-mirror.mjs)，
+審核區那條路線照舊、不受影響。
+
+**放在哪裡**（跟影片備份同一個 remote、同一個鎖定的 `AI/備份`，路徑在後台「備份位置」那個資料夾底下）：
+
+```
+AI/備份/drama/
+  zhong-tian-qu-qi/_分支/<分支名去掉 transfer/>/…     （transfer/zt-*，例如 zt-live-e001、zt-shared、zt-cg-e001）
+  tai-nainai/_分支/<分支名>/…                          （transfer/tn-*）
+  _其他/_分支/<分支名>/…                               （之後加的其他代號）
+    <跟分支最新一版逐檔相同的內容>
+    _舊版/<UTC 時間>/…                                 （被新一版改掉或刪掉的檔）
+```
+
+**每一輪做什麼**（在影片備份之後，`cli.mjs` 的 `branchMirrorAfterBackup`；一輪因錯誤或站主的規則（每月草稿上限等）結束時只跑影片備份、不跑鏡像，免得鏡像的行夾在原因與結束碼之間，讓部署檢查 `host-verify.sh` 判成錯誤）：
+
+1. `git ls-remote` 列出 `transfer/zt-`、`transfer/tn-` 開頭的分支，跟 `video_work/_branch-mirror/branch-mirror.json`
+   記的「上次鏡像的 commit」比。一樣的分支什麼都不做，不下載。
+2. 不一樣的，一次一條：只抓那一個 commit（`git fetch --depth 1`）到暫存的 bare repo，把檔案寫到暫存資料夾
+   （連結寫成內容是目標路徑的一般檔），然後馬上刪掉 repo，磁碟上只留一份。
+3. 把 `X.part00`、`X.part01`… 依序接回 `X`，刪掉切塊。旁邊有 `X.SPLIT` 說明檔、裡面寫了 sha256 時，接回的檔要相同，
+   不同就整條不傳。切塊不連號也不傳。分支同時有 `X` 和它的切塊時，照分支原樣保留。
+4. `rclone sync --checksum` 到上面的資料夾，`--backup-dir <資料夾>/_舊版/<時間>/`：被改掉或分支刪掉的檔**移**到 `_舊版`，
+   雲端硬碟上不刪任何檔。用 `sync` 而不是 `copy`，只是為了讓分支刪掉的檔也離開這個資料夾（移到 `_舊版`）。
+   分支沒有任何檔時不 sync。
+5. `rclone check` 雙向核對（`_舊版` 除外），0 差異才把這個 commit 記成已鏡像；有差異或任何一步失敗就不記，
+   下一輪再試，連續失敗 3 次後每 6 小時試一次。暫存資料夾每條做完就刪。
+
+**每輪上限**（第一次要把現有的 `zt-*`、`tn-*` 分支全部傳一遍，好幾 GB，分散在很多輪，不讓一輪卡住其他工作）：
+
+| 環境變數 | 預設 | 說明 |
+| --- | --- | --- |
+| `VIDEO_BRANCH_MIRROR` | compose 設 `on` | 不是 `on` 就完全不跑、不印任何行 |
+| `VIDEO_BRANCH_MIRROR_PREFIXES` | `transfer/zt-,transfer/tn-` | 要鏡像的分支前綴，逗號分隔 |
+| `VIDEO_BRANCH_MIRROR_PER_ROUND` | 1 | 一輪最多幾條分支 |
+| `VIDEO_BRANCH_MIRROR_MAX_GB` | 2 | 一輪傳到這麼多 GB 就不再開新的一條 |
+| `VIDEO_BRANCH_MIRROR_MIN_FREE_GB` | 5 | 工作磁碟剩不到這麼多就等 |
+| `VIDEO_BRANCH_MIRROR_REPO` | `x812033727/travel_scanner` | 要鏡像的 repo |
+| `VIDEO_BRANCH_MIRROR_TOKEN`、`_TOKEN_FILE` | 無 | repo 是公開的，不需要；repo 改成私有時才用（只要 contents 讀取權限） |
+
+備份每輪跑完會呼叫一次（一輪超過 10 分鐘時在兩個單位之間也會），所以大約每 5–10 分鐘傳一條分支。
+站主的雲端硬碟是 5 TiB，所有分支加起來是幾十 GB，空間不是限制。
+
+**主機要做什麼**：什麼都不用做。repo 是公開的，worker 用 HTTPS 匿名抓，不需要 deploy key 或 token；
+映像加了 `git`（`ops/video/Dockerfile`），compose 設了 `VIDEO_BRANCH_MIRROR: "on"`，合併到 main 之後自動部署就開始跑。
+前提是影片備份本身已經開著（後台「備份位置」卡的開關、主機的 rclone 設定，見〈主機設定〉）；影片備份關掉時，
+鏡像也不跑，log 印「backup is off」。
+
+**怎麼確認**：`docker compose -f docker-compose.prod.yml logs video-worker | grep "branch mirror"`，每條成功的分支印一行：
+
+```
+branch mirror: transfer/zt-live-e001 1a2b3c4d5e6f → drama/zhong-tian-qu-qi/_分支/zt-live-e001: 768 files, 976 MB, 3 joined from parts, rclone check 0 differences
+```
+
+每條分支最後鏡像的 commit、時間、檔數、大小、核對結果與最近的錯誤記在 worker 的
+`/var/lib/mokaair/video-work/_branch-mirror/branch-mirror.json`。後台備份卡還沒有「分支」這一列，
+另開票 `2026-11-08-backup-card-shows-branch-mirror`（要動 API 與 web）。
+
+**怎麼關掉**：把 `docker-compose.prod.yml` 裡 video-worker 的 `VIDEO_BRANCH_MIRROR` 改成 `"off"`，用 PR 合併、自動部署。
+急的話在主機的 `video_work` 放 `STOP` 檔（這也會停掉整個 worker 的備份與 tidy）。已經傳上去的不會被刪。
+
+推完分支之後，等 log 出現這條分支的 `rclone check 0 differences`（或 `branch-mirror.json` 記到新的 commit），
+雲端硬碟才跟分支一樣。
 
 ## 跟 tidy 的關係
 

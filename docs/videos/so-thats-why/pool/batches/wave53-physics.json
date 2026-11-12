@@ -1,0 +1,251 @@
+{
+  "batch_id": "wave53-physics-20261111",
+  "created_on": "2026-11-11",
+  "scope": "筒倉出料、公尺級充氣摺紙與降噪耳機：替 C2-11（沙漏，仍後備）、C3-09（紙的摺與彎，升為長題 G604）與企劃 P19（仍後備）補原研究；四來源。",
+  "sources": [
+    {
+      "id": "P53-S001",
+      "url": "https://arxiv.org/abs/0707.4550",
+      "canonical_url": "https://arxiv.org/abs/0707.4550",
+      "doi": "10.1007/s10035-007-0062-2",
+      "title": "The flow rate of granular materials through an orifice",
+      "publisher": "Mankoc、Janda、Arévalo、Pastor、Zuriguel、Garcimartín、Maza（納瓦拉大學）；後刊 Granular Matter 9:407–414 (2007)",
+      "version": "arXiv v1 2007-07-31 作者稿",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（arXiv PDF），pdftotext 全文",
+      "reading_scope": "Abstract、§I Introduction 全段、§II.A 三維筒倉與量測方法、Fig.1、§IV Conclusions 首段",
+      "locator": "§I 第1–4段；§II.A；Fig.1",
+      "summary": "與流體相反，筒倉靠重力出料時流量不隨料層高度改變：料層高於約1.2倍筒徑後，底壓因 Janssen 效應飽和，流量約為定值；Beverloo 定律流量∝(D0−k·dp)^{5/2}，可用『出口上方有一個自由落體區，由一道拱界定』解釋；量出的落下顆粒數對時間是直線；出口與顆粒直徑比約5以下會因成拱而間歇卡住；在1.5到100倍粒徑的大範圍內，Beverloo 需對大、小出口用不同常數，作者改提含指數修正的新式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "『流量與料高無關』是前言對既有文獻的陳述（本文實驗刻意把料位保持在約兩倍筒徑以上）；自由落體拱是『看似合理』的解釋，不是本文實測；平底圓筒倉而非沙漏外形。　非作者覆核 V5：出口與粒徑比約 5 的卡住門檻引自同團隊前作，撰稿標『先前研究』。",
+      "author_cache": {
+        "file": "scratchpad/f2src/mankoc.pdf",
+        "sha256_prefix": "9329d3bc6a597856",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P53-S002",
+      "url": "https://par.nsf.gov/servlets/purl/10295963",
+      "canonical_url": "https://par.nsf.gov/servlets/purl/10295963",
+      "doi": "10.1038/s41586-021-03407-4",
+      "title": "Multistable inflatable origami structures at the metre scale",
+      "publisher": "Melancon、Gorissen、García-Mora、Hoberman、Bertoldi；Nature 592:545–550 (2021)",
+      "version": "NSF Public Access Repository 典藏的期刊排版 PDF（10頁）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（4,369,638 bytes），pdftotext 全文",
+      "reading_scope": "Abstract、Triangular facets 段（頁546）、Metre-scale functional structures 段（頁548–550）",
+      "locator": "頁546 左欄末至右欄；頁549 Fig.3d/Fig.4 正文",
+      "summary": "剛性三角面與理想鉸鏈組成的閉合多面體不是完全不能動，就是展開時體積不變；改用硬面配可伸長鉸鏈，平板與展開兩種相容狀態之間面與鉸鏈必須變形，形成能量障壁而雙穩態；用4毫米瓦楞塑膠板刻痕當鉸鏈做出的拱門，摺起20公分高、30公分寬，充氣後成60公分高、150公分寬，突然洩壓仍維持形狀，抽真空才摺回；帳篷式庇護所平摺1.0×2.0×0.25公尺，充氣先到屋頂內摺的穩定態，再加壓屋頂向外翻成2.5×2.6×2.6公尺，可開門不影響結構。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "大型結構是示範原型，未報告長期耐候；壓力數據主要來自公分級樣品。",
+      "author_cache": {
+        "file": "scratchpad/f2src/melancon.pdf",
+        "sha256_prefix": "e7d5c6c95a082251",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P53-S003",
+      "url": "https://pub.dega-akustik.de/DAGA_2019/data/articles/000202.pdf",
+      "canonical_url": "https://pub.dega-akustik.de/DAGA_2019/data/articles/000202.pdf",
+      "title": "Acoustic Performance Testing of ANC Headsets",
+      "publisher": "Sethi、Poschen、Kettler（HEAD acoustics GmbH）；DAGA 2019 Rostock 論文集 pp.915–918",
+      "version": "會議論文集 PDF",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，pdftotext 全文",
+      "reading_scope": "全文四頁：方法、Table 1、Fig.2–5、ambient listening、quality pie 定義",
+      "locator": "頁915 Table 1；頁916 正文",
+      "summary": "人工頭量四款（兩耳罩、兩入耳）：主動降噪最大時對飛機與咖啡廳噪音降約15–21 dB，被動多為3–6 dB（一款入耳被動達約13 dB）；被動隔音通常只對200 Hz以上有效，低頻要靠 ANC；有些耳機 ANC 效果小得多；戴眼鏡會漏聲使耳罩 ANC 變差；強 ANC 也會壓低較高頻的說話聲，需要通透／環境模式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "廠商實驗室的會議論文，非同儕審查期刊；耳機型號匿名；只四款。",
+      "author_cache": {
+        "file": "scratchpad/f2src/daga.pdf",
+        "sha256_prefix": "5fd28f5a98c0fee5",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P53-S004",
+      "url": "https://jcaa.caa-aca.ca/index.php/jcaa/article/download/1486/1230/1620",
+      "canonical_url": "https://jcaa.caa-aca.ca/index.php/jcaa/article/download/1486/1230/1620",
+      "title": "Testing of ANR Earmuffs",
+      "publisher": "Cui、Behar、Kunov、Wong（多倫多大學）；Canadian Acoustics 30(3):124–125 (2002)",
+      "version": "期刊兩頁短文 PDF（掃描 OCR 文字層）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，pdftotext 全文",
+      "reading_scope": "全文兩頁",
+      "locator": "§1 Introduction；§4 Discussion",
+      "summary": "主動降噪耳罩以回授迴路把侵入的聲音以180度相位反向重新送出，降低該頻段聲壓；因技術限制只在約500 Hz以下有效；高頻由被動插入損失擋，兩者合起來得寬頻衰減；作者指出傷害聽力的能量多在500 Hz以上，單靠 ANR 不降低聽損風險，但能減少低頻對語音的向上遮蔽而提升語音清晰度（引 Kryter 1994）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2002年耳罩、只示範一款耳機結果；遮蔽與清晰度是前言引述，非本文量測。",
+      "author_cache": {
+        "file": "scratchpad/f2src/jcaa.pdf",
+        "sha256_prefix": "4d41ee4eb04f7b3f",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P53-001",
+      "question": "沙從小孔流出，為什麼不像水那樣越流越慢？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.height_independent_beverloo",
+      "answer_target": "納瓦拉大學團隊在論文前言整理數十年的筒倉研究：與液體相反，顆粒靠重力從底孔流出時，流量不隨料層高度變；料層高過約 1.2 倍筒徑後，底部壓力因 Janssen 效應而飽和，流量大致固定。決定流量的是出口：工程上沿用的 Beverloo 經驗式說流量和（出口直徑減去幾顆粒徑）的 5/2 次方成正比；作者認為一個看似合理的解釋是，出口上方有一個由拱界定的自由落體區，顆粒在拱下才開始加速。",
+      "scope": "乾燥、粒徑大於約 0.5 毫米的單一粒徑顆粒；『與高度無關』是原文前言整理既有文獻（本文實驗刻意把料位保持在約兩倍筒徑以上），不是本文量測；自由落體拱是原文『看似合理』的解釋；平底筒倉，不是沙漏外形，片中不可說沙漏已被直接量過。",
+      "source_ids": [
+        "P53-S001"
+      ],
+      "source_locator": "S001 §I 第1–3段（式1）",
+      "premise_status": "screened",
+      "notes": "目標 C2-11 開場與第二章；補審查列的關鍵缺口『乾沙出口流率與料高無關（Beverloo 定律）』，並把 F10003 的 Janssen 底力飽和接到流量。 原提案 F2-026。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；答案要把『前言整理既有研究』與『筒倉』寫進句子，不能讓觀眾以為是沙漏的直接量測；Janssen 底壓飽和已由 F10003 支持，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沙漏的節奏由出口那一小圈決定，上面堆多高都一樣。",
+        "visual": "水鐘水位下降、流速變慢 vs 沙柱下降、流速固定的並排；出口上方畫一道虛線拱（標示為解釋模型）。",
+        "seconds": [
+          55,
+          75
+        ]
+      }
+    },
+    {
+      "id": "P53-002",
+      "question": "量沙漏的流量時，看到的是一條直線嗎？出口小到多少就開始卡？",
+      "domain": "顆粒流",
+      "mechanism_key": "granular.orifice_flow.linear_discharge_jamming_threshold",
+      "answer_target": "納瓦拉大學團隊把筒倉出口換成不同大小，秤落下的玻璃珠：出口夠大時，落下的顆粒數對時間是一條直線，任何時刻量都一樣；出口與顆粒直徑比約 5 以下，就會因為成拱而一陣一陣卡住，只能用每段崩流的量除以時間算流量。把出口從 1.5 倍到 100 倍粒徑都量過後，他們發現 Beverloo 式對大出口和小出口得用不同常數，因此改提一個帶指數修正的新式。",
+      "scope": "實驗室筒倉與玻璃、鉛、塑膠珠；比值約 5 的門檻引自同團隊前作。",
+      "source_ids": [
+        "P53-S001"
+      ],
+      "source_locator": "S001 §II.A 方法段與 Fig.1；Abstract；§I 末段；§IV 首段",
+      "premise_status": "screened",
+      "notes": "目標 C2-11 第三、四章銜接（連續流→間歇卡住）；Rc≈5 引自同團隊前作，撰稿標『先前研究』；Beverloo 改式只留一句或不用。 原提案 F2-027。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；事實對，但『Beverloo 要換常數、改提新式』是建模細節，『≈5 卡住』引自前作；對觀眾不是轉折，只算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一條直線，出口一縮小就斷成一段一段的階梯。",
+        "visual": "落下顆粒數對時間：大出口是平滑直線、小出口是階梯（依 Fig.1 形狀示意）。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P53-003",
+      "question": "硬板拼成的摺紙，為什麼能像開關一樣停在兩個形狀？",
+      "domain": "材料與結構",
+      "mechanism_key": "origami.bistable_closed_polyhedra_stiff_facets_stretchable_hinges",
+      "answer_target": "如果三角形面完全不能變形、摺線是理想鉸鏈，閉合的摺紙多面體不是根本動不了，就是展開時體積不變。研究者改用硬面配上可伸長的鉸鏈，並挑選特定角度的三角形：平板和展開兩個形狀都剛好相容，但兩者之間的路上面和鉸鏈必須被迫變形，形成一道能量障壁，於是它會停在兩個穩定形狀之一，而且可以用灌氣切換。",
+      "scope": "Nature 2021；能量分析以幾何與公分級實驗為主。",
+      "source_ids": [
+        "P53-S002"
+      ],
+      "source_locator": "S002 頁546 Triangular facets 段（『either rigid or volume invariant』至 energy barrier 句）",
+      "premise_status": "screened",
+      "notes": "目標 C3-09『扣在一起，難走的路變硬』與 P44-004（按翻頂點雙穩）之間；回答同一問題：面不能伸長時，結構只能在幾條路之間選，被逼變形的那段路就是障壁。 原提案 F2-028。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；與 C3-09『需要伸長的路變硬』是同一問題的延伸（障壁就是被迫伸長的代價），不是名稱相近；算 1 條（與 P44-004 的雙穩概念部分重疊）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "面不肯被拉長，路中間就多了一座山，兩邊各是一個可以停下來的谷。",
+        "visual": "平板與展開兩個狀態之間畫一條能量曲線，中間凸起；三角面在凸起處被擠歪（示意）。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P53-004",
+      "question": "摺紙原理能做出可以住人的大結構嗎？",
+      "domain": "材料與結構",
+      "mechanism_key": "origami.metre_scale_inflatable_bistable_shelter",
+      "answer_target": "研究團隊用 4 毫米瓦楞塑膠板、刻痕當摺線，做出公尺級原型：一座拱門摺起時 20 公分高、30 公分寬，灌氣後展成 60 公分高、150 公分寬，突然洩氣也維持形狀，要抽真空才摺回；一座帳篷式庇護所平摺時 1.0×2.0×0.25 公尺，灌氣後先停在屋頂內摺的穩定形狀，再加壓屋頂向外翻，成為 2.5×2.6×2.6 公尺，展開後開門也不影響結構。",
+      "scope": "示範原型，材料是 4 毫米瓦楞塑膠板（不是紙），未報告耐候與長期使用；不說已商品化。",
+      "source_ids": [
+        "P53-S002"
+      ],
+      "source_locator": "S002 頁549 Fig.3d 正文與 Fig.4 正文",
+      "premise_status": "screened",
+      "notes": "目標 C3-09，補 V3 審查要求的『實測的大型展開結構，答同一個挑路問題』：雙穩讓它不必一直灌氣，正是『限制哪條路、哪個狀態就穩』。 原提案 F2-029。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；材料是瓦楞塑膠板不是紙，片中不能說『紙帳篷』；尺寸串算 1.5 條。是 C3-09 V3 要的『實測大型展開結構』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣的摺紙道理放大到一頂帳篷：灌一口氣翻過山頭，就自己站住。",
+        "visual": "原型照片式的原創插畫：平摺的板包 → 第一階段 → 屋頂外翻的完整帳篷（尺寸標註）。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P53-005",
+      "question": "降噪耳機對飛機轟聲和旁人說話，效果一樣嗎？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.anc.headset_measured_active_passive_bands",
+      "answer_target": "聲學測試公司用人工頭量四款耳機（兩款耳罩、兩款入耳）：主動降噪開到最大時，對飛機與咖啡廳噪音的衰減約 15 到 21 dB，只靠被動隔音多半只有 3 到 6 dB，一款入耳被動就有約 13 dB。被動隔音通常只對 200 Hz 以上有效，更低的頻率要靠主動降噪；有些耳機的 ANC 效果小得多；戴眼鏡會讓耳罩漏聲、降噪變差；而降噪很強的耳機也會壓低較高頻的說話聲，所以才有通透或環境模式。",
+      "scope": "DAGA 2019 會議論文、廠商實驗室、四款匿名耳機；非同儕審查期刊。",
+      "source_ids": [
+        "P53-S003"
+      ],
+      "source_locator": "S003 頁915 Table 1 與其說明；頁916 正文",
+      "premise_status": "screened",
+      "notes": "目標 P19 第三章「說話與低頻轟聲為何不同」；補 MATERIAL_REVIEW『非單一品牌的頻率效果資料或受控實測』與『被動隔音的來源』。 原提案 F2-030。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；廠商實驗室會議論文、四款匿名；算 2 條。補不起 P19（見 targets）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "低頻靠電子抵消，高頻靠耳罩擋，兩套系統各管一段。",
+        "visual": "頻率軸上兩塊色帶：低頻 ANC、200 Hz 以上被動；四款耳機的衰減長條。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P53-006",
+      "question": "降噪耳機擋不住說話聲，為什麼戴著反而比較聽得清楚別人講話？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.anc.low_frequency_feedback_masking_release",
+      "answer_target": "主動降噪耳罩用回授迴路，把漏進來的聲音以 180 度相位反向再送出，抵消該頻段；受技術限制，只在約 500 Hz 以下有效，更高頻要靠耳罩本身擋。多倫多大學的作者指出，正因如此單靠主動降噪並不降低聽力受損風險，因為傷耳的能量多在 500 Hz 以上；但壓掉低頻轟聲能減少它對語音的『向上遮蔽』，在機艙、引擎室這類環境反而提高語音清晰度。",
+      "scope": "2002 年耳罩研究；遮蔽與清晰度是作者前言引述 Kryter 1994，非本文量測；聽損風險說法不推到現代耳機音樂音量。",
+      "source_ids": [
+        "P53-S004"
+      ],
+      "source_locator": "S004 §1 Introduction；§4 Discussion",
+      "premise_status": "screened",
+      "notes": "目標 P19 第一、三章；是轉折候選（說話聲還在不是失敗，甚至被『放出來』）。遮蔽段需另找原始研究才能當主轉折。 原提案 F2-031。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；低頻有效與 LEG-S86 部分重疊，算 1 條；遮蔽釋放只是前言引述，不能當主轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "抵消的是低頻，留下的說話聲少了轟聲的遮擋，反而更清楚。",
+        "visual": "反相波形相加變平的示意；頻譜上低頻被削平，語音頻段露出來。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P53-NA001",
+      "question": "三浦摺（Miura-ori）怎麼讓太空薄膜一拉就展開？",
+      "existing_ids": [
+        "P53-004"
+      ],
+      "source_ids": [],
+      "reason": "Miura 1985 ISAS Report 618 在 JAXA 機構典藏，網站 2026-10-28 起系統維護回 503；core.ac.uk 鏡像 403。未讀不入。 原提案 F2-NA003。",
+      "reentry_condition": "JAXA 典藏恢復後讀 SA0035000.pdf。",
+      "reading_status": "未讀。"
+    },
+    {
+      "id": "P53-NA002",
+      "question": "水沖不掉的油，肥皂怎麼帶它走？（P22 補料）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪未研究。P22 從 5.6 分要到 8.5 分需約 6 條新事實加第二個轉折（硬水皂垢對照），本輪時間優先給最接近門檻的目標；不硬補。 原提案 F2-NA006。 企劃 P22 在 tools/video/so-thats-why/episode-plan.mjs，不是素材池核心。",
+      "reentry_condition": "化學教材級的硬水與肥皂、界面張力與乳化來源，加一個真轉折。",
+      "reading_status": "未讀。"
+    }
+  ]
+}

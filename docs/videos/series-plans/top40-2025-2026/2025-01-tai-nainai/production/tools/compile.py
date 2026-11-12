@@ -34,7 +34,7 @@ CAST = HERE.parent / "cast.json"
 SERIES = "恁祖媽今年18"
 LINE_PREFIX = "t"
 # 收尾不能寫「faces … stay as in their reference pictures」：「臉」對模型同時是長相與表情，排在最後的那句贏，把表情鎖回定妝照的平臉
-# （drama/LESSONS.md 第三節，種田 e901 真人版；祖媽第 1–3 集表情審片，2026-11-08）。只鎖長相、髮型、服裝。
+# （docs/videos/lessons/shared.md〈依主題整理〉第三節，種田 e901 真人版；祖媽第 1–3 集表情審片，2026-11-08）。只鎖長相、髮型、服裝。
 TAIL = ("One continuous shot. Natural, realistic live-action human motion; each person's facial features, hair and costume stay as in their reference picture, "
         "while the facial expressions follow the text above; "
         "nothing written anywhere in the frame; no subtitles, no captions, no characters or letters at the bottom of the picture.")

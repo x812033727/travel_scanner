@@ -322,7 +322,7 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     // under their camera moves, single-state cards drifting, dissolves between pictures and a
     // hard cut into every chapter card.
     layout = drama
-      ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes, { tier: project.series?.visual_tier ?? null })
+      ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes, { tier: doc.still_motion ?? project.series?.visual_tier ?? null })
       : pictures
         ? layoutDrama(doc, timeline, manifest, null, inputs.keyframes, { transitionRule: illustratedTransition, cardMotion: true })
         : layoutScenes(timeline, manifest);

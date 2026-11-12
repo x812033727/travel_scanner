@@ -577,6 +577,13 @@ class Settings(BaseSettings):
         default=300_000, ge=0, le=100_000_000
     )
     video_speech_gemini_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
+    # MiniMax narration (app/video_speech/minimax.py) uses the site's MiniMax key and base URL
+    # (minimax_api_*), the ones image-01 uses. Its month counts the text characters sent; an
+    # M Plan subscription also caps speech per day or per window, which MiniMax enforces.
+    video_speech_minimax_monthly_character_limit: int = Field(
+        default=300_000, ge=0, le=100_000_000
+    )
+    video_speech_minimax_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
     # Stock photos for the illustrated slides (docs/videos/ILLUSTRATED.md §圖庫照片): the
     # pipeline searches Pexels and Pixabay through POST /api/v1/video/media/stock/* with a video
     # tool token and the server fetches the file into the media store, so the keys stay here.

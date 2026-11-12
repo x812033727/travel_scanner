@@ -140,7 +140,7 @@ export function keyframeChecks({ plate = false, characters = [], subtitleBand = 
     ...characters.map((character) => ({ key: `identity_${character.id.replace(/-/g, "_")}`, question: identityCheck(character), ...redraw })),
     { key: "text", question: wordless ? WORDLESS_TEXT_QUESTION : "Can you read any letter, word or number anywhere in the picture, or see a logo or a watermark? Marks that only suggest writing without forming letters do not count.", ...redraw },
     ...(nobody ? [{ key: "nobody", question: NOBODY_QUESTION, ...redraw }] : []),
-    { key: "anatomy", question: "Count the digits of every hand drawn large, thumb included. Does any hand show more than five, or does any person or animal have an extra hand, arm or leg, or a face or body warped out of shape? A finger that is hidden or left out by the style does not count.", ...redraw },
+    { key: "anatomy", question: "Count the digits of every hand drawn large, thumb included. Does any hand show more than five, or does any person or animal have an extra hand, arm or leg, a face or body warped out of shape, or eyes that do not match (one pupil turned another way, pupils of different sizes or placed oddly)? A finger hidden or left out by the style does not count.", ...redraw },
     { key: "detached", question: "Is any part floating, cut off from what should hold it or duplicated, or is there a stray figure or object that does not belong to the scene (a tiny person, a hand with no arm, eyes in the dark)?", ...redraw },
     { key: "subject", question: "Is the main subject of the shot prompt, or the main thing it is doing, missing or clearly wrong? Secondary props, bystanders, which hand and the exact framing do not count here.", ...redraw },
     { key: "frame", question: "Does the picture fail to fill the frame as one upright picture: bars or blurred panels at the sides, the scene tilted, blank paper or a table showing past its corners, or the scene drawn as a photograph of a print? A thin plain margin does not count.", ...redraw },
@@ -166,8 +166,8 @@ export function keyframeChecks({ plate = false, characters = [], subtitleBand = 
 export const WORDLESS_TEXT_QUESTION = "Looking at the whole picture and every crop labelled \"keyframe zoom\", is there any writing anywhere: letters, words, numbers, a logo, a watermark, made-up marks that look like writing on a sign, label, paper, screen, box or cover, a floating question mark, exclamation mark or other symbol, or a badge or marks on a button, coin, sleeve, car, cap or uniform?";
 // A still marked `nobody` (its line is about someone who may not be drawn) fails when anyone is.
 export const NOBODY_QUESTION = "Looking at the whole picture and every crop labelled \"keyframe zoom\", is there any person, human face or human figure anywhere, however small, including a face or eyes drawn on an object?";
-/** Whether a video's stills must carry no writing at all: the cute-mystery look. */
-export const wordlessLook = (doc) => doc?.look?.preset === "cute-mystery";
+/** Whether a video's stills must carry no writing at all: the cute-mystery look (奇聞檔案局, brand stories) and the cute-cartoon look (原來如此事務所, owner 2026-11-05: no words on screen). */
+export const wordlessLook = (doc) => ["cute-mystery", "cute-cartoon"].includes(doc?.look?.preset);
 
 // The server takes a rubric question of at most this many characters (apps/api/app/video_media/
 // schemas.py JudgeCriterion.question); a shot look's appearance can run to 800, so the identity
@@ -777,9 +777,16 @@ export async function run(command, args, ctx) {
           ...asked,
         });
       } catch (error) {
-        if (error.code !== "stopped") throw error;
-        stopped = true;
-        break;
+        // The judge model refusing to answer (its safety filter, e.g. on a child character
+        // checked against her sheet) fails this take for review instead of ending the run:
+        // one refused still used to stop a whole episode (tasks: keyframe judge refuses).
+        if (error.code !== "stopped" && /拒絕回應|PROHIBITED_CONTENT/.test(String(error.message))) {
+          judge = { overall: 0, passed: false, scores: {}, problems: [`judge refused to answer: ${String(error.message).slice(0, 120)}`] };
+        } else {
+          if (error.code !== "stopped") throw error;
+          stopped = true;
+          break;
+        }
       }
       // A still under a camera move is used without its paper margin; the judge saw it whole.
       if (stillPictures && !manga) picture = await trimmed(ctx, workdir, picture, scene.id, inset);

@@ -5,8 +5,8 @@
 // passes one route's check does not fail the other's.
 import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
-import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
-import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
+import { curioProblems, curioWarnings, isCurio, pacingWarnings } from "./curio.mjs";
+import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isNarratedExplainer, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { DEFAULT_CADENCE, isNarrated, isStorySeries, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
@@ -517,9 +517,9 @@ export function lintVideo(doc, context = {}) {
   const minutes = frameToSeconds(timeline.total_frames) / 60;
   const episodeLengthForNarrative = minutes >= MIN_EPISODE_MINUTES || isA01CompactStory(doc) || isC08ApprovedShortStory(doc) || isC20ApprovedShortStory(doc);
   const opening = chapters[0]?.seconds;
-  // A brand story or a 奇聞檔案局 episode is narrated and opens on its hook and promise even when
-  // its pictures have a cast (the series' silent researcher).
-  if (opening !== undefined && hasCast(doc) && !isStory(context.series) && !isStorySeries(doc)) {
+  // A brand story, a 奇聞檔案局 episode and a narrator's explainer are narrated and open on their
+  // hook and promise even when their pictures have a cast (such as the series' silent researcher).
+  if (opening !== undefined && hasCast(doc) && !isStory(context.series) && !isStorySeries(doc) && !isNarratedExplainer(doc)) {
     if (opening > DRAMA_HOOK_SECONDS) warn("scenes[0]", `the opening chapter runs about ${Math.round(opening)} s; the hook should land within ${DRAMA_HOOK_SECONDS} s`);
   } else if (opening !== undefined && !isCompilation(doc) && episodeLengthForNarrative) {
     // Read on an episode only, as episodeScriptProblems is: the examples run seconds.
@@ -570,6 +570,7 @@ export function lintVideo(doc, context = {}) {
   // word, illustrations for most of the body, no long run of cards (core/curio.mjs).
   for (const problem of curioProblems(doc)) error(problem.path, problem.message);
   for (const problem of curioWarnings(doc)) warn(problem.path, problem.message);
+  for (const problem of pacingWarnings(doc)) warn(problem.path, problem.message);
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);

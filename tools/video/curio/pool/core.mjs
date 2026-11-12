@@ -63,6 +63,60 @@ export function linkStatuses(text) {
   return statuses;
 }
 
+// 題級查核檔寫下的「不能講」：給沒有篩選研究的舊題當 scope。只收有標籤的條目（不能講、不要說的話、不說滿、
+// 不能畫、不能講細節的）與〈流傳但查不到〉〈不講的事〉兩節；查核檔沒寫的就是沒寫，不從別處推想限制。
+const LIMIT_LABELS = ['不能講', '不要說的話', '不說滿', '不能畫、不能講細節的'];
+const LIMIT_SECTIONS = /^##\s*(流傳但查不到|不講的事)/;
+const plain = (text) => text.replaceAll('**', '').replace(/\s+/g, ' ').trim();
+export function topicCheckLimits(text) {
+  const lines = text.split('\n');
+  const found = [];
+  const label = new RegExp(`^- (?:\\*\\*)?(${LIMIT_LABELS.join('|')})([^：:\\n]*?)(?:\\*\\*)?[：:](?:\\*\\*)?\\s*(.*)$`);
+  for (let i = 0; i < lines.length; i += 1) {
+    const heading = LIMIT_SECTIONS.exec(lines[i]);
+    if (heading) {
+      const items = [];
+      for (let j = i + 1; j < lines.length && !/^#{1,2}\s/.test(lines[j]); j += 1) if (/^\s*- /.test(lines[j])) items.push(plain(lines[j].replace(/^\s*- /, '')));
+      if (items.length) found.push(`${heading[1]}：${items.join('；')}`);
+      continue;
+    }
+    const match = label.exec(lines[i]);
+    if (!match) continue;
+    const parts = [plain(match[3])].filter(Boolean);
+    for (let j = i + 1; j < lines.length && /^\s+\S/.test(lines[j]); j += 1) parts.push(plain(lines[j].replace(/^\s*[-*]\s*/, '')));
+    if (parts.length) found.push(`${plain(match[1] + match[2])}：${parts.join('；')}`);
+  }
+  return found;
+}
+export const SCOPE_NOT_SCOPED = '尚未界定範圍：還沒有查核檔寫下這題哪些話不能講，製作前要先查核並寫下限制（題目卡原列的待查事項不是限制）。';
+
+// 批次的 source_locator 是一整串「A1-S001：…；A1-S002：…」；拆成每個來源自己的定位，認不出的來源才用整串。
+// 段首可以是完整 ID（A1-S001）或同一題來源的短號（S001），也可以幾個並列（A3-S001/S002、S004、S005）。
+export function splitLocator(text, localIds) {
+  const ids = [...new Set(localIds)];
+  const resolve = (token) => {
+    if (ids.includes(token)) return token;
+    const matches = ids.filter((id) => id.endsWith(`-${token}`));
+    return matches.length === 1 ? matches[0] : null;
+  };
+  const idPattern = '(?:[A-Z][A-Z0-9]*-)?S\\d+';
+  const lead = new RegExp(`^\\s*(${idPattern}(?:\\s*[、/／,，]\\s*${idPattern})*)(?![\\w-])\\s*[：:]?\\s*`);
+  const segments = new Map();
+  let current = null;
+  let preamble = [];
+  for (const clause of text.split('；')) {
+    const match = lead.exec(clause);
+    const owners = match ? match[1].split(/\s*[、/／,，]\s*/).map(resolve) : [];
+    if (match && owners.every(Boolean)) {
+      current = owners;
+      for (const id of owners) segments.set(id, [...(segments.get(id) ?? []), clause.trim()]);
+    } else if (current) for (const id of current) segments.get(id).push(clause.trim());
+    else preamble.push(clause.trim());
+  }
+  preamble = preamble.filter(Boolean);
+  return new Map(ids.map((id) => [id, segments.has(id) ? [...preamble, ...segments.get(id)].join('；') : text]));
+}
+
 export const EPISODE_STATES = ['episode_dir', 'remake_dir', 'branch_draft', 'planned_w_axis', 'bank_scripted'];
 
 function episodeDirs(root) {
@@ -196,7 +250,8 @@ export function intake(root = ROOT) {
     const locked = !remakeUnlocks.has(id) && states.some((state) => EPISODE_STATES.includes(state));
     const refs = [];
     const check = `${BANK}/topic-checks/${id}.md`;
-    if (exists(root, check)) { bind(check); refs.push(...legacyRefs(id, check, readFileSync(path.join(root, check), 'utf8'), 'local_topic_check_file')); }
+    const checkText = exists(root, check) ? readFileSync(path.join(root, check), 'utf8') : null;
+    if (checkText !== null) { bind(check); refs.push(...legacyRefs(id, check, checkText, 'local_topic_check_file')); }
     for (const locator of made?.locators ?? []) {
       if (!locator.startsWith('docs/videos/curio-')) continue;
       for (const name of ['research.md', 'claims.md', 'brief.md']) {
@@ -208,6 +263,14 @@ export function intake(root = ROOT) {
     }
     refs.push(...(branchRefs.get(id) ?? []));
     const unique = [...new Map(refs.map((ref) => [`${ref.source_id}:${ref.locator}`, ref])).values()];
+    // scope 只放限制（不能講、不能畫）；題目卡的待查事項不是限制，另存 card_facts_to_verify。
+    const limits = checkText ? topicCheckLimits(checkText) : [];
+    const risk = topic?.risk && topic.risk !== 'none' ? `風險：${topic.risk}` : '';
+    // 已製作、重做或有分支草稿的題在集數工作目錄裡查核（claims.md、research.md），沒有題級查核檔時指向那裡，不標未界定。
+    const episodeWork = states.some((state) => state !== 'bank_scripted');
+    const scopeFields = !topic || (episodeWork && !limits.length) ? { scope: `以集數工作目錄的企劃與查核為準。${risk}` }
+      : limits.length ? { scope: [`${check} 寫下的限制：${limits.join('｜')}`, risk].filter(Boolean).join('。'), scope_source: check }
+        : { scope: [SCOPE_NOT_SCOPED, risk].filter(Boolean).join(''), scope_status: 'not_yet_scoped', ...(topic.facts_to_verify?.length ? { card_facts_to_verify: topic.facts_to_verify } : {}) };
     const fromExtra = extra.get(id);
     const axis = topic?.axis ?? fromExtra.axis;
     records.push({
@@ -215,8 +278,9 @@ export function intake(root = ROOT) {
       question: topic?.title ?? fromExtra.question,
       hook: topic?.hook ?? '',
       case_key: `legacy.${id.toLowerCase()}`,
-      answer_target: (topic?.finding ?? fromExtra.answer_target).slice(0, 800),
-      scope: topic ? [topic.facts_to_verify?.length ? `待查：${topic.facts_to_verify.join('；')}` : '', topic.risk && topic.risk !== 'none' ? `風險：${topic.risk}` : ''].filter(Boolean).join('。') || '沿用題目卡；製作前逐條查核。' : '以集數工作目錄的企劃與查核為準。',
+      // 完整保留：以前在 800 字截斷，30 題已查核舊題的紀錄因此只剩前段（2026-11-11 素材審視）。
+      answer_target: topic?.finding ?? fromExtra.answer_target,
+      ...scopeFields,
       bank_status: topic?.status ?? null,
       production: { states, locators: [...new Set(made?.locators ?? [])] },
       locked,
@@ -247,6 +311,10 @@ export function intake(root = ROOT) {
       const { id: localId, url, ...reading } = source;
       localSources.set(localId, sourceId(url, { ...reading, origin: batch.batch_id }));
     }
+    const refsFor = (localIds, locator, supports) => {
+      const split = splitLocator(locator, localIds);
+      return [...new Set(localIds)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: split.get(id), supports }));
+    };
     for (const row of batch.candidates) {
       for (const key of ['id', 'axis', 'question', 'case_key', 'answer_target', 'scope', 'source_locator', 'premise_status']) if (!row[key]) throw new Error(`${file}: candidate ${row.id ?? '?'} missing ${key}`);
       if (!/^N\d{3,}$/.test(row.id)) throw new Error(`${row.id}: new candidates use N-prefixed ids`);
@@ -257,7 +325,7 @@ export function intake(root = ROOT) {
       const { source_ids: localIds, ...rest } = row;
       records.push({
         ...rest, origin: batch.batch_id, domain: `${row.axis} ${axes[row.axis]}`, hook: row.hook ?? '', bank_status: null, production: { states: [], locators: [] }, locked: false,
-        source_refs: [...new Set(localIds)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: row.source_locator, supports: '支持選題前提；完整劇本仍需逐主張查核。' })),
+        source_refs: refsFor(localIds, row.source_locator, '支持選題前提；完整劇本仍需逐主張查核。'),
         eligible: row.premise_status === 'screened', notes: row.notes ?? '', local_references: [file],
       });
     }
@@ -277,10 +345,11 @@ export function intake(root = ROOT) {
         editorial: row.editorial, risk: row.risk ?? null, screened_in: batch.batch_id,
         premise_status: row.premise_status === 'screened' ? 'legacy_screened' : 'legacy_needs_check',
         eligible: row.premise_status === 'screened',
-        source_refs: [...record.source_refs, ...[...new Set(row.source_ids)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: row.source_locator, supports: '篩選研究：支持修正後的題目前提；完整劇本仍需逐主張查核。' }))],
+        source_refs: [...record.source_refs, ...refsFor(row.source_ids, row.source_locator, '篩選研究：支持修正後的題目前提；完整劇本仍需逐主張查核。')],
         notes: [record.notes, row.notes].filter(Boolean).join(' '),
         local_references: [...record.local_references, file],
       });
+      delete record.scope_status; delete record.scope_source; delete record.card_facts_to_verify;
     }
     // 重查：上一批篩選過、被標待查（或新題待查）的題，換管道補到的來源附加上去，有給的欄位取代。
     for (const row of batch.rechecks ?? []) {
@@ -305,10 +374,11 @@ export function intake(root = ROOT) {
         rechecked_in: batch.batch_id,
         premise_status: record.origin === 'legacy' ? (screened ? 'legacy_screened' : 'legacy_needs_check') : row.premise_status,
         eligible: screened,
-        source_refs: [...record.source_refs, ...[...new Set(row.source_ids)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: row.source_locator, supports: '重查補到的來源：支持題目前提；完整劇本仍需逐主張查核。' }))],
+        source_refs: [...record.source_refs, ...refsFor(row.source_ids, row.source_locator, '重查補到的來源：支持題目前提；完整劇本仍需逐主張查核。')],
         notes: [record.notes, row.notes].filter(Boolean).join(' '),
         local_references: [...record.local_references, file],
       });
+      if (fields.scope) { delete record.scope_status; delete record.scope_source; }
     }
   }
   if (new Set(records.map((record) => record.id)).size !== records.length) throw new Error('Raw IDs must be unique across the bank, episodes and batches');

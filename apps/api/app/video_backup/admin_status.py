@@ -41,6 +41,7 @@ from app.video_backup.target import (
     normalise_path,
     remote_prefix,
     resolve_target,
+    version_stem,
 )
 from app.video_reviews.admin_service import language_states, locale_choices, ready_to_upload
 
@@ -67,20 +68,51 @@ def _record(project: VideoProject) -> dict[str, Any]:
     return dict(project.backup) if isinstance(project.backup, dict) else {}
 
 
-def _target(project: VideoProject, config: dict[str, Any]) -> Target:
+def _target(project: VideoProject, config: dict[str, Any], superseded: bool = False) -> Target:
     return resolve_target(
         project,
         tiers=backup_settings.tiers_of(config),
         folder_names=backup_settings.mapping_of(config, "folder_names"),
+        superseded=superseded,
     )
+
+
+def superseded_among(projects: list[VideoProject]) -> set[str]:
+    """The slugs with a later version (-vN) among ``projects``: Drive files them under their
+    episode's _舊版/ so the episode folder holds the latest (docs/videos/BACKUP.md §資料夾排法)."""
+    newest: dict[str, int] = {}
+    for project in projects:
+        stem, version = version_stem(project.slug)
+        newest[stem] = max(newest.get(stem, 0), version)
+    return {
+        project.slug
+        for project in projects
+        if version_stem(project.slug)[1] < newest[version_stem(project.slug)[0]]
+    }
+
+
+async def _superseded(session: AsyncSession, project: VideoProject) -> bool:
+    """Whether a later version of ``project`` is one Drive must hold (on YouTube or ready to
+    upload): the same rule as ``superseded_among`` over ``_eligible``, for one video."""
+    stem, version = version_stem(project.slug)
+    rows = await session.scalars(select(VideoProject).where(VideoProject.slug.like(f"{stem}-v%")))
+    for other in rows.all():
+        other_stem, other_version = version_stem(other.slug)
+        if other_stem != stem or other_version <= version:
+            continue
+        if other.youtube_video_id is not None or await ready_unuploaded(session, other.slug):
+            return True
+    return False
 
 
 def _int(value: Any) -> int | None:
     return value if type(value) is int and value >= 0 else None
 
 
-def backup_view(project: VideoProject, config: dict[str, Any], now: datetime) -> BackupView:
-    target = _target(project, config)
+def backup_view(
+    project: VideoProject, config: dict[str, Any], now: datetime, superseded: bool = False
+) -> BackupView:
+    target = _target(project, config, superseded)
     record = _record(project)
     stored = record.get("state")
     copied_tier: Literal["basic", "full"] | None = (
@@ -197,7 +229,9 @@ async def status(session: AsyncSession, *, everything: bool = False) -> StatusVi
     config = backup_settings.config_of(row)
     enabled = backup_settings.enabled_of(row)
     now = _now()
-    views = [backup_view(project, config, now) for project in await _eligible(session)]
+    eligible = await _eligible(session)
+    older = superseded_among(eligible)
+    views = [backup_view(project, config, now, project.slug in older) for project in eligible]
     counts: dict[BackupState, int] = dict.fromkeys(STATES, 0)
     for item in views:
         counts[item.state] += 1
@@ -222,7 +256,7 @@ async def _project(session: AsyncSession, slug: str) -> VideoProject:
 async def video_status(session: AsyncSession, slug: str) -> BackupView:
     project = await _project(session, slug)
     config = backup_settings.config_of(await backup_settings.settings_row(session))
-    return backup_view(project, config, _now())
+    return backup_view(project, config, _now(), await _superseded(session, project))
 
 
 async def review_packages(
@@ -312,8 +346,9 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
     videos = []
     eligible = await _eligible(session)
     packages = await review_packages(session, eligible)
+    older = superseded_among(eligible)
     for project in eligible:
-        target = _target(project, config)
+        target = _target(project, config, project.slug in older)
         videos.append(
             WorkerVideo(
                 slug=project.slug,
@@ -369,7 +404,8 @@ async def report(
         )
     row = await backup_settings.settings_row(session)
     config = backup_settings.config_of(row)
-    target = _target(project, config)
+    superseded = await _superseded(session, project)
+    target = _target(project, config, superseded)
     if target.tier == "off":
         raise AppError(409, "video_backup_tier_off", "這個系列設定為不備份")
     try:
@@ -437,4 +473,4 @@ async def report(
     project.backup = record
     await backup_settings.record_space(session, payload.free_bytes, payload.total_bytes)
     await session.commit()
-    return backup_view(project, config, now)
+    return backup_view(project, config, now, superseded)
