@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-4089",
+  "revision": "2026-11-12-pool-4103",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 4479,
-    "canonical_questions": 4318,
-    "eligible_candidates": 4148,
-    "selected_candidates": 4089,
+    "raw_records": 4493,
+    "canonical_questions": 4332,
+    "eligible_candidates": 4162,
+    "selected_candidates": 4103,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5355,
-    "current_research_source_urls": 2406,
-    "selected_source_urls": 3559,
-    "new_suggestions_not_added": 2489,
+    "source_urls": 5373,
+    "current_research_source_urls": 2424,
+    "selected_source_urls": 3575,
+    "new_suggestions_not_added": 2504,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
@@ -2238,6 +2238,18 @@
       "sha256": "3baa06d09394c23770e3e40b0135bab325a315d03f8b1b2b74edf6b8727b24b7"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave68-food.json",
+      "sha256": "e13d046254c7fe3450386c4ca37f905d0e258043d5d38d588c1e0abd808aec22"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave68-life.json",
+      "sha256": "828e8d8661be2d3ebc575d407a409632280b4d83ea37d82611435a0432f0b2d0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave68-physics.json",
+      "sha256": "35a7d8b4ee324e95e28415fe7e9a7802145ceac17e866da2ccf3966c90c26741"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave7-animals.json",
       "sha256": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410"
     },
@@ -2311,11 +2323,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "890f51df67b0dd2fe1f2827f8878bde5af9a38884b36caf400700000421f8410"
+      "sha256": "6639ff19af1138eef0e3e041df41d404918f1192dab7b546837f1874cfe45b12"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "bad151edb3c32aade08165a3b3e34faa4afdb4d4d3c5226077e67a911500abd5"
+      "sha256": "abc8d874d65fbc63a61afaecab8aaba4c5a34791367a426dc588001caa2ead9c"
     }
   ],
   "sources": [
@@ -16659,6 +16671,32 @@
       ]
     },
     {
+      "id": "SRC-206c4e43e494bcca",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5104510/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rstb.2015.0411",
+          "title": "Embryonic chirality and the evolution of spiralian left–right asymmetries（Martín-Durán, Vellutini, Hejnol；Phil Trans R Soc B 371: 20150411, 2016）",
+          "publisher": "Philosophical Transactions of the Royal Society B（CC BY；Europe PMC PMC5104510）",
+          "version": "出版版全文",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（文件記載的 API）列出此篇 isOpenAccess=Y，再以 Europe PMC REST fullTextXML 取全文；curl 預設標頭，本機去標籤轉文字（PMC5104510.txt）；Europe PMC search（title sinistral/dextral/chirality … snail … OPEN_ACCESS:Y）列出",
+          "reading_scope": "全文（Introduction、Results (e)、Fig 4 圖說、Discussion (b)）",
+          "locator": "Introduction 第 3 段（The dextral chirality is more common and genetically dominant, often the only conformation of a spiralian embryo and thought to be ancestral；dextral embryos develop into dextral coiling molluscs）；Results (e) 與 Fig 4 圖說（M. membranacea：9 of 11 right-handed、2 of 11 left-handed）；Discussion (b)（embryonic chirality is a defining feature of Spiralia；right-handed form more common, as is also observed in molluscs）",
+          "summary": "挪威卑爾根大學 Hejnol 研究群：蝸牛所屬的螺旋卵裂動物（含環節動物、紐形動物、腕足動物、苔蘚蟲等），早期胚胎的細胞分裂本來就帶左右手性；右手型較常見、在遺傳上顯性、常常是唯一的型，並被認為是祖先狀態（引前人）。他們在苔蘚蟲 Membranipora membranacea（已不做典型螺旋卵裂、成體也沒有明顯左右不對稱）追蹤四細胞期哪個細胞變成哪一邊：11 個胚胎中 9 個是右手型、2 個是鏡像的左手型。作者說：這些胚胎早期的左右差異，在多數成體上卻看不出來，仍是個謎。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "『右手型是祖先狀態』是引前人的推論；苔蘚蟲只有 11 個胚胎；這說明右旋偏好比蝸牛更古老、更普遍，但不解釋『為什麼是右』；與 Grande 的 nodal 結果同領域、不同研究群（Hejnol）。",
+          "author_cache": {
+            "file": "f32src/PMC5104510.xml",
+            "sha256_prefix": "8e6919cae36737ff",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5104510/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-206e0c1afbad7136",
       "url": "https://www.tetsudo.com/news/4111/",
       "readings": [
@@ -16803,6 +16841,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://docs.anthropic.com/en/docs/build-with-claude/streaming"
+        }
+      ]
+    },
+    {
+      "id": "SRC-20e05f85cb3623e6",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3020325/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/j.1469-7998.2010.00729.x",
+          "title": "Disentangling true shape differences and experimenter bias: are dextral and sinistral snail shells exact mirror images?（Schilthuizen & Haase；Journal of Zoology 282: 191–200, 2010）",
+          "publisher": "Journal of Zoology（Wiley OnlineOpen，CC BY；Europe PMC PMC3020325）",
+          "version": "出版版全文",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（文件記載的 API）列出此篇 isOpenAccess=Y，再以 Europe PMC REST fullTextXML 取全文；curl 預設標頭，本機去標籤轉文字（PMC3020325.txt）；Europe PMC search（Kuroda chiral blastomere snail 2009）結果列出",
+          "reading_scope": "全文（摘要、方法、結果、討論）",
+          "locator": "Abstract（50 dextral and 50 sinistral Amphidromus inversus；4 of 18 volunteers with Vernier calipers；1 of 5 from photographs；geometric morphometric：slight but significant widening and twisting near the palatal and parietal apertural areas）",
+          "summary": "荷蘭 Naturalis 博物館與德國格來夫斯瓦爾德大學：左右旋並存的樹蝸牛 Amphidromus inversus，旋向由媽媽的一個基因決定、跟自己的基因型無關，所以照理左右旋應是完全鏡像。研究者拿 50 個右旋、50 個左旋殼請志願者量：18 位用游標卡尺的志願者中 4 位量出左旋『顯著比較胖』，5 位量照片的只有 1 位；這分不出是真的差別還是人拿左旋殼的手勢偏差。改用幾何形態測量後，確認左旋殼在殼口附近有輕微但顯著的變寬與扭曲。作者說這出乎意料，推測對形狀差異的選擇很弱，或旋向基因的副作用只在發育極早期重要。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一物種、博物館殼；差異『輕微』，不得說左旋殼明顯比較胖；Schilthuizen 與 Davison 有合作（Schilthuizen 2007，L66-028），覆核可能把它歸入 Davison／Chiba 網絡封頂；Haase 為新的研究者。 覆核 V35（2026-11-12）：limitations 由『覆核可能把它歸入 Davison／Chiba 網絡』改為『已歸入 Davison／Chiba 網絡（本文參考文獻有 Schilthuizen M, Davison A 合著；L66-028 的 Schilthuizen 2007 亦同網絡）』；summary 的『旋向由媽媽的一個基因決定』註明是原文對左右旋並存種的一般敘述。",
+          "author_cache": {
+            "file": "f32src/PMC3020325.xml",
+            "sha256_prefix": "e6097385f83e1745",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3020325/fullTextXML"
         }
       ]
     },
@@ -20051,6 +20115,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070007&flno=52"
+        }
+      ]
+    },
+    {
+      "id": "SRC-28219e5a92856f50",
+      "url": "https://publica.fraunhofer.de/bitstreams/ea7ae6b6-a1d9-461d-a125-bb0cad16f63e/download",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.5402/2013/703202",
+          "title": "High-Speed Ice Friction Experiments under Lab Conditions: On the Influence of Speed and Normal Force",
+          "publisher": "Matthias Scherge、Roman Böttcher、Mike Richter、Udo Gurgel（德國 Fraunhofer IWM 微摩擦學中心、Ingenieurbüro Gurgel und Partner）／ISRN Tribology 2013, Article ID 703202（Hindawi）",
+          "version": "期刊正式排版 PDF，存於 Fraunhofer Publica 機構典藏；首頁標 CC BY（Creative Commons Attribution License）",
+          "read_via": "WebSearch（Scherge high-speed ice friction）結果列出 publica.fraunhofer.de 紀錄頁 handle/publica/231907；頁面上的 bitstream download 連結 curl 200（application/pdf）。doi.org 轉 hindawi.com 為 Cloudflare 403，未繞過。PDF 文字層的數字字型無法抽取（pdftotext、pypdf 都缺數字），改以 pdftoppm 轉成頁面影像（f31img/scherge2013-1～6.png）逐頁讀正文",
+          "reading_scope": "全文 6 頁（摘要、前言、實驗、結果、討論、結論）；數值取自正文與摘要，不讀圖上的點",
+          "locator": "Abstract；§2.1 Test cell（3.8 m 轉鼓、室溫維持 −5 °C）；§2.2 Runners（F.I.B.T. 鋼、截面半徑 4／8 mm、搖擺半徑 3.8 m）；§3.1 Friction as function of speed（2.8–28 m/s、500 N；2.8 m/s 時 0.015–0.016，最高速 0.005–0.008）；§3.2 load（14 m/s，100–500 N）；§3.3 Ice fracture；§4.1（最高速平均 0.007、外插 33 m/s 約 0.005；與他組資料的 master curve、約 3 m/s 以下降最多）；§5 Conclusions",
+          "summary": "在 −5 °C 的冷房裡，把有舵雪橇（bobsled）規格的鋼刃壓在 3.8 公尺轉鼓內面的冰上，速度 2.8–28 m/s（10–100 km/h）、法向力 500 N：摩擦係數隨速度近乎直線下降，2.8 m/s 時 0.015–0.016，最高速時 0.005–0.008、平均 0.007；超過約 20 m/s 後低於 0.01。把他組低速資料（Niven 除外）與本研究併成一條曲線：約 3 m/s 以前下降最多，再快只小幅下降；作者推測可能是摩擦產生更多自由水的能力在高速時趨於飽和，並明說證明它超出本文範圍。在 14 m/s 加大法向力 100→300 N 時摩擦下降，之後大致不變（約 0.011），冰面出現磨痕與冰屑；作者以赫茲接觸算出約 40 MPa 時冰開始破裂。",
+          "limitations": "單一實驗室、單一溫度（室溫 −5 °C）、鋼刃；摩擦降低的機制（水膜）是作者推測與引用，不是量到的。和其他組的數值『併成一條曲線』是作者自己做的整理，片中不再另外合併或相減。PDF 文字層數字缺失，數值是讀頁面影像上的正文（非讀圖表點）；覆核可從 f31img 影像或同一 PDF 核對。原文有增加壓艙重量的運動建議，片中不得轉述。 覆核 V34（2026-11-12）：read_via 補「Publica 紀錄頁（WebSearch 結果）以 <link rel=item type=application/pdf> 與檔案下載連結提供此 bitstream，並標 Open Access；PDF 首頁印 Hindawi 的 CC BY 聲明，與 DOI 指向的 ISRN Tribology 刊本相同；doi.org→hindawi.com Cloudflare 403 未繞過」。limitations 補「§1 與 Fig. 7 併入 Itagaki 等（F31-S005）的資料，兩者不完全獨立；影像是排版正文，不是 OCR 舊掃描」。",
+          "author_cache": {
+            "file": "f31src/publica_231907_download.pdf（頁面影像 f31img/scherge2013-1～6.png；紀錄頁 f31src/publica_231907.html）",
+            "sha256_prefix": "a39c8e697a3fba53",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-11",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave68-physics-20261111",
+          "original_url": "https://publica.fraunhofer.de/bitstreams/ea7ae6b6-a1d9-461d-a125-bb0cad16f63e/download"
         }
       ]
     },
@@ -27999,6 +28089,32 @@
       ]
     },
     {
+      "id": "SRC-37ef135c24c3ac53",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9187360/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.biocon.2021.108950",
+          "title": "COVID-19 lockdown reveals tourists as seabird guardians（Hentati-Sundberg, Berglund, Hejdström, Olsson；Biological Conservation 254: 108950, 2021）",
+          "publisher": "Biological Conservation（Elsevier COVID-19 資源中心授權存入 PMC；Europe PMC PMC9187360）",
+          "version": "出版版全文（Short Communication）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（文件記載的 API）列出此篇 isOpenAccess=Y，再以 Europe PMC REST fullTextXML 取全文；curl 預設標頭，本機去標籤轉文字（PMC9187360.txt）；先由 Europe PMC search（murre OR guillemot … egg … OPEN_ACCESS:Y）列出",
+          "reading_scope": "全文（摘要、方法、結果、討論、影片說明）",
+          "locator": "Abstract（遊客缺席、白尾海鵰出現與干擾各約七倍、繁殖表現低 26%）；Results 第 1–3 段（人類出現少 92%；26% lower breeding performance than 2010–2019；hatching success 21% lower）；Results 第 3 段與 Video 3、Video 4 說明（eggs predated by herring gulls and hooded crows while murres were absent；eggs observed falling off the ledges during the disturbances）",
+          "summary": "瑞典 Stora Karlsö 島的海鴉（崖海鴉）繁殖群，閉路攝影機整季拍攝岩架。2020 年疫情封島，人類出現比前三年少 92%，白尾海鵰出現與造成的集體驚飛都增加約七倍；海鵰沒有抓到海鴉，但牠一來，親鳥一起離開岩架，沒人顧的蛋被銀鷗與冠小嘴烏鴉吃掉，影片也拍到蛋在驚飛時從岩架滾落。當年監測岩架的繁殖表現比 2010–2019 年平均低 26%，孵化成功率低 21%。作者的結論是遊客意外成了海鴉的守護者。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一繁殖群、單一年份對照長期平均；『蛋從岩架掉落』只有影片觀察、沒有計數，不能說掉落占損失多少；26% 是整體繁殖表現，包含被吃與其他原因；與蛋形無關，不能說『尖蛋沒用』，只能說：在野外，海鴉蛋的大風險發生在親鳥離蛋時。不給任何賞鳥或保育操作建議。 覆核 V35（2026-11-12）：summary 的『白尾海鵰出現與造成的集體驚飛都增加約七倍』改為：『摘要寫海鵰與驚飛都約增七倍；結果段：海鵰每月最多記錄數平均 2010–2019 年 2.25、2020 年 19.25；驚飛次數 2019 年每天 5.7、2020 年 15.3，驚飛總時間每天 72→602 分鐘』。limitations 補：『26% 只指 Västerberget 每年監測的岩架（繁殖嘗試少 6.8%、孵化成功率低 21%）；產蛋晚 10 天；Stornasar 子群 2020 年零成功；研究者自己的出現可能保護了最大子群』。",
+          "author_cache": {
+            "file": "f32src/PMC9187360.xml",
+            "sha256_prefix": "59e9403a87a173cb",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9187360/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-382a0aa46bd9fa2e",
       "url": "https://archive.org/details/bstj39-4-995",
       "readings": [
@@ -30097,6 +30213,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.gao.gov/assets/gao-20-191.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3c945eb1cfefd10d",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10331910/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rstb.2022.0144",
+          "title": "Chthonic severance: dinosaur eggs of the Mesozoic, the significance of partially buried eggs and contact incubation precursors（Hogan & Varricchio；Phil Trans R Soc B 378: 20220144, 2023）",
+          "publisher": "Philosophical Transactions of the Royal Society B（CC BY；Europe PMC PMC10331910）",
+          "version": "出版版全文",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（文件記載的 API）列出此篇 isOpenAccess=Y，再以 Europe PMC REST fullTextXML 取全文；curl 預設標頭，本機去標籤轉文字（PMC10331910.txt）；先由 Europe PMC search（troodontid/oviraptorid egg … OPEN_ACCESS:Y）列出",
+          "reading_scope": "全文（第 2 節 Mesozoic dinosaur eggs、第 3 節 Efficacy of partial egg burial）",
+          "locator": "§2 第 3–4 段（oviraptorosaur 與 troodontid 蛋長寬比 2:1 到 3:1 以上；不對稱只在傷齒龍類明顯；傷齒龍一窩 10–24 顆 Prismatoolithus 蛋陡斜到近直立、尖端朝下，上方鈍端可互相接觸；窃蛋龍類尖端朝下但約傾 35–40°）；§3（埃及與阿拉伯半島的部分鴴科把蛋尖端朝下半埋，轉述 Maclean 1974、Meinertzhagen 1954）",
+          "summary": "蒙大拿州立大學 Varricchio 研究群的綜述與假說文章：多數恐龍的蛋近球形、高孔隙、大概全埋；到包含鳥類的近鳥恐龍（Pennaraptora），蛋變長、孔隙變少、只半埋。窃蛋龍類與傷齒龍類的蛋長寬比 2:1 到超過 3:1，但明顯一頭尖一頭鈍的只有傷齒龍類；傷齒龍的一窩 10–24 顆蛋在沉積物中陡斜到近乎直立、尖端朝下，上方的鈍端可能互相緊靠，親體可能坐在露出的部分上。作者把這種『半埋＋接觸孵蛋』看成從鱷魚式全埋到現代鳥完全露出蛋之間的可能過渡（作者自稱提出假說）。文中也轉述阿拉伯半島的東方環頸鴴族群會把蛋尖端朝下半埋。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "綜述加假說，非新資料；傷齒龍的擺放描述引自 Varricchio 等 1999（本輪未讀原文）；現生鴴科半埋蛋的方向是轉述 1954 年的書，不計分、片中不提或只當一句『也有人觀察到』；『過渡』是作者假說。與 L66-010（Deeming & Ruta 2014）同講恐龍蛋形，但本篇新增的是蛋在巢裡的方向，不重算不對稱的起源。 覆核 V35（2026-11-12）：summary 補：『§2 也寫：阿根廷與蒙古有些蛋單顆、尖端朝下，可能只是埋在土裡就離開（引 Fernández 2013 等），類似部分在洞穴營巢的塚雉』；『窃蛋龍類與傷齒龍類的半埋巢看來也排除了翻蛋』。limitations 補：『傷齒龍擺放引自 Varricchio 等 1999，Varricchio 即本綜述作者，屬綜述轉述自己團隊的原論文』；『傷齒龍類是親緣上較基群，不代表年代更早』。",
+          "author_cache": {
+            "file": "f32src/PMC10331910.xml",
+            "sha256_prefix": "5c8f7714df111479",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10331910/fullTextXML"
         }
       ]
     },
@@ -32828,6 +32970,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.vishay.com/en/product/84274/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-427be9bb4b671850",
+      "url": "https://hal.science/jpa-00226288/file/ajp-jphyscol198748C142.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1051/jphyscol:1987142",
+          "title": "Preliminary study of friction between ice and sled runners",
+          "publisher": "K. Itagaki、G. E. Lemieux、N. P. Huber（美國陸軍寒區研究與工程實驗室 CRREL、Dartmouth College）／Journal de Physique Colloques 48(C1):C1-297–C1-301，1987（HAL 典藏 jpa-00226288）",
+          "version": "會議論文集正式排版 PDF（HAL 典藏，HAL Authorization 授權）",
+          "read_via": "HAL 公開搜尋 API（api.archives-ouvertes.fr/search，title 含 ice 與 friction、有檔案）回傳 files_s 欄位；curl 200（application/pdf），pdftotext 轉文字",
+          "reading_scope": "全文 5 頁（摘要、前言、實驗、結果三小節、參考文獻）；Fig. 2 只讀正文描述",
+          "locator": "Abstract；2. Experimental（60 kg 模型雪橇、1.5 m/s、三種鋼材熱導率 68／17／10 W/mK、Table 1）；3. Results：Effect of runner temperature、Effect of runner surface、Effect of runner material",
+          "summary": "CRREL 讓 60 公斤的模型雪橇以約 1.5 m/s 在冷房冰面上自由滑行超過 700 趟，用光閘量減速算摩擦。光滑刃在約 −1 °C 比約 −10 °C 滑（如預期），刃加熱後越熱越滑；粗糙刃幾乎看不出溫度影響，甚至相反。依摩擦融化理論，導熱差的材料應留住較多熱、較滑；但導熱最差的 MP35N（10 W/mK）在一般拋光與粗糙時摩擦反而最高；只有高度拋光時，三種鋼才照『導熱越差越滑』排序，全研究最低摩擦出現在 −3 °C 的高度拋光 MP35N。作者推測刃面粗糙度與硬度（被冰中磨料磨平的程度）影響很大。",
+          "limitations": "作者自稱初步研究，條件難以完全一致（刃面在測試中被磨耗），數值多在圖上、本紀錄只用正文的定性結論；Kietzig 2010 把它引為『導熱越高摩擦越高』的佐證，只對高度拋光那組成立，片中照本紀錄講條件。不得延伸成雪橇、冰刀材質或拋光建議。 覆核 V34（2026-11-12）：summary 補「作者推測先前研究看到的導熱效應可能是刃面狀態造成（The effects of the thermal conductivity observed are probably caused by such surface conditions）」；limitations 補「其資料被 Scherge 2013（F31-S002）Fig. 7 併用」。",
+          "author_cache": {
+            "file": "f31src/ajp-jphyscol198748C142.pdf（文字 f31src/ajp-jphyscol198748C142.txt；HAL API 回應 f31src/hal_icefric.json）",
+            "sha256_prefix": "7530650fa7eb1136",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-11",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave68-physics-20261111",
+          "original_url": "https://hal.science/jpa-00226288/file/ajp-jphyscol198748C142.pdf"
         }
       ]
     },
@@ -39305,6 +39473,32 @@
       ]
     },
     {
+      "id": "SRC-5169d23c9d7cb921",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2661027/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/nature07603",
+          "title": "Nodal signalling is involved in left-right asymmetry in snails（Grande & Patel；Nature 457: 1007–1011, 2009）",
+          "publisher": "Nature（作者稿 NIHMS77187，Europe PMC／PMC2661027）",
+          "version": "作者接受稿（HHMI 作者稿，PMC 典藏）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（文件記載的 API）列出此篇 isOpenAccess=Y，再以 Europe PMC REST fullTextXML 取全文；curl 預設標頭，本機去標籤轉文字（PMC2661027.txt）；Europe PMC search（Grande Patel nodal snail）列出",
+          "reading_scope": "全文（正文、圖說；補充表未讀）",
+          "locator": "Abstract；正文 Fig 2 圖說與前後段（nodal 在右旋 Lottia gigantea 胚胎右側、左旋 Biomphalaria glabrata 左側；Pitx 同側）；〈first detected at the 32-cell stage〉；SB-431542 段（5 μM 時 8%、10 μM 時 43% 完成原腸化的個體長成不捲的直管殼；只有在囊胚期前給藥才出現）",
+          "summary": "加州大學柏克萊 Patel 實驗室首次在非後口動物找到 nodal：右旋的帽貝 Lottia gigantea，nodal 與其下游 Pitx 表現在胚胎右側；左旋的扁蜷 Biomphalaria glabrata 則在左側——訊號在哪一邊，跟身體往哪邊旋一致。用抑制 Nodal 路徑的藥 SB-431542 處理左旋扁蜷的早期胚胎，多數停在原腸化前；完成原腸化的個體中，5 μM 時 8%、10 μM 時 43% 長成沒有盤旋、只有一點背腹彎曲的管狀殼。只有在囊胚期之前給藥才有這種效果。作者推論 Nodal 參與左右不對稱可能是兩側對稱動物的祖先特徵。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "作者稿；藥物抑制、不是基因剔除；結果是『不捲』而不是『反向捲』；只兩個物種；藥物專一性作者以未偵測到 activin 表現推論。與 L66-022（formin 決定方向）是不同層次：formin 在第一到第三次分裂，nodal 在 32 細胞期之後，片中不得說 nodal 決定方向。",
+          "author_cache": {
+            "file": "f32src/PMC2661027.xml",
+            "sha256_prefix": "b25cae6832ec1faa",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2661027/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-5177f99a9d4e880d",
       "url": "https://www.bksv.com/doc/br0476.pdf",
       "readings": [
@@ -40156,6 +40350,32 @@
           ],
           "origin": "wave45-physics-20261103",
           "original_url": "https://doi.org/10.1103/PhysRevLett.130.244001"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5393abd77ea23629",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9907556/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1093/molbev/msac270",
+          "title": "A Small Change With a Twist Ending: A Single Residue in EGF-CFC Drives Bilaterian Asymmetry（Truchado-García, Perry, Cavodeassi, Kenny, Henry, Grande；Mol Biol Evol 40(2): msac270, 2023）",
+          "publisher": "Molecular Biology and Evolution（CC BY-NC；Europe PMC PMC9907556）",
+          "version": "出版版全文",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（文件記載的 API）列出此篇 isOpenAccess=Y，再以 Europe PMC REST fullTextXML 取全文；curl 預設標頭，本機去標籤轉文字（PMC9907556.txt）；Europe PMC search（Grande Patel nodal snail）列出",
+          "reading_scope": "全文（摘要、Results 的 nodal 過量表現與 RHAct-A 處理、Table 1–2、Discussion）",
+          "locator": "Table 1（Cfo_NodalB_wt 600 pg：25 個胚胎 92% 對稱）；Table 2 與正文（RHAct-A 於 32 hpf 處理：51 個中 41 個、80.4% 對稱；48、61 hpf 約 60%）；Fig 3 C3–C8 圖說（coiled、hemitorsioned、straight larvae）；Abstract（egf-cfc 不參與腹足類左右）",
+          "summary": "Grande（馬德里自治大學）與 Henry 研究群在拖鞋螺 Crepidula fornicata：注射過量 nodalB mRNA，最高劑量下 25 個胚胎有 92% 長成左右對稱；以 activin 蛋白 RHAct-A 擋住 Nodal 路徑，囊胚早期（32 hpf）處理 80.4% 成為對稱、沒有正常盤旋與內臟扭轉的幼體，較晚處理約六成。另一個在脊椎動物調控 Nodal 的 egf-cfc 基因在蝸牛存在，但不參與左右不對稱；作者用斑馬魚實驗指出，脊索動物的祖先只差一個胺基酸就讓它多了這個功能。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與 F32-S005 同一研究者（Grande）的延續研究，算同一研究網絡；『對稱』是幼體分類，不是成殼；只說明 Nodal 路徑被打亂就失去盤旋，不說明方向怎麼決定；斑馬魚部分離題不用。 覆核 V35（2026-11-12）：limitations 補：『最早窗口（2 細胞期 7 hpf 起到 48 hpf）的 RHAct-A 處理沒有任何對稱幼體；48 hpf 給 5 μM 只有 8.8%』；『Grande 是本篇通訊作者，也是 F32-S005 第一作者——同一研究者的延續研究，片中不得稱「另一個研究群」』。",
+          "author_cache": {
+            "file": "f32src/PMC9907556.xml",
+            "sha256_prefix": "0c89a11b0a24d72f",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9907556/fullTextXML"
         }
       ]
     },
@@ -59086,6 +59306,32 @@
       ]
     },
     {
+      "id": "SRC-7f2b45ec36e25b5b",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/1D873F1A79EC3000BEFEC92B0639E606/S0022143000029300a.pdf/div-class-title-friction-of-a-steel-ball-on-a-single-crystal-of-ice-div.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3189/S0022143000029300",
+          "title": "Friction of a Steel Ball on a Single Crystal of Ice",
+          "publisher": "Katutosi Tusima（對馬勝年，北海道大學低溫科學研究所）／Journal of Glaciology 19(81):225–235，1977（Cambridge University Press）",
+          "version": "期刊掃描版 PDF（出版社網站免費閱讀，OCR 文字層；非 CC 授權）",
+          "read_via": "WebSearch（Tusima 1977 steel ball single crystal ice）結果列出 cambridge.org 文章頁；curl 工具預設標頭 200，取 meta citation_pdf_url 下載 PDF（200），pdftotext 轉 OCR 文字",
+          "reading_scope": "全文（英文摘要、前言、實驗、結果各小節、Discussion、Table 1、討論紀錄）；OCR 有雜字，數值以摘要與 Discussion 正文為準",
+          "locator": "Abstract；Experimental（Mendenhall 冰河單晶、基面與柱面並排的雙晶樣品、−0.5 到 −30 °C、球徑 1.6–12.7 mm）；Results (1) friction curve（柱面約為基面兩倍）、(4) temperature dependence（一例在 −7 °C、7.4×10⁻⁵ m/s、4.8 N 時最低）；Discussion（摩擦升溫最多約 0.3 度、不足以融冰；黏著理論 s/p，冰約 10 bar／10³ bar → μ 約 0.01；Table 1）",
+          "summary": "用鋼珠在阿拉斯加 Mendenhall 冰河取來的單晶冰上極慢地滑（1.5×10⁻⁷ 到 1.8×10⁻³ m/s），摩擦係數仍只有 0.005–0.2（討論段寫 0.005–0.16）；同樣條件下，在晶體柱面上滑的摩擦約是基面的兩倍；速度越慢摩擦越大，作者歸因於接觸區冰的潛變；接近 0 °C 摩擦急升，一例在 −7 °C 最低。作者用公式算出這些條件下摩擦升溫最多只有約 0.3 度、不足以融冰，壓力也只有在高溫時能融出水，因此認為壓力融化與摩擦融化都解釋不了，改用黏著理論：摩擦係數約等於『黏結處的剪切強度÷硬度』，冰的硬度和銅同級、剪切強度卻極小，代入 −10 °C 的典型值（約 10 bar 與 10³ bar）得 μ 約 0.01，與實驗同一量級。",
+          "limitations": "1977 年單一作者、單一實驗室；與 Sazaki 研究群同屬北大低溫研但年代與題目不同，非同一研究群。黏著理論是作者的解釋；s、p 是引用他人量測的典型值。−7 °C 最低只是一例，不和 P64-012／P64-014 的 −7 °C 並列成『三個研究都說 −7 °C』。OCR 文字有雜字。 覆核 V34（2026-11-12）：summary 的『壓力也只有在高溫時能融出水』保留原文用詞（except at high temperatures），proposal 不得改寫成『接近 0 °C』；limitations 補「速度範圍原文前後不一：英文摘要 1.5×10⁻⁷–1.8×10⁻³ m/s、Discussion 10⁻⁷–1.8×10⁻³、法文摘要上限 7.4×10⁻³；μ 上限摘要 0.2、Discussion 0.16；0.3 度是作者以 Bowden–Tabor 公式估算」。版權 © IGS 1977、出版社頁免費閱讀。",
+          "author_cache": {
+            "file": "f31src/camb_tusima1977.pdf（OCR 文字 f31src/tusima_raw.txt；文章頁 f31src/camb_tusima1977.html）",
+            "sha256_prefix": "b6288ba59e5d06c0",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-11",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave68-physics-20261111",
+          "original_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/1D873F1A79EC3000BEFEC92B0639E606/S0022143000029300a.pdf/div-class-title-friction-of-a-steel-ball-on-a-single-crystal-of-ice-div.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-7f4630087c804cd3",
       "url": "https://www.commerce.gov/data-and-reports/reports/1999/11/economics-y2k-and-impact-united-states",
       "readings": [
@@ -75205,6 +75451,32 @@
       ]
     },
     {
+      "id": "SRC-a1ced6f4c5c03039",
+      "url": "https://academicworks.cuny.edu/hc_sas_etds/252/",
+      "readings": [
+        {
+          "canonical_url": "https://academicworks.cuny.edu/hc_sas_etds/252",
+          "title": "How the Egg Rolls: A Morphological Analysis of Egg Shape in the Context of Displacement Dynamics（Ian R. Hays；CUNY Hunter College 碩士論文，2018）",
+          "publisher": "CUNY Academic Works（機構典藏）",
+          "version": "典藏紀錄頁（摘要）；PDF 未取得",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 academicworks.cuny.edu/hc_sas_etds/252 與 openpolar 紀錄；curl 預設標頭取紀錄頁（301→200）；頁面 meta citation_pdf_url 列出的 viewcontent.cgi?article=1281&context=hc_sas_etds 以 curl 取回 Cloudflare『Just a moment』403，未繞過、已刪除該錯誤頁",
+          "reading_scope": "只有摘要",
+          "locator": "紀錄頁 Abstract 段",
+          "summary": "Hays & Hauber 2018 JEB 的同名碩士論文摘要：把蛋形拆成伸長、不對稱與錐度三個變項，3D 列印只改一個變項或三者同改的模型，在代表巢地的不同坡度上做滾動試驗。單變項模型中，伸長與不對稱增加位移、錐度（尖端像圓錐的程度）減少位移；多變項模型裡只有錐度一致抑制位移。作者說結果大致支持梨形蛋的適應價值。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到摘要，不算全文、不計分；全文 PDF 被 Cloudflare 擋；JEB 期刊版第十七輪已記 403。",
+          "author_cache": {
+            "file": "f32src/cuny_252.html",
+            "sha256_prefix": "de52fc80ee9a0dcb",
+            "note": "紀錄頁 HTML，含摘要；PDF 回 Cloudflare 驗證頁，未保存 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://academicworks.cuny.edu/hc_sas_etds/252/"
+        }
+      ]
+    },
+    {
       "id": "SRC-a1e08821a11517d3",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5187715/",
       "readings": [
@@ -76646,6 +76918,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave63-physics-20261111",
           "original_url": "https://mcdermottlab.mit.edu/papers/Traer_McDermott_2016_reverberation.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a56a6dfa6df6780a",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7716593/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1186/s13227-020-00169-4",
+          "title": "The pond snail Lymnaea stagnalis（Kuroda & Abe；EvoDevo 11: 24, 2020）",
+          "publisher": "EvoDevo（BMC，CC BY；Europe PMC PMC7716593）",
+          "version": "出版版全文（模式生物介紹綜述）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（文件記載的 API）列出此篇 isOpenAccess=Y，再以 Europe PMC REST fullTextXML 取全文；curl 預設標頭，本機去標籤轉文字（PMC7716593.txt）；Europe PMC search（Abe Kuroda CRISPR Lsdia1）列出；原始論文 Abe & Kuroda 2019 Development（10.1242/dev.175976）在 Europe PMC 為非開放",
+          "reading_scope": "全文（Field collection、Chirality、CRISPR/Cas9-mediated gene editing 各段）",
+          "locator": "〈Field collection and lab culture〉（野外 98% 右旋、2% 左旋）；〈Chirality〉段（第三次分裂反向撥動得健康鏡像個體、nodal/Pitx 位置也鏡像、自交後代回到原旋向；Lsdia1 移碼突變；CRISPR 雙等位移碼突變在全右旋背景產生一代又一代的左旋後代；第一次分裂已依 Lsdia1 往順或逆時針扭；Kuroda 與 Davison 兩組 2016 年各自找到候選，基因命名相反、序列有出入）；〈CRISPR/Cas9-mediated gene editing〉（39 個注射胚、10 隻 F0 成體、5 隻有生殖系傳遞）",
+          "summary": "東京理科大學黑田玲子研究群為自己的模式動物椎實螺寫的綜述：野外的椎實螺約 98% 右旋、2% 左旋。他們在第三次分裂時用玻璃針把胚胎細胞往反方向撥，nodal 與 Pitx 的表現位置隨之鏡像，長出健康的鏡像蝸牛，但自交的下一代又回到原本的旋向。2019 年他們用 CRISPR/Cas9 在全為右旋的品系裡把 Lsdia1 基因兩個拷貝都打出移碼突變，得到左旋的後代，而且一代接一代都是左旋；作者稱這終於確認了找了近一世紀的旋向基因，也是軟體動物第一次讓 CRISPR 編輯傳到下一代。作者也記下：2016 年英國 Davison 團隊與他們各自把這對 formin 基因列為候選，但兩組的命名正好相反、序列也有出入。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "作者為自己研究寫的綜述，CRISPR 結果的原始數據在 Abe & Kuroda 2019（付費，未讀），因此只算綜述層級；與 Davison 團隊的命名與序列爭議是黑田一方的說法；98%／2% 只指椎實螺 L. stagnalis，不能套到所有蝸牛。不給任何飼養或實驗操作建議。L66-021 的『日本一個團隊說…撥轉得鏡像個體』由轉述升為該團隊自己的綜述。 覆核 V35（2026-11-12）：title 後的研究群改為『中部大學 Frontier Research Institute 黑田玲子研究群（日本）』，刪『東京理科大學』；summary 的『兩個拷貝』改為『兩個等位基因（biallelic）』；補一句原文『2016 年兩組都沒有證明該基因就是旋向決定基因（Neither study proved…）』。",
+          "author_cache": {
+            "file": "f32src/PMC7716593.xml",
+            "sha256_prefix": "427d3c490f940643",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7716593/fullTextXML"
         }
       ]
     },
@@ -80091,6 +80389,32 @@
       ]
     },
     {
+      "id": "SRC-ac1139f8e10ed246",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3629076/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0061030",
+          "title": "A Large Accumulation of Avian Eggs from the Late Cretaceous of Patagonia (Argentina) Reveals a Novel Nesting Strategy in Mesozoic Birds（Fernández, García, Fiorelli, Scolaro, Salvador, Cotaro, Kaiser, Dyke；PLoS ONE 8(4): e61030, 2013）",
+          "publisher": "PLoS ONE（CC BY；Europe PMC PMC3629076）",
+          "version": "出版版全文",
+          "accessed_on": "2026-11-12",
+          "read_via": "Hogan & Varricchio 2023（F32-S002）參考文獻 39 列出此篇與 DOI；Europe PMC REST search（DOI:10.1371/journal.pone.0061030）回 PMC3629076、isOpenAccess=Y；以 REST fullTextXML 取全文（PMC3629076.xml，轉文字 PMC3629076.txt）",
+          "reading_scope": "全文（摘要、Spatial Distribution of Eggs、Water Vapour Conductance、Discussion）",
+          "locator": "Abstract（65 eggs；all but one half-buried upright, pointed end downwards；air cell pole exposed；precluded egg turning；not seen in living birds except megapodes）；Results〈Spatial Distribution of Eggs〉（majority buried vertically, polar region pointing downwards；only in a few rare cases horizontal）；Discussion 第 2–3 段（megapode eggs not asymmetrical；resemble troodontids；speculation that vertical strategy was abandoned）",
+          "summary": "阿根廷內烏肯市 Comahue 大學校園內晚白堊紀地層的鳥蛋群（作者認為幾乎可確定是反鳥類）：在 55 平方公尺以上範圍測繪並採集 65 顆完整、近完整與破損的蛋，單顆或偶爾成對下在沙地上，沒有巢的構造。摘要說除一顆外都『半埋、直立、尖端朝下』，結果段說『大多數』垂直埋、尖端朝下，只有少數橫躺（作者推為埋後擾動）。作者指出這個姿勢讓含氣室的鈍端露在外面、親鳥無法翻蛋；現生鳥中只有塚雉把蛋直立埋在植物堆或洞裡，而塚雉的蛋並不不對稱。作者認為這些蛋與某些傷齒龍類直立放蛋相似，並推測這種直立、不能翻的下蛋法後來被『會翻蛋』的方式淘汰（明寫 We speculate）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "化石單一地點；『反鳥類』是作者的歸屬判斷；摘要（all but one）與結果段（majority、few rare cases horizontal）措辭不一致，片中只能說『絕大多數』；『被翻蛋策略淘汰』是推測；文中引用的家雞不翻蛋死亡率 85% 是轉述他文、且屬家禽孵化管理，不用、不計。與池中 L66-010（不對稱蛋在獸腳類已出現）不同答案：本篇談的是尖端朝下插進沙裡的擺放方式。 覆核 V35（2026-11-12）：read_via 改為：Hogan & Varricchio 2023 參考文獻 39 只列『PLoS ONE 8, e61030』（沒有 DOI）；研究代理把它寫成 DOI 當 Europe PMC search 的查詢字串（第 40 次呼叫），回 PMC3629076；覆核另以題名＋作者在 Europe PMC search 查得同一筆（同時回 DOI），再用 fullTextXML 取全文。limitations 補：『地層為 Middle-Upper Santonian，全文沒有年代數字』；『Hogan & Varricchio 2023 把同一批阿根廷單顆、尖端朝下的蛋讀成可能只是埋了就走，與本篇「半埋、露出氣室端」讀法不同』；『「現生鳥只有塚雉」是本篇的說法，Hogan 2023 轉述阿拉伯半島東方環頸鴴也尖端朝下半埋』；『反鳥類歸屬依前人對胚胎骨骼的判斷』。",
+          "author_cache": {
+            "file": "f32src/PMC3629076.xml",
+            "sha256_prefix": "ea8827cd976011ee",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3629076/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-ac16f5ecf1da3800",
       "url": "https://info.cern.ch//nhttp://info.cern.ch/hypertext/WWW/TheProject.html",
       "readings": [
@@ -81592,6 +81916,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.inditex.com/itxcomweb/api/media/1da2c9d1-dbca-49fb-9563-982a8a27fae6/INDITEXFullYear2025.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-af9afbdb8affcd36",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1686199/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rsbl.2006.0465",
+          "title": "Crab scars reveal survival advantage of left-handed snails（Dietl & Hendricks；Biology Letters 2(3): 439–442, 2006）",
+          "publisher": "Biology Letters（The Royal Society；PMC 典藏）",
+          "version": "出版版全文（PMC 網頁）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 pmc.ncbi.nlm.nih.gov/articles/PMC1686199；curl 預設標頭（301→200，無瀏覽器驗證），取 <article> 內文去標籤（pmc1686199.txt）。Europe PMC REST fullTextXML 對此篇回 500（非開放子集），isOpenAccess=N 但 PMC 頁免費可讀",
+          "reading_scope": "全文（正文、Table 1、圖說；電子補充資料未讀）",
+          "locator": "Abstract；§2 Material and methods（five whelk and six cone species pairs, totalling 1772 specimens；只比較平均殼長相近的樣本）；§3 Results（only one of 11 samples showed the opposite pattern；binomial p<0.05）；§4 Discussion 第 2–3 段（右手大螯；三隻 Calappa flammea 撿起左旋 Sinistrofulgur sinistrum 後放棄，右旋 Busycon carica 照樣打開，preliminary observations）與末段（why is left-handedness so rare … We do not have an answer）",
+          "summary": "耶魯與康乃爾的古生物學者用美國東南部上新世到更新世的化石，比較 5 對海螺（Busycon 類）與 6 對芋螺中外形相近、一右旋一左旋的物種，共 1,772 個殼，數殼上『被螃蟹攻擊後修補的疤』。11 組裡有 10 組是右旋的那一種帶疤比例較高，只有 1 組相反。作者解讀為左旋的殼較少遭到螃蟹攻擊（或攻擊較常失敗），因為剝殼的螃蟹大螯多在右邊；他們的初步觀察是三隻箱蟹撿起左旋海螺後放棄、沒造成傷害，同樣大小的右旋海螺卻被打開。作者也坦白：既然左旋有好處，為什麼它在螃蟹多的熱帶海裡仍然那麼少，他們答不出來。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "化石間接證據：修補疤是『沒被吃掉的失敗攻擊』，作者以兩型防禦構造相似為由排除『左旋被攻擊就死』的解釋，但未直接證明；物種對之間假設行為與棲地相同（芋螺較推測性）；箱蟹觀察是初步、只有三隻；與 L66-024（陸生蝸牛與蛇）不同捕食者、不同研究群，不得合併成同一數字。 覆核 V35（2026-11-12）：summary 的『左旋的殼較少遭到螃蟹攻擊（或攻擊較常失敗）』改為『右旋那一種帶修補疤的比例較高；作者解讀為右撇子螃蟹難以把左旋殼擺到下手位置，常在造成殼傷之前就放棄（三隻 85–95 mm 箱蟹對 43–48 mm 左旋海螺的初步觀察）』；補註：PMC 網頁 HTML 每次抓取雜湊不同，覆核以 <article> 文字比對（20,711 字元相同）。",
+          "author_cache": {
+            "file": "f32src/pmc1686199.html",
+            "sha256_prefix": "4532b5f5d9a6c8ab",
+            "note": "PMC 網頁 HTML；去標籤後文字另存 pmc1686199.txt（sha256 前 16 碼 7b7ce4d619c85d79） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1686199/"
         }
       ]
     },
@@ -86807,6 +87157,32 @@
       ]
     },
     {
+      "id": "SRC-baf3271b600d11a7",
+      "url": "https://iastatedigitalpress.com/mmb/article/18294/galley/16381/view",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.22175/mmb.18294",
+          "title": "Impacts of Stepwise Aging/Freezing Process and Repeated Freezing on Meat Quality, Physicochemical and Biochemical Properties, and Sensory Attributes of Beef Loins",
+          "publisher": "Saud Ur Rehman、Jin-Kyu Seo、Madison Romanyk、Dong-Jin Shin、Yuan H. Brad Kim（美國普渡大學動物科學系 Kim 研究群）／Meat and Muscle Biology 8(1):18294，2024（Iowa State University Digital Press）",
+          "version": "期刊正式排版 PDF；頁尾標 CC BY 4.0",
+          "read_via": "WebSearch（consumer sensory fresh versus frozen beef paired）結果直接列出此 galley 網址；curl 工具預設標頭 200（回應為 PDF），pdftotext 轉文字",
+          "reading_scope": "全文（摘要、前言、材料方法、結果與討論、Table 2、結論）",
+          "locator": "Abstract；Raw material and sample processing（30 頭牛的成對腰脊、熟成 0／2／3／4 週、−20 °C 真空凍 1–5 週、2 °C 解凍 36 小時）；Consumer panel sensory evaluation（n = 90、15 場、4 位數代碼隨機順序、五組 A0F5T、A2F3T、A3F2T、A4F1T、A5F0T）；Results：Consumer panel 段與 Table 2；結論段",
+          "summary": "普渡大學把 30 頭牛的成對腰脊分到不同『先熟成幾週、再凍幾週』的組合，總長都是 5 週：熟成 0、2、3、4 週後在 −20 °C 真空冷凍 5、3、2、1 週，另一段熟成 5 週、完全沒凍當對照。90 位普渡教職員生在 15 場盲測中吃以 4 位數代碼隨機上桌的牛排塊，嫩度、風味、多汁和整體喜好五組都沒有顯著差異（例如整體喜好 67.11–72.51 分，沒凍那組 68.71 分，滿分 100）。作者也說儀器量的嫩度差距（23–33 N）沒有反映在消費者評分上。",
+          "limitations": "與池中 K67-001、K67-002 同一研究群（Kim 研究群）不同實驗；沒凍那組熟成 5 週、其他組熟成 0–4 週，比的是同樣總天數下的組合，不是單純『凍與不凍』；消費者是校園招募；方向與 K67-004 相同。另有凍兩次的組別與色澤、氧化結果，片中不用。不得說成『冷凍不影響品質』或給熟成、冷凍、解凍建議。 覆核 V34（2026-11-12）：summary 改正設計：「每兩頭牛的成對腰脊依平衡不完全區集分到 4 個熟成期；沒凍對照（A5F0T）取自熟成 4 週那段腰脊的後段、再熟成一週；只有 A4F1T 與 A5F0T 同一段腰脊」；『儀器量的嫩度差距（23–33 N）』改為『各組剪力值落在 23–33 N（多在原文引用分級的 very tender 附近），研究者認為消費者分辨力有限，所以沒反映在評分上』；補『每場 6 位、紅光下品嚐』。",
+          "author_cache": {
+            "file": "f31src/mmb_18294.pdf（文字 f31src/mmb_18294.txt）",
+            "sha256_prefix": "c6f4d07035006ed2",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-11",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave68-food-20261111",
+          "original_url": "https://iastatedigitalpress.com/mmb/article/18294/galley/16381/view"
+        }
+      ]
+    },
+    {
       "id": "SRC-baf3a39b776e4906",
       "url": "https://www.trenitalia.com/content/dam/tcom/allegati/trenitalia/condizioni-generali-di-trasporto/parte-iii---trasporto-regionale/4-Tipologia_dei_titoli_di_viaggio-Utilizzo_convalida_e_validita.pdf",
       "readings": [
@@ -90930,6 +91306,32 @@
       ]
     },
     {
+      "id": "SRC-c33fb34d42ebd3d5",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/70A7890E796D559A26AC478524705252/S0022143000207107a.pdf/div-class-title-ice-friction-the-effect-of-thermal-conductivity-div.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3189/002214310792447752",
+          "title": "Ice friction: the effect of thermal conductivity",
+          "publisher": "Anne-Marie Kietzig、Savvas G. Hatzikiriakos、Peter Englezos（加拿大英屬哥倫比亞大學化工系）／Journal of Glaciology 56(197):473–479，2010（Cambridge University Press 代國際冰河學會出版）",
+          "version": "期刊正式排版 PDF（出版社網站免費閱讀；頁面標 Copyright © International Glaciological Society 2010，isOpenAccess 為否，非 CC 授權）",
+          "read_via": "WebSearch（Kietzig thermal conductivity ice friction）結果列出 cambridge.org 文章頁；curl 工具預設標頭 200，取頁面 meta citation_pdf_url 下載 PDF（200、application/pdf），pdftotext 轉文字",
+          "reading_scope": "全文（摘要、前言、方法與材料、Table 1、結果與討論各節、Summary and conclusion）；圖 2–6 只讀圖說，數值只取正文",
+          "locator": "Abstract；Methods and materials（Table 1 熱導率、3 N 法向力、20–60 s 平均）；Results：Thermal insulation of the slider with fiberglass（−1.5、−4、−7、−10 °C，0.0036–1.45 m/s；Stellite 6B 約 −4 °C 有最小值、約 1 m/s 以上因毛細橋升高）；The effect of thermal conductivity（P20 對 Ti-6-4、P20 對 Stellite 6B；v = 0.361 m/s 以前相關性遞減）；Summary and conclusion",
+          "summary": "用流變儀讓 14 種金屬環形滑塊在冰上轉動（法向力 3 N，冰與環境溫度一致到 ±0.1 °C），溫度 −1.5 到 −10 °C、速度 0.0036–1.45 m/s。在滑塊和鋁製夾具間墊 3 mm 玻璃纖維隔熱後，慢速時摩擦大幅降低、最低點移到更低的速度；作者解讀為摩擦熱被留在介面、融出較厚的水膜。在 −7 °C 最慢的三個速度，熱導率約為 Ti-6-4 四倍的 P20 鋼摩擦係數高 65–85%；熱導率約為 Stellite 6B 兩倍的 P20 高 15–25%。熱導率與摩擦的正相關隨速度增加而減弱，到 0.361 m/s（多數材料出現摩擦最低點的速度）附近消失，之後表面潤濕性更重要。作者也寫熱導率對最低點位置和高度的影響不單純，潤濕性、硬度也有份。",
+          "limitations": "與池中 P65-NA005（Kietzig 2009 J Appl Phys，未讀）同一研究群、不同論文。量的是 3 N、公分級環形滑塊的流變儀摩擦，數值不能和 Liefferink 等（P64-009，每秒 1 微米）或 Scherge（F31-S002，每秒數公尺）並列或相減；65–85% 是作者自己比較的相對差。研究由溫哥華冬奧 Own The Podium 計畫資助。片中不得延伸成選材、打蠟或運動裝備建議。 覆核 V34（2026-11-12）：version 改為「期刊正式排版 PDF；Cambridge 出版社官方文章頁免費閱讀，頁面標 Copyright © International Glaciological Society 2010，頁面資料 hasAccess 為真、isOpenAccess 為假；不是 CC 也不是 OA，只做連結與原創摘要」。summary 的『到 0.361 m/s 附近消失』改為『正文寫相關性隨速度一路減弱到 0.361 m/s；Fig. 5 的 0.361 m/s 趨勢線近乎持平（讀圖）』；補『同節：AISI M2 隔熱後摩擦反而較高；隔熱造成較厚水層，在最低點附近可能因毛細拖曳升高摩擦』。locator 補『pdftotext 把 −7 °C 印成 –78C，影像確認』。",
+          "author_cache": {
+            "file": "f31src/camb_kietzig2010.pdf（文字 f31src/camb_kietzig2010.txt、kietzig_raw.txt；文章頁 f31src/camb_kietzig2010.html）",
+            "sha256_prefix": "a7061dbab2642091",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-11",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave68-physics-20261111",
+          "original_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/70A7890E796D559A26AC478524705252/S0022143000207107a.pdf/div-class-title-ice-friction-the-effect-of-thermal-conductivity-div.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-c340a74881d91f63",
       "url": "https://www.fda.gov/consumers/consumer-updates/spilling-beans-how-much-caffeine-too-much",
       "readings": [
@@ -93620,6 +94022,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://openlibrary.org/books/OL5193829M"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c8ae670e7efad8cb",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BA93FF3B7A4C51829AB743F81C6B505B/S0022143000209465a.pdf/div-class-title-ice-friction-wear-features-and-their-dependence-on-sliding-velocity-and-temperature-div.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3189/172756505781829304",
+          "title": "Ice friction, wear features and their dependence on sliding velocity and temperature",
+          "publisher": "Brett A. Marmo、Jane R. Blackford、Chris E. Jeffree（英國愛丁堡大學）／Journal of Glaciology 51(174):391–398，2005（Cambridge University Press）",
+          "version": "期刊正式排版 PDF（出版社網站免費閱讀；非 CC 授權）",
+          "read_via": "WebSearch（Maeno Arakawa ice friction）結果列出 cambridge.org 文章頁；curl 工具預設標頭 200，取 meta citation_pdf_url 下載 PDF（200），pdftotext 轉文字",
+          "reading_scope": "全文（摘要、前言、方法、結果、討論、結論）；SEM 照片只讀圖說",
+          "locator": "Abstract；Methodology（冰半球在鋼板上、−27 到 −0.5 °C、0.008–0.37 m/s、負載 2.10／4.20 N、低溫掃描電鏡 LT-SEM）；Conclusion",
+          "summary": "把冰半球在鋼軌上來回滑，再用低溫掃描電鏡看磨耗面與碎屑。摩擦低（μ < 0.1）的兩種組合——較暖慢速（−3.4 °C、0.02 m/s）和很冷但較快（−25.1 °C、0.30 m/s）——磨痕溝裡有殘留液體，尾端碎屑結成一團、有清楚晶界和球形氣泡，作者讀成液態水沉積後再結凍、潤滑了介面；摩擦高（μ > 0.15）的又冷又慢組合（−24.5 °C、0.03 m/s）表面被刮擦、尾端堆著一片片鬆散的固體碎屑，作者讀成潤滑不足、冰脆裂與塑性變形。",
+          "limitations": "滑的是冰、被滑的是粗化過的鋼板，負載只有幾牛頓；『有水』是從碎屑形態推論。不與 Lever 等真溜冰場的冰粒觀察（P64-018）相減或判輸贏，兩者條件不同。 覆核 V34（2026-11-12）：version 補「Copyright © International Glaciological Society 2005；出版社頁免費閱讀、isOpenAccess 為假」。summary 改為逐樣本：A（−3.4 °C、0.02 m/s、μ 0.06）溝裡有像殘留水的細脊、尾端碎屑分段堆積；B（−25.1 °C、0.30 m/s、μ 0.07）溝裡沒有那些細脊（原文明寫 absent）、尾端碎屑結成一整塊、作者讀成較厚的水被掃到尾端一次結凍；C（−24.5 °C、0.03 m/s、μ 0.16）刮擦與鬆散片狀碎屑。limitations 補「每種條件一個代表樣本；水膜厚度以 Stiffler 1986 解析解推算；高摩擦組摘要寫塑性變形、結論寫脆裂」。",
+          "author_cache": {
+            "file": "f31src/camb_marmo2005.pdf（文字 f31src/marmo_raw.txt）",
+            "sha256_prefix": "bafd79e8c787dc70",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-11",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave68-physics-20261111",
+          "original_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BA93FF3B7A4C51829AB743F81C6B505B/S0022143000209465a.pdf/div-class-title-ice-friction-wear-features-and-their-dependence-on-sliding-velocity-and-temperature-div.pdf"
         }
       ]
     },
@@ -104845,6 +105273,32 @@
       ]
     },
     {
+      "id": "SRC-e0f8953459c8b929",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:PPR1250643%20AND%20SRC:PPR&format=json&resultType=core",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.64898/2026.06.09.731057",
+          "title": "An ancient polymorphism in myosin I a/b determines the left-right asymmetry of Japanese snails（Lewis, Ishii, Ito, Kimura, Johansen, Hume, Moore, Hartman, Jackson, Chiba, Hirano, Davison；bioRxiv 預印本 2026；期刊版 Curr Biol 2026, 10.1016/j.cub.2026.09.059）",
+          "publisher": "bioRxiv（Europe PMC 預印本紀錄 PPR1250643）",
+          "version": "預印本摘要（Europe PMC 紀錄）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（Euhadra myosin）列出期刊版（訂閱）與預印本（Free doi）；預印本 DOI 以 curl 轉到 www.biorxiv.org 回 429（Cloudflare error 1015），未重試；Europe PMC REST PPR1250643/fullTextXML 回 500；只讀到 Europe PMC search 回傳的摘要",
+          "reading_scope": "只有摘要",
+          "locator": "Europe PMC 紀錄 abstractText（Summary）",
+          "summary": "摘要：日本 Euhadra 蝸牛的左右旋多型來自一個非典型肌凝蛋白 myosin I a/b 的功能差異，這個基因型過去從未被認為參與任何動物的左右決定；左旋與右旋兩種變異都很古老、在單細胞胚的轉錄差異很小、也不致病；系統發生與結構模型推測顯性的胺基酸替換發生在肌動蛋白結合區或馬達區接合處，可能因選擇放鬆而得以存在。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到摘要，不計分；作者群屬 Davison／Chiba 網絡（第十六輪已近封頂），即使讀到全文也只剩約 0.75 條空間、合併網絡時為 0。",
+          "author_cache": {
+            "file": "f32src/lewis_preprint.html",
+            "sha256_prefix": "e395ad55dd18b1bf",
+            "note": "bioRxiv 回應本文（429，error code 1015），只證明被擋；摘要來自 Europe PMC search JSON，未另存 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave68-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:PPR1250643%20AND%20SRC:PPR&format=json&resultType=core"
+        }
+      ]
+    },
+    {
       "id": "SRC-e0fdce057ac0b55f",
       "url": "https://www.law.cornell.edu/cfr/text/14/25.841",
       "readings": [
@@ -114918,6 +115372,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://travel.kompas.com/read/2026/03/17/070000427/bandara-ngurah-rai-bali-tutup-saat-nyepi-catat-jamnya-supaya-tak-salah-"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f68db9e3f9aa5fd7",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9222788/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/foods11121791",
+          "title": "The Investigation of Protein Profile and Meat Quality in Bovine Longissimus thoracic Frozen under Different Temperatures by Data-Independent Acquisition (DIA) Strategy",
+          "publisher": "Xia Li、Shuyi Qian 等、Chunhui Zhang、Christophe Blecker（中國農業科學院農產品加工研究所、比利時列日大學 Gembloux）／Foods 11(12):1791，2022（MDPI）",
+          "version": "期刊正式全文 XML（Europe PMC REST fullTextXML，PMC 開放子集）；CC BY 4.0",
+          "read_via": "Europe PMC REST search（AUTH Zhang C／Li X／Blecker C 與 freezing）列出 PMC9222788；以 REST fullTextXML 取得全文（200），去標籤轉文字",
+          "reading_scope": "全文（摘要、材料方法 2.1–2.2、結果 3.1 與 Table 1、蛋白質體學各節略讀、結論）",
+          "locator": "2.1 Sample Collection and Preparation（9 頭 Simmental × 秦川公牛左側背最長肌、每條切 15 塊、PE 膜包、中心溫到達後維持 48 小時、解凍到 4 °C）；3.1 Meat Quality 與 Table 1（thawing loss −12 °C 10.50 a、−18 °C 8.83 b、−38 °C 7.67 bc、−80 °C 7.17 c，n = 6）；4. Conclusions",
+          "summary": "同一條牛背最長肌切成 15 塊，分到鮮肉組與 −12、−18、−38、−80 °C 四種冷凍溫度（各 9 頭牛重複），中心到溫後只凍 48 小時再解凍。解凍損失依序為 10.50%、8.83%、7.67%、7.17%：−12 °C 顯著最高；−18 與 −38 °C、−38 與 −80 °C 之間統計上分不開，只有 −18 與 −80 °C 有差。作者把 −12 °C 較多的損失推測為肌纖維結構破壞與蛋白質變性，並用蛋白質體學找與品質相關的蛋白。",
+          "limitations": "凍的溫度同時改變冷凍速度，只凍 48 小時，不是長期儲存；蛋白質變性是作者推測，本篇沒直接量變性指標；與 K66-002、K66-011 是不同研究群、不同物種或儲存條件，數字不並列。同群的 Qian 等 2022 Food Chem 兩篇（冰晶與肌原纖維蛋白回復）只有 ORBi『Request a copy』，未讀。片中不得說『越冷越好』或推薦冷凍溫度。 覆核 V34（2026-11-12）：limitations 補「方法寫每組 9 個生物重複，Table 1 註 n = 6，前後不一；鮮肉組沒有解凍損失可比」。",
+          "author_cache": {
+            "file": "f31src/PMC9222788.xml（文字 f31src/PMC9222788.txt）",
+            "sha256_prefix": "69a9425a67d3957e",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "accessed_on": "2026-11-11",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave68-food-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9222788/fullTextXML"
         }
       ]
     },
@@ -298161,6 +298641,606 @@
       "production_ready": false
     },
     {
+      "id": "K68-001",
+      "question": "同一批牛的腰脊，先熟成再凍了 1 到 5 週，和熟成 5 週完全沒凍的比，一般人吃得出來嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.paired_loin_aging_freezing_consumer_panel",
+      "answer_target": "在普渡大學 2024 年這個實驗裡沒吃出差別。他們把 30 頭牛的腰脊排成總長都是 5 週的組合：先熟成 0、2、3 或 4 週，再在 −20 °C 真空冷凍 5、3、2 或 1 週；沒凍的對照是從熟成 4 週那段腰脊的後段切下、再多熟成一週。90 位校內消費者分 15 場、在紅光下吃以代碼隨機上桌的牛排塊，嫩度、風味、多汁和整體喜好五組都沒有顯著差異（整體喜好約 67 到 73 分，沒凍那組約 69 分，滿分 100）。研究者也提醒：各組儀器量到的嫩度都落在很嫩的範圍，消費者可能本來就分不出這麼接近的差別。",
+      "scope": "比的是同樣總天數下『熟成加冷凍』的組合，沒凍那組熟成最久，不是單純『凍與不凍』；不是同一頭牛的左右配對；消費者是校園招募；研究者自己指出分辨力有限；與 K67-004 同方向、與 K67-001／002 同一研究群；不得說成『冷凍不影響品質』『一般人都吃不出來』，不給熟成、冷凍、解凍或保存建議，也不轉述作者對產業的建議。另有凍兩次的組別與色澤、氧化結果，片中不用。",
+      "source_locator": "F31-S006 Raw material and sample processing；Consumer panel sensory evaluation（方法與結果）；Table 2",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：同一 Kim 研究群（K67-001／002 已計 0.75）、方向與 K67-004 相同，沒凍組與冷凍組熟成天數不同、並非左右配對，研究者自己說消費者分辨力有限；只部分回應 still_missing（4）『同一批動物、冷凍數週以上』。 原提案 F31-006（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字逐格對上，但題目把設計說成同一頭牛左右配對、把剪力值範圍說成差距，均改正；照同研究群與混淆因素下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一頭牛、凍了好幾週的那一半，一般人在盲測裡沒挑出來。",
+        "visual": "一頭牛的剖面圖，左右兩條腰脊被切成幾段，有的段蓋上雪花圖示、有的沒有，最後都變成編號小杯。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-baf3271b600d11a7",
+          "origin": "wave68-food-20261111",
+          "locator": "F31-S006 Raw material and sample processing；Consumer panel sensory evaluation（方法與結果）；Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K68-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K68-002",
+      "question": "同一條牛背肌切成好幾塊，放在不同溫度凍，解凍掉的水一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.paired_beef_freezing_temperature_thaw_loss_48h",
+      "answer_target": "不一樣，但不是一階一階整齊拉開。中國農業科學院與比利時列日大學 2022 年把 9 頭公牛的背最長肌各切成 15 塊，分在 −12、−18、−38、−80 °C 凍到中心溫度後再放 48 小時、解凍：解凍損失依序是 10.50%、8.83%、7.67%、7.17%。統計上只分得出 −12 °C 那組最多，以及 −18 和 −80 °C 有差；−18 和 −38 °C、−38 和 −80 °C 之間都分不開。研究者推測 −12 °C 那組是肌纖維結構和蛋白質受損較多，但這篇沒有直接量蛋白質變性。",
+      "scope": "只凍 48 小時、不是長期儲存；冷凍溫度同時改變冷凍速度；方法寫每組 9 個重複、表註 n = 6；不和 K66-002、K66-011 的數字並列或相減；不得說『越冷越好』、不推薦冷凍溫度或冷凍方式，片中不念『凍得最冷還是掉約 7%』這類比大小的句子。",
+      "source_locator": "F31-S007 2.1；3.1 與 Table 1；4. Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：只凍 48 小時，照 V32 對 K67-005 的先例計 0；結論型（較冷較少、但相鄰溫度分不開）與 K66-011 相同。收進池中，但不放進 C12-01 的最終核心，避免四個遞減數字被聽成『越冷越好』。 原提案 F31-007（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字逐格對上；照『單一溫度條件只凍 48 小時』與 K66-011 同結論型計 0，並補上重複數前後不一，移出 C12-01。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "凍得再冷，盤子裡還是會有一灘水。",
+        "visual": "一條牛背肌切成五段，分別貼上 −12、−18、−38、−80 °C 的標籤，下方各一個大小不同但都不是零的水窪。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave68-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f68db9e3f9aa5fd7",
+          "origin": "wave68-food-20261111",
+          "locator": "F31-S007 2.1；3.1 與 Table 1；4. Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K68-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L68-001",
+      "question": "一頭尖的蛋，古代的鳥是怎麼放的？會把尖頭插進沙裡嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "bird_egg.enantiornithine_upright_pointed_end_down_burial",
+      "answer_target": "至少有一處化石這樣顯示。阿根廷內烏肯的大學校園裡，一處晚白堊紀地層保存了一大片鳥蛋，研究者在 55 平方公尺以上的範圍測繪了 65 顆（從蛋裡的胚胎骨頭看，很可能是已滅絕的反鳥類）：沒有巢的痕跡，絕大多數直立、尖端朝下、半埋在沙裡，只有少數橫躺。研究者說，這樣放會讓含氣室的鈍端露在外面，親鳥也沒辦法翻蛋；他們推測這種不能翻的下法後來被會翻蛋的孵法取代，但明說是推測。另一群近鳥恐龍——傷齒龍類——的一窩 10 到 24 顆一頭尖的長蛋，也是陡斜到近乎直立、尖端朝下插在沉積物裡。現生鳥呢？2013 年的研究者說只有塚雉把蛋直立埋起來，而塚雉的蛋並不是一頭尖；不過 2023 年一篇綜述轉述舊觀察，阿拉伯半島的東方環頸鴴也會把蛋尖端朝下半埋。那篇綜述也提出另一種讀法：這些單顆、尖端朝下的化石蛋，可能只是埋好就離開。",
+      "scope": "化石單一地點；『反鳥類』是依前人對胚胎骨骼的判斷（most likely enantiornithines）；地層為 Santonian，原文沒有年代數字，不得說『七千萬年前』；摘要說除一顆外直立、結果段說大多數，只說『絕大多數』；傷齒龍類是親緣上較基群，不得說『更早』；『被翻蛋孵法取代』是推測；綜述對同一批蛋另有『埋了就走』的讀法，要並列；鴴的半埋是綜述轉述 1954 年的書與 1974 年的論文，只能說『有轉述』；不得說尖蛋『是為了』插進沙裡演化出來；不得提家雞不翻蛋死亡率；不給任何孵蛋或飼養建議。",
+      "source_locator": "F32-S001 Abstract；Results〈Spatial Distribution of Eggs〉；Discussion 第 2–3 段。F32-S002 §2 第 3–4 段（10–24 顆、尖端朝下、近直立；不對稱只在傷齒龍類明顯）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：Fernández 2013 的直立尖端朝下擺放 0.5（獨立研究群、開放全文、池中無）；Hogan & Varricchio 2023 的傷齒龍擺放是綜述轉述 Varricchio 自己團隊 1999 年的原論文，且 Fernández 原文已寫『與某些傷齒龍類直立放蛋相似』，計 0；它在本核心的用處是補上反面讀法與現生鴴的轉述，讓答案不說過頭。與 L67-001（鵪鶉蛋尖端略朝下、氣室在上）方向一致但不同物種、不同證據，片中不得合成『所以尖頭是為了朝下』。與 G482（S44-005、S44-006 談孔隙與砂巢傳熱）同屬恐龍巢、不同答案。 原提案 F32-001（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；數字逐字相符，但答案三處說過頭：『現生鳥裡只有塚雉』被同核心第二份來源的鴴轉述推翻；『更早的傷齒龍類』沒有根據；payoff 的『七千萬年前』原文無。並補回綜述對同一批蛋的反面讀法。Hogan 部分屬綜述轉述自己團隊的原論文，計 0；本核心 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "晚白堊紀的一片鳥類繁殖地裡，蛋像插秧一樣尖頭朝下插在沙裡——但它們是被顧著，還是埋了就走，兩派讀法不一樣",
+        "visual": "沙地剖面：一排直立半埋的蛋、鈍端露出；旁邊一窩斜插成圈的傷齒龍長蛋；角落一隻鴴蹲在半埋的蛋上",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ac1139f8e10ed246",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S001 Abstract；Results〈Spatial Distribution of Eggs〉；Discussion 第 2–3 段。F32-S002 §2 第 3–4 段（10–24 顆、尖端朝下、近直立；不對稱只在傷齒龍類明顯）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3c945eb1cfefd10d",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S001 Abstract；Results〈Spatial Distribution of Eggs〉；Discussion 第 2–3 段。F32-S002 §2 第 3–4 段（10–24 顆、尖端朝下、近直立；不對稱只在傷齒龍類明顯）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L68-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L68-002",
+      "question": "海鴉的蛋真的常從懸崖上掉下去嗎？什麼時候最危險？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.murre_ledge_egg_loss_disturbance_predation",
+      "answer_target": "最危險的是親鳥被嚇走、蛋沒人顧的那段時間。瑞典 Stora Karlsö 島的海鴉繁殖地，研究者用監視器拍岩架。2020 年疫情封島，島上的人比前三年少了 92%，白尾海鵰卻多了很多（作者摘要寫約七倍）；從 2019 到 2020 年，岩架上集體驚飛的次數從每天約 6 次變成約 15 次，驚飛的總時間從每天 72 分鐘變成 602 分鐘。海鵰沒有抓到海鴉，但牠一飛過，岩架上的親鳥就一起離開：沒人顧的蛋被銀鷗和冠小嘴烏鴉吃掉，影片也拍到蛋在驚飛時從岩架掉下去。那一年，每年監測的那段岩架繁殖表現比 2010 到 2019 年的平均低 26%，孵化成功率低 21%。",
+      "scope": "單一繁殖群、單一年份對長期平均；驚飛次數與時間是 2019 對 2020；蛋掉落只有影片觀察、沒有數量，不能說掉落占損失幾成；26% 只指 Västerberget 每年監測的岩架；沒有量蛋形，不能說『尖蛋沒用』，只能說野外的大風險發生在親鳥離蛋時；不自行換算倍數；不給賞鳥、保育或觀光操作建議。",
+      "source_locator": "F32-S003 Abstract；Results 第 1–3 段（92%、約七倍、26%、21%）；Video 3、Video 4 說明與 Results 第 3 段（gulls and crows predated unattended eggs；eggs observed falling off the ledges）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：獨立研究群、開放全文、池中無；但這篇沒有任何蛋形資料，是『與蛋形距離遠的旁證』，只當開場或轉折一前的一句現場：蛋確實會掉，但時機是親鳥被嚇走。 原提案 F32-002（目標 C13-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；『集體驚飛多了約七倍』只有摘要這樣寫，結果段的次數不到三倍、時間八倍多，改用原文數字；補上比較年份與 26% 的範圍。與蛋形無關，下修為 0.25、只作開場鉤子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "懸崖上的蛋不是自己滾下去的：一隻海鵰飛過，整排親鳥同時跳開的那幾分鐘，才是蛋最危險的時候",
+        "visual": "監視器畫面風格的插圖：一排海鴉同時起飛，留下幾顆梨形蛋，一隻海鷗靠近",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-37ef135c24c3ac53",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S003 Abstract；Results 第 1–3 段（92%、約七倍、26%、21%）；Video 3、Video 4 說明與 Results 第 3 段（gulls and crows predated unattended eggs；eggs observed falling off the ledges）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L68-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L68-003",
+      "question": "蝸牛還是胚胎的時候，身體怎麼知道殼要往哪邊捲？",
+      "domain": "遺傳與生命",
+      "mechanism_key": "snail.nodal_pitx_side_mirrors_coiling_inhibitor_uncoiled",
+      "answer_target": "有一組訊號會站到胚胎的某一邊。柏克萊的研究者在兩種螺找到脊椎動物也用來分左右的 nodal 基因：右旋的帽貝，nodal 和它下游的 Pitx 出現在胚胎右側；左旋的扁蜷則出現在左側——訊號在哪一邊，跟身體往哪邊旋一致。用藥擋住這條訊號，早期給藥的扁蜷胚胎大多連原腸化都完成不了；完成的個體中，5 微莫耳時有 8%、10 微莫耳時有 43% 長成沒有盤旋的直管殼，而且只有在囊胚期之前給藥才會這樣。同一位研究者後來在拖鞋螺做了兩個方向的實驗：注射過量 nodal，最高劑量下 92% 的胚胎長成左右對稱；在囊胚早期擋住這條路徑，約八成變對稱（更早或更晚給藥就少得多）。也就是說，這條訊號沒了或亂了，殼就不捲；它是旋向的『執行者』，不是決定往哪邊的那一個。",
+      "scope": "藥物抑制與過量表現，不是基因剔除；結果是『不捲／對稱』而不是『反向捲』，不得說擋住 nodal 能讓蝸牛變左旋；兩篇是同一研究者（Grande）的不同物種、不同處理，不得把 43% 與 92%、80.4% 並列成同一實驗；方向由更早的母系基因決定（L66-021、L66-022），片中不得說 nodal 決定方向；『執行者』是解說用語，原文只說 Nodal 參與左右不對稱。",
+      "source_locator": "F32-S005 Abstract、Fig 2 前後段、SB-431542 段（8%、43%、只在囊胚期前）。F32-S006 Table 1（600 pg、92%）、Table 2（32 hpf、80.4%）、Fig 3 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：Grande & Patel 2009（Patel 實驗室，獨立於 A、B 兩網絡）兩件事：nodal／Pitx 位置隨旋向鏡像 0.5、抑制後長成直管殼 0.5；Truchado-García 2023 是 Grande 自己的延續研究，照同研究網絡合併，與『沒有 Nodal 就不盤旋』同一發現，計 0。池中無 nodal、Pitx、PMC2661027、PMC9907556。 原提案 F32-003（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；數字相符，但把同一研究者的延續研究寫成『另一個研究群』，並省掉最早給藥窗口沒有效果的條件。Truchado 照同研究網絡合併計 0，本核心 1.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把一條訊號擋掉，螺殼就長成一根直管子——但它管的是『捲不捲』，不是『往哪邊捲』",
+        "visual": "三個小胚胎並排：右旋帽貝右側亮、左旋扁蜷左側亮，最後一顆長成直管殼",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5169d23c9d7cb921",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S005 Abstract、Fig 2 前後段、SB-431542 段（8%、43%、只在囊胚期前）。F32-S006 Table 1（600 pg、92%）、Table 2（32 hpf、80.4%）、Fig 3 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5393abd77ea23629",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S005 Abstract、Fig 2 前後段、SB-431542 段（8%、43%、只在囊胚期前）。F32-S006 Table 1（600 pg、92%）、Table 2（32 hpf、80.4%）、Fig 3 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L68-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L68-004",
+      "question": "如果把決定左右的那個基因剪掉，右旋蝸牛會生出左旋寶寶嗎？",
+      "domain": "遺傳與生命",
+      "mechanism_key": "snail.lsdia1_crispr_heritable_sinistral",
+      "answer_target": "會，而且一代傳一代。椎實螺在野外約 98% 右旋、2% 左旋。日本黑田玲子團隊說，他們在胚胎第三次分裂時用細針把細胞往反方向撥，nodal 和 Pitx 的位置跟著變成鏡像，長出健康的鏡像蝸牛，但牠們自交的下一代又轉回原來的方向——撥得動身體，改不了遺傳。2016 年，他們和英國另一個團隊各自把旋向基因縮小到同一對基因，但兩邊都沒有證明就是它，命名還正好相反。之後黑田團隊用基因剪刀 CRISPR，在全是右旋的品系裡把 Lsdia1 這個基因的兩份（爸媽各給的一份）都剪壞，得到左旋的後代，而且一代接一代都是左旋。他們認為這終於確認了找了將近一百年的旋向基因。",
+      "scope": "資料來自黑田團隊為自己研究寫的綜述，CRISPR 原始數據的論文（Abe & Kuroda 2019）未讀；98%／2% 只指椎實螺；『確認』是該團隊的說法；與英國團隊的命名與序列分歧只陳述『兩邊命名相反』，不評誰對；與 L66-022 的藥物實驗（只讓第三次分裂像左旋、後續仍右扭）是不同手法，片中要分開說；不給任何飼養或實驗操作建議。",
+      "source_locator": "F32-S007〈Field collection and lab culture〉第 1 段；〈Chirality〉段（撥轉鏡像、自交回復、Lsdia1、CRISPR 雙等位移碼、generation after generation、命名相反）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：黑田研究群獨立於 A、B 網絡（第十六輪 Kuroda 2016 已計 0.25）。CRISPR 剔除得可遺傳左旋 0.5——但這是綜述轉述自己團隊的原論文，所以不給原研究的 0.75；撥轉鏡像、自交回復在 L66-021 已有，nodal／Pitx 鏡像只是補一句，計 0；98%／2% 與命名爭議不計。若讀到 Abe & Kuroda 2019 原文可升 0.75。 原提案 F32-004（目標 C13-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；引文相符，改正單位（中部大學）與『兩個拷貝』的誤導寫法，補上原文『兩組都沒有證明』這句，讓轉折更清楚。綜述層級，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "撥得動胚胎、改不了遺傳；藥也做不到——直接剪掉一個基因，右旋的家族才一代代生出左旋寶寶",
+        "visual": "家譜式插圖：上排全右旋，剪刀圖示後下排全左旋，連續三代",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a56a6dfa6df6780a",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S007〈Field collection and lab culture〉第 1 段；〈Chirality〉段（撥轉鏡像、自交回復、Lsdia1、CRISPR 雙等位移碼、generation after generation、命名相反）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L68-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L68-005",
+      "question": "除了蛇，還有誰會讓左旋的螺比較吃香？",
+      "domain": "動物捕食",
+      "mechanism_key": "snail.sinistral_fossil_crab_repair_scars",
+      "answer_target": "海裡的螃蟹，至少化石這樣顯示。耶魯與康乃爾的研究者比較美國東南部上新世到更新世的化石：5 對海螺、6 對芋螺，每對都是外形相近、一右旋一左旋的兩個物種，共 1,772 個殼，數有多少殼帶著被螃蟹攻擊後修補的疤。11 對裡有 10 對，是右旋那一種帶疤的比例較高。作者的解讀是：剝殼的螃蟹大多右螯大，拿到左旋殼很難擺到下手的位置；他們初步看到三隻箱蟹撿起左旋海螺，還沒弄傷殼就放下，同樣大小的右旋海螺卻被打開。作者也老實說：既然左旋有好處，為什麼在螃蟹很多的熱帶海裡，左旋還是那麼少，他們答不出來。",
+      "scope": "化石間接證據：疤是失敗攻擊的痕跡，帶疤少不等於被攻擊少，作者以兩型殼防禦構造相似為由排除『左旋一被攻擊就死』，但沒有直接證明；箱蟹只是三隻的初步觀察；與 L66-024（陸生蝸牛與鈍頭蛇）不同捕食者、不同研究群，不得合成『捕食者都偏右』的通則或合併數字；不說『三百萬年前』的精確年代。",
+      "source_locator": "F32-S008 Abstract；§2（1,772、5 對＋6 對、殼長相近）；§3（11 組中 1 組相反、binomial p<0.05）；§4 第 2–3 段（右手大螯、三隻箱蟹）與末段（We do not have an answer）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：完全獨立的研究群（Dietl、Hendricks），開放全文，池中無；但結論與 L66-024、L66-025『捕食者讓左旋占便宜』同方向，照 V33 規則同方向只給 0.5；箱蟹初步觀察與『答不出來』不另計。它讓轉折一不再只靠 Asami 網絡。 原提案 F32-005（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；數字相符，但答案把『較少被攻擊得手』說反了疤的意義、payoff 的『疤幾乎都在右旋』原文無。同方向證據，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "11 對化石海螺裡有 10 對，帶著螃蟹疤的比例是右旋那一種比較高——左旋的，螃蟹常常連下手都難",
+        "visual": "兩個化石海螺殼並排，右旋的殼口邊緣有鋸齒狀修補疤；一隻右大螯螃蟹拿著左旋殼不知從哪下手",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-af9afbdb8affcd36",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S008 Abstract；§2（1,772、5 對＋6 對、殼長相近）；§3（11 組中 1 組相反、binomial p<0.05）；§4 第 2–3 段（右手大螯、三隻箱蟹）與末段（We do not have an answer）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L68-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L68-006",
+      "question": "左旋和右旋的蝸牛殼，真的是一模一樣的鏡像嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "snail.dextral_sinistral_not_exact_mirror_images",
+      "answer_target": "不完全是，但差得很少，而且很難量。東南亞的樹蝸牛 Amphidromus inversus 左右旋並存；在這類蝸牛，旋向一般由媽媽的一個基因決定，所以照理兩型應是完美鏡像。研究者拿 50 個右旋、50 個左旋殼請志願者量：18 位用游標卡尺的志願者中有 4 位量出左旋『顯著比較胖』，量照片的 5 位中只有 1 位；這分不出是真的差別，還是人拿左旋殼的手勢不同造成的偏差。改用電腦做幾何形態分析後，確認左旋殼在殼口附近有輕微但顯著的變寬與扭曲。研究者說這出乎意料，推測對這點差異的選擇很弱，或旋向基因的副作用只在很早期的發育才重要。",
+      "scope": "單一物種、博物館殼；差異『輕微』，不得說左旋殼明顯比較胖或比較差；志願者偏差要講清楚是『分不出』；與 L66-028（同屬的互配）不同問題。",
+      "source_locator": "F32-S009 Abstract（50＋50、4/18、1/5、幾何形態測量結果）與 Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：Schilthuizen 屬 Davison／Chiba 網絡（照 V31 敏感度與本輪指示合併計），網絡 B 由 2.25 加到 2.5，仍在 3.0 封頂內；但卡尺與照片的志願者實驗是方法論（方法不算事實），只有幾何形態結果算一件事，0.25。若再把 A、B 網絡合併封頂，計 0。 原提案 F32-006（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；引文相符；把母系遺傳改成一般敘述、補上研究者的第二種解釋；網絡歸屬與方法論下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連『量殼』這件事，人手拿左旋殼都可能量歪；換電腦量，才看到殼口真的有一點點不一樣",
+        "visual": "一左一右兩個殼疊成鏡像，殼口處用半透明色塊標出微小差異；旁邊一隻手拿卡尺",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-20e05f85cb3623e6",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S009 Abstract（50＋50、4/18、1/5、幾何形態測量結果）與 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L68-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L68-007",
+      "question": "「偏向右邊」是蝸牛自己才有的嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "snail.spiralian_embryonic_chirality_dextral_ancestral",
+      "answer_target": "不是，這個偏好可能比蝸牛還古老。蝸牛屬於『螺旋卵裂動物』，這一大群還包括環節動物、紐形動物、腕足動物和苔蘚蟲；牠們的胚胎在最初幾次分裂時，細胞就會往右或往左錯開。研究者整理前人的觀察：右手型比較常見、在遺傳上是顯性，常常是唯一的型，一般認為是祖先的狀態。挪威卑爾根大學的團隊追蹤一種已經不做典型螺旋卵裂、成體也沒有明顯左右的苔蘚蟲，11 個胚胎中 9 個是右手型、2 個是鏡像的左手型。為什麼偏右？他們沒有答案，反而說：胚胎早期的左右差別，在多數成體身上卻看不出來，本身就是個謎。",
+      "scope": "『右手型是祖先狀態』是引前人的推論；苔蘚蟲只有 11 個胚胎，只當例子；不得說這解釋了蝸牛為什麼右旋，只能說偏右在蝸牛出現前的胚胎層次就有；與 F32-003 同領域，不同研究群。",
+      "source_locator": "F32-S010 Introduction 第 3 段；Results (e) 與 Fig 4 圖說（9 of 11、2 of 11）；Discussion (b)",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：Hejnol 研究群獨立；但『右手型是祖先狀態』是引前人推論、不計；苔蘚蟲 9／11 是新資料但只有 11 個胚胎、與蝸牛旋向的連結是旁證，0.25。只作開場後的鋪墊與收尾留言問題。 原提案 F32-007（目標 C13-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；引文相符；payoff 改掉『第一刀』與『沒有殼的小蟲』；祖先狀態是引前人，下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "偏右不是蝸牛發明的：一大群動物的胚胎在最初幾次分裂就有左右手，而且多半是右手",
+        "visual": "四細胞到八細胞胚胎俯視圖，上層小細胞往順時針錯開；旁邊環節動物、苔蘚蟲群體剪影",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-206c4e43e494bcca",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S010 Introduction 第 3 段；Results (e) 與 Fig 4 圖說（9 of 11、2 of 11）；Discussion (b)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L68-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P68-001",
+      "question": "摩擦生熱說是不是已經被推翻了？把滑塊包上隔熱，冰會不會變得比較滑？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_slider_thermal_insulation_conductivity",
+      "answer_target": "在這組實驗的慢速端會。加拿大英屬哥倫比亞大學 2010 年用流變儀讓 14 種金屬環形滑塊在冰上轉（−1.5 到 −10 °C、每秒約 4 毫米到 1.45 公尺）：在滑塊後面墊一層玻璃纖維隔熱，慢速時摩擦大幅下降，研究者的解讀是摩擦熱被留在介面、融出更多水來潤滑；但在摩擦最低點附近，有的金屬隔熱後反而更不滑，他們認為是水變多、多了毛細拖曳。換不同金屬也看得到：在 −7 °C 最慢的三個速度，熱導率約四倍的鋼，摩擦係數比鈦合金高 65% 到 85%。這個關係隨速度加快一路減弱，到每秒約 0.36 公尺、多數材料摩擦最低的速度時，論文圖上的趨勢線已經接近持平；再快，表面親不親水更重要。研究者也說熱導率不是唯一因素，潤濕性和硬度都有份。",
+      "scope": "只講這台流變儀、3 N、公分級環形滑塊；『持平』是讀 Fig. 5 的趨勢線，不說成『完全消失』。不和 P64-009（每秒 1 微米、導熱差兩個數量級滑度相近）相減或判誰對，並列為不同速度範圍、不同裝置；與 P64-008（Bowden 與 Hughes 金屬雪板比木雪板摩擦高）同方向，片中先講 P64-008、再用本核心補『隔熱實驗』與『隨速度減弱』。65–85% 是同一研究內的相對差。不給冰刀、雪橇材質、打蠟建議，冬奧資助背景不轉述。",
+      "source_locator": "F31-S001 Abstract；Results 兩節（Thermal insulation…、The effect of thermal conductivity…）；Summary and conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：非 Bonn、非 Sazaki 的系統性原研究，全文已讀；但『導熱好的金屬摩擦較高』已在 P64-008（Bowden 與 Hughes，專文轉述）出現，新增的只有隔熱實驗與『效果隨速度減弱』兩件事；『到 0.36 m/s 看不出』要靠讀圖。上限 0.75。 原提案 F31-001（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字與原文相符、來源取得合規、雜湊相同；但說『差距消失』、只講隔熱更滑、速度寫成『幾公分』都說過頭或不準，且導熱方向與 P64-008 重疊，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『慢也會滑』沒有把摩擦熱趕出場：在每秒幾毫米到十幾公分，把熱留住，冰就更滑；快到摩擦最低點，差別就看不出來了。",
+        "visual": "兩個一樣的金屬環在冰上轉，一個背後墊了黃色隔熱棉；旁邊的摩擦曲線在慢速那端分開，越往快越靠攏。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c33fb34d42ebd3d5",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S001 Abstract；Results 兩節（Thermal insulation…、The effect of thermal conductivity…）；Summary and conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P68-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P68-002",
+      "question": "冰是不是滑得越快越滑？雪車鋼刃在實驗室滑到每秒 28 公尺，量到什麼？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_high_speed_runner_speed_load",
+      "answer_target": "在這個實驗的速度範圍裡是。德國 Fraunhofer 研究所 2013 年把有舵雪橇規格的鋼刃壓在直徑 3.8 公尺轉鼓內面的冰上，冷房維持 −5 °C：每秒 2.8 公尺時摩擦係數 0.015 到 0.016，加速到每秒 28 公尺（時速約 100 公里）降到 0.005 到 0.008、平均 0.007，大約每秒 20 公尺以上就低於 0.01。研究者把別組的低速資料和自己的畫成同一條曲線：每秒約 3 公尺以前降得最多，再快只小幅下降；他們推測是摩擦能多融出的水在高速時趨於飽和，但也寫明要另做研究才能證明。另外，在每秒 14 公尺時把刃壓得更重，摩擦先下降、到某個負載後大致持平，冰面同時出現磨痕和碎冰。",
+      "scope": "單一實驗室、單一溫度（−5 °C）、鋼刃；『越快越滑』只限 2.8–28 m/s 與這台裝置；水膜是作者推測，不說成量到；作者整理的跨研究曲線不拆開、不與 F31-005 的數字並列（它已被併進那條曲線）；不和 P64-016（膜厚幾乎不隨速度變）判輸贏；原文加配重的建議不轉述；不給滑雪、溜冰、雪橇或駕駛建議。",
+      "source_locator": "F31-S002 Abstract；§2.1–2.2；§3.1–3.3；§4.1；§5 Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：CC BY 全文、非 Bonn 的高速實驗，數字確認在正文；但單一溫度、單一裝置，機制是推測，負載那段與題目距離較遠；速度與負載合計一條打折。 原提案 F31-002（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字逐句對上、授權與取得合規；只把計數照『單一條件、機制推測』下修為 0.5，並補上與 F31-005 不獨立、不拆曲線的限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "慢到每秒 1 微米也滑，快到時速 100 公里更滑：同一塊冰，在不同速度可能靠不同的東西在滑。",
+        "visual": "轉鼓剖面動畫：冰貼在大鼓內壁旋轉，雪車刃被液壓缸壓上去；右側一條隨速度往下的線。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-28219e5a92856f50",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S002 Abstract；§2.1–2.2；§3.1–3.3；§4.1；§5 Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P68-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P68-003",
+      "question": "冰滑過之後留下的碎屑，看得出當時刀底下有沒有水嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_wear_debris_meltwater_morphology",
+      "answer_target": "愛丁堡大學 2005 年讓冰半球在粗化過的鋼板上來回滑，再用低溫掃描電鏡看磨耗面。摩擦低（係數小於 0.1）的兩個樣本：較暖又慢的（−3.4 °C、每秒 0.02 公尺），磨痕溝裡有一條條像殘留水的細脊，尾端碎屑一段段堆積；很冷但快十倍的（−25.1 °C、每秒 0.30 公尺），溝裡沒有那些細脊，但尾端碎屑結成一整塊、有清楚的晶界和圓形氣泡，研究者讀成水被掃到後面、一次結凍的痕跡。摩擦高（係數 0.16）的又冷又慢樣本（−24.5 °C、每秒 0.03 公尺），表面像被刮過，尾端堆著一片片鬆散的固體碎屑，研究者讀成潤滑不足、冰被擠裂。也就是說，同樣冷到約零下 25 度，滑快十倍的那次留下了像水結凍過的痕跡。",
+      "scope": "冰半球對粗化鋼板、負載幾牛頓、每種條件一個代表樣本；『有水』是從碎屑形態推論、水膜厚度是用解析模型推算；不和 P64-018（真溜冰場看到冰粒、不是水滴）判輸贏，並列為不同條件下的觀察。不給任何溫度或速度的運動建議。",
+      "source_locator": "F31-S003 Abstract；Methodology；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：非 Bonn、非 Sazaki 的原研究，全文已讀；但每種條件一個樣本、『有水』是形態推論，水膜靠解析模型；『很冷但快就有水』與 F31-002 的推測同方向。 原提案 F31-003（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；摘要層的描述對，但答案把只屬於樣本 A 的『溝裡殘留水』套到樣本 B，原文明寫 B 沒有；改正後保留，計數下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不用猜：冰滑過後留下的碎屑，有的像結凍的水，有的像壓碎的粉。",
+        "visual": "兩張示意的電鏡畫面並排：左邊碎屑結成一塊、裡面有圓氣泡；右邊一片片鬆散的冰屑。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c8ae670e7efad8cb",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S003 Abstract；Methodology；Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P68-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P68-004",
+      "question": "慢到幾乎不動、熱也融不了冰的時候，冰為什麼還是滑？有沒有不需要水的解釋？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_single_crystal_adhesion_shear_hardness",
+      "answer_target": "1977 年北海道大學的對馬勝年提過一個：冰本來就『黏不牢』。他讓鋼珠在阿拉斯加冰河取來的單晶冰上，以每秒約 0.15 微米到 1.8 毫米極慢地滑，摩擦係數仍只有 0.005 到 0.2；在晶體的柱面上滑，摩擦約是基面的兩倍；越慢反而越難滑，他推測是接觸處的冰在慢慢變形。他用公式估算，這些條件下摩擦升溫最多只有約 0.3 度、融不了冰，壓力也只有在較高溫時才融得出水，所以認為壓力融化、摩擦融化都解釋不了，改用黏著理論：摩擦係數約等於『黏結處的剪切強度除以硬度』，冰的硬度和銅同一級，剪切強度卻極小，代入 −10 °C 的典型值算出約 0.01，和實驗同一量級。",
+      "scope": "1977 年單一研究、單晶冰與鋼珠的極慢滑動、OCR 掃描版；升溫 0.3 度是作者用公式估算、黏著理論是作者的解釋，片中講成『另一派說法』，不說成定論，也不說它推翻了水膜說；−7 °C 的最低點只是一例，不和 P64-012／P64-014 並列；不轉述成走路防滑建議。",
+      "source_locator": "F31-S004 Abstract；Results (1)、(4)；Discussion 與 Table 1",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：OCR 舊掃描、單一作者、黏著說與 0.3 度都是作者自己的解釋與估算；『慢也很滑』與 P64-009 同方向不重算；新增只有柱面約為基面兩倍與『不靠水』的黏著說。 原提案 F31-004（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；主要句子都在原文上，但『接近 0 °C』是作者自加；照 OCR 舊掃描、作者自己的解釋兩項折扣下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第四種答案：冰滑也許不是因為有水，而是因為冰『硬卻黏不牢』。",
+        "visual": "鋼珠在一塊透明單晶冰上慢慢推過，冰被切成兩半、一半標『基面』一半標『柱面』，留下一寬一窄的軌跡。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-7f2b45ec36e25b5b",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S004 Abstract；Results (1)、(4)；Discussion 與 Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P68-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P68-005",
+      "question": "照摩擦生熱的說法，導熱差的雪橇刃應該比較滑，實際上是這樣嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_sled_runner_finish_vs_conductivity",
+      "answer_target": "不一定。美國陸軍寒區研究與工程實驗室 1987 年一份自稱初步的研究，讓 60 公斤的模型雪橇以每秒約 1.5 公尺在冷房冰面上滑了 700 多趟。照摩擦融化理論，導熱差的金屬留得住熱、應該較滑；但導熱最差的那種合金，在一般拋光和粗糙時摩擦反而最高，只有把刃面高度拋光時，三種金屬才照『導熱越差越滑』排序。研究者推測，先前看到的導熱效應，可能有一部分其實是刃面狀態造成的。",
+      "scope": "作者自稱初步研究，刃面在測試中被磨，數值多在圖上，只用正文的定性結論；只放在 F31-001 那一章當一句旁證，不單獨成章；不給材質或拋光建議。",
+      "source_locator": "F31-S005 Abstract；3. Results：Effect of runner temperature／surface／material",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：初步研究、只有定性結果、與 F31-001 同題；它的資料又被 F31-002 的跨研究曲線用過。保留成 F31-001 章裡的一句條件說明（導熱效應要看刃面），不加分。 原提案 F31-005（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；內容對上，但初步研究、定性、與 F31-001 同題，照保守算法計 0；補上作者『導熱效應可能是刃面狀態造成』的推測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理論說導熱差就會比較滑，真的雪橇刃還要看磨得多亮。",
+        "visual": "三條不同顏色的金屬刃，一組粗糙、一組鏡面，排序在兩組之間對調。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-427be9bb4b671850",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S005 Abstract；3. Results：Effect of runner temperature／surface／material",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P68-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -447229,6 +448309,480 @@
       ]
     },
     {
+      "id": "K68-001",
+      "question": "同一批牛的腰脊，先熟成再凍了 1 到 5 週，和熟成 5 週完全沒凍的比，一般人吃得出來嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.paired_loin_aging_freezing_consumer_panel",
+      "answer_target": "在普渡大學 2024 年這個實驗裡沒吃出差別。他們把 30 頭牛的腰脊排成總長都是 5 週的組合：先熟成 0、2、3 或 4 週，再在 −20 °C 真空冷凍 5、3、2 或 1 週；沒凍的對照是從熟成 4 週那段腰脊的後段切下、再多熟成一週。90 位校內消費者分 15 場、在紅光下吃以代碼隨機上桌的牛排塊，嫩度、風味、多汁和整體喜好五組都沒有顯著差異（整體喜好約 67 到 73 分，沒凍那組約 69 分，滿分 100）。研究者也提醒：各組儀器量到的嫩度都落在很嫩的範圍，消費者可能本來就分不出這麼接近的差別。",
+      "scope": "比的是同樣總天數下『熟成加冷凍』的組合，沒凍那組熟成最久，不是單純『凍與不凍』；不是同一頭牛的左右配對；消費者是校園招募；研究者自己指出分辨力有限；與 K67-004 同方向、與 K67-001／002 同一研究群；不得說成『冷凍不影響品質』『一般人都吃不出來』，不給熟成、冷凍、解凍或保存建議，也不轉述作者對產業的建議。另有凍兩次的組別與色澤、氧化結果，片中不用。",
+      "source_locator": "F31-S006 Raw material and sample processing；Consumer panel sensory evaluation（方法與結果）；Table 2",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：同一 Kim 研究群（K67-001／002 已計 0.75）、方向與 K67-004 相同，沒凍組與冷凍組熟成天數不同、並非左右配對，研究者自己說消費者分辨力有限；只部分回應 still_missing（4）『同一批動物、冷凍數週以上』。 原提案 F31-006（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字逐格對上，但題目把設計說成同一頭牛左右配對、把剪力值範圍說成差距，均改正；照同研究群與混淆因素下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一頭牛、凍了好幾週的那一半，一般人在盲測裡沒挑出來。",
+        "visual": "一頭牛的剖面圖，左右兩條腰脊被切成幾段，有的段蓋上雪花圖示、有的沒有，最後都變成編號小杯。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-baf3271b600d11a7",
+          "origin": "wave68-food-20261111",
+          "locator": "F31-S006 Raw material and sample processing；Consumer panel sensory evaluation（方法與結果）；Table 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-food.json"
+      ]
+    },
+    {
+      "id": "K68-002",
+      "question": "同一條牛背肌切成好幾塊，放在不同溫度凍，解凍掉的水一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.paired_beef_freezing_temperature_thaw_loss_48h",
+      "answer_target": "不一樣，但不是一階一階整齊拉開。中國農業科學院與比利時列日大學 2022 年把 9 頭公牛的背最長肌各切成 15 塊，分在 −12、−18、−38、−80 °C 凍到中心溫度後再放 48 小時、解凍：解凍損失依序是 10.50%、8.83%、7.67%、7.17%。統計上只分得出 −12 °C 那組最多，以及 −18 和 −80 °C 有差；−18 和 −38 °C、−38 和 −80 °C 之間都分不開。研究者推測 −12 °C 那組是肌纖維結構和蛋白質受損較多，但這篇沒有直接量蛋白質變性。",
+      "scope": "只凍 48 小時、不是長期儲存；冷凍溫度同時改變冷凍速度；方法寫每組 9 個重複、表註 n = 6；不和 K66-002、K66-011 的數字並列或相減；不得說『越冷越好』、不推薦冷凍溫度或冷凍方式，片中不念『凍得最冷還是掉約 7%』這類比大小的句子。",
+      "source_locator": "F31-S007 2.1；3.1 與 Table 1；4. Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：只凍 48 小時，照 V32 對 K67-005 的先例計 0；結論型（較冷較少、但相鄰溫度分不開）與 K66-011 相同。收進池中，但不放進 C12-01 的最終核心，避免四個遞減數字被聽成『越冷越好』。 原提案 F31-007（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字逐格對上；照『單一溫度條件只凍 48 小時』與 K66-011 同結論型計 0，並補上重複數前後不一，移出 C12-01。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "凍得再冷，盤子裡還是會有一灘水。",
+        "visual": "一條牛背肌切成五段，分別貼上 −12、−18、−38、−80 °C 的標籤，下方各一個大小不同但都不是零的水窪。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave68-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f68db9e3f9aa5fd7",
+          "origin": "wave68-food-20261111",
+          "locator": "F31-S007 2.1；3.1 與 Table 1；4. Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-food.json"
+      ]
+    },
+    {
+      "id": "L68-001",
+      "question": "一頭尖的蛋，古代的鳥是怎麼放的？會把尖頭插進沙裡嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "bird_egg.enantiornithine_upright_pointed_end_down_burial",
+      "answer_target": "至少有一處化石這樣顯示。阿根廷內烏肯的大學校園裡，一處晚白堊紀地層保存了一大片鳥蛋，研究者在 55 平方公尺以上的範圍測繪了 65 顆（從蛋裡的胚胎骨頭看，很可能是已滅絕的反鳥類）：沒有巢的痕跡，絕大多數直立、尖端朝下、半埋在沙裡，只有少數橫躺。研究者說，這樣放會讓含氣室的鈍端露在外面，親鳥也沒辦法翻蛋；他們推測這種不能翻的下法後來被會翻蛋的孵法取代，但明說是推測。另一群近鳥恐龍——傷齒龍類——的一窩 10 到 24 顆一頭尖的長蛋，也是陡斜到近乎直立、尖端朝下插在沉積物裡。現生鳥呢？2013 年的研究者說只有塚雉把蛋直立埋起來，而塚雉的蛋並不是一頭尖；不過 2023 年一篇綜述轉述舊觀察，阿拉伯半島的東方環頸鴴也會把蛋尖端朝下半埋。那篇綜述也提出另一種讀法：這些單顆、尖端朝下的化石蛋，可能只是埋好就離開。",
+      "scope": "化石單一地點；『反鳥類』是依前人對胚胎骨骼的判斷（most likely enantiornithines）；地層為 Santonian，原文沒有年代數字，不得說『七千萬年前』；摘要說除一顆外直立、結果段說大多數，只說『絕大多數』；傷齒龍類是親緣上較基群，不得說『更早』；『被翻蛋孵法取代』是推測；綜述對同一批蛋另有『埋了就走』的讀法，要並列；鴴的半埋是綜述轉述 1954 年的書與 1974 年的論文，只能說『有轉述』；不得說尖蛋『是為了』插進沙裡演化出來；不得提家雞不翻蛋死亡率；不給任何孵蛋或飼養建議。",
+      "source_locator": "F32-S001 Abstract；Results〈Spatial Distribution of Eggs〉；Discussion 第 2–3 段。F32-S002 §2 第 3–4 段（10–24 顆、尖端朝下、近直立；不對稱只在傷齒龍類明顯）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：Fernández 2013 的直立尖端朝下擺放 0.5（獨立研究群、開放全文、池中無）；Hogan & Varricchio 2023 的傷齒龍擺放是綜述轉述 Varricchio 自己團隊 1999 年的原論文，且 Fernández 原文已寫『與某些傷齒龍類直立放蛋相似』，計 0；它在本核心的用處是補上反面讀法與現生鴴的轉述，讓答案不說過頭。與 L67-001（鵪鶉蛋尖端略朝下、氣室在上）方向一致但不同物種、不同證據，片中不得合成『所以尖頭是為了朝下』。與 G482（S44-005、S44-006 談孔隙與砂巢傳熱）同屬恐龍巢、不同答案。 原提案 F32-001（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；數字逐字相符，但答案三處說過頭：『現生鳥裡只有塚雉』被同核心第二份來源的鴴轉述推翻；『更早的傷齒龍類』沒有根據；payoff 的『七千萬年前』原文無。並補回綜述對同一批蛋的反面讀法。Hogan 部分屬綜述轉述自己團隊的原論文，計 0；本核心 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "晚白堊紀的一片鳥類繁殖地裡，蛋像插秧一樣尖頭朝下插在沙裡——但它們是被顧著，還是埋了就走，兩派讀法不一樣",
+        "visual": "沙地剖面：一排直立半埋的蛋、鈍端露出；旁邊一窩斜插成圈的傷齒龍長蛋；角落一隻鴴蹲在半埋的蛋上",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ac1139f8e10ed246",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S001 Abstract；Results〈Spatial Distribution of Eggs〉；Discussion 第 2–3 段。F32-S002 §2 第 3–4 段（10–24 顆、尖端朝下、近直立；不對稱只在傷齒龍類明顯）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3c945eb1cfefd10d",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S001 Abstract；Results〈Spatial Distribution of Eggs〉；Discussion 第 2–3 段。F32-S002 §2 第 3–4 段（10–24 顆、尖端朝下、近直立；不對稱只在傷齒龍類明顯）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ]
+    },
+    {
+      "id": "L68-002",
+      "question": "海鴉的蛋真的常從懸崖上掉下去嗎？什麼時候最危險？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.murre_ledge_egg_loss_disturbance_predation",
+      "answer_target": "最危險的是親鳥被嚇走、蛋沒人顧的那段時間。瑞典 Stora Karlsö 島的海鴉繁殖地，研究者用監視器拍岩架。2020 年疫情封島，島上的人比前三年少了 92%，白尾海鵰卻多了很多（作者摘要寫約七倍）；從 2019 到 2020 年，岩架上集體驚飛的次數從每天約 6 次變成約 15 次，驚飛的總時間從每天 72 分鐘變成 602 分鐘。海鵰沒有抓到海鴉，但牠一飛過，岩架上的親鳥就一起離開：沒人顧的蛋被銀鷗和冠小嘴烏鴉吃掉，影片也拍到蛋在驚飛時從岩架掉下去。那一年，每年監測的那段岩架繁殖表現比 2010 到 2019 年的平均低 26%，孵化成功率低 21%。",
+      "scope": "單一繁殖群、單一年份對長期平均；驚飛次數與時間是 2019 對 2020；蛋掉落只有影片觀察、沒有數量，不能說掉落占損失幾成；26% 只指 Västerberget 每年監測的岩架；沒有量蛋形，不能說『尖蛋沒用』，只能說野外的大風險發生在親鳥離蛋時；不自行換算倍數；不給賞鳥、保育或觀光操作建議。",
+      "source_locator": "F32-S003 Abstract；Results 第 1–3 段（92%、約七倍、26%、21%）；Video 3、Video 4 說明與 Results 第 3 段（gulls and crows predated unattended eggs；eggs observed falling off the ledges）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：獨立研究群、開放全文、池中無；但這篇沒有任何蛋形資料，是『與蛋形距離遠的旁證』，只當開場或轉折一前的一句現場：蛋確實會掉，但時機是親鳥被嚇走。 原提案 F32-002（目標 C13-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；『集體驚飛多了約七倍』只有摘要這樣寫，結果段的次數不到三倍、時間八倍多，改用原文數字；補上比較年份與 26% 的範圍。與蛋形無關，下修為 0.25、只作開場鉤子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "懸崖上的蛋不是自己滾下去的：一隻海鵰飛過，整排親鳥同時跳開的那幾分鐘，才是蛋最危險的時候",
+        "visual": "監視器畫面風格的插圖：一排海鴉同時起飛，留下幾顆梨形蛋，一隻海鷗靠近",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-37ef135c24c3ac53",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S003 Abstract；Results 第 1–3 段（92%、約七倍、26%、21%）；Video 3、Video 4 說明與 Results 第 3 段（gulls and crows predated unattended eggs；eggs observed falling off the ledges）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ]
+    },
+    {
+      "id": "L68-003",
+      "question": "蝸牛還是胚胎的時候，身體怎麼知道殼要往哪邊捲？",
+      "domain": "遺傳與生命",
+      "mechanism_key": "snail.nodal_pitx_side_mirrors_coiling_inhibitor_uncoiled",
+      "answer_target": "有一組訊號會站到胚胎的某一邊。柏克萊的研究者在兩種螺找到脊椎動物也用來分左右的 nodal 基因：右旋的帽貝，nodal 和它下游的 Pitx 出現在胚胎右側；左旋的扁蜷則出現在左側——訊號在哪一邊，跟身體往哪邊旋一致。用藥擋住這條訊號，早期給藥的扁蜷胚胎大多連原腸化都完成不了；完成的個體中，5 微莫耳時有 8%、10 微莫耳時有 43% 長成沒有盤旋的直管殼，而且只有在囊胚期之前給藥才會這樣。同一位研究者後來在拖鞋螺做了兩個方向的實驗：注射過量 nodal，最高劑量下 92% 的胚胎長成左右對稱；在囊胚早期擋住這條路徑，約八成變對稱（更早或更晚給藥就少得多）。也就是說，這條訊號沒了或亂了，殼就不捲；它是旋向的『執行者』，不是決定往哪邊的那一個。",
+      "scope": "藥物抑制與過量表現，不是基因剔除；結果是『不捲／對稱』而不是『反向捲』，不得說擋住 nodal 能讓蝸牛變左旋；兩篇是同一研究者（Grande）的不同物種、不同處理，不得把 43% 與 92%、80.4% 並列成同一實驗；方向由更早的母系基因決定（L66-021、L66-022），片中不得說 nodal 決定方向；『執行者』是解說用語，原文只說 Nodal 參與左右不對稱。",
+      "source_locator": "F32-S005 Abstract、Fig 2 前後段、SB-431542 段（8%、43%、只在囊胚期前）。F32-S006 Table 1（600 pg、92%）、Table 2（32 hpf、80.4%）、Fig 3 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：Grande & Patel 2009（Patel 實驗室，獨立於 A、B 兩網絡）兩件事：nodal／Pitx 位置隨旋向鏡像 0.5、抑制後長成直管殼 0.5；Truchado-García 2023 是 Grande 自己的延續研究，照同研究網絡合併，與『沒有 Nodal 就不盤旋』同一發現，計 0。池中無 nodal、Pitx、PMC2661027、PMC9907556。 原提案 F32-003（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；數字相符，但把同一研究者的延續研究寫成『另一個研究群』，並省掉最早給藥窗口沒有效果的條件。Truchado 照同研究網絡合併計 0，本核心 1.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把一條訊號擋掉，螺殼就長成一根直管子——但它管的是『捲不捲』，不是『往哪邊捲』",
+        "visual": "三個小胚胎並排：右旋帽貝右側亮、左旋扁蜷左側亮，最後一顆長成直管殼",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5169d23c9d7cb921",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S005 Abstract、Fig 2 前後段、SB-431542 段（8%、43%、只在囊胚期前）。F32-S006 Table 1（600 pg、92%）、Table 2（32 hpf、80.4%）、Fig 3 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5393abd77ea23629",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S005 Abstract、Fig 2 前後段、SB-431542 段（8%、43%、只在囊胚期前）。F32-S006 Table 1（600 pg、92%）、Table 2（32 hpf、80.4%）、Fig 3 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ]
+    },
+    {
+      "id": "L68-004",
+      "question": "如果把決定左右的那個基因剪掉，右旋蝸牛會生出左旋寶寶嗎？",
+      "domain": "遺傳與生命",
+      "mechanism_key": "snail.lsdia1_crispr_heritable_sinistral",
+      "answer_target": "會，而且一代傳一代。椎實螺在野外約 98% 右旋、2% 左旋。日本黑田玲子團隊說，他們在胚胎第三次分裂時用細針把細胞往反方向撥，nodal 和 Pitx 的位置跟著變成鏡像，長出健康的鏡像蝸牛，但牠們自交的下一代又轉回原來的方向——撥得動身體，改不了遺傳。2016 年，他們和英國另一個團隊各自把旋向基因縮小到同一對基因，但兩邊都沒有證明就是它，命名還正好相反。之後黑田團隊用基因剪刀 CRISPR，在全是右旋的品系裡把 Lsdia1 這個基因的兩份（爸媽各給的一份）都剪壞，得到左旋的後代，而且一代接一代都是左旋。他們認為這終於確認了找了將近一百年的旋向基因。",
+      "scope": "資料來自黑田團隊為自己研究寫的綜述，CRISPR 原始數據的論文（Abe & Kuroda 2019）未讀；98%／2% 只指椎實螺；『確認』是該團隊的說法；與英國團隊的命名與序列分歧只陳述『兩邊命名相反』，不評誰對；與 L66-022 的藥物實驗（只讓第三次分裂像左旋、後續仍右扭）是不同手法，片中要分開說；不給任何飼養或實驗操作建議。",
+      "source_locator": "F32-S007〈Field collection and lab culture〉第 1 段；〈Chirality〉段（撥轉鏡像、自交回復、Lsdia1、CRISPR 雙等位移碼、generation after generation、命名相反）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：黑田研究群獨立於 A、B 網絡（第十六輪 Kuroda 2016 已計 0.25）。CRISPR 剔除得可遺傳左旋 0.5——但這是綜述轉述自己團隊的原論文，所以不給原研究的 0.75；撥轉鏡像、自交回復在 L66-021 已有，nodal／Pitx 鏡像只是補一句，計 0；98%／2% 與命名爭議不計。若讀到 Abe & Kuroda 2019 原文可升 0.75。 原提案 F32-004（目標 C13-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；引文相符，改正單位（中部大學）與『兩個拷貝』的誤導寫法，補上原文『兩組都沒有證明』這句，讓轉折更清楚。綜述層級，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "撥得動胚胎、改不了遺傳；藥也做不到——直接剪掉一個基因，右旋的家族才一代代生出左旋寶寶",
+        "visual": "家譜式插圖：上排全右旋，剪刀圖示後下排全左旋，連續三代",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a56a6dfa6df6780a",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S007〈Field collection and lab culture〉第 1 段；〈Chirality〉段（撥轉鏡像、自交回復、Lsdia1、CRISPR 雙等位移碼、generation after generation、命名相反）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ]
+    },
+    {
+      "id": "L68-005",
+      "question": "除了蛇，還有誰會讓左旋的螺比較吃香？",
+      "domain": "動物捕食",
+      "mechanism_key": "snail.sinistral_fossil_crab_repair_scars",
+      "answer_target": "海裡的螃蟹，至少化石這樣顯示。耶魯與康乃爾的研究者比較美國東南部上新世到更新世的化石：5 對海螺、6 對芋螺，每對都是外形相近、一右旋一左旋的兩個物種，共 1,772 個殼，數有多少殼帶著被螃蟹攻擊後修補的疤。11 對裡有 10 對，是右旋那一種帶疤的比例較高。作者的解讀是：剝殼的螃蟹大多右螯大，拿到左旋殼很難擺到下手的位置；他們初步看到三隻箱蟹撿起左旋海螺，還沒弄傷殼就放下，同樣大小的右旋海螺卻被打開。作者也老實說：既然左旋有好處，為什麼在螃蟹很多的熱帶海裡，左旋還是那麼少，他們答不出來。",
+      "scope": "化石間接證據：疤是失敗攻擊的痕跡，帶疤少不等於被攻擊少，作者以兩型殼防禦構造相似為由排除『左旋一被攻擊就死』，但沒有直接證明；箱蟹只是三隻的初步觀察；與 L66-024（陸生蝸牛與鈍頭蛇）不同捕食者、不同研究群，不得合成『捕食者都偏右』的通則或合併數字；不說『三百萬年前』的精確年代。",
+      "source_locator": "F32-S008 Abstract；§2（1,772、5 對＋6 對、殼長相近）；§3（11 組中 1 組相反、binomial p<0.05）；§4 第 2–3 段（右手大螯、三隻箱蟹）與末段（We do not have an answer）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：完全獨立的研究群（Dietl、Hendricks），開放全文，池中無；但結論與 L66-024、L66-025『捕食者讓左旋占便宜』同方向，照 V33 規則同方向只給 0.5；箱蟹初步觀察與『答不出來』不另計。它讓轉折一不再只靠 Asami 網絡。 原提案 F32-005（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；數字相符，但答案把『較少被攻擊得手』說反了疤的意義、payoff 的『疤幾乎都在右旋』原文無。同方向證據，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "11 對化石海螺裡有 10 對，帶著螃蟹疤的比例是右旋那一種比較高——左旋的，螃蟹常常連下手都難",
+        "visual": "兩個化石海螺殼並排，右旋的殼口邊緣有鋸齒狀修補疤；一隻右大螯螃蟹拿著左旋殼不知從哪下手",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-af9afbdb8affcd36",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S008 Abstract；§2（1,772、5 對＋6 對、殼長相近）；§3（11 組中 1 組相反、binomial p<0.05）；§4 第 2–3 段（右手大螯、三隻箱蟹）與末段（We do not have an answer）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ]
+    },
+    {
+      "id": "L68-006",
+      "question": "左旋和右旋的蝸牛殼，真的是一模一樣的鏡像嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "snail.dextral_sinistral_not_exact_mirror_images",
+      "answer_target": "不完全是，但差得很少，而且很難量。東南亞的樹蝸牛 Amphidromus inversus 左右旋並存；在這類蝸牛，旋向一般由媽媽的一個基因決定，所以照理兩型應是完美鏡像。研究者拿 50 個右旋、50 個左旋殼請志願者量：18 位用游標卡尺的志願者中有 4 位量出左旋『顯著比較胖』，量照片的 5 位中只有 1 位；這分不出是真的差別，還是人拿左旋殼的手勢不同造成的偏差。改用電腦做幾何形態分析後，確認左旋殼在殼口附近有輕微但顯著的變寬與扭曲。研究者說這出乎意料，推測對這點差異的選擇很弱，或旋向基因的副作用只在很早期的發育才重要。",
+      "scope": "單一物種、博物館殼；差異『輕微』，不得說左旋殼明顯比較胖或比較差；志願者偏差要講清楚是『分不出』；與 L66-028（同屬的互配）不同問題。",
+      "source_locator": "F32-S009 Abstract（50＋50、4/18、1/5、幾何形態測量結果）與 Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：Schilthuizen 屬 Davison／Chiba 網絡（照 V31 敏感度與本輪指示合併計），網絡 B 由 2.25 加到 2.5，仍在 3.0 封頂內；但卡尺與照片的志願者實驗是方法論（方法不算事實），只有幾何形態結果算一件事，0.25。若再把 A、B 網絡合併封頂，計 0。 原提案 F32-006（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；引文相符；把母系遺傳改成一般敘述、補上研究者的第二種解釋；網絡歸屬與方法論下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連『量殼』這件事，人手拿左旋殼都可能量歪；換電腦量，才看到殼口真的有一點點不一樣",
+        "visual": "一左一右兩個殼疊成鏡像，殼口處用半透明色塊標出微小差異；旁邊一隻手拿卡尺",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-20e05f85cb3623e6",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S009 Abstract（50＋50、4/18、1/5、幾何形態測量結果）與 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ]
+    },
+    {
+      "id": "L68-007",
+      "question": "「偏向右邊」是蝸牛自己才有的嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "snail.spiralian_embryonic_chirality_dextral_ancestral",
+      "answer_target": "不是，這個偏好可能比蝸牛還古老。蝸牛屬於『螺旋卵裂動物』，這一大群還包括環節動物、紐形動物、腕足動物和苔蘚蟲；牠們的胚胎在最初幾次分裂時，細胞就會往右或往左錯開。研究者整理前人的觀察：右手型比較常見、在遺傳上是顯性，常常是唯一的型，一般認為是祖先的狀態。挪威卑爾根大學的團隊追蹤一種已經不做典型螺旋卵裂、成體也沒有明顯左右的苔蘚蟲，11 個胚胎中 9 個是右手型、2 個是鏡像的左手型。為什麼偏右？他們沒有答案，反而說：胚胎早期的左右差別，在多數成體身上卻看不出來，本身就是個謎。",
+      "scope": "『右手型是祖先狀態』是引前人的推論；苔蘚蟲只有 11 個胚胎，只當例子；不得說這解釋了蝸牛為什麼右旋，只能說偏右在蝸牛出現前的胚胎層次就有；與 F32-003 同領域，不同研究群。",
+      "source_locator": "F32-S010 Introduction 第 3 段；Results (e) 與 Fig 4 圖說（9 of 11、2 of 11）；Discussion (b)",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：Hejnol 研究群獨立；但『右手型是祖先狀態』是引前人推論、不計；苔蘚蟲 9／11 是新資料但只有 11 個胚胎、與蝸牛旋向的連結是旁證，0.25。只作開場後的鋪墊與收尾留言問題。 原提案 F32-007（目標 C13-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V35（2026-11-12）改字後收；引文相符；payoff 改掉『第一刀』與『沒有殼的小蟲』；祖先狀態是引前人，下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "偏右不是蝸牛發明的：一大群動物的胚胎在最初幾次分裂就有左右手，而且多半是右手",
+        "visual": "四細胞到八細胞胚胎俯視圖，上層小細胞往順時針錯開；旁邊環節動物、苔蘚蟲群體剪影",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-206c4e43e494bcca",
+          "origin": "wave68-life-20261111",
+          "locator": "F32-S010 Introduction 第 3 段；Results (e) 與 Fig 4 圖說（9 of 11、2 of 11）；Discussion (b)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+      ]
+    },
+    {
+      "id": "P68-001",
+      "question": "摩擦生熱說是不是已經被推翻了？把滑塊包上隔熱，冰會不會變得比較滑？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_slider_thermal_insulation_conductivity",
+      "answer_target": "在這組實驗的慢速端會。加拿大英屬哥倫比亞大學 2010 年用流變儀讓 14 種金屬環形滑塊在冰上轉（−1.5 到 −10 °C、每秒約 4 毫米到 1.45 公尺）：在滑塊後面墊一層玻璃纖維隔熱，慢速時摩擦大幅下降，研究者的解讀是摩擦熱被留在介面、融出更多水來潤滑；但在摩擦最低點附近，有的金屬隔熱後反而更不滑，他們認為是水變多、多了毛細拖曳。換不同金屬也看得到：在 −7 °C 最慢的三個速度，熱導率約四倍的鋼，摩擦係數比鈦合金高 65% 到 85%。這個關係隨速度加快一路減弱，到每秒約 0.36 公尺、多數材料摩擦最低的速度時，論文圖上的趨勢線已經接近持平；再快，表面親不親水更重要。研究者也說熱導率不是唯一因素，潤濕性和硬度都有份。",
+      "scope": "只講這台流變儀、3 N、公分級環形滑塊；『持平』是讀 Fig. 5 的趨勢線，不說成『完全消失』。不和 P64-009（每秒 1 微米、導熱差兩個數量級滑度相近）相減或判誰對，並列為不同速度範圍、不同裝置；與 P64-008（Bowden 與 Hughes 金屬雪板比木雪板摩擦高）同方向，片中先講 P64-008、再用本核心補『隔熱實驗』與『隨速度減弱』。65–85% 是同一研究內的相對差。不給冰刀、雪橇材質、打蠟建議，冬奧資助背景不轉述。",
+      "source_locator": "F31-S001 Abstract；Results 兩節（Thermal insulation…、The effect of thermal conductivity…）；Summary and conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：非 Bonn、非 Sazaki 的系統性原研究，全文已讀；但『導熱好的金屬摩擦較高』已在 P64-008（Bowden 與 Hughes，專文轉述）出現，新增的只有隔熱實驗與『效果隨速度減弱』兩件事；『到 0.36 m/s 看不出』要靠讀圖。上限 0.75。 原提案 F31-001（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字與原文相符、來源取得合規、雜湊相同；但說『差距消失』、只講隔熱更滑、速度寫成『幾公分』都說過頭或不準，且導熱方向與 P64-008 重疊，下修為 0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『慢也會滑』沒有把摩擦熱趕出場：在每秒幾毫米到十幾公分，把熱留住，冰就更滑；快到摩擦最低點，差別就看不出來了。",
+        "visual": "兩個一樣的金屬環在冰上轉，一個背後墊了黃色隔熱棉；旁邊的摩擦曲線在慢速那端分開，越往快越靠攏。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c33fb34d42ebd3d5",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S001 Abstract；Results 兩節（Thermal insulation…、The effect of thermal conductivity…）；Summary and conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ]
+    },
+    {
+      "id": "P68-002",
+      "question": "冰是不是滑得越快越滑？雪車鋼刃在實驗室滑到每秒 28 公尺，量到什麼？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_high_speed_runner_speed_load",
+      "answer_target": "在這個實驗的速度範圍裡是。德國 Fraunhofer 研究所 2013 年把有舵雪橇規格的鋼刃壓在直徑 3.8 公尺轉鼓內面的冰上，冷房維持 −5 °C：每秒 2.8 公尺時摩擦係數 0.015 到 0.016，加速到每秒 28 公尺（時速約 100 公里）降到 0.005 到 0.008、平均 0.007，大約每秒 20 公尺以上就低於 0.01。研究者把別組的低速資料和自己的畫成同一條曲線：每秒約 3 公尺以前降得最多，再快只小幅下降；他們推測是摩擦能多融出的水在高速時趨於飽和，但也寫明要另做研究才能證明。另外，在每秒 14 公尺時把刃壓得更重，摩擦先下降、到某個負載後大致持平，冰面同時出現磨痕和碎冰。",
+      "scope": "單一實驗室、單一溫度（−5 °C）、鋼刃；『越快越滑』只限 2.8–28 m/s 與這台裝置；水膜是作者推測，不說成量到；作者整理的跨研究曲線不拆開、不與 F31-005 的數字並列（它已被併進那條曲線）；不和 P64-016（膜厚幾乎不隨速度變）判輸贏；原文加配重的建議不轉述；不給滑雪、溜冰、雪橇或駕駛建議。",
+      "source_locator": "F31-S002 Abstract；§2.1–2.2；§3.1–3.3；§4.1；§5 Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：CC BY 全文、非 Bonn 的高速實驗，數字確認在正文；但單一溫度、單一裝置，機制是推測，負載那段與題目距離較遠；速度與負載合計一條打折。 原提案 F31-002（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；數字逐句對上、授權與取得合規；只把計數照『單一條件、機制推測』下修為 0.5，並補上與 F31-005 不獨立、不拆曲線的限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "慢到每秒 1 微米也滑，快到時速 100 公里更滑：同一塊冰，在不同速度可能靠不同的東西在滑。",
+        "visual": "轉鼓剖面動畫：冰貼在大鼓內壁旋轉，雪車刃被液壓缸壓上去；右側一條隨速度往下的線。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-28219e5a92856f50",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S002 Abstract；§2.1–2.2；§3.1–3.3；§4.1；§5 Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ]
+    },
+    {
+      "id": "P68-003",
+      "question": "冰滑過之後留下的碎屑，看得出當時刀底下有沒有水嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_wear_debris_meltwater_morphology",
+      "answer_target": "愛丁堡大學 2005 年讓冰半球在粗化過的鋼板上來回滑，再用低溫掃描電鏡看磨耗面。摩擦低（係數小於 0.1）的兩個樣本：較暖又慢的（−3.4 °C、每秒 0.02 公尺），磨痕溝裡有一條條像殘留水的細脊，尾端碎屑一段段堆積；很冷但快十倍的（−25.1 °C、每秒 0.30 公尺），溝裡沒有那些細脊，但尾端碎屑結成一整塊、有清楚的晶界和圓形氣泡，研究者讀成水被掃到後面、一次結凍的痕跡。摩擦高（係數 0.16）的又冷又慢樣本（−24.5 °C、每秒 0.03 公尺），表面像被刮過，尾端堆著一片片鬆散的固體碎屑，研究者讀成潤滑不足、冰被擠裂。也就是說，同樣冷到約零下 25 度，滑快十倍的那次留下了像水結凍過的痕跡。",
+      "scope": "冰半球對粗化鋼板、負載幾牛頓、每種條件一個代表樣本；『有水』是從碎屑形態推論、水膜厚度是用解析模型推算；不和 P64-018（真溜冰場看到冰粒、不是水滴）判輸贏，並列為不同條件下的觀察。不給任何溫度或速度的運動建議。",
+      "source_locator": "F31-S003 Abstract；Methodology；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：非 Bonn、非 Sazaki 的原研究，全文已讀；但每種條件一個樣本、『有水』是形態推論，水膜靠解析模型；『很冷但快就有水』與 F31-002 的推測同方向。 原提案 F31-003（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；摘要層的描述對，但答案把只屬於樣本 A 的『溝裡殘留水』套到樣本 B，原文明寫 B 沒有；改正後保留，計數下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不用猜：冰滑過後留下的碎屑，有的像結凍的水，有的像壓碎的粉。",
+        "visual": "兩張示意的電鏡畫面並排：左邊碎屑結成一塊、裡面有圓氣泡；右邊一片片鬆散的冰屑。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c8ae670e7efad8cb",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S003 Abstract；Methodology；Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ]
+    },
+    {
+      "id": "P68-004",
+      "question": "慢到幾乎不動、熱也融不了冰的時候，冰為什麼還是滑？有沒有不需要水的解釋？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_single_crystal_adhesion_shear_hardness",
+      "answer_target": "1977 年北海道大學的對馬勝年提過一個：冰本來就『黏不牢』。他讓鋼珠在阿拉斯加冰河取來的單晶冰上，以每秒約 0.15 微米到 1.8 毫米極慢地滑，摩擦係數仍只有 0.005 到 0.2；在晶體的柱面上滑，摩擦約是基面的兩倍；越慢反而越難滑，他推測是接觸處的冰在慢慢變形。他用公式估算，這些條件下摩擦升溫最多只有約 0.3 度、融不了冰，壓力也只有在較高溫時才融得出水，所以認為壓力融化、摩擦融化都解釋不了，改用黏著理論：摩擦係數約等於『黏結處的剪切強度除以硬度』，冰的硬度和銅同一級，剪切強度卻極小，代入 −10 °C 的典型值算出約 0.01，和實驗同一量級。",
+      "scope": "1977 年單一研究、單晶冰與鋼珠的極慢滑動、OCR 掃描版；升溫 0.3 度是作者用公式估算、黏著理論是作者的解釋，片中講成『另一派說法』，不說成定論，也不說它推翻了水膜說；−7 °C 的最低點只是一例，不和 P64-012／P64-014 並列；不轉述成走路防滑建議。",
+      "source_locator": "F31-S004 Abstract；Results (1)、(4)；Discussion 與 Table 1",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：OCR 舊掃描、單一作者、黏著說與 0.3 度都是作者自己的解釋與估算；『慢也很滑』與 P64-009 同方向不重算；新增只有柱面約為基面兩倍與『不靠水』的黏著說。 原提案 F31-004（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；主要句子都在原文上，但『接近 0 °C』是作者自加；照 OCR 舊掃描、作者自己的解釋兩項折扣下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第四種答案：冰滑也許不是因為有水，而是因為冰『硬卻黏不牢』。",
+        "visual": "鋼珠在一塊透明單晶冰上慢慢推過，冰被切成兩半、一半標『基面』一半標『柱面』，留下一寬一窄的軌跡。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-7f2b45ec36e25b5b",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S004 Abstract；Results (1)、(4)；Discussion 與 Table 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ]
+    },
+    {
+      "id": "P68-005",
+      "question": "照摩擦生熱的說法，導熱差的雪橇刃應該比較滑，實際上是這樣嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_sled_runner_finish_vs_conductivity",
+      "answer_target": "不一定。美國陸軍寒區研究與工程實驗室 1987 年一份自稱初步的研究，讓 60 公斤的模型雪橇以每秒約 1.5 公尺在冷房冰面上滑了 700 多趟。照摩擦融化理論，導熱差的金屬留得住熱、應該較滑；但導熱最差的那種合金，在一般拋光和粗糙時摩擦反而最高，只有把刃面高度拋光時，三種金屬才照『導熱越差越滑』排序。研究者推測，先前看到的導熱效應，可能有一部分其實是刃面狀態造成的。",
+      "scope": "作者自稱初步研究，刃面在測試中被磨，數值多在圖上，只用正文的定性結論；只放在 F31-001 那一章當一句旁證，不單獨成章；不給材質或拋光建議。",
+      "source_locator": "F31-S005 Abstract；3. Results：Effect of runner temperature／surface／material",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：初步研究、只有定性結果、與 F31-001 同題；它的資料又被 F31-002 的跨研究曲線用過。保留成 F31-001 章裡的一句條件說明（導熱效應要看刃面），不加分。 原提案 F31-005（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V34（2026-11-12）改字後收；內容對上，但初步研究、定性、與 F31-001 同題，照保守算法計 0；補上作者『導熱效應可能是刃面狀態造成』的推測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理論說導熱差就會比較滑，真的雪橇刃還要看磨得多亮。",
+        "visual": "三條不同顏色的金屬刃，一組粗糙、一組鏡面，排序在兩組之間對調。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "origin": "wave68-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-427be9bb4b671850",
+          "origin": "wave68-physics-20261111",
+          "locator": "F31-S005 Abstract；3. Results：Effect of runner temperature／surface／material",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+      ]
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -456852,6 +458406,20 @@
       "L67-004": "L67-004",
       "L67-005": "L67-005",
       "P67-001": "P67-001",
+      "K68-001": "K68-001",
+      "K68-002": "K68-002",
+      "L68-001": "L68-001",
+      "L68-002": "L68-002",
+      "L68-003": "L68-003",
+      "L68-004": "L68-004",
+      "L68-005": "L68-005",
+      "L68-006": "L68-006",
+      "L68-007": "L68-007",
+      "P68-001": "P68-001",
+      "P68-002": "P68-002",
+      "P68-003": "P68-003",
+      "P68-004": "P68-004",
+      "P68-005": "P68-005",
       "Z7001": "Z7001",
       "Z7002": "Z7002",
       "Z7003": "Z7003",
@@ -486905,6 +488473,161 @@
         "a": "L67-005",
         "b": "L67-004",
         "reason": "同方向，併成一句（V33 2026-11-12）"
+      },
+      {
+        "a": "P68-001",
+        "b": "P64-008",
+        "reason": "同方向：金屬雪板摩擦比木雪板高、歸因於導熱（專文轉述 1939 年實驗）。本核心只算隔熱實驗與隨速度減弱。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-001",
+        "b": "P64-009",
+        "reason": "不同速度範圍：P64-009 是每秒 1 微米、導熱差兩個數量級滑度相近；兩者並列，不判誰對、不相減。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-001",
+        "b": "P64-012",
+        "reason": "Stellite 6B 約 −4 °C 的最低點與 P64-012 的 −7 °C 不並列成『都在 −7 °C』。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-002",
+        "b": "P64-007",
+        "reason": "Colbeck 刀底溫度隨速度上升，與本核心的『越快越滑』方向一致，但是不同量測，不合併。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-002",
+        "b": "P64-016",
+        "reason": "Canale 等的膜厚幾乎不隨速度變；本核心的『高速多出水』只是作者推測，兩者並列為不同裝置、不同說法。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-003",
+        "b": "P64-018",
+        "reason": "Lever 等真溜冰場：刀旁噴出冰粒、不支持整片融水；條件完全不同，片中並列，不判輸贏。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-004",
+        "b": "P64-009",
+        "reason": "同方向：極慢也滑；本核心不重算這一點。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-004",
+        "b": "P64-015",
+        "reason": "P64-015 講局部接觸壓力使剪應力上升（Liefferink 等）；與黏著說的『剪切強度÷硬度』相關但不同研究，不合成一個機制。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-004",
+        "b": "P64-012",
+        "reason": "−7 °C 最低點不並列。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-005",
+        "b": "P68-001",
+        "reason": "同題（熱導率），本核心只當條件說明。（V34 2026-11-12）"
+      },
+      {
+        "a": "P68-005",
+        "b": "P64-008",
+        "reason": "P64-008 的金屬比木頭摩擦高，本核心提醒這類比較會被刃面狀態混淆。（V34 2026-11-12）"
+      },
+      {
+        "a": "K68-001",
+        "b": "K67-004",
+        "reason": "同方向：一般消費者沒挑出冷凍過的牛排；K67-004 冷凍組與鮮肉組來自不同屠宰日，本核心同一批牛但熟成天數混在一起，各講各的條件，不合成『兩個研究都證明』。（V34 2026-11-12）"
+      },
+      {
+        "a": "K68-001",
+        "b": "K67-001",
+        "reason": "同一 Kim 研究群（普渡），不同實驗。（V34 2026-11-12）"
+      },
+      {
+        "a": "K68-001",
+        "b": "K67-002",
+        "reason": "同一 Kim 研究群；K67-002 也是『先熟成再凍』與沒凍分不開，本核心是感官、K67-002 是失重。（V34 2026-11-12）"
+      },
+      {
+        "a": "K68-001",
+        "b": "K67-005",
+        "reason": "山羊肉只凍 48 小時的盲測（計 0），同方向。（V34 2026-11-12）"
+      },
+      {
+        "a": "K68-002",
+        "b": "K66-011",
+        "reason": "同一結論型：較冷的出水較少，但不是一路越冷越好、相鄰溫度分不開；K66-011 是六個月儲存。（V34 2026-11-12）"
+      },
+      {
+        "a": "K68-002",
+        "b": "K66-002",
+        "reason": "冷凍速率門檻；本核心的溫度同時改變速率，不並列數字。（V34 2026-11-12）"
+      },
+      {
+        "a": "K68-002",
+        "b": "K67-005",
+        "reason": "同樣只凍 48 小時，V32 計 0。（V34 2026-11-12）"
+      },
+      {
+        "a": "L68-001",
+        "b": "L66-010",
+        "reason": "L66-010 談不對稱蛋何時出現；本核心談蛋在巢裡的擺放，不重算（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-001",
+        "b": "L67-001",
+        "reason": "同方向（尖端朝下、氣室端朝上），不同物種與證據，不得合成因果（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-001",
+        "b": "S44-006",
+        "reason": "G482 短題的砂巢傳熱模型，同屬恐龍半埋蛋背景，答案不同（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-002",
+        "b": "L66-011",
+        "reason": "L66-011 檢驗的是蛋形防滾；本核心只說野外蛋掉落與被吃發生在親鳥離蛋時，不支持也不反駁蛋形說（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-002",
+        "b": "L66-012",
+        "reason": "不得把『蛋會掉』接成『所以斜坡放得穩是為了這個』（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-003",
+        "b": "L66-022",
+        "reason": "formin 在最早幾次分裂決定方向；nodal 在 32 細胞期之後，是下游，不重算、不得混說（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-003",
+        "b": "L68-007",
+        "reason": "同領域、不同研究群（Hejnol），L68-007 不談 nodal 的實驗（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-004",
+        "b": "L66-021",
+        "reason": "L66-021 已有撥轉得鏡像、下一代轉回（轉述）；本核心只補 nodal／Pitx 鏡像，計 0（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-004",
+        "b": "L66-022",
+        "reason": "L66-022 已有兩團隊定位到同一對基因與藥物沒養出左旋；本核心新增的是 CRISPR 可遺傳左旋（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-005",
+        "b": "L66-024",
+        "reason": "同方向（捕食者讓左旋占便宜），不同捕食者、不同研究群，不得合併數字（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-005",
+        "b": "L66-025",
+        "reason": "同方向的分布關聯，不重算（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-006",
+        "b": "L66-028",
+        "reason": "同屬（Amphidromus）、同研究網絡（Schilthuizen），不同問題；片中可接在 L66-028 後（V35 2026-11-12）"
+      },
+      {
+        "a": "L68-007",
+        "b": "L66-020",
+        "reason": "L66-020 是名錄裡左旋有多少；本核心把問題往前推到胚胎層次，不重算（V35 2026-11-12）"
       }
     ],
     "excluded": [
@@ -488030,6 +489753,20 @@
         "questions": [
           "兩份報告都寫 10.0，為什麼還不能認定它們一樣準？",
           "一張漂亮的正負誤差表，怎麼看出它到底算進了哪些東西？"
+        ]
+      },
+      {
+        "id": "P68-001~P68-005",
+        "a": "P68-001",
+        "b": "P68-005",
+        "question_score": 0.182,
+        "answer_score": 0.086,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "摩擦生熱說是不是已經被推翻了？把滑塊包上隔熱，冰會不會變得比較滑？",
+          "照摩擦生熱的說法，導熱差的雪橇刃應該比較滑，實際上是這樣嗎？"
         ]
       },
       {
@@ -489895,6 +491632,20 @@
         ]
       },
       {
+        "id": "K67-002~K68-001",
+        "a": "K67-002",
+        "b": "K68-001",
+        "question_score": 0,
+        "answer_score": 0.109,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冷凍得快還是慢，一定會決定解凍後流多少水嗎？",
+          "同一批牛的腰脊，先熟成再凍了 1 到 5 週，和熟成 5 週完全沒凍的比，一般人吃得出來嗎？"
+        ]
+      },
+      {
         "id": "E2024~E2043",
         "a": "E2024",
         "b": "E2043",
@@ -490494,6 +492245,20 @@
         "questions": [
           "實驗室裡一點一點烘乾土，看到的變暗有多大？",
           "衛星怎麼利用『濕了變暗』這件事？"
+        ]
+      },
+      {
+        "id": "P68-002~P68-005",
+        "a": "P68-002",
+        "b": "P68-005",
+        "question_score": 0,
+        "answer_score": 0.094,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰是不是滑得越快越滑？雪車鋼刃在實驗室滑到每秒 28 公尺，量到什麼？",
+          "照摩擦生熱的說法，導熱差的雪橇刃應該比較滑，實際上是這樣嗎？"
         ]
       },
       {
@@ -496787,10 +498552,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-4089",
-    "target_count": 4089,
+    "revision": "2026-11-12-pool-4103",
+    "target_count": 4103,
     "reviewed_on": "2026-11-12",
-    "reason": "從4074續接；2026-11-12 第十七輪素材審視：改以補讀最接近門檻的後備組題為主，作者 F29（C9-02 濕沙、C12-01 冷凍肉）、F30（C7-01 交叉雙手、C13-01 鳥蛋）補讀不同研究群的開放原研究；16 個提案經非作者覆核（F29 由 V32、F30 由 V33），收 15 個、退回 1 個（未發表手稿、緊接解凍建議）；C9-02、C7-01 成題，C12-01、C13-01 後備。",
+    "reason": "從4089續接；2026-11-12 第十八輪素材審視：作者 F31（C10-01 冰、C12-01 冷凍肉）、F32（C13-01 鳥蛋、C13-02 蝸牛）補讀不同研究群的開放原研究；14 個提案經非作者覆核（F31 由 V34、F32 由 V35），全部改字後收；四題都留後備，沒有新長題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -500880,7 +502645,21 @@
       "K67-002",
       "K67-003",
       "K67-004",
-      "K67-005"
+      "K67-005",
+      "P68-001",
+      "P68-002",
+      "P68-003",
+      "P68-004",
+      "P68-005",
+      "L68-001",
+      "L68-002",
+      "L68-003",
+      "L68-004",
+      "L68-005",
+      "L68-006",
+      "L68-007",
+      "K68-001",
+      "K68-002"
     ],
     "overflow": [
       {
@@ -530113,6 +531892,193 @@
       "reading_status": "全文讀過",
       "origin": "wave67-physics-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave67-physics.json"
+    },
+    {
+      "id": "L68-NA001",
+      "question": "3D 列印的蛋在斜坡上，哪一種形狀最不會滾走？（Hays & Hauber 2018 JEB／Hays 2018 碩士論文）",
+      "existing_ids": [],
+      "source_ids": [
+        "L68-S004"
+      ],
+      "reason": "第十七輪已記 JEB 期刊版 403；本輪循 WebSearch 找到同名的 CUNY 碩士論文典藏紀錄頁（200），但頁面 meta 列出的 PDF 連結回 Cloudflare『Just a moment』403，未繞過；只讀到摘要（錐度在多變項模型中唯一一致抑制位移），依規定不算全文、不計。 原提案 F32-NA001。",
+      "reentry_condition": "CUNY Academic Works 的 PDF 或作者機構典藏可直接取得。",
+      "reading_status": "只有摘要（典藏紀錄頁）",
+      "origin": "wave68-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+    },
+    {
+      "id": "L68-NA002",
+      "question": "蛋太輕的鳥，是不是比較需要有牆的巢？（Chou、Tuanmu、Hung 2025 Proc B）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 列出中研院生物多樣性研究中心的研究新聞（biodiv.sinica.edu.tw/research-20250930060628，200）：4,000 多種鳥的比較、行為實驗、3D 列印輕重蛋的滾出試驗，結論是蛋輕的鳥較常築有牆的巢。新聞稿只當入口；頁面所列 DOI 轉到 royalsocietypublishing.org 回 403，Europe PMC 列為非開放，未讀原文、不計。主題也偏向巢的構造，與『蛋為什麼尖』只間接相關。 原提案 F32-NA002。",
+      "reentry_condition": "讀到原文開放版本，且原文有蛋形與滾出風險的資料。",
+      "reading_status": "只讀到研究新聞稿",
+      "origin": "wave68-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+    },
+    {
+      "id": "L68-NA003",
+      "question": "日本 Euhadra 蝸牛的左右旋是哪個基因決定的？（Lewis 等 2026）",
+      "existing_ids": [
+        "L66-022",
+        "L66-029"
+      ],
+      "source_ids": [
+        "L68-S011"
+      ],
+      "reason": "Europe PMC 列出 bioRxiv 預印本（Free doi），但 DOI 轉到 www.biorxiv.org 回 429（Cloudflare 1015），未重試；Europe PMC REST 對 PPR1250643 的 fullTextXML 回 500；期刊版 Curr Biol 為訂閱。只讀到摘要（myosin I a/b，不是 formin），不計。作者群屬 Davison／Chiba 網絡，即使讀到全文也受封頂限制。片中若要提『不是所有蝸牛都靠同一基因』，只能說『2026 年一篇預印本摘要指出』，不算條數。 原提案 F32-NA003。",
+      "reentry_condition": "bioRxiv 可正常讀取或期刊版開放；並先決定 Davison／Chiba 網絡封頂是否已滿。",
+      "reading_status": "只有摘要",
+      "origin": "wave68-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+    },
+    {
+      "id": "L68-NA004",
+      "question": "左旋與右旋的煙管蝸牛在雜交帶相遇，會不會混成一群？（Koch 等 2017 Mol Ecol，Hausdorf 研究室）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 列為訂閱、無 PMC；WebSearch 只找到 zendy、BVS 等摘要頁，沒有作者典藏或開放全文；未讀。 原提案 F32-NA004。",
+      "reentry_condition": "作者機構典藏（漢堡大學等）出現全文。",
+      "reading_status": "只見書目與摘要轉述",
+      "origin": "wave68-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+    },
+    {
+      "id": "L68-NA005",
+      "question": "撥轉胚胎細胞與 CRISPR 剔除的原始論文（Kuroda 等 2009 Nature；Abe & Kuroda 2019 Development）",
+      "existing_ids": [
+        "L66-021",
+        "L66-022"
+      ],
+      "source_ids": [
+        "L68-S007"
+      ],
+      "reason": "兩篇原文在 Europe PMC 均非開放（Nature 訂閱；Development 10.1242/dev.175976 無 PMC）；WebSearch 只見 phys.org 新聞與 nature.com 摘要頁。改讀同一研究群 2020 年的開放綜述（F32-S007），F32-004 因此只算 0.75。 原提案 F32-NA005。",
+      "reentry_condition": "原文開放後可把 F32-004 由綜述層級升為原研究，約 +0.25。",
+      "reading_status": "摘要與新聞稿；同團隊綜述全文",
+      "origin": "wave68-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+    },
+    {
+      "id": "L68-NA006",
+      "question": "左右反轉會不會在發育上就先吃虧？（Utsuno、Asami、Van Dooren、Gittenberger 2011 Evolution）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "WebSearch 只見 KAKEN 書目與他文摘要轉述，無開放全文；且作者在 Asami／Gittenberger 網絡內，該網絡已封頂，讀到也不加條。 原提案 F32-NA006。",
+      "reentry_condition": "不重入（網絡封頂）。",
+      "reading_status": "只見書目",
+      "origin": "wave68-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+    },
+    {
+      "id": "L68-NA007",
+      "question": "螺殼的盤旋是不是由身體扭轉的力學決定？（Chirat、Goriely、Moulton 2021 PNAS）",
+      "existing_ids": [
+        "B2128"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC 非開放（PMC8651239，REST 500 已見於第十六輪）；WebSearch 只見 ENS Lyon 新聞頁與目錄紀錄，沒有 arXiv 版本連結；未讀。 原提案 F32-NA007。",
+      "reentry_condition": "出現作者典藏或預印本全文；可與 B2128 合併成『殼的左右與螺旋』。",
+      "reading_status": "只見摘要",
+      "origin": "wave68-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+    },
+    {
+      "id": "L68-NA008",
+      "question": "螃蟹大多是右撇子嗎？（Rozaimi 等 2023 PeerJ，橘紅泥蟹 70.2% 右大螯）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 開放全文已讀（PMC10078446，151 隻中 106 隻右手型），但這種泥蟹與 Dietl 研究的化石箱蟹不同、文中沒有談吃螺，接在 F32-005 後會變成把不同物種的數字串成因果；不收，本機快取已刪。 原提案 F32-NA008。",
+      "reentry_condition": "另開『螃蟹的左右手』題時可用。",
+      "reading_status": "全文讀過",
+      "origin": "wave68-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+    },
+    {
+      "id": "L68-NA009",
+      "question": "濱鳥一窩四顆尖蛋，尖頭朝內是為了擠緊、保溫嗎？（Tulp 等 2012 PLoS One 前言；Andersson 1978 假說）",
+      "existing_ids": [
+        "L67-002"
+      ],
+      "source_ids": [],
+      "reason": "Tulp 等 2012（PMC3373528，開放全文已讀）只在前言寫一句『尖頭朝中心朝下可省巢空間、利於傳熱』並引他文，研究本身量的是巢的內襯與位置；Andersson 1978、Norton 1970 原文未找到開放全文。不計，本機快取已刪。 原提案 F32-NA009。",
+      "reentry_condition": "讀到直接量測四顆蛋排列與降溫速度的原研究。",
+      "reading_status": "全文讀過（只有背景句相關）",
+      "origin": "wave68-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-life.json"
+    },
+    {
+      "id": "P68-NA001",
+      "question": "冰在冰上低速滑動時表面會裂開、再結晶嗎？（Montagnat & Schulson 2003）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "HAL 典藏全文已讀（f31src/Montagnat2003_FrictionIceLabExp-JOG.pdf，sha256 前 16 碼 0e8d4a6249b53ae8，CC BY 4.0）；內容是海冰力學用的冰對冰極慢滑動（5×10⁻⁶ 到 10⁻² m/s、−10 °C），主旨是摩擦造成的表面裂紋與再結晶，與『冰為什麼滑』的問題距離遠，放進來只會多一個學派清單項目。 原提案 F31-NA001。",
+      "reentry_condition": "若之後另組『冰會不會被磨碎』或海冰摩擦題可用。",
+      "reading_status": "已讀全文，未提",
+      "origin": "wave68-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+    },
+    {
+      "id": "P68-NA002",
+      "question": "輪胎橡膠在冰上的摩擦，熱與黏彈性哪個重要？（Hemette 等 2021）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "HAL 作者稿已讀（f31src/1-s2.0-S0301679X21002772-main.pdf，sha256 前 16 碼 35c96c22819761a3）；是橡膠對冰、以輪胎與鞋底為背景，容易被聽成行車或走路安全建議，本題不收。 原提案 F31-NA002。",
+      "reentry_condition": "不建議回本題。",
+      "reading_status": "已讀摘要與前言，未提",
+      "origin": "wave68-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+    },
+    {
+      "id": "P68-NA003",
+      "question": "冰對冰低速摩擦的黏著剪切加燒結理論（Maeno & Arakawa 2004）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "HUSCAP 機構典藏的出版社 PDF 已讀開頭（f31src/huscap_5869_JAP95-1.pdf，sha256 前 16 碼 31b5c4fad86e60a2，© AIP）；是冰對冰的理論模型，實驗是同群先前報告的整理，不算新原研究；方向與 F31-004 相同。 原提案 F31-NA003。",
+      "reentry_condition": "讀到同群原始冰對冰量測論文的開放全文時再評估。",
+      "reading_status": "已讀摘要與前言，未提",
+      "origin": "wave68-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+    },
+    {
+      "id": "P68-NA004",
+      "question": "消費者在家冷凍的冷凍庫種類與切塊大小，會影響牛肉品質嗎？（Dahunsi 等 2025）",
+      "existing_ids": [
+        "K67-004"
+      ],
+      "source_ids": [],
+      "reason": "MMB 全文已讀（f31src/mmb_19030.pdf，sha256 前 16 碼 fada5d76d57b30b8，CC BY）；所有組都凍過兩次、沒有鮮肉對照，主題是冷凍庫類型與切塊大小，屬冷凍方法比較，違反本題不給冷凍方法建議的規則。 原提案 F31-NA004。",
+      "reentry_condition": "不建議回本題。",
+      "reading_status": "已讀摘要與方法，未提",
+      "origin": "wave68-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+    },
+    {
+      "id": "P68-NA005",
+      "question": "冷凍速率與冰晶形成、肌水動態，以及解凍時肌原纖維蛋白回復（Qian 等 2022 Food Chem 兩篇、Li 2023 列日博士論文、Qian 等 2022 Int J Refrig）",
+      "existing_ids": [
+        "K67-003"
+      ],
+      "source_ids": [],
+      "reason": "ORBi 紀錄頁（2268/295797、295799、298474）都只有作者稿『Request a copy』按鈕，不申請；Europe PMC 標非開放。只讀到摘要，不計。 原提案 F31-NA005。",
+      "reentry_condition": "作者稿在 ORBi 改為公開或出現在開放期刊時，可補第三研究群的冰晶與蛋白質變性，約 0.5 條。",
+      "reading_status": "只讀摘要（ORBi、AGRIS 紀錄頁）",
+      "origin": "wave68-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
+    },
+    {
+      "id": "P68-NA006",
+      "question": "冷凍牛肉裡冰晶位置與大小（Martino & Zaritzky 1986 Food Structure；Mulot 等 2019 J Food Eng 微型 CT）",
+      "existing_ids": [
+        "K67-001"
+      ],
+      "source_ids": [],
+      "reason": "Martino & Zaritzky 的 USU Digital Commons 紀錄頁今日 200，但頁面 citation_pdf_url 回 Cloudflare『Just a moment』403；CORE 下載網址（搜尋結果列出）403；未繞過。Mulot 2019 在 HAL（hal-02618602）只有書目、openAccess 為否。 原提案 F31-NA006。",
+      "reentry_condition": "USU 或 CORE 可讀時補 Martino & Zaritzky，約 0.5 條。",
+      "reading_status": "只讀紀錄頁中繼資料",
+      "origin": "wave68-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave68-physics.json"
     },
     {
       "question": "蚊子為什麼找得到人？",
