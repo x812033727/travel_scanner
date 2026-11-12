@@ -129,7 +129,7 @@ obj("phone-pad", "Close-up of " + PHONE + " lying face up on " + PAD + ", a tiny
     k("咦？它沒插線，也在充電耶！", "驚訝"))
 obj("pot-boil", "Close-up of " + POT + " on " + HOB + ", the noodle soup bubbling, the glass around the pot clean and shiny",
     k("所長的鍋子也滾了！", "指著"),
-    c("我剛剛碰了一下鍋子旁邊的玻璃，不燙。"),
+    c("我把手靠近鍋子旁邊的玻璃，一點都不熱。"),
     c("你先別碰，等一下告訴你為什麼。", "叮嚀", "S:coolglass"))
 kid("kid-puzzle", K("counting on her fingers with a puzzled frown", where=OFFICE),
     k("卡片、手機、鍋子都沒插線，", "想不通"),
@@ -140,17 +140,16 @@ chief("chief-energy", C("holding up three fingers with a bright smile"),
     k("能量是什麼？", "句尾上揚"),
     c("讓燈會亮、東西會動、會變熱的那份本事。"))
 chief("chief-energy2", C("opening both hands with a warm smile", close=True),
-    c("可是收到以後，它們做的事完全不一樣。"),
-    c("等一下你會看到，手機往旁邊挪一點點，會怎樣；", "賣關子", "S:shift"))
+    c("手機要是往旁邊挪一點點，還充得到嗎？我們等等試。", "賣關子", "S:shift"))
 chief("chief-hooks", C("counting on her fingers with a playful mysterious smile"),
-    c("我換一口玻璃鍋放上爐子，會怎樣；", None, "S:glass"),
-    c("還有你那張卡片，要離閘門多近才會嗶。", "轉向觀眾", "S:cardfar"),
+    c("這口麵煮完，我再拿一口玻璃鍋上來。", None, "S:glass"),
+    c("你那張卡片，離閘門多遠就不嗶了？你猜猜。", "轉向觀眾", "S:cardfar"),
     k("我先猜！電是飛過去的！", "篤定的錯猜", "S:fly"))
 
 # ---------- 第一章：卡片貼上閘門那一下 ----------
 chief("chief-not-fly", C("shaking her head gently with a kind smile, one palm raised", close=True),
-    c("不是像球那樣飛過去喔。先從你的卡片說起。", "接住上一句"),
-    c("你猜，卡片裡有電池嗎？"),
+    c("不是像球那樣飛過去喔。", "接住上一句"),
+    c("你剛剛嗶的那張卡片，裡面有電池嗎？"),
     k("一定有！不然哪來的電？", "篤定的錯猜", "S:battery"), chapter="卡片貼上閘門那一下")
 obj("card-xray", "Close-up of " + XCARD + ", on a plain pale cream background",
     c("一家做感應卡晶片的廠商說，它不需要電池。", None, "P:battery"),
@@ -196,7 +195,7 @@ chief("chief-talk", C("tapping one ear lightly with a knowing smile", close=True
     c("閘門感覺到這些變化，就讀懂卡片的回答。", None, "P:talk"),
     k("那卡片離開閘門以後呢？", "句尾上揚", "S:after"))
 chief("chief-after", C("holding " + CARD + " far out to one side at arm's length with a gentle smile"),
-    c("卡片沒有電池，離開那個磁場，就沒電可用了。", None, "P:after"),
+    c("還記得它沒有電池嗎？離開那個磁場，就沒電可用了。", None, "P:after"),
     c("它不存電，收到的電，當下就用掉。"))
 kid("kid-store-q", K("looking at " + PHONE + " in her hand with a curious frown", where=OFFICE),
     k("那媽媽的手機呢？", "追問"), k("也是收到就用掉嗎？", "章尾停住，句尾上揚", "S:store"))
@@ -282,7 +281,7 @@ chief("chief-metal", C("tapping the side of a shiny steel pot with one finger an
     k("那金屬鍋都可以嗎？", "句尾上揚", "S:metal"))
 obj("pots-row", "Wide shot of three empty cooking pots side by side on a wooden table, a dark iron pot, a shiny steel pot and a pale silver pot, a plain pale cream wall behind",
     c("也不是。教科書說，鍋底要是鐵或鋼這類材料。"),
-    c("那份說明也寫，鋁鍋、銅鍋都不行。"),
+    c("美國大學那份說明也寫，鋁鍋、銅鍋都不行。"),
     k("那我要怎麼分辨？", "句尾上揚"))
 chief("chief-test", C("holding an empty steel pot upside down and looking at its bottom with a knowing smile"),
     c("拿冰箱上的磁鐵碰碰鍋底，吸得住，通常就能用。", None, "P:metal"),
@@ -290,16 +289,10 @@ chief("chief-test", C("holding an empty steel pot upside down and looking at its
 kid("kid-try-mag", K("bouncing on her toes with an excited grin, both fists clenched", where=KITCHEN),
     k("我回家拿磁鐵試！", "興奮"),
     c("可以，但要等鍋子冷了、拿下爐子再試。", "叮嚀"))
-kid("kid-share-q", K("peering into a steaming pot of noodles with a curious face", close=True, where=KITCHEN),
-    k("能量都跑進鍋子了嗎？", "句尾上揚", "S:share"),
-    c("美國能源之星的網站說，大約八成五，", "接住上一句"))
-chief("chief-share", C("holding up a bowl of noodles with a warm smile"),
-    c("送到鍋子裡的食物；用瓦斯爐，只有三分之一。", None, "P:share"),
-    c("剩下的，多半變成熱，散到廚房裡。"))
 kid("kid-cardcool-q", K("holding " + CARD + " up beside her cheek with a thinking face", close=True, where=KITCHEN),
-    k("卡片的細線也有電在跑，", "想不通"), k("為什麼卡片不會燙？", "句尾上揚", "S:cardcool"))
+    k("那卡片的細線也有電在跑，", "想不通"), k("為什麼卡片不會燙？", "句尾上揚", "S:cardcool"))
 chief("chief-cardcool", C("holding out both hands like a balance with a thoughtful smile"),
-    c("卡片的電，被細線送進晶片，拿去回答閘門。"),
+    c("卡片只收到一點點電，送進晶片拿去回答閘門。"),
     c("電磁爐卻是專門把能量灌進鍋底，讓它變成熱。", None, "P:cardcool"))
 obj("phone-slid", "Close-up of " + PHONE + " lying face up half off the edge of " + PAD + ", slightly crooked",
     k("咦？媽媽的手機剛剛震了一下，", "發現"), k("好像沒在充了！", "章尾停住", "S:stopped"))
@@ -335,23 +328,16 @@ chief("chief-lift", C("lifting a shiny steel pot up a little with both hands and
     k("那把鍋子拿起來呢？", "句尾上揚", "S:lift"),
     c("美國能源部的說明寫，鍋子一拿開，加熱就停了。", None, "P:lift"),
     c("還記得卡片離開閘門嗎？一樣是收不到了。"))
-chief("chief-hot", C("holding a plain dark-grey smartphone flat in her palm with a calm smile"),
-    k("那手機太熱會怎樣？", "句尾上揚", "S:hot"),
-    c("手機的說明寫，電池太熱時，可能先不充過八成。", None, "P:hot"),
-    c("等溫度降下來，才會繼續充。"))
-chief("chief-meant", C("laughing softly with one hand raised", close=True),
-    k("那鍋子不就一直在熱？", "句尾上揚"),
-    c("鍋子本來就要熱；手機的熱，只是順便多出來的。"))
 kid("kid-coin-q", K("holding up one shiny round coin between two fingers with a curious face", close=True, where=OFFICE),
     k("那硬幣放上充電板，", "好奇"), k("也會像鍋子一樣熱嗎？", "句尾上揚", "S:coin"))
 chief("chief-coin", C("nodding slowly with a serious but kind face"),
-    c("可能會。金屬待在磁場裡，也會繞起電流。"),
+    c("可能會。金屬在一直變的磁場裡，也會繞起電流。"),
     c("所以無線充電的規格，要手機回報收到多少電，"))
 obj("pad-watch", "Close-up of " + PHONE + " lying neatly in the middle of " + PAD + ", a tiny soft green glow on the edge of the pad",
     c("讓充電板發現，中間是不是多了一塊會變熱的金屬。", None, "P:coin"),
     k("那我拿硬幣試試看！", "興奮"))
 chief("chief-coin-no", C("holding up one hand like a gentle stop with a kind but firm smile", close=True),
-    c("不行。硬幣、鋁箔、卡片，都別放上充電板或爐子。", "認真"),
+    c("不行喔。金屬會變燙，硬幣、鋁箔都別放上去。", "認真"),
     k("好啦。那電怎麼隔空過去？", "章尾停住，句尾上揚"))
 
 # ---------- 收尾 ----------
@@ -386,7 +372,7 @@ WHAT = {"jump": "沒有插線，電怎麼跑過去", "heat": "為什麼只有鍋
         "phonewarm": "手機充電會不會變熱", "pot": "鍋子為什麼那麼燙",
         "potloop": "鍋子裡有沒有細線", "metal": "金屬鍋是不是都可以",
         "cardcool": "卡片也有電在跑，為什麼不燙", "stopped": "手機震了一下，為什麼沒在充",
-        "far": "離遠一點會怎樣", "lift": "鍋子拿起來會怎樣", "coin": "硬幣放上充電板會不會像鍋子一樣熱", "potcenter": "鍋子要不要放正中間", "talk": "卡片沒電池怎麼回話", "share": "能量是不是都跑進鍋子", "hot": "手機太熱會怎樣"}
+        "far": "離遠一點會怎樣", "lift": "鍋子拿起來會怎樣", "coin": "硬幣放上充電板會不會像鍋子一樣熱", "potcenter": "鍋子要不要放正中間", "talk": "卡片沒電池怎麼回話"}
 # Latin terms the Mandarin voice must spell letter by letter (P13 GPS, P29 HTTPS/TLS). This episode says
 # 無線充電／感應卡／電磁爐 and never a brand or standard name, so no spoken line carries a Latin letter; the loop
 # stays so a later edit that adds one is spelled and carries say_for.
