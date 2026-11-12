@@ -128,7 +128,7 @@ kid("kid-main-q", K("holding up " + CARD + " in one hand beside her face and loo
 obj("phone-pad", "Close-up of " + PHONE + " lying face up on " + PAD + ", a tiny soft green glow on the edge of the pad",
     k("咦？它沒插線，也在充電耶！", "驚訝"))
 obj("pot-boil", "Close-up of " + POT + " on " + HOB + ", the noodle soup bubbling, the glass around the pot clean and shiny",
-    k("所長的鍋子也滾了！", "指著"),
+    k("你的鍋子也滾了！", "指著"),
     c("我把手靠近鍋子旁邊的爐面玻璃，不覺得燙。"),
     c("你先別碰，等一下告訴你為什麼。", "叮嚀", "S:coolglass"))
 kid("kid-puzzle", K("counting on her fingers with a puzzled frown", where=OFFICE),
@@ -160,7 +160,7 @@ kid("kid-chip-q", K("tilting her head with a curious face, one finger on her che
     k("沒有電池，電從哪裡來？", "追問", "S:where"))
 obj("gate-coil", "Close-up of " + GATE + ", soft pale blue rings of light around the round reader pad",
     c("從閘門來。閘門的讀卡處裡，也有一圈線。", "接住上一句"),
-    c("電在那圈線裡，一下往這邊跑，一下往那邊跑。"))
+    c("那圈線裡的電，一下往這邊跑，一下往那邊跑。"))
 chief("chief-field", C("swinging one hand slowly left and right in front of her with a calm smile"),
     c("這樣，它旁邊就會有一個一直在變的磁場。"),
     k("磁場是什麼？", "句尾上揚"))
@@ -186,8 +186,8 @@ obj("wheel-stop", "Wide shot of " + BASIN + " seen from above, the water flat an
     c("磁場也一樣，要一直變，才推得動電。", None, "P:fly"))
 chief("chief-chip-wake", C("giving a small thumbs-up with a pleased smile"),
     c("卡片收到這一點電，晶片就醒過來，"),
-    c("跟閘門交換資料，閘門才嗶一聲讓你過。"),
-    k("卡片沒電池，怎麼回話？", "句尾上揚", "S:talk"))
+    c("跟進站的閘門交換資料，它才嗶一聲讓你過。"),
+    k("沒有電池，卡片怎麼回答？", "句尾上揚", "S:talk"))
 obj("card-talk", "Close-up of " + XCARD + " held just above " + GATE + ", the soft pale blue rings of light gently pulsing brighter and dimmer",
     c("它不用自己發出訊號，只是讓閘門的磁場，", "接住上一句"),
     c("被它一下多拿一點、一下少拿一點。"))
@@ -207,7 +207,7 @@ obj("pad-coils", "Close-up of " + PHONE + " lying face up on " + PAD + ", seen f
 chief("chief-same", C("pointing at a round plain white charging pad on the desk beside her with a bright smile"),
     c("還記得卡片嗎？充電板的磁場也一直在變，"),
     c("推著手機那圈線裡的電跑起來。"),
-    k("跟小水車一樣！", "開心"))
+    k("就像那個小水車！", "開心"))
 chief("chief-back-forth", C("moving one hand left and right like a pendulum with a thoughtful smile", close=True),
     c("對。可是推出來的電，一下往這邊、一下往那邊。"),
     k("那樣不能充電嗎？", "句尾上揚", "S:rect"))
@@ -225,7 +225,7 @@ chief("chief-diff", C("holding out both hands like a balance with a bright smile
 obj("wheel-bell", "Wide shot of " + BASIN + " seen from above, " + WHEEL + " at the far end with one tiny brass bell on top of it",
     c("還記得水盆嗎？卡片的小水車，轉一下就敲響鈴鐺；"))
 obj("wheel-pump", "Wide shot of " + BASIN + " seen from above, " + WHEEL + " at the far end joined by a thin tube to a small clear bottle half full of water beside the basin",
-    c("手機的水車，接著一台小幫浦，把水打進瓶子存著。"),
+    c("手機裡的水車，接著一台小幫浦，把水打進瓶子存著。"),
     k("那瓶子滿了怎麼辦？", "句尾上揚", "S:full"))
 chief("chief-full", C("holding a plain dark-grey smartphone up beside her face with a knowing smile", close=True),
     c("手機會傳話給充電板：電池滿了，可以停了。", None, "P:full"),
@@ -303,7 +303,7 @@ chief("chief-slid", C("bending forward and looking down at the desk with a curio
     c("手機的說明真的寫著：震動可能讓手機移位，"), chapter="手機往旁邊挪一點點")
 chief("chief-move-wheel", C("standing " + SINK + " and gently pushing a small yellow toy water wheel towards one corner of the basin"),
     c("充電板就可能停止供電。", None, "P:stopped"),
-    k("才一點點耶！", "不敢相信"),
+    k("只挪一點點耶！", "不敢相信"),
     c("還記得水盆嗎？我把小水車，挪到角落去。"))
 obj("wheel-corner", "Wide shot of " + BASIN + " seen from above, gentle ripples crossing the middle, " + WHEEL + " pushed into one far corner, turning only a little",
     k("它轉得好慢！", "驚訝"),
