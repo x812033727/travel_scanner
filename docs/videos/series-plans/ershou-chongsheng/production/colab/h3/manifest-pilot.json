@@ -1,0 +1,48 @@
+{
+  "episode": "ershou-chongsheng-e001",
+  "note": "manifest 給 .agents/skills/minimax-h3-colab 的 h3.sh batch：reference_images 的 first-frames/<id>.png 要先放好（通過 judge 的關鍵影格，或 pilot 手放的首格），prompts/<id>.txt 是鎖定檔的定稿正文原封不動（prompt_sha256 等於 e001-plan-lock.json）；1344×768、24 fps、4 秒會變 4.46 秒。 小樣三支 s29、s30、s31。",
+  "jobs": [
+    {
+      "id": "s29",
+      "title": "ershou-chongsheng-e001 s29",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s29.png"
+      ],
+      "prompt_file": "prompts/s29.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s29-t1.mp4",
+      "prompt_sha256": "f727afc6f752bb0153bdaa0e8e5122c2453c3bffee140c0daad2ff22c22751ce"
+    },
+    {
+      "id": "s30",
+      "title": "ershou-chongsheng-e001 s30",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s30.png"
+      ],
+      "prompt_file": "prompts/s30.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s30-t1.mp4",
+      "prompt_sha256": "8e3148f0bc5f8b42ece8043f941476ea9fdec79ac0d4ba6ebe9e278ad91a3a01"
+    },
+    {
+      "id": "s31",
+      "title": "ershou-chongsheng-e001 s31",
+      "inference_mode": "first_frame",
+      "reference_images": [
+        "first-frames/s31.png"
+      ],
+      "prompt_file": "prompts/s31.txt",
+      "duration_seconds": 4,
+      "width": 1344,
+      "height": 768,
+      "output_name": "s31-t1.mp4",
+      "prompt_sha256": "bad5cb5f035f0fa8e0842e190b47bf501b9a9773f464a63948f6903e0bc9f128"
+    }
+  ]
+}
