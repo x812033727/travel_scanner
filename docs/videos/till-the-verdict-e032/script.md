@@ -30,7 +30,7 @@
 | Gus Moretti | **待畫，必須最先畫**（bible 先畫順序第 1） | 基本款（`gus`：七十歲、駝背、頭頂禿、兩側白髮、`small steel reading glasses low on his nose`、白色無袖汗衫、舊工作褲、風吹日曬的前臂與厚指節的手；鞋寫舊的棕色工作靴）；**本集不上爐，不穿皮圍裙、不戴手套與面罩**；外貌句不寫疤；手電筒在右手、c06 放到工作台遠端；不笑；原聲 |
 | Elias | `assets/refs/elias-portrait.jpg` | 只在 c22：門外黑車的駕駛座裡，隔著副駕駛座車窗、遠、虛焦、看不清臉；右手把手機貼在右耳，左手在車窗下緣以下、畫框外；不說話 |
 
-場景：Pell's 主廠房冷的版本 `remelt-cold`（待畫，直式；格局照 `remelt` 那一格，就是 2026-11-12 對齊後第 31–60 集唯一的 Remelt 格局；全集）；c22 從門縫看出去的街與黑車照 `pell-ext`（清晨版）。`assets/refs/set-remelt.jpg` 只當色調與材質的參考。
+場景：Pell's 主廠房冷的版本 `remelt-cold`（c01–c27，帆布蓋著）與 **`remelt-cold-open`（c28–c41，帆布扯下）**（都待畫，直式；格局照 `remelt` 那一格，就是 2026-11-12 對齊後第 31–60 集唯一的 Remelt 格局；全集）；c22 從門縫看出去的街與黑車照 `pell-ext`（清晨版）。`assets/refs/set-remelt.jpg` 只當色調與材質的參考。
 道具：手電筒、長木工作台、吹管架、三號爐與帆布、黑車、Elias 的手機。
 
 ## 分鏡與台詞
@@ -91,7 +91,7 @@ c01–c41 寫 `early morning inside a cold, dim old brick glassworks, thin gold 
 ### 第二場：Nobody's lit her in twelve years.（約 47.5 秒）
 
 **場頭**：
-- **地點與場景圖**：同一間冷的廠房 `remelt-cold`，三號爐前：爐口前地上一塊 `a black steel plate on the floor in front of the furnace mouth`（積灰）；爐子左邊是吹管架與倉庫木門，右邊是齊胸的大退火爐（在畫框外）；帆布的一角綁著一條舊繩 `a frayed rope tied to one corner of the tarp`，垂在爐腳。c28 扯下後：`a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, cold and grey with dust`，爐口的鉸鍊鐵門半開、垂著，裡面一片黑；帆布 `a huge dusty grey canvas tarp, heaped at the foot of the furnace`，堆在爐腳、鋼板旁。近景都寫「同一間冷的廠房、三號爐前」。
+- **地點與場景圖**：同一間冷的廠房，三號爐前；**c25–c27 用 `remelt-cold`（帆布蓋著），c28 起用 `remelt-cold-open`**（帆布扯下、三號爐冷且蒙灰、練習爐、黃線、鋼板；審稿後補定）。地上 `a worn yellow safety line painted across the concrete floor` 積著灰，`the worn yellow safety line turns along the back wall, leaving a narrow walkway to the storeroom door`；爐子冷著（禁令第 33 集才說出口），**Nora 在爐前時站在黃線通道那側**。爐口前地上一塊 `a black steel plate on the floor in front of the furnace mouth`（積灰）；爐子左邊是吹管架與倉庫木門，右邊是齊胸的大退火爐（在畫框外）；帆布的一角綁著一條舊繩 `a frayed rope tied to one corner of the tarp`，垂在爐腳。c28 扯下後：`a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, cold and grey with dust`，爐口的鉸鍊鐵門半開、垂著，裡面一片黑；帆布 `a huge dusty grey canvas tarp, heaped at the foot of the furnace`，堆在爐腳、鋼板旁。近景都寫「同一間冷的廠房、三號爐前」。
 - **時間與天氣**：第 109 天 約 06:25–06:40；光同第一場：門上高窗的金色光柱斜進來落在爐子的圓頂上，右牆高窗的冷白光從爐子右邊照過來；整場光不變。
 - **軸線**：兩人走到爐前，**面對爐子：Gus 在左（爐子左前、吹管架那邊）、Nora 在右**（從大門那頭看）。c25、c28 從他們身後與右前方拍；c30 起近景的鏡頭在**爐子右側（北邊）**、往南拍：爐面在畫面右，**Nora 離鏡頭近、側臉朝畫面右；Gus 在她身後較遠、畫面左**，他看她時臉朝畫面右前方。
 - **在場的人**：Nora、Gus。
@@ -111,13 +111,13 @@ c01–c41 寫 `early morning inside a cold, dim old brick glassworks, thin gold 
 | c32 | 全景、低角度、慢推（從全景推到中景）；鏡頭在爐前的地上、低處往上拍；直式：爐子從畫面下緣頂到上緣，兩人在爐腳兩側、很小；**整座爐子留在畫面裡** | 共兩人，臉都很小。`a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, cold and grey with dust` 整座露出來，鋼煙囪往上進到暗的屋頂；爐腳 `a huge dusty grey canvas tarp, heaped at the foot of the furnace`；Gus（`gus`，舊的棕色工作靴）在畫面左的爐腳，右手還握著 `a frayed rope tied to one corner of the tarp`：眉頭鬆開、嘴唇閉著，`no smile at any moment, until the last frame`；Nora（`shoulder`，橄欖綠外套敞開，棕褐短靴）在畫面右的爐腳仰頭：眉毛抬起、嘴唇張開，`no smile at any moment, until the last frame`；最後的灰還在金色光柱裡落 | Gus 放開手上的繩子、繩子落到帆布堆上（動作一）；Nora 往後退半步、仰頭看整座爐子（動作二）；鏡頭慢推往上；剪在繩子落下；兩人嘴都閉著；最後：整座冷爐立在兩人之間，帆布堆在爐腳 | — | 約 3 秒 |
 | c33 | 插鏡、特寫、慢推（從爐口推近）；**第一格就是胸口高度的圓爐口與半開的鉸鍊鐵門**；直式；同一間冷的廠房、三號爐前 | `a round mouth at chest height behind a hinged steel door`，鐵門半開、垂在鉸鍊上，門上一個小窺孔；爐口裡一片黑、看不到底；爐口邊緣的耐火磚冷、灰；金光只照到爐口外緣 | 鏡頭慢推向黑的爐口，爐口裡什麼都看不到；剪在推到爐口占滿畫面中間；畫面上沒有嘴；最後：黑的爐口在畫面中間 | — | 約 2.5 秒 |
 | c34 | 中近景、固定；鏡頭在爐子右側（北邊），往南拍；直式：前景右緣是 Nora 外套的側面與齊肩髮（虛焦、不露臉），中間是 Gus，身後是吹管架（虛焦） | Gus（`gus`，老花眼鏡低在鼻樑上、白色無袖汗衫）站在爐子左前方；右手垂著；冷白的光照在臉上；第一格他看著畫面右的黑爐口，然後眼睛轉到前景的 Nora 身上（畫面右前方）；眉頭鬆開、眼睛濕、嘴唇抿著、慢慢吸一口氣，`no smile at any moment, until the last frame` | Gus 的眼睛從爐口轉到 Nora 身上（動作一），往爐子邁近一步（動作二）；剪在那一步；嘴閉著；最後：他站在爐邊、看著她 | — | 約 2.5 秒 |
-| c35 | 中近景、慢推（從中近景推到近景）；同 c34 的鏡位；直式，Gus 的臉在上三分之一 | Gus（`gus`）；冷白的光；右手掌拍在 `a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, cold and grey with dust` 的磚上；四分之三側臉朝畫面右前方的 Nora、眼睛看著她；眉毛壓低、下巴往前、聲音低、粗、慢，`no smile at any moment, until the last frame` | Gus 的右手在冰冷的磚上拍兩下（動作一），嘴在說話（低、粗、慢）（動作二）；說完右手留在磚上，嘴閉上；最後：他的右手平放在磚上，看著她 | Gus（低、粗、慢）：Nobody's lit her in twelve years.（十二年沒人點過她了）（原聲）（結尾） | 約 4 秒 |
+| c35 | 中近景、慢推（從中近景推到近景）；同 c34 的鏡位；直式，Gus 的臉在上三分之一 | Gus（`gus`）；冷白的光；右手掌拍在 `a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, cold and grey with dust` 的磚上；四分之三側臉朝畫面右前方的 Nora、眼睛看著她；眉毛壓低、下巴往前、聲音低、粗、慢，`no smile at any moment, until the last frame` | Gus 的右手在冰冷的磚上拍兩下（動作一），嘴在說話（低、粗、慢）（動作二）；說完右手掌在磚上往旁邊抹開一道灰、停住，嘴閉上；最後：他的右手平放在磚上，看著她 | Gus（低、粗、慢）：Nobody's lit her in twelve years.（十二年沒人點過她了）（原聲）（結尾） | 約 4 秒 |
 | c36 | 近景、固定；同 c30 的鏡位；直式，臉在上三分之一 | Nora（`shoulder`，橄欖綠外套敞開），眼睛紅、臉頰有淚痕；冷白的光；眼睛從畫面左後的 Gus 移到畫面右的磚上；眉心往上擠、嘴唇抿緊、下巴發抖、一口氣吸進去，`no smile at any moment, until the last frame` | Nora 的眼睛從 Gus 移到磚上（動作一），吸一口氣（動作二）；剪在吸氣；嘴閉著；最後：她看著畫面右的磚 | — | 約 2.5 秒 |
 | c37 | 中近景、固定；同 c30 的方向、拉開一點；直式：她在畫面中、爐身的磚在畫面右 | Nora（`shoulder`，橄欖綠外套敞開，棕褐短靴），眼睛紅、臉頰有淚痕；冷白的光；側臉朝畫面右的磚；眉頭收著、嘴唇抿緊、呼吸慢 | Nora 往爐子走近一步（動作一），右手抬起、往磚伸過去（動作二）；剪在手伸到一半；嘴閉著；最後：她的右手伸向畫面右的磚 | — | 約 2.5 秒 |
 | c38 | 插鏡、手部特寫、固定；**第一格就是深紅的耐火磚與鏽鋼帶**；直式；冷白的光從畫面左 | `a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, cold and grey with dust` 的一段磚面；Nora 的右手（奶油色毛衣袖口、橄欖綠外套袖口）；畫面裡沒有臉 | Nora 的右手手掌貼上磚面（動作一），手指慢慢張開、壓平（動作二）；剪在手指張開；畫面上沒有嘴；最後：`her right palm flat on the cold brick`，手指張開 | — | 約 2.5 秒 |
 | c39 | 近景、慢推（從肩上推到臉）；顏值鏡頭；同 c30 的鏡位、更近；直式，臉在上三分之一，右手在畫面右下緣貼著磚；**第一格就是 Nora 的臉，整鏡不拉遠** | Nora（`shoulder`），臉上有淚痕、頭髮垂在臉邊；右手掌平貼在冰冷的磚上（畫面右下緣）；一道金色光柱斜過她身後，灰在光裡往下落；冷白的光照在臉上；側臉朝畫面右的磚；眉毛放鬆下來、眼睛慢慢閉上、睫毛濕、嘴唇微張、長長吐一口氣，`no smile at any moment, until the last frame` | Nora 的眼睛慢慢閉上（動作一），長長吐一口氣、肩膀放下來（動作二）；剪在吐氣到一半；嘴閉著（微張）；最後：她閉著眼，手貼在磚上 | — | 約 4 秒 |
 | c40 | 中近景、固定；同 c34 的鏡位；直式：前景右緣是 Nora 的側面與齊肩髮（虛焦），中間是 Gus | Gus（`gus`，老花眼鏡低在鼻樑上）；右手還平放在磚上；冷白的光；眼睛從她的臉垂到她貼在磚上的手；眉頭鬆開、眼睛濕、嘴唇抿著、鼻子慢慢吐氣，`no smile at any moment, until the last frame` | Gus 的眼睛垂到她的手上（動作一），慢慢點一下頭（動作二）；剪在點頭；嘴閉著；最後：他看著她的手，右手還在磚上 | — | 約 2.5 秒 |
-| c41 | 中景、雙人鏡、固定（接第 33 集之前的最後一刻）；鏡頭在爐子右側（北邊）、往南拍；直式：爐面的磚在畫面右，Nora 在畫面中間偏右、離鏡頭近，Gus 在她身後較遠的畫面左；**頭上留出空間** | 共兩人。Nora（`shoulder`，橄欖綠外套敞開，棕褐短靴）面對爐子站著，右手手掌平貼在冰冷的紅磚上、手指張開，眼睛閉著，臉上有淚痕，頭髮垂在臉邊：眉毛放鬆、嘴唇微張、呼吸慢，`no smile at any moment, until the last frame`；Gus（`gus`，舊的棕色工作靴）在她左邊一步（畫面上在她身後），右手剛從磚上拿開，看著她的手：眉頭鬆開、嘴唇閉著，`no smile at any moment, until the last frame`；`a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, cold and grey with dust`；爐腳 `a huge dusty grey canvas tarp, heaped at the foot of the furnace`；高窗的光柱裡灰塵還在往下落 | Gus 的右手從磚上拿開、垂到身側；灰在光柱裡往下落；剪在他的手垂到一半；兩人嘴都閉著；最後：她閉著眼、手貼著磚，他看著她的手 | — | 約 3 秒 |
+| c41 | 中景、雙人鏡、固定（接第 33 集之前的最後一刻）；鏡頭在爐子右側（北邊）、往南拍；直式：爐面的磚在畫面右，Nora 在畫面中間偏右、離鏡頭近，Gus 在她身後較遠的畫面左；**頭上留出空間** | 共兩人。Nora（`shoulder`，橄欖綠外套敞開，棕褐短靴）站在黃線通道那側、面對爐子，右手手掌平貼在冰冷的紅磚上、手指張開，眼睛閉著，臉上有淚痕，頭髮垂在臉邊：眉毛放鬆、嘴唇微張、呼吸慢，`no smile at any moment, until the last frame`；Gus（`gus`，舊的棕色工作靴）在她左邊一步（畫面上在她身後），右手剛從磚上拿開，看著她的手：眉頭鬆開、嘴唇閉著，`no smile at any moment, until the last frame`；`a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, cold and grey with dust`；爐腳 `a huge dusty grey canvas tarp, heaped at the foot of the furnace`；高窗的光柱裡灰塵還在往下落 | Gus 的右手從磚上拿開、垂到身側；灰在光柱裡往下落；剪在他的手垂到一半；兩人嘴都閉著；最後：她閉著眼、手貼著磚，他看著她的手 | — | 約 3 秒 |
 
 約 117 秒（1 分 57 秒）、41 鏡（第一場 24、第二場 17），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 40–44 鏡。
 開場 10 秒四鏡（c01–c04）：c01 光束放低、c02 Gus 走進光裡、c03 她的臉（眯眼、光裡的灰）、c04 在第 8.5 秒 "You're the girl from the courthouse steps."。平均一鏡 2.85 秒（哭的 c11 4.5 秒不切碎）。
@@ -202,15 +202,15 @@ c01–c41 寫 `early morning inside a cold, dim old brick glassworks, thin gold 
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `shoulder`＋`a dark olive waxed-cotton work jacket, worn open`；眼睛紅、臉頰有淚痕，c11 起剛哭過 | c03、c05、c08、c10–c11、c16、c19、c23、c30、c36–c37、c39、c41（c06、c28 小，c01、c25 背，c34、c40 只有側面，c07、c12、c17、c38 只有手或半張臉） | 已有；要畫全身參考圖 |
-| Gus | 基本款（白色無袖汗衫、舊工作褲、老花眼鏡低在鼻樑上、舊的棕色工作靴）；不穿圍裙、不戴手套與面罩；手電筒在右手、c06 放下 | c02、c04、c09、c13–c15、c20–c21、c24、c34–c35、c40–c41（c06、c28、c32 中景或全景，c25 背，c14、c27 只有手） | 外貌句已有；**要畫定妝照**（最先畫） |
+| Nora | `shoulder`＋`a dark olive waxed-cotton work jacket, worn open`；眼睛紅、臉頰有淚痕，c11 起剛哭過 | c03、c05、c08、c10–c11、c16、c19、c23、c30、c36–c37、c39、c41（c06、c28、c32 小，c01、c25 背，c34、c40 只有側面，c07、c12、c17、c38 只有手或半張臉） | 已有；要畫全身參考圖 |
+| Gus | 基本款（白色無袖汗衫、舊工作褲、老花眼鏡低在鼻樑上、舊的棕色工作靴）；不穿圍裙、不戴手套與面罩；手電筒在右手、c06 放下 | c02、c04、c09、c13、c15、c20–c21、c24、c34–c35、c40–c41（c06、c28、c32 中景或全景，c25 背，c14、c27 只有手） | 外貌句已有；**要畫定妝照**（最先畫） |
 | Elias | 基本款；在車裡、右手拿手機貼右耳 | c22（遠、虛焦） | 已有 |
 
 ### 2. 本集需要的參考圖
 
 - 定妝照：`nora-portrait.jpg`（r3）、`elias-portrait.jpg`（有）。
 - **待畫的人**：Gus（必須最先畫；風吹日曬的手、不寫疤）；Nora 全身 `shoulder`。
-- **待畫的場景**：主廠房冷的版本 `remelt-cold`（直式；格局照 `remelt`：三號爐蓋帆布、吹管架、倉庫門、長木工作台、右牆高窗；**還要一張帆布扯下後的冷爐**，爐口鐵門半開）。c22 門外的街照 `pell-ext` 清晨版。
+- **待畫的場景**：主廠房冷的版本 `remelt-cold`（直式；格局照 `remelt`：三號爐蓋帆布、吹管架、倉庫門、長木工作台、右牆高窗）與 `remelt-cold-open`（帆布扯下、冷爐、練習爐、黃線與通道、鋼板；爐口鐵門半開）。c22 門外的街照 `pell-ext` 清晨版。
 - 道具：三號爐冷與蓋帆布兩種狀態（bible 建議先畫）、手電筒、帆布與繩照道具句。
 
 ### 3. 長鏡清單
