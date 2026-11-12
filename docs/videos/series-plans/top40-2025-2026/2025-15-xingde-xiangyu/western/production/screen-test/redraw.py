@@ -163,10 +163,51 @@ FIXES = [
     ("ambulance-end-wall", "set-ambulance.jpg", (816, 1440), "the stretcher, the pillow, the rails, the side walls, the ceiling light, the camera position and the light",
      "the far end of the cabin is a plain dark padded wall with no window and no lights outside."),
 ]
+# s9 (after looking at s7/s8, 2026-11-12): the model kept putting the sea and the sun outside the land-side door and the east
+# glass, drew the car from the wrong end (or as a cut-away on grey), and the road shoulder from above. Retried with the land
+# filling the glass and the camera spelled out; two picks get one-change edits (an IV bag, a wall screen).
+LAND = ("outside, filling the glass: a gravel forecourt, a gravel drive curving away down a grassy slope to the lower right, and a dense "
+        "wall of dark fir trees under a grey sky; land only, no water anywhere, the sea is behind the camera")
+S9 = [
+    ("liv-east-gold", "a tall vertical view inside a single-storey glass-walled modern house with a flat white ceiling just above the glass, "
+     "looking from the sea-side glass toward the entry: pale oak floor, the long pale wood dining table on the LEFT of the frame, the low grey "
+     "sofa on the RIGHT with its back to the camera, heavy opaque charcoal-grey curtains closed over the glass at the table end on the left; "
+     f"the entry-side glass wall bare, {LAND}. Light: one wide beam of low red-gold sunset light from behind the camera across the floor and "
+     f"the sofa back; the forecourt outside glowing gold. {NOBODY}"),
+    ("door-in-day", f"a tall vertical view from inside the pale oak entry of a modern single-storey glass house toward its front door: the pale "
+     "oak entry floor in the foreground, a tall black steel-framed glass front door, CLOSED, hinged on its left, an ordinary black lever handle "
+     "on its right edge, plain glass walls on both sides; just outside the door a plain doormat on a stone landing and two wide grey stone "
+     f"steps down, one tall slim modern black lamppost on the grass just left of the steps, unlit; {LAND}. Light: grey overcast afternoon, "
+     f"drizzle, raindrops on the glass, cool blue inside, no lamps on. {NOBODY}"),
+    ("door-in-gold", "a tall vertical view from inside the pale oak entry of a modern single-storey glass house toward its front door: the "
+     "pale oak entry floor in the foreground, the tall black steel-framed glass front door standing open, swung inward against the wall on the "
+     "left, a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched; just outside a plain "
+     f"doormat on a stone landing and two wide grey stone steps down, one tall slim modern black lamppost on the grass just left of the steps, "
+     f"unlit; {LAND}. Light: low sunset light from behind the camera through the house, the forecourt, the drive and the firs outside lit "
+     f"gold-orange; no sun in the frame. {NOBODY}"),
+    ("gcar-day", "a photograph taken inside a pearl-white luxury sedan, the camera on the dashboard between the two front seats, looking "
+     "BACKWARD at the rear bench: the tops of the two empty front seats at the lower left and lower right edges of the frame, between them "
+     "and filling the middle of the frame one cream leather rear bench seat for two with a wide centre armrest console with a closed plain "
+     "lid, the rear window behind the rear headrests, tinted side windows, a plain roof lining with no sunroof, no badges or logos. Light: "
+     "grey overcast noon; blurred grey sea outside the right side window and dark firs outside the left. The car's interior fills the whole "
+     "frame; nothing outside the car but the view through its windows. Nobody is in the frame; nothing written anywhere."),
+    ("drive-foot", "a tall vertical photograph taken at eye level from the gravel shoulder of a two-lane coast road at sea level, at the foot "
+     "of a tall grassy bluff: in the foreground the wet gravel shoulder and the asphalt road running off to the LEFT along grey Puget Sound "
+     "water; on the right a narrow asphalt drive leaves the road and climbs steeply up the grassy bluff; a low wooden guardrail; wind-bent "
+     "grass and dark firs; at the very top right, small against the sky, a modern single-storey glass house. Light: low red-gold sunset light "
+     "from the upper right behind the bluff, the sun itself hidden. Nobody is in the frame; no cars; nothing written anywhere."),
+]
+S9_EDITS = [
+    ("room-night-iv", "s8-room-night-a.png", art.SETV, "the room, the bed, the window, the lamp, the camera position and the light",
+     "the IV stand is a bare metal pole with nothing hanging from it: no bags, no tubes."),
+    ("hall-screen", "s8-hall-b.png", art.SETV, "the corridor, the doors, the nurses' station, the bench, the camera position and the light",
+     "the small wall-mounted screen near the ceiling at the top right is gone; that wall is plain."),
+]
+
 # a4's lettering edit on Dr. Brandt failed twice (the coat kept an embroidered name), so she is drawn new, with the coat spelled out.
 BRANDT = ("a 48-year-old white German-American woman, short silver-blond bob, rectangular glasses, a completely plain white doctor's coat "
           "with no embroidery, no name, no badge, no logo and nothing in its pockets, over navy scrubs")
-ROUNDS = {"s7": "sets", "s8": "sets", "a5": "people", "p4": "props", "f1": "fixes"}
+ROUNDS = {"s7": "sets", "s8": "sets", "a5": "people", "p4": "props", "f1": "fixes", "s9": "retry"}
 
 
 def jobs_for(name: str, work: Path) -> list[dict]:
@@ -184,6 +225,15 @@ def jobs_for(name: str, work: Path) -> list[dict]:
             for t, take in enumerate(("a", "b")):
                 jid = f"prop-{pid}-{take}"
                 jobs.append(build.job(jid, f"p4 {pid} {take}", [art.CANVAS[size]], prompt, size, 761000 + pos * 10 + t, f"p4-{jid}.png"))
+    elif ROUNDS[name] == "retry":
+        for pos, (sid, text) in enumerate(S9):
+            prompt = art.SET_NEW.format(p=text, real=build.REAL)
+            for t, take in enumerate(("a", "b")):
+                jobs.append(build.job(f"{sid}-{take}", f"s9 {sid} {take}", [art.CANVAS[art.SETV]], prompt, art.SETV, 750500 + pos * 10 + t, f"s9-{sid}-{take}.png"))
+        for pos, (eid, src, size, keep, change) in enumerate(S9_EDITS):
+            prompt = f"Edit image 1: keep {keep} exactly the same. Change only this: {change} {build.REAL}"
+            for t, take in enumerate(("a", "b")):
+                jobs.append(build.job(f"{eid}-{take}", f"s9 {eid} {take}", [src], prompt, size, 750600 + pos * 10 + t, f"s9-{eid}-{take}.png", latent="image1"))
     elif ROUNDS[name] == "fixes":
         prompt = f"{build.BLANK} {build.PORTRAIT_FRAME}She is: {BRANDT}. She is the only person in the frame. {build.REAL}"
         for t, take in enumerate(("a", "b")):
@@ -215,7 +265,7 @@ def main(argv: list[str]) -> int:
     if a.list or not a.rounds:
         total = 0
         for r in ROUNDS:
-            n = 2 * (len(SETS[r]) if r in SETS else len(PROPS) if r == "p4" else len(FIXES) + 1 if r == "f1" else len(PEOPLE))
+            n = 2 * (len(SETS[r]) if r in SETS else len(PROPS) if r == "p4" else len(FIXES) + 1 if r == "f1" else len(S9) + len(S9_EDITS) if r == "s9" else len(PEOPLE))
             total += n
             print(f"{r:4} {n:3} images {n * art.CU_PER_IMAGE:5.2f} CU")
         print(f"all  {total:3} images {total * art.CU_PER_IMAGE:5.2f} CU")
