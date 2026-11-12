@@ -16,6 +16,7 @@ Use these as `<Picture N>` references for Ref2VA clips and as image 1 for any ne
 | set-glass-house-living.jpg | r1 set-glass-house-living-a | 711008 | 382f5b1778d47c6fd4eb20950701ca835a1b958898548bf7886c4f8d8b6aeb70 |
 | set-glass-house-ext.jpg | r1 set-glass-house-ext-a | 711009 | 07b03bdc70bf049adb056c1b757ac0e69c931ee735ee6933db20d41476957e1d |
 | set-remelt.jpg | r1 set-remelt-a | 711010 | 28680f0625c6ea4cfae23530e24aaeaacd990d8cdd4823f6d0f6f127d6750471 |
+| set-glass-house-bedroom-am.jpg | vpilot set-bedroom-v-a (vertical 1088×1920, the 2026-11-10 vertical pilot) | 721000 | 0f1db9515fb2567361cd50855e5be93f83b1c1f7a8444888ec6fa7b90fc5e122 |
 
 2026-11-12: `nora-portrait`, `nora-work` (small red marks removed) and `grant-portrait` (closed-mouth smile removed) replaced by the owner's picks from round r3; the r3 manifest is built by `../../screen-test/build.py r3`.
 
