@@ -195,7 +195,7 @@ obj("tray-slosh", "Close-up of " + TRAY + " held level on a kitchen counter, the
     c("電子在牆裡這樣來回跑，微波就被彈回去了。", None, "P:bounce"),
     k("那網子有洞，也能彈嗎？", "句尾上揚", "S:meshbounce"))
 chief("chief-mesh-again", C("holding up a small square of fine dark metal mesh between two fingers with a knowing smile", close=True),
-    c("可以。教授說，網子的洞很小，電子照樣跑，", "接住上一句"),
+    c("可以。那位教授說，網子的洞很小，電子照樣跑，", "接住上一句"),
     c("網子就跟一整片金屬一樣，把微波彈回去。", None, "P:meshbounce"))
 kid("kid-heat-q", K("looking down at " + BOXK + " in her hands with a hungry thinking face", where=KITCHEN),
     k("那彈來彈去的微波，", "想不通"), k("怎麼把飯變熱？", "章尾停住，句尾上揚", "S:heat"))
@@ -230,7 +230,7 @@ kid("kid-crowd-q", K("squeezing her two fists together with a curious frown", cl
 chief("chief-ptray", C("holding " + PTRAY + " level in both hands with an excited smile"),
     c("看這個尖尖的水盤，我一樣左右晃。", "接住上一句"))
 obj("ptray-splash", "Close-up of " + PTRAY + " on a kitchen counter, the water rushing into the pointed corner, piling up high and splashing over the tip in a little spray of droplets",
-    k("水都擠到角角去了！", "驚訝"), k("還濺出去了！", "驚訝"))
+    k("水都跑到尖尖的角了！", "驚訝"), k("還濺出去了！", "驚訝"))
 chief("chief-textbook", C("holding up one finger with a bright clear smile"),
     c("大學的物理課本說，金屬上越尖的地方，", "接住上一句"),
     c("電荷擠得越多，周圍的推力也越強。"))
