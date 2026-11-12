@@ -1,0 +1,344 @@
+{
+  "batch_id": "wave59-life-20261111",
+  "created_on": "2026-11-12",
+  "scope": "植物快動作的物理極限、捕蠅草的觸發與含羞草；動物社會學習的擴散實驗：替組題 C4-03 補原論文（作者 F13，非作者覆核 V16），並替後備組題 C5-03 補核心（作者 F14，覆核 V17）。",
+  "sources": [
+    {
+      "id": "L59-S001",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-11.pdf",
+      "canonical_url": "https://doi.org/10.1126/science.1107976",
+      "title": "Physical Limits and Design Principles for Plant and Fungal Movements（Skotheim、Mahadevan）",
+      "publisher": "Science 308:1308–1310（2005）；通訊作者 L. Mahadevan 在哈佛的實驗室網站所放的刊本 PDF",
+      "version": "2005（刊本；PDF 前一頁帶有同期另一篇的尾頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "正文全文讀完（含圖 1 圖說）；線上補充資料（各物種數據出處）未讀",
+      "locator": "p.1308–1310 全文；式 (1)(2)；Fig. 1 圖說",
+      "summary": "把植物與真菌動作的持續時間對『會動的部位最小尺寸 L』作圖。水要穿過組織才能讓它變形，所需時間（多孔彈性時間）與 L 的平方成正比，軟組織的典型值是每平方毫米 1.6 秒；比這條線慢的動作靠吸水、失水就做得到，比它快的只能先慢慢存彈性能再靠失穩釋放（翻面的殼，或撕裂的組織）。捕蠅草葉厚約 0.5 毫米，水流時間約 0.4 秒，閉合卻只要約 0.2 秒（文首寫 0.1 秒）；近親貉藻葉厚約 0.05 毫米，水流時間約 0.004 秒，約 0.02 秒閉合、不必翻面。另一條下限是彈性波傳過組織的時間（每毫米約 10⁻⁵ 秒）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "PDF 的網址是由該實驗室另一篇論文的檔名（2005-07.pdf）推到同一目錄的鄰近編號取得，不是由出版頁的連結點進去的；檔案內容確為本篇刊本。每平方毫米 1.6 秒是『典型軟組織』的量級估計，不是逐物種量的；圖 1 各物種的原始出處在未讀的補充資料。捕蠅草閉合時間文內有 0.1 與 0.2 秒兩個寫法。science.org 的出版頁未請求（付費）。 覆核 V16（2026-11-12）：read_via 與 limitations 改寫：取得路徑記為「softmath.seas.harvard.edu/publications/page/8/（實驗室公開的著作頁）上本篇書目下的 [Download PDF] 連結」，canonical_url 仍是 https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-11.pdf；刪去「由鄰近檔名推得」的說明，改記「作者原以猜檔名取得，覆核 V16 於 2026-11-12 確認同一檔案在著作頁有公開連結，由該連結重抓雜湊相同（dda4ebd41bc387a0）」。reading_scope 補：快取 PDF 後附線上補充資料的物種出處表。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/skotheim2005-softmath-2005-11.pdf",
+        "sha256_prefix": "dda4ebd41bc387a0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L59-S002",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-07.pdf",
+      "canonical_url": "https://doi.org/10.1038/nature03185",
+      "title": "How the Venus flytrap snaps（Forterre、Skotheim、Dumais、Mahadevan）",
+      "publisher": "Nature 433:421–425（2005）；通訊作者實驗室網站所放的刊本 PDF（連結在該實驗室的介紹頁上）",
+      "version": "2005（刊本；PDF 首頁帶有前一篇的尾段）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "正文讀完到討論第一段；Methods 與補充資料未讀；圖只讀圖說",
+      "locator": "p.421–424；Fig. 1–3 圖說",
+      "summary": "在葉背點上螢光點，用每秒 400 格的高速攝影與兩面鏡子重建葉面形狀：閉合分三段——慢（三分之一秒走 20% 位移）、快（十分之一秒走 60%）、再慢；葉面由外凸翻成內凹。外表面在垂直中肋方向最大應變 9%，沿中肋只有約 2%，內表面不到 1%。把剛閉合的葉子切開，只有垂直中肋方向的自然曲率變了號。作者的殼模型用一個幾何參數 α＝L⁴κ²/h² 表示彎與拉伸的耦合：小於約 0.8 時平順閉合，大於時經過雙穩態後突然翻過去；量到 α 越大的葉子閉得越快。有些受刺激的葉子動了卻沒有翻過去，用手指一捏就翻。植物怎麼主動改變那個曲率，作者明說還不清楚。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F13-S007 同一實驗室；模型是弱彎曲薄殼的簡化。典型葉的 α 約 1 是量級估計。Methods、補充影片未讀。nature.com 出版頁未請求（付費）。 覆核 V16（2026-11-12）：read_via 補記：同一著作頁（publications/page/8/）「How the Venus Flytrap snaps」書目下的 [Download PDF] 連結即本檔，由該連結重抓雜湊相同（5500b3966c908854）。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/forterre2005-softmath-2005-07.pdf",
+        "sha256_prefix": "5500b3966c908854",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L59-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7351144/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pbio.3000740",
+      "title": "A single touch can provide sufficient mechanical stimulation to trigger Venus flytrap closure（Burri 等）",
+      "publisher": "PLOS Biology 18(7):e3000740（2020，CC BY）；蘇黎世聯邦理工學院與蘇黎世大學",
+      "version": "2020",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+      "reading_scope": "摘要、引言、結果前兩節、圖 1、3、6 圖說、討論首段讀完；模型推導與審查往返未細讀",
+      "locator": "Abstract；Results: Two fast, consecutive deflections…；Fig 1、Fig 3、Fig 6 圖說",
+      "summary": "用裝在微型機械手臂上的力感測器，在活體捕蠅草上精確偏折感覺毛並同時記錄電訊號。快速偏折（每秒 10–20 弧度）兩次要讓捕蟲夾閉合，中位數門檻是偏折 0.18 弧度或力矩 0.8 微牛頓·公尺（n＝21），低於 0.12 弧度與 0.50 微牛頓·公尺從未閉合；換算成力，是在 2 毫米長的感覺毛尖端附近施約 0.5 毫牛頓、兩次。作者的電荷累積模型另外預測：中等角速度的單次偏折就能引出兩個動作電位；慢速單次偏折的實驗裡確實有閉合（推進時 6 次、收回時 11 次）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受器電位沒有直接量，是模型裡的量（審查意見也指出這點）；單次觸發用的是比典型獵物慢得多的偏折，作者自己說在自然界的意義只能推測。實驗室栽培株。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/europepmc-PMC7351144-fulltext.xml",
+        "sha256_prefix": "de7420ef875382f5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L59-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5377328/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep06466",
+      "title": "Real-time imaging of pulvinus bending in Mimosa pudica（Song、Yeom、Lee）",
+      "publisher": "Scientific Reports 4:6466（2014，CC BY）；韓國浦項工科大學",
+      "version": "2014",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+      "reading_scope": "摘要、引言、結果讀到木質部一節中段；討論與方法未讀",
+      "locator": "Introduction 第 2–4 段；Results: Contraction and expansion of the pulvinus surface…；Wrinkled structure…；Xylem structure…",
+      "summary": "用 X 光顯微與斷層看含羞草葉枕下彎的過程。引言整理既有研究：運動細胞排出鉀、氯離子並失水，體積縮小、膨壓下降；下彎時葉枕下半部的水立即消失。作者引 Skotheim 與 Mahadevan：含羞草是多細胞植物裡最快的水力動作，約 1 秒，與半徑 200 微米葉枕的水流時間（約 1 秒）相當。本研究量到：葉枕由 16.0° 彎到 8.0° 時，上表皮向外位移約 16.4 微米、下表皮向內約 15.2 微米，同一個葉枕一面伸、一面縮；下表皮靠皺褶收起表面，皺褶寬由 5.0 微米增到 17.1 微米；葉枕裡的木質部維管束會跟著彎，靠葉柄端分成六束，水力導度是近莖端的 5.1 倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "離子與失水的機制是引言裡對前人研究的整理，不是本文的量測；樣本數與統計在未讀的方法段。『力量多大』本文沒有量。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/europepmc-PMC5377328-fulltext.xml",
+        "sha256_prefix": "094b28da8f2ec850",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L59-S005",
+      "url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.1002564&type=manuscript",
+      "canonical_url": "https://doi.org/10.1371/journal.pbio.1002564",
+      "title": "Associative Mechanisms Allow for Social Learning and Cultural Transmission of String Pulling in an Insect",
+      "publisher": "PLOS Biology 14(10):e1002564（Alem 等，倫敦瑪麗王后大學）",
+      "version": "2016 年刊本，開放取用；期刊提供的全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）取得期刊全文 XML，python 去標籤成文字後閱讀",
+      "reading_scope": "Abstract、Author Summary、Results 的個體學習、Innovators、Social Learning by Caged Observers、Mechanisms（含盤繩試驗）、Cultural diffusion 首兩段與 Fig.1、2、4、5 圖說、Discussion 全文；Fig.6 行為分類表與 Materials and Methods 只讀到分組人數；影片未看。",
+      "locator": "Results「Innovators…」「Social Learning of String Pulling by Caged Observers」「The Mechanisms of Observational Learning…」（coiled-string 段）、Fig 5 前一段；Discussion 第 3、6–8 段",
+      "summary": "熊蜂幾乎不會自己發明拉繩取食，但看過熟手示範後多數能做到；盤繩試驗顯示牠們學到的是位置與繩子、動作仍靠試誤；在蜂群中放一隻熟手，技能會一批傳一批擴散到多數覓食蜂。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗室蜂群與人造任務；作者明說自然界未必有對應行為。池中沒有同一網址或 DOI。 覆核 V17（2026-11-12）：summary 補：自行學會的 2 隻來自第 1 群 25 隻再試一次的蜂，合計 110 隻試過兩次；對照群 165 隻覓食 5 天、每隻最多 18 回，全數失敗；8 隻熟手中 3 隻拉得出盤繩。",
+      "author_cache": {
+        "file": "f14src/alem2016-pbio.1002564.xml",
+        "sha256_prefix": "243a7a2a42b44784",
+        "text_file": "f14src/alem2016.txt",
+        "text_sha256_prefix": "0613decd4b87c3ea",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L59-S006",
+      "url": "https://www.nature.com/articles/s41586-024-07126-4",
+      "canonical_url": "https://doi.org/10.1038/s41586-024-07126-4",
+      "title": "Bumblebees socially learn behaviour too complex to innovate alone",
+      "publisher": "Nature 627:572–578（Bridges 等，倫敦瑪麗王后大學）",
+      "version": "2024 年刊本，開放取用",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）存期刊 HTML，python 去標籤成文字後逐段閱讀",
+      "reading_scope": "Abstract、Main 全部段落（含 Fig.1、2 圖說）、Discussion 全文；Table 1、2 數值只讀正文引用到的；Methods、補充資料與影片未讀。",
+      "locator": "Main 第 3–8 段（對照群 12／24 天、示範蜂訓練、15 對成對試驗、兩種開法）；Discussion 第 1、3–4 段",
+      "summary": "兩步機關的第一步沒有獎勵：無示範者的蜂群面對盒子 36 或 72 小時都沒打開，15 隻觀察蜂中 5 隻跟著示範蜂學會，全部來自用「擠過去」開法的示範者。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 B2247 是同一篇研究：B2247 的來源 SRC-1b12d216f2bf1333 是學校新聞稿，池內註明未讀 Nature 全文；本紀錄是論文本身。樣本小（15 對），部分示範蜂重複使用。 覆核 V17（2026-11-12）：author_cache 註明：nature.com 頁面重抓的 sha256 會變（今日為 32d08e02716b9c03），以文字檔雜湊與關鍵句為準。summary 補：對照群 C1 有一片藍片被完整推開一次、未重複；觀察蜂最多接觸 800 分鐘（13.3 小時）；5 隻通過者 3 隻第一次、2 隻第三次。limitations 維持「與 B2247 同一篇研究」，併入時把這份全文閱讀與 B2247 的來源紀錄綁在同一研究下。",
+      "author_cache": {
+        "file": "f14src/bridges2024.html",
+        "sha256_prefix": "0164efcd1ed8db9b",
+        "text_file": "f14src/bridges2024.txt",
+        "text_sha256_prefix": "9452dd45a1e40371",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L59-S007",
+      "url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.1001960&type=manuscript",
+      "canonical_url": "https://doi.org/10.1371/journal.pbio.1001960",
+      "title": "Social Network Analysis Shows Direct Evidence for Social Transmission of Tool Use in Wild Chimpanzees",
+      "publisher": "PLOS Biology 12(9):e1001960（Hobaiter、Poisot、Zuberbühler、Hoppitt、Gruber）",
+      "version": "2014 年刊本，開放取用；期刊提供的全文 XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）取得期刊全文 XML，python 去標籤成文字後閱讀",
+      "reading_scope": "Abstract、Author Summary、Introduction、Results 全文（含 Table 1、2 說明與 Figure 1、2 圖說）、Discussion 全文；Materials and Methods 與 Supporting Information 未讀。",
+      "locator": "Introduction 第 4 段（2011 年 11 月新水坑、兩個新做法的定義）；Results 第 3–7 段（先後順序、14.9 倍、84.5%、RU1 的 1.07 倍）；Discussion 第 1–2、5 段",
+      "summary": "烏干達布東戈森林 Sonso 群黑猩猩在新水坑六天內出現苔蘚海綿與撿舊海綿兩個新做法；以「誰看過誰」的動態網路分析，苔蘚海綿的擴散有很強的社會傳遞效應，撿舊海綿則幾乎沒有。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一族群、六天、個體數少，信賴區間寬；學習機制作者明說無法判定；模型細節在未讀的方法與補充資料裡。池中沒有同一網址或 DOI。 覆核 V17（2026-11-12）：summary 補：撿舊海綿的估計 1.07 倍的 95% 信賴區間是 0.58–2.48（約 3.1%）；排除 KW 後苔蘚海綿的估計是 21.2 倍（4.2–679）；補充分析認為效應不太可能只來自到水坑的機會不同；苔蘚海綿在另一個黑猩猩群與一個倭黑猩猩群有過紀錄。",
+      "author_cache": {
+        "file": "f14src/hobaiter2014-pbio.1001960.xml",
+        "sha256_prefix": "768e5e571d87ad81",
+        "text_file": "f14src/hobaiter2014.txt",
+        "text_sha256_prefix": "f2aa2fe7091cf5b0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L59-001",
+      "question": "植物靠細胞吸水、失水來動，為什麼這樣快不起來？多大的構造就非得用彈的？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.poroelastic_time_limit_size_squared_instability",
+      "answer_target": "因為水得穿過組織，而穿過去的時間跟厚度的平方成正比。哈佛的 Skotheim 與 Mahadevan 把幾十種植物和真菌的動作攤在同一張圖上：橫軸是會動的部位最薄的尺寸，縱軸是動作花的時間。對柔軟的植物組織，水流平衡大約要每平方毫米 1.6 秒；動得比這條線慢的，靠吸水和失水就做得到；比這條線快的，全都是先慢慢把彈性能存起來、再靠形狀突然失穩放出來的——不是殼翻面，就是組織撕開。捕蠅草的葉厚約 0.5 毫米，水流要約 0.4 秒，它卻在零點一到零點二秒內閉合，所以需要翻面；它的水生近親貉藻葉厚只有約 0.05 毫米，水流只要約 0.004 秒，約 0.02 秒就閉合，葉子本來就向內彎、不必翻。再快還有一道牆：彈性波傳過組織的時間，每毫米約十萬分之一秒。",
+      "scope": "每平方毫米 1.6 秒是典型軟組織的量級，不是逐一量的；各物種的時間與尺寸出自作者彙整的文獻。捕蠅草閉合時間原文有 0.1 與 0.2 秒兩種寫法，旁白說「零點一到零點二秒」。這裡的捕蠅草水流時間約 0.4 秒，與 F13-008（同一實驗室另一篇）用實測模數估的約 0.1 秒不是同一種估法，兩個數字不得並排比較或相減。不要自己替噴瓜、碎米薺、金縷梅代入公式。",
+      "source_ids": [
+        "L59-S001"
+      ],
+      "source_locator": "p.1308–1310 全文；式 (1)(2)；Fig. 1 圖說",
+      "premise_status": "screened",
+      "notes": "算 2 條：水流時間隨厚度平方、分界線 1；捕蠅草對貉藻的對照 0.5；慣性下限 0.5。這是 C4-03 覆核點名缺的核心答案（缺口 1），也是第二個轉折。去重：pool.json 查『poroelastic』『多孔彈性』『貉藻』『Aldrovanda』『失穩』均無同答案核心；A25002、E9004 各講單一構造，沒有這條通則。 原提案 F13-007（目標 C4-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；這是上一輪點名的核心答案（為什麼光靠水流不夠快、要靠彈性失穩），同時是 C4-03 缺的第二個轉折。答案文字不改，只在 scope 加一條與 F13-008 的數字界線；來源紀錄的取得方式改正（見 source_fixes）。算 2 條（水流時間隨厚度平方與分界線 1、捕蠅草對貉藻 0.5、慣性下限 0.5），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "快不快不是看植物多用力，是看它多薄：夠薄就直接靠水，太厚就只能先存後放。",
+        "visual": "一張對數座標圖：一條斜線把點分成兩群；線下方（比水快）的點都標著『翻面』或『撕開』；捕蠅草與貉藻兩點用箭頭連起來。",
+        "seconds": [
+          80,
+          100
+        ]
+      }
+    },
+    {
+      "id": "L59-002",
+      "question": "捕蠅草的葉子是怎麼『啪』一下合起來的？合起來的那一瞬間是它在用力嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.flytrap_doubly_curved_leaf_snap_buckling_measured",
+      "answer_target": "它只做慢的那一半，快的那一半是形狀自己完成的。研究者在葉背點上螢光點，用每秒 400 格的攝影重建葉面：閉合分三段，先慢（約三分之一秒只走兩成）、中間快（約十分之一秒走掉六成）、最後又慢；葉面在中間那段由向外凸翻成向內凹。量到的變形幾乎只發生在外表面、垂直中肋的方向（最大約 9%，沿中肋約 2%，內表面不到 1%）；把剛閉合的葉子切開，只有這個方向的自然曲率變了號。葉子在兩個方向都是彎的，改一個方向的曲率就得拉伸葉面，於是它先撐著不動、把能量存在形狀裡，過了門檻才突然翻過去。作者用一個只含葉長、厚度與曲率的幾何參數描述這道門檻，量到參數越大的葉子閉得越快；有些葉子被碰之後動了一點卻沒翻，用手指輕捏就翻過去。植物怎麼改變那個方向的曲率，作者說還不清楚。",
+      "scope": "殼模型是簡化；門檻值約 0.8 與典型葉約 1 是模型與量級估計。Methods 與補充影片未讀。「怎麼改變曲率」是未解的部分，旁白不要補上「細胞失水」之類原文沒有的機制。本文估的葉片水流時間約 0.1 秒，與 F13-007 的約 0.4 秒估法不同，不得並排比較。",
+      "source_ids": [
+        "L59-S002"
+      ],
+      "source_locator": "p.421–424；Fig. 1–3 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：三段式閉合與應變量測 1、幾何門檻與『捏一下就翻』0.5。補 C4-03 缺口（1）的第二份全文。去重：R6017 講兩次觸碰的鈣訊號（只讀摘要），不講閉合力學；池中無捕蠅草閉合的核心。 原提案 F13-008（目標 C4-03，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；逐句相符，只在 scope 加與 F13-007 的數字界線。算 1.5 條（三段式閉合與應變量測 1、幾何門檻與「捏一下就翻」0.5），同意作者；但它與 F13-007 都講「捕蠅草要翻面」，題內合計時扣 0.5 條重疊（見題評）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "葉子像一片被壓彎的塑膠瓶蓋：植物慢慢推，蓋子自己彈。",
+        "visual": "葉面的彎曲用顏色表示，三格連續：凸、將翻未翻、凹；旁邊一條曲線分成慢—快—慢三段。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "L59-003",
+      "question": "要讓捕蠅草合起來，感覺毛得被碰多大力？真的一定要碰兩下嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.flytrap_sensory_hair_deflection_torque_threshold",
+      "answer_target": "大約是在毛尖附近用半毫牛頓的力推兩下；但推得夠慢時，一下就夠。蘇黎世的團隊把力感測器裝在微型機械手臂上，在活的捕蠅草上一次次加大偏折：快速推兩下要讓它閉合，中位數門檻是把感覺毛推偏 0.18 弧度、力矩 0.8 微牛頓·公尺（21 次測試），低於 0.12 弧度從來沒有閉合過。他們同時記錄電訊號：太小的偏折沒有動作電位，夠大的每推一下一個。他們的模型把每次偏折當成往一個會漏的桶子裡加電荷，預測中等速度的單次偏折會讓桶子在門檻附近停留夠久、連發兩個動作電位；慢慢推一下的實驗裡，捕蟲夾果然閉合了。",
+      "scope": "模型裡的『受器電位』沒有直接量到；單次觸發用的偏折比典型獵物慢得多，作者說自然界的意義只能推測。實驗室栽培株，門檻會隨植株狀態變。不要寫成『兩下的說法是錯的』——快的碰觸仍需要兩下。",
+      "source_ids": [
+        "L59-S003"
+      ],
+      "source_locator": "Results 第一節；Fig 1、3、6 圖說",
+      "premise_status": "screened",
+      "notes": "算 1 條。補 C4-03 缺口（2）：捕蠅草觸發的全文研究（R6017 的原論文 Suda 等 2020 是付費刊本，仍只有摘要）。與 R6017 互補：R6017 講訊號隨時間衰減，這裡是要多大的機械刺激。去重：查『感覺毛』『捕蠅草』無同答案核心。 原提案 F13-009（目標 C4-03，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）照原稿收；補上上一輪點名的缺口（2）：捕蠅草觸發的全文研究。逐句相符，照收。算 1 條，同意作者。原文另有閉合力矩中位數 0.65 mN·m（Results 後段），本輪沒有逐句核對上下文，不計、不用；寫稿若要用須另核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "扳機有一個量得出來的力道，而且它數的不是『碰了幾下』，是累積到門檻的訊號。",
+        "visual": "一根感覺毛被探針推偏的特寫，旁邊一個會漏水的桶：快推兩下各加一瓢才滿，慢推一下細水長流也滿。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L59-004",
+      "question": "含羞草的葉柄一秒鐘就垂下去，它也是先存後放的彈射嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.mimosa_pulvinus_at_hydraulic_limit_wrinkle_surface",
+      "answer_target": "不是，它靠的就是水，只是剛好小到來得及。韓國浦項工科大學的研究者引用前面那條通則指出：含羞草的動作約 1 秒，和半徑約 200 微米的葉枕讓水流平衡所需的時間差不多，是多細胞植物裡最快的純水力動作。既有研究的說法是葉枕一側的運動細胞排出鉀、氯離子，水跟著出去，細胞縮小；下彎時葉枕下半部的水立刻消失。他們用 X 光顯微看葉枕下垂的過程：角度由 16 度變到 8 度時，上表皮向外移約 16 微米、下表皮向內約 15 微米，同一個關節一面伸、一面縮；下表皮靠把皺褶擠深來收起多出的表面，另一組量測裡皺褶寬由 5 微米增到約 17 微米；葉枕裡的導管束是軟的，會跟著彎。",
+      "scope": "「約 1 秒、半徑 200 微米」是引言引用 F13-007 那篇的估計，不是本文量的；離子與失水也是引言對前人研究的整理。本文沒有量力量大小，「出多少力」仍沒有數字。皺褶寬度與表皮位移是不同角度區間的兩組量測，不寫成同一次。樣本數未讀。",
+      "source_ids": [
+        "L59-S004",
+        "L59-S001"
+      ],
+      "source_locator": "Introduction 第 2–4 段；Results 前四小節",
+      "premise_status": "screened",
+      "notes": "算 1 條：位於水力極限 0.5、上伸下縮與皺褶 0.5。補 C4-03 缺口（3）：含羞草葉枕怎麼動的已讀來源。與 L47-002（哪裡感覺）、L47-003（動了有什麼用）不重複。去重：查『葉枕』『pulvinus』只有 L47 兩個核心，答案不同。 原提案 F13-010（目標 C4-03，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（3）：含羞草葉枕怎麼動的已讀來源。數字都在，只把兩組不同角度的量測分開寫。算 1 條（位於水力極限 0.5、上伸下縮與皺褶 0.5），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張圖上，含羞草就落在那條線上：它是『還來得及用水』的最大號選手。",
+        "visual": "葉枕剖面：下半部的水色瞬間變淡，上表皮拉平、下表皮擠出深皺褶；右上角小圖把含羞草的點標在分界線上。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L59-005",
+      "question": "熊蜂學會拉繩取蜜，是自己想出來的，還是看來的？看到的又是什麼？",
+      "domain": "動物社會資訊與群體決策",
+      "mechanism_key": "social_decision.string_pulling_local_enhancement_colony_diffusion",
+      "answer_target": "幾乎都是看來的，而且看到的只是「去哪裡」。倫敦瑪麗王后大學的實驗把人造花壓在透明板下，要拉繩才吸得到糖水：291 隻沒看過的蜂，第一次 5 分鐘內沒有一隻成功；其中 110 隻有第二次機會，只有 2 隻自己摸出來，而且是亂試時碰到繩子。隔著透明小室看熟手示範過的 25 隻裡有 15 隻成功；換成用看不見的線把花拉出來、沒有蜂在場，15 隻沒有一隻學會。把繩子盤起來，拉了花也不會馬上靠近，27 隻看過示範的蜂全數失敗——牠們從示範得到的是位置和繩子，拉的動作仍靠自己試。在三個蜂群各放一隻會拉的蜂，150 回成對覓食後，各有 25/47、17/29、12/28 隻覓食蜂學會；沒放示範者的三群覓食了 5 天，沒有一隻學會。學會的蜂又成為下一批的示範者。",
+      "scope": "實驗室蜂群與人造任務。所謂「世代」是先後學會的批次，不是親子。作者明說自然界未必有對應的行為，這裡量的是能力。看不見的線那一組，蜂有沒有在看花移動沒有影像可查，作者自己列為另一種可能。盤繩全敗只對剛看過示範的新手成立：8 隻拉過 20 次以上的熟手裡有 3 隻拉得出盤繩。擴散試驗裡的蜂是和會拉的蜂一起覓食，不只是隔著看，傳遞的途徑比小室試驗多。",
+      "source_ids": [
+        "L59-S005"
+      ],
+      "source_locator": "Results「Innovators…」「Social Learning of String Pulling by Caged Observers」、盤繩試驗段、Fig 5 前一段；Discussion 第 3、6 段",
+      "premise_status": "screened",
+      "notes": "算 2 條：自己幾乎學不會、看了多數會、但盤繩就全敗（學到的是位置不是技巧）1 條；放一隻熟手後在蜂群裡一批傳一批、無示範的群沒有一隻學會 1 條。各組隻數是同一實驗的條件，不另計。 原提案 F14-006（目標 C5-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；隻數全部對得上，作者算 2 條合理（兩組不同設計的實驗）。補上三個條件，讓「2 隻」的分母、對照群的機會、盤繩結論的適用範圍都在核心裡。池中只有 B2247（兩步機關，同一實驗室的另一篇）與熊蜂的花訊號各題，沒有同答案；DOI 與網址池中皆無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個做法能在群體裡傳開，不需要誰「看懂了」；看到該去哪裡、剩下自己試，就夠了。",
+        "visual": "透明板下的藍色小花與一截繩；三個小圖並排：看熟手（多數成功）、看花自己動（沒有成功）、繩子盤起來（沒有成功）。下方三個蜂群的點陣隨回合一隻隻變色。",
+        "seconds": [
+          55,
+          75
+        ]
+      }
+    },
+    {
+      "id": "L59-006",
+      "question": "要先做一步沒有獎勵的動作才開得了盒子，熊蜂自己摸得出來嗎？跟著誰學有差嗎？",
+      "domain": "動物社會資訊與群體決策",
+      "mechanism_key": "social_decision.two_step_box_unrewarded_step_demonstrator_technique",
+      "answer_target": "自己摸不出來；跟著會的蜂，三分之一學會，而且要看示範者怎麼開。這個機關得先推開藍片，才推得動紅片拿到糖水。沒有示範者的三個蜂群，每天面對關著的盒子 3 小時，兩群連續 12 天、一群 24 天（合計 36 與 72 小時），沒有一個盒子被打開；只有一次，一片藍片被完整推開，之後沒有再發生。研究者訓練示範蜂時，也得先在第一步底下放臨時獎勵，之後慢慢撤掉才教得成。15 隻觀察蜂和示範蜂成對覓食（最多 13.3 小時）後，5 隻通過沒有獎勵的單獨測驗；這 5 隻全都配到一氣呵成「擠過去」開法的示範者（10 隻中 5 隻），配到「分兩次推」示範者的 5 隻全數失敗。",
+      "scope": "實驗室、樣本小（15 對，部分示範蜂重複使用）。作者自己說不能排除「一百萬隻裡有一隻」能獨力解開，也沒有測這個做法能不能在群體裡長期維持。示範手法與學不學得會的關係是 5 對 0 的小樣本，作者的用語是「可能影響」；兩種示範者開的盒數沒有顯著差異，跟隨時間在學會組較長但未達統計顯著。「能學到自己發明不了的行為不是人類獨有」是作者的詮釋，片中要標明。",
+      "source_ids": [
+        "L59-S006"
+      ],
+      "source_locator": "Main 第 3–8 段；Discussion 第 1、3–4 段",
+      "premise_status": "screened",
+      "notes": "與池中 B2247 是同一篇研究。裁定：B2247 的池內閱讀是學校新聞稿、答案一句，照規則新聞稿只當入口，計 0 條；本核心讀的是論文全文，算 1.5 條（對照群的時數與訓練示範蜂的困難 1 條；5／15 與示範手法 0.5 條）。兩者合計 1.5 條，不是作者算的 2 條。建議併入時以本核心為準，B2247 標為同一研究的舊紀錄（或把本次全文閱讀掛到 B2247 上、更新它的答案），任何長題都不得把兩者分開各算一次。 原提案 F14-007（目標 C5-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字全部相符。補上對照群裡藍片被推開一次的例外（原文自己寫了，省略會讓「沒有一隻碰得動」說過頭），以及示範手法那一點只是小樣本下的「可能」。計數的裁定見 notes：同一研究不重計，新聞稿不計，合計 1.5 條。不判 REJECT、不填 duplicate_of，因為 B2247 的答案只有一句通論，這個核心補的是它沒有的全部實驗內容；但整併時兩者要綁在一起。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "放了 24 天沒有一隻自己打開的機關，跟著同伴走一遍就有蜂學會——學來的東西可以超過自己摸得到的。",
+        "visual": "圓盒上藍片與紅片的俯視圖，兩種開法各畫一條路徑：分兩次推（沒有觀察蜂學會）、一路擠過去（十隻裡五隻學會）。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "L59-007",
+      "question": "野外的黑猩猩群裡冒出一個新做法，怎麼知道牠們是互相看來的，不是各自想到的？",
+      "domain": "動物社會資訊與群體決策",
+      "mechanism_key": "social_decision.moss_sponge_dynamic_network_diffusion",
+      "answer_target": "看它是不是沿著「誰看過誰」傳。2011 年 11 月，烏干達布東戈森林 Sonso 群的黑猩猩開始去一個新淹出來的水坑，六天內出現兩個這一群二十年觀察紀錄裡沒有的做法：用苔蘚做吸水的海綿，以及撿別隻丟下的舊葉海綿再用。研究者記下每一次誰在場、看到誰。苔蘚海綿由首領雄性先做，之後 7 隻跟進，其中 6 隻事前確定看過別隻做；模型估計每看一次，學會的速率約為原來的 15 倍（95% 信賴區間 4.7 到 88.2），約 85% 的學會歸於社會傳遞。撿舊海綿那個做法，後來跟進的 8 隻裡有 4 隻看起來沒看過別隻就做了，每看一次的效果估計只有 1.07 倍（信賴區間 0.58 到 2.48，包含「沒有效果」）。同一個水坑、同一群，兩個新做法裡只有一個找得到沿著觀看關係傳的證據。",
+      "scope": "單一族群、六天、個體數少，信賴區間很寬。「15 倍」是模型估計的學習速率比，不是學會的機率，也不是「看一次就會」。學習的機制（模仿或別的）作者明說無法判定。有一隻母猩猩是在用過別隻含苔蘚的舊海綿後才自己做，分析保守地把牠算作自行發明。撿舊海綿「不是看來的」不能說死：估計值的區間包含 1，只能說沒有找到社會傳遞的證據。兩個做法都是原有葉海綿行為的變化，不是全新的工具。模型細節在未讀的方法與補充資料裡。",
+      "source_ids": [
+        "L59-S007"
+      ],
+      "source_locator": "Introduction 第 4 段；Results 第 3–7 段與 Table 2 說明；Discussion 第 1–2、5 段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：苔蘚海綿沿觀看關係擴散與估計值 1 條；同場的另一個新做法沒有找到社會效應，當作現成的對照 0.5 條。 原提案 F14-008（目標 C5-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字全部相符。只改最後一句與 scope：作者寫「兩個新做法只有一個是看來的」，原文對撿舊海綿的結論是沒有證據支持社會傳遞（1.07 倍、區間跨過 1），不是證明了各自想到。池中 R35008、R35009（釣白蟻工具）、A14006（警報叫聲）是別的研究；DOI 與網址池中皆無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大家都去了同一個新地方，不足以解釋大家都學會；要看學會的順序是不是跟著「看過誰」走。",
+        "visual": "水坑邊的個體點陣，每學會一隻就亮起，並畫出牠先前看過誰的箭頭；右邊同樣的圖給「撿舊海綿」，亮起的點有一半沒有箭頭進來。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L59-NA001",
+      "question": "含羞草葉枕一次下垂出多大的力？",
+      "existing_ids": [
+        "L47-002",
+        "L47-003"
+      ],
+      "source_ids": [
+        "L59-S004"
+      ],
+      "reason": "已讀的 Song 等 2014 沒有量力；Sleboda 等 2023（Current Biology，葉枕的多尺度各向異性）只查到書目，未請求全文。F13-010 只寫到『位於水力極限、上伸下縮』。 原提案 F13-NA006。",
+      "reentry_condition": "讀到有力或膨壓量測的全文。",
+      "reading_status": "未讀"
+    },
+    {
+      "id": "L59-NA002",
+      "question": "山雀的在地做法如果變得比較不划算，牠們會死守還是會換？",
+      "existing_ids": [
+        "L40-004"
+      ],
+      "source_ids": [],
+      "reason": "Aplin、Sheldon、McElreath 2017（PNAS 114:7830）正好接在 L40-004 後面，可以回答「從眾會不會把一群鳥鎖在比較差的做法上」；但全文四條路都讀不到（見 blocked），只從搜尋結果看到摘要層級的一句（降低原做法的報酬後 14 天內 49% 改用另一種），照規則不算、不提案。 原提案 F14-NA001。",
+      "reentry_condition": "讀到 PNAS 刊本或 PMC5544276 全文後，可提 1–1.5 條的新核心，補在 C5-03「在地做法」一章之後；它也能讓 C5-03 不必靠「有人教嗎」一章撐片長。",
+      "reading_status": "未讀全文；只見搜尋結果轉述的摘要。"
+    }
+  ]
+}

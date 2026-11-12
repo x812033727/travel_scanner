@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-3859",
+  "revision": "2026-11-12-pool-3885",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 4249,
-    "canonical_questions": 4088,
-    "eligible_candidates": 3918,
-    "selected_candidates": 3859,
+    "raw_records": 4275,
+    "canonical_questions": 4114,
+    "eligible_candidates": 3944,
+    "selected_candidates": 3885,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5152,
-    "current_research_source_urls": 2203,
-    "selected_source_urls": 3367,
-    "new_suggestions_not_added": 2387,
+    "source_urls": 5178,
+    "current_research_source_urls": 2229,
+    "selected_source_urls": 3392,
+    "new_suggestions_not_added": 2396,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
@@ -2030,6 +2030,26 @@
       "sha256": "777838fad904ebd2bc0463cf62cb7ad4293d4bef650a37066bcac4a1ad0d7fd4"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave59-earth.json",
+      "sha256": "4d0788efd872043f653bb6a4def4aec6db9f6b01fcb1386611c1da651a4a57d1"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave59-human.json",
+      "sha256": "e8ad9097d984a852ecf2e21473d5dd720b7038ec7dad7959fae2c6cfffb3f0c4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave59-life.json",
+      "sha256": "28fb2ebe2f4cec6a786ff16f17126ea86d98898b60949af437f16296d4ed6639"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave59-physics.json",
+      "sha256": "fd648dc31cc340a1578411179c9a63a276430e61a2eb28d422685902d130da4c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave59-tech.json",
+      "sha256": "94506cfce71680db78d1e787f182b02b21f3f07d641f6e6c5d8546a98ee30020"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave6-mechanisms.json",
       "sha256": "b41609a21936e9ba2bde6a6e1fdd24f0d53296afe68610403b03f37e143fd6b2"
     },
@@ -2115,11 +2135,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "d8f22d811366bc73e9980aed581e9b5d4fb2b14d68969f9246697139742d41df"
+      "sha256": "a8d2ac7f067b40fc68c2fc0c8960d33397e90d3df94d5daed06e3a75049e6c67"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "da61ad9fa7bba172966d87e4767fdff67bc91861f92cec5ba19bc658ff3dc07f"
+      "sha256": "a96ee1ce26bbb5a048270877602b8fd6d99f47a9c92ba17fbf4c9693df0751b9"
     }
   ],
   "sources": [
@@ -7257,6 +7277,32 @@
       ]
     },
     {
+      "id": "SRC-0cd2e2095bbf72ba",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-07.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/nature03185",
+          "title": "How the Venus flytrap snaps（Forterre、Skotheim、Dumais、Mahadevan）",
+          "publisher": "Nature 433:421–425（2005）；通訊作者實驗室網站所放的刊本 PDF（連結在該實驗室的介紹頁上）",
+          "version": "2005（刊本；PDF 首頁帶有前一篇的尾段）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "正文讀完到討論第一段；Methods 與補充資料未讀；圖只讀圖說",
+          "locator": "p.421–424；Fig. 1–3 圖說",
+          "summary": "在葉背點上螢光點，用每秒 400 格的高速攝影與兩面鏡子重建葉面形狀：閉合分三段——慢（三分之一秒走 20% 位移）、快（十分之一秒走 60%）、再慢；葉面由外凸翻成內凹。外表面在垂直中肋方向最大應變 9%，沿中肋只有約 2%，內表面不到 1%。把剛閉合的葉子切開，只有垂直中肋方向的自然曲率變了號。作者的殼模型用一個幾何參數 α＝L⁴κ²/h² 表示彎與拉伸的耦合：小於約 0.8 時平順閉合，大於時經過雙穩態後突然翻過去；量到 α 越大的葉子閉得越快。有些受刺激的葉子動了卻沒有翻過去，用手指一捏就翻。植物怎麼主動改變那個曲率，作者明說還不清楚。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與 F13-S007 同一實驗室；模型是弱彎曲薄殼的簡化。典型葉的 α 約 1 是量級估計。Methods、補充影片未讀。nature.com 出版頁未請求（付費）。 覆核 V16（2026-11-12）：read_via 補記：同一著作頁（publications/page/8/）「How the Venus Flytrap snaps」書目下的 [Download PDF] 連結即本檔，由該連結重抓雜湊相同（5500b3966c908854）。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/forterre2005-softmath-2005-07.pdf",
+            "sha256_prefix": "5500b3966c908854",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-life-20261111",
+          "original_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-07.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-0cf5a4d72db8a5ab",
       "url": "https://www.govinfo.gov/link/fr/58/64123",
       "readings": [
@@ -11851,6 +11897,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave4-food-kitchen-20261101",
           "original_url": "https://opentextbc.ca/ingredients/chapter/functions-of-fat-in-baking/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-17479011473cf577",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11335879/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-024-69867-6",
+          "title": "Sensory analysis of the flavor profile of full immersion hot, room temperature, and cold brewed coffee over time（Liang、Batali、Routt、Ristenpart、Guinard）",
+          "publisher": "Scientific Reports 14:19298（2024，CC BY）；加州大學戴維斯分校",
+          "version": "2024",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+          "reading_scope": "摘要、方法（設計、評審）、結論讀完；結果各節與附表只定點讀，補充表未讀",
+          "locator": "Abstract；Experimental design；Descriptive analysis；Conclusions",
+          "summary": "浸泡式沖煮的 2×3×5 設計：一款中美洲配方豆烘成淺、深兩種，在 4、22、92 °C 各泡到五個萃取階段，共 30 個樣本；14 位受過訓練的評審（10 女 4 男）做描述性分析，並量總溶解固體（TDS）、可滴定酸與 pH。28 個感官屬性裡 25 個在樣本間有顯著差異。影響感官輪廓最大的是烘焙度，其次是水溫；沖泡時間——尤其 TDS 進入平台之後——影響比預期小，4 與 22 °C 泡過 8 小時後幾乎沒有顯著變化。甜感強度與 TDS 負相關，另有 19 個屬性與 TDS 正相關。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "浸泡式，不是濾杯或濃縮；單一配方豆；沒有改變研磨。相關是樣本間的相關，不是因果。結果章的逐屬性數值與補充表沒有讀，核心只用摘要與結論明寫的句子。DOI 10.1038/s41598-024-69867-6。 覆核 V16（2026-11-12）：reading_scope 改為「摘要、方法、結果、討論、結論全文（結果與討論由覆核 V16 補讀）；補充表與圖未讀」；limitations 加「濃縮液（粉水比 1:5）稀釋一倍、冷藏隔夜後冷飲；甜感最高的是第一個時間點（rinse）；作者解讀甜為苦酸較少時的印象」。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/europepmc-PMC11335879-fulltext.xml",
+            "sha256_prefix": "04582f53fe52f659",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11335879/fullTextXML"
         }
       ]
     },
@@ -16958,6 +17030,34 @@
       ]
     },
     {
+      "id": "SRC-22be590f9520c2b8",
+      "url": "https://www.gov.uk/government/news/processed-beef-products-and-horse-meat",
+      "readings": [
+        {
+          "canonical_url": "https://www.gov.uk/government/news/processed-beef-products-and-horse-meat",
+          "title": "Processed beef products and horse meat",
+          "publisher": "英國環境、食品暨鄉村事務部（Defra），GOV.UK",
+          "version": "2013-02-09 發布，2013-05-02 最後更新",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）存整頁 HTML，python 去標籤成文字後閱讀",
+          "reading_scope": "整頁正文：摘要、Food labelling and food safety、Who is responsible?、Testing、Controls on imports、Background；更新連結清單只看標題。",
+          "locator": "Testing 第 1–2 段；Background 末段（On 15 January the Food Safety Authority of Ireland…）",
+          "summary": "英國政府對 2013 年馬肉事件的說明頁：轉述愛爾蘭食品安全局 1 月 15 日公布的漢堡排 DNA 調查結果，之後英國要求業者做真實性檢驗、歐盟同意各國全面檢驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是英國政府轉述，不是愛爾蘭食品安全局的調查報告原件（原新聞稿頁本輪已被導回首頁，讀不到）；沒有檢驗方法與定量細節；頁面沒有說事件之前是否驗過馬。池中沒有同一網址。 覆核 V17（2026-11-12）：author_cache 註明：GOV.UK 頁面重抓的 sha256 會變（今日為 e64d4aa3cb025abe，大小相同），以文字檔雜湊與關鍵句為準。limitations 補：原文在 29% 那一句點名零售商，另有北愛爾蘭冷藏庫 12 件中 2 件約 80% 的紀錄，本池不取用。",
+          "author_cache": {
+            "file": "f14src/govuk-horsemeat-2013.html",
+            "sha256_prefix": "da2426cf3dcbcbe5",
+            "text_file": "f14src/govuk-horsemeat-2013.txt",
+            "text_sha256_prefix": "a12191e8ee2b8e18",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-human-20261111",
+          "original_url": "https://www.gov.uk/government/news/processed-beef-products-and-horse-meat"
+        }
+      ]
+    },
+    {
       "id": "SRC-22c4305677cb4eb5",
       "url": "https://home.cern/science/computing/the-birth-of-the-web//nhttps://info.cern.ch//nhttp://info.cern.ch/hypertext/WWW/TheProject.html/nhttps://developer.mozilla.org/en-US/docs/Web/URI/Guides/Choosing_between_www_and_non-www_URLs",
       "readings": [
@@ -20830,6 +20930,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://arxiv.org/abs/2006.11239"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2b9b5f7fc7bfc98f",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-11.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1126/science.1107976",
+          "title": "Physical Limits and Design Principles for Plant and Fungal Movements（Skotheim、Mahadevan）",
+          "publisher": "Science 308:1308–1310（2005）；通訊作者 L. Mahadevan 在哈佛的實驗室網站所放的刊本 PDF",
+          "version": "2005（刊本；PDF 前一頁帶有同期另一篇的尾頁）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "正文全文讀完（含圖 1 圖說）；線上補充資料（各物種數據出處）未讀",
+          "locator": "p.1308–1310 全文；式 (1)(2)；Fig. 1 圖說",
+          "summary": "把植物與真菌動作的持續時間對『會動的部位最小尺寸 L』作圖。水要穿過組織才能讓它變形，所需時間（多孔彈性時間）與 L 的平方成正比，軟組織的典型值是每平方毫米 1.6 秒；比這條線慢的動作靠吸水、失水就做得到，比它快的只能先慢慢存彈性能再靠失穩釋放（翻面的殼，或撕裂的組織）。捕蠅草葉厚約 0.5 毫米，水流時間約 0.4 秒，閉合卻只要約 0.2 秒（文首寫 0.1 秒）；近親貉藻葉厚約 0.05 毫米，水流時間約 0.004 秒，約 0.02 秒閉合、不必翻面。另一條下限是彈性波傳過組織的時間（每毫米約 10⁻⁵ 秒）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "PDF 的網址是由該實驗室另一篇論文的檔名（2005-07.pdf）推到同一目錄的鄰近編號取得，不是由出版頁的連結點進去的；檔案內容確為本篇刊本。每平方毫米 1.6 秒是『典型軟組織』的量級估計，不是逐物種量的；圖 1 各物種的原始出處在未讀的補充資料。捕蠅草閉合時間文內有 0.1 與 0.2 秒兩個寫法。science.org 的出版頁未請求（付費）。 覆核 V16（2026-11-12）：read_via 與 limitations 改寫：取得路徑記為「softmath.seas.harvard.edu/publications/page/8/（實驗室公開的著作頁）上本篇書目下的 [Download PDF] 連結」，canonical_url 仍是 https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-11.pdf；刪去「由鄰近檔名推得」的說明，改記「作者原以猜檔名取得，覆核 V16 於 2026-11-12 確認同一檔案在著作頁有公開連結，由該連結重抓雜湊相同（dda4ebd41bc387a0）」。reading_scope 補：快取 PDF 後附線上補充資料的物種出處表。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/skotheim2005-softmath-2005-11.pdf",
+            "sha256_prefix": "dda4ebd41bc387a0",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-life-20261111",
+          "original_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-11.pdf"
         }
       ]
     },
@@ -26544,6 +26670,32 @@
       ]
     },
     {
+      "id": "SRC-37899bc96da40b82",
+      "url": "https://repository.library.noaa.gov/view/noaa/53091/noaa_53091_DS1.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1029/2022SW003193",
+          "title": "Space Weather Environment During the SpaceX Starlink Satellite Loss in February 2022（Fang 等）",
+          "publisher": "Space Weather 20, e2022SW003193（AGU／Wiley，開放取用）；NOAA 機構典藏的刊本 PDF；作者任職 NOAA 太空天氣預報中心、科羅拉多大學 CIRES 與 SpaceX",
+          "version": "2022（刊本，14 頁）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 14 頁讀完（圖只讀圖說，未目讀曲線）",
+          "locator": "Abstract；第 1 節（發射軌道、Kp、SpaceX 聲明）；第 3 節（SWPC 預報原文）；第 4 節（WAM-IPE 與 MSIS-00 的比較、圖 5–6 的文字敘述）",
+          "summary": "2022 年 2 月 3 日發射的 49 顆星鏈衛星被送進近地點 210 公里、遠地點 350 公里的軌道（目標 550 公里），38 顆墜回。磁暴的 Kp 只到 5、兩天各持續 6 小時，依 SWPC 分級是輕微（minor）。NOAA 作業中的物理模式 WAM-IPE 算出 200–400 公里高度的中性密度增加 50%–125%；SpaceX 發射前用的經驗模式 NRLMSISE-00 只顯示最多約 20% 的增幅，沿存活衛星軌道取樣時 WAM 的密度在近地點比 MSIS-00 高約 40%–80%。SpaceX 只來得及讓 11 顆進入安全姿態。SWPC 當時沒有針對衛星阻力的警報產品。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 S58-NA001 點名的同一篇（當時 Wiley 403）；本次讀的是 NOAA 典藏的刊本。密度增幅是模式結果，不是直接量測；作者之一是 SWPC 自己的模式團隊，也有 SpaceX 員工。Kp 5 在本文稱 minor，池中 S58-005 依 Dst 稱中等，兩種指標不要混成一句。DOI 10.1029/2022SW003193 的出版社頁回 403。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/fang2022-noaa_53091_DS1.pdf",
+            "sha256_prefix": "8404d1889e2fd56a",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-earth-20261111",
+          "original_url": "https://repository.library.noaa.gov/view/noaa/53091/noaa_53091_DS1.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-37a00adde69fe8bf",
       "url": "https://dl.ifip.org/db/conf/ifip9/sorucom2006/BrusentsovA06.pdf",
       "readings": [
@@ -27268,6 +27420,32 @@
       ]
     },
     {
+      "id": "SRC-39bc2174d385fd98",
+      "url": "https://www.vfdb.de/media/doc/sonstiges/forschung/eva/tb_13_01_crowd_densities.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.vfdb.de/media/doc/sonstiges/forschung/eva/tb_13_01_crowd_densities.pdf",
+          "title": "Static and Dynamic Crowd Densities at Major Public Events（Technical Report vfdb TB 13-01；Oberhagemann）",
+          "publisher": "德國消防協會（vfdb）技術科學諮詢委員會，技術報告英譯本",
+          "version": "2012 年 3 月第 1 版（48 頁）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "第 3 節開頭到 3.2、4.1 開頭定點讀；其餘未讀",
+          "locator": "§3 Static densities and their potential hazard（p.6–9）；§4.1",
+          "summary": "德國有兩個法定的人群密度：集會場所的建築法規以每平方公尺 2 人作為疏散要求的基準；交通法規容許公車立位每平方公尺 8 人——報告說後者『在科學上站不住腳』。報告把動態擠壓過程的臨界密度定在每平方公尺約 6 人：超過之後，人幾乎無法再靠挪步吸收外來的力。每平方公尺 8 人以上只有在外力壓迫、無處可避時才會出現。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "協會的技術報告，不是主管機關的法規本文；法規條號沒有在讀到的段落列出。英譯本。報告舉了一場德國活動的車站量測值作例子，本題不引用個案。台灣主管機關的人潮密度基準仍未讀到。 覆核 V16（2026-11-12）：F13-019 的 notes 刪去關於英國運動場館安全局（SGSA）算例的一句；快取檔 sgsa-worked-example-b-cricket.pdf／.txt 不列為來源、不入池。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/vfdb-tb-13-01-crowd-densities.pdf",
+            "sha256_prefix": "52005c968ae4cc67",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-physics-20261111",
+          "original_url": "https://www.vfdb.de/media/doc/sonstiges/forschung/eva/tb_13_01_crowd_densities.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-39bc6fefa645b94e",
       "url": "https://developers.google.com/search/blog/2018/10/introducing-recaptcha-v3-new-way-to",
       "readings": [
@@ -27750,6 +27928,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://irds.ieee.org/images/files/pdf/2022/2022IRDS_MM.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3af111c239a6c805",
+      "url": "https://info.ornl.gov/sites/publications/Files/Pub57561.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://info.ornl.gov/sites/publications/Files/Pub57561.pdf",
+          "title": "Electric Utility Industry Experience with Geomagnetic Disturbances（ORNL-6665；Barnes、Rizy、McConnell、Tesche、Taylor）",
+          "publisher": "美國能源部橡樹嶺國家實驗室（Oak Ridge National Laboratory）技術報告",
+          "version": "1991 年 9 月（掃描檔 98 頁）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "定點閱讀：Executive Summary、2.2.4–2.2.6、3.8（含時間序列）；其餘章節未讀。掃描檔 OCR 有雜字，數字逐處對過上下文",
+          "locator": "Executive Summary p.xiv–xv；§2.2.5 Static VAR Compensators（p.16–17）；§3.8 System Response Data（p.34–37）",
+          "summary": "1989 年 3 月 13 日魁北克水電停電的技術經過：變壓器被地磁感應電流推到飽和，產生諧波；諧波流進靜態無效功率補償器（SVC）的電容器組，保護裝置把 SVC 跳開。2:44:17 第一台在 Chibougamau 跳脫，到 2:45:16 第七台跳脫，約一分鐘內失去七台；約 8 秒後 735 kV 線路開始跳脫，系統分離，失去約 21,500 MW 的發電。復電：3 小時 25%、5 小時 48%、7 小時 65%、9 小時 83%。分離造成的過電壓損壞了 La Grande 4 的兩台升壓變壓器、數處避雷器、一台並聯電抗器與 SVC 本身。由渥太華磁力站資料換算，第一批跳脫時東西向電場約每公里 10 伏特，持續約 30 秒。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "1991 年的報告，引用魁北克水電與當時文獻的資料，不是 NERC 1989 年事故報告本身（該報告網址回 404），也不是 Boteler 2019（付費）。『SVC 因諧波跳脫』原文用 It is surmised（推定）。電場是用假設的地面導電率由磁場換算的（另一組導電率得每公里 14 伏特），不是實測。掃描 OCR：21,500 MW 在文字層寫成『2 1,500』。 覆核 V16（2026-11-12）：limitations 加「報告沒有魁北克電網感應電流的實測；地面電場是由渥太華磁力紀錄、假設當地擾動相同並以假設導電率換算」。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/ornl-pub57561.pdf",
+            "sha256_prefix": "a087172ce2b334c3",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-earth-20261111",
+          "original_url": "https://info.ornl.gov/sites/publications/Files/Pub57561.pdf"
         }
       ]
     },
@@ -30160,6 +30364,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://www.rfc-editor.org/rfc/rfc4648.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3fcdb3b69204a1b5",
+      "url": "https://arxiv.org/pdf/1102.4766v2",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/1102.4766",
+          "title": "Transitions in pedestrian fundamental diagrams of straight corridors and T-junctions（Zhang、Klingsch、Schadschneider、Seyfried）",
+          "publisher": "arXiv:1102.4766v2（刊於 J. Stat. Mech. 2011, P06004）；伍珀塔爾大學、科隆大學、于利希研究中心",
+          "version": "2011-06-20（v2）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "摘要、§1–2、§4.1–4.3、§5 讀完；量測方法的數學定義略讀",
+          "locator": "Abstract；§1；§2；§4.2–4.3；§5 Summary",
+          "summary": "最多 350 人參加的走廊（寬 1.8、2.4、3.0 公尺，28 次）與 T 形路口（7 次）實驗，用影像自動追蹤每個人的軌跡。不同寬度的走廊，換成每公尺寬的流量後在每平方公尺 3.5 人以下可合成同一條曲線。要做到高密度，只能把出口縮窄；而出口一縮，量測區（離出口 4 公尺）的流量—密度關係在每平方公尺約 2 人處出現不連續，作者解釋為出口限制流出造成的相變。T 形路口與直走廊的基本圖不能互相套用。文首整理文獻：各研究裡『擠到走不動』的密度從每平方公尺 3.8 人到 10 人都有，流量最大的密度從 1.75 到 7 人都有。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "arXiv 版，未對照刊本。實驗最高密度約每平方公尺 4 人，沒有到推擠或停住。文獻的 3.8–10 是作者引用別人的比較，不是本實驗量的。 覆核 V16（2026-11-12）：reading_scope 加「圖 6、7 由覆核 V16 轉圖檔目讀」；limitations 加「文獻比較另有流量最大的密度 1.75–7 m⁻²」。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/arxiv-1102.4766v2.pdf",
+            "sha256_prefix": "626edfa2c007a396",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/1102.4766v2"
         }
       ]
     },
@@ -34769,6 +34999,32 @@
       ]
     },
     {
+      "id": "SRC-4c519d9b8834e9f0",
+      "url": "https://www.osti.gov/servlets/purl/1973594",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.matt.2019.12.019",
+          "title": "Systematically Improving Espresso: Insights from Mathematical Modeling and Experiment（Cameron 等）",
+          "publisher": "Matter 2(3):631–648（Cell Press，2020）；美國能源部 OSTI 典藏的全文 PDF（20 頁）",
+          "version": "2020（OSTI 典藏稿，版面為刊本）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "正文全文讀完；Supplemental Information 未讀；圖 4、5 只讀圖說與座標標籤，未讀點值",
+          "locator": "Summary；Introduction；Tuning the Model to Espresso Extraction Data；Figure 4–5 圖說；Partially Clogged Flow Regime；Implementation and Outlook",
+          "summary": "以 20 克粉、40 克出液、6 巴水壓、98 牛頓填壓的濃縮咖啡，改變 EK 43 磨豆機刻度（1.1–2.3）：出液時間隨刻度變細而拉長，但萃取率不是一路升高，而是在刻度約 1.7 附近最高，更細反而下降（圖 4B 縱軸約 20%–23%）。假設水流均勻的模型預測越細越高；作者把落差歸給細粉太多造成的局部堵塞與不均勻流動。同一沖煮比例下，刻度 1.3 與 2.0 都能得到 22% 的萃取率。9 巴時細刻度會堵，實驗改用 6 巴。作者明寫風味差異『有注意到但沒有量化』。尤金一家咖啡館把每杯粉量減 25%，一年 27,850 杯、每杯省 0.13 美元。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 SRC-1dc7a0a002f869b2（作者頁 PDF）是同一篇論文，本次讀的是 OSTI 的全文。沒有任何感官評分；『乾區』比例（13.1%、6.1%、2.6%）是極端假設下模型與實驗的差，作者自己說不能當量測。單一磨豆機、單一咖啡。補充資料未讀。咖啡館數字是作者引用店家的營收資料。 覆核 V16（2026-11-12）：limitations 加「『Flavor differences… were noted but not quantified』一句的上下文是不同填壓力道（與降壓），不是不同研磨刻度」。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/cameron2020-osti-1973594.pdf",
+            "sha256_prefix": "0fa006c50429cab7",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-human-20261111",
+          "original_url": "https://www.osti.gov/servlets/purl/1973594"
+        }
+      ]
+    },
+    {
       "id": "SRC-4c53811c704a2486",
       "url": "https://corporate.visa.com/en/solutions/acceptance/payments.html",
       "readings": [
@@ -38973,6 +39229,32 @@
       ]
     },
     {
+      "id": "SRC-5586c90285b540dc",
+      "url": "https://hal.umontpellier.fr/hal-02990349/document",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.9753/icce.v34.sediment.50",
+          "title": "Typhoons driven morphodynamics of the Wan-Tzu-Liao sand barrier (Taïwan)（Campmas、Bouchette、Meulé、Petitjean、Sous、Liou、Leroux-Mallouf、Sabatier、Hwung）",
+          "publisher": "第 34 屆國際海岸工程研討會論文集（ICCE 2014，Coastal Engineering Proceedings 34, sediment.50，CC BY）；法國蒙彼利埃大學等與成功大學水工試驗所；HAL 典藏",
+          "version": "2014（HAL 2020 年存入，14 頁）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 14 頁讀完（圖只讀圖說）",
+          "locator": "摘要；Settings；Methodology；Results 兩節；Discussion；Conclusion",
+          "summary": "台南七股潟湖外的頂頭額沙洲（Wan-Tzu-Liao）北段一段 200 公尺長的灘：2011 年 11 月到 2012 年 9 月做了 20 次地形測量（冬季每週、夏季每個颱風前後各一次，RTK-GPS），並有七股浮標、近岸剖面儀與壓力計。觀測到的八個颱風裡最強的泰利（2012 年 6 月）外海示性波高 10.34 公尺：沙丘腳後退 6.7 公尺、沙丘最低處沖出 20 公尺寬的缺口、沙被帶進潟湖；但整段沙洲的沙量是增加的（+1,920 立方公尺），灘線向海推了 8 公尺。整個颱風季是堆積（約 +3,556 立方公尺、灘線向海約 10.4 公尺）；冬季季風期才是侵蝕（約 −4,995 立方公尺、灘線後退 28.9 公尺），作者歸因於 20 次外海波高超過 2 公尺的中等風暴接連而來、灘來不及回復。全年沙洲向陸移 18.5 公尺、淨損約 1,439 立方公尺。作者提醒：這比 1999–2009 年的後退速率（每年 25 與 48 公尺）小，2011/12 可能是少見的一年。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研討會論文，非期刊同儕審查；只有一年、一段 200 公尺的灘。內文數字前後不一：誤差在摘要寫 ±1,071、正文寫 ±912 立方公尺；全年位移 18.4 與 18.5 公尺；摘要寫 7 個月監測、方法寫 2011 年 11 月到 2012 年 9 月；泰利在標題稱颱風、內文稱熱帶風暴。泰利的淨增量 +1,920 的誤差與量值同級。沙是從水下哪裡來的沒有測（沒有水下地形）。 覆核 V16（2026-11-12）：title 與 limitations 補記：Wan-Tzu-Liao sand barrier 是七股潟湖外的網仔寮汕，不是頂頭額汕；limitations 加「只測出水的灘與沙丘，沒有水下地形；颱風季沙丘本身仍後退 15.06 公尺」。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/campmas-hal-02990349.pdf",
+            "sha256_prefix": "a13fff02ce88f927",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-earth-20261111",
+          "original_url": "https://hal.umontpellier.fr/hal-02990349/document"
+        }
+      ]
+    },
+    {
       "id": "SRC-5588889ff38d31db",
       "url": "https://doi.org/10.3390/polym16162318",
       "readings": [
@@ -41664,6 +41946,32 @@
       ]
     },
     {
+      "id": "SRC-5be5add077e10eb6",
+      "url": "https://signal.org/blog/private-contact-discovery/",
+      "readings": [
+        {
+          "canonical_url": "https://signal.org/blog/private-contact-discovery/",
+          "title": "Technology preview: Private contact discovery for Signal（moxie0）",
+          "publisher": "Signal 官方部落格",
+          "version": "2017-09-26",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀（HTML）",
+          "reading_scope": "全文讀完",
+          "locator": "Background；Contact discovery；Trust but verify；SGX contact discovery；Building a secure SGX service；Oblivious limitations",
+          "summary": "Signal 說明找出通訊錄裡誰也在用 Signal 的做法與它的弱點：原本是把每個電話號碼的截短 SHA-256 雜湊傳給伺服器比對；但電話號碼的可能值太少，雜湊幾乎一定能反推。伺服器照公開的原始碼跑就不留紀錄，可是使用者無從確認伺服器真的在跑那份程式。新設計把比對放進伺服器處理器的隔離區（SGX enclave），用遠端證明讓用戶端確認裡面跑的是公開的程式碼；又因為主機作業系統雖看不到隔離區的記憶體內容、仍看得到存取了哪些位址，所以每次查詢都把全部註冊用戶掃一遍、雜湊表也用每格都寫一次的方式建立。文末自己列出殘餘的洩漏。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "Signal 自己的文件，是設計說明不是外部稽核；標題寫明是技術預覽，文末說『接下來幾個月』才部署，之後的實作已有更動，本文不涵蓋。SGX 後來被公開過多種攻擊，本文沒有提。與池中 P57-NA014 是同一頁（當時只讀開頭）。 覆核 V16（2026-11-12）：author_cache 補記：HTML 有動態片段，重抓的 sha256 會不同（今日 3188d960023f40ef，大小相同），去標籤後文字相同；limitations 加「現行做法未讀」。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/signal-private-contact-discovery.html",
+            "sha256_prefix": "745fe21793746ef9",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-tech-20261111",
+          "original_url": "https://signal.org/blog/private-contact-discovery/"
+        }
+      ]
+    },
+    {
       "id": "SRC-5bea381fffde3be2",
       "url": "https://pubmed.ncbi.nlm.nih.gov/8108024/",
       "readings": [
@@ -43942,6 +44250,32 @@
       ]
     },
     {
+      "id": "SRC-615767aa95ecc64d",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7351144/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pbio.3000740",
+          "title": "A single touch can provide sufficient mechanical stimulation to trigger Venus flytrap closure（Burri 等）",
+          "publisher": "PLOS Biology 18(7):e3000740（2020，CC BY）；蘇黎世聯邦理工學院與蘇黎世大學",
+          "version": "2020",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+          "reading_scope": "摘要、引言、結果前兩節、圖 1、3、6 圖說、討論首段讀完；模型推導與審查往返未細讀",
+          "locator": "Abstract；Results: Two fast, consecutive deflections…；Fig 1、Fig 3、Fig 6 圖說",
+          "summary": "用裝在微型機械手臂上的力感測器，在活體捕蠅草上精確偏折感覺毛並同時記錄電訊號。快速偏折（每秒 10–20 弧度）兩次要讓捕蟲夾閉合，中位數門檻是偏折 0.18 弧度或力矩 0.8 微牛頓·公尺（n＝21），低於 0.12 弧度與 0.50 微牛頓·公尺從未閉合；換算成力，是在 2 毫米長的感覺毛尖端附近施約 0.5 毫牛頓、兩次。作者的電荷累積模型另外預測：中等角速度的單次偏折就能引出兩個動作電位；慢速單次偏折的實驗裡確實有閉合（推進時 6 次、收回時 11 次）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "受器電位沒有直接量，是模型裡的量（審查意見也指出這點）；單次觸發用的是比典型獵物慢得多的偏折，作者自己說在自然界的意義只能推測。實驗室栽培株。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/europepmc-PMC7351144-fulltext.xml",
+            "sha256_prefix": "de7420ef875382f5",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7351144/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-615d10b0fa62e078",
       "url": "https://www.berlin.de/en/tourism/travel-information/1740536-2862820-shopping-hours-sunday-shopping.en.html",
       "readings": [
@@ -44726,6 +45060,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.wi-fi.org/news-events/newsroom/wi-fi-alliance-introduces-wi-fi-6"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6353a16c3c2593f7",
+      "url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.1001960&type=manuscript",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pbio.1001960",
+          "title": "Social Network Analysis Shows Direct Evidence for Social Transmission of Tool Use in Wild Chimpanzees",
+          "publisher": "PLOS Biology 12(9):e1001960（Hobaiter、Poisot、Zuberbühler、Hoppitt、Gruber）",
+          "version": "2014 年刊本，開放取用；期刊提供的全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）取得期刊全文 XML，python 去標籤成文字後閱讀",
+          "reading_scope": "Abstract、Author Summary、Introduction、Results 全文（含 Table 1、2 說明與 Figure 1、2 圖說）、Discussion 全文；Materials and Methods 與 Supporting Information 未讀。",
+          "locator": "Introduction 第 4 段（2011 年 11 月新水坑、兩個新做法的定義）；Results 第 3–7 段（先後順序、14.9 倍、84.5%、RU1 的 1.07 倍）；Discussion 第 1–2、5 段",
+          "summary": "烏干達布東戈森林 Sonso 群黑猩猩在新水坑六天內出現苔蘚海綿與撿舊海綿兩個新做法；以「誰看過誰」的動態網路分析，苔蘚海綿的擴散有很強的社會傳遞效應，撿舊海綿則幾乎沒有。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "單一族群、六天、個體數少，信賴區間寬；學習機制作者明說無法判定；模型細節在未讀的方法與補充資料裡。池中沒有同一網址或 DOI。 覆核 V17（2026-11-12）：summary 補：撿舊海綿的估計 1.07 倍的 95% 信賴區間是 0.58–2.48（約 3.1%）；排除 KW 後苔蘚海綿的估計是 21.2 倍（4.2–679）；補充分析認為效應不太可能只來自到水坑的機會不同；苔蘚海綿在另一個黑猩猩群與一個倭黑猩猩群有過紀錄。",
+          "author_cache": {
+            "file": "f14src/hobaiter2014-pbio.1001960.xml",
+            "sha256_prefix": "768e5e571d87ad81",
+            "text_file": "f14src/hobaiter2014.txt",
+            "text_sha256_prefix": "f2aa2fe7091cf5b0",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-life-20261111",
+          "original_url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.1001960&type=manuscript"
         }
       ]
     },
@@ -47552,6 +47914,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ecfr.gov/current/title-14/part-25/section-25.1385"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6a584e0e3229ab45",
+      "url": "https://www.nature.com/articles/ncomms7083",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/ncomms7083",
+          "title": "Aerosol generation by raindrop impact on soil",
+          "publisher": "Nature Communications 6:6083（Joung 與 Buie，麻省理工學院）",
+          "version": "2015 年刊本，開放取用",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）存期刊 HTML，python 去標籤成文字後逐段閱讀",
+          "reading_scope": "主文全文：Abstract、Introduction、Results 七個小節（含 Fig.1–4 圖說）、Discussion；Methods 與 Table 1 數值未逐項讀，補充影片未看。",
+          "locator": "Results「Aerosol generation from droplets hitting soils」「Delivery of materials…」「Aerosol-generation process」「Effect of porous structures…」「Characterization of aerosol generation」；Discussion 第 4–5 段",
+          "summary": "水滴打在會吸水的多孔表面時，底下困住的空氣形成氣泡、升到頂面破裂射出細水柱而成氣膠；約 600 次實驗畫出發生範圍：小雨到中雨、黏土類土壤會發生，砂土與大雨條件不發生。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 SRC-ba0ca00542395953 同一頁（舊集 S56 的來源清單，池內紀錄註明當時未表示讀過外站）。實驗室單滴；大尺度環境效應作者明說未驗證；未量細菌或氣味分子。 覆核 V17（2026-11-12）：author_cache 註明：nature.com 頁面重抓的 sha256 會變（今日為 e50d70d130847f34），以文字檔雜湊與關鍵句為準。summary 補：染料試驗用薄層層析板（TLC-C）在風管裡做；重複滴落是「10 秒週期時第二滴之後不再觀察到、5 分鐘週期每滴都有」，未寫表面種類；土樣噴濕後在 50 °C 烘三天；小雨與大雨的落速界線是每秒 4 與 7 公尺（引用文獻）。併入時與池中 SRC-ba0ca00542395953 合為同一來源，補上本次全文閱讀。",
+          "author_cache": {
+            "file": "f14src/joung2015.html",
+            "sha256_prefix": "e30651ec3c19209f",
+            "text_file": "f14src/joung2015.txt",
+            "text_sha256_prefix": "f45a430c5adb133d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-physics-20261111",
+          "original_url": "https://www.nature.com/articles/ncomms7083"
         }
       ]
     },
@@ -52958,6 +53348,32 @@
       ]
     },
     {
+      "id": "SRC-76c9b430e9ca7786",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10708577/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/s23239337",
+          "title": "Siamese Unet Network for Waterline Detection and Barrier Shape Change Analysis from Long-Term and Large Numbers of Satellite Imagery（Chang、Chen、Jhang、Liou）",
+          "publisher": "Sensors 23(23):9337（2023，MDPI，CC BY）；陽明交通大學土木系；國家海洋研究院計畫 NAMR110004",
+          "version": "2023",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+          "reading_scope": "摘要、引言、3.2–3.5、4.1、結論讀完；網路架構與訓練細節略讀",
+          "locator": "Abstract；3.3 Separation of the Southern End；3.4 L-Shaped End；3.5 Change in the Land Area；4.1；Conclusions",
+          "summary": "用 2004–2021 年 207 張高解析衛星影像判讀雲嘉外海外傘頂洲的水線。挑潮位在平均海水面 ±15 公分內的 42 張算陸地面積：對時間近似一條下降的直線，每年約減少 0.344 平方公里（相關係數 0.864、均方根誤差 0.99 平方公里），與先前研究的 0.378 接近。南端另有兩種來回的變化：尾段與主體被水道隔開（2005、2006、2009、2013–2018、2021 年出現，水道底常在夏末刷深、之後回淤）；2017 年底起出現 L 形尾端，長度夏天變短、冬天變長。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "主題是影像判讀方法，地形結論是附帶的；作者說南端急彎的出現『可能與颱風波浪和季節性海流有關』，沒有檢驗。面積對潮位很敏感，選不同潮位門檻得 −0.342 到 −0.375。沒有逐場颱風前後的比較。MDPI 出版頁上一輪 403，本次讀 Europe PMC 的全文。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/europepmc-PMC10708577-fulltext.xml",
+            "sha256_prefix": "e7f62dd76848b13d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-earth-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10708577/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-76cd1b736f5e4adb",
       "url": "https://www.kt.fi/sopimukset/hyvtes/2023-2025/luku-III-tyoaika/lepoajat",
       "readings": [
@@ -56023,6 +56439,34 @@
       ]
     },
     {
+      "id": "SRC-7e5a0dfa2ee21387",
+      "url": "https://publications.jrc.ec.europa.eu/repository/bitstream/JRC130227/JRC130227_01.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.2760/184511",
+          "title": "EU Coordinated action to deter certain fraudulent practices in the honey sector – Analytical testing results of imported honey",
+          "publisher": "歐盟執委會聯合研究中心（JRC）技術報告 EUR 31461 EN（Ždiniaková 等）",
+          "version": "2023；JRC130227",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（1,657,146 bytes，application/pdf），pdftotext -layout 全文",
+          "reading_scope": "Abstract、第 1–2 節（背景與目的）、第 5 節檢驗方法與 Table 1、第 6 節結果、第 7 節結論；Annex 1 只讀判定規則標題與前幾行；圖 4、5 未目讀。",
+          "locator": "Abstract；§1（進口蜜與米糖漿單價）；§5.1 Table 1；§5.2；§6；§7",
+          "summary": "2021 年 10 月至 2022 年 2 月歐盟協同行動：17 國抽 320 批進口蜂蜜，147 批（46%）至少驗出一種外加糖漿標記而列為可疑；過去常用的整體碳同位素法在這批樣本上沒有效果，報告判讀為糖漿已由玉米、甘蔗改成米、小麥、甜菜。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "「可疑」不是確認摻假；方法只給有無標記、估不出摻量；報告自己寫明只代表抽樣期間、不得外推；國別比例的樣本數懸殊。池中沒有同一網址；它的 Table 1 引用了池中 X34-001 所據的同一篇論文（Elflein 與 Raezke 2008）。 覆核 V17（2026-11-12）：summary 補：320 批來自 20 個出口國，84% 在邊境管制站取樣，JRC 收樣日期 2021-10-28 至 2022-02-11；進口蜜均價 2.32 歐元不含紐西蘭蜜；報告沒有給 EA-IRMS 單獨判出幾批的數字，「糖漿換了種類」是報告的解讀。",
+          "author_cache": {
+            "file": "f14src/jrc130227-honey-2023.pdf",
+            "sha256_prefix": "301a3a76f5e78802",
+            "text_file": "f14src/jrc130227-honey-2023.txt",
+            "text_sha256_prefix": "9d0168a5c474a6c1",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-human-20261111",
+          "original_url": "https://publications.jrc.ec.europa.eu/repository/bitstream/JRC130227/JRC130227_01.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-7e5a562c7777b2cf",
       "url": "https://www.law.cornell.edu/cfr/text/49/213.103",
       "readings": [
@@ -58225,6 +58669,32 @@
       ]
     },
     {
+      "id": "SRC-82a9e7f571e7d703",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6560105/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-019-44886-w",
+          "title": "Effect of grinding, extraction time and type of coffee on the physicochemical and flavour characteristics of cold brew coffee（Cordoba、Pataquiva、Osorio、Moreno、Ruiz）",
+          "publisher": "Scientific Reports 9:8440（2019，CC BY）；哥倫比亞 La Sabana 大學",
+          "version": "2019",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+          "reading_scope": "摘要、結果第一節、表 1 的前幾列、感官方法讀完；揮發物分析未讀",
+          "locator": "Abstract；Results（Fig.1–2 敘述、Table 1–2 敘述）；Methods: Sensory evaluation、Cold brew and hot brew experiments",
+          "summary": "冷泡（20 °C 浸泡，60 克粉對 700 克水）的 2×2×2 設計：研磨（中 501–700 µm、粗 701–900 µm）、時間（14、22 小時）、兩款哥倫比亞精品豆。統計上研磨是影響理化參數最大的因子，其次是時間；粗研磨加 22 小時的 TDS 與萃取率最高。感官由三位受訓評審（一女二男）評分：整體印象分數最高的是粗研磨加 14 小時。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "感官評審只有三人，不能當成一般人喝得出來的證據；『粗研磨萃取率較高』與一般預期相反，作者沒有給出機制的檢驗；冷泡、兩款豆。只當作 F13-005 的旁證，不單獨撐轉折。DOI 10.1038/s41598-019-44886-w。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/europepmc-PMC6560105-fulltext.xml",
+            "sha256_prefix": "5b8e404ffd14b817",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-earth-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6560105/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-82bec04c92d81b28",
       "url": "https://doi.org/10.1371/journal.pone.0101565",
       "readings": [
@@ -60401,6 +60871,26 @@
           "summary": "聲學測流依靠散射粒子、穩定參考與空間一致性；自身振鈴、旁瓣及未取樣區限制速度剖面。",
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-earth-observation-20261101",
+          "original_url": "https://pubs.usgs.gov/tm/3a22/pdf/tm3a22.pdf"
+        },
+        {
+          "canonical_url": "https://pubs.usgs.gov/tm/3a22/pdf/tm3a22.pdf",
+          "title": "Measuring Discharge with Acoustic Doppler Current Profilers from a Moving Boat（Mueller、Wagner、Rehmel、Oberg、Rainville；Techniques and Methods 3–A22，version 2.0）",
+          "publisher": "美國地質調查局（USGS）",
+          "version": "2013 年 12 月（version 2.0）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "定點閱讀：Compass Considerations（p.10）、Boat Operation（p.32）、Appendix B 的磁偏角與 GPS 段（p.58–59）、Appendix F 的 Incorrect Magnetic Variation 一節；其餘未重讀",
+          "locator": "p.10 Compass Considerations；p.32；Appendix B p.58–59；Appendix F p.78–81",
+          "summary": "以底追蹤為船速參考時，羅盤的航向誤差只會把水速方向轉一個角度，流量不受影響；改用 GPS 等外部參考時，航向誤差會同時影響水速與流量，影響與船速成正比，所以用 GPS 時船要盡量慢。內建羅盤校正良好時約準到 1–2 度，磁偏角也可能與模式值不同，2 度的誤差是合理會發生的；結果是『方向性偏差』：由左岸往右岸量的流量一直與反方向量的不同。差距在約 5% 以內時，取往返成對的平均會接近真值；需要調整磁偏角超過 2 度，表示羅盤沒校好或磁偏角輸入錯。鐵殼船或鋼構橋墩附近羅盤可能不能用。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 SRC-87ae7733e9e523c7 同一頁（同一份 PDF）。這是作業手冊的分析性說明與處置門檻，沒有附任何一筆 GPS 參考量錯的實測數據；『約 5%』是處置門檻不是量到的偏差。 覆核 V16（2026-11-12）：reading_scope 加「Appendix F Step 8 與圖 F-21（報告頁 89，PDF 第 107 頁；圖是畫面截圖，文字層沒有，須轉圖檔目讀）」；limitations 的「沒有附任何一筆 GPS 參考量錯的實測數據」改為「圖 F-21 有一個例子：以 GGA 為參考的四趟往返，與平均的差為 −4.82%、+7.40%、−9.47%、+6.89%；沒有交代地點、日期，也沒有對照的真值」。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/usgs-tm3a22.pdf",
+            "sha256_prefix": "55433a014cc47a53",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-earth-20261111",
           "original_url": "https://pubs.usgs.gov/tm/3a22/pdf/tm3a22.pdf"
         }
       ]
@@ -79655,6 +80145,34 @@
       ]
     },
     {
+      "id": "SRC-b42246a529071977",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7322030/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.2002924117",
+          "title": "How a raindrop gets shattered on biological surfaces",
+          "publisher": "PNAS 117(25):13901–13907（Kim、Wu、Esmaili、Dombroskie、Jung，康乃爾大學）",
+          "version": "2020 年刊本，開放取用（CC BY-NC-ND）；Europe PMC 全文 XML（PMC7322030）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200 取得 Europe PMC fullTextXML，python 去標籤成文字後逐段閱讀",
+          "reading_scope": "主文全文：Significance、Abstract、引言、Results 各小節（含 Fig.1–5 圖說與 Table 1）、Discussion、Materials and Methods 前四小節；SI Appendix 與影片未讀，原圖未目讀。",
+          "locator": "Results「Experiments」「Drop Impact on Biological Surfaces」「Drop Impact on Artificial Surfaces」「Decrease in Contact Time」；Table 1；Discussion 第 1–2 段",
+          "summary": "水滴以接近雨滴的速度落在羽毛、昆蟲翅與葉片等超疏水表面時，微米級凸起在攤開的水膜上引出 V 形波紋並使水膜破洞，水滴碎成小滴，接觸時間最多減少約七成。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "標本是館藏羽毛、昆蟲翅與摘下的葉；體溫與飛行穩定的好處是作者引用他人研究的推論，本文未量；帶孢子的碎滴只在 SI 提到，未讀。池中沒有同一網址或 DOI。 覆核 V17（2026-11-12）：summary 改：「接觸時間最多減少約七成」後加「（相對理論毛細接觸時間；定量在人工超疏水表面上，Fig.5 為人工表面 I、半徑 2 mm）」；補 Table 1 的凸起高度範圍 8–60 微米；羽毛取自史密森尼博物館提供的北方鰹鳥遺體；水滴半徑正文寫 1.1–2.0 mm、方法段寫 1.2–2.0 mm。",
+          "author_cache": {
+            "file": "f14src/kim2020-PMC7322030.xml",
+            "sha256_prefix": "8ad121272abd4d55",
+            "text_file": "f14src/kim2020.txt",
+            "text_sha256_prefix": "407d6f31814eef2b",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7322030/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-b422a111fa713d96",
       "url": "https://arxiv.org/pdf/1705.01693",
       "readings": [
@@ -82293,6 +82811,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.lycorp.co.jp/ja/news/release/020542/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b9d2599e3fc05daf",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5377328/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/srep06466",
+          "title": "Real-time imaging of pulvinus bending in Mimosa pudica（Song、Yeom、Lee）",
+          "publisher": "Scientific Reports 4:6466（2014，CC BY）；韓國浦項工科大學",
+          "version": "2014",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+          "reading_scope": "摘要、引言、結果讀到木質部一節中段；討論與方法未讀",
+          "locator": "Introduction 第 2–4 段；Results: Contraction and expansion of the pulvinus surface…；Wrinkled structure…；Xylem structure…",
+          "summary": "用 X 光顯微與斷層看含羞草葉枕下彎的過程。引言整理既有研究：運動細胞排出鉀、氯離子並失水，體積縮小、膨壓下降；下彎時葉枕下半部的水立即消失。作者引 Skotheim 與 Mahadevan：含羞草是多細胞植物裡最快的水力動作，約 1 秒，與半徑 200 微米葉枕的水流時間（約 1 秒）相當。本研究量到：葉枕由 16.0° 彎到 8.0° 時，上表皮向外位移約 16.4 微米、下表皮向內約 15.2 微米，同一個葉枕一面伸、一面縮；下表皮靠皺褶收起表面，皺褶寬由 5.0 微米增到 17.1 微米；葉枕裡的木質部維管束會跟著彎，靠葉柄端分成六束，水力導度是近莖端的 5.1 倍。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "離子與失水的機制是引言裡對前人研究的整理，不是本文的量測；樣本數與統計在未讀的方法段。『力量多大』本文沒有量。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/europepmc-PMC5377328-fulltext.xml",
+            "sha256_prefix": "094b28da8f2ec850",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5377328/fullTextXML"
         }
       ]
     },
@@ -85726,6 +86270,34 @@
       ]
     },
     {
+      "id": "SRC-c106ab8ff8d0c45c",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2799451/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1289/ehp.0900949",
+          "title": "The Melamine Incident: Implications for International Food and Feed Safety",
+          "publisher": "Environmental Health Perspectives 117(12):1803–1808（Gossner 等，作者群任職世界衛生組織食品安全部門）",
+          "version": "2009 年刊本；Europe PMC 全文 XML（PMC2799451）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）取得 Europe PMC fullTextXML，python 去標籤成文字後逐段閱讀",
+          "reading_scope": "全文：Background、Unfolding of the Global Event、Health impact（含 Table 3）、Toxicology、Discussion（Delay of reporting、International consequences）；Table 1、2 只看欄位與範圍，未逐列核對。",
+          "locator": "Background 第 1 段（Commonly used methods for protein analysis do not distinguish…）；Unfolding 第 1–2 段；Health impact 第 1 段與 Table 3",
+          "summary": "世衛人員對 2008 年奶製品三聚氰胺事件的回顧：摻假的動機是墊高以氮推算的蛋白質讀數，事件的時間線、各國檢出情形、病例通報數與毒理評估。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "評論／回顧文章，不是原始調查；病例數引自中國衛生部 2008 年 12 月通報；沒有寫出蛋白質檢驗法的名稱，也沒有摻入量與讀數的對應。池中沒有同一網址或同一 DOI。 覆核 V17（2026-11-12）：limitations 補：原文第 20–21、118 段點名了一家企業並寫了延遲通報的經過，本池核心不取用；Table 3 的分母是 2,240 萬名受檢者；2004（韓國）、2007（美國）的寵物事件是加進「寵物食品原料」。",
+          "author_cache": {
+            "file": "f14src/gossner2009-PMC2799451.xml",
+            "sha256_prefix": "4c5a670b11844a75",
+            "text_file": "f14src/gossner2009.txt",
+            "text_sha256_prefix": "2f368f948b8d3391",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2799451/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-c1080da2b216cbb1",
       "url": "https://openstax.org/books/microbiology/pages/9-2-oxygen-requirements-for-microbial-growth",
       "readings": [
@@ -86586,6 +87158,32 @@
       ]
     },
     {
+      "id": "SRC-c2f2201b6c949a67",
+      "url": "https://arxiv.org/pdf/physics/0702004v2",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/physics/0702004",
+          "title": "New insights into pedestrian flow through bottlenecks（Seyfried、Rupprecht、Passon、Steffen、Klingsch、Boltes）",
+          "publisher": "arXiv:physics/0702004v2（刊於 Transportation Science 43:395–406, 2009）；于利希研究中心與伍珀塔爾大學",
+          "version": "2007-12-03（v2）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "摘要、§1–3.1、§4.3、§5 讀完；§3.2–4.2 定點讀",
+          "locator": "Abstract；§2 Experimental setup；Table 2；§4.3 The criteria for jam occurrence；§5 Summary",
+          "summary": "讓 20、40、60 人從起始密度每平方公尺 3.3 人的等候區走過一段 2.8 公尺長的窄道，寬度由 0.8 到 1.2 公尺、每次加 0.1 公尺，指示不要推、照平常速度。流量隨寬度近似線性增加（每公尺寬每秒約 1.6–2.3 人），沒有看到早先研究說的階梯式增加。窄道前排起隊時，隊伍裡的密度在每平方公尺 4–6 人之間起伏，窄道裡面卻穩定在約 1.8 人；作者據此指出，排隊在流入量還低於基本圖最大值所定的『容量』時就發生了，和多數規劃準則的假設相反。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "arXiv 版，未對照刊本。年輕受試者、實驗室、不准推；『低於容量就塞』是拿本實驗的密度去對照別人的基本圖得出的推論，作者列了三個可能原因但沒有檢驗。門前密度是作者所稱的初步分析。 覆核 V16（2026-11-12）：limitations 加「§4.3 原文先指出窄道內的 1.8 m⁻² 正是 SFPE 手冊與 Weidmann 基本圖的流量最大處、『看起來支持通行的判準』；作者的相反結論依賴『假設』單向流最大值在更高密度。同一研究群 2011 年走廊實驗（F13-S018 圖 6、7）單向比流量在約 1.5–2 m⁻² 最高」。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/arxiv-physics-0702004v2.pdf",
+            "sha256_prefix": "d01a83837d5d9644",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/physics/0702004v2"
+        }
+      ]
+    },
+    {
       "id": "SRC-c2f6aa9f6de8f8a7",
       "url": "https://www.cosmic.ucar.edu/what-we-do/gnss-radio-occultation",
       "readings": [
@@ -87124,6 +87722,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c4608d53f6ed914e",
+      "url": "https://arxiv.org/pdf/physics/0506170v2",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/physics/0506170",
+          "title": "The Fundamental Diagram of Pedestrian Movement Revisited（Seyfried、Steffen、Klingsch、Boltes）",
+          "publisher": "arXiv:physics/0506170v2（刊於 J. Stat. Mech. 2005, P10002）；德國于利希研究中心與伍珀塔爾大學",
+          "version": "2005-10-05（v2）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 13 頁讀完（圖只讀圖說與表）",
+          "locator": "Abstract；§2；§3.1–3.3；表（N、ρ、v）；Fig. 7；§5",
+          "summary": "在 17.3 公尺長、通道寬 0.8 公尺（不能超車）的環形走道裡，讓 1、15、20、25、30、34 人排成單列走，指示不要趕、不要超前。一個人獨走平均每秒 1.24 公尺；15 人時（每公尺約 0.87 人）每秒 0.90 公尺；34 人時（每公尺約 1.97 人）每秒 0.17 公尺——很慢，但還在走。每個人需要的前後長度與速度成直線關係（d＝0.36＋1.06 v，公尺與公尺每秒），連每秒 0.5 公尺以下也成立；作者觀察到密度高時前後的人會同步踏步（lock-step）。換算後，單列的速度—密度關係與平面上的文獻資料在每平方公尺 1–5 人之間意外地相符。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "arXiv 版，未對照刊本。受試者是學生與職員，被要求放鬆地走，作者自己說真實情境會更快、更擠。最高只到每公尺約 2 人，沒有做到停住；自動追蹤系統在高密度失準，結果用人工逐格判讀。 覆核 V16（2026-11-12）：limitations 的「沒有做到停住」改為「全文沒有談到停不停；量測段最高密度是每公尺 1.76 人（名目 1.97）；同一研究群後來的單列實驗在高密度出現 stop waves（見 F13-S018 §4.1 的轉述）」。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/arxiv-physics-0506170v2.pdf",
+            "sha256_prefix": "750bcce455643abe",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-physics-20261111",
+          "original_url": "https://arxiv.org/pdf/physics/0506170v2"
         }
       ]
     },
@@ -88539,6 +89163,32 @@
           "viewed_images": [],
           "origin": "wave30-choice-20261102",
           "original_url": "https://www.anderson.ucla.edu/faculty/keith.chen/papers/Final_JPSP10.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c7730f02cf7c1b4b",
+      "url": "https://www.nerc.com/globalassets/programs/rapa/gmd/reference-documents/may-2024-gmd-event-review.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.nerc.com/globalassets/programs/rapa/gmd/reference-documents/may-2024-gmd-event-review.pdf",
+          "title": "May 2024 Geomagnetic Disturbance Event Review（NERC Staff Report）",
+          "publisher": "北美電力可靠度公司（NERC）",
+          "version": "2026 年 1 月（19 頁）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "全文 19 頁讀完（圖只讀圖說）",
+          "locator": "Summary and Objective；SWPC Notification and Operator Response；Operator-Reported BPS Impacts；Overall Observations；Table 1；How the Gannon Storm Affected Transmission Equipment；Conclusions",
+          "summary": "2024 年 5 月 10–12 日磁暴的電網端事後檢討。SWPC 在磁暴開始前 6 小時用熱線通知各可靠度協調中心（平常要等日冕物質拋射通過 L1 衛星，可能只有約 30 分鐘）；各單位啟動磁暴操作程序（延後檢修、召回停用的線路與補償設備、投入諧波濾波器與阻隔裝置）。大電網全程穩定、供應所有負載、電壓維持在限值內。量到 NERC 資料庫自 2013 年以來最高的感應電流：六個區域中五個超過 90 安培，美國最高 175.7 安培（威斯康辛，5 月 11 日 02:03 UTC 後）。影響是零星的：一座核能機組依程序降載；五部發電機受影響（皆在 NPCC，其中三部因升壓變壓器保護電驛動作而解聯不到一小時）；一支避雷器故障造成一座變電所停電 14 小時 35 分；一條 345 kV 線的諧波濾波器跳脫；中大西洋一台 SVC 在電流尖峰時意外跳脫、500 kV 系統電壓掉約 2%。5 月 10 日在 2024 年的每日嚴重度指標排第 68。報告自己提醒這場磁暴比 1989 年 3 月那一場弱。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "NERC 是產業自律的可靠度機構，資料來自業者申報；報告自己寫明部分 GIC 資料品質不佳、沒有加拿大業者的 GIC 資料、SVC 與電容器組不在停電統計系統內、只有一個區域申報發電機受影響『出乎意料』。『五個 CME』與『至少七個』兩種說法並存。文中一處把比較年份寫成 2025（應為 2024），不引用那一句。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/nerc-may-2024-gmd-event-review.pdf",
+            "sha256_prefix": "a179bd615ffebb5f",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-earth-20261111",
+          "original_url": "https://www.nerc.com/globalassets/programs/rapa/gmd/reference-documents/may-2024-gmd-event-review.pdf"
         }
       ]
     },
@@ -106327,6 +106977,34 @@
       ]
     },
     {
+      "id": "SRC-ef0e29dc11d11e30",
+      "url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.1002564&type=manuscript",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pbio.1002564",
+          "title": "Associative Mechanisms Allow for Social Learning and Cultural Transmission of String Pulling in an Insect",
+          "publisher": "PLOS Biology 14(10):e1002564（Alem 等，倫敦瑪麗王后大學）",
+          "version": "2016 年刊本，開放取用；期刊提供的全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）取得期刊全文 XML，python 去標籤成文字後閱讀",
+          "reading_scope": "Abstract、Author Summary、Results 的個體學習、Innovators、Social Learning by Caged Observers、Mechanisms（含盤繩試驗）、Cultural diffusion 首兩段與 Fig.1、2、4、5 圖說、Discussion 全文；Fig.6 行為分類表與 Materials and Methods 只讀到分組人數；影片未看。",
+          "locator": "Results「Innovators…」「Social Learning of String Pulling by Caged Observers」「The Mechanisms of Observational Learning…」（coiled-string 段）、Fig 5 前一段；Discussion 第 3、6–8 段",
+          "summary": "熊蜂幾乎不會自己發明拉繩取食，但看過熟手示範後多數能做到；盤繩試驗顯示牠們學到的是位置與繩子、動作仍靠試誤；在蜂群中放一隻熟手，技能會一批傳一批擴散到多數覓食蜂。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "實驗室蜂群與人造任務；作者明說自然界未必有對應行為。池中沒有同一網址或 DOI。 覆核 V17（2026-11-12）：summary 補：自行學會的 2 隻來自第 1 群 25 隻再試一次的蜂，合計 110 隻試過兩次；對照群 165 隻覓食 5 天、每隻最多 18 回，全數失敗；8 隻熟手中 3 隻拉得出盤繩。",
+          "author_cache": {
+            "file": "f14src/alem2016-pbio.1002564.xml",
+            "sha256_prefix": "243a7a2a42b44784",
+            "text_file": "f14src/alem2016.txt",
+            "text_sha256_prefix": "0613decd4b87c3ea",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-life-20261111",
+          "original_url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.1002564&type=manuscript"
+        }
+      ]
+    },
+    {
       "id": "SRC-ef207cd52a2d7c5d",
       "url": "https://openstax.org/books/college-physics-2e/pages/25-4-total-internal-reflection",
       "readings": [
@@ -106653,6 +107331,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.gesetze-im-internet.de/bimschv_32/__7.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f0019bbd330e2b32",
+      "url": "https://icce-ojs-tamu.tdl.org/icce/article/download/12659/11932/38902",
+      "readings": [
+        {
+          "canonical_url": "https://icce-ojs-tamu.tdl.org/icce/article/download/12659/11932/38902",
+          "title": "Topographic Response to High Waves and Subsequent Beach Recovery on Chigasaki Coast（Tamura、Ishikawa、Uda、Serizawa）",
+          "publisher": "國際海岸工程研討會論文集（ICCE，Coastal Engineering Proceedings，開放取用，14 頁）",
+          "version": "2022–2023 年會議論文（文中資料到 2022 年）",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+          "reading_scope": "摘要、引言、觀測一節讀完；數值模式（BG model）部分只讀設定與結論",
+          "locator": "Abstract；Topographic changes immediately after storm events and recovery…；Conclusions",
+          "summary": "日本神奈川縣茅崎海岸（2005 年起每年養灘約 3 萬立方公尺）：2007 年第 9 號與 2017 年第 21 號颱風的大浪後，水深 3 公尺以內的海底被快速侵蝕、沙搬到水深 3–5 公尺處堆成沙洲；之後在平常的小浪下一到兩年內回復，2017 年那次約 454 天後緩坡剖面恢復到颱風前。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "養灘中的人工海灘，不是天然海岸；會議論文；回復到『原來的剖面』是作者對測線的判讀。只支持『大浪搬走的沙未必離開這一段』這一點。",
+          "author_cache": {
+            "file": "scratchpad/stw9/f13src/icce-tamura-chigasaki-12659.pdf",
+            "sha256_prefix": "7991404d6b3fc203",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-earth-20261111",
+          "original_url": "https://icce-ojs-tamu.tdl.org/icce/article/download/12659/11932/38902"
         }
       ]
     },
@@ -113026,6 +113730,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.anthropic.com/research/tracing-thoughts-language-model"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fdc2f566679bf734",
+      "url": "https://www.nature.com/articles/s41586-024-07126-4",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41586-024-07126-4",
+          "title": "Bumblebees socially learn behaviour too complex to innovate alone",
+          "publisher": "Nature 627:572–578（Bridges 等，倫敦瑪麗王后大學）",
+          "version": "2024 年刊本，開放取用",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl GET 200（工具預設標頭）存期刊 HTML，python 去標籤成文字後逐段閱讀",
+          "reading_scope": "Abstract、Main 全部段落（含 Fig.1、2 圖說）、Discussion 全文；Table 1、2 數值只讀正文引用到的；Methods、補充資料與影片未讀。",
+          "locator": "Main 第 3–8 段（對照群 12／24 天、示範蜂訓練、15 對成對試驗、兩種開法）；Discussion 第 1、3–4 段",
+          "summary": "兩步機關的第一步沒有獎勵：無示範者的蜂群面對盒子 36 或 72 小時都沒打開，15 隻觀察蜂中 5 隻跟著示範蜂學會，全部來自用「擠過去」開法的示範者。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 B2247 是同一篇研究：B2247 的來源 SRC-1b12d216f2bf1333 是學校新聞稿，池內註明未讀 Nature 全文；本紀錄是論文本身。樣本小（15 對），部分示範蜂重複使用。 覆核 V17（2026-11-12）：author_cache 註明：nature.com 頁面重抓的 sha256 會變（今日為 32d08e02716b9c03），以文字檔雜湊與關鍵句為準。summary 補：對照群 C1 有一片藍片被完整推開一次、未重複；觀察蜂最多接觸 800 分鐘（13.3 小時）；5 隻通過者 3 隻第一次、2 隻第三次。limitations 維持「與 B2247 同一篇研究」，併入時把這份全文閱讀與 B2247 的來源紀錄綁在同一研究下。",
+          "author_cache": {
+            "file": "f14src/bridges2024.html",
+            "sha256_prefix": "0164efcd1ed8db9b",
+            "text_file": "f14src/bridges2024.txt",
+            "text_sha256_prefix": "9452dd45a1e40371",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave59-life-20261111",
+          "original_url": "https://www.nature.com/articles/s41586-024-07126-4"
         }
       ]
     },
@@ -279959,6 +280691,1104 @@
       "production_ready": false
     },
     {
+      "id": "S59-001",
+      "question": "2022 年那 38 顆星鏈衛星，是在多高的地方、遇到密度增加多少才掉下來的？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.starlink_2022_insertion_altitude_density",
+      "answer_target": "它們還在很低的暫時軌道上。NOAA 太空天氣預報中心與 SpaceX 人員合寫的檢討指出：這批 49 顆衛星被送進近地點 210 公里、遠地點 350 公里的軌道，原定之後再升到 550 公里。2 月 3、4 兩天，Kp 指數各有約 6 小時達到 5，照預報中心的分級只是輕微等級，預報中心事前也發過 G2、G1 的守視。預報中心作業中的物理模式算出，200 到 400 公里高度的空氣密度增加了 50% 到 125%；同一時刻在 210 公里，SpaceX 估阻力所用的經驗模式的異常圖最多只顯示約 20%，沿著存活衛星的軌道比較，物理模式的密度在近地點比經驗模式高約 40% 到 80%。文中另寫：團隊發射前依經驗模式預期密度增加約五成，但擾動一直拖到 2 月 5 日凌晨。SpaceX 只來得及讓 11 顆轉成阻力最小的安全姿態，其餘 38 顆抵不過阻力。作者指出，預報中心當時沒有專門針對衛星阻力的警報。",
+      "scope": "密度增幅是模式算的，不是量到的；作者群包含模式的開發者與 SpaceX 員工。「最多約 20%」是某一時刻、某一高度經驗模式相對十日平均的異常，「預期約五成」是團隊發射前對預報磁暴的估計，兩個數字基準不同、原文並列沒有調和，旁白不得寫成「SpaceX 以為只會增加兩成」，也不要把兩者相減。本文用 Kp 稱這場磁暴「輕微到中等」，池中 S58-005 依 Dst 稱「中等」，旁白擇一並說明指標。不說「如果在 550 公里就沒事」。",
+      "source_locator": "Abstract；§1；§3；§4（Fig. 5–6 的文字敘述）",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：軌道高度與磁暴等級 0.5、密度增幅與兩種模式的落差 1。補 S58-NA001 與 C4-07 缺口（1）。與 S58-005 不重複：S58-005 只有 Dst 與『恢復期』，沒有高度與密度數字。去重：pool.json 查『210 公里』『Starlink』『星鏈』無同答案核心。 原提案 F13-001（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（1）：高度與密度增幅。數字逐句相符，只改一句把兩個不同基準的數字混成因果的話。算 1.5 條（高度與磁暴等級 0.5、兩種模式的密度落差 1），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁暴不大，但衛星正好在空氣最厚的那一層、而事前估阻力的模式低估了增幅——受害大小看的是你在哪裡。",
+        "visual": "地球剖面：210、350、550 公里三條虛線；密度色塊在低層漲一倍，衛星的近地點貼著最厚的一層。",
+        "seconds": [
+          60,
+          75
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-37899bc96da40b82",
+          "origin": "wave59-earth-20261111",
+          "locator": "Abstract；§1；§3；§4（Fig. 5–6 的文字敘述）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S59-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S59-002",
+      "question": "1989 年魁北克停電，最先跳掉的是哪一種設備？電網裡有東西壞掉嗎？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.quebec_1989_svc_harmonic_trip_sequence",
+      "answer_target": "最先跳的是穩定電壓用的靜態無效功率補償器（SVC），而且是它自己的保護裝置把它切開的。橡樹嶺國家實驗室 1991 年的技術報告整理了經過：報告推定，地磁感應出的準直流電流讓變壓器鐵心飽和，飽和的變壓器產生諧波；諧波流進 SVC 的電容器組，保護裝置判定過載。凌晨 2:44:17 第一台跳脫，到 2:45:16 第七台，一分鐘內七台全失；約 8 秒後 735 千伏的輸電線因電壓過低開始跳脫，系統分離，約 21,500 百萬瓦的發電全數脫離。有東西壞：報告列出 La Grande 4 的兩台升壓變壓器、幾處避雷器、一台電抗器和一台 SVC 變壓器，並把這些歸到系統分離之後的過電壓；另有 SVC 的閘流體與電容器組受損，報告沒有寫原因。復電分段進行，九個小時回到 83%。",
+      "scope": "1991 年的回顧報告，資料來自魁北克水電與當時文獻，不是 NERC 1989 年事故報告本身，也不是 Boteler 2019。「SVC 因諧波跳脫」原文是推定語氣（It is surmised），旁白要保留「報告推定」。地面電場約每公里 10 伏特是由渥太華的磁力紀錄、假設當地擾動相同並用假設的地面導電率換算的（另一組假設得 14），不是實測，只可用一句並標明估算。報告沒有魁北克電網上感應電流的實測值。不寫「設備不是被感應電流燒壞的」。",
+      "source_locator": "§2.2.5（p.16–17）；§3.8（p.34–37）；Executive Summary",
+      "premise_status": "screened",
+      "notes": "算 2 條：跳脫順序與時間 1、損壞的來源與復電進度 0.5、電場估算 0.5。補 C4-07 缺口（2）。與 S58-004 不重複：S58-004 是電力公司自述的『保護系統被觸發、不到一分鐘』，沒有設備種類、時間序列、損壞清單與電場；並改正上一輪被刪的『設備沒壞』：設備有損壞，但來自分離後的過電壓。N269 只有一句機制。去重：查『SVC』『補償器』『魁北克』無同答案核心。 原提案 F13-002（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；以 ORNL-6665 取代上一輪點名的 NERC 1989 年報告或 Boteler 2019：可以接受。它是美國能源部國家實驗室的技術報告，逐秒的跳脫序列、設備種類、損壞清單與復電進度都有，補上了上一輪轉折一缺的「哪一類設備先跳」；缺的是「感應電流多大」，只有換算的地面電場。算 1.5 條（設備與時間序列 1、損壞來源與復電分段 0.5）；電場是假設導電率的換算，不另計。作者算 2 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是太陽把電網燒掉：是電網的保護裝置各自做了對的事，一分鐘內接連把穩壓設備切掉，整個系統才撐不住。",
+        "visual": "時間軸：2:44:17 起七個紅點在一分鐘內依序熄滅，8 秒後幾條 735 千伏線變灰；旁邊一顆變壓器的電流波形被壓歪。",
+        "seconds": [
+          75,
+          95
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-3af111c239a6c805",
+          "origin": "wave59-earth-20261111",
+          "locator": "§2.2.5（p.16–17）；§3.8（p.34–37）；Executive Summary",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S59-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S59-003",
+      "question": "2024 年 5 月那場二十年來最強的磁暴，北美的電網實際上發生了什麼？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.may_2024_nerc_grid_review_isolated_impacts",
+      "answer_target": "電網量到了資料庫裡最大的感應電流，但整個大電網沒有垮。北美電力可靠度公司 2026 年 1 月的事後檢討寫：太空天氣預報中心在磁暴開始前 6 小時就用熱線通知各區調度（平常要等太陽拋出的物質通過上游衛星，可能只剩約 30 分鐘），各單位延後檢修、把停用的線路與補償設備叫回來、投入諧波濾波器。磁暴期間量到資料庫自 2013 年以來最高的感應電流，六個區域裡五個超過 90 安培，美國境內最高是威斯康辛一處的 175.7 安培。影響是零星的：一座核能機組依程序降載，三部發電機因升壓變壓器的保護電驛動作而解聯不到一小時，一支避雷器故障讓一座變電所停了 14 小時 35 分，中大西洋一台穩壓設備在電流尖峰時跳脫、電壓掉約 2%。報告的說法是大電網維持穩定、相連，並供應所有負載；5 月 10 日在 2024 年全年的每日嚴重度排名是第 68。報告也提醒：這場磁暴比 1989 年 3 月那一場弱。",
+      "scope": "NERC 的資料來自業者申報，報告自己說部分資料品質不佳、沒有加拿大業者的感應電流資料、補償設備的停用不在統計系統內，只有一個區域申報發電機受影響「出乎意料」。「2013 年以來最高」是 NERC 資料庫的範圍，不是歷史紀錄。不能說成「準備好了所以沒事」的因果；也不能說「比 1989 年強卻沒事」，報告明說 2024 年較弱。",
+      "source_locator": "Summary and Objective；SWPC Notification…；Operator-Reported BPS Impacts；Overall Observations；Table 1；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：最高感應電流與零星影響 1、提前 6 小時通知與第 68 名 0.5。補 C4-07 缺口（3）。S58-006 是 NASA 的事件說明（G5、極光、ICESat-2），沒有電網端資料；本核心補上後，S58-006 可只留事件強度一句。去重：查『Gannon』『175』『NERC』無同答案核心。 原提案 F13-003（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（3）：2024 年 5 月電網端的事後檢討。數字逐項相符；只把「有紀錄以來最大」「沒有停電」改回原文的範圍與說法。算 1.5 條（最高感應電流與零星影響 1、提前六小時與全年第 68 名 0.5），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種機制（變壓器飽和、諧波、保護跳脫）這次也出現了，只是停在零星幾處——強度指數最高的一次，不是後果最重的一次。",
+        "visual": "北美地圖上散著幾個小黃點（降載、跳脫、一支避雷器），旁邊一根 175.7 安培的柱子標『2013 年以來最高』；右下角一行『全年第 68 名』。",
+        "seconds": [
+          70,
+          90
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c7730f02cf7c1b4b",
+          "origin": "wave59-earth-20261111",
+          "locator": "Summary and Objective；SWPC Notification…；Operator-Reported BPS Impacts；Overall Observations；Table 1；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S59-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S59-004",
+      "question": "七股潟湖外面那道沙洲量了一年，沙是颱風打掉的，還是哪一季少的？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.cigu_barrier_typhoon_season_accretion_monsoon_erosion",
+      "answer_target": "量的那一年，出水的灘是冬天瘦的，颱風季反而長回來。法國幾所大學與成功大學水工試驗所在七股潟湖外的網仔寮汕選了一段 200 公尺的灘，2011 年底到 2012 年夏末測了 20 次地形：冬天每週一次，夏天在每個颱風前後各一次。那年最強的是 2012 年 6 月的泰利，外海浪高超過 10 公尺：沙丘腳退了 6.7 公尺，沙丘最低的地方被沖出 20 公尺的缺口，沙被帶進潟湖——可是整段出水的沙量算起來沒有減少，灘線還向海推了 8 公尺；作者推測是原本在水下的沙被推上灘，但水下沒有測。整個颱風季，灘面是淨堆積、灘線向海約 10 公尺，沙丘則持續後退；冬季東北季風期才是淨侵蝕，灘線後退將近 29 公尺，作者歸因於外海浪高超過 2 公尺的中等風暴來了 20 次，平均一個月三次多，灘來不及在兩次之間長回來。全年下來沙洲向陸移了約 18 公尺。作者也提醒：這比之前十年每年 25 到 48 公尺的後退慢，這一年可能不典型。",
+      "scope": "研討會論文（ICCE 2014），一年、一段 200 公尺的灘，不能代表整條沙洲或其他年份；作者自己說這一年少見。只測出水的灘與沙丘，沒有水下地形，「沙從水下來」是推論，「沙量增加」只指出水的部分。內文數字前後有出入（誤差 ±1,071 與 ±912、全年 18.4 與 18.5 公尺、監測 7 個月與 2011 年 11 月到 2012 年 9 月），泰利那次的淨增量誤差與量值同級，旁白只說「沒有減少」，不報立方公尺。地名用網仔寮汕，不是頂頭額汕。不得寫成「颱風對海岸有益」或「台灣的沙洲都是冬天退的」。",
+      "source_locator": "摘要；Results 兩節；Discussion；Decadal tendency",
+      "premise_status": "screened",
+      "notes": "算 2 條：單一颱風（丘腳退、缺口，但淨沙量未減）1；季節收支（颱風季堆積、季風期侵蝕與 20 次中等風暴）1。這是 C4-04 翻案條件點名的台灣在地觀測（缺口 1），正好回答『颱風一次打掉還是逐季退』。去重：查『七股』『頂頭額』『沙洲』——E11006、E11007 是美國國家公園署的通論頁，S56 系列是別題，無同答案核心。 原提案 F13-011（目標 C4-04，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；這是 C4-04 翻案條件點名的台灣在地觀測；上一輪覆核明列「開放全文的學術調查，例如外傘頂洲、七股沙洲」可以算，所以種類上符合。但它只有一年、一段、作者自稱不典型，數字又有內部出入，所以從嚴：算 1.5 條（單一颱風的丘腳後退與缺口、出水沙量未減 1；季節收支 0.5），作者算 2 條。另改正沙洲名稱、補上「只測出水部分」與「颱風季沙丘也在退」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來最兇的那一場把沙丘咬了一口，帳面上沙卻沒少；把沙洲往後推的，是冬天一個月來三次的普通風浪。",
+        "visual": "同一條灘的剖面三格：颱風前、颱風後（丘腳後退、缺口，但灘面墊高）、冬末（整條後退）；下方一條帳本曲線夏天往上、冬天往下。",
+        "seconds": [
+          85,
+          105
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5586c90285b540dc",
+          "origin": "wave59-earth-20261111",
+          "locator": "摘要；Results 兩節；Discussion；Decadal tendency",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S59-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S59-005",
+      "question": "外傘頂洲從衛星上看了十七年，面積怎麼變？南端又發生了什麼？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.waisanding_barrier_area_linear_decline_satellite",
+      "answer_target": "十七年的整體趨勢是變小，每年約少 0.34 平方公里。陽明交通大學的團隊判讀 2004 到 2021 年共 207 張高解析衛星影像的水線，挑出拍攝時潮位接近平均海水面的 42 張來算露出水面的面積，用一條直線去配：斜率是每年少約 0.34 平方公里，和先前研究的 0.38 接近。這 42 個點散在直線兩側約 1 平方公里，所以這份資料看得出長期變小，看不出每一年、每一場颱風各少了多少。在整體趨勢之外，南端還有來回的變化：尾段有幾年被一條水道和主體隔開（2013 年夏末後刷深，2017 年冬天又淤回來），2017 年底起尾端彎成 L 形，夏天變短、冬天變長。",
+      "scope": "這篇的主題是影像判讀方法，地形是附帶結果；直線是擬合，不是「證明等速」。面積很吃潮位，換不同潮位門檻斜率在 0.34 到 0.38 之間。沒有逐場颱風前後的比較，作者對南端變化只說「可能與颱風波浪和季節海流有關」。不得用這一篇說「外傘頂洲不是被颱風咬掉的」，也不外推「哪一年消失」。",
+      "source_locator": "Abstract；§3.3–3.5；§4.1；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1 條（長期近線性減少 0.5、南端季節性來回 0.5）。補 C4-04 缺口（1）的第二份台灣資料，補的是長期這一側。去重：查『外傘頂洲』無核心。 原提案 F13-012（目標 C4-04，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補的是台灣資料的長期一側。數字都在，但作者的問法與 turns 裡的用法（「十七年一條斜線，所以看到突然的變化不能倒推突然的事件」）超過這篇能說的：直線是擬合的假設。改問題與答案，只留「長期變小的速率」與「南端季節性來回」兩件事。算 1 條（長期速率 0.5、南端水道與 L 形的季節變化 0.5），同意作者的條數、不同意作者的用法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "長期看是一條斜線，不是幾級台階——找不到『那一場颱風』。",
+        "visual": "十七年的面積點連成一條緩緩下降的線；旁邊南端的小圖在夏冬之間一伸一縮。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-76c9b430e9ca7786",
+          "origin": "wave59-earth-20261111",
+          "locator": "Abstract；§3.3–3.5；§4.1；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S59-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S59-006",
+      "question": "颱風把灘上的沙捲走以後，那些沙去了哪裡？會回來嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.chigasaki_storm_offshore_bar_recovery_454_days",
+      "answer_target": "在日本茅崎海岸的測線上，沙只搬到外面一點，一年多後剖面回到原樣。研究者比較 2007 年與 2017 年兩次颱風前後的水下地形：水深 3 公尺以內的海底被快速刮低，沙堆到水深 3 到 5 公尺的地方；之後剖面慢慢回復，2007 年那次約一年，2017 年那次大約 454 天後緩坡回到颱風前的樣子，作者歸因於平常小浪把沙推回岸邊。",
+      "scope": "茅崎是 2005 年起每年人工補沙約 3 萬立方公尺的養灘海岸，回復期間補沙沒有停，其間還有兩次浪高超過 4 公尺的大浪；會議論文、兩次事件、一條測線。只用來說明「被大浪搬走」不等於「離開這段海岸」，不外推到台灣或沙洲，也不說「一年就會自己長回來」。",
+      "source_locator": "Abstract；觀測一節；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1 條。補 C4-04 缺口（2）：有逐次測量的風暴侵蝕與之後回復。若覆核認為養灘海岸不宜，可降為 0.5 條。去重：查『茅崎』『回復』無同答案核心。 原提案 F13-013（目標 C4-04，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補的是上一輪缺口（2）「有逐次測量的風暴侵蝕與之後回復」，但場址是持續養灘的人工灘，回復不能乾淨地歸給自然過程。照作者自己提的備案降為 0.5 條，片中只當一句旁證。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大浪做的是『搬』，不一定是『拿走』：沙停在幾公尺深的地方等著被小浪送回來。",
+        "visual": "剖面圖：颱風後近岸凹下去、外側鼓起一道沙洲；日曆翻過 454 天，剖面線疊回原來的位置。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0019bbd330e2b32",
+          "origin": "wave59-earth-20261111",
+          "locator": "Abstract；觀測一節；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S59-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S59-007",
+      "question": "把船速的參考從河床換成 GPS 以後，流量的準不準改成看船上的哪一個零件？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.gps_reference_heading_error_directional_bias",
+      "answer_target": "看羅盤。美國地質調查局的作業手冊說明：用底追蹤當參考時，羅盤的航向誤差只會把算出來的水流方向整個轉一個角度，流量不受影響；一換成 GPS，航向誤差就會直接進到水速與流量裡，而且影響和船速成正比。內建羅盤校正得好也只準到 1 到 2 度，當地的磁偏角又可能和模式值不同；它的樣子是「方向性偏差」——從左岸開到右岸量到的流量，一直和反方向量到的不一樣。手冊附了一個磁偏角輸入錯誤的例子：同一個斷面來回四趟、以 GPS 為參考，從右岸出發的兩趟比四趟平均低 4.82% 和 9.47%，從左岸出發的兩趟高 7.40% 和 6.89%。手冊的處置是：往返的差距在約 5% 以內時取成對平均，就接近真值；超過就回頭調整磁偏角，需要調超過 2 度則表示羅盤沒校好或數值輸入錯。鐵殼船或鋼構橋墩旁，羅盤可能根本不能用。",
+      "scope": "圖 F-21 是手冊裡的一張軟體畫面，沒有交代地點、日期與儀器，也沒有底追蹤或其他方法的對照，真值不明；它示範的是「方向性偏差長什麼樣子」，四個百分比是相對四趟平均，不是相對真值，旁白要說「手冊的例子裡」。不得把往與返相減另算一個差距，不得寫成「GPS 參考會差 5% 到 9%」。「約 5%」是處置門檻，不是量到的偏差。",
+      "source_locator": "p.10 Compass Considerations；p.32；Appendix B p.58–59",
+      "premise_status": "screened",
+      "notes": "算 1 條。覆核 still_missing 第（1）項要的是『量測』；這份手冊裡找到的是機制與門檻，沒有實測，所以只補到說法、沒有補到數據。與 S57-004（GPS 在樹冠峽谷的限制、迴圈閉合差）不重複；與 S58-003（亞馬遜例外的理由是羅盤誤差）相接。與池中 SRC-87ae7733e9e523c7 同一份文件。 原提案 F13-015（目標 G35，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；上一輪 still_missing 第（1）項要的是「池中已有來源 USGS TM 3-A22 裡，以 GPS 為參考時羅盤誤差、磁偏角造成流量偏差的量測」。作者只讀文字層，回報「手冊裡沒有實測」；實際上圖 F-21 就是，覆核目讀後補進答案。算 1 條（機制與處置門檻 0.5、手冊實例 0.5）；例子沒有地點與真值，不多算。與池中 SRC-87ae7733e9e523c7 是同一份文件。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "參考從河床換到衛星，弱點就從河床搬到羅盤：GPS 知道船往哪裡移，卻不知道儀器朝哪裡看。",
+        "visual": "俯視圖：船來回各開一趟，兩趟算出的流量柱一高一低；船上的羅盤指針偏 2 度，水流箭頭跟著歪。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-87ae7733e9e523c7",
+          "origin": "wave59-earth-20261111",
+          "locator": "p.10 Compass Considerations；p.32；Appendix B p.58–59",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S59-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H59-001",
+      "question": "把濃縮咖啡的粉越磨越細，萃取率會一路升高嗎？",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "mechanism_key": "coffee.espresso_extraction_yield_peak_vs_grind_setting",
+      "answer_target": "不會，會先升後降。奧勒岡大學等團隊用 20 克粉、40 克出液、6 巴水壓、固定 98 牛頓的填壓，只改磨豆機刻度：刻度越細，出液時間越長，這如預期；但萃取率在刻度約 1.7 附近最高，再磨細反而下降。他們的模型假設水均勻流過整個粉床，預測應該越細越高；實測在細的一端掉下來，作者解釋為細粉太多、結團或粉床密度不均，水不再均勻流過整個粉床。同樣的粉水比例，刻度 1.3 和 2.0 都量得到 22% 的萃取率——作者說這兩杯的化學組成不可能一樣，所以單看萃取率分不出一杯咖啡。實驗原本用 9 巴，細刻度會堵，才降到 6 巴。這篇論文沒有任何感官評分。",
+      "scope": "單一磨豆機（EK 43）、單一咖啡、6 巴；刻度數字是那台機器的，不是通用的粗細單位。沒有感官資料，不得寫成「比較好喝」；文中「風味差異有注意到但沒有量化」一句說的是不同填壓力道，不是不同刻度，不引用。「一部分過萃、一部分沒萃到」是作者的推想，旁白要說是研究者的解釋。「乾區」的百分比是極端假設下的推算，不引用。不給沖煮建議。圖 4、5 的點值未目讀，寫稿前要看圖確認峰值位置。",
+      "source_locator": "Summary；Tuning the Model…；Fig. 4–5 圖說；Partially Clogged Flow Regime",
+      "premise_status": "screened",
+      "notes": "算 1 條（F4030 已有『可能下降』的一句 0.5 條，這裡新增實驗條件、峰值位置、同為 22% 的兩個刻度與作者自承沒有感官資料）。補 C4-08 缺口（1）。與 F4030 同一篇論文（池中 SRC-1dc7a0a002f869b2），建議合併進 F4030 或取代它，片中只算一個核心。 原提案 F13-004（目標 C4-08，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（1）：讀 Cameron 等 2020 全文，把只有一句的 F4030 補成有實驗條件與數字的核心。與池中 F4030 是同一篇論文（SRC-1dc7a0a002f869b2），入池時併進 F4030 或取代它，片中只算一個核心；新增 1 條（實驗條件與峰值 0.5、同為 22% 的兩個刻度 0.5），加上 F4030 原有 0.5，這篇合計 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『萃取率 22%』不是一杯咖啡的身分證：同一個數字可以來自兩種完全不同的粉床。",
+        "visual": "橫軸刻度、縱軸萃取率的一條拱形曲線，峰在 1.7；在 1.3 與 2.0 各點一個等高的點，下面畫兩個粉床：一個水均勻流過，一個只走幾條通道。",
+        "seconds": [
+          75,
+          95
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4c519d9b8834e9f0",
+          "origin": "wave59-human-20261111",
+          "locator": "Summary；Tuning the Model…；Fig. 4–5 圖說；Partially Clogged Flow Regime",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H59-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H59-002",
+      "question": "咖啡泡得越濃，喝起來每一種味道都跟著變強嗎？",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "mechanism_key": "coffee.immersion_brew_sweetness_negative_with_tds_panel",
+      "answer_target": "多數是，甜是例外。加州大學戴維斯分校把同一款配方豆烘成淺、深兩種，在 4、22、92 °C 三種水溫各泡到五個階段，做出 30 種咖啡，同時量杯裡溶了多少東西（總溶解固體），並請 14 位受過訓練的評審逐項評分。28 個感官項目裡有 25 個在樣本之間有顯著差異；其中 19 項的強度隨濃度升高而變強，8 項看不出關係，只有甜感是越濃越低——最甜的是水才淋過、幾乎還沒泡的那一杯。作者的解讀是：那比較像苦和酸還少時留下的甜的印象，不是杯裡真的多了甜。影響整體風味輪廓最大的是烘焙度，其次是水溫；泡多久的影響比研究者預期的小，4 和 22 °C 的冷泡過了 8 小時、濃度進入平台之後，統計上顯著的變化就很少。",
+      "scope": "浸泡式沖煮，不是濾杯也不是濃縮；單一配方豆；研磨固定沒有改變；泡的是粉水比 1:5 的濃縮液，稀釋一倍、冷藏隔夜後冷著喝，作者自己說這可能削弱了時間的影響。是樣本之間的相關，不是「加濃就不甜」的因果實驗；甜感是評審的評分，不是糖的含量。8 小時之後仍有個別項目（澀、黏稠、淺焙的酸）顯著變化，旁白說「變化很少」不說「分不出」。水溫的結論涵蓋 4 到 92 °C，與 X36-005（87–93 °C、調齊濃度）的範圍不同，兩者不得寫成互相矛盾或互相證明。補充表未讀，不報逐項相關係數。",
+      "source_locator": "Abstract；Experimental design；Descriptive analysis；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：濃度與 19＋1 個屬性的方向 1、烘焙度＞水溫＞時間與 8 小時 0.5。補 C4-08 缺口（2）：把萃取量接到感官評分的原研究全文，而且是覆核點名的戴維斯咖啡中心；同時補上『沒有烘焙度對味道的研究』。與 X36-005（同一研究群 2020 年的滴濾、調齊濃度比水溫）不同實驗、不同問題；與 X36-006（分段接取後段較甜而糖量不夠解釋）方向一致，可並排但不得說成同一個實驗。Guinard 等 2023（沖煮控制圖）Wiley 回 403，未讀。 原提案 F13-005（目標 C4-08，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（2）：把萃取量接到感官評分的原研究全文，出自上一輪舉例的戴維斯咖啡中心（上一輪寫的是「例如沖煮控制圖系列」，不是指定非那一篇不可）。作者只讀摘要、方法與結論；覆核把結果與討論讀完，摘要的三個結論在正文都有對應的統計敘述，所以照全文計。算 1.5 條（濃度與 19＋8＋1 個項目的方向及作者對甜的解讀 1、烘焙度＞水溫＞時間 0.5），同意作者；但答案補上三個條件（稀釋後冷飲、甜集中在第一個時間點、作者的解讀），原本的寫法會讓人以為「泡濃就不甜」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "濃度把大部分味道一起往上推，甜卻往反方向走——所以『後段比較淡卻比較甜』不需要後段多出糖。",
+        "visual": "30 個點的散布：橫軸濃度；十九條細線往右上，一條標『甜』的線往右下。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-17479011473cf577",
+          "origin": "wave59-human-20261111",
+          "locator": "Abstract；Experimental design；Descriptive analysis；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H59-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H59-003",
+      "question": "牛奶被加水稀釋了，蛋白質檢驗為什麼還會過關？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.nitrogen_proxy_melamine",
+      "answer_target": "因為常用的蛋白質檢驗量的是氮，分不出氮是來自蛋白質還是別的東西。世界衛生組織食品安全部門的人員 2009 年的回顧寫明：三聚氰胺是含氮量高的分子，加進去，蛋白質讀數就偏高；它便宜又容易取得，所以有摻假的經濟誘因。這件事先出現在寵物食品——2004 年（韓國）與 2007 年（美國）有人把它加進寵物食品的原料，造成寵物腎衰竭；2008 年則是有人把它加進稀釋過的生乳，墊高表面上的蛋白質含量，後來的調查發現 22 家嬰兒配方奶粉業者的產品含有三聚氰胺，造成大量嬰幼兒腎臟與泌尿道傷害。",
+      "scope": "世衛人員寫的事件回顧（Environmental Health Perspectives 的評論文章），不是原始調查；原文沒有寫檢驗法名稱，本核心不寫「凱氏定氮」，也沒有摻入量與讀數的對應。原文 Table 3 引中國衛生部截至 2008 年 12 月 1 日的通報（2,240 萬名受檢者中 294,000 例、其中 51,900 例住院、6 例死亡確認）：這組數字只留在本紀錄備查，片中不報住院與死亡數；若站主同意交代規模，全片只用一句「官方通報約三十萬名嬰幼兒受影響」並註明出處。片中限制：不點名任何企業或品牌、不用任何事件影像或病童畫面、不談延遲通報與究責、不評論任何國家的食品——事件只用來說明「檢驗量的是氮」，並與 2004、2007 年的寵物食品事件並列，說明這是檢驗方法的弱點，不是某一地的問題。站主若不同意在片中提 2008 年事件，本核心改為只講寵物食品兩例與「量的是氮」，算 1 條。",
+      "source_locator": "Background 第 1 段；Unfolding of the Global Event 第 1–2 段；Health impact 第 1 段與 Table 3",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：檢驗量的是氮、分不出來源 1 條；同一手法先後出現在寵物食品原料與稀釋生乳 0.5 條。病例數不計為事實。 原提案 F14-001（目標 C5-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字與主詞全部對得上，機制句是原文明寫的。改動在敏感處理：作者把 294,000、51,900、6 三個數字寫進答案，片中用不到——要說明的只是「量的是氮」，受害規模不是這一題的論點，數字移到 scope 備查並寫明片中限制。另補一句作者略去、但對語氣有幫助的事實：同一手法更早用在韓國與美國的寵物食品原料上，這讓這一章講的是檢驗的弱點，不是哪一國的事。池中搜尋 三聚氰胺、melamine、蛋白質含量、氮：沒有同答案核心，DOI 與網址池中皆無。這個核心牽涉嬰幼兒大量受害的事件，是否在片中使用請站主確認。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "檢驗量的不是蛋白質本身，而是它的替身——氮；造假的人照著替身下手。",
+        "visual": "一台只會數氮的儀器示意圖：左邊倒進蛋白質、右邊倒進另一種含氮粉末，指針一樣高。不用任何事件照片。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c106ab8ff8d0c45c",
+          "origin": "wave59-human-20261111",
+          "locator": "Background 第 1 段；Unfolding of the Global Event 第 1–2 段；Health impact 第 1 段與 Table 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H59-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H59-004",
+      "question": "以前抓得到摻糖蜂蜜的碳同位素檢驗，現在還抓得到嗎？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.honey_method_shift_eu_2023",
+      "answer_target": "在歐盟 2021–22 年抽的這一批進口蜜上，沒有用了。歐盟聯合研究中心 2023 年的技術報告：2021 年 10 月到 2022 年 2 月，15 個歐盟國家加上瑞士、挪威隨機抽了 320 批進口蜂蜜（多數在邊境管制站取樣）送驗，147 批（46%）被判為「可疑」——至少驗出一種外加糖漿的標記。過去常用來抓玉米、甘蔗糖漿的整體碳同位素法，在這批樣本上找不出可疑蜜；報告把這一點解讀為這類糖漿已不再用來摻蜜，改成米、小麥或甜菜做的糖漿。最常亮起來的標記是寡糖、多醣與甘露糖。報告也寫了誘因：2021 年歐盟進口蜂蜜平均每公斤 2.32 歐元（不含紐西蘭蜜），米糖漿約 0.40 到 0.60 歐元。",
+      "scope": "「可疑」是報告用字，不是確認摻假；所用方法只給有無標記，估不出摻了多少。報告自己寫明結果只代表抽樣期間，不得外推；2015–17 年那次的 14% 用的是另一套方法，兩個數字不能說成「變多了」。「糖漿換了種類」是報告由舊法無效作出的解讀，沒有直接驗出糖漿的種類比例；報告也沒有給舊法單獨判出幾批的數字，片中不得說「舊法一批都沒抓到」。報告列有各出口國的比例，各國樣本數懸殊，本核心不採、片中不列國名排行。",
+      "source_locator": "Abstract；§1；§5.1 Table 1；§5.2；§6；§7",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：320 批中 147 批靠新標記列為可疑 1 條；舊法在這批樣本上無效與價差 0.5 條（「米糖漿的整體碳比例落在真蜜範圍」的機制已在 X34-001，不重計）。 原提案 F14-002（目標 C5-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字全部相符，限制作者寫得完整。兩處改字：答案第一句「抓不太到了」是通論，原文只說在這批樣本上無效而且明文不得外推，改成限定在這次抽驗；補上「不含紐西蘭蜜」與取樣地點。事實數維持 1.5，但把重疊講清楚：舊法為什麼對米糖漿不靈是 X34-001 的事實，這裡只算「官方抽驗裡真的失效」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "檢驗法公開之後，摻進去的東西就跟著換；一個方法「驗不出來」和「沒有摻」是兩回事。",
+        "visual": "同一排 320 個小瓶：舊檢驗下幾乎全綠，換上新標記後將近一半轉成「可疑」的橘色；畫面註明「可疑，不是確認」。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-7e5a0dfa2ee21387",
+          "origin": "wave59-human-20261111",
+          "locator": "Abstract；§1；§5.1 Table 1；§5.2；§6；§7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H59-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H59-005",
+      "question": "牛肉漢堡排裡的馬肉，是怎麼被發現的？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.undeclared_species_horse_2013",
+      "answer_target": "靠的是一次針對物種的 DNA 調查。英國政府的事件說明頁記載：愛爾蘭食品安全局 2013 年 1 月 15 日公布，27 款牛肉漢堡排裡有 10 款（37%）驗出馬的 DNA、23 款（85%）驗出豬的 DNA；10 款中 9 款含量很低，但有一款的馬 DNA 量顯示馬肉約占總肉量的 29%。同一頁寫著，英國主管機關這時要求業者對漢堡排、肉丸、千層麵這類加工牛肉製品做真實性檢驗並交出結果，歐盟也同意在各國檢驗供應鏈裡有沒有馬肉；而英國主管機關原本每年例行做九萬多項食品安全與詐欺檢驗，採風險導向。",
+      "scope": "來源是英國政府的說明頁轉述愛爾蘭的調查，不是調查報告原件（原件網址今日仍導回新聞列表）。頁面沒有檢驗方法，也沒有說事件之前有沒有人驗過馬：片中只能陳述先後（先有這次調查，之後才要求全面檢驗），不得寫成「以前從來沒人驗」或「例行檢驗漏掉了」。驗出的是 DNA；低含量是否來自交叉污染，頁面沒有判定。29% 是由 DNA 量推得的比例。原文點名了零售商，片中不點名零售商、工廠與品牌，圖示不畫包裝。",
+      "source_locator": "Testing 第 1–2 段；Background 末段",
+      "premise_status": "screened",
+      "notes": "算 1 條：27 款中 10 款、其中一款 29%，以及之後才擴大檢驗，合為一條；九萬多項例行檢驗是背景，不另計。 原提案 F14-003（目標 C5-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字與先後次序相符，作者的限制寫得對。小改：「約占肉量」照原文改為「總肉量」；把「之後」改成照頁面的寫法（頁面是 2013 年 2 月起持續更新的說明頁，寫的是當時正在要求）。這個核心的弱點不在字句，在來源層級：它答不了「為什麼去驗馬」，所以在長題裡只能當例子、不能當轉折的承擔者。沒有台灣的對應案例。池中搜尋 馬肉、horse、漢堡：無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "驗什麼，才看得到什麼；清單之外的東西不會自己亮燈。",
+        "visual": "27 個漢堡排圖示，10 個標上馬的記號、其中一個特別深；不出現任何品牌包裝。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-22be590f9520c2b8",
+          "origin": "wave59-human-20261111",
+          "locator": "Testing 第 1–2 段；Background 末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H59-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L59-001",
+      "question": "植物靠細胞吸水、失水來動，為什麼這樣快不起來？多大的構造就非得用彈的？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.poroelastic_time_limit_size_squared_instability",
+      "answer_target": "因為水得穿過組織，而穿過去的時間跟厚度的平方成正比。哈佛的 Skotheim 與 Mahadevan 把幾十種植物和真菌的動作攤在同一張圖上：橫軸是會動的部位最薄的尺寸，縱軸是動作花的時間。對柔軟的植物組織，水流平衡大約要每平方毫米 1.6 秒；動得比這條線慢的，靠吸水和失水就做得到；比這條線快的，全都是先慢慢把彈性能存起來、再靠形狀突然失穩放出來的——不是殼翻面，就是組織撕開。捕蠅草的葉厚約 0.5 毫米，水流要約 0.4 秒，它卻在零點一到零點二秒內閉合，所以需要翻面；它的水生近親貉藻葉厚只有約 0.05 毫米，水流只要約 0.004 秒，約 0.02 秒就閉合，葉子本來就向內彎、不必翻。再快還有一道牆：彈性波傳過組織的時間，每毫米約十萬分之一秒。",
+      "scope": "每平方毫米 1.6 秒是典型軟組織的量級，不是逐一量的；各物種的時間與尺寸出自作者彙整的文獻。捕蠅草閉合時間原文有 0.1 與 0.2 秒兩種寫法，旁白說「零點一到零點二秒」。這裡的捕蠅草水流時間約 0.4 秒，與 F13-008（同一實驗室另一篇）用實測模數估的約 0.1 秒不是同一種估法，兩個數字不得並排比較或相減。不要自己替噴瓜、碎米薺、金縷梅代入公式。",
+      "source_locator": "p.1308–1310 全文；式 (1)(2)；Fig. 1 圖說",
+      "premise_status": "screened",
+      "notes": "算 2 條：水流時間隨厚度平方、分界線 1；捕蠅草對貉藻的對照 0.5；慣性下限 0.5。這是 C4-03 覆核點名缺的核心答案（缺口 1），也是第二個轉折。去重：pool.json 查『poroelastic』『多孔彈性』『貉藻』『Aldrovanda』『失穩』均無同答案核心；A25002、E9004 各講單一構造，沒有這條通則。 原提案 F13-007（目標 C4-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；這是上一輪點名的核心答案（為什麼光靠水流不夠快、要靠彈性失穩），同時是 C4-03 缺的第二個轉折。答案文字不改，只在 scope 加一條與 F13-008 的數字界線；來源紀錄的取得方式改正（見 source_fixes）。算 2 條（水流時間隨厚度平方與分界線 1、捕蠅草對貉藻 0.5、慣性下限 0.5），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "快不快不是看植物多用力，是看它多薄：夠薄就直接靠水，太厚就只能先存後放。",
+        "visual": "一張對數座標圖：一條斜線把點分成兩群；線下方（比水快）的點都標著『翻面』或『撕開』；捕蠅草與貉藻兩點用箭頭連起來。",
+        "seconds": [
+          80,
+          100
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-2b9b5f7fc7bfc98f",
+          "origin": "wave59-life-20261111",
+          "locator": "p.1308–1310 全文；式 (1)(2)；Fig. 1 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L59-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L59-002",
+      "question": "捕蠅草的葉子是怎麼『啪』一下合起來的？合起來的那一瞬間是它在用力嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.flytrap_doubly_curved_leaf_snap_buckling_measured",
+      "answer_target": "它只做慢的那一半，快的那一半是形狀自己完成的。研究者在葉背點上螢光點，用每秒 400 格的攝影重建葉面：閉合分三段，先慢（約三分之一秒只走兩成）、中間快（約十分之一秒走掉六成）、最後又慢；葉面在中間那段由向外凸翻成向內凹。量到的變形幾乎只發生在外表面、垂直中肋的方向（最大約 9%，沿中肋約 2%，內表面不到 1%）；把剛閉合的葉子切開，只有這個方向的自然曲率變了號。葉子在兩個方向都是彎的，改一個方向的曲率就得拉伸葉面，於是它先撐著不動、把能量存在形狀裡，過了門檻才突然翻過去。作者用一個只含葉長、厚度與曲率的幾何參數描述這道門檻，量到參數越大的葉子閉得越快；有些葉子被碰之後動了一點卻沒翻，用手指輕捏就翻過去。植物怎麼改變那個方向的曲率，作者說還不清楚。",
+      "scope": "殼模型是簡化；門檻值約 0.8 與典型葉約 1 是模型與量級估計。Methods 與補充影片未讀。「怎麼改變曲率」是未解的部分，旁白不要補上「細胞失水」之類原文沒有的機制。本文估的葉片水流時間約 0.1 秒，與 F13-007 的約 0.4 秒估法不同，不得並排比較。",
+      "source_locator": "p.421–424；Fig. 1–3 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：三段式閉合與應變量測 1、幾何門檻與『捏一下就翻』0.5。補 C4-03 缺口（1）的第二份全文。去重：R6017 講兩次觸碰的鈣訊號（只讀摘要），不講閉合力學；池中無捕蠅草閉合的核心。 原提案 F13-008（目標 C4-03，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；逐句相符，只在 scope 加與 F13-007 的數字界線。算 1.5 條（三段式閉合與應變量測 1、幾何門檻與「捏一下就翻」0.5），同意作者；但它與 F13-007 都講「捕蠅草要翻面」，題內合計時扣 0.5 條重疊（見題評）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "葉子像一片被壓彎的塑膠瓶蓋：植物慢慢推，蓋子自己彈。",
+        "visual": "葉面的彎曲用顏色表示，三格連續：凸、將翻未翻、凹；旁邊一條曲線分成慢—快—慢三段。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0cd2e2095bbf72ba",
+          "origin": "wave59-life-20261111",
+          "locator": "p.421–424；Fig. 1–3 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L59-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L59-003",
+      "question": "要讓捕蠅草合起來，感覺毛得被碰多大力？真的一定要碰兩下嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.flytrap_sensory_hair_deflection_torque_threshold",
+      "answer_target": "大約是在毛尖附近用半毫牛頓的力推兩下；但推得夠慢時，一下就夠。蘇黎世的團隊把力感測器裝在微型機械手臂上，在活的捕蠅草上一次次加大偏折：快速推兩下要讓它閉合，中位數門檻是把感覺毛推偏 0.18 弧度、力矩 0.8 微牛頓·公尺（21 次測試），低於 0.12 弧度從來沒有閉合過。他們同時記錄電訊號：太小的偏折沒有動作電位，夠大的每推一下一個。他們的模型把每次偏折當成往一個會漏的桶子裡加電荷，預測中等速度的單次偏折會讓桶子在門檻附近停留夠久、連發兩個動作電位；慢慢推一下的實驗裡，捕蟲夾果然閉合了。",
+      "scope": "模型裡的『受器電位』沒有直接量到；單次觸發用的偏折比典型獵物慢得多，作者說自然界的意義只能推測。實驗室栽培株，門檻會隨植株狀態變。不要寫成『兩下的說法是錯的』——快的碰觸仍需要兩下。",
+      "source_locator": "Results 第一節；Fig 1、3、6 圖說",
+      "premise_status": "screened",
+      "notes": "算 1 條。補 C4-03 缺口（2）：捕蠅草觸發的全文研究（R6017 的原論文 Suda 等 2020 是付費刊本，仍只有摘要）。與 R6017 互補：R6017 講訊號隨時間衰減，這裡是要多大的機械刺激。去重：查『感覺毛』『捕蠅草』無同答案核心。 原提案 F13-009（目標 C4-03，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）照原稿收；補上上一輪點名的缺口（2）：捕蠅草觸發的全文研究。逐句相符，照收。算 1 條，同意作者。原文另有閉合力矩中位數 0.65 mN·m（Results 後段），本輪沒有逐句核對上下文，不計、不用；寫稿若要用須另核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "扳機有一個量得出來的力道，而且它數的不是『碰了幾下』，是累積到門檻的訊號。",
+        "visual": "一根感覺毛被探針推偏的特寫，旁邊一個會漏水的桶：快推兩下各加一瓢才滿，慢推一下細水長流也滿。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-615767aa95ecc64d",
+          "origin": "wave59-life-20261111",
+          "locator": "Results 第一節；Fig 1、3、6 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L59-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L59-004",
+      "question": "含羞草的葉柄一秒鐘就垂下去，它也是先存後放的彈射嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.mimosa_pulvinus_at_hydraulic_limit_wrinkle_surface",
+      "answer_target": "不是，它靠的就是水，只是剛好小到來得及。韓國浦項工科大學的研究者引用前面那條通則指出：含羞草的動作約 1 秒，和半徑約 200 微米的葉枕讓水流平衡所需的時間差不多，是多細胞植物裡最快的純水力動作。既有研究的說法是葉枕一側的運動細胞排出鉀、氯離子，水跟著出去，細胞縮小；下彎時葉枕下半部的水立刻消失。他們用 X 光顯微看葉枕下垂的過程：角度由 16 度變到 8 度時，上表皮向外移約 16 微米、下表皮向內約 15 微米，同一個關節一面伸、一面縮；下表皮靠把皺褶擠深來收起多出的表面，另一組量測裡皺褶寬由 5 微米增到約 17 微米；葉枕裡的導管束是軟的，會跟著彎。",
+      "scope": "「約 1 秒、半徑 200 微米」是引言引用 F13-007 那篇的估計，不是本文量的；離子與失水也是引言對前人研究的整理。本文沒有量力量大小，「出多少力」仍沒有數字。皺褶寬度與表皮位移是不同角度區間的兩組量測，不寫成同一次。樣本數未讀。",
+      "source_locator": "Introduction 第 2–4 段；Results 前四小節",
+      "premise_status": "screened",
+      "notes": "算 1 條：位於水力極限 0.5、上伸下縮與皺褶 0.5。補 C4-03 缺口（3）：含羞草葉枕怎麼動的已讀來源。與 L47-002（哪裡感覺）、L47-003（動了有什麼用）不重複。去重：查『葉枕』『pulvinus』只有 L47 兩個核心，答案不同。 原提案 F13-010（目標 C4-03，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（3）：含羞草葉枕怎麼動的已讀來源。數字都在，只把兩組不同角度的量測分開寫。算 1 條（位於水力極限 0.5、上伸下縮與皺褶 0.5），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張圖上，含羞草就落在那條線上：它是『還來得及用水』的最大號選手。",
+        "visual": "葉枕剖面：下半部的水色瞬間變淡，上表皮拉平、下表皮擠出深皺褶；右上角小圖把含羞草的點標在分界線上。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b9d2599e3fc05daf",
+          "origin": "wave59-life-20261111",
+          "locator": "Introduction 第 2–4 段；Results 前四小節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2b9b5f7fc7bfc98f",
+          "origin": "wave59-life-20261111",
+          "locator": "Introduction 第 2–4 段；Results 前四小節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L59-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L59-005",
+      "question": "熊蜂學會拉繩取蜜，是自己想出來的，還是看來的？看到的又是什麼？",
+      "domain": "動物社會資訊與群體決策",
+      "mechanism_key": "social_decision.string_pulling_local_enhancement_colony_diffusion",
+      "answer_target": "幾乎都是看來的，而且看到的只是「去哪裡」。倫敦瑪麗王后大學的實驗把人造花壓在透明板下，要拉繩才吸得到糖水：291 隻沒看過的蜂，第一次 5 分鐘內沒有一隻成功；其中 110 隻有第二次機會，只有 2 隻自己摸出來，而且是亂試時碰到繩子。隔著透明小室看熟手示範過的 25 隻裡有 15 隻成功；換成用看不見的線把花拉出來、沒有蜂在場，15 隻沒有一隻學會。把繩子盤起來，拉了花也不會馬上靠近，27 隻看過示範的蜂全數失敗——牠們從示範得到的是位置和繩子，拉的動作仍靠自己試。在三個蜂群各放一隻會拉的蜂，150 回成對覓食後，各有 25/47、17/29、12/28 隻覓食蜂學會；沒放示範者的三群覓食了 5 天，沒有一隻學會。學會的蜂又成為下一批的示範者。",
+      "scope": "實驗室蜂群與人造任務。所謂「世代」是先後學會的批次，不是親子。作者明說自然界未必有對應的行為，這裡量的是能力。看不見的線那一組，蜂有沒有在看花移動沒有影像可查，作者自己列為另一種可能。盤繩全敗只對剛看過示範的新手成立：8 隻拉過 20 次以上的熟手裡有 3 隻拉得出盤繩。擴散試驗裡的蜂是和會拉的蜂一起覓食，不只是隔著看，傳遞的途徑比小室試驗多。",
+      "source_locator": "Results「Innovators…」「Social Learning of String Pulling by Caged Observers」、盤繩試驗段、Fig 5 前一段；Discussion 第 3、6 段",
+      "premise_status": "screened",
+      "notes": "算 2 條：自己幾乎學不會、看了多數會、但盤繩就全敗（學到的是位置不是技巧）1 條；放一隻熟手後在蜂群裡一批傳一批、無示範的群沒有一隻學會 1 條。各組隻數是同一實驗的條件，不另計。 原提案 F14-006（目標 C5-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；隻數全部對得上，作者算 2 條合理（兩組不同設計的實驗）。補上三個條件，讓「2 隻」的分母、對照群的機會、盤繩結論的適用範圍都在核心裡。池中只有 B2247（兩步機關，同一實驗室的另一篇）與熊蜂的花訊號各題，沒有同答案；DOI 與網址池中皆無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個做法能在群體裡傳開，不需要誰「看懂了」；看到該去哪裡、剩下自己試，就夠了。",
+        "visual": "透明板下的藍色小花與一截繩；三個小圖並排：看熟手（多數成功）、看花自己動（沒有成功）、繩子盤起來（沒有成功）。下方三個蜂群的點陣隨回合一隻隻變色。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ef0e29dc11d11e30",
+          "origin": "wave59-life-20261111",
+          "locator": "Results「Innovators…」「Social Learning of String Pulling by Caged Observers」、盤繩試驗段、Fig 5 前一段；Discussion 第 3、6 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L59-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L59-006",
+      "question": "要先做一步沒有獎勵的動作才開得了盒子，熊蜂自己摸得出來嗎？跟著誰學有差嗎？",
+      "domain": "動物社會資訊與群體決策",
+      "mechanism_key": "social_decision.two_step_box_unrewarded_step_demonstrator_technique",
+      "answer_target": "自己摸不出來；跟著會的蜂，三分之一學會，而且要看示範者怎麼開。這個機關得先推開藍片，才推得動紅片拿到糖水。沒有示範者的三個蜂群，每天面對關著的盒子 3 小時，兩群連續 12 天、一群 24 天（合計 36 與 72 小時），沒有一個盒子被打開；只有一次，一片藍片被完整推開，之後沒有再發生。研究者訓練示範蜂時，也得先在第一步底下放臨時獎勵，之後慢慢撤掉才教得成。15 隻觀察蜂和示範蜂成對覓食（最多 13.3 小時）後，5 隻通過沒有獎勵的單獨測驗；這 5 隻全都配到一氣呵成「擠過去」開法的示範者（10 隻中 5 隻），配到「分兩次推」示範者的 5 隻全數失敗。",
+      "scope": "實驗室、樣本小（15 對，部分示範蜂重複使用）。作者自己說不能排除「一百萬隻裡有一隻」能獨力解開，也沒有測這個做法能不能在群體裡長期維持。示範手法與學不學得會的關係是 5 對 0 的小樣本，作者的用語是「可能影響」；兩種示範者開的盒數沒有顯著差異，跟隨時間在學會組較長但未達統計顯著。「能學到自己發明不了的行為不是人類獨有」是作者的詮釋，片中要標明。",
+      "source_locator": "Main 第 3–8 段；Discussion 第 1、3–4 段",
+      "premise_status": "screened",
+      "notes": "與池中 B2247 是同一篇研究。裁定：B2247 的池內閱讀是學校新聞稿、答案一句，照規則新聞稿只當入口，計 0 條；本核心讀的是論文全文，算 1.5 條（對照群的時數與訓練示範蜂的困難 1 條；5／15 與示範手法 0.5 條）。兩者合計 1.5 條，不是作者算的 2 條。建議併入時以本核心為準，B2247 標為同一研究的舊紀錄（或把本次全文閱讀掛到 B2247 上、更新它的答案），任何長題都不得把兩者分開各算一次。 原提案 F14-007（目標 C5-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字全部相符。補上對照群裡藍片被推開一次的例外（原文自己寫了，省略會讓「沒有一隻碰得動」說過頭），以及示範手法那一點只是小樣本下的「可能」。計數的裁定見 notes：同一研究不重計，新聞稿不計，合計 1.5 條。不判 REJECT、不填 duplicate_of，因為 B2247 的答案只有一句通論，這個核心補的是它沒有的全部實驗內容；但整併時兩者要綁在一起。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "放了 24 天沒有一隻自己打開的機關，跟著同伴走一遍就有蜂學會——學來的東西可以超過自己摸得到的。",
+        "visual": "圓盒上藍片與紅片的俯視圖，兩種開法各畫一條路徑：分兩次推（沒有觀察蜂學會）、一路擠過去（十隻裡五隻學會）。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fdc2f566679bf734",
+          "origin": "wave59-life-20261111",
+          "locator": "Main 第 3–8 段；Discussion 第 1、3–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L59-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L59-007",
+      "question": "野外的黑猩猩群裡冒出一個新做法，怎麼知道牠們是互相看來的，不是各自想到的？",
+      "domain": "動物社會資訊與群體決策",
+      "mechanism_key": "social_decision.moss_sponge_dynamic_network_diffusion",
+      "answer_target": "看它是不是沿著「誰看過誰」傳。2011 年 11 月，烏干達布東戈森林 Sonso 群的黑猩猩開始去一個新淹出來的水坑，六天內出現兩個這一群二十年觀察紀錄裡沒有的做法：用苔蘚做吸水的海綿，以及撿別隻丟下的舊葉海綿再用。研究者記下每一次誰在場、看到誰。苔蘚海綿由首領雄性先做，之後 7 隻跟進，其中 6 隻事前確定看過別隻做；模型估計每看一次，學會的速率約為原來的 15 倍（95% 信賴區間 4.7 到 88.2），約 85% 的學會歸於社會傳遞。撿舊海綿那個做法，後來跟進的 8 隻裡有 4 隻看起來沒看過別隻就做了，每看一次的效果估計只有 1.07 倍（信賴區間 0.58 到 2.48，包含「沒有效果」）。同一個水坑、同一群，兩個新做法裡只有一個找得到沿著觀看關係傳的證據。",
+      "scope": "單一族群、六天、個體數少，信賴區間很寬。「15 倍」是模型估計的學習速率比，不是學會的機率，也不是「看一次就會」。學習的機制（模仿或別的）作者明說無法判定。有一隻母猩猩是在用過別隻含苔蘚的舊海綿後才自己做，分析保守地把牠算作自行發明。撿舊海綿「不是看來的」不能說死：估計值的區間包含 1，只能說沒有找到社會傳遞的證據。兩個做法都是原有葉海綿行為的變化，不是全新的工具。模型細節在未讀的方法與補充資料裡。",
+      "source_locator": "Introduction 第 4 段；Results 第 3–7 段與 Table 2 說明；Discussion 第 1–2、5 段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：苔蘚海綿沿觀看關係擴散與估計值 1 條；同場的另一個新做法沒有找到社會效應，當作現成的對照 0.5 條。 原提案 F14-008（目標 C5-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字全部相符。只改最後一句與 scope：作者寫「兩個新做法只有一個是看來的」，原文對撿舊海綿的結論是沒有證據支持社會傳遞（1.07 倍、區間跨過 1），不是證明了各自想到。池中 R35008、R35009（釣白蟻工具）、A14006（警報叫聲）是別的研究；DOI 與網址池中皆無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大家都去了同一個新地方，不足以解釋大家都學會；要看學會的順序是不是跟著「看過誰」走。",
+        "visual": "水坑邊的個體點陣，每學會一隻就亮起，並畫出牠先前看過誰的箭頭；右邊同樣的圖給「撿舊海綿」，亮起的點有一半沒有箭頭進來。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6353a16c3c2593f7",
+          "origin": "wave59-life-20261111",
+          "locator": "Introduction 第 4 段；Results 第 3–7 段與 Table 2 說明；Discussion 第 1–2、5 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L59-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P59-001",
+      "question": "人越排越密的時候，每個人會慢到什麼程度？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.single_file_required_length_linear_with_speed",
+      "answer_target": "在于利希研究中心的單列實驗裡，平均慢到每秒不到 0.2 公尺。研究者用椅子和繩子圍出一條 17.3 公尺長的環形走道，窄到不能超前，讓 1、15、20、25、30、34 個人排成一列走，並要求不要趕。一個人獨走平均每秒 1.24 公尺；15 人時每秒 0.90 公尺；34 人時（量測段裡每公尺約 1.8 人）每秒 0.17 公尺。把每個人前後佔的長度對速度作圖，在每秒 0.1 到 1 公尺之間是一條直線：速度每增加每秒 1 公尺要多約 1.06 公尺，截距約 0.36 公尺——連走得很慢時也成立，這一點出乎作者意料。作者從錄影看到的原因之一是：擠的時候前後的人會自己對上腳步，像行軍一樣同步踏步，有人把腳踩到隊伍中線的左右兩側，把空隙用到最滿。",
+      "scope": "受試者是學生與職員、被要求放鬆走，作者自己說一個人獨走的速度因此偏低。最高只做到量測段每公尺約 1.8 人；這篇沒有說人會不會停，旁白不得寫「擠成這樣也沒有停」——同一研究群後來的單列實驗在更高密度看到一停一走的波。0.36 公尺是直線的截距，不是量到的「站著不動所需長度」。arXiv 版未對照刊本。不得把單列的數字直接換算成每平方公尺幾人（原文的換算含一個假設的修正項）。",
+      "source_locator": "§3.1–3.3；表；Fig. 7；§5",
+      "premise_status": "screened",
+      "notes": "算 1 條。C4-02 路線（甲）的第一份受控實驗全文，答『密度升高時速度怎麼變、會不會停』。去重：查『單列』『Seyfried』『基本圖』無同答案核心；X35 各核心講條紋、成行與門口，沒有密度—速度關係。 原提案 F13-016（目標 C4-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；C4-02 路線（甲）的第一份受控實驗全文。數字逐列相符，但作者答案的結論句「沒有停」原文沒有，而且與同一研究群後來的結果相反，刪掉並改問題；密度改用量測值。算 1 條（各人數下的速度 0.5、所需長度對速度的直線與同步踏步 0.5），同意作者的條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人群不像車流會留安全距離然後停住：越擠就越小步、對上腳步，一直挪。",
+        "visual": "俯視的環形走道，人數由 15 加到 34，點與點的間距縮短、速度條變短；右邊一條直線圖。",
+        "seconds": [
+          50,
+          65
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c4608d53f6ed914e",
+          "origin": "wave59-physics-20261111",
+          "locator": "§3.1–3.3；表；Fig. 7；§5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P59-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P59-002",
+      "question": "門口排起隊的時候，門裡面也一樣擠嗎？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.bottleneck_jam_forms_below_nominal_capacity",
+      "answer_target": "實驗裡不是：隊伍擠在門前，門裡面反而鬆。于利希與伍珀塔爾的研究者讓 20、40、60 人從同樣密度的等候區走過一段 2.8 公尺長的窄道，寬度由 0.8 公尺一次加 0.1 公尺到 1.2 公尺，要求不推、照平常速度。通過的流量隨寬度近似直線增加，每公尺寬每秒約 1.6 到 2.3 人，沒有出現早先研究說的「多一排人才跳一級」。窄道前排起了隊，初步分析是每平方公尺 4 到 6 人；窄道裡面卻穩定在每平方公尺約 1.8 人。作者由此認為真正卡住的是「進門那一下」：從鬆散的等候區或隊伍裡隨機起步，排不成窄道裡全速通過所需的整齊隊形。至於這算不算「還沒到容量就塞」，要看採信哪一張流量對密度的圖：手冊常用的兩張正好把最大流量放在每平方公尺 1.8 人，作者則依另外幾份研究主張最大值在更高的密度。",
+      "scope": "年輕受試者、不准推的實驗室情境。「低於容量就塞」是作者拿本實驗的密度對照別人的基本圖得出的主張，不是量到的，而且同一研究群 2011 年的走廊實驗（F13-018 的來源，圖 6、7）單向比流量在每平方公尺 1.5 到 2 人附近最高，並不支持「最大值在高得多的密度」；片中不得把「沒超過容量就會塞」當成結論。門前 4 到 6 人是作者所稱的初步分析。三個可能原因作者沒有檢驗。arXiv 版未對照刊本。P58-007 是准推的另一個實驗，不得混成同一組數字。",
+      "source_locator": "Abstract；§2；Table 2；§4.3；§5",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：流量對寬度線性 0.5、門前 4–6 人對門內 1.8 人與『低於容量就塞』1。C4-02 路線（甲）的第二份受控實驗全文，也是不用事故案例時的第二個轉折。去重：查『瓶頸』『容量』『窄道』無同答案核心；X35-004 講門前柱子、P58-007 講推擠規則。 原提案 F13-017（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；數字相符，但作者把它當成 C4-02 不用事故案例時的第二個轉折，轉折句（「還沒到流量最大的密度就塞了」）恰好是這篇最站不住的一句：原文自己先承認手冊的基本圖支持通行的判準，結論靠一個假設；同一研究群四年後的實驗又不支持那個假設。改問題與答案，只留量到的事（流量對寬度線性、門前擠門內鬆、作者對入口的解釋）。算 1 條（流量對寬度 0.5、門前與門內的密度對比 0.5），作者算 1.5 條；角色由 turn 改為 segment。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "塞住不需要誰做錯事，也不需要人多到『超過設計』：窄口前的人自己就會疊起來，而窄口裡面其實還有餘裕。",
+        "visual": "同一張俯視圖：窄道前的點擠成深色一團，窄道內的點稀疏；旁邊一條流量曲線，標出『門內在這裡』『最大值在右邊』。",
+        "seconds": [
+          70,
+          90
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c2f2201b6c949a67",
+          "origin": "wave59-physics-20261111",
+          "locator": "Abstract；§2；Table 2；§4.3；§5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P59-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P59-003",
+      "question": "研究者想在實驗室做出很擠的人群，為什麼光是多找人還不夠？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.corridor_density_needs_exit_narrowing_transition",
+      "answer_target": "因為人會走掉，得把出口縮小才擠得起來——而出口一縮，量到的規律也跟著變。同一個德國研究群找了最多 350 人，在三種寬度的走廊做了 28 次、在一個 T 形路口做了 7 次實驗，用影像自動追蹤每個人的軌跡。不同寬度的走廊換算成每公尺寬的流量後，在每平方公尺 3.5 人以下可以合成同一條曲線。但要把密度往上推，只能縮窄出口；出口一縮，離出口 4 公尺遠的量測區裡，流量和密度的關係在每平方公尺約 2 人的地方斷開成兩段，作者解釋為出口限制了流出所造成的轉變。T 形路口量到的曲線也不能拿直走廊的來套。論文開頭整理的文獻顯示這個領域的分歧有多大：不同研究裡，人擠到走不動的密度從每平方公尺 3.8 人到 10 人都有，流量最大的密度也從 1.75 人到 7 人都有。",
+      "scope": "實驗最高只到每平方公尺約 4 人，沒有推擠；3.8 到 10 與 1.75 到 7 是作者引用的文獻比較，不是本實驗量的。「比流量在每平方公尺 1.5 到 2 人附近最高」是覆核目讀圖 6、7 得到的，寫稿若要用須再看圖並說明較高的密度是縮窄出口做出來的。arXiv 版未對照刊本。這個核心說的是受控實驗的極限，不得拿來暗示任何真實事故。",
+      "source_locator": "Abstract；§1；§2；§4.2–4.3；§5",
+      "premise_status": "screened",
+      "notes": "算 1 條。C4-02 路線（甲）的第三份；它同時誠實交代不用事故案例的代價：受控實驗到不了『擠到極限』的密度。去重：無同答案核心。 原提案 F13-018（目標 C4-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；逐句相符。答案補上文獻裡「流量最大的密度 1.75 到 7」這一半——它正是 F13-017 那個主張懸而未決的原因，片中應該一起交代。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『每平方公尺幾人會出事』沒有一個實驗室量出來的數字——能安全做的實驗，到四人上下就是極限。",
+        "visual": "一條走廊，出口的門一格格縮窄，走廊裡的點變密；曲線在 2 的地方斷成兩段。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-3fcdb3b69204a1b5",
+          "origin": "wave59-physics-20261111",
+          "locator": "Abstract；§1；§2；§4.2–4.3；§5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P59-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P59-004",
+      "question": "『每平方公尺幾個人』算擠？有沒有寫進規定的數字可以對照？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.density_reference_values_two_six_eight_per_square_metre",
+      "answer_target": "德國消防協會 2012 年的技術報告整理了三個數字。法規上有兩個：集會場所的建築規定用每平方公尺 2 人當作規劃疏散的基準；交通法規容許公車的立位到每平方公尺 8 人——報告直說後者在科學上站不住腳。報告自己提出的臨界值是每平方公尺約 6 人：到了這個密度，人幾乎沒有空間靠挪一步來化解旁人傳來的力。每平方公尺 8 人以上，只有在外力擠壓、無處可避時才會出現。",
+      "scope": "協會的技術報告（英譯本），不是法規本文，條號沒有讀到；是德國的數字。台灣主管機關的人潮密度基準仍沒有讀到。報告裡的個案量測不引用。不得寫成自保口訣或『幾人以下就安全』。",
+      "source_locator": "§3（p.6–9）；§4.1 開頭",
+      "premise_status": "screened",
+      "notes": "算 1 條。上一輪要求兩條路都補的「主管機關或研究單位的人潮密度基準」；補到的是研究單位（德國消防協會）的整理，不是主管機關本文，也不是台灣的。去重：無同答案核心。（刪去原 notes 裡關於英國運動場館安全局算例的一句：那份算例沒有來源紀錄，「平地站席每平方公尺 4.0 人」是算例中管理者自選的值，不帶任何主張，不當來源。） 原提案 F13-019（目標 C4-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；逐句相符，答案與 scope 不改。算 1 條（法規上的 2 與 8 及報告對 8 的評語 0.5、報告自己的臨界值約 6 與理由 0.5）。作者 notes 裡提到的英國算例既沒有來源紀錄、也不進答案，照任務說明二擇一：刪去那一句；快取裡的 sgsa-worked-example-b-cricket.pdf 不算來源。片中用這個核心時不得變成「幾人以下就安全」的口訣。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "實驗做到 4、規劃用 2、危險從 6 開始——三個數字放在一起，觀眾才知道前面那些實驗站在哪裡。",
+        "visual": "一平方公尺的方格依序站進 2、4、6、8 個人的俯視剪影，各標上出處。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-39bc2174d385fd98",
+          "origin": "wave59-physics-20261111",
+          "locator": "§3（p.6–9）；§4.1 開頭",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P59-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P59-005",
+      "question": "雨滴打在羽毛、蝶翅和葉面上，為什麼常常不是整顆彈走，而是當場碎掉？",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "mechanism_key": "rain.microbump_shock_wave_shatter_contact_time",
+      "answer_target": "這些表面很不沾水，上面還有微米級的小凸起（文中量到的高度由連香樹葉的約 8 微米到蜻蜓翅的約 60 微米）。康乃爾大學的實驗讓半徑 1.1 到 2.0 毫米的水滴以每秒 0.7 到 6.6 公尺落在北方鰹鳥的羽毛、蜻蜓與蝶蛾的翅、連香樹葉上：高速時，攤開的水膜在每個小凸起後面拉出 V 形波紋，水膜破洞、洞長大相連，水滴碎成許多小滴。在人工的不沾水表面上可以定量：慢的時候水滴攤開、縮回、整顆彈起，接觸時間約 18 毫秒，和理論值 19 毫秒相近；速度超過一個門檻，接觸時間開始下降，和理論值相比最多少約七成。門檻速度隨凸起高度而定（凸起越高門檻越低），模型預測它與水滴大小無關。",
+      "scope": "標本是博物館提供的鳥遺體上的羽毛、館藏昆蟲的翅與摘下的葉，不是活的動物。接觸時間的定量是在人工塗層與微結構表面上做的（Fig.5 圖說：人工表面 I、半徑 2 毫米）；18 與 19 毫秒是半徑 1.7 毫米水滴的例子；「最多少七成」是相對理論接觸時間，片中不得寫成「羽毛上少了七成」。「減少熱量與動量傳遞，鳥比較不失溫、昆蟲比較不失穩」是作者引用其他研究所作的推論，本文沒有量體溫、受力或飛行。作者稱波紋為「類震波」，並說明它不是壓縮流體的真震波。補充資料與原圖未讀。",
+      "source_locator": "Results 各小節、Table 1、Fig.1–2、5 圖說；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：高速下在生物表面碎裂的現象與成因 1 條；接觸時間下降與門檻看凸起高度 0.5 條（人工表面上的量測）。 原提案 F14-004（目標 C5-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；現象與數字對得上，改的是歸屬：作者的句子讀起來像七成是在羽毛蝶翅上量到的，原文的定量在人工表面；「幾十微米」對連香樹葉不成立。動量傳遞減少是推論、不是量測——這一點決定它在 C5-02 裡撐不撐得起轉折一，見該題。池中 I12013（薄餅狀彈跳）、I12002（撞擊後黏住）是別的研究與現象，網址與 DOI 池中皆無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "挨雨的一方不只是被動承受：表面的小凸起把水滴弄碎，讓它更早離開。",
+        "visual": "由下往上看的水滴攤開示意：平滑不沾水面上整片縮回彈起；有小凸起的面上先出現一道道 V 形紋，再破洞、碎開。兩格下方各一條接觸時間的長短條。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b42246a529071977",
+          "origin": "wave59-physics-20261111",
+          "locator": "Results 各小節、Table 1、Fig.1–2、5 圖說；Discussion 第 1–2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P59-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P59-006",
+      "question": "雨滴打在乾土上，土裡的東西是怎麼跑進空氣的？雨越大噴得越多嗎？",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "mechanism_key": "rain.porous_soil_trapped_bubble_aerosol_window",
+      "answer_target": "靠的是水滴裡的小氣泡，而且雨太大反而不噴。麻省理工的高速攝影顯示：水滴打在會吸水的多孔表面，攤開得比水滲進去還快，底下困住的空氣變成一顆顆小氣泡；氣泡升到水滴頂面破掉，射出直徑幾十微米的細水柱，再斷成懸在空中的小滴。把螢光染料先滲進多孔的薄層板再晾乾，飛出去的小滴帶著染料。約 600 次實驗（16 種土壤、幾種多孔板與不同液體）畫出的範圍是：相當於小雨到中雨的落速、吸水性像黏土與砂質黏土的表面會噴；砂不噴，相當於大雨的條件也不噴。每 10 秒滴一滴，第二滴之後就看不到了；改成每 5 分鐘滴一滴，每一滴都噴——孔隙裡要先有空氣。",
+      "scope": "實驗室單滴試驗，土樣是烘乾的。染料試驗用的是薄層層析板，不是土；重複滴落那一組原文沒有寫是哪一種表面。作者自己列了限制：後來的雨滴會把氣膠洗掉、幾十微米的小滴沉降不慢，野外與大尺度的效應沒有量；也沒有量細菌或氣味分子，「下雨的味道」只在引言當動機提到。粉末與鬆散顆粒層上沒有看到氣泡，原因作者只作推測。「大雨不噴」是相當於大雨落速的單滴條件，不是在大雨裡量的。",
+      "source_locator": "Results「Aerosol generation from droplets hitting soils」「Delivery of materials…」「Aerosol-generation process」「Effect of porous structures…」「Characterization…」；Discussion 第 4–5 段",
+      "premise_status": "screened",
+      "notes": "算 1 條：舊集 S56（池中 LEG-S56）已用一句話講過「小雨打在乾土上會噴出微小氣溶膠」，本核心只算新增的部分——氣泡怎麼來，以及大雨、砂、孔隙已濕都不噴的範圍。來源與 LEG-S56 所列的 SRC-ba0ca00542395953 是同一篇論文，那筆紀錄註明當時未讀外站；採用時把本次全文閱讀併入同一來源。 原提案 F14-005（目標 C5-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；機制與範圍都在原文上。兩句說過頭：染料「放在孔隙裡」會被讀成土壤，實際是層析板；「10 秒內再滴一滴就不噴了」原句是連續滴的第二滴之後。與已製作的 S56 重疊一句，作者已扣，算 1 條合理：S56 的池中紀錄沒有讀過這篇論文，這個核心等於把那一句補成有全文閱讀的核心，但不能再當成新話題的鉤子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "被雨帶上天的東西不是被「打飛」的，是從水滴裡的氣泡噴出去的；所以雨更大、土更濕，反而沒有。",
+        "visual": "水滴剖面示意：底下一排小氣泡往上浮、頂面破掉射出細絲；旁邊一張「落速 × 土的吸水快慢」的格子圖，只有中間一塊亮起。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6a584e0e3229ab45",
+          "origin": "wave59-physics-20261111",
+          "locator": "Results「Aerosol generation from droplets hitting soils」「Delivery of materials…」「Aerosol-generation process」「Effect of porous structures…」「Characterization…」；Discussion 第 4–5 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P59-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "T59-001",
+      "question": "通訊軟體要知道我通訊錄裡誰也在用它，就得把通訊錄交給伺服器嗎？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.contact_discovery_hashed_numbers_invertible_enclave_scan",
+      "answer_target": "照 Signal 自己 2017 年的說明，舊做法等於交了：手機把每個電話號碼的雜湊值傳給伺服器比對，但電話號碼的可能值太少，雜湊幾乎一定能反推回號碼。伺服器照公開的程式碼跑就不會留下紀錄，可是使用者沒有辦法確認它真的在跑那一份。它提出的新做法是把比對放進伺服器處理器的隔離區，由處理器向用戶端證明裡面跑的是哪一份程式，主機的作業系統看不到隔離區裡的記憶體內容。文章接著自己指出這還不夠：作業系統雖然看不到內容，卻看得到程式碰了哪些記憶體位址，光看位址就能推回查的是誰；所以每一批查詢都得把全部註冊用戶從頭掃一遍，建表時每一格都寫一次，讓存取的樣子和查什麼無關。",
+      "scope": "Signal 自己的設計說明，不是外部稽核；2017 年的技術預覽，文末說之後幾個月才部署，現行做法沒有讀，旁白要標年份並說「Signal 當時提出」。處理器隔離區後來被公開過多種攻擊，本文沒有提，不得寫成「因此伺服器看不到」。片中只有前半（雜湊可以反推、只能信它照公開的程式碼跑）當成已知事實；後半（隔離區與全表掃描）只能當「它提出的做法與它自己指出的漏洞」。不得由此推論其他服務的做法。",
+      "source_locator": "Contact discovery；Trust but verify；SGX contact discovery；Building a secure SGX service",
+      "premise_status": "screened",
+      "notes": "算 1 條。這不是覆核點名的那一塊：Albrecht、Dowling、Jones 的論文全文仍讀不到（見 blocked），『伺服器能改成員名單』仍沒有來源；這個核心是覆核 still_missing 第（2）項（P57-NA014／F10-NA008），用來把 G38 的餘裕由 0.3 分拉開，放在『對面是誰』之後、群組之前，回答『伺服器還知道什麼』裡的通訊錄。來源仍是 Signal 自己的文件，獨立性沒有改善。去重：查『聯絡人探索』『SGX』『通訊錄』無同答案核心。 原提案 F13-014（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；不是上一輪點名的那一塊（獨立學者的全文仍讀不到），是上一輪 still_missing 第（2）項。逐句相符，答案不改，scope 收緊。從嚴只算 0.5 條：前半（舊做法的雜湊可反推、使用者無從確認伺服器跑的是哪一份程式）是 Signal 對自己的不利陳述，可算；後半是一份 2017 年預覽的設計，部署後的實況沒有讀、獨立性沒有改善，可以講但不計。作者算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "內容鎖住之後，伺服器還可能從『你問了誰』和『程式碰了哪一格記憶體』知道你的朋友是誰。",
+        "visual": "一本通訊錄變成一串雜湊值再被一一對回號碼；換成一個黑盒子，外面的人只看到它每次都把整排抽屜全部拉開一遍。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave59-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5be5add077e10eb6",
+          "origin": "wave59-tech-20261111",
+          "locator": "Contact discovery；Trust but verify；SGX contact discovery；Building a secure SGX service",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "T59-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -421797,6 +423627,870 @@
       ]
     },
     {
+      "id": "S59-001",
+      "question": "2022 年那 38 顆星鏈衛星，是在多高的地方、遇到密度增加多少才掉下來的？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.starlink_2022_insertion_altitude_density",
+      "answer_target": "它們還在很低的暫時軌道上。NOAA 太空天氣預報中心與 SpaceX 人員合寫的檢討指出：這批 49 顆衛星被送進近地點 210 公里、遠地點 350 公里的軌道，原定之後再升到 550 公里。2 月 3、4 兩天，Kp 指數各有約 6 小時達到 5，照預報中心的分級只是輕微等級，預報中心事前也發過 G2、G1 的守視。預報中心作業中的物理模式算出，200 到 400 公里高度的空氣密度增加了 50% 到 125%；同一時刻在 210 公里，SpaceX 估阻力所用的經驗模式的異常圖最多只顯示約 20%，沿著存活衛星的軌道比較，物理模式的密度在近地點比經驗模式高約 40% 到 80%。文中另寫：團隊發射前依經驗模式預期密度增加約五成，但擾動一直拖到 2 月 5 日凌晨。SpaceX 只來得及讓 11 顆轉成阻力最小的安全姿態，其餘 38 顆抵不過阻力。作者指出，預報中心當時沒有專門針對衛星阻力的警報。",
+      "scope": "密度增幅是模式算的，不是量到的；作者群包含模式的開發者與 SpaceX 員工。「最多約 20%」是某一時刻、某一高度經驗模式相對十日平均的異常，「預期約五成」是團隊發射前對預報磁暴的估計，兩個數字基準不同、原文並列沒有調和，旁白不得寫成「SpaceX 以為只會增加兩成」，也不要把兩者相減。本文用 Kp 稱這場磁暴「輕微到中等」，池中 S58-005 依 Dst 稱「中等」，旁白擇一並說明指標。不說「如果在 550 公里就沒事」。",
+      "source_locator": "Abstract；§1；§3；§4（Fig. 5–6 的文字敘述）",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：軌道高度與磁暴等級 0.5、密度增幅與兩種模式的落差 1。補 S58-NA001 與 C4-07 缺口（1）。與 S58-005 不重複：S58-005 只有 Dst 與『恢復期』，沒有高度與密度數字。去重：pool.json 查『210 公里』『Starlink』『星鏈』無同答案核心。 原提案 F13-001（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（1）：高度與密度增幅。數字逐句相符，只改一句把兩個不同基準的數字混成因果的話。算 1.5 條（高度與磁暴等級 0.5、兩種模式的密度落差 1），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁暴不大，但衛星正好在空氣最厚的那一層、而事前估阻力的模式低估了增幅——受害大小看的是你在哪裡。",
+        "visual": "地球剖面：210、350、550 公里三條虛線；密度色塊在低層漲一倍，衛星的近地點貼著最厚的一層。",
+        "seconds": [
+          60,
+          75
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-37899bc96da40b82",
+          "origin": "wave59-earth-20261111",
+          "locator": "Abstract；§1；§3；§4（Fig. 5–6 的文字敘述）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ]
+    },
+    {
+      "id": "S59-002",
+      "question": "1989 年魁北克停電，最先跳掉的是哪一種設備？電網裡有東西壞掉嗎？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.quebec_1989_svc_harmonic_trip_sequence",
+      "answer_target": "最先跳的是穩定電壓用的靜態無效功率補償器（SVC），而且是它自己的保護裝置把它切開的。橡樹嶺國家實驗室 1991 年的技術報告整理了經過：報告推定，地磁感應出的準直流電流讓變壓器鐵心飽和，飽和的變壓器產生諧波；諧波流進 SVC 的電容器組，保護裝置判定過載。凌晨 2:44:17 第一台跳脫，到 2:45:16 第七台，一分鐘內七台全失；約 8 秒後 735 千伏的輸電線因電壓過低開始跳脫，系統分離，約 21,500 百萬瓦的發電全數脫離。有東西壞：報告列出 La Grande 4 的兩台升壓變壓器、幾處避雷器、一台電抗器和一台 SVC 變壓器，並把這些歸到系統分離之後的過電壓；另有 SVC 的閘流體與電容器組受損，報告沒有寫原因。復電分段進行，九個小時回到 83%。",
+      "scope": "1991 年的回顧報告，資料來自魁北克水電與當時文獻，不是 NERC 1989 年事故報告本身，也不是 Boteler 2019。「SVC 因諧波跳脫」原文是推定語氣（It is surmised），旁白要保留「報告推定」。地面電場約每公里 10 伏特是由渥太華的磁力紀錄、假設當地擾動相同並用假設的地面導電率換算的（另一組假設得 14），不是實測，只可用一句並標明估算。報告沒有魁北克電網上感應電流的實測值。不寫「設備不是被感應電流燒壞的」。",
+      "source_locator": "§2.2.5（p.16–17）；§3.8（p.34–37）；Executive Summary",
+      "premise_status": "screened",
+      "notes": "算 2 條：跳脫順序與時間 1、損壞的來源與復電進度 0.5、電場估算 0.5。補 C4-07 缺口（2）。與 S58-004 不重複：S58-004 是電力公司自述的『保護系統被觸發、不到一分鐘』，沒有設備種類、時間序列、損壞清單與電場；並改正上一輪被刪的『設備沒壞』：設備有損壞，但來自分離後的過電壓。N269 只有一句機制。去重：查『SVC』『補償器』『魁北克』無同答案核心。 原提案 F13-002（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；以 ORNL-6665 取代上一輪點名的 NERC 1989 年報告或 Boteler 2019：可以接受。它是美國能源部國家實驗室的技術報告，逐秒的跳脫序列、設備種類、損壞清單與復電進度都有，補上了上一輪轉折一缺的「哪一類設備先跳」；缺的是「感應電流多大」，只有換算的地面電場。算 1.5 條（設備與時間序列 1、損壞來源與復電分段 0.5）；電場是假設導電率的換算，不另計。作者算 2 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是太陽把電網燒掉：是電網的保護裝置各自做了對的事，一分鐘內接連把穩壓設備切掉，整個系統才撐不住。",
+        "visual": "時間軸：2:44:17 起七個紅點在一分鐘內依序熄滅，8 秒後幾條 735 千伏線變灰；旁邊一顆變壓器的電流波形被壓歪。",
+        "seconds": [
+          75,
+          95
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-3af111c239a6c805",
+          "origin": "wave59-earth-20261111",
+          "locator": "§2.2.5（p.16–17）；§3.8（p.34–37）；Executive Summary",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ]
+    },
+    {
+      "id": "S59-003",
+      "question": "2024 年 5 月那場二十年來最強的磁暴，北美的電網實際上發生了什麼？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.may_2024_nerc_grid_review_isolated_impacts",
+      "answer_target": "電網量到了資料庫裡最大的感應電流，但整個大電網沒有垮。北美電力可靠度公司 2026 年 1 月的事後檢討寫：太空天氣預報中心在磁暴開始前 6 小時就用熱線通知各區調度（平常要等太陽拋出的物質通過上游衛星，可能只剩約 30 分鐘），各單位延後檢修、把停用的線路與補償設備叫回來、投入諧波濾波器。磁暴期間量到資料庫自 2013 年以來最高的感應電流，六個區域裡五個超過 90 安培，美國境內最高是威斯康辛一處的 175.7 安培。影響是零星的：一座核能機組依程序降載，三部發電機因升壓變壓器的保護電驛動作而解聯不到一小時，一支避雷器故障讓一座變電所停了 14 小時 35 分，中大西洋一台穩壓設備在電流尖峰時跳脫、電壓掉約 2%。報告的說法是大電網維持穩定、相連，並供應所有負載；5 月 10 日在 2024 年全年的每日嚴重度排名是第 68。報告也提醒：這場磁暴比 1989 年 3 月那一場弱。",
+      "scope": "NERC 的資料來自業者申報，報告自己說部分資料品質不佳、沒有加拿大業者的感應電流資料、補償設備的停用不在統計系統內，只有一個區域申報發電機受影響「出乎意料」。「2013 年以來最高」是 NERC 資料庫的範圍，不是歷史紀錄。不能說成「準備好了所以沒事」的因果；也不能說「比 1989 年強卻沒事」，報告明說 2024 年較弱。",
+      "source_locator": "Summary and Objective；SWPC Notification…；Operator-Reported BPS Impacts；Overall Observations；Table 1；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：最高感應電流與零星影響 1、提前 6 小時通知與第 68 名 0.5。補 C4-07 缺口（3）。S58-006 是 NASA 的事件說明（G5、極光、ICESat-2），沒有電網端資料；本核心補上後，S58-006 可只留事件強度一句。去重：查『Gannon』『175』『NERC』無同答案核心。 原提案 F13-003（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（3）：2024 年 5 月電網端的事後檢討。數字逐項相符；只把「有紀錄以來最大」「沒有停電」改回原文的範圍與說法。算 1.5 條（最高感應電流與零星影響 1、提前六小時與全年第 68 名 0.5），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種機制（變壓器飽和、諧波、保護跳脫）這次也出現了，只是停在零星幾處——強度指數最高的一次，不是後果最重的一次。",
+        "visual": "北美地圖上散著幾個小黃點（降載、跳脫、一支避雷器），旁邊一根 175.7 安培的柱子標『2013 年以來最高』；右下角一行『全年第 68 名』。",
+        "seconds": [
+          70,
+          90
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c7730f02cf7c1b4b",
+          "origin": "wave59-earth-20261111",
+          "locator": "Summary and Objective；SWPC Notification…；Operator-Reported BPS Impacts；Overall Observations；Table 1；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ]
+    },
+    {
+      "id": "S59-004",
+      "question": "七股潟湖外面那道沙洲量了一年，沙是颱風打掉的，還是哪一季少的？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.cigu_barrier_typhoon_season_accretion_monsoon_erosion",
+      "answer_target": "量的那一年，出水的灘是冬天瘦的，颱風季反而長回來。法國幾所大學與成功大學水工試驗所在七股潟湖外的網仔寮汕選了一段 200 公尺的灘，2011 年底到 2012 年夏末測了 20 次地形：冬天每週一次，夏天在每個颱風前後各一次。那年最強的是 2012 年 6 月的泰利，外海浪高超過 10 公尺：沙丘腳退了 6.7 公尺，沙丘最低的地方被沖出 20 公尺的缺口，沙被帶進潟湖——可是整段出水的沙量算起來沒有減少，灘線還向海推了 8 公尺；作者推測是原本在水下的沙被推上灘，但水下沒有測。整個颱風季，灘面是淨堆積、灘線向海約 10 公尺，沙丘則持續後退；冬季東北季風期才是淨侵蝕，灘線後退將近 29 公尺，作者歸因於外海浪高超過 2 公尺的中等風暴來了 20 次，平均一個月三次多，灘來不及在兩次之間長回來。全年下來沙洲向陸移了約 18 公尺。作者也提醒：這比之前十年每年 25 到 48 公尺的後退慢，這一年可能不典型。",
+      "scope": "研討會論文（ICCE 2014），一年、一段 200 公尺的灘，不能代表整條沙洲或其他年份；作者自己說這一年少見。只測出水的灘與沙丘，沒有水下地形，「沙從水下來」是推論，「沙量增加」只指出水的部分。內文數字前後有出入（誤差 ±1,071 與 ±912、全年 18.4 與 18.5 公尺、監測 7 個月與 2011 年 11 月到 2012 年 9 月），泰利那次的淨增量誤差與量值同級，旁白只說「沒有減少」，不報立方公尺。地名用網仔寮汕，不是頂頭額汕。不得寫成「颱風對海岸有益」或「台灣的沙洲都是冬天退的」。",
+      "source_locator": "摘要；Results 兩節；Discussion；Decadal tendency",
+      "premise_status": "screened",
+      "notes": "算 2 條：單一颱風（丘腳退、缺口，但淨沙量未減）1；季節收支（颱風季堆積、季風期侵蝕與 20 次中等風暴）1。這是 C4-04 翻案條件點名的台灣在地觀測（缺口 1），正好回答『颱風一次打掉還是逐季退』。去重：查『七股』『頂頭額』『沙洲』——E11006、E11007 是美國國家公園署的通論頁，S56 系列是別題，無同答案核心。 原提案 F13-011（目標 C4-04，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；這是 C4-04 翻案條件點名的台灣在地觀測；上一輪覆核明列「開放全文的學術調查，例如外傘頂洲、七股沙洲」可以算，所以種類上符合。但它只有一年、一段、作者自稱不典型，數字又有內部出入，所以從嚴：算 1.5 條（單一颱風的丘腳後退與缺口、出水沙量未減 1；季節收支 0.5），作者算 2 條。另改正沙洲名稱、補上「只測出水部分」與「颱風季沙丘也在退」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來最兇的那一場把沙丘咬了一口，帳面上沙卻沒少；把沙洲往後推的，是冬天一個月來三次的普通風浪。",
+        "visual": "同一條灘的剖面三格：颱風前、颱風後（丘腳後退、缺口，但灘面墊高）、冬末（整條後退）；下方一條帳本曲線夏天往上、冬天往下。",
+        "seconds": [
+          85,
+          105
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5586c90285b540dc",
+          "origin": "wave59-earth-20261111",
+          "locator": "摘要；Results 兩節；Discussion；Decadal tendency",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ]
+    },
+    {
+      "id": "S59-005",
+      "question": "外傘頂洲從衛星上看了十七年，面積怎麼變？南端又發生了什麼？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.waisanding_barrier_area_linear_decline_satellite",
+      "answer_target": "十七年的整體趨勢是變小，每年約少 0.34 平方公里。陽明交通大學的團隊判讀 2004 到 2021 年共 207 張高解析衛星影像的水線，挑出拍攝時潮位接近平均海水面的 42 張來算露出水面的面積，用一條直線去配：斜率是每年少約 0.34 平方公里，和先前研究的 0.38 接近。這 42 個點散在直線兩側約 1 平方公里，所以這份資料看得出長期變小，看不出每一年、每一場颱風各少了多少。在整體趨勢之外，南端還有來回的變化：尾段有幾年被一條水道和主體隔開（2013 年夏末後刷深，2017 年冬天又淤回來），2017 年底起尾端彎成 L 形，夏天變短、冬天變長。",
+      "scope": "這篇的主題是影像判讀方法，地形是附帶結果；直線是擬合，不是「證明等速」。面積很吃潮位，換不同潮位門檻斜率在 0.34 到 0.38 之間。沒有逐場颱風前後的比較，作者對南端變化只說「可能與颱風波浪和季節海流有關」。不得用這一篇說「外傘頂洲不是被颱風咬掉的」，也不外推「哪一年消失」。",
+      "source_locator": "Abstract；§3.3–3.5；§4.1；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1 條（長期近線性減少 0.5、南端季節性來回 0.5）。補 C4-04 缺口（1）的第二份台灣資料，補的是長期這一側。去重：查『外傘頂洲』無核心。 原提案 F13-012（目標 C4-04，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補的是台灣資料的長期一側。數字都在，但作者的問法與 turns 裡的用法（「十七年一條斜線，所以看到突然的變化不能倒推突然的事件」）超過這篇能說的：直線是擬合的假設。改問題與答案，只留「長期變小的速率」與「南端季節性來回」兩件事。算 1 條（長期速率 0.5、南端水道與 L 形的季節變化 0.5），同意作者的條數、不同意作者的用法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "長期看是一條斜線，不是幾級台階——找不到『那一場颱風』。",
+        "visual": "十七年的面積點連成一條緩緩下降的線；旁邊南端的小圖在夏冬之間一伸一縮。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-76c9b430e9ca7786",
+          "origin": "wave59-earth-20261111",
+          "locator": "Abstract；§3.3–3.5；§4.1；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ]
+    },
+    {
+      "id": "S59-006",
+      "question": "颱風把灘上的沙捲走以後，那些沙去了哪裡？會回來嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.chigasaki_storm_offshore_bar_recovery_454_days",
+      "answer_target": "在日本茅崎海岸的測線上，沙只搬到外面一點，一年多後剖面回到原樣。研究者比較 2007 年與 2017 年兩次颱風前後的水下地形：水深 3 公尺以內的海底被快速刮低，沙堆到水深 3 到 5 公尺的地方；之後剖面慢慢回復，2007 年那次約一年，2017 年那次大約 454 天後緩坡回到颱風前的樣子，作者歸因於平常小浪把沙推回岸邊。",
+      "scope": "茅崎是 2005 年起每年人工補沙約 3 萬立方公尺的養灘海岸，回復期間補沙沒有停，其間還有兩次浪高超過 4 公尺的大浪；會議論文、兩次事件、一條測線。只用來說明「被大浪搬走」不等於「離開這段海岸」，不外推到台灣或沙洲，也不說「一年就會自己長回來」。",
+      "source_locator": "Abstract；觀測一節；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1 條。補 C4-04 缺口（2）：有逐次測量的風暴侵蝕與之後回復。若覆核認為養灘海岸不宜，可降為 0.5 條。去重：查『茅崎』『回復』無同答案核心。 原提案 F13-013（目標 C4-04，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補的是上一輪缺口（2）「有逐次測量的風暴侵蝕與之後回復」，但場址是持續養灘的人工灘，回復不能乾淨地歸給自然過程。照作者自己提的備案降為 0.5 條，片中只當一句旁證。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大浪做的是『搬』，不一定是『拿走』：沙停在幾公尺深的地方等著被小浪送回來。",
+        "visual": "剖面圖：颱風後近岸凹下去、外側鼓起一道沙洲；日曆翻過 454 天，剖面線疊回原來的位置。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0019bbd330e2b32",
+          "origin": "wave59-earth-20261111",
+          "locator": "Abstract；觀測一節；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ]
+    },
+    {
+      "id": "S59-007",
+      "question": "把船速的參考從河床換成 GPS 以後，流量的準不準改成看船上的哪一個零件？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.gps_reference_heading_error_directional_bias",
+      "answer_target": "看羅盤。美國地質調查局的作業手冊說明：用底追蹤當參考時，羅盤的航向誤差只會把算出來的水流方向整個轉一個角度，流量不受影響；一換成 GPS，航向誤差就會直接進到水速與流量裡，而且影響和船速成正比。內建羅盤校正得好也只準到 1 到 2 度，當地的磁偏角又可能和模式值不同；它的樣子是「方向性偏差」——從左岸開到右岸量到的流量，一直和反方向量到的不一樣。手冊附了一個磁偏角輸入錯誤的例子：同一個斷面來回四趟、以 GPS 為參考，從右岸出發的兩趟比四趟平均低 4.82% 和 9.47%，從左岸出發的兩趟高 7.40% 和 6.89%。手冊的處置是：往返的差距在約 5% 以內時取成對平均，就接近真值；超過就回頭調整磁偏角，需要調超過 2 度則表示羅盤沒校好或數值輸入錯。鐵殼船或鋼構橋墩旁，羅盤可能根本不能用。",
+      "scope": "圖 F-21 是手冊裡的一張軟體畫面，沒有交代地點、日期與儀器，也沒有底追蹤或其他方法的對照，真值不明；它示範的是「方向性偏差長什麼樣子」，四個百分比是相對四趟平均，不是相對真值，旁白要說「手冊的例子裡」。不得把往與返相減另算一個差距，不得寫成「GPS 參考會差 5% 到 9%」。「約 5%」是處置門檻，不是量到的偏差。",
+      "source_locator": "p.10 Compass Considerations；p.32；Appendix B p.58–59",
+      "premise_status": "screened",
+      "notes": "算 1 條。覆核 still_missing 第（1）項要的是『量測』；這份手冊裡找到的是機制與門檻，沒有實測，所以只補到說法、沒有補到數據。與 S57-004（GPS 在樹冠峽谷的限制、迴圈閉合差）不重複；與 S58-003（亞馬遜例外的理由是羅盤誤差）相接。與池中 SRC-87ae7733e9e523c7 同一份文件。 原提案 F13-015（目標 G35，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；上一輪 still_missing 第（1）項要的是「池中已有來源 USGS TM 3-A22 裡，以 GPS 為參考時羅盤誤差、磁偏角造成流量偏差的量測」。作者只讀文字層，回報「手冊裡沒有實測」；實際上圖 F-21 就是，覆核目讀後補進答案。算 1 條（機制與處置門檻 0.5、手冊實例 0.5）；例子沒有地點與真值，不多算。與池中 SRC-87ae7733e9e523c7 是同一份文件。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "參考從河床換到衛星，弱點就從河床搬到羅盤：GPS 知道船往哪裡移，卻不知道儀器朝哪裡看。",
+        "visual": "俯視圖：船來回各開一趟，兩趟算出的流量柱一高一低；船上的羅盤指針偏 2 度，水流箭頭跟著歪。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave59-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-87ae7733e9e523c7",
+          "origin": "wave59-earth-20261111",
+          "locator": "p.10 Compass Considerations；p.32；Appendix B p.58–59",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+      ]
+    },
+    {
+      "id": "H59-001",
+      "question": "把濃縮咖啡的粉越磨越細，萃取率會一路升高嗎？",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "mechanism_key": "coffee.espresso_extraction_yield_peak_vs_grind_setting",
+      "answer_target": "不會，會先升後降。奧勒岡大學等團隊用 20 克粉、40 克出液、6 巴水壓、固定 98 牛頓的填壓，只改磨豆機刻度：刻度越細，出液時間越長，這如預期；但萃取率在刻度約 1.7 附近最高，再磨細反而下降。他們的模型假設水均勻流過整個粉床，預測應該越細越高；實測在細的一端掉下來，作者解釋為細粉太多、結團或粉床密度不均，水不再均勻流過整個粉床。同樣的粉水比例，刻度 1.3 和 2.0 都量得到 22% 的萃取率——作者說這兩杯的化學組成不可能一樣，所以單看萃取率分不出一杯咖啡。實驗原本用 9 巴，細刻度會堵，才降到 6 巴。這篇論文沒有任何感官評分。",
+      "scope": "單一磨豆機（EK 43）、單一咖啡、6 巴；刻度數字是那台機器的，不是通用的粗細單位。沒有感官資料，不得寫成「比較好喝」；文中「風味差異有注意到但沒有量化」一句說的是不同填壓力道，不是不同刻度，不引用。「一部分過萃、一部分沒萃到」是作者的推想，旁白要說是研究者的解釋。「乾區」的百分比是極端假設下的推算，不引用。不給沖煮建議。圖 4、5 的點值未目讀，寫稿前要看圖確認峰值位置。",
+      "source_locator": "Summary；Tuning the Model…；Fig. 4–5 圖說；Partially Clogged Flow Regime",
+      "premise_status": "screened",
+      "notes": "算 1 條（F4030 已有『可能下降』的一句 0.5 條，這裡新增實驗條件、峰值位置、同為 22% 的兩個刻度與作者自承沒有感官資料）。補 C4-08 缺口（1）。與 F4030 同一篇論文（池中 SRC-1dc7a0a002f869b2），建議合併進 F4030 或取代它，片中只算一個核心。 原提案 F13-004（目標 C4-08，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（1）：讀 Cameron 等 2020 全文，把只有一句的 F4030 補成有實驗條件與數字的核心。與池中 F4030 是同一篇論文（SRC-1dc7a0a002f869b2），入池時併進 F4030 或取代它，片中只算一個核心；新增 1 條（實驗條件與峰值 0.5、同為 22% 的兩個刻度 0.5），加上 F4030 原有 0.5，這篇合計 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『萃取率 22%』不是一杯咖啡的身分證：同一個數字可以來自兩種完全不同的粉床。",
+        "visual": "橫軸刻度、縱軸萃取率的一條拱形曲線，峰在 1.7；在 1.3 與 2.0 各點一個等高的點，下面畫兩個粉床：一個水均勻流過，一個只走幾條通道。",
+        "seconds": [
+          75,
+          95
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4c519d9b8834e9f0",
+          "origin": "wave59-human-20261111",
+          "locator": "Summary；Tuning the Model…；Fig. 4–5 圖說；Partially Clogged Flow Regime",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ]
+    },
+    {
+      "id": "H59-002",
+      "question": "咖啡泡得越濃，喝起來每一種味道都跟著變強嗎？",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "mechanism_key": "coffee.immersion_brew_sweetness_negative_with_tds_panel",
+      "answer_target": "多數是，甜是例外。加州大學戴維斯分校把同一款配方豆烘成淺、深兩種，在 4、22、92 °C 三種水溫各泡到五個階段，做出 30 種咖啡，同時量杯裡溶了多少東西（總溶解固體），並請 14 位受過訓練的評審逐項評分。28 個感官項目裡有 25 個在樣本之間有顯著差異；其中 19 項的強度隨濃度升高而變強，8 項看不出關係，只有甜感是越濃越低——最甜的是水才淋過、幾乎還沒泡的那一杯。作者的解讀是：那比較像苦和酸還少時留下的甜的印象，不是杯裡真的多了甜。影響整體風味輪廓最大的是烘焙度，其次是水溫；泡多久的影響比研究者預期的小，4 和 22 °C 的冷泡過了 8 小時、濃度進入平台之後，統計上顯著的變化就很少。",
+      "scope": "浸泡式沖煮，不是濾杯也不是濃縮；單一配方豆；研磨固定沒有改變；泡的是粉水比 1:5 的濃縮液，稀釋一倍、冷藏隔夜後冷著喝，作者自己說這可能削弱了時間的影響。是樣本之間的相關，不是「加濃就不甜」的因果實驗；甜感是評審的評分，不是糖的含量。8 小時之後仍有個別項目（澀、黏稠、淺焙的酸）顯著變化，旁白說「變化很少」不說「分不出」。水溫的結論涵蓋 4 到 92 °C，與 X36-005（87–93 °C、調齊濃度）的範圍不同，兩者不得寫成互相矛盾或互相證明。補充表未讀，不報逐項相關係數。",
+      "source_locator": "Abstract；Experimental design；Descriptive analysis；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：濃度與 19＋1 個屬性的方向 1、烘焙度＞水溫＞時間與 8 小時 0.5。補 C4-08 缺口（2）：把萃取量接到感官評分的原研究全文，而且是覆核點名的戴維斯咖啡中心；同時補上『沒有烘焙度對味道的研究』。與 X36-005（同一研究群 2020 年的滴濾、調齊濃度比水溫）不同實驗、不同問題；與 X36-006（分段接取後段較甜而糖量不夠解釋）方向一致，可並排但不得說成同一個實驗。Guinard 等 2023（沖煮控制圖）Wiley 回 403，未讀。 原提案 F13-005（目標 C4-08，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（2）：把萃取量接到感官評分的原研究全文，出自上一輪舉例的戴維斯咖啡中心（上一輪寫的是「例如沖煮控制圖系列」，不是指定非那一篇不可）。作者只讀摘要、方法與結論；覆核把結果與討論讀完，摘要的三個結論在正文都有對應的統計敘述，所以照全文計。算 1.5 條（濃度與 19＋8＋1 個項目的方向及作者對甜的解讀 1、烘焙度＞水溫＞時間 0.5），同意作者；但答案補上三個條件（稀釋後冷飲、甜集中在第一個時間點、作者的解讀），原本的寫法會讓人以為「泡濃就不甜」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "濃度把大部分味道一起往上推，甜卻往反方向走——所以『後段比較淡卻比較甜』不需要後段多出糖。",
+        "visual": "30 個點的散布：橫軸濃度；十九條細線往右上，一條標『甜』的線往右下。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-17479011473cf577",
+          "origin": "wave59-human-20261111",
+          "locator": "Abstract；Experimental design；Descriptive analysis；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ]
+    },
+    {
+      "id": "H59-003",
+      "question": "牛奶被加水稀釋了，蛋白質檢驗為什麼還會過關？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.nitrogen_proxy_melamine",
+      "answer_target": "因為常用的蛋白質檢驗量的是氮，分不出氮是來自蛋白質還是別的東西。世界衛生組織食品安全部門的人員 2009 年的回顧寫明：三聚氰胺是含氮量高的分子，加進去，蛋白質讀數就偏高；它便宜又容易取得，所以有摻假的經濟誘因。這件事先出現在寵物食品——2004 年（韓國）與 2007 年（美國）有人把它加進寵物食品的原料，造成寵物腎衰竭；2008 年則是有人把它加進稀釋過的生乳，墊高表面上的蛋白質含量，後來的調查發現 22 家嬰兒配方奶粉業者的產品含有三聚氰胺，造成大量嬰幼兒腎臟與泌尿道傷害。",
+      "scope": "世衛人員寫的事件回顧（Environmental Health Perspectives 的評論文章），不是原始調查；原文沒有寫檢驗法名稱，本核心不寫「凱氏定氮」，也沒有摻入量與讀數的對應。原文 Table 3 引中國衛生部截至 2008 年 12 月 1 日的通報（2,240 萬名受檢者中 294,000 例、其中 51,900 例住院、6 例死亡確認）：這組數字只留在本紀錄備查，片中不報住院與死亡數；若站主同意交代規模，全片只用一句「官方通報約三十萬名嬰幼兒受影響」並註明出處。片中限制：不點名任何企業或品牌、不用任何事件影像或病童畫面、不談延遲通報與究責、不評論任何國家的食品——事件只用來說明「檢驗量的是氮」，並與 2004、2007 年的寵物食品事件並列，說明這是檢驗方法的弱點，不是某一地的問題。站主若不同意在片中提 2008 年事件，本核心改為只講寵物食品兩例與「量的是氮」，算 1 條。",
+      "source_locator": "Background 第 1 段；Unfolding of the Global Event 第 1–2 段；Health impact 第 1 段與 Table 3",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：檢驗量的是氮、分不出來源 1 條；同一手法先後出現在寵物食品原料與稀釋生乳 0.5 條。病例數不計為事實。 原提案 F14-001（目標 C5-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字與主詞全部對得上，機制句是原文明寫的。改動在敏感處理：作者把 294,000、51,900、6 三個數字寫進答案，片中用不到——要說明的只是「量的是氮」，受害規模不是這一題的論點，數字移到 scope 備查並寫明片中限制。另補一句作者略去、但對語氣有幫助的事實：同一手法更早用在韓國與美國的寵物食品原料上，這讓這一章講的是檢驗的弱點，不是哪一國的事。池中搜尋 三聚氰胺、melamine、蛋白質含量、氮：沒有同答案核心，DOI 與網址池中皆無。這個核心牽涉嬰幼兒大量受害的事件，是否在片中使用請站主確認。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "檢驗量的不是蛋白質本身，而是它的替身——氮；造假的人照著替身下手。",
+        "visual": "一台只會數氮的儀器示意圖：左邊倒進蛋白質、右邊倒進另一種含氮粉末，指針一樣高。不用任何事件照片。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c106ab8ff8d0c45c",
+          "origin": "wave59-human-20261111",
+          "locator": "Background 第 1 段；Unfolding of the Global Event 第 1–2 段；Health impact 第 1 段與 Table 3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ]
+    },
+    {
+      "id": "H59-004",
+      "question": "以前抓得到摻糖蜂蜜的碳同位素檢驗，現在還抓得到嗎？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.honey_method_shift_eu_2023",
+      "answer_target": "在歐盟 2021–22 年抽的這一批進口蜜上，沒有用了。歐盟聯合研究中心 2023 年的技術報告：2021 年 10 月到 2022 年 2 月，15 個歐盟國家加上瑞士、挪威隨機抽了 320 批進口蜂蜜（多數在邊境管制站取樣）送驗，147 批（46%）被判為「可疑」——至少驗出一種外加糖漿的標記。過去常用來抓玉米、甘蔗糖漿的整體碳同位素法，在這批樣本上找不出可疑蜜；報告把這一點解讀為這類糖漿已不再用來摻蜜，改成米、小麥或甜菜做的糖漿。最常亮起來的標記是寡糖、多醣與甘露糖。報告也寫了誘因：2021 年歐盟進口蜂蜜平均每公斤 2.32 歐元（不含紐西蘭蜜），米糖漿約 0.40 到 0.60 歐元。",
+      "scope": "「可疑」是報告用字，不是確認摻假；所用方法只給有無標記，估不出摻了多少。報告自己寫明結果只代表抽樣期間，不得外推；2015–17 年那次的 14% 用的是另一套方法，兩個數字不能說成「變多了」。「糖漿換了種類」是報告由舊法無效作出的解讀，沒有直接驗出糖漿的種類比例；報告也沒有給舊法單獨判出幾批的數字，片中不得說「舊法一批都沒抓到」。報告列有各出口國的比例，各國樣本數懸殊，本核心不採、片中不列國名排行。",
+      "source_locator": "Abstract；§1；§5.1 Table 1；§5.2；§6；§7",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：320 批中 147 批靠新標記列為可疑 1 條；舊法在這批樣本上無效與價差 0.5 條（「米糖漿的整體碳比例落在真蜜範圍」的機制已在 X34-001，不重計）。 原提案 F14-002（目標 C5-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字全部相符，限制作者寫得完整。兩處改字：答案第一句「抓不太到了」是通論，原文只說在這批樣本上無效而且明文不得外推，改成限定在這次抽驗；補上「不含紐西蘭蜜」與取樣地點。事實數維持 1.5，但把重疊講清楚：舊法為什麼對米糖漿不靈是 X34-001 的事實，這裡只算「官方抽驗裡真的失效」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "檢驗法公開之後，摻進去的東西就跟著換；一個方法「驗不出來」和「沒有摻」是兩回事。",
+        "visual": "同一排 320 個小瓶：舊檢驗下幾乎全綠，換上新標記後將近一半轉成「可疑」的橘色；畫面註明「可疑，不是確認」。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-7e5a0dfa2ee21387",
+          "origin": "wave59-human-20261111",
+          "locator": "Abstract；§1；§5.1 Table 1；§5.2；§6；§7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ]
+    },
+    {
+      "id": "H59-005",
+      "question": "牛肉漢堡排裡的馬肉，是怎麼被發現的？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.undeclared_species_horse_2013",
+      "answer_target": "靠的是一次針對物種的 DNA 調查。英國政府的事件說明頁記載：愛爾蘭食品安全局 2013 年 1 月 15 日公布，27 款牛肉漢堡排裡有 10 款（37%）驗出馬的 DNA、23 款（85%）驗出豬的 DNA；10 款中 9 款含量很低，但有一款的馬 DNA 量顯示馬肉約占總肉量的 29%。同一頁寫著，英國主管機關這時要求業者對漢堡排、肉丸、千層麵這類加工牛肉製品做真實性檢驗並交出結果，歐盟也同意在各國檢驗供應鏈裡有沒有馬肉；而英國主管機關原本每年例行做九萬多項食品安全與詐欺檢驗，採風險導向。",
+      "scope": "來源是英國政府的說明頁轉述愛爾蘭的調查，不是調查報告原件（原件網址今日仍導回新聞列表）。頁面沒有檢驗方法，也沒有說事件之前有沒有人驗過馬：片中只能陳述先後（先有這次調查，之後才要求全面檢驗），不得寫成「以前從來沒人驗」或「例行檢驗漏掉了」。驗出的是 DNA；低含量是否來自交叉污染，頁面沒有判定。29% 是由 DNA 量推得的比例。原文點名了零售商，片中不點名零售商、工廠與品牌，圖示不畫包裝。",
+      "source_locator": "Testing 第 1–2 段；Background 末段",
+      "premise_status": "screened",
+      "notes": "算 1 條：27 款中 10 款、其中一款 29%，以及之後才擴大檢驗，合為一條；九萬多項例行檢驗是背景，不另計。 原提案 F14-003（目標 C5-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字與先後次序相符，作者的限制寫得對。小改：「約占肉量」照原文改為「總肉量」；把「之後」改成照頁面的寫法（頁面是 2013 年 2 月起持續更新的說明頁，寫的是當時正在要求）。這個核心的弱點不在字句，在來源層級：它答不了「為什麼去驗馬」，所以在長題裡只能當例子、不能當轉折的承擔者。沒有台灣的對應案例。池中搜尋 馬肉、horse、漢堡：無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "驗什麼，才看得到什麼；清單之外的東西不會自己亮燈。",
+        "visual": "27 個漢堡排圖示，10 個標上馬的記號、其中一個特別深；不出現任何品牌包裝。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave59-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-22be590f9520c2b8",
+          "origin": "wave59-human-20261111",
+          "locator": "Testing 第 1–2 段；Background 末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+      ]
+    },
+    {
+      "id": "L59-001",
+      "question": "植物靠細胞吸水、失水來動，為什麼這樣快不起來？多大的構造就非得用彈的？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.poroelastic_time_limit_size_squared_instability",
+      "answer_target": "因為水得穿過組織，而穿過去的時間跟厚度的平方成正比。哈佛的 Skotheim 與 Mahadevan 把幾十種植物和真菌的動作攤在同一張圖上：橫軸是會動的部位最薄的尺寸，縱軸是動作花的時間。對柔軟的植物組織，水流平衡大約要每平方毫米 1.6 秒；動得比這條線慢的，靠吸水和失水就做得到；比這條線快的，全都是先慢慢把彈性能存起來、再靠形狀突然失穩放出來的——不是殼翻面，就是組織撕開。捕蠅草的葉厚約 0.5 毫米，水流要約 0.4 秒，它卻在零點一到零點二秒內閉合，所以需要翻面；它的水生近親貉藻葉厚只有約 0.05 毫米，水流只要約 0.004 秒，約 0.02 秒就閉合，葉子本來就向內彎、不必翻。再快還有一道牆：彈性波傳過組織的時間，每毫米約十萬分之一秒。",
+      "scope": "每平方毫米 1.6 秒是典型軟組織的量級，不是逐一量的；各物種的時間與尺寸出自作者彙整的文獻。捕蠅草閉合時間原文有 0.1 與 0.2 秒兩種寫法，旁白說「零點一到零點二秒」。這裡的捕蠅草水流時間約 0.4 秒，與 F13-008（同一實驗室另一篇）用實測模數估的約 0.1 秒不是同一種估法，兩個數字不得並排比較或相減。不要自己替噴瓜、碎米薺、金縷梅代入公式。",
+      "source_locator": "p.1308–1310 全文；式 (1)(2)；Fig. 1 圖說",
+      "premise_status": "screened",
+      "notes": "算 2 條：水流時間隨厚度平方、分界線 1；捕蠅草對貉藻的對照 0.5；慣性下限 0.5。這是 C4-03 覆核點名缺的核心答案（缺口 1），也是第二個轉折。去重：pool.json 查『poroelastic』『多孔彈性』『貉藻』『Aldrovanda』『失穩』均無同答案核心；A25002、E9004 各講單一構造，沒有這條通則。 原提案 F13-007（目標 C4-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；這是上一輪點名的核心答案（為什麼光靠水流不夠快、要靠彈性失穩），同時是 C4-03 缺的第二個轉折。答案文字不改，只在 scope 加一條與 F13-008 的數字界線；來源紀錄的取得方式改正（見 source_fixes）。算 2 條（水流時間隨厚度平方與分界線 1、捕蠅草對貉藻 0.5、慣性下限 0.5），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "快不快不是看植物多用力，是看它多薄：夠薄就直接靠水，太厚就只能先存後放。",
+        "visual": "一張對數座標圖：一條斜線把點分成兩群；線下方（比水快）的點都標著『翻面』或『撕開』；捕蠅草與貉藻兩點用箭頭連起來。",
+        "seconds": [
+          80,
+          100
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-2b9b5f7fc7bfc98f",
+          "origin": "wave59-life-20261111",
+          "locator": "p.1308–1310 全文；式 (1)(2)；Fig. 1 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ]
+    },
+    {
+      "id": "L59-002",
+      "question": "捕蠅草的葉子是怎麼『啪』一下合起來的？合起來的那一瞬間是它在用力嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.flytrap_doubly_curved_leaf_snap_buckling_measured",
+      "answer_target": "它只做慢的那一半，快的那一半是形狀自己完成的。研究者在葉背點上螢光點，用每秒 400 格的攝影重建葉面：閉合分三段，先慢（約三分之一秒只走兩成）、中間快（約十分之一秒走掉六成）、最後又慢；葉面在中間那段由向外凸翻成向內凹。量到的變形幾乎只發生在外表面、垂直中肋的方向（最大約 9%，沿中肋約 2%，內表面不到 1%）；把剛閉合的葉子切開，只有這個方向的自然曲率變了號。葉子在兩個方向都是彎的，改一個方向的曲率就得拉伸葉面，於是它先撐著不動、把能量存在形狀裡，過了門檻才突然翻過去。作者用一個只含葉長、厚度與曲率的幾何參數描述這道門檻，量到參數越大的葉子閉得越快；有些葉子被碰之後動了一點卻沒翻，用手指輕捏就翻過去。植物怎麼改變那個方向的曲率，作者說還不清楚。",
+      "scope": "殼模型是簡化；門檻值約 0.8 與典型葉約 1 是模型與量級估計。Methods 與補充影片未讀。「怎麼改變曲率」是未解的部分，旁白不要補上「細胞失水」之類原文沒有的機制。本文估的葉片水流時間約 0.1 秒，與 F13-007 的約 0.4 秒估法不同，不得並排比較。",
+      "source_locator": "p.421–424；Fig. 1–3 圖說",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：三段式閉合與應變量測 1、幾何門檻與『捏一下就翻』0.5。補 C4-03 缺口（1）的第二份全文。去重：R6017 講兩次觸碰的鈣訊號（只讀摘要），不講閉合力學；池中無捕蠅草閉合的核心。 原提案 F13-008（目標 C4-03，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；逐句相符，只在 scope 加與 F13-007 的數字界線。算 1.5 條（三段式閉合與應變量測 1、幾何門檻與「捏一下就翻」0.5），同意作者；但它與 F13-007 都講「捕蠅草要翻面」，題內合計時扣 0.5 條重疊（見題評）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "葉子像一片被壓彎的塑膠瓶蓋：植物慢慢推，蓋子自己彈。",
+        "visual": "葉面的彎曲用顏色表示，三格連續：凸、將翻未翻、凹；旁邊一條曲線分成慢—快—慢三段。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0cd2e2095bbf72ba",
+          "origin": "wave59-life-20261111",
+          "locator": "p.421–424；Fig. 1–3 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ]
+    },
+    {
+      "id": "L59-003",
+      "question": "要讓捕蠅草合起來，感覺毛得被碰多大力？真的一定要碰兩下嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.flytrap_sensory_hair_deflection_torque_threshold",
+      "answer_target": "大約是在毛尖附近用半毫牛頓的力推兩下；但推得夠慢時，一下就夠。蘇黎世的團隊把力感測器裝在微型機械手臂上，在活的捕蠅草上一次次加大偏折：快速推兩下要讓它閉合，中位數門檻是把感覺毛推偏 0.18 弧度、力矩 0.8 微牛頓·公尺（21 次測試），低於 0.12 弧度從來沒有閉合過。他們同時記錄電訊號：太小的偏折沒有動作電位，夠大的每推一下一個。他們的模型把每次偏折當成往一個會漏的桶子裡加電荷，預測中等速度的單次偏折會讓桶子在門檻附近停留夠久、連發兩個動作電位；慢慢推一下的實驗裡，捕蟲夾果然閉合了。",
+      "scope": "模型裡的『受器電位』沒有直接量到；單次觸發用的偏折比典型獵物慢得多，作者說自然界的意義只能推測。實驗室栽培株，門檻會隨植株狀態變。不要寫成『兩下的說法是錯的』——快的碰觸仍需要兩下。",
+      "source_locator": "Results 第一節；Fig 1、3、6 圖說",
+      "premise_status": "screened",
+      "notes": "算 1 條。補 C4-03 缺口（2）：捕蠅草觸發的全文研究（R6017 的原論文 Suda 等 2020 是付費刊本，仍只有摘要）。與 R6017 互補：R6017 講訊號隨時間衰減，這裡是要多大的機械刺激。去重：查『感覺毛』『捕蠅草』無同答案核心。 原提案 F13-009（目標 C4-03，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）照原稿收；補上上一輪點名的缺口（2）：捕蠅草觸發的全文研究。逐句相符，照收。算 1 條，同意作者。原文另有閉合力矩中位數 0.65 mN·m（Results 後段），本輪沒有逐句核對上下文，不計、不用；寫稿若要用須另核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "扳機有一個量得出來的力道，而且它數的不是『碰了幾下』，是累積到門檻的訊號。",
+        "visual": "一根感覺毛被探針推偏的特寫，旁邊一個會漏水的桶：快推兩下各加一瓢才滿，慢推一下細水長流也滿。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-615767aa95ecc64d",
+          "origin": "wave59-life-20261111",
+          "locator": "Results 第一節；Fig 1、3、6 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ]
+    },
+    {
+      "id": "L59-004",
+      "question": "含羞草的葉柄一秒鐘就垂下去，它也是先存後放的彈射嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.mimosa_pulvinus_at_hydraulic_limit_wrinkle_surface",
+      "answer_target": "不是，它靠的就是水，只是剛好小到來得及。韓國浦項工科大學的研究者引用前面那條通則指出：含羞草的動作約 1 秒，和半徑約 200 微米的葉枕讓水流平衡所需的時間差不多，是多細胞植物裡最快的純水力動作。既有研究的說法是葉枕一側的運動細胞排出鉀、氯離子，水跟著出去，細胞縮小；下彎時葉枕下半部的水立刻消失。他們用 X 光顯微看葉枕下垂的過程：角度由 16 度變到 8 度時，上表皮向外移約 16 微米、下表皮向內約 15 微米，同一個關節一面伸、一面縮；下表皮靠把皺褶擠深來收起多出的表面，另一組量測裡皺褶寬由 5 微米增到約 17 微米；葉枕裡的導管束是軟的，會跟著彎。",
+      "scope": "「約 1 秒、半徑 200 微米」是引言引用 F13-007 那篇的估計，不是本文量的；離子與失水也是引言對前人研究的整理。本文沒有量力量大小，「出多少力」仍沒有數字。皺褶寬度與表皮位移是不同角度區間的兩組量測，不寫成同一次。樣本數未讀。",
+      "source_locator": "Introduction 第 2–4 段；Results 前四小節",
+      "premise_status": "screened",
+      "notes": "算 1 條：位於水力極限 0.5、上伸下縮與皺褶 0.5。補 C4-03 缺口（3）：含羞草葉枕怎麼動的已讀來源。與 L47-002（哪裡感覺）、L47-003（動了有什麼用）不重複。去重：查『葉枕』『pulvinus』只有 L47 兩個核心，答案不同。 原提案 F13-010（目標 C4-03，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（3）：含羞草葉枕怎麼動的已讀來源。數字都在，只把兩組不同角度的量測分開寫。算 1 條（位於水力極限 0.5、上伸下縮與皺褶 0.5），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張圖上，含羞草就落在那條線上：它是『還來得及用水』的最大號選手。",
+        "visual": "葉枕剖面：下半部的水色瞬間變淡，上表皮拉平、下表皮擠出深皺褶；右上角小圖把含羞草的點標在分界線上。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b9d2599e3fc05daf",
+          "origin": "wave59-life-20261111",
+          "locator": "Introduction 第 2–4 段；Results 前四小節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2b9b5f7fc7bfc98f",
+          "origin": "wave59-life-20261111",
+          "locator": "Introduction 第 2–4 段；Results 前四小節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ]
+    },
+    {
+      "id": "L59-005",
+      "question": "熊蜂學會拉繩取蜜，是自己想出來的，還是看來的？看到的又是什麼？",
+      "domain": "動物社會資訊與群體決策",
+      "mechanism_key": "social_decision.string_pulling_local_enhancement_colony_diffusion",
+      "answer_target": "幾乎都是看來的，而且看到的只是「去哪裡」。倫敦瑪麗王后大學的實驗把人造花壓在透明板下，要拉繩才吸得到糖水：291 隻沒看過的蜂，第一次 5 分鐘內沒有一隻成功；其中 110 隻有第二次機會，只有 2 隻自己摸出來，而且是亂試時碰到繩子。隔著透明小室看熟手示範過的 25 隻裡有 15 隻成功；換成用看不見的線把花拉出來、沒有蜂在場，15 隻沒有一隻學會。把繩子盤起來，拉了花也不會馬上靠近，27 隻看過示範的蜂全數失敗——牠們從示範得到的是位置和繩子，拉的動作仍靠自己試。在三個蜂群各放一隻會拉的蜂，150 回成對覓食後，各有 25/47、17/29、12/28 隻覓食蜂學會；沒放示範者的三群覓食了 5 天，沒有一隻學會。學會的蜂又成為下一批的示範者。",
+      "scope": "實驗室蜂群與人造任務。所謂「世代」是先後學會的批次，不是親子。作者明說自然界未必有對應的行為，這裡量的是能力。看不見的線那一組，蜂有沒有在看花移動沒有影像可查，作者自己列為另一種可能。盤繩全敗只對剛看過示範的新手成立：8 隻拉過 20 次以上的熟手裡有 3 隻拉得出盤繩。擴散試驗裡的蜂是和會拉的蜂一起覓食，不只是隔著看，傳遞的途徑比小室試驗多。",
+      "source_locator": "Results「Innovators…」「Social Learning of String Pulling by Caged Observers」、盤繩試驗段、Fig 5 前一段；Discussion 第 3、6 段",
+      "premise_status": "screened",
+      "notes": "算 2 條：自己幾乎學不會、看了多數會、但盤繩就全敗（學到的是位置不是技巧）1 條；放一隻熟手後在蜂群裡一批傳一批、無示範的群沒有一隻學會 1 條。各組隻數是同一實驗的條件，不另計。 原提案 F14-006（目標 C5-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；隻數全部對得上，作者算 2 條合理（兩組不同設計的實驗）。補上三個條件，讓「2 隻」的分母、對照群的機會、盤繩結論的適用範圍都在核心裡。池中只有 B2247（兩步機關，同一實驗室的另一篇）與熊蜂的花訊號各題，沒有同答案；DOI 與網址池中皆無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個做法能在群體裡傳開，不需要誰「看懂了」；看到該去哪裡、剩下自己試，就夠了。",
+        "visual": "透明板下的藍色小花與一截繩；三個小圖並排：看熟手（多數成功）、看花自己動（沒有成功）、繩子盤起來（沒有成功）。下方三個蜂群的點陣隨回合一隻隻變色。",
+        "seconds": [
+          55,
+          75
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ef0e29dc11d11e30",
+          "origin": "wave59-life-20261111",
+          "locator": "Results「Innovators…」「Social Learning of String Pulling by Caged Observers」、盤繩試驗段、Fig 5 前一段；Discussion 第 3、6 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ]
+    },
+    {
+      "id": "L59-006",
+      "question": "要先做一步沒有獎勵的動作才開得了盒子，熊蜂自己摸得出來嗎？跟著誰學有差嗎？",
+      "domain": "動物社會資訊與群體決策",
+      "mechanism_key": "social_decision.two_step_box_unrewarded_step_demonstrator_technique",
+      "answer_target": "自己摸不出來；跟著會的蜂，三分之一學會，而且要看示範者怎麼開。這個機關得先推開藍片，才推得動紅片拿到糖水。沒有示範者的三個蜂群，每天面對關著的盒子 3 小時，兩群連續 12 天、一群 24 天（合計 36 與 72 小時），沒有一個盒子被打開；只有一次，一片藍片被完整推開，之後沒有再發生。研究者訓練示範蜂時，也得先在第一步底下放臨時獎勵，之後慢慢撤掉才教得成。15 隻觀察蜂和示範蜂成對覓食（最多 13.3 小時）後，5 隻通過沒有獎勵的單獨測驗；這 5 隻全都配到一氣呵成「擠過去」開法的示範者（10 隻中 5 隻），配到「分兩次推」示範者的 5 隻全數失敗。",
+      "scope": "實驗室、樣本小（15 對，部分示範蜂重複使用）。作者自己說不能排除「一百萬隻裡有一隻」能獨力解開，也沒有測這個做法能不能在群體裡長期維持。示範手法與學不學得會的關係是 5 對 0 的小樣本，作者的用語是「可能影響」；兩種示範者開的盒數沒有顯著差異，跟隨時間在學會組較長但未達統計顯著。「能學到自己發明不了的行為不是人類獨有」是作者的詮釋，片中要標明。",
+      "source_locator": "Main 第 3–8 段；Discussion 第 1、3–4 段",
+      "premise_status": "screened",
+      "notes": "與池中 B2247 是同一篇研究。裁定：B2247 的池內閱讀是學校新聞稿、答案一句，照規則新聞稿只當入口，計 0 條；本核心讀的是論文全文，算 1.5 條（對照群的時數與訓練示範蜂的困難 1 條；5／15 與示範手法 0.5 條）。兩者合計 1.5 條，不是作者算的 2 條。建議併入時以本核心為準，B2247 標為同一研究的舊紀錄（或把本次全文閱讀掛到 B2247 上、更新它的答案），任何長題都不得把兩者分開各算一次。 原提案 F14-007（目標 C5-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字全部相符。補上對照群裡藍片被推開一次的例外（原文自己寫了，省略會讓「沒有一隻碰得動」說過頭），以及示範手法那一點只是小樣本下的「可能」。計數的裁定見 notes：同一研究不重計，新聞稿不計，合計 1.5 條。不判 REJECT、不填 duplicate_of，因為 B2247 的答案只有一句通論，這個核心補的是它沒有的全部實驗內容；但整併時兩者要綁在一起。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "放了 24 天沒有一隻自己打開的機關，跟著同伴走一遍就有蜂學會——學來的東西可以超過自己摸得到的。",
+        "visual": "圓盒上藍片與紅片的俯視圖，兩種開法各畫一條路徑：分兩次推（沒有觀察蜂學會）、一路擠過去（十隻裡五隻學會）。",
+        "seconds": [
+          45,
+          65
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fdc2f566679bf734",
+          "origin": "wave59-life-20261111",
+          "locator": "Main 第 3–8 段；Discussion 第 1、3–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ]
+    },
+    {
+      "id": "L59-007",
+      "question": "野外的黑猩猩群裡冒出一個新做法，怎麼知道牠們是互相看來的，不是各自想到的？",
+      "domain": "動物社會資訊與群體決策",
+      "mechanism_key": "social_decision.moss_sponge_dynamic_network_diffusion",
+      "answer_target": "看它是不是沿著「誰看過誰」傳。2011 年 11 月，烏干達布東戈森林 Sonso 群的黑猩猩開始去一個新淹出來的水坑，六天內出現兩個這一群二十年觀察紀錄裡沒有的做法：用苔蘚做吸水的海綿，以及撿別隻丟下的舊葉海綿再用。研究者記下每一次誰在場、看到誰。苔蘚海綿由首領雄性先做，之後 7 隻跟進，其中 6 隻事前確定看過別隻做；模型估計每看一次，學會的速率約為原來的 15 倍（95% 信賴區間 4.7 到 88.2），約 85% 的學會歸於社會傳遞。撿舊海綿那個做法，後來跟進的 8 隻裡有 4 隻看起來沒看過別隻就做了，每看一次的效果估計只有 1.07 倍（信賴區間 0.58 到 2.48，包含「沒有效果」）。同一個水坑、同一群，兩個新做法裡只有一個找得到沿著觀看關係傳的證據。",
+      "scope": "單一族群、六天、個體數少，信賴區間很寬。「15 倍」是模型估計的學習速率比，不是學會的機率，也不是「看一次就會」。學習的機制（模仿或別的）作者明說無法判定。有一隻母猩猩是在用過別隻含苔蘚的舊海綿後才自己做，分析保守地把牠算作自行發明。撿舊海綿「不是看來的」不能說死：估計值的區間包含 1，只能說沒有找到社會傳遞的證據。兩個做法都是原有葉海綿行為的變化，不是全新的工具。模型細節在未讀的方法與補充資料裡。",
+      "source_locator": "Introduction 第 4 段；Results 第 3–7 段與 Table 2 說明；Discussion 第 1–2、5 段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：苔蘚海綿沿觀看關係擴散與估計值 1 條；同場的另一個新做法沒有找到社會效應，當作現成的對照 0.5 條。 原提案 F14-008（目標 C5-03，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；數字全部相符。只改最後一句與 scope：作者寫「兩個新做法只有一個是看來的」，原文對撿舊海綿的結論是沒有證據支持社會傳遞（1.07 倍、區間跨過 1），不是證明了各自想到。池中 R35008、R35009（釣白蟻工具）、A14006（警報叫聲）是別的研究；DOI 與網址池中皆無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大家都去了同一個新地方，不足以解釋大家都學會；要看學會的順序是不是跟著「看過誰」走。",
+        "visual": "水坑邊的個體點陣，每學會一隻就亮起，並畫出牠先前看過誰的箭頭；右邊同樣的圖給「撿舊海綿」，亮起的點有一半沒有箭頭進來。",
+        "seconds": [
+          50,
+          70
+        ]
+      },
+      "origin": "wave59-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6353a16c3c2593f7",
+          "origin": "wave59-life-20261111",
+          "locator": "Introduction 第 4 段；Results 第 3–7 段與 Table 2 說明；Discussion 第 1–2、5 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+      ]
+    },
+    {
+      "id": "P59-001",
+      "question": "人越排越密的時候，每個人會慢到什麼程度？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.single_file_required_length_linear_with_speed",
+      "answer_target": "在于利希研究中心的單列實驗裡，平均慢到每秒不到 0.2 公尺。研究者用椅子和繩子圍出一條 17.3 公尺長的環形走道，窄到不能超前，讓 1、15、20、25、30、34 個人排成一列走，並要求不要趕。一個人獨走平均每秒 1.24 公尺；15 人時每秒 0.90 公尺；34 人時（量測段裡每公尺約 1.8 人）每秒 0.17 公尺。把每個人前後佔的長度對速度作圖，在每秒 0.1 到 1 公尺之間是一條直線：速度每增加每秒 1 公尺要多約 1.06 公尺，截距約 0.36 公尺——連走得很慢時也成立，這一點出乎作者意料。作者從錄影看到的原因之一是：擠的時候前後的人會自己對上腳步，像行軍一樣同步踏步，有人把腳踩到隊伍中線的左右兩側，把空隙用到最滿。",
+      "scope": "受試者是學生與職員、被要求放鬆走，作者自己說一個人獨走的速度因此偏低。最高只做到量測段每公尺約 1.8 人；這篇沒有說人會不會停，旁白不得寫「擠成這樣也沒有停」——同一研究群後來的單列實驗在更高密度看到一停一走的波。0.36 公尺是直線的截距，不是量到的「站著不動所需長度」。arXiv 版未對照刊本。不得把單列的數字直接換算成每平方公尺幾人（原文的換算含一個假設的修正項）。",
+      "source_locator": "§3.1–3.3；表；Fig. 7；§5",
+      "premise_status": "screened",
+      "notes": "算 1 條。C4-02 路線（甲）的第一份受控實驗全文，答『密度升高時速度怎麼變、會不會停』。去重：查『單列』『Seyfried』『基本圖』無同答案核心；X35 各核心講條紋、成行與門口，沒有密度—速度關係。 原提案 F13-016（目標 C4-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；C4-02 路線（甲）的第一份受控實驗全文。數字逐列相符，但作者答案的結論句「沒有停」原文沒有，而且與同一研究群後來的結果相反，刪掉並改問題；密度改用量測值。算 1 條（各人數下的速度 0.5、所需長度對速度的直線與同步踏步 0.5），同意作者的條數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人群不像車流會留安全距離然後停住：越擠就越小步、對上腳步，一直挪。",
+        "visual": "俯視的環形走道，人數由 15 加到 34，點與點的間距縮短、速度條變短；右邊一條直線圖。",
+        "seconds": [
+          50,
+          65
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c4608d53f6ed914e",
+          "origin": "wave59-physics-20261111",
+          "locator": "§3.1–3.3；表；Fig. 7；§5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ]
+    },
+    {
+      "id": "P59-002",
+      "question": "門口排起隊的時候，門裡面也一樣擠嗎？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.bottleneck_jam_forms_below_nominal_capacity",
+      "answer_target": "實驗裡不是：隊伍擠在門前，門裡面反而鬆。于利希與伍珀塔爾的研究者讓 20、40、60 人從同樣密度的等候區走過一段 2.8 公尺長的窄道，寬度由 0.8 公尺一次加 0.1 公尺到 1.2 公尺，要求不推、照平常速度。通過的流量隨寬度近似直線增加，每公尺寬每秒約 1.6 到 2.3 人，沒有出現早先研究說的「多一排人才跳一級」。窄道前排起了隊，初步分析是每平方公尺 4 到 6 人；窄道裡面卻穩定在每平方公尺約 1.8 人。作者由此認為真正卡住的是「進門那一下」：從鬆散的等候區或隊伍裡隨機起步，排不成窄道裡全速通過所需的整齊隊形。至於這算不算「還沒到容量就塞」，要看採信哪一張流量對密度的圖：手冊常用的兩張正好把最大流量放在每平方公尺 1.8 人，作者則依另外幾份研究主張最大值在更高的密度。",
+      "scope": "年輕受試者、不准推的實驗室情境。「低於容量就塞」是作者拿本實驗的密度對照別人的基本圖得出的主張，不是量到的，而且同一研究群 2011 年的走廊實驗（F13-018 的來源，圖 6、7）單向比流量在每平方公尺 1.5 到 2 人附近最高，並不支持「最大值在高得多的密度」；片中不得把「沒超過容量就會塞」當成結論。門前 4 到 6 人是作者所稱的初步分析。三個可能原因作者沒有檢驗。arXiv 版未對照刊本。P58-007 是准推的另一個實驗，不得混成同一組數字。",
+      "source_locator": "Abstract；§2；Table 2；§4.3；§5",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：流量對寬度線性 0.5、門前 4–6 人對門內 1.8 人與『低於容量就塞』1。C4-02 路線（甲）的第二份受控實驗全文，也是不用事故案例時的第二個轉折。去重：查『瓶頸』『容量』『窄道』無同答案核心；X35-004 講門前柱子、P58-007 講推擠規則。 原提案 F13-017（目標 C4-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；數字相符，但作者把它當成 C4-02 不用事故案例時的第二個轉折，轉折句（「還沒到流量最大的密度就塞了」）恰好是這篇最站不住的一句：原文自己先承認手冊的基本圖支持通行的判準，結論靠一個假設；同一研究群四年後的實驗又不支持那個假設。改問題與答案，只留量到的事（流量對寬度線性、門前擠門內鬆、作者對入口的解釋）。算 1 條（流量對寬度 0.5、門前與門內的密度對比 0.5），作者算 1.5 條；角色由 turn 改為 segment。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "塞住不需要誰做錯事，也不需要人多到『超過設計』：窄口前的人自己就會疊起來，而窄口裡面其實還有餘裕。",
+        "visual": "同一張俯視圖：窄道前的點擠成深色一團，窄道內的點稀疏；旁邊一條流量曲線，標出『門內在這裡』『最大值在右邊』。",
+        "seconds": [
+          70,
+          90
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c2f2201b6c949a67",
+          "origin": "wave59-physics-20261111",
+          "locator": "Abstract；§2；Table 2；§4.3；§5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ]
+    },
+    {
+      "id": "P59-003",
+      "question": "研究者想在實驗室做出很擠的人群，為什麼光是多找人還不夠？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.corridor_density_needs_exit_narrowing_transition",
+      "answer_target": "因為人會走掉，得把出口縮小才擠得起來——而出口一縮，量到的規律也跟著變。同一個德國研究群找了最多 350 人，在三種寬度的走廊做了 28 次、在一個 T 形路口做了 7 次實驗，用影像自動追蹤每個人的軌跡。不同寬度的走廊換算成每公尺寬的流量後，在每平方公尺 3.5 人以下可以合成同一條曲線。但要把密度往上推，只能縮窄出口；出口一縮，離出口 4 公尺遠的量測區裡，流量和密度的關係在每平方公尺約 2 人的地方斷開成兩段，作者解釋為出口限制了流出所造成的轉變。T 形路口量到的曲線也不能拿直走廊的來套。論文開頭整理的文獻顯示這個領域的分歧有多大：不同研究裡，人擠到走不動的密度從每平方公尺 3.8 人到 10 人都有，流量最大的密度也從 1.75 人到 7 人都有。",
+      "scope": "實驗最高只到每平方公尺約 4 人，沒有推擠；3.8 到 10 與 1.75 到 7 是作者引用的文獻比較，不是本實驗量的。「比流量在每平方公尺 1.5 到 2 人附近最高」是覆核目讀圖 6、7 得到的，寫稿若要用須再看圖並說明較高的密度是縮窄出口做出來的。arXiv 版未對照刊本。這個核心說的是受控實驗的極限，不得拿來暗示任何真實事故。",
+      "source_locator": "Abstract；§1；§2；§4.2–4.3；§5",
+      "premise_status": "screened",
+      "notes": "算 1 條。C4-02 路線（甲）的第三份；它同時誠實交代不用事故案例的代價：受控實驗到不了『擠到極限』的密度。去重：無同答案核心。 原提案 F13-018（目標 C4-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；逐句相符。答案補上文獻裡「流量最大的密度 1.75 到 7」這一半——它正是 F13-017 那個主張懸而未決的原因，片中應該一起交代。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "『每平方公尺幾人會出事』沒有一個實驗室量出來的數字——能安全做的實驗，到四人上下就是極限。",
+        "visual": "一條走廊，出口的門一格格縮窄，走廊裡的點變密；曲線在 2 的地方斷成兩段。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-3fcdb3b69204a1b5",
+          "origin": "wave59-physics-20261111",
+          "locator": "Abstract；§1；§2；§4.2–4.3；§5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ]
+    },
+    {
+      "id": "P59-004",
+      "question": "『每平方公尺幾個人』算擠？有沒有寫進規定的數字可以對照？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "crowd.density_reference_values_two_six_eight_per_square_metre",
+      "answer_target": "德國消防協會 2012 年的技術報告整理了三個數字。法規上有兩個：集會場所的建築規定用每平方公尺 2 人當作規劃疏散的基準；交通法規容許公車的立位到每平方公尺 8 人——報告直說後者在科學上站不住腳。報告自己提出的臨界值是每平方公尺約 6 人：到了這個密度，人幾乎沒有空間靠挪一步來化解旁人傳來的力。每平方公尺 8 人以上，只有在外力擠壓、無處可避時才會出現。",
+      "scope": "協會的技術報告（英譯本），不是法規本文，條號沒有讀到；是德國的數字。台灣主管機關的人潮密度基準仍沒有讀到。報告裡的個案量測不引用。不得寫成自保口訣或『幾人以下就安全』。",
+      "source_locator": "§3（p.6–9）；§4.1 開頭",
+      "premise_status": "screened",
+      "notes": "算 1 條。上一輪要求兩條路都補的「主管機關或研究單位的人潮密度基準」；補到的是研究單位（德國消防協會）的整理，不是主管機關本文，也不是台灣的。去重：無同答案核心。（刪去原 notes 裡關於英國運動場館安全局算例的一句：那份算例沒有來源紀錄，「平地站席每平方公尺 4.0 人」是算例中管理者自選的值，不帶任何主張，不當來源。） 原提案 F13-019（目標 C4-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；逐句相符，答案與 scope 不改。算 1 條（法規上的 2 與 8 及報告對 8 的評語 0.5、報告自己的臨界值約 6 與理由 0.5）。作者 notes 裡提到的英國算例既沒有來源紀錄、也不進答案，照任務說明二擇一：刪去那一句；快取裡的 sgsa-worked-example-b-cricket.pdf 不算來源。片中用這個核心時不得變成「幾人以下就安全」的口訣。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "實驗做到 4、規劃用 2、危險從 6 開始——三個數字放在一起，觀眾才知道前面那些實驗站在哪裡。",
+        "visual": "一平方公尺的方格依序站進 2、4、6、8 個人的俯視剪影，各標上出處。",
+        "seconds": [
+          35,
+          50
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-39bc2174d385fd98",
+          "origin": "wave59-physics-20261111",
+          "locator": "§3（p.6–9）；§4.1 開頭",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ]
+    },
+    {
+      "id": "P59-005",
+      "question": "雨滴打在羽毛、蝶翅和葉面上，為什麼常常不是整顆彈走，而是當場碎掉？",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "mechanism_key": "rain.microbump_shock_wave_shatter_contact_time",
+      "answer_target": "這些表面很不沾水，上面還有微米級的小凸起（文中量到的高度由連香樹葉的約 8 微米到蜻蜓翅的約 60 微米）。康乃爾大學的實驗讓半徑 1.1 到 2.0 毫米的水滴以每秒 0.7 到 6.6 公尺落在北方鰹鳥的羽毛、蜻蜓與蝶蛾的翅、連香樹葉上：高速時，攤開的水膜在每個小凸起後面拉出 V 形波紋，水膜破洞、洞長大相連，水滴碎成許多小滴。在人工的不沾水表面上可以定量：慢的時候水滴攤開、縮回、整顆彈起，接觸時間約 18 毫秒，和理論值 19 毫秒相近；速度超過一個門檻，接觸時間開始下降，和理論值相比最多少約七成。門檻速度隨凸起高度而定（凸起越高門檻越低），模型預測它與水滴大小無關。",
+      "scope": "標本是博物館提供的鳥遺體上的羽毛、館藏昆蟲的翅與摘下的葉，不是活的動物。接觸時間的定量是在人工塗層與微結構表面上做的（Fig.5 圖說：人工表面 I、半徑 2 毫米）；18 與 19 毫秒是半徑 1.7 毫米水滴的例子；「最多少七成」是相對理論接觸時間，片中不得寫成「羽毛上少了七成」。「減少熱量與動量傳遞，鳥比較不失溫、昆蟲比較不失穩」是作者引用其他研究所作的推論，本文沒有量體溫、受力或飛行。作者稱波紋為「類震波」，並說明它不是壓縮流體的真震波。補充資料與原圖未讀。",
+      "source_locator": "Results 各小節、Table 1、Fig.1–2、5 圖說；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：高速下在生物表面碎裂的現象與成因 1 條；接觸時間下降與門檻看凸起高度 0.5 條（人工表面上的量測）。 原提案 F14-004（目標 C5-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；現象與數字對得上，改的是歸屬：作者的句子讀起來像七成是在羽毛蝶翅上量到的，原文的定量在人工表面；「幾十微米」對連香樹葉不成立。動量傳遞減少是推論、不是量測——這一點決定它在 C5-02 裡撐不撐得起轉折一，見該題。池中 I12013（薄餅狀彈跳）、I12002（撞擊後黏住）是別的研究與現象，網址與 DOI 池中皆無。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "挨雨的一方不只是被動承受：表面的小凸起把水滴弄碎，讓它更早離開。",
+        "visual": "由下往上看的水滴攤開示意：平滑不沾水面上整片縮回彈起；有小凸起的面上先出現一道道 V 形紋，再破洞、碎開。兩格下方各一條接觸時間的長短條。",
+        "seconds": [
+          40,
+          60
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b42246a529071977",
+          "origin": "wave59-physics-20261111",
+          "locator": "Results 各小節、Table 1、Fig.1–2、5 圖說；Discussion 第 1–2 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ]
+    },
+    {
+      "id": "P59-006",
+      "question": "雨滴打在乾土上，土裡的東西是怎麼跑進空氣的？雨越大噴得越多嗎？",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "mechanism_key": "rain.porous_soil_trapped_bubble_aerosol_window",
+      "answer_target": "靠的是水滴裡的小氣泡，而且雨太大反而不噴。麻省理工的高速攝影顯示：水滴打在會吸水的多孔表面，攤開得比水滲進去還快，底下困住的空氣變成一顆顆小氣泡；氣泡升到水滴頂面破掉，射出直徑幾十微米的細水柱，再斷成懸在空中的小滴。把螢光染料先滲進多孔的薄層板再晾乾，飛出去的小滴帶著染料。約 600 次實驗（16 種土壤、幾種多孔板與不同液體）畫出的範圍是：相當於小雨到中雨的落速、吸水性像黏土與砂質黏土的表面會噴；砂不噴，相當於大雨的條件也不噴。每 10 秒滴一滴，第二滴之後就看不到了；改成每 5 分鐘滴一滴，每一滴都噴——孔隙裡要先有空氣。",
+      "scope": "實驗室單滴試驗，土樣是烘乾的。染料試驗用的是薄層層析板，不是土；重複滴落那一組原文沒有寫是哪一種表面。作者自己列了限制：後來的雨滴會把氣膠洗掉、幾十微米的小滴沉降不慢，野外與大尺度的效應沒有量；也沒有量細菌或氣味分子，「下雨的味道」只在引言當動機提到。粉末與鬆散顆粒層上沒有看到氣泡，原因作者只作推測。「大雨不噴」是相當於大雨落速的單滴條件，不是在大雨裡量的。",
+      "source_locator": "Results「Aerosol generation from droplets hitting soils」「Delivery of materials…」「Aerosol-generation process」「Effect of porous structures…」「Characterization…」；Discussion 第 4–5 段",
+      "premise_status": "screened",
+      "notes": "算 1 條：舊集 S56（池中 LEG-S56）已用一句話講過「小雨打在乾土上會噴出微小氣溶膠」，本核心只算新增的部分——氣泡怎麼來，以及大雨、砂、孔隙已濕都不噴的範圍。來源與 LEG-S56 所列的 SRC-ba0ca00542395953 是同一篇論文，那筆紀錄註明當時未讀外站；採用時把本次全文閱讀併入同一來源。 原提案 F14-005（目標 C5-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V17（2026-11-12）改字後收；機制與範圍都在原文上。兩句說過頭：染料「放在孔隙裡」會被讀成土壤，實際是層析板；「10 秒內再滴一滴就不噴了」原句是連續滴的第二滴之後。與已製作的 S56 重疊一句，作者已扣，算 1 條合理：S56 的池中紀錄沒有讀過這篇論文，這個核心等於把那一句補成有全文閱讀的核心，但不能再當成新話題的鉤子。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "被雨帶上天的東西不是被「打飛」的，是從水滴裡的氣泡噴出去的；所以雨更大、土更濕，反而沒有。",
+        "visual": "水滴剖面示意：底下一排小氣泡往上浮、頂面破掉射出細絲；旁邊一張「落速 × 土的吸水快慢」的格子圖，只有中間一塊亮起。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave59-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-6a584e0e3229ab45",
+          "origin": "wave59-physics-20261111",
+          "locator": "Results「Aerosol generation from droplets hitting soils」「Delivery of materials…」「Aerosol-generation process」「Effect of porous structures…」「Characterization…」；Discussion 第 4–5 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-physics.json"
+      ]
+    },
+    {
+      "id": "T59-001",
+      "question": "通訊軟體要知道我通訊錄裡誰也在用它，就得把通訊錄交給伺服器嗎？",
+      "domain": "資訊系統與數位日常",
+      "mechanism_key": "e2ee.contact_discovery_hashed_numbers_invertible_enclave_scan",
+      "answer_target": "照 Signal 自己 2017 年的說明，舊做法等於交了：手機把每個電話號碼的雜湊值傳給伺服器比對，但電話號碼的可能值太少，雜湊幾乎一定能反推回號碼。伺服器照公開的程式碼跑就不會留下紀錄，可是使用者沒有辦法確認它真的在跑那一份。它提出的新做法是把比對放進伺服器處理器的隔離區，由處理器向用戶端證明裡面跑的是哪一份程式，主機的作業系統看不到隔離區裡的記憶體內容。文章接著自己指出這還不夠：作業系統雖然看不到內容，卻看得到程式碰了哪些記憶體位址，光看位址就能推回查的是誰；所以每一批查詢都得把全部註冊用戶從頭掃一遍，建表時每一格都寫一次，讓存取的樣子和查什麼無關。",
+      "scope": "Signal 自己的設計說明，不是外部稽核；2017 年的技術預覽，文末說之後幾個月才部署，現行做法沒有讀，旁白要標年份並說「Signal 當時提出」。處理器隔離區後來被公開過多種攻擊，本文沒有提，不得寫成「因此伺服器看不到」。片中只有前半（雜湊可以反推、只能信它照公開的程式碼跑）當成已知事實；後半（隔離區與全表掃描）只能當「它提出的做法與它自己指出的漏洞」。不得由此推論其他服務的做法。",
+      "source_locator": "Contact discovery；Trust but verify；SGX contact discovery；Building a secure SGX service",
+      "premise_status": "screened",
+      "notes": "算 1 條。這不是覆核點名的那一塊：Albrecht、Dowling、Jones 的論文全文仍讀不到（見 blocked），『伺服器能改成員名單』仍沒有來源；這個核心是覆核 still_missing 第（2）項（P57-NA014／F10-NA008），用來把 G38 的餘裕由 0.3 分拉開，放在『對面是誰』之後、群組之前，回答『伺服器還知道什麼』裡的通訊錄。來源仍是 Signal 自己的文件，獨立性沒有改善。去重：查『聯絡人探索』『SGX』『通訊錄』無同答案核心。 原提案 F13-014（目標 G38，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；不是上一輪點名的那一塊（獨立學者的全文仍讀不到），是上一輪 still_missing 第（2）項。逐句相符，答案不改，scope 收緊。從嚴只算 0.5 條：前半（舊做法的雜湊可反推、使用者無從確認伺服器跑的是哪一份程式）是 Signal 對自己的不利陳述，可算；後半是一份 2017 年預覽的設計，部署後的實況沒有讀、獨立性沒有改善，可以講但不計。作者算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "內容鎖住之後，伺服器還可能從『你問了誰』和『程式碰了哪一格記憶體』知道你的朋友是誰。",
+        "visual": "一本通訊錄變成一串雜湊值再被一一對回號碼；換成一個黑盒子，外面的人只看到它每次都把整排抽屜全部拉開一遍。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave59-tech-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5be5add077e10eb6",
+          "origin": "wave59-tech-20261111",
+          "locator": "Contact discovery；Trust but verify；SGX contact discovery；Building a secure SGX service",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave59-tech.json"
+      ]
+    },
+    {
       "id": "J6001",
       "question": "拆下再放回的底座，為什麼只靠幾個接點就能定住位置？",
       "domain": "日常機構與精密運動",
@@ -433310,6 +436004,32 @@
       "P58-008": "P58-008",
       "T58-001": "T58-001",
       "T58-002": "T58-002",
+      "S59-001": "S59-001",
+      "S59-002": "S59-002",
+      "S59-003": "S59-003",
+      "S59-004": "S59-004",
+      "S59-005": "S59-005",
+      "S59-006": "S59-006",
+      "S59-007": "S59-007",
+      "H59-001": "H59-001",
+      "H59-002": "H59-002",
+      "H59-003": "H59-003",
+      "H59-004": "H59-004",
+      "H59-005": "H59-005",
+      "L59-001": "L59-001",
+      "L59-002": "L59-002",
+      "L59-003": "L59-003",
+      "L59-004": "L59-004",
+      "L59-005": "L59-005",
+      "L59-006": "L59-006",
+      "L59-007": "L59-007",
+      "P59-001": "P59-001",
+      "P59-002": "P59-002",
+      "P59-003": "P59-003",
+      "P59-004": "P59-004",
+      "P59-005": "P59-005",
+      "P59-006": "P59-006",
+      "T59-001": "T59-001",
       "J6001": "J6001",
       "J6002": "J6002",
       "J6003": "J6003",
@@ -462627,6 +465347,131 @@
         "a": "S58-006",
         "b": "N268",
         "reason": "極光橢圓往低緯延伸的機制是 N268；本核心只補 2024 年這一次的事件資料。（V15 2026-11-12）"
+      },
+      {
+        "a": "S59-001",
+        "b": "S58-005",
+        "reason": "S58-005 已有 49 顆中 38 顆、Dst 中等、恢復期；本核心的衛星數不重計，新增的是高度與密度數字。（V16 2026-11-12）"
+      },
+      {
+        "a": "S59-002",
+        "b": "S58-004",
+        "reason": "S58-004 已有 2:44、不到一分鐘、九個多小時；本核心不重計這三點。S58-004 的 scope 寫「片中不說設備沒壞」，本核心補上設備確有損壞及其歸因。（V16 2026-11-12）"
+      },
+      {
+        "a": "S59-002",
+        "b": "N269",
+        "reason": "N269 是機制一句（感應電流、變壓器飽和、保護連鎖），本核心是它的事件實例。（V16 2026-11-12）"
+      },
+      {
+        "a": "S59-003",
+        "b": "S58-006",
+        "reason": "S58-006 已有「事前通知了電網營運者」一句；本核心補通知的時間與電網端結果。S58-006 的 scope 禁止說「沒有停電」，那個限制現在由本核心的來源解除，但仍不得寫成因果。（V16 2026-11-12）"
+      },
+      {
+        "a": "H59-001",
+        "b": "F4030",
+        "reason": "同一篇論文、同一個機制；F4030 原有「可能下降」一句 0.5 條，本核心只算新增 1 條。入池時合併。（V16 2026-11-12）"
+      },
+      {
+        "a": "H59-002",
+        "b": "X36-006",
+        "reason": "不同實驗（滴濾分段對浸泡累積）；本文討論一節自己做了這個比較，可並排，但要說是兩個實驗。（V16 2026-11-12）"
+      },
+      {
+        "a": "H59-002",
+        "b": "X36-005",
+        "reason": "同一研究群的另一個實驗（滴濾、87–93 °C、調齊濃度）；水溫的結論範圍不同，不重複。（V16 2026-11-12）"
+      },
+      {
+        "a": "L59-001",
+        "b": "A25002",
+        "reason": "A25002 講狸藻單一構造；E9004 講碎米薺。都沒有這條通則，不重複。（V16 2026-11-12）"
+      },
+      {
+        "a": "L59-002",
+        "b": "R6017",
+        "reason": "R6017 講兩次觸碰的訊號（池內只讀摘要），不講閉合力學。（V16 2026-11-12）"
+      },
+      {
+        "a": "L59-002",
+        "b": "L59-001",
+        "reason": "「捕蠅草靠翻面」兩個核心都有，題內合計扣 0.5 條。（V16 2026-11-12）"
+      },
+      {
+        "a": "L59-003",
+        "b": "R6017",
+        "reason": "R6017 講訊號隨時間衰減（只讀摘要，計 0）；本核心講要多大的機械刺激，並可取代 R6017 在片中的位置。（V16 2026-11-12）"
+      },
+      {
+        "a": "L59-004",
+        "b": "L47-002",
+        "reason": "L47-002 講在哪裡感覺、L47-003 講動了有什麼用，答案不同。（V16 2026-11-12）"
+      },
+      {
+        "a": "S59-004",
+        "b": "E11006",
+        "reason": "E11006、E11007 是美國國家公園署的通論頁（越浪、破口）；本核心是台灣一段沙洲的實測，可當它們的實例，不重複。（V16 2026-11-12）"
+      },
+      {
+        "a": "S59-004",
+        "b": "S45-002",
+        "reason": "S45-002 是美國鹽沼的推估（中等條件累積較大）；本核心是不同地點、不同材料的一年實測，方向相同但不得寫成互相驗證。（V16 2026-11-12）"
+      },
+      {
+        "a": "T59-001",
+        "b": "T57-001",
+        "reason": "T57-001、T58-001 講傳票換到什麼；本核心補「通訊錄」這一項，不重複。池中 P57-NA014／F10-NA008 是同一頁（當時只讀開頭）。（V16 2026-11-12）"
+      },
+      {
+        "a": "S59-007",
+        "b": "S57-004",
+        "reason": "S57-004 講 GPS 在樹冠峽谷的限制與迴圈閉合差（也提到羅盤的系統誤差），沒有「換成 GPS 後航向誤差直接進流量」與方向性偏差的例子，不重複。（V16 2026-11-12）"
+      },
+      {
+        "a": "S59-007",
+        "b": "S58-003",
+        "reason": "S58-003 是巴西手冊的條文，本核心是它所承襲的 USGS 手冊的機制與例子，相接不重複。（V16 2026-11-12）"
+      },
+      {
+        "a": "P59-001",
+        "b": "P58-005",
+        "reason": "P58-005（事故錄影分析）說極端密度下人不會整個停住；本核心原本的「沒有停」會被誤當成它的受控實驗版，已刪。兩者不得互相引證。（V16 2026-11-12）"
+      },
+      {
+        "a": "P59-002",
+        "b": "X35-004",
+        "reason": "X35-004 講門前柱子、P58-007 講推擠規則；本核心講門前與門內的密度，不重複。（V16 2026-11-12）"
+      },
+      {
+        "a": "H59-004",
+        "b": "X34-001",
+        "reason": "X34-001 已有「米糖漿整體碳比例可能落在蜜的範圍內」的機制與一瓶樣本的分糖量測；本核心是 320 批抽驗的結果，機制不重計。報告 Table 1 的 LC-IRMS 判準引的就是 X34-001 所據的 Elflein 與 Raezke 2008。（V17 2026-11-12）"
+      },
+      {
+        "a": "H59-005",
+        "b": "X34-004",
+        "reason": "X34-004 是「定向檢驗只認名單上的魚」的實驗室證據；本核心是另一個物種、另一種食品的市場事件，不重計。（V17 2026-11-12）"
+      },
+      {
+        "a": "P59-005",
+        "b": "I12013",
+        "reason": "同樣講「提早離開表面」，但那是低韋伯數下的薄餅狀彈跳、另一篇研究；現象不同，不重計。（V17 2026-11-12）"
+      },
+      {
+        "a": "P59-006",
+        "b": "LEG-S56",
+        "reason": "舊集 S56 的答案已有「小雨打在乾土上會噴出微小氣溶膠，把氣味帶進空氣」一句，同一篇論文；本核心只算 1 條。片中若用，要帶一句「下雨的味道那一集講過」，不重講氣味。（V17 2026-11-12）"
+      },
+      {
+        "a": "L59-005",
+        "b": "B2247",
+        "reason": "同一實驗室的後續研究，任務不同（兩步機關），不重疊。（V17 2026-11-12）"
+      },
+      {
+        "a": "L59-006",
+        "b": "B2247",
+        "reason": "同一篇研究（Bridges 等 2024）。B2247 的來源 SRC-1b12d216f2bf1333 是學校新聞稿、池內註明未讀 Nature 全文，計 0；本核心 1.5 條，合計 1.5 條。（V17 2026-11-12）"
       }
     ],
     "excluded": [
@@ -462971,6 +465816,34 @@
         ]
       },
       {
+        "id": "S58-006~S59-003",
+        "a": "S58-006",
+        "b": "S59-003",
+        "question_score": 0.353,
+        "answer_score": 0.105,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "2024 年 5 月那場磁暴有多強？事前誰收到了通知？",
+          "2024 年 5 月那場二十年來最強的磁暴，北美的電網實際上發生了什麼？"
+        ]
+      },
+      {
+        "id": "S58-005~S59-001",
+        "a": "S58-005",
+        "b": "S59-001",
+        "question_score": 0.345,
+        "answer_score": 0.18,
+        "key_score": 0.615,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "2022 年 2 月讓 38 顆星鏈衛星提早墜回的那場磁暴，有多強？",
+          "2022 年那 38 顆星鏈衛星，是在多高的地方、遇到密度增加多少才掉下來的？"
+        ]
+      },
+      {
         "id": "L58-001~R40008",
         "a": "R40008",
         "b": "L58-001",
@@ -463066,6 +465939,20 @@
         "questions": [
           "冰河正在後退，代表整條冰河往山上流嗎？",
           "冰河後退時，是整條冰往回縮嗎？"
+        ]
+      },
+      {
+        "id": "S58-004~S59-002",
+        "a": "S58-004",
+        "b": "S59-002",
+        "question_score": 0.291,
+        "answer_score": 0.115,
+        "key_score": 0.769,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "1989 年魁北克大停電，保護系統一動作，到全網沒電花了多久？",
+          "1989 年魁北克停電，最先跳掉的是哪一種設備？電網裡有東西壞掉嗎？"
         ]
       },
       {
@@ -471697,10 +474584,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-3859",
-    "target_count": 3859,
+    "revision": "2026-11-12-pool-3885",
+    "target_count": 3885,
     "reviewed_on": "2026-11-12",
-    "reason": "從3838續接；2026-11-12 第八輪素材審視：作者 F11 替後備長題 G01、G42、G38、G35 補點名缺的來源，作者 F12 從池中既有核心新組長題並補 9 個核心；22 個提案經非作者覆核（F11 由 V14、F12 由 V15），收入 21 個（全部照覆核改字），退回 1 個（只讀到會議簡報，記為未收紀錄）。",
+    "reason": "從3859續接；2026-11-12 第九輪素材審視：作者 F13 照上一輪覆核開的條件替後備組題 C4-07、C4-08、C4-03、C4-04、C4-02 與長題 G38、G35 補來源，作者 F14 做第二輪新組長題並補 8 個核心；27 個提案經非作者覆核（F13 由 V16、F14 由 V17），收入 26 個（照原稿 1、改字後 25），退回 1 個（評審只有三人，記為未收紀錄）。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -475560,7 +478447,33 @@
       "S58-004",
       "S58-005",
       "S58-006",
-      "L58-001"
+      "L58-001",
+      "P59-001",
+      "P59-002",
+      "P59-003",
+      "P59-004",
+      "P59-005",
+      "P59-006",
+      "H59-001",
+      "H59-002",
+      "H59-003",
+      "H59-004",
+      "H59-005",
+      "T59-001",
+      "S59-001",
+      "S59-002",
+      "S59-003",
+      "S59-004",
+      "S59-005",
+      "S59-006",
+      "S59-007",
+      "L59-001",
+      "L59-002",
+      "L59-003",
+      "L59-004",
+      "L59-005",
+      "L59-006",
+      "L59-007"
     ],
     "overflow": [
       {
@@ -502927,6 +505840,134 @@
       "reading_status": "已讀來源，核心退回",
       "origin": "wave58-tech-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave58-tech.json"
+    },
+    {
+      "id": "S59-NA001",
+      "question": "端對端加密的群組裡，伺服器能不能自己把人加進群組？",
+      "existing_ids": [
+        "T58-NA001",
+        "T57-009",
+        "T58-002"
+      ],
+      "source_ids": [],
+      "reason": "Albrecht、Dowling、Jones（Eurocrypt 2025）全文仍讀不到：eprint.iacr.org/2025/794.pdf 與存檔版本 403、King's College 典藏 PDF 403、ACM 頁 403、作者網站猜測網址 404；搜尋到的 appliedcryptography.page/papers/whatsapp-groups.pdf 回的是課程首頁（只有書目）。不寫核心。 原提案 F13-NA001。",
+      "reentry_condition": "讀到該論文全文（第 3、7 節）或 Rösler 等 2018 全文。",
+      "reading_status": "403／404，未讀",
+      "origin": "wave59-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+    },
+    {
+      "id": "S59-NA002",
+      "question": "1989 年磁暴的現代重建：太陽風多快、哪一段磁場造成停電的那一下？",
+      "existing_ids": [
+        "S58-004"
+      ],
+      "source_ids": [
+        "S59-S002"
+      ],
+      "reason": "Boteler 2019（Space Weather，10.1029/2019SW002278）OpenAlex 標為非開放，Wiley 回 403；NERC 1989 年事故報告的舊網址（NERC 2026 年報告註 15 仍引用）回 404。1989 年的技術內容改由 ORNL-6665 補上（F13-002），這兩份沒有讀。 原提案 F13-NA002。",
+      "reentry_condition": "讀到 Boteler 2019 或 NERC 1989 年報告全文。",
+      "reading_status": "403／404，未讀",
+      "origin": "wave59-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+    },
+    {
+      "id": "S59-NA003",
+      "question": "以 GPS 為參考時，流量實際量錯多少？",
+      "existing_ids": [
+        "S57-004",
+        "S58-003"
+      ],
+      "source_ids": [
+        "S59-S008"
+      ],
+      "reason": "USGS TM 3-A22 裡只有機制與處置門檻（已寫成 F13-015），沒有實測數據；Wagner & Mueller 2011（J. Hydrology）本輪未再請求（上一輪付費／403）。 原提案 F13-NA004。",
+      "reentry_condition": "讀到一份有往返流量差實測的報告（例如 Wagner & Mueller 2011 全文）。",
+      "reading_status": "手冊已讀，無實測",
+      "origin": "wave59-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+    },
+    {
+      "id": "S59-NA004",
+      "question": "水利署或地調所的海岸監測報告：台灣哪一段岸線是颱風打掉的、哪一段是逐年退的？",
+      "existing_ids": [],
+      "source_ids": [
+        "S59-S005",
+        "S59-S006"
+      ],
+      "reason": "搜尋找到的主管機關文件沒有讀到可用全文：台江國家公園管理處兩份 PDF 連結回的是網頁不是檔案，中國工程師學會的檔案連線被重設；水利署館藏頁只有書目。本輪的台灣資料來自兩篇開放論文（成大水工所合著的研討會論文、陽明交大的期刊論文），不是主管機關報告。 原提案 F13-NA005。",
+      "reentry_condition": "讀到水利署海岸基本資料監測或台江國家公園沙洲監測報告全文。",
+      "reading_status": "未取得全文",
+      "origin": "wave59-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave59-earth.json"
+    },
+    {
+      "id": "H59-NA001",
+      "question": "冷泡咖啡磨粗一點、泡短一點，評審給的分數會比較低嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V16（2026-11-12）退回：不收。這個核心的問題與答案都落在「評審給幾分」，而評審只有三人，撐不起任何關於味道的句子；它另一個結果（粗研磨的萃取率反而較高）作者沒有檢驗原因，也和一般預期相反。作者自己寫「可刪」。記入 not_added；重評條件：讀到 Guinard 等 2023 或同類有足夠評審人數、而且改變研磨的感官研究全文。 原提案 F13-006。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回",
+      "origin": "wave59-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+    },
+    {
+      "id": "H59-NA002",
+      "question": "滴濾咖啡的『沖煮控制圖』：濃度、萃取率各往哪邊走，哪些味道跟著變？",
+      "existing_ids": [
+        "X36-005"
+      ],
+      "source_ids": [
+        "H59-S002"
+      ],
+      "reason": "Guinard 等 2023（J. Food Science，10.1111/1750-3841.16531，hybrid OA）Wiley 回 403；Frost 等 2020、Cotter 等 2021 為付費。改讀同一研究群 2024 年的開放全文（F13-005，浸泡式）。 原提案 F13-NA003。",
+      "reentry_condition": "讀到 Guinard 等 2023 全文（滴濾、含消費者喜好）。",
+      "reading_status": "403，未讀",
+      "origin": "wave59-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+    },
+    {
+      "id": "H59-NA003",
+      "question": "愛爾蘭那次漢堡排調查，當初為什麼會去驗馬？用的是什麼方法、驗了哪些產品？",
+      "existing_ids": [],
+      "source_ids": [
+        "H59-S005"
+      ],
+      "reason": "愛爾蘭食品安全局 2013 年 1 月 15 日的新聞稿與調查報告原頁，舊網址都被導回該局的新聞首頁，讀不到；F14-003 因此只能用英國政府的轉述，回答不了「為什麼驗馬」。 原提案 F14-NA002。",
+      "reentry_condition": "讀到愛爾蘭食品安全局的調查報告原件，或英國 Elliott Review（2014）的正文後，可把 F14-003 補成有方法與動機的核心，多 0.5–1 條。",
+      "reading_status": "原件未讀到；只讀了英國政府的說明頁。",
+      "origin": "wave59-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave59-human.json"
+    },
+    {
+      "id": "L59-NA001",
+      "question": "含羞草葉枕一次下垂出多大的力？",
+      "existing_ids": [
+        "L47-002",
+        "L47-003"
+      ],
+      "source_ids": [
+        "L59-S004"
+      ],
+      "reason": "已讀的 Song 等 2014 沒有量力；Sleboda 等 2023（Current Biology，葉枕的多尺度各向異性）只查到書目，未請求全文。F13-010 只寫到『位於水力極限、上伸下縮』。 原提案 F13-NA006。",
+      "reentry_condition": "讀到有力或膨壓量測的全文。",
+      "reading_status": "未讀",
+      "origin": "wave59-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave59-life.json"
+    },
+    {
+      "id": "L59-NA002",
+      "question": "山雀的在地做法如果變得比較不划算，牠們會死守還是會換？",
+      "existing_ids": [
+        "L40-004"
+      ],
+      "source_ids": [],
+      "reason": "Aplin、Sheldon、McElreath 2017（PNAS 114:7830）正好接在 L40-004 後面，可以回答「從眾會不會把一群鳥鎖在比較差的做法上」；但全文四條路都讀不到（見 blocked），只從搜尋結果看到摘要層級的一句（降低原做法的報酬後 14 天內 49% 改用另一種），照規則不算、不提案。 原提案 F14-NA001。",
+      "reentry_condition": "讀到 PNAS 刊本或 PMC5544276 全文後，可提 1–1.5 條的新核心，補在 C5-03「在地做法」一章之後；它也能讓 C5-03 不必靠「有人教嗎」一章撐片長。",
+      "reading_status": "未讀全文；只見搜尋結果轉述的摘要。",
+      "origin": "wave59-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave59-life.json"
     },
     {
       "id": "J6-NA001",
