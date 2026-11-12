@@ -1,0 +1,15 @@
+# 這些位置的每一個 .md 都必須在 manifest.tsv 有去處（同步或刻意不傳 -），否則測試不過。
+# 新增一部 AI 劇或一個系列時，把它的規則資料夾加進來。
+.agents/skills/{curio-episode,animation-preproduction,animation-camera,animation-production,minimax-h3-colab,minimax-h3-runpod}/**/*.md
+docs/videos/lessons/*.md
+docs/videos/drama/*.md
+docs/videos/explainer-series/*.md
+docs/videos/history-curiosity/*.md
+docs/videos/so-thats-why/*.md
+docs/videos/so-thats-why/{refresh-20261101,series-sheets,dialogue-pilot-20261103}/*.md
+docs/videos/series-plans/zhong-tian-qu-qi/*.md
+docs/videos/series-plans/zhong-tian-qu-qi/production/*.md
+docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/*.md
+docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/*.md
+docs/videos/series-plans/top40-2025-2026/2025-01-tai-nainai/production/screen-test/*.md
+docs/videos/{curio,sothatswhy,zhong-tian-qu-qi,tai-nainai}-*/{NOTES,PRODUCTION-NOTES,production-record,lessons}.md

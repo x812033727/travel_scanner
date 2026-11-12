@@ -35,7 +35,14 @@ test('a new brief carries current rules but cannot masquerade as a production ap
   assert.deepEqual(battery.supplemental_candidates.map(({ id }) => id).sort(), ['A05', 'A51']);
   assert.ok(battery.supplemental_candidates.every((topic) => topic.record.facts_to_verify.length && topic.references.length));
   assert.equal(episodeBrief(catalog, program, 'P06').current_profile.target_minutes, 11);
-  assert.equal(episodeBrief(catalog, program, 'P22').plan.tier, 'conditional');
+  assert.equal(program.plans.find((plan) => plan.id === 'P22').tier, 'conditional');
+  // The 2026-11-11 material review (owner-approved): a reserve or merge plan, or a topic that leads to one, gets no brief.
+  assert.throws(() => episodeBrief(catalog, program, 'P22'), /held by the material review \(reserve\)/);
+  assert.throws(() => episodeBrief(catalog, program, 'P16'), /held by the material review \(reserve\).*合併審查/, 'the P16 + P24 merge did not hold, so both wait');
+  const p16topic = program.plans.find((plan) => plan.id === 'P16').topics[0];
+  assert.throws(() => episodeBrief(catalog, program, p16topic), /held by the material review/);
+  assert.equal(episodeBrief(catalog, program, 'P20').plan.material.verdict, 'ready', 'a ready plan still gets its brief');
+  assert.equal(episodeBrief(catalog, program, 'P06').plan.material, undefined, 'a plan already made was not reviewed');
 });
 
 test('changed legacy source facts fail closed instead of silently reusing an editorial decision', () => {
@@ -95,4 +102,22 @@ test('episode assembly fails closed on reused, omitted, excluded or over-budget 
   input = draft();
   input.plans[0].chapters[1].seconds += 60;
   assert.throws(() => buildProgram(catalog, ROOT, input), /duration budget mismatch/);
+});
+
+test('pool support names selected pool cores and a chapter of its own plan, and travels with the brief', () => {
+  const { catalog, program } = readProgram();
+  const pool = JSON.parse(readFileSync(path.join(ROOT, 'docs/videos/so-thats-why/pool/pool.json'), 'utf8'));
+  const selected = new Set(pool.candidates.filter((row) => row.selected).map((row) => row.id));
+  const supported = program.plans.filter((plan) => plan.pool_support?.length);
+  assert.deepEqual(supported.map((plan) => plan.id), ['P03', 'P04', 'P09', 'P10', 'P12', 'P13', 'P26', 'P29']);
+  for (const plan of supported) {
+    for (const item of plan.pool_support) {
+      assert.ok(selected.has(item.id), `${plan.id}: ${item.id} must be a selected core in the so-thats-why pool`);
+      assert.ok(plan.chapters.some((chapter) => chapter.title === item.chapter), `${plan.id}: ${item.chapter} is one of its chapters`);
+    }
+  }
+  assert.deepEqual(episodeBrief(catalog, program, 'P26').pool_support.map(({ id }) => id), ['H3060', 'H3061']);
+  const input = { plans: structuredClone(program.plans), outside: structuredClone(program.dispositions.filter((entry) => entry.disposition !== 'episode')) };
+  input.plans.find((plan) => plan.id === 'P26').pool_support[0].chapter = '不存在的章節';
+  assert.throws(() => buildProgram(catalog, ROOT, input), /pool support H3060/);
 });

@@ -49,6 +49,8 @@ test("manual insertion and single-stop cross-day move persist through the real A
     return response.json();
   }, trip.id);
   const nextLunch = trip.items.find((item: { day_date: string; system_role: string }) => item.day_date === "2026-11-12" && item.system_role === "lunch").id;
+  // The trip is 2026-11-11–12 in Asia/Tokyo; pin the browser clock (after sign-in) so "DAY 2" is never relabelled "今天" once that date arrives.
+  await page.clock.setFixedTime(new Date("2026-11-01T03:00:00Z"));
   await page.goto(`/zh-TW/trips/${trip.id}`);
   await page.getByRole("button", { name: "加入第一個地點", exact: true }).click();
   const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });
@@ -180,8 +182,10 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.locator(".calm-new-trip-name > summary").click();
   await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
   await page.getByLabel("目的地").fill("日本東京");
-  await pickTripDay(page, "2026-11-10");
-  await pickTripDay(page, "2026-11-10");
+  // A day relative to today: a fixed 2026-11-10 became a past, disabled day in the calendar.
+  const tripDay = isoDaysFromToday(30);
+  await pickTripDay(page, tripDay);
+  await pickTripDay(page, tripDay);
   await expect(page.getByRole("group", { name: "旅行日期", exact: true }).getByRole("button")).toContainText("1 天");
   await createBlankTrip(page);
 
@@ -202,8 +206,8 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByLabel("班號").fill("BR 198");
   await page.getByLabel("出發機場").fill("TPE");
   await page.getByLabel("抵達機場").fill("NRT");
-  await page.getByLabel("當地起飛時間").fill("2026-11-10T08:50");
-  await page.getByLabel("當地抵達時間").fill("2026-11-10T13:10");
+  await page.getByLabel("當地起飛時間").fill(`${tripDay}T08:50`);
+  await page.getByLabel("當地抵達時間").fill(`${tripDay}T13:10`);
   await page.getByRole("button", { name: "儲存航班" }).click();
   await expect(page.getByRole("dialog", { name: "設定去程航班" })).toBeHidden();
   await expect(flightCards.first()).toContainText("長榮航空 BR 198");
@@ -213,8 +217,8 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByLabel("班號").fill("BR 197");
   await page.getByLabel("出發機場").fill("NRT");
   await page.getByLabel("抵達機場").fill("TPE");
-  await page.getByLabel("當地起飛時間").fill("2026-11-10T20:20");
-  await page.getByLabel("當地抵達時間").fill("2026-11-10T23:10");
+  await page.getByLabel("當地起飛時間").fill(`${tripDay}T20:20`);
+  await page.getByLabel("當地抵達時間").fill(`${tripDay}T23:10`);
   await page.getByRole("button", { name: "儲存航班" }).click();
   await expect(flightCards.last()).toContainText("長榮航空 BR 197");
 

@@ -98,9 +98,22 @@ video-worker 每一輪：排入 → rclone 複製 → rclone check → 上傳 ba
 
 ## 資料夾排法
 
+**AI 劇（2026-11-10 起，站主：「每部劇統一放 AI劇/<劇名>/<集數>/」）**：種田、祖媽、原來如此、奇聞，以及之後任何匯入的劇
+（slug 是 `<劇>-e033` 這種的），一律放 `AI劇/<名稱>/<集數>/`。製作過程的所有檔案也放在同一集底下的 `製作檔/`，由做片的
+session 自己傳，規則在 [`AI-DRAMA-DRIVE.md`](AI-DRAMA-DRIVE.md)。
+
 ```
 AI/備份/
-  <系列資料夾>/
+  AI劇/
+    <名稱>/                          種田娶妻打天下、種田娶妻打天下（真人版）、恁祖媽今年18、原來如此事務所、奇聞檔案局
+      _共用/characters/…             （僅完整層級：_series/<系列>/characters）
+      _共用/製作檔/…                 （session 傳的系列共用檔）
+      第033集/  第001-005集/  H01/   集數；合集；沒有集數的用代碼（curio-h01 → H01，sothatswhy-p17-gecko-feet → P17）
+        final.mp4 …                  （跟下面一般影片相同的檔案）
+        製作檔/<來源>/…              （session 傳的製作檔，見 AI-DRAMA-DRIVE.md）
+        _舊版/<時間>/…               （之後被覆蓋的舊檔）
+        _舊版/<slug>/…               （這一集較舊的版本整支，例如 -v2 出來後的 curio-h01）
+  <系列資料夾>/                      其他系列
     _共用/characters/…              （僅完整層級：_series/<系列>/characters）
     <集數三位數>-<slug>/  或  <slug>/
       final.mp4
@@ -120,27 +133,37 @@ AI/備份/
 ```
 
 **系列鍵**依序取第一個有值的：Shorts 一律放在 `Shorts/<shorts_series 或 shorts_line>/` →
-`series_slug` → 匯入的劇（分類 `drama`、沒有 `series_slug`、slug 是 `<劇>-e033`、`<劇>-e001-005`、`-v2` 這種）的 `<劇>` →
+`series_slug` → 匯入的劇（分類 `drama`、沒有 `series_slug`、slug 是 `<劇>-e033`、`<劇>-e001-005`、`-r2`、`-v2` 這種）的 `<劇>`，
+`-r2` 這種重拍是另一部劇（`zhong-tian-qu-qi-e001-r2` 的系列鍵是 `zhong-tian-qu-qi-r2`）→
 slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`。都沒有就放「其他」。
-
-匯入的劇放在分類資料夾底下自己的資料夾：`drama/<劇>/<集>/`，例如 `drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033/`
-（站主 2026-11-01：不同劇要有不同資料夾）。在那之前備份在 `drama/<集>/` 的，網站在 worker 設定裡多給一個
-`moved_from`，worker 在 Drive 裡把舊資料夾整個搬過去（`rclone moveto`，伺服器端搬移、不重傳），再回報新資料夾；
-網站之後就記新資料夾。搬不動的那一輪不備份那支影片，免得在新位置再傳一份。
 
 | 系列鍵 | 預設資料夾名稱 |
 | --- | --- |
-| `curio` | 奇聞檔案局 |
+| `zhong-tian-qu-qi` | AI劇/種田娶妻打天下 |
+| `zhong-tian-qu-qi-r2` | AI劇/種田娶妻打天下（真人版） |
+| `tai-nainai` | AI劇/恁祖媽今年18 |
+| `sothatswhy` | AI劇/原來如此事務所 |
+| `curio` | AI劇/奇聞檔案局 |
+| 其他匯入的劇 | AI劇/<系列鍵> |
 | `ou-de-jianghu` | 偶的江湖 |
-| `sothatswhy` | 原來如此事務所 |
 | `ai-terms` | AI 名詞十分鐘 |
 | `story` | 品牌故事 |
 | `other` | 其他 |
 | 其他 | 系列鍵本身 |
 
+**同一集的版本**（`curio-h01`、`curio-h01-v2`；`<劇>-e001`、`<劇>-e001-v2`）放同一個集數資料夾：最新、而且已經上 YouTube 或
+可以上架的版本占著資料夾本身，較舊的版本放 `<集數>/_舊版/<slug>/`。較新的版本還沒能上架時，舊版留在原位。舊版本來就在集數資料夾、
+後來才有新版的，新版複製時已經把舊版的檔移到 `_舊版/<時間>/`，所以舊版不再搬，只是之後補備份改寫進 `_舊版/<slug>/`
+（`target.py` `resolve_target` 的 `superseded`，`admin_status.py` `superseded_among`）。
+
 **資料夾名稱只決定一次。** 第一次備份時，實際用到的資料夾寫進
 `video_projects.backup.folder`，之後補備份都沿用它。之後改系列顯示名稱，不會讓同一支
-影片被分到兩個資料夾。唯一的例外是上面匯入的劇從 `drama/<集>/` 搬到 `drama/<劇>/<集>/` 那一次。
+影片被分到兩個資料夾。例外只有搬進 `AI劇/` 這一次：2026-11-10 之前備份在 `AI劇/` 以外的 AI 劇集數（例如
+`drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033`、`奇聞檔案局/curio-h01`），網站在 worker 設定裡多給一個 `moved_from`，worker 在
+Drive 裡把舊資料夾整個搬過去（伺服器端搬移、不重傳），再回報新資料夾；網站之後就記新資料夾。新位置還沒有東西時用 `rclone moveto`；
+已經有別的版本時改用 `rclone move`：舊資料夾的 `_舊版/` 併進新資料夾的 `_舊版/`（同名的留在舊資料夾），同名但內容不同的檔先移到
+`_舊版/<時間>-搬移/` 再放進來，不覆蓋任何檔。搬不動的那一輪不備份那支影片，免得在新位置再傳一份。
+（2026-11-01 到 11-10 之間，匯入的劇放在 `drama/<劇>/<集>/`；更早是 `drama/<集>/`。兩種都照上面搬進 `AI劇/`。）
 
 ## 每一層備份哪些檔
 
@@ -292,7 +315,7 @@ slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`�
    雨聲水聲是隨機的，重做會不一樣）不屬於哪一集，上傳包不帶，主機也沒有。在存著它們的那台電腦上、每次新增或改了參考圖之後跑：
 
    ```bash
-   node tools/video/import/series-backup.mjs <VIDEO_WORKDIR>/_series/zhong-tian-qu-qi "G:/我的雲端硬碟/AI/備份/drama/zhong-tian-qu-qi/_series"
+   node tools/video/import/series-backup.mjs <VIDEO_WORKDIR>/_series/zhong-tian-qu-qi "G:/我的雲端硬碟/AI/備份/AI劇/種田娶妻打天下/_共用/製作檔/_series"
    ```
 
    只複製不一樣的檔（先比大小再比 sha256），雲端多的檔不刪（換掉的參考圖留著舊版），並在目的地寫 `SHA256SUMS`
@@ -316,6 +339,11 @@ worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts
 `2026-11-03-purge-a-video-from-the-host` 處理（票 `2026-11-03-back-up-the-worker-s-own`）。
 
 ## AI 劇的分支鏡像
+
+**2026-11-10 起關閉**（compose `VIDEO_BRANCH_MIRROR: "off"`）。站主改成由做片的 session 直接把製作檔傳到
+`AI劇/<名稱>/<集數>/製作檔/`，舊分支由主機一次搬完（[`AI-DRAMA-DRIVE.md`](AI-DRAMA-DRIVE.md)）。這個鏡像在正式站從沒成功跑過：
+每一輪都在複製 rclone 設定時失敗（`fs.copyFileSync is not a function`），雲端硬碟的 `drama/*/_分支/` 沒有任何檔。以下是它原本的設計，
+留作紀錄。
 
 站主 2026-11-08：「備份到雲端的內容應該也要跟備份到分支的一樣」，同一天同意由主機 worker 鏡像分支。
 

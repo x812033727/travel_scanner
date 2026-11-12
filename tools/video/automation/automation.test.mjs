@@ -17,7 +17,7 @@ import { cuePieces, LOCALE_RULES, measure, parseSrt } from "../core/captions.mjs
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, lexiconProposals, sandbox } from "../core/fixtures/load.mjs";
 import { NARRATIVE_PANEL, PANEL_INSTRUCTIONS, PANEL_RULES_SHA256 } from "../core/narrative.mjs";
-import { CURIO_MUSIC } from "../core/curio.mjs";
+import { CURIO_MUSIC, SERIES_PACING } from "../core/curio.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
 import { isValidTerm, validateLexicon } from "../core/lexicon.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
@@ -2411,6 +2411,20 @@ test("an explainer request plans, writes and checks with the explainer prompts, 
     assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset }).music, own, `${preset}: the writer's bed is kept`);
   }
 
+  // 奇聞檔案局 and 原來如此 take the series pacing (owner, 2026-11-05; the default since 2026-11-11);
+  // the writer's own choice stays, and the flat one-off keeps the defaults.
+  for (const preset of ["cute-mystery", "cute-cartoon"]) {
+    const paced = settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset });
+    assert.deepEqual(paced.pauses, SERIES_PACING.pauses, `${preset}: tight pauses`);
+    assert.notEqual(paced.pauses, SERIES_PACING.pauses, `${preset}: a copy, not the frozen constant`);
+    assert.equal(paced.still_motion, "beat", `${preset}: beat stills`);
+    const chosen = settle({ ...written, pauses: { line_ms: 200 }, still_motion: "beat" }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset });
+    assert.deepEqual(chosen.pauses, { line_ms: 200 }, `${preset}: the writer's pauses are kept`);
+  }
+  const flat = settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "flat-explainer" });
+  assert.equal(flat.pauses, undefined, "flat-explainer: no pacing added");
+  assert.equal(flat.still_motion, undefined, "flat-explainer: no pacing added");
+
   const box = sandbox();
   const request = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲總比閃電晚到？", title: null, source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null };
   const site = fakeSite({ answers: { planner: () => ({ slug: "why-thunder-is-late", title: "為什麼雷聲總比閃電晚到？", source_guide: null, source_urls: ["https://en.wikipedia.org/wiki/Speed_of_sound"], brief }) }, settings: { drama: DRAMA_SETTINGS, max_waiting_drafts: 1 }, dramaRequests: [request] });
@@ -2513,7 +2527,8 @@ function longExplainer() {
   let n = 0;
   const payoffs = [];
   const CAMERAS = ["push in", "pan left", "tilt up", "drift"];
-  while (estimateTimeline(doc).total_frames / 30 / 60 < 8.5) {
+  // Long enough even after settle() gives a paced series its tight pauses (core/curio.mjs SERIES_PACING).
+  while (estimateTimeline({ ...doc, pauses: SERIES_PACING.pauses }).total_frames / 30 / 60 < 8.5) {
     // A shot holds at most 12 s of narration, so each one takes two lines; every fourth opens a
     // chapter on an escalation, which is the open loop the body needs inside 90 s.
     const opens = n % 4 === 0;

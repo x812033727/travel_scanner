@@ -1,0 +1,429 @@
+{
+  "batch": "batches/wave21-20261111.json",
+  "reviewed_on": "2026-11-11",
+  "method": "三位沒有參與研究的覆核代理（R211：A1、A5、A6；R212：A2、A3；R213：A4）逐題至少重開一個關鍵來源、用素材池搜尋與批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位。",
+  "counts": {
+    "ADOPT": 11,
+    "ADOPT_WITH_CHANGES": 14,
+    "REJECT": 2,
+    "NEEDS_CHECK": 1
+  },
+  "verdicts": [
+    {
+      "id": "N2361",
+      "agent": "A1",
+      "reviewer": "R211",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A1-S001 https://zh.wikisource.org/wiki/續日本紀/卷第十六；A1-S003 https://repository.nabunken.go.jp/dspace/bitstream/11177/7405/1/19890415_h199_zutou.pdf（PyMuPDF 抽字，第 1 頁）",
+      "reopen_result": "續紀卷十六確有天平十七年十一月乙卯『遣玄■法師造筑紫觀世音寺』（昉字顯示為缺字），天平十八年六月己亥條結尾『至是死於徙所。世相傳云。爲藤原廣嗣靈所害』。1989 年說明會資料第 1 頁寫：頭塔之名可上溯到平安末，由玄昉首塚而來；傳說玄昉被廣嗣惡靈抓住、五體分散落在都城各處，首埋於此，傳到江戶時代；大正以來板橋倫行、福山敏男的文獻研究確定它不是墳墓，而是 767 年東大寺權別當實忠造的佛塔（舍利塔），此後成為通說。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內查『玄昉』『頭塔』『廣嗣』都是 0；N2123、N945、N1281、N2241 同屬怨靈類，但核心相反——這題的怨靈傳聞正史當年就記了，後來長出來的是『頭埋在這裡』的地名解釋，建築其實是死後 21 年的佛塔。四層（正史一句、今昔撕碎、巡禮記頭塔、東大寺帳本）都有來源，翻轉兩個以上。scope 已把撕碎、斷頭畫面擋掉。片長單做 8.5–10 分鐘誠實；若照建議跟 N2362 排題案，本題壓到約 8 分鐘。"
+    },
+    {
+      "id": "N2362",
+      "agent": "A1",
+      "reviewer": "R211",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A1-S009 https://zh.wikisource.org/wiki/日本三代實錄/卷第五十",
+      "reopen_result": "頁面上確實寫了：仁和三年七月卅日辛丑申時『地大震動，經歷數剋震猶不止』，京中官舍廬舍倒塌、壓死者眾、海潮漲陸，攝津最甚；八月十七日戊午條『武德殿東緣松原西，有美婦人三人，向東步行』，之後只剩手足，時人以為鬼物變形；同條接著『是月，宮中及京師，有如此不根之妖語，在人口卅六種，不能委載焉』；廿六日『天皇崩於仁壽殿，于時春秋五十八』。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複（池內『三代實錄』只有 N2262 的 839 年石鏃，核心不同；『仁和』『武德殿』都是 0）。單做只有 5–7 分鐘、事實多是同月條目清單，研究代理自己判為章節是對的，不湊。兄弟題 N2361 真的同一個核心問題：『國史怎麼記一句鬼話』——《續日本紀》寫『世相傳云』，《三代實錄》寫『不根之妖語……卅六種』，兩部正史都記下了鬼、也都當場標明是傳聞，後來的書各自長出新情節。排成題案（N2361 約 8 分＋本章約 5 分，共約 13 分）兩章各有新理解。若題案不排，本章不另成片。"
+    },
+    {
+      "id": "N2363",
+      "agent": "A1",
+      "reviewer": "R211",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A1-S012 https://bukkyo.alma.exlibrisgroup.com/view/delivery/81BU_INST/12513931130006201/13513916160006201（大久保京子 2014，PyMuPDF 抽字全文）",
+      "reopen_result": "確實寫了：江戶時代有直訴與處分的紀錄，但找不到證明惣五郎實在的史料；寶曆以後《地藏堂通夜物語》《東山桜荘子》加進夫妻化為怨靈作祟的結尾；1715 年磯部昌言《總葉概錄》序說將門大明神祭惣五郎是假的；《地藏堂通夜物語》推定成於寶曆年間，現存最早寫本明和八年（1771）與安永二年（1773）；1776 年湯淺允仙《惣五摘趣物語》把他寫成盜領米的人；1958 年児玉幸多在直訴前的名寄帳找到惣五郎、年貢割付狀背書有代官減免。可是同一頁列出児玉認為查明的 12 點裡還有：第 5 點『惣五郎の祟りがあるので、里民が石の祠を建てた』、第 6 點堀田正信在將門山寄進石鳥居、第 7 點祠被稱為『惣五の宮』、第 8 點里民的石祠後來被遺忘。另外正信是『奇行の末蟄居』，繼任的正俊在江戶城被刺，論文說這些不幸看起來像惣五郎作祟，是物語好寫的原因。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內『惣五郎』『宗吾』『佐倉』都是 0；跟 F28（田宮家的阿岩）同屬『被祭拜的人與舞台上的鬼不同』，核心不同。前提成立，名寄帳翻轉漂亮。但重開的論文在同一頁就列出児玉查到『村民因怕作祟立石祠』，研究代理寫的『怨靈的結局卻是一百年後的文學』說滿了：作祟的說法可能早就在村裡，晚一百年的是寫成故事的報應結局。改成兩個翻轉（人是真的；作祟的石祠早就有、後來被忘），反而多一層。片長 9–11 分鐘照舊。"
+    },
+    {
+      "id": "N2364",
+      "agent": "A1",
+      "reviewer": "R211",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A1-S006 https://www.kcg.ac.jp/kcg/sakka/monogatari/tenpen/seimei.pdf（全文）；另重開 A1-S005 https://www.pref.kyoto.jp/rekisaikan/documents/shiryosyokai2310k.pdf",
+      "reopen_result": "A1-S006 寫了：晴明 40 歲以天文得業生出道、52 歲任天文博士；《御堂關白記》長保六年二月十九日（1004 年 3 月 12 日）道長帶 84 歲的晴明去宇治木幡找法華三昧堂用地；大鏡寬和二年六月廿二日（986 年 7 月 31 日）天變，斎藤國治說是木星犯天秤座 α 星，但作者自己算出這兩顆星約晚上 10 點半就沉到西南地平線下，而天皇出宮是有明月出來之後的凌晨 1–2 點，所以他指出木星說在時間上對不上，並提到同類的犯每 12 年就有一次、不算罕見；栗田和實指出當夜約 23 點到翌日 1 點有月掩昴，時間較吻合。作者接著推測晴明向兼家密告（不採）。A1-S005 寫了：初見於文獻是 40 歲天文得業生（出自《中右記》）、993 年禊祓有驗升正五位上、1000 年行成宿所老鼠怪異的占卜、1005 年 2 月新宅作法晴明遲到、《今昔》卷 24 第 16 話、宇治拾遺的地中呪物、古事談的髑髏，並總結他『實態是律令國家的技能官人』。",
+      "changed_fields": [
+        "question",
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內『晴明』『式神』都是 0，陰陽師相關的 N501、N844、N1044、N2262 核心不同。題目有兩層翻轉（天文官的履歷 vs 說話裡的神通；神通場面背後可算的天象；狐母是六百年後的身世），8.5–10 分鐘誠實。重開 A1-S006 發現研究代理漏了作者自己的一段：木星說在時間上對不上（星已沉、且每 12 年一次），能對上的是月掩昴；題目原寫『算得出那晚天上真的有東西』要把兩說的差別講清楚，這段反而是本集最好的一個轉折。來源偏弱（新聞專題、書展介紹、學校科普、碩士生計畫），製作前至少對讀一本學術書（如繁田信一或山下克明）與斎藤國治原著；scope 照舊。"
+    },
+    {
+      "id": "N2381",
+      "agent": "A2",
+      "reviewer": "R212",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A2-S002 https://www.gutenberg.org/ebooks/45852（Janvier 1910 書末註，Gutenberg 純文字第 3488–3570 行）；另重開 A2-S003 Synkretic PDF（pdftotext 抽字，譯文與評註頁 120–124）",
+      "reopen_result": "頁面上確實寫了：Janvier 的註轉引 San Agustín《Conquista de las Islas Philipinas》（Madrid, 1698）：總督 1593 年 10 月 17 日出航、10 月 25 日在 Punta de Azufre 被 250 名中國槳手兵變殺害；San Agustín 說這是他屢次與菲律賓主教『爭執』的天罰，馬尼拉修院牆上他的畫像同日裂開，墨西哥則『藉撒旦之術』由『一些傾向這類輕功的女人』把城牆上的哨兵搬到墨西哥主廣場，早上他問人這是哪座城，宗教裁判所下令送回，『許多認識他的人向我保證此事為真』；González Obregón 的評語是 no ponemos ni quitamos rey。Synkretic 評註寫 San Agustín 1667 年才去菲律賓、Morga、Argensola 與新西班牙總督的信都沒有士兵，Morga 1594 年到墨西哥時當地還不知道總督死訊，Rizal 1890 年註『記得那個被女巫送到墨西哥廣場的士兵嗎——Morga 說他不知道消息怎麼來的』，以及 Irving 的相似。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有 Gil Pérez、Dasmariñas 或『瞬間移動』題（CLI 與 batches 都查不到），也不撞 wave21 其他代理。前提與每一層文字都在重開的兩個頁面上，hook 的『天罰、跟主教吵架』San Agustín 原話經 Janvier 轉引成立。片長 8.5–10 分鐘誠實：1609、1698、1890、1900、1908 五層，各層都有新增的東西，至少兩個真翻轉（最早版本沒有名字與『女人』、Morga 其實寫的是『查不出來源』且 1594 年墨西哥仍不知情）。提醒製作：San Agustín 自己的原話也有『同一天在墨西哥就知道』，旁白要分清『同一天』出自 San Agustín 的說法，不是 Morga；question 的『還說總督昨晚被殺了』是流傳版，最早版本裡士兵沒說這句，開場要當成流傳說法而不是史實。中國槳手不畫群像，scope 已寫。"
+    },
+    {
+      "id": "N2382",
+      "agent": "A2",
+      "reviewer": "R212",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A2-S005 https://revista-hsj-historia.unavarra.es/article/download/3181/3706/8293（Navajas Twose & Sáinz Varela，Huarte de San Juan 17，pdftotext 抽字 pp. 350–352、註 55 與 Moratín 段）",
+      "reopen_result": "頁面上確實寫了：1610 年 11 月 7–8 日（週日、週一）的 Auto de Fe；『超過三萬人』是該 Relación 作者自己的說法，註 55 明寫 Henningsen 認為這個數字誇大；53 名受刑人（48 名本人、5 名以人像），31 人被控巫術，18 人和解，其餘 13 人（含 5 尊人像）交世俗執行，除兩名教士判划船外都被火刑；八十歲的 María de Zozaya 死在獄中三個月後屍骨被掘出焚燒；Valle 與 Becerra 寫信給最高委員會說 Salazar 『被魔鬼附身』（endemoniado），起因是 1611 年起他要求依法取得證據、揭發證詞被操縱；Salazar 第二段巡查處理 1,802 案（其中 1,384 名兒童），認為證據太薄不宜起訴；1614 年 8 月的新指示與『沉默令』代表他的觀點勝出，宗教裁判所不再把巫術當異端；Mongastón 印出 Relación，Pedro de Valencia 1611 年主張不該公開印行；Moratín 1811 年重印並用來批評宗教裁判所。",
+      "changed_fields": [
+        "hook",
+        "answer_target_patch",
+        "scope_append"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內只有 N204（1944 年《巫術法》）與 N1282（Torralba）兩個巫術相關題，核心不同；wave21 其他代理沒有獵巫題。前提成立，兩個翻轉（同一場審判的兩份文件、宣揚判決的小冊兩百年後變成諷刺材料）都撐得住，10–12 分鐘合理。唯一要改的是『三萬人』：那是宣揚判決的小冊自己說的，Henningsen 認為誇大，hook 與 answer_target 都改成『小冊自稱』。處刑只講人數、不畫火堆，scope 已寫。"
+    },
+    {
+      "id": "N2383",
+      "agent": "A2",
+      "reviewer": "R212",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A2-S009 https://archive.org/download/noticiasdelahis01clavgoog/noticiasdelahis01clavgoog_djvu.txt（Viera y Clavijo《Noticias de la historia general de las Islas de Canaria》tomo I，OCR pp. 82–85 與第 5445 行）",
+      "reopen_result": "頁面上確實寫了：第一次出海是 Canaria 居民 Fernando de Troya 與 Fernando Álvarez（1526）；1570 年（註：provisión 日期 1570 年 4 月 3 日）Audiencia 首任 Regente Hernán Pérez de Grado 下令拉帕爾馬、耶羅、戈梅拉三島查證；耶羅總督 Alonso de Espinosa 交出『一百多位』一致的證人口供，說在耶羅西北看見新島，有時看到太陽落在它的一角後面；拉帕爾馬有三名 Setúbal 的葡萄牙人作證，領航員 Pedro Vello 說被暴風吹到島上，看到比常人大一倍的腳印、樹幹上用釘子釘的十字架，起風回船後島就不見了，還丟下兩名同伴；Marcos Verde 的證詞來自另一次在 Tenerife 的調查；Viera 自己提到阿帕拉契山與『佛羅里達』（第 5445 行）作為折射推測。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有聖博隆東；N1424 七城島、N1226 好耶穌島核心不同（研究代理的說法查過屬實）。關鍵口供與 Viera 的推測都在重開的 OCR 頁上。翻轉有：官方調查越做越正式卻越找不到、解釋者自己也被想像帶走、今天的上蜃景解釋。10–12 分鐘略滿，製作時若 1758、1759 年的細節沒有第二來源可縮成一句，下限 9 分鐘仍成立。可補一句：Pedro Vello 說留下了兩名同伴在島上（Viera 原文），是很好的鉤子，但不畫人在森林裡失蹤的恐怖畫面。"
+    },
+    {
+      "id": "N2384",
+      "agent": "A2",
+      "reviewer": "R212",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A2-S012 https://www.memoriachilena.gob.cl/602/articles-122675_recurso_2.pdf（《Diccionario de la Brujería en Chiloé》導論，pdftotext 抽字第 1–160 行）；另重開 A2-S014 mikedashhistory.com；A2-S013 的 doi 轉到 revistas.udea.edu.co，回 HTTP 403，沒有繞過",
+      "reopen_result": "頁面上確實寫了：1851 年 Ancud 第一次教區會議譴責把病歸咎於特定人；1880 年 4 月 7 日第 294 號通令（《El Liberal》第 75 號，1880-04-09）全文：考量第 1、2 條是被徵召服役者逃兵與有人窩藏逃兵，第 3 條說對 machi 與巫師也有同樣的窩藏；決定第 1 條逮捕逃兵、第 2 條逮捕 machi、巫師、術士、第 3 條逮捕窩藏兩者的人，『這些人都要優先送去服役』；5 月 10 日的通令（《El Liberal》第 84 號）稱巫師『多年來組成犯罪結社』、要求各區每月回報，並說『迫害早已開始』；檢察官意見書與一審判決（引《Gaceta de los Tribunales》1881, pp. 455–456）描述 Recta Provincia 有國王與王后、主席與副主席、祕書、修補者與醫者，人們來問家中病與死是誰造成的。Mike Dash 部落格寫逮捕『約一百人』、兩人以過失殺人判 15 年、十人非法結社，『多數判決上訴時被撤銷』——跟研究代理據 A2-S013 寫的『二審全部無罪』不同。",
+      "changed_fields": [
+        "question",
+        "answer_target_patch",
+        "scope_append"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有 Chiloé 或 Recta Provincia。題目本身成立而且是好題：國家抓巫師，判決書最後說他們沒犯罪。但要改兩處：(1) 逮捕令不是『前三條講逃兵』——考量的第 3 條已經提到 machi 與巫師，決定的第 1 條才是只講逃兵，question 改成『第一條要抓的是逃兵』；(2) 『二審全部無罪』與理由只有 A2-S013 一個來源（本輪 403 打不開），另一個二手來源說『多數被撤銷』、一審還有 15 年刑期，所以 answer_target 要標明『據一位歷史學者讀的《Gaceta de los Tribunales》』，scope 加上製作前必須打開 1881 年 6 月 11 日的《Gaceta》原頁；打不開就把 hook 改成『大部分判決被撤銷』。風險：A2 標高風險是對的，但它不碰今天的 mapuche 土地與政治爭議、被告是 1880 年的人、立場是國家濫捕而非醜化原住民；只要 scope 照寫（不評價今天的 machi、不講 Invunche 與孩子、被告不畫成邪惡巫師、太平洋戰爭只當時間背景），可以收。若站主認為 machi 太近現存信仰，再降為暫緩。"
+    },
+    {
+      "id": "N2401",
+      "agent": "A3",
+      "reviewer": "R212",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A3-S001 https://www.aisixiang.com/data/121590.html（張瑞龍、黃一農〈天理教起義與閏八月不祥之說析探〉，《歷史研究》2013 年第 1 期轉載）",
+      "reopen_result": "頁面上確實寫了：嘉慶十六年四月欽天監推算十八年時宪書，發現嘉慶《萬年書》於是年八月置閏，冬至會落在十月三十日而非十一月，郊祀慣例在十一月冬至，監臣稱『向來所未有』，奏請十八年不置閏、把十九年改為閏二月；正式頒行的十八年時宪書無閏八月，萬年書的閏八月十五就是時宪書的九月十五，所以定在這天起事；此更改為道光至宣統各朝《御定萬年書》沿用；杜受田『純是無稽之言，遂不改』；顧家相『不利閏八月，乃草野流傳之謬說』；王錫祺算出六十一次閏八月多數無重大變故；姚大榮因三年時宪書有閏六月奏請停罷閏月；劉聲木『草野相傳：閏八月，天下反』；朱錦琮『是年當閏八月，為讖緯之說』。",
+      "changed_fields": [
+        "answer_target_patch"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有天理教、閏八月；P05、N1683、N2324 等『預言日期』題答案不同。前提與三段（讖語擇日、曆官改閏、事後流言）都在重開的論文上，翻轉真實，9–11 分鐘可行。要改一處內部矛盾：answer_target 寫『彗星七月才出現』，但它自己引的紀事本末是六月『西北有星芒』，scope 又說只用『夏秋』；改成『奏請在四月，彗星在之後的夏秋才出現』。改閏是把『十九年三月改為閏二月』，『改閏十九年二月』的說法照論文措辭微調。另：本題核心來源只有一篇論文，risk 已寫，製作前對讀實錄。"
+    },
+    {
+      "id": "N2402",
+      "agent": "A3",
+      "reviewer": "R212",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A3-S006 https://www.gutenberg.org/files/4610/4610-0.txt（Walpole 書信，第 4166–4196 行）",
+      "reopen_result": "頁面上確實寫了：週三續寫『我把地震的日子弄錯了，是今天』；三天內有 730 輛馬車經過 Hyde Park Corner、整家人搬去鄉下；報紙廣告下週一出版『因怕再一次地震而離開本地的貴族與仕紳名單』；幾位女士做了『地震袍』準備整夜坐在戶外；Lady Catherine Pelham 等人到十哩外的旅店打 brag 到清晨五點再回來；『這一切的先知（倫敦主教之外）』是 Lord Delawar 部隊的一名騎兵，昨天被送進 Bedlam，他妻子說『他現在沒瘋』。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有 1750 年倫敦地震恐慌；P12、P17、N1682 答案不同，N201 只共用 Mackay。重開的 Walpole 原信逐條吻合 answer_target。三個翻轉（先知在預言日前就被關、Mackay 把年份與名字改掉、1842 年同型流言）都不是『另一個例子』，8.5–10 分鐘誠實。John Misavan 只有書目摘要、1842 年歌謠無年份，scope 已限縮措辭，照收。"
+    },
+    {
+      "id": "N2403",
+      "agent": "A3",
+      "reviewer": "R212",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A3-S016 https://livius.org/articles/misc/the-end-of-lydia-547（Lendering, The end of Lydia: 547?）",
+      "reopen_result": "頁面上確實寫了：納波尼德編年史第九年那個國名的第一個字，1924 年 Sidney Smith 讀成 Lu（呂底亞）；1997 年 Oelsner 認定是 Ú（烏拉爾圖第一個字）；另有 Su、Zu 的讀法；2013 年 3 月 12 日 van der Spek、Geller、Finkel 的重新校讀（未刊）認為 Lu 終究最可能；如果是烏拉爾圖，薩第斯可能在 542/541 年甚至 539 年後才陷落。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有克羅伊斯或納波尼德編年史；P33（德爾菲的氣味）、P24（泰利斯日食）、N466 核心不同。重開頁面完全支持翻轉三，希羅多德第一卷與 Bacchylides 第三首頌歌是常見原典，研究代理的摘要與原文一致。雖然『雙關神諭』很有名，但『三份來源連結局都不一樣』不是看標題就知道的答案，9–11 分鐘可行。小提醒：1997 年的讀法旁白可點名 Oelsner；P24 已轉 Shorts，排程錯開即可。"
+    },
+    {
+      "id": "N2404",
+      "agent": "A3",
+      "reviewer": "R212",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A3-S018 https://www.gutenberg.org/cache/epub/19600/pg19600.txt（Waters 1898《Jerome Cardan》，第 3960–3975 與 7010–7035 行）",
+      "reopen_result": "頁面上確實寫了：Cardano 宣稱國王『在第五十六年』會有種種疾病，命盤總評說他會是『非常審慎、心志高遠、幸運，確實是第二個所羅門』；愛德華六世 1553 年 7 月 6 日去世，約在 Cardano 回米蘭半年後；De Thou 記他『在他預言的那一年那一天』死去（換算為 1576 年 9 月 21 日），並記下當時傳言他為了讓日子對上而絕食數日；但《De vita propria》第 36 章記他 1576 年 10 月 1 日開始寫遺囑，Waters 認為 Cardano 是對的、De Thou 錯了。",
+      "changed_fields": [
+        "answer_target_patch"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有卡爾達諾；N704、N1565、N706 核心不同。前提與兩個翻轉都在重開的頁面上，8.5–10 分鐘可行。要改一處：『第二個所羅門』在 Waters 書裡是命盤總評的一句，不是見面時的稱讚，answer_target 改成『命盤上說這孩子會是第二個所羅門』。其餘照收；製作前補一個現代研究（Grafton）的建議保留。"
+    },
+    {
+      "id": "N2405",
+      "agent": "A3",
+      "reviewer": "R212",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A3-S021 https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Erceldoune,_Thomas_of（DNB 1889）",
+      "reopen_result": "頁面上確實寫了：『Thomas Rimor de Ercildun』列名 Petrus de Haga de Bemersyde 對 Melrose 的契據見證人（約 1220 年代）；Soltra 契據的出讓人是『Thomas de Ercildoun filius et heres Thome Rymour de Ercildoun』，常被說成 1299 年，Murray 定為 1294 年 11 月 2 日；Walter Bower（卒 1449）是第一個講 Thomas 預言亞歷山大三世之死的人（『Heu diei crastinæ!』）；1603 年 R. Waldegrave 印的《The whole Prophesie of Scotland, England…》是最早的印本；Chambers 說 14–16 世紀假託 Thomas 之名捏造預言『常被當成一著好棋』。（DNB 這頁沒寫印刷地點；愛丁堡與『國王陛下的印刷商』靠 A3-S020 Murray 導言。）",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有 Thomas the Rhymer；N401、N961、N466、P26 核心不同。重開頁面支持 Thomas 真有其人、Bower 是最早出處、1603 年是最早印本與 Chambers 的話。『預言集在應驗那年才第一次印』與 1745 年 Gladsmuir 的對號入座是兩個真翻轉，9–11 分鐘可行。英蘇政治只講 1603 與 1745，scope 已寫。"
+    },
+    {
+      "id": "N2406",
+      "agent": "A3",
+      "reviewer": "R212",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A3-S022 https://www.vaticanobservatory.org/wp-content/uploads/2019/03/RiggeSJPopeComet.pdf（Rigge〈The Pope and the Comet〉，Popular Astronomy No. 158 抽印本，pdftotext 全文 4 頁）",
+      "reopen_result": "頁面上確實寫了：每篇寫哈雷彗星的文章都要講教皇 Callixtus III 的詔書；Rigge 讀了《Bullarium Romanum》裡這位教皇的全部文件，『不只沒有詔書，連一段、一句、一個字都沒有』提到彗星；Arago、Draper、Babinet、Guillemin、White 都講過這個故事；故事源頭是 Platina 1479 年威尼斯版《教皇列傳》一段（英譯：毛髮狀火紅彗星連日出現，數學家說將有瘟疫、饑荒與大災，Callixtus 為避天怒下令祈禱，若有災禍就轉到土耳其人身上，並命正午鳴鐘提醒信徒為與土耳其人作戰的人祈禱）；註裡一位大天文學家承認曾在公開演講裡用過這個故事；Rigge 進一步主張連 Platina 也不可信、引 Gerard 1907 年的文章。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內沒有 Callixtus 與 1456 年彗星；P06、N1104、N1565、N2282 是彗星恐慌，答案不同。重開的 Rigge 全文支持 Platina 原段、Bullarium 無彗星與流傳的說法；Rigge 自己點名 Arago 為傳播者之一，跟『加料的是闢謠的天文學家』一致。三層文字（Platina→Laplace→Arago）加上 1908 年的反駁與 1997 年的再犯，8.5–10 分鐘誠實。製作提醒：Rigge 連 Platina 都要整段否定，旁白的結論維持研究代理的較保守說法（『只有 Platina 一人記載』），並標明 Rigge 是耶穌會士、立場明確。"
+    },
+    {
+      "id": "N2421",
+      "agent": "A4",
+      "reviewer": "R213",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A4-S005（teslauniverse.com〈Talking with the Planets〉）；A4-S011（earlyradiohistory.us/mars.htm）",
+      "reopen_result": "A4-S005：Tesla 原文只說聽到『一顆行星對另一顆的問候』，沒有點名是哪顆行星；週期性的電變化『明顯帶著數字與秩序』、背後有『目的』；『一、二、三』回『四』是他設想將來確認通訊的方法，不是他聽到的內容。他另提只有火星、金星可能有生命、自己要發訊給火星。A4-S011：Todd 請每個電台在兩天內每小時靜默五分鐘，『看來只有華府的 WRC 照做』；溫哥華的怪訊號查出是協助華盛頓州內陸水道航行的新型信標；Marconi 公司把它叫『fantastic absurdity』。兩處都與 answer_target 一致。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "去重：題庫與 batches 搜 Tesla、特斯拉、Marconi、Todd、Jenkins，沒有『聽火星』的題（wave18 的 Todd 是 1887 日本日食，不同）；其他 wave21 檔也沒有。與 M03、U09、N141 核心不同。三段各有原始紀錄與『比流傳版本保守』的翻轉（Tesla 沒點名行星→1920 年反而是 Tesla 指向火星；海軍電報『不干擾通訊』vs.『全國靜默』傳說；Jenkins 自己說多半是干擾），有真正的轉折，素材足 9 分鐘以上。scope 已處理 Friedman（1969 歿）不畫、報紙原件讀不到。"
+    },
+    {
+      "id": "N2422",
+      "agent": "A4",
+      "reviewer": "R213",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A4-S004（NAS Biographical Memoir：C. H. F. Peters，pdf 本機轉文字）",
+      "reopen_result": "Memoir〈Vulcan Controversy〉與〈Vulcan Again〉兩節寫明：Peters 對 Watson 有『強烈的厭惡』，起因是 1868 年 Watson 一年發現六顆小行星、又做自己的黃道星圖；Le Verrier 從水星近日點的微小偏差推測水內行星，Lescarbault 寫信說前一年 3 月看到凌日，Le Verrier 親自去 Orgères 訪問他後相信了，終身沒撤回，行星命名 Vulcan；1860 年 3 月預報的凌日與 1860 年 7 月西班牙日食都沒看到；Le Verrier 1877-09-23 過世前一直沒有撤回，還發表新軌道與凌日預報，結果再次落空。與 answer_target 一致。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "去重：題庫與 batches 搜 Vulcan、Le Verrier、祝融，沒有；與 N141、U12 是『看見不存在的東西』同類不同核，與 N1444 等光偏折日食題只在片尾相接。轉折清楚：計算→目擊→1878 日食『再證實』→位置對不上與 Peters 的反駁→自費地下望遠鏡→Lick 三次日食結案→被相對論取消，每一步都改變結論，9–12 分鐘可信。Einstein（1955 歿）照 scope 只畫物件，保守可行。"
+    },
+    {
+      "id": "N2423",
+      "agent": "A4",
+      "reviewer": "R213",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S014（Hershey 1973, AJ 78, 421，ADS pdf 本機轉文字）",
+      "reopen_result": "摘要：分析 Sproul 24 吋折射鏡 1937–1969 年 423 張底片上 12 顆星的位置，『在天體測量視野中發現與物鏡歷史有關的小變化』。內文：x 方向約 3.5 微米的不連續出現在 1949 年，『與 24 吋物鏡安裝新鏡座及更換底片乳劑同時』；1957 年較不明顯的斷點對上 1957.74–1958.03 的物鏡調整；結論說 1967 年物鏡為整修從鏡座拆下時，這一系列與其他 Sproul 底片都偵測不到影響，原因難以歸給單一因素（鏡片形狀、組件對準、鏡筒撓曲、彗差與季節效應都可能）。全文沒有『清洗』，也沒有點名巴納德星。所以 answer_target 與題目的『鏡片被拆下、清洗、裝回之後就跳一次』不被支持，已改寫。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "去重：題庫搜巴納德、Barnard、van de Kamp 都沒有，其他 wave21 檔也沒有。題目好：宣布→兩篇論文同時拆台→宣布者加碼→2018–2025 的真假行星，轉折足夠 9 分鐘以上。唯一問題是核心機制被說成『清洗鏡片』：Hershey 原文是換鏡座、換乳劑與調整物鏡，1967 年真的拆下時反而沒事，這個細節本身更有意思；已改題目、鉤子、answer_target、scope 與畫面描述。其餘來源（S013、S015–S020）未逐篇重開。"
+    },
+    {
+      "id": "N2424",
+      "agent": "A4",
+      "reviewer": "R213",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S021（Platov & Sokolov, History of UFO State Research in the USSR, pdf 本機轉文字）；A4-S022（CSMonitor 1997）",
+      "reopen_result": "A4-S021：引塔斯社稿：9 月 20 日約凌晨四點出現巨大的『星』、像『水母』撒下細光束、縮成半圓；水文氣象台長 Gromov 對塔斯社說沒見過類似現象；目擊者含救護、值勤警察、湖港水手與碼頭工人、軍人、機場人員；芬蘭也有照片；北歐國家來信問是否軍事實驗；Aleksandrov 致函軍事工業委員會主席 Smirnov，『科學院既不能忽視也無法解釋』；Setka MO、Setka AS；13 年約 3000 則報告，400 多件列為異常；試驗場附近部隊幾乎不通報；『彼得羅扎沃茨克現象』由 Plesetsk 發射 Kosmos 955 造成，同區幾乎同時一枚彈道火箭發射失敗加了效果；1980-06-14/15 的『海豚』是 Kosmos 1188，不到一小時在南美留下雲；文章還寫這類現象在別國也常見，『尤其是加納利群島的潛射飛彈』。A4-S022：Oberg 算出路徑傾角約 62.8 度、Plesetsk 在北緯 62.7 度，1982 年 6 月在英國星際學會發表，蘇聯 1983 年公開承認北方發射場；作者認為政府『鼓勵了這個幻想』（只能當觀點）。都支持 answer_target。",
+      "changed_fields": [
+        "notes",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "回答 A4 的問題：核心答案與 N841 同型，Platov 原文自己把兩者並列，判為『同一核心問題、不同證據』，不是可各自成集的新題，也不是要 REJECT 的重複——本題證據更強（計畫主持人親筆、蘇聯原刊、西方獨立的軌道推算），N841 還卡在時刻不合。所以本題留著當主體、在 notes 寫明與 N841 合成一集，N841 不另做單集。scope 的『約 300 件』與原文不符，改成原文數字。8.5–10 分鐘：彼得羅扎沃茨克現場、克里姆林宮公文、13 年計畫、Kosmos 1188 與試驗場部隊、Oberg 的軌道推算，素材夠，加上 N841 一章更穩。"
+    },
+    {
+      "id": "N2425",
+      "agent": "A4",
+      "reviewer": "R213",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S024（NCAS 轉載 Condon 報告 Case 22）；A4-S025（加拿大國家圖書檔案館 podcast 第 54 集）",
+      "reopen_result": "A4-S024：1967 年春、約中午 12:12；Mr. A 以為是美國的飛行器，先用英語、再用俄、德、義、法、烏克蘭語喊話，艙內聲音停了；戴手套碰觸，手套指尖燒焦；排氣燒到上腹、襯衫著火；路過的騎警以為他喝醉、不肯幫忙；醫院診斷表淺燒傷；放射病理學家判熱灼傷，一週後全身計數器沒有高於背景；摘要說後來的事『對報告的真實性投下強烈懷疑』，結語說本案『沒有提供關於非傳統飛行器的可證明資訊』。A4-S025：騎警寫他的病、燒傷與現場明顯的圓形痕跡『無法解釋』，岩土有放射性污染、來源未查明；6 月他與 Hart 先回現場拿走幾乎所有東西；類似舊夜光錶漆的鐳輻射；1968 年在岩縫找到沾著瀝青鈾礦的銀片；國防部列為未解；兒子說父親 1999 年過世；2018 年鑄幣局發行會在黑光下發亮的銀幣。『像軍用的』不是原話，是研究者 Rutkowski 說他『一向講成某種軍用飛行器』。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "去重：題庫與 batches 搜 Falcon Lake、Michalak 都沒有；與 U40、U17、N983 同類不同核。兩國官方紀錄結論相反、加實物，轉折真實，有主角，符合 U 軸說書版。只改一句歸屬：『像軍用』是研究者轉述，不是他本人的原話。家屬與研究者在世、傷口不畫的 scope 足夠。Condon 後半（銀片分析）A4 只讀到摘錄，製作前讀完全文，維持 notes 裡的提醒。"
+    },
+    {
+      "id": "N2426",
+      "agent": "A4",
+      "reviewer": "R213",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A4-S026（Kellermann, arXiv 2302.06446，pdf 本機轉文字）；A4-S027（Jauncey 等，Remembering Nikolay Kardashev，pdf）；A4-S028（Rees & Sciama, NASA NTRS）",
+      "reopen_result": "A4-S026：Sholomitsky 用克里米亞一座『機密的軍用太空追蹤天線』觀測，CTA 102 在幾個月內變化約 30%；1965-04-12 塔斯社記者聽到 Shklovsky 與 Kardashev 的玩笑猜測，『人工宇宙訊號』電訊促使兩人開記者會，Kardashev 被追問時沒有否認；4/14《真理報》說外星人在對地球發訊號，4/13《紐約時報》兩則頭版加社論；4/18《雪梨晨鋒報》寫 Kellermann『將飛往莫斯科與俄國人對答案』，作者說那趟行程其實與 SETI 無關；今天知道 CTA 102 是噴流幾乎朝向我們的活躍星系核；The Byrds 有歌。A4-S027：32.5 公分、100–120 天、約 30%；西方直到 Hunstead 1972 年 408 MHz 才當真，變化被確認，這類低頻變化常見、是星際介質的閃爍。A4-S028：Sholomitsky 推論源不大於約 0.1 秒差距、可能在銀河系內，而 Schmidt 量到紅移 1.037。紅移與塔斯社電訊的先後，原文都沒寫『兩天』。",
+      "changed_fields": [
+        "question",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "去重：題庫與 batches 搜 CTA、Kardashev、Shklovsky 沒有；與 U09（小綠人，鎖定）、M03（Wow!）、U36（沃羅涅日）核心不同。轉折真：外星解讀倒了→但被一起懷疑的 30% 變化七年後被另一台望遠鏡證實→今天的答案是閃爍與噴流。素材量在 8.5 分鐘門檻：我數到約 16 個不重複、有出處的事實（Kardashev 三型與點名、機密天線、30%/100 天、小於 0.1 秒差距、塔斯社玩笑、記者會、紐時、真理報、雪梨晨鋒報與 Kellermann、紅移 1.037、劍橋的回應、西方不信、Hunstead 1972 數字、閃爍、AGN 噴流、The Byrds），約 2,200 字加 700，剛好過 9 分鐘，不需補述，維持 episode_core。只改『兩天內』：來源沒有支持紅移在兩天內推翻，改成『差不多同時』。"
+    },
+    {
+      "id": "N2441",
+      "agent": "A5",
+      "reviewer": "R211",
+      "verdict": "REJECT",
+      "key_source_reopened": "A5-S003 https://argia.eus/fitxategiak/ckfinder/files/Hempelmann2007.pdf（PyMuPDF 抽字）",
+      "reopen_result": "Hempelmann 2007 確實寫了：原報告的數字（Kashasha 159 人中 95 人、第二波 57 人、Nshamba 約一萬人中 217 人、Ramashenye 154 人中 48 人）、沒有死亡；『1964 年 6 月平息、超過 14 所學校、約一千人』是他引 Provine 2000 的話；1963 年 Kigezi 約 600 人與 Mbale 約 300 人的奔跑狂；結論是大規模的笑在生理上不可能，笑只是運動型集體心因性疾病的症狀之一。但同一頁的引用清單把 Provine 1992、1996 也列為轉述者，所以『這些數字目前讀到最早出現在 2000 年』說不準。",
+      "changed_fields": [],
+      "duplicate_of": "M11（坦干伊喀笑病是 M11 的別名 M36）",
+      "reason": "重複：M36『1962 年坦尚尼亞一所女校的笑聲』已在去重時併入 M11（史特拉斯堡舞蹈瘟疫），DEDUP.md 的理由是兩者最站得住的解釋相同（集體心因性疾病），留作 M11 的對照章；M36 的 answer_target 已經寫了『笑與哭交替、沒有人死亡、集體心因性』。本題的新角度（流行數字是轉述加上去的）是同一事件同一解釋，不構成新核心，也不能因此推翻既有合併。可並入 M11 的 M36 章：A5-S001（原報告轉錄）、A5-S002（PubMed 書目）、A5-S003（Hempelmann）讓那一章有一手數字與『數字誰加的』這個轉折；寫到 Provine 時只能說『流行版本的數字至少可追到 Provine 的書』，不說『最早 2000 年』。重新收錄的條件：M11 製作時若不用對照章，再把本題連同上述來源改提為單集。"
+    },
+    {
+      "id": "N2442",
+      "agent": "A5",
+      "reviewer": "R211",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A5-S008 https://publicaciones.fcnym.unlp.edu.ar/rmlp/article/download/2606/2295/8964（PyMuPDF 抽字）；另重開 A5-S005 https://archive.org/download/Caras_y_Caretas_Buenos_Aires_1922-04-08_N_1227/Caras_y_Caretas_Buenos_Aires_1922-04-08_N_1227_djvu.txt",
+      "reopen_result": "論文確實寫了：Sheffield 1922 年 1 月 19 日從 Esquel 寫信給 Onelli；La Nación 3 月 6 日標題『¿Sera un plesiosauro?』；Onelli 自述『在第一則消息的第四天就對 La Nación 說，這名字既已被輿論定下、無望更正，就只能當作化名』，要找的是貧齒類，並在『保密指示』裡要隊員找 1898 年 Última Esperanza 洞穴那種地懶；丘布特總督 Orestes Franzoni 下令禁獵（El Chubut 1922-04-09），Onelli 找部長 Pueyrredón 撤銷；4 月 17 日出發往 Epuyén、20 日到湖邊，Sheffield 在 Esquel 附近養病，只見到妻兒；28 日回 Bariloche，『11 天的搜索』，5 月 3 日沿 Limay 河返程；1923 年 2 月 12、13 日 Bariloche 嘉年華的蛇頸龍花車。論文本身沒有 Albarracín 給部長的信，只說兩篇匿名『蛇頸龍來信』是寫給動物保護協會會長 Albarracín、讓蛇頸龍『請求』第 2786 號法保護。Caras y Caretas 1227 號那篇諷刺文裡，蛇頸龍說讀到了『您寫給內政部長、請求依 2786 號法保護我的那封信』。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內『蛇頸龍』『Onelli』都是 0；N1582（1898 年 Ameghino 的活地懶）是同一條線的前傳，但核心不同（那題問標本從哪來，這題問名字怎麼來、遠征到底找什麼、怎麼收場）；L12 尼斯湖的蛇頸龍只是同名。翻轉真實：發起人第四天就說名字是報紙取的、要找的是地懶；保育法令與總督禁令讓一隻沒人見過的動物受法律保護；到湖邊時寫信的人不在。改的地方：Onelli 的『化名』聲明第四天就對 La Nación 講過（論文原句），補上；Albarracín 給部長的信只有諷刺文提到，論文沒提，scope 改成照實標示；日程補 4 月 17 日出發往 Epuyén、28 日回 Bariloche。9–11 分鐘誠實。"
+    },
+    {
+      "id": "N2443",
+      "agent": "A5",
+      "reviewer": "R211",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A5-S009 https://archive.org/download/LookingForThePrehispanicFilipino/Looking%20for%20the%20Prehispanic%20Filipino_djvu.txt（Scott〈Kalantiaw: The Code That Never Was〉OCR 全文）；另重開 A6-S002 https://archive.org/download/afj6028.0001.001.umich.edu/afj6028.0001.001.umich.edu_djvu.txt（Robertson 1917）",
+      "reopen_result": "Scott 一文確實寫了：學生讀到法典『都笑了』；Anachronisms 一節逐條列出 1838 年 6 月向西班牙國王致意、1839 年 8 月 1 日把書獻給國王，『但 1833 到 1874 年西班牙沒有國王』；向 1847 年才任省長的 Morquecho 致謝；1908 年才分出的西內格羅斯省；1879 年才提出的『雷姆利亞大陸』（Robertson 誤讀成 continent of Muriano）；11 月『帶來腐敗的 microbes』，而 microbe 一詞是 Sédillot 1878 年才提出；標題『in use in 150 since 1433』，他解為 1150，另有一份標為 1137 年的文件提到 Kalantiaw 1433 年築城；名字最早見於 1913 年 Artigas；Aklan 化與 1949 年 Zaide 課本加上『Aklan, Panay』、1956 年 Batan；1968 年 6 月 16 日答辯，口委 Agoncillo、de la Costa、Foronda、Grau Santamaria、Zafra、Zaide，『沒有一個問題』；1982 年退休時新生仍相信。Robertson 1917 年印本第 161 頁寫『Its authenticity can scarcely be questioned』；印出的標題是『LOS 17 [i.e. 18] THESIS, O LEY DE LOS REGULOS EN USO EN 1850 DESDE 1433』，前言說 1614 年在班乃島酋長手上找到、原件在薩拉戈薩的 Marselino Orfila 手裡；他的註說手稿上的 1850 是抄寫錯誤，『因為 Pavón 寫於 1837–1838 年』，可能是 1650 或 1750。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "跟 N2461 是同一部法典、同一個核心答案，選 N2443 當主紀錄：它有 Scott 本人的論證全文（時代錯置清單、搬家過程、答辯口委），鉤子『1838 年的手稿用了 1878 年的字』最強；N2461 的長處是讀了 Robertson 1917 年原印本與揭穿之後的壽命，全部併進來。重開兩個來源後的修正：N2461 的鉤子『標題自帶比手稿晚的 1850 年』不能單獨成立——Robertson 自己就註為抄寫錯誤，Scott 讀成『150』（＝1150），兩種讀法都荒謬，改成並陳；口委也包括 Agoncillo。池內查『Kalantiaw』是 0，菲律賓題目很少。政治面：1971 年勳章不點名總統、不談戒嚴；Aklan 的地方認同照實講一句。9–11 分鐘，翻轉三個（學生的笑與時代錯置、課本照教到 1986 年、官方 2004 年宣告之後國會仍引用）。"
+    },
+    {
+      "id": "N2444",
+      "agent": "A5",
+      "reviewer": "R211",
+      "verdict": "ADOPT",
+      "key_source_reopened": "A5-S011 https://publikace.nm.cz/file/a2ab96998bba517e14fecaece274f6bb/20101/10644-Volume63-Issue1%E2%80%932_02_10.1515_amnpsc-2017-0043.pdf（PyMuPDF 抽字，15 頁）",
+      "reopen_result": "確實寫了：1835 年第一次侵入性試驗在 Palacký 與 Šafařík 面前進行，用單寧酊沾濕 RZ 上的 pogubi 一字驗鐵，留下暗斑；1880 年刮改字委員會，Šafařík 試了約六十個字母或整字；1886 年 Bělohoubek 做了近 70 次（『至今最全面的材料研究』）與 Šafařík 的 12 次；1967–1971 年交給聯邦刑事研究所的 Ivanov 小組，RK 約 25 次、RZ 5 次；Šafařík 用亞鐵氰化物，與鐵反應成普魯士藍；1858 年 Hanka 首次被指偽造，誹謗官司『Hanka 勝訴』；『V. Hanka fecit』密碼 1911 年證明是誤認；『人文學科認為 RKZ 是 19 世紀偽作，自然科學研究並未明確證實這個假說』。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內『Hanka』『Rukopis』都是 0；N305（羅洪茨）、N304（魔鬼聖經）同屬中歐手稿題，核心不同。題目扎實，翻轉真實：最早指控的人反被判誹謗（背後是警察局）、辯護者 Gebauer 倒戈、化學試驗一百多次卻留下試驗本身的傷、自然科學至今沒一錘定音。1858 年官司兩份來源說法不同，scope 已要求只說『編輯被判誹謗、後來判決被撤銷』並在製作前對讀，處理得當；Masaryk 1937 年過世可畫，Ivanov 小組不入畫。今天仍有少數人主張手稿為真，屬捷克國內學術少數派，不是兩國之爭。9–11 分鐘誠實。可與 N2443 同一播放清單，不必排題案。"
+    },
+    {
+      "id": "N2445",
+      "agent": "A5",
+      "reviewer": "R211",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "A5-S016 https://archive.org/download/proceedingsofroy0000unse_f6v2/proceedingsofroy0000unse_f6v2_djvu.txt（RGS Proceedings OCR）；另重開 A5-S015 https://archive.org/download/throughkalaharid00fari/throughkalaharid00fari_djvu.txt",
+      "reopen_result": "RGS 版本確實寫了：打獵時遇到一堆像牆的石頭，追出『橢圓形、長約八分之一英里』的圍牆，cyclopean 式巨石方塊，牆腳每隔幾碼有挖空的橢圓石盆，中央鋪成十字、挖出四面有凹槽的斷柱，找不到銘文，經緯度 OCR 為『23} 8. lat. and 214 HE. long.』；會後討論者談的是水源、牧草與糧倉。書中版本（第 357 頁前後）寫：在一座沒人見過的山腳，一列石頭『像地震後的中國長城』，追了『將近一英里』，石層間有完好的水泥，弧內每隔約 40 英尺一個橢圓石堆。兩個版本的差異成立。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "前提的前半（同一人同一年對學會與讀者講了兩個大小不同的版本）兩個一手來源都對得上；後半的答案（之後約 30 次搜尋、1933／1936 年隊伍只找到石灰岩、Clement 1964 認為是輝綠岩）只有一篇 2024 年科普文章，人名還拼錯。章節本身只有 4–6 分鐘，兄弟題 N784（與那國海底地形）的共同問題『那是人蓋的，還是石頭自己裂成的？』說得通，但排題案要把 N784 這個 8–11 分鐘的入選單集壓成主章，照第二十批的前例要站主決定。留作候補：補讀 Clement 1967《The Kalahari and Its Lost City》或 1930 年代的當年報導、並核算 Rietfontein 與 RGS 經緯度是否對得上之後，再提與 N784 的題案；補不到就移到 not_added，不另湊成單集。"
+    },
+    {
+      "id": "N2461",
+      "agent": "A6",
+      "reviewer": "R211",
+      "verdict": "REJECT",
+      "key_source_reopened": "A6-S002 https://archive.org/download/afj6028.0001.001.umich.edu/afj6028.0001.001.umich.edu_djvu.txt（Robertson, An Old Philippine Code, 1917 OCR）",
+      "reopen_result": "確實寫了：第 161 頁『Its authenticity can scarcely be questioned』；標題『LOS 17 [i.e. 18] THESIS, O LEY DE LOS REGULOS EN USO EN 1850 DESDE 1433』，英譯『IN USE FROM 1433 TO 1850』；前言說是一份 1433 年文件的忠實譯本，1614 年在班乃島一位酋長手上找到，原件在薩拉戈薩的 Marselino Orfila 手裡；署名『CALANTIAO, Regulo 3°』。但 Robertson 在註裡就寫：手稿上的 1850『也是抄寫者明顯的錯誤，因為 Pavón 寫於 1837–1838 年』，可能是 1650 或 1750；Scott 則把同一處讀成『150』（＝1150）。所以『標題自帶比手稿晚十幾年的年份』在 1917 年就被出版者自己當錯字處理掉，不能當成沒人注意的矛盾。",
+      "changed_fields": [],
+      "duplicate_of": "N2443",
+      "reason": "重複：與 A5 的 N2443 是同一部 Kalantiaw 法典、同一個核心答案（唯一出處是 Marco 交出的 Pavón 手稿，Scott 1968 年證為偽作，揭穿之後仍被教、被頒勳章）。N2443 有 Scott 本人的全文論證與更強的鉤子，選它當主紀錄；本題已讀到的事實與來源（Robertson 1917 年原話與印本標題、1614 年與薩拉戈薩、Garcia 刻意不說、國內期刊沒有書評、Zaide 課本到 1986 年與 1987 年修訂版、Agoncillo 的『所謂』、1971 年勳章、2008 年眾議院仍引用；A6-S001–S004）全部併入 N2443，見該條 changes。本題的鉤子（標題裡的 1850）照重開結果改成兩種讀法並陳，不單獨成題。"
+    },
+    {
+      "id": "N2462",
+      "agent": "A6",
+      "reviewer": "R211",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A6-S005 https://repository.mainlib.upd.edu.ph/omekas/files/original/f61bc6c86ce5a917ac9f19b41993c63ff38603cb.pdf（Philippine Review 1943 重刊，4 頁全文）；另重開 A6-S006 https://www.gutenberg.org/cache/epub/8299/pg8299.txt（Fansler 1921，Tale 55 Notes）",
+      "reopen_result": "Rizal 一文確實寫了：烏龜選搗臼、說『我好怕被淹死』，猴子把牠丟進水裡，烏龜游出來笑牠；螃蟹用鉗和腳『跟猴子一樣會爬』，所以原本的故事裡不該有螃蟹；香蕉比柿子長得快；日本版的作戰會議、搗臼、蜂、蛋是『不太聰明的說書人』後加的；他的結論是日本版來自南方某地、菲律賓版『即使不是原形，也最接近原形』，並明說『兩者的差異顯示一個不是另一個的抄本』，又說這故事遍及群島，『必是一個已消失的文明的遺產』；他對結尾的評語是『趣味一直撐到最後』，但沒有拿這個結尾當『最原始』的證據。Fansler 確實引 Benedict 1913『顯然改自西班牙來源』，列出八個版本與情節表，把源頭追到 Kacchapa-jātaka 第 273 則，並說情節 E（『燒我搗我都好，千萬別淹死我』）在非洲與美洲的 Brer Rabbit 故事裡是常見情節，另提 Celebes 的同型故事。",
+      "changed_fields": [
+        "question",
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：N645（猿蟹合戰的咒詞與赤本結局）、N1461（별주부전的佛經前身）都是另一個故事或另一個核心；池內『Rizal』是 0。F 軸說書版的結構合適：前三分之二講故事與 Rizal，後三分之一打開 Benedict 與 Fansler，三個年份三個家鄉，翻轉真實。重開原文後改兩處：一、Rizal 沒有說猿蟹合戰『是從菲律賓版變來的』，他明說兩者不是彼此的抄本、同出南方，菲律賓版最接近原形，題目改寫；二、Rizal 稱讚結尾『趣味撐到最後』，但沒拿結尾當『最原始』的證據，原稿『Rizal 用來證明菲律賓版最原始的那個結尾』說過頭，改成『稱讚得最多的結尾』。9–10.5 分鐘照舊；Rizal 是國家英雄，scope 已寫『當年的證據只到這裡』的語氣。"
+    },
+    {
+      "id": "N2463",
+      "agent": "A6",
+      "reviewer": "R211",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "A6-S008 https://www.gutenberg.org/cache/epub/13701/pg13701.txt（Plasencia 英譯）；另重開 A6-S010 https://www.gutenberg.org/cache/epub/47873/pg47873.txt（Skeat, Malay Magic 第六章與註 544–546）",
+      "reopen_result": "Plasencia 確實寫了：magtatangal 夜裡讓很多人看到他沒有頭和內臟走動、早上裝回去，『我看這是寓言』；osuang 等於巫師，有人說看過他飛、殺人吃肉，『在米沙鄢群島，塔加洛人當中沒有』；還有一種欺騙：婦女死於生產，她與孩子要受罰，夜裡聽得到她哀哭，叫 patianac；『願榮耀歸於天主，塔加洛人當中這已經一點痕跡都沒有，現在結婚的人連那是什麼都不知道』。Skeat 確實寫了四種生產精靈：Bajang、Langsuir（夜梟形）、Pontianak 或 Mati-anak（也是夜梟，是 Langsuir 的孩子）、Penanggalan（連著胃囊的頭）；Langsuir 原是一位絕美女子，聽到孩子死產驚嚇而死，長指甲、及踝黑髮遮住頸後的洞；註 544 推測 Pontianak 可能是 mati beranak 的縮寫。註 546 引 Abdullah：Mr. M. 想把 penanggalan 的故事寫成英文『讓歐洲人知道相信的人多愚蠢』，Abdullah 畫了一個只有頭頸、垂著腸子的女人，由一位華人刻成木版，登在《Anglo-Chinese Gleaner》；他對 Mr. M. 說這些全是『無知與胡說』。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：N566（坤甸開砲趕 kuntilanak）講城市傳說的出處，G23（娜娜克）是單一傳說的演變，池內『asuang』『Langsuir』是 0。三個轉折都在重開的原文上（Plasencia 宣布『一點痕跡都沒有』、Gardner 說是最普遍的信仰；Skeat 的 Pontianak 是孩子、Laderman 時成了母親；不信的人畫的圖）。改的地方：Abdullah 的圖原寫『最早的圖』沒有依據，改成『Skeat 引到的一張圖』並註明畫的是 penanggalan、委託人是想嘲笑信者的傳教士；scope 補上不說 patianac 與 pontianak 同源、不重畫木版畫、不跟著嘲笑。生產死亡與靈異疊在一起，scope 與 risk 已很嚴，10–12 分鐘誠實。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N2361",
+        "N2362"
+      ],
+      "shared_question": "正史怎麼記一句鬼話？",
+      "why_it_flows": "兩題都是朝廷自己編的國史把鬼記下來、同時當場標明是傳聞：《續日本紀》746 年玄昉卒傳寫『世相傳云，為藤原廣嗣靈所害』，《日本三代實錄》887 年寫松原的吃人鬼，下一句就說這個月這種『不根之妖語』傳了三十六種。每章各有新理解：玄昉那章是後來的書怎麼長出撕碎與『頭塔』，而那座塔其實是 767 年的佛塔；松原那章是把鬼放回大地震後的餘震月，看恐慌怎麼被記下又被史官打折扣。N2361 壓到約 8 分鐘＋N2362 約 5 分鐘，共約 13 分鐘；只用本批新題，不動既有單集。"
+    },
+    {
+      "ids": [
+        "N2445",
+        "N784"
+      ],
+      "shared_question": "那是人蓋的，還是石頭自己裂成的？",
+      "why_it_flows": "條件式建議，要站主決定：喀拉哈里『失落之城』（同一人對學會說八分之一英里、對讀者說將近一英里，後人去找到的是會裂成方塊的岩石）與與那國海底『金字塔』（陸上同樣的砂岩節理地形被官方寫成風化侵蝕）都是自然裂成的方塊被讀成建築。N2445 要先補到 Clement 1967 或 1930 年代的當年報導才成立；N784 是 8–11 分鐘的入選單集，排題案要把它壓成主章。"
+    },
+    {
+      "ids": [
+        "N2382",
+        "N2384"
+      ],
+      "shared_question": "國家把『巫師』送上法庭，案卷最後怎麼說？",
+      "why_it_flows": "兩題都是官方審巫的案卷：1610 年 Logroño 宗教裁判所燒了人、卻因一位要證據的審判官而停止追訴巫術；1880 年 Chiloé 共和國法院以非法結社起訴，上訴後撤銷。同一個問題（審判留下的文件跟流傳的版本差多少），結論相反；兩題都是單集，只建議排成播放清單或相鄰兩集，不併成一集。"
+    },
+    {
+      "ids": [
+        "N2404",
+        "N2405",
+        "N2406"
+      ],
+      "shared_question": "預言『準』，是誰事後補上的？",
+      "why_it_flows": "三題都是文字比事件晚：Cardano 在國王死後替錯的命盤加『事後我怎麼想』、Thomas 的預言集在合併那年才付印、教皇『逐出彗星』是三百年間一字一字加上的。都撐得起單集，只建議當系列排序，不壓成章節。"
+    },
+    {
+      "ids": [
+        "N2422",
+        "N2423"
+      ],
+      "shared_question": "一顆被算出來、又被看見的行星，怎麼被取消？",
+      "why_it_flows": "兩題都是『計算或測量→宣布→目擊或加碼→更好的儀器與對照把它拆掉』；Vulcan 被新理論變成不需要，巴納德星的行星被同一台望遠鏡的對照星拆掉，六十年後同一顆星又真的找到行星。可各自成集，連播成一個題案。"
+    },
+    {
+      "ids": [
+        "N2424",
+        "N841"
+      ],
+      "shared_question": "官方檔案寫『不明』的天上怪光，為什麼最後都是沒人告知的發射？",
+      "why_it_flows": "Platov 與 Sokolov 2000 年的文章自己把彼得羅扎沃茨克（Kosmos 955）與加納利群島的潛射並列；一章是發射國自己查自己、一章是別國的試射對上卷名日期，合成一集，N841 先解決時刻差。"
+    },
+    {
+      "ids": [
+        "N2421",
+        "N2426"
+      ],
+      "shared_question": "『收到外星訊號』的新聞，當事人原本到底說了什麼？",
+      "why_it_flows": "兩題都是報紙把科學家的保守說法放大成外星訊號：1899–1924 的火星無線電，與 1965 年塔斯社的 CTA 102；都以原始紀錄比流傳版本保守為翻轉，且 N2426 多一層『被一起丟掉的資料是對的』。可連播，不必合併。"
+    }
+  ]
+}

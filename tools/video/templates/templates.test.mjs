@@ -298,7 +298,7 @@ test("the channel's layout and tone rotate by slug, a variant one step on, and d
   assert.notEqual(thumbnailRotation("facebook-code-scam", 2).layout, next.layout);
   assert.match(thumbnailHtml({ ...thumb, data: { ...thumb.data, layout: "c", tone: "plum" } }, { slug: "facebook-code-scam" }), /<div class="thumb-subject layout-c tone-plum"><\/div><div class="thumb column layout-c tone-plum">/);
   assert.match(thumbnailHtml(thumb), /layout-[abc] tone-(teal|plum|navy|forest)/, "no slug: still a layout and a tone");
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "left", tone: "red" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, ai", "thumbnail.data.tone must be one of teal, plum, navy, forest"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "left", tone: "red" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, f, ai", "thumbnail.data.tone must be one of teal, plum, navy, forest"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "b", tone: "navy", capture: "find-guides#2", shot: "hall" } }), []);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", capture: "Find Guides", shot: 3 } }), ['thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture', "thumbnail.data.shot must be a shot's id"]);
   assert.deepEqual(captureRef("find-guides"), { scene: "find-guides", index: 0 });
@@ -355,7 +355,8 @@ test("So That's Why wears its own thumbnail: palette, name, stamp, pillar tag, a
   assert.match(own, /<div class="brand">原來如此事務所<\/div>/);
   assert.match(own, /<div class="thumb-stamp" aria-hidden="true"><span>原來<\/span><span>如此<\/span><\/div>/);
   assert.match(own, /<div class="tag pillar-science">科學<\/div>/);
-  assert.match(own, /rgba\(31,42,68,\.94\)/, "the ink-navy scrim");
+  assert.match(own, /\.thumb-scrim\{background:linear-gradient\(90deg,rgba\(255,250,240,\.9\)/, "the bright look (2026-11-11): a cream scrim, not the ink-navy one");
+  assert.match(own, /\.thumb h1\{color:#1f2a44;font-size:150px/, "an ink-navy headline outlined in white");
   const right = thumbnailHtml({ ...thumb, data: { ...thumb.data, layout: "right" } }, { background: "https://video.local/work/keyframes/a.png", series: "sothatswhy" });
   assert.match(right, /<div class="thumb-scrim layout-right"><\/div><div class="thumb series layout-right">/);
   // `subject: "right"` narrows the picture to the right of the frame, so a centred character leaves the text column (owner 2026-11-08).
@@ -373,7 +374,7 @@ test("So That's Why wears its own thumbnail: palette, name, stamp, pillar tag, a
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一\n二\n三" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has 3 lines; this series takes at most 2"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "top", pillar: "sports" } }, { series: "sothatswhy" }), ["thumbnail.data.layout must be one of left, right", "thumbnail.data.pillar must be one of business, science, travel, tech"]);
-  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "right" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, ai"], "the channel's layouts are its own");
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "right" } }), ["thumbnail.data.layout must be one of a, b, c, d, e, f, ai"], "the channel's layouts are its own");
 });
 
 test("a thumbnail's B and C variants for YouTube's test are laid over A and linted like it", () => {
@@ -387,7 +388,7 @@ test("a thumbnail's B and C variants for YouTube's test are laid over A and lint
   const long = { ...thumb, variants: [{ data: { headline: "一二三四五六七八九十十一" } }] };
   assert.deepEqual(thumbnailProblems(long, { series: "sothatswhy" }), ["variant b: thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
   assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }, { series: "sothatswhy" }), ["variant b: thumbnail.data.layout must be one of left, right"]);
-  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c, d, e, ai"]);
+  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of a, b, c, d, e, f, ai"]);
   const shape = "thumbnail.variants must be 1 to 2 of { data: {...} } (A is the thumbnail itself; YouTube tests up to three)";
   for (const variants of [[], [{}], "b", [{ data: {} }, { data: {} }, { data: {} }]]) assert.deepEqual(thumbnailProblems({ ...thumb, variants }), [shape], JSON.stringify(variants));
 });
@@ -655,11 +656,11 @@ test("the paper fixture uses every new field and is valid for its templates", ()
 
 // The two story series wear the bold look of the high-view story channels (2026-10-25): layout d
 // by default on a curio- or story- slug, a choice elsewhere, and never in the rotation.
-test("a curio- or story- slug takes the bold thumbnail layout by default; other slugs keep the rotation and may ask for it", () => {
+test("a story- slug takes the bold thumbnail layout by default, a curio- slug that names it keeps it; other slugs keep the rotation and may ask for it", () => {
   const data = { headline: "船在走\n**人沒了**", tag: "歷史懸案", sub: "十個人全部消失", shot: "x" };
   assert.equal(THUMB_BOLD_LAYOUT, "d");
   assert.ok(!THUMB_LAYOUTS.includes(THUMB_BOLD_LAYOUT), "not in the rotation: no other series' thumbnail moves");
-  const curio = thumbnailHtml({ template: "thumb", data }, { background: "https://video.local/k.png", slug: "curio-h01-v2" });
+  const curio = thumbnailHtml({ template: "thumb", data: { ...data, layout: "d" } }, { background: "https://video.local/k.png", slug: "curio-h01-v2" });
   assert.match(curio, /<div class="thumb-subject layout-d tone-[a-z]+ from-shot">/);
   assert.match(curio, /<div class="thumb column layout-d tone-[a-z]+"><div class="tag">/, "the pill stays in the markup; the theme hides it");
   const story = thumbnailHtml({ template: "thumb", data: { ...data, brand: "Crocs" } }, { slug: "story-everyday-crocs-c01" });
@@ -670,12 +671,12 @@ test("a curio- or story- slug takes the bold thumbnail layout by default; other 
   assert.match(thumbnailHtml({ template: "thumb", data: { ...data, layout: "d" } }, { slug: "ai-term-token" }), /layout-d/);
   assert.match(thumbnailHtml({ template: "thumb", data: { ...data, layout: "a" } }, { slug: "curio-h01-v2" }), /layout-a/, "a named layout wins");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "d" } }), []);
-  assert.ok(thumbnailProblems({ template: "thumb", data: { ...data, layout: "z" } }).some((problem) => /layout must be one of a, b, c, d, e, ai/.test(problem)));
+  assert.ok(thumbnailProblems({ template: "thumb", data: { ...data, layout: "z" } }).some((problem) => /layout must be one of a, b, c, d, e, f, ai/.test(problem)));
 });
 
 // The split layout (2026-11-08): the words on a panel of their own, the picture beside them, and
 // only where a video names it, so no thumbnail already drawn moves.
-test("the split thumbnail layout keeps the words off the picture and is chosen by name alone", () => {
+test("the split thumbnail layout keeps the words off the picture, is the curio default and otherwise chosen by name", () => {
   const data = { headline: "鋼琴廠\n**造機車**", tag: "品牌檔案", sub: "分出去的營收 5 倍多", shot: "x" };
   assert.equal(THUMB_SPLIT_LAYOUT, "e");
   assert.ok(!THUMB_LAYOUTS.includes(THUMB_SPLIT_LAYOUT), "not in the rotation");
@@ -687,10 +688,14 @@ test("the split thumbnail layout keeps the words off the picture and is chosen b
   assert.match(split, /<h1 class="fit[ "]/, "a long translated headline shrinks inside the panel");
   const centred = thumbnailHtml({ template: "thumb", data: { ...data, layout: "e" } }, { background: "https://video.local/k.png", slug: "curio-b01" });
   assert.match(centred, new RegExp(`style="--focus:${THUMB_FOCUS_DEFAULT}%"`));
-  // No default moves: a curio slug without a layout keeps d, and only layout e carries the CSS.
-  const bold = thumbnailHtml({ template: "thumb", data }, { background: "https://video.local/k.png", slug: "curio-b01" });
+  // Since 2026-11-10 a curio slug without a layout takes e (focus at the default); a story slug
+  // keeps d, and only layout e carries the focus.
+  const curioDefault = thumbnailHtml({ template: "thumb", data }, { background: "https://video.local/k.png", slug: "curio-b01" });
+  assert.match(curioDefault, /<div class="thumb-subject layout-e tone-[a-z]+ from-shot" style="--focus:50%">/);
+  const bold = thumbnailHtml({ template: "thumb", data }, { background: "https://video.local/k.png", slug: "story-everyday-crocs-c01" });
   assert.match(bold, /layout-d/);
   assert.doesNotMatch(bold, /layout-e|--focus/);
+  assert.doesNotMatch(thumbnailHtml({ template: "thumb", data }, { slug: "ai-term-token" }), /layout-e/, "other slugs only by name");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus: 0 } }), []);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e", focus: 100 } }), []);
   // A line in a script without word spaces keeps the break the writer made, and shrinks instead.

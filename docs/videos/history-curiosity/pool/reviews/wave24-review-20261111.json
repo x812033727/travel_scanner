@@ -1,0 +1,407 @@
+{
+  "batch": "batches/wave24-20261111.json",
+  "reviewed_on": "2026-11-11",
+  "method": "四位沒有參與研究的覆核代理（R241：E1；R242：E2；R243：E3；R244：E4）逐題至少重開一個關鍵來源、用素材池搜尋、case_key 與批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位，覆核新讀的來源（R242 三筆）編入 E2 來源序號。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 15,
+    "NEEDS_CHECK": 3,
+    "REJECT": 1,
+    "ADOPT": 4
+  },
+  "source_renames": {
+    "R242-S001": "E2-S021",
+    "R242-S002": "E2-S022",
+    "R242-S003": "E2-S023"
+  },
+  "verdicts": [
+    {
+      "id": "N2641",
+      "agent": "E1",
+      "reviewer": "R241",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E1-S001 https://www.melocki.org.uk/ordericus/Book8.html（Forester 英譯第八卷第十七章，全文抓下逐段讀）",
+      "reopen_result": "頁面確實寫了：1091 年 1 月初利雪教區 Bonneval 的神父 Walkelin 夜裡探病回家，聽到像軍隊行軍的聲音，躲向田裡『四棵歐楂樹（medlar-trees）』時被持棍巨人攔下；五十副棺架；他心想『這一定是 Harlequin 的人馬（譯者註 [2] 拉丁文 Herlechini），我常聽人說見過，卻笑那些故事』，想牽一匹黑馬回去當證據；結尾『他之後健康地活了將近十五年，我從他口中聽到我寫的這些……也看過那名可怕騎士在他臉上留下的手印』。Le Prévost 的註確實說鄉間仍叫它『Hennequin 的狩獵』，並說 Herlechinus 與起源於貝加莫的花衣丑角同名。注意 Forester 英文把 familia Herlechini 直接譯成 Harlequin，片中引用時要用拉丁原名。",
+      "changed_fields": [
+        "question",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中沒有狂獵、Herla、Hellequin 的題目（cli 搜『狂獵』『Wild Hunt』『Hellequin』皆空；grep 全部批次與 E2–E4、wave21–23 也沒有）；N687 Santa Compaña 是同類亡者隊伍，但文本、時代與答案不同；N466 只借用 Orderic 對梅林的評語。重開的 Orderic 頁面撐得住 hook 與第一段的每個細節（笑那些故事、牽馬、手印、將近十五年）。改兩處：題目原寫『最早一份有名有姓的紀錄』，與作者自己的 scope 衝突（Schmitt 的判斷只有二手摘要），改成『目前讀到最早』；1127 年那條沒有用 Herlechin 的名字，題目原寫『同一種黑色獵隊』，改成『一支黑色獵隊』。visual 的『枇杷樹』是誤譯，原文 medlar 是歐楂。三段轉折（彼得伯勒的諷刺、Map 兩段互相矛盾、名稱流到 Arras 喜劇與丑角爭論）各自改變結論，9–11 分鐘誠實。"
+    },
+    {
+      "id": "N2642",
+      "agent": "E1",
+      "reviewer": "R241",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E1-S006 https://sourcebooks.fordham.edu/basis/williamofnewburgh-five.asp（Stevenson 英譯第五卷，全文抓下）；另重開 E1-S009 https://www.merriam-webster.com/dictionary/vampire",
+      "reopen_result": "Fordham 頁面確實有：Melrose 的神父因沉迷打獵被許多人叫作『Hundeprest，也就是狗神父』，死後夜裡出墳；Anantis 城堡一案是『一位在當地受人尊敬的老修士』親口說的，年輕人一刀下去湧出的血『可以當成吸飽許多人血的水蛭』，有人說不挖出心臟燒不起來；第 24 章開頭說這種事若不是近年例子很多、證據充分，很難相信，古代作者連中等的事都記，卻沒寫過；緊接的第 25 章是『五旬節八日內〔1196 年 6 月 16 日〕天上出現兩個太陽』。Merriam-Webster 寫：First Known Use 1732，字源經法文、德文 Vampir 借自塞爾維亞文 vampir。",
+      "changed_fields": [
+        "question"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中 Newburgh 只在 L29 綠孩子（兩位史家版本差異，核心不同）；F34（1732 年報紙到 Lord Ruthven）、N681 Croglin Grange、N187 德古拉、N2581 zombi 都不是 12 世紀走屍與名稱時代錯置。重開頁面支持四件個案、Newburgh 的保留語與『水蛭』譯法。只改一句：題目把『1732 年才進入英文』寫成定論，其實是 Merriam-Webster 列出的最早用例，改成照字典的說法（answer_target 已經這樣寫）。Newburgh 的懷疑者身分＋Map 完全不同的處理法＋vampire 的時代錯置，兩個真轉折，9–11 分鐘可以不重複。"
+    },
+    {
+      "id": "N2643",
+      "agent": "E1",
+      "reviewer": "R241",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E1-S011 https://archive.org/download/cu31924027097868/cu31924027097868_djvu.txt（Illustrations of Northern Antiquities 1814 的 OCR 全文，讀〈Abstract of the Eyrbiggia-Saga〉）",
+      "reopen_result": "OCR 全文確實有：摘要開頭『composed (as has been conjectured by the learned Thorkelin) before the year 1264』；Thorolf 屍體從牆洞搬出處的腳註『Suicide seems to be indicated』，並說蘇格蘭至今迷信自殺者的屍體不能從門搬出、要從窗戶放下去；審判段結尾『it is the only instance in which the ordinary administration of justice has been supposed to extend over the inhabitants of another world, and in which the business of exorcising spirits is transferred from the priest to the judge』，前面寫 Kiartan 帶著法律程序開始、由神父的聖水與彌撒『完成』對鬼的勝利；Thorer 聽判決後說『I have sate while it was lawful for me to do』。",
+      "changed_fields": [
+        "question",
+        "hook"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中沒有 Eyrbyggja、Fróðá、draugr（cli 與 grep 皆空；F20、F22 北歐神話、N908 都不同）。重開 Scott 1814 原文，『唯一例子』『自殺』註與 Thorkelin 的 1264 推測都逐字在。改兩處：題目說 Scott『第一次把這部薩迦介紹給英語讀者』，本輪沒有任何來源支持『第一次』，改成『用英文寫下這部薩迦摘要』；hook 說『活人沒找神父驅鬼，先找了一位法官』與答案不符——門庭是 Snorri 派來的神父出的主意，最後也由神父灑聖水、唱彌撒結束，Scott 自己也寫是法律開始、神父完成，所以 hook 改寫。驅魔在不收名單裡，指的是今日真實病人的宗教儀式；這裡是 13 世紀薩迦的文學情節，照文本一句帶過不講步驟即可。三層（Thorolf、Fróðá、門庭）＋Scott 的改寫，10–12 分鐘是誠實估計。"
+    },
+    {
+      "id": "N2644",
+      "agent": "E1",
+      "reviewer": "R241",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E1-S012 https://github.com/mimno/TwelveMedievalGhostStories（README 與 master 分支的 english.md，經 WebFetch 讀；curl 直取 github 被本 session 擋）",
+      "reopen_result": "README 寫：拉丁文取自 James 1922 年《English Historical Review》，已校 OCR；英譯是 A. J. Grant 1924 年《Yorkshire Archaeological Journal》、有 Hamilton Thompson 協助；故事像丹麥民間故事、很多鬼要先被『召喚』才會開口。english.md 有：Casley 舊目錄只寫『Exemplaria apparitionum spirituum (saec.) XV』；出處 Royal MS 15 A. XX，收西塞羅幾篇論著與《Elucidarium》，原屬 Byland 修院；寫成在 1400 年後不久、理查二世已成過去；裁縫 Snowball 遇到冒火星的烏鴉、鬼被開除教籍、要『九乘二十台彌撒』、赦免寫在羊皮紙上埋在死者頭邊；Kilburn 的 Robert『像從空桶裡』說話；Tankerlay『曾任 Kirby 的堂區神父』，被挖出丟進 Gormire 湖，修士寫『願我不因此有危險，我只是照長輩說的寫下來』；Newburgh 教士為『藏起來的幾支銀湯匙』被開除教籍；Ayton 的鬼是『六便士的事』；Adam of Lond 的姊姊右手垂著、發黑，因為生前用它發假誓；編者註說『處處費心隱去鬼的名字』，推測是親屬會反對的有身分的人。",
+      "changed_fields": [
+        "question",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中沒有 Byland、Royal 15 A. XX、Snowball（cli 搜 Byland、M. R. James 皆空；grep 全批次與 E2–E4 也空）；N202 Tedworth、N1041 Willington Mill 是近代騷靈調查，核心不同。重開的轉錄支持答案裡的每則個案與兩句自保、隱名的註。改兩處：題目原寫『1922 年寫鬼故事出名的 M. R. James……找到』，語序讓人以為 1922 才出名，也誇大成他親手發現（作者自己的答案寫的是新版目錄先注意到），改寫；scope 補上『只有一份轉錄，寫稿前對原刊』，這是作者自己承認的弱點。轉折不算強，但『鬼回來是為了赦免與歸還財物』本身就是異常，加上修士的自保與刻意隱名（暗示是真實鄰里的有身分人），再到五百年後的轉錄，8.5–10 分鐘的材料是十二則故事，不必湊。"
+    },
+    {
+      "id": "N2645",
+      "agent": "E1",
+      "reviewer": "R241",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "E1-S014 https://romancingthegothic.com/2021/05/03/extract-on-vampires-from-the-antidote-to-atheisme-henry-more-1653-1655-edition/；另重開 E1-S017 https://www.crazyalchemist.com/dark-history/why-was-the-shoemaker-of-breslau-dug-up/；Wojtucki 2020（doi:10.4467/20844131KS.20.020.12516）以 curl、WebFetch 與全文 PDF 連結三次嘗試，ejournals.eu 一律 503 或憑證鏈不全，沒有讀到",
+      "reopen_result": "More 的轉錄確實寫：『A certain Shoomaker in one of the chief Towns of Silesia in the year 1591. Septemb. 20.』，家人謊稱中風、有葬禮講道、六週後傳出自殺、寡婦要告人並揚言上訴皇帝宮廷、身影壓人留下指痕、1592 年 4 月 18 日開墳不腐、右腳大趾玫瑰狀『Magical mark』、改埋絞刑架下、5 月 7 日再挖出砍頭與四肢、取心、燒灰入河；女僕變成母雞等形狀；結尾『These things were done at Breslaw in Silesia where the Weinrichius then lived』，並說隱名是出於對寡婦與家人的禮貌。網站只說 1655 年版『adds extra material』，沒有明說這一章就是新增的。crazyalchemist 說 Strzegom 的埋葬簿記有住新城門外的 Hans Opitz、條目被劃掉、More 的 Breslaw 是從敘述者住址推出來的，全部標為出自 Wojtucki 2020；Wojtucki 2020 的摘要（搜尋摘要）只確認他用了 Strzegom 1589–1715 的死亡登記冊談回來的死者，沒有出現鞋匠或 1591。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池中沒有 Breslau、Silesia、Weinrich 的題目；F34、N681、N2642 都不是『城名是後人補的』。但本題的核心轉折——城名被 More 補上、檔案把它搬回 Strzegom 的 Hans Opitz——目前只有一個科普網站與一份轉引名單，Wojtucki 原文三次都讀不到；『1653 年初版沒有這段』只靠品質差的 OCR 否定結果，連 E1-S014 也只說 1655 年版『加了內容』。少了這兩點，題目只剩 More 的轉述故事＋vampire 的時代錯置，撐不起獨立一集。要改成 screened 需要：(1) 讀到 Wojtucki 2020 全文（或 2016《Żywe trupy》）確認 Strzegom、Opitz、劃掉的條目與布拉格上訴法院；(2) 在 1655 年版掃描（archive.org antidoteagainsta00more）確認第三卷第八章的章名與頁碼，並在 1653 年版目錄確認沒有這一章。另提醒：scope 的自殺守則要保留，而且故事的高潮整段是開墳、砍頭砍肢、取心、焚屍，旁白只能一句帶過；若讀到 Wojtucki 後仍要做，建議和 N2642 並成『vampire 這個字出現以前』一組，避免兩集都以屍體處理為主。"
+    },
+    {
+      "id": "N2646",
+      "agent": "E1",
+      "reviewer": "R241",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E1-S019 https://www.kentarchaeology.org.uk/journal/73/apparition-mrs-veal-mrs-bargrave-canterbury-8th-september-1705（全文抓下逐段讀）；另重開 E1-S020 https://gutenberg.org/files/36587/36587-h/36587-h.htm 與 E1-S021 https://ecf.humanities.mcmaster.ca/15_3starr/",
+      "reopen_result": "Higenbottam 確實寫：Veal 夫人 9 月 7 日週五死於多佛，8 日週六中午到坎特伯里；1954 年皇家天文台的 P. S. Laurie 在天文台檔案裡發現兩份早期記載；目前所知最早的是 9 月 13 日署名 E.B. 的信（內容有櫃子裡的金子、父母墳上沒有墓碑、丈夫醉歸把她關在門外、她在台階上坐到天亮、丈夫罵她『跟魔鬼說話』）；10 月 31 日 Arbuthnott 致 Flamsteed（『一位非常尊貴的人』即喬治王子）；11 月 15 日 Stephen Gray 回信——但 Gray 附上的敘述裡，Veal 夫人已經稱讚 Drelincourt 的書『excellent Book and full of truth』，也已經說那件是『old Gown I have had scourd and newly made up』；反對意見是 Veal 先生當著證人打開櫃子找不到東西、沒人看到她們在街上、她有說住處鬧鬼的名聲（Gray 查出是丈夫掩飾外遇的說法）；Gray 結論說支持為真的論證『分量大得多』，並『傾向相信 Bargrave 夫人真的跟亡友的靈說過話』；她只肯在 Veal 先生同意下、在坎特伯里大主教等人面前發誓。Higenbottam 還說『後來學者的研究已確定兩人是真人，Defoe 寫小冊之前就有同時代記載』，書目列 1705 年 10 月 9 日 Lukyn 的信。Gutenberg 本的『致讀者』書商滯銷、Defoe 想出這個鬼一段，結尾註明引自 Scott 的 Miscellaneous Prose Works。Starr 摘要與作者轉述一致。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池中沒有 Veal、Bargrave（grep 的 Veal 命中都是 reveal；cli 搜 Defoe 只有 N166、N1021，與本題無關）；N801 Hinton Ampner、N422 珠寶館幽靈同屬『當事人紀錄晚出』，答案不同。前提成立，但重開 Higenbottam 全文後有三處要改：(1) 作者把『鬼稱讚 Drelincourt』『絲袍重染』寫成小冊新加的細節，其實 1705 年 11 月 Gray 附的敘述裡就有——這反而是本題最好的轉折，已改進題目、答案與 payoff；小冊真正多出的是 Watson 夫人的話、梳子盒、Breton 的十鎊與 Veal 先生『壞丈夫把她弄瘋了』；(2) Gray 不只是『結論說支持為真的分量大』，他明說自己傾向相信，答案補上；(3)『1840 年版編者說書商在 Defoe 幫助下推銷滯銷書』其實是書末引用的 Scott，改成 Scott 的說法；另 Higenbottam 說在他之前學者已確定兩人是真人，所以題目不能寫成『一百多年被當小說、1954 年才翻案』，改成『長期被當成』並在 scope 擋住。四層（五天後的信、宮廷與天文學家、小冊多出的細節、作者歸屬）各自改變結論，9–11 分鐘誠實。"
+    },
+    {
+      "id": "N2647",
+      "agent": "E1",
+      "reviewer": "R241",
+      "verdict": "REJECT",
+      "key_source_reopened": "E1-S023 https://www.drjohnsonshouse.org/post/the-cock-lane-ghost",
+      "reopen_result": "頁面確實寫：1762 年 1 月倫敦報紙報導 Cock Lane 的鬼，圍著十二歲 Elizabeth Parsons 的床敲擊抓撓；一下是、兩下否，說 Fanny Lynes 是被 Kent 用砒霜毒死；1 月 12 日到 23 日六場降靈，最後一場在聖巴多羅買醫院給二十人看；Parsons 收門票；市長下令調查，Johnson 參加 2 月 1 日那晚，報告登在 1762 年 2 月號《Gentleman's Magazine》，鬼答應敲棺沒有兌現；之後有人看見 Elizabeth 把小木塊藏在衣服下；包括 Parsons 與 Moore 在內五人以共謀罪定罪，Parsons 坐牢兩年、上枷三次；Johnson 不願跟 Boswell 談，可能因為被諷刺成天真的信徒。",
+      "changed_fields": [],
+      "duplicate_of": "N201",
+      "reason": "重複：池中已有 N201『1762 年倫敦的鬼用敲擊聲指控一個男人殺人，為什麼最後坐牢的是房東？』（wave1，selected，episode_core 8–11 分），連 case_key 都一樣是 case.cock_lane_ghost_1762；它的答案就是債務糾紛先於靈異、Johnson 是揭穿者不是信徒、藏木片、共謀罪、Mackay 與 Lang 說沒解釋清楚——與本題的核心答案完全相同。研究代理的去重只搜到 N941、N2402 的旁述，漏了 N201（池的 cli 搜 Cock Lane 回空，題目是中文，要 grep case_key）。本題新增的材料（Churchill《The Ghost》的 Pomposo、Boswell 的澄清、Johnson 晚年的憤慨、Fanny 的姓 Lynes 見 E1-S023）可以在 N201 寫稿時當補充來源，不另立題。重新收錄條件：無（已由 N201 涵蓋）。"
+    },
+    {
+      "id": "N2661",
+      "agent": "E2",
+      "reviewer": "R242",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E2-S002 https://uhra.herts.ac.uk/id/eprint/2333/1/902376.pdf（PDF 以 pdftotext 抽出全文，讀 pp. 3–7 與註 1–7）；另重開 E2-S004 https://www.gutenberg.org/cache/epub/43628/pg43628.txt（Giles 1880〈Theft of the Peach〉與註 168–172）",
+      "reopen_result": "Lamont 與 Wiseman 確實寫：第一份類似繩技的目擊是 14 世紀伊本·巴圖塔，1858 年有法文版，1872 年出現在 Yule 書的註腳，沒有證據顯示有人注意；因為發生在中國，與印度沒有關聯。1890 年代以前談印度魔術的書（Frost 1876、Giles 1880、Jacolliot 1884、Weatherley & Maskelyne 1891、Baldwin 1895）都沒提繩技；Maskelyne 1891 年說籃子與芒果是『幾乎每位作者都提到的兩大戲法』。繩技成名主要靠《Chicago Daily Tribune》署名 Ellmore 的 1890 年報導（說是集體催眠），四個月後編輯承認是惡作劇（1890 年 12 月 6 日），但國際報刊已經轉載。1899 年 Bertram 懸賞 500 鎊、訪問 106 位印度魔術師；1919 年《Strand》登 Holmes 照片；1934 年 4 月 30 日魔術圈委員會判定不存在並懸賞 500 基尼，Karachi（英國人 Arthur Derby）的版本被拒付。但同一篇也說：故事的根源被追到佛教本生經與商羯羅的注釋（註 1：商羯羅那段的比對靠錯誤翻譯，Varma 1942），『這個神話在印度顯然早就存在』——候選稿『與印度無關』的說法要收窄成『在西方眼裡』。Giles 註 172 確實以『Of Chinese jugglers, Ibn Batuta writes as follows』引了五十肘鐵鍊、狗豬豹獅虎上去消失的段落，後面還引 Maskelyne 說是凹面鏡造成；〈偷桃〉情節（繩子拋入雲中、兒子爬上偷西王母的桃、頭與手腳落下、收進箱子討喪葬錢、兒子從箱子跳出）與候選稿相符，註 168 說作者自稱親眼看過。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池、wave21–23 與 wave24 其他檔都沒有繩技、偷桃、伊本·巴圖塔或 Jahangir（cli search 與 grep 皆無）；L28 仙子照片、N2486 同屬『西方造出的東方奇談』但答案不同。前提成立，三個轉折都在重開的頁面上（最早目擊在中國；Giles 引的『伊本·巴圖塔』其實是 Price 譯的 Jahangir 回憶錄；報社四個月後自己撤回）。改的是三處過度：(1) Lamont 與 Wiseman 明說印度本地有本生經與商羯羅的根源，『與印度無關』只能說是 19 世紀西方的認知，否則對印度文化不公平、也與來源相反，這點反而多一個轉折（1934 年拿商羯羅當證據、後來被指出誤譯）；(2)『1891 年以前』改成 1890 年代以前，因為他們舉的書到 1891、1895 年；(3) 1934 年懸賞補上 Karachi 的實際結果。片長 9.5–11 分鐘誠實：杭州、偷桃、偽作回憶錄、1890 報導、懸賞與照片五段，各有來源。"
+    },
+    {
+      "id": "N2662",
+      "agent": "E2",
+      "reviewer": "R242",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E2-S009 https://www.jewishencyclopedia.com/articles/13062-sambation-sanbation-sabbation-sambatyon；E2-S008 https://www.gutenberg.org/cache/epub/60688/pg60688.txt（Bostock 本卷 31 第 18 章與註 2993）；另讀到兩份原典英譯補強：R242-S001 Manasseh ben Israel《The Hope of Israel》1652 英譯（Gutenberg 62562），R242-S002 Sanhedrin 65b（Sefaria API）",
+      "reopen_result": "百科條目與候選稿相符：Josephus 六天流第七天停（條目說普林尼的說法『比較合猶太精神』）、塔古姆把十支派放到河外、Sanh. 65b 阿基瓦『河可證』、Eldad 說河無水而滾沙石、祭司王約翰國書拉丁本『一週只有三天有水流，其餘四天可涉過』、希伯來本『整週流、安息日停』、亞歷山大傳奇三天水三天沙、Ibn al-Faqih 加上星期六、Qazwīnī 的沙河只有星期六停、Farissol 放在加爾各答以北、Gershon 1630 寬十七哩丟石比房子高、Manasseh『連裝在 glass 裡的沙也六天翻動』、Kaufmann 的 Nehar Ḥol 推測；條目自己逐條註原典。Bostock 本：『In Judæa there is a river that is dry every Sabbath day』，註 2993 說 Josephus 說它安息日流、其他六天乾。Sanh. 65b 英譯：阿基瓦說『Sabbatyon 河可以證明今天是安息日，因為它只有安息日平靜』，上下文是招魂與 Rufus 父親在地獄。Manasseh 原書：所謂『玻璃』其實是 hour-glasse（沙漏），來源是 Japhe 與他父親說的里斯本阿拉伯人，還有一位法官命人拿走沙漏；他並主張 Josephus 的話要讀成安息日停、普林尼弄錯地點——也就是 1650 年就有人把兩份相反的紀錄硬拉成一致。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池裡沒有 Sambation 或 Eldad；N306 祭司王約翰國書只用到『越抄越長』，本題借國書裡一條河，答案不同。1906 年《猶太百科全書》能不能撐：作為逐條附原典出處的學術整理，它可以當『據整理』的旁白來源，但不能單獨撐兩個轉折。覆核後主幹已經不靠它：第一個轉折（Josephus 與普林尼相反）兩份原典英譯都讀到；Sanh. 65b 讀到原句；收尾前的高潮改用 Manasseh 原書，畫面更好（里斯本週五傍晚的沙漏），而且多一個真轉折（1650 年的學者替 Josephus 改讀、說普林尼被誤導）。仍只靠百科的是祭司王國書拉丁與希伯來本的對照、伊斯蘭的沙河與 Eldad，scope 已要求照『據整理』講，國書一段製作前建議補讀。另修正：玻璃瓶其實是沙漏、Tineius 改照 Talmud 寫 Turnus Rufus。changes 中 sources_add 是覆核者新增的兩筆來源紀錄，合併時加進 sources。片長 8.5–10 分鐘可信。"
+    },
+    {
+      "id": "N2663",
+      "agent": "E2",
+      "reviewer": "R242",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E2-S012 https://archive.org/details/fr107histoire11（下載 djvu 全文，讀薩拉姆遊記 pp. 125–131 法譯與導言回曆 228 年段）；另重開 E2-S013 https://www.wordtrade.com/religion/islam/Gogmagog.htm",
+      "reopen_result": "法譯確實寫：『會三十種語言的通譯薩拉姆』、五十名壯丁；靠醋抵抗臭氣、走十天後二十（異文二十七）天穿過據說被歌革瑪各毀掉的廢城；遇到說阿拉伯語與波斯語、會讀古蘭經、有學校與清真寺的穆斯林，他們聽到『信士的長官』很驚訝，問他老還是年輕、住哪裡，聽到『伊拉克一座叫 Sorra-man-ra（薩邁拉）的城』才說『我們從沒聽過』——候選稿『沒聽過哈里發』不對，沒聽過的是那座城。守門長每週一、四（註：一說週五）帶三人拿鎚子上梯敲門閂，貼耳聽到『像黃蜂窩的悶聲』，正午、午後再敲，目的是讓另一邊知道有守衛；薩拉姆用刀從裂縫刮下半德拉克馬的粉末包進手帕給 al-Wāthiq；門上鐵字刻經文，註 1 為古蘭經 18:98；守衛說遠遠看見幾個歌革人，看起來只有一拃半高；回到尼沙普爾只剩十四人，去程死或病棄二十二、回程十四；去程十六個月、回程十二個多月。導言說薩拉姆之行始於回曆 228 年、歷時兩年半，用來推成書年代。書商頁面是該書介紹：可信度『一直有高度爭議』，作者認為旅行是歷史事實，經伊吾、羅布泊、玉門關，羅布泊之後的建築是折返點，他是否相信到了『無法判斷』，『不可能空手回家』；同段也主張古蘭經相關經文來自敘利亞基督教傳統。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_locator",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池裡只有 N306 一句提到歌革瑪各，沒有薩拉姆或亞歷山大之牆。宗教範圍：scope 已把本集限在 9 世紀這份出使紀錄（夢、路線、門、鐵粉、回程），不評論古蘭經敘事、不讀不畫經文；覆核者另加一條，van Donzel 與 Schmidt『古蘭經經文源自敘利亞傳統』的主張不引，因為那會把一集出差報告變成宗教起源爭論。修正一處誤讀（沒聽過的是薩邁拉不是哈里發）並把 E2-S013 的性質改正（是書籍介紹，不是書評），補上『是否自信到了無法判斷』。兩個轉折成立：報告細到能聽見門後的聲音、帶回實物；現代學者認為真走了一趟，但看到的是中國邊牆、不能空手回去。片長 9–10.5 分鐘可信，遊記本身細節足夠。"
+    },
+    {
+      "id": "N2664",
+      "agent": "E2",
+      "reviewer": "R242",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "E2-S014 https://zh.wikisource.org/wiki/通典/卷193（raw 原始碼）；E2-S012 de Goeje 法譯 djvu 全文 p. 51 與註 1；另讀 R242-S003 https://zh.wikisource.org/wiki/酉陽雜俎/卷十",
+      "reopen_result": "《通典》卷 193 大食條：『大食，大唐永徽中，遣使朝貢云：其國在波斯之西……又云：其王常遣人乘船，將衣糧入海，經涉八年，未極西岸。於海中見一方石，石上有樹，枝赤葉青，樹上總生小兒，長六七寸，見人不語而皆能笑，動其手腳，頭著樹枝，人摘取，入手即乾黑。其使得一枝還，今在大食王處』，下一段才另起『杜環《經行記》云』——與候選稿一致。de Goeje 法譯正文寫『中國以東是 al-Wâkwâk（le Japon）的地方，金多到居民用金做狗鍊與猴項圈，出口織金長衣與上等烏木』；註 1 說他 1880 年在阿姆斯特丹皇家科學院報告 Wâkwâk 是日本舊名，重譯 al-Bīrūnī：Wâkwâk 島屬 Komair（高棉），『不是像一般人以為的因一棵果實像人頭、會叫的樹而得名，Wâkwâk 是它本來的名字』，Sachau 沒譯好；並承認這段難懂，因為很難接受日本屬高棉。《酉陽雜俎》卷十〈物異〉人木條原文讀到，與《太平廣記》摘要一致。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池裡沒有 Waqwaq、人木、小兒樹；N383、N384 是『長出動物的植物』但答案不同。前提成立，覆核者補讀到《酉陽雜俎》原文，並發現一個好畫面：de Goeje 直接在 Ibn Khurradādhbih 的譯文裡加了『（日本）』，自己卻承認 al-Bīrūnī 的高棉說跟日本對不上。不能 ADOPT 的理由是片長：現在可講的事實只有《通典》、《酉陽雜俎》、Ibn Khurradādhbih、de Goeje 日本說、al-Bīrūnī、Qazwīnī 抄本一張圖，約 7–8 條，照 140 字一條加 700 字，約 1,700–1,900 字、6.5–7 分鐘，不到 8.5 分鐘；候選稿自己也說要補讀日本段或 Qazwīnī 正文才穩。製作前要補：Qazwīnī《創造物的奇觀》Waqwaq 條的學術譯本（樹的果實是女人、喊 waq waq），《印度奇觀》（Buzurg ibn Shahriyār）945 年 Waqwaq 人一段的譯本，以及 NDL 上《和漢三才圖會》人面樹與明《三才圖會》大食國條的原頁；補到其中兩項才夠一集。補不到就不做，不要用重複的描述撐片長。"
+    },
+    {
+      "id": "N2665",
+      "agent": "E2",
+      "reviewer": "R242",
+      "verdict": "NEEDS_CHECK",
+      "key_source_reopened": "E2-S017 https://archive.org/details/spain-history-volume-1（djvu 全文，Gayangos 1840 譯本 pp. 148–149 與 p. 426 註）",
+      "reopen_result": "頁面確實寫：Abū-l-Kāsim ʿAbbās Ibn Firnās 是第一個在安達魯斯用黏土造玻璃的人，引進 Khalīl 的韻律學、教音樂、發明 al-minkālah；他身覆羽毛、綁一對翅膀，從高處跳下，『據幾位親眼看見的可信作者』飛了相當遠，落回起點時背部重傷，因為不知道鳥靠尾巴降落、沒做尾巴；Múmen Ibn Saʿīd 的詩『他飛得比鴕鳥快，卻忘了給身體裝上禿鷹的力氣』；他在家裡做了會出現雲、星、閃電與雷聲的天象。p. 426 註：幾部傳記辭典與醫生名錄都沒有此人，Conde 記有位詩人 Abbás Ben Firnas 死於回曆 275 年（888–89）。這一段與候選稿相符；但頁面沒說 Muʾmin 與他同時代。另用網路搜尋查最早出處：多處提到 11 世紀 Ibn Ḥayyān《al-Muqtabis》有一段較早、可能獨立的記載，日文維基書目列有 Glaire Anderson 2017〈The Earliest Source for ʿAbbas Ibn Firnas' Medieval \"First in Flight\"?〉——都只讀到搜尋摘要，沒有讀到原文。",
+      "changed_fields": [
+        "hook",
+        "question",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池裡沒有 Ibn Firnas、Hezarfen、萬戶（Eilmer、Lilienthal 也沒有）。維持 needs_check，原因三個：(1) 三段裡有兩段只靠百科（Hezarfen 靠 TDV 條目轉述 Evliya、萬戶靠《科幻百科》轉述 1909 年原刊），1909 年《Scientific American》與 Seyahatnâme 卷一 670 都沒讀到，等於整集的『只有一份紀錄』本身只有二手證據；(2) hook 的『寫在他死後七百多年』正是 wave21–22 被糾正的錯：Ibn Ḥayyān 的 11 世紀記載與 Anderson 2017 的專文顯示可能有更早出處，這反而可能是 ʿAbbās 段最好的轉折，但要讀到才能講；(3) 結構上三人並列容易變成『另一個類似例子』，共同問題『只有一份紀錄的第一次』要靠每段各自的出處轉折撐住，現在只有 ʿAbbās 一段讀到原典。補讀清單：1909 年 10 月 2 日《Scientific American》〈The Modern Icarus〉原頁、Evliya Çelebi Seyahatnâme 卷一 Hezarfen 段（土耳其文校訂本或 Dankoff 譯）、Ibn Ḥayyān 與 Anderson 2017、IAU 的 Wan-Hoo 坑條目。三項讀到才升為 screened；只讀到一項就不夠一集，不要用三段各自的背景硬湊。hook 與 question 先改成不越過來源的寫法。"
+    },
+    {
+      "id": "N2681",
+      "agent": "E3",
+      "reviewer": "R243",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E3-S001 https://sourcebooks.web.fordham.edu/source/Agobard-OnHailandThunder.asp（Fordham 英譯第 II、XVI 節）",
+      "reopen_result": "頁面上確實寫了：第 II 節有人相信有個叫 Magonia 的地方，船從雲中來，載走被冰雹打壞的莊稼，『空中水手』付錢給風暴法師；集會上展示四個俘虜『三男一女，好像是從這些船上掉下來的』，『被鎖了幾天』（some days），群眾要求用石頭打死，經說理後指控者理屈、四人沒被打死。第 XVI 節：牛死時人們歸咎於貝內文托公爵，英譯拼作 Grimaldus（不是 Grimoald），說他派人在田野、草地、泉水撒粉；許多人被捕，有的被打死，多數被綁在木板上丟進河裡；被抓的人還招認有粉，阿戈巴歸因於魔鬼的作弄。原文沒有四人自述被帶走、沒有火。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內與 wave21–23、E1／E2／E4 皆無阿戈巴、Magonia、雲中船；同類『古文獻被讀成 UFO』的 U24、N507、N623、N844 答案各不同（本題關鍵改動在 1670 年《Gabalis》，UFO 書抄的是它）。wave8 的 N844 只是引用《Passport to Magonia》當來源，不涉阿戈巴。前提在重開的頁面上成立，兩個轉折是真的（被告不是目擊者；自述與 Grimaldus 的合併是 1670 年加的），9–11 分鐘誠實：阿戈巴的論證、兩場謠言、789／810 年的法令背景、1670 年改寫、1953／1969 年接手各一章。改了三處：hook 原說『專門駁斥雲上有船』，但全書駁斥的是風暴法師與天氣法術，雲船只是其中一段；Fordham 英譯把公爵拼作 Grimaldus，answer_target 要並列拼法，notes 改成『名字原本就在阿戈巴書裡，1670 年的改動是把它接到雲船俘虜身上』，免得旁白說成名字是 1670 年才出現。"
+    },
+    {
+      "id": "N2682",
+      "agent": "E3",
+      "reviewer": "R243",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E3-S006 https://www.thelatinlibrary.com/livy/liv.21.shtml（21.62）；E3-S007 https://www.thelatinlibrary.com/obsequens.html（§1、§45、§54）",
+      "reopen_result": "頁面上確實寫了：李維 21.62 開頭『aut, quod evenire solet motis semel in religionem animis, multa nuntiata et temere credita sunt』，接著列出六個月大的自由民嬰兒在菜市場喊『凱旋』、牛自己爬上三樓、Amiternum 多處遠遠看見白衣人形、Picenum 下石頭雨，以及『navium speciem de caelo adfulsisse』，之後十人祭司奉命查書、因石頭雨宣布九日祭。Obsequens 現存本從前 190 年（L. Scipio 與 C. Laelius 任執政官）開始；§45（Marius 與 Valerius 任執政官）先記 Tarquinii 有燃燒的火炬，接著『日落時一個像盾的圓由西往東移過』；§54『在 Spoletium 一團金色火球滾到地上，變大後離地往東，大到遮住太陽』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "scope",
+        "editorial",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內與 wave21–24 皆無李維、Obsequens、Lycosthenes；U24 是單張 1561 傳單與 Jung，本題是羅馬兆象清單的傳抄層次，核心答案不同（羅馬的兆象是每年被通報、被贖罪的公共事務，原作者自己就說很多是輕信的通報）。前提成立。但原稿的第二個轉折說『UFO 網站常引的 Obsequens 有一部分其實是 Lycosthenes 補的』，重開後看到網站引的前 100 年與前 91 年兩條都在現存本內（現存本從前 190 年起），補文只涉前 190 年以前，沒有讀到網站引補文的例子，這句會變成過度主張；改成『前 218 年那條根本不在 Obsequens 裡、Obsequens 只靠 1508 年印本、插圖是 1557 年木刻』，轉折仍成立。李維的保留語在 21.62.1，船形在同章稍後，『同一句』改成『清單的第一句』。內容撐 8.5–10 分鐘，原估 11 分鐘偏高，minutes 改為 [8.5, 10]。與 N2683 都用到 Lycosthenes，排片時不要相鄰。"
+    },
+    {
+      "id": "N2683",
+      "agent": "E3",
+      "reviewer": "R243",
+      "verdict": "ADOPT",
+      "key_source_reopened": "E3-S013 https://arxiv.org/abs/1508.07955（題名、作者與摘要）",
+      "reopen_result": "頁面上確實寫了：論文題名為『Presumable European aurorae in the mid AD 770s were halo displays』，作者 Dagmar Neuhäuser 與 Ralph Neuhäuser（Jena）；摘要說那兩面『燃燒的盾』是『兩個幻日』（two mock suns），並說另外兩次目擊（盾與紅色十字架）『必須定在 776 年，無論如何太晚，跟 775 年以前就開始的碳十四上升扯不上關係』；摘要本身沒有提 quadam die，『某一天＝白天』出自正文（研究代理讀的 ar5iv 版），製作前再對一次正文段落。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內與 wave21–24 皆無 Sigiburg、776 年盾、ASC 紅色十字架；S22 用 993 年碳十四事件定年，答案不同；U24 也有幻日解讀，但核心是 Jung 讀傳單，本題核心是編年史的時辰與紀年。這是本批最好的題：轉折不只對 UFO 迷，還對 2012–13 年的科學論文，兩個轉折真實（神蹟→UFO→太陽事件證據；『某一天』與紀年差兩年讓它跟碳十四脫鉤）。scope 已把『幻日』標成論文作者的判斷、方括號不說成後人竄入、在世學者不畫，寫得夠緊，不需要改。8.5–10 分鐘誠實。"
+    },
+    {
+      "id": "N2684",
+      "agent": "E3",
+      "reviewer": "R243",
+      "verdict": "ADOPT",
+      "key_source_reopened": "E3-S019 https://news.st-andrews.ac.uk/archive/sea-serpents-sexy-secret/（2005-04-04 新聞稿全文）",
+      "reopen_result": "頁面上確實寫了：2005 年 4 月 4 日，聖安德魯斯大學的 Charles Paxton、Sharon Hedley 與挪威退休教師 Erik Knatterud 在《Archives of Natural History》發表論文，重新分析 1734 年傳教士 Poul Egede 在格陵蘭外海那隻『最可怕的海怪』的四份原始紀錄；結論是他大概看到一頭陌生的鯨，最可能是座頭鯨、北大西洋露脊鯨或灰鯨，可能沒有尾鰭；也提出那可能是『處於發情狀態的鯨』，把生殖器看成了尾巴；結語是『最終我們永遠無法確定』。新聞稿也把目擊者寫成 Poul，與 answer_target 的『Hans 不在船上、轉述兒子』一致。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內只有 N1365（1898 下龍灣海怪，艦長報告與學會說明）與 wave22 不收的 1817 格洛斯特海蛇，核心不同；本題是同一事件四份紀錄的版本差異、父子轉述與英譯失真。hook（斥 Kraken 為可笑故事的人同頁記下最可怕的怪物）是紀錄裡真的反差；兩個轉折真實（寫書的人不在船上；目擊者晚年版本自己改掉『像鯨一樣噴氣』與『像蛇』）。生殖器一點 scope 已限制成一句、不畫不開玩笑，Heuvelmans 與在世研究者不畫。8.5–10 分鐘誠實。"
+    },
+    {
+      "id": "N2685",
+      "agent": "E3",
+      "reviewer": "R243",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E3-S021 Gassendi《Peiresc 傳》1657 Rand 英譯（Wellcome b30328500，第 147–149 頁 OCR，經 iiif.wellcomecollection.org 的 annotations 與 search 端點讀取）；E3-S023 https://www.thelatinlibrary.com/gregorytours/gregorytours6.shtml（6.14）",
+      "reopen_result": "頁面上確實寫了：Peiresc 這一年最得意的是研究傳說中的『血雨』，紅點見於城內大教堂墓園靠城牆的牆、城牆本身與村莊的牆；他親自去看，發現農夫目擊的說法是傳聞；他不接受自然學家『紅土蒸氣上升凝成紅雨』的說法，更不接受百姓與部分神學者說是魔鬼與女巫殺了無辜孩童，認為這對神的善與天意不公。『這時』發生一件意外：幾個月前他把一條少見的毛蟲關進盒子，忘了以後聽到盒裡嗡嗡響，打開時牠已變成蝴蝶飛走，盒底留下一滴蘇幣大的紅滴；同月正有大量蝴蝶飛舞。紅滴不在屋頂、只在石頭凹處與洞裡，牆在靠田的邊緣、高度約是蝴蝶常飛的高度；他據此解釋 Gregory of Tours 記的 Childebert 時代巴黎與 Senlis 的血雨，以及 King Robert 時 6 月底的血雨，之後與一大群聽眾到田野察看，紅滴只在石頭朝下的凹處。Gregory 6.14 原文：巴黎地區『真的血從雲中流下，落在許多人的衣服上』，Senlis 一戶人家早上起來屋內濺滿血，同年復活節 Soissons 天空像在燒、彗星出現、大疫。",
+      "changed_fields": [
+        "question",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內與 wave21–24 皆無 Peiresc、1608 血雨；M14（藻）、N2265（沙塵）、N123（禿鷹說）、N1521（お菊虫）答案各不同。前提在重開的頁面上成立。原題寫『Peiresc 想起盒子裡那條毛蟲』，但 Gassendi 寫的是他已經忘了那條毛蟲、是盒裡傳出嗡聲才發現羽化，而且同月正有大量蝴蝶，所以題目改成『忘了的毛蟲這時在盒裡嗡嗡作響』。scope 已要求講出 Gregory 原文（血落在衣服上、屋內）與『只在石頭凹處』的落差，這是本章的第二個轉折，很好。單做 5–7 分鐘，只能當 chapter；跟 N2686 成對見 theme_suggestions。"
+    },
+    {
+      "id": "N2686",
+      "agent": "E3",
+      "reviewer": "R243",
+      "verdict": "ADOPT",
+      "key_source_reopened": "E3-S024 《法國科學院院刊》1861 年第 52 卷 4 月 29 日會期（archive.org djvu 全文，第 880–882 頁 Castelnau 的信）",
+      "reopen_result": "頁面上確實寫了：頁首為『C. R., 1861, 1er Semestre』；Castelnau 的信說 2 月 16 日晚 7 時 34 分地震；20、21、22 日大雨成了真正的洪流；他看到馬來人與華人在水窪撿魚裝滿籃子，他們說魚『從天上掉下來』；魚是 Clarias batrachus；『我住的那棟房子的院子四周有牆』，所以魚不可能從那裡進來；範圍『大約二十公頃』；『一位老馬來人說他年輕時見過同樣的現象』；他問『能否假設 2 月 22 日我們遇上了一道龍捲水柱』，並說『我只能戰戰兢兢地提出這樣的假說』。日期與『戰戰兢兢』都與 answer_target 相符。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內無新加坡魚雨、Castelnau；Yoro 魚雨三度因來源不足不收（wave1、6、18、21），本題有一手院刊，不是同一核心；N2262（839 出羽石鏃）是 8–11 分鐘單集，不合併；N2141／N2142 只共用新加坡與 Gunung Ledang。答案誠實地停在『他排除了自己的解釋，只戰戰兢兢提出水柱』，不判定魚雨真假。單做 4–6 分鐘，Gudger 與 2018 年日期出入只是轉述層的小轉折，不夠撐單集，只能跟 N2685 成對。scope 已守住『沒看到魚落下是依他自己的時間線推論』與不延伸 Charles Fort。"
+    },
+    {
+      "id": "N2701",
+      "agent": "E4",
+      "reviewer": "R244",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E4-S006 https://archive.org/details/poorrichardsalma00fran_0（全文 OCR，1740 年序）；另比對 E4-S001 摘要",
+      "reopen_result": "1740 年序確實寫：Leeds『依預言死了』，但 W. B. 與 A. B. 繼續用他的名字出曆書，多年說他還活著，到 1739 年份的曆書才承認他死了，卻說他去年才死、死前留下七年的計算；接著是 Leeds『鬼魂』的信：他確實在預言的時刻死了，『只差 5 分 53 秒』，七年計算不是他給的，還說是從左鼻孔進到 Saunders 的腦子借他的手寫字。編者腳註只寫『William Bradford and Andrew Bradford, printers』，沒說是兄弟。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內與批次檔搜 Partridge、Bickerstaff、Franklin、Poor Richard、Titan Leeds 只命中無關題（wave9 的 Tom Jones 人物 Partridge、wave2 澤西惡魔來源裡提到 Leeds）；N962 Old Moore 的答案是書商公會的商品，不同。前提成立，兩段故事共用一個核心問題（死期預言的『命中』靠事後的說法，名字比人活得久），轉折實在，9.5–11 分鐘撐得住。唯一的錯是『Bradford 兄弟』：選集只寫 William 與 Andrew Bradford 兩個名字（史上二人是父子），改成不判定親屬關係的寫法。"
+    },
+    {
+      "id": "N2702",
+      "agent": "E4",
+      "reviewer": "R244",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E4-S009 史記三家註·卷六；E4-S014 後漢書·公孫述傳；E4-S011 漢書·王莽傳下；E4-S016 三國志·文帝紀裴注；E4-S015 後漢書·袁術傳（皆 zh.wikisource）",
+      "reopen_result": "《史記》正文『因奏錄圖書，曰「亡秦者胡也」』，下接《集解》『鄭玄曰：胡，胡亥，秦二世名也。秦見圖書，不知此爲人名，反備北胡』，再接『始皇乃使將軍蒙恬發兵三十萬人北擊胡』。〈王莽傳〉：王涉養道士西門君惠，說『星孛掃宮室，劉氏當復興，國師公姓名是也』。〈公孫述傳〉光武回信『圖讖言「公孫」，即宣帝也。代漢者當塗高，君豈高之身邪』。〈袁術傳〉『少見讖書，言「代漢者當塗高」，自云名字應之』。裴注引許芝奏，先引『白馬令李雲上事曰：許昌氣見於當塗高』，再說『當塗高者，魏也；象魏者，兩觀闕是也』。",
+      "changed_fields": [
+        "question",
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：亡秦者胡、胡亥、當塗高、劉秀、赤伏符在池內與所有批次檔都沒有；N1441 十八子讖、N1563 木棉讖是『應驗王朝自己寫下讖語』，P25 推背圖因兩岸政治不收，本題只到三國，不同。引文全部在重開的頁面上。要修的是兩處說法：題目說曹魏與蜀漢學者『各讀出不同的人』不對——兩邊都讀成魏；答案結尾『一句話換四個主人』也言過其實（實際被套上的是袁術與魏，公孫述是被光武否認的）。另補上許芝奏章先引東漢李雲的『許昌氣見於當塗高』，說明魏的讀法是接在更早的漢代解讀上，是同一個『名字被對上去』的論點。片長 9.5–11 分鐘可信：三句讖語共一個核心問題。"
+    },
+    {
+      "id": "N2703",
+      "agent": "E4",
+      "reviewer": "R244",
+      "verdict": "ADOPT",
+      "key_source_reopened": "E4-S019 https://archive.org/details/dioptricesevdemo00kepl（djvu OCR 全文，序言）；另重開 E4-S018 Gutenberg #829、E4-S020 Gutenberg #30123",
+      "reopen_result": "Kepler《Dioptrice》序：伽利略把新發現寫成打亂的字母寄到布拉格；『Ex hisce literis ego versum confeci semibarbarum, quem Narratiunculae meae inserui, mense septembri superioris anni — Salve umbistineum geminatum Martia proles』，隨即『Sed longissimè à sententia literarum aberravi mihi! illa de Marte continebat』（OCR 作 umbiffineum、longtffimà，掃描可辨）；接著引伽利略 1610 年 11 月 13 日佛羅倫斯信的義大利文原文與拉丁譯文：『Altissimum planetam tergeminum observavi』，土星是三顆並排的星，『兩個僕人扶著這位老人走路』。研究代理的拉丁文讀法正確。《格列佛》第三部有『two lesser stars, or satellites』；Micromégas 英譯有『two moons … I rely on those who reason by analogy』。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內 Swift 只出現在 N422、N2422 的不相干處；Phobos／火衛只有被拒的 Shklovsky 題（wave21、wave22 not_added）與 N2001 西鄉星順帶提到 Hall。前提與三個轉折（Kepler 讀錯字謎、Swift 數字對不上——3 與 5 個直徑對實際約 1.4 與 3.5、外側週期 21.5 對 30.3 小時、Voltaire 明寫靠類比）都撐得住；Swift 的兩個週期彼此確實符合第三定律（(5/3)^1.5×10≈21.5），答案說『用定律湊出』成立。8.5–9.5 分鐘偏緊但不灌水，scope 已擋住『外星人』與 Shklovsky。"
+    },
+    {
+      "id": "N2704",
+      "agent": "E4",
+      "reviewer": "R244",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E4-S024 https://real.mtak.hu/136988/1/A_Regiomontanus_joslat_es_utoelete.pdf（全文 17 頁，匈牙利文，pdftotext）",
+      "reopen_result": "Zsoldos 寫：這首詩首見於 1553 年巴塞爾印的 Engelbert of Admont 書，Brusch 序說在 Kastl 修院牆上一塊 Regiomontanus 設計的牌子上看到；德文四行『Tausent fünffhūdert achtzigk acht / Das ist das iar / das ich betracht…』；『大概不是 Regiomontanus 寫的』，Stöffler、Melanchthon、Hilten 都被提過；Leovitius 1557 年說是聽 Schöner 講的；1569 年 Securis 曆書有英譯，1588 年 Harvey 出駁斥，Lyly《Gallathea》可能 1588 年 1 月 1 日在宮廷演出；最常被說成應驗的是無敵艦隊，Dekker 原文『That same terrible 88. which came sayling hither in the Spanish Armado』；1628 年 Herlitz 改成 1628；1785 年報紙說 Liska 的 Regiomontanus 墓上找到預言 1788 年，Erlanger Real-Zeitung 叫它『Mist』，Ehrhardt 牧師指出他死葬羅馬、拉丁文只差 quingentos→septingentos 一字；Szikszó 教會紀錄 1788 年抄本說在『波蘭的 Liszkó』挖到；1789 年大革命被當成應驗。另有一點原稿沒寫：最早的 1784 年 12 月 29 日《Magyar Hírmondó》（普雷斯堡）報導沒提 Regiomontanus，石頭說是 400 年前刻的（即 1384 年，他還沒出生），作者據此推測改寫發生在 1784 年今天的 Borsod-Abaúj-Zemplén 一帶。",
+      "changed_fields": [
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Regiomontanus、Liszka 在池內與批次檔沒有成題（wave15 只在別題順帶提到他）；N465 是一封信換日期、P12 是 1524 洪水，答案不同；N2341、N610 是無敵艦隊的名言題，不碰這首詩。匈牙利文關鍵句全部在原文找到，研究代理讀得正確。只補一個原文裡的漂亮細節（1784 年最早的報導把石頭定在 Regiomontanus 出生前、研究者推測改寫地點），讓『出處一路被換上去』的答案多一個證據。9.5–11 分鐘可信。"
+    },
+    {
+      "id": "N2705",
+      "agent": "E4",
+      "reviewer": "R244",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "E4-S026 https://journals.umcs.pl/rh/article/download/12360/10230（全文，波蘭文，pdftotext）",
+      "reopen_result": "論文寫：Lichtenberger（卒 1503）1488 年預言一位重新解釋聖經的先知，與 1484 年天蠍座土木會合相連，依 Albumasar 主宗教變動；Jan z Głogowa 1502 年預言『黑衣修士』，後套到路德；胡斯『鵝被烤了，百年後來一隻天鵝』是『據說』；Oberman 記路德說『我生於 1484 年，這是確定的』，Lotito 說他講 1483；母親只記得聖馬丁節前夕、不記得年份，弟弟 Jakob 說 1483；Melanchthon 先 1484、路德死後改 1483，日期 10 月 22 日改 11 月 10 日；1484 年多為不友善的占星家使用（註 27 也引 von Stuckrad：把路德當彌賽亞式人物的傾向也導向 1484）；Gauricus 時辰 1:10，同情者改成早上 9 點但保留 1484 年 10 月 22 日；Gadbury 用 1483 年 11 月 10/11 日、天蠍座土水會合。論文的主體是原稿沒用的發現：雅蓋隆圖書館抄本 609 號 263r 的路德命盤寫 1484 年 10 月 22 日 2 時 10 分，論斷用第九宮天蠍座土木會合證明他是異端；同頁右側抄著路德 1521 年 11 月 21 日給父親的信的片段（進修道院近 16 年、入院時 22 歲），作者指出照此算是 1483 年，與命盤不合。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "editorial"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：Lichtenberger、Gauricus 在池內與批次檔都沒有；路德只出現在 N1282、N2606 的不相干處；N2404 卡爾達諾是預言者事後修正自己，本題是把被預言者的生日調到預言上。原稿成立，但有兩個問題：（1）結論『反對者挪年份、支持者挪時辰』太整齊——原稿自己寫了 Melanchthon 起初也用 1484，論文註 27 還說把路德當彌賽亞式人物的傾向同樣導向 1484，所以結論與 payoff 改成不把 1484 只歸給敵人；（2）漏掉論文本身最好的轉折：克拉科夫那張『異端路德』命盤旁就抄著能算出 1483 年的路德家書。補進後成為第四個轉折，片長上調到 9–10.5 分鐘也更踏實。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N2641",
+        "N2644",
+        "N2643"
+      ],
+      "shared_question": "中世紀的亡者回來，到底要什麼？",
+      "why_it_flows": "三題的亡者都不是來嚇人或報仇，而是回來辦未了的事：Walkelin 遇到的亡故騎士要他帶話歸還抵押來的磨坊、Byland 的鬼要赦免書、銀湯匙與地契、Fróðá 的亡者被法律程序請走；同一個問題從諾曼第、約克郡走到冰島，答案從煉獄、教會紀律換成法庭，每一集都有自己的完整轉折，可做成『亡者的未了之事』播放清單。"
+    },
+    {
+      "ids": [
+        "N2642",
+        "N2645"
+      ],
+      "shared_question": "在 vampire 這個字出現以前，歐洲人怎麼記下走出墳的死者？",
+      "why_it_flows": "12 世紀英格蘭（赦罪書、斧頭、挖心）與 1591 年西里西亞（上訴、改埋絞刑架下、焚灰入河）是兩個不用 vampire 一詞的紀錄，片尾都接到字典的 1732 年與 F34；N2645 要等 Wojtucki 讀到才成立，兩集都以屍體處理為高潮，排在一起時注意畫面重複。"
+    },
+    {
+      "ids": [
+        "N2646",
+        "N201"
+      ],
+      "shared_question": "18 世紀英國的鬼，是被誰、怎麼查證的？",
+      "why_it_flows": "1705 年 Veal 夫人是王夫的醫生託天文學家查、查的人傾向相信；1762 年 Cock Lane 是市長派委員會查、Johnson 揭穿卻被諷刺成信徒（N2647 的 Churchill 與 Boswell 材料可併入 N201）；兩案都是『查證者的結論被後人記反』，可前後排。"
+    },
+    {
+      "ids": [
+        "N2663",
+        "N2662",
+        "N2664"
+      ],
+      "shared_question": "中世紀的地理書把世界盡頭寫成什麼樣子：一道鎖住歌革瑪各的門、一條把十支派關在對岸的守安息日之河、一座樹上結人的島——它們最早是誰寫下、怎麼一路被搬到別的地方？",
+      "why_it_flows": "三題都是單獨成立的整集，不是要合併，而是適合排成播放清單：N2663 與 N2664 共用同一部 9 世紀 Ibn Khurradādhbih 的地理書（de Goeje 編譯），N2662 的河在 Qazwīnī 與亞歷山大傳奇裡和 N2663 的歌革瑪各是同一套『世界邊緣』想像；每集的答案不同（真實出差、文本相反、地名比傳說走得遠）。"
+    },
+    {
+      "ids": [
+        "N2661",
+        "N2486"
+      ],
+      "shared_question": "一則『東方奇談』在西方成名的那一刻，是誰把它寫下、又是誰把出處弄錯？",
+      "why_it_flows": "N2661 的繩技（1890 年報紙捏造、漢學家誤引偽作）與 N2486 同屬西方怎麼造出東方奇談，可在播放清單相鄰；兩者都是整集，不合併。"
+    },
+    {
+      "ids": [
+        "N2685",
+        "N2686"
+      ],
+      "shared_question": "說『從天上掉下來』的東西，第一個去查的人實際看到、驗了什麼，又把結論推到多遠？",
+      "why_it_flows": "兩章是同一個問題的正反兩面：1608 年 Peiresc 靠盒中毛蟲的偶然觀察，再用分布（屋頂沒有、只在石頭凹處、靠田的牆、蝴蝶飛的高度）驗證，破了案，卻把同一套推論套到 Gregory of Tours 記的血落在衣服上、屋內，推過頭；1861 年 Castelnau 沒看到魚落下，用自家院牆排除了『魚自己爬來』，最後只敢『戰戰兢兢』提出水柱假說。兩位都是有名有姓、親自去看的學者，當地人各有超自然解釋（魔鬼女巫／山中矮人），照『血雨→魚雨』排，結尾落在『驗得出來的人也會推過頭，驗不出來的人誠實說不確定』。估計兩章合計約 10–12 分鐘（一個鉤子與結尾共用），在 9–13 分鐘內，不需灌水。與既有的 N123＋M14（天上掉下來的東西進了實驗室怎麼吵）是不同的共同問題，不要併成一集。"
+    },
+    {
+      "ids": [
+        "N2701",
+        "N2703"
+      ],
+      "shared_question": "Swift 的兩個『命中的預言』——Partridge 的死期與火星的兩顆衛星——是怎麼被事後算成命中的？",
+      "why_it_flows": "同一位作者、同一個論點：一個是故意的死期惡作劇被雙方用事後說法判定，一個是諷刺小說裡的數字被記住『兩顆』、忘掉誤差；兩集可並排或做成兩章。"
+    },
+    {
+      "ids": [
+        "N2702",
+        "N2705",
+        "N2704"
+      ],
+      "shared_question": "預言是怎麼被『對上』的：名字、生日、作者與年份，誰在事後把它們調到預言上？",
+      "why_it_flows": "三題的答案都是事後對號：讖語的名字晚了數百年或換人才對上；路德的生年被挪去配會合；Regiomontanus 詩的作者、出處與年份一路被換。都是預言軸、都有可查的原始文本，不重複答案。"
+    }
+  ]
+}

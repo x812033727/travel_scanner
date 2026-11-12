@@ -315,11 +315,11 @@ services:
       # "not configured" to the site; once backups are on, the tidy then keeps every video.
       VIDEO_BACKUP_RCLONE_CONFIG: /etc/mokaair/rclone-videos/rclone.conf
       VIDEO_BACKUP_LOCK_PATH: AI/備份
-      # The AI dramas' transfer/zt-* and transfer/tn-* branches mirrored to the same Drive under
-      # drama/<series>/_分支/<branch>/ (docs/videos/BACKUP.md §AI 劇的分支鏡像), after each backup:
-      # the repository is public, so git fetches anonymously; one branch (at most 2 GB) a round.
-      # "off" stops it; nothing in Drive is ever deleted.
-      VIDEO_BRANCH_MIRROR: "on"
+      # The branch mirror (docs/videos/BACKUP.md §AI 劇的分支鏡像) is off since 2026-11-10: the
+      # sessions that make an episode copy everything straight to AI劇/<名稱>/<集數>/製作檔/, and
+      # the old transfer/* branches were moved there once, by hand (docs/videos/drama/DRIVE.md).
+      # It never ran here (the worker could not copy the rclone config); "on" starts it again.
+      VIDEO_BRANCH_MIRROR: "off"
     volumes:
       - video_work:/var/lib/mokaair/video-work
       - video_home:/var/lib/mokaair/video-home

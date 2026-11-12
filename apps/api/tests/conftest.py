@@ -63,3 +63,22 @@ def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item
     if deselected:
         config.hook.pytest_deselected(items=deselected)
     items[:] = kept
+
+
+# The fixture trips are written with fixed dates (2026-11-10 and so on), and a blank trip
+# whose start is before yesterday is refused with 422. Without this every trip-creating
+# test turned red on every branch the day its dates passed (2026-11-12). Pin the date the
+# check compares against; a test that wants the real clock can undo it with monkeypatch.
+PINNED_TRIP_TODAY = (2026, 11, 1)
+
+
+@pytest.fixture(autouse=True)
+def _pin_trip_today(monkeypatch: pytest.MonkeyPatch) -> None:
+    import sys
+    from datetime import date
+
+    # Only when a test already imported the app: importing it here would read settings
+    # before a test that sets its own environment gets the chance.
+    router = sys.modules.get("app.trips.router")
+    if router is not None:
+        monkeypatch.setattr(router, "trip_today", lambda: date(*PINNED_TRIP_TODAY))

@@ -1,5 +1,7 @@
 # 旁白解說系列的備份分支
 
+> **2026-11-10 起停用。** 站主：備份不再推分支，製作的所有檔案由做片的 session 用 [`todrive.sh`](../ai-drama-drive/todrive.sh) 直接傳到雲端硬碟 `AI劇/<名稱>/<集數>/製作檔/`，規則在 [`AI-DRAMA-DRIVE.md`](../AI-DRAMA-DRIVE.md)。`tobranch.sh` 會拒絕執行。下面是舊規則，留作紀錄；「要備份什麼」的清單仍然適用，目的地改成雲端硬碟。
+
 適用：在雲端 session 製作的奇聞檔案局（`curio-*`）與原來如此事務所（`sothatswhy-*`）。容器隨時會被收掉，
 本機檔案只有推到 GitHub 才算安全。主機上影片的雲端硬碟備份是另一條路線，見 [`../BACKUP.md`](../BACKUP.md)。
 AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHES.md)（PR #2047），命名與核對方式跟它一致。
@@ -15,6 +17,24 @@ AI 劇的同類文件是 [`../drama/BACKUP-BRANCHES.md`](../drama/BACKUP-BRANCHE
 - **交給站主或送上後台的檔案，一律先進分支**（2026-11-07）。
 - **之後才產生或補上的檔案也要補進同一條分支**（2026-11-07）。
 - **沒備份完、沒核對完不准刪**（2026-11-07）。
+
+## 備份推到哪個 repo（2026-11-09 起）
+
+主 repo `travel_scanner` 已接近 GitHub 的容量上限（推送時出現 `Repository is approaching its size quota`），
+站主 2026-11-09 決定每個系列各開一個備份 repo，分支命名與核對方式照舊，只是推到下面的 repo：
+
+| 系列 | 備份 repo |
+| --- | --- |
+| 奇聞檔案局（`curio-*`） | `x812033727/mokaair-video-backup` |
+| 原來如此事務所（`sothatswhy-*`） | `x812033727/mokaair-video-backup-sothatswhy` |
+| 種田（`zt-*`） | `x812033727/drama-backup-zt` |
+| 祖媽（`tn-*`） | `x812033727/drama-backup-tn` |
+
+- **不要再把 `transfer/*` 推到 `travel_scanner`。** 工具推到「執行時所在 checkout 的 `origin`」，所以在備份 repo 的 clone 裡執行
+  （見 [`backup/README.md`](backup/README.md)）。雲端 session 要先把那個 repo 加進 session（推送權限）再 clone。
+- 已經在 `travel_scanner` 上的 `transfer/*` 分支，用逐個 commit 推送的方式原樣搬到對應的備份 repo（commit 編號相同，
+  兩邊分支頭一致就是內容一致；`tobranch.sh` 每個 commit 不超過約 1.5 GB，所以逐個推不會碰到 2 GB 的單次上限）。
+  搬完、核對一致之後，要不要從 `travel_scanner` 刪掉由站主決定。
 
 ## 分支怎麼命名
 

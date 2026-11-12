@@ -331,7 +331,16 @@ class ConfigCase(unittest.TestCase):
 class StatusCase(unittest.TestCase):
     def test_status_verdicts(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
-            paths = Paths(state_dir=Path(tmp))
+            # Every path in the temp dir: with the host defaults, the "no env file" check
+            # below took a real backup on the production host once backup.env existed.
+            paths = Paths(
+                state_dir=Path(tmp),
+                env_file=Path(tmp) / "backup.env",
+                root=Path(tmp) / "nightly",
+                lock=Path(tmp) / "deploy.lock",
+                predeploy_dir=Path(tmp),
+                manifest_paths=Path(tmp) / "manifest-paths.txt",
+            )
             text, code = backup.status_text(paths, now=NOW)
             self.assertEqual(code, 1)
             self.assertIn("last success: never", text)

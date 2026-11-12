@@ -1,5 +1,7 @@
 # 原來如此事務所（對話版）交接（2026-11-07）
 
+> **2026-11-10 起停用。** 站主：備份不再推分支，製作的所有檔案由做片的 session 用 [`todrive.sh`](../../ai-drama-drive/todrive.sh) 直接傳到雲端硬碟 `AI劇/<名稱>/<集數>/製作檔/`，規則在 [`AI-DRAMA-DRIVE.md`](../../AI-DRAMA-DRIVE.md)。`tobranch.sh` 會拒絕執行。下面提到的「備份分支」一律改成傳雲端硬碟 `AI劇/原來如此事務所/<代碼>/製作檔/`；要備份什麼不變。
+
 給下一個接手的對話。先讀這份，再讀同資料夾的 [`README.md`](README.md) 第 9 節（每一集的關卡表，照順序走）與第 10 節（P07／P14／P08 的教訓），以及 [`SCORECARD.md`](SCORECARD.md)。範本集數用 [`../../sothatswhy-p08-popcorn-pressure/`](../../sothatswhy-p08-popcorn-pressure/)。
 
 ## 站主定下的規則
