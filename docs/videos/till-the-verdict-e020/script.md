@@ -42,8 +42,10 @@ Theo 捧著戒盒，手在抖：「I've never held one of these.」Elias 把一�
 | 禮品店老闆 | 不畫（extras `gift-shop-owner`） | c01 只拍手與灰色開襟衫袖口 |
 | 旁聽席 | 不畫（extras `court-gallery`） | c17 幾個等開庭的人，臉都虛焦 |
 
-場景：港邊禮品店 `gift-shop`（待畫；c01）、海堤階梯 `seawall-stairs`（待畫；c02）、汽車旅館房間 `motel-room`（待畫，**早晨陽光版**；c03–c04）、離婚的法庭 `courtroom`（待畫，直式；c05–c23）、法院走廊 `courthouse-hallway`（待畫；c24–c30）、對門的小法庭 `small-courtroom`（待畫；c31–c47）、法院正門台階 `courthouse-steps`（待畫，**晴、乾版**；c48–c52）。
+場景（`assets/refs/` 現在沒有一張本集能直接傳的場景圖）：港邊禮品店 `gift-shop`（待畫，第二批；c01）、海堤階梯 `seawall-stairs`（待畫，第二批；c02）、汽車旅館房間 `motel-room`（**早晨陽光版**待畫：等重畫的 `mroom-night`（`screen-test/redraw.py`，2026-11-12 參考圖稽核定案 1 的格局）選定後改光；現有的 `set-motel-room-night.jpg` 是舊格局：浴室門開在窗那面牆、開著、看得到鏡子、門上有牌子、紅霓虹，**不傳**；c03–c04）、離婚的法庭 `courtroom`（待畫，第二批，直式；c05–c23）、法院走廊 `courthouse-hallway`（待畫，第二批；c24–c30；**不是** `set-hallway.jpg`，那張是醫院走廊）、對門的小法庭 `small-courtroom`（待畫，第二批；c31–c47）、法院正門台階 `courthouse-steps`（待畫，第二批，**晴、乾版**；c48–c52）。
+`cast.json` 這三個場景句有幾段跟本集的光衝突，**那幾段不照抄**，照各場場頭的光寫：`motel-room` 的 `heavy curtains and one narrow gap` 與 `a red neon glow through the curtain gap with no readable letters`（c03–c04 是早晨：窗簾拉開、沒有霓虹、檯燈關著）；`courtroom` 的 `tall windows with grey light`（本集是白亮的夏光）；`courthouse-steps` 的 `under an overcast sky` 與 `wet pavement`（本集晴、乾）。
 道具：港邊的畫、鈔票、灰藍圍巾、帳本、兩只行李箱、玻璃磚、財產協議、判決書、Fisk 的鋼筆與銀錶、Dana 的筆、Dana 的卷宗、法槌、戒盒、Elias 的戒指、結婚證書、小法庭的筆、Sienna 的結婚申請書與筆、黑車。
+已有的道具圖：`prop-nora-suitcase.jpg`、`prop-peg-suitcase.jpg`（c04 傳；Nora 那張旁邊有一雙穿深色長褲、黑平底鞋的腿，所以 c04 寫畫面裡沒有腿）；`prop-keepsake.jpg` 是沒包的玻璃磚、裡面有手形的影子，c04 的玻璃磚包在毛衣裡，**不傳**。其餘道具圖待畫（`art-plan-props.md`）。
 
 ## 分鏡與台詞
 
@@ -68,9 +70,9 @@ c31–c47 寫 `daytime, one tall window of summer sunlight, warm wood walls, the
 ### 第一場：九十天（約 10 秒）
 
 **場頭**：
-- **地點與場景圖**：蒙太奇四個地方：c01 港邊禮品店 `gift-shop`（待畫）：木櫃台、架上的玻璃浮球與漂流木雕、窗上的雨、窗外港口；c02 海堤階梯 `seawall-stairs`（待畫）：混凝土階梯沿海堤往上、一側鋼扶手、下面是藍色的水與停泊的船；c03–c04 汽車旅館房間 `motel-room`（待畫，**早晨陽光版**；格局同第 19 集：門邊一扇窗、窗下小桌兩把椅子）。
+- **地點與場景圖**：蒙太奇四個地方：c01 港邊禮品店 `gift-shop`（待畫）：木櫃台、架上的玻璃浮球與漂流木雕、窗上的雨、窗外港口；c02 海堤階梯 `seawall-stairs`（待畫）：混凝土階梯沿海堤往上、一側鋼扶手、下面是藍色的水與停泊的船；c03–c04 汽車旅館房間 `motel-room`（待畫，**早晨陽光版**；格局照 2026-11-12 參考圖稽核定案 1：從床尾往床頭看，床頭靠遠牆，兩床之間是床頭櫃與檯燈；**左牆**靠床尾是房門、再往裡是窗與厚窗簾、窗下小桌兩把椅子；**右牆**遠端是浴室門，關著、沒有牌子；Nora 的床靠窗在左、Peg 的床靠浴室在右；早晨窗簾拉開，檯燈關著）。
 - **時間與天氣**：c01 四月（約第 25 天）白天、雨；c02 五月（約第 55 天）晴、初夏；c03 第 99 天（6/23 週二）約 05:40，日出後的低斜金光（日出約 05:12）；c04 同一天約 08:30，早晨的陽光。每一鏡換光，不溶、不用字卡。
-- **軸線**：各鏡獨立；房間的窗在畫面左（同第 19 集）。
+- **軸線**：各鏡獨立；c03、c04 都從床尾那側往床頭方向拍，左牆（房門、窗）在畫面左，所以窗光從畫面左來。
 - **在場的人**：c01 Nora、禮品店老闆（只拍手）；c02 Nora；c03 Peg；c04 Nora（只拍手）。
 - **這場要講完的事**：九十天過去：她賣畫、身體好了、Peg 的圍巾織完了、帳本記到第九十晚、Nora 自己付清了，今天退房（結尾：「Nora, paid.」）。
 - **配樂**：一段輕、往前走的鋼琴，從 c01 到 c04；c03 Peg 念帳時降下來；c04 收在一個和弦上，硬切法庭。
@@ -80,15 +82,15 @@ c31–c47 寫 `daytime, one tall window of summer sunlight, warm wood walls, the
 | --- | --- | --- | --- | --- | --- |
 | c01 | 中近景、固定；鏡頭在木櫃台後、低；直式：下半是櫃台木面與兩雙手，上半是 Nora 的臉與肩（淺焦）、身後是掛著雨痕的窗 | Nora（`shoulder`：齊肩短髮、奶油色毛衣），`a camel wool coat with deep pockets, worn open`，站在櫃台前；兩手把 `a pencil drawing of the harbor on heavy white paper about the size of a magazine, no writing, lying face down on the counter, its blank back up` 推過木櫃台；老闆只有手與灰色開襟衫袖口、臉不入鏡，手把 `a small fold of worn green banknotes, faces not readable` 放在畫旁；架上的玻璃浮球與漂流木雕虛焦；窗上雨、窗外灰色的港口；暖光；Nora 眼睛垂在畫上、眉毛放平、嘴唇閉著、呼吸穩，`no smile at any moment, until the last frame` | Nora 兩手把畫推過櫃台（動作一），老闆的手把一小摺鈔票放到畫旁（動作二）；剪在鈔票放下；嘴閉著；最後：畫背朝上在櫃台中間，鈔票在旁邊 | — | 約 2 秒 |
 | c02 | 全景、跟拍（從左下往右上）、低角度；直式：階梯從畫面左下斜到右上，右側是鋼扶手，下面是藍色的水與停泊的船 | Nora（`shoulder`，沒穿大衣：奶油色毛衣、深色長褲、棕褐短靴），齊肩短髮被風吹起；初夏的陽光；她兩手在身側自由擺動、離鋼扶手一掌寬；眼睛看著畫面右上外的台階頂、眉毛定住、嘴唇微張喘氣、下巴抬著，`no smile at any moment, until the last frame` | Nora 一步兩階跑上海堤的台階；剪在她跨上一階的半空；最後：她在台階中段往上跑，手離扶手一掌寬 | — | 約 2 秒 |
-| c03 | 近景、慢推（從胸上推到肩上）；鏡頭在窗下小桌旁；直式，臉在上三分之一，下緣是桌上的帳本與摺好的圍巾；身後是房間的牆與 Peg 的床（虛焦） | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在窗下小桌前；低斜的金色陽光從畫面左的窗照進來，落在桌上與她的手上；桌上 `a long slate-blue knitted scarf, folded`；右手的鉛筆在 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine` 上寫（本子立著、紙背對鏡頭）；左手扶著本子，`a faint pale band of skin on her left ring finger where a ring used to be`；四分之三側臉朝畫面左下的帳本、不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線）；眉毛壓平、嘴唇在字之間抿緊、聲音乾、像記帳，`no smile at any moment, until the last frame` | Peg 的鉛筆在帳本上寫（動作一），嘴在說話（乾、像記帳）（動作二）；說完鉛筆停住，嘴閉上；最後：鉛筆停在本子上，圍巾在旁邊 | Peg（乾、像記帳）：Night ninety. Nora, paid.（第九十晚。Nora，付清）（原聲）（結尾） | 約 3.5 秒 |
-| c04 | 插鏡、中近景、固定；**第一格就是房門邊立著的兩只行李箱**；直式；早晨的陽光從畫面左的窗照在箱子上；同一個房間 | `a mid-size navy soft-sided rolling suitcase, reaching just above her knee, no logo, zipped shut, standing upright by the door` 與 `a large old tan hard-shell rolling suitcase, reaching her hip, scuffed corners, no logo, zipped shut, standing upright by the door`，並排立在房門邊；Nora 的兩手（象牙白細針織袖口，`decree`）捧著 `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside, wrapped in a cream sweater`；畫面裡沒有臉 | Nora 的兩手把包著毛衣的玻璃磚放到深藍行李箱頂上（動作一），手收回去（動作二）；剪在手鬆開；畫面上沒有嘴；最後：包著毛衣的玻璃磚在深藍行李箱頂上，一直留在畫面中間 | — | 約 2.5 秒 |
+| c03 | 近景、慢推（從胸上推到肩上）；鏡頭在窗下小桌靠床尾那一側、往床頭方向拍；直式，臉在上三分之一，下緣是桌上的帳本與摺好的圍巾；身後只有 `a plain pale motel wall`（虛焦；不寫門、不寫浴室） | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在窗下小桌前；低斜的金色陽光從畫面左的窗照進來，落在桌上與她的手上；桌上 `a long slate-blue knitted scarf, folded`；右手的鉛筆在 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine` 上寫（本子立著、紙背對鏡頭）；左手扶著本子，`a faint pale band of skin on her left ring finger where a ring used to be`；四分之三側臉朝畫面左下的帳本、不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線）；眉毛壓平、嘴唇在字之間抿緊、聲音乾、像記帳，`no smile at any moment, until the last frame` | Peg 的鉛筆在帳本上寫（動作一），嘴在說話（乾、像記帳）（動作二）；說完鉛筆停住，嘴閉上；最後：鉛筆停在本子上，圍巾在旁邊 | Peg（乾、像記帳）：Night ninety. Nora, paid.（第九十晚。Nora，付清）（原聲）（結尾） | 約 3.5 秒 |
+| c04 | 插鏡、中近景、固定；**第一格就是房門邊立著的兩只行李箱**；鏡頭低、在床尾靠左牆、往床頭方向拍；直式：畫面左緣是關著的房門門框，箱子立在門邊的地毯上，左牆更裡面是窗；早晨的陽光從畫面左的窗照在箱子上；同一個房間 | `a mid-size navy soft-sided rolling suitcase, reaching just above her knee, no logo, zipped shut, standing upright by the door` 與 `a large old tan hard-shell rolling suitcase, reaching her hip, scuffed corners, no logo, zipped shut, standing upright by the door`，並排立在房門邊；Nora 的兩手（象牙白細針織袖口，`decree`）捧著 `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside, wrapped in a cream sweater`；畫面裡沒有臉、沒有腿 | Nora 的兩手把包著毛衣的玻璃磚放到深藍行李箱頂上（動作一），手收回去（動作二）；剪在手鬆開；畫面上沒有嘴；最後：包著毛衣的玻璃磚在深藍行李箱頂上，一直留在畫面中間 | — | 約 2.5 秒 |
 
 ### 第二場：That is not my signature.（約 55 秒）
 
 **場頭**：
 - **地點與場景圖**：Merrow County Superior Court 二樓、離婚的法庭 `courtroom`（待畫，直式）：法官席在正中，後面是素面的木牆（徽記與字不入鏡）；從旁聽席看，**Nora 與 Dana 在畫面左的律師席**（Dana 坐外側、Nora 坐靠中間那張），**Grant 與 Fisk 在畫面右的律師席**（Fisk 坐靠中間、Grant 坐外側），兩張律師席之間隔兩步；律師席後是木欄杆，再後面是旁聽席：**Peg 坐第一排、就在 Nora 背後，Bev 在 Peg 右邊**，旁聽席的走道在 Bev 右邊；其他等開庭的人（`court-gallery`）坐後面幾排、虛焦。法官的書記與法警只當背景、不入鏡武器、徽章沒字。Dana 的卷宗疊在她面前的桌上：`three thick plain buff case files, stacked on the table`。近景都寫「同一間法庭」。
 - **時間與天氣**：第 99 天（6/23 週二）09:50–10:16，晴、初夏；高窗的白光從法庭右側（從旁聽席看是畫面右）照進來，木牆暖色；整場光不變。
-- **軸線**：主鏡在旁聽席往法官席拍：Nora 那桌在左、Grant 那桌在右。Nora 的近景鏡頭在她左前方低處，她看 Fisk 與法官都朝畫面右（右上外），高窗的白光照在她的右頰。Fisk 站到 Nora 桌邊時，從 Nora 的右肩後拍（肩在畫框右下緣），Fisk 在畫面上方、往畫面右下看她。法官的鏡從 Nora 那桌低角度往上拍，法官四分之三側臉朝畫面左下（Nora），**法官的鏡不帶 Fisk**。Grant 的鏡從 Nora 那桌越過兩桌之間拍過去，Grant 四分之三側臉朝畫面左。
+- **軸線**：主鏡在旁聽席往法官席拍：Nora 那桌在左、Grant 那桌在右。Nora 的近景鏡頭在她左前方低處，她看 Fisk 與法官都朝畫面右（右上外），高窗的白光照在她的右頰。Fisk 站到 Nora 桌邊時，從 Nora 的右肩後拍（肩在畫框左下緣），Fisk 在畫面上方、往畫面左下看她（跟她看他朝畫面右對上）。法官的鏡從 Nora 那桌低角度往上拍，法官四分之三側臉朝畫面左下（Nora），**法官的鏡不帶 Fisk**。Grant 的鏡從 Nora 那桌越過兩桌之間拍過去，Grant 四分之三側臉朝畫面左。
 - **在場的人**：Nora、Dana、Grant、Fisk、法官（c14 起，之前法官席空著）、Peg、Bev、旁聽的人。Sienna 在外面台階上等（第五場），Elias 與 Theo 在走廊對面（第三場）。
 - **這場要講完的事**：Fisk 要她兩份一起簽；她只簽離婚判決書：「I'll sign the divorce.」「The house — I'll see you in court.」；法官問她是否否認協議上的簽名，她站起來大聲說那不是她的簽名，旁聽席騷動；法官把財產留到審判、敲槌，Fisk 套上筆蓋；她摸著平坦的肚子哭，Peg 從欄杆後握住她的手，她站起來（結尾：「Property is reserved for trial.」）。
 - **配樂**：c05 安靜，只有法庭的低嗡；c09 一個低的大提琴長音；c16 那句之後全部抽掉一拍，只剩旁聽席的嗡嗡聲；c19 槌聲之後一段慢的弦；c23 顏值鏡頭弦升起來，帶進走廊。
