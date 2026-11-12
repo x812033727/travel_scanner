@@ -1,0 +1,248 @@
+{
+  "batch_id": "wave53-human-20261111",
+  "created_on": "2026-11-11",
+  "scope": "尾數 9 的郵購實驗、二手車里程左位數與咖啡店集點：替企劃 P30 補原始研究數據；三來源，其中 Anderson & Simester 2003 與 Kivetz 等 2006 是池中 LEG-B27、LEG-B62 舊來源的首次全文閱讀，併入同一來源 id。P30 本身經覆核仍為後備。",
+  "sources": [
+    {
+      "id": "H53-S001",
+      "url": "https://www.kellogg.northwestern.edu/faculty/anderson_e/htm/personalpage_files/Papers/Effects_of_9_Price_Endings_on_Retail_Sales.pdf",
+      "canonical_url": "https://www.kellogg.northwestern.edu/faculty/anderson_e/htm/personalpage_files/Papers/Effects_of_9_Price_Endings_on_Retail_Sales.pdf",
+      "doi": "10.1023/A:1023581927405",
+      "identity_urls": [
+        "https://link.springer.com/article/10.1023/A:1023581927405"
+      ],
+      "title": "Effects of $9 Price Endings on Retail Sales: Evidence from Field Experiments",
+      "publisher": "Anderson & Simester；Quantitative Marketing and Economics 1:93–110 (2003)",
+      "version": "作者頁提供的期刊版掃描 PDF（18頁，ABI/INFORM 重製）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200；文字層只有頁首，pdftoppm 110 dpi 轉圖逐頁目讀",
+      "reading_scope": "頁93–105（PDF 1–13）：Abstract、Introduction 與試驗表、§2 Overview、Study 1 全段與 Table 1–2、Study 2 與 Table 4–5、Study 3 與 Table 7、§4 Discussion 首頁",
+      "locator": "頁94 Pilot table；頁97–99 Study 1；頁99–102 Study 2；頁102–105 Study 3",
+      "summary": "兩家同集團女裝郵購目錄（均價約50美元），把同品項的價格版本隨機寄給不同顧客；試驗：四件洋裝 $9 尾數賣66件，各降或升5美元（移除9尾數）賣46與45件，約多40%，而相差10美元的兩個處理組幾乎沒差；Study 1 每版2萬名顧客、27個品項，9尾數約增需求35%；Study 2 每版31,250人、120品項，平均增15%，新品22%對舊品10%；Study 1、2 價格係數不顯著；Study 3 每版9萬人、308品項，9尾數增7%，價格係數顯著為負；新品已有『Sale』字樣時再加9尾數只增3.9%，無 Sale 時8.5%，作者稱為待驗的初步結果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同一集團兩家目錄、美國女裝、1990年代末；價格變動受管理層限制（Study 1 只能改前後各10頁、1美元級距）；Study 3 的 Sale 交互作用品項少；作者自己保留『為何是9』的解釋問題。PDF 是作者頁轉載的資料庫重製，掃描影像需撰稿時再核表格數字。",
+      "access_notes": "與池中 LEG-B27 的歷史來源 SRC-f03130ce50fe3ee4（同一網址）是同一份 PDF，以同一網址追加本輪閱讀紀錄；LEG-B27 另列的 Springer 頁 SRC-72e5c18b45e5f4c2 是同一篇論文（同 DOI）的出版者頁，網址不同所以來源 id 無法合併，記在 identity_urls。LEG-B27 已有的『情境相依、新品較強、Sale 可能削弱』定性句不重算。",
+      "refreshes_source_id": "SRC-f03130ce50fe3ee4",
+      "applies_to_candidate_ids": [
+        "LEG-B27"
+      ],
+      "author_cache": {
+        "file": "scratchpad/f2src/as2003.pdf",
+        "sha256_prefix": "faa6dd46a62ad7e5",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H53-S002",
+      "url": "https://www.nber.org/system/files/working_papers/w17030/w17030.pdf",
+      "canonical_url": "https://www.nber.org/system/files/working_papers/w17030/w17030.pdf",
+      "title": "Heuristic Thinking and Limited Attention in the Car Market",
+      "publisher": "Lacetera、Pope、Sydnor；NBER Working Paper 17030",
+      "version": "2011-05 工作論文版（後刊 American Economic Review 2012）；本輪讀的是 NBER 版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，pdftotext 全文",
+      "reading_scope": "Abstract、Introduction（頁1–4）、§2 模型要點、§5 inattention 估計段落",
+      "locator": "Introduction 第2–3段；§5.1",
+      "summary": "分析超過2,200萬筆二手車批發拍賣：里程跨過每個一萬英里整數時售價不連續下跌，約150–200美元（79,900–79,999英里比80,000–80,100英里平均貴約210美元，卻只比79,800–79,899便宜約10美元）；跨千英里也有較小下跌；估計『不注意』參數約0.31；賣方會在跨門檻前把車送拍，出現量的尖峰；證據最符合最終零售買家的部分不注意。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "工作論文版，期刊版數字可能略有差異；對象是里程數不是標價，片中只當『左位數換到高金額市場還在嗎』的檢驗。",
+      "author_cache": {
+        "file": "scratchpad/f2src/lps.pdf",
+        "sha256_prefix": "04e4a85423d0fe9a",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H53-S003",
+      "url": "https://doi.org/10.1509/jmkr.43.1.39",
+      "retrieval_url": "https://business.columbia.edu/sites/default/files-efs/pubfiles/1200/goalgradient.pdf",
+      "canonical_url": "https://doi.org/10.1509/jmkr.43.1.39",
+      "doi": "10.1509/jmkr.43.1.39",
+      "title": "The Goal-Gradient Hypothesis Resurrected: Purchase Acceleration, Illusionary Goal Progress, and Customer Retention",
+      "publisher": "Kivetz、Urminsky、Zheng；Journal of Marketing Research 43(1):39–58 (2006)",
+      "version": "哥倫比亞商學院放置的期刊排版全文（21頁）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200，pdftotext 全文",
+      "reading_scope": "Abstract、Introduction、The Café RP（Method、Results、Table 2 segment 段、Discussion）、Illusion of Progress（field experiment 與 process tests）、Customer Retention 段落",
+      "locator": "頁41–49、頁52–53",
+      "summary": "大學咖啡店集點：949張集滿卡、約一萬次購買，隨章數累積購買間隔縮短，最後比第一次快約20%（0.7天）；拿『透明卡』（買咖啡不換獎勵）的對照組沒有加速；換到第二張卡時頭兩次又變慢（集點重置）；108位顧客隨機拿10格卡或送2格的12格卡，同樣要買10杯，送格組12.7天集滿、對照15.6天，約快20%；問卷顯示送格不影響加入意願；分群：58%顯著加速，7%與6%兩群幾乎不受距離影響；未集滿而被收購卡的人較少加速；第一張加速越強的人越可能再集第二張且回來得較快。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一校園咖啡店與音樂評分網站；12格卡實驗 n=108；分群為模型估計。　非作者覆核 V5 重讀更正摘要三處：透明卡（42 人）對照組不是只『沒有加速』，而是越接近集滿越慢；被買回的 73 張未集滿卡，卡主沒有加速甚至變慢；『送格不影響加入意願』是另一個以餐廳集點卡為情境的問卷，不是那 108 位顧客。核心依更正後的說法撰寫。",
+      "access_notes": "與池中 LEG-B62 的歷史來源 SRC-b6543e5552abf38f（DOI 網址）是同一篇論文；以 DOI 網址追加本輪閱讀紀錄，不另立來源。實際讀的是哥倫比亞商學院放置的期刊排版全文。LEG-B62 已有的『越近買越快、先送幾格集得更快』定性句不重算。",
+      "refreshes_source_id": "SRC-b6543e5552abf38f",
+      "applies_to_candidate_ids": [
+        "LEG-B62"
+      ],
+      "author_cache": {
+        "file": "scratchpad/f2src/kivetz2006.pdf",
+        "sha256_prefix": "2fbe7e5c6c23d3ce",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H53-001",
+      "question": "把 39 元改成 34 元，賣得比較多嗎？郵購目錄的第一個試驗",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.pricing.nine_ending_catalog_pilot",
+      "answer_target": "一家女裝郵購目錄把同一本目錄印成三版，隨機寄給不同顧客：四件洋裝在原版用 9 結尾（39、49、59、79 美元），另兩版把每件價格改高或改低 5 美元（每版有升有降），9 結尾就沒了。9 結尾條件共賣出 66 件，低 5 美元的條件 46 件、高 5 美元的條件 45 件，約多四成；而高低兩種條件相差 10 美元，銷量幾乎一樣。這個結果讓目錄經理同意擴大做三個正式實驗。",
+      "scope": "美國、1990年代末、單一目錄四件洋裝；件數小，作者自己把它當動機而非結論。",
+      "source_ids": [
+        "H53-S001"
+      ],
+      "source_locator": "S001 頁93–94 Introduction 與 Pilot study 表",
+      "premise_status": "screened",
+      "notes": "目標 P30 第一章「99 和 100 比的不只差額」；補 MATERIAL_REVIEW『郵購實驗的原文樣本與條件』。LEG-B27 已有『情境相依的需求效果』概括，本核心新增試驗設計與數字，不重複計算概括句。 原提案 F2-020。非作者覆核 V5（2026-11-11）照原稿收；新事實（LEG-B27 只有概括句），算 2 條。H53-S001 與池中 SRC-f03130ce50fe3ee4（同一網址）、SRC-72e5c18b45e5f4c2（同 DOI）是同一文獻，併入時合併來源 id。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "便宜 5 元沒多賣，貴 5 元也沒少賣，卻是那個 9 讓銷量多了四成。",
+        "visual": "三本同樣的目錄寄往三群信箱，同一件洋裝標不同價；銷量長條以原表數字畫。",
+        "seconds": [
+          50,
+          70
+        ]
+      }
+    },
+    {
+      "id": "H53-002",
+      "question": "9 結尾的效果，換個商品、加上『特價』字樣還在嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.pricing.nine_ending_moderators_new_items_sale_cue",
+      "answer_target": "同一集團兩家目錄的三個隨機實驗：每版寄 2 萬、31,250、9 萬名顧客，9 結尾分別讓需求增加約 35%、15%、7%。第二個實驗裡新品增約 22%，已上架過幾季的舊品只約 10%；前兩個實驗的價格係數都不顯著，作者據此說顧客對 9 尾數比對實際價差更敏感，但第三個實驗價格變動範圍大、樣本大，價格效果就顯著出現。已經標『Reg $X SALE $Y』的新品再改 9 尾數只多 3.9%，沒有特價標示時多 8.5%，作者自己稱這是品項少的初步結果。",
+      "scope": "美國女裝郵購、同集團兩目錄；百分比為模型估計；Sale 交互作用為暫定。",
+      "source_ids": [
+        "H53-S001"
+      ],
+      "source_locator": "S001 頁97–99 Study 1 與 Table 2；頁99–102 Study 2 與 Table 4；頁102–105 Study 3 與 Table 7、第4節前",
+      "premise_status": "screened",
+      "notes": "目標 P30 第二章「換個價格情境還有效嗎」；補章節缺的條件與反例。LEG-B27 已有『新品較強、Sale 可能削弱』定性句，本核心算 1.5 條新事實（數字與價格係數轉折）。 原提案 F2-021。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照原稿收；數字與歸因都對。LEG-B27 已有新品較強／Sale 削弱的定性句，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "效果是真的，但越熟悉的商品、越大的價差、越明顯的特價牌，都讓它變小。",
+        "visual": "三個實驗並排的效果長條（35／15／7%），新品與舊品分色；特價牌疊上去時長條縮短（標『暫定』）。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "H53-003",
+      "question": "左邊那位數字的影響，在一台上萬美元的二手車上也看得到嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.left_digit.used_car_odometer_thresholds",
+      "answer_target": "研究者分析超過 2,200 萬筆美國二手車批發拍賣：里程每跨過一個萬英里整數，售價就不連續地掉約 150 到 200 美元；例如 79,900 多英里的車比 80,000 出頭的貴約 210 美元，卻只比 79,800 多英里的便宜約 10 美元。跨千英里也有較小的跳動。估計出的『不注意』程度約 0.31；賣方也懂，快跨門檻前送拍的車明顯變多。作者說多項證據都指向最終買車的消費者只看了左邊的數字。",
+      "scope": "NBER 2011 工作論文版（期刊版 AER 2012 未讀）；對象是里程數不是價格標籤。",
+      "source_ids": [
+        "H53-S002"
+      ],
+      "source_locator": "S002 Abstract；Introduction 第2–3段；§5 估計段",
+      "premise_status": "screened",
+      "notes": "目標 P30 第二章：同一個左位數機制換到高金額、專業買家的市場還在不在——是檢驗不是另舉一例。若片長超標，壓成 40 秒。 原提案 F2-022。作者標為轉折，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；數字對；問句『幾十萬元』暗示台幣、改成美元；『最符合』改回原文強度。對象是里程數不是標價，只能當『同一個左位數讀法換到大金額』的檢驗，算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連花大錢、慢慢挑的二手車，左邊那位數一變，價格就跳一階。",
+        "visual": "里程表從 79,999 翻到 80,000 的瞬間，價格曲線出現台階（依原文描述的形狀示意）。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "H53-004",
+      "question": "集點卡越接近集滿，人真的買得越快嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.reward.goal_gradient_cafe_field_data",
+      "answer_target": "大學咖啡店的集點計畫收回 949 張集滿的 10 格卡、約一萬次購買：隨著章越蓋越多，兩次購買的間隔越來越短，最後一次比第一次平均快約 20%（0.7 天）。拿『只記錄、不換獎勵』透明卡的 42 位對照顧客不但沒有加速，越接近集滿反而買得越慢；集滿換完獎勵後，第二張卡的頭幾次又變慢，像重新起跑。",
+      "scope": "單一校園咖啡店；加速是平均值。",
+      "source_ids": [
+        "H53-S003"
+      ],
+      "source_locator": "S003 頁42–43 Method 與 Results；頁45 postreward resetting 段；頁46 transparent cards 結果",
+      "premise_status": "screened",
+      "notes": "目標 P30 第三章「離集滿只差一次又改了什麼」；補 MATERIAL_REVIEW 要的原文數據。LEG-B62 已有『越近買越快』定性句，本核心新增對照組與重置兩條。 原提案 F2-023。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；對照組結果要寫準：是減速。LEG-B62 已有『越近買越快』，算 1.5 條（對照組與重置）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "推你的不是咖啡，是那張卡上剩下的空格。",
+        "visual": "集點卡格子逐格蓋章，下方時間軸的間隔逐漸縮短；換卡後間隔又拉長。",
+        "seconds": [
+          55,
+          75
+        ]
+      }
+    },
+    {
+      "id": "H53-005",
+      "question": "先送你兩格，要買的杯數一樣，為什麼集得更快？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.reward.illusionary_progress_proportional_distance",
+      "answer_target": "同一家咖啡店把 108 位顧客隨機分兩組：一組拿 10 格空卡，一組拿 12 格卡但已送 2 格，兩組都還要買 10 杯。送格組平均 12.7 天集滿，空卡組 15.6 天，快了約 20%。作者用『剩下的比例』解釋：剩 10/12 比剩 10/10 感覺近。另一個以餐廳集點卡為情境的問卷則顯示，送格並沒有讓人更想加入，排除了『只是比較喜歡那張卡』的解釋。",
+      "scope": "n=108；與 Nunes & Drèze 2006 洗車實驗同類，但後者原文本輪未讀，不用其 34%／19% 數字。",
+      "source_ids": [
+        "H53-S003"
+      ],
+      "source_locator": "S003 頁48 A Field Experiment of Illusionary Goal Progress；Process Tests 段；頁49 討論",
+      "premise_status": "screened",
+      "notes": "目標 P30 第三章。是 P30 兩機制的橋：價格的左位數與集點的剩餘比例，都是『真實數量沒變，呈現方式變了，決定就變』。 原提案 F2-024。作者標為章節核心，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；標清楚兩個研究；與 LEG-B62『先送幾格集得更快』重疊，算 1.5 條（數據與排除解釋）。Nunes & Drèze 未讀，不用其數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "要走的路一樣長，只是起點畫得往前一點。",
+        "visual": "兩張卡並排：10 格空卡與 12 格先蓋 2 格，下方兩條等長的待走路徑。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "H53-006",
+      "question": "集點真的推得動每個人嗎？",
+      "domain": "消費與決策",
+      "mechanism_key": "behavior.reward.goal_gradient_heterogeneity_retention",
+      "answer_target": "同一份咖啡店資料分群後，約 58% 的會員有明顯加速，另有 29% 方向相同但不顯著，還有兩群（7%、6%）幾乎不受剩幾格影響。研究助理用每張 4 美元買回的 73 張未集滿卡，主人沒有加速，甚至越集越慢；而第一張卡加速越明顯的人，越可能再集第二張，回來得也越快。",
+      "scope": "模型估計的分群；單一店家。",
+      "source_ids": [
+        "H53-S003"
+      ],
+      "source_locator": "S003 頁47 Table 2 分群段；頁47 buyback 段；Customer Retention 段",
+      "premise_status": "screened",
+      "notes": "目標 P30 第四章「兩個推力什麼時候推不動」；補章節缺的『限制與個體差異的研究細節』。 原提案 F2-025。作者標為界線，依本池欄位記為 segment。非作者覆核 V5（2026-11-11）照覆核意見改字後收；『較少出現加速』改成原文的『沒有加速、甚至變慢』。算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張卡，對一部分人是油門，對另一部分人只是一張紙。",
+        "visual": "一群顧客剪影，各自的購買間隔曲線：多數往下彎，少數是平的。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H53-NA001",
+      "question": "先送兩格的洗車集點卡，集滿率真的是 34% 對 19% 嗎？",
+      "existing_ids": [
+        "H53-005",
+        "LEG-B62"
+      ],
+      "source_ids": [],
+      "reason": "Nunes & Drèze 2006 原文三處取得失敗：USC 作者檔憑證過期且 http 版 404；Wayback 快照經代理連線被重置；WebFetch 回 503／不支援 archive.org。二手站轉述不算讀，34%／19% 不入片。 原提案 F2-NA001。",
+      "reentry_condition": "取得 JCR 原文或作者稿全文，核 Study 1 卡數、條件與兌換率。",
+      "reading_status": "未讀（只有搜尋摘要）。"
+    },
+    {
+      "id": "H53-NA002",
+      "question": "2.99 和 3.00 的左位數效應，在實驗室裡的條件與樣本是什麼？",
+      "existing_ids": [
+        "LEG-B27"
+      ],
+      "source_ids": [],
+      "reason": "Thomas & Morwitz 2005（JCR）沒有免費全文；OUP 只給摘要；sagepub 上 2020 年左位數綜述 PDF 回 403（不繞過）。本輪改以已讀全文的郵購實驗（H53-001／H53-002）與二手車研究（H53-003）承擔左位數的數據。 原提案 F2-NA002。",
+      "reentry_condition": "取得 Thomas & Morwitz 原文五個實驗的方法與結果頁。",
+      "reading_status": "只有既有摘要級紀錄。"
+    }
+  ]
+}
