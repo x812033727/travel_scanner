@@ -52,3 +52,8 @@ Picked by Claude on the owner's 2026-11-12 instruction (「參考圖 你建議�
 | set-coastal-drive.jpg | s3 set-coastal-drive-drive-v-a — #28 the drive down the bluff at sunset, guardrail on the sea side, the house small at the top | 740280 | 1c46d6f93101b6318071fd7ae6822eaa287a5d0ca6b6479d6d8342d517177307 |
 | set-grant-car-interior-gold.jpg | s3 set-grant-car-interior-gcar-gold-v-b — #29 Grant's car forward through the windshield toward the house (take a looks back at a second row); the sunroof also shows the house | 740291 | 7c7547b138a83a29b733117194433e1dfade6e8c05bee3bb598d3793325d1eb4 |
 | set-bus-stop.jpg | s3 set-bus-stop-bus-v-a — #30 harbor bus shelter at dusk, blank route panel, cranes with red lights | 740300 | 78f8e3d36ed6698d2036b049b5d2d46b41d57d90f9ea088dd24b1baa6059e29f |
+| prop-forever-no1.jpg | p1 prop-forever-no1-a — No. 1 vase with a forearm for scale (take b a wavy sculpture) | 760110 | 873b468958000d14bc0d40622112b5ae44f825e078286f7a1a61aa6201bca832 |
+| prop-keepsake.jpg | p1 prop-keepsake-a — glass block, faint green, hand for scale; a hand-shaped shadow inside the glass, watch for it | 760030 | 822eb7bce701a9483d12882f38dae1eaa3f67ccc081fee393ce48c5fb4b0d9c2 |
+| prop-knit-hat.jpg | p1 prop-knit-hat-a — half-knitted cream baby hat on two needles in Peg's hands (take b drew a sweater) | 760020 | e05b3ca9aa645313398d7a5c1d6f47c615c67f297742db5a9b42fe3ddc264736 |
+| prop-nora-suitcase.jpg | p1 prop-nora-suitcase-b — navy soft-sided suitcase by her knee (take a hard-shell) | 760041 | f26ee9e2fa91fc2a18f49b4b4d0c0ae5cace83dd65dbf3a0c61a554a54ee303f |
+| prop-peg-suitcase.jpg | p1 prop-peg-suitcase-a — old tan hard-shell suitcase (take b empty frame) | 760050 | a6121da9e3f41bac63a5cd05973f663f568c717b2be30fcf7522a00979df3da7 |

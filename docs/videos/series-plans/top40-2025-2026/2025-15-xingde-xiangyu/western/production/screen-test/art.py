@@ -239,7 +239,14 @@ PROPS = [
     ("canvas-tote", BUST, "p2", None),
     ("camel-coat", BUST, "p2", None),
     ("forever-vase", BUST, "p3", "forever-no1"),
+    # p1 drew both half-pill takes as WHOLE scored pills: redrawn in p3 with the half spelled out (PROP_REDRAW, seeds +5)
+    ("half-pill", BUST, "p3", None),
 ]
+PROP_REDRAW = {
+    ("half-pill", "p3"): ("only ONE half of a small round white pill that was broken in two across its score line: a half-moon shape, "
+                          "one curved edge and one straight rough broken edge, the other half nowhere in the frame, "
+                          "smaller than a fingernail, plain white, no colour, no markings (a medicine pill, not a device)"),
+}
 
 
 def load_props(cast_props: dict[str, str]) -> dict[str, dict]:
@@ -417,6 +424,12 @@ def props_round(name: str, work: Path, pick: dict[str, str], placeholders: bool)
         if r != name:
             continue
         body = plan[pid]["prompt"]
+        redraw = PROP_REDRAW.get((pid, r))
+        if redraw:
+            old = "a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)"
+            if old not in body:
+                sys.exit(f"art.py: the plan's {pid} prompt changed; update PROP_REDRAW")
+            body = body.replace(old, redraw)
         # a car is a scene: the plan's prompt already opens with "Nobody is in the frame." (the tail's first sentence then goes)
         tail = "" if body.startswith(PROP_TAIL_EMPTY) else f"{PROP_TAIL} "
         if base:
@@ -430,7 +443,8 @@ def props_round(name: str, work: Path, pick: dict[str, str], placeholders: bool)
             prompt = f"{PROP_HEAD} {PROP_BLANK} {body} {tail}{PROP_CLEAN}"
         for t, take in enumerate(("a", "b")):
             jid = f"prop-{pid}-{take}"
-            jobs.append(build.job(jid, f"{pid} {take}", refs, prompt, size, 760000 + plan[pid]["pos"] * 10 + t, f"{name}-{jid}.png", latent=latent))
+            seed = 760000 + plan[pid]["pos"] * 10 + t + (5 if (pid, r) in PROP_REDRAW else 0)
+            jobs.append(build.job(jid, f"{pid} {take}", refs, prompt, size, seed, f"{name}-{jid}.png", latent=latent))
     return jobs
 
 
