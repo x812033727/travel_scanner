@@ -123,7 +123,7 @@ def obj(id, prompt, *lines, chapter=None):
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；結果都不先講）----------
 obj("box-table", "Close-up of " + BOX + " on a wooden kitchen counter beside " + OVEN,
     k("所長！阿嬤做的滷肉飯！", "急著報案的語氣"),
-    k("我拿去微波一下喔！", "開心"), chapter="阿嬤的便當盒，先別按")
+    k("我拿去事務所的微波爐熱喔！", "開心"), chapter="阿嬤的便當盒，先別按")
 chief("chief-stop", C("holding up one hand like a gentle stop with a kind smile", close=True),
     c("等一下，先別按。你看盒子上面。", "叮嚀"),
     k("一條細細的鐵絲提把。", "看一看"))
@@ -254,7 +254,7 @@ obj("spoon-plate", "Close-up of " + SPOON + " lying on a round glass plate, the 
     k("跟圓圓的水盤一樣，水不太會濺！", "恍然"))
 chief("chief-smooth", C("drawing a big smooth curve in the air with one hand and a calm smile"),
     c("對。課本說，又平又圓的表面，電荷比較不會跑出去。"),
-    c("微波爐的牆又大又平，所以只彈回微波，不冒火花。"))
+    c("還記得嗎？牆又大又平，只彈回微波，不冒火花。"))
 kid("kid-spoonhot-q", K("holding " + SPOON + " up close to her face with a curious frown", close=True, where=KITCHEN),
     k("湯匙裡也有電子在跑，", "想不通"), k("它不會熱起來嗎？", "句尾上揚", "S:spoonhot"),
     c("教授說，厚湯匙導電好，電跑過去，留下的熱很少。", None, "P:spoonhot"))
@@ -358,12 +358,12 @@ obj("rice-pour", "Close-up of " + FOOD + " in " + BOWL + " sitting on the glass 
     c("倒進這個白碗，鐵絲盒放旁邊，就可以熱了。", "接住上一句"),
     c("你說呢？什麼時候會冒火花？", "笑"), chapter="滷肉飯熱好了，小問想通了")
 kid("kid-got-it", K("holding " + BOWL + " of steaming rice up with a big confident grin", where=KITCHEN),
-    k("原來如此！", "恍然大悟"), k("尖尖的、皺皺的，", "篤定"),
+    k("原來如此！", "恍然大悟"), k("剛剛那些尖尖的、皺皺的，", "篤定"),
     k("還有靠得很近的金屬，", "篤定"), k("電子擠在一起，", "篤定"),
     k("就會跳出火花！", "篤定", "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
     c("說得好。我覺得最妙的是：", "笑"),
-    c("把微波關在爐子裡的，正是又大又平的金屬。"))
+    c("剛剛那又大又平的金屬牆，正好把微波關在爐子裡。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("我要叫阿嬤先拔掉鐵絲！", "開心大聲"))
