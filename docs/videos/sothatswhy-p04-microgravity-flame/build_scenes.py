@@ -142,7 +142,7 @@ chief("chief-tease", C("holding up one finger with a playful knowing smile"),
     c("那些太空人，其實一直在往下掉。", "放慢", "S:falling"))
 chief("chief-hooks", C("counting on her fingers with a playful mysterious smile"),
     c("等一下你會看到，一根點著的蠟燭，掉進一口很深的井。", None, "S:well"),
-    c("還有一團火，熄了以後，竟然還在燒。", "賣關子", "S:ghost"))
+    c("還有一團火熄了以後，儀器卻量到一件怪事。", "賣關子", "S:ghost"))
 chief("chief-promise", C("tilting her head with an inviting smile, one open hand towards the viewer", close=True),
     c("你也猜猜看：人一直在掉，火為什麼也跟著變了？", "轉向觀眾", "S:main"))
 kid("kid-not-falling", K("crossing her arms with a doubtful pout", where=OFFICE),
@@ -164,8 +164,7 @@ obj("cup-fly", "Wide shot of " + CUP + " full of water flying through the air in
 kid("kid-gone-q", K("scratching her head with a puzzled frown", where=YARD),
     k("是不是一拋出去，", "猜"), k("重力就不見了？", "句尾上揚", "S:gone"))
 chief("chief-guide", C("holding the small white cup up beside her face with a knowing smile", close=True),
-    c("沒有不見喔。重力還在，杯子和水被拉得一樣，", "接住上一句"),
-    c("就一起往下掉。", None, "P:gone"))
+    c("沒有不見喔。重力還在，杯子和水一起往下掉。", "接住上一句", "P:gone"))
 obj("cup-drip", "Close-up of " + CUP + " in mid-air above " + BASIN + ", the water inside calm and still, the tiny hole dry, sunny back yard",
     c("水跟杯子掉得一樣快，就不會從小洞擠出去。"),
     k("那太空站裡，也是這樣？", "追問"))
@@ -178,7 +177,7 @@ chief("chief-ladder", C("holding one hand high above her head as if at the top o
 kid("kid-float-q", K("puffing out her cheeks with a confused face, both palms up", close=True, where=YARD),
     k("那太空人還很重啊！", "不解"), k("怎麼會飄起來？", "句尾上揚", "S:float"))
 obj("apple-cabin", "Wide shot " + CABIN + ", one shiny red apple floating in the middle of the cabin, soft daylight from the round windows",
-    c("因為整座太空站，連裡面的人和東西，都在往下掉。", "接住上一句", "P:falling"),
+    c("還記得我說太空人一直在掉嗎？整座太空站都在掉。", "接住上一句", "P:falling"),
     c("太空人放開一顆蘋果，蘋果也在掉，"))
 chief("chief-apple", C("holding a shiny red apple in her open palm with a gentle smile", close=True),
     c("只是人、蘋果、太空站掉得一樣快，看起來就像飄著。", None, "P:float"),
@@ -221,7 +220,7 @@ obj("ball-curve", "Wide shot of one round black cartoon cannonball flying in a l
     c("因為地球是圓的。砲彈往下彎，地面也跟著往下彎。", "接住上一句"),
     c("兩個彎得一樣，它就一直掉，卻永遠碰不到地。", None, "P:miss"))
 obj("station-orbit", "Wide shot of " + STATION + " floating above " + EARTH,
-    c("太空站就是這樣。一直在掉，卻一直掉不下去。", None, "P:crash"),
+    c("太空站，就是那顆繞著地球掉的砲彈。", None, "P:crash"),
     c("這樣繞著地球掉，就叫做軌道。"))
 kid("kid-speed-q", K("leaning forward with sparkling curious eyes", close=True, where=YARD),
     k("那太空站要跑多快？", "句尾上揚", "S:speed"))
