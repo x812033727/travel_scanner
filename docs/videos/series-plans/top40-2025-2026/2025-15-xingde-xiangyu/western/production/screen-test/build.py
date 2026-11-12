@@ -7,6 +7,10 @@
   build.py r2  --pick nora=a --pick elias=b ... [--work DIR] [--placeholders]
       Round 2 costume looks drawn ON the picked base portrait (latent image1, only the costume changes, same face):
       Nora in her work apron, Elias at the furnace, Peg in her coat.
+  build.py r3  [--work DIR]
+      Portrait fixes (2026-11-12, after the storyboard review): exactly one change on the chosen pictures in ../assets/refs/:
+      Nora's portrait and work look lose the small red marks on cheek and neck; Grant's portrait loses the closed-mouth smile.
+      Two seeds each, latent image1.
   build.py st1 --pick ... [--work DIR] [--placeholders]
       Clips, first stage: Ref2VA 960x544 (run `H3_PROFILE=hero bootstrap.sh patch` first). Four shots:
       e001 Nora "My pill tastes sweet today.", e001 Grant on the phone, e008 Peg "I'm going with her.", e060 Elias's glove and scar.
@@ -145,6 +149,30 @@ def r2(cast: dict, work: Path, pick: dict, placeholders: bool) -> dict:
     return {"jobs": jobs}
 
 
+KEEP = "Keep everything else exactly as in image 1: the same face and identity, eyes, hairstyle, clothes, framing, plain grey backdrop and lighting. "
+FIXES = [
+    ("nora-portrait", "nora-portrait.jpg", "She",
+     "Exactly one change: the two small red marks on her left cheek and on the left side of her neck are gone; that skin is clean, even and fair with faint freckles like the rest of her face. "),
+    ("nora-work", "nora-work.jpg", "She",
+     "Exactly one change: the small red marks on her left cheek and on her neck are gone; that skin is clean, even and fair with faint freckles like the rest of her face. "),
+    ("grant-portrait", "grant-portrait.jpg", "He",
+     "Exactly one change: his mouth is relaxed and level, lips closed, both mouth corners flat, a calm neutral expression with no smile at all. The thin round metal-rim glasses stay the same. "),
+]
+
+
+def r3(work: Path) -> dict:
+    refs = HERE.parent / "assets" / "refs"
+    (work / "r3").mkdir(parents=True, exist_ok=True)
+    jobs, seed = [], 713000
+    for fid, src, pron, change in FIXES:
+        shutil.copyfile(refs / src, work / "r3" / src)
+        for take in ("a", "b"):
+            prompt = f"Edit image 1. {change}{KEEP}{pron} is the only person in the frame. {REAL}"
+            jobs.append(job(f"{fid}-fix-{take}", f"{fid} fix {take}", [f"r3/{src}"], prompt, PORTRAIT, seed, f"r3-{fid}-fix-{take}.png", latent="image1"))
+            seed += 1
+    return {"jobs": jobs}
+
+
 SHOTS = [
     {
         "id": "e001-sweet", "who": [("nora", None, "Nora")], "set": "glass-house-living", "seconds": 6,
@@ -242,7 +270,7 @@ def st2(work: Path) -> dict:
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("round", choices=["r1", "r2", "st1", "st2"])
+    ap.add_argument("round", choices=["r1", "r2", "r3", "st1", "st2"])
     ap.add_argument("--work")
     ap.add_argument("--pick", action="append", default=[], help="role=take, e.g. nora=b")
     ap.add_argument("--placeholders", action="store_true")
@@ -255,9 +283,9 @@ def main(argv: list[str]) -> int:
     work = work_dir(a.work)
     work.mkdir(parents=True, exist_ok=True)
     cast = load_cast()
-    manifest = {"r1": lambda: r1(cast, work), "r2": lambda: r2(cast, work, pick, a.placeholders),
+    manifest = {"r1": lambda: r1(cast, work), "r2": lambda: r2(cast, work, pick, a.placeholders), "r3": lambda: r3(work),
                 "st1": lambda: st1(cast, work, pick, a.placeholders), "st2": lambda: st2(work)}[a.round]()
-    out = {"r1": work / "r1.json", "r2": work / "r2.json", "st1": work / f"st1{SUFFIX}" / "st1.json", "st2": work / f"st2{SUFFIX}" / "st2.json"}[a.round]
+    out = {"r1": work / "r1.json", "r2": work / "r2.json", "r3": work / "r3.json", "st1": work / f"st1{SUFFIX}" / "st1.json", "st2": work / f"st2{SUFFIX}" / "st2.json"}[a.round]
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{out}: {len(manifest['jobs'])} jobs")
