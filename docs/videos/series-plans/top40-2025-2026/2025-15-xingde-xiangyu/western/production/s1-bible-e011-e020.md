@@ -451,4 +451,7 @@ Bev、Sienna、Fisk 在第 4–10 集清單裡，若還沒畫，Bev 排在 3 之
 - **第 14–16 集**（寫稿者定）：Reyes 的話只在他自己辦公室的鏡上（原聲，後製加電話濾波），不疊在露臉的人身上；他左手拿話筒貼左耳。第 14 集警探補 "Let me get the deputy prosecutor. Right now."（Reyes 的名字本集不說出口）；警局加一台影印機；Peg 的棕色大衣攤在她床上、c04 拿起穿上。
   第 15 集收選用句 "Ring. Four hundred."；加駕照道具句與一鏡 Peg 用拇指摸左手的淡色戒痕；Peg 在銀行等候椅上織毛線；黑車車頭朝畫面左、駕駛座那側朝著旅館，從辦公室看得到 Elias 下車，Theo 只從車頂上方露出頭（虛焦）。
   **Elias 的左手**：第 15 集露臉起每一鏡都插在大衣左口袋。第 16 集 c01 從停車場拍、他的視線從二樓的窗落到辦公室的窗；辦公室門前一級台階；Theo 穿棕色樂福鞋。新場景 `police-steps`、`harbor-sidewalk` 已加進 `cast.json`。
+- **第 19–20 集**（寫稿者定）：第 19 集浴室剪髮前長髮放下來，新 look `motel-down`（只換髮型，已加進 `cast.json`）。第 20 集 Dana 坐著時卷宗道具句寫 `stacked on the table`；小法庭桌上一支筆；Nora 用 Dana 的筆簽判決書；"That fast?" 照 outline 在小法庭門口；
+  法庭座位 Dana 坐外側、Nora 靠中間，Fisk 靠中間、Grant 坐外側。第 20 集 153 秒（細綱 145 秒），第二章結尾，接受。
+  寫稿者新加、待站主看的三句：第 19 集 c42 Peg 句前加 "Sienna."（觀眾才知道照片是誰的手）；第 20 集 c08 Fisk "Decree and agreement. Sign both, Ms. Quinn."；c38 證婚法官 "I now pronounce you husband and wife."。
 
