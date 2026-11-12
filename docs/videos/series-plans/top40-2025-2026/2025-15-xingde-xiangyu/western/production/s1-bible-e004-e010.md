@@ -307,3 +307,10 @@
 5. **Peg 的婚戒有沒有鑽**：`cast.json` 道具寫素面金戒，細綱第 15 集寫「一顆很小的舊鑽」、帳也照有鑽算。建議照第 15 集（`cast.json` 的 `peg-ring`、`keepsake`、`ledger`、`receipt` 已同步成這份的道具句）。
 6. **第 10 集關燈後 Peg 的三句**：建議原聲、紅光慢脈動照著她的嘴；第一批草稿若暗到嘴看不清或模型把空檔講滿，改成她轉過頭、嘴不入鏡，用 Gemini Gacrux。
 7. **短喊**（第 7 集 "Not this room!" "Not this one!"、第 8 集 "Mom!"）：照第 1–3 集還沒定的那條，先試「張嘴喊、不放原文」。
+
+## 寫稿時補定的事（2026-11-12）
+
+- **外貌句只寫長相**：Grant 基本款與 `young` 的外貌句拿掉了 `a warm practiced smile`、`leans slightly forward when he talks`、`an eager salesman's smile`；他練過的溫和臉、往前傾的姿勢寫在每一鏡的表情與動作欄。
+- **第 4 集**（寫稿者定）：補 "I'll call my old number."（觀眾才知道她打給誰）與 "I asked for Dr. Brandt. Where is she?"（呼叫鈕不放對講聲）。值班醫生說話時把夾板放在床尾、出門時拿走，那一鏡寫 `its clip empty`。Grant 整集站著，白手帕一直在胸前口袋。停號錄音用 Gemini（Leda，電話濾波，嘴不入鏡）。值班醫生原聲；`cast.json` 的 Orus 只當備案與語氣參考。
+- **第 5 集**（寫稿者定）：跳時間後 Nora 坐在床緣、穿灰拖鞋，白毯 `folded at the foot of the bed`。Peg 在走廊盡頭用掉口袋裡的面紙（所以車上找面紙），戴婚戒的左手貼牆；帳本在車上已攤在腿上。車上從儀表板中間往後座拍，Cole 只露右下角的白手套。
+
