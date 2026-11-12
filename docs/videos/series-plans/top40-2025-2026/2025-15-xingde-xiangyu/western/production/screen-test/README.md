@@ -219,4 +219,9 @@ python3 -I $B/art.py s5                                       # s4 驗收過之�
     - 嬰兒房傍晚版的梯子是高梯。
     - 病房整支點滴架拿掉了。
   - **第二批**（第 11–20 集）照 `../../review/2026-11-12-ref-audit-e001-e020.md`〈第二批〉，要站主點頭。
+- **收尾備份（2026-11-12 22:40 UTC）**：
+  - 工作資料夾整包傳到 `videobackup:AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/till-the-verdict`，790 個檔，`todrive.sh` 與 `--check` 都是 0 差異。
+  - 內容：每一輪的原圖 PNG、manifest、進度檔、log、接力腳本 `chain*.sh`、並排圖 `sheets/`。
+  - 另有 `notes/`：二十集稽核的筆記、各集代理要求改共用檔的彙整、寫稿、審稿、稽核、改字四份交辦書。
+  - Colab 沒有開著的機器。
 - **session 中斷時**：Colab runtime 會一直燒點數，先 `bash $K/h3.sh stop --session ttv-art`；工作資料夾在雲端硬碟上，拿回來放回 `$W` 就能接著用 `art.py` 建下一輪。
