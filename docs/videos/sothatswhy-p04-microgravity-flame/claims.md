@@ -138,6 +138,7 @@
 - **來源**：[4] Student Reader
 - **原文**：「Soon, the flame temperature begins to drop because the combustion is less vigorous. The lower temperature slows down the melting and vaporization of the candle wax. Candles onboard the first United States Microgravity Laboratory, launched in June 1992, burned from 45 seconds to about 1 minute before being extinguished because of the dropping temperature and reduction of wax vapor.」
 - **注意**：片中不念 USML-1 的名字，也不說太空梭（[4] 這句沒寫載具）。
+- **verify-1 F02 修正（2026-11-12）**：原研究 Ross, Dietrich & Tien, "Candle Flames in Microgravity: USML-1 Results – 1 Year Later"（NTRS 20030075810）寫 "Extinction occurred between 40 and 60 seconds for all flames except one"，並把熄滅歸因於小型密閉手套箱與蠟燭盒裡的氧氣耗盡，結論是 "a candle can burn indefinitely in a large enough ambient of air in microgravity"。所以 p122 改成「大多一分鐘就熄了，可能是裝它的盒子裡氧氣快沒了。」，不把一分鐘說成太空蠟燭的自然上限。
 
 ## C19 太空站上的一組實驗：九十五公升左右的燃燒室、液滴自己飄著、熱電線點火、一公釐半到五公釐、三百多次【研究報告】
 
