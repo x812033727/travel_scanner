@@ -27,8 +27,16 @@ def sha(p: Path) -> str:
 def adopt(take: str, name: str, note: str) -> str:
     rnd, jid = take.split("-", 1)
     png = WORK / f"{take}.png"
-    prog = json.loads((WORK / f"{rnd}.progress.json").read_text(encoding="utf-8"))
-    job = next(j for j in prog["jobs"] if j["id"] == jid)
+    # rounds run in another round's slot (redraw.py --into) keep their progress there: find the job by its output file
+    job = None
+    for pf in [WORK / f"{rnd}.progress.json", *sorted(WORK.glob("*.progress.json"))]:
+        if pf.is_file():
+            job = next((j for j in json.loads(pf.read_text(encoding="utf-8"))["jobs"]
+                        if Path(j.get("output") or "").name == png.name), None)
+            if job:
+                break
+    if job is None:
+        sys.exit(f"adopt.py: no progress entry for {png.name}")
     if job["status"] != "completed" or not png.is_file():
         sys.exit(f"adopt.py: {take} is not drawn")
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(png), "-q:v", "2", str(REFS / name)], check=True)
