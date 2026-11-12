@@ -126,7 +126,7 @@
       "id": "grant",
       "setting_id": "grant-whitlock",
       "name": "Grant Whitlock",
-      "appearance": "a 37-year-old white American man, good-looking in a polished way, sandy-blond hair neatly side-parted, clean-shaven, thin round metal-rim glasses, a light stone-colored tailored suit, a pale blue open-collar shirt, clear glass cufflinks",
+      "appearance": "a 37-year-old white American man, good-looking in a polished way, sandy-blond hair neatly side-parted, clean-shaven, thin round metal-rim glasses, a light grey finely checked tailored suit, a pale blue open-collar shirt, clear glass cufflinks",
       "shot_looks": [
         {
           "id": "rain",
@@ -389,7 +389,7 @@
       "id": "nurse-kim",
       "setting_id": "s01-nurse-kim",
       "name": "Nurse Joanne Kim",
-      "appearance": "a Korean-American woman around 30, pale blue scrubs, short black hair tucked behind her ears, a round kind face, gentle eyes",
+      "appearance": "a Korean-American woman around 30, pale blue scrubs, black hair parted in the middle and pulled back into a low knot, a round kind face, gentle eyes",
       "shot_looks": [],
       "voice": {
         "provider": "gemini",
@@ -404,7 +404,7 @@
       "id": "cole",
       "setting_id": "s01-driver-cole",
       "name": "Cole",
-      "appearance": "a 30-year-old Black American man, close-cropped hair, a black suit, white gloves",
+      "appearance": "a Black American man around 40, close-cropped hair, a black suit over a black open-collar shirt, white gloves",
       "shot_looks": [],
       "voice": {
         "provider": "gemini",
@@ -876,12 +876,12 @@
     {
       "id": "glass-house-living",
       "name": "The Glass House, living room and dining table",
-      "prompt": "inside a glass-walled modern house: pale oak floor, a long pale wood dining table, a low grey sofa, grey sea and sky through every wall, cool blue daylight, minimal decor, a cream vase on a shelf, no text; a slim flat TV on the one solid wall"
+      "prompt": "inside a glass-walled modern house: pale oak floor, a long pale wood dining table, a low grey sofa, grey sea and sky through every wall, cool blue daylight, minimal decor, a row of low pale oak cabinets under the sea-side glass with a cream vase on them, no text; no solid wall: a slim flat TV stands on the low cabinet facing the sofa"
     },
     {
       "id": "glass-house-nursery",
       "name": "The Glass House, nursery",
-      "prompt": "a small half-finished nursery in a glass house: a white crib, a rocking chair with a basket of knitting, one huge floor-to-ceiling window onto the grey sea, soft cold light, no text"
+      "prompt": "a small half-finished nursery in a glass house: a white crib, a rocking chair with a basket of knitting, a flat white ceiling, one floor-to-ceiling window in a slim black steel frame onto the grey sea, no glass roof, soft cold light, no text"
     },
     {
       "id": "glass-house-bedroom",
@@ -891,12 +891,12 @@
     {
       "id": "hallway",
       "name": "Merrow General, seventh-floor hallway",
-      "prompt": "a long empty hospital corridor at night, pale green-grey walls, a row of closed doors, linoleum floor, and at the very end one ceiling light that pulses slowly: on for two beats, off for one, no readable signs; an elevator at the near end and a nurses' station halfway along on the right, a long bench under that light at the far end"
+      "prompt": "a long empty hospital corridor at night, pale green-grey walls, a row of closed doors, linoleum floor, and at the very end one ceiling light that pulses slowly: on for two beats, off for one, no readable signs; an elevator at the near end and a nurses' station halfway along on the right, a blank pale green-grey end wall with no door, a long bench against the left wall under that light"
     },
     {
       "id": "hospital-room",
       "name": "Merrow General, seventh-floor room",
-      "prompt": "a quiet single hospital room: the bed head against the LEFT wall, a nightstand on the bed's right with a plastic water cup, a chair by the bed, a window with blinds on the right, an IV stand behind the bed head as background only (no needles), the door at the foot of the bed on the right opening onto the hallway, no readable text"
+      "prompt": "a quiet single hospital room: the bed head against the LEFT wall, a nightstand on the bed's right with a plastic water cup, a chair by the bed, a window with blinds on the right, an adjustable hospital bed with low silver side rails and its back raised, plain white sheets, an empty IV stand with nothing hanging from it behind the bed head, the door at the foot of the bed on the right opening onto the hallway, no readable text"
     },
     {
       "id": "exam-room",
@@ -911,12 +911,12 @@
     {
       "id": "motel-room",
       "name": "Harborview Motor Inn, room with two beds",
-      "prompt": "a modest old roadside motel room: two twin beds with faded quilts, a small table by the window, a lamp, a dry dark window, a neon glow from outside with no readable letters"
+      "prompt": "a modest old roadside motel room: two twin beds with faded quilts, a small table by the window, a lamp, seen from the foot of the beds: the headboards against the far wall with a nightstand and a pale-yellow-shaded lamp between them; on the left wall the entry door near the foot end and a window with heavy curtains and one narrow gap, a small table and two chairs under it; the bathroom door at the far end of the right wall; a red neon glow through the curtain gap with no readable letters"
     },
     {
       "id": "motel-front",
       "name": "Harborview Motor Inn, front desk and lot",
-      "prompt": "a small 1970s harbor motel: a wood-paneled front office with a desk and a bowl of peppermints, a two-story row of doors along an open walkway, a dry parking lot, a quiet street beyond it, a neon sign with no readable letters"
+      "prompt": "a small 1970s harbor motel: a wood-paneled front office with a desk and a bowl of peppermints, a two-story row of doors along an open walkway, a parking lot, a quiet street beyond it, a neon sign with no readable letters"
     },
     {
       "id": "police-desk",
@@ -1042,8 +1042,8 @@
     {
       "id": "glass-house-door",
       "name": "The Glass House, front door and steps (day, vertical)",
-      "prompt": "vertical view of the front of a single-story glass house: a black steel-framed glass front door that opens inward, an ordinary black lever handle, a plain doormat, two wide grey stone steps down to a gravel forecourt, one tall black lamppost standing at the right end of the top step, glass walls on both sides of the door, the gravel drive curving away down the bluff to the lower left of the frame, grey sea and sky beyond, no text",
-      "note": "Seen from outside (the forecourt): lamppost at the right end of the top step, drive to the lower left. Seen from inside the pale oak entry looking out, the same door is mirrored: lamppost at the left end of the top step, drive to the lower right of the frame (art-plan-sets.md 〈要先定的〉 1). From episode 6 (6–8, 50) swap the handle for new-lock: 'a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched'. Wet steps, rain and light go in the shot."
+      "prompt": "vertical view of the front of a single-story glass house: a black steel-framed glass front door that opens inward, an ordinary black lever handle, a plain doormat, two wide grey stone steps down to a gravel forecourt, one tall slim modern black lamppost standing on the grass just right of the steps, glass walls on both sides of the door, the gravel drive curving away down the bluff to the lower left of the frame, grey sea and sky beyond, no text",
+      "note": "Seen from outside (the forecourt): the slim modern lamppost stands on the grass just right of the steps (both picked outside pictures; review 2026-11-12-ref-audit), drive to the lower left. Seen from inside the pale oak entry looking out, the same door is mirrored: lamppost on the grass just left of the steps, drive to the lower right of the frame (art-plan-sets.md 〈要先定的〉 1). From episode 6 (6–8, 50) swap the handle for new-lock: 'a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched'. Wet steps, rain and light go in the shot."
     },
     {
       "id": "glass-house-study",
