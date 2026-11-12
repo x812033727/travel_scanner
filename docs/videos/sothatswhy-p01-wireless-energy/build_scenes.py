@@ -144,7 +144,7 @@ chief("chief-energy2", C("opening both hands with a warm smile", close=True),
 chief("chief-hooks", C("counting on her fingers with a playful mysterious smile"),
     c("這口麵煮完，我再拿一口玻璃鍋上來。", None, "S:glass"),
     c("你那張卡片，離閘門多遠就不嗶了？你猜猜。", "轉向觀眾", "S:cardfar"),
-    k("我先猜！電是飛過去的！", "篤定的錯猜", "S:fly"))
+    k("要貼著才嗶！電是飛過去的！", "篤定的錯猜", "S:fly"))
 
 # ---------- 第一章：卡片貼上閘門那一下 ----------
 chief("chief-not-fly", C("shaking her head gently with a kind smile, one palm raised", close=True),
@@ -220,7 +220,7 @@ obj("rect-part", "Close-up of one tiny square black electronic part on a small g
     c("要。剛剛那家廠商說，卡片的晶片裡也有整流器。"))
 chief("chief-diff", C("holding out both hands like a balance with a bright smile"),
     k("手機和卡片哪裡不一樣？", "追問", "S:diff"),
-    c("卡片收到電，馬上拿去回答閘門；"),
+    c("還記得嗎？卡片收到電，馬上就用掉；"),
     c("手機收到電，送進電池存起來，晚一點才用。", None, "P:diff"))
 obj("wheel-bell", "Wide shot of " + BASIN + " seen from above, " + WHEEL + " at the far end with one tiny brass bell on top of it",
     c("還記得水盆嗎？卡片的小水車，轉一下就敲響鈴鐺；"))
@@ -292,7 +292,7 @@ kid("kid-try-mag", K("bouncing on her toes with an excited grin, both fists clen
 kid("kid-cardcool-q", K("holding " + CARD + " up beside her cheek with a thinking face", close=True, where=KITCHEN),
     k("那卡片的細線也有電在跑，", "想不通"), k("為什麼卡片不會燙？", "句尾上揚", "S:cardcool"))
 chief("chief-cardcool", C("holding out both hands like a balance with a thoughtful smile"),
-    c("卡片只收到一點點電，送進晶片拿去回答閘門。"),
+    c("因為卡片收到的電，只有一點點。"),
     c("電磁爐卻是專門把能量灌進鍋底，讓它變成熱。", None, "P:cardcool"))
 obj("phone-slid", "Close-up of " + PHONE + " lying face up half off the edge of " + PAD + ", slightly crooked",
     k("咦？媽媽的手機剛剛震了一下，", "發現"), k("好像沒在充了！", "章尾停住", "S:stopped"))
@@ -347,11 +347,11 @@ kid("kid-got-it", K("holding " + CARD + " up high with a big confident grin", wh
     k("原來如此！", "恍然大悟"), k("是一直在變的磁場，", "篤定"),
     k("推著線圈和鍋底的電跑！", "篤定", "P:jump"))
 kid("kid-got-it2", K("counting on her fingers with a proud happy face", close=True, where=KITCHEN),
-    k("卡片拿去回答，", "篤定"), k("手機存起來，", "篤定"),
-    k("鍋子把它變成熱！", "篤定", "P:heat"))
+    k("卡片、手機、鍋子，", "篤定"), k("接收的東西不一樣，", "篤定"),
+    k("做的事就不一樣！", "篤定", "P:heat"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
     c("說得好。我覺得最妙的是：", "笑"),
-    c("同一種推法，收到的東西不同，就做了不同的事。"))
+    c("同一種推法，能讓卡片說話，也能把麵煮滾。"))
 # The outro is three pictures, no card, no stamp (series README §3.2, §10.1): the kid gives a thumbs-up.
 kid("outro", "Waist-up medium shot of the girl with a big happy smile giving a big cheerful thumbs-up with one hand, bright morning light",
     k("明天刷卡，我要貼正一點！", "開心大聲"))
