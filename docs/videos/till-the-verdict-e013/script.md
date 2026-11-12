@@ -10,7 +10,7 @@
 
 ## 劇情
 
-藥局窗口，Dale 的指尖沿著那一欄往下滑：「Every month. Same signature. Grant Whitlock.」他把眼鏡往上一推：「The real pills. Never reached you.」他把三頁領藥紀錄從窗口下推給 Nora。Peg 的手按上她的背。
+藥局窗口，Dale 的指尖在剛印好的紙上往下滑：「Every month. Same signature. Grant Whitlock.」他把眼鏡往上一推：「The real pills. Never reached you.」他把三頁領藥紀錄從窗口下推給 Nora。Peg 的手按上她的背。
 傍晚，Harborview 的房間。Nora 跪在自己的床邊，把碎花被掀到床頭，三張紙在白床單上排成一排：監管紀錄的粉紅副本、化驗報告、領藥紀錄。紅霓虹從窗簾縫掃過紙邊。「Every morning, that pill was sugar.」「That night wasn't bad luck.」她把報告揉成一團，尖叫，撲在枕頭上哭到喘不過氣。
 Peg 手上摺到一半的淺藍襯衫掉在地上。「He heard you were pregnant.」「First thing he asked? The due date.」她說不下去，坐到床邊把 Nora 抱起來，自己也哭了：「I raised him. I raised him.」
 哭完，窗外已經全黑。Nora 把揉皺的報告在膝上攤平。Peg 從帆布袋拿出一個牛皮紙信封，Nora 把三張紙裝進去、把封口壓平，抬起紅腫的眼睛：「I'm going to the police.」Peg 放在她背上的手停住了。她要去告的，是 Peg 的兒子。
@@ -18,7 +18,7 @@ Peg 手上摺到一半的淺藍襯衫掉在地上。「He heard you were pregnan
 ## 這集接在哪
 
 接第 12 集最後一鏡（c42，第 6 天 11:40 的門診藥局窗口，已對過），同一刻開始；跳到 19:05 的汽車旅館房間，到 19:40（bible〈時間線〉）。藥局是日光燈；房間：窗簾縫外藍色的暮光，約 19:25 天全黑，之後是檯燈的暖黃加窗簾縫的紅霓虹慢脈動。
-第一鏡 c01 照 bible〈接點表〉12→13：Dale 的指尖沿那一欄往下滑（紙面遠遠虛焦）；Dale 右手拿著三頁、左手食指在那一行上；Nora 兩手撐在窗口檯面上；Peg 在她右後半步。
+第一鏡 c01 照 bible〈接點表〉12→13：Dale 的指尖沿那一欄往下滑（審稿後改成從紙背拍、只見指尖的淡影；紙面遠遠虛焦）；Dale 右手拿著三頁、左手食指在那一行上；Nora 兩手撐在窗口檯面上；Peg 在她右後半步。
 跳時間一次，不用字卡：c10 → c11 跳到 19:05，靠換到房間、窗簾縫的藍色暮光、Peg 換成 `visit`（開襟衫）、Nora 脫了大衣交代。
 最後一鏡 c45 照〈接點表〉13→14：汽車旅館房間，第 6 天 19:40，檯燈暖黃、窗簾縫的紅霓虹慢脈動，窗外全黑。Nora（`motel`，沒穿大衣，頭髮從髻裡散下一半，眼睛紅腫）坐在自己的床緣（靠窗，畫面左），兩手壓著膝上那個封好的牛皮紙信封；Peg（`visit`，眼鏡戴在臉上）坐在她右邊同一張床上，兩手停在 Nora 背上；那件摺到一半的淺藍襯衫掉在 Peg 腳邊的地毯上；帆布袋在 Peg 床上。第 14 集第一鏡：Peg 彎腰撿起襯衫。
 細綱 m01 在本集揭曉（c02「Grant Whitlock.」）；第 13 集埋下 m04（c25「The due date.」，第二季收）與 s01-t11（c42「I'm going to the police.」，第 14 集收）。
@@ -32,7 +32,7 @@ Peg 手上摺到一半的淺藍襯衫掉在地上。「He heard you were pregnan
 | Dale Hutchins | **待畫，必須先畫**（`cast.json` `dale` 基本款） | 粗黑框眼鏡、白色藥師袍、胸前口袋夾兩支筆；在玻璃隔板後；本集沒有任何一鏡笑；原聲 |
 
 場景：Merrow General 門診藥局窗口 `pharmacy`（待畫，直式；c01–c10）、Harborview Motor Inn 房間 `motel-room`（待畫，**暮色版**與夜、檯燈版；c11–c45）。
-道具：領藥紀錄、化驗報告、監管紀錄（粉紅副本）、牛皮紙信封、淺藍襯衫、Peg 的帆布袋、婚戒、檯燈、帳本、房間鑰匙、兩只行李箱、玻璃磚、駝色大衣。
+道具：領藥紀錄（c01–c05 散頁、c05 釘好）、灰色小釘書機、化驗報告、監管紀錄（粉紅副本）、牛皮紙信封、淺藍襯衫、Peg 的帆布袋、婚戒、檯燈、帳本、房間鑰匙、兩只行李箱、玻璃磚、駝色大衣。
 
 ## 分鏡與台詞
 
