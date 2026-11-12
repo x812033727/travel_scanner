@@ -144,7 +144,7 @@ kid("kid-main-q", K("looking down at a small tablet in her hands with a thinking
 
 # ---------- 第一章：密碼要經過好多人的手 ----------
 kid("kid-direct-guess", K("pointing out through the glass door at the busy sunny street outside with a confident grin", close=True, where="standing by the glass door of a cosy café with a tall potted plant,"),
-    k("差在路上？", "想了一下"), k("密碼不是直接飛到遊戲公司嗎？", "很有把握的錯猜", "S:direct"), chapter="密碼要經過好多人的手")
+    k("是路上不一樣？", "想了一下"), k("密碼不是直接飛到遊戲公司嗎？", "很有把握的錯猜", "S:direct"), chapter="密碼要經過好多人的手")
 obj("router-shelf", "Close-up of a small plain white wireless router with two short antennas and tiny green lights on a wooden café shelf beside a potted plant",
     c("不是喔。它先到咖啡店的無線網路機器，", "接住上一句", "P:direct"),
     c("再交給網路公司，一站轉一站，"),
@@ -217,7 +217,7 @@ chief("chief-phishing", C("raising her eyebrows with a careful warning smile, on
       c("幾乎所有的釣魚網站都用 HTTPS。"))
 chief("chief-phish-def", C("pretending to cast a tiny fishing rod with one hand and a mischievous smile"),
       c("釣魚網站，就是假裝成別人、騙你打密碼的網站。"),
-      c("騙子替自己那個長得很像的網址，一樣領得到證件。"))
+      c("騙子替自己那個長得很像的網站名字，一樣領得到證件。"))
 obj("tablet-lock", "Close-up of " + TABLET + " lying on a sunny café table",
     c("瀏覽器很早就在網址旁邊畫一個小鎖頭，代表連線有加密。"),
     k("我看到的，", "指著平板"), k("就是這個鎖頭！"))
@@ -262,7 +262,7 @@ obj("paint-cups", "Close-up of three small round paint cups on a wooden desk in 
 chief("chief-mix", C("holding a small paint cup filled with orange paint up in one hand with a delighted smile"),
       c("把調好的傳給對方，收到的人，再加上自己那一種。"),
       c("最後兩邊調出同一個顏色；"),
-      c("傳信的同學只看過半成品，調不出來。", None, "P:mix"))
+      c("經手的同學只看過半成品，調不出來。", None, "P:mix"))
 chief("chief-math", C("wagging one finger with an honest playful smile", close=True),
       c("這只是比喻，真的做法是數學。不過規格寫得很清楚："))
 obj("two-cups", "Close-up of two identical small round paint cups filled with the same deep brown paint standing side by side on a wooden desk in sunshine",
@@ -272,19 +272,19 @@ kid("kid-record-q", K("holding a small toy cassette recorder up beside her ear w
     k("要是有人先把整段錄下來，", "想到壞點子"), k("以後再慢慢解呢？", "句尾上揚", "S:record"))
 chief("chief-erase", C("brushing her two palms against each other as if wiping them clean, a confident smile", close=True),
       c("這次調出的顏色，用完就丟。", "接住上一句"),
-      c("規格寫：就算以後網站的章被偷，"),
+      c("規格寫：就算以後網站的印章被偷，"),
       c("只要這次的秘密已經丟掉，以前錄下的也解不開。", None, "P:record"))
 kid("kid-copy-q", K("holding up a small cream card and pretending to photocopy it with a sly grin", where=CLASS),
     k("可是證件，", "抓到漏洞"), k("可以影印吧？", "句尾上揚", "S:copy"))
 chief("chief-stamp", C("pressing an imaginary stamp down onto her open palm with a confident smile"),
       c("可以。所以光給證件不夠，網站還要當場蓋章。", "接住上一句"),
-      c("影印的人，沒有那顆章。", None, "P:copy"))
+      c("影印的人，沒有那顆印章。", None, "P:copy"))
 kid("kid-swap-q", K("pretending to secretly swap two small paint cups on a desk with a mischievous grin", where=CLASS),
     k("要是傳信的同學，", "追問"), k("偷偷把顏色換掉呢？", "句尾上揚", "S:swap"))
 chief("chief-stamp-all", C("sweeping one hand slowly from left to right in front of her with a calm explaining smile", close=True),
-      c("網站那一章，是蓋在剛剛整段來回上，包括顏色。"),
+      c("網站的印章，是蓋在剛剛整段來回上，包括顏色。"),
       c("瀏覽器拿證件上的圖樣來對；"),
-      c("顏色被換過，章就對不上，連線直接斷掉。", None, "P:swap"))
+      c("顏色被換過，印章就對不上，直接斷線。", None, "P:swap"))
 chief("chief-finished", C("giving a small thumbs-up with a pleased smile"),
       c("最後兩邊再對一次帳：整段來回，"),
       c("我看到的跟你看到的一樣嗎？對上了，才開始寄真正的信。"))
@@ -300,7 +300,7 @@ chief("chief-numbers", C("counting on her fingers with a thoughtful smile", clos
       c("每封信都有編號，兩邊各自從零開始數，寄一封加一。"),
       c("編號不寫在外面，是混進封條裡。"))
 obj("letter-row", "Wide shot of a neat row of six small cream envelopes each closed with a round red wax seal, lined up along a sunny wooden windowsill",
-    c("抄來的舊信再送一次，或是順序被調換，", "接住上一句"),
+    c("以前的舊信再送一次，或是順序被調換，", "接住上一句"),
     c("編號就對不上，打不開。", None, "P:replay"),
     k("所以每一封，", "開心"), k("都不能重寄！"))
 chief("chief-exception", C("holding up one finger with an honest careful smile"),
@@ -373,7 +373,7 @@ chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open
       c("沒錯，這種封條管不到，要靠你自己看。", "點頭"), c("那多一個 S，你的密碼在路上差了什麼？", "笑"), chapter="小問看清楚了")
 kid("kid-got-it", K("holding a small sealed cream envelope up proudly with a big confident grin", where=CAFE),
     k("原來如此！", "恍然大悟"), k("就像剛剛那封封好的信，", "篤定"),
-    k("同學照樣傳，卻讀不到，", "篤定"), k("也冒充不了那個網址！", None, "P:main"))
+    k("同學照樣傳，卻讀不到，", "篤定"), k("也冒充不了那個網站名字！", None, "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好。我覺得最妙的是，這個封條你每天都在用，"),
       c("卻從來沒有看清楚它。"))
