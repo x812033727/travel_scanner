@@ -106,7 +106,7 @@ def parse_seconds(cell: str) -> float | None:
 
 
 def tokens(marks: str) -> list[str]:
-    return [t.strip() for t in re.split(r"[，；,;]", marks) if t.strip()]
+    return [t.strip() for t in re.split(r"[，；、,;]", marks) if t.strip()]
 
 
 def is_voice_paren(content: str) -> bool:
