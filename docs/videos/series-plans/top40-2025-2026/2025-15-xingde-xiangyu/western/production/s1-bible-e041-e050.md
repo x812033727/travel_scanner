@@ -494,3 +494,7 @@ Grant 被送達凍結令、被起訴（第 51 集起他知道）；Sienna 看見
 - **道具**：新增 `light-box-papers`、`blank-sheet`、`sketch-sheets`、`court-papers`、`grant-pen`、`fisk-folder`、`ten-sheets`、`examiner-pen`、`signature-strips`、`sleeve-protectors`、`examiner-loupe`、`examiner-ruler`、`examiner-file`、`examiner-notebook`、`blue-cup`、`cole-hand`、`pasta-bowl`、`pasta-bowl-washed`、`pasta-pot`、`sticky-note`、`knit-hat-finished`、`ashford-tv`、`tv-remote`、`press-cameras`、`steel-doors`、`blowpipe-rack`、`soup-ladle`、`stockpot`、`chowder-bowl`、`chowder-splash`、`oyster-crackers`、`bank-card-copy`、`certificate-copy`、`examiner-report`、`charge-letter`、`glass-rod`、`peg-glasses-folded`、`red-curtain`、`ladder`。
   改：`light-box`（這章那句，四章共用）、`case-tracker`（照第 31–40 集）；`evidence-panels` 與 `examiner-tools` 從 `cast.json` 拿掉（換成 `evidence-rack`、`engraved-panel`、`examiner-loupe`、`examiner-ruler`）。
   原稿這幾個 id 改用別章的：`agreement-copies` → `photocopy`、`dslr-camera` → `lyle-camera`、`safety-glasses` → `sparks-glasses`、`remelt-door`（道具句）→ `steel-doors`、`blue-panel`／`wall-clock`／`evidence-rack`／`case-tracker` 用第 31–40 集的句子；`knit-hat` 的 note 寫明不是 pale yellow。
+- **第 44–45 集**（寫稿者定）：第 44 集她給第二碗撒兩撮鹽（鋪第 45 集的 "Salty."）；第二碗盛麵前用 `pasta-bowl-washed` 那句，她自己那碗沒有叉子、留在流理台上；c37 她在台階頂回頭看一眼門。新道具句：夾子、鹽罐、咖啡壺、咖啡杯（待加進 `cast.json`）。
+  "Salty." 的字從不入鏡，由 Nora 在 c04 念；她第一次笑出聲寫成具體的臉（眼角起皺、兩頰提起、露出上排牙、頭往後仰），c05–c07。電視裡的 Grant 是攝影棚一場、原聲加電視濾波，說完 "Kiln Row." 才閉嘴微笑；c29 他轉袖扣。
+  第 45 集 Peg 的手機放開襟衫左口袋，吼的時候拿到胸前（不擋嘴）；c11 Peg 把碗舉到太陽下翻看；c19 Theo 出門；c34 語音信箱用 Gemini（Leda），那鏡只拍 Peg 背影；c40 Peg 轉向 Nora 說 "I raised a coward."。
+
