@@ -1,0 +1,810 @@
+{
+  "title": "Una S de más en la dirección: ¿qué cambia para tus datos en el camino? | La Oficina del Por Eso",
+  "description": "Wen está en un café y quiere entrar a su juego con el wifi gratis; su mamá le dice que primero mire si la dirección empieza con https. Pero ¿no es solo una S de más? ¿La contraseña no sale igual?\n\nEn este episodio, la directora y Wen lo piensan con «pasar cartas en clase»: la carta pasa por las manos de varios compañeros, igual que tus datos pasan por el router del café y por el proveedor de internet. Primero ven cómo saber que del otro lado está de verdad ese sitio (el carné del sitio, la entidad que los da gratis y que solo revisa si controlas la dirección, la cadena de sellos hasta los certificados raíz que trae el navegador, los registros públicos); luego, cómo los dos preparan a la vista de todos un secreto que solo ellos conocen, cómo cierran y numeran cada carta, y la excepción que la propia norma reconoce. Al final, lo que el sello no cubre: el grosor de la carta, a qué sitio va y, lo más importante, que HTTPS solo protege el camino y no garantiza que el sitio sea bueno: los sitios de estafa también lo tienen.\n\nMezclar pintura es solo una comparación; en realidad se hace con matemáticas. Las ilustraciones fueron generadas con IA; son esquemas. La fuente de cada afirmación está en las referencias de abajo.\n\nDatos actualizados al 2026-11-12",
+  "tags": [
+    "HTTPS",
+    "TLS",
+    "seguridad en internet",
+    "certificados",
+    "cifrado",
+    "phishing",
+    "ciencia para niños",
+    "La Oficina del Por Eso"
+  ],
+  "thumbnail": {
+    "headline": "Una S más\n**¿Qué hace?**",
+    "sub": "¿Quién ve tu clave en ruta?"
+  },
+  "chapters": {
+    "cafe-tablet": "En el café, una S de más en la dirección",
+    "kid-direct-guess": "La clave pasa por muchas manos",
+    "chief-impostor": "Wen quiere saber si de verdad es el juego",
+    "chief-secret": "Primero el color, luego cerrar la carta",
+    "chief-length": "Lo que aún se ve de una carta cerrada",
+    "chief-your-turn": "Wen lo ve claro"
+  },
+  "source_hashes": {
+    "chapters": {
+      "cafe-tablet": "d50c3a414bf2",
+      "kid-direct-guess": "5f0085e0d948",
+      "chief-impostor": "89c916008f4a",
+      "chief-secret": "fafa3f686f12",
+      "chief-length": "5c251a984970",
+      "chief-your-turn": "d02cd044fdab"
+    },
+    "title": "15d6c5002051",
+    "description": "e4bbb5cffeb8",
+    "tags": "9d0c606699ab",
+    "thumbnail": "a3b7d61299b4"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "77881511d3ae",
+      "text": "¡En un café!"
+    },
+    "p002": {
+      "source_hash": "471658e9db6e",
+      "text": "Con su wifi gratis, entro a mi juego."
+    },
+    "p003": {
+      "source_hash": "373de90ab3d3",
+      "text": "Mamá dice:"
+    },
+    "p004": {
+      "source_hash": "cddb71c91ec6",
+      "text": "mira si es HTTPS antes de la clave."
+    },
+    "p005": {
+      "source_hash": "f052778dc2b9",
+      "text": "¿No es solo una S más?"
+    },
+    "p006": {
+      "source_hash": "acc022b92588",
+      "text": "¿Crees que da igual?"
+    },
+    "p007": {
+      "source_hash": "7cca83e5d5e4",
+      "text": "¡La contraseña igual sale!"
+    },
+    "p008": {
+      "source_hash": "79b087605a5e",
+      "text": "Esa S cambia más de lo que crees en el camino;"
+    },
+    "p009": {
+      "source_hash": "e5a728d64c8b",
+      "text": "pero hay cosas que ni toca."
+    },
+    "p010": {
+      "source_hash": "2e380f9700cb",
+      "text": "Y el candadito, muchos lo entienden mal."
+    },
+    "p011": {
+      "source_hash": "7e6bafa8fc0a",
+      "text": "¿Y qué cambia?"
+    },
+    "p012": {
+      "source_hash": "c9b09ad251cf",
+      "text": "¿Cambia el camino?"
+    },
+    "p013": {
+      "source_hash": "e6bcb7926c6a",
+      "text": "¿No va directo a los del juego?"
+    },
+    "p014": {
+      "source_hash": "eb8e060fe97e",
+      "text": "No. Primero, al router del café,"
+    },
+    "p015": {
+      "source_hash": "3a107da667f4",
+      "text": "y al proveedor, salto a salto,"
+    },
+    "p016": {
+      "source_hash": "4276ee5d9281",
+      "text": "y por muchas computadoras hasta los del juego."
+    },
+    "p017": {
+      "source_hash": "bcecc1a4b076",
+      "text": "¿Y esas,"
+    },
+    "p018": {
+      "source_hash": "96a54b0f0935",
+      "text": "ven lo que mando?"
+    },
+    "p019": {
+      "source_hash": "d6c2c99f4af1",
+      "text": "Como en clase:"
+    },
+    "p020": {
+      "source_hash": "90d221914ef0",
+      "text": "pasas una carta a tu amiga del otro lado del aula."
+    },
+    "p021": {
+      "source_hash": "ebad3769172e",
+      "text": "Pasa por varios compañeros."
+    },
+    "p022": {
+      "source_hash": "1c0ffac7138c",
+      "text": "El router y el proveedor son esos compañeros."
+    },
+    "p023": {
+      "source_hash": "664bc9b909d3",
+      "text": "Si va sin cerrar…"
+    },
+    "p024": {
+      "source_hash": "df76c962fc08",
+      "text": "El navegador Chrome: sin conexión privada,"
+    },
+    "p025": {
+      "source_hash": "5e96c586be67",
+      "text": "podrían ver o cambiar lo que envías."
+    },
+    "p026": {
+      "source_hash": "2ca3f6efda0f",
+      "text": "Mis compañeros"
+    },
+    "p027": {
+      "source_hash": "ccb637a9eb38",
+      "text": "¡son buenos!"
+    },
+    "p028": {
+      "source_hash": "602d9fa06022",
+      "text": "Casi todos. Pero no eliges quién te la pasa."
+    },
+    "p029": {
+      "source_hash": "9c40a1f7ef8a",
+      "text": "Las reglas tras esa S se llaman TLS,"
+    },
+    "p030": {
+      "source_hash": "fc89e7bacdd2",
+      "text": "y su norma: proteger aunque los del camino controlen toda la red."
+    },
+    "p031": {
+      "source_hash": "1640142ce803",
+      "text": "¿Y qué"
+    },
+    "p032": {
+      "source_hash": "6e839b9923b3",
+      "text": "es la S?"
+    },
+    "p033": {
+      "source_hash": "429b0140e7e5",
+      "text": "S de secure: seguro."
+    },
+    "p034": {
+      "source_hash": "d83f8215dca9",
+      "text": "HTTPS es el ir y venir de páginas web, cifrado con TLS."
+    },
+    "p035": {
+      "source_hash": "7eb5223e7ddd",
+      "text": "Cifrar: que solo tú y el otro puedan entenderlo."
+    },
+    "p036": {
+      "source_hash": "7d3f39f39414",
+      "text": "¿La cierro"
+    },
+    "p037": {
+      "source_hash": "ebb58a09260a",
+      "text": "y listo?"
+    },
+    "p038": {
+      "source_hash": "67d33bed8e8c",
+      "text": "Y al correcto."
+    },
+    "p039": {
+      "source_hash": "b00c3d7b7f67",
+      "text": "Si alguien finge ser el juego y la toma,"
+    },
+    "p040": {
+      "source_hash": "22915cd739be",
+      "text": "por bien cerrada, va a él."
+    },
+    "p041": {
+      "source_hash": "154f671a2090",
+      "text": "Antes, la tableta pregunta dónde queda la web,"
+    },
+    "p042": {
+      "source_hash": "5e4726bc5efe",
+      "text": "y esa respuesta podrían alterarla."
+    },
+    "p043": {
+      "source_hash": "232778e9e290",
+      "text": "¿Y cómo sé"
+    },
+    "p044": {
+      "source_hash": "a711d0fbfdda",
+      "text": "que de verdad es el juego?"
+    },
+    "p045": {
+      "source_hash": "525fc70e2253",
+      "text": "Muestra un carné: el certificado."
+    },
+    "p046": {
+      "source_hash": "f9bc188f8259",
+      "text": "Trae el nombre del sitio y el dibujo de su sello,"
+    },
+    "p047": {
+      "source_hash": "1df2bb822378",
+      "text": "un sello que solo tiene él."
+    },
+    "p048": {
+      "source_hash": "f5b8f537fc9e",
+      "text": "El navegador mira: ¿coincide con la dirección?"
+    },
+    "p049": {
+      "source_hash": "4420af03cc3c",
+      "text": "¿Quién lo da?"
+    },
+    "p050": {
+      "source_hash": "78eab39ed2c3",
+      "text": "¡Me hago uno!"
+    },
+    "p051": {
+      "source_hash": "c0a5d81d8ce9",
+      "text": "No lo acepta. Los emiten entidades especiales."
+    },
+    "p052": {
+      "source_hash": "2368e2dfb000",
+      "text": "Una que los da gratis explica cómo revisa:"
+    },
+    "p053": {
+      "source_hash": "9553e2039a47",
+      "text": "por ejemplo, un archivo suyo en un lugar fijo de tu web,"
+    },
+    "p054": {
+      "source_hash": "994408e4d3f4",
+      "text": "y mira desde varios lados a la vez."
+    },
+    "p055": {
+      "source_hash": "2a49ab220018",
+      "text": "Como dejar su tarjeta en tu pupitre."
+    },
+    "p056": {
+      "source_hash": "1fd819e3095a",
+      "text": "¿Y revisa"
+    },
+    "p057": {
+      "source_hash": "502d9b441fb9",
+      "text": "si el sitio es bueno?"
+    },
+    "p058": {
+      "source_hash": "d56c4cda65bd",
+      "text": "No. Revisa si tú controlas esa dirección;"
+    },
+    "p059": {
+      "source_hash": "ef6db27e8d03",
+      "text": "no si es buena gente ni fiable."
+    },
+    "p060": {
+      "source_hash": "e7fb4be76387",
+      "text": "¡Ah! Me pasaron un enlace,"
+    },
+    "p061": {
+      "source_hash": "642f50b229cf",
+      "text": "¡que regala gemas gratis!"
+    },
+    "p062": {
+      "source_hash": "0dd33a4574e8",
+      "text": "¡Y también es HTTPS!"
+    },
+    "p063": {
+      "source_hash": "47e1935228e1",
+      "text": "Ojo. El equipo de Chrome:"
+    },
+    "p064": {
+      "source_hash": "7ce1ab9b0d1a",
+      "text": "casi todo sitio de phishing usa HTTPS."
+    },
+    "p065": {
+      "source_hash": "c3b79bd26f76",
+      "text": "Fingen ser otros para que des tu clave."
+    },
+    "p066": {
+      "source_hash": "792801bcb5ae",
+      "text": "Un falso de nombre parecido igual saca carné."
+    },
+    "p067": {
+      "source_hash": "73f4c583a1aa",
+      "text": "Hace años el navegador puso un candado: conexión cifrada."
+    },
+    "p068": {
+      "source_hash": "b427dc9f7469",
+      "text": "¡Ese"
+    },
+    "p069": {
+      "source_hash": "01acd63f2e13",
+      "text": "es el que vi!"
+    },
+    "p070": {
+      "source_hash": "aff070985817",
+      "text": "Su estudio halló"
+    },
+    "p071": {
+      "source_hash": "0f080ad3d0b4",
+      "text": "que solo el 11 por ciento lo entendía."
+    },
+    "p072": {
+      "source_hash": "5366fe180b45",
+      "text": "En 2023 anunciaron cambiarlo de ícono,"
+    },
+    "p073": {
+      "source_hash": "6a6bb3f747d1",
+      "text": "y nadie crea: candado, sitio bueno."
+    },
+    "p074": {
+      "source_hash": "b2e5860d3bbf",
+      "text": "¿Y por qué el navegador"
+    },
+    "p075": {
+      "source_hash": "a86219184cc6",
+      "text": "se fía de la entidad?"
+    },
+    "p076": {
+      "source_hash": "6f6db301b224",
+      "text": "Ella tiene su carné, sellado por la de arriba."
+    },
+    "p077": {
+      "source_hash": "5e6dbdb537c8",
+      "text": "Capa sobre capa hacia arriba; el de más arriba se llama certificado raíz."
+    },
+    "p078": {
+      "source_hash": "1d7448dc983d",
+      "text": "Tu navegador o celular ya trae raíces,"
+    },
+    "p079": {
+      "source_hash": "c3a722444709",
+      "text": "como al rector: ves su sello y confías."
+    },
+    "p080": {
+      "source_hash": "47ef0092ccba",
+      "text": "¿Y si la entidad"
+    },
+    "p081": {
+      "source_hash": "7d1a24356308",
+      "text": "da un carné por error?"
+    },
+    "p082": {
+      "source_hash": "7f375891702a",
+      "text": "Navegadores como Chrome y Safari"
+    },
+    "p083": {
+      "source_hash": "c984a15b46a8",
+      "text": "exigen registro público."
+    },
+    "p084": {
+      "source_hash": "1e11b18eb865",
+      "text": "Se añade, no se borra; todos lo leen."
+    },
+    "p085": {
+      "source_hash": "420d60731ff7",
+      "text": "Puede pedir aviso: si sacan carné con su nombre,"
+    },
+    "p086": {
+      "source_hash": "ebd851f9de48",
+      "text": "le avisan al anotarse."
+    },
+    "p087": {
+      "source_hash": "18f43fe30eb0",
+      "text": "¿Y si falla,"
+    },
+    "p088": {
+      "source_hash": "4f01b2a87e0b",
+      "text": "qué pasa?"
+    },
+    "p089": {
+      "source_hash": "1db0e6f1cb49",
+      "text": "Chrome avisa en grande: «La conexión no es privada»."
+    },
+    "p090": {
+      "source_hash": "58c933233ff6",
+      "text": "Su ayuda: el fallo puede ser del sitio, la red o tu equipo."
+    },
+    "p091": {
+      "source_hash": "f59e64bfe86d",
+      "text": "Bien, es él."
+    },
+    "p092": {
+      "source_hash": "0f9ff212438e",
+      "text": "¿Cómo cierro"
+    },
+    "p093": {
+      "source_hash": "505405816696",
+      "text": "sin que la abran?"
+    },
+    "p094": {
+      "source_hash": "ff5cbf054b72",
+      "text": "Antes, ambos deben compartir un secreto."
+    },
+    "p095": {
+      "source_hash": "25fef5981cc5",
+      "text": "¡Pero lo enviado"
+    },
+    "p096": {
+      "source_hash": "ace89faccd81",
+      "text": "lo ven todos!"
+    },
+    "p097": {
+      "source_hash": "78f4082af2c6",
+      "text": "Como pintura: acuerdan un color que todos conocen;"
+    },
+    "p098": {
+      "source_hash": "649c4cc514c4",
+      "text": "cada uno añade en secreto otro, que solo él conoce."
+    },
+    "p099": {
+      "source_hash": "5f96cc89be8b",
+      "text": "Pasan la mezcla; quien la recibe añade el suyo."
+    },
+    "p100": {
+      "source_hash": "ac7e588dc99a",
+      "text": "Ambos llegan al mismo color;"
+    },
+    "p101": {
+      "source_hash": "76904a9733bf",
+      "text": "Los demás vieron mitades: no pueden."
+    },
+    "p102": {
+      "source_hash": "25ba75df94a4",
+      "text": "Solo es un ejemplo; de verdad es matemática. La norma dice:"
+    },
+    "p103": {
+      "source_hash": "ac4de42f936e",
+      "text": "primero, este cambio; luego todo va cerrado,"
+    },
+    "p104": {
+      "source_hash": "1a9b7afbb8fa",
+      "text": "hasta ese carné va cerrado."
+    },
+    "p105": {
+      "source_hash": "37680602f5d8",
+      "text": "¿Y si lo graban"
+    },
+    "p106": {
+      "source_hash": "9b2a79211caa",
+      "text": "y lo abren después?"
+    },
+    "p107": {
+      "source_hash": "94031c345e76",
+      "text": "Se usa y se tira."
+    },
+    "p108": {
+      "source_hash": "04a08154d826",
+      "text": "La norma: aunque luego roben el sello,"
+    },
+    "p109": {
+      "source_hash": "a1838529621c",
+      "text": "tirado el secreto, lo grabado no se abre."
+    },
+    "p110": {
+      "source_hash": "44f7a967312b",
+      "text": "¿Y el carné"
+    },
+    "p111": {
+      "source_hash": "df9694d39614",
+      "text": "se copia?"
+    },
+    "p112": {
+      "source_hash": "99a025f33a0c",
+      "text": "Sí. Por eso no basta mostrarlo: el sitio sella ahí mismo."
+    },
+    "p113": {
+      "source_hash": "b5fb0c1f8f23",
+      "text": "El copión no sella."
+    },
+    "p114": {
+      "source_hash": "3aee4a66c7fd",
+      "text": "¿Y si quien pasa"
+    },
+    "p115": {
+      "source_hash": "30d8725a2267",
+      "text": "cambia los colores?"
+    },
+    "p116": {
+      "source_hash": "8c4c0a2dc71a",
+      "text": "Sella todo el diálogo, colores incluidos."
+    },
+    "p117": {
+      "source_hash": "1da8d9b9c8d0",
+      "text": "Se coteja con el dibujo;"
+    },
+    "p118": {
+      "source_hash": "f07c6109a3cb",
+      "text": "Color cambiado: no coincide y se corta."
+    },
+    "p119": {
+      "source_hash": "b919fd4e2053",
+      "text": "Al final, ambos repasan el ir y venir:"
+    },
+    "p120": {
+      "source_hash": "d822de3fff3b",
+      "text": "¿lo que vi yo es lo que viste tú? Si coincide, empiezan las cartas de verdad."
+    },
+    "p121": {
+      "source_hash": "28716be7344d",
+      "text": "Luego cada carta va cerrada con su color secreto."
+    },
+    "p122": {
+      "source_hash": "6d4bc44dce94",
+      "text": "Un mínimo cambio y no abre; la norma exige cortar."
+    },
+    "p123": {
+      "source_hash": "902a797bebcf",
+      "text": "Afuera dice cuánto mide;"
+    },
+    "p124": {
+      "source_hash": "9467029bdf8e",
+      "text": "también va sellado: se ve, no se cambia."
+    },
+    "p125": {
+      "source_hash": "302a9c019594",
+      "text": "¿Y si alguien copia mi"
+    },
+    "p126": {
+      "source_hash": "b90e45595ae9",
+      "text": "«compro gemas»"
+    },
+    "p127": {
+      "source_hash": "723fa530afa8",
+      "text": "y la reenvía?"
+    },
+    "p128": {
+      "source_hash": "fc341badc049",
+      "text": "Numeradas: cada lado parte de cero y suma uno por carta."
+    },
+    "p129": {
+      "source_hash": "89685960cbe8",
+      "text": "No va afuera: va en el sello."
+    },
+    "p130": {
+      "source_hash": "d55c279876db",
+      "text": "Si reenvían una vieja, o cambian el orden,"
+    },
+    "p131": {
+      "source_hash": "6d4110cea98b",
+      "text": "no coincide: no abre."
+    },
+    "p132": {
+      "source_hash": "5b00d89fc08d",
+      "text": "¡Así que"
+    },
+    "p133": {
+      "source_hash": "4ac9d1178a60",
+      "text": "nada se reenvía!"
+    },
+    "p134": {
+      "source_hash": "968f430aa1c1",
+      "text": "Hay una excepción; la norma la marca «importante»."
+    },
+    "p135": {
+      "source_hash": "7602cd85eca2",
+      "text": "¿Cuál?"
+    },
+    "p136": {
+      "source_hash": "553543ca8b09",
+      "text": "Si ya te conectaste, el navegador usa el secreto viejo"
+    },
+    "p137": {
+      "source_hash": "ba453ee7c1fc",
+      "text": "y adelanta una carta: un viaje menos."
+    },
+    "p138": {
+      "source_hash": "9e1444b6c979",
+      "text": "La norma: esa carta adelantada puede reenviarse;"
+    },
+    "p139": {
+      "source_hash": "0f37b328983b",
+      "text": "copiada y reenviada, una compra podría duplicarse."
+    },
+    "p140": {
+      "source_hash": "57ecfbe36697",
+      "text": "¿No es un hueco?"
+    },
+    "p141": {
+      "source_hash": "ea817db2ca96",
+      "text": "Sí. Y da formas para que el sitio se defienda."
+    },
+    "p142": {
+      "source_hash": "1fec170346fd",
+      "text": "Al terminar, la última dice: terminé."
+    },
+    "p143": {
+      "source_hash": "9394e984b262",
+      "text": "Así se nota si la cortan a mitad."
+    },
+    "p144": {
+      "source_hash": "d7bd6d4d2756",
+      "text": "Con sello y número,"
+    },
+    "p145": {
+      "source_hash": "d63276da9fb9",
+      "text": "¿el camino"
+    },
+    "p146": {
+      "source_hash": "6331fdc77b32",
+      "text": "ya no ve nada?"
+    },
+    "p147": {
+      "source_hash": "04c977acf9f4",
+      "text": "Algo ve. ¿Y el largo escrito afuera?"
+    },
+    "p148": {
+      "source_hash": "b8490afffed4",
+      "text": "Grosor y frecuencia de cartas: se ven."
+    },
+    "p149": {
+      "source_hash": "d4af98736f5f",
+      "text": "¿El grosor"
+    },
+    "p150": {
+      "source_hash": "1b8095ed3cb1",
+      "text": "qué revela?"
+    },
+    "p151": {
+      "source_hash": "ab5abfc5e171",
+      "text": "La norma: largo y tiempo a veces delatan qué haces,"
+    },
+    "p152": {
+      "source_hash": "8526817723d4",
+      "text": "más si hay pocas opciones: un sitio de videos fijos."
+    },
+    "p153": {
+      "source_hash": "82683984a2e9",
+      "text": "El sitio puede rellenar hasta igualar;"
+    },
+    "p154": {
+      "source_hash": "7f707aa2cc48",
+      "text": "pero la norma no dice cuánto."
+    },
+    "p155": {
+      "source_hash": "ab23b3a03ce4",
+      "text": "¿Y saben"
+    },
+    "p156": {
+      "source_hash": "223eb2eefe69",
+      "text": "con qué sitio hablo?"
+    },
+    "p157": {
+      "source_hash": "49e13a5d08de",
+      "text": "Muy posible. Al inicio, el navegador dice a qué sitio busca,"
+    },
+    "p158": {
+      "source_hash": "e2e05accb87c",
+      "text": "y ese nombre suele ir sin cerrar."
+    },
+    "p159": {
+      "source_hash": "e126ecac4372",
+      "text": "Como el destinatario."
+    },
+    "p160": {
+      "source_hash": "41393d46b22b",
+      "text": "¿Y cerrarlo?"
+    },
+    "p161": {
+      "source_hash": "2b1f5709f5b3",
+      "text": "En marzo de 2026 se publicó una nueva norma justo para eso:"
+    },
+    "p162": {
+      "source_hash": "3bf054473b66",
+      "text": "meter el nombre en un sobre interior."
+    },
+    "p163": {
+      "source_hash": "b04f1a6b3261",
+      "text": "Pero admite que no basta:"
+    },
+    "p164": {
+      "source_hash": "8faf7b3c8147",
+      "text": "a qué máquina llega la carta se sigue viendo;"
+    },
+    "p165": {
+      "source_hash": "7a1cffad8f55",
+      "text": "pero muchos la comparten,"
+    },
+    "p166": {
+      "source_hash": "f23ed3bd09fa",
+      "text": "y el nombre es la pista más clara."
+    },
+    "p167": {
+      "source_hash": "5e678cbab737",
+      "text": "¿Y la pregunta «dónde queda la web»?"
+    },
+    "p168": {
+      "source_hash": "ab96c661fd88",
+      "text": "Sin cerrar, también lo delata."
+    },
+    "p169": {
+      "source_hash": "91590cf4e717",
+      "text": "¿Y el enlace"
+    },
+    "p170": {
+      "source_hash": "6207e140d4ee",
+      "text": "de las gemas…?"
+    },
+    "p171": {
+      "source_hash": "a3419c95b4a9",
+      "text": "Clave: el sello solo cuida el camino."
+    },
+    "p172": {
+      "source_hash": "d2a2e0600df0",
+      "text": "Cuando la carta llega, el otro lo lee todo."
+    },
+    "p173": {
+      "source_hash": "ee61cf48823e",
+      "text": "Si es un estafador, HTTPS le lleva bien tu clave."
+    },
+    "p174": {
+      "source_hash": "635e3b5108cd",
+      "text": "¿Y cómo lo distingo?"
+    },
+    "p175": {
+      "source_hash": "823a5d7f35b2",
+      "text": "Chrome también: aun con conexión segura,"
+    },
+    "p176": {
+      "source_hash": "a5a00a69cb84",
+      "text": "mira si el nombre en la barra es el que buscas."
+    },
+    "p177": {
+      "source_hash": "53edf7549339",
+      "text": "¡Ya lo vi!"
+    },
+    "p178": {
+      "source_hash": "b8c39e07a2b3",
+      "text": "¡Una letra de más!"
+    },
+    "p179": {
+      "source_hash": "9d0e52451533",
+      "text": "Eso no lo cubre el sello: mira tú."
+    },
+    "p180": {
+      "source_hash": "c997e773f825",
+      "text": "¿Qué cambia la S en el camino?"
+    },
+    "p181": {
+      "source_hash": "36d742bcb996",
+      "text": "¡Por eso!"
+    },
+    "p182": {
+      "source_hash": "b4a835294305",
+      "text": "¡Como la carta!"
+    },
+    "p183": {
+      "source_hash": "9143b223f739",
+      "text": "La pasan, pero no la leen,"
+    },
+    "p184": {
+      "source_hash": "616bf2174fb3",
+      "text": "¡ni fingen ser ese sitio!"
+    },
+    "p185": {
+      "source_hash": "495a669350df",
+      "text": "Bien dicho. Lo mejor: usas este sello a diario,"
+    },
+    "p186": {
+      "source_hash": "c0ee9b730ede",
+      "text": "y nunca lo miraste."
+    },
+    "p187": {
+      "source_hash": "b4f348522f85",
+      "text": "Le digo"
+    },
+    "p188": {
+      "source_hash": "b8a9ebbacfcd",
+      "text": "a mamá: ¡enlace falso!"
+    },
+    "p189": {
+      "source_hash": "23c35e85a11e",
+      "text": "¡Nombre antes de clave!"
+    },
+    "p190": {
+      "source_hash": "7e4f77703946",
+      "text": "¿Viste un enlace falso parecido?"
+    },
+    "p191": {
+      "source_hash": "fe508e80b52e",
+      "text": "¡Dinos!"
+    },
+    "p192": {
+      "source_hash": "88de677d4daa",
+      "text": "Para más porqués, suscríbete a La Oficina del Por Eso."
+    }
+  }
+}

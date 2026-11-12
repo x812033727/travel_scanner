@@ -1,0 +1,810 @@
+{
+  "title": "Satu S tambahan di alamat web, apa bedanya bagi datamu di jalan? | Kantor Oh Begitu",
+  "description": "Wen memakai Wi-Fi gratis di kafe untuk masuk ke gim, dan Mama menyuruhnya melihat dulu apakah alamatnya diawali https. Tapi bukankah cuma tambah satu S? Kata sandinya tetap harus dikirim, kan?\n\nDi episode ini, Bu Kepala dan Wen memakai perumpamaan \"kirim surat di kelas\": surat harus lewat tangan beberapa teman, sama seperti datamu harus lewat mesin kafe dan penyedia internet. Pertama dilihat bagaimana memastikan lawan bicaramu memang situs itu (kartu identitas situs, lembaga penerbit gratis yang hanya memeriksa apakah kamu menguasai alamat itu, rantai cap sampai ke sertifikat akar yang sudah ada di browser, dan buku catatan publik), lalu bagaimana kedua pihak, di depan semua orang, meracik rahasia yang hanya mereka tahu, bagaimana setiap surat ditutup dan diberi nomor, serta pengecualian yang diakui spesifikasinya sendiri; terakhir, hal yang tidak diurus segel: seberapa tebal suratnya, dikirim ke situs mana, dan yang paling penting: HTTPS hanya melindungi perjalanan, tidak menjamin situsnya baik, situs penipu pun memakainya.\n\nMencampur cat hanya perumpamaan, cara sebenarnya adalah matematika; ilustrasi dibuat dengan AI dan hanya gambaran. Sumber setiap klaim tercantum di daftar referensi di bawah.\n\nData per 2026-11-12",
+  "tags": [
+    "HTTPS",
+    "TLS",
+    "keamanan internet",
+    "sertifikat",
+    "enkripsi",
+    "situs phishing",
+    "sains populer",
+    "Kantor Oh Begitu"
+  ],
+  "thumbnail": {
+    "headline": "Ekstra S\n**Bedanya?**",
+    "sub": "Siapa bisa lihat sandimu?"
+  },
+  "chapters": {
+    "cafe-tablet": "Di kafe, alamat dengan satu S tambahan",
+    "kid-direct-guess": "Sandi lewat tangan banyak orang",
+    "chief-impostor": "Wen ingin pastikan itu benar perusahaan gim",
+    "chief-secret": "Campur warna dulu, baru tutup surat",
+    "chief-length": "Surat sudah tertutup, apa yang masih terlihat",
+    "chief-your-turn": "Wen melihat dengan jelas"
+  },
+  "source_hashes": {
+    "chapters": {
+      "cafe-tablet": "d50c3a414bf2",
+      "kid-direct-guess": "5f0085e0d948",
+      "chief-impostor": "89c916008f4a",
+      "chief-secret": "fafa3f686f12",
+      "chief-length": "5c251a984970",
+      "chief-your-turn": "d02cd044fdab"
+    },
+    "title": "15d6c5002051",
+    "description": "e4bbb5cffeb8",
+    "tags": "9d0c606699ab",
+    "thumbnail": "a3b7d61299b4"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "77881511d3ae",
+      "text": "Bu, di kafe!"
+    },
+    "p002": {
+      "source_hash": "471658e9db6e",
+      "text": "Wi-Fi gratis di tablet, mau login gim."
+    },
+    "p003": {
+      "source_hash": "373de90ab3d3",
+      "text": "Kata Mama,"
+    },
+    "p004": {
+      "source_hash": "cddb71c91ec6",
+      "text": "alamat diawali HTTPS, baru isi sandi."
+    },
+    "p005": {
+      "source_hash": "f052778dc2b9",
+      "text": "Padahal cuma tambah satu S?"
+    },
+    "p006": {
+      "source_hash": "acc022b92588",
+      "text": "Satu S, tak beda?"
+    },
+    "p007": {
+      "source_hash": "7cca83e5d5e4",
+      "text": "Sandi tetap harus dikirim!"
+    },
+    "p008": {
+      "source_hash": "79b087605a5e",
+      "text": "Satu S, bagi sandimu, beda melebihi dugaan;"
+    },
+    "p009": {
+      "source_hash": "e5a728d64c8b",
+      "text": "tapi ada yang tak ia urus."
+    },
+    "p010": {
+      "source_hash": "2e380f9700cb",
+      "text": "Soal gembok kecil, banyak yang keliru."
+    },
+    "p011": {
+      "source_hash": "7e6bafa8fc0a",
+      "text": "Bedanya di mana?"
+    },
+    "p012": {
+      "source_hash": "c9b09ad251cf",
+      "text": "Jalannya beda?"
+    },
+    "p013": {
+      "source_hash": "e6bcb7926c6a",
+      "text": "Sandi bukannya langsung ke gim?"
+    },
+    "p014": {
+      "source_hash": "eb8e060fe97e",
+      "text": "Bukan. Dulu ke mesin Wi-Fi kafe,"
+    },
+    "p015": {
+      "source_hash": "3a107da667f4",
+      "text": "lalu ke provider, estafet,"
+    },
+    "p016": {
+      "source_hash": "4276ee5d9281",
+      "text": "lewat banyak komputer penerus, baru ke gim."
+    },
+    "p017": {
+      "source_hash": "bcecc1a4b076",
+      "text": "Mesin itu,"
+    },
+    "p018": {
+      "source_hash": "96a54b0f0935",
+      "text": "lihat isiku?"
+    },
+    "p019": {
+      "source_hash": "d6c2c99f4af1",
+      "text": "Ibarat surat."
+    },
+    "p020": {
+      "source_hash": "90d221914ef0",
+      "text": "Kamu mau kirim surat ke sahabat di ujung kelas."
+    },
+    "p021": {
+      "source_hash": "ebad3769172e",
+      "text": "Lewat tangan teman-teman."
+    },
+    "p022": {
+      "source_hash": "1c0ffac7138c",
+      "text": "Mesin kafe dan provider, merekalah teman itu."
+    },
+    "p023": {
+      "source_hash": "664bc9b909d3",
+      "text": "Kalau tak ditutup..."
+    },
+    "p024": {
+      "source_hash": "df76c962fc08",
+      "text": "Bantuan browser Chrome: koneksi tak pribadi,"
+    },
+    "p025": {
+      "source_hash": "5e96c586be67",
+      "text": "kirimanmu bisa dilihat atau diubah."
+    },
+    "p026": {
+      "source_hash": "2ca3f6efda0f",
+      "text": "Tapi temanku"
+    },
+    "p027": {
+      "source_hash": "ccb637a9eb38",
+      "text": "baik semua!"
+    },
+    "p028": {
+      "source_hash": "602d9fa06022",
+      "text": "Umumnya. Tapi perantara tak bisa dipilih."
+    },
+    "p029": {
+      "source_hash": "9c40a1f7ef8a",
+      "text": "Aturan di balik huruf S ini namanya TLS,"
+    },
+    "p030": {
+      "source_hash": "fc89e7bacdd2",
+      "text": "tulisnya: walau jaringan dikuasai penuh, perlindungan harus jalan."
+    },
+    "p031": {
+      "source_hash": "1640142ce803",
+      "text": "S itu"
+    },
+    "p032": {
+      "source_hash": "6e839b9923b3",
+      "text": "artinya?"
+    },
+    "p033": {
+      "source_hash": "429b0140e7e5",
+      "text": "S: secure, aman."
+    },
+    "p034": {
+      "source_hash": "d83f8215dca9",
+      "text": "HTTPS: lalu lintas halaman web yang dienkripsi TLS."
+    },
+    "p035": {
+      "source_hash": "7eb5223e7ddd",
+      "text": "Enkripsi: isinya hanya dipahami kamu dan dia."
+    },
+    "p036": {
+      "source_hash": "7d3f39f39414",
+      "text": "Tutup saja,"
+    },
+    "p037": {
+      "source_hash": "ebb58a09260a",
+      "text": "beres?"
+    },
+    "p038": {
+      "source_hash": "67d33bed8e8c",
+      "text": "Ke orang yang tepat."
+    },
+    "p039": {
+      "source_hash": "b00c3d7b7f67",
+      "text": "Ada yang menyamar jadi gim di tengah,"
+    },
+    "p040": {
+      "source_hash": "22915cd739be",
+      "text": "rapat pun, dia yang terima."
+    },
+    "p041": {
+      "source_hash": "154f671a2090",
+      "text": "Dan tablet tanya \"alamat ini di mana\" dulu,"
+    },
+    "p042": {
+      "source_hash": "5e4726bc5efe",
+      "text": "jawabannya pun bisa diubah di jalan."
+    },
+    "p043": {
+      "source_hash": "232778e9e290",
+      "text": "Dari mana kutahu,"
+    },
+    "p044": {
+      "source_hash": "a711d0fbfdda",
+      "text": "itu benar gimnya?"
+    },
+    "p045": {
+      "source_hash": "525fc70e2253",
+      "text": "Situs bawa kartu: sertifikat."
+    },
+    "p046": {
+      "source_hash": "f9bc188f8259",
+      "text": "Ada nama situs, juga gambar cap khusus miliknya,"
+    },
+    "p047": {
+      "source_hash": "1df2bb822378",
+      "text": "cap itu hanya ia pegang."
+    },
+    "p048": {
+      "source_hash": "f5b8f537fc9e",
+      "text": "Browser cek: nama di kartu sama dengan alamat?"
+    },
+    "p049": {
+      "source_hash": "4420af03cc3c",
+      "text": "Penerbitnya?"
+    },
+    "p050": {
+      "source_hash": "78eab39ed2c3",
+      "text": "Bikin sendiri!"
+    },
+    "p051": {
+      "source_hash": "c0a5d81d8ce9",
+      "text": "Browser menolak. Harus dari lembaga penerbit."
+    },
+    "p052": {
+      "source_hash": "2368e2dfb000",
+      "text": "Lembaga penerbit gratis menulis caranya:"
+    },
+    "p053": {
+      "source_hash": "9553e2039a47",
+      "text": "misalnya taruh file pilihannya di tempat tetap di situsmu,"
+    },
+    "p054": {
+      "source_hash": "994408e4d3f4",
+      "text": "dicek serentak dari banyak sisi."
+    },
+    "p055": {
+      "source_hash": "2a49ab220018",
+      "text": "Seperti taruh kartu pilihan di lacimu."
+    },
+    "p056": {
+      "source_hash": "1fd819e3095a",
+      "text": "Apa dicek,"
+    },
+    "p057": {
+      "source_hash": "502d9b441fb9",
+      "text": "situsnya orang baik?"
+    },
+    "p058": {
+      "source_hash": "d56c4cda65bd",
+      "text": "Tidak. Yang dicek: alamat itu kamu kuasai?"
+    },
+    "p059": {
+      "source_hash": "ef6db27e8d03",
+      "text": "bukan baik-buruk orang atau isinya."
+    },
+    "p060": {
+      "source_hash": "e7fb4be76387",
+      "text": "Ah! Teman kirim tautan,"
+    },
+    "p061": {
+      "source_hash": "642f50b229cf",
+      "text": "katanya ada permata gratis!"
+    },
+    "p062": {
+      "source_hash": "0dd33a4574e8",
+      "text": "Itu juga HTTPS!"
+    },
+    "p063": {
+      "source_hash": "47e1935228e1",
+      "text": "Awas. Tim Chrome menulis:"
+    },
+    "p064": {
+      "source_hash": "7ce1ab9b0d1a",
+      "text": "situs phishing hampir semua HTTPS."
+    },
+    "p065": {
+      "source_hash": "c3b79bd26f76",
+      "text": "Phishing: menyamar, menipumu ketik sandi."
+    },
+    "p066": {
+      "source_hash": "792801bcb5ae",
+      "text": "Situs palsu bernama mirip pun bisa dapat kartu."
+    },
+    "p067": {
+      "source_hash": "73f4c583a1aa",
+      "text": "Dari dulu browser pasang gembok di alamat: terenkripsi."
+    },
+    "p068": {
+      "source_hash": "b427dc9f7469",
+      "text": "Aku"
+    },
+    "p069": {
+      "source_hash": "01acd63f2e13",
+      "text": "lihat ini!"
+    },
+    "p070": {
+      "source_hash": "aff070985817",
+      "text": "Riset mereka:"
+    },
+    "p071": {
+      "source_hash": "0f080ad3d0b4",
+      "text": "hanya 11 persen peserta paham artinya."
+    },
+    "p072": {
+      "source_hash": "5366fe180b45",
+      "text": "2023, diumumkan: gembok diganti ikon,"
+    },
+    "p073": {
+      "source_hash": "6a6bb3f747d1",
+      "text": "agar tak dikira situs baik."
+    },
+    "p074": {
+      "source_hash": "b2e5860d3bbf",
+      "text": "Kenapa browser percaya"
+    },
+    "p075": {
+      "source_hash": "a86219184cc6",
+      "text": "lembaga penerbit?"
+    },
+    "p076": {
+      "source_hash": "6f6db301b224",
+      "text": "Lembaga juga berkartu, dicap lapis atasnya."
+    },
+    "p077": {
+      "source_hash": "5e6dbdb537c8",
+      "text": "Lapis demi lapis ke atas, kartu paling atas namanya sertifikat akar."
+    },
+    "p078": {
+      "source_hash": "1d7448dc983d",
+      "text": "Browser atau ponsel bawa sertifikat akar,"
+    },
+    "p079": {
+      "source_hash": "c3a722444709",
+      "text": "kenal cap kepala sekolah, jadi tenang."
+    },
+    "p080": {
+      "source_hash": "47ef0092ccba",
+      "text": "Kalau lembaga"
+    },
+    "p081": {
+      "source_hash": "7d1a24356308",
+      "text": "keliru terbitkan kartu?"
+    },
+    "p082": {
+      "source_hash": "7f375891702a",
+      "text": "Browser Chrome, Safari minta"
+    },
+    "p083": {
+      "source_hash": "c984a15b46a8",
+      "text": "dicatat di buku publik."
+    },
+    "p084": {
+      "source_hash": "1e11b18eb865",
+      "text": "Hanya tambah, tak hapus, bebas baca."
+    },
+    "p085": {
+      "source_hash": "420d60731ff7",
+      "text": "Pemilik bisa langganan: kartu atas namaku,"
+    },
+    "p086": {
+      "source_hash": "ebd851f9de48",
+      "text": "begitu tercatat, ada kabar."
+    },
+    "p087": {
+      "source_hash": "18f43fe30eb0",
+      "text": "Kalau gagal,"
+    },
+    "p088": {
+      "source_hash": "4f01b2a87e0b",
+      "text": "terus?"
+    },
+    "p089": {
+      "source_hash": "1db0e6f1cb49",
+      "text": "Chrome misalnya: layar penuh, koneksi tak pribadi."
+    },
+    "p090": {
+      "source_hash": "58c933233ff6",
+      "text": "Katanya, masalah bisa di situs, jaringan, atau perangkatmu."
+    },
+    "p091": {
+      "source_hash": "f59e64bfe86d",
+      "text": "Oke, sudah pas."
+    },
+    "p092": {
+      "source_hash": "0f9ff212438e",
+      "text": "Cara segelnya,"
+    },
+    "p093": {
+      "source_hash": "505405816696",
+      "text": "biar tak dibuka?"
+    },
+    "p094": {
+      "source_hash": "ff5cbf054b72",
+      "text": "Sebelum menulis, perlu rahasia berdua saja."
+    },
+    "p095": {
+      "source_hash": "25fef5981cc5",
+      "text": "Tapi kirimannya"
+    },
+    "p096": {
+      "source_hash": "ace89faccd81",
+      "text": "semua lihat!"
+    },
+    "p097": {
+      "source_hash": "78f4082af2c6",
+      "text": "Ibarat campur cat. Sepakati warna yang semua tahu,"
+    },
+    "p098": {
+      "source_hash": "649c4cc514c4",
+      "text": "lalu tiap orang diam-diam tambah warna rahasianya."
+    },
+    "p099": {
+      "source_hash": "5f96cc89be8b",
+      "text": "Kirim campurannya; penerima tambah warnanya."
+    },
+    "p100": {
+      "source_hash": "ac7e588dc99a",
+      "text": "Akhirnya warna keduanya sama;"
+    },
+    "p101": {
+      "source_hash": "76904a9733bf",
+      "text": "perantara lihat separuh, tak bisa tiru."
+    },
+    "p102": {
+      "source_hash": "25ba75df94a4",
+      "text": "Ini perumpamaan, aslinya matematika. Tapi aturannya jelas:"
+    },
+    "p103": {
+      "source_hash": "ac4de42f936e",
+      "text": "pertama tukar data, lalu semuanya ditutup,"
+    },
+    "p104": {
+      "source_hash": "1a9b7afbb8fa",
+      "text": "kartu tadi pun dikirim tertutup."
+    },
+    "p105": {
+      "source_hash": "37680602f5d8",
+      "text": "Kalau semua direkam dulu,"
+    },
+    "p106": {
+      "source_hash": "9b2a79211caa",
+      "text": "dibongkar nanti?"
+    },
+    "p107": {
+      "source_hash": "94031c345e76",
+      "text": "Warna dibuang."
+    },
+    "p108": {
+      "source_hash": "04a08154d826",
+      "text": "Aturan: walau nanti cap situs dicuri,"
+    },
+    "p109": {
+      "source_hash": "a1838529621c",
+      "text": "asal rahasia dibuang, rekaman lama terkunci."
+    },
+    "p110": {
+      "source_hash": "44f7a967312b",
+      "text": "Tapi kartu"
+    },
+    "p111": {
+      "source_hash": "df9694d39614",
+      "text": "dikopi?"
+    },
+    "p112": {
+      "source_hash": "99a025f33a0c",
+      "text": "Bisa. Jadi kartu saja kurang, situs harus cap di tempat."
+    },
+    "p113": {
+      "source_hash": "b5fb0c1f8f23",
+      "text": "Peniru tanpa cap."
+    },
+    "p114": {
+      "source_hash": "3aee4a66c7fd",
+      "text": "Kalau perantara"
+    },
+    "p115": {
+      "source_hash": "30d8725a2267",
+      "text": "tukar warnanya?"
+    },
+    "p116": {
+      "source_hash": "8c4c0a2dc71a",
+      "text": "Cap situs ada di semuanya, warna juga."
+    },
+    "p117": {
+      "source_hash": "1da8d9b9c8d0",
+      "text": "Browser cocokkan gambar kartu;"
+    },
+    "p118": {
+      "source_hash": "f07c6109a3cb",
+      "text": "Warna diganti, cap tak cocok, putus."
+    },
+    "p119": {
+      "source_hash": "b919fd4e2053",
+      "text": "Terakhir, keduanya cek ulang semuanya:"
+    },
+    "p120": {
+      "source_hash": "d822de3fff3b",
+      "text": "yang kulihat sama dengan yang kamu lihat? Cocok, baru kirim surat asli."
+    },
+    "p121": {
+      "source_hash": "28716be7344d",
+      "text": "Tiap surat lalu ditutup warna rahasia kalian."
+    },
+    "p122": {
+      "source_hash": "6d4bc44dce94",
+      "text": "Diubah sedikit, surat tak terbuka; aturannya: langsung putus."
+    },
+    "p123": {
+      "source_hash": "902a797bebcf",
+      "text": "Amplop mencatat panjangnya;"
+    },
+    "p124": {
+      "source_hash": "9467029bdf8e",
+      "text": "ikut disegel: terlihat, tak bisa diubah."
+    },
+    "p125": {
+      "source_hash": "302a9c019594",
+      "text": "Kalau suratku"
+    },
+    "p126": {
+      "source_hash": "b90e45595ae9",
+      "text": "beli permata,"
+    },
+    "p127": {
+      "source_hash": "723fa530afa8",
+      "text": "dikirim ulang?"
+    },
+    "p128": {
+      "source_hash": "fc341badc049",
+      "text": "Surat bernomor, masing-masing dari nol, tambah satu."
+    },
+    "p129": {
+      "source_hash": "89685960cbe8",
+      "text": "Nomornya dicampur ke segel."
+    },
+    "p130": {
+      "source_hash": "d55c279876db",
+      "text": "Surat lama diulang, atau urutannya ditukar,"
+    },
+    "p131": {
+      "source_hash": "6d4110cea98b",
+      "text": "nomor salah, gagal."
+    },
+    "p132": {
+      "source_hash": "5b00d89fc08d",
+      "text": "Jadi tiap surat"
+    },
+    "p133": {
+      "source_hash": "4ac9d1178a60",
+      "text": "tak bisa ulang!"
+    },
+    "p134": {
+      "source_hash": "968f430aa1c1",
+      "text": "Pengecualiannya ditandai aturan: \"catatan penting\"."
+    },
+    "p135": {
+      "source_hash": "7602cd85eca2",
+      "text": "Apa itu?"
+    },
+    "p136": {
+      "source_hash": "553543ca8b09",
+      "text": "Pernah terhubung? Browser bisa pakai rahasia lalu,"
+    },
+    "p137": {
+      "source_hash": "ba453ee7c1fc",
+      "text": "surat awal duluan, hemat waktu."
+    },
+    "p138": {
+      "source_hash": "9e1444b6c979",
+      "text": "Kata aturan, surat ini tak dijamin anti-ulang;"
+    },
+    "p139": {
+      "source_hash": "0f37b328983b",
+      "text": "kalau diulang, pembelian bisa terjadi dua kali."
+    },
+    "p140": {
+      "source_hash": "57ecfbe36697",
+      "text": "Itu lubang?"
+    },
+    "p141": {
+      "source_hash": "ea817db2ca96",
+      "text": "Ya. Aturan menulis beberapa cara menangkisnya."
+    },
+    "p142": {
+      "source_hash": "1fec170346fd",
+      "text": "Di akhir, surat terakhir bilang: selesai."
+    },
+    "p143": {
+      "source_hash": "9394e984b262",
+      "text": "Putus di tengah, penerima tahu."
+    },
+    "p144": {
+      "source_hash": "d7bd6d4d2756",
+      "text": "Segel, nomor sudah ada,"
+    },
+    "p145": {
+      "source_hash": "d63276da9fb9",
+      "text": "orang luar"
+    },
+    "p146": {
+      "source_hash": "6331fdc77b32",
+      "text": "buta total, kan?"
+    },
+    "p147": {
+      "source_hash": "04c977acf9f4",
+      "text": "Masih sedikit. Ingat panjang di amplop?"
+    },
+    "p148": {
+      "source_hash": "b8490afffed4",
+      "text": "Tebal, seberapa sering, tetap tampak."
+    },
+    "p149": {
+      "source_hash": "d4af98736f5f",
+      "text": "Tebalnya,"
+    },
+    "p150": {
+      "source_hash": "1b8095ed3cb1",
+      "text": "bilang apa?"
+    },
+    "p151": {
+      "source_hash": "ab5abfc5e171",
+      "text": "Aturan: panjang, waktu kadang bocorkan kegiatan,"
+    },
+    "p152": {
+      "source_hash": "8526817723d4",
+      "text": "apalagi pilihan sedikit, misal situs videonya tetap."
+    },
+    "p153": {
+      "source_hash": "82683984a2e9",
+      "text": "Bisa diganjal kosong agar sama tebal;"
+    },
+    "p154": {
+      "source_hash": "7f707aa2cc48",
+      "text": "tapi takarannya tak diatur."
+    },
+    "p155": {
+      "source_hash": "ab23b3a03ce4",
+      "text": "Apa mereka tahu"
+    },
+    "p156": {
+      "source_hash": "223eb2eefe69",
+      "text": "aku ke situs mana?"
+    },
+    "p157": {
+      "source_hash": "49e13a5d08de",
+      "text": "Mungkin sekali. Di awal, browser sebut situs yang dicari,"
+    },
+    "p158": {
+      "source_hash": "e2e05accb87c",
+      "text": "nama ini biasanya tidak ditutup."
+    },
+    "p159": {
+      "source_hash": "e126ecac4372",
+      "text": "Seperti di amplop."
+    },
+    "p160": {
+      "source_hash": "41393d46b22b",
+      "text": "Bisa ditutup?"
+    },
+    "p161": {
+      "source_hash": "2b1f5709f5b3",
+      "text": "Maret 2026, sebuah aturan baru resmi terbit untuk itu:"
+    },
+    "p162": {
+      "source_hash": "3bf054473b66",
+      "text": "nama penerima masuk amplop lapisan dalam."
+    },
+    "p163": {
+      "source_hash": "b04f1a6b3261",
+      "text": "Tapi ia akui, belum cukup."
+    },
+    "p164": {
+      "source_hash": "8faf7b3c8147",
+      "text": "Mesin tujuan akhir surat masih terlihat;"
+    },
+    "p165": {
+      "source_hash": "7a1cffad8f55",
+      "text": "tapi mesinnya sering dibagi,"
+    },
+    "p166": {
+      "source_hash": "f23ed3bd09fa",
+      "text": "jadi nama di amplop petunjuk terjelas."
+    },
+    "p167": {
+      "source_hash": "5e678cbab737",
+      "text": "Ingat tanya \"alamat ini di mana\" tadi?"
+    },
+    "p168": {
+      "source_hash": "ab96c661fd88",
+      "text": "Tak disegel, nama pun tampak."
+    },
+    "p169": {
+      "source_hash": "91590cf4e717",
+      "text": "Lalu tautan"
+    },
+    "p170": {
+      "source_hash": "6207e140d4ee",
+      "text": "permata tadi..."
+    },
+    "p171": {
+      "source_hash": "a3419c95b4a9",
+      "text": "Terpenting: segel hanya urus jalan."
+    },
+    "p172": {
+      "source_hash": "d2a2e0600df0",
+      "text": "Begitu surat sampai, penerima bisa membaca semuanya."
+    },
+    "p173": {
+      "source_hash": "ee61cf48823e",
+      "text": "Kalau penipu, HTTPS antar sandimu rapi ke dia."
+    },
+    "p174": {
+      "source_hash": "635e3b5108cd",
+      "text": "Cara bedakannya?"
+    },
+    "p175": {
+      "source_hash": "823a5d7f35b2",
+      "text": "Bantuan Chrome juga: walau koneksi aman,"
+    },
+    "p176": {
+      "source_hash": "a5a00a69cb84",
+      "text": "lihat nama di bilah alamat, situs tujuanmu?"
+    },
+    "p177": {
+      "source_hash": "53edf7549339",
+      "text": "Aku lihat!"
+    },
+    "p178": {
+      "source_hash": "b8c39e07a2b3",
+      "text": "Lebih satu huruf!"
+    },
+    "p179": {
+      "source_hash": "9d0e52451533",
+      "text": "Ya, segel tak urus, lihat sendiri."
+    },
+    "p180": {
+      "source_hash": "c997e773f825",
+      "text": "Jadi satu S, beda apa bagi sandimu?"
+    },
+    "p181": {
+      "source_hash": "36d742bcb996",
+      "text": "Oh begitu!"
+    },
+    "p182": {
+      "source_hash": "b4a835294305",
+      "text": "Surat tersegel,"
+    },
+    "p183": {
+      "source_hash": "9143b223f739",
+      "text": "teman teruskan, tapi tak bisa baca,"
+    },
+    "p184": {
+      "source_hash": "616bf2174fb3",
+      "text": "nama itu tak tertiru!"
+    },
+    "p185": {
+      "source_hash": "495a669350df",
+      "text": "Kurasa ajaibnya: tiap hari kau pakai segel ini,"
+    },
+    "p186": {
+      "source_hash": "c0ee9b730ede",
+      "text": "tak pernah kau lihat."
+    },
+    "p187": {
+      "source_hash": "b4f348522f85",
+      "text": "Bilang Mama,"
+    },
+    "p188": {
+      "source_hash": "b8a9ebbacfcd",
+      "text": "tautan itu palsu!"
+    },
+    "p189": {
+      "source_hash": "23c35e85a11e",
+      "text": "Sandi? Cek nama dulu!"
+    },
+    "p190": {
+      "source_hash": "7e4f77703946",
+      "text": "Pernah dapat alamat tiruan?"
+    },
+    "p191": {
+      "source_hash": "fe508e80b52e",
+      "text": "Komentar ya!"
+    },
+    "p192": {
+      "source_hash": "88de677d4daa",
+      "text": "Cari 'kenapa' sehari-hari, subscribe Kantor Oh Begitu."
+    }
+  }
+}

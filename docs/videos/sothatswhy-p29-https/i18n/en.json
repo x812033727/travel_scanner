@@ -1,0 +1,810 @@
+{
+  "title": "One extra S in the URL: what changes for your data on the way? | So That's Why",
+  "description": "Little Q is at a café, logging into a game on the free Wi-Fi, and Mom tells her to check first that the address starts with https. But it's just one extra S, isn't it? Doesn't her password still have to be sent out either way?\n\nIn this episode, the Chief and Little Q think it through with \"passing a letter in class\": the letter goes through several classmates' hands, just like your data goes through the café's equipment and the internet company. First they look at how you can be sure the other side really is that website (the site's ID card, how a free certificate authority only checks whether you control the address, the chain of stamps up to the root certificates built into your browser, and the public logbooks). Then they see how the two sides mix up a secret only they know, right in front of everyone, how every letter gets sealed and numbered, and the exception the spec itself admits. Finally, what the seal doesn't cover: how thick the letters are, which website they go to, and most important of all, HTTPS only protects the trip. It doesn't promise the website is a good one; scam sites have it too.\n\nMixing paint is only a comparison; the real method is math. The illustrations were made with AI; they are diagrams. The source of every claim is listed in the references below.\n\nInformation as of 2026-11-12",
+  "tags": [
+    "HTTPS",
+    "TLS",
+    "internet safety",
+    "certificates",
+    "encryption",
+    "phishing sites",
+    "science for kids",
+    "So That's Why"
+  ],
+  "thumbnail": {
+    "headline": "Extra S\n**so what?**",
+    "sub": "Who sees your password?"
+  },
+  "chapters": {
+    "cafe-tablet": "One extra S at the café",
+    "kid-direct-guess": "Your password passes many hands",
+    "chief-impostor": "Is it really the game company?",
+    "chief-secret": "Mix a color, then seal the letter",
+    "chief-length": "What a sealed letter still shows",
+    "chief-your-turn": "Little Q sees it clearly"
+  },
+  "source_hashes": {
+    "chapters": {
+      "cafe-tablet": "d50c3a414bf2",
+      "kid-direct-guess": "5f0085e0d948",
+      "chief-impostor": "89c916008f4a",
+      "chief-secret": "fafa3f686f12",
+      "chief-length": "5c251a984970",
+      "chief-your-turn": "d02cd044fdab"
+    },
+    "title": "15d6c5002051",
+    "description": "e4bbb5cffeb8",
+    "tags": "9d0c606699ab",
+    "thumbnail": "a3b7d61299b4"
+  },
+  "lines": {
+    "p001": {
+      "source_hash": "77881511d3ae",
+      "text": "I'm at a café!"
+    },
+    "p002": {
+      "source_hash": "471658e9db6e",
+      "text": "Free Wi-Fi on my tablet, for a game login."
+    },
+    "p003": {
+      "source_hash": "373de90ab3d3",
+      "text": "Mom said URLs"
+    },
+    "p004": {
+      "source_hash": "cddb71c91ec6",
+      "text": "must start with HTTPS before passwords."
+    },
+    "p005": {
+      "source_hash": "f052778dc2b9",
+      "text": "But it's just one extra S, right?"
+    },
+    "p006": {
+      "source_hash": "acc022b92588",
+      "text": "One S, no big deal?"
+    },
+    "p007": {
+      "source_hash": "7cca83e5d5e4",
+      "text": "My password still gets sent out!"
+    },
+    "p008": {
+      "source_hash": "79b087605a5e",
+      "text": "The S changes more for your password than you guess;"
+    },
+    "p009": {
+      "source_hash": "e5a728d64c8b",
+      "text": "but some things, it ignores."
+    },
+    "p010": {
+      "source_hash": "2e380f9700cb",
+      "text": "Even the little lock by the URL fools many."
+    },
+    "p011": {
+      "source_hash": "7e6bafa8fc0a",
+      "text": "So what's different?"
+    },
+    "p012": {
+      "source_hash": "c9b09ad251cf",
+      "text": "The trip differs?"
+    },
+    "p013": {
+      "source_hash": "e6bcb7926c6a",
+      "text": "Not straight to the game company?"
+    },
+    "p014": {
+      "source_hash": "eb8e060fe97e",
+      "text": "No. First to the café's Wi-Fi box,"
+    },
+    "p015": {
+      "source_hash": "3a107da667f4",
+      "text": "then to the internet company,"
+    },
+    "p016": {
+      "source_hash": "4276ee5d9281",
+      "text": "through many relay computers, to the game company."
+    },
+    "p017": {
+      "source_hash": "bcecc1a4b076",
+      "text": "Those boxes"
+    },
+    "p018": {
+      "source_hash": "96a54b0f0935",
+      "text": "can they see it?"
+    },
+    "p019": {
+      "source_hash": "d6c2c99f4af1",
+      "text": "Class notes!"
+    },
+    "p020": {
+      "source_hash": "90d221914ef0",
+      "text": "You pass a letter to your best friend across the room."
+    },
+    "p021": {
+      "source_hash": "ebad3769172e",
+      "text": "It passes many classmates."
+    },
+    "p022": {
+      "source_hash": "1c0ffac7138c",
+      "text": "The café box, internet company: those classmates."
+    },
+    "p023": {
+      "source_hash": "664bc9b909d3",
+      "text": "If it isn't sealed..."
+    },
+    "p024": {
+      "source_hash": "df76c962fc08",
+      "text": "Chrome browser help: no private connection,"
+    },
+    "p025": {
+      "source_hash": "5e96c586be67",
+      "text": "others may see or change what you send."
+    },
+    "p026": {
+      "source_hash": "2ca3f6efda0f",
+      "text": "My classmates"
+    },
+    "p027": {
+      "source_hash": "ccb637a9eb38",
+      "text": "are nice!"
+    },
+    "p028": {
+      "source_hash": "602d9fa06022",
+      "text": "Most are. But you can't pick who passes it."
+    },
+    "p029": {
+      "source_hash": "9c40a1f7ef8a",
+      "text": "So the rules behind this S are called TLS."
+    },
+    "p030": {
+      "source_hash": "fc89e7bacdd2",
+      "text": "TLS spec: protection must hold even if those en route fully run the network"
+    },
+    "p031": {
+      "source_hash": "1640142ce803",
+      "text": "So what does"
+    },
+    "p032": {
+      "source_hash": "6e839b9923b3",
+      "text": "S mean?"
+    },
+    "p033": {
+      "source_hash": "429b0140e7e5",
+      "text": "S means \"secure.\""
+    },
+    "p034": {
+      "source_hash": "d83f8215dca9",
+      "text": "HTTPS is web traffic, encrypted with TLS."
+    },
+    "p035": {
+      "source_hash": "7eb5223e7ddd",
+      "text": "Encrypting: only you and the other side can read it."
+    },
+    "p036": {
+      "source_hash": "7d3f39f39414",
+      "text": "So sealing"
+    },
+    "p037": {
+      "source_hash": "ebb58a09260a",
+      "text": "does it?"
+    },
+    "p038": {
+      "source_hash": "67d33bed8e8c",
+      "text": "Yes, the right one."
+    },
+    "p039": {
+      "source_hash": "b00c3d7b7f67",
+      "text": "If a fake game company gets it midway,"
+    },
+    "p040": {
+      "source_hash": "22915cd739be",
+      "text": "sealed or not, it's theirs."
+    },
+    "p041": {
+      "source_hash": "154f671a2090",
+      "text": "First the tablet asks a desk where the site is,"
+    },
+    "p042": {
+      "source_hash": "5e4726bc5efe",
+      "text": "and that reply could be tampered with too."
+    },
+    "p043": {
+      "source_hash": "232778e9e290",
+      "text": "Then how do I know"
+    },
+    "p044": {
+      "source_hash": "a711d0fbfdda",
+      "text": "it's the game company?"
+    },
+    "p045": {
+      "source_hash": "525fc70e2253",
+      "text": "Sites show an ID: a certificate."
+    },
+    "p046": {
+      "source_hash": "f9bc188f8259",
+      "text": "It has the site's name and its own stamp's pattern,"
+    },
+    "p047": {
+      "source_hash": "1df2bb822378",
+      "text": "a stamp only that site holds."
+    },
+    "p048": {
+      "source_hash": "f5b8f537fc9e",
+      "text": "The browser checks: name same as the address bar?"
+    },
+    "p049": {
+      "source_hash": "4420af03cc3c",
+      "text": "Who issues it?"
+    },
+    "p050": {
+      "source_hash": "78eab39ed2c3",
+      "text": "Just make your own!"
+    },
+    "p051": {
+      "source_hash": "c0a5d81d8ce9",
+      "text": "Browsers reject homemade ones. You need an issuer."
+    },
+    "p052": {
+      "source_hash": "2368e2dfb000",
+      "text": "One free issuer's site explains how it checks:"
+    },
+    "p053": {
+      "source_hash": "9553e2039a47",
+      "text": "say, you put a file it picks in a set spot on your site,"
+    },
+    "p054": {
+      "source_hash": "994408e4d3f4",
+      "text": "checks from many spots at once."
+    },
+    "p055": {
+      "source_hash": "2a49ab220018",
+      "text": "Like a given card in your own desk drawer."
+    },
+    "p056": {
+      "source_hash": "1fd819e3095a",
+      "text": "Does it check"
+    },
+    "p057": {
+      "source_hash": "502d9b441fb9",
+      "text": "if the site is good?"
+    },
+    "p058": {
+      "source_hash": "d56c4cda65bd",
+      "text": "No. It checks whether you control that address,"
+    },
+    "p059": {
+      "source_hash": "ef6db27e8d03",
+      "text": "not if they're good or content's true."
+    },
+    "p060": {
+      "source_hash": "e7fb4be76387",
+      "text": "Oh! A classmate sent a link"
+    },
+    "p061": {
+      "source_hash": "642f50b229cf",
+      "text": "says click for free gems!"
+    },
+    "p062": {
+      "source_hash": "0dd33a4574e8",
+      "text": "It's HTTPS too!"
+    },
+    "p063": {
+      "source_hash": "47e1935228e1",
+      "text": "Careful. The Chrome team wrote:"
+    },
+    "p064": {
+      "source_hash": "7ce1ab9b0d1a",
+      "text": "almost all phishing sites use HTTPS."
+    },
+    "p065": {
+      "source_hash": "c3b79bd26f76",
+      "text": "Phishing sites pose as others for passwords."
+    },
+    "p066": {
+      "source_hash": "792801bcb5ae",
+      "text": "Scammers get IDs for look-alike fake sites too."
+    },
+    "p067": {
+      "source_hash": "73f4c583a1aa",
+      "text": "Browsers long showed a lock by the URL: encrypted connection."
+    },
+    "p068": {
+      "source_hash": "b427dc9f7469",
+      "text": "I saw"
+    },
+    "p069": {
+      "source_hash": "01acd63f2e13",
+      "text": "that lock!"
+    },
+    "p070": {
+      "source_hash": "aff070985817",
+      "text": "Their study found"
+    },
+    "p071": {
+      "source_hash": "0f080ad3d0b4",
+      "text": "only 11 percent of testers really got it."
+    },
+    "p072": {
+      "source_hash": "5366fe180b45",
+      "text": "In 2023 they announced replacing it,"
+    },
+    "p073": {
+      "source_hash": "6a6bb3f747d1",
+      "text": "so lock won't mean \"good site.\""
+    },
+    "p074": {
+      "source_hash": "b2e5860d3bbf",
+      "text": "Then why do browsers trust"
+    },
+    "p075": {
+      "source_hash": "a86219184cc6",
+      "text": "the ID issuers?"
+    },
+    "p076": {
+      "source_hash": "6f6db301b224",
+      "text": "Issuers have IDs too, stamped by the layer above."
+    },
+    "p077": {
+      "source_hash": "5e6dbdb537c8",
+      "text": "Layer stamps layer, up to the top one, called the root certificate."
+    },
+    "p078": {
+      "source_hash": "1d7448dc983d",
+      "text": "Browsers and phones ship with root certificates"
+    },
+    "p079": {
+      "source_hash": "c3a722444709",
+      "text": "like how you know the principal's stamp."
+    },
+    "p080": {
+      "source_hash": "47ef0092ccba",
+      "text": "What if an issuer"
+    },
+    "p081": {
+      "source_hash": "7d1a24356308",
+      "text": "gives out a wrong ID?"
+    },
+    "p082": {
+      "source_hash": "7f375891702a",
+      "text": "Now Chrome and Safari browsers"
+    },
+    "p083": {
+      "source_hash": "c984a15b46a8",
+      "text": "require public logs."
+    },
+    "p084": {
+      "source_hash": "1e11b18eb865",
+      "text": "Add-only, no deleting, anyone can look."
+    },
+    "p085": {
+      "source_hash": "420d60731ff7",
+      "text": "Owners can subscribe: if one's issued in my name"
+    },
+    "p086": {
+      "source_hash": "ebd851f9de48",
+      "text": "and logged, I'm notified."
+    },
+    "p087": {
+      "source_hash": "18f43fe30eb0",
+      "text": "Checks fail?"
+    },
+    "p088": {
+      "source_hash": "4f01b2a87e0b",
+      "text": "Then?"
+    },
+    "p089": {
+      "source_hash": "1db0e6f1cb49",
+      "text": "Chrome, say, warns full page: connection not private."
+    },
+    "p090": {
+      "source_hash": "58c933233ff6",
+      "text": "Its help says the problem may be the site, network, or device."
+    },
+    "p091": {
+      "source_hash": "f59e64bfe86d",
+      "text": "OK, right person."
+    },
+    "p092": {
+      "source_hash": "0f9ff212438e",
+      "text": "How to seal"
+    },
+    "p093": {
+      "source_hash": "505405816696",
+      "text": "so none can open?"
+    },
+    "p094": {
+      "source_hash": "ff5cbf054b72",
+      "text": "First, both sides need a secret only they know."
+    },
+    "p095": {
+      "source_hash": "25fef5981cc5",
+      "text": "But anything sent"
+    },
+    "p096": {
+      "source_hash": "ace89faccd81",
+      "text": "everyone sees!"
+    },
+    "p097": {
+      "source_hash": "78f4082af2c6",
+      "text": "Think mixing paint. First agree on a color everyone knows,"
+    },
+    "p098": {
+      "source_hash": "649c4cc514c4",
+      "text": "then each secretly adds a color only they know."
+    },
+    "p099": {
+      "source_hash": "5f96cc89be8b",
+      "text": "Send the mix over; the other adds their own color."
+    },
+    "p100": {
+      "source_hash": "ac7e588dc99a",
+      "text": "Both end up with the same color;"
+    },
+    "p101": {
+      "source_hash": "76904a9733bf",
+      "text": "classmates saw half-mixes; can't match."
+    },
+    "p102": {
+      "source_hash": "25ba75df94a4",
+      "text": "That's just a comparison; really it's math. But the spec is clear:"
+    },
+    "p103": {
+      "source_hash": "ac4de42f936e",
+      "text": "step one swaps this, then everything is sealed,"
+    },
+    "p104": {
+      "source_hash": "1a9b7afbb8fa",
+      "text": "even that ID card is sent sealed."
+    },
+    "p105": {
+      "source_hash": "37680602f5d8",
+      "text": "What if someone records it all"
+    },
+    "p106": {
+      "source_hash": "9b2a79211caa",
+      "text": "to crack later?"
+    },
+    "p107": {
+      "source_hash": "94031c345e76",
+      "text": "Used once, gone."
+    },
+    "p108": {
+      "source_hash": "04a08154d826",
+      "text": "Spec: even if the site's stamp is stolen,"
+    },
+    "p109": {
+      "source_hash": "a1838529621c",
+      "text": "once it's gone, old recordings stay shut."
+    },
+    "p110": {
+      "source_hash": "44f7a967312b",
+      "text": "But an ID can"
+    },
+    "p111": {
+      "source_hash": "df9694d39614",
+      "text": "be copied!"
+    },
+    "p112": {
+      "source_hash": "99a025f33a0c",
+      "text": "Yes. So the ID's not enough; the site stamps right then."
+    },
+    "p113": {
+      "source_hash": "b5fb0c1f8f23",
+      "text": "Copies can't stamp."
+    },
+    "p114": {
+      "source_hash": "3aee4a66c7fd",
+      "text": "What if a classmate"
+    },
+    "p115": {
+      "source_hash": "30d8725a2267",
+      "text": "swaps the colors?"
+    },
+    "p116": {
+      "source_hash": "8c4c0a2dc71a",
+      "text": "The site stamps all that, colors included."
+    },
+    "p117": {
+      "source_hash": "1da8d9b9c8d0",
+      "text": "The browser checks the ID pattern;"
+    },
+    "p118": {
+      "source_hash": "f07c6109a3cb",
+      "text": "swapped colors won't match: cut off."
+    },
+    "p119": {
+      "source_hash": "b919fd4e2053",
+      "text": "Last, both sides check the whole exchange:"
+    },
+    "p120": {
+      "source_hash": "d822de3fff3b",
+      "text": "did I see what you saw? Only if it matches do real letters go out."
+    },
+    "p121": {
+      "source_hash": "28716be7344d",
+      "text": "Then each letter is sealed with your shared color."
+    },
+    "p122": {
+      "source_hash": "6d4bc44dce94",
+      "text": "Change a tiny bit, it won't open; the spec says cut off."
+    },
+    "p123": {
+      "source_hash": "902a797bebcf",
+      "text": "The envelope shows length;"
+    },
+    "p124": {
+      "source_hash": "9467029bdf8e",
+      "text": "it's in the seal too: seen, not changed."
+    },
+    "p125": {
+      "source_hash": "302a9c019594",
+      "text": "What if someone copies"
+    },
+    "p126": {
+      "source_hash": "b90e45595ae9",
+      "text": "my \"buy gems\""
+    },
+    "p127": {
+      "source_hash": "723fa530afa8",
+      "text": "and resends it?"
+    },
+    "p128": {
+      "source_hash": "fc341badc049",
+      "text": "Letters are numbered; each side counts from zero, plus one."
+    },
+    "p129": {
+      "source_hash": "89685960cbe8",
+      "text": "The number's mixed into the seal."
+    },
+    "p130": {
+      "source_hash": "d55c279876db",
+      "text": "If an old letter is resent, or order is swapped,"
+    },
+    "p131": {
+      "source_hash": "6d4110cea98b",
+      "text": "no match: shut."
+    },
+    "p132": {
+      "source_hash": "5b00d89fc08d",
+      "text": "So no letter can"
+    },
+    "p133": {
+      "source_hash": "4ac9d1178a60",
+      "text": "be resent!"
+    },
+    "p134": {
+      "source_hash": "968f430aa1c1",
+      "text": "One exception; the spec flags it \"important note.\""
+    },
+    "p135": {
+      "source_hash": "7602cd85eca2",
+      "text": "What's that?"
+    },
+    "p136": {
+      "source_hash": "553543ca8b09",
+      "text": "Connected before? The browser can reuse last time's secret"
+    },
+    "p137": {
+      "source_hash": "ba453ee7c1fc",
+      "text": "to send letter one a trip early."
+    },
+    "p138": {
+      "source_hash": "9e1444b6c979",
+      "text": "Spec: no guarantee that early letter isn't resent;"
+    },
+    "p139": {
+      "source_hash": "0f37b328983b",
+      "text": "if copied and resent, a purchase might happen twice."
+    },
+    "p140": {
+      "source_hash": "57ecfbe36697",
+      "text": "That's a hole?"
+    },
+    "p141": {
+      "source_hash": "ea817db2ca96",
+      "text": "Yes. So the spec lists ways for sites to block it."
+    },
+    "p142": {
+      "source_hash": "1fec170346fd",
+      "text": "And at the end, the last letter says: done."
+    },
+    "p143": {
+      "source_hash": "9394e984b262",
+      "text": "so a cut midway can be spotted."
+    },
+    "p144": {
+      "source_hash": "d7bd6d4d2756",
+      "text": "Seals, numbers, all set,"
+    },
+    "p145": {
+      "source_hash": "d63276da9fb9",
+      "text": "so they"
+    },
+    "p146": {
+      "source_hash": "6331fdc77b32",
+      "text": "can't see a thing?"
+    },
+    "p147": {
+      "source_hash": "04c977acf9f4",
+      "text": "Some. Remember the length on the envelope?"
+    },
+    "p148": {
+      "source_hash": "b8490afffed4",
+      "text": "Thickness, how often: still visible."
+    },
+    "p149": {
+      "source_hash": "d4af98736f5f",
+      "text": "Thickness?"
+    },
+    "p150": {
+      "source_hash": "1b8095ed3cb1",
+      "text": "Shows what?"
+    },
+    "p151": {
+      "source_hash": "ab5abfc5e171",
+      "text": "Spec: size, timing can sometimes hint what you do,"
+    },
+    "p152": {
+      "source_hash": "8526817723d4",
+      "text": "especially with few choices, like a site of fixed videos."
+    },
+    "p153": {
+      "source_hash": "82683984a2e9",
+      "text": "Sites can pad with blanks to one size;"
+    },
+    "p154": {
+      "source_hash": "7f707aa2cc48",
+      "text": "but the spec sets no amount."
+    },
+    "p155": {
+      "source_hash": "ab23b3a03ce4",
+      "text": "So do they know"
+    },
+    "p156": {
+      "source_hash": "223eb2eefe69",
+      "text": "which site I talk to?"
+    },
+    "p157": {
+      "source_hash": "49e13a5d08de",
+      "text": "Very likely. At the start, the browser says which site it wants,"
+    },
+    "p158": {
+      "source_hash": "e2e05accb87c",
+      "text": "and that name is usually not sealed."
+    },
+    "p159": {
+      "source_hash": "e126ecac4372",
+      "text": "Like the addressee."
+    },
+    "p160": {
+      "source_hash": "41393d46b22b",
+      "text": "Seal it too?"
+    },
+    "p161": {
+      "source_hash": "2b1f5709f5b3",
+      "text": "In March 2026, a new spec was officially published to do exactly that:"
+    },
+    "p162": {
+      "source_hash": "3bf054473b66",
+      "text": "putting the addressee in an inner envelope."
+    },
+    "p163": {
+      "source_hash": "b04f1a6b3261",
+      "text": "It says that's not enough."
+    },
+    "p164": {
+      "source_hash": "8faf7b3c8147",
+      "text": "Which site machine it reaches still shows en route;"
+    },
+    "p165": {
+      "source_hash": "7a1cffad8f55",
+      "text": "but many sites share one,"
+    },
+    "p166": {
+      "source_hash": "f23ed3bd09fa",
+      "text": "so the envelope name is the clearest clue."
+    },
+    "p167": {
+      "source_hash": "5e678cbab737",
+      "text": "Remember asking \"where is this address\"?"
+    },
+    "p168": {
+      "source_hash": "ab96c661fd88",
+      "text": "Unsealed, it shows the name too."
+    },
+    "p169": {
+      "source_hash": "91590cf4e717",
+      "text": "So that"
+    },
+    "p170": {
+      "source_hash": "6207e140d4ee",
+      "text": "free gems link..."
+    },
+    "p171": {
+      "source_hash": "a3419c95b4a9",
+      "text": "Key point: the seal only covers the trip."
+    },
+    "p172": {
+      "source_hash": "d2a2e0600df0",
+      "text": "Once the letter arrives, the other side can read all of it."
+    },
+    "p173": {
+      "source_hash": "ee61cf48823e",
+      "text": "Scammer on the other end? HTTPS hands them your password."
+    },
+    "p174": {
+      "source_hash": "635e3b5108cd",
+      "text": "So how do I tell?"
+    },
+    "p175": {
+      "source_hash": "823a5d7f35b2",
+      "text": "Chrome's help says: even on secure connections,"
+    },
+    "p176": {
+      "source_hash": "a5a00a69cb84",
+      "text": "check the address bar name is the site you want."
+    },
+    "p177": {
+      "source_hash": "53edf7549339",
+      "text": "I see it!"
+    },
+    "p178": {
+      "source_hash": "b8c39e07a2b3",
+      "text": "An extra letter!"
+    },
+    "p179": {
+      "source_hash": "9d0e52451533",
+      "text": "Right. No seal covers that; you check."
+    },
+    "p180": {
+      "source_hash": "c997e773f825",
+      "text": "So what does the S change for your password?"
+    },
+    "p181": {
+      "source_hash": "36d742bcb996",
+      "text": "So that's why!"
+    },
+    "p182": {
+      "source_hash": "b4a835294305",
+      "text": "Like the sealed one,"
+    },
+    "p183": {
+      "source_hash": "9143b223f739",
+      "text": "classmates pass it but can't read it,"
+    },
+    "p184": {
+      "source_hash": "616bf2174fb3",
+      "text": "or fake that name!"
+    },
+    "p185": {
+      "source_hash": "495a669350df",
+      "text": "Well said. I love that you use this seal every day,"
+    },
+    "p186": {
+      "source_hash": "c0ee9b730ede",
+      "text": "yet never looked at."
+    },
+    "p187": {
+      "source_hash": "b4f348522f85",
+      "text": "I'll tell Mom"
+    },
+    "p188": {
+      "source_hash": "b8a9ebbacfcd",
+      "text": "that link is fake!"
+    },
+    "p189": {
+      "source_hash": "23c35e85a11e",
+      "text": "Next time, I check names!"
+    },
+    "p190": {
+      "source_hash": "7e4f77703946",
+      "text": "Ever got a fake look-alike URL?"
+    },
+    "p191": {
+      "source_hash": "fe508e80b52e",
+      "text": "Tell us!"
+    },
+    "p192": {
+      "source_hash": "88de677d4daa",
+      "text": "Find life's everyday whys with us. Subscribe to So That's Why."
+    }
+  }
+}
