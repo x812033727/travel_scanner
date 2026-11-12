@@ -114,7 +114,7 @@ Fisk 翻到協議最後一頁，念：「Signed, Nora Whitlock. The house, the a
 | c06 | 近景、側面、固定；直式，臉在上三分之一；**鏡頭在門的側邊，玻璃只見黑色鋼框的邊**；前景左緣是黑色門框（虛焦） | Nora（`discharge`），`a camel wool coat with deep pockets, worn open`；側臉朝畫面左的鎖；金光從門裡穿出來照在她臉上；眉頭擰緊往上提、眼睛睜大、嘴唇張開一點、呼吸一頓，`no smile at any moment, until the last frame` | 第一格她的右手已經空著垂在身側；她的眼睛從鎖往上抬，看向門玻璃裡面；剪在眼睛抬到一半；嘴閉著；最後：她的眼睛看著門裡 | — | 約 2.5 秒 |
 | c07 | 中景、固定；**鏡頭在門框側邊、從門外斜拍進玻璃牆與門框的接縫**：玻璃只見邊、沒有正對鏡頭的一大片玻璃；**第一格就是門裡的玄關**；直式，前景左緣是黑色鋼框的邊（虛焦） | 門裡：淺橡木地板的玄關，再往裡是客廳的金光；Fisk（灰色西裝、往後梳的灰棕髮、金框眼鏡、黑色皮鞋）從玄關深處朝門走來，逆光；左腋下夾著 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show`，左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`，左手捏著 `a thin stack of white papers held by a black binder clip, a small yellow tab sticking out of one edge, held so only the backs or edges of the pages show`, in his left hand，右手 `a black fountain pen with a gold clip, as long as his hand`, in his right hand；他看著畫面外門口的 Nora、不看鏡頭；律師臉：`brows still, eyes fixed on her through his gold-rimmed glasses, mouth corners flat, chin slightly raised, a polite lawyer's face, no teeth, no smile at any moment, until the last frame` | Fisk 不快不慢地走到門前，右手伸向門把；剪在手快碰到門把；嘴閉著；最後：他站在門內、右手在門把上 | — | 約 2.5 秒 |
 | c08 | 直式過肩、固定；從門內 Fisk 的**右肩後**拍（他的右肩與後腦在畫框左下、虛焦，不露臉），畫面右是門外門墊上的 Nora | 共兩人。前景左下：Fisk（灰色西裝）的右肩與後腦，右手捏著 `a black fountain pen with a gold clip, as long as his hand`, in his right hand，同一隻手壓在 `a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched` 的把手上；畫面右：Nora（`discharge`、灰色軟拖鞋）站在門檻外、石台頂上的門墊上，`a camel wool coat with deep pockets, worn open`，`a plain white plastic drawstring bag with no print, about the size of a bed pillow, soft and half full`, in her left hand；身後是金色的碎石前庭與草坡（門外沒有海、沒有別的房子）；她看著畫面左的他：眉頭一跳、眼睛睜大、嘴唇微張、往後縮半步，`no smile at any moment, until the last frame` | Fisk 壓下把手，把門往屋裡拉開；剪在門轉到一半；兩人都嘴閉著；最後：門往裡開了一半，Nora 站在門墊上 | — | 約 2.5 秒 |
-| c09 | 近景、慢推（從胸上推到肩上）；從門外拍，他在門框裡；直式，臉在上三分之一；前景右緣是往裡開著的門板邊（虛焦） | at the right edge of the frame, out of focus, the edge of the door standing open inward, `a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched`；Fisk（灰色西裝、金框眼鏡），站在門內，`behind him the pale oak entry dissolving into an out-of-focus warm gold glow, the sun itself out of frame, his face in soft, steady warm light reflected from the gold forecourt, no hard backlight on his face`；左腋下 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show`，左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`，左手 `a thin stack of white papers held by a black binder clip, a small yellow tab sticking out of one edge, held so only the backs or edges of the pages show`, in his left hand，右手 `a black fountain pen with a gold clip, as long as his hand`, in his right hand；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；律師臉（見〈欄位怎麼讀〉） | Fisk 微微頷首，嘴在說話（慢、客氣）；說完下巴收回，嘴閉上；最後：他站在門內看著她 | Fisk（慢、客氣，像在念公文）：Mrs. Whitlock. Leonard Fisk, Grant's attorney.（Whitlock 太太。Leonard Fisk，Grant 的律師）（原聲） | 約 3.5 秒 |
+| c09 | 近景、慢推（從胸上推到肩上）；從門外拍，他在門框裡；直式，臉在上三分之一；前景右緣是往裡開著的門板邊（虛焦） | `at the right edge of the frame, out of focus, the edge of the door standing open inward,` `a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched`；Fisk（灰色西裝、金框眼鏡），站在門內，`behind him the pale oak entry dissolving into an out-of-focus warm gold glow, the sun itself out of frame, his face in soft, steady warm light reflected from the gold forecourt, no hard backlight on his face`；左腋下 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show`，左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`，左手 `a thin stack of white papers held by a black binder clip, a small yellow tab sticking out of one edge, held so only the backs or edges of the pages show`, in his left hand，右手 `a black fountain pen with a gold clip, as long as his hand`, in his right hand；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；律師臉（見〈欄位怎麼讀〉） | Fisk 微微頷首，嘴在說話（慢、客氣）；說完下巴收回，嘴閉上；最後：他站在門內看著她 | Fisk（慢、客氣，像在念公文）：Mrs. Whitlock. Leonard Fisk, Grant's attorney.（Whitlock 太太。Leonard Fisk，Grant 的律師）（原聲） | 約 3.5 秒 |
 | c10 | 中近景、固定；從門外拍，他在門框裡；直式，頭頂留門框，下緣到他的腰；同一扇玻璃大門 | Fisk（同上），`behind him the pale oak entry dissolving into an out-of-focus warm gold glow, the sun itself out of frame, his face in soft, steady warm light reflected from the gold forecourt, no hard backlight on his face`；畫面右緣往裡開著的門板上 `a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched`；左腋下 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show`，左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`；左手捏著 `a thin stack of white papers held by a black binder clip, a small yellow tab sticking out of one edge, held so only the backs or edges of the pages show`, in his left hand；右手 `a black fountain pen with a gold clip, as long as his hand`, in his right hand；四分之三側臉朝畫面右的 Nora；律師臉 | Fisk 把左手那疊白紙舉到胸前（紙背朝鏡頭、黃色標籤露在邊上），嘴在說話；說完紙停在胸前，嘴閉上；最後：離婚文件舉在他胸前 | Fisk（慢、客氣）：Two documents. One for you to sign.（兩份文件。一份給您簽）（原聲） | 約 3.5 秒 |
 | c11 | 中近景、慢推（從腰上推到胸上）；從門外拍，他在門框裡；直式；同一扇玻璃大門 | Fisk（同上），`behind him the pale oak entry dissolving into an out-of-focus warm gold glow, the sun itself out of frame, his face in soft, steady warm light reflected from the gold forecourt, no hard backlight on his face`；畫面右緣往裡開著的門板上 `a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched`；離婚文件放低在左手（`a thin stack of white papers held by a black binder clip, a small yellow tab sticking out of one edge, held so only the backs or edges of the pages show`, in his left hand，左腕 `a plain silver wristwatch on his left wrist, its face turned toward him`）；左腋下 `a thick stapled legal document about the size of a hardcover book, bound in a navy-blue paper backing, held so only the backs or edges of the pages show`；右手 `a black fountain pen with a gold clip, as long as his hand`, in his right hand；四分之三側臉朝畫面右的 Nora；律師臉 | Fisk 用鋼筆的筆尖在腋下那本深藍封底上輕敲兩下，嘴在說話；說完筆放回身側，嘴閉上；最後：他站著，鋼筆垂在右手 | Fisk（慢，一字一字）：One you already signed.（一份您已經簽了）（原聲） | 約 3.5 秒 |
 | c12 | 近景、固定；從門內拍，透過開著的門；直式，臉在上三分之一；前景左緣是往裡開著的門板（黑色鋼框） | 前景門板上 `a brand-new brushed-steel deadbolt and lever handle on the black steel door frame, bright and unscratched`；Nora（`discharge`），站在門檻外的門墊上，`a camel wool coat with deep pockets, worn open`；`behind her, out of focus, the gold-lit gravel forecourt and grass, no sea, no buildings, the low sun behind the camera lighting her face evenly`；四分之三側臉朝畫面左的 Fisk；眉頭往下壓、眼睛眯起、下巴繃緊、鼻孔一張，`no smile at any moment, until the last frame` | 她的眼睛從他腋下的深藍冊子慢慢抬到他臉上，左手把醫院袋（`a plain white plastic drawstring bag with no print, about the size of a bed pillow, soft and half full`, in her left hand）的繩子攥緊；剪在眼睛抬到一半；嘴閉著；最後：她盯著他 | — | 約 2.5 秒 |
@@ -243,6 +243,23 @@ Fisk 翻到協議最後一頁，念：「Signed, Nora Whitlock. The house, the a
 - **c43**：短句後加收尾動作：吞一口口水、喉嚨一動，再嘴閉上（3.5 → 4 秒）。
 - 鏡數不變，秒數 127 → 129.5 秒（第一場 38.5、第二場 27、第三場 19.5、第四場 44.5）。
 
+### 2026-11-12 參考圖稽核後的修改
+
+照 `../series-plans/top40-2025-2026/2025-15-xingde-xiangyu/western/review/2026-11-12-ref-audit-e001-e020.md`〈定案〉改。台詞、事件、秒數都沒有改；還沒有拍，沒有要重抽的鏡。
+- **〈角色與參考圖〉與〈五張清單〉**：改成指向 `assets/refs/` 裡現有的檔案，以及重畫中的 `door-in-gold`、`liv-gold-a`、`liv-east-gold`、`nora-discharge-coat`；寫明哪些鏡不傳哪張圖（c01、c04、c05、c03、c26、c28，以及只拍手、背、肩的鏡）。
+- **燈柱**（〈定案〉6）：場頭、c01、c23、c24 改成細的黑色燈柱，立在台階右邊的草地上（從前庭看），不亮。
+- **門開著**（〈定案〉6）：c23、c27、c29 寫 `already standing open inward`、門不動；c29 她走向已經開著的門口，不碰門。新鎖在開著的門板上，不在門框上（c09–c11、c23、c27、c29）。
+- **說話的臉光要穩**（〈定案〉11）：
+  - c09–c11 的 Fisk 不再被門後的太陽逆光。
+  - c12、c13 的 Nora 背景是金色前庭，沒有海也沒有太陽。
+  - c16、c19、c21、c26、c28、c33、c37、c40、c42 加穩定光的英文句。
+- **客廳反打**（〈定案〉5）：c17、c19、c21、c22、c37、c40、c42、c44 用 `liv-east-gold`，背景從「玄關的牆」改成「虛焦的暖金色天光」，因為客廳沒有實牆。第二場場頭拿掉「電視在唯一的實牆上」。
+- **c14**：從屋裡往門口拍，客廳在鏡頭後方，所以 Nora 改成朝鏡頭走、從畫面右下出畫。
+- **c22**：照 `fisk-portrait.jpg`，Fisk 白襯衫開領、不打領帶，不再寫「領帶下半」。
+- **c26**：副警長身後不寫車道，因為從屋子這側往外看沒有參考圖，也避開車道左右鏡像的問題。往山下往畫面左，交給 c24、c29 的腳步聲去守。
+- **c42**：寫明從 Nora 的右肩後拍，右肩在畫框左下。
+- **c08、c12、c13**：Nora 站在門檻外的門墊上。
+
 ### 配音
 
 - **Gemini 錄音只有一句**：c22 派遣員「A deputy's on the way. Please wait outside.」（`dispatcher`，Autonoe），電話濾波；3.5 秒的畫面裝得下，不 spill。c22 畫面上沒有臉（只拍 Fisk 胸口以下拿筆的右手）。
@@ -300,17 +317,22 @@ Fisk 翻到協議最後一頁，念：「Signed, Nora Whitlock. The house, the a
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
 | Nora | `discharge`（寬鬆奶油色粗麻花針織洋裝、灰色軟拖鞋、素顏、長髮披散微亂）＋駝色大衣道具句 `worn open` | c02–c03、c06、c08、c12–c14、c17、c21、c23–c24、c27、c29、c32、c34–c36、c38、c41、c43–c44（c15、c22、c25、c30、c31 只有背或肩；c04–c05、c20 只有手） | `cast.json` 已有 `discharge`；全身 `assets/refs/nora-discharge.jpg`（有了，沒有大衣；圖裡洋裝較合身、頭髮整齊，片段會照圖）；加大衣的全身版 `nora-discharge-coat` 重畫中（`screen-test/redraw.py` a5）；**不用 `nora-night-coat.jpg`**（懷孕身形）；大衣不在外貌句裡，每鏡用道具句 |
-| Leonard Fisk | 基本款：灰西裝、往後梳的灰棕髮、金框眼鏡；加黑色皮鞋、左腕素面銀錶 | c07、c09–c11、c14、c19、c37、c40、c42、c44（c08、c25、c28 只有肩、袖或手；c22 只有胸口以下；c39 只有手） | 外貌句沒寫鞋與錶，錶每鏡照抄道具句；全景、中景每鏡寫「黑色皮鞋」；**還沒有定妝照** |
-| Sienna Vale | 基本款：鮮紅褲裝、黑色齊下巴短髮、紅唇、左腕細金錶、尖頭高跟鞋 | c15–c16、c18、c30–c31、c33（c27、c44 虛焦） | 同 `cast.json`；**還沒有定妝照** |
-| 副警長 | 素面黃褐上衣、深綠長褲、星形徽章與臂章無字、低髮髻；只拍腰以上 | c25–c26、c28 | 同 `cast.json` extras `deputy`；**還沒有定妝照** |
-| 工頭 | 短紅鬍子、灰色毛線帽、灰色素面工作服、灰色工作靴 | c36（c15、c30 背影） | 同 extras `installer-lead`；**還沒有定妝照**；外貌句沒寫鞋，中景寫「灰色工作靴」 |
+| Leonard Fisk | 基本款：灰西裝、白襯衫開領不打領帶、往後梳的灰棕髮、金框眼鏡；加黑色皮鞋、左腕素面銀錶 | c07、c09–c11、c14、c19、c37、c40、c42、c44（c08、c25、c28 只有肩、袖或手；c22 只有胸口以下；c39 只有手） | 外貌句沒寫鞋與錶，錶每鏡照抄道具句；全景、中景每鏡寫「黑色皮鞋」；定妝照 `assets/refs/fisk-portrait.jpg`（白襯衫開領、沒有領帶；外貌句沒寫襯衫，c22 照圖寫開領） |
+| Sienna Vale | 基本款：鮮紅褲裝、黑色齊下巴短髮、紅唇、左腕細金錶、尖頭高跟鞋 | c15–c16、c18、c30–c31、c33（c27、c44 虛焦） | 同 `cast.json`；**定妝照待畫（重畫中）** |
+| 副警長 | 素面黃褐上衣、深綠長褲、星形徽章與臂章無字、低髮髻；只拍腰以上 | c25–c26、c28 | 同 `cast.json` extras `deputy`；**定妝照待畫（重畫中）** |
+| 工頭 | 短紅鬍子、灰色毛線帽、灰色素面工作服、灰色工作靴 | c36（c15、c30 背影） | 同 extras `installer-lead`；**定妝照待畫（重畫中）**；外貌句沒寫鞋，中景寫「灰色工作靴」 |
 | 另一個工人 | 灰色素面工作服、灰色工作靴 | c15、c23、c30（背影、虛焦） | 群眾，不用定妝照 |
 
 ### 2. 本集需要的參考圖
 
-- 定妝照：`nora-portrait.jpg`（r3 修過，有）；**Nora `discharge` 全身**（待畫，先畫順序第 1）；**Fisk**（待畫，第 2）；**Sienna**（待畫，第 3，要看得到左腕的錶）；**副警長**（待畫，第 5）；**工頭**（待畫，第 8）。新定妝照一律平靜、嘴閉著、不帶道具（不拿鋼筆、不拿夾板）。
-- 場景：**玻璃屋大門與台階 `glass-house-door`**（直式、傍晚逆光版：門往屋裡開、新鎖、門墊、兩級寬石台階、燈柱在最上面那級右端、碎石前庭、門兩邊玻璃牆）；**玻璃屋客廳直式、半掛窗簾、傍晚金光版**（從 `set-glass-house-living.jpg` 改：灰沙發在左、餐桌在右、海那面玻璃下的淺橡木矮櫃、白瓷花瓶與玻璃磚、餐桌那頭掛上深灰窗簾）。
-- 道具：`rideshare-car`、`house-key`、`new-phone`、`belongings-bag`、`property-agreement`、`divorce-papers`、`fisk-pen`、`curtain-panel`、`delivery-slip`、`keepsake`、`camel-coat` 在 `cast.json` 有提示詞、沒有圖；bible 建議先畫玻璃磚（第 7–10 集連續出現）。
+- 定妝照（`assets/refs/`）：`nora-portrait.jpg`（r3，有）；`nora-discharge.jpg`（全身，有，沒有大衣）；**`nora-discharge-coat`**（加敞開駝色大衣，重畫中，`screen-test/redraw.py` a5）；`fisk-portrait.jpg`（有）；**Sienna**（待畫，重畫中，要看得到左腕的錶）；**副警長**（待畫，重畫中）；**工頭**（待畫，重畫中）。**不用 `nora-night-coat.jpg`**。只拍手、背或肩的鏡不傳定妝照（見〈角色與參考圖〉）。
+- 場景：
+  - 從前庭看大門：`set-glass-house-door-out-gold.jpg`（有，門關著）；c04、c05 不傳（鎖板上的「3」第二批才修）。
+  - 從屋裡往外看：`door-in-gold`（#24，重畫中）；現有的那張不要用。
+  - 客廳往海看：`liv-gold-a`（#21，重畫中）；`liv-gold-b`（#22，待畫）；`liv-gold-c`（#23，待畫）。b、c 從新的 a 改。
+  - 客廳往玄關看：`liv-east-gold`（新畫中）。
+  - **沒有排進重畫的**：c01 的直式屋外全景（傍晚金光、前庭停得下車）；第三場門開著的屋外版（#20 的變體：深琥珀光、門往裡開著、兩邊玻璃裡幾片深灰窗簾、燈柱不亮）。在有圖之前，c01 只寫文字，第三場傳 `door-out-gold` 並每鏡寫 `already standing open inward`。
+- 道具：`assets/refs/prop-keepsake.jpg`（玻璃磚，有，但圖裡帶一隻手）。本集 c15、c36 玻璃磚只在矮櫃上當背景，**不傳道具圖**，只寫道具句（〈定案〉12）。`rideshare-car`、`house-key`、`new-phone`、`belongings-bag`、`property-agreement`、`divorce-papers`、`fisk-pen`、`curtain-panel`、`delivery-slip`、`camel-coat`、`new-lock` 在 `cast.json` 有提示詞、沒有圖。
 - 沒有參考圖的人：另一個工人只拍背影或虛焦；深灰轎車的司機不入鏡；派遣員只有聲音。
 
 ### 3. 長鏡清單

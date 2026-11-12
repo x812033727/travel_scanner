@@ -99,7 +99,7 @@ SETS = {
          f"blurred grey sea outside the right window and dark firs outside the left. {NOBODY}"),
         ("mroom-night", "#32",
          "a tall vertical view of a modest old roadside motel room seen from the foot of the beds, looking up the narrow aisle between them: two "
-         "twin beds side by side with faded floral quilts, their dark wooden headboards against the far wall, a nightstand between the "
+         "twin beds side by side, the left bed under two faded floral quilts, the right bed under one thin plain pale blanket, their dark wooden headboards against the far wall, a nightstand between the "
          "headboards with a small bedside lamp with a pale yellow shade at the top centre of the frame; on the LEFT wall the entry door near the "
          "camera and a window with heavy curtains drawn almost closed, one narrow vertical gap between them, a small table and two chairs under "
          "the window; on the RIGHT wall near the far end the bathroom door, closed, plain, no sign on it; dark green carpet, cream walls, no "
@@ -109,7 +109,7 @@ SETS = {
          "a tall vertical view of the gravel shoulder of a two-lane coast road at the foot of a grassy bluff, seen from the shoulder on the land "
          "side: the coast road running off to the left of the frame along grey Puget Sound water, a narrow asphalt drive climbing to the right "
          "up the grassy bluff, a low wooden guardrail, wind-bent grass and dark firs, a modern single-storey glass house small at the top right "
-         "against the sky. Light: the sun just above the sea, low red-gold light, the asphalt a little damp. Nobody is in the frame; no cars; "
+         "against the sky. Light: low red-gold sunset light from the upper right, the sun itself hidden behind the bluff, the sea on the left in shadow-gold, the asphalt a little damp. Nobody is in the frame; no cars; "
          "nothing written anywhere."),
     ],
 }

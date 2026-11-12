@@ -28,17 +28,17 @@ Theo 捧著戒盒，手在抖：「I've never held one of these.」Elias 把一�
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3 修過）；全身參考圖 `shoulder`、`decree` 待畫 | c01–c02 蒙太奇 `shoulder`（齊肩短髮、奶油色毛衣、深色長褲、棕褐短靴）：c01 四月 `a camel wool coat with deep pockets, worn open`、c02 五月沒穿大衣；**c04 起 `decree`**（齊肩短髮、象牙白細針織衫、淺灰西裝褲、裸色平底鞋），六月整集沒有大衣；c21 起眼睛濕、臉頰有淚痕；**c37 起左手無名指 `a plain narrow white-gold band with no stone, on her left ring finger`**；本集沒有任何一鏡笑；原聲 |
-| Peg | `assets/refs/peg-portrait.jpg`（`visit`） | 整集 `visit`（燕麥色開襟衫、玳瑁框眼鏡**每一鏡戴在臉上**、平底包鞋）；拍到左手就寫 `a faint pale band of skin on her left ring finger where a ring used to be`；法庭在旁聽席第一排、Nora 背後；小法庭第一排；本集沒有任何一鏡笑；原聲 |
-| Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 基本款（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣）；本集**一鏡都不笑**；說話句寫「聲音平穩、低」或「低、短、咬著」，不寫 warm、keynote、smooth；c26 是短喊；原聲 |
-| Leonard Fisk | **待畫**（第 4–10 集清單） | 往後梳的灰棕髮、金框眼鏡、銳利的灰西裝；`a black fountain pen with a gold clip, as long as his hand`（右手）、`a plain silver wristwatch on his left wrist, its face turned toward him`；只在離婚的法庭；**不跟法官、不跟 Elias 同框**；不笑；原聲（c08 一句） |
-| Dana Okafor | **待畫**（第 11–20 集清單） | 基本款（高髮髻、黑色合身西裝外套配白 T 恤、黑長褲、白球鞋）；坐在 Nora 左邊的律師席；卷宗疊在桌上；本集不說話；只在離婚的法庭（**不跟 Sienna 同框**）；不笑 |
-| 主持離婚的法官 | **待畫，必須先畫**（extras `judge`） | 64 歲白人男性、白短髮、修齊的白鬍子、不戴眼鏡、黑袍配白襯衫深色領帶；`a dark wooden gavel`（右手）；他的鏡**不帶 Fisk**；不笑；原聲 |
-| Bev | **待畫**（第 4–10 集清單） | 基本款（圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上）；法庭在 Peg 右邊（背影）；**c42 一鏡可以有好奇的閉嘴笑**（bible 允許的 "I want a peppermint."）；原聲 |
-| Elias | `assets/refs/elias-portrait.jpg`；全身參考圖待畫 | 基本款（炭灰窗格紋三件式、白襯衫開領、白色口袋巾、細銀絲框眼鏡、深棕色頭髮往後梳），**沒有大衣**；**站著時左手插在褲子左口袋**，簽名、遞戒指、撐門一律右手，Nora 一律在他右邊、挽他的右臂；不戴戒指；疤不出現；不笑；原聲 |
-| Theo Park | **待畫，必須先畫** | 基本款（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲）；兩手捧著戒盒在抖；面無表情、不笑；原聲 |
-| 證婚的法官 | **待畫，必須先畫**（extras `wedding-judge`） | 52 歲菲律賓裔女性、低髮髻、小珍珠耳環、黑袍；跟主持離婚的法官是不同人；不笑；原聲 |
-| Sienna | **待畫**（第 4–10 集清單） | 基本款（暖棕膚色、俐落的黑色齊下巴短髮、紅唇、**左腕**細金錶、鮮紅合身套裝、尖頭高跟鞋）；只在台階；筆在**左手**；**c48–c49 與 c52 第一格閉嘴的笑**（bible 允許），c52 停住；不說話 |
+| Nora | `assets/refs/nora-portrait.jpg`（r3，基本款胸像：過肩長髮、中分、奶油色粗麻花毛衣；雀斑長在額頭，第二批小修移回鼻樑），**不能單獨當本集的 Picture**（模型會照圖畫回長髮與麻花袖口）；**`shoulder`、`decree` 胸像與全身待畫（第二批，要站主點頭）**：從定妝照 `latent: image1`，只換成齊肩 bob 與各自的衣服。畫好之前不拍她露頭髮或袖口的鏡；`nora-night-coat`（懷孕、長濕髮）、`nora-discharge`（長髮、長毛衣洋裝）不可代用；只拍手或背影的鏡（c04、c05、c07、c09、c12、c22、c31、c37、c40、c44）不傳她的圖（稽核定案 13） | c01–c02 蒙太奇 `shoulder`（齊肩短髮、奶油色毛衣、深色長褲、棕褐短靴）：c01 四月 `a camel wool coat with deep pockets, worn open`、c02 五月沒穿大衣；**c04 起 `decree`**（齊肩短髮、象牙白細針織衫、淺灰西裝褲、裸色平底鞋），六月整集沒有大衣；c21 起眼睛濕、臉頰有淚痕；**c37 起左手無名指 `a plain narrow white-gold band with no stone, on her left ring finger`**；本集沒有任何一鏡笑；原聲 |
+| Peg | `assets/refs/peg-portrait.jpg`（`visit`，跟本集一致）；c05、c31 背影、c22 只有手，不傳 | 整集 `visit`（燕麥色開襟衫、玳瑁框眼鏡**每一鏡戴在臉上**、平底包鞋）；拍到左手就寫 `a faint pale band of skin on her left ring finger where a ring used to be`；法庭在旁聽席第一排、Nora 背後；小法庭第一排；本集沒有任何一鏡笑；原聲 |
+| Grant | `assets/refs/grant-portrait.jpg`（平臉 r3；左襟一個深色小方塊，第二批小修）；只拍背或手的 c48、c50、c52 不傳 | 基本款（沙金色側分、細圓金屬框眼鏡、淺灰細格紋西裝（照定妝照，`a light grey finely checked tailored suit`，取代淺石色）、淺藍開領襯衫、透明玻璃袖扣）；本集**一鏡都不笑**；說話句寫「聲音平穩、低」或「低、短、咬著」，不寫 warm、keynote、smooth；c26 是短喊；原聲 |
+| Leonard Fisk | `assets/refs/fisk-portrait.jpg`（a12 `fisk-b`：往後梳的灰棕髮、金色細框方眼鏡、素面中灰西裝、白襯衫開領不打領帶）；只拍手或肩的 c06、c07、c13、c20 不傳 | 往後梳的灰棕髮、金框眼鏡、銳利的素面中灰西裝（跟 Grant 的淺灰細格紋分得開）；`a black fountain pen with a gold clip, as long as his hand`（右手）、`a plain silver wristwatch on his left wrist, its face turned toward him`；只在離婚的法庭；**不跟法官、不跟 Elias 同框**；不笑；原聲（c08 一句） |
+| Dana Okafor | **待畫（第二批，要站主點頭）**：胸像；c05 背影、c12 只有手，不傳 | 基本款（高髮髻、黑色合身西裝外套配白 T 恤、黑長褲、白球鞋）；坐在 Nora 左邊的律師席；卷宗疊在桌上；本集不說話；只在離婚的法庭（**不跟 Sienna 同框**）；不笑 |
+| 主持離婚的法官 | **待畫，必須先畫**（第二批，要站主點頭；extras `judge`）：胸像；c19 只有手，不傳 | 64 歲白人男性、白短髮、修齊的白鬍子、不戴眼鏡、黑袍配白襯衫深色領帶；`a dark wooden gavel`（右手）；他的鏡**不帶 Fisk**；不笑；原聲 |
+| Bev | **待畫**（`screen-test/art.py` a3）；c05、c31 背影不傳 | 基本款（圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上）；法庭在 Peg 右邊（背影）；**c42 一鏡可以有好奇的閉嘴笑**（bible 允許的 "I want a peppermint."）；原聲 |
+| Elias | `assets/refs/elias-portrait.jpg`（基本款胸像，沒有大衣，跟本集一致）；基本款全身圖沒有排（第二批只排大衣版），c29、c30、c46 的站姿與左手插口袋寫進正文；c31 背影、c33、c34、c39、c44 只有手或臂，不傳 | 基本款（炭灰窗格紋三件式、白襯衫開領、白色口袋巾、細銀絲框眼鏡、深棕色頭髮往後梳），**沒有大衣**；**站著時左手插在褲子左口袋**，簽名、遞戒指、撐門一律右手，Nora 一律在他右邊、挽他的右臂；不戴戒指；疤不出現；不笑；原聲 |
+| Theo Park | **待畫，必須先畫**（第二批，要站主點頭）：胸像；c24 遠景虛焦、c33 只有手，不傳 | 基本款（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲）；兩手捧著戒盒在抖；面無表情、不笑；原聲 |
+| 證婚的法官 | **待畫，必須先畫**（第二批，要站主點頭；extras `wedding-judge`）：胸像 | 52 歲菲律賓裔女性、低髮髻、小珍珠耳環、黑袍；跟主持離婚的法官是不同人；不笑；原聲 |
+| Sienna | **重畫中**（`screen-test/art.py` a4 胸像，選定後 a3 全身；全身要看得到左腕的錶）；c50 只有左手，不傳 | 基本款（暖棕膚色、俐落的黑色齊下巴短髮、紅唇、**左腕**細金錶、鮮紅合身套裝、尖頭高跟鞋）；只在台階；筆在**左手**；**c48–c49 與 c52 第一格閉嘴的笑**（bible 允許），c52 停住；不說話 |
 | 禮品店老闆 | 不畫（extras `gift-shop-owner`） | c01 只拍手與灰色開襟衫袖口 |
 | 旁聽席 | 不畫（extras `court-gallery`） | c17 幾個等開庭的人，臉都虛焦 |
 
