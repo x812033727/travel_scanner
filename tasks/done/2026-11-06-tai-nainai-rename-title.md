@@ -1,13 +1,13 @@
 ---
 id: 2026-11-06-tai-nainai-rename-title
 title: 恁祖媽今年18：中文劇名從《祖奶奶今年十八》改名
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5
 claimed_at: 2026-11-06T17:03:04Z
 created_at: 2026-11-06T17:03:03Z
-completed_at:
+completed_at: 2026-11-12T16:49:35Z
 branch: claude/intelligent-gates-9n92xm
 depends_on: []
 scope:
@@ -107,3 +107,5 @@ node docs/videos/series-plans/top40-2025-2026/lib/validate.mjs docs/videos/serie
 
 - slug、資料夾與檔名（`tai-nainai-eNNN`、`2025-01-tai-nainai`）不改：它們是 id，改了會斷掉站台與工作資料夾的對應。
 - 劇名用「恁祖媽」（台語自稱「你祖母我」的口吻）。bible 寫台詞「不罵髒話」；這三個字只在劇名，台詞沒有用到。
+
+- 2026-11-12 站主同意結案（claude-opus-5-5-elegant-ritchie 代結）：這張票的工作早在 #2032、#2035 合進 main，認領已過期六天；第 1–8 集新版分鏡與第 9–60 集重寫（#2087）也已延續這些改動。

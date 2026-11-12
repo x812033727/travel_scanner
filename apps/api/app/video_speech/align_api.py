@@ -45,6 +45,7 @@ from app.video_speech.admin_api import (
 from app.video_speech.align import ALIGNER_SOURCE, AZURE_SOURCE, AlignRefused
 from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.gemini import gemini_voice
+from app.video_speech.minimax import minimax_voice
 from app.video_speech.schemas import (
     AlignIn,
     AlignOut,
@@ -102,6 +103,15 @@ async def _synthesize_azure(
             422,
             "video_align_voice_unsupported",
             "Gemini 聲音沒有字時：用 /video/speech 合成後，把音檔送來對齊",
+        )
+    # MiniMax gives no word boundaries either. Without this it would be checked against the
+    # Azure allowlist and refused as a voice the owner must allow, stopping the run, where this
+    # code sends the tool on to /video/speech (tools/video/tts/client.mjs FINAL_CODES).
+    if minimax_voice(speech.voice) is not None:
+        raise AlignRefused(
+            422,
+            "video_align_voice_unsupported",
+            "MiniMax 聲音沒有字時：用 /video/speech 合成後，把音檔送來對齊",
         )
     characters_of_text = sum(
         len(part.text) for segment in speech.segments for part in segment.parts

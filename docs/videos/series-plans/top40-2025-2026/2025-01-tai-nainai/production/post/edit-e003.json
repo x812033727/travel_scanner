@@ -1,0 +1,781 @@
+{
+ "_note": "《恁祖媽今年18》第 3 集剪接表（post/assemble-v4.mjs），2026-11-08 照種田拍法重寫的分鏡（51 鏡 c01–c49 加 c32b、c36b，約 149.5 秒）重寫；舊的 27 鏡版（c01–c26、c01b）在 git 歷史裡，舊稿的鏡號只在 script.md 的舊節裡。 沿用站主定的（照第 1 集）：不放片名卡、集數、人名條，畫面不放字；不裁切放大（punch false）；慢放不超過 1.1 倍（slow_max 1.1、interpolate false），原聲的鏡不放慢；CC 軟字幕；看得到嘴的台詞用模型原聲（own_voice → voice.json，18 句；post/voice.py 抽草稿音軌）；frame_round；調色全集 indoor（祠堂燭光與燈、迴廊紙罩燈）；片尾 end_black 1.2 秒。c36b 門紙上是「很淡、很冷的月光」，indoor 的暖調可能把冷光壓掉，拍回來看了再決定要不要給它別的調色。 min：每鏡照分鏡秒數（就是剪點），min_is_cut true，沒有台詞的鏡照 min 剪；說話的鏡剪接程式自己延到話講完。 錄音的只有一句：c49 心裡話（16 字加「……」，約 3.7 秒＋前後 0.34 秒，鏡 4.5 秒），放得進自己的鏡，不用 spill；它是最後一鏡，後面只有片尾的黑，沒有原聲會撞。月棠的錄音照第 1 集 speaker_gain −3.5；speaker_tempo 沒設（用預設 1.07）。本集沒有遠處的人聲，不設 line_far。 配樂一場一首、側鏈輕壓（ratio 3.5、release 900 ms）。第一場 memory（古箏）約 109.5 秒，曲子只有 93.5 秒（曲尾約 2 秒靜音，可用 91.5），分四段，切在場內的換氣處或硬切的重音：c01–c09 從 6.9 秒（曲子 5.5–7.9 秒是安靜的換氣，壓在 c01 合門與遠去的警笛底下，9.19 秒的起音落在 c02 第 0.3 秒鑰匙「喀」那一下）；c10 抽屜的鼓點開始時換段（前段淡出 0.4、後段淡入 0.3），從 34.86 秒接，42.16 秒的重音對在 c13 第 0.3 秒最後一格推上的「喀」（c10–c12 沒有台詞、照 min 剪，對得準）；c16 燈 3→4：音樂退到很輕——這段多放 1.5 秒（tail）、從 c15 最後 0.3 秒開始淡出 1.8 秒，c16 後半只剩室內底噪（synth room −14 dB，c16–c17）與燈亮的低鳴（deng-hum −14 dB，第 0.3 秒），不會數位靜音；c17 從 51.88 秒進來（接著上一段的曲子往下走），52.18 秒的重音落在 c17 第 0.3 秒她身後銅環亮起燈 4 的光；c28 福伯說出照片時第二個重音：c28 從 8.6 秒硬接（前段淡出 0.3、後段淡入 0.05），9.19 秒的起音落在 c28 第 0.6 秒他開口；這段重用了第一場開頭 8.6–42 秒的材料（隔了約 75 秒，壓在對白底下），一路放到 c36b，多放 0.8 秒、淡出 1 秒接第二場。第二場 suspense（輕的鋼琴單音）：c37–c46 從 0 秒，c46 尾多放 0.5 秒、淡出 0.8 秒，c47 門「砰」一聲時音樂退下；c47 第 0.85 秒報信鈴在桶裡悶響，第 1.0 秒 suspense 從 38.94 秒進來，39.09 秒的重音落在鈴聲後 0.3 秒（鈴的起音先出來，重音不蓋住它），c47 尾到 c48 鋪室內底噪；放到 c49，tail 1.2 秒淡進片尾的黑。 各段需要的長度（照 min 加起來，說話鏡照分鏡秒數）與餘裕：memory 6.9 秒起 26.5 秒（到 33.4）；34.86 秒起 15.5＋1.5 秒（到 51.9）；51.88 秒起 32 秒（到 83.9，餘 7.6 秒，c18、c21、c22、c25、c26 五鏡原聲合計多出 7.6 秒以上程式會報錯，那時把 offset 往前調、重音跟著往後）；8.6 秒起 33.8 秒（到 42.4，餘很多）；suspense 0 秒起 31.5 秒；38.94 秒起約 8.7 秒（到 47.6）。原聲把 c01–c09 或 c10–c15 拉長時，下一段的重音照樣對得準（每段從自己的第一鏡算），只是換段處曲子會重複或跳過拉長的那幾秒。 鈴：全季同一個真鈴錄音。c45 書包丟進桶裡，三顆銅鈴輕晃 baoxinling-shake −9 dB（照第 1 集 c21–c22 的 −8～−6）；c47 桶裡悶悶一響用 baoxinling-muffled +2 dB（悶版本身比 baoxinling 小約 6 dB，+2 才「要聽得到」，比第 1 集 c23 的報信鈴小約 6 dB；那時 suspense 壓在 −18 dB、晚 0.15 秒才進）。審片時聽不清就再加 2 dB，或把第二段 suspense 的 from_off 再往後。 警笛（siren-far，合成）：c01 第 0 秒起、to c02，淡到 c02 結尾（分鏡：c01 越來越小、c02 停了）。 音效：照分鏡〈音樂與音效〉表與動作欄放在新鏡號上——兩扇格扇門合上 c01（第 0.7 秒門板碰上）、插鎖「喀」與拔鑰匙 c02、福伯轉身 c03、她走出一步 c04、走近半步 c05、福伯往前一小步 c06、退一步與肩碰藥櫃 c08、指尖碰銅環 c09、三十個抽屜的木聲鼓點 c10–c11（drawers-30，5.65 秒，從 c10 第 0 秒蓋到 c11 結尾，招牌音效）、蹲下的衣料 c11、鑰匙在指尖滑一下 c12、最後一格「喀」c13（−12 dB，重音）、雙膝落地「咚」c14（第 1.75 秒，剪在膝蓋落地）、燈亮的低鳴 c16、跨一步 c17、彎腰托肘 c18、衣袖與拳頭離地 c19、站起、踩穩與袖口擦眼 c20、手按心口 c22、退半步 c23（分鏡 c24 寫畫外的退步聲，就是這一步，只放一次）、走近一步 c25、拇指搓食指的細響 c26、c28（−33～−35 dB；不用懷錶聲）與 c28 袖口擦眼角、布鞋走三步 c32–c32b、燈座抬起、鑰匙推進、放回 c33、鞠躬 c34、藤編躺椅吱聲 c35、鞠躬、倒退、兩扇門帶上 c36（門板碰上的一聲放在第 2.3 秒，剪在門合上；第一格插鎖已經用他鑰匙串上的鑰匙開好、門開一條縫，不另放開鎖聲）、c36b 第一秒福伯從外面鎖門：鑰匙串輕響（第 0.1 秒）與外側鎖孔轉一下的「喀」（metalLatch，第 0.3 秒，−17 dB，隔著門比 c02 的 −14 小一點；就是第 1 集月棠說的「阿福從外面鎖了門」），之後門外坐下的衣料（門後，很小聲）、劃火柴點燭 c37、福伯走木迴廊 c38、直起身 c39、告退走開 c43、小滿的皮鞋快步（越來越近）與手碰桶蓋 c44、桶蓋、書包落桶、三顆鈴晃、桶蓋「哐」c45、皮鞋走遠 c46、遠處房門「砰」、桶裡的鈴、桶蓋晃 c47、起身的衣料與長凳吱一聲 c48、走出半步 c49。書包滴水與 c36b 的夜風，音效庫裡沒有合適的檔，不放；分鏡沒寫的不加。舊稿 c14 的懷錶滴答拿掉（本集不碰懷錶）。 2026-11-09：c10（背在身後的兩手推抽屜插鏡）兩個種子與重畫首格都畫成她面對藥櫃，跳過；c09、c11 已經拍到她背靠藥櫃、兩手在身後。",
+ "tempo": 1.07,
+ "slow_max": 1.1,
+ "interpolate": false,
+ "punch": false,
+ "grades": {},
+ "default_grade": "indoor",
+ "finish": "vignette=angle=PI/5,noise=alls=3:allf=t,format=yuv420p",
+ "names": {},
+ "min": {
+  "c01": 2.0,
+  "c02": 2.0,
+  "c03": 3.0,
+  "c04": 3.0,
+  "c05": 4.0,
+  "c06": 1.5,
+  "c07": 5.0,
+  "c08": 1.5,
+  "c09": 4.5,
+  "c10": 2.5,
+  "c11": 3.0,
+  "c12": 1.5,
+  "c13": 2.5,
+  "c14": 2.0,
+  "c15": 4.0,
+  "c16": 2.5,
+  "c17": 2.0,
+  "c18": 4.0,
+  "c19": 1.5,
+  "c20": 2.5,
+  "c21": 4.5,
+  "c22": 3.5,
+  "c23": 2.5,
+  "c24": 2.0,
+  "c25": 3.5,
+  "c26": 4.5,
+  "c27": 1.5,
+  "c28": 3.5,
+  "c29": 4.5,
+  "c30": 4.0,
+  "c31": 3.5,
+  "c32": 1.5,
+  "c32b": 1.5,
+  "c33": 2.5,
+  "c34": 4.5,
+  "c35": 3.0,
+  "c36": 2.5,
+  "c36b": 2.0,
+  "c37": 3.0,
+  "c38": 3.0,
+  "c39": 5.5,
+  "c40": 1.5,
+  "c41": 1.5,
+  "c42": 4.5,
+  "c43": 5.5,
+  "c44": 2.5,
+  "c45": 2.0,
+  "c46": 2.5,
+  "c47": 2.0,
+  "c48": 2.0,
+  "c49": 4.5
+ },
+ "duck_ratio": 3.5,
+ "duck_release_ms": 900,
+ "sfx_dirs": [
+  "<VIDEO_WORKDIR>/_series/tai-nainai/sfx"
+ ],
+ "music": [
+  {
+   "cue": "memory",
+   "from": "c01",
+   "to": "c09",
+   "offset": 6.9,
+   "gain": -17,
+   "fade_in": 0.5,
+   "fade_out": 0.4
+  },
+  {
+   "cue": "memory",
+   "from": "c10",
+   "to": "c15",
+   "offset": 34.86,
+   "gain": -17,
+   "fade_in": 0.3,
+   "tail": 1.5,
+   "fade_out": 1.8
+  },
+  {
+   "cue": "memory",
+   "from": "c17",
+   "to": "c27",
+   "offset": 51.88,
+   "gain": -17,
+   "fade_in": 0.05,
+   "fade_out": 0.3
+  },
+  {
+   "cue": "memory",
+   "from": "c28",
+   "to": "c36b",
+   "offset": 8.6,
+   "gain": -16,
+   "fade_in": 0.05,
+   "tail": 0.8,
+   "fade_out": 1.0
+  },
+  {
+   "cue": "suspense",
+   "from": "c37",
+   "to": "c46",
+   "offset": 0,
+   "gain": -17,
+   "fade_in": 1.0,
+   "tail": 0.5,
+   "fade_out": 0.8
+  },
+  {
+   "cue": "suspense",
+   "from": "c47",
+   "from_off": 1.0,
+   "to": "c49",
+   "offset": 38.94,
+   "gain": -18,
+   "fade_in": 0.05,
+   "tail": 1.2,
+   "fade_out": 1.6
+  }
+ ],
+ "sfx": [
+  {
+   "synth": "room",
+   "at": "c01",
+   "off": 0,
+   "to": "c02",
+   "gain": -14,
+   "fade": 0.3
+  },
+  {
+   "synth": "room",
+   "at": "c16",
+   "off": 0,
+   "to": "c17",
+   "gain": -14,
+   "fade": 0.4
+  },
+  {
+   "synth": "room",
+   "at": "c47",
+   "off": 0,
+   "to": "c48",
+   "gain": -15,
+   "fade": 0.4
+  },
+  {
+   "file": "siren-far",
+   "at": "c01",
+   "off": 0.0,
+   "gain": -27,
+   "to": "c02"
+  },
+  {
+   "file": "creak2",
+   "at": "c01",
+   "off": 0.1,
+   "gain": -20
+  },
+  {
+   "file": "door_close_01",
+   "at": "c01",
+   "off": 0.7,
+   "gain": -16
+  },
+  {
+   "file": "cloth1",
+   "at": "c01",
+   "off": 1.6,
+   "gain": -28
+  },
+  {
+   "file": "metalLatch",
+   "at": "c02",
+   "off": 0.35,
+   "gain": -14
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c02",
+   "off": 0.8,
+   "gain": -26
+  },
+  {
+   "file": "cloth2",
+   "at": "c02",
+   "off": 1.1,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "c03",
+   "off": 0.2,
+   "gain": -27
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c04",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c04",
+   "off": 0.95,
+   "gain": -27
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c05",
+   "off": 0.3,
+   "gain": -27
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c06",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "c06",
+   "off": 0.8,
+   "gain": -28
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c08",
+   "off": 0.2,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "c08",
+   "off": 0.7,
+   "gain": -26
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c09",
+   "off": 3.6,
+   "gain": -30
+  },
+  {
+   "file": "drawers-30",
+   "at": "c11",
+   "off": 0.0,
+   "gain": -15
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c11",
+   "off": 0.5,
+   "gain": -27
+  },
+  {
+   "file": "cloth2",
+   "at": "c11",
+   "off": 1.0,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "c11",
+   "off": 2.6,
+   "gain": -24
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c12",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c12",
+   "off": 0.9,
+   "gain": -28
+  },
+  {
+   "file": "impactWood_medium_000",
+   "at": "c13",
+   "off": 0.3,
+   "gain": -12
+  },
+  {
+   "file": "cloth1",
+   "at": "c13",
+   "off": 1.6,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "c14",
+   "off": 1.2,
+   "gain": -26
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "c14",
+   "off": 1.75,
+   "gain": -14
+  },
+  {
+   "file": "impactWood_heavy_000",
+   "at": "c14",
+   "off": 1.78,
+   "gain": -22
+  },
+  {
+   "file": "deng-hum",
+   "at": "c16",
+   "off": 0.3,
+   "gain": -14
+  },
+  {
+   "file": "cloth2",
+   "at": "c17",
+   "off": 0.9,
+   "gain": -29
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c17",
+   "off": 1.5,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "c18",
+   "off": 0.3,
+   "gain": -26
+  },
+  {
+   "file": "cloth2",
+   "at": "c18",
+   "off": 1.0,
+   "gain": -27
+  },
+  {
+   "file": "cloth1",
+   "at": "c19",
+   "off": 0.3,
+   "gain": -24
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "c19",
+   "off": 0.8,
+   "gain": -28
+  },
+  {
+   "file": "cloth2",
+   "at": "c20",
+   "off": 0.3,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c20",
+   "off": 0.9,
+   "gain": -24
+  },
+  {
+   "file": "cloth1",
+   "at": "c20",
+   "off": 1.6,
+   "gain": -28
+  },
+  {
+   "file": "cloth2",
+   "at": "c22",
+   "off": 0.4,
+   "gain": -30
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c23",
+   "off": 1.4,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c25",
+   "off": 0.6,
+   "gain": -27
+  },
+  {
+   "file": "cloth2",
+   "at": "c26",
+   "off": 1.0,
+   "gain": -34
+  },
+  {
+   "file": "cloth1",
+   "at": "c26",
+   "off": 2.2,
+   "gain": -35
+  },
+  {
+   "file": "cloth1",
+   "at": "c27",
+   "off": 0.4,
+   "gain": -30
+  },
+  {
+   "file": "cloth2",
+   "at": "c28",
+   "off": 0.3,
+   "gain": -33
+  },
+  {
+   "file": "cloth2",
+   "at": "c28",
+   "off": 0.9,
+   "gain": -34
+  },
+  {
+   "file": "cloth1",
+   "at": "c28",
+   "off": 3.0,
+   "gain": -27
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c29",
+   "off": 0.4,
+   "gain": -26
+  },
+  {
+   "file": "cloth1",
+   "at": "c30",
+   "off": 0.5,
+   "gain": -30
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c32",
+   "off": 0.3,
+   "gain": -25
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c32",
+   "off": 0.85,
+   "gain": -25
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c32b",
+   "off": 0.3,
+   "gain": -25
+  },
+  {
+   "file": "impactWood_light_000",
+   "at": "c33",
+   "off": 0.3,
+   "gain": -28
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c33",
+   "off": 0.9,
+   "gain": -30
+  },
+  {
+   "file": "impactWood_light_001",
+   "at": "c33",
+   "off": 1.6,
+   "gain": -22
+  },
+  {
+   "file": "cloth1",
+   "at": "c34",
+   "off": 3.4,
+   "gain": -24
+  },
+  {
+   "file": "cloth2",
+   "at": "c34",
+   "off": 3.9,
+   "gain": -26
+  },
+  {
+   "file": "creak3",
+   "at": "c35",
+   "off": 0.3,
+   "gain": -18
+  },
+  {
+   "file": "creak1",
+   "at": "c35",
+   "off": 1.2,
+   "gain": -24
+  },
+  {
+   "file": "cloth1",
+   "at": "c36",
+   "off": 0.3,
+   "gain": -27
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c36",
+   "off": 0.9,
+   "gain": -26
+  },
+  {
+   "file": "creak2",
+   "at": "c36",
+   "off": 1.4,
+   "gain": -22
+  },
+  {
+   "file": "door_close_01",
+   "at": "c36",
+   "off": 2.3,
+   "gain": -17
+  },
+  {
+   "file": "handleCoins",
+   "at": "c36",
+   "off": 0.1,
+   "gain": -32
+  },
+  {
+   "file": "cloth2",
+   "at": "c36b",
+   "off": 0.9,
+   "gain": -30
+  },
+  {
+   "file": "cloth1",
+   "at": "c36b",
+   "off": 1.3,
+   "gain": -31
+  },
+  {
+   "file": "match-strike",
+   "at": "c37",
+   "off": 0.3,
+   "gain": -16
+  },
+  {
+   "file": "cloth2",
+   "at": "c37",
+   "off": 1.6,
+   "gain": -28
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c38",
+   "off": 0.2,
+   "gain": -25
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c38",
+   "off": 0.75,
+   "gain": -25
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c38",
+   "off": 1.3,
+   "gain": -25
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c38",
+   "off": 1.85,
+   "gain": -25
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c38",
+   "off": 2.4,
+   "gain": -25
+  },
+  {
+   "file": "cloth1",
+   "at": "c38",
+   "off": 2.6,
+   "gain": -27
+  },
+  {
+   "file": "cloth2",
+   "at": "c39",
+   "off": 5.0,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "c42",
+   "off": 0.6,
+   "gain": -30
+  },
+  {
+   "file": "cloth1",
+   "at": "c43",
+   "off": 4.6,
+   "gain": -27
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c43",
+   "off": 5.0,
+   "gain": -25
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c43",
+   "off": 5.4,
+   "gain": -26
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c44",
+   "off": 0.1,
+   "gain": -25
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c44",
+   "off": 0.45,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c44",
+   "off": 0.8,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c44",
+   "off": 1.15,
+   "gain": -23
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c44",
+   "off": 1.5,
+   "gain": -23
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c44",
+   "off": 1.85,
+   "gain": -22
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c44",
+   "off": 2.35,
+   "gain": -28
+  },
+  {
+   "file": "metalPot1",
+   "at": "c45",
+   "off": 0.0,
+   "gain": -26
+  },
+  {
+   "file": "impactSoft_heavy_000",
+   "at": "c45",
+   "off": 0.25,
+   "gain": -22
+  },
+  {
+   "file": "baoxinling-shake",
+   "at": "c45",
+   "off": 0.3,
+   "gain": -9
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c46",
+   "off": 0.2,
+   "gain": -24
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c46",
+   "off": 0.65,
+   "gain": -25
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c46",
+   "off": 1.1,
+   "gain": -26
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c46",
+   "off": 1.55,
+   "gain": -28
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c46",
+   "off": 2.0,
+   "gain": -30
+  },
+  {
+   "file": "door_close_01",
+   "at": "c47",
+   "off": 0.3,
+   "gain": -16
+  },
+  {
+   "file": "baoxinling-muffled",
+   "at": "c47",
+   "off": 0.85,
+   "gain": 2
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c47",
+   "off": 1.3,
+   "gain": -30
+  },
+  {
+   "file": "impactMetal_light_000",
+   "at": "c47",
+   "off": 1.6,
+   "gain": -33
+  },
+  {
+   "file": "cloth2",
+   "at": "c48",
+   "off": 0.4,
+   "gain": -24
+  },
+  {
+   "file": "creak1",
+   "at": "c48",
+   "off": 0.5,
+   "gain": -28
+  },
+  {
+   "file": "cloth1",
+   "at": "c48",
+   "off": 1.0,
+   "gain": -26
+  },
+  {
+   "file": "footstep_wood_000",
+   "at": "c49",
+   "off": 2.2,
+   "gain": -27
+  }
+ ],
+ "own_voice": "docs/videos/tai-nainai-e003/voice.json",
+ "frame_round": true,
+ "min_is_cut": true,
+ "skip": [
+  "c10"
+ ],
+ "spill": [
+  "c49"
+ ],
+ "spill_lead": {
+  "c49": 0.8
+ },
+ "speaker_gain": {
+  "yuetang-18": -3.5
+ },
+ "line_gain": {},
+ "line_far": [],
+ "end_black": 1.8
+}

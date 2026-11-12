@@ -3,8 +3,8 @@
   "slug": "tai-nainai-e007",
   "format": "drama",
   "target_minutes": [
-    1.4,
-    2.9
+    1.5,
+    3.0
   ],
   "voice": {
     "provider": "gemini",
@@ -20,6 +20,26 @@
   },
   "characters": [
     {
+      "id": "xiaoman",
+      "name": "沈小滿",
+      "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, a school uniform: a navy blazer one size too big, a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, white socks and black school shoes, no badge or lettering on the uniform",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十七歲的高中女生，聲音快、亮；受委屈時先笑一下再哭，哭的時候聲音壓低"
+      },
+      "shot_looks": [
+        {
+          "id": "home",
+          "appearance": "East Asian girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, an oversized light grey hoodie, loose black track pants, white socks"
+        },
+        {
+          "id": "damp",
+          "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, her bangs and the shoulders of her navy blazer damp, her face clean and dry, the blazer one size too big and buttoned over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, dry and fully covering, white socks and black school shoes, no badge or lettering"
+        }
+      ]
+    },
+    {
       "id": "yuetang-18",
       "name": "沈月棠",
       "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze that seems to have seen a hundred years, light natural makeup, black hair in one thick old-fashioned three-strand braid over her right shoulder tied with a dark blue cotton cord, a plain moon-white cotton shirt with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves, a navy ankle-length cotton skirt, black cloth shoes, a thick old silver ring on her left ring finger with its small square seal face turned toward the palm, back very straight, hands folded in front of her waist like an elderly lady",
@@ -31,7 +51,7 @@
       "shot_looks": [
         {
           "id": "shouyi",
-          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a loose plain off-white cotton burial robe with a high stand-up collar and fabric frog buttons fastened to the throat, long sleeves to the wrists and loose trousers to the ankles, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
+          "appearance": "East Asian young woman of eighteen, a classical beauty: an oval face, gently curved brows, almond eyes with a calm, deep gaze, black hair in one thick three-strand braid over her right shoulder, wearing a long loose plain off-white cotton burial robe that falls to mid-calf, with a high stand-up collar and fabric frog buttons fastened to the throat and long sleeves to the wrists, matching loose off-white trousers showing below it at the ankles, no cape, no shawl, no shoulder flap, nothing over the robe, white cloth shoes, the thick old silver ring on her left ring finger with the seal face toward the palm, back very straight, hands folded in front of her waist"
         },
         {
           "id": "wrinkle",
@@ -52,26 +72,6 @@
         {
           "id": "huiyi-1948",
           "appearance": "the same young woman of eighteen in 1948: an oval face, gently curved brows, calm almond eyes, black hair in two neat braids tied with plain cotton string, a pale blue cotton side-fastening blouse with a high collar and fabric frog buttons, a dark cotton skirt to the ankles, black cloth shoes, the thick silver ring on her left ring finger, standing straight with her hands folded, 1940s portrait photograph style"
-        }
-      ]
-    },
-    {
-      "id": "xiaoman",
-      "name": "沈小滿",
-      "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, a school uniform: a navy blazer one size too big, a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, white socks and black school shoes, no badge or lettering on the uniform",
-      "voice": {
-        "provider": "gemini",
-        "name": "Leda",
-        "style": "標準國語，咬字清楚，台北人平常說話的語調；十七歲的高中女生，聲音快、亮；受委屈時先笑一下再哭，哭的時候聲音壓低"
-      },
-      "shot_looks": [
-        {
-          "id": "home",
-          "appearance": "East Asian girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, an oversized light grey hoodie, loose black track pants, white socks"
-        },
-        {
-          "id": "damp",
-          "appearance": "East Asian high-school girl of seventeen, a round face and big bright eyes, straight blunt bangs and a high ponytail, her bangs and the shoulders of her navy blazer damp and water marks on her cheeks, the blazer one size too big and buttoned over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, dry and fully covering, white socks and black school shoes, no badge or lettering"
         }
       ]
     },
@@ -117,13 +117,13 @@
       "shot_looks": [
         {
           "id": "home",
-          "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace, bright red nails, a plum satin pyjama-style house top with a small neat collar, buttoned all the way up, long sleeves, matching wide plum satin trousers, satin slippers"
+          "appearance": "East Asian woman of fifty, well-kept and glamorous, an expressive face with arched brows and red lips, big glossy shoulder-length wavy curls in dark chestnut, a pearl necklace, bright red nails, a plum satin pyjama top with notch lapels and thin white piping, a V neckline showing the pearl necklace, buttoned down the front, long sleeves, matching wide plum satin trousers, satin slippers"
         }
       ]
     }
   ],
   "music": {
-    "prompt": "a light playful comedy cue of pizzicato strings and a muted bass clarinet on the morning bus, pausing for half a beat on one accent, then a cold, subdued school cue of soft piano over low strings at the gate, the comedy cue's tail returning softly in the dusk lane, and finally low tense plucked strings in the courtyard ending on one accent; restrained, no vocals"
+    "prompt": "a light, playful comedy cue of plucked strings and soft woodwinds on the morning bus with one half-beat stop after she names the old stops, then a cold, restrained tension cue of muted low strings at the school gate with one accent when the girl sees her, then a slow suspense cue of low drones and a few soft piano notes at dusk in the lane and the courtyard, one accent on the last question; restrained, no vocals"
   },
   "subtitles": {
     "burn_in": false,
@@ -134,7 +134,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "校門口｜恁祖媽今年18 第7集",
-    "description": "第5天清晨，小滿沒有書包，抱著一個紙袋去上學；她沒跟小滿說，跟在後面上了公車，要親眼看是誰拿走了書包。她把銅板放在刷卡機上，司機吼「刷卡！」、又問她是從哪裡來的；她報出這條路從前跑馬車時的站名「北門口、米市街、渡船頭」，整車安靜。直播主林導把鏡頭轉過來，說古風少女在罵司機，她問那塊發亮的板子是不是算盤。到了校門口，一個淺棕長髮的女生拎著小滿的書包，把一整杯奶茶倒進去、丟在小滿腳邊；小滿回頭看見她，比看見那個女生更怕，求她什麼都別跟家裡說，跑進校門。她撿起書包，告訴那個女生自己是沈家的保母。她不會搭回程的公車，走了大半天才回到沈家巷；一進院子，林美鳳拿著從她木箱裡翻出來的白壽衣：「老太太的壽衣，妳是從哪裡拿來的？」",
+    "description": "第5天清晨，小滿沒有書包，抱著一個紙袋去上學；她沒跟小滿說，跟在後面上了公車，要親眼看是誰拿走了書包。她把銅板放在刷卡機上，司機吼「刷卡！」、又問她是從哪裡來的；她報出這條路從前跑馬車時的站名「北門口、米市街、渡船頭」。直播主林導把手機轉過來，說古風少女在罵司機，她問那塊發亮的板子是不是算盤。到了校門口，一個淺棕長髮的女生拎著小滿的書包，把一整杯奶茶倒進去、丟在小滿腳邊；小滿回頭看見她，比看見那個女生更怕，求她什麼都別跟家裡說，跑進校門。她撿起書包，告訴那個女生自己是沈家的保母。她不會搭回程的公車，走了大半天才回到沈家巷；一進院子，林美鳳拿著從她木箱裡翻出來的白壽衣：「老太太的壽衣，妳是從哪裡拿來的？」",
     "tags": [
       "恁祖媽今年18",
       "AI短劇",
@@ -146,14 +146,44 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "我是沈家保母",
+      "headline": "沈家的保母",
       "tag": "恁祖媽今年18",
-      "shot": "c15"
+      "shot": "c23"
     }
   },
   "scenes": [
     {
       "id": "c01",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside a city bus in the early morning, clear and cold, seen from the middle of the bus toward the front as in the bus picture: rows of blue seats on both sides, yellow poles and a row of hanging straps; at the front the big windshield with the morning street beyond; at the front right the steps of the front door with a tall grey coin box beside them; a small grey box fixed to a yellow pole near the front, its face turned away; the driver's seat at the front left behind a yellow rail; every seat in view is empty; the small signs and stickers are blank; one out-of-focus yellow pole in the foreground. Exactly three people in the whole frame, two faces. In the middle of the aisle, Shen Xiaoman, a high-school girl with straight blunt bangs and a high ponytail, in a navy school blazer one size too big over a white shirt with a navy ribbon tie, a navy pleated skirt below the knee, white socks and black school shoes, small white wireless earbuds with no logo in her ears, a plain white paper b",
+        "camera": "Wide shot, slow push in",
+        "characters": [
+          "xiaoman",
+          "yuetang-18"
+        ],
+        "motion": "Xiaoman walks down the aisle head down as Yuetang steps on behind her, watching."
+      },
+      "chapter": "跟著小滿上學",
+      "action_seconds": 2
+    },
+    {
+      "id": "c02",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside a city bus in the early morning, clear and cold; behind her only the out-of-focus rear window of the bus and the early morning street; an out-of-focus yellow pole and blue seat backs in the foreground. Exactly one person in the whole frame: Shen Xiaoman, a high-school girl with straight blunt bangs and a high ponytail, in a navy school blazer one size too big over a white shirt with a navy ribbon tie, small white wireless earbuds with no logo in her ears, sitting in a blue window seat at the back of the bus, a plain white paper bag of schoolbooks with nothing printed on it hugged to her chest in both arms, no school bag; early light through the window on half her face. Brows pressed down, eyes lowered to the bag, lips pressed tight, chin sunk into her ribbon tie, shallow breath, no smile, lips together, no teeth showing. In the first frame she is already seated; in the first second she hugs the bag tighter and lowers her head further, her forehead leaning toward the window; she ",
+        "camera": "Point-of-view medium shot, locked",
+        "characters": [
+          "xiaoman"
+        ],
+        "motion": "At the back of the bus Xiaoman hugs her paper bag and sinks her head toward the window."
+      },
+      "action_seconds": 2
+    },
+    {
+      "id": "c03",
       "template": "shot",
       "lines": [
         {
@@ -163,31 +193,16 @@
         }
       ],
       "data": {
-        "prompt": "Inside a city bus in the early morning, slanting sunlight through the windows on the right side, at the front door, its handrail in the foreground. Three people: Shen Xiaoman in her school uniform, navy blazer a size too big, navy pleated skirt below the knee, no schoolbag, white wired earphones in her ears, head down, boards first, a plain white paper bag of books hugged in her left arm and a plain blank student card in her right hand; Shen Yuetang in her moon-white high-collared shirt follows two steps behind, one coin pinched in her right hand; on screen right only the back and shoulder of the driver in a plain light-blue work shirt. Xiaoman taps the card on the card reader and walks head down toward the back without looking round; Yuetang holds the rail and steps up the last step, slow and steady, her eyes following Xiaoman's back. Her inner voice: every mouth closed.",
-        "camera": "medium shot, tracking with the two as they board",
+        "prompt": "Inside a city bus in the early morning, clear and cold; behind her only the out-of-focus windshield and soft early morning light; the camera halfway down the aisle, to her front left. Exactly one person in the whole frame, a medium close-up from the chest up: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, standing by a yellow pole at the front, her hands below the bottom edge of the frame; early light from screen right on half her face. Eyes fixed far off to the left of the lens toward the back of the bus, brows slightly drawn, lips closed, chin tucked, a slow breath in, no smile, lips together, no teeth showing; the same face from the first frame to the last. In the first second the bus sways and her body sways gently with it, then she straightens her back again, her eyes never leaving the back of the bus and never going to the camera. Her lips stay closed. End: standi",
+        "camera": "Medium close-up, slow push in to a medium close-up",
         "characters": [
-          "xiaoman",
           "yuetang-18"
-        ]
-      },
-      "chapter": "公車"
-    },
-    {
-      "id": "c01b",
-      "template": "shot",
-      "lines": [],
-      "data": {
-        "prompt": "Inside a city bus in the early morning, seen from the front toward the back: in the foreground the shoulders of standing passengers and hanging straps, soft and out of focus; slanting sunlight through the windows on the right side. Deep in the frame on the left a teenage schoolgirl in her school uniform sits in a window seat at the back of the bus, both arms around a white paper bag of textbooks, no schoolbag, white wired earphones in her ears, head down. A few standing passengers in plain clothes with no logos stand between, seen from behind or in profile, silent. She hugs the paper bag tighter and lowers her head further without looking up; the slanting light sweeps across the cabin. Everyone keeps their mouth closed.",
-        "camera": "medium shot, locked, from the front of the bus toward the back",
-        "characters": [
-          "xiaoman"
         ],
-        "motion": "The schoolgirl hugs the paper bag tighter and lowers her head further; the slanting light sweeps across the cabin."
-      },
-      "action_seconds": 1
+        "motion": "The bus sways; Yuetang sways with it and straightens, her eyes on the back of the bus."
+      }
     },
     {
-      "id": "c02",
+      "id": "c04",
       "template": "shot",
       "lines": [
         {
@@ -198,15 +213,16 @@
         }
       ],
       "data": {
-        "prompt": "Inside a city bus beside the driver's seat in morning light: the first frame is filled by the side of a plain card reader with no markings, seen from the side so its display is never visible, and a young right hand in a moon-white cuff holding a coin; at the right edge only part of a light-blue shirt shoulder. She sets the coin squarely on the reader's touch surface and presses it once with her fingertip; nothing happens; her fingertip stays on the coin. A shout comes from off screen right. No face and no mouth in the frame.",
-        "camera": "close-up from the side, locked",
+        "prompt": "Inside a city bus in the early morning, clear and cold; behind her only the out-of-focus glass of the front door and the morning street. Exactly one person in the whole frame, seen side-on from the waist up: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, standing at the front of the bus; in the first frame one coin already lies flat on top of a small plain grey box fixed to a yellow pole, the face of the box turned away from the camera, her bare right hand with no ring resting beside the coin; her left hand out of the frame. Brows lifted a little, eyes looking down at the coin, lips closed, chin tucked, no smile, lips together, no teeth showing. In the first second she waits and tilts her head slightly, her hand still; nothing happens. Her lips stay closed. End: halfway through the head tilt.",
+        "camera": "Medium shot, locked",
         "characters": [
           "yuetang-18"
-        ]
+        ],
+        "motion": "She lays the coin on the card reader, presses it and waits, puzzled."
       }
     },
     {
-      "id": "c03",
+      "id": "c05",
       "template": "shot",
       "lines": [
         {
@@ -217,16 +233,16 @@
         }
       ],
       "data": {
-        "prompt": "Inside a city bus in the early morning, slanting sunlight through the windows on the right side: over Shen Yuetang's right shoulder, her right shoulder and thick braid soft on screen left; on screen right the bus driver, a man in his fifties in a plain light-blue work shirt with no lettering, sits in the driver's seat with his back to the camera, only his shoulders and the back of his head seen, right hand on the wheel; through the windscreen an old-town street in morning light. Two people. Impatient, he turns his head halfway round, never showing his full face, jabs a finger across the aisle toward the coin box, then slaps the wheel once. He speaks a loud, hurried Mandarin line with his back to the camera, his mouth never seen. Shen Yuetang keeps her mouth closed.",
-        "camera": "over-the-shoulder medium shot, slow push to medium close-up",
+        "prompt": "Inside a city bus in the early morning, clear and cold; the camera behind the driver's seat to its right, looking toward the front door; the glass of the front door and the morning street behind her. Exactly two people in the whole frame, one face. In the left foreground, out of focus, the bus driver in a plain light-blue work shirt with no lettering, only the back of his head and his shoulder seen, his face never in the frame, sitting at the big steering wheel with both hands on it. On screen right, standing by a yellow pole at the top of the front-door steps, Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, in three-quarter profile toward the driver at screen left. Shen Yuetang: brows raised, eyes fixed on the back of his head, lips closed, chin slightly tucked, no smile, lips together, no teeth showing. In the first second the driver lifts his right hand off the wheel ",
+        "camera": "Medium shot, locked",
         "characters": [
-          "siji",
           "yuetang-18"
-        ]
+        ],
+        "motion": "The driver jabs a finger toward the coin box without turning round; she looks from his finger back to him."
       }
     },
     {
-      "id": "c04",
+      "id": "c06",
       "template": "shot",
       "lines": [
         {
@@ -237,29 +253,16 @@
         }
       ],
       "data": {
-        "prompt": "Inside a city bus in the early morning, slanting sunlight through the windows on the right side, seen from slightly below: Shen Yuetang in her moon-white high-collared shirt buttoned to the throat, a coin in her right hand; behind her the bus window and an old street sliding past, morning light slanting in. She is the only person in the frame, not smiling, her gaze steady. She closes the coin into her right hand, folds both hands at her waist and raises her eyes toward the back of the driver's head off screen. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, slow, falling at the end.",
-        "camera": "low-angle close-up, slow push-in",
-        "characters": [
-          "yuetang-18"
-        ]
-      }
-    },
-    {
-      "id": "c04b",
-      "template": "shot",
-      "lines": [],
-      "data": {
-        "prompt": "Inside a city bus in morning light: the first frame is filled by the coin slot of a plain coin box with no markings and a young right hand in a moon-white cuff holding a coin above it. The hand lines the coin up with the slot and lets it drop in; the coin falls inside; the hand withdraws out of the frame. No face in the frame.",
-        "camera": "close-up, locked",
+        "prompt": "Inside a city bus in the early morning, clear and cold; seen from low beside the driver's seat looking up, behind her only the out-of-focus bus ceiling and a row of hanging straps. Exactly one person in the whole frame, a medium close-up from the chest up: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, standing at the front, both hands out of the frame below the bottom edge; early light slanting from screen right across half her face. Back very straight, chin lifted a little, eyes clear and fixed on the driver far below to the left, brows level, lips pressing together between the place names, steady breath, no smile, lips together, no teeth showing; the same face from the first frame to the last. Her lips are closed until she starts, and she starts within the first second. Shen Yuetang, turned toward him in three-quarter profile, speaks a short Mandarin line, 「我從北門口來。這條",
+        "camera": "Low-angle medium close-up, slow push in to a medium close-up",
         "characters": [
           "yuetang-18"
         ],
-        "motion": "Her hand drops the coin into the coin box slot and withdraws out of the frame."
-      },
-      "action_seconds": 2
+        "motion": "Looking down at the driver, she names the old stops of the horse-cart road one by one."
+      }
     },
     {
-      "id": "c05",
+      "id": "c07",
       "template": "shot",
       "lines": [
         {
@@ -270,16 +273,16 @@
         }
       ],
       "data": {
-        "prompt": "Inside a city bus in the early morning, slanting sunlight through the windows on the right side; hanging straps and standing passengers' shoulders in the foreground. About seventeen people: about ten standing and four seated passengers in plain clothes with no logos, some holding phones, screens out of view; in the middle Director Lin, a thin man in a black cap, an olive utility jacket and a camera on his neck, a selfie stick with a phone in his right hand, the phone's back to the camera; at front right Shen Yuetang in profile; at the right edge only the driver's shoulder. The bus falls quiet, several passengers look up at her, the driver's hand stops on the wheel; Director Lin squeezes through to stand behind her on screen left, turns the stick toward her and talks to the phone, his face turned sideways. Director Lin speaks a Mandarin line, his lips moving clearly, excited but hushed. Everyone else keeps their mouth closed.",
-        "camera": "wide shot, slow push-in",
+        "prompt": "Inside a city bus in the early morning, clear and cold; behind him only the out-of-focus bus windows and early morning light; the camera in the aisle to his front right. Exactly one person in the whole frame, a medium close-up from the chest up: Director Lin, a thin man of thirty-five in a black baseball cap with no logo, an olive utility jacket over a grey T-shirt, a black camera with no logo on a strap around his neck, standing in the aisle, a black selfie stick in his right hand with a phone on its tip; the phone's plain black back faces the camera, no logo, held out in front of his face at screen left. Brows shot up high, eyes wide and bright on the phone, mouth corners stretched up, quick excited breaths. His lips are closed until he starts, and he starts within the first second. Director Lin, in profile toward the phone, speaks a short Mandarin line, 「我是林導，公車上這位古風少女在罵司機！」, eyes on the phone on his selfie stick at screen left, face in profile or three-quarter profile, never lookin",
+        "camera": "Medium close-up, slow push in",
         "characters": [
-          "lindao",
-          "yuetang-18"
-        ]
+          "lindao"
+        ],
+        "motion": "The live-streamer whispers excitedly into his phone, pointing at the girl off screen."
       }
     },
     {
-      "id": "c06",
+      "id": "c08",
       "template": "shot",
       "lines": [
         {
@@ -290,15 +293,17 @@
         }
       ],
       "data": {
-        "prompt": "Inside a city bus in the early morning, slanting sunlight through the windows on the right side: Shen Yuetang in her moon-white high-collared shirt, her face lit a little by the glow of a phone screen at screen left, the phone's back to the camera, only one corner of it in the frame; behind her the bus window. She is the only person in the frame, curious, not smiling. She turns her head and sees the glowing phone aimed at her, leans forward slightly and flicks her right forefinger sideways in the air. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, asking in earnest.",
-        "camera": "close-up, slow push-in",
+        "prompt": "Inside a city bus in the early morning, clear and cold; behind her only the out-of-focus windshield and soft early morning light. Exactly two people in the whole frame. Over Director Lin's left shoulder: his left shoulder in the olive utility jacket and the back of his black cap soft at the right frame edge, his face unseen. On screen left, a medium close-up from the chest up, she filling about half of the frame: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, both hands out of the frame; early light from screen right on her face. Brows lifted slightly, eyes curious on the phone he holds just beyond the right edge of the frame, lips pressing together between phrases, chin pushed forward a little, no smile, lips together, no teeth showing. In the first second she leans forward a little; her lips are closed until she starts, and she starts within the first second. Shen Yue",
+        "camera": "Over-the-shoulder medium close-up, slow push in",
         "characters": [
-          "yuetang-18"
-        ]
+          "yuetang-18",
+          "lindao"
+        ],
+        "motion": "Leaning in, she earnestly asks whether his glowing board is an abacus."
       }
     },
     {
-      "id": "c07",
+      "id": "c09",
       "template": "shot",
       "lines": [
         {
@@ -309,16 +314,17 @@
         }
       ],
       "data": {
-        "prompt": "Inside a city bus in the early morning, slanting sunlight through the windows on the right side: over Shen Yuetang's left shoulder, her left shoulder soft on screen right, her braid on the far side out of frame, as she turns to face him; on screen left Director Lin in his black cap and olive utility jacket stands in the aisle behind her, a selfie stick in his right hand, laughing. Two people. He laughs until his shoulders shake, draws the selfie stick back to aim at both of them, and gestures at the phone with his left hand. Director Lin speaks a Mandarin line, his lips, jaw and cheeks moving clearly with every syllable, laughing. Shen Yuetang keeps her mouth closed and tilts her head at the phone.",
-        "camera": "over-the-shoulder medium shot, slow push to medium close-up",
+        "prompt": "Inside a city bus in the early morning, clear and cold; behind him only the out-of-focus bus windows and hanging straps. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: her right shoulder, moon-white collar and the thick black braid lying over it soft at the left frame edge, her face unseen. On screen right, a medium close-up from the chest up, he filling about half of the frame: Director Lin, a thin man of thirty-five in a black baseball cap with no logo, an olive utility jacket over a grey T-shirt, a black camera with no logo on a strap around his neck, the selfie stick in his right hand raised high, the phone above the top edge of the frame. Laughing hard from the first frame: eyes squeezed into two slits, brows up, mouth open in a big laugh, shoulders shaking. In the first second, still laughing, Director Lin, turned to Shen Yuetang at screen left in three-quarter profile, speaks a short Mandarin line, 「姐，這叫手機直播，現在大家都在看妳！」, turned toward the person being ",
+        "camera": "Over-the-shoulder medium close-up, locked",
         "characters": [
           "lindao",
           "yuetang-18"
-        ]
+        ],
+        "motion": "Laughing so hard his shoulders shake, he tells her it is a live stream and everyone is watching."
       }
     },
     {
-      "id": "c08",
+      "id": "c10",
       "template": "shot",
       "lines": [
         {
@@ -328,15 +334,46 @@
         }
       ],
       "data": {
-        "prompt": "Inside a city bus in the early morning, slanting sunlight through the windows on the right side, seen through her eyes over the standing passengers toward the back, their shoulders and hanging straps in the foreground. At the back by the window Shen Xiaoman in her school uniform, white earphones in her ears, holding the white paper bag, her forehead resting on the window as she looks out, never turning round; about five standing passengers in between; morning light outside. The bus brakes and slows; Xiaoman pulls out her earphones, tucks them into her blazer pocket, stands up and walks toward the rear door. Every mouth closed.",
-        "camera": "wide shot from her point of view, slow push-in to a medium shot",
+        "prompt": "Inside a city bus in the early morning, clear and cold; behind her only the out-of-focus rear window of the bus and the early morning street; an out-of-focus yellow pole and blue seat backs in the foreground. Exactly one person in the whole frame: Shen Xiaoman, a high-school girl with straight blunt bangs and a high ponytail, in a navy school blazer one size too big over a white shirt with a navy ribbon tie, small white wireless earbuds with no logo in her ears, in the first frame still sitting in the blue window seat at the back, a plain white paper bag of schoolbooks with nothing printed on it hugged to her chest in both arms, no school bag; the street outside the window slowing down. Brows pressed down, eyes lowered, lips pressed tight, chin tucked, no smile, lips together, no teeth showing. In the first second the bus brakes and she stands up with the bag and turns to walk toward the rear door at screen left, never looking toward the front. Her lips stay closed. The camera holds a ",
+        "camera": "Point-of-view medium shot, locked",
         "characters": [
           "xiaoman"
-        ]
+        ],
+        "motion": "As the bus brakes, Xiaoman gets up with her bag and heads for the rear door."
       }
     },
     {
-      "id": "c09",
+      "id": "c11",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Inside a city bus in the early morning, clear and cold; behind her only the out-of-focus windshield and soft early morning light. Exactly one person in the whole frame, a medium close-up from the chest up: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, standing by a yellow pole at the front. In the first frame her eyes are on the girl far off to the left of the lens, brows level, lips closed, chin slightly tucked, steady breath, no smile, lips together, no teeth showing; the same face from the first frame to the last. In the first second her head turns to screen right and she is about to set off: her weight shifts to the right and one foot is just lifting. Her lips stay closed. The camera holds a static shot. End: just setting off, weight on the right.",
+        "camera": "Medium close-up, locked",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Her eyes on the girl, she takes a slow step after her toward the rear door."
+      },
+      "action_seconds": 4
+    },
+    {
+      "id": "c12",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Outside the front gate of a high school on a clear, cold morning, seen from the sidewalk toward the gate as in the school-gate picture: on the left half a wide closed iron bar gate, to its right a small white guard booth with a rounded roof, then a long cream wall with a dark red base running right; bare trees and one dark green cypress behind the wall; the school building behind the gate out of focus with nothing written on it; grey paving stones of the sidewalk in the foreground; nobody else on the sidewalk. Exactly two people in the whole frame. On screen right, standing in front of the cream wall, He Xiaoyang, a polished high-school girl with long straight light-brown hair worn loose and no bangs, in a slim-tailored navy school blazer over a white shirt with a navy necktie, a navy pleated skirt below the knee, white socks and black school shoes, holding Xiaoman's plain navy school bag with nothing written on it, its main zip open by its handle in her right hand and a clear plastic ",
+        "camera": "Wide shot, slow push in",
+        "characters": [
+          "hexiaoyang",
+          "xiaoman"
+        ],
+        "motion": "Xiaoman walks up to the gate and stops dead when she sees her bag in the other girl's hand."
+      },
+      "chapter": "奶茶倒進書包",
+      "action_seconds": 3
+    },
+    {
+      "id": "c13",
       "template": "shot",
       "lines": [
         {
@@ -347,18 +384,31 @@
         }
       ],
       "data": {
-        "prompt": "Outside a high-school gate on a cold morning, backlit by low sun from the street; half-open iron gate bars in the right foreground. About fifteen people: in the middle by the wall outside the gate He Xiaoyang, long light-brown hair loose, holds in her right hand a navy schoolbag with no lettering, its main zip open, three brass bells at its front pocket, and in her left a plastic cup of milk tea; two schoolgirls behind her, seen from behind; on screen left Shen Xiaoman walks up from the bus stop with a white paper bag; in the background about ten students walk in, backs turned; far back left, small, out of focus, Shen Yuetang under a tree by the wall. Xiaoman sees it and stops, hugging the paper bag tighter; He Xiaoyang lifts the schoolbag and shakes it, the bells ring once, and smiling she takes two steps forward. He Xiaoyang speaks a Mandarin line, her lips moving clearly, sweet with a sting. The others keep their mouths closed.",
-        "camera": "wide shot, slow push-in",
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; behind her only the out-of-focus cream school wall and bare branches. Exactly two people in the whole frame. Over Shen Xiaoman's right shoulder: her right shoulder in the navy blazer and her high black ponytail soft at the left frame edge, her face unseen. On screen right, a medium close-up from the chest up, she filling about half of the frame: He Xiaoyang, a polished high-school girl with long straight light-brown hair worn loose and no bangs, in a slim-tailored navy school blazer over a white shirt with a navy necktie, holding Xiaoman's plain navy school bag with nothing written on it, its main zip open up at her chest in her right hand, the little brass bells on a faded red cord clipped to the zip pull of its front pocket; her left hand with the milk tea below the bottom edge of the frame. One brow raised, eyes half-lidded on the other girl, one mouth corner curled up with no teeth showing, chin raised. In the first ",
+        "camera": "Over-the-shoulder medium close-up, slow push in",
         "characters": [
           "hexiaoyang",
-          "xiaoman",
-          "yuetang-18"
-        ]
-      },
-      "chapter": "校門口"
+          "xiaoman"
+        ],
+        "motion": "Shaking the bag so the bells ring, she tells Xiaoman the bag spent the night with her."
+      }
     },
     {
-      "id": "c10",
+      "id": "c14",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; behind her only the out-of-focus street and cold morning light. Exactly one person in the whole frame, a medium close-up from the chest up: Shen Xiaoman, a high-school girl with straight blunt bangs and a high ponytail, in a navy school blazer one size too big over a white shirt with a navy ribbon tie, the white paper bag hugged to her chest at the bottom edge of the frame. Brows pushed up and together, eyes glistening with tears, no redness, no red marks, lips pressed tight and trembling, chin pulled in, tight breath, no smile, lips together, no teeth showing; the same face from the first frame to the last. In the first second she hugs the bag harder to her chest and shrinks back half a step, her eyes fixed on the other girl far off to the right of the lens. Her lips stay closed. The camera holds a static shot. End: shrunk back, hugging the bag.",
+        "camera": "Medium close-up, locked",
+        "characters": [
+          "xiaoman"
+        ],
+        "motion": "Xiaoman hugs her paper bag and shrinks back, near tears."
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c15",
       "template": "shot",
       "lines": [
         {
@@ -369,15 +419,30 @@
         }
       ],
       "data": {
-        "prompt": "Outside a school gate in backlit morning light: the first frame is filled by a navy schoolbag with no lettering, its main compartment unzipped, three brass bells on its front pocket, and only a girl's two hands in slim navy blazer cuffs. Her right hand holds the bag up by its handle with the opening facing up; her left hand tips a whole plastic cup of milk tea into it until the cup is empty; the bag is jostled and the bells ring twice. No face and no mouth in the frame.",
-        "camera": "close-up, locked",
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; behind her only the out-of-focus white rounded roof of the guard booth and the cream wall. Exactly one person in the whole frame, a medium close-up from the chest up: He Xiaoyang, a polished high-school girl with long straight light-brown hair worn loose and no bangs, in a slim-tailored navy school blazer over a white shirt with a navy necktie, her right hand holding Xiaoman's plain navy school bag with nothing written on it, its main zip open mouth-up at the bottom edge of the frame, her left hand holding a clear plastic cup with no lid and one straw, full of pale brown milk tea, no logo and nothing printed on it raised just above the open bag. Brows raised, eyes sliding sideways to the girl at screen left, one mouth corner curled up with no teeth showing, chin raised. Her lips are closed until she starts, and she starts within the first second. He Xiaoyang, turned toward the girl in three-quarter profile, speaks a shor",
+        "camera": "Medium close-up, slow push in",
         "characters": [
           "hexiaoyang"
-        ]
+        ],
+        "motion": "Holding the milk tea over the open bag, she sweetly says the bag deserves a drink too."
       }
     },
     {
-      "id": "c11",
+      "id": "c16",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; behind her only the out-of-focus cream school wall. Exactly one person in the whole frame, seen side-on from the waist up in profile facing screen left: He Xiaoyang, a polished high-school girl with long straight light-brown hair worn loose and no bangs, in a slim-tailored navy school blazer over a white shirt with a navy necktie, her right hand holding the handle of Xiaoman's plain navy school bag with nothing written on it, its main zip open, mouth up; in the first frame the lidless cup in her left hand is already tipped over the opening and pale brown milk tea is pouring into the bag. Eyes looking down into the bag, one mouth corner curled up, lips closed with no teeth showing, chin raised. In the first second the tea pours in and the cup runs empty, and she flicks the empty cup down. Her lips stay closed. The camera holds a static shot. End: halfway through the flick.",
+        "camera": "Medium shot, locked",
+        "characters": [
+          "hexiaoyang"
+        ],
+        "motion": "She pours the whole cup of milk tea into the open school bag and flicks the empty cup."
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c17",
       "template": "shot",
       "lines": [
         {
@@ -387,15 +452,16 @@
         }
       ],
       "data": {
-        "prompt": "Outside the front gate of a high school on a cold clear morning, backlit by low sun from the street behind: Shen Yuetang in her moon-white high-collared shirt stands away from the crowd under a tree by the school wall; behind her the out-of-focus street and the backlight; the wind lifts the end of her braid. She is the only person in the frame, not smiling, her eyes darkening. She stays where she is without rushing forward; the fingers of her hands folded at her waist tighten little by little; her eyes move from something at screen right down toward someone further off. Laughter comes from off screen right. Her inner voice: mouth closed.",
-        "camera": "close-up, slow push-in",
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; seen from low on the sidewalk looking up, behind her only out-of-focus bare branches and the pale grey morning sky. Exactly one person in the whole frame, a medium close-up from the chest up: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, standing on the sidewalk a few steps behind the girl, her hands folded at her waist below the bottom edge of the frame; the wind lifts the end of her braid; cold morning light. Eyes darkened and fixed on the girl with the cup far off to the right of the lens, brows pressed down, lips pressed tight, jaw set, a slow breath in through the nose, no smile, lips together, no teeth showing; the same face from the first frame to the last. In the first second she takes half a step forward and stops herself, her shoulders drawing in, her back straightening. Her lips stay closed. E",
+        "camera": "Low-angle medium close-up, slow push in to a medium close-up",
         "characters": [
           "yuetang-18"
-        ]
+        ],
+        "motion": "She starts forward half a step, stops herself and stands very straight, watching."
       }
     },
     {
-      "id": "c12",
+      "id": "c18",
       "template": "shot",
       "lines": [
         {
@@ -406,16 +472,17 @@
         }
       ],
       "data": {
-        "prompt": "Outside the front gate of a high school on a cold clear morning, backlit by low sun from the street behind: over He Xiaoyang's left shoulder, her shoulder and long light-brown hair soft on screen right; on screen left Shen Xiaoman in her school uniform holds the white paper bag, her eyes red, not smiling. Two people. First frame: the wet navy schoolbag still hangs from He Xiaoyang's right hand, milk tea dripping from its opening. She tosses the bag down at Xiaoman's feet; it lands with a wet slap and a muffled ring of the bells; Xiaoman shrinks back half a step and does not dare bend to pick it up. He Xiaoyang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, sweet with a sting. Xiaoman keeps her mouth closed.",
-        "camera": "over-the-shoulder medium shot, slow push to medium close-up",
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; behind her only the out-of-focus cream school wall and bare branches. Exactly two people in the whole frame. Over Shen Xiaoman's right shoulder: her right shoulder in the navy blazer and her high black ponytail soft at the left frame edge, her face unseen. On screen right, a medium close-up from the chest up, she filling about half of the frame: He Xiaoyang, a polished high-school girl with long straight light-brown hair worn loose and no bangs, in a slim-tailored navy school blazer over a white shirt with a navy necktie, the wet navy school bag hanging from her right hand in front of her, milk tea dripping from its bottom; her left hand with the empty cup below the bottom edge of the frame. Brows raised, eyes cool on the other girl, one mouth corner curled up with no teeth showing, chin raised high. In the first second her right hand lets go and the bag drops out of the bottom of the frame toward the girl's feet; her li",
+        "camera": "Over-the-shoulder medium close-up, locked",
         "characters": [
-          "xiaoman",
-          "hexiaoyang"
-        ]
+          "hexiaoyang",
+          "xiaoman"
+        ],
+        "motion": "She drops the dripping bag at Xiaoman's feet and tells her to keep her mouth shut at home."
       }
     },
     {
-      "id": "c13",
+      "id": "c19",
       "template": "shot",
       "lines": [
         {
@@ -426,16 +493,45 @@
         }
       ],
       "data": {
-        "prompt": "Outside the front gate of a high school on a cold clear morning, backlit by low sun from the street behind: over Shen Yuetang's right shoulder, her right shoulder and thick braid soft on screen left, three steps behind the girl; on screen right Shen Xiaoman in her school uniform. Two people. Xiaoman turns to leave, looks up and sees her, freezes, her face going pale, more frightened than before; she steps back one step and speaks with trembling lips; when she finishes, the girl in the foreground slowly nods once, and Xiaoman spins round and runs off toward screen right into the school gate. Shen Xiaoman speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low and trembling. Shen Yuetang keeps her mouth closed.",
-        "camera": "over-the-shoulder medium shot, slow push to medium close-up",
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; behind her only the out-of-focus cream school wall and the iron gate. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: her right shoulder, moon-white collar and the thick black braid lying over it soft at the left frame edge, her face unseen. On screen right, a medium close-up from the chest up, she filling about half of the frame: Shen Xiaoman, a high-school girl with straight blunt bangs and a high ponytail, in a navy school blazer one size too big over a white shirt with a navy ribbon tie, the white paper bag hugged to her chest, in the first frame already turned round to face Shen Yuetang. Pale and frightened from the first frame: brows pushed up and together, eyes wide and glistening with tears, no redness, no red marks, lips trembling, chin pulled in, no smile, no teeth showing; the same frightened face to the last frame. In the first second she backs off half a step; her lips are closed u",
+        "camera": "Over-the-shoulder medium close-up, slow push in",
         "characters": [
           "xiaoman",
           "yuetang-18"
-        ]
+        ],
+        "motion": "Turning to find Yuetang behind her, Xiaoman backs off and begs her not to tell the family."
       }
     },
     {
-      "id": "c14",
+      "id": "c20",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; behind her only the out-of-focus street and cold morning light. Exactly one person in the whole frame, a medium close-up from the chest up: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, her hands folded at her waist below the bottom edge of the frame. Brows drawn gently up and together, eyes soft and fixed on the girl's face far off to the right of the lens, lips closed, chin tucked, a slow breath out, no smile, lips together, no teeth showing; the same face from the first frame to the last. In the first second she nods slowly once, her eyes never leaving the girl. Her lips stay closed. The camera holds a static shot. End: halfway through the nod.",
+        "camera": "Medium close-up, locked",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "She nods once, slowly: she will not tell."
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c21",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; seen side-on from low on the sidewalk, behind her only the out-of-focus cream school wall. Exactly one person in the whole frame: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat, ankle-length navy cotton skirt and black cloth shoes, one thick braid over her right shoulder, the thick old silver ring only on her left ring finger, her right hand bare with no ring; in the first frame she is already crouched low and steady on the sidewalk, her skirt tucked to cover her ankles, her left hand already gripping the handle of the wet navy school bag on the ground, the little brass bells on a faded red cord clipped to the zip pull of its front pocket; a puddle of pale brown milk tea on the paving. Brows pressed down, eyes on the bag, lips pressed tight, slow breath, no smile, lips together, no teeth showing. In the first second she rises slowly with the bag, the bells ring once and",
+        "camera": "Medium shot, slow push in",
+        "characters": [
+          "yuetang-18"
+        ],
+        "motion": "Crouched by the soaked bag, she lifts it by the handle and slowly stands, tea dripping."
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c22",
       "template": "shot",
       "lines": [
         {
@@ -446,16 +542,17 @@
         }
       ],
       "data": {
-        "prompt": "Outside the front gate of a high school on a cold clear morning, backlit by low sun from the street behind; the navy schoolbag lying on the ground dripping milk tea in the foreground. On screen left Shen Yuetang in her moon-white high-collared shirt and navy ankle-length skirt; at back right He Xiaoyang in her slim navy blazer, only an empty plastic cup in her left hand, two schoolgirls behind her seen from behind. She walks to the bag and crouches slowly and steadily, tucking her skirt to cover her ankles, lifts the wet bag by its handle in her left hand; the bells ring once and milk tea drips from the bottom; He Xiaoyang looks her up and down sideways. He Xiaoyang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, scornful. Shen Yuetang keeps her mouth closed.",
-        "camera": "medium shot, slow push-in",
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; behind her only the out-of-focus cream school wall and the guard booth. Exactly two people in the whole frame. Over Shen Yuetang's right shoulder: her right shoulder, moon-white collar and the thick black braid lying over it soft at the left frame edge, her face unseen. On screen right, a medium close-up from the chest up, she filling about half of the frame: He Xiaoyang, a polished high-school girl with long straight light-brown hair worn loose and no bangs, in a slim-tailored navy school blazer over a white shirt with a navy necktie, the empty lidless clear plastic cup with its straw in her left hand at the bottom edge of the frame. One brow raised, eyes running down Shen Yuetang's clothes from head to foot, mouth corners pulled down, chin raised, no smile, no teeth showing. In the first second her eyes look Shen Yuetang up and down; her lips are closed until she starts, and she starts within the first second. He Xiaoy",
+        "camera": "Over-the-shoulder medium close-up, locked",
         "characters": [
-          "yuetang-18",
-          "hexiaoyang"
-        ]
+          "hexiaoyang",
+          "yuetang-18"
+        ],
+        "motion": "Looking her up and down, the girl asks what she is to Xiaoman's family, dressed like that."
       }
     },
     {
-      "id": "c15",
+      "id": "c23",
       "template": "shot",
       "lines": [
         {
@@ -466,15 +563,17 @@
         }
       ],
       "data": {
-        "prompt": "Outside the front gate of a high school on a cold clear morning, backlit by low sun from the street behind, seen from slightly below: Shen Yuetang in her moon-white high-collared shirt buttoned to the throat, rising to her feet, in her left hand the dripping navy schoolbag with three brass bells on its front pocket, her right hand empty; behind her only the backlit school wall and trees. She is the only person in the frame, not smiling. She stands straight, looks toward screen right first at eye level, then a little lower, and answers word by word; then she turns and walks off toward the street on screen left carrying the bag. Shen Yuetang speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, low and slow.",
-        "camera": "low-angle close-up, slow push-in",
+        "prompt": "Outside the front gate of a high school on a clear, cold morning; behind her only the out-of-focus street and cold morning light. Exactly two people in the whole frame. Over He Xiaoyang's left shoulder: her left shoulder in the navy blazer and her long light-brown hair soft at the right frame edge, her face unseen. On screen left, a medium close-up from the chest up, she filling about half of the frame: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, both hands below the bottom edge of the frame, the wet school bag in her left hand. Back very straight, eyes on the girl's eyes and then dropping once to the empty cup in her hand, brows level, lips pressing together between the two sentences, chin lifted slightly, steady breath, no smile, lips together, no teeth showing; the same face from the first frame to the last. Her lips are closed until she starts, and she starts wit",
+        "camera": "Over-the-shoulder medium close-up, slow push in",
         "characters": [
-          "yuetang-18"
-        ]
+          "yuetang-18",
+          "hexiaoyang"
+        ],
+        "motion": "Holding the soaked bag, she says she is the Shen family's nanny and will take it home to wash."
       }
     },
     {
-      "id": "c16",
+      "id": "c24",
       "template": "shot",
       "lines": [
         {
@@ -484,16 +583,32 @@
         }
       ],
       "data": {
-        "prompt": "A narrow old-town lane at dusk, looking north at the street front of the old Shen house, an old utility pole in the foreground; the street lamps just coming on: in the middle right the house's black-lacquered double gate with brass ring knockers and a high wooden threshold; to its left an old shopfront of six dark wooden door panels, two empty iron hooks on the lintel and no signboard; grey tiled eaves on low old buildings. Shen Yuetang is the only person in the lane: in her left hand the navy schoolbag with a large dark dried stain and the brass bells on its front pocket, her right hand empty, black cloth shoes dusty, walking slowly with her back straight. She walks into the frame from screen right, looks up at the old buildings on both sides, stops, glances left and right, then walks on toward the black gate. Her inner voice: mouth closed.",
-        "camera": "wide shot, tracking with her from right to left",
+        "prompt": "A narrow old lane at dusk, just after dark, seen from the lane looking north at the street front of the old Shen house as in the lane picture: two low old houses with grey tiled roofs; on the left an old shopfront with a dark brown wooden double door, two small windows and a few stone steps, an old street lamp lit beside it; on the right a black-lacquered double gate with two brass ring knockers; deep blue sky; stone paving in the foreground; nobody else in the lane. Exactly one person in the whole frame: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat, ankle-length navy cotton skirt and black cloth shoes, one thick braid over her right shoulder, the navy school bag hanging from her left hand with a dried dark milk-tea stain on it, her right hand empty, dust on her black cloth shoes. Eyelids a little heavy, brows level, lips closed, breathing a little hard but back straight, no smile, no teeth showing. In the first frame she is already",
+        "camera": "Wide shot, slow push in",
         "characters": [
           "yuetang-18"
-        ]
+        ],
+        "motion": "Tired but upright, she walks up the lane to the black gate and stops."
       },
       "chapter": "壽衣"
     },
     {
-      "id": "c17",
+      "id": "c25",
+      "template": "shot",
+      "lines": [],
+      "data": {
+        "prompt": "The inner stone courtyard of the old Shen house at dusk, just after dark, seen from the back door of the main hall looking north as in the courtyard picture: a round stone table with a few stone stools in the middle on the sunken stone floor; an old well with a small wooden roof on the left; bamboo drying poles leaning on the right; covered corridors with dark red pillars on both sides, warm yellow lamplight on their walls; at the far end the ancestral hall's dark lattice doors above stone steps; deep blue sky. Exactly two people in the whole frame, one face. In the right foreground, seen only from behind, Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat, ankle-length navy cotton skirt and black cloth shoes, one thick braid over her right shoulder, the navy school bag hanging from her left hand, her face unseen. In the middle, standing by the round stone table, Lin Meifeng with big glossy dark chestnut shoulder-length curls, a pearl nec",
+        "camera": "Wide shot, slow push in",
+        "characters": [
+          "meifeng",
+          "yuetang-18"
+        ],
+        "motion": "Lin Meifeng looks up from the stone table and lifts the folded white garment as Yuetang comes in."
+      },
+      "action_seconds": 3
+    },
+    {
+      "id": "c26",
       "template": "shot",
       "lines": [
         {
@@ -504,16 +619,17 @@
         }
       ],
       "data": {
-        "prompt": "The stone courtyard of the old Shen house at dusk, lit only by the paper-shaded lamps along both corridors, seen low from the height of the round stone table, a corner of the table in the foreground with a folded plain white cotton garment lying on it. Two people: in the left foreground Lin Meifeng in a fitted wine-red long-sleeved knit dress with a high neckline, half turned with her back to the camera, standing by the table; at back right in the courtyard door of the main hall Shen Yuetang has just arrived, the navy schoolbag in her left hand. She steps over the threshold and stops; Meifeng hears her, turns, the corner of her mouth lifting, and picks up the white garment from the table with both hands. Lin Meifeng speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, falsely sweet, drawling. Shen Yuetang keeps her mouth closed.",
-        "camera": "low-angle wide shot from stone-table height, slow push-in",
+        "prompt": "The inner stone courtyard of the old Shen house at dusk, just after dark; behind her only the out-of-focus corridor pillars and warm yellow lamplight. Exactly two people in the whole frame. Over Shen Yuetang's left shoulder: her left shoulder, moon-white collar and the back of her black hair soft at the right frame edge, her face unseen; her braid is on the far side, out of the frame. On screen left, a medium close-up from the chest up, she filling about half of the frame: Lin Meifeng with big glossy dark chestnut shoulder-length curls, a pearl necklace, red nails and a fitted wine-red long-sleeved knit dress with a high round neckline, holding the same plain off-white cotton burial robe, high stand-up collar and side frog-button fastening, folded neatly at her chest in both hands. Mouth corners pulled up into a fake smile with no teeth showing, eyes not smiling and coldly fixed on Shen Yuetang, brows arched high, chin raised. Her lips are closed until she starts, and she starts within",
+        "camera": "Over-the-shoulder medium close-up, locked",
         "characters": [
           "meifeng",
           "yuetang-18"
-        ]
+        ],
+        "motion": "With a fake smile she says she found something in Yuetang's wooden box."
       }
     },
     {
-      "id": "c18",
+      "id": "c27",
       "template": "shot",
       "lines": [
         {
@@ -524,15 +640,16 @@
         }
       ],
       "data": {
-        "prompt": "The stone courtyard of the old Shen house at dusk, lit only by the paper-shaded lamps along both corridors; a stone stool beside the round table in the foreground. Lin Meifeng with dark chestnut waves, a pearl necklace and red nails, in a fitted wine-red long-sleeved knit dress, grips by its shoulders a plain white cotton burial robe with a stand-up collar, fabric frog buttons and long sleeves, no embroidery and nothing written; behind her the out-of-focus east corridor and its paper lamps. She is the only person in the frame, smiling coldly. With both hands she shakes the robe so it falls open and hangs full length in the dusk, then raises it chest-high toward screen right. Lin Meifeng speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, sneering, shrill.",
-        "camera": "medium shot, slow push-in",
+        "prompt": "The inner stone courtyard of the old Shen house at dusk, just after dark; behind her only out-of-focus corridor pillars and a dark wall. Exactly one person in the whole frame: Lin Meifeng with big glossy dark chestnut shoulder-length curls, a pearl necklace, red nails and a fitted wine-red long-sleeved knit dress with a high round neckline; in the first frame she is already holding a plain off-white cotton burial robe with a high stand-up collar, no V-neck, a side frog-button fastening, long sleeves, mid-calf length with slits at both sides, no embroidery and nothing written on it by its shoulders in both hands, shaken open and hanging down in front of her; warm yellow corridor light from screen left on her face and the white cloth. Brows arched high, eyes narrowed at the woman far off to the right, red lips twisted coldly to one side with no teeth showing, chin raised high. In the first second she lifts the open robe toward screen right to chest height; her lips are closed until she s",
+        "camera": "Medium shot, slow push in to a medium close-up",
         "characters": [
           "meifeng"
-        ]
+        ],
+        "motion": "Holding the burial robe up by its shoulders, she sneers that it is the old lady's own burial robe."
       }
     },
     {
-      "id": "c19",
+      "id": "c28",
       "template": "shot",
       "lines": [
         {
@@ -543,15 +660,16 @@
         }
       ],
       "data": {
-        "prompt": "In the courtyard doorway of the old Shen house at dusk: Shen Yuetang in her moon-white high-collared shirt, the navy schoolbag in her left hand; behind her the out-of-focus main hall and a warm yellow hanging lamp. She is the only person in the frame, not smiling, her eyes fixed. Her gaze settles on something toward screen left; the knuckles of her left hand tighten until the bag's handle crumples; her right hand slowly lowers from her waist. Mouth closed.",
-        "camera": "close-up, slow push-in",
+        "prompt": "The inner stone courtyard of the old Shen house at dusk, just after dark; seen from stone-table height looking up, behind her only the out-of-focus door frame and warm yellow light from the hall. Exactly one person in the whole frame, a medium close-up from the chest up: Shen Yuetang in her moon-white high-collared cotton shirt with frog buttons fastened to the throat and long narrow sleeves, one thick braid over her right shoulder, standing in the doorway, the school bag in her left hand below the bottom edge of the frame. Eyes fixed on the robe far off to the left of the lens, brows drawn together, lips pressed tight, jaw tightening, a slow breath in, no smile, lips together, no teeth showing; the same face from the first frame to the last. In the first second her bare right hand with no ring slowly lowers from her waist to hang at her side; she keeps her back straight and does not step back. Her lips stay closed. The camera holds a static shot. End: standing her ground, eyes on the ",
+        "camera": "Low-angle medium close-up, locked",
         "characters": [
           "yuetang-18"
-        ]
+        ],
+        "motion": "Eyes on the burial robe, she lowers her right hand and stands her ground."
       }
     },
     {
-      "id": "c20",
+      "id": "c29",
       "template": "shot",
       "lines": [
         {
@@ -562,12 +680,13 @@
         }
       ],
       "data": {
-        "prompt": "The stone courtyard of the old Shen house at dusk, lit only by the paper-shaded lamps along both corridors, the sky just dark, looking north over Shen Yuetang's left shoulder: in the right foreground her left shoulder and her left hand holding the milk-tea-stained navy schoolbag with the bells on its front pocket, her braid on the far side out of frame, her right hand empty, as she stands in the main hall's courtyard doorway; on the left in the middle Lin Meifeng in her wine-red knit dress stands by the round stone table holding the white burial robe shaken open in both hands; deep at back left the ancestral hall's paper doors show only a faint red candle glow. Two people. Meifeng steps forward and shakes the robe at her; Yuetang stands still, back straight. Lin Meifeng speaks a Mandarin line, her lips, jaw and cheeks moving clearly with every syllable, her voice rising. Shen Yuetang keeps her mouth closed.",
-        "camera": "over-the-shoulder medium shot, slow push to medium close-up",
+        "prompt": "The inner stone courtyard of the old Shen house at dusk, just after dark; behind her only the out-of-focus round stone table and corridor pillars; warm yellow corridor light. Exactly two people in the whole frame. Over Shen Yuetang's left shoulder: her left shoulder, moon-white collar and the back of her black hair soft at the right frame edge, her face unseen; her braid is on the far side, out of the frame. On screen left: Lin Meifeng with big glossy dark chestnut shoulder-length curls, a pearl necklace, red nails and a fitted wine-red long-sleeved knit dress with a high round neckline, in the first frame already standing still by the round stone table, gripping a plain off-white cotton burial robe with a high stand-up collar, no V-neck, a side frog-button fastening, long sleeves, mid-calf length with slits at both sides, no embroidery and nothing written on it by its shoulders, shaken open and held out toward Shen Yuetang. Brows shot up, eyes glaring at Shen Yuetang, mouth corners pu",
+        "camera": "Over-the-shoulder medium shot, slow push in from a medium shot to a medium close-up",
         "characters": [
           "meifeng",
           "yuetang-18"
-        ]
+        ],
+        "motion": "Shaking the robe at her, Lin Meifeng demands where she got the old lady's burial robe."
       }
     }
   ]
