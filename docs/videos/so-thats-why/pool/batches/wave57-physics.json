@@ -1,0 +1,1223 @@
+{
+  "batch_id": "wave57-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "針織布的伸縮、捲邊與抽絲；塑膠的玻璃轉移、塑化與日常製品的量熱實測；家具與車輛的傾倒；溶液、膠體與過飽和：替長題 G52、G30（作者 F9，非作者覆核 V12）與 G08、G01（作者 F10，非作者覆核 V13）補原研究、標準參考資料與機關測試報告；G01 仍後備。",
+  "sources": [
+    {
+      "id": "P57-S001",
+      "url": "https://arxiv.org/pdf/1801.08355v2",
+      "canonical_url": "https://doi.org/10.1103/PhysRevX.8.021075",
+      "title": "Geometry and elasticity of a knitted fabric（Poincloux, Adda-Bedia, Lechenault）",
+      "publisher": "arXiv（刊本 Phys. Rev. X 8, 021075, 2018）",
+      "version": "arXiv:1801.08355v2（2018-05-18）；arXiv 紀錄載 journal_ref Phys. Rev. X 8, 021075",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），pdftotext 轉文字後閱讀",
+      "reading_scope": "全文：摘要、前言、I 實驗、II 模型（A 均勻變形、B 非均勻變形）、討論、Materials and Methods；附錄的推導只略讀",
+      "locator": "前言第 2 段（圍巾與紗線的對比）；I 節與 Fig.1(b)；II 節式 (4)(5) 前後與 Fig.6、Fig.7；Materials and Methods",
+      "summary": "用一條尼龍單絲（直徑 80 µm、長約 25 m、楊氏模數約 5.1 GPa）以家用針織機織成 51×51 針的平針布，沿縱行方向反覆拉伸並追蹤每一針的位移。作者指出拉一條圍巾很容易有 100% 量級的變形，同樣的力加在紗線上只會變形幾個百分點。模型忽略紗線的拉伸與扭轉，只算彎曲能，加上紗線總長守恆與針目拓樸的約束，就能重現位移場與力學反應；由量測得到的幾何帕松比為 0.46，作者說這塊很空的布表現得像面積守恆的不可壓縮彈性體。加載與卸載的差異來自紗線間摩擦，回程所需的功約為拉伸的一半。把布掛在近乎無摩擦的桿上做均勻變形時，模型可追到 100% 以上的變形。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是 arXiv v2，不是出版社刊本；與池中 SRC-9a587727577e1bb5（journals.aps.org 的同一篇論文 PDF）是同一份研究，X5002 已引用。模型只適用於線徑遠小於針目的鬆針織與單絲尼龍，不是棉毛紗。附錄推導未逐式核對。 覆核 V12（2026-11-12）：limitations 補：Fig.6 的均勻拉伸用的是另一塊布（20×30 針、線徑 200 µm、鋼桿抹矽油），與 Fig.1–2 的 51×51 針、80 µm 不同；模型曲線以有效拉伸模數為唯一擬合參數，加載與卸載各一個值。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/poincloux2018_prx_arxiv.pdf",
+        "sha256_prefix": "78b4a08eb10dcaf5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S002",
+      "url": "https://arxiv.org/html/2302.13467",
+      "canonical_url": "https://arxiv.org/abs/2302.13467",
+      "title": "Programming Mechanics in Knitted Materials, Stitch by Stitch（Singal, Dimitriyev, Gonzalez, Cachine, Quinn, Matsumoto）",
+      "publisher": "arXiv（另一篇 arXiv 論文的參考文獻列為 Nature Communications 15, 2024）",
+      "version": "arXiv:2302.13467v2（2023-12-04）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "正文全文（摘要、Topology and Elasticity、Numerical Model、Microstructure and Modulus 到高張力極限段）；補充資料 Supplementary Note 只看標題，未讀",
+      "locator": "Topology and Elasticity 段與 Fig.1–2；Microstructure and Modulus 段與 Fig.3",
+      "summary": "用壓克力紗與絲光棉紗各織四種布：平針（全正針）、起伏針、羅紋、桂花針（seed），做單軸拉伸並配合紗線層級的模擬。小應力下四種布都是線性的，但模數差很多：沿橫列方向羅紋最軟、平針最硬；沿縱行方向起伏針與桂花針較軟。作者的解釋是相鄰兩針之間那段連接紗的對稱性：同向兩針（正正或反反）之間是偶對稱，拉伸時要改變曲率，剛度約 180B/λ³ 的量級；正反相鄰時是奇對稱，像力臂一樣可以轉動，剛度約 12B/λ³ 的量級，所以可以軟到十倍的量級。八種不同粗細與纖維的紗做出的樣品，各種布的相對各向異性大致一致。大應力下紗線被拉直，四種布都轉為應變硬化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是 arXiv v2；arXiv 紀錄本身沒有 journal_ref，Nature Communications 15 (2024) 的出處來自 F9-S004 的參考文獻 [9]，刊本頁未開，寫稿前要以刊本核對數字與圖號。與池中 SRC-b2aeec59fbfd88ba 是同一頁，X5002 已引用。補充資料的表與 20 張表未讀。「十倍」是作者對線性剛度公式的量級說法，不是某兩塊布的實測比值。 覆核 V12（2026-11-12）：reading_scope 的機台改為「Taitexma 與 STOLL CMS 530 HP 工業針織機」；limitations 補：「of order ten times softer」的主詞是連接紗段；arXiv 紀錄沒有 journal_ref，Nature Communications 2024 的刊本資訊未由本覆核確認。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/singal2024_arxiv.html",
+        "sha256_prefix": "ab1d8571a0e58fd1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S003",
+      "url": "https://arxiv.org/html/2410.13307v1",
+      "canonical_url": "https://doi.org/10.1016/j.eml.2025.102300",
+      "title": "Curling morphology of knitted fabrics: Structure and Mechanics（Tajiri, Murakami, Kobayashi, Tarumi, Sano）",
+      "publisher": "arXiv（arXiv 紀錄載 DOI 10.1016/j.eml.2025.102300，Extreme Mechanics Letters）",
+      "version": "arXiv:2410.13307v1（2024-10-17）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "全文 1–8 節與圖說",
+      "locator": "2 節；3.1–3.2 與 Fig.1–2；4 節與 Fig.3；5 節與 Fig.4；7 節",
+      "summary": "用市售針織機與棉紗織長方形平針布（織造時底部掛 370 g 重物，起針與收針邊以收針固定），橫向針數 5–90、縱向 5–30。依針數出現三種捲法：橫縱針數比不大（約 2 以下）時只在左右兩側由正面往背面捲；比值與縱向針數再大時上下也由背面往正面捲，成為雙向捲；更大時只剩上下捲。單一線圈的寬高比隨橫縱針數比變大，並與捲起高度同向變化。把半個線圈做成矽膠彈性桿（長 105 mm）夾住兩端、縮短其中一個方向，桿在約 c/L≃0.7 時翹出平面，與離散模擬一致。紗線層級的簡化模擬重現三種捲法，但相界與實驗只有定性相符；作者說改用尼龍線得到定性相似的相圖。拉伸到 30% 的循環測試有遲滯。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是 arXiv v1；DOI 指向的刊本（Extreme Mechanics Letters 76, 102300, 2025，卷期取自 F9-S004 的參考文獻 [8]）未開。與池中 SRC-062cef8afd6b9e93 是同一頁，X5004 已引用。本文把橫向稱 wale、縱向稱 course，與紡織業慣用相反，寫稿時一律說「左右兩側」「上下兩端」。單一機型、單一棉紗；模擬與實驗相界不合。 覆核 V12（2026-11-12）：limitations 補：作者稱刊於 Extreme Mechanics Letters 2025，本覆核查 arXiv API 時回 503，未能確認。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/curl2410.html",
+        "sha256_prefix": "25a8bb8a6126c6c0",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S004",
+      "url": "https://arxiv.org/html/2604.20580v1",
+      "canonical_url": "https://arxiv.org/abs/2604.20580",
+      "title": "Laddering of a knitted fabric: a topology-induced failure（Faulconnier, Michel, Adda-Bedia, Crassous, Steinberger）",
+      "publisher": "arXiv",
+      "version": "arXiv:2604.20580v1（2026-04-22）；2026-11-12 查 arXiv 摘要頁，仍只有 v1、沒有 journal_ref 與 DOI",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀；另存摘要頁 ladder2604_abs.html 查發表狀態",
+      "reading_scope": "正文全文與圖說；附錄 A–F 只看標題",
+      "locator": "摘要；Fig.1–2 與樣品段；Fig.3 與門檻段；Fig.4 與式 (1)；Fig.5 與速度段；結論兩段",
+      "summary": "用尼龍單絲（直徑 0.140 mm、每針線長 9.74 mm，線徑與每針線長之比 1/70，作者說與市售褲襪相近）機織 70×70 針平針布，取中央 50×50 針裝上雙軸拉伸機，先拉到指定張力，再用烙鐵尖燒斷一針並高速攝影，同時做離散彈性桿模擬。以每條線的彎曲力尺度 f0＝14.8 mN 無因次化後，初始張力低於門檻約 2.0±0.8 時幾乎不抽絲；高於門檻才出現部分或整行抽絲，更高時連第二行也抽掉。抽絲停下後量到的張力與破壞多寡無關，都等於門檻值：每解開一針就放出一段線長，布的張力隨之下降，降到門檻就停。由未破壞布的力—位移曲線可預測最後抽掉幾針，到 1.5 行以內都相符。作者把門檻歸於織造時紗線被彎出的天然曲率而不是線間摩擦；模擬中把天然曲率設為零，門檻也是零。高張力時抽絲以近乎等速前進，速度與張力成正比，量級由波長等於每針線長的彎曲波速（30.6 m/s）決定；低張力時是一跳一跳的，兩者的時間尺度差近兩個數量級。單一線圈的模擬顯示摩擦越小抽得越快。抽絲方向由拓樸決定，沿縱行前進。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本，未經同儕審查；2026-11-12 仍無刊本。與池中 SRC-f74e9d8205231fa8 是同一頁，X5005 已引用。尼龍單絲的模型布，不是實際絲襪（多股彈性紗、經定型）；作者自己說定型加工會加強門檻。附錄未讀。片中不得示範或教人弄破織物。 覆核 V12（2026-11-12）：version 補：2026-11-12 開 arxiv.org/abs/2604.20580，2026-04-22 送出，只有 v1，無 journal reference。limitations 補：門檻 2.0±0.8 是作者以停下後張力的平均定義的；附錄 E 有高張力的例外；附錄 D、E、F 本覆核已讀。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/ladder2604.html",
+        "sha256_prefix": "9489fcb90e55245a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S005",
+      "url": "https://arxiv.org/html/2506.22369v1",
+      "canonical_url": "https://arxiv.org/abs/2506.22369",
+      "title": "Topological Defect Propagation to Classify Knitted Fabrics（Shimamoto, Shimamoto, Mahmoudi, Poincloux）",
+      "publisher": "arXiv（arXiv API 載 journal_ref Phys. Rev. X 16, 031006 (2026)，DOI 10.1103/g565-3dyn）",
+      "version": "arXiv:2506.22369v1（2025-06-27）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "摘要、I、II、III 前半、V 前半、VIII.1、VIII.2、IX；IV、VI、VII 的判準推導與附錄未讀",
+      "locator": "II 節（工作邊）；VIII.2 與 Fig.10；IX",
+      "summary": "以結理論處理雙週期織物圖樣：針織與鉤織只靠局部把線圈穿過前一個線圈做成，線的兩端始終固定，所以整塊布只能從最後一排「工作邊」拆開，內部受拓樸保護；一旦在內部放進缺陷，缺陷可以不剪線就傳到相鄰單元。作者把抽絲稱為拓樸性的斷裂：除了最初斷的那一處，線本身完好，線圈只是被解開、被張力拉直；方向由拓樸決定而不是由線的走向決定；過程可逆，織的人把梯子一針一針勾回去就能修好。他們設計了兩種可織的圖樣：一種要上一排相鄰兩個缺陷才傳給下一排一個，缺陷越傳越少，實作樣品在一排放四個缺陷後只擴到 4 排、共 10 個缺陷；另一種一個缺陷會傳成兩個，一處損壞就整片散開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "讀的是 arXiv v1；刊本 PRX 16, 031006 未開，刊本與 v1 的差異未核。數學判準（IV、VI、VII）未讀，不引用。Fig.10(e) 的樣品細節只有圖說一句。 覆核 V12（2026-11-12）：version 改為：arXiv:2506.22369v1；arXiv 紀錄 journal_ref 為 Phys. Rev. X 16, 031006 (2026)，doi:10.1103/g565-3dyn（刊本未開）。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/defect2506.html",
+        "sha256_prefix": "49003f0173b45369",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S006",
+      "url": "https://arxiv.org/html/2404.07811v2",
+      "canonical_url": "https://arxiv.org/abs/2404.07811",
+      "title": "Metastability of a periodic network of threads: what are the shapes of a knitted fabric ?（Crassous, Poincloux, Steinberger）",
+      "publisher": "arXiv",
+      "version": "arXiv:2404.07811v2（2024-10-22）；arXiv API 無 journal_ref",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後閱讀",
+      "reading_scope": "摘要、前言、Fig.1–3 相關段落、結論段；中段 2D-elastica 推導略讀",
+      "locator": "前言末段；Fig.1–2 與其後兩段；結論段",
+      "summary": "尼龍線（直徑 0.155 mm、每針線長 9.7 mm、摩擦係數 0.5）織 70×70 針平針布，中央 50×50 針裝上雙軸拉伸機：先拉到不同的起始狀態，再放鬆到外力低於 8 mN。結果放鬆後的針目尺寸不是唯一的，強烈取決於起始狀態；這些靜止形狀都落在同一條曲線上，曲線有一個終點，超過終點的形狀沒有外力就維持不住。離散彈性桿模擬與實驗相符。作者的結論：沒有外力時，線間的乾摩擦讓布停在一整段連續的亞穩形狀裡；反覆沿縱行拉伸可到達可重現的終點形狀；因為每針所占面積在零外力下可以改變，平的針織布不用外力就能包覆有曲率的表面。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "arXiv 紀錄無 journal_ref，發表狀態未查到，按預印本處理。尼龍單絲模型布。中段理論推導未逐式核對，只引用實驗與結論。 覆核 V12（2026-11-12）：version 補：arXiv API 顯示 v2（2024-10-22），沒有 journal_ref，按預印本處理。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/metastability2404.html",
+        "sha256_prefix": "479a9e04358c5371",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12251665/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/polym17131786",
+      "title": "Thermal Characterization and Recycling of Polymers from Plastic Packaging Waste（Charitopoulou, Koutroumpi, Achilias）",
+      "publisher": "Polymers (Basel) 17(13):1786（MDPI），CC BY",
+      "version": "2025；DOI 10.3390/polym17131786；PMC12251665",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（Europe PMC REST fullTextXML，工具預設標頭），去標籤後閱讀",
+      "reading_scope": "摘要、2 Materials and Methods（2.1、2.2.3）、Table 1、3.3 Thermal Characterization via DSC 與 Table 3、3.4；熱裂解產物各節未讀",
+      "locator": "2.2.3 DSC Analysis；Table 1；3.3 節各段；Table 3",
+      "summary": "希臘家庭包裝垃圾裡隨機收的 23 件塑膠（清洗、擦乾、剪小），以 FTIR、逸出氣體分析與 DSC 辨識材質。DSC 條件：氮氣下 30→180°C、每分鐘 20°C，降回 30°C 再升一次，PET 樣品升到 280°C；所有數據取第二次升溫。結果：五件 PET（透明餐盒蓋、兩個牌子的拋棄式水瓶、優格封蓋、洗髮精瓶）熔融約 246–248°C、玻璃轉移約 84–85°C；四件聚苯乙烯（拋棄式飲料杯、兩種咖啡杯蓋、一個優格杯）玻璃轉移約 99°C；聚乙烯八件靠 DSC 才分得出種類：兩個小食物袋與瓶蓋等為 HDPE，熔融峰 129.4–135°C，夾鏈袋、尿布與衛生棉外袋為 LDPE／LLDPE，有兩個熔融峰（例如夾鏈袋 109 與 120.3°C）；冷凍食品袋是混摻，118°C 與約 160°C 兩個熔融峰分別對應 LDPE 與 PP。整批樣品以 PE 最多（35%），PET 22%、PP 22%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一實驗室、23 件希臘樣品，每件只報一個值、未附不確定度；取第二次升溫，等於抹掉製品原本的熱史，量到的是材料而不是「這個杯子在使用時幾度變軟」；升溫每分鐘 20°C 偏快。PET 的 84–85°C 與池中 P56-006 的評估值 342 K 條件不同，不可相減或並成一條線。PS 與 PET 的數字是正文給的範圍，未列逐件表。 覆核 V12（2026-11-12）：limitations 補：PET 的 Tg 約 84–85°C（20°C/min、第二次升溫）與池中 SRC（P56-006）的評估值 342 K 不同，原文未討論；樣品 14 是「Frozen food packaging」。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/packwaste_pmc12251665.xml",
+        "sha256_prefix": "2d599d7e58563457",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9055983/fullTextXML",
+      "canonical_url": "https://doi.org/10.1039/d0ra04560h",
+      "title": "Influence of reduced graphene oxide on flow behaviour, glass transition temperature and secondary crystallinity of plasticized poly(vinyl chloride)（Akhina 等）",
+      "publisher": "RSC Advances 10:29247–29256（Royal Society of Chemistry），開放取用",
+      "version": "2020；DOI 10.1039/d0ra04560h；PMC9055983",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（Europe PMC REST fullTextXML，工具預設標頭），去標籤後閱讀",
+      "reading_scope": "摘要、2 Experimental（材料與配方 Table 1）、3.4 Glass transition temperature 全節與 Table 3；流變各節未讀",
+      "locator": "2.1 與 Table 1；3.4 節；Table 3",
+      "summary": "軟質 PVC 加石墨烯填料的研究，其未加填料的對照組就是一份軟 PVC：每 100 份 PVC（K 值 67）加 40 份 DOP（鄰苯二甲酸二辛酯）、6 份硬脂酸鈣、5 份硬脂酸鋅，170°C 熔融混煉後 175°C 壓成 2 mm 片。DSC 單次掃描很難辨認玻璃轉移，因為塑化劑多、轉移區很寬、熱流台階很小；作者先在 −10°C 放 15 小時做物理老化再量，取中點得到對照組的玻璃轉移溫度 7±1°C（每個樣品量三次），並寫明軟 PVC 的玻璃轉移位於室溫以下。因此放在室溫就等於在退火：DSC 在約 80°C 另有一個熔融峰（對照組 83±1°C），作者歸為存放於室溫時長出的次級結晶，並說含軟 PVC 的製品久放變硬也是這種結晶造成的。加填料後玻璃轉移略升到 10±1°C。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一配方（40 phr）、單一實驗室；玻璃轉移靠老化程序才量得出，數值取決於定義（中點）。與池中 P56-008（30 phr、溶液澆鑄薄膜、DMA 量到 61°C）量法與製程都不同，兩個數字不可相減或連成曲線。「久放變硬」是作者引文獻的說法，不是本文的實驗；片中不延伸到塑化劑遷移、健康或法規。 覆核 V12（2026-11-12）：summary 補：配方為 PVC 100、DOP 40、硬脂酸鈣 6、硬脂酸鋅 5 phr；Tg 取自未老化曲線的中點，±1 為三次量測的最大差；「久放變硬」原文是 also the result of，並引文獻 43。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/akhina2020_pmc9055983.xml",
+        "sha256_prefix": "b15361958fb1ca28",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12072859/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/ma18092155",
+      "title": "New Biobased Plasticizers for PVC Derived from Saturated Dimerized Fatty Acids（Dziendzioł, Waśkiewicz, Jaszcz）",
+      "publisher": "Materials (Basel) 18(9):2155（MDPI），CC BY",
+      "version": "2025；DOI 10.3390/ma18092155；PMC12072859",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（Europe PMC REST fullTextXML，工具預設標頭），去標籤後閱讀",
+      "reading_scope": "摘要、前言塑化劑段、2.2 DSC 方法、2.4 薄膜製備、2.5 混料、3 節中與玻璃轉移有關的段落、Table 3、Table 4、Figure 11 圖說與相關兩段、結論；合成與 NMR、遷移、力學各節未讀",
+      "locator": "2.2 DSC；2.4；Table 3；Table 4；Figure 11 與其前後段",
+      "summary": "同一種懸浮法 PVC（S-70）、同一量法（DSC 每分鐘 10°C、−80 到 120°C，取第二次升溫）的一組數字。以四氫呋喃溶液澆鑄的薄膜：不加塑化劑的 PVC 膜玻璃轉移 80°C、白而硬；加 50 份商用塑化劑 DEHT 的膜 −14°C、透明可彎；作者新合成的生質寡聚酯（代號 PD_30、PD_31、PD_43）50 份時 −27 到 −28°C。與 PVC 不相容的一種（PD_03）做出的膜表面出油、又白又硬，玻璃轉移 79°C，幾乎等於沒加。對 PD_30 另做 10、15、20、25、30、40、50、60、70 份的系列：加 10 份（9 wt%）玻璃轉移就降了 42°C；15 到 25 份只再降 6°C；變化最大的是 25 到 40 份；作者取轉折點約 30 份為臨界塑化劑含量，並說 50 份對這個塑化劑已太多，成型品表面有油層。擠出壓片的混料（另加碳酸鈣與安定劑）：DEHT −16°C、DEHA −35°C、PD_31 −25°C、PD_43 −27°C。前言：軟質 PVC 的塑化劑含量可到 50–70%，硬質在 5% 以下。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "系列用的是作者自製的生質寡聚酯，不是鄰苯二甲酸酯；逐點的玻璃轉移值只在 Figure 11 圖上，正文只給降幅，圖未讀數，片中不可報各添加量的絕對溫度，也不可自己把 80 減 42 當成原文數字。溶液澆鑄薄膜，殘留溶劑的影響原文未討論。不可與 F9-S018 或 P56-008 的數字連成一條曲線。 覆核 V12（2026-11-12）：summary 改：合格的自製塑化劑膜 Tg 為 −27 到 −30°C（Table 3；另有 −25°C 的 PD_13 部分相容）；DEHT 為對苯二甲酸二（2-乙基己）酯；PD_30 加 50 phr 時出油的是擠出壓成的成型片，溶液澆鑄的膜是乾爽透明的。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/dziendziol2025_pmc12072859.xml",
+        "sha256_prefix": "1da368097cbf6609",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S010",
+      "url": "https://pslc.ws/macrog/xlink.htm",
+      "canonical_url": "https://pslc.ws/macrog/xlink.htm",
+      "title": "Crosslinking（Macrogalleria，Polymer Science Learning Center）",
+      "publisher": "Polymer Science Learning Center, University of Southern Mississippi",
+      "version": "網頁版（頁尾版權 2005）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），去標籤後全文閱讀；另存同站 Thermoplastics 頁 pslc_plastic.html",
+      "reading_scope": "全頁；Thermoplastics 頁全頁",
+      "locator": "Stealing Vulcan's Fire；Tying it All Together；More! More! 段",
+      "summary": "大學高分子教學網站。1839 年固特異把沾了天然膠乳、硫與少量鉛白的布誤放到熱爐上，得到加熱不融不黏、冷了不脆的硫化橡膠。硫在聚異戊二烯鏈之間搭起短短的硫橋（交聯），把所有鏈接成一個巨大的分子：一件交聯橡膠製品其實是單一個分子，大到可以拿在手上。鏈被綁在一起，受熱時無法彼此流過，所以不會熔。塑膠也可以交聯：通常先成型再交聯（多半靠加熱），交聯後就不能再塑形，所以叫熱固性，與沒有交聯、可重新塑形的熱塑性相對。交聯密度決定軟硬：同樣是聚異戊二烯，輕度交聯是有彈性的橡膠，重度交聯就是硬的熱固材料。交聯材料不會溶於溶劑。Thermoplastics 頁：每種塑膠有一個溫度，高於它柔軟、低於它硬而脆；室溫下有的塑膠在這個溫度以下、有的在以上。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "教學網站的通俗敘述，沒有量測資料；固特異的故事是簡述。只作為 H3027 的第二個、獨立於 OpenStax 的教育來源。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/pslc_xlink.html",
+        "sha256_prefix": "194bd7cff119f88a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S011",
+      "url": "https://web.mit.edu/course/3/3.11/www/modules/visco.pdf",
+      "canonical_url": "https://web.mit.edu/course/3/3.11/www/modules/visco.pdf",
+      "title": "Engineering Viscoelasticity（David Roylance，MIT 3.11 課程模組）",
+      "publisher": "Massachusetts Institute of Technology, Department of Materials Science and Engineering",
+      "version": "2001-10-24 版",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭），pdftotext 轉文字後閱讀",
+      "reading_scope": "1 Introduction、2 Molecular Mechanisms、3 節中 Creep 與 Stress relaxation、4.2–4.3（Maxwell、標準線性固體、Wiechert 模型）的文字敘述、時間—溫度段的開頭；拉普拉斯轉換與結構分析各節未讀",
+      "locator": "2 節首段；3 節 Stress relaxation 與 Figure 5–6；4.2 末與 4.3 首段；thermorheologically simple 段",
+      "summary": "麻省理工材料系的課程講義。聚合物受力時有兩種原子層級的變形方式：鍵長鍵角的扭曲，位移小、極快，只要約 10⁻¹² 秒；以及分子有足夠活動性時，靠繞主鏈單鍵旋轉改變整條分子構形的較大尺度重排。應力鬆弛試驗是維持固定應變、看應力隨時間下降：模數從對應鍵扭曲的「玻璃態」值，隨分子逐漸以構形伸展取代鍵扭曲而降到較低的「橡膠態」平衡值；鬆弛時間 τ 是應力降到初值 1/e 所需的時間。蠕變與鬆弛是同一批分子機制的兩種表現，但鬆弛趨向平衡比蠕變快。只有單一鬆弛時間的模型大約在兩個十倍程的時間內就從玻璃態降到橡膠態，通常太陡；真實聚合物裡長短不同的鏈段鬆弛快慢不同，是一整個分布，所以鬆弛拖得長得多。對聚異丁烯這類結構單純的非晶熱塑材料，降溫的效果只是把整條反應曲線（對時間取對數）平移到更長的時間。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "教材，圖是模型曲線，不是量測資料；沒有多種材料、長時間的實測鬆弛數據，所以只取代 H3090 讀不到的 OpenLearn 來源的「機制敘述」，不滿足第六輪要的實測。後半數學未讀。 覆核 V12（2026-11-12）：limitations 補：註 3 的例子是「一個十倍程，例如從 10³ 到 10⁴ 秒」；Figure 6 為 Eg＝100、Er＝10、τ＝1 的模型曲線。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f9src/roylance_visco.pdf",
+        "sha256_prefix": "f4f1bca0bb3d0fcd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S012",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2001-01-12/html/01-973.htm",
+      "canonical_url": "https://www.govinfo.gov/content/pkg/FR-2001-01-12/html/01-973.htm",
+      "title": "Consumer Information Regulations; Federal Motor Vehicle Safety Standards; Rollover Resistance（66 FR 3388）",
+      "publisher": "美國國家公路交通安全局（NHTSA），Federal Register／GPO govinfo",
+      "version": "66 FR 3388–3437，2001-01-12，文件號 01-973",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（govinfo 純文字 HTML）；本機全文快取，逐段讀 I–III 節與 IV 節星等定義",
+      "reading_scope": "I 導言、II 背景、III.A–III.C（SSF 的來源、絆倒與非絆倒翻覆、統計模型、星等界線、改善可行性）；附錄一只讀到模型參數段，未逐式核對",
+      "locator": "I 導言第1–2段；II 背景（1999 FARS 與 NASS 數字）；III.A.1（SSF 來源、95%／5%）；III.B（各車型翻覆比例、六倍、星等界線）；III.C.1（Montero 改款）",
+      "summary": "NHTSA 決定用靜態穩定係數 SSF（半輪距除以重心高）在新車評鑑中標示單一車輛事故的翻覆風險：一星對應 SSF 1.03 以下、翻覆風險 40% 以上，五星對應 SSF 1.45 以上、風險低於 10%。機關認為翻覆問題約 95% 是絆倒型、5% 是路面上未絆倒型；絆倒情況下普遍適用的車輛性質只有重心高與輪距。線性迴歸估計 SSF 1.00 的車每次單一車輛事故的翻覆風險是 SSF 1.53 的六倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2001 年的公告與 1990 年代事故資料；星等之後在 2003 年改為加入動態測試的模型（見 F10-S002）。風險是「發生單一車輛事故後」的條件機率，不是上路就翻的機率；只適用美國輕型車。federalregister.gov 的全文網址對 curl 回「Request Access」驗證頁，改讀 govinfo 同一文件。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/fr-2001-01-973.htm",
+        "sha256_prefix": "b5a13e19d476f506",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S013",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2003-10-14/html/03-25360.htm",
+      "canonical_url": "https://www.govinfo.gov/content/pkg/FR-2003-10-14/html/03-25360.htm",
+      "title": "Consumer Information; New Car Assessment Program; Rollover Resistance（68 FR 59250）",
+      "publisher": "NHTSA，Federal Register／GPO govinfo",
+      "version": "68 FR 59250，2003-10-14，文件號 03-25360",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（govinfo 純文字 HTML）；本機全文快取，讀摘要、IV–VI 節",
+      "reading_scope": "摘要與 I 節、IV 節（兩個方案）、V 節（25 輛車動態測試概述）、VI 節（風險模型結果）；附錄一、二未逐段讀",
+      "locator": "SUMMARY 後第2段（2004 年式起合併 SSF 與 Fishhook、J-Turn 不用）；IV 節（100 輛車、24＋1 輛測試）；VI 節（11 輛翹起、14 輛沒有；extra risk was small）",
+      "summary": "自 2004 年式起，NHTSA 的翻覆星等把 SSF 與 Fishhook 動態操控測試合併進同一個邏輯斯迴歸模型；J-Turn 測試在有 Fishhook 時不增加有意義的資訊，不採用。25 輛受測車中 11 輛在某項操控測試翹起、14 輛沒有；模型能給在最嚴苛操控中翹起的車較高風險，但機關自己寫明多出來的風險很小，翹起的預測力可能不大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "25 輛車的樣本小，機關自己說輕載操控的結果方向不合理、歸因於樣本太少；結論只適用該模型與當時車款。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/fr-2003-25360.htm",
+        "sha256_prefix": "39c2b139d4f2058e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S014",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2022-11-25/html/2022-24587.htm",
+      "canonical_url": "https://www.govinfo.gov/content/pkg/FR-2022-11-25/html/2022-24587.htm",
+      "title": "Safety Standard for Clothing Storage Units（87 FR 72598，最終規則前言）",
+      "publisher": "美國消費品安全委員會（CPSC），Federal Register／GPO govinfo",
+      "version": "87 FR 72598，2022-11-25，文件號 2022-24587",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（govinfo 純文字 HTML）；本機全文快取，讀 III–VII 節相關段落",
+      "reading_scope": "III 事故資料中的互動與地板段；V 現行自願標準的不足；VI 技術背景（重心、力矩與支點）；VII.A 抽屜開關與裝填、VII.B UMTRI 兒童施力研究、VII.C 地毯；以及後段回應意見中 1.5 度與 0.43 吋墊塊的說明。法規條文與經濟分析未讀",
+      "locator": "VI.A–B（重心、力矩、支點）；VII.A.1–2（8.5 磅／立方呎、Phase I／II）；VII.B（40 名兒童、力矩超過體重、1.08、6.1 吋）；VII.C（1,221 組、中位數 7 磅、0.8–3 度、平均 1.48 度）；事故資料「3. Flooring」；1.6 倍體重段",
+      "summary": "CPSC 幕僚的測試與委託密西根大學運輸研究所（UMTRI）的研究：抽屜開得越多櫃子越不穩；裝滿的抽屜關著時增加穩定、拉開時降低穩定；40 名 20–65 個月大的兒童在測試架上的各種互動，產生的最大力矩都超過孩子體重（以 1 呎力臂計），幕僚估計攀爬的等效力超過體重的 1.6 倍；同一批櫃子在地毯上都比在硬地面更容易倒，1,221 組比較的傾倒重量差中位數 7 磅，相當於把櫃子前傾 0.8–3 度（平均 1.48 度）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這份 2022 年規則本身沒有生效：2023 年 5 月 CPSC 依 STURDY 法改採 ASTM F2057-23（見 F10-S004），所以不能把文中的測試條件說成現行法規；本輪只引用前言裡幕僚測試與 UMTRI 研究的結果。幕僚自己註明樣本是便利取樣、結果限於受測櫃；UMTRI 完整報告在 NPR briefing package Tab R，本輪沒有讀。單位為磅、吋，片中換算要標明。不得寫成家具固定指南。 覆核 V13（2026-11-12）：limitations 補：位元組雜湊每次抓取不同（govinfo 頁面），去標籤後全文相同；規則依 88 FR 28403「is stayed and will not take effect」。locator 的 ASTM F2057-19 §7.2 是「空櫃、一次開一個抽屜、50±2 磅」。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/fr-2022-24587.htm",
+        "sha256_prefix": "d00717df128b2f81",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S015",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2023-05-04/html/2023-08997.htm",
+      "canonical_url": "https://www.govinfo.gov/content/pkg/FR-2023-05-04/html/2023-08997.htm",
+      "title": "Safety Standard for Clothing Storage Units（88 FR 28403，direct final rule）與 16 CFR Part 1261",
+      "publisher": "CPSC，Federal Register／GPO govinfo；eCFR",
+      "version": "88 FR 28403，2023-05-04，文件號 2023-08997；eCFR 16 CFR 1261（2026-11-12 擷取）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機快取，讀摘要、生效日與 eCFR §1261.1–1261.2",
+      "reading_scope": "SUMMARY、DATES；eCFR §1261.1(a)(b)、§1261.2",
+      "locator": "SUMMARY；eCFR §1261.1(b)、§1261.2",
+      "summary": "2022 年 12 月的 STURDY 法要求 CPSC 若認定有符合條件的自願標準就改採它；CPSC 於 2023 年 4 月 19 日認定 ASTM F2057-23 符合，直接最終規則採用該標準，2022 年 11 月的規則被擱置、不生效。現行 16 CFR 1261 適用 2023 年 9 月 1 日以後製造的衣物收納櫃，目的寫明是保護 72 個月以下兒童。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "ASTM F2057-23 本文是付費標準，沒有讀；現行測試的具體條件不能由本來源說出。只用來標明 F10-S003 的法規地位。 覆核 V13（2026-11-12）：limitations 補：位元組雜湊每次抓取不同（覆核 5b18c30a95dd1336），去標籤後全文相同。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/fr-2023-08997.htm",
+        "sha256_prefix": "19dcebe14ed300de",
+        "note": "eCFR 條文另存 ecfr1261.html（sha256 前 16 碼 47e2d7ff93c396a8） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S016",
+      "url": "https://www.cpsc.gov/s3fs-public/2022_Tip_Over_Report_Final.pdf",
+      "canonical_url": "https://www.cpsc.gov/s3fs-public/2022_Tip_Over_Report_Final.pdf",
+      "title": "Product Instability or Tip-Over Injuries and Fatalities Associated with Televisions, Furniture, and Appliances: 2022 Report",
+      "publisher": "CPSC 危害分析處（Adam Suchy），幕僚報告",
+      "version": "2023 年 2 月",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（PDF），pdftotext 轉文字；讀摘要與重點",
+      "reading_scope": "Executive Summary 與 Highlights of the Report；各表與附錄未讀",
+      "locator": "Executive Summary 第1段；Highlights「Victims」",
+      "summary": "2019–2021 年美國每年平均約 19,400 件因電視、家具、家電傾倒送急診的傷害，其中 18 歲以下 8,900 件（46%）；2000–2021 年通報死亡 592 件，482 件（81%）是 18 歲以下。報告列出的不穩定因素包括底面小、頭重、放在地毯等不平穩表面、多個抽屜拉開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "封面註明是幕僚報告、未經委員會審查；2020–2021 年死亡數因通報延遲不完整；數字涵蓋電視、家具與家電，不只衣櫃，報告自己說不能與衣物收納櫃規則的統計相比。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/cpsc-tipover-2022.pdf",
+        "sha256_prefix": "2fb7d222f1d0ca24",
+        "note": "pdftotext 文字檔 cpsc-tipover-2022.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S017",
+      "url": "https://openstax.org/books/college-physics-2e/pages/9-3-stability",
+      "canonical_url": "https://openstax.org/books/college-physics-2e/pages/9-3-stability",
+      "title": "College Physics 2e §9.3 Stability",
+      "publisher": "OpenStax／Rice University",
+      "version": "College Physics 2e 網頁版（2026-11-12 擷取）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，整節逐段讀",
+      "reading_scope": "§9.3 全節正文與圖 9.9–9.17 圖說",
+      "locator": "「A system is in neutral equilibrium…」段（鞍上的彈珠）；圖 9.16(a) 圖說；雞的段落",
+      "summary": "整節重讀：穩定、不穩定、中性三種平衡之外，教材明寫可以組合——鞍上的彈珠對前後位移穩定、對側向位移不穩定；圓鉛筆對垂直長軸的位移是中性平衡。站著的人對側向位移是穩定的，但腳不夠長，前後方向比較不穩，要大量用肌肉平衡；雞的重心在髖關節下方、雙腳分得開，前後左右都穩。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-aebc97f067673f86 同一頁（P163–P167 的來源）；第一輪只做題級閱讀，本輪整節重讀。鞍形支承的教材出處就在這一頁，審視欄點名缺的「鞍形支承的教材來源」其實已在池中來源裡。定性教材，沒有數字。 覆核 V13（2026-11-12）：不另立來源；併入池中 SRC-aebc97f067673f86 當新增的一次閱讀（本輪整節重讀、有本機全文快取）。F10-009 改掛 SRC-aebc97f067673f86。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/openstax-cp-9-3.html",
+        "sha256_prefix": "4a2a0af3927cb215",
+        "note": "去標籤文字檔 openstax-cp-9-3.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S018",
+      "url": "https://dergipark.org.tr/en/download/article-file/3832355",
+      "canonical_url": "https://dergipark.org.tr/en/download/article-file/3832355",
+      "title": "Hand warmer types, silica and zeolite 4A as potential hand warmers",
+      "publisher": "Sigma Journal of Engineering and Natural Sciences（Yıldız 科技大學），Alp 與 Balköse",
+      "version": "Vol. 42, No. 2, pp. 356–365，2024 年 4 月，DOI 10.14744/sigma.2024.00035；開放取用",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（PDF），pdftotext 轉文字；讀導言的醋酸鈉段、方法、結果中醋酸鈉各段與 DSC",
+      "reading_scope": "導言「Sodium acetate trihydrate hand warmers」、實驗方法三段、結果「Sodium acetate trihydrate as a reusable hand warmer」「Commercial sodium acetate trihydrate hand warmer」「DSC analysis」；矽膠與沸石的部分只瀏覽",
+      "locator": "導言醋酸鈉段；Materials and Methods「Sodium acetate hand warmer」「Test for commercial sodium acetate bag」；Results 對應三段；圖 6–8",
+      "summary": "把市售 330 公克的醋酸鈉可重複使用暖暖包的金屬片折一下後量表面溫度：1 分鐘升到 51.8 °C，第 8 分鐘最高 54.8 °C，第 60 分鐘仍有 53.3 °C。作者自己配的過飽和醋酸鈉溶液在瓶中，熱電偶探針一插進去就開始結晶，作者據此說乾淨、沒有晶種的表面靠機械動作也能引發結晶；導言則引前人說法「金屬片裡困住的晶種當成核中心」。DSC 量到三水合醋酸鈉熔化起始 58.55 °C、熔化焓 227 J/g。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "土耳其的大學期刊，同儕審查強度不明；主題是矽膠與沸石，醋酸鈉只是對照，每種條件只做一次、沒有重複。「探針一插就結晶」是單次觀察，不能當成機制的證明。 覆核 V13（2026-11-12）：limitations 補：DSC 的對象是作者另購的三水合醋酸鈉試藥，不是市售暖暖包；市售品「bigger than a hand warmer」。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/dergipark-3832355.pdf",
+        "sha256_prefix": "c967315b1bfb6a55",
+        "note": "文字檔 dergipark-3832355.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S019",
+      "url": "https://openstax.org/books/chemistry-2e/pages/11-3-solubility",
+      "canonical_url": "https://openstax.org/books/chemistry-2e/pages/11-3-solubility",
+      "title": "Chemistry 2e §11.3 Solubility",
+      "publisher": "OpenStax／Rice University",
+      "version": "Chemistry 2e 網頁版（2026-11-12 擷取）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，整節逐段讀",
+      "reading_scope": "§11.3 全節正文與圖說；章末習題未讀",
+      "locator": "「Solutions may be prepared in which a solute concentration exceeds its solubility」段；Lake Nyos 段；「The temperature dependence of solubility can be exploited…」段與暖暖包圖說",
+      "summary": "整節重讀：過飽和是非平衡狀態，例子是打開後還沒走氣的碳酸飲料（對二氧化碳過飽和）。氣體也能形成過飽和溶液：1986 年喀麥隆尼奧斯湖湖底被火山活動飽和了二氧化碳的水翻到表層，大量溶解的二氧化碳釋出，這團比空氣重的無色氣體流進下方谷地，超過 1700 人死亡。固體方面，高溫飽和後冷卻可得到相對穩定的過飽和溶液，加晶種或機械擾動可引發析出；暖暖包圖說寫的是按下金屬片產生的「機械衝擊波」引發析出。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-19346cef2dc01be3 同一頁（P228、P232 的來源）；第一輪題級閱讀，本輪整節重讀。尼奧斯湖段教材用「almost certainly」「It is believed」，是通論敘述、沒有引原研究。暖暖包的「衝擊波」說法與 Sandnes 2008 摘要（F10-S024）的晶種說法不一致。 覆核 V13（2026-11-12）：不另立來源；併入池中 SRC-19346cef2dc01be3 當新增的一次閱讀。F10-026、F10-027 改掛 SRC-19346cef2dc01be3。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/openstax-11-3.html",
+        "sha256_prefix": "294b2efd79b71977",
+        "note": "去標籤文字檔 openstax-11-3.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S020",
+      "url": "https://openstax.org/books/chemistry-2e/pages/11-2-electrolytes",
+      "canonical_url": "https://openstax.org/books/chemistry-2e/pages/11-2-electrolytes",
+      "title": "Chemistry 2e §11.2 Electrolytes",
+      "publisher": "OpenStax／Rice University",
+      "version": "Chemistry 2e 網頁版（2026-11-12 擷取）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，整節逐段讀",
+      "reading_scope": "§11.2 全節正文與圖說",
+      "locator": "開頭兩段與圖 11.6 圖說；「Pure water is an extremely poor conductor…」段；「In some cases, solutions prepared from covalent compounds conduct electricity…」段",
+      "summary": "整節重讀：要導電必須有可自由移動的帶電粒子，溶液的導電度隨離子濃度增加。純水導電極差，因為 25 °C 時每十億個水分子只有約兩個游離。有些共價化合物溶進水會與水反應產生離子：氯化氫氣體本身沒有離子，水溶液卻是很好的導體。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-22bb4f194a5b32a9 同一頁（P224 的來源）；本輪整節重讀。教材沒有任何實測導電度數值，審視欄要的「低壓導電的實測條件與結果」這一頁補不到。 覆核 V13（2026-11-12）：不另立來源；併入池中 SRC-22bb4f194a5b32a9 當新增的一次閱讀。F10-028 改掛 SRC-22bb4f194a5b32a9。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/openstax-11-2.html",
+        "sha256_prefix": "a79aa24a1c8f74f0",
+        "note": "去標籤文字檔 openstax-11-2.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S021",
+      "url": "https://omlc.org/classroom/scat_demo/index.html",
+      "canonical_url": "https://omlc.org/classroom/scat_demo/index.html",
+      "title": "Scattering of Light（classroom demonstration）",
+      "publisher": "Oregon Medical Laser Center（OMLC）教學頁",
+      "version": "頁面未標日期；2026-11-12 擷取",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200；本機 HTML 全文快取，全文讀",
+      "reading_scope": "頁面全文（圖片未存）",
+      "locator": "示範步驟各段（600 cc 水加 1 cc 牛奶；加太多看不到光點；光束變成發光球）",
+      "summary": "雷射筆穿過清水時只在有小氣泡處看到很淡的光線；600 cc 水加 1 cc 全脂牛奶後光束路徑清楚可見，牛奶裡的光主要是被細小的脂肪球散射。再加牛奶，紙上的光點變暗到看不見，光束從一條線變成一團發光的球。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "研究中心的課堂示範頁，是定性描述加一組示範用量，不是量測論文；頁面自己說照片用的是較強的雷射。審視欄要的「丁達耳散射的實測條件與結果」只補到示範條件，沒有強度數據。 覆核 V13（2026-11-12）：limitations 補：頁面的用量「600 cc water (little more than 1/2 Gallon)」自相矛盾，不可引用比例。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/omlc-scat.html",
+        "sha256_prefix": "2900b276288ef406",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "P57-S022",
+      "url": "https://researchers.mq.edu.au/en/publications/the-physics-and-the-chemistry-of-the-heat-pad/",
+      "canonical_url": "https://researchers.mq.edu.au/en/publications/the-physics-and-the-chemistry-of-the-heat-pad/",
+      "title": "The physics and the chemistry of the heat pad（B. Sandnes，American Journal of Physics 76, 546–550, 2008）",
+      "publisher": "American Journal of Physics（AAPT）；摘要取自 Macquarie University 研究入口頁",
+      "version": "2008 年 6 月，DOI 10.1119/1.2830533",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（研究入口頁 HTML）；只讀到摘要，全文在付費牆後、未讀",
+      "reading_scope": "只有摘要",
+      "locator": "Abstract",
+      "summary": "摘要：折金屬片會引發暖墊裡過冷醋酸鈉溶液結晶，歷來提出過多種機制；作者以一個簡單實驗說明，成核是由夾在相對金屬面之間保存下來的晶種引發，晶種能留存可用極高局部壓力使熔點升高來解釋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到摘要，不算全文；實驗怎麼做、證據多強都沒看到。任何核心都不能只靠這一筆。 覆核 V13（2026-11-12）：author_cache 註明：signal.org 與 researchers.mq.edu.au 的頁面位元組雜湊每次抓取不同，去標籤後文字相同；以文字檔為準。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/mq-sandnes.html",
+        "sha256_prefix": "59801671aeee3978",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P57-001",
+      "question": "圍巾一拉就長一大截，裡面那條線到底伸長了多少？",
+      "domain": "紡織、紙品與印刷材料",
+      "mechanism_key": "textiles_paper.knit_bending_only_model_poisson_046",
+      "answer_target": "幾乎沒有。研究者用一條直徑 80 微米、長約 25 公尺的尼龍單絲，以針織機織成 51×51 針的平針布，反覆拉伸並追蹤每一針的位置。他們在前言指出，拉一條圍巾很容易就有 100% 量級的變形，同樣的力加在紗線上只會讓它變形幾個百分點。他們的模型不算紗線被拉長或扭轉，只算線被彎曲所存的能量，加上「整條線的總長不變」和「針目的套法不變」這兩個約束，算出的位移場與拉力曲線和量測相符（力的大小靠一個擬合參數對上）。由量測得到的幾何帕松比是 0.46：布被拉長時橫向跟著縮，作者說這塊滿是空洞的布表現得像面積守恆的不可壓縮彈性體。他們另外用一塊 20×30 針、線徑 200 微米的布掛在抹了矽油、近乎無摩擦的鋼桿上，讓它近似均勻變形：這時同一個式子可以一路對到 100% 以上的變形，但模型預測的急遽變硬出現在比實驗更大的變形。",
+      "scope": "尼龍單絲的鬆針織模型布（線徑遠小於針目），單一平針組織；棉毛紗有毛羽與可壓縮性，不在模型內，作者自己說很緊的針織布不適用。「100% 與幾個百分點」是作者前言的量級說法，不是同一樣品的對照量測。0.46 來自 51×51、80 µm 那塊布；「追到 100% 以上」來自另一塊 20×30、200 µm 的布，片中要分開說。讀的是 arXiv v2（刊本 Phys. Rev. X 8, 021075 未開）。",
+      "source_ids": [
+        "P57-S001"
+      ],
+      "source_locator": "前言第 2 段；I 節；II 節式 (4)–(5) 與「geometric Poisson's ratio」段；Fig.6；Materials and Methods",
+      "premise_status": "screened",
+      "notes": "補 G52 缺的全文閱讀與可重繪實驗（Fig.1 力—位移迴圈、Fig.2 針目軌跡、Fig.6 均勻拉伸）。X5002 只有「拉布先改變線圈彎曲與接觸幾何」一句；新增模型布的規格與「只算彎曲＋線長守恆」的模型（1 條）、帕松比 0.46 與面積守恆、可追到 100% 以上（1 條）。回程功約一半與摩擦遲滯是 X5003 已有的，不計。算 2 條。 原提案 F9-001（目標 G52，原角色 hook；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；數字都在原文，但作者把兩塊不同的布寫成同一塊（「把布掛在…」），並把靠擬合參數對上的曲線寫成「算得出…拉力」。改字後收。X5002 已有「不是同等拉長線本身」，本核心只算 1.5 條（模型布規格與只算彎曲＋線長守恆 1；帕松比 0.46 與面積守恆 0.5；另一塊布追到 100% 屬細節不另計），不是作者的 2 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "伸長的是線圈的形狀，不是線。",
+        "visual": "一條彩色線的長度條始終不變，旁邊布的長度條拉到兩倍；放大一針：圓弧變扁變長。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "P57-002",
+      "question": "同一條線，只換正針反針的排法，布會差多少？",
+      "domain": "紡織、紙品與印刷材料",
+      "mechanism_key": "textiles_paper.knit_purl_odd_segment_ten_times_softer",
+      "answer_target": "差很多，而且差在哪個方向可以預測。研究者用同樣的紗在針織機上各織四種布：全正針的平針、一排正一排反的起伏針、一行正一行反的羅紋、正反交錯成棋盤的桂花針，做單軸拉伸並配合模擬。小拉力時四種布都是線性的，但軟硬差很多：橫向拉，羅紋遠比其他三種軟、平針最硬；縱向拉，起伏針和桂花針比較軟。他們的解釋落在相鄰兩針之間那一小段連接紗：兩針同向（正正或反反）時，這段紗左右對稱，拉開它得改變它的曲率，剛度的量級約 180B/λ³（B 是紗的彎曲剛度，λ 是這段的長度）；一正一反相鄰時，這段紗是反對稱的，像一根力臂可以直接轉動，剛度約 12B/λ³。所以作者估計，反對稱的連接紗段可以比對稱的軟到十倍的量級；含有這種紗段的方向就比較好拉。換八種粗細與纖維不同的紗，每種布的相對各向異性大致一樣。拉到很大時紗被拉直，四種布的急遽變硬彼此相似。",
+      "scope": "壓克力紗與絲光棉紗（另有六種紗只用於各向異性比較）的工業針織機樣品，每塊約 31×31 針。「十倍量級」是連接紗段線性剛度的模型估計（式中另有幾何因子 1−δ），不是某兩種布或某個方向的實測比值，片中只能說「模型估計這一小段紗可以軟到十倍的量級」，不得說「羅紋比平針軟十倍」。模型估出的模數原文說比實測略硬。讀的是 arXiv 版，補充資料的表未讀，刊本（Nature Communications 2024）未開。",
+      "source_ids": [
+        "P57-S002"
+      ],
+      "source_locator": "Topology and Elasticity 段與 Fig.1c、Fig.2；Microstructure and Modulus 段與 Fig.3",
+      "premise_status": "screened",
+      "notes": "補 G52 缺的 Singal 等全文閱讀；轉折一（彈性寫在排法裡）。X5002 只有「正反針排列可改變方向伸展性」半句；新增四種布各方向誰軟誰硬（1 條）、連接紗段奇偶對稱與 180 對 12 的量級、八種紗一致（1 條）。算 2 條。 原提案 F9-002（目標 G52，原角色 turn；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；把原文的主詞改回連接紗段；刪掉作者自己的結語「這個性質寫在針法裡，不在紗裡」（原文只說相對各向異性與纖維無關）。X5002 後半句已有「正反針排列可改變方向伸展性」，四種布誰軟誰硬只算 0.5 條，連接紗段奇偶對稱的機制與量級 1 條，共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "羅紋袖口不需要鬆緊帶：正反針相鄰處的那一小段線像鉸鏈。",
+        "visual": "四塊小布並排、同色紗；放大兩針之間的連接段：同向時像拱要被壓扁，正反相鄰時像蹺蹺板轉動；Fig.2 兩張應力—應變圖可重繪。",
+        "seconds": [
+          75,
+          95
+        ]
+      }
+    },
+    {
+      "id": "P57-003",
+      "question": "平針布到底往哪邊捲：左右捲還是上下捲？",
+      "domain": "紡織、紙品與印刷材料",
+      "mechanism_key": "textiles_paper.knit_curl_three_regimes_stitch_count_ratio",
+      "answer_target": "看這塊布是寬的還是長的。研究者用針織機和棉紗織了一系列長方形平針布，橫向 5 到 90 針、縱向 5 到 30 針，放鬆後分類。橫向針數不到縱向的大約兩倍時，只有左右兩側往背面捲；再寬一些，上下兩端也開始往正面捲，變成兩個方向都捲；更寬時左右不捲了，只剩上下捲。他們量單一線圈的形狀，發現布越寬，線圈本身也被拉得越扁，而且和捲起的高度同向變化。為了看一個線圈為什麼會翹，他們把半個線圈放大成一根 105 毫米長的矽膠桿，夾住兩端、把其中一個方向慢慢縮短：縮到某個比例（約 c/L≃0.7）桿就翹出平面，位置與離散模擬一致。整塊布的簡化模擬也做得出三種捲法，但分界線和實驗只有定性相符；作者認為原因包括真實紗線會留下永久彎曲，以及收針邊的硬度會改變結果。他們改用尼龍線重做，相圖定性相似，分界略有移動。",
+      "scope": "單一機型、單一棉紗，織造時掛 370 g 重物並以收針固定兩端；相界的數字只屬於這組樣品，不能套到所有毛衣。原文把橫向叫 wale、縱向叫 course，與紡織業慣用相反，稿中只用「左右」「上下」。讀的是 arXiv v1；作者稱刊於 Extreme Mechanics Letters 2025，本覆核未能從 arXiv 紀錄確認（API 當時回 503），寫稿前再查。",
+      "source_ids": [
+        "P57-S003"
+      ],
+      "source_locator": "2 節；3.1 與 Fig.1(b)；3.2 與 Fig.2；5 節與 Fig.4；7 節末兩段",
+      "premise_status": "screened",
+      "notes": "補 G52 缺的捲邊研究全文與可重繪圖（Fig.1(b) 相圖、Fig.4 矽膠桿翹起）。X5004 已有「線圈受約束帶有內部力矩、線圈長寬形狀關聯於捲曲方向」；新增三種捲法與針數比的分界（1 條）、矽膠桿實驗與「模擬只定性相符」的限制（半條）。算 1.5 條。 原提案 F9-003（目標 G52，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；內容正確，只把「突然翹出」改回原文的說法並補尼龍線的對照。X5004 已有「線圈長寬形狀關聯於不同捲曲方向」，三種捲法與針數比的分界算 1 條，矽膠桿實驗與模擬只定性相符 0.5 條，共 1.5 條，與作者相同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "捲邊不是布料的瑕疵，是每一個線圈都想翹出平面。",
+        "visual": "相圖：橫軸橫向針數、縱軸縱向針數，三種顏色三種捲法；旁邊一根彎成 S 形的桿被擠到翹起。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P57-004",
+      "question": "布已經破了一針，為什麼有時一路抽到底，有時抽幾針就停？",
+      "domain": "紡織、紙品與印刷材料",
+      "mechanism_key": "textiles_paper.knit_ladder_threshold_tension_self_arrest",
+      "answer_target": "看布原本被繃得多緊，而且抽絲會自己把張力放掉。一份 2026 年、尚未經同儕審查的預印本用直徑 0.14 毫米的尼龍單絲織成 70×70 針的平針布（線徑與每針線長的比例 1/70，作者說接近市售褲襪），裝上雙軸拉伸機繃到指定張力，再用烙鐵尖燒斷一針、高速攝影。把每排線承受的力除以線的彎曲力尺度（14.8 毫牛頓）之後，起抽的門檻大約在 2：低於它幾乎不抽，高於它才抽掉一部分或一整行，更高時連第二行也抽掉。另一個量測是抽絲停下來之後的張力：在中等張力的實驗裡，不管抽掉多少針，停下時的張力都差不多，平均 2.0±0.8，和起抽的門檻是同一個值。作者的解釋是每解開一針就放出一段多餘的線，布鬆了一點、張力降了一點，降到門檻就停；他們因此能從沒破的布的拉力曲線預測最後會抽掉幾針，在一行半以內對得上，更高張力時斷線會卡在線圈裡，預測就不準。作者把門檻歸給織造時線被彎出的永久曲率而不是線與線的摩擦：量到的曲率換算後與門檻同一量級，模擬裡把這個曲率設為零，門檻也變成零。",
+      "scope": "預印本，未經同儕審查（arXiv:2604.20580，2026-11-12 查仍只有 v1、無刊本）；片中每次引用都要說「尚未經同儕審查的研究」。尼龍單絲模型布、預先繃緊、燒斷固定位置的一針；實際絲襪是多股彈性紗並經定型，作者說定型會加強門檻。門檻 2.0±0.8 是作者以停下後張力的平均定義的，不得說成兩個獨立量測剛好相等；高張力時停下後張力高於門檻（附錄 E）。張力以無因次量表示，片中不換算成褲襪上的公斤數。不示範、不教人弄破織物。",
+      "source_ids": [
+        "P57-S004"
+      ],
+      "source_locator": "樣品段與 Fig.2；Fig.3(e)(f) 與門檻段；Fig.4 與式 (1)；結論第 1 段",
+      "premise_status": "screened",
+      "notes": "補 G52 缺的 X5005 預印本全文閱讀與發表狀態查核（仍是預印本）；轉折二的前半。X5005 只有「一圈被釋放後可滑出並解放下一圈…初始張力影響能否持續」；新增門檻值與「停下時張力等於門檻」的量測（1 條）、放出線長使張力下降而自停、可預測破壞量、門檻來自天然曲率（1 條）。算 2 條；因為是預印本，覆核若降為 1.5 可接受。 原提案 F9-004（目標 G52，原角色 turn；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；現象與數字都在原文，但作者把定義寫成巧合、漏了高張力的例外、把「may be linked」寫成定論。改字後收。X5005 已有「初始張力影響能否持續」，門檻與自停 1 條、可預測破壞量與門檻來源 0.5 條，共 1.5 條（作者算 2，並自己說降為 1.5 可接受）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "抽絲不是越抽越糟的雪崩：它每抽一針就替布鬆一點綁。",
+        "visual": "張力表針從高處往下掉，每解開一針掉一格，掉到紅線就停；Fig.3(e)(f) 兩張散點圖可重繪。",
+        "seconds": [
+          75,
+          95
+        ]
+      }
+    },
+    {
+      "id": "P57-005",
+      "question": "抽絲跑得多快？為什麼只沿著直行跑？",
+      "domain": "紡織、紙品與印刷材料",
+      "mechanism_key": "textiles_paper.knit_ladder_speed_linear_tension_bending_wave",
+      "answer_target": "同一份預印本用高速攝影量了前進速度。張力剛過門檻時，抽絲是一跳一跳、不規則的；張力高時幾乎等速前進，兩種情況的時間尺度差了將近兩個數量級。速度與張力成正比，量級由線上彎曲波的速度決定（這條線上、波長等於一針線長的彎曲波速約每秒 30.6 公尺），量到的大約是這個速度的十分之一乘上無因次張力。如果只有慣性在管，速度應該隨張力的平方根變；量到的卻是線性，作者用單一線圈的模擬說明這是摩擦造成的：摩擦係數越小抽得越快，沒有摩擦時才回到平方根。方向則完全由套法決定：斷線回縮時先放開一個線圈，梯子從它開始沿著縱行往一個方向長；張力夠高時斷線繼續回縮，才放開旁邊的線圈、開出往反方向的第二條。作者的話是：針目的拓樸完全控制了缺陷往哪裡傳。",
+      "scope": "同 F9-004：未經同儕審查的預印本、尼龍單絲模型布，片中要說明。速度只以相對彎曲波速的比例表示，片中不報「絲襪抽絲每秒幾公尺」；30.6 m/s 是這條模型線上的彎曲波速，不是抽絲速度。",
+      "source_ids": [
+        "P57-S004"
+      ],
+      "source_locator": "Fig.2(d) 與其說明段；Fig.3(a)–(d)；Fig.5 與速度兩段、式 (2)",
+      "premise_status": "screened",
+      "notes": "X5005 已有「沿連接方向傳播」；新增速度與張力成正比、量級為彎曲波速、摩擦使它變慢並變成線性（1 條）。方向由拓樸決定與 X5005 重疊，不計。算 1 條。 原提案 F9-005（目標 G52，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；答案照原稿，只改題目與範圍。方向由套法決定與 X5005 重疊，不計；速度與張力成正比、量級與摩擦的角色算 1 條，與作者相同。若要縮片長，這是 G52 第一個可刪的核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來「唰」一下的抽絲，其實是被線與線的摩擦拖著跑的。",
+        "visual": "高速攝影式的時間—位置圖：低張力是階梯狀、高張力是一條斜直線。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P57-006",
+      "question": "抽絲之後，線本身壞了嗎？能不能織出不會一路抽到底的布？",
+      "domain": "紡織、紙品與印刷材料",
+      "mechanism_key": "textiles_paper.knit_ladder_topological_fracture_reversible_robust_pattern",
+      "answer_target": "線沒有壞。一篇用結理論分類織物的研究把抽絲叫做「拓樸性的斷裂」：除了最初斷掉的那一處，整條線完好無缺，線圈只是一個個從鄰居裡退出來、被張力拉直成梯子的橫檔；過程是可逆的，作者說，織的人都遇過滑掉的一針一路變成梯子，但那不代表這塊布毀了：小心地把梯子一針一針套回去，就把這個拓樸性的斷裂修好了。這也說明了針織布的弱點在哪：它只靠「把一個線圈穿過前一個線圈」做成，線的兩端從頭到尾沒有穿過任何東西，所以整塊布只能從最後一排拆，內部本來受保護；一旦內部斷了一針，等於在中間開了一個可以拆的口。作者順著這個想法設計了兩種織得出來的圖樣：一種要上一排相鄰兩個破口才傳給下一排一個，破口越傳越少，他們織出的樣品在一排放了四個破口後只擴到 4 排、共 10 個破口；另一種一個破口會傳成兩個，一處損壞就整片散開。",
+      "scope": "理論分類加示範性樣品；耐抽絲圖樣只有圖說一句的實作結果，沒有力學測試，片中說「研究者提出並織出示範樣品」，不說成市售技術。「線沒有壞」是這篇理論論文對抽絲性質的敘述，不是對某條線的強度量測。讀的是 arXiv v1；arXiv 紀錄載刊本為 Phys. Rev. X 16, 031006 (2026)（刊本未開，寫稿前核對）。數學判準未讀、不引用。",
+      "source_ids": [
+        "P57-S005"
+      ],
+      "source_locator": "II 節末（working edge）；VIII.2 與 Fig.10(a)–(e)",
+      "premise_status": "screened",
+      "notes": "轉折二的後半（破壞是拓樸的、可逆的）。X5005 沒有「線完好、可勾回」與拆解只能從工作邊；新增這兩點（1 條）、耐抽絲與易散圖樣的示範（半條）。算 1.5 條。 原提案 F9-006（目標 G52，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；答案照原稿。這是題案轉折二裡唯一已有刊本的來源，轉折的結論句（破壞是拓樸的、線沒壞、勾得回去）應由它承擔。X5005 沒有這幾點，算 1 條；耐抽絲與易散圖樣 0.5 條，共 1.5 條，與作者相同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "抽絲抽掉的是「套法」，不是材料。",
+        "visual": "同一條不斷的線：左邊套成線圈，右邊退成橫檔；橫檔一格一格套回成線圈。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P57-007",
+      "question": "攤平放著的針織布，「原本的尺寸」只有一個嗎？",
+      "domain": "紡織、紙品與印刷材料",
+      "mechanism_key": "textiles_paper.knit_rest_shape_not_unique_friction_metastable",
+      "answer_target": "不只一個。研究者把 70×70 針的尼龍平針布裝上雙軸拉伸機，先拉到各種不同的起始形狀，再慢慢放到幾乎沒有外力，量每一針的寬與高。結果放鬆後的針目尺寸不是唯一的，強烈取決於放鬆前被拉到什麼起始狀態。這些靜止形狀都落在同一條曲線上，曲線有一個終點，超過終點的形狀沒有外力就待不住；模擬與實驗相符。作者的解釋是線與線之間的乾摩擦：沒有外力時，摩擦讓布可以卡在一整段連續的形狀裡，而不是回到唯一的平衡。作者由此推想兩件事（本文沒有另做實驗）：那個終點應該就是反覆拉伸後可以重現的形狀；每一針占的面積在不受力時就能改變，所以平的針織布可以不靠外力去貼合有弧度的表面。",
+      "scope": "尼龍單絲模型布、摩擦係數 0.5；arXiv 紀錄（v2）沒有刊本資訊，按未經同儕審查的預印本處理，片中要說明。最後兩點是作者的推論，稿中用「作者推想」。不延伸成洗滌、晾曬或保養建議。",
+      "source_ids": [
+        "P57-S006"
+      ],
+      "source_locator": "前言末段；Fig.1–2 與其後兩段；結論段",
+      "premise_status": "screened",
+      "notes": "新角度：無外力時的形狀不唯一。X5003 講的是加卸載的耗能，不是靜止形狀；新增「靜止形狀取決於歷史、落在一條有終點的曲線」（1 條）、可重現終點與零外力下面積可變（半條）。算 1.5 條。 原提案 F9-007（目標 G52，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；把兩句推論標成推論。靜止形狀取決於歷史、落在有終點的曲線上算 1 條；兩個推論不計。共 1 條（作者算 1.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "毛衣被撐寬後不會自己彈回去，是摩擦把它留在另一個「也算放鬆」的形狀。",
+        "visual": "平面圖：橫軸針寬、縱軸針高，各種起點的箭頭都落到同一條曲線上，曲線末端一個標記點 T。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P57-008",
+      "question": "寶特瓶、塑膠袋、塑膠杯，實際量起來各在幾度變軟、幾度熔化？",
+      "domain": "化學與材料",
+      "mechanism_key": "polymer.packaging_waste_dsc_pet_ps_pe_measured_2025",
+      "answer_target": "一項 2025 年的研究直接拿家裡的包裝垃圾去量。研究者在希臘收了 23 件用過的塑膠包裝，洗淨剪碎，用差示掃描量熱儀以每分鐘 20°C 升溫、降溫、再升溫，取第二次升溫的結果。兩個牌子的拋棄式水瓶、透明餐盒蓋、優格封蓋和洗髮精瓶是 PET：大約 84 到 85°C 出現玻璃轉移，要到大約 246 到 248°C 才熔融。拋棄式飲料杯、兩個咖啡杯蓋和一個優格杯是聚苯乙烯：大約 99°C 玻璃轉移，文中對它們只報了這個溫度。聚乙烯的八件報的是熔融峰，而且靠它才分得出種類：兩個食物袋、兩個水瓶蓋和一件面霜包裝是高密度聚乙烯，熔融峰在 129 到 135°C；夾鏈袋和兩種外包裝袋是低密度或線性低密度聚乙烯，有兩個熔融峰，例如夾鏈袋是 109 與 120.3°C。一件冷凍食品包裝量出約 118 與約 160°C 兩個峰，是聚乙烯和聚丙烯混在一起。作者說，聚乙烯是哪一種，紅外光譜分不出來，要靠量熱儀量到的熔融與結晶溫度才分得出。",
+      "scope": "單一實驗室、23 件希臘樣品、每件一個值、未附不確定度。取第二次升溫，量到的是材料本身，不是「這件製品在使用時幾度變形」；製品原本的拉伸、結晶等熱史已被第一次加熱抹掉。升溫每分鐘 20°C。PET 這裡是約 84–85°C，池中 P56-006 的評估值是 342 K：兩份資料的數字不同，原文沒有解釋，片中不得相減、不得並列成同一組數據，也不得自己說是升溫速率造成的；要並提就說「另一份資料、另一種量法」。片中不作「幾度以下安全」之類的使用建議，也不示範加熱塑膠。",
+      "source_ids": [
+        "P57-S007"
+      ],
+      "source_locator": "2.2.3 DSC Analysis；Table 1；3.3 節各段；Table 3",
+      "premise_status": "screened",
+      "notes": "補第六輪點名的（2）：近年實測、含升溫速率與熱史、把日常製品對應到材料與實際溫度。P56-006 是 1981–83 年的評估值且明寫「來源沒有說塑膠袋、杯、寶特瓶是哪種塑膠」；新增日常製品—材料—溫度的對應（PET 與 PS，1 條）、聚乙烯袋與蓋的熔融峰及 HDPE／LDPE 之分、混摻袋（1 條）。算 2 條。 原提案 F9-021（目標 G30，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；數字全對；補上面霜包裝也是高密度聚乙烯、把「冷凍食品袋」改回「冷凍食品包裝」，範圍點明與 P56-006 的 PET 數字不同。P56-006 已有三種塑膠各兩個溫度；日常製品對應到材料與實測溫度算 1 條，聚乙烯靠熔融峰分種類與混摻 0.5 條，共 1.5 條（作者算 2）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣叫塑膠包裝：杯子報的是「變軟」的溫度，袋子報的是「熔化」的溫度，瓶子兩個都有。",
+        "visual": "三件日常包裝各配一條溫度軸：PET 兩個標記、聚苯乙烯一個、聚乙烯一個（兩種袋子位置不同）；室溫畫一條直線穿過三條軸。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "P57-009",
+      "question": "軟的 PVC，玻璃轉移真的被塑化劑搬到室溫以下了嗎？",
+      "domain": "化學與材料",
+      "mechanism_key": "polymer.pvc_40phr_dop_tg_7c_dsc_below_room_secondary_crystallinity",
+      "answer_target": "有量到的例子。一項 2020 年的研究把每 100 份 PVC 加 40 份塑化劑 DOP（鄰苯二甲酸二辛酯）和安定劑，熔融混煉後壓成 2 毫米厚的片，用差示掃描量熱儀（每分鐘升 10°C）量到的玻璃轉移溫度是 7±1°C，作者明寫這種軟 PVC 的玻璃轉移位於室溫以下。這個數字並不好量：塑化劑一多，轉移區變得很寬、熱流上的台階很小，單掃一次幾乎看不出來；作者先把樣品放在 −10°C 15 小時，讓轉移區在曲線上冒出一個吸熱峰、確定位置之後，再從沒有老化的那條曲線取中點。玻璃轉移在室溫以下還帶來一個後果：作者說，把它放在室溫，等於一直在高於玻璃轉移的溫度下「退火」。量熱曲線上在約 80°C 另有一個小熔融峰（這份樣品是 83±1°C），作者歸為存放在室溫期間長出來的次級結晶，並引文獻說，含軟 PVC 的製品放久了變硬，這種後來長出的結晶也是原因之一。",
+      "scope": "單一配方（PVC 100、DOP 40、硬脂酸鈣 6、硬脂酸鋅 5 phr）、熔融混煉壓片、DSC 中點值，靠老化程序才辨識得出轉移區；±1 是三次量測的最大差。池中 P56-008 的 30 phr 薄膜是用動態機械分析量到 61°C，量法、製程都不同：兩個數字不可相減、不可連成「每多 10 份降幾度」的曲線，片中要分開說是兩份研究。也不與 F9-023 的數字連成一條線。「久放變硬」是作者引用文獻的解釋，不是本文的對照實驗。不延伸到塑化劑遷移、健康或法規。",
+      "source_ids": [
+        "P57-S008"
+      ],
+      "source_locator": "2.1 與 Table 1；3.4 節全段；Table 3",
+      "premise_status": "screened",
+      "notes": "補第六輪退回 F8-025 之後缺的那一句：有條件、讀得出塑化劑種類與單位的「軟 PVC 的玻璃轉移在室溫以下」。H3025 只有機制，P56-008 的 Tg 仍高於室溫；新增 40 phr DOP 的 7±1°C 與作者原話（1 條）、轉移變寬難量與室溫存放長出次級結晶、83°C 熔融峰（半條）。算 1.5 條。 原提案 F9-022（目標 G30，原角色 turn；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；第六輪退回 F8-025 時缺的那一句（讀得出塑化劑種類、添加量、量法，而且作者自己說在室溫以下）現在有了。改兩處讀法。40 phr DOP 的 7±1°C 與作者原話 1 條；轉移變寬難量與次級結晶 0.5 條，共 1.5 條，與作者相同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不加熱也能讓塑膠越過那道門檻：把門檻本身搬到室溫下面。",
+        "visual": "一條溫度軸：硬 PVC 的門檻在室溫之上；加了塑化劑後門檻滑到室溫之下，室溫那條線反而站到門檻的「軟」這一側。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P57-010",
+      "question": "塑化劑加得越多，玻璃轉移就等比例一路往下掉嗎？",
+      "domain": "化學與材料",
+      "mechanism_key": "polymer.pvc_plasticizer_loading_series_tg_nonlinear_compatibility",
+      "answer_target": "不是等比例，而且要先相容才算數。一項 2025 年的研究用同一種 PVC、同一套量法（差示掃描量熱儀每分鐘 10°C，取第二次升溫）量了一整組溶液澆鑄的薄膜。不加塑化劑的 PVC 膜又白又硬，玻璃轉移 80°C；加 50 份商用塑化劑 DEHT（對苯二甲酸酯）的膜透明可彎，−14°C；作者新做的幾種生質塑化劑，合格的加 50 份時落在 −27 到 −30°C。其中一種對同一個塑化劑做了 10 到 70 份的系列：只加 10 份，玻璃轉移就降了 42°C；從 15 份加到 25 份只再降 6°C；變化最大的一段在 25 到 40 份。作者把轉折處（約 30 份）叫臨界塑化劑含量，並說 50 份對這個塑化劑已經太多：用它做的成型片表面浮出一層油。另一種和 PVC 不相容的配方更清楚：一樣加了 50 份，膜卻出油、又白又硬，玻璃轉移 79°C，作者說與沒加塑化劑的 80°C 非常接近。",
+      "scope": "系列用的是作者自製的生質寡聚酯（PD_30），不是鄰苯二甲酸酯；對照的商用塑化劑 DEHT 是對苯二甲酸酯。逐點溫度只在原文 Figure 11 圖上，正文只給降幅，片中只報「降了 42°C」「再降 6°C」與兩端的 80°C、−14°C、−27 到 −30°C，不自己相減出中間值、不報各添加量的絕對溫度。薄膜是溶液澆鑄；出油的是另外擠出壓成的成型片。不可與 F9-022 或 P56-008 的數字連成一條曲線。",
+      "source_ids": [
+        "P57-S009"
+      ],
+      "source_locator": "2.2 DSC 方法；2.4 薄膜製備；Table 3；Figure 11 前後兩段；Table 4",
+      "premise_status": "screened",
+      "notes": "補第六輪點名的（1）：同一研究、同一量法、至少三個添加量、看得到 Tg 掉到室溫以下（9 個添加量；50 份時 −28°C）。限制是系列的塑化劑不是鄰苯二甲酸酯、逐點值在圖上。新增 80→−14／−28°C 的同法對照（1 條）、非等比例的降幅與臨界含量、不相容時 79°C（1 條）。算 2 條。 原提案 F9-023（目標 G30，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；改正溫度範圍與塑化劑種類，刪掉作者自己的結語。同一 PVC、同一量法下 80°C 對 −14°C 與 −27 到 −30°C 算 1 條；降幅不等比例與臨界含量 0.5 條、不相容時 79°C 0.5 條，共 2 條，與作者相同。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「加了多少」不等於「進去了多少」：浮在表面的塑化劑不會讓塑膠變軟。",
+        "visual": "同一種 PVC 的四片薄膜排一列：白硬、透明軟、透明軟、出油又白硬，各標一個溫度；下方一條由陡變緩再變陡的示意折線，標明「降幅取自正文、各點位置為示意」。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P57-011",
+      "question": "加熱不會熔的橡膠和塑膠，裡面到底是什麼樣子？",
+      "domain": "化學與材料",
+      "mechanism_key": "polymer.crosslinked_object_is_one_molecule_light_vs_heavy",
+      "answer_target": "整件東西是一個分子。南密西西比大學的高分子教學網站這樣講硫化：1839 年固特異把沾了天然膠乳、硫和一點鉛白的布誤放到熱爐上，得到一種加熱不融不黏、放在冬天室外也不變脆的橡膠。硫在一條條聚異戊二烯鏈之間搭起短短的硫橋，把所有的鏈接成一個巨大的分子；一件交聯過的橡膠製品其實就是單一個分子，大到可以拿在手上。鏈彼此綁住，受熱時無法互相流過，所以不會熔；也因為整個網絡是共價相連的，它不會溶在溶劑裡。塑膠也能交聯：通常先做成形狀再交聯（多半靠加熱），交聯之後就不能再塑形，這就是熱固性，和沒有交聯、可以反覆重塑的熱塑性相對。軟硬由交聯的多寡決定：同樣是聚異戊二烯，輕度交聯是有彈性的橡膠，重度交聯就成了硬的熱固材料。",
+      "scope": "教學網站的通俗敘述，沒有量測資料；固特異的故事是簡述，細節不再加油添醋。不示範加熱或燃燒材料；過熱時熱固材料會分解而不是熔，這一點來自 H3027 的範圍，本頁沒有寫。",
+      "source_ids": [
+        "P57-S010"
+      ],
+      "source_locator": "「Stealing Vulcan's Fire」「Tying it All Together」「More! More!」三段",
+      "premise_status": "screened",
+      "notes": "補第六輪點名的（3）：H3027 自己的、獨立於 OpenStax 31.7 的來源。H3027 已有「稠密共價交聯形成整體網路、不能流動」；新增「整件是一個分子」的說法與不溶於溶劑、輕度對重度交聯同一種鏈兩種結果、先成型後交聯（1 條）。固特異的年份與故事不另計。算 1 條。 原提案 F9-024（目標 G30，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）照原稿收；逐句相符，不改字。但新增的事實很少：H3027 已有「稠密共價交聯形成整體網路、不能流動」，「整件是一個分子」只是同一件事的另一種說法；交聯網絡不溶而只會膨潤，池中 H3093 已有。真正新增的只有「同一種鏈，輕度交聯是橡膠、重度交聯是硬的熱固」與「先成形後交聯」，算 0.5 條（作者算 1）。它的用處是讓 H3027 有一個獨立於 OpenStax 31.7 的來源。教學網站，沒有量測資料。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "熱塑性是一盤可以重新攪開的麵條，熱固性是一張已經織好的網。",
+        "visual": "很多條各自獨立的鏈（可滑動）對一張所有節點相連的網；把交聯點由少加到多，同一張網從會彈變成不會動。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P57-012",
+      "question": "同一塊塑膠被壓住時，裡面有幾種「讓步」的方式？為什麼力會拖很久才降完？",
+      "domain": "高分子材料",
+      "mechanism_key": "polymer.two_deformation_mechanisms_relaxation_time_distribution",
+      "answer_target": "兩種，快慢差非常多。麻省理工材料系的課程講義說，聚合物受力時，一種是化學鍵的鍵長與鍵角被扭曲，位移很小、極快，大約 10⁻¹² 秒就完成；另一種是分子夠活動時，靠繞著主鏈的單鍵旋轉，讓整條分子的形狀慢慢重排。把一塊聚合物壓到固定的變形量然後不動，一開始的力對應的是鍵被扭曲的「玻璃態」剛度；之後分子逐漸改用伸展構形來容納這個變形，力就往一個較低的「橡膠態」平衡值降，這就是應力鬆弛。如果只有一種鬆弛時間，模型裡的力會在大約兩個十倍程的時間裡降完；講義說這通常太陡，真實的聚合物裡長短不同的鏈段快慢各異，鬆弛時間是一整個分布，所以力會拖過長得多的時間才降完。同一批分子機制也造成固定力下的蠕變，但鬆弛趨向平衡的速度比蠕變快。",
+      "scope": "教材；圖與「兩個十倍程」來自標準線性固體模型（Figure 6 是 Eg＝100、Er＝10、τ＝1 的示意），不是量測資料。片中不得出現「10 秒到 1,000 秒」這類自己舉的數字；要舉例只能用講義註 3 的說法：一個十倍程是例如從 10³ 到 10⁴ 秒。本來源沒有多種材料、長時間的實測鬆弛數據，不能替密封件或卡扣估壽命。池中 P56-009 的兩個時間常數是單一材料 5 分鐘試驗的擬合值，可並列但不可互相推算。",
+      "source_ids": [
+        "P57-S011"
+      ],
+      "source_locator": "2 節首段；3 節 Stress relaxation 與 Figure 5–6 及其後一段；4.2 節末句與 4.3 節首段；thermorheologically simple 段",
+      "premise_status": "screened",
+      "notes": "補第六輪點名的（4）的一半：以可讀的大學教材取代讀不到的 OpenLearn（403），支撐 H3090 的機制敘述；「多種材料、較長時間的實測」仍缺。H3090 已有應力鬆弛與蠕變並排、時間依賴重排；新增兩種變形機制與 10⁻¹² 秒（半條）、單一鬆弛時間約兩個十倍程而真實材料是分布（半條）、鬆弛比蠕變快與降溫等於時間平移（半條；時間溫度疊加 H3090 範圍已提，覆核可刪）。算 1.5 條。 原提案 F9-025（目標 G30，原角色 segment；依本池欄位記為 segment）。非作者覆核 V12（2026-11-12）改字後收；刪掉作者自己舉的 10 秒到 1,000 秒，以及 H3090 範圍已提過的時間—溫度平移一句。兩種變形機制與 10⁻¹² 秒 0.5 條、單一鬆弛時間約兩個十倍程而真實材料是分布 0.5 條；鬆弛比蠕變快屬 H3090 已並排的內容，不另計。共 1 條（作者算 1.5）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "P56-009 量到的「一個快、一個慢」不是巧合：真實材料裡本來就有一整排快慢不同的鬆弛。",
+        "visual": "力對時間（對數軸）的兩條曲線：單一鬆弛時間的陡坡與真實材料拖得很長的緩坡；下方畫短鏈段先動、長鏈段後動。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P57-013",
+      "question": "車子翻覆，多半是轉彎太猛被甩翻的嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "stability.rollover_tripped_vs_untripped_share",
+      "answer_target": "多半不是。美國 NHTSA 在 2001 年的公告裡把翻覆問題看成約 95% 是「絆倒型」（車子多半先滑出路面，輪胎或輪圈碰到路緣、軟土、路面落差之類的東西被絆住而翻）、約 5% 是路面上沒被絆到、單靠輪胎抓地力翻的。機關指出，一旦進入被絆住的情況，輪胎抓地力幾乎無關，普遍適用的車輛性質只剩重心高度與輪距（轉動慣量影響小得多）。",
+      "scope": "美國輕型車、1990 年代事故資料；95／5 是機關的判斷，另引 1999 年研究估未絆倒型約占 3.7%。",
+      "source_ids": [
+        "P57-S012"
+      ],
+      "source_locator": "III.A.1「We view the rollover safety problem as 95 percent…」段與註 5、註 6",
+      "premise_status": "screened",
+      "notes": "算 1 條：絆倒型與未絆倒型的比例加上「只剩重心高與輪距」的理由，是同一段的一個主張。這是第一個轉折：觀眾以為翻車是甩翻，實際上多數是先滑出去再被絆倒，所以靜態幾何才那麼有用。 原提案 F10-001（目標 G08，原角色 turn；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；照原稿。95／5 是機關的看法（We view），範圍已寫明；片中說「NHTSA 把它看成」，不說「統計顯示 95%」。絆倒物舉例用原文的路緣、軟土、路面落差（原稿的「水溝」不在原文，寫稿時不要用）。算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "會不會翻，多半在被絆到的那一刻由兩個尺寸決定。",
+        "visual": "俯視動畫：車子側滑出路面，輪子卡到路緣後繞著那一點翻；旁邊小圖是同一輛車在路面急轉沒有翻。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P57-014",
+      "question": "一輛車有多容易翻，能不能用一個數字講？",
+      "domain": "生活力學",
+      "mechanism_key": "stability.static_stability_factor_star_thresholds",
+      "answer_target": "NHTSA 用的是靜態穩定係數 SSF：半個輪距除以重心高度。2001 年的星等把它對到「發生單一車輛事故時翻覆的風險」：SSF 1.03 以下是一星，風險 40% 以上；1.04–1.12 兩星；1.13–1.24 三星；1.25–1.44 四星；1.45 以上五星，風險低於 10%。依機關的線性迴歸，SSF 1.00 的車每次單一車輛事故的翻覆風險是 SSF 1.53 的六倍。這個係數不是機關發明的，是 1973 年車廠提出來的。",
+      "scope": "風險是出了單一車輛事故之後翻覆的條件機率，不是上路就翻的機率；2001 年的星等界線，2004 年式起模型改版。六倍是線性迴歸在觀察資料兩端（SSF 1.00 與 1.53）的比較，片中要帶這個條件。",
+      "source_ids": [
+        "P57-S012"
+      ],
+      "source_locator": "I 導言第1段；III.A.1；III.B「six times as high」段與星等界線五行",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：定義與星等界線算 1 條，六倍算 0.5 條。P164、P165 只有「底座寬、重心低比較穩」一句，這裡是把兩者合成一個比值並對到事故統計，是新增的事實。 原提案 F10-002（目標 G08，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；數字無誤。事實數由 1.5 改 1：星等界線與「六倍」是同一條迴歸曲線讀出來的兩種說法，照本輪規則同一分析的多個數字合計 1 條。六倍要帶條件「觀察資料範圍的兩端、線性迴歸」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "寬除以高：櫃子、車子都用同一個比。",
+        "visual": "一輛車的正面剪影標出半輪距與重心高，比值在一條刻度尺上移動，尺上分五段星等與對應風險。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P57-015",
+      "question": "重心高的車，路上真的翻得比較多嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "stability.rollover_share_by_vehicle_type_fars",
+      "answer_target": "NHTSA 引用的事故資料裡，翻覆占單一車輛事故的比例是：轎車 13%、廂型車 14%、皮卡 24%、休旅車 32%。1999 年美國有 10,142 名輕型車乘員死於翻覆事故。車廠主張這些差別主要來自駕駛人與道路；機關則舉例說重心可以改：某款休旅車改款把重心降低約 2.0 吋並加寬輪距，離地高反而增加，機關估計相當於至少進一個星等。",
+      "scope": "美國 1990 年代資料；車型比例沒有控制駕駛與道路差異，機關另以迴歸處理。",
+      "source_ids": [
+        "P57-S012"
+      ],
+      "source_locator": "II 背景（FARS 1999）；III.B「passenger cars, 13 percent…」；III.C.1 與註 8",
+      "premise_status": "screened",
+      "notes": "算 1 條：四個比例是同一組統計，改款例子算在同一條的補充。 原提案 F10-003（目標 G08，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 1 條。車型比例沒有控制駕駛與道路，範圍已寫；片中不可說「休旅車因為重心高所以翻 32%」，只能說比例與機關、車廠各自的解讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "四種車型排成一列，翻覆比例跟著車身變高。",
+        "visual": "四種車的剪影由低到高排列，下方長條 13、14、24、32；旁邊標註「未控制駕駛與道路」。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P57-016",
+      "question": "只量寬和高太粗糙了吧？實際把車開去急轉彎測，會準很多嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "stability.dynamic_fishhook_adds_little_to_ssf",
+      "answer_target": "有加，但多出來的不多。NHTSA 自 2004 年式起把 SSF 與 Fishhook（魚鉤形急轉）測試一起放進風險模型。25 輛受測車裡有 11 輛在測試中翹起（tip-up）、14 輛沒有，而翹起的 11 輛全都在 SSF 低於 1.20 的 16 輛裡，SSF 較高的沒有一輛翹起。另一種 J-Turn 測試在有 Fishhook 時不再增加有意義的資訊，沒有採用。機關自己寫：模型能給在最嚴苛操控中翹起的車較高的翻覆風險，但多出來的風險很小，翹起的預測力可能不大。",
+      "scope": "25 輛車的樣本；結論是「相對於 SSF 多出多少預測力」，不是說動態測試沒用。",
+      "source_ids": [
+        "P57-S013"
+      ],
+      "source_locator": "SUMMARY 後第2段；IV 節；VI 節「small difference in Figure 4…the extra risk was small」",
+      "premise_status": "screened",
+      "notes": "算 1 條。接在 F10-001 後面：因為多數翻覆是絆倒型，靜態幾何已經說掉大半，動態測試只補一點。 原提案 F10-004（目標 G08，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；結論無誤，改兩處用字：原文的 tip-up 是測試定義的「翹起」，不寫成「某項操控測試中內側輪離地」的泛稱；補上原文的「11 輛全部落在 SSF 低於 1.20 的 16 輛裡」，這句直接說明為什麼動態測試多不出多少資訊。算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真的開去甩，答案和量尺寸差不多。",
+        "visual": "測試場俯視：車子做魚鉤形急轉，內側兩輪離地的瞬間定格；旁邊兩條幾乎重疊的風險曲線。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P57-017",
+      "question": "抽屜裝滿衣服，櫃子是比較穩還是比較不穩？",
+      "domain": "生活力學",
+      "mechanism_key": "stability.dresser_filled_drawers_closed_vs_open",
+      "answer_target": "看抽屜是關著還是開著。美國 CPSC 幕僚的測試與分析：裝滿的抽屜關著時，衣服的重量在前腳（支點）後方，幫忙穩住櫃子；拉開後同樣的重量移到前腳前方，就變成幫倒忙。以容積計，超過一半的抽屜開著時，裝滿比空的更不穩；超過一半關著時，裝滿比較穩。抽屜拉開越多，整體重心越往前，櫃子越容易往前倒。測試用的衣物重量是每立方呎 8.5 磅（ASTM 小組委員會的假設值，幕僚實測後認為合理）。",
+      "scope": "CPSC 幕僚對便利取樣的衣物收納櫃的測試，結果限於受測櫃；這份 2022 年規則後來沒有生效，只引用其測試發現。",
+      "source_ids": [
+        "P57-S014",
+        "P57-S015"
+      ],
+      "source_locator": "S003 VI.A；VII.A 第1段、VII.A.1、VII.A.2",
+      "premise_status": "screened",
+      "notes": "算 1 條：開關與裝填的交互作用是一個主張，8.5 磅／立方呎是條件不另計。第二個轉折：P165「重物放下層比較穩」只在抽屜關著時成立，同一份重量拉出來就換邊。 原提案 F10-005（目標 G08，原角色 turn；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；照原稿，算 1 條。作者的提醒成立：這份 2022 年規則沒有生效，片中只能說「CPSC 幕僚的測試發現」，不能說「法規規定」或「現行標準」。8.5 磅／立方呎原文是 ASTM 小組委員會的假設值、幕僚測試確認合理，不是幕僚自己量出來的數字，寫稿時照這個主詞。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一疊衣服，關著是壓艙，拉開就是推手。",
+        "visual": "櫃子側視剖面：重心小圓點隨抽屜一個個拉開往前腳移；裝滿的抽屜關著時顏色為穩定色，拉開後變色。小模型示意，不用真人與真家具。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "P57-018",
+      "question": "一個 20 公斤的小孩爬抽屜，櫃子受到的就是 20 公斤嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "stability.child_climbing_moment_exceeds_static_weight",
+      "answer_target": "不只。CPSC 委託密西根大學運輸研究所，讓 40 名 20 到 65 個月大的孩子在裝了感測器的測試架上做攀爬、拉、靠等動作：以 1 呎力臂計，每一種互動產生的最大力矩都超過孩子的體重。攀上去那一步，垂直力大約等於體重（幕僚估約 1.08 倍），但孩子的重心平均在踏點外側約 6 吋，手還會往外拉；幕僚估計在典型的抽屜伸出量下，等效力超過體重的 1.6 倍。當時的自願標準（ASTM F2057-19）卻是把櫃子清空、一次只拉開一個抽屜，在那個抽屜上慢慢加到 50 磅的靜止重量來測。",
+      "scope": "測試架上的實驗，不是真櫃子；1.6 倍是幕僚依 UMTRI 資料的估計；舊標準指 ASTM F2057-19。",
+      "source_ids": [
+        "P57-S014"
+      ],
+      "source_locator": "V 節 ASTM F2057-19 段；VII.B 概述、「For all of the interactions, the maximum moment exceeded the weight of the child」、註 61 與其後一段；「more than 1.6 times the weight」段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：力矩超過體重與 1.6 倍算 1 條，舊標準用 50 磅靜重對照算 0.5 條。這也回應審視欄說的 T14 問題：「重心在底座內就不會倒」不完整，因為推它的不是一個靜止的重量。 原提案 F10-006（目標 G08，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；數字無誤。改一處：舊標準測的是「整個櫃子是空的、一次只拉開一個抽屜，在那個抽屜上加 50 磅」，不是「一個拉開的空抽屜」。力矩與體重單位不同，照原文寫法要帶「以 1 呎力臂計」。算 1.5 條（力矩超過體重與 1.6 倍 1 條、舊標準對照 0.5 條）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "會動的人不是砝碼：身體在外、手還在拉。",
+        "visual": "測試架示意：孩子的重心點在抽屜前緣外側，手腳各有一對水平與垂直箭頭；右側對照一個靜止砝碼放在抽屜上。只用示意圖。",
+        "seconds": [
+          55,
+          70
+        ]
+      }
+    },
+    {
+      "id": "P57-019",
+      "question": "同一個櫃子，放在地毯上會比較容易倒嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "stability.dresser_carpet_equivalent_forward_tilt",
+      "answer_target": "多半會。CPSC 幕僚把同一批櫃子分別放在硬地面與地毯上測「加多少重量會倒」：1,221 組比較裡 1,149 組（94%）在地毯上用比較少的重量就倒，33 組相反、39 組相同；差距的中位數是 7 磅。幕僚再把櫃子放回硬地面、往前傾 0、1、2、3 度重測（9 組），發現地毯的效果相當於前傾 0.8 到 3 度，依櫃子而異，平均 1.48 度。在有記錄地板種類的 58 件兒童死亡事故裡，47 件（81%）是地毯或小地毯。",
+      "scope": "幕僚測試用一種地毯與襯墊；等效傾角只比對 9 組、依櫃子而異；事故比例只算 95 件裡有回報地板種類的 58 件，地毯含小地毯。2022 年規則沒有生效，只引用測試發現。",
+      "source_ids": [
+        "P57-S014"
+      ],
+      "source_locator": "事故資料「3. Flooring」；VII.C（1,221 組、中位數 7 磅、0.8–3 度、平均 1.48 度）",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：實測差距與等效傾角算 1 條，事故中的地毯比例算 0.5 條。P164「底座與容許傾角」的延伸：軟地面等於先幫你用掉一兩度。 原提案 F10-007（目標 G08，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；作者寫「所有受測櫃在地毯上都用比較少的重量就倒」與原文不符：1,221 組裡 94% 在地毯上較早倒，3% 相反、3% 相同。原文的用字是 tended to。另補：傾角對照只有 9 組；地毯的 47 件含小地毯（rugs），且是 95 件裡有回報地板種類的 58 件。算 1.5 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "軟地板先替你傾了一度半。",
+        "visual": "同一個小模型櫃放在硬板與軟墊上，後者前腳微陷；量角器顯示約 1.5 度，加重量的刻度條在軟墊那邊較早到頂。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "P57-020",
+      "question": "家具傾倒是很罕見的意外嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "stability.tipover_injury_fatality_counts_us",
+      "answer_target": "在美國不算罕見。CPSC 幕僚 2023 年的報告估計，2019–2021 年每年平均約 19,400 人因電視、家具或家電傾倒送急診，18 歲以下占 8,900 人（46%）；2000–2021 年通報的死亡有 592 件，其中 482 件（81%）是 18 歲以下。報告列的不穩定因素包括底面小、頭重、放在地毯上、多個抽屜同時拉開。",
+      "scope": "美國、幕僚報告；涵蓋電視、家具、家電；近兩年死亡數不完整。",
+      "source_ids": [
+        "P57-S016"
+      ],
+      "source_locator": "Executive Summary 第1段；Highlights「Victims」",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：背景數字，只當開場的理由，不撐章節。不得延伸成固定家具的教學。 原提案 F10-008（目標 G08，原角色 hook；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 0.5 條，只當開場理由。片中說「CPSC 幕僚報告估計」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「站得住」和「推不倒」之間，每年隔著上萬次急診。",
+        "visual": "兩個數字卡：19,400 與 592，下方小字標出期間與「美國、含電視與家電」。",
+        "seconds": [
+          20,
+          30
+        ]
+      }
+    },
+    {
+      "id": "P57-021",
+      "question": "人站著不動，為什麼前後比左右更需要肌肉出力？",
+      "domain": "生活力學",
+      "mechanism_key": "stability.standing_human_fore_aft_vs_sideways",
+      "answer_target": "OpenStax 的說法：站著的人重心在髖關節上方、落在兩腳之間，對側向位移是穩定的，但只要偏一點重心就出了支撐範圍；前後方向更不穩，因為腳不夠長，身體要大量用肌肉來維持前後平衡。對照是雞：重心在髖關節下方、雙腳分得開又寬，像掛著的擺，前後左右都穩。同一節也給了方向不同的極端例子：鞍上的彈珠前後穩、左右不穩。",
+      "scope": "教材的定性說明，沒有數字。",
+      "source_ids": [
+        "P57-S017"
+      ],
+      "source_locator": "圖 9.16(a) 圖說；雞的兩段；「marble on a saddle」句",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：鞍上的彈珠那句屬於舊核心 P167，不重計；只算「人前後不穩靠肌肉、雞是擺」這個新例子。來源與池中 SRC-aebc97f067673f86 同一頁，建議掛回原來源、不另立。 原提案 F10-009（目標 G08，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 0.5 條。來源網址與池中 SRC-aebc97f067673f86 完全相同（https://openstax.org/books/college-physics-2e/pages/9-3-stability），不另立來源，見 source_fixes。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你自己就是一個前後不太穩的物件。",
+        "visual": "人與雞的側視剪影，各標重心與髖關節；人前後晃動時小腿肌肉亮起，雞像擺一樣自己盪回來。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P57-022",
+      "question": "暖暖包按一下金屬片，實際上會熱到幾度、熱多久？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.sodium_acetate_handwarmer_measured_temperature",
+      "answer_target": "一篇 2024 年的開放取用論文量了一個 330 公克的市售醋酸鈉暖暖包（比一般暖暖包大）：折一下金屬片引發結晶後，表面溫度 1 分鐘升到 51.8 °C，第 8 分鐘到最高 54.8 °C，一小時後還有 53.3 °C。同一篇另外用熱分析量了三水合醋酸鈉試藥：熔化起始溫度 58.55 °C、熔化焓每公克 227 焦耳。",
+      "scope": "單一市售產品、單次量測，貼在表面的熱電偶、包在毛線織物裡；不是每個暖暖包的保證值。DSC 數字是另一份試藥的量測，不可寫成那個暖暖包放出的熱量。期刊是土耳其的大學期刊。",
+      "source_ids": [
+        "P57-S018"
+      ],
+      "source_locator": "Results「Commercial sodium acetate trihydrate hand warmer」；「DSC analysis of sodium acetate trihydrate」",
+      "premise_status": "screened",
+      "notes": "算 1 條：同一產品的三個溫度讀數合計 1 條，DSC 數字是補充不另計。補審視欄「過飽和示範不可控」的問題：改用市售暖暖包當示範對象，有現成的實測曲線，不必自己配過飽和溶液。 原提案 F10-025（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；溫度讀數無誤，算 1 條。刪掉作者自己接的那句「透明的過飽和溶液把這份熱帶著，直到開始結晶才放出來」：DSC 的 227 J/g 是作者另購的三水合醋酸鈉固體的熔化焓，不是那個市售暖暖包的量測，把兩段接成一條因果鏈是上一輪被抓過的寫法。補上原文的條件：這個產品比一般暖暖包大。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "透明的那一包，藏著一分鐘升到五十度的熱。",
+        "visual": "暖暖包由透明變白的縮時，旁邊溫度曲線一分鐘內衝到 51.8 °C 後幾乎走平到 60 分鐘。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P57-023",
+      "question": "暖暖包裡那片金屬片，到底對溶液做了什麼？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.handwarmer_disc_trigger_seed_vs_shock_disagreement",
+      "answer_target": "來源之間說法不一，片中要照實說。OpenStax 的圖說寫的是按下金屬片產生的「機械衝擊波」引發析出，並說加晶種或機械擾動都能讓過飽和溶液開始析出。2024 年那篇論文的導言引前人說法：金屬片裡困住的晶種當成核中心；作者自己配的過飽和溶液則是熱電偶探針一插進去就開始結晶。2008 年《American Journal of Physics》一篇專門研究的摘要說，實驗顯示成核來自夾在金屬面之間被保存下來的晶種，晶種能留存可用極高的局部壓力使熔點升高來解釋。",
+      "scope": "2008 年那篇只讀到摘要；2024 年論文的觀察只有一次；沒有一份讀到全文的來源直接比較兩種機制。",
+      "source_ids": [
+        "P57-S019",
+        "P57-S018",
+        "P57-S022"
+      ],
+      "source_locator": "S021 暖暖包圖說與其前一段；S020 導言醋酸鈉段與 Results 第一段；S024 摘要",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：能有把握說的只有「來源說法不一、專門研究的摘要支持晶種說」，機制本身不能當已確定的事實。審視欄點名的成核第二來源只補到一半：CrystEngComm 2021 仍 403，Sandnes 2008 全文在付費牆後。 原提案 F10-026（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 0.5 條。作者寫成「來源說法不一」是對的；Sandnes 只有摘要，不能當機制的定論。池中 P232 的範圍欄「成核細節需加第二來源」仍然沒有解決。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連教科書和專門研究都各說各話的一個「喀」。",
+        "visual": "金屬片特寫分兩格：左格畫一圈圈震波，右格畫縫隙裡夾著的小晶粒；兩格上方各標出處，中間打問號。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    },
+    {
+      "id": "P57-024",
+      "question": "透明卻「裝過頭」的溶液，只有糖和鹽這類固體才會嗎？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.gas_supersaturation_soda_and_lake_nyos",
+      "answer_target": "氣體也會。OpenStax 舉的日常例子是打開後還沒走氣的碳酸飲料：它對二氧化碳是過飽和的，放著濃度會一路降到溶解度為止。大的例子是 1986 年喀麥隆的尼奧斯湖：火山活動讓湖底的水飽和了二氧化碳，教材說據信是湖水翻轉把這層水帶到表面，大量溶解的二氧化碳一下子釋出，這團無色、比空氣重的氣體流進下方谷地，造成超過 1700 人死亡。",
+      "scope": "教材的通論敘述，尼奧斯湖的成因用「據信」「幾乎確定是二氧化碳」，沒有引原研究。",
+      "source_ids": [
+        "P57-S019"
+      ],
+      "source_locator": "「Solutions may be prepared in which a solute concentration exceeds its solubility」段；Lake Nyos 段與圖 11.12",
+      "premise_status": "screened",
+      "notes": "算 1 條：汽水是入口、尼奧斯湖是主例，同一個主張。池中搜尋 Nyos／尼奧斯／湖底二氧化碳沒有既有核心。來源與池中 SRC-19346cef2dc01be3 同一頁，建議掛回原來源。若要撐一整章，尼奧斯湖需要補原研究或 USGS 的說明頁。 原提案 F10-027（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 1 條。來源網址與池中 SRC-19346cef2dc01be3 完全相同，不另立來源。尼奧斯湖在教材裡是「almost certainly」「It is believed」的通論，沒有引原研究；要當 50 秒的一章並報死亡人數，寫稿前要補一份原研究或 USGS 的說明頁。池中搜尋 Nyos／尼奧斯沒有既有核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來平靜的一杯水、一座湖，都可能裝著超過它留得住的東西。",
+        "visual": "一瓶剛開的汽水氣泡慢慢冒出；切到湖的剖面，底層深色水翻到表面後一片氣體沿山谷往下流。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "P57-025",
+      "question": "純水明明也有氫和氧，為什麼幾乎不導電？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.pure_water_ionization_two_per_billion",
+      "answer_target": "因為裡面幾乎沒有帶電的粒子可以動。OpenStax 寫：25 °C 時，每十億個水分子只有大約兩個游離成離子，所以純水是極差的導體。要導電得有可自由移動的帶電粒子，溶液的導電度隨離子濃度升高。反過來的例子是氯化氫：它本身是共價分子組成的氣體、沒有離子，溶進水卻因為和水反應產生離子，成了很好的導體。",
+      "scope": "教材的定性說明加一個比例；沒有任何實測導電度數值。",
+      "source_ids": [
+        "P57-S020"
+      ],
+      "source_locator": "「Pure water is an extremely poor conductor…」段；其後「In some cases…」段；開頭兩段",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：「十億分之二」是新數字；「要有可移動的離子」屬於 P224 不重計。池中 P266 問的是中性水裡有沒有離子（答案是兩者平衡），角度不同。來源與池中 SRC-22bb4f194a5b32a9 同一頁，建議掛回原來源。 原提案 F10-028（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 0.5 條。來源網址與池中 SRC-22bb4f194a5b32a9 完全相同，不另立來源。沒有任何實測導電度，這一點補不了 G01 缺的那一塊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "導不導電看的不是成分，是有沒有會動的電荷。",
+        "visual": "十億個小點的方陣裡只亮兩個；旁邊糖水的分子完整地散開、鹽水的離子成對分開移動。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "P57-026",
+      "question": "要看到光束穿過牛奶水的路徑，牛奶要加多少？加越多越清楚嗎？",
+      "domain": "生活化學",
+      "mechanism_key": "solution.tyndall_demo_milk_dilution_beam_to_glow_ball",
+      "answer_target": "很少就夠，而且不是越多越好。奧勒岡醫學雷射中心的課堂示範：雷射筆穿過清水時，只在有小氣泡或灰塵的地方看得到很淡的線；加一點點牛奶攪勻（頁面建議從幾滴開始），光束路徑就看得見，牛奶裡的光主要是被細小的脂肪球散射。繼續加牛奶，穿出去打在紙上的光點暗到看不見，光束也從一條線變成一團發光的球。",
+      "scope": "1996 年課堂示範頁的定性描述；頁面寫的用量（600 cc 水、1 cc 牛奶）與它自己的換算「半加侖多一點」對不上，不引用比例。頁面說照片用了較強的雷射；不是強度量測。",
+      "source_ids": [
+        "P57-S021"
+      ],
+      "source_locator": "示範步驟各段（a–f 圖說對應的文字）",
+      "premise_status": "screened",
+      "notes": "算 0.5 條：補審視欄「丁達耳散射的實測條件」中的示範條件；「實測結果（強度數據）」沒有補到。新觀察是「加太多光束變成一團球」，讓散射章不只是重講「看不見不等於不存在」。 原提案 F10-029（目標 G01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；原文的用量自相矛盾：600 cc 不是「半加侖多一點」（半加侖約 1.9 公升）。所以「600 cc 水加 1 cc 牛奶」不能當成可引用的比例，改成「幾滴」；原文自己也叫讀者「start by adding only a few drops」。保留定性的新觀察（加太多：光點消失、光束變成一團），算 0.5 條。這是一頁 1996 年的課堂示範，不是量測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "散射一次看得見路，散射太多次連路都糊掉。",
+        "visual": "同一缸水四格：清水幾乎看不到線、加一滴後一條紅線、再加變粗變短、最後只剩入口處一團紅光。",
+        "seconds": [
+          30,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P57-NA001",
+      "question": "針織布拉完放回來，為什麼收回的功只有拉出去的一半左右？",
+      "existing_ids": [
+        "X5003"
+      ],
+      "source_ids": [
+        "P57-S001"
+      ],
+      "reason": "Poincloux 等 2018 的 Fig.1(b) 與正文寫「回到原狀所做的功約為拉伸所需的一半」，原因是紗線間摩擦在加卸載時方向相反；這與池中 X5003 是同一個答案，只多一個「約一半」的數字。不另立核心，寫稿時可把這個數字掛在 X5003 那一章並標本來源。 原提案 F9-NA001。",
+      "reentry_condition": "若日後另有不同紗線、不同針法的遲滯量測可比較，再提。",
+      "reading_status": "已讀全文（arXiv v2）"
+    },
+    {
+      "id": "P57-NA002",
+      "question": "很緊的針織布一開始為什麼特別難拉？",
+      "existing_ids": [
+        "P49-002"
+      ],
+      "source_ids": [],
+      "reason": "Gonzalez 等〈Pulling apart the mechanisms that lead to jammed knitted fabrics〉（arXiv:2410.03940v2；另一篇論文的參考文獻列為 Phys. Rev. E 112, 015504, 2025）與池中 P49-002 是同一題。本輪只下載、沒有閱讀正文，不提核心。快取 f9src/jammed2410.html。 原提案 F9-NA002。",
+      "reentry_condition": "讀完全文且有 P49-002 沒有的量測結果時再提。",
+      "reading_status": "只下載，未讀"
+    },
+    {
+      "id": "P57-NA003",
+      "question": "從捻紗到針織拓樸的整體回顧能補哪些章節？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "〈Textiles: from twisted yarn to topology and mechanics〉（arXiv:2604.09005v2，23 頁回顧）本輪只下載、沒有閱讀；回顧不是原研究，就算讀了也只當入口。快取 f9src/review2604.html。同樣只下載未讀：Poincloux 等〈Crackling dynamics in the mechanical response of knitted fabrics〉（arXiv:1803.00815v2，池中已有此網址的來源）。 原提案 F9-NA003。",
+      "reentry_condition": "讀完並追到原研究後，以原研究提核心。",
+      "reading_status": "只下載，未讀"
+    },
+    {
+      "id": "P57-NA004",
+      "question": "歷史磚石建築從室內加保溫之後，牆裡的溫濕度實測是什麼樣子？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Ueno, Straube, Van Straaten〈Field Monitoring and Simulation of a Historic Mass Masonry Building Retrofitted with Interior Insulation〉（buildingscience.com/file/3732，PDF 已存 f9src/bsc_file3732.pdf）有磚石牆的現場監測與模擬，但本輪只讀了題名與摘要開頭，且看來是寒冷氣候的內保溫與凍融問題，不是濕熱氣候；不提核心。 原提案 F9-NA004。",
+      "reentry_condition": "讀完全文，確認氣候區與量測內容後，若有濕熱或冷房季的資料再提。",
+      "reading_status": "只讀摘要開頭，不算全文"
+    },
+    {
+      "id": "P57-NA005",
+      "question": "台灣或鄰近濕熱地區（新加坡、香港）的 RC／磚牆有沒有公開的熱濕實測或模擬？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪以 Europe PMC 檢索（hygrothermal 加 Taiwan／Hong Kong／Singapore／Malaysia 加 wall 加 concrete／brick，開放取用）沒有找到切題的研究；內政部建研所（ABRI）與各地建管機關的文件沒有找到可直接讀的全文網址，沒有再試。佛羅里達太陽能中心（FSEC）的報告網址 TLS 憑證驗證失敗，未繞過。所以 G42 的濕熱來源仍是美國佛州個案與德國作者的回顧。 原提案 F9-NA005。",
+      "reentry_condition": "找到台灣或東南亞的 RC／磚牆實測、模擬全文，或建研所報告的可讀網址。",
+      "reading_status": "檢索無結果或讀不到"
+    },
+    {
+      "id": "P57-NA006",
+      "question": "牆內石膏板與立柱隔音還有哪些公開的美國政府資料？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "NBS Building Science Series 77〈Acoustical and Thermal Performance of Exterior Residential Walls, Doors and Windows〉已下載（f9src/nbs_bss77.pdf）但本輪未讀；HUD Noise Guidebook 第 4 章的猜測網址回 404，沒有再找。G43 的數據全部來自加拿大 NRC 與 NBS Handbook 119。 原提案 F9-NA006。",
+      "reentry_condition": "讀完 BSS 77 或取得 HUD 指南全文後，若有外牆、門窗的實測可補「聲音從窗進來」一章。",
+      "reading_status": "一份只下載未讀；一份 404"
+    },
+    {
+      "id": "P57-NA007",
+      "question": "PVC 加不同份數的鄰苯二甲酸酯（DOP／DEHP／DINP），同一量法下玻璃轉移各是幾度？",
+      "existing_ids": [
+        "P56-008"
+      ],
+      "source_ids": [
+        "P57-S009",
+        "P57-S008"
+      ],
+      "reason": "第六輪要的理想資料是「同一研究、同一量法、多個添加量的鄰苯二甲酸酯系列」。本輪找到的多添加量系列（F9-S019）用的是作者自製的生質寡聚酯，鄰苯二甲酸酯只有單點（F9-S018 的 40 phr DOP＝7°C；池中 P56-008 的 30 phr DOP＝61°C 是 DMA）。網路檢索到的 Fried 1982（J. Appl. Polym. Sci.，DOA／TOTM 5–120 phr）與 2006 年的 DINP 比較都在付費牆後，只看到檢索摘要，不算來源；TA Instruments 應用筆記回 403。因此不提「DOP 添加量對 Tg 的曲線」這個核心，改提 F9-022、F9-023 兩個各自成立的核心。 原提案 F9-NA007。",
+      "reentry_condition": "取得開放全文的鄰苯二甲酸酯多添加量 DSC 系列（同一 PVC、同一升溫速率）。",
+      "reading_status": "兩份開放全文已讀；兩份只見檢索摘要；一份 403"
+    },
+    {
+      "id": "P57-NA008",
+      "question": "多種塑膠、長時間（數小時到數月）的應力鬆弛實測曲線長什麼樣？",
+      "existing_ids": [
+        "H3090",
+        "P56-009"
+      ],
+      "source_ids": [
+        "P57-S011"
+      ],
+      "reason": "第六輪點名的（4）後半。Roylance 的講義只有模型曲線；OpenLearn 的原來源本輪仍回 403，未繞過。沒有找到開放的多材料長時間鬆弛資料，不提核心。 原提案 F9-NA008。",
+      "reentry_condition": "找到開放全文的多材料、長時間應力鬆弛或蠕變實測（例如密封墊、管材的標準試驗報告）。",
+      "reading_status": "教材已讀；實測資料未找到"
+    },
+    {
+      "id": "P57-NA009",
+      "question": "暖暖包金屬片引發結晶的機制（CrystEngComm 2021 與 Sandnes 2008 原文）",
+      "existing_ids": [
+        "P232"
+      ],
+      "source_ids": [
+        "P57-S022"
+      ],
+      "reason": "pubs.rsc.org 的文章頁與 PDF 對 curl 與 WebFetch 都回 403（與第四輪 P54-NA001 相同）；Sandnes 2008 全文在 AIP 付費牆後，只從 Macquarie 研究入口頁讀到摘要。沒有全文就不把「晶種被夾在金屬縫裡」寫成確定的機制，只在 F10-026 標明來源說法不一。 原提案 F10-NA001。",
+      "reentry_condition": "取得 Sandnes 2008 或 CrystEngComm 2021 的可讀全文（作者典藏或開放副本）。",
+      "reading_status": "RSC 未讀（403）；Sandnes 只讀摘要"
+    },
+    {
+      "id": "P57-NA010",
+      "question": "糖水與鹽水的低壓導電實測值（µS/cm）",
+      "existing_ids": [
+        "P224"
+      ],
+      "source_ids": [
+        "P57-S020"
+      ],
+      "reason": "找到的大學實驗講義（Bellevue College CHEM&161 Electrolytes，已讀全文）只有步驟、沒有結果表；Indiana University 的 Pressbooks 講義 403、De Anza College 的講義連線被重設；搜尋到的 McGraw-Hill 教師解答（糖 0.0、食鹽 111.1 µS）是出版商解答本、沒有濃度條件，不當來源。USGS《National Field Manual》A6.3（已讀）只談天然水的量測與校正，沒有糖鹽對照。這一塊仍然缺。 原提案 F10-NA002。",
+      "reentry_condition": "一份寫明濃度、溫度與儀器的糖／鹽溶液導電度量測（開放取用的化學教育論文或大學講義的結果表）。",
+      "reading_status": "Bellevue 與 USGS A6.3 已讀但無可用數據；其餘未讀（403／連線重設）"
+    },
+    {
+      "id": "P57-NA011",
+      "question": "丁達耳散射的強度量測（牛奶稀釋液的衰減或散射係數）",
+      "existing_ids": [
+        "P241"
+      ],
+      "source_ids": [
+        "P57-S021"
+      ],
+      "reason": "搜尋到一篇量牛奶雷射衰減的 STAR 期刊論文（ajol.info）回 403；RSC Education 的教學頁回 405；Oklahoma State 的 ChemSource 示範頁連線被重設；UW–Madison 示範頁（已讀）只有一句描述與出處（Shakhashiri 第 3 冊 353 頁）。只補到 OMLC 的示範條件（F10-029），沒有強度數據。 原提案 F10-NA003。",
+      "reentry_condition": "一份開放全文、有濃度與強度數據的散射量測。",
+      "reading_status": "OMLC 與 UW 頁已讀；其餘未讀（403／405／連線重設）"
+    },
+    {
+      "id": "P57-NA012",
+      "question": "鞍形支承與方向性穩定的教材來源",
+      "existing_ids": [
+        "P167"
+      ],
+      "source_ids": [
+        "P57-S017"
+      ],
+      "reason": "不必另找：池中 P163–P167 的來源 OpenStax College Physics 2e §9.3 整節重讀後，原文就有「鞍上的彈珠前後穩、側向不穩」一句，P167 的答案與它相同，不另提核心。OpenStax University Physics 第 1 冊 §8.4（位能圖與穩定，已存快取）沒有鞍點或亞穩態的字樣。亞穩態（淺位能井）的教材出處仍沒有找到，本題最終大綱不用這個詞。 原提案 F10-NA004。",
+      "reentry_condition": "若要講「亞穩態」，另找一份有位能井圖的大學教材頁。",
+      "reading_status": "OpenStax 9.3 全節已讀；UP1 8.4 以關鍵字檢索"
+    },
+    {
+      "id": "P57-NA013",
+      "question": "傾斜台（tilt table）量車輛翻覆門檻的實測資料",
+      "existing_ids": [
+        "P164"
+      ],
+      "source_ids": [
+        "P57-S012"
+      ],
+      "reason": "NHTSA 2001 公告只在比較各種指標時提到 Tilt Table Ratio（說它可能被用犧牲操控的方式做高），沒有給任何車的傾角數值；TRB Special Report 265（已下載、未讀）可能有，但本輪沒有讀到可引用的段落，不列為來源。 原提案 F10-NA005。",
+      "reentry_condition": "讀 TRB SR 265 或 NHTSA 的 tilt table 測試報告，取得同一批車的傾角與 SSF 對照。",
+      "reading_status": "FR 2001 已讀；TRB SR 265 已存檔但未讀"
+    },
+    {
+      "id": "P57-NA014",
+      "question": "Signal 的私密聯絡人探索（不把通訊錄交給伺服器）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "signal.org/blog/private-contact-discovery（2017-09-26）已下載，但只讀了開頭，沒有讀到機制段，不提核心。它是 G38 還能再補 1 條的方向。 原提案 F10-NA008。",
+      "reentry_condition": "讀完全文與後續的 SGX／ORAM 說明後再提。",
+      "reading_status": "只讀開頭"
+    },
+    {
+      "id": "P57-NA015",
+      "question": "Signal 協定的形式化安全分析（Cohn-Gordon 等，eprint 2016/1013）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "eprint.iacr.org 的 PDF 回 403，未讀。G38 目前除了 NDSS 2021 之外都是營運者自己的文件，這篇本來要當獨立來源。 原提案 F10-NA009。",
+      "reentry_condition": "取得可讀全文。",
+      "reading_status": "未讀（403）"
+    }
+  ]
+}

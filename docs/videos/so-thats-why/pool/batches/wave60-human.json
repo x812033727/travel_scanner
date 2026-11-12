@@ -1,0 +1,376 @@
+{
+  "batch_id": "wave60-human-20261111",
+  "created_on": "2026-11-12",
+  "scope": "食品驗真：台灣食藥署蜂蜜同位素檢驗、FAO 蛋白質測法、Elliott Review；自己造成的感覺為什麼比較弱：替組題 C5-01（作者 F15，非作者覆核 V18）與 C6-01（作者 F16，覆核 V19）補原研究。",
+  "sources": [
+    {
+      "id": "H60-S001",
+      "url": "https://www.fda.gov.tw/tc/includes/GetFile.ashx?id=f636812670113442010",
+      "canonical_url": "https://www.fda.gov.tw/Tc/PublishResearch.aspx",
+      "title": "以元素分析儀串聯同位素比值質譜儀進行蜂蜜C4糖之檢驗（尤心正、黃子凌、方俊仁、許哲綸、蔡佳芬、高雅敏、王德原、陳惠芳）",
+      "publisher": "衛生福利部食品藥物管理署研究檢驗組／《食品藥物研究年報》第 9 期，104–114 頁，2018",
+      "version": "2018 年刊本 PDF（11 頁），食藥署官網「食品藥物研究年報」清單第 41 頁的〈第9期〉條目連結",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭）；取得路徑：搜尋結果→食藥署 PublishResearch.aspx 清單頁逐頁（pn=1..95）找到該期條目的 GetFile 連結→下載 PDF；本機快取，pdftotext 中文字型缺 Adobe-CNS1 對映，改用 python 的 pdfminer 轉文字後逐段讀",
+      "reading_scope": "全文讀完：摘要、前言、材料與方法（檢體來源、試藥、EA-IRMS 條件、精密度、品管、儲藏試驗、定量極限）、結果與討論七至八節（211 件與 83 件的分項結果）、結論、參考文獻。表四、表五、表七的版面在轉文字後欄位錯位，只讀得到數值串，未逐格核對；圖一、圖二未目讀。",
+      "locator": "摘要；前言第 3–4 段（AOAC 978.17、AOAC 998.12、7% 判定、C3 糖漿無法分辨）；結果與討論六（定量極限）、七（養蜂協會 211 件）、八（北區管 83 件）；結論",
+      "summary": "食藥署研究檢驗組以 EA-IRMS 量蜂蜜與蜂蜜中蛋白質的碳同位素比值，依 AOAC 978.17（δ13C 低於 -23.5‰ 判純蜜、高於 -21.5‰ 判摻偽、其間為可疑）與 AOAC 998.12（以蜜與蜜中蛋白的 δ13C 及玉米糖漿 δ13C=-9.7‰ 常數算 C4 糖百分比，大於 7% 視為含 C4 糖）判定。加標試驗：C4 果糖加 10% 時 C4 糖測值 12.92%（>7%）可判摻混；加 C3 果糖者 δ13CH 皆小於 -24‰、C4 糖測值皆小於 7%，此法看不出來。前言明寫該法無法分辨摻入 C3 植物來源糖漿（甜菜糖、菊苣糖或米轉化糖漿），低蛋白蜜（金合歡、薰衣草）判定也較困難。台灣養蜂協會 211 件（10 縣市蜂農，蜜源以龍眼、荔枝、咸豐草、百花為主）δ13CH 分布 -29.53 至 -18.18‰、平均 -25.66‰，C4 糖含量 0.00–38.62%，其中 C4 糖>7% 者 9 件（4.3%），194 件（91.9%）初步判為純蜂蜜、2 件（0.9%）為含 C4 糖之蜂蜜，其餘尚無法直接排除摻偽。北區管理中心市售 83 件 δ13CH 分布 -26.80 至 -12.04‰、平均 -24.23‰，摘要記 19 件 δ13CH>-24‰ 且 C4 糖>7%，正文記 59 件（71.1%）為純蜂蜜、8 件（9.6%）為含 C4 糖之蜂蜜。結論寫明將續以 LC/IRMS 分別測果糖、葡萄糖、二糖、三糖的 Δδ13C；檢驗結果疑似含 C4 糖者「已分別進一步以行政稽查方式釐清」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同一篇另有月旦知識庫（lawdata.com.tw）掛的同一刊本 PDF（https://lawdata.com.tw/File/DC/Journal/J993/A04990009_104.pdf，sha256 前 16 碼 8af0ff10db795f94），逐行比對與食藥署版文字相同（只有表頭斷行位置差異），本紀錄以食藥署官網版為來源。數字的內部不一致要注意：211 件那節正文說「C4 糖含量>7% 者有 9 件（4.3%）」，但依產地分列時寫「高雄 4 件、台中 4 件、彰化與雲林各 1 件」並稱「此 10 件檢體」，兩處合計不符；片中只用 9 件（4.3%），不列產地分佈。83 件的「19 件」（摘要）與「8 件判為含 C4 糖」（正文）用的判定不同（前者是 δ13CH>-24‰ 且 C4 糖>7%，後者依 δ13C 判定界線），原文沒有把兩個數字接起來，片中要分別說明。報告沒有點名任何品牌或廠商；所有「疑似」都不是確認摻假，後續是行政稽查。本研究是檢驗方法研究，不是全國性抽驗計畫。 覆核 V18（2026-11-12）：read_via 補記入口查證：PublishResearch.aspx 每一頁的分頁列都連到下一頁（第 1 頁連 pn=2 與末頁 pn=87；今日末頁是 87，作者記的 pn=1..95 要改成「逐頁翻分頁連結」），第 41 頁有本篇的 GetFile 連結，V18 今日重抓同頁仍在。summary 把「無法分辨甜菜糖、菊苣糖或米轉化糖漿」標為前言引用文獻 10（Elflein 等），加標試驗只用 C3 果糖。",
+      "author_cache": {
+        "file": "/tmp/claude-0/-home-user-travel-scanner/1d8cbe05-355f-537a-9349-fec9ea4f8166/scratchpad/stw10/f15src/yu2018_honey_c4_fda.pdf",
+        "sha256_prefix": "05f351f532323a5e",
+        "note": "同目錄另有 yu2018_honey_c4_fda.txt（pdfminer 轉出的文字）與月旦版 lawdata_honey.pdf（8af0ff10db795f94）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H60-S002",
+      "url": "https://www.fao.org/3/Y5022E/y5022e03.htm",
+      "canonical_url": "https://www.fao.org/3/Y5022E/y5022e03.htm",
+      "title": "Food energy – methods of analysis and conversion factors, Chapter 2: Methods of food analysis（2.1 Analytical methods for proteins in foods）",
+      "publisher": "聯合國糧農組織（FAO）Food and Nutrition Paper 77，2003 年技術工作小組報告",
+      "version": "FAO 線上版 HTML（第 2 章單頁）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取 HTML，python 去標籤成文字後逐段讀",
+      "reading_scope": "第 2 章 2.1 節全讀（2.1.1 現狀、表 2.1 Jones 係數、2.1.2 建議）；同章脂肪與碳水化合物節只略看標題，未讀。",
+      "locator": "2.1.1 Current status 第 1–3 段；Table 2.1；2.1.2 Recommendations 第 1、4 點",
+      "summary": "FAO 技術報告寫明：長年以來食品的蛋白質含量是以總氮量乘一個係數求得，測氮幾乎都用凱氏（Kjeldahl）或類似方法（AOAC, 2000）。這個做法建立在兩個假設上：膳食中的碳水化合物與脂肪不含氮，而膳食中的氮幾乎都以蛋白質裡的胺基酸形式存在。早期測定得到蛋白質平均含氮約 16%，才有 N×6.25（1/0.16）。報告接著列出兩個破口：（一）食品中的氮不只在蛋白質裡，游離胺基酸、核苷酸、肌酸、膽鹼等也含氮，稱為非蛋白氮（NPN），其中只有一小部分可用於合成（非必需）胺基酸；（二）各胺基酸的含氮比例不同，蛋白質實際含氮量約在 13% 到 19% 之間，對應的換算係數由 5.26 到 7.69。Jones（1941）因此主張改用各食品專屬係數，常見食品的 Jones 係數由 5.18（堅果、種子）到 6.38（牛奶）；表 2.1 列出牛奶 6.38、蛋與肉 6.25、稻米 5.95、小麥全粒 5.83、大豆 5.71 等。報告的建議是「可能時」以各胺基酸殘基之和加游離胺基酸來量蛋白質，並說在沒有胺基酸資料時，以凱氏法等測總氮再乘係數「仍可接受」。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是營養學上的能量換算報告，談的是「以氮推估蛋白質」的原理與誤差，**完全沒有提到任何摻假事件、也沒有三聚氰胺**；不得用它來替 2008 年事件作解釋，只能用來說明「蛋白質檢驗量的是氮」與非蛋白氮的存在。報告的 13–19%、5.26–7.69 是蛋白質本身的含氮範圍與對應係數，不是摻入物造成的偏差量；原文沒有「加入某種含氮物會使讀數偏高多少」的對應。6.25 與 Jones 係數的差異在混合膳食上原文說約 1%。表 2.1 是 Merrill 與 Watt（1973）的改編。 覆核 V18（2026-11-12）：url 與 canonical_url 改為 https://www.fao.org/4/Y5022E/y5022e03.htm（原網址今日 301 轉到此處，內容雜湊相同 2867ad4fe359376a）。limitations 補原文：「非蛋白氮比例高的食品，總氮通常很少」，主要蛋白質來源的係數範圍窄得多。",
+      "author_cache": {
+        "file": "/tmp/claude-0/-home-user-travel-scanner/1d8cbe05-355f-537a-9349-fec9ea4f8166/scratchpad/stw10/f15src/fao_y5022e03.html",
+        "sha256_prefix": "2867ad4fe359376a",
+        "note": "同目錄另有 fao_y5022e03.txt（去標籤後的文字）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H60-S003",
+      "url": "https://assets.publishing.service.gov.uk/media/5a7e20b740f0b62305b80fb8/elliot-review-final-report-july2014.pdf",
+      "canonical_url": "https://www.gov.uk/government/publications/elliott-review-into-the-integrity-and-assurance-of-food-supply-networks-final-report",
+      "title": "Elliott Review into the Integrity and Assurance of Food Supply Networks – Final Report（Professor Chris Elliott）",
+      "publisher": "英國政府（HM Government；報告為 Queen's University Belfast 的 Elliott 教授受委託之獨立檢討），2014 年 7 月（9 月 4 日公布）",
+      "version": "GOV.UK 資產服務上的刊本 PDF，146 頁",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭）；取得路徑：搜尋結果→GOV.UK 出版頁與其資產連結；本機快取，pdftotext 轉文字後以關鍵詞定位逐段讀",
+      "reading_scope": "指定段落：Executive Summary 第 1–3 點；第 5 章 5.6（事件後真實性檢驗量大增）、5.9（私部門與實驗室供給）、5.5 技術清單；Annex G（Intelligence Gathering，開頭的價差與蜂蜜段）；Annex H（給部長的信，關於 EU 參考實驗室與 1% 取締門檻）；Annex K/L 的肉品供應鏈段落（第 4675–4695 行附近）。其餘 8 根支柱的建議與附錄未逐頁讀。",
+      "locator": "Executive Summary 第 1 點；5.6；5.9（'There was no national survey for food authenticity from 2008 until after the horse meat incident.'）；Annex G 第 1 節；Annex H（'During the horsemeat incident a cut off level for substitution of 1% was set by the FSA and Defra and adopted across the EU.'、'There is no EU-RL for food authenticity.'）",
+      "summary": "英國政府委託的獨立檢討報告，起因是 2013 年馬肉事件與對食品詐欺的疑慮。與「檢驗驗了什麼」直接相關的三件事：（一）5.9 節寫明例行取樣與分析多年來一直在減少，而且**自 2008 年起到馬肉事件之後才有全國性的食品真實性抽驗調查**（原文：no national survey for food authenticity from 2008 until after the horse meat incident），地方主管機關同時面臨財政壓力；5.6 節說事件之後真實性檢驗明顯增加，但多由業界進行。（二）Annex H 的信指出歐盟法規替一大類食品安全檢驗設了歐盟與各國參考實驗室，**真實性檢驗卻沒有歐盟參考實驗室**，因此方法沒有統一；作者建議設立。（三）同一封信記載：馬肉事件期間英國主管機關（FSA 與 Defra）訂下 1% 的替代（交叉污染）取締門檻並為歐盟各國採用，理由是 1% 以下取得不了實質經濟利益，又容許同一條生產線處理多種肉；作者同時說，隨著檢出能力快速進步，要判斷多少比例屬詐欺、多少屬意外會越來越難，而對牛奶過敏這類情形門檻必須更低。Annex G 另指出價差本身就是詐欺風險的指標，並舉 2012–13 年馬肉與進口牛肉的市價、以及紐西蘭麥蘆卡蜂蜜產量 1,700 公噸對上單在英國就賣出約 1,800 公噸為例。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是政策檢討報告，不是檢驗報告：沒有任何檢驗方法細節、沒有樣品數據，也沒有敘述愛爾蘭 2013 年調查怎麼驗、為什麼決定驗馬。「2008 年起到事件後才有全國性真實性抽驗」是報告對英國狀況的陳述，**不得外推到其他國家，也不得寫成「以前從來沒人驗馬」**（報告沒有這句）。1% 是行政取締門檻，不是檢驗偵測極限，也不是「馬肉含量」的判定界線。麥蘆卡蜂蜜的產量對比是報告引用紐西蘭生產者組織的研究，與本輪的台灣蜂蜜檢驗無關、不可併成同一個例子。片中不點名企業、零售商與國家。 覆核 V18（2026-11-12）：summary 的過敏例子照原文改為「牛奶混入山羊或綿羊奶、乳酪」；補原文對 1% 的評價「sensible, pragmatic decision」。",
+      "author_cache": {
+        "file": "/tmp/claude-0/-home-user-travel-scanner/1d8cbe05-355f-537a-9349-fec9ea4f8166/scratchpad/stw10/f15src/elliott2014.pdf",
+        "sha256_prefix": "16c5ba456f1f4edf",
+        "note": "同目錄另有 elliott2014.txt（pdftotext 轉出的文字，行號即本紀錄 locator 用的行號）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H60-S004",
+      "url": "https://www.fsai.ie/publications/fsai-horse-meat-incident-survey-2013",
+      "canonical_url": "https://www.fsai.ie/publications/fsai-horse-meat-incident-survey-2013",
+      "title": "FSAI Horse Meat Incident Survey 2013（出版頁正文）與其附檔 The Aftermath of the Horse Meat Incident（Behaviour & Attitudes 替 FSAI 做的消費者調查）",
+      "publisher": "愛爾蘭食品安全局（FSAI），出版頁日期 2013 年 7 月 17 日；附檔為 B&A 的 TeleBarometer 調查簡報，2013 年 6 月",
+      "version": "出版頁 HTML 與其唯一附檔 PDF（40 頁投影片）",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200（工具預設標頭）讀出版頁，循頁內 getmedia 連結下載 PDF；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "出版頁正文全讀；附檔 PDF 讀完方法與主要結果頁（研究目的、方法、素食者比例、對食品安全管控的信心、購買行為改變）。",
+      "locator": "出版頁 Background 段；附檔 PDF 第 1–3 頁（Research Objectives、Methodology）",
+      "summary": "FSAI 出版頁記載：2013 年這次調查屬於標示的監測與監視計畫，檢驗肉製品中牛、豬、馬的 DNA，方法是從食品萃取 DNA 後以 PCR 擴增特定片段，因此能測到很低量的馬、豬、牛 DNA；納入的 27 款牛肉漢堡排中有 10 款（37%）馬 DNA 為陽性，而驗出馬 DNA 的樣品沒有一款標示含有馬肉。頁面掛的唯一 PDF 是事件之後的**消費者調查**：2013 年 5 月 16–30 日電訪 16 歲以上全國樣本 1,003 人，過去會買冷凍漢堡排的人中有超過一半（51%）買得比以前少（48% 一樣多）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "**這不是覆核要的調查報告原件**：出版頁只有上述幾句，沒有方法細節、沒有各樣品數值、沒有說為什麼決定驗馬；附檔是消費者行為調查，與檢驗方法無關。頁面上的 27 款／10 款（37%）與池中 H59-005（來源是英國政府說明頁）說的是同一次調查的同一組數字，屬同一事實，不得重複計算；本紀錄只用來把 H59-005 的出處由「英國政府轉述」補成「愛爾蘭主管機關自己的頁面＋PCR 一句」。",
+      "author_cache": {
+        "file": "/tmp/claude-0/-home-user-travel-scanner/1d8cbe05-355f-537a-9349-fec9ea4f8166/scratchpad/stw10/f15src/fsai_horse_2013.pdf",
+        "sha256_prefix": "6cc3f13c4336ea31",
+        "note": "同目錄另有 fsai_horse.html（出版頁）與 fsai_horse_2013.txt。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H60-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC1334241/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pbio.0040028",
+      "title": "Attenuation of Self-Generated Tactile Sensations Is Predictive, not Postdictive（Bays、Flanagan、Wolpert）",
+      "publisher": "PLoS Biology 4(2): e28（2006）；倫敦大學學院、女王大學、劍橋大學",
+      "version": "2006-01-17 正式版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；Europe PMC REST 全文 XML（PMCID 來自搜尋結果的 PMC 連結），去標籤後讀",
+      "reading_scope": "全文讀完（Results、Discussion、Materials and Methods）",
+      "locator": "Results 全節與 Figure 1；Discussion 第一、二段與電魚對照段；Materials and Methods",
+      "summary": "兩組各 10 人。A 組：右指敲上方感測器，馬達幾乎同時（約 11 ms）以 2.7 N 敲左指，再給一下強度可調的比較敲擊；碰到時感覺強度 0.71（SE 0.08），延遲 500 ms 的基準 0.95（SE 0.04）。偶發的「沒碰到」試次（感測器被偷偷移開，在本來會碰到的角度觸發）感覺 0.73（SE 0.05），與碰到時無差別。B 組做相同揮指動作但從未碰到過：同刻與延遲觸發無差別（每人差都小於 10%）。結論：打折是預測、針對預期的碰觸事件，不是事後重建，也不是任何固定配對都會。作者對照電魚會抵銷任何固定配對刺激。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每組 10 人、18–40 歲右撇子；A 組 10 人中 7 人有至少 10% 的打折。量的是輕敲的相對強度，不是搔癢。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/epmc-PMC1334241.xml",
+        "sha256_prefix": "3d9df5cf190e9851",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H60-S006",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5547616/",
+      "canonical_url": "https://doi.org/10.1073/pnas.1703347114",
+      "title": "Body ownership determines the attenuation of self-generated tactile sensations（Kilteni、Ehrsson）",
+      "publisher": "PNAS 114(31): 8426–8431（2017，PNAS open access option）；卡羅林斯卡學院",
+      "version": "2017-07-17 正式版",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；PMC 文章頁 HTML（Europe PMC 全文 XML 當日回 500），去標籤後讀",
+      "reading_scope": "全文讀完（Results 實驗一、二與 SI Materials and Methods 前段）",
+      "locator": "Significance；Results〈Experiment 1〉Fig. 1–2、Table S2；〈Experiment 2〉Fig. 3–4、Table S3；SI General Procedure",
+      "summary": "力量配對：馬達在左食指施 1–3.5 N，受試者用右食指按感測器重現。實驗一（n=23 分析）：兩手對齊（模擬自己碰自己）比相距 25 cm 按得重（p=0.001）；真右手在 25 cm 外、左指上方放一隻同步動作的假右手時，方向一致（引發假手錯覺）比轉 180°（p=0.039）或沒有假手（p=0.008）按得重，與真的自己碰自己無顯著差（p=0.092，趨勢）；錯覺越強打折越多。實驗二（n=20）：真手對齊但讓人把 25 cm 外的假手當成自己的，按得比單純對齊輕（p=0.038），錯覺越強打折越少。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "力量配對的打折，不是搔癢；部分比較 p 值接近 0.05，旁白用「明顯／沒有顯著差別」而非精確倍數。與池中 R44011（假手錯覺下指位漂移）不同答案。 覆核 V19（2026-11-12）：author_cache 補第二次取得：2026-11-12 覆核 V19 由同一 PMC 文章頁重抓 HTTP 200，原始 HTML sha256 前綴 cf044aaba41a47a5（作者 cdb3bff93e7c317e），差異只在頁面的 ncbi_phid 與 csrfmiddlewaretoken；以同一抽取程式取 main-article-body 正文、去標籤與空白正規化後，兩份都是 69,335 字元、sha256 前綴 9317be7ebd986017。另兩條路徑：Europe PMC fullTextXML 今日仍回 500；NCBI E-utilities efetch（db=pmc&id=5547616）回 200 但註明出版者不允許下載正文，只有書目。limitations 改寫為「只有 PMC 文章頁一條可讀路徑；兩次抓取正文一致」。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/pmc-PMC5547616.html",
+        "sha256_prefix": "cdb3bff93e7c317e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H60-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5063954/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/ncomms13034",
+      "title": "Ageing increases reliance on sensorimotor prediction through structural and functional differences in frontostriatal circuits（Wolpe 等）",
+      "publisher": "Nature Communications 7: 13034（2016，CC BY）；劍橋大學 Cam-CAN",
+      "version": "2016-10-03 正式版",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；Europe PMC REST 全文 XML（PMCID 來自搜尋結果的 PMC 連結），去標籤後讀",
+      "reading_scope": "Abstract、Introduction、Results〈Sensory attenuation with ageing〉〈Mechanism for differences〉全讀；腦影像段只讀開頭",
+      "locator": "Abstract；Results〈Sensory attenuation with ageing〉第一至三段；〈Mechanism for differences in sensory attenuation〉",
+      "summary": "325 位 18–88 歲健康成人力量配對（行為分析 n=322）：直接用手指按平均多出 1.198 N（SD 0.890），滑桿遙控 0.052 N（SD 0.417）；315/322（98%）有打折。直接條件過頭量隨年齡增（Spearman ρ=0.270），65 歲以上多於 18–39 歲；滑桿條件老年人過頭反而較少。滑桿條件對力量差別較不敏感（斜率較平）的人，直接條件打折較多；作者解讀為感覺精度下降時更倚重預測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "橫斷面相關，不是追蹤同一群人；腦區結果（pre-SMA）是相關，片中不用。直接與遙控的對比本身已在池中 R44010，不重計。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/epmc-PMC5063954.xml",
+        "sha256_prefix": "70ec62243a259c25",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "H60-S008",
+      "url": "https://bayslab.org/pdf/SheSamBay05.pdf",
+      "canonical_url": "https://doi.org/10.1176/appi.ajp.162.12.2384",
+      "title": "Evidence for Sensory Prediction Deficits in Schizophrenia（Shergill、Samson、Bays、Frith、Wolpert）",
+      "publisher": "Am. J. Psychiatry 162(12): 2384–2386（2005，Brief Report）；作者實驗室公開 PDF",
+      "version": "期刊排版 PDF（2 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；由 bayslab.org/publications.php?label=sensory_prediction 頁面上的 PDF 連結取得；pdftotext -layout",
+      "reading_scope": "全文讀完（簡短報告全文與 Figure 1 圖說）",
+      "locator": "Method；Results 第二、三段；Figure 1；Discussion",
+      "summary": "20 位思覺失調症患者與 20 位年齡、性別相近的健康者（各剔除 1 人）做力量配對（0.5–2.75 N，80 次）。直接用手指重現時兩組都按過頭；以超出百分比算，患者打折 27.5%、健康者 43.5%；用搖桿遙控馬達時兩組都準、無差別（交互作用 F=4.88, p<0.04）。作者解讀為患者預測自己動作後果的機制失調。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每組 19 人分析；患者除一人外都在服藥、症狀中度；簡短報告；不能用於診斷或推論個人。作者主頁上的期刊排版 PDF（與池中 SRC-2649cf55112b53ba 的 Shergill 2003 同一實驗室網站，不同論文）。 覆核 V19（2026-11-12）：rights 與 limitations 補：期刊（Am J Psychiatry 162:2384–2386）出版的 PDF，放在共同作者 Bays 實驗室網站，經該站著作頁（publications.php?label=sensory_prediction，快取 bayslab-pubs-sp.html）的公開連結取得；不是開放期刊，只連結、只寫原創摘要。",
+      "author_cache": {
+        "file": "scratchpad/stw10/f16src/bayslab-SheSamBay05.pdf",
+        "sha256_prefix": "608f080dfd4dd394",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "H60-001",
+      "question": "台灣自己驗蜂蜜，驗的是哪一件事？驗過了就等於是純蜜嗎？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.tw_honey_c4_sugar_isotope_survey",
+      "answer_target": "驗的是「糖有沒有 C4 植物的碳訊號」，不是「這罐裡有多少蜂蜜」。食藥署研究檢驗組照 AOAC 998.12 量全蜜與蜜中蛋白質的碳同位素比值、算出 C4 糖百分比，大於 7% 視為含 C4 糖。他們自己做的加標試驗：真蜜加 10% 的 C4 果糖，測得 C4 糖 12.92%，可以判定；加 C3 果糖，δ13C 都還在 -24‰ 以下、C4 糖測值都小於 7%，這個方法看不出來。報告前言也引用文獻寫明，這個方法分不出摻入的 C3 植物糖漿（例如甜菜糖、菊苣糖或米轉化糖漿）。實際檢體：台灣養蜂協會提供的 211 件中，194 件（91.9%）初步判為純蜂蜜、C4 糖大於 7% 者 9 件（4.3%）；北區管理中心的 83 件市售蜜中，59 件（71.1%）判為純蜂蜜、8 件（9.6%）判為含 C4 糖。報告說疑似者後續以行政稽查釐清。",
+      "scope": "照作者原文，另加：加標試驗只用 C3 果糖；甜菜、菊苣、米糖漿那一句是前言引用他人研究，片中說「報告也引用研究指出」，不得說成「實驗證明加米糖漿看不出來」。「初步判為純蜂蜜」是在這一項訊號上沒有異常，不得改寫成「驗證為純蜜」。83 件的 19 件（摘要）與 8 件（正文）判定界線不同，片中只用正文 59 件／8 件；211 件只用 9 件（4.3%），不提 10 件與產地。",
+      "source_ids": [
+        "H60-S001"
+      ],
+      "source_locator": "摘要；前言第 3–4 段；結果與討論六、七、八",
+      "premise_status": "screened",
+      "notes": "覆核算 1 條：加標試驗（10% C4 可判、C3 果糖看不出）0.5；台灣兩批檢體的判定結果 0.5。「全蜜對同瓶蛋白比碳、7% 換算、對某些 C3 糖漿不靈」這一層池中 X34-001 已有（V17 計 1 條），不重算。 原提案 F15-001（目標 C5-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V18（2026-11-12）改字後收；採用、改字。這是 C5-01 上一輪點名缺的台灣主管機關全文，取得路徑合規，數字逐句對得上。但它的機制句與 X34-001 同一事實，新的只有台灣自己做的加標與兩批檢體結果，所以由作者的 1.5 條降為 1 條。原文內部 9 件／10 件、19 件／8 件兩處不一致，作者已自行避開，照辦。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「檢驗合格」說的是這一項檢驗問的那一題過了：它問的是糖有沒有 C4 植物的碳訊號，而不是「這罐裡有多少蜂蜜」。",
+        "visual": "一罐蜜旁邊兩條路：左邊倒進玉米／甘蔗來源的糖，儀器指針越過 7% 的紅線；右邊倒進米、甜菜來源的糖，指針完全不動。",
+        "seconds": [
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "id": "H60-002",
+      "question": "包裝上的蛋白質含量，是怎麼量出來的？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.nitrogen_factor_npn_protein_proxy",
+      "answer_target": "量的是氮，再乘一個係數。聯合國糧農組織的技術報告寫明：長年以來食品的蛋白質含量是以總氮量乘係數求得，測氮幾乎都用凱氏（Kjeldahl）或類似方法。這個做法壓在兩個假設上：膳食中的碳水化合物與脂肪不含氮，而膳食裡的氮幾乎都以蛋白質中的胺基酸形式存在。早期測定得到蛋白質平均含氮約 16%，才有「氮乘 6.25」。報告接著自己列出破口：食品中的氮不只在蛋白質裡，游離胺基酸、核苷酸、肌酸、膽鹼等也含氮，統稱非蛋白氮；而且各胺基酸含氮比例不同，蛋白質實際含氮量在 13% 到 19% 之間，對應的係數會從 5.26 到 7.69。所以同一套方法在不同食品上要用不同係數（牛奶 6.38、稻米 5.95、小麥全粒 5.83、大豆 5.71），報告建議能做到時改用各胺基酸之和來量蛋白質，沒有胺基酸資料時以總氮乘係數「仍可接受」。",
+      "scope": "照作者原文，另加：報告同時寫明非蛋白氮比例高的食品總氮通常很少，6.25 與各食品專屬係數的差距在混合膳食上約 1%；片中講到 13–19% 時必須同句交代這一點，不得暗示一般食品的蛋白質標示誤差很大。「這個替身被人照著做」只能由 H59-003 說，本核心不碰任何摻假。",
+      "source_ids": [
+        "H60-S002"
+      ],
+      "source_locator": "2.1.1 Current status 第 1–3 段；Table 2.1；2.1.2 Recommendations 第 1、4 點",
+      "premise_status": "screened",
+      "notes": "覆核算 0.5 條：「蛋白質本身含氮 13–19%、食品裡另有非蛋白氮，所以單一係數只是近似」。「量的是氮」H59-003 已計 1 條；凱氏法的名稱與 6.25 的來歷是方法說明，不另計。 原提案 F15-002（目標 C5-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V18（2026-11-12）改字後收；採用、改字。它補的是上一輪點名的第（3）項：H59-003 的「量的是氮」現在有一份寫出方法名稱與非蛋白氮的官方文件撐著。但核心的第一半與 H59-003 同一事實，新增的只有「替身本來就不精確」這一層，算 0.5 條；作者算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「蛋白質 10 公克」不是秤蛋白質秤出來的，是秤氮再乘一個數字——這個數字還要看食品是什麼。",
+        "visual": "一台只會數氮的儀器：左邊倒進蛋白質、右邊倒進別的含氮粉末，指針一樣高；旁邊貼一張小表，牛奶 6.38、稻米 5.95、大豆 5.71。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "H60-003",
+      "question": "「多少才算摻」這條線是誰訂的？馬肉事件之前，又有誰在驗？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food_auth.authenticity_testing_capacity_and_threshold",
+      "answer_target": "英國政府委託的獨立檢討（Elliott Review，2014）寫明：英國的例行取樣與分析多年遞減，從 2008 年起到馬肉事件之後才有全國性的食品真實性調查；真實性檢驗沒有歐盟參考實驗室，方法沒有統一。事件期間英國主管機關訂下 1% 的替代（交叉污染）取締門檻，為歐盟各國採用——報告認為這是務實的決定，理由是 1% 以下取得不了實質經濟利益，又讓同一條產線能處理多種肉；但報告也說，檢出能力越進步，越難判斷多少比例是詐欺、多少是意外，而像牛奶混進山羊或綿羊奶這種會引起過敏的情形，門檻必須更低。",
+      "scope": "這是政策檢討報告，不是檢驗報告：沒有方法細節、沒有樣品數據，也沒有說愛爾蘭當初為什麼決定驗馬、怎麼驗。「2008 年起到事件後才有全國性真實性抽驗」是報告對英國的陳述，不得外推到別的國家或台灣，也不得寫成「以前從來沒人驗馬」。1% 是行政取締門檻，不是檢驗的偵測極限，也不是馬肉含量的判定界線；片中不講罰則、不點名企業、通路與國家，不評論任何國家的食品。報告裡麥蘆卡蜂蜜的產量對比不採用，不得與本片的台灣蜂蜜檢驗併成同一個例子。",
+      "source_ids": [
+        "H60-S003",
+        "H60-S004"
+      ],
+      "source_locator": "Elliott Review：Executive Summary 第 1 點；5.6；5.9；Annex H。FSAI 出版頁：Background 段（PCR 一句）",
+      "premise_status": "screened",
+      "notes": "覆核算 1 條：1% 取締門檻與它的理由、檢出能力進步後越難訂 0.5；2008 年後到事件後才有全國真實性調查、沒有歐盟參考實驗室 0.5。FSAI 頁的件數是 H59-005 的同一事實，不計。 原提案 F15-003（目標 C5-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V18（2026-11-12）改字後收；採用、改題與改字。它沒有補到「當初為什麼驗馬」（愛爾蘭原件仍不公開，作者已誠實記下），補的是「合格那條線是誰訂、驗的人有多少」。1% 那一段直接回答本題「合格是什麼意思」，是這個核心真正的份量；抽驗停了幾年與沒有參考實驗室是背景。三段各算 0.5 太多，算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「加強檢驗」之前要先有人在驗：報告自己說，真實性這一塊的抽驗曾經停了好幾年，連統一的參考實驗室都沒有，連「多少比例才算摻」都是事件當下訂的。",
+        "visual": "一條時間線：上面是逐年變細的「例行抽驗」線條，事件那一年突然變粗；旁邊一把標著 1% 的尺，尺上刻度越來越細。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H60-004",
+      "question": "手指以為會碰到、其實沒碰到，另一隻手被敲的那一下，還會覺得比較輕嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.attenuation_predicted_contact_without_touch",
+      "answer_target": "會，和真的碰到時一樣輕。倫敦大學學院的實驗：受試者用右手食指敲上方的力感測器，馬達幾乎同時以 2.7 牛頓敲左手食指，接著再敲一下強度不定的比較敲擊，請他判斷哪一下重。真的碰到時，第一下被感覺成約 0.71；延遲半秒才敲（不打折的基準）是 0.95。少數試次偷偷把感測器移開，右指揮空，馬達在「本來會碰到」的那一刻敲：感覺仍只有 0.73，和碰到時沒有差別。另一組十人做一模一樣的揮指動作，但從頭到尾沒碰到過東西：同一刻敲和延遲半秒敲，感覺沒有差別，每個人的差都不到一成。所以打折是在感覺回來之前就算好的，而且算的是「預期中的碰觸」；光是動作和敲擊總是同時發生還不夠。作者拿電魚對照：電魚會抵銷任何固定配對的刺激，人的觸覺要的是特定的事件。",
+      "scope": "兩組各 10 人、18–40 歲右撇子；第一組 10 人中 7 人有明顯打折。量的是輕敲的相對強度，不是搔癢。數字是相對值，不換算成牛頓。",
+      "source_ids": [
+        "H60-S005"
+      ],
+      "source_locator": "Results 全節與 Figure 1；Discussion 第一、二段與電魚對照段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：沒碰到也打折（1 條）、從未碰過的一組不打折（0.5 條，同一論文的第二組實驗，結論不同）。去重：LEG-S74（舊集）只說「大腦預測後調弱」與小腦影像；R44009 是延遲訓練；R44010 是互按升級。無同答案。 原提案 F16-005（目標 C6-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）照原稿收；收，不改。這是 C6-01 第二個轉折的核心，原文直接寫出「預期碰觸時，無論有沒有真的碰到，打折程度一樣」，不是作者推論。算 1.5 條：沒碰到也照樣打折 1；從沒碰過的 B 組做同樣動作不打折 0.5（不同受試者、結論不同：光是動作與敲擊固定配對不夠）。電魚對照是作者詮釋，不另計。寫稿時開場不要先把答案說成「大腦先預測」，否則這個轉折會變成重述 S74。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為大腦是比對「真的碰到了」才把感覺調弱；其實它在碰到之前就調好了，沒碰到也照調。",
+        "visual": "兩手上下、上方感測器被抽走的分格動畫；右側三根長條：碰到 0.71、揮空 0.73、延遲 0.95。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "H60-005",
+      "question": "按下去的是一隻假手，大腦也會把觸感打折嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.attenuation_follows_body_ownership",
+      "answer_target": "如果你覺得那隻假手是自己的，會。卡羅林斯卡學院用力量配對量打折：馬達先在左手食指壓 1 到 3.5 牛頓，受試者再用右手食指按感測器把同樣的力重現出來。兩手上下對齊、像自己碰自己時，大家會按過頭；兩手相距 25 公分時就不太會。第一個實驗把真的右手放在 25 公分外，但在左手食指正上方放一隻跟著右指同步動作的假手：假手擺正、讓人覺得「這是我的手」時，按得明顯比假手倒轉 180 度或沒有假手時重，和真的自己碰自己沒有顯著差別；越覺得假手是自己的，打折越多。第二個實驗反過來：真手對齊，卻讓人覺得 25 公分外那隻假手才是自己的手——打折變少了，但沒有消失。",
+      "scope": "分析人數 23 與 20；量的是力量配對，不是搔癢；「和真的自己碰自己沒有顯著差別」的 P 值為 0.092，作者自己說有趨勢，旁白不得說成「完全一樣」；第二個實驗打折只是變少，仍比兩手真的分開時多，不得說「關掉」。旁白只說「明顯」「沒有顯著差別」，不給倍數。與池中 R44011（假手錯覺下指位漂移不等於歸屬感）答案不同，可互相呼應但不重講。",
+      "source_ids": [
+        "H60-S006"
+      ],
+      "source_locator": "Results〈Experiment 1〉Fig. 2、Table S2；〈Experiment 2〉Fig. 4、Table S3",
+      "premise_status": "screened",
+      "notes": "算 1 條（同一論文兩個方向相反的實驗合算）。 原提案 F16-006（目標 C6-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）改字後收；收，改字。作者在 C6-01 的轉折與章名寫「假手能打開或關掉打折」，第二個實驗原文是打折變少、仍高於兩手真的分開（P=0.018），不是關掉，改成「打開或調弱」。算 1 條（同一論文兩個方向相反的實驗合算），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大腦扣掉的是「我的手」碰到我，「我的手」是哪一隻，可以被騙。",
+        "visual": "俯視桌面：真手在旁、假手在上；切到第二實驗，真手對齊、假手移開。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "H60-006",
+      "question": "自己按自己會按過頭，是少數人才這樣，還是幾乎人人都會？跟年紀有關嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.attenuation_population_prevalence_age",
+      "answer_target": "幾乎人人都會，而且年紀越大越明顯。劍橋的 Cam-CAN 群體研究讓 325 位 18 到 88 歲的健康成人做力量配對：直接用手指按時，平均比目標多按 1.198 牛頓；用滑桿遙控馬達時只多 0.052 牛頓。322 位可分析的人裡有 315 位（98%）出現打折。直接按的過頭量隨年齡增加，65 歲以上明顯多於 18 到 39 歲；但在滑桿條件下，年長者反而過頭得比較少，所以不是單純比較用力。研究者還發現，滑桿條件裡分辨力量差別較遲鈍的人，直接按時打折較多，解讀為感覺訊號變得不準時，大腦更倚重自己的預測。",
+      "scope": "橫斷面的相關，不是追蹤同一群人變老；腦區（前輔助運動區）結果是相關，片中不用。「直接按會過頭、遙控不會」本身已在 R44010，本核心不重講，只算「98%」與年齡。",
+      "source_ids": [
+        "H60-S007"
+      ],
+      "source_locator": "Abstract；Results〈Sensory attenuation with ageing〉〈Mechanism for differences in sensory attenuation〉",
+      "premise_status": "screened",
+      "notes": "算 1 條：族群普遍度與年齡效應。直接 vs 遙控的對比與 R44010 同答案，不計。 原提案 F16-007（目標 C6-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）照原稿收；收，不改。算 1 條：98% 的普遍度與年齡效應（含「不是單純比較用力」的滑桿對照）；直接 vs 遙控本身是 R44010，不計。橫斷面、腦區結果不用，scope 已寫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這不是怪癖，是幾乎每個人的大腦都在做的事；感覺越不準，預測越大聲。",
+        "visual": "325 個點的散布圖：橫軸年齡、縱軸過頭量，點逐漸往上；旁邊一小條滑桿條件貼近零。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "H60-007",
+      "question": "自己按自己會按過頭，在思覺失調症患者的研究組裡也一樣嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.reduced_attenuation_schizophrenia_force_matching",
+      "answer_target": "在一份 2005 年的研究裡，患者組也會按過頭，但過頭得比較少。倫敦的研究讓 20 位思覺失調症患者和 20 位年齡、性別相近的健康者做力量配對（目標 0.5 到 2.75 牛頓，80 次）。直接用手指重現時，兩組都按過頭，但患者組過頭 27.5%、健康組 43.5%——患者組反而比較接近目標；改用搖桿遙控馬達時，兩組都很準、沒有差別。作者據此提出：患者預測自己動作後果的機制可能有所不同，並把它和部分患者經驗到「自己的動作像是外來的」這類症狀連在一起；這是作者的假說，本研究沒有檢驗兩者的因果。",
+      "scope": "每組剔除 1 人後 19 人；患者除一人外都在服藥、症狀中度，作者說服藥的影響與「狀態還是特質」都還要再查；是簡短報告。片中只說「研究中的患者組」，用「思覺失調症」這個名稱，不用舊稱或任何貶抑、驚悚的用語；不得推論個別患者、不得當成診斷或自我檢測方法、不得暗示患者危險或「分不清現實」；症狀連結只能說成作者的假說。畫面不畫患者形象，只畫兩組長條。",
+      "source_ids": [
+        "H60-S008"
+      ],
+      "source_locator": "Method；Results 第二、三段；Figure 1；Discussion",
+      "premise_status": "screened",
+      "notes": "算 1 條。與 R44010（健康者的直接 vs 遙控）互補：本核心新增的是預測弱時打折變少。 原提案 F16-009（目標 C6-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V19（2026-11-12）改字後收；收，改問題、答案與 payoff。原 payoff「打折太少不是比較好：會把自己的動作當成外來的」把作者的假說寫成因果，原問題「如果大腦的預測不靈」先把結論當前提。數字逐句相符；scope 補上服藥與狀態／特質兩個作者自己承認的限制、用語規則與畫面規則。算 1 條，同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "打折少一點，看起來比較準，研究者卻把它當成預測機制不一樣的線索；這是一個研究組的平均，不是看人的方法。",
+        "visual": "兩組長條：健康者 43.5%、患者 27.5%；遙控條件兩組都貼近零。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "H60-NA001",
+      "question": "座頭鯨的拍尾捕食，是沿著社會網路傳開的嗎？（Allen 等 2013，Science 340:485）",
+      "existing_ids": [
+        "P33002",
+        "P33003"
+      ],
+      "source_ids": [],
+      "reason": "循公開連結查不到任何開放全文：OpenAlex 標為 closed（只有 DOI 與 PubMed 兩個非開放位置），St Andrews 研究入口的該筆紀錄沒有檔案連結、只連 DOI 與 sciencemag 摘要，Europe PMC 無 PMC 編號。沒有可讀的全文就不寫核心；新聞稿與他文引述（Klump 2021 的參考文獻第 10 條）只能確認論文存在與「含社會傳播的模型支持度高出 6 到 23 個數量級」這一句的二手轉述，不算全文。池中 P33002、P33003 是座頭鯨的覓食力學與吐泡收網，與社會學習無關、不重疊。 原提案 F15-NA001。",
+      "reentry_condition": "日後若在作者或機構典藏（例如 St Andrews 的 Pure 典藏有檔案時）循公開連結取得全文，可寫成 C5-03 野外擴散的第二個例子；屆時要與 F15-007（鳳頭鸚鵡）比對，兩者同屬「地圖加時間序列」的證明，片中只留一個當承擔者。",
+      "reading_status": "未讀到全文（僅書目與他文轉述）"
+    },
+    {
+      "id": "H60-NA002",
+      "question": "長尾黑顎猴遷入的雄猴會改吃當地偏好的顏色嗎？（van de Waal 等 2013，Science 340:483）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "OpenAlex 與 Europe PMC 都標為 closed，沒有任何開放版位置；不猜網址、不繞付費牆。覆核是憑記憶列出這一篇，本輪確認論文存在（Europe PMC 書目：Potent social learning and conformity shape a wild primate's foraging decisions），但讀不到全文。 原提案 F15-NA002。",
+      "reentry_condition": "若日後出現機構典藏或作者頁的公開全文連結，可補成 C5-03「排除環境相同」這一側的第二個野外例證，和山雀一章互相印證。",
+      "reading_status": "未讀到全文（僅書目）"
+    },
+    {
+      "id": "H60-NA003",
+      "question": "愛爾蘭 2013 年那次調查，當初為什麼決定驗馬、怎麼驗的？",
+      "existing_ids": [
+        "H59-005"
+      ],
+      "source_ids": [
+        "H60-S004"
+      ],
+      "reason": "FSAI 出版頁掛的唯一 PDF 是消費者行為調查簡報，不是檢驗調查報告；出版頁正文只有「以 PCR 擴增特定 DNA 片段」與 27 款中 10 款（37%）陽性、陽性者皆未標示含馬肉幾句，沒有方法細節、沒有各樣品數值，也沒有說為什麼決定驗馬。那組件數與 H59-005 是同一事實，不重複計算，因此沒有新核心可寫；本輪只把 H59-005 的出處補成愛爾蘭主管機關自己的頁面（記在 F15-S008），它在片中仍只當市場例子。 原提案 F15-NA003。",
+      "reentry_condition": "若 FSAI 日後在公開連結上提供 2013 年檢驗調查的報告原件（含方法與各樣品結果），可把 H59-005 升為 1.5–2 條並改寫成「當初為什麼會去驗一個沒人想到要驗的物種」。",
+      "reading_status": "出版頁與其附檔全文已讀；調查報告原件未公開"
+    },
+    {
+      "id": "H60-NA004",
+      "question": "台灣的雨到底是什麼樣的雨？（雨滴粒徑分佈與落速的本地觀測）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "C5-02 的 still_missing 把它列為「有更好」的入口，本輪沒有去補：三個目標題的主要缺口（C5-01 的台灣抽驗與氮、C5-02 的噴濺兩條、C5-03 的兩份擴散研究）優先，時間用在那六份全文上。沒有讀到來源就不寫核心。 原提案 F15-NA004。",
+      "reentry_condition": "寫稿前若要本地入口，循公開連結找中央氣象署或大學的雨滴譜（disdrometer）觀測報告全文，讀到粒徑分佈與落速再寫；只能當開場一句，不改任何一章的結論。",
+      "reading_status": "未讀"
+    }
+  ]
+}

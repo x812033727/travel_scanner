@@ -1,0 +1,38 @@
+{
+  "batch_id": "wave76-physics-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十六輪補讀：人類回聲定位（F92-T1，作者 F115，無提案），只有不收紀錄；覆核與作者建議收題。",
+  "sources": [],
+  "candidates": [],
+  "not_added": [
+    {
+      "id": "P76-NA001",
+      "question": "自己發聲比聽別人放的聲音更能估房間大小嗎？（Flanagin 等 2017 J Neurosci，PMC6705675）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "第三度讀不到：Europe PMC REST fullTextXML 一開始就 500，同一連結再試兩次仍 500；同一 API 其他篇正常，search 顯示此篇 isOpenAccess=N。依任務限定不改走其他主機。只見中繼資料（標題、作者 Flanagin、Schörnich、Schranner、Hummel、Wallmeier、Wahlberg、Stephan、Wiegrebe），未讀全文，不計。也屬 Wiegrebe 群（現 1.0）。延續 P75-NA001。 原提案 F115-NA001。",
+      "reentry_condition": "Europe PMC REST fullTextXML 對 PMC6705675 回 200 時，Wiegrebe 群封頂內約 +0.5；若站主允許改用 Europe PMC search 回傳的 europepmc.org PDF 連結，需另行裁定。",
+      "reading_status": "只見 Europe PMC search 中繼資料，未讀"
+    },
+    {
+      "id": "P76-NA002",
+      "question": "會回聲定位的盲人，聽一般聲源的位置也比較準嗎？（Vercillo、Milne、Gori、Goodale 2015 Neuropsychologia）",
+      "existing_ids": [
+        "P74-037"
+      ],
+      "source_ids": [],
+      "reason": "沒有合法全文（不在 PMC、非開放、搜尋只見目錄頁）。另外即使讀到也不計：共同作者 Goodale 與池中 Thaler、Arnott、Goodale 2011（PMC3102086，Thaler 群）相同，加上 Gori 屬 Gori／Brayda 群，依『有共同作者就同群』這篇會把 Thaler 群（2.0）與 Gori／Brayda 群（0.75）併成一群，合計已超過 2.0 封頂，新增條數為 0，而且會讓既有計數需要下修。V119 寫『Gori 群封頂內約 +0.5』沒算到這層。 原提案 F115-NA002。",
+      "reentry_condition": "無（就算取得全文，研究群合併後封頂已滿）。",
+      "reading_status": "只見 Europe PMC search 中繼資料與目錄頁摘要，未讀"
+    },
+    {
+      "id": "P76-NA003",
+      "question": "不屬既有 12 群、在真實場所量近距離左右或紋理判斷的開放原研究",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC REST 三次查詢與兩次 WebSearch 都沒有找到符合條件的研究（見 blocked）；最接近的 Tonelli、Campus、Brayda 2018（PMC6200730，真實走廊）屬 Gori／Brayda 群，上輪已判不符（P75-NA003），本輪不讀。 原提案 F115-NA003。",
+      "reentry_condition": "出現新研究群在真實場所、以自己發聲量近距離判斷的開放全文時，約 0.75，也是轉折一從錄音／虛擬升級的唯一途徑。",
+      "reading_status": "未找到候選，未讀"
+    }
+  ]
+}

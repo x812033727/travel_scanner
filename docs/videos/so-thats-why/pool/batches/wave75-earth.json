@@ -1,0 +1,358 @@
+{
+  "batch_id": "wave75-earth-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十五輪補讀：地磁（F99-T1，F108／V116）、暴雨溪水（F97-T1，F112／V120），都留後備。",
+  "sources": [
+    {
+      "id": "E75-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9214526/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.2200749119",
+      "title": "Recurrent ancient geomagnetic field anomalies shed light on future evolution of the South Atlantic Anomaly",
+      "publisher": "PNAS 119(24):e2200749119（2022）；Nilsson、Suttie、Muscheler（隆德大學）、Stoner（奧勒岡州立大學）",
+      "version": "出版社正式版（PMC 收錄，CC BY-NC-ND 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（TITLE 查詢，resultType=core）回傳 PMC9214526、isOpenAccess=Y；再用公開文件記載的 REST fullTextXML 端點下載，自己去標籤轉文字",
+      "reading_scope": "全文正文：Significance、Abstract、前言、Variations in the DM、East–West Hemispherical Field Asymmetries、Recurrent Geomagnetic Field Anomalies、Discussion（Ancient Analogs、Eccentric Planetary Gyre、High-Latitude Westward Drift、Evidence for External Forcing）、Materials and Methods、致謝；參考文獻只看前 12 條；SI 與影片未讀",
+      "locator": "Abstract；Variations in the DM 第 4–5 段（1300–700 BCE g10 變化率 4–16 nT/y）；Recurrent Geomagnetic Field Anomalies 第 1–4 段；Discussion〈Ancient Analogs of the Present Day〉全段（未來約 300 年、DM 仍未放慢的保留）",
+      "summary": "作者用考古與沉積物紀錄、以機率方法（同時估計資料年代、處理沉積物平滑）建了過去 9000 年的地磁模型 pfm9k.2。結果：偶極矩有約 650／1300 年的準週期起伏，偶極矩的低點往往伴隨像今天南大西洋異常那樣的東西半球不對稱與弱場區；西元前 1600–300 年在太平洋半球出現兩次弱場異常（對應西元前 1300、700 年的偶極矩低點）。西元前 1300–1000 年的增長期與 1000–700 年的衰減期，軸偶極的平均變化率在 4–16 nT/y（依三種先驗），作者寫這與近代的偶極衰減速率相當。作者提出西元前 600 年前後的強烈不對稱場可能是今天的類比：照這個類比，南大西洋異常可能在接下來約 300 年內消失、場回到較對稱的樣子，偶極也可能變強；但他們同時寫，目前偶極矩仍在下降、沒有放慢的跡象，這與類比不一致，顯示類比的侷限。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "9000 年模型南半球資料少、不確定度大（圖 3 灰區）；作者自己說核心的磁通斑移動遠超出模型解析度。『未來約 300 年消失』是類比推論，不是預測模型，作者也寫出與現況不符之處。前言的『過去 180 年軸偶極平均每年降 16 nT』是引用 Gillet 等 2013（ref 1），不是本篇結果；『SAA 被提出可能是翻轉前兆』是引用 Hulot 等 2002（ref 2），不得寫成本篇主張。致謝提到 Maxwell Brown 協助整理資料（見 research_groups）。池中沒有同一份文件（grep DOI、PMC 號為 0；池中『Nilsson』是另一位聲學作者）。 覆核 V116（2026-11-12）：limitations 加：『Nilsson、Suttie 與 Korte、Holme 合著 GJI 2014 與〈Persistent westward drift…〉（本文參考文獻自列）；模型資料來自 Brown 等 GEOMAGIA50.v3（ref 21、52）；致謝 Maxwell Brown 協助整理與解讀資料；Stoner 與 Laj、Kissel 合著 2002 QSR（SAPIS）。歸 GFZ 合著網，不是獨立第三方。』",
+      "author_cache": {
+        "file": "f108src/PMC9214526.txt",
+        "sha256_prefix": "163e38e013eafd3d",
+        "raw_file": "f108src/PMC9214526.xml",
+        "raw_sha256_prefix": "067d007004539e3f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E75-S002",
+      "url": "https://link.springer.com/content/pdf/10.1186/BF03352849.pdf",
+      "canonical_url": "https://doi.org/10.1186/BF03352849",
+      "title": "Magnetic poles and dipole tilt variation over the past decades to millennia",
+      "publisher": "Earth, Planets and Space 60:937–948（2008）；M. Korte、M. Mandea（GeoForschungsZentrum Potsdam）",
+      "version": "出版社正式版 PDF（EPS 開放取用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果先列 gfzpublic PDF（403，停止）與 link.springer.com/article/10.1186/BF03352849；curl 讀 Springer 文章頁（伺服器自行加 cookie 參數轉址，存 km2008_springer.html），循頁上 href=/content/pdf/10.1186/BF03352849.pdf 下載，pdftotext 轉文字",
+      "reading_scope": "全文正文（摘要、1 前言、2 方法與模型、3.1、3.2、4.1、4.2、5.1–5.3、6 結論、致謝）；圖說讀過，圖本身未判讀；參考文獻未讀",
+      "locator": "Abstract；3.1 節末（gufm1：約 400 年都在 5 km/yr 上下，1970 後急升，現約 60 km/yr；CHAOS 顯示最近開始減速）；3.2 節末（CALS7K.2：北磁極從未低於北緯 73°、各經度都到過、無偏好，速度一般 <10 km/yr，例外是約西元前 4500 與 1300 年的 15–20 km/yr）；5.1 節末（偶極傾角目前比 7000 年間任何時候都大，偶極矩仍高於 7000 年平均）；5.2 節（7 kyr 模型的磁極位置要謹慎看待；不到一百年的加速模型解析不到）；6 結論（北磁極可能減速、但若加拿大磁通團再占上風會突然掉頭；現有知識不足以預測）",
+      "summary": "作者用四個連續地磁模型（CHAOS、CM4、gufm1、CALS7K.2）追蹤磁極與地磁極從幾年到七千年的移動。過去 400 年北磁極速度多半在每年約 5 km 上下，1970 年起急升到約 60 km/yr。七千年的模型顯示北、南磁極從未跑到北／南緯 73° 以下，所有經度都到過、沒有偏好的經度帶；北磁極速度一般每年不到 10 km，只有約西元前 4500 年與 1300 年兩段達每年 15–20 km。作者也提醒：七千年模型的磁極位置受小尺度場影響、要謹慎看待，而且持續不到百年的加速（像現在這次可能就是）模型根本解析不到。北、南磁極與偶極軸的移動彼此沒有顯著相關。結論：北磁極的突然加速和地核表面的反向磁通斑有關，作者推論它很可能會減速；但只要兩團正向磁通的強弱改變、加拿大那團重新占上風，北磁極可能突然掉頭，『目前對發電機的了解不足以預測地核磁場的變化』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "前言『1970 年起速度增至近 60 km/yr』引用 Mandea & Dormy 2003（IPGP），不計；3.1 節的 gufm1／CHAOS 速度與 E74-059、E74-061 重疊，不另計。七千年磁極位置作者自己說不可靠，只能說『模型顯示』，片中速度用『相對較快的兩段』而非精確數字。2008 年的『很可能減速』是作者推論；不得接成『預言成真』，也不得和 NOAA 2025 的 36 km/yr 相減或接成因果。CALS7K.2 南半球資料偏少。與 E74-S061（Livermore）ref 12 是同一篇，池中原本沒有本文作為來源（grep DOI 為 0）。 覆核 V116（2026-11-12）：summary 『很可能減速』補條件『若維持往西伯利亞磁通的方向』；『目前知識不足以預測』註明是對地核磁場變化的一般陳述。",
+      "author_cache": {
+        "file": "f108src/km2008.flat.txt",
+        "sha256_prefix": "2de7314be3734917",
+        "raw_file": "f108src/km2008.pdf",
+        "raw_sha256_prefix": "570fcdf1feaa7eab",
+        "layout_file": "f108src/km2008.txt",
+        "layout_sha256_prefix": "f27661d67fc31e34",
+        "landing_page": "f108src/km2008_springer.html d4a2fdca9037d79d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E75-S003",
+      "url": "https://link.springer.com/content/pdf/10.1186/s40645-020-00354-y.pdf",
+      "canonical_url": "https://doi.org/10.1186/s40645-020-00354-y",
+      "title": "A full sequence of the Matuyama–Brunhes geomagnetic reversal in the Chiba composite section, Central Japan",
+      "publisher": "Progress in Earth and Planetary Science 7:44（2020）；Haneda（國立極地研究所／茨城大學／產總研）、Okada、Kitamura（茨城大學）、Suganuma（國立極地研究所／總研大）",
+      "version": "出版社正式版 PDF（CC BY 4.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列 DOAJ（403，停止）與國立極地研究所英文新聞稿；新聞稿只當入口，循其原文連結 progearthplanetsci.springeropen.com/articles/10.1186/s40645-020-00354-y（伺服器自行轉到 link.springer.com），再循頁上 /content/pdf/… 連結下載，pdftotext 轉文字",
+      "reading_scope": "摘要、1 前言、3.4 節（M–B 界線比較與表 2）、3.5 節末段、4 結論；2 地質與方法、3.1–3.3 岩石磁學細節只掃讀；參考文獻未讀；補充資料未讀",
+      "locator": "Abstract；3.4 節（翻轉在 1.1±0.4 kyr 內完成、年代 772.9 ka）；3.5 節末段（3 kyr、760 ka 回強、回強後強度高於翻轉前；783–763 ka 約 2 萬年）；4 Conclusions 末兩段（at least 20 kyr）",
+      "summary": "作者分析千葉複合剖面（沉積速率高、連續的海相地層，也是更新世『千葉期』的國際標準）。在三個子剖面與一根鄰近岩芯中，從反向到正向的極性切換本身在 1.1±0.4 千年內完成（依 Suganuma 2018 年代模型）；但從約 78.3 萬到 76.3 萬年前，方向與相對強度反覆偏離常態，表示主軸偶極耗弱期間非軸偶極場多次占主導，前後至少約 2 萬年。方向不穩在強度回升（約 76 萬年前）前約 3 千年結束；回升後的強度比翻轉前還高，方向穩定在正極性。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有一個地點的沉積物，沉積物記錄有鎖定深度造成的平滑（作者前言自述）；1.1 kyr 依單一年代模型、另有 5 kyr 定年誤差。前言提到義大利研究推論『百年內翻完』、熔岩研究推論『約 3 萬年前開始衰減』都是引用，不算本篇。片中不寫本篇的年代數字，避免與 E74-071 的年代並列（覆核 drop_if）。新聞稿『通常每 20–30 萬年翻一次』是新聞稿說法、不是本文結果，不用。 覆核 V116（2026-11-12）：limitations 加『與 E74-071（Singer 2019）同一次翻轉、同結論，只當獨立佐證』。",
+      "author_cache": {
+        "file": "f108src/haneda2020.txt",
+        "sha256_prefix": "71849bd18509869f",
+        "raw_file": "f108src/haneda2020.pdf",
+        "raw_sha256_prefix": "9801f1fbd6e26174",
+        "landing_page": "f108src/haneda2020.html cb03604036ede12c",
+        "entry_press_release": "f108src/haneda_nipr.html 39d051360f398e81",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E75-S004",
+      "url": "https://researchonline.jcu.edu.au/77624/1/Hydrological%20Processes%20-%202022%20-%20Lim%20-%20Revisiting%20Michael%20Bonell%20s%20work%20on%20humid%20tropical%20rainforest%20catchments%20%20Isotope.pdf",
+      "canonical_url": "https://doi.org/10.1002/hyp.14722",
+      "title": "Revisiting Michael Bonell's work on humid tropical rainforest catchments: Isotope tracers reveal seasonal shifts in catchment hydrology",
+      "publisher": "Hydrological Processes 36(10):e14722（2022）；Han She Lim、Niels C. Munksgaard、Michael I. Bird（澳洲詹姆斯庫克大學）",
+      "version": "出版社版（CC BY-NC-ND，開放取用），存於 JCU ResearchOnline 機構典藏",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果原樣給出 JCU 典藏 PDF 連結；curl 預設標頭下載（HTTP 200，application/pdf），pdftotext -layout 轉文字",
+      "reading_scope": "摘要、1 Introduction、2 方法（二成分分離式與 Qtot／Qp 定義）、3.1 與 3.3（hydrograph separation 結果段）、表 1、表 3、表 4、4.1–4.4 討論、5 結論；參考文獻與補充資料未讀",
+      "locator": "摘要（pre-event water >50%）；2 方法末段（Qtot 與 Qp 定義、二成分假設）；表 1（集水區 1.7、1.57 km²，年雨量）；表 3（Atika Creek 2020/21 七場：TC Imogen、TC Kimi、Severe TC Niran、季風雨；% event water at Qp 與 for Qtot）；表 4（Thompson Creek 2016/17 三場 TC1–TC3）；4.2 第 1 段；5 結論",
+      "summary": "澳洲昆士蘭東北部濕熱帶兩個陡峭雨林小集水區（Thompson Creek 1.7 km²、年雨量 4900 mm；Atika Creek 1.57 km²、1992 mm），以 δ18O 二成分分離量每場暴雨中『這場雨的水』比例，分兩種算法：洪峰當下（Qp）與整場事件流量合計（Qtot）。Atika Creek 2020/21 雨季七場（其中五場分屬 TC Imogen、TC Kimi、Severe TC Niran 三個熱帶氣旋，另兩場為季風雨）整場事件水 3.3%–84.1%、洪峰當下 9.9%–95.0%（表 3）；Thompson Creek 三場整場事件水 4.7%–9.9%、洪峰當下 24.5%–41.7%（表 4）。4.2：兩地事件水在洪峰當下比整場重要（Atika 多數 >33%、Thompson 25%–42%），整場則雨前水重要（Thompson >90%、Atika 15.9%–96.7%）。摘要與結論：整場事件流量一般以雨前水為主（>50%），集水區越濕越明顯。作者也寫二成分假設在此不一定成立、雙示蹤三成分分離結果不理想、土壤水是未量到的重要來源。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "兩個小集水區、共十場事件、單一雨季（Atika 2020/21、Thompson 2016/17）；二成分分離、雨水端元每場只取一個樣本。注意：表 4 的『TC1–TC3』是 Thompson Creek 的事件編號，不是熱帶氣旋；熱帶氣旋只對應 Atika 的事件 1–3（氣旋眼距集水區 95–160 km）。原文內部有不一致：3.3 正文寫『AC2: 48.6%, AC3: 95%』『AC2: 11.4%, AC3: 84.1%』，與表 3（事件 2 為 95.0／84.1、事件 3 為 33.0／8.47）錯位；4.4 有一句『event waters contributing at least 50% of runoff during storm events』與摘要、結論的『pre-event water >50%』相反；結論寫『event water dominated during peak flows (9.9%–70.6%)』而 9.9% 並非主導。只用表 3、表 4 數字與摘要結論，不用這幾句正文。前言與討論引的 Bonell 等人 Babinda 舊數字（新水 45%–80%、53%／47%）是引前人，不計。與池中無同一頁（grep pool.json：hyp.14722、Atika、Babinda 皆 0）。 覆核 V120（2026-11-12）：limitations 補：(a) 3.5 寫 Atika 事件水比例在雨季中逐場上升，與摘要、結論『especially when the catchment was wet』方向相反，片中不用後者；(b) 3.5 正文把 Thompson TC2、TC3 併寫成 24.5%–41.7%／4.7%–9.9%，與表 4 不一，以表 4 為準；(c) pre-event 端元是漲水前的低流量溪水樣本，並假設土壤水與地下水同值。研究群 J 的 Europe PMC 查詢覆核重做無共同作者。",
+      "author_cache": {
+        "file": "lim2022.pdf / lim2022.txt",
+        "sha256_prefix": "70a3774c3fdcae8b / 483b5d51224fc810",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "E75-S005",
+      "url": "https://hess.copernicus.org/articles/30/267/2026/hess-30-267-2026.pdf",
+      "canonical_url": "https://doi.org/10.5194/hess-30-267-2026",
+      "title": "Tracing near-surface runoff in a pre-Alpine headwater catchment",
+      "publisher": "Hydrology and Earth System Sciences 30:267–287（2026）；Anna Leuteritz、Victor Aloyse Gauthier、Ilja van Meerveld（蘇黎世大學地理系）",
+      "version": "正式出版版（CC BY 4.0；2026-01-20 出版，HESS 同儕審查後接受）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果原樣給出 HESS PDF 連結；curl 預設標頭下載（HTTP 200，application/pdf），pdftotext -layout 轉文字",
+      "reading_scope": "摘要、1 Introduction、2.1 研究區、3.3.2 抵達時間（celerity／velocity 定義）、3.3.4 二成分混合、4.1–4.3（含表 4、表 5）、5.3.2–5.3.3、6 結論；3.1–3.2 實驗設置、4.4–5.2 與補充資料只略讀",
+      "locator": "摘要；3.3.2（celerity 以水量脈衝後第一次水位上升、velocity 以示蹤劑第一次到達計，皆為最大值）；4.2 與表 4（celerity）；4.3.1 與表 5（最大顆粒速度）；4.3.2（氘標記水比例）；5.3.3（kinematic ratio）；6 結論",
+      "summary": "瑞士前阿爾卑斯 Alptal 的 Studibach（20 ha、年雨量約 2300 mm、低透水潛育土）兩塊 8 m 寬、>80 m² 的截溝坡面試區（森林中的天然空地、放牧草地），在灑水達穩定、接近飽和後，另加水量脈衝量『訊號傳得多快』（celerity），並用鹽、螢光素、溴與氘標記水量『水本身走多快』（最大顆粒速度）。表 4：地表逕流的 celerity 空地平均 150±80 m/h（去掉 4 m 處 240 m/h 離群值仍 105）、草地 64±7 m/h；表土側流空地 34±5、草地 41±10 m/h。表 5：最大顆粒速度地表逕流空地 51±14、草地 24±1 m/h；表土側流空地 30±9、草地 17±6 m/h。5.3.3 與結論：地表逕流的 celerity 是速度的 2–3 倍，草地的表土側流也是 2–3 倍；但空地的表土側流兩者幾乎相同，作者歸因於大孔隙等優勢流網路。4.3.2：空地試區氘標記水在地表逕流中最高佔 30%（開始灑後 36 分鐘），表土側流最高 8%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "兩塊坡面試區、各一次實驗、人工灑水接近飽和穩定狀態；速度與 celerity 都是『第一次到達』算的最大值，且是側向（順坡）流，不是 F97-S006（E74-051）那種垂直濕潤鋒；作者自己寫近飽和條件使 celerity 難與其他研究直接比較。4 m 處 celerity 的不確定度 ±480 m/h 很大。結論段把速度寫成『17 to 51 mm h−1』，與表 5 的 m h−1 不一致，以表 5 為準。5.3.3 引 van Verseveld 2017 的 αk 3–20 與 Torres 1998 的 15 是引前人，不計。研究群：本篇三位作者都不在題目已用任何來源的作者名單上；但 Europe PMC REST 查得 van Meerveld（Tromp-van Meerveld）曾與 McDonnell 合著（2007）、與 Kirchner 合著（2024–2025 三筆）、與 Rinderer（F97-S001 共同作者）合著（2019），且試區與 Erlenbach 同在 Alptal——若覆核把 still_missing 的『非 McDonnell 合作網』從嚴解讀為二度合作關係，本篇併入群 A 或 B＋F，兩群都已封頂，計 0。與池中無同一頁（grep pool.json：hess-30-267、Studibach、Leuteritz 皆 0）。 覆核 V120（2026-11-12）：limitations 的研究群改為定論：併入群 A（van Meerveld 與 Kirchner、Rinderer、von Freyberg 直接合著，另與 McDonnell 合著；Studibach 與 Erlenbach 同屬 Alptal 研究流域），已封頂，計 0；『根』不是原文對空地大孔隙的描述（原文為 macropores created by animals）。",
+      "author_cache": {
+        "file": "hess-30-267-2026.pdf / hess-30-267-2026.txt",
+        "sha256_prefix": "503bfa8f087b0d53 / f0490f7272a53fe5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "E75-001",
+      "question": "北磁極以前也像現在這樣跑嗎？七千年來它都在哪裡？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_pole_7kyr_wander_cals7k_model",
+      "answer_target": "從模型看，它一直在北極附近繞，而且平常跑得慢得多。Korte 與 Mandea 用考古與湖泊沉積物建的七千年地磁模型推算：北、南磁極從沒跑到北／南緯 73° 以下，各經度都到過，看不出偏好哪一邊；北磁極速度一般每年不到 10 公里，只有大約西元前 4500 年和 1300 年兩段比較快。作者自己提醒：七千年模型算出的磁極位置要謹慎看待，而且持續不到一百年的加速（他們認為現在這次可能就是）這種模型根本解析不到——所以不能拿這個模型說『現在的狂奔前所未見』，也不能說『以前沒這麼快過』。",
+      "scope": "磁極（傾角 90° 的點），不是地磁極；七千年位置與速度是模型推算，作者自己標不可靠；『兩段較快』不放 15–20 km/yr 的精確數字，或標『模型估計』；不與現代 36 或 50–60 km/yr 畫在同一把尺上。",
+      "source_ids": [
+        "E75-S002"
+      ],
+      "source_locator": "F108-S002 3.2 節末段；5.2 節第 4–6 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：把 E74-062 原本引用的『7000 年亂繞、西元前 4500 和 1300 年』升為一手，另加『從未低於 73°』與作者對百年內加速解析不到的保留。gufm1 的近 400 年速度與 E74-059、E74-061 重疊，不計。GFZ 群（Korte 是 Brown 2018 共同作者）。E74-062 對應改成只留 Livermore 的十年預測。 原提案 F108-001（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；有一手原文，取代 E74-062 中引用前人的七千年軌跡；刪掉作者自己的比較句。算 0.5，歸 GFZ 群（Korte）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁極本來就在北極附近繞圈，這次只是模型看得到的範圍裡跑得特別快。",
+        "visual": "北極俯視圖，七千年的細線在 73° 圈內繞來繞去，兩段標『較快』，邊上一行小字『模型推算』。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E75-002",
+      "question": "科學家能預測北磁極下一步往哪跑嗎？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_pole_forecast_limits_independent_poles",
+      "answer_target": "很難。2008 年 Korte 與 Mandea 推論：北磁極的加速和地核表面一塊反向磁通有關，如果它繼續往西伯利亞那團磁通的方向走，很可能會減速一陣子；但只要兩大團磁通的強弱明顯改變、加拿大那團重新占上風，北磁極就會掉頭，而且大概相當突然。他們的結論寫：目前對地球發電機的了解，還不足以預測地核磁場的變化，連續觀測不可少。他們也發現北、南磁極和偶極軸的移動彼此沒有顯著相關，南北兩個磁極各跑各的。",
+      "scope": "2008 年的推論，附『若維持方向』的條件；不得說『預言成真／失敗』；不與 E74-061、E74-063 的速度相減或接成因果；『掉頭靠磁通拔河』的機制已在 E74-061、E74-062，本條只講『預測不了』與『南北各跑各的』。",
+      "source_ids": [
+        "E75-S002"
+      ],
+      "source_locator": "F108-S002 Abstract；3.1 節末段（無顯著相關）；6 Conclusions 第 1、3 段",
+      "premise_status": "screened",
+      "notes": "算 0.25：『可能減速但也可能突然掉頭、現有知識無法預測』與『南北磁極各跑各的』合為一句；『反向磁通斑』機制與 Livermore（E74-061）同類，不另計。GFZ 群合計 1.75，封頂 2.0 內。可用在第一轉折後段，補上『已減速』沒有單一原文時的誠實說法：連研究者自己都說預測不了。 原提案 F108-002（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；0.25 合理：機制與 E74-061／E74-062（Livermore 兩團磁通拔河、小重組就可能掉頭）同義，真正新增只有『現有知識不足以預測』與『南北磁極、偶極軸互不相關』一句。補上原文的條件句。GFZ 群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連研究磁極的人都寫明：它下一步往哪跑，現在還預測不了。",
+        "visual": "磁極小點站在岔路口，一條箭頭往西伯利亞、一條虛線掉頭回加拿大，旁邊是 2008 年論文的一句話。",
+        "seconds": [
+          20,
+          30
+        ]
+      }
+    },
+    {
+      "id": "E75-003",
+      "question": "像南大西洋異常這樣的弱場區，以前出現過嗎？後來怎麼了？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.recurrent_holocene_field_anomalies_dipole_minima",
+      "answer_target": "出現過，而且不只一次。瑞典隆德大學 Nilsson 等人用考古與沉積物紀錄重建過去九千年的地磁場（同時估計資料年代、處理沉積物的平滑）：近四千年偶極矩大約每 650 年起伏一次，而偶極矩的低點往往伴隨像今天南大西洋異常那樣、東西半球不對稱的弱場區；例如西元前 1300 年和 700 年前後的兩個低點，太平洋半球都出現過弱場異常。那段時間偶極增強和減弱的平均速率（依三種模型假設，每年 4–16 nT），作者說和近代偶極衰減的速率相當。",
+      "scope": "九千年模型，南半球資料少、不確定度大；更早的約 1300 年週期作者說可能是資料不足造成，不入片；『與近代相當』是作者的比較，近代速率是引用值；不說這證明『不會翻轉』；不說是與 Brown 2018 無關的獨立研究（同一合著網、用 Brown 等的 GEOMAGIA 資料庫、致謝 Brown 協助解讀）。",
+      "source_ids": [
+        "E75-S001"
+      ],
+      "source_locator": "F108-S001 Abstract；Variations in the DM 第 4–5 段；Recurrent Geomagnetic Field Anomalies 第 4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：反覆出現的弱場異常＋偶極低點的對應合一條；變化率數字併入，不另算。與 E74-066（Brown 2018，5–3 萬年前）、E74-069（Tarduno，南非 1000–1600 年）時段與方法都不同，是第三個獨立研究群。Nilsson 群（與各群無共同作者）。 原提案 F108-003（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；有原文，0.5 可。研究群改歸 GFZ 合著網（見 notes），不是作者寫的『第三個獨立研究群』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "像南大西洋異常的弱場區，九千年裡出現又消失過好幾次。",
+        "visual": "九千年時間軸上偶極矩曲線起伏，每個低谷上方冒出一塊地圖上的藍色弱場斑，之後又淡掉。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E75-004",
+      "question": "照過去的例子，南大西洋異常接下來會怎樣？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.saa_600bce_analog_forecast_with_caveat",
+      "answer_target": "有一個類比說它可能在幾百年內消失，但作者自己也指出不合的地方。Nilsson 等人提出，西元前 600 年前後那種強烈不對稱的場可能是今天的古代類比：照這個類比，南大西洋異常可能在接下來幾百年內消失，場在約 300 年內回到比較對稱的樣子，偶極也可能變強。但他們同時寫：現在的偶極矩還在下降、沒有放慢的跡象，這和類比不一致，顯示這個類比的侷限。",
+      "scope": "一律說『依類比推論』，不說『預測』『科學家算出 300 年後消失』；一定連同『偶極仍未放慢、與類比不符』同句講；不說『快要翻轉』也不說『不會翻轉』；不與 Laj & Kissel 的約 500 年或 Brown 的推論合成一個數字；不稱為獨立第三方。",
+      "source_ids": [
+        "E75-S001"
+      ],
+      "source_locator": "F108-S001 Abstract 末句；Discussion〈Ancient Analogs of the Present Day〉全段",
+      "premise_status": "screened",
+      "notes": "算 0.5：類比預測與作者自己的保留合一條。是第二轉折缺的獨立第三方：與 Brown 2018（GFZ）同方向（異常會過去），但作者自己承認現況不符，正好讓片中兩派並列。Nilsson 群合計 1.0。 原提案 F108-004（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；有原文、兩句並陳，0.5 可；修正 300 年的主詞。歸 GFZ 合著網。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "過去的例子說它可能幾百年內就散掉，但作者也說：現在的偶極還沒有要停下來的樣子。",
+        "visual": "左邊西元前 600 年的弱場地圖，右邊 2020 年南大西洋異常，中間一個問號；下方一條還在往下的偶極曲線。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "E75-005",
+      "question": "地磁翻轉時，南北對調那一下要多久？整個過程又多久？",
+      "domain": "地質",
+      "mechanism_key": "geomagnetism.chiba_section_flip_1kyr_instability_20kyr",
+      "answer_target": "日本茨城大學與國立極地研究所的 Haneda 等人分析千葉一段沉積快又連續的海底地層，得到和熔岩紀錄同樣的圖像：方向從反轉切到正常，在約 1.1±0.4 千年內完成，但前後方向與強度反覆偏離常態，至少約兩萬年；不穩在強度回升前約三千年結束，而回升後的場比翻轉前還強。",
+      "scope": "單一地點沉積物，1.1 千年依單一年代模型；不寫本篇的年代數字（避免與 E74-071 的 77.3 萬年並列）；不引前言的義大利『百年內』說法；『兩種獨立紀錄都說約兩萬年』只當佐證，不另計。",
+      "source_ids": [
+        "E75-S003"
+      ],
+      "source_locator": "F108-S003 Abstract；3.4 節第 3 段；3.5 節末段；4 Conclusions 末兩段",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 E74-071（Singer，熔岩＋對齊）同一次翻轉、同結論（整個過程約兩萬年），但方法（連續沉積）與研究群獨立，新增的是『切換本身約一千年』與『翻完後場比翻前強』。Haneda 群，與各群無共同作者。這是 still_missing 第（5）項。 原提案 F108-005（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；下修 0.5→0.25：與 E74-071 同一次翻轉、同結論，新增只有『翻完更強』與較窄的切換時間。Haneda 群，查不到與 Singer 2019 作者的合著（Europe PMC AUTH 0；WebSearch 未見），單獨成群。點名（5）『翻轉持續時間的沉積物研究』，回答同一問題，可收。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真正翻過去那一下約一千年，前後的混亂卻拖了兩萬年，而且翻完後的場比翻前還強。",
+        "visual": "千葉的地層剖面，一條細紅線標『翻轉』，上下各有好幾道灰色『不穩』帶，旁邊一條強度曲線先跌後升到更高。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "E75-006",
+      "question": "熱帶雨林的暴雨、甚至颱風等級的熱帶氣旋，溪裡流的總該是剛下的雨了吧？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.tropical_peak_vs_total_event_water",
+      "answer_target": "要看你問的是哪一刻。澳洲昆士蘭東北部濕熱帶兩條陡峭雨林小溪（約 1.6–1.7 平方公里），研究者用氧-18 把十場暴雨的溪水拆成『這場雨的水』和『雨前就在集水區裡的水』（以漲水前的溪水代表）。兩條溪都是洪峰那一刻『這場雨的水』比較重要：Thompson Creek 三場，洪峰那一刻約 25% 到 42%，但整場流過的水加起來只有約 5% 到 10% 是這場雨；Atika Creek 七場（其中五場的雨與三個熱帶氣旋有關，氣旋眼距集水區約 95–160 公里，其餘兩場是季風雨）事件之間差得更大，整場從約 3% 到 84% 都有。作者的結論是：整場流量一般以雨前就存在集水區的水為主（超過一半）。",
+      "scope": "兩個小集水區、十場事件、各一個雨季；二成分 δ18O 分離，雨水端元每場一個樣本，作者自己寫端元假設不一定成立、土壤水是未量到的重要來源。數字只用表 3、表 4 與 4.2、摘要結論的『整場一般 >50% 雨前水』。不用：3.3 正文與表 3 錯位的 AC2／AC3 數字、3.5 把 TC2／TC3 併組的寫法、4.4 那句相反的 event waters at least 50%、結論的 dominated during peak flows (9.9%–70.6%)，以及摘要與結論的『集水區越濕越明顯』——3.5 與表 3 顯示 Atika 雨季中事件水比例反而逐場上升（AC2 整場 84.1%），原文自相矛盾，片中不說，也不得接到 E74-046『看雨前濕度』成因果。表 4 的 TC1–TC3 是 Thompson Creek 事件編號，不是熱帶氣旋，片中不可說成『三個颱風』；Atika 的熱帶氣旋是間接影響（氣旋眼不經過集水區），不說『颱風直撲』。不與臺灣研究（E74-049，模型估計、不同方法）的兩成到八成相減或並列成矛盾；也不與 E74-045 Erlenbach 的 23% 平均互比（定義不同：本篇 Qtot 為單場合計）。不引 Babinda 舊數字（前人）。",
+      "source_ids": [
+        "E75-S004"
+      ],
+      "source_locator": "摘要；2 方法末段；表 1；表 3；表 4；4.2 第 1 段；5 結論",
+      "premise_status": "screened",
+      "notes": "算 0.75：一篇、兩個集水區、一個結論（洪峰當下事件水比例高於整場；整場以雨前水為主，事件間差很大）。新增在『洪峰那一刻 vs 整場合計』兩種算法差很大，這是舊核心沒有的；熱帶、含熱帶氣旋外圍降雨，補 still_missing 第 (2) 項。研究群 J（JCU），Europe PMC AUTH 查 Munksgaard、Bird MI、Lim HS 與題目各群作者（Kirchner、von Freyberg、Barnard HR、Brooks PD、Lee JY、Soulsby C、Uhlenbrook、Morgenstern、Strasser、Vereecken）無水文合著（命中者皆為醫學同名）。不屬 A、B＋F、H。原文有三處正文與表或摘要不一致，已在來源 limitations 列出並只用表與摘要。 原提案 F112-001（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V120（2026-11-12）改字後收；數字、單位、事件編號與熱帶氣旋歸屬逐一核對無誤，作者排除的三處矛盾得當；但答案沿用了摘要的『集水區越濕越明顯』，與同篇 3.5 及表 3 的 Atika 季節趨勢相反，已刪，並補記兩處作者漏列的不一致與端元限制。研究群 J（JCU：Lim、Munksgaard、Bird）：Europe PMC AUTH 查 Munksgaard、Bird MI 與 McDonnell、Kirchner、Barnard、Morgenstern、Soulsby、Stewart MK 皆 0 筆，作者另查的 Lee JY、Uhlenbrook、Strasser、Vereecken 等亦無水文合著；本篇只『引用』McDonnell（Muñoz-Villers & McDonnell 2012 等），不是共同作者。新群，算 0.75（一篇兩集水區一個結論：洪峰 vs 整場、整場多為雨前水、事件間差很大）。池中無同答案：E74-045 是單一溫帶集水區 24 場平均，不區分洪峰與整場；pool.json 無 hyp.14722、Atika、Thompson Creek；mechanism_key 未被使用。符合 still_missing 第 (2) 項（不屬 A、B＋F、H 的熱帶暴雨同位素分離開放原研究）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一場雨，洪峰那一刻和整場合計，答案可以差好幾倍——問『溪水是不是剛下的雨』，要先問『哪一刻』。",
+        "visual": "兩條色條並排：上條『洪峰那一刻』新雨色約三到四成；下條『整場加總』新雨色只剩一成以下（Thompson Creek 表 4）；地圖標昆士蘭濕熱帶。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "E75-007",
+      "question": "『訊號比水跑得快』只是那一片山坡的特例嗎？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.plot_celerity_velocity_ratio_preferential_flow",
+      "answer_target": "在另一處山坡也量得到，但差距看土壤。瑞士前阿爾卑斯 Alptal 的 Studibach，研究者在兩塊坡面試區灑水到接近飽和、流量穩定後，一邊在不同距離多加一股水、看出口流量多快有反應（訊號），一邊放鹽、螢光素、溴和氘標記水、看最先到的示蹤劑多快到（水本身）：草地上的地表逕流，訊號平均每小時約 64 公尺，最先到的示蹤劑平均每小時約 24 公尺；作者寫，兩塊試區的地表逕流訊號都是水速的 2 到 3 倍，草地的表土側流也是。可是森林空地的表土側流，兩者幾乎一樣（約每小時 34 對 30 公尺）——作者歸因於大孔隙等優勢流路徑，並在這塊空地看到好幾個動物挖出的孔洞。",
+      "scope": "兩塊試區、各一次人工灑水、接近飽和的穩定狀態；側向順坡流的『第一次到達』最大值，與 E74-051 的垂直濕潤鋒不是同一種量，數字不可互比、相除或相減。2–3 倍照摘要與 5.3.3，不自算其他倍數。空地地表逕流 celerity 不確定度很大（4 m 處 240±480 m/h），不用 150、240、105 m/h。結論段的 mm h−1 是單位誤植，用表 5 的 m h−1。不說『根』造成空地大孔隙。引前人的 αk 3–20、15、Scaini 1.02–1.06 不用。研究群屬 A（見 reason），計 0。",
+      "source_ids": [
+        "E75-S005"
+      ],
+      "source_locator": "摘要；3.3.2；表 4；表 5；5.3.3；6 結論",
+      "premise_status": "screened",
+      "notes": "算 0.75（暫定）：一個實驗、一組對照（訊號 vs 水速 2–3 倍，加上空地表土側流幾乎相同的例外）；氘標記水最高 30%／8% 是同一實驗的細節，不另算。補 still_missing 第 (4) 項，讓轉折二不只靠 H. J. Andrews 一片山坡，也替轉折二加上『差距看土壤』的限制。研究群 K（蘇黎世大學）：作者名單與題目已用來源無重疊；但 van Meerveld 曾與 McDonnell、Kirchner、Rinderer 合著（Europe PMC REST 查得），從嚴解讀『非 McDonnell 合作網』則併入已封頂的群 A 或 B＋F、計 0，請覆核裁定。 原提案 F112-002（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V120（2026-11-12）改字後收；數字與單位屬實，答案改掉原文沒有的『根』並把『水本身最快』改為『最先到的示蹤劑』。研究群裁定：本篇三位作者不在題目已用來源的名單上，但通訊作者群的 van Meerveld 與群 A 的 F97-S001 四位作者中三位有直接合著——Kirchner（Europe PMC：Liu…van Meerveld、Kirchner 2025；Scandellari 等 2024 兩筆）、Rinderer（Europe PMC：Zuecco、Rinderer…van Meerveld 2019；本篇參考文獻另列 Rinderer、van Meerveld 等 2014、2016 與 van Meerveld、Fischer、Rinderer 等 2018，皆在同一個 Studibach）、von Freyberg 與 Kirchner 同列（本篇參考文獻 Stähli、Seibert、Kirchner、von Freyberg、van Meerveld 2021，Alptal 研究回顧）——並與 McDonnell 合著（Europe PMC：Lehmann…Tromp-van Meerveld、McDonnell 2007；參考文獻 Tromp-van Meerveld & McDonnell 2006a、b，Uchida、Tromp-van Meerveld、McDonnell）。依第二十四輪『與題目已用的各群有共同作者就算同群』與 still_missing (4)『非 McDonnell／Barnard／Brooks 合作網』，從嚴併入群 A（ETH／WSL＋IDAEA；連結最多，且 Studibach 與 Erlenbach 同屬 WSL 的 Alptal 研究流域，近飽和條件還引 Rinderer 2014 為據）；群 A 已封頂 2.0，本核心計 0。它仍可作 E74-051 的旁證（另一處山坡、另一種量法），但不滿足 still_missing (4) 要的『第二個獨立研究群』。池中無同答案（pool.json 無 Studibach、Leuteritz、hess-30-267；celerity 只有 E74-051 與無關的 O3060 洪波），mechanism_key 未被使用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "壓力比水跑得快在別的山坡也量得到，但不是永遠——土裡有大孔隙時，水本身也能幾乎一樣快。",
+        "visual": "兩塊試區俯視示意：草地上兩支箭頭『訊號 64』『水 24 m/h』長短不同；森林空地表土裡兩支箭頭『34』『30』幾乎一樣長，旁邊畫根孔與蚯蚓洞。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "E75-NA001",
+      "question": "現在的偶極傾角是七千年來最大的嗎？磁場算弱嗎？",
+      "existing_ids": [
+        "E74-067"
+      ],
+      "source_ids": [
+        "E75-S002"
+      ],
+      "reason": "Korte & Mandea 5.1 節寫偶極傾角目前比七千年模型中任何時候都大、偶極矩仍高於七千年平均；後半與 E74-067（Pavón：偶極矩仍在一萬兩千年平均附近）答案相同，前半是新的但會讓第二轉折再多一個數字，且 GFZ 群已 1.75。不收。 原提案 F108-NA001。",
+      "reentry_condition": "若覆核刪掉 F108-002，可改收這條的『傾角最大』半句，仍歸 GFZ 群。",
+      "reading_status": "全文讀過（5.1 節）"
+    },
+    {
+      "id": "E75-NA002",
+      "question": "Ross 在磁極上吊起的針真的不轉嗎？（原掃描核對）",
+      "existing_ids": [
+        "E74-057"
+      ],
+      "source_ids": [],
+      "reason": "Royal Society 原掃描循 DOI 遇 Cloudflare 驗證頁（403），依規定停止；E74-057 維持 AI-OCR、0.5 條。 原提案 F108-NA002。",
+      "reentry_condition": "Royal Society 頁不經驗證可讀時，用同一 DOI 重抓一次。",
+      "reading_status": "未讀到"
+    },
+    {
+      "id": "E75-NA003",
+      "question": "Brown 2018 正式版裡的 60%、10–20% 是否與稿本相同？",
+      "existing_ids": [
+        "E74-066"
+      ],
+      "source_ids": [],
+      "reason": "PNAS 循 DOI 遇 Cloudflare 驗證頁（403）；E74-066 維持 1.0、數字標『依作者接受稿』。 原提案 F108-NA003。",
+      "reentry_condition": "出現不經驗證的合法開放版本（不含 Europe PMC，覆核已指示不再試）。",
+      "reading_status": "未讀到"
+    },
+    {
+      "id": "E75-NA004",
+      "question": "春天融雪時，瑞典北方森林的溪水是剛融的雪嗎？（Laudon 等 2004，Krycklan）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "still_missing 第 (1) 項。本輪搜尋結果給的 HAL 原連結再試一次，仍回 HAL 機器人驗證頁，未取得全文；搜尋摘要提到的『約 75% 雨前水』只出自中繼資料／搜尋摘要，不算來源。 原提案 F112-NA001。",
+      "reentry_condition": "HAL 不再出驗證頁時，用搜尋結果原連結正常下載一次；或 AGU 出版社頁經公開連結可讀全文。",
+      "reading_status": "未讀（驗證頁）"
+    },
+    {
+      "id": "E75-NA005",
+      "question": "颱風時臺灣山溪的事件水比例（Water 12:1169 正式版全文）",
+      "existing_ids": [
+        "E74-049"
+      ],
+      "source_ids": [],
+      "reason": "still_missing 第 (3) 項。mdpi.com 搜尋結果原連結仍 403；同一次搜尋列出的臺大學術典藏頁只有縮圖、無全文。群 H 維持 E74-049 的 0.5（只讀正式版摘要），不加。 原提案 F112-NA002。",
+      "reentry_condition": "MDPI 不再 403 時用搜尋結果原連結再試一次；或機構典藏上傳 ORIGINAL 全文檔。",
+      "reading_status": "未讀全文（403；典藏無全文）"
+    },
+    {
+      "id": "E75-NA006",
+      "question": "Babinda 舊研究的新水 45%–80%、53%／47%",
+      "existing_ids": [],
+      "source_ids": [
+        "E75-S004"
+      ],
+      "reason": "出自 F112-S001 前言與 4.2 引 Bonell、Gilmour、Howard 等前人的數字，不是本篇結果，依規不計。 原提案 F112-NA003。",
+      "reentry_condition": "讀到 Bonell 等原研究的開放全文才可另行評估（不在本題 still_missing 內，本輪不找）。",
+      "reading_status": "只讀到二手引用"
+    },
+    {
+      "id": "E75-NA007",
+      "question": "盧森堡 Weierbach 坡面的 celerity–velocity（Scaini 等 2018，J. Hydrol.）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋時看到 Lancaster eprints 有作者接受稿，可作 still_missing 第 (4) 項的備案；但已有 F112-S002 正式版，依『只補一篇、不堆疊』未下載閱讀。其共同作者 Pfister 是否在 McDonnell 合作網也未查。 原提案 F112-NA004。",
+      "reentry_condition": "若覆核把 F112-S002 併入已封頂研究群，可改評這篇（先查作者合著關係）。",
+      "reading_status": "未讀"
+    }
+  ]
+}

@@ -1,0 +1,384 @@
+{
+  "batch_id": "wave59-earth-20261111",
+  "created_on": "2026-11-12",
+  "scope": "三場太空天氣事件的技術報告；台灣沙洲與外傘頂洲的觀測；流速計以 GPS 為參考時的偏差：替組題 C4-07、C4-04 與後備長題 G35 補來源（作者 F13，覆核 V16）；G35 仍後備。",
+  "sources": [
+    {
+      "id": "S59-S001",
+      "url": "https://repository.library.noaa.gov/view/noaa/53091/noaa_53091_DS1.pdf",
+      "canonical_url": "https://doi.org/10.1029/2022SW003193",
+      "title": "Space Weather Environment During the SpaceX Starlink Satellite Loss in February 2022（Fang 等）",
+      "publisher": "Space Weather 20, e2022SW003193（AGU／Wiley，開放取用）；NOAA 機構典藏的刊本 PDF；作者任職 NOAA 太空天氣預報中心、科羅拉多大學 CIRES 與 SpaceX",
+      "version": "2022（刊本，14 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 14 頁讀完（圖只讀圖說，未目讀曲線）",
+      "locator": "Abstract；第 1 節（發射軌道、Kp、SpaceX 聲明）；第 3 節（SWPC 預報原文）；第 4 節（WAM-IPE 與 MSIS-00 的比較、圖 5–6 的文字敘述）",
+      "summary": "2022 年 2 月 3 日發射的 49 顆星鏈衛星被送進近地點 210 公里、遠地點 350 公里的軌道（目標 550 公里），38 顆墜回。磁暴的 Kp 只到 5、兩天各持續 6 小時，依 SWPC 分級是輕微（minor）。NOAA 作業中的物理模式 WAM-IPE 算出 200–400 公里高度的中性密度增加 50%–125%；SpaceX 發射前用的經驗模式 NRLMSISE-00 只顯示最多約 20% 的增幅，沿存活衛星軌道取樣時 WAM 的密度在近地點比 MSIS-00 高約 40%–80%。SpaceX 只來得及讓 11 顆進入安全姿態。SWPC 當時沒有針對衛星阻力的警報產品。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 S58-NA001 點名的同一篇（當時 Wiley 403）；本次讀的是 NOAA 典藏的刊本。密度增幅是模式結果，不是直接量測；作者之一是 SWPC 自己的模式團隊，也有 SpaceX 員工。Kp 5 在本文稱 minor，池中 S58-005 依 Dst 稱中等，兩種指標不要混成一句。DOI 10.1029/2022SW003193 的出版社頁回 403。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/fang2022-noaa_53091_DS1.pdf",
+        "sha256_prefix": "8404d1889e2fd56a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S59-S002",
+      "url": "https://info.ornl.gov/sites/publications/Files/Pub57561.pdf",
+      "canonical_url": "https://info.ornl.gov/sites/publications/Files/Pub57561.pdf",
+      "title": "Electric Utility Industry Experience with Geomagnetic Disturbances（ORNL-6665；Barnes、Rizy、McConnell、Tesche、Taylor）",
+      "publisher": "美國能源部橡樹嶺國家實驗室（Oak Ridge National Laboratory）技術報告",
+      "version": "1991 年 9 月（掃描檔 98 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "定點閱讀：Executive Summary、2.2.4–2.2.6、3.8（含時間序列）；其餘章節未讀。掃描檔 OCR 有雜字，數字逐處對過上下文",
+      "locator": "Executive Summary p.xiv–xv；§2.2.5 Static VAR Compensators（p.16–17）；§3.8 System Response Data（p.34–37）",
+      "summary": "1989 年 3 月 13 日魁北克水電停電的技術經過：變壓器被地磁感應電流推到飽和，產生諧波；諧波流進靜態無效功率補償器（SVC）的電容器組，保護裝置把 SVC 跳開。2:44:17 第一台在 Chibougamau 跳脫，到 2:45:16 第七台跳脫，約一分鐘內失去七台；約 8 秒後 735 kV 線路開始跳脫，系統分離，失去約 21,500 MW 的發電。復電：3 小時 25%、5 小時 48%、7 小時 65%、9 小時 83%。分離造成的過電壓損壞了 La Grande 4 的兩台升壓變壓器、數處避雷器、一台並聯電抗器與 SVC 本身。由渥太華磁力站資料換算，第一批跳脫時東西向電場約每公里 10 伏特，持續約 30 秒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1991 年的報告，引用魁北克水電與當時文獻的資料，不是 NERC 1989 年事故報告本身（該報告網址回 404），也不是 Boteler 2019（付費）。『SVC 因諧波跳脫』原文用 It is surmised（推定）。電場是用假設的地面導電率由磁場換算的（另一組導電率得每公里 14 伏特），不是實測。掃描 OCR：21,500 MW 在文字層寫成『2 1,500』。 覆核 V16（2026-11-12）：limitations 加「報告沒有魁北克電網感應電流的實測；地面電場是由渥太華磁力紀錄、假設當地擾動相同並以假設導電率換算」。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/ornl-pub57561.pdf",
+        "sha256_prefix": "a087172ce2b334c3",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S59-S003",
+      "url": "https://www.nerc.com/globalassets/programs/rapa/gmd/reference-documents/may-2024-gmd-event-review.pdf",
+      "canonical_url": "https://www.nerc.com/globalassets/programs/rapa/gmd/reference-documents/may-2024-gmd-event-review.pdf",
+      "title": "May 2024 Geomagnetic Disturbance Event Review（NERC Staff Report）",
+      "publisher": "北美電力可靠度公司（NERC）",
+      "version": "2026 年 1 月（19 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 19 頁讀完（圖只讀圖說）",
+      "locator": "Summary and Objective；SWPC Notification and Operator Response；Operator-Reported BPS Impacts；Overall Observations；Table 1；How the Gannon Storm Affected Transmission Equipment；Conclusions",
+      "summary": "2024 年 5 月 10–12 日磁暴的電網端事後檢討。SWPC 在磁暴開始前 6 小時用熱線通知各可靠度協調中心（平常要等日冕物質拋射通過 L1 衛星，可能只有約 30 分鐘）；各單位啟動磁暴操作程序（延後檢修、召回停用的線路與補償設備、投入諧波濾波器與阻隔裝置）。大電網全程穩定、供應所有負載、電壓維持在限值內。量到 NERC 資料庫自 2013 年以來最高的感應電流：六個區域中五個超過 90 安培，美國最高 175.7 安培（威斯康辛，5 月 11 日 02:03 UTC 後）。影響是零星的：一座核能機組依程序降載；五部發電機受影響（皆在 NPCC，其中三部因升壓變壓器保護電驛動作而解聯不到一小時）；一支避雷器故障造成一座變電所停電 14 小時 35 分；一條 345 kV 線的諧波濾波器跳脫；中大西洋一台 SVC 在電流尖峰時意外跳脫、500 kV 系統電壓掉約 2%。5 月 10 日在 2024 年的每日嚴重度指標排第 68。報告自己提醒這場磁暴比 1989 年 3 月那一場弱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "NERC 是產業自律的可靠度機構，資料來自業者申報；報告自己寫明部分 GIC 資料品質不佳、沒有加拿大業者的 GIC 資料、SVC 與電容器組不在停電統計系統內、只有一個區域申報發電機受影響『出乎意料』。『五個 CME』與『至少七個』兩種說法並存。文中一處把比較年份寫成 2025（應為 2024），不引用那一句。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/nerc-may-2024-gmd-event-review.pdf",
+        "sha256_prefix": "a179bd615ffebb5f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S59-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6560105/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-019-44886-w",
+      "title": "Effect of grinding, extraction time and type of coffee on the physicochemical and flavour characteristics of cold brew coffee（Cordoba、Pataquiva、Osorio、Moreno、Ruiz）",
+      "publisher": "Scientific Reports 9:8440（2019，CC BY）；哥倫比亞 La Sabana 大學",
+      "version": "2019",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+      "reading_scope": "摘要、結果第一節、表 1 的前幾列、感官方法讀完；揮發物分析未讀",
+      "locator": "Abstract；Results（Fig.1–2 敘述、Table 1–2 敘述）；Methods: Sensory evaluation、Cold brew and hot brew experiments",
+      "summary": "冷泡（20 °C 浸泡，60 克粉對 700 克水）的 2×2×2 設計：研磨（中 501–700 µm、粗 701–900 µm）、時間（14、22 小時）、兩款哥倫比亞精品豆。統計上研磨是影響理化參數最大的因子，其次是時間；粗研磨加 22 小時的 TDS 與萃取率最高。感官由三位受訓評審（一女二男）評分：整體印象分數最高的是粗研磨加 14 小時。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "感官評審只有三人，不能當成一般人喝得出來的證據；『粗研磨萃取率較高』與一般預期相反，作者沒有給出機制的檢驗；冷泡、兩款豆。只當作 F13-005 的旁證，不單獨撐轉折。DOI 10.1038/s41598-019-44886-w。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/europepmc-PMC6560105-fulltext.xml",
+        "sha256_prefix": "5b8e404ffd14b817",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S59-S005",
+      "url": "https://hal.umontpellier.fr/hal-02990349/document",
+      "canonical_url": "https://doi.org/10.9753/icce.v34.sediment.50",
+      "title": "Typhoons driven morphodynamics of the Wan-Tzu-Liao sand barrier (Taïwan)（Campmas、Bouchette、Meulé、Petitjean、Sous、Liou、Leroux-Mallouf、Sabatier、Hwung）",
+      "publisher": "第 34 屆國際海岸工程研討會論文集（ICCE 2014，Coastal Engineering Proceedings 34, sediment.50，CC BY）；法國蒙彼利埃大學等與成功大學水工試驗所；HAL 典藏",
+      "version": "2014（HAL 2020 年存入，14 頁）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "全文 14 頁讀完（圖只讀圖說）",
+      "locator": "摘要；Settings；Methodology；Results 兩節；Discussion；Conclusion",
+      "summary": "台南七股潟湖外的頂頭額沙洲（Wan-Tzu-Liao）北段一段 200 公尺長的灘：2011 年 11 月到 2012 年 9 月做了 20 次地形測量（冬季每週、夏季每個颱風前後各一次，RTK-GPS），並有七股浮標、近岸剖面儀與壓力計。觀測到的八個颱風裡最強的泰利（2012 年 6 月）外海示性波高 10.34 公尺：沙丘腳後退 6.7 公尺、沙丘最低處沖出 20 公尺寬的缺口、沙被帶進潟湖；但整段沙洲的沙量是增加的（+1,920 立方公尺），灘線向海推了 8 公尺。整個颱風季是堆積（約 +3,556 立方公尺、灘線向海約 10.4 公尺）；冬季季風期才是侵蝕（約 −4,995 立方公尺、灘線後退 28.9 公尺），作者歸因於 20 次外海波高超過 2 公尺的中等風暴接連而來、灘來不及回復。全年沙洲向陸移 18.5 公尺、淨損約 1,439 立方公尺。作者提醒：這比 1999–2009 年的後退速率（每年 25 與 48 公尺）小，2011/12 可能是少見的一年。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "研討會論文，非期刊同儕審查；只有一年、一段 200 公尺的灘。內文數字前後不一：誤差在摘要寫 ±1,071、正文寫 ±912 立方公尺；全年位移 18.4 與 18.5 公尺；摘要寫 7 個月監測、方法寫 2011 年 11 月到 2012 年 9 月；泰利在標題稱颱風、內文稱熱帶風暴。泰利的淨增量 +1,920 的誤差與量值同級。沙是從水下哪裡來的沒有測（沒有水下地形）。 覆核 V16（2026-11-12）：title 與 limitations 補記：Wan-Tzu-Liao sand barrier 是七股潟湖外的網仔寮汕，不是頂頭額汕；limitations 加「只測出水的灘與沙丘，沒有水下地形；颱風季沙丘本身仍後退 15.06 公尺」。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/campmas-hal-02990349.pdf",
+        "sha256_prefix": "a13fff02ce88f927",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S59-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10708577/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/s23239337",
+      "title": "Siamese Unet Network for Waterline Detection and Barrier Shape Change Analysis from Long-Term and Large Numbers of Satellite Imagery（Chang、Chen、Jhang、Liou）",
+      "publisher": "Sensors 23(23):9337（2023，MDPI，CC BY）；陽明交通大學土木系；國家海洋研究院計畫 NAMR110004",
+      "version": "2023",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）Europe PMC fullTextXML；本機 XML 快取，去標籤後讀",
+      "reading_scope": "摘要、引言、3.2–3.5、4.1、結論讀完；網路架構與訓練細節略讀",
+      "locator": "Abstract；3.3 Separation of the Southern End；3.4 L-Shaped End；3.5 Change in the Land Area；4.1；Conclusions",
+      "summary": "用 2004–2021 年 207 張高解析衛星影像判讀雲嘉外海外傘頂洲的水線。挑潮位在平均海水面 ±15 公分內的 42 張算陸地面積：對時間近似一條下降的直線，每年約減少 0.344 平方公里（相關係數 0.864、均方根誤差 0.99 平方公里），與先前研究的 0.378 接近。南端另有兩種來回的變化：尾段與主體被水道隔開（2005、2006、2009、2013–2018、2021 年出現，水道底常在夏末刷深、之後回淤）；2017 年底起出現 L 形尾端，長度夏天變短、冬天變長。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "主題是影像判讀方法，地形結論是附帶的；作者說南端急彎的出現『可能與颱風波浪和季節性海流有關』，沒有檢驗。面積對潮位很敏感，選不同潮位門檻得 −0.342 到 −0.375。沒有逐場颱風前後的比較。MDPI 出版頁上一輪 403，本次讀 Europe PMC 的全文。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/europepmc-PMC10708577-fulltext.xml",
+        "sha256_prefix": "e7f62dd76848b13d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S59-S007",
+      "url": "https://icce-ojs-tamu.tdl.org/icce/article/download/12659/11932/38902",
+      "canonical_url": "https://icce-ojs-tamu.tdl.org/icce/article/download/12659/11932/38902",
+      "title": "Topographic Response to High Waves and Subsequent Beach Recovery on Chigasaki Coast（Tamura、Ishikawa、Uda、Serizawa）",
+      "publisher": "國際海岸工程研討會論文集（ICCE，Coastal Engineering Proceedings，開放取用，14 頁）",
+      "version": "2022–2023 年會議論文（文中資料到 2022 年）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "摘要、引言、觀測一節讀完；數值模式（BG model）部分只讀設定與結論",
+      "locator": "Abstract；Topographic changes immediately after storm events and recovery…；Conclusions",
+      "summary": "日本神奈川縣茅崎海岸（2005 年起每年養灘約 3 萬立方公尺）：2007 年第 9 號與 2017 年第 21 號颱風的大浪後，水深 3 公尺以內的海底被快速侵蝕、沙搬到水深 3–5 公尺處堆成沙洲；之後在平常的小浪下一到兩年內回復，2017 年那次約 454 天後緩坡剖面恢復到颱風前。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "養灘中的人工海灘，不是天然海岸；會議論文；回復到『原來的剖面』是作者對測線的判讀。只支持『大浪搬走的沙未必離開這一段』這一點。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/icce-tamura-chigasaki-12659.pdf",
+        "sha256_prefix": "7991404d6b3fc203",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S59-S008",
+      "url": "https://pubs.usgs.gov/tm/3a22/pdf/tm3a22.pdf",
+      "canonical_url": "https://pubs.usgs.gov/tm/3a22/pdf/tm3a22.pdf",
+      "title": "Measuring Discharge with Acoustic Doppler Current Profilers from a Moving Boat（Mueller、Wagner、Rehmel、Oberg、Rainville；Techniques and Methods 3–A22，version 2.0）",
+      "publisher": "美國地質調查局（USGS）",
+      "version": "2013 年 12 月（version 2.0）",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（工具預設標頭）；本機快取，pdftotext 轉文字後讀",
+      "reading_scope": "定點閱讀：Compass Considerations（p.10）、Boat Operation（p.32）、Appendix B 的磁偏角與 GPS 段（p.58–59）、Appendix F 的 Incorrect Magnetic Variation 一節；其餘未重讀",
+      "locator": "p.10 Compass Considerations；p.32；Appendix B p.58–59；Appendix F p.78–81",
+      "summary": "以底追蹤為船速參考時，羅盤的航向誤差只會把水速方向轉一個角度，流量不受影響；改用 GPS 等外部參考時，航向誤差會同時影響水速與流量，影響與船速成正比，所以用 GPS 時船要盡量慢。內建羅盤校正良好時約準到 1–2 度，磁偏角也可能與模式值不同，2 度的誤差是合理會發生的；結果是『方向性偏差』：由左岸往右岸量的流量一直與反方向量的不同。差距在約 5% 以內時，取往返成對的平均會接近真值；需要調整磁偏角超過 2 度，表示羅盤沒校好或磁偏角輸入錯。鐵殼船或鋼構橋墩附近羅盤可能不能用。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與池中 SRC-87ae7733e9e523c7 同一頁（同一份 PDF）。這是作業手冊的分析性說明與處置門檻，沒有附任何一筆 GPS 參考量錯的實測數據；『約 5%』是處置門檻不是量到的偏差。 覆核 V16（2026-11-12）：reading_scope 加「Appendix F Step 8 與圖 F-21（報告頁 89，PDF 第 107 頁；圖是畫面截圖，文字層沒有，須轉圖檔目讀）」；limitations 的「沒有附任何一筆 GPS 參考量錯的實測數據」改為「圖 F-21 有一個例子：以 GGA 為參考的四趟往返，與平均的差為 −4.82%、+7.40%、−9.47%、+6.89%；沒有交代地點、日期，也沒有對照的真值」。",
+      "author_cache": {
+        "file": "scratchpad/stw9/f13src/usgs-tm3a22.pdf",
+        "sha256_prefix": "55433a014cc47a53",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S59-001",
+      "question": "2022 年那 38 顆星鏈衛星，是在多高的地方、遇到密度增加多少才掉下來的？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.starlink_2022_insertion_altitude_density",
+      "answer_target": "它們還在很低的暫時軌道上。NOAA 太空天氣預報中心與 SpaceX 人員合寫的檢討指出：這批 49 顆衛星被送進近地點 210 公里、遠地點 350 公里的軌道，原定之後再升到 550 公里。2 月 3、4 兩天，Kp 指數各有約 6 小時達到 5，照預報中心的分級只是輕微等級，預報中心事前也發過 G2、G1 的守視。預報中心作業中的物理模式算出，200 到 400 公里高度的空氣密度增加了 50% 到 125%；同一時刻在 210 公里，SpaceX 估阻力所用的經驗模式的異常圖最多只顯示約 20%，沿著存活衛星的軌道比較，物理模式的密度在近地點比經驗模式高約 40% 到 80%。文中另寫：團隊發射前依經驗模式預期密度增加約五成，但擾動一直拖到 2 月 5 日凌晨。SpaceX 只來得及讓 11 顆轉成阻力最小的安全姿態，其餘 38 顆抵不過阻力。作者指出，預報中心當時沒有專門針對衛星阻力的警報。",
+      "scope": "密度增幅是模式算的，不是量到的；作者群包含模式的開發者與 SpaceX 員工。「最多約 20%」是某一時刻、某一高度經驗模式相對十日平均的異常，「預期約五成」是團隊發射前對預報磁暴的估計，兩個數字基準不同、原文並列沒有調和，旁白不得寫成「SpaceX 以為只會增加兩成」，也不要把兩者相減。本文用 Kp 稱這場磁暴「輕微到中等」，池中 S58-005 依 Dst 稱「中等」，旁白擇一並說明指標。不說「如果在 550 公里就沒事」。",
+      "source_ids": [
+        "S59-S001"
+      ],
+      "source_locator": "Abstract；§1；§3；§4（Fig. 5–6 的文字敘述）",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：軌道高度與磁暴等級 0.5、密度增幅與兩種模式的落差 1。補 S58-NA001 與 C4-07 缺口（1）。與 S58-005 不重複：S58-005 只有 Dst 與『恢復期』，沒有高度與密度數字。去重：pool.json 查『210 公里』『Starlink』『星鏈』無同答案核心。 原提案 F13-001（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（1）：高度與密度增幅。數字逐句相符，只改一句把兩個不同基準的數字混成因果的話。算 1.5 條（高度與磁暴等級 0.5、兩種模式的密度落差 1），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁暴不大，但衛星正好在空氣最厚的那一層、而事前估阻力的模式低估了增幅——受害大小看的是你在哪裡。",
+        "visual": "地球剖面：210、350、550 公里三條虛線；密度色塊在低層漲一倍，衛星的近地點貼著最厚的一層。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "S59-002",
+      "question": "1989 年魁北克停電，最先跳掉的是哪一種設備？電網裡有東西壞掉嗎？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.quebec_1989_svc_harmonic_trip_sequence",
+      "answer_target": "最先跳的是穩定電壓用的靜態無效功率補償器（SVC），而且是它自己的保護裝置把它切開的。橡樹嶺國家實驗室 1991 年的技術報告整理了經過：報告推定，地磁感應出的準直流電流讓變壓器鐵心飽和，飽和的變壓器產生諧波；諧波流進 SVC 的電容器組，保護裝置判定過載。凌晨 2:44:17 第一台跳脫，到 2:45:16 第七台，一分鐘內七台全失；約 8 秒後 735 千伏的輸電線因電壓過低開始跳脫，系統分離，約 21,500 百萬瓦的發電全數脫離。有東西壞：報告列出 La Grande 4 的兩台升壓變壓器、幾處避雷器、一台電抗器和一台 SVC 變壓器，並把這些歸到系統分離之後的過電壓；另有 SVC 的閘流體與電容器組受損，報告沒有寫原因。復電分段進行，九個小時回到 83%。",
+      "scope": "1991 年的回顧報告，資料來自魁北克水電與當時文獻，不是 NERC 1989 年事故報告本身，也不是 Boteler 2019。「SVC 因諧波跳脫」原文是推定語氣（It is surmised），旁白要保留「報告推定」。地面電場約每公里 10 伏特是由渥太華的磁力紀錄、假設當地擾動相同並用假設的地面導電率換算的（另一組假設得 14），不是實測，只可用一句並標明估算。報告沒有魁北克電網上感應電流的實測值。不寫「設備不是被感應電流燒壞的」。",
+      "source_ids": [
+        "S59-S002"
+      ],
+      "source_locator": "§2.2.5（p.16–17）；§3.8（p.34–37）；Executive Summary",
+      "premise_status": "screened",
+      "notes": "算 2 條：跳脫順序與時間 1、損壞的來源與復電進度 0.5、電場估算 0.5。補 C4-07 缺口（2）。與 S58-004 不重複：S58-004 是電力公司自述的『保護系統被觸發、不到一分鐘』，沒有設備種類、時間序列、損壞清單與電場；並改正上一輪被刪的『設備沒壞』：設備有損壞，但來自分離後的過電壓。N269 只有一句機制。去重：查『SVC』『補償器』『魁北克』無同答案核心。 原提案 F13-002（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；以 ORNL-6665 取代上一輪點名的 NERC 1989 年報告或 Boteler 2019：可以接受。它是美國能源部國家實驗室的技術報告，逐秒的跳脫序列、設備種類、損壞清單與復電進度都有，補上了上一輪轉折一缺的「哪一類設備先跳」；缺的是「感應電流多大」，只有換算的地面電場。算 1.5 條（設備與時間序列 1、損壞來源與復電分段 0.5）；電場是假設導電率的換算，不另計。作者算 2 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是太陽把電網燒掉：是電網的保護裝置各自做了對的事，一分鐘內接連把穩壓設備切掉，整個系統才撐不住。",
+        "visual": "時間軸：2:44:17 起七個紅點在一分鐘內依序熄滅，8 秒後幾條 735 千伏線變灰；旁邊一顆變壓器的電流波形被壓歪。",
+        "seconds": [
+          75,
+          95
+        ]
+      }
+    },
+    {
+      "id": "S59-003",
+      "question": "2024 年 5 月那場二十年來最強的磁暴，北美的電網實際上發生了什麼？",
+      "domain": "太空天氣",
+      "mechanism_key": "space_weather.may_2024_nerc_grid_review_isolated_impacts",
+      "answer_target": "電網量到了資料庫裡最大的感應電流，但整個大電網沒有垮。北美電力可靠度公司 2026 年 1 月的事後檢討寫：太空天氣預報中心在磁暴開始前 6 小時就用熱線通知各區調度（平常要等太陽拋出的物質通過上游衛星，可能只剩約 30 分鐘），各單位延後檢修、把停用的線路與補償設備叫回來、投入諧波濾波器。磁暴期間量到資料庫自 2013 年以來最高的感應電流，六個區域裡五個超過 90 安培，美國境內最高是威斯康辛一處的 175.7 安培。影響是零星的：一座核能機組依程序降載，三部發電機因升壓變壓器的保護電驛動作而解聯不到一小時，一支避雷器故障讓一座變電所停了 14 小時 35 分，中大西洋一台穩壓設備在電流尖峰時跳脫、電壓掉約 2%。報告的說法是大電網維持穩定、相連，並供應所有負載；5 月 10 日在 2024 年全年的每日嚴重度排名是第 68。報告也提醒：這場磁暴比 1989 年 3 月那一場弱。",
+      "scope": "NERC 的資料來自業者申報，報告自己說部分資料品質不佳、沒有加拿大業者的感應電流資料、補償設備的停用不在統計系統內，只有一個區域申報發電機受影響「出乎意料」。「2013 年以來最高」是 NERC 資料庫的範圍，不是歷史紀錄。不能說成「準備好了所以沒事」的因果；也不能說「比 1989 年強卻沒事」，報告明說 2024 年較弱。",
+      "source_ids": [
+        "S59-S003"
+      ],
+      "source_locator": "Summary and Objective；SWPC Notification…；Operator-Reported BPS Impacts；Overall Observations；Table 1；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：最高感應電流與零星影響 1、提前 6 小時通知與第 68 名 0.5。補 C4-07 缺口（3）。S58-006 是 NASA 的事件說明（G5、極光、ICESat-2），沒有電網端資料；本核心補上後，S58-006 可只留事件強度一句。去重：查『Gannon』『175』『NERC』無同答案核心。 原提案 F13-003（目標 C4-07，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補上上一輪點名的缺口（3）：2024 年 5 月電網端的事後檢討。數字逐項相符；只把「有紀錄以來最大」「沒有停電」改回原文的範圍與說法。算 1.5 條（最高感應電流與零星影響 1、提前六小時與全年第 68 名 0.5），同意作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種機制（變壓器飽和、諧波、保護跳脫）這次也出現了，只是停在零星幾處——強度指數最高的一次，不是後果最重的一次。",
+        "visual": "北美地圖上散著幾個小黃點（降載、跳脫、一支避雷器），旁邊一根 175.7 安培的柱子標『2013 年以來最高』；右下角一行『全年第 68 名』。",
+        "seconds": [
+          70,
+          90
+        ]
+      }
+    },
+    {
+      "id": "S59-004",
+      "question": "七股潟湖外面那道沙洲量了一年，沙是颱風打掉的，還是哪一季少的？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.cigu_barrier_typhoon_season_accretion_monsoon_erosion",
+      "answer_target": "量的那一年，出水的灘是冬天瘦的，颱風季反而長回來。法國幾所大學與成功大學水工試驗所在七股潟湖外的網仔寮汕選了一段 200 公尺的灘，2011 年底到 2012 年夏末測了 20 次地形：冬天每週一次，夏天在每個颱風前後各一次。那年最強的是 2012 年 6 月的泰利，外海浪高超過 10 公尺：沙丘腳退了 6.7 公尺，沙丘最低的地方被沖出 20 公尺的缺口，沙被帶進潟湖——可是整段出水的沙量算起來沒有減少，灘線還向海推了 8 公尺；作者推測是原本在水下的沙被推上灘，但水下沒有測。整個颱風季，灘面是淨堆積、灘線向海約 10 公尺，沙丘則持續後退；冬季東北季風期才是淨侵蝕，灘線後退將近 29 公尺，作者歸因於外海浪高超過 2 公尺的中等風暴來了 20 次，平均一個月三次多，灘來不及在兩次之間長回來。全年下來沙洲向陸移了約 18 公尺。作者也提醒：這比之前十年每年 25 到 48 公尺的後退慢，這一年可能不典型。",
+      "scope": "研討會論文（ICCE 2014），一年、一段 200 公尺的灘，不能代表整條沙洲或其他年份；作者自己說這一年少見。只測出水的灘與沙丘，沒有水下地形，「沙從水下來」是推論，「沙量增加」只指出水的部分。內文數字前後有出入（誤差 ±1,071 與 ±912、全年 18.4 與 18.5 公尺、監測 7 個月與 2011 年 11 月到 2012 年 9 月），泰利那次的淨增量誤差與量值同級，旁白只說「沒有減少」，不報立方公尺。地名用網仔寮汕，不是頂頭額汕。不得寫成「颱風對海岸有益」或「台灣的沙洲都是冬天退的」。",
+      "source_ids": [
+        "S59-S005"
+      ],
+      "source_locator": "摘要；Results 兩節；Discussion；Decadal tendency",
+      "premise_status": "screened",
+      "notes": "算 2 條：單一颱風（丘腳退、缺口，但淨沙量未減）1；季節收支（颱風季堆積、季風期侵蝕與 20 次中等風暴）1。這是 C4-04 翻案條件點名的台灣在地觀測（缺口 1），正好回答『颱風一次打掉還是逐季退』。去重：查『七股』『頂頭額』『沙洲』——E11006、E11007 是美國國家公園署的通論頁，S56 系列是別題，無同答案核心。 原提案 F13-011（目標 C4-04，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；這是 C4-04 翻案條件點名的台灣在地觀測；上一輪覆核明列「開放全文的學術調查，例如外傘頂洲、七股沙洲」可以算，所以種類上符合。但它只有一年、一段、作者自稱不典型，數字又有內部出入，所以從嚴：算 1.5 條（單一颱風的丘腳後退與缺口、出水沙量未減 1；季節收支 0.5），作者算 2 條。另改正沙洲名稱、補上「只測出水部分」與「颱風季沙丘也在退」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來最兇的那一場把沙丘咬了一口，帳面上沙卻沒少；把沙洲往後推的，是冬天一個月來三次的普通風浪。",
+        "visual": "同一條灘的剖面三格：颱風前、颱風後（丘腳後退、缺口，但灘面墊高）、冬末（整條後退）；下方一條帳本曲線夏天往上、冬天往下。",
+        "seconds": [
+          85,
+          105
+        ]
+      }
+    },
+    {
+      "id": "S59-005",
+      "question": "外傘頂洲從衛星上看了十七年，面積怎麼變？南端又發生了什麼？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.waisanding_barrier_area_linear_decline_satellite",
+      "answer_target": "十七年的整體趨勢是變小，每年約少 0.34 平方公里。陽明交通大學的團隊判讀 2004 到 2021 年共 207 張高解析衛星影像的水線，挑出拍攝時潮位接近平均海水面的 42 張來算露出水面的面積，用一條直線去配：斜率是每年少約 0.34 平方公里，和先前研究的 0.38 接近。這 42 個點散在直線兩側約 1 平方公里，所以這份資料看得出長期變小，看不出每一年、每一場颱風各少了多少。在整體趨勢之外，南端還有來回的變化：尾段有幾年被一條水道和主體隔開（2013 年夏末後刷深，2017 年冬天又淤回來），2017 年底起尾端彎成 L 形，夏天變短、冬天變長。",
+      "scope": "這篇的主題是影像判讀方法，地形是附帶結果；直線是擬合，不是「證明等速」。面積很吃潮位，換不同潮位門檻斜率在 0.34 到 0.38 之間。沒有逐場颱風前後的比較，作者對南端變化只說「可能與颱風波浪和季節海流有關」。不得用這一篇說「外傘頂洲不是被颱風咬掉的」，也不外推「哪一年消失」。",
+      "source_ids": [
+        "S59-S006"
+      ],
+      "source_locator": "Abstract；§3.3–3.5；§4.1；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1 條（長期近線性減少 0.5、南端季節性來回 0.5）。補 C4-04 缺口（1）的第二份台灣資料，補的是長期這一側。去重：查『外傘頂洲』無核心。 原提案 F13-012（目標 C4-04，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補的是台灣資料的長期一側。數字都在，但作者的問法與 turns 裡的用法（「十七年一條斜線，所以看到突然的變化不能倒推突然的事件」）超過這篇能說的：直線是擬合的假設。改問題與答案，只留「長期變小的速率」與「南端季節性來回」兩件事。算 1 條（長期速率 0.5、南端水道與 L 形的季節變化 0.5），同意作者的條數、不同意作者的用法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "長期看是一條斜線，不是幾級台階——找不到『那一場颱風』。",
+        "visual": "十七年的面積點連成一條緩緩下降的線；旁邊南端的小圖在夏冬之間一伸一縮。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S59-006",
+      "question": "颱風把灘上的沙捲走以後，那些沙去了哪裡？會回來嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.chigasaki_storm_offshore_bar_recovery_454_days",
+      "answer_target": "在日本茅崎海岸的測線上，沙只搬到外面一點，一年多後剖面回到原樣。研究者比較 2007 年與 2017 年兩次颱風前後的水下地形：水深 3 公尺以內的海底被快速刮低，沙堆到水深 3 到 5 公尺的地方；之後剖面慢慢回復，2007 年那次約一年，2017 年那次大約 454 天後緩坡回到颱風前的樣子，作者歸因於平常小浪把沙推回岸邊。",
+      "scope": "茅崎是 2005 年起每年人工補沙約 3 萬立方公尺的養灘海岸，回復期間補沙沒有停，其間還有兩次浪高超過 4 公尺的大浪；會議論文、兩次事件、一條測線。只用來說明「被大浪搬走」不等於「離開這段海岸」，不外推到台灣或沙洲，也不說「一年就會自己長回來」。",
+      "source_ids": [
+        "S59-S007"
+      ],
+      "source_locator": "Abstract；觀測一節；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 1 條。補 C4-04 缺口（2）：有逐次測量的風暴侵蝕與之後回復。若覆核認為養灘海岸不宜，可降為 0.5 條。去重：查『茅崎』『回復』無同答案核心。 原提案 F13-013（目標 C4-04，原角色 segment；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；補的是上一輪缺口（2）「有逐次測量的風暴侵蝕與之後回復」，但場址是持續養灘的人工灘，回復不能乾淨地歸給自然過程。照作者自己提的備案降為 0.5 條，片中只當一句旁證。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大浪做的是『搬』，不一定是『拿走』：沙停在幾公尺深的地方等著被小浪送回來。",
+        "visual": "剖面圖：颱風後近岸凹下去、外側鼓起一道沙洲；日曆翻過 454 天，剖面線疊回原來的位置。",
+        "seconds": [
+          35,
+          50
+        ]
+      }
+    },
+    {
+      "id": "S59-007",
+      "question": "把船速的參考從河床換成 GPS 以後，流量的準不準改成看船上的哪一個零件？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.gps_reference_heading_error_directional_bias",
+      "answer_target": "看羅盤。美國地質調查局的作業手冊說明：用底追蹤當參考時，羅盤的航向誤差只會把算出來的水流方向整個轉一個角度，流量不受影響；一換成 GPS，航向誤差就會直接進到水速與流量裡，而且影響和船速成正比。內建羅盤校正得好也只準到 1 到 2 度，當地的磁偏角又可能和模式值不同；它的樣子是「方向性偏差」——從左岸開到右岸量到的流量，一直和反方向量到的不一樣。手冊附了一個磁偏角輸入錯誤的例子：同一個斷面來回四趟、以 GPS 為參考，從右岸出發的兩趟比四趟平均低 4.82% 和 9.47%，從左岸出發的兩趟高 7.40% 和 6.89%。手冊的處置是：往返的差距在約 5% 以內時取成對平均，就接近真值；超過就回頭調整磁偏角，需要調超過 2 度則表示羅盤沒校好或數值輸入錯。鐵殼船或鋼構橋墩旁，羅盤可能根本不能用。",
+      "scope": "圖 F-21 是手冊裡的一張軟體畫面，沒有交代地點、日期與儀器，也沒有底追蹤或其他方法的對照，真值不明；它示範的是「方向性偏差長什麼樣子」，四個百分比是相對四趟平均，不是相對真值，旁白要說「手冊的例子裡」。不得把往與返相減另算一個差距，不得寫成「GPS 參考會差 5% 到 9%」。「約 5%」是處置門檻，不是量到的偏差。",
+      "source_ids": [
+        "S59-S008"
+      ],
+      "source_locator": "p.10 Compass Considerations；p.32；Appendix B p.58–59",
+      "premise_status": "screened",
+      "notes": "算 1 條。覆核 still_missing 第（1）項要的是『量測』；這份手冊裡找到的是機制與門檻，沒有實測，所以只補到說法、沒有補到數據。與 S57-004（GPS 在樹冠峽谷的限制、迴圈閉合差）不重複；與 S58-003（亞馬遜例外的理由是羅盤誤差）相接。與池中 SRC-87ae7733e9e523c7 同一份文件。 原提案 F13-015（目標 G35，原角色 turn；依本池欄位記為 segment）。非作者覆核 V16（2026-11-12）改字後收；上一輪 still_missing 第（1）項要的是「池中已有來源 USGS TM 3-A22 裡，以 GPS 為參考時羅盤誤差、磁偏角造成流量偏差的量測」。作者只讀文字層，回報「手冊裡沒有實測」；實際上圖 F-21 就是，覆核目讀後補進答案。算 1 條（機制與處置門檻 0.5、手冊實例 0.5）；例子沒有地點與真值，不多算。與池中 SRC-87ae7733e9e523c7 是同一份文件。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "參考從河床換到衛星，弱點就從河床搬到羅盤：GPS 知道船往哪裡移，卻不知道儀器朝哪裡看。",
+        "visual": "俯視圖：船來回各開一趟，兩趟算出的流量柱一高一低；船上的羅盤指針偏 2 度，水流箭頭跟著歪。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "S59-NA001",
+      "question": "端對端加密的群組裡，伺服器能不能自己把人加進群組？",
+      "existing_ids": [
+        "T58-NA001",
+        "T57-009",
+        "T58-002"
+      ],
+      "source_ids": [],
+      "reason": "Albrecht、Dowling、Jones（Eurocrypt 2025）全文仍讀不到：eprint.iacr.org/2025/794.pdf 與存檔版本 403、King's College 典藏 PDF 403、ACM 頁 403、作者網站猜測網址 404；搜尋到的 appliedcryptography.page/papers/whatsapp-groups.pdf 回的是課程首頁（只有書目）。不寫核心。 原提案 F13-NA001。",
+      "reentry_condition": "讀到該論文全文（第 3、7 節）或 Rösler 等 2018 全文。",
+      "reading_status": "403／404，未讀"
+    },
+    {
+      "id": "S59-NA002",
+      "question": "1989 年磁暴的現代重建：太陽風多快、哪一段磁場造成停電的那一下？",
+      "existing_ids": [
+        "S58-004"
+      ],
+      "source_ids": [
+        "S59-S002"
+      ],
+      "reason": "Boteler 2019（Space Weather，10.1029/2019SW002278）OpenAlex 標為非開放，Wiley 回 403；NERC 1989 年事故報告的舊網址（NERC 2026 年報告註 15 仍引用）回 404。1989 年的技術內容改由 ORNL-6665 補上（F13-002），這兩份沒有讀。 原提案 F13-NA002。",
+      "reentry_condition": "讀到 Boteler 2019 或 NERC 1989 年報告全文。",
+      "reading_status": "403／404，未讀"
+    },
+    {
+      "id": "S59-NA003",
+      "question": "以 GPS 為參考時，流量實際量錯多少？",
+      "existing_ids": [
+        "S57-004",
+        "S58-003"
+      ],
+      "source_ids": [
+        "S59-S008"
+      ],
+      "reason": "USGS TM 3-A22 裡只有機制與處置門檻（已寫成 F13-015），沒有實測數據；Wagner & Mueller 2011（J. Hydrology）本輪未再請求（上一輪付費／403）。 原提案 F13-NA004。",
+      "reentry_condition": "讀到一份有往返流量差實測的報告（例如 Wagner & Mueller 2011 全文）。",
+      "reading_status": "手冊已讀，無實測"
+    },
+    {
+      "id": "S59-NA004",
+      "question": "水利署或地調所的海岸監測報告：台灣哪一段岸線是颱風打掉的、哪一段是逐年退的？",
+      "existing_ids": [],
+      "source_ids": [
+        "S59-S005",
+        "S59-S006"
+      ],
+      "reason": "搜尋找到的主管機關文件沒有讀到可用全文：台江國家公園管理處兩份 PDF 連結回的是網頁不是檔案，中國工程師學會的檔案連線被重設；水利署館藏頁只有書目。本輪的台灣資料來自兩篇開放論文（成大水工所合著的研討會論文、陽明交大的期刊論文），不是主管機關報告。 原提案 F13-NA005。",
+      "reentry_condition": "讀到水利署海岸基本資料監測或台江國家公園沙洲監測報告全文。",
+      "reading_status": "未取得全文"
+    }
+  ]
+}

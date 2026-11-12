@@ -1,0 +1,1250 @@
+{
+  "batch_id": "wave66-life-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第十六輪從零研究的新長題：番茄桃子放冰箱為什麼不好吃（C12-02，作者 F27，覆核 V30）、鳥蛋為什麼一頭尖一頭鈍（C13-01）、蝸牛殼為什麼大多往右轉（C13-02）（作者 F28，覆核 V31），都留後備。",
+  "sources": [
+    {
+      "id": "L66-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5098663",
+      "canonical_url": "https://doi.org/10.1073/pnas.1613910113",
+      "title": "Chilling-induced tomato flavor loss is associated with altered volatile synthesis and transient changes in DNA methylation",
+      "publisher": "Zhang B, Tieman DM, Jiao C, Xu Y, Chen K, Fei Z, Giovannoni JJ, Klee HJ.（佛羅里達大學 Klee 研究室與康乃爾大學、浙江大學）／Proceedings of the National Academy of Sciences of the United States of America",
+      "version": "期刊正式全文（PMC）；Proceedings of the National Academy of Sciences of the United States of America 113(44):12580-12585, 2016；授權 未標示",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出此 PMC 頁，curl 取得 HTML（預設標頭），轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results「Cold Storage Influences Flavor-Related Volatiles」兩段（1/3/7 d、−65%、P<0.03、糖酸不變）；「Expression of Genes Related to Volatile Synthesis」；「DNA Methylation Dynamics」（30,918 DMRs）；Discussion 第 2–3 段（蒂疤擴散、MHO 與 geranial 上升）",
+      "summary": "紅熟番茄（Ailsa Craig、FLA 8059）5°C 冷藏 1、3、7 天：1 或 3 天香氣物質沒有顯著損失，7 天顯著下降；冷藏 8 天的香氣總量比採收當天少 65%；回到 20°C 一天後仍顯著偏低。冷藏 7 天加回溫 1 天的番茄，消費者整體喜好顯著較低（P<0.03）。葡萄糖、果糖、蘋果酸、檸檬酸沒有顯著差異。香氣合成酵素基因轉錄量下降，部分回溫一天回升、AAT1 沒回來；兩種茄紅素裂解來的香氣（MHO、geranial）反而上升，作者推測是非酵素氧化。啟動子 DNA 甲基化在冷藏時上升，回溫一天回到接近原狀。作者並說香氣會從蒂疤擴散出去，必須持續補充。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "PNAS 正式全文，經搜尋結果列出的 PMC 頁以 curl 取得 HTML；Europe PMC REST 對此篇回 500（非 OA 子集）、europepmc.org PDF 與 doi.org 回 Cloudflare 403，未繞過。「12°C 以下香氣合成受影響」是引前人，不算本文發現。 覆核 V30（2026-11-12）：author_cache 註明：pmc.ncbi.nlm.nih.gov 為動態頁，2026-11-12 以 curl -L 重抓（301 轉到結尾斜線同頁）HTML sha256 前綴 8f980437afbddd15，<article> 內文 52,099 字與快取逐字相同；summary 註「65%、消費者試驗（76 人）與糖酸只限 Ailsa Craig」。",
+      "author_cache": {
+        "file": "f27src/PMC5098663.html",
+        "sha256_prefix": "30f6b0ed412fd04c",
+        "text_file": "f27src/PMC5098663.txt",
+        "text_sha256_prefix": "af4e7cf3242c06bd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8322768/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fpls.2021.685416",
+      "title": "Transcriptome Responses of Ripe Cherry Tomato Fruit Exposed to Chilling and Rewarming Identify Reversible and Irreversible Gene Expression Changes",
+      "publisher": "Hunter DA, Napier NJ, Erridge ZA, Saei A, Chen RKY, McKenzie MJ, O'Donoghue EM, Hunt M, Favre L, Lill RE, Brummell DA.（紐西蘭植物與食品研究所（Plant & Food Research））／Frontiers in plant science",
+      "version": "期刊正式全文（PMC）；Frontiers in plant science 12:685416, 2021；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 2 段（12°C、轉回 20°C 才出現症狀的轉述）；Results 品質段（4°C 27 d＋20°C 6 d）",
+      "summary": "紅熟櫻桃番茄 Angelle 在 10°C 或 4°C 存 27 天再放 20°C 6 天：4°C 組軟化加快並出現粉質（mealiness），10°C 組沒有。細胞壁分解酵素的基因在 10 與 4°C 都被壓低，作者推論 4°C 的加速軟化與細胞壁酵素無關、可能來自膨壓下降。4°C 一天內抗氧化與熱休克蛋白基因大增（10°C 沒有），回溫後可逆；細胞壁相關基因的變化多半不可逆。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "一個品種、已紅熟採收，作者說此品種相對耐冷；膨壓是推論。",
+      "author_cache": {
+        "file": "f27src/PMC8322768.xml",
+        "sha256_prefix": "bc9a20690a84baae",
+        "text_file": "f27src/PMC8322768.txt",
+        "text_sha256_prefix": "257693c51e757077",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9493348/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fpls.2022.991983",
+      "title": "Physiological genetic variation in tomato fruit chilling tolerance during postharvest storage",
+      "publisher": "David S, Levin E, Fallik E, Alkalai-Tuvia S, Foolad MR, Lers A.（以色列農業研究組織 Volcani 中心（Lers A））／Frontiers in plant science",
+      "version": "期刊正式全文（PMC）；Frontiers in plant science 13:991983, 2022；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Materials（1.5°C 14 d＋20°C 3 d、對照 12°C）；Results Fig. 1 段（148 系差異）；weight loss 段（1.5–2% vs 3–6%）；chlorophyll fluorescence 段（Fv/Fm 0.7–0.8 vs 0.25–0.65）",
+      "summary": "栽培番茄（怕冷）與野生醋栗番茄（耐冷）雜交出 148 個重組自交系，綠熟果 1.5°C 存 14 天再 20°C 3 天：受害程度從像野生親本到像栽培親本都有。14 天後耐冷系失重約 1.5–2%，怕冷系 3–6%；冷藏 5 天時葉綠素螢光 Fv/Fm 耐冷系約 0.7–0.8、怕冷系 0.25–0.65，在肉眼看到傷害前就分得出來。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綠熟果、1.5°C 比家用冷藏更冷；育種群體不是市售品種。 覆核 V30（2026-11-12）：summary 補「失重與 Fv/Fm 數字來自兩端挑出的 5 個耐冷、6 個怕冷品系；RIL 群體由 Penn State 育成」。",
+      "author_cache": {
+        "file": "f27src/PMC9493348.xml",
+        "sha256_prefix": "3aeea36b5c6dd041",
+        "text_file": "f27src/PMC9493348.txt",
+        "text_sha256_prefix": "54ee383c6b4c76ca",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5595836/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-017-11933-3",
+      "title": "Exploring priming responses involved in peach fruit acclimation to cold stress",
+      "publisher": "Tanou G, Minas IS, Scossa F, Belghazi M, Xanthopoulou A, Ganopoulos I, Madesis P, Fernie A, Molassiotis A.（塞薩洛尼基亞里斯多德大學（希臘）主導，含科羅拉多州立大學等多機構（Tanou G、Minas IS 等））／Scientific reports",
+      "version": "期刊正式全文（PMC）；Scientific reports 7(1):11358, 2017；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results 第 1 段（CH、TR、PC 三組 40 天 0°C 後 20°C 3 天；PC 無症狀；出庫當下看不到症狀）；Materials（硬度 45.3 N、23.8 N）",
+      "summary": "六月金桃在商業採收期（CH）或樹上熟（TR）採收後直接 0°C 存 40 天，另一組 CH 先在 20°C 放 48 小時到與 TR 相同硬度（PC）再冷藏。剛出冷庫三組都看不出、也量不到受害；在 20°C 放 3 天後，TR 嚴重粉質、褐變、流紅，CH 中等，PC 完全沒有受害。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "一個品種、一季；症狀分數是主觀三級量表加可擠出汁液等客觀量測。 覆核 V30（2026-11-12）：summary「剛出冷庫三組都看不出」改為「TR 與 CH 兩組剛出冷庫時看不出也量不到」；補「CH 45.3 N、TR 23.8 N、PC 23.7 N；2012 年一處果園」。",
+      "author_cache": {
+        "file": "f27src/PMC5595836.xml",
+        "sha256_prefix": "37cd711a552f27b6",
+        "text_file": "f27src/PMC5595836.txt",
+        "text_sha256_prefix": "0733819edb8deaf9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5985494/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fpls.2018.00706",
+      "title": "Metabolic Responses to Low Temperature of Three Peach Fruit Cultivars Differently Sensitive to Cold Storage",
+      "publisher": "Brizzolara S, Hertog M, Tosetti R, Nicolai B, Tonutti P.（比薩聖安娜高等學校（義大利）與魯汶大學（比利時））／Frontiers in plant science",
+      "version": "期刊正式全文（PMC）；Frontiers in plant science 9:706, 2018；授權 cc by",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 2 段（「killing zone」2.2–7.6°C 的轉述）；Results Fig. 2 段（0.5 vs 5.5°C、Red Haven）",
+      "summary": "三個桃品種在 0.5°C 或 5.5°C 存 4 週，再 20°C 3 天：果肉褐變與粉質較與 5.5°C 有關，流紅則在 0.5°C 較多；Red Haven 幾乎沒有褐變、流紅很少。前言轉述前人：2.2–7.6°C（所謂殺傷區）症狀比 0°C 更快更重。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "殺傷區數字是轉述（Crisosto & Valero 2008），不算本文發現；每點 9 顆果。",
+      "author_cache": {
+        "file": "f27src/PMC5985494.xml",
+        "sha256_prefix": "a1beb5f2779af08d",
+        "text_file": "f27src/PMC5985494.txt",
+        "text_sha256_prefix": "a90a2259d32a7faa",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12136767/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.fochx.2025.102529",
+      "title": "Combined treatment of heat shock and glycine betaine recovered chilling injury in banana fruit by reducing membrane damage",
+      "publisher": "Niaz N, Hu W, Pan S, Ali K, Walayat N, Mohamed Ahmed IA, Niaz S, Zhang J, Cao Y.（華中農業大學（中國））／Food chemistry: X",
+      "version": "期刊正式全文（PMC）；Food chemistry: X 28:102529, 2025；授權 cc by-nc-nd",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST 搜尋 API 找到（isOpenAccess=Y），以文件記載的 fullTextXML 端點 curl 取得全文 XML，轉成文字存檔",
+      "reading_scope": "全文",
+      "locator": "Abstract；2.2 實驗設計（7°C 2 h、20°C、第 12 天乙烯利催熟）；3.1 Chilling injury index 段（未處理組第 12 天輕微、催熟後嚴重；處理降 31–38%）",
+      "summary": "綠熟香蕉在 7°C 冷 2 小時後放 20°C；未處理組第 12 天出現輕微冷害，第 12 天用乙烯利催熟後變得嚴重，到第 21 天仍嚴重。冷後立刻 52°C 熱水 5 分鐘（加或不加甘胺酸甜菜鹼）或 35°C 熱風處理，第 21 天冷害指數比未處理低 31–38%。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "冷害指數是目測評分；研究主旨是處理方法，片中只用「兩小時就夠」與「先熱一下會減輕」兩點，不推薦任何處理。 覆核 V30（2026-11-12）：summary 改為「T1（冷 2 小時）冷害指數第 6 天 1.23、第 12 天 2.67、第 21 天 4.30；未冷 T0 全程 0；原文正文的百分比（31、38、29%）與『第 12 天輕微』和 Table 1 不一致，乙烯利濃度 0.1% 與 1% 前後不一」；處理效果不用。",
+      "author_cache": {
+        "file": "f27src/PMC12136767.xml",
+        "sha256_prefix": "472580f1b04a78ba",
+        "text_file": "f27src/PMC12136767.txt",
+        "text_sha256_prefix": "d185ac23da9313f9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S007",
+      "url": "https://spiral.imperial.ac.uk/bitstreams/dd7e89c2-777f-4594-882e-ffd08ca18fbb/download",
+      "canonical_url": "https://doi.org/10.1126/science.aaj1945",
+      "title": "Avian egg shape: Form, function, and evolution（接受稿題名 Form, Function and Evolution of Avian Egg Shape）",
+      "publisher": "Stoddard, Yong, Akkaynak, Sheard, Tobias, Mahadevan／Science 356:1249–1254, 2017",
+      "version": "作者接受稿（accepted manuscript），存於帝國理工學院機構典藏 Spiral（第六作者 Tobias 所屬機構）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 Spiral 典藏紀錄頁；紀錄頁上的檔案下載連結 curl 200。Harvard DASH 只有中繼資料；Science 期刊頁未嘗試。",
+      "reading_scope": "接受稿全文（正文、圖說、參考文獻；補充材料表 S2–S5 不在檔內）",
+      "locator": "正文第 3–4 段（49,175 顆蛋、約 1,400 種、形態空間三角形、最常見形狀不像紅原雞蛋）；〈A biophysical model of egg shape〉第 1–3 段（形狀由殼膜決定、膜一端較厚就不對稱）；〈Testing functional hypotheses〉第 2–5 段（與窩卵數、巢、懸崖營巢無關；HWI 越高越不對稱、越長；同樣最粗處體積較大）；〈Exploring the effect of flight adaptations〉（奇異鳥、鴕鳥、企鵝例外）",
+      "summary": "量了約 1,400 種、49,175 顆蛋的輪廓，用不對稱度 A 與橢圓度 E 畫成形態空間：是連續的，沒有傳統分類的界線；最密集的形狀像優雅山鷦鶯的蛋，不像紅原雞蛋。生物力學模型假設形狀由殼膜在峽部決定，膜一端較厚即產生不對稱。系統發生模型中，蛋的形狀與窩卵數、雛鳥發育型、環境、巢的特徵都無關，也不支持懸崖營巢鳥較常演化不對稱蛋；與手翼指數（HWI，飛行效率代理）和蛋的大小有關。作者提出：適應強力飛行的流線體型限制輸卵管寬度，以加長或不對稱在不增加最粗處下增加體積。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "接受稿，可能與 Science 排版版字句略有差異；補充表（效應量）未讀，「HWI 只解釋 4%」是 Birkhead 等人對本文的轉述（F28-S002 第 7、8 章），不是本檔數字。「蛋殼去掉仍保持形狀」是本文引用他書的轉述，不另計。 覆核 V31（2026-11-12）：limitations 補：本篇自己的分群模型顯示鴴形目的不對稱與發育型有關「rather than variation in HWI」、雀形目窩卵數小者較橢圓，作者說這些關係不是每一群都一樣——轉折二應先用這段原文，Birkhead 的 4% 只當帶出處的旁白。",
+      "author_cache": {
+        "file": "stw16/f28src/stoddard2017_accepted.pdf",
+        "sha256_prefix": "39d8726384a675b3",
+        "text_derivative": "stw16/f28src/stoddard2017_accepted.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S008",
+      "url": "https://etheses.whiterose.ac.uk/27131/1/Jamie.Edward.Thompson_StudentID.180326226_EggShapeInBirds_PhDbyPublicationThesis.pdf",
+      "canonical_url": "https://etheses.whiterose.ac.uk/27131/",
+      "title": "Egg shape in birds（Jamie E. Thompson 博士論文，以發表論文集成）",
+      "publisher": "University of Sheffield（White Rose eTheses Online），2020；收錄 Birkhead 研究室 2017–2019 年論文",
+      "version": "學位論文 PDF，機構典藏；第 4、7 章為 J Ornithol 158:679（CC BY）與 Auk 135:1020 的排版版重印，第 5、6、8 章經出版社授權重印",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果直接列出此 PDF；curl 200。BioOne 上 Auk 2018 頁 curl 200 但只有約 85 字、無正文；Wiley（Ibis）未嘗試。",
+      "reading_scope": "全文（論文集）；本提案只用第 4、6、7、8 章與第 1 章摘要",
+      "locator": "Summary（第 iii 頁）；第 4 章（Birkhead, Thompson & Biggins 2017 J Ornithol）Abstract、Results 第 1 段、Discussion 第 1 段；第 6 章（Jackson et al. 2018 JEB）ABSTRACT；第 7 章（Birkhead, Thompson & Montgomerie 2018 Auk）ABSTRACT、Introduction（Skomer 56 隻中 44 隻、116 處中 109 處鈍端朝上坡）、Figure 3 圖說、DISCUSSION 第 1 段；第 8 章（Birkhead et al. 2019 Ibis）摘要",
+      "summary": "海鴉（Common Guillemot／Common Murre）蛋尖的「滾成小圈不掉下懸崖」說法：732 顆海鴉蛋與 259 顆厚嘴海鴉蛋，蛋體積只解釋尖度變異的 0.5% 與 2.7%，厚嘴海鴉不論質量都比較不尖，作者認為「防滾」說法有疑問。斜坡穩定實驗：39 顆海鴉蛋、10 顆刀嘴海雀蛋，在 20°、30°、40° 斜面各試 10 次，海鴉蛋較穩、也較容易放穩；海鴉蛋越尖越穩。Skomer 116 處有坡度的巢位中 109 處蛋的鈍端朝上坡。蛋殼髒污：天然髒污會塞住氣孔、降低氣體傳導，蛋殼不會自潔，但殼表附屬物質（SAM）大致防止氣孔被堵。第 8 章：Stoddard 等研究中 HWI 只解釋約 4% 變異；在海雀科與企鵝科，只用蛋大小、發育型、窩卵數與孵蛋位置的線性模型解釋 70–85% 蛋形變異，孵蛋位置一項持續解釋超過 60%；最尖的五種都以直立姿勢在平坦或斜坡上孵蛋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同一研究室（Birkhead，Sheffield）五篇論文，依上一輪覆核規則合計封頂 3.0 條。學位論文是作者本人存於大學典藏，不是第三方轉存；但第 5、6、8 章是授權重印，引文以原刊卷頁標示。行為觀察（56 隻、116 處）是作者的個人觀察段落，片中只當背景。 覆核 V31（2026-11-12）：summary 的「斜坡穩定實驗：39 顆海鴉蛋」改為「靜態斜面共 59 顆海鴉蛋（39 乾淨、20 髒）與 10 顆刀嘴海雀蛋，由一名研究者以手在 P120 砂紙斜面上試放；Fig. 3 只畫乾淨的 39 顆」；「HWI 只解釋約 4%」加註「Birkhead 等人自補充表估算（Ibis 寫 see tables S3B/C…，分群中占已解釋變異 4.7–11.6%；Thompson 第 1 章寫 appeared to explain，並引 Stoddard 2019 回應效應小是預期中的）；Ibis 明說本文不是要檢驗飛行假說」；第 4 章補「雙黃大蛋顯著較尖、侏儒蛋較不尖」。",
+      "author_cache": {
+        "file": "stw16/f28src/thompson_thesis.pdf",
+        "sha256_prefix": "09ecb585a83cf88a",
+        "text_derivative": "stw16/f28src/thompson_thesis.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448846/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsos.140311",
+      "title": "Egg shape changes at the theropod–bird transition, and a morphometric study of amniote eggs",
+      "publisher": "Deeming & Ruta／Royal Society Open Science 1:140311, 2014",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Results 第 1 段（ER、AR 各群比較）；第 4 段（形態空間四項特徵）",
+      "summary": "比較 11 類羊膜動物蛋的伸長比（ER）與不對稱比（AR）：明顯偏離對稱（AR 不等於 1）的只有硬殼壁虎、翼龍、非鳥獸腳類恐龍與鳥類；其他類群是對稱或接近對稱。獸腳類的蛋最長，現生鳥最短；現生鳥蛋的不對稱度變化很大。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "照片來自文獻與網路，樣本少（如單孔類）；只能說不對稱蛋在獸腳類到鳥類就出現，不說明原因。 覆核 V31（2026-11-12）：「獸腳類的蛋最長，現生鳥最短」限定為獸腳類、中生代鳥、新生代滅絕鳥、現生鳥四群之間；加「蜥腳類近球、化石蛋歸屬證據薄」。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC4448846.xml",
+        "sha256_prefix": "26a4dbbfb60a29f0",
+        "text_derivative": "stw16/f28src/PMC4448846.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5841347/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-018-22436-0",
+      "title": "Variation in avian egg shape and nest structure is explained by climatic conditions",
+      "publisher": "Duursma, Gallagher, Price, Griffith／Scientific Reports 8, 2018",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 1–3 段；Methods（308 種伸長比、巢型 190／102／16 種）",
+      "summary": "用澳洲 310 種雀形目、100 km 網格：越熱、越乾、植被越稀的地方，蛋越圓、築有頂圓頂巢的種比例越高；最圓的蛋出現在最熱地區的開放巢，最長的蛋在較濕、較蔭的圓頂巢。作者推論同體積下圓蛋表面積較小、失水與受曬較少。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "相關分析，一個大陸、一個目；機制（失水、受熱）是作者的推論，本文未量。 覆核 V31（2026-11-12）：summary 加「量的是伸長比（長÷寬），不是不對稱」。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC5841347.xml",
+        "sha256_prefix": "90a9e86d474a432d",
+        "text_derivative": "stw16/f28src/PMC5841347.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12376029/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/cz/zoae070",
+      "title": "Egg shape in an obligate brood parasite stabilizes temperature variation during incubation",
+      "publisher": "Magdaleno, Hawkins, Salinas, Peer／Current Zoology 71, 2025",
+      "version": "期刊版（開放取用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 1–2 段",
+      "summary": "褐頭牛鸝（托卵鳥）蛋較寬較圓，傳統解釋是抗宿主啄破，但北美宿主很少啄破。研究在紅翅黑鸝巢中放入裝溫度探針的牛鸝蛋與家麻雀蛋：蛋寬與平均溫度無顯著關係，但牛鸝蛋的溫度變動比家麻雀蛋小；牛鸝蛋中，扣除寬度差後越圓的溫度變動越小。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一物種、單一宿主巢的實驗；「孵化期短部分因溫度較穩」是作者推論。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC12376029.xml",
+        "sha256_prefix": "c9f6f724356c3902",
+        "text_derivative": "stw16/f28src/PMC12376029.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12618968/fullTextXML",
+      "canonical_url": "https://doi.org/10.1111/1749-4877.12936",
+      "title": "Pear-Shaped Eggs Evolved to Maximize the Surface Area-to-Volume Ratio, Increase Metabolism, and Shorten Incubation Time in Birds",
+      "publisher": "Narushin, Romanov, Griffin／Integrative Zoology, 2025",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文（數學模型）",
+      "locator": "ABSTRACT；Introduction 第 1 段",
+      "summary": "數學推導：同長度下梨形蛋的表面積對體積比（S/V）較大；作者定義的「蛋代謝率」（S/V 對最大可能值之比）與孵化期成反比，推論梨形是為了加快胚胎代謝、縮短孵化。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "純模型與既有資料擬合，非實驗；與 F28-S004、F28-S005 的「圓蛋表面積小」方向相反，片中只當另一派假說，不當定論。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC12618968.xml",
+        "sha256_prefix": "097d1fadf8e28c3f",
+        "text_derivative": "stw16/f28src/PMC12618968.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12628015/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/ece3.72455",
+      "title": "Egg Characteristics of Female Common Terns Are Repeatable, and Vary With Maternal Age and Laying Order",
+      "publisher": "Bichet, Moiron, Kürten, Vedder, Bouwhuis／Ecology and Evolution, 2025",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results 形狀與產卵順序段",
+      "summary": "四年追蹤 330 隻已知年齡的普通燕鷗、687 窩、1,589 顆蛋：八項蛋特徵（含形狀）在同窩內重複性 0.48–0.77、同一雌鳥不同年 0.48–0.73；蛋的大小與形狀受產卵順序影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一族群；重複性是八項特徵的範圍，不能說形狀一項的值。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC12628015.xml",
+        "sha256_prefix": "81b2562c05b42e2e",
+        "text_derivative": "stw16/f28src/PMC12628015.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S014",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3105295/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/ncomms1133",
+      "title": "A speciation gene for left–right reversal in snails results in anti-predator adaptation",
+      "publisher": "Hoso, Kameda, Wu, Asami, Kato, Hori／Nature Communications 1:133, 2010",
+      "version": "期刊版（CC BY-NC-SA）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 1–3 段；Results〈Feeding experiments〉第 1–2 段與 Fig. 1、2 圖說；〈Comparative survey〉與 Table 1；〈Phylogenetic analyses〉；Discussion 第 4–6 段",
+      "summary": "日本岩崎氏鈍頭蛇從後方以固定向左的角度咬住爬行中的蝸牛，靠左右下顎交替把肉拉出；下顎右側牙齒比左側多約半打。餵食實驗中右旋蝸牛無一存活，左旋的 87.5% 存活。全球比較：在鈍頭蛇分布區內左旋屬比例 11.8%（表中左旋 19 屬、右旋 142 屬），區外 5.0%（左旋 34 屬、右旋 642 屬）；扁平與大型蝸牛關聯更強。日本與台灣的 Satsuma 屬左旋種至少多次獨立由右旋演化而來。作者也說明區外仍有左旋屬，不主張每個左旋種都因蛇而起。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F28-S009、F28-S010、F28-S011、F28-S012 同屬日本「食蝸蛇與左右反轉」研究網絡（Hoso／Asami），計數時合併封頂。 覆核 V31（2026-11-12）：summary 的 87.5%／0% 加「右旋 S. mercatoria、左旋 S. perversa 兩個不同物種，四條蛇各 n=10，作者自承未排除旋向以外的種間差異；左旋優勢在小型 B. similaris 小得多」；「11.8% vs 5.0%」加「作者稱 marginally associated（P=0.019），單位是屬，已排除煙管蝸牛總科與雙型屬」；攻擊行為描述的主詞是 P. iwasakii。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC3105295.xml",
+        "sha256_prefix": "9c327c4c29350847",
+        "text_derivative": "stw16/f28src/PMC3105295.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4820687/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep23832",
+      "title": "A snail-eating snake recognizes prey handedness",
+      "publisher": "Danaisawadi, Asami, Ota, Sutcharit, Panha／Scientific Reports 6:23832, 2016",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 3 段（下顎不對稱 1%–18%；P. iwasakii 島上 23 種獵物只 1 種左旋）；Results（76 隻右旋中靠近 64 隻、38 隻左旋中靠近 26 隻；>12.4 mm 左旋 26 隻有 18 隻不咬；分布區內 900 種中左旋 17.0%）",
+      "summary": "泰國的龍紋鈍頭蛇（P. carinatus）住在左旋蝸牛很多的地方（分布區 900 種有肺類中 17.0% 左旋）：會盯著蝸牛後決定，靠近右旋 84.2%、左旋 68.4%；大於 12.4 mm 的左旋，26 隻中有 18 隻（69.2%）不咬；一旦咬，左右旋都能以相反手法處理成功。對照的岩崎氏鈍頭蛇幾乎碰不到左旋，常咬不到。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "圈養實驗；與 F28-S008 同研究網絡（Asami）。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC4820687.xml",
+        "sha256_prefix": "bcd20b5965b6fe70",
+        "text_derivative": "stw16/f28src/PMC4820687.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S016",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5337109/fullTextXML",
+      "canonical_url": "https://doi.org/10.7717/peerj.3011",
+      "title": "Asymmetry of mandibular dentition is associated with dietary specialization in snail-eating snakes",
+      "publisher": "Hoso／PeerJ 5:e3011, 2017",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract（Background、Results、Discussion）",
+      "summary": "台灣同地的泰雅鈍頭蛇與台灣鈍頭蛇：台灣鈍頭蛇下顎左右牙數差明顯較小，餵食實驗強烈偏好蛞蝓勝過蝸牛；作者認為吃蛞蝓的專化與牙齒不對稱度變小相連。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一作者，與 F28-S008 同一人；只算 0.5。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC5337109.xml",
+        "sha256_prefix": "099d07ecbc5e3b72",
+        "text_derivative": "stw16/f28src/PMC5337109.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S017",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3332057/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0034005",
+      "title": "Chiral Speciation in Terrestrial Pulmonate Snails",
+      "publisher": "Gittenberger, Hamann, Asami／PLoS ONE 7:e34005, 2012",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results 各地區段（歐洲、土耳其、北美、日本）",
+      "summary": "依文獻名錄：西歐 331 種中 16.0% 左旋，扣除煙管蝸牛科 50 種後剩 1.1%；土耳其 541 種 24.8%，扣除後 5.3%；北美（墨西哥以北）689 種只 0.6%；日本 861 種 18.0%，扣除煙管蝸牛科後 0.8%。煙管蝸牛科化石與現生資料顯示成功的反轉約每三、四百萬年一次。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "名錄統計，非實驗；第三作者 Asami 與 F28-S008 網絡重疊。 覆核 V31（2026-11-12）：「成功的反轉約每三、四百萬年一次」改為「煙管蝸牛科（多數左旋）6,500 萬年以上至少 14、可能逾 20 次旋向反轉（多為轉成右旋），換算約每 320–460 萬年一次」。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC3332057.xml",
+        "sha256_prefix": "de783c01055304a1",
+        "text_derivative": "stw16/f28src/PMC3332057.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S018",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6329061/fullTextXML",
+      "canonical_url": "https://doi.org/10.1186/s40851-018-0120-0",
+      "title": "Heterochirality results from reduction of maternal diaph expression in a terrestrial pulmonate snail",
+      "publisher": "Noda, Satoh, Asami／Zoological Letters, 2019",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract（Background、Results）",
+      "summary": "同型巴蝸牛（Bradybaena similaris）的突變品系會從同一窩生出左旋與右旋手足；母體 diaph-b mRNA 在突變品系早期胚胎中大幅減少，但沒有移碼。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F28-S013 同組。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC6329061.xml",
+        "sha256_prefix": "ae4f30d335a84259",
+        "text_derivative": "stw16/f28src/PMC6329061.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S019",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10598177/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s00239-023-10130-3",
+      "title": "Left–Right Reversal Recurrently Evolved Regardless of Diaphanous-Related Formin Gene Duplication or Loss in Snails",
+      "publisher": "Noda, Satoh, Gittenberger, Asami／Journal of Molecular Evolution, 2023",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract",
+      "summary": "diaph 基因在腹足類獨立重複四次、重複拷貝丟失兩次；左旋支系不論 diaph 有沒有重複都一再由反轉演化出來；拷貝表現不足時兩物種胚胎死亡率都很高。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F28-S012 同組合計。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC10598177.xml",
+        "sha256_prefix": "0c8a848977bcf5f8",
+        "text_derivative": "stw16/f28src/PMC10598177.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S020",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4791482/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2015.12.071",
+      "title": "Formin Is Associated with Left-Right Asymmetry in the Pond Snail and the Frog",
+      "publisher": "Davison et al.／Current Biology 26:654–660, 2016",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Summary；Results 第 1–2 段（只有 6 個基因與 D 完全連鎖）；〈Formin Also Regulates LR Patterning in the Frog〉",
+      "summary": "椎實螺左右旋位點：一對串聯重複的 diaphanous 相關 formin 基因中，一個拷貝的失能突變與旋向完全相關；抗 formin 藥物可讓右旋胚胎變成左旋表型；在青蛙早期（纖毛出現前）胚胎抑制或過量表現 formin 會打亂左右。2、4 細胞期就有不對稱基因表現。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Davison 研究室；作者含 Hoso。哪一個拷貝（Ldia1／Ldia2 命名）與 F28-S015 的寫法不同，片中只說「同一對重複 formin 基因」。 覆核 V31（2026-11-12）：limitations 的「作者含 Hoso」刪除——作者名單 16 人無 Hoso，有 Chiba（與 F28-S017 共同作者）；summary 的「抗 formin 藥物可讓右旋胚胎變成左旋表型」改為「SMIFH2 使存活到第三次分裂的右旋胚中約 25–35% 小分裂球無扭轉冒出、類似左旋胚；其後扭轉仍為右旋（6/6）」。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC4791482.xml",
+        "sha256_prefix": "bf6295c913c14b20",
+        "text_derivative": "stw16/f28src/PMC4791482.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S021",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5052593/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep34809",
+      "title": "Diaphanous gene mutation affects spiral cleavage and chirality in snails",
+      "publisher": "Kuroda, Fujikura, Abe et al.／Scientific Reports 6:34809, 2016",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 2 段（單一母效位點、第三次分裂轉動胚球得到健康的鏡像個體）",
+      "summary": "椎實螺有右旋（顯性）與左旋（隱性），旋向由一個在最早期胚胎作用的母效位點決定；此團隊先前在第三次分裂時人工把胚球轉向相反方向，就得到健康的鏡像動物。本文以連鎖定位找到 Lsdia1：左旋品系帶移碼突變，無法表現完整蛋白。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「轉動胚球得到鏡像個體」是本文引用自己先前研究的轉述（Kuroda 2009），不另計。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC5052593.xml",
+        "sha256_prefix": "623f605a9a82c35c",
+        "text_derivative": "stw16/f28src/PMC5052593.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S022",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2121153/fullTextXML",
+      "canonical_url": "https://doi.org/10.1111/j.1420-9101.2007.01370.x",
+      "title": "Sexual selection maintains whole-body chiral dimorphism in snails",
+      "publisher": "Schilthuizen, Craze, Cabanban, Davison et al.／Journal of Evolutionary Biology, 2007",
+      "version": "期刊版（開放取用）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 1–3 段；Results（Kapas 島 d≈0.35；鼠類捕食比例兩型皆約 0.275；三季 85 對交配加解剖推得 21 對；第 1 點 13 D×D、42 D×S、25 S×S；χ²=17.7）；精莢段（「由解剖推論、未經實驗證明」）",
+      "summary": "一般蝸牛中罕見的反向個體因無法和多數交配而被頻率依賴選擇淘汰；但東南亞 Amphidromus 樹蝸牛多數種左右旋同族共存、比例接近各半。馬來西亞 Kapas 島 A. inversus：鼠類捕食兩型比例相同；2003–2005 三季記錄的交配對中，左右旋互配多於隨機預期；精莢與輸卵管的旋向可能讓互配受精較多。模擬顯示這種偏好能維持雙型。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "「互配受精較多」是由解剖推論，原文明說未經實驗證明；作者含 Davison，與 F28-S014、F28-S017 合計封頂。 覆核 V31（2026-11-12）：summary 補「Kapas 族群右旋頻率約 0.35；交配對 106 對中 21 對由解剖精莢推得」。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC2121153.xml",
+        "sha256_prefix": "59f5cae9a5c8211f",
+        "text_derivative": "stw16/f28src/PMC2121153.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S023",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6121799/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/evl3.31",
+      "title": "Single-gene speciation: Mating and gene flow between mirror-image snails",
+      "publisher": "Richards, Morii, Kimura, Hirano, Chiba, Davison／Evolution Letters, 2017",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract；Impact Summary；Results〈Mating between dextral and sinistral snails〉（五筆紀錄、Table 1）；TreeMix 段",
+      "summary": "日本 Euhadra 屬：找到五筆左旋與右旋個體交配的紀錄（含同域的左旋 E. quaesita 與右旋 E. senckenbergiana）；基因資料顯示左右旋之間有近期或持續的基因流。作者結論：交配障礙主要是行為而非結構完全不能；單靠旋向一個基因不足以造成新種。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "交配紀錄多來自愛好者觀察與日文文獻；Davison 研究室。 覆核 V31（2026-11-12）：summary 的基因流限定為「左旋 E. quaesita 與右旋 E. aomoriensis 之間（作者認為大概是同一種）、由基因資料間接推得」；交配紀錄來自日本自然觀察者報告。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC6121799.xml",
+        "sha256_prefix": "9befe99722273f27",
+        "text_derivative": "stw16/f28src/PMC6121799.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L66-S024",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7540069/fullTextXML",
+      "canonical_url": "https://doi.org/10.1111/jzs.12353",
+      "title": "Hybridization and recurrent evolution of left–right reversal in the land snail genus Schileykula (Orculidae, Pulmonata)",
+      "publisher": "Harl, Haring, Páll-Gergely／Journal of Zoological Systematics and Evolutionary Research 58, 2020",
+      "version": "期刊版（CC BY）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 來自 Europe PMC REST search 結果）",
+      "reading_scope": "全文",
+      "locator": "Abstract",
+      "summary": "土耳其到伊朗西北的 Schileykula 屬八種中兩個是左旋；分子系統顯示兩個左旋類群各自獨立演化、不是姊妹群；粒線體與核基因樹衝突，顯示至少兩次雜交。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "分類學研究，旋向只占一小段。",
+      "author_cache": {
+        "file": "stw16/f28src/PMC7540069.xml",
+        "sha256_prefix": "3ebee58f10ab7dcf",
+        "text_derivative": "stw16/f28src/PMC7540069.txt",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L66-001",
+      "question": "番茄放冰箱一週，味道真的會變差嗎？是糖變少了嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_chilling_volatiles_drop_sugar_acid_unchanged",
+      "answer_target": "會變差，但糖和酸沒變。佛羅里達大學等團隊把紅熟番茄放 5°C：放 1 天或 3 天香氣物質沒有顯著減少，放 7 天就顯著下降；其中一個品種冷藏 8 天的香氣總量比採收當天少 65%，拿回 20°C 一天會回升一些、仍顯著偏低。76 位消費者試吃，冷藏 7 天加回溫 1 天的番茄整體喜好顯著較低。葡萄糖、果糖、蘋果酸、檸檬酸則沒有顯著差異，作者因此說味道變差來自香氣減少。",
+      "scope": "65%、消費者試驗與糖酸測定都只限 Ailsa Craig；「12°C 以下影響香氣」是論文引前人，不算本文發現；不給保存建議。",
+      "source_ids": [
+        "L66-S001"
+      ],
+      "source_locator": "F27-S014 Abstract；Results 第 1–2 段與 Fig. 1",
+      "premise_status": "screened",
+      "notes": "算 1.0（同作者）；Zhang 2016 兩核心合計 1.5。 原提案 F27-014（目標 C12-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字無誤；補上 65% 與試吃只限一個品種、回溫一天有回升。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰箱沒有偷走番茄的糖，偷走的是聞得到的那部分。",
+        "visual": "兩顆一樣紅的番茄，旁邊一個「甜度」量表齊平、一個「香氣」量表一高一低。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-002",
+      "question": "番茄冷到沒香味，是香氣被「凍住」了，拿出來回溫就會回來嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_chilling_volatile_gene_shutdown_partial_recovery",
+      "answer_target": "不是凍住，是做香氣的基因被關小了，回溫一天只回來一部分。同一研究發現，冷藏時多個香氣合成酵素的基因轉錄量下降，回到 20°C 一天後有的部分回升，做酯類香氣的 AAT1 則還沒回到原來的水準。作者說香氣會從果蒂的疤痕散出去，果實必須一直補；合成一變慢，存量就往下掉。有兩種由茄紅素裂解來的香氣反而在冷藏時增加，作者推測可能是非酵素的氧化。冷藏時基因啟動子的 DNA 甲基化上升，回溫一天大多回到接近原本的狀態；作者也說，手上的資料不能證明甲基化造成基因表現下降。",
+      "scope": "甲基化與表現下降的因果原文說無法判定；AAT1 只說「回溫一天後還沒回來」，不說永久；不說「永久改變」。",
+      "source_ids": [
+        "L66-S001"
+      ],
+      "source_locator": "F27-S014 Expression of Genes Related to Volatile Synthesis；DNA Methylation Dynamics；Discussion 第 2–3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）。 原提案 F27-015（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；機制描述大致正確；把「耗光」改回原文的「必須持續補充」，AAT1 只限回溫一天的觀察。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "香氣不是存在果肉裡的庫存，而是一條要一直開工的生產線。",
+        "visual": "番茄剖面畫成小工廠，冷藏時煙囪一根根熄掉，回溫後只亮回幾根。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-003",
+      "question": "冰箱 10°C 和 4°C，對番茄差很多嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.cherry_tomato_4c_vs_10c_mealiness_reversibility",
+      "answer_target": "這個研究裡差很多。紐西蘭植物與食品研究所把紅熟櫻桃番茄存 10°C 或 4°C 27 天，再放 20°C 6 天：4°C 組軟化加快並變粉，可擠出的果汁由約五成降到四成；10°C 組沒有。兩組外觀都沒有凹斑或腐爛。細胞壁分解酵素的基因在兩個溫度都被壓低，所以作者推論 4°C 的加速軟化不是細胞壁被分解，可能是細胞的膨壓下降。4°C 放一天內，抗氧化相關基因大增，熱休克蛋白基因也陸續大幅上升，10°C 都沒有；這些在回溫後可以恢復，細胞壁相關的改變則多半回不來。",
+      "scope": "一個相對耐冷的品種；膨壓是推論；不建議冰箱溫度。",
+      "source_ids": [
+        "L66-S002"
+      ],
+      "source_locator": "F27-S015 Abstract；Results 品質段與轉錄段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：同一實驗的品質與轉錄結果。 原提案 F27-016（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；內容正確；畫面改成原文量法，補上外觀無冷害與汁液數字，下修 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷不冷是有門檻的：同樣是冰箱，幾度之差，番茄的反應完全不同。",
+        "visual": "兩盒櫻桃番茄外觀一樣，各切一顆擠汁，量杯裡一個五成、一個四成。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-004",
+      "question": "同一種番茄，為什麼有的冷藏後沒事，有的長斑又縮水？能事先看出來嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_chilling_tolerance_genetic_variation_fvfm_early",
+      "answer_target": "耐不耐冷有很大一部分寫在基因裡，而且在傷痕出現前就量得到。以色列 Volcani 中心用怕冷的栽培番茄和耐冷的野生醋栗番茄雜交出的 148 個品系，把綠熟果放 1.5°C 14 天再 20°C 3 天：受害程度從像野生親本到像栽培親本都有。再從兩端挑出 5 個最耐冷、6 個最怕冷的品系比較：14 天後耐冷品系失重約 1.5–2%，怕冷品系 3–6%；冷藏第 5 天的葉綠素螢光 Fv/Fm，耐冷約 0.7–0.8、怕冷 0.25–0.65，在肉眼看到傷害之前就分得開。",
+      "scope": "綠熟果、1.5°C 比家用冷藏冷；數字只來自兩端挑出的 11 個品系；育種群體，不代表市售品種。",
+      "source_ids": [
+        "L66-S003"
+      ],
+      "source_locator": "F27-S016 Abstract；Materials 冷藏設計段；Results Fig. 1、weight loss、chlorophyll fluorescence 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：綠熟果、極端品系，和題目的連結較弱。 原提案 F27-017（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字對，但沒寫明只來自兩端挑選的品系；且綠熟果 1.5°C 與題目距離較遠，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷害在變成看得到的斑之前，果皮裡的光合系統已經先出事。",
+        "visual": "兩排番茄外表一樣，旁邊螢光儀的讀數一高一低；三天後一排出現凹斑。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-005",
+      "question": "桃子在冷庫裡好好的，為什麼拿出來放幾天才變得乾粉、果肉發褐？",
+      "domain": "植物",
+      "mechanism_key": "plant.peach_chilling_delayed_symptoms_preconditioning_protects",
+      "answer_target": "冷害常是出冷庫後才現形，而且同樣軟度的桃子，結果可以完全相反。希臘亞里斯多德大學等團隊把六月金桃在商業採收期（較硬）或樹上熟（較軟）採下，直接 0°C 存 40 天；另一組商業採收的先在 20°C 放 48 小時，軟到和樹上熟一樣才冷藏。樹上熟和商業採收兩組剛出冷庫時，肉眼看不出、儀器也量不到受害；在 20°C 放 3 天後，樹上熟的嚴重變粉、褐變、果肉流紅，商業採收的中等，先在室溫放兩天的那組完全沒有受害。",
+      "scope": "一個品種、一季、一處果園；「先放兩天」是研究的處理組，不推薦任何處理，不推廣到所有水果。",
+      "source_ids": [
+        "L66-S004"
+      ],
+      "source_locator": "F27-S017 Results 第 1 段與 Fig. 1、Fig. 2；Materials 硬度數字",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：同一實驗兩個結果，合為 1.0。 原提案 F27-018（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；數字對；「三組都看不出」改回原文的兩組，計數下修。轉折成立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "傷是在冷的時候受的，帳是回到室溫才算；軟度一樣，不代表身體狀態一樣。",
+        "visual": "三顆一樣大的桃子出冷庫、三天後切開：一顆多汁、一顆有點褐、一顆乾粉流紅。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-006",
+      "question": "冷害是不是越冷越嚴重？",
+      "domain": "植物",
+      "mechanism_key": "plant.peach_chilling_symptom_type_depends_on_temperature",
+      "answer_target": "不是單純越冷越糟，不同溫度出不同毛病。義大利比薩聖安娜高等學校與比利時魯汶大學把三個桃品種存在 0.5°C 或 5.5°C 4 週再放 20°C 3 天：果肉褐變和變粉較與 5.5°C 有關，果肉流紅則在 0.5°C 較多；品種 Red Haven 幾乎不褐變、流紅也很少。論文前言轉述前人：2.2 到 7.6°C 是所謂「殺傷區」，症狀比 0°C 來得快又重。",
+      "scope": "殺傷區數字是轉述，只能說「前人報告」；不建議冷藏溫度。",
+      "source_ids": [
+        "L66-S005"
+      ],
+      "source_locator": "F27-S018 Abstract；Introduction 第 2 段（轉述）；Results Fig. 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：原文用「appeared to be more related」，屬趨勢敘述；答案文字照作者。 原提案 F27-019（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）照原稿收；內容與限制都寫對；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "對桃子來說，「比較不冷」的 5 度可能比 0 度更傷。",
+        "visual": "溫度軸上 0.5 和 5.5 兩個點，各自掛著不同的切面照片（流紅、褐變）。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-007",
+      "question": "香蕉只要冰一下下就會受傷嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.banana_brief_chill_injury_ripening_reveals",
+      "answer_target": "這個實驗裡兩小時就留下帳。華中農業大學把綠熟香蕉放 7°C 兩小時，再放 20°C：冷過的那組從第 6 天開始出現冷害，指數一路上升，第 12 天用乙烯利催熟後到第 21 天達 4.3（滿分 5）；同一批沒冷過的香蕉，21 天都是 0。",
+      "scope": "冷害指數是目測評分（0–5）；只用表 1 的數字，不用原文前後不一的百分比與「第 12 天輕微」；刪掉熱水、熱風、甘胺酸甜菜鹼處理的效果——那是處理方法，不進片，也不推薦任何家庭做法；池中 LEG-S55 已有「香蕉進冰箱整片變黑是低溫傷害」一句，本核心只加時間尺度。",
+      "source_ids": [
+        "L66-S006"
+      ],
+      "source_locator": "F27-S019 Abstract；2.2 實驗設計；3.1 Chilling injury index 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單一對照比較；原文有內部矛盾。 原提案 F27-020（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V30（2026-11-12）改字後收；作者把冷害出現時間寫錯（第 6 天就有）、百分比漏一組且原文自相矛盾，處理方法也屬建議；改寫只留對照組與未冷組的比較。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冷害可以很快種下，等到熟的時候才一起爆出來。",
+        "visual": "一根青香蕉進冷櫃兩小時，十二天後催熟，皮上浮出一片片灰褐。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-008",
+      "question": "雞蛋那種「一頭尖一頭鈍」，真的是鳥蛋的標準形狀嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.shape_morphospace_continuum",
+      "answer_target": "不是。Stoddard 等人（普林斯頓等團隊，2017）量了約 1,400 種鳥、49,175 顆蛋的輪廓，用「不對稱度」和「橢圓度」兩個數字畫在一張圖上：不對稱度從 0.001 到 0.485、橢圓度從 0.097 到 0.724，是連續變化，沒有課本上「圓形、卵形、梨形」那種分界。許多鳥種集中的那一區，形狀像優雅山鷦鶯的蛋，不像雞的祖先紅原雞的蛋。",
+      "scope": "數字限 Stoddard 等 2017（讀的是 Spiral 典藏的作者接受稿）；不說「雞蛋不正常」；種名照原文；「最常見」只說密度圖的集中區。",
+      "source_ids": [
+        "L66-S007"
+      ],
+      "source_locator": "F28-S001 正文第 3–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：形態空間是該篇的資料基礎，數字逐字相符；Stoddard 一篇（001、002、007）合計 2.0（作者 2.5）。 原提案 F28-001（目標 C13-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；來源合規（機構典藏的接受稿、紀錄頁標明 Accepted version），數字相符；只把「最多鳥種擠在」改成「許多鳥種集中」，並把同篇三核心合計壓到 2.0。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你心中的「蛋形」只是上千種蛋形裡的一個點。",
+        "visual": "一張三角形散點圖，從圓球蛋滑到尖蛋，最後亮出雞蛋的位置不在最密處。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-009",
+      "question": "蛋殼是硬的，那蛋的形狀是在殼長出來之前還是之後決定的？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.shape_set_by_shell_membrane_model",
+      "answer_target": "研究者認為是在殼之前。Stoddard 等人根據前人的 X 光與雞蛋研究，假設蛋形由包住蛋白蛋黃的殼膜決定，而且很可能在輸卵管的峽部、鈣殼沉積之前就定了。他們的數學模型裡，膜沿輸卵管方向比較好拉，蛋就變長；如果膜在一端稍厚，另一端承受的相對壓力較大、撐得比較開，蛋就一頭尖一頭鈍。調整這兩組參數，能畫出現生鳥蛋的整個形狀範圍，也畫得出自然界沒有的怪形狀。",
+      "scope": "這是模型與假設，沒有量膜厚；「峽部定形」與「去殼仍保形」是該文引用他文，不念成本文發現；不說模型能預測蛋的大小。",
+      "source_ids": [
+        "L66-S007"
+      ],
+      "source_locator": "F28-S001〈A biophysical model of egg shape〉第 1–3 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：模型假設，定形部位與證據都是轉述他文；在 Stoddard 一篇 2.0 之內。 原提案 F28-002（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；把「之前」由斷言改成研究者的推定，補「峽部」是引文獻、模型不量膜厚；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "尖頭鈍頭是一層膜「撐」出來的，不是殼「刻」出來的。",
+        "visual": "透明氣球外包不同厚薄的網，充氣後一端變尖的示意動畫（標「模型示意」）。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L66-010",
+      "question": "恐龍的蛋也是一頭尖嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "bird_egg.asymmetry_theropod_origin",
+      "answer_target": "有一部分是。一篇比較 11 類羊膜動物蛋形的研究發現，明顯一頭尖一頭鈍的只有硬殼壁虎、翼龍、非鳥獸腳類恐龍和鳥；烏龜、蛇等其他類群是對稱或接近對稱的，蜥腳類恐龍的蛋則近乎球形。在獸腳類到鳥類這幾群裡，獸腳類的蛋最長、現生鳥的最短，而現生鳥的不對稱程度變化很大。也就是說，「不對稱蛋」在鳥出現前就有了。",
+      "scope": "只說形狀分布，不推論原因；不說所有恐龍；「最長／最短」限獸腳類與鳥類四群之間；照片來自文獻與網路、化石蛋的歸屬證據薄，樣本小。",
+      "source_ids": [
+        "L66-S009"
+      ],
+      "source_locator": "F28-S003 Results 第 1、4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：網路與文獻照片、樣本小、化石蛋歸屬不確定。 原提案 F28-003（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；「現生鳥最短」限定在獸腳類—鳥類四群，補蜥腳類近球、照片來源與歸屬證據薄；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鳥的尖蛋，祖先恐龍已經開始下了。",
+        "visual": "烏龜蛋、蛇蛋、恐龍蛋、鳥蛋輪廓並排，一個個疊上對稱軸。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L66-011",
+      "question": "海鴉在懸崖上下蛋，蛋那麼尖，是為了萬一滾動只會原地繞小圈、不掉下去嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.guillemot_rolling_arc_not_supported",
+      "answer_target": "這是流傳很久的說法，但檢驗不過。這個說法認為蛋越重、滾的圈越大，所以預測：大的蛋應該比較尖；它也用「厚嘴海鴉的蛋比較輕」解釋牠們的蛋較不尖，那麼兩種海鴉同樣大的蛋應該差不多尖。謝菲爾德大學團隊用博物館與野外的標準化照片，量了 732 顆海鴉蛋和 259 顆厚嘴海鴉蛋：蛋越大確實稍微越尖，但體積只解釋尖度變化的 0.5% 和 2.7%；兩種蛋的平均體積差不多，厚嘴海鴉的蛋卻還是比較不尖。作者因此質疑「防滾」是海鴉蛋形的主要原因。",
+      "scope": "只說預測不成立，不說海鴉蛋完全不會滾、也不說大小與形狀毫無關係（雙黃大蛋確實較尖）；以體積代重量；數字限該研究。",
+      "source_ids": [
+        "L66-S008"
+      ],
+      "source_locator": "F28-S002 第 4 章 Abstract、Results 第 1 段、Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（照作者）：轉折一的主證據，原文數字逐字相符。Birkhead 研究室（004、005、006、008）合計 2.5（作者封頂 3.0）。 原提案 F28-004（目標 C13-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；數字相符；補上「蛋越大確實稍微越尖」與量法（照片、體積代重量），避免講成大小完全無關。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最有名的解釋，拿去量就站不住。",
+        "visual": "海鴉蛋在岩架上滾成小圈的經典動畫，接著打上兩個預測，一個一個打叉。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "L66-012",
+      "question": "海鴉蛋不是為了滾小圈，那尖蛋在斜斜的岩架上到底有什麼好處？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.pyriform_stability_on_slopes",
+      "answer_target": "比較放得穩。研究者在砂紙鋪成的 20°、30°、40° 斜面上，用手把蛋放好，看 10 秒內能不能放穩，每顆蛋每個坡度試 10 次：海鴉蛋比刀嘴海雀的蛋更穩、也更容易放穩；海鴉蛋之中越尖的越穩（圖中是 39 顆乾淨的海鴉蛋和 10 顆刀嘴海雀蛋）。野外他們也看到，在威爾斯 Skomer 島 116 處有坡度的巢位裡，109 處蛋的鈍端朝上坡。",
+      "scope": "實驗是人手在砂紙上試放，作者自己說不是模擬自然；野外 109／116 是作者的個人觀察，只當背景；不說尖蛋放上去就不會滾。",
+      "source_ids": [
+        "L66-S008"
+      ],
+      "source_locator": "F28-S002 第 7 章 ABSTRACT、Introduction、Figure 3 圖說、DISCUSSION 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：單一操作者、人手代替海鴉、同一研究室；在 Birkhead 研究室 2.5 之內。 原提案 F28-005（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；補實驗條件（人手、砂紙、39 顆是乾淨蛋子集），個人觀察標為背景；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "尖蛋的好處不是滾回來，而是一開始就不滾。",
+        "visual": "斜板上兩顆蛋並排，角度一格格加大，刀嘴海雀蛋先滑走。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-013",
+      "question": "海鴉蛋常被鳥糞弄髒，尖的形狀和這有關嗎？蛋會自己變乾淨嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.guillemot_shell_accessory_material_pores",
+      "answer_target": "研究者提過，尖形可能讓鈍端（胚胎頭部與氣室那頭）比較少沾髒。他們量到的是另一件事：天然髒污確實會塞住蛋殼氣孔、降低氣體交換；蛋殼不會「自潔」，真正擋住的是殼表一層附屬物質，讓髒污大多塞不進氣孔。髒了會不會讓孵化率下降，他們沒有做實驗。",
+      "scope": "「尖形減少鈍端髒污」只是假說，不念成結論；沒有孵化率證據；只留一句。",
+      "source_ids": [
+        "L66-S008"
+      ],
+      "source_locator": "F28-S002 第 6 章 ABSTRACT；第 7 章 Introduction 第 2 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（照作者）：Birkhead 研究室內，與蛋形只間接相關。 原提案 F28-006（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；補「沒有孵化率實驗」；其餘照作者。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "解決髒的不是形狀，是殼上一層「防塞」塗層。",
+        "visual": "蛋殼表面顯微示意：髒污顆粒停在塗層上，下面氣孔仍通。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L66-014",
+      "question": "有人說鳥蛋的形狀跟飛行有關，飛得越好的鳥蛋越尖越長？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.shape_flight_handwing_index_correlation",
+      "answer_target": "這是 2017 年那個 1,400 種研究的主結論，但有但書。他們把蛋形跟窩卵數、雛鳥發育型、氣候、巢的位置與類型一起放進模型：在全鳥類的尺度，這些都跟形狀無關，懸崖營巢的鳥也沒有比較常下不對稱蛋；跟形狀有關的是蛋的大小和「手翼指數」（翅膀尖不尖，代表飛行效率）。作者的解釋是：善飛的鳥身體流線、腹腔受限，同樣最粗的寬度下，蛋加長或變不對稱就能裝更多體積；但他們也說確切機制未知。奇異鳥、鴕鳥等不飛的鳥蛋不對稱度較低，企鵝則是例外。同一篇拆開來看：鴴鷸類的不對稱跟雛鳥發育型有關，而不是手翼指數；雀形目窩卵數少的蛋比較長——作者自己說，這些關係不是每一群鳥都一樣。",
+      "scope": "這是相關，不是飛行直接捏出蛋形；作者自己說機制未知；「無關」限全鳥類尺度。",
+      "source_ids": [
+        "L66-S007"
+      ],
+      "source_locator": "F28-S001〈Testing functional hypotheses〉第 2–5 段、〈Exploring the effect of flight adaptations〉",
+      "premise_status": "screened",
+      "notes": "算 1.0（照作者）：本篇主結論加本篇分群結果；Stoddard 一篇合計 2.0。 原提案 F28-007（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；加入本篇自己的分群結果（鴴形目看發育型、不看 HWI），讓轉折二不必倚賴他人的轉述；「無關」限定全鳥類尺度。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "答案指向翅膀，不是巢。",
+        "visual": "鳥翼尖端的長短對照，旁邊蛋形同步變尖。",
+        "seconds": [
+          60,
+          70
+        ]
+      }
+    },
+    {
+      "id": "L66-015",
+      "question": "飛行解釋了鳥蛋形狀的多少？海鴉、企鵝那種最尖的蛋又怎麼說？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.incubation_site_posture_alcids_penguins",
+      "answer_target": "謝菲爾德與皇后大學團隊換了一個角度：只看 30 種海雀和企鵝，用蛋的大小、雛鳥發育型、窩卵數和孵蛋位置四項，就解釋 70–85% 的形狀變異，其中孵蛋位置一項持續解釋超過 60%。蛋最尖的五種，全都以直立姿勢孵蛋、蛋放在平地或斜坡上；在杯狀巢裡孵的，蛋比較圓。他們也從 2017 年研究的補充表估算，手翼指數只占形狀變異約 4%；但原作者那邊回應過，這麼大範圍的比較，效應小是預料中的。",
+      "scope": "4% 只能說「Birkhead 團隊自己從補充表估算」，不當 Stoddard 文中數字、不畫成兩派比分；結論限兩個科 30 種；作者明說不是要檢驗飛行假說，不說「飛行說被推翻」。",
+      "source_ids": [
+        "L66-S008"
+      ],
+      "source_locator": "F28-S002 第 8 章摘要；第 7 章 Introduction 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：4% 是轉述與二次估算，計 0；海雀與企鵝的孵蛋位置分析 0.5。Birkhead 研究室合計 2.5。 原提案 F28-008（目標 C13-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；「只解釋約 4%」是 Birkhead 團隊對 Stoddard 補充表的轉述估算、原文無此數；改成只計海雀企鵝分析，4% 降為帶出處的一句旁白並附原作者回應。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "全體鳥類看是翅膀，換到懸崖海鳥看是「怎麼孵」。",
+        "visual": "兩張圓餅：4% 對 60% 以上，標明兩份研究各自的樣本範圍。",
+        "seconds": [
+          60,
+          70
+        ]
+      }
+    },
+    {
+      "id": "L66-016",
+      "question": "住在又熱又乾地方的鳥，蛋會長得比較圓嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.climate_nest_type_elongation_australia",
+      "answer_target": "在澳洲的雀形目是這樣，但量的是「長不長」，不是「尖不尖」。研究把 310 種雀形目的分布放到 100 公里網格：越熱、越乾、植被越稀疏的地方，蛋越短圓，有屋頂的圓頂巢比例也越高；最圓的蛋出現在最熱地方的開放巢，最長的蛋在比較濕、比較陰的圓頂巢。作者推測同樣體積下圓蛋表面積較小，失水和受曬比較少，但這一點沒有量。",
+      "scope": "相關分析、一個大陸一個目；量的是長寬比；失水機制是推論。",
+      "source_ids": [
+        "L66-S010"
+      ],
+      "source_locator": "F28-S004 Abstract；Introduction 第 3 段；Methods",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：獨立研究群、資料扎實，但量的是伸長而不是本題主問的不對稱，且只是相關。 原提案 F28-009（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；補「量的是長寬比、不是尖度」；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蛋的形狀也看天氣。",
+        "visual": "澳洲地圖色塊由內陸紅到沿海綠，網格上冒出越來越圓的蛋。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-017",
+      "question": "托卵鳥的蛋特別圓，是為了不被宿主啄破嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.cowbird_round_egg_temperature_stability",
+      "answer_target": "傳統說法是又圓又厚比較難啄破，但北美很少宿主會啄破牛鸝蛋。西伊利諾大學把溫度探針裝進褐頭牛鸝蛋和長得很像、長度相近但比較窄的家麻雀蛋（26 顆和 15 顆），放進紅翅黑鸝的巢：平均溫度跟蛋寬沒有明顯關係，但牛鸝蛋的溫度起伏比家麻雀蛋小；牛鸝蛋裡，越圓的溫度起伏越小。作者推測這可能是牛鸝孵得快的部分原因。",
+      "scope": "一種托卵鳥、一種宿主巢、樣本數十顆；「孵得快」是推論；不說「啄破說」已被推翻。",
+      "source_ids": [
+        "L66-S011"
+      ],
+      "source_locator": "F28-S005 Abstract；Introduction 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：獨立研究群，但樣本小、單一宿主。 原提案 F28-010（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；補樣本數與「孵得快」是推論；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "圓不只是盔甲，也是保溫杯。",
+        "visual": "兩顆蛋的溫度曲線，一條平、一條鋸齒。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L66-018",
+      "question": "梨形蛋表面積比較大，對胚胎有什麼好處嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.pyriform_surface_volume_metabolism_model",
+      "answer_target": "有一派用數學模型主張有：同樣長度下，梨形蛋的表面積對體積比較大；他們自己定義了一個「蛋代謝率」，發現它跟孵化期成反比，推論梨形讓胚胎長得快、早點孵出。這和「圓蛋表面積小、比較保水保溫」正好是兩個方向，目前只是模型加既有資料的擬合，沒有實驗對照。",
+      "scope": "只當另一派假說；不說已證實；不與 F28-010 合成「哪種形狀孵得快」的比較。",
+      "source_ids": [
+        "L66-S012"
+      ],
+      "source_locator": "F28-S006 ABSTRACT",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：幾何是定義、代謝率是作者定義的指標，純模型。 原提案 F28-011（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；純數學模型、指標自定義，計數降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個表面積，有人說是缺點，有人說是優點。",
+        "visual": "同體積的圓蛋與梨形蛋展開成平面，面積比較。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L66-019",
+      "question": "同一隻鳥下的蛋，形狀每次都一樣嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "bird_egg.tern_shape_repeatability_laying_order",
+      "answer_target": "相當一致，但不是一模一樣。德國追蹤 330 隻已知年齡的普通燕鷗四年、1,589 顆蛋：包含形狀在內的八項蛋特徵，同一窩內重複性 0.48–0.77，同一隻雌鳥不同年 0.48–0.73；同一窩裡越晚下的蛋，通常越小、也越不尖、越不長。",
+      "scope": "重複性是八項特徵的範圍，不說形狀單項值；單一族群。",
+      "source_ids": [
+        "L66-S013"
+      ],
+      "source_locator": "F28-S007 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：與本題「為什麼尖」只間接相關，作收尾旁證。 原提案 F28-012（目標 C13-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；「很接近」改「相當一致但不一樣」，補產卵順序的方向；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蛋形像簽名，同一個媽媽下的很像。",
+        "visual": "同一雌鳥三年的蛋排成一列，旁邊另一隻雌鳥的蛋明顯不同。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L66-020",
+      "question": "蝸牛殼大多往右轉，左旋的到底有多少？",
+      "domain": "演化與證據",
+      "mechanism_key": "snail.sinistral_species_proportion_by_region",
+      "answer_target": "要看算法。依各地名錄：歐洲 331 種中 16.0% 左旋，但其中多是煙管蝸牛科，扣掉這一科只剩 1.1%；北美（墨西哥以北）689 種只有 0.6%；日本 861 種 18.0%，扣掉煙管蝸牛科是 0.8%；土耳其 541 種 24.8%，扣掉後 5.3%。煙管蝸牛科本身大多左旋，研究者數它 6,500 多萬年的化石與現生種，至少有 14 次、可能 20 多次轉向，平均約每 320 萬到 460 萬年一次。",
+      "scope": "名錄統計，各地數字照原文；「每 320–460 萬年」只限煙管蝸牛科、多為轉成右旋，不當成所有蝸牛的反轉頻率；不換算倍數。",
+      "source_ids": [
+        "L66-S017"
+      ],
+      "source_locator": "F28-S011 Abstract；Results 各地區段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：名錄統計；第三作者 Asami 與 Hoso／Asami 網絡重疊，計入網絡 A。 原提案 F28-013（目標 C13-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；「每三、四百萬年一次」原文限煙管蝸牛科且多為反轉成右旋，改字並限定；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "左旋不是零，但扣掉一個「左撇子家族」就幾乎看不到。",
+        "visual": "世界地圖四個圓餅，一按掉煙管蝸牛科，左旋那片就縮成一條線。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-021",
+      "question": "蝸牛殼往哪邊轉，是看自己的基因嗎？左旋和右旋可以交配嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "snail.chirality_maternal_effect_mating_mismatch",
+      "answer_target": "不是看自己，是看媽媽。在椎實螺，旋向由一個在最早期胚胎就作用的母效位點決定：小蝸牛轉哪邊，取決於媽媽的基因型。日本一個團隊說，他們在胚胎第三次分裂時把細胞往反方向撥，就得到健康的鏡像個體，但牠們的下一代又照基因轉回來。左右相反的蝸牛，生殖孔也在身體相反的一側，面對面交配的扁平蝸牛幾乎不能互配，所以少數的反向個體不好找對象，一般會被淘汰。",
+      "scope": "「撥轉胚球」是 Kuroda 團隊轉述自己先前研究；交配困難的程度依殼形不同（高塔形較易）；不說所有蝸牛都由同一基因決定。",
+      "source_ids": [
+        "L66-S021",
+        "L66-S014"
+      ],
+      "source_locator": "F28-S015 Introduction 第 2 段；F28-S008 Introduction 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：背景機制，兩篇引言的轉述。 原提案 F28-014（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；補「鏡像個體的後代會轉回來」；轉述計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "你轉哪邊，是你媽媽決定的。",
+        "visual": "蝸牛胚胎四細胞到八細胞，細胞往右擰；鑷子一撥改往左。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L66-022",
+      "question": "那個決定左右的基因找到了嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "snail.formin_diaph_duplicate_frameshift",
+      "answer_target": "指向同一對基因。英國諾丁漢大學等團隊發現，椎實螺一對串聯重複的 formin（diaphanous 相關）基因中，一個拷貝的失能突變跟旋向完全對應；用抗 formin 的藥處理右旋胚胎，部分胚胎在第三次分裂時不再往右扭，像左旋胚胎那樣——但之後仍往右扭，並沒有長成左旋蝸牛。在青蛙早期胚胎抑制或過量表現 formin，也會打亂心臟等器官的左右。日本黑田玲子團隊獨立定位到同一對基因：左旋品系的那個拷貝帶移碼突變，做不出完整蛋白。",
+      "scope": "兩隊對拷貝的命名相反，片中只說「同一對重複 formin 基因」；藥物只改變第三次分裂、沒有做出左旋個體；不說所有蝸牛（如日本 Euhadra）都由這個基因決定。",
+      "source_ids": [
+        "L66-S020",
+        "L66-S021"
+      ],
+      "source_locator": "F28-S014 Summary、Results 第 1–2 段、青蛙段；F28-S015 Abstract",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.5）：Davison 2016 0.75（網絡 B；藥物結果下修）＋ Kuroda 2016 0.25（獨立研究群，但與 Davison 是同一個發現的獨立確認，只加確認分）。 原提案 F28-015（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；藥物只讓第三次分裂像左旋胚胎、後續仍右扭，「會長成左旋的樣子」誇大；作者名單沒有 Hoso；兩隊同一發現只算一次加確認分。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蝸牛的左右，和青蛙心臟的左右，可能用的是同一種細胞骨架零件。",
+        "visual": "細胞骨架纖維順時針排列的動畫，再翻成逆時針。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L66-023",
+      "question": "少了那個基因，蝸牛一定變左旋嗎？左旋都是同一次突變來的嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "snail.diaph_reversal_recurrent_independent",
+      "answer_target": "都不一定。日本同型巴蝸牛的一個突變品系，同一窩會同時孵出左旋和右旋；牠們母體的 diaph-b 基因表現大幅減少，但基因本身沒有移碼。把範圍拉到整個腹足類，diaph 基因獨立重複過四次、丟過兩次，而肺螺類的左右反轉，並沒有跟著這些重複或丟失發生。土耳其一帶的 Schileykula 屬八種裡兩個左旋類群，也是各自獨立反轉、不是姊妹群。",
+      "scope": "只說「多次獨立」，不說所有左旋機制相同；Noda 2019 的調控機制作者說待基因體確認。",
+      "source_ids": [
+        "L66-S018",
+        "L66-S019",
+        "L66-S024"
+      ],
+      "source_locator": "F28-S012 Abstract；F28-S013 Abstract；F28-S018 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：Noda 兩篇 0.5（網絡 A）＋ Harl 0.25（獨立，但「多次獨立反轉」與 F28-018 同方向）。 原提案 F28-016（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；數字相符；Harl 與 Satsuma 的多次獨立同方向，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "左撇子蝸牛不是一次意外，是一再發生。",
+        "visual": "演化樹上一根根枝條各自翻成紅色（左旋）。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L66-024",
+      "question": "左旋蝸牛不好找對象，為什麼還會在某些地方變成一整個物種？",
+      "domain": "動物捕食",
+      "mechanism_key": "snail.sinistral_survives_right_handed_snake",
+      "answer_target": "因為有專吃右旋蝸牛的蛇。日本八重山的岩崎氏鈍頭蛇從後方以固定向左的角度咬住爬行中的蝸牛，再用左右下顎交替把肉拉出，下顎右邊的牙比左邊多約半打。京都大學的餵食實驗用兩種大小相近的近緣蝸牛：右旋那種一隻也沒活，左旋那種 87.5% 活下來。蛇的動作不會改，咬左旋的得把上顎伸過殼口，殼口一大就咬不住；所以殼越大，左旋的好處越明顯，小型蝸牛就差得多。",
+      "scope": "圈養餵食實驗、四條蛇；左右旋是兩個不同物種，作者自承沒排除其他種間差異；優勢隨殼大小而變；物種名照原文。",
+      "source_ids": [
+        "L66-S014"
+      ],
+      "source_locator": "F28-S008 Introduction 第 3 段；Results〈Feeding experiments〉第 1–2 段；Fig. 1 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：右旋左旋是不同物種、每條蛇 10 次；網絡 A。 原提案 F28-017（目標 C13-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；行為主角改為岩崎氏鈍頭蛇；補「兩個不同物種、作者未排除種間差異、優勢隨殼大小」；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "交配吃虧，但不會被吃——這筆帳可能划算。",
+        "visual": "鈍頭蛇從左後方伸頭，右旋蝸牛被拉出；換成左旋，蛇嘴對不上。",
+        "seconds": [
+          60,
+          70
+        ]
+      }
+    },
+    {
+      "id": "L66-025",
+      "question": "有吃蝸牛蛇的地方，左旋蝸牛真的比較多嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "snail.sinistral_genera_snake_range_biogeography",
+      "answer_target": "比較多，但關聯不算強。全球比較中，在鈍頭蛇分布區內的蝸牛屬，左旋屬比例 11.8%，區外是 5.0%（作者稱為邊際的關聯）；在扁平和大型的蝸牛裡關聯更強。日本與台灣的 Satsuma 屬，左旋種至少三次各自由右旋演化而來，而左旋的 Satsuma 幾乎只出現在蛇的範圍內。不過蛇區外也有左旋屬，作者不主張每個左旋種都是因為蛇。",
+      "scope": "相關證據加系統發生；比例是「屬」不是「種」，已排除煙管蝸牛總科；不說蛇是唯一原因。",
+      "source_ids": [
+        "L66-S014"
+      ],
+      "source_locator": "F28-S008 Results〈Comparative survey〉、Table 1、〈Phylogenetic analyses〉；Discussion 第 6 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：邊際顯著；網絡 A。 原提案 F28-018（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；補「邊際關聯」與屬的算法；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地圖上，左旋蝸牛跟著蛇走。",
+        "visual": "東亞地圖，蛇的分布塗橘，左旋 Satsuma 紅點幾乎都落在橘色裡。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L66-026",
+      "question": "吃蝸牛的蛇，會不會分辨左旋和右旋？",
+      "domain": "動物捕食",
+      "mechanism_key": "snail.pareas_recognizes_prey_handedness",
+      "answer_target": "住在左旋很多的地方的蛇會。泰國的龍紋鈍頭蛇分布區內約 17.0% 的有肺蝸牛是左旋：圈養實驗中，牠靠近右旋蝸牛的比例 84.2%（76 隻中 64 隻），左旋 68.4%（38 隻中 26 隻）；比 12.4 公釐小的左旋全被吃掉，更大的左旋 26 隻中有 18 隻牠根本不出手。一旦出手，左右旋牠都能用相反手法吃下。對照的岩崎氏鈍頭蛇住在幾乎沒有左旋蝸牛的島上，常常咬不到。",
+      "scope": "圈養實驗、六條蛇；不說蛇是「學會」的（沒做學習實驗），也不說蛇演化成左撇子。",
+      "source_ids": [
+        "L66-S015"
+      ],
+      "source_locator": "F28-S009 Abstract；Introduction 第 3 段；Results",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：網絡 A（Asami）。 原提案 F28-019（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；題目把「學會」改成「分辨」（原文沒做學習實驗）；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蛇沒變左手，牠學會挑。",
+        "visual": "蛇的眼睛特寫，左右兩個蝸牛擺在面前，牠轉頭避開大的左旋。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L66-027",
+      "question": "台灣的鈍頭蛇牙齒也都左右不對稱嗎？",
+      "domain": "動物捕食",
+      "mechanism_key": "snail.pareas_taiwan_dentition_asymmetry_slug_diet",
+      "answer_target": "不一定，要看吃什麼。比較台灣同一地點採集的泰雅鈍頭蛇和台灣鈍頭蛇：台灣鈍頭蛇下顎左右牙數差明顯較小，餵食實驗中強烈偏好蛞蝓勝過蝸牛；作者認為專吃蛞蝓與牙齒不對稱變小有關，也可能讓兩種蛇在同一地方分開吃。",
+      "scope": "不評價保育或飼養；物種中文名以台灣慣用名，片中附學名；只當一句旁證。",
+      "source_ids": [
+        "L66-S016"
+      ],
+      "source_locator": "F28-S010 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：網絡 A、與主問題間接。 原提案 F28-020（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；「讓牙齒變小」改為「有關」（相關），計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "吃沒殼的，就不需要「右撇子」的嘴。",
+        "visual": "兩條蛇的下顎骨，左右牙數對照。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L66-028",
+      "question": "左右相反的蝸牛真的完全不能交配嗎？",
+      "domain": "動物繁殖",
+      "mechanism_key": "snail.amphidromus_interchiral_mating_excess",
+      "answer_target": "在東南亞的 Amphidromus 樹蝸牛不是。這類蝸牛大多左右旋在同一族群共存。馬來西亞 Kapas 島的研究（那裡右旋約占三成五）記錄 2003 到 2005 年三季的交配，再加上從解剖推回的配對：在第一個點有 13 對右×右、42 對右×左、25 對左×左，左右互配比隨機預期多；鼠類吃兩型的比例一樣（約 0.275）。研究者從解剖推測，精莢與輸卵管的旋向讓互配更容易受精，但這點沒有用實驗證明；模擬顯示這種偏好能維持兩型共存。",
+      "scope": "「互配受精較多」是解剖推論，原文明說未經實驗證明；交配對含解剖推得的；只限 Amphidromus（高塔形卻面對面交配）。",
+      "source_ids": [
+        "L66-S022"
+      ],
+      "source_locator": "F28-S016 Abstract；Results（形態頻率、捕食、交配對）；精莢段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：觀察到的互配偏多扎實，機制是推論；網絡 B（作者含 Davison，也含 Gittenberger）。 原提案 F28-021（目標 C13-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；補「Kapas 右旋約 35%，不是各半」「交配對含解剖推得」；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在這裡，「跟自己不一樣的」反而比較受歡迎。",
+        "visual": "樹幹上一左一右兩隻蝸牛面對面交配的插畫，旁邊長條圖。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "L66-029",
+      "question": "只差一個旋向基因，就能瞬間變出新物種嗎？",
+      "domain": "演化與證據",
+      "mechanism_key": "snail.euhadra_interchiral_gene_flow_not_instant_speciation",
+      "answer_target": "沒那麼簡單。日本的 Euhadra 屬常被當成「一個基因造新種」的例子，但研究者從日本自然觀察者的紀錄裡找到五筆左旋和右旋個體交配；基因資料也間接顯示，左旋的 E. quaesita 和右旋的「E. aomoriensis」之間有近期或持續的基因流——作者認為這兩者大概該算同一種的兩型。他們的結論是：交配障礙看來主要在行為，不是構造完全對不上；單靠旋向一個基因，不足以造成新物種。",
+      "scope": "交配紀錄是觀察者報告、不保證有後代；基因流是間接推論、發生在可能同種的兩型之間；不否定蛇的選擇作用。",
+      "source_ids": [
+        "L66-S023"
+      ],
+      "source_locator": "F28-S017 Abstract；Impact Summary；Results〈Mating between dextral and sinistral snails〉",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：網絡 B（Davison、Chiba）。 原提案 F28-022（目標 C13-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V31（2026-11-12）改字後收；基因流限定在可能同種的兩型之間、是間接推論；交配紀錄來源寫明；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鏡像不是一道牆，比較像一道矮籬笆。",
+        "visual": "左旋與右旋蝸牛的 DNA 色塊在族群樹上互相混入。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L66-NA001",
+      "question": "熱帶水果冷害的膜脂相變假說（Lyons 1973 等）原文",
+      "existing_ids": [],
+      "source_ids": [
+        "L66-S002"
+      ],
+      "reason": "只在 F27-S015、F27-S019 的前言讀到轉述（膜相變、活性氧、離子滲漏）；原文未找到開放全文，不另立核心，片中只能當「目前的主流解釋」一句帶過、不算條數。 原提案 F27-NA004。",
+      "reentry_condition": "讀到開放的原始量測（不同耐冷性果實的膜脂相變溫度或離子滲漏實測）時可加約 0.5–0.75 條，並補 C12-02 的機制章。",
+      "reading_status": "只讀到他文轉述"
+    },
+    {
+      "id": "L66-NA002",
+      "question": "海鴉蛋尖是為了減少被撞破嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "L66-S008"
+      ],
+      "reason": "Birkhead 等 2017 Ibis（論文集第 5 章）的機械強度假說；同一研究室已達封頂，且原文只是初步證據。 原提案 F28-NA001。",
+      "reentry_condition": "有另一研究群量到不同蛋形的受力或破損率。",
+      "reading_status": "全文（學位論文重印版）"
+    },
+    {
+      "id": "L66-NA003",
+      "question": "托卵的牛鸝會不會靠蛋形分辨要啄哪顆蛋？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Crudele 等 2023 RSOS（PMC10170346，已讀全文）是蛋的辨識行為，不是蛋形的成因，離題。 原提案 F28-NA002。",
+      "reentry_condition": "另開「托卵鳥與宿主辨蛋」題時可用。",
+      "reading_status": "全文"
+    },
+    {
+      "id": "L66-NA004",
+      "question": "北極濱鳥的蛋形會隨經度變化嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Liu 等 2023 iScience（PMC10250164）重點是配偶制度與擴散，與本題的「為什麼尖」關係弱。 原提案 F28-NA003。",
+      "reentry_condition": "需要族群間變異的例子時再議。",
+      "reading_status": "摘要與 Highlights"
+    },
+    {
+      "id": "L66-NA005",
+      "question": "寄居蟹也偏好右旋的殼嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Tachibana 等 2024（Research Square 預印本）未經同儕審查，且與 Hoso 同網絡。 原提案 F28-NA004。",
+      "reentry_condition": "正式刊出且有開放全文。",
+      "reading_status": "只見 Europe PMC 書目"
+    },
+    {
+      "id": "L66-NA006",
+      "question": "網紅左旋蝸牛 Jeremy 的後代是左旋嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Davison 等 2020 Biol Lett（PMC7336844）REST 回 500、europepmc.org 回 Cloudflare 挑戰，未繞過。 原提案 F28-NA005。",
+      "reentry_condition": "取得合法全文。",
+      "reading_status": "未讀"
+    }
+  ]
+}
