@@ -1190,7 +1190,7 @@ python3 -I docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scri
 **`cast.json` 要跟著改的**（這次不改 `cast.json`，列著等改）：老陳 `rice bran dust on his hands` → 圍裙與捲起的袖子上；`huiyi-1948`、`huaibiao`、`mihang-laozhao` 的辮子數（等站主）、`shibasui-zhao` 的「as in huiyi-1948-t1」；`baoxinling` 的 zipper pull（等站主）；`linzhuren` 出場補第 29 集、`fubo` 補第 28 集、extras `banjia` 補第 28 集；`props` 補 `prop-lanbubao`；`yaogui` 的「thirty small drawers in five rows of six」跟稿子的「一整面小抽屜」二選一。
 
 **要站主決定的**（決定前各集照上面的寫法，不改設定）
-1. **書包報信鈴的位置**：前袋拉鍊頭（第 1、3、4、7 集，`cast.json` `baoxinling`），還是翻蓋正中圓銅扣旁（第 8 集、`prop-shubao-t1`）？第 13 集 c01、第 20 集 c44、c48 的稿子還寫拉鍊頭。定了以後全季替換「掛在書包上照參考圖的位置」那一句，並改 `cast.json`。
+1. **書包報信鈴的位置**：前袋拉鍊頭（第 1、3、4、7 集，`cast.json` `baoxinling`），還是翻蓋正中圓銅扣旁（第 8 集、`prop-shubao-t1`）？第 9–60 集的稿子已在 2026-11-12 全季掃描改成中性寫法。定了以後全季替換「掛在書包上照參考圖的位置」那一句，並改 `cast.json`。
 2. **燈座尺寸**：〈道具〉與第 41 集錢老闆的台詞是「三十公分見方、十二公分高」，`cast.json` 與拍出來的是連座約 30 公分高。改數字（連帶第 41 集台詞重錄），還是重畫道具圖？
 3. **照片的辮子數**：十八歲照片已定一條辮；撕成兩半的合照、懷錶裡的半張照片、米行老照片要幾條（`cast.json` 的 `huiyi-1948`、`huaibiao`、`mihang-laozhao` 都寫兩條）？用到的鏡：第 24 集 c06 起、第 40 集 c39、第 52 集 c05、第 55–57 集。
 4. **片長超出的集**：第 9–60 集比目標長超過 10% 的 17 集（第 12、15、17、18、19、22、27、31、34、36、42、47、49、51、52、55、56 集，多 10.4–15%；第 56 集多 18.5 秒最多），第 9–60 集合計多 542 秒（約 8.3%）。接受，還是請寫稿者減？
