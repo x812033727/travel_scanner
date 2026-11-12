@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-3907",
+  "revision": "2026-11-12-pool-3921",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 4297,
-    "canonical_questions": 4136,
-    "eligible_candidates": 3966,
-    "selected_candidates": 3907,
+    "raw_records": 4311,
+    "canonical_questions": 4150,
+    "eligible_candidates": 3980,
+    "selected_candidates": 3921,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5201,
-    "current_research_source_urls": 2252,
-    "selected_source_urls": 3415,
-    "new_suggestions_not_added": 2402,
+    "source_urls": 5217,
+    "current_research_source_urls": 2268,
+    "selected_source_urls": 3429,
+    "new_suggestions_not_added": 2409,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
@@ -2094,6 +2094,22 @@
       "sha256": "ba05891f0c6df7873a840b611d0e9ab820828384236f5d9e4cbdd27db90b91f2"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave61-earth.json",
+      "sha256": "820a0b4824b57bb1b8d1126d819220d91c61c5a075aa615bab452c5a9254b740"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave61-human.json",
+      "sha256": "ee31321c82047d371d95f5161407c11c606ab27fdf2c67827342c6123883dff3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave61-life.json",
+      "sha256": "48ccf6b6f560080b1f194e9afda10938d76f781f2539a0a792139de79bac709f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave61-physics.json",
+      "sha256": "a5cdb28e65c96cd6d229b7fce294f2199cf2e0fdf7ffad3febe54176da6c6aa2"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave7-animals.json",
       "sha256": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410"
     },
@@ -2167,11 +2183,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "d70587d17e067d9f6b5d734242255476d2b0202ea91806732f38701fc84ada0a"
+      "sha256": "2778158373812ea00fc1818c383154edd14ec9bf747ff0f2e5897eb862558399"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "3a9caa3a24746c4a79b0f87ab6ca2ee800074634ec0f8a39e39314fce8aa8263"
+      "sha256": "c5f5d12af59cecc33c0d18dd5beb68ae88dd75027d3aac96e4aa661abaf42826"
     }
   ],
   "sources": [
@@ -20467,6 +20483,32 @@
       ]
     },
     {
+      "id": "SRC-2a3f6c8bd62a2522",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13731914/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/desc.70300",
+          "title": "A Sensitive Period for Automaticity Rather than Ability: Automatic Visuospatial Coding of Touch Requires Visual Experience in Early Life",
+          "publisher": "Badde S, Sourav S, Pitchaimuthu K, Kolli B, Khan W, Kekunnaya R, Röder B／Developmental Science 30(1):e70300（2026 線上，CC BY）",
+          "version": "PMC 全文 XML（Wiley 開放版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+          "reading_scope": "摘要、Introduction、Methods 2.1–2.4（受試者、設備、兩個實驗的刺激組合與 SOA）。Results 數值段以摘要與 Fig1 圖說為準，未逐項核混合模型係數。",
+          "locator": "Abstract；§1 第2–5段；§2.1 Participants；§2.3 Procedure；Fig1",
+          "summary": "19 名先天雙眼緻密白內障、出生後 2 到 252 個月（平均 57 個月）才手術恢復視力的人，與 13 名兒童期才得白內障的人、同齡視力正常者比較。雙手各震一下，用腳踏板報哪一邊先。只有觸覺配對時（實驗1），先天白內障組不出現交叉手的代價，像先天盲人；把觸覺配對混在聲音與聲音-觸覺配對中（實驗2），交叉手明顯讓他們出錯，表現接近視力正常者。兒童期白內障組兩種情境都和正常組一樣。作者結論：要早年視覺的是「自動」把觸覺放進視覺空間，不是這個能力本身。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "小樣本、多數在印度受測，視力正常組年幼者在漢堡受測；兩實驗受試者只部分重疊。Introduction 中先天盲人、後天盲人、嬰兒的結果引自他人研究。 覆核 V21（2026-11-12）：publisher 的卷期年改為「Developmental Science 30(1):e70300，線上 2026-11-03、紙本 2027 年 1 月（CC BY）」。limitations 補：19 名先天組中 7 人兩實驗都做、5 人只做實驗 1、7 人只做實驗 2；13 名發展性組 6 人兩者都做；4 人改用舉手作答。",
+          "author_cache": {
+            "file": "f18src/PMC13731914.xml",
+            "sha256_prefix": "3fe47dc342eceb97",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-human-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13731914/"
+        }
+      ]
+    },
+    {
       "id": "SRC-2a4b47da01f1d842",
       "url": "https://doi.org/10.1103/PhysRevLett.99.234502",
       "readings": [
@@ -32320,6 +32362,32 @@
       ]
     },
     {
+      "id": "SRC-4434badc07626225",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8152922/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1093/texcom/tgab025",
+          "title": "What Underlies a Greater Reversal in Tactile Temporal Order Judgment When the Hands Are Crossed? A Structural MRI Study",
+          "publisher": "Moharramipour A, Kitazawa S／Cerebral Cortex Communications 2:tgab025（2021，CC BY）",
+          "version": "PMC 全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+          "reading_scope": "摘要、Introduction、Methods（SOA 12 種、reversal value 定義）、Results 行為段與 Fig2 圖說。未逐一核 68 區皮質指標的統計。",
+          "locator": "Abstract；Introduction 第2段；Results 首段；Fig2 圖說",
+          "summary": "42 名受試者做交叉手時間順序判斷，再做結構 MRI。不交叉時 SOA 超過 100 毫秒大多答對；交叉時有人即使超過 200 毫秒仍判反，曲線呈 N 字或幾乎完全倒置，也有人很少判反（reversal value 0 到 1 都有）。女性平均較高但不顯著（P=0.23）。倒轉較小的人在 10 個腦區皮質較薄、面積較大、皺褶較多（相關）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "腦結構只與倒轉程度相關，不是因果；Introduction 中 300–400 毫秒內「從錯的手重新對到正確的手」是 Kitazawa 等 2008 的理論說法，不是本研究量到。",
+          "author_cache": {
+            "file": "f18src/PMC8152922.xml",
+            "sha256_prefix": "9b307d6bde95497b",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-human-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8152922/"
+        }
+      ]
+    },
+    {
       "id": "SRC-44503b64af22cb16",
       "url": "https://www.faa.gov/sites/faa.gov/files/2022-01/JanFeb2020.pdf",
       "readings": [
@@ -40507,6 +40575,32 @@
       ]
     },
     {
+      "id": "SRC-586f585437674113",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5312016/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rstb.2016.0066",
+          "title": "The dual rod system of amphibians supports colour discrimination at the absolute visual threshold",
+          "publisher": "Yovanovich CAM, Koskela SM, Nevala N, Kondrashev SL, Kelber A, Donner K／Philosophical Transactions of the Royal Society B 372:20160066（2017，開放）",
+          "version": "PMC 全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+          "reading_scope": "摘要、§1 背景（兩種桿細胞）、蟾蜍求偶與捕食實驗、青蛙趨光跳躍實驗的方法與結果段。",
+          "locator": "Abstract；§1；prey-catching results（0.004–0.0004 cd m−2）；phototactic jumping results（0.001 R* rod−1 s−1）",
+          "summary": "多數蛙類視網膜有兩種感光波長不同的桿細胞（約 430 與 500 奈米），早就被推測可在極暗處分顏色。實測：蟾蜍在求偶與捕食兩種任務的辨色門檻不同，兩者都沒有只靠桿細胞辨色的跡象；捕食任務中青蛙甚至不按顏色、按亮度選。可是讓青蛙往亮窗跳時，藍綠兩窗（調成對綠敏桿細胞一樣亮）從測到的最低光度 0.001 R*/桿/秒起就有偏好，作者說這是「一開始看得見就分得出顏色」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "同一研究多個實驗合計 2 條；人類對照數字作者標「data not shown」，不採。青蛙結論限趨光跳躍任務。 覆核 V21（2026-11-12）：summary 補設計限制：求偶實驗只用雄蟾蜍（青蛙離開繁殖池就失去求偶動機）；捕食實驗蟾蜍 5 隻、青蛙 3 隻，青蛙在 40 cd m−2 下按亮度選最暗的；趨光跳躍只做青蛙（R. temporaria，17 隻）。0.001 R*/桿/秒時是「小幅但顯著」的綠窗上升，0.02 時藍窗低於隨機。",
+          "author_cache": {
+            "file": "f18src/PMC5312016.xml",
+            "sha256_prefix": "aa5380b7dca10c05",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-life-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5312016/"
+        }
+      ]
+    },
+    {
       "id": "SRC-58772c22ceee1819",
       "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32004R0261",
       "readings": [
@@ -43963,6 +44057,32 @@
           },
           "origin": "wave10-sensing-20261101",
           "original_url": "https://www.jneurosci.org/content/jneuro/24/9/2102.full.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5fca938b815137c0",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1828626/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0000333",
+          "title": "A Bayesian Perceptual Model Replicates the Cutaneous Rabbit and Other Tactile Spatiotemporal Illusions",
+          "publisher": "Goldreich D／PLoS ONE 2(3):e333（2007，開放）",
+          "version": "PMC 全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+          "reading_scope": "Introduction（錯覺清單與 Fig1）、Results 開頭的模型說明。未逐式核方程。",
+          "locator": "Introduction 第3–5段；Fig1 圖說；Results 第1段",
+          "summary": "同樣的兩段距離，走得快的那段感覺較短（tau 效應）；極快連續兩下會被感覺成同一點。作者的貝氏觀察者只假設「碰皮膚的東西通常動得慢」，就重現皮膚兔、tau、kappa 等錯覺：刺激來得快，腦就把距離縮短、把時間拉長。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是模型與文獻整理；模型吻合不等於證明腦就是這樣算。 覆核 V21（2026-11-12）：limitations 補：tau 效應、兩下合點、kappa 效應在本篇是前言整理的他人研究（文獻 15–21），本篇自己的是模型。",
+          "author_cache": {
+            "file": "f18src/PMC1828626.xml",
+            "sha256_prefix": "9751322a11b9f2b9",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-human-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1828626/"
         }
       ]
     },
@@ -54306,6 +54426,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/27638085/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-783396e6e5822d3f",
+      "url": "https://courses.ems.psu.edu/meteo300/node/780",
+      "readings": [
+        {
+          "canonical_url": "https://courses.ems.psu.edu/meteo300/node/780",
+          "title": "METEO 300: Fundamentals of Atmospheric Science, Lesson 5.8 Did you know most precipitation comes from collision-coalescence?（W. Brune）",
+          "publisher": "賓州州立大學地球與礦物科學學院（大學課程教材）",
+          "version": "線上課程頁（2026-11-12 擷取）",
+          "accessed_on": "2026-11-11",
+          "read_via": "由池中已用的 5.7 Vapor Deposition 頁（node/679，K6003 的來源）頁內導覽連結「5.8 Did you know…」進入；curl GET 200（工具預設標頭），去標籤後閱讀",
+          "reading_scope": "全頁正文（影片逐字稿只讀開頭）",
+          "locator": "〈Collisions〉之後：終端速度段（50 µm 約 0.3 m/s、500 µm 約 4 m/s）；Equation 5.16 之後兩段（Ec 定義、小滴隨氣流繞過）；「Ec is small for 10 μm drops…」段；Equation 5.17 之後一段（50 µm 長到 1000 µm 約 25 分鐘；10–20 µm 前靠凝結慢慢長）",
+          "summary": "大滴往下掉、掃過下方小滴才長大；但掃過的有效截面比幾何截面小，因為小滴會順著氣流被帶著繞過大滴。碰撞合併效率 Ec 對 10 µm 的滴很小，要靠隨機讓少數滴先變大；收集滴半徑超過 100 µm 後，對小到 10–20 µm 的小滴效率都很好，到幾百 µm 時接近 100%。在 Ec=1 等假設下，半徑成長率與半徑成正比，所以成長是指數式：液態水 1 g/m³ 時，從 50 µm 長到 1000 µm 只要約 25 分鐘。結論：雲滴靠凝結慢慢長到 10–20 µm，碰撞合併一旦開始產生少數大滴，就指數成長。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "教材頁；Ec 曲線圖是課程依 Rogers 與 Yau 重繪，本輪沒有讀到原始碰撞效率量測。25 分鐘是課程在 Ec=1、vL>>vs、液態水 1 g/m³ 等假設下的推算，不是觀測。與池中 K6001–K6004 同一門課，但 node/780 這一頁池中沒有。 覆核 V20（2026-11-12）：accessed_on 改為 2026-11-12（version 欄寫 2026-11-12 擷取，快取檔時間也是 2026-11-12），或把 version 改成與 accessed_on 一致。",
+          "author_cache": {
+            "file": "f17src/psu780.html",
+            "sha256_prefix": "5515c4131ca5d5a0",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-earth-20261111",
+          "original_url": "https://courses.ems.psu.edu/meteo300/node/780"
         }
       ]
     },
@@ -71758,6 +71904,32 @@
       ]
     },
     {
+      "id": "SRC-9f37b5712077a531",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5886045/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1093/icb/icw099",
+          "title": "Examining the Effects of Chromatic Aberration, Object Distance, and Eye Shape on Image-Formation in the Mirror-Based Eyes of the Bay Scallop Argopecten irradians",
+          "publisher": "Speiser DI, Gagnon YL, Chhetri RK, Oldenburg AL, Johnsen S／Integrative and Comparative Biology 56(5):796（2016，PMC 作者稿）",
+          "version": "PMC 全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+          "reading_scope": "Synopsis／摘要與 Introduction；光線追跡結果只讀摘要層級的結論數字。",
+          "locator": "Synopsis；Introduction",
+          "summary": "扇貝眼用凹面鏡成像，兩層視網膜疊在一起。對活體海灣扇貝眼做光學同調斷層掃描後建光線追跡模型：在 550 奈米、物距大於 0.01 公尺時，遠側視網膜解析約 2°、近側約 7°；色差或物距都不會讓兩層同時對焦，作者推測眼形改變可能調整近側影像。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是光學模型推估，不是行為量測；物種是海灣扇貝，與 R37009（Palmer 2017，Pecten maximus）不同種。 覆核 V21（2026-11-12）：reading_scope 由「Synopsis 與 Introduction」擴為「V21 另核 Results 光線追跡段（550 nm 遠側 2°、近側 7°；400 nm 1.6°／5.9°；700 nm 1.9°／6.6°；物距 0.01–1 m 影響小；眼形變長兩層 FWHM 都變小）」。summary 補：約 2° 的解析度先前已由電生理（Land 1966）與行為估計得到，模型是支持遠側視網膜負責它。",
+          "author_cache": {
+            "file": "f18src/PMC5886045.xml",
+            "sha256_prefix": "8d593419903e25a1",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-life-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5886045/"
+        }
+      ]
+    },
+    {
       "id": "SRC-9f6a9955c191bd0c",
       "url": "https://openstax.org/books/college-physics-2e/pages/7-2-kinetic-energy-and-the-work-energy-theorem",
       "readings": [
@@ -72244,6 +72416,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.bts.gov/newsroom/air-travel-consumer-report-december-2024-full-year-2024-numbers"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a070f120b0b2d13b",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8580434/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rspb.2021.1730",
+          "title": "Panoramic spatial vision in the bay scallop Argopecten irradians",
+          "publisher": "Chappell DR, Horan TM, Speiser DI／Proceedings of the Royal Society B 288:20211730（2021，CC BY）",
+          "version": "PMC 全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+          "reading_scope": "摘要、Introduction（已知解析約 2°）、Methods（靜止與旋轉刺激、觸手方向的圓形統計）、Discussion 首段。",
+          "locator": "Abstract；Introduction 第3段；Methods (b)–(d)；Discussion",
+          "summary": "先前已知扇貝眼對窄到 2° 的旋轉條紋有反應，但不知道牠能否知道東西在哪邊。實驗：在不同方位放靜止黑色圖樣，扇貝把感覺觸手伸向圖樣，圖樣越大越常指向；圖樣旋轉時，個別觸手會跟著轉，觸手伸出也成一波波繞圈。作者據此首次表明扇貝不只「察覺」還有「空間視覺」。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "觸手指向是行為代理指標；不說扇貝在腦中拼出完整影像。 覆核 V21（2026-11-12）：summary 的「圖樣越大越常指向」改為「最寬的 24° 條紋比 6°、12° 與對照更集中（6° 與 12° 之間無遞增）」；補方位實驗背側 0/16、對照 4/17 也有顯著指向；limitations 補：大小段一句「global test … significant (p > 0.05)」原文自相矛盾，不引用。",
+          "author_cache": {
+            "file": "f18src/PMC8580434.xml",
+            "sha256_prefix": "afd99ece2a0979c0",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-life-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8580434/"
         }
       ]
     },
@@ -82702,6 +82900,32 @@
       ]
     },
     {
+      "id": "SRC-b85c37ac2644d23d",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1382015/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pbio.0040069",
+          "title": "The Cutaneous Rabbit Illusion Affects Human Primary Sensory Cortex Somatotopically",
+          "publisher": "Blankenburg F, Ruff CC, Deichmann R, Rees G, Driver J／PLoS Biology 4(3):e69（2006，開放）",
+          "version": "PMC 全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+          "reading_scope": "摘要、Introduction、Results 行為段與 fMRI 主要比較、Materials and Methods 受試者段。",
+          "locator": "Abstract；Results 第1段（90%／93%／87%）；Methods participants",
+          "summary": "在前臂腕部與近肘處快速依序刺激，受試者覺得中間沒被碰的位置也被碰了一下（皮膚兔）。掃描中錯覺試次有 90% 報告中間被碰，真的碰中間的試次是 93%；同樣三個位置換順序的對照試次 87% 正確說沒有。錯覺序列讓對側初級體感皮質在「錯覺位置」對應的區域活化，強度與真的碰到那裡相當。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "fMRI 活化與知覺相關；13 人參加、部分排除。中間皮膚麻醉仍有錯覺是引用舊研究，非本研究。 覆核 V21（2026-11-12）：limitations 改為：「13 人參加，2 人因沒有穩定感到錯覺被排除、1 人掃描技術問題，分析 10 人；前臂電刺激、脈衝間隔 50 ms；fMRI 活化與知覺相關。」",
+          "author_cache": {
+            "file": "f18src/PMC1382015.xml",
+            "sha256_prefix": "c28dbf3bb4df3ef4",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-human-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1382015/"
+        }
+      ]
+    },
+    {
       "id": "SRC-b85e394898eddf6d",
       "url": "https://silverkris.singaporeair.com/inspiration/arts-culture/truly-local-things-must-try-singapore",
       "readings": [
@@ -83688,6 +83912,32 @@
       ]
     },
     {
+      "id": "SRC-baca0a20385d11c9",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5430802/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-017-01158-9",
+          "title": "How visual experience impacts the internal and external spatial mapping of sensorimotor functions",
+          "publisher": "Crollen V, Albouy G, Lepore F, Collignon O／Scientific Reports 7:1022（2017，開放）",
+          "version": "PMC 全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+          "reading_scope": "摘要、Participants、TOJ 方法（640 試次）、Results 的 TOJ 段；動作序列實驗只讀摘要層級。",
+          "locator": "Abstract；Methods Participants；Results: Temporal order judgment task",
+          "summary": "11 名早盲（9 名先天）與 11 名配對視力正常者做雙手時間順序判斷。交叉手讓視力正常者明顯變差，早盲者不受影響；整體斜率早盲 0.90、視力正常 0.59。部分視力正常者交叉時斜率甚至為負，常答成另一隻手先。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "早盲組含 2 名非先天（2 個月、3 歲失明）；第二個動作序列實驗兩組都能轉移，本題不採。 覆核 V21（2026-11-12）：limitations 補：已循 Europe PMC 搜尋讀到勘誤 PMC5715084（DOI 10.1038/s41598-017-16992-0），只更正作者所屬機構與作者貢獻聲明，不影響數據。summary 可加交叉前後斜率：視力正常 0.88→0.29、早盲 0.91→0.88。",
+          "author_cache": {
+            "file": "f18src/PMC5430802.xml",
+            "sha256_prefix": "46cff351d361041e",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-human-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5430802/"
+        }
+      ]
+    },
+    {
       "id": "SRC-bad2e21660aad68d",
       "url": "https://doi.org/10.1038/s41598-018-33458-z",
       "readings": [
@@ -84605,6 +84855,32 @@
       ]
     },
     {
+      "id": "SRC-bceccd869dd3622c",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4274098/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0115757",
+          "title": "Direct Splash Dispersal Prevails over Indirect and Subsequent Spread during Rains in Colletotrichum gloeosporioides Infecting Yams（Penet、Guyader、Pétro、Salles、Bussière）",
+          "publisher": "PLOS ONE 9(12): e115757（2014，CC BY）；INRA 瓜地洛普",
+          "version": "刊本全文 XML（Europe PMC）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 搜尋結果列出 PMC4274098，fullTextXML curl GET 200（工具預設標頭）",
+          "reading_scope": "Abstract、Introduction、Methods 全部；Results 未逐段讀",
+          "locator": "Abstract；Methods〈Dispersal experiment〉（降雨模擬器、2.5 m 噴頭、24–45 cm 載玻片）",
+          "summary": "降雨模擬器下，山藥炭疽病菌孢子從病葉來源濺到 50 公分，隨距離指數下降；從被汙染的地面再濺一次的孢子很少，但所占比例隨距離增加；前一場雨留在地上的汙染沒有帶到下一場。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "人工降雨（不補「田間自然降雨」的缺口）；只讀到方法與摘要層級，未當核心，見 not_added。 覆核 V20（2026-11-12）：read_via 補：V20 今日以 Europe PMC REST search（TITLE:\"splash dispersal\" AND OPEN_ACCESS:y）重跑，結果列出 PMC4274098（doi 10.1371/journal.pone.0115757），確認 PMCID 來自搜尋結果；作者快取裡沒有該次搜尋的回應檔，建議補存。",
+          "author_cache": {
+            "file": "f17src/PMC4274098.xml（文字 f17src/PMC4274098.txt）",
+            "sha256_prefix": "602177cf4412236b",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4274098/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-bcfad1ac16db493f",
       "url": "https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/0908-13.pdf",
       "readings": [
@@ -84957,6 +85233,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.korea.net/NewsFocus/Business/view?articleId=171242"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bd6be2538fc38cb7",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10985140/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3389/fpls.2024.1370495",
+          "title": "Rain splash-mediated dispersal of Escherichia coli from fecal deposits to field-grown lettuce in the mid- and south Atlantic U.S. regions is affected by mulch type（Hopper、Hudson、Klair、Ding、Gao、Jha、Bryan、Tikekar、Coolong、Dunn、Micallef）",
+          "publisher": "Frontiers in Plant Science 15:1370495（2024，CC BY）；馬里蘭大學、喬治亞大學",
+          "version": "刊本全文 XML（Europe PMC，PMC10985140）",
+          "accessed_on": "2026-11-11",
+          "read_via": "Europe PMC REST 搜尋（rain splash 開放全文）列出 PMC10985140，再以與池中 P60-001／P60-002 相同的 fullTextXML 端點 curl GET 200（工具預設標頭）；去標籤後全文閱讀",
+          "reading_scope": "全文（Abstract、Methods 全部、Results 全部、Discussion 前八段；圖只讀圖說）",
+          "locator": "Table 1（各試驗是自然或模擬降雨：Trial 1B 自然 6 mm、Trial 3 自然 11 mm）；Results〈Splash-mediated E. coli transfer from fresh and stale feces…〉第二、三段；〈…under different mulches〉第一至四段；〈Modelling E. coli decline…〉第一、二段與 Figure 5 圖說；Discussion 第四、五段（塑膠布「ricochet」的解釋）與限制段",
+          "summary": "在馬里蘭與喬治亞的露天田區，把摻了約 8 log CFU/g 大腸桿菌的兔糞放在萵苣畦中間，等一場雨（自然雨或在乾燥日用背包噴霧器模擬），雨後 1 天沿兩條 1.5 公尺的樣線在 0.1、0.3、0.6、0.9、1.2、1.5 公尺取萵苣。所有試驗都是離糞越遠越少；馬里蘭 Trial 1A／1B，1.5 公尺處陽性 0%，最大的下降在 0.3 到 0.6 公尺之間（幼葉 1.9 log、自然雨 6 mm 的成株 3.3 log）。Trial 3（馬里蘭，自然雨 11 mm）比較覆蓋：生物可分解塑膠布與稻草差約 2 log；陽性樣本稻草 50.6%、塑膠布 85.7%（原文只寫 plastic，未指明黑色或生物可分解）。用 Trial 3 的資料配 Weibull 模型，預測大腸桿菌比糞便少 7 個 log 所需的距離：稻草 0.4 m、裸土 0.7 m、生物可分解塑膠布 1.4 m、黑塑膠布 1.2 m（正文數字；摘要寫 1.2–1.4、0.75、0.43 m）。作者推測：不透水、光滑的塑膠布讓水滴反覆彈跳（ricochet），稻草與裸土把水吸住或困住。雨後第 3 天在 0.3 m 處比第 1 天少。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "汙染物是摻入兔糞的非致病大腸桿菌，不是植物病害；用的是「落到葉上的菌量」而不是病斑。自然雨只有兩場（Trial 1B 6 mm、Trial 3 11 mm），其餘是背包噴霧器模擬雨；Weibull 預測只用 Trial 3 一場自然雨的資料。塑膠布讓水滴彈跳是作者的推測，本文沒有量水滴。摘要與正文的 7-log 距離數字略有出入，引用以正文 Results 為準。喬治亞的白塑膠布差異很小（0.2 log）。 覆核 V20（2026-11-12）：limitations 補：（1）糞便放在畦面中間、兩行萵苣之間，塑膠布畦的糞便在塑膠布上面，覆蓋物沒有蓋住汙染源；（2）7-log 距離只有稻草對兩種塑膠布（p<0.01）、生物可分解塑膠布對裸土（p<0.05）顯著，黑塑膠布對裸土未報顯著，稻草與裸土、兩種塑膠布之間 3–7 log 都沒有差別；（3）85.7% 原文只寫 plastic、是全部距離合計；（4）「1.5 m 處 0%」原文是 Trial 1A 與 1B 各自的整體結果，Trial 1B 的成株 3.3 log 下降是新鮮糞便那一組（Table 2 記 Trial 1B 雨量 0/6，6 mm 屬新鮮糞便）；（5）Discussion 的 1.52 m 緩衝區、「裸土看來最好」與採收間隔是食品安全建議，不採用。read_via 補：V20 今日照作者查詢字串重跑 Europe PMC search，結果仍列 PMC10985140。",
+          "author_cache": {
+            "file": "f17src/PMC10985140.xml（去標籤文字 f17src/PMC10985140.txt）",
+            "sha256_prefix": "82d20ae8de5f2b92",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10985140/fullTextXML"
         }
       ]
     },
@@ -91611,6 +91913,32 @@
       ]
     },
     {
+      "id": "SRC-cb0362f52d1aba0b",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3925972/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3389/fpsyg.2014.00076",
+          "title": "Using time to investigate space: a review of tactile temporal order judgments as a window onto spatial processing in touch",
+          "publisher": "Heed T, Azañón E／Frontiers in Psychology 5:76（2014，開放）",
+          "version": "PMC 全文 XML（綜述）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（curl，工具預設標頭），經 Europe PMC 搜尋 API 以 DOI／PMCID 找到",
+          "reading_scope": "全文中「交叉效應」與「非同源肢體」「盲人發展」段落；圖2、圖4 圖說。",
+          "locator": "Section on crossing effects (Yamamoto & Kitazawa 2001a; Shore 2002)；non-homologous limbs (Schicke & Röder 2006, Fig2)；Developmental aspects: blind individuals (Fig4)",
+          "summary": "綜述：不交叉時約 30–70 毫秒就能分先後，交叉時要約 120–300 毫秒；交叉一手與對側腳（手臂跨過腿）也出現同樣的交叉代價；在黑暗中或矇眼時觸覺仍會被重新對到外部空間。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "同行評審綜述，數字與手腳交叉結果引自 Shore 2002、Schicke & Röder 2006 等原研究，原研究本輪未讀；只計 0.5 條。 覆核 V21（2026-11-12）：summary 改寫：手與對側腳交叉的結果是用來排除「左右初級體感皮質同源區經胼胝體干擾」；排除當下視覺的是「黑暗或矇眼仍會重新對位」一句。limitations 補：同一段也整理了 Röder 2004（先天盲不受交叉影響、後天盲與一般人同）與 Ley 2013（2 歲開刀的白內障個案），與 F18-008、F18-009 同方向，不另計。",
+          "author_cache": {
+            "file": "f18src/PMC3925972.xml",
+            "sha256_prefix": "038ea77895fee283",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-human-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3925972/"
+        }
+      ]
+    },
+    {
       "id": "SRC-cb0bb260859eac3c",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/9-6-superconductors",
       "readings": [
@@ -92338,6 +92666,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "physics-20261101",
           "original_url": "https://openstax.org/books/college-physics-2e/pages/13-2-thermal-expansion-of-solids-and-liquids"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cca82e60e1402010",
+      "url": "https://acp.copernicus.org/articles/17/14433/2017/acp-17-14433-2017.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.5194/acp-17-14433-2017",
+          "title": "Further evidence for CCN aerosol concentrations determining the height of warm rain and ice initiation in convective clouds over the Amazon basin（Braga、Rosenfeld、Weigel、Jurkat、Andreae、Wendisch、Pöschl、Voigt、Mahnke、Borrmann、Albrecht、Molleker、Vila、Machado、Grulich）",
+          "publisher": "Atmos. Chem. Phys. 17: 14433–14456（2017，CC BY 3.0）；巴西 INPE、希伯來大學、馬克斯普朗克化學所等",
+          "version": "刊本 PDF",
+          "accessed_on": "2026-11-11",
+          "read_via": "WebSearch 結果列出的 ACP 刊本 PDF 連結，curl GET 200（工具預設標頭）；pdftotext -layout",
+          "reading_scope": "全文（Abstract、§1、§3–§5、§6 前段、Table 3；圖只讀圖說）",
+          "locator": "Abstract；§1 倒數第二段（re 13–14 µm、雨生成率約與 re^5 成正比，引 Freud 與 Rosenfeld 2012）；§5.1 第一、二段與 Figure 2 圖說（CCP–CDP re > 13 µm、CAS-DPOL re > 12 µm）；Table 3；§5.3 AC19、AC09、AC18 段；§6 第一、二段（Dr = (5±1.06)·Na）",
+          "summary": "2014 年 9 月 ACRIDICON–CHUVA，HALO 飛機穿越亞馬遜上空成長中的積雲量雲滴與降水粒子。以每秒的量測算降水機率，雲滴有效半徑超過約 13 µm（另一儀器 12 µm）才開始出現雨滴。開始下暖雨的高度（雲底以上）與雲底雲滴數濃度近乎成正比：Dr ≈ 5·Nd（公尺；Nd 每立方公分），偏差約 21%。乾淨的大西洋上空（AC19，Na 約 276 cm⁻³）雲底上 1660 公尺就有雨，當時約 10 °C；被汙染的 AC09、AC18 分別在約 3000、3800 公尺才起雨（後者在 −5.7 °C 等溫線，雨滴仍是液態）。Nd 超過約 1000 cm⁻³ 時，起雨深度超過 5000 公尺，飛機在成長中的積雲裡看不到液態雨滴，最先出現的降水粒子是冰；AC08、AC12、AC20 在量測到的高度內既沒有雨也沒有冰。作者說同樣的線性關係在以色列、印度也見過（Freud 與 Rosenfeld 2012 的斜率約 4）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 S60-002（Freud 等 2008，同一研究群、同是亞馬遜燒林季）不是完全獨立：Rosenfeld 是兩篇共同作者；但這是 2014 年另一個飛機計畫、另一套儀器。只有 8 趟飛行，有起雨的只 3 趟；Na 是由 re 剖面反推（與雲底實測差 20–30%）。re 門檻是有效半徑（13 µm），S60-002 用的是眾數直徑（24 µm），兩者不能互換或並成同一個數字。AC19 在海上，作者推測海鹽大顆粒讓它在 re 約 12 µm 就起雨。以色列、印度的結果是引用。 覆核 V20（2026-11-12）：summary 改：「Dr ≈ 5·Nd」是 D13（由雲底雲滴數以絕熱模式估算的深度）對 Na 的迴歸、所有飛行，三趟實測 Dr 略高於 D13；「Nd>1000 cm⁻³ 時 Dr>5000 m」是摘要概括、5000 m 以上為估算；以冰開始的只有 AC07（Na 963）與 AC13（Na 1080），AC08、AC12、AC20 雨和冰都沒有量到；摘要「polluted conditions 下沒有液態雨滴」指極汙染。",
+          "author_cache": {
+            "file": "f17src/braga2017.pdf（文字 f17src/braga2017.txt）",
+            "sha256_prefix": "23398c4f9f3763ac",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-earth-20261111",
+          "original_url": "https://acp.copernicus.org/articles/17/14433/2017/acp-17-14433-2017.pdf"
         }
       ]
     },
@@ -99805,6 +100159,32 @@
       ]
     },
     {
+      "id": "SRC-de01673011e49b88",
+      "url": "http://iopscience.iop.org/1367-2630/15/4/045010/pdf/1367-2630_15_4_045010.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1088/1367-2630/15/4/045010",
+          "title": "Experimental determination of droplet collision rates in turbulence（Bordás、Roloff、Thévenin、Shaw）",
+          "publisher": "New Journal of Physics 15: 045010（2013，CC BY 3.0）；馬格德堡大學、密西根理工大學",
+          "version": "刊本 PDF（32 頁）",
+          "accessed_on": "2026-11-11",
+          "read_via": "WebSearch 結果的 DLR elib 典藏頁（elib.dlr.de/82188/）上的 PDF 連結，curl GET 200（工具預設標頭，轉址到 iopscience 刊本）；pdftotext -layout",
+          "reading_scope": "Abstract、§1、§2 碰撞核與效率段、§6 全部；§3–§5 只讀標題與圖說",
+          "locator": "Abstract；§1 第二、三段（碰撞是罕見事件、要長時間平均）；§2 式 (1) 後一段（碰撞效率 E12、合併效率在數百微米以下接近 1）；§2 末「The collision efficiency is considered the most uncertain…」條列（引 Devenish 2012、Wang 與 Grabowski 2009）；§6 第一、二段",
+          "summary": "在風洞裡做出與積雲相關的紊流加多分散水滴，用兩種獨立的影像方法直接數水滴碰撞。兩種方法的碰撞率同一數量級，但追蹤法一致比陰影法低約 5–10 倍，作者估整體量測不確定約 10 倍。理論碰撞率都在量測值的 10 倍以內；把小滴靠近時被氣流推開的「碰撞效率」算進去的理論，明顯比只算輸送與聚集的理論接近量測。只算重力沉降的碰撞率出奇地接近量測；作者說在強紊流（高耗散率）條件下，紊流對碰撞率的貢獻才明顯。前言另引別人的研究說，若把紊流對碰撞效率的影響算進去，暖雨起始時間可能縮短到一半。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "量測不確定約 10 倍，只能說「定性上」碰撞效率重要；實驗的大滴尾巴（>100 µm）讓重力主導，作者自己建議改用較窄的滴譜。「紊流讓起雨時間縮短到一半」是前言引用 Wang 與 Grabowski 2009，不是本文量測，不得當本文結果。 覆核 V20（2026-11-12）：summary 改：只算重力的碰撞率出奇地接近量測，ε=0.1 m² s⁻³ 下的理論計算接近純重力，作者說與實驗滴譜裡有 >100 µm 大滴尾巴一致；在實驗量到的高耗散率下，紊流貢獻看得出來。刪「一般紊流下重力沉降就能解釋大部分」。補：本文量碰撞率，碰撞效率是代入理論值，不是量測。read_via 補：V20 今日 DLR elib 頁仍連到同一個 iopscience PDF，但該站回 Radware 機器驗證，未繞過，覆核只依作者快取。",
+          "author_cache": {
+            "file": "f17src/bordas2013.pdf（文字 f17src/bordas2013.txt）",
+            "sha256_prefix": "5a5d175923a2231d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-earth-20261111",
+          "original_url": "http://iopscience.iop.org/1367-2630/15/4/045010/pdf/1367-2630_15_4_045010.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-de1a487f6b8495c3",
       "url": "https://www.segasammy.co.jp/en/ir/library/printing_archive/",
       "readings": [
@@ -103069,6 +103449,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=K0090041&flno=52"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e537aa546761d38b",
+      "url": "https://cdn.knmi.nl/system/data_center_publications/files/000/067/788/original/stevens_siebesma.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1175/BAMS-88-12-1912",
+          "title": "Rain in Shallow Cumulus over the Ocean: The RICO Campaign（Rauber、Stevens、Ochs 等）",
+          "publisher": "Bull. Amer. Meteor. Soc. 88: 1912–1928（2007）；KNMI 出版頁上的 PDF（AMS 允許典藏）",
+          "version": "刊本 PDF",
+          "accessed_on": "2026-11-11",
+          "read_via": "WebSearch 結果列出的 KNMI PDF 連結，curl GET 200（工具預設標頭）；EOL/UCAR 的同一份 PDF 因 TLS 憑證錯誤讀不到",
+          "reading_scope": "開頭兩頁與〈Questions and measurements: Rain initiation〉一段",
+          "locator": "p.1912 開頭段；p.1918〈RAIN INITIATION〉",
+          "summary": "開頭引用 Byers 與 Hall 1955、Saunders 1965、Squires 1958：海上淺積雲雲頂到約 2 公里開始出現雨、3.5 公里時普遍；從碎積雲發展到雲頂 3.5 公里約 25–35 分鐘；雲頂超過 2500 公尺「通常半小時內下雨」。本文是計畫概述，問題段說擴散成長理論解釋不了觀測到的滴譜寬度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "起雨時間的數字都是引用 1950–60 年代研究，不是 RICO 自己的量測；本文是計畫概述。未當核心，見 not_added。",
+          "author_cache": {
+            "file": "f17src/knmi_stevens_siebesma.pdf（文字 f17src/rico.txt）",
+            "sha256_prefix": "f5be1cac63c645a8",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-physics-20261111",
+          "original_url": "https://cdn.knmi.nl/system/data_center_publications/files/000/067/788/original/stevens_siebesma.pdf"
         }
       ]
     },
@@ -106589,6 +106995,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-chemistry-materials-20261101",
           "original_url": "https://openstax.org/books/organic-chemistry/pages/14-8-interpreting-ultraviolet-spectra-the-effect-of-conjugation"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ed03b31c83a42b8a",
+      "url": "https://www.jstage.jst.go.jp/article/psychono/23/1/23_KJ00004414517/_article/-char/ja/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.14947/psychono.KJ00004414517",
+          "title": "触覚の生じる場所：時間順序判断からの示唆",
+          "publisher": "北澤茂（Kitazawa S）／基礎心理学研究 23(1):51–55（日本基礎心理學會，J-STAGE 開放）",
+          "version": "2004 年刊出版 PDF（研討會論文，作者即 Yamamoto & Kitazawa 2001a/2001b 的通訊作者）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果的 J-STAGE 文章頁 → 頁上「PDF」連結；curl 存 PDF，pdftotext 轉文字（掃描 OCR，日文有斷字）",
+          "reading_scope": "全文 pp51–55：英文摘要、§2 交叉手臂的時間順序逆轉（Fig2）、§3 單手三指刺激（Fig3）、§4 交叉棒子（Fig4）、§5 討論。",
+          "locator": "p51 英文摘要；p52 §2 與 Fig2；p53 §3 與 Fig3；p54 §4 與 Fig4",
+          "summary": "作者本人對 2001a、2001b 與 Shibuya 等 2004 的完整敘述：不交叉時雙手刺激差 0.1 秒就幾乎全對；交叉時差超過約 1 秒仍對，但 0.3 秒以內反過來，典型受試者曲線成 N 字；摘要說四分之一受試者在 100–300 毫秒明顯倒轉，1.5 秒等長間隔又答對，單刺一手時從不弄錯哪隻手。手不交叉、只交叉手上的棒子，棒尖刺激的先後也會倒轉。單手食中無名三指依序刺激，偏好的順序在手翻成掌心朝上後跟著空間走、不跟手指走（6 人中顯著較多）。作者結論：觸覺刺激先被放到空間位置，才排時間先後。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "是綜述／研討會論文，不是 2001a（Nature Neuroscience，付費牆）或 2001b 原刊；Fig2、Fig4 為單一典型受試者資料。Shibuya 等 2004 當時為摘要「in press」，原研究未讀。OCR 文字有缺字，數字已對照英文摘要。R44003 原刊與 R44004（J Neurophysiol 2005）全文仍未讀到。 覆核 V21（2026-11-12）：改成 R44003 的追加來源（不另立 F18-001）：R44003 加 source_ref F18-S001，locator「p51 英文摘要；p52–53 §2 與 Fig.2（一位典型受試者）」；R44003 答案改為：「雙手各先後被碰一下。手不交叉時，相隔 0.1 秒就能確實答對；交叉後，相隔 1 秒以上仍幾乎答對，但相隔 0.3 秒以內，作者文中的典型受試者幾乎整個答反，判斷曲線成 N 字；作者摘要說約四分之一受試者在 100–300 毫秒明顯倒轉、拉長到 1.5 秒又答對。只碰一隻手時從不弄錯是哪隻手，所以不是單純把手搞混。」R44003 由 0 改計 1 條。version 改為「基礎心理学研究 23(1):51–55（2004），以作者講演為底的文章（題名註明改自講演題目）」，不是研討會論文集。limitations 補：Fig.2、Fig.3 的百分比、Fig.4 都是單一受試者；組別層級只有摘要一句。",
+          "author_cache": {
+            "file": "f18src/kitazawa2004_psychono.pdf",
+            "sha256_prefix": "1f6df535457dc364",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave61-human-20261111",
+          "original_url": "https://www.jstage.jst.go.jp/article/psychono/23/1/23_KJ00004414517/_article/-char/ja/"
         }
       ]
     },
@@ -286109,6 +286541,600 @@
       "production_ready": false
     },
     {
+      "id": "S61-001",
+      "question": "換一次飛機、換一年再量，煙塵多的雲是不是也要長得更高才下雨？髒到極點時，先出現的是雨還是冰？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.warm_rain_onset_depth_ice_first_polluted",
+      "answer_target": "是，而且這次排得出一條近似直線。2014 年 9 月，德國的 HALO 研究機在亞馬遜和鄰近的大西洋上空一次次穿過正在長高的積雲。有雨的三趟，雲滴的有效半徑長到約 13 微米（海上那趟約 12 微米）才量到雨滴。研究者用雲底的雲滴數估算雲滴長到 13 微米的高度，八趟飛行排成一條線：雲底每立方公分多一個雲滴，大約要再高 5 公尺；三趟實際量到的起雨高度都略高於這條估算線。乾淨的大西洋上空（估計每立方公分約 280 個雲滴），雲底上 1660 公尺、約 10 °C 的地方就有雨；兩趟汙染的陸上飛行要到約 3000 和 3800 公尺，後者起雨處已是零下 5.7 °C，雨滴還是液態。五趟極汙染的飛行（估計每立方公分約 900 到 1500 個雲滴），在飛機量到的高度內都沒有液態雨滴：其中兩趟最先出現的降水粒子是冰，另外三趟連冰也沒量到。",
+      "scope": "2014 年 9 月一季、8 趟飛行的成長中積雲；有雨的只有 3 趟；雲滴數 Na 由有效半徑剖面反推；「每個雲滴 5 公尺」是對估算深度 D13 的迴歸，不是八個實測起雨高度；5000 m 以上的起雨深度是估算；以冰開始的只有 2 趟。13 微米是有效半徑，S60-002 的 24 微米是眾數直徑，不得並成同一門檻或互換；本文每個雲滴 5 m 與 S60-002 每 100 個 CCN 350 m 的變數不同，不得相比或相減。以色列、印度是作者引用。與 S60-002 同一研究群（Rosenfeld 共同作者），不是完全獨立的重現。",
+      "source_locator": "F17-S002：Abstract；§5.1 與 Figure 2；Table 3；§5.3；§6 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，不是 1.5：（a）「雲滴越多起雨越高」S60-002 已有（乾淨 1–2 km 對煙霧 ≥4 km、每 100 CCN 多 350 m），本核心是同一研究群另一個計畫、另一套儀器的確認，加上有效半徑 13 µm 的實測門檻，只算 0.5；（b）極汙染時成長中積雲量不到液態雨滴、降水以冰開始（2 趟），以及汙染雲在零下 5.7 °C 仍下液態雨，0.5 條。 原提案 F17-002（目標 C6-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V20（2026-11-12）改字後收；來源合規、雜湊相同。收，但下修到 1.0：主結論與 S60-002 同一研究群、同一地區、同一方向；「乘 5 公尺」是估算線不是八個實測值；「超過 1000 就先出現冰」原文只有兩趟看到冰，三趟什麼都沒有，且門檻不是整齊的 1000。在 C6-02 是第一個轉折的佐證，本身不算新轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲滴越多，雨要在越高處才開始；髒到極點時，雨還沒來得及在暖的地方形成，雲就先長到結冰的高度。",
+        "visual": "一張橫軸雲滴數、縱軸起雨高度的散點，三個有雨的點連成斜線；極汙染那幾趟畫成一路往上直到冰晶符號。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave61-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cca82e60e1402010",
+          "origin": "wave61-earth-20261111",
+          "locator": "F17-S002：Abstract；§5.1 與 Figure 2；Table 3；§5.3；§6 第一、二段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S61-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S61-002",
+      "question": "雲裡的小水滴擠在一起，為什麼還是很難撞在一起變成雨滴？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.collision_efficiency_small_drops_follow_streamlines",
+      "answer_target": "因為太小的滴會跟著空氣繞過去。大滴往下掉時，前方的空氣往兩側彎開，小滴輕到會被氣流帶著從旁邊繞過，真正掃到的面積比兩滴半徑相加的截面小。賓州州立大學的大氣科學課程寫：10 微米左右的滴，這個效率很小，要靠隨機讓少數滴先長得比別人大；收集滴的半徑超過 100 微米後，對小到 10 到 20 微米的滴都撞得很有效率，到幾百微米時接近百分之百。之後越大長得越快：課程在效率等於 1、液態水每立方公尺 1 克等假設下推算，從 50 微米長到 1000 微米約 25 分鐘。一個風洞實驗直接數紊流裡水滴的碰撞次數，兩種量法差 5 到 10 倍；作者說，至少定性上，把碰撞效率算進去的理論比只算輸送的理論接近量測。",
+      "scope": "大學課程教材的機制與理想化推算（25 分鐘是 Ec=1 等假設下的課本推算；Ec 曲線是課程依 Rogers 與 Yau 重繪，不是本輪讀到的量測）。風洞實驗量的是碰撞率、不是碰撞效率，量測不確定約 10 倍，只當定性旁證；不得說「紊流讓下雨快一倍」，也不得說「一般紊流下重力就夠」。",
+      "source_locator": "F17-S003：Equation 5.16 後兩段、「Ec is small for 10 μm drops」段、Equation 5.17 後一段；F17-S004：Abstract、§2 末條列、§6 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：PSU node/780 兩件事——小滴隨流線繞過、10 µm 效率很低而 100 µm 以上很高 0.5 條；碰撞一旦開始就越大長越快（25 分鐘，假設下的推算）0.5 條。Bordás 0 條：沒有量碰撞效率、不確定約 10 倍、今日讀不到原站，只當旁證。V19 點名要的「碰撞效率的實驗室或風洞量測全文」仍沒有補到。 原提案 F17-003（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V20（2026-11-12）改字後收；教材頁合規、雜湊相同，機制句都在原文；收，算 1.0。風洞那半句要照原文改寫，且只當旁證不計條。它在 C6-02 是補「卡在哪裡」的章，不是轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲裡的水滴不是因為不夠多才不下雨，而是太小、會被空氣帶著繞開；要先有幾顆「幸運的大滴」。",
+        "visual": "一顆大滴下落、周圍流線彎開，小點沿流線繞過，只有中心一小圈被撞上；旁邊一條半徑 vs 效率的簡化曲線，10 µm 很低、100 µm 以上接近頂。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave61-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-783396e6e5822d3f",
+          "origin": "wave61-earth-20261111",
+          "locator": "F17-S003：Equation 5.16 後兩段、「Ec is small for 10 μm drops」段、Equation 5.17 後一段；F17-S004：Abstract、§2 末條列、§6 第一、二段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-de01673011e49b88",
+          "origin": "wave61-earth-20261111",
+          "locator": "F17-S003：Equation 5.16 後兩段、「Ec is small for 10 μm drops」段、Equation 5.17 後一段；F17-S004：Abstract、§2 末條列、§6 第一、二段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S61-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H61-001",
+      "question": "手沒交叉、只把手裡兩根棒子交叉，棒尖被敲的先後也會說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.stick_crossing_order_review",
+      "answer_target": "會有倒轉的傾向。手不交叉、只把握著的兩根棒子交叉，敲棒尖的先後判斷就出現倒轉傾向，最明顯的受試者也畫出 N 字曲線（文中附的是一位受試者的資料）。作者據此解釋：觸覺訊號先被連到棒尖所在的空間位置，才給時間順序，而不只是連到受器所在的手。",
+      "scope": "依北澤 2004 對 Yamamoto & Kitazawa 2001b 的敘述；只說「傾向」與一位受試者的圖，不說多數人都倒轉。R44004（L 形棒）原刊只讀到摘要，片中不引用其結果。",
+      "source_locator": "F18-S001 p54 §4、Fig4",
+      "premise_status": "screened",
+      "notes": "覆核算 0.5 條。與 R44003（經 F18-S001）、F18-003 同一份文件，三者合計 2.0。 原提案 F18-002（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、改字：把「先後排在被碰的地方」從事實句改成作者解釋，並加上單一受試者的限定。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排先後之前，腦先決定碰在空間哪裡",
+        "visual": "手不動、只把棒子交叉，被敲的是棒尖",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ed03b31c83a42b8a",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S001 p54 §4、Fig4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H61-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H61-002",
+      "question": "同一隻手三根手指依序被碰，翻成掌心朝上，覺得順的方向會跟著變嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.one_hand_finger_order_external_space",
+      "answer_target": "單手食指、中指、無名指以 100 毫秒間隔依序被碰。文中的典型受試者掌心朝下時，某個方向的順序答對約九成、反方向約四成；手翻成掌心朝上後，答得好的換成手指上的相反順序（約 85%、原本那個降到 50%），也就是在空間裡仍是同一個方向。作者報告 6 名受試者中，這種跟著空間走的情形顯著較多。",
+      "scope": "轉述 Shibuya 等 2004（當時為學會摘要）的作者敘述；百分比是一位典型受試者；不說所有人都如此。",
+      "source_locator": "F18-S001 p53 §3、Fig3",
+      "premise_status": "screened",
+      "notes": "覆核同意 0.5 條（同一份文件合計 2.0）。 原提案 F18-003（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用；把百分比補成原文的典型受試者數字，避免旁白說成「多數人答對九成」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連同一隻手，先後也排在空間裡",
+        "visual": "三指依序亮起；手翻面後指序反向、空間方向不變",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ed03b31c83a42b8a",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S001 p53 §3、Fig3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H61-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H61-003",
+      "question": "同樣交叉雙手，為什麼有人幾乎全部說反，有人幾乎不受影響？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.crossed_reversal_individual_variability",
+      "answer_target": "42 人的研究中，手不交叉時間隔超過 100 毫秒大多答對；交叉時有人超過 200 毫秒仍判反，有人整條曲線倒過來，也有人幾乎不受影響，倒轉值從 0 到 1 都有，而且同一個人隔一段時間重測結果很接近。倒轉較小的人，在頂葉、中央後回等 10 個腦區的皮質結構不同（較薄、面積較大、較皺），但這只是相關。",
+      "scope": "個別差異穩定、腦結構只是相關；不說腦結構決定、不分男女（差異不顯著）、不說哪一種人比較聰明。",
+      "source_locator": "F18-S002 Abstract；Results 首段；Fig2",
+      "premise_status": "screened",
+      "notes": "覆核算 1 條：個別差異（含重測穩定）0.5、腦結構相關 0.5。交叉時倒轉、N 字這一層已在 R44003（經 F18-S001）計過，不重算。 原提案 F18-004（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5：行為現象與 R44003 同一件事。這是本題唯一以多人原始資料量到倒轉現象的來源，寫稿時開場的「真的有人整個說反」應以本篇的分布圖為準，而不是北澤文中的單一受試者圖。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "倒轉是常態現象，但人差很多",
+        "visual": "42 個人的倒轉值從 0 到 1 排一排",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4434badc07626225",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S002 Abstract；Results 首段；Fig2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H61-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H61-004",
+      "question": "是不是左右腦的手區互相干擾，或是眼睛看到手交叉才搞錯？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.crossing_hand_foot_blindfold_review",
+      "answer_target": "綜述整理：一手和對側的腳各被碰一下，把手臂跨過那條腿時，也出現和雙手交叉相似的代價，而手和腳在左右腦的感覺區並沒有像兩隻手那樣直接相連，所以不是兩邊手區互相干擾；在黑暗中或矇眼時，觸覺也照樣會被對到外部空間，所以也不是當下用眼睛看到手的位置才出錯。",
+      "scope": "綜述轉述 Schicke & Röder 2006、Kóbor 2006 等原研究，本輪未讀原文；片中說「研究整理指出」。",
+      "source_locator": "F18-S003 non-homologous limbs 段與 Fig2；Developmental aspects 首句",
+      "premise_status": "screened",
+      "notes": "覆核同意 0.5 條（綜述）。綜述裡盲人與白內障者的段落不另計，避免與 F18-008、F18-009 重複。 原提案 F18-005（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、改問與改答：兩個證據各排除一種解釋，不能合成一個。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是當下眼睛看的問題",
+        "visual": "手臂跨過對側大腿的示意",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cb0362f52d1aba0b",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S003 non-homologous limbs 段與 Fig2；Developmental aspects 首句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H61-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H61-005",
+      "question": "手臂上明明沒被碰的位置，為什麼腦裡的身體地圖也亮了？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.saltation_si_illusory_location",
+      "answer_target": "研究者在前臂近手腕與近手肘處用電脈衝快速依序刺激（腕、腕、肘），受試者覺得中間沒被碰的位置也被碰了一下。掃描中，錯覺試次有 90% 回報中間被碰，真的碰中間是 93%；同樣三個位置換成不會產生錯覺的順序，87% 正確說中間沒有。fMRI 顯示初級體感皮質裡對應「中間那一點」的區域活化，強度與真的碰到相當。研究者稱這是「事後才定位」的例子：後面的刺激改寫了前面刺激被感覺到的位置。",
+      "scope": "fMRI 是相關；13 人參加，2 人因沒有穩定感到錯覺被排除、1 人技術問題，分析 10 人；電刺激、50 毫秒間隔。片中不可說「人人都會」。",
+      "source_locator": "F18-S006 Abstract；Results 第1段",
+      "premise_status": "screened",
+      "notes": "覆核算 1.5 條：體感皮質在錯覺位置活化 1；行為比例 0.5（皮膚兔現象本身已由 G578（可成題）的 R44005 在棒身版本講過，觀眾會覺得看過）。 原提案 F18-006（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5、補限制。答案與 R44005 確實不同（R44005 是兩指托棒時觸感被放到棒身；本篇是皮膚上的錯覺位置在初級體感皮質上看得到，且屬於「後來的刺激改寫前面的位置」），可以同時存在；但 G578 已排定的第四章就有「兩指托鋁條、觸感被放在沒被敲的棒身中段」，本題不能用「沒被碰的地方也有感覺」當驚奇點，要直接從「哪裡要等下一下來才決定」切入。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「哪裡」要等下一下來才決定",
+        "visual": "腕到肘三點，只有兩點真的被碰，第三點在腦圖上亮起",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b85c37ac2644d23d",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S006 Abstract；Results 第1段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H61-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H61-006",
+      "question": "兩下來得越快，為什麼感覺距離越近？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.slow_motion_prior_length_contraction",
+      "answer_target": "早年的研究發現，同樣兩段距離，走得快的那段感覺較短，極快的兩下甚至會合成一點。一篇模型研究只假設「碰到皮膚的東西通常動得慢」，就能重現這些錯覺：刺激來得太快，模型就把距離縮短、把時間拉長，讓速度看起來合理。",
+      "scope": "tau、合點是前言整理的他人研究；模型吻合，不證明腦的實作。",
+      "source_locator": "F18-S007 Introduction 第3–5段；Fig1；Results 第1段",
+      "premise_status": "screened",
+      "notes": "覆核算 0.5 條：模型 0.5（照第十輪 S10002 的先例，機制只是模型時算 0.5）；前言的 tau、合點是整理他人研究，併在這 0.5 內不另計。 原提案 F18-007（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5。它在本題的角色是替 F18-006 補一句「為什麼後一下會改寫前一下」，不能單獨撐一章。另外 tau 效應答的是「感覺距離多遠」，與作者自己以「答的是距離大小、會讓題目分岔」為由移出的 R44007 同類，只能一句帶過。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "時間與位置互相拉扯",
+        "visual": "兩條等長線段，快的那段被壓短",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5fca938b815137c0",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S007 Introduction 第3–5段；Fig1；Results 第1段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H61-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H61-007",
+      "question": "天生看不見、後來開刀重見光明的人，交叉手還會把先後說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.cataract_reversal_crossing_automaticity",
+      "answer_target": "一項 2026 年的研究找來 19 名先天雙眼緻密白內障、出生後 2 到 252 個月才開刀的人（部分人只做其中一個實驗）。只有觸覺配對時（實驗 1，12 人），交叉手不讓他們出錯，像先天盲人；把觸覺配對混在聲音與聲音－觸覺配對裡時（實驗 2，14 人），交叉手就明顯讓他們出錯，和視力正常的同齡者沒有顯著差別。兒童期才得白內障的人兩種情況都和一般人一樣。作者的結論：早年的視覺經驗決定的是會不會「自動」把觸覺放進外部空間，而不是有沒有這個能力。",
+      "scope": "小樣本、多數在印度受測；兩個實驗只有 7 人重疊；不說盲人沒有空間感，也不說開刀太晚就永遠做不到。",
+      "source_locator": "F18-S004 Abstract；§2.1；§2.3；Fig1",
+      "premise_status": "screened",
+      "notes": "覆核算 1.5 條：「重見光明者在純觸覺時像先天盲人」0.5（方向與 F18-009 的先天盲人結果相同）；「混入聲音後交叉代價出現」1。 原提案 F18-008（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5、改樣本描述。這是轉折二真正改變結論的那一半（能力還在，缺的是自動化），也是本題最新、最好的來源；已正式刊出（epub 2026-11-03），公開全文可讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "早年視覺教會腦「自動」查外部地圖",
+        "visual": "同一組人兩種情境：只有震動 vs 混了喇叭聲",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-2a3f6c8bd62a2522",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S004 Abstract；§2.1；§2.3；Fig1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H61-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H61-008",
+      "question": "先天失明的人做交叉手測驗，為什麼反而比看得見的人準？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.early_blind_no_crossing_cost_tactile_order",
+      "answer_target": "11 名早盲者（9 名先天）與 11 名配對的視力正常者比較：視力正常者交叉手後表現大幅下降（判斷曲線的斜率從 0.88 掉到 0.29），有些人甚至常答成另一隻手先；早盲者交叉與不交叉幾乎一樣（0.91 對 0.88）。研究者說這複製了 2004 年先天盲人的結果。",
+      "scope": "早盲組含 2 名非先天（2 個月、3 歲）；第二個動作序列實驗本題不採。",
+      "source_locator": "F18-S005 Abstract；Results: TOJ",
+      "premise_status": "screened",
+      "notes": "覆核同意 1 條。 原提案 F18-009（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用；改用兩組各自交叉前後的斜率，避免「整體比較準」被誤解成盲人觸覺普遍較好。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "少了自動查地圖，反而不被交叉騙",
+        "visual": "兩組長條：正常組交叉時掉、早盲組持平",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-baca0a20385d11c9",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S005 Abstract；Results: TOJ",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H61-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L61-001",
+      "question": "青蛙眼裡有兩種桿細胞，為什麼捕食時只看亮暗，往亮處逃時卻在剛看得見就分得出藍綠？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.dual_rod_task_dependent_colour_threshold",
+      "answer_target": "多數蛙類視網膜有兩種感光波長不同的桿細胞（約 430 與 500 奈米），長久被推測能在極暗處辨色，但沒人好好測過。研究者用三種任務測：蟾蜍在求偶與捕食任務中有辨色門檻，但都可以用視錐解釋，沒有只靠桿細胞辨色的跡象；同一種青蛙在捕食任務裡，即使在明亮的光下也只按亮暗挑最暗的獵物；可是讓青蛙從暗桶往亮窗跳時，兩扇窗調成對綠敏桿細胞一樣亮，從測到的最低光度起，跳向綠窗的比例就小幅但顯著上升，稍亮一點時藍窗甚至比暗處還不受歡迎。作者說青蛙「一開始看得見就分得出顏色」。同樣的眼睛，答案取決於在做什麼事。",
+      "scope": "限這兩屬與這三種任務；蟾蜍沒做趨光跳躍、青蛙沒做求偶，不得說成「青蛙用、蟾蜍不用」。不說所有蛙類夜裡都看到顏色；人類對照 data not shown，不採。",
+      "source_locator": "F18-S008 Abstract；§1；prey-catching 與 phototactic jumping results",
+      "premise_status": "screened",
+      "notes": "覆核算 1.5 條：趨光跳躍在絕對閾值辨色 1；任務依賴（青蛙捕食只看亮暗、蟾蜍門檻可由視錐解釋）0.5。同一篇三個實驗，作者的 2 條偏高。 原提案 F18-010（目標 C7-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、改問改答、下修 0.5。改寫後才是真正改變結論的轉折（同一雙眼，看不看得到顏色要先說是哪個任務），而且不靠物種對比。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "構造只給可能，任務才給答案",
+        "visual": "兩扇窗調到對同一種桿細胞一樣亮；青蛙往綠窗跳、蟾蜍不管顏色",
+        "seconds": [
+          70,
+          95
+        ]
+      },
+      "origin": "wave61-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-586f585437674113",
+          "origin": "wave61-life-20261111",
+          "locator": "F18-S008 Abstract；§1；prey-catching 與 phototactic jumping results",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L61-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L61-002",
+      "question": "扇貝眼裡有一面鏡子、兩層視網膜，兩層看到的影像一樣清楚嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.scallop_mirror_two_retina_resolution_model",
+      "answer_target": "扇貝眼靠眼底的凹面鏡把光反射回來成像，兩層視網膜疊在一起。研究者用斷層掃描量活體海灣扇貝的眼睛，建光學模型推估：遠側那層約 2° 解析（與早先電生理、行為量到的約 2° 相符），近側約 7°；改變光的顏色或物體距離，都不能讓兩層同時清楚。模型另推測眼睛形狀改變可能調整近側的影像，這還沒驗證。",
+      "scope": "光學模型推估，不是行為；海灣扇貝；眼形調焦是推測。",
+      "source_locator": "F18-S009 Synopsis",
+      "premise_status": "screened",
+      "notes": "覆核算 0.5 條：光學推論，不是「牠看到什麼」的測驗；2° 本身是先前已知。 原提案 F18-011（目標 C7-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5。在方法題裡它只是「構造給的預測」那一格。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光學說：這眼睛做得出影像",
+        "visual": "鏡面把光反到上方兩層視網膜，一層清楚一層模糊",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave61-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9f37b5712077a531",
+          "origin": "wave61-life-20261111",
+          "locator": "F18-S009 Synopsis",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L61-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L61-003",
+      "question": "扇貝眼睛做得出影像，但牠知道東西在哪一邊嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.scallop_tentacle_spatial_vision",
+      "answer_target": "研究者在扇貝四周不同方位放黑色條紋，海灣扇貝會把感覺觸手偏向圖樣伸出（前、腹、後三個方位都如此，背側則看不出），最寬的 24° 條紋比較窄的更能讓觸手集中指向；條紋旋轉時，個別觸手會跟著轉，觸手伸出也成一波波繞圈。作者說，就他們所知這是第一次表明扇貝不只察覺有東西，也知道東西在哪邊。",
+      "scope": "觸手指向是行為代理指標、群體統計；不說每隻每次都指對，不說扇貝在腦中拼出完整畫面；大小只說「最寬的比窄的集中」。",
+      "source_locator": "F18-S010 Abstract；Introduction；Methods",
+      "premise_status": "screened",
+      "notes": "覆核算 1 條：三個實驗都在回答同一件事（能定位），效果中等。 原提案 F18-012（目標 C7-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5、改掉「越大越常」。這是本題「構造預測→行為檢驗」最乾淨的一組，但效果不大，旁白要說「偏向」不說「指向」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有影像不等於會用，要看行為",
+        "visual": "扇貝邊緣一圈觸手朝黑塊方向伸出、跟著轉",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave61-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a070f120b0b2d13b",
+          "origin": "wave61-life-20261111",
+          "locator": "F18-S010 Abstract；Introduction；Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L61-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P61-001",
+      "question": "糞便落在鋪了塑膠布的菜畦上，跟落在稻草或泥土上比，下一場雨會把它濺到更遠的菜上嗎？",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "mechanism_key": "rain.field_mulch_splash_transfer_distance",
+      "answer_target": "會，而且差得不少——要看東西落在什麼上面。美國馬里蘭與喬治亞的露天萵苣田，研究者把摻了實驗用大腸桿菌的兔糞直接放在菜畦中間的畦面上，等一場雨，隔天在離糞 0.1 到 1.5 公尺之間取菜來驗。每一場都是離糞越近驗到越多。馬里蘭一場 6 毫米的自然雨（畦面鋪黑塑膠布、成株萵苣），最陡的下降在 0.3 到 0.6 公尺之間；這一場和另一場模擬雨，1.5 公尺處都沒有一個樣本驗到。另一場 11 毫米的自然雨比較四種畦面：全部距離合計，塑膠布畦驗到的樣本比例 85.7%，稻草畦 50.6%；用這場資料配模型推算，菌量降到糞便裡的千萬分之一（少 7 個 log）的距離，稻草 0.4 公尺、裸土 0.7 公尺、黑塑膠布 1.2 公尺、生物可分解塑膠布 1.4 公尺。統計上確定的是稻草比兩種塑膠布短、裸土比生物可分解塑膠布短；稻草與裸土之間沒有差別。作者推測：不透水又光滑的塑膠布讓水滴一再彈跳，稻草與泥土把水吸住或困住——這篇沒有量水滴。",
+      "scope": "實驗用的非致病大腸桿菌、研究者放的兔糞點源（放在覆蓋物上面，不是被蓋住）、萵苣；兩場自然雨（6 mm、11 mm），其餘是背包噴霧器模擬雨；7-log 距離是單場（Trial 3、雨後 24 小時）資料配 Weibull 模型的預測；85.7% 原文只寫 plastic，未指明哪一種；黑塑膠布對裸土的 7-log 距離差異未達顯著；彈跳是作者推測。片中不提不採收緩衝區、採收間隔或「哪種覆蓋最安全」。",
+      "source_locator": "F17-S001：Table 1；Results 各段；Figure 5 圖說；Discussion 第四、五段與限制段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：（a）自然雨下的田間距離分佈（0.3–0.6 m 陡降、1.5 m 驗不到）0.5 條，補 V18 點名的「全是人工降雨」缺口；（b）覆蓋物改變落在上面的東西被帶多遠（陽性比例、7-log 距離、2 log 差同一組試驗，合 1.0 條）。同一篇兩組試驗合 1.5，在「同一實驗 1–2 條」之內。 原提案 F17-001（目標 C5-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V20（2026-11-12）改字後收；來源合規、雜湊相同、主要數字都在正文。收，但改掉三件事：問題與轉折的「蓋住就隔開」不是這個實驗測的（汙染源放在覆蓋物上面）；7-log 距離要附上哪幾組顯著；85.7% 的 plastic 沒指明哪一種。食品安全建議一律不進片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為把地蓋起來就隔開了；實際下雨時，不透水的塑膠布讓地上的東西濺得更遠，稻草反而擋住。",
+        "visual": "一條 1.5 公尺的菜畦剖面，中間一坨糞，四種覆蓋並排；每 30 公分一個點標上驗到與否，塑膠布那條亮點延伸最遠。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave61-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-bd6be2538fc38cb7",
+          "origin": "wave61-physics-20261111",
+          "locator": "F17-S001：Table 1；Results 各段；Figure 5 圖說；Discussion 第四、五段與限制段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P61-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -428967,6 +429993,474 @@
       ]
     },
     {
+      "id": "S61-001",
+      "question": "換一次飛機、換一年再量，煙塵多的雲是不是也要長得更高才下雨？髒到極點時，先出現的是雨還是冰？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.warm_rain_onset_depth_ice_first_polluted",
+      "answer_target": "是，而且這次排得出一條近似直線。2014 年 9 月，德國的 HALO 研究機在亞馬遜和鄰近的大西洋上空一次次穿過正在長高的積雲。有雨的三趟，雲滴的有效半徑長到約 13 微米（海上那趟約 12 微米）才量到雨滴。研究者用雲底的雲滴數估算雲滴長到 13 微米的高度，八趟飛行排成一條線：雲底每立方公分多一個雲滴，大約要再高 5 公尺；三趟實際量到的起雨高度都略高於這條估算線。乾淨的大西洋上空（估計每立方公分約 280 個雲滴），雲底上 1660 公尺、約 10 °C 的地方就有雨；兩趟汙染的陸上飛行要到約 3000 和 3800 公尺，後者起雨處已是零下 5.7 °C，雨滴還是液態。五趟極汙染的飛行（估計每立方公分約 900 到 1500 個雲滴），在飛機量到的高度內都沒有液態雨滴：其中兩趟最先出現的降水粒子是冰，另外三趟連冰也沒量到。",
+      "scope": "2014 年 9 月一季、8 趟飛行的成長中積雲；有雨的只有 3 趟；雲滴數 Na 由有效半徑剖面反推；「每個雲滴 5 公尺」是對估算深度 D13 的迴歸，不是八個實測起雨高度；5000 m 以上的起雨深度是估算；以冰開始的只有 2 趟。13 微米是有效半徑，S60-002 的 24 微米是眾數直徑，不得並成同一門檻或互換；本文每個雲滴 5 m 與 S60-002 每 100 個 CCN 350 m 的變數不同，不得相比或相減。以色列、印度是作者引用。與 S60-002 同一研究群（Rosenfeld 共同作者），不是完全獨立的重現。",
+      "source_locator": "F17-S002：Abstract；§5.1 與 Figure 2；Table 3；§5.3；§6 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條，不是 1.5：（a）「雲滴越多起雨越高」S60-002 已有（乾淨 1–2 km 對煙霧 ≥4 km、每 100 CCN 多 350 m），本核心是同一研究群另一個計畫、另一套儀器的確認，加上有效半徑 13 µm 的實測門檻，只算 0.5；（b）極汙染時成長中積雲量不到液態雨滴、降水以冰開始（2 趟），以及汙染雲在零下 5.7 °C 仍下液態雨，0.5 條。 原提案 F17-002（目標 C6-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V20（2026-11-12）改字後收；來源合規、雜湊相同。收，但下修到 1.0：主結論與 S60-002 同一研究群、同一地區、同一方向；「乘 5 公尺」是估算線不是八個實測值；「超過 1000 就先出現冰」原文只有兩趟看到冰，三趟什麼都沒有，且門檻不是整齊的 1000。在 C6-02 是第一個轉折的佐證，本身不算新轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲滴越多，雨要在越高處才開始；髒到極點時，雨還沒來得及在暖的地方形成，雲就先長到結冰的高度。",
+        "visual": "一張橫軸雲滴數、縱軸起雨高度的散點，三個有雨的點連成斜線；極汙染那幾趟畫成一路往上直到冰晶符號。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave61-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cca82e60e1402010",
+          "origin": "wave61-earth-20261111",
+          "locator": "F17-S002：Abstract；§5.1 與 Figure 2；Table 3；§5.3；§6 第一、二段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-earth.json"
+      ]
+    },
+    {
+      "id": "S61-002",
+      "question": "雲裡的小水滴擠在一起，為什麼還是很難撞在一起變成雨滴？",
+      "domain": "weather_sky",
+      "mechanism_key": "weather.collision_efficiency_small_drops_follow_streamlines",
+      "answer_target": "因為太小的滴會跟著空氣繞過去。大滴往下掉時，前方的空氣往兩側彎開，小滴輕到會被氣流帶著從旁邊繞過，真正掃到的面積比兩滴半徑相加的截面小。賓州州立大學的大氣科學課程寫：10 微米左右的滴，這個效率很小，要靠隨機讓少數滴先長得比別人大；收集滴的半徑超過 100 微米後，對小到 10 到 20 微米的滴都撞得很有效率，到幾百微米時接近百分之百。之後越大長得越快：課程在效率等於 1、液態水每立方公尺 1 克等假設下推算，從 50 微米長到 1000 微米約 25 分鐘。一個風洞實驗直接數紊流裡水滴的碰撞次數，兩種量法差 5 到 10 倍；作者說，至少定性上，把碰撞效率算進去的理論比只算輸送的理論接近量測。",
+      "scope": "大學課程教材的機制與理想化推算（25 分鐘是 Ec=1 等假設下的課本推算；Ec 曲線是課程依 Rogers 與 Yau 重繪，不是本輪讀到的量測）。風洞實驗量的是碰撞率、不是碰撞效率，量測不確定約 10 倍，只當定性旁證；不得說「紊流讓下雨快一倍」，也不得說「一般紊流下重力就夠」。",
+      "source_locator": "F17-S003：Equation 5.16 後兩段、「Ec is small for 10 μm drops」段、Equation 5.17 後一段；F17-S004：Abstract、§2 末條列、§6 第一、二段",
+      "premise_status": "screened",
+      "notes": "算 1.0 條：PSU node/780 兩件事——小滴隨流線繞過、10 µm 效率很低而 100 µm 以上很高 0.5 條；碰撞一旦開始就越大長越快（25 分鐘，假設下的推算）0.5 條。Bordás 0 條：沒有量碰撞效率、不確定約 10 倍、今日讀不到原站，只當旁證。V19 點名要的「碰撞效率的實驗室或風洞量測全文」仍沒有補到。 原提案 F17-003（目標 C6-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V20（2026-11-12）改字後收；教材頁合規、雜湊相同，機制句都在原文；收，算 1.0。風洞那半句要照原文改寫，且只當旁證不計條。它在 C6-02 是補「卡在哪裡」的章，不是轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雲裡的水滴不是因為不夠多才不下雨，而是太小、會被空氣帶著繞開；要先有幾顆「幸運的大滴」。",
+        "visual": "一顆大滴下落、周圍流線彎開，小點沿流線繞過，只有中心一小圈被撞上；旁邊一條半徑 vs 效率的簡化曲線，10 µm 很低、100 µm 以上接近頂。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave61-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-783396e6e5822d3f",
+          "origin": "wave61-earth-20261111",
+          "locator": "F17-S003：Equation 5.16 後兩段、「Ec is small for 10 μm drops」段、Equation 5.17 後一段；F17-S004：Abstract、§2 末條列、§6 第一、二段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-de01673011e49b88",
+          "origin": "wave61-earth-20261111",
+          "locator": "F17-S003：Equation 5.16 後兩段、「Ec is small for 10 μm drops」段、Equation 5.17 後一段；F17-S004：Abstract、§2 末條列、§6 第一、二段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-earth.json"
+      ]
+    },
+    {
+      "id": "H61-001",
+      "question": "手沒交叉、只把手裡兩根棒子交叉，棒尖被敲的先後也會說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.stick_crossing_order_review",
+      "answer_target": "會有倒轉的傾向。手不交叉、只把握著的兩根棒子交叉，敲棒尖的先後判斷就出現倒轉傾向，最明顯的受試者也畫出 N 字曲線（文中附的是一位受試者的資料）。作者據此解釋：觸覺訊號先被連到棒尖所在的空間位置，才給時間順序，而不只是連到受器所在的手。",
+      "scope": "依北澤 2004 對 Yamamoto & Kitazawa 2001b 的敘述；只說「傾向」與一位受試者的圖，不說多數人都倒轉。R44004（L 形棒）原刊只讀到摘要，片中不引用其結果。",
+      "source_locator": "F18-S001 p54 §4、Fig4",
+      "premise_status": "screened",
+      "notes": "覆核算 0.5 條。與 R44003（經 F18-S001）、F18-003 同一份文件，三者合計 2.0。 原提案 F18-002（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、改字：把「先後排在被碰的地方」從事實句改成作者解釋，並加上單一受試者的限定。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排先後之前，腦先決定碰在空間哪裡",
+        "visual": "手不動、只把棒子交叉，被敲的是棒尖",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ed03b31c83a42b8a",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S001 p54 §4、Fig4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ]
+    },
+    {
+      "id": "H61-002",
+      "question": "同一隻手三根手指依序被碰，翻成掌心朝上，覺得順的方向會跟著變嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.one_hand_finger_order_external_space",
+      "answer_target": "單手食指、中指、無名指以 100 毫秒間隔依序被碰。文中的典型受試者掌心朝下時，某個方向的順序答對約九成、反方向約四成；手翻成掌心朝上後，答得好的換成手指上的相反順序（約 85%、原本那個降到 50%），也就是在空間裡仍是同一個方向。作者報告 6 名受試者中，這種跟著空間走的情形顯著較多。",
+      "scope": "轉述 Shibuya 等 2004（當時為學會摘要）的作者敘述；百分比是一位典型受試者；不說所有人都如此。",
+      "source_locator": "F18-S001 p53 §3、Fig3",
+      "premise_status": "screened",
+      "notes": "覆核同意 0.5 條（同一份文件合計 2.0）。 原提案 F18-003（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用；把百分比補成原文的典型受試者數字，避免旁白說成「多數人答對九成」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連同一隻手，先後也排在空間裡",
+        "visual": "三指依序亮起；手翻面後指序反向、空間方向不變",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-ed03b31c83a42b8a",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S001 p53 §3、Fig3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ]
+    },
+    {
+      "id": "H61-003",
+      "question": "同樣交叉雙手，為什麼有人幾乎全部說反，有人幾乎不受影響？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.crossed_reversal_individual_variability",
+      "answer_target": "42 人的研究中，手不交叉時間隔超過 100 毫秒大多答對；交叉時有人超過 200 毫秒仍判反，有人整條曲線倒過來，也有人幾乎不受影響，倒轉值從 0 到 1 都有，而且同一個人隔一段時間重測結果很接近。倒轉較小的人，在頂葉、中央後回等 10 個腦區的皮質結構不同（較薄、面積較大、較皺），但這只是相關。",
+      "scope": "個別差異穩定、腦結構只是相關；不說腦結構決定、不分男女（差異不顯著）、不說哪一種人比較聰明。",
+      "source_locator": "F18-S002 Abstract；Results 首段；Fig2",
+      "premise_status": "screened",
+      "notes": "覆核算 1 條：個別差異（含重測穩定）0.5、腦結構相關 0.5。交叉時倒轉、N 字這一層已在 R44003（經 F18-S001）計過，不重算。 原提案 F18-004（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5：行為現象與 R44003 同一件事。這是本題唯一以多人原始資料量到倒轉現象的來源，寫稿時開場的「真的有人整個說反」應以本篇的分布圖為準，而不是北澤文中的單一受試者圖。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "倒轉是常態現象，但人差很多",
+        "visual": "42 個人的倒轉值從 0 到 1 排一排",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4434badc07626225",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S002 Abstract；Results 首段；Fig2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ]
+    },
+    {
+      "id": "H61-004",
+      "question": "是不是左右腦的手區互相干擾，或是眼睛看到手交叉才搞錯？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.crossing_hand_foot_blindfold_review",
+      "answer_target": "綜述整理：一手和對側的腳各被碰一下，把手臂跨過那條腿時，也出現和雙手交叉相似的代價，而手和腳在左右腦的感覺區並沒有像兩隻手那樣直接相連，所以不是兩邊手區互相干擾；在黑暗中或矇眼時，觸覺也照樣會被對到外部空間，所以也不是當下用眼睛看到手的位置才出錯。",
+      "scope": "綜述轉述 Schicke & Röder 2006、Kóbor 2006 等原研究，本輪未讀原文；片中說「研究整理指出」。",
+      "source_locator": "F18-S003 non-homologous limbs 段與 Fig2；Developmental aspects 首句",
+      "premise_status": "screened",
+      "notes": "覆核同意 0.5 條（綜述）。綜述裡盲人與白內障者的段落不另計，避免與 F18-008、F18-009 重複。 原提案 F18-005（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、改問與改答：兩個證據各排除一種解釋，不能合成一個。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是當下眼睛看的問題",
+        "visual": "手臂跨過對側大腿的示意",
+        "seconds": [
+          25,
+          40
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-cb0362f52d1aba0b",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S003 non-homologous limbs 段與 Fig2；Developmental aspects 首句",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ]
+    },
+    {
+      "id": "H61-005",
+      "question": "手臂上明明沒被碰的位置，為什麼腦裡的身體地圖也亮了？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.saltation_si_illusory_location",
+      "answer_target": "研究者在前臂近手腕與近手肘處用電脈衝快速依序刺激（腕、腕、肘），受試者覺得中間沒被碰的位置也被碰了一下。掃描中，錯覺試次有 90% 回報中間被碰，真的碰中間是 93%；同樣三個位置換成不會產生錯覺的順序，87% 正確說中間沒有。fMRI 顯示初級體感皮質裡對應「中間那一點」的區域活化，強度與真的碰到相當。研究者稱這是「事後才定位」的例子：後面的刺激改寫了前面刺激被感覺到的位置。",
+      "scope": "fMRI 是相關；13 人參加，2 人因沒有穩定感到錯覺被排除、1 人技術問題，分析 10 人；電刺激、50 毫秒間隔。片中不可說「人人都會」。",
+      "source_locator": "F18-S006 Abstract；Results 第1段",
+      "premise_status": "screened",
+      "notes": "覆核算 1.5 條：體感皮質在錯覺位置活化 1；行為比例 0.5（皮膚兔現象本身已由 G578（可成題）的 R44005 在棒身版本講過，觀眾會覺得看過）。 原提案 F18-006（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5、補限制。答案與 R44005 確實不同（R44005 是兩指托棒時觸感被放到棒身；本篇是皮膚上的錯覺位置在初級體感皮質上看得到，且屬於「後來的刺激改寫前面的位置」），可以同時存在；但 G578 已排定的第四章就有「兩指托鋁條、觸感被放在沒被敲的棒身中段」，本題不能用「沒被碰的地方也有感覺」當驚奇點，要直接從「哪裡要等下一下來才決定」切入。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「哪裡」要等下一下來才決定",
+        "visual": "腕到肘三點，只有兩點真的被碰，第三點在腦圖上亮起",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b85c37ac2644d23d",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S006 Abstract；Results 第1段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ]
+    },
+    {
+      "id": "H61-006",
+      "question": "兩下來得越快，為什麼感覺距離越近？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.slow_motion_prior_length_contraction",
+      "answer_target": "早年的研究發現，同樣兩段距離，走得快的那段感覺較短，極快的兩下甚至會合成一點。一篇模型研究只假設「碰到皮膚的東西通常動得慢」，就能重現這些錯覺：刺激來得太快，模型就把距離縮短、把時間拉長，讓速度看起來合理。",
+      "scope": "tau、合點是前言整理的他人研究；模型吻合，不證明腦的實作。",
+      "source_locator": "F18-S007 Introduction 第3–5段；Fig1；Results 第1段",
+      "premise_status": "screened",
+      "notes": "覆核算 0.5 條：模型 0.5（照第十輪 S10002 的先例，機制只是模型時算 0.5）；前言的 tau、合點是整理他人研究，併在這 0.5 內不另計。 原提案 F18-007（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5。它在本題的角色是替 F18-006 補一句「為什麼後一下會改寫前一下」，不能單獨撐一章。另外 tau 效應答的是「感覺距離多遠」，與作者自己以「答的是距離大小、會讓題目分岔」為由移出的 R44007 同類，只能一句帶過。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "時間與位置互相拉扯",
+        "visual": "兩條等長線段，快的那段被壓短",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-5fca938b815137c0",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S007 Introduction 第3–5段；Fig1；Results 第1段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ]
+    },
+    {
+      "id": "H61-007",
+      "question": "天生看不見、後來開刀重見光明的人，交叉手還會把先後說反嗎？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.cataract_reversal_crossing_automaticity",
+      "answer_target": "一項 2026 年的研究找來 19 名先天雙眼緻密白內障、出生後 2 到 252 個月才開刀的人（部分人只做其中一個實驗）。只有觸覺配對時（實驗 1，12 人），交叉手不讓他們出錯，像先天盲人；把觸覺配對混在聲音與聲音－觸覺配對裡時（實驗 2，14 人），交叉手就明顯讓他們出錯，和視力正常的同齡者沒有顯著差別。兒童期才得白內障的人兩種情況都和一般人一樣。作者的結論：早年的視覺經驗決定的是會不會「自動」把觸覺放進外部空間，而不是有沒有這個能力。",
+      "scope": "小樣本、多數在印度受測；兩個實驗只有 7 人重疊；不說盲人沒有空間感，也不說開刀太晚就永遠做不到。",
+      "source_locator": "F18-S004 Abstract；§2.1；§2.3；Fig1",
+      "premise_status": "screened",
+      "notes": "覆核算 1.5 條：「重見光明者在純觸覺時像先天盲人」0.5（方向與 F18-009 的先天盲人結果相同）；「混入聲音後交叉代價出現」1。 原提案 F18-008（目標 C7-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5、改樣本描述。這是轉折二真正改變結論的那一半（能力還在，缺的是自動化），也是本題最新、最好的來源；已正式刊出（epub 2026-11-03），公開全文可讀。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "早年視覺教會腦「自動」查外部地圖",
+        "visual": "同一組人兩種情境：只有震動 vs 混了喇叭聲",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-2a3f6c8bd62a2522",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S004 Abstract；§2.1；§2.3；Fig1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ]
+    },
+    {
+      "id": "H61-008",
+      "question": "先天失明的人做交叉手測驗，為什麼反而比看得見的人準？",
+      "domain": "用手觸碰與定位",
+      "mechanism_key": "touch.early_blind_no_crossing_cost_tactile_order",
+      "answer_target": "11 名早盲者（9 名先天）與 11 名配對的視力正常者比較：視力正常者交叉手後表現大幅下降（判斷曲線的斜率從 0.88 掉到 0.29），有些人甚至常答成另一隻手先；早盲者交叉與不交叉幾乎一樣（0.91 對 0.88）。研究者說這複製了 2004 年先天盲人的結果。",
+      "scope": "早盲組含 2 名非先天（2 個月、3 歲）；第二個動作序列實驗本題不採。",
+      "source_locator": "F18-S005 Abstract；Results: TOJ",
+      "premise_status": "screened",
+      "notes": "覆核同意 1 條。 原提案 F18-009（目標 C7-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用；改用兩組各自交叉前後的斜率，避免「整體比較準」被誤解成盲人觸覺普遍較好。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "少了自動查地圖，反而不被交叉騙",
+        "visual": "兩組長條：正常組交叉時掉、早盲組持平",
+        "seconds": [
+          30,
+          45
+        ]
+      },
+      "origin": "wave61-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-baca0a20385d11c9",
+          "origin": "wave61-human-20261111",
+          "locator": "F18-S005 Abstract；Results: TOJ",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+      ]
+    },
+    {
+      "id": "L61-001",
+      "question": "青蛙眼裡有兩種桿細胞，為什麼捕食時只看亮暗，往亮處逃時卻在剛看得見就分得出藍綠？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.dual_rod_task_dependent_colour_threshold",
+      "answer_target": "多數蛙類視網膜有兩種感光波長不同的桿細胞（約 430 與 500 奈米），長久被推測能在極暗處辨色，但沒人好好測過。研究者用三種任務測：蟾蜍在求偶與捕食任務中有辨色門檻，但都可以用視錐解釋，沒有只靠桿細胞辨色的跡象；同一種青蛙在捕食任務裡，即使在明亮的光下也只按亮暗挑最暗的獵物；可是讓青蛙從暗桶往亮窗跳時，兩扇窗調成對綠敏桿細胞一樣亮，從測到的最低光度起，跳向綠窗的比例就小幅但顯著上升，稍亮一點時藍窗甚至比暗處還不受歡迎。作者說青蛙「一開始看得見就分得出顏色」。同樣的眼睛，答案取決於在做什麼事。",
+      "scope": "限這兩屬與這三種任務；蟾蜍沒做趨光跳躍、青蛙沒做求偶，不得說成「青蛙用、蟾蜍不用」。不說所有蛙類夜裡都看到顏色；人類對照 data not shown，不採。",
+      "source_locator": "F18-S008 Abstract；§1；prey-catching 與 phototactic jumping results",
+      "premise_status": "screened",
+      "notes": "覆核算 1.5 條：趨光跳躍在絕對閾值辨色 1；任務依賴（青蛙捕食只看亮暗、蟾蜍門檻可由視錐解釋）0.5。同一篇三個實驗，作者的 2 條偏高。 原提案 F18-010（目標 C7-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、改問改答、下修 0.5。改寫後才是真正改變結論的轉折（同一雙眼，看不看得到顏色要先說是哪個任務），而且不靠物種對比。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "構造只給可能，任務才給答案",
+        "visual": "兩扇窗調到對同一種桿細胞一樣亮；青蛙往綠窗跳、蟾蜍不管顏色",
+        "seconds": [
+          70,
+          95
+        ]
+      },
+      "origin": "wave61-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-586f585437674113",
+          "origin": "wave61-life-20261111",
+          "locator": "F18-S008 Abstract；§1；prey-catching 與 phototactic jumping results",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-life.json"
+      ]
+    },
+    {
+      "id": "L61-002",
+      "question": "扇貝眼裡有一面鏡子、兩層視網膜，兩層看到的影像一樣清楚嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.scallop_mirror_two_retina_resolution_model",
+      "answer_target": "扇貝眼靠眼底的凹面鏡把光反射回來成像，兩層視網膜疊在一起。研究者用斷層掃描量活體海灣扇貝的眼睛，建光學模型推估：遠側那層約 2° 解析（與早先電生理、行為量到的約 2° 相符），近側約 7°；改變光的顏色或物體距離，都不能讓兩層同時清楚。模型另推測眼睛形狀改變可能調整近側的影像，這還沒驗證。",
+      "scope": "光學模型推估，不是行為；海灣扇貝；眼形調焦是推測。",
+      "source_locator": "F18-S009 Synopsis",
+      "premise_status": "screened",
+      "notes": "覆核算 0.5 條：光學推論，不是「牠看到什麼」的測驗；2° 本身是先前已知。 原提案 F18-011（目標 C7-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5。在方法題裡它只是「構造給的預測」那一格。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光學說：這眼睛做得出影像",
+        "visual": "鏡面把光反到上方兩層視網膜，一層清楚一層模糊",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave61-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9f37b5712077a531",
+          "origin": "wave61-life-20261111",
+          "locator": "F18-S009 Synopsis",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-life.json"
+      ]
+    },
+    {
+      "id": "L61-003",
+      "question": "扇貝眼睛做得出影像，但牠知道東西在哪一邊嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.scallop_tentacle_spatial_vision",
+      "answer_target": "研究者在扇貝四周不同方位放黑色條紋，海灣扇貝會把感覺觸手偏向圖樣伸出（前、腹、後三個方位都如此，背側則看不出），最寬的 24° 條紋比較窄的更能讓觸手集中指向；條紋旋轉時，個別觸手會跟著轉，觸手伸出也成一波波繞圈。作者說，就他們所知這是第一次表明扇貝不只察覺有東西，也知道東西在哪邊。",
+      "scope": "觸手指向是行為代理指標、群體統計；不說每隻每次都指對，不說扇貝在腦中拼出完整畫面；大小只說「最寬的比窄的集中」。",
+      "source_locator": "F18-S010 Abstract；Introduction；Methods",
+      "premise_status": "screened",
+      "notes": "覆核算 1 條：三個實驗都在回答同一件事（能定位），效果中等。 原提案 F18-012（目標 C7-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V21（2026-11-12）改字後收；採用、下修 0.5、改掉「越大越常」。這是本題「構造預測→行為檢驗」最乾淨的一組，但效果不大，旁白要說「偏向」不說「指向」。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有影像不等於會用，要看行為",
+        "visual": "扇貝邊緣一圈觸手朝黑塊方向伸出、跟著轉",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave61-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a070f120b0b2d13b",
+          "origin": "wave61-life-20261111",
+          "locator": "F18-S010 Abstract；Introduction；Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-life.json"
+      ]
+    },
+    {
+      "id": "P61-001",
+      "question": "糞便落在鋪了塑膠布的菜畦上，跟落在稻草或泥土上比，下一場雨會把它濺到更遠的菜上嗎？",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "mechanism_key": "rain.field_mulch_splash_transfer_distance",
+      "answer_target": "會，而且差得不少——要看東西落在什麼上面。美國馬里蘭與喬治亞的露天萵苣田，研究者把摻了實驗用大腸桿菌的兔糞直接放在菜畦中間的畦面上，等一場雨，隔天在離糞 0.1 到 1.5 公尺之間取菜來驗。每一場都是離糞越近驗到越多。馬里蘭一場 6 毫米的自然雨（畦面鋪黑塑膠布、成株萵苣），最陡的下降在 0.3 到 0.6 公尺之間；這一場和另一場模擬雨，1.5 公尺處都沒有一個樣本驗到。另一場 11 毫米的自然雨比較四種畦面：全部距離合計，塑膠布畦驗到的樣本比例 85.7%，稻草畦 50.6%；用這場資料配模型推算，菌量降到糞便裡的千萬分之一（少 7 個 log）的距離，稻草 0.4 公尺、裸土 0.7 公尺、黑塑膠布 1.2 公尺、生物可分解塑膠布 1.4 公尺。統計上確定的是稻草比兩種塑膠布短、裸土比生物可分解塑膠布短；稻草與裸土之間沒有差別。作者推測：不透水又光滑的塑膠布讓水滴一再彈跳，稻草與泥土把水吸住或困住——這篇沒有量水滴。",
+      "scope": "實驗用的非致病大腸桿菌、研究者放的兔糞點源（放在覆蓋物上面，不是被蓋住）、萵苣；兩場自然雨（6 mm、11 mm），其餘是背包噴霧器模擬雨；7-log 距離是單場（Trial 3、雨後 24 小時）資料配 Weibull 模型的預測；85.7% 原文只寫 plastic，未指明哪一種；黑塑膠布對裸土的 7-log 距離差異未達顯著；彈跳是作者推測。片中不提不採收緩衝區、採收間隔或「哪種覆蓋最安全」。",
+      "source_locator": "F17-S001：Table 1；Results 各段；Figure 5 圖說；Discussion 第四、五段與限制段",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：（a）自然雨下的田間距離分佈（0.3–0.6 m 陡降、1.5 m 驗不到）0.5 條，補 V18 點名的「全是人工降雨」缺口；（b）覆蓋物改變落在上面的東西被帶多遠（陽性比例、7-log 距離、2 log 差同一組試驗，合 1.0 條）。同一篇兩組試驗合 1.5，在「同一實驗 1–2 條」之內。 原提案 F17-001（目標 C5-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V20（2026-11-12）改字後收；來源合規、雜湊相同、主要數字都在正文。收，但改掉三件事：問題與轉折的「蓋住就隔開」不是這個實驗測的（汙染源放在覆蓋物上面）；7-log 距離要附上哪幾組顯著；85.7% 的 plastic 沒指明哪一種。食品安全建議一律不進片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "觀眾以為把地蓋起來就隔開了；實際下雨時，不透水的塑膠布讓地上的東西濺得更遠，稻草反而擋住。",
+        "visual": "一條 1.5 公尺的菜畦剖面，中間一坨糞，四種覆蓋並排；每 30 公分一個點標上驗到與否，塑膠布那條亮點延伸最遠。",
+        "seconds": [
+          60,
+          80
+        ]
+      },
+      "origin": "wave61-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-bd6be2538fc38cb7",
+          "origin": "wave61-physics-20261111",
+          "locator": "F17-S001：Table 1；Results 各段；Figure 5 圖說；Discussion 第四、五段與限制段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave61-physics.json"
+      ]
+    },
+    {
       "id": "Z7001",
       "question": "昆蟲在燈旁一直繞，真的是一直想朝燈泡飛嗎？",
       "domain": "動物行為與感官",
@@ -438408,6 +439902,20 @@
       "P60-004": "P60-004",
       "P60-005": "P60-005",
       "P60-006": "P60-006",
+      "S61-001": "S61-001",
+      "S61-002": "S61-002",
+      "H61-001": "H61-001",
+      "H61-002": "H61-002",
+      "H61-003": "H61-003",
+      "H61-004": "H61-004",
+      "H61-005": "H61-005",
+      "H61-006": "H61-006",
+      "H61-007": "H61-007",
+      "H61-008": "H61-008",
+      "L61-001": "L61-001",
+      "L61-002": "L61-002",
+      "L61-003": "L61-003",
+      "P61-001": "P61-001",
       "Z7001": "Z7001",
       "Z7002": "Z7002",
       "Z7003": "Z7003",
@@ -467961,6 +469469,96 @@
         "a": "S60-006",
         "b": "S60-003",
         "reason": "同為撒播實驗；兩章合用時旁白要明說是物理實驗，不是增雨推廣。（V19 2026-11-12）"
+      },
+      {
+        "a": "P61-001",
+        "b": "P60-002",
+        "reason": "不同事實：P60-002 是作物冠層下土壤的噴濺剝離（人工降雨），本核心是落在覆蓋物上面的點源被濺到菜上的距離（自然雨）。旁白要說清楚「蓋的是什麼、東西放在哪裡」，不得把兩者並成「遮住反而更糟」。（V20 2026-11-12）"
+      },
+      {
+        "a": "P61-001",
+        "b": "P60-001",
+        "reason": "同一章前後：P60-001 是降雨塔裡孢子落點與病斑不一致；本核心不涉及病害，不得接成「濺得遠就會生病」。（V20 2026-11-12）"
+      },
+      {
+        "a": "P61-001",
+        "b": "P59-006",
+        "reason": "P59-006 說大雨落速不噴氣溶膠，本核心比的不是雨強；作者把 Trial 3 與 Trial 4 的差歸因於 11 mm 雨，是推測，片中不用。（V20 2026-11-12）"
+      },
+      {
+        "a": "S61-001",
+        "b": "S60-002",
+        "reason": "同一機制、同一研究群（Freud 等 2008，Rosenfeld 共同作者）、同是亞馬遜燒林季。本核心只新增：13 µm 有效半徑的實測門檻、另一個計畫的確認、極汙染時以冰開始。兩個數字（每 100 CCN 350 m、每個雲滴 5 m）不得並成一個或相比。（V20 2026-11-12）"
+      },
+      {
+        "a": "S61-001",
+        "b": "S60-001",
+        "reason": "可接：陸地上的雨大多含冰；本核心是亞馬遜極汙染雲裡降水以冰開始的個案，不得說成 S60-001 的原因。（V20 2026-11-12）"
+      },
+      {
+        "a": "S61-001",
+        "b": "S60-005",
+        "reason": "S60-005 說冰生冰要先有暖雨；本核心的極汙染雲沒有暖雨、冰在更冷處才出現，可並排但不得說成同一研究的結論。（V20 2026-11-12）"
+      },
+      {
+        "a": "S61-002",
+        "b": "K6003",
+        "reason": "K6003 是凝結越長越慢；本頁末句重述同一件事（靠凝結慢慢長到 10–20 µm），不重計，只算碰撞效率與碰撞開始後的成長。（V20 2026-11-12）"
+      },
+      {
+        "a": "S61-002",
+        "b": "S60-001",
+        "reason": "S60-001 說陸地上的雨大多含冰；本核心講暖雨那條路為什麼起步難，兩者可接，但不得說成「因為碰撞難，所以陸地上的雨多含冰」。（V20 2026-11-12）"
+      },
+      {
+        "a": "H61-001",
+        "b": "R44004",
+        "reason": "同一系列（工具尖端的先後），R44004 是 2005 年 L 形棒、只讀到摘要，計 0、不放進最終清單。（V21 2026-11-12）"
+      },
+      {
+        "a": "H61-003",
+        "b": "R44003",
+        "reason": "同一現象；本篇只新增個別差異與腦結構。（V21 2026-11-12）"
+      },
+      {
+        "a": "H61-004",
+        "b": "H61-007",
+        "reason": "綜述同段引用 Ley 2013 的先天白內障個案，是 H61-007 的前身，片中不重講。（V21 2026-11-12）"
+      },
+      {
+        "a": "H61-005",
+        "b": "R44005",
+        "reason": "G578（material.verdict=ready）的核心，同屬跳躍類錯覺，答案不同；本題不用它、也不重講它的驚奇點。（V21 2026-11-12）"
+      },
+      {
+        "a": "H61-006",
+        "b": "H61-005",
+        "reason": "皮膚兔描述重疊，作者已不重算，照辦。（V21 2026-11-12）"
+      },
+      {
+        "a": "H61-007",
+        "b": "H61-008",
+        "reason": "純觸覺情境的結果與早盲者同方向，不重算那一半。（V21 2026-11-12）"
+      },
+      {
+        "a": "H61-008",
+        "b": "H61-004",
+        "reason": "Heed 2014 綜述同段引 Röder 2004，片中只用本篇的原始資料。（V21 2026-11-12）"
+      },
+      {
+        "a": "L61-001",
+        "b": "L326",
+        "reason": "人只有一種桿細胞、暗處分不清顏色；可在片中一句對照，不計。（V21 2026-11-12）"
+      },
+      {
+        "a": "L61-002",
+        "b": "R37009",
+        "reason": "不同物種、不同研究（R37009 是 Pecten maximus 的鳥嘌呤晶片鏡，計 0、刪）；片中不得混用。（V21 2026-11-12）"
+      },
+      {
+        "a": "L61-003",
+        "b": "L61-002",
+        "reason": "同屬海灣扇貝、同一實驗室；一個是光學、一個是行為，分章可以，但不要說成同一研究。（V21 2026-11-12）"
       }
     ],
     "excluded": [
@@ -468890,6 +470488,20 @@
         "questions": [
           "排成一列擠到每公尺兩人左右，是大家一起越走越慢嗎？",
           "一列人裡停下來的那一段，會往哪裡跑、跑多快？"
+        ]
+      },
+      {
+        "id": "S60-002~S61-001",
+        "a": "S60-002",
+        "b": "S61-001",
+        "question_score": 0.105,
+        "answer_score": 0.188,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "空氣裡的煙塵多了，雲要長到多厚才會下暖雨？",
+          "換一次飛機、換一年再量，煙塵多的雲是不是也要長得更高才下雨？髒到極點時，先出現的是雨還是冰？"
         ]
       },
       {
@@ -471707,6 +473319,20 @@
         ]
       },
       {
+        "id": "S60-001~S61-001",
+        "a": "S60-001",
+        "b": "S61-001",
+        "question_score": 0,
+        "answer_score": 0.083,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "雨大多是小水滴互相碰撞、合併變成的嗎？",
+          "換一次飛機、換一年再量，煙塵多的雲是不是也要長得更高才下雨？髒到極點時，先出現的是雨還是冰？"
+        ]
+      },
+      {
         "id": "X2025~X2026",
         "a": "X2025",
         "b": "X2026",
@@ -473023,6 +474649,20 @@
         ]
       },
       {
+        "id": "H61-001~H61-004",
+        "a": "H61-001",
+        "b": "H61-004",
+        "question_score": 0.042,
+        "answer_score": 0.058,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手沒交叉、只把手裡兩根棒子交叉，棒尖被敲的先後也會說反嗎？",
+          "是不是左右腦的手區互相干擾，或是眼睛看到手交叉才搞錯？"
+        ]
+      },
+      {
         "id": "R41004~R41005",
         "a": "R41004",
         "b": "R41005",
@@ -474084,6 +475724,20 @@
         "questions": [
           "同一條河，為什麼可能把小動物分成兩群，卻攔不住會飛的昆蟲？",
           "搬去新島嶼和原本家園被切成兩半，會留下哪些不同的隔離故事？"
+        ]
+      },
+      {
+        "id": "H61-001~H61-008",
+        "a": "H61-001",
+        "b": "H61-008",
+        "question_score": 0.047,
+        "answer_score": 0.043,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "手沒交叉、只把手裡兩根棒子交叉，棒尖被敲的先後也會說反嗎？",
+          "先天失明的人做交叉手測驗，為什麼反而比看得見的人準？"
         ]
       },
       {
@@ -477185,10 +478839,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-3907",
-    "target_count": 3907,
+    "revision": "2026-11-12-pool-3921",
+    "target_count": 3921,
     "reviewed_on": "2026-11-12",
-    "reason": "從3885續接；2026-11-12 第十輪素材審視只補讀：作者 F15 替後備組題 C5-01、C5-02、C5-03 補來源，作者 F16 替 C4-02 與兩組上一輪淘汰但最有機會翻案的組題（C6-01、C6-02）補來源；22 個提案經非作者覆核（F15 由 V18、F16 由 V19）全部收入（照原稿 3、改字後 19）。",
+    "reason": "從3907續接；2026-11-12 第十一輪素材審視只補讀：作者 F17 替後備組題 C5-02、C6-02 補來源，作者 F18 替上一輪因只讀到摘要而淘汰的兩組（C7-01 觸覺、C7-02 動物視覺）改讀開放原研究；15 個提案經非作者覆核（F17 由 V20、F18 由 V21），收入 14 個（全部照覆核改字），退回 1 個（與既有核心同答案）。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -481096,7 +482750,21 @@
       "S60-006",
       "L60-001",
       "L60-002",
-      "L60-003"
+      "L60-003",
+      "P61-001",
+      "H61-001",
+      "H61-002",
+      "H61-003",
+      "H61-004",
+      "H61-005",
+      "H61-006",
+      "H61-007",
+      "H61-008",
+      "S61-001",
+      "S61-002",
+      "L61-001",
+      "L61-002",
+      "L61-003"
     ],
     "overflow": [
       {
@@ -509232,6 +510900,95 @@
       "reading_status": "未重讀（已在池中）",
       "origin": "wave60-physics-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave60-physics.json"
+    },
+    {
+      "id": "H61-NA001",
+      "question": "雙手交叉後，兩下觸碰的先後為什麼會整個倒過來，間隔拉長又答對？",
+      "existing_ids": [
+        "R44003"
+      ],
+      "source_ids": [],
+      "reason": "非作者覆核 V21（2026-11-12）退回：同答案：R44003 問的就是這一題，答案也相同，只是池中只讀到摘要與勘誤而計 0。正確的處理是把 F18-S001 當成 R44003 的可讀來源（見 source_fixes），R44003 的答案補上單手對照與「典型受試者」的限定，計 1 條；不另立新核心。北澤 2004 是通訊作者本人以講演為底的 5 頁文章，敘述 2001a、2001b 與 Shibuya 2004 三項研究，每一項只附一位典型受試者的圖、沒有組別統計（2001a 的組別說法只有摘要一句「四分之一」）。作者把這份文件算 2.5 條，我改為 2.0 條：R44003（經 F18-S001）1、F18-002 0.5、F18-003 0.5。 原提案 F18-001。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回",
+      "origin": "wave61-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+    },
+    {
+      "id": "H61-NA002",
+      "question": "換了夜裡照花的光，天蛾還認得原先受訓的顏色嗎？（R37008 補讀）",
+      "existing_ids": [
+        "R37008"
+      ],
+      "source_ids": [],
+      "reason": "Kelber 等 2002 Nature 原刊付費、Lund 典藏（LUP record 131382）無附檔；作者 2003 ICB 綜述在 bioone（Incapsula）與 OUP（Cloudflare）被擋；2004 J Exp Biol 色恆常原研究在 journals.biologists.com 被 Cloudflare 擋。PMC9441236（昆蟲色恆常綜述）Europe PMC 全文 XML 回 500。 原提案 F18-NA001。",
+      "reentry_condition": "能從公開連結讀到 Kelber 2002 或 2004 JEB 全文時，可作 C7-02 第五章的第二個暗光例子（約 +1 條）。",
+      "reading_status": "abstract_only",
+      "origin": "wave61-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+    },
+    {
+      "id": "H61-NA003",
+      "question": "扇貝眼底的方形鳥嘌呤晶片怎麼拼成成像鏡（R37009 補讀）",
+      "existing_ids": [
+        "R37009"
+      ],
+      "source_ids": [],
+      "reason": "WebSearch 找到的 Weizmann 研究室頁 PDF（weizmann.ac.il）curl 回空回應、WebFetch 回 503；未讀到全文。改用 F18-011、F18-012 兩篇開放原研究承擔扇貝章節。 原提案 F18-NA002。",
+      "reentry_condition": "讀到 Palmer 2017 全文後，可補晶片形狀與鏡面多層結構（約 +1 條），但與 F18-011 物種不同，要分開講。",
+      "reading_status": "abstract_only",
+      "origin": "wave61-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+    },
+    {
+      "id": "H61-NA004",
+      "question": "嚴重視障的嬰兒，觸覺定位會受手的擺放影響嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Gori 等 2021 Curr Biol（PMC8612739）只讀摘要；答案與 F18-008、F18-009 同方向（早年視覺影響觸覺的外部座標），放進來會讓第七章變成同結論的清單。 原提案 F18-NA003。",
+      "reentry_condition": "若要把 C7-01 拉長或替換 F18-009，讀其 Results 後可作嬰兒版本。",
+      "reading_status": "abstract_only",
+      "origin": "wave61-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+    },
+    {
+      "id": "H61-NA005",
+      "question": "手臂交叉讓先後倒轉的 L 形棒版本（R44004 補讀）",
+      "existing_ids": [
+        "R44004"
+      ],
+      "source_ids": [],
+      "reason": "J Neurophysiol 2005 經 DOI 轉到 journals.physiology.org，回 Cloudflare 403；未繞過。typeset.io 上有第三方 PDF，授權不明，未使用。 原提案 F18-NA004。",
+      "reentry_condition": "能從出版社或作者典藏的公開連結讀到全文時，R44004 可從 0 升到約 1 條，C7-01 餘裕增加。",
+      "reading_status": "abstract_only",
+      "origin": "wave61-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave61-human.json"
+    },
+    {
+      "id": "P61-NA001",
+      "question": "雨把地上被汙染的泥土再濺一次，病菌會被帶得更遠嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P61-S002"
+      ],
+      "reason": "山藥炭疽病的降雨模擬器實驗：再濺的孢子很少、但所占比例隨距離增加，前一場雨的地面汙染沒有帶到下一場。仍是人工降雨，補不了 V18 點名的「自然降雨」缺口；C5-02 加了 F17-001 已過門檻，不為片長再塞一章；Results 也沒逐段讀完。 原提案 F17-NA001。",
+      "reentry_condition": "若覆核把 F17-001 下修到 1.0 以下，或 P60-001 的章節要換，再讀完 Results 與表格，可補 0.5 條在「怎麼離開」那章（地面再濺）。",
+      "reading_status": "Abstract、Introduction、Methods 全文讀；Results 未逐段讀",
+      "origin": "wave61-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave61-physics.json"
+    },
+    {
+      "id": "P61-NA002",
+      "question": "海上的淺積雲從冒出來到下雨要多久？",
+      "existing_ids": [],
+      "source_ids": [
+        "P61-S003"
+      ],
+      "reason": "RICO 概述只在開頭引用 1950–60 年代研究（雲頂約 2 公里開始有雨、雲頂 2500 公尺以上通常半小時內下、25–35 分鐘長到 3.5 公里）；不是 RICO 自己的量測，照規則引用不算事實。 原提案 F17-NA002。",
+      "reentry_condition": "讀到 RICO 的原研究全文（例如以雷達追蹤單一雲從生成到第一個回波的時間）或 Saunders 1965 原文的公開版本，可補 0.5–1 條，接在 F17-003 的「25 分鐘」之後。",
+      "reading_status": "概述 PDF 讀開頭兩頁與 RAIN INITIATION 一段",
+      "origin": "wave61-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave61-physics.json"
     },
     {
       "question": "蚊子為什麼找得到人？",
