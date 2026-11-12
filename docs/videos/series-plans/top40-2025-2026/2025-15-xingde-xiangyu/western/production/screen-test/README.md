@@ -67,6 +67,8 @@ bash $K/h3.sh stop --session ttv-st1 && bash $K/bootstrap.sh patch && bash $K/h3
 ```
 
 `runs/` 是這次送出的 manifest、進度檔與正文（`<W>` 是工作資料夾）；圖與片段不進 repo（repo 容量接近上限）。
+圖、片段、錄音與 log 的備份在雲端硬碟 `AI/備份/AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/`（站主 2026-11-12）；
+之後各集的製作檔放同一部劇的 `第001集/製作檔/<工作資料夾名>/`，照 `docs/videos/AI-DRAMA-DRIVE.md` 用 `todrive.sh` 傳。
 
 ## 直式小樣（2026-11-10，站主點頭，上限 6 CU）
 
