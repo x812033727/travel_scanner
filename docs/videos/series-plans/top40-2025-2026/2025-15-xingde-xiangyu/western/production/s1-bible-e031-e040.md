@@ -479,4 +479,8 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
 - **第 31–33 集**（寫稿者定）：吵架隔著車頂，鏡頭守在車頭那一側；Elias 用**右手**從西裝內袋拿手機（`cast.json` 的 `elias-phone` note 已改）。她推開的是從街上看的左扇鐵門；手電筒放在工作台靠爐子那一端。
   帆布一角綁一條舊繩 `a frayed rope tied to one corner of the tarp`，扯下後堆在爐腳，第 33 集起收進倉庫、不入鏡。第 33 集："Huh?" 的回答是 Nora 遞一根冷的吹管給 Sparks；長凳、滾料台、還熱著的杯子另有英文句；第一筆粉筆 `a single short white chalk stroke…`。
   Sparks 在線外拿冷吹管時不戴手套，在爐邊每一鏡都戴。鞋：Gus 舊的棕色工作靴、`nineteen` 的 Nora 工作靴、Brandt 白色軟底鞋、Sparks 黑色工作靴。回憶的廂型車 `a plain old white van with no lettering`。
+- **第 36–38 集**（寫稿者定）：**Peg 03:30 怎麼到 Remelt**：約 03:00 Elias 從 Ashford 家自己開車載 Peg 一個人下山，車停在 Rosa's 那個街角，他留在車裡；不拍、Peg 也不提。Nora、Gus、Sparks 回火後整夜沒走；Gus 打報修電話，技師約 01:00 到；大門整夜開著散煙。
+  道具句：螺絲起子 `a plain wooden-handled screwdriver as long as her hand`；點火鈕 `a round red push button on a small black steel box on the side of the furnace, just above the valve`。第 37 集技師把扳手移到工具箱上方，Gus 從那裡拿走。
+  **`remelt` 場景圖要多畫一版左牆還沒掛玻璃管的**（第 36 集掛管以前），或那段鏡頭背對左牆。十二格架由 Gus 與 Sparks 抬；黑板靠在工作台靠爐子那頭的左側；Hank 的電話不加濾波（他在自己店裡露臉）；第 38 集沒人叫 Fiona 的名字。
+  寫稿者新加、待站主確認：第 36 集 c25 Sparks "That white car's been there all afternoon."；第 38 集 c10 Nora "You really don't look at names?"。
 
