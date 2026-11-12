@@ -7,6 +7,9 @@
 
 這份會自動同步到雲端硬碟 `AI劇/原來如此事務所/_規則與教訓/教訓/教訓.md`（docs/videos/rules-sync）。
 
+- **2026-11-12，P29，站主決定：空間不足就完全備份到雲端再刪。** 容器的磁碟額度用完（ENOSPC）時，配音做到一半停掉、speech-journal 留下「已送出、沒有回應」的請求要手動 `forget`，輔助 worktree 也建不起來。
+  站主：「如果空間不足就完全備份到雲端就可以刪除了，只要記得完全備份不要漏了就好」。刪本機工作目錄前：`todrive.sh` 傳完，再 `rclone check <本機> <雲端> --one-way` 要印 `0 differences found`，而且 `matching files` 等於 `find <本機> -type f | wc -l`，兩個都對才刪。
+  已核准、已上傳或等 YouTube ID 的集數先刪（要用再 `rclone copy` 拉回，排除重複的同名子資料夾、build、segments）。長步驟開始前先看 `df -h /root`，剩不到約 3 GB 就先清。
 - **2026-11-12，P06／P18，站主發現：重送上架包之後，八語也要重送。** 站上組 YouTube 語言包時，只認綁在「目前這份上架包」的語言批次（`apps/api/app/video_youtube/language_package.py`）。
   上架包因為換縮圖重送、開了新的一份之後，之前核准的八語還綁著舊上架包，站主一核准新上架包就看到「已選取的 en 配音尚未核准，請先完成語言包」。
   順序：`package` → `review-push --gate publish` → `review-push --gate languages`，兩關都請站主核准。換縮圖能進到已核准的上架包，是因為 metadata.json 記了 `thumbnail_sha256`（2026-11-12）。
