@@ -42,6 +42,10 @@ const partsLength = (parts) => parts.reduce((sum, part) => sum + part.text.lengt
 // Mirrors VOICE_PREFIX and LONG_PAUSE_FROM_MS in apps/api/app/video_speech/gemini.py.
 export const GEMINI_VOICE_PREFIX = "gemini:";
 const LONG_PAUSE_FROM_MS = 600;
+// Mirrors VOICE_PREFIX, PAUSE_MIN_MS and PAUSE_MAX_MS in apps/api/app/video_speech/minimax.py.
+export const MINIMAX_VOICE_PREFIX = "minimax:";
+const MINIMAX_PAUSE_MIN_MS = 10;
+const MINIMAX_PAUSE_MAX_MS = 99_990;
 
 /**
  * The voice part of a request body. Azure takes a voice name and a rate; Gemini takes a
@@ -57,7 +61,28 @@ export function voiceFields(voice) {
       ...(voice.model ? { model: voice.model } : {}),
     };
   }
+  if (voice.provider === "minimax") {
+    return { voice: `${MINIMAX_VOICE_PREFIX}${voice.name}`, rate: voice.rate ?? "+0%", ...(voice.model ? { model: voice.model } : {}) };
+  }
   return { voice: voice.name, rate: voice.rate ?? "+0%" };
+}
+
+/**
+ * The text the server sends MiniMax (minimax.py speech_text); its length is what the MiniMax
+ * month counts. Markup characters are dropped, half-width parentheses become full-width, and a
+ * pause marker goes only between two segments that have something to say.
+ */
+export function minimaxText(segments) {
+  const spoken = segments
+    .map((segment) => ({ segment, text: segment.parts.map((part) => (part.alias || part.text).replace(/[<>#]/g, " ").replaceAll("(", "（").replaceAll(")", "）")).join("").trim() }))
+    .filter((entry) => entry.text);
+  return spoken
+    .map(({ segment, text }, index) => {
+      if (index === spoken.length - 1 || !(segment.break_after_ms > 0)) return text;
+      const ms = Math.min(MINIMAX_PAUSE_MAX_MS, Math.max(MINIMAX_PAUSE_MIN_MS, segment.break_after_ms));
+      return `${text}<#${(ms / 1000).toFixed(2)}#>`;
+    })
+    .join("");
 }
 
 /** The transcript the server sends Gemini; its length is what the Gemini month counts. */
@@ -129,10 +154,11 @@ export function planRequests(doc, lexicon) {
 
 /**
  * Billable characters the server will count for a request: for Azure its SSML inside <voice>,
- * for Gemini the characters of the transcript.
+ * for Gemini and MiniMax the characters of the text they are sent.
  */
 export function billableForRequest(body) {
   if (body.voice.startsWith(GEMINI_VOICE_PREFIX)) return geminiText(body.segments).length;
+  if (body.voice.startsWith(MINIMAX_VOICE_PREFIX)) return minimaxText(body.segments).length;
   let markup = 0;
   for (const segment of body.segments) {
     for (const part of segment.parts) {

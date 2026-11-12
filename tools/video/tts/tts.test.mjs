@@ -973,6 +973,23 @@ test("a Gemini voice never asks for timing: no aligner is live, so its lines kee
   assert.doesNotMatch(out.stdout, /measured character times/);
 });
 
+test("a MiniMax voice never asks for timing either: even its phrase-sized request goes straight to speech", async () => {
+  const box = sandbox();
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  writeFileSync(file, `${JSON.stringify({ ...doc, voice: { provider: "minimax", name: "Chinese (Mandarin)_News_Anchor" } }, null, 2)}\n`);
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const requests = planRequests(project.doc, project.lexicon);
+  // The same fixture in an Azure voice asks speech/align for this one (the test below).
+  assert.ok(requests.some((request) => alignedCharacters(request.body) <= ALIGNED_MAX_CHARACTERS));
+  const server = fakeServer({ align: true, status: { minimax_configured: true, minimax_monthly_limit: 300000, minimax_used: 0 } });
+  const { ctx, out } = capture({ root: box.root, env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" }, home: box.base, fetch: server.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug], ctx), EXIT.ok, out.stderr);
+  assert.deepEqual(paidRoutes(server), { align: 0, speech: requests.length });
+  const sent = server.calls.filter((call) => call.url.endsWith("/api/video/speech")).map((call) => JSON.parse(call.init.body).voice);
+  assert.ok(sent.every((voice) => voice === "minimax:Chinese (Mandarin)_News_Anchor"));
+});
+
 test("an answer lost on the aligned route holds its request in the speech journal: it is sent again on neither route", async () => {
   const box = sandbox();
   const lost = () => new Response(JSON.stringify({ code: "video_speech_answer_lost", detail: "請求已送到 API，回覆沒有在時限內回來" }), { status: 504, headers: { "Content-Type": "application/json" } });

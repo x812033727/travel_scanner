@@ -33,11 +33,43 @@ ROOT = HERE.parents[6]
 CAST = HERE.parent / "cast.json"
 SERIES = "恁祖媽今年18"
 LINE_PREFIX = "t"
-TAIL = ("One continuous shot. Natural, realistic live-action human motion; faces, hair and costumes stay as in their reference pictures; "
-        "nothing written anywhere in the frame.")
+# 收尾不能寫「faces … stay as in their reference pictures」：「臉」對模型同時是長相與表情，排在最後的那句贏，把表情鎖回定妝照的平臉
+# （docs/videos/lessons/shared.md〈依主題整理〉第三節，種田 e901 真人版；祖媽第 1–3 集表情審片，2026-11-08）。只鎖長相、髮型、服裝。
+TAIL = ("One continuous shot. Natural, realistic live-action human motion; each person's facial features, hair and costume stay as in their reference picture, "
+        "while the facial expressions follow the text above; "
+        "nothing written anywhere in the frame; no subtitles, no captions, no characters or letters at the bottom of the picture.")
+# 「不要字幕」：第 4 集 c38 首格把台詞畫成畫面下方的字幕（lessons.md 2026-11-09）；原聲台詞的引號會邀請字幕，所以每一鏡都加（第 5 集審稿）
 FACES_RULE = ("Besides them, only the other people the composition names are in the frame; no second copy of anyone appears. "
-              "Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood.")
-LAMP_SIZE = (" The lamp is small: about thirty centimetres tall including its glass chimney, about as tall as a forearm is long, small on the long altar table; it never looks bigger than a person's head.")
+              "Facial expressions follow the action and lines described here, not the reference pictures: the pictures fix the face, hair and costume only, never the mood; "
+              "every visible face, speaking or silent, shows the expression written for it; whoever speaks talks to the other person, and nobody, speaking or listening, ever looks into the camera.")
+# 站主 2026-11-08：角色常常沒表情。三集審下來：沒寫表情的臉（多半是不說話的人）會退回定妝照的臉；寫「cold」「calm」「does not smile」
+# 這種抽象或否定的字，模型照樣給木然或笑臉；說話的近景會變成對鏡頭講話的主播臉。所以每張看得到的臉都要一句具體的表情
+# （眉、眼、嘴角、下巴、呼吸），--check 會列出缺的鏡。
+FACE_WORDS = re.compile(r"\b(brows?|eyes?|eyelids?|lids|mouth corners?|corners of (?:his|her|their) mouth|lips? (?:pressed|trembl|curl|part)|jaw|frown|scowl|glar|sneer|grin|smil|tears?|sob|gasp|swallow)", re.I)
+NO_FACE = re.compile(r"(face is never in the frame|only (?:this one hand|(?:his|her|their|the) hands?)|seen only from behind|back to (?:the )?camera|no one|nobody is in the frame|empty)", re.I)
+
+
+def face_gaps(parsed, en):
+    """Shots with a visible face but fewer than two concrete expression words in the English prompt."""
+    out = []
+    for sc in parsed["scenes"]:
+        for s in sc["shots"]:
+            e = (en.get("shots") or {}).get(s["id"]) or {}
+            pr = e.get("prompt", "")
+            if not pr or NO_FACE.search(pr) or e.get("no_face"):
+                continue
+            people = [n for n in set(EN_NAMES.values()) if n in pr] or ["?"]
+            need, got = 2 * len(people), len(FACE_WORDS.findall(pr))
+            if got < need:
+                out.append(f"{s['id']}: {len(people)} 人入鏡，具體表情描述只有 {got} 處（每人至少兩處：眉、眼、嘴角、下巴、呼吸）")
+    return out
+# 燈只有一個樣子：照道具圖 prop-changmingdeng-t1（第 1 集重拍草稿審查：48 鏡裡燈有六、七種樣子；文字寫的圓肚燈罩跟道具圖對不上，
+# 場景圖裡的燈也是另一種，所以燈入鏡的鏡一律附道具圖，文字照道具圖寫，2026-11-08）
+LAMP_SIZE = (" It is the same lamp in every shot, exactly the lamp shown in the lamp picture: a tall slim clear glass chimney over a round brass oil font on a slender brass stem, "
+             "standing on a plain square dark red-brown wooden base; about thirty centimetres tall in all, small on the long altar table, and there is only this one lamp in the hall, "
+             "no lantern, no cap, no other lamp anywhere.")
+NIGHT = (" It is late at night: the sky and everything outdoors are dark, almost black, with no daylight anywhere and no beam of daylight through any window;"
+         " the only light comes from lamps and bulbs.")  # 第 4 集審稿：寫 lanterns 等於邀請燈籠（2026-11-09）  # 第 2 集審稿：門房亮著的窗被舊句「every window dark」打架（2026-11-08）
 EN_NAMES = {
     "yuetang-18": "Shen Yuetang", "yuetang-96": "Shen Yuetang at ninety-six", "yuqin": "Shen Yuqin", "jianbang": "Shen Jianbang",
     "zhiyuan": "Shen Zhiyuan", "xiaoman": "Shen Xiaoman", "fubo": "Fu Bo", "jianye": "Shen Jianye", "meifeng": "Lin Meifeng",
@@ -47,7 +79,8 @@ EN_NAMES = {
     "wuxiaozhang": "Principal Wu", "chenlaoshi": "Teacher Chen", "heqisheng": "He Qisheng", "zhengyishi": "Dr. Zheng",
     "linzhuren": "Director Lin of the care home", "gaojingli": "Manager Gao", "denglao": "Elder Deng", "chuntao": "Granny Chuntao",
 }
-STRIP_EMOTION = re.compile(r"`[a-z0-9-]+`，?|96，?|畫外，?|心裡話，?|嘴閉著，?|背對鏡頭，?")
+# 說話人括號裡的造型名不是語氣：加不加反引號都拿掉（第 3 集 c49 的語氣只剩「基本款」，第 3 集審稿）
+STRIP_EMOTION = re.compile(r"`[a-z0-9-]+`，?|\b(?:shouyi|home|damp|portrait|wrinkle|faintline|huiyi(?:-\d+)?)\b，?|基本款，?|96，?|畫外，?|心裡話，?|嘴閉著，?|背對鏡頭，?")
 
 
 def episode_dir(ep: int) -> Path:
@@ -104,17 +137,21 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
     ep_title = heading.group(2).strip() if heading else f"第{ep}集"
     overrides = en.get("speaker_overrides", {})
     scenes, used, n = [], [], 0
+    own_ids: list[str] = []
     total = 0.0
     for sc in parsed["scenes"]:
         for s in sc["shots"]:
             e = en["shots"][s["id"]]
             lines = []
-            for d in s["dialogue"]:
+            vprompt, own = voiced(e["prompt"], s["dialogue"], e.get("addressee"))
+            for k, d in enumerate(s["dialogue"]):
                 who = overrides.get(s["id"]) if not d["speaker"] else d["speaker"]
                 if not who:
                     raise SystemExit(f"{s['id']}: 說話人 {d['speaker_label']!r} 對不到 cast.json，在 shots-en.json 的 speaker_overrides 指定")
                 n += 1
                 line = {"id": f"{LINE_PREFIX}{ep:03d}{n:03d}", "speaker": who, "text": d["text"]}
+                if own[k]:
+                    own_ids.append(line["id"])  # 用草稿的模型原聲（post/voice.py）；沒有的照舊錄音
                 emo = emotion(d["notes"])
                 if emo:
                     line["emotion"] = emo
@@ -122,7 +159,9 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
                 used.append(who)
             shot_chars = list(e.get("characters", []))[:3]
             used += shot_chars
-            data = {"prompt": e["prompt"][:1000], "camera": e["camera"], "characters": shot_chars}
+            if len(vprompt) > 1000:  # video.json 的欄位上限；以前直接截斷不吭聲（第 3 集重寫分鏡時發現）
+                print(f"warning: {s['id']}: prompt {len(vprompt)} chars > 1000, video.json keeps the first 1000 (the Colab manifest keeps all)", file=sys.stderr)
+            data = {"prompt": vprompt[:1000], "camera": e["camera"], "characters": shot_chars}
             if e.get("motion"):
                 data["motion"] = e["motion"]
             looks = {k: v for k, v in (e.get("looks") or {}).items() if k in shot_chars}
@@ -188,6 +227,7 @@ def build_video(parsed: dict, en: dict, cast: dict) -> tuple[dict, str]:
         "站主 2026-11-06 試鏡後定走真人風格（3D 不行），片段先做到 1312×736。"
         "這部沒有系統、沒有面板；長明燈是唯一的特效，老化只用化妝與光。分鏡與台詞的權威版本是同一個資料夾的 `script.md`。\n"
     )
+    video["_own_voice"] = own_ids  # main 拿出來寫成 voice.json，不進 video.json
     return video, brief
 
 
@@ -211,6 +251,32 @@ def find_ref(refs: Path, names: list[str], size: tuple[int, int], placeholders: 
     return refs / names[-1]
 
 
+SPEAK = re.compile(r"speaks a (?:short |very short |second )?Mandarin line")
+
+
+def voiced(prompt: str, dialogue: list[dict], addressee: str | None = None) -> tuple[str, list[bool]]:
+    """模型原聲（站主 2026-11-07）：畫面上開口的台詞照順序填進「speaks a … Mandarin line」，模型才講劇本的字。
+
+    心裡話、畫外、電話不填（嘴閉著或不在畫面裡，照舊用錄音）；提示詞裡沒有說話句的台詞也算錄音。回傳改好的提示詞與每句是不是原聲。
+    """
+    spoken = [i for i, d in enumerate(dialogue) if not d.get("inner") and not d.get("offscreen")]
+    own = [False] * len(dialogue)
+    out, last, k = [], 0, 0
+    for m in SPEAK.finditer(prompt):
+        if k >= len(spoken):
+            break
+        i = spoken[k]
+        # 站主 2026-11-08（看完第 2 集）：「很多幕都是看前面，不會面對對方說話」。沒寫看誰，模型就對著鏡頭講。
+        # 每句都補上：轉向說話的對象、側臉或四分之三側臉、不看鏡頭。
+        # shots-en.json 的 "addressee"：沒有聽的人時寫看哪裡（自言自語、對著燈），免得模型多畫一個聽的人或對鏡頭講（第 1 集重寫審稿）
+        facing = (f", eyes on {addressee}, face in profile or three-quarter profile, never looking at the camera" if addressee else
+                  ", turned toward the person being spoken to, face in profile or three-quarter profile, eyes on that person, never looking at the camera")
+        out.append(prompt[last:m.start()] + f"speaks a short Mandarin line, 「{dialogue[i]['text']}」{facing}")
+        last, own[i], k = m.end(), True, k + 1
+    out.append(prompt[last:])
+    return "".join(out), own
+
+
 def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
     ep = parsed["episode"]
     chars = {c["id"]: c for c in cast["characters"]}
@@ -230,24 +296,65 @@ def build_manifests(parsed: dict, en: dict, cast: dict, args) -> list[Path]:
                 names = ([f"{cid}-{look}-t1.png"] if look else []) + [f"{cid}-portrait-t1.png"]
                 images.append(find_ref(refs, names, (1248, 1664), args.placeholders, missing))
                 text = looks.get((cid, look)) or chars[cid]["appearance"]
+                # 姿勢不寫進定妝描述：每鏡的姿勢由正文決定（第 3 集審稿：「hands folded in front of her waist」跟 27 鏡的動作打架，c35 還正好是第 1 集的死亡姿勢）
+                text = re.sub(r",?\s*back very straight", "", text)
+                text = re.sub(r",?\s*(?:both )?hands folded (?:in front of|at) (?:her|his) waist(?: like an elderly lady)?", "", text)
                 anchors.append(f"{EN_NAMES.get(cid, chars[cid]['name'])} shown in <Picture {len(images)}> keeps exactly the same face, hair and costume as the picture: {text}")
             set_id = e.get("set") or (sc["sets"][0] if sc["sets"] else None)
             if set_id:
                 lamp = e.get("lamp")
-                names = ([f"set-{set_id}-lamp{lamp}-t1.png"] if lamp else []) + [f"set-{set_id}-t1.png"]
+                # `set_variant`（第 4 集審稿 2026-11-09）：白天的戲附白天版場景圖（set-<場景>-day-t1.png），反方向的鏡附那個方向的圖（例如 doors）
+                variant = e.get("set_variant")
+                names = ([f"set-{set_id}-{variant}-t1.png"] if variant else []) + ([f"set-{set_id}-lamp{lamp}-t1.png"] if lamp else []) + [f"set-{set_id}-t1.png"]
+                if not e.get("no_set"):  # `no_set: true`：燈不入鏡、背景只有暗牆的近景不附場景圖（第 4 集 c45、c46）
+                    images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
+                    anchors.append(f"the location shown in <Picture {len(images)}> is the set, keeping its layout and props")
+            lamp_text = f" The brass oil lamp shows {cast['lamp']['levels'][str(e['lamp'])]}; the light stays as it is through the shot." if e.get("lamp") and not e.get("lamp_changes") and not e.get("lamp_quiet") else ""  # `lamp_quiet`：燈的亮度句會帶出銅鏡與藥櫃，畫面裡沒有它們的鏡不加（第 4 集 c43、c44）
+            # 燈不在畫面裡的鏡（shots-en.json 寫 "lamp_in_frame": false，或正文寫了 lamp … out of the frame / no lamp）只說光從畫外來：
+            # 第 3 集草稿 c01、c05、c07、c11、c14、c16 都因為固定的那段燈的描述，在手邊多畫一盞玻璃燈（2026-11-08 審草稿）
+            offscreen = e.get("lamp_in_frame") is False or re.search(r"\blamp (?:itself )?is (?:out of|off) (?:the )?(?:frame|screen)\b|\bno lamp\b", e["prompt"], re.I)
+            if e.get("lamp_base_only"):  # 第 3 集 c33：只拍燈座，燈罩與火在畫面上緣外；不附整盞燈的描述與道具圖（2026-11-08 審稿）
+                lamp_text = " Only the lamp's plain square dark red-brown wooden base and the foot of its slender brass stem are in the frame; the glass chimney and flame are above the top edge of the frame."
+            elif offscreen:
+                # 第 2 集審稿：院子、正廳也會被標 lamp_in_frame false，「No lamp」跟迴廊紙燈、吊燈打架；只在祠堂說長明燈在畫外
+                lamp_text = " The altar oil lamp is not in the frame; its warm light comes from off screen." if set_id == "shenjia-citang" else ""
+            elif e.get("lamp") or (set_id == "shenjia-citang" and re.search(r"\b(oil lamp|the lamp)\b", e["prompt"], re.I)):  # 第 2 集：正廳的 hanging lamp 也被加上長明燈，桌上多一盞油燈
+                lamp_text += LAMP_SIZE.replace("the lamp picture", "the lamp picture")  # 小樣 c19–c21：燈畫得比人頭還高（2026-11-07）
+                if len(images) < 4:
+                    images.append(find_ref(refs, ["prop-changmingdeng-t1.png"], (1024, 1024), args.placeholders, missing))
+                    lamp_text = lamp_text.replace("the lamp shown in the lamp picture", f"the lamp shown in <Picture {len(images)}>")
+            # 道具圖：正文提到就附上（第 3 集審稿：藥櫃、報信鈴只靠場景圖，c13 要三十個抽屜、c45 要三個鈴；第 1 集 v2：道具一直畫錯，附圖才對）
+            for rx, ref, name in ((r"medicine cabinet", "prop-yaogui-t1.png", "medicine cabinet"), (r"\bbells?\b", "prop-baoxinling-t1.png", "bells"),
+                                  (r"key ring", "prop-fubo-yaoshichuan-t1.png", "key ring"),
+                                  # 第 5 集審稿（2026-11-09）：油壺與十八歲照片也每鏡附道具圖，免得每鏡各畫各的
+                                  (r"\boil can\b", "prop-tong-youhu-t1.png", "oil can"),
+                                  (r"(?:portrait photograph|eighteen-year-old'?s? photograph)", "prop-shibasui-zhao-t1.png", "photograph")):
+                if re.search(rx, e["prompt"], re.I) and len(images) < 4:
+                    images.append(find_ref(refs, [ref], (1024, 1024), args.placeholders, missing))
+                    lamp_text += f" The {name} looks exactly as in <Picture {len(images)}>."
+            if set_id == "shenjia-citang":
+                lamp_text += " The ancestral tablets are plain dark wood with nothing carved or written on them."
+            if re.search(r"\bat night\b|^\s*night\b|\bdeep in the night\b", e["prompt"], re.I):  # 第 2 集審稿：c48、c49 以「Night, seen from」開頭，沒加到夜景句
+                lamp_text += NIGHT  # 第 1 集 c14：正廳的場景圖是白天畫的，門外亮得像白天（2026-11-07）
+            if not images and set_id:
+                # 參照路線至少要一張圖（h3.sh check：reference_images must list 1-9 images）；沒有臉、沒有道具圖的插鏡附場景圖，
+                # 只說是這個房間的一小角（第 5 集 c20、c34、c38，2026-11-09）
+                variant = e.get("set_variant")
+                names = ([f"set-{set_id}-{variant}-t1.png"] if variant else []) + [f"set-{set_id}-t1.png"]
                 images.append(find_ref(refs, names, (1920, 1088), args.placeholders, missing))
-                anchors.append(f"the location shown in <Picture {len(images)}> is the set, keeping its layout and props")
-            lamp_text = f" The brass oil lamp shows {cast['lamp']['levels'][str(e['lamp'])]}; the light stays as it is through the shot." if e.get("lamp") and not e.get("lamp_changes") else ""
-            if e.get("lamp") or "lamp" in e["prompt"].lower():
-                lamp_text += LAMP_SIZE  # 小樣 c19–c21：燈畫得比人頭還高（2026-11-07）
+                anchors.append("the room shown in <Picture 1> is the location, keeping its light and furniture; only a small part of it is seen")
             tags = ", ".join(f"<Picture {i}>" for i in range(1, len(images))) + (f" and <Picture {len(images)}>" if len(images) > 1 else "<Picture 1>")
-            body = (f"For the target video, {tags} are referenced throughout.\n\n"
-                    f"integrated_multimodal_description: [Shot 1] Live-action. " + "; ".join(anchors) + ". "
-                    f"Initial composition: {e['prompt']}{lamp_text} {FACES_RULE if e.get('characters') else ''} "
+            # 沒有參考圖的鏡（沒有臉、不附場景圖的插鏡）不寫「<Picture 1> are referenced throughout」：那張圖不存在（第 5 集審稿）
+            body = ((f"For the target video, {tags} are referenced throughout.\n\n" if images else "")
+                    + "integrated_multimodal_description: [Shot 1] Live-action. " + ("; ".join(anchors) + ". " if anchors else "")
+                    + f"Initial composition: {voiced(e['prompt'], s['dialogue'], e.get('addressee'))[0]}{lamp_text} {FACES_RULE if e.get('characters') else ''} "
                     f"The camera: {e['camera']}. {TAIL}\noverall_soundscape: N/A\nnon_diegetic_music: N/A\n")
             pf = work / "prompts" / f"{s['id']}.txt"
             pf.write_text(body, encoding="utf-8")
             secs = max(5, min(10, int(-(-((s["seconds"] or 5) + 0.5) // 1))))
+            if e.get("clip_seconds"): secs = int(e["clip_seconds"])  # 長台詞的原聲鏡多買幾秒（第 4 集審稿：模型常晚 1–3 秒才開口）
+            if voiced(e["prompt"], s["dialogue"])[1].count(True):
+                secs = max(secs, 6)  # 開口說話的鏡至少買 6 秒：模型常在片段最後一格還沒講完（第 1 集原聲版 c05、c25、c27）
             jobs.append({"id": s["id"], "title": f"tai-nainai-e{ep:03d} {s['id']} ref2va", "inference_mode": "reference",
                          "reference_images": [str(p) for p in images], "prompt_file": f"prompts/{s['id']}.txt",
                          "prompt_sha256": hashlib.sha256(pf.read_bytes()).hexdigest(), "duration_seconds": secs,
@@ -280,6 +387,9 @@ def main(argv: list[str]) -> int:
     if problems:
         print("\n".join(problems))
         return 1
+    gaps = face_gaps(parsed, en)
+    if gaps:
+        print("表情（站主 2026-11-08：每張臉都要有表情，除非劇本要木然）：\n  " + "\n  ".join(gaps))
     if a.check:
         print(f"e{a.episode:03d}: {sum(len(s['shots']) for s in parsed['scenes'])} 鏡，英文正文都對得上 script.md")
         return 0
@@ -291,7 +401,11 @@ def main(argv: list[str]) -> int:
         return 0
     video, brief = build_video(parsed, en, cast)
     d = episode_dir(a.episode)
+    own_ids = video.pop("_own_voice")
     (d / "video.json").write_text(json.dumps(video, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # 模型原聲（站主 2026-11-07）：這些台詞用草稿自己的語音，其餘（心裡話、畫外、背對鏡頭）照舊錄音
+    (d / "voice.json").write_text(json.dumps({"own_voice": own_ids, "note": "用草稿模型原聲的台詞 id；其餘錄音。post/voice.py 與剪接表的 own_voice 讀這份。"},
+                                             ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     (d / "brief.md").write_text(brief, encoding="utf-8")
     print(f"{d / 'video.json'}: {len(video['scenes'])} 鏡、{sum(len(s['lines']) for s in video['scenes'])} 句、{len(video['characters'])} 個角色")
     return 0

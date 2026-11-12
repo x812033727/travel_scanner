@@ -1,0 +1,3472 @@
+{
+  "reviewed_on": "2026-11-11",
+  "round": 5,
+  "previous_round": "docs/videos/so-thats-why/pool/reviews/material-20261111-round4.json",
+  "owner_instruction": [
+    "原來如此也繼續擴充",
+    "也可以審",
+    "繼續擴充素材池，一樣做好去重和來源整理，太薄或無聊的題目就合併或淘汰，影片不要為了片長硬湊"
+  ],
+  "bar": "同前四輪：旁白每秒 4.5 字、不留空白；片長＝（不重複事實數×140 字＋700 字開場收尾）÷4.5 字／秒；可成題要有至少 8.5 分鐘的素材、至少兩個改變結論的轉折、一個觀眾會問的開場問題；開場 45–60 秒、結尾章 30–60 秒。只算有可讀紀錄的外部來源；本工作階段的自製測試或自己的計算不是來源；舊核心的來源已有的事實不重計。",
+  "method": "兩條補來源線，各針對四組最接近 8.5 分門檻的後備長題，先讀各題 themes.json 的 material.missing：作者 F5 針對 G18、G34、G25、G03，寫成 31 個核心提案、21 筆來源紀錄、5 筆未收紀錄；作者 F6 針對 G02、G07、G10、G23，寫成 48 個核心提案、26 筆來源紀錄、7 筆未收紀錄。只讀官方頁、標準文件、法規、教材與開放全文的原研究，並親讀全文。兩位沒參與撰寫的覆核者從本機快取重開全文逐句核對：V8 覆核 F5（31 核心、4 目標，並以一般 curl 重抓每個來源網址確認沒有繞過檢查），V9 覆核 F6（48 核心、4 目標，每題至少一個來源線上重讀，並向 NPS IRMA 取回 Exit Glacier 報告官方原檔比對 sha256）；逐核心判定、重列每個目標的最終核心並重算分鐘；去重比對 pool.json 全部候選、可成題長題與企劃 POOL_SUPPORT。覆核結論優先：改字照覆核逐句套用，退回的核心改記為未收紀錄（附覆核理由），收下但最終題案沒用的核心仍進批次。整合者照第四輪的做法：新增前凍結 3,661 筆快照、編成第五十五批、改寫八組長題的章節與素材審視欄，再跑 build、check、index 與測試。",
+  "policies": {
+    "duplicate_sources": "同一份文件不另立來源（照第三、四輪）：F5-S016（Butter Science 101）、F6-S022（NSIDC〈Science of Glaciers〉）、F6-S025（EPA 處理技術總覽）與池中舊來源同一網址，本輪閱讀以新的 reading 追加到 SRC-e0b800864a06d0e9、SRC-c24d3d245cddb657、SRC-b230cde640c14ff6；F6-S001（UAX #15）與 F6-S007（UAX #29）讀的正是池中舊網址 tr15-58.html、tr29-49.html 所指的同一版本，批次來源沿用舊網址、實際下載的『最新版』網址記在 retrieval_url，追加到 SRC-44f561000729bda4、SRC-8174dfd1da099164。各批次來源都加 refreshes_source_id 與 applies_to_candidate_ids；舊核心已有的句子不重計。全庫來源網址因此只增 42 筆（47 筆來源紀錄減 5 筆併入）。",
+    "source_fixes": "照覆核要求修正四筆來源紀錄（見 source_fixes）：F5-S018 改記 UCL 直接 PDF、Rodell 2009 以 DOI 引用、NPS Exit Glacier 報告改記官方 IRMA 原檔並以鏡像為 identity_urls、F6-S021 的錯誤快取寫進 limitations。",
+    "rejects": "V9 退回 7 個核心（F6-014、F6-022、F6-027、F6-032、F6-035、F6-045、F6-047）：不進候選，改記為所屬批次的未收紀錄，reason 照錄覆核理由並註明原提案；它們的來源仍收在批次裡。",
+    "unused_cores": "覆核收下但八組最終題案都沒用的 10 個核心（T55-004、T55-006、S55-006、S55-007、S55-012、T55-018、T55-021、T55-022、T55-023、S55-023）仍進批次，留池備用。",
+    "legacy_sources": "G18 的 ADI MT-101（E2259–E2261）、G34 的 Earth Observatory 與 JPL 頁（O3061–O3063、O3081、O3083）、G25 的 P242、D2039、D2028、D2029、G03 的三個 USGS Water Science School 頁、G07 的四個 NASA 概論頁（R001–R004、R010）都沿用舊閱讀紀錄，撰稿前照原紀錄重讀；各題 missing 已列。",
+    "legacy_source_reference": "F6-NA006 指出 E7006 錯掛冰楔／熱融湖來源 SRC-f2de49ac9ccccc6e。這筆指向來自 E11012 的編輯合併，前幾輪的 source_merges、raw_changes 都不是更正舊來源指向的機制，原題紀錄又受快照凍結，所以本輪不改，記在 open_data_issues。",
+    "roles": "F5、F6 的 editorial.role 都已記為 segment，預定角色（hook、turn、chapter_core、limit）寫在核心 notes。",
+    "budgets": "題案目標分鐘照覆核的 planned_minutes，章節標題、秒數與核心照覆核大綱；工作範圍取包含目標、落在 8.5–13 分與題案自己上限內的區間。覆核大綱收尾章沒列核心的（G34、G25、G03、G02、G10），依題案規則（每章都要有支持的核心）回扣前面用過的核心，不新增事實。G02 照 V9 改題並換追問；覆核刪掉的既有核心從題案移出、仍留在池中。",
+    "dedup": "去重紀錄新增 29 組分題理由，記下覆核點名的部分重疊（新核心與舊核心同機制只算增量、或以實讀的新核心取代來源未實讀的舊核心而不並用）。自動近鄰檢查沒有新的高相似待決配對。",
+    "self_run_test": "同前四輪：自製測試只能當畫面示範，不是來源；F5、F6 的數字都出自原文。V8 刪掉 F5-008 研究者從型號自己解碼的規格，改掉 F5-001 研究者算錯的『差到快三倍』。"
+  },
+  "counts": {
+    "research_proposals": 79,
+    "research_proposals_by_author": {
+      "F5": 31,
+      "F6": 48
+    },
+    "research_sources_read": 47,
+    "sources_ingested": 47,
+    "sources_merged_into_existing": 5,
+    "new_source_urls": 42,
+    "cores_added": 72,
+    "cores_rejected": 7,
+    "adopted_but_unused": 10,
+    "not_added_records": 19,
+    "not_added_by_kind": {
+      "author_not_added": 12,
+      "reviewer_reject": 7
+    },
+    "non_author_cores": {
+      "ADOPT": 46,
+      "ADOPT_WITH_CHANGES": 26,
+      "NEEDS_CHECK": 0,
+      "REJECT": 7
+    },
+    "non_author_cores_by_reviewer": {
+      "V8": {
+        "ADOPT": 18,
+        "ADOPT_WITH_CHANGES": 13,
+        "NEEDS_CHECK": 0,
+        "REJECT": 0
+      },
+      "V9": {
+        "ADOPT": 28,
+        "ADOPT_WITH_CHANGES": 13,
+        "NEEDS_CHECK": 0,
+        "REJECT": 7
+      }
+    },
+    "targets_examined": 8,
+    "targets_ready": [
+      "G18",
+      "G34",
+      "G25",
+      "G03",
+      "G02",
+      "G07",
+      "G10",
+      "G23"
+    ],
+    "targets_reserve": [],
+    "long_themes_now_ready": [
+      "G18",
+      "G34",
+      "G25",
+      "G03",
+      "G02",
+      "G07",
+      "G10",
+      "G23"
+    ],
+    "new_themes_ready": 0,
+    "new_theme_ids": [],
+    "ready_long_themes_before_after": [
+      46,
+      54
+    ],
+    "pool_selected_before_after": [
+      3661,
+      3733
+    ],
+    "raw_records_before_after": [
+      4051,
+      4123
+    ],
+    "source_urls_before_after": [
+      5010,
+      5052
+    ],
+    "not_added_before_after": [
+      2313,
+      2332
+    ],
+    "themes_before_after": [
+      609,
+      609
+    ],
+    "distinct_decisions_added": 29
+  },
+  "core_id_mapping": {
+    "F5-001": "T55-001",
+    "F5-002": "T55-002",
+    "F5-003": "T55-003",
+    "F5-004": "T55-004",
+    "F5-005": "T55-005",
+    "F5-006": "T55-006",
+    "F5-007": "T55-007",
+    "F5-008": "T55-008",
+    "F5-009": "T55-009",
+    "F6-001": "T55-010",
+    "F6-002": "T55-011",
+    "F6-003": "T55-012",
+    "F6-004": "T55-013",
+    "F6-005": "T55-014",
+    "F6-006": "T55-015",
+    "F6-007": "T55-016",
+    "F6-008": "T55-017",
+    "F6-009": "T55-018",
+    "F6-010": "T55-019",
+    "F6-011": "T55-020",
+    "F6-012": "T55-021",
+    "F6-013": "T55-022",
+    "F6-015": "T55-023",
+    "F6-016": "T55-024",
+    "F6-017": "T55-025",
+    "F6-018": "T55-026",
+    "F6-019": "T55-027",
+    "F6-020": "T55-028",
+    "F6-021": "T55-029",
+    "F6-023": "T55-030",
+    "F6-024": "T55-031",
+    "F6-025": "T55-032",
+    "F6-026": "T55-033",
+    "F5-010": "S55-001",
+    "F5-011": "S55-002",
+    "F5-012": "S55-003",
+    "F5-013": "S55-004",
+    "F5-014": "S55-005",
+    "F5-015": "S55-006",
+    "F5-016": "S55-007",
+    "F5-023": "S55-008",
+    "F5-024": "S55-009",
+    "F5-025": "S55-010",
+    "F5-026": "S55-011",
+    "F5-027": "S55-012",
+    "F5-028": "S55-013",
+    "F5-029": "S55-014",
+    "F5-030": "S55-015",
+    "F5-031": "S55-016",
+    "F6-028": "S55-017",
+    "F6-029": "S55-018",
+    "F6-030": "S55-019",
+    "F6-031": "S55-020",
+    "F6-033": "S55-021",
+    "F6-034": "S55-022",
+    "F6-036": "S55-023",
+    "F6-037": "S55-024",
+    "F5-017": "H55-001",
+    "F5-018": "H55-002",
+    "F5-019": "H55-003",
+    "F5-020": "H55-004",
+    "F5-021": "H55-005",
+    "F5-022": "H55-006",
+    "F6-038": "P55-001",
+    "F6-039": "P55-002",
+    "F6-040": "P55-003",
+    "F6-041": "P55-004",
+    "F6-042": "P55-005",
+    "F6-043": "P55-006",
+    "F6-044": "P55-007",
+    "F6-046": "P55-008",
+    "F6-048": "P55-009"
+  },
+  "core_id_mapping_by_author": {
+    "F5（V8）": {
+      "F5-001": "T55-001",
+      "F5-002": "T55-002",
+      "F5-003": "T55-003",
+      "F5-004": "T55-004",
+      "F5-005": "T55-005",
+      "F5-006": "T55-006",
+      "F5-007": "T55-007",
+      "F5-008": "T55-008",
+      "F5-009": "T55-009",
+      "F5-010": "S55-001",
+      "F5-011": "S55-002",
+      "F5-012": "S55-003",
+      "F5-013": "S55-004",
+      "F5-014": "S55-005",
+      "F5-015": "S55-006",
+      "F5-016": "S55-007",
+      "F5-023": "S55-008",
+      "F5-024": "S55-009",
+      "F5-025": "S55-010",
+      "F5-026": "S55-011",
+      "F5-027": "S55-012",
+      "F5-028": "S55-013",
+      "F5-029": "S55-014",
+      "F5-030": "S55-015",
+      "F5-031": "S55-016",
+      "F5-017": "H55-001",
+      "F5-018": "H55-002",
+      "F5-019": "H55-003",
+      "F5-020": "H55-004",
+      "F5-021": "H55-005",
+      "F5-022": "H55-006"
+    },
+    "F6（V9）": {
+      "F6-001": "T55-010",
+      "F6-002": "T55-011",
+      "F6-003": "T55-012",
+      "F6-004": "T55-013",
+      "F6-005": "T55-014",
+      "F6-006": "T55-015",
+      "F6-007": "T55-016",
+      "F6-008": "T55-017",
+      "F6-009": "T55-018",
+      "F6-010": "T55-019",
+      "F6-011": "T55-020",
+      "F6-012": "T55-021",
+      "F6-013": "T55-022",
+      "F6-015": "T55-023",
+      "F6-016": "T55-024",
+      "F6-017": "T55-025",
+      "F6-018": "T55-026",
+      "F6-019": "T55-027",
+      "F6-020": "T55-028",
+      "F6-021": "T55-029",
+      "F6-023": "T55-030",
+      "F6-024": "T55-031",
+      "F6-025": "T55-032",
+      "F6-026": "T55-033",
+      "F6-028": "S55-017",
+      "F6-029": "S55-018",
+      "F6-030": "S55-019",
+      "F6-031": "S55-020",
+      "F6-033": "S55-021",
+      "F6-034": "S55-022",
+      "F6-036": "S55-023",
+      "F6-037": "S55-024",
+      "F6-038": "P55-001",
+      "F6-039": "P55-002",
+      "F6-040": "P55-003",
+      "F6-041": "P55-004",
+      "F6-042": "P55-005",
+      "F6-043": "P55-006",
+      "F6-044": "P55-007",
+      "F6-046": "P55-008",
+      "F6-048": "P55-009"
+    }
+  },
+  "rejected_core_mapping": {
+    "F6-014": "T55-NA006",
+    "F6-022": "T55-NA007",
+    "F6-027": "T55-NA008",
+    "F6-032": "S55-NA006",
+    "F6-035": "S55-NA007",
+    "F6-045": "P55-NA002",
+    "F6-047": "P55-NA003"
+  },
+  "source_id_mapping": {
+    "F5-S001": "T55-S001",
+    "F5-S002": "T55-S002",
+    "F5-S003": "T55-S003",
+    "F5-S004": "T55-S004",
+    "F5-S005": "T55-S005",
+    "F5-S006": "T55-S006",
+    "F5-S007": "T55-S007",
+    "F6-S001": "T55-S008",
+    "F6-S002": "T55-S009",
+    "F6-S003": "T55-S010",
+    "F6-S004": "T55-S011",
+    "F6-S005": "T55-S012",
+    "F6-S006": "T55-S013",
+    "F6-S007": "T55-S014",
+    "F6-S008": "T55-S015",
+    "F6-S009": "T55-S016",
+    "F6-S010": "T55-S017",
+    "F6-S011": "T55-S018",
+    "F6-S012": "T55-S019",
+    "F6-S013": "T55-S020",
+    "F6-S014": "T55-S021",
+    "F6-S015": "T55-S022",
+    "F6-S016": "T55-S023",
+    "F6-S017": "T55-S024",
+    "F6-S018": "T55-S025",
+    "F5-S008": "S55-S001",
+    "F5-S009": "S55-S002",
+    "F5-S010": "S55-S003",
+    "F5-S011": "S55-S004",
+    "F5-S012": "S55-S005",
+    "F5-S019": "S55-S006",
+    "F5-S020": "S55-S007",
+    "F5-S021": "S55-S008",
+    "F6-S019": "S55-S009",
+    "F6-S020": "S55-S010",
+    "F6-S021": "S55-S011",
+    "F6-S022": "S55-S012",
+    "F5-S013": "H55-S001",
+    "F5-S014": "H55-S002",
+    "F5-S015": "H55-S003",
+    "F5-S016": "H55-S004",
+    "F5-S017": "H55-S005",
+    "F5-S018": "H55-S006",
+    "F6-S023": "P55-S001",
+    "F6-S024": "P55-S002",
+    "F6-S025": "P55-S003",
+    "F6-S026": "P55-S004"
+  },
+  "not_added_mapping": {
+    "F5-NA001": "T55-NA001",
+    "F6-NA003": "T55-NA002",
+    "F6-NA004": "T55-NA003",
+    "F6-NA005": "T55-NA004",
+    "F6-NA007": "T55-NA005",
+    "F6-014": "T55-NA006",
+    "F6-022": "T55-NA007",
+    "F6-027": "T55-NA008",
+    "F5-NA002": "S55-NA001",
+    "F5-NA004": "S55-NA002",
+    "F5-NA005": "S55-NA003",
+    "F6-NA002": "S55-NA004",
+    "F6-NA006": "S55-NA005",
+    "F6-032": "S55-NA006",
+    "F6-035": "S55-NA007",
+    "F5-NA003": "H55-NA001",
+    "F6-NA001": "P55-NA001",
+    "F6-045": "P55-NA002",
+    "F6-047": "P55-NA003"
+  },
+  "adopted_but_unused": [
+    "S55-006",
+    "S55-007",
+    "S55-012",
+    "S55-023",
+    "T55-004",
+    "T55-006",
+    "T55-018",
+    "T55-021",
+    "T55-022",
+    "T55-023"
+  ],
+  "source_merges": [
+    {
+      "proposal_source": "F5-S016",
+      "batch_source": "H55-S004",
+      "merged_into": "SRC-e0b800864a06d0e9",
+      "kind": "refresh（同一網址的本輪全文重讀，追加 reading）",
+      "legacy_cores": [
+        "D2028",
+        "D2029",
+        "D2030",
+        "D2031",
+        "D2032"
+      ],
+      "url": "https://cdr.wisc.edu/butter-science-101",
+      "new_cores": [
+        "H55-001"
+      ]
+    },
+    {
+      "proposal_source": "F6-S022",
+      "batch_source": "S55-S012",
+      "merged_into": "SRC-c24d3d245cddb657",
+      "kind": "refresh（同一網址的本輪全文重讀，追加 reading）",
+      "legacy_cores": [
+        "N213",
+        "N214",
+        "N215",
+        "N216",
+        "N217",
+        "N218"
+      ],
+      "url": "https://nsidc.org/learn/parts-cryosphere/glaciers/science-glaciers",
+      "new_cores": [
+        "S55-021",
+        "S55-022",
+        "S55-023",
+        "S55-024"
+      ]
+    },
+    {
+      "proposal_source": "F6-S025",
+      "batch_source": "P55-S003",
+      "merged_into": "SRC-b230cde640c14ff6",
+      "kind": "refresh（同一網址的本輪重讀，追加 reading）",
+      "legacy_cores": [
+        "D2001",
+        "D2002",
+        "D2003",
+        "D2004",
+        "D2006",
+        "D2007",
+        "D2009",
+        "D2010",
+        "D2011"
+      ],
+      "url": "https://www.epa.gov/sdwa/overview-drinking-water-treatment-technologies",
+      "new_cores": [
+        "P55-008"
+      ],
+      "rejected_on_same_source": [
+        "P55-NA002",
+        "P55-NA003"
+      ]
+    },
+    {
+      "proposal_source": "F6-S001",
+      "batch_source": "T55-S008",
+      "merged_into": "SRC-44f561000729bda4",
+      "kind": "same_document（舊網址 tr15-58.html 就是本輪讀的 revision 58；批次來源沿用舊網址，實際下載網址記在 retrieval_url）",
+      "legacy_cores": [
+        "L311",
+        "L313",
+        "L314",
+        "L315"
+      ],
+      "url": "https://www.unicode.org/reports/tr15/tr15-58.html",
+      "retrieval_url": "https://www.unicode.org/reports/tr15/",
+      "new_cores": [
+        "T55-011",
+        "T55-012"
+      ]
+    },
+    {
+      "proposal_source": "F6-S007",
+      "batch_source": "T55-S014",
+      "merged_into": "SRC-8174dfd1da099164",
+      "kind": "same_document（舊網址 tr29-49.html 就是本輪讀的 revision 49；批次來源沿用舊網址，實際下載網址記在 retrieval_url）",
+      "legacy_cores": [
+        "L317",
+        "L318"
+      ],
+      "url": "https://www.unicode.org/reports/tr29/tr29-49.html",
+      "retrieval_url": "https://www.unicode.org/reports/tr29/",
+      "new_cores": [
+        "T55-021"
+      ]
+    }
+  ],
+  "source_fixes": [
+    {
+      "proposal_source": "F5-S018",
+      "batch_source": "H55-S006",
+      "requested_by": "V8",
+      "change": "url／canonical_url 由 eprint 首頁改為 UCL 直接 PDF；首頁記在 identity_urls",
+      "url": "https://discovery.ucl.ac.uk/id/eprint/10053478/1/Lee_Revealing%20the%20microstructural%20stability%20of%20a%20three-phase%20soft%20solid%20(ice%20cream)%20by%204D%20synchrotron%20X-ray%20tomography_AAM.pdf",
+      "previous_url": "https://discovery.ucl.ac.uk/id/eprint/10053478/",
+      "why": "eprint 首頁 2026-11-11 對一般請求回 Cloudflare 挑戰頁（403）；直接 PDF 一般請求 200，V8 下載檔與作者快取 sha256 相同，不是繞過。"
+    },
+    {
+      "proposal_source": "F5-S008",
+      "batch_source": "S55-S001",
+      "requested_by": "V8",
+      "change": "Rodell 2009 以 DOI 引用：url／canonical_url 改為 https://doi.org/10.1038/nature08238，實際讀的耶魯網站出版版 PDF 記在 retrieval_url",
+      "url": "https://doi.org/10.1038/nature08238",
+      "retrieval_url": "https://new.fore.yale.edu/files/Rodell_Velicogna_Famiglietti.pdf",
+      "why": "存放處是耶魯大學網站（第三方存放、未經付費牆），引用以 DOI 為準；DOI 網址在池中原本沒有來源紀錄，是新來源。"
+    },
+    {
+      "proposal_source": "F6-S019",
+      "batch_source": "S55-S009",
+      "requested_by": "V9",
+      "change": "NPS Exit Glacier 報告改記官方 IRMA 原檔（Reference 2237007，DownloadFile 562710）；npshistory.com 鏡像記在 identity_urls",
+      "url": "https://irma.nps.gov/DataStore/DownloadFile/562710",
+      "identity_urls": [
+        "https://www.npshistory.com/publications/kefj/nrr-2016-1341.pdf"
+      ],
+      "why": "V9 向 NPS IRMA 取回官方原檔，與作者讀的鏡像位元組相同（sha256 一致）。"
+    },
+    {
+      "proposal_source": "F6-S021",
+      "batch_source": "S55-S011",
+      "requested_by": "V9",
+      "change": "limitations 與 author_cache.note 寫明作者本地快取存錯成另一篇 NPS 部落格〈Chasing a Retreating Glacier〉；內容以 V9 線上重讀為準",
+      "url": "https://www.nps.gov/kefj/blogs/visualizing-glacial-processes-using-time-lapse-photography-at-exit-glacier.htm",
+      "why": "作者快取的 sha256 對應錯檔；V9 線上重讀本頁，270 公尺、約 40 公尺與平均每天約 30 公分都在原文。"
+    }
+  ],
+  "open_data_issues": [
+    {
+      "id": "E7006-legacy-source",
+      "core": "E7006",
+      "source": "SRC-f2de49ac9ccccc6e",
+      "raised_by": "F6-NA006（S55-NA005），V9 G10 cuts",
+      "finding": "E7006（冰河離開後平原凹出鍋穴）的第一筆 source_ref 指向 NPS〈Permafrost Landforms as Indicators of Climate Change in Parks Across the Arctic〉（locator『Ice-wedge Polygons第二段』），與埋冰融化成鍋穴無關；第二筆 SRC-2bc7ad5b83b3068d（NPS Potholes Turnout）才支持答案。",
+      "cause": "這筆來源不在 E7006 自己的批次（wave7-earth 只引 E7-S005）裡，而是來自 wave11-landforms 的 E11012（冰楔融失、多邊形中央相對變高），dedup-decisions.json 在 2026-11-01 把 E11012 編輯合併進 E7006（理由：同一個埋冰融去、地面下降的物理中段）；合併後的核心依 core.mjs 沿用所有成員的 source_refs。",
+      "why_not_fixed": "查過前幾輪：source_merges 只做『同一份文件的新閱讀掛回舊來源 id』，wave17 的 final_retrieval_delta 與 raw_changes 只記批次凍結前自己的修正；原題紀錄受 checkpoint 凍結（validateBaseline 不准改舊原題），也沒有逐筆排除某個成員來源指向的機制。要清除只能改動 E11012→E7006 的編輯合併或新增機制，超出本輪範圍，所以本輪不改，只記錄。",
+      "impact": "E7006 只在短題 G76、G120，不在任何可成題長題或企劃 POOL_SUPPORT；第五輪 G10 不用 E7006。",
+      "action": "另案處理：改合併（讓 E11012 獨立並補分題理由）或新增『排除成員來源』的宣告機制並寫進快照變動；在那之前，E7006 進稿時只引 SRC-2bc7ad5b83b3068d。",
+      "status": "open"
+    }
+  ],
+  "batches": [
+    "batches/wave55-tech.json",
+    "batches/wave55-earth.json",
+    "batches/wave55-human.json",
+    "batches/wave55-physics.json"
+  ],
+  "checkpoint": {
+    "file": "checkpoint-3661.json",
+    "note": "第五十四批（第四輪）結束時的素材池（3,661 個入選、4,051 筆原題）與 609 組題案快照，照前批慣例在新增前凍結；commit 欄是凍結時工作分支的 HEAD。"
+  },
+  "final_long": {
+    "G18": {
+      "title": "電容的容量為什麼會縮水，還會發熱、唱歌？",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 8.3,
+        "review": "docs/videos/so-thats-why/pool/reviews/material-20261111.json",
+        "target_minutes": 9,
+        "range_minutes": [
+          8,
+          11
+        ],
+        "candidate_ids": [
+          "E2038",
+          "E2259",
+          "E2260",
+          "E2261",
+          "E2271",
+          "E2262"
+        ]
+      },
+      "verdict": "ready",
+      "reviewer": "V8",
+      "author": "F5",
+      "author_est_minutes": 10.5,
+      "est_minutes": 10.6,
+      "fact_count": 15.5,
+      "target_minutes": 10.5,
+      "range_minutes": [
+        10,
+        11
+      ],
+      "new_cores": [
+        "T55-008",
+        "T55-001",
+        "T55-002",
+        "T55-003",
+        "T55-005",
+        "T55-007",
+        "T55-009"
+      ],
+      "removed_existing_cores": [
+        "E2038"
+      ],
+      "candidate_ids": [
+        "T55-008",
+        "E2259",
+        "E2260",
+        "E2261",
+        "E2271",
+        "T55-001",
+        "T55-002",
+        "T55-003",
+        "T55-005",
+        "E2262",
+        "T55-007",
+        "T55-009"
+      ],
+      "cuts_applied": "刪 E2038（理想平行板只在開場當半句對照）；T55-004（一般老化）與 T55-006（Murata 溫升標準）不用；T55-002 併進偏壓章一句；T55-009 只當 40 秒收尾；T55-001、T55-003、T55-005、T55-008、T55-009 照 V8 改字。",
+      "chapter_seconds": [
+        [
+          "開場：筆電睡著了，為什麼會細細地叫？",
+          50
+        ],
+        [
+          "晶片突然要電時，電容得站在旁邊",
+          75
+        ],
+        [
+          "頻率再高也不是一直變好，容量一樣熱卻不同",
+          100
+        ],
+        [
+          "加上直流電，10 µF 只剩多少",
+          110
+        ],
+        [
+          "縮水還把諧振點一起搬走",
+          60
+        ],
+        [
+          "一直加著電壓，越放越少",
+          80
+        ],
+        [
+          "真正出聲的是電路板",
+          115
+        ],
+        [
+          "收尾：工程師怎麼讓它安靜",
+          40
+        ]
+      ],
+      "still_missing": "E2259–E2261 的來源 ADI MT-101 本期 analog.com 連不上，仍未逐圖重讀，寫稿前必須重讀（自諧振與 ESR 曲線）；Murata 偏壓曲線數值與嘯叫頻率、dB 只在圖中；T55-001、T55-003、T55-005、T55-008、T55-009 已套用覆核改字，寫稿照改後的字。",
+      "reason": "第一輪擋下它的是偏壓『縮多少』沒有數字、缺一個有條件的嘯叫實例，也缺收尾章。第五輪 EPCI 白皮書給了三家同規格電容的縮水範圍與相乘例子（T55-001、T55-002），Novak 的量測讓偏壓把諧振點一起搬走（T55-003），Vishay 的長時間實驗讓縮水不是一次性（T55-005），Murata 的筆電案例與文獻回顧補上嘯叫條件與『出聲的是板子』（T55-008、T55-007），TI 的降噪做法當收尾（T55-009）。V8 重算：第一輪 V2 基數 11 條扣掉整個 E2038（約 2）＝9，新增 T55-001 1.5、T55-002 0.5、T55-003 1、T55-005 1.5、T55-007 1、T55-008 1.5、T55-009 0.5，共 15.5 條、約 10.6 分，排 10.5 分；T55-004、T55-006 入池不用。轉折：縮水把諧振點搬走；縮水還隨時間加深；會叫的不是電容本體而是板子。"
+    },
+    "G34": {
+      "title": "不拍地下，衛星怎麼知道一個地方少了水？",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 7.8,
+        "review": "docs/videos/so-thats-why/pool/reviews/material-20261111.json",
+        "target_minutes": 10,
+        "range_minutes": [
+          8,
+          11
+        ],
+        "candidate_ids": [
+          "O3061",
+          "O3062",
+          "O3063",
+          "O3081",
+          "O3083",
+          "O3084"
+        ]
+      },
+      "verdict": "ready",
+      "reviewer": "V8",
+      "author": "F5",
+      "author_est_minutes": 10.5,
+      "est_minutes": 10.5,
+      "fact_count": 15.3,
+      "target_minutes": 10.5,
+      "range_minutes": [
+        10,
+        11
+      ],
+      "new_cores": [
+        "S55-001",
+        "S55-005",
+        "S55-002",
+        "S55-003",
+        "S55-004"
+      ],
+      "removed_existing_cores": [
+        "O3084"
+      ],
+      "candidate_ids": [
+        "S55-001",
+        "O3061",
+        "O3062",
+        "S55-005",
+        "O3063",
+        "S55-002",
+        "S55-003",
+        "O3081",
+        "S55-004",
+        "O3083"
+      ],
+      "cuts_applied": "刪 O3084（mascon 時間約束，來源頁 404）；S55-007（巴西細圖，原論文未讀）、S55-006（GRACE-FO 現況，要重查）不用；S55-002 片中刪季節振幅句、S55-004 片中省掉 1.95 與誤差預算；S55-003 照 V8 改字；收尾章回扣 O3063、S55-004，不新增事實。",
+      "chapter_seconds": [
+        [
+          "開場：六年少了 109 立方公里，誰量的？",
+          55
+        ],
+        [
+          "只量兩顆衛星之間的距離",
+          80
+        ],
+        [
+          "太陽推一下也會改軌道，量推力的儀器自己也壞過",
+          95
+        ],
+        [
+          "總水量不是地下水明細：一項項扣掉",
+          110
+        ],
+        [
+          "衛星帳比官方帳更悲觀，卻看不到哪口井",
+          65
+        ],
+        [
+          "訊號會漏，季節乘 1、趨勢要乘 3.2",
+          105
+        ],
+        [
+          "連古冰蓋都還在改變今天的重力",
+          80
+        ],
+        [
+          "收尾：哪些是量到的，哪些是模型分出的",
+          40
+        ]
+      ],
+      "still_missing": "O3061–O3063 的 Earth Observatory 概論與 O3081、O3083 的 JPL 頁本期未重讀（JPL 舊網址 404），寫稿前找新址重讀；Rodell 2009 讀的是耶魯網站上的第三方存放 PDF，引用時標 DOI（來源 S55-S001 已改記 doi.org），完整 Methods 只在 Nature 線上版；S55-003 已套用覆核改字。",
+      "reason": "第一輪缺一個有數字的真實流域研究當開場與驗證，開場只能說『某個地方』。第五輪 Rodell 等 2009 的原文補上印度西北（S55-001–S55-003），Landerer 與 Swenson 用同一地區示範季節與趨勢的係數為什麼不同（S55-004，取代 404 的 O3082），GRACE-FO 加速度計劣化讓『扣掉推力』這章多了一個真轉折（S55-005）。V8 重算：第一輪基數 10 條扣掉 O3084（約 1.7）＝8.3，新增 S55-001 2、S55-002 1.5、S55-003 1、S55-004 1.5、S55-005 1，共 15.3 條、約 10.5 分；S55-006、S55-007 入池不用。轉折：量推力的儀器也會壞；衛星帳比官方帳悲觀卻看不到井；同一筆資料季節乘 1、趨勢乘 3.2。"
+    },
+    "G25": {
+      "title": "同樣有乳脂，為什麼牛奶、奶油、冰淇淋差這麼多？",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 7.8,
+        "review": "docs/videos/so-thats-why/pool/reviews/material-20261111.json",
+        "target_minutes": 11,
+        "range_minutes": [
+          9,
+          12
+        ],
+        "candidate_ids": [
+          "P242",
+          "D2039",
+          "D2028",
+          "D2029",
+          "D2040",
+          "D2042",
+          "D2045"
+        ]
+      },
+      "verdict": "ready",
+      "reviewer": "V8",
+      "author": "F5",
+      "author_est_minutes": 10.9,
+      "est_minutes": 10.4,
+      "fact_count": 15,
+      "target_minutes": 10,
+      "range_minutes": [
+        9.5,
+        10.5
+      ],
+      "new_cores": [
+        "H55-001",
+        "H55-002",
+        "H55-003",
+        "H55-004",
+        "H55-005",
+        "H55-006"
+      ],
+      "removed_existing_cores": [
+        "D2040",
+        "D2042",
+        "D2045"
+      ],
+      "candidate_ids": [
+        "H55-001",
+        "P242",
+        "D2039",
+        "D2028",
+        "D2029",
+        "H55-002",
+        "H55-003",
+        "H55-004",
+        "H55-005",
+        "H55-006"
+      ],
+      "cuts_applied": "D2040、D2042、D2045（來源 403 未實讀）由 H55-002、H55-004、H55-005 取代；D2041、D2043 的答案已在 H55-003、H55-004，不另加；D2044 不加；H55-004、H55-005 照 V8 改字；收尾章回扣 H55-001、D2028。",
+      "chapter_seconds": [
+        [
+          "開場：從百分之三到八成，都叫乳脂",
+          50
+        ],
+        [
+          "脂肪還在，為什麼不浮上來",
+          90
+        ],
+        [
+          "換成鮮奶油，攪打後內外位置交換",
+          90
+        ],
+        [
+          "一樣是奶油，硬軟還能不同",
+          70
+        ],
+        [
+          "冰淇淋一半是空氣，法律用重量管",
+          80
+        ],
+        [
+          "先冰一晚，出機時只有一半的水結冰",
+          100
+        ],
+        [
+          "放回冰箱為什麼會變粗：50 微米與溫度來回",
+          80
+        ],
+        [
+          "收尾：同樣的脂肪，排法決定口感",
+          40
+        ]
+      ],
+      "still_missing": "密西根化工百科與 Guelph 冰淇淋章仍 403（已不依賴）；Warren 論文的數值多轉引 Goff & Hartel《Ice Cream》，有條件時以原書核對；H55-S006 的來源網址已改記 UCL 直接 PDF；P242、D2039、D2028、D2029 沿用前輪來源，寫稿前逐主張重讀；台灣 CNS 乳脂標準未查（要講台灣標示需另補）；H55-004、H55-005 已套用覆核改字。",
+      "reason": "第一輪擋下它的是半數素材的來源本期沒有實讀（密西根化工百科 403），也缺各產品的脂肪比例數字。第五輪美國法規原文與威斯康辛大學乳品研究中心補上比例（H55-001），威斯康辛大學的冰淇淋融化論文實讀取代 D2040、D2042、D2045 並補上熟成（H55-002–H55-005），同步輻射斷層研究讓『放回冰箱變粗』有實驗（H55-006）。V8 重算：第一輪 10 條扣掉來源未實讀的 D2040、D2042、D2045（約 3）＝7，新增 H55-001 1.5、H55-002 1.5、H55-003 1、H55-004 1.5、H55-005 1、H55-006 1.5，共 15 條、約 10.4 分，在企劃 9–12 分內，排 10 分。轉折：冰淇淋一半是空氣、越高級越少；出機只有一半的水結冰；變粗不是放久而是溫度來回。"
+    },
+    "G03": {
+      "title": "地底明明有水，為什麼不能一直抽？",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 7.3,
+        "review": "docs/videos/so-thats-why/pool/reviews/material-20261111.json",
+        "target_minutes": 13,
+        "range_minutes": [
+          12,
+          15
+        ],
+        "candidate_ids": [
+          "N076",
+          "N077",
+          "N078",
+          "N087",
+          "N095",
+          "N086",
+          "N088"
+        ]
+      },
+      "verdict": "ready",
+      "reviewer": "V8",
+      "author": "F5",
+      "author_est_minutes": 13.5,
+      "est_minutes": 12.7,
+      "fact_count": 19.5,
+      "target_minutes": 12.5,
+      "range_minutes": [
+        12,
+        13
+      ],
+      "new_cores": [
+        "S55-009",
+        "S55-013",
+        "S55-014",
+        "S55-016",
+        "S55-015",
+        "S55-008",
+        "S55-010",
+        "S55-011"
+      ],
+      "removed_existing_cores": [],
+      "candidate_ids": [
+        "S55-009",
+        "N076",
+        "N077",
+        "N078",
+        "S55-013",
+        "N087",
+        "S55-014",
+        "S55-016",
+        "N095",
+        "S55-015",
+        "S55-008",
+        "N086",
+        "S55-010",
+        "S55-011",
+        "N088"
+      ],
+      "cuts_applied": "S55-012（全國下陷統計）不用；S55-008 片中刪『1960 年每年降 10 英尺』；N076／N077 合成一章、S55-013 與 N087 合寫、N088 縮成 45 秒；S55-016 照 V8 改字；收尾章回扣 S55-014、S55-011。",
+      "chapter_seconds": [
+        [
+          "開場：一根電線桿上的三塊高度牌",
+          55
+        ],
+        [
+          "先拆掉地下大水庫的想像",
+          80
+        ],
+        [
+          "一口井牽動隔壁井",
+          70
+        ],
+        [
+          "抽的水最後從哪來：不超過補注也不安全",
+          130
+        ],
+        [
+          "井停了，河還在變少",
+          115
+        ],
+        [
+          "聖華金谷：黏土、抽水量與水位",
+          100
+        ],
+        [
+          "水位回來了，地面回不去",
+          115
+        ],
+        [
+          "海邊的井為什麼變鹹",
+          45
+        ],
+        [
+          "收尾：地下水是帳戶，不是水庫",
+          40
+        ]
+      ],
+      "still_missing": "N076–N078、N086–N088、N095 的三個 USGS Water Science School 頁面 www.usgs.gov 本期 403，仍只有題級閱讀，寫稿前重讀或改引 Circular 1182／1376 對應段；雲彰地層下陷監測資料未查（要本地案例需另補，不可與聖華金谷混用）；聖華金谷 1990 年代後現況未查；S55-016 已套用覆核改字。",
+      "reason": "第一輪擋下它的是最關鍵的轉折『水位回來、地面回不去』沒有來源字句，企劃自己要求的同一場址監測個案也不在池裡。第五輪 USGS Circular 1182 的聖華金谷章補上地層、抽水量、水位與下陷（S55-008–S55-011），而且原文直接寫壓密是永久的；Circular 1376 補上河川耗減的時間順序、『不超過補注也不安全』與停抽後的延遲（S55-013–S55-016）。V8 重算：第一輪基數 9 條，新增 S55-008 1.5、S55-009 1.5、S55-010 1.5、S55-011 2、S55-013 0.5、S55-014 1.5、S55-015 1、S55-016 1，共 19.5 條、約 12.7 分；作者的 13.5 分超過 13 分上限，刪 S55-012 並把 N076／N077 合章、S55-013 與 N087 合寫、N088 縮成 45 秒，排 12.5 分。"
+    },
+    "G02": {
+      "title": "看起來一模一樣的兩個字，電腦憑什麼說不一樣？",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 7.8,
+        "review": "docs/videos/so-thats-why/pool/reviews/material-20261111.json",
+        "target_minutes": 9,
+        "range_minutes": [
+          8,
+          10
+        ],
+        "candidate_ids": [
+          "L243",
+          "L244",
+          "L311",
+          "L317",
+          "L318",
+          "L319"
+        ],
+        "title": "一個字，電腦怎麼算出好幾個？",
+        "core_question": "人看到的一個字，為什麼會在容量、搜尋與刪除鍵上得到不同答案？"
+      },
+      "verdict": "ready",
+      "reviewer": "V9",
+      "author": "F6",
+      "author_est_minutes": 10.5,
+      "est_minutes": 9.6,
+      "fact_count": 13.5,
+      "target_minutes": 9.5,
+      "range_minutes": [
+        9,
+        10
+      ],
+      "new_cores": [
+        "T55-010",
+        "T55-011",
+        "T55-012",
+        "T55-013",
+        "T55-014",
+        "T55-016",
+        "T55-015",
+        "T55-017",
+        "T55-019",
+        "T55-020"
+      ],
+      "removed_existing_cores": [
+        "L243",
+        "L244",
+        "L317",
+        "L318",
+        "L319"
+      ],
+      "candidate_ids": [
+        "T55-010",
+        "L311",
+        "T55-011",
+        "T55-012",
+        "T55-013",
+        "T55-014",
+        "T55-016",
+        "T55-015",
+        "T55-017",
+        "T55-019",
+        "T55-020"
+      ],
+      "cuts_applied": "照 V9 改題；刪容量章 L243、L244、L319 與刪除鍵章 L317、L318（T55-021 不用）；T55-018、T55-022、T55-023 入池不用；F6-014 退回（T55-NA006）；L313–L315 不掛入；T55-010、T55-014、T55-017、T55-019 照 V9 改字；收尾章回扣 T55-016、T55-020。",
+      "chapter_seconds": [
+        [
+          "開場：同一個 Ǻ，電腦裡至少有五種存法",
+          50
+        ],
+        [
+          "先整理再比：五種變三種",
+          100
+        ],
+        [
+          "整理過頭：8½ 變成 81/2",
+          70
+        ],
+        [
+          "長得一樣，也不算同一個字",
+          110
+        ],
+        [
+          "同一個字，程式碼和搜尋框用兩把尺",
+          120
+        ],
+        [
+          "兩套檔案系統，對同一個檔名意見不同",
+          80
+        ],
+        [
+          "收尾：『相同』是誰決定的",
+          40
+        ]
+      ],
+      "still_missing": "企劃原要的瀏覽器／編輯器刪除鍵版本化實測已隨刪除鍵章一起拿掉；搜尋與網址列只能引 W3C 建議與 Chromium 文件，畫面示範標『示意』、不指名其他瀏覽器。W3C String Searching 已註明不再積極開發、String Matching 是工作草案，寫稿前確認版本。T55-010、T55-014、T55-017、T55-019 已套用覆核改字。",
+      "reason": "第一輪擋下它的是一半容量、一半等價、九個一行定義。改題後只問一件事：電腦怎麼判定兩個字相同，四個轉折一路推翻『相同就是一樣的位元』。重數 13.5 條、9.6 分，在企劃 8–10 分內，不靠 G48。"
+    },
+    "G07": {
+      "title": "太空照片，怎麼一路寄回地球？",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 7.2,
+        "review": "docs/videos/so-thats-why/pool/reviews/material-20261111.json",
+        "target_minutes": 10,
+        "range_minutes": [
+          9,
+          11
+        ],
+        "candidate_ids": [
+          "R008",
+          "R001",
+          "R002",
+          "R004",
+          "R003",
+          "R010"
+        ]
+      },
+      "verdict": "ready",
+      "reviewer": "V9",
+      "author": "F6",
+      "author_est_minutes": 10.8,
+      "est_minutes": 10.1,
+      "fact_count": 14.5,
+      "target_minutes": 10,
+      "range_minutes": [
+        9.5,
+        10.5
+      ],
+      "new_cores": [
+        "T55-024",
+        "T55-025",
+        "T55-026",
+        "T55-027",
+        "T55-028",
+        "T55-029",
+        "T55-030",
+        "T55-031",
+        "T55-032",
+        "T55-033"
+      ],
+      "removed_existing_cores": [
+        "R008"
+      ],
+      "candidate_ids": [
+        "T55-024",
+        "R002",
+        "T55-025",
+        "R004",
+        "T55-026",
+        "R003",
+        "T55-027",
+        "R001",
+        "T55-028",
+        "T55-029",
+        "T55-030",
+        "T55-031",
+        "R010",
+        "T55-032",
+        "T55-033"
+      ],
+      "cuts_applied": "刪 R008 章；F6-022（T55-NA007）、F6-027（T55-NA008）退回；T55-025、T55-031 照 V9 改字。",
+      "chapter_seconds": [
+        [
+          "開場：一段貓影片，從深空傳回要 101 秒",
+          50
+        ],
+        [
+          "快的是每秒資料量，不是光速",
+          100
+        ],
+        [
+          "細細一束光，要對準又怕雲",
+          110
+        ],
+        [
+          "地球在轉：三個站輪流接手",
+          70
+        ],
+        [
+          "看得到，不代表排得到",
+          90
+        ],
+        [
+          "火星照片先寄到半路",
+          100
+        ],
+        [
+          "下一段不通，資料先住哪",
+          45
+        ],
+        [
+          "收尾：多一站，就多一個可能卡住的地方",
+          35
+        ]
+      ],
+      "still_missing": "同一任務從火星表面到地球的實際總延遲（含排程等待）仍無官方數字，旁白不可自行相加；jpl.nasa.gov 原稿 403，改讀 nasa.gov 轉載同文（本覆核線上重讀一致）；T55-025、T55-031 已套用覆核改字；T55-033 必須說明是論文舉的假設情境；R001–R004、R010 的舊 NASA 概論頁寫稿前逐主張重讀。",
+      "reason": "第一輪說缺『一個任務的實際數字』與第一章跟主題關係弱：現在 DSOC 給了速率、距離與天氣的實數，監察長報告給了排程超額，火星中繼網路與 SpaceOps 論文給了 99% 與先存再送。刪 R008 章與兩個重複例子後 14.5 條、10.1 分，在 9–11 分內。"
+    },
+    "G10": {
+      "title": "冰河往下流，為什麼又說它在後退？",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 7.8,
+        "review": "docs/videos/so-thats-why/pool/reviews/material-20261111.json",
+        "target_minutes": 8,
+        "range_minutes": [
+          8,
+          9
+        ],
+        "candidate_ids": [
+          "N213",
+          "N214",
+          "N215",
+          "N216"
+        ]
+      },
+      "verdict": "ready",
+      "reviewer": "V9",
+      "author": "F6",
+      "author_est_minutes": 9.8,
+      "est_minutes": 8.8,
+      "fact_count": 12,
+      "target_minutes": 8.8,
+      "range_minutes": [
+        8.5,
+        9
+      ],
+      "new_cores": [
+        "S55-018",
+        "S55-017",
+        "S55-021",
+        "S55-022",
+        "S55-019",
+        "S55-020",
+        "S55-024"
+      ],
+      "removed_existing_cores": [
+        "N213",
+        "N216"
+      ],
+      "candidate_ids": [
+        "S55-018",
+        "S55-017",
+        "N214",
+        "S55-021",
+        "N215",
+        "S55-022",
+        "S55-019",
+        "S55-020",
+        "S55-024"
+      ],
+      "cuts_applied": "刪 N213（成冰）、N216（冰隙）；S55-023（弧形條紋）入池不用；F6-032 併入 S55-019 後退回（S55-NA006）、F6-035 退回（S55-NA007）；S55-018、S55-019、S55-020、S55-024 照 V9 改字；收尾章回扣 S55-018、S55-022。企劃 8–9 分不放寬。",
+      "chapter_seconds": [
+        [
+          "開場：同一條冰河，冰往下走、末端往上退",
+          50
+        ],
+        [
+          "兩百年的帳：末端位置怎麼量出來",
+          80
+        ],
+        [
+          "固體冰怎麼往下走",
+          70
+        ],
+        [
+          "後退不是倒車：上面加、下面減",
+          65
+        ],
+        [
+          "它以前會在冬天往前",
+          95
+        ],
+        [
+          "同一年，前進 6 公尺還是後退 4 公尺",
+          80
+        ],
+        [
+          "只看末端，夠不夠",
+          50
+        ],
+        [
+          "收尾：兩把尺放回同一條冰河",
+          38
+        ]
+      ],
+      "still_missing": "冰流速仍只有 NPS 部落格的『平均約 30 公分/日』，沒有量測報告或量測點；S55-S011 的作者快取存成另一篇部落格〈Chasing a Retreating Glacier〉，來源紀錄已在 limitations 寫明、內容以覆核線上重讀為準，寫稿前要重存正確的頁面；NPS 報告的來源網址已改記官方 IRMA 原檔（irma.nps.gov/DataStore/DownloadFile/562710，參考 2237007），npshistory.com 鏡像記為同一份；照片與地圖授權另查；WGMS 數字是 NSIDC 轉述；E7006 錯掛的冰楔來源仍是未決資料問題（S55-NA005），E7006 不入本片。",
+      "reason": "第一輪缺的是同一冰河的時序與末端紀錄：NPS 兩百年報告正好是同一條冰河的末端帳，還附季節速率、冬季前進的實測與兩種量法的對照。全片只用 Exit Glacier，重數 12 條、8.8 分，剛好在企劃 8–9 分內；不必放寬企劃長度，也不必回頭加成冰或冰隙。"
+    },
+    "G23": {
+      "title": "水變乾淨了，污染物去哪裡？",
+      "previous": {
+        "verdict": "reserve",
+        "est_minutes": 7.3,
+        "review": "docs/videos/so-thats-why/pool/reviews/material-20261111.json",
+        "target_minutes": 10,
+        "range_minutes": [
+          9,
+          12
+        ],
+        "candidate_ids": [
+          "D2001",
+          "D2002",
+          "D2004",
+          "D2006",
+          "D2007",
+          "D2009"
+        ]
+      },
+      "verdict": "ready",
+      "reviewer": "V9",
+      "author": "F6",
+      "author_est_minutes": 11.0,
+      "est_minutes": 11.1,
+      "fact_count": 16.5,
+      "target_minutes": 11,
+      "range_minutes": [
+        10.5,
+        11.5
+      ],
+      "new_cores": [
+        "P55-004",
+        "P55-001",
+        "P55-002",
+        "P55-003",
+        "P55-005",
+        "P55-006",
+        "P55-007",
+        "P55-008",
+        "P55-009"
+      ],
+      "removed_existing_cores": [
+        "D2006"
+      ],
+      "candidate_ids": [
+        "P55-004",
+        "D2001",
+        "D2002",
+        "P55-001",
+        "D2009",
+        "P55-002",
+        "D2007",
+        "P55-003",
+        "P55-005",
+        "P55-006",
+        "D2004",
+        "P55-007",
+        "P55-008",
+        "P55-009"
+      ],
+      "cuts_applied": "刪 D2006（軟水機去鈣鎂，離開 PFAS 主線）；F6-045（P55-NA002）、F6-047（P55-NA003）退回；P55-003、P55-005 照 V9 改字。",
+      "chapter_seconds": [
+        [
+          "開場：水變乾淨了，抓下來的 PFAS 去了哪",
+          50
+        ],
+        [
+          "黑色濾材抓得住誰、抓多久",
+          110
+        ],
+        [
+          "膜的另一邊：兩成進水變濃水",
+          85
+        ],
+        [
+          "樹脂用完，乾脆燒掉",
+          75
+        ],
+        [
+          "一張去向表：濾材和濃水各送哪",
+          75
+        ],
+        [
+          "埋起來，還可能回到水裡",
+          70
+        ],
+        [
+          "送進高溫爐，就一定被破壞了嗎",
+          55
+        ],
+        [
+          "對照組：吹到空氣裡的溶劑",
+          60
+        ],
+        [
+          "真的有『消滅』，但也留下東西",
+          45
+        ],
+        [
+          "收尾：釋放不等於暴露",
+          35
+        ]
+      ],
+      "still_missing": "2024 指引是公開徵詢中的暫行版，寫稿前確認有無定稿或新版（覆核線上重新下載仍是同一檔，sha256 41524cfc…ac00）；§3.b 掩埋與 §3.c 地下注入的細節未讀；硝酸鹽『層析溢漏』沒有機構來源，不寫；P55-003、P55-005 已套用覆核改字。",
+      "reason": "第一輪說四章是同一句話換設備重講、缺具體污染物：現在 PFAS 有 EPA 的分鏈去除差異、濃水比例、載量與去向表，另有溶劑與硝酸鹽兩個不同去向的對照，真轉折有三個。刪 D2006、P55-NA002、P55-NA003 後 16.5 條、11.1 分，在 9–12 分內。"
+    }
+  },
+  "theme_updates": {},
+  "new_themes": [],
+  "composition": [],
+  "reserve_records": {},
+  "core_reviews": [
+    {
+      "proposal_id": "F5-001",
+      "final_id": "T55-001",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V8",
+      "question": "同一個規格的 10 µF 陶瓷電容，換一家廠商，接上同樣的電壓後剩下的容量為什麼可以差這麼多？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/epci_hicv.pdf（sha256 與 F5 記錄相符；今日以一般 curl 重抓同大小 200） §2.3 第2–3段",
+      "reopen_result": "−35%～−65%（額定）、3.3 V 時 −12%～−32%、10 µF 6.3 V X7R 0805、三家廠商、損失與 V/mm 成正比、介質越薄越嚴重、換大封裝或高等級介質可減少，都在原文。原文說的是『三家廠商的差異』（Fig.2），沒有寫『依規格書』。問句『剩下的容量差到快三倍』不成立：3.3 V 時剩 88% 對 68%，額定時剩 65% 對 35%，都不到兩倍；這是研究者自己的換算而且算錯。",
+      "changes_applied": {
+        "question": "同一個規格的 10 µF 陶瓷電容，換一家廠商，接上同樣的電壓後剩下的容量為什麼可以差這麼多？",
+        "answer_target": "EPCI 白皮書比較三家廠商同為 10 µF、6.3 V、X7R、0805 尺寸的積層陶瓷電容：加到額定 6.3 V 時容量少 35% 到 65%，就算只用到常見的 3.3 V 也少 12% 到 32%。原因是直流電場把鈦酸鋇裡的偶極卡住，縮水程度跟每單位厚度的電壓成正比：介質層越薄、同體積塞進越多容量，就縮得越多，所以換大一號封裝或較穩定的介質可以少縮一點。"
+      },
+      "duplicate_of": null,
+      "reason": "數字與機制照錄；只改掉算錯的問句前提與『依規格書』的出處說法。機制句 E2271 已有，本核心算 1.5 條（三家差距、電場強度與封裝）。"
+    },
+    {
+      "proposal_id": "F5-002",
+      "final_id": "T55-002",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V8",
+      "question": "把溫度、交流小訊號和放久的效應一起算，一顆 10 µF 電容最後可能只剩多少？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/epci_hicv.pdf（sha256 與 F5 記錄相符；今日以一般 curl 重抓同大小 200） §2.5",
+      "reopen_result": "−60%、−15%（10 mV）、−10%（溫度）、每十倍時間 −5%、10×0.4×0.85×0.9×0.95＝2.9 µF、『最差可低到 10%』皆為原文；相乘是作者的示範，答案已標明。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照原文；與 T55-001 同源，G18 只算 0.5 條（條件相乘的結果），併在偏壓章。"
+    },
+    {
+      "proposal_id": "F5-003",
+      "final_id": "T55-003",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V8",
+      "question": "兩顆不同的電容並聯，加上直流電壓後，為什麼整個阻抗曲線的谷底一起往高頻跑？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/epci_hicv.pdf（sha256 與 F5 記錄相符；今日以一般 curl 重抓同大小 200） §3.2 Figure 10 敘述",
+      "reopen_result": "1 µF 0603 16 V X7R 與 47 µF 1206 6.3 V X5R 並聯、約 1 MHz／7 MHz 兩個串聯諧振谷、約 4 MHz 反諧振峰、三者隨偏壓往高頻移、表示兩顆容量都在減少，皆在原文。『濾波最有效的頻段也跟著搬家』是推論，原文只說諧振點移動。",
+      "changes_applied": {
+        "answer_target": "Novak 量測一顆 1 µF 0603 X7R 與一顆 47 µF 1206 X5R 並聯：約 1 MHz 是 47 µF 那顆的串聯自諧振谷，約 7 MHz 是 1 µF 的，約 4 MHz 是 1 µF 的電容和 47 µF 的寄生電感形成的反諧振峰。直流偏壓升高時三個點都往高頻移，白皮書說這代表兩顆的容量都在縮；所以偏壓一變，阻抗最低與最高的頻率位置也跟著移動。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉原文沒有的『濾波最有效頻段』推論，只說諧振點移動。算 1 條；是自諧振章與偏壓章之間的真轉折。"
+    },
+    {
+      "proposal_id": "F5-004",
+      "final_id": "T55-004",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V8",
+      "question": "電容放在抽屜裡沒用，容量也會慢慢變小，那焊上板子後為什麼又變回來？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/mfaq/0006.html（sha256 相符；今日一般 curl 200）；f5src/vishay45263.pdf（sha256 相符；今日一般 curl 200 同大小） p.3",
+      "reopen_result": "對數時間軸近直線、X5R/X7R 會老化、溫度補償型沒有老化、加熱到居禮溫度（約 125 °C）以上回復、冷卻後重新開始、電域重排的機制，都在 Murata；Vishay p.3『通常每十倍時間 1% 或 2%』。原文說的是『溫度補償型電容』，沒有寫 C0G。",
+      "changes_applied": {
+        "answer_target": "高介電陶瓷電容的容量會隨時間下降，在對數時間軸上幾乎是直線：Vishay 說一般約每十倍時間少 1% 到 2%，也就是 1 到 10 小時少一次、10 到 100 小時再少一次。原因是居禮點以下的鈦酸鋇電域會慢慢重排成較穩定的排列，能被小電場翻轉的電域變少。焊接時把電容加熱到居禮溫度（約 125 °C）以上，電域消失，容量回復，冷卻後老化從頭開始。溫度補償型陶瓷電容沒有這種老化。"
+      },
+      "duplicate_of": null,
+      "reason": "只把原文沒有的『C0G』改回『溫度補償型』。G18 最終版不用（篇幅），T55-005 自己帶一般老化 1–3% 的對照。"
+    },
+    {
+      "proposal_id": "F5-005",
+      "final_id": "T55-005",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V8",
+      "question": "電容一直加著直流電壓，容量除了當下縮水，還會越放越少嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/vishay45263.pdf（sha256 相符；今日一般 curl 200 同大小） p.3–6",
+      "reopen_result": "四家 0603 X7R 100 nF 50 V、150 °C 去老化 1 小時、20 V（40%）長時間偏壓、扣掉當下縮水後繼續降、1000 小時三家競品都再少 20% 以上、平均每十倍時間逾 7%、遠大於通常標示的 1–3%、50 V 掉得更快，皆在原文。兩處不符：（1）『50 到 1000 小時才回到 95%』是 50 V（100%）偏壓 1000 小時之後、競品的回復，答案接在 20 V 敘述後面，讀起來像同一組；（2）『作者推測是長時間電場改變了電域結構』原文找不到，只說近年報告指出偏壓下有遠大於老化的時間漂移。",
+      "changes_applied": {
+        "answer_target": "Vishay 拿四家廠商的 0603 X7R 100 nF 50 V 電容，先加熱去老化，再長時間加 20 V（額定的四成）：扣掉加電當下的縮水後，容量還繼續往下掉，1000 小時時三家競品又少了 20% 以上，平均每十倍時間少 7% 以上，遠超過一般標示的每十倍時間 1% 到 3%；加滿 50 V 掉得更快。另一組在 50 V 下放 1000 小時再拿掉電壓，競品要 50 到 1000 小時才回到九成五，全部再加熱到 150 °C 一小時才完全回來。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉原文沒有的機制推測，並把回復數字放回它所屬的 100% 偏壓組。仍是廠商自家比較，片中不可說哪家最好。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-006",
+      "final_id": "T55-006",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V8",
+      "question": "陶瓷電容沒有標示能耐多少漣波電流，廠商怎麼判斷它熱得太過頭？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/mfaq/0001.html（sha256 相符）",
+      "reopen_result": "沒有允許漣波電流規格、交流或脈衝電流自我發熱、高頻介電損耗也發熱、100 VDC 以下 25 °C 下自我溫升 <20 °C 且表面溫度不超過最高使用溫度，皆在原文。U2J/C0G『自我發熱低、可承受功率比一般 X7R 高得多』那條只寫給額定 200 VDC 以上的款式。",
+      "changes_applied": {
+        "answer_target": "Murata 說陶瓷電容沒有允許漣波電流的規格，但交流或脈衝電流流過會自己發熱，高頻或脈衝電壓下的介電損耗也會生熱；額定 100 V 以下的款式，判斷線是在 25 °C 環境下量，電容自己升溫要低於 20 °C，而且電路裡的表面溫度不能超過最高使用溫度。對額定 200 V 以上的高壓款，Murata 也說低損耗的 U2J、C0G 類自我發熱很低，可承受的功率比一般 X7R 高得多。"
+      },
+      "duplicate_of": null,
+      "reason": "補上 C0G 那句的適用範圍。G18 最終版不用：它只是 E2261『同容量、熱不同』的一條標準，篇幅不夠時第一個刪。"
+    },
+    {
+      "proposal_id": "F5-007",
+      "final_id": "T55-007",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V8",
+      "question": "電容自己振動的頻率在 MHz，人根本聽不到，那嘯叫聲是從哪裡來的？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/pmc9147252.html（sha256 相符；今日一般 curl 200）§1",
+      "reopen_result": "壓電與電致伸縮、電致伸縮與電場平方成正比而有二次諧波、原文寫非線性只在直流電場不為零時出現、振動隨層數與電壓、可說與容量成正比、MLCC 振動共振在 MHz 聽不到、經焊點傳給 PCB、板子頻率可落進 20 Hz–20 kHz，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。E2262 已有『傳到板子』，只算 1 條（MHz 本體共振＋二次諧波）。"
+    },
+    {
+      "proposal_id": "F5-008",
+      "final_id": "T55-008",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V8",
+      "question": "筆電明明在睡覺，為什麼反而會聽到細細的嘰嘰聲？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/murata_laptop.html（sha256 相符；今日一般 curl 200）§1–6",
+      "reopen_result": "電池線 10–20 V、供電給 CPU／相機／RF、睡眠 PFM、背光 PWM、相機重載間歇、無響箱量聲壓與 FFT、量電容兩端 20 Hz–20 kHz 漣波且頻譜同處升高才判定、整條換、換越多越安靜，皆在原文。但『1206、10 µF、25 V 的 X5R』原文沒有，是研究者從型號 GRM31MR61E106KA01 自己解碼的；原文也沒說睡眠模式『最』吵，只列為容易出聲的模式之一。",
+      "changes_applied": {
+        "answer_target": "Murata 的筆電案例：電池線（DC-DC 轉換器前端）有 10 到 20 V，又要供電給 CPU、相機、RF 模組，電壓容易起伏；容易出聲的操作模式包括睡眠時降壓轉換器切到 PFM 模式、液晶背光用 PWM 調光、相機或重載的間歇運作。判定方法是在無響箱量聲壓頻譜，同時量電容兩端有沒有 20 Hz 到 20 kHz 的漣波，兩者在同一頻段一起升高才算是電容。他們把電池線上一顆顆典型的積層陶瓷電容換成金屬端子款，換得越多越安靜，因為同一條線上的電容承受幾乎一樣的電壓起伏，必須整條換。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉研究者自己從型號解碼的規格；片中也不可說『睡眠最吵』，只能說『睡著時也是容易叫的模式之一』。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-009",
+      "final_id": "T55-009",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V8",
+      "question": "工程師要讓會唱歌的電容安靜下來，有哪幾條路？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/ssztb09.pdf（sha256 相符；今日一般 curl 200）p.1–3；pmc9147252 §3.1–3.2",
+      "reopen_result": "三類對策、背對背同相抵消、TPS51622 0.5→1.5 V、48 對 12 mV/µs、慢斜率漣波小聲音小，皆在 TI；7／13／25 dB 是 PMC 回顧轉引 TI。問句『不換電路也行的辦法』與答案矛盾：答案的三條路都是換零件、改佈局或改電源設計。",
+      "changes_applied": {
+        "question": "工程師要讓會唱歌的電容安靜下來，有哪幾條路？"
+      },
+      "duplicate_of": null,
+      "reason": "只改問句前提。G18 只當 40 秒收尾，算 0.5 條。TI 原文『from ~40dB to ~50dB』不可引用。"
+    },
+    {
+      "proposal_id": "F5-010",
+      "final_id": "S55-001",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "衛星不看地底，怎麼算出印度西北六年少了 109 立方公里的地下水？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/rodell2009.pdf（sha256 相符；今日一般 curl 200） 摘要、p.1001",
+      "reopen_result": "4.0±1.0 cm/yr、17.7±4.5 km³/yr、2002-08 至 2008-10、109 km³、印度最大水庫兩倍、1.14 億人、雨量接近正常、作者結論是灌溉等抽用，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。2002–2008 舊資料要標年份。算 2 條。存放處是耶魯大學網站上的出版版 PDF，不是出版社或作者機構；未經付費牆，但 notes 記為第三方存放，寫稿時以 DOI 標示。"
+    },
+    {
+      "proposal_id": "F5-011",
+      "final_id": "S55-002",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "重力衛星只量到總水量，研究者怎麼一項項排除冰川、水庫和稻田，剩下地下水？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/rodell2009.pdf（sha256 相符；今日一般 curl 200） p.1000–1001",
+      "reopen_result": "冰川 13.4 km³/yr 全放在最近 150 km 也只占 2.8 km³/yr（15%）、七座大水庫 +0.5 km³/yr、稻田 <1 m 每年乾、五組 GLDAS、土壤水趨勢 0.4 cm/yr、地下水季節振幅 5.9 對 10.3 與 13.8 cm、落後土壤水約 40 天，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。G34 最終版刪季節振幅句，算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-012",
+      "final_id": "S55-003",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "衛星算出來的地下水，和政府帳本、井裡的水位對得起來嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/rodell2009.pdf（sha256 相符；今日一般 curl 200） p.999、p.1001",
+      "reopen_result": "17.7 對政府 13.2 km³/yr、回滲少或抽得多、比出水量 0.12 換 0.33 m/yr、都市局部報導 10 m/yr、解析度不優於約 16 萬 km²，皆在原文。但『差這麼多是因為 GRACE 解析度』是研究者自己把兩件事接成因果；原文只說局部降幅『差異很大』，並在另一段說 GRACE 解析度粗。",
+      "changes_applied": {
+        "answer_target": "Rodell 的結果是每年 17.7 立方公里，比印度政府估計的年赤字 13.2 立方公里還大，作者說這表示回滲的灌溉水比政府估得少、或抽得比估的多。用比出水量 0.12 換算，區域平均水位每年約降 0.33 公尺；報紙報導的都市局部降幅可到每年 10 公尺，各地差異很大。GRACE 的空間解析度不比約 16 萬平方公里好，它給的是大區域平均，不是哪一口井。"
+      },
+      "duplicate_of": null,
+      "reason": "拆掉原文沒有的因果連接。G34 最終版只算 1 條（官方帳對照＋解析度）。"
+    },
+    {
+      "proposal_id": "F5-013",
+      "final_id": "S55-004",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "同一筆重力資料，為什麼季節變化乘 1、長期下降卻要乘 3.2？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/landerer2012.pdf（sha256 相符；今日一般 curl 200）[26]–[32]；rodell2009 Methods",
+      "reopen_result": "季節係數 1、長期 klp＝3.2、單一平均 1.7 高估季節低估趨勢、係數來自模型且獨立於實測、細尺度『not truly measured by GRACE』、模型缺抽水因此係數不適用長期，都在原文；Rodell 1.95 與 0.54/0.38/0.50/0.60 在 Methods。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。片中可省掉 1.95 與誤差預算那句，避免觀眾以為 1.95 和 3.2 打架。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-014",
+      "final_id": "S55-005",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "量重力的雙星之一，加速度計發射一個月就壞了，資料怎麼還能用？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/behzadpour2021.pdf（TU Graz 典藏，CC BY；sha256 相符）摘要與 §1；gfz_nl028 p.4",
+      "reopen_result": "2018-05-22 發射、GRACE 2002–2017、加速度計量大氣阻力與輻射壓、GRACE-D 在軌約一個月後雜訊升高、以 GRACE-C 量測加時間姿態修正與推進器模型做移植資料、源自 GRACE 2002–2003 只有一顆可用的時期，皆在原文；2026 通訊說兩顆都在正常模式運作、GF1 產生移植產品。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。注意：這裡的 GRACE-C 是 GRACE-FO 的其中一顆（GF1），和 S55-006 的後繼任務 GRACE-C（GRACE-Continuity）同名，片中要改稱『另一顆衛星』。G34 只算 1 條。"
+    },
+    {
+      "proposal_id": "F5-015",
+      "final_id": "S55-006",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "這對衛星現在還在天上嗎？資料更新到哪裡？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/gfz_nl028.pdf（sha256 相符；今日一般 curl 200）p.1–4",
+      "reopen_result": "2026-05-07 平均高度 448.8 km、相距 215.0 km、日衰減約 24 m、太陽週期 25 減弱、L2/L3 到 2026 年 3 月、Senior Review 2026-04-16 申請延長到 2029-09（結果預計仲夏）、GRACE-Continuity 預定 2028-12 發射，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "內容正確，但今天已過『仲夏』，審議結果很可能已公布；G34 最終版不用，若撰稿時要放進收尾必須先查新一期通訊。"
+    },
+    {
+      "proposal_id": "F5-016",
+      "final_id": "S55-007",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "重力衛星解析度只有幾百公里，為什麼新聞裡能看到很細的地下水地圖？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/brazil.html（sha256 相符；今日一般 curl 200）",
+      "reopen_result": "Science Advances 2026-06-03、AI 結合衛星、井、地質、用水資料、2002–2023、850 萬 km²、55% 用水、中東部持續下降，皆在原文。原文是『observed years with little or no groundwater recharge』，答案寫成『多年幾乎沒有補注』，語意加重。『不是衛星本身看得那麼細』是推論（與 S55-004 一致，可接受但要說是推論）。",
+      "changes_applied": {
+        "answer_target": "NASA 2026 年 6 月報導一項巴西研究：用人工智慧把 GRACE 與 GRACE-FO 的資料，和井水位、地質、用水紀錄結合，做出巴西 2002 到 2023 年、約 850 萬平方公里的高解析地下水地圖；含水層供應巴西 55% 的用水，中部與東部數個含水層持續下降，有些地區出現幾乎沒有補注的年份。細圖是多種資料融合的估計，不是衛星本身就能看得那麼細。"
+      },
+      "duplicate_of": null,
+      "reason": "修正『多年』的語意加重。G34 最終版不用（篇幅，原論文也未讀）。"
+    },
+    {
+      "proposal_id": "F5-017",
+      "final_id": "H55-001",
+      "batch": "batches/wave55-human.json",
+      "reviewer": "V8",
+      "question": "牛奶、鮮奶油、冰淇淋、奶油，乳脂到底差多少？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/ecfr131.html、ecfr135.html（eCFR 官方 renderer API；今日一般 curl 200）、usc321a.html、wisc_butter.html",
+      "reopen_result": "3.25%、18% 以上未滿 30%、30% 以上未滿 36%、重奶油 ≥36%、冰淇淋 ≥10%、奶油 ≥80%（含容許誤差）、奶油 80–82% 脂肪、16–17.5% 水、做奶油的鮮奶油 35–40%，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄；美國標準要標明。只當開場的數字骨架，算 1.5 條（不是 2）：它是一串比例，本身沒有轉折。"
+    },
+    {
+      "proposal_id": "F5-018",
+      "final_id": "H55-002",
+      "batch": "batches/wave55-human.json",
+      "reviewer": "V8",
+      "question": "冰淇淋裡有一半是空氣，法律怎麼管？貴的冰淇淋反而空氣比較少？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/wisc_ed9d1.pdf（UW 典藏博士論文；sha256 相符；今日一般 curl 200） §2.1.2、Table 2.2；ecfr135",
+      "reopen_result": "空氣以體積計常是最大成分、overrun＝（混料重−冰淇淋重）÷冰淇淋重、0.54 kg/L（4.5 lb/gal）限制最高打氣量、經濟型法定上限、標準 100–120%、高級 60–90%、超高級 25–50%（改編自 Goff & Hartel），1.6 磅固形物在 eCFR。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。取代來源未實讀的 D2040；兩者不可並用。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-019",
+      "final_id": "H55-003",
+      "batch": "batches/wave55-human.json",
+      "reviewer": "V8",
+      "question": "冰淇淋原料混好，為什麼要先冰一整晚才拿去打？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/wisc_ed9d1.pdf（UW 典藏博士論文；sha256 相符；今日一般 curl 200） §2.2.3",
+      "reopen_result": "冷到 4 °C 熟成 4–24 小時、脂肪開始結晶促成部分聚結、乳化劑取代脂肪球界面蛋白、安定劑水合增稠、熟成不足會塌與快融，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "答案和既有的 D2041 相同（D2041 未被任何 ready 題或 POOL_SUPPORT 使用）；H55-003 是它的實讀版本，G25 用 H55-003，不可再加 D2041。算 1 條。"
+    },
+    {
+      "proposal_id": "F5-020",
+      "final_id": "H55-004",
+      "batch": "batches/wave55-human.json",
+      "reviewer": "V8",
+      "question": "冰淇淋從機器出來已經能吃，為什麼裡面只有一半的水結冰？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/wisc_ed9d1.pdf（UW 典藏博士論文；sha256 相符；今日一般 curl 200） §2.1.3、§2.2.4–2.2.5",
+      "reopen_result": "−22 至 −32 °C 冷媒、刮刀打氣並刮下桶壁冰晶、部分聚結脂肪幫忙納入並穩住小氣泡、出機 −5 至 −6 °C 約 50% 水結冰、溶質降低凝固點、−25 至 −30 °C 硬化 12–24 小時、約 95% 結冰，皆在原文。『黏成網』原文沒有，只說聚結的脂肪團。",
+      "changes_applied": {
+        "answer_target": "冰淇淋機的桶外有 −22 到 −32 °C 的冷媒，水先在桶壁結冰，刮刀一邊把冰刮下拌進中間，一邊打入空氣；攪拌時部分脂肪球黏在一起成團，幫忙撐住小氣泡。出機時約 −5 到 −6 °C，糖等溶質讓凝固點下降，只有約一半的水結冰，所以還是軟的；再放進 −25 到 −30 °C 硬化 12 到 24 小時，才有約 95% 的水結冰。"
+      },
+      "duplicate_of": null,
+      "reason": "只改一個原文沒有的比喻。取代 D2042，且已含 D2043（硬化）的答案，兩者都不可再加。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-021",
+      "final_id": "H55-005",
+      "batch": "batches/wave55-human.json",
+      "reviewer": "V8",
+      "question": "冰淇淋吃起來滑不滑，冰晶要小到幾微米？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/wisc_ed9d1.pdf（UW 典藏博士論文；sha256 相符；今日一般 curl 200） §2.1.3、§2.1.6、§2.3",
+      "reopen_result": "出機平均 15–30 µm、硬化後 35–45 µm、多數小於約 50 µm 才滑、大量逾 50 µm 或逾 100 µm 粗糙、安定劑 0.25–1%、增加未凍相黏度並延緩儲存時冰晶長大，皆在原文。『但只是延緩』是 D2045 的主張，本來源沒有這句。",
+      "changes_applied": {
+        "answer_target": "冰晶在出機時平均 15 到 30 微米，硬化後長到 35 到 45 微米；多數冰晶小於約 50 微米吃起來才滑，大量超過 50 微米或出現 100 微米以上就會粗粗冰冰的。安定劑（約 0.25% 到 1%）讓未結冰的糖液變稠，延緩儲存時冰晶長大。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉來源沒有的半句；『擋不住溫度來回』由 H55-006 的實驗承擔。取代 D2045。算 1 條。"
+    },
+    {
+      "proposal_id": "F5-022",
+      "final_id": "H55-006",
+      "batch": "batches/wave55-human.json",
+      "reviewer": "V8",
+      "question": "冰淇淋拿出來又放回冰箱，裡面的冰晶和氣泡到底怎麼變？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/ucl_icecream.pdf；V8 另以一般 curl 從 UCL Discovery 的直接 PDF 連結（.../10053478/1/Lee_Revealing...AAM.pdf）重抓，200、36 頁、sha256 與研究者快取完全相同",
+      "reopen_result": "5% 脂肪、Unilever 製、先循環七次、−15 與 −5 °C、101→87→約 103 µm、一圈淨增約 2 µm、熔化—再結晶、氣泡靠相鄰合併、前作 14 次持續變大且 7 次後變慢、7 次前氣泡大致球形、14 次後相連通道、溫度振盪比恆溫儲存變粗快得多，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。來源紀錄要改：H55-S006 記的網址是 eprint 首頁，那頁今天對一般請求回 Cloudflare 挑戰頁（403）；直接 PDF 連結不受挑戰，內容逐位元相同，所以不是繞過取得，但 url 應改填直接 PDF。樣品 5% 脂肪，不可說一般冰淇淋。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-023",
+      "final_id": "S55-008",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "加州聖華金谷底下是什麼地層，抽了多少水，水位掉了多少？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/c1182_sjv.pdf（pubs.usgs.gov；sha256 相符；今日一般 curl 200） p.25–29",
+      "reopen_result": "沉積槽、陸相沉積一半以上是易壓密細粒、Corcoran Clay 厚到約 160 英尺、1955 年全美灌溉地下水約四分之一（近 800 萬英畝呎）、西側深層水位降逾 400 英尺、1960 年每年約降 10 英尺、下陷主要對應 1950–60 年代深層抽水，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。www.usgs.gov 對研究者回 403，但這份 Circular 在 pubs.usgs.gov，今天一般請求也是 200，不是繞過。G03 最終版省掉『每年 10 英尺』，算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-024",
+      "final_id": "S55-009",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "聖華金谷的地面到底沉了多少？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/c1182_sjv.pdf（pubs.usgs.gov；sha256 相符；今日一般 curl 200） p.24、p.29",
+      "reopen_result": "1970 年下陷逾 1 英尺面積逾 5,200 平方英里（半個谷地）、Mendota 附近最大逾 28 英尺、電線桿上 1925／1955／1977 地面高度牌、1950–60 年代加速抽水造成約 75% 總下陷體積，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄；當開場。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-025",
+      "final_id": "S55-010",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "水位回升了 200 英尺，為什麼地面還在往下沉？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/c1182_sjv.pdf（pubs.usgs.gov；sha256 相符；今日一般 curl 200） p.29–30",
+      "reopen_result": "1967–1974 深層水位回升達 200 英尺、Cantua Creek 觀測井 1968–1974 回升逾 200 英尺而地面再沉 2 英尺、黏土層孔隙水壓平衡延遲、取決於阻水層厚度與透水性、聖華金谷通常要數百年（centuries），皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。補上第一輪點名缺的『水位回來、地面回不去』字句。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-026",
+      "final_id": "S55-011",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "地面沉下去還會彈回來嗎？為什麼乾旱時少少抽一點，水位就暴跌？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/c1182_sjv.pdf（pubs.usgs.gov；sha256 相符；今日一般 curl 200） p.30 圖註、p.31；c1182_intro.pdf",
+      "reopen_result": "圖註原文『compacted materials can never return to their pre-compacted thickness』、1976–77 乾旱只抽 1960 年代高峰年量三分之一水位就大範圍急降逾 150 英尺、下陷恢復、Cantua Creek 1977 年近 0.5 英尺、儲水孔隙永久減少、壓密水只在第一次大規模洩降時可得，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。G03 最強的轉折。算 2 條。"
+    },
+    {
+      "proposal_id": "F5-027",
+      "final_id": "S55-012",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "美國的地層下陷，有多少是抽地下水造成的？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/c1182_intro.pdf（pubs.usgs.gov；sha256 相符）p.1–2",
+      "reopen_result": "45 州逾 17,000 平方英里、八成以上已辨識下陷來自開採地下水、厚阻水層沖積含水層一次性釋出壓密水造成區域性永久下陷，皆在原文；17,000 平方英里與 45 州是 USGS 引美國國家研究委員會 1991 年的數字。",
+      "changes_applied": {
+        "answer_target": "USGS 1999 年的整理（面積數字引自美國國家研究委員會 1991 年）：美國 45 個州、超過 1.7 萬平方英里直接受地層下陷影響，已辨識的下陷八成以上來自開採地下水；含厚黏土的沖積含水層長期水位下降，會一次性擠出壓密水，造成區域性、永久性的下陷。"
+      },
+      "duplicate_of": null,
+      "reason": "補上數字的原始出處。G03 最終版不用（為壓到 13 分以內，全國統計是清單、沒有轉折）。"
+    },
+    {
+      "proposal_id": "F5-028",
+      "final_id": "S55-013",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "井裡抽出來的水，一開始和後來分別是從哪裡來的？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/usgs_c1376.pdf（pubs.usgs.gov；sha256 相符；今日一般 curl 200） Foreword",
+      "reopen_result": "Theis 1940：起初來自儲量減少、持續抽水後擴散到相連的河湖濕地、減少排出或增加補入、稱 streamflow depletion 或 capture、部分地區地下水占年河川流量達 90%，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。與 N087 機制重疊，只算 0.5 條（時間順序＋90%）。"
+    },
+    {
+      "proposal_id": "F5-029",
+      "final_id": "S55-014",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "抽的水不超過每年補進來的量，為什麼還是不保證安全？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/usgs_c1376.pdf（pubs.usgs.gov；sha256 相符；今日一般 curl 200） p.39–40",
+      "reopen_result": "『抽水不超過長期平均補注就算永續』的看法、Bredehoeft 等 1982〈水收支迷思〉、天然補注與天然排出平衡、排出經地表水與蒸散、多數補注不受抽水影響、可持續抽多少取決於能截走多少天然排出、生態流量等可能讓上限更低，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄。直接回答片名的轉折。算 1.5 條。"
+    },
+    {
+      "proposal_id": "F5-030",
+      "final_id": "S55-015",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "有沒有真實的河，因為附近的井而在夏天變乾？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/usgs_c1376.pdf（pubs.usgs.gov；sha256 相符；今日一般 curl 200） p.26–27、Fig.20",
+      "reopen_result": "Ipswich 河流域以生活與商業用水為主的抽水造成夏季低流量期明顯耗減、乾旱年魚與貝類死亡（轉引 Armstrong 等 2001）、離河約 500 英尺的供水井、春夏多秋冬少、解析模型算出的耗減起伏比抽水小，皆在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "照錄；耗減曲線是模型，魚貝死亡是轉引文獻，答案與範圍都已寫明。算 1 條。"
+    },
+    {
+      "proposal_id": "F5-031",
+      "final_id": "S55-016",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V8",
+      "question": "井已經停了，河流為什麼還會越來越少，甚至停抽幾十年後才最少？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "f5src/usgs_c1376.pdf（pubs.usgs.gov；sha256 相符；今日一般 curl 200） p.42–43 要點 1–6、p.24–25",
+      "reopen_result": "最大耗減可能在停抽之後（低擴散性或井離河遠尤甚）、從開始抽到完全回復耗減總量等於抽出總量、C 含水層模擬全河段最大耗減約在停抽 44 年後，皆在原文。要點 6 原文是『In many cases ... can be longer than the time that the well was pumped』，答案寫『常比』語意略加重。",
+      "changes_applied": {
+        "answer_target": "USGS 整理：停抽後地下水要回頭把洩降漏斗填滿，所以最大的河川耗減可能出現在停抽之後，含水層擴散慢或井離河遠時特別明顯；從開始抽到水位完全回復，河流被耗減的總量等於抽出的總量；在許多情況下，回復所需時間可能比抽水的時間還長。在亞利桑那 C 含水層的模擬中，整體最大耗減出現在停抽約 44 年後。"
+      },
+      "duplicate_of": null,
+      "reason": "只把『常比』改回原文的『許多情況下可能』。44 年是模擬。算 1 條。"
+    },
+    {
+      "proposal_id": "F6-001",
+      "final_id": "T55-010",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "同一個帶重音的字母，電腦裡到底可以有幾種存法？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S009 本地 f6src/charmod.txt（W3C String Matching §2.2 Example 12、Example 15 表）",
+      "reopen_result": "五種序列、『same apparent meaning』、正規化後只剩三種（U+01FA、A+030A+0301、FF21+030A+0301）都在原文。但 W3C 說的是『表面意思相同』，不是『畫面看起來都一樣』——全形Ａ本來就比較寬；而且 Example 15 的表顯示全形那組只在 NFC/NFD 下保持不同，NFKC/NFKD 會把它併進 U+01FA／A+兩個符號。原答案『全形Ａ那組仍然不同』沒交代是哪種正規化。",
+      "changes_applied": {
+        "answer_target": "W3C 用字母 Ǻ（A 上有圈又有尖音）舉例：同一個字可以存成一個預組字元、A 加兩個組合符號、Å 加一個尖音、埃符號 Å 加尖音、全形Ａ加兩個組合符號——至少五種碼點序列，W3C 說它們表面上的意思都相同；直接逐碼點比對，它們全都不相等。把這五種做四種 Unicode 正規化，結果只剩三種不同的序列：預組的 Ǻ、拆開的 A 加兩個符號，以及全形Ａ加兩個符號；全形那組在 NFC、NFD 下仍和其他四種不同，要到相容形式 NFKC、NFKD 才被併進來。",
+        "scope": "W3C String Matching 草案 Example 12、15；不說五種『畫面一模一樣』（全形字較寬），不推論任何軟體的實際顯示。"
+      },
+      "duplicate_of": null,
+      "reason": "開場鉤子成立、是 G02 改題後最好的入口；改兩處：外觀說法、全形組只在標準等價形式下不同。"
+    },
+    {
+      "proposal_id": "F6-002",
+      "final_id": "T55-011",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "電腦把兩個看起來相同的字串先『整理』再比，整理的步驟是什麼？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S008 本地 f6src/tr15.txt（UAX #15 §1.1–1.3、§7 Goal 1）",
+      "reopen_result": "完全分解、依組合類別排序、NFC 再組合、Goal 1 唯一性、ASCII 不受影響、Latin-1 已是 NFC，都在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "吸收 L311／L314／L315 的一行定義，只算增量；L311 保留為同章舊核心。"
+    },
+    {
+      "proposal_id": "F6-003",
+      "final_id": "T55-012",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "圓圈裡的①和數字1，電腦該不該當成同一個字？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S008 tr15.txt §1.1 Figure 2、§1.2「must not be blindly applied」；T55-S009 charmod.txt §2.2.1 末段「SHOULD NOT be treated as equivalent by a formal language」、§2.2.3「8½→81/2」",
+      "reopen_result": "①→1、ｶ→カ、⁹→9、㌀→アパート、盲目套用的警告、W3C 的 SHOULD NOT 與 8½ 例子都對得上；8½ 出自 W3C §2.2.3 而非 UAX #15，答案沒寫錯歸屬（只說『Unicode 警告不能盲目套用』『8½ 經相容正規化…』），可用。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "第一個轉折（整理過頭會改意思）；與空閒 L313 同機制，只算 8½ 與 W3C 建議的增量。"
+    },
+    {
+      "proposal_id": "F6-004",
+      "final_id": "T55-013",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "拉丁字母 P 和西里爾字母 Р 長得一模一樣，正規化會把它們變成同一個嗎？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S009 charmod.txt §2.3 Example 16 與『。』段；T55-S011 tr39.txt §4 confusable 定義（paypal／pаypаl、scope／ѕсоре）",
+      "reopen_result": "P／Ρ／Р 在多數字型相同但分屬三套字母、正規化不合併；『。』不等於『.』；skeleton 與兩組例子都在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "與 G48 的 U4012（拉丁 B 與希臘 Beta 的大小寫對應）同屬跨文字同形字，但答案不同：本核心講正規化不合併與易混淆偵測。寫稿時不得用 B／Beta 或大小寫轉換當例子，以免與 G48 重疊。"
+    },
+    {
+      "proposal_id": "F6-005",
+      "final_id": "T55-014",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "網址裡混進一個長得像 a 的外文字母，瀏覽器怎麼發現？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S012 線上重讀 chromium.googlesource.com/…/docs/idn.md（2026-11-11，?format=TEXT），與 f6src/idn.txt 內容一致",
+      "reopen_result": "punycode 例 öbb.at→xn--bb-eka.at、ebаy.com 例、Chrome 51、拉丁／西里爾／希臘不能混、аррӏе.com、googlé.com 都在原文。兩處要修：①原文說的是『Chrome 51 起採用不看瀏覽器語言設定的政策』，逐段判斷是政策內容，不是 51 版才開始逐段；②全西里爾那條還要求頂級網域不是已知大量西里爾網域的頂級網域（ru、su、ua…）。locator 的條號也錯（實為第 5、10、13 條）。",
+      "changes_applied": {
+        "answer_target": "網域名稱送進 DNS 前會轉成 xn-- 開頭的 punycode，例如 öbb.at 變成 xn--bb-eka.at。Chrome 的開發文件舉例：拉丁 a 和西里爾 а 長得很像，有人可以註冊用西里爾 а 的 ebаy.com，看起來就像 ebay.com。Chrome 51 起採用一套不看瀏覽器語言設定的顯示政策，對網址的每一段分別決定顯示原字還是 punycode：拉丁、西里爾、希臘字母不能混在同一段；整段都是長得像拉丁字的西里爾字母（例如 аррӏе.com），而頂級網域不是西里爾、也不是常見西里爾網域用的頂級網域時，顯示 punycode；把 googlé.com 這類名稱去掉變音、換成易混淆的 skeleton 後若和熱門網域相同，也顯示 punycode。",
+        "source_locator": "S005 Background；How IDN works；Google Chrome's IDN policy 第 5、10、13 條（2026-11-11 線上重讀）"
+      },
+      "duplicate_of": null,
+      "reason": "真實後果的轉折；punycode 轉換本身是空閒 U4011 的答案，只算 Chrome 規則的增量。"
+    },
+    {
+      "proposal_id": "F6-006",
+      "final_id": "T55-015",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "搜尋時不打重音也找得到 résumé，但打了重音為什麼反而找不到 resume？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S010 本地 f6src/strsearch.txt §2.1 Example 1 表、§2.2.10 兩條 SHOULD、§2.2.5 East Asian Width",
+      "reopen_result": "re-resume 四字串表、無重音查詢可中有重音、有重音只中有重音、全半形差異 SHOULD 忽略，皆照錄。注意 String Searching 自述『not being actively developed』，只能說 W3C 的建議。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "第二轉折的入口；不可說任何瀏覽器實際如此。"
+    },
+    {
+      "proposal_id": "F6-007",
+      "final_id": "T55-016",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "同一個網頁，為什麼 W3C 叫識別字不要忽略大小寫和重音，卻叫搜尋框要忽略？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S009 charmod.txt §3（『case-sensitive matching without Unicode normalization … RECOMMENDED for all new specifications』）；T55-S010 strsearch.txt 開頭（find 屬自然語言比對）",
+      "reopen_result": "識別字建議不折疊大小寫、不做正規化，由作者保持一致；搜尋是自然語言比對、容忍使用者差異，原文都有。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "本片第二轉折的骨架。"
+    },
+    {
+      "proposal_id": "F6-008",
+      "final_id": "T55-017",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "德國人、芬蘭人、英國人搜尋同一個 ä，期待的結果為什麼不一樣？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S010 strsearch.txt §2.2.1 Example 2（Hän／Haen 表）與 ILIK 表",
+      "reopen_result": "英／德／芬三種期待與『語言標記似乎不影響多數尋找功能』都在原文。土耳其 ILIK 例子雖在原文，但土耳其 I 是 G48（U4007）已用的例子，按研究者自己的去重原則與本輪要求必須刪掉。",
+      "changes_applied": {
+        "answer_target": "W3C 舉例：英語使用者把 ä 當外來字母，期待它對到 a；德語使用者認為 ä 與 ae 相同、但和 a 不同；芬蘭語使用者認為三者都不同。所以同一句芬蘭文裡的 Hän 和 Haen，芬蘭人認為是兩個字，德國人卻可能期待搜尋其中一個就找到另一個。W3C 也指出，文件的語言標記似乎不影響多數瀏覽器的尋找功能，使用者通常也沒辦法指定搜尋詞要用哪種語言的規則。",
+        "scope": "W3C String Searching §2.2.1；不用土耳其 I（G48 已用），不指名瀏覽器或版本。"
+      },
+      "duplicate_of": null,
+      "reason": "刪掉土耳其語一段；保留 ä 三語對照。"
+    },
+    {
+      "proposal_id": "F6-009",
+      "final_id": "T55-018",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "排序程式說兩個字『相同』，是怎麼一層一層放寬的？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S013 本地 f6src/tr10.txt §8 Searching and Matching 第 1–4 段",
+      "reopen_result": "第三層排除＝忽略大小寫與相容格式、第二層再忽略重音、丹麥語 aa 與 å 相符、相符字串可不等長，都在原文。ß 與 ss 在第一層相符也在原文，但 ß 是 G48（U4006）的例子，須刪。『abc 不想命中 abç』本地文字沒找到這句（原文是連字號可忽略、ch 縮約的例子），改用原文的 bach 例。",
+      "changes_applied": {
+        "answer_target": "Unicode 排序演算法把差別分層：第一層看基本字母、第二層看重音、第三層看大小寫與變體。搜尋時排除第三層差異，就同時忽略大小寫和相容格式的差別；再排除第二層，連重音也忽略。在丹麥語規則下 aa 與 å 相符，所以兩段相符的文字長度可以不同；若某語言把 ch 當成一個字母，搜尋 bac 就不該命中 bach，這要看使用者的設定，就像搜尋時的『只比完整單字』選項。",
+        "scope": "UTS #10 §8；不用 ß（G48 已用）；未讀完整演算法。"
+      },
+      "duplicate_of": "部分重疊 U4004（空閒）",
+      "reason": "只作空閒核心；與空閒 U4004（語言排序分層權重）同源機制，G02 最終不用（超出 10 分鐘上限時第一批刪）。"
+    },
+    {
+      "proposal_id": "F6-010",
+      "final_id": "T55-019",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "同一個帶重音的檔名，舊款 Mac 和其他系統為什麼可能互相找不到？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S015 本地 f6src/qa1173.txt（Important 方框、Volume Format、Compatibility Notes）",
+      "reopen_result": "HFS Plus 用 NFD 變體（U+2000–2FFF 等不拆）、UDF／SMB 用組合形、NFS 無標準、組合形建檔再用位元比對找不到、從 NFS 用 cp 複製會帶入組合形名稱，都在原文。但原文同時說『實務上這很少是問題』；題目『從 Linux 複製到舊款 Mac』不在原文，原文是『NFS 磁碟和非 Mac 用戶端共用』，而且對象是寫檔案系統外掛的開發者。",
+      "changes_applied": {
+        "question": "同一個帶重音的檔名，舊款 Mac 和其他系統為什麼可能互相找不到？",
+        "answer_target": "Apple 給檔案系統開發者的技術問答說明：Mac 的 HFS Plus 把檔名存成『拆開』的形式（NFD 的變體，U+2000–2FFF 等範圍不拆），UDF 和 SMB 用組合形，NFS 根本沒有公認標準。理論上，若程式用組合形名稱建檔，再逐一掃目錄、用位元逐一比對找它，就會找不到；Apple 說實務上很少發生。NFS 磁碟可能和非 Mac 的電腦共用，對方建立的組合形檔名不會被拆開，用 cp 這類簡單程式複製過來，組合形名稱也會原樣帶進來。"
+      },
+      "duplicate_of": null,
+      "reason": "改題目與答案，補上『實務上很少發生』，不可誇大成常見故障。"
+    },
+    {
+      "proposal_id": "F6-011",
+      "final_id": "T55-020",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "Apple 換新檔案系統後，同一個檔名的兩種寫法怎麼處理？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S016 本地 f6src/apfsfaq.txt（Implementation：filenames）",
+      "reopen_result": "保留原形、High Sierra 起正規化不敏感、雜湊比對、同資料夾不能並存正規化變體、Unicode 9.0 對 3.2、iOS 10.3 正規化敏感與 File Not Found，皆照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "與 T55-019 合成一個真轉折：同一家公司三種做法，『相同』是設計選擇。"
+    },
+    {
+      "proposal_id": "F6-012",
+      "final_id": "T55-021",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "按一次刪除鍵，到底刪掉『一個字』還是一個碼點？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S014 本地 f6src/tr29.txt §3 第 1、5–7 段",
+      "reopen_result": "『user-perceived character 不是無歧義的概念』、grapheme cluster 是近似、介面預設以 cluster 為單位、允許逐碼點刪除都在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "答案正確，作為 L317／L318 的全文重讀留在池中；但它回答的是『一個字是什麼單位』，不是改題後的『兩個字算不算相同』，G02 最終不收（見 targets.cuts）。"
+    },
+    {
+      "proposal_id": "F6-013",
+      "final_id": "T55-022",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "看不見的字元，怎麼讓兩個一模一樣的字串比對失敗？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S009 charmod.txt §2.6 ZWNJ（تنها／تن‌ها）、§2.7 emoji 段",
+      "reopen_result": "波斯文例與『使用者通常不知道有這些字元』都在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "空閒核心；G02 為守 10 分鐘上限不收，可留作 G47 類短片材料。"
+    },
+    {
+      "proposal_id": "F6-014",
+      "final_id": "T55-NA006",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "忽略大小寫的比對，為什麼還要再正規化一次？",
+      "verdict": "REJECT",
+      "disposition": "not_added（退回，記為未收紀錄）",
+      "key_source_reopened": "T55-S009 charmod.txt §2.4、§2.1.1",
+      "reopen_result": "㎒→MHz→mhz 兩輪、折疊後須正規化都在原文。",
+      "changes_applied": null,
+      "duplicate_of": "G48 U4006／U4007 範圍",
+      "reason": "大小寫折疊是 G48 的題目（U4006 已講大小寫映射的多字元），土耳其 I 又是 U4007 的例子；拿掉這兩者後只剩一條技術細節，對 G02 沒有轉折，淘汰。"
+    },
+    {
+      "proposal_id": "F6-015",
+      "final_id": "T55-023",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "易混淆字的對照表更新後，舊資料庫為什麼必須重算？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S008 tr15.txt §3（穩定性、3.1.0）；T55-S011 tr39.txt §4 Note 與 Migrating Persistent Data",
+      "reopen_result": "正規化跨版本穩定、skeleton 不穩定、存進索引須在升級時重算，都在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "空閒核心；G02 為守上限不收。"
+    },
+    {
+      "proposal_id": "F6-016",
+      "final_id": "T55-024",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "太空傳回一段貓的影片要 101 秒，那雷射通訊快在哪？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S017 本地 f6src/dsoc_video.txt；同系列 T55-S019 線上重讀 nasa.gov（2026-11-11，3-kilowatt 句一致）",
+      "reopen_result": "12 月 11 日、約 1,900 萬英里／地月 80 倍、15 秒（T55-S018 寫明 15-second）、267 Mbps、101 秒、Rogalin 說地面網路比深空訊號慢、影片發射前預載，全對。原文也寫明這是 technology demonstration、Psyche 本身不產生影片。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "新開場鉤子成立；R002 的速率／延遲之分由它給實數。"
+    },
+    {
+      "proposal_id": "F6-017",
+      "final_id": "T55-025",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "同一台雷射通訊機飛得越遠，速度為什麼掉那麼多？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S018 本地 f6src/dsoc_140.txt 導言、Surpassing Expectations 段、Ken Andrews 引言",
+      "reopen_result": "1.4 億英里、1.5 倍日地距離、七倍多遠、25 Mbps、1 Mbps 目標、約 10 分鐘的重複資料都對。但原文是『同時把同一份資料的一部分』走光學送 Palomar，不是『同一批資料』全部；『JPL 再把兩路比對』原文是『收到 DSN 與 Palomar 的資料後，在 JPL 驗證光學下傳的資料』。原文明說 Psyche 不靠光通訊傳資料——依審查要求要寫進答案。",
+      "changes_applied": {
+        "answer_target": "這套雷射通訊是搭在 Psyche 上的技術展示，Psyche 本身不靠它傳資料、走的是無線電。2024 年 4 月 8 日，Psyche 已在 1.4 億英里外（日地距離 1.5 倍），比傳貓影片時遠七倍多，最高速率降到 25 Mbps——NASA 說這是預期中的下降，但仍遠超在該距離證明 1 Mbps 的目標。那次 Psyche 用無線電把資料送往深空網路時，雷射也同時把其中一部分同樣的資料送到 Palomar，約 10 分鐘；JPL 收到兩邊的資料後，驗證了雷射送下來的那份。"
+      },
+      "duplicate_of": null,
+      "reason": "補上『技術展示、Psyche 自己的資料走無線電』，改正『同一批』與『比對』。"
+    },
+    {
+      "proposal_id": "F6-018",
+      "final_id": "T55-026",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "雷射光束那麼細，從幾億公里外怎麼對得準地球？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S019 線上重讀 nasa.gov「Deep Space Communications Demo Exceeds Project Expectations」（2026-11-11），與 f6src/dsoc_final.txt 一致",
+      "reopen_result": "研究者請複核的『3 千瓦信標的用途』：原文是『A powerful 3-kilowatt uplink laser at JPL’s Table Mountain Facility transmitted a laser beacon to Psyche, helping the transceiver determine where to aim the optical communications laser back to Earth.』答案『探測器上的收發器靠它判斷要把下行雷射往哪裡瞄』與原文相符，沒有加成『鎖定』『追蹤』之類原文沒有的機制。兩邊高速移動、光要走好幾分鐘、Palomar 200 吋望遠鏡、高效率偵測器陣列也都照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "描述正確；R004 機制只算增量 1 條。"
+    },
+    {
+      "proposal_id": "F6-019",
+      "final_id": "T55-027",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "晴天傳得飛快的雷射通訊，遇到雲該怎麼辦？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S018 dsoc_140.txt Fun With Lasers 段；T55-S019 dsoc_final.txt arraying 段",
+      "reopen_result": "暴風雨讓兩站停擺、無線電多數天氣可用、光學需相對晴朗、七面鏡共 3 英尺、Palomar／Goldstone／Table Mountain 同收一訊號、陣列能增強弱訊號與天氣備援，都在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "R003 的實例。"
+    },
+    {
+      "proposal_id": "F6-020",
+      "final_id": "T55-028",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "地球一直在轉，深空網路怎麼不讓太空船斷線？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S020 本地 f6src/oig_dsn.txt pp.1–2（Background）",
+      "reopen_result": "三站、約 120 度、每站一座 70 公尺與多座 34 公尺、1 萬英里到太陽系邊緣都在原文。原文寫 120 degrees apart on the Earth’s axis；『前方的站接手』是 R001 的機制說法，可接受。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "R001 給數字，只算增量。"
+    },
+    {
+      "proposal_id": "F6-021",
+      "final_id": "T55-029",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "看得到太空船，就一定排得到天線嗎？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S020 oig_dsn.txt pp.10–14",
+      "reopen_result": "超額約 40%、30 多年需求大於容量、近 60 個任務、每週約 500 項排程、8,500–15,000 追蹤小時、Perseverance 21 個月至少 7 次（任務主管向監察長陳述）、2030 年代約 50%，皆照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "真轉折：看得到≠排得到。旁白須說 Perseverance 那段是任務主管的陳述。"
+    },
+    {
+      "proposal_id": "F6-022",
+      "final_id": "T55-NA007",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "一個地面站壞掉 33 小時，太空任務會丟掉什麼？",
+      "verdict": "REJECT",
+      "disposition": "not_added（退回，記為未收紀錄）",
+      "key_source_reopened": "T55-S020 oig_dsn.txt p.13 Goldstone 段",
+      "reopen_result": "33 小時、9,090 分鐘、國際備援來不及、JWST 低品質資料，都對。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "數字正確，但與 T55-029 是同一個答案（排程不夠）的另一個例子，不是轉折；G07 為守 11 分鐘上限刪除。研究者自己也建議超時先併掉。若日後另起深空網路短片可再收。"
+    },
+    {
+      "proposal_id": "F6-023",
+      "final_id": "T55-030",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "火星車的照片，是自己直接傳回地球的嗎？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S021 本地 f6src/marsrelay.txt How It Works 段與 Every image 句；T55-S023 sp25.txt §1",
+      "reopen_result": "指令遙測可直傳、科學資料交軌道器、天線太陽能板較大聯繫較規律、每天約 12 小時看不到地球、3–22.4 分鐘光行時、最高 2 Mbps、99% 以上靠中繼、2004 年以來每張表面影像經 MRN，全部在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "真轉折：『一路寄回』其實先寄到半路。"
+    },
+    {
+      "proposal_id": "F6-024",
+      "final_id": "T55-031",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "軌道器收到火星車的資料，會馬上轉給地球嗎？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S021 marsrelay.txt Relaying to Earth 段與資料量表；T55-S022 marsrelay_news.txt bent pipe、MAVEN 段",
+      "reopen_result": "可同時對火星車與地球的軌道器、其他先收再轉、MRO 彎管、MAVEN 錄整段頻譜數小時才傳完都對。表頭是『Average data transmitted through 2025』（另有 2026 年 2–5 月一欄），答案的『2025 年前平均』應為『至 2025 年的平均』；另 MAVEN 已於 2026 年 6 月宣告結束，旁白若提 MAVEN 要用過去式。",
+      "changes_applied": {
+        "answer_target": "看是哪一顆。NASA 說有幾顆軌道器能一邊和火星車通話、一邊把天線對著地球，縮短轉傳時間；其他的先收下，再轉向地球送出。Perseverance 2021 年著陸時，MRO 以『彎管』方式把遙測立即轉發；MAVEN 則錄下整段著陸無線電頻譜，資料多到要好幾個小時才傳完，用來補 MRO 漏收的部分（MAVEN 已在 2026 年 6 月被宣告任務結束）。每天平均中繼量也差很多：統計到 2025 年，MRO 約 447.5 Mb、TGO 約 1,562.7 Mb。"
+      },
+      "duplicate_of": null,
+      "reason": "只改資料量的時間說法並補 MAVEN 已結束。"
+    },
+    {
+      "proposal_id": "F6-025",
+      "final_id": "T55-032",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "太空網路斷線時，資料怎麼不會掉？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S025 本地 f6src/dtn.txt 定義段與 Improved Operations 段；T55-S024 pace.txt",
+      "reopen_result": "能轉就轉、不能轉就存、只需下一跳；PACE 是第一個使用 DTN 的營運科學任務、傳電池與軌道等資料、之前在太空站展示；自動重傳減少排地面站、排程有時要五天規劃，皆照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "R010 的實例；不可說 Mars Relay 用 DTN。"
+    },
+    {
+      "proposal_id": "F6-026",
+      "final_id": "T55-033",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "中繼資料晚到半小時，任務團隊怎麼知道卡在哪？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "T55-S023 本地 f6src/sp25.txt §1、§6 第 1–3 段",
+      "reopen_result": "§6 開頭原文是『Imagine…』的假設情境，答案已寫『描述一個情境』；遲到會失去火星上的時間、WMRD 2022 年開始設計 2024 年首次發布、35,000 次飛越、逾 8 Tb，都在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "收尾的限制：多一個保管點就多一處可能卡住。旁白必須說『論文舉的假設情境』。"
+    },
+    {
+      "proposal_id": "F6-027",
+      "final_id": "T55-NA008",
+      "batch": "batches/wave55-tech.json",
+      "reviewer": "V9",
+      "question": "深空網路除了收照片，還在收什麼？",
+      "verdict": "REJECT",
+      "disposition": "not_added（退回，記為未收紀錄）",
+      "key_source_reopened": "T55-S020 oig_dsn.txt pp.3–4",
+      "reopen_result": "遙測、指令、追蹤、無線電科學四項功能都在原文。",
+      "changes_applied": null,
+      "duplicate_of": "與 R008／R009 同機制",
+      "reason": "服務的是被刪除的 R008『不只照片』章，與主問題（資料怎麼送到）關係弱；刪章後沒有位置，淘汰。"
+    },
+    {
+      "proposal_id": "F6-028",
+      "final_id": "S55-017",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "同一條冰河兩百年退了多遠，是怎麼量出來的？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "S55-S009 NPS 官方 IRMA 原檔（irma.nps.gov/DataStore/DownloadFile/562710，參考編號 2237007）重新下載，sha256 15b18513…26d9，與 npshistory.com 鏡像位元組完全相同；摘要、p.3、p.7–8、p.17",
+      "reopen_result": "2.5 km、1889 前幾乎不動（只退 14 m）、19.7 m/yr、44.5 m/yr、1950 年以來 1 km、樹輪定年冰磧／航照／2008 年起 GPS 沿冰緣走，全部在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "同一冰河的時序紀錄，正是企劃 evidence_gaps 要的。來源 URL 應改記 IRMA 官方檔。"
+    },
+    {
+      "proposal_id": "F6-029",
+      "final_id": "S55-018",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "冰河末端一直在退，冰本身是不是也往山上跑？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "S55-S011 線上重讀 nps.gov 部落格「Visualizing Glacial Processes…」（2026-11-11）；注意 f6src/npsblog.html／.txt 存的其實是另一篇〈Chasing a Retreating Glacier〉（2012-06-22），不是這篇",
+      "reopen_result": "線上原文：2014 年 9 月 4 日 Sean LaHusen；末端 10 年退 270 m、步道離末端近 40 m、一天一張縮時、末端與上游約 1 km 處各一台、2010 年同地點影片看得到變薄內縮、『平均約 30 公分/日』往谷下移動、整天盯著也看不出，全部照錄。答案內容正確，但快取與 sha256 對應錯檔，整合時必須重存正確頁面；答案要加上文章年份，因為『10 年退 270 公尺』是 2014 年的說法。",
+      "changes_applied": {
+        "answer_target": "不是。2014 年園方在末端和上游約 1 公里處各架一台縮時相機，一天拍一張；同一地點 2010 年的影片裡，冰河在變薄、兩側內縮，同時也看得到冰在往下流——Exit Glacier 平均每天向谷下移動約 30 公分，慢到整天盯著也看不出來。同一篇文章說，末端在那之前 10 年內退了 270 公尺，『冰河邊緣』步道已離縮小的末端將近 40 公尺。"
+      },
+      "duplicate_of": null,
+      "reason": "主矛盾的同一冰河實證成立；只補年份。30 公分/日不得與 S55-019 的 25.6 公分/日相減。"
+    },
+    {
+      "proposal_id": "F6-030",
+      "final_id": "S55-019",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "冰河在冬天反而會往前長，是什麼決定的？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "S55-S009 IRMA 原檔 p.5 Previous Measurements、p.19–20 Seasonality 段",
+      "reopen_result": "研究者請複核的『2006 年前冷冬前進』：原文是『KEFJ staff recall that, prior to 2006, there were some years that Exit Glacier advanced during cold winter months when the forward flow of the ice was greater than mid-winter melting』——確是園方人員回憶，答案寫『園方回憶』正確。但報告 p.5 另有實測：Tetreau 1987 年起用捲尺量，記下『冬季小幅前進在 Exit Glacier 很常見』，1987–88 年冬天一口氣前進 15–18 公尺、壓過新步道和告示牌——把這筆實測併進來，回憶就有紀錄撐腰。9.1／33.3 m、3.9／25.6 cm/日、6.6 倍（摘要寫 6.7）、51% 的日子高於 0°C（2011–2016）、『前進或後退取決於融化與流動的平衡』都照錄。",
+      "changes_applied": {
+        "answer_target": "Exit Glacier 以前在冬天真的會往前。園方 1987 年起用捲尺量末端，記下冬季小幅前進在這條冰河很常見；1987–88 年冬天它一口氣前進 15–18 公尺，壓過園方剛建好的步道和告示牌。園方人員也回憶，2006 年前有些冷冬，冰往前流的量大於冬季融掉的量，末端就前進。如今冬天也在退：2010 到 2015 年，冬季中位只退 9.1 公尺、夏季退 33.3 公尺，換算每天 3.9 公分對 25.6 公分，夏季約快 6.6 到 6.7 倍；2011 到 2016 年，10 月到 5 月有 51% 的日子均溫高於 0°C。報告的結論是：末端前進或後退，取決於融化與流動之間的平衡。",
+        "source_locator": "S019 p.5 Previous Exit Glacier Terminus Measurements；p.19–20 Seasonality of Retreat",
+        "scope": "NPS NRR 2016/1341；『2006 年前冷冬前進』是園方人員回憶，1987–88 年前進是實測，旁白分開說；報告不推論氣候原因；季節速率不得與 S55-018 的 30 公分/日相減。"
+      },
+      "duplicate_of": null,
+      "reason": "核心轉折；併入 S55-NA006 的 1987–88 實測，回憶與紀錄分開說。"
+    },
+    {
+      "proposal_id": "F6-031",
+      "final_id": "S55-020",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "冰河剛好一年『前進 6 公尺』又『後退 4 公尺』，哪個才對？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "S55-S009 IRMA 原檔 p.3–4、p.16–17 方法比較段與 Figure 7",
+      "reopen_result": "中線法／框法定義、2005–06 年中線前進 6 m（4 m 寬冰突）、框法後退 4 m、長期兩法沒有顯著差別、全長 9.97 km、面積 37.8 km² 都在原文。原文還說 2005–06 年是兩法『唯一一次』方向相反，其他年只是距離不同——答案沒寫，容易讓人以為常見。最後一句『末端只是冰量變化的一種量法』與 S55-024 重複，移到 S55-024。",
+      "changes_applied": {
+        "answer_target": "都對，看你怎麼量。NPS 比較兩種方法：中線法沿主流向量末端最遠的一點，框法算整個冰舌前緣的平均位置。2005 到 2006 年，冰河兩側內縮，中間卻有一塊 4 公尺寬的冰往前凸出 6 公尺；中線法因此算出前進 6 公尺，框法算出後退 4 公尺。報告說兩種都算準確，只是量的東西不同：一個量冰伸得最遠的地方，一個量整條前緣的整體表現。這是 Exit Glacier 唯一一次兩法方向相反，其他年份只差在距離，長期總退縮兩法也沒有顯著差別。報告也提醒，末端只是冰河的一小部分：整條冰河長 9.97 公里、面積 37.8 平方公里。"
+      },
+      "duplicate_of": null,
+      "reason": "補『唯一一次』，刪掉與 S55-024 重複的句子。"
+    },
+    {
+      "proposal_id": "F6-032",
+      "final_id": "S55-NA006",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "一路退縮的冰河，也會突然前進嗎？",
+      "verdict": "REJECT",
+      "disposition": "not_added（退回，記為未收紀錄）",
+      "key_source_reopened": "S55-S009 IRMA 原檔 p.5、p.19 Figure 9 說明",
+      "reopen_result": "150 m、1987–88 冬季 15–18 m、1974／1984／1993／1998／2006 的小前進都在原文。",
+      "changes_applied": null,
+      "duplicate_of": "併入 S55-019",
+      "reason": "1987–88 年的實測已併入 S55-019 撐住『冬天前進』的回憶；其餘小前進清單是同一答案的更多例子，不另立核心。"
+    },
+    {
+      "proposal_id": "F6-033",
+      "final_id": "S55-021",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "堅硬的冰河是靠什麼往下移動的？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "S55-S012 線上重讀 nsidc.org Science of Glaciers（2026-11-11），與 f6src/nsidc.txt 一致",
+      "reopen_result": "潛移與底部滑動、『薄冷陡坡大部分、溫暖厚緩坡只有 10–20%』（線上與快取第 139 行都有這句）、Columbia Glacier 主要靠滑動、底部比表面慢、底部很冷時只有表面的一小部分，皆照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "N214 給數字與例外；只算增量。"
+    },
+    {
+      "proposal_id": "F6-034",
+      "final_id": "S55-022",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "冰河後退時，是整條冰往回縮嗎？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "S55-S012 nsidc.txt How glaciers move 第 4 段、Components 段",
+      "reopen_result": "後退只指末端、像輸送帶仍往下坡、沒有往上流、融得比流得快、累積區／消融區，照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "N215 同一句只算累積區／消融區的增量。"
+    },
+    {
+      "proposal_id": "F6-035",
+      "final_id": "S55-NA007",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "同一個位置拍兩張照片，相隔 60 年能看出冰河怎麼變？",
+      "verdict": "REJECT",
+      "disposition": "not_added（退回，記為未收紀錄）",
+      "key_source_reopened": "S55-S012 nsidc.txt Muir 圖說、Hubbard 段、Perito Moreno 圖說；S55-S010",
+      "reopen_result": "Muir 12 km／800 m、Hubbard 1986 每天 10 m、Perito Moreno 持續推進都在原文。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "三條都是別的冰河；企劃 drop_if 明訂末端與冰塊不能用不同冰河混剪，而『流動也能讓冰河前進』已由 Exit Glacier 自己的 1987–88 實測（S55-019）講到。照片版權也未解。淘汰。"
+    },
+    {
+      "proposal_id": "F6-036",
+      "final_id": "S55-023",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "冰河表面的弧形條紋，怎麼透露冰中間流得比較快？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "S55-S012 nsidc.txt Ogives 段、Moving forward 第 4 段",
+      "reopen_result": "冰瀑下方的明暗弧帶成因、中央流得比兩側快被拉成弧形、應力超過強度裂出冰隙，照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "答案正確，留在池中；G10 為守企劃 8–9 分鐘上限連同 N216 冰隙章一起不收（裂縫回答的是另一題）。"
+    },
+    {
+      "proposal_id": "F6-037",
+      "final_id": "S55-024",
+      "batch": "batches/wave55-earth.json",
+      "reviewer": "V9",
+      "question": "只看末端位置，夠不夠判斷一條冰河在變小？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "S55-S012 nsidc.txt In retreat 第 4 段（WGMS／AMS 轉述）；S55-S009 IRMA 原檔 p.3 Measuring Glacial Melt",
+      "reopen_result": "140 條、37 條參考冰河、2021 年連續第 34 年、每十年 214→896 mm、1980–2018 累計 21.7 m、『像削掉 24 公尺厚』，都在 NSIDC 頁上（轉述 AMS 與 WGMS，原報告未讀）；NPS 的面積、表面高度、冰厚也在 p.3。",
+      "changes_applied": {
+        "answer_target": "不夠。世界冰河監測服務（WGMS）追蹤的是質量平衡——一年下來冰河得到還是失去質量：140 條高山冰河，其中 37 條有超過 30 年紀錄的參考冰河。據 NSIDC 轉述，2021 年全球高山冰河連續第 34 年失去質量；每十年平均損失從 1980 年代 214 毫米水當量增加到 2010 年代 896 毫米；1980 到 2018 年累計 21.7 公尺，像從平均冰河頂上削掉 24 公尺厚。NPS 的 Exit Glacier 報告也說，末端後退是一般人最容易看到的冰量變化，卻只是其中一種量法；冰河是立體的，四周都在融，還要量面積、表面高度和冰厚，才算得出總冰量。"
+      },
+      "duplicate_of": null,
+      "reason": "收尾的第三把尺；接收 S55-020 移過來的句子。NSIDC 轉述要在旁白點明。"
+    },
+    {
+      "proposal_id": "F6-038",
+      "final_id": "P55-001",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "同一顆活性碳，為什麼抓得住 PFOA，卻抓不太住短鏈的 PFBA？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "P55-S001 線上重讀 epa.gov Science Matters PFAS 稿（2026-11-11），與 f6src/epapfas.txt 一致",
+      "reopen_result": "三種有效技術、Speth『可以在一段時間內 100% 有效』與六個條件、長鏈 PFOA／PFOS 好、短鏈 PFBS／PFBA 差、PAC 去除有限且有含 PFAS 污泥，照錄。『傳統淨水流程去不掉 PFAS』原文第一段的說法要旁白時再對一次措辭。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "審查指定的第二轉折（哪種處理配哪種污染物）起點。與空閒 D2003（其他成分競爭容量）部分相關，不重疊答案。"
+    },
+    {
+      "proposal_id": "F6-039",
+      "final_id": "P55-002",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "逆滲透能擋下九成以上的 PFAS，那被擋下的去哪了？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "P55-S001 High-pressure Membranes 段（線上重讀一致）；P55-S002 線上重新下載的 2024 指引 PDF（sha256 41524cfc…ac00，與快取相同）pp.30–31 §2.e.iii",
+      "reopen_result": ">90% 含短鏈、約 80%／20%、Speth 認為或許最適合家用定點、濃縮流含高鹽與其他污染物、2,000 萬加侖對 400 萬加侖、無法批次處理，照錄。家用定點只能當 EPA 研究員的看法引述。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "D2009 給 PFAS 實數。"
+    },
+    {
+      "proposal_id": "F6-040",
+      "final_id": "P55-003",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "用來抓 PFAS 的樹脂，用完為什麼乾脆燒掉？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "P55-S001 Ion Exchange 段（『perhaps the most promising is an AER in a single use mode followed by incineration』）；P55-S002 p.31 §2.e.ii",
+      "reopen_result": "容量高但比活性碳貴、一次性加焚化『或許最有希望』、不用再生就沒有再生廢液，對；指引寫的是『樹脂不能像活性碳那樣熱再活化』與『因為幾個因素，市場正轉向一次性樹脂、最後焚化』，沒有把前者說成後者的『原因』；『EPA 認為』應為『EPA 研究介紹寫』。指引還說掩埋可能比焚化便宜、掩埋的樹脂也可能脫附。",
+      "changes_applied": {
+        "answer_target": "陰離子交換樹脂抓 PFAS 的容量高，但通常比活性碳貴。EPA 2018 年的研究介紹寫道，各種樹脂用法裡，或許最有希望的是樹脂一次性使用、用完焚化，好處是不必再生，也就沒有再生廢液要處理。2024 年指引也說，樹脂不能像活性碳那樣用高溫再活化，市場因為幾個因素正轉向一次性樹脂、最後送去焚化；掩埋可能比焚化便宜，但掩埋的樹脂碰到能把 PFAS 換下來的水，PFAS 會脫附。若真要再生，除了鹽還得加酒精溶劑，產生的鹽水 PFAS 濃度很高，有時找不到去處只能暫存，日積月累可能越堆越多。"
+      },
+      "duplicate_of": null,
+      "reason": "修掉因果與主詞，其餘照錄。"
+    },
+    {
+      "proposal_id": "F6-041",
+      "final_id": "P55-004",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "淨水廠拿掉 PFAS 後，留下的濾材和濃水分別送去哪？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "P55-S002 2024 指引 pp.29–31 §2.e Table 2-4 與載量段",
+      "reopen_result": "殘餘物去向表、截至 2023 年 12 月沒有聯邦專門處置規定、活性碳 2%（0.02 g/g）與 10⁻⁵ g/g、選擇性樹脂 10%，照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "全片去向圖的骨架。"
+    },
+    {
+      "proposal_id": "F6-042",
+      "final_id": "P55-005",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "埋進掩埋場的活性碳，PFAS 會不會又跑回水裡？",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "disposition": "candidate",
+      "key_source_reopened": "P55-S002 2024 指引 p.30 §2.e.i（廢碳掩埋脫附）、p.32 §2.f（掩埋場滲出水）、p.2 Landfills 條",
+      "reopen_result": "研究者請複核的『迴圈』：脫附那段（§2.e.i）講的是『掩埋的廢活性碳』；送污水廠那段（§2.f）講的是『所有掩埋場滲出水』，最常見的場外處理是送到污水廠與污水混合處理，而傳統污水處理一般無法處理或控制 PFAS。EPA 沒有追蹤『某批廢碳的 PFAS 進了某座污水廠』。原答案用『掩埋場的滲出水』接在脫附後面，讀起來像同一條被追蹤的路線，必須拆開。p.2 原文是『所有類型的掩埋場』新資料顯示釋放可能比 2020 年認為的多，不是只講危廢掩埋場。",
+      "changes_applied": {
+        "answer_target": "可能。EPA 2024 年指引說，掩埋的活性碳碰到 PFAS 較低的水，或碰到吸附力更強、能把 PFAS 擠下來的物質時，PFAS 會從碳上脫附、進入掩埋場的滲出水，溫度越高越快；滲出水裡會有多少，依條件差很多。指引在另一節談一般掩埋場的滲出水：最常見的場外處理是送到污水處理廠和污水混合處理，但傳統污水處理一般無法處理或控制 PFAS；聯邦也沒有要求監測滲出水裡的 PFAS。指引並說，對所有類型的掩埋場，新資料顯示掩埋釋出的 PFAS 可能比 2020 年認為的多。",
+        "scope": "EPA 2024 暫行指引 §2.e.i、§2.f、執行摘要；脫附與滲出水送污水廠是兩段分開的一般性說明，不可畫成『某批廢碳→某座污水廠』的追蹤迴圈，旁白要用『另一節也說』之類的連接。",
+        "notes": "turn：去向不是終點。兩段原文並列，不是 EPA 對單一場址的追蹤（V9 覆核）。"
+      },
+      "duplicate_of": null,
+      "reason": "保留，但改寫成兩段分開的 EPA 說法，並在範圍寫明不可畫成一條追蹤路線。"
+    },
+    {
+      "proposal_id": "F6-043",
+      "final_id": "P55-006",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "把用過的活性碳送進高溫爐『再生』，上面的 PFAS 去哪了？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "P55-S002 2024 指引 pp.48–49 §3.a.i.2",
+      "reopen_result": "四階段溫度、後燃器 99.99%、以『total hydrocarbon』計而非最難破壞成分、全美約 17 座、其中 4 座有危廢許可，照錄（17 座見同節前文，4 座見 p.48 Four of these）。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "限制：連『破壞』路線的證據都不完整。超時時可先刪溫度細節。"
+    },
+    {
+      "proposal_id": "F6-044",
+      "final_id": "P55-007",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "把揮發性溶劑從地下水吹出來，吹到空氣裡就算處理完了嗎？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "P55-S004 本地 f6src/airstrip.txt（EPA 542-F-12-002，EPA 官方 2021-01-19 快照）",
+      "reopen_result": "氣提把 VOC 趕到空氣、濃度夠低才排放否則先處理、North Indian Bend Wash 三氯乙烯、約 8 平方英里、逾 100 英尺、1994 年起、活性碳與紫外線氧化處理蒸氣、2011 年前逾 4 萬磅、還要 40–70 年，照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "D2004 的具體污染物與去向；是地下水整治場址，不是自來水廠，範圍已寫明。"
+    },
+    {
+      "proposal_id": "F6-045",
+      "final_id": "P55-NA002",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "淨水廠的曝氣塔，什麼時候可以把吹出的氣體直接排掉？",
+      "verdict": "REJECT",
+      "disposition": "not_added（退回，記為未收紀錄）",
+      "key_source_reopened": "P55-S003 本地 f6src/epaover.txt Packed tower aeration 段",
+      "reopen_result": "99% 以上、氯乙烯最易、夠高夠大也能除 1,2-二氯乙烷、不產生液固殘渣、可能要加空污設備，照錄。",
+      "changes_applied": null,
+      "duplicate_of": "D2004 與 P55-007",
+      "reason": "是 D2004 同一頁的重讀，答案與 P55-007 的『吹出去還要處理』相同；G23 刪掉後不影響主線，淘汰以免重複。"
+    },
+    {
+      "proposal_id": "F6-046",
+      "final_id": "P55-008",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "有沒有水處理是真的把污染物『消滅』，而不是搬走？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "P55-S003 epaover.txt Biological treatment、UVAOP 段",
+      "reopen_result": "生物處理硝酸鹽／過氯酸鹽 >90%、是破壞不是移除、不產生含污染物廢流、生物質要清（原文說『不含污染物』但仍需處置）、缺氧與微生物產物；UVAOP 1,4-二噁烷 >99%、MTBE >90%、不產生含污染物廢流；不挑對象、副產物、殘留藥劑後接活性碳，照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "真轉折：打破『只會搬家』。依企劃 drop_if，氧化只在此一句帶過。"
+    },
+    {
+      "proposal_id": "F6-047",
+      "final_id": "P55-NA003",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "同一套離子交換設備，可以處理哪些污染物？代價是什麼？",
+      "verdict": "REJECT",
+      "disposition": "not_added（退回，記為未收紀錄）",
+      "key_source_reopened": "P55-S003 epaover.txt Anion exchange 段",
+      "reopen_result": "可去除的離子清單、氯離子交換、飽和鹽水再生、再生廢液含高溶解固體、廢樹脂可能需危廢許可、pH 下降，照錄。",
+      "changes_applied": null,
+      "duplicate_of": "D2006／D2007、P55-003",
+      "reason": "答案是 D2006／D2007 的同一機制加一張清單，PFAS 版本已由 P55-003 講；G23 刪掉，不另收。"
+    },
+    {
+      "proposal_id": "F6-048",
+      "final_id": "P55-009",
+      "batch": "batches/wave55-physics.json",
+      "reviewer": "V9",
+      "question": "污染物被送去處置，就代表有人會被暴露嗎？",
+      "verdict": "ADOPT",
+      "disposition": "candidate",
+      "key_source_reopened": "P55-S002 2024 指引 pp.1–2 執行摘要",
+      "reopen_result": "優先釋放潛力低的方式、三類（第一類注入井、危廢掩埋場、合適條件的高溫焚化與再活化）、各有限制與資料不足、『釋放』不等於直接立即的人體暴露，照錄。",
+      "changes_applied": null,
+      "duplicate_of": null,
+      "reason": "收尾限制，守住不給購買建議。"
+    }
+  ],
+  "non_author_reviews": [
+    {
+      "target": "G18 電容的容量為什麼會縮水，還會發熱、唱歌？",
+      "reviewer": "V8",
+      "verdict": "ready",
+      "final_core_ids": [
+        "T55-008",
+        "E2259",
+        "E2260",
+        "E2261",
+        "E2271",
+        "T55-001",
+        "T55-002",
+        "T55-003",
+        "T55-005",
+        "E2262",
+        "T55-007",
+        "T55-009"
+      ],
+      "recount_facts": "15.5 條：第一輪 V2 基數 11 條（六核心各約 1.8）扣掉整個 E2038（理想平行板，約 2）＝9；T55-001 1.5、T55-002 0.5（相乘結果）、T55-003 1、T55-005 1.5（含一般老化 1–3% 的對照）、T55-007 1（E2262 已有『傳到板子』）、T55-008 1.5、T55-009 0.5（收尾一句）＝6.5→ 小計 15.5。T55-004、T55-006 不用。研究者的 21.5 條（13.7 分）把全部九個新核心疊在原有六核心上；（15.5×140＋700）÷270＝10.6 分。",
+      "recount_fact_count": 15.5,
+      "recount_minutes": 10.6,
+      "planned_minutes": 10.5,
+      "cuts": "刪 E2038（理想平行板只在開場用半句當對照，不算事實、不另立章）；刪 T55-004（一般老化只留 T55-005 裡的 1–3% 對照）；刪 T55-006（Murata 20 °C 溫升只是 E2261 的一條標準，E2261 改講 ESR 決定阻抗谷底與損耗）；T55-002 併進偏壓章一句；T55-009 只當 40 秒收尾。不可說 Vishay 最好；不可說睡眠模式『最』吵；TI『from ~40dB to ~50dB』不可引用；不做市電或拆機示範。",
+      "chapter_outline": [
+        {
+          "title": "開場：筆電睡著了，為什麼會細細地叫？",
+          "seconds": 50,
+          "core_ids": [
+            "T55-008"
+          ]
+        },
+        {
+          "title": "晶片突然要電時，電容得站在旁邊",
+          "seconds": 75,
+          "core_ids": [
+            "E2259"
+          ]
+        },
+        {
+          "title": "頻率再高也不是一直變好，容量一樣熱卻不同",
+          "seconds": 100,
+          "core_ids": [
+            "E2260",
+            "E2261"
+          ]
+        },
+        {
+          "title": "加上直流電，10 µF 只剩多少",
+          "seconds": 110,
+          "core_ids": [
+            "E2271",
+            "T55-001",
+            "T55-002"
+          ]
+        },
+        {
+          "title": "縮水還把諧振點一起搬走",
+          "seconds": 60,
+          "core_ids": [
+            "T55-003"
+          ]
+        },
+        {
+          "title": "一直加著電壓，越放越少",
+          "seconds": 80,
+          "core_ids": [
+            "T55-005"
+          ]
+        },
+        {
+          "title": "真正出聲的是電路板",
+          "seconds": 115,
+          "core_ids": [
+            "E2262",
+            "T55-007",
+            "T55-008"
+          ]
+        },
+        {
+          "title": "收尾：工程師怎麼讓它安靜",
+          "seconds": 40,
+          "core_ids": [
+            "T55-009"
+          ]
+        }
+      ],
+      "turns": [],
+      "still_missing": "E2259–E2261 的來源 ADI MT-101 本期 analog.com 連不上，仍未逐圖重讀，寫稿前必須重讀（自諧振與 ESR 曲線）；Murata 偏壓曲線數值與嘯叫頻率、dB 只在圖中；T55-001、T55-003、T55-005、T55-008、T55-009 先套用本覆核改字。",
+      "reason": "",
+      "author": "F5",
+      "author_verdict": "ready",
+      "author_est_minutes": 10.5,
+      "author_new_cores": [
+        "T55-001",
+        "T55-002",
+        "T55-003",
+        "T55-004",
+        "T55-005",
+        "T55-006",
+        "T55-007",
+        "T55-008",
+        "T55-009"
+      ],
+      "theme_id": "G18"
+    },
+    {
+      "target": "G34 不拍地下，衛星怎麼知道一個地方少了水？",
+      "reviewer": "V8",
+      "verdict": "ready",
+      "final_core_ids": [
+        "S55-001",
+        "O3061",
+        "O3062",
+        "S55-005",
+        "O3063",
+        "S55-002",
+        "S55-003",
+        "O3081",
+        "S55-004",
+        "O3083"
+      ],
+      "recount_facts": "15.3 條：第一輪基數 10 條（O3061–O3063 同一篇概論已合併計）扣掉 O3084（約 1.7，mascon 時間約束，JPL 頁 404，theme 的 drop_if 也說講不清就刪最後章）＝8.3；S55-001 2、S55-002 1.5（刪季節振幅句）、S55-003 1、S55-004 1.5、S55-005 1（刪 2002–03 源由句）＝7 → 15.3。S55-006、S55-007 不用。（15.3×140＋700）÷270＝10.5 分。研究者的 20.5 條把 S55-006／S55-007 也算進去。",
+      "recount_fact_count": 15.3,
+      "recount_minutes": 10.5,
+      "planned_minutes": 10.5,
+      "cuts": "刪 O3084（產品時間約束，來源頁 404）；刪 S55-007（巴西 AI 細圖，原論文未讀）；S55-006 不用（審議結果須重查，若要一句現況放收尾、不計分鐘）；S55-002 刪季節振幅與 40 天落後句；S55-004 片中省掉 1.95 與誤差預算。印度數字一律標 2002–2008；不可說 GRACE-D 加速度計至今失效；S55-005 的『GRACE-C』在片中改稱『另一顆衛星』，避免和後繼任務 GRACE-C 混淆。",
+      "chapter_outline": [
+        {
+          "title": "開場：六年少了 109 立方公里，誰量的？",
+          "seconds": 55,
+          "core_ids": [
+            "S55-001"
+          ]
+        },
+        {
+          "title": "只量兩顆衛星之間的距離",
+          "seconds": 80,
+          "core_ids": [
+            "O3061"
+          ]
+        },
+        {
+          "title": "太陽推一下也會改軌道，量推力的儀器自己也壞過",
+          "seconds": 95,
+          "core_ids": [
+            "O3062",
+            "S55-005"
+          ]
+        },
+        {
+          "title": "總水量不是地下水明細：一項項扣掉",
+          "seconds": 110,
+          "core_ids": [
+            "O3063",
+            "S55-002"
+          ]
+        },
+        {
+          "title": "衛星帳比官方帳更悲觀，卻看不到哪口井",
+          "seconds": 65,
+          "core_ids": [
+            "S55-003"
+          ]
+        },
+        {
+          "title": "訊號會漏，季節乘 1、趨勢要乘 3.2",
+          "seconds": 105,
+          "core_ids": [
+            "O3081",
+            "S55-004"
+          ]
+        },
+        {
+          "title": "連古冰蓋都還在改變今天的重力",
+          "seconds": 80,
+          "core_ids": [
+            "O3083"
+          ]
+        },
+        {
+          "title": "收尾：哪些是量到的，哪些是模型分出的",
+          "seconds": 40,
+          "core_ids": []
+        }
+      ],
+      "turns": [],
+      "still_missing": "O3061–O3063 的 Earth Observatory 概論與 O3081、O3083 的 JPL 頁本期未重讀（JPL 舊網址 404），寫稿前找新址重讀；Rodell 2009 讀的是耶魯網站上的第三方存放 PDF，引用時標 DOI，完整 Methods 只在 Nature 線上版；S55-003 先套用改字。",
+      "reason": "",
+      "author": "F5",
+      "author_verdict": "ready",
+      "author_est_minutes": 10.5,
+      "author_new_cores": [
+        "S55-001",
+        "S55-002",
+        "S55-003",
+        "S55-004",
+        "S55-005",
+        "S55-006",
+        "S55-007"
+      ],
+      "theme_id": "G34"
+    },
+    {
+      "target": "G25 同樣有乳脂，為什麼牛奶、奶油、冰淇淋差這麼多？",
+      "reviewer": "V8",
+      "verdict": "ready",
+      "final_core_ids": [
+        "H55-001",
+        "P242",
+        "D2039",
+        "D2028",
+        "D2029",
+        "H55-002",
+        "H55-003",
+        "H55-004",
+        "H55-005",
+        "H55-006"
+      ],
+      "recount_facts": "15 條：第一輪 10 條扣掉來源未實讀的 D2040、D2042、D2045（約 3）＝7（P242、D2039、D2028、D2029）；H55-001 1.5（一串法定比例，沒有轉折，不算 2）、H55-002 1.5、H55-003 1（與 D2041 同答案，取代它）、H55-004 1.5、H55-005 1、H55-006 1.5＝8 → 15。（15×140＋700）÷270＝10.4 分，在企劃 9–12 分內；排 10 分，不硬湊到 10.4 以上。研究者算 16 條是 H55-001、H55-003 各多算 0.5。",
+      "recount_fact_count": 15.0,
+      "recount_minutes": 10.4,
+      "planned_minutes": 10.0,
+      "cuts": "D2040、D2042、D2045 由 H55-002、H55-004、H55-005 取代，不再引用密西根百科；D2041、D2043 的答案已在 H55-003、H55-004 裡，不另加；D2044 不加。法規數字標『美國標準』；H55-006 樣品只有 5% 脂肪；顯微圖只能自製示意；不插乳酪、殺菌或品牌排行。",
+      "chapter_outline": [
+        {
+          "title": "開場：從百分之三到八成，都叫乳脂",
+          "seconds": 50,
+          "core_ids": [
+            "H55-001"
+          ]
+        },
+        {
+          "title": "脂肪還在，為什麼不浮上來",
+          "seconds": 90,
+          "core_ids": [
+            "P242",
+            "D2039"
+          ]
+        },
+        {
+          "title": "換成鮮奶油，攪打後內外位置交換",
+          "seconds": 90,
+          "core_ids": [
+            "D2028"
+          ]
+        },
+        {
+          "title": "一樣是奶油，硬軟還能不同",
+          "seconds": 70,
+          "core_ids": [
+            "D2029"
+          ]
+        },
+        {
+          "title": "冰淇淋一半是空氣，法律用重量管",
+          "seconds": 80,
+          "core_ids": [
+            "H55-002"
+          ]
+        },
+        {
+          "title": "先冰一晚，出機時只有一半的水結冰",
+          "seconds": 100,
+          "core_ids": [
+            "H55-003",
+            "H55-004"
+          ]
+        },
+        {
+          "title": "放回冰箱為什麼會變粗：50 微米與溫度來回",
+          "seconds": 80,
+          "core_ids": [
+            "H55-005",
+            "H55-006"
+          ]
+        },
+        {
+          "title": "收尾：同樣的脂肪，排法決定口感",
+          "seconds": 40,
+          "core_ids": []
+        }
+      ],
+      "turns": [],
+      "still_missing": "密西根化工百科與 Guelph 冰淇淋章仍 403（已不依賴）；Warren 論文的數值多轉引 Goff & Hartel《Ice Cream》，有條件時以原書核對；H55-S006 的 url 應改成 UCL 直接 PDF 連結；P242、D2039、D2028、D2029 沿用前輪來源，寫稿前逐主張重讀；台灣 CNS 乳脂標準未查（要講台灣標示需另補）；H55-004、H55-005 先套用改字。",
+      "reason": "",
+      "author": "F5",
+      "author_verdict": "ready",
+      "author_est_minutes": 10.9,
+      "author_new_cores": [
+        "H55-001",
+        "H55-002",
+        "H55-003",
+        "H55-004",
+        "H55-005",
+        "H55-006"
+      ],
+      "theme_id": "G25"
+    },
+    {
+      "target": "G03 地底明明有水，為什麼不能一直抽？",
+      "reviewer": "V8",
+      "verdict": "ready",
+      "final_core_ids": [
+        "S55-009",
+        "N076",
+        "N077",
+        "N078",
+        "S55-013",
+        "N087",
+        "S55-014",
+        "S55-016",
+        "N095",
+        "S55-015",
+        "S55-008",
+        "N086",
+        "S55-010",
+        "S55-011",
+        "N088"
+      ],
+      "recount_facts": "19.5 條：第一輪基數 9 條（七核心）；S55-008 1.5（刪 1960 年每年 10 英尺）、S55-009 1.5、S55-010 1.5、S55-011 2、S55-013 0.5、S55-014 1.5、S55-015 1、S55-016 1＝10.5 → 19.5。S55-012 不用。（19.5×140＋700）÷270＝12.7 分；研究者的 21 條、13.5 分超過 13 分上限，本覆核排 12.5 分（企劃 12–15 分、上限 13 分之內）。",
+      "recount_fact_count": 19.5,
+      "recount_minutes": 12.7,
+      "planned_minutes": 12.5,
+      "cuts": "為壓到 13 分以內：刪 S55-012（全國下陷統計是清單、沒有轉折，−1）；S55-008 刪『1960 年每年降 10 英尺』（−0.5）；N076／N077 合成一章 80 秒；S55-013 與 N087 合寫；N088 縮成 45 秒。英制換公制；聖華金谷資料標『到 1990 年代』；不可把聖華金谷數值套到雲彰；Ipswich 耗減只說『模型計算』。若之後還要再短，下一個刪 S55-015（−1，約 12.2 分）。",
+      "chapter_outline": [
+        {
+          "title": "開場：一根電線桿上的三塊高度牌",
+          "seconds": 55,
+          "core_ids": [
+            "S55-009"
+          ]
+        },
+        {
+          "title": "先拆掉地下大水庫的想像",
+          "seconds": 80,
+          "core_ids": [
+            "N076",
+            "N077"
+          ]
+        },
+        {
+          "title": "一口井牽動隔壁井",
+          "seconds": 70,
+          "core_ids": [
+            "N078"
+          ]
+        },
+        {
+          "title": "抽的水最後從哪來：不超過補注也不安全",
+          "seconds": 130,
+          "core_ids": [
+            "S55-013",
+            "N087",
+            "S55-014"
+          ]
+        },
+        {
+          "title": "井停了，河還在變少",
+          "seconds": 115,
+          "core_ids": [
+            "S55-016",
+            "N095",
+            "S55-015"
+          ]
+        },
+        {
+          "title": "聖華金谷：黏土、抽水量與水位",
+          "seconds": 100,
+          "core_ids": [
+            "S55-008",
+            "N086"
+          ]
+        },
+        {
+          "title": "水位回來了，地面回不去",
+          "seconds": 115,
+          "core_ids": [
+            "S55-010",
+            "S55-011"
+          ]
+        },
+        {
+          "title": "海邊的井為什麼變鹹",
+          "seconds": 45,
+          "core_ids": [
+            "N088"
+          ]
+        },
+        {
+          "title": "收尾：地下水是帳戶，不是水庫",
+          "seconds": 40,
+          "core_ids": []
+        }
+      ],
+      "turns": [],
+      "still_missing": "N076–N078、N086–N088、N095 的三個 USGS Water Science School 頁面 www.usgs.gov 本期 403，仍只有題級閱讀，寫稿前重讀或改引 Circular 1182／1376 對應段；雲彰地層下陷監測資料未查（要本地案例需另補，不可與聖華金谷混用）；聖華金谷 1990 年代後現況未查；S55-016 先套用改字。",
+      "reason": "",
+      "author": "F5",
+      "author_verdict": "ready",
+      "author_est_minutes": 13.5,
+      "author_new_cores": [
+        "S55-008",
+        "S55-009",
+        "S55-010",
+        "S55-011",
+        "S55-012",
+        "S55-013",
+        "S55-014",
+        "S55-015",
+        "S55-016"
+      ],
+      "theme_id": "G03"
+    },
+    {
+      "target": "G02 一個字，電腦怎麼算出好幾個？",
+      "reviewer": "V9",
+      "verdict": "ready",
+      "final_core_ids": [
+        "L311",
+        "T55-010",
+        "T55-011",
+        "T55-012",
+        "T55-013",
+        "T55-014",
+        "T55-015",
+        "T55-016",
+        "T55-017",
+        "T55-019",
+        "T55-020"
+      ],
+      "recount_facts": "13.5 條：L311 併入 T55-011 不另計；T55-010 1.5、T55-011 1.5、T55-012 1.5（L313 同機制只算 8½ 與 W3C 建議）、T55-013 1.5、T55-014 1.5（punycode 轉換屬 U4011，只算 Chrome 規則）、T55-015 1.5、T55-016 1、T55-017 1（刪土耳其後）、T55-019 1、T55-020 1.5。研究者的 20.5 條把被刪的 T55-018／T55-021–015 與土耳其、ß 例子都算進去了。",
+      "recount_fact_count": 13.5,
+      "recount_minutes": 9.6,
+      "planned_minutes": 9.5,
+      "cuts": "依第一輪要求刪容量章 L243、L244、L319；刪 L317、L318 與 T55-021（刪除鍵回答的是『一個字是什麼單位』，不是改題後的『兩個字算不算相同』）。為守企劃 8–10 分鐘上限再刪 T55-018（與空閒 U4004 同源）、T55-022、T55-023（留池）；T55-NA006 淘汰。L313、L314、L315 已被 T55-011／T55-012 吸收，不掛入。土耳其 I、ß、ﬁ、拉丁 B／希臘 Beta 一律不用（G47、G48）。",
+      "chapter_outline": [
+        {
+          "title": "開場：同一個 Ǻ，電腦裡至少有五種存法",
+          "seconds": 50,
+          "core_ids": [
+            "T55-010"
+          ]
+        },
+        {
+          "title": "先整理再比：五種變三種",
+          "seconds": 100,
+          "core_ids": [
+            "L311",
+            "T55-011",
+            "T55-010"
+          ]
+        },
+        {
+          "title": "整理過頭：8½ 變成 81/2",
+          "seconds": 70,
+          "core_ids": [
+            "T55-012"
+          ]
+        },
+        {
+          "title": "長得一樣，也不算同一個字",
+          "seconds": 110,
+          "core_ids": [
+            "T55-013",
+            "T55-014"
+          ]
+        },
+        {
+          "title": "同一個字，程式碼和搜尋框用兩把尺",
+          "seconds": 120,
+          "core_ids": [
+            "T55-016",
+            "T55-015",
+            "T55-017"
+          ]
+        },
+        {
+          "title": "兩套檔案系統，對同一個檔名意見不同",
+          "seconds": 80,
+          "core_ids": [
+            "T55-019",
+            "T55-020"
+          ]
+        },
+        {
+          "title": "收尾：『相同』是誰決定的",
+          "seconds": 40,
+          "core_ids": []
+        }
+      ],
+      "turns": [
+        "正規化把五種存法併成三種，但相容正規化會把 8½ 變 81/2——整理過頭就改了意思（T55-010→T55-012）",
+        "長得一模一樣的 P／Р 永遠不相等，要另一套易混淆偵測，代價出在網址列（T55-013、T55-014）",
+        "同一個字在識別字要嚴格、在搜尋框要寬鬆，寬鬆的方向還依語言而變（T55-015–T55-017）",
+        "HFS+ 存拆開形、其他系統存組合形，APFS 改成比對時不分——『相同』是設計選擇（T55-019、T55-020）"
+      ],
+      "still_missing": "企劃原要的瀏覽器／編輯器刪除鍵版本化實測已隨刪除鍵章一起拿掉；搜尋與網址列只能引 W3C 建議與 Chromium 文件，畫面示範標『示意』、不指名其他瀏覽器。W3C String Searching 已註明不再積極開發、String Matching 是工作草案，寫稿前確認版本。T55-010、T55-014、T55-017、T55-019 要先套用本覆核改字。",
+      "reason": "第一輪擋下它的是一半容量、一半等價、九個一行定義。改題後只問一件事：電腦怎麼判定兩個字相同，四個轉折一路推翻『相同就是一樣的位元』。重數 13.5 條、9.6 分，在企劃 8–10 分內，不靠 G48。",
+      "author": "F6",
+      "author_verdict": "ready",
+      "author_est_minutes": 10.5,
+      "author_new_cores": [
+        "T55-010",
+        "T55-011",
+        "T55-012",
+        "T55-013",
+        "T55-014",
+        "T55-015",
+        "T55-016",
+        "T55-017",
+        "T55-018",
+        "T55-019",
+        "T55-020",
+        "T55-021",
+        "T55-022",
+        "T55-NA006",
+        "T55-023"
+      ],
+      "theme_id": "G02",
+      "new_title": "看起來一模一樣的兩個字，電腦憑什麼說不一樣？",
+      "core_question": "電腦判定兩個字『相同』時，用的是哪一把尺？"
+    },
+    {
+      "target": "G07 太空照片，怎麼一路寄回地球？",
+      "reviewer": "V9",
+      "verdict": "ready",
+      "final_core_ids": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R010",
+        "T55-024",
+        "T55-025",
+        "T55-026",
+        "T55-027",
+        "T55-028",
+        "T55-029",
+        "T55-030",
+        "T55-031",
+        "T55-032",
+        "T55-033"
+      ],
+      "recount_facts": "14.5 條：舊核心 R001／R002／R003／R004／R010 全被新核心實例化，只在各自章內當機制句，不另計；T55-024 2、T55-025 1.5、T55-026 1、T55-027 1、T55-028 1、T55-029 2、T55-030 2、T55-031 1.5、T55-032 1.5、T55-033 1。研究者另算的舊核心 3 條與 R002／R010 重疊，不採。",
+      "recount_fact_count": 14.5,
+      "recount_minutes": 10.1,
+      "planned_minutes": 10.0,
+      "cuts": "刪 R008『寄回來的不只照片』章與 T55-NA008；T55-NA007（Goldstone 33 小時）是 T55-029 的另一個例子，刪。全片必須說明 DSOC 是技術展示、Psyche 自己的資料走無線電；不可說 DTN 已用於所有任務或火星中繼用 DTN。",
+      "chapter_outline": [
+        {
+          "title": "開場：一段貓影片，從深空傳回要 101 秒",
+          "seconds": 50,
+          "core_ids": [
+            "T55-024"
+          ]
+        },
+        {
+          "title": "快的是每秒資料量，不是光速",
+          "seconds": 100,
+          "core_ids": [
+            "R002",
+            "T55-024",
+            "T55-025"
+          ]
+        },
+        {
+          "title": "細細一束光，要對準又怕雲",
+          "seconds": 110,
+          "core_ids": [
+            "R004",
+            "T55-026",
+            "R003",
+            "T55-027"
+          ]
+        },
+        {
+          "title": "地球在轉：三個站輪流接手",
+          "seconds": 70,
+          "core_ids": [
+            "R001",
+            "T55-028"
+          ]
+        },
+        {
+          "title": "看得到，不代表排得到",
+          "seconds": 90,
+          "core_ids": [
+            "T55-029"
+          ]
+        },
+        {
+          "title": "火星照片先寄到半路",
+          "seconds": 100,
+          "core_ids": [
+            "T55-030",
+            "T55-031"
+          ]
+        },
+        {
+          "title": "下一段不通，資料先住哪",
+          "seconds": 45,
+          "core_ids": [
+            "R010",
+            "T55-032"
+          ]
+        },
+        {
+          "title": "收尾：多一站，就多一個可能卡住的地方",
+          "seconds": 35,
+          "core_ids": [
+            "T55-033"
+          ]
+        }
+      ],
+      "turns": [
+        "雷射快的是每秒資料量：貓影片仍要 101 秒，地面那段網路還比深空慢；飛遠七倍，速率從 267 掉到 25 Mbps（T55-024、T55-025）",
+        "天線看得到不代表排得到：深空網路需求有時超出容量約 40%，Perseverance 至少 7 次收不到決定下一步的資料（T55-029）",
+        "火星車的資料超過 99% 不是直接寄回，而是先交給軌道器，有的立即轉、有的先存再送（T55-030、T55-031）"
+      ],
+      "still_missing": "同一任務從火星表面到地球的實際總延遲（含排程等待）仍無官方數字，旁白不可自行相加；jpl.nasa.gov 原稿 403，改讀 nasa.gov 轉載同文（本覆核線上重讀一致）；T55-025、T55-031 要先套用改字；T55-033 必須說明是論文舉的假設情境。",
+      "reason": "第一輪說缺『一個任務的實際數字』與第一章跟主題關係弱：現在 DSOC 給了速率、距離與天氣的實數，監察長報告給了排程超額，火星中繼網路與 SpaceOps 論文給了 99% 與先存再送。刪 R008 章與兩個重複例子後 14.5 條、10.1 分，在 9–11 分內。",
+      "author": "F6",
+      "author_verdict": "ready",
+      "author_est_minutes": 10.8,
+      "author_new_cores": [
+        "T55-024",
+        "T55-025",
+        "T55-026",
+        "T55-027",
+        "T55-028",
+        "T55-029",
+        "T55-NA007",
+        "T55-030",
+        "T55-031",
+        "T55-032",
+        "T55-033",
+        "T55-NA008"
+      ],
+      "theme_id": "G07",
+      "core_question": "距離很遠、地球在轉、連線還會斷，資料要怎麼送達？"
+    },
+    {
+      "target": "G10 冰河往下流，為什麼又說它在後退？",
+      "reviewer": "V9",
+      "verdict": "ready",
+      "final_core_ids": [
+        "N214",
+        "N215",
+        "S55-017",
+        "S55-018",
+        "S55-019",
+        "S55-020",
+        "S55-021",
+        "S55-022",
+        "S55-024"
+      ],
+      "recount_facts": "12 條：N214、N215 被 S55-021、S55-022 實例化，不另計；S55-017 2、S55-018 1.5、S55-019 2.5（含併入的 1987–88 實測）、S55-020 2、S55-021 1.5、S55-022 1、S55-024 1.5（NPS 其他量法那句已計在此，從 S55-020 移出）。研究者的 16 條含被刪的 N213、N216、S55-NA006、S55-NA007、S55-023。",
+      "recount_fact_count": 12.0,
+      "recount_minutes": 8.8,
+      "planned_minutes": 8.8,
+      "cuts": "企劃範圍是 8–9 分鐘，不照研究者建議放寬到 9–10：刪 N213 成冰（drop_if：不改變移動與邊界判斷就刪）、N216 冰隙章與 S55-023（裂縫回答另一題）、S55-NA007（別的冰河，drop_if 禁混剪）；S55-NA006 併進 S55-019。『約 30 公分/日』（部落格、未說量測點）與『夏季每天退 25.6 公分』（報告、末端）量的是不同東西，旁白並列但絕不相減成淨速度。E7006 錯掛來源的清理照 S55-NA005 交整合者，E7006 不入本片。",
+      "chapter_outline": [
+        {
+          "title": "開場：同一條冰河，冰往下走、末端往上退",
+          "seconds": 50,
+          "core_ids": [
+            "S55-018"
+          ]
+        },
+        {
+          "title": "兩百年的帳：末端位置怎麼量出來",
+          "seconds": 80,
+          "core_ids": [
+            "S55-017"
+          ]
+        },
+        {
+          "title": "固體冰怎麼往下走",
+          "seconds": 70,
+          "core_ids": [
+            "N214",
+            "S55-021"
+          ]
+        },
+        {
+          "title": "後退不是倒車：上面加、下面減",
+          "seconds": 65,
+          "core_ids": [
+            "N215",
+            "S55-022"
+          ]
+        },
+        {
+          "title": "它以前會在冬天往前",
+          "seconds": 95,
+          "core_ids": [
+            "S55-019"
+          ]
+        },
+        {
+          "title": "同一年，前進 6 公尺還是後退 4 公尺",
+          "seconds": 80,
+          "core_ids": [
+            "S55-020"
+          ]
+        },
+        {
+          "title": "只看末端，夠不夠",
+          "seconds": 50,
+          "core_ids": [
+            "S55-024"
+          ]
+        },
+        {
+          "title": "收尾：兩把尺放回同一條冰河",
+          "seconds": 38,
+          "core_ids": []
+        }
+      ],
+      "turns": [
+        "同一條 Exit Glacier：冰平均每天往下約 30 公分，末端十年退 270 公尺（S55-018）",
+        "它以前真的在冬天往前（1987–88 年冬天實測 15–18 公尺），流動一直在，只是現在被融化蓋過（S55-019）",
+        "2005–06 年中線法算前進 6 公尺、框法算後退 4 公尺：『後退』要先說怎麼量（S55-020）",
+        "末端只是看得到的那一點，冰河健不健康要看質量平衡（S55-024）"
+      ],
+      "still_missing": "冰流速仍只有 NPS 部落格的『平均約 30 公分/日』，沒有量測報告或量測點；S55-S011 的本地快取存成另一篇部落格（〈Chasing a Retreating Glacier〉），sha256 對應錯檔，整合時要重存〈Visualizing Glacial Processes…〉；NPS 報告已找到官方 IRMA 原檔（irma.nps.gov/DataStore/DownloadFile/562710，參考 2237007），與 npshistory.com 鏡像位元組相同，來源 URL 應改記官方檔；照片與地圖授權另查；WGMS 數字是 NSIDC 轉述。",
+      "reason": "第一輪缺的是同一冰河的時序與末端紀錄：NPS 兩百年報告正好是同一條冰河的末端帳，還附季節速率、冬季前進的實測與兩種量法的對照。全片只用 Exit Glacier，重數 12 條、8.8 分，剛好在企劃 8–9 分內；不必放寬企劃長度，也不必回頭加成冰或冰隙。",
+      "author": "F6",
+      "author_verdict": "ready",
+      "author_est_minutes": 9.8,
+      "author_new_cores": [
+        "S55-017",
+        "S55-018",
+        "S55-019",
+        "S55-020",
+        "S55-NA006",
+        "S55-021",
+        "S55-022",
+        "S55-NA007",
+        "S55-023",
+        "S55-024"
+      ],
+      "theme_id": "G10",
+      "core_question": "冰在移動的方向，為什麼和冰河末端的位置變化不一定相同？"
+    },
+    {
+      "target": "G23 水變乾淨了，污染物去哪裡？",
+      "reviewer": "V9",
+      "verdict": "ready",
+      "final_core_ids": [
+        "D2001",
+        "D2002",
+        "D2004",
+        "D2007",
+        "D2009",
+        "P55-001",
+        "P55-002",
+        "P55-003",
+        "P55-004",
+        "P55-005",
+        "P55-006",
+        "P55-007",
+        "P55-008",
+        "P55-009"
+      ],
+      "recount_facts": "16.5 條：D2001／D2002 1.5（吸附表面與容量）；D2004、D2007、D2009 被 P55-007、P55-003、P55-002 實例化不另計；P55-001 2、P55-002 1.5、P55-003 1.5、P55-004 2、P55-005 1.5（兩段並列，拆開後仍各一條，但不再算『迴圈』那一條）、P55-006 1.5、P55-007 2、P55-008 2、P55-009 1。",
+      "recount_fact_count": 16.5,
+      "recount_minutes": 11.1,
+      "planned_minutes": 11.0,
+      "cuts": "主線改成追 PFAS；刪 D2006（軟水機去鈣鎂，離開 PFAS 主線）、P55-NA002（D2004 同頁重讀）、P55-NA003（D2006／D2007 同機制）。P55-007 是地下水整治場址、P55-008 是硝酸鹽與 1,4-二噁烷，各自標明是不同原水的對照情境；P55-005 的脫附與滲出水送污水廠必須說成兩段分開的 EPA 說明。不提品牌、不給家用濾水器建議。",
+      "chapter_outline": [
+        {
+          "title": "開場：水變乾淨了，抓下來的 PFAS 去了哪",
+          "seconds": 50,
+          "core_ids": [
+            "P55-004"
+          ]
+        },
+        {
+          "title": "黑色濾材抓得住誰、抓多久",
+          "seconds": 110,
+          "core_ids": [
+            "D2001",
+            "D2002",
+            "P55-001"
+          ]
+        },
+        {
+          "title": "膜的另一邊：兩成進水變濃水",
+          "seconds": 85,
+          "core_ids": [
+            "D2009",
+            "P55-002"
+          ]
+        },
+        {
+          "title": "樹脂用完，乾脆燒掉",
+          "seconds": 75,
+          "core_ids": [
+            "D2007",
+            "P55-003"
+          ]
+        },
+        {
+          "title": "一張去向表：濾材和濃水各送哪",
+          "seconds": 75,
+          "core_ids": [
+            "P55-004"
+          ]
+        },
+        {
+          "title": "埋起來，還可能回到水裡",
+          "seconds": 70,
+          "core_ids": [
+            "P55-005"
+          ]
+        },
+        {
+          "title": "送進高溫爐，就一定被破壞了嗎",
+          "seconds": 55,
+          "core_ids": [
+            "P55-006"
+          ]
+        },
+        {
+          "title": "對照組：吹到空氣裡的溶劑",
+          "seconds": 60,
+          "core_ids": [
+            "D2004",
+            "P55-007"
+          ]
+        },
+        {
+          "title": "真的有『消滅』，但也留下東西",
+          "seconds": 45,
+          "core_ids": [
+            "P55-008"
+          ]
+        },
+        {
+          "title": "收尾：釋放不等於暴露",
+          "seconds": 35,
+          "core_ids": [
+            "P55-009"
+          ]
+        }
+      ],
+      "turns": [
+        "同一種活性碳抓得住長鏈 PFOA、抓不住短鏈 PFBA；逆滲透擋得住短鏈，卻多出兩成濃水——哪種處理配哪種污染物（P55-001、P55-002）",
+        "送去處置也不是終點：掩埋的廢碳會脫附進滲出水，而一般滲出水常送去處理不了 PFAS 的污水廠；連再活化爐的 99.99% 也不是針對 PFAS 算的（P55-005、P55-006）",
+        "生物處理與紫外線氧化真的把硝酸鹽、1,4-二噁烷破壞掉，打破『只會搬家』，但留下生物質與副產物（P55-008）"
+      ],
+      "still_missing": "2024 指引是公開徵詢中的暫行版，寫稿前確認有無定稿或新版（本覆核線上重新下載仍是同一檔，sha256 41524cfc…ac00）；§3.b 掩埋與 §3.c 地下注入的細節未讀；硝酸鹽『層析溢漏』沒有機構來源，不寫；P55-003、P55-005 要先套用改字。",
+      "reason": "第一輪說四章是同一句話換設備重講、缺具體污染物：現在 PFAS 有 EPA 的分鏈去除差異、濃水比例、載量與去向表，另有溶劑與硝酸鹽兩個不同去向的對照，真轉折有三個。刪 D2006、P55-NA002、P55-NA003 後 16.5 條、11.1 分，在 9–12 分內。",
+      "author": "F6",
+      "author_verdict": "ready",
+      "author_est_minutes": 11.0,
+      "author_new_cores": [
+        "P55-001",
+        "P55-002",
+        "P55-003",
+        "P55-004",
+        "P55-005",
+        "P55-006",
+        "P55-007",
+        "P55-NA002",
+        "P55-008",
+        "P55-NA003",
+        "P55-009"
+      ],
+      "theme_id": "G23",
+      "core_question": "水中物質被移走後，是留在濾材、進入空氣，還是進了另一股水？"
+    }
+  ],
+  "reviewer_notes": {
+    "V8": "繞過檢查：F5 沒有任何來源是繞過封鎖取得的。研究者 blocked_sites 列出的 403／挑戰頁（TDK、Guelph、密西根百科、www.usgs.gov 三頁、Nottingham 典藏）在 f5src 裡都只存了錯誤頁，沒有被當來源。唯一需要說明的是 H55-S006：記錄的網址 discovery.ucl.ac.uk/id/eprint/10053478/ 今天對一般請求回 Cloudflare『Just a moment』挑戰（403），但同一站的直接 PDF 連結用一般 curl 就是 200，下載檔與研究者快取 sha256 完全相同，所以是正常取得，只是 url 要改填直接 PDF。pubs.usgs.gov（Circular 1182、1376）是與被擋的 www.usgs.gov 不同的主機，今天一般請求 200。其他 17 個來源網址今天一般 curl 都是 200。Rodell 2009 是耶魯 FORE 網站上的出版版 PDF（第三方存放，非付費牆繞過），引用標 DOI。研究者的分鐘數普遍多算：G18 與 G34 把所有新核心疊上去才得到 13 分以上，G03 的 13.5 分超過 13 分上限。本覆核刪減後：G18 10.5、G34 10.5、G25 10.0、G03 12.5 分。G25 的新核心是取代三個來源未實讀的舊核心，不是疊加；H55-003／H55-004 與 D2041／D2043 同答案，以新核心取代、舊的不可並用。最大的錯：T55-001 的問句『差到快三倍』是研究者自己算錯（實際剩 88% 對 68%）；T55-005 寫進原文沒有的機制推測，又把 100% 偏壓組的回復數字接在 40% 組後面；T55-008 的元件規格是研究者從型號自己解碼的。依 BRIEF 未改 repo、未碰 git。",
+    "V9": "最大的修正：①G02 的研究稿仍用了 G48 的土耳其 I（T55-017、T55-NA006）與 ß（T55-018），已刪；改題後刪除鍵章（L317、L318、T55-021）不屬於『兩個字算不算相同』，一起刪。②T55-010 把 W3C 的『表面意思相同』寫成『看起來都一樣』，且全形組只在 NFC/NFD 下不同。③S55-S011 的本地快取存錯成另一篇 NPS 部落格（sha256 對應錯檔），內容以線上重讀為準。④NPS Exit Glacier 報告有官方 IRMA 原檔，與鏡像位元組相同，來源應改記官方。⑤G10 不放寬企劃長度，刪到 8.8 分；30 公分/日與 25.6 公分/日不得相減。⑥P55-005 拆成兩段分開的 EPA 說法。⑦T55-025 補上 DSOC 是技術展示、Psyche 資料走無線電。研究者請複核的三點：T55-026 用途描述與原文相符；S55-019 的確是園方回憶，另有 1987–88 實測可撐；P55-005 確為並列，已改寫。所有新核心在 pool.json 都沒有同答案的既有核心；部分重疊：T55-011～L311／L314／L315、T55-012～L313、T55-013～U4012（G48，不同答案）、T55-014～U4011、T55-018～U4004、T55-021～L317／L318、P55-001～D2003。沒有任何最終核心屬於 ready 長題或 POOL_SUPPORT。",
+    "V8_method": "每個核心逐句對照快取原文（pdftotext／去標籤 HTML），找出原文沒有的推論、加重語氣或研究者自己的計算；以 pool.json 全部候選（含未選）關鍵字比對重複，並查 themes.json 中 material.verdict 為 ready 的長題與 episode-plan.mjs POOL_SUPPORT（皆無衝突）；cli.mjs search 因索引過期拒跑（不得在 repo 重建索引），改以同一份 pool.json 直接搜尋。分鐘＝（事實數×140＋700）÷270；新核心每個 1–2 條，與舊核心重疊者只算增量。",
+    "V9_method": "逐核心重開 stw5/f6src 本地快取全文（grep 到原句再判）；每題至少一個線上重讀：G02 Chromium idn.md（?format=TEXT）、G07 nasa.gov DSOC 結案稿、G10 NPS 部落格與 NSIDC 頁並向 NPS IRMA 取回報告官方原檔比對 sha256、G23 EPA Science Matters 稿與 2024 指引 PDF（sha256 與快取相同）。去重：pool.json 全池關鍵字比對（含 G47、G48、ready 長題與 episode-plan.mjs POOL_SUPPORT）。分鐘＝（事實數×140＋700）÷270，新核心每個 1–2.5 條、被實例化的舊核心不另計。"
+  },
+  "not_added": [
+    {
+      "proposal_id": "F5-NA001",
+      "final_id": "T55-NA001",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-NA003",
+      "final_id": "T55-NA002",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-NA004",
+      "final_id": "T55-NA003",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-NA005",
+      "final_id": "T55-NA004",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-NA007",
+      "final_id": "T55-NA005",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-014",
+      "final_id": "T55-NA006",
+      "kind": "reviewer_reject"
+    },
+    {
+      "proposal_id": "F6-022",
+      "final_id": "T55-NA007",
+      "kind": "reviewer_reject"
+    },
+    {
+      "proposal_id": "F6-027",
+      "final_id": "T55-NA008",
+      "kind": "reviewer_reject"
+    },
+    {
+      "proposal_id": "F5-NA002",
+      "final_id": "S55-NA001",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F5-NA004",
+      "final_id": "S55-NA002",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F5-NA005",
+      "final_id": "S55-NA003",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-NA002",
+      "final_id": "S55-NA004",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-NA006",
+      "final_id": "S55-NA005",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-032",
+      "final_id": "S55-NA006",
+      "kind": "reviewer_reject"
+    },
+    {
+      "proposal_id": "F6-035",
+      "final_id": "S55-NA007",
+      "kind": "reviewer_reject"
+    },
+    {
+      "proposal_id": "F5-NA003",
+      "final_id": "H55-NA001",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-NA001",
+      "final_id": "P55-NA001",
+      "kind": "author_not_added"
+    },
+    {
+      "proposal_id": "F6-045",
+      "final_id": "P55-NA002",
+      "kind": "reviewer_reject"
+    },
+    {
+      "proposal_id": "F6-047",
+      "final_id": "P55-NA003",
+      "kind": "reviewer_reject"
+    }
+  ],
+  "research_blocked": [
+    "analog.com（MT-101 PDF、技術文章 5527：curl HTTP/2 INTERNAL_ERROR 與 empty reply；WebFetch 503）",
+    "maximintegrated.com 舊網址（HTTP/2 中斷）",
+    "product.tdk.com（FAQ：403）",
+    "books.lib.uoguelph.ca（Guelph 乳品電子書：403；未嘗試其他繞過方式）",
+    "encyclopedia.che.engin.umich.edu（Ice Cream：403）",
+    "www.usgs.gov Water Science School 三頁（403）",
+    "grace.jpl.nasa.gov（monthly-mass-grids-land、jpl_global_mascons 兩頁 404，疑似改版）",
+    "gracefo.jpl.nasa.gov/data/grace-data/（404）",
+    "www.nasa.gov 2009 印度舊專題（404；改讀 Rodell 2009 原論文）",
+    "nottingham-repository.worktribe.com（Soukoulis & Fisk 綜述：403）",
+    "article.murata.com basics-of-capacitors-lesson-3（404）",
+    "jpl.nasa.gov（DSOC 三篇新聞稿：curl 403；改讀 nasa.gov 轉載同文）",
+    "usgs.gov（Benchmark Glacier Project：403）",
+    "nps.gov 舊網址 /kefj/learn/nature/exit-glacier.htm 與 /articles/glacier-monitoring-kefj.htm（404；改讀 glaciermonitoring.htm 與 NRR 報告）",
+    "nasa.gov New Horizons 下傳完成舊稿（404）",
+    "epa.gov／semspub.epa.gov Citizen’s Guide to Air Stripping 原址（404；改讀 EPA 2021-01-19 官方網站快照）",
+    "drinking-water.extension.org（代理 502、DNS 不通；未讀）",
+    "science.nasa.gov Mars 2020 communications 頁（404）"
+  ],
+  "limits": "估時是依事實數的紙上估算，不是試讀；所有核心仍是選題候選，寫稿前要逐主張查核。八組題案（G18、G34、G25、G03、G02、G07、G10、G23）都只是素材與章節預算；餘裕最小的是 G10（約 8.8 分排 8.8 分，再刪一章就低於 8.5 分）與 G34（約 10.5 分排 10.5 分）。廠商數字（G18）是各廠自家量測，PFAS 的 2024 指引（G23）是暫行版，Exit Glacier 冰流速（G10）只有園方部落格的平均值，片中都要標明；本輪沒有改企劃（episode-plan.mjs）。"
+}

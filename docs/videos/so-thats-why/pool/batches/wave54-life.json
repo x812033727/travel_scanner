@@ -1,0 +1,227 @@
+{
+  "batch_id": "wave54-life-20261111",
+  "created_on": "2026-11-11",
+  "scope": "土裡有水、盆栽還會垂頭：替長題 G06 補土壤可用水、澆太多與根腐、氣孔取捨與膨壓量級；四來源，其中 OpenStax Biology 2e §30.5 是池中 SRC-bd79fda488172729 同一頁的本輪重讀，併入同一來源 id。",
+  "sources": [
+    {
+      "id": "L54-S001",
+      "url": "https://soilhealthlab.cals.cornell.edu/files/2021/11/05_AWC.pdf",
+      "canonical_url": "https://soilhealthlab.cals.cornell.edu/files/2021/11/05_AWC.pdf",
+      "title": "Available Water Capacity（Soil Health Manual Series Fact Sheet 16-05）",
+      "publisher": "Cornell University Soil Health Laboratory（van Es、Schindelbeck 等）",
+      "version": "2017-01",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 PDF，pdftotext 全文",
+      "reading_scope": "全文兩頁（定義、與土壤功能、Fig.1、管理、量測流程）",
+      "locator": "第1頁定義段與 Fig.1；第2頁 Basic protocol",
+      "summary": "有效水量是土壤能儲存、植物可用的水：上限『田間容水量』是飽和土排掉重力水後；下限『永久凋萎點』時土裡只剩植物用不到的水（吸濕水）。實驗室把土放在陶瓷板上加壓，抽到 10 kPa 與 1500 kPa 時各秤一次、烘乾再秤，差值即有效水。砂土大孔多、存水少；黏土保水強，但濕時供氣給根的能力受限。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "大田作物土壤導向；盆栽介質未直接涵蓋；其他機構田間容水量用 33 kPa（本文用 10 kPa），不可說是唯一標準。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/cornell_awc.pdf",
+        "sha256_prefix": "130bc093a044ce0b",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L54-S002",
+      "url": "https://yardandgarden.extension.iastate.edu/faq/why-my-houseplant-wilting",
+      "canonical_url": "https://yardandgarden.extension.iastate.edu/faq/why-my-houseplant-wilting",
+      "title": "Why is my houseplant wilting?",
+      "publisher": "Iowa State University Extension and Outreach（Yard and Garden FAQ；Aaron Steil）",
+      "version": "最後更新 2024-03-19",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤後全文閱讀",
+      "reading_scope": "全文",
+      "locator": "Answer、Under Watering、Over Watering 三段",
+      "summary": "萎蔫是根無法供給葉與莖足夠水分；兩個完全相反的原因都會造成：太乾時根拿不到水；太濕、尤其長時間太濕時根開始腐爛死亡，根少了、葉莖拿不到水同樣萎蔫。舊土分解壓實後保水更多，易導致腐爛；建議土表下一兩吋乾了再澆、盆要有排水孔、托盤不積水。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "推廣單位常見問答，未附量測。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/isu_why-my-houseplant-wilting.html",
+        "sha256_prefix": "a0ed2f77f87c6964",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L54-S003",
+      "url": "https://yardandgarden.extension.iastate.edu/article/2014/02-14/rootrot.html",
+      "canonical_url": "https://yardandgarden.extension.iastate.edu/article/2014/02-14/rootrot.html",
+      "title": "Root Rots of Houseplants",
+      "publisher": "Iowa State University Extension and Outreach（Erika Saalau，植物病害診斷室）",
+      "version": "2014-02-14",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤後全文閱讀",
+      "reading_scope": "全文",
+      "locator": "全文第2–5段",
+      "summary": "根腐是診斷室冬季最常見的室內植物病害，多與澆水過多有關；病原含 Pythium、Phytophthora、Rhizoctonia、Fusarium，偏好潮濕排水差的介質，感染受逆境的植株。症狀從下位葉萎蔫開始、可往上直到整株倒伏，常被誤認為缺水，所以加水前要先看根與介質濕度：健康根硬、白、細根多；腐爛根軟爛、褐或紅褐色。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2014 年文章，頁面自註資訊可能非最新。",
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/isu_rootrot.html",
+        "sha256_prefix": "613d511a123ad654",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L54-S004",
+      "url": "https://openstax.org/books/biology-2e/pages/30-5-transport-of-water-and-solutes-in-plants",
+      "canonical_url": "https://openstax.org/books/biology-2e/pages/30-5-transport-of-water-and-solutes-in-plants",
+      "title": "Biology 2e §30.5 Transport of Water and Solutes in Plants",
+      "publisher": "OpenStax（Rice University），CC BY 4.0",
+      "version": "Biology 2e 網頁版",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl GET 200 HTML，去標籤後全文閱讀（本輪重讀；舊來源 SRC-bd79fda488172729 同一頁）",
+      "reading_scope": "Water Potential、Pressure Potential、Transpiration、Control of Transpiration 各段",
+      "locator": "Pressure potential 段（0.6–0.8 MPa、210 psi 與輪胎比較、wilting point Ψp→0）；Transpiration 段（夜間氣孔關閉）；Control of Transpiration 段（保衛細胞）",
+      "summary": "細胞壁撐住的膨壓一般約 0.6–0.8 MPa、充分供水時可達 1.5 MPa，約 210 psi，作為對照汽車輪胎約 30–34 psi；葉片蒸散失水使膨壓在萎蔫點趨近 0。蒸散的調控主要靠氣孔開關：保衛細胞依光的強度與品質、葉片水分狀態與二氧化碳濃度開閉；氣孔開才能讓二氧化碳進來行光合作用，同時水氣也散失，植物得在兩者間取捨；夜間氣孔關閉、蒸散停止。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "教科書通則；與舊核心 L094–L097 同一頁，已由舊核心承載的『膨壓下降與恢復』『含水量≠水勢』『蒸散帶動吸水』不重計。",
+      "access_notes": "與池中 SRC-bd79fda488172729（life-tech-20261101、wave3-life-systems-20261101 兩次節錄閱讀）是同一頁；以同一網址追加本輪全文重讀紀錄，不另立來源。舊核心 L094–L097 已承載的『膨壓下降與恢復』『含水量不等於水勢』『蒸散帶動吸水』不重計，本輪新增的膨壓量級與氣孔取捨由 L54-004、L54-005 承接。",
+      "refreshes_source_id": "SRC-bd79fda488172729",
+      "applies_to_candidate_ids": [
+        "L094",
+        "L095",
+        "L096",
+        "L097"
+      ],
+      "author_cache": {
+        "file": "scratchpad/stw4/f3src/os305.html",
+        "sha256_prefix": "ed1693073e2dba29",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L54-001",
+      "question": "盆土摸起來還有點濕，植物為什麼可能已經一滴都吸不到？",
+      "domain": "植物與土壤",
+      "mechanism_key": "plant.soil_water.field_capacity_permanent_wilting_point",
+      "answer_target": "土壤學把植物能用的水定在兩個點之間：上限『田間容水量』是土濕透後重力水排掉剩下的；下限『永久凋萎點』時，土裡仍有水，但只剩植物拿不到的那部分。康乃爾大學土壤健康實驗室量它的方法，是把浸到飽和的土分成兩份，放進兩個高壓室，一份抽到 10 kPa、一份抽到 1500 kPa，平衡後各自秤重、烘乾再秤，算出兩種壓力下的含水量，相減才是植物可用的水。砂土大孔多、存得少；黏土保水強，但濕的時候給根供氣的能力有限。",
+      "scope": "大田土壤標準方法；盆栽介質未直接量；田間容水量有機構用 33 kPa。",
+      "source_ids": [
+        "L54-S001"
+      ],
+      "source_locator": "S001 第1頁定義段與 Fig.1；第2頁 Basic protocol",
+      "premise_status": "screened",
+      "notes": "目標 G06 第二章『有水不等於吸得到』的土壤學來源（審查列缺）；原角色 chapter_core。 原提案 F3-016。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照覆核意見改字後收；只修正量法程序。是 G06『有水不等於吸得到』章缺的土壤學來源；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "土裡的水分兩種：能喝的與看得到喝不到的；到凋萎點時土並不乾。",
+        "visual": "兩根土柱（砂、黏）分三色：排走的水、可用水、拿不到的水；壓力表指到 1500 kPa。",
+        "seconds": [
+          60,
+          75
+        ]
+      }
+    },
+    {
+      "id": "L54-002",
+      "question": "盆栽垂頭，太乾和太濕怎麼會是同一個樣子？",
+      "domain": "植物與土壤",
+      "mechanism_key": "plant.wilting.under_vs_over_watering_same_symptom",
+      "answer_target": "愛荷華州立大學推廣處說，萎蔫就是根供不上葉和莖需要的水，偏偏兩個完全相反的原因都會造成：土太乾時根拿不到水；土太濕、尤其長時間太濕時，根開始腐爛死亡，根變少了，葉莖一樣拿不到水而垂下。舊土分解壓實後保水更多，也會助長腐爛。",
+      "scope": "推廣常見問答，無量測；不給特定物種澆水頻率。",
+      "source_ids": [
+        "L54-S002"
+      ],
+      "source_locator": "S002 Answer、Over Watering 段",
+      "premise_status": "screened",
+      "notes": "目標 G06 新轉折章『澆太多也會垂頭』（審查列缺）；原角色 turn；與 L54-003 合用時本核心算 1 條。 原提案 F3-017。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照原稿收；照原文。與 L54-003 重疊（澆太多→根腐→萎蔫），兩個合計 2 條，不各自滿算。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個垂頭，背後可能是兩個相反的問題——再澆一次水可能正好做錯。",
+        "visual": "同一株垂頭植物分成左右兩半：左邊乾裂土、右邊積水盆底與褐根。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L54-003",
+      "question": "植物病害診斷室冬天最常見的室內植物問題，為什麼常被當成缺水？",
+      "domain": "植物與土壤",
+      "mechanism_key": "plant.root_rot.pathogens_symptom_mistaken_for_drought",
+      "answer_target": "愛荷華州立大學植物病害診斷室說，根腐是他們冬季最常見的室內植物病害，多半與澆水過多有關；致病的是 Pythium、Phytophthora、Rhizoctonia、Fusarium 等喜歡潮濕、排水差介質的真菌或類真菌。症狀從下面的葉子先萎蔫，可能一路往上到整株倒下，常被誤認為缺水，所以加水前要先看根和土的濕度：健康的根硬、白、細根多；爛掉的根軟、呈褐色或紅褐色。",
+      "scope": "2014 年文章；僅室內盆栽情境。",
+      "source_ids": [
+        "L54-S003"
+      ],
+      "source_locator": "S003 第2–5段",
+      "premise_status": "screened",
+      "notes": "目標 G06 澆太多章的病理來源與收尾『外觀不能單獨診斷』的依據；原角色 turn。 原提案 F3-018。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照原稿收；照原文；『冬季』是原文『this time of the year』加上文章談冬季的合理讀法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "垂頭不是答案，是問題；答案在盆子裡的根。",
+        "visual": "把植株拔出盆：一邊白而硬的根、一邊褐而軟的根（插圖，不用真實病例照片）。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L54-004",
+      "question": "植物要怎麼在「吸二氧化碳」和「不讓水跑掉」之間選？",
+      "domain": "植物與土壤",
+      "mechanism_key": "plant.stomata.guard_cell_tradeoff_co2_water",
+      "answer_target": "OpenStax 生物學說，蒸散的調控主要靠葉面氣孔開關：氣孔兩側的保衛細胞會依光的強弱與品質、葉片的水分狀態和二氧化碳濃度開或關。氣孔得打開，二氧化碳和氧才進得來做光合作用與呼吸，可是一打開水氣就散出去，植物只能在兩者之間取捨；到了夜裡氣孔關上，蒸散停止，水靠附著與內聚留在莖葉裡。",
+      "scope": "教科書通則；不談特定物種與植物激素訊號。",
+      "source_ids": [
+        "L54-S004"
+      ],
+      "source_locator": "S004 Transpiration 段末、Control of Transpiration 第1段",
+      "premise_status": "screened",
+      "notes": "目標 G06『植物怎麼留住水』章（審查列缺氣孔控制、L091 葉毛偏題可刪）；原角色 chapter_core。舊核心未承載此段。 原提案 F3-019。依本池欄位記為 segment。非作者覆核 V7（2026-11-11）照原稿收；照原文。與池中 L090（成對保衛細胞控制孔隙，不在 G06）部分重疊，但本核心多了開閉依據、取捨與夜間關閉，算 1.5 條；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "葉子每一刻都在做交易：開門吃飯，就得付水當代價。",
+        "visual": "葉背氣孔特寫：保衛細胞一開一合，二氧化碳進、水氣出。",
+        "seconds": [
+          50,
+          65
+        ]
+      }
+    },
+    {
+      "id": "L54-005",
+      "question": "葉子挺起來靠的水壓，跟汽車輪胎比起來有多大？",
+      "domain": "植物與土壤",
+      "mechanism_key": "plant.turgor.pressure_magnitude_vs_tire",
+      "answer_target": "細胞壁圍住的膨壓一般約 0.6–0.8 百萬帕，充分供水的植物可高達 1.5 百萬帕，約每平方吋 210 磅；作為對照，汽車輪胎通常打 30–34 磅。葉片蒸散失水時，膨壓在萎蔫點趨近於零，靠根吸水才恢復。",
+      "scope": "教科書通則數值；與 L094 同頁但 L094 不含數值。",
+      "source_ids": [
+        "L54-S004"
+      ],
+      "source_locator": "S004 Pressure potential 段",
+      "premise_status": "screened",
+      "notes": "目標 G06 第一章『葉片挺起來靠什麼』的量級；算 1 條。 原提案 F3-020。非作者覆核 V7（2026-11-11）照原稿收；照原文。L094 只有『膨壓下降與恢復』沒有數值，本核心增 1 條量級。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一片軟葉子裡的壓力，比你的輪胎高好幾倍；垂頭就是這股壓力歸零。",
+        "visual": "細胞與輪胎並排的壓力表：210 psi vs 32 psi。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L54-NA001",
+      "question": "C1-13 動物工具題的第二個轉折",
+      "existing_ids": [
+        "R35001",
+        "R35002",
+        "G599"
+      ],
+      "source_ids": [],
+      "reason": "C1-13 唯一的真轉折 R35001（獼猴無意敲出類人石片）與 R35002 已在可成題長題 G599（一件石器、一根骨頭，怎麼證明古人拿它做過什麼）裡；剩下的 R35003–R35009 是各物種實驗並列，沒有轉折。補來源也救不回『同類例子並列』的結構，不再找。 原提案 F4-NA004。",
+      "reentry_condition": "若 G599 改動釋出 R35001，再評。",
+      "reading_status": "未另找來源。"
+    }
+  ]
+}
