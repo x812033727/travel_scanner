@@ -254,7 +254,7 @@
 | --- | --- | --- |
 | 起訴通知 | `a single white letter page, unfolded from three, laid on the glowing light box, seen from a low side angle so only a soft white glow shows through it` | `charge-letter`（第 50 集同一張）；第 51 集。拿在手上念時寫 `a single white letter page, unfolded from three, held so only its back shows`。 |
 | 左手輪廓草圖 | `a sheet of white drawing paper about the size of a magazine with a plain pencil outline of a left hand traced around spread fingers, no writing, taped to the red brick by one strip of masking tape` | 第 51 集起，證物架右邊。描的時候寫 `…, lying on the workbench under her own spread left hand`。 |
-| 刻字筆 | `a slim silver diamond-tip glass engraving pen about as long as her hand, no cord` | 第 51 集；掉下來寫 `…, dropping onto the steel workbench` 在鏡頭中間發生。 |
+| 刻字筆 | `a slim silver diamond-tip glass engraving pen about as long as her hand, no cord` | 第 51 集；掉下來寫 `…, dropping onto the wooden workbench` 在鏡頭中間發生。 |
 | 空白面板 | `a blank clear glass panel about the size of a hardcover book, lying flat on the workbench` | 第 51 集刻之前。 |
 | 刻好的面板 | `a clear glass panel about the size of a hardcover book, carrying a few soft frosted engraved strokes too small and blurred to read` | 刻的時候只拍筆尖與刻痕的一角、焦點在筆尖；插進格子寫 `…, standing in the first slot of the steel rack`（第二片 `the second slot`）。 |
 | 證物架 | `an old steel sample rack bolted to the red brick wall below the tube, a long row of upright slots, each slot about the size of a hardcover book, no labels, two clear engraved glass panels standing in the first two slots on the left, the other slots empty` | `evidence-rack`（第 31–50 集的句子加上兩片面板）；第 51 集 17:00 以後；之前照第 31–50 集 `an old steel sample rack bolted to the red brick wall below the tube, a long row of empty upright slots, each slot about the size of a hardcover book, no labels`。不寫 twelve。最下層邊上那頂帽子另寫 `knit-hat-finished`。 |
@@ -490,4 +490,7 @@
   Sparks 的手機用 Grant 那句（待加 `sparks-phone`）；Gus 躺下後眼鏡摺好勾在汗衫領口。十點的鐘：長針朝上、短針指向左上（原本寫的方向是一兩點）。鐵門由 Elias、Theo 用肩膀頂開。
   六夜蒙太奇：同一構圖三鏡，中間各插一鏡 Elias 戴手套的手（在閥上、坐在鋼凳上拉緊左手手套），中間那格 `the row two-thirds full`；把面板立上木架的是 Sparks 戴手套的手。天亮交接時 Sparks 空手握冷吹管（原本平放在工作台上）。
   **55→56 接點表改**：從大門往裡看，Elias 在畫面右後（閥在爐右）、Gus 在畫面左中（行軍床在左牆），原表左右寫反。
+- **第 51–53 集**（寫稿者定）：第 51 集 Nora 在工作台靠大門那頭、左牆那側刻字；崩潰時退兩步，在空鋼架與帽子下滑坐下去；Peg 上午坐角落長凳、17:00 坐工作台那頭、深夜帆布袋在左肩。刻字筆落在**木**工作台上（道具句已改 wooden）。51→52 接點：面板在畫面右。
+  第 52 集 Peg 在燈箱左牆側、Nora 在右牆側先坐著；抱之前 Nora 繞過工作台靠爐子那頭，收據留在她原本那側；補兩鏡：Peg 聽到 "Mom." 的臉（c41）、帽子插鏡（c34）。
+  第 53 集 c15 補 Nora 迎著 Reyes 的眼神點頭；先封證物袋、再隔著袋子影印；收據在 Reyes 手上時攤平（兩句新句子）；Peg 站起來摔帳本，說完坐回去。`dana-office` 要多畫白天版。
 
