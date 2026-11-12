@@ -77,14 +77,14 @@ scope:
 
 ## Definition of done
 
-- [ ] 第 9–60 集 `script.md` 照八項改完，`storyboard-check.py` 0 ERROR、`parse_script.py` 讀得過。
-- [ ] bible〈要站主決定的〉改成已定，〈道具〉〈場景格局〉接點表跟上；`cast.json` 的 `baoxinling`、書包、`huiyi-1948`、`huaibiao`、`mihang-laozhao`、`shibasui-zhao`、`shenjia-zhengting`、`shenjia-huilang` 跟上。
-- [ ] 已拍的第 1–8 集不改，跟決定不同的地方記成已知瑕疵（在 bible 與 `2026-11-12-tai-nainai-e001-e008-shots-en`）。
+- [x] 第 9–60 集 `script.md` 照八項改完，`storyboard-check.py` 0 ERROR、`parse_script.py` 讀得過。
+- [x] bible〈要站主決定的〉改成已定，〈道具〉〈場景格局〉接點表跟上；`cast.json` 的 `baoxinling`、書包、`huiyi-1948`、`huaibiao`、`mihang-laozhao`、`shibasui-zhao`、`shenjia-zhengting`、`shenjia-huilang` 跟上。
+- [x] 已拍的第 1–8 集不改，跟決定不同的地方記成已知瑕疵（在 bible 與 `2026-11-12-tai-nainai-e001-e008-shots-en`）。
 
 ## Steps
 
-- [ ] 四個代理分段改第 9–24、25–40、41–50、51–60 集；一個代理改 bible 與 `cast.json`。
-- [ ] 檢查、提交、推到 PR #2087。
+- [x] 四個代理分段改第 9–24、25–40、41–50、51–60 集；一個代理改 bible 與 `cast.json`。
+- [x] 檢查、提交、推到 PR #2087。
 
 ## How to verify
 
@@ -95,3 +95,8 @@ python3 -I docs/videos/series-plans/zhong-tian-qu-qi/production/colab/runs/_scri
 ## Notes
 
 - 第 8 集 c12、c28 重拍（約 6 CU）由製作端做，不在這張票。
+- 2026-11-12 做完：四個代理套用八項到第 9–60 集、一個代理改 bible 與 `cast.json`；站主再說「你建議改都改」「品質為主，該修就修」，
+  所以另派五個沒參與改稿的代理逐鏡審正廳樓梯牽動的集（第 10、18、21、23、24、28、29、41–45、49–57 集），約 40 鏡依機位修正左右、背景、前景、視線，台詞不動。
+  審稿抓到主控寫錯的一條：「往南拍時樓梯在畫面右後」——樓梯在西北角，往南拍時在鏡頭背後右側、不入鏡；bible 已更正。
+  第 41 集錢老闆那句改成「連燈帶座三十公分高，裝箱好搬。」（新錄）。60 集 storyboard-check 0 ERROR、parse_script 全讀得過、第 1–8 集 compile --check 都對得上。
+- 製作端還要做：第 8 集重拍 c12 c28（約 6 CU）、第 22 集前童謠試聽、重畫一條辮的照片道具圖與 `prop-shubao-t1` 核對、場景圖同時畫出西北角樓梯與北牆西端院子門。第 9–60 集的 `shots-en.json` 仍要照新稿重產。
