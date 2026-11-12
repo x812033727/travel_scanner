@@ -425,7 +425,7 @@ Bev、Sienna、Fisk 在第 4–10 集清單裡，若還沒畫，Bev 排在 3 之
 
 ## 要站主決定的
 
-1. **第 20 集同一個上午離婚又結婚**（程序上不成立，見〈時間線〉下方第一條）：
+1. **第 20 集同一個上午離婚又結婚**（程序上不成立，見〈時間線〉下方第一條）：**站主 2026-11-12 選 A**。
    **建議 A**（這份照它寫）：保留同一個上午，蒙太奇不拍結婚申請、沒有人提結婚證與三天等待期，只拍對門小法庭法官證婚與兩位證人。畫面與台詞都不宣稱任何程序，懂的人才會想到，這是全劇唯一刻意的破格。
    **B**（完全照法律）：第 99 天判離婚後她走過走廊到發證窗口申請結婚證，Grant 看著；三天後（第 102 天）在小法庭結婚。代價：Elias 的 "My wife says…" 要改成 "My fiancée…" 或搬到第 102 天、第 21 集整集往後三天、必落的台詞與「一條走廊兩扇門」的場面都要重寫。
 2. **細綱沒有、這份補上或改掉的台詞**：第 11 集 "You called my line at seven. Good."、"Outside lab. Three days."、Peg "I'll be downstairs."，Dale 說 "And the imprint's one stroke shallow."；第 12 集 Peg "How'd he know you were here?"、Brandt "The pharmacy logs who signs for every pickup." "You can ask for your own."；
