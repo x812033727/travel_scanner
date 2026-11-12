@@ -194,7 +194,7 @@
   c08 → c16；c09 → c17；c10 → c18、c19；c11 → c20、c21、c22；（新 c23 建邦）；c12 → c24、c25、c26、c27；（新 c28 林主任）；
   c13 → c29、c30、c31；c14 → c32、c33；c15 → c34；c16 → c35；（新 c36 福伯）；c17 → c37；c18 → c38；c19 → c39、c40；（新 c41 月棠）；c20 → c42、c43、c44；
   c21 → c45、c47；c22 → c46；c23 → c48；c24 → c49；c25 → c50；c26 → c51；c27 → c52；c28 → c53；c29 → c54；c30 → c55；c31 → c56。
-- **一場的順序**：全景或主觀交代場地（c01、c07、c19、c20、c26、c29、c46、c53）→ 過肩與反打（c09、c21、c38、c50）→ 插鏡（c02、c22、c30、c32、c39、c54）→ 反應（c05、c13、c15、c23、c28、c36、c41、c42、c43）。
+- **一場的順序**：全景或主觀交代場地（c01、c07、c19、c20、c29、c46、c53）→ 過肩與反打（c09、c21、c38、c50）→ 插鏡（c02、c22、c30、c32、c39、c54）→ 反應（c05、c13、c15、c23、c28、c36、c41、c42、c43）。
   每場至少一鏡低角度或主觀：第一場 c04、c12；第二場 c29、c46；第三場 c55。
 - **一鏡最多兩張臉**：舊 c03（五人開門）拆成 c06 只有手、c07 全景（建邦、福伯在門裡虛焦）；舊 c12 林主任、玉琴、福伯、建邦、月棠五人改成 c24 兩張臉（福伯只有手）、c25、c26 反打、c27、c28；
   舊 c13、c27 六人全景改成 c29 俯拍與 c52 遠景（臉都看不清）；舊 c20 五人反應改成 c41、c42、c43 單人與雙人。
@@ -302,7 +302,7 @@ c01c（建業喘氣）。台詞的字都沒改。這些在 2026-11-12 的重寫�
 
 - 定妝照：`yuetang-18-faint-line-t1`、`jianye-portrait-t1`、`akai-portrait-t1`、`jianbang-portrait-t1`、`jianbang-home-t1`、`fubo-portrait-t1`、`linzhuren-portrait-t1`、
   `yuqin-portrait-t1`、`zhiyuan-shirt-t1`、`xiaoman-home-t1`、`zhouhuaian-portrait-t1`。
-- 場景：`set-shenjia-jiewai-t1`（早上、正午各一）、`set-shenjia-chuantang-t1`（c26 主觀裡的穿堂，從門口往裡看）、`set-shenjia-fanting-t1`（夜）、`set-shengtong-dingceng-t1`（夜，招牌牆不入鏡）。
+- 場景：`set-shenjia-jiewai-t1`（早上、正午各一）、`set-shenjia-chuantang-t1`（c26 從門檻往裡拍的穿堂）、`set-shenjia-fanting-t1`（夜）、`set-shengtong-dingceng-t1`（夜，招牌牆不入鏡）。
 - 道具：`prop-dier-yinyin-t1`、`prop-yinjie-t1`。
 - **還沒有參考圖、只靠文字的道具**：兩個牛皮紙袋（阿凱 6 鏡、林主任 3 鏡）、律師函的白信封、一對銅燭台（同第 58 集）、周懷安桌上的深色絨布、桌燈與無品牌手機。牛皮紙袋建議先畫一張每鏡附上。
 - 沒有參考圖的人：電話那頭的人只有聲音（`guchenglin` 第一季不畫）。盛通頂樓的招牌牆本場不入鏡。
