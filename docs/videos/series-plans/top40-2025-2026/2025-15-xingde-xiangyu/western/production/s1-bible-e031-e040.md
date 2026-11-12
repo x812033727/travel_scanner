@@ -3,8 +3,8 @@
 寫第 31–40 集分鏡（`docs/videos/till-the-verdict-e031/script.md` … `…-e040/script.md`）的共用帳，讓十集可以同時寫。
 劇情照 `../season-01.json` 第 31–40 集（2026-11-10 審稿後的改版），名字、地點與程序照 `../GLOSSARY.md`，外貌、聲音、場景、道具的英文提示詞照 `cast.json`，
 審稿決定照 `../review/2026-11-10-ch4.md`、`../review/2026-11-10-season-01.md`，分鏡的教訓照 `../review/2026-11-12-*.md` 與 `screen-test/README.md`。
-接在第 21–30 集的 bible 後面；**第三章的 bible 還沒寫**，所以第 30→31 集的起點照 `../season-01.json` 第 30–31 集的 state 欄，凡是要看第三章怎麼寫的數字（錢、確切的天數與日期、誰手上有什麼）都標「待章界對齊」，由之後的代理對齊章界時改。
-這份跟細綱、`GLOSSARY.md` 或 `cast.json` 不一樣的地方，以這份為準。`cast.json` 這份**沒有改**（其他章的 bible 同時在寫）；這十集要用的新造型、路人、場景、道具，全部列在最後〈要加進 cast.json 的〉。
+接在第 21–30 集的 bible 後面。**章界已對齊（2026-11-12）**：30→31 照第 21–30 集 bible 的接點表，錢、天數與星期、誰手上有什麼都接第三章的帳；第 33–36、38 集為了避開國慶連假與週六挪了天數（見〈時間線〉）。Remelt 的格局、三號爐、玻璃管、十二格架與 Remelt 裡的道具句，第 41–60 集都照這份。
+這份跟細綱、`GLOSSARY.md` 或 `cast.json` 不一樣的地方，以這份為準。這十集要用的新造型、路人、場景、道具**已加進 `cast.json`（2026-11-12 對齊）**，id 見最後一節；站主要決定的事彙整在 `s1-decisions-e021-e060.md`。
 
 ## 全劇固定
 
@@ -21,9 +21,9 @@
   - 火只寫爐口的橘光與門縫的光，不寫火舌朝人竄；第 36 集回火是「爐口噴出一口橘色的火、一秒就收」，那時所有人已經在大門口。煙寫 `thin grey-black smoke drifting under the high roof`，沒有人咳到彎腰。
   - 玻璃不砸（全季規則：只有贗品才在手套、護目鏡、鋼桶裡砸）。Sparks 的歪杯子回爐是用鋼桶倒上長柄加料鏟、推進爐口，不是摔。
   - Sparks 騎機車進廠一定戴安全帽，停好才摘。
-- **疤**：Elias 左手背的疤到第 60 集前不出現。這十集 Elias 只穿基本款西裝（不穿 `furnace`，見〈要加進 cast.json 的〉），左手一律在褲子左口袋或畫框外；簽字、遞東西、拿手機一律右手。
+- **疤**：Elias 左手背的疤到第 60 集前不出現。這十集 Elias 只穿基本款西裝（不穿 `furnace`；那個造型第 55 集起才用，句子已拿掉手套與疤），左手一律在褲子左口袋或畫框外；簽字、遞東西、拿手機一律右手。
   第 34 集回憶裡把十九歲的 Nora 拉回來的那隻手，**只拍右手**（滿是煤灰的右手抓住她皮圍裙的肩帶），左手、臉、那團熱玻璃落在哪裡都不入鏡（m12 第五季才揭）。
-  Gus 的外貌句寫了「兩條前臂與手上滿是舊燙疤」：試鏡證明細的疤會被畫成紅點與傷口，**這十集照〈要站主決定的〉第 5 條的建議寫成風吹日曬的手、不寫疤**，`cast.json` 改好之前每鏡在正文加 `weathered sun-spotted forearms and thick-knuckled hands, no scars, no redness`。
+  Gus 的外貌句寫了「兩條前臂與手上滿是舊燙疤」：試鏡證明細的疤會被畫成紅點與傷口，**這十集照〈要站主決定的〉第 5 條的建議寫成風吹日曬的手、不寫疤**；`cast.json` 的外貌句已照這樣改（2026-11-12 對齊），每鏡不必再補。
 - **可讀的字**（第四章特別多，審稿 ch4〈全章〉）：**生成一律不出字，後製也不上字**，要觀眾知道的一律有人念出來：
   Pell Glassworks 的招牌（"Pell's."）、Claire Quinn Glass 的招牌（"Mom's studio."）、玻璃管上的六個階段（第 36 集 Nora 念一次 "Report. Charges. Investigation. Arraignment. Trial. Sentencing."，之後只念珠子停的那一格 "Report."）、
   十二格架（"One panel per slot."）、Sparks 的粉筆計數（他每次大聲報數）、第 37 集黑板上的 "Remelt"、第 38 集渡輪站的公告、租約、保付支票、修爐估價單、Hank 的收據、Lyle 部落格的圖說（Grant 念）、報名表、麻袋上的字、牆上的鐘（沒有數字，只有刻度）。
@@ -39,34 +39,35 @@
 
 ## 時間線
 
-第 1 天是 3/17（週二），第 99 天是 6/23（週二）。細綱把第 30 集放在第 108 天深夜、第 31 集放在第 109 天清晨；**以下天數與日期全部「待章界對齊」**（第三章的 bible 可能把發表會挪一兩天），但集與集之間的間隔照這張表，對齊時整章平移。
-用季細綱的天數，日期是：第 109 天 = 7/3（週五）、第 110 天 = 7/4（週六）、第 113 天 = 7/7（週二）、第 116 天 = 7/10（週五）、第 117 天 = 7/11（週六）、第 126 天 = 7/20（週一）、第 127 天 = 7/21（週二）。
-日出日落（西雅圖一帶）：7/3 日出約 05:16、日落約 21:10；7/10 日出約 05:22；7/20 日落約 21:00；7/21 日出約 05:34。
+第 1 天是 3/17（週二），第 99 天是 6/23（週二）。第 30 集停在第 108 天（7/2 週四）20:58，第 31 集從第 109 天 05:20 開始（2026-11-12 對齊，照第 21–30 集 bible）。
+**對齊時挪過的天數**：季細綱把第 33 集放在第 110 天，那天是 7/4 國慶（週六），婦產科門診不開；第 38 集的第 117 天是週六，渡輪站的專案辦公室不開。所以 **第 33 集挪到第 112 天（7/6 週一）**、第 34 集隔天、第 35 集第 114 天、第 36 集整集在第 115 天，**第 37 集點爐仍是第 116 天**（第 41–60 集的爐子天數靠它），**第 38 集挪到點爐當天**（第 116 天週五），截止仍是第 127 天。星期只用來排程，畫面與台詞都不說。
+日期：第 109 天 = 7/3（週五，國慶補假）、第 112 天 = 7/6（週一）、第 113 天 = 7/7（週二）、第 114 天 = 7/8（週三）、第 115 天 = 7/9（週四）、第 116 天 = 7/10（週五）、第 126 天 = 7/20（週一）、第 127 天 = 7/21（週二）。
+日出日落（西雅圖一帶）：7/3 日出約 05:16、日落約 21:10；7/6 日落約 21:09；7/10 日出約 05:22；7/20 日落約 21:00；7/21 日出約 05:34。
 
 | 集 | 時間 | 天氣與光 | 主要事件 |
 | --- | --- | --- | --- |
-| 31 | 第 109 天 05:30 → 06:10（現在）；回憶：十二年前夏天下午 | 清晨海霧正在散，太陽很低、從港那邊（東）照過來，Kiln Row 的紅磚與鏽門一面金一面冷藍；廠裡只有門上高窗斜進來的光柱與灰塵；回憶是溫暖偏金的下午 | 黑車停在 Pell's 門前，副駕駛座的門被推開，Nora 下車回頭吼："You stood there!"；她轉身，愣在一扇鏽紅的大鐵門下，抬頭看褪到認不出的招牌："Pell's."；Elias 從駕駛座下車，兩人隔著車頂：她 "He shoved that paper in my face, and you stood there!"，他不看她 "Clause two. You signed it."，她 "I know what I signed!"；他："Dana's filing the forgery report this morning." "With the police. It goes to the prosecutor." "Experts cost money. Lawyers cost money." "You need to work again." "You need a place."；回憶：十九歲的她從同一扇門走出來，一個戴細金屬框眼鏡的年輕男人笑著遞名片："Grant Whitlock. Sales manager."；回到現在："How do you own this place?" "Bought it at a sheriff's sale."；隔壁是一間積灰的小店面，她念："Mom's studio."，抓住生鏽的掛鎖用力搖，放手；Elias 的手機震，他右手接起、走回車邊："I'll wait here."；她推開一扇鐵門，十二年的灰湧出來；深處一座蓋著帆布的大爐子；手電筒的光打在她臉上，一個粗啞的聲音："Who's there?" |
+| 31 | 第 109 天 05:20 → 06:10（現在）；回憶：十二年前夏天下午 | 清晨海霧正在散，太陽很低、從港那邊（東）照過來，Kiln Row 的紅磚與鏽門一面金一面冷藍；廠裡只有門上高窗斜進來的光柱與灰塵；回憶是溫暖偏金的下午 | 黑車停在 Pell's 門前，副駕駛座的門被推開，Nora 下車回頭吼："You stood there!"；她轉身，愣在一扇鏽紅的大鐵門下，抬頭看褪到認不出的招牌："Pell's."；Elias 從駕駛座下車，兩人隔著車頂：她 "He shoved that paper in my face, and you stood there!"，他不看她 "Clause two. You signed it."，她 "I know what I signed!"；他："Dana's filing the forgery report this morning." "With the police. It goes to the prosecutor." "Experts cost money. Lawyers cost money." "You need to work again." "You need a place."；回憶：十九歲的她從同一扇門走出來，一個戴細金屬框眼鏡的年輕男人笑著遞名片："Grant Whitlock. Sales manager."；回到現在："How do you own this place?" "Bought it at a sheriff's sale."；隔壁是一間積灰的小店面，她念："Mom's studio."，抓住生鏽的掛鎖用力搖，放手；Elias 的手機震，他右手接起、走回車邊："I'll wait here."；她推開一扇鐵門，十二年的灰湧出來；深處一座蓋著帆布的大爐子；手電筒的光打在她臉上，一個粗啞的聲音："Who's there?" |
 | 32 | 第 109 天 06:10 → 06:40 | 同第 31 集的廠內：高窗光柱、灰塵、冷；大門開著，門外是金色的清晨 | 光束放低，一個駝背的老人穿汗衫站在爐邊，看了她很久："You're the girl from the courthouse steps."；她："Walter signed everything he made. Nobody listened."，聲音破掉："I was nineteen. They laughed at me."，哭出聲；Gus 本來轉身要走，停住、回頭："I didn't laugh. I was there."；她擦臉："You've been here this whole time?" Gus 聳肩："New owner pays the power. Never met him."，眼睛卻越過她、往門外那輛黑車多停了一拍；他扯下三號爐的帆布，十二年的灰像雪一樣落下，黑色的爐口像一口井；他拍拍冰冷的磚："Nobody's lit her in twelve years."；她把手掌平貼在磚上，閉眼 |
-| 33 | 第 110 天 10:00（診間）→ 10:20（走廊）→ 跳 → 14:00 → 16:40（Pell's） | 診間窗外陰、灰白的天光，桌燈冷白；走廊日光燈；下午 Pell's：右牆高窗的白光加小練習爐的橘光 | 診間（只有人與桌，沒有醫療器材）：Brandt "Your body's still healing." "No heat, no fumes, no heavy lifting." "Six months."；Nora 看著自己的手："So ten more weeks."；候診區一個大肚子的孕婦在織一頂很小的淡黃色帽子；Nora 撐到走廊，背貼牆滑坐下去哭出聲；Brandt 跟出來蹲在她旁邊，一句話都不說；下午 Pell's：一部機車轟進大門，平頭、耳釘、兩條前臂隔熱護套的年輕人摘下安全帽："Grandpa! Who's this?" Gus："Your teacher." Sparks："Huh?"；小練習爐前 Sparks 吹第一個杯子，杯子往一邊塌，「啵」一聲：Gus "Crooked." Sparks "I know it's crooked!"，他在磚牆上畫一筆粉筆："One!"；Nora 站在黃線外面喊轉速與換氣，發現每個動作都記得；懸念：Sparks 握錯吹管，她衝過安全線去扳他的手，他一慌甩太快，一團橘紅的熱玻璃滑下管口、往她腳前掉 |
-| 34 | 第 110 天 16:40 → 跳 → 第 112 天（7/6 週一）17:30 → 18:30 | 第 110 天同上；第 112 天傍晚，太陽在西、廠裡暗下來，高窗是淡金，練習爐熄了，Peg 角落長椅上方的臨街窗是最亮的光 | Gus 從後面揪住她衣領往回一拽，玻璃落在鋼板上「嘶」地冒白煙、從橘變暗紅："Behind the line! You want to lose your feet?"；她喘著，閃回十九歲：一隻滿是煤灰的右手抓住她圍裙的肩帶往後拉（兩秒）；"Somebody pulled me back before." Gus 什麼都不說；跳到第三天傍晚：Peg 坐在角落長椅上記帳、頭也不抬："Twenty cups. Three days." "Sand's thirty-two bucks a bag."；Sparks 在牆上補一筆："Twenty!"；Nora 的手機響，Dana 在法院走廊："Reyes will review it." Nora："Same Reyes who said half a pill wasn't enough?" Dana："Same Reyes. Different evidence."；Nora 看著光禿禿的紅磚牆："Then I need a glass tube."；Theo 來了（她要的市價租約）："Market rate. Eleven thousand a month."，平板轉向她；Peg 從她肩後看一眼，倒抽一口氣，鉛筆掉在水泥地上 |
-| 35 | 第 113 天（7/7 週二）10:00（當鋪）→ 跳 → 14:00 → 14:45（Ashford Construction 頂樓會議室；同時 Grant 的辦公室） | 當鋪暖黃燈，門外港邊晴；會議室整面落地窗外是晴天的港；Grant 的辦公室白、冷、亮 | 第 15 集那間當鋪、同一個玻璃櫃：Nora 把 Grant 給的婚戒放上玻璃，手指不肯鬆開；Peg 的食指把戒指推過去："I pawned mine so you'd keep yours." "Now sell it."；Nora："Sell. Not pawn."；老闆拿放大鏡看："Eleven-eight."；Sparks 瞪大眼："That's a month?"；（保付支票在銀行換，不拍）；會議室：她把保付支票放在長桌上："Clause two. I pay for my own doors."，簽租約："His ring. My furnace."；Elias 站著、右手簽，左手在褲袋裡；插一場 Grant 的辦公室：他手機的白光照在臉上，插一格 Lyle 拍的照片（她走出當鋪），他念圖說："Ex-Mrs. Whitlock cashes out."，練過的笑掉下來；回會議室：她把三號爐的燃燒器估價單放到桌上（她付不起），Elias 把它推回去："Repairs are the landlord's. It's in the lease." "The furnace is mine. The fire's yours."；她套上筆蓋，把紙推回去："Not until my lawyer reads it." |
-| 36 | 第 114 天（7/8 週三）09:00 → 跳 → 14:00 → 18:00 → 跳 → 第 115 天（7/9 週四）23:30 → 23:45 | 早上晴，臨街窗與高窗的白光；下午太陽移到西邊、廠裡暗一半，紅磚牆在工作燈下；第 115 天深夜，只有工作燈與爐口 | Dana 讀修繕條款，食指點兩下："Landlord fixes his own furnace." "That's not fighting for you. Clause two holds."；Nora 簽估價單；（Ashford 的人當天修燃燒器，不拍）；下午她站上梯子把一根長玻璃管釘上左牆，Nora 念六個階段，一顆琥珀色的玻璃珠放進管口，「叮」，停在第一個銅環："Report."；她在管子下面掛一個舊的十二格樣品架："One panel per slot." "Only what holds up in court." Sparks："And when all twelve are full?" "Then he's sentenced."；整個下午，對街一輛珍珠白轎車怠速停著，方向盤上一隻白手套；Nora 在臨街窗前："That's Cole. Grant's driver."；第 115 天深夜試爐：Gus 叫大家到門口（"Everybody at the door."），老燃燒器咳出黑煙、「砰」一聲，火從爐口噴出一口；戴面罩的 Gus 一把關掉瓦斯："It backfired. Line's shot."，廠裡都是煙 |
+| 33 | 第 112 天（7/6 週一）10:00（診間）→ 10:20（走廊）→ 跳 → 14:00 → 16:40（Pell's） | 診間窗外陰、灰白的天光，桌燈冷白；走廊日光燈；下午 Pell's：右牆高窗的白光加小練習爐的橘光 | 診間（只有人與桌，沒有醫療器材）：Brandt "Your body's still healing." "No heat, no fumes, no heavy lifting." "Six months."；Nora 看著自己的手："So ten more weeks."；候診區一個大肚子的孕婦在織一頂很小的淡黃色帽子；Nora 撐到走廊，背貼牆滑坐下去哭出聲；Brandt 跟出來蹲在她旁邊，一句話都不說；下午 Pell's：一部機車轟進大門，平頭、耳釘、兩條前臂隔熱護套的年輕人摘下安全帽："Grandpa! Who's this?" Gus："Your teacher." Sparks："Huh?"；小練習爐前 Sparks 吹第一個杯子，杯子往一邊塌，「啵」一聲：Gus "Crooked." Sparks "I know it's crooked!"，他在磚牆上畫一筆粉筆："One!"；Nora 站在黃線外面喊轉速與換氣，發現每個動作都記得；懸念：Sparks 握錯吹管，她衝過安全線去扳他的手，他一慌甩太快，一團橘紅的熱玻璃滑下管口、往她腳前掉 |
+| 34 | 第 112 天 16:40 → 跳 → 第 113 天（7/7 週二）17:30 → 18:30 | 第 112 天同上；第 113 天傍晚，太陽在西、廠裡暗下來，高窗是淡金，練習爐熄了，Peg 角落長椅上方的臨街窗是最亮的光 | Gus 從後面揪住她衣領往回一拽，玻璃落在鋼板上「嘶」地冒白煙、從橘變暗紅："Behind the line! You want to lose your feet?"；她喘著，閃回十九歲：一隻滿是煤灰的右手抓住她圍裙的肩帶往後拉（兩秒）；"Somebody pulled me back before." Gus 什麼都不說；跳到隔天傍晚：Peg 坐在角落長椅上記帳、頭也不抬："Twenty cups. Two days." "Sand's thirty-two bucks a bag."；Sparks 在牆上補一筆："Twenty!"；Nora 的手機響，Dana 在法院走廊："Reyes will review it." Nora："Same Reyes who said half a pill wasn't enough?" Dana："Same Reyes. Different evidence."；Nora 看著光禿禿的紅磚牆："Then I need a glass tube."；Theo 來了（她要的市價租約）："Market rate. Eleven thousand a month."，平板轉向她；Peg 從她肩後看一眼，倒抽一口氣，鉛筆掉在水泥地上 |
+| 35 | 第 114 天（7/8 週三）10:00（當鋪）→ 跳 → 14:00 → 14:45（Ashford Construction 頂樓會議室；同時 Grant 的辦公室） | 當鋪暖黃燈，門外港邊晴；會議室整面落地窗外是晴天的港；Grant 的辦公室白、冷、亮 | 第 15 集那間當鋪、同一個玻璃櫃：Nora 把 Grant 給的婚戒放上玻璃，手指不肯鬆開；Peg 的食指把戒指推過去："I pawned mine so you'd keep yours." "Now sell it."；Nora："Sell. Not pawn."；老闆拿放大鏡看："Eleven-eight."；Sparks 瞪大眼："That's a month?"；（保付支票在銀行換，不拍）；會議室：她把保付支票放在長桌上："Clause two. I pay for my own doors."，簽租約："His ring. My furnace."；Elias 站著、右手簽，左手在褲袋裡；插一場 Grant 的辦公室：他手機的白光照在臉上，插一格 Lyle 拍的照片（她走出當鋪），他念圖說："Ex-Mrs. Whitlock cashes out."，練過的笑掉下來；回會議室：她把三號爐的燃燒器估價單放到桌上（她付不起），Elias 把它推回去："Repairs are the landlord's. It's in the lease." "The furnace is mine. The fire's yours."；她套上筆蓋，把紙推回去："Not until my lawyer reads it." |
+| 36 | 第 115 天（7/9 週四）09:00 → 跳 → 14:00 → 18:00 → 跳 → 23:30 → 23:45 | 早上晴，臨街窗與高窗的白光；下午太陽移到西邊、廠裡暗一半，紅磚牆在工作燈下；深夜只有工作燈與爐口 | Dana 讀修繕條款，食指點兩下："Landlord fixes his own furnace." "That's not fighting for you. Clause two holds."；Nora 簽估價單；（Ashford 的人當天修燃燒器，不拍）；下午她站上梯子把一根長玻璃管釘上左牆，Nora 念六個階段，一顆琥珀色的玻璃珠放進管口，「叮」，停在第一個銅環："Report."；她在管子下面掛一個舊的十二格樣品架："One panel per slot." "Only what holds up in court." Sparks："And when all twelve are full?" "Then he's sentenced."；整個下午，對街一輛珍珠白轎車怠速停著，方向盤上一隻白手套；Nora 在臨街窗前："That's Cole. Grant's driver."；深夜試爐：Gus 叫大家到門口（"Everybody at the door."），老燃燒器咳出黑煙、「砰」一聲，火從爐口噴出一口；戴面罩的 Gus 一把關掉瓦斯："It backfired. Line's shot."，廠裡都是煙 |
 | 37 | 第 116 天（7/10 週五）03:30 → 04:30 → 05:25 | 天亮前：窗外深藍，工作燈冷白；04:30 點爐後整廠是橘光；05:20 日出，門外是被晨光照亮的霧 | 一個穿素面深藍工作外套的技師收工具："Landlord's crew. Lease says so."；Gus 接過扳手，親手把新接頭轉最後一圈："Again."；「轟」：三號爐醒了，橘光淹過 Gus、Sparks、Peg、Nora、紅磚、玻璃管與十二格空架；Gus 在爐前兩步跪下、哭出聲："Walter. She's lit. You hear me? She's lit."；Peg 過去抓住他的肩，自己也哭了；Nora 在一塊舊黑板上寫一個字，念出來："Remelt. Anything we ruin goes back in."；Sparks："Great name!" Peg 擦著眼睛："Inside voice."；她轉身：Elias 站在大門外，背後是亮起來的霧，左手在褲袋裡；他的人做的工，他知道是今晚；她還沒開口，他轉身走進晨霧 |
-| 38 | 第 117 天（7/11 週六）08:30 → 跳 → 11:00 → 11:30（渡輪站）→ 跳 → 14:00（Remelt）→ 16:00（Doyle Sand & Batch） | 晴、乾；廠裡三號爐的橘光加門外的白天；新渡輪站三層樓高的空大廳，天窗的白光落在正中央一個空的吊點；Doyle's 下午的太陽、白色的沙塵 | 工作台上一張公告壓在一塊綠玻璃下；Theo 站在門口："Boss said leave it here."；Nora 拿起來念："Ferry terminal chandelier. Blind competition. No names."；渡輪站的專案辦公室，Fiona 抱著厚規格夾："We judge the work, not the names." "Drawings and one sample panel." "Nine a.m., ten days from today."；空的大廳，她抬頭看那個吊點（顏值鏡頭）；回 Remelt，她攤開草圖：很多片藍玻璃一層層像浪往下落，Sparks："How blue?" "The harbor. Right at dawn."；Doyle's：她訂二十袋，Hank 收了現金、嘴角一提："Truck's Thursday."；她走出去，他拿起電話、壓低聲音："Mr. Whitlock? Yeah. She just ordered sand."，抬眼看她的背影 |
-| 39 | 蒙太奇第 119–126 天 → 第 126 天（7/20 週一）19:00 → 19:30 → 20:30（Doyle's）→ 22:00 → 23:59（Remelt） | 蒙太奇每格換光（早上灰、下午亮、傍晚黃）；第 126 天 20:30 Doyle's 的院子是低低的金色夕照；22:00 之後 Remelt 只有三號爐的橘光與一盞工作燈 | 九天的拖："Thursday." "Thursday." "Monday, swear."；截止前一晚 Hank 終於說："Out of stock."，Nora："Then refund me." "Store credit."，喀；她一家一家打，電話那頭（Gemini）："All sold out."；最後一家老闆嘆氣："Whitlock Home's our biggest client." "Portland's got it. Opens at eight."，Nora："I'm due at nine."；她走過轉角到 Doyle's 的院子，指著一整排棧板："That's sand. Right there." Hank："It's spoken for."；Grant 斜倚在後面辦公室的門框上、手裡一杯咖啡："Need sand, Nor? Just ask."；她把 Hank 那張不退錢的收據拍在櫃台上："Keep your credit."，走出去；回 Remelt，她把手機砸進空砂桶、對著爐火的轟聲吼到沒聲音，Peg 不攔她："Let it out, honey."；她背靠紅磚坐在空砂桶邊的地上；午夜，Sparks 一腳踢翻一個空桶："No sand. What are we melting?"；門上那座舊鐘的兩根針在十二點重合，離截止九個鐘頭 |
+| 38 | 第 116 天（7/10 週五）08:30 → 跳 → 11:00 → 11:30（渡輪站）→ 跳 → 14:00（Remelt）→ 16:00（Doyle Sand & Batch） | 晴、乾；廠裡三號爐的橘光加門外的白天；新渡輪站三層樓高的空大廳，天窗的白光落在正中央一個空的吊點；Doyle's 下午的太陽、白色的沙塵 | 工作台上一張公告壓在一塊綠玻璃下；Theo 站在門口："Boss said leave it here."；Nora 拿起來念："Ferry terminal chandelier. Blind competition. No names."；渡輪站的專案辦公室，Fiona 抱著厚規格夾："We judge the work, not the names." "Drawings and one sample panel." "Nine a.m., eleven days from today."；空的大廳，她抬頭看那個吊點（顏值鏡頭）；回 Remelt，她攤開草圖：很多片藍玻璃一層層像浪往下落，Sparks："How blue?" "The harbor. Right at dawn."；Doyle's：她訂二十袋，Hank 收了現金、嘴角一提："Truck's Thursday."；她走出去，他拿起電話、壓低聲音："Mr. Whitlock? Yeah. She just ordered sand."，抬眼看她的背影 |
+| 39 | 蒙太奇第 119–126 天 → 第 126 天（7/20 週一）19:00 → 19:30 → 20:30（Doyle's）→ 22:00 → 23:59（Remelt） | 蒙太奇每格換光（早上灰、下午亮、傍晚黃）；第 126 天 20:30 Doyle's 的院子是低低的金色夕照；22:00 之後 Remelt 只有三號爐的橘光與一盞工作燈 | 十天的拖："Thursday." "Thursday." "Monday, swear."；截止前一晚 Hank 終於說："Out of stock."，Nora："Then refund me." "Store credit."，喀；她一家一家打，電話那頭（Gemini）："All sold out."；最後一家老闆嘆氣："Whitlock Home's our biggest client." "Portland's got it. Opens at eight."，Nora："I'm due at nine."；她走過轉角到 Doyle's 的院子，指著一整排棧板："That's sand. Right there." Hank："It's spoken for."；Grant 斜倚在後面辦公室的門框上、手裡一杯咖啡："Need sand, Nor? Just ask."；她把 Hank 那張不退錢的收據拍在櫃台上："Keep your credit."，走出去；回 Remelt，她把手機砸進空砂桶、對著爐火的轟聲吼到沒聲音，Peg 不攔她："Let it out, honey."；她背靠紅磚坐在空砂桶邊的地上；午夜，Sparks 一腳踢翻一個空桶："No sand. What are we melting?"；門上那座舊鐘的兩根針在十二點重合，離截止九個鐘頭 |
 | 40 | 第 126 天 24:00 → 第 127 天（7/21 週二）00:10 → 01:00 → 03:30 → 04:00 → 05:35 → 跳 → 08:15 → 08:58（渡輪站） | 夜裡三號爐的橘光、倉庫一顆燈泡；05:35 日出，金光從大門與高窗進來；08:58 渡輪站大廳天窗的晴天白光 | Sparks 把一桶歪杯子倒上加料鏟、推進爐口："Remelt, right?" Gus："Not enough for a panel."；Gus 從倉庫拖出一排十二年沒動的舊麻袋："Pell's batch. I still remember the recipe."（Sparks："Is that ours?" Gus："Came with the lease."，選用）；Nora 綁上防塵口罩、捲起袖子："Then we mix our own."；她跪在倉庫的舊天平前，一匙一匙秤深藍色的鈷粉，Gus 念一行配方，她改："Cobalt. Two grams less."；Gus 與 Sparks 分三次把料加進三號爐，她在倉庫門口喊；03:30 第一團是藍的，Sparks 舀、Gus 澆進鋼框模，進退火爐；04:00 Peg 抱著帳本睡在長椅上，Sparks 把自己的外套蓋在她身上、踮腳走回爐邊；05:35 日出，退火爐打開，第一片藍玻璃；她把它舉到大門的晨光裡，一塊港口清晨的藍光滑過紅磚、玻璃管與十二格空架；她低聲念母親的話："Glass cools slowly. So do people."；（她把圖畫完、捲進紙筒，不拍或一鏡）；08:15 Gus 的舊紅色小貨車；08:58 她抱著用灰色搬家毯包著的樣品片衝進渡輪站大廳，Fiona 看錶、蓋章："Entry nine. Just made it."；大廳另一頭，一個戴白手套的人看著那片藍接住天窗的光，舉起手機 |
 
 第 41 集接第 128 天（7/22 週三）的 Remelt：燈箱、地上的草稿（見〈伏筆與回收〉〈第 41 集要接的〉）。
 
 **細綱自相矛盾或站不住、挑了哪一邊**：
 
-- **日期**：細綱第 38 集 Fiona 說 "Nine a.m., the tenth."，可是第 38 集是第 117 天（7/11），截止是第 127 天（7/21），「十號」不成立。改成 **"Nine a.m., ten days from today."**：不說日期，章界對齊時天數怎麼挪都不用改台詞。
-  同理：第 110 天在季細綱的日曆上是 **7/4 週六（國慶日）**，婦產科門診不會開。這十集**沒有人說出日期、畫面上沒有煙火與國旗**，觀眾看不出來；章界對齊時若要順手修，見〈要站主決定的〉第 9 條。
-- **"Six months" 與 "So ten more weeks."**：六個月從失去孩子那晚（第 2 天，3/18）算，到 9/18（第 186 天）；第 110 天還剩 76 天，約十一週。"ten more weeks" 是她往少的那邊算（她急著回爐），**不改**；章界對齊時第 33 集若挪到第 116 天以後，就剛好十週（待章界對齊）。
+- **日期**：細綱第 38 集 Fiona 說 "Nine a.m., the tenth."，可是截止是第 127 天（7/21），「十號」不成立。第 38 集對齊時挪到第 116 天，改成 **"Nine a.m., eleven days from today."**（不說日期）。
+  季細綱的第 110 天是 **7/4 週六（國慶日）**，婦產科門診不會開：對齊時把第 33 集挪到第 112 天（週一），第 34–36 集跟著排（見〈時間線〉開頭、〈要站主決定的〉第 9 條）。畫面上沒有煙火與國旗，台詞不說星期與日期。
+- **"Six months" 與 "So ten more weeks."**：六個月從失去孩子那晚（第 2 天，3/18）算，到 9/18（第 186 天）；第 112 天還剩 74 天，約十週半。"ten more weeks" 是她往少的那邊算（她急著回爐），**不改**。
 - **"Dana filed the forgery report with police this morning."**：第 31 集是清晨五點半，「今天早上已經報了」不成立。改成 Elias 說 **"Dana's filing the forgery report this morning." "With the police. It goes to the prosecutor."**（GLOSSARY 程序第 3 條：先報警、再由檢察官審）。
 - **第 31 集的吵架在哪裡**：細綱鉤子寫「車門被推開、她吼、轉身愣在鐵門下」，衝突欄又寫「在車上爆發」。照鉤子：吵架在車外、**隔著車頂**，第一句 "You stood there!" 是她下車那一刻吼的；"He shoved that paper…" 那一段在她認出 Pell's 之後、Elias 下車時接著吵完（她剛認出這裡，火更大：他偏偏把她帶到這裡）。回憶放在吵完、他說 "You need a place." 之後。
 - **第 31 集的 "Who's there?"**：Gus 從第 32 集起在畫面上說話（原聲），這句不能用 Gemini 畫外。寫在他自己的鏡上：手電筒在他右手、齊胸，往下漏的光只照到他的下巴與嘴（鼻子以上在暗裡），原聲；第 32 集第一鏡光束放低，才看到整張臉。
-- **Peg 當掉的戒指錢**：細綱第 34 集寫她「手上只有 Peg 當戒指剩下的錢」，可是第 11–20 集 bible 的帳裡那 $400 第 9–15 天就用完了，之後靠 Peg 的退休金與 Nora 賣畫。改成「Peg 的現金」，不說出口（數目待章界對齊）。
+- **Peg 當掉的戒指錢**：細綱第 34 集寫她「手上只有 Peg 當戒指剩下的錢」，可是第 11–20 集 bible 的帳裡那 $400 第 9–15 天就用完了，之後靠 Peg 的退休金與 Nora 賣畫。改成「Peg 的現金」（第 107 天退休金進帳後約 $1,400，見〈帳〉），不說出口。
 - **第 35 集戒指誰推**：戒指在 Nora 的卡夾裡（第 15 集 Peg 推回給她）。改成 Nora 自己把戒指放上玻璃、手指不肯鬆，Peg 的食指替她把戒指推完最後一段，同時說那兩句。
 - **第 35 集戒指賣多少**："That's a month?" 要先有人說出價錢，Sparks 才有得驚訝。當鋪老闆說 **"Eleven-eight."**（$11,800）：
   一顆跟鉛筆一樣寬（約 8 公釐、約兩克拉）的圓鑽加鉑金戒台，當鋪直接收購付得出這個數；剛好比一個月房租多一點，"That's a month?" 才好笑也才痛（帳見〈帳〉）。
@@ -77,7 +78,8 @@
 - **第 37 集的技師**：照審稿：換瓦斯管要有執照，是房東（Ashford Construction）派的值班技師，Gus 盯著、最後一圈自己轉。技師的外套沒有字，身分靠他那句 "Landlord's crew. Lease says so."。
 - **第 37 集 Gus「在爐口」哭**：開著的爐口前不能跪。改成：爐子點著後 Gus 把爐門推到只剩一道發光的縫，退兩步、跪在黃線上哭；手套與皮圍裙還穿著，面罩推到頭頂。
 - **第 39 集「她開車去 Hank 的砂場」**（審稿 ch4 第 39 集）：她沒有車。Doyle Sand & Batch 就在 Kiln Row 轉角（細綱 "off Kiln Row"），走路三分鐘。
-- **第 39 集她摔的手機**：細綱要她有一支手機（第 34 集接 Dana 的電話、第 39 集一家一家打）。季細綱第 23 集寫她「把 Grant 那支的 SIM 拔掉、有了自己的號碼」，可是第 11–20 集 bible 把 Grant 給的那支鎖在 Bev 的抽屜裡；**她第四章用的是哪一支、哪來的：待章界對齊**。這份先寫成她自己的一支素面黑手機（道具句見下），第 39 集砸進空的鋼砂桶、螢幕裂了。
+- **第 39 集她摔的手機**：細綱要她有一支手機（第 34 集接 Dana 的電話、第 39 集一家一家打）。季細綱第 23 集寫她「把 Grant 那支的 SIM 拔掉、有了自己的號碼」，可是 Grant 給的白手機第 12 集起鎖在 Bev 的抽屜，第 21–30 集 bible 把第 23 集的新號碼換給了 Peg 的手機，Nora 第三章沒有手機。
+  **對齊後**：第 111 天 Peg 在山腳便利店替她買一支便宜的預付手機（$40，記在帳本 Nora 那一欄，不拍、不念），道具句 `nora-own-phone`；第 34 集起用它，第 39 集砸進空的鋼砂桶、螢幕裂了；截止之後她從桶底撿回來，還能用（不拍；第 41–60 集同一支，畫面只拍側面白光與背面）。
 - **第 40 集九個鐘頭做得出一片嗎**：新料進爐要熔、要澄清，退火也要時間。這份照戲的需要壓到最緊、但每一步都說得通：00:10 拖出麻袋，00:20–01:00 秤料，01:00–02:30 分三次加料（爐子已經熱了十一天），03:30 第一團是藍的、澆進鋼框模，進退火爐跑短程（Gus："Short soak. She'll hold."，選用），05:35 日出時打開。
   **為什麼拖到 8:58**：玻璃要慢慢冷到能拿（母親那句 "Glass cools slowly. So do people." 就是答案），而且她整夜在秤料，比賽要的「圖」還沒畫完：日出之後她在工作台上畫完、捲進紙筒（一鏡或不拍）；08:15 Gus 開他的舊小貨車，早上塞車，08:58 到。
 - **第 40 集用 Pell's 的舊料算不算 Elias 給的**：這間廠連同裡面的設備與存料，是她照市價租的（租約寫「含設備與存料，照現況」，見〈帳〉）。料是她租來的，不違反第二條；Gus 一句 "Came with the lease." 交代（選用，見〈要站主決定的〉第 6 條）。
@@ -89,43 +91,45 @@
 
 | 集 | 最後一鏡（= 下一集第一鏡的同一刻；跳時間的寫用什麼畫面交代） |
 | --- | --- |
-| 30 → 31 | **待章界對齊**（第 30 集還沒有分鏡，以第三章 bible 為準）。照季細綱：Whitlock Home 旗艦店的後台走廊，第 108 天深夜，只開著幾盞燈。走廊盡頭最後一盞燈下，Elias（基本款，左手在褲袋）站著不動；Theo 在他身旁、平板抱在胸前，剛問完 "Boss, aren't you going over?"，Elias 剛說完 "Clause two."；走廊中段，Nora（`gown`）手裡是兩張疊著的影本（財產協議與權利移轉書，紙背朝鏡頭）；Peg 在舞台門邊；Grant 已經走出畫面。**第 31 集第一鏡跳到第 109 天 05:30 的 Kiln Row**：交代時間的是清晨低低的太陽與散開的海霧、Nora 換成 `shoulder`（奶油色毛衣、深色長褲、短靴）外罩一件深橄欖色工作外套（她回過 Ashford 家、一夜沒睡），Theo 不在（Elias 自己開車）。兩張影本收在 Ashford 家（第 41 集才拿到 Remelt，待章界對齊）。 |
+| 30 → 31 | **2026-11-12 對齊，照第 21–30 集 bible 的接點表**：Whitlock Home 旗艦店的後台走廊中段，第 108 天 20:58。鐵網燈泡下，Nora（`gown`，眼睛濕，左手無名指 Elias 的戒指，右手拿著疊在一起的兩張影本、紙背朝鏡頭，手拿包夾在左腋下）面向走廊盡頭；Peg（`visit`，喘著、眼鏡上有淚）在她左邊半步；鐵門關著；Grant 已經走出畫面；走廊盡頭最後一盞頂燈下，Elias（基本款，左手插在褲子左口袋）站著沒動，Theo（基本款，平板在左手）在他左邊，Elias 剛說完 "Clause two."。**第 31 集第一鏡跳到第 109 天 05:20 的 Kiln Row**（約八個半小時）：交代時間的是剛出海面的低太陽與散開的海霧；副駕駛座的門從裡面推開，Nora 換成 `shoulder`（奶油色毛衣、深色長褲、短靴）外罩道具句 `nora-jacket`（她回過 Ashford 家、一夜沒睡；這是她婚前的舊工作外套，第 7 集別人替她收的行李裡就有），Elias 基本款、沒有大衣、自己開車，Theo 與 Peg 不在。兩張影本天亮前由 Theo 送到 Dana 那裡（Dana 當天早上報案；第 41 集帶來 Remelt）。 |
 | 31 → 32 | Pell's 廠內，第 109 天約 06:10。從大門往裡拍：Nora（`shoulder`、外套敞開）站在剛推開的那扇鐵門裡三步，背後是金色的清晨與灰塵的光柱，右手舉到眉前擋光，臉朝畫面深處；深處正中蓋著灰色帆布的三號爐，爐前約兩步是一束手電筒的白光直直打在她臉上；拿手電筒的人（Gus）在光後面，只見齊胸的手電筒、右手、被漏光照到的下巴與嘴。門外（畫面外）黑車停在門前，Elias 在駕駛座講電話。**第 32 集第一鏡**：光束放低、落到地上。 |
-| 32 → 33 | Pell's 廠內，三號爐前，第 109 天約 06:40。帆布堆在爐腳，灰塵還在高窗的光柱裡往下落；Nora（`shoulder`）面對爐子站著，右手手掌平貼在冰冷的紅磚上、手指張開，眼睛閉著，臉上有淚痕，頭髮垂在臉邊；Gus（基本款）在她左邊一步，右手剛從磚上拿開，看著她的手。**第 33 集跳到第 110 天 10:00 的診間**：第一鏡是她的兩隻手掌平放在膝蓋上（跟上一集貼在磚上的手同一個姿勢的跳接，鉤子），交代時間地點的是診間的白天窗光、桌燈，與她換成新造型 `henley`（灰色亨利領長袖、低馬尾）。 |
-| 33 → 34 | Pell's 右牆的小練習爐前，第 110 天約 16:40，右牆高窗的白光加練習爐的橘光。Sparks（基本款、透明護目鏡、隔熱護套）在畫面右，兩手握著吹管、管子剛甩過頭，管口那團橘紅的熱玻璃滑下來、正落在半空；Nora（`work`，護目鏡推在頭頂、圍裙、袖子捲到手肘）**左腳已經跨過黃線一步**，兩手伸向 Sparks 握管的手，臉朝畫面右；她靴尖前一臂遠是那塊黑色鋼板；Gus（基本款加皮圍裙、面罩推到頭頂）在她右後方一步，右手正伸向她的後衣領。**第 34 集第一鏡**：Gus 的手揪住衣領、往後一拽。 |
-| 34 → 35 | Pell's 前左角的長椅旁，第 112 天約 18:30，傍晚，練習爐已熄，臨街窗是最亮的光，高窗淡金。Theo（基本款）站在畫面右，兩手捧著平板、螢幕轉向 Nora（背對鏡頭），剛說完 "Eleven thousand a month."；Nora（`work`，護目鏡推在頭頂）在他面前一步，背半對鏡頭；Peg（`visit`，眼鏡戴在臉上）坐在她右後方的長椅上，帳本攤在左膝，嘴張著倒抽一口氣，右手空著、手指還保持拿筆的形狀；那支鉛筆在她腳邊的水泥地上。**第 35 集跳到第 113 天 10:00 的港邊當鋪**：交代時間的是當鋪的暖黃燈與門外晴天的港、Nora 換成 `henley` 加外套、Peg 的帆布袋在左肩，Sparks 也在。 |
-| 35 → 36 | Ashford Construction 頂樓會議室，第 113 天約 14:45，整面落地窗外晴天的港。長桌一端：Nora（`henley`，外套搭在椅背）坐著，右手剛套上筆蓋，左手（Elias 的戒指）把那張淡黃色估價單沿桌面推回去，剛說完 "Not until my lawyer reads it."，下巴抬著；Elias（基本款）站在桌對面，右手停在桌面上那張保付支票旁，左手在褲袋裡，看著她；Theo 在桌尾、平板抱在胸前（虛焦）；租約在 Nora 手邊（紙背）。**第 36 集跳到第 114 天 09:00 的 Pell's**：第一鏡是 Dana 的食指在租約那一頁上點兩下（紙邊、側拍），交代的是廠裡早上的光、Dana 的卷宗、Nora 換回 `work`。 |
+| 32 → 33 | Pell's 廠內，三號爐前，第 109 天約 06:40。帆布堆在爐腳，灰塵還在高窗的光柱裡往下落；Nora（`shoulder`）面對爐子站著，右手手掌平貼在冰冷的紅磚上、手指張開，眼睛閉著，臉上有淚痕，頭髮垂在臉邊；Gus（基本款）在她左邊一步，右手剛從磚上拿開，看著她的手。**第 33 集跳到第 112 天 10:00 的診間**（三天後，國慶連假之後的週一）：第一鏡是她的兩隻手掌平放在膝蓋上（跟上一集貼在磚上的手同一個姿勢的跳接，鉤子），交代時間地點的是診間的白天窗光、桌燈，與她換成新造型 `henley`（灰色亨利領長袖、低馬尾）。 |
+| 33 → 34 | Pell's 右牆的小練習爐前，第 112 天約 16:40，右牆高窗的白光加練習爐的橘光。Sparks（基本款、透明護目鏡、隔熱護套）在畫面右，兩手握著吹管、管子剛甩過頭，管口那團橘紅的熱玻璃滑下來、正落在半空；Nora（`work`，護目鏡推在頭頂、圍裙、袖子捲到手肘）**左腳已經跨過黃線一步**，兩手伸向 Sparks 握管的手，臉朝畫面右；她靴尖前一臂遠是那塊黑色鋼板；Gus（基本款加皮圍裙、面罩推到頭頂）在她右後方一步，右手正伸向她的後衣領。**第 34 集第一鏡**：Gus 的手揪住衣領、往後一拽。 |
+| 34 → 35 | Pell's 前左角的長椅旁，第 113 天約 18:30，傍晚，練習爐已熄，臨街窗是最亮的光，高窗淡金。Theo（基本款）站在畫面右，兩手捧著平板、螢幕轉向 Nora（背對鏡頭），剛說完 "Eleven thousand a month."；Nora（`work`，護目鏡推在頭頂）在他面前一步，背半對鏡頭；Peg（`visit`，眼鏡戴在臉上）坐在她右後方的長椅上，帳本攤在左膝，嘴張著倒抽一口氣，右手空著、手指還保持拿筆的形狀；那支鉛筆在她腳邊的水泥地上。**第 35 集跳到第 114 天 10:00 的港邊當鋪**：交代時間的是當鋪的暖黃燈與門外晴天的港、Nora 換成 `henley` 加外套、Peg 的帆布袋在左肩，Sparks 也在。 |
+| 35 → 36 | Ashford Construction 頂樓會議室，第 114 天約 14:45，整面落地窗外晴天的港。長桌一端：Nora（`henley`，外套搭在椅背）坐著，右手剛套上筆蓋，左手（Elias 的戒指）把那張淡黃色估價單沿桌面推回去，剛說完 "Not until my lawyer reads it."，下巴抬著；Elias（基本款）站在桌對面，右手停在桌面上那張保付支票旁，左手在褲袋裡，看著她；Theo 在桌尾、平板抱在胸前（虛焦）；租約在 Nora 手邊（紙背）。**第 36 集跳到第 115 天 09:00 的 Pell's**：第一鏡是 Dana 的食指在租約那一頁上點兩下（紙邊、側拍），交代的是廠裡早上的光、Dana 的卷宗、Nora 換回 `work`。 |
 | 36 → 37 | Pell's 廠內，第 115 天約 23:45。廠裡一層灰黑的煙浮在高屋頂下，一盞工作燈的冷白光穿過煙；三號爐的鐵門半開，爐口黑著，一縷煙還往外飄；Gus（基本款加皮圍裙、長隔熱手套、**面罩拉下**）站在爐右邊，右手剛把瓦斯閥的紅色把手扳下來，剛說完 "It backfired. Line's shot."；Nora（`work`，左前臂擋在口鼻前）與 Sparks 擠在敞開的大門口（畫面前景、背影與側臉），門外是夜；Peg 這晚不在（第 37 集 03:30 前才來）。**第 37 集跳到第 116 天 03:30**：交代的是煙散了、空氣清了、一盞三腳架工作燈、地上一段發亮的新黃銅接頭、窗外是天亮前的深藍。 |
-| 37 → 38 | Pell's 大門內，第 116 天約 05:25。從廠裡往大門拍：前景是 Nora（`work`，護目鏡推在頭頂）的右肩與後腦，被身後三號爐的橘光照亮；敞開的大門外是被日出照亮的白霧，Elias（基本款）的背影已經走出門外三步、往霧裡走，左手在褲袋裡，愈來愈淡；畫面左前，Peg 的手還搭在 Gus 的肩上（虛焦）。**第 38 集跳到第 117 天 08:30**：交代的是白天的光、三號爐還燒著（點爐第二天）、工作台上多了一張壓著的紙。 |
-| 38 → 39 | Doyle Sand & Batch 的櫃台，第 117 天約 16:15，午後太陽從院子斜進來、空氣裡白色的沙塵。Hank（基本款）在積灰的櫃台後，右手把一支刮花的黑手機貼在右耳，剛說完 "She just ordered sand."，抬眼看畫面左外；從他身後開著的門看出去，院子裡 Nora（`henley`、外套）的背影正走向街，越來越小。**第 39 集第一鏡跳到幾天後**：同一個櫃台、同一個姿勢，Hank 拿著電話，但光換成灰白的早上（"Thursday."）。 |
+| 37 → 38 | Pell's 大門內，第 116 天約 05:25。從廠裡往大門拍：前景是 Nora（`work`，護目鏡推在頭頂）的右肩與後腦，被身後三號爐的橘光照亮；敞開的大門外是被日出照亮的白霧，Elias（基本款）的背影已經走出門外三步、往霧裡走，左手在褲袋裡，愈來愈淡；畫面左前，Peg 的手還搭在 Gus 的肩上（虛焦）。**第 38 集跳到同一天 08:30**（三小時後）：交代的是白天的光、三號爐還燒著、工作台上多了一張壓著的紙。 |
+| 38 → 39 | Doyle Sand & Batch 的櫃台，第 116 天約 16:15，午後太陽從院子斜進來、空氣裡白色的沙塵。Hank（基本款）在積灰的櫃台後，右手把一支刮花的黑手機貼在右耳，剛說完 "She just ordered sand."，抬眼看畫面左外；從他身後開著的門看出去，院子裡 Nora（`henley`、外套）的背影正走向街，越來越小。**第 39 集第一鏡跳到幾天後**：同一個櫃台、同一個姿勢，Hank 拿著電話，但光換成灰白的早上（"Thursday."）。 |
 | 39 → 40 | Remelt 廠內，第 126 天 23:59→24:00。三號爐開著一道發光的門縫、轟轟地燒；爐右邊那排空的鋼砂桶，一個剛被踢翻、側躺著還在晃；Sparks（基本款、護目鏡掛在 T 恤領口）站在它旁邊，剛吼完 "What are we melting?"；Nora（`work`，護目鏡推在頭頂，臉上有乾掉的淚痕）背靠紅磚坐在空桶旁的地上，兩手搭在膝上；Gus 站在爐邊；Peg（`visit`）坐在前左角長椅上；大門上方那座舊鐘的兩根針剛在十二點重合（只見刻度，沒有數字）。**第 40 集第一鏡是同一刻**：Sparks 提起一個裝著歪杯子的鋼桶。 |
-| 40 → 41 | 新渡輪站大廳，第 127 天 08:58，天窗的晴天白光。報名桌（一張摺疊桌）後，Fiona（基本款）右手剛把日期章從報名表上提起，左手腕的錶面朝著她自己，剛說完 "Entry nine. Just made it."；Nora（`henley`，袖子捲到手肘、前臂上一層藍粉，喘著，頭髮從馬尾散出幾縷）站在桌前，兩手扶著桌上半拆開的灰色搬家毯，裡面那片藍玻璃接住天窗的光、在桌面投下一塊藍；紙筒在她左腋下；大廳另一頭（畫面右後、很遠、虛焦）Cole（黑西裝、白手套）把手機舉到耳邊。**第 41 集跳到第 128 天的 Remelt**：交代時間的是燈箱從下往上的白光、地上鋪滿的草稿、Nora 換回 `work`，那片藍玻璃不在廠裡（交出去了）。 |
+| 40 → 41 | （2026-11-12 對齊：第 41–50 集 bible 的 40→41 照這格。）新渡輪站大廳，第 127 天 08:58，天窗的晴天白光。報名桌（一張摺疊桌）後，Fiona（基本款）右手剛把日期章從報名表上提起，左手腕的錶面朝著她自己，剛說完 "Entry nine. Just made it."；Nora（`henley`，袖子捲到手肘、前臂上一層藍粉，喘著，頭髮從馬尾散出幾縷）站在桌前，兩手扶著桌上半拆開的灰色搬家毯，裡面那片藍玻璃接住天窗的光、在桌面投下一塊藍；紙筒在她左腋下；大廳另一頭（畫面右後、很遠、虛焦）Cole（黑西裝、白手套）把手機舉到耳邊。**第 41 集跳到第 128 天的 Remelt**：交代時間的是燈箱從下往上的白光、地上鋪滿的草稿、Nora 換回 `work`，那片藍玻璃不在廠裡（交出去了）。 |
 
 ## 帳
 
-**錢**（數字只在標「念」的地方說出口；**每一筆是這十集的進出，開頭的餘額待章界對齊**）
+**錢**（數字只在標「念」的地方說出口；2026-11-12 對齊，接第 21–30 集 bible 的帳）
 
-這章開始時，Peg 與 Nora 住 Ashford 家（第 21 集起），不付房錢；Peg 的現金（退休金每月一號 $1,350）與 Nora 自己的錢（賣畫、第三章的開銷，季細綱帳寫 $1,080，第 11–20 集 bible 重算到第 21 集約 $215）**兩個餘額都待章界對齊**，下表只寫這十集的增減，誰的錢寫清楚。
-第 24 集季細綱寫 "one gown owed to Ashford"（禮服錢欠 Elias）：這筆在第四章還清沒有、多少，待章界對齊；這十集不提。
+第 30 集結束時：Peg 約 **$1,403**（第 107 天退休金剛進），Nora 自己約 **$26**；帳本的 Nora 欄記著她欠 Peg 的一半菜錢約 $80，"Owed to Ashford" 一欄是一件禮服（第四章不還、不提）。
+兩人照住 Ashford 家、不付房錢；菜由 Peg 買、Peg 煮，Nora 的一半記在 Nora 欄。通勤坐公車：山腳的站走路 10 分鐘，山腳 → Kiln Row 轉一次車約 35 分鐘、一人 $2；Nora 付不出來的公車錢也記 Nora 欄。
 
 | 天 | 誰的錢 | 進 | 出 | 說明 |
 | --- | --- | --- | --- | --- |
-| 109 | Peg | | 砂兩袋 $64 | Gus 打電話叫 Doyle's 送兩袋給小練習爐（不拍）；Peg 付現給送貨的人 |
-| 111 | Peg | | 砂兩袋 $64 | 同上，不拍 |
-| 112 | | | | Peg 念："Sand's thirty-two bucks a bag."（四袋 $128，總數不念）；Theo 念："Market rate. Eleven thousand a month." |
-| 113 | Nora | 賣戒指 **$11,800**（念："Eleven-eight."） | 保付支票 **$11,000**（第一個月房租）；還 Peg 砂錢 $128 | 當鋪老闆開公司支票，她在銀行存進自己的戶頭、換保付支票（不拍）；Peg 的帳本記一行（選用念 "Sand. Paid back."） |
-| 113 | Peg | 收回 $128 | | |
-| 114、116 | — | | | 燃燒器與瓦斯管：房東修（租約條款），Nora 不花錢 |
-| 117 | Nora | | 砂二十袋 **$640**（現金給 Hank，不念總數） | Nora 自己的錢這章的淨額剩 **$32**（剛好一袋），這就是細綱的「最後的錢」 |
+| 109 | — | | | Elias 開車，不花錢 |
+| 111 | Peg | | Nora 的預付手機 $40（記 Nora 欄） | 山腳便利店，不拍、不念 |
+| 112 | Peg | | 砂兩袋 $64 | Gus 打電話叫 Doyle's 送兩袋給小練習爐（不拍）；Peg 付現給送貨的人 |
+| 113 | Peg | | 砂兩袋 $64 | 同上，不拍。Peg 念："Sand's thirty-two bucks a bag."（四袋 $128，總數不念）；Theo 念："Market rate. Eleven thousand a month." |
+| 114 | Nora | 賣戒指 **$11,800**（念："Eleven-eight."） | 保付支票 **$11,000**（第一個月房租）；還 Peg 砂錢 $128 | 當鋪老闆開公司支票，她在銀行存進自己的戶頭、換保付支票（不拍）；Peg 的帳本記一行（選用念 "Sand. Paid back."） |
+| 114 | Peg | 收回 $128 | | |
+| 115–116 | — | | | 燃燒器與瓦斯管：房東修（租約條款），Nora 不花錢 |
+| 116 | Nora | | 砂二十袋 **$640**（現金給 Hank，不念總數） | 付完她身上約 $40（$26 加這章淨增的 $32，扣掉第 114–116 天自己的公車），**比一袋砂多一點**，這就是細綱的「最後的錢」 |
 | 126 | Nora | | （$640 變成 Doyle's 的「店內抵用」，退不出來） | Hank 念 "Store credit."；那張收據第 39 集她拍在櫃台上、留在那裡 |
 | 127 | — | | | 舊料是租約裡的存料；Gus 的小貨車油錢不提；報名不收費 |
 
-- **這章的增減**：Nora **+$11,800 −$11,000 −$128 −$640 = +$32**（加上她開頭的錢，待章界對齊）；Peg **−$128 +$128 = 0**；另有兩人每天的公車與三餐（待章界對齊：第三章怎麼通勤、在 Ashford 家誰買菜）。
-  Doyle's 那 $640 的店內抵用，帳上算資產、用不出去；第 41 集以後要不要回收，交給第五章。
-- **租約**（第 35 集簽）：照市價 **$11,000／月**，按月續租、每月預付；起算日寫第 110 天（她第一天用練習爐），所以第 33–34 集不是白用。押金不提（審稿沒問、觀眾也不會問）。
-  **全包價**：含水電瓦斯（Gus 第 32 集那句 "New owner pays the power." 之後也一樣）、**含廠內設備與存料，照現況**（三號爐、練習爐、退火爐、倉庫裡的舊料都在租約裡）；**設備的修繕歸房東**（第 35 集 Elias 那一行、第 36 集 Dana 定案）。這些條款都不念出來，只念 "Repairs are the landlord's. It's in the lease."。
-  第一個月付到第 139 天，**第 140 天要付第二個月**（第五章，見〈第 41 集要接的〉）。
-- **Peg 的當票**：一直夾在帳本書頁裡；每三十天續一次 $40（第 38、68、98 天已續），下一次是第 128 天（第 41 集）。這十集不續、不拍。Peg 的左手無名指一直是那圈淡色的皮膚。
+- **這章結束（第 127 天）**：Nora 身上只剩幾塊錢（第 117–127 天的公車）；帳本 Nora 欄欠 Peg 約 **$330**（第三章的菜錢 $80、手機 $40、第 109–113 天的公車、這章的一半菜錢）。Peg 約 **$930**（扣掉手機、這章的菜錢約 $380 與兩人的公車；砂錢已收回）；下一筆退休金第 138 天（8/1）。
+  Doyle's 那 $640 的店內抵用，帳上算資產、用不出去，之後不回收。
+- **Gus 與 Sparks 的工錢**：這章 Nora 付不出來，Gus 說先做（不拍、不說）；第 142 天渡輪站的訂金進來時一次補（第 41–50 集 bible）。
+- **租約**（第 35 集簽）：照市價 **$11,000／月**，按月續租、每月預付；起算日寫第 112 天（她第一天用練習爐），所以第 33–34 集不是白用。押金不提（審稿沒問、觀眾也不會問）。
+  **全包價**：含水電瓦斯（Gus 第 32 集那句 "New owner pays the power." 之後也一樣）、**含廠內設備與存料，照現況**（三號爐、練習爐、退火爐、倉庫裡的舊料與舊燈箱都在租約裡）；**設備的修繕歸房東**（第 35 集 Elias 那一行、第 36 集 Dana 定案）。這些條款都不念出來，只念 "Repairs are the landlord's. It's in the lease."。
+  第一個月付到第 141 天，**第 142 天要付第二個月**，第三個月第 172 天（第一季之後）。
+- **Peg 的當票**：一直夾在帳本書頁裡；每三十天續一次 $40（第 38、68、98 天已續），下一次是第 128 天（第 41 集，Peg 付）。這十集不續、不拍。Peg 的左手無名指一直是那圈淡色的皮膚。
 
 **戒指**
 
@@ -135,7 +139,7 @@
 
 **砂與二十個歪杯子**
 
-- 砂一袋 **$32**（Peg 念）。小練習爐第 109–112 天用了四袋，袋子不入鏡。
+- 砂一袋 **$32**（Peg 念）。小練習爐第 112–113 天用了四袋，袋子不入鏡。
 - **二十個做壞的**：都是 Sparks 吹歪的小杯子。每一個進小退火爐冷好，排在練習爐旁那層鋼架上；他每次在架子旁的紅磚柱上補一筆粉筆、大聲報數（"One!"……"Twenty!"）。
   第 34 集租金一報出來，Peg 就定了規矩：房租沒著落前不再練（不拍）。所以第 34 集之後架上停在二十個。所以第 36–39 集架上一直是那一排、粉筆一直是那一片，第 40 集 Sparks 才把整排倒進鋼桶、回爐。
 - **二十袋**（第 38 集訂）：從沒送來。Hank 第 39 集說 "Out of stock."、不退錢、只給店內抵用。
@@ -157,11 +161,11 @@
 - 租約、保付支票、估價單：第 35 集會議室長桌上排一列（細綱的華麗鏡頭），只拍側面與紙背；租約 Nora 簽、Elias 右手簽（只拍筆與手）；支票是她從外套內袋拿出來放上桌；估價單她推回去、第 36 集 Dana 讀過後她在 Pell's 的工作台上簽（只拍筆尖在紙邊動）。之後租約與估價單在 Dana 的卷宗裡。
 - Hank 的收據：第 38 集他撕給她（淡粉紅複寫聯），她收進外套口袋；第 39 集拍在他櫃台上，留在那裡。
 - 比賽的圖：第 38 集她攤在工作台上的草圖（水彩，可以拍正面，沒有字）；第 40 集日出後她畫完正式的圖、捲進灰色紙筒，08:58 夾在左腋下交出去。報名表 Fiona 蓋章（紙遠遠虛焦）。
-- 第 30 集的兩張影本（財產協議、權利移轉書）、婚前草圖資料夾、裝三張紙的牛皮紙信封、Dana 手上的證物：這十集**都不入鏡**；第 41 集影本與草圖要在 Remelt（待章界對齊：誰在第 30 集之後收著）。
+- 第 30 集的兩張影本（財產協議簽名頁影本、設計權轉讓書影本，`photocopy`）在 Dana 那裡（第 109 天天亮前 Theo 送去）；婚前草圖資料夾、裝三張紙的牛皮紙信封在 Nora 的行李箱（Ashford 家客房）。這十集**都不入鏡**；第 41 集 Dana 帶影本、Nora 帶資料夾到 Remelt（2026-11-12 對齊）。
 
 **手機**
 
-- Nora 的手機（**待章界對齊**，見〈細綱自相矛盾〉）：這份寫成 `a plain black phone in a clear case, about the size of her palm`。第 34 集接 Dana（螢幕只見側面白光，她右手貼右耳）；第 39 集打給 Hank 與各家砂料行，22:00 砸進最左邊的空砂桶（「咚」一聲），螢幕裂了；第 40 集一直在那個桶底，不拿出來。
+- Nora 的手機（`nora-own-phone`，第 111 天 Peg 替她買的預付手機，見〈細綱自相矛盾〉）：`a plain black phone in a clear case, no logo, about the size of her palm`。第 34 集接 Dana（螢幕只見側面白光，她右手貼右耳）；第 39 集打給 Hank 與各家砂料行，22:00 砸進最左邊的空砂桶（「咚」一聲），螢幕裂了；第 40 集一直在那個桶底，不拿出來；之後她撿回來、還能用（第 41–60 集同一支）。
 - Elias 的手機：`a black phone with no logo, about the size of his palm`（第 2 集原句），第 31 集右手接、走回車邊。
 - Grant 的手機：同一句，第 35 集右手拿著、螢幕的光從側面照在他臉上；Lyle 的照片用全畫面插鏡（不拍手機，照第 19 集 Sienna 貼文的做法）。
 - Hank 的手機：`a scratched black phone with no logo, about the size of his palm`，第 38、39 集。
@@ -170,7 +174,7 @@
 
 **車**
 
-- Elias 的黑車：`a long black luxury sedan with no badge, number plate out of frame`。第 31–32 集停在 Pell's 門前的路邊，車頭朝畫面左（往 Rosa's 那個街角），副駕駛座那側靠人行道；第 32 集結尾他開走（不拍，第 33 集不在）。第 37 集他走路來、走路走（車停在街角，不入鏡）。
+- Elias 的黑車（`black-car`）：`a long black luxury sedan with no badge, number plate out of frame`。第 31–32 集停在 Pell's 門前的路邊，車頭朝畫面左（往 Rosa's 那個街角），副駕駛座那側靠人行道；第 32 集結尾他開走（不拍，第 33 集不在）。第 37 集他走路來、走路走（車停在街角，不入鏡）。
 - Grant 的珍珠白轎車：`a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame`。第 36 集停在 Pell's **對街**（港那側）的路邊、車頭朝畫面左，Cole 在駕駛座，只見方向盤上一隻白手套與黑袖口；從臨街窗看出去寫 `, idling at the far curb across the street`。
 - Gus 的小貨車（新）：`an old faded red pickup truck with no badge, number plate out of frame`，平常停在 Pell's 旁的小巷；第 40 集 08:15 載 Nora、Sparks 與樣品片去渡輪站（Peg 留在廠裡睡；Gus 開車，車裡不拍）。
 - Sparks 的機車（新）：`an old black motorbike with no badge, number plate out of frame`，第 33 集騎進大門、停在門內右邊，之後一直停在那裡（拍到大門內右側就寫）。
@@ -189,7 +193,7 @@
 
 **路程與花費**
 
-- Ashford 家（山腰）→ Kiln Row：公車約 35 分鐘、一人 $2（**待章界對齊**：第三章怎麼通勤）；第 31 集是 Elias 開車。
+- Ashford 家（山腰）→ Kiln Row：公車（山腳轉一次）約 35 分鐘、一人 $2；開車約 20 分鐘（2026-11-12 對齊，四章同一個數）。Nora 與 Peg 坐公車；第 31 集是 Elias 開車。
 - Kiln Row → Merrow General：公車約 25 分鐘。
 - Kiln Row → 港邊當鋪：公車約 15 分鐘（當鋪在汽車旅館那一帶的港邊，第 15 集）。
 - Kiln Row → Ashford Construction（市中心的大樓）：公車約 15 分鐘。
@@ -201,11 +205,11 @@
 
 | 場景 | 參考圖 | 格局 |
 | --- | --- | --- |
-| Kiln Row（Pell's 門前的街） | 待畫（`pell-ext` 要畫**直式清晨版**；新增 `kiln-row-dawn`） | 一條沿港的窄街，舊紅磚廠房一整排、鐵門都鏽成深紅。**鏡頭在港這邊往街裡拍**：Pell's 在正中，兩層樓高的紅磚，正面一扇高大的鏽紅色**雙開鐵門**（一扇門板跟一個人張開雙臂一樣寬，寬到過得了卡車），門上方一條褪到認不出字的漆招牌，招牌上面一排高窗（有幾格破了）；**大門左邊一扇齊眼高的髒臨街窗**。Pell's 右邊緊鄰 Claire Quinn Glass（見下）；左邊是另一間死掉的玻璃廠；畫面最左遠處的街角是 Rosa's 的小店（清晨關著、鐵捲門拉下，這十集不拍人）。右邊街角轉進去是 Doyle's。黑車停在 Pell's 門前、車頭朝畫面左。港在鏡頭後方（東），清晨的太陽從鏡頭這邊照在廠房正面。 |
+| Kiln Row（Pell's 門前的街） | 待畫（`pell-ext`，句子已改成直式、時間與天氣寫在鏡上；這章畫清晨版） | 一條沿港的窄街，舊紅磚廠房一整排、鐵門都鏽成深紅。**鏡頭在港這邊往街裡拍**：Pell's 在正中，兩層樓高的紅磚，正面一扇高大的鏽紅色**雙開鐵門**（一扇門板跟一個人張開雙臂一樣寬，寬到過得了卡車），門上方一條褪到認不出字的漆招牌，招牌上面一排高窗（有幾格破了）；**大門左邊一扇齊眼高的髒臨街窗**。Pell's 右邊緊鄰 Claire Quinn Glass（見下）；左邊是另一間死掉的玻璃廠；畫面最左遠處的街角是 Rosa's 的小店（清晨關著、鐵捲門拉下，這十集不拍人）。右邊街角轉進去是 Doyle's。黑車停在 Pell's 門前、車頭朝畫面左。港在鏡頭後方（東），清晨的太陽從鏡頭這邊照在廠房正面。 |
 | Pell's 門口（十二年前，回憶） | 待畫（新增 `pell-door-flashback`） | 同一扇雙開鐵門，十二年前漆成深紅、乾淨，門開著，裡面是爐火的橘光；招牌是新的（字在畫框外或虛焦）；夏天下午溫暖偏金的光、微微霧；人行道上停著一台舊的白色廂型車（不入字）。 |
-| Claire Quinn Glass（隔壁） | 待畫（併在 `kiln-row-dawn`；特寫另畫 `claire-studio-door`） | Pell's 右邊一間單層紅磚小店面：一扇積灰的展示窗（裡面隱約幾個空的木架），一扇窄木門，門上一副生鏽的搭扣與掛鎖；窗上方褪色的手漆店名，認不出字。Nora 站在門前搖鎖時，鏡頭在她左後方、店名在畫框上緣外。 |
-| Pell Glassworks／Remelt 主廠房 | `assets/refs/set-remelt.jpg` **只當色調與材質的參考**（橫式、爐子是圓的鋼殼、爐上有可讀的 "Number Three" 字樣、桌上有一個有字的框，都不能照用）；要畫直式三版：`remelt-cold`（第 31–35 集，冷、灰塵）、新增 `remelt-ch4`（第 36–40 集，有管子與空架、沒有證據板與燈箱）、夜版 | **從大門往裡拍是標準方向**（鏡頭背對大門、看向後牆）：<br>**後牆正中**：三號爐，一座巨大的圓頂爐，深紅耐火磚、外面箍著鏽鋼帶，大約兩個人高，一根鋼煙囪往上穿出屋頂；胸口高度一個圓爐口，掛一扇鉸鍊鐵門（門上一個小窺孔）；爐口前地上一塊黑色鋼板；離爐口約三大步，地上一條磨舊的**黃色安全線**橫過整個廠，練習爐那區也在線內。瓦斯管沿後牆離地一膝高，接到爐子右邊一個紅色把手的閥。<br>**後牆右段**：大退火爐（齊胸的鋼箱、站在腳架上）；它右邊一排四個齊腰高的空鋼砂桶。<br>**後牆左段**：倉庫的木門（半開）。<br>**右牆**：上半一排高窗；下面是小練習爐（齊腰高的圓爐、站在鋼腳上，爐口一個餐盤大）、旁邊一張吹玻璃的長凳與一張鋼面滾料台、小退火爐、一層鋼架（Sparks 的歪杯子）、架旁一根紅磚柱（粉筆計數）。一個紅色滅火器掛在爐邊的牆上（沒有字）。<br>**左牆**（長的紅磚牆）：靠大門那一段，比頭高一點是第 36 集釘上的玻璃管，正下方是十二格架；左牆中段一座舊黑板靠著（第 37 集）。<br>**前牆**（大門那面，從裡面看）：大門在中間偏右；大門左邊是那扇臨街窗，窗下是 Peg 的**長木椅**（前左角）；大門上方掛一座舊圓鐘（白面、黑色刻度、沒有數字）；鐘上面是高窗。<br>**中間**：一張很重的長木工作台（公告、草圖、估價單都在這裡）。Sparks 的機車停在大門內右邊。<br>**光**：清晨的太陽從大門與門上高窗照進來（東），白天右牆高窗是冷白光，晚上是爐口的橘光加一盞三腳架工作燈。<br>**反打**（從爐口往大門拍）：大門在正中、背光；Peg 的長椅在畫面**右**前、玻璃管與十二格架在畫面**右**牆、練習爐在畫面**左**。 |
-| 倉庫 | 待畫（新增 `pell-storeroom`） | 三號爐左邊那扇木門進去：沒有窗、一顆燈泡；木架上積灰的舊玻璃罐（標籤都掉了、沒有字），後牆一排六個舊麻袋；一個倒放的木箱上擺著一台舊的鋼製天平（黃銅秤盤、滑砣）；架子旁靠著一張積灰的舊燈箱桌（只當背景，第 41 集用得到，選用）。第 40 集 Nora 跪在木箱前秤料，**門開著**，從門縫看得到三號爐的橘光；她喊口令時站在門檻上，不出門。 |
+| Claire Quinn Glass（隔壁） | 待畫（併在 `pell-ext`；搖鎖的近景從同一張參考圖取景） | Pell's 右邊一間單層紅磚小店面：一扇積灰的展示窗（裡面隱約幾個空的木架），一扇窄木門，門上一副生鏽的搭扣與掛鎖；窗上方褪色的手漆店名，認不出字。Nora 站在門前搖鎖時，鏡頭在她左後方、店名在畫框上緣外。 |
+| Pell Glassworks／Remelt 主廠房 | `assets/refs/set-remelt.jpg` **只當色調與材質的參考**（橫式、爐子是圓的鋼殼、爐上有可讀的 "Number Three" 字樣、桌上有一個有字的框，都不能照用）；要畫直式：`remelt-cold`（第 31–35 集，冷、灰塵）與 `remelt`（第 36–60 集同一個 id、同一句；白天、夜、天亮、黃昏開門幾版，架上放什麼、燈箱、吊燈、木架都寫在鏡上） | **這一格是第 31–60 集 Remelt 唯一的格局（2026-11-12 對齊，第 41–60 集的 bible 照這格）。從大門往裡拍是標準方向**（鏡頭背對大門、看向後牆）：<br>**後牆正中**：三號爐，一座巨大的圓頂爐，深紅耐火磚、外面箍著鏽鋼帶，大約兩個人高，一根鋼煙囪往上穿出屋頂；胸口高度一個圓爐口，掛一扇鉸鍊鐵門（門上一個小窺孔）；爐口前地上一塊黑色鋼板；離爐口約三大步，地上一條磨舊的**黃色安全線**橫過整個廠，練習爐那區也在線內。瓦斯管沿後牆離地一膝高，接到爐子右邊一個紅色把手的閥。<br>**後牆右段**：大退火爐（齊胸的鋼箱、站在腳架上）；它右邊一排四個齊腰高的空鋼砂桶。<br>**後牆左段**：倉庫的木門（半開）；門與爐子之間靠牆一個吹管架（`blowpipe-rack`）。第 55 集起爐口旁兩張圓鋼凳（`steel-stool`）。<br>**右牆**：上半一排高窗；下面是小練習爐（齊腰高的圓爐、站在鋼腳上，爐口一個餐盤大）、旁邊一張吹玻璃的長凳與一張鋼面滾料台、小退火爐、一層鋼架（Sparks 的歪杯子）、架旁一根紅磚柱（粉筆計數）。第 46 集起右牆靠大門那段立一排木架放藍面板（`blue-panel-row`）。一個紅色滅火器掛在爐邊的牆上（沒有字）。<br>**左牆**（長的紅磚牆）：靠大門那一段，比頭高一點是第 36 集釘上的玻璃管，正下方是十二格架；左牆中段一座舊黑板靠著（第 37 集）；第 54–56 集行軍床靠在黑板旁、安全線外。<br>**前牆**（大門那面，從裡面看）：大門（兩扇鏽紅的鉸鍊鐵門，往裡開）在中間偏右；大門左邊是那扇臨街窗，窗下是 Peg 的**長木椅**（前左角）；大門上方掛一座舊圓鐘（白面、黑色刻度、沒有數字）；鐘上面是高窗。<br>**中間**：一張很重的長木工作台，前後向擺（公告、草圖、估價單都在這裡；第 41 集起靠爐子那一頭放燈箱 `light-box`、上方吊一盞工作燈 `work-lamp`、桌下一層放資料夾的層板）。Sparks 的機車停在大門內右邊。<br>**光**：清晨的太陽從大門與門上高窗照進來（東），白天右牆高窗是冷白光，晚上是爐口的橘光加一盞三腳架工作燈。<br>**反打**（從爐口往大門拍）：大門在正中、背光；Peg 的長椅在畫面**右**前、玻璃管與十二格架在畫面**右**牆、練習爐在畫面**左**。 |
+| 倉庫 | 待畫（新增 `pell-storeroom`） | 三號爐左邊那扇木門進去：沒有窗、一顆燈泡；木架上積灰的舊玻璃罐（標籤都掉了、沒有字），後牆一排六個舊麻袋；一個倒放的木箱上擺著一台舊的鋼製天平（黃銅秤盤、滑砣）；架子旁靠著一台積灰的舊描圖燈箱（第 41 集搬到工作台上，就是 `light-box`）。第 40 集 Nora 跪在木箱前秤料，**門開著**，從門縫看得到三號爐的橘光；她喊口令時站在門檻上，不出門。 |
 | Merrow General 婦產科診間 | 待畫（`exam-room`，第 11–20 集清單已有白天版） | 照第 11–20 集：窗在畫面左、門在畫面右；Brandt 坐書桌後、Nora 坐書桌前；**這集桌上只有檯燈與病歷夾的邊，診療床的簾子拉著、不入鏡，沒有任何儀器或螢幕**（審稿 ch4：提示詞寫 `no medical equipment, no screens`）。 |
 | 婦產科候診區 | 待畫（`clinic-waiting`） | 照第 11–20 集：一排灰色軟椅貼牆、矮桌、診間的淺木門在畫面左。第 33 集那個織帽子的孕婦坐在離門最遠的那張。 |
 | 婦產科門外的走廊 | 待畫（新增 `clinic-hallway`；**不是**七樓那條） | 二樓，候診區旁一條短走廊：淺米色的牆、木扶手、一扇窗的白天光從走廊盡頭（畫面右）進來；沒有閃燈、沒有長椅、沒有任何醫療設備。Nora 背貼左牆滑坐下去，Brandt 從畫面左（候診區那頭）走來、蹲在她右邊。 |
@@ -214,15 +218,15 @@
 | Ashford Construction 頂樓會議室 | 待畫（`ashford-boardroom`，要直式） | 一張很長的深色木桌，一整面落地窗對著港（窗在畫面左），沒有標誌、沒有字。Nora 坐在靠門那端（畫面右），Elias 站在桌子對面靠窗，Theo 站在桌尾（遠端）。長桌上一列：租約、保付支票、估價單（華麗鏡頭從桌面高度側拍）。 |
 | Whitlock Home，Grant 的辦公室 | 待畫（新增 `whitlock-office`） | 旗艦店樓上一間白色、很亮的轉角辦公室：兩面玻璃，外面是港邊的天；一張白色大桌，桌後的矮櫃上一只奶油白的 Forever 花瓶（道具句照第 1–3 集）；冷光。Grant 站在窗前（窗在畫面右），手機的光從側面照臉。 |
 | 法院走廊（Dana 的電話） | 待畫（`courthouse-hallway`，第 11–20 集清單） | 照第 11–20 集；第 34 集 Dana 站在高窗前（窗在畫面右）、卷宗夾在左腋下，右手拿手機。 |
-| Kiln Row 對街（Cole 的車） | 同 `kiln-row-dawn` 的白天版 | 從 Pell's 臨街窗往外拍：前景是髒的窗框與 Nora 的右肩，對街港那側的路邊停著珍珠白轎車、車頭朝畫面左，低矮的海堤與灰綠的水在它後面。 |
-| 新渡輪站大廳 | 待畫（新增 `ferry-lobby`；`cast.json` 的 `ferry-terminal` 是第 57 集掛好吊燈的版本，**不能用**） | 剛蓋好、還沒開放的三層樓高大廳：淺色石地板、整片玻璃牆外是港與渡輪碼頭、屋頂一大片天窗；**大廳正中天花板上一個空的鋼吊點**（一個鋼環與一段短鋼索，什麼都沒掛）；沒有人、沒有指標字。第 40 集吊點正下方擺一張摺疊報名桌，Fiona 在桌後；Cole 站在大廳另一頭的玻璃牆邊。 |
+| Kiln Row 對街（Cole 的車） | 同 `pell-ext`（白天版） | 從 Pell's 臨街窗往外拍：前景是髒的窗框與 Nora 的右肩，對街港那側的路邊停著珍珠白轎車、車頭朝畫面左，低矮的海堤與灰綠的水在它後面。 |
+| 新渡輪站大廳 | 待畫（`ferry-lobby`，第 56 集 Fiona 的電話也用它；`ferry-terminal` 是第 57 集掛好吊燈的夜版，**不能用**） | 剛蓋好、還沒開放的三層樓高大廳：淺色石地板、整片玻璃牆外是港與渡輪碼頭、屋頂一大片天窗；**大廳正中天花板上一個空的鋼吊點**（一個鋼環與一段短鋼索，什麼都沒掛）；沒有人、沒有指標字。第 40 集吊點正下方擺一張摺疊報名桌，Fiona 在桌後；Cole 站在大廳另一頭的玻璃牆邊。 |
 | 渡輪站專案辦公室 | 待畫（新增 `ferry-office`） | 大廳旁一間小辦公室：一張會議桌、牆上釘著幾張建築圖（線條，沒有字或虛焦）、一扇玻璃門看得到空大廳。Fiona 站著、規格夾抱在胸前；Nora 坐在會議桌邊。 |
 | Doyle Sand & Batch | 待畫（`sand-supply`，要直式、白天與傍晚兩版） | Kiln Row 右邊街角轉進去：一片碎石院子、一整排木棧板上疊著素面沙袋（`plain unlabeled sand sacks`）、一台堆高機；院子後面一間鐵皮小屋：進門一張積灰的長櫃台，櫃台後牆有一扇門通往後面的小辦公室。Hank 在櫃台後；第 39 集 Grant 斜倚在**那扇辦公室門的門框**上（Hank 的左後方）；Nora 在櫃台前。從櫃台往外看，開著的門外是院子與棧板。 |
 
 ## 道具的樣子
 
 每一鏡的英文正文**一字不差**照抄（大小用身體比）。第 1–20 集已經有的句子不改；拿在手上的照第 1–3 集〈補定〉：抄到描述為止，再接手的位置。
-新道具**還沒**加進 `cast.json`（見〈要加進 cast.json 的〉），寫稿照這張表。
+新道具**已加進 `cast.json`（2026-11-12 對齊）**，id 見最後一節；Remelt 裡的東西第 41–60 集照這張表的同一句。
 
 | 道具 | 每鏡照抄的英文 | 備註 |
 | --- | --- | --- |
@@ -231,17 +235,17 @@
 | 黃色安全線 | `a worn yellow safety line painted across the concrete floor` | 第 33 集起有人在爐前就寫；寫清楚人在線的哪一邊。 |
 | 鋼板 | `a black steel plate on the floor in front of the furnace mouth` | 第 33–34 集練習爐前也有一塊，同一句。 |
 | 小練習爐 | `a small round practice furnace on steel legs, about waist high, its mouth the size of a dinner plate glowing orange` | 第 33–34 集。 |
-| 吹管 | `a long steel blowpipe as long as a man is tall` | 沾著料接 `, a glowing orange gather the size of an orange at its tip`。取代 `cast.json` 的 `blowpipe`（沒有身體比）。 |
+| 吹管 | `a long steel glassblowing pipe about as long as a person is tall` | `blowpipe`，四章同一句（2026-11-12 對齊）；沾著料接 `, a glowing orange gather of molten glass at the far end`。 |
 | 掉下來的那團 | `a glob of glowing orange molten glass the size of an egg` | 第 33 集在半空；第 34 集接 `, hissing on the black steel plate in a puff of white steam, fading from orange to dark red`。 |
 | 歪杯子 | `a small clear hand-blown cup about the size of her fist, leaning to one side, its rim lopsided` | 一排寫 `a row of small clear lopsided hand-blown cups on a steel shelf`；第 40 集 `…, piled in a steel bucket`。 |
-| 粉筆計數 | `short white chalk strokes on the red brick, soft focus` | 不寫數目，Sparks 念。 |
+| 粉筆計數 | `short white chalk strokes on the red brick, soft focus` | `chalk-tally`，右牆紅磚柱上，第 41–60 集同一句；不寫數目，Sparks 念；第 56 集新的一筆接 `, and one fresh chalk stroke set apart at the end`。 |
 | 手電筒 | `a heavy old black flashlight as long as his forearm` | 第 31–32 集，Gus 右手。 |
 | 掛鎖 | `a rusted padlock on a rusted hasp, about the size of her palm` | 第 31 集。 |
 | 名片（回憶） | `a plain white business card, print not readable` | 第 31 集，年輕的 Grant 右手遞出。 |
 | Nora 的外套 | `a dark olive waxed-cotton work jacket, worn open` | 第 31–40 集出門時；在廠裡掛在長椅上方的釘子上。 |
-| Nora 的手機 | `a plain black phone in a clear case, about the size of her palm` | **待章界對齊**；亮起寫 `its screen a soft white glow, seen from the side`；第 39 集砸進桶裡後接 `, its screen cracked, lying at the bottom of an empty steel bin`。 |
+| Nora 的手機 | `a plain black phone in a clear case, no logo, about the size of her palm` | `nora-own-phone`，第 111 天 Peg 替她買的預付手機，第 34–60 集同一支；亮起寫 `its screen a soft white glow, seen from the side`；第 39 集砸進桶裡後接 `, its screen cracked, lying at the bottom of an empty steel bin`。 |
 | 護目鏡（Nora） | 在 `work` 外貌句裡（`clear safety goggles pushed up on her head`） | 第 34 集被拉回時寫 `her goggles knocked down onto her forehead`。 |
-| 護目鏡（Sparks） | `clear wraparound safety glasses` | 在熱爐前一定戴；不用時 `…, hanging from the collar of his T-shirt`。 |
+| 護目鏡（Sparks） | `clear wraparound safety glasses` | `sparks-glasses`，第 41–60 集同一句；在熱爐前一定戴；不用時 `…, hanging from the collar of his T-shirt`。 |
 | Gus 的爐邊裝備 | `a scuffed brown leather apron` / `long tan heat-resistant gloves reaching his elbows` / `a clear face shield on a headband` | 面罩接 `, flipped up` 或 `, pulled down over his face`；在熱爐前三樣都寫。 |
 | 安全帽 | `a scuffed black open-face motorbike helmet` | 第 33 集 Sparks。 |
 | 機車 | `an old black motorbike with no badge, number plate out of frame` | 第 33 集起停在大門內右邊。 |
@@ -250,22 +254,22 @@
 | 舊麻袋 | `old burlap sacks about the size of a pillow, tied at the neck with twine, faded and blank` | 第 40 集；一個寫 `an old burlap sack…`。打開時裡面寫 `pale grey sand`。 |
 | 天平 | `a small old steel beam balance with a brass pan and sliding weights, its markings too fine to read` | 第 40 集，倉庫的木箱上。 |
 | 鈷粉 | `a small glass jar of fine deep-blue powder` / `a small steel measuring spoon` | 第 40 集；不寫白粉、不推到粉的特寫。 |
-| 鋼桶與加料鏟 | `a steel bucket` / `a long-handled steel charging shovel` | 第 40 集。 |
+| 鋼桶與加料鏟 | `a steel bucket` / `a long-handled steel charging shovel` | 第 40 集；第 55 集加料接 `, heaped with pale cullet`。只有 Gus、Sparks 拿。 |
 | 鋼框模 | `a shallow square steel frame mould on a flat steel table` | 第 40 集，倒進去的藍玻璃寫 `molten deep blue glass`。 |
 | 退火爐 | `a steel annealing oven on legs, about chest high, its door shut` | 打開時 `…, its door swung open, warm air shimmering`。 |
-| 藍色樣品片 | `a flat panel of clear deep blue glass like the harbor at dawn, about the size of a large hardcover book, as thick as her little finger, a few tiny seed bubbles inside` | 第 40 集；舉到光裡寫 `…, held up in both hands to the low morning sun`；投在牆上寫 `a patch of deep blue light sliding across the red brick`。 |
+| 藍色樣品片 | `a flat panel of clear deep blue glass like the harbor at dawn, about the size of a large hardcover book, as thick as her little finger, a few tiny seed bubbles inside` | `blue-panel`，第 46–57 集的吊燈面板同一句；第 40 集；舉到光裡寫 `…, held up in both hands to the low morning sun`；投在牆上寫 `a patch of deep blue light sliding across the red brick`。 |
 | 搬家毯 | `a grey quilted moving blanket` | 第 40 集，包著樣品片。 |
 | 紙筒 | `a plain grey cardboard drawing tube as long as her arm` | 第 40 集，她左腋下。 |
-| 空砂桶 | `a row of waist-high empty steel bins` | 第 37 集起；踢翻寫 `…, one tipped on its side`。 |
-| 舊鐘 | `an old round wall clock with a white face and plain black bar markers, no numerals` | 第 39 集十二點寫 `both hands pointing straight up`。 |
+| 空砂桶 | `a row of waist-high empty steel bins` | `sand-bins`，退火爐右邊；第 37 集起；踢翻寫 `…, one tipped on its side`。 |
+| 舊鐘 | `an old round wall clock with a white face and plain black bar markers, no numerals` | `wall-clock`，掛在大門上方，第 41–60 集同一句；第 39 集十二點寫 `both hands pointing straight up`；整點會敲（第 54 集十下）。 |
 | 黑板與粉筆 | `an old wooden-framed blackboard about as wide as her outstretched arms, leaning on the workbench, seen edge-on` / `a stub of white chalk` | 第 37 集；寫字的鏡從黑板側邊或背後拍。 |
 | 長椅 | `a long worn wooden bench against the brick wall` | Peg 的位置；第 40 集她睡在上面。 |
 | Sparks 的外套 | `a worn black zip-up work jacket` | 平常掛在機車把手上；第 40 集 `…, laid over her like a blanket`。 |
-| 玻璃管 | `a long clear glass tube about as long as her outstretched arms and as thick as her wrist, mounted level on the red brick wall on two plain steel brackets, a row of small plain brass bands clamped around it at even spacing, no letters` | 第 36 集起；取代 `cast.json` 的 `case-tracker`。 |
-| 珠子 | `one small amber glass bead about the size of a fingertip` | 停在第一格寫 `…, resting inside the tube against the first brass band`。 |
-| 十二格架 | `an old steel sample rack bolted to the red brick wall below the tube, a long row of empty upright slots, each slot about the size of a hardcover book, no labels` | 第 36 集起，一直空著。 |
+| 玻璃管 | `a long clear glass tube about as long as her outstretched arms and as thick as her wrist, mounted level on the red brick wall on two plain steel brackets, a row of small plain brass bands clamped around it at even spacing, no letters` | `case-tracker`（已改句），第 36–60 集同一句；靠大門那一端開口。 |
+| 珠子 | `one small amber glass bead about the size of a fingertip` | `tracker-bead`；停在第一格寫 `…, resting inside the tube against the first brass band`（第 50 集起第二格 `…, against the second brass band`）。 |
+| 十二格架 | `an old steel sample rack bolted to the red brick wall below the tube, a long row of empty upright slots, each slot about the size of a hardcover book, no labels` | `evidence-rack`，第 36–50 集一直空著；第 51 集起的句子見 `cast.json`（兩片刻好的面板在最左兩格）。 |
 | 梯子 | `a paint-spattered wooden stepladder taller than she is` | 第 36 集。 |
-| 瓦斯閥 | `a gas valve with a red lever handle on a black pipe at knee height` | 第 36–37 集。 |
+| 瓦斯閥 | `a gas valve with a red lever handle and a round dial gauge on a black pipe at knee height beside the furnace, the dial a pale blur` | `gas-valve`（2026-11-12 對齊，加上第 55–60 集要的壓力錶）；爐子右邊；第 36–37 集，第 55 集起 Elias 戴手套扳。 |
 | 新接頭與扳手 | `a new brass gas fitting on a black pipe` / `a heavy steel pipe wrench as long as his forearm` | 第 37 集。 |
 | 技師的工具箱與工作燈 | `a red steel toolbox` / `a portable work light on a short tripod, cold white light` | 第 36–37 集。 |
 | 煙 | `thin grey-black smoke drifting under the high roof` | 第 36 集。 |
@@ -285,7 +289,7 @@
 | Peg 的帆布袋 | `a plain beige canvas tote bag with no print, hanging from her left shoulder` | 同第 1–3 集；放下寫 `…, on the bench beside her`。 |
 | Peg 的無名指 | `a faint pale band of skin on her left ring finger where a ring used to be` | 同第 11–20 集。 |
 | Elias 給的戒指 | `a plain narrow white-gold band with no stone, on her left ring finger` | 同第 20 集。 |
-| 黑車 | `a long black luxury sedan with no badge, number plate out of frame` | 同第 11–20 集；接 `, parked at the curb in front of the steel doors`。 |
+| 黑車 | `a long black luxury sedan with no badge, number plate out of frame` | `black-car`，同第 11–20 集；接 `, parked at the curb in front of the steel doors`。 |
 | Grant 的車 | `a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame` | 同第 4–10 集；第 36 集接 `, idling at the far curb across the street, a white-gloved hand on the wheel`。 |
 | Grant 的咖啡 | `a white paper coffee cup with a lid, no logo` | 第 39 集，他右手。 |
 | Lyle 的照片（插鏡） | `a slightly grainy long-lens photo taken from across a harbor street: Nora in a grey henley and an open dark olive jacket stepping out of a narrow pawnshop door onto the sidewalk, head down` | 第 35 集全畫面插一格（不拍手機）。 |
@@ -306,10 +310,10 @@
 | 角色 | 參考圖 | 第 31–40 集的樣子 |
 | --- | --- | --- |
 | Nora | `assets/refs/nora-portrait.jpg`（r3）、`assets/refs/nora-work.jpg`（r3） | 第 31–32 集 `shoulder`（奶油色毛衣、深色長褲、短靴）加外套道具句；**第 33 集起出門 `henley`**（新：灰色亨利領長袖、深色工裝褲、工作靴、低馬尾，就是 `work` 拿掉圍裙與護目鏡）加外套道具句；在廠裡 `work`（`nora-work.jpg`）。第 40 集 08:58 是 `henley`、袖子捲到手肘（正文另寫 `a faint dusting of blue powder on her forearms`）。回憶 `nineteen`。**要畫兩張全身參考圖**：`henley`（從 `nora-work.jpg`，`latent: image1`，exactly one change：拿掉圍裙與護目鏡）、`work` 全身；**`nineteen` 要畫定妝照**（從 `nora-portrait.jpg` 改年輕、高馬尾）。原聲。一鏡都不笑。左手寫 Elias 的戒指。 |
-| Elias | `assets/refs/elias-portrait.jpg` | 第 31、35、37 集：基本款（炭灰窗格紋三件式、白襯衫開領、白口袋巾），**沒有大衣**；左手在褲袋或畫框外，右手做事。`elias-furnace.jpg` 這十集不用（他不上爐）；它的外貌句帶手套與疤，見最後一節。原聲。 |
+| Elias | `assets/refs/elias-portrait.jpg` | 第 31、35、37 集：基本款（炭灰窗格紋三件式、白襯衫開領、白口袋巾），**沒有大衣**；左手在褲袋或畫框外，右手做事。`elias-furnace.jpg` 這十集不用（他不上爐）；`furnace` 的外貌句已拿掉手套與疤（第 55 集起用）。原聲。 |
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 第 35、39 集：基本款（淺石色西裝、淡藍襯衫、細圓金屬框眼鏡、玻璃袖扣）；第 31 集回憶 `young`（**要畫定妝照**：25 歲、廉價灰西裝、識別證掛繩、同一副眼鏡）。說話句不寫 warm、keynote、smooth。原聲。 |
 | Peg | `assets/refs/peg-portrait.jpg` | 第 34、35、37、39、40 集：`visit`（燕麥色開襟衫）；七月不穿 `coat`。眼鏡每一鏡戴在臉上；左手無名指一圈淡色皮膚。原聲。 |
-| Gus Moretti | **待畫，必須最先畫** | 第 31（只有下巴與嘴）、32、33、34、36、37、39、40 集。外貌句照 `cast.json`，但**不寫疤**（〈全劇固定〉）；老花眼鏡寫 `small steel reading glasses low on his nose`；爐邊另加皮圍裙、長手套、面罩三個道具句。70 歲、駝背、頭頂禿、兩側白髮、白色無袖汗衫、舊工作褲。原聲。 |
+| Gus Moretti | **待畫，必須最先畫** | 第 31（只有下巴與嘴）、32、33、34、36、37、39、40 集。外貌句照 `cast.json`（已拿掉疤、老花眼鏡寫 `small steel reading glasses low on his nose`）；爐邊另加皮圍裙、長手套、面罩三個道具句。70 歲、駝背、頭頂禿、兩側白髮、白色無袖汗衫、舊工作褲。原聲。 |
 | Rocco "Sparks" Moretti | **待畫，必須先畫** | 第 33–40 集（第 35 集在當鋪）：基本款（平頭、小銀耳釘、黑 T 恤、灰工作褲、前臂褐色隔熱護套）；熱爐前加護目鏡道具句；第 33 集安全帽。原聲；大聲、急；可以露齒大笑的只有他（第 33、37 集）。 |
 | Dr. Helen Brandt | **待畫**（第 1–3、11–20 集清單已有） | 第 33 集：基本款（白袍、深藍刷手服、銀金色短鮑伯、方框眼鏡）。原聲。 |
 | Theo Park | **待畫**（第 11–20 集清單） | 第 34、35、38 集：基本款；平板道具句、寫哪隻手。原聲；面無表情。 |
@@ -328,7 +332,7 @@
 
 **同框撞臉**（一鏡最多三張有名字的臉）：
 
-- **Gus 與 Peg**（都六、七十歲、都戴眼鏡）：第 37 集 Peg 抓他的肩會同框，可以，寫清楚分得開的地方：Gus 男、駝背、禿頂、白色無袖汗衫外罩皮圍裙、老花眼鏡低在鼻樑上；Peg 女、灰色短燙髮、玳瑁框、燕麥色開襟衫、木珠項鍊。
+- **Gus 與 Peg**（都六、七十歲、都戴眼鏡）：第 37 集 Peg 抓他的肩會同框，可以，寫清楚分得開的地方：Gus 男、駝背、禿頂、白色無袖汗衫外罩皮圍裙、老花眼鏡低在鼻樑上；Peg 女、直的短灰髮往一邊梳、玳瑁框、燕麥色開襟衫、木珠項鍊。
 - **Sparks 與 Hank**（都是平頭）：不同框（第 38–39 集 Sparks 在 Remelt、Hank 在 Doyle's）。**Sparks 與 Cole**：第 36 集 Cole 只有手；第 40 集渡輪站 Sparks 在小貨車上（不進大廳）。
 - **Grant 與 Elias**（細圓金屬框 vs 細銀絲框、都穿灰西裝）：這十集不同場（第 35 集一個在辦公室、一個在會議室，交叉剪接；第 39 集 Elias 不在）。
 - **Theo、Gus、Peg、Elias、Grant、Brandt 都戴眼鏡**：每鏡寫清楚是哪一副（Theo 圓玳瑁框、Gus 小鋼框老花低在鼻樑、Peg 玳瑁框、Elias 細銀絲框、Grant 細圓金屬框、Brandt 方框）。
@@ -339,7 +343,7 @@
 **先畫順序**（台詞在畫面上、用原聲的人最先，照第一次出場排）：
 1. Gus → 2. Nora `nineteen` → 3. Grant `young` → 4. Sparks → 5. Nora `henley`（全身）→ 6. Nora `work`（全身）→ 7. Ashford 的技師 → 8. Fiona → 9. Hank；
 Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，若還沒畫，Brandt 排在 5 之前、Theo 與 Dana 排在 6 之後、Cole 排在 9 之後。
-場景：10. Kiln Row 直式清晨版（含 Claire Quinn Glass）→ 11. Pell's 主廠房冷的版本（`remelt-cold` 直式，帆布蓋著爐子）→ 12. Pell's 門口回憶版 → 13. 婦產科門外走廊 → 14. 主廠房第四章版（`remelt-ch4`，白天與夜、點爐前後）→ 15. 倉庫 → 16. 頂樓會議室直式 → 17. Grant 的辦公室 → 18. 渡輪站大廳（空、吊點）→ 19. 渡輪站專案辦公室 → 20. Doyle's 院子與櫃台（白天、傍晚）。
+場景：10. Kiln Row 直式清晨版（含 Claire Quinn Glass）→ 11. Pell's 主廠房冷的版本（`remelt-cold` 直式，帆布蓋著爐子）→ 12. Pell's 門口回憶版 → 13. 婦產科門外走廊 → 14. 主廠房（`remelt`，白天與夜、點爐前後）→ 15. 倉庫 → 16. 頂樓會議室直式 → 17. Grant 的辦公室 → 18. 渡輪站大廳（空、吊點）→ 19. 渡輪站專案辦公室 → 20. Doyle's 院子與櫃台（白天、傍晚）。
 道具若要參考圖：先畫三號爐（冷、蓋帆布、點著三種）、玻璃管加珠子加十二格架（一張）、藍色樣品片（顏色要整章一致，也是第 46、57 集的吊燈色）。
 
 ## 細綱必修（每集一行）
@@ -356,7 +360,7 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
   懸念照審稿：她**自己越線**（左腳跨過黃線一步）去扳他的手，他一慌甩太快，那團玻璃滑下管口——剪在半空，下一集才落地。
 - **第 34 集**：開場 10 秒四鏡：Gus 戴手套的手揪住她後衣領往後拽 → 那團玻璃落在鋼板上、嘶一聲冒白煙（離她靴尖一臂遠）→ Gus（面罩推在頭頂）"Behind the line! You want to lose your feet?" → 她的臉，護目鏡被撞落到額頭，喘。
   閃回兩秒：十九歲的她、一隻滿是煤灰的**右手**抓住她圍裙肩帶往後拉（暖金光，沒有臉、沒有左手、不拍那團玻璃落在哪）；"Somebody pulled me back before." 之後 Gus 一鏡：嘴閉著、眼睛移開、轉身去關練習爐的門。
-  跳三天不用字卡：光變成傍晚、Peg 第一次出現在長椅上、架上一整排歪杯子、粉筆一片（"Twenty!"）。Peg 那兩句寫在她自己的鏡上、頭不抬、鉛筆在動。
+  跳一天不用字卡：光變成傍晚、Peg 第一次出現在長椅上、架上一整排歪杯子、粉筆一片（"Twenty!"）。Peg 那兩句寫在她自己的鏡上、頭不抬、鉛筆在動。
   Dana 的電話兩頭剪接（她在法院走廊、原聲）；"Same Reyes who said half a pill wasn't enough?" 寫成 Nora 的一口氣。Theo：她要照第二條付市價（補一句 Nora："Market rent. Clause two."，選用），所以他來報數；平板轉向她時鏡頭在平板背後。懸念：Peg 從她肩後看、倒抽一口氣、**鉛筆**掉在水泥地上（插鏡，鉛筆彈一下）。
 - **第 35 集**：開場 10 秒四鏡：戒指放上玻璃、她的手指按著不鬆（插鏡）→ Peg 的食指把戒指推過去 "I pawned mine so you'd keep yours." → Peg "Now sell it." → Nora "Sell. Not pawn."；接著老闆放大鏡 "Eleven-eight."、Sparks "That's a month?"（他的鏡，嘴張大，不笑）。
   會議室：保付支票從她外套內袋拿出來放上桌；"Clause two. I pay for my own doors." 與 "His ring. My furnace." 各一鏡；她簽租約的最後一筆往外一挑（只拍筆尖與紙邊；細綱的華麗鏡頭：像拉玻璃棒），臉寫 `lips pressed together, corners level, chin lifted`、不笑。Elias **站著**右手簽、左手在褲袋。
@@ -369,7 +373,7 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
   Gus 哭照〈細綱自相矛盾〉：爐門推到一道縫、退兩步跪在黃線上，"Walter. She's lit. You hear me? She's lit." 哭出聲（4–5 秒）；Peg 走過去抓住他的肩，她自己的臉在下一鏡哭。黑板那個字從側邊拍；"Great name!" Sparks 露齒笑；Peg "Inside voice." 一邊擦眼睛。
   懸念：她轉身，從她右肩後拍大門：Elias 在門外的霧裡逆光、左手在褲袋，看她一拍、轉身走；他不進門、不說話。
 - **第 38 集**：開場 10 秒四鏡：工作台上壓著的公告（綠玻璃塊，插鏡）→ 門口的 Theo "Boss said leave it here."（平板抱在胸前，說完就走）→ 她拿起公告（紙背朝鏡頭）→ 她念 "Ferry terminal chandelier. Blind competition. No names."。
-  Fiona 三句照〈細綱自相矛盾〉改成 "Nine a.m., ten days from today."；空大廳的華麗鏡頭：她抬頭看吊點，天窗的光落在她仰起的臉上，齊肩髮、工作外套。草圖可以拍正面（水彩、沒有字）；"How blue?" "The harbor. Right at dawn."。
+  Fiona 三句照〈細綱自相矛盾〉改成 "Nine a.m., eleven days from today."；空大廳的華麗鏡頭：她抬頭看吊點，天窗的光落在她仰起的臉上，齊肩髮、工作外套。草圖可以拍正面（水彩、沒有字）；"How blue?" "The harbor. Right at dawn."。
   Doyle's：她說 "Twenty bags."（補）；Hank 收現金時嘴角一提（閉嘴）、眼睛不看她；"Truck's Thursday."；懸念：她走出去、他打電話，**只拍 Hank 這頭**，Grant 的聲音不出現。
 - **第 39 集**：開場 10 秒四鏡（蒙太奇，每格換光）：Hank 在櫃台講電話 "Thursday."（早上）→ Nora 在 Remelt 工作台邊聽、下巴繃緊（下午）→ Hank "Monday, swear."（另一天）→ 第 126 天晚上 Hank "Out of stock."。之後 "Then refund me." "Store credit." 與「喀」。
   一家一家打：Nora 的鏡嘴不動或嘴不入鏡、電話那頭是 Gemini（`supplier-phone`）；最後一家那兩句在她的臉上（她在聽），"I'm due at nine." 是她的原聲鏡。
@@ -404,9 +408,9 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
 | Nora 什麼時候笑（s01-t18） | 21 | 45 | 31–40 一鏡都不笑 |
 | Elias 的左手（s01-t15） | 16 | 60 | 31、35、37 每一鏡寫左手在哪 |
 
-**第 41 集要接的**：第 128 天（7/22 週三，**待章界對齊**），Remelt；三號爐點著第 13 天；追蹤管的珠子在 Report；十二格架 0/12；渡輪站的件是「九號」（"Entry nine."），結果約兩週後（約第 141 天，s01-t29 第 46 集收）；那片藍玻璃在渡輪站，不在廠裡；Cole 已經打電話給 Grant（第五章用）。
-倉庫裡還剩兩袋 Pell's 的舊料；Doyle's 欠她 $640 的店內抵用；Nora 自己的錢這章淨增 $32（餘額待章界對齊）；**下個月房租第 140 天到期**；Peg 的當票第 128 天要續（$40，選用一句帳）；Nora 的手機裂在最左邊那個空砂桶底（要不要撿起來由第五章定）。
-第 41 集的燈箱：建議用倉庫裡那張舊燈箱桌（第 40 集倉庫的背景可以先放，選用）；兩張影本與婚前草圖資料夾要從 Ashford 家帶來（待章界對齊）。熱爐禁令還在（到約第 186 天）。Elias 最後一次露面是第 37 集；Dana、Sparks 在第 41 集。
+**第 41 集要接的**（2026-11-12 對齊，第 41–50 集 bible 照這段寫）：第 128 天（7/22 週三），Remelt；三號爐點著第 13 天；追蹤管的珠子在 Report；十二格架 0/12；渡輪站的件是「九號」（"Entry nine."），結果約兩週後（約第 141 天，s01-t29 第 46 集收）；那片藍玻璃在渡輪站，不在廠裡；Cole 已經打電話給 Grant（第五章用）。
+倉庫裡還剩兩袋 Pell's 的舊料；Doyle's 欠她 $640 的店內抵用（不回收）；Nora 身上只剩幾塊錢、帳本 Nora 欄欠 Peg 約 $330；Peg 約 $930（下一筆退休金第 138 天）；Gus 與 Sparks 的工錢欠著；**下個月房租第 142 天到期**；Peg 的當票第 128 天要續（$40，Peg 付，選用一句帳）；Nora 的手機她從砂桶撿回來了（裂了、還能用）。
+第 41 集的燈箱：倉庫那台舊描圖燈箱搬到工作台靠爐子那頭（`light-box`）；兩張影本 Dana 帶來、婚前草圖資料夾 Nora 從 Ashford 家帶來。熱爐禁令還在（到第 186 天）。Elias 最後一次露面是第 37 集；Dana、Sparks 在第 41 集。
 
 ## 每集鏡數目標
 
@@ -417,7 +421,7 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
 | 31 | 125 | 75 字 | 16 | 41–45 | 三個時空（街、回憶、廠內）；回憶 3–4 鏡；吵架隔著車頂正反打 |
 | 32 | 120 | 50 字 | 10 | 40–44 | 一個地方；哭的鏡與扯帆布有幾鏡 4–5 秒，不切碎 |
 | 33 | 115 | 50 字 | 13 | 39–43 | 四個地方（診間、候診區、走廊、Pell's）；走廊哭 4–5 秒 |
-| 34 | 120 | 60 字 | 13 | 40–44 | 跳三天；電話兩頭交叉剪；閃回 2 秒 |
+| 34 | 120 | 60 字 | 13 | 40–44 | 跳一天；電話兩頭交叉剪；閃回 2 秒 |
 | 35 | 120 | 65 字 | 14 | 39–43 | 三個地方（當鋪、會議室、Grant 辦公室）交叉剪；照片插鏡 2 秒 |
 | 36 | 125 | 55 字 | 13 | 42–46 | 三段時間；掛管子的動作鏡多；回火 2 鏡、各 2 秒 |
 | 37 | 130 | 25 字 | 7 | 46–50 | 台詞最少、動作與光最多；點爐那一刻與 Gus 哭各 4 秒；Elias 在門外的鏡留 3 秒 |
@@ -427,8 +431,10 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
 
 ## 要站主決定的
 
+（2026-11-12 起彙整在 `s1-decisions-e021-e060.md`，與其他三章的同類問題合併；這裡保留原文與理由。）
+
 1. **錢**：戒指賣 **$11,800**（老闆念 "Eleven-eight."），保付支票付第一個月 $11,000、還 Peg 砂錢 $128、二十袋砂 $640，**Nora 這章淨增 $32**（剛好一袋，就是細綱「最後的錢」）。
-   租約按月、全包（含水電瓦斯）、含設備與存料、修繕歸房東，條款都不念。**建議照這份**：一枚鑽戒剛好換一個月，"That's a month?" 才好笑也才痛；數字只在 "Eleven-eight."、"Eleven thousand a month."、"thirty-two bucks a bag" 三處說出口。開頭的餘額與通勤花費待章界對齊。
+   租約按月、全包（含水電瓦斯）、含設備與存料、修繕歸房東，條款都不念。**建議照這份**：一枚鑽戒剛好換一個月，"That's a month?" 才好笑也才痛；數字只在 "Eleven-eight."、"Eleven thousand a month."、"thirty-two bucks a bag" 三處說出口。開頭的餘額（Peg 約 $1,403、Nora 約 $26）與通勤（公車一人 $2）已在章界對齊時接上第 21–30 集的帳。
 2. **第 36 集 Cole 的車**：細綱寫黑色轎車。**建議改成 Grant 的珍珠白轎車**：第 10–20 集的黑車是 Elias 的，再來一輛黑車觀眾會以為 Elias 回來守著；白車加白手套，Nora 一眼認得。另一個做法是照細綱用黑車，但要另畫一輛跟 Elias 的分得開的車（多一個道具）。
 3. **可讀的字一律不上後製**：細綱與審稿 ch4 都說「後製上字」（Pell's 招牌、Claire 的店名、管子上的六個階段、黑板上的 Remelt、公告）。**建議全部念出來、後製也不上**：
    跟第 4–10 集的簽名、第 11–20 集的化驗報告一樣（那兩章已經把 "added in post" 全部取消），三種語言的字幕與縮圖也不用另做字卡；六個階段由 Nora 掛管子時念一次。
@@ -437,10 +443,10 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
 5. **Gus 的疤**：外貌句寫兩條前臂與手上滿是舊燙疤，試鏡證明細的疤會畫成紅點與傷口。**建議外貌句改成 `weathered sun-spotted forearms and thick-knuckled hands`、不寫疤**；他的十二年用台詞與眼睛交代。不改的話，每鏡要寫 `faint flat pale patches, no redness`，而且要先試一張。
 6. **細綱沒有、這份補上或改掉的台詞**：第 31 集 "Dana's filing the forgery report this morning." "With the police. It goes to the prosecutor."（改時態）；第 33 集 Nora 喊的口令 "Turn. Keep turning." "Breathe. Short."；
    第 34 集（選用）Nora "Market rent. Clause two."；第 35 集老闆 "Eleven-eight."、Elias "Repairs are the landlord's. It's in the lease."、（選用）Peg "Sand. Paid back."；第 36 集 Nora 念六個階段、Gus "Everybody at the door."；
-   第 38 集 Fiona "Nine a.m., ten days from today."（取代 "the tenth"）、Nora "Twenty bags."；第 39 集（選用）Nora "Keep your credit."；第 40 集（選用）Sparks "Is that ours?" Gus "Came with the lease."、（選用）Gus "Short soak. She'll hold."、Fiona "Entry nine."。建議照收：都是補漏洞或讓動作看得懂；"Came with the lease." 守住第二條，建議收。
+   第 38 集 Fiona "Nine a.m., eleven days from today."（取代 "the tenth"）、第 34 集 Peg "Twenty cups. Two days."（取代 "Three days."，第 33 集挪到第 112 天的結果）、Nora "Twenty bags."；第 39 集（選用）Nora "Keep your credit."；第 40 集（選用）Sparks "Is that ours?" Gus "Came with the lease."、（選用）Gus "Short soak. She'll hold."、Fiona "Entry nine."。建議照收：都是補漏洞或讓動作看得懂；"Came with the lease." 守住第二條，建議收。
 7. **Nora 的新造型 `henley`**：第 33 集起出門穿（`work` 拿掉圍裙與護目鏡），工作外套是道具。建議收：從 `nora-work.jpg` 只改一處就畫得出來，跟第 31–32 集的奶油色毛衣分開，看得出「她回去工作了」。
 8. **回憶要兩張新定妝照**（Nora `nineteen`、Grant `young`，審稿 ch4 第 31 集）：第 31 集回憶兩人露臉、Grant 說話。**建議畫**：這兩張之後的回憶（第 34 集、第 52 集以後、第三季）還會用；第 34 集的回憶只用 `nineteen` 與一隻手。
-9. **日曆**：照季細綱的天數，第 110 天是 7/4 週六（國慶），婦產科不開。**建議這十集不說日期**（已改 Fiona 那句），觀眾看不出來；章界對齊時如果整季天數要動，順手讓第 33 集落在平日。
+9. **日曆**（2026-11-12 對齊時已照做）：季細綱的第 110 天是 7/4 週六（國慶），婦產科不開；第 117 天是週六，渡輪站辦公室不開。已把第 33 集挪到第 112 天（週一）、第 34–36 集跟著排、第 38 集挪到第 116 天（週五），點爐（第 116 天）與截止（第 127 天）不動；跟著改兩句台詞（"Twenty cups. Two days."、"Nine a.m., eleven days from today."）。**建議照這樣**；台詞照細綱的話，得讓 Sparks 的第一天落在第 110–111 天的連假（站主另給理由）。
 10. **三號爐的樣子**：`set-remelt.jpg` 的爐子是圓鋼殼、爐上有可讀的 "Number Three"，桌上還有一個有字的框，又是橫式；細綱寫「兩個人高的磚爐」。**建議照這份重畫直式**（深紅耐火磚圓頂、鏽鋼帶、沒有字），`set-remelt.jpg` 只當色調與材質的參考。
 11. **候診區那頂帽子的顏色**：細綱 "a tiny hat, like the one Nora never finished"。**建議淡黃色**（形狀一樣、顏色不同）：Nora 那頂奶油色的在 Peg 那裡，同色會讓觀眾以為是同一頂。
 
@@ -450,50 +456,12 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
 
 ## 要加進 cast.json 的
 
-這份沒有動 `cast.json`（其他章的 bible 同時在寫，會互撞）。合併時照下面加或改；英文照抄。
+**已加進 cast.json（2026-11-12 對齊）**，英文跟上面一字不差；跟其他三章重複的東西只留一個 id（括號裡是對齊時改的地方）。
 
-**新造型（shot_looks）**
-
-- `nora` → `henley`：`a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut shoulder-length hair tied in a low ponytail, a grey henley with long sleeves, dark work trousers, sturdy boots`
-  （從 `nora-work.jpg`，`latent: image1`，exactly one change：拿掉圍裙與頭上的護目鏡。）
-
-**新路人（extras）**
-
-- `ashford-tech`（Ashford Construction 的值班技師，第 37 集，原聲，要定妝照）：`a 38-year-old Mexican-American man, short black hair, a neatly trimmed moustache, a plain navy work jacket with no lettering, a tool belt`；voice（備案）`{"provider": "gemini", "name": "Iapetus", "style": "General American accent, natural conversational pace, clear diction; 38-year-old gas technician, matter-of-fact and brief"}`。
-- `waiting-mother`（候診區的孕婦，第 33 集，不說話、不畫定妝照）：`a woman about 30, heavily pregnant, dark curly hair, a loose sage-green dress, seen in soft focus or from the side, her hands knitting`；voice null。
-- `supplier-phone`（其他砂料行的老闆，第 39 集，只有電話裡的聲音）：appearance `voice only, heard through Nora's phone`；voice `{"provider": "gemini", "name": "Algenib", "style": "General American accent, natural conversational pace, clear diction; a tired small-business owner on a phone line, apologetic and flat"}`（換一個不跟 Gus 撞的聲音也可以；Gus 在畫面上是原聲，Algenib 只是他的備案）。
-
-**新場景（sets）**
-
-- `kiln-row-dawn`：`vertical view of a narrow waterfront street of old red-brick glassworks at dawn, rusted dark red steel doors, low sun from behind the camera lighting the brick fronts, thin morning mist lifting; in the center a two-story brick glassworks with tall rusted double steel doors and a long faded painted sign above them whose letters are worn illegible, a row of high windows with a few broken panes, a grimy street-level window to the left of the doors; right next door a small one-story brick shop with a dusty display window and a narrow wooden door with a rusted padlock, a faded painted name above the window worn illegible; far down the street on the left corner a tiny chowder shack with its shutter down; no readable text, no logos`
-- `pell-door-flashback`：`vertical view of the same tall double steel doors of a brick glassworks twelve years ago, freshly painted dark red and standing open onto the orange glow of furnaces inside, a clean painted sign above them out of frame, warm hazy golden summer afternoon light, no readable text`
-- `remelt-ch4`（第 36–40 集；`remelt` 留給有證據板與燈箱的第 41 集以後）：`vertical view inside an old red-brick glassworks: at the back a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a round mouth at chest height behind a hinged steel door, a black steel plate on the floor before it and a worn yellow safety line painted across the concrete floor; to its right a chest-high steel annealing oven and a row of waist-high empty steel bins; on the left brick wall a long clear glass tube mounted level with small brass bands and below it an old steel rack with a long row of empty upright slots; a long heavy wooden workbench in the middle; high windows; warm orange furnace light against cool window light, no readable text, no lettering on the furnace`
-- `pell-storeroom`：`a small windowless storeroom in an old glassworks lit by one bare bulb: wooden shelves of dusty old glass jars with no labels, a row of old burlap sacks tied with twine against the back wall, faded and blank, a small old steel beam balance with a brass pan on an upturned wooden crate, an old dusty light table leaning against a shelf, a half-open wooden door with orange furnace glow beyond it, no readable text`
-- `clinic-hallway`：`a short, quiet hospital clinic hallway by day: pale beige walls, a wooden handrail along one wall, a window of soft white daylight at the far end, a plain floor, no medical equipment, no screens, no signs, no readable text`
-- `whitlock-office`：`a bright white corner office above a home-goods flagship store: two glass walls onto a pale harbor sky, a large white desk, a low white cabinet behind it with one tall cream-white glass vase, cool clean light, no logos, no readable text`
-- `ferry-lobby`：`vertical view of a brand-new, empty ferry terminal hall three storeys tall: a pale stone floor, a wall of glass onto the harbor and the ferry dock, a large skylight in the roof, and at the center of the ceiling one bare steel hanging point with a short steel cable and nothing hanging from it; no people, no signs, no readable text`
-- `ferry-office`：`a small project office off a new ferry terminal hall: a meeting table, architectural line drawings pinned to the wall soft and out of focus, a glass door onto the empty hall, plain daylight, no readable text`
-- `sand-supply` 改寫（要有院子、櫃台、後面的辦公室門）：`vertical view of a small industrial sand and batch supplier: a gravel yard with pallets stacked with plain unlabeled sand sacks and a forklift; at the back a corrugated-steel office with a long dusty counter and, behind the counter, an open door into a small back office; white dust in the air, no readable signs`
-- `remelt-cold` 改寫：拿掉 `stacked old sand sacks`（麻袋在倉庫，第 40 集才拖出來），爐子換成上面三號爐的句子加 `under a huge dusty grey canvas tarp`。
-
-**新道具（props）**：照〈道具的樣子〉的英文句加，id 建議：
-`furnace-no3`、`furnace-tarp`、`safety-line`、`steel-plate`、`practice-furnace`、`hot-glob`、`crooked-cup`、`chalk-tally`、`gus-flashlight`、`claire-padlock`、`young-grant-card`、`nora-jacket`、`nora-own-phone`（待章界對齊）、`sparks-glasses`、`gus-apron`、`gus-gloves`、`gus-face-shield`、`sparks-helmet`、`sparks-motorbike`、`dust-respirator`、`pell-batch-sacks`、`beam-balance`、`cobalt-jar`、`charging-shovel`、`casting-mould`、`annealer`、`blue-panel`、`moving-blanket`、`drawing-tube`、`sand-bins`、`wall-clock`、`blackboard`、`long-bench`、`sparks-jacket`、`tracker-bead`、`evidence-rack`、`stepladder`、`gas-valve`、`gas-fitting`、`tech-toolbox`、`smoke`、`fire-extinguisher`、`cashiers-check`、`lease`、`burner-estimate`、`grant-coffee`、`lyle-photo`、`ferry-notice`、`chandelier-sketch`、`fiona-binder`、`fiona-badge`、`entry-form`、`hank-receipt`、`hank-phone`、`sand-pallets`、`waiting-hat`、`gus-pickup`。
-改：`case-tracker` → 〈道具的樣子〉玻璃管那一句（銅環、沒有字、水平），珠子另立 `tracker-bead`（琥珀色）；`blowpipe` → 有身體比的那一句。
-
-**現有外貌句帶道具、表情，或跟參考圖不合的**（合併時一起改）：
-
-- `elias` 的 `furnace`：外貌句寫了 `heat-resistant gloves` 與「左手手套摘下時」的疤，**疤到第 60 集前不能出現**，手套是道具；`elias-furnace.jpg` 只拍到胸口、沒有手。建議外貌句只留臉、黑 T 恤推高袖子、皮圍裙；手套另立道具 `elias-heat-gloves`；疤另立第 60 集的插鏡句（照 `screen-test/README.md` 的教訓：手放小、淡色平疤、`no redness`）。
-- `gus`：`both forearms and hands covered in old pale healed burn scars`（細的疤會畫成紅點，試鏡教訓）；`reading glasses` 沒寫在哪裡。建議改成 `weathered sun-spotted forearms and thick-knuckled hands`、`small steel reading glasses low on his nose`（見〈要站主決定的〉第 5 條）。
-- `claire`：`fine healed burn marks on her fingertips`，同上的風險；建議拿掉。
-- `hank`：`avoids eye contact` 是表情與姿勢，移到每鏡的眼睛；`white sand in the creases of his fingers` 可以留（是外貌）。
-- `fiona`：`an ID badge on a lanyard with no readable text, a thick spec binder` 是道具，移到 props（`fiona-badge`、`fiona-binder`）。
-- `cole`：`eyes down` 是表情，移到每鏡；`white gloves` 留（是他的服裝，也是第 36、40 集認人的記號）。`s1_episodes` 還寫 `1`，要加 5、8–9、29、36、40。
-- `grant`：`s1_episodes` 沒有 35、39（這十集他在畫面上），要加；`young` 外貌句的 `a lanyard` 可以留（服裝），細綱寫 rimless，`cast.json` 的細圓金屬框是對的。
-- `nora` 的 `work`：`clear safety goggles pushed up on her head` 是道具寫在外貌句裡，但 `nora-work.jpg` 畫了，**留著**（換掉會跟參考圖不合）；之後要摘護目鏡的鏡用 `henley`。
-- `nora` 的 notes：`work apron once Remelt opens (31 on)` 改成「第 31–32 集 `shoulder`、第 33 集起出門 `henley`、在廠裡 `work`」。
-- `sparks`、`dr-brandt`、`theo`、`dana`、`peg` 的外貌句這十集照用，沒有問題。
-- 場景 `remelt`：寫了 `a wall of engraved clear glass panels (the evidence wall)`、`a few glass beads`、`a light box on a long table`，第 31–40 集都還沒有（0/12、一顆珠子、燈箱第 41 集才出現）；而且 `a large round glass furnace` 跟細綱的磚爐不合。第四章用新的 `remelt-ch4`，`remelt` 留給第 41 集以後並把爐子改成三號爐那一句。
-- 場景圖 `set-remelt.jpg`：橫式；爐子正面有可讀的 "Number Three"；右邊桌上有一個有字的框；「證據牆」畫成窗格裡的花瓶；玻璃管掛在窗上方。只當色調參考（〈要站主決定的〉第 10 條）。
-- 場景 `ferry-terminal`：已經掛著吊燈（第 57 集的樣子），第 38、40 集用新的 `ferry-lobby`。
-- 場景 `remelt-cold`：`stacked old sand sacks` 放在主廠房，跟第 40 集「從倉庫拖出來」衝突（見上面的改寫）。
-- 道具 `case-tracker`：`one or two clear glass beads` → 第四章一顆琥珀色（透明珠在透明管裡看不見）；`Stage names added in post if needed` 改成「階段名稱由 Nora 念，不上字」。
+- **造型**：`nora` 新增 `henley`（從 `nora-work.jpg`，exactly one change：拿掉圍裙與頭上的護目鏡）；`work` 的袖子改成 `a grey henley with long sleeves`（`nora-work.jpg` 的袖子放到手腕，捲袖寫在鏡上；護目鏡留在句子裡，跟參考圖一致）；notes 寫進第 21–60 集的造型。`elias` 的 `furnace` 改成第 51–60 集 bible 的句子（拿掉手套與疤）。
+- **角色的修正**：`gus`（拿掉燙疤、老花眼鏡寫位置；站主第 5 條待確認）、`claire`（拿掉指尖燙痕）、`hank`（拿掉 avoids eye contact）、`fiona`（拿掉識別證與規格夾，改道具 `fiona-badge`、`fiona-binder`、`fiona-watch`）、`cole`（拿掉 eyes down，`s1_episodes` 補到 57）、`grant`、`sparks`、`fiona` 的 `s1_episodes`。
+- **路人**：新增 `ashford-tech`、`waiting-mother`、`supplier-phone`（Gemini Algenib；Gus 在畫面上用原聲，這個名字只是他的備案）。
+- **場景**：`pell-ext` 改成直式、不寫時間（原稿的 `kiln-row-dawn` 併進來，清晨寫在鏡上）；`remelt` 改成〈場景格局〉那一格（原稿的 `remelt-ch4` 併進來，第 36–60 集同一個 id）；`remelt-cold` 改句（拿掉地上的砂袋、換成三號爐）；`sand-supply` 改句；新增 `pell-door-flashback`、`pell-storeroom`（舊燈箱桌改成舊描圖燈箱）、`clinic-hallway`、`whitlock-office`、`ferry-lobby`、`ferry-office`。原稿的 `claire-studio-door` 不另立，從 `pell-ext` 取景。
+- **道具**：新增 `furnace-no3`、`furnace-tarp`、`safety-line`、`steel-plate`、`practice-furnace`、`hot-glob`、`crooked-cup`、`chalk-tally`、`gus-flashlight`、`claire-padlock`、`young-grant-card`、`nora-jacket`、`nora-own-phone`、`sparks-glasses`、`gus-apron`、`gus-gloves`、`gus-face-shield`、`sparks-helmet`、`sparks-motorbike`、`dust-respirator`、`pell-batch-sacks`、`beam-balance`、`cobalt-jar`、`measuring-spoon`、`steel-bucket`、`charging-shovel`、`casting-mould`、`annealer`、`blue-panel`、`moving-blanket`、`drawing-tube`、`sand-bins`、`wall-clock`、`blackboard`、`chalk-stub`、`long-bench`、`sparks-jacket`、`tracker-bead`、`evidence-rack`、`stepladder`、`gas-valve`、`gas-fitting`、`pipe-wrench`、`tech-toolbox`、`tripod-work-light`、`smoke`、`fire-extinguisher`、`cashiers-check`、`lease`、`burner-estimate`、`grant-coffee`、`lyle-photo`、`ferry-notice`、`chandelier-sketch`、`fiona-binder`、`fiona-badge`、`fiona-watch`、`entry-form`、`date-stamp`、`hank-receipt`、`hank-phone`、`sand-pallets`、`waiting-hat`、`gus-pickup`。
+  改：`case-tracker` → 玻璃管那一句（銅環、沒有字、水平；珠子另立 `tracker-bead`，琥珀色）；`blowpipe` → 四章同一句；`nora-ring` 的 note。原稿的 `elias-heat-gloves` 用第 51–60 集的 `heat-gloves`。
+- `set-remelt.jpg` 只當色調參考（〈要站主決定的〉第 10 條）；`ferry-terminal` 改成第 57 集的夜版，第 38、40、56 集用 `ferry-lobby`。

@@ -4,7 +4,7 @@
 劇情照 `../season-01.json` 第 21–30 集（2026-11-10 審稿後的改版），名字、地點與程序照 `../GLOSSARY.md`，外貌、聲音、場景、道具的英文提示詞照 `cast.json`，
 審稿決定照 `../review/2026-11-10-ch3.md`、`../review/2026-11-10-season-01.md`，分鏡的教訓照 `../review/2026-11-12-*.md`。
 接在 `s1-bible-e011-e020.md` 後面（第 20 集分鏡 `docs/videos/till-the-verdict-e020/script.md` 的最後一場與〈五張清單〉已對過）；這份跟細綱、`GLOSSARY.md` 或 `cast.json` 不一樣的地方，以這份為準。
-這份**沒有改 `cast.json`**（第 4、5、6 章的 bible 同時在寫）：這十集要的新造型、路人、場景、道具，與舊句子要修的地方，全部列在最後〈要加進 cast.json 的〉，由合併的人加進去；加進去之前，寫稿照這份的英文句。
+**章界已對齊（2026-11-12）**：20→21 對過第 20 集分鏡，30→31、帳、手機與共用的 id、英文句都跟第 31–60 集的 bible 對過；這十集要的新造型、路人、場景、道具與舊句子的修正**已加進 `cast.json`（2026-11-12 對齊）**，id 見最後一節。站主要決定的事彙整在 `s1-decisions-e021-e060.md`（擋住寫稿的放在最上面）。
 
 ## 全劇固定
 
@@ -83,7 +83,7 @@
 
 | 集 | 最後一鏡（= 下一集第一鏡的同一刻；跳時間的寫用什麼畫面交代） |
 | --- | --- |
-| 20 → 21 | 法院正門台階，第 99 天 11:15，晴（照第 20 集分鏡 c52）：Grant（基本款）站在台階中段，右手剛把對摺兩次的結婚申請書塞進西裝左胸內袋；Sienna（基本款紅色套裝）低他一級、面向他，左手還拿著筆，閉嘴的笑剛停住；台階下路邊（遠、虛焦）黑車後門開著，Nora（`decree`，左手無名指 Elias 的戒指）、Peg（`visit`）、Theo 正要上車。**第 21 集第一鏡跳到約 30 分鐘後（約 11:45）**：交代時間與地方的是冷杉間的山路與正午的陽光：黑車在畫面左下往右上爬坡；車裡 Elias（基本款，沒有大衣）開車、左手在車窗下緣以下，Theo（基本款）在副駕駛座、平板在左手，Nora（`decree`）在 Theo 後面、Peg（`visit`，帆布袋在腿上）在 Elias 後面。兩只行李箱、包著毛衣的玻璃磚、草圖資料夾、牛皮紙信封在後車廂（不拍）。 |
+| 20 → 21 | （2026-11-12 對齊：照第 20 集分鏡 c52 與〈五張清單〉5，人、造型、黑車後門、上車的三個人都一致。）法院正門台階，第 99 天 11:15，晴（照第 20 集分鏡 c52）：Grant（基本款）站在台階中段，右手剛把對摺兩次的結婚申請書塞進西裝左胸內袋；Sienna（基本款紅色套裝）低他一級、面向他，左手還拿著筆，閉嘴的笑剛停住；台階下路邊（遠、虛焦）黑車後門開著，Nora（`decree`，左手無名指 Elias 的戒指）、Peg（`visit`）、Theo 正要上車。**第 21 集第一鏡跳到約 30 分鐘後（約 11:45）**：交代時間與地方的是冷杉間的山路與正午的陽光：黑車在畫面左下往右上爬坡；車裡 Elias（基本款，沒有大衣）開車、左手在車窗下緣以下，Theo（基本款）在副駕駛座、平板在左手，Nora（`decree`）在 Theo 後面、Peg（`visit`，帆布袋在腿上）在 Elias 後面。兩只行李箱、包著毛衣的玻璃磚、草圖資料夾、牛皮紙信封在後車廂（不拍）。 |
 | 21 → 22 | Ashford 家一樓大廳，第 100 天 21:00，吊燈的暖光、窗外最後一點藍色暮光。從玄關往裡看：長桌往畫面深處延伸，桌上擺滿菜、三副餐具；Elias（`turtleneck`，大衣剛用右手掛上玄關的掛鉤，左手插在褲子左口袋）站在玄關與大廳交界、鏡頭的左前方，背影與右側臉；Nora（`shoulder`）坐在長桌左側中間她的位子，回頭看他；Peg（`visit`，深藍圍裙）站在大廳最裡面左邊的書房門前、兩手抱胸，剛說完 "Eat."、嘴閉著。第 22 集第一鏡：Elias 看著 Peg。 |
 | 22 → 23 | Nora 的客房，第 100 天 23:30，床頭燈暖黃、窄窗外全黑。Nora（`shoulder`）坐在床緣，右手拿著 Peg 的手機（通話剛斷，螢幕只見側面的白光）、低頭看著它；Peg（`visit`）站在敞開的房門口，剛說完 "Family plan. His idea."、嘴閉著；床頭櫃上那頂毛線帽，窄窗的窗台上玻璃磚。第 23 集第一鏡：Peg 從帳本上拔下一根迴紋針。 |
 | 23 → 24 | Ashford 家長桌，第 101 天 17:30，吊燈。Nora（`shoulder`）站在長桌左側，右手剛把請帖推到 Peg 面前（平放、只見紙的厚度與金邊）；Peg（`visit`）坐在對面，帳本攤在左手邊，抬眼看她；Nora 剛說完 "He's never seen it."。**第 24 集第一鏡跳到第 102 天 20:30 的書房門口**：交代時間的是長桌已經收乾淨、三把椅子推進桌下、書房門縫下一道光；Nora 站在書房門前，剛敲完門。 |
@@ -93,7 +93,7 @@
 | 27 → 28 | 舞台中央，第 108 天 20:25，全場暗，只剩展示台頂燈箱的白光從下往上照。Nora（`gown`，白棉手套，手拿包夾在左腋下）彎身在展示台前，兩手剛把倒過來的 No. 1 立在燈箱上、正要鬆開；玻璃罩放在她右腳邊的台上；大螢幕在她身後一層淡光；台側 Grant 在陰影裡（臉看不清）；燈控室裡 Ray 的手還在推桿上（遠）。第 28 集第一鏡：光從瓶底往上爬。 |
 | 28 → 29 | 舞台中央，20:32，全場的燈剛亮回來。No. 1 已正放在燈箱上、蓋回玻璃罩；Nora（`gown`，白棉手套，眼淚在臉上）站在展示台右邊，看著畫面左的 Grant；Grant（基本款）在台中偏左，右手舉著自己的麥克風、嘴剛停在 "My ex-wife—"，臉上練過的閉嘴微笑；Sienna 在講台邊、左手空著，提詞卡散在她腳邊；主持人在台右邊緣（只見肩與手上的麥克風）。第 29 集第一鏡：Grant 重新開口。 |
 | 29 → 30 | 後台走廊頭（從舞台右側側門進來的地方），20:45，硬的白光。Cole（白手套，黑西裝）擋在 Nora 面前，剛說完 "He has something to show you."；Nora（`gown`，脫下的白手套與手拿包在左手）面對他；走廊深處中段，牆上的鐵網燈泡剛慢慢暗一下又亮回來，燈下站著 Grant（虛焦、背光，臉看不清）。第 30 集第一鏡：她從 Cole 身邊走過去，走向那盞燈。 |
-| 30 → 31 | 後台走廊中段，第 108 天 20:58。鐵網燈泡下，Nora（`gown`，眼睛濕，左手無名指 Elias 的戒指，右手拿著疊在一起的兩張影本、手拿包夾在左腋下）面向走廊盡頭；Peg（`visit`，喘著、眼鏡上有淚）在她左邊半步；鐵門關著；Grant 已經走出畫面（往大廳那頭）；走廊盡頭最後一盞頂燈下，Elias（基本款，左手插在褲子左口袋）站著沒動，Theo（基本款，平板在左手）在他左邊，Elias 剛說完 "Clause two."。**第 31 集跳到第 109 天約 05:20 的 Kiln Row**（約八個半小時）：交代時間與地方的是天亮前灰金色的光、生鏽的鋼門、黑車停下、Nora 已換下禮服（建議 `shoulder`），眼睛還紅；中間（開回山上、一夜沒睡、兩張影本由 Theo 拍照傳給 Dana）都不拍，由第 31 集台詞交代。 |
+| 30 → 31 | 後台走廊中段，第 108 天 20:58。鐵網燈泡下，Nora（`gown`，眼睛濕，左手無名指 Elias 的戒指，右手拿著疊在一起的兩張影本、手拿包夾在左腋下）面向走廊盡頭；Peg（`visit`，喘著、眼鏡上有淚）在她左邊半步；鐵門關著；Grant 已經走出畫面（往大廳那頭）；走廊盡頭最後一盞頂燈下，Elias（基本款，左手插在褲子左口袋）站著沒動，Theo（基本款，平板在左手）在他左邊，Elias 剛說完 "Clause two."。**第 31 集跳到第 109 天（7/3 週五）05:20 的 Kiln Row**（約八個半小時；2026-11-12 對齊，第 31–40 集 bible 的接點表照這格寫）：交代時間與地方的是剛出海面的低太陽、散開的海霧、生鏽的雙開鐵門、黑車停下；Nora 換成 `shoulder` 外罩她婚前的舊工作外套（道具句 `nora-jacket`），眼睛還紅；Elias 基本款、沒有大衣、自己開車，Theo、Peg 不在。中間（開回山上、一夜沒睡、Theo 把兩張影本拍照傳給 Dana、天亮前送到 Dana 那裡）都不拍，由第 31 集台詞交代。 |
 
 ## 帳
 
@@ -113,7 +113,7 @@
 | 107（7/1） | Peg 的退休金 **$1,350** | | $1,403 | $26 | 不拍、不說 |
 | 108 | | | 約 $1,403 | 約 $26 | 發表會；Elias 開車，不花錢 |
 
-- 第 30 集結束時：Peg 約 **$1,403**（退休金剛進），Nora 自己約 **$26**；Nora 欠 Peg 一半菜錢約 **$80**（帳本 Nora 欄）、欠 Ashford **一件禮服**（"Owed to Ashford"）。第 31 集 Elias 說 "Experts cost money. Lawyers cost money." 時，她身上就是這 $26，第 35 集才賣掉舊婚戒。
+- 第 30 集結束時（第 31–40 集 bible 從這裡接，2026-11-12 對齊）：Peg 約 **$1,403**（退休金剛進），Nora 自己約 **$26**；Nora 欠 Peg 一半菜錢約 **$80**（帳本 Nora 欄）、欠 Ashford **一件禮服**（"Owed to Ashford"）。第 31 集 Elias 說 "Experts cost money. Lawyers cost money." 時，她身上就是這 $26，第 35 集才賣掉舊婚戒。
 - Peg 的當票每三十天續期一次（第 98 天續過），下一次是第 128 天（7/22），不在這十集。
 - 公車：山腳有站，走到站約 10 分鐘；山腳 → 港邊市區約 20 分鐘、一人 $2。山腳一間便利店（賣預付 SIM 卡）走路 10 分鐘。
 
@@ -121,7 +121,7 @@
 
 - **Peg 的手機**（`an older black phone in a worn brown case, about the size of her palm`）：Grant 替她付的家庭方案，第 1–100 天一直開著、一直在她的帆布袋或開襟衫口袋。第 22 集 23:30 在 Peg 房裡響，Peg 接、拿到 Nora 房門口遞給她，通話後 Nora 拿在右手。
   第 23 集 23:31 Nora 用拉直的迴紋針頂出 SIM 卡托，舊 SIM 卡面朝下丟進 Nora 床頭櫃的抽屜（一直留在那裡，之後可當證據，不在這十集用）；第 101 天 09:30 換上 Nora 買的新 SIM 卡，**新號碼 Grant 不知道**。之後在 Peg 身上：第 25 集平放在長桌上開擴音（Dana）；第 26–30 集在車上 Peg 用它看 Lyle 的直播。
-- **Nora 的白手機**：一直鎖在 Bev 的櫃台抽屜，這十集不出現。**Nora 這十集沒有手機**。
+- **Nora 的白手機**：一直鎖在 Bev 的櫃台抽屜，第一季不再出現。**Nora 這十集沒有手機**；第 111 天 Peg 在山腳便利店替她買一支預付手機（`nora-own-phone`，記在帳本的 Nora 欄，第 31–40 集 bible），她第 34 集起才有自己的號碼。
 - Grant 的黑手機：這十集不拍。Sienna 的手機（新）：`a slim phone in a plain red case, about the size of her palm`，第 22 集**左手**拿著貼左耳。Dana 的手機：第 29 集錄語音時右手拿著。Theo 的平板：第 21、22、24、26、29、30 集，螢幕一律背對鏡頭，寫哪隻手拿（預設左手）。
 - Lyle 的手機：第 28 集起舉著直播（只見背面與白光），第 30 集追進走廊。
 
@@ -150,7 +150,7 @@
 - 律師函：第 105 天（第 25 集）掛號寄到 Ashford Construction（給 Mrs. Ashford 的郵件都寄到公司，Theo 簽收，不拍），Theo 傍晚帶回來："Certified. For you."。長白信封、一個綠色的掛號貼紙（沒有字）；裡面兩頁釘在一起、三折：第一頁是信（Nora 只念 "Disrupt the event." "Damage any exhibit."），**第二頁是財產協議簽名頁的影本**（附件；"My signature. Their copy."）。Fisk 不入鏡，信從不正面入鏡。
 - 第 25 集最後她把信摺好壓在禮服盒底下；第 26 集前收進手拿包（不拍）；第 27 集細綱 "Fisk's letter still in her clutch" 照寫；第 30 集她抽出來、撕下第二頁。
 - **設計權轉讓書影本**：第 30 集 Grant 從西裝內袋拿出、右手遞給她：一張影印紙，婚禮之前簽的、把 Forever 的設計權轉給公司（Grant 念）。原件在 Fisk／公司手上。
-- 第 30 集兩張疊在一起舉到鐵網燈泡前：兩張薄紙透光，兩個簽名的影子疊成同一團、看不出字形（簽名連後製也不上，照第 4–10 集）。第 30 集結束兩張都在她右手；第 31 集起交給 Dana（第 109 天早上 Dana 向警方報案，第 31 集台詞交代）。
+- 第 30 集兩張疊在一起舉到鐵網燈泡前：兩張薄紙透光，兩個簽名的影子疊成同一團、看不出字形（簽名連後製也不上，照第 4–10 集）。第 30 集結束兩張都在她右手；第 109 天天亮前 Theo 把它們送到 Dana 那裡（不拍），Dana 當天早上向警方報案（第 31 集台詞交代）；第 41 集 Dana 帶到 Remelt（第 41–50 集 bible）。
 - Dana 手上（第 99 天起）：法院給的財產協議完整副本、簽好的三條。Nora 的行李箱裡：牛皮紙信封（化驗報告、領藥紀錄、監管紀錄副本）。半顆藥在實驗室。
 
 **毛線帽、玻璃磚、行李、草圖、鑰匙**
@@ -206,8 +206,8 @@
 
 | 場景 | 參考圖 | 格局 |
 | --- | --- | --- |
-| 黑車裡（白天） | 待畫（`elias-car` 的白天版；`cast.json` 的句子寫死了夜與雨，見〈要加進 cast.json 的〉） | 同第 19 集的車：Elias 駕駛座（左），Theo 副駕駛座，**Nora 在 Theo 後面（右後）、Peg 在 Elias 後面（左後）**。從副駕駛座往後拍 Nora 與 Peg；從後座中間往前拍 Theo 的右側臉與擋風玻璃外的山路；Elias 只拍右側臉與後腦，左手在車窗下緣以下。窗外冷杉、正午陽光一格一格閃過（寫慢）。 |
-| 上山的路與 Ashford 家外觀 | 待畫（`ashford-ext`；白天、夜兩版） | 山腰的冷杉林裡，灰色清水模的長方盒子嵌進山坡；**下坡那面是一整面牆、只有兩扇小窗**：下面那扇是廚房的窗、上面那扇是 Nora 客房的窄窗。車道從山下的路穿過冷杉、繞到屋子上坡那面的大門（深色木門）。第 21 集車上看出去是下坡那面（hook 的畫面）；第 21 集夜裡從下坡遠拍，整棟只亮那兩扇窗。 |
+| 黑車裡（白天） | 待畫（`elias-car` 白天版；`cast.json` 的句子已拿掉夜與雨，天氣寫在鏡上） | 同第 19 集的車：Elias 駕駛座（左），Theo 副駕駛座，**Nora 在 Theo 後面（右後）、Peg 在 Elias 後面（左後）**。從副駕駛座往後拍 Nora 與 Peg；從後座中間往前拍 Theo 的右側臉與擋風玻璃外的山路；Elias 只拍右側臉與後腦，左手在車窗下緣以下。窗外冷杉、正午陽光一格一格閃過（寫慢）。 |
+| 上山的路與 Ashford 家外觀 | 待畫（`ashford-house-ext`；白天、夜兩版） | 山腰的冷杉林裡，灰色清水模的長方盒子嵌進山坡；**下坡那面是一整面牆、只有兩扇小窗**：下面那扇是廚房的窗、上面那扇是 Nora 客房的窄窗。車道從山下的路穿過冷杉、繞到屋子上坡那面的大門（深色木門）。第 21 集車上看出去是下坡那面（hook 的畫面）；第 21 集夜裡從下坡遠拍，整棟只亮那兩扇窗。 |
 | 玄關 | 待畫（新增 `ashford-entry`） | 深色木大門往裡開；左牆一排黑鋼掛鉤、下面一張矮長凳；水泥地；正前方一個寬開口通進一樓大廳，從玄關看得到長桌的近端與吊燈。Elias 的大衣掛在掛鉤上（第 21 集最後）。 |
 | 一樓大廳：長桌與廚房 | 待畫（`ashford-dining`；要直式、加樓梯與迴廊） | 從玄關往裡看：挑高的大廳，一張很長的深色胡桃木長桌往畫面深處延伸，桌子正上方一盞低吊燈；**右牆是開放的不鏽鋼廚房**（雙門冰箱在近端、爐子在中段、爐子上方一扇小窗＝外觀那扇廚房窗、中島）；**左牆是懸空的水泥樓梯、黑鋼欄杆**，往上接二樓的迴廊（迴廊沿左牆俯看大廳）；大廳最裡面左邊，迴廊底下三級台階上去是書房門。座位：Elias 坐近端主位（背對玄關）、Nora 坐左側中間、Peg 坐右側（靠廚房）；Theo 不坐。 |
 | 書房門 | 待畫（`ashford-study`） | 大廳最裡面左邊三級台階、一小段水泥走道盡頭的深色木門，門縫下一道光、門邊一張小桌。書房裡這十集只拍到第 24 集門開著時的暗影：一張桌、一盞關著的燈、空椅子；不拍細節。 |
@@ -217,17 +217,17 @@
 | 玻璃屋客廳（夜、窗簾拉滿） | 待畫（新增 `glass-house-living-night`） | 照第 6–7 集的客廳，但每一面玻璃都拉上深灰窗簾、只有檯燈；Sienna 坐在低矮灰沙發左端，**左手**拿手機貼左耳，身後餐桌那頭 Grant（基本款，外套脫掉、淺藍襯衫）坐著，虛焦；矮櫃上 No. 1 原來的位置空著（Grant 已拿去店裡）。只用在第 22 集電話那幾鏡。 |
 | Whitlock Home 旗艦店（白天） | 待畫（新增 `flagship-store`） | 港邊市區的街角：整面玻璃店面，**櫥窗裡一張直立大海報，Grant 抱著白花瓶（沒有字）**；門在畫面左、門邊一塊空白的小黃銅牌。店裡淺色石地板，**左邊一張長白櫃台（店員）**、**右邊最亮的一面牆：從地到天花板的白色層板，每格上方一條燈，一排一排一模一樣的 Forever**。Nora 從門口往裡走，右轉到那面牆。最裡面一道臨時白牆擋著後面的活動廳（發表會一週後）。 |
 | 發表會入口 | 待畫（新增 `launch-entrance`） | 旗艦店最裡面、活動廳門口：一張蓋著布的小報到桌，後面一面空白的背板；暖光；客人的背影虛焦。第 26 集開場。 |
-| 發表會大廳 | 待畫（`launch-stage`；改句子，見最後一節） | **沒有窗的挑高活動廳**。從觀眾席看：正前方一個低的黑色舞台，舞台後牆上方一面大螢幕（現場鏡頭拍展示台，平常是花瓶的畫面、沒有字）；**舞台正中一座腰高的白色展示台，頂面是發光的燈箱，上面玻璃罩裡是 No. 1**；舞台左邊（畫面左）一座細講台（Sienna）；舞台兩端各有幾級台階；**舞台右邊（畫面右）一扇側門通後台走廊**，主持人平常站在台右邊緣。台下一排排白椅：**第一排正中是 Nora，第一排最左端（畫面左）是 Crane，第一排右邊靠走道是 Lyle**；**第二排最右端（畫面右）是 Elias**；攝影師與記者站在右側走道前段；Theo 站在側門邊的牆前。**燈控室在大廳右牆、靠舞台那頭的高處（一個小陽台）**，從觀眾席看在畫面右上，追光從那裡斜打下來，照得到第一排的臉；第 27 集她在台上抬頭看的是右上方。反打（從舞台往觀眾席拍）時左右相反：Elias 在畫面左、Crane 在畫面右。 |
+| 發表會大廳 | 待畫（`launch-stage`；句子已改） | **沒有窗的挑高活動廳**。從觀眾席看：正前方一個低的黑色舞台，舞台後牆上方一面大螢幕（現場鏡頭拍展示台，平常是花瓶的畫面、沒有字）；**舞台正中一座腰高的白色展示台，頂面是發光的燈箱，上面玻璃罩裡是 No. 1**；舞台左邊（畫面左）一座細講台（Sienna）；舞台兩端各有幾級台階；**舞台右邊（畫面右）一扇側門通後台走廊**，主持人平常站在台右邊緣。台下一排排白椅：**第一排正中是 Nora，第一排最左端（畫面左）是 Crane，第一排右邊靠走道是 Lyle**；**第二排最右端（畫面右）是 Elias**；攝影師與記者站在右側走道前段；Theo 站在側門邊的牆前。**燈控室在大廳右牆、靠舞台那頭的高處（一個小陽台）**，從觀眾席看在畫面右上，追光從那裡斜打下來，照得到第一排的臉；第 27 集她在台上抬頭看的是右上方。反打（從舞台往觀眾席拍）時左右相反：Elias 在畫面左、Crane 在畫面右。 |
 | 燈控室 | 待畫（新增 `launch-booth`） | 小陽台：一台沒有標籤的燈控台（一排推桿）、旁邊一支追光燈、矮牆外看得到斜下方的舞台與第一排。Ray 戴耳麥站在燈控台前。第 27 集兩三鏡、第 28 集最後一鏡（可以只拍手）。 |
-| 後台走廊（服務走廊） | 待畫（`backstage`；改句子） | 從舞台右側的側門進來：一條窄的白色走廊、地上貼著黑膠帶的電線；**中段左牆一扇灰色鐵門通後巷（車停在外面），鐵門上方一盞空白的小綠燈箱（不寫字），鐵門旁牆上一顆罩著黑鐵網的燈泡**（第 29 集暗一下、第 30 集兩張影本舉到它前面）；再往裡疊著折疊椅；**盡頭一扇關著的卸貨門、上面一盞頂燈**（Elias 站的地方，"the corridor's last light"）。從走廊頭往裡拍：鐵門在畫面左；從盡頭往回拍：鐵門在畫面右。 |
+| 後台走廊（服務走廊） | 待畫（`backstage`；句子已改） | 從舞台右側的側門進來：一條窄的白色走廊、地上貼著黑膠帶的電線；**中段左牆一扇灰色鐵門通後巷（車停在外面），鐵門上方一盞空白的小綠燈箱（不寫字），鐵門旁牆上一顆罩著黑鐵網的燈泡**（第 29 集暗一下、第 30 集兩張影本舉到它前面）；再往裡疊著折疊椅；**盡頭一扇關著的卸貨門、上面一盞頂燈**（Elias 站的地方，"the corridor's last light"）。從走廊頭往裡拍：鐵門在畫面左；從盡頭往回拍：鐵門在畫面右。 |
 | Dana 的事務所 | 待畫（新增 `dana-office`） | 小間律師事務所，傍晚到夜：木桌、一疊淺黃卷宗、一盞綠燈罩的檯燈、筆電螢幕背對鏡頭；身後窗外是暗的港口與幾點燈。第 25 集她坐著、手機在桌上開擴音（她自己用的是手機的擴音，嘴對著桌面方向說）；第 29 集她站在窗前、右手拿手機貼近嘴錄語音。四分之三側臉朝畫面左。 |
-| Pell 廠，十二年前（回憶） | 待畫（`pell-flashback`；改句子，拿掉場景裡的人） | 磚造廠房、幾座發光的爐；**三號爐**圓形發光的爐口在畫面右；一張木頭的吹玻璃工作椅（兩側鐵軌）；暖金色的霧。十九歲的 Nora 站在爐前、兩手握著吹管，Walter 站在她身後、兩手覆在她的手上；鏡頭從爐的那一側斜拍兩人（爐光從畫面右打在臉上）。廠裡其他工人只在虛焦的背景、不露臉（**不放 Soot**：m08、m12 到後面幾季才揭）。 |
+| Pell 廠，十二年前（回憶） | 待畫（`pell-flashback`；句子已改，拿掉場景裡的人） | 磚造廠房、幾座發光的爐；**三號爐**圓形發光的爐口在畫面右；一張木頭的吹玻璃工作椅（兩側鐵軌）；暖金色的霧。十九歲的 Nora 站在爐前、兩手握著吹管，Walter 站在她身後、兩手覆在她的手上；鏡頭從爐的那一側斜拍兩人（爐光從畫面右打在臉上）。廠裡其他工人只在虛焦的背景、不露臉（**不放 Soot**：m08、m12 到後面幾季才揭）。 |
 | 後巷裡的黑車（選用） | 用 `elias-car` 夜版 | 車停在活動廳鐵門外的後巷，傍晚轉暗；Peg 一個人在後座，兩手捧著手機，螢幕的白光照著她的臉（從車窗外拍）。第 26 或 29 集一鏡（〈要站主決定的〉第 9 條）。 |
 
 ## 道具的樣子
 
 每一鏡的英文正文**一字不差**照抄（大小用身體比）。第 1–20 集已經有的句子不改；拿在手上的照第 1–3 集〈補定〉：抄到描述為止，再接手的位置。
-新道具還沒加進 `cast.json`（見最後一節）；`forever-vase`、`invitation`、`poker-chip`、`blowpipe` 四個舊條目的英文沒有身體比或會讀出字，**以下表為準**。
+新道具與 `forever-vase`、`invitation`、`poker-chip`、`blowpipe` 四個舊條目的修正**已加進 `cast.json`（2026-11-12 對齊）**，句子跟下表一字不差；跟第 31–60 集共用的東西（吹管、黑車、Lyle 的相機、閃光）四份 bible 用同一句。
 
 | 道具 | 每鏡照抄的英文 | 備註 |
 | --- | --- | --- |
@@ -266,43 +266,43 @@
 | 提詞卡 | `a small stack of plain white cue cards about the size of her palm, blank on both sides` | 第 26、28 集 Sienna **左手**；掉落後 `…, scattered on the black stage floor`。 |
 | 麥克風 | `a black handheld microphone with no logo` | Grant 一支、主持人一支；寫是誰的、哪隻手。 |
 | Crane 的籌碼 | `a red casino-style poker chip with no lettering, about as wide as his thumb is long` | 第 26、28–29 集，在他右手指間翻；第 28 集 `…, stopped between his fingers`。 |
-| Lyle 的相機 | `a black DSLR camera with no logo on a plain strap` | 第 26 集；閃光寫 `its flash firing once, soft and white`。 |
+| Lyle 的相機 | `a black DSLR camera with no logo on a plain strap` | `lyle-camera`（第 46–47、57 集同一句）；第 26 集；閃光寫 `its flash firing once, soft and white`。 |
 | Lyle 的手機 | `a black phone held up sideways, seen from the back, its screen a soft white glow` | 第 28–30 集直播。 |
 | 前排的手機 | `two or three phones held up in the dark, seen from the back or the side, only their soft white glows` | 第 28 集；不寫「每一支」。 |
 | 閃光 | `a single soft white camera flash, then another two beats later` | 第 26 集打在她臉上；不寫一排同時閃。 |
 | 追光 | `a hard white follow-spot beam slanting down from high on the right, a sharp-edged circle of light on her face and shoulders` | 第 26–27 集。 |
 | 小綠燈箱 | `a small dim green light box above the door, blank` | 第 29–30 集鐵門上方；不寫 exit（會畫成字）。 |
-| 吹管（回憶） | `a long steel glassblowing pipe about as long as she is tall, a glowing orange gather of molten glass at the far end` | 第 28 集；`cast.json` 的 `blowpipe` 沒有身體比，以這句為準。 |
+| 吹管（回憶） | `a long steel glassblowing pipe about as long as a person is tall` | 第 28 集沾著料接 `, a glowing orange gather of molten glass at the far end`。`blowpipe`，第 31–60 集同一句（2026-11-12 對齊）。 |
 | Elias 的大衣 | `a dark charcoal wool overcoat` | 第 15–19 集的道具句抄到 overcoat 為止（`worn open` 是穿著時的狀態）；第 21 集最後他右手掛上掛鉤：`a dark charcoal wool overcoat, hanging on a black steel peg`。 |
 | 毛線帽 | `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm` | 同第 1–3 集；第 21 集接 `, lying on a white pillow`，之後接 `, on the nightstand`。 |
 | 玻璃磚 | `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside` | 同第 4–10 集；第 21 集接 `, on the deep concrete windowsill`。 |
 | 檯燈（客房） | `a small concrete bedside lamp with a white shade, warm light` | 第 21–23 集。 |
 | Elias 的戒指 | `a plain narrow white-gold band with no stone, on her left ring finger` | 同第 20 集；每一鏡拍到她左手就寫。 |
-| 黑車 | `a long black luxury sedan with no badge, number plate out of frame` | 同第 15–20 集；第 21 集接 `, climbing a wooded hill road in sunshine`；第 26–30 集接 `, parked in a narrow alley behind the store`。 |
+| 黑車 | `a long black luxury sedan with no badge, number plate out of frame` | `black-car`，同第 15–20 集；第 21 集接 `, climbing a wooded hill road in sunshine`；第 26–30 集接 `, parked in a narrow alley behind the store`。 |
 | Theo 的平板、Peg 的帳本、帆布袋、行李箱、帳本裡的當票 | 照第 4–20 集原句 | |
 
 ## 人物與參考圖
 
 | 角色 | 參考圖 | 第 21–30 集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3） | 第 21 集第 99 天整天到第一夜 `decree`（還沒換下法院那套）；第 21 集最後到第 25 集 `shoulder`（第 24 集鏡前起與第 25 集第一鏡 `gown`）；第 26–30 集 `gown`（霧灰長禮服；`cast.json` 的句子要拿掉 "no jewelry, composed and still"，見最後一節）加手拿包道具句；第 27–29 集白棉手套。左手無名指每鏡寫 Elias 的戒指。第 28 集回憶 `nineteen`（十九歲、高馬尾；建議 T 恤寫成霧灰色，〈要站主決定的〉第 10 條）。**要畫兩張全身參考圖**：`gown`（從定妝照 `latent: image1`，只換衣服）、`nineteen`（同一張臉年輕十二歲，先試 `latent: image1` 加「十九歲、高馬尾」，不像再單獨畫）。原聲。一鏡都不笑。 |
-| Peg | `assets/refs/peg-portrait.jpg` | 第 21–25、30 集 `visit`（燕麥色開襟衫；**`cast.json` 寫 "short permed grey hair"，定妝照是直的短灰髮往一邊梳**，以定妝照為準，見最後一節）；煮飯時加圍裙；眼鏡每一鏡戴在臉上；左手無名指淡色戒痕。第 26–29 集在車上（選用一鏡）。原聲。不笑。 |
-| Elias | `assets/refs/elias-portrait.jpg` | 第 21 集車上基本款（沒有大衣）；第 21 集最後、第 22、24、25 集 `turtleneck`（黑色高領衫、炭灰長褲；`cast.json` 的句子要拿掉大衣，大衣寫道具句）；第 26–30 集基本款（炭灰窗格紋三件式、白襯衫開領、白口袋巾）。**要畫一張全身參考圖**（`turtleneck`，從定妝照 `latent: image1`；第 11–20 集清單的大衣全身照若已畫，這張只換衣服）。原聲。不笑。左手見〈全劇固定〉。 |
+| Nora | `assets/refs/nora-portrait.jpg`（r3） | 第 21 集第 99 天整天到第一夜 `decree`（還沒換下法院那套）；第 21 集最後到第 25 集 `shoulder`（第 24 集鏡前起與第 25 集第一鏡 `gown`）；第 26–30 集 `gown`（霧灰長禮服；`cast.json` 已拿掉 "no jewelry, composed and still"）加手拿包道具句；第 27–29 集白棉手套。左手無名指每鏡寫 Elias 的戒指。第 28 集回憶 `nineteen`（十九歲、高馬尾；T 恤已照〈要站主決定的〉第 10 條的建議寫成霧灰色）。**要畫兩張全身參考圖**：`gown`（從定妝照 `latent: image1`，只換衣服）、`nineteen`（同一張臉年輕十二歲，先試 `latent: image1` 加「十九歲、高馬尾」，不像再單獨畫）。原聲。一鏡都不笑。 |
+| Peg | `assets/refs/peg-portrait.jpg` | 第 21–25、30 集 `visit`（燕麥色開襟衫；`cast.json` 已改成跟定妝照一致的直的短灰髮往一邊梳，不是燙髮）；煮飯時加圍裙；眼鏡每一鏡戴在臉上；左手無名指淡色戒痕。第 26–29 集在車上（選用一鏡）。原聲。不笑。 |
+| Elias | `assets/refs/elias-portrait.jpg` | 第 21 集車上基本款（沒有大衣）；第 21 集最後、第 22、24、25 集 `turtleneck`（黑色高領衫、炭灰長褲；`cast.json` 已拿掉大衣，大衣寫道具句 `elias-overcoat`）；第 26–30 集基本款（炭灰窗格紋三件式、白襯衫開領、白口袋巾）。**要畫一張全身參考圖**（`turtleneck`，從定妝照 `latent: image1`；第 11–20 集清單的大衣全身照若已畫，這張只換衣服）。原聲。不笑。左手見〈全劇固定〉。 |
 | Theo Park | **待畫，必須先畫**（第 11–20 集清單；還沒畫的話排第一） | 第 21、22、24、25、26、29、30 集：基本款（圓玳瑁框眼鏡、淺藍襯衫外罩灰色針織背心、卡其褲、棕色樂福鞋）＋平板（左手）。原聲；面無表情。第 21 集觀察日誌在畫面上念。 |
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 第 22 集基本款、外套脫掉（淺藍襯衫），只在 Sienna 身後虛焦、笑出聲；第 23 集只在海報上；第 26–30 集基本款（淺石色西裝、淺藍開領襯衫、透明玻璃袖扣、細圓金屬框眼鏡）＋自己的麥克風（右手）；第 30 集設計權轉讓書影本從西裝內袋拿出。原聲。說話句照〈全劇固定〉。 |
 | Sienna | **待畫，必須先畫**（第 4–10 集清單；要看得到左腕的錶） | 第 22 集基本款紅色套裝，在玻璃屋沙發上、**左手**拿手機；第 26、28 集基本款，在講台邊、**左手**翻提詞卡。原聲（第 22 集後製電話濾波）。第 22、26 集可以閉嘴笑（說話時嘴角放平）；第 28 集卡掉了以後不笑。 |
 | Dana Okafor | **待畫，必須先畫**（第 11–20 集清單） | 第 25、29 集基本款（高髮髻、黑色合身西裝外套配白 T 恤），只在她的事務所；原聲、後製電話濾波。不笑。 |
 | 旗艦店店員 | **待畫，必須先畫**（新增 extras `store-clerk`） | 第 23 集：23 歲白人女性、白金色頭髮梳成光滑的低馬尾、淺灰眼睛、合身黑襯衫配黑長褲（名牌不畫）。原聲。招呼時禮貌的閉嘴笑，說話時嘴角放平。 |
 | 兩個客人 | 不畫（新增 extras `shoppers`） | 第 23 集回頭的兩個人，夏天便服、虛焦；不說話。 |
-| Victor Crane | **待畫，必須先畫** | 第 26、28、29 集：61 歲白人男性、矮壯、紅潤的臉、深色立領外套；籌碼是道具（`cast.json` 的外貌句要拿掉籌碼）。原聲。第 26、28 集張嘴大笑；第 29 集不笑。 |
-| Lyle Becker | **待畫，必須先畫** | 第 26、28、29、30 集：30 歲白人男性、格子襯衫、反戴的素面棒球帽；相機與手機是道具（`cast.json` 外貌句要拿掉相機與嚼口香糖）。第 29 集原聲（兩句）。不笑。 |
+| Victor Crane | **待畫，必須先畫** | 第 26、28、29 集：61 歲白人男性、矮壯、紅潤的臉、深色立領外套；籌碼是道具（`cast.json` 的外貌句已拿掉籌碼）。原聲。第 26、28 集張嘴大笑；第 29 集不笑。 |
+| Lyle Becker | **待畫，必須先畫** | 第 26、28、29、30 集：30 歲白人男性、格子襯衫、反戴的素面棒球帽；相機與手機是道具（`cast.json` 外貌句已拿掉相機與嚼口香糖）。第 29 集原聲（兩句）。不笑。 |
 | 發表會保全 | **待畫，必須先畫**（新增 extras `launch-guard`） | 第 27 集：45 歲美國原住民男性、寬肩、長黑髮在頸後低綁、素面黑西裝白襯衫、透明的螺旋耳機線；沒有徽章字、沒有武器。原聲（"Mr. Ashford."）。不笑。 |
 | Ray | **待畫**（有臉、不說話） | 第 27、28 集：30 歲菲律賓裔男性、黑 T 恤、黑工作褲、耳麥、一隻手腕纏黑色膠帶；只在燈控室。不說話（`cast.json` 有 Achird 聲音，這十集不用）。不笑。 |
 | 主持人 | 不畫（新增 extras `launch-host`） | 第 26–29 集：黑色晚宴外套、手拿麥克風；只拍肩膀以下或虛焦，不露清楚的臉、不說話。 |
 | 帶位員 | 不畫（新增 extras `launch-usher`） | 第 26 集報到桌，只拍黑袖子與手。 |
 | 攝影師、記者、客人 | 不畫（`reporters`、`launch-guests`，改句子） | 第 26–29 集；臉虛焦或被畫框切掉，一鏡兩三個。 |
-| Walter Pell | **待畫，必須先畫** | 第 28 集回憶：55 歲義大利裔男性、粗手、灰色鬍渣、眼角被爐火烤出的細紋、厚皮圍裙配工作衫（`cast.json` 外貌句要拿掉 "warm furnace light on his face"，光寫在鏡上）。原聲（兩句）。不笑。 |
-| Cole | **待畫**（第 1–3 集清單） | 第 29 集：黑西裝、白手套、短髮（`cast.json` 外貌句要拿掉 "eyes down"，眼睛看哪裡每鏡寫）。原聲（兩句）。不笑。 |
+| Walter Pell | **待畫，必須先畫** | 第 28 集回憶：55 歲義大利裔男性、粗手、灰色鬍渣、眼角被爐火烤出的細紋、厚皮圍裙配工作衫（`cast.json` 外貌句已拿掉 "warm furnace light on his face"，光寫在鏡上）。原聲（兩句）。不笑。 |
+| Cole | **待畫**（第 1–3 集清單） | 第 29 集：黑西裝、白手套、短髮（`cast.json` 外貌句已拿掉 "eyes down"，眼睛看哪裡每鏡寫）。原聲（兩句）。不笑。 |
 | 工作人員 | 不畫（新增 extras `stagehands`） | 第 29 集抬走玻璃罩、第 30 集在走廊頭停住；黑衣，背影或虛焦。 |
 | Fisk、Bev、Dr. Brandt、Reyes | — | 這十集不出現（Fisk 只有律師函）。 |
 
@@ -396,10 +396,10 @@
 | 左手為什麼一直在口袋（s01-t15） | 16 | 60 | 21–30 每鏡寫左手在哪；22 桌下 |
 | Dr. Brandt 半年不准上熱爐 | 33 | 第二季 | 這十集**不提** |
 
-**第 31 集要接的**：第 109 天（7/3 週五）約 05:20，天亮前灰金色的光，Kiln Row；Elias 開黑車（左手在車窗下緣以下），Nora 坐他右邊的副駕駛座（建議 `shoulder`，眼睛紅、一夜沒睡）；Peg 與 Theo 不在。
-Nora 身上約 $26；欠 Peg 約 $80、欠 Ashford 一件禮服；Peg 剛領退休金（約 $1,403）；Nora 沒有手機。兩張影本第 108 天夜裡由 Theo 拍照傳給 Dana，**Dana 第 109 天早上向警方報偽造案**（細綱第 31 集 conflict 的 "this morning"，台詞交代）；進度條仍是「報案被退」到「還沒有」（細綱第 31 集 state 寫 "Tracker: none yet"）。
-No. 1 在 Whitlock Home 手上；直播畫面在網路上與 Lyle 手上；律師函與兩張影本的原件在 Nora 的手拿包裡（或交給 Dana）。Elias 在走廊說的 "Clause two." 就是第 31 集她吼 "You stood there!" 的起因，他第 31 集答 "Clause two. You signed it."。
-Nora 的白手機還在 Bev 的抽屜；禮服掛在她的客房衣櫃；毛線帽在床頭櫃、玻璃磚在窗台。Dr. Brandt 的半年禁令第 33 集才定，第 31–32 集若要提熱爐，先對第 4 章 bible。
+**第 31 集要接的**（2026-11-12 對齊，第 31–40 集 bible 照這段寫）：第 109 天（7/3 週五）05:20，剛出海面的低太陽與散開的海霧，Kiln Row；Elias（基本款，沒有大衣）開黑車（左手在車窗下緣以下），Nora 坐他右邊的副駕駛座（`shoulder` 加道具句 `nora-jacket`，眼睛紅、一夜沒睡）；Peg 與 Theo 不在。
+Nora 身上約 $26；欠 Peg 約 $80、欠 Ashford 一件禮服；Peg 剛領退休金（約 $1,403）；Nora 沒有手機（第 111 天 Peg 替她買）。兩張影本第 108 天夜裡由 Theo 拍照傳給 Dana、天亮前送到 Dana 手上，**Dana 第 109 天早上向警方報偽造案**（細綱第 31 集 conflict 的 "this morning"，台詞交代）；進度條仍是「報案被退」到「還沒有」（細綱第 31 集 state 寫 "Tracker: none yet"）。
+No. 1 在 Whitlock Home 手上；直播畫面在網路上與 Lyle 手上；律師函第一頁在手拿包裡（跟禮服一起掛在她客房的衣櫃），兩張影本在 Dana 那裡。Elias 在走廊說的 "Clause two." 就是第 31 集她吼 "You stood there!" 的起因，他第 31 集答 "Clause two. You signed it."。
+Nora 的白手機還在 Bev 的抽屜；禮服掛在她的客房衣櫃；毛線帽在床頭櫃、玻璃磚（`keepsake`）在窗台，第一季都留在那裡（帽子第 44 集前被 Peg 拿去補）；草圖資料夾、牛皮紙信封在她的行李箱裡（資料夾第 41 集帶到 Remelt）。Dr. Brandt 的半年禁令第 33 集（第 112 天）才說出口，第 31–32 集不提熱爐。
 
 ## 每集鏡數目標
 
@@ -419,6 +419,8 @@ Nora 的白手機還在 Bev 的抽屜；禮服掛在她的客房衣櫃；毛線�
 | 30 | 135 | 65 字 | 15 | 46–50 | 第 3 章結尾；Elias 的顏值鏡 3 秒 |
 
 ## 要站主決定的
+
+（2026-11-12 起彙整在 `s1-decisions-e021-e060.md`，與第 31–60 集的同類問題合併；這裡保留原文與理由。）
 
 1. **第 22–23 集是哪一支手機**（見〈時間線〉下方第一條）：
    **建議 A**（這份照它寫）：Peg 的手機掛在 Grant 的家庭方案下、一直開著；半夜響的是它，Nora 拔的是它的 SIM 卡、替它付新號碼。Nora 的白手機留在 Bev 的抽屜，她這十集沒有手機。台詞："Family plan. His idea."、"He always knew where we were."。也補上第 18 集 Grant 怎麼找到汽車旅館。
@@ -443,178 +445,10 @@ Nora 的白手機還在 Bev 的抽屜；禮服掛在她的客房衣櫃；毛線�
 
 ## 要加進 cast.json 的
 
-合併的人照下表加進 `cast.json`（`characters` 的 `shot_looks`、`extras`、`sets`、`props`），`fix` 是改舊條目（`old` 換成 `new`）。英文句跟上面〈道具的樣子〉〈場景格局〉一字不差。
+**已加進 cast.json（2026-11-12 對齊）**，句子跟〈道具的樣子〉〈場景格局〉一字不差；跟其他三章重複的東西只留一個 id（下面括號裡是對齊時改的地方）。
 
-```jsonc
-{
-  "characters_fix": [
-    { "id": "peg", "field": "appearance + shot_looks coat, visit",
-      "old": "short permed grey hair",
-      "new": "short straight grey hair swept to one side",
-      "why": "peg-portrait.jpg shows straight short hair swept to one side, not a perm" },
-    { "id": "peg", "field": "s1_episodes",
-      "old": "1, 5, 8–16, 18–25, 34–35, …",
-      "new": "1, 5, 8–16, 18–25, 30, 34–35, …" },
-    { "id": "nora", "field": "shot_looks gown",
-      "new": "a 31-year-old white Irish-American woman, slender, fair skin with faint freckles across the nose, soft grey-green eyes, a gentle oval face with natural light makeup, dark chestnut shoulder-length hair smoothed back behind her ears, a misty-grey floor-length gown with a modest high boat neckline and long sleeves",
-      "why": "drop 'no jewelry' (she wears Elias's band, a prop sentence) and 'composed and still' (expression/posture)" },
-    { "id": "nora", "field": "shot_looks nineteen", "owner_decision": 10,
-      "old": "a faded T-shirt",
-      "new": "a faded misty-grey T-shirt" },
-    { "id": "nora", "field": "notes",
-      "add": "Episodes 21–30 (s1-bible-e021-e030.md): decree (21, day 99), shoulder (21 end–25), gown (24 at the mirror, 25 first shot, 26–30), nineteen (28 flashback)." },
-    { "id": "elias", "field": "shot_looks turtleneck",
-      "new": "a 34-year-old Italian-American man, handsome, about 188 cm tall, lean with straight shoulders, olive skin, dark brown hair combed straight back from the forehead, short at the sides, dark brown eyes, a defined jaw, thin silver wire-framed glasses, a black merino turtleneck and charcoal trousers",
-      "why": "the overcoat is a prop sentence (elias-overcoat), as in episodes 15–19" },
-    { "id": "grant", "field": "voice.style",
-      "old": "37-year-old man, warm, smooth and even like a keynote speech, calls her 'Nor'; …",
-      "new": "General American accent, natural conversational pace, clear diction; 37-year-old man, low, even and unhurried, calls her 'Nor'; when cornered his sentences get short and clipped but he never shouts",
-      "why": "writers copy this into model-voice speech sentences; 'warm', 'smooth', 'keynote' made him smile in the voice pilot" },
-    { "id": "sienna", "field": "shot_looks yellow",
-      "old": "…, a tablet in her right hand, turning pages with her LEFT hand",
-      "new": "… (end the sentence after 'with a modest neckline')",
-      "why": "props and actions belong in the shot" },
-    { "id": "crane", "field": "appearance",
-      "new": "a 61-year-old white American man, short and stocky, a ruddy face, a dark band-collar jacket",
-      "why": "the poker chip is a prop (poker-chip)" },
-    { "id": "crane", "field": "s1_episodes", "old": "26", "new": "26, 28–29" },
-    { "id": "lyle", "field": "appearance",
-      "new": "a 30-year-old white American man, a plaid shirt, a backwards plain baseball cap",
-      "why": "camera and phone are props (lyle-camera, lyle-phone); 'chewing gum' is an action" },
-    { "id": "lyle", "field": "s1_episodes", "old": "26, 28–29, 46–47, 57", "new": "26, 28–30, 46–47, 57" },
-    { "id": "cole", "field": "appearance",
-      "new": "a 30-year-old Black American man, close-cropped hair, a black suit, white gloves",
-      "why": "'eyes down' is an expression; write the eyeline per shot" },
-    { "id": "cole", "field": "s1_episodes", "old": "1", "new": "1, 5, 8–9, 29" },
-    { "id": "walter", "field": "appearance",
-      "new": "a 55-year-old Italian-American man, thick rough hands, grey stubble, fine lines around his eyes from furnace heat, a heavy leather apron over a work shirt (flashback only)",
-      "why": "light belongs in the shot" },
-    { "id": "theo", "field": "s1_episodes", "old": "16–17, 20–22, 24–25, 30, …", "new": "16–17, 20–22, 24–26, 29–30, …" },
-    { "id": "dana", "field": "s1_episodes", "old": "17, 25, 29, 34, …", "new": "17, 19–20, 25, 29, 34, …" }
-  ],
-
-  "extras_add": [
-    { "id": "store-clerk", "name": "Whitlock Home flagship clerk",
-      "appearance": "a 23-year-old white American woman, platinum-blonde hair in a sleek low ponytail, light grey eyes, a fitted black shirt and black trousers",
-      "voice": { "provider": "gemini", "name": "Leda", "style": "General American accent, natural conversational pace, clear diction; 23-year-old store clerk, bright, rehearsed and polite" },
-      "episodes": "23", "note": "Speaks on screen (model voice); needs a portrait. A polite closed-mouth smile before she speaks, lips level while talking. No name badge text." },
-    { "id": "shoppers", "name": "Two shoppers", "appearance": "two shoppers in plain summer clothes, soft in the background, turning to look", "voice": null, "episodes": "23", "note": "No lines; faces soft." },
-    { "id": "launch-guard", "name": "Launch security guard",
-      "appearance": "a 45-year-old Native American man, broad-shouldered, long black hair tied low at the nape, a plain black suit and white shirt, a clear coiled earpiece",
-      "voice": { "provider": "gemini", "name": "Orus", "style": "General American accent, natural conversational pace, clear diction; 45-year-old security guard, low and quick" },
-      "episodes": "27", "note": "'Mr. Ashford.' Speaks on screen (model voice); needs a portrait. Reaches for Nora's arm and stops a palm's width short; never touches her. No badge text, no weapon." },
-    { "id": "launch-host", "name": "Launch host", "appearance": "a host in a black dinner jacket holding a black handheld microphone with no logo, seen from the shoulders down or soft in the background", "voice": null, "episodes": "26–29", "note": "Never a clear face, no lines; Nora takes his microphone in episode 29." },
-    { "id": "launch-usher", "name": "Check-in usher", "appearance": "an usher's hands in black sleeves at a draped check-in table, no face", "voice": null, "episodes": "26", "note": "Hands two seat cards to Theo." },
-    { "id": "stagehands", "name": "Stagehands", "appearance": "two stagehands in plain black clothes, seen from behind or soft in the background", "voice": null, "episodes": "29–30", "note": "Carry the dome off (29); stop in the corridor (30)." }
-  ],
-
-  "extras_fix": [
-    { "id": "launch-guests", "old": "well-dressed guests in muted evening wear holding up phones with blank screens, at a product launch",
-      "new": "well-dressed guests in muted evening wear seated in rows at a product launch, soft in the background, no clear faces",
-      "why": "phones are written per shot (two or three glows only)" },
-    { "id": "reporters", "old": "a cluster of reporters with cameras and microphones with no logos",
-      "new": "two or three reporters at the edge of frame holding black microphones and cameras with no logos, faces soft or cut by the frame",
-      "why": "at most three named faces per shot; a crowd of faces draws extra people" }
-  ],
-
-  "sets_add": [
-    { "id": "ashford-entry", "name": "The Ashford house, entry",
-      "prompt": "the entry of a grey board-formed concrete house: a heavy dark wood front door, a row of black steel coat pegs on the left concrete wall above a low bench, a polished concrete floor, and straight ahead a wide opening into a tall dim dining hall, warm lamplight against cold concrete, no text" },
-    { "id": "ashford-upper-hall", "name": "The Ashford house, upper gallery and hallway",
-      "prompt": "an upper hallway in a grey board-formed concrete house: an open gallery with a black steel banister looking down into a dim dining hall, plain dark wood bedroom doors along the concrete wall, one warm wall lamp, no text",
-      "note": "The end wall is a floor-length mirror: the camera sits there and looks back down the hallway; never shoot toward it (episode 24)." },
-    { "id": "glass-house-living-night", "name": "The Glass House living room at night, curtains drawn",
-      "prompt": "inside a glass-walled modern house at night: heavy charcoal-grey curtains drawn across every glass wall from ceiling to floor, a low grey sofa, a long pale wood dining table behind it, warm lamplight, pale oak floor, no text",
-      "note": "Episode 22: Sienna's end of the call." },
-    { "id": "flagship-store", "name": "Whitlock Home flagship store, sales floor",
-      "prompt": "inside a bright modern home-goods flagship store: a pale stone floor, a long white sales counter on the left, and on the right a wall of lit white shelves from floor to ceiling holding rows of identical tall cream-white glass vases, a glass storefront onto a grey waterfront street, a small blank brass plaque by the door, no logos, no readable signs, no price tags" },
-    { "id": "launch-entrance", "name": "Launch hall entrance",
-      "prompt": "the entrance of a store event hall in the evening: a small draped check-in table, a plain blank backdrop wall, warm light, guests in muted evening wear soft in the background, no logos, no readable text" },
-    { "id": "launch-booth", "name": "Launch lighting booth",
-      "prompt": "a small raised lighting balcony high on the side wall of a dark event hall near the stage: a lighting console of plain unlabeled faders, a tall follow-spot lamp on a stand beside it, a low wall looking down on a stage and the front row, no readable labels" },
-    { "id": "dana-office", "name": "Dana Okafor's office",
-      "prompt": "a small attorney's office in the evening: a wooden desk stacked with plain buff case files, a green-shaded desk lamp, a laptop turned away from the camera, a window behind onto dark harbor water with a few lights, no readable text" }
-  ],
-
-  "sets_fix": [
-    { "id": "ashford-ext", "new": "a stark modern house of grey board-formed concrete set into a wooded hillside above a harbor town, one long blank concrete wall with only two small windows, a long flat roof, dark firs around it, no text",
-      "why": "'mist in the firs' fixed the weather; episode 21 is June sunshine. Weather and time go in the shot ('at night, only the two small windows lit warm')." },
-    { "id": "ashford-dining", "new": "inside a grey board-formed concrete house: a tall dining hall with a very long dark walnut table under one low pendant lamp, an open professional steel kitchen along the right wall with a tall double-door steel fridge and a small window over the range, floating concrete stairs with a black steel banister rising along the left wall to an open upper gallery, warm pools of lamplight against cold concrete, no text",
-      "why": "episodes 24–25 need the stairs, the banister and the gallery" },
-    { "id": "ashford-guest", "new": "a plain guest room in a grey board-formed concrete house: a neat single bed with white linen against the right wall, a small concrete nightstand with a drawer and a lamp, one narrow vertical window with a deep concrete sill, a built-in dark wood wardrobe, a navy suitcase on the floor, no text",
-      "why": "the floor-length mirror moves to the end of the upper hallway (episode 24) and is never in frame" },
-    { "id": "elias-car", "new": "inside a black luxury sedan: black leather seats, a dark dashboard with its screens off, side windows, no logos, no readable screens",
-      "why": "the old sentence fixed night and rain; episode 21 is a sunny noon. Time and weather go in the shot." },
-    { "id": "launch-stage", "new": "a windowless event hall set up for a product launch: a low black stage across the far wall, a wide dark screen above the back of the stage, a waist-high white plinth at center stage whose top is a glowing light box, a clear glass display dome on it holding a cream-white vase, a slim lectern at stage left, short steps at both ends of the stage, a plain side door at stage right, rows of white chairs in front, warm house lights, blank panels where logos would be, no readable text",
-      "why": "the plinth light box, the dome and the screen carry episodes 26–29; guests and the spotlight are written per shot" },
-    { "id": "backstage", "new": "a narrow white service corridor behind a stage: black cables taped along the floor, a grey steel fire door in the left wall with a small dim green light box above it, blank, a bare bulb in a black wire cage on the wall beside the door, folded chairs stacked further down, one ceiling light at the far end over a closed loading door, harsh light and shadow, no readable signs",
-      "why": "the old sentence put 'a man standing at the far end' into the set; people are written per shot" },
-    { "id": "pell-flashback", "new": "the same brick glassworks alive and busy twelve years ago: several glowing furnaces, Furnace No. 3 with its round glowing mouth, a wooden gaffer's bench with steel rails, steel blowpipes on a rack, warm hazy golden light, no text",
-      "why": "the old sentence put 'a sooty young man' (Soot, m08/m12) into every flashback" }
-  ],
-
-  "props_add": [
-    { "id": "forever-no1", "name": "Forever No. 1", "prompt": "a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling, its lip tilted very slightly to one side", "note": "The one she blew; stood on the Glass House cabinet for six years. Factory Forevers use the forever-vase sentence (lip level)." },
-    { "id": "forever-wall", "name": "Wall of factory Forevers", "prompt": "rows of identical tall cream-white glass vases about as tall as a forearm on lit white shelves from floor to ceiling", "note": "Episode 23." },
-    { "id": "vase-base-blank", "name": "Factory vase base", "prompt": "the thick round glass base of a cream-white vase seen from below, clear and smooth, no bubbles inside", "note": "Episode 23." },
-    { "id": "vase-base-lit", "name": "No. 1's base on the light box", "prompt": "the thick round glass base of a cream-white vase seen from above, light rising through it from below, a short curved line of tiny air bubbles inside the glass glowing like pinpoints, nothing readable", "note": "Episode 28. The bubbles never move or form letters in generation; 'N.Q.' only in post on one locked still (owner decision 2)." },
-    { "id": "launch-screen", "name": "Launch screen", "prompt": "a wide dark screen above the back of the stage showing only a short curved row of glowing points, nothing readable", "note": "Episodes 28–29." },
-    { "id": "glass-dome", "name": "Display dome", "prompt": "a clear glass display dome a hand taller than the vase, as wide as her two hands spread side by side", "note": "Episodes 26–29." },
-    { "id": "light-box-plinth", "name": "Plinth with light box", "prompt": "a waist-high white plinth whose flat top is a glowing white light box", "note": "Episodes 26–29." },
-    { "id": "cotton-gloves", "name": "White handling gloves", "prompt": "a pair of white cotton handling gloves", "note": "Episodes 27–29; worn: 'white cotton handling gloves on both her hands'." },
-    { "id": "house-rules-card", "name": "House rules card", "prompt": "a small plain white card about the size of her palm, print not readable", "note": "Episode 21: Elias recites the three rules; never shown." },
-    { "id": "ashford-key", "name": "Ashford house key", "prompt": "a single plain steel house key on a thin black leather loop, about as long as her finger", "note": "Episode 21: one for Nora, one for Peg." },
-    { "id": "ashford-fridge", "name": "The empty fridge", "prompt": "a tall double-door steel fridge standing open, its glass shelves holding only rows of plain bottled water with no labels and one plain brown bag of coffee beans", "note": "Episode 21." },
-    { "id": "peg-dinner", "name": "Peg's dinner", "prompt": "a home-cooked dinner on the long dark walnut table: a pot roast in a black cast-iron pot, four side dishes in plain white bowls, three place settings of white plates and plain steel cutlery", "note": "Episodes 21–22; never show food going into a mouth." },
-    { "id": "clean-plate", "name": "Elias's empty plate", "prompt": "a white dinner plate wiped clean, the knife and fork laid together across it", "note": "Episode 22." },
-    { "id": "peg-apron", "name": "Peg's apron", "prompt": "a plain navy cotton apron tied over her cardigan", "note": "Episodes 21–22, 25." },
-    { "id": "gold-envelope", "name": "Launch invitation envelope", "prompt": "a stiff gold-foil envelope about as long as her hand, its face blank, catching the light", "note": "Episode 22: Theo reads 'For Mr. and Mrs. Ashford.' Supersedes the envelope part of `invitation`." },
-    { "id": "invitation-card", "name": "Launch invitation card", "prompt": "a heavy cream invitation card with a gold edge, about as long as her hand, held so only its blank side faces the camera", "note": "Episodes 22–25; lying flat: '…, lying flat on the dark walnut table, seen edge-on at table height'. Nora reads 'Forever Number One. Shown for the first time.' Supersedes `invitation`." },
-    { "id": "seat-card", "name": "Seat card", "prompt": "a small folded cream seat card with a gold edge, about the size of a playing card, print not readable", "note": "Episodes 22, 26." },
-    { "id": "paper-clip", "name": "Straightened paper clip", "prompt": "a straightened silver paper clip as long as her finger", "note": "Episode 23, from Peg's ledger; before straightening: 'a silver paper clip about as long as her thumb'." },
-    { "id": "sim-card", "name": "SIM card", "prompt": "a tiny SIM card smaller than her fingernail", "note": "Episode 23: '…, on a thin metal tray sliding out of the side of the phone'; '…, lying face down in an empty nightstand drawer'. The old SIM stays in Nora's nightstand drawer." },
-    { "id": "sim-packet", "name": "New SIM packet", "prompt": "a small plain white card packet about the size of her palm, no print", "note": "Episode 23: 'Phone line. Thirty.'" },
-    { "id": "sienna-phone", "name": "Sienna's phone", "prompt": "a slim phone in a plain red case, about the size of her palm", "note": "Episode 22: in her LEFT hand at her LEFT ear." },
-    { "id": "window-poster", "name": "Flagship window poster", "prompt": "a tall window poster of Grant in his light stone suit cradling a cream-white vase, no lettering anywhere", "note": "Episode 23; use grant-portrait.jpg as the face reference." },
-    { "id": "builder-plaque", "name": "Builder's plaque", "prompt": "a small blank brass plaque beside the door, about the size of her hand, catching the light, no engraving visible", "note": "Episode 23: 'Ashford built this place.'" },
-    { "id": "gown-box", "name": "Gown box", "prompt": "a long flat pale grey box tied with a grey satin ribbon, about as long as her arm", "note": "Episodes 24–25; opened: '…, its lid lifted, misty-grey fabric folded inside'." },
-    { "id": "grey-clutch", "name": "Grey clutch", "prompt": "a small misty-grey satin clutch about the size of her hand", "note": "Came in the gown box; episodes 26–30, holds Fisk's letter." },
-    { "id": "certified-envelope", "name": "Certified-mail envelope", "prompt": "a long white envelope with a small green certified-mail sticker, no readable print", "note": "Episode 25." },
-    { "id": "cease-and-desist", "name": "Fisk's cease-and-desist letter", "prompt": "two stapled white pages folded in thirds, held so only the backs show", "note": "Episodes 25, 27, 30. Page two is a photocopy of the property agreement's signature page (Exhibit A). Nora reads only 'Disrupt the event.' 'Damage any exhibit.'" },
-    { "id": "photocopy", "name": "Rights-transfer copy / signature-page copy", "prompt": "a single photocopied white page, held so only its back shows", "note": "Episode 30, both pages; torn one: '…, torn from a staple at one corner'." },
-    { "id": "copies-to-light", "name": "Two copies held to the bulb", "prompt": "two thin photocopied white pages held flat together up to a bare bulb, the light shining through both, one small soft dark smudge of ink showing through where two marks sit exactly on top of each other, nothing readable", "note": "Episode 30. The signature never takes a readable shape (no post either)." },
-    { "id": "caged-bulb", "name": "Corridor bulb", "prompt": "a bare bulb in a black wire cage on the white corridor wall", "note": "Episodes 29–30; episode 29: '…, dimming once, slowly, and coming back'." },
-    { "id": "cue-cards", "name": "Sienna's cue cards", "prompt": "a small stack of plain white cue cards about the size of her palm, blank on both sides", "note": "Episodes 26, 28, in her LEFT hand; dropped: '…, scattered on the black stage floor'." },
-    { "id": "handheld-mic", "name": "Handheld microphone", "prompt": "a black handheld microphone with no logo", "note": "Two: Grant's (his right hand, from 26) and the host's (Nora takes it in 29)." },
-    { "id": "lyle-camera", "name": "Lyle's camera", "prompt": "a black DSLR camera with no logo on a plain strap", "note": "Episode 26; flash: 'its flash firing once, soft and white'." },
-    { "id": "lyle-phone", "name": "Lyle's livestream phone", "prompt": "a black phone held up sideways, seen from the back, its screen a soft white glow", "note": "Episodes 28–30." },
-    { "id": "guest-phones", "name": "Front-row phones", "prompt": "two or three phones held up in the dark, seen from the back or the side, only their soft white glows", "note": "Episode 28; never 'every phone in the room'." },
-    { "id": "camera-flash", "name": "Camera flashes", "prompt": "a single soft white camera flash, then another two beats later", "note": "Episode 26; never a row of flashes at once, never a strobe." },
-    { "id": "follow-spot", "name": "Follow spot", "prompt": "a hard white follow-spot beam slanting down from high on the right, a sharp-edged circle of light on her face and shoulders", "note": "Episodes 26–27; from the lighting balcony high on the right wall." },
-    { "id": "green-light-box", "name": "Light box over the fire door", "prompt": "a small dim green light box above the door, blank", "note": "Episodes 29–30; never write 'exit sign' (it draws letters)." },
-    { "id": "guest-lamp", "name": "Guest-room lamp", "prompt": "a small concrete bedside lamp with a white shade, warm light", "note": "Episodes 21–23." }
-  ],
-
-  "props_fix": [
-    { "id": "forever-vase", "field": "note",
-      "old": "The bubbles spell her initials and date: show as a pattern, add any letters in post.",
-      "new": "Factory Forevers (lip level, bases blank). No. 1 is `forever-no1`. Its bubbles are glowing points only; never a date; 'N.Q.' only in post on one locked still in episode 28 (s1-bible-e021-e030.md, owner decision 2)." },
-    { "id": "invitation", "field": "prompt + note",
-      "old": "a heavy cream card invitation in a matching envelope, elegant blank face / 'Mrs. Ashford' in post only.",
-      "new": "superseded by gold-envelope, invitation-card and seat-card; nothing in post: Theo and Nora read it aloud" },
-    { "id": "poker-chip", "field": "prompt",
-      "old": "a red casino-style poker chip with no lettering",
-      "new": "a red casino-style poker chip with no lettering, about as wide as his thumb is long" },
-    { "id": "blowpipe", "field": "prompt",
-      "old": "a long steel glassblowing pipe with a glowing orange gather of molten glass at the end",
-      "new": "a long steel glassblowing pipe about as long as she is tall, a glowing orange gather of molten glass at the far end" },
-    { "id": "watching-car", "field": "prompt",
-      "add_at_end": ", number plate out of frame",
-      "why": "review 2026-11-12-e007-e010: the black-car sentence was missing it" },
-    { "id": "light-box", "field": "prompt",
-      "old": "a large flat white light box on a long table, two paper documents laid on it with signatures glowing through",
-      "new": "a large flat white light box on a long table, two paper documents laid on it, their marks showing through only as soft grey smudges, nothing readable",
-      "why": "'signatures glowing through' asks for readable handwriting (chapter 5 uses it)" }
-  ]
-}
-```
+- **角色**：`peg` 外貌與 `coat`、`visit` 改成直的短灰髮往一邊梳，`s1_episodes` 加 30；`nora` 的 `gown` 拿掉 "no jewelry, composed and still"、`nineteen` 改 "a faded misty-grey T-shirt"（站主第 10 條待確認），notes 寫進第 21–60 集的造型；`elias` 的 `turtleneck` 拿掉大衣；`grant` 的 `voice.style` 拿掉 warm／smooth／keynote；`sienna` 的 `yellow` 拿掉平板與翻頁；`crane`、`lyle`、`cole`、`walter` 拿掉道具、表情與光；`crane`、`lyle`、`cole`、`theo`、`dana` 的 `s1_episodes` 照這十集補。
+- **路人**：新增 `store-clerk`、`shoppers`、`launch-guard`、`launch-host`、`launch-usher`、`stagehands`；改 `launch-guests`、`reporters`（`reporters` 只留第 28–29 集，第 46–47 集用 `press-pack`）。
+- **場景**：新增 `ashford-entry`、`ashford-upper-hall`、`glass-house-living-night`、`flagship-store`、`launch-entrance`、`launch-booth`、`dana-office`；改 `ashford-house-ext`（原稿寫 `ashford-ext`，對齊時照 `cast.json` 的 id）、`ashford-dining`、`ashford-guest`、`elias-car`、`launch-stage`、`backstage`、`pell-flashback`。
+- **道具**：新增 `black-car`（第 15 集起那句，原本沒有 id）、`forever-no1`、`forever-wall`、`vase-base-blank`、`vase-base-lit`、`launch-screen`、`glass-dome`、`light-box-plinth`、`cotton-gloves`、`house-rules-card`、`ashford-key`、`ashford-fridge`、`peg-dinner`、`clean-plate`、`peg-apron`、`gold-envelope`、`invitation-card`、`seat-card`、`paper-clip`、`sim-card`、`sim-packet`、`sienna-phone`、`window-poster`、`builder-plaque`、`gown-box`、`grey-clutch`、`certified-envelope`、`cease-and-desist`、`photocopy`、`copies-to-light`、`caged-bulb`、`cue-cards`、`handheld-mic`、`lyle-camera`、`lyle-phone`、`guest-phones`、`camera-flash`、`follow-spot`、`green-light-box`、`guest-lamp`；改 `forever-vase`、`invitation`、`poker-chip`、`blowpipe`（四章同一句：`a long steel glassblowing pipe about as long as a person is tall`）、`watching-car`、`elias-overcoat`（基本句到 overcoat 為止）。
+- 原稿的 `props_fix` 裡 `light-box` 那句沒用：第 41–60 集共用第 41–50 集 bible 的燈箱句（`light-box`）。
