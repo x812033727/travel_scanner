@@ -506,4 +506,7 @@
 - 十點的鐘：長針朝上、短針指向左上（道具表原句「上方與右方之間」是一兩點，作廢）。
 - 第 52 集的 "Mom." 與走廊那句都是乾淨的單人近景，不用過肩。第 54 集急救員 "Looks like a back spasm. Rest it."；補 c16b 交代 Gus 被扶上行軍床、碎料掃到牆角。
 - Dana 的左手不寫字（第 51 集的證據是「Sienna 用左手」）。
+- **第 55–60 集審稿後補定**（`../review/2026-11-12-e055-e060-storyboard.md`）：第 60 集對峙的軸線：主鏡 Grant 在左前、Elias 在右後；Grant 的單人鏡在屋子中間靠大門那側、看畫面右外深處；Elias 的過肩從他左肩後（肩在畫框右下）。說話時爐火寫成 `steady on one side of his face, not flickering`。
+  Grant 說話的練過的笑：`his lips part on each word and close again into a practiced smile, both corners lifted, teeth hidden`。第 57 集 Peg 念 "Dana says, 'He just put it in writing.'"。疤的插鏡從凳面上方 30–40 度往下斜拍、冷光從門口來。
+  季終最後一格 Nora 從左肩往後轉頭、側臉朝畫面左的 Grant。第二季要接的：Sparks 退到工作台邊（照第 60 集 c51）。Sparks 的手套維持灰色。
 
