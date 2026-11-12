@@ -67,12 +67,23 @@
 
 ## 道具的樣子
 
-- **藥**：一顆小圓白藥片，素面；第 1 集只寫「刻痕淺了一道」，**不寫字母**。半顆用白色面紙包著。
-- **毛線帽**：奶油色羊毛、嬰兒尺寸、織到一半，掛在兩根木棒針上。
-- **歪的玻璃鳥**（第 1 集夢裡）：透明、手吹、一邊翅膀低。
-- **Forever 花瓶**：高、奶油白、手吹玻璃，瓶身微微鼓起；第 1–3 集只在電視廣告裡。
-- **Grant 的手機**：黑色、無商標；**Nora 的舊手機**：淡粉色殼。
-- **Peg 的湯**：一只白色琺瑯湯鍋，蓋子上沒有紙條（「Salt it yourself.」是她在門口說的）。
+會反覆出現的道具，每一鏡的英文正文**一字不差**照抄下面這句（大小用身體比，2026-11-12 重審補定；`cast.json` 的 props 已同步）：
+
+| 道具 | 每鏡照抄的英文 | 備註 |
+| --- | --- | --- |
+| 藥（半顆） | `a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)` | **不寫 tablet**（直式小樣畫成平板電腦）；中文也寫「藥」不寫「藥片」，免得製作端翻成 tablet。「刻痕淺了一道」就是那一道 faint shallow line，不寫字母、不寫「素面」。半顆用白色面紙包著。 |
+| 毛線帽 | `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm` | |
+| 歪的玻璃鳥（第 1 集夢裡） | `a clear hand-blown glass bird about the size of a fist, one wing lower than the other` | |
+| Forever 花瓶 | `a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling` | 第 1–3 集只在電視廣告裡。 |
+| Grant 的手機 | `a black phone with no logo, about the size of his palm` | 螢幕一律背面、側邊或虛焦。 |
+| Nora 的舊手機 | `a phone in a pale pink case, about the size of her palm` | |
+| 塑膠水杯（第 3 集） | `a clear plastic hospital cup about the size of her fist, half full of clear water` | |
+| 玻璃水杯（第 1 集） | `a clear drinking glass about the size of her fist, half full of clear water` | 不喝的鏡寫杯子在哪、水是清的，「整鏡杯緣不碰嘴」。 |
+| 黑傘（第 3 集） | `a long black umbrella about as tall as a man's hip, closed, dripping, propped against the door frame` | 不寫進 Grant 的外貌句（`rain` look 已拿掉），寫在拍到門的每一鏡。 |
+| 牛皮紙袋（第 3 集） | `a plain brown paper shopping bag about the size of a hardcover book, flat bottom, folded top, no logo` | 要裝得下第 4 集的手機盒。 |
+| 深藍雨衣（第 3 集） | `a navy raincoat folded in half` | 進病房後放在椅面上的紙袋旁，不再拿在手上。 |
+| Peg 的湯 | `a white enamel soup pot with a lid, about the size of a mixing bowl` | 整集都在她的帆布袋裡，不拿出來（見〈2026-11-12 重審後補定的事〉）。 |
+| Peg 的帆布袋 | `a plain beige canvas tote bag with no print, hanging from her left shoulder` | |
 
 ## 人物與參考圖
 
@@ -80,7 +91,7 @@
 | --- | --- | --- |
 | Nora | `assets/refs/nora-portrait.jpg` | 第 1 集 `pregnant`（五個月、長髮披肩、奶油色針織洋裝）；第 2 集出門：同一件洋裝外罩駝色羊毛大衣，**新造型 `night-coat`**（要開 `shot_looks`、畫參考圖），頭髮被雨打濕、衣服乾淨；第 2 集醫院起 `hospital`（淡藍病人服外罩奶油色開襟衫）。長髮到第 18 集。 |
 | Grant | `assets/refs/grant-portrait.jpg` | 第 1 集只在電話裡（畫外）與電視廣告（基本款淺色西裝，捧花瓶）；第 3 集 `rain`（深藍雨衣在手上、淺色西裝、頭髮與鏡片濕）。 |
-| Peg | `assets/refs/peg-portrait.jpg` | 第 1 集基本款（燕麥色舊開襟衫、老花眼鏡串珠鍊、手上帳本與棒針不出現，改拎一只帆布購物袋）。 |
+| Peg | `assets/refs/peg-portrait.jpg` | 第 1 集基本款：照定妝照，**玳瑁框老花眼鏡戴在臉上**、一條長的深棕色木珠項鍊、燕麥色舊開襟衫；手上沒有帳本與棒針（`cast.json` 外貌句 2026-11-12 已改成跟定妝照一致），左肩一只帆布袋。 |
 | Cole | 待畫 | 第 1 集：黑西裝、白手套、低頭；門口中景。 |
 | Elias | — | 第 2 集只有一隻戴深色皮手套的左手與深色大衣袖口（撥 911），救護車裡只有聲音（畫外）。走廊長椅上的人影只拍背影剪影、不露臉。 |
 | Dr. Brandt | 待畫 | 第 2 集：白袍、銀金色短髮、眼鏡；蹲在床邊。 |
@@ -99,3 +110,18 @@
 照種田拍法（2026-11-12 起）：第 1 集 150 秒約 48–54 鏡；第 2 集 120 秒約 40–44 鏡；第 3 集 115 秒約 38–42 鏡。
 平均每鏡 2.5–3 秒，說話的鏡照台詞長度（英文每秒約 2.5 字，加動作與 0.5 秒）；開場 10 秒至少四鏡；超過 6 秒標「長鏡」。
 （11-10 的第一版是 40／34／31 鏡、每鏡平均 3.7 秒。）
+
+## 2026-11-12 重審後補定的事
+
+main 2026-11-12 收進種田拍法與共用的分鏡規則（`docs/videos/drama/WRITING.md`）之後，第 1–3 集重審一次（`../review/2026-11-12-e001-e003-storyboard.md`）：
+嚴重 3（表情只寫形容詞、鏡數與節奏、藥被讀成平板）、中等 18、輕微 6。站主同日決定改用模型原聲、照種田拍法重拆。補定：
+
+- **表情**：「沒寫表情就是嚴肅、不笑」廢掉。每鏡每個露臉的人寫兩個以上部位（眉、眼、嘴角、下巴、呼吸），不能笑的鏡寫 `no smile at any moment, until the last frame`。
+- **覆蓋**：每場開頭一鏡帶運鏡的全景或直式過肩（前景下緣是對方的肩），再正反打、插鏡、反應。
+- **一鏡最多兩個動作**；起身、坐起、穿衣這類轉換寫在前一鏡結尾，或獨立成一鏡。
+- **玻璃牆前的近景**不寫倒影（會多長出一個 Nora）；背景寫沙發背、牆，或「玻璃上只有夜燈的一點光」。
+- **手套**：第 1 集夢裡與第 2 集撥 911 的都是**左手**、深棕色皮手套。
+- **Peg 的湯**：整集留在她的帆布袋裡。客廳那場她拍一下鼓起的帆布袋，不拿出鍋；她在兩場之間把湯放進冰箱（不拍），走到門口時帆布袋是扁的，才說「Soup's in the fridge. Salt it yourself.」。
+- **原聲下的畫外**：第 1 集 Grant 只在電話與電視裡（Gemini Algieba，電話聲處理過）；第 3 集他露臉說話用原聲。兩個聲音不同，電話與電視的濾波蓋得過去，第一批草稿出來時再請站主聽。
+  第 2 集 Elias 全部是畫外（Gemini Charon）。其他角色在畫面上說的話都寫在說話的人自己的鏡上。
+- **原聲的短句**：6 個字以內的短句放進 6 秒的片段，模型會把空檔講滿。短句後面寫一個收尾動作與「嘴閉上」；短喊照種田寫成「張嘴喊」不放原文，第一批草稿驗會不會講出多餘的字。
