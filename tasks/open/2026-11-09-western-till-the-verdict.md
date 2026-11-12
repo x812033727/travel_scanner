@@ -15,6 +15,13 @@ scope:
   - docs/videos/till-the-verdict-e001
   - docs/videos/till-the-verdict-e002
   - docs/videos/till-the-verdict-e003
+  - docs/videos/till-the-verdict-e004
+  - docs/videos/till-the-verdict-e005
+  - docs/videos/till-the-verdict-e006
+  - docs/videos/till-the-verdict-e007
+  - docs/videos/till-the-verdict-e008
+  - docs/videos/till-the-verdict-e009
+  - docs/videos/till-the-verdict-e010
 ---
 
 # Western adaptation of Till the Verdict Do Us Part (2025-15)
@@ -47,7 +54,9 @@ scope:
 - [x] 定妝照試鏡與四個主角的聲音試聽（樣本已交站主）。
 - [ ] 依試鏡結果改 cast.json：Nora 拿掉手腕燙痕、Elias 的疤改獨立插鏡、陰天寫進每鏡正文。
 - [x] 前三集劇本與分鏡第一版、獨立審稿、改稿（2026-11-10）；直式小樣三鏡（2026-11-10）。
-- [ ] 前三集照 main 2026-11-12 的新規則重審重拆（種田拍法、台詞改模型原聲）。
+- [x] 前三集照 main 2026-11-12 的新規則重審重拆（種田拍法、台詞改模型原聲），二審後改完；Nora、Grant 定妝照修圖（r3）。
+- [ ] 第 4–10 集（篇章 1 剩下的）：系列設定 `production/s1-bible-e004-e010.md`、分鏡、程式檢查、獨立審稿、改稿。
+- [ ] 原聲小樣：驗 H3 說英文的口音、同一角色跨鏡的聲音、短喊（報價後站主點頭才做）。
 
 ## How to verify
 
