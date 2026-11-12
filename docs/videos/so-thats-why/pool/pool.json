@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-4653",
+  "revision": "2026-11-12-pool-4665",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 5043,
-    "canonical_questions": 4882,
-    "eligible_candidates": 4712,
-    "selected_candidates": 4653,
+    "raw_records": 5055,
+    "canonical_questions": 4894,
+    "eligible_candidates": 4724,
+    "selected_candidates": 4665,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5922,
-    "current_research_source_urls": 2973,
-    "selected_source_urls": 4051,
-    "new_suggestions_not_added": 2867,
+    "source_urls": 5933,
+    "current_research_source_urls": 2984,
+    "selected_source_urls": 4060,
+    "new_suggestions_not_added": 2887,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "2c59dda7d3b3c8cf99779be3f71d9f470113952ede48696a4d5c57ed05aa0a2b"
+      "sha256": "3485e8cf2339a4dd3e4cb114d97c168c26fdb03ce2897d2441df537df8fa4a28"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -604,6 +604,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-12-4632.json.gz",
       "sha256": "8d02b4070070e8aed0ee0f0e90e245d70d47154adfff80b777f5d3df25f018f0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-4653.json",
+      "sha256": "074719e54b177033f84d4cc4ab0a7070395c281dc3095ba0a415495b679295eb"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-12-4653.json.gz",
+      "sha256": "531b57a833eb030682ced7ed776d60854324d16fd57aa3c65fceae2a6256654f"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -2430,6 +2438,18 @@
       "sha256": "59c6929eaeaac5307f426dcbe0c9078f8a6742d69e1298dab899baea381652c6"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave76-human.json",
+      "sha256": "b49aa305e246b994f662be535374ca71d08c7020198ea6f7359d329e574322b0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave76-life.json",
+      "sha256": "fddbb2940e2e051300be413daa5a9e3eb864e940e7e5f949344c5a8faac814bd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave76-physics.json",
+      "sha256": "c64c277cca823e0fb5392f0151addc57c8830476152ad2929ce4a7cb86b04211"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave8-food.json",
       "sha256": "b5727df7527ec8d28e68c32e157a5c90d2ae079e31ac7afb6507bf794c74c389"
     },
@@ -2491,11 +2511,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "81a3631b7e60c8472f7a10f818595c89086eef3038558aae3c31f50aaaab1be0"
+      "sha256": "f651e9a8501322eeb6a0201135a4afc81bda62419f7a872a8096d7fb65bbf71d"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "450ac433739615622786a24a27c37d8fbf615232c1f782c0e5e691457d135845"
+      "sha256": "eb0eaf8ae5e75cb8b7a6882d55c8b6130128702ecbfc5b6eb75e7f6c4079f865"
     }
   ],
   "sources": [
@@ -19705,6 +19725,34 @@
           },
           "origin": "wave23-everyday-physics-20261102",
           "original_url": "https://arxiv.org/pdf/1606.08237"
+        }
+      ]
+    },
+    {
+      "id": "SRC-223965103e8b5215",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4757648/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3389/fcell.2016.00010",
+          "title": "The Musculature of Coleoid Cephalopod Arms and Tentacles",
+          "publisher": "William M. Kier; Frontiers in Cell and Developmental Biology 4:10（開放綜述）",
+          "version": "2016",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 取自同一 API 的 search 結果），curl 預設標頭，HTTP 200；本機以 xml→txt 抽段閱讀",
+          "reading_scope": "Abstract；〈Squid and cuttlefish tentacles〉首段；〈Biomechanics of support and movement in the tentacles〉全段（含 Figure 2 說明）；〈Biomechanics of support and movement in octopus arms〉全段；〈Contractile properties of the transverse muscle…〉；〈Ultrastructural specialization for fast contraction〉；Summary。未讀：形態與超微結構描述的大部分段落、肌球蛋白段、再生段。",
+          "locator": "txt 第 5、12、20–22、55–59、90–95、105–108 行",
+          "summary": "肌肉靜水骨骼：腕與觸腕的肌肉組織抗拒體積變化，一個方向變小另一個方向必變大；橫向／環肌收縮使截面變小而伸長，縱肌收縮使其縮短並把橫肌拉回，兩組互為拮抗；觸腕伸長約 80% 只需直徑減少約 25%（位移被放大，作者比擬為槓桿）。槍烏賊捕食時觸腕 20–40 ms 伸長 40–80%、最高速超過 2 m/s、峰值加速度約 250 m/s²；觸腕橫肌為橫紋、粗肌絲約為腕橫肌的十分之一長，無負荷縮短速度約 15 L0/s，腕橫肌約 1.5 L0/s。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "綜述，不是原研究：捕食動作數字引自 Kier & van Leeuwen 1997，肌肉速度引自 Kier & Curtin 2002（皆 Kier 群自己的研究），本稿把它們當『綜述轉述的已發表結果』，不當本篇新量測；章魚腕段多處用 likely（橫肌『很可能』造成截面縮小），不能寫成已直接量到。80%／25% 是體積不變的幾何關係加上觀察值。研究群：Kier 群（本題首次使用）。 覆核 V125（2026-11-12）：limitations 加：『觸腕橫肌是 cross-striated，腕橫肌是 obliquely striated（第 108 行），不能只寫觸腕是橫紋肌而暗示腕不是』；研究群確認：Kier 與題中其他各群在 Europe PMC AUTH 查詢無共同作者。",
+          "author_cache": {
+            "file": "stw26/f117src/PMC4757648.xml",
+            "sha256_prefix": "9bb54b9aa96a3eb1",
+            "text_file": "stw26/f117src/PMC4757648.txt",
+            "text_sha256_prefix": "ffb77b950bf5697c",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4757648/fullTextXML"
         }
       ]
     },
@@ -39981,6 +40029,34 @@
       ]
     },
     {
+      "id": "SRC-47921eb3a77cb0b6",
+      "url": "https://bradscholars.brad.ac.uk/bitstreams/8a8029c3-042e-46d0-af2e-ad67a98928f9/download",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.cub.2015.04.043",
+          "title": "The many colours of ‘the dress’",
+          "publisher": "Karl R. Gegenfurtner, Marina Bloj, Matteo Toscani / Current Biology 25(13): R543–R544（University of Bradford 機構典藏 hdl:10454/7980）",
+          "version": "accepted manuscript（典藏封面：Reproduced in accordance with the publisher's self-archiving policy），含 Supplemental Information",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出 Bradford 典藏紀錄頁 https://bradscholars.brad.ac.uk/entities/publication/bd61455a-e668-4391-9684-e71eddd24730 → 頁上 PDF 連結，curl 下載（伺服器轉址到 /server/api/core/bitstreams/…/content），pdftotext -layout",
+          "reading_scope": "全文：典藏封面、主文（兩頁 Correspondence 全段、Figure 1 圖說）、Supplemental Experimental Procedures、Table S1 與表註、Figure S1 圖說",
+          "locator": "主文第 3–6 段（15 observers、matches 的連續分布、t13=0.06 n.s. 與 t13=4.56 p<0.001、Munsell 選片、依亮度命名的一致性、light blue or dark blue）；主文後段（daylight locus、Figure 1E–G 旋轉 90°／180° 與灰階影像的命名）；Supplemental：15 人皆曾在網路看過洋裝、22–54 歲、Ishihara 正常、14 人做 Munsell、Munsell Value t12=3.74 p<0.01、Chroma n.s.",
+          "summary": "吉森大學 15 名色覺正常的觀察者在校正螢幕上替洋裝布料與蕾絲配色：只看色度，兩組配色大幅重疊（t13=0.06，不顯著）；加上亮度兩組才分得開（t13=4.56，p<0.001）；Munsell 選片兩組在色相、彩度大致重疊，差在明度。配色呈連續分布而非雙峰；觀察者配色亮度高於某值就叫白、低於就叫藍。洋裝與蕾絲的顏色落在日光軌跡（一天中由黃到藍的日光顏色）附近；把顏色在色彩空間轉 90° 後，沒有觀察者再叫它白色（說粉紅或紅），轉 180° 亦然；灰階版大家都說淺灰或銀色、不說白。作者推測（speculate）洋裝顏色分布貼近自然日光，讓光源與表面難以分開。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只 15 人、全部事先在網路看過洋裝（含 2 名作者）；Correspondence 短文，無正式統計模型；「接近日光軌跡讓人分不開光與表面」是作者推測。旋轉影像段寫「none of our observers」但未寫人數。Conway 群（H74-003）認為少於兩打人的資料看不出兩群，片中須把『連續分布』與『兩群』並陳，不可當成定論。新研究群：作者 Gegenfurtner、Bloj、Toscani 與本題已用各來源作者名單無重疊（以快取 XML 的 contrib 名單核對）。池中無同一頁（grep bradscholars／cub.2015.04.043 無來源紀錄，只在 H74 來源的 limitations 被當引用提到）。 覆核 V124（2026-11-12）：limitations 的『新研究群：與本題已用各來源作者名單無重疊』改為：與 Hurlbert 群（Gegenfurtner–Olkkonen 6 篇、Bloj–Hurlbert 3 篇）、Witzel 群（Gegenfurtner–Witzel 10 篇、Toscani–Witzel 2020 #theDress）、Cao 群（Gegenfurtner–Barrionuevo 2025）、Morimoto 群（Gegenfurtner–Morimoto 6 篇）同一合著網，合計封頂 2.0、已滿。 覆核 V124（2026-11-12）：summary 中『轉 180° 亦然』改為『轉 180° 時色度仍在日光線上但亮度不符自然日光，作者說也不再有不確定；未寫命名與人數』；補 Table S1：自分藍黑 5、白金 10，1 名白金派看法可變。",
+          "author_cache": {
+            "file": "f116src/gegenfurtner2015_bradford.pdf",
+            "sha256_prefix": "c16d344109d27050",
+            "text_file": "f116src/gegenfurtner2015_bradford.txt",
+            "text_sha256_prefix": "4e939fde47ed9729",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-human-20261111",
+          "original_url": "https://bradscholars.brad.ac.uk/bitstreams/8a8029c3-042e-46d0-af2e-ad67a98928f9/download"
+        }
+      ]
+    },
+    {
       "id": "SRC-4797cf174819587f",
       "url": "https://www.gi.alaska.edu/alaska-science-forum/sun-dogs-and-light-shafts",
       "readings": [
@@ -48910,6 +48986,34 @@
       ]
     },
     {
+      "id": "SRC-59b5155ca99d321e",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12818564/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.2509681123",
+          "title": "Tube feet dynamics drive adaptation in sea star locomotion",
+          "publisher": "Deridoux A, Heydari S, Gorb SN, Kanso E, Flammang P, Gabriele S; PNAS 123:e2509681123；更正 PMC13056100",
+          "version": "2026-01-13；2026 更正（只補致謝）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 取自同一 API 的 search 結果），curl 預設標頭，HTTP 200；本機以 xml→txt 抽段閱讀",
+          "reading_scope": "Significance、引言、Results 全部小節、Discussion、Conclusion；另讀更正通知全文（PMC13056100，只補 Kanso 的經費致謝，不改結果）。Methods 只看〈Perturbation Experiments〉標題前後，模型的理論附錄未讀。",
+          "locator": "Results〈Crawling Speed…Not Correlated…〉〈Tube Foot Adhesion Time Drives…〉〈Dynamic Adjustments…Mass Changes〉〈Biomechanics Model〉〈…Inverted Setup〉；Figs 3–6 圖說",
+          "summary": "以全內反射成像看歐洲海星（Asterias rubens）爬行時每隻管足的接觸：同一時間貼地的管足不到總數一成；爬速和貼地管足數無關，和單隻管足的黏附時間成反比（黏附多半 3–20 秒）。背上加重 25%、50% 時，貼地比例只略增，黏附時間由空背包 4.3±1.4 秒增為 5.9±1.9 與 8.4±2.6 秒，爬速下降；翻過來倒掛爬行時黏附時間也延長。只讓每隻管足依自身長度與角度做局部回饋、沒有中央協調的模型，可重現加重與倒掛的趨勢。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "模型結果是『足以重現』，不是證明海星沒有任何中央協調（作者自己在討論說步行方向可能仍需中央協調）。引言裡管足靠壺腹收縮充壓伸長、縱肌彎曲與縮短，以及雙腺黏著系統是引用前人，不算本篇結果。研究群：與 F117-S005 同屬 Flammang 合著網；Kanso、Heydari 也與 Ellers 2024（未採用）合著。更正只改致謝。 覆核 V125（2026-11-12）：研究群改為：Gorb SN 與 Hu DL 合著（Amador 等 2017 Honey bee hairs and pollenkitt…，PMID 28332480），與題中 Hu 群同群；並經 Flammang 與 S005、A24002 同網。summary 的『成反比』改『反向相關、R²≈0.21』，加每組 N=5。",
+          "author_cache": {
+            "file": "stw26/f117src/PMC12818564.xml",
+            "sha256_prefix": "fd1d66803ab30683",
+            "text_file": "stw26/f117src/PMC12818564.txt",
+            "text_sha256_prefix": "33c3978f339968ef",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12818564/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-59c24cde64697675",
       "url": "https://doi.org/10.1029/JC075i036p07517",
       "readings": [
@@ -56574,6 +56678,27 @@
           },
           "origin": "wave74-life-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12676083/fullTextXML"
+        },
+        {
+          "canonical_url": "https://doi.org/10.1111/nph.70620",
+          "title": "PLETHORAs shape Arabidopsis phyllotaxis through modulation of patterning robustness and accelerated inflorescence development",
+          "publisher": "New Phytologist 249(1):495–511（2026）；Kerstens M、van der Klugt F、Hofhuis H、Scheres B、Willemsen V（瓦赫寧恩大學）",
+          "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC12676083/fullTextXML，curl 預設標頭重抓（200，179831 位元組）；文字為 stw24/f89src 同一份去標籤稿（雜湊相同）",
+          "reading_scope": "本輪逐段讀完上一輪未讀的部分：Results 第一節後半（Col-0 約 1000 個角、79% 落在 112.5–157.5°）、第二節（蓮座前 10 片葉）、第三節（激素網絡，略讀）、第四節（頂端原基位置與莖上角度不符）、第五節（pin1 T600I）、第六節（加速抽苔與節間）、第七節『Inherent stem torsion…』全段與圖 6 說明、第八節『Stem torsion chirality-dependently drives alternative phyllotactic patterns』全段與圖 7 說明、Discussion 全文、Methods『Phyllotactic simulations』段、Supporting information 清單。補充圖表（Fig. S1–S8、Table S1–S7）未讀。",
+          "locator": "Results『Reduced robustness of flower primordium position cannot explain inflorescence phyllotaxis』末段；『Inherent stem torsion chirality-dependently modifies the plt phyllotaxis phenotype』第一段（『shifted … if grouped by chirality, but not in the rosette or at the IM』）；『Stem torsion chirality-dependently drives alternative phyllotactic patterns』全段與圖 7 說明（n = 20 each）；Discussion 第三段（0.6°、1.7°、3.2°；clockwise torsion inversed the chirality dependency）",
+          "summary": "在一般品系 Col-0：頂端量到的花原基夾角，與同一品系長成花序莖上的夾角對不上；莖上的夾角按花序順時針或逆時針轉分成兩群，但蓮座葉與花序頂端的角度不分群。研究者再比較莖扭轉程度不同的突變株（各量 20 根花序的表皮細胞列）：Col-0 約 0.6°、spr2-2 約 1.7°、tor2 T56I 約 3.2°，都是逆時針扭，扭得越多，夾角隨節間長度偏離黃金角的斜率越陡、順逆兩群分得越開；tor2 S178Δ 是輕微順時針扭（約 −1.1°），順逆兩群偏的方向跟著對調；扭最多的 tor2 T56I，莖上的夾角呈現 90° 與 180° 兩個『表面上的』集中點。Discussion 結論：扭轉的強弱與方向（經由皮層微管排列）控制頂端排好之後莖上葉序被改動的程度與方向；並說即使頂端找到新的穩定排列，在會伸長、回應環境的植株上也很難維持。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 SRC-691c286856bb3df0 同一頁、同一快取（L74-047 的來源）；本筆是同一份文件的新讀段，覆核可改記為該來源新增一筆 reading。扭轉改角度的解釋前人已在 csi1、spr2-2 提出（Landrein 等 2013，本篇 Discussion 自述『expand on previous work』），本篇新的是 0.6°／1.7°／3.2° 的強度梯度與順時針扭轉讓方向對調；突變株不是自然變異；90°／180° 原文是 apparent pattern attractors（莖上看起來的集中），不是頂端改排；模擬（圖 6j、圖 S8）不寫入；蓮座與頂端不分群的資料在圖 S7（未讀），只依正文句子。研究群：Willemsen／Kerstens 群（併 Robertson 2025 Cyanella），題內 L74-047 0.5＋L74-048 0.5＋本筆 0.25＝1.25，未達 2.0。 覆核 V121（2026-11-12）：不另立來源：併為池中 SRC-691c286856bb3df0 新增一筆 reading（同一網址、同一快取 ad5add72a7714cbf／文字 70e45609254a7595）；reading_scope 改為『第七節第一段（蓮座與頂端不分群一句）、第八節全段與圖 7 說明、Discussion 第三段；第四節與第七節前段上一輪已讀』，limitations 加『tor2 S178Δ 逆時針群 P = 0.10 未達顯著；Fig. S7、S8 未讀』。",
+          "author_cache": {
+            "file": "stw26/f113src/PMC12676083.xml（文字 PMC12676083.txt）",
+            "sha256_prefix": "ad5add72a7714cbf",
+            "text_sha256_prefix": "70e45609254a7595",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12676083/fullTextXML"
         }
       ]
     },
@@ -56769,6 +56894,27 @@
             "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
           },
           "origin": "wave74-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8020676/fullTextXML"
+        },
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.2016304118",
+          "title": "Phyllotactic patterning of gerbera flower heads",
+          "publisher": "PNAS 118(13)（2021）；Zhang T、Cieslak M、Owens A、Wang F、Broholm SK、Teeri TH、Elomaa P、Prusinkiewicz P（赫爾辛基大學、卡加利大學）",
+          "version": "出版社開放取用版（CC BY-NC-ND 4.0，PMC 收錄 JATS 全文）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST（文件記載 API）/webservices/rest/PMC8020676/fullTextXML，curl 預設標頭重抓（200，147544 位元組）；文字為 stw24/f89src 同一份去標籤稿（雜湊相同）",
+          "reading_scope": "Significance、摘要、前言、Results 四節（Head Development、Pattern Initiation、Pattern Progression、Integrative Model）與圖 2–9 說明逐段重讀；Discussion 全文（上一輪只讀開頭）；Methods『Measurement and Analysis of the Pattern of Gaps』『Measurement of Distances between Bracts…』『In Vitro Culture and Live Imaging…』三段。SI Appendix（Fig. S1–S11、SI Text 模型）未讀。",
+          "locator": "Pattern Initiation 第四段（gaps between neighboring initia have a bimodal distribution … short (S) or long (L) at every developmental stage；lineage tree 圖 4D；S → L 與 L → L + S；analogous to … an idealized rabbit population）；圖 4 說明 B–E；Methods『Measurement and Analysis of the Pattern of Gaps』；Discussion 第二段（Hirmer 模型對照，只作分寸）",
+          "summary": "非洲菊花頭邊緣的生長素反應亮點（DR5）之間的角度空隙，在每個發育階段都呈雙峰分布，可分成短（S）與長（L）兩類（圖 4B、4C；以費氏數個亮點的花頭量）。把各階段整理成譜系樹（圖 4D）：每一步，每個長空隙中間冒出一個新點、分成一長一短；原本的短空隙則伸長成長空隙。研究者指出這個進程與費氏數最早的例子——理想化兔群的繁殖——相同，因此說明了空隙數與點數照費氏數列增加；並指出若要每一批完全同步，短空隙長成長空隙的時間要等於長空隙長到門檻再分裂的時間，在所有空隙同速生長的假設下，新點須以黃金比例分割兩鄰居間的空間。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "與池中 SRC-697b877b9049d0ea 同一頁、同一快取（L74-043 的來源）；本筆是同一份文件上一輪未計的量測段，覆核可改記為該來源新增一筆 reading。空隙是從 56 個不同花頭的共焦影像量角度、以費氏數個亮點的花頭為主；發育順序是由不同花頭快照拼出（原文：pattern is stereotypical），不是追蹤同一花頭（縮時只有 5 個頭）；譜系樹與兔群類比是作者由觀察推出的規則（原文『From these observations we infer』）；同步需黃金比例是推導（假設同速生長），且已含在 L74-043 的『嚴格照費氏仍需黃金比例』，不重算；DR5 是生長素反應報導訊號。研究群：Prusinkiewicz 網絡（L74-043 1.25＋L74-044 0.5＋本筆 0.25＝2.0，剛好封頂）。 覆核 V121（2026-11-12）：不另立來源：併為池中 SRC-697b877b9049d0ea 新增一筆 reading；summary 的『在每個發育階段』改為『到 13 個點為止的每個階段』，加『分析用亮點數為費氏數的花頭（圖 4B）』。",
+          "author_cache": {
+            "file": "stw26/f113src/PMC8020676.xml（文字 PMC8020676.txt）",
+            "sha256_prefix": "2f43a001ee205ff5",
+            "text_sha256_prefix": "2cbf11cffb2960f7",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8020676/fullTextXML"
         }
       ]
@@ -58558,6 +58704,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://openstax.org/books/university-physics-volume-3/pages/9-6-semiconductors-and-doping"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6cbc93bbad3c4a65",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4219264/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/bs4030213",
+          "title": "Trained Quantity Abilities in Horses (Equus caballus): A Preliminary Investigation",
+          "publisher": "Behavioral Sciences (MDPI)",
+          "version": "2014 published version",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（q2／q4／q11 搜尋結果列出 PMC4219264）",
+          "reading_scope": "以關鍵字 Clever Hans／experimenter／blind／unaware 掃全文並讀前後段（前言對 Clever Hans 的一句、2.3.1 Familiarization 兩位實驗者的安排）；其餘段落未逐句讀。",
+          "locator": "Introduction（Clever Hans 參考文獻 35）；2.3.1 Familiarization",
+          "summary": "一匹馬的操作制約數量辨別。防範提示的方式是：換刺激的實驗者 E2 躲在裝置後面所以無法提示，牽馬的實驗者被要求試次中不要給任何提示。沒有比較實驗者知不知道答案、看不看得到馬的條件。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有防範措施、沒有操弄，不符 still_missing（2）；單一個體。未提案、不計條數。",
+          "author_cache": {
+            "file": "stw26/f114src/PMC4219264.xml（文字版 PMC4219264.txt）",
+            "sha256_prefix": "2967140973e5bb69",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4219264/fullTextXML"
         }
       ]
     },
@@ -66565,6 +66737,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://content.tfl.gov.uk/introduction-to-knowledge-booklet-march-2022.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7d038e54e714d1a4",
+      "url": "https://infoscience.epfl.ch/record/227798/files/i1534-7362-17-3-15.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1167/17.3.15",
+          "title": "The role of one-shot learning in #TheDress",
+          "publisher": "Leila Drissi Daoudi, Adrien Doerig, Khatuna Parkosadze, Marina Kunchulia, Michael H. Herzog / Journal of Vision 17(3):15（EPFL Infoscience 典藏）",
+          "version": "出版社正式版 PDF（CC BY-NC-ND 4.0，頁腳 Downloaded from jov.arvojournals.org 02/04/2020，由 EPFL 典藏）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出的 Infoscience PDF 連結，curl（首次 429，同連結再試一次 200），pdftotext",
+          "reading_scope": "全文 pp.1–7：摘要、前言、方法（實驗 1、2a、2b）、結果、討論；參考文獻只讀到第 7 頁開頭",
+          "locator": "Methods/Experiment 1 Observers（喬治亞、67 人）；Results/Experiment 1（35 名未看過、19／16 人、82.4%、85.7%、z=3.775）；Results/Experiment 2（82.6% vs 66.7%，z=1.127，p=0.259）；Discussion 第 1、3、5 段；Figure 1 圖說",
+          "summary": "在網路使用較少的喬治亞找 67 人，其中 35 人從沒看過洋裝。先只露出洋裝一小條、其餘用黑或白遮板蓋住：黑遮板組 19 人中 82.4% 成了白金派，白遮板組 16 人中 85.7% 看成藍黑（差異顯著）。拿掉遮板看全圖後，多數人看法不變；原本看過的人也說和第一次看到時一樣。另一實驗強迫未看過的人第一眼先盯亮角或暗角：82.6% 對 66.7% 看成白金，差異不顯著；自由觀看的眼動也看不出兩派差別。作者解讀為『一次學習（one-shot learning）』：第一次看到時的情境決定往後的看法，但第一個注視點不是原因。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "『拿掉遮板後多數不變』正文只寫 majority，比例在 Figure 1d（圖未數位化，不引數字）；樣本為喬治亞成人，每組 16–19 人；one-shot learning／imprinting 是作者解讀。前言『約三分之二的人看白金』是引用前人，不算本篇結果。新研究群：Herzog 群與本題各來源無共同作者；池中另有 Herzog 群來源 SRC-c1681d0a70ed39ad（Dissecting (un)crowding，不同文件、不同題）。 覆核 V124（2026-11-12）：limitations 補：82.4%／85.7% 無法由 19／16 整除，分母原文未說明，不換算人數；拿掉遮板的『不變』只在同一次約 5 分鐘內測（同群 2020 自承未測更久）；自由觀看眼動只有 10 人；Herzog 群因 Parkosadze–Webster 2013 合著併入 Webster 群。",
+          "author_cache": {
+            "file": "f116src/drissi2017_infoscience.pdf",
+            "sha256_prefix": "be7670f321a94cd2",
+            "text_file": "f116src/drissi2017_infoscience.txt",
+            "text_sha256_prefix": "730b294a1e9651b1",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-human-20261111",
+          "original_url": "https://infoscience.epfl.ch/record/227798/files/i1534-7362-17-3-15.pdf"
         }
       ]
     },
@@ -83100,6 +83300,34 @@
       ]
     },
     {
+      "id": "SRC-9c66d9d5272804a0",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7704652/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-020-77873-7",
+          "title": "Octopus arms exhibit exceptional flexibility",
+          "publisher": "Kennedy EBL, Buresch KC, Boinapally P, Hanlon RT; Scientific Reports 10:20872",
+          "version": "2020-11-30",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 取自同一 API 的 search 結果），curl 預設標頭，HTTP 200；本機以 xml→txt 抽段閱讀",
+          "reading_scope": "全文正文：Abstract、Introduction、Methods、Results（Bending、Elongation and shortening、Torsion）、Discussion 全部小節、圖說。未讀補充影片。",
+          "locator": "Results 全節；Figs 3–7 圖說；Discussion〈Arm flexibility and behaviour〉〈Neural control〉〈Methodological considerations〉",
+          "summary": "10 隻野生捕獲的雙斑蛸（O. bimaculoides，約 400–700 g）在實驗缸 120 分鐘影片中記到 16,563 次腕形變；八條腕、三段（近、中、遠）都出現彎曲、扭轉、伸長、縮短四種。彎曲 11,074 次（超過 65%），伸長 2,723 次、縮短 1,340 次、扭轉 1,426 次；近端（靠身體）一段的伸長與縮短占比高於中、遠段，中遠段以彎曲為主。所有形變多半不用吸盤。伸長與縮短是以吸盤間距與腕粗細目測判定（變長即變細）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "觀察性計數，不量伸長幅度、不量力，作者自承未量第五種形變『變硬』；實驗缸、隔板設計偏向前腕。前言的體積不變與拮抗肌描述是引用 Kier 等，不是本篇結果；Discussion 中『伸手時彎曲由一道變硬波推向末端、同時腕基伸長』是引用 Gutfreund／Hochner 等前人研究，不算本篇結果。研究群：Hanlon 群（MBL），與 F117-S003 合計封頂。 覆核 V125（2026-11-12）：limitations 加：『近端伸縮多是指近端形變中的占比，不是伸長次數最多的段』；『伸長以吸盤間距與腕變細目測判定（第 19 行），不能反過來當體積不變的證據』。",
+          "author_cache": {
+            "file": "stw26/f117src/PMC7704652.xml",
+            "sha256_prefix": "1150d705a7959920",
+            "text_file": "stw26/f117src/PMC7704652.txt",
+            "text_sha256_prefix": "4564c470e9dcffd6",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7704652/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-9c708c67e2cd6edf",
       "url": "https://ae.iitm.ac.in/~nidish/courses/as3020/files/mod2/dehavcomet.pdf",
       "readings": [
@@ -83747,6 +83975,34 @@
       ]
     },
     {
+      "id": "SRC-9d5a08f27f1b68da",
+      "url": "https://infoscience.epfl.ch/record/276986/files/Drissi-Daoudi%20et%20al_2020.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.visres.2020.01.007",
+          "title": "How stable is perception in #TheDress and #TheShoe?",
+          "publisher": "Leila Drissi-Daoudi, Adrien Doerig, Khatuna Parkosadze, Marina Kunchulia, Michael H. Herzog / Vision Research 2020（EPFL Infoscience 典藏）",
+          "version": "作者稿（典藏 PDF，無期刊排版；Europe PMC 列為訂閱）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出的 Infoscience PDF 連結，curl（首次 429，同連結再試一次 200），pdftotext",
+          "reading_scope": "摘要、前言、方法（實驗 1a、1b、2）、結果、討論全段、致謝；參考文獻與附錄 A（問卷）、附錄 B 表 B.1–B.4 只看標題未逐列讀",
+          "locator": "Methods/Experiment 2（37 人、印在紙上、每天同地點同光線看一次、14 天、事先告知兩種看法與真實顏色）；Results/Experiment 2『Switches during the 14-days experiment』與『Switches prior to the experiment』；Discussion 第 3–4 段；Results/Experiment 1（鞋子 26.2%、72.2%、17.6%）",
+          "summary": "37 人拿到印在紙上的洋裝與鞋子照片，每天同一地點、同樣光線看一次、連看 14 天並記錄。洋裝只有 2 人（5.4%）出現換看法，而且都是在看的當下：主要看到白金，偶爾幾秒看到藍黑後又回到白金（一人 14 次、一人 2 次）。實驗前問卷中，37 人有 7 人（18.9%）說這輩子曾換過一次以上。鞋子照片：未遮時 26.2% 看粉白；初次用綠色遮板只露一小塊時 72.2% 看粉白；紅、黃、藍遮板無效果。作者結論：第一個看法定下後，14 天內大致穩定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "作者稿，與正式版可能有字句差異。原文前後不一：Results 寫實驗前曾換過的洋裝為 7/37（18.9%），Discussion 寫『Around 27%』；片中只用 Results 的 7/37。受試者事先被告知兩種看法與真實顏色；37 人小樣本、紙本列印而非螢幕。Discussion 引 Mahroo 2017 的 34%、Lafer-Sousa 的 50% 等都是引用，不算本篇。與 F116-S002 同研究群（同五位作者），合計封頂 2.0。 覆核 V124（2026-11-12）：limitations 補：Discussion 自述結果與 Lafer-Sousa & Conway 2017 相容；與 S002 同群並與 Webster 群合併（Parkosadze–Webster）。",
+          "author_cache": {
+            "file": "f116src/drissi2020_infoscience.pdf",
+            "sha256_prefix": "9199943a877d7f47",
+            "text_file": "f116src/drissi2020_infoscience.txt",
+            "text_sha256_prefix": "cff4e86361b19717",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-human-20261111",
+          "original_url": "https://infoscience.epfl.ch/record/276986/files/Drissi-Daoudi%20et%20al_2020.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-9d6f474eb147079a",
       "url": "https://www.murata.com/en-us/support/faqs/capacitor/ceramiccapacitor/char/0006",
       "readings": [
@@ -84028,6 +84284,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.soleretriever.com/news/articles/supreme-x-nike-fall-2026-release-date-september-2026"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9df263ee3e5110bb",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8601049/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1093/iob/obab012",
+          "title": "Regional Tongue Deformations During Chewing and Drinking in the Pig",
+          "publisher": "Olson RA, Montuelle SJ, Curtis H, Williams SH; Integrative Organismal Biology 3:obab012",
+          "version": "2021",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 取自同一 API 的 search 結果），curl 預設標頭，HTTP 200；本機以 xml→txt 抽段閱讀",
+          "reading_scope": "Synopsis、Introduction、Materials and methods〈Data collection〉、Results 各節的文字（表格只看統計欄）、〈Relationship between regional length and widths〉、Discussion 全部小節、Limitations。",
+          "locator": "Results〈General patterns…Length〉、〈Relationship between regional length and widths—a test of the muscular hydrostat model〉、Fig. 7–9 圖說；Discussion〈Tongue deformations do not amplify…〉〈Regional AP and ML deformations…only partially support the muscular hydrostat model〉",
+          "summary": "兩頭 3 個月大的豬，舌內植入鉭珠以 XROMM 拍攝咀嚼 102 個週期、喝水 90 個週期：整條舌頭長度在咀嚼與喝水週期內變化很小，從未超過靜止長度 1.1 倍（兩頭豬的總長變化約 4.9 與 8.8 mm）；各段卻各自伸縮、時間由前往後錯開，後段（R3–R5）伸長超過靜止長度，前段（R1–R2）多在縮短狀態，彼此抵消。長與寬的取捨大致符合肌肉靜水骨骼模型，但部分區段相反、時間上也沒有清楚的此消彼長；作者結論：模型性質在整條舌頭層級保留，區段層級有變異，僅部分支持。CT 顯示伸長較多的後段垂直與橫向肌纖維比例較高（相關，非因果實驗）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有兩頭豬、只有長與寬（缺高度），標記位置兩頭不同；咀嚼與喝水不是伸舌出口的動作，不能說『豬伸舌頭』。『縱向纖維多的前段可能限制伸長』是作者推論。研究群：Williams 群（俄亥俄大學），本題首次使用；與 A19002 的 Brainerd 群無共同作者（XROMM 方法引用不算合著）。 覆核 V125（2026-11-12）：summary 改：『整條舌頭長度』→『舌前三分之二的標記總長（105.5、72.5 mm）』；limitations 加：『舌頭是肌肉靜水骨骼』在本篇是前言引用 Kier & Smith 1985。",
+          "author_cache": {
+            "file": "stw26/f117src/PMC8601049.xml",
+            "sha256_prefix": "1c86eacaeeb7af4b",
+            "text_file": "stw26/f117src/PMC8601049.txt",
+            "text_sha256_prefix": "a4267ec59351bec9",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8601049/fullTextXML"
         }
       ]
     },
@@ -85450,6 +85734,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.networkrailmediacentre.co.uk/news/no-need-to-spend-a-penny-as-toilet-charges-scrapped-at-london-paddington"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a0bcde39e0c902e3",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12653766/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://europepmc.org/article/PMC/PMC12653766",
+          "title": "The Social Relevance of Numbers: Insights from Animal Studies",
+          "publisher": "Life (MDPI)",
+          "version": "2025 published version",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（前一輪 s2 與本輪 q12 搜尋結果列出）",
+          "reading_scope": "只當找引用線索：以 Clever Hans／experimenter／blind／human／owner 掃全文並看章節標題；不是原研究、不計條數。",
+          "locator": "1. Numerical Cognition in Animals 第一段",
+          "summary": "綜論只在開頭一段說漢斯讀的是實驗者的無意行為線索（引 Pfungst），沒有引用任何現代在數量作業裡操弄實驗者知識或可見度的研究。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "綜論；只用來確認沒有可追的原研究。",
+          "author_cache": {
+            "file": "stw26/f114src/PMC12653766.xml（文字版 PMC12653766.txt）",
+            "sha256_prefix": "c9b28d2b27d57c4f",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12653766/fullTextXML"
         }
       ]
     },
@@ -91890,6 +92200,34 @@
           "version_note": "2010研究報告；亞利桑那研究區推論不概括全部河階。",
           "origin": "wave7-earth-20261101",
           "original_url": "https://pubs.usgs.gov/sir/2010/5028/pdf/SIR10-5028.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-acb35102744ded23",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12426218/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-025-10674-y",
+          "title": "Octopus arm flexibility facilitates complex behaviors in diverse natural environments",
+          "publisher": "Bennice CO, Buresch KC, Grossman JH, Morano TD, Hanlon RT; Scientific Reports 15:31875",
+          "version": "2025",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 取自同一 API 的 search 結果），curl 預設標頭，HTTP 200；本機以 xml→txt 抽段閱讀",
+          "reading_scope": "Abstract、Methods〈Field Locations〉〈Video analysis…〉、Results 全節（Arm actions、Arm deformations、Laboratory versus field comparison）、Discussion〈Arm flexibility〉首兩段。未讀補充資料表。",
+          "locator": "Results〈Arm deformations〉與 Figs 5–6；〈Laboratory versus field comparison〉；Discussion 第 62 行段",
+          "summary": "野外 25 隻自然覓食的章魚（O. vulgaris、O. americanus、O. insularis；佛州、波多黎各、開曼、西班牙維哥等 6 地，水深約 1–10 m）各 1 分鐘影片：腕形變 6,781 次，彎曲 70%（4,750）、伸長 22%（1,458）、縮短 6%、扭轉 2%；八條腕都出現四種形變。伸長在近端與中段比遠端多，彎曲以遠端最多；與實驗室研究（F117-S002）趨勢相同。作者在討論以前人解剖（橫肌在近、中段最大）對照『伸長多在近端』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "同群（Hanlon，Buresch 兩篇皆有），與 F117-S002 合計封頂。Abstract 寫 6,871，Results 寫 6,781（4,750＋1,458＋410＋63＝6,681，與兩者都不符），稿中不報總數、只報百分比與『約七成彎曲』。『橫肌在近中段最大』是引用前人解剖，不算本篇結果。觀察計數，不量幅度與力。 覆核 V125（2026-11-12）：summary 改：田野地點六處，南佛州 11 隻、波多黎各 6、開曼 3、維哥 3、Saba 與 Bonaire 各 1，每隻 1 分鐘；伸長是近端與中段都多於遠端（第 50、52 行）。",
+          "author_cache": {
+            "file": "stw26/f117src/PMC12426218.xml",
+            "sha256_prefix": "2469e8d03d303395",
+            "text_file": "stw26/f117src/PMC12426218.txt",
+            "text_sha256_prefix": "2ccf546ffa826c4d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12426218/fullTextXML"
         }
       ]
     },
@@ -113329,6 +113667,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://www.open.edu/openlearn/science-maths-technology/engineering-technology/v-process-vacuum-sealed-moulding-process"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d5ebde4733bed1e8",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6122182/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3762/bjnano.9.196",
+          "title": "The structural and chemical basis of temporary adhesion in the sea star Asterina gibbosa",
+          "publisher": "Lengerer B, Bonneel M, Lefevre M, Hennebert E, Leclère P, Gosselin E, Ladurner P, Flammang P; Beilstein J. Nanotechnol. 9:2071–2086",
+          "version": "2018",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST fullTextXML（文件記載的 API；PMCID 取自同一 API 的 search 結果），curl 預設標頭，HTTP 200；本機以 xml→txt 抽段閱讀",
+          "reading_scope": "Abstract、Introduction、Results and Discussion 中〈Morphology and ultrastructure of the tube feet〉的外形與黏著上皮超微結構段、〈Footprint structure and topography〉全段、Conclusion。凝集素標記細節與 Experimental 只看關鍵字前後。",
+          "locator": "Results〈Ultrastructure of the adhesive epidermis〉（txt 第 31 行）、〈Footprint structure and topography〉（第 37、42 行）、Conclusion（第 60 行）",
+          "summary": "在 Asterina gibbosa 的管足盤上皮找到三種分泌腺細胞：兩種黏著腺（第 1 型橢圓顆粒約 596×431 nm、第 2 型球形約 346 nm）與一種去黏腺（顆粒約 125 nm）。管足自己放開後，玻璃上留下與管足直徑相近的『腳印』：薄層上覆網狀物（網孔 1–5 µm，網高約 60–90 nm）。只有牢牢吸附至少一分鐘後才看得到腳印，單純走過去的看不到，作者因此推測黏力可隨分泌量調整；用力硬拉時常是管足在盤或柄斷掉。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "『黏著靠雙腺系統（膠＋去黏）』的一般說法在前言是引用前人；本篇的結果是這個物種的三種腺細胞與腳印形態。『黏力隨分泌量調整』是作者推測。沒有量黏力數值。研究群：Flammang／Ladurner 群，與 F117-S006 合著網（Flammang）合計封頂。 覆核 V125（2026-11-12）：研究群改為：Flammang／Ladurner／Hennebert 網；Flammang 與 Elphick MR 合著（D'Aniello 等 2015 Opsin evolution in the Ambulacraria），併入 A24002（Mo 等 2016，含 Elphick、Gupta）計封頂。limitations 加：本篇未測吸力。",
+          "author_cache": {
+            "file": "stw26/f117src/PMC6122182.xml",
+            "sha256_prefix": "6dda0d1cc0c853a7",
+            "text_file": "stw26/f117src/PMC6122182.txt",
+            "text_sha256_prefix": "0a1a87c99c6ce67a",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave76-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6122182/fullTextXML"
         }
       ]
     },
@@ -340178,6 +340544,516 @@
       "production_ready": false
     },
     {
+      "id": "H76-001",
+      "question": "白金派和藍黑派，吵的真的是「藍色還是白色」嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_lightness_not_chromaticity_continuum_matches",
+      "answer_target": "德國吉森大學的小實驗說：差的主要是亮度，不是色相。15 名色覺正常、事先都在網路看過這張照片的人（實驗室成員與學生，含 2 名作者；5 人自稱藍黑、10 人白金），在校正過的螢幕上替洋裝布料配色：只看色度，兩派配出來的大幅重疊、差異不顯著；把亮度算進去，兩派才明顯分開。之後從色票挑最像的，兩派挑的色相、彩度大致一樣，差在明度。他們的配色在色彩空間裡排成連續的一片，而不是分成兩堆；配得夠亮的人叫它白、配得暗的叫它藍，所以不是同一個顏色換了不同名字。作者因此寫：問題與其是『藍還是白』，不如說是『淺藍還是深藍』。",
+      "scope": "只 15 人、全部事先看過、含作者本人；『連續分布』與 Conway 線上 2,200 人分析的『兩群』（H74-003）相反，而 H74-003 正是說少於兩打人的資料可能看不出兩群——片中必須兩說並陳、說明樣本大小差異，不判輸贏、不說『其實沒有兩派』。不得說『大家其實看到一樣的顏色』或『只是叫法不同』（原文正好排除了純命名差異）。",
+      "source_locator": "F116-S001：主文第 3–6 段、Figure 1A–C 圖說；Supplemental Table S1 表前說明（Munsell Value t12=3.74、Chroma n.s.）",
+      "premise_status": "screened",
+      "notes": "算 0.5：一個 15 人實驗，色度 vs 亮度的對比與 Munsell 明度同一結論合為一條；『連續 vs 兩群』與 H74-003、H74-010 有部分重疊（H74-010 也提到亮區配色連成一線），只算其新增的『差在亮度、不在色相』。新研究群（Gegenfurtner／Bloj／Toscani），與 F116-002 合計 1.0。 原提案 F116-001（目標 F83-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V124（2026-11-12）改字後收；引文正確、題意新（池中無『差在亮度不在色相』）。改寫補上樣本組成（5 對 10、含作者）與『排除純命名差異』這一句原文結論，避免觀眾誤以為『只是叫法不同』。研究群判定作者錯，見 notes。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩派吵的不是藍或白，比較像淺藍還是深藍——命名才把連續的差異切成兩邊。",
+        "visual": "一條由深藍到淺藍白的色帶，15 個點散布其上，中間一條虛線把點分成『叫藍』『叫白』兩側。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave76-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-47921eb3a77cb0b6",
+          "origin": "wave76-human-20261111",
+          "locator": "F116-S001：主文第 3–6 段、Figure 1A–C 圖說；Supplemental Table S1 表前說明（Munsell Value t12=3.74、Chroma n.s.）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H76-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H76-002",
+      "question": "把洋裝換成別的顏色，大家還會吵嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_daylight_locus_hue_rotation_ends_ambiguity",
+      "answer_target": "同一個吉森團隊發現，照片裡洋裝和蕾絲的顏色剛好排在『一天中日光由黃到藍』的那條線附近。他們把洋裝的顏色在色彩空間裡轉 90 度，觀察者沒有人再叫它白色，而是說粉紅或紅；改成灰階，大家都說淺灰或銀色，不說白。轉 180 度（藍變成偏黃）時，顏色雖然還在日光那條線上，但亮暗關係不再像真實日光（真實的偏黃陽光通常比較暗），作者說這時也不再有歧義。他們的推測是：要同時有『顏色貼著日光』和『亮度跟著顏色一起變』，才會讓人分不清那片藍是『藍布配普通光』還是『白布在偏藍的暗光裡』。",
+      "scope": "整段機制是作者推測（speculate、presumably）；旋轉影像沒有寫人數，只能說『他們的觀察者』；180 度那句原文沒寫大家叫它什麼顏色，不得說『換成黃色大家都看一樣』（那是 Winkler 2015，仍未讀到）。",
+      "source_locator": "F116-S001：主文 Figure 1A 說明段（daylight locus）、主文後段（Figure 1D–G：旋轉 90°、180°、灰階）；Supplemental 第 4 段（旋轉影像製作方式）",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 F116-001 同篇同組觀察者，但是另一個操作與另一個答案（為什麼偏偏是藍）；Gegenfurtner 群合計 1.0。補上 H74-009 只靠轉述的『藍色偏誤』缺口的一部分（是日光軌跡與旋轉示範，不是 Winkler 的藍黃不對稱）。 原提案 F116-002（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V124（2026-11-12）改字後收；作者把 180° 寫成『沒有人說白，轉 180 度也一樣』，原文對 180° 只說不再有不確定並給了不同理由（亮度不符日光），改正；『分不開光和布』與『亮度與顏色共變』都標為推測。降為 0.25 單獨值。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "洋裝的藍剛好是天空會給的藍——換成粉紅，就沒得吵。",
+        "visual": "原圖、轉 90 度（粉紅）、轉 180 度、灰階四張並排，旁邊一條由暖黃到冷藍的日光色帶。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave76-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-47921eb3a77cb0b6",
+          "origin": "wave76-human-20261111",
+          "locator": "F116-S001：主文 Figure 1A 說明段（daylight locus）、主文後段（Figure 1D–G：旋轉 90°、180°、灰階）；Supplemental 第 4 段（旋轉影像製作方式）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H76-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H76-003",
+      "question": "你是白金派還是藍黑派，是不是第一眼就決定了？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_first_exposure_occluder_one_shot_lock",
+      "answer_target": "瑞士洛桑聯邦理工學院的團隊到網路較不普及的喬治亞，找到 35 個從沒看過這張照片的人。先用遮板蓋住背景和大半件洋裝，只露一小條：黑色遮板那組（19 人）超過八成看成白金，白色遮板那組（16 人）超過八成看成藍黑。接著當場拿掉遮板給他們看整張照片，多數人的看法沒有跟著變。研究者也試過強迫人第一眼先盯照片的亮角或暗角，看成白金的比例差異不顯著。作者的解讀是：第一次看到時的情境，可能把看法『一次定型』。",
+      "scope": "原文百分比是 82.4% 與 85.7%，但無法由 19、16 人整除，不得換算成『幾人中幾人』；『不變』只在同一次約 5 分鐘內測，沒有追蹤之後幾天（同群 2020 年自承），片中不得說『從此一輩子定型』；同群 2020 年也寫約兩成人的看法不受遮板顏色決定；每組 16–19 人、喬治亞成人；『一次定型／銘印』是作者解讀。眼動只有 10 人，不另講。不得說『第一眼看哪裡決定顏色』（原文相反）。",
+      "source_locator": "F116-S002：Methods/Experiment 1 Observers；Results/Experiment 1；Results/Experiment 2；Discussion 第 1 段、第 3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：遮板實驗為主（82.4%／85.7% 合 1 個結果），注視點不顯著只當限制、不另算。與 H74-005（知道答案後會換）是互補：一個講怎麼定下來，一個講之後鬆動。新研究群（Herzog 群），與 F116-004 合計 1.0。 原提案 F116-003（目標 F83-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V124（2026-11-12）改字後收；題意新、是轉折二的關鍵第一手證據；改掉『19 人中 82.4%』這種分母不成立的寫法，並補上『只測幾分鐘』與『兩成不受影響』兩項限制，避免把短時效果講成終身定型。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "陣營可能不是天生的，而是第一次看到它時旁邊是什麼——黑框讓人變白金派，白框讓人變藍黑派。",
+        "visual": "同一小條洋裝，左邊被黑框包住、右邊被白框包住；框拿掉後人物頭上的標籤不動。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave76-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-7d038e54e714d1a4",
+          "origin": "wave76-human-20261111",
+          "locator": "F116-S002：Methods/Experiment 1 Observers；Results/Experiment 1；Results/Experiment 2；Discussion 第 1 段、第 3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H76-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H76-004",
+      "question": "每天盯著洋裝看，看法會一直跳來跳去嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_fourteen_day_diary_percept_stability",
+      "answer_target": "很少。同一個瑞士團隊請 37 人把印在紙上的洋裝照片，每天在同一地點、同樣光線下看一次，連看 14 天並記下看到的顏色；他們事先都被告知有兩種看法和真實顏色。14 天裡只有 2 人換過看法，而且都只在看的當下：平常是白金，偶爾幾秒看到藍黑，又跳回白金。研究者自己說，這和『有人會換』的線上調查並不矛盾，只是換的人少、換了也很快回來。",
+      "scope": "37 人、紙本、事先已知真實顏色、作者稿；7/37 與 Discussion 的『約 27%』前後不一，兩個數字都不用（H74-005 已有自述換過的數字）。不得與 H74-005 的『約一半』『42%』相減或比大小（不同族群、不同問法、不同時間尺度）；不得說『知道真相也不會換』。",
+      "source_locator": "F116-S003：Methods/Experiment 2；Results/Experiment 2 兩小節；Discussion 第 3–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：逐日 14 天記錄是 H74-005 自述資料沒有的新證據；終身換過 7/37 與 H74-005 同類，只當背景、不另算。鞋子遮板結果放 not_added。Herzog 群合計 1.0（F116-003＋004）。 原提案 F116-004（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V124（2026-11-12）改字後收；作者算 0.5 偏高：問題與 H74-005 同一題（陣營會不會換），新增只有前瞻記錄這一層；刪去作者答案中的 7/37（與同篇 27% 衝突、且是 H74-005 同類自述）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看法會鬆動，但鬆得很慢：14 天日記裡 37 人只有 2 人晃了幾秒又回來。",
+        "visual": "14 格日曆，37 排小點幾乎全是同色，只有兩排閃過一格。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave76-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9d5a08f27f1b68da",
+          "origin": "wave76-human-20261111",
+          "locator": "F116-S003：Methods/Experiment 2；Results/Experiment 2 兩小節；Discussion 第 3–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H76-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L76-001",
+      "question": "莖扭得越多，葉序角度就偏得越多嗎？扭的方向反過來會怎樣？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.torsion_strength_direction_mutants",
+      "answer_target": "會，而且偏的方向跟著扭的方向走。這是 L74-047 同一篇研究的後段：在一般阿拉伯芥上，順時針與逆時針花序分成兩群的現象只出現在長成的莖上，蓮座葉和花序頂端的角度並不分群。研究者接著比較莖扭得不一樣的突變株（每種量 20 根花序的表皮細胞列）：一般品系約斜 0.6 度，spr2-2 約 1.7 度，tor2 T56I 約 3.2 度，都是逆時針扭；扭得越多，夾角隨節間變長而偏離黃金角的幅度越大，順逆兩群分得越開。另一個 tor2 S178Δ 是輕微的順時針扭（約 −1.1 度），兩群偏的方向就對調了。扭最多的 tor2 T56I，莖上的夾角看起來集中在 90 度和 180 度兩處。研究者據此認為，扭轉的強弱和方向，決定了頂端排好之後莖上的角度被改多少、往哪邊改。",
+      "scope": "答案只講本篇後段新增的部分；頂端 69%／87%、0.6° 斜列、順逆分兩群已在 L74-047，同章先講、這裡不重講數字（0.6° 只當比較基準）。『扭轉會依順逆改角度』前人已在 csi1、spr2-2 提出（Landrein 等 2013），本篇新的是 0.6°／1.7°／3.2° 的梯度與順時針扭讓方向對調，不說『第一次發現』、不說『證明』（不同突變株之間的比較，說『研究者比較了…』）；tor2 S178Δ 的逆時針群相關未達顯著（P = 0.10），『方向對調』只用原文結論句，不秀斜率；突變株不是自然變異；90°／180° 是莖上『看起來』的集中（apparent attractors），不是頂端改排成十字對生；蓮座與頂端不分群出自正文句子與補充圖 S7 標題（S7 未讀）；模擬（圖 6j、S8）不寫；不得說『黃金角是莖扭出來的』『頂端不排黃金角』或『扭轉決定費氏數』。片中約 25 秒，與 L74-047、L74-048 同章。",
+      "source_locator": "Results『Reduced robustness of flower primordium position…』末段；『Inherent stem torsion…』第一段；『Stem torsion chirality-dependently drives alternative phyllotactic patterns』全段與圖 7 說明；Discussion 第三段",
+      "premise_status": "screened",
+      "notes": "算 0.25：只算第八節與 Discussion 第三段的扭轉梯度與方向對調（上一輪未讀、未算），加第七節『蓮座與頂端不分群』一句（讀過、未寫進核心）；頂端與莖上對不上、順逆分兩群、0.6° 已在 L74-047（0.5），不重算；90°／180° 併入同一實驗。研究群 Willemsen／Kerstens：L74-047 0.5＋L74-048 0.5＋本條 0.25＝1.25，封頂 2.0 內。 原提案 F113-001（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V121（2026-11-12）改字後收；新段落確實在快取、確實是上一輪未讀的第八節與 Discussion，數字與方向都對，0.25 合理；但作者答案前半把 L74-047 已有的『頂端與莖上對不上、順逆分兩群』當新內容重講，已刪；補 S178Δ 逆時針群不顯著與『比較而非證明』的分寸。它也正好回應 V117 still_missing（1）點名的『一般品系頂端到莖上角度變化』：分群只在莖上、不在頂端與蓮座。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "莖像擰毛巾：擰得越緊，角度偏得越多；反方向擰，偏的方向也反過來——你在莖上量到的，不是頂端原本排的角度。",
+        "visual": "四根花莖並排，表皮細胞列的斜線從 0.6° 到 3.2° 逐漸變斜，最後一根反向斜；每根上方一個角度分布小圖，兩座山峰（順時針、逆時針）越分越開，最後一根左右對調。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-691c286856bb3df0",
+          "origin": "wave76-life-20261111",
+          "locator": "Results『Reduced robustness of flower primordium position…』末段；『Inherent stem torsion…』第一段；『Stem torsion chirality-dependently drives alternative phyllotactic patterns』全段與圖 7 說明；Discussion 第三段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L76-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L76-002",
+      "question": "花頭上的點又沒在數數，數目怎麼會一路照 1、2、3、5、8、13 增加？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.gerbera_rim_gap_long_short_rule",
+      "answer_target": "因為點與點之間的空隙只有『長』『短』兩種，而且照一條很簡單的規則輪替。赫爾辛基與卡加利的研究者量非洲菊花頭邊緣生長素反應亮點之間的角度：從最早到 13 個點為止的每個階段，空隙都明顯分成短的和長的兩群。把不同花頭的影像照點數排成先後後看到：每一輪，每個長空隙中間冒出一個新點，被切成一長一短；原本的短空隙則長成長空隙。研究者把這個規則比作費氏當年那道『理想兔群繁殖』的題目，並說這就是空隙和點的數目照費氏數列往上跳的原因。",
+      "scope": "亮點是生長素反應的報導訊號（DR5），不是生長素本身；只到 13 個點的階段；先後順序是由不同花頭的快照照點數排出（作者說早期排列很固定），不是追蹤同一個花頭；長短規則是研究者由觀察歸納（infer），兔群是研究者自己的比喻，片中說『研究者把它比作』，不得說『科學家發現花頭在跑兔子題』或『花在數數』；把長空隙說成會生的成兔、短空隙說成要長大的小兔是旁白白話說明；『嚴格同步需黃金比例』已在 L74-043，同章講一次；費氏不必預設黃金角的分寸同 L74-043（模型界早知，不說推翻、不說第一次）。片中約 25 秒，與 L74-043 同章。",
+      "source_locator": "Pattern Initiation 第四段與圖 4B–E 說明；Methods『Measurement and Analysis of the Pattern of Gaps』",
+      "premise_status": "screened",
+      "notes": "算 0.25：長短空隙雙峰（量測）與長短輪替規則（由量測歸納）是 L74-043 未寫的部分；56 頭 45 個費氏、往老鄰居偏、模型對照、同步需黃金比例已在 L74-043（1.25），不重算。Prusinkiewicz 網絡：L74-043 1.25＋L74-044 0.5＋本條 0.25＝2.0，剛好封頂、未放寬。 原提案 F113-002（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V121（2026-11-12）改字後收；數字與方法都在原文，是量測加由量測歸納的規則，不是模型；兔群類比出自原文、作者也已寫成『研究者指出』；改正『不管到了哪個階段』為『到 13 個點為止』，並在 scope 寫明快照拼出與分析花頭限於費氏點數者。它直接回答本題『為什麼是費氏數』，與 L74-043 的『不必先算角度』不同答案，0.25 合理且是 V117 still_missing（2）點名的上限。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "花不會數數，它只會『長的生一個、短的長大』——這正是費氏當年的兔子題。",
+        "visual": "花頭邊緣攤成一條直線：長空隙（藍）每輪中間冒出一個新點、變成藍＋黃，黃色空隙下一輪變藍；畫面一角同步跑八百年前的兔群格子，兩邊的數字一起跳 1、2、3、5、8、13。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-697b877b9049d0ea",
+          "origin": "wave76-life-20261111",
+          "locator": "Pattern Initiation 第四段與圖 4B–E 說明；Methods『Measurement and Analysis of the Pattern of Gaps』",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L76-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L76-003",
+      "question": "沒有骨頭，章魚的腕和烏賊的觸腕是靠什麼變長的？",
+      "domain": "動物組織與感測控制",
+      "mechanism_key": "life.muscular_hydrostat_constant_volume_elongation",
+      "answer_target": "靠肌肉自己當骨架。腕和觸腕幾乎全是肌肉，沒有硬骨，也沒有充液的體腔；肌肉組織抗拒體積變化，體積大致不變時，一個方向變小，另一個方向就得變大。所以繞著橫向排列的肌肉一收縮、把截面擠細，整條就只能變長；沿長軸的縱肌收縮則讓它變短變粗，順便把橫肌拉回原長——兩組肌肉像關節兩側的肌肉一樣互為拮抗。因為截面積跟直徑的平方有關、長度只跟一次方有關，直徑縮一點、長度就伸很多：研究者寫，捕食時觸腕伸長約 80%，直徑只需減少約 25%，並把這種放大比作骨骼的槓桿。",
+      "scope": "原理與幾何關係出自 Kier 2016 開放綜述（同一作者整理自己與前人的研究），不是本篇新量測；80%／25% 是綜述引 Kier 1982、van Leeuwen & Kier 1997/1998 的典型值。章魚腕的橫肌造成截面縮小原文是 likely，不寫成直接量到。不說象鼻或舌頭已被這篇證明是同一套；不說體積『完全』不變。",
+      "source_locator": "F117-S001 Abstract；〈Biomechanics of support and movement in the tentacles〉第 1–2 段與 Figure 2；〈…octopus arms〉第 2–3 段",
+      "premise_status": "screened",
+      "notes": "V125 由 0.75 降為 0.5：原理、拮抗、放大是同一段綜述的一個機制，不拆三條；綜述非原研究。Kier 群與 F117-002 合計 0.75（作者 1.25）。 原提案 F117-001（目標 M3-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；數字與條件逐句相符；改『截面兩個方向一起縮』為原文的面積對長度關係；補『也沒有充液體腔』（原文第 10 行），讓觀眾分清肌肉靜水骨骼和液壓骨骼（B2144、B2133 是後者）。計數下修：綜述的一個原理段不該算三條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有骨頭不等於沒有骨架：體積不變的肌肉，擠細就只能變長。",
+        "visual": "原創示意：一段圓柱被一圈圈橫肌勒細而變長；同一段縱肌收縮變短變粗；標出 80% 對 25%。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-223965103e8b5215",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S001 Abstract；〈Biomechanics of support and movement in the tentacles〉第 1–2 段與 Figure 2；〈…octopus arms〉第 2–3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L76-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L76-004",
+      "question": "槍烏賊的觸腕為什麼能在幾十毫秒內彈出去抓獵物？",
+      "domain": "動物組織與感測控制",
+      "mechanism_key": "life.squid_tentacle_fast_transverse_muscle_strike",
+      "answer_target": "還是同一套『擠細就變長』，只是馬達換成快肌。研究者整理的捕食紀錄是：槍烏賊的觸腕在 20–40 毫秒內伸長 40–80%，最高速度超過每秒 2 公尺，峰值加速度約 250 m/s²。負責擠細的觸腕橫肌和腕的橫肌不一樣：觸腕的是橫紋肌，腕的是斜紋肌；觸腕肌纖維的粗肌絲只有腕的十分之一長，同樣長度裡串連的單位多了十倍，離體量到的無負荷縮短速度約每秒 15 個肌長，腕的橫肌約 1.5。研究者認為，截面縮小對伸長的放大，加上這種快肌，一起造成了觸腕出擊的速度。",
+      "scope": "全部數字由 Kier 2016 綜述轉述 Kier & van Leeuwen 1997、Kier & Curtin 2002（同群），稿中寫『研究者整理』，不寫成本篇新量測；肌肉速度是 19°C 離體肌束。不說觸腕是彈簧彈出，不跟變色龍舌頭比。",
+      "source_locator": "F117-S001〈Squid and cuttlefish tentacles〉首段；〈Contractile properties of the transverse muscle…〉第 2 段；〈Ultrastructural specialization for fast contraction〉",
+      "premise_status": "screened",
+      "notes": "V125 由 0.5 降為 0.25：全是綜述轉述的二手數字（原研究未讀），只當開場鉤子。Kier 群合計 0.75。 原提案 F117-002（目標 M3-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；數字相符。原答案『它是橫紋肌，和平常彎來彎去的腕不一樣』會讓觀眾以為腕不是橫紋類，原文是 cross-striated 對 obliquely striated，已改。二手數字從嚴算 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一條沒有骨頭的觸腕，幾十毫秒內伸長將近一倍。",
+        "visual": "原創示意：觸腕由收著到伸出的三格；旁邊兩根肌纖維，一根肌節短而多。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-223965103e8b5215",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S001〈Squid and cuttlefish tentacles〉首段；〈Contractile properties of the transverse muscle…〉第 2 段；〈Ultrastructural specialization for fast contraction〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L76-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L76-005",
+      "question": "章魚的腕能伸能縮，平常最常做的是把腕伸長嗎？",
+      "domain": "動物主動感測與運動控制",
+      "mechanism_key": "life.octopus_arm_deformation_regional_partitioning",
+      "answer_target": "不是，最常做的是彎。美國海洋生物實驗室的研究群在實驗缸拍 10 隻雙斑蛸，120 分鐘影片記到 16,563 次腕形變，超過 65% 是彎曲，伸長約 2,700 次排第二；後來同一群人用潛水時拍的影片，看佛州、加勒比海和西班牙 25 隻野生章魚各一分鐘，也是彎曲約占七成、伸長兩成多。八條腕的每一段都做得出彎、伸、縮、扭，但分工不同：越往末端越以彎為主；伸長在實驗缸裡是靠身體的根部比例最高，在野外則是根部和中段都比末端多。",
+      "scope": "觀察計數，不量伸長幅度與力；『變硬』兩篇都沒量。伸長的判定方法本身就用了『變長時吸盤間距拉開、腕變細』，所以不能拿這兩篇當體積不變的證據。不說根部伸長是解剖造成（Bennice 討論引前人解剖對照，是推論）。不報野外總數（摘要與結果不一致）。不說每條腕有自己的腦。",
+      "source_locator": "F117-S002 Results 與 Figs 3、5；Methods 判定方式。F117-S003 Results〈Arm deformations〉、Fig. 6、〈Laboratory versus field comparison〉",
+      "premise_status": "screened",
+      "notes": "V125 由 0.75 降為 0.5：同一研究群兩篇、結論相同，第二篇是重現（加強可信度，不是新事實）。Hanlon 群 0.5。 原提案 F117-003（目標 M3-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；數字相符，但有兩處要改：（1）原答案把『判定伸長時看腕變細』說成『正好是體積不變時變長就變細』，這是循環論證——方法先假設了變細，結果不能反過來支持原理，已刪；（2）野外 25 隻有 11 隻在南佛州，原答案只寫加勒比海和西班牙；野外的伸長是近端和中段都多於遠端，不只根部。實驗室的『根部』也是占比，不是次數最多。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能伸能縮的腕，大多時候在彎；伸長多半在根部。",
+        "visual": "原創示意：一條腕分近中遠三段，用色塊標出彎、伸的比例；實驗缸與海底兩欄對照。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9c66d9d5272804a0",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S002 Results 與 Figs 3、5；Methods 判定方式。F117-S003 Results〈Arm deformations〉、Fig. 6、〈Laboratory versus field comparison〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-acb35102744ded23",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S002 Results 與 Figs 3、5；Methods 判定方式。F117-S003 Results〈Arm deformations〉、Fig. 6、〈Laboratory versus field comparison〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L76-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L76-006",
+      "question": "舌頭沒有骨頭，豬嚼東西時，舌頭是整條拉長再縮回嗎？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "life.pig_tongue_regional_offset_deformation",
+      "answer_target": "幾乎不是整條拉長，是一段一段錯開伸縮。研究者在兩頭小豬的舌頭裡植入金屬小珠，用 X 光立體攝影拍了一百多次咀嚼和九十次喝水：所量的舌身（舌頭前三分之二）總長從沒超過靜止時的 1.1 倍；可是後段會伸長到超過原長，前段多半縮著，兩邊時間一前一後錯開，加起來就互相抵消。照肌肉靜水骨骼的道理，變長的地方應該同時變窄，這大致成立，但有的區段剛好相反、時間上也看不出清楚的此消彼長，研究者說模型只得到部分支持。",
+      "scope": "兩頭豬、只量長和寬（沒量高度）、只量舌前三分之二；咀嚼與喝水，不是把舌頭伸出口外。後段肌纖維方向與伸長多的關係是相關觀察；『前段縱纖維多可能限制伸長』是推論。不說豬舌證明或推翻肌肉靜水骨骼；『舌頭是肌肉靜水骨骼』在本篇是前言引用 Kier & Smith，不是本篇結果。",
+      "source_locator": "F117-S004 Results〈General patterns…Length〉、〈Relationship between regional length and widths〉、Figs 7–9；Discussion 兩節",
+      "premise_status": "screened",
+      "notes": "V125 由 0.75 降為 0.5：兩頭豬、一個實驗；而且量的是咀嚼喝水，只部分回答 still_missing（2）『舌身靠肌肉伸長』。Williams 群 0.5。 原提案 F117-004（目標 M3-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；數字相符；原答案的『整條舌頭』要改成所量的舌前三分之二；原題目把『舌頭也是肌肉靜水骨骼』當前提寫進問題，這是本篇前言的引用，改題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣靠肌肉撐著，舌頭的做法是分段輪流，而不是整條吹長。",
+        "visual": "原創示意：舌頭分五段的長條圖隨咀嚼週期起伏，總長那一條幾乎是平的。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9df263ee3e5110bb",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S004 Results〈General patterns…Length〉、〈Relationship between regional length and widths〉、Figs 7–9；Discussion 兩節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L76-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L76-007",
+      "question": "海星管足能黏住又能放開，牠的腳底在玻璃上留下了什麼？",
+      "domain": "移動與覓食",
+      "mechanism_key": "life.sea_star_tube_foot_duo_gland_footprint",
+      "answer_target": "留下一個膠做的『腳印』。比利時與奧地利的研究者在一種小海星（Asterina gibbosa）的管足末端看到三種分泌細胞：兩種裝黏膠顆粒，一種裝去黏顆粒。管足自己放開後，玻璃上會留下一個和管足差不多大的腳印：一層薄膜上面疊一層網，網高只有幾十奈米。只有牢牢黏住至少一分鐘才看得到腳印，隨便走過去的看不到；硬把黏緊的海星拉走時，常常是管足自己在末端或柄上斷掉。",
+      "scope": "單一物種、顯微形態；沒有量黏力，也沒有測吸力，所以不說『不是吸盤』或『不靠吸力』。『黏力隨分泌量調整』是作者推測；雙腺系統的一般說法是前言引用。",
+      "source_locator": "F117-S005〈Ultrastructure of the adhesive epidermis〉、〈Footprint structure and topography〉、Conclusion",
+      "premise_status": "screened",
+      "notes": "V125 由 0.5 降為 0.25，照 round24 still_missing（4）的預估：這條是補 B2144 點名缺的黏著分泌來源，與 B2144 合計 0.5。研究群：Flammang 與 A24002 的 Elphick 合著（D'Aniello 2015），併 A24002 計，合計 0.75。 原提案 F117-005（目標 M3-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；原文相符。但原答案『不只是吸，是先上膠、再放脫膠』與 payoff『不是真空吸盤』超出原文：本篇沒有測吸力，已改題改答。計數照點名預估。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有骨頭的小腳，抓地靠的是膠和解膠，不是真空吸盤。",
+        "visual": "原創示意：管足盤剖面的三種顆粒；玻璃上留下的薄層加網狀腳印。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d5ebde4733bed1e8",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S005〈Ultrastructure of the adhesive epidermis〉、〈Footprint structure and topography〉、Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L76-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L76-008",
+      "question": "幫海星背上加重，牠是多踩幾隻管足，還是每隻黏久一點？",
+      "domain": "移動與覓食",
+      "mechanism_key": "life.sea_star_tube_foot_adhesion_time_load_adaptation",
+      "answer_target": "主要是每隻黏久一點。研究者讓歐洲海星在一塊管足一碰就發亮的玻璃上爬：同一時間貼地的管足不到一成，爬得快慢和貼地幾隻無關，倒是黏得越久的爬得越慢（相關不強）。每組 5 隻背上加 25%、50% 體重的背包後，貼地比例只略增，單隻黏附時間卻從空背包時約 4.3 秒拉長到約 5.9 和 8.4 秒，爬得也變慢；倒過來在玻璃下面爬時同樣黏得更久。一個只讓每隻管足依自己的長度和角度決定推、拉、放開、沒有中央指揮的模型，就能重現這些趨勢。",
+      "scope": "模型『足以重現』，不證明海星完全沒有中央協調（作者說方向可能仍需要）。不把黏附時間拉長歸因於分泌更多膠（兩篇沒有連起來）。『成反比』改為『黏得越久爬得越慢、相關不強』。",
+      "source_locator": "F117-S006 Results 各節、Figs 3–6",
+      "premise_status": "screened",
+      "notes": "V125：可以入池當單獨核心（約 0.5，留給海星運動或分散控制題），但在 M3-T1 計 0、不放進最終核心：（1）不在 round24 still_missing 點名之內（點名的是『黏著分泌來源』，本篇講的是黏附時間與分散控制，回答的不是同一個問題）；（2）共同作者 Gorb SN 與 Hu DL 合著（Amador 等 2017，PMID 28332480），與本題 Hu 群（L70-019＋L70-020＝1.5）同群；另經 Flammang 併入 A24002（Elphick）網。（3）主題是控制，作者自己刪 S10012 的理由同樣適用。 原提案 F117-006（目標 M3-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；原文數字相符；『成反比』過強（R²≈0.21），已改；補每組 5 隻。點名以外、同群、離題三重理由，不計入本題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "上百隻小腳沒有大腦指揮，負重時各自多黏一會兒。",
+        "visual": "原創示意：從玻璃底下看的亮點；加背包前後同一隻管足亮的時間條。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-59b5155ca99d321e",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S006 Results 各節、Figs 3–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L76-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "F8001",
       "question": "巧克力的固體沒被拿走，為什麼精煉後反而比較能流動？",
       "domain": "食品微結構與加工",
@@ -507870,6 +508746,408 @@
       ]
     },
     {
+      "id": "H76-001",
+      "question": "白金派和藍黑派，吵的真的是「藍色還是白色」嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_lightness_not_chromaticity_continuum_matches",
+      "answer_target": "德國吉森大學的小實驗說：差的主要是亮度，不是色相。15 名色覺正常、事先都在網路看過這張照片的人（實驗室成員與學生，含 2 名作者；5 人自稱藍黑、10 人白金），在校正過的螢幕上替洋裝布料配色：只看色度，兩派配出來的大幅重疊、差異不顯著；把亮度算進去，兩派才明顯分開。之後從色票挑最像的，兩派挑的色相、彩度大致一樣，差在明度。他們的配色在色彩空間裡排成連續的一片，而不是分成兩堆；配得夠亮的人叫它白、配得暗的叫它藍，所以不是同一個顏色換了不同名字。作者因此寫：問題與其是『藍還是白』，不如說是『淺藍還是深藍』。",
+      "scope": "只 15 人、全部事先看過、含作者本人；『連續分布』與 Conway 線上 2,200 人分析的『兩群』（H74-003）相反，而 H74-003 正是說少於兩打人的資料可能看不出兩群——片中必須兩說並陳、說明樣本大小差異，不判輸贏、不說『其實沒有兩派』。不得說『大家其實看到一樣的顏色』或『只是叫法不同』（原文正好排除了純命名差異）。",
+      "source_locator": "F116-S001：主文第 3–6 段、Figure 1A–C 圖說；Supplemental Table S1 表前說明（Munsell Value t12=3.74、Chroma n.s.）",
+      "premise_status": "screened",
+      "notes": "算 0.5：一個 15 人實驗，色度 vs 亮度的對比與 Munsell 明度同一結論合為一條；『連續 vs 兩群』與 H74-003、H74-010 有部分重疊（H74-010 也提到亮區配色連成一線），只算其新增的『差在亮度、不在色相』。新研究群（Gegenfurtner／Bloj／Toscani），與 F116-002 合計 1.0。 原提案 F116-001（目標 F83-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V124（2026-11-12）改字後收；引文正確、題意新（池中無『差在亮度不在色相』）。改寫補上樣本組成（5 對 10、含作者）與『排除純命名差異』這一句原文結論，避免觀眾誤以為『只是叫法不同』。研究群判定作者錯，見 notes。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩派吵的不是藍或白，比較像淺藍還是深藍——命名才把連續的差異切成兩邊。",
+        "visual": "一條由深藍到淺藍白的色帶，15 個點散布其上，中間一條虛線把點分成『叫藍』『叫白』兩側。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave76-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-47921eb3a77cb0b6",
+          "origin": "wave76-human-20261111",
+          "locator": "F116-S001：主文第 3–6 段、Figure 1A–C 圖說；Supplemental Table S1 表前說明（Munsell Value t12=3.74、Chroma n.s.）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+      ]
+    },
+    {
+      "id": "H76-002",
+      "question": "把洋裝換成別的顏色，大家還會吵嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_daylight_locus_hue_rotation_ends_ambiguity",
+      "answer_target": "同一個吉森團隊發現，照片裡洋裝和蕾絲的顏色剛好排在『一天中日光由黃到藍』的那條線附近。他們把洋裝的顏色在色彩空間裡轉 90 度，觀察者沒有人再叫它白色，而是說粉紅或紅；改成灰階，大家都說淺灰或銀色，不說白。轉 180 度（藍變成偏黃）時，顏色雖然還在日光那條線上，但亮暗關係不再像真實日光（真實的偏黃陽光通常比較暗），作者說這時也不再有歧義。他們的推測是：要同時有『顏色貼著日光』和『亮度跟著顏色一起變』，才會讓人分不清那片藍是『藍布配普通光』還是『白布在偏藍的暗光裡』。",
+      "scope": "整段機制是作者推測（speculate、presumably）；旋轉影像沒有寫人數，只能說『他們的觀察者』；180 度那句原文沒寫大家叫它什麼顏色，不得說『換成黃色大家都看一樣』（那是 Winkler 2015，仍未讀到）。",
+      "source_locator": "F116-S001：主文 Figure 1A 說明段（daylight locus）、主文後段（Figure 1D–G：旋轉 90°、180°、灰階）；Supplemental 第 4 段（旋轉影像製作方式）",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 F116-001 同篇同組觀察者，但是另一個操作與另一個答案（為什麼偏偏是藍）；Gegenfurtner 群合計 1.0。補上 H74-009 只靠轉述的『藍色偏誤』缺口的一部分（是日光軌跡與旋轉示範，不是 Winkler 的藍黃不對稱）。 原提案 F116-002（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V124（2026-11-12）改字後收；作者把 180° 寫成『沒有人說白，轉 180 度也一樣』，原文對 180° 只說不再有不確定並給了不同理由（亮度不符日光），改正；『分不開光和布』與『亮度與顏色共變』都標為推測。降為 0.25 單獨值。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "洋裝的藍剛好是天空會給的藍——換成粉紅，就沒得吵。",
+        "visual": "原圖、轉 90 度（粉紅）、轉 180 度、灰階四張並排，旁邊一條由暖黃到冷藍的日光色帶。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave76-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-47921eb3a77cb0b6",
+          "origin": "wave76-human-20261111",
+          "locator": "F116-S001：主文 Figure 1A 說明段（daylight locus）、主文後段（Figure 1D–G：旋轉 90°、180°、灰階）；Supplemental 第 4 段（旋轉影像製作方式）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+      ]
+    },
+    {
+      "id": "H76-003",
+      "question": "你是白金派還是藍黑派，是不是第一眼就決定了？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_first_exposure_occluder_one_shot_lock",
+      "answer_target": "瑞士洛桑聯邦理工學院的團隊到網路較不普及的喬治亞，找到 35 個從沒看過這張照片的人。先用遮板蓋住背景和大半件洋裝，只露一小條：黑色遮板那組（19 人）超過八成看成白金，白色遮板那組（16 人）超過八成看成藍黑。接著當場拿掉遮板給他們看整張照片，多數人的看法沒有跟著變。研究者也試過強迫人第一眼先盯照片的亮角或暗角，看成白金的比例差異不顯著。作者的解讀是：第一次看到時的情境，可能把看法『一次定型』。",
+      "scope": "原文百分比是 82.4% 與 85.7%，但無法由 19、16 人整除，不得換算成『幾人中幾人』；『不變』只在同一次約 5 分鐘內測，沒有追蹤之後幾天（同群 2020 年自承），片中不得說『從此一輩子定型』；同群 2020 年也寫約兩成人的看法不受遮板顏色決定；每組 16–19 人、喬治亞成人；『一次定型／銘印』是作者解讀。眼動只有 10 人，不另講。不得說『第一眼看哪裡決定顏色』（原文相反）。",
+      "source_locator": "F116-S002：Methods/Experiment 1 Observers；Results/Experiment 1；Results/Experiment 2；Discussion 第 1 段、第 3 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：遮板實驗為主（82.4%／85.7% 合 1 個結果），注視點不顯著只當限制、不另算。與 H74-005（知道答案後會換）是互補：一個講怎麼定下來，一個講之後鬆動。新研究群（Herzog 群），與 F116-004 合計 1.0。 原提案 F116-003（目標 F83-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V124（2026-11-12）改字後收；題意新、是轉折二的關鍵第一手證據；改掉『19 人中 82.4%』這種分母不成立的寫法，並補上『只測幾分鐘』與『兩成不受影響』兩項限制，避免把短時效果講成終身定型。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "陣營可能不是天生的，而是第一次看到它時旁邊是什麼——黑框讓人變白金派，白框讓人變藍黑派。",
+        "visual": "同一小條洋裝，左邊被黑框包住、右邊被白框包住；框拿掉後人物頭上的標籤不動。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave76-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-7d038e54e714d1a4",
+          "origin": "wave76-human-20261111",
+          "locator": "F116-S002：Methods/Experiment 1 Observers；Results/Experiment 1；Results/Experiment 2；Discussion 第 1 段、第 3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+      ]
+    },
+    {
+      "id": "H76-004",
+      "question": "每天盯著洋裝看，看法會一直跳來跳去嗎？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "perception.dress_fourteen_day_diary_percept_stability",
+      "answer_target": "很少。同一個瑞士團隊請 37 人把印在紙上的洋裝照片，每天在同一地點、同樣光線下看一次，連看 14 天並記下看到的顏色；他們事先都被告知有兩種看法和真實顏色。14 天裡只有 2 人換過看法，而且都只在看的當下：平常是白金，偶爾幾秒看到藍黑，又跳回白金。研究者自己說，這和『有人會換』的線上調查並不矛盾，只是換的人少、換了也很快回來。",
+      "scope": "37 人、紙本、事先已知真實顏色、作者稿；7/37 與 Discussion 的『約 27%』前後不一，兩個數字都不用（H74-005 已有自述換過的數字）。不得與 H74-005 的『約一半』『42%』相減或比大小（不同族群、不同問法、不同時間尺度）；不得說『知道真相也不會換』。",
+      "source_locator": "F116-S003：Methods/Experiment 2；Results/Experiment 2 兩小節；Discussion 第 3–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：逐日 14 天記錄是 H74-005 自述資料沒有的新證據；終身換過 7/37 與 H74-005 同類，只當背景、不另算。鞋子遮板結果放 not_added。Herzog 群合計 1.0（F116-003＋004）。 原提案 F116-004（目標 F83-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V124（2026-11-12）改字後收；作者算 0.5 偏高：問題與 H74-005 同一題（陣營會不會換），新增只有前瞻記錄這一層；刪去作者答案中的 7/37（與同篇 27% 衝突、且是 H74-005 同類自述）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看法會鬆動，但鬆得很慢：14 天日記裡 37 人只有 2 人晃了幾秒又回來。",
+        "visual": "14 格日曆，37 排小點幾乎全是同色，只有兩排閃過一格。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave76-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9d5a08f27f1b68da",
+          "origin": "wave76-human-20261111",
+          "locator": "F116-S003：Methods/Experiment 2；Results/Experiment 2 兩小節；Discussion 第 3–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+      ]
+    },
+    {
+      "id": "L76-001",
+      "question": "莖扭得越多，葉序角度就偏得越多嗎？扭的方向反過來會怎樣？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.torsion_strength_direction_mutants",
+      "answer_target": "會，而且偏的方向跟著扭的方向走。這是 L74-047 同一篇研究的後段：在一般阿拉伯芥上，順時針與逆時針花序分成兩群的現象只出現在長成的莖上，蓮座葉和花序頂端的角度並不分群。研究者接著比較莖扭得不一樣的突變株（每種量 20 根花序的表皮細胞列）：一般品系約斜 0.6 度，spr2-2 約 1.7 度，tor2 T56I 約 3.2 度，都是逆時針扭；扭得越多，夾角隨節間變長而偏離黃金角的幅度越大，順逆兩群分得越開。另一個 tor2 S178Δ 是輕微的順時針扭（約 −1.1 度），兩群偏的方向就對調了。扭最多的 tor2 T56I，莖上的夾角看起來集中在 90 度和 180 度兩處。研究者據此認為，扭轉的強弱和方向，決定了頂端排好之後莖上的角度被改多少、往哪邊改。",
+      "scope": "答案只講本篇後段新增的部分；頂端 69%／87%、0.6° 斜列、順逆分兩群已在 L74-047，同章先講、這裡不重講數字（0.6° 只當比較基準）。『扭轉會依順逆改角度』前人已在 csi1、spr2-2 提出（Landrein 等 2013），本篇新的是 0.6°／1.7°／3.2° 的梯度與順時針扭讓方向對調，不說『第一次發現』、不說『證明』（不同突變株之間的比較，說『研究者比較了…』）；tor2 S178Δ 的逆時針群相關未達顯著（P = 0.10），『方向對調』只用原文結論句，不秀斜率；突變株不是自然變異；90°／180° 是莖上『看起來』的集中（apparent attractors），不是頂端改排成十字對生；蓮座與頂端不分群出自正文句子與補充圖 S7 標題（S7 未讀）；模擬（圖 6j、S8）不寫；不得說『黃金角是莖扭出來的』『頂端不排黃金角』或『扭轉決定費氏數』。片中約 25 秒，與 L74-047、L74-048 同章。",
+      "source_locator": "Results『Reduced robustness of flower primordium position…』末段；『Inherent stem torsion…』第一段；『Stem torsion chirality-dependently drives alternative phyllotactic patterns』全段與圖 7 說明；Discussion 第三段",
+      "premise_status": "screened",
+      "notes": "算 0.25：只算第八節與 Discussion 第三段的扭轉梯度與方向對調（上一輪未讀、未算），加第七節『蓮座與頂端不分群』一句（讀過、未寫進核心）；頂端與莖上對不上、順逆分兩群、0.6° 已在 L74-047（0.5），不重算；90°／180° 併入同一實驗。研究群 Willemsen／Kerstens：L74-047 0.5＋L74-048 0.5＋本條 0.25＝1.25，封頂 2.0 內。 原提案 F113-001（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V121（2026-11-12）改字後收；新段落確實在快取、確實是上一輪未讀的第八節與 Discussion，數字與方向都對，0.25 合理；但作者答案前半把 L74-047 已有的『頂端與莖上對不上、順逆分兩群』當新內容重講，已刪；補 S178Δ 逆時針群不顯著與『比較而非證明』的分寸。它也正好回應 V117 still_missing（1）點名的『一般品系頂端到莖上角度變化』：分群只在莖上、不在頂端與蓮座。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "莖像擰毛巾：擰得越緊，角度偏得越多；反方向擰，偏的方向也反過來——你在莖上量到的，不是頂端原本排的角度。",
+        "visual": "四根花莖並排，表皮細胞列的斜線從 0.6° 到 3.2° 逐漸變斜，最後一根反向斜；每根上方一個角度分布小圖，兩座山峰（順時針、逆時針）越分越開，最後一根左右對調。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-691c286856bb3df0",
+          "origin": "wave76-life-20261111",
+          "locator": "Results『Reduced robustness of flower primordium position…』末段；『Inherent stem torsion…』第一段；『Stem torsion chirality-dependently drives alternative phyllotactic patterns』全段與圖 7 說明；Discussion 第三段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ]
+    },
+    {
+      "id": "L76-002",
+      "question": "花頭上的點又沒在數數，數目怎麼會一路照 1、2、3、5、8、13 增加？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.gerbera_rim_gap_long_short_rule",
+      "answer_target": "因為點與點之間的空隙只有『長』『短』兩種，而且照一條很簡單的規則輪替。赫爾辛基與卡加利的研究者量非洲菊花頭邊緣生長素反應亮點之間的角度：從最早到 13 個點為止的每個階段，空隙都明顯分成短的和長的兩群。把不同花頭的影像照點數排成先後後看到：每一輪，每個長空隙中間冒出一個新點，被切成一長一短；原本的短空隙則長成長空隙。研究者把這個規則比作費氏當年那道『理想兔群繁殖』的題目，並說這就是空隙和點的數目照費氏數列往上跳的原因。",
+      "scope": "亮點是生長素反應的報導訊號（DR5），不是生長素本身；只到 13 個點的階段；先後順序是由不同花頭的快照照點數排出（作者說早期排列很固定），不是追蹤同一個花頭；長短規則是研究者由觀察歸納（infer），兔群是研究者自己的比喻，片中說『研究者把它比作』，不得說『科學家發現花頭在跑兔子題』或『花在數數』；把長空隙說成會生的成兔、短空隙說成要長大的小兔是旁白白話說明；『嚴格同步需黃金比例』已在 L74-043，同章講一次；費氏不必預設黃金角的分寸同 L74-043（模型界早知，不說推翻、不說第一次）。片中約 25 秒，與 L74-043 同章。",
+      "source_locator": "Pattern Initiation 第四段與圖 4B–E 說明；Methods『Measurement and Analysis of the Pattern of Gaps』",
+      "premise_status": "screened",
+      "notes": "算 0.25：長短空隙雙峰（量測）與長短輪替規則（由量測歸納）是 L74-043 未寫的部分；56 頭 45 個費氏、往老鄰居偏、模型對照、同步需黃金比例已在 L74-043（1.25），不重算。Prusinkiewicz 網絡：L74-043 1.25＋L74-044 0.5＋本條 0.25＝2.0，剛好封頂、未放寬。 原提案 F113-002（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V121（2026-11-12）改字後收；數字與方法都在原文，是量測加由量測歸納的規則，不是模型；兔群類比出自原文、作者也已寫成『研究者指出』；改正『不管到了哪個階段』為『到 13 個點為止』，並在 scope 寫明快照拼出與分析花頭限於費氏點數者。它直接回答本題『為什麼是費氏數』，與 L74-043 的『不必先算角度』不同答案，0.25 合理且是 V117 still_missing（2）點名的上限。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "花不會數數，它只會『長的生一個、短的長大』——這正是費氏當年的兔子題。",
+        "visual": "花頭邊緣攤成一條直線：長空隙（藍）每輪中間冒出一個新點、變成藍＋黃，黃色空隙下一輪變藍；畫面一角同步跑八百年前的兔群格子，兩邊的數字一起跳 1、2、3、5、8、13。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-697b877b9049d0ea",
+          "origin": "wave76-life-20261111",
+          "locator": "Pattern Initiation 第四段與圖 4B–E 說明；Methods『Measurement and Analysis of the Pattern of Gaps』",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ]
+    },
+    {
+      "id": "L76-003",
+      "question": "沒有骨頭，章魚的腕和烏賊的觸腕是靠什麼變長的？",
+      "domain": "動物組織與感測控制",
+      "mechanism_key": "life.muscular_hydrostat_constant_volume_elongation",
+      "answer_target": "靠肌肉自己當骨架。腕和觸腕幾乎全是肌肉，沒有硬骨，也沒有充液的體腔；肌肉組織抗拒體積變化，體積大致不變時，一個方向變小，另一個方向就得變大。所以繞著橫向排列的肌肉一收縮、把截面擠細，整條就只能變長；沿長軸的縱肌收縮則讓它變短變粗，順便把橫肌拉回原長——兩組肌肉像關節兩側的肌肉一樣互為拮抗。因為截面積跟直徑的平方有關、長度只跟一次方有關，直徑縮一點、長度就伸很多：研究者寫，捕食時觸腕伸長約 80%，直徑只需減少約 25%，並把這種放大比作骨骼的槓桿。",
+      "scope": "原理與幾何關係出自 Kier 2016 開放綜述（同一作者整理自己與前人的研究），不是本篇新量測；80%／25% 是綜述引 Kier 1982、van Leeuwen & Kier 1997/1998 的典型值。章魚腕的橫肌造成截面縮小原文是 likely，不寫成直接量到。不說象鼻或舌頭已被這篇證明是同一套；不說體積『完全』不變。",
+      "source_locator": "F117-S001 Abstract；〈Biomechanics of support and movement in the tentacles〉第 1–2 段與 Figure 2；〈…octopus arms〉第 2–3 段",
+      "premise_status": "screened",
+      "notes": "V125 由 0.75 降為 0.5：原理、拮抗、放大是同一段綜述的一個機制，不拆三條；綜述非原研究。Kier 群與 F117-002 合計 0.75（作者 1.25）。 原提案 F117-001（目標 M3-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；數字與條件逐句相符；改『截面兩個方向一起縮』為原文的面積對長度關係；補『也沒有充液體腔』（原文第 10 行），讓觀眾分清肌肉靜水骨骼和液壓骨骼（B2144、B2133 是後者）。計數下修：綜述的一個原理段不該算三條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有骨頭不等於沒有骨架：體積不變的肌肉，擠細就只能變長。",
+        "visual": "原創示意：一段圓柱被一圈圈橫肌勒細而變長；同一段縱肌收縮變短變粗；標出 80% 對 25%。",
+        "seconds": [
+          55,
+          70
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-223965103e8b5215",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S001 Abstract；〈Biomechanics of support and movement in the tentacles〉第 1–2 段與 Figure 2；〈…octopus arms〉第 2–3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ]
+    },
+    {
+      "id": "L76-004",
+      "question": "槍烏賊的觸腕為什麼能在幾十毫秒內彈出去抓獵物？",
+      "domain": "動物組織與感測控制",
+      "mechanism_key": "life.squid_tentacle_fast_transverse_muscle_strike",
+      "answer_target": "還是同一套『擠細就變長』，只是馬達換成快肌。研究者整理的捕食紀錄是：槍烏賊的觸腕在 20–40 毫秒內伸長 40–80%，最高速度超過每秒 2 公尺，峰值加速度約 250 m/s²。負責擠細的觸腕橫肌和腕的橫肌不一樣：觸腕的是橫紋肌，腕的是斜紋肌；觸腕肌纖維的粗肌絲只有腕的十分之一長，同樣長度裡串連的單位多了十倍，離體量到的無負荷縮短速度約每秒 15 個肌長，腕的橫肌約 1.5。研究者認為，截面縮小對伸長的放大，加上這種快肌，一起造成了觸腕出擊的速度。",
+      "scope": "全部數字由 Kier 2016 綜述轉述 Kier & van Leeuwen 1997、Kier & Curtin 2002（同群），稿中寫『研究者整理』，不寫成本篇新量測；肌肉速度是 19°C 離體肌束。不說觸腕是彈簧彈出，不跟變色龍舌頭比。",
+      "source_locator": "F117-S001〈Squid and cuttlefish tentacles〉首段；〈Contractile properties of the transverse muscle…〉第 2 段；〈Ultrastructural specialization for fast contraction〉",
+      "premise_status": "screened",
+      "notes": "V125 由 0.5 降為 0.25：全是綜述轉述的二手數字（原研究未讀），只當開場鉤子。Kier 群合計 0.75。 原提案 F117-002（目標 M3-T1，原角色 hook；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；數字相符。原答案『它是橫紋肌，和平常彎來彎去的腕不一樣』會讓觀眾以為腕不是橫紋類，原文是 cross-striated 對 obliquely striated，已改。二手數字從嚴算 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一條沒有骨頭的觸腕，幾十毫秒內伸長將近一倍。",
+        "visual": "原創示意：觸腕由收著到伸出的三格；旁邊兩根肌纖維，一根肌節短而多。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-223965103e8b5215",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S001〈Squid and cuttlefish tentacles〉首段；〈Contractile properties of the transverse muscle…〉第 2 段；〈Ultrastructural specialization for fast contraction〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ]
+    },
+    {
+      "id": "L76-005",
+      "question": "章魚的腕能伸能縮，平常最常做的是把腕伸長嗎？",
+      "domain": "動物主動感測與運動控制",
+      "mechanism_key": "life.octopus_arm_deformation_regional_partitioning",
+      "answer_target": "不是，最常做的是彎。美國海洋生物實驗室的研究群在實驗缸拍 10 隻雙斑蛸，120 分鐘影片記到 16,563 次腕形變，超過 65% 是彎曲，伸長約 2,700 次排第二；後來同一群人用潛水時拍的影片，看佛州、加勒比海和西班牙 25 隻野生章魚各一分鐘，也是彎曲約占七成、伸長兩成多。八條腕的每一段都做得出彎、伸、縮、扭，但分工不同：越往末端越以彎為主；伸長在實驗缸裡是靠身體的根部比例最高，在野外則是根部和中段都比末端多。",
+      "scope": "觀察計數，不量伸長幅度與力；『變硬』兩篇都沒量。伸長的判定方法本身就用了『變長時吸盤間距拉開、腕變細』，所以不能拿這兩篇當體積不變的證據。不說根部伸長是解剖造成（Bennice 討論引前人解剖對照，是推論）。不報野外總數（摘要與結果不一致）。不說每條腕有自己的腦。",
+      "source_locator": "F117-S002 Results 與 Figs 3、5；Methods 判定方式。F117-S003 Results〈Arm deformations〉、Fig. 6、〈Laboratory versus field comparison〉",
+      "premise_status": "screened",
+      "notes": "V125 由 0.75 降為 0.5：同一研究群兩篇、結論相同，第二篇是重現（加強可信度，不是新事實）。Hanlon 群 0.5。 原提案 F117-003（目標 M3-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；數字相符，但有兩處要改：（1）原答案把『判定伸長時看腕變細』說成『正好是體積不變時變長就變細』，這是循環論證——方法先假設了變細，結果不能反過來支持原理，已刪；（2）野外 25 隻有 11 隻在南佛州，原答案只寫加勒比海和西班牙；野外的伸長是近端和中段都多於遠端，不只根部。實驗室的『根部』也是占比，不是次數最多。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能伸能縮的腕，大多時候在彎；伸長多半在根部。",
+        "visual": "原創示意：一條腕分近中遠三段，用色塊標出彎、伸的比例；實驗缸與海底兩欄對照。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9c66d9d5272804a0",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S002 Results 與 Figs 3、5；Methods 判定方式。F117-S003 Results〈Arm deformations〉、Fig. 6、〈Laboratory versus field comparison〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-acb35102744ded23",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S002 Results 與 Figs 3、5；Methods 判定方式。F117-S003 Results〈Arm deformations〉、Fig. 6、〈Laboratory versus field comparison〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ]
+    },
+    {
+      "id": "L76-006",
+      "question": "舌頭沒有骨頭，豬嚼東西時，舌頭是整條拉長再縮回嗎？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "life.pig_tongue_regional_offset_deformation",
+      "answer_target": "幾乎不是整條拉長，是一段一段錯開伸縮。研究者在兩頭小豬的舌頭裡植入金屬小珠，用 X 光立體攝影拍了一百多次咀嚼和九十次喝水：所量的舌身（舌頭前三分之二）總長從沒超過靜止時的 1.1 倍；可是後段會伸長到超過原長，前段多半縮著，兩邊時間一前一後錯開，加起來就互相抵消。照肌肉靜水骨骼的道理，變長的地方應該同時變窄，這大致成立，但有的區段剛好相反、時間上也看不出清楚的此消彼長，研究者說模型只得到部分支持。",
+      "scope": "兩頭豬、只量長和寬（沒量高度）、只量舌前三分之二；咀嚼與喝水，不是把舌頭伸出口外。後段肌纖維方向與伸長多的關係是相關觀察；『前段縱纖維多可能限制伸長』是推論。不說豬舌證明或推翻肌肉靜水骨骼；『舌頭是肌肉靜水骨骼』在本篇是前言引用 Kier & Smith，不是本篇結果。",
+      "source_locator": "F117-S004 Results〈General patterns…Length〉、〈Relationship between regional length and widths〉、Figs 7–9；Discussion 兩節",
+      "premise_status": "screened",
+      "notes": "V125 由 0.75 降為 0.5：兩頭豬、一個實驗；而且量的是咀嚼喝水，只部分回答 still_missing（2）『舌身靠肌肉伸長』。Williams 群 0.5。 原提案 F117-004（目標 M3-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；數字相符；原答案的『整條舌頭』要改成所量的舌前三分之二；原題目把『舌頭也是肌肉靜水骨骼』當前提寫進問題，這是本篇前言的引用，改題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣靠肌肉撐著，舌頭的做法是分段輪流，而不是整條吹長。",
+        "visual": "原創示意：舌頭分五段的長條圖隨咀嚼週期起伏，總長那一條幾乎是平的。",
+        "seconds": [
+          40,
+          55
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-9df263ee3e5110bb",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S004 Results〈General patterns…Length〉、〈Relationship between regional length and widths〉、Figs 7–9；Discussion 兩節",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ]
+    },
+    {
+      "id": "L76-007",
+      "question": "海星管足能黏住又能放開，牠的腳底在玻璃上留下了什麼？",
+      "domain": "移動與覓食",
+      "mechanism_key": "life.sea_star_tube_foot_duo_gland_footprint",
+      "answer_target": "留下一個膠做的『腳印』。比利時與奧地利的研究者在一種小海星（Asterina gibbosa）的管足末端看到三種分泌細胞：兩種裝黏膠顆粒，一種裝去黏顆粒。管足自己放開後，玻璃上會留下一個和管足差不多大的腳印：一層薄膜上面疊一層網，網高只有幾十奈米。只有牢牢黏住至少一分鐘才看得到腳印，隨便走過去的看不到；硬把黏緊的海星拉走時，常常是管足自己在末端或柄上斷掉。",
+      "scope": "單一物種、顯微形態；沒有量黏力，也沒有測吸力，所以不說『不是吸盤』或『不靠吸力』。『黏力隨分泌量調整』是作者推測；雙腺系統的一般說法是前言引用。",
+      "source_locator": "F117-S005〈Ultrastructure of the adhesive epidermis〉、〈Footprint structure and topography〉、Conclusion",
+      "premise_status": "screened",
+      "notes": "V125 由 0.5 降為 0.25，照 round24 still_missing（4）的預估：這條是補 B2144 點名缺的黏著分泌來源，與 B2144 合計 0.5。研究群：Flammang 與 A24002 的 Elphick 合著（D'Aniello 2015），併 A24002 計，合計 0.75。 原提案 F117-005（目標 M3-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；原文相符。但原答案『不只是吸，是先上膠、再放脫膠』與 payoff『不是真空吸盤』超出原文：本篇沒有測吸力，已改題改答。計數照點名預估。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有骨頭的小腳，抓地靠的是膠和解膠，不是真空吸盤。",
+        "visual": "原創示意：管足盤剖面的三種顆粒；玻璃上留下的薄層加網狀腳印。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-d5ebde4733bed1e8",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S005〈Ultrastructure of the adhesive epidermis〉、〈Footprint structure and topography〉、Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ]
+    },
+    {
+      "id": "L76-008",
+      "question": "幫海星背上加重，牠是多踩幾隻管足，還是每隻黏久一點？",
+      "domain": "移動與覓食",
+      "mechanism_key": "life.sea_star_tube_foot_adhesion_time_load_adaptation",
+      "answer_target": "主要是每隻黏久一點。研究者讓歐洲海星在一塊管足一碰就發亮的玻璃上爬：同一時間貼地的管足不到一成，爬得快慢和貼地幾隻無關，倒是黏得越久的爬得越慢（相關不強）。每組 5 隻背上加 25%、50% 體重的背包後，貼地比例只略增，單隻黏附時間卻從空背包時約 4.3 秒拉長到約 5.9 和 8.4 秒，爬得也變慢；倒過來在玻璃下面爬時同樣黏得更久。一個只讓每隻管足依自己的長度和角度決定推、拉、放開、沒有中央指揮的模型，就能重現這些趨勢。",
+      "scope": "模型『足以重現』，不證明海星完全沒有中央協調（作者說方向可能仍需要）。不把黏附時間拉長歸因於分泌更多膠（兩篇沒有連起來）。『成反比』改為『黏得越久爬得越慢、相關不強』。",
+      "source_locator": "F117-S006 Results 各節、Figs 3–6",
+      "premise_status": "screened",
+      "notes": "V125：可以入池當單獨核心（約 0.5，留給海星運動或分散控制題），但在 M3-T1 計 0、不放進最終核心：（1）不在 round24 still_missing 點名之內（點名的是『黏著分泌來源』，本篇講的是黏附時間與分散控制，回答的不是同一個問題）；（2）共同作者 Gorb SN 與 Hu DL 合著（Amador 等 2017，PMID 28332480），與本題 Hu 群（L70-019＋L70-020＝1.5）同群；另經 Flammang 併入 A24002（Elphick）網。（3）主題是控制，作者自己刪 S10012 的理由同樣適用。 原提案 F117-006（目標 M3-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V125（2026-11-12）改字後收；原文數字相符；『成反比』過強（R²≈0.21），已改；補每組 5 隻。點名以外、同群、離題三重理由，不計入本題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "上百隻小腳沒有大腦指揮，負重時各自多黏一會兒。",
+        "visual": "原創示意：從玻璃底下看的亮點；加背包前後同一隻管足亮的時間條。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave76-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-59b5155ca99d321e",
+          "origin": "wave76-life-20261111",
+          "locator": "F117-S006 Results 各節、Figs 3–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+      ]
+    },
+    {
       "id": "F8001",
       "question": "巧克力的固體沒被拿走，為什麼精煉後反而比較能流動？",
       "domain": "食品微結構與加工",
@@ -516153,6 +517431,18 @@
       "P75-003": "P75-003",
       "P75-004": "P75-004",
       "P75-005": "P75-005",
+      "H76-001": "H76-001",
+      "H76-002": "H76-002",
+      "H76-003": "H76-003",
+      "H76-004": "H76-004",
+      "L76-001": "L76-001",
+      "L76-002": "L76-002",
+      "L76-003": "L76-003",
+      "L76-004": "L76-004",
+      "L76-005": "L76-005",
+      "L76-006": "L76-006",
+      "L76-007": "L76-007",
+      "L76-008": "L76-008",
       "F8001": "F8001",
       "F8002": "F8002",
       "F8003": "F8003",
@@ -547633,6 +548923,116 @@
         "a": "E75-007",
         "b": "O3060",
         "reason": "河道洪波速度，不同問題，不重疊。（V120 2026-11-12）"
+      },
+      {
+        "a": "L76-001",
+        "b": "L74-047",
+        "reason": "同一篇前段：頂端 69%／87%、0.6°、順逆分兩群；本條只補後段突變株梯度與方向對調，同章講、不重算。（V121 2026-11-12）"
+      },
+      {
+        "a": "L76-001",
+        "b": "L74-048",
+        "reason": "同研究群（Willemsen／Kerstens 併 Robertson 2025 Cyanella）；螺旋順逆的主題相接，不同事實。（V121 2026-11-12）"
+      },
+      {
+        "a": "L76-002",
+        "b": "L74-043",
+        "reason": "同一篇同一節：L74-043 已算費氏批次、偏移、模型與『同步需黃金比例』；本條只補長短空隙雙峰與 S→L、L→L＋S 規則。（V121 2026-11-12）"
+      },
+      {
+        "a": "L76-002",
+        "b": "L74-044",
+        "reason": "同 Prusinkiewicz 網絡，封頂 2.0 已用滿。（V121 2026-11-12）"
+      },
+      {
+        "a": "H76-001",
+        "b": "H74-003",
+        "reason": "『連續 vs 兩群』正面衝突，必須並陳；H74-003 用的『少於兩打人』正是指此類小樣本。（V124 2026-11-12）"
+      },
+      {
+        "a": "H76-001",
+        "b": "H74-010",
+        "reason": "H74-010 也說亮區配色連成一線但有分界；本核心只計『差在亮度、不在色相』與『淺藍深藍』的新增。（V124 2026-11-12）"
+      },
+      {
+        "a": "H76-002",
+        "b": "H74-009",
+        "reason": "同屬『為什麼偏偏是藍』；H74-009 是腦波，本核心是日光軌跡與旋轉示範，答案相近。（V124 2026-11-12）"
+      },
+      {
+        "a": "H76-002",
+        "b": "H74-004",
+        "reason": "『白布在偏藍暗光裡 vs 藍布在亮光下』就是 H74-004 的燈光假設，不重計。（V124 2026-11-12）"
+      },
+      {
+        "a": "H76-003",
+        "b": "H74-005",
+        "reason": "不同答案：H74-005 講事後會鬆動（自述），本核心講第一次的情境偏向；並陳。（V124 2026-11-12）"
+      },
+      {
+        "a": "H76-003",
+        "b": "H74-013",
+        "reason": "H74-013 沒看過的小孩也分兩派；本核心說第一次的情境可左右分到哪派，互補不重複。（V124 2026-11-12）"
+      },
+      {
+        "a": "H76-004",
+        "b": "H74-005",
+        "reason": "同一問題、互補證據；並陳，不相減。（V124 2026-11-12）"
+      },
+      {
+        "a": "L76-003",
+        "b": "B2133",
+        "reason": "線蟲是充液的液壓骨骼、只有縱肌（OpenStax），可當對照，但『少了環肌所以伸不長』是作者把兩份來源接起來的推論，稿中只能並列，不寫成因果。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-003",
+        "b": "B2144",
+        "reason": "海星管足是充液的水管系統，不是肌肉靜水骨骼；與本條要分清楚。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-004",
+        "b": "B2315",
+        "reason": "烏賊戴 3D 眼鏡出擊距離錯，是視覺測距題，與觸腕肌肉機制不同，不重複。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-005",
+        "b": "Z7014",
+        "reason": "同為章魚腕，但 Z7014 是吸盤自我辨識（感覺與控制），本條是形變分工。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-005",
+        "b": "B2314",
+        "reason": "吸盤化學感覺，不重複。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-006",
+        "b": "A19002",
+        "reason": "同為舌頭，但 A19002 是舌面乳突由血液充壓立起（液壓），不是肌肉；同章對照可以，不能說成同一機制。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-006",
+        "b": "A19006",
+        "reason": "貓舔水是流體力學，不重複。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-007",
+        "b": "B2144",
+        "reason": "B2144 notes 點名要補的黏著分泌來源，本條補上；同章並用，B2144 只講水管系統加肌肉。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-007",
+        "b": "B2148",
+        "reason": "同一份概論的陽燧足，未用。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-008",
+        "b": "B2144",
+        "reason": "同為海星管足，但 B2144 講構造，本條講步態與控制。（V125 2026-11-12）"
+      },
+      {
+        "a": "L76-008",
+        "b": "S10012",
+        "reason": "同屬『沒有中樞的局部回饋』控制題，作者已因離題刪 S10012。（V125 2026-11-12）"
       }
     ],
     "excluded": [
@@ -547991,6 +549391,20 @@
         ]
       },
       {
+        "id": "H74-007~H76-002",
+        "a": "H74-007",
+        "b": "H76-002",
+        "question_score": 0.414,
+        "answer_score": 0.057,
+        "key_score": 0.267,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "真的那件洋裝拿到現場，大家還會吵嗎？",
+          "把洋裝換成別的顏色，大家還會吵嗎？"
+        ]
+      },
+      {
         "id": "I3017~LEG-A29",
         "a": "LEG-A29",
         "b": "I3017",
@@ -548086,6 +549500,20 @@
         "questions": [
           "摸門把突然被電，電是從哪裡來的？",
           "太陽一直發光，能量是從哪裡來的？"
+        ]
+      },
+      {
+        "id": "L70-019~L76-006",
+        "a": "L70-019",
+        "b": "L76-006",
+        "question_score": 0.381,
+        "answer_score": 0.065,
+        "key_score": 0,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "大象鼻子沒有骨頭，伸長去拿東西時是整條平均拉長嗎？",
+          "舌頭沒有骨頭，豬嚼東西時，舌頭是整條拉長再縮回嗎？"
         ]
       },
       {
@@ -548786,6 +550214,20 @@
         "questions": [
           "在真空裡撕膠帶，真的會放出 X 光嗎？",
           "撕膠帶只要一點點力，哪來的能量放 X 光？"
+        ]
+      },
+      {
+        "id": "L74-047~L76-001",
+        "a": "L74-047",
+        "b": "L76-001",
+        "question_score": 0.053,
+        "answer_score": 0.198,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "在頂端排好的角度，長到莖上就不變了嗎？",
+          "莖扭得越多，葉序角度就偏得越多嗎？扭的方向反過來會怎樣？"
         ]
       },
       {
@@ -552636,6 +554078,20 @@
         "questions": [
           "兩家公司都用同一段內網 IP，網路接在一起時可能發生什麼事？",
           "私有 IP 明明不能直接全球通行，為什麼網路還需要它？"
+        ]
+      },
+      {
+        "id": "L76-007~L76-008",
+        "a": "L76-007",
+        "b": "L76-008",
+        "question_score": 0.089,
+        "answer_score": 0.077,
+        "key_score": 0.588,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "海星管足能黏住又能放開，牠的腳底在玻璃上留下了什麼？",
+          "幫海星背上加重，牠是多踩幾隻管足，還是每隻黏久一點？"
         ]
       },
       {
@@ -556573,6 +558029,20 @@
         ]
       },
       {
+        "id": "L76-005~L76-006",
+        "a": "L76-005",
+        "b": "L76-006",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "章魚的腕能伸能縮，平常最常做的是把腕伸長嗎？",
+          "舌頭沒有骨頭，豬嚼東西時，舌頭是整條拉長再縮回嗎？"
+        ]
+      },
+      {
         "id": "R38011~R38012",
         "a": "R38011",
         "b": "R38012",
@@ -559055,10 +560525,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-4653",
-    "target_count": 4653,
+    "revision": "2026-11-12-pool-4665",
+    "target_count": 4665,
     "reviewed_on": "2026-11-12",
-    "reason": "從4632續接；2026-11-12 第二十五輪素材審視：八位作者（F105–F112）只照第二十四輪覆核點名的原文補讀八題後備題（三位找不到可讀原文、沒有提案）；提案經非作者覆核（V116–V120）；八題都仍後備，最接近的是費氏葉序（8.43 分，差 0.15 條）。舊說明：從4349續接；2026-11-12 第二十四輪素材審視：二十位作者（F82–F101）各在一個新領域先大範圍去重、確認至少三個研究群有開放全文，再從零研究一個新長題；提案經非作者覆核（V85–V104），二十題都留後備。另把第二十三輪覆核建議合併的後備題用池中既有核心重組三題（M1–M3），經非作者覆核：冷凍肉與冷藏蔬果合成一題可成題，其餘兩題後備。舊說明：從4321續接；2026-11-12 第二十三輪素材審視：二十位作者（F62–F81）只照第二十到二十二輪覆核點名的原文補讀二十題後備組題（其中六位找不到可讀原文、沒有提案）；提案經非作者覆核（V65–V84）；二十題都仍後備，沒有新長題。舊說明：2026-11-12 第二十輪素材審視：六位作者先在全池大範圍去重（各列 20–30 個候選），再從零研究十二個新長題——F36 天空偏振與夜光雲、F37 啄木鳥與象鼻、F38 摩擦起電與撕膠帶、F39 名琴與動物對拍、F40 發光菇與植物發熱、F41 海色與海中發光；138 個提案經非作者覆核（V39–V44），全部收（照收 33、改字後收 105）；十二題都留後備，沒有新長題。",
+    "reason": "從4653續接；2026-11-12 第二十六輪素材審視（站主追加的最後一輪）：五位作者（F113–F117）只照覆核點名的原文補讀五題後備題（兩位沒有提案）；提案經非作者覆核（V121、V124、V125）；費氏葉序經覆核可成題，其餘留後備。舊說明：從4632續接；2026-11-12 第二十五輪素材審視：八位作者（F105–F112）只照第二十四輪覆核點名的原文補讀八題後備題（三位找不到可讀原文、沒有提案）；提案經非作者覆核（V116–V120）；八題都仍後備，最接近的是費氏葉序（8.43 分，差 0.15 條）。舊說明：從4349續接；2026-11-12 第二十四輪素材審視：二十位作者（F82–F101）各在一個新領域先大範圍去重、確認至少三個研究群有開放全文，再從零研究一個新長題；提案經非作者覆核（V85–V104），二十題都留後備。另把第二十三輪覆核建議合併的後備題用池中既有核心重組三題（M1–M3），經非作者覆核：冷凍肉與冷藏蔬果合成一題可成題，其餘兩題後備。舊說明：從4321續接；2026-11-12 第二十三輪素材審視：二十位作者（F62–F81）只照第二十到二十二輪覆核點名的原文補讀二十題後備組題（其中六位找不到可讀原文、沒有提案）；提案經非作者覆核（V65–V84）；二十題都仍後備，沒有新長題。舊說明：2026-11-12 第二十輪素材審視：六位作者先在全池大範圍去重（各列 20–30 個候選），再從零研究十二個新長題——F36 天空偏振與夜光雲、F37 啄木鳥與象鼻、F38 摩擦起電與撕膠帶、F39 名琴與動物對拍、F40 發光菇與植物發熱、F41 海色與海中發光；138 個提案經非作者覆核（V39–V44），全部收（照收 33、改字後收 105）；十二題都留後備，沒有新長題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -563712,7 +565182,19 @@
       "E75-004",
       "E75-005",
       "E75-006",
-      "E75-007"
+      "E75-007",
+      "H76-001",
+      "H76-002",
+      "H76-003",
+      "H76-004",
+      "L76-001",
+      "L76-002",
+      "L76-003",
+      "L76-004",
+      "L76-005",
+      "L76-006",
+      "L76-007",
+      "L76-008"
     ],
     "overflow": [
       {
@@ -597923,6 +599405,255 @@
       "reading_status": "只見 Europe PMC 搜尋中繼資料，未讀全文",
       "origin": "wave75-physics-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+    },
+    {
+      "id": "H76-NA001",
+      "question": "另一張『鞋子』照片，第一眼的遮板也會定型嗎？（Drissi-Daoudi 等 2020 實驗 1）",
+      "existing_ids": [
+        "H74-015"
+      ],
+      "source_ids": [
+        "H76-S003"
+      ],
+      "reason": "鞋子未遮時 26.2% 看粉白、綠遮板時 72.2%，拿掉遮板後 17.6% 改變；但紅、黃、藍遮板無效果，作者自己說色彩恆常解釋不了紅遮板無效。鞋子在本題只是延伸（H74-015），再加會加重清單感，且 Herzog 群已用 1.0。 原提案 F116-NA001。",
+      "reentry_condition": "若片中鞋子段要擴成獨立一章，可補 0.25；否則不用。",
+      "reading_status": "全文已讀（作者稿）",
+      "origin": "wave76-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+    },
+    {
+      "id": "H76-NA002",
+      "question": "Winkler 2015：藍色偏誤（反轉成黃色就不吵）",
+      "existing_ids": [
+        "H74-009"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC REST fullTextXML 三次 500；eScholarship AWS WAF 機器驗證；未讀到。 原提案 F116-NA002。",
+      "reentry_condition": "Europe PMC REST 恢復提供 PMC4489998 全文 XML；約 +0.75（Webster 群封頂內）。",
+      "reading_status": "未讀（REST 500／WAF）",
+      "origin": "wave76-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+    },
+    {
+      "id": "H76-NA003",
+      "question": "Wallisch 2017：約 13,000 人的陰影假設與作息",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "jov.arvojournals.org 原連結再試仍 Cloudflare 403；無其他合法全文。 原提案 F116-NA003。",
+      "reentry_condition": "出版社或典藏提供可公開連結；約 +0.75。",
+      "reading_status": "未讀（Cloudflare）",
+      "origin": "wave76-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+    },
+    {
+      "id": "H76-NA004",
+      "question": "Mahroo 等 2017：雙胞胎看洋裝是否一致",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "UCL Discovery PDF 403 Cloudflare；jov 主機被擋。Drissi-Daoudi 2020 Discussion 引的 34% 是轉述，不算。 原提案 F116-NA004。",
+      "reentry_condition": "讀到合法全文；約 +0.5（新研究群）。",
+      "reading_status": "未讀（Cloudflare）",
+      "origin": "wave76-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+    },
+    {
+      "id": "H76-NA005",
+      "question": "Toscani、Gegenfurtner、Doerschner 2017 J Vis 照明估計差異",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 只列訂閱 DOI；Gegenfurtner 群已由 2015 文取得 1.0，再補同群增量有限。 原提案 F116-NA005。",
+      "reentry_condition": "有合法全文且新增答案；同群合計不超過 2.0。",
+      "reading_status": "未試",
+      "origin": "wave76-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-human.json"
+    },
+    {
+      "id": "L76-NA001",
+      "question": "阿拉伯芥最早的幾片蓮座葉，是一開始就排在黃金角嗎？",
+      "existing_ids": [
+        "L74-047"
+      ],
+      "source_ids": [
+        "L76-S001"
+      ],
+      "reason": "Kerstens 2026 Results 第二節：一般品系前 10 片真葉的平均夾角『在黃金角附近作衰減的振盪』，第 3–10 片葉相鄰兩對落在 118.75–156.25° 的有 58%（Col-0，n = 60）。原文數字在，但與 F113-001 同一篇、同群；片中容易說成 drop_if 的『最早的葉子都不排費氏』，而且振盪幅度只在圖 1e、正文沒給數字。差一點就過線時不靠這條邊緣核心，本題不計。 原提案 F113-NA001。",
+      "reentry_condition": "覆核認定它是與扭轉不同的實驗、可獨立計 0.25，且題目需要（例如採方案乙刪核心）時，可改寫為『葉子是慢慢收斂到黃金角附近的』併入 L74-047 章節；不得說最早的葉子不排費氏。",
+      "reading_status": "全文段落已讀（Results 第二節與圖 1e–i 說明）；圖 1e 未讀到數值。",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA002",
+      "question": "PLETHORA 突變株的莖上葉序比較亂，是頂端排錯了嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "L76-S001"
+      ],
+      "reason": "原文答案是『大多不是』：三重突變株頂端只稍微比較亂，主因是提早抽苔、長得快使同齡花序節間較長，加上同樣的逆時針扭轉；長到同樣高度時規則度與一般品系相近；另找到 pin1 T600I 新等位基因在缺 PLT 時頂端幾乎長不出花。全是突變株細節、與題目『費氏數與黃金角』距離遠，而且會讓機制段變成基因清單；同群。 原提案 F113-NA002。",
+      "reentry_condition": "無；除非日後另立『頂端排好之後的修改』專題。",
+      "reading_status": "全文段落已讀（Results 第三至六節）。",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA003",
+      "question": "非洲菊花頭的螺旋為什麼會從邊緣一路往中心排進去？",
+      "existing_ids": [
+        "L74-043"
+      ],
+      "source_ids": [
+        "L76-S002"
+      ],
+      "reason": "Zhang 2021 Pattern Progression：用 NPA 暫停兩週，恢復後新原基在離舊前緣一段距離處重新出現；GhCLV3 表現範圍先擴大再往中心收縮。是量測，但 L74-043 已講『長新點的那一圈往中心縮、往內螺旋數照費氏倒退』，新增的只是 CLV3 對應（作者自述是類比阿拉伯芥的假說）；Prusinkiewicz 網絡已被 F113-002 補到 2.0。 原提案 F113-NA003。",
+      "reentry_condition": "無（同群封頂）。",
+      "reading_status": "全文段落已讀（Pattern Progression 全段與圖 6 說明）。",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA004",
+      "question": "Yin & Tsukaya 2022〈Fibonacci spirals may not need the Golden Angle〉有沒有可補的量測？",
+      "existing_ids": [
+        "L74-043"
+      ],
+      "source_ids": [],
+      "reason": "池中 SRC-356ca8f614641cf0 已全文讀過：這是 Insights 評論，內容轉述 Zhang 2021，沒有自己的量測段；照規則評論不另計條數。覆核點名的『未計入的量測段』只在 Zhang 2021 原研究裡，本輪改從那裡補（F113-002）。未重抓。 原提案 F113-NA004。",
+      "reentry_condition": "無。",
+      "reading_status": "沿用池中紀錄（stw24/f89src/PMC10095852.txt，e1af091fa558cf29），本輪未重讀全文。",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA005",
+      "question": "在數量作業裡，實驗者知道答案和不知道答案（或看得到／看不到動物）時，動物的成績會不會不一樣？",
+      "existing_ids": [
+        "L74-049",
+        "L74-050",
+        "L74-051"
+      ],
+      "source_ids": [
+        "L76-S003",
+        "L76-S004"
+      ],
+      "reason": "照 still_missing（2）用 Europe PMC REST 跑 12 組查詢加兩篇漢斯文獻的被引追蹤，沒有找到任何開放全文的現代原研究在數量作業裡直接比較實驗者知不知道答案、看不看得到動物。找到的都只有防範措施（Petrazzini 2014 馬：換刺激者躲在裝置後；長頸鹿已在 F110-002）、或非數量作業（Schmidjell 2012 指向作業、Capitain 2026 社交性測驗、Chu 2023 大象訓練中馴象師介入、嗅聞犬盲測），或非開放（Pepperberg 灰鸚鵡系列、Uller & Lewis 2009 馬、Shetland ponies 2014）。依 BRIEF 與 V118 不以加物種或點名以外的來源湊條數。 原提案 F114-NA001。",
+      "reentry_condition": "出現一篇開放全文的數量作業原研究，條件含『實驗者知道 vs 不知道正確答案』或『動物看得到 vs 看不到實驗者』的直接比較，且作者群與 Pfungst、維也納、Nieder、X、Y、Ridley、Matsuzawa、東北大學、德州農工各群無共同作者。",
+      "reading_status": "搜尋結果與摘要層級為主；PMC4219264、PMC12653766 讀全文關鍵段。",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA006",
+      "question": "做實驗的人心裡怎麼看動物（意識與潛意識態度），會不會改變狗和狼在測驗裡的行為？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Capitain、Wirobski、Guran、Berghänel、Lamm、Marshall-Pescini、Range 2026（Animal Cognition，PMC13638684，doi 10.1007/s10071-026-02085-x）只讀摘要：操作者的外顯與內隱態度影響狗與狼在社交性測驗的行為。不是數量作業，不符 still_missing（2）；作者 Range F、Marshall-Pescini S 屬維也納群（L74-052），只是摘要層級，未讀全文、不提案。 原提案 F114-NA002。",
+      "reentry_condition": "若日後另開『實驗者偏差』題可再讀全文；對 F94-T1 不適用。",
+      "reading_status": "只讀摘要（Europe PMC core 結果，快取 stw26/f114src/core_PMC13638684.json，sha256 812c33b425d7bdba）。",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA007",
+      "question": "做大象行為實驗時，旁邊的馴象師會不會偷偷幫忙？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Chu、Wierucka、Murphy、Tilley、Mumby 2023（Animal Cognition，PMC9392510）只讀摘要：尼泊爾亞洲象學習作業訓練期間，馴象師即使被要求少介入，仍用聲音與動作引導，非語言多於語言。是學習作業訓練階段的觀察，不是數量作業、沒有操弄實驗者知識，不符 still_missing（2）。 原提案 F114-NA003。",
+      "reentry_condition": "對 F94-T1 不適用。",
+      "reading_status": "只讀摘要（快取 stw26/f114src/core_PMC9392510.json，sha256 087321768c99de18）。",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA008",
+      "question": "章魚吸盤碰到自己皮膚為什麼不黏（Z7014 原文全文）",
+      "existing_ids": [
+        "Z7014"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC 列出的 Unpaywall 免費連結 http://www.cell.com/article/S096098221400462X/pdf 回 403 Cloudflare 驗證頁；原 DOI（前輪 ScienceDirect 403 的同一入口）依規定再試一次，經 linkinghub 導向 cell.com，同樣是驗證頁，未繞過。Z7014 仍是題級，本稿保守算 0.25。 原提案 F117-NA001。",
+      "reentry_condition": "驗證頁解除後以同一 DOI 或 Europe PMC 所列連結再試一次；讀到 Results 才可升到約 0.5（Hochner 群）。",
+      "reading_status": "blocked",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA009",
+      "question": "變色龍舌頭彈射是不是肌肉直接伸長",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "讀了 Anderson 2016 Sci Rep（PMC4698635，快取 stw26/f117src/PMC4698635.xml）摘要、Results 與 Discussion：本篇量的是 20 種變色龍的投射距離、加速度與所需功率，結論是彈性回彈放大功率；舌頭沿舌骨的突起滑出，『沒有骨頭靠肌肉伸長』不成立，機制段是引用前人。放進來只會多一種動物、又把題目帶向彈性儲能。 原提案 F117-NA002。",
+      "reentry_condition": "若另立『彈性儲能』題再用。",
+      "reading_status": "read_results_discussion",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA010",
+      "question": "靜水骨骼怎麼把肌力傳成力量（可變齒輪比）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Ellers 等 2024 JEB（PMC11177778，快取 stw26/f117src/PMC11177778.xml）是純數學模型，談有螺旋纖維包覆的液壓骨骼（管足、蚯蚓）的機械利益；只讀摘要與章節標題。和 F117-S006 同屬 Kanso／Heydari 合著網，且是充液骨骼不是肌肉靜水骨骼，抽象度高、無量測。 原提案 F117-NA003。",
+      "reentry_condition": "若要做『液壓骨骼的槓桿』專段才讀 Discussion，計入 Flammang–Kanso 網封頂。",
+      "reading_status": "abstract_only",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA011",
+      "question": "不屬 Hu、Brecht、Pouydebat、Milinkovitch 群的整條象鼻出力",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 以 elephant trunk（force/strength/lifting）加開放全文篩選、以及標題同時含 elephant 與 trunk 的開放全文查詢，結果只有 Agabiti 2026（Milinkovitch 群，封頂已滿）、Lo Preti 2026（Milinkovitch／Beccai）、Costes 2024（Pouydebat 群，鼻尖）、Eigen 2025（Brecht 群）與機器人論文；沒有新群的整條鼻子出力原研究。 原提案 F117-NA004。",
+      "reentry_condition": "出現新群、開放全文的整條象鼻出力或野外量化研究。",
+      "reading_status": "search_only",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "L76-NA012",
+      "question": "肌肉在加壓環境中的張力（Blickhan & Siebert 2024）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "PMC11261639 只讀摘要：模型對象是蜘蛛與環節動物的液壓骨骼，不是肌肉靜水骨骼，與本題中心章無直接關係。 原提案 F117-NA005。",
+      "reentry_condition": "無。",
+      "reading_status": "abstract_only",
+      "origin": "wave76-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-life.json"
+    },
+    {
+      "id": "P76-NA001",
+      "question": "自己發聲比聽別人放的聲音更能估房間大小嗎？（Flanagin 等 2017 J Neurosci，PMC6705675）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "第三度讀不到：Europe PMC REST fullTextXML 一開始就 500，同一連結再試兩次仍 500；同一 API 其他篇正常，search 顯示此篇 isOpenAccess=N。依任務限定不改走其他主機。只見中繼資料（標題、作者 Flanagin、Schörnich、Schranner、Hummel、Wallmeier、Wahlberg、Stephan、Wiegrebe），未讀全文，不計。也屬 Wiegrebe 群（現 1.0）。延續 P75-NA001。 原提案 F115-NA001。",
+      "reentry_condition": "Europe PMC REST fullTextXML 對 PMC6705675 回 200 時，Wiegrebe 群封頂內約 +0.5；若站主允許改用 Europe PMC search 回傳的 europepmc.org PDF 連結，需另行裁定。",
+      "reading_status": "只見 Europe PMC search 中繼資料，未讀",
+      "origin": "wave76-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-physics.json"
+    },
+    {
+      "id": "P76-NA002",
+      "question": "會回聲定位的盲人，聽一般聲源的位置也比較準嗎？（Vercillo、Milne、Gori、Goodale 2015 Neuropsychologia）",
+      "existing_ids": [
+        "P74-037"
+      ],
+      "source_ids": [],
+      "reason": "沒有合法全文（不在 PMC、非開放、搜尋只見目錄頁）。另外即使讀到也不計：共同作者 Goodale 與池中 Thaler、Arnott、Goodale 2011（PMC3102086，Thaler 群）相同，加上 Gori 屬 Gori／Brayda 群，依『有共同作者就同群』這篇會把 Thaler 群（2.0）與 Gori／Brayda 群（0.75）併成一群，合計已超過 2.0 封頂，新增條數為 0，而且會讓既有計數需要下修。V119 寫『Gori 群封頂內約 +0.5』沒算到這層。 原提案 F115-NA002。",
+      "reentry_condition": "無（就算取得全文，研究群合併後封頂已滿）。",
+      "reading_status": "只見 Europe PMC search 中繼資料與目錄頁摘要，未讀",
+      "origin": "wave76-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-physics.json"
+    },
+    {
+      "id": "P76-NA003",
+      "question": "不屬既有 12 群、在真實場所量近距離左右或紋理判斷的開放原研究",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC REST 三次查詢與兩次 WebSearch 都沒有找到符合條件的研究（見 blocked）；最接近的 Tonelli、Campus、Brayda 2018（PMC6200730，真實走廊）屬 Gori／Brayda 群，上輪已判不符（P75-NA003），本輪不讀。 原提案 F115-NA003。",
+      "reentry_condition": "出現新研究群在真實場所、以自己發聲量近距離判斷的開放全文時，約 0.75，也是轉折一從錄音／虛擬升級的唯一途徑。",
+      "reading_status": "未找到候選，未讀",
+      "origin": "wave76-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave76-physics.json"
     },
     {
       "question": "乳酪孔洞為什麼會從微小乾草顆粒附近長出來？",
