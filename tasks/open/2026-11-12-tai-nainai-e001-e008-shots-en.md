@@ -10,7 +10,6 @@ created_at: 2026-11-12T14:43:25Z
 completed_at:
 branch:
 depends_on: []
-  - 2026-11-12-tai-nainai-e001-e008-recover-v2
 scope:
   - docs/videos/tai-nainai-e001/script.md
   - docs/videos/tai-nainai-e002/script.md
