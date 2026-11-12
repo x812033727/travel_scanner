@@ -448,10 +448,12 @@ Bev、Sienna、Fisk 在第 4–10 集清單裡，若還沒畫，Bev 排在 3 之
   軸線：診間 Brandt 在畫面左、Nora 在右、門在右；大廳 Grant 轉身後在左、Peg 在右，Nora 躲在柱子靠入口那面的右半邊；藥局交代位置的鏡從側面拍、玻璃隔板側成細線，臉一律在隔板同一側拍；第 13 集 Nora 跪在兩床之間、面向自己的床。
   第 11 集 Peg 隔著關著的門說 "I'll be downstairs."（不跟 Brandt 同框）；Brandt 整場戴手套。Bev 鎖抽屜的小黃銅鑰匙收進她上衣口袋。第 13 集 Peg 的大衣攤在她床尾，第 14 集從這裡拿起。
   帳：第 11 集剩 $180（第 10 集〈時間與帳〉原寫 $196，已改成照這份）。
-- **第 14–16 集**（寫稿者定）：Reyes 的話只在他自己辦公室的鏡上（原聲，後製加電話濾波），不疊在露臉的人身上；他左手拿話筒貼左耳。第 14 集警探補 "Let me get the deputy prosecutor. Right now."（Reyes 的名字本集不說出口）；警局加一台影印機；Peg 的棕色大衣攤在她床上、c04 拿起穿上。
+- **第 14–16 集**（寫稿者定）：Reyes 的話只在他自己辦公室的鏡上（原聲，後製加電話濾波），不疊在露臉的人身上；他**右手拿話筒貼右耳**、左手翻卷宗（審稿後改：左手會擋住靠鏡頭那半張嘴）。第 14 集警探補 "Let me get the deputy prosecutor. Right now."（Reyes 的名字本集不說出口）；警局加一台影印機；Peg 的棕色大衣攤在她床上、c04 拿起穿上。
   第 15 集收選用句 "Ring. Four hundred."；加駕照道具句與一鏡 Peg 用拇指摸左手的淡色戒痕；Peg 在銀行等候椅上織毛線；黑車車頭朝畫面左、駕駛座那側朝著旅館，從辦公室看得到 Elias 下車，Theo 只從車頂上方露出頭（虛焦）。
   **Elias 的左手**：第 15 集露臉起每一鏡都插在大衣左口袋。第 16 集 c01 從停車場拍、他的視線從二樓的窗落到辦公室的窗；辦公室門前一級台階；Theo 穿棕色樂福鞋。新場景 `police-steps`、`harbor-sidewalk` 已加進 `cast.json`。
 - **第 19–20 集**（寫稿者定）：第 19 集浴室剪髮前長髮放下來，新 look `motel-down`（只換髮型，已加進 `cast.json`）。第 20 集 Dana 坐著時卷宗道具句寫 `stacked on the table`；小法庭桌上一支筆；Nora 用 Dana 的筆簽判決書；"That fast?" 照 outline 在小法庭門口；
   法庭座位 Dana 坐外側、Nora 靠中間，Fisk 靠中間、Grant 坐外側。第 20 集 153 秒（細綱 145 秒），第二章結尾，接受。
   寫稿者新加、待站主看的三句：第 19 集 c42 Peg 句前加 "Sienna."（觀眾才知道照片是誰的手）；第 20 集 c08 Fisk "Decree and agreement. Sign both, Ms. Quinn."；c38 證婚法官 "I now pronounce you husband and wife."。
+- **第 11–15 集審稿後補定**（`../review/2026-11-12-e011-e015-storyboard.md`）：粉紅表格平放時道具句後接 `, lying flat`；領藥紀錄剛印出來時寫成還沒釘的散頁，Dale 釘好之後才用 stapled 的句子；
+  從櫃台後拍的反打，左右跟客人那邊的主鏡相反，所以櫃台場的對話改從「櫃台前、兩人之間斜拍」；第 12 集 c31 改成 "So who switched my pills?"；當鋪 $400 維持。
 
