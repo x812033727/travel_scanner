@@ -32,7 +32,7 @@ def adopt(take: str, name: str, note: str) -> str:
     for pf in [WORK / f"{rnd}.progress.json", *sorted(WORK.glob("*.progress.json"))]:
         if pf.is_file():
             job = next((j for j in json.loads(pf.read_text(encoding="utf-8"))["jobs"]
-                        if Path(j.get("output") or "").name == png.name), None)
+                        if Path(j.get("output") or "").name == png.name and j["status"] == "completed"), None)
             if job:
                 break
     if job is None:
