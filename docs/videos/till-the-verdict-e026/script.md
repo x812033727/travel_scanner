@@ -137,7 +137,7 @@ c35 寫 `early evening in a narrow alley, the alley in shade, a strip of bright 
 - **地點與場景圖**：同一個活動廳 `launch-stage`；c35 是旗艦店後巷裡的黑車（`elias-car` 加後巷，後巷待畫）：窄巷、灰色水泥牆，牆上一扇關著的灰色鐵門（活動廳後台走廊通巷子的那扇），`a long black luxury sedan with no badge, number plate out of frame, parked in a narrow alley behind the store` 停在鐵門外，後座車窗降到底。
 - **時間與天氣**：第 108 天 20:13–20:20。活動廳的光同第三場；c37 起燈控室的追光 `a hard white follow-spot beam slanting down from high on the right, a sharp-edged circle of light on her face and shoulders` 打在 Nora 身上，到本集最後一直留在她身上。c35 後巷：傍晚（日落 21:10），窄巷在陰影裡，上方一條天空還亮。
 - **軸線**：同第三場（鏡頭在右側）：Grant 在台上看她朝畫面左下，她看 Grant 朝畫面右上。Grant 從舞台左端走到台中央，再往前走到舞台前緣（展示台在他身後）。追光從燈控室（她的右前上方）打來：在 Nora 的近景裡從畫面右上、照在她的右頰與右肩。c31、c37 從觀眾席後排往前拍。Elias 的鏡同 c15（他看她朝畫面右）。
-- **在場的人**：Grant、Nora、Lyle（c32）、Elias（c39）、客人；Sienna 退到講台後（c26 遠處虛焦）；Peg 一個人在後巷的車上（c35）。
+- **在場的人**：Grant、Nora、Lyle（c32）、Elias（c39）、客人；Sienna 退到講台後（c26 遠處虛焦）；Peg 一個人在後巷的車上，用手機看發表會一開場就有的直播（c35）。
 - **這場要講完的事**：Grant 說 Forever 獻給每一個守著家的女人；他走到台前，說前妻今晚在場、這個春天失去了他們的孩子、請大家對她好一點；Peg 在車上聽到；追光打到她臉上，眼淚掉下來，她不低頭、慢慢抬起下巴（結尾："Please, be kind to her."；懸念：她會低頭嗎）。
 - **配樂**：c26 台上的弦重新起來、溫柔得刻意；c30 起慢慢抽掉，只剩一個低的長音；c33 那句後全靜一拍；c35 車裡只有手機傳出來的遠遠的廳裡回音；c37 追光打下來時一個很重的低音；c41 一段慢慢升起的弦、懸著，切黑。
 - **離開這場**：本集結尾；第 27 集第一鏡她在追光裡站起來。
@@ -181,7 +181,7 @@ c35 寫 `early evening in a narrow alley, the alley in shade, a strip of bright 
 - **Nora 的 `gown` 外貌句**已拿掉 "no jewelry, composed and still"（`cast.json` 2026-11-12）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 11 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
-- **c35 Peg 看的是什麼**：bible〈帳〉寫第 26–30 集她在車上看 **Lyle 的直播**，但 Lyle 的手機（`lyle-phone`）第 28 集起才舉起來，第 26 集他拿的是相機。本集只拍她盯著手機的臉（螢幕背對鏡頭），**不交代是誰的直播**；建議 bible 補一句「發表會一開場就有直播（Lyle 用相機拍照、另一支手機架著直播，第 28 集才舉起來），Peg 從 20:00 起在看」，第 30 集 "I heard every word up there." 才包得住第 26 集這三句。
+- **c35 Peg 看的是什麼**：**發表會一開場就有的直播**（bible〈第 25–30 集審稿後補定〉），她從 20:00 起在看，所以第 30 集 "I heard every word up there." 包得住第 26 集這三句。畫面只拍她盯著手機的臉（螢幕背對鏡頭）。
 - **後巷的車窗降到底**：從開著的窗口往裡拍，避開車窗玻璃上的倒影（bible〈全劇固定〉玻璃前的近景不寫倒影）。黑車停在後台走廊鐵門外（c35 牆上那扇灰色鐵門就是第 29–30 集的鐵門）。
 - **Nora 左右兩張空椅子**：第一排正中她左右各空一張，鏡頭裡她更孤立；bible 只寫她坐第一排正中。
 - **Nora 的座位卡留在 Theo 手上**（夾到平板背後）：bible 只寫兩張都交給 Theo；她不拿，手上只有手拿包，之後不用再追卡的去向。Elias 那張他收進西裝內袋（c15）。
@@ -191,6 +191,11 @@ c35 寫 `early evening in a narrow alley, the alley in shade, a strip of bright 
 - **鏡位的方向**：大廳裡從觀眾席這邊拍的鏡，鏡頭一律放在右側（燈控室那側），台下的人看台上朝畫面右上、台上的人看台下朝畫面左下；第 27、28 集照同一個方向。
 
 選用、不算鏡數：c21 推到瓶口之後可以插一格第 6–7 集玻璃屋矮櫃上的白花瓶（用第 6–7 集已拍的片段，不另花錢，0.5–1 秒、硬切）；要插的話剪接時從 c22 扣掉同樣長度。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e025-e030-storyboard.md` 與 bible〈第 25–30 集審稿後補定〉。審稿沒有點到本集的鏡；本集還沒錄、沒拍，台詞沒變，不用重錄、不用重抽。
+- **直播**：Peg 在 c35 看的統一寫「發表會一開場就有的直播」（第四場場頭、〈這集稿子自己定〉、造型清單一起改），不再寫成 Lyle 的直播、也不再列為待定。
 
 ### 配音
 
@@ -255,7 +260,7 @@ c35 寫 `early evening in a narrow alley, the alley in shade, a strip of bright 
 | Crane | 深色立領外套＋`poker-chip`（右手） | c13、c24（c14 剪影） | 要畫定妝照 |
 | Sienna | 基本款紅色套裝；提詞卡在左手 | c17、c19（c18 只有左手，c26 遠） | 要畫定妝照（要看得到左腕的錶） |
 | Grant | 基本款＋自己的麥克風（右手） | c25–c27、c29–c30、c33、c36、c40（c17 遠、虛焦，c31、c37 很小，c41 右上緣虛焦） | 已有 |
-| Peg | `visit`（玳瑁框老花眼鏡戴在臉上）；左手淡色戒痕；`peg-phone` 看直播 | c35 | 已有 |
+| Peg | `visit`（玳瑁框老花眼鏡戴在臉上）；左手淡色戒痕；`peg-phone` 看發表會一開場就有的直播 | c35 | 已有 |
 | 帶位員 | `launch-usher`，只有黑袖子與手 | c01 | 不畫 |
 | 主持人 | `launch-host`，只有袖子與手、虛焦 | c17 | 不畫 |
 | 攝影師兩人 | `reporters` 改拿相機，臉被相機擋住 | c08（背）、c10 | 不畫 |

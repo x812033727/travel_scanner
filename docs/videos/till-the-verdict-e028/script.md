@@ -29,7 +29,7 @@
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
 | Nora | `assets/refs/nora-portrait.jpg`（r3）；**全身參考圖 `gown` 待畫** | 舞台上整集 `gown`（霧灰長禮服、高船領、長袖，齊肩頭髮往後順到耳後；裙襬垂到地、蓋住鞋；鞋是她自己 `decree` 的 `low nude flat shoes`，本集每一鏡都被裙襬蓋住）；`white cotton handling gloves on both her hands`（戒指在手套裡，不寫）；`a small misty-grey satin clutch about the size of her hand` 整集夾在左腋下；臉頰有淚痕、眼睛濕（每一鏡再寫），c41 起眼淚在臉上；**本集一鏡都不笑**；原聲 |
-| Nora（十九歲，回憶） | **待畫**：`nineteen`（同一張臉年輕十二歲，先試 `latent: image1` 加「十九歲、高馬尾」，不像再單獨畫） | `nineteen`（高馬尾、`a faded misty-grey T-shirt`、太大的皮圍裙、護目鏡推在額頭）；兩手握吹管；不笑；不說話 |
+| Nora（十九歲，回憶） | **待畫**：`nineteen`（同一張臉年輕十二歲，先試 `latent: image1` 加「十九歲、高馬尾」，不像再單獨畫） | `nineteen`（高馬尾、`a faded misty-grey T-shirt`、太大的皮圍裙、護目鏡戴在眼睛上）；兩手握吹管；不笑；不說話 |
 | Walter Pell | **待畫，必須先畫**（bible 先畫順序 11） | 55 歲義大利裔男性、粗厚的手、灰色鬍渣、眼角被爐火烤出的細紋、厚皮圍裙配工作衫；不戴眼鏡；**不要刻意畫得像 Elias**；不笑；原聲（c18） |
 | Grant | `assets/refs/grant-portrait.jpg`（平臉 r3） | 基本款（沙金色側分、細圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣）＋自己的麥克風（**右手**）；關燈時在舞台左的台側陰影裡（臉只被燈箱照到一半）；c28、c38 不笑；**c44 舉起麥克風時練過的閉嘴微笑回到臉上、開口那一刻嘴角放平**，c45 嘴剛停、閉嘴微笑；說話句寫「聲音平穩、低」，不寫 warm、keynote、smooth；原聲（c44） |
 | Sienna | **待畫，必須先畫**（要看得到左腕的錶） | 基本款（暖棕膚色、黑色齊下巴短髮、紅唇、**左腕**細金錶、鮮紅合身套裝）；講台後；`a small stack of plain white cue cards about the size of her palm, blank on both sides` 在**左手**，c24 從左手滑落、之後散在她腳邊；**本集不笑**；不說話 |
@@ -84,7 +84,7 @@ c42 寫 `a small dark lighting balcony, the cold white glow of the console's sma
 | c03 | 特寫、慢推（從下巴到眉推到眼睛）；鏡頭在燈箱前方偏右、比她的臉低（往上拍）；直式；**第一格就是 Nora 被下面的光照著的臉，整鏡不拉遠**；身後只有黑暗；同一個活動廳 | Nora（`gown`，`white cotton handling gloves on both her hands`）彎身在燈箱上方；燈箱的白光穿過瓶底從下往上照著她的下巴、嘴與顴骨（穩定）；臉頰有淚痕、眼睛濕；眼睛看著畫面下緣外的瓶底（說話模板的 eyes on 換成本鏡寫的視線：她對著瓶底低聲說）；眉毛慢慢抬起、嘴唇在字前分開、聲音很輕、很清楚，`no smile at any moment, until the last frame` | Nora 看著瓶底，嘴在說話（很輕、很清楚）；說完吸一口氣、胸口一起，嘴閉上；最後：她彎身看著瓶底，吸著那口氣 | Nora（很輕、很清楚）：My initials.（我名字的縮寫）（原聲） | 約 3 秒 |
 | c04 | 近景、慢推（從胸上推到肩上）；同 c03 的鏡位；直式，臉在上三分之一；身後只有黑暗；同一個活動廳 | Nora（`gown`，`white cotton handling gloves on both her hands`，手拿包夾在左腋下）；燈箱的白光從下往上照著臉（穩定）；臉頰有淚痕、眼睛濕；眼睛還看著瓶底；下唇往內一抿、眉心往上擠一點、聲音低、在抖但清楚，`no smile at any moment, until the last frame` | Nora 嘴在說話（低、在抖但清楚）；說完兩手按住展示台的邊，嘴閉上；最後：她兩手按著燈箱兩邊的台緣、看著瓶底 | Nora（低、在抖但清楚）：My wedding day.（我婚禮那天）（原聲） | 約 3 秒 |
 | c05 | 插鏡、固定；**第一格就是舞台上方的大螢幕**；直式；從台下仰拍 | `a wide dark screen above the back of the stage showing only a short curved row of glowing points, nothing readable`；下緣是燈箱的一盒白光與她的頭頂輪廓（虛焦）；畫面裡看不清臉 | 大螢幕從一層淡光換成那排光點，一顆一顆亮起來（現場鏡頭拍到瓶底）；剪在亮齊；畫面上沒有嘴；最後：大螢幕上一小排弧形的光點 | — | 約 2.5 秒 |
-| c06 | 全景、慢推；鏡頭在觀眾席後排、往前拍；直式：前景下緣是後排客人的後腦（剪影），中間一排排的頭，上緣是舞台：台中央燈箱的一盒白光、上方大螢幕的一排光點 | 看不清任何一張臉。一排排客人的頭是黑影；台中央一個小小的霧灰身影彎在燈箱上；大螢幕的光點；第一排右端一個矮壯的黑影往前探 | 前排的頭一個個往前探（動作一），有人站起一半又坐下（動作二，背影）；剪在探到最前；畫面上沒有嘴；最後：一排排的黑影朝著台中央的光 | — | 約 2.5 秒 |
+| c06 | 全景、慢推；鏡頭在觀眾席後排、往前拍；直式：前景下緣是後排客人的後腦（剪影），中間一排排的頭，上緣是舞台：台中央燈箱的一盒白光、上方大螢幕的一排光點 | 看不清任何一張臉。一排排客人的頭是黑影；台中央一個小小的霧灰身影彎在燈箱上；大螢幕的光點；第一排左端（畫面左）一個矮壯的黑影往前探 | 前排的頭一個個往前探（動作一），有人站起一半又坐下（動作二，背影）；剪在探到最前；畫面上沒有嘴；最後：一排排的黑影朝著台中央的光 | — | 約 2.5 秒 |
 | c07 | 中景、固定；鏡頭在右側走道前段、與第一排同高，側拍第一排；直式：前景右是走道邊一張椅背（虛焦），往畫面左延伸的第一排 | 看不清任何一張臉。`two or three phones held up in the dark, seen from the back or the side, only their soft white glows`：第一排兩三隻手把手機舉起來，螢幕的白光照著拿的人的下巴（虛焦）；舞台的燈箱在畫面上緣遠處 | 前排兩三支手機一支接一支舉起來（動作一），白光亮起（動作二）；剪在第三支舉到頭頂高；畫面上沒有嘴；最後：兩三支手機舉在黑暗裡 | — | 約 2.5 秒 |
 | c08 | 近景、慢推（從胸上推到肩上）；反打：鏡頭在舞台前緣、往第一排右邊拍；直式，臉在上三分之一；身後是黑暗裡的觀眾席（虛焦） | Lyle Becker（格子襯衫、反戴的素面棒球帽），坐在第一排右邊靠走道；兩手 `a black phone held up sideways, seen from the back, its screen a soft white glow`，舉在臉前；手機螢幕的白光從下往上照著他的下巴與臉（穩定）；眼睛越過手機看著舞台（畫面上方外）；眉毛挑起、眼睛睜大、嘴唇閉著往前抿、下巴往前，`no smile at any moment, until the last frame` | Lyle 把手機橫過來、舉高對準舞台（動作一），拇指在手機側邊按一下（動作二，開始直播）；剪在拇指按下；嘴閉著；最後：手機舉在他臉前、背面朝鏡頭 | — | 約 2.5 秒 |
 | c09 | 近景、固定；同第 26 集 c15 的鏡位（他右前方、靠右牆那側低處）；直式，臉在上三分之一；身後是黑暗的第二排（虛焦） | Elias（基本款，細銀絲框眼鏡），坐在第二排最右端，**左手在畫框外**；臉上一層淡淡的冷光（遠處燈箱與大螢幕的光，加上前排手機背面透過來的一點白光，穩定）；四分之三側臉朝畫面右、眼睛看著畫面右遠處台中央的她；眉頭一動、眼睛不眨、下巴的肌肉收緊、嘴唇閉著，`no smile at any moment, until the last frame` | Elias 的下巴收緊（動作一），慢慢吸一口氣（動作二）；剪在吸氣；嘴閉著；最後：他坐著、看著畫面右遠處 | — | 約 2.5 秒 |
@@ -108,9 +108,9 @@ c42 寫 `a small dark lighting balcony, the cold white glow of the console's sma
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c15 | 插鏡、特寫、固定；**第一格就是三號爐的爐口**；直式；同一間廠房 | `a huge round furnace of dark red firebrick bound with rusted steel bands, about twice as tall as a man, a steel flue rising from its dome, a round mouth at chest height behind a hinged steel door, no lettering, an orange glow pouring from the gap of its half-open door`；橘光往外湧；暖金色的霧；畫面裡沒有人 | 爐口的鐵門被拉開一點（動作一），橘光一下湧出來（動作二）；剪在光湧到畫面中間；畫面上沒有嘴；最後：爐口開著、橘光湧出 | — | 約 2 秒 |
-| c16 | 中近景、慢推（從中近景推到近景）；鏡頭在爐的那一側斜拍；直式，臉在上三分之一；身後是磚牆與遠處虛焦的爐光；同一間廠房 | 十九歲的 Nora（`nineteen`：高馬尾、`a faded misty-grey T-shirt`、太大的皮圍裙、護目鏡推在額頭）；兩手握著 `a long steel glassblowing pipe about as long as a person is tall, a glowing orange gather of molten glass at the far end`，吹管往畫面右伸向爐口；爐光從畫面右打在她的臉與手上；四分之三側臉朝畫面右、眼睛盯著吹管那頭的料；眉頭收緊、嘴唇抿著、屏住呼吸，`no smile at any moment, until the last frame` | 她兩手慢慢轉動吹管（動作一），料在管頭跟著轉（動作二）；剪在轉到半圈；嘴閉著；最後：她握著吹管、盯著料 | — | 約 2.5 秒 |
+| c16 | 中近景、慢推（從中近景推到近景）；鏡頭在爐的那一側斜拍；直式，臉在上三分之一；身後是磚牆與遠處虛焦的爐光；同一間廠房 | 十九歲的 Nora（`nineteen`：高馬尾、`a faded misty-grey T-shirt`、太大的皮圍裙、護目鏡戴在眼睛上）；兩手握著 `a long steel glassblowing pipe about as long as a person is tall, a glowing orange gather of molten glass at the far end`，吹管往畫面右伸向爐口；爐光從畫面右打在她的臉與手上；四分之三側臉朝畫面右、護目鏡後的眼睛盯著吹管那頭的料；眉頭在護目鏡上緣收緊、嘴唇抿著、屏住呼吸，`no smile at any moment, until the last frame` | 她兩手慢慢轉動吹管（動作一），料在管頭跟著轉（動作二）；剪在轉到半圈；嘴閉著；最後：她握著吹管、盯著料 | — | 約 2.5 秒 |
 | c17 | 插鏡、手部特寫、固定；**第一格就是她握吹管的兩隻手**；直式；爐光從畫面右 | 她年輕的兩手握著 `a long steel glassblowing pipe about as long as a person is tall`（管頭的料在畫面右外發橘光）；Walter 粗厚的兩手（工作衫袖口、皮圍裙的邊）從畫面左後伸進來；畫面裡只有手 | Walter 的兩手覆上她的手（動作一），帶著她的手一起轉吹管（動作二）；剪在四隻手一起轉；畫面上沒有嘴；最後：他的手覆在她的手上、握著吹管 | — | 約 2.5 秒 |
-| c18 | 中近景、慢推（從中近景推到近景）；鏡頭在爐的那一側斜拍；直式：兩張臉在上半，Walter 在她身後偏畫面左、臉在她肩膀上方；下緣是兩人握著的吹管；身後是磚牆與暖金色的霧（虛焦） | 共兩人。Walter Pell（55 歲義大利裔男性、灰色鬍渣、眼角被爐火烤出的細紋、厚皮圍裙配工作衫），站在她身後，兩手覆在她手上；爐光從畫面右打在兩張臉上；他四分之三側臉朝畫面右下、眼睛看著她手上的料（說話模板的 eyes on 換成本鏡寫的視線：他邊教邊看料）；眉毛鬆開、眼角的細紋收緊、嘴唇在字之間閉著、聲音粗、慢、溫和，`no smile at any moment, until the last frame`；十九歲的 Nora（`nineteen`）四分之三側臉朝畫面右、眼睛從料抬起來一下、眉毛抬一點、嘴閉著，`no smile at any moment, until the last frame` | Walter 低頭靠近她肩膀，嘴在說話（粗、慢、溫和）；Nora 嘴閉著、眼睛抬起來聽；說完他的手在她手上按一下，嘴閉上；最後：兩人一起握著吹管、看著料 | Walter（粗、慢、溫和）：Whatever you make, leave your name inside.（不管妳做什麼，把妳的名字留在裡面）（原聲）（結尾） | 約 4.5 秒 |
+| c18 | 中近景、慢推（從中近景推到近景）；鏡頭在爐的那一側斜拍；直式：兩張臉在上半，Walter 在她身後偏畫面左、臉在她肩膀上方；下緣是兩人握著的吹管；身後是磚牆與暖金色的霧（虛焦） | 共兩人。Walter Pell（55 歲義大利裔男性、灰色鬍渣、眼角被爐火烤出的細紋、厚皮圍裙配工作衫），站在她身後，兩手覆在她手上；爐光從畫面右打在兩張臉上；他四分之三側臉朝畫面右下、眼睛看著她手上的料（說話模板的 eyes on 換成本鏡寫的視線：他邊教邊看料）；眉毛鬆開、眼角的細紋收緊、嘴唇在字之間閉著、聲音粗、慢、溫和，`no smile at any moment, until the last frame`；十九歲的 Nora（`nineteen`）四分之三側臉朝畫面右、護目鏡後的眼睛從料抬起來一下、眉毛在護目鏡上緣抬一點、嘴閉著，`no smile at any moment, until the last frame` | Walter 低頭靠近她肩膀，嘴在說話（粗、慢、溫和）；Nora 嘴閉著、護目鏡後的眼睛抬起來聽；說完他的手在她手上按一下，嘴閉上；最後：兩人一起握著吹管、看著料 | Walter（粗、慢、溫和）：Whatever you make, leave your name inside.（不管妳做什麼，把妳的名字留在裡面）（原聲）（結尾） | 約 4.5 秒 |
 
 ### 第三場：Six years.（約 74 秒）
 
@@ -150,8 +150,8 @@ c42 寫 `a small dark lighting balcony, the cold white glow of the console's sma
 | c41 | 特寫、慢推（從下巴到眉推到眼睛）；同 c37 的鏡位；直式；**第一格就是 Nora 的臉，整鏡不拉遠** | Nora（`gown`，`white cotton handling gloves on both her hands`）；燈箱的白光從畫面左下照上來（穩定）；眼睛濕、一直看著畫面左的 Grant；一滴眼淚從右眼滑下臉頰、她不眨眼、不低頭、眉心往上擠、下唇咬住，`no smile at any moment, until the last frame` | 眼淚從她臉頰滑下來（動作一），她的眼睛一直看著他、下巴不動（動作二）；剪在眼淚滑到下巴；嘴閉著；最後：她看著畫面左、眼淚在臉上 | — | 約 3 秒 |
 | c42 | 插鏡、特寫、固定；**第一格就是燈控台上推到底的推桿與他的右手**；直式；燈控台的冷白小燈 | `a lighting console of plain unlabeled faders`；Ray 的右手（黑 T 恤袖口、手腕纏黑色膠帶）；畫面裡只有手 | 手握住一根推桿（動作一），慢慢把它推上去（動作二）；剪在推到一半；畫面上沒有嘴；最後：推桿推到一半以上、還在往上 | — | 約 2.5 秒 |
 | c43 | 全景、固定；鏡頭在觀眾席後排右邊、往前拍；直式：前景下緣是後排客人的後腦，上半是舞台 | 看不清任何一張臉。觀眾席的燈慢慢亮回到暗一階的暖光，一排排的黑影變回坐著的客人（背影、虛焦）；前排幾支手機還舉著；舞台頂光亮回來，台上站著的人很小；大螢幕仍是那排光點 | 全場的燈慢慢亮起來（動作一），客人在座位上動起來、轉頭互看（動作二，背影）；剪在燈亮到一半；畫面上沒有嘴；最後：觀眾席是暗一階的暖光，舞台亮著 | — | 約 3 秒 |
-| c44 | 近景、慢推（從胸上推到肩上）；鏡頭在舞台前緣下、他的正前方偏右、低處；直式，臉在上三分之一；身後是展示台、玻璃罩與大螢幕的光點（虛焦）；同一個活動廳 | Grant（基本款，細圓金屬框眼鏡）；舞台頂光回來、穩定照在臉上；從台側走到台中偏左；右手把 `a black handheld microphone with no logo` 舉到嘴前；舉麥克風時練過的閉嘴微笑回到臉上、不露齒；開口那一刻嘴角放平、眉心微微提起、聲音平穩、低；四分之三側臉朝畫面右下的觀眾席 | Grant 往前一步、把麥克風舉到嘴前（動作一），嘴在說話（平穩、低）（動作二）；句子停在半句；最後：麥克風在嘴前、嘴剛停 | Grant（平穩、低，句子停在半句）：My ex-wife—（我前妻——）（原聲）（懸念 → 下一集第一場） | 約 3 秒 |
-| c45 | 中景、固定（接第 29 集之前的最後一刻）；交代位置（台上三人同框只有這一鏡）；鏡頭在台下第一排前、正對舞台、低；直式：畫面左是講台，中間是展示台與玻璃罩，右邊緣是主持人的肩；上方大螢幕的光點 | 露臉的三人。Sienna（基本款紅色套裝）在畫面左、講台邊，左手空著，腳邊 `a small stack of plain white cue cards about the size of her palm, blank on both sides, scattered on the black stage floor`；眉頭擰緊、嘴唇抿緊，`no smile at any moment, until the last frame`；Grant（基本款，細圓金屬框眼鏡）在台中偏左，右手舉著自己的 `a black handheld microphone with no logo`，嘴剛停在半句、練過的閉嘴微笑、眼睛看著畫面右下的觀眾席；正中 `a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling, its lip tilted very slightly to one side, under a clear glass display dome on a glowing white light box`，在 `a waist-high white plinth whose flat top is a glowing white light box` 上；Nora（`gown`，`white cotton handling gloves on both her hands`，手拿包夾在左腋下，眼淚在臉上）站在展示台右邊，四分之三側臉朝畫面左、看著 Grant；眉心往上擠、下巴抬著、嘴唇閉緊，`no smile at any moment, until the last frame`；畫面右邊緣，主持人只見黑色晚宴外套的肩與右手上的 `a black handheld microphone with no logo`；舞台頂光、觀眾席暗一階的暖光；上方 `a wide dark screen above the back of the stage showing only a short curved row of glowing points, nothing readable` | Grant 的嘴停住（動作一），台上的人都停在這一刻（動作二）；剪在停住後一拍；Grant 嘴閉著（練過的閉嘴微笑）、Nora 與 Sienna 嘴閉著；最後：三人停在這一刻，整鏡停住 | — | 約 3 秒 |
+| c44 | 近景、慢推（從胸上推到肩上）；鏡頭在舞台前緣下、他的正前方偏右、低處；直式，臉在上三分之一；身後是展示台、玻璃罩與大螢幕的光點（虛焦）；同一個活動廳 | Grant（基本款，細圓金屬框眼鏡）；舞台頂光回來、穩定照在臉上；從台側走到台中偏左；右手把 `a black handheld microphone with no logo` 舉到嘴前；舉麥克風時練過的閉嘴微笑回到臉上、不露齒；開口那一刻嘴角放平、眉心微微提起、聲音平穩、低；四分之三側臉朝畫面右下的觀眾席 | Grant 往前一步、把麥克風舉到嘴前（動作一），嘴在說話（平穩、低）（動作二）；句子停在破折號，嘴閉上（練過的閉嘴微笑回來）、眼睛轉向畫面右下右側走道前段的記者；剪在破折號；最後：麥克風在嘴前、嘴閉著、看著畫面右下 | Grant（平穩、低，句子停在半句）：My ex-wife—（我前妻——）（原聲）（懸念 → 下一集第一場） | 約 3 秒 |
+| c45 | 中景、固定（接第 29 集之前的最後一刻）；交代位置（台上三人同框只有這一鏡）；鏡頭在台下第一排前、正對舞台、低；直式：畫面左是講台，中間是展示台與玻璃罩，右邊緣是主持人的肩；上方大螢幕的光點 | 露臉的三人。Sienna（基本款紅色套裝、尖頭高跟鞋）在畫面左、講台邊，左手空著，腳邊 `a small stack of plain white cue cards about the size of her palm, blank on both sides, scattered on the black stage floor`；眉頭擰緊、嘴唇抿緊，`no smile at any moment, until the last frame`；Grant（基本款，細圓金屬框眼鏡）在台中偏左，右手舉著自己的 `a black handheld microphone with no logo`，嘴剛停在半句、練過的閉嘴微笑、眼睛看著畫面右下的記者；深棕色皮鞋；正中 `a tall cream-white hand-blown glass vase about as tall as a forearm, its body gently swelling, its lip tilted very slightly to one side, under a clear glass display dome on a glowing white light box`，在 `a waist-high white plinth whose flat top is a glowing white light box` 上；Nora（`gown`，`white cotton handling gloves on both her hands`，手拿包夾在左腋下，眼淚在臉上）站在展示台右邊，霧灰裙襬垂到台面、蓋住鞋面；四分之三側臉朝畫面左、看著 Grant；眉心往上擠、下巴抬著、嘴唇閉緊，`no smile at any moment, until the last frame`；畫面右邊緣，主持人只見黑色晚宴外套的肩與右手上的 `a black handheld microphone with no logo`；舞台頂光、觀眾席暗一階的暖光；上方 `a wide dark screen above the back of the stage showing only a short curved row of glowing points, nothing readable` | Grant 的嘴停住（動作一），台上的人都停在這一刻（動作二）；剪在停住後一拍；Grant 嘴閉著（練過的閉嘴微笑）、Nora 與 Sienna 嘴閉著；最後：三人停在這一刻，整鏡停住 | — | 約 3 秒 |
 
 約 122 秒（2 分 2 秒）、45 鏡（第一場 14、第二場 4、第三場 27），是各鏡秒數加起來的估計；細綱 `duration_s` 130 秒，bible 目標 45–50 鏡。
 開場 10 秒四鏡（c01–c04）：c01 光往瓶底爬、c02 `still` 光點、c03 "My initials."、c04 在第 7.5 秒 "My wedding day."。平均一鏡 2.71 秒（說話的鏡 3–5 秒，插鏡 2–2.5 秒，`still` 2 秒，顏值鏡頭 3 秒）。`still` 一支 2 秒，佔全集 1.6%。
@@ -162,7 +162,7 @@ c42 寫 `a small dark lighting balcony, the cold white glow of the console's sma
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **瓶底的名字**：細綱的氣泡 "settles into two letters" 改成「燈箱的光從瓶底往上爬，光點一顆接一顆亮起來」；氣泡封在玻璃裡、不會動。"N.Q." 只在 c02 一鏡鎖死的 `still` 上後製 2D 光點，日期不上畫面、由她說 "My wedding day."。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 2 條；站主可改成連後製也不上）。
-- **大螢幕只有光點**；前排的手機只拍兩三支的白光（背面或側面），不寫「每一支手機」。Lyle 在 c08 開直播（第 30 集 Peg 用手機看的、第 46 集用的直播畫面從這裡起）。
+- **大螢幕只有光點**；前排的手機只拍兩三支的白光（背面或側面），不寫「每一支手機」。Lyle 在 c08 舉起手機直播；Peg 在車上看的是「發表會一開場就有的直播」（bible〈第 25–30 集審稿後補定〉），不是 Lyle 這一支。
 - **回憶四鏡**（c15–c18）：三號爐、十九歲的她握吹管、Walter 的手覆上來、Walter 的一句（一句兩段放在同一鏡、他自己的鏡上，原聲）；硬切進出、不溶、不用字卡；回憶裡只有兩個人，**不放 Soot**，Walter 不刻意畫得像 Elias。
 - **十九歲的 T 恤是霧灰色**（`nineteen` 已寫 `a faded misty-grey T-shirt`），給第 24 集 "her color at nineteen" 一個畫面上的根據。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 10 條）。
 - **Walter 的定妝照與 `nineteen` 的參考圖**都要先畫。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 7 條；s1-decisions「回憶的定妝照」）。
@@ -183,12 +183,21 @@ c42 寫 `a small dark lighting balcony, the cold white glow of the console's sma
 - **大螢幕一直停在光點**（c35、c43–c45），接第 29 集「大螢幕停在那一排光點」。
 - **Grant 的位置**：關燈時在舞台左的台側陰影裡（c10、c28、c38，半張臉被燈箱照到），燈亮後走到台中偏左（c44）；已對過第 29 集 c01（台中偏左、右手舉著麥克風、第一格練過的閉嘴微笑）。
 
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e025-e030-storyboard.md` 與 bible〈第 25–30 集審稿後補定〉。本集還沒錄、沒拍，台詞沒變，不用重錄、不用重抽。
+- **c06**：從觀眾席後排順拍，Crane 在第一排**左端**（畫面左），原稿寫成右端。
+- **c44**：被打斷的短句加收尾：停在破折號、嘴閉上（練過的閉嘴微笑回來）、眼睛轉向畫面右下的記者；剪在破折號（接第 29 集 c01 他看著記者；〈配音〉一起改）。
+- **c45**：台上三人看得到腳，補鞋：Grant 深棕色皮鞋、Sienna 尖頭高跟鞋、Nora 的裙襬蓋住鞋面；Grant 的眼睛寫成看著畫面右下的記者。
+- **十九歲 Nora 的護目鏡戴在眼睛上**（bible 補定，`nineteen` 外貌句已改）：c16、c18 的眼睛寫成「護目鏡後的眼睛」，角色表與造型清單一起改。
+- **直播**：Peg 看的是「發表會一開場就有的直播」，不是 Lyle 在 c08 舉起來的那一支（〈這版改了什麼〉一起改）。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**。
 - **九句都是原聲**：Nora 六鏡（c03、c04、c13、c21、c22、c37）、Walter 一鏡（c18）、Crane 一鏡（c27）、Grant 一鏡（c44）。每支**至少買 6 秒**（合計 54 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。
 - 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：Nora 在公開場合說事實時聲音安靜而很清楚、不尖（c03 很輕、c04 與 c37 在抖但清楚）；Walter 粗、慢、溫和；Crane 大聲、邊笑邊說；Grant 平穩、低（舉麥克風時的閉嘴微笑在開口前收掉）。
-- **Grant 的說話句**（c44）只寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth；句子停在 "ex-wife—"，第 29 集 c01 從頭重講一次。
+- **Grant 的說話句**（c44）只寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth；句子停在 "ex-wife—"、嘴閉上、眼睛轉向記者，剪在破折號；第 29 集 c01 從頭重講一次。
 - **6 個字以內的句子**（c03、c04、c21、c22、c27、c44）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上。c03 "My initials."、c04 "My wedding day."、c44 "My ex-wife—" 最短，第一批草稿先聽有沒有多講。
 - **Walter 第一次開口**：開拍前要有定妝照；聲音只在本集（回憶）。回憶的聲音不加任何濾波（他就在畫面上說），只靠爐的低吼與配樂分出是回憶。
 - **c30 光點落在臉上、c41 眼淚**：她不說話；第一批草稿看光點有沒有「動」或排成形狀，動了就改成更淡的光斑。
@@ -244,7 +253,7 @@ c42 寫 `a small dark lighting balcony, the cold white glow of the console's sma
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
 | Nora | `gown`＋`white cotton handling gloves on both her hands`＋`grey-clutch`（整集夾在左腋下）；鞋是 `decree` 的 `low nude flat shoes`（被裙襬蓋住）；臉頰有淚痕，c41 起眼淚在臉上 | c03–c04、c12–c13、c19、c21–c22、c30、c33、c36–c37、c41、c45（c01、c31–c32、c34 只有手；c06、c14、c20、c43 很小） | 已有；**要畫全身參考圖** |
-| Nora（十九歲） | `nineteen`（高馬尾、霧灰 T 恤、太大的皮圍裙、護目鏡推在額頭） | c16、c18（c17 只有手） | 已有（T 恤顏色 2026-11-12 寫進）；**要畫參考圖** |
+| Nora（十九歲） | `nineteen`（高馬尾、霧灰 T 恤、太大的皮圍裙、護目鏡戴在眼睛上） | c16、c18（c17 只有手） | 已有（T 恤顏色 2026-11-12 寫進）；**要畫參考圖** |
 | Walter Pell | 基本外貌（厚皮圍裙配工作衫） | c18（c17 只有手） | **要畫定妝照** |
 | Grant | 基本款＋自己的麥克風（右手） | c10、c28、c38、c44、c45 | 已有 |
 | Sienna | 基本款紅色套裝；提詞卡在左手 → c24 掉落 | c11、c23、c25、c40、c45（c24 只有左手；c20 遠） | 要畫定妝照（要看得到左腕的錶） |
