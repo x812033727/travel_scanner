@@ -1,0 +1,202 @@
+{
+  "batch_id": "wave57-earth-20261111",
+  "created_on": "2026-11-12",
+  "scope": "聲學都卜勒流速計的動床偏差、迴圈修正與推移質估計：替長題 G35 補 USGS 的測試報告（作者 F10，非作者覆核 V13）；G35 仍後備。",
+  "sources": [
+    {
+      "id": "S57-S001",
+      "url": "https://pubs.usgs.gov/sir/2006/5079/pdf/SIR2006-5079.pdf",
+      "canonical_url": "https://pubs.usgs.gov/sir/2006/5079/pdf/SIR2006-5079.pdf",
+      "title": "Application of the Loop Method for Correcting Acoustic Doppler Current Profiler Discharge Measurements Biased by Sediment Transport",
+      "publisher": "美國地質調查所（USGS），Mueller, D.S. 與 Wagner, C.R.；與加拿大環境部合作",
+      "version": "Scientific Investigations Report 2006–5079，18 頁，2006",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（PDF），pdftotext（版面與原始兩種）轉文字；全文讀，表 1、3、4 逐列核對",
+      "reading_scope": "全文 18 頁（摘要、方法、誤差評估、現地應用、結論）；附錄的逐步操作只瀏覽",
+      "locator": "Abstract；Introduction；Method Description 式(1)–(3)；表 1；「Uncertainty in the Loop Method as a Moving-Bed Test」；表 3、表 4；Summary",
+      "summary": "河床泥沙在動時，底追蹤把它當固定河床，船跡會被扭向上游，量到的水速與流量偏低。迴圈法：橫渡來回一趟回到原點，底追蹤卻顯示停在起點上游，這段閉合差除以時間就是平均動床速度，乘上斷面積補回流量。13 筆動床測次的平均動床速度 0.028–0.103 m/s，是水速的 1.63%–16.4%；其中 9 個有 DGPS 的測點，迴圈法修正後的流量與 DGPS 流量相差 −5.0% 到 1.3%。DGPS 在樹冠濃密、深谷、橋邊會因多路徑與收訊而不穩。沒有動床的測點迴圈也不會剛好閉合，系統誤差造成的不確定度約 0.006 m/s。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "2006 年的報告，儀器與軟體之後有更新；13 個測點都是斷面接近矩形或梯形的河段，作者自己說兩種修正法差異小是因為斷面均勻；DGPS 當比較基準，表 3 註明各點 GPS 品質從 Poor 到 Excellent。池中 O3072–O3080 的來源是另一份文件（TM 3-A22，SRC-87ae7733e9e523c7）。 覆核 V13（2026-11-12）：summary 與 locator 補：表 3、表 4 的「13 sites」是 11 個地點的 13 筆；有 DGPS 的是 8 個地點的 9 筆。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/sir2006-5079.pdf",
+        "sha256_prefix": "ae36814ff4cecea9",
+        "note": "文字檔 sir2006-5079.txt（-layout，表格用）與 sir2006-5079.raw.txt（內文用） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "S57-S002",
+      "url": "https://pubs.usgs.gov/sir/2010/5091/papers/Holmes.pdf",
+      "canonical_url": "https://pubs.usgs.gov/sir/2010/5091/papers/Holmes.pdf",
+      "title": "Measurement of Bedload Transport in Sand-Bed Rivers: A Look at Two Indirect Sampling Methods",
+      "publisher": "USGS，Robert R. Holmes, Jr.；收於 Scientific Investigations Report 2010–5091",
+      "version": "SIR 2010–5091 內的論文，頁 236–252，2010 年線上出版",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl GET 200（PDF），pdftotext 轉文字；全文讀",
+      "reading_scope": "全文（摘要、床形測速法、虛擬速度法、密蘇里河案例、結論）；表 2 以程式抽出 23 個數值",
+      "locator": "Abstract；「virtual velocity」節（bottom-track bias、Rennie 等 2002 約 25 分鐘、Kenney 2006）；密蘇里河 St. Charles 案例與表 2；Summary",
+      "summary": "同一個「底追蹤偏差」被反過來當成量測工具：ADCP 停在會動的河床上時，顯示的船速應該對應河床泥沙的虛擬速度。2002 年 6 月 19 日密蘇里河 St. Charles，沿河 23 個點量到 0.034–0.407 m/s，河段平均 0.156 m/s，沙丘迎流面較大；同一河段前後兩天的測深顯示沙丘每小時前進 0.523 公尺。要換成推移質輸送量還得知道河床活動層厚度：用三種方法估厚度，得到每公尺寬每天 14.2、37.4 與 13,900 公噸，床形測速法則是 13.3 公噸，作者說前兩個較合理、方法仍待發展。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一河段、單日的案例；作者結論是方法「很有前景」但活動層厚度沒有可靠量法。Rennie 等 2002 與 Kenney 2006 是本文轉述，原文沒有讀。 覆核 V13（2026-11-12）：publisher／version 寫明是 SIR 2010-5091 研討會論文集裡的一篇（Holmes），不是獨立的 USGS 報告或期刊論文。",
+      "author_cache": {
+        "file": "scratchpad/stw7/f10src/sir2010-5091-holmes.pdf",
+        "sha256_prefix": "f81549660ef58c19",
+        "note": "文字檔 sir2010-5091-holmes.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "S57-001",
+      "question": "河床真的在動的時候，量到的流量會被吃掉多少？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.moving_bed_velocity_field_range_13_sites",
+      "answer_target": "USGS 與加拿大環境部人員量的 13 筆動床測次裡（11 個測點），迴圈法量到的平均動床速度是每秒 0.028 到 0.103 公尺，相當於水流平均速度的 1.63% 到 16.4%，最大的是加拿大 Battle River 的 16.4%。底追蹤把這個速度當成「船在往上游走」，所以量到的水速與流量都偏低，偏低的比例大致就是這個數。",
+      "scope": "2006 年報告中動床偏差大於水速 1% 的 13 筆測次（11 個測點），斷面都接近均勻；不是所有河流的統計，也不要自己再統計「多數落在幾趴」。",
+      "source_ids": [
+        "S57-S001"
+      ],
+      "source_locator": "表 4（Measured mean moving-bed velocity、Bed velocity / Water velocity 兩欄）；Abstract",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：偏差的實測範圍算 1 條，方向（低估）在 O3073 已有，不重計；最大值的地點算 0.5 條。補審視欄點名缺的「實際的移動床測試紀錄」。 原提案 F10-010（目標 G35，原角色 turn；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；範圍與最大值無誤。作者自己數的「13 筆裡 10 筆落在 2% 到 6% 之間」是錯的：落在 2–6% 的是 9 筆（6.24 在外，1.63、1.76、16.4 在外），而且這是作者自己的統計、不在原文，刪掉。「流量少算這麼多」只在平均修正法與斷面均勻的前提下近似成立，改成「偏低的比例大致就是這個數」。事實數由 1.5 改 1：最大值的地點與範圍出自同一張表。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是儀器壞了，是它腳下的「地」每秒走了幾公分。",
+        "visual": "一張表化成橫條：13 條河依動床速度占水速的比例排列，Battle River 那條特別長。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S57-002",
+      "question": "沒有 GPS 的時候，怎麼知道河床偷走了多少？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.loop_method_closure_error_correction",
+      "answer_target": "讓船橫渡過去再回到原點。河床若在動，底追蹤畫出來的船跡會被扭向上游，明明回到原點，儀器卻說你停在起點上游某處。這段閉合差除以繞一圈的時間就是平均動床速度，乘上垂直水流方向的斷面積，就是少算的流量，加回去即可。這個作法是 1990 年代後期巴西的水文人員在亞馬遜河先用的，USGS 再評估它的誤差。",
+      "scope": "要回到同一個點、船速要均勻、羅盤要校正；USGS 2006 年報告。",
+      "source_ids": [
+        "S57-S001"
+      ],
+      "source_locator": "Introduction 末段；Method Description 與式(1)–(3)、圖 1",
+      "premise_status": "screened",
+      "notes": "算 1 條：迴圈法的原理與算式是一個主張，前提條件不計。 原提案 F10-011（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 1 條。Callède 2000 原文未讀（403），「巴西人員先用」是 USGS 的轉述，片中照轉述說。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回到原點卻「沒回來」，那段差距就是河床走的路。",
+        "visual": "俯視：真實船跡是一來一回的閉合線，儀器畫的那條終點落在起點上游；差距標成 Dup，旁邊碼表標 T。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S57-003",
+      "question": "繞一圈修出來的流量，和用 GPS 量的差多少？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.loop_corrected_vs_dgps_discharge_nine_sites",
+      "answer_target": "在 9 筆同時裝了差分 GPS 的動床測次裡，用迴圈法平均修正後的流量與 GPS 參考的流量相差 −5.0% 到 +1.3%（標準差 1.93%）。多數幾乎一樣，例如 South Nahanni River 是 GPS 890、修正後 891 立方公尺每秒；差最多的是北卡的 Rocky River，GPS 是 486、修正後是 462，而那一筆的 GPS 品質被評為 Fair。報告結論是兩種修正法都落在 GPS 值的 5% 以內。",
+      "scope": "報告稱九個測點（表 3 是 8 個地點的 9 筆），斷面均勻；GPS 本身的品質從 Poor 到 Excellent 不等，不是絕對真值；作者自己說兩種修正法差異小是因為斷面均勻。",
+      "source_ids": [
+        "S57-S001"
+      ],
+      "source_locator": "「Comparison of Loop Method to DGPS-based Discharges」；表 3；Summary",
+      "premise_status": "screened",
+      "notes": "算 1 條：同一張表的比較，舉兩列當例子。補審視欄點名缺的「流量比對紀錄」。 原提案 F10-012（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；數字無誤。報告稱九個測點，但表 3 的九列裡 Missouri River at Nebraska City 出現兩次，實際是 8 個地點的 9 筆，改寫成「9 筆」。Rocky River「差最多」是從表上讀出來的，可以說，但不要自己算百分比；直接用原文的 −5.0% 到 +1.3%。算 1 條。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩把尺互相對得上：多數差不到 1%，最差 5%。",
+        "visual": "九條河的成對長條（GPS／繞一圈修正），幾乎等高；Rocky River 那一對有落差，標上「GPS 品質：Fair」。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "S57-004",
+      "question": "既然 GPS 不怕河床動，為什麼不乾脆都用 GPS？繞一圈自己會不會也有誤差？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.dgps_limits_and_loop_closure_noise_floor",
+      "answer_target": "兩邊都有極限。差分 GPS 在岸邊樹冠濃密、深谷峽谷、橋邊會因多路徑與收訊問題給不出穩定的位置。繞一圈也不會剛好閉合：在沒有動床的 28 筆測次裡，閉合差從幾十公分到幾公尺都有（康乃狄克河 Hartford 一次 1,005 秒的迴圈差了 7.41 公尺），來自羅盤與底追蹤的系統誤差。USGS 估這個方法量平均動床速度的不確定度約每秒 0.006 公尺，所以建議動床速度超過水速 1%（平均流速每秒 0.6 公尺以上）或 2%（每秒 0.3 到 0.6 公尺）才判定並修正。",
+      "scope": "USGS 2006 年報告的建議門檻；0.006 m/s 是 99% 信賴水準下的系統誤差估計。",
+      "source_ids": [
+        "S57-S001"
+      ],
+      "source_locator": "Abstract；表 1；「Uncertainty in the Loop Method as a Moving-Bed Test」；Summary",
+      "premise_status": "screened",
+      "notes": "算 1.5 條：GPS 的限制算 0.5 條，沒有動床時的閉合差與 0.006 m/s 算 1 條；門檻是條件不另計。這是全片的誠實段：兩個參考都不是絕對的。 原提案 F10-013（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）照原稿收；照原稿，算 1.5 條（GPS 的限制 0.5、無動床時的閉合差與 0.006 m/s 1）。表 1 的閉合差範圍是 0.21 到 7.41 公尺，「幾十公分到幾公尺」可用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有哪一個參考是絕對不動的，只能知道它晃多少。",
+        "visual": "左：橋下與樹冠下的衛星訊號被擋與反射；右：沒有動床的河上，迴圈終點仍落在起點旁一小圈雜訊範圍內。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S57-005",
+      "question": "這個「誤差」能不能反過來用，拿來量河床上的沙走多快？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.bottom_track_bias_as_bed_virtual_velocity",
+      "answer_target": "可以，而且有人這樣做。USGS 的 Holmes 指出，儀器停在會動的河床上方時，底追蹤顯示的船速應該就對應河床泥沙的「虛擬速度」。2002 年 6 月 19 日在密蘇里河 St. Charles，他沿河在 23 個點各停一段時間，用儀器報的位移除以時間，量到每秒 0.034 到 0.407 公尺，河段平均每秒 0.156 公尺，沙丘迎流面的數值比較大。同一河段前後兩天的河底測深顯示，沙丘本身每小時只前進 0.523 公尺。",
+      "scope": "單一河段、單日；研討會論文集。虛擬速度是河床表面顆粒的移動，和沙丘整體的推進速度不是同一個量，片中不可相除比較；作者自己說拿表面速度代表整個活動層會高估輸送量。",
+      "source_ids": [
+        "S57-S002"
+      ],
+      "source_locator": "「virtual velocity」節；密蘇里河案例段與表 2",
+      "premise_status": "screened",
+      "notes": "算 1 條。第二個轉折：開場的錯讀數，換個問題就成了別處量不到的訊號。兩個速度出自同一篇、同一河段，但量的東西不同，notes 已標不可相除。 原提案 F10-014（目標 G35，原角色 turn；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；照原稿，算 1 條。兩個速度量的是不同的東西，作者已註明不可相除；另補一句原文的保留：ADCP 量到的是河床表面運動中顆粒的速度，拿它代表整個活動層會高估輸送量。這是研討會論文集裡的一篇，不是期刊論文。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個讀數，問水流時是誤差，問河床時是答案。",
+        "visual": "河底縱剖面的三個沙丘，上方 23 個箭頭長短不一，迎流面較長；角落小字：沙丘整體每小時 0.523 公尺。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "S57-006",
+      "question": "量到河床顆粒的速度，就能算出河底一天運走多少沙嗎？",
+      "domain": "河流聲學觀測",
+      "mechanism_key": "adcp.virtual_velocity_bedload_needs_active_depth",
+      "answer_target": "還差一個量：河床有多厚的一層在動。Holmes 用三種方法估這個「活動層厚度」，同一個每秒 0.156 公尺換出來的推移質輸送量是每公尺寬每天 14.2 公噸、37.4 公噸，或者 13,900 公噸；而用沙丘高度與推進速度算的床形測速法是 13.3 公噸。他認為前兩個較合理，並說這個方法要等能可靠量出活動層厚度才用得放心。他也引述前人在礫石河床的經驗：要平均約 25 分鐘，虛擬速度才穩定。",
+      "scope": "同一篇研討會論文的單一案例；三個數字只並列、不自行換算倍數。25 分鐘出自文中轉述的 Rennie 等 2002（礫石河床 Fraser River），原文未讀，不套用到沙床。",
+      "source_ids": [
+        "S57-S002"
+      ],
+      "source_locator": "密蘇里河案例後段；Summary 末段；「approximately 25 minutes」句",
+      "premise_status": "screened",
+      "notes": "算 1 條：三個差很多的估計值是同一個重點（缺活動層厚度），25 分鐘是轉述、附帶不另計。呼應 O3079「沒量到的部分要靠假設」。 原提案 F10-015（目標 G35，原角色 segment；依本池欄位記為 segment）。非作者覆核 V13（2026-11-12）改字後收；答案無誤，算 1 條。作者在轉折二寫的「三種估法能差到一千倍」是自己算的倍數（13,900÷14.2），不在原文，片中只說「從 14.2 到 13,900」。25 分鐘是轉述、礫石河床，不可套到密蘇里河的沙床。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "速度量到了，厚度沒量到，答案就能差一千倍。",
+        "visual": "同一個速度箭頭接三個不同厚度的方塊，輸出三個數字，其中一個長條衝出畫面。",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "S57-NA001",
+      "question": "USGS 水文局技術備忘錄（OSW memo）對動床測試的規定與 Wagner & Mueller 2011 的底追蹤／GPS 流量比較",
+      "existing_ids": [
+        "O3073"
+      ],
+      "source_ids": [
+        "S57-S001"
+      ],
+      "reason": "hydroacoustics.usgs.gov 的備忘錄目錄回 403，water.usgs.gov 舊網址 404；Wagner & Mueller 2011（Journal of Hydrology）與 Mueller & Wagner 2007（J. Hydraulic Eng.）在 USGS 出版品倉庫只有書目、沒有全文連結；Callède 等 2000（亞馬遜河迴圈法原文，tandfonline）與 Gaeuman & Jacobson 2006（AGU）都回 403。實測比對改用 SIR 2006-5079 的表 3、表 4。 原提案 F10-NA006。",
+      "reentry_condition": "上述任一篇取得可讀全文時，作為第二份獨立的比對資料。",
+      "reading_status": "未讀（403／404／無全文連結）"
+    }
+  ]
+}
