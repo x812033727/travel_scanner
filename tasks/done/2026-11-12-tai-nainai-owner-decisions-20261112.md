@@ -1,13 +1,13 @@
 ---
 id: 2026-11-12-tai-nainai-owner-decisions-20261112
 title: 恁祖媽今年18：套用站主 2026-11-12 的八項決定（書包、燈座、辮子、片長、童謠、第8集重拍、迴廊燈、正廳樓梯）
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-elegant-ritchie
 claimed_at: 2026-11-12T15:59:19Z
 created_at: 2026-11-12T15:59:18Z
-completed_at:
+completed_at: 2026-11-12T16:26:12Z
 branch: claude/elegant-ritchie-vpnwqm
 depends_on: []
 scope:
