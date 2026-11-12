@@ -26,6 +26,9 @@ why it lives here rather than in a fixture.
 from __future__ import annotations
 
 import os
+from collections.abc import Iterator
+from datetime import UTC, date, time, timedelta, tzinfo
+from datetime import datetime as real_datetime
 
 import pytest
 
@@ -63,3 +66,30 @@ def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item
     if deselected:
         config.hook.pytest_deselected(items=deselected)
     items[:] = kept
+
+
+#: The day the suites whose fixture trips sit on fixed November 2026 dates take as today. Their
+#: trips start on 2026-11-10 or 11-11, which the app refuses as past once the real date moves on.
+PINNED_TRIP_TODAY = date(2026, 11, 1)
+
+
+@pytest.fixture
+def pin_trip_today(monkeypatch: pytest.MonkeyPatch) -> Iterator[date]:
+    """Take PINNED_TRIP_TODAY as today wherever a trip's dates are checked against the clock: the
+    earliest start a new blank trip may have, and the "departure has passed" check of a search
+    from a trip. Everything else (expiries, timestamps) keeps the real clock."""
+    import app.trips.router as trips_router
+    import app.trips.search_criteria as search_criteria
+
+    class PinnedDateTime(real_datetime):
+        @classmethod
+        def now(cls, tz: tzinfo | None = None) -> PinnedDateTime:
+            pinned = cls.combine(PINNED_TRIP_TODAY, time(3), tzinfo=UTC)
+            return pinned.astimezone(tz) if tz else pinned
+
+    def floor() -> date:
+        return PINNED_TRIP_TODAY - timedelta(days=1)
+
+    monkeypatch.setattr(trips_router, "trip_start_floor", floor)
+    monkeypatch.setattr(search_criteria, "datetime", PinnedDateTime)
+    yield PINNED_TRIP_TODAY

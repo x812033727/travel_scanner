@@ -4,6 +4,9 @@ from pydantic import ValidationError
 from app.destinations.catalog import SEARCHABLE_DESTINATIONS, match_destination
 from app.trips.router import SaveTripRequest, destination_timezone
 
+# Its fixture trips start on fixed November 2026 dates (tests/conftest.py).
+pytestmark = pytest.mark.usefixtures("pin_trip_today")
+
 
 def test_blank_trip_preferences_are_normalized_for_persistence() -> None:
     request = SaveTripRequest.model_validate(

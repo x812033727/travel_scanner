@@ -14,8 +14,14 @@ function stay22AllezCopy(locale: string): Stay22AllezCopy {
 
 const catalogs = { en, ja, ko, "zh-TW": tw, "zh-CN": cn };
 
+// The fixture stay runs 2026-11-11..13 and the booking panel refuses a check-in before today, so the
+// tests that submit it pin the browser clock before that stay (not file-wide: a frozen clock changes
+// how the planner sheets' history entries behave in the back-button tests).
+const PIN_BEFORE_STAY = new Date("2026-11-01T03:00:00Z");
+
 for (const [locale, copy] of Object.entries(catalogs)) {
   test(`${locale} Klook direct hotel booking stays separate from destination discovery`, async ({ page, context }) => {
+    await page.clock.setFixedTime(PIN_BEFORE_STAY);
     const { clickoutOrigins } = await mock(context, false, false, true);
     const modules: string[] = [];
     const priceRequests: string[] = [];
@@ -321,6 +327,7 @@ for (const [locale, copy] of Object.entries(catalogs)) {
       page,
       context,
     }) => {
+      await page.clock.setFixedTime(PIN_BEFORE_STAY);
       const { clickoutOrigins } = await mock(context, false, false, true);
       await page.setViewportSize({ width, height: 860 });
       await page.goto(

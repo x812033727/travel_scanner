@@ -22,6 +22,8 @@ scope:
   - apps/web/e2e/planner-calm.spec.ts
   - apps/web/e2e/trip-stay-areas.spec.ts
   - apps/web/e2e/full-stack.spec.ts
+  - apps/web/e2e/travel-services.spec.ts
+  - apps/api/app/trips/router.py
 ---
 
 # Pin the clock in the planner weather readability and itinerary drag-handle e2e tests
@@ -74,3 +76,8 @@ Filed from PR #2060 (video work); that PR does not touch apps/web, so the fix be
 - 2026-11-12：同一輪 api-tests 3/4 也一樣：`tests/test_analytics_integration.py::test_a_server_event_joins_the_browser_session_it_came_from` 建 2026-11-10..12 的行程回 422。其他 API 測試寫死的未來日期也該一併掃一次（`grep -rn '"2026-11' apps/api/tests`）。
 - 2026-11-12：api-tests 4/4 再掛 15 個（test_integration_postgres_redis.py 13 個、test_alerts_integration.py、test_trip_creation.py::test_blank_trip_preferences_are_normalized_for_persistence），全是建立開始日已過的行程時 422／SaveTripRequest 驗證錯。API 會拒絕開始日早於今天的行程，所以 apps/api/tests 裡寫死的 2026-11 日期要整批改成相對今天（或注入固定的今天）。scope 列出這幾個檔案（整個 apps/api/tests 會跟其他進行中的票重疊）。
 - 2026-11-12（claude-opus-5.5-p06-p18-handoff）：`trip-editor.test.tsx` 整檔用 `vi.setSystemTime(2026-11-10T03:00Z)` 固定在行程前一天（afterEach `vi.useRealTimers()`），77 個全過。另一個 `opens the stay-area flow…` 也用同一組行程，一併解決。e2e 與 API 測試還沒改。
+- 2026-11-12（claude-opus-5.5-p06-p18-handoff）：
+  - API：`app/trips/router.py` 抽出 `trip_start_floor()`（新行程最早開始日＝UTC 昨天），`tests/conftest.py` 加 `pin_trip_today` fixture，把它和 `search_criteria` 的「出發日已過」都當成 2026-11-01；五個檔用 `pytest.mark.usefixtures("pin_trip_today")`。其他到期時間、時間戳仍用真實時間。本機 PostgreSQL 16 + Redis 跑這五個檔加 test_search_from_trip：70 passed；ruff、mypy app/tests 乾淨。
+  - e2e：`travel-services.spec.ts` 的 Klook 訂房與統一訂房面板兩組（20 個）在測試內 `page.clock.setFixedTime(2026-11-01)`；不做整檔，整檔凍結會讓「booking panel back」三個測試的上一頁行為改變。本機 travel-services 122 個裡只剩那三個 back 測試失敗，但不固定時間也一樣失敗、CI 上是過的（dev server 的差異）。
+  - `navigation.spec.ts:72` 本機通過、已固定時間，CI 那次失敗看起來是偶發，再觀察。readability／planner-calm／trip-stay-areas／full-stack 在 main（#2079）已固定時間。
+

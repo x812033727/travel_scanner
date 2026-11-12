@@ -50,10 +50,14 @@ from app.usage.service import (
     reserve_use,
 )
 
-pytestmark = pytest.mark.skipif(
-    os.getenv("RUN_INTEGRATION_TESTS") != "1",
-    reason="requires PostgreSQL and Redis services",
-)
+pytestmark = [
+    pytest.mark.skipif(
+        os.getenv("RUN_INTEGRATION_TESTS") != "1",
+        reason="requires PostgreSQL and Redis services",
+    ),
+    # Its fixture trips start on fixed November 2026 dates (tests/conftest.py).
+    pytest.mark.usefixtures("pin_trip_today"),
+]
 
 
 async def _signed_in_headers(label: str) -> dict[str, str]:
