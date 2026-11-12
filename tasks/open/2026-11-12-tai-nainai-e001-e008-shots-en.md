@@ -33,9 +33,9 @@ scope:
 
 ## Definition of done
 
-- [ ] #2086 合併後，下面兩張表裡「改稿」的條目在第 1–8 集 `script.md` 改完：已拍的不改畫面，只在〈這版改了什麼〉補「已知瑕疵：…；重拍照…」與跨集鏡號。
-- [ ] `cast.json`：`shibasui-zhao` 刪「as in huiyi-1948-t1」；`huaibiao` 手搭左肩、辮子等站主；老陳米糠改寫在圍裙與袖口；`fubo` 註第 1 集中灰；廚房（滾筒洗衣機、鐵皮盆）；`prop-tong-youhu` 補 ref；`prop-shubao`、`baoxinling` 等站主定書包鈴位置。
-- [ ] `compile.py N --check` 對得上。
+- [x] #2086 合併後，下面兩張表裡「改稿」的條目在第 1–8 集 `script.md` 改完：已拍的不改畫面，只在〈這版改了什麼〉補「已知瑕疵：…；重拍照…」與跨集鏡號。
+- [x] `cast.json`：`shibasui-zhao` 刪「as in huiyi-1948-t1」；`huaibiao` 手搭左肩、辮子等站主；老陳米糠改寫在圍裙與袖口；`fubo` 註第 1 集中灰；廚房（滾筒洗衣機、鐵皮盆）；`prop-tong-youhu` 補 ref；`prop-shubao`、`baoxinling` 等站主定書包鈴位置。
+- [x] `compile.py N --check` 對得上。
 
 ## 審稿表（第 1–4 集）
 
@@ -76,3 +76,6 @@ scope:
 ## Notes
 
 - 審稿報告原文在 rewrite 分支的工作 session；表格已全文抄在上面。
+- 2026-11-12 做完（站主「你建議改都改」）：#2087 已含 #2086，所以不等合併直接改。分鏡表一列沒動、台詞一字沒改；只改跨集錯鏡號、過時說明、〈下一集接〉，
+  並在每集〈這版改了什麼〉加「2026-11-12 已知瑕疵（照系列設定與站主決定，重拍時照右邊）」。第 2 集 c24 起與第 6 集的樓梯照站主決定是對的、第 8 集翻蓋書包是對的，不列瑕疵。
+  `cast.json` 隨 `2026-11-12-tai-nainai-owner-decisions-20261112` 一起改。`compile.py 1`～`8 --check` 都對得上。
