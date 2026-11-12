@@ -12,6 +12,9 @@ branch: claude/exciting-pascal-u7qk3g
 depends_on: []
 scope:
   - docs/videos/series-plans/top40-2025-2026/2025-15-xingde-xiangyu/western
+  - docs/videos/till-the-verdict-e001
+  - docs/videos/till-the-verdict-e002
+  - docs/videos/till-the-verdict-e003
 ---
 
 # Western adaptation of Till the Verdict Do Us Part (2025-15)
@@ -43,7 +46,8 @@ scope:
 - [x] 英文 cast.json。
 - [x] 定妝照試鏡與四個主角的聲音試聽（樣本已交站主）。
 - [ ] 依試鏡結果改 cast.json：Nora 拿掉手腕燙痕、Elias 的疤改獨立插鏡、陰天寫進每鏡正文。
-- [ ] 前三集劇本、分鏡、小樣。
+- [x] 前三集劇本與分鏡第一版、獨立審稿、改稿（2026-11-10）；直式小樣三鏡（2026-11-10）。
+- [ ] 前三集照 main 2026-11-12 的新規則重審重拆（種田拍法、台詞改模型原聲）。
 
 ## How to verify
 
@@ -64,3 +68,6 @@ scope:
 - 生成時不放任何可讀文字（文件、招牌、帳本、瓶底的氣泡名字），要讓觀眾讀的字一律後製加。
 - Nora 第 19 集剪成齊肩；Sienna 一律用左手寫字、翻頁（第 50 集的伏筆）；Elias 左手背的疤到第 60 集才露。
 - 2026-11-10 試鏡：選 Nora b、Elias a、Grant a、Peg a；四支片段臉都守住、三支說話鏡嘴有動；細小傷痕會被畫成紅點或紅色傷口（見 screen-test README〈學到的〉）。
+- 2026-11-12 站主兩個決定：(1) 台詞改用 **H3 模型原聲**（畫面上露嘴的台詞），畫外、心裡話、電話、電視才用 Gemini，取代 11-10 的「H3 無聲＋Gemini」；
+  (2) 第 1–3 集照 `script-to-storyboard.md`〈拍法：種田拍法〉重拆（一鏡約 2.5–3 秒）。都寫進 `production/s1-bible-e001-e003.md`〈全劇固定〉。
+  H3 說英文的口音與跨鏡一致性還沒驗。
