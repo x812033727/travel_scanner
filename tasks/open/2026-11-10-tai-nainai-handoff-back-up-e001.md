@@ -51,5 +51,5 @@ The session that made 《恁祖媽今年18》 episodes 1–5 ended on 2026-11-10
 - Episode 6 is storyboarded and reviewed (37 shots) and nothing has been spent; the prepared manifests are in `session-tools/e006/`.
 - Cap from episode 6: 40 CU (owner 2026-11-10).
 
-- [ ] confirm the host migration put `transfer/tn-e00N` and `tn-shared` under `AI劇/恁祖媽今年18/` on Drive
+- [x] Drive backup (2026-11-12): the old session, once it could read the rclone variables, ran `todrive.sh` from its final local files into the same folders the host migration uses — `第00N集/製作檔/tn-e00N/` (e001 10077, e002 5884, e003 4301, e004 1312, e005 911, e006 184 files) and `_共用/製作檔/tn-shared/` (8981). An independent agent re-ran `todrive.sh --check` on all seven: 0 differences; every local file is covered (the `wt2038` worktree is inside `_backup-archives/wt2038.tar` in shared). Production paused by the owner on 2026-11-12 while the owner reviews the scripts.
 - [ ] episode 6: pictures → stills → clips → pick → fix → refine → cut → review → import → todrive.sh
