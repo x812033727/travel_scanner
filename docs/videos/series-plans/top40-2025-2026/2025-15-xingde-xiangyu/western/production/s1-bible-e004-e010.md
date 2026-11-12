@@ -317,4 +317,11 @@
   Sienna 拿工人的灰色夾板、左手翻頁說 "page four"。扯下的窗簾寫 `…thick matte fabric, torn down and heaped on the floor`；扯下的是矮櫃上方那片，第 7 集玻璃磚一直在那道金光裡。
   大門從第 6 集第三場起一直往屋裡開著。Fisk 加一只錶 `a plain silver wristwatch on his left wrist, its face turned toward him`。
   第 8 集 c17 Nora 才第一次看見坡底的白車，所以第 7 集最後兩鏡白車只在背景、她一直盯著筆。
+- **第 8–10 集**（寫稿者定）：
+  - 車裡的軸線：鏡頭在前座之間往後拍，Grant 在畫面左、Peg 在畫面右；車窗對話時，車外從 Nora 的右肩後拍、車裡從 Grant 的左肩後拍。手機一直在 Grant 右手，支票用左手從右邊車窗遞出；Nora 撕支票時用左前臂把玻璃磚壓在胸前。
+  - Peg 從左後門下車、自己掀後車廂，鏡頭從車尾往上坡拍（守住「往山下一律畫面左」）。兩個工人在第 8 集 c37 抬著折梯走下車道，8→9 時在廂型車旁。
+  - 鞋：Peg 的 `coat` 配深棕色平底鞋，Fisk 黑色皮鞋。
+  - 第 9 集入住時先不付錢：Peg 不回 Bev、直接伸手拿鑰匙，Nora 20:40 才下樓付錢。公車站加一鏡 Peg 轉婚戒（鋪第 15 集）。Peg 把自己的碎花被給 Nora，自己床上只剩淺色薄毯，第 10 集躺下蓋的就是它。
+  - 第 10 集房間軸線：Nora 的床在畫面左、Peg 的床在畫面右，紅霓虹從畫面左照進來。10→11 時床頭櫃上另有帳本與房間鑰匙。
+  - 第 9–10 集夜裡是乾的，對街還沒有黑車：`cast.json` 的 `bus-stop`、`motel-front`、`motel-room`、`motel-window-view` 已改成乾的、不放黑車；黑車哪一集出現由那一集的分鏡寫進畫面。
 
