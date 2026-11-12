@@ -11,7 +11,7 @@
 ## 劇情
 
 晚上八點五十，Harborview Motor Inn 辦公室門外濕的停車場。第一份合約還躺在柏油上，Elias 右手伸著第二份。Nora：「What do you want?」他說：「Him in prison.」停一拍，「He owes me.」她從他手裡把第二份接過來。
-對街黑車的後門打開，一個女人抱著三本卷宗下車、倚著車門看了一眼，走過街來：律師 Dana Okafor。「Two is mine.」「He fights for you once— you're a bought witness.」Theo 壓低聲音翻譯：「Translation: the boss only opens doors.」Dana 不看他：「You don't have to translate.」
+對街黑車的後門打開，一個女人抱著三本卷宗下車、倚著車門看了一眼，走過街來：律師 Dana Okafor。「Dana Okafor, attorney. Two is mine.」「He fights for you once, the defense calls you bought.」Theo 壓低聲音翻譯：「Translation: the boss only opens doors.」Dana 不看他：「You don't have to translate.」
 Nora 問婚姻怎麼會自己結束，Dana：「It's a prenup. We file the day he's sentenced.」「Marrying you doesn't look bought?」「A husband is a fact. A man fighting your battles is a motive.」
 Nora 抽走 Dana 的筆，把合約壓在 Theo 遞上來的平板背面，在紙邊寫、邊寫邊說：「And I pay my own way.」Dana：「That's not a clause.」Nora：「It is now.」Dana 嘴角一提，看 Elias。Elias：「Fine.」
 Theo 撿起地上那份濕的收進平板套，遞給她一張名片：「His direct line.」Elias 已經走回對街。辦公室窗裡的 Peg 看著 Nora 跟過街去。Nora 站在車尾的人行道邊：「Why me?」他在駕駛座門邊回頭一次：「Because you'll walk on your own.」車門關上。對面辦公室的門被推開，Peg 穿著拖鞋衝出來。
@@ -19,8 +19,8 @@ Theo 撿起地上那份濕的收進平板套，遞給她一張名片：「His di
 ## 這集接在哪
 
 接第 16 集最後一鏡同一刻（第 8 天 20:50），到 21:10（bible〈時間線〉）；夜、地面濕、**不下雨**；停車場是紅霓虹的慢脈動與辦公室窗的暖黃光，對街是一盞冷白的路燈。
-第一鏡 c01 照 bible〈接點表〉16→17：辦公室門外的停車場，紅霓虹從畫面左上照下來；Nora（`motel`，大衣敞開）站在辦公室門前台階下、面向畫面右；Elias 在她面前一步半（畫面右），右手伸著第二份合約（紙背朝鏡頭），左手在大衣左口袋；Theo 在他身後半步（畫面右緣），兩手把平板抱在胸前；第一份合約躺在兩人之間濕的柏油上；辦公室窗裡 Bev 與 Peg（虛焦）。c01 就是第 16 集最後一鏡的同一刻，Nora 接著開口。
-最後一鏡 c41 照〈接點表〉17→18：對街路燈下、黑車旁，21:10；黑車車頭朝畫面左前方，Elias 剛坐進駕駛座、門關上、車窗升著；Theo 在副駕駛座、Dana 在後座（都只見車窗裡的暗影）；Nora（`motel`，大衣敞開）站在人行道邊、車的右側（車尾那一端），右手拿著邊上有她手寫一行的第二份合約（紙背朝鏡頭），名片收在大衣左口袋；畫面右後遠處，對面辦公室的門剛被推開，Peg（`coat`、米色拖鞋）衝出來。第 18 集第一鏡：Peg 推門衝出辦公室。
+第一鏡 c01 照 bible〈接點表〉16→17：辦公室門外的停車場，紅霓虹從畫面左上照下來；Nora（`motel`，大衣敞開）站在辦公室門前台階下、面向畫面右；Elias 在她面前一步半（畫面右），右手伸著第二份合約（紙背朝鏡頭），左手在大衣左口袋；Theo 在他右後方半步（離鏡頭較遠，畫面右），兩手把平板抱在胸前；第一份合約躺在兩人之間濕的柏油上；辦公室窗裡 Bev 與 Peg（虛焦）。c01 就是第 16 集最後一鏡的同一刻，Nora 接著開口。
+最後一鏡 c41 照〈接點表〉17→18 與審稿後補定：對街路燈下、黑車旁，21:10；鏡頭在對街人行道上、車尾後方，車身在畫面右、往右後延伸，Elias 剛坐進駕駛座、門關上、車窗升著；Theo 在副駕駛座、Dana 在後座（都只見車窗裡的暗影）；Nora（`motel`，大衣敞開）站在畫面中間偏左的人行道上、車尾旁，右手拿著邊上有她手寫一行的第二份合約（紙背朝鏡頭），名片收在大衣左口袋；汽車旅館在畫面右後方、隔著街，辦公室的門剛被推開，Peg（`coat`、米色拖鞋）衝出來。第 18 集第一鏡：Peg 推門衝出辦公室。
 第 16 集的三條、"Walter's case? That closed twelve years ago." "Not for me."、"Five." "Six. I logged it." 在第 16 集講完，本集不重講；本集的 "His direct line."（c32）是第 19 集清晨那通電話的號碼。
 
 ## 角色與參考圖
@@ -57,12 +57,12 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 - 每一鏡都是新的片段，不借別鏡。每一鏡的「動作」寫到這一鏡最後的樣子。
 - **直式構圖**：每場開頭一鏡交代位置（c01 停車場側面、c16 Dana 加入後的三人、c34 過街的全景）；其餘是單人中近景、近景、插鏡與反應，多數鏡有前景（對方的肩、辦公室門框、合約的紙邊、車頂）。一鏡最多三個露臉的有名字的人。
 
-### 第一場：他要的，和第二條（約 39 秒）
+### 第一場：他要的，和第二條（約 40 秒）
 
 **場頭**：
 - **地點與場景圖**：Harborview Motor Inn 辦公室門外的停車場 `motel-street`（待畫，夜、濕、不下雨；英文寫 `wet asphalt, no rain falling`）＋辦公室外觀 `motel-front`（夜版）：一樓辦公室的門在畫面左、門前一級水泥台階，門邊一扇窗，窗裡暖黃燈、窗台上 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`；招牌柱在停車場入口（畫面左上外），紅霓虹從畫面左上照下來（招牌字不入鏡）；停車場臨一條兩線道的濕街，對街人行道上一盞路燈，燈下 `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左；辦公室門口到黑車約 12 步。近景都寫「同一個停車場」。
 - **時間與天氣**：第 8 天 20:50–20:53，夜；地面濕、不下雨；紅霓虹 `a slow pulse: on for two beats, off for one`，辦公室窗的暖黃光漫到停車場；對街的路燈冷白；整場維持夜色。
-- **軸線**：主鏡在停車場上、跟辦公室正面平行往裡拍：**Nora 在畫面左**（辦公室門前台階下），面向畫面右；**Elias 在她面前一步半（畫面右）**，面向畫面左；Theo 在 Elias 身後半步、畫面右緣；第一份合約躺在兩人之間的濕柏油上；街與對街的黑車在畫面右後方遠處。c10 起 **Dana 站在 Elias 右手邊（離鏡頭較遠的那側）、比他前半步**，面向畫面左的 Nora。Nora 的鏡從 Elias 的左肩後拍（他的左肩線在畫框右下緣、手臂在畫框外）；Elias、Dana、Theo 的鏡從 Nora 的右肩後拍（她的右肩與髮髻在畫框左下緣）。臉上的光：Nora 面向街，臉上是對街路燈遠遠的冷白光，紅霓虹從她左後上方掃過左頰與髮髻；Elias、Dana、Theo 面向辦公室，臉上是辦公室窗的暖黃光，紅霓虹從畫面左上一明一暗落在臉與鏡片上。
+- **軸線**：主鏡在停車場上、跟辦公室正面平行往裡拍：**Nora 在畫面左**（辦公室門前台階下），面向畫面右；**Elias 在她面前一步半（畫面右）**，面向畫面左；Theo 在 Elias 右後方半步、離鏡頭較遠（畫面右）；第一份合約躺在兩人之間的濕柏油上；街與對街的黑車在畫面右後方遠處。c10 起 **Dana 站在 Elias 右手邊（離鏡頭較遠的那側）、比他前半步**，面向畫面左的 Nora。Nora 的鏡從 Elias 的左肩後拍（他的左肩線在畫框右下緣、手臂在畫框外）；Elias、Dana、Theo 的鏡從 Nora 的右肩後拍（她的右肩與髮髻在畫框左下緣）。臉上的光：Nora 面向街，臉上是對街路燈遠遠的冷白光，紅霓虹從她左後上方掃過左頰與髮髻；Elias、Dana、Theo 面向辦公室，臉上是辦公室窗的暖黃光，紅霓虹從畫面左上一明一暗落在臉與鏡片上。
 - **在場的人**：Nora、Elias、Theo；c07 對街黑車後門打開，c08–c09 Dana 下車、過街，c10 起在場；辦公室窗裡 Bev 與 Peg（只在 c01 的背景，虛焦的兩個人影）。
 - **這場要講完的事**：Elias 說他要 Grant 坐牢、Grant 欠他；Nora 接過第二份；Dana 現身，說第二條是她寫的、為什麼；Theo 翻譯，被 Dana 頂回去（結尾：「You don't have to translate.」）。
 - **配樂**：c01 只有霓虹的低嗡與遠處港口的水聲；c04「He owes me.」之後一個很低的大提琴長音；c07 車門聲後一段乾、有彈性的低音提琴撥奏（Dana 的主題）進來，撐到 c15；c13–c15 撥奏輕一點、留給笑點。
@@ -70,7 +70,7 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c01 | 中景、慢推（從中景推到中近景，停在 Nora 的胸上）；側面雙人鏡，鏡頭在停車場上、跟辦公室正面平行；直式前後疊開：前景下緣是濕柏油與躺在上面的第一份合約，畫面左是辦公室門與門前台階，畫面右是 Elias 與 Theo；同一個停車場 | 共三人。畫面左：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴），站在辦公室門前台階下、面向畫面右的 Elias；臉上的光：對街路燈遠遠的冷白光，紅霓虹從左後上方掃過左頰與髮髻；眉心壓低、眼眶微紅、下巴抬起、嘴唇在字之間抿緊；畫面右：Elias（基本款加 `a dark charcoal wool overcoat, worn open`，`his left hand in the overcoat's left pocket`，黑色皮鞋），面向畫面左的 Nora，右手伸著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in his right hand`；臉上是辦公室窗的暖黃光、紅霓虹落在細銀絲鏡片上；眉毛平、眼睛定在她臉上、下巴不動；他身後半步、畫面右緣：Theo（基本款，棕色皮便鞋），兩手把 `a slim tablet in a plain grey case, its screen turned away` 抱在胸前，眉毛平、眼睛不眨、嘴唇閉平；三張臉都 `no smile at any moment, until the last frame`；兩人之間的地上 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, lying on wet black asphalt`；辦公室窗裡兩個虛焦的人影（一件花襯衫、一件棕色大衣），看不清臉 | Nora 往前踏半步、離開台階（動作一），看著 Elias，嘴在說話（壓著、一字一字）；Elias 與 Theo 嘴閉著；說完她的下巴停在抬起的位置（動作二），嘴閉上；最後：她站在他面前一步、等他答 | Nora（壓著、一字一字）：What do you want?（你到底想要什麼？）（原聲）（→ 答在 c02、c04） | 約 3 秒 |
+| c01 | 中景、慢推（從中景推到中近景，停在 Nora 的胸上）；側面雙人鏡，鏡頭在停車場上、跟辦公室正面平行；直式前後疊開：前景下緣是濕柏油與躺在上面的第一份合約，畫面左是辦公室門與門前台階，畫面右是 Elias 與 Theo；同一個停車場 | 共三人。畫面左：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴），站在辦公室門前台階下、面向畫面右的 Elias；臉上的光：對街路燈遠遠的冷白光，紅霓虹從左後上方掃過左頰與髮髻；眉心壓低、眼眶微紅、下巴抬起、嘴唇在字之間抿緊；畫面右：Elias（基本款加 `a dark charcoal wool overcoat, worn open`，`his left hand in the overcoat's left pocket`，黑色皮鞋），面向畫面左的 Nora，右手伸著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in his right hand`；臉上是辦公室窗的暖黃光、紅霓虹落在細銀絲鏡片上；眉毛平、眼睛定在她臉上、下巴不動；他右後方半步、離鏡頭較遠（畫面右）：Theo（基本款，棕色皮便鞋），兩手把 `a slim tablet in a plain grey case, its screen turned away` 抱在胸前，眉毛平、眼睛不眨、嘴唇閉平；三張臉都 `no smile at any moment, until the last frame`；兩人之間的地上 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, lying on wet black asphalt`；辦公室窗裡兩個虛焦的人影（一件花襯衫、一件棕色大衣），看不清臉 | Nora 往前踏半步、離開台階（動作一），看著 Elias，嘴在說話（壓著、一字一字）；Elias 與 Theo 嘴閉著；說完她的下巴停在抬起的位置（動作二），嘴閉上；最後：她站在他面前一步、等他答 | Nora（壓著、一字一字）：What do you want?（你到底想要什麼？）（原聲）（→ 答在 c02、c04） | 約 3 秒 |
 | c02 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她的右肩與髮髻在畫框左下緣、虛焦）；直式，Elias 的臉在上三分之一；身後是濕的街與對街的路燈（虛焦）；同一個停車場 | Elias（基本款加 `a dark charcoal wool overcoat, worn open`），面向畫面左的 Nora，四分之三側臉，眼睛看著她，不看鏡頭；右手還伸著第二份合約（在下緣外）；左手在大衣左口袋（在畫框外）；臉上是辦公室窗的暖黃光，紅霓虹一明一暗落在鏡片上；眉毛平、眼睛不眨、下巴收著、聲音低、每個字分開，`no smile at any moment, until the last frame` | Elias 看著 Nora，嘴在說話（低、像念合約）；說完下巴收一下，嘴閉上；最後：他看著她 | Elias（低、像念合約）：Him in prison.（他進監獄）（原聲）← 因為 c01 | 約 2.5 秒 |
 | c03 | 特寫、固定；**第一格就是他鏡片後的眼睛**；直式，眼睛在畫面中線偏上；同一個停車場 | Elias 的眼睛與眉、細銀絲鏡框；紅霓虹在鏡片上一明一暗；暖黃的窗光從畫面左；畫面裡只有他的眉眼與鼻樑 | 很短的一拍：他眨一下眼，眼睛往下看了一眼（地上的第一份），再抬回來看著畫面左外的 Nora；剪在眼睛抬回來；嘴不入鏡；最後：眼睛定在畫面左外 | — | 約 2 秒 |
 | c04 | 近景、慢推（從肩上推到臉）；同 c02 的鏡位（Nora 的右肩在畫框左下緣、虛焦）；直式，臉在上三分之一 | Elias（基本款加大衣），四分之三側臉朝畫面左的 Nora，眼睛看著她；臉上是暖黃的窗光、紅霓虹落在鏡片上；眉頭往中間收一點、下巴的肌肉一動、聲音更低、比上一句慢半拍，`no smile at any moment, until the last frame` | Elias 看著 Nora，嘴在說話（更低、慢半拍）；說完把伸著合約的右手往她那邊再送近一點，嘴閉上；最後：紙在她面前 | Elias（更低、慢半拍）：He owes me.（他欠我的）（原聲） | 約 2.5 秒 |
@@ -79,9 +79,9 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 | c07 | 遠景、慢推（從遠景推到中遠景）；從 Nora 的右肩後拍（她的髮髻與右肩在畫框左下緣、虛焦），越過停車場看對街；直式：下三分之一是停車場與濕的街，上半是對街的路燈與黑車 | 對街：`a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左；路燈冷白；車身反著紅霓虹的光；黑車靠街這側的後門 | 黑車的後門往外打開，一個人影從後座站出來（看不清臉，只見高髮髻的輪廓與抱在胸前的一疊東西）；剪在人影站直；畫面上沒有嘴；最後：後門開著，人影站在車門邊 | — | 約 2.5 秒 |
 | c08 | 中近景、慢推（從腰上推到胸上）；顏值鏡頭；鏡頭在對街的車道上、低角度往上拍；直式，臉在上三分之一，頭頂上方是路燈的光暈；同一條街 | Dana（基本款：一絲不亂的高髮髻、黑色合身西裝外套、白 T 恤、黑長褲、白球鞋），倚在黑車打開的後門門框上；左臂 `three thick plain buff case files held against her chest`；右手 `a plain black rollerball pen as long as her hand`，筆夾在指間；身後 `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`；臉上的光：路燈的冷白光從頭頂、對面汽車旅館的紅霓虹從畫面右一明一暗落在左頰；眉毛平、眼睛眯起來朝畫面右外的停車場打量、下巴微抬、嘴唇閉著，`no smile at any moment, until the last frame` | Dana 倚著門框打量畫面右外的停車場（動作一），用肩一頂、離開車門站直（動作二）；剪在她站直的一半；嘴閉著；最後：她站直、面向畫面右的汽車旅館 | — | 約 3 秒 |
 | c09 | 中景、跟拍（低角度跟著她的腳往前）；鏡頭在街上、從她左後方跟；直式：下半是她的白球鞋與濕的柏油，上半是她的背影與遠處汽車旅館的燈 | Dana（基本款，白球鞋），背影與側面，左臂抱著三本卷宗；她前方遠處：辦公室窗的暖光、紅霓虹的柱子，停車場上三個小小的人影（看不清臉）；濕柏油上映著紅光與路燈 | Dana 大步過街，白球鞋踩過濕柏油上的紅色倒影；剪在第三步落地；畫面上沒有嘴；最後：她走到停車場邊 | — | 約 2.5 秒 |
-| c10 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她的右肩與髮髻在畫框左下緣、虛焦）；直式，Dana 的臉在上三分之一；身後是 Elias 的炭灰大衣肩膀（虛焦，畫面右緣）與濕的街；同一個停車場 | Dana（基本款），剛停在 Elias 右手邊、比他前半步，四分之三側臉朝畫面左的 Nora、眼睛看著她；左臂 `three thick plain buff case files held against her chest`；右手 `a plain black rollerball pen as long as her hand`；臉上是辦公室窗的暖黃光、紅霓虹一明一暗落在額頭；眉毛一挑、眼睛直直看著她、下巴微抬，`no smile at any moment, until the last frame` | Dana 用筆尖朝 Nora 右手裡那張紙點一下（紙在下緣外），嘴在說話（快、乾脆）；說完把筆收回胸前的卷宗上，嘴閉上；最後：她看著 Nora | Dana（快、乾脆）：Two is mine.（第二條是我寫的）（原聲） | 約 2.5 秒 |
+| c10 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她的右肩與髮髻在畫框左下緣、虛焦）；直式，Dana 的臉在上三分之一；身後是 Elias 的炭灰大衣肩膀（虛焦，畫面右緣）與濕的街；同一個停車場 | Dana（基本款），剛停在 Elias 右手邊、比他前半步，四分之三側臉朝畫面左的 Nora、眼睛看著她；左臂 `three thick plain buff case files held against her chest`；右手 `a plain black rollerball pen as long as her hand`；臉上是辦公室窗的暖黃光、紅霓虹一明一暗落在額頭；眉毛一挑、眼睛直直看著她、下巴微抬，`no smile at any moment, until the last frame` | Dana 用筆尖朝 Nora 右手裡那張紙點一下（紙在下緣外），嘴在說話（快、乾脆，先報名字）；說完把筆收回胸前的卷宗上，嘴閉上；最後：她看著 Nora | Dana（快、乾脆，先報名字）：Dana Okafor, attorney. Two is mine.（Dana Okafor，律師。第二條是我寫的）（原聲） | 約 3 秒 |
 | c11 | 近景、固定；從 Elias 的左肩後拍（他的左肩線在畫框右下緣、虛焦，手臂在畫框外）；直式，Nora 的臉在上三分之一；身後是辦公室門與窗的暖光（虛焦） | Nora（`motel`，大衣敞開），右手拿著第二份合約（在下緣、紙背朝鏡頭）；臉上是路燈遠遠的冷白光、紅霓虹掃過左頰；眉毛一下挑起又收緊、眼睛從 Dana 移到 Elias、嘴唇閉緊，`no smile at any moment, until the last frame` | Nora 的眼睛從畫面右的 Dana 轉到 Elias，又轉回 Dana；剪在眼睛轉回一半；嘴閉著；最後：她看著 Dana | — | 約 2 秒 |
-| c12 | 近景、慢推（從肩上推到臉）；同 c10 的鏡位；直式，臉在上三分之一 | Dana（基本款，左臂抱卷宗、右手拿筆），四分之三側臉朝畫面左的 Nora；臉上是暖黃的窗光、紅霓虹落在額頭；眉毛壓平、眼睛一眨不眨、下巴往畫面右的 Elias 那邊偏一下、句子中間停半拍，`no smile at any moment, until the last frame` | Dana 看著 Nora，嘴在說話（快，前半句一停、自己把後半句接完）；前半句說完下巴往畫面右的 Elias 一偏，後半句回到 Nora；說完嘴閉上；最後：她看著 Nora | Dana（快，前半句一停、自己接完）：He fights for you once— you're a bought witness.（他替妳出頭一次——妳就是被收買的證人）（原聲）← 因為 c10 | 約 4 秒 |
+| c12 | 近景、慢推（從肩上推到臉）；同 c10 的鏡位；直式，臉在上三分之一 | Dana（基本款，左臂抱卷宗、右手拿筆），四分之三側臉朝畫面左的 Nora；臉上是暖黃的窗光、紅霓虹落在額頭；眉毛壓平、眼睛一眨不眨、說到 "he" 時下巴往畫面右的 Elias 那邊偏一下，`no smile at any moment, until the last frame` | Dana 看著 Nora，嘴在說話（快、像律師的提醒，一口氣說完）；說到 "he" 時下巴往畫面右的 Elias 一偏，再回到 Nora；說完嘴閉上；最後：她看著 Nora | Dana（快、律師的提醒）：He fights for you once, the defense calls you bought.（他替妳出頭一次，辯方就會說妳是被收買的）（原聲）← 因為 c10 | 約 4.5 秒 |
 | c13 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她的右肩在畫框左下緣、虛焦）；直式，Theo 的臉在上三分之一；身後是濕的街（虛焦） | Theo（基本款，圓玳瑁框眼鏡），從 Elias 身後往 Nora 這邊探出半個身子；兩手把 `a slim tablet in a plain grey case, its screen turned away` 抱在胸前；臉上是暖黃的窗光、紅霓虹一明一暗落在鏡片上；四分之三側臉朝畫面左的 Nora、眼睛看著她；眉毛平、眼睛不眨、嘴唇在字之間抿平、聲音壓得很低，`no smile at any moment, until the last frame` | Theo 往 Nora 那邊探出半個身子，嘴在說話（壓低、一本正經）；說完縮回 Elias 身後半步，嘴閉上；最後：他站回原位、平板抱在胸前 | Theo（壓低、一本正經）：Translation: the boss only opens doors.（翻譯一下：老闆只負責開門）（原聲） | 約 3.5 秒 |
 | c14 | 近景、固定；同 c10 的鏡位；直式，臉在上三分之一 | Dana（基本款，左臂抱卷宗、右手拿筆），眼睛還看著畫面左的 Nora、不看 Theo（說話模板的 eyes on 換成本鏡寫的視線）；臉上是暖黃的窗光；一邊眉毛往上一挑、嘴唇在字之間抿緊、鼻子短短出一口氣，`no smile at any moment, until the last frame` | Dana 嘴在說話（不轉頭、乾）；說完用筆尖在卷宗邊上敲一下，嘴閉上；最後：她看著 Nora | Dana（不轉頭、乾）：You don't have to translate.（不用你翻譯）（原聲）（結尾）← 因為 c13 | 約 2.5 秒 |
 | c15 | 近景、固定；從 Nora 的右肩後拍；直式，Theo 的臉在上三分之一 | Theo（基本款，圓玳瑁框眼鏡），兩手抱著平板；臉上是暖黃的窗光、紅霓虹落在鏡片上；眉毛平、眼睛不眨、嘴唇閉平，`no smile at any moment, until the last frame` | Theo 用右手食指把眼鏡往上推一下，眼睛轉向畫面右外的 Dana，又轉回來；剪在眼鏡推到一半；嘴閉著；最後：他抱著平板、看著前方 | — | 約 2 秒 |
@@ -91,7 +91,7 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 **場頭**：
 - **地點與場景圖**：同一個停車場（格局同第一場）；辦公室門與門前台階在畫面左、門邊的窗與窗台上的薄荷糖碗；第一份合約還躺在濕柏油上（c16 的前景）；對街路燈與黑車在畫面右後遠處（後門關著，Dana 下車後她自己帶上）。
 - **時間與天氣**：第 8 天 20:53–20:58，夜；地面濕、不下雨；紅霓虹慢脈動、辦公室窗的暖黃光、對街路燈冷白；整場維持夜色。
-- **軸線**：同第一場：Nora 在畫面左、面向畫面右；Elias 在畫面右、面向畫面左；Dana 在 Elias 右手邊、比他前半步；Theo 在 Elias 身後半步、畫面右緣。c23 Theo 走到 Nora 的右前方（兩人之間、離鏡頭較遠的那側），把平板平舉在她面前當桌子。臉上的光同第一場。
+- **軸線**：同第一場：Nora 在畫面左、面向畫面右；Elias 在畫面右、面向畫面左；Dana 在 Elias 右手邊、比他前半步；Theo 在 Elias 右後方半步、離鏡頭較遠（畫面右）。c23 Theo 走到 Nora 的右前方（兩人之間、離鏡頭較遠的那側），把平板平舉在她面前當桌子。臉上的光同第一場。
 - **在場的人**：Nora、Elias、Dana、Theo。
 - **這場要講完的事**：Dana 說這是婚前協議、判刑那天就申請；Nora 問嫁給他不也像被收買，Dana 說丈夫是事實、替妳出頭的男人是動機；Nora 在合約邊上寫下自己的條件，Elias 答應（結尾：「Fine.」）。
 - **配樂**：c16 撥奏停掉，只剩霓虹的嗡聲；c19 Dana 那句底下一個很低的鋼琴和弦；c24 筆尖在紙上的聲音之後，一段穩、往上走的鋼琴（Nora 的主題）；c27「It is now.」停一拍；c29「Fine.」收在一個乾淨的和弦。
@@ -106,8 +106,8 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 | c20 | 近景、固定；從 Nora 的右肩後拍（她的右肩在畫框左下緣、虛焦）；直式，Elias 的臉在上三分之一；身後是濕的街與對街的路燈（虛焦） | Elias（基本款加大衣，左手在大衣左口袋、在畫框外），四分之三側臉朝畫面左的 Nora；臉上是暖黃的窗光、紅霓虹落在鏡片上；眉毛平、眼睛定在她臉上、下巴不動、呼吸很慢，`no smile at any moment, until the last frame` | Elias 聽著，眼睛不離開 Nora，下巴輕輕點一下；剪在點到一半；嘴閉著；最後：他看著她 | — | 約 2 秒 |
 | c21 | 近景、慢推（從胸上推到肩上）；從 Elias 的左肩後拍（他的左肩線在畫框右下緣、虛焦）；直式，Nora 的臉在上三分之一 | Nora（`motel`，大衣敞開）；臉上是路燈的冷白光、紅霓虹掃過左頰；眼睛垂到右手的紙背上、眉頭慢慢放平、下巴收緊、吸一口長氣，`no smile at any moment, until the last frame` | Nora 低頭看手裡的紙（動作一），把紙換到左手、空出來的右手伸向畫面右的 Dana（動作二）；剪在右手伸出去一半；嘴閉著；最後：紙在她左手，右手伸向 Dana | — | 約 2.5 秒 |
 | c22 | 插鏡、手部特寫、固定；**第一格就是 Dana 右手指間的筆**；直式；同一個停車場 | `a plain black rollerball pen as long as her hand`，在 Dana 的右手（黑色西裝外套袖口）指間，她的手擱在胸前的 `three thick plain buff case files held against her chest` 上；Nora 的右手（奶油色毛衣袖口、駝色大衣袖口）從畫面左伸進來；暖黃的窗光；畫面裡沒有臉 | Nora 的手指捏住筆身、一抽，把筆從 Dana 指間抽走；剪在筆離開 Dana 的手指；畫面上沒有嘴；最後：筆在 Nora 的右手 | — | 約 2 秒 |
-| c23 | 中近景、固定；從 Nora 的右肩後拍（她的右肩在畫框左下緣、虛焦）；直式，頭上留空 | Theo（基本款，圓玳瑁框眼鏡），從畫面右走進來、停在 Nora 面前；兩手把 `a slim tablet in a plain grey case, held flat in both his hands like a desk, screen facing down` 平舉到 Nora 胸前的高度；臉上是暖黃的窗光、紅霓虹落在鏡片上；眉毛平、眼睛不眨、嘴唇閉平，`no smile at any moment, until the last frame` | Theo 走到 Nora 面前（動作一），把平板平舉在她面前當桌子、停住不動（動作二）；剪在平板停住；嘴閉著；最後：平板平舉在 Nora 面前 | — | 約 2.5 秒 |
-| c24 | 插鏡、特寫、固定；**第一格就是筆尖停在紙的右邊緣**；鏡頭貼著紙面、很低，從紙邊斜拍；直式 | 紙平鋪在平板的灰色背殼上：`a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it`，紙面 `far out of focus, only soft pale grey blur and shadow`，只有紙邊是清楚的；Nora 的右手（奶油色毛衣袖口）握著 `a plain black rollerball pen as long as her hand`，左手指尖壓著紙角；焦點在筆尖與紙邊；Theo 的兩手（淺藍襯衫袖口）托著平板的兩邊；畫面裡沒有臉 | 筆尖沿著紙的右邊緣往下走一行；剪在筆尖走到一半；畫面上沒有嘴；最後：筆尖還在紙邊上 | — | 約 2 秒 |
+| c23 | 中近景、固定；從 Nora 的右肩後拍（她的右肩在畫框左下緣、虛焦）；直式，頭上留空 | Theo（基本款，圓玳瑁框眼鏡），從畫面右走進來、停在 Nora 面前；兩手把 `a slim tablet in a plain grey case, its screen turned away, held flat in both his hands at her chest height` 平舉到 Nora 胸前的高度；臉上是暖黃的窗光、紅霓虹落在鏡片上；眉毛平、眼睛不眨、嘴唇閉平，`no smile at any moment, until the last frame` | Theo 走到 Nora 面前（動作一），把平板平舉在她胸前、停住不動（動作二）；剪在平板停住；嘴閉著；最後：平板平舉在 Nora 面前 | — | 約 2.5 秒 |
+| c24 | 插鏡、特寫、固定；**第一格就是筆尖停在紙的右邊緣**；鏡頭貼著紙面、很低，從紙邊斜拍；直式 | 紙平鋪在 `a slim tablet in a plain grey case, its screen turned away, held flat in both his hands at her chest height` 的灰色背殼上：`a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it`，紙面 `far out of focus, only soft pale grey blur and shadow`，只有紙邊是清楚的；Nora 的右手（奶油色毛衣袖口）握著 `a plain black rollerball pen as long as her hand`，左手指尖壓著紙角；焦點在筆尖與紙邊；Theo 的兩手（淺藍襯衫袖口）托著平板的兩邊；畫面裡沒有臉 | 筆尖沿著紙的右邊緣往下走一行；剪在筆尖走到一半；畫面上沒有嘴；最後：筆尖還在紙邊上 | — | 約 2 秒 |
 | c25 | 近景、慢推（從胸上推到肩上）；從 Theo 的左肩後拍（他灰色針織背心的左肩在畫框右下緣、虛焦）；直式，Nora 的臉在上三分之一、頭微低；下緣是平板的灰色邊 | Nora（`motel`，大衣敞開），頭微低、眼睛看著筆尖（在下緣外），說到最後一個字時抬眼看畫面右的 Dana；臉上是路燈的冷白光、紅霓虹掃過左頰；眉毛壓平、嘴唇在字之間抿緊、下巴收著，`no smile at any moment, until the last frame` | Nora 一邊寫一邊嘴在說話（低、一字一字，跟著筆）；說完抬眼看 Dana，嘴閉上；最後：她抬著眼、筆停在紙上 | Nora（低、跟著筆、一字一字）：And I pay my own way.（還有，我自己付自己的）（原聲）← 因為 c19 | 約 3.5 秒 |
 | c26 | 近景、固定；同 c17 的鏡位（Nora 的右肩在畫框左下緣、虛焦）；直式，臉在上三分之一 | Dana（基本款，左臂抱卷宗，右手空著），四分之三側臉朝畫面左的 Nora；臉上是暖黃的窗光；兩邊眉毛一起挑高、眼睛睜大一點、嘴唇抿一下，`no smile at any moment, until the last frame` | Dana 看著 Nora，嘴在說話（挑眉、律師的口氣）；說完空著的右手往紙那邊一攤，嘴閉上；最後：她的右手攤在半空 | Dana（挑眉、律師的口氣）：That's not a clause.（那不算一條）（原聲） | 約 2.5 秒 |
 | c27 | 近景、固定；同 c25 的鏡位（Theo 的左肩在畫框右下緣、虛焦）；直式，臉在上三分之一 | Nora（`motel`，大衣敞開），抬著頭、四分之三側臉朝畫面右的 Dana；右手握著筆；臉上是路燈的冷白光、紅霓虹掃過左頰；眉毛放平、眼睛直直看著 Dana、下巴抬起、嘴唇閉緊，`no smile at any moment, until the last frame` | Nora 看著 Dana，嘴在說話（平、很短）；說完把筆遞向畫面右的 Dana、筆尖朝自己，嘴閉上；最後：她的右手把筆遞出去 | Nora（平、很短）：It is now.（現在是了）（原聲）← 因為 c26 | 約 2.5 秒 |
@@ -119,7 +119,7 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 **場頭**：
 - **地點與場景圖**：同一個停車場、辦公室的窗（c33 從窗裡往外看的反向：辦公室裡 `motel-front` 夜版，櫃台的暖黃檯燈、窗台上的薄荷糖碗）、兩線道的濕街，與對街路燈下的黑車 `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`（車頭朝畫面左；靠街這側是駕駛座，靠人行道那側是副駕駛座與後座右門）。辦公室門口到黑車約 12 步。
 - **時間與天氣**：第 8 天 20:58–21:10，夜；地面濕、不下雨；停車場是紅霓虹與窗的暖黃光；對街是路燈的冷白光，汽車旅館的紅霓虹從街對面遠遠照過來；整場維持夜色。
-- **軸線**：c30–c32 同第二場。c34–c35 從停車場往街拍：Elias、Dana、Theo 往畫面上方（對街）走，Nora 跟在後面。c36 起在對街：鏡頭在汽車旅館這側的車道上往對街拍，黑車車頭朝畫面左，Elias 繞到靠街這側的駕駛座門邊（畫面左前），Dana 與 Theo 繞過車頭到人行道那側上車；Nora 跟到車尾、站上人行道邊（畫面右）。c37–c39 隔著車頂對話：從 Nora 的右肩後拍 Elias（他在畫面左上、路燈的光裡），Nora 的鏡從畫面左前方拍、她面向畫面左。c41 是接點鏡：鏡頭在對街人行道上、黑車車頭前方幾步，回頭沿著車身斜拍，車頭朝畫面左前方，Nora 在車尾那端的人行道邊（畫面中間偏右），對面的辦公室在畫面右後遠處。
+- **軸線**：c30–c32 同第二場。c34–c35 從停車場往街拍：Elias、Dana、Theo 往畫面上方（對街）走，Nora 跟在後面。c36 起在對街：鏡頭在汽車旅館這側的車道上往對街拍，黑車車頭朝畫面左，Elias 繞到靠街這側的駕駛座門邊（畫面左前），Dana 與 Theo 繞過車頭到人行道那側上車；Nora 跟到車尾、站上人行道邊（畫面右）。c37–c39 隔著車頂對話：從 Nora 的右肩後拍 Elias（他在畫面左上、路燈的光裡），Nora 的鏡從畫面左前方拍、她面向畫面左。c41 是接點鏡：鏡頭在對街人行道上、黑車車尾後方幾步，斜著往車身與街對面拍，車身在畫面右、往右後延伸，Nora 在畫面中間偏左的人行道上、車尾旁，汽車旅館在畫面右後方、隔著街。
 - **在場的人**：Nora、Elias、Dana、Theo；c33 辦公室窗裡 Peg（Bev 只露肩、虛焦）；c41 Peg 從辦公室衝出來（遠）。c36 起 Dana 坐進後座、Theo 坐進副駕駛座，c40 起 Elias 坐進駕駛座，三人只剩車窗裡的暗影。
 - **這場要講完的事**：Theo 收起濕的第一份、給她 Elias 的直撥名片；Elias 走回車邊；Nora 問他為什麼是她，他回頭說她會自己走下去，車門關上；Peg 衝出辦公室（結尾：「Because you'll walk on your own.」）。
 - **配樂**：c30 安靜，只有遠處港口的水聲；c34 過街時一個慢的低音進來；c37「Why me?」之後停一拍；c39 Elias 那句底下一段很輕的弦，c40 車門關上時收掉；c41 只剩辦公室門被推開的聲音。
@@ -138,10 +138,10 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 | c38 | 中近景、固定；從 Nora 的右肩後拍（她的右肩與髮髻在畫框右下緣、虛焦），越過黑車的車頂；直式：Elias 在畫面左上、路燈的光裡，下緣是黑亮的車頂 | Elias（基本款加 `a dark charcoal wool overcoat, worn open`，`his left hand in the overcoat's left pocket`），站在駕駛座門邊、右手扶在打開的車門上緣，身子已經朝車裡；車頂擋住他胸口以下；臉上的光：路燈的冷白光從上方、對面汽車旅館的紅霓虹遠遠落在鏡片上；眉毛平、眼睛先朝車裡、下巴收著，`no smile at any moment, until the last frame` | Elias 停住，回頭一次、眼睛越過車頂看向畫面右下的 Nora；剪在頭轉過來的一半；嘴閉著；最後：他回頭看著她 | — | 約 2.5 秒 |
 | c39 | 近景、慢推（從胸上推到臉）；鏡頭在車頂高度、他的右前方；直式，臉在上三分之一；前景下緣是黑亮的車頂邊與他扶在門上緣的右手；身後是路燈的光暈與濕的街 | Elias（基本款加大衣，左手在大衣左口袋、在畫框外），四分之三側臉朝畫面右的 Nora、眼睛看著她；右手扶著車門上緣；臉上是路燈的冷白光、紅霓虹遠遠落在鏡片上；眉毛平、眼睛在她臉上停住、下巴輕收、聲音低、比平常慢半拍，`no smile at any moment, until the last frame` | Elias 看著 Nora，嘴在說話（低、慢半拍、像念最後一條）；說完眼睛垂下、收回視線，嘴閉上；最後：他低下頭、往車裡 | Elias（低、慢半拍）：Because you'll walk on your own.（因為妳會自己走下去）（原聲）（結尾）← 因為 c37 | 約 3.5 秒 |
 | c40 | 插鏡、特寫、固定；**第一格就是黑車打開的駕駛座門與車窗**；鏡頭在車道上、門外；直式 | `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight` 的駕駛座門，車窗升著，玻璃黑、映著路燈的一點光；車裡只見方向盤的弧與一個坐著的暗影（看不清臉）；拉門的手不入鏡 | 駕駛座的門從裡面被拉上、「砰」一聲關緊；剪在門關上的那一下；畫面上沒有嘴；最後：門關著，車窗黑、升著 | — | 約 2 秒 |
-| c41 | 中景、固定（接第 18 集的同一刻）；鏡頭在對街人行道上、黑車車頭前方幾步，回頭沿著車身斜拍；直式：前景畫面左是黑車的車頭（車頭朝畫面左前方），車身斜斜往畫面右後延伸；畫面中間偏右、車尾那端的人行道邊是 Nora；畫面右後遠處，街對面是汽車旅館的辦公室與紅霓虹 | `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`：車窗都升著，駕駛座、副駕駛座、後座三個暗影，看不清臉；Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴），站在人行道邊、車的右側（車尾那端），右手拿著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in her right hand`（邊上有她的手寫一行，字不入鏡），名片在大衣左口袋（不拍）；四分之三側臉朝畫面左的駕駛座；臉上是路燈的冷白光從頭頂、紅霓虹從她身後遠處；眉心提著、嘴唇閉緊，`no smile at any moment, until the last frame`；畫面右後遠處：對面辦公室的門被推開，Peg（`coat`，`her feet in worn beige house slippers instead of shoes`）衝出來，很小、看不清臉 | Nora 站著看駕駛座，手裡的紙往胸前收一點；遠處辦公室的門被推開、Peg 衝出來；剪在 Peg 跨出門口；Nora 嘴閉著；最後：停在這一刻 | — | 約 3.5 秒 |
+| c41 | 中景、固定（接第 18 集的同一刻）；鏡頭在對街人行道上、黑車車尾後方幾步，斜著往車身與街對面拍；直式：**車身在畫面右、從車尾往畫面右後延伸**（車尾在前、車頭在右後）；**Nora 在畫面中間偏左的人行道上、車尾旁**；**汽車旅館在畫面右後方、隔著街**（辦公室的門、窗的暖光與紅霓虹，遠） | `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`：車窗都升著，駕駛座、副駕駛座、後座三個暗影，看不清臉；Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐短靴），站在人行道上、車尾旁，右手拿著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in her right hand`（邊上有她的手寫一行，字不入鏡），名片在大衣左口袋（不拍）；四分之三側臉朝畫面右後的駕駛座；臉上是路燈的冷白光從頭頂、紅霓虹從畫面右後遠處的街對面；眉心提著、嘴唇閉緊，`no smile at any moment, until the last frame`；畫面右後遠處、街對面：辦公室的門被推開，Peg（`coat`，`her feet in worn beige house slippers instead of shoes`）衝出來，很小、看不清臉 | Nora 站著看駕駛座，手裡的紙往胸前收一點；遠處辦公室的門被推開、Peg 衝出來；剪在 Peg 跨出門口；Nora 嘴閉著；最後：停在這一刻 | — | 約 3.5 秒 |
 
-約 112 秒（1 分 52 秒）、41 鏡（第一場 15、第二場 14、第三場 12），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 37–41 鏡。
-開場 10 秒四鏡（c01–c04）：c01「What do you want?」、c02「Him in prison.」、c03 停一拍（他的眼睛）、c04 在第 7.5 秒「He owes me.」；平均一鏡 2.73 秒。
+約 113 秒（1 分 53 秒）、41 鏡（第一場 15、第二場 14、第三場 12），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 37–41 鏡。
+開場 10 秒四鏡（c01–c04）：c01「What do you want?」、c02「Him in prison.」、c03 停一拍（他的眼睛）、c04 在第 7.5 秒「He owes me.」；平均一鏡 2.76 秒。
 
 ## 注意事項
 
@@ -150,7 +150,7 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **開場四鏡**（c01–c04）照 bible〈必修〉：「What do you want?」→「Him in prison.」→ 停一拍（他的眼睛）→「He owes me.」。
 - **Dana 下車**（c07–c09）：從**對街黑車的後門**下車、倚著車門的顏值鏡頭 3 秒（c08），再過街來；總綱的「靠在車上說話」改成過街到停車場說（bible〈時間線〉）。
-- **"Two is mine."**（c10、c12）照審稿與 bible 拆開：「Two is mine.」一鏡，「He fights for you once— you're a bought witness.」一鏡。
+- **"Two is mine."**（c10、c12）照審稿與 bible 拆開：「Dana Okafor, attorney. Two is mine.」一鏡，「He fights for you once, the defense calls you bought.」一鏡（見〈2026-11-12 審稿後的修改〉）。
 - **c16–c17**：「How does a marriage just end?」是 bible 補的，讓 Dana 的「It's a prenup.」有問有答。**站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 2 條）。
 - **c19**：Dana 那句照 bible 寫「A man fighting your battles is a motive.」（審稿原寫 paying your lawyers）。
 - **c24–c25**：手寫那一行照 bible 改成「And I pay my own way.」（審稿寫的 "Four. …" 不用）；只拍筆尖在紙邊走、字不入鏡，她邊寫邊說；c28 Dana 嘴角一提、不露齒（bible〈全劇固定〉可以笑的鏡）。
@@ -162,19 +162,29 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
 - **c06**：Nora 在開場四鏡之後就從 Elias 右手把第二份接過來（之後一直在她右手），c24 才有紙可寫。
-- **c12**：「He fights for you once— you're a bought witness.」放在**同一鏡**、Dana 自己停半拍再接完：bible 寫成兩個片段，但 `WRITING.md` 第七節不讓一句話斷在兩鏡之間；字一個沒改。
+- **c12**：Dana 的第二句放在**同一鏡**、一口氣說完（`WRITING.md` 第七節不讓一句話斷在兩鏡之間）；審稿後台詞換成 GLOSSARY 的原句，見下。
 - **c13**：Theo 是從 Elias 身後往 Nora 那邊探身、壓低聲音說；c14 Dana 不轉頭、眼睛還在 Nora（說話模板的 eyes on 換成本鏡寫的視線）。
-- **c23**：Nora 寫字的桌面是 **Theo 平舉的平板背面**（平板道具句後接 `, held flat in both his hands like a desk, screen facing down`）：停車場沒有桌子，也給 Theo 一個不說話的笑點。
+- **c23**：Nora 寫字的桌面是 **Theo 平舉的平板背面**（審稿後照抄平板道具句再接手的位置：`a slim tablet in a plain grey case, its screen turned away, held flat in both his hands at her chest height`）：停車場沒有桌子，也給 Theo 一個不說話的笑點。
 - **c33**：補一鏡辦公室窗裡的 Peg 看見那個男人走回對街、Nora 手裡拿著那張紙，轉身朝門走，交代第 18 集她為什麼衝出來（Bev 只露肩，兩人不並排正臉）。
-- **對街的位置**（c34–c41）：Elias 走到靠街那側的駕駛座門；Dana 與 Theo 繞過車頭、從人行道那側上車（後座、副駕駛座）；Nora 跟到**車尾那端的人行道邊**。接點表 17→18 的「車的右側」寫成車尾那端（從汽車旅館這邊看是車的右邊），第 18 集 Peg 過街時先到這裡。
-- **c41 的鏡位**：鏡頭在對街人行道上、車頭前方，回頭沿著車身斜拍，才拍得到畫面右後遠處的辦公室門；車頭因此寫「朝畫面左前方」。
+- **對街的位置**（c34–c41）：Elias 走到靠街那側的駕駛座門；Dana 與 Theo 繞過車頭、從人行道那側上車（後座、副駕駛座）；Nora 跟到**車尾那端的人行道上**。第 18 集 Peg 過街時先到這裡。
+- **c41 的鏡位**（審稿後改）：鏡頭在對街人行道上、車尾後方，車身在畫面右往右後延伸，Nora 在畫面中間偏左的人行道上、車尾旁，汽車旅館在畫面右後方、隔著街。
 - **Dana 的筆**：c08–c22 在她右手，c22 被 Nora 的右手抽走，c27 Nora 還給她，之後在 Dana 手上。
 - **Nora 用右手寫字**：c21 她把合約換到左手、右手去拿筆；c24 左手指尖壓紙角、右手寫；c27 右手把筆還回去，合約從平板上拿回右手（c30 起在右手）。全劇只有 Sienna 是左撇子（第 50 集的伏筆），其他人寫字一律右手。
 
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e015-e020-storyboard.md` 與 bible〈第 15–20 集審稿後補定〉改的。本集還沒錄、沒拍，沒有要重錄或重抽的鏡。
+- **c10（台詞改，要重錄）**：Dana 先報名字："Dana Okafor, attorney. Two is mine."（她的名字之前沒鋪過）；2.5 → 3 秒。
+- **c12（台詞改，要重錄）**：照 GLOSSARY 原句改成 "He fights for you once, the defense calls you bought."，一口氣說完（像律師的提醒，不是指控她）；4 → 4.5 秒。
+- **c23、c24**：平板照抄道具句再接手的位置：`a slim tablet in a plain grey case, its screen turned away, held flat in both his hands at her chest height`；拿掉 `like a desk`（比喻會畫出桌子）。
+- **c41（接點）**：位置改成車身在畫面右、往右後延伸，Nora 在畫面中間偏左的人行道上、車尾旁，汽車旅館在畫面右後方、隔著街；〈這集接在哪〉、第三場軸線、自定清單一起改，第 18 集第一鏡跟著改。
+- **Theo 的位置**（c01、第一、二場軸線、〈這集接在哪〉）：照 bible 統一成 Elias 右後方半步、離鏡頭較遠。
+- 鏡數與秒數：41 鏡，112 → 113 秒（第一場 39 → 40 秒）。
+
 ### 配音
 
-- **本集沒有 Gemini 錄音**。十八句都是原聲，寫在說話的人自己的鏡上：Nora 六鏡（c01、c16、c18、c25、c27、c37）、Elias 四鏡（c02、c04、c29、c39）、Dana 六鏡（c10、c12、c14、c17、c19、c26）、Theo 二鏡（c13、c32）。每支**至少買 6 秒**（十八鏡合計 108 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。
-- 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：Elias 低、少、像念合約，對 Nora 慢半拍，從不提高聲音（第 2 集的 Charon 不再用）；Dana 快、冷、好笑、會接別人的話（c12 自己接自己的後半句）；Theo 平、慢、一字一字的認真；Nora 壓著、清楚，c37 揚聲但不尖。
+- **本集沒有 Gemini 錄音**。十八句都是原聲，寫在說話的人自己的鏡上：Nora 六鏡（c01、c16、c18、c25、c27、c37）、Elias 四鏡（c02、c04、c29、c39）、Dana 六鏡（c10、c12、c14、c17、c19、c26；c10 先報自己的名字）、Theo 二鏡（c13、c32）。每支**至少買 6 秒**（十八鏡合計 108 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。
+- 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：Elias 低、少、像念合約，對 Nora 慢半拍，從不提高聲音（第 2 集的 Charon 不再用）；Dana 快、冷、好笑、會接別人的話（c12 像律師的提醒，不是指控她）；Theo 平、慢、一字一字的認真；Nora 壓著、清楚，c37 揚聲但不尖。
 - **6 個字以內的句子**（c01、c02、c04、c10、c13、c14、c16、c18、c25、c26、c27、c29、c32、c37、c39）放進 6 秒片段，模型會把空檔講滿：句後都寫了收尾動作與「嘴閉上」，剪在收尾動作上。c29「Fine.」最短。
 - **還沒驗**（bible〈全劇固定〉）：Elias、Dana、Theo 第一次用原聲，三個人同一角色跨鏡的聲音是否一致，第一批草稿先給站主聽。
 - CC 軟字幕、不燒錄、不標說話人；字幕照剪接工具量到的開口時間放。
@@ -209,7 +219,7 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 - edit 表設 `punch: false`、`interpolate: false`；`slow_max`：原聲鏡（c01、c02、c04、c10、c12、c13、c14、c16、c17、c18、c19、c25、c26、c27、c29、c32、c37、c39）設 **1.0**，其他鏡 1.1。輸出 9:16 直式。
 - 開頭不放集數、不放片名卡、不回顧；c01 直接接第 16 集最後一鏡的同一刻。
 - 沒有台詞的鏡剪在動作中間（各鏡「剪在」）；原聲鏡剪在收尾動作或句尾，不留空白。
-- c12 中間那半拍停頓要留著（Dana 自己接自己的話），不要剪掉。
+- c12 是一口氣說完的一句，剪在句尾。
 - c40 → c41 剪在門關上；c41 停在 Peg 跨出門口，接第 18 集。
 - 調色：停車場是紅霓虹加窗的暖黃；對街是路燈的冷白加遠處的紅；地面一律濕亮、**沒有雨絲**（第 18 集才下雨）。
 
@@ -257,5 +267,6 @@ c34–c41 寫 `night, wet black asphalt with no rain falling, one dim cold-white
 - **黑車**：一直停在對街路燈下；c40 起 Elias 在駕駛座、Theo 副駕駛座、Dana 後座；第 18 集 Elias 開走。
 - **Peg**：c33 在辦公室窗前、穿拖鞋；c41 衝出門。眼鏡戴在臉上；左手無名指是一圈淡色的皮膚（第 15 集當掉戒指；本集沒拍到左手）。
 - **Elias 的左手**：每一鏡在大衣左口袋或畫框外；不戴戒指。
-- **誰知道了什麼**：Nora 知道 Elias 要 Grant 坐牢、說 Grant 欠他；第二條是 Dana 寫的，為了讓她在法庭上不被說成被收買；婚約是婚前協議、判刑那天申請；她自己付自己的（她加的一行，Elias 答應）；他說選她是因為她會自己走下去。Peg 從窗裡看見 Nora 跟著那個男人過街，還不知道紙上寫什麼。
-- **下一集接**：第 18 集第一鏡：同一刻，Peg 推門衝出辦公室、穿著拖鞋過街。
+- **誰知道了什麼**：Dana 第一次出場就報了名字與身分（c10 "Dana Okafor, attorney."）；Nora 知道 Elias 要 Grant 坐牢、說 Grant 欠他；第二條是 Dana 寫的，為了讓她在法庭上不被說成被收買；婚約是婚前協議、判刑那天申請；她自己付自己的（她加的一行，Elias 答應）；他說選她是因為她會自己走下去。Peg 從窗裡看見 Nora 跟著那個男人過街，還不知道紙上寫什麼。
+- **接點的位置**（c41，審稿後）：車身在畫面右、往右後延伸；Nora 在畫面中間偏左的人行道上、車尾旁；汽車旅館在畫面右後方、隔著街。
+- **下一集接**：第 18 集第一鏡：同一刻，Peg 推門衝出辦公室、穿著拖鞋從畫面左往右過街。

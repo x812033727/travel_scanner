@@ -19,7 +19,7 @@ Nora 一甩就掙開，第一次對他吼：「You left me alone in that hospita
 ## 這集接在哪
 
 接第 17 集最後一鏡同一刻（第 8 天 21:10），到 21:30（bible〈時間線〉）；夜。c01–c08 地面濕、**不下雨**；**c09 Grant 的車燈掃過來時開始下雨**，之後一路是雨（`steady rain`），一直下到第 19 集停車場那場。光：對街的路燈（冷白）、汽車旅館招牌柱的紅霓虹（從街對面）、c09 起白車的車燈、c06–c18 黑車的駕駛座窗與 c18 的紅色尾燈。
-第一鏡 c01 照 bible〈接點表〉17→18：同一刻，對面辦公室的門被推開，Peg（`coat`、米色拖鞋）衝出來；Nora（`motel`，大衣敞開）站在對街人行道邊、黑車車尾那一端，右手拿著邊上有她手寫一行的第二份合約（紙背朝鏡頭），名片在大衣左口袋；黑車車頭朝畫面左、車窗升著，Elias 在駕駛座、Theo 在副駕駛座、Dana 在後座（只見暗影）。第 17 集最後一鏡是從對街回頭拍的遠景，c01 換到辦公室門口拍 Peg 推門的同一刻。
+第一鏡 c01 照 bible〈接點表〉17→18：同一刻，對面辦公室的門被推開，Peg（`coat`、米色拖鞋）衝出來；Nora（`motel`，大衣敞開）站在對街的人行道上、黑車車尾旁，右手拿著邊上有她手寫一行的第二份合約（紙背朝鏡頭），名片在大衣左口袋；黑車車窗升著，Elias 在駕駛座、Theo 在副駕駛座、Dana 在後座（只見暗影）。第 17 集最後一鏡（審稿後）是從對街人行道、車尾後方拍：車身在畫面右、Nora 在畫面中間偏左、汽車旅館在畫面右後方隔著街；c01 換到辦公室門口拍 Peg 推門的同一刻，她往畫面右外衝，c02 從畫面左往右過街，方向接得上。
 最後一鏡 c41 照〈接點表〉18→19：對街路燈下、黑車原本停的人行道邊外的車道上，21:30，雨。Grant（`rain`，左頰 `a faint pink flush`）站在他的珍珠白轎車打開的駕駛座門邊（車並排停在路上、車頭朝畫面左），臉上的笑剛回來、很薄；Nora（`motel`，大衣敞開，頭髮與肩膀被雨打濕）在他面前一步，面向他（畫面左）；Peg（`coat`、拖鞋，鏡片上有雨點）在 Nora 右後半步，右手把合約藏在背後；黑車已經不在；白車的車燈打在畫面左濕亮的路面上，反光從畫面左照著兩個女人。第 19 集第一鏡：Nora 雨裡的臉。
 「That's for the hallway.」是 Peg 自己的走廊（m03，第 52 集講完），本集不解釋。Grant 怎麼找到這家旅館：她的新手機第 12 集關機以前就告訴他了（不說出來）。
 
@@ -62,7 +62,7 @@ c09 起寫 `night, steady rain falling, wet black asphalt shining, one dim cold-
 **場頭**：
 - **地點與場景圖**：Harborview Motor Inn 外的街 `motel-street`（待畫，夜、濕、不下雨）：汽車旅館這側是停車場、一樓辦公室（門與門邊的窗、窗裡暖黃燈）、招牌柱的紅霓虹（字不入鏡）；一條兩線道的濕街；**對街人行道上一盞路燈**，燈下 `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左（往港口），靠街這側是駕駛座；辦公室門口到黑車約 12 步。c01 在辦公室門口 `motel-front`（夜版）。近景都寫「同一條街」。
 - **時間與天氣**：第 8 天 21:10–21:14，夜；地面濕、**不下雨**；對街路燈冷白，紅霓虹從街對面 `a slow pulse: on for two beats, off for one`；整場維持夜色。
-- **軸線**：主鏡在汽車旅館這側的車道上、往對街拍：黑車在畫面中上、車頭朝畫面左，路燈在它上方的人行道上；Nora 站在車尾那一端的人行道邊（畫面右），Peg 從鏡頭後方（辦公室那邊）過街而來。c04 起 Peg 站在黑車靠街這側、車尾旁的車道上，面向畫面左的駕駛座窗；c05 Nora 從路緣踏下車道、站到 Peg 左後半步。c07 從 Peg 的右肩後拍（她的右肩在畫框右下緣）沿著車身看駕駛座窗。臉上的光：朝汽車旅館（鏡頭這邊）的臉是紅霓虹一明一暗，頭頂是路燈的冷白光；車裡 Elias 的臉是路燈從上方斜進車窗的冷白光與遠處的紅霓虹。
+- **軸線**：主鏡在汽車旅館這側的車道上、往對街拍：黑車在畫面中上、車頭朝畫面左，路燈在它上方的人行道上；Nora 站在車尾那一端的人行道邊（畫面右），Peg 從鏡頭後方（辦公室那邊）過街而來。c04 起 Peg 站在黑車靠街這側、車尾旁的車道上，面向畫面左的駕駛座窗；c05 Nora 從路緣踏下車道、站到 Peg 左後半步。c07 從 Peg 的右肩後拍（她的右肩在畫框左下緣）看駕駛座窗。臉上的光：朝汽車旅館（鏡頭這邊）的臉是紅霓虹一明一暗，頭頂是路燈的冷白光；車裡 Elias 的臉是路燈從上方斜進車窗的冷白光與遠處的紅霓虹。
 - **在場的人**：Peg、Nora；黑車裡的 Elias（c06 起車窗降下一半露臉）、Theo 與 Dana（只見暗影，不露臉）。
 - **這場要講完的事**：Peg 衝過街搶過合約、問他要是 Grant 沒判刑呢；Elias 說他會（結尾：「He will be.」）。
 - **配樂**：c01 門被推開的一聲之後，一段急的弦樂撥奏跟著拖鞋聲；c04 Peg 開口時停掉；c07「He will be.」底下一個很低、很穩的大提琴長音，撐到 c08。
@@ -71,12 +71,12 @@ c09 起寫 `night, steady rain falling, wet black asphalt shining, one dim cold-
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c01 | 中景、跟拍（她一出門就往後退著跟）；鏡頭在辦公室門前的停車場上、低角度往門拍；直式：上半是辦公室的門與門框、窗的暖光，下半是門前台階與濕柏油；前景下緣是濕柏油上的紅色反光 | Peg（`coat`：長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、木珠項鍊；`her feet in worn beige house slippers instead of shoes`），從辦公室裡把門推開、衝出來；臉上的光：身後辦公室的暖黃光勾出她的頭髮與肩，紅霓虹從頭頂一明一暗落在臉上；眼睛在鏡片後面盯著畫面右外的對街（不看鏡頭）、眉頭夾緊、嘴唇抿薄、下巴往前，`no smile at any moment, until the last frame` | Peg 右手把門推開（動作一），一步跨下門前台階、往畫面右外的街衝（動作二）；剪在拖鞋踩上濕柏油；嘴閉著；最後：她衝出門、朝畫面右外 | — | 約 2 秒 |
-| c02 | 中景、跟拍（低角度，跟著她的腳從畫面右往左過街）；鏡頭在街中間、她的側面；直式：下半是她的拖鞋與濕柏油，上半是她的大衣下擺與遠處對街的路燈、黑車、站在車尾的 Nora（小、看不清臉） | Peg 的腳 `her feet in worn beige house slippers instead of shoes` 與棕色大衣的下擺；濕柏油上映著紅霓虹與路燈；對街 `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左；車尾那端一個穿駝色大衣的人影 | Peg 的拖鞋一步一步踩過濕的柏油、水花濺起來；剪在第三步落地；畫面上沒有嘴；最後：她到了對街、黑車車尾旁 | — | 約 2 秒 |
+| c02 | 中景、跟拍（低角度，跟著她的腳從畫面左往右過街）；鏡頭在街中間、她的側面；直式：下半是她的拖鞋與濕柏油，上半是她的大衣下擺與遠處對街的路燈、黑車、站在車尾的 Nora（小、看不清臉） | Peg 的腳 `her feet in worn beige house slippers instead of shoes` 與棕色大衣的下擺；濕柏油上映著紅霓虹與路燈；對街 `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight`，車頭朝畫面左；車尾那端一個穿駝色大衣的人影 | Peg 的拖鞋一步一步踩過濕的柏油、水花濺起來；剪在第三步落地；畫面上沒有嘴；最後：她到了對街、黑車車尾旁 | — | 約 2 秒 |
 | c03 | 插鏡、手部特寫、固定；**第一格就是 Nora 右手裡那張紙的背面**；直式；同一條街，黑車車尾的黑亮車身在背景 | `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it`，在 Nora 的右手（駝色大衣袖口、奶油色毛衣袖口）；Peg 的右手（棕色鋪棉大衣袖口）從畫面右伸進來；路燈的冷白光照透紙背；畫面裡沒有臉 | Peg 的右手抓住紙、一把搶過去（動作一），紙離開 Nora 的手指、往畫面右走（動作二）；剪在紙離開她手指；畫面上沒有嘴；最後：紙在 Peg 的右手，Nora 的手空著停在半空 | — | 約 2 秒 |
 | c04 | 近景、慢推（從胸上推到肩上）；鏡頭在車道上、她左前方；直式，臉在上三分之一；身後是黑車車尾的車身與路燈的光暈（虛焦）；同一條街 | Peg（`coat`，玳瑁框眼鏡戴在臉上），站在黑車靠街這側、車尾旁；右手舉著 `a single sheet of heavy white paper about the size of a magazine page, held so only its back shows, a faint shadow of three short paragraphs through it, in her right hand`，紙背朝鏡頭；左手食指把眼鏡往上一推，左手 `a faint pale band of skin on her left ring finger where a ring used to be`；臉上的光：紅霓虹從鏡頭這邊一明一暗、路燈的冷白光從頭頂；眼睛在鏡片後面掃過紙背、再抬起來看畫面左的駕駛座窗；眉頭壓低、嘴唇在字之間抿緊、下巴往前，`no smile at any moment, until the last frame` | Peg 用左手食指把眼鏡往上一推（動作一），抬眼對著畫面左的黑色車窗，嘴在說話（快、乾、衝著車窗）；說完把紙往車窗那邊一揚（動作二），嘴閉上；最後：她瞪著畫面左的車窗 | Peg（快、乾、衝著車窗）：Till he's sentenced? And if he isn't?（到他判刑為止？那他要是沒判呢？）（原聲）（→ 答在 c07） | 約 4 秒 |
 | c05 | 近景、固定；鏡頭在車道上、她的左前方；直式，臉在上三分之一；身後是對街的人行道與路燈（虛焦） | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），兩手空著；臉上的光：路燈的冷白光從頭頂、紅霓虹從鏡頭這邊一明一暗掃過右頰；眉心往上提、眼睛從畫面右的 Peg 轉到畫面左的車窗、嘴唇微張、屏住氣，`no smile at any moment, until the last frame` | Nora 從人行道邊踏下車道一步、站到 Peg 左後半步（動作一），眼睛轉向畫面左的黑色車窗（動作二）；剪在眼睛轉過去；嘴閉著；最後：她站在車道上、看著車窗 | — | 約 2.5 秒 |
 | c06 | 插鏡、特寫、固定；**第一格就是黑車升著的駕駛座車窗**；鏡頭在車道上、與車窗同高；直式 | `a long black luxury sedan with no badge, number plate out of frame, parked under a dim streetlight` 的駕駛座車窗：黑玻璃上映著路燈的一點光與紅霓虹；車窗後一個坐著的暗影 | 車窗慢慢降下一半，玻璃上的反光往下滑走，露出車裡 Elias 的上半張臉（細銀絲框眼鏡、往後梳的深棕髮），路燈的冷白光斜照進去；剪在車窗停在一半；畫面上沒有嘴；最後：車窗降到一半、停住 | — | 約 2 秒 |
-| c07 | 近景、慢推（從肩上推到臉）；從 Peg 的右肩後拍（她濕亮的棕色大衣右肩與灰色捲髮在畫框右下緣、虛焦），沿著車身看降下一半的駕駛座窗；直式，Elias 的臉在上三分之一、在窗框裡 | Elias（基本款加 `a dark charcoal wool overcoat, worn open`），坐在駕駛座、臉轉向車窗外畫面右的 Peg，四分之三側臉、眼睛看著她；**左手在畫框外（車窗下緣以下）**；右手在方向盤上（窗裡只見袖口）；車裡的儀表板是暗的；臉上的光：路燈的冷白光從上方斜進車窗照在額頭與鏡框、遠處的紅霓虹一明一暗落在鏡片上；眉毛平、眼睛不眨、下巴收著、聲音低而平，`no smile at any moment, until the last frame` | Elias 看著 Peg，嘴在說話（低、平、像一條條款）；說完眼睛越過 Peg 的肩、落到她身後的 Nora 身上，嘴閉上；最後：他看著畫面右外的 Nora | Elias（低、平）：He will be.（他會的）（原聲）（結尾）← 因為 c04 | 約 3 秒 |
+| c07 | 近景、慢推（從肩上推到臉）；從 Peg 的右肩後拍（她濕亮的棕色大衣右肩與灰色捲髮在畫框左下緣、虛焦），沿著車身看降下一半的駕駛座窗；直式，Elias 的臉在上三分之一、在窗框裡 | Elias（基本款加 `a dark charcoal wool overcoat, worn open`），坐在駕駛座、臉轉向車窗外畫面左的 Peg，四分之三側臉、眼睛看著她；**左手在畫框外（車窗下緣以下）**；右手在方向盤上（窗裡只見袖口）；車裡的儀表板是暗的；臉上的光：路燈的冷白光從上方斜進車窗照在額頭與鏡框、遠處的紅霓虹一明一暗落在鏡片上；眉毛平、眼睛不眨、下巴收著、聲音低而平，`no smile at any moment, until the last frame` | Elias 看著 Peg，嘴在說話（低、平、像一條條款）；說完眼睛越過 Peg 的肩、落到她身後的 Nora 身上，嘴閉上；最後：他看著畫面左外的 Nora | Elias（低、平）：He will be.（他會的）（原聲）（結尾）← 因為 c04 | 約 3 秒 |
 | c08 | 近景、固定；鏡頭在車道上、她左前方；直式，臉在上三分之一；身後是黑車的車身（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上），右手的合約垂到身側（紙背朝鏡頭、在下緣）；臉上的光：紅霓虹從鏡頭這邊一明一暗、路燈的冷白光從頭頂；眼睛在鏡片後面盯著畫面左的車窗、眉頭還夾著、鼻翼一張、嘴唇抿成一條線，`no smile at any moment, until the last frame` | Peg 盯著車窗，用鼻子短短出一口氣（動作一），把紙往身側一收（動作二）；剪在紙收到身側；嘴閉著；最後：她站著、瞪著車窗 | — | 約 2.5 秒 |
 
 ### 第二場：車燈與雨（約 34.5 秒）
@@ -128,7 +128,7 @@ c09 起寫 `night, steady rain falling, wet black asphalt shining, one dim cold-
 | c28 | 近景、固定；從 Nora 的左肩後拍（她的左肩在畫框右下緣、虛焦）；直式，Grant 的臉在上三分之一 | Grant（`rain`），右手還停在半空（在下緣外）；`steady rain falling`；臉上是紅霓虹、頭頂的路燈與反照的白光；眨一下眼、眉毛一挑、嘴唇張開又閉上、眼睛往畫面右後的 Peg 一瞟，`no smile at any moment, until the last frame` | Grant 眨一下眼，眼睛往畫面右後的 Peg 一瞟、等她幫忙；剪在眼睛瞟過去；嘴閉著；最後：他看著 Peg | — | 約 2 秒 |
 | c29 | 中近景、固定；從 Grant 的右肩後拍（他的右肩在畫框左下緣、虛焦）；直式，頭上留空 | Peg（`coat`，玳瑁框眼鏡戴在臉上、鏡片上有雨點，`her feet in worn beige house slippers instead of shoes`），左手在背後拿著合約（不入鏡），右手空著；`steady rain falling`；臉上的光：車燈從地上反照的白光、頭頂的路燈；眼睛在雨點後面盯著 Grant、眉頭壓低、嘴唇抿薄、下巴往前，`no smile at any moment, until the last frame`；畫面右緣是 Nora 濕的駝色大衣肩膀（虛焦） | Peg 從 Nora 右邊跨上一步、站到 Grant 面前（動作一），右手從身側抬起來（動作二）；剪在右手抬到肩膀高；嘴閉著；最後：她站在他面前一臂，右手舉在肩膀高 | — | 約 2 秒 |
 | c30 | 插鏡、特寫、固定；**第一格就是 Peg 舉在肩膀高的右手**（棕色鋪棉大衣袖口、濕的）；直式；Grant 的臉不入鏡 | Peg 的右手與前臂；`steady rain falling`，雨點打在袖子上；背景是雨裡虛焦的路燈 | Peg 的右手往畫面左揮下去；**剪在手揮到一半**；畫面上沒有嘴、沒有臉；最後：手揮在半空 | — | 約 1.5 秒 |
-| c31 | 近景、固定；鏡頭在他右前方；直式，臉在上三分之一；前景畫面左緣是白色車門上緣（虛焦） | Grant（`rain`），第一格頭已經往他右邊（鏡頭這邊）轉開，左頰 `a faint pink flush`；眼鏡還戴著；`steady rain falling`；臉上的光：紅霓虹從鏡頭這邊一明一暗、頭頂的路燈；眼睛睜大、眉毛往上一跳、嘴唇張開、呼吸一停，`no smile at any moment, until the last frame` | 第一格頭已經轉開（「啪」一聲在第一格），他停在轉開的位置不動；剪在一秒後；嘴張著、沒聲音；最後：他的頭轉開、停住 | — | 約 2 秒 |
+| c31 | 近景、固定；鏡頭在他右前方；直式，臉在上三分之一；前景畫面左緣是白色車門上緣（虛焦） | Grant（`rain`），第一格頭已經往他右邊（鏡頭這邊）轉開，左頰 `a faint pink flush`；眼鏡還戴著；`steady rain falling`；臉上的光：紅霓虹從鏡頭這邊一明一暗、頭頂的路燈；眼睛睜大、看著畫面右下外的濕路面（不看鏡頭）、眉毛往上一跳、嘴唇張開、呼吸一停，`no smile at any moment, until the last frame` | 第一格頭已經轉開（「啪」一聲在第一格），他停在轉開的位置不動；剪在一秒後；嘴張著、沒聲音；最後：他的頭轉開、停住 | — | 約 2 秒 |
 | c32 | 近景、慢推（從胸上推到肩上）；從 Grant 的右肩後拍（他的右肩在畫框左下緣、虛焦）；直式，Peg 的臉在上三分之一 | Peg（`coat`，玳瑁框眼鏡戴在臉上、鏡片上有雨點，灰色捲髮濕了），右手垂回身側；`steady rain falling`；臉上的光：車燈從地上反照的白光、頭頂的路燈；四分之三側臉朝畫面左的 Grant、眼睛看著他；眉心往上提、眼睛在雨點後面發紅、嘴唇在字之間發抖、下巴繃住、聲音沉下來、很慢，`no smile at any moment, until the last frame` | Peg 看著兒子，嘴在說話（低、慢、每個字往下沉）；說完右手收回背後、從左手接過合約，嘴閉上；最後：兩手在背後、合約在右手，她看著他 | Peg（低、慢、往下沉）：That's for the hallway.（這是為了那條走廊）（原聲）（← 因為 c23） | 約 3 秒 |
 | c33 | 近景、固定；鏡頭在她左前方；直式，臉在上三分之一；身後是雨裡的路燈光暈（虛焦） | Nora（`motel`，大衣敞開，頭髮與大衣肩膀被雨打濕）；`steady rain falling`；臉上是車燈從地上反照的白光、頭頂的路燈、紅霓虹掃過右頰；眼睛一下睜大、眉毛挑高、嘴唇張開、呼吸停住，`no smile at any moment, until the last frame` | Nora 看著畫面左的 Peg 與 Grant，倒吸一口氣、左手在胸前抓緊大衣的前襟；剪在吸氣的一半；嘴張著、沒說話；最後：她抓著大衣前襟、看著他們 | — | 約 2 秒 |
 | c34 | 中景、慢推（從中景推到中近景）；鏡頭在汽車旅館這側的車道上、低角度往對街拍；直式：畫面左是白車打開的車門與 Grant，中間是 Nora，畫面右是 Peg；上方是路燈與雨絲；前景下緣是濕柏油上車燈的白光 | 共三人。Grant（`rain`，深棕色皮鞋），頭還轉開著、站在白色車門邊，左頰 `a faint pink flush`，眼睛垂著、嘴唇張開；Nora（`motel`，大衣敞開，棕褐短靴，頭髮與肩膀濕了），左手抓著大衣前襟，眉心提著、嘴唇閉緊；Peg（`coat`，`her feet in worn beige house slippers instead of shoes`，鏡片上有雨點），已經退回 Nora 右後半步、兩手在背後，下巴往前、嘴唇抿著；三張臉都 `no smile at any moment, until the last frame`；`a long pearl-white luxury sedan with tinted rear windows, no badge, number plate out of frame, stopped in the street by the empty curb, headlights on`（黑車已經不在）；`steady rain falling`，雨絲落在車燈的光裡 | 只剩雨：雨落在三個人的頭髮與肩上，誰也不動；Peg 往後退的最後半步踩實；剪在雨裡停滿三秒；三個人都嘴閉著；最後：三人停在這一刻 | — | 約 3.5 秒 |
@@ -169,6 +169,15 @@ c09 起寫 `night, steady rain falling, wet black asphalt shining, one dim cold-
 - **c35**：Grant 用左手指尖碰一下左頰（摸臉）。
 - **白車的道具句**：bible 的 `, stopped in the street beside the black car, headlights on` 用到 c18 黑車開走為止；第三場（c34、c41）改寫 `, stopped in the street by the empty curb, headlights on`，免得模型在接點鏡裡又畫出一輛黑車。第 19 集開頭照這句。
 - **Grant 與 Elias 不同框**：c10 的全景裡兩輛車擋風玻璃後只是暗影；c12 他看黑車車窗時車窗在畫面左外；c15 Elias 的鏡不帶 Grant。
+
+#### 2026-11-12 審稿後的修改
+
+依 `review/2026-11-12-e015-e020-storyboard.md` 與 bible〈第 15–20 集審稿後補定〉改的。本集還沒錄、沒拍，沒有要重錄或重抽的鏡；台詞一句都沒改。
+- **〈這集接在哪〉**：第一鏡接第 17 集 c41 的新位置（車身在畫面右、Nora 在畫面中間偏左的人行道上、車尾旁、汽車旅館在畫面右後方隔著街）。
+- **c02**：Peg 過街的方向改成**從畫面左往右**，接 c01 她往畫面右外衝。
+- **c07**：Peg 的右肩在**畫框左下緣**；Elias 的臉與視線跟著改成朝畫面左的 Peg、說完看畫面左外的 Nora；第一場軸線一起改。
+- **c31**：被打轉開的臉寫視線：看著畫面右下外的濕路面，不看鏡頭。
+- 鏡數與秒數不變：41 鏡／111.5 秒。
 
 ### 配音
 
@@ -256,4 +265,5 @@ c09 起寫 `night, steady rain falling, wet black asphalt shining, one dim cold-
 - **Grant**：c31 起左頰 `a faint pink flush`；`rain` 一路到第 19 集。
 - **Peg**：眼鏡戴在臉上、c09 起鏡片上有雨點；穿拖鞋；左手無名指一圈淡色的皮膚；帆布袋、帳本、毛線都留在房間（不拍）。這是全季唯一一記巴掌。
 - **誰知道了什麼**：Grant 知道 Nora 跟一個坐黑車的男人有一張紙（不知道內容、不知道是誰）；Elias 說 Grant 會被判刑，然後開走；Nora 第一次對 Grant 吼；Peg 當著兒子的面站到 Nora 這邊、打了他；Grant 說她什麼都沒有。
+- **接點的位置**：第一鏡接第 17 集 c41（審稿後：車身在畫面右、Nora 在畫面中間偏左的人行道上、車尾旁、汽車旅館在畫面右後方）；Peg 從畫面左往右過街（c02）。
 - **下一集接**：第 19 集第一鏡：同一刻，Nora 雨裡的臉，"Tomorrow. Ten o'clock. Superior Court."。
