@@ -75,7 +75,7 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c01 | 中景、慢推（從中景推到中近景）；鏡頭在候診椅那排的走道上、低一點；直式前後疊開：前景右下緣是虛焦的灰色椅背，中間是正在站起來的 Peg，畫面左後是柱子與走向柱子的 Grant | 共兩人。Peg（`coat`：長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、木珠項鍊、深棕色平底鞋），`a plain beige canvas tote bag with no print, hanging from her left shoulder`；左手抓著 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`，`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；第一格她已經撐著椅子扶手起到一半；四分之三側臉朝畫面左後的 Grant，不看鏡頭；眉頭壓低、眼睛在鏡片後面發硬、嘴唇抿薄、下巴往前，`no smile at any moment, until the last frame`；身旁空椅上 `two plain white paper cups with lids, no logo`；畫面左後：Grant（基本款、深棕色皮鞋）兩手空著、朝柱子走，臉上練過的閉嘴微笑、不露齒，眼睛看著畫面左外的電梯；柱子後的 Nora 不入鏡 | Peg 從椅子上站起來（動作一，第一格已經起到一半），往前跨一步站到走道上（動作二）；剪在她站定；嘴閉著；最後：她站在走道上，看著 Grant 的方向 | — | 約 2 秒 |
-| c02 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；身後是灰色椅背與大廳深處（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上），站在走道上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`；左手還抓著帳本（下緣）；日光燈；四分之三側臉朝畫面左的 Grant、眼睛看著他，不看鏡頭；眉毛壓平、嘴唇在字之間抿緊、下巴抬起、聲音乾而大聲，`no smile at any moment, until the last frame` | Peg 看著 Grant，嘴在說話（乾、大聲，整個大廳聽得到）；說完把帳本塞進大衣右口袋，嘴閉上；最後：她兩手空著、看著 Grant | Peg（乾、大聲）：Grant. What are you doing here?（Grant。你來這裡幹嘛？）（原聲）（→ 答在 c03：他不答，反問一聲 Mom?） | 約 3.5 秒 |
+| c02 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；身後是灰色椅背與大廳深處（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上），站在走道上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`；左手還抓著帳本（下緣），`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；日光燈；四分之三側臉朝畫面左的 Grant、眼睛看著他，不看鏡頭；眉毛壓平、嘴唇在字之間抿緊、下巴抬起、聲音乾而大聲，`no smile at any moment, until the last frame` | Peg 看著 Grant，嘴在說話（乾、大聲，整個大廳聽得到）；說完把帳本塞進大衣右口袋，嘴閉上；最後：她兩手空著、看著 Grant | Peg（乾、大聲）：Grant. What are you doing here?（Grant。你來這裡幹嘛？）（原聲）（→ 答在 c03：他不答，反問一聲 Mom?） | 約 3.5 秒 |
 | c03 | 近景、固定；從 Peg 的左肩後拍（她的大衣肩與灰色短髮在畫框右下緣、虛焦）；直式，Grant 的臉在上三分之一；身後是包淺木的柱子與電梯門（虛焦） | Grant（基本款：沙金色側分短髮、細的圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫），兩手空著；日光燈；第一格他還朝畫面左走、臉上練過的閉嘴微笑、不露齒；聽見叫聲停步、轉身朝畫面右的 Peg：笑一下收掉，嘴角放平、眉毛挑起、眼睛眨一下，之後不笑；四分之三側臉朝畫面右的 Peg、眼睛看著她，不看鏡頭；聲音平穩、低；Peg 只有肩與後腦、不露臉 | Grant 停步轉身（動作一，轉到一半起），嘴在說話（平穩、低，一個字）（動作二）；說完眼睛往她身後空椅上的兩個紙杯瞄一下，嘴閉上；最後：他面向 Peg，嘴角平 | Grant（聲音平穩、低）：Mom?（媽？）（原聲）（→ 答在 c04） | 約 2.5 秒 |
 | c04 | 近景、固定；從 Grant 的右肩後拍（他的淺石色西裝肩在畫框左下緣、虛焦）；直式，Peg 的臉在上三分之一；身後是灰色候診椅（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`），站在走道上；日光燈；四分之三側臉朝畫面左的 Grant、眼睛看著他，不看鏡頭；眉毛一邊挑起、嘴唇噘一下、下巴抬著、聲音乾，`no smile at any moment, until the last frame`；Grant 只有肩、不露臉 | Peg 看著 Grant，嘴在說話（乾、理直氣壯）；說完右手食指點一下自己的眼鏡框，嘴閉上；最後：她的手放下，看著他 | Peg（乾、理直氣壯）：Eye appointment.（看眼睛）（原聲）← 因為 c03 | 約 2.5 秒 |
 | c05 | 近景、固定；鏡頭在柱子前、她右前方一點；直式，臉在上三分之一；身後只有包淺木的柱面 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），背貼在柱子右側；左手把 `a folded pale pink carbon-copy form about the size of her hand, print not readable` 壓在大衣前襟上；眼睛還有一點紅；第一格眼睛閉著一秒，然後睜開、往畫面右後斜看（聽見 Peg 的聲音），不看鏡頭；眉心往上提、嘴唇微張、一口憋住的氣慢慢吐出來，`no smile at any moment, until the last frame` | Nora 睜開眼、往右後斜看，憋著的那口氣慢慢吐出來；剪在吐氣到一半；嘴閉著（微張）；最後：她背貼著柱子，看著右後 | — | 約 2.5 秒 |
@@ -196,6 +196,12 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 - **c31 台詞改了**：「Then who switched them?」→「So who switched my pills?」（them 會被聽成病歷；bible 補定）。5 個字、秒數不變（3 秒）。**要重錄**（還沒錄，照新句錄）。
 - **c38、c40、c42**：領藥紀錄剛印出來是**還沒釘的散頁**，道具句改成 `three loose white printed pages, held so only the backs or edges show, still warm from the printer`（bible 補定）；第 13 集 c05 Dale 釘好之後才用 stapled 那句。
 - **c40、c42**：拿掉「一欄、一行」的寫法（會畫出假字），寫成手指在紙的另一面往下移、紙背只透出指尖的淡影。
+- 鏡數與秒數不變：42 鏡／117 秒。
+
+#### 2026-11-12 跨集稽核後的修改
+
+依 `review/2026-11-12-audit-e011-e020.md`（第 11–20 集跨集連戲稽核）改的。台詞一句都沒改，**沒有要重錄的**；下列鏡照新寫法抽（已抽過的要重抽）。
+- **c02**：Peg 抓著帳本的左手補道具句 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`（bible〈帳〉：第 11–15 集拍到她的左手每一鏡都寫婚戒）。
 - 鏡數與秒數不變：42 鏡／117 秒。
 
 ### 配音

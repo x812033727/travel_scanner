@@ -153,7 +153,7 @@ Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂�
 | c38 | 中景、慢推（從中景推到中近景）；鏡頭在柱子右邊緣外、低一點，往大廳深處拍；直式；前景左下緣是虛焦的柱角 | Grant（基本款：沙金色側分短髮、細的圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、深棕色皮鞋），兩手空著；第一格他已經轉身，朝畫面左前（柱子與電梯）走來；眼睛看著畫面左外的電梯，不看鏡頭；練過的閉嘴微笑、不露齒、眉毛放鬆、下巴微抬；身後是淺色石地板與一排灰色候診椅（虛焦） | Grant 朝柱子走來，皮鞋一步一步落在石地板上；剪在第二步落下；嘴閉著；最後：他離柱子三步，還在走 | — | 約 2.5 秒 |
 | c39 | 近景、固定；鏡頭在候診椅那排的走道上、往 Peg 拍；直式，臉在上三分之一；身後是灰色椅背與大廳深處（虛焦） | Peg（`coat`：長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、木珠項鍊），坐在第二排靠走道的椅子上；`a plain beige canvas tote bag with no print, hanging from her left shoulder`；膝上 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`，右手拿著那支鉛筆；身旁空椅上 `two plain white paper cups with lids, no logo`；左手按著帳本，`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；第一格她低頭看帳本，然後抬頭、四分之三側臉朝畫面左的大廳中間、眼睛定住，不看鏡頭；眉毛一下挑高、眼睛在鏡片後面睜大、嘴唇微張、呼吸停住，`no smile at any moment, until the last frame` | Peg 從帳本上抬起頭（動作一），手裡的鉛筆停在半空（動作二）；剪在鉛筆停住；嘴閉著；最後：她抬著頭、看著畫面左 | — | 約 2.5 秒 |
 | c40 | 近景、固定；同 c35 的鏡位；直式，臉在上三分之一；身後只有包淺木的柱面 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），背貼著柱子；左手把摺起來的粉紅副本壓在胸前；臉朝畫面左，眼睛往右後瞄；聽見皮鞋聲越來越近：眼睛睜大、眉心擠緊、嘴唇抿死、喉嚨吞一下，`no smile at any moment, until the last frame` | 皮鞋聲越來越近，Nora 的肩膀往柱子再貼緊一點、閉一下眼又睜開；剪在眼睛睜開；嘴閉著；最後：她貼著柱子、眼睛往右後瞄 | — | 約 2.5 秒 |
-| c41 | 中景、固定（接第 12 集之前的最後一刻）；鏡頭在入口這邊、往裡拍；直式前後疊開：前景是畫面左的柱子與貼著柱子的 Nora，中景是走來的 Grant，後景畫面右是候診椅上的 Peg | 共三人。前景：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐色平底短靴）背貼在柱子右側（靠入口這面的右半邊），左手握著 `a folded pale pink carbon-copy form about the size of her hand, print not readable`，臉朝畫面左、眼睛往右後瞄：眉心擠緊、嘴唇抿死，`no smile at any moment, until the last frame`；柱子左邊是一排電梯門；中景：Grant（基本款、深棕色皮鞋），兩手空著，離柱子兩步、朝柱子走來，眼睛看著畫面左外的電梯、不看鏡頭，臉上練過的閉嘴微笑、不露齒；畫面右後：Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`）坐在候診椅上，膝上帳本、身旁空椅上 `two plain white paper cups with lids, no logo`，抬著頭看著兒子：眉毛挑高、嘴唇微張，`no smile at any moment, until the last frame` | Grant 再走一步；Nora 屏住氣；Peg 的手按在膝上的帳本上；剪在 Grant 的腳落下；三人都嘴閉著；最後：Grant 離柱子兩步，三個人停在這一刻 | — | 約 3.5 秒 |
+| c41 | 中景、固定（接第 12 集之前的最後一刻）；鏡頭在入口這邊、往裡拍；直式前後疊開：前景是畫面左的柱子與貼著柱子的 Nora，中景是走來的 Grant，後景畫面右是候診椅上的 Peg | 共三人。前景：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐色平底短靴）背貼在柱子右側（靠入口這面的右半邊），左手握著 `a folded pale pink carbon-copy form about the size of her hand, print not readable`，臉朝畫面左、眼睛往右後瞄：眉心擠緊、嘴唇抿死，`no smile at any moment, until the last frame`；柱子左邊是一排電梯門；中景：Grant（基本款、深棕色皮鞋），兩手空著，離柱子兩步、朝柱子走來，眼睛看著畫面左外的電梯、不看鏡頭，臉上練過的閉嘴微笑、不露齒；畫面右後：Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`）坐在候診椅上，膝上帳本、身旁空椅上 `two plain white paper cups with lids, no logo`，左手按在膝上的帳本上，`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；抬著頭看著兒子：眉毛挑高、嘴唇微張，`no smile at any moment, until the last frame` | Grant 再走一步；Nora 屏住氣；Peg 的左手按在膝上的帳本上；剪在 Grant 的腳落下；三人都嘴閉著；最後：Grant 離柱子兩步，三個人停在這一刻 | — | 約 3.5 秒 |
 
 約 117.5 秒（1 分 57.5 秒）、41 鏡（第一場 13、第二場 6、第三場 11、第四場 11），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 40–44 鏡。
 開場 10 秒四鏡（c01–c04）：c01 兩顆藥與停住的筆尖（鉤子，沒有臉）、c02 Nora 在窗光裡的臉、c03 Brandt「What I prescribed isn't sweet.」（約第 5.5 秒開口）、c04 Dale 第 8.5 秒入鏡「And the imprint's one stroke shallow.」。平均一鏡 2.87 秒（哭的兩鏡 4 秒）。
@@ -192,6 +192,12 @@ Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂�
 - **c20**：拿掉背景虛焦的 Dale（位置跟軸線不合），她身後只有關著的淺木門。場頭〈在場的人〉與造型清單一起改。
 - **c24–c28**：粉紅表格平放時道具句後接 `, lying flat`（bible 補定）；c25 推過去的表格也照抄。
 - **c27→c29 筆與副本的去向**：c27 Nora 簽完把筆擱回表格上；c28 第一格 Brandt 從表格上拿起筆、簽一下；撕下副本移到 c29 第一格（已撕下、在她左手），c29 摺好遞出。每鏡仍是兩個動作以內。
+- 鏡數與秒數不變：41 鏡／117.5 秒。
+
+#### 2026-11-12 跨集稽核後的修改
+
+依 `review/2026-11-12-audit-e011-e020.md`（第 11–20 集跨集連戲稽核）改的。台詞一句都沒改，**沒有要重錄的**；下列鏡照新寫法抽（已抽過的要重抽）。
+- **c41**：Peg 的左手按在膝上的帳本上，補道具句 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`（bible〈帳〉：第 11–15 集拍到她的左手每一鏡都寫婚戒）。
 - 鏡數與秒數不變：41 鏡／117.5 秒。
 
 ### 配音

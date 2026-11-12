@@ -119,7 +119,7 @@ c32 寫 `the deep blue in the curtain gap slowly fades to black night, the warm 
 ### 第三場：房間，信封（約 36.5 秒）
 
 **場頭**：
-- **地點與場景圖**：同一個房間（格局同第二場），窗簾縫外全黑；Nora 的床單上：粉紅副本、領藥紀錄；揉皺的報告在 Nora 膝上；地毯上 `a pale blue cotton shirt, half folded, dropped on the carpet`（Peg 腳邊）；Peg 床上 `a plain beige canvas tote bag with no print, on the bed beside her`；床頭櫃上檯燈、帳本、房間鑰匙。c37 起加 `a plain manila envelope about the size of a magazine, no writing`（從 Peg 的帆布袋拿出來）。
+- **地點與場景圖**：同一個房間（格局同第二場），窗簾縫外全黑；Nora 的床單上：粉紅副本、領藥紀錄；揉皺的報告在 Nora 膝上；地毯上 `a pale blue cotton shirt, half folded, dropped on the carpet`（Peg 腳邊）；Peg 自己的床上 `a plain beige canvas tote bag with no print, on her bed`；床頭櫃上檯燈、帳本、房間鑰匙。c37 起加 `a plain manila envelope about the size of a magazine, no writing`（從 Peg 的帆布袋拿出來）。
 - **時間與天氣**：第 6 天 19:30–19:40，夜、乾；床間的檯燈暖黃，紅霓虹從窗簾縫慢慢一明一暗，窗外全黑；整場維持夜色。
 - **軸線**：同第二場：Nora 的床在畫面左、Peg 的床在畫面右。**Nora 坐在自己的床緣、面向畫面右前；Peg 坐在她右邊同一張床上（靠兩床之間那一側，畫面右）**，面向畫面左的 Nora；Peg 自己的床與帆布袋在她身後的畫面右，伸手搆得到。
 - **在場的人**：Nora、Peg。
@@ -141,7 +141,7 @@ c32 寫 `the deep blue in the curtain gap slowly fades to black night, the warm 
 | c42 | 近景、慢推（從胸上推到臉）；從 Peg 的左肩後拍（她的開襟衫肩在畫框右下緣、虛焦）；直式，Nora 的臉在上三分之一；身後是厚窗簾與那道縫（全黑，紅光一明一暗） | Nora（`motel`），坐在床緣，兩手壓著膝上的信封（下緣）；頭髮從髻裡散下一半；眼睛還紅；檯燈的暖光從畫面右，紅霓虹從她左後方掃過左頰；第一格眼睛垂在信封上，然後抬起來、四分之三側臉朝畫面右的 Peg、看著她，不看鏡頭；眉毛壓平、眼睛不眨、下巴抬著、嘴唇在字之間抿緊、聲音很輕很清楚，`no smile at any moment, until the last frame`；Peg 只有肩、不露臉 | Nora 抬眼看 Peg，嘴在說話（輕、清楚、不再發抖）；說完兩手把信封壓在膝上，嘴閉上；最後：她看著 Peg | Nora（輕、清楚、不再發抖）：I'm going to the police.（我要去報警）（原聲）（結尾）（懸念 → 下一集第一場） | 約 3.5 秒 |
 | c43 | 插鏡、手部特寫、固定；**第一格就是 Peg 放在 Nora 背上的兩隻手**；直式 | Peg 的兩手（燕麥色開襟衫袖口）在 Nora 奶油色毛衣的背上；左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；檯燈的暖光、紅霓虹一明一暗；畫面裡沒有臉 | 她的兩手本來在背上輕輕畫圈，一下停住、手指不動了；剪在手停住的那一下；畫面上沒有嘴；最後：兩隻手停在 Nora 背上 | — | 約 2.5 秒 |
 | c44 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（她散開的頭髮與肩在畫框左下緣、虛焦）；直式，Peg 的臉在上三分之一；身後是浴室那面牆 | Peg（`visit`，玳瑁框眼鏡戴在臉上），坐在 Nora 右邊；檯燈的暖光；四分之三側臉朝畫面左下的 Nora；呼吸一下停住、眼睛在鏡片後面先看著 Nora 的臉、再慢慢垂到她膝上的信封、喉嚨吞一下、嘴唇抿緊、下巴繃住，`no smile at any moment, until the last frame`；臉頰還濕；Nora 只有頭髮與肩、不露臉 | Peg 的眼睛從 Nora 臉上慢慢垂到信封，吞一下口水；剪在吞的那一下；嘴閉著；最後：她看著那個信封 | — | 約 3 秒 |
-| c45 | 中景、固定（接第 14 集之前的最後一刻）；鏡頭在床尾；直式：畫面左是 Nora 的床與坐著的兩人，中間是床頭櫃與檯燈，畫面右是 Peg 的床；前景下緣是地毯上的淺藍襯衫 | 共兩人。畫面左：Nora（`motel`，沒穿大衣，頭髮從髻裡散下一半，眼睛紅腫，棕褐色平底短靴）坐在自己的床緣（靠窗），兩手壓著膝上 `a plain manila envelope about the size of a magazine, no writing`：眉毛壓平、眼睛看著 Peg、嘴唇閉緊；她右邊同一張床上：Peg（`visit`，玳瑁框眼鏡戴在臉上、平底包鞋），兩手停在 Nora 背上：眉頭收著、眼睛垂在信封上、嘴唇抿緊；兩張臉都 `no smile at any moment, until the last frame`；Peg 腳邊的地毯上 `a pale blue cotton shirt, half folded, dropped on the carpet`；Peg 的床上 `a plain beige canvas tote bag with no print, on the bed beside her` 與床尾 `a long brown quilted coat lying across the foot of her bed`；Nora 床尾 `a camel wool coat with deep pockets, lying across the foot of the bed`；床頭櫃上 `a small motel bedside lamp with a pale yellow shade, warm light`、`a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`、`an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number`；窗下小桌上 `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside`（畫面左緣）；紅霓虹從窗簾縫一明一暗；窗外全黑 | 紅光亮兩拍、暗一拍，又亮；兩人都不動；Nora 的胸口慢慢起伏；剪在紅光第二次暗下去；兩人都嘴閉著；最後：兩人停在這一刻 | — | 約 3.5 秒 |
+| c45 | 中景、固定（接第 14 集之前的最後一刻）；鏡頭在床尾；直式：畫面左是 Nora 的床與坐著的兩人，中間是床頭櫃與檯燈，畫面右是 Peg 的床；前景下緣是地毯上的淺藍襯衫 | 共兩人。畫面左：Nora（`motel`，沒穿大衣，頭髮從髻裡散下一半，眼睛紅腫，棕褐色平底短靴）坐在自己的床緣（靠窗），兩手壓著膝上 `a plain manila envelope about the size of a magazine, no writing`：眉毛壓平、眼睛看著 Peg、嘴唇閉緊；她右邊同一張床上：Peg（`visit`，玳瑁框眼鏡戴在臉上、平底包鞋），兩手停在 Nora 背上：眉頭收著、眼睛垂在信封上、嘴唇抿緊；兩張臉都 `no smile at any moment, until the last frame`；Peg 腳邊的地毯上 `a pale blue cotton shirt, half folded, dropped on the carpet`；Peg 自己的床上（畫面右）`a plain beige canvas tote bag with no print, on her bed` 與床尾 `a long brown quilted coat lying across the foot of her bed`；Nora 床尾 `a camel wool coat with deep pockets, lying across the foot of the bed`；床頭櫃上 `a small motel bedside lamp with a pale yellow shade, warm light`、`a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`、`an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number`；窗下小桌上 `a heavy block of thick clear cast glass the size of a brick, about as long as her hand, faintly green, with a faint shadow of something folded inside`（畫面左緣）；紅霓虹從窗簾縫一明一暗；窗外全黑 | 紅光亮兩拍、暗一拍，又亮；兩人都不動；Nora 的胸口慢慢起伏；剪在紅光第二次暗下去；兩人都嘴閉著；最後：兩人停在這一刻 | — | 約 3.5 秒 |
 
 約 135.5 秒（2 分 15.5 秒）、45 鏡（第一場 10、第二場 22、第三場 13），是各鏡秒數加起來的估計；細綱 `duration_s` 135 秒，bible 目標 44–48 鏡。
 開場 10 秒四鏡（c01–c04）：c01 Dale 的指尖往下滑、c02 Dale 念出名字（第 2.5 秒）、c03 Nora 的臉（第 6.5 秒）、c04 Peg 的臉（第 9 秒）。平均一鏡 3.01 秒（崩潰與擁抱的幾鏡 4–5 秒）。
@@ -175,6 +175,12 @@ c32 寫 `the deep blue in the curtain gap slowly fades to black night, the warm 
 - **c01–c05 領藥紀錄是還沒釘的散頁**：道具句 `three loose white printed pages, held so only the backs or edges show`（bible 補定）；c05 收尾改成 Dale 在檯面上對齊、用灰色小釘書機釘好（新道具 `a small grey office stapler`），c08 起才用 stapled 那句。音效 c05 加釘書機一聲。
 - **過肩越軸**（c29、c30、c42、c44）：Peg 坐在 Nora 右邊（畫面右），所以 Peg 的鏡（c29、c44）改從 Nora 的**右**肩後拍（肩在畫框左下），Peg 看畫面左下；Nora 的鏡（c30、c42）改從 Peg 的**左**肩後拍（肩在畫框右下），Nora 看畫面右。
 - **c30→c33 紙團**：c30 紙團掉在 Nora 膝上；c32 補寫紙團在她膝上；c33 第一格她已經直起身、紙團在膝上，她拿起來打開（不再從右拳裡打開）。
+- 鏡數與秒數不變：45 鏡／135.5 秒。
+
+#### 2026-11-12 跨集稽核後的修改
+
+依 `review/2026-11-12-audit-e011-e020.md`（第 11–20 集跨集連戲稽核）改的。台詞一句都沒改，**沒有要重錄的**；下列鏡照新寫法抽（已抽過的要重抽）。
+- **c45（接點）**：帆布袋的道具句改成 `a plain beige canvas tote bag with no print, on her bed`（在 Peg 自己的床上；原句 `on the bed beside her` 會被讀成在 Nora 的床上、Peg 身邊；第三場場頭一起改）；Peg 的大衣照舊攤在她床尾。第 14 集 c01–c04 照這一鏡改。
 - 鏡數與秒數不變：45 鏡／135.5 秒。
 
 ### 配音
