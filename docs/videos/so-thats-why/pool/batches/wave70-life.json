@@ -1,0 +1,2725 @@
+{
+  "batch_id": "wave70-life-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十輪從零研究的新長題：啄木鳥為什麼不會腦震盪（C15-01）、象鼻（C15-02）（作者 F37，覆核 V41）；動物會不會跟著音樂打拍子（C17-02，作者 F39，覆核 V42）；發光菇（C18-01）、植物發熱（C18-02）（作者 F40，覆核 V43），都留後備；另含 F36 天空偏振題裡的昆蟲導航核心。",
+  "sources": [
+    {
+      "id": "L70-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9123078/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s00359-022-01545-2",
+      "title": "Performance of polarization-sensitive neurons of the locust central complex at different degrees of polarization",
+      "publisher": "J Comp Physiol A 208:387–403（2022）；Hensgen、Zittrell、Pfeiffer、Homberg（馬堡大學／符茲堡大學）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "摘要（DoP 晴天最高可達 0.75、通常更低；DoP 0.05 仍有顯著反應）；前言（天空偏振源自瑞利散射、依太陽位置）",
+      "summary": "沙漠蝗蟲中央複合體的偏振角調諧神經，用不同偏振度（DoP）的光刺激做細胞內記錄：DoP 低到 0.05 仍有顯著反應；作者寫晴天天空光的 DoP 最高約 0.75，雲或霾散射時通常低很多；輸入層神經較受近乎非偏振光影響，下游較不受影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "神經生理實驗（實驗室光刺激），不是野外行為；「蝗蟲在陰天仍能定向」只能說「神經在低偏振度仍有反應」。天空 DoP 0.75 是前言背景，非本研究量測。 覆核 V39（2026-11-12）：summary「DoP 低到 0.05 仍有顯著反應」改為「DoP 0.05 時仍有不到一半受測神經有顯著反應，作者估可靠編碼門檻在 0.1 與 0.05 之間；0.002 無反應」；「下游較不受影響」保留「appears」語氣。",
+      "author_cache": {
+        "file": "f36src/PMC9123078.txt（原始 PMC9123078.xml）",
+        "sha256_prefix": "2d2125deee776dc9",
+        "xml_sha256_prefix": "1a50bbc3f5930f51",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S002",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11627510/fullTextXML",
+      "canonical_url": "https://doi.org/10.7554/eLife.97615",
+      "title": "Polarised moonlight guides nocturnal bull ants home",
+      "publisher": "eLife 13:RP97615（2024）；Freas、Narendra、Murray、Cheng（麥覺理大學）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "摘要與 eLife digest（月光偏振約為日光百萬分之一）；Results（滿月兩巢 38.4±4.8°、23.4±4.2°；上弦 37.6±4.1°；眉月 24.3±15.5°；無月不顯著 –5.4±7.4°、1.5±2.4°；虧月 39.8° vs 16.0°、38.1° vs 22.7°）；Discussion 第 45–46 段",
+      "summary": "在澳洲夜行性牛頭犬蟻 Myrmecia midas 回巢途中，把直線偏光片蓋在頭上，使頭頂偏振方向轉 ±45°：滿月（照明 >80%）時兩巢螞蟻往同方向偏 38.4° 與 23.4°；上弦（約 50%）與眉月（約 20%）仍顯著偏轉；沒有月亮時蓋上偏光片不會轉向。虧月期偏轉明顯小於盈月期。作者稱這是首次證明動物用月光偏振「回家」（蜣螂先前只用來保持直線）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "兩個巢、單一物種；偏光片提供的是偏振度遠高於天然月光的人造圖案（審稿人指出）；偏轉角各條件與各巢不同，不能合成一個數字；「百萬分之一」是作者引用的背景數值。 覆核 V39（2026-11-12）：「月光的偏振圖案約為日光的百萬分之一」改為「月光約比陽光暗一百萬倍（eLife digest）」；limitations 補「上弦、眉月、無月與虧月條件只在 Nest 1 測」。",
+      "author_cache": {
+        "file": "f36src/PMC11627510.txt（原始 PMC11627510.xml）",
+        "sha256_prefix": "3b74fb1a6253fc87",
+        "xml_sha256_prefix": "9fb4fec084a86760",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S003",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12606212/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsos.250975",
+      "title": "Comparative use of a polarized light compass for twilight and moonlight navigation in diurnal and nocturnal bull ants",
+      "publisher": "R Soc Open Sci 12:250975（2025）；Freas、Cheng（麥覺理大學／CNRS Toulouse）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "摘要；Background",
+      "summary": "白天覓食、黃昏回巢的 Myrmecia tarsata 也會用日光與月光偏振圖案回巢，但月光下的表現隨月相變暗而變差；同地夜行的 M. midas 整個月相都表現穩定。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F36-S002 同一研究群（Freas、Cheng），合計封頂；本筆只讀到摘要層級的結論句已足夠，數字未引用。",
+      "author_cache": {
+        "file": "f36src/PMC12606212.txt（原始 PMC12606212.xml）",
+        "sha256_prefix": "e4b41829199b2063",
+        "xml_sha256_prefix": "a56a1b67c9313169",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8918814/fullTextXML",
+      "canonical_url": "https://doi.org/10.1242/jeb.243734",
+      "title": "The interplay of directional information provided by unpolarised and polarised light in the heading direction network of the diurnal dung beetle Kheper lamarcki",
+      "publisher": "J Exp Biol 225:jeb243734（2022）；Khaldy、Foster、Yilmaz、Belušič、Gagnon、Tocco、Byrne、Dacke（隆德大學等）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "Summary；Results（偏振 11%、64%、100% 轉 90° 時甲蟲轉 67.96±38.90°、72.80±23.33°、88.74±19.35°，N=15；與人造太陽並存時的權重；偏振光強度降約 100 倍後改跟太陽 80.20±32.22°）；Discussion 第 65–69 段",
+      "summary": "白天推糞球的蜣螂：頭頂只有偏振光帶時，偏振度低到 11% 牠們仍會跟著 90° 轉向；同時給側面人造太陽時，偏振 11% 時全部跟太陽轉、100% 偏振時改守偏振方向；把偏振光強度降約 100 倍後又改跟太陽。作者認為甲蟲依當下「哪個線索最可靠」分配權重。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗室人造光源；Dacke 研究群與池中 R32 系列（蜣螂銀河導航）同群，但答案不同；Belušič 也是 F36-S005 共同作者，覆核可能合併封頂。 覆核 V39（2026-11-12）：summary 補「11% 偏振加人造太陽時平均轉 77.13 ± 21.94°（非全部）；亮度降約 100 倍是在 64% 偏振條件下」。",
+      "author_cache": {
+        "file": "f36src/PMC8918814.txt（原始 PMC8918814.xml）",
+        "sha256_prefix": "bbe9acdc830c9284",
+        "xml_sha256_prefix": "d189427f0413d989",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8086976/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsbl.2020.0736",
+      "title": "Spatial orientation of social caterpillars is influenced by polarized light",
+      "publisher": "Biol Lett 17:20200736（2021）；Uemura、Meglič、Zalucki、Battisti、Belušič",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "摘要；Methods（野外偏光片隧道）；Results（偏光片使領頭與整列轉 58–103°；中性密度濾片只轉 18–32°）",
+      "summary": "松異舟蛾與澳洲 Ochrogaster lunifer 的毛毛蟲排成一列行進；把偏光片罩在領頭蟲上方，整列轉向 58–103°；只減光不改偏振的中性密度濾片只造成 18–32° 小幅偏轉。第一對側單眼具備類似成蟲背緣區的偏振構造。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "轉角是三組幼蟲的範圍，不可當單一數字；與 F36-S004 有共同作者 Belušič。 覆核 V39（2026-11-12）：limitations 補「58–103° 是三組各自的平均，O. lunifer 垂直條件 58 ± 58；中性密度濾片只有兩組資料；偏光片本身透光 40% 並再依角度減光至多 30%」。",
+      "author_cache": {
+        "file": "f36src/PMC8086976.txt（原始 PMC8086976.xml）",
+        "sha256_prefix": "b0c2b92009caffc5",
+        "xml_sha256_prefix": "186520a74c09d089",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12092721/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-025-02453-6",
+      "title": "The use of the skylight polarization gradient in young sandhopper’s orientation",
+      "publisher": "Sci Rep 15:17438（2025）；Ugolini、Yamahama、Hariyama、Mercatelli（佛羅倫斯大學等）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "Results and discussion（第 15–20 段：野外採集幼體在只有偏振梯度的圓頂下定向優於實驗室出生幼體）",
+      "summary": "沙灘跳蝦 Talitrus saltator：野外採到的幼體（有經驗）在只有天空偏振梯度的圓頂下，比實驗室出生、沒見過天空的幼體更能朝海的方向；實驗室出生的幼體在真太陽下也定向得比在圓頂下好。作者認為利用偏振梯度需要經驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本為各釋放組平均定向指標（GO），不引用單一百分比；成體不直接用 e-vector 而用偏振光的亮度差（前言），措辭要小心。",
+      "author_cache": {
+        "file": "f36src/PMC12092721.txt（原始 PMC12092721.xml）",
+        "sha256_prefix": "d2afedbec123ec83",
+        "xml_sha256_prefix": "c5491ec95c1f52a6",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S007",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8790360/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rspb.2021.2499",
+      "title": "Rotation of skylight polarization during learning walks is necessary to trigger neuronal plasticity in Cataglyphis ants",
+      "publisher": "Proc R Soc B 289:20212499（2022）；Grob、Holland Cunz、Grübel、Pfeiffer、Rössler（符茲堡大學）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "摘要；Introduction 第 19 段（太陽與偏振圖案一天中會移動，需學習太陽日行軌跡）",
+      "summary": "沙漠蟻 Cataglyphis 初次出巢的「學習散步」：只有在頭頂偏振圖案會旋轉的條件下散步，腦中中央複合體與蕈狀體的結構變化才出現；只曝露天空光但不做學習散步時，變化只限光譜相關的部分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "結構性神經可塑性指標，不是導航成績；與 F36-S001 共同作者 Pfeiffer 相同，但主導實驗室不同（Rössler）。",
+      "author_cache": {
+        "file": "f36src/PMC8790360.txt（原始 PMC8790360.xml）",
+        "sha256_prefix": "c77c7b252aaf80e9",
+        "xml_sha256_prefix": "e10a39b7f9c2d7ef",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4528539/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rspb.2015.0338",
+      "title": "Perceiving polarization with the naked eye: characterization of human polarization sensitivity",
+      "publisher": "Proc R Soc B 282:20150338（2015）；Temple、McGregor、Miles、Graham、Miller、Buck、Scott-Samuel、Roberts（布里斯托大學）",
+      "version": "出版社開放取用版（PMC 收錄之 JATS 全文）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論）",
+      "locator": "摘要；Introduction 第 9 段（海丁格刷約 5 秒內淡去、看太陽 90° 的藍天可見）；Results 3(a)（平均門檻 56%±3%，n=23，最低 23%、最高 87%）；Discussion 第 56 段（虹鱒 65–75%；天空偏振很少超過 80%，故只限晴天）",
+      "summary": "人眼靠黃斑色素產生的「海丁格刷」能察覺偏振：23 名受試者平均在偏振度 56% 仍能分辨，個別低到 23%、高到 87%，是當時測過最敏感的脊椎動物；作者據天空偏振很少超過 80% 推論，人要用天空偏振找太陽只限晴天。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "受試者是大學師生；論文另談黃斑病變篩檢，本題不採任何健康內容；「維京人可能用過」是作者轉述他人假說。 覆核 V39（2026-11-12）：summary 把「天空偏振很少超過 80%」與「只限晴天（引文 55、56 的天空量測）」拆成兩句，不寫成因果；受試者 27 人參加、23 人完成。",
+      "author_cache": {
+        "file": "f36src/PMC4528539.txt（原始 PMC4528539.xml）",
+        "sha256_prefix": "4971c2dbbb9523d7",
+        "xml_sha256_prefix": "08f4016f043ddcfc",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3202538/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0026490",
+      "title": "Why Do Woodpeckers Resist Head Impact Injury: A Biomechanical Investigation（Wang、Cheung、Pu、Li、Zhang、Fan；PLoS ONE 6:e26490, 2011）",
+      "publisher": "PLoS ONE（開放取用）；北京航空航天大學生物與醫學工程學院、香港理工大學",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC3202538）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Introduction 第1段（6–7 m/s、約 1000 g、每天約 12,000 次為引用前人）；Results Table 2（大斑啄木鳥與戴勝的峰值速度與減速度）、Table 3（枕骨海綿骨參數）、舌骨約 80 mm、上喙外層長 1.6 mm／骨質短 1.2 mm；Table 5（三種上下喙長度 FE 模型的腦部峰值應變）；Discussion",
+      "summary": "北航研究群用兩台 2000 fps 高速攝影與力感測器量大斑啄木鳥與對照鳥戴勝啄擊：啄泡棉時啄木鳥峰值線速度 7.572 m/s、峰值線減速度 9790 m/s²，戴勝 2.460 m/s、3612 m/s²；啄金屬籠時啄木鳥 2.736 m/s。micro-CT 顯示啄木鳥枕骨海綿骨偏板狀、骨體積分率 8.587% 對戴勝 4.562%、骨礦密度 0.218 對 0.101 g/cm³；舌骨鞘一路長到頭頂約 80 mm；上喙外層比下喙長 1.6 mm，但骨質部分短 1.2 mm。有限元素模型中上下喙等長時腦部應變一致較高（前腦 0.69 對 0.04）。作者結論：舌骨、板狀海綿骨與上下喙不等長是不受傷的主要因素，舌骨像安全帶。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實測只有鳥啄泡棉、感測器與金屬籠，不是啄真樹；『6–7 m/s、1000 g、每天 12,000 次』是引言引用前人，不是本研究量測；腦部保護的結論來自有限元素模型，沒有檢查腦組織；與池中無重複來源。",
+      "author_cache": {
+        "file": "f37src/wang2011.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "d5b940f5568822d1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4406624/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0122677",
+      "title": "Response of Woodpecker's Head during Pecking Process Simulated by Material Point Method（Liu、Qiu、Zhang、Yu；PLoS ONE 10:e0122677, 2015）",
+      "publisher": "PLoS ONE（開放取用）；清華大學工程力學系、香港科技大學",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC4406624）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Introduction 第1–2段（前人假說整理）；Results〈hyoid bone〉段落與 SSS 曲線圖說；Discussion（肌肉剛性）",
+      "summary": "清華研究群以 micro-CT 影像建模、用物質點法模擬啄擊，以腦幹最大剪應力當受傷指標：第一頸椎的移動與變形是腦部剪應力的主要來源；有舌骨的模型腦幹剪應力較低、頭部較硬、撞擊後內骨骼的振盪被抑制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "全為電腦模擬，肌肉簡化為彈性材料；引言的『每秒 18–22 次、每天 12,000 次、超過 1200 g』為引用前人。",
+      "author_cache": {
+        "file": "f37src/liu2015.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "47d7d3f3534e45e8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7379169/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fbioe.2020.00810",
+      "title": "Biomechanical Analysis of Woodpecker Response During Pecking Using a Two-Dimensional Computational Model（Ganpule、Sutar、Shinde；Front Bioeng Biotechnol 8:810, 2020）",
+      "publisher": "Frontiers in Bioengineering and Biotechnology（開放取用）；印度理工學院孟買分校",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC7379169）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Introduction（三種假說）；Results〈Effect of geometrical features〉（Figure 8：baseline、no hyoid、no hyoid no beak 統計上相近）、〈pecking frequency〉（Figure 9–10）、〈Scaling〉（Figure 11：429 對 3,630 m/s²）；Discussion〈injury criteria〉",
+      "summary": "印度理工研究群用二維頭部模型，把同一組啄擊運動（峰值旋轉速度約 15 rad/s、旋轉加速度 7,057 rad/s²）輸入啄木鳥與人頭模型：同樣輸入下啄木鳥腦內應變與應力約為人的六分之一；拿掉舌骨、再拿掉喙，結果統計上相近，應力降低主要來自頭小；啄擊頻率加倍，應變應力增加約 100%；約 90 ms 的停頓讓應力鬆弛；對照軸突受傷門檻，7,057 rad/s² 時啄木鳥與人腦的最大主應變都超過門檻。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "二維模型、材料參數取自文獻；『超過門檻』是模型對照人類軸突受傷準則，不是觀察到啄木鳥受傷；不可說成證明啄木鳥腦受傷。 覆核 V41（2026-11-12）：summary 開頭『印度理工研究群』補『（Indian Institute of Technology Roorkee，羅爾基分校）』；補『拿掉舌骨與喙的比較是在 simplified woodpecker model 上做的』；補『門檻與 90% 受傷機率出自人類美式足球員加速度準則，本題不使用』。",
+      "author_cache": {
+        "file": "f37src/ganpule2020.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "100a2c82b46e8b1f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10244965/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsbl.2023.0148",
+      "title": "Upper beak depression instead of elevation dominates cranial kinesis in woodpeckers（Lyons、Baeckens、Van Wassenbergh；Biol Lett 19:20230148, 2023）",
+      "publisher": "Biology Letters（Royal Society，開放取用）；安特衛普大學",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC10244965）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Introduction 第3段（撞擊期頭部表現得很硬，引用 Van Wassenbergh 等 2022 Curr Biol）；Methods〈Video analysis〉（約一萬段影片、39 段啄木鳥 31 種、42 段其他食蟲鳥 39 種）；Results 圖 1",
+      "summary": "安特衛普研究群從康乃爾 Macaulay 影片庫篩約一萬段影片，量 31 種啄木鳥與 39 種近緣食蟲鳥平常進食、鳴叫、張嘴時上喙相對腦殼的轉動：兩群都可轉到約 8 度，但啄木鳥主要是往下壓，其他鳥主要往上抬。引言轉述同研究群 2022 年的高速影片：撞擊瞬間啄木鳥頭部表現得非常硬，上喙既不抬也不壓。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "撞擊期頭部很硬一句是轉述 Van Wassenbergh 等 2022（cell.com 本環境 403），只當入口不計數；本研究量的是日常動作，不是啄樹撞擊。",
+      "author_cache": {
+        "file": "f37src/lyons2023.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "345aa53de32cc9aa",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S013",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5796688/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0191526",
+      "title": "Tau accumulations in the brains of woodpeckers（Farah、Siwek、Cummings；PLoS ONE 13:e0191526, 2018）",
+      "publisher": "PLoS ONE（開放取用）；波士頓大學醫學院解剖與神經生物學系",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC5796688）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Introduction 倒數第2段（1976 年唯一組織學研究、兩隻腦、被引用超過 100 次）；Methods（10 隻博物館啄木鳥、5 隻紅翅黑鸝）；Table 1；Results〈Gallyas silver stain〉〈Immunohistochemistry〉；Discussion（幼鳥一隻亦陽性、限制）",
+      "summary": "波士頓大學研究群取博物館酒精保存的 10 隻啄木鳥（多種）與 5 隻不啄木的紅翅黑鸝腦組織：Gallyas 銀染 10 隻啄木鳥中 8 隻有陽性沉積；抗磷酸化 tau 染色做了 3 隻，2 隻陽性；對照鳥全部陰性；一隻幼鳥也有。作者指出此前唯一的組織學研究（1976）只看兩隻腦、未描述所見卻下結論，被引用超過 100 次。作者自言樣本太少，無法確定是否由啄擊造成、是否屬病理或影響行為。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "樣本小、博物館標本、對照鳥種不同；只顯示有沉積，不能說啄木鳥有腦傷或病；不談人類疾病與運動防護。 覆核 V41（2026-11-12）：summary『作者自言…是否屬病理』補『Results 段另寫 Interpreted collectively, this suggests…pathological，結論段又寫不知道是否病理；兩句並存』；『被引用超過 100 次』補『（原文寫 sited in over 100 journal articles，未說資料庫）』。",
+      "author_cache": {
+        "file": "f37src/farah2018.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "1de65b8c521f52c2",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S014",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8978470/fullTextXML",
+      "canonical_url": "https://doi.org/10.1177/03063127211052513",
+      "title": "Consider the woodpecker: The contested more-than-human ethics of biomimetic technology and traumatic brain injury（Hollin；Social Studies of Science 52:149–173, 2022）",
+      "publisher": "Social Studies of Science（SAGE，開放取用）；里茲大學社會學與社會政策學院",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC8978470）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；〈Why don’t woodpeckers get headaches?〉節（2006 年搞笑諾貝爾獎）；文末註 3（Google Scholar 2020-04-15 查詢：May 等 1976、1979 至 2005 年 18 與 16 次，2006–2019 年再多 79 與 52 次）",
+      "summary": "里茲大學科技與社會研究者追溯啄木鳥如何進入腦震盪論述：2006 年『啄木鳥為什麼不頭痛』研究獲搞笑諾貝爾獎後，1970 年代 May 等兩篇論文的引用由 2005 年前的 18 與 16 次，在 2006–2019 年間再增加 79 與 52 次；啄木鳥同時被用來說人類不該碰撞運動、也被拿來發想防護產品。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "社會科學分析，不是生物學實驗；文中涉及在世人物、一部電影與商業產品，本題只用引用數與獲獎時間，不提人物與產品。 覆核 V41（2026-11-12）：summary『2006 年「啄木鳥為什麼不頭痛」研究獲搞笑諾貝爾獎』改『2006 年搞笑諾貝爾獎頒給 2002 年〈Cure for a headache〉的作者，與 1970 年代研究此題的 May 共享』；補『Google Scholar 查詢日 2020-04-15』。",
+      "author_cache": {
+        "file": "f37src/hollin2022.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "080ec4b03cef1f5d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8596618/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/jnr.24920",
+      "title": "Unconventional animal models for traumatic brain injury and chronic traumatic encephalopathy（Ackermans 等；J Neurosci Res 99:2463–2477, 2021）",
+      "publisher": "Journal of Neuroscience Research（Wiley，開放取用）；西奈山伊坎醫學院",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC8596618）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "〈Woodpeckers〉節（第3節）",
+      "summary": "綜述：啄木鳥護腦的假說（頭骨形狀分散力量、直線而非旋轉軌跡加上腦小、舌骨包覆緩衝）都還沒在理論模型之外被確證，也沒有確切的神經病理證據支持啄木鳥完全不受腦傷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綜述，只當旁證，不另計條數。",
+      "author_cache": {
+        "file": "f37src/ackermans2021.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "d2f7167758122557",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S016",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5832706/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rspb.2017.2628",
+      "title": "Macroevolutionary patterning of woodpecker drums reveals how sexual selection elaborates signals under constraint（Miles、Schuppe、Ligon、Fuxjager；Proc R Soc B 285:20172628, 2018）",
+      "publisher": "Proceedings of the Royal Society B（開放取用）；維克森林大學 Fuxjager 研究群",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC5832706）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文已存；精讀摘要、前言與方法，結果段落只核對結論句",
+      "locator": "Abstract；Introduction（約 230 種、體型差 100 倍）；Methods（164 種的鼓聲錄音）；Results",
+      "summary": "Fuxjager 研究群分析 164 種啄木鳥的領域鼓聲（敲擊次數與每秒次數）：體型限制敲擊速度，但不限制一串敲幾下。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F37-S009 同一研究群；鼓聲是領域訊號，不是覓食啄洞。",
+      "author_cache": {
+        "file": "f37src/miles2018.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "d04fc44f97385f1d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S017",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12745930/fullTextXML",
+      "canonical_url": "https://doi.org/10.1242/jeb.251289",
+      "title": "Neck muscle twitch properties are associated with constraint on drum speed in woodpeckers, but not drum length（Antonson、Capano、Fuxjager；J Exp Biol 228:jeb251289, 2025）",
+      "publisher": "Journal of Experimental Biology（開放取用）；布朗大學 Fuxjager 研究群",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC12745930）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "ABSTRACT；Methods（5 隻絨啄木鳥、平均鼓速 15.995 次/秒、長度 16.5 下）；Results（超過自然鼓速時鬆弛百分比顯著下降 F2,38=8.82；長度處理的力量斜率無差異 F2,29=0.15）",
+      "summary": "布朗大學 Fuxjager 研究群以電刺激 5 隻雄絨啄木鳥的頸部前拉肌：照牠們平均鼓速（約每秒 16 下）刺激時肌肉能放鬆，刺激得更快時兩下之間放鬆不完全；把一串加長，力量卻不衰退。肌肉收縮–放鬆速度可能限制鼓聲速度，但不限制長度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F37-S008 同一研究群，合計封頂；在麻醉下原位刺激，只有 5 隻。",
+      "author_cache": {
+        "file": "f37src/antonson2025.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "b2df3b4c977f06d7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S018",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9351381/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.2122563119",
+      "title": "Skin wrinkles and folds enable asymmetric stretch in the elephant trunk（Schulz 等；PNAS 119:e2122563119, 2022）",
+      "publisher": "PNAS（開放取用）；喬治亞理工學院 Hu 研究室、西奈山伊坎醫學院",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC9351381）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Results（垂掛長度 126／141 cm；抬起應變 0.20／0.12、最終 0.25／0.13；由鼻尖往基部的伸展波；中遠段背側 0.35 對腹側 0.18）；Fig. 4（背側褶 4 cm、腹側皺 1–2 cm；楊氏模數 470 對 483 kPa）；離鼻尖 20 cm 皮膚應變能為肌肉 13.2 倍、110 cm 處 0.36 倍；Discussion（高應變時腹側硬 1.77 倍）；Methods（亞特蘭大動物園一公一母）",
+      "summary": "喬治亞理工研究群讓動物園一公一母非洲象只能水平伸長鼻子去拿食物：鼻子先抬起、再伸長，最終應變母象 0.25、公象 0.13，伸長是從鼻尖往基部傳的一兩道波；中遠段背側伸長 0.35、腹側只有 0.18，像背側多了一個『關節』。背側皮膚是 4 公分長的大褶、腹側是 1–2 公分的細皺；小應變時兩邊楊氏模數相近，高應變時腹側硬 1.77 倍。估算離鼻尖 20 公分處皮膚需要的應變能是肌肉的 13.2 倍，離鼻尖 110 公分處只有 0.36 倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有兩頭活象、一條冷凍鼻子做材料測試；摘要的『背側皮膚柔軟 15%』指高應變區，不可與 F37-S018 的初始模數相比。 覆核 V41（2026-11-12）：limitations 補『材料測試的冷凍鼻子為母非洲象（Loxodonta），取樣離鼻尖 110 cm』；『背側比腹側多伸一倍』類說法刪除，改原文『ventral…nearly half』。",
+      "author_cache": {
+        "file": "f37src/schulz2022.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "c3f833ea91bcf47a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S019",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11461087/fullTextXML",
+      "canonical_url": "https://doi.org/10.1098/rsos.240851",
+      "title": "Elephants develop wrinkles through both form and function（Schulz、Kaufmann、Reveyaz 等；R Soc Open Sci 11:240851, 2024）",
+      "publisher": "Royal Society Open Science（開放取用）；馬普智慧系統研究所與柏林洪堡大學 Brecht 研究室等",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC11461087）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Results〈Trunk wrinkle number is lateralized〉（15 條鼻子：亞洲象 10、非洲象 5；長鬍鬚那側皺紋多約 10%）；〈fetal development〉（早期每 20 天倍增）",
+      "summary": "亞洲象背側主要皺紋約 126±25 條，非洲象約 83±13 條；兩種都是背側多於腹側、越靠鼻尖越密。看鼻尖後 15 公分：15 條成年象鼻（亞洲 10、非洲 5）在常往那邊捲的一側皺紋多約 10%；胎兒期早段皺紋數每 20 天倍增，之後慢慢加，亞洲象加得較快。皺紋同時由先天發育與後天使用塑造。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Hu 與 Brecht 兩群合作，計數時併入 Brecht 群上限；死後標本與動物園照片；偏側性只 15 條鼻子。 覆核 V41（2026-11-12）：summary『在常往那邊捲的一側皺紋多約 10%』改『在鬍鬚較長的一側皺紋多約 10%（53% 對 47%）；慣用捲向由鬍鬚長短推定』。",
+      "author_cache": {
+        "file": "f37src/schulz2024.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "50a17c3428e07f2d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S020",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10250425/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s42003-023-04945-5",
+      "title": "The functional anatomy of elephant trunk whiskers（Deiringer 等；Commun Biol 6:591, 2023）",
+      "publisher": "Communications Biology（開放取用）；柏林洪堡大學 Brecht 研究室",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC10250425）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Results〈whisker length is lateralized and use-dependent〉（成年全部不對稱、新生象全部對稱，Fisher p=0.0004）；〈cylindrical and differ in thickness〉；〈Elephants do not whisk〉；Discussion（每個毛囊 87±40 條軸突）",
+      "summary": "象鼻鬍鬚：鼻尖密度最高，非洲象鼻尖鬍鬚多於亞洲象；鬍鬚粗、幾乎不變細，不像老鼠那樣會主動掃動；毛囊大、沒有環狀竇、每個約 87±40 條軸突。成年象每頭都一側鬍鬚較長（常用那側被磨短），新生象則全部對稱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "與 F37-S011、S013、S014 同屬 Brecht 群，合計封頂。 覆核 V41（2026-11-12）：summary 補『每個毛囊 87 條軸突是一頭新生亞洲象的平均（49–190），摘要寫約 90』。",
+      "author_cache": {
+        "file": "f37src/deiringer2023.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "565a58e2b893967f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S021",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12690460/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/icb/icaf020",
+      "title": "Trunk Tip Wear in Wild African Savanna Elephants（Heise 等；Integr Comp Biol 65, 2025）",
+      "publisher": "Integrative and Comparative Biology（開放取用）；柏林洪堡大學 Brecht 研究室與南非克魯格國家公園獸醫",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC12690460）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Synopsis；Introduction（約一半左撇鼻、一半右撇鼻為引用）；Methods Table 1（野生 6、圈養 6）；Results",
+      "summary": "比較 6 頭野生（克魯格）與 6 頭圈養成年非洲象的鼻尖：野生象鼻尖前方鬍鬚常整根磨掉、很少超過 1 公分，圈養象許多有好幾公分；鼻孔內不直接碰食物的鬍鬚兩組相近；野生象鼻尖皮膚磨成平滑，圈養象保有乳頭狀紋路與褶。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "野生組多為管理性撲殺個體的死後標本，片中不呈現；樣本各 6 頭；Brecht 群封頂。 覆核 V41（2026-11-12）：limitations『野生組多為管理性撲殺個體的死後標本』改『野生組為 4 頭死後公象標本與 2 頭野外健康檢查時短暫麻醉的公象；死因原文未寫』。",
+      "author_cache": {
+        "file": "f37src/heise2025.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "868b786e70c459c6",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S022",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12715207/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s42003-025-08998-6",
+      "title": "Elephant trunk tip musculature reflects species differences in grasping behavior（Eigen 等；Commun Biol 8, 2025）",
+      "publisher": "Communications Biology（開放取用）；柏林洪堡大學 Brecht 研究室等",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC12715207）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Results（縱向、徑向、橫向肌束比例）；Methods（各 3 個半邊鼻尖 microCT）",
+      "summary": "非洲象用背、腹兩根『指頭』捏，亞洲象用一根背指加腹側唇包住、還能把腹側往後翻夾住東西。microCT 重建各 3 個半邊鼻尖：非洲象鼻尖約三分之一縱向、三分之二徑向／橫向肌束；亞洲象相反，約三分之二縱向、三分之一徑向／橫向，作者認為分別對應捏與捲。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "每種只有 3 個半邊鼻尖；功能對應是作者推論。Brecht 群封頂。",
+      "author_cache": {
+        "file": "f37src/eigen2025.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "f3e6831bb415fa9e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S023",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11093316/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0301529",
+      "title": "Maximum trunk tip force assessment related to trunk position and prehensile 'fingers' implication in African savannah elephants（Costes 等；PLoS ONE 19:e0301529, 2024）",
+      "publisher": "PLoS ONE（開放取用）；法國國家自然史博物館與 CNRS Pouydebat 研究群、博瓦勒動物園",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC11093316）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Introduction（捲起舉 63 kg 為引用前人；人手握力 274／461 N、指尖捏力 49／68 N 為引用）；Methods（5 頭圈養母象）；Results",
+      "summary": "Pouydebat 研究群用帶力感測器與自動給獎勵的裝置量 5 頭圈養母非洲象鼻尖兩指的最大捏力：最大 86.4 牛頓；背指通常比腹指出力大；鼻子的姿勢、特別是扭轉，會改變出力與兩指分配。作者認為鼻尖主要用於精細抓取，大力量來自整條捲起。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只量捏，不量捲；5 頭圈養母象；與人手的數字是引言引用他研究，片中不並列成比較圖。",
+      "author_cache": {
+        "file": "f37src/costes2024plos.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "b047c5a0b33bbda4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S024",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11027014/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/ece3.11317",
+      "title": "Effect of the habitat and tusks on trunk grasping techniques in African savannah elephants（Costes 等；Ecol Evol 14:e11317, 2024）",
+      "publisher": "Ecology and Evolution（開放取用）；法國國家自然史博物館 Pouydebat 研究群",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC11027014）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Results 3.1（埃托沙公象較常捏、較少捲、較常只用鼻尖；兩地都以右側為主）；3.2（象牙：埃托沙小、斷、直）；Discussion（埃托沙 73% 一根或兩根斷）",
+      "summary": "野外比較納米比亞乾燥的埃托沙與水源穩定的克魯格兩群非洲象吃草葉小枝：埃托沙公象較常用兩指捏、較少用整段捲，也較常只用鼻尖；兩地都偏右，但埃托沙較常從左邊抓。埃托沙象的象牙較小、較常斷（73% 一根或兩根斷）。作者推測乾燥度、食物大小與象牙形狀一起影響抓法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "觀察性研究，原因是作者推測；與 F37-S015 同研究群，合計封頂。 覆核 V41（2026-11-12）：summary 補『可辨識個體克魯格 48、埃托沙 15；73% 斷牙指研究者觀察到的埃托沙個體』。",
+      "author_cache": {
+        "file": "f37src/costes2024ee.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "43705513cb63689e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S025",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10517398/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.isci.2023.107657",
+      "title": "Sensorized objects used to quantitatively study distal grasping in the African elephant（Lo Preti、Beccai；iScience 26:107657, 2023）",
+      "publisher": "iScience（Cell Press，開放取用）；義大利理工學院 Beccai 研究群",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC10517398）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Summary；Results（圓柱：約前 35% 時間只用約 10% 最大力）；Discussion（把手 5–15 kg 握力無顯著變化、改用槓桿拖行、遠處不改用捏）",
+      "summary": "義大利理工研究群讓一頭被遮眼的成年公非洲象抓兩個裝感測器的物件：抓圓柱時鼻尖捲住，前 35% 時間只出約一成最大力、再抬起，壓力調得很細；抓把手時把重量在 5–15 公斤間改變，握力沒有顯著改變，幾次後牠改成把東西當槓桿在地上拖、不抬起來。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有一頭象、試次少，作者自言重量範圍受安全規定限制、無法做統計比較。 覆核 V41（2026-11-12）：summary 補『試次少、作者明言無統計檢定力；重量 5–15 kg 受安全規定限制』。",
+      "author_cache": {
+        "file": "f37src/lopreti2023.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "c7433b0be097814e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S026",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13271745/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/pnasnexus/pgag164",
+      "title": "Functional anisotropy of the elephant trunk skin: A biological blueprint for grasping, protection, and tactile sensing（Lo Preti 等；PNAS Nexus, 2026）",
+      "publisher": "PNAS Nexus（開放取用）；義大利理工學院 Beccai 研究群、日內瓦大學 Milinkovitch 研究室",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC13271745）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；Results（橫向拉伸初始模數背側 0.22 MPa 對腹側 0.07 MPa；表皮約為真皮 8.6 倍硬）；Fig. 3（腹側真皮乳頭的有限元素預測）；Discussion〈Limitations〉（單一亞洲象、冷凍組織）",
+      "summary": "一頭蘇黎世動物園自然死亡亞洲象的鼻子皮膚：橫向拉伸的初始模數背側 0.22 MPa，約為腹側 0.07 MPa 的 3.14 倍，背側也較粗糙；腹側有大的真皮乳頭，有限元素模型預測它們會把觸壓集中、放大給感覺受器。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一個體、冷凍保存；與 F37-S010 物種、方向、應變範圍不同，數字不得並列或相減；乳頭放大觸覺是模型預測。與 F37-S017 同研究群合計封頂。 覆核 V41（2026-11-12）：summary 補『個體 2020 年於蘇黎世動物園自然死亡；3.14 倍為橫向初始模數 E1，第二模數相近』；limitations 加『本題不引用硬度數字（避免與 F37-S010 並列）』。",
+      "author_cache": {
+        "file": "f37src/lopreti2026.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "3bcfe5701193cfa2",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S027",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11189625/fullTextXML",
+      "canonical_url": "https://doi.org/10.7554/elife.90908",
+      "title": "The trunk replaces the longer mandible as the main feeding organ in elephant evolution（Li 等；eLife 12:RP90908, 2024）",
+      "publisher": "eLife（開放取用）；中國科學院古脊椎動物與古人類研究所等",
+      "version": "出版版全文（Europe PMC 開放子集 XML，PMC11189625）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "全文（摘要、前言、方法、結果、討論、圖表說明）",
+      "locator": "Abstract；eLife digest；Results（δ13C 顯示鏟齒象約 16 Ma 移向較開闊棲地；下顎有限元素）；Discussion",
+      "summary": "古脊椎所研究群比較中國北方 1700 萬到 1500 萬年前三類下顎極長的長鼻類：嵌齒象的下顎適合處理枝條、鼻子短而原始；嵌齒象科的 Gomphotherium 兩者兼顧；鏟齒象的下顎適合切草、鼻區骨骼顯示有長而有力的鼻子，且約 1600 萬年前牙釉質碳同位素顯示移向較開闊棲地。作者認為取食功能從下顎轉到鼻子，現代象才完全靠鼻子吃東西。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "化石形態與模型推論；『完全靠鼻子』指現代象，這些古象的鼻子只是輔助。 覆核 V41（2026-11-12）：summary『嵌齒象的下顎適合處理枝條、鼻子短而原始；嵌齒象科的 Gomphotherium 兩者兼顧』改『脊稜齒象（Choerolophodon）下顎適合處理枝條、鼻子短而原始；嵌齒象（Gomphotherium）草與枝條都能處理、鼻子相當像大象』。",
+      "author_cache": {
+        "file": "f37src/li2024elife.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "62abdee668ae10f7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S028",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4568538/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep14094",
+      "title": "Evolution of periodicity in periodical cicadas（Ito 等；Sci Rep 2015）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC4568538）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/ito2015.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "6b1acde6133c3b54",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S029",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6123741/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s42003-018-0025-7",
+      "title": "Triplicate parallel life cycle divergence despite gene flow in periodical cicadas（Fujisawa 等；Commun Biol 2018）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC6123741）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/fujisawa2018.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "5fdbbe05315548a9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S030",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6526903/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/molbev/msz051",
+      "title": "Mitochondrial Genomics Reveals Shared Phylogeographic Patterns…（Du 等；Mol Biol Evol 2019）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC6526903）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/du2019.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "f5acd5256f77c0df",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S031",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7319174/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/ece3.6270",
+      "title": "Hybridization selects for prime-numbered life cycles in Magicicada（Toivonen & Fromhage；Ecol Evol 2020）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC7319174）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/toivonen2020.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "9b4e0e84c972dce5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S032",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7012985/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s00285-019-01362-3",
+      "title": "The winner takes it all（Diekmann & Planqué；J Math Biol 2020）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC7012985）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/diekmann2020.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "ae04056c49f13f6b",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S033",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6074776/fullTextXML",
+      "canonical_url": "https://doi.org/10.7717/peerj.5282",
+      "title": "The periodical cicada four-year acceleration hypothesis revisited…（Cooley 等；PeerJ 2018）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC6074776）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/cooley2018peerj.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "3ae2135ba0a21530",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S034",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11544119/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-024-75247-x",
+      "title": "Predation-driven geographical isolation of broods in periodical cicadas（Cuaresma 等；Sci Rep 2024）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC11544119）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/cuaresma2024.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "1920b4b3cb32409d",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S035",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12896774/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/ani16030454",
+      "title": "Response of an Apex Mammalian Predator to an Emergence of 13-Year Periodical Cicadas（Cypher；Animals 2026）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC12896774）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/cypher2026.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "dce7414bdb05ac71",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S036",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9137056/fullTextXML",
+      "canonical_url": "https://doi.org/10.1186/s13062-022-00326-w",
+      "title": "Are prime numbers special? Insights from the life sciences（Loconsole & Regolin；Biol Direct 2022）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC9137056）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/loconsole2022.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "d6a06a1841d2ed26",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S037",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3071825/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0018347",
+      "title": "Life cycle replacement by gene introduction under an allee effect in periodical cicadas（Nariai 等；PLoS ONE 2011）",
+      "publisher": "開放取用期刊（Europe PMC 開放子集）",
+      "version": "出版版全文 XML（PMC3071825）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（文件記載的 REST）以關鍵字列出、標示開放取用，再以文件記載的 REST fullTextXML 取全文；curl 預設標頭；python 抽純文字",
+      "reading_scope": "選題可行性檢查：讀摘要與前言（Ito 2015、Cooley 2018 讀前言到討論）",
+      "locator": "Abstract；Introduction",
+      "summary": "週期蟬候選題的可行性檢查用；本輪未選此題，未寫成核心。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只用於去重與選題判斷，不支撐任何提案。Ito、Fujisawa、Du、Nariai、Cooley 多出自 Yoshimura–Sota–Cooley–Simon 合作網絡。",
+      "author_cache": {
+        "file": "f37src/nariai2011.xml（全文 XML；同名 .txt 為抽出的純文字）",
+        "sha256_prefix": "5dc69ae50cb0a5cf",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S038",
+      "url": "https://dl.tufts.edu/downloads/pn89dk08v?filename=3197xz596.pdf",
+      "canonical_url": "https://doi.org/10.4161/cib.2.6.9373",
+      "title": "Avian and human movement to music: Two further parallels（Patel, Iversen, Bregman, Schulz；Commun Integr Biol 2:6, 485–488, 2009）",
+      "publisher": "Communicative & Integrative Biology（Landes Bioscience）；Tufts Digital Library 典藏",
+      "version": "出版版 PDF（Tufts 大學 Faculty Scholarship 典藏，頁首有「Downloaded by [Tufts University]」字樣）",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出 dl.tufts.edu/concern/pdfs/3197xz596，該頁的「Download PDF」連結；curl 預設標頭",
+      "reading_scope": "全文（4 頁，含圖 1、圖 2、表 1）",
+      "locator": "摘要；〈Evidence for Preferred Tempo〉第 1–4 段（3,999 次點頭、14%、58% 的試次、0.475 s、126.3 bpm）；表 1（11 種速度的點頭數與同步比例）；〈Conclusions〉",
+      "summary": "Neurosciences Institute 的 Patel 研究群對葵花鳳頭鸚鵡 Snowball 的補充分析：原研究（Curr Biol 2009）中牠在 9 種速度下都出現與拍子同步的『同步段落』，但同步段落只出現在 58% 的試次、全部 3,999 次點頭只有 14% 落在同步段落；其餘 86% 的點頭聚在約 0.475 秒一下（約 126 bpm）的偏好速度，只隨音樂速度中度變慢。同步比例在最接近偏好速度的 125.0 與 130.4 bpm 最高（26.8%、36.5%），87.0 與 92.4 bpm 為 0%，原曲速度 108.7 bpm 為 13.9%。作者把這比作幼兒跟音樂動時的偏好速度。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是 Curr Biol 2009 原研究的『補充報告』（article addendum），只有一隻鳥；Curr Biol 原文（cell.com）本環境 Cloudflare 403，『9 種速度都有同步』『隨速度調整』只經本文轉述。Tufts 典藏的是作者機構存放的出版版，非第三方轉存，但仍標明。共同作者 Schulz 是 Snowball 的飼主（救援機構）。與幼兒的比較引用未發表資料與他人研究，不另計。 覆核 V42（2026-11-12）：version 改「出版社版 PDF（Taylor & Francis 封面頁，頁腳『Downloaded by [Tufts University] 01 July 2016』），由 Tufts Digital Library『Faculty Scholarship』典藏，Rights 欄空白」；limitations『9 種速度都有同步』改『原研究共 11 種速度條件，其中 9 種（98–130 bpm）出現同步段落，87.0 與 92.4 bpm 為 0（本文轉述與 Table 1）』。",
+      "author_cache": {
+        "file": "f39src/patel2009_cib_tufts.pdf",
+        "sha256_prefix": "64d883aa326e05d5",
+        "note": "另存 pdftotext 文字檔 patel2009_cib_tufts.txt 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S039",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12327628/fullTextXML",
+      "canonical_url": "https://doi.org/10.1371/journal.pone.0328487",
+      "title": "Dance behaviour in cockatoos: Implications for cognitive processes and welfare（Lubke, Held, Massaro, Freire；PLoS ONE 2025）",
+      "publisher": "PLOS ONE（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results〈online video study〉（45 支影片、5 種、30 種動作＋17 種罕見動作、Downward 50%）；Results〈playback〉與 Fig（6 隻、音樂／podcast／無播放）；Discussion 第 1 段",
+      "summary": "Charles Sturt 大學 Freire 研究群：從社群網站 45 支影片（5 種鳳頭鸚鵡）整理出 30 種跳舞動作，另有 17 種只見於單一隻的罕見動作；動作相似度與親緣遠近無關。在動物園對三種鳳頭鸚鵡共 6 隻（成對飼養）播放 Avicii〈The Nights〉、播 podcast、或不播放，三種處理下所有鳥都跳了，處理對跳舞機率沒有顯著影響；作者結論：音樂似乎不是觸發跳舞的關鍵。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "影片來自社群網站，有選樣偏差（主人只上傳會跳的鳥）；播放實驗作者自稱初步、只有 6 隻；沒有量動作是否對拍。不得說『鸚鵡不愛音樂』，只能說在此設計下音樂沒有比安靜或談話多引出舞蹈。 覆核 V42（2026-11-12）：limitations 補「Figure 3 圖說把 Podcast 處理寫成『Podcast (white noise)』，與方法段（播放 Podcast 節目）不一致；片中只說『談話節目』」。",
+      "author_cache": {
+        "file": "f39src/PMC12327628.xml",
+        "sha256_prefix": "1a63d6937380b7e9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S040",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3216601/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep00120",
+      "title": "Rhythmic synchronization tapping to an audio–visual metronome in budgerigars（Hasegawa, Okanoya, Hasegawa, Seki；Sci Rep 1:120, 2011）",
+      "publisher": "Scientific Reports（CC BY-NC-ND 3.0）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文（含表 1 與模擬比較）",
+      "locator": "Introduction 第 2 段（獼猴訓練超過一年、約落後 300 ms，為轉述）；Results〈Evidence for entrainment〉（46 次實驗、Rayleigh）；〈phase matching〉（450 ms 1/7、600 ms 2/7、900 ms 5/8、1,200 ms 7/8、1,500 與 1,800 ms 8/8）；四種模擬；〈auditory stimuli alone〉（3 隻母鳥、6 次中 5 次）",
+      "summary": "理研 Okanoya／Seki 研究群：以操作制約訓練 8 隻虎皮鸚鵡（4 公 4 母）跟著聲光節拍器啄鍵。所有鳥在各種間隔下都和刺激保持一致的相位關係，且電腦模擬的亂啄、固定間隔、記住間隔、單純反應都解釋不了；但『準時落在拍點上』隨速度而異：間隔 450 毫秒時 7 隻中只有 1 隻，1,500 與 1,800 毫秒時 8 隻全部。只給聲音時，3 隻母鳥 6 次中有 5 次對準。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "有獎勵的訓練任務、聲光同時給；快速度（450 ms）時沒有出現人類常見的提前量；『獼猴訓練一年多仍落後約 300 ms』是引用 Zarco 等 2009，不另計。 覆核 V42（2026-11-12）：limitations 補「1,500、1,800 ms 時單純反應（SR）模擬也能落在拍點附近；與單純反應的區別主要靠提前啄（NMA）與失敗次數；450 ms 時 NMA 為 0/350」。",
+      "author_cache": {
+        "file": "f39src/PMC3216601.xml",
+        "sha256_prefix": "959b4877d778f6c4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S041",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4891632/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fnins.2016.00257",
+      "title": "Beat Keeping in a Sea Lion As Coupled Oscillation（Rouse, Cook, Large, Reichmuth；Front Neurosci 10:257, 2016）",
+      "publisher": "Frontiers in Neuroscience（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Introduction 第 1、6 段；Methods〈Subject〉（Ronan、7 歲、80 與 120 bpm 訓練後轉到新速度與音樂，為轉述 Cook 2013）；〈Stimuli〉（±25、15、8、3% 擾動）；Results 與 Discussion（相位耦合模型）",
+      "summary": "加州大學聖塔克魯茲 Reichmuth 研究群：加州海獅 Ronan 先以 80 與 120 bpm 訓練點頭對拍，之後能轉到沒練過的速度與音樂（Cook 等 2013，本文轉述）。本研究在節拍中途突然改變相位或速度（±3–25%），她在幾拍內恢復穩定的相位與速度關係，表現符合人類節奏研究用的耦合振盪模型（只用相位耦合已很貼合，加速度耦合更好）。作者說這是人類與非人動物對拍機制相同的最清楚證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一個體、以魚獎勵訓練；Cook 等 2013 原文（J Comp Psychol）付費，『非模仿發聲物種』『轉到音樂』只經本文與 F39-S008 轉述。與 F39-S008 同研究群合計封頂。 覆核 V42（2026-11-12）：limitations 補「±3、±8% 相位擾動與 ±3% 速度擾動 Ronan 似乎未察覺（did not readily perceive）」。",
+      "author_cache": {
+        "file": "f39src/PMC4891632.xml",
+        "sha256_prefix": "29eaa25f1a7e2868",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S042",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12045976/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-025-95279-1",
+      "title": "Sensorimotor synchronization to rhythm in an experienced sea lion rivals that of humans（Cook, Hood, Rouse, Reichmuth；Sci Rep 2025）",
+      "publisher": "Scientific Reports（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Introduction（訓練史：約 30 次無進展、改一拍一獎；『人類也需要節奏學徒期』）；Results（3 歲對 15 歲；112、120、128 bpm 與 10 名人類比較：標準差低於所有人、相位較近 0 者 5/10、7/10、8/10；每拍剛好一點頭；12 次試驗相位與 0 無差）；Discussion（vocal learning 假說『a stretch』）",
+      "summary": "同研究群在 12 年後重測 Ronan（15 歲）：她的相位偏差比 3 歲時小得多、每拍剛好點一次頭；與 10 名用手臂做相似幅度動作的人比，她的間隔標準差低於所有人，相位比 5/10（112 bpm）、7/10（120 bpm）、8/10（128 bpm）的人更接近零，沒有任何一個人四項指標全勝她。作者認為人類對拍並非天生獨有、人也要長期『節奏學徒期』，並說模仿發聲假說『牽強』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一個體、人類只有 10 人且用手臂大動作（作者自承人類在此任務表現比按鍵研究差）；『人類兒童要到較晚才穩定對拍』是作者引用文獻的論點，不另計；同研究群合計封頂。",
+      "author_cache": {
+        "file": "f39src/PMC12045976.xml",
+        "sha256_prefix": "ae74f5357b468e6e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S043",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6969502/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.1910318116",
+      "title": "Rhythmic swaying induced by sound in chimpanzees（Hattori & Tomonaga；PNAS 117(2):936–942, 2020）",
+      "publisher": "PNAS（CC BY-NC-ND 4.0）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文（含表 1）",
+      "locator": "Significance；Results 實驗 1（表 1：7 隻、3 公 4 母；性別效果 P=0.029；有聲對靜默 P<0.001）；實驗 2（Akira：150、107、83 bpm 與隨機無差，F[3,69]=1.329；雙足 r=0.612）；實驗 3（靠近聲源）；Discussion（與 Snowball 比較：每次約 43 s 對 3.7 s）；首頁註記 Bertolo 等的反對信",
+      "summary": "京都大學 Tomonaga 研究群：對 7 隻黑猩猩（3 公 4 母）播 6 種速度的鋼琴節拍，牠們會搖擺身體、拍手、踏腳，公的反應較多；聲音時的節奏動作明顯多於中間的靜默。最投入的公猩猩 Akira 對隨機節奏也搖得一樣久；只有雙足站立時的上下擺動週期與速度相關（r=0.612），而且有聲時他會待在聲源附近。作者認為搖擺可能取決於聲音事件密度而非規律拍子，這是與人類的關鍵差異；並把它連到野外的『雨舞』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗 2、3 只有一隻；動作與拍點沒有對時；PNAS 後來刊出 Bertolo 等反對信（認為不代表與人類共祖音樂能力）與作者回覆，本人未讀該信全文；『約 600 萬年前共同祖先已有基礎』是作者推論。Snowball 的 3.7 秒資料出自 Keehn 等 2019（Cloudflare 403），只經本文轉述。",
+      "author_cache": {
+        "file": "f39src/PMC6969502.xml",
+        "sha256_prefix": "af30aa4c0ab274c8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S044",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9651867/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.abo7019",
+      "title": "Spontaneous beat synchronization in rats: Neural dynamics and motor entrainment（Ito, Shiramatsu, Ishida, Oshima, Magami, Takahashi；Sci Adv 8:eabo7019, 2022）",
+      "publisher": "Science Advances（CC BY-NC）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文",
+      "locator": "Introduction（身體說與大腦說兩種假說）；Results〈behavior〉（10 隻、莫札特 K.448、99/132/264/528 BPM；顯著者 6、5、3、1 隻；132 BPM 一致性最高、第 2 天衰減；5/10 隻鼠與 12/12 人）；〈neural〉（聽覺皮質拍點對比在原速最高、點擊序列約 120 BPM 最高）；〈model〉（約 250 ms 適應）；Discussion（大鼠較被動反應、頭部 jerk 為人的 10 倍）",
+      "summary": "東京大學 Takahashi 研究群：10 隻大鼠頭上裝無線加速度計聽莫札特〈雙鋼琴奏鳴曲〉的四種速度，頭部動作與拍子同步顯著的鼠數依序為 6、5、3、1（75%、100%、200%、400% 速度），個體間一致性在原速 132 BPM 最高；人類受試者趨勢相似。聽覺皮質對拍點的反應在約 120–140 BPM 最強，可用約 250 毫秒的短期適應模型解釋。作者據此認為最佳拍速取決於腦的時間常數、而非體型（大鼠動作快得多卻偏好相近速度）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "大鼠的同步較偏『反應式』，比人類晚；第二天就衰減，作者說可能有部分是驚嚇反應；只有一首曲子；『原生、未經訓練的同步』是作者表述。與 F39-S011 研究群不同。",
+      "author_cache": {
+        "file": "f39src/PMC9651867.xml",
+        "sha256_prefix": "316d6ea34d359dcd",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S045",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11539146/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.isci.2024.111053",
+      "title": "Rats synchronize predictively to metronomes（Rajendran, Tsdaka, Keung, Schnupp, Nelken；iScience 27:111053, 2024）",
+      "publisher": "iScience（CC BY）",
+      "version": "出版版全文（Europe PMC 開放子集 XML）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC search API（query=TITLE/PMCID）列出此 PMCID，以文件記載的 REST fullTextXML 取全文；curl 預設標頭",
+      "reading_scope": "全文中行為與模型比較段落",
+      "locator": "Summary；Results（8 隻、0.5–2 Hz、16 拍後第 17 拍靜默的預期舔水；預測模型勝過反應模型）；Discussion",
+      "summary": "香港城市大學 Schnupp 與希伯來大學 Nelken 群：訓練 8 隻大鼠跟著 0.5–2 Hz 節拍器舔水，舔的模式鎖在拍上；拍與拍之間會先停止舔、再依節拍週期提前恢復，16 拍結束後牠們仍對『沒有響』的第 17 拍提前舔。以馬可夫模型比較，需要『預測』的模型明顯勝過只對聲音反應的模型。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "有水獎勵的訓練任務，與 F39-S010 的自發點頭不同；只能說具備預測性同步的能力。作者單位另列墨西哥 UNAM 神經生理所（與 F39-S006 的 Merchant 群不同所），研究群獨立性請覆核確認。 覆核 V42（2026-11-12）：limitations 末句改：「第一作者有 UNAM 的 DGAPA 博士後獎助並列 UNAM 細胞生理所，與 Merchant（UNAM 神經生物所）同校；參考文獻 53 篇中 8 篇有 Merchant。覆核照保守算法併入 Merchant／Honing 合作網封頂。」",
+      "author_cache": {
+        "file": "f39src/PMC11539146.xml",
+        "sha256_prefix": "e098bf31427a7215",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S046",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11766655/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/jof11010019",
+      "title": "Diversity, Distribution, and Evolution of Bioluminescent Fungi（Perry, Desjardin, Stevani；J Fungi 11(1):19, 2024/2025）",
+      "publisher": "Journal of Fungi（MDPI，CC BY；PMC11766655）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（摘要、Introduction、各支系段落、Distribution、Evolution 段）",
+      "locator": "Abstract（132 taxa、五支系各物種數、15 年內由 64 增至 132、各地區物種數、520–530 nm）；Mycenoid 段（45→96 種）；Evolution 段（~73% 在 mycenoid）",
+      "summary": "綜述兼名錄：目前承認 132 個發光真菌分類群，全部屬傘菌目，分五個支系（Omphalotaceae 18、Physalacriaceae 14、Mycenaceae 96、Lucentipes 3、Cyphellopsidaceae 1）；過去 15 年由 64 種增加一倍以上；已知物種最多的地區依序為日本 36、南美 30、北美 27 等；發光波長 520–530 nm。作者也指出多數地區尚未系統調查。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綜述（作者群含 Stevani，與 Oliveira 2015、Kotlobay 2018、Kaskova 2017 同一合作網絡，合計封頂）；物種數是名錄整理不是單一實驗；摘要寫『24 小時以一個晝夜節律發光』與 F40-S005（鬼菇日夜持續發光、無節律）不一致，片中不得引這句；地區數字受調查努力影響，原文自己說明。 覆核 V43（2026-11-12）：limitations 補：摘要南美 30 種、內文 31 種前後不一；摘要『24 h per day in a circadian rhythm』與第 6 節『light is emitted continuously … maximum output at night』要並列，不單用。",
+      "author_cache": {
+        "file": "f40src/PMC11766655.txt（原檔 f40src/PMC11766655.xml）",
+        "sha256_prefix": "c9407f40926d4523",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S047",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6294908/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.1803615115",
+      "title": "Genetically encodable bioluminescent system from fungi（Kotlobay, Sarkisyan, … Stevani, … Yampolsky；PNAS 115(50):12728–12732, 2018）",
+      "publisher": "PNAS（CC BY-NC-ND；PMC6294908）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（Significance、Abstract、Results、Discussion）",
+      "locator": "Significance（luciferin 只離常見代謝兩步酵素、表現不具毒性、三個基因即可讓真核生物發光）；Abstract（咖啡酸出發的生合成循環、酵母自體發光、兩次獨立基因重複）",
+      "summary": "找出真菌的螢光素酶與另外三個關鍵酵素：從常見的咖啡酸出發，經 hispidin 合成酶變成 hispidin、再經 hispidin-3-羥化酶變成 3-羥基 hispidin（螢光素），螢光素酶氧化它發光，產物再由 caffeylpyruvate 水解酶回收成咖啡酸，成為一個循環。把這些基因（加上咖啡酸合成基因）放進酵母 Pichia pastoris，酵母在一般培養基就能自己發光。作者認為真菌發光是經過兩次獨立基因重複、以及幾個不發光但有用的生化步驟一步步演化出來。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Yampolsky／Stevani 合作網絡（含 Oba、Oliveira），與 F40-S001、S003、S009 合計封頂；『經過不發光的中間步驟演化』是作者的推論。 覆核 V43（2026-11-12）：summary 補：酵母自體發光是放入發光基因『along with caffeic acid biosynthesis genes』並需 npgA。",
+      "author_cache": {
+        "file": "f40src/PMC6294908.txt（原檔 f40src/PMC6294908.xml）",
+        "sha256_prefix": "de8957a3dcf7792f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S048",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5406138/fullTextXML",
+      "canonical_url": "https://doi.org/10.1126/sciadv.1602847",
+      "title": "Mechanism and color modulation of fungal bioluminescence（Kaskova 等；Science Advances 3(4): e1602847, 2017）",
+      "publisher": "Science Advances（CC BY-NC；PMC5406138）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "摘要、Introduction、Results 前段",
+      "locator": "Abstract（氧化螢光素是咖啡酸的丙酮酸加成物、高能內過氧化物中間體、螢光素酶能接受簡單合成 α-pyrone 產生多色化學發光）",
+      "summary": "解出真菌發光後的發光體（氧化螢光素）結構：它是咖啡酸與丙酮酸的加成物；提出氧化過程經過一個高能內過氧化物中間體；並發現真菌螢光素酶『不挑食』，簡單的合成 α-pyrone 也能被它氧化，發出不同顏色的光。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同 Yampolsky／Stevani 合作網絡，封頂；本輪只用摘要層級的結論，不引反應細節數值；『多色』是實驗室用合成受質，不是野生菇會變色。",
+      "author_cache": {
+        "file": "f40src/PMC5406138.txt（原檔 f40src/PMC5406138.xml）",
+        "sha256_prefix": "876ae3ffeddd2b47",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S049",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733832/fullTextXML",
+      "canonical_url": "https://doi.org/10.1073/pnas.2010761117",
+      "title": "Mycena genomes resolve the evolution of fungal bioluminescence（Ke, Lee, … Nagy, Chen, Kao, Tsai；PNAS 117(49):31267–31277, 2020）",
+      "publisher": "PNAS（CC BY-NC-ND；PMC7733832；中研院生物多樣性研究中心主導）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（Significance、Abstract、Results 各節、Discussion 三段）",
+      "locator": "Significance（160 million years）；Results〈A Single Origin…〉〈Evolutionary Dynamics of Luciferase Clusters〉〈Expression Profile…〉；Discussion 第 1–3 段（單一起源與大量丟失、低共線區易丟、Armillaria 九種都發光、多數發光菇靠風散孢且持續發光、吸引說不足以解釋菌絲發光）",
+      "summary": "定序在臺灣採集的四種發光小菇（M. chlorophos、M. kentingensis、M. sanguinolenta、M. venus）與一種不發光小菇的基因體，比較 15 個發光真菌基因體：真菌螢光素酶基因簇在小菇類（mycenoid）與 marasmioid 兩大類群的共同祖先出現一次，至少維持 1.6 億年；它位在容易重排的低共線區，在小菇屬裡常被重排、丟失，所以大多數物種不發光；不發光的 M. indigotica 整個基因簇都不見了；Armillaria 的基因簇落在穩定區，檢視過的九種都會發光。發光強的菌絲裡這些基因表現較高；在 M. kentingensis 的子實體各階段都表現。討論中作者寫：巴西那種菇夜間發光吸引節肢動物散孢的解釋即使成立也可能是後來衍生的，因為多數發光菇（小菇、Omphalotus、Armillaria）靠風散孢、持續發光、不知會吸引昆蟲，而且吸引說無法解釋菌絲發光；作者推測發光可能起於某個未知生理過程的副產物，生態角色可能因種而異。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Tsai 研究群（共同作者含 Nagy，不屬 Yampolsky／Stevani 網絡），與 F40-003、F40-007 合計；年代來自分子鐘加化石校正；『副產物』『因種而異』是作者推測；『不知會吸引昆蟲』是作者引文獻的概括。 覆核 V43（2026-11-12）：limitations 補：『九種蜜環菌都會發光』引 ref 47；『多數發光菇靠風散孢、持續發光、未知引蟲』引 ref 60，都是轉述；M. kentingensis 傘比柄亮；丟失機制是作者模型（might／suggests）。",
+      "author_cache": {
+        "file": "f40src/PMC7733832.txt（原檔 f40src/PMC7733832.xml）",
+        "sha256_prefix": "bc4338799fe1d402",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S050",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5159592/fullTextXML",
+      "canonical_url": "https://doi.org/10.5598/imafungus.2016.07.02.01",
+      "title": "Bioluminescence in the ghost fungus Omphalotus nidiformis does not attract potential spore dispersing insects（Weinstein, Delean, Wood, Austin；IMA Fungus 7(2):229–234, 2016）",
+      "publisher": "IMA Fungus（CC BY-NC-ND；PMC5159592；阿德雷德大學）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文",
+      "locator": "Abstract；Methods〈Fungus and field site〉〈Study design〉；Results（日夜持續發光、所附菌絲不發光、夜間捕獲量約白天 6%/10%/2%、黏蟲板 21 隻：對照 13、處理 8，χ2=1.17, P=0.28，平均 0.54 對 0.33）；Discussion 前兩段",
+      "summary": "在澳洲袋鼠島無光害的林地、兩個無月夜，於 4 處各放 3 對黃色黏蟲板（一塊綁新鮮發光的鬼菇、一塊不綁），共 480 板時：夜間共捕 21 隻昆蟲，對照 13、綁菇的 8，平均每板夜 0.54 對 0.33，沒有統計差異。野外觀察到子實體白天晚上都持續發光（不像有晝夜節律），出菇在冬季 6–7 月、夜間飛蟲很少（夜間捕獲量約為白天的 6%、10%、2%，依陷阱種類）；附著的菌絲不發光。作者結論：至少這種菇，發光不吸引可能散孢的昆蟲，可能只是代謝的附帶產物；不同支系、不同環境的功能可能不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有兩夜、捕獲數很少，統計檢定力有限；切下的菇片可能改變氣味（作者自己討論）；只一個物種、冬季。不得說『證明所有發光菇都不是為了吸引昆蟲』。 覆核 V43（2026-11-12）：summary 補：觀察到菌絲（mycelium）不亮；夜間捕獲依陷阱種類為白天的約 6%、10%、2%；作者結論是引蟲說與副產物說『both supported』但在不同支系。",
+      "author_cache": {
+        "file": "f40src/PMC5159592.txt（原檔 f40src/PMC5159592.xml）",
+        "sha256_prefix": "81efc65b951440d2",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S051",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11527772/fullTextXML",
+      "canonical_url": "https://doi.org/10.47371/mycosci.2024.03.001",
+      "title": "Is the bioluminescence in many Mycena species overlooked? ― A case study from M. crocata in Switzerland（Heinzelmann, Baggenstos, Rudolf；Mycoscience 65(4):173–179, 2024）",
+      "publisher": "Mycoscience（日本菌學會，CC BY-NC-ND；PMC11527772；瑞士 WSL）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（摘要、Introduction、Methods、Results 3.1–3.3、Discussion）",
+      "locator": "Abstract；Introduction 第 2 段（約 109 種、Mycena 85 種、多半只有菌絲發光、肉眼可能看不到）；Results 3.1（相機拍到 47.10% 的 17 個子實體發綠光，只在菌柄基部長出菌絲處；光度計 34 個中 27 個在柄基超過背景 25 RLU/s）",
+      "summary": "番紅花小菇（M. crocata）在歐洲、日本早已是常見、易認的菇，一直被當成不發光。研究者偶然在長時間曝光照片上看到柄基的光點，於是採 46 個以上子實體、被感染的木頭與 17 個純培養：發光只在菌柄基部長出菌絲的區段與營養菌絲，光很弱，要 240 秒曝光或光度計才看得到（34 個子實體中 27 個柄基超過背景）；基因體裡發光所需的基因都在。作者推測還有其他已知小菇的發光沒被發現。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一物種、單一地區；Introduction 中『多數小菇只有菌絲發光』是轉述 Desjardin 2008，不是本研究資料；47.10% 與 17 個的組合原文如此（含 2017 年一個），片中只用 27/34。 覆核 V43（2026-11-12）：limitations 補：研究者暗適應至少 30 分鐘可目視較亮的柄基；基因體為 JGI 的 CBHHK184 株，不是瑞士採集樣本。",
+      "author_cache": {
+        "file": "f40src/PMC11527772.txt（原檔 f40src/PMC11527772.xml）",
+        "sha256_prefix": "95afcdffbeb01b3e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S052",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12653593/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/jof11110774",
+      "title": "Decoding the Bioluminescent and Non-Bioluminescent Traits of Panellus stipticus（Rabara, Xie；J Fungi 11(11):774, 2025）",
+      "publisher": "Journal of Fungi（MDPI，CC BY；PMC12653593；維吉尼亞州立大學）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文",
+      "locator": "Abstract；Introduction 第 4–5 段（北美東部發光、西北太平洋與紐西蘭、俄羅斯、日本標本不發光；雜交顯示同一物種——轉述）；Results 氧氣段（約一小時內熄、重新接觸空氣約 8 分鐘恢復）；基因體比較段（不發光株 KUC8834 找不到 hisps、h3h、luz）",
+      "summary": "鱗皮扇菇（Panellus stipticus）是同一物種裡有的會發光、有的不會：前人紀錄北美東部的菌株發光，太平洋西北岸與紐西蘭、俄羅斯、日本的不發光，雜交試驗顯示仍是同一物種。本研究比較一株發光（Panst LUM）與一株不發光（KUC8834）的基因體：大部分高度一致，但不發光株找不到 hisps、h3h、luz 三個關鍵基因。另外，把發光培養放進無氧箱，大約一小時內光就熄掉；重新接觸空氣約 8 分鐘內恢復（受相機 8 分鐘曝光限制，可能更快）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "基因體比較每種表型只有一株；地理分布與同種雜交是 Introduction 轉述前人研究，只能說『前人紀錄』；培養基配方結果不用。 覆核 V43（2026-11-12）：limitations 補：兩個基因體是 MycoCosm 下載的公開草圖；不發光株編號文中 KUC8344／KUC8834 不一；發光株也找不到 cph。",
+      "author_cache": {
+        "file": "f40src/PMC12653593.txt（原檔 f40src/PMC12653593.xml）",
+        "sha256_prefix": "764508585d0cf9b2",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S053",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10896133/fullTextXML",
+      "canonical_url": "https://doi.org/10.1080/12298093.2024.2302661",
+      "title": "Cloning and Expression Analysis of Bioluminescence Genes in Omphalotus guepiniiformis Reveal Stress-Dependent Regulation of Bioluminescence（Park, Kim, Kim, Jang, Ryoo, Ka；Mycobiology 52(1):42–50, 2024）",
+      "publisher": "Mycobiology（韓國菌學會，CC BY-NC；PMC10896133；韓國國立山林科學院）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文",
+      "locator": "Abstract；Results 3.1（加 hispidin 依濃度變亮，香菇不亮）、3.2（割傷 1 小時內增強、3 小時最高、至少持續 24 小時，鄰近未割處也變亮；HispS、H3H、Luz 轉錄上升）、3.3（4 °C 或 35 °C 24 小時光度下降，回 25 °C 約 2 小時恢復，轉錄沒有隨之下降）；Discussion 4.2–4.3",
+      "summary": "以韓日原生的發光菇 Omphalotus guepiniiformis 的菌絲做實驗：把菌絲割傷，光在 1 小時內明顯增強、3 小時最亮、至少持續到 24 小時，連沒被割到但緊鄰的區域也變亮，發光三個基因的轉錄同時上升；把菌絲放到 4 °C 或 35 °C 一天，光度明顯下降（35 °C 幾乎全暗），移回 25 °C 約 2 小時就恢復，但這時發光基因的轉錄沒有下降，作者認為溫度是在基因之外的層次調節。滴 hispidin（螢光素前驅物）會依濃度變亮，不發光的香菇菌絲則不會。作者推測受傷變亮可能與嚇退或引來吃菌者的天敵有關，但未測。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗室培養菌絲，不是野外子實體；生態解釋是推測；本種在日本俗稱月夜茸、是有毒菇，片中不得提及食用與辨識（安全建議不收）。 覆核 V43（2026-11-12）：summary 刪『例如酵素本身』，改用原文『non-transcriptional pathway』；補 Discussion 提到割傷處氧氣增加也可能貢獻。",
+      "author_cache": {
+        "file": "f40src/PMC10896133.txt（原檔 f40src/PMC10896133.xml）",
+        "sha256_prefix": "2e3a99dff1bfcc05",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S054",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7610436/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41587-020-0500-9",
+      "title": "Plants with genetically encoded autoluminescence（Mitiouchkina, Mishin, … Yampolsky, Sarkisyan；Nature Biotechnology 38:944–946, 2020；Europe PMC 作者稿）",
+      "publisher": "Nature Biotechnology（Europe PMC 作者稿 PMC7610436，可閱讀與文字探勘）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "作者稿全文（主文與 Online Methods）",
+      "locator": "主文第 3–7 段（15 株、外觀與開花不變、株高中位數高 12%、肉眼可見、花最亮達 10^10 photons/min、注射咖啡酸變亮、根分枝處、受傷處、香蕉皮與茉莉酸甲酯）",
+      "summary": "把菇的四個發光基因（來自 Neonothopanus nambi）放進菸草的核基因體，得到 15 個獨立株系：不需另外餵螢光素，整株在各發育階段都發出肉眼可見的綠光，花最亮（約每分鐘 10^10 個光子），用一般相機 0.5–30 秒曝光就能拍；外觀、葉綠素、開花時間、發芽與野生型無差，只是株高中位數高 12%。因為植物本來就有咖啡酸，光的分布反映咖啡酸代謝：注射咖啡酸會變亮；根在側根冒出前幾小時就在分枝點變亮；葉片受傷處持續變亮，光沿細脈約每秒 2 微米擴散；放在熟香蕉皮旁或噴茉莉酸甲酯，全株變亮。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者稿（非出版排版）；同 Yampolsky 網絡封頂；作者含商業公司 Planta LLC；『比細菌系統至少亮一個數量級』是作者比較；片中不得把發光植物說成產品或推薦購買。",
+      "author_cache": {
+        "file": "f40src/PMC7610436.txt（原檔 f40src/PMC7610436.xml）",
+        "sha256_prefix": "31460d1543516796",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S055",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11767467/fullTextXML",
+      "canonical_url": "https://doi.org/10.3390/microorganisms13010059",
+      "title": "Spore-Derived Isolates from a Single Basidiocarp of Bioluminescent Omphalotus olivascens Reveal Multifaceted Phenotypic and Physiological Variations（Diaz, Bermudes；Microorganisms 13(1):59, 2025）",
+      "publisher": "Microorganisms（MDPI，CC BY；PMC11767467；加州州立大學北嶺分校）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（摘要、Methods 發光段、Results 發光與咖啡酸段、Discussion）",
+      "locator": "Abstract（47 株、發光有比親代強也有弱、咖啡酸反應與原本亮度成反比）；Results 發光段（親代中位數 8461 單位；最亮五株最多約為親代 8 倍）；咖啡酸段（所有分離株都變亮、增幅 1.6–27 倍、越暗增越多）",
+      "summary": "從同一朵發光菇（Omphalotus olivascens）的孢子養出 47 株菌絲：發光強度有的比親代強、有的弱，最亮的五株最多約為親代的 8 倍；滴咖啡酸後所有分離株都變亮，增幅 1.6 到 27 倍，原本越暗的增得越多，作者認為咖啡酸供應是限制因素之一、亮的株接近飽和。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "實驗室培養、單一子實體來源；單核菌絲與自然雙核菌絲不同；不用其抗菌、抗癌化合物段落（與本題無關且涉醫療）。",
+      "author_cache": {
+        "file": "f40src/PMC11767467.txt（原檔 f40src/PMC11767467.xml）",
+        "sha256_prefix": "648008d2c6c0d2cc",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S056",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11563039/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/pnasnexus/pgae492",
+      "title": "Molecular basis for thermogenesis and volatile production in the titan arum（Zulfiqar, Azhar, Shakeel, … Schenck, Schaller, Boyce 等；PNAS Nexus 3(11): pgae492, 2024）",
+      "publisher": "PNAS Nexus（Oxford，CC BY；PMC11563039；Dartmouth College 溫室植株）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（Abstract、Significance、Results 各節、Discussion、Methods 材料段）",
+      "locator": "Abstract；Results 第 1 段（D-day 附屬體外表約高於室溫 11 °C；氣味如死老鼠、爛魚）；甲硫胺酸段（附屬體游離甲硫胺酸比佛焰苞基部或邊緣高 20 倍以上，6 小時內降到原本 25%）；腐胺段（佛焰苞邊緣比附屬體高 11 倍，6 小時內降到約 15%）；Methods（Morphy 2016 與 2022 兩次花期、採樣 17:00 與 23:00）",
+      "summary": "巨花魔芋（屍花）開花當天（D-day），附屬體外表溫度約比室溫高 11 °C，同時發出死老鼠、爛魚般的氣味。轉錄體顯示能發熱的部位，粒線體電子傳遞的『旁路』基因、尤其交替氧化酶（AOX）表現高。主要臭味分子是二甲基二硫與二甲基三硫，作者找到從硫運輸到甲硫胺酸的路徑，指認甲硫胺酸是原料：附屬體的游離甲硫胺酸比佛焰苞高 20 倍以上，發熱高峰前後 6 小時降到原本的 25%；另外找到過去沒注意的腐胺（由精胺酸來），佛焰苞邊緣的腐胺在 6 小時內降到約 15%。作者據此提出發熱與產臭在同一時段、由不同組織分工的模型。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "溫室栽培、主要是同一株（Morphy）兩次花期，樣本數小；溫度是附屬體外表、相對室溫；『熱幫助臭味散出』是本文背景與模型的說法，本文沒有拆開熱與揮發量做對照，片中只能說『同時』。作者名單中段未逐一核對，引用時只寫 Zulfiqar 等。",
+      "author_cache": {
+        "file": "f40src/PMC11563039.txt（原檔 f40src/PMC11563039.xml）",
+        "sha256_prefix": "a43a29d647ce93b8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S057",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11142342/fullTextXML",
+      "canonical_url": "https://doi.org/10.1093/plphys/kiae059",
+      "title": "Gene expression and metabolite levels converge in the thermogenic spadix of skunk cabbage（Tanimoto, Umekawa, Takahashi, Goto, Ito；Plant Physiology 195(2):1561 起, 2024）",
+      "publisher": "Plant Physiology（Oxford，CC BY；PMC11142342；岩手大學）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（Abstract、Introduction、Results 至 Fig. 8、Discussion）",
+      "locator": "Abstract（約 23 °C、外界低於冰點；SBP1/MTO 最高；AOX 從發熱前就高；AMP 上升；硫化氫抑制 COX 呼吸、低溫時抑制更強）；Introduction 第 1–2、4 段（15–30 °C 調溫範圍與 15 °C 最大呼吸率引 Seymour 2010；不臭、少有昆蟲證據、23 °C 對花粉發芽重要——轉述）；Results Fig. 8C（15 °C 時兩條呼吸曲線交點硫化氫濃度最低 2.96 µM）；Discussion〈不臭〉段",
+      "summary": "日本臭菘（Symplocarpus renifolius）在晚冬開花，肉穗花序能把溫度調在約 23 °C，就算外面氣溫低於冰點。作者比較發熱前、發熱中、發熱後三階段的基因與代謝物：小花裡 SBP1/MTO（會把甲硫醇轉成硫化氫的酵素）的轉錄量最高，AOX 從發熱前就一直很高，發熱時 AMP 明顯上升。用分離的粒線體量呼吸：硫化氫會抑制正常的細胞色素 c 氧化酶（COX）路徑，交替氧化酶路徑相對不受影響；溫度越低，硫化氫對 COX 的抑制越強，於是冷的時候呼吸更偏向會放熱的 AOX 路徑——作者據此提出硫化氫是調溫的『效應物』。作者也用這個酵素解釋臭菘為什麼其實不太臭：前人量到發熱期花序的二甲基硫化物等氣味成分沒有明顯變化，在寒冷中也很少有昆蟲被吸引的證據，而前人實驗顯示 23 °C 對花粉發芽與花粉管伸長很重要。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Ito 研究群（與 F40-S013、S014 合計封頂）；15–30 °C、不臭的量測、23 °C 與花粉的關係是轉述 Seymour 等與 Oguri 2019，只能說『前人研究』；硫化氫調溫是用分離粒線體得到的推論，作者自己說不完全代表活體。 覆核 V43（2026-11-12）：limitations 補：『不太臭』（Knutson 1979、Ito-Inaba 2014、Oguri 2019）、『少有昆蟲』（對比 Stensmyr 2002）、『23 °C 與花粉發芽』（Seymour 2009）、『15–30 °C 調溫』（Seymour 2010）全是 Tanimoto 2024 轉述；本研究自有資料是 SBP1 表現、小花硫化氫較高（Fig. 8A）、AMP、離體粒線體呼吸。",
+      "author_cache": {
+        "file": "f40src/PMC11142342.txt（原檔 f40src/PMC11142342.xml）",
+        "sha256_prefix": "5be6df15d8d4cae1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S058",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7505559/fullTextXML",
+      "canonical_url": "https://doi.org/10.1042/BCJ20200515",
+      "title": "Degradation of mitochondrial alternative oxidase in the appendices of Arum maculatum（Ito, Ogata, Seito, Umekawa, Kakizaki, Osada, Moore；Biochemical Journal 477(17):3417 起, 2020）",
+      "publisher": "Biochemical Journal（Portland Press，CC BY；PMC7505559）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（Abstract、Introduction、Results、Discussion）",
+      "locator": "Abstract；Introduction 第 1 段（會發熱的繁殖器官見於天南星科、馬兜鈴科、番荔枝科、蘇鐵科、木蘭科、蓮科、睡蓮科等；1955 年首報斑葉疆南星肉穗附屬體抗氰呼吸）；Results（15 °C 與 30 °C 分解試驗）；Discussion（附屬體最高約 32 °C）",
+      "summary": "斑葉疆南星（Arum maculatum）肉穗附屬體發熱時最高約 32 °C。用分離的粒線體做試驗：附屬體某些階段的 AOX 蛋白在 30 °C 下分解得比 15 °C 快很多，這個分解會被半胱胺酸蛋白酶抑制劑 E-64 擋住，作者純化出一個約 30 kDa 的蛋白酶候選。作者推測溫度升高會啟動分解發熱酵素的機制。Introduction 列出會在繁殖器官發熱的植物分布在天南星科、蓮科、睡蓮科、木蘭科、蘇鐵科等多個科。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Ito 研究群，封頂；是離體粒線體試驗，『煞車』式的生理意義是作者推論；不同科名單是背景轉述。 覆核 V43（2026-11-12）：summary 改：作者模型是高溫啟動半胱胺酸蛋白酶分解 AOX，之後可能經逆向訊號誘導 AOX 基因表現（汰換），不是『煞車』；最高 32 °C 引自家前作 ref 15。",
+      "author_cache": {
+        "file": "f40src/PMC7505559.txt（原檔 f40src/PMC7505559.xml）",
+        "sha256_prefix": "472d3b37cf172fc4",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S059",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10349278/fullTextXML",
+      "canonical_url": "https://doi.org/10.1002/ece3.10319",
+      "title": "Potential contribution of floral thermogenesis to cold adaptation, distribution pattern, and population structure of thermogenic and non/slightly thermogenic Symplocarpus species（Sato, Matsuo, Otsuka, Takano, Maki, Okano, Suyama, Ito-Inaba；Ecology and Evolution 13(7): e10319, 2023）",
+      "publisher": "Ecology and Evolution（Wiley，CC BY；PMC10349278）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（Abstract、Introduction、Results、Discussion）",
+      "locator": "Abstract（生態棲位模型：末次冰盛期 S. nipponicus 分布縮小、S. renifolius 擴大；S. renifolius 遺傳多樣性較高）",
+      "summary": "比較會強烈發熱的臭菘（S. renifolius）與幾乎不發熱的近緣種 S. nipponicus：用生態棲位模型回推末次冰盛期，S. nipponicus 的可能分布縮小、S. renifolius 則擴大；現生族群的遺傳多樣性也是 S. renifolius 較高。作者據此認為花的發熱可能幫助耐冷、讓族群在冰期擴張，但用詞是『imply』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "通訊作者 Ito-Inaba 與 Ito 研究群長期合作，保守併入同一網絡封頂；只比較兩個物種，相關不等於發熱造成；冰期分布是模型推估。",
+      "author_cache": {
+        "file": "f40src/PMC10349278.txt（原檔 f40src/PMC10349278.xml）",
+        "sha256_prefix": "8bc7edaafa89950e",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S060",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13725608/fullTextXML",
+      "canonical_url": "https://doi.org/10.1111/jipb.70318",
+      "title": "Thermogenesis-derived spatiotemporal microclimates guide pollinator movement to ensure pollination（Yu, Luo, Zhang, Ding, Song, Luo；Journal of Integrative Plant Biology 68(11):4071–4087, 2026）",
+      "publisher": "Journal of Integrative Plant Biology（Wiley，CC BY-NC；PMC13725608；中科院植物所、西雙版納植物園等）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "全文（ABSTRACT、Introduction、Results 各節、Discussion）",
+      "locator": "ABSTRACT；Results〈thermal imaging〉（附屬體與雄花區平均高於環境 2.4 ± 1.1 °C、3.5 ± 1.8 °C，隨環境起伏；對比蓮花 30–35 °C 為轉述）；〈in situ microclimate manipulation〉（正午把上部降到 25 °C 以下、下部加熱到 25 °C 以上，上部果蠅比例 10.4% ± 6.9% → 89.2% ± 10.3%）；氣味段（附屬體氣味最濃；正午揮發量最高卻與果蠅聚集位置不符）；Discussion（氣味管遠距離、光只是次要）",
+      "summary": "姑婆芋（Alocasia odora）花序上半部的雄花區與附屬體靠 AOX 發熱，但只比環境平均高 2–3.5 °C，而且跟著氣溫起伏、不維持恆溫（作者對比蓮花維持 30–35 °C，為轉述）。白天上半部熱，專門替它授粉的 Colocasiomyia 果蠅往下躲到較涼的雌花區；晚上上半部相對暖，果蠅往上爬到雄花區沾花粉。研究者在正午把上部降溫、下部加熱，上部果蠅比例由約 10% 變成約 89%；遮光或夜間照明的影響小。氣味主要由附屬體發出、正午最濃，但果蠅當時聚在下方，作者認為氣味負責遠距離吸引，花序內的上下移動主要由溫度差引導。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "單一物種、野外樣本數 n=6–15 花序（依試驗）；兩種果蠅的分工細節不用；『全球發熱花普遍有性器官時空分離』是作者的比較文獻整理，只當背景；蓮花 30–35 °C 是轉述。 覆核 V43（2026-11-12）：summary 補：研究族群在海南海口白沙門公園（上千株），不是台灣。",
+      "author_cache": {
+        "file": "f40src/PMC13725608.txt（原檔 f40src/PMC13725608.xml）",
+        "sha256_prefix": "42368fc10d4bc1a5",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S061",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9869488/fullTextXML",
+      "canonical_url": "https://doi.org/10.3389/fpls.2022.1046532",
+      "title": "Variation in scent amount but not in composition correlates with pollinator visits within populations of deceptive Arum maculatum L. (Araceae)（Gfrerer, Laina, Gibernau, Comes, Hörger, Dötterl；Frontiers in Plant Science 13:1046532, 2022）",
+      "publisher": "Frontiers in Plant Science（CC BY；PMC9869488；薩爾斯堡大學）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "摘要、Introduction、Results 主段、Discussion 前段",
+      "locator": "Abstract（奧地利 JOS 與義大利北部 DAO 兩族群；個體氣味總量與訪客數正相關；氣味組成與訪客組成無關；JOS 常見氣味型反而招來較多授粉者、較易結果）",
+      "summary": "斑葉疆南星是會發熱、用臭味騙蒼蠅與蛾蚋授粉的植物。研究者在兩個族群逐株量氣味與訪客：每株放出的氣味總量越多，來的訪客越多（兩族群都是）；但氣味的『配方』差異和訪客種類的差異對不起來；在奧地利族群，常見的氣味型反而招來更多授粉者、更容易結果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "相關研究、兩個族群；沒有量花序溫度，不得說『熱越多訪客越多』；只當『氣味量是遠距招蟲的關鍵』的獨立旁證。",
+      "author_cache": {
+        "file": "f40src/PMC9869488.txt（原檔 f40src/PMC9869488.xml）",
+        "sha256_prefix": "535104854dd58925",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L70-S062",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13140744/fullTextXML",
+      "canonical_url": "https://doi.org/10.1111/pbi.70479",
+      "title": "Multi-Omics Combined With Mitochondrial Feeding Assays Reveal a Novel Energy Metabolism Strategy for Floral Thermogenesis in Magnolia Driven by Synergistic Supply of Multiple Substrates（Wang, Li, Wang, Yu, Liu, Liu, Wang；Plant Biotechnology Journal 24(4):2169 起, 2026）",
+      "publisher": "Plant Biotechnology Journal（Wiley，開放取用；PMC13140744；北京林業大學）",
+      "version": "出版版全文（Europe PMC 開放全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "Europe PMC REST search（文件記載 API）查到 PMCID、isOpenAccess=Y；以 REST fullTextXML 取全文，python 轉文字",
+      "reading_scope": "摘要、Introduction、Results 前三節",
+      "locator": "Summary；Results（時間序列轉錄體：發熱高峰複合體 II、III 基因上調，部分 ATP 合成酶基因下調；β-澱粉酶基因全部上調、部分超過 9 倍）",
+      "summary": "木蘭花（Magnolia）雌蕊群發熱時，粒線體同時使用丙酮酸、脂肪酸、胺基酸等多種燃料；發熱高峰時電子傳遞鏈多個複合體的基因上調、分解澱粉的 β-澱粉酶基因全部上調，部分 ATP 合成酶基因反而下調，作者解讀為能量由做 ATP 轉向放熱。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "『由 ATP 轉向放熱』是作者依基因表現的解讀；本題只用一句『燃料不只一種』，不引數值以外的機制細節。 覆核 V43（2026-11-12）：summary 改：ATP 合成酶四個基因中一個在發熱期顯著下調；脂肪酸與胺基酸供料是依基因表現推論。",
+      "author_cache": {
+        "file": "f40src/PMC13140744.txt（原檔 f40src/PMC13140744.xml）",
+        "sha256_prefix": "03f93da6f5ec704a",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L70-001",
+      "question": "月光比陽光暗得多，牛頭犬蟻夜裡回家真的會讀月光的偏振嗎？",
+      "domain": "昆蟲的方向感與感官實驗",
+      "mechanism_key": "navigation.ant.lunar_polarization_homing_rotation_test",
+      "answer_target": "會。2024 年澳洲研究者在夜行的牛頭犬蟻 Myrmecia midas 回巢路上，把偏光片蓋在牠頭頂，讓上方的偏振方向轉 45°：滿月前幾夜（月面亮 80% 以上），兩個巢的螞蟻平均分別跟著偏 38.4° 與 23.4°；在其中一個巢再測，上弦月（約一半亮）與眉月（約兩成亮）時仍顯著跟著轉；沒有月亮的夜晚蓋上同樣的偏光片，牠們不轉。作者寫月光大約只有陽光的百萬分之一亮，這是第一次證明動物用月光的偏振「回家」，之前只知道蜣螂用它走直線。",
+      "scope": "兩個巢、一個物種；月相條件只在一個巢測；偏光片給的是比天然月光偏振度高得多的人造圖案（審稿人指出）；各條件偏轉角不同，不合成一個數字；「百萬分之一」是亮度，不是偏振。",
+      "source_ids": [
+        "L70-S002"
+      ],
+      "source_locator": "Abstract、eLife digest；Results 第 22、26、29–30 段",
+      "premise_status": "screened",
+      "notes": "算 1.25（作者 1.5）：與 F36-003 同一研究，兩條合計 1.5。 原提案 F36-002（目標 C14-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）改字後收；把「偏振圖案百萬分之一」改回原文的亮度；月相只在一個巢測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "只剩一彎眉月、亮度只有陽光的百萬分之一左右，螞蟻仍讀得到天空的方向圖。",
+        "visual": "夜裡螞蟻爬過，研究者把圓形偏光片舉到牠頭上，牠的路線轉一個角；並排月相小圖。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-002",
+      "question": "同樣是半個月亮，為什麼月亮漸虧時螞蟻對偏振的反應比較小？",
+      "domain": "昆蟲的方向感與感官實驗",
+      "mechanism_key": "navigation.ant.lunar_polarization_waning_weighting_drop",
+      "answer_target": "同一批牛頭犬蟻在虧月期偏轉得比盈月期小：滿月時平均 39.8° 對 16.0°，弦月時 38.1° 對 22.7°。作者推測虧月時前半夜沒有月亮、方向線索中斷，螞蟻可能降低了對月光偏振的權重，或內部羅盤在空檔裡變差；確切原因未知。",
+      "scope": "只在一個巢比較；原因是作者推測，要寫「可能」。",
+      "source_ids": [
+        "L70-S002"
+      ],
+      "source_locator": "Results 第 37 段；Discussion 第 46、57 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：同一研究，與 F36-002 合計 1.5。 原提案 F36-003（目標 C14-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）照原稿收；數字、條件、推測語氣都相符；只降計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "動物不是有偏振就照單全收，線索不連續時權重會變。",
+        "visual": "兩個半月並排，箭頭長短代表螞蟻轉了多少。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L70-003",
+      "question": "白天活動的螞蟻，沒有夜行種那麼好的眼睛，也能用月光偏振嗎？",
+      "domain": "昆蟲的方向感與感官實驗",
+      "mechanism_key": "navigation.ant.diurnal_species_lunar_polarization_phase_dependent",
+      "answer_target": "也能，但比較吃力。2025 年同一研究群比較白天覓食、黃昏回巢的 Myrmecia tarsata 與夜行的 M. midas：兩種都會用日光與月光的偏振回巢，但 M. tarsata 在月光下的表現隨月相變暗而下降，M. midas 整個月都穩定。",
+      "scope": "與 F36-002 同群；只用摘要層級結論，不引數字。",
+      "source_ids": [
+        "L70-S003"
+      ],
+      "source_locator": "Abstract；Background",
+      "premise_status": "screened",
+      "notes": "算 0.25：同群（Freas），F36-002～004 合計 1.75（作者 2.25）。 原提案 F36-004（目標 C14-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）照原稿收；相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "眼睛沒那麼特化的種也讀得到，只是光太弱就不準。",
+        "visual": "兩種螞蟻剪影，月相由滿到眉，表現條逐漸變短。",
+        "seconds": [
+          25,
+          35
+        ]
+      }
+    },
+    {
+      "id": "L70-004",
+      "question": "雲和霾讓天空偏振變弱，昆蟲腦裡負責天空羅盤的神經還認得出方向嗎？",
+      "domain": "昆蟲的方向感與感官實驗",
+      "mechanism_key": "navigation.locust.central_complex_low_dop_coding",
+      "answer_target": "認得出相當弱的。2022 年德國研究者在沙漠蝗蟲腦中「中央複合體」的偏振角調諧神經做細胞內記錄，換不同偏振度的光：偏振度 0.35 時測到的神經全都有反應，降到 0.05 時仍有不到一半的神經有顯著反應，作者估可靠編碼的門檻在 0.1 到 0.05 之間；幾乎沒偏振的光（0.002）則沒有任何神經反應。作者也發現輸入層的部分神經容易被幾乎沒偏振的光影響，下游的神經看來較不受影響。",
+      "scope": "實驗室神經記錄，不是飛行或行走成績；不能說蝗蟲陰天照樣能飛對方向；不說「越下游越不受影響」。",
+      "source_ids": [
+        "L70-S001"
+      ],
+      "source_locator": "Abstract；Results",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）。 原提案 F36-005（目標 C14-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）改字後收；補「不到一半」與門檻區間；刪原文沒有的單調關係。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "晴天最高約 0.75，牠們的神經在 0.05 就有反應。",
+        "visual": "偏振度刻度從 0.75 滑到 0.05，神經放電圖仍隨角度起伏。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L70-005",
+      "question": "太陽和天空的偏振同時都在，推糞球的蜣螂聽哪一個？",
+      "domain": "昆蟲的方向感與感官實驗",
+      "mechanism_key": "navigation.beetle.sun_vs_polarization_reliability_weighting",
+      "answer_target": "看哪個比較可靠。2022 年隆德大學等研究者在實驗室讓白天的蜣螂 Kheper lamarcki 推球：頭頂只有偏振光帶時，偏振度只有 11% 牠們也會跟著光帶轉（光帶轉 90°，平均轉約 68°，15 隻裡 10 隻轉超過 45°；100% 時約 89°）。同時在側面放一盞「人造太陽」再把它移 90°：偏振 11% 時甲蟲平均跟太陽轉約 77°，100% 偏振時就守著偏振方向不動，64% 時只轉約 40°；在 64% 的條件下把偏振光的亮度降約 100 倍，牠們又改跟太陽；反過來把太陽調暗 10 倍，牠們改守偏振。作者認為甲蟲把最大的權重給當下最可靠的線索。",
+      "scope": "實驗室人造光源；轉角為平均 ± 標準差，個體差異大（11% 時 ±38.9°）；不與 R32005（太陽高度與風）或銀河研究的數字並列。",
+      "source_ids": [
+        "L70-S004"
+      ],
+      "source_locator": "Results 第 50、52、54–57 段；Discussion 第 65–69 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.25）：Dacke 研究群；「依可靠度換權重」這個概念已在 ready 題 G576 的 R32005（太陽高時改聽風）出現，本條只算新的線索組合；Belušič 是本篇與 F36-007 的共同作者，兩條合計 1.25。 原提案 F36-006（目標 C14-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）改字後收；「全跟太陽轉」改成平均值；補「降 100 倍是在 64% 條件下」；計數因概念與 G576 重疊與共同作者下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "偏振不是備胎，也不是永遠第一：弱就聽太陽，強就聽偏振。",
+        "visual": "天平一端是太陽一端是偏振光帶，隨偏振度與亮度擺動。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-006",
+      "question": "排成一列行進的毛毛蟲，靠什麼決定往哪裡走？",
+      "domain": "昆蟲的方向感與感官實驗",
+      "mechanism_key": "navigation.caterpillar.procession_leader_polarization_heading",
+      "answer_target": "至少有一部分靠天空偏振。2021 年研究者在義大利、葡萄牙與澳洲野外，把偏光片做成小隧道罩在帶頭的松異舟蛾或 Ochrogaster lunifer 幼蟲上方：帶頭蟲連同後面整列轉向 58–103°；只減光、不改偏振的中性密度濾片只讓牠們偏 18–32°。幼蟲第一對側單眼的構造與成蟲眼睛專收天空偏振的「背緣區」相似。",
+      "scope": "轉角是三組幼蟲各自的平均範圍（其中一組標準誤與平均一樣大）；中性密度濾片對照只有兩組；偏光片也會減光；不說毛毛蟲只靠偏振。",
+      "source_ids": [
+        "L70-S005"
+      ],
+      "source_locator": "Abstract；Results 第 24 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：與 F36-006 共同作者 Belušič，合計 1.25。 原提案 F36-007（目標 C14-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）改字後收；答案數字相符；scope 補上表內限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連毛毛蟲那幾顆小單眼都讀得到天空的方向圖。",
+        "visual": "一列毛毛蟲在白紙上走，帶頭的頭上罩偏光片，整列折成之字形。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "L70-007",
+      "question": "沙灘上的小跳蝦，天生就會用天空偏振找海的方向嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "navigation.sandhopper.polarization_gradient_needs_experience",
+      "answer_target": "似乎要有經驗。2025 年義大利研究者比較沙灘跳蝦 Talitrus saltator 的幼體：野外採到、見過天空的幼體，在只有偏振梯度的圓頂下比實驗室出生的幼體更能朝海的方向；實驗室出生的幼體在真太陽下也比在圓頂下定向得好。作者也看到眼中感光微絨毛隨年齡變細、排得更整齊。",
+      "scope": "用每次釋放的定向指標比較，不引單一百分比；成體用的是偏振光的亮度差而非方向本身，措辭不能說「讀 e-vector」。",
+      "source_ids": [
+        "L70-S006"
+      ],
+      "source_locator": "Results and discussion 第 15–20 段",
+      "premise_status": "screened",
+      "notes": "算 0.5。 原提案 F36-008（目標 C14-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）照原稿收；相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讀天空方向圖可能要先「看過天空」。",
+        "visual": "實驗室出生與海邊撿來的小跳蝦在圓頂下各自爬的方向圖。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L70-008",
+      "question": "沙漠蟻第一次出門繞圈「散步」，跟天空偏振有什麼關係？",
+      "domain": "昆蟲的方向感與感官實驗",
+      "mechanism_key": "navigation.ant.learning_walk_rotating_polarization_plasticity",
+      "answer_target": "牠們在學天空的方向怎麼隨時間轉。2022 年符茲堡大學研究者發現，沙漠蟻 Cataglyphis 第一次出巢的學習散步，只有在頭頂偏振圖案會旋轉的條件下進行，腦中負責導航的中央複合體與蕈狀體才出現結構變化；只曝露天空光、不做學習散步時，變化只限光譜相關的部分。作者在前言寫，太陽與偏振圖案一天中會移動，螞蟻必須先學會太陽的日行軌跡。",
+      "scope": "指標是腦中突觸結構，不是導航成績。",
+      "source_ids": [
+        "L70-S007"
+      ],
+      "source_locator": "Abstract；Introduction 第 19 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：指標是腦結構，單一研究一條結論。 原提案 F36-009（目標 C14-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）照原稿收；相符；只降計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "天空方向圖會隨時間轉，螞蟻要先學會它怎麼轉。",
+        "visual": "螞蟻在巢口繞小圈，頭頂的偏振同心圓跟著轉。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "L70-009",
+      "question": "人眼看得到天空的偏振嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "vision.human_haidinger_brush_polarization_threshold",
+      "answer_target": "看得到一點。人看偏振光時，視野中心會短暫浮現一個淡黃加淡藍的蝴蝶結形，叫「海丁格刷」，一般認為來自黃斑裡有方向排列的色素，約 5 秒內就淡掉；看離太陽約 90° 的藍天時可能看到。2015 年布里斯托大學測了 23 人：平均偏振度 56% 時還分辨得出，個別低到 23%、高到 87%，是當時測過最敏感的脊椎動物（虹鱒在實驗室要 65–75%）。作者另寫，依既有的天空偏振量測，人要靠它找太陽只限晴天。",
+      "scope": "受試者是大學學生與同事；眼疾篩檢應用不進片；昆蟲低到 6–7% 是作者引他人資料；「天空很少超過 80%」與「只限晴天」不寫成因果。",
+      "source_ids": [
+        "L70-S008"
+      ],
+      "source_locator": "Abstract；Introduction 第 9 段；Results 3(a)；Discussion 第 56 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（作者 1.25）：門檻一條；晴天限制是作者引他文的推論，不另計。 原提案 F36-010（目標 C14-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V39（2026-11-12）改字後收；拆掉作者自己接起來的因果鏈。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人也有一個內建的偏振檢測器，只是門檻比天空常見的偏振度還高。",
+        "visual": "畫面中央淡淡浮出黃藍蝴蝶結形，幾秒後淡掉；旁邊一條偏振度刻度標 23%、56%、87%。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-010",
+      "question": "啄木鳥啄下去那一瞬間，頭到底衝多快、停得多急？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.woodpecker_peck_kinematics_vs_hoopoe_measured",
+      "answer_target": "北航研究群用每秒 2,000 格的高速攝影拍大斑啄木鳥啄泡棉：喙尖峰值速度約 7.6 公尺／秒，撞上時峰值減速度約 9,790 公尺／秒²；同樣啄泡棉的戴勝約 2.5 公尺／秒、3,600 公尺／秒²。換成啄金屬籠，啄木鳥的峰值速度只剩約 2.7 公尺／秒，軌跡也從直線變成彎的（啄感測器時也是彎的）。網路上常見的「每秒 6–7 公尺、約 1000 g、一天一萬兩千下」是這篇論文引言引用前人的數字，不是這次量到的。",
+      "scope": "只限這篇實驗室裡的大斑啄木鳥與戴勝、泡棉、感測器與金屬籠；不是啄真樹；Table 2 的『Pileated woodpecker 啄樹幹』一列是引自前人，不可當本研究實測；不可把引言的 1000 g、一天 12,000 次當本研究量測；不換算 g 值、不與人類運動或撞擊比較。",
+      "source_ids": [
+        "L70-S009"
+      ],
+      "source_locator": "F37-S001 Introduction 第1段；Results Table 2",
+      "premise_status": "screened",
+      "notes": "V41 維持 0.75：同一次量測的速度與減速度合計一條，戴勝與金屬籠只是條件。北航 Wang 2011 一篇在本題合計封頂 1.75（F37-001 0.75＋F37-002 0.75＋F37-003 內 0.25）。 原提案 F37-001（目標 C15-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字與條件逐字相符；補寫軌跡變彎也發生在感測器，並明確排除 Table 2 引用列。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先給觀眾看「快」與「急」的實測數字，同時拆掉網路上那串被一再轉貼的數字從哪來。",
+        "visual": "2000 fps 慢動作的啄擊示意；兩根長條（啄木鳥對戴勝）只標實測值。",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-011",
+      "question": "啄木鳥的頭骨和喙，跟不啄樹的鳥有什麼不一樣？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.woodpecker_skull_platelike_trabecular_hyoid_unequal_beak",
+      "answer_target": "同一篇北航研究用 micro-CT 比較大斑啄木鳥與戴勝的枕骨：啄木鳥的海綿骨偏板狀、戴勝偏棒狀；骨體積分率約 8.6% 對 4.6%，骨礦密度約 0.22 對 0.10 g/cm³。啄木鳥的舌骨一路繞過頭頂、長約 80 毫米；上喙外層比下喙長 1.6 毫米，但裡面的骨質反而比下喙短約 1.2 毫米。",
+      "scope": "只比兩種鳥、少數標本；只描述構造，不代表每項都有護腦作用。畫面不畫解剖：不用頭骨剖面或舌骨解剖線稿，改用抽象圖示（板狀 vs 棒狀的幾何圖案、一條繞圈的線、兩根長短不同的條）。",
+      "source_ids": [
+        "L70-S009"
+      ],
+      "source_locator": "F37-S001 Results Table 3、舌骨與喙長度段落；Figure 3–4",
+      "premise_status": "screened",
+      "notes": "V41 由 1.0 降為 0.75：純構造描述、兩種鳥少數標本，與 F37-001 同篇。 原提案 F37-002（目標 C15-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；計數下修、視覺改為非解剖圖示（本題規定不畫解剖）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把『啄木鳥頭裡有特殊裝備』具體化：真的有哪些不一樣。",
+        "visual": "板狀與棒狀的抽象幾何圖案並排、數字卡 8.6% 對 4.6%；一條繞圈的線代表舌骨，兩根長短不同的條代表喙；不畫頭骨或解剖剖面。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-012",
+      "question": "那些特殊構造，在電腦模型裡真的有護腦效果嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.woodpecker_fe_unequal_beak_lowers_brain_strain_model",
+      "answer_target": "北航研究群把啄木鳥頭做成有限元素模型，只改上下喙的相對長度：上下喙等長時，前腦那一點的峰值應變最高（0.69，真實的『下喙骨質較長』只有 0.04）；撞擊力大多由較長的那片喙承擔。作者據此認為舌骨（像安全帶）、板狀海綿骨與不等長的喙是主要保護因素。清華大學研究群另以物質點法模擬，認為腦幹剪應力主要來自第一節頸椎的移動，有舌骨時腦幹剪應力較低、頭較硬、撞擊後的振盪較快被壓住。",
+      "scope": "兩篇都是模型（北航模型撞擊初速設 1 m/s，不是實測速度；清華模型肌肉簡化為彈性材料）；『主要保護因素』是作者結論；不可說構造已被證明能防止腦傷；不可說等長喙時三個點都最高（只有前腦最高）。",
+      "source_ids": [
+        "L70-S009",
+        "L70-S010"
+      ],
+      "source_locator": "F37-S001 Table 5、Discussion；F37-S002 Abstract、Results〈hyoid bone〉",
+      "premise_status": "screened",
+      "notes": "V41 由 1.25 降為 0.75：北航 FE 0.25（同篇已用到 1.5，封頂 1.75）＋清華 MPM 0.5（純模型）。 原提案 F37-003（目標 C15-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；『三個點一致最高』與 Table 5 不符，改為只說前腦；補模型初速條件；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "建立觀眾心中的第一個答案：『牠有內建避震器』。",
+        "visual": "兩個抽象方塊模型的色階示意（等長喙 vs 不等長喙），只標 0.69 與 0.04；不畫解剖頭骨。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-013",
+      "question": "把舌骨和喙從模型裡拿掉，啄木鳥的腦就比較危險嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.woodpecker_brain_stress_reduction_mainly_head_size_model",
+      "answer_target": "印度理工學院羅爾基分校的二維模型給了不同答案：把同一組啄擊運動輸入啄木鳥與人頭模型，啄木鳥腦內的應變與應力約只有六分之一；在一個簡化的啄木鳥模型裡把舌骨拿掉、再把喙拿掉，結果在統計上相近。作者的結論是：應力降低主要來自頭小，不是那些特殊構造；把人頭模型縮到啄木鳥大小，兩者的反應就差不多。",
+      "scope": "二維模型、材料參數取自文獻；拿掉舌骨與喙是在簡化模型上做的；不可說舌骨與喙『沒有用』，只能說在這個模型裡拿掉結果相近；與北航、清華模型結論不同，片中說『模型之間意見不一』，不說誰對。人頭模型只當比例尺，不談人類腦傷、運動或防護。",
+      "source_ids": [
+        "L70-S011"
+      ],
+      "source_locator": "F37-S003 Abstract；Results〈geometrical features〉Figure 8；Discussion〈Scaling〉",
+      "premise_status": "screened",
+      "notes": "V41 由 1.0 降為 0.75：純模型，且轉折建立在『模型對模型』，無實測；ganpule2020 一篇合計 1.0（含 F37-005 的 0.25）。 原提案 F37-004（目標 C15-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；研究機構寫錯（孟買→羅爾基）；漏寫『簡化模型』條件；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折一（只到『意見不一』）：避震器的說法在另一個模型裡站不住，答案可能只是『頭夠小』。",
+        "visual": "同一組輸入三個抽象模型（完整、去舌骨、去舌骨去喙）三張幾乎一樣的色階方塊；再放一大一小兩個圓代表頭的尺寸。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-014",
+      "question": "頭小就安全了嗎？啄得更快、更久會怎樣？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.woodpecker_model_peck_frequency_dwell_relaxation_threshold",
+      "answer_target": "同一個模型裡，啄擊頻率加倍，腦內應變與應力約增加一倍；兩次啄擊之間約 90 毫秒的停頓能讓應力鬆弛，所以連續啄幾下，第二下的峰值幾乎沒有累積——但鬆弛多少，要看模型裡腦組織的材料參數怎麼設。",
+      "scope": "全是模型；鬆弛多少取決於衰減常數。V41 刪除『對照人類軸突受傷門檻、啄木鳥與人腦都超過』一句：那個門檻來自人類腦傷與美式足球員資料，本題規定不談人類腦震盪與運動，且容易被讀成『啄木鳥受傷了』。",
+      "source_ids": [
+        "L70-S011"
+      ],
+      "source_locator": "F37-S003 Abstract；Results Figure 9–10；Discussion〈injury criteria〉",
+      "premise_status": "screened",
+      "notes": "V41 由 0.75 降為 0.25：同一模型的延伸，且刪去門檻句後只剩頻率與停頓。 原提案 F37-005（目標 C15-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；刪人類受傷門檻句（違反本題不談人類腦震盪的規定、也與 F37-007 形成跨研究暗示）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "頭小之外，節奏也有關：每下之間的停頓讓模型裡的應力退下來。",
+        "visual": "時間軸上一串啄擊點，每下之間的停頓用一段下降的線表示。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L70-015",
+      "question": "啄樹的那一瞬間，啄木鳥的嘴會像避震器一樣彎一下嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.woodpecker_upper_beak_depression_kinesis_daily_tasks",
+      "answer_target": "很多鳥的上喙能相對頭骨轉動，有人猜這能緩衝撞擊。安特衛普大學的研究群引述他們先前的高速影片：撞擊那一刻啄木鳥的頭表現得非常硬，上喙既不抬也不壓。2023 年他們看了 31 種啄木鳥與 39 種近緣食蟲鳥進食、鳴叫、張嘴的影片：兩群上喙都能轉到約 8 度，但啄木鳥主要往下壓，別的鳥主要往上抬——啄木鳥沒有把這個關節鎖死，只是動的方向不同。",
+      "scope": "『撞擊時很硬』是轉述 2022 年論文（本環境 403 讀不到），只當背景、不計數；2023 年量的是日常動作，不是撞擊。",
+      "source_ids": [
+        "L70-S012"
+      ],
+      "source_locator": "F37-S004 Introduction 第3段（引用 ref. 23）；Abstract；Methods；Figure 1",
+      "premise_status": "screened",
+      "notes": "V41 由 0.5 降為 0.25：與『避震』問題的連結全靠讀不到的 2022 年轉述；2023 年新資料本身答的是日常動作方向，與護腦只間接相關。 原提案 F37-006（目標 C15-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；內容相符；計數下修，因轉折所需的那一半是讀不到的轉述。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "最直覺的『避震』位置（喙的關節）在撞擊時沒有在避震——這句只能用『研究者說』。",
+        "visual": "兩隻鳥張嘴的外形剪影，一隻上喙往上、一隻往下，標約 8 度。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L70-016",
+      "question": "啄木鳥的腦真的什麼事都沒有嗎？有人切開看過嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.woodpecker_brain_tau_deposits_museum_specimens",
+      "answer_target": "波士頓大學研究群用博物館保存的 10 隻啄木鳥（多個種）與 5 隻不啄樹的紅翅黑鸝腦組織做染色：銀染下 10 隻啄木鳥有 8 隻出現陽性沉積，對照鳥都沒有；其中 3 隻再做 tau 蛋白抗體染色，2 隻陽性；一隻幼鳥也有。研究者自己在結論寫：樣本太少，不能確定和啄擊有關，也不知道這些沉積是不是病變、會不會影響行為（文中另一段雖說合起來看傾向是病變，結論仍保留）。",
+      "scope": "只能說『在部分啄木鳥腦中看到 tau 沉積』；不可說啄木鳥有腦傷、會失智或與人類疾病相同；不提 CTE、人類運動與防護產品；標本是博物館館藏，不呈現組織或切片實景。",
+      "source_ids": [
+        "L70-S013"
+      ],
+      "source_locator": "F37-S005 Abstract；Table 1；Results；Discussion（限制）",
+      "premise_status": "screened",
+      "notes": "V41 維持 1.0：一手組織學資料、轉折二的核心；樣本小已寫入。 原提案 F37-007（目標 C15-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；補上原文自身的『傾向病變／仍不確定』張力，避免單邊引用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折二：『啄木鳥永遠不會受傷』很少被檢查過；第一次用現代染色去看，就看到了東西，但意義還不清楚。",
+        "visual": "10 個小方格（8 格亮）對 5 個方格（全暗）；不放組織照片。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "L70-017",
+      "question": "「啄木鳥不會腦傷」這句話是怎麼變成常識的？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.woodpecker_no_injury_claim_single_1976_study_citation_growth",
+      "answer_target": "2018 年波士頓大學那篇指出：在他們之前，唯一看過啄木鳥腦組織的研究是 1976 年，只看兩隻、沒有描述看到什麼就下結論說沒有腦傷，卻被很多論文引用。里茲大學的科技與社會研究者另外用 Google Scholar 統計：1970 年代那兩篇到 2005 年只被引用 18 與 16 次；2006 年研究『啄木鳥為什麼不頭痛』的人得到搞笑諾貝爾獎之後，到 2019 年又多了 79 與 52 次。一篇 2021 年的綜述也寫：這些護腦假說都還沒在理論模型之外被確證。",
+      "scope": "1976 年研究『沒描述所見』是 2018 年論文的轉述（原文未讀）；『超過 100 次』（Farah）與 18／79 次（Hollin，Google Scholar 2020）是不同人、不同方法的數字，不得相加或排成同一條時間軸；不提得獎者姓名（在世人物）、電影角色與商業產品；不談人類運動安全。",
+      "source_ids": [
+        "L70-S013",
+        "L70-S014",
+        "L70-S015"
+      ],
+      "source_locator": "F37-S005 Introduction 倒數第2段；F37-S006〈Why don’t woodpeckers get headaches?〉節與文末註 3；F37-S007 §3〈Woodpeckers〉",
+      "premise_status": "screened",
+      "notes": "V41 由 0.75 降為 0.5：Farah 對 1976 研究的描述是轉述，0；Hollin 自己查的引用統計 0.5；Ackermans 綜述 0。 原提案 F37-008（目標 C15-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；獎項描述修精確、兩組引用數不得合併、轉述部分不計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "解釋觀眾為什麼會『以為』答案是確定的：一個很少被檢查的說法，靠一次得獎被放大。",
+        "visual": "同一份統計的兩段長條（2005 前／2006–2019），只用 Hollin 的數字。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L70-018",
+      "question": "啄木鳥敲樹不只為了吃？牠最快能敲多快？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.woodpecker_drum_speed_limited_by_size_and_neck_muscle_twitch",
+      "answer_target": "啄木鳥還會『打鼓』：用嘴快速敲硬物當領域訊號。分析 164 種啄木鳥的鼓聲發現，體型限制一秒敲幾下，但不限制一串敲多長。後來同一研究群在麻醉下、以不傷及性命的方式電刺激 5 隻絨啄木鳥的一條頸部肌肉：照牠們平均約每秒 16 下的速度刺激，肌肉兩下之間放鬆得了；刺激得更快就放鬆不完全；把一串拉長，力量卻沒有衰退。",
+      "scope": "打鼓與覓食啄洞是不同行為，不可把鼓速當成啄洞速度；肌肉實驗只有 5 隻、在麻醉下、非致死；不寫成或畫成傷害動物。",
+      "source_ids": [
+        "L70-S016",
+        "L70-S017"
+      ],
+      "source_locator": "F37-S008 Abstract、Methods；F37-S009 ABSTRACT、Methods、Results",
+      "premise_status": "screened",
+      "notes": "V41 維持 0.5：同研究群兩篇合計；與護腦主問題只間接相關。 原提案 F37-009（目標 C15-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；補『非致死』以免被讀成虐待。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "啄木鳥的「敲」不只一種，而且速度的上限來自肌肉，不是頭殼。",
+        "visual": "鼓聲聲譜示意（一串等距的敲擊點），標每秒次數。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "L70-019",
+      "question": "大象鼻子沒有骨頭，伸長去拿東西時是整條平均拉長嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.elephant_trunk_reach_tip_to_base_extension_waves",
+      "answer_target": "喬治亞理工研究群讓動物園一公一母兩頭非洲象只能水平伸長鼻子去拿食物：母象的鼻子最後比垂掛時長 25%，公象長 13%；而且伸長不是整條同時發生，而是一到兩道從鼻尖往基部傳的『伸展波』。",
+      "scope": "只有兩頭象、每頭 3–7 次可用試驗；不可說所有象都伸長一樣多，也不可把伸展波說成神經訊號。",
+      "source_ids": [
+        "L70-S018"
+      ],
+      "source_locator": "F37-S010 Results（垂掛長度、應變、Fig. 3A 伸展波）；Methods",
+      "premise_status": "screened",
+      "notes": "V41 由 0.75 降為 0.5：兩頭象、同篇與 F37-011 合計 1.5。 原提案 F37-010（目標 C15-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先讓觀眾看到「沒有骨頭」不等於「像橡皮管一樣均勻地拉」。",
+        "visual": "慢動作伸鼻，沿鼻子點出 14 個追蹤點，一道波從尖端往回傳。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-020",
+      "question": "大象鼻子伸長時，是靠肌肉還是靠皮膚？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.elephant_trunk_dorsal_fold_joint_skin_strain_energy",
+      "answer_target": "同一個實驗發現：鼻子背側中遠段伸長了 35%，腹側同一段只有將近一半（約 18%），像背側多了一個『關節』。背側皮膚是 4 公分長的大褶、腹側是 1–2 公分的細皺。研究者估算，在離鼻尖 20 公分處，拉長皮膚需要的能量是拉長肌肉的 13.2 倍（那裡鼻孔占掉大半截面、肌肉少），到 110 公分處只剩 0.36 倍。",
+      "scope": "兩頭活象；13.2 倍是模型估算；V41 刪去皮膚硬度數字（470／483 kPa、1.77 倍）：那是一條冷凍母非洲象鼻在 110 cm 處的縱向拉伸，與 F37-017 的亞洲象橫向初始模數物種、方向、應變範圍都不同，同一集裡兩個『哪邊比較硬』會被觀眾並列比較，照規定不並列；不說『背側多伸一倍』（自算倍數）。",
+      "source_ids": [
+        "L70-S018"
+      ],
+      "source_locator": "F37-S010 Abstract；Results（dorsal 0.35／ventral 0.18）；Fig. 4（470／483 kPa）；strain energy 段落；Discussion（1.77 倍）",
+      "premise_status": "screened",
+      "notes": "V41 維持 1.0：轉折一的核心；與 F37-010 同研究合計 1.5。 原提案 F37-011（目標 C15-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；改正錯誤交叉引用（F37-019→F37-017）、自算倍數、刪掉會與 F37-017 並列的硬度數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折一：鼻子能怎麼伸，不只看肌肉——在鼻尖附近，皮膚才是主要的阻力。",
+        "visual": "背側大褶 vs 腹側細皺的外觀放大線稿（皮膚表面，不剖開）；一個 13.2 對 1 的天平。",
+        "seconds": [
+          55,
+          65
+        ]
+      }
+    },
+    {
+      "id": "L70-021",
+      "question": "大象鼻子上的皺紋是天生的，還是用出來的？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.elephant_trunk_wrinkles_fetal_doubling_and_use_lateralization",
+      "answer_target": "都有。成年亞洲象背側的主要皺紋約 126 條、非洲象約 83 條；胎兒期早段，皺紋數大約每 20 天翻一倍。但看成年象鼻尖後 15 公分：15 條象鼻裡，鬍鬚比較長的那一側，皺紋多約 10%；研究者用鬍鬚哪邊被磨短來推定牠習慣往哪邊捲，認為皺紋多的就是常捲向的那一側。",
+      "scope": "偏側性只 15 條鼻子（亞洲 10、非洲 5）；『慣用捲向』是由鬍鬚長短推定，不是直接觀察行為；不可說每頭象都一樣；『用出來』只限鼻尖後段的左右差。",
+      "source_ids": [
+        "L70-S019"
+      ],
+      "source_locator": "F37-S011 Abstract；Results〈Trunk wrinkle number is lateralized〉；fetal development 段落",
+      "premise_status": "screened",
+      "notes": "V41 由 0.75 降為 0.5：使用側是推定、且與 F37-013 的鬍鬚偏側同一推論鏈；併入 Brecht 群（本題合計 1.75）。 原提案 F37-012（目標 C15-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；把推定寫成觀察：改正為『鬍鬚較長一側，研究者據此推定為捲向側』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "皺紋是一張「使用紀錄」：先天先畫好格子，後天再加註。",
+        "visual": "左撇鼻與右撇鼻的鼻尖示意，左右兩側皺紋數字。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-022",
+      "question": "大象鼻子上的鬍鬚，跟貓狗的鬍鬚一樣在掃東西嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.elephant_trunk_whiskers_nonwhisking_lateralized_abrasion",
+      "answer_target": "不一樣。象鼻鬍鬚粗、幾乎不變細，大象也不會主動掃動鬍鬚，碰不碰得到全看鼻子怎麼動；毛囊沒有老鼠那種環狀竇，一頭新生亞洲象的毛囊平均各接約 87 條神經軸突。研究者看過的成年象，每一頭都是一側鬍鬚較長、一側被磨短，新生象則左右對稱。到了野外差距更大：6 頭野生非洲公象鼻尖前方的鬍鬚很少超過 1 公分、常整根磨掉，6 頭動物園的象則很多有好幾公分；鼻孔裡不碰食物的鬍鬚，兩組差不多。",
+      "scope": "軸突數只來自一頭新生象（範圍 49–190）；野生組為 4 頭死後標本與 2 頭健康檢查時短暫麻醉的公象，片中不呈現，也不說死因；各 6 頭；不可推論野生象觸覺較差。",
+      "source_ids": [
+        "L70-S020",
+        "L70-S021"
+      ],
+      "source_locator": "F37-S012 Abstract、Results〈lateralized〉〈do not whisk〉；F37-S013 Synopsis、Results",
+      "premise_status": "screened",
+      "notes": "V41 由 1.0 降為 0.75：Deiringer 0.5＋Heise 0.25，Brecht 群本題合計 1.75（F37-012 0.5、F37-013 0.75、F37-014 0.5）。 原提案 F37-013（目標 C15-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；補 87 的條件、改正野生組來源的無據描述。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "鬍鬚不是雷達，是被使用磨出來的觸覺刷——也提醒我們，動物園看到的不一定是野外的樣子。",
+        "visual": "鼻尖正面線稿，左右鬍鬚長短不一；野生 vs 圈養兩張鼻尖示意。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-023",
+      "question": "非洲象和亞洲象撿東西的方法一樣嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.elephant_trunk_tip_fascicle_ratio_pinch_vs_wrap",
+      "answer_target": "不一樣。非洲象鼻尖有背、腹兩根『指頭』，常用捏的；亞洲象只有一根背指，常把東西捲住，還能把腹側往後翻夾住。研究者用 microCT 重建各 3 個半邊鼻尖：非洲象鼻尖約三分之一是縱向肌束、三分之二是徑向與橫向；亞洲象的縱向肌束比例明顯較高。研究者認為這對應捏與捲兩種抓法。",
+      "scope": "每種只有 3 個半邊鼻尖；肌束比例與抓法的對應是作者推論，作者自己說要保留看待；不說亞洲象『正好相反』。畫面只用鼻尖外形與比例圖，不畫肌肉解剖。",
+      "source_ids": [
+        "L70-S022"
+      ],
+      "source_locator": "F37-S014 Abstract；Results；Methods",
+      "premise_status": "screened",
+      "notes": "V41 由 0.75 降為 0.5：每種 3 個標本、功能對應為推論；Brecht 群合計內。 原提案 F37-014（目標 C15-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；『正好反過來』改為原文可支持的『縱向比例明顯較高』；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣叫「象鼻」，兩種象的鼻尖是兩種工具。",
+        "visual": "兩種鼻尖正面線稿；三分之一／三分之二的肌束比例圓餅。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L70-024",
+      "question": "大象鼻子能拔起一棵樹，那鼻尖捏東西的力氣是不是也大得驚人？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.elephant_trunk_tip_max_pinch_force_dorsal_finger",
+      "answer_target": "不是。法國研究群用帶感測器的裝置量 5 頭動物園母非洲象鼻尖兩指的最大捏力，最大只有 86.4 牛頓；背指通常比腹指出力大，鼻子扭轉的姿勢會改變出力與兩指的分配。研究者認為鼻尖主要負責精細抓取。義大利一頭被遮住視線的公非洲象也類似：捲起圓柱時，前 35% 的時間只出約一成的最大力；把手重量在 5–15 公斤之間變化，握力看不出改變，幾次之後牠乾脆把把手當槓桿在地上拖，不舉起來。",
+      "scope": "只量捏；與人手的比較不做；『能拔樹』只作題目的口語鉤子，片中不給整條鼻子的力量數字；義大利那頭象只有一頭、作者自言無法做統計比較、重量範圍窄。",
+      "source_ids": [
+        "L70-S023",
+        "L70-S025"
+      ],
+      "source_locator": "F37-S015 Abstract、Results；F37-S017 Summary、Results（圓柱 10%／35%）、Discussion（5–15 kg）",
+      "premise_status": "screened",
+      "notes": "V41 由 1.5 降為 1.0：Pouydebat 群 0.75＋Beccai 群 0.25（一頭象、無統計）。 原提案 F37-015（目標 C15-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；補『無統計』與重量範圍限制，計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "轉折二：鼻尖不是大力鉗，是省力又精準的手指。",
+        "visual": "86.4 N 的數字卡；遮眼象捲圓柱的外形示意，力量曲線前段很低。",
+        "seconds": [
+          50,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-025",
+      "question": "同一種象，住的地方不同，鼻子的抓法也會變嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.elephant_trunk_grasp_technique_habitat_tusk_profile",
+      "answer_target": "會。同一個法國研究群在野外比較乾燥的納米比亞埃托沙與水源穩定的南非克魯格兩群非洲象吃草葉小枝：埃托沙的公象比較常用兩指捏、比較少整段捲，也比較常只用鼻尖；兩地大多從右邊抓，但埃托沙較常從左邊。埃托沙的象牙比較小、比較常斷，研究者觀察到的埃托沙象 73% 有一根或兩根斷牙。研究者推測乾燥、食物大小與象牙形狀一起改變了抓法。",
+      "scope": "觀察性研究，原因是推測；埃托沙可辨識個體只有 15 頭；不可說斷牙『造成』抓法改變；不談象牙盜獵。",
+      "source_ids": [
+        "L70-S024"
+      ],
+      "source_locator": "F37-S016 Abstract；Results 3.1、3.2；Discussion",
+      "premise_status": "screened",
+      "notes": "V41 由 0.75 降為 0.5：觀察性、埃托沙樣本小；Pouydebat 群本題合計 1.25。 原提案 F37-016（目標 C15-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；數字相符；補樣本數，計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "抓法不是寫死的：食物和身上的「工具」（象牙）變了，鼻子就換做法。",
+        "visual": "兩張地圖小卡（埃托沙／克魯格），各配捏與捲的比例示意。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-026",
+      "question": "大象鼻子的上面和下面，皮膚為什麼不一樣？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.elephant_trunk_skin_dorsal_shield_ventral_papillae_model",
+      "answer_target": "義大利與日內瓦的研究群研究一頭在動物園自然死亡的亞洲象鼻子：背側皮膚較粗糙、較厚，像一面盾；腹側較軟、容易貼合物體，皮下有大的真皮乳頭。他們的電腦模型預測，這些乳頭會把觸壓集中、放大給感覺受器。",
+      "scope": "單一個體、冷凍組織；乳頭放大觸覺是模型預測；V41 刪去『初始硬度約 3 倍』：與 F37-011 非洲象的皮膚研究物種、方向、應變範圍都不同，同一集不出現兩組硬度數字，也不說兩者矛盾或一致。畫面不畫橫切解剖。",
+      "source_ids": [
+        "L70-S026"
+      ],
+      "source_locator": "F37-S018 Abstract；Results（0.22／0.07 MPa、3.14 倍）；Fig. 3；Discussion〈Limitations〉",
+      "premise_status": "screened",
+      "notes": "V41 由 0.5 降為 0.25：單一個體、主要論點是模型預測，刪數字後只剩定性；與 F37-015 的 Beccai 群合計 0.5。 原提案 F37-017（目標 C15-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；刪除會與 F37-011 並列的硬度數字、視覺改為非解剖；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一條鼻子兩種皮：上面擋、下面摸。",
+        "visual": "象鼻外形，上緣標『盾』、下緣標『指腹』的圖示；不畫皮下或橫切。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L70-027",
+      "question": "大象的祖先一開始就是靠鼻子吃東西嗎？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "animal.proboscidean_feeding_shift_from_long_mandible_to_trunk",
+      "answer_target": "不是。中國北方 1700 萬到 1500 萬年前有三類下顎極長的古長鼻類。中科院古脊椎所的研究群分析後認為：脊稜齒象的下顎適合處理枝條、鼻子短而原始；嵌齒象的下顎草和枝條都能處理，鼻子已相當像大象；鏟齒象的下顎適合切草，鼻區骨骼顯示牠有長而有力的鼻子，約 1600 萬年前也移向較開闊的棲地。取食的主角從下顎慢慢換成鼻子，到現代象才完全靠鼻子吃東西。",
+      "scope": "化石形態與模型推論；這些古象的鼻子只是輔助取食；不可說『鼻子是為了吃草才演化』。",
+      "source_ids": [
+        "L70-S027"
+      ],
+      "source_locator": "F37-S019 Abstract；eLife digest；Results（δ13C、下顎有限元素）",
+      "premise_status": "screened",
+      "notes": "V41 由 0.75 降為 0.5：獨立研究群，但與『沒有骨頭怎麼又精細又有力』只間接相關（演化收尾）。 原提案 F37-018（目標 C15-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V41（2026-11-12）改字後收；物種特徵張冠李戴（嵌齒象 vs 脊稜齒象）已改正；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "收在演化：今天的萬用鼻子，是從「長下巴」手上接過工作的。",
+        "visual": "三種古象頭部剪影並排，下顎長、鼻子短到長的漸層。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L70-028",
+      "question": "網路上那隻跟著音樂點頭的鸚鵡，真的每一下都踩在拍子上嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "rhythm.cockatoo_snowball_sync_bouts_minority_of_head_bobs",
+      "answer_target": "多數時候沒有。研究者把葵花鳳頭鸚鵡 Snowball 隨同一首歌的多種變速版本點頭的錄影逐下分析：牠確實出現與拍子同步的『同步段落』，但這種段落只出現在 58% 的試次裡；全部 3,999 次點頭，只有 14% 落在同步段落中。其餘的點頭也有節奏，只是沒有對準拍點。",
+      "scope": "只談 Snowball 一隻、一首歌；原研究（Curr Biol 2009）未讀到，只用研究群補充報告的數字。『9 種速度出現同步』是補充報告轉述原研究（共測 11 種速度，最慢兩種沒有同步）；不得說每種速度都同步，也不得說鸚鵡『不會』跟拍。共同作者 Schulz 是 Snowball 所在救援機構的人。",
+      "source_ids": [
+        "L70-S038"
+      ],
+      "source_locator": "F39-S001 摘要、〈Evidence for Preferred Tempo〉第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：單一個體、只讀到補充報告；Patel 群與 F39-002 合計 1.0。 原提案 F39-001（目標 C17-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字逐字相符；補『11 種速度中 9 種』的分母；單一個體、補充報告，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "開場就拆掉『動物會跳舞＝會跟拍』：會動和對準拍點是兩回事。",
+        "visual": "鸚鵡點頭的時間軸，上方標拍點，只有一小段點頭與拍點重疊，其餘錯開",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-029",
+      "question": "鸚鵡跳舞時，有沒有自己偏好的速度？音樂太快或太慢會怎樣？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "rhythm.cockatoo_preferred_tempo_best_sync_near_126_bpm",
+      "answer_target": "有。Snowball 沒對上拍時的點頭集中在約 0.475 秒一下（約每分鐘 126 下），音樂變慢時只跟著慢一點點；牠的點頭落在同步段落的比例，在最接近這個速度的 125 與 130.4 bpm 最高（26.8%、36.5%），在 87 與 92.4 bpm 是 0，原曲 108.7 bpm 只有 13.9%。研究者認為這像幼兒跟著音樂動時也有偏好速度。",
+      "scope": "同 F39-001：一隻鳥、一首歌的變速版本；百分比是『落在同步段落的點頭比例』；與幼兒的比較是研究者引用他人與未發表資料。",
+      "source_ids": [
+        "L70-S038"
+      ],
+      "source_locator": "F39-S001〈Evidence for Preferred Tempo〉第 2–4 段、表 1、圖 2",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：與 F39-001 同一資料、同一隻鳥。 原提案 F39-002（目標 C17-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符；改正百分比的定義與 92.4 bpm。同一份資料，只算延伸。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把『會不會跟拍』換成『在什麼速度下跟得上』，接到後面大鼠的 120–140 BPM。",
+        "visual": "11 種速度的長條圖，標出 126 bpm 與原曲 108.7 bpm",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L70-030",
+      "question": "鳳頭鸚鵡聽到音樂才跳舞嗎？換成播談話節目或不播呢？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "rhythm.cockatoo_dance_not_increased_by_music_vs_podcast_silence",
+      "answer_target": "在一個初步實驗裡不是。研究者在動物園對 6 隻鳳頭鸚鵡（三種、各一對雌雄）輪流播流行歌、播談話節目、或什麼都不播：三種情況下每隻都出現過『跳舞』動作，三者之間沒有顯著差別。研究者結論：在這個設計下，音樂似乎不是觸發跳舞的關鍵。（另從 45 支社群影片整理出 30 種多隻都有的舞蹈動作。）",
+      "scope": "6 隻、初步實驗、作者自稱 preliminary；影片有選樣偏差；沒有量是否對拍。圖說與方法段對 Podcast 的描述不一致。不得說鸚鵡不愛音樂或不會跟拍。",
+      "source_ids": [
+        "L70-S039"
+      ],
+      "source_locator": "F39-S002 Abstract；Results〈playback〉；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 1.0）：只算播放實驗（6 隻、無顯著差）；動作目錄與對拍無關不計。獨立研究群（Charles Sturt 大學）。 原提案 F39-003（目標 C17-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；內容相符；動作目錄與本題『對拍』無關，只當一句背景，計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第一個轉折的後半：連『聽到音樂才動』都不一定成立，要分清動作、音樂與拍子。",
+        "visual": "三格對照：音樂、談話、靜默，三格的鸚鵡都在搖",
+        "seconds": [
+          40,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-031",
+      "question": "虎皮鸚鵡能學會跟著節拍器準時啄鍵嗎？速度快慢有差嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "rhythm.budgerigar_trained_tapping_phase_match_better_at_slow_tempi",
+      "answer_target": "能，但有限度。研究者用食物獎勵訓練 8 隻虎皮鸚鵡跟著聲光節拍器啄鍵：啄鍵對準節拍的鳥，在間隔 450 毫秒時 7 隻只有 1 隻，1,500 與 1,800 毫秒時 8 隻全部；而且常比節拍稍早啄下，這是亂啄、固定節奏、記住間隔或單純反應四種電腦模擬都做不到的。只給聲音時，3 隻母鳥 6 次實驗中有 5 次對準。",
+      "scope": "有獎勵的訓練任務，不是自發跳舞。慢速時單純反應也可能落在拍點附近，所以『慢的比較準』不能單獨當成預測證據；最快的 450 毫秒完全沒有提前啄。不得說虎皮鸚鵡跟拍和人一樣好。",
+      "source_ids": [
+        "L70-S040"
+      ],
+      "source_locator": "F39-S003 Results〈Evidence for entrainment〉〈phase matching〉表 1、〈auditory stimuli alone〉",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：訓練任務、慢速條件有替代解釋。獨立研究群（理研）。 原提案 F39-004（目標 C17-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符，但補上慢速條件可被單純反應解釋的限制；改寫答案以『提前啄』為證據核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "模仿發聲的鳥經訓練能對拍，但不像人在每秒約兩拍最順，為後面『模仿發聲假說』鋪路。",
+        "visual": "啄鍵的時間點落在拍點前後的分布圖，快、慢各一張",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-032",
+      "question": "不會模仿聲音的海獅，學得會跟著拍子點頭嗎？節拍突然變了呢？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "rhythm.sea_lion_ronan_coupled_oscillator_perturbation_recovery",
+      "answer_target": "學得會，而且節拍突然變了也追得上。加州海獅 Ronan 先在每分鐘 80 與 120 拍下被訓練點頭對拍，之後能轉到沒練過的速度和音樂（2013 年原研究，經研究群轉述）。後續實驗在節拍中途突然改變相位或速度，較大的變動（如 ±15%、±25%）她在幾拍內就重新對上，太小的變動（±3% 左右）她似乎沒察覺；整體行為符合描述人類對拍的『耦合振盪』模型。研究者稱這是人與動物對拍機制相同的最清楚證據。",
+      "scope": "單一個體、以魚獎勵訓練；海獅不是會模仿發聲的物種，此點出自原作者論文標題；2013 原文付費未讀。",
+      "source_ids": [
+        "L70-S041"
+      ],
+      "source_locator": "F39-S007 Introduction 第 6 段、Methods〈Subject〉〈Stimuli〉、Results、Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單一個體；Reichmuth 群與 F39-008 合計 1.25。 原提案 F39-007（目標 C17-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；相符；補小擾動未察覺；單一個體下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二個轉折：不會模仿聲音的動物也能穩定對拍，『只有會學說話的動物才會跟拍』站不住。",
+        "visual": "海獅點頭與節拍兩條波形，中途節拍跳一下、點頭在幾拍內追上",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-033",
+      "question": "練了十幾年的海獅，跟拍能比一般人還準嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "rhythm.sea_lion_age15_sync_precision_vs_ten_humans",
+      "answer_target": "在同一種大動作任務下，可以。研究群在 12 年後重測 15 歲的 Ronan，並找 10 個人用手臂做相似幅度的『劈』動作跟同一組節拍器：她的間隔變異比所有受試者都小，相位比 5/10（112 bpm）、7/10（120 bpm）、8/10（128 bpm）的人更接近零，每拍剛好點一次頭，沒有任何一個人四項指標全勝她。研究者也指出，人類小孩要到相當大才穩定對拍，人同樣經過長期『節奏學徒期』。",
+      "scope": "單一個體、間歇練習 12 年；人類只有 10 人且用不熟悉的手臂大動作，研究者自己說人類在此任務表現可能比按鍵研究差；『小孩較晚才穩定』是引用文獻的論點，不另計；不得說海獅『比人會跳舞』或『比人會跟拍』。",
+      "source_ids": [
+        "L70-S042"
+      ],
+      "source_locator": "F39-S008 Results（3 歲對 15 歲；112、120、128 bpm 比較表）；Introduction（訓練史）；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：單一個體、10 名人類對照。 原提案 F39-008（目標 C17-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字逐字相符；單一個體下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把『人類天生獨有』再推一步：訓練與經驗的角色對人也一樣重要。",
+        "visual": "海獅與十個人的相位分布圓圖，海獅那點最集中",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-034",
+      "question": "黑猩猩聽到節拍會跟著搖嗎？那算是在跟拍子嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "rhythm.chimpanzee_sound_induced_sway_regardless_of_beat_regularity",
+      "answer_target": "會搖，但不一定在跟拍子。研究者對 7 隻黑猩猩播放鋼琴節拍，牠們會搖擺身體、拍手或踏腳，公的反應比母的多，播聲音時的節奏動作明顯多於中間的靜默。反應最強的一隻公猩猩對隨機節奏也搖得一樣久；只有雙足站立時的擺動週期跟著速度變（r=0.612），而且有聲音時他會待在聲源附近。研究者認為搖擺可能取決於聲音的密度而非規律的拍子，這是與人類的關鍵差異。",
+      "scope": "實驗 2、3 只有一隻（Akira）；動作與拍點沒有對時；期刊後來刊出反對信，本人與覆核者都未讀全文；『約 600 萬年前共同祖先已有基礎』是研究者推論，片中不用。",
+      "source_ids": [
+        "L70-S043"
+      ],
+      "source_locator": "F39-S009 Results 實驗 1（表 1）、實驗 2、實驗 3；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：實驗 1 有 7 隻，關鍵的隨機節奏與週期結果只有一隻。獨立研究群（京大）。 原提案 F39-009（目標 C17-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；數字相符；單一個體部分下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "近親會被聲音帶動，但『被帶動』和『對準拍子』是兩層。",
+        "visual": "黑猩猩在節拍下搖擺，旁邊對照規律與隨機兩種節拍",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-035",
+      "question": "沒訓練過的大鼠聽音樂，頭會跟著拍子動嗎？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "rhythm.rat_spontaneous_head_jerk_sync_best_near_132_bpm",
+      "answer_target": "有一部分會，而且在人類常用的速度最明顯。研究者在 10 隻大鼠頭上裝加速度計，播莫札特〈雙鋼琴奏鳴曲〉的四種速度，頭部動作與拍子同步顯著的鼠數依序為 6、5、3、1 隻（原速的 75%、100%、200%、400%），個體間最一致的是原速 132 BPM；人類受試者趨勢相似。但大鼠的動作比人晚、偏向『聽到才動』，第二天就減弱。",
+      "scope": "大鼠同步較被動反應，可能部分是驚嚇；只有一首曲子；動作肉眼看不出，靠加速度計。",
+      "source_ids": [
+        "L70-S044"
+      ],
+      "source_locator": "F39-S010 Results〈behavior〉、Fig 1–2；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 1.0（照作者）。獨立研究群（東京大學）。 原提案 F39-010（目標 C17-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）照原稿收；逐字相符。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "第二個轉折的延伸：連不會模仿聲音的齧齒類也有雛形，而且偏好速度和人差不多。",
+        "visual": "大鼠頭上的小感測器、四種速度下同步鼠數的長條",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L70-036",
+      "question": "大鼠跟著節拍器舔水時，是聽到才動，還是會先預測下一拍？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "rhythm.rat_trained_licking_predictive_sync_silent_beat",
+      "answer_target": "會預測。研究者訓練 8 隻大鼠跟著每秒 0.5 到 2 拍的節拍器舔水，牠們在兩拍之間先停下、再依節拍週期提前恢復，16 拍結束後仍對沒有響的第 17 拍提前舔；以模型比較，必須『預測』的模型明顯勝過只對聲音反應的模型。",
+      "scope": "有水獎勵的訓練任務；與 F39-010 的自發點頭不同；只說明大鼠具備預測性同步的能力。研究群與 Merchant 同校（UNAM），計數併入同一合作網。",
+      "source_ids": [
+        "L70-S045"
+      ],
+      "source_locator": "F39-S011 Summary、Results、Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：併入 Merchant／Honing 合作網（F39-005 0.75＋F39-006 0.25＋本條 0.5＝1.5）。 原提案 F39-012（目標 C17-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V42（2026-11-12）改字後收；內容相符；研究群獨立性不足，下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "補上 F39-010 的『大鼠只是反應』：經訓練牠們也能預測拍點。",
+        "visual": "節拍器 16 下後一片空白，大鼠的舔水在第 17 拍位置提前出現",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "L70-037",
+      "question": "世界上到底有多少種會發光的菇？是不是很稀有？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.bioluminescence_known_taxa_five_agaricales_lineages",
+      "answer_target": "目前整理到的大約 132 種，全部是傘菌目的菇，分在五個彼此相距很遠的支系，其中小菇類占 96 種；這個名錄在過去 15 年從 64 種增加一倍以上，已知種數最多的是日本（36 種）。整理的研究者自己說，世界上多數地區還沒好好在黑暗中找過，所以數字有一部分反映的是『誰去找了』。",
+      "scope": "名錄綜述；只說『已知』『整理到』；地區數字受調查努力影響要並列說明；不得引該文『24 小時以晝夜節律發光』那句（與 F40-006 的鬼菇觀察衝突）；不談食用、毒性與辨識。 只用日本 36 種，不用南美數字（摘要 30、內文 31 不一致）。",
+      "source_ids": [
+        "L70-S046"
+      ],
+      "source_locator": "F40-S001 Abstract；Mycenoid 段（45→96）",
+      "premise_status": "screened",
+      "notes": "維持 0.5。Yampolsky／Stevani 網絡：F40-001 0.5＋F40-002 0.75＋F40-010 0.5＝1.75，未達 3.0。 原提案 F40-001（目標 C18-01，原角色 hook；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；數字逐句相符；只補一句不用南美數字。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "世界上已知會發光的菇只有一百多種，而且一半以上是近十五年才被認出來的",
+        "visual": "黑暗森林地面上一片綠光的小菇；旁邊名錄數字由 64 跳到 132",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-038",
+      "question": "菇的光是從哪裡來的？要很特別的原料嗎？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.bioluminescence_caffeic_acid_cycle_luciferin_two_steps",
+      "answer_target": "原料很普通：植物和菇都有的咖啡酸。菇先用 hispidin 合成酶把咖啡酸變成 hispidin，再用一個羥化酶變成真正的螢光素（3-羥基 hispidin），螢光素酶加上氧把它氧化時放出綠光；用完的產物還能被另一個酵素拆回咖啡酸，繞成一個循環。研究者把這組發光基因、加上讓酵母自己做咖啡酸的基因，一起放進酵母，酵母在一般培養基上就自己發光。同網絡另一篇解出發光後的分子是咖啡酸接上一個丙酮酸，而且用簡單的人工分子當受質，能發出不同顏色的光。",
+      "scope": "只說生化路徑與酵母實驗；『不挑食、可多色』是實驗室用合成受質，不是野外菇會變色；不提生醫應用的商業前景。",
+      "source_ids": [
+        "L70-S047",
+        "L70-S048"
+      ],
+      "source_locator": "F40-S002 Significance、Abstract；F40-S003 Abstract",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：路徑與酵母是同一研究、同一件事；Kaskova 的產物結構與人工受質對觀眾結論增量小，併入不另計。 原提案 F40-002（目標 C18-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；補上酵母需要咖啡酸合成基因；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "讓菇發光的不是什麼稀有物質，是植物裡到處都有的咖啡酸，只差兩步",
+        "visual": "咖啡酸 → hispidin → 螢光素 → 綠光 → 回到咖啡酸的圓圈動畫；角落一盤自己發光的酵母",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-039",
+      "question": "會發光的菇散在好幾個不同的家族裡，是各自想出發光這招的嗎？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.bioluminescence_single_origin_160my_repeated_loss",
+      "answer_target": "臺灣中研院團隊定序了在臺灣採到的四種發光小菇和一種不發光的小菇，再比較 15 個發光真菌的基因體，結論是：整組發光基因只出現過一次，在小菇類和另一大類群（含蜜環菌、臍菇）的共同祖先身上，估計至少維持了 1.6 億年。今天看起來東一種西一種，作者的模型是：這組基因在小菇屬落在基因體裡容易重排的區域，一再被打散、丟掉；那種不發光的小菇整組都不見了。蜜環菌那一支的這組基因則落在穩定區域（前人檢視過的九種蜜環菌都會發光）。",
+      "scope": "年代來自分子鐘加化石校正，說『估計至少 1.6 億年』；『容易丟是因為在不穩定區域』是作者的模型；不得說『所有菇的祖先都會發光』。 九種蜜環菌是該文引用前人，只能說『前人檢視』；『落在不穩定區域所以易丟』用『作者認為』。",
+      "source_ids": [
+        "L70-S049"
+      ],
+      "source_locator": "F40-S004 Significance；Results〈A Single Origin…〉〈Evolutionary Dynamics of Luciferase Clusters〉；Discussion 第 1–2 段",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：單一起源與年代是本研究結果；丟失機制是模型、九種蜜環菌是引用，不另計。Ke／Tsai 群合計 F40-003 0.75＋F40-007 0.25＝1.0。 原提案 F40-003（目標 C18-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；主結論相符；把引用前人與作者模型標清楚，計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發光不是好幾種菇各自發明的，是一億多年前出現一次，後來多數後代把它弄丟了",
+        "visual": "一棵演化樹：根部亮起一盞燈，往上分枝時一盞盞熄掉，只剩少數枝亮著；臺灣森林的小菇特寫",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-040",
+      "question": "同一種菇，有沒有可能有的會亮、有的不會？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.panellus_stipticus_strains_missing_luciferase_genes_oxygen",
+      "answer_target": "有。鱗皮扇菇在前人紀錄裡，北美東部的會發光，太平洋西北岸，以及紐西蘭、俄羅斯、日本採到的不發光，前人的雜交試驗又顯示牠們還是同一種。2025 年研究者拿公開資料庫裡一株會亮、一株不亮的基因體來比：大部分很相像，但不亮的那株找不到合成螢光素和發光的三個關鍵基因。同一篇也測了缺氧：會亮的菌絲放進無氧箱，大約一小時內就熄了；拿出來接觸空氣，約 8 分鐘內又亮回來。",
+      "scope": "基因體比較每種只一株；地理分布與同種雜交是轉述前人，只能說『前人紀錄』；8 分鐘受相機曝光時間限制，原文說可能更快。 基因體是公開草圖、不是作者自己定序；不提 cph（兩株都沒找到，易誤解）。",
+      "source_ids": [
+        "L70-S052"
+      ],
+      "source_locator": "F40-S007 Abstract；Introduction 第 4–5 段；氧氣段；基因體比較段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：基因缺失 n=1 對 1、公開草圖 0.5；缺氧熄滅是發光需要氧的已知事實（F40-002 已說加氧），計 0。 原提案 F40-004（目標 C18-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；數字相符；改正『研究者定序』為下載公開基因體，缺氧結果不另計。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一種菇，東岸的會亮、西岸的不會——差在少了三個基因",
+        "visual": "美國地圖東西兩側各一段長菇的枯木，一邊亮一邊暗；無氧箱裡菌絲熄滅、開箱後重亮的計時",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-041",
+      "question": "有沒有菇其實會發光，只是大家一直沒發現？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.mycena_crocata_overlooked_stipe_base_mycelium_glow",
+      "answer_target": "有。番紅花小菇在歐洲和日本是常見、好認的菇，一直沒被記載為會發光。2024 年瑞士研究者偶然在長時間曝光照片上看到菌柄底部有光點，於是系統檢查：光只出現在菌柄基部長出菌絲的那一段，和長在木頭裡、培養皿裡的菌絲；傘和菌褶不亮。光很弱：用光度計量，34 朵裡有 27 朵柄基超過背景；相機要曝光好幾分鐘，研究者自己要在全黑裡讓眼睛適應至少半小時，才看得到較亮的幾朵。資料庫裡這種菇的基因體也有發光需要的整組基因。",
+      "scope": "單一物種；『多數小菇只有菌絲發光』是該文轉述 2008 年名錄，只能當背景一句；不給採菇或辨識建議。 不得說『肉眼看不到』；基因體是資料庫另一株。不給任何夜間採菇或辨識建議。",
+      "source_ids": [
+        "L70-S051"
+      ],
+      "source_locator": "F40-S006 Abstract；Introduction 第 2 段；Results 3.1",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：單一物種、單一地區的發現；『被忽略』與 F40-001 同方向。 原提案 F40-005（目標 C18-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；改正『只有儀器量得到』的錯誤，計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一種被研究了兩百年的常見菇，光一直藏在它的腳底",
+        "visual": "白天照片的橘紅細長小菇；同一朵在黑暗中 240 秒曝光，只有柄基一小圈綠光",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-042",
+      "question": "菇發光是為了在晚上引昆蟲來，幫它把孢子帶走嗎？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.ghost_fungus_glow_no_insect_attraction_sticky_traps",
+      "answer_target": "至少澳洲的鬼菇不像。2016 年研究者在袋鼠島沒有光害的林地，選兩個沒有月亮的晚上，在四個地點各放三對黃色黏蟲板：一塊綁上切下的發光鬼菇、一塊不綁，總共約 480 板時。結果夜裡只黏到 21 隻昆蟲，綁菇的 8 隻、沒綁的 13 隻，沒有差別。他們也觀察到：鬼菇白天晚上都一樣在亮，看不出晝夜節律；它在南半球冬天的 6、7 月出菇，夜裡抓到的飛蟲依陷阱種類只有白天的約 2% 到 10%。研究者的結論是：至少這種菇的發光看不出是用來引蟲散孢，可能只是代謝的副產物；但他們也承認，別的支系的菇可能真的靠光引蟲。巴西有研究用會發光的假菇引來較多昆蟲（本輪只讀到轉述）。",
+      "scope": "只有兩夜、捕獲數小，統計力有限；切下的菇可能改變氣味（作者自己討論）；只一個物種、冬季；巴西研究只能寫『有研究報告』、『轉述』，不得描述其數字。不得說『證明菇發光沒有用』。 鬼菇在該研究中菌絲不亮，不得與『菌絲也會亮』混成同一種菇。不提鬼菇的毒性、俗名誤認或任何可否食用的說法。",
+      "source_ids": [
+        "L70-S050"
+      ],
+      "source_locator": "F40-S005 Abstract；Results（13 對 8、χ2=1.17, P=0.28）；Discussion 前兩段",
+      "premise_status": "screened",
+      "notes": "維持 0.75：獨立研究群、有對照的野外試驗，但兩夜、捕獲數小。轉折一的唯一原文支柱。 原提案 F40-006（目標 C18-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；數字相符；改正夜間比例、誘餌描述，補上原文作者自己的雙面結論與『菌絲不亮』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "大家說菇發光是為了引蟲——在澳洲的冬夜，綁了發光菇的黏蟲板反而黏到比較少",
+        "visual": "兩塊並排的黃色黏蟲板，一塊綁著發光的鬼菇；計數器停在 8 和 13；背景是冬季無月的尤加利林",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-043",
+      "question": "如果發光是為了引蟲，那埋在土裡、木頭裡的菌絲為什麼也會亮？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.bioluminescence_mycelium_glow_undermines_spore_dispersal_role",
+      "answer_target": "這正是研究者覺得『引蟲說』不夠的理由之一。2020 年那篇基因體研究的作者引用前人整理寫道：巴西那種菇夜間發光引蟲的解釋，就算成立也可能是後來才出現的；因為多數發光菇——小菇、臍菇、蜜環菌——據前人整理是靠風散孢子、光是持續的、也沒有已知會吸引昆蟲；而且引蟲說解釋不了菌絲為什麼也亮。他們自己的資料是：一種台灣小菇（M. kentingensis）的發光基因在子實體發育各階段都持續表現（不過這種菇的傘比柄亮）。作者推測發光可能起於某種生理過程的副產物，後來在不同物種有不同用途。",
+      "scope": "這是作者在討論中的推論與文獻概括，不是新實驗；『副產物』『因種而異』要用『作者推測』；與 F40-006 並列時不得說成兩個團隊都做了引蟲實驗。 『多數靠風散孢』是引用文獻 60，只能說『前人整理』；不得概括成『發光菇的光多半在菌絲、柄基』（鬼菇菌絲不亮、M. kentingensis 傘比柄亮、番紅花小菇才是只有柄基與菌絲亮）。",
+      "source_ids": [
+        "L70-S049"
+      ],
+      "source_locator": "F40-S004 Discussion 第 3 段；Results〈Expression Profile…〉",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：只計持續表現這筆本研究資料；風散孢與不引蟲是轉述計 0。 原提案 F40-007（目標 C18-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；主幹是作者引用前人的概括，計數下修；並拆掉組合題轉折一裡被拼出的『光常在不散孢子的地方』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "光常常出現在不會散孢子的地方——菌絲、木頭裡",
+        "visual": "剖開的朽木內部一片淡綠光，上方的菇傘卻是暗的；字幕『孢子從傘下落，光卻在木頭裡』",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-044",
+      "question": "發光菇的光會不會變？被咬、變冷變熱時會怎樣？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.omphalotus_wound_brightening_temperature_dimming_post_transcriptional",
+      "answer_target": "會。韓國研究者用一種發光菇的菌絲做實驗：用刀把菌絲割傷，光在 1 小時內明顯變強、3 小時最亮、至少維持到 24 小時，連旁邊沒被割到的菌絲也跟著變亮，三個發光基因的轉錄也上升。反過來，把菌絲放在 4 °C 或 35 °C 一整天，光就暗下去（35 °C 完全看不到），移回 25 °C 大約 2 小時就恢復，而這時發光基因並沒有被關掉，作者認為溫度是透過基因轉錄以外的途徑調節亮度。研究者推測受傷變亮可能和嚇退吃菌的小動物、或引來牠們的天敵有關，但還沒有證實。",
+      "scope": "實驗室菌絲；生態用途是推測；這種菇是有毒菇，片中不提俗名的食用誤認、不給任何辨識或安全建議。 不寫物種俗名、不提它有毒或像哪種可食菇，畫面只用培養皿菌絲。",
+      "source_ids": [
+        "L70-S053"
+      ],
+      "source_locator": "F40-S008 Abstract；Results 3.2、3.3；Discussion 4.2–4.3",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：實驗室菌絲、同一研究兩組結果合計。 原提案 F40-008（目標 C18-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；數字相符；刪掉原文沒有的『例如酵素本身』，計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把菌絲割一刀，它反而亮了三個小時",
+        "visual": "培養皿上菌絲被劃一道，接下來 0、1、3、24 小時的發光影像；另一組放進冰箱後變暗、回溫又亮",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-045",
+      "question": "同一朵菇撒出來的孢子，長大後亮度會一樣嗎？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.omphalotus_olivascens_spore_isolates_luminescence_variation_caffeic",
+      "answer_target": "差很多。研究者從同一朵發光的臍菇收孢子，養出 47 株菌絲：有的比親代亮、有的比較暗，最亮的幾株最多約是親代的 8 倍。滴上咖啡酸後，所有菌株都變亮，增幅從 1.6 倍到 27 倍，而且原本越暗的增得越多；作者認為原料咖啡酸的供應是限制亮度的因素之一，原本就亮的菌株接近飽和。",
+      "scope": "實驗室單核菌絲，與野外雙核菌絲不同；不談其抗菌、抗癌化合物；只用發光與咖啡酸兩組結果。",
+      "source_ids": [
+        "L70-S055"
+      ],
+      "source_locator": "F40-S010 Abstract；Results 發光段、咖啡酸段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：與 F40-002『咖啡酸是原料』同方向，對觀眾結論是補充，不是新答案。 原提案 F40-009（目標 C18-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；內容正確，只下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一朵菇的孩子，有的比媽媽亮八倍",
+        "visual": "一排 47 個小格培養，亮度深淺不一；滴咖啡酸後暗的格子一下子追上來",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-046",
+      "question": "把菇發光的基因放進植物，植物會亮嗎？亮在哪裡？",
+      "domain": "真菌與微生物",
+      "mechanism_key": "fungi.fungal_pathway_tobacco_autoluminescence_maps_caffeic_metabolism",
+      "answer_target": "會。2020 年研究者把菇的四個發光基因放進菸草，因為植物本來就有咖啡酸，不必再餵任何東西，整株在各個生長階段都發出肉眼看得到的綠光，花最亮，用一般相機曝光 0.5 到 30 秒就拍得到；株型、開花時間和一般菸草沒有差別，只有株高中位數高了 12%。更有意思的是光的分布：根在側根長出來前幾小時，分枝點先亮；葉子受傷的地方持續變亮，光沿著細脈慢慢擴散；把植株放在熟香蕉皮旁邊，全株都變亮。研究者說，這等於讓植物把自己體內咖啡酸代謝的變化『演』出來。",
+      "scope": "實驗室與溫室研究；作者含商業公司，片中不得推薦或介紹購買發光植物；『比細菌系統亮至少十倍』是作者比較，不用。",
+      "source_ids": [
+        "L70-S054"
+      ],
+      "source_locator": "F40-S009 主文第 3–7 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：Yampolsky 網絡；本題的問題是『菇為什麼亮』，這條是收尾應用，不改變結論。 原提案 F40-010（目標 C18-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；內容正確，只下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "菇的光搬進菸草裡，植物受傷、要長新根的地方會先亮起來",
+        "visual": "黑暗溫室裡整株發綠光的菸草；葉片受傷處一圈亮光沿葉脈擴散；根的分枝點先亮",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-047",
+      "question": "號稱世界最臭的屍花，開花那天為什麼會發燙？",
+      "domain": "植物",
+      "mechanism_key": "plant.titan_arum_d_day_appendix_heat_aox",
+      "answer_target": "屍花（巨花魔芋）開花當天，中間那根粗大的附屬體外表溫度大約比室溫高 11 °C，同時散出死老鼠、爛魚般的臭味。2024 年研究者分析了溫室裡一株屍花兩次花期的基因與代謝物：會發熱的部位，粒線體裡一條『旁路』呼吸酵素——交替氧化酶（AOX）——的基因表現特別高。這條路讓呼吸的能量不去做細胞的能量貨幣，而是直接變成熱。",
+      "scope": "溫室單株為主；溫度是附屬體外表相對室溫；『能量直接變熱』是 AOX 的一般說法，原文以旁路與 AOX 表現描述，片中用『研究者認為』；不提任何食用或藥用。",
+      "source_ids": [
+        "L70-S056"
+      ],
+      "source_locator": "F40-S011 Abstract；Results 第 1 段（約 11 °C）；AOX 段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：溫室一株、溫度是單點外表量測；AOX 與熱相關是已知方向。Zulfiqar 群合計 F40-011 0.5＋F40-012 0.5＝1.0。 原提案 F40-011（目標 C18-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；內容相符，只下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "世界最大的花序開花那晚，會像發燒一樣比房間熱上十度",
+        "visual": "紅外線熱影像：屍花附屬體一根橘紅色的柱子，旁邊的溫度計",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-048",
+      "question": "屍花的臭味是怎麼做出來的？跟它發熱有關係嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.titan_arum_methionine_putrescine_depletion_odor",
+      "answer_target": "臭味的主角是二甲基二硫和二甲基三硫，研究者追到原料是甲硫胺酸：附屬體裡的游離甲硫胺酸比佛焰苞高 20 倍以上，在發熱高峰的 6 小時內掉到原本的四分之一。他們還找到過去沒被列入的另一種臭味成分——腐胺，佛焰苞的腐胺 6 小時內掉到約 15%。也就是說，發熱和產臭在同一段時間、由不同組織分工。常見的說法是熱幫助臭味揮發飄散，但這篇沒有把熱和揮發量拆開做對照，只能說兩者同時發生。",
+      "scope": "只說『同時』『分工』，不得說本研究證明熱把臭味送出去；樣本為溫室單株兩次花期；不談腐胺的健康意涵。",
+      "source_ids": [
+        "L70-S056"
+      ],
+      "source_locator": "F40-S011 甲硫胺酸段、腐胺段、Discussion 模型段",
+      "premise_status": "screened",
+      "notes": "維持 0.5。 原提案 F40-012（目標 C18-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；把『教科書』改成『常見的說法』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "屍花在六小時內把四分之三的原料燒成臭味",
+        "visual": "一根附屬體剖面，甲硫胺酸的小點在六小時倒數中一顆顆變成飄出的臭味雲",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-049",
+      "question": "臭菘在雪地裡開花，花能比空氣暖多少？",
+      "domain": "植物",
+      "mechanism_key": "plant.skunk_cabbage_spadix_regulates_23c_below_freezing",
+      "answer_target": "日本臭菘在晚冬開花，那時氣溫常低於冰點，它的肉穗花序卻能把溫度維持在大約 23 °C，而且是『調節』：前人把花序強制降溫，呼吸反而加快，在 15 到 30 °C 這個範圍內都能拉回來——這是單純發熱的花做不到的。研究者把花序分成發熱前、發熱中、發熱後三階段比較，發現交替氧化酶在發熱前就已經很高，發熱時能量分子 AMP 明顯上升。",
+      "scope": "23 °C 是原文摘要所述；15–30 °C 範圍與降溫試驗是該文轉述 Seymour 等 2010，只能說『前人實驗』；不談臭菘食用或藥用。",
+      "source_ids": [
+        "L70-S057"
+      ],
+      "source_locator": "F40-S012 Abstract；Introduction 第 1–2 段；Results（AOX、AMP）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：23 °C 與調溫範圍是背景與轉述；本研究資料只有 AOX 早高、AMP 上升，對觀眾增量小。Ito 網絡合計 F40-013 0.25＋F40-014 0.25＋F40-015 0.5＋F40-016 0.25＋F40-017 0.25＝1.5。 原提案 F40-013（目標 C18-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；內容相符，下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雪地裡的臭菘，花心像開了暖氣一樣停在二十三度",
+        "visual": "雪地上露出的紫褐色佛焰苞，紅外線影像中心一團穩定的橘色；外面溫度計在零下",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-050",
+      "question": "臭菘發熱，是為了像屍花一樣把臭味送出去、引蒼蠅來嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.skunk_cabbage_not_smelly_heat_not_for_insects_sbp1_mto",
+      "answer_target": "看起來不是。名字裡有『臭』，但據前人研究，日本臭菘發熱期花序的硫化物氣味成分沒有明顯增加，在冰冷的環境裡也少有昆蟲被吸引的證據。2024 年這篇研究自己的資料是：發熱的小花裡一種酵素 SBP1/MTO 表現最高，小花裡的硫化氫也明顯比較多；這種酵素會把甲硫醇轉成硫化氫，作者據此推論臭菘因此不太臭。那熱拿來做什麼？前人實驗顯示 23 °C 對花粉發芽和花粉管伸長很重要。也就是說，同樣是發熱，屍花的熱與臭一起出現，臭菘的熱可能比較像在替自己的繁殖保溫。",
+      "scope": "『不臭』『少有昆蟲』『23 °C 與花粉』都是該文轉述前人，只能用『前人研究』；SBP1/MTO 解釋不臭是作者推論；北美臭菘受傷時的臭味是轉述 1979 年文章，不用。 『不臭』『少蟲』『23 °C 與花粉』三件事都只能掛『前人研究』，不得說是這篇 2024 研究發現的。",
+      "source_ids": [
+        "L70-S057"
+      ],
+      "source_locator": "F40-S012 Introduction 第 4 段；Discussion〈不臭〉段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：只計 SBP1 高表現＋小花硫化氫較高這組本研究資料；推論與三項轉述計 0。 原提案 F40-014（目標 C18-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；主詞改正：三項關鍵說法都是 Tanimoto 2024 轉述前人；計數下修。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "叫『臭菘』卻不太臭——它發熱不是為了招蒼蠅",
+        "visual": "並排兩張卡通：屍花冒臭雲、蒼蠅圍繞；臭菘在雪裡冒暖氣、沒有蟲、花粉發芽",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-051",
+      "question": "植物沒有大腦，怎麼知道天冷了要多產熱？",
+      "domain": "植物",
+      "mechanism_key": "plant.skunk_cabbage_hydrogen_sulfide_shifts_respiration_to_aox_cold",
+      "answer_target": "日本研究者提出一個靠化學平衡的辦法：粒線體呼吸有兩條出口，正常的那條（細胞色素 c 氧化酶）主要用來做能量分子，另一條交替氧化酶主要放熱。臭菘花裡自己做出的硫化氫會抑制正常那條，而且溫度越低抑制越強——在 15 °C 時，只要約 3 微莫耳濃度，兩條路就會換手。結果是：天越冷，呼吸越往放熱那條路偏，花就自動多產熱。這是用分離出來的粒線體做的試驗，作者也說不完全等於活的花裡的情況。",
+      "scope": "離體粒線體試驗，作者自己說的限制要保留；不說『證明』，用『研究者提出』；2.96 µM 可說『約 3 微莫耳』。",
+      "source_ids": [
+        "L70-S057"
+      ],
+      "source_locator": "F40-S012 Abstract；Results Fig. 8C；Discussion 硫化氫段",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：離體粒線體單一實驗。 原提案 F40-015（目標 C18-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；內容相符，只下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "天越冷、硫化氫越把正常的呼吸踩住，熱就自己多起來",
+        "visual": "粒線體裡一條路分岔成『做能量』與『放熱』兩個出口，溫度計往下時硫化氫小人把『做能量』的門推上",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-052",
+      "question": "花一直發熱，裡面那個『放熱酵素』會一直留著嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.arum_maculatum_aox_degraded_30c_cysteine_protease",
+      "answer_target": "不會一直留著。另一種會發熱的天南星——斑葉疆南星——花序附屬體最熱大約 32 °C（同研究群前作）。研究者把它的粒線體取出，分別放在 15 °C 和 30 °C：在 30 °C 下，負責放熱的交替氧化酶被分解得快得多，而這個分解會被半胱胺酸蛋白酶抑制劑擋下來。作者提出的模型是：花自己發的熱啟動一種蛋白酶把舊的交替氧化酶拆掉，拆完可能再經訊號讓細胞做新的——比較像汰舊換新，生理意義還沒證實。",
+      "scope": "離體粒線體試驗；模型與生理意義是作者推測，用『作者提出』；不得說成『恆溫器的煞車』『熱過頭就關暖氣』；32 °C 是同群前作。",
+      "source_ids": [
+        "L70-S058"
+      ],
+      "source_locator": "F40-S013 Abstract；Results（15 vs 30 °C）；Discussion（最高約 32 °C）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：Ito 研究群，封頂內；只計 30 °C 加速分解與抑制劑這組資料。 原提案 F40-016（目標 C18-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；作者把原文的『分解後再誘導』說成『煞車』，方向錯；改寫答案與問題，並拿掉組合題轉折二的『油門與煞車』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "花到了三十度，會開始拆掉自己的暖氣",
+        "visual": "溫度計升到 30 °C 時，粒線體裡的放熱酵素被小剪刀剪開",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-053",
+      "question": "花會發熱，對植物本身有什麼長期的好處嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.symplocarpus_thermogenic_species_expanded_last_glacial_maximum",
+      "answer_target": "有研究從物種的歷史找線索。比較會強烈發熱的日本臭菘和幾乎不發熱的近緣種：用生態棲位模型回推到末次冰盛期，幾乎不發熱的那種可能分布縮小，會發熱的臭菘反而擴大；今天的族群遺傳多樣性也是臭菘較高。研究者據此認為花的發熱可能幫助植物耐冷、在冰期擴張，但用詞是『暗示』。",
+      "scope": "只比較兩個物種；冰期分布是模型推估；相關不等於發熱造成；不得說『發熱讓臭菘熬過冰河期』。",
+      "source_ids": [
+        "L70-S059"
+      ],
+      "source_locator": "F40-S014 Abstract；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：兩物種比較加模型推估；併入 Ito 網絡。 原提案 F40-017（目標 C18-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；內容相符，下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "會發熱的那一種，在冰河期反而擴張了",
+        "visual": "日本地圖兩張：冰期時兩種臭菘的可能分布，一種縮小、一種擴大",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-054",
+      "question": "台灣到處都有的姑婆芋，花也會發熱嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.alocasia_odora_upper_spadix_mild_fluctuating_heat",
+      "answer_target": "會，但很溫和。2026 年的研究在海南海口一個上千株的姑婆芋族群，用熱影像量花序：上半部的雄花區和附屬體靠交替氧化酶發熱，平均只比環境高約 3.5 °C 和 2.4 °C，而且跟著氣溫起伏，不像臭菘那樣守住一個溫度（作者拿蓮花維持 30–35 °C 來對比，為轉述）。下半部的雌花區不發熱，中間被佛焰苞縮成兩個隔間。",
+      "scope": "數值為平均 ± 標準差，要說『平均』；蓮花數字是轉述；不得提姑婆芋食用、誤食或毒性（安全建議不收）。 要說研究地點是海南，台灣只當『我們身邊也有這種植物』的入口。姑婆芋全株有毒：畫面不拍人手觸摸、剝開或切開佛焰苞，研究中的切開觀察用示意圖；不出現任何可食、可入藥或『怎麼分辨芋頭』的說法。",
+      "source_ids": [
+        "L70-S060"
+      ],
+      "source_locator": "F40-S015 Results〈thermal imaging〉；ABSTRACT",
+      "premise_status": "screened",
+      "notes": "維持 0.5。Yu／Luo 群合計 F40-018 0.5＋F40-019 0.75＝1.25。 原提案 F40-018（目標 C18-02，原角色 hook；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；數字相符；補研究地點與安全畫面限制。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "路邊的姑婆芋開花時，上半截比空氣暖兩三度——而且是故意的",
+        "visual": "姑婆芋花序剖面：上半截在熱影像中微微發橘、下半截偏藍，中間佛焰苞收窄成腰",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-055",
+      "question": "姑婆芋那一點點熱，能做什麼用？",
+      "domain": "植物",
+      "mechanism_key": "plant.alocasia_odora_thermal_gradient_steers_pollinator_flies",
+      "answer_target": "用來指揮替它授粉的小果蠅上下搬家。白天上半部太熱，果蠅往下躲到較涼的雌花區（順便把帶來的花粉送到雌花）；晚上上半部相對暖，果蠅往上爬到雄花區沾新的花粉。研究者在正午把上部降到 25 °C 以下、下部加熱到 25 °C 以上，待在上部的果蠅比例從約 10% 變成約 89%；遮光或夜間打燈的影響很小。氣味呢？氣味主要從附屬體發出、正午最濃，但那時果蠅都聚在下面，研究者認為氣味負責把果蠅從遠處叫來，進了花以後是靠溫度差走位。",
+      "scope": "單一物種、樣本 n=6–15 花序；『氣味管遠、溫度管近』是作者依實驗的結論，用『研究者認為』；兩種果蠅的分工細節不用。 研究地點海南；同 F40-018 的安全畫面限制。",
+      "source_ids": [
+        "L70-S060"
+      ],
+      "source_locator": "F40-S015 ABSTRACT；Results〈in situ microclimate manipulation〉；氣味段；Discussion",
+      "premise_status": "screened",
+      "notes": "算 0.75（作者 1.0）：單一族群、n=10 的操弄；氣味分工是同研究另一組試驗，併計。 原提案 F40-019（目標 C18-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；數字相符，下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把姑婆芋上下的冷熱對調，果蠅就整群搬家",
+        "visual": "正午花序：上半部被小冰袋降溫、下半部加熱，果蠅從下方湧到上方，比例條從 10% 漲到 89%",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-056",
+      "question": "會發熱、會發臭的花，蟲子到底是被什麼吸引來的？氣味越臭越好嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.arum_maculatum_scent_amount_not_composition_predicts_visitors",
+      "answer_target": "在斑葉疆南星身上，研究者逐株量了兩個族群的氣味和訪客：每株放出的氣味總量越多，來的蛾蚋、小蠅越多；但各株氣味『配方』的差異，跟來的蟲種類對不起來。在奧地利那個族群，最常見的氣味型反而招來更多授粉者、也比較容易結果。也就是說，量比配方重要，而且不是越特別越好。",
+      "scope": "相關研究、兩個族群；沒有量溫度，不得把熱與訪客連起來；只當『遠距吸引靠氣味量』的獨立旁證。",
+      "source_ids": [
+        "L70-S061"
+      ],
+      "source_locator": "F40-S016 Abstract；Results 主段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：與本題『花為什麼發熱』無直接關係，只是 F40-019『氣味管遠距』的旁證。 原提案 F40-020（目標 C18-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；內容相符；離題，下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "騙蒼蠅的花，比的是氣味的量，不是配方",
+        "visual": "兩株疆南星，一株冒出大朵臭味雲、周圍很多小蠅；另一株配方不同但雲小、蟲少",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    },
+    {
+      "id": "L70-057",
+      "question": "植物發熱燒的是什麼燃料？",
+      "domain": "植物",
+      "mechanism_key": "plant.magnolia_thermogenesis_multiple_substrates_atp_synthase_down",
+      "answer_target": "不只一種。研究木蘭花雌蕊發熱的團隊，用同位素標記的原料餵分離出的粒線體，看到發熱期丙酮酸進入粒線體的兩條路都變多；基因表現又顯示脂肪酸和胺基酸的分解也可能一起供料；分解澱粉的 β-澱粉酶基因全部上調，兩個超過 9 倍。四個做 ATP 的合成酶基因裡有一個在發熱期明顯下調，作者解讀為能量可能從做 ATP 轉向放熱。前面屍花的研究也看到發熱部位糖運輸相關基因表現高。",
+      "scope": "『由 ATP 轉向放熱』是作者依基因表現的解讀；不同物種的結果不能合成一個『植物發熱公式』。 脂肪酸、胺基酸是依基因表現推論；ATP 合成酶只說『四個中一個』。",
+      "source_ids": [
+        "L70-S062",
+        "L70-S056"
+      ],
+      "source_locator": "F40-S017 Summary；Results 前三節；F40-S011 糖運輸段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：獨立研究群，但多半是基因表現推論，對觀眾結論的增量是『燃料不只糖』一句。 原提案 F40-021（目標 C18-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V43（2026-11-12）改字後收；改正『部分 ATP 合成酶下調』為四中一；下修計數。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "花在發熱時，把做能量的工廠改成了暖爐",
+        "visual": "木蘭花雌蕊剖面，糖、脂肪、胺基酸三條輸送帶送進粒線體，出口從『電池』改成『火爐』",
+        "seconds": [
+          45,
+          60
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L70-NA001",
+      "question": "啄木鳥撞擊時頭部是一把硬鎚，若有緩衝反而會削弱啄擊？",
+      "existing_ids": [],
+      "source_ids": [
+        "L70-S012"
+      ],
+      "reason": "原文 Van Wassenbergh 等 2022 Curr Biol（doi:10.1016/j.cub.2022.05.052）經 DOI 轉到 linkinghub，再由頁面連結到 cell.com，回 403；Europe PMC 標示需訂閱，無預印本。只讀到 Lyons 2023 引言一句轉述，不立核心。 原提案 F37-NA001。",
+      "reentry_condition": "讀到出版社或作者機構典藏的合法全文；可立約 1.0 條，並把轉折一從『模型間意見不一』升為『實測頭部是硬的』。",
+      "reading_status": "blocked（cell.com 403）"
+    },
+    {
+      "id": "L70-NA002",
+      "question": "啄木鳥打洞時呼吸與頸部動作如何配合成鎚擊？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Antonson 等 2025 J Exp Biol（doi:10.1242/jeb.251167）Europe PMC 標示需訂閱，DOI 轉到 journals.biologists.com 回 403。 原提案 F37-NA002。",
+      "reentry_condition": "讀到合法全文，約 0.75 條（與 Fuxjager 群合計封頂）。",
+      "reading_status": "blocked（journals.biologists.com 403）"
+    },
+    {
+      "id": "L70-NA003",
+      "question": "啄木鳥腦膜有沒有抗反覆撞擊的特殊基因表現？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Beatty 等 2026 Anat Rec 腦膜轉錄體，Europe PMC 只有書目、無開放全文，未讀。 原提案 F37-NA003。",
+      "reentry_condition": "有開放全文時約 0.5–0.75 條。",
+      "reading_status": "not_open"
+    },
+    {
+      "id": "L70-NA004",
+      "question": "大象怎麼用鼻子吸水、吸起薄片？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Schulz 等 2021 J R Soc Interface〈Suction feeding by elephants〉在 PMC（PMC8169210），Europe PMC 標示非開放取用（isOpenAccess N），未在開放子集；europepmc.org 網頁為 Cloudflare 機器驗證（同類論文已確認），未請求、未繞過。 原提案 F37-NA004。",
+      "reentry_condition": "合法讀到全文；約 1.0 條（Hu 群合計封頂），可補『鼻子是吸管』的常見誤解，成為第三轉折。",
+      "reading_status": "not_open（非開放子集）"
+    },
+    {
+      "id": "L70-NA005",
+      "question": "大象怎麼把幾萬條肌肉的鼻子簡化成幾個『關節』來控制？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Dagenais 等 2021 Curr Biol 與 Longren 等 2023 Curr Biol 不在開放子集；Agabiti 等 2026 iScience 為開放全文，但只是機器人用的桿件模型，不立核心。 原提案 F37-NA005。",
+      "reentry_condition": "讀到 Dagenais 2021 原文，約 1.0 條（Milinkovitch 群，可與 F37-017 合計封頂）。",
+      "reading_status": "blocked（非開放子集）／Agabiti 2026 已讀（f37src/agabiti2026.xml）未採"
+    },
+    {
+      "id": "L70-NA006",
+      "question": "Snowball 原始實驗（Curr Biol 2009）：鸚鵡在 9 種變速下的同步證據",
+      "existing_ids": [],
+      "source_ids": [
+        "L70-S038"
+      ],
+      "reason": "原文 doi.org→linkinghub→cell.com 回 Cloudflare「Just a moment」403，未讀到原文；只用研究群補充報告（F39-S001）的轉述，不另立核心。 原提案 F39-NA001。",
+      "reentry_condition": "合法開放全文（作者機構典藏或 PMC）可讀時，F39-001 可由 1.0 升至約 1.25。",
+      "reading_status": "blocked"
+    },
+    {
+      "id": "L70-NA007",
+      "question": "海獅 Ronan 最初學會跟拍的原始論文（Cook 等 2013 J Comp Psychol）",
+      "existing_ids": [],
+      "source_ids": [
+        "L70-S041",
+        "L70-S042"
+      ],
+      "reason": "APA 期刊付費，Europe PMC 無全文；內容只經同研究群後續論文轉述，已併入 F39-007、F39-008，不另立。 原提案 F39-NA003。",
+      "reentry_condition": "有作者存放全文時，可把『轉到音樂』『非模仿發聲物種』由轉述升為原文。",
+      "reading_status": "abstract_only"
+    },
+    {
+      "id": "L70-NA008",
+      "question": "巴西那種菇真的是晚上才亮、用光引昆蟲幫它散孢子嗎？（Oliveira 等 2015 Current Biology，Neonothopanus gardneri，LED 假菇）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC REST 有 PMC4382382 紀錄但非 OA（fullTextXML 回 500）；API 列出的免費連結 europepmc.org ?pdf=render 與 Unpaywall 的 cell.com PDF 都回 Cloudflare『Just a moment』403，未繞過。只讀到 F40-S004、F40-S005 等的轉述，依規定不計。 原提案 F40-NA001。",
+      "reentry_condition": "可從開放管道（PMC 作者稿可直接取得、或作者機構典藏）讀到全文，讀方法與昆蟲計數原始數字；讀到可在 C18-01 補一個約 0.75 的核心，並讓轉折一的正反兩方都有原文。",
+      "reading_status": "只讀到他文轉述"
+    },
+    {
+      "id": "L70-NA009",
+      "question": "菇的發光基因裡，回收酵素 CPH 是不是循環不可少的一環？（Zamuner 等 2026 FEBS J）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已讀全文（f40src/PMC13669639.txt，sha256 前 16 碼 196cfe23bd8064f8），但作者屬 Stevani 研究群，與 F40-001／002／010 同網絡，已近封頂；內容是酵素動力學，對觀眾結論的增量小，不另立核心。 原提案 F40-NA002。",
+      "reentry_condition": "若之後要拆出『光用完的分子怎麼回收』一章，且 Yampolsky／Stevani 網絡計數仍有空間。",
+      "reading_status": "全文已讀，未收"
+    },
+    {
+      "id": "L70-NA010",
+      "question": "日本有幾種發光菇？各在哪裡、哪個部位亮？（Oba & Hosaka 2023 J Fungi〈The Luminous Fungi of Japan〉）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已讀全文（f40src/PMC10302135.txt，b4e1b1f0175522a5）；是綜述名錄，作者 Oba 也是 Kotlobay 2018 共同作者，同網絡封頂；與 F40-001 的地區數字重疊。 原提案 F40-NA003。",
+      "reentry_condition": "同網絡計數有空間，且要做『哪個部位亮』一章時。",
+      "reading_status": "全文已讀，未收"
+    },
+    {
+      "id": "L70-NA011",
+      "question": "雲南又找到會發光的小菇，中國已知幾種？（Lu 等 2025 Biodiversity Data Journal）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已讀全文（f40src/PMC12780892.txt，4b5a5405c794e13e）；只有物種紀錄與『中國已知 36 種』一個數字，對結論沒有新增，且與 F40-005『被忽略的光』同方向。 原提案 F40-NA004。",
+      "reentry_condition": "若要一句『各地仍陸續找到新的發光菇』的旁證。",
+      "reading_status": "全文已讀，未收"
+    },
+    {
+      "id": "L70-NA012",
+      "question": "日本臭菘的花序在冬天野外，溫度是怎麼一天天起伏的？（Tanimoto 等 2020 bioRxiv〈Rhythmic temperature control in a homeothermic plant〉）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 列 DOI 與 Unpaywall 免費；循 DOI 到 biorxiv.org 回 429／error 1015（速率限制），未重試、未繞過；且是預印本、與 Ito 群同網絡。 原提案 F40-NA005。",
+      "reentry_condition": "bioRxiv 可正常讀取或有期刊版；讀到也只能在 Ito 群封頂內 +0.25。",
+      "reading_status": "讀不到"
+    },
+    {
+      "id": "L70-NA013",
+      "question": "死馬海芋發熱是為了讓找屍體的麗蠅以為是屍體嗎？（Angioy 等 2004 Biol Lett）；屍花的熱是一波一波的嗎？（Korotkova & Barthlott 2009 Plant Signal Behav）；Dracunculus 的呼吸與調溫（Seymour 1999 Proc R Soc B）；水楊酸觸發巫毒百合發熱（Raskin 1989 PNAS）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 標『Free』但 REST fullTextXML 回 500；API 列出的連結：europepmc.org ?pdf=render 為 Cloudflare 403、pmc.ncbi.nlm.nih.gov 為 reCAPTCHA 挑戰頁、royalsocietypublishing.org 403、pnas.org 403、tandfonline.com 403，全部未繞過。 原提案 F40-NA006。",
+      "reentry_condition": "任一篇可從開放管道讀到全文。Angioy 2004 是 C18-02 最可能補上的獨立研究群（熱本身就是對蒼蠅的訊號），約 0.75；Seymour 1999 約 0.5。",
+      "reading_status": "讀不到"
+    },
+    {
+      "id": "L70-NA014",
+      "question": "樹木真的透過地下真菌網路分享養分、互相警告嗎？『母樹』的說法證據多強？",
+      "existing_ids": [
+        "L109",
+        "L111"
+      ],
+      "source_ids": [],
+      "reason": "候選題去重通過（池中只有菌根基本機制 L109、L111，且 L50-NA008 等已決定『不把菌根網泛稱互助網』），但決定轉折的 Karst 等 2023 Nat Ecol Evol 只讀到摘要（nature.com 訂閱）、Henriksson 等 2023 New Phytol 與 Babikova 等 2013 Ecol Lett 循 DOI 到 Wiley 403、Klein 等 2016 Science 與 Robinson 等 2024 TIPS 非開放；開放的只有 Song 2010 PLoS ONE、Song 2015 Sci Rep 與 Klein 2023 Open Res Eur 意見文，正反兩方不對等，不選題、不寫核心。 原提案 F40-NA007。",
+      "reentry_condition": "Karst 2023 或 Henriksson 2023 有可讀全文（作者稿、機構典藏），且有第二個不屬 Simard 群的野外標記同位素原研究開放全文；不以在世人物為核心。",
+      "reading_status": "只有摘要"
+    },
+    {
+      "id": "L70-NA015",
+      "question": "向日葵真的整天追著太陽轉嗎？長大的花為什麼都朝東？",
+      "existing_ids": [
+        "B2233"
+      ],
+      "source_ids": [],
+      "reason": "池中無同答案核心，只有 wave15 三筆未收（向日葵時鐘，當時只讀到 UC Davis 新聞稿）。本輪查到開放全文的有 Brooks 等 2023 PLOS Biol（Harmer 群）、Kutschera & Briggs 2016 Ann Bot（綜述），以及 Horváth 群 2020–2025 多篇；但關鍵原論文 Atamian 等 2016 Science 與 Creux 等 2021 New Phytol 只有訂閱，Horváth 群單群又受封頂，兩個轉折的兩方不對等，本輪不選。 原提案 F40-NA008。",
+      "reentry_condition": "Atamian 2016 或 Creux 2021 有可讀全文；屆時與 Horváth 2024 Plant J（朝向與授粉者造訪無關）可成為『朝東是為了蜜蜂嗎』的正反轉折。",
+      "reading_status": "未選題（部分只有摘要）"
+    }
+  ]
+}

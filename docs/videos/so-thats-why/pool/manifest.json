@@ -1,16 +1,16 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 4509,
-    "canonical_questions": 4348,
-    "eligible_candidates": 4178,
-    "selected_candidates": 4119,
+    "raw_records": 4647,
+    "canonical_questions": 4486,
+    "eligible_candidates": 4316,
+    "selected_candidates": 4257,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5390,
-    "current_research_source_urls": 2441,
-    "selected_source_urls": 3587,
-    "new_suggestions_not_added": 2522,
+    "source_urls": 5518,
+    "current_research_source_urls": 2569,
+    "selected_source_urls": 3704,
+    "new_suggestions_not_added": 2559,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
@@ -18,7 +18,7 @@
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "d4e062b0f5ce2cd4769bdbb4a251993bfc130b58f435c7edf530c2b264e47430"
+      "sha256": "215756d4e96c03a9dabf940b1a4c0fd354664cd07095056e049c96d9c245bd00"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -555,6 +555,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-12-4103.json.gz",
       "sha256": "7cce8ff44b5f7ea4564b77a25ff0dab925559d1cf19b25bb325671be1d0c62f2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-4119.json",
+      "sha256": "fbe7d9c06e6903540bd17c3093407844ec46e7d6421b321a05c8c1ebf70aa420"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-12-4119.json.gz",
+      "sha256": "f184ce4bca81a5b8c8f58081cfd1470eb19315d20df124c6de7b32fe8db3ea07"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -2281,6 +2289,18 @@
       "sha256": "d956836ae3d50a418f5794e0265e44a1924389056430aafd5c483ec99a675021"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave70-earth.json",
+      "sha256": "22b07976a6443f20acff91437766d84d5b401cbb4b0b6a709d219d2aa93726bf"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave70-life.json",
+      "sha256": "cca344d2dabd52cf3c9439cef16e708709b4216d10d9c9d79090ae3f8945632f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave70-physics.json",
+      "sha256": "36c0a6ddcb85c16ebc390b9370387e807f36f88c35d40a3f77f93606ecda8d32"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave8-food.json",
       "sha256": "b5727df7527ec8d28e68c32e157a5c90d2ae079e31ac7afb6507bf794c74c389"
     },
@@ -2342,30 +2362,30 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "7849a705c9828af0ee365e3172b624c979f2566bf09af26cfe308961410728f8"
+      "sha256": "657ace998efe0d094598b6938416f73736778ee75a67ec689e31aacd5ddb8e3c"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "1c1012cbd793049fefcb64316b876f027abcf0e98f3d7706661e6eb9fa9c0932"
+      "sha256": "deee4ab02ad25ceba26b5e356ff8916a6c12bc92ecfe42861c1a5b670f435aea"
     }
   ],
   "theme_definition_sha256": "ce239ba7b177e11b93c378025179bfef10d478383deab860285e1168d9ebe4ad",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "3a76eb4481c218e17c88863dad6552fdf5c7fbf47a60de84c72ef0512846e443"
+      "sha256": "951f4896ae40e8b83adfbb6a34806a7c98910bc475be8d648bb99dffe55f96c2"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "d4fef6c121ae9a8aa43a844a1d13343bed504d471dae71b0b9c742077d1e8490"
+      "sha256": "59cc543e092840f733a06ba5b42075c26863e5ac67dab033f7cd2c3f0c02b4d9"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "768c17d1af30951da7892b807f13f6d55c67e2d6a8fbd2b66edafc59823e08cf"
+      "sha256": "42564ebac73d7e376bfe58fee414216135c37accd92c2e5009b511ef87d99806"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "a9baa68477134f99dd35328799d8d8bba7712705338987b69e821e315696c84d"
+      "sha256": "827406d38c976753c7cbe191241350577e4fff5dc771d10314026482f97e0a55"
     },
     {
       "file": "THEMES.md",
@@ -2373,7 +2393,7 @@
     },
     {
       "file": "index.html",
-      "sha256": "0cd6f49e13ba0a98c11d6f8125da7fbc15d51d42e1632968959c27ce47c551c1"
+      "sha256": "513c3bde7759e23d84d0161168d19fbd819fbed32d5c1c96047a239c5acfcbe1"
     }
   ]
 }

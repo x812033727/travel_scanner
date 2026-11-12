@@ -1,20 +1,20 @@
 ---
-id: 2026-11-12-stw-pool-round20
-title: 原來如此素材池第二十輪：從頭研究新長題
+id: 2026-11-12-curio-pool-wave44
+title: 奇聞檔案局素材池第四十四批
 status: in-progress
 priority: P2
 area: docs
 owner: claude-cloud-pool-round20
-claimed_at: 2026-11-12T11:30:39Z
-created_at: 2026-11-12T11:30:38Z
+claimed_at: 2026-11-12T13:10:48Z
+created_at: 2026-11-12T13:10:48Z
 completed_at:
 branch:
 depends_on: []
 scope:
-  - docs/videos/so-thats-why/pool
+  - docs/videos/history-curiosity/pool
 ---
 
-# 原來如此素材池第二十輪：從頭研究新長題
+# 奇聞檔案局素材池第四十四批
 
 ## Why
 
