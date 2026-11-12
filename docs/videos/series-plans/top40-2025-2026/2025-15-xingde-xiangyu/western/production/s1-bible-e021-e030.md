@@ -452,3 +452,11 @@ Nora 的白手機還在 Bev 的抽屜；禮服掛在她的客房衣櫃；毛線�
 - **場景**：新增 `ashford-entry`、`ashford-upper-hall`、`glass-house-living-night`、`flagship-store`、`launch-entrance`、`launch-booth`、`dana-office`；改 `ashford-house-ext`（原稿寫 `ashford-ext`，對齊時照 `cast.json` 的 id）、`ashford-dining`、`ashford-guest`、`elias-car`、`launch-stage`、`backstage`、`pell-flashback`。
 - **道具**：新增 `black-car`（第 15 集起那句，原本沒有 id）、`forever-no1`、`forever-wall`、`vase-base-blank`、`vase-base-lit`、`launch-screen`、`glass-dome`、`light-box-plinth`、`cotton-gloves`、`house-rules-card`、`ashford-key`、`ashford-fridge`、`peg-dinner`、`clean-plate`、`peg-apron`、`gold-envelope`、`invitation-card`、`seat-card`、`paper-clip`、`sim-card`、`sim-packet`、`sienna-phone`、`window-poster`、`builder-plaque`、`gown-box`、`grey-clutch`、`certified-envelope`、`cease-and-desist`、`photocopy`、`copies-to-light`、`caged-bulb`、`cue-cards`、`handheld-mic`、`lyle-camera`、`lyle-phone`、`guest-phones`、`camera-flash`、`follow-spot`、`green-light-box`、`guest-lamp`；改 `forever-vase`、`invitation`、`poker-chip`、`blowpipe`（四章同一句：`a long steel glassblowing pipe about as long as a person is tall`）、`watching-car`、`elias-overcoat`（基本句到 overcoat 為止）。
 - 原稿的 `props_fix` 裡 `light-box` 那句沒用：第 41–60 集共用第 41–50 集 bible 的燈箱句（`light-box`）。
+
+## 寫稿時補定的事（2026-11-12）
+
+- **第 24–25 集**（寫稿者定）：Ashford 家大廳樓梯最下面一級在書房三級台階右邊兩步，沿左牆往玄關那頭爬上迴廊；二樓走廊從鏡子往回看兩扇門都在畫面左（近的是 Nora 的房、遠的是 Peg 的房），壁燈在右牆靠鏡子那頭。
+  禮服盒裡只有禮服與手拿包，配她自己 `decree` 的 `low nude flat shoes`；裙襬蓋住時寫明。爐上的鑄鐵鍋與木勺另有道具句；俯拍時請帖背面朝上；掛斷的手機螢幕是暗的。
+  `dana-office` 要多畫傍晚版（第 25 集 18:40 天還亮；夜版給第 29 集）。書房檯燈先亮後關；禮服盒第 24 集留在她房裡、第 25 集在長桌上。
+  寫稿者新加、待站主確認的兩句：第 25 集 c13 "Fisk."、c21 "Dana, can they keep me out?"。
+
