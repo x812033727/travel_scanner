@@ -158,9 +158,14 @@ FIXES = [
      "the paper notice on the shelter's glass is gone; that glass panel is plain clear glass like the others; the containers across the water carry no readable markings."),
     ("bedroom-am-nightstand", "set-glass-house-bedroom-am.jpg", art.SETV, "the room, the bed, the glass wall, the sea, the camera position and the light",
      "the small nightstand between the bed and the glass is pale oak instead of dark wood, with only a clear glass of water, a small flat white saucer and a white tissue box on it."),
+    ("nora-hospital-freckles", "nora-hospital.jpg", art.BUST, "the face, eyes, hair, gown, cardigan, expression, framing, the plain grey backdrop and the lighting",
+     "her forehead is smooth and clear with no spots; her faint freckles are only across the bridge of her nose and the tops of her cheeks."),
     ("ambulance-end-wall", "set-ambulance.jpg", (816, 1440), "the stretcher, the pillow, the rails, the side walls, the ceiling light, the camera position and the light",
      "the far end of the cabin is a plain dark padded wall with no window and no lights outside."),
 ]
+# a4's lettering edit on Dr. Brandt failed twice (the coat kept an embroidered name), so she is drawn new, with the coat spelled out.
+BRANDT = ("a 48-year-old white German-American woman, short silver-blond bob, rectangular glasses, a completely plain white doctor's coat "
+          "with no embroidery, no name, no badge, no logo and nothing in its pockets, over navy scrubs")
 ROUNDS = {"s7": "sets", "s8": "sets", "a5": "people", "p4": "props", "f1": "fixes"}
 
 
@@ -180,6 +185,9 @@ def jobs_for(name: str, work: Path) -> list[dict]:
                 jid = f"prop-{pid}-{take}"
                 jobs.append(build.job(jid, f"p4 {pid} {take}", [art.CANVAS[size]], prompt, size, 761000 + pos * 10 + t, f"p4-{jid}.png"))
     elif ROUNDS[name] == "fixes":
+        prompt = f"{build.BLANK} {build.PORTRAIT_FRAME}She is: {BRANDT}. She is the only person in the frame. {build.REAL}"
+        for t, take in enumerate(("a", "b")):
+            jobs.append(build.job(f"dr-brandt-{take}", f"f1 dr-brandt {take}", [art.CANVAS[art.BUST]], prompt, art.BUST, 717500 + t, f"f1-dr-brandt-{take}.png"))
         for pos, (fid, ref, size, keep, change) in enumerate(FIXES):
             src = art.copy_ref(work, ref)
             prompt = f"Edit image 1: keep {keep} exactly the same. Change only this: {change} {build.REAL}"
@@ -207,7 +215,7 @@ def main(argv: list[str]) -> int:
     if a.list or not a.rounds:
         total = 0
         for r in ROUNDS:
-            n = 2 * (len(SETS[r]) if r in SETS else len(PROPS) if r == "p4" else len(FIXES) if r == "f1" else len(PEOPLE))
+            n = 2 * (len(SETS[r]) if r in SETS else len(PROPS) if r == "p4" else len(FIXES) + 1 if r == "f1" else len(PEOPLE))
             total += n
             print(f"{r:4} {n:3} images {n * art.CU_PER_IMAGE:5.2f} CU")
         print(f"all  {total:3} images {total * art.CU_PER_IMAGE:5.2f} CU")
