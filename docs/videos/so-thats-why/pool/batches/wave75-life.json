@@ -1,0 +1,531 @@
+{
+  "batch_id": "wave75-life-20261111",
+  "created_on": "2026-11-12",
+  "scope": "第二十五輪補讀：費氏葉序（F89-T1，F109／V117，8.43 分差 0.15 條）、動物數數（F94-T1，F110／V118，8.30 分）、生物發光合併題（M2-T1，F105，無提案），都留後備。",
+  "sources": [
+    {
+      "id": "L75-S001",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1016/j.cub.2015.02.021&resultType=core&format=json",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2015.02.021",
+      "title": "Circadian control sheds light on fungal bioluminescence（Europe PMC 書目紀錄）",
+      "publisher": "Europe PMC REST API",
+      "version": "PMID 25802150／PMC4382382",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl（Europe PMC REST search，resultType=core）",
+      "reading_scope": "只讀書目、摘要欄位與 fullTextUrlList；全文三個連結都讀不到",
+      "locator": "resultList.result[0]",
+      "summary": "確認 Oliveira 2015 在 PMC 有作者稿（PMC4382382），但 REST fullTextXML 回 500、europepmc.org 與 cell.com 皆 Cloudflare 403；本輪沒有讀到可計的全文。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只到書目與摘要，不計任何條數；與池中既有 Oliveira 引用同一篇（池中僅作二手引用，drop_if 規定不得當原文）。",
+      "author_cache": {
+        "file": "epmc_oliveira.json",
+        "sha256_prefix": "8f1af43f3679e997",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S002",
+      "url": "https://lup.lub.lu.se/record/4e0217ee-aa11-41e3-8b98-d7f5e0200503",
+      "canonical_url": "https://doi.org/10.1016/j.cub.2019.05.019",
+      "title": "Grazer-induced bioluminescence gives dinoflagellates a competitive edge（Lund University Publications 書目頁）",
+      "publisher": "Lund University Libraries",
+      "version": "Current Biology 29(12):564–565，2019",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl（WebSearch 結果連結）",
+      "reading_scope": "整頁書目；無全文檔、無摘要正文",
+      "locator": "Details／Links",
+      "summary": "作者 Prevett、Lindström、Xu、Karlson、Selander；頁面只連 DOI，沒有開放全文。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "書目頁，不計條數；Selander 群。",
+      "author_cache": {
+        "file": "page_e1c4db9e.html",
+        "sha256_prefix": "a11ae0eb0080d530",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S003",
+      "url": "https://orbit.dtu.dk/en/publications/revisiting-the-burglar-alarm-hypothesis-a-behavioural-cascade-med/",
+      "canonical_url": "https://doi.org/10.1111/1365-2435.14488",
+      "title": "Revisiting the burglar alarm hypothesis: A behavioural cascade mediated by dinoflagellate bioluminescence（DTU Orbit 紀錄）",
+      "publisher": "Technical University of Denmark",
+      "version": "Functional Ecology 38(2):306–314，2024",
+      "accessed_on": "2026-11-12",
+      "read_via": "curl（WebSearch 結果連結）",
+      "reading_scope": "書目與摘要；另讀 Europe PMC AGR 紀錄的摘要（epmc_huang.json）",
+      "locator": "摘要",
+      "summary": "摘要：多數發光渦鞭毛藻的主要掠食者橈足類太小、不足以讓水體大量發光；作者主張只有被抓住的單一細胞會閃，引起橈足類強烈逃脫，burglar alarm 是次要適應。只到摘要。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀摘要，依規定不算全文、不計條數；全文 Wiley 403。",
+      "author_cache": {
+        "file": "page_92248ba8.html",
+        "sha256_prefix": "addbd2a7a8b58f0c",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8106610/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s10265-021-01288-2",
+      "title": "Verbena officinalis Verbenaceae (Lamiales): a new plant model system for phyllotaxis research",
+      "publisher": "Journal of Plant Research 134（2021）；Zagórska-Marek B、Turzańska M、Chmiel K（弗羅茨瓦夫大學實驗生物研究所）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "讀上一輪作者 F89 經 Europe PMC REST（文件記載 API）取得的同一份快取（stw24/f89src/PMC8106610.xml 與 .txt，V92 已核對該次抓取合規），本輪未重抓；複製到 f109src 後用 python（-I）從 XML 抽出表 1–3 的儲存格",
+      "reading_scope": "全文逐段讀過：摘要、前言、材料與方法、Results 四節（General morphology、Developmental changes in phyllotaxis、Vascular system architecture、Computer modeling）、Verbena culture、Discussion 全部四段與各圖說；表 1、表 2、表 3 由 XML 逐格讀出（txt 版只有表名）。補充圖 S1 未讀。",
+      "locator": "Developmental changes 第 1–2 段與表 3；Results『diameters of ten vegetative and eight florescence apices』段；Vascular system 第 1 段與圖 7 說明；Computer modeling 第 1 段；Discussion 第 2–3 段",
+      "summary": "波蘭一個野生來源的馬鞭草族群：營養期葉子對生，開花後花序軸上的苞片轉成螺旋，多半是主費氏型（2:3），少數是 Lucas（3:4）或雙費氏；之後同一條花序還會一再換型（例如 2:3→3:5→3:4→4:4→4:5），共記到七種排列。表 3 的 12 株中，花序第一個螺旋是主費氏型的比例每株 63%–93%。克羅埃西亞來源的植株全部只有主費氏型。葉原基約占頂端周長 30%，苞片原基約 15%，不同螺旋型之間苞片大小看不出差別（樣本少）。維管束數目在頂端換型之前就先改變（主費氏 5 束、Lucas 7 束、4:5 型 9 束）。電腦模擬中原基半徑每步只縮 1%，接觸螺旋數就往上加。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "田野族群加少量切片；頂端量測只有 10 個營養期與 8 個花序頂端，作者自己說樣本小；『由遺傳控制』是作者的推定（presumption），根據是族群與個體差異，沒有遺傳實驗；『次級換型可能是原基大小微小起伏累積造成』是模擬加推論；維管束『先變』是觀察順序，作者明說維管束訊號的角色仍待驗證。表 3 每株的主費氏型、Lucas、雙費氏三欄加起來不到該株枝數，原文未說明其餘枝的去向，片中只講範圍、不講『其餘都是…』。與池中 L74-040（Fierz）無共同作者；作者群（Zagórska-Marek、Turzańska、Chmiel）與本題其他群無重疊。Jakubska-Busse 等 2017（Gola，同校）本題未用。 覆核 V117（2026-11-12）：summary 的『電腦模擬中原基半徑每步只縮 1%，接觸螺旋數就往上加』補『（同一型內；連續縮小在模擬中無法讓主費氏型換型，次級換型原因作者稱仍是謎）』；『克羅埃西亞來源的植株』改『長在克羅埃西亞 Vodice 附近的植株（株數未寫）』；『七種排列』註明含對生、三輪生、四輪生；publisher 補『（田區在弗羅茨瓦夫北方 Przecławice，種子採自下西里西亞野生族群）』。",
+      "author_cache": {
+        "file": "f109src/PMC8106610.txt（原始 PMC8106610.xml，sha256 前 16 碼 7f40c972e887ae34；與 stw24/f89src 同檔）",
+        "sha256_prefix": "fa4677070db73f01",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S005",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6777031/fullTextXML",
+      "canonical_url": "https://doi.org/10.1186/s13007-019-0499-4",
+      "title": "Isolating phyllotactic patterns embedded in the secondary growth of sweet cherry (Prunus avium L.) using magnetic resonance imaging",
+      "publisher": "Plant Methods 15（2019）；Eithun M、Larson J、Lang G、Chitwood DH、Munch E（密西根州立大學）",
+      "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "讀上一輪作者 F89 經 Europe PMC REST 取得的同一份快取（stw24/f89src/PMC6777031.xml 與 .txt，V92 已核對合規），本輪未重抓；複製到 f109src，以 perl 去掉 LaTeX 公式碼後閱讀，表 2 由 XML 讀出",
+      "reading_scope": "全文逐段讀過：Background、Materials and methods（植物材料與 MRI、Mathematical phyllotaxy、參數、定理）、Results（前處理到 Insertion order permutations）、Discussion、Conclusions、表 1、表 2 與圖說。公式本身未逐一驗算；GitHub 程式碼與 figshare 原始資料未讀。",
+      "locator": "摘要 Results；Plant material 段；表 2；圖 7 說明；Discussion 第 1 段",
+      "summary": "一棵 2016 年截頂的 7 年生甜櫻桃（品種 NY 119），取 1.15 公尺主幹做 MRI。休眠芽留下的維管束痕跡穿過 7 年的增粗木材仍在，找到 36 個節，全部是第一年（2009）苗木時期排下的。這 36 個點排成主費氏型：可見的對向螺旋對為 (1,2)(2,3)(3,5)(5,8)，最顯眼的一對是 (2,3)，傳統分數 2/5；平均夾角表 2 為 142.9°±1.2°（摘要寫約 143°）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有一棵樹、36 個節，是方法論文；平均夾角原文前後不一：表 2 與摘要是約 143°（142.928°±1.181°），圖 7 說明寫平均約 139°，片中只能說『約 140 度上下、不是剛好 137.5 度』或照表 2 並註明，不得自己挑一個當唯一值。Adler 定理（夾角落在一段範圍內就看得到同一對費氏螺旋）是引用前人的數學（Adler 1974），不算本篇結果。插入順序錯位那段是作者人工換位的示範，不是觀察。作者群與本題其他群無共同作者。 覆核 V117（2026-11-12）：limitations 補：『表 2 的 (1,2)(2,3)(3,5)(5,8) 是以 Adler 定理從平均夾角推得，作者說標準誤可能排除 8 斜列；Delaunay 圖實見以 1-、2-、3- 斜列為主；2/5（約 144°）是櫻桃的傳統葉序分數』；summary 刪『可見的對向螺旋對為…』的『可見』措辭。",
+      "author_cache": {
+        "file": "f109src/PMC6777031.txt（原始 PMC6777031.xml，sha256 前 16 碼 4852cc0dfb13dd15；與 stw24/f89src 同檔）",
+        "sha256_prefix": "115f7cad56cc8a63",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S006",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4947393/fullTextXML",
+      "canonical_url": "https://doi.org/10.7554/eLife.14093",
+      "title": "A stochastic multicellular model identifies biological watermarks from disorders in self-organized patterns of phyllotaxis",
+      "publisher": "eLife 5:e14093（2016）；Refahi Y、Brunoud G、Farcot E、Jean-Marie A、Pulkkinen M、Vernoux T、Godin C（里昂 ENS／Inria）",
+      "version": "出版社開放取用版（CC BY，PMC 收錄 JATS 全文）",
+      "accessed_on": "2026-11-12",
+      "read_via": "讀上一輪作者 F89 經 Europe PMC REST 取得的同一份快取（stw24/f89src/PMC4947393.xml 與 .txt；F89 只讀摘要），本輪未重抓；複製到 f109src，perl 去 LaTeX 後閱讀",
+      "reading_scope": "摘要、eLife digest、Introduction 全文、Results 前六節（disorder is a common phenomenon；classical model suggests inhibition perception；stochastic process；realistic sequences；complex vs simple disorders；amount of disorders depends on geometry and perception）與『Both divergence angles and plastochrons…』一節、圖 1–6 圖說逐段讀過。Results 後三節、Discussion、Methods 與 Appendix 1–2 未讀。",
+      "locator": "Introduction 第 4–5 段；Results 第 1 節與圖 2 說明；第 2 節 Property 1–3 與強迫擾動段（圖 3G–H）；第 5 節與圖 5",
+      "summary": "作者在野外多種彼此不相近的植物（歐洲油菜花序、Muscari、蒜芥、七葉樹花序、常春藤、Cotinus）都輕易找到側枝先後對調的『錯位』。在經典抑制場模型裡，頂端周圍的抑制低谷位置早已排好、彼此相隔整數倍的夾角；模擬中強迫下一個器官長在第二低的谷，下一個器官立刻補回原本的位置、再下一個回到常規，夾角序列只出現一個短短的 M 形，之後回到約 137°，但時間間隔會亂比較久。作者據此提出『位置穩、時間亂』，並以隨機模型重現錯位；阿拉伯芥實測的二連、三連錯位比例落在模型預測的曲線上。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "主體是理論模型；多物種錯位是照片舉例、沒有比例；阿拉伯芥錯位比例與共同冒出（近 30%）是引用 Besnard 2014、Landrein 2015，不算本篇；圖 5 的實測點也來自前人加少量本研究資料。與池中 SRC-0be4910b0c7e344f 同一頁（同一 Europe PMC REST 網址）。研究群：Refahi、Vernoux 與 L74-045（Landrein 2015）共同作者，算里昂群；Godin、Farcot 又與 F109-S004 共同作者，三篇合計封頂 2.0。 覆核 V117（2026-11-12）：不另立來源 id：併入池中 SRC-0be4910b0c7e344f（同一 Europe PMC REST 網址、同一快取 e6cc2ad8bca2d7d7／a22731e864cc45ba），新增一筆 reading：reading_scope『摘要、eLife digest、Introduction、Results 前七節（至 Both divergence angles and plastochrons…）與圖 1–6 說明；覆核 V117 另讀 Discussion 前兩節；Results 後三節、Methods、Appendix 未讀』；舊 reading 的『只讀摘要，不計』保留為歷史，limitations 改為『理論模型；多物種錯位只有照片；30% 共同冒出引用 Besnard 2014；里昂群（併 Landrein 2015、Azpeitia 2021）合計封頂 2.0』。",
+      "author_cache": {
+        "file": "f109src/PMC4947393.txt（原始 PMC4947393.xml，sha256 前 16 碼 a22731e864cc45ba；與 stw24/f89src 同檔）",
+        "sha256_prefix": "e6cc2ad8bca2d7d7",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S007",
+      "url": "https://air.unimi.it/retrieve/dfa8b9a8-af9d-748b-e053-3a05fe0a3a96/Azpeitia%20et%20al_main_final_AIR.pdf",
+      "canonical_url": "https://doi.org/10.1126/science.abg5999",
+      "title": "Cauliflower fractal forms arise from perturbations of floral gene networks",
+      "publisher": "Science 373(6551):192–197（2021）；Azpeitia E、Tichtinsky G、Le Masson M、Serrano-Mislata A、Lucas J、Gregis V、Gimenez C、Prunet N、Farcot E、Kater MM、Bradley D、Madueño F、Godin C、Parcy F",
+      "version": "米蘭大學 AIR 典藏的作者稿 PDF（21 頁）；封面是 HAL hal-03291136 自動頁，內頁頁首標『Submitted Manuscript: Confidential』，未與 Science 正式版比對",
+      "accessed_on": "2026-11-12",
+      "read_via": "WebSearch 結果列出的 air.unimi.it PDF 連結，curl 預設標頭原樣下載（200，application/pdf），pdftotext -layout 轉文字",
+      "reading_scope": "正文全部（摘要、主文三節：The genetic basis of cauliflower curds、A multi-scale model generates Arabidopsis cauliflower structures、Growth dynamics define cauliflower and Romanesco curd structures）與圖 1–4 圖說逐段讀過；參考文獻掃過；補充材料（圖 S1–S6、模型方法）不在此檔、未讀。",
+      "locator": "摘要；主文第 1 段與圖 1 說明；第二節末段（factor X、hysteresis）；第三節全段（n ≥ 7 對 3–4、clv3、CLV3 表現較低）",
+      "summary": "花椰菜的花蕾每個都沒長成花，而是又變成新的花序、再長小花序，所以螺旋一層套一層。研究者在阿拉伯芥 ap1 cal 突變株（像花椰菜）上結合基因網絡與 3D 生長模型，結論是：這些分生組織曾短暫進入『開花狀態』、留下記憶，之後又退回花序狀態，才會一層層長下去。花椰菜的分生組織最高到第 7 層以上，甘藍只有 3–4 層。在 ap1 cal 再加上會讓頂端越長越大的 clv3 突變，花球從圓變尖、各尺度出現類似寶塔花椰菜的圓錐；寶塔花椰菜也偶見帶化，CLV3 表現比一般花椰菜低。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "版本是送審稿，不是 Science 正式版（搜尋摘要稱米蘭副本為 accepted post-print，但 PDF 內頁標 Submitted Manuscript），數字與措辭若與正式版不同以正式版為準；寶塔花椰菜的形狀變化在阿拉伯芥是『類似』，不是種出寶塔花椰菜；『頂端大小經由出葉間隔控制花球形狀』是作者結論，其中『頂端變大→間隔變短→螺旋變多』是引用前人（ref 1、35、36）與模擬；寶塔花椰菜出葉間隔會變而一般花椰菜不變是引用 Kieffer 1998（ref 34），不算本篇。圖 1 的 8／5 條螺旋是示意照片的標註，不是統計。研究群：Godin、Farcot 與 F109-S003 共同作者，算里昂群，與 L74-045、F109-S003 合計封頂 2.0；Prunet、Bradley 等與本題其他群無重疊。 覆核 V117（2026-11-12）：version 改為『米蘭大學 AIR 典藏的作者接受稿（典藏紀錄頁 https://air.unimi.it/handle/2434/891272 標示 Post-print, accepted manuscript；Open Access dal 10/07/2022）；封面為 HAL hal-03291136 自動頁；內頁頁首 Submitted Manuscript: Confidential 為 Science 範本頁首；未與正式版比對；補充材料（圖 S1–S6）未讀』；limitations 刪去『版本是送審稿』。",
+      "author_cache": {
+        "file": "f109src/Azpeitia2021_AIR.txt（原始 Azpeitia2021_AIR.pdf，sha256 前 16 碼 d2065ccb25fbf610）",
+        "sha256_prefix": "cece3f4c7a625d27",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S008",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4437293/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/srep10059",
+      "title": "Representation of the Numerosity 'zero' in the Parietal Cortex of the Monkey",
+      "publisher": "Scientific Reports 5:10059（2015）；Okuyama S, Kuki T, Mushiake H（東北大學醫學部生理學）",
+      "version": "Europe PMC 開放全文 JATS XML（PMC4437293.1）",
+      "accessed_on": "2026-11-12",
+      "read_via": "沒有重抓：照 BRIEF「已快取只讀摘要的直接讀快取全文」，讀上一輪作者 F94 以同一公開連結（Europe PMC REST fullTextXML）存下的 stw24/f94src/PMC4437293.xml／.txt，原樣複製到 stw25/f110src/（sha256 與 stw24 那份相同）。",
+      "reading_scope": "逐段讀：前言第 2 段、Results 全部六段（行為作業與控制刺激段、614 個細胞與 zero 神經元段、Weber 段、choice 期再活化段、exclusive／continuous 分類段、neuron-dropping 段）、Discussion 第 1、2、5 段、Methods 的 Behavioral task and Stimuli 與 Data analysis 兩節。Discussion 第 3、4 段（適應反彈、summation coding）只瀏覽；補充資料 Fig. S1–S3 沒讀（不在 XML 內）。",
+      "locator": "Results 第 1 段（72.0% vs 72.6%、去掉注視點的零、成功率隨目標數線性下降）；Results 第 2 段（614 cells、137 個 zero 神經元、注視點 1/99 與 1/76）；Results 第 5 段（66/99 exclusive、31/99 continuous）；Methods〈Behavioral task and Stimuli〉（兩隻日本獼猴、目標 0–4、三種刺激）",
+      "summary": "兩隻日本獼猴學會用左右兩個轉盤一次加一或減一個白點，把畫面上的點數調到和一開始看到的目標數（0–4，零是一片空白）相同。刺激有標準、周長相同、排成一直線三種，用來排除面積、周長、密度與排列；零的試次另外拿掉注視點，免得猴子把注視點當成「一」。兩隻都對每個目標數高於機率，成功率隨目標數（含零）線性下降、選出的數越大越分散；標準與控制刺激的成功率是 72.0% 對 72.6%，沒有顯著差別，作者據此說猴子把空集合放進了數線。從其中一隻猴子頂葉 VIP 區記錄的 614 個細胞中，137 個對「零」有差別反應；只有 1/99（目標期）與 1/76（延遲期）的 zero 神經元對有沒有注視點有反應。zero 神經元分兩型：66/99 只對零反應（exclusive），31/99 對零最強、對 1、2… 遞減（continuous）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "神經記錄只來自一隻猴子（「a monkey」）；137 與 99、76 的分母不同（137 是兩個時段合計，99 是目標期），片中只用「614 個裡有 137 個」與「幾乎沒有一個在意注視點」，不把兩型比例和 137 混算。行為部分只有兩隻猴子。作者把結果稱為「零的非語言概念的前身」，是解讀，不是猴子懂零的證明。與池中來源無重複（pool.json 無此 PMCID／DOI；wave74-life.json 只在 not_added 提過）。研究群：東北大學 Mushiake 實驗室，與 Pfungst、維也納、Nieder、土魯斯／帕多瓦（X）、MaBouDi／帕多瓦（Y）、Ridley、Matsuzawa 各群作者無重疊（Europe PMC AUTH 查詢 Mushiake H 與各群主要作者皆 0 篇）。 覆核 V118（2026-11-12）：limitations 補『Okuyama S＋Matsuzawa T 的 30 筆 AUTH 命中都是 1970–80 年代放射科的同名作者』。",
+      "author_cache": {
+        "file": "stw25/f110src/PMC4437293.xml（原檔）；stw25/f110src/PMC4437293.txt（x2t.py 轉出的文字）",
+        "sha256_prefix": "xml 7a1b9c2f099ef685；txt 2a436623f5affa85",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13309573/fullTextXML",
+      "canonical_url": "https://doi.org/10.1038/s41598-026-54126-7",
+      "title": "Assessing quantity combination and dissociation in giraffes",
+      "publisher": "Scientific Reports（2026）；Loidi I, Caicoya ÁL, Amici F, Padilla-Solé P, Galbany J（巴塞隆納大學心理學院、巴塞隆納動物園；萊比錫大學、馬克斯普朗克演化人類學所）",
+      "version": "Europe PMC 開放全文 JATS XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "本輪自己用 Europe PMC REST search（query: \"quantity discrimination\" \"Clever Hans\"）的結果列出 PMC13309573，再用文件記載的 REST fullTextXML 連結以 curl 預設標頭下載；前兩次伺服器回 HTTP 500（同一連結、非 403），第三次 200（227,559 位元組），用 x2t.py 轉文字並另抽表格。",
+      "reading_scope": "逐段讀：摘要、Results 兩節（含 Table 1、Table 2 全部個體數字）、Discussion 全部（含限制段）、Methods 的 Subjects、Experimental procedure（COMB、DISS、SUBE、VO、VC 與太陽眼鏡、側偏處理段）、Statistical analyses 的 Model 2 與 binomial 段。前言只讀第 1 段；DMO、SLQ、ILQ 的正式定義在前言後段，只讀到 Discussion 與 Model 2 的轉述。",
+      "locator": "Results〈Giraffes perform differently across tasks〉第 2 段（68±3%、57±3%、64±5%）與 Table 2；Results〈Individual differences in the use of simpler strategies〉第 2 段；Discussion 第 6、7 段與限制段（「subtle, unintentional signals」）；Methods〈Experimental procedure〉倒數第 2 段（sunglasses、Cohen’s κ）",
+      "summary": "巴塞隆納動物園四隻長頸鹿各做 272 次（共 1,088 次）不需訓練的選擇：實驗者先打開兩個黃杯讓牠看胡蘿蔔塊、蓋上，再從中間綠杯一塊一塊加進（或從黃杯拿出）其中一杯，最後讓牠選。加的作業平均答對 68±3%，四隻都高於機率；拿走的作業 57±3%、先拿走再加到另一杯的作業 64±5%，個體都在機率水準。作者另外檢查一個簡單策略：在加的作業選「實驗者剛動過的那杯」、在拿走的作業避開它（DMO）。用 DMO 剛好能答對的試次，四隻都高於機率；DMO 會答錯的試次，只有 Nuru（34/52）與 Njano（35/52）仍高於機率，Nakuru 與 Yalinga 都是 29/52、在機率水準。整個實驗中實驗者戴太陽眼鏡「以避免聰明漢斯效應」、眼睛朝下、保持中性的臉與身體；作者仍在限制段寫，因為要用手移動食物再同時舉起杯子，「這種手動程序可能透過細微、無意的訊號影響了選擇」，建議之後用自動化與盲測方法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有四隻、每種條件每隻只做 4 次；DMO 的效果在模型中只是邊緣顯著（p = 0.055）。作者沒有直接操弄或量測實驗者的無意訊號，「可能受無意訊號影響」是作者自述的限制，不是測量結果；片中要這樣說。不轉述文中引用的其他物種（紅毛猩猩、黑猩猩、鴿子、小雞）比較。研究群：Europe PMC AUTH 查詢顯示 Amici F 與 Range F、Virányi Z 共同出現在一篇 58 位作者的跨實驗室合著（MacLean 等 2014《The evolution of self-control》，PMC4034204），此外與各群無共同作者；若覆核仍把本篇併入維也納群，該群也只到 0.75＋0.5＝1.25，未達 2.0 封頂，不影響條數。與池中來源無重複。 覆核 V118（2026-11-12）：limitations 的研究群改為『Amici F 與維也納 Range F、Virányi Z 同列 PMC4034204，依共同作者規則併入維也納群』；summary 的『DMO』改寫為『選實驗者剛動過的那杯（作者分析的操作捷徑，非聰明漢斯效應）』。",
+      "author_cache": {
+        "file": "stw25/f110src/PMC13309573.xml（原檔）；stw25/f110src/PMC13309573.txt（x2t.py 轉出的文字）",
+        "sha256_prefix": "xml 3ccf3894d39f54e1；txt e61b655bae787b0f",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S010",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13315110/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s10071-026-02067-z",
+      "title": "Numerical competence in peafowl: small quantity discrimination",
+      "publisher": "Animal Cognition（2026）；Liao M-R, Patel R, Connor EJ, Ulloa Yoshikawa M, Steakley KN, Moore OA, Yorzinski JL（德州農工大學）",
+      "version": "Europe PMC 開放全文 JATS XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "本輪自己用 Europe PMC REST search（query: peafowl numerical competence）的結果列出 PMC13315110，再用 REST fullTextXML 連結以 curl 預設標頭下載（HTTP 200，165,723 位元組），x2t.py 轉文字，並從 XML 抽出 Table 1–6 附在 txt 檔尾。",
+      "reading_scope": "全文逐段讀：摘要、前言、Methods（Subjects、Apparatus、Procedure、Experiment 1–4、Statistical analysis）、Results 全部、Discussion 全部（含限制段）、Table 1–6。補充影片與補充表沒讀。",
+      "locator": "Methods〈Apparatus〉末句（實驗者用攝影機監看、受試者看不到）；Results 第 1–2 段（81,167 次）；Table 4（各條件平均答對率）；Table 6（Exp 1 各差距；Exp 2 面積不一致條件差 1、2 時未高於機率）；Discussion 第 2 段與限制段",
+      "summary": "八隻成年藍孔雀（6 母 2 公）在觸控螢幕上選圓點較多的那一格（1–8 個點），選對給培根口味飼料丸；實驗者用攝影機監看、孔雀看不到人。四個實驗共 81,167 次。點大小相同時平均答對 78.05%，差 1 個點 61.32%、差 7 個點 97.66%，越接近越難，符合韋伯－費希納定律。故意讓「點多的那格反而總面積小」時降到 58.90%，整體仍高於機率，但差 1、2 個點時不高於機率；把兩格總面積調成一樣時 79.45%，和點大小相同的 80.49% 差不多。點比較密的那格是點多的一方時 84.16%，反過來 68.31%（仍高於機率）。作者結論：表現主要由點數驅動，面積、密度也有影響。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者自承三項限制：只有 8 隻、完成全部實驗的只有 5 隻；受試者在實驗前受過大量訓練，結果可能反映訓練學到的辨別策略而非自發的數量能力；全部只訓練「選多」。討論中黑猩猩的 94%、93% 與韋伯分數比較都是引用 Tomonaga 2008，不能當本篇結果講，也不拿來和孔雀相減。研究群：德州農工 Yorzinski 實驗室，作者名單與各群無重疊。與池中來源無重複（pool.json 無此 PMCID／DOI）。 覆核 V118（2026-11-12）：summary 補 Table 6：Exp 2 面積不一致條件差 1 個點 41.09%、差 2 個點 51.68%；『點多的那格反而總面積小』改為原文『點多的那格點小、點少的那格點大』。",
+      "author_cache": {
+        "file": "stw25/f110src/PMC13315110.xml（原檔）；stw25/f110src/PMC13315110.txt（x2t.py 轉出的文字）",
+        "sha256_prefix": "xml 3f6f993307a5cae9；txt 8d1cc1c16c0cffe9",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11607530/fullTextXML",
+      "canonical_url": "https://doi.org/10.1016/j.isci.2024.111191",
+      "title": "Audience presence influences cognitive task performance in chimpanzees",
+      "publisher": "iScience 27:111191（2024）；Lin C, Muramatsu A, Yamamoto S（京都大學野生動物研究中心、靈長類研究所、高等研究院）",
+      "version": "Europe PMC 開放全文 JATS XML（PMC11607530.1）",
+      "accessed_on": "2026-11-12",
+      "read_via": "本輪自己用 Europe PMC REST search（query: AUTH:\"Muramatsu A\" AND chimpanzee）的結果列出 PMC11607530，再用 REST fullTextXML 連結以 curl 預設標頭下載（HTTP 200，105,007 位元組），x2t.py 轉文字。",
+      "reading_scope": "逐段讀：摘要與 Highlights、前言末兩段、Results 四節（Performance across task types、Model 1–3）與 Figure 1–3 說明、Discussion 全部、Limitations of the study、STAR Methods 的受試者段。Table S1–S8 在補充資料內，沒讀。",
+      "locator": "Results〈Performance across task types〉；〈Model 1〉；〈Model 3〉第 2 段（6%–11%、1%–10%、task type 3 的 OR 1.018–1.057）；Discussion 第 1 段（陌生觀眾無影響）；Limitations（無法設沒有人在場的控制組）",
+      "summary": "京都大學靈長類研究所六隻黑猩猩（含 Ai、Ayumu、Pal）在觸控螢幕上依序點阿拉伯數字，作者整理約六年（2009 年 7 月到 2016 年 1 月）的紀錄，看旁邊有幾個人、是誰。三種作業：1–19 相鄰數字依序點（最簡單）、不相鄰但遞增、以及點了第一個後其他數字被蓋住要靠記憶（最難）。只看「有沒有觀眾」時，三種作業都沒有顯著差別；但看人數與身分時：最簡單的作業，實驗者每多一位，模型估計表現下降 6%–11%，熟人觀眾每多一位下降 1%–10%；最難的作業反而隨實驗者人數增加而變好；陌生人多寡在三種作業都沒有影響。作者提出獎賞價值、認知負荷、專注力三種可能解釋，沒有定論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "觀察性資料，不是實驗操弄；作者明寫無法設「完全沒有人」的控制組，因為觸控作業一定要有人操作。作者把結果解讀為觀眾效應，並未主張人給了答案提示——片中不得說成「黑猩猩看人臉色答題」。下降百分比是模型估計（勝算比區間），不換算成題數。研究群：Muramatsu 與 Matsuzawa 合著 PMC10000109（L74-063 的來源），Yamamoto 與 Matsuzawa 合著 3 篇（Europe PMC AUTH 查詢），併入 Matsuzawa 群：0.5＋0.5＝1.0，未達封頂。與池中來源無重複。 覆核 V118（2026-11-12）：summary 的『只看有沒有觀眾』補明是『熟人與陌生觀眾在不在（不含實驗者）』，並補作業 2 熟人人數正向（OR 1.011–1.052）。",
+      "author_cache": {
+        "file": "stw25/f110src/PMC11607530.xml（原檔）；stw25/f110src/PMC11607530.txt（x2t.py 轉出的文字）",
+        "sha256_prefix": "xml d9c08bbb6b2d8fab；txt 7993088f7d79eea1",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L75-S012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12106560/fullTextXML",
+      "canonical_url": "https://doi.org/10.1007/s10071-025-01963-0",
+      "title": "Group size affects spontaneous quantity discrimination performance in wild Western Australian magpies (Gymnorhina tibicen dorsalis)",
+      "publisher": "Animal Cognition（2025）；Hunter H, Blackburn G, Ashton BJ, Ridley AR（西澳大學等）",
+      "version": "Europe PMC 開放全文 JATS XML",
+      "accessed_on": "2026-11-12",
+      "read_via": "本輪自己用 Europe PMC REST search（query: AUTH:\"Ridley AR\" AND (quantity OR numerical OR numerosity OR number)）的結果列出 PMC12106560，再用 REST fullTextXML 連結以 curl 預設標頭下載（HTTP 200，108,599 位元組），x2t.py 轉文字。",
+      "reading_scope": "全文逐段讀：摘要、前言、Methodology 全部（研究對象、實驗設計、統計、模型選擇、事後比較）、Results 全部、Discussion 全部。Table 1 只讀說明、Table S1–S5 沒讀。",
+      "locator": "Methodology〈Study species and site〉第 2 段（42 隻、11 群、3–15 隻）；〈Experimental design〉；Results〈Spontaneous quantity discrimination performance〉（59%、67%、73%）與〈Factors affecting individual variation in performance〉",
+      "summary": "珀斯 11 群野生西澳鵲鴨中的 42 隻成鳥（群大小 3–15 隻），每隻在 15 天內做 60 次：地上兩塊板子各放幾條起司，選哪邊就只能吃哪邊。2 對 3、2 對 4、2 對 5 時，選多的比例分別是 59%、67%、73%，都高於機率，差越大越準。群體大小本身沒有影響，但和比例有交互作用：在 2 對 5 時，來自小群的鳥比來自大群的鳥更常選多的那邊；2 對 3、2 對 4 沒有這個差別。性別沒有影響，60 次之間也沒有越做越好。作者推測小群在群間衝突中損失較大，所以更需要分辨數量；也提出另一個解釋（大群警戒分攤、覓食時間較多，不必那麼挑）。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "同一族群、同一種起司作業已用於 L74-062（Blackburn 等 2025），其「選多的、差越小越難」不重算；本篇只算新的群體大小交互作用與三個比例數字。作者推論的成因（群間衝突）是解讀，兩種解釋並列，片中要講「作者推測」。研究群：Ridley 群（Hunter、Blackburn、Ashton、Ridley 與 L74-062 來源共同作者），0.75＋0.5＝1.25，未達 2.0 封頂。與池中來源無重複（pool.json 無此 PMCID／DOI）。",
+      "author_cache": {
+        "file": "stw25/f110src/PMC12106560.xml（原檔）；stw25/f110src/PMC12106560.txt（x2t.py 轉出的文字）",
+        "sha256_prefix": "xml 84d36804554b7e78；txt bac0343354c7fef8",
+        "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L75-001",
+      "question": "費氏數是植物天生的固定答案，還是同一條花序長到一半也會換？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.verbena_serial_pattern_transitions",
+      "answer_target": "會換。弗羅茨瓦夫大學的研究者用波蘭野生族群的種子建了一片馬鞭草田：營養期葉子兩兩對生，一開花，花序軸上的苞片改成螺旋，多半是費氏型（2 條對 3 條），少數是 Lucas 型（3 對 4）或雙費氏型；之後同一條花序還可能一換再換，例如 2:3→3:5→3:4→4:4→4:5，連同對生、三輪生、四輪生，整個族群共記到七種排列。12 株裡，花序一開始的螺旋是費氏型的比例每株從 63% 到 93%；而長在克羅埃西亞沃迪採附近的同種植株，所有花序都只停在費氏型。切開莖看，維管束的數目在頂端換型之前就先變了（費氏型 5 束、Lucas 型 7 束）。至於為什麼換：從葉變苞片那一次，原基相對頂端的大小確實從約 30% 掉到約 15%；但之後的換型，研究者量不出不同螺旋型的苞片大小差別，自己說原因仍是個謎。",
+      "scope": "『由遺傳控制』只是作者依族群與個體差異的推定；維管束先變是觀察到的順序，訊號角色作者說待研究，不得說『維管束決定葉序』；原基每步縮 1% 的模擬只讓同一型的螺旋數增加，連續縮小反而無法讓費氏型換成別型，片中不講成『原基變小造成換型』，也不得說『換型是幾何在決定』；頂端只量 10＋8 個。63%–93% 是每株花序第一個螺旋為費氏型的比例，不是苞片比例；七種排列含輪生型。克羅埃西亞植株是當地生長的、株數未寫。不得說『馬鞭草不排費氏』。",
+      "source_ids": [
+        "L75-S004"
+      ],
+      "source_locator": "Developmental changes 第 1–2 段與表 2、表 3；頂端量測段；Vascular system 第 1 段；Computer modeling 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.75：同一研究的換型序列與表 3 比例算 0.5，大小比例（30%／15%）與 1% 模擬合算 0.25；維管束先變是同一觀察系列的附帶，不另計。新群（弗羅茨瓦夫；與 Fierz、Swinton 等無共同作者）。怎麼加深轉折：轉折一從『有些植物例外』推進到『同一條枝子上費氏只是其中一站』——費氏數是頂端某個時期的狀態，不是物種背的答案；轉折二多一個非生長素群的證據：換哪一型跟原基相對頂端的大小有關，是幾何在決定，不是植物在算。放在向日葵之後、機制之前當橋，不當又一個例外。去重：pool.json 無 Verbena／馬鞭草；wave74-life 只在 F89-NA009 提過（只讀摘要）。 原提案 F109-001（目標 F89-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；數字、單位、主詞都在原文；改掉三處：（1）作者的編輯點與轉折把 1% 模擬接成『換型跟原基相對大小有關，是幾何在決定』，與原文相反——實測次級換型看不出原基大小差別、連續縮小在模擬中無法讓費氏型換型、作者自稱原因是謎，只有初次換型（葉→苞片）有明顯大小變化；（2）『克羅埃西亞來的植株』改為長在當地的植株；（3）七種排列註明含輪生型。算 0.75 照作者（換型序列與表 3 範圍 0.5、維管束先變與初次換型原基大小 0.25），模擬不計。研究群：Europe PMC AUTH 查得 Gola、Jernstedt、Zagórska-Marek 2007 共同作者，故 Jakubska-Busse 等 2017（Gola）與本篇同屬弗羅茨瓦夫群，但題內未用，不影響封頂（本群 0.75）。另 Zagórska-Marek 與 Jönsson、Hamant 合著 Majda 2017（表皮細胞，非本題文獻），屬題外間接連結；本題封頂照第二十四輪做法只看題內各篇作者名單是否重疊，不併群，記錄備查。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一根花莖從 2:3 一路換到 4:5：費氏型只是其中一站，而且原因連研究者都還說不清。",
+        "visual": "馬鞭草花序橫切『雪花』四連圖（2:3、2:4、4:5…），旁邊一個圓（頂端）配越來越小的圓（原基），螺旋數跟著跳。",
+        "seconds": [
+          45,
+          55
+        ]
+      }
+    },
+    {
+      "id": "L75-002",
+      "question": "樹幹變粗七年之後，還看得到小苗時期的葉序嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.cherry_trunk_mri_juvenile_spiral",
+      "answer_target": "看得到。密西根州立大學把一棵 7 年生甜櫻桃 1.15 公尺長的老樹幹拿去做 MRI，休眠芽留下的維管束痕跡穿過 7 年的增粗木材仍在，找到 36 個節，全是苗木第一年排下的；這 36 個點排成櫻桃書上寫的 2/5 葉序（最顯眼的是 2 條對 3 條的斜列），平均夾角表 2 約 143°。",
+      "scope": "一棵樹、36 個節、方法論文；(3,5)(5,8) 斜列是由 Adler 定理從平均夾角推出，不是數到的；平均夾角原文前後不一（表 2 約 143°、圖 7 說明約 139°），不得拿來說『量到不是黃金角』；2/5 約 144° 是櫻桃的傳統值，不是新發現。不放入 F89-T1。",
+      "source_ids": [
+        "L75-S005"
+      ],
+      "source_locator": "摘要 Results；Plant material 段；表 2；圖 7 說明；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "本題計 0；入池作獨立小核心（樹幹保存幼年葉序）。 原提案 F109-002（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；作者版本的賣點『數得出費氏、角度卻不是 137.5°，第一個在成樹上量到的反例』站不住：（1）『看得到 3 對 5、5 對 8』是用前人 Adler 定理從平均夾角推出的，作者自己也說標準誤可能排除 8 斜列；（2）平均夾角原文自相矛盾，取圖 7 的約 139° 時與 137.5° 只差約一個標準誤，不能當『不是黃金角』的量測；（3）2/5（約 144°）本就是櫻桃的傳統葉序分數，『葉序分數不等於黃金角』是教科書常識，原文也沒有拿它檢驗黃金角；（4）『實測角度會偏離 137.5°』池中 L74-047 已有（阿拉伯芥頂端 128–146° 的比例），不新增。可靠的部分只剩『樹幹 MRI 保存幼年 2/5 葉序』，與本題兩個轉折無關，本題計 0；入池時改問題、0.25 條。研究群：Europe PMC AUTH 查 Eithun、Larson、Lang G、Chitwood、Munch 與題內各篇無共同作者（Robertson 2025 的 Lang D 是另一人）；Chitwood 曾與 Strauss 2020 的 Smith RS 合著（Martinez 2016、Chitwood 2012），為題外間接連結，不併群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "樹幹裡藏著 8 年前的葉序：數字是費氏，角度卻不是黃金角。",
+        "visual": "樹幹 MRI 切片疊成圓柱、展開成格子，36 個亮點連成 2 條與 3 條斜線；角度計停在 143° 而不是 137.5°。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L75-003",
+      "question": "螺旋排錯一次，後面會不會整串亂掉？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.inhibitory_field_error_self_correction",
+      "answer_target": "多半不會，錯一下就回來——至少在模型裡是這樣。里昂與 Inria 的研究者先在野外找：歐洲油菜、七葉樹、常春藤、蒜芥、一種風信子類（Muscari comosum）、煙樹，彼此不相近的植物上都輕易找到側枝先後對調的錯位（照片舉例，沒有統計比例）。再用經典的『舊器官抑制附近』模型分析：頂端周圍可以長新器官的低谷其實早就排好，彼此隔著整數倍的夾角；在模擬裡硬讓下一個器官長到第二低的谷，接下來那個器官馬上補回原本的位置，再下一個就回到常規，夾角只多出一個短短的 M 形、之後回到約 137 度，被打亂比較久的是器官冒出來的時間間隔。",
+      "scope": "『低谷早排好、錯一下就回來』是模型模擬，不是量測；多物種錯位只是照片舉例；『錯的是時間不是位置』的結論已在 L74-045 講過，本條只補模型裡的理由，不重講結論與 L74-045 的數字；阿拉伯芥 30% 共同冒出是引用 Besnard 2014，不講。",
+      "source_ids": [
+        "L75-S006"
+      ],
+      "source_locator": "Results 第 1 節與圖 2 說明；第 2 節 Property 1–3 與強迫擾動段（圖 3G–H）",
+      "premise_status": "screened",
+      "notes": "算 0.5：多物種野外錯位 0.25（只有舉例）＋模型的『空位預先排好、錯誤自癒』0.25（模型，不升格）。里昂群：L74-045 1.0＋F109-003 0.5＋F109-004 0.5＝2.0，剛好封頂（Refahi、Vernoux 與 Landrein 2015 共同作者；Godin、Farcot 與 Azpeitia 2021 共同作者）。怎麼加深轉折：L74-045 只說『錯的是先後』，這條補上為什麼——在抑制場裡位置是周圍舊器官的空隙決定的，所以錯了會自己回正；這正是轉折二『沒有誰在算角度、是空位在決定』的直接證據，而不是又一種例外。與池中 SRC-0be4910b0c7e344f 同一頁。 原提案 F109-003（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；引文、物種、模型條件都對；『葡萄風信子』改成原文的 Muscari comosum（不是常見的葡萄風信子），刪掉與 L74-045 重複的結論句，『里昂群』照併群。算 0.5（野外多物種錯位 0.25、模型的低谷預排與自我回正 0.25），可接受但已是上限：兩半一半是無比例的舉例、一半是模型。研究群：Refahi、Vernoux 與 Landrein 2015（L74-045）共同作者；Godin、Farcot 與 Azpeitia 2021（F109-004）共同作者——三篇併為里昂群，L74-045 1.0＋本條 0.5＋F109-004 0.5＝2.0，剛好封頂、未放寬。池中 SRC-0be4910b0c7e344f 同一網址同一快取：不另立來源，改為該來源新增一筆 reading（見 source_fixes）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排錯隊的螺旋會自己歸隊：位置是空位決定的，不是記在誰的腦子裡。",
+        "visual": "頂端俯視：一圈抑制的高低地形，五個低谷；強迫一顆跳到第二低谷，下一顆補位，夾角曲線出現 M 字後回平。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L75-004",
+      "question": "寶塔花椰菜一層套一層的螺旋是怎麼來的？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.cauliflower_curd_floral_memory_meristem_size",
+      "answer_target": "是一大堆『開花失敗』疊出來的。花椰菜上每個小突起本來要長成花，卻沒長成，又變成新的花序、再冒出更小的突起，所以螺旋一層套一層：花椰菜最高到第 7 層以上，甘藍只有 3 到 4 層。法國、西班牙、義大利等團隊用長得像花椰菜的阿拉伯芥突變株，結合基因網絡與 3D 生長模型，推論這些分生組織曾短暫進入『開花狀態』、留下記憶，退回後才一層層長下去。他們再加一個會讓頂端越長越大的突變（clv3），阿拉伯芥的『花椰菜』就從圓球變尖，各個尺度都冒出像寶塔花椰菜的小圓錐；而真正的寶塔花椰菜，CLV3 基因的表現也比一般花椰菜低。",
+      "scope": "『開花狀態的記憶』是突變株實驗加模型的推論，片中說『研究者推論』；阿拉伯芥長出的是『像寶塔花椰菜』的形狀；頂端變大→間隔變短→螺旋變多、寶塔花椰菜出葉間隔會變，都是引用前人；n≥7 對 3–4 與 CLV3 表現出自補充圖 S5、S6（補充材料未讀，只依正文）；版本是米蘭大學典藏標示的接受稿（post-print），未與 Science 正式版逐字比對。本篇不談費氏計數，不得說『花椰菜在算費氏數』或『科學家種出寶塔花椰菜』。",
+      "source_ids": [
+        "L75-S007"
+      ],
+      "source_locator": "摘要；主文第 1 段與圖 1 說明；第二節末段；第三節全段",
+      "premise_status": "screened",
+      "notes": "算 0.5：『開花失敗＋記憶』的機制與 clv3 改形、CLV3 表現較低合為同一研究的一條的一半；花椰菜 n≥7 對甘藍 3–4 併入，不另計；基因網絡細節不進片。里昂群（Godin、Farcot 與 Refahi 2016 共同作者），群內合計 2.0 已到頂。怎麼加深轉折：轉折二的結尾——螺旋數與形狀跟著頂端大小與長的節奏走（同 F109-001 馬鞭草的大小比例），改一個控制頂端大小的基因，螺旋的樣子就變；這是觀眾最熟的日常入口，用來收束『植物不算數，是幾何與生長在排』，不是另一個例外。版本只讀到送審稿，覆核若要求正式版比對，這條可降為 0.25 或改為後備。去重：pool.json 無 cauliflower／Romanesco／此 DOI；wave74-life 只在 F89-NA007 提過。 原提案 F109-004（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；版本問題：PDF 每頁頁首『Submitted Manuscript: Confidential』是 Science 投稿範本的固定頁首；典藏紀錄頁明寫此檔是 post-print、accepted manuscript，與第二十四輪 L74-042（愛丁堡典藏接受稿）同等處理，可計、不因版本降級，但寫明未與正式版比對、補充材料未讀。內容逐句對上；改『他們的結論是』為『推論』（記憶是模型抽象的 factor X）。算 0.5（作者同）：n≥7 對 3–4 與 clv3 改形、CLV3 表現是同一研究，記憶機制是推論不另計。注意：本篇回答的是『一層套一層』與『圓錐』，不回答費氏數或黃金角，在本題只能當轉折二後的日常延伸，不能當轉折二的證據。研究群：Godin、Farcot 與 Refahi 2016 共同作者，併入里昂群，群內 2.0 已滿；其他作者（Parcy、Prunet、Bradley、Kater、Madueño 等）經 AUTH 名單比對與題內其他篇無重疊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "寶塔花椰菜是一層層開花失敗疊成的；頂端長大一點，圓球就變成尖塔。",
+        "visual": "一般花椰菜與寶塔花椰菜並排，鏡頭一路放大到小突起上的螺旋；再並排阿拉伯芥 ap1 cal（圓）與 ap1 cal clv3（尖）。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L75-005",
+      "question": "「沒有東西」對猴子來說也是一個數嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.macaque_parietal_zero_neurons_empty_set_on_line",
+      "answer_target": "看起來是。日本東北大學讓兩隻日本獼猴用左右兩個轉盤一次加一、減一個白點，把螢幕上的點數調成和一開始看到的目標數一樣，目標數從 0 到 4，0 就是一片空白；點的大小、總周長、排成一直線都有對照，零的題目還拿掉注視點，免得猴子把那一點當成「一」。兩隻每個目標數都答得比瞎猜好，數越大越不準，零也落在同一條直線趨勢上；標準刺激與對照刺激的成功率是 72.0% 對 72.6%，沒有顯著差別，作者據此說猴子把空集合放進了數線。研究者在其中一隻猴子的頂葉記錄了 614 個細胞，其中 137 個對「零」的反應和對其他數不同，而且幾乎沒有一個在意注視點在不在（目標期 99 個裡 1 個、延遲期 76 個裡 1 個）。",
+      "scope": "神經記錄只有一隻猴子，行為只有兩隻；「放進數線」是作者從 72.0% 與 72.6% 沒有差別所做的推論，作者自己的說法是「非語言零概念的前身」，不說「猴子懂零」。不把 137 與 66/99、31/99 混算；不提 Nieder 群的猴子零研究。和 L74-057 並列時只說「蜜蜂那邊有不數也能重現的模型；猴子這邊在控制面積、周長、注視點之後，空白仍落在同一條趨勢上」，不說誰對誰錯。",
+      "source_ids": [
+        "L75-S008"
+      ],
+      "source_locator": "Results 第 1、2 段；Methods〈Behavioral task and Stimuli〉",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一實驗的行為（含控制刺激 72.0% vs 72.6%）與神經（137/614、注視點 1/99、1/76）合為一條答案；V97 預估 0.5。獨立研究群（東北大學 Mushiake 實驗室，Europe PMC AUTH 查詢與各群主要作者 0 篇合著）。補 still_missing（1）。讀的是 stw24 快取同一份 XML 的 Results 全部六段與 Methods 兩節（上一輪只讀摘要）。去重：pool.json 無 zero／空集合／numerosity 相關核心；本 PMCID 只出現在 wave74-life.json 的 not_added。 原提案 F110-001（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；逐句對上：two monkeys、0–4、left/right device 加減一、standard／same circumference／linear 三種刺激、numerosity zero without the fixation point、better than chance for all target numerosities、linear decline r²=0.97、72.0% vs 72.6%（P = 0.21）、614 cells in the VIP of a monkey、137 zero neurons（99/185、76/101）、fixation 1/99 與 1/76，全部在 Results 第 1、2 段與 Methods。改兩處：137 個是「反應和其他數不同」（differential），不是單純「有反應」；把「放進數線」標成作者推論。算 0.5（V97 預估同），東北大學 Mushiake 群：Europe PMC AUTH 查詢 Mushiake H、Okuyama S 與已用各群主要作者無合著（Okuyama S＋Matsuzawa T 30 筆全是 1970–80 年代放射科同名作者，非同一人）。扣題：回答的是「零算不算一個數」，不是「會不會數」；它的價值是給 L74-057（蜜蜂的零可被不數的模型重現）一個方向相反、但不互相否定的對照，40 秒以內合適。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蜜蜂的「零」可以被不數的模型重現；但猴子在拿掉面積、周長和注視點這些捷徑後，空白仍排在 1、2、3 的同一條線上。",
+        "visual": "轉盤一格一格加減白點的動畫；最後一格是全黑的螢幕，旁邊一顆小神經元亮起來。",
+        "seconds": [
+          40,
+          50
+        ]
+      }
+    },
+    {
+      "id": "L75-006",
+      "question": "長頸鹿看得出杯子裡的胡蘿蔔被加了幾塊、拿走幾塊嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.giraffe_combination_above_chance_dissociation_at_chance",
+      "answer_target": "加的看得出，拿走的看不出。巴塞隆納動物園四隻長頸鹿先看兩個黃杯裡各有幾塊胡蘿蔔、蓋上，再看實驗者把中間綠杯的 1 到 3 塊一塊一塊放進其中一杯，最後選一杯吃。加的題目平均答對 68%（±3%），四隻都高於瞎猜；從杯裡拿走的題目 57%（±3%）、先拿走再加的題目 64%（±5%），每一隻都在瞎猜水準。研究者也檢查一條簡單捷徑：加的時候選實驗者剛動過的那杯、拿走時避開它。在這條捷徑會選錯的題目上，只有兩隻（34/52、35/52）仍高於瞎猜，另兩隻都是 29/52。全程實驗者戴太陽眼鏡、低頭、保持中性表情以防聰明漢斯效應；作者在限制段自己寫，手動搬食物、舉杯子仍可能透過細微、無意的訊號影響選擇，建議以後改用自動化與盲測。",
+      "scope": "只有四隻；捷徑在模型中只是邊緣顯著（p = 0.055）。「選實驗者動過的杯」是作者分析的操作捷徑（作者還讓實驗者同時碰兩杯來減少這種吸引），不是聰明漢斯效應——不得說「墨鏡擋不住聰明漢斯」「長頸鹿在讀實驗者」「跟著實驗者的手選」；無意訊號只是作者自述的可能，沒有量測。不轉述文中引用的紅毛猩猩、黑猩猩、小雞等比較。",
+      "source_ids": [
+        "L75-S009"
+      ],
+      "source_locator": "Results 兩節與 Table 2；Discussion 第 6、7 段與限制段；Methods〈Experimental procedure〉太陽眼鏡段",
+      "premise_status": "screened",
+      "notes": "算 0.5：一個實驗的主結果加 DMO 拆解；作者的「無意訊號」是限制自述，不另計。補 still_missing（2）「在數量作業裡直接面對實驗者提示的現代開放研究」：本篇沒有直接操弄實驗者訊號，但直接檢驗了『跟著實驗者的手選』這條由實驗者提供的捷徑，並在數量作業中明寫聰明漢斯防範與其不足，可取代已刪的 F94-004（狗的指示手勢、非數量作業）的位置。研究群：Amici 與維也納 Range、Virányi 只在 58 位作者的跨實驗室合著 PMC4034204 同列，視為獨立；即使覆核併入維也納群（L74-052 0.75），合計 1.25 仍低於 2.0。去重：pool.json 無長頸鹿、giraffe 核心，無此 PMCID。 原提案 F110-002（目標 F94-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；數字全部對上（68±3%、57±3%、64±5%；Table 2 的 No DMO：Nuru 34/52 p=0.037、Njano 35/52 p=0.018、Nakuru 與 Yalinga 29/52 p=0.489；DMO p=0.055；272×4＝1,088 次；sunglasses ‘to avoid the Clever Hans effect’；限制段 ‘subtle, unintentional signals’）。但作者的題目與答案把三段原文接成一個結論：方法段的防範措施＋DMO 捷徑分析＋限制段的自述可能 →「戴墨鏡也擋不乾淨聰明漢斯」。原文沒有任何量測支持這個結論：DMO 是『選被動過的那杯』的操作捷徑（stimulus enhancement 類），作者還特地讓實驗者同時碰兩杯來壓低它，不是問者不自覺的身體訊號；無意訊號只是限制段的一句可能。改寫成『長頸鹿會加不會減』的核心才收入池。對 F94-T1 計 0、不放進最終核心：（1）它被拿來補 still_missing（2）「在數量作業裡直接測實驗者無意提示」，但本篇沒有操弄或量測實驗者知不知道答案、看不看得到動物，不符合；作者自己在 still_missing（a）也承認沒直接量。（2）若改算 still_missing（3），（3）已由 F110-003 孔雀補上，把它改掛（3）是覆核為過線替作者換理由，不採。（3）去掉錯誤的漢斯框架後，它在片中只是第十二種動物，加重清單感。研究群：Amici F 與 L74-052 來源的 Range F、以及 Virányi Z 同列 MacLean 等 2014（PMC4034204，58 位作者）——依『有共同作者就算同群』併入維也納群；作者說併了也只 1.25 是對的，但本題計 0，維也納群仍 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一套杯子，加的會、拿走的不會；兩隻的成績大半可以用一條不必數的捷徑解釋。",
+        "visual": "長頸鹿低頭看三個杯子；實驗者一塊塊放進右杯；記分板分『加』『拿走』兩欄。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "id": "L75-007",
+      "question": "把點的大小、面積、密度都故意弄亂，孔雀還分得出哪邊多嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.peafowl_touchscreen_more_dots_survives_area_density_conflict",
+      "answer_target": "多半分得出，但點差很少時會被面積拉走。美國德州農工大學讓八隻藍孔雀在觸控螢幕上啄圓點比較多的那一格（1 到 8 個點），實驗者用攝影機在別處看，孔雀看不到人；四個實驗一共 81,167 次。點一樣大時平均答對 78.05%，差一個點 61.32%、差七個點 97.66%，越接近越難。故意讓點多的那格用小點、點少的那格用大點時，整體答對率掉到 58.90%，仍比瞎猜好，但差一個點時只有 41.09%、差兩個點 51.68%，都沒有高於瞎猜；把兩格的總面積調成一樣時，答對率 79.45%，和點一樣大的 80.49% 差不多。作者結論是表現主要跟著點數走，面積和密度也有影響。",
+      "scope": "作者自承：只有 8 隻、做完全部的只有 5 隻；實驗前受過大量訓練，可能是學來的辨別策略，不一定是自發的數感；只訓練「選多」。41.09% 只說「不到一半、沒有高於瞎猜」，原文沒說顯著低於機率。不和 L74-052 的狗比「誰掉進陷阱」：狗的題目是點數相同、只有點大小不同，孔雀的題目是點數不同、點大小反向，設計不同、不能並成同一個陷阱。不轉述討論引用的黑猩猩數字（Tomonaga 2008）；不說孔雀比烏鴉聰明；不說母孔雀數公孔雀眼斑。",
+      "source_ids": [
+        "L75-S010"
+      ],
+      "source_locator": "Methods〈Apparatus〉末句；Results 第 1–2 段；Table 4、Table 6；Discussion 第 2 段與限制段",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一系列實驗的多個數字合為一條（點數辨別＋面積衝突／面積相等的對照）。補 still_missing（3）：研究群已確認為德州農工 Yorzinski 實驗室，七位作者與已用各群皆無重疊。對片子的作用：和 L74-052（狗在面積固定時照點大小選）並排，給出「同樣的面積陷阱，有的動物會掉、有的大多不會」的對照，讓『控制線索』那章不是單向的否定。去重：pool.json 無孔雀數量核心（「孔雀」只出現在孔雀蜘蛛超黑），無此 PMCID／DOI。 原提案 F110-003（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；Table 1（總 81,167 次、8 隻、5 隻做完）、Table 4（78.05、58.90、80.49、79.45、84.16、68.31）、Table 6（61.32、97.66；Exp 2 面積不一致差 1 為 41.09%、差 2 為 51.68%）、Methods〈Apparatus〉攝影機監看、限制段三項都對上。改正：作者只寫『差 1、2 個點時不高於機率』，漏了差 1 時其實只有 41.09%——方向是被大點拉走，這正是『面積陷阱也抓得到孔雀』的證據；作者 editorial 的『同一個陷阱，狗會掉、孔雀大多不會』把兩個設計不同的研究並成同一個例子，違反『不同研究不能混成同一個例子』，刪。Exp 2 的不一致條件原文是『點多的那格點小、點少的那格點大』，作者寫『總面積反而比較小』是從 9 與 36 像素半徑推得的，改回原文的說法。算 0.5；德州農工 Yorzinski 群：Yorzinski JL、Liao MR 與已用各群 AUTH 查詢皆 0 篇，獨立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "控制掉面積之後孔雀照樣分得出多少；但只差一個點、而且點少的那邊點比較大時，牠們也會被大小拉走。",
+        "visual": "左格 5 個小點、右格 4 個大點；孔雀猶豫後啄右格；再換兩格總面積相同，啄對。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "L75-008",
+      "question": "黑猩猩做數字題時，旁邊站幾個人有差嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.chimpanzee_numeral_task_audience_count_effect",
+      "answer_target": "有，而且方向看題目難度。京都大學靈長類研究所把六隻黑猩猩約六年（2009 年 7 月到 2016 年 1 月）的觸控螢幕紀錄拿出來，看當時旁邊有幾個人、是誰。題目都是依序點阿拉伯數字：最簡單是相鄰的數字，最難是點了第一個之後其他數字被蓋住、要靠記憶。單看熟人或陌生觀眾『在不在』看不出差別；但看人數時，最簡單的題目，負責操作的實驗者每多一位，模型估計表現降 6% 到 11%，熟人觀眾多一位降 1% 到 10%；中等的題目熟人越多反而略好；最難的題目是實驗者越多做得越好；陌生人多寡都沒有影響。研究者提出三種可能——獎賞變得更有價值、認知負荷、專注被分散——還沒有定論。",
+      "scope": "觀察資料、不是實驗操弄；無法設『完全沒有人』的對照（作業一定要有人操作）。作者當成觀眾效應，沒有說人給了答案提示——不得說『黑猩猩看人臉色作答』，也不得放在『問的人還在房間裡』這種接聰明漢斯的段落。百分比是模型估計（勝算比區間），不換算成題數；不說黑猩猩在乎面子。",
+      "source_ids": [
+        "L75-S011"
+      ],
+      "source_locator": "Results〈Performance across task types〉、〈Model 1〉、〈Model 3〉第 2 段；Discussion 第 1 段；Limitations",
+      "premise_status": "screened",
+      "notes": "算 0.5：一份資料分析的主結果（人數與身分的方向相反效果）。補 still_missing（4）Matsuzawa 群另一篇開放全文：Muramatsu 為 L74-063 來源共同作者，Yamamoto 與 Matsuzawa 合著 3 篇，併入 Matsuzawa 群 0.5＋0.5＝1.0。對片子的作用：接在 L74-063（同一批黑猩猩學會排 1–19）後面，把「會不會數」拉回全片的主問題「人在場會不會改變答案」，同時讓 L74-063 從清單項變成鋪陳，不再是孤立的一格。去重：pool.json 無觀眾效應、audience effect 核心，無此 PMCID／DOI。 原提案 F110-004（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；數字對上：Model 1 各作業 p=0.112、0.917、0.338（『在不在』只含熟人與陌生觀眾、不含實驗者，作者答案沒寫清楚，已補）；Model 3 實驗者 6%–11%（OR 0.890–0.946）、熟人 1%–10%（OR 0.907–0.989）、作業 2 熟人正向（OR 1.011–1.052，作者漏）、作業 3 實驗者正向（OR 1.018–1.057）；陌生人無影響；限制段無法設無人對照。研究群：Muramatsu A 為 L74-063 來源共同作者，併入 Matsuzawa 群（作者正確）。算 0.25（作者 0.5）：它量的是數字作業的分數，但發現的是觀眾效應，不回答黑猩猩會不會數；它唯一能接上本片主線的方式（人在場影響答案＝漢斯）正是它自己的 scope 禁止的，作者在 turns 與章名『一百年後，問的人還在房間裡』仍把它往提示方向放，已刪。V97 把離題的 F94-004（狗的指示手勢）整條刪掉；本條在數量作業裡，故不刪，降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "房間裡站了誰，黑猩猩的數字題分數會變，但原因還沒人說得準。",
+        "visual": "黑猩猩在螢幕前點 1、2、3…；玻璃外的人數變多變少，角落分數條上下動。",
+        "seconds": [
+          30,
+          35
+        ]
+      }
+    },
+    {
+      "id": "L75-009",
+      "question": "鵲鴨分辨多少的本事，跟牠住在多大的群有關嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.magpie_small_group_better_two_vs_five",
+      "answer_target": "有一點關係。西澳大學研究團隊在珀斯 11 群野生鵲鴨（每群 3 到 15 隻）中測了 42 隻，地上兩塊板子各放幾條起司，選哪邊就只能吃哪邊。2 對 3、2 對 4、2 對 5 時，選多的比例是 59%、67%、73%。群體大小本身沒影響，但在 2 對 5 這組，小群出身的鳥比大群出身的更常選多的那邊；2 對 3、2 對 4 沒有這個差別；公母一樣，做六十次也沒有越做越好。作者推測小群在和鄰群衝突時吃虧較大，所以更需要算清楚；也提出另一種可能：大群有很多眼睛幫忙警戒，可以花比較多時間覓食，不必那麼挑。",
+      "scope": "同族群、同一種起司作業的「選多、差越小越難」已在 L74-062，不重講；只補群體大小的交互作用與三個比例。成因是作者推測、兩種解釋並列；不說「小群的鳥比較聰明」（同族群其他認知作業是大群較好，作者自己指出相反）。",
+      "source_ids": [
+        "L75-S012"
+      ],
+      "source_locator": "Methodology〈Study species and site〉第 2 段、〈Experimental design〉；Results 兩節；Discussion 第 3、4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一作業的新發現（群體大小×比例交互作用）；基本辨別已在 L74-062，不重算。補 still_missing（4）Ridley 群另一篇開放全文，Ridley 群 0.75＋0.5＝1.25。對片子的作用：和 L74-062 合成同一章（同一種鳥、同一個族群），把「野外的數量感有什麼用」講深一層，而不是再加一種動物。去重：pool.json 無此 PMCID／DOI；鵲鴨在池中只有 L74-062。 原提案 F110-005（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）照原稿收；對上：42 隻（20 公 22 母）、11 群、3–15 隻；每天 4 次、15 天共 60 次；2 對 3／4／5 選多 59%、67%、73%；群體大小單獨無效、與比例交互作用只在 2 對 5；性別、試次無效；兩種解釋並列（群間衝突、many-eyes）且作者指出與同族群其他認知作業相反。與 L74-062（Blackburn 等 2025，2023 年另一批 21 隻的測試）不是同一批資料；L74-062 已有『選多、差越小越難』，本條只算新的群體大小交互作用，0.5 合理。Hunter 是 L74-062 來源共同作者，Ridley 群 0.75＋0.5＝1.25，未達封頂。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "數量感不是每隻都一樣：同一種鳥，住在小群的那些，在差距最大的那題反而更會挑。",
+        "visual": "兩塊木板，一邊 2 條起司、一邊 5 條；畫面分成「小群」與「大群」兩隻鵲鴨，各自的命中率條。",
+        "seconds": [
+          30,
+          40
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L75-NA001",
+      "question": "渦鞭毛藻聞到橈足類訊號會不會同時調高發光與毒素？（Gonzalo-Valmala、Pourdanandeh、Lage、Selander 預印本）",
+      "existing_ids": [
+        "E70-036"
+      ],
+      "source_ids": [],
+      "reason": "Prevett 2019 的 WebSearch 結果裡出現 ecoevorxiv.org 的預印本 PDF（https://ecoevorxiv.org/repository/object/8725/download/16266，已存 ecoevorxiv_8725.bin／.txt，sha256 f3806e04033900d3／625c50ccb32618d4，只讀標題、作者、significance statement 與提到 Prevett、burglar alarm 的段落）。它不是 Prevett 2019 也不是 Huang 2024，不在 still_missing 點名之列；屬 Selander 群（同群封頂 1.25、現 0.75）；是未審查預印本；文中提到 Prevett 2019 的結果與 burglar alarm 都是引用前人，不能算本篇結果。依 BRIEF『點名以外的新來源覆核判不計』不提案。 原提案 F105-NA001。",
+      "reentry_condition": "若覆核另行點名此預印本（或其正式刊出版），可循同一公開連結重讀其 copepodamide 對發光的量測，仍受 Selander 群 1.25 封頂（最多 +0.5）。",
+      "reading_status": "partial_preprint_not_counted"
+    },
+    {
+      "id": "L75-NA002",
+      "question": "非 Swinton 群、量向日葵或其他菊科花盤螺旋數比例的開放原研究",
+      "existing_ids": [
+        "L74-037",
+        "L74-038",
+        "L74-039"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC REST 四組開放取用查詢（capitulum＋parastichy＋Fibonacci；sunflower＋parastichy；Asteraceae＋phyllotaxis＋Fibonacci＋frequency；flower head＋parastichy）與一次網頁搜尋，只找到已在題內的 Swinton 2016、Neumann 2026（雛菊舌狀花數，已是 L74-039）、Zhang 2021／Prusinkiewicz 2022（G2 已封頂）與 Swinton 2024 arXiv（同 Swinton 群）。Schoute、Weisse 的大樣本只見於引用，沒有開放全文。沒有可用的新群來源。 原提案 F109-NA001。",
+      "reentry_condition": "出現非 Swinton、非 Prusinkiewicz 網絡、量菊科花盤螺旋數比例且有開放全文的原研究。",
+      "reading_status": "未讀（無合格來源）；查詢紀錄 f109src/eupmc_search1.txt"
+    },
+    {
+      "id": "L75-NA003",
+      "question": "馬真的分得出兩桶蘋果哪桶多嗎？（Henselek 等 2012 Front Psychol）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "不在 still_missing 點名之內；全文 XML 已下載（stw25/f110src/PMC3499915.xml，Göttingen 德國靈長類中心 Fischer 群），但只用關鍵字掃過前言對聰明漢斯的一句引述，未逐段讀方法與結果，也沒有直接測實驗者提示。依 BRIEF「點名以外的新來源覆核判不計」，不立核心。 原提案 F110-NA001。",
+      "reentry_condition": "若覆核認定 F110-002 不符第（2）項，且同意以「馬的數量研究重測漢斯」為點名延伸，再逐段讀本篇方法與結果，約 0.5。",
+      "reading_status": "downloaded; keyword scan only（PMC3499915.txt）"
+    },
+    {
+      "id": "L75-NA004",
+      "question": "狗會因為主人偏好少的那盤，就放棄多的那盤嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 搜尋列出 Kis 等 2022 Animals（PMC8833464，布達佩斯 Topál 群）與 Prato-Previde 等 2008、Marshall-Pescini 等 2011（非開放）；這些是主人「刻意」示範偏好的社會影響作業，不是無意提示，與第（2）項所指不同；未讀全文。 原提案 F110-NA002。",
+      "reentry_condition": "無（主題是社會從眾，不是數數時的無意線索）。",
+      "reading_status": "search result only"
+    },
+    {
+      "id": "L75-NA005",
+      "question": "孔雀和黑猩猩，誰比較會比多少？",
+      "existing_ids": [],
+      "source_ids": [
+        "L75-S010"
+      ],
+      "reason": "F110-S003 討論段的黑猩猩 94%、93% 與韋伯分數 0.187 是引用 Tomonaga 2008（且屬京都靈長類研究所，與 Matsuzawa 群相連），不是本篇結果；不得轉述、不得與孔雀相減。 原提案 F110-NA003。",
+      "reentry_condition": "無。",
+      "reading_status": "read（全文）"
+    },
+    {
+      "id": "L75-NA006",
+      "question": "猴子腦裡「只認零」和「零到一連續」的兩種神經，哪一種比較會猜數？",
+      "existing_ids": [],
+      "source_ids": [
+        "L75-S008"
+      ],
+      "reason": "Okuyama 2015 Results 第 5–6 段的 exclusive／continuous 兩型與 neuron-dropping 結果細節太深，不改變觀眾結論，已在 F110-001 內以一句帶過或省略，不另立。 原提案 F110-NA004。",
+      "reentry_condition": "無。",
+      "reading_status": "read（Results 全部）"
+    },
+    {
+      "id": "L75-NA007",
+      "question": "烏龜分得出 9 和 10 個方塊嗎？（Lin 等 2021 Front Zool，台灣）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋結果中出現的台灣研究，題材有在地感，但不在 still_missing 點名之內，且會再增加一種動物、加重清單感；只讀到搜尋 API 的摘要。 原提案 F110-NA005。",
+      "reentry_condition": "若日後另開「動物數量」第二集或站主要在地素材，再逐段讀全文。",
+      "reading_status": "abstract only（Europe PMC 搜尋結果）"
+    }
+  ]
+}

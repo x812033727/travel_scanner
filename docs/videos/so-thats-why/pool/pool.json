@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-4632",
+  "revision": "2026-11-12-pool-4653",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 5022,
-    "canonical_questions": 4861,
-    "eligible_candidates": 4691,
-    "selected_candidates": 4632,
+    "raw_records": 5043,
+    "canonical_questions": 4882,
+    "eligible_candidates": 4712,
+    "selected_candidates": 4653,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5904,
-    "current_research_source_urls": 2955,
-    "selected_source_urls": 4037,
-    "new_suggestions_not_added": 2844,
+    "source_urls": 5922,
+    "current_research_source_urls": 2973,
+    "selected_source_urls": 4051,
+    "new_suggestions_not_added": 2867,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "b3fd5123ae8de4e5b633a36b6388065dae14e5a7f1986e3f73a247a771228bb0"
+      "sha256": "2c59dda7d3b3c8cf99779be3f71d9f470113952ede48696a4d5c57ed05aa0a2b"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -596,6 +596,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-12-4349.json.gz",
       "sha256": "cc55888faf20093f016038c89dd1267b3e1471c48e2be2b714414bfc2cf81f1a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-4632.json",
+      "sha256": "9fd5d0ca3fe487e38fa90ff3b8528ade8b6aa4a9908cf72118860ea96cf187f8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-12-4632.json.gz",
+      "sha256": "8d02b4070070e8aed0ee0f0e90e245d70d47154adfff80b777f5d3df25f018f0"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -2402,6 +2410,26 @@
       "sha256": "66a1baa403d40c6e341d7fc1e3ea8431fc54b301d5e27b6436051d09fbcf2f5f"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave75-earth.json",
+      "sha256": "e5cc366202047a4e0f10dfa1348a4a4ee6a7d9d266ce0d8cb9e220b9c53c1f50"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave75-food.json",
+      "sha256": "f24d8eca40c7da5f2065c8d489c683062cf477f8f96525beb36446a5d4a7df66"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave75-human.json",
+      "sha256": "92e70f94ec3103629d02fd98d7e8d30b18737075699ff58140a3a10b318b9603"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave75-life.json",
+      "sha256": "3bc993c49581a9db1b92d40bf318ee137e6997ba6de73696d9b640d1977dbd47"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave75-physics.json",
+      "sha256": "59c6929eaeaac5307f426dcbe0c9078f8a6742d69e1298dab899baea381652c6"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave8-food.json",
       "sha256": "b5727df7527ec8d28e68c32e157a5c90d2ae079e31ac7afb6507bf794c74c389"
     },
@@ -2463,11 +2491,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "ba037d47e70be18b96f4b0eba2717dfa553777ed1463812f388a65ad93d15fe8"
+      "sha256": "81a3631b7e60c8472f7a10f818595c89086eef3038558aae3c31f50aaaab1be0"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "8fab7d7b71d86ead1fddcfe6953303d16c0112f4d52237976f0151c351cc2a93"
+      "sha256": "450ac433739615622786a24a27c37d8fbf615232c1f782c0e5e691457d135845"
     }
   ],
   "sources": [
@@ -6988,6 +7016,34 @@
       ]
     },
     {
+      "id": "SRC-09ee20bbc8c3cb4f",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9214526/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.2200749119",
+          "title": "Recurrent ancient geomagnetic field anomalies shed light on future evolution of the South Atlantic Anomaly",
+          "publisher": "PNAS 119(24):e2200749119（2022）；Nilsson、Suttie、Muscheler（隆德大學）、Stoner（奧勒岡州立大學）",
+          "version": "出版社正式版（PMC 收錄，CC BY-NC-ND 4.0）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（TITLE 查詢，resultType=core）回傳 PMC9214526、isOpenAccess=Y；再用公開文件記載的 REST fullTextXML 端點下載，自己去標籤轉文字",
+          "reading_scope": "全文正文：Significance、Abstract、前言、Variations in the DM、East–West Hemispherical Field Asymmetries、Recurrent Geomagnetic Field Anomalies、Discussion（Ancient Analogs、Eccentric Planetary Gyre、High-Latitude Westward Drift、Evidence for External Forcing）、Materials and Methods、致謝；參考文獻只看前 12 條；SI 與影片未讀",
+          "locator": "Abstract；Variations in the DM 第 4–5 段（1300–700 BCE g10 變化率 4–16 nT/y）；Recurrent Geomagnetic Field Anomalies 第 1–4 段；Discussion〈Ancient Analogs of the Present Day〉全段（未來約 300 年、DM 仍未放慢的保留）",
+          "summary": "作者用考古與沉積物紀錄、以機率方法（同時估計資料年代、處理沉積物平滑）建了過去 9000 年的地磁模型 pfm9k.2。結果：偶極矩有約 650／1300 年的準週期起伏，偶極矩的低點往往伴隨像今天南大西洋異常那樣的東西半球不對稱與弱場區；西元前 1600–300 年在太平洋半球出現兩次弱場異常（對應西元前 1300、700 年的偶極矩低點）。西元前 1300–1000 年的增長期與 1000–700 年的衰減期，軸偶極的平均變化率在 4–16 nT/y（依三種先驗），作者寫這與近代的偶極衰減速率相當。作者提出西元前 600 年前後的強烈不對稱場可能是今天的類比：照這個類比，南大西洋異常可能在接下來約 300 年內消失、場回到較對稱的樣子，偶極也可能變強；但他們同時寫，目前偶極矩仍在下降、沒有放慢的跡象，這與類比不一致，顯示類比的侷限。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "9000 年模型南半球資料少、不確定度大（圖 3 灰區）；作者自己說核心的磁通斑移動遠超出模型解析度。『未來約 300 年消失』是類比推論，不是預測模型，作者也寫出與現況不符之處。前言的『過去 180 年軸偶極平均每年降 16 nT』是引用 Gillet 等 2013（ref 1），不是本篇結果；『SAA 被提出可能是翻轉前兆』是引用 Hulot 等 2002（ref 2），不得寫成本篇主張。致謝提到 Maxwell Brown 協助整理資料（見 research_groups）。池中沒有同一份文件（grep DOI、PMC 號為 0；池中『Nilsson』是另一位聲學作者）。 覆核 V116（2026-11-12）：limitations 加：『Nilsson、Suttie 與 Korte、Holme 合著 GJI 2014 與〈Persistent westward drift…〉（本文參考文獻自列）；模型資料來自 Brown 等 GEOMAGIA50.v3（ref 21、52）；致謝 Maxwell Brown 協助整理與解讀資料；Stoner 與 Laj、Kissel 合著 2002 QSR（SAPIS）。歸 GFZ 合著網，不是獨立第三方。』",
+          "author_cache": {
+            "file": "f108src/PMC9214526.txt",
+            "sha256_prefix": "163e38e013eafd3d",
+            "raw_file": "f108src/PMC9214526.xml",
+            "raw_sha256_prefix": "067d007004539e3f",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-earth-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9214526/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-0a016201d7398dd6",
       "url": "https://www.nas.gov.sg/archivesonline/data/pdfdoc/2003070504.htm",
       "readings": [
@@ -8032,6 +8088,26 @@
           },
           "origin": "wave74-life-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4947393/fullTextXML"
+        },
+        {
+          "canonical_url": "https://doi.org/10.7554/eLife.14093",
+          "title": "A stochastic multicellular model identifies biological watermarks from disorders in self-organized patterns of phyllotaxis",
+          "publisher": "eLife 5:e14093（2016）；Refahi Y、Brunoud G、Farcot E、Jean-Marie A、Pulkkinen M、Vernoux T、Godin C（里昂 ENS／Inria）",
+          "version": "出版社開放取用版（CC BY，PMC 收錄 JATS 全文）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀上一輪作者 F89 經 Europe PMC REST 取得的同一份快取（stw24/f89src/PMC4947393.xml 與 .txt；F89 只讀摘要），本輪未重抓；複製到 f109src，perl 去 LaTeX 後閱讀",
+          "reading_scope": "摘要、eLife digest、Introduction 全文、Results 前六節（disorder is a common phenomenon；classical model suggests inhibition perception；stochastic process；realistic sequences；complex vs simple disorders；amount of disorders depends on geometry and perception）與『Both divergence angles and plastochrons…』一節、圖 1–6 圖說逐段讀過。Results 後三節、Discussion、Methods 與 Appendix 1–2 未讀。",
+          "locator": "Introduction 第 4–5 段；Results 第 1 節與圖 2 說明；第 2 節 Property 1–3 與強迫擾動段（圖 3G–H）；第 5 節與圖 5",
+          "summary": "作者在野外多種彼此不相近的植物（歐洲油菜花序、Muscari、蒜芥、七葉樹花序、常春藤、Cotinus）都輕易找到側枝先後對調的『錯位』。在經典抑制場模型裡，頂端周圍的抑制低谷位置早已排好、彼此相隔整數倍的夾角；模擬中強迫下一個器官長在第二低的谷，下一個器官立刻補回原本的位置、再下一個回到常規，夾角序列只出現一個短短的 M 形，之後回到約 137°，但時間間隔會亂比較久。作者據此提出『位置穩、時間亂』，並以隨機模型重現錯位；阿拉伯芥實測的二連、三連錯位比例落在模型預測的曲線上。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "主體是理論模型；多物種錯位是照片舉例、沒有比例；阿拉伯芥錯位比例與共同冒出（近 30%）是引用 Besnard 2014、Landrein 2015，不算本篇；圖 5 的實測點也來自前人加少量本研究資料。與池中 SRC-0be4910b0c7e344f 同一頁（同一 Europe PMC REST 網址）。研究群：Refahi、Vernoux 與 L74-045（Landrein 2015）共同作者，算里昂群；Godin、Farcot 又與 F109-S004 共同作者，三篇合計封頂 2.0。 覆核 V117（2026-11-12）：不另立來源 id：併入池中 SRC-0be4910b0c7e344f（同一 Europe PMC REST 網址、同一快取 e6cc2ad8bca2d7d7／a22731e864cc45ba），新增一筆 reading：reading_scope『摘要、eLife digest、Introduction、Results 前七節（至 Both divergence angles and plastochrons…）與圖 1–6 說明；覆核 V117 另讀 Discussion 前兩節；Results 後三節、Methods、Appendix 未讀』；舊 reading 的『只讀摘要，不計』保留為歷史，limitations 改為『理論模型；多物種錯位只有照片；30% 共同冒出引用 Besnard 2014；里昂群（併 Landrein 2015、Azpeitia 2021）合計封頂 2.0』。",
+          "author_cache": {
+            "file": "f109src/PMC4947393.txt（原始 PMC4947393.xml，sha256 前 16 碼 a22731e864cc45ba；與 stw24/f89src 同檔）",
+            "sha256_prefix": "e6cc2ad8bca2d7d7",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4947393/fullTextXML"
         }
       ]
     },
@@ -9053,6 +9129,27 @@
             "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
           },
           "origin": "wave74-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10971107/fullTextXML"
+        },
+        {
+          "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10971107/fullTextXML",
+          "title": "Examining How Interaural Differences Owing to Head Rotation during Walking Improve the Distance Perception of Non-Sounding Obstacles by Individuals Who Are Blind",
+          "publisher": "Sensors 24(5)（2024）；Miura 等（產業技術總合研究所、東京大學等）",
+          "version": "Europe PMC 開放全文 XML（出版社版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀第二十四輪作者已快取的同一份全文（F92-S018，stw24/f92src/PMC10971107.txt），未重抓；PMCID 與網址沿用上輪 Europe PMC REST 搜尋結果",
+          "reading_scope": "摘要（第 10 行）、§2.1–2.6（第 20–58 行，受試者、設置、方法、結果、討論）、§3.1.3 與 §3.2.2 Results（第 71–90 行）、§4.1.4 與 §4.2.4 Results（第 115–147 行）、§6 Limitations（第 154–158 行）逐段讀；未讀 §5 General Discussion 與 §7。",
+          "locator": "2.5 Results；3.2.2 Result（Figure 7–9）；4.1.4、4.2.4；6. Limitations",
+          "summary": "5 位全盲男性，在東京大學低反射室裡，喇叭放粉紅噪音（從受試者背後 3 m），判斷不發聲的木板（70×50 cm）距離；靜態時口頭估、動態時自己走到指定比例的位置。估計距離在靜態條件偏離目標較遠、動態條件較接近目標（多數距離組合差異大），比例 75% 時動態的四分位距較小。用假人頭量：有無障礙物的頻譜差呈一連串梳狀峰谷，頭轉 3° 時 1000 Hz 以下的峰谷差在 12.5–37.5 cm 約 20 dB、50 cm 約 14 dB、150 cm 約 7.6 dB、200 cm 約 4 dB；兩耳間的頻譜差由 12.5 cm 的約 15.6 dB 降到 200 cm 約 1.6 dB。兩耳強度差在 50 cm 以外幾乎不隨距離變。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "5 人；聲源是喇叭、不是自己發聲，且位置只在背後（作者自列限制）；靜態與動態分屬估計法與產生法，作者承認直接比較有疑慮；峰谷 dB 是一個假人頭的量測；原文表列「75, 10, 125」中的 10 應為 100 的筆誤，片中不用該點。 與池中 SRC-0dfae0cf3f8f634d 同一頁（同一網址），本輪是補讀 Results，不另立文件。 覆核 V119（2026-11-12）：publisher『Sensors 24(5)（2024）』改為『Life (Basel) 14(3):356（2024）；Miura、Okochi、Matsuo、Yabu、Katagiri、Yasu、Sakajiri、Ifukube（產業技術總合研究所、東京大學、筑波技術大學等）』。 覆核 V119（2026-11-12）：summary 的聲學量測改寫為『假人頭量測用喇叭放的 swept-sine（TSP）』；『12.5–37.5 cm 約 20 dB、50 cm 約 14 dB、150 cm 約 7.6 dB』改為『12.5–37.5 cm 約 20 dB、200 cm 約 4 dB（結果列 9 個距離、方法只有 8 個，中間點對應有疑）』；刪『靜態偏離目標較遠、動態較接近』一句或註明方向有歧義。limitations 的『10 應為 100 的筆誤』改為『結果距離清單（含 10 與 125）與方法（8 個距離）不符，原因不明』。",
+          "author_cache": {
+            "file": "f111src/PMC10971107.txt（原始 f111src/PMC10971107.xml）",
+            "sha256_prefix": "ca3c0cfd44a669cd",
+            "xml_sha256_prefix": "65d76e9831c28fb7",
+            "note": "與第二十四輪作者快取 stw24/f92src 同一份檔案的複本（雜湊相同），本輪未重抓；.txt 為上輪 f92tools/x2t.py 由 Europe PMC fullTextXML 轉出，行號指 .txt 行號。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-physics-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10971107/fullTextXML"
         }
       ]
@@ -13898,6 +13995,32 @@
       ]
     },
     {
+      "id": "SRC-173d75748b227402",
+      "url": "https://lup.lub.lu.se/record/4e0217ee-aa11-41e3-8b98-d7f5e0200503",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.cub.2019.05.019",
+          "title": "Grazer-induced bioluminescence gives dinoflagellates a competitive edge（Lund University Publications 書目頁）",
+          "publisher": "Lund University Libraries",
+          "version": "Current Biology 29(12):564–565，2019",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl（WebSearch 結果連結）",
+          "reading_scope": "整頁書目；無全文檔、無摘要正文",
+          "locator": "Details／Links",
+          "summary": "作者 Prevett、Lindström、Xu、Karlson、Selander；頁面只連 DOI，沒有開放全文。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "書目頁，不計條數；Selander 群。",
+          "author_cache": {
+            "file": "page_e1c4db9e.html",
+            "sha256_prefix": "a11ae0eb0080d530",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://lup.lub.lu.se/record/4e0217ee-aa11-41e3-8b98-d7f5e0200503"
+        }
+      ]
+    },
+    {
       "id": "SRC-1743a348aede2cbf",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3233596/fullTextXML",
       "readings": [
@@ -16317,6 +16440,32 @@
           },
           "origin": "wave74-human-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11505887/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1b8ffcf7d75bf4fe",
+      "url": "https://orbit.dtu.dk/en/publications/revisiting-the-burglar-alarm-hypothesis-a-behavioural-cascade-med/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/1365-2435.14488",
+          "title": "Revisiting the burglar alarm hypothesis: A behavioural cascade mediated by dinoflagellate bioluminescence（DTU Orbit 紀錄）",
+          "publisher": "Technical University of Denmark",
+          "version": "Functional Ecology 38(2):306–314，2024",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl（WebSearch 結果連結）",
+          "reading_scope": "書目與摘要；另讀 Europe PMC AGR 紀錄的摘要（epmc_huang.json）",
+          "locator": "摘要",
+          "summary": "摘要：多數發光渦鞭毛藻的主要掠食者橈足類太小、不足以讓水體大量發光；作者主張只有被抓住的單一細胞會閃，引起橈足類強烈逃脫，burglar alarm 是次要適應。只到摘要。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀摘要，依規定不算全文、不計條數；全文 Wiley 403。",
+          "author_cache": {
+            "file": "page_92248ba8.html",
+            "sha256_prefix": "addbd2a7a8b58f0c",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://orbit.dtu.dk/en/publications/revisiting-the-burglar-alarm-hypothesis-a-behavioural-cascade-med/"
         }
       ]
     },
@@ -18858,6 +19007,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://docs.anthropic.com/en/docs/build-with-claude/streaming"
+        }
+      ]
+    },
+    {
+      "id": "SRC-20cd3eaca0a4f2ba",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13315110/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s10071-026-02067-z",
+          "title": "Numerical competence in peafowl: small quantity discrimination",
+          "publisher": "Animal Cognition（2026）；Liao M-R, Patel R, Connor EJ, Ulloa Yoshikawa M, Steakley KN, Moore OA, Yorzinski JL（德州農工大學）",
+          "version": "Europe PMC 開放全文 JATS XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "本輪自己用 Europe PMC REST search（query: peafowl numerical competence）的結果列出 PMC13315110，再用 REST fullTextXML 連結以 curl 預設標頭下載（HTTP 200，165,723 位元組），x2t.py 轉文字，並從 XML 抽出 Table 1–6 附在 txt 檔尾。",
+          "reading_scope": "全文逐段讀：摘要、前言、Methods（Subjects、Apparatus、Procedure、Experiment 1–4、Statistical analysis）、Results 全部、Discussion 全部（含限制段）、Table 1–6。補充影片與補充表沒讀。",
+          "locator": "Methods〈Apparatus〉末句（實驗者用攝影機監看、受試者看不到）；Results 第 1–2 段（81,167 次）；Table 4（各條件平均答對率）；Table 6（Exp 1 各差距；Exp 2 面積不一致條件差 1、2 時未高於機率）；Discussion 第 2 段與限制段",
+          "summary": "八隻成年藍孔雀（6 母 2 公）在觸控螢幕上選圓點較多的那一格（1–8 個點），選對給培根口味飼料丸；實驗者用攝影機監看、孔雀看不到人。四個實驗共 81,167 次。點大小相同時平均答對 78.05%，差 1 個點 61.32%、差 7 個點 97.66%，越接近越難，符合韋伯－費希納定律。故意讓「點多的那格反而總面積小」時降到 58.90%，整體仍高於機率，但差 1、2 個點時不高於機率；把兩格總面積調成一樣時 79.45%，和點大小相同的 80.49% 差不多。點比較密的那格是點多的一方時 84.16%，反過來 68.31%（仍高於機率）。作者結論：表現主要由點數驅動，面積、密度也有影響。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "作者自承三項限制：只有 8 隻、完成全部實驗的只有 5 隻；受試者在實驗前受過大量訓練，結果可能反映訓練學到的辨別策略而非自發的數量能力；全部只訓練「選多」。討論中黑猩猩的 94%、93% 與韋伯分數比較都是引用 Tomonaga 2008，不能當本篇結果講，也不拿來和孔雀相減。研究群：德州農工 Yorzinski 實驗室，作者名單與各群無重疊。與池中來源無重複（pool.json 無此 PMCID／DOI）。 覆核 V118（2026-11-12）：summary 補 Table 6：Exp 2 面積不一致條件差 1 個點 41.09%、差 2 個點 51.68%；『點多的那格反而總面積小』改為原文『點多的那格點小、點少的那格點大』。",
+          "author_cache": {
+            "file": "stw25/f110src/PMC13315110.xml（原檔）；stw25/f110src/PMC13315110.txt（x2t.py 轉出的文字）",
+            "sha256_prefix": "xml 3f6f993307a5cae9；txt 8d1cc1c16c0cffe9",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13315110/fullTextXML"
         }
       ]
     },
@@ -29045,6 +29220,32 @@
       ]
     },
     {
+      "id": "SRC-32f9b4c99374fb9b",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6777031/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1186/s13007-019-0499-4",
+          "title": "Isolating phyllotactic patterns embedded in the secondary growth of sweet cherry (Prunus avium L.) using magnetic resonance imaging",
+          "publisher": "Plant Methods 15（2019）；Eithun M、Larson J、Lang G、Chitwood DH、Munch E（密西根州立大學）",
+          "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀上一輪作者 F89 經 Europe PMC REST 取得的同一份快取（stw24/f89src/PMC6777031.xml 與 .txt，V92 已核對合規），本輪未重抓；複製到 f109src，以 perl 去掉 LaTeX 公式碼後閱讀，表 2 由 XML 讀出",
+          "reading_scope": "全文逐段讀過：Background、Materials and methods（植物材料與 MRI、Mathematical phyllotaxy、參數、定理）、Results（前處理到 Insertion order permutations）、Discussion、Conclusions、表 1、表 2 與圖說。公式本身未逐一驗算；GitHub 程式碼與 figshare 原始資料未讀。",
+          "locator": "摘要 Results；Plant material 段；表 2；圖 7 說明；Discussion 第 1 段",
+          "summary": "一棵 2016 年截頂的 7 年生甜櫻桃（品種 NY 119），取 1.15 公尺主幹做 MRI。休眠芽留下的維管束痕跡穿過 7 年的增粗木材仍在，找到 36 個節，全部是第一年（2009）苗木時期排下的。這 36 個點排成主費氏型：可見的對向螺旋對為 (1,2)(2,3)(3,5)(5,8)，最顯眼的一對是 (2,3)，傳統分數 2/5；平均夾角表 2 為 142.9°±1.2°（摘要寫約 143°）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有一棵樹、36 個節，是方法論文；平均夾角原文前後不一：表 2 與摘要是約 143°（142.928°±1.181°），圖 7 說明寫平均約 139°，片中只能說『約 140 度上下、不是剛好 137.5 度』或照表 2 並註明，不得自己挑一個當唯一值。Adler 定理（夾角落在一段範圍內就看得到同一對費氏螺旋）是引用前人的數學（Adler 1974），不算本篇結果。插入順序錯位那段是作者人工換位的示範，不是觀察。作者群與本題其他群無共同作者。 覆核 V117（2026-11-12）：limitations 補：『表 2 的 (1,2)(2,3)(3,5)(5,8) 是以 Adler 定理從平均夾角推得，作者說標準誤可能排除 8 斜列；Delaunay 圖實見以 1-、2-、3- 斜列為主；2/5（約 144°）是櫻桃的傳統葉序分數』；summary 刪『可見的對向螺旋對為…』的『可見』措辭。",
+          "author_cache": {
+            "file": "f109src/PMC6777031.txt（原始 PMC6777031.xml，sha256 前 16 碼 4852cc0dfb13dd15；與 stw24/f89src 同檔）",
+            "sha256_prefix": "115f7cad56cc8a63",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6777031/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-32fab42757f258ee",
       "url": "https://blogs.extension.iastate.edu/answerline/2024/03/19/freezer-burn-and-food-safety//nhttps://openstax.org/books/college-physics/pages/13-5-phase-changes",
       "readings": [
@@ -36772,6 +36973,32 @@
       ]
     },
     {
+      "id": "SRC-41394fb52505c90e",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12948946/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41538-026-00725-7",
+          "title": "Rising together: exploring sourdough fermentation diversity through co-design in the HealthFerm citizen science initiative",
+          "publisher": "npj Science of Food（2026，CC BY 4.0）；Meyer, Gettemans, Tan, Tuccillo, Viretto, Angelescu, De Bondt, Neugebauer, Zein Alabiden Tlais, Cavelti, De Vuyst, Gobbetti, Courtin, Zamfir, Coda, Nyström, Weckx, Bokulich（通訊作者 Bokulich，蘇黎世聯邦理工學院；另有 VUB IMDO、Bolzano、Helsinki、Bucharest、KU Leuven）",
+          "version": "Europe PMC 開放取用全文 XML（Received 2025-05-09、Accepted 2026-01-19）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（query=PMCID:PMC12948946，resultType=core，isOpenAccess=Y）後，以 REST /fullTextXML 下載（公開文件記載的 API）；上輪作者快取已刪，本輪重新下載同一份（112194 位元組，與上輪紀錄的大小相同）",
+          "reading_scope": "全文：摘要、前言、結果全部六小節（含圖 1–7 圖說）、討論全部；方法只讀樣本處理（TTA、−80 °C 生物庫）與地理分析段，未讀問卷與統計細節；補充資料未讀",
+          "locator": "結果〈Engagement patterns〉第 1、3 段；〈Fermentation routines〉第 1 段；〈Fermentation fingerprints〉第 1、3 段；討論第 2、6、8 段",
+          "summary": "歐洲公民科學調查：33 國 1091 罐登記、591 人寄回 671 份樣本；只報告問卷、居家 pH／麵包密度／氣味勾選與實驗室 TTA，沒有任何菌相或菌株資料（樣本存入 −80 °C 生物庫留待日後分析）。各國用料與做法有顯著差異，但做法與性狀的 PCA 不依國家或麵粉分群，而是分成家用與烘焙坊兩群（烘焙坊老麵較老、續種較勤、發酵溫度較高）；最老的登記老麵始於 1865 年；實驗室 pH 平均比居家量測低 0.73，作者推測與常溫郵寄中繼續發酵或試紙精度有關。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "沒有微生物組成數據，回答不了『菌從哪裡來、為什麼留下』；自選樣本、德語區偏多（作者自承語言造成偏差）；居家量測與氣味評分雜訊大。作者群與本題已用三個研究群都有共同作者：Meyer、Tan、Neugebauer、Bokulich（K74-027 所用 PMC12901149）、De Vuyst（K74-017 所用 PMC7374928）、Gobbetti（K74-025 所用 PMC9472446）——若收入，三群須併成一網、合計封頂 2.0。池中無同一網址（grep pool.json 無 PMC12948946、41538-026-00725）。",
+          "author_cache": {
+            "file": "f107src/PMC12948946.xml（轉文字 f107src/PMC12948946.txt，sha256 前 16 碼 8000a06905336129）",
+            "sha256_prefix": "f807e05f57f60000",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-food-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12948946/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-41472451400a6268",
       "url": "https://cowles.yale.edu/sites/default/files/2022-09/d2103-u3.pdf",
       "readings": [
@@ -40201,6 +40428,27 @@
           },
           "origin": "wave74-physics-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4281102/fullTextXML"
+        },
+        {
+          "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4281102/fullTextXML",
+          "title": "Ranging in Human Sonar: Effects of Additional Early Reflections and Exploratory Head Movements",
+          "publisher": "PLoS ONE 9(12):e115363（2014）；Wallmeier、Wiegrebe（慕尼黑大學 LMU）",
+          "version": "Europe PMC 開放全文 XML（出版社版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀第二十四輪作者已快取的同一份全文（F92-S011，stw24/f92src/PMC4281102.txt），未重抓；PMCID 與網址沿用上輪 Europe PMC REST 搜尋結果",
+          "reading_scope": "摘要（第 10 行）、受試者段（第 22 行）、Table 1 說明（第 319 行）、Results 全節逐段讀（第 321–343 行，含 Figure 4–6 圖說、Experiment 1 與 2）、Discussion 第 1 段（第 345 行）；未讀方法的刺激細節與 Discussion 其餘各節。",
+          "locator": "Results：Experiment 1: Head-fixed echolocation；Experiment 2: Dynamic echolocation；Table 1",
+          "summary": "6 位矇眼明眼人（訓練後）與 1 位盲人回聲定位老師，在用真實走廊脈衝響應做成的虛擬走廊裡用自己嘴巴的聲音判斷離前牆遠近。所有人最後都自發用短的舌頭喀聲（2–8 ms、約 75–95 dB SPL、峰值約 2–8 kHz）。走廊中線：參考 0.75 m 時門檻約 20 cm，2 m 時約 30–45 cm，4 m 時約 60–80 cm，個別差異也隨距離變大。靠近側牆時：0.75 m 的門檻反而顯著變好（平均約 16 cm），4 m 則顯著變差（約 80 cm），作者說當目標遠超過側牆距離時，側牆回聲成了干擾的遮蔽。允許轉頭時，4 m 靠牆的劣勢消失，但記錄顯示受試者（包括專家）是把頭轉離側牆後靜止聽，而不是左右來回掃；初始朝向被隨機打亂時，自由轉頭才明顯彌補了損失。盲人專家未經專門訓練就完成，最佳約 10 cm（中線 0.75 m），所有條件都優於明眼人、遠距離尤其明顯，而且不受近側牆幫助。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "虛擬聲學空間、7 人、專家 1 人；「側牆遮蔽」是作者的解釋；與上輪 P74-034（同群 Wallmeier 等 2015）不同實驗，但同屬 Wiegrebe 群。 與池中 SRC-488196fa68dcda84 同一頁（同一網址），本輪是補讀 Results，不另立文件。",
+          "author_cache": {
+            "file": "f111src/PMC4281102.txt（原始 f111src/PMC4281102.xml）",
+            "sha256_prefix": "49fe6cae992608b6",
+            "xml_sha256_prefix": "9cc754d3b4987412",
+            "note": "與第二十四輪作者快取 stw24/f92src 同一份檔案的複本（雜湊相同），本輪未重抓；.txt 為上輪 f92tools/x2t.py 由 Europe PMC fullTextXML 轉出，行號指 .txt 行號。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4281102/fullTextXML"
         }
       ]
     },
@@ -42956,6 +43204,36 @@
           },
           "origin": "wave19-life-mechanisms-20261102",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4632618/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4e1cb95fbbcd9fbc",
+      "url": "https://link.springer.com/content/pdf/10.1186/s40645-020-00354-y.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1186/s40645-020-00354-y",
+          "title": "A full sequence of the Matuyama–Brunhes geomagnetic reversal in the Chiba composite section, Central Japan",
+          "publisher": "Progress in Earth and Planetary Science 7:44（2020）；Haneda（國立極地研究所／茨城大學／產總研）、Okada、Kitamura（茨城大學）、Suganuma（國立極地研究所／總研大）",
+          "version": "出版社正式版 PDF（CC BY 4.0）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列 DOAJ（403，停止）與國立極地研究所英文新聞稿；新聞稿只當入口，循其原文連結 progearthplanetsci.springeropen.com/articles/10.1186/s40645-020-00354-y（伺服器自行轉到 link.springer.com），再循頁上 /content/pdf/… 連結下載，pdftotext 轉文字",
+          "reading_scope": "摘要、1 前言、3.4 節（M–B 界線比較與表 2）、3.5 節末段、4 結論；2 地質與方法、3.1–3.3 岩石磁學細節只掃讀；參考文獻未讀；補充資料未讀",
+          "locator": "Abstract；3.4 節（翻轉在 1.1±0.4 kyr 內完成、年代 772.9 ka）；3.5 節末段（3 kyr、760 ka 回強、回強後強度高於翻轉前；783–763 ka 約 2 萬年）；4 Conclusions 末兩段（at least 20 kyr）",
+          "summary": "作者分析千葉複合剖面（沉積速率高、連續的海相地層，也是更新世『千葉期』的國際標準）。在三個子剖面與一根鄰近岩芯中，從反向到正向的極性切換本身在 1.1±0.4 千年內完成（依 Suganuma 2018 年代模型）；但從約 78.3 萬到 76.3 萬年前，方向與相對強度反覆偏離常態，表示主軸偶極耗弱期間非軸偶極場多次占主導，前後至少約 2 萬年。方向不穩在強度回升（約 76 萬年前）前約 3 千年結束；回升後的強度比翻轉前還高，方向穩定在正極性。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有一個地點的沉積物，沉積物記錄有鎖定深度造成的平滑（作者前言自述）；1.1 kyr 依單一年代模型、另有 5 kyr 定年誤差。前言提到義大利研究推論『百年內翻完』、熔岩研究推論『約 3 萬年前開始衰減』都是引用，不算本篇。片中不寫本篇的年代數字，避免與 E74-071 的年代並列（覆核 drop_if）。新聞稿『通常每 20–30 萬年翻一次』是新聞稿說法、不是本文結果，不用。 覆核 V116（2026-11-12）：limitations 加『與 E74-071（Singer 2019）同一次翻轉、同結論，只當獨立佐證』。",
+          "author_cache": {
+            "file": "f108src/haneda2020.txt",
+            "sha256_prefix": "71849bd18509869f",
+            "raw_file": "f108src/haneda2020.pdf",
+            "raw_sha256_prefix": "9801f1fbd6e26174",
+            "landing_page": "f108src/haneda2020.html cb03604036ede12c",
+            "entry_press_release": "f108src/haneda_nipr.html 39d051360f398e81",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-earth-20261111",
+          "original_url": "https://link.springer.com/content/pdf/10.1186/s40645-020-00354-y.pdf"
         }
       ]
     },
@@ -50151,6 +50429,32 @@
       ]
     },
     {
+      "id": "SRC-5cc5206087182a00",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1016/j.cub.2015.02.021&resultType=core&format=json",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.cub.2015.02.021",
+          "title": "Circadian control sheds light on fungal bioluminescence（Europe PMC 書目紀錄）",
+          "publisher": "Europe PMC REST API",
+          "version": "PMID 25802150／PMC4382382",
+          "accessed_on": "2026-11-12",
+          "read_via": "curl（Europe PMC REST search，resultType=core）",
+          "reading_scope": "只讀書目、摘要欄位與 fullTextUrlList；全文三個連結都讀不到",
+          "locator": "resultList.result[0]",
+          "summary": "確認 Oliveira 2015 在 PMC 有作者稿（PMC4382382），但 REST fullTextXML 回 500、europepmc.org 與 cell.com 皆 Cloudflare 403；本輪沒有讀到可計的全文。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只到書目與摘要，不計任何條數；與池中既有 Oliveira 引用同一篇（池中僅作二手引用，drop_if 規定不得當原文）。",
+          "author_cache": {
+            "file": "epmc_oliveira.json",
+            "sha256_prefix": "8f1af43f3679e997",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1016/j.cub.2015.02.021&resultType=core&format=json"
+        }
+      ]
+    },
+    {
       "id": "SRC-5cc71f84edc10d63",
       "url": "https://arxiv.org/pdf/2105.01066v2",
       "readings": [
@@ -54163,6 +54467,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://science.nasa.gov/moon/top-moon-questions/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-64aba1d0ac68de8d",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11607530/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.isci.2024.111191",
+          "title": "Audience presence influences cognitive task performance in chimpanzees",
+          "publisher": "iScience 27:111191（2024）；Lin C, Muramatsu A, Yamamoto S（京都大學野生動物研究中心、靈長類研究所、高等研究院）",
+          "version": "Europe PMC 開放全文 JATS XML（PMC11607530.1）",
+          "accessed_on": "2026-11-12",
+          "read_via": "本輪自己用 Europe PMC REST search（query: AUTH:\"Muramatsu A\" AND chimpanzee）的結果列出 PMC11607530，再用 REST fullTextXML 連結以 curl 預設標頭下載（HTTP 200，105,007 位元組），x2t.py 轉文字。",
+          "reading_scope": "逐段讀：摘要與 Highlights、前言末兩段、Results 四節（Performance across task types、Model 1–3）與 Figure 1–3 說明、Discussion 全部、Limitations of the study、STAR Methods 的受試者段。Table S1–S8 在補充資料內，沒讀。",
+          "locator": "Results〈Performance across task types〉；〈Model 1〉；〈Model 3〉第 2 段（6%–11%、1%–10%、task type 3 的 OR 1.018–1.057）；Discussion 第 1 段（陌生觀眾無影響）；Limitations（無法設沒有人在場的控制組）",
+          "summary": "京都大學靈長類研究所六隻黑猩猩（含 Ai、Ayumu、Pal）在觸控螢幕上依序點阿拉伯數字，作者整理約六年（2009 年 7 月到 2016 年 1 月）的紀錄，看旁邊有幾個人、是誰。三種作業：1–19 相鄰數字依序點（最簡單）、不相鄰但遞增、以及點了第一個後其他數字被蓋住要靠記憶（最難）。只看「有沒有觀眾」時，三種作業都沒有顯著差別；但看人數與身分時：最簡單的作業，實驗者每多一位，模型估計表現下降 6%–11%，熟人觀眾每多一位下降 1%–10%；最難的作業反而隨實驗者人數增加而變好；陌生人多寡在三種作業都沒有影響。作者提出獎賞價值、認知負荷、專注力三種可能解釋，沒有定論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "觀察性資料，不是實驗操弄；作者明寫無法設「完全沒有人」的控制組，因為觸控作業一定要有人操作。作者把結果解讀為觀眾效應，並未主張人給了答案提示——片中不得說成「黑猩猩看人臉色答題」。下降百分比是模型估計（勝算比區間），不換算成題數。研究群：Muramatsu 與 Matsuzawa 合著 PMC10000109（L74-063 的來源），Yamamoto 與 Matsuzawa 合著 3 篇（Europe PMC AUTH 查詢），併入 Matsuzawa 群：0.5＋0.5＝1.0，未達封頂。與池中來源無重複。 覆核 V118（2026-11-12）：summary 的『只看有沒有觀眾』補明是『熟人與陌生觀眾在不在（不含實驗者）』，並補作業 2 熟人人數正向（OR 1.011–1.052）。",
+          "author_cache": {
+            "file": "stw25/f110src/PMC11607530.xml（原檔）；stw25/f110src/PMC11607530.txt（x2t.py 轉出的文字）",
+            "sha256_prefix": "xml d9c08bbb6b2d8fab；txt 7993088f7d79eea1",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11607530/fullTextXML"
         }
       ]
     },
@@ -61329,6 +61659,27 @@
           },
           "origin": "wave74-physics-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12685218/fullTextXML"
+        },
+        {
+          "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12685218/fullTextXML",
+          "title": "Audition and balance: The impact of echolocation on postural control",
+          "publisher": "PLoS ONE（2025）；Termoz 等（Gipsa-Lab，格勒諾布爾－阿爾卑斯大學）",
+          "version": "Europe PMC 開放全文 XML（出版社版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀第二十四輪作者已快取的同一份全文（F92-S020，stw24/f92src/PMC12685218.txt），未重抓；PMCID 與網址沿用上輪 Europe PMC REST 搜尋結果",
+          "reading_scope": "摘要（第 10 行）、受試者、設置、介入與聲學量測段（第 19–35 行）、Results 全節（第 41–49 行）、Discussion 第 1–2 段（第 51–52 行，用來對應 Fig 3A 的比較對）與限制段（第 54 行）；姿勢穩定部分只讀不收。",
+          "locator": "Intervention 段末（頭部模擬器量測）；Results：The impact of acoustic condition on the perception variable；Discussion 第 1 段",
+          "summary": "11 位聽力正常、沒經驗的矇眼年輕人站在半無響室，眼罩上的小喇叭放白噪音，前方 0.5 m 鋁圓盤固定在 0.2 m 或 1 m，或以 0.05 m/s 在兩點間朝人或背人移動。頭部模擬器量到耳邊聲位：沒有目標 77 dB、目標在 1 m 為 80 dB、0.2 m 為 83 dB；移動時在 80 與 83 dB 之間變化。聲學條件顯著影響答對機率；作者在討論中說，目標在動（靠近或遠離）時答對機率明顯高於靜止，對固定在 1 m 的情況差最多，作者推測是聲學線索的變化或注意力較集中。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "11 人、只有一次熟悉試次；不是自己發聲，作者稱「半主動」；Results 文字本身只寫顯著，哪幾對有差是討論段對 Fig 3A 的描述；姿勢穩定與平衡的結果依覆核 drop_if 不入稿。 與池中 SRC-737683dfc3c0d9e4 同一頁（同一網址），本輪是補讀 Results，不另立文件。 覆核 V119（2026-11-12）：publisher『Termoz 等』改為『Chouk、Dross、Termoz（Gipsa-Lab，格勒諾布爾－阿爾卑斯大學）』；summary『前方 0.5 m 鋁圓盤』改『正前方直徑 0.5 m 鋁圓盤』，並補『靜止條件事後答距離、移動條件答方向』。",
+          "author_cache": {
+            "file": "f111src/PMC12685218.txt（原始 f111src/PMC12685218.xml）",
+            "sha256_prefix": "d9fd04b202c87b30",
+            "xml_sha256_prefix": "e9b17b13b3be9752",
+            "note": "與第二十四輪作者快取 stw24/f92src 同一份檔案的複本（雜湊相同），本輪未重抓；.txt 為上輪 f92tools/x2t.py 由 Europe PMC fullTextXML 轉出，行號指 .txt 行號。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12685218/fullTextXML"
         }
       ]
     },
@@ -63595,6 +63946,37 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "physics-20261101",
           "original_url": "https://openstax.org/books/chemistry-2e/pages/20-1-hydrocarbons"
+        }
+      ]
+    },
+    {
+      "id": "SRC-77df5371f0a454af",
+      "url": "https://link.springer.com/content/pdf/10.1186/BF03352849.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1186/BF03352849",
+          "title": "Magnetic poles and dipole tilt variation over the past decades to millennia",
+          "publisher": "Earth, Planets and Space 60:937–948（2008）；M. Korte、M. Mandea（GeoForschungsZentrum Potsdam）",
+          "version": "出版社正式版 PDF（EPS 開放取用）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果先列 gfzpublic PDF（403，停止）與 link.springer.com/article/10.1186/BF03352849；curl 讀 Springer 文章頁（伺服器自行加 cookie 參數轉址，存 km2008_springer.html），循頁上 href=/content/pdf/10.1186/BF03352849.pdf 下載，pdftotext 轉文字",
+          "reading_scope": "全文正文（摘要、1 前言、2 方法與模型、3.1、3.2、4.1、4.2、5.1–5.3、6 結論、致謝）；圖說讀過，圖本身未判讀；參考文獻未讀",
+          "locator": "Abstract；3.1 節末（gufm1：約 400 年都在 5 km/yr 上下，1970 後急升，現約 60 km/yr；CHAOS 顯示最近開始減速）；3.2 節末（CALS7K.2：北磁極從未低於北緯 73°、各經度都到過、無偏好，速度一般 <10 km/yr，例外是約西元前 4500 與 1300 年的 15–20 km/yr）；5.1 節末（偶極傾角目前比 7000 年間任何時候都大，偶極矩仍高於 7000 年平均）；5.2 節（7 kyr 模型的磁極位置要謹慎看待；不到一百年的加速模型解析不到）；6 結論（北磁極可能減速、但若加拿大磁通團再占上風會突然掉頭；現有知識不足以預測）",
+          "summary": "作者用四個連續地磁模型（CHAOS、CM4、gufm1、CALS7K.2）追蹤磁極與地磁極從幾年到七千年的移動。過去 400 年北磁極速度多半在每年約 5 km 上下，1970 年起急升到約 60 km/yr。七千年的模型顯示北、南磁極從未跑到北／南緯 73° 以下，所有經度都到過、沒有偏好的經度帶；北磁極速度一般每年不到 10 km，只有約西元前 4500 年與 1300 年兩段達每年 15–20 km。作者也提醒：七千年模型的磁極位置受小尺度場影響、要謹慎看待，而且持續不到百年的加速（像現在這次可能就是）模型根本解析不到。北、南磁極與偶極軸的移動彼此沒有顯著相關。結論：北磁極的突然加速和地核表面的反向磁通斑有關，作者推論它很可能會減速；但只要兩團正向磁通的強弱改變、加拿大那團重新占上風，北磁極可能突然掉頭，『目前對發電機的了解不足以預測地核磁場的變化』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "前言『1970 年起速度增至近 60 km/yr』引用 Mandea & Dormy 2003（IPGP），不計；3.1 節的 gufm1／CHAOS 速度與 E74-059、E74-061 重疊，不另計。七千年磁極位置作者自己說不可靠，只能說『模型顯示』，片中速度用『相對較快的兩段』而非精確數字。2008 年的『很可能減速』是作者推論；不得接成『預言成真』，也不得和 NOAA 2025 的 36 km/yr 相減或接成因果。CALS7K.2 南半球資料偏少。與 E74-S061（Livermore）ref 12 是同一篇，池中原本沒有本文作為來源（grep DOI 為 0）。 覆核 V116（2026-11-12）：summary 『很可能減速』補條件『若維持往西伯利亞磁通的方向』；『目前知識不足以預測』註明是對地核磁場變化的一般陳述。",
+          "author_cache": {
+            "file": "f108src/km2008.flat.txt",
+            "sha256_prefix": "2de7314be3734917",
+            "raw_file": "f108src/km2008.pdf",
+            "raw_sha256_prefix": "570fcdf1feaa7eab",
+            "layout_file": "f108src/km2008.txt",
+            "layout_sha256_prefix": "f27661d67fc31e34",
+            "landing_page": "f108src/km2008_springer.html d4a2fdca9037d79d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-earth-20261111",
+          "original_url": "https://link.springer.com/content/pdf/10.1186/BF03352849.pdf"
         }
       ]
     },
@@ -69484,6 +69866,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-measurement-20261101",
           "original_url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-4-type-b-evaluation-standard-uncertainty"
+        }
+      ]
+    },
+    {
+      "id": "SRC-83641d401b99327a",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8106610/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s10265-021-01288-2",
+          "title": "Verbena officinalis Verbenaceae (Lamiales): a new plant model system for phyllotaxis research",
+          "publisher": "Journal of Plant Research 134（2021）；Zagórska-Marek B、Turzańska M、Chmiel K（弗羅茨瓦夫大學實驗生物研究所）",
+          "version": "出版社開放取用版（CC BY 4.0，PMC 收錄 JATS 全文）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀上一輪作者 F89 經 Europe PMC REST（文件記載 API）取得的同一份快取（stw24/f89src/PMC8106610.xml 與 .txt，V92 已核對該次抓取合規），本輪未重抓；複製到 f109src 後用 python（-I）從 XML 抽出表 1–3 的儲存格",
+          "reading_scope": "全文逐段讀過：摘要、前言、材料與方法、Results 四節（General morphology、Developmental changes in phyllotaxis、Vascular system architecture、Computer modeling）、Verbena culture、Discussion 全部四段與各圖說；表 1、表 2、表 3 由 XML 逐格讀出（txt 版只有表名）。補充圖 S1 未讀。",
+          "locator": "Developmental changes 第 1–2 段與表 3；Results『diameters of ten vegetative and eight florescence apices』段；Vascular system 第 1 段與圖 7 說明；Computer modeling 第 1 段；Discussion 第 2–3 段",
+          "summary": "波蘭一個野生來源的馬鞭草族群：營養期葉子對生，開花後花序軸上的苞片轉成螺旋，多半是主費氏型（2:3），少數是 Lucas（3:4）或雙費氏；之後同一條花序還會一再換型（例如 2:3→3:5→3:4→4:4→4:5），共記到七種排列。表 3 的 12 株中，花序第一個螺旋是主費氏型的比例每株 63%–93%。克羅埃西亞來源的植株全部只有主費氏型。葉原基約占頂端周長 30%，苞片原基約 15%，不同螺旋型之間苞片大小看不出差別（樣本少）。維管束數目在頂端換型之前就先改變（主費氏 5 束、Lucas 7 束、4:5 型 9 束）。電腦模擬中原基半徑每步只縮 1%，接觸螺旋數就往上加。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "田野族群加少量切片；頂端量測只有 10 個營養期與 8 個花序頂端，作者自己說樣本小；『由遺傳控制』是作者的推定（presumption），根據是族群與個體差異，沒有遺傳實驗；『次級換型可能是原基大小微小起伏累積造成』是模擬加推論；維管束『先變』是觀察順序，作者明說維管束訊號的角色仍待驗證。表 3 每株的主費氏型、Lucas、雙費氏三欄加起來不到該株枝數，原文未說明其餘枝的去向，片中只講範圍、不講『其餘都是…』。與池中 L74-040（Fierz）無共同作者；作者群（Zagórska-Marek、Turzańska、Chmiel）與本題其他群無重疊。Jakubska-Busse 等 2017（Gola，同校）本題未用。 覆核 V117（2026-11-12）：summary 的『電腦模擬中原基半徑每步只縮 1%，接觸螺旋數就往上加』補『（同一型內；連續縮小在模擬中無法讓主費氏型換型，次級換型原因作者稱仍是謎）』；『克羅埃西亞來源的植株』改『長在克羅埃西亞 Vodice 附近的植株（株數未寫）』；『七種排列』註明含對生、三輪生、四輪生；publisher 補『（田區在弗羅茨瓦夫北方 Przecławice，種子採自下西里西亞野生族群）』。",
+          "author_cache": {
+            "file": "f109src/PMC8106610.txt（原始 PMC8106610.xml，sha256 前 16 碼 7f40c972e887ae34；與 stw24/f89src 同檔）",
+            "sha256_prefix": "fa4677070db73f01",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8106610/fullTextXML"
         }
       ]
     },
@@ -79919,6 +80327,32 @@
       ]
     },
     {
+      "id": "SRC-97753df3a5f99a74",
+      "url": "https://air.unimi.it/retrieve/dfa8b9a8-af9d-748b-e053-3a05fe0a3a96/Azpeitia%20et%20al_main_final_AIR.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1126/science.abg5999",
+          "title": "Cauliflower fractal forms arise from perturbations of floral gene networks",
+          "publisher": "Science 373(6551):192–197（2021）；Azpeitia E、Tichtinsky G、Le Masson M、Serrano-Mislata A、Lucas J、Gregis V、Gimenez C、Prunet N、Farcot E、Kater MM、Bradley D、Madueño F、Godin C、Parcy F",
+          "version": "米蘭大學 AIR 典藏的作者稿 PDF（21 頁）；封面是 HAL hal-03291136 自動頁，內頁頁首標『Submitted Manuscript: Confidential』，未與 Science 正式版比對",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出的 air.unimi.it PDF 連結，curl 預設標頭原樣下載（200，application/pdf），pdftotext -layout 轉文字",
+          "reading_scope": "正文全部（摘要、主文三節：The genetic basis of cauliflower curds、A multi-scale model generates Arabidopsis cauliflower structures、Growth dynamics define cauliflower and Romanesco curd structures）與圖 1–4 圖說逐段讀過；參考文獻掃過；補充材料（圖 S1–S6、模型方法）不在此檔、未讀。",
+          "locator": "摘要；主文第 1 段與圖 1 說明；第二節末段（factor X、hysteresis）；第三節全段（n ≥ 7 對 3–4、clv3、CLV3 表現較低）",
+          "summary": "花椰菜的花蕾每個都沒長成花，而是又變成新的花序、再長小花序，所以螺旋一層套一層。研究者在阿拉伯芥 ap1 cal 突變株（像花椰菜）上結合基因網絡與 3D 生長模型，結論是：這些分生組織曾短暫進入『開花狀態』、留下記憶，之後又退回花序狀態，才會一層層長下去。花椰菜的分生組織最高到第 7 層以上，甘藍只有 3–4 層。在 ap1 cal 再加上會讓頂端越長越大的 clv3 突變，花球從圓變尖、各尺度出現類似寶塔花椰菜的圓錐；寶塔花椰菜也偶見帶化，CLV3 表現比一般花椰菜低。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "版本是送審稿，不是 Science 正式版（搜尋摘要稱米蘭副本為 accepted post-print，但 PDF 內頁標 Submitted Manuscript），數字與措辭若與正式版不同以正式版為準；寶塔花椰菜的形狀變化在阿拉伯芥是『類似』，不是種出寶塔花椰菜；『頂端大小經由出葉間隔控制花球形狀』是作者結論，其中『頂端變大→間隔變短→螺旋變多』是引用前人（ref 1、35、36）與模擬；寶塔花椰菜出葉間隔會變而一般花椰菜不變是引用 Kieffer 1998（ref 34），不算本篇。圖 1 的 8／5 條螺旋是示意照片的標註，不是統計。研究群：Godin、Farcot 與 F109-S003 共同作者，算里昂群，與 L74-045、F109-S003 合計封頂 2.0；Prunet、Bradley 等與本題其他群無重疊。 覆核 V117（2026-11-12）：version 改為『米蘭大學 AIR 典藏的作者接受稿（典藏紀錄頁 https://air.unimi.it/handle/2434/891272 標示 Post-print, accepted manuscript；Open Access dal 10/07/2022）；封面為 HAL hal-03291136 自動頁；內頁頁首 Submitted Manuscript: Confidential 為 Science 範本頁首；未與正式版比對；補充材料（圖 S1–S6）未讀』；limitations 刪去『版本是送審稿』。",
+          "author_cache": {
+            "file": "f109src/Azpeitia2021_AIR.txt（原始 Azpeitia2021_AIR.pdf，sha256 前 16 碼 d2065ccb25fbf610）",
+            "sha256_prefix": "cece3f4c7a625d27",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://air.unimi.it/retrieve/dfa8b9a8-af9d-748b-e053-3a05fe0a3a96/Azpeitia%20et%20al_main_final_AIR.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-97788b992f7e0031",
       "url": "https://edu.cwa.gov.tw/PopularScience/wt/wt_16.html",
       "readings": [
@@ -81207,6 +81641,32 @@
       ]
     },
     {
+      "id": "SRC-99f306556cab1677",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12106560/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s10071-025-01963-0",
+          "title": "Group size affects spontaneous quantity discrimination performance in wild Western Australian magpies (Gymnorhina tibicen dorsalis)",
+          "publisher": "Animal Cognition（2025）；Hunter H, Blackburn G, Ashton BJ, Ridley AR（西澳大學等）",
+          "version": "Europe PMC 開放全文 JATS XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "本輪自己用 Europe PMC REST search（query: AUTH:\"Ridley AR\" AND (quantity OR numerical OR numerosity OR number)）的結果列出 PMC12106560，再用 REST fullTextXML 連結以 curl 預設標頭下載（HTTP 200，108,599 位元組），x2t.py 轉文字。",
+          "reading_scope": "全文逐段讀：摘要、前言、Methodology 全部（研究對象、實驗設計、統計、模型選擇、事後比較）、Results 全部、Discussion 全部。Table 1 只讀說明、Table S1–S5 沒讀。",
+          "locator": "Methodology〈Study species and site〉第 2 段（42 隻、11 群、3–15 隻）；〈Experimental design〉；Results〈Spontaneous quantity discrimination performance〉（59%、67%、73%）與〈Factors affecting individual variation in performance〉",
+          "summary": "珀斯 11 群野生西澳鵲鴨中的 42 隻成鳥（群大小 3–15 隻），每隻在 15 天內做 60 次：地上兩塊板子各放幾條起司，選哪邊就只能吃哪邊。2 對 3、2 對 4、2 對 5 時，選多的比例分別是 59%、67%、73%，都高於機率，差越大越準。群體大小本身沒有影響，但和比例有交互作用：在 2 對 5 時，來自小群的鳥比來自大群的鳥更常選多的那邊；2 對 3、2 對 4 沒有這個差別。性別沒有影響，60 次之間也沒有越做越好。作者推測小群在群間衝突中損失較大，所以更需要分辨數量；也提出另一個解釋（大群警戒分攤、覓食時間較多，不必那麼挑）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "同一族群、同一種起司作業已用於 L74-062（Blackburn 等 2025），其「選多的、差越小越難」不重算；本篇只算新的群體大小交互作用與三個比例數字。作者推論的成因（群間衝突）是解讀，兩種解釋並列，片中要講「作者推測」。研究群：Ridley 群（Hunter、Blackburn、Ashton、Ridley 與 L74-062 來源共同作者），0.75＋0.5＝1.25，未達 2.0 封頂。與池中來源無重複（pool.json 無此 PMCID／DOI）。",
+          "author_cache": {
+            "file": "stw25/f110src/PMC12106560.xml（原檔）；stw25/f110src/PMC12106560.txt（x2t.py 轉出的文字）",
+            "sha256_prefix": "xml 84d36804554b7e78；txt bac0343354c7fef8",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12106560/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-99f980fb639da430",
       "url": "https://www.jamesdysonfoundation.co.uk/who-we-are/our-story/",
       "readings": [
@@ -81331,6 +81791,27 @@
             "note": "作者快取在 2026-11-12 工作階段暫存目錄，未進 repo；.txt 由 f92tools/x2t.py 從 XML 轉出（參考文獻清單略去）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
           },
           "origin": "wave74-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11186672/fullTextXML"
+        },
+        {
+          "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11186672/fullTextXML",
+          "title": "Changes in primary visual and auditory cortex of blind and sighted adults following 10 weeks of click-based echolocation training",
+          "publisher": "Cerebral Cortex 34(6)（2024）；Norman、Thaler 等（Durham 大學）",
+          "version": "Europe PMC 開放全文 XML（出版社版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀第二十四輪作者已快取的同一份全文（F92-S008，stw24/f92src/PMC11186672.txt），未重抓；PMCID 與網址沿用上輪 Europe PMC REST 搜尋結果",
+          "reading_scope": "摘要（第 10 行）與 Results 中行為與 ROI 各段逐段讀（第 160–187 行）；第 160 行是 Norman 等 2021（上輪 S005）已報告結果的摘要，不計；未讀 whole-brain、VBM 結果與 Discussion。",
+          "locator": "Results：Behavioral performance in the experimental task；fMRI ROI analysis；ROI responses to no-echo and echo conditions",
+          "summary": "12 位盲人、14 位明眼人上 10 週課前後：掃描前電腦作業的三種答對率都在課後提高（如辨認路線 0.472→0.666），兩組無差、無交互作用；行為進步與年齡無相關。左 V1 對「有回聲 vs. 沒回聲」的反應由 −0.009 升到 0.089（訊號變化百分比），右 V1 由 −0.007 升到 0.072（p = 0.04977）；兩組無差。個別來看，左 V1 只有 12 位盲人中 7 位、14 位明眼人中 8 位是正向變化，右 V1 為 7/12 與 9/14。各區域的訓練變化與年齡、與行為進步都沒有相關。課後左 V1 才對回聲出現顯著的正反應，右 V1 課前課後都沒有顯著正反應。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "小樣本；V1 的變化量小、約一半到三分之二的人才是正向；與上輪 S005（P74-030）同一批受試者，行為訓練成績不重算。 與池中 SRC-9a2247c47b368ea0 同一頁（同一網址），本輪是補讀 Results，不另立文件。",
+          "author_cache": {
+            "file": "f111src/PMC11186672.txt（原始 f111src/PMC11186672.xml）",
+            "sha256_prefix": "4b08edcfdd55a937",
+            "xml_sha256_prefix": "99062561281d7bc0",
+            "note": "與第二十四輪作者快取 stw24/f92src 同一份檔案的複本（雜湊相同），本輪未重抓；.txt 為上輪 f92tools/x2t.py 由 Europe PMC fullTextXML 轉出，行號指 .txt 行號。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-physics-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11186672/fullTextXML"
         }
       ]
@@ -86063,6 +86544,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave7-animals-20261101",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10482386/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a2cea2558dfff611",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13309573/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-026-54126-7",
+          "title": "Assessing quantity combination and dissociation in giraffes",
+          "publisher": "Scientific Reports（2026）；Loidi I, Caicoya ÁL, Amici F, Padilla-Solé P, Galbany J（巴塞隆納大學心理學院、巴塞隆納動物園；萊比錫大學、馬克斯普朗克演化人類學所）",
+          "version": "Europe PMC 開放全文 JATS XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "本輪自己用 Europe PMC REST search（query: \"quantity discrimination\" \"Clever Hans\"）的結果列出 PMC13309573，再用文件記載的 REST fullTextXML 連結以 curl 預設標頭下載；前兩次伺服器回 HTTP 500（同一連結、非 403），第三次 200（227,559 位元組），用 x2t.py 轉文字並另抽表格。",
+          "reading_scope": "逐段讀：摘要、Results 兩節（含 Table 1、Table 2 全部個體數字）、Discussion 全部（含限制段）、Methods 的 Subjects、Experimental procedure（COMB、DISS、SUBE、VO、VC 與太陽眼鏡、側偏處理段）、Statistical analyses 的 Model 2 與 binomial 段。前言只讀第 1 段；DMO、SLQ、ILQ 的正式定義在前言後段，只讀到 Discussion 與 Model 2 的轉述。",
+          "locator": "Results〈Giraffes perform differently across tasks〉第 2 段（68±3%、57±3%、64±5%）與 Table 2；Results〈Individual differences in the use of simpler strategies〉第 2 段；Discussion 第 6、7 段與限制段（「subtle, unintentional signals」）；Methods〈Experimental procedure〉倒數第 2 段（sunglasses、Cohen’s κ）",
+          "summary": "巴塞隆納動物園四隻長頸鹿各做 272 次（共 1,088 次）不需訓練的選擇：實驗者先打開兩個黃杯讓牠看胡蘿蔔塊、蓋上，再從中間綠杯一塊一塊加進（或從黃杯拿出）其中一杯，最後讓牠選。加的作業平均答對 68±3%，四隻都高於機率；拿走的作業 57±3%、先拿走再加到另一杯的作業 64±5%，個體都在機率水準。作者另外檢查一個簡單策略：在加的作業選「實驗者剛動過的那杯」、在拿走的作業避開它（DMO）。用 DMO 剛好能答對的試次，四隻都高於機率；DMO 會答錯的試次，只有 Nuru（34/52）與 Njano（35/52）仍高於機率，Nakuru 與 Yalinga 都是 29/52、在機率水準。整個實驗中實驗者戴太陽眼鏡「以避免聰明漢斯效應」、眼睛朝下、保持中性的臉與身體；作者仍在限制段寫，因為要用手移動食物再同時舉起杯子，「這種手動程序可能透過細微、無意的訊號影響了選擇」，建議之後用自動化與盲測方法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有四隻、每種條件每隻只做 4 次；DMO 的效果在模型中只是邊緣顯著（p = 0.055）。作者沒有直接操弄或量測實驗者的無意訊號，「可能受無意訊號影響」是作者自述的限制，不是測量結果；片中要這樣說。不轉述文中引用的其他物種（紅毛猩猩、黑猩猩、鴿子、小雞）比較。研究群：Europe PMC AUTH 查詢顯示 Amici F 與 Range F、Virányi Z 共同出現在一篇 58 位作者的跨實驗室合著（MacLean 等 2014《The evolution of self-control》，PMC4034204），此外與各群無共同作者；若覆核仍把本篇併入維也納群，該群也只到 0.75＋0.5＝1.25，未達 2.0 封頂，不影響條數。與池中來源無重複。 覆核 V118（2026-11-12）：limitations 的研究群改為『Amici F 與維也納 Range F、Virányi Z 同列 PMC4034204，依共同作者規則併入維也納群』；summary 的『DMO』改寫為『選實驗者剛動過的那杯（作者分析的操作捷徑，非聰明漢斯效應）』。",
+          "author_cache": {
+            "file": "stw25/f110src/PMC13309573.xml（原檔）；stw25/f110src/PMC13309573.txt（x2t.py 轉出的文字）",
+            "sha256_prefix": "xml 3ccf3894d39f54e1；txt e61b655bae787b0f",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13309573/fullTextXML"
         }
       ]
     },
@@ -93062,6 +93569,27 @@
           },
           "origin": "wave74-physics-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6797687/fullTextXML"
+        },
+        {
+          "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6797687/fullTextXML",
+          "title": "Human Click-Based Echolocation of Distance: Superfine Acuity and Dynamic Clicking Behaviour",
+          "publisher": "J Assoc Res Otolaryngol 20(5)（2019）；Thaler、De Vos、Kish、Antoniou、Baker、Hornikx（Durham 大學等）",
+          "version": "Europe PMC 開放全文 XML（出版社版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀第二十四輪作者已快取的同一份全文（F92-S002，stw24/f92src/PMC6797687.txt），未重抓；PMCID 與網址沿用上輪 Europe PMC REST 搜尋結果",
+          "reading_scope": "摘要（第 6 行）與 RESULTS 全節逐段讀：Psychophysical Performance（第 36–37 行）、Clicking Behaviour 與聲學分析（第 39–40 行，含 Fig. 2–5 圖說）；未讀 METHODS 細節、DISCUSSION。",
+          "locator": "RESULTS：Psychophysical Performance；Clicking Behaviour；Fig. 4、Fig. 5 圖說",
+          "summary": "8 位盲人專家：門檻約 3 cm（50 cm）與 7 cm（150 cm），只有 50 對 150 cm 有顯著差；換成百分比（韋伯分數），各條件平均都約能分出 5% 的變化、條件間無差；三種條件的偏差都與 0 無顯著差。喀聲次數：28.5 cm 圓盤由 50 移到 150 cm 時增加，同在 150 cm 換成 80 cm 大圓盤時減少；喀聲強度隨距離增加，但大小圓盤同在 150 cm 時強度相同。喀聲長度、間隔、頻寬、頻譜重心在各條件都不變。回聲的頻譜比喀聲偏向高頻，目標越小越明顯；反射對直達聲的位準差（RDLD）與回聲強度在較遠、較小的目標都下降。作者說參與者調整喀聲強度與次數，部分補償回聲變弱。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "8 人、實驗室；第 37 行與前人 JND 約 20%、17%、16.7% 的比較是引用前人，不算本篇結果；「部分補償」是作者的解讀（seems）。Fig. 4 圖說提到一位參與者在 50 cm 時喀聲長度總是超過回聲開始時間，只是頻譜無法計算的方法說明，不能用來說「自己的喀聲蓋住回聲」。 與池中 SRC-b066f6a4ab3e0fa8 同一頁（同一網址），本輪是補讀 Results，不另立文件。 覆核 V119（2026-11-12）：summary『喀聲強度隨距離增加，但大小圓盤同在 150 cm 時強度相同』保留；proposal F111-001 的『較小的目標會打大聲』依此改正（見 core_reviews）。",
+          "author_cache": {
+            "file": "f111src/PMC6797687.txt（原始 f111src/PMC6797687.xml）",
+            "sha256_prefix": "c07a46c64a489b82",
+            "xml_sha256_prefix": "7e906ba95224c247",
+            "note": "與第二十四輪作者快取 stw24/f92src 同一份檔案的複本（雜湊相同），本輪未重抓；.txt 為上輪 f92tools/x2t.py 由 Europe PMC fullTextXML 轉出，行號指 .txt 行號。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6797687/fullTextXML"
         }
       ]
     },
@@ -93667,6 +94195,32 @@
           },
           "origin": "wave56-physics-20261111",
           "original_url": "https://openstax.org/books/college-physics-2e/pages/10-5-angular-momentum-and-its-conservation"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b1e1022d4487718b",
+      "url": "https://doi.org/10.1101/2020.07.11.198796",
+      "readings": [
+        {
+          "canonical_url": "https://www.biorxiv.org/content/10.1101/2020.07.11.198796v1",
+          "title": "Does the Preferred Walk-Run Transition Speed on Inclines Minimize Energetic Cost, Heart Rate or Neither?",
+          "publisher": "bioRxiv（Jackson W. Brill, Rodger Kram）",
+          "version": "預印本 v1，Posted July 12, 2020",
+          "accessed_on": "2026-11-12",
+          "read_via": "DOI 連結以 curl（預設標頭）取得 bioRxiv 摘要頁 HTML，python 去標籤轉文字",
+          "reading_scope": "只有摘要頁：ABSTRACT 段、縮寫表、版權註記。正文、方法、結果表、圖都沒讀到（全文頁 429）。",
+          "locator": "ABSTRACT",
+          "summary": "10 名健康、高水準男性越野／山地跑者，0°、5°、10°、15° 坡度；PTS 取走到跑與跑到走換檔速度的平均（漸增法），EOTS 與 HROTS 由走、跑兩條線性迴歸的交點求得。摘要結論：PTS、EOTS、HROTS 都隨坡度變陡而變慢；0°、5°、10° 時 PTS 慢於 EOTS，15° 時兩者收斂；PTS 與 EOTS 只有中度相關；EOTS 與 HROTS 相關，但個人層級無法用心率準確預測 EOTS。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到摘要，不算全文、不計條數；摘要沒有給各坡度的數值與統計量。預印本、未經同儕審查（版權註記：No reuse allowed without permission）。內容與上一輪作者經 Europe PMC 讀到的摘要相同，沒有新增資訊。Kram 群。",
+          "author_cache": {
+            "file": "biorxiv_198796v1_landing.txt（原始 raw/10.1101_2020.07.11.198796.html，sha256 前 16 碼 f2cc9159d9d15d85）",
+            "sha256_prefix": "b5ad751666b6fb76",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-human-20261111",
+          "original_url": "https://doi.org/10.1101/2020.07.11.198796"
         }
       ]
     },
@@ -95189,6 +95743,27 @@
           },
           "origin": "wave74-physics-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5832709/fullTextXML"
+        },
+        {
+          "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5832709/fullTextXML",
+          "title": "Human echolocators adjust loudness and number of clicks for detection of reflectors at various azimuth angles",
+          "publisher": "Proc R Soc B 285（2018）；Thaler、De Vos、Kish、Antoniou、Baker、Hornikx",
+          "version": "Europe PMC 開放全文 XML（出版社版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀第二十四輪作者已快取的同一份全文（F92-S003，stw24/f92src/PMC5832709.txt），未重抓；PMCID 與網址沿用上輪 Europe PMC REST 搜尋結果",
+          "reading_scope": "摘要（第 7 行）、受試者段（第 21 行）與設備段（第 24 行）、Results 全節逐段讀（第 39–42 行，含 Fig. 2–4 圖說）；未讀 Discussion 與補充資料。",
+          "locator": "3. Results 第 1–4 段；Figure 2、Figure 4",
+          "summary": "8 位盲人專家在吸音室偵測 1 m 外 17.5 cm 木圓盤：0°→45°、45°→90° 表現不降，90°→135°、135°→180° 顯著下降；0°、45°、90°、135° 高於猜測，180° 與猜測無差。喀聲次數在 0–90° 不變、90°→135° 顯著增加；喀聲強度隨角度變偏而增加（90°→135° 顯著）。喀聲長度、間隔、峰值頻率、頻寬、頻譜重心在各位置都不變，頻譜也不變。RDLD 由 0° 到 180° 約降 19 dB，但回聲強度只降約 14 dB；作者解釋是參與者在較偏的角度把喀聲加大（0° 到 180° 約 7 dB），加大喀聲會提高回聲強度、卻不改 RDLD。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "8 人、吸音室、頭部位置以觸覺標記固定；19／14／7 dB 是原文的「approximately」平均值；-27 dB 那句在摘要，上輪已用。 與池中 SRC-b544ab12c3a39da5 同一頁（同一網址），本輪是補讀 Results，不另立文件。",
+          "author_cache": {
+            "file": "f111src/PMC5832709.txt（原始 f111src/PMC5832709.xml）",
+            "sha256_prefix": "e2ffa58c92a034e5",
+            "xml_sha256_prefix": "d7d2ad35a82e1a82",
+            "note": "與第二十四輪作者快取 stw24/f92src 同一份檔案的複本（雜湊相同），本輪未重抓；.txt 為上輪 f92tools/x2t.py 由 Europe PMC fullTextXML 轉出，行號指 .txt 行號。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5832709/fullTextXML"
         }
       ]
     },
@@ -96079,6 +96654,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://github.com/openai/tiktoken"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b6c056027dbf19ff",
+      "url": "https://researchonline.jcu.edu.au/77624/1/Hydrological%20Processes%20-%202022%20-%20Lim%20-%20Revisiting%20Michael%20Bonell%20s%20work%20on%20humid%20tropical%20rainforest%20catchments%20%20Isotope.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1002/hyp.14722",
+          "title": "Revisiting Michael Bonell's work on humid tropical rainforest catchments: Isotope tracers reveal seasonal shifts in catchment hydrology",
+          "publisher": "Hydrological Processes 36(10):e14722（2022）；Han She Lim、Niels C. Munksgaard、Michael I. Bird（澳洲詹姆斯庫克大學）",
+          "version": "出版社版（CC BY-NC-ND，開放取用），存於 JCU ResearchOnline 機構典藏",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果原樣給出 JCU 典藏 PDF 連結；curl 預設標頭下載（HTTP 200，application/pdf），pdftotext -layout 轉文字",
+          "reading_scope": "摘要、1 Introduction、2 方法（二成分分離式與 Qtot／Qp 定義）、3.1 與 3.3（hydrograph separation 結果段）、表 1、表 3、表 4、4.1–4.4 討論、5 結論；參考文獻與補充資料未讀",
+          "locator": "摘要（pre-event water >50%）；2 方法末段（Qtot 與 Qp 定義、二成分假設）；表 1（集水區 1.7、1.57 km²，年雨量）；表 3（Atika Creek 2020/21 七場：TC Imogen、TC Kimi、Severe TC Niran、季風雨；% event water at Qp 與 for Qtot）；表 4（Thompson Creek 2016/17 三場 TC1–TC3）；4.2 第 1 段；5 結論",
+          "summary": "澳洲昆士蘭東北部濕熱帶兩個陡峭雨林小集水區（Thompson Creek 1.7 km²、年雨量 4900 mm；Atika Creek 1.57 km²、1992 mm），以 δ18O 二成分分離量每場暴雨中『這場雨的水』比例，分兩種算法：洪峰當下（Qp）與整場事件流量合計（Qtot）。Atika Creek 2020/21 雨季七場（其中五場分屬 TC Imogen、TC Kimi、Severe TC Niran 三個熱帶氣旋，另兩場為季風雨）整場事件水 3.3%–84.1%、洪峰當下 9.9%–95.0%（表 3）；Thompson Creek 三場整場事件水 4.7%–9.9%、洪峰當下 24.5%–41.7%（表 4）。4.2：兩地事件水在洪峰當下比整場重要（Atika 多數 >33%、Thompson 25%–42%），整場則雨前水重要（Thompson >90%、Atika 15.9%–96.7%）。摘要與結論：整場事件流量一般以雨前水為主（>50%），集水區越濕越明顯。作者也寫二成分假設在此不一定成立、雙示蹤三成分分離結果不理想、土壤水是未量到的重要來源。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "兩個小集水區、共十場事件、單一雨季（Atika 2020/21、Thompson 2016/17）；二成分分離、雨水端元每場只取一個樣本。注意：表 4 的『TC1–TC3』是 Thompson Creek 的事件編號，不是熱帶氣旋；熱帶氣旋只對應 Atika 的事件 1–3（氣旋眼距集水區 95–160 km）。原文內部有不一致：3.3 正文寫『AC2: 48.6%, AC3: 95%』『AC2: 11.4%, AC3: 84.1%』，與表 3（事件 2 為 95.0／84.1、事件 3 為 33.0／8.47）錯位；4.4 有一句『event waters contributing at least 50% of runoff during storm events』與摘要、結論的『pre-event water >50%』相反；結論寫『event water dominated during peak flows (9.9%–70.6%)』而 9.9% 並非主導。只用表 3、表 4 數字與摘要結論，不用這幾句正文。前言與討論引的 Bonell 等人 Babinda 舊數字（新水 45%–80%、53%／47%）是引前人，不計。與池中無同一頁（grep pool.json：hyp.14722、Atika、Babinda 皆 0）。 覆核 V120（2026-11-12）：limitations 補：(a) 3.5 寫 Atika 事件水比例在雨季中逐場上升，與摘要、結論『especially when the catchment was wet』方向相反，片中不用後者；(b) 3.5 正文把 Thompson TC2、TC3 併寫成 24.5%–41.7%／4.7%–9.9%，與表 4 不一，以表 4 為準；(c) pre-event 端元是漲水前的低流量溪水樣本，並假設土壤水與地下水同值。研究群 J 的 Europe PMC 查詢覆核重做無共同作者。",
+          "author_cache": {
+            "file": "lim2022.pdf / lim2022.txt",
+            "sha256_prefix": "70a3774c3fdcae8b / 483b5d51224fc810",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-earth-20261111",
+          "original_url": "https://researchonline.jcu.edu.au/77624/1/Hydrological%20Processes%20-%202022%20-%20Lim%20-%20Revisiting%20Michael%20Bonell%20s%20work%20on%20humid%20tropical%20rainforest%20catchments%20%20Isotope.pdf"
         }
       ]
     },
@@ -106420,6 +107021,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://en.natmus.dk/historical-knowledge/denmark/prehistoric-period-until-1050-ad/the-viking-age/the-monuments-at-jelling/the-jelling-stone/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c9c8e2b85aed8d7d",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4437293/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/srep10059",
+          "title": "Representation of the Numerosity 'zero' in the Parietal Cortex of the Monkey",
+          "publisher": "Scientific Reports 5:10059（2015）；Okuyama S, Kuki T, Mushiake H（東北大學醫學部生理學）",
+          "version": "Europe PMC 開放全文 JATS XML（PMC4437293.1）",
+          "accessed_on": "2026-11-12",
+          "read_via": "沒有重抓：照 BRIEF「已快取只讀摘要的直接讀快取全文」，讀上一輪作者 F94 以同一公開連結（Europe PMC REST fullTextXML）存下的 stw24/f94src/PMC4437293.xml／.txt，原樣複製到 stw25/f110src/（sha256 與 stw24 那份相同）。",
+          "reading_scope": "逐段讀：前言第 2 段、Results 全部六段（行為作業與控制刺激段、614 個細胞與 zero 神經元段、Weber 段、choice 期再活化段、exclusive／continuous 分類段、neuron-dropping 段）、Discussion 第 1、2、5 段、Methods 的 Behavioral task and Stimuli 與 Data analysis 兩節。Discussion 第 3、4 段（適應反彈、summation coding）只瀏覽；補充資料 Fig. S1–S3 沒讀（不在 XML 內）。",
+          "locator": "Results 第 1 段（72.0% vs 72.6%、去掉注視點的零、成功率隨目標數線性下降）；Results 第 2 段（614 cells、137 個 zero 神經元、注視點 1/99 與 1/76）；Results 第 5 段（66/99 exclusive、31/99 continuous）；Methods〈Behavioral task and Stimuli〉（兩隻日本獼猴、目標 0–4、三種刺激）",
+          "summary": "兩隻日本獼猴學會用左右兩個轉盤一次加一或減一個白點，把畫面上的點數調到和一開始看到的目標數（0–4，零是一片空白）相同。刺激有標準、周長相同、排成一直線三種，用來排除面積、周長、密度與排列；零的試次另外拿掉注視點，免得猴子把注視點當成「一」。兩隻都對每個目標數高於機率，成功率隨目標數（含零）線性下降、選出的數越大越分散；標準與控制刺激的成功率是 72.0% 對 72.6%，沒有顯著差別，作者據此說猴子把空集合放進了數線。從其中一隻猴子頂葉 VIP 區記錄的 614 個細胞中，137 個對「零」有差別反應；只有 1/99（目標期）與 1/76（延遲期）的 zero 神經元對有沒有注視點有反應。zero 神經元分兩型：66/99 只對零反應（exclusive），31/99 對零最強、對 1、2… 遞減（continuous）。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "神經記錄只來自一隻猴子（「a monkey」）；137 與 99、76 的分母不同（137 是兩個時段合計，99 是目標期），片中只用「614 個裡有 137 個」與「幾乎沒有一個在意注視點」，不把兩型比例和 137 混算。行為部分只有兩隻猴子。作者把結果稱為「零的非語言概念的前身」，是解讀，不是猴子懂零的證明。與池中來源無重複（pool.json 無此 PMCID／DOI；wave74-life.json 只在 not_added 提過）。研究群：東北大學 Mushiake 實驗室，與 Pfungst、維也納、Nieder、土魯斯／帕多瓦（X）、MaBouDi／帕多瓦（Y）、Ridley、Matsuzawa 各群作者無重疊（Europe PMC AUTH 查詢 Mushiake H 與各群主要作者皆 0 篇）。 覆核 V118（2026-11-12）：limitations 補『Okuyama S＋Matsuzawa T 的 30 筆 AUTH 命中都是 1970–80 年代放射科的同名作者』。",
+          "author_cache": {
+            "file": "stw25/f110src/PMC4437293.xml（原檔）；stw25/f110src/PMC4437293.txt（x2t.py 轉出的文字）",
+            "sha256_prefix": "xml 7a1b9c2f099ef685；txt 2a436623f5affa85",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4437293/fullTextXML"
         }
       ]
     },
@@ -131520,6 +132147,27 @@
           },
           "origin": "wave74-physics-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6790759/fullTextXML"
+        },
+        {
+          "canonical_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6790759/fullTextXML",
+          "title": "Retinotopic-like maps of spatial sound in primary ‘visual’ cortex of blind human echolocators",
+          "publisher": "Proc R Soc B 286（2019）；Norman、Thaler（Durham 大學）",
+          "version": "Europe PMC 開放全文 XML（出版社版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "讀第二十四輪作者已快取的同一份全文（F92-S007，stw24/f92src/PMC6790759.txt），未重抓；PMCID 與網址沿用上輪 Europe PMC REST 搜尋結果",
+          "reading_scope": "摘要（第 7 行）、2. Results 全節逐段讀（第 17–39 行，含 Figure 1–3 圖說）、受試者段（第 53 行）；未讀 Discussion、fMRI 方法與補充資料。",
+          "locator": "2. Results (a)–(d)；Figure 3；4(a) Participants",
+          "summary": "15 位男性：5 位每天用喀聲回聲定位 20 年以上的盲人專家、5 位不會回聲定位的盲人、5 位明眼人。專家的聲音地圖彼此差很多：EE3、EE5 同時有偏心度與對側排列，EE1 較少，EE2、EE4 看不出任何型態；個案統計只有 EE1、EE3、EE5 的回聲地圖顯著比對照組更像視網膜排列。多元迴歸裡「是不是專家」與「專家×回聲定位能力」顯著，「失明」本身不顯著；只有專家組內，地圖越像視網膜排列，回聲定位越好（r = 0.963，p = 0.008），其他人沒有這種相關。對一般聲源（非回聲）的同樣分析，整體模型不顯著。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "每組 5 人、稀疏取樣 fMRI；r 只來自 5 位專家；「依任務而非感官組織」是作者的詮釋。 與池中 SRC-fa3d05e37d2c8438 同一頁（同一網址），本輪是補讀 Results，不另立文件。 覆核 V119（2026-11-12）：summary『EE2、EE4 看不出任何型態』加註『作者看圖的描述，個案統計顯著的是 EE1、EE3、EE5』。",
+          "author_cache": {
+            "file": "f111src/PMC6790759.txt（原始 f111src/PMC6790759.xml）",
+            "sha256_prefix": "f381cd437f99955b",
+            "xml_sha256_prefix": "4ac9c4413ecd6083",
+            "note": "與第二十四輪作者快取 stw24/f92src 同一份檔案的複本（雜湊相同），本輪未重抓；.txt 為上輪 f92tools/x2t.py 由 Europe PMC fullTextXML 轉出，行號指 .txt 行號。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6790759/fullTextXML"
         }
       ]
     },
@@ -133276,6 +133924,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.dep.gov.taipei/News_Content.aspx?n=ACEFA960B5A4ACD7&s=985F62E5F48A1ABE"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fd9927e39e3e8a34",
+      "url": "https://hess.copernicus.org/articles/30/267/2026/hess-30-267-2026.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.5194/hess-30-267-2026",
+          "title": "Tracing near-surface runoff in a pre-Alpine headwater catchment",
+          "publisher": "Hydrology and Earth System Sciences 30:267–287（2026）；Anna Leuteritz、Victor Aloyse Gauthier、Ilja van Meerveld（蘇黎世大學地理系）",
+          "version": "正式出版版（CC BY 4.0；2026-01-20 出版，HESS 同儕審查後接受）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果原樣給出 HESS PDF 連結；curl 預設標頭下載（HTTP 200，application/pdf），pdftotext -layout 轉文字",
+          "reading_scope": "摘要、1 Introduction、2.1 研究區、3.3.2 抵達時間（celerity／velocity 定義）、3.3.4 二成分混合、4.1–4.3（含表 4、表 5）、5.3.2–5.3.3、6 結論；3.1–3.2 實驗設置、4.4–5.2 與補充資料只略讀",
+          "locator": "摘要；3.3.2（celerity 以水量脈衝後第一次水位上升、velocity 以示蹤劑第一次到達計，皆為最大值）；4.2 與表 4（celerity）；4.3.1 與表 5（最大顆粒速度）；4.3.2（氘標記水比例）；5.3.3（kinematic ratio）；6 結論",
+          "summary": "瑞士前阿爾卑斯 Alptal 的 Studibach（20 ha、年雨量約 2300 mm、低透水潛育土）兩塊 8 m 寬、>80 m² 的截溝坡面試區（森林中的天然空地、放牧草地），在灑水達穩定、接近飽和後，另加水量脈衝量『訊號傳得多快』（celerity），並用鹽、螢光素、溴與氘標記水量『水本身走多快』（最大顆粒速度）。表 4：地表逕流的 celerity 空地平均 150±80 m/h（去掉 4 m 處 240 m/h 離群值仍 105）、草地 64±7 m/h；表土側流空地 34±5、草地 41±10 m/h。表 5：最大顆粒速度地表逕流空地 51±14、草地 24±1 m/h；表土側流空地 30±9、草地 17±6 m/h。5.3.3 與結論：地表逕流的 celerity 是速度的 2–3 倍，草地的表土側流也是 2–3 倍；但空地的表土側流兩者幾乎相同，作者歸因於大孔隙等優勢流網路。4.3.2：空地試區氘標記水在地表逕流中最高佔 30%（開始灑後 36 分鐘），表土側流最高 8%。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "兩塊坡面試區、各一次實驗、人工灑水接近飽和穩定狀態；速度與 celerity 都是『第一次到達』算的最大值，且是側向（順坡）流，不是 F97-S006（E74-051）那種垂直濕潤鋒；作者自己寫近飽和條件使 celerity 難與其他研究直接比較。4 m 處 celerity 的不確定度 ±480 m/h 很大。結論段把速度寫成『17 to 51 mm h−1』，與表 5 的 m h−1 不一致，以表 5 為準。5.3.3 引 van Verseveld 2017 的 αk 3–20 與 Torres 1998 的 15 是引前人，不計。研究群：本篇三位作者都不在題目已用任何來源的作者名單上；但 Europe PMC REST 查得 van Meerveld（Tromp-van Meerveld）曾與 McDonnell 合著（2007）、與 Kirchner 合著（2024–2025 三筆）、與 Rinderer（F97-S001 共同作者）合著（2019），且試區與 Erlenbach 同在 Alptal——若覆核把 still_missing 的『非 McDonnell 合作網』從嚴解讀為二度合作關係，本篇併入群 A 或 B＋F，兩群都已封頂，計 0。與池中無同一頁（grep pool.json：hess-30-267、Studibach、Leuteritz 皆 0）。 覆核 V120（2026-11-12）：limitations 的研究群改為定論：併入群 A（van Meerveld 與 Kirchner、Rinderer、von Freyberg 直接合著，另與 McDonnell 合著；Studibach 與 Erlenbach 同屬 Alptal 研究流域），已封頂，計 0；『根』不是原文對空地大孔隙的描述（原文為 macropores created by animals）。",
+          "author_cache": {
+            "file": "hess-30-267-2026.pdf / hess-30-267-2026.txt",
+            "sha256_prefix": "503bfa8f087b0d53 / f0490f7272a53fe5",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave75-earth-20261111",
+          "original_url": "https://hess.copernicus.org/articles/30/267/2026/hess-30-267-2026.pdf"
         }
       ]
     },
@@ -338610,6 +339284,900 @@
       "production_ready": false
     },
     {
+      "id": "E75-001",
+      "question": "北磁極以前也像現在這樣跑嗎？七千年來它都在哪裡？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_pole_7kyr_wander_cals7k_model",
+      "answer_target": "從模型看，它一直在北極附近繞，而且平常跑得慢得多。Korte 與 Mandea 用考古與湖泊沉積物建的七千年地磁模型推算：北、南磁極從沒跑到北／南緯 73° 以下，各經度都到過，看不出偏好哪一邊；北磁極速度一般每年不到 10 公里，只有大約西元前 4500 年和 1300 年兩段比較快。作者自己提醒：七千年模型算出的磁極位置要謹慎看待，而且持續不到一百年的加速（他們認為現在這次可能就是）這種模型根本解析不到——所以不能拿這個模型說『現在的狂奔前所未見』，也不能說『以前沒這麼快過』。",
+      "scope": "磁極（傾角 90° 的點），不是地磁極；七千年位置與速度是模型推算，作者自己標不可靠；『兩段較快』不放 15–20 km/yr 的精確數字，或標『模型估計』；不與現代 36 或 50–60 km/yr 畫在同一把尺上。",
+      "source_locator": "F108-S002 3.2 節末段；5.2 節第 4–6 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：把 E74-062 原本引用的『7000 年亂繞、西元前 4500 和 1300 年』升為一手，另加『從未低於 73°』與作者對百年內加速解析不到的保留。gufm1 的近 400 年速度與 E74-059、E74-061 重疊，不計。GFZ 群（Korte 是 Brown 2018 共同作者）。E74-062 對應改成只留 Livermore 的十年預測。 原提案 F108-001（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；有一手原文，取代 E74-062 中引用前人的七千年軌跡；刪掉作者自己的比較句。算 0.5，歸 GFZ 群（Korte）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁極本來就在北極附近繞圈，這次只是模型看得到的範圍裡跑得特別快。",
+        "visual": "北極俯視圖，七千年的細線在 73° 圈內繞來繞去，兩段標『較快』，邊上一行小字『模型推算』。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-77df5371f0a454af",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S002 3.2 節末段；5.2 節第 4–6 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E75-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E75-002",
+      "question": "科學家能預測北磁極下一步往哪跑嗎？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_pole_forecast_limits_independent_poles",
+      "answer_target": "很難。2008 年 Korte 與 Mandea 推論：北磁極的加速和地核表面一塊反向磁通有關，如果它繼續往西伯利亞那團磁通的方向走，很可能會減速一陣子；但只要兩大團磁通的強弱明顯改變、加拿大那團重新占上風，北磁極就會掉頭，而且大概相當突然。他們的結論寫：目前對地球發電機的了解，還不足以預測地核磁場的變化，連續觀測不可少。他們也發現北、南磁極和偶極軸的移動彼此沒有顯著相關，南北兩個磁極各跑各的。",
+      "scope": "2008 年的推論，附『若維持方向』的條件；不得說『預言成真／失敗』；不與 E74-061、E74-063 的速度相減或接成因果；『掉頭靠磁通拔河』的機制已在 E74-061、E74-062，本條只講『預測不了』與『南北各跑各的』。",
+      "source_locator": "F108-S002 Abstract；3.1 節末段（無顯著相關）；6 Conclusions 第 1、3 段",
+      "premise_status": "screened",
+      "notes": "算 0.25：『可能減速但也可能突然掉頭、現有知識無法預測』與『南北磁極各跑各的』合為一句；『反向磁通斑』機制與 Livermore（E74-061）同類，不另計。GFZ 群合計 1.75，封頂 2.0 內。可用在第一轉折後段，補上『已減速』沒有單一原文時的誠實說法：連研究者自己都說預測不了。 原提案 F108-002（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；0.25 合理：機制與 E74-061／E74-062（Livermore 兩團磁通拔河、小重組就可能掉頭）同義，真正新增只有『現有知識不足以預測』與『南北磁極、偶極軸互不相關』一句。補上原文的條件句。GFZ 群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連研究磁極的人都寫明：它下一步往哪跑，現在還預測不了。",
+        "visual": "磁極小點站在岔路口，一條箭頭往西伯利亞、一條虛線掉頭回加拿大，旁邊是 2008 年論文的一句話。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-77df5371f0a454af",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S002 Abstract；3.1 節末段（無顯著相關）；6 Conclusions 第 1、3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E75-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E75-003",
+      "question": "像南大西洋異常這樣的弱場區，以前出現過嗎？後來怎麼了？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.recurrent_holocene_field_anomalies_dipole_minima",
+      "answer_target": "出現過，而且不只一次。瑞典隆德大學 Nilsson 等人用考古與沉積物紀錄重建過去九千年的地磁場（同時估計資料年代、處理沉積物的平滑）：近四千年偶極矩大約每 650 年起伏一次，而偶極矩的低點往往伴隨像今天南大西洋異常那樣、東西半球不對稱的弱場區；例如西元前 1300 年和 700 年前後的兩個低點，太平洋半球都出現過弱場異常。那段時間偶極增強和減弱的平均速率（依三種模型假設，每年 4–16 nT），作者說和近代偶極衰減的速率相當。",
+      "scope": "九千年模型，南半球資料少、不確定度大；更早的約 1300 年週期作者說可能是資料不足造成，不入片；『與近代相當』是作者的比較，近代速率是引用值；不說這證明『不會翻轉』；不說是與 Brown 2018 無關的獨立研究（同一合著網、用 Brown 等的 GEOMAGIA 資料庫、致謝 Brown 協助解讀）。",
+      "source_locator": "F108-S001 Abstract；Variations in the DM 第 4–5 段；Recurrent Geomagnetic Field Anomalies 第 4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：反覆出現的弱場異常＋偶極低點的對應合一條；變化率數字併入，不另算。與 E74-066（Brown 2018，5–3 萬年前）、E74-069（Tarduno，南非 1000–1600 年）時段與方法都不同，是第三個獨立研究群。Nilsson 群（與各群無共同作者）。 原提案 F108-003（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；有原文，0.5 可。研究群改歸 GFZ 合著網（見 notes），不是作者寫的『第三個獨立研究群』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "像南大西洋異常的弱場區，九千年裡出現又消失過好幾次。",
+        "visual": "九千年時間軸上偶極矩曲線起伏，每個低谷上方冒出一塊地圖上的藍色弱場斑，之後又淡掉。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-09ee20bbc8c3cb4f",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S001 Abstract；Variations in the DM 第 4–5 段；Recurrent Geomagnetic Field Anomalies 第 4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E75-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E75-004",
+      "question": "照過去的例子，南大西洋異常接下來會怎樣？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.saa_600bce_analog_forecast_with_caveat",
+      "answer_target": "有一個類比說它可能在幾百年內消失，但作者自己也指出不合的地方。Nilsson 等人提出，西元前 600 年前後那種強烈不對稱的場可能是今天的古代類比：照這個類比，南大西洋異常可能在接下來幾百年內消失，場在約 300 年內回到比較對稱的樣子，偶極也可能變強。但他們同時寫：現在的偶極矩還在下降、沒有放慢的跡象，這和類比不一致，顯示這個類比的侷限。",
+      "scope": "一律說『依類比推論』，不說『預測』『科學家算出 300 年後消失』；一定連同『偶極仍未放慢、與類比不符』同句講；不說『快要翻轉』也不說『不會翻轉』；不與 Laj & Kissel 的約 500 年或 Brown 的推論合成一個數字；不稱為獨立第三方。",
+      "source_locator": "F108-S001 Abstract 末句；Discussion〈Ancient Analogs of the Present Day〉全段",
+      "premise_status": "screened",
+      "notes": "算 0.5：類比預測與作者自己的保留合一條。是第二轉折缺的獨立第三方：與 Brown 2018（GFZ）同方向（異常會過去），但作者自己承認現況不符，正好讓片中兩派並列。Nilsson 群合計 1.0。 原提案 F108-004（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；有原文、兩句並陳，0.5 可；修正 300 年的主詞。歸 GFZ 合著網。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "過去的例子說它可能幾百年內就散掉，但作者也說：現在的偶極還沒有要停下來的樣子。",
+        "visual": "左邊西元前 600 年的弱場地圖，右邊 2020 年南大西洋異常，中間一個問號；下方一條還在往下的偶極曲線。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-09ee20bbc8c3cb4f",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S001 Abstract 末句；Discussion〈Ancient Analogs of the Present Day〉全段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E75-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E75-005",
+      "question": "地磁翻轉時，南北對調那一下要多久？整個過程又多久？",
+      "domain": "地質",
+      "mechanism_key": "geomagnetism.chiba_section_flip_1kyr_instability_20kyr",
+      "answer_target": "日本茨城大學與國立極地研究所的 Haneda 等人分析千葉一段沉積快又連續的海底地層，得到和熔岩紀錄同樣的圖像：方向從反轉切到正常，在約 1.1±0.4 千年內完成，但前後方向與強度反覆偏離常態，至少約兩萬年；不穩在強度回升前約三千年結束，而回升後的場比翻轉前還強。",
+      "scope": "單一地點沉積物，1.1 千年依單一年代模型；不寫本篇的年代數字（避免與 E74-071 的 77.3 萬年並列）；不引前言的義大利『百年內』說法；『兩種獨立紀錄都說約兩萬年』只當佐證，不另計。",
+      "source_locator": "F108-S003 Abstract；3.4 節第 3 段；3.5 節末段；4 Conclusions 末兩段",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 E74-071（Singer，熔岩＋對齊）同一次翻轉、同結論（整個過程約兩萬年），但方法（連續沉積）與研究群獨立，新增的是『切換本身約一千年』與『翻完後場比翻前強』。Haneda 群，與各群無共同作者。這是 still_missing 第（5）項。 原提案 F108-005（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；下修 0.5→0.25：與 E74-071 同一次翻轉、同結論，新增只有『翻完更強』與較窄的切換時間。Haneda 群，查不到與 Singer 2019 作者的合著（Europe PMC AUTH 0；WebSearch 未見），單獨成群。點名（5）『翻轉持續時間的沉積物研究』，回答同一問題，可收。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真正翻過去那一下約一千年，前後的混亂卻拖了兩萬年，而且翻完後的場比翻前還強。",
+        "visual": "千葉的地層剖面，一條細紅線標『翻轉』，上下各有好幾道灰色『不穩』帶，旁邊一條強度曲線先跌後升到更高。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e1cb95fbbcd9fbc",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S003 Abstract；3.4 節第 3 段；3.5 節末段；4 Conclusions 末兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E75-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E75-006",
+      "question": "熱帶雨林的暴雨、甚至颱風等級的熱帶氣旋，溪裡流的總該是剛下的雨了吧？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.tropical_peak_vs_total_event_water",
+      "answer_target": "要看你問的是哪一刻。澳洲昆士蘭東北部濕熱帶兩條陡峭雨林小溪（約 1.6–1.7 平方公里），研究者用氧-18 把十場暴雨的溪水拆成『這場雨的水』和『雨前就在集水區裡的水』（以漲水前的溪水代表）。兩條溪都是洪峰那一刻『這場雨的水』比較重要：Thompson Creek 三場，洪峰那一刻約 25% 到 42%，但整場流過的水加起來只有約 5% 到 10% 是這場雨；Atika Creek 七場（其中五場的雨與三個熱帶氣旋有關，氣旋眼距集水區約 95–160 公里，其餘兩場是季風雨）事件之間差得更大，整場從約 3% 到 84% 都有。作者的結論是：整場流量一般以雨前就存在集水區的水為主（超過一半）。",
+      "scope": "兩個小集水區、十場事件、各一個雨季；二成分 δ18O 分離，雨水端元每場一個樣本，作者自己寫端元假設不一定成立、土壤水是未量到的重要來源。數字只用表 3、表 4 與 4.2、摘要結論的『整場一般 >50% 雨前水』。不用：3.3 正文與表 3 錯位的 AC2／AC3 數字、3.5 把 TC2／TC3 併組的寫法、4.4 那句相反的 event waters at least 50%、結論的 dominated during peak flows (9.9%–70.6%)，以及摘要與結論的『集水區越濕越明顯』——3.5 與表 3 顯示 Atika 雨季中事件水比例反而逐場上升（AC2 整場 84.1%），原文自相矛盾，片中不說，也不得接到 E74-046『看雨前濕度』成因果。表 4 的 TC1–TC3 是 Thompson Creek 事件編號，不是熱帶氣旋，片中不可說成『三個颱風』；Atika 的熱帶氣旋是間接影響（氣旋眼不經過集水區），不說『颱風直撲』。不與臺灣研究（E74-049，模型估計、不同方法）的兩成到八成相減或並列成矛盾；也不與 E74-045 Erlenbach 的 23% 平均互比（定義不同：本篇 Qtot 為單場合計）。不引 Babinda 舊數字（前人）。",
+      "source_locator": "摘要；2 方法末段；表 1；表 3；表 4；4.2 第 1 段；5 結論",
+      "premise_status": "screened",
+      "notes": "算 0.75：一篇、兩個集水區、一個結論（洪峰當下事件水比例高於整場；整場以雨前水為主，事件間差很大）。新增在『洪峰那一刻 vs 整場合計』兩種算法差很大，這是舊核心沒有的；熱帶、含熱帶氣旋外圍降雨，補 still_missing 第 (2) 項。研究群 J（JCU），Europe PMC AUTH 查 Munksgaard、Bird MI、Lim HS 與題目各群作者（Kirchner、von Freyberg、Barnard HR、Brooks PD、Lee JY、Soulsby C、Uhlenbrook、Morgenstern、Strasser、Vereecken）無水文合著（命中者皆為醫學同名）。不屬 A、B＋F、H。原文有三處正文與表或摘要不一致，已在來源 limitations 列出並只用表與摘要。 原提案 F112-001（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V120（2026-11-12）改字後收；數字、單位、事件編號與熱帶氣旋歸屬逐一核對無誤，作者排除的三處矛盾得當；但答案沿用了摘要的『集水區越濕越明顯』，與同篇 3.5 及表 3 的 Atika 季節趨勢相反，已刪，並補記兩處作者漏列的不一致與端元限制。研究群 J（JCU：Lim、Munksgaard、Bird）：Europe PMC AUTH 查 Munksgaard、Bird MI 與 McDonnell、Kirchner、Barnard、Morgenstern、Soulsby、Stewart MK 皆 0 筆，作者另查的 Lee JY、Uhlenbrook、Strasser、Vereecken 等亦無水文合著；本篇只『引用』McDonnell（Muñoz-Villers & McDonnell 2012 等），不是共同作者。新群，算 0.75（一篇兩集水區一個結論：洪峰 vs 整場、整場多為雨前水、事件間差很大）。池中無同答案：E74-045 是單一溫帶集水區 24 場平均，不區分洪峰與整場；pool.json 無 hyp.14722、Atika、Thompson Creek；mechanism_key 未被使用。符合 still_missing 第 (2) 項（不屬 A、B＋F、H 的熱帶暴雨同位素分離開放原研究）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一場雨，洪峰那一刻和整場合計，答案可以差好幾倍——問『溪水是不是剛下的雨』，要先問『哪一刻』。",
+        "visual": "兩條色條並排：上條『洪峰那一刻』新雨色約三到四成；下條『整場加總』新雨色只剩一成以下（Thompson Creek 表 4）；地圖標昆士蘭濕熱帶。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6c056027dbf19ff",
+          "origin": "wave75-earth-20261111",
+          "locator": "摘要；2 方法末段；表 1；表 3；表 4；4.2 第 1 段；5 結論",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E75-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E75-007",
+      "question": "『訊號比水跑得快』只是那一片山坡的特例嗎？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.plot_celerity_velocity_ratio_preferential_flow",
+      "answer_target": "在另一處山坡也量得到，但差距看土壤。瑞士前阿爾卑斯 Alptal 的 Studibach，研究者在兩塊坡面試區灑水到接近飽和、流量穩定後，一邊在不同距離多加一股水、看出口流量多快有反應（訊號），一邊放鹽、螢光素、溴和氘標記水、看最先到的示蹤劑多快到（水本身）：草地上的地表逕流，訊號平均每小時約 64 公尺，最先到的示蹤劑平均每小時約 24 公尺；作者寫，兩塊試區的地表逕流訊號都是水速的 2 到 3 倍，草地的表土側流也是。可是森林空地的表土側流，兩者幾乎一樣（約每小時 34 對 30 公尺）——作者歸因於大孔隙等優勢流路徑，並在這塊空地看到好幾個動物挖出的孔洞。",
+      "scope": "兩塊試區、各一次人工灑水、接近飽和的穩定狀態；側向順坡流的『第一次到達』最大值，與 E74-051 的垂直濕潤鋒不是同一種量，數字不可互比、相除或相減。2–3 倍照摘要與 5.3.3，不自算其他倍數。空地地表逕流 celerity 不確定度很大（4 m 處 240±480 m/h），不用 150、240、105 m/h。結論段的 mm h−1 是單位誤植，用表 5 的 m h−1。不說『根』造成空地大孔隙。引前人的 αk 3–20、15、Scaini 1.02–1.06 不用。研究群屬 A（見 reason），計 0。",
+      "source_locator": "摘要；3.3.2；表 4；表 5；5.3.3；6 結論",
+      "premise_status": "screened",
+      "notes": "算 0.75（暫定）：一個實驗、一組對照（訊號 vs 水速 2–3 倍，加上空地表土側流幾乎相同的例外）；氘標記水最高 30%／8% 是同一實驗的細節，不另算。補 still_missing 第 (4) 項，讓轉折二不只靠 H. J. Andrews 一片山坡，也替轉折二加上『差距看土壤』的限制。研究群 K（蘇黎世大學）：作者名單與題目已用來源無重疊；但 van Meerveld 曾與 McDonnell、Kirchner、Rinderer 合著（Europe PMC REST 查得），從嚴解讀『非 McDonnell 合作網』則併入已封頂的群 A 或 B＋F、計 0，請覆核裁定。 原提案 F112-002（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V120（2026-11-12）改字後收；數字與單位屬實，答案改掉原文沒有的『根』並把『水本身最快』改為『最先到的示蹤劑』。研究群裁定：本篇三位作者不在題目已用來源的名單上，但通訊作者群的 van Meerveld 與群 A 的 F97-S001 四位作者中三位有直接合著——Kirchner（Europe PMC：Liu…van Meerveld、Kirchner 2025；Scandellari 等 2024 兩筆）、Rinderer（Europe PMC：Zuecco、Rinderer…van Meerveld 2019；本篇參考文獻另列 Rinderer、van Meerveld 等 2014、2016 與 van Meerveld、Fischer、Rinderer 等 2018，皆在同一個 Studibach）、von Freyberg 與 Kirchner 同列（本篇參考文獻 Stähli、Seibert、Kirchner、von Freyberg、van Meerveld 2021，Alptal 研究回顧）——並與 McDonnell 合著（Europe PMC：Lehmann…Tromp-van Meerveld、McDonnell 2007；參考文獻 Tromp-van Meerveld & McDonnell 2006a、b，Uchida、Tromp-van Meerveld、McDonnell）。依第二十四輪『與題目已用的各群有共同作者就算同群』與 still_missing (4)『非 McDonnell／Barnard／Brooks 合作網』，從嚴併入群 A（ETH／WSL＋IDAEA；連結最多，且 Studibach 與 Erlenbach 同屬 WSL 的 Alptal 研究流域，近飽和條件還引 Rinderer 2014 為據）；群 A 已封頂 2.0，本核心計 0。它仍可作 E74-051 的旁證（另一處山坡、另一種量法），但不滿足 still_missing (4) 要的『第二個獨立研究群』。池中無同答案（pool.json 無 Studibach、Leuteritz、hess-30-267；celerity 只有 E74-051 與無關的 O3060 洪波），mechanism_key 未被使用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "壓力比水跑得快在別的山坡也量得到，但不是永遠——土裡有大孔隙時，水本身也能幾乎一樣快。",
+        "visual": "兩塊試區俯視示意：草地上兩支箭頭『訊號 64』『水 24 m/h』長短不同；森林空地表土裡兩支箭頭『34』『30』幾乎一樣長，旁邊畫根孔與蚯蚓洞。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fd9927e39e3e8a34",
+          "origin": "wave75-earth-20261111",
+          "locator": "摘要；3.3.2；表 4；表 5；5.3.3；6 結論",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E75-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L75-001",
+      "question": "費氏數是植物天生的固定答案，還是同一條花序長到一半也會換？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.verbena_serial_pattern_transitions",
+      "answer_target": "會換。弗羅茨瓦夫大學的研究者用波蘭野生族群的種子建了一片馬鞭草田：營養期葉子兩兩對生，一開花，花序軸上的苞片改成螺旋，多半是費氏型（2 條對 3 條），少數是 Lucas 型（3 對 4）或雙費氏型；之後同一條花序還可能一換再換，例如 2:3→3:5→3:4→4:4→4:5，連同對生、三輪生、四輪生，整個族群共記到七種排列。12 株裡，花序一開始的螺旋是費氏型的比例每株從 63% 到 93%；而長在克羅埃西亞沃迪採附近的同種植株，所有花序都只停在費氏型。切開莖看，維管束的數目在頂端換型之前就先變了（費氏型 5 束、Lucas 型 7 束）。至於為什麼換：從葉變苞片那一次，原基相對頂端的大小確實從約 30% 掉到約 15%；但之後的換型，研究者量不出不同螺旋型的苞片大小差別，自己說原因仍是個謎。",
+      "scope": "『由遺傳控制』只是作者依族群與個體差異的推定；維管束先變是觀察到的順序，訊號角色作者說待研究，不得說『維管束決定葉序』；原基每步縮 1% 的模擬只讓同一型的螺旋數增加，連續縮小反而無法讓費氏型換成別型，片中不講成『原基變小造成換型』，也不得說『換型是幾何在決定』；頂端只量 10＋8 個。63%–93% 是每株花序第一個螺旋為費氏型的比例，不是苞片比例；七種排列含輪生型。克羅埃西亞植株是當地生長的、株數未寫。不得說『馬鞭草不排費氏』。",
+      "source_locator": "Developmental changes 第 1–2 段與表 2、表 3；頂端量測段；Vascular system 第 1 段；Computer modeling 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.75：同一研究的換型序列與表 3 比例算 0.5，大小比例（30%／15%）與 1% 模擬合算 0.25；維管束先變是同一觀察系列的附帶，不另計。新群（弗羅茨瓦夫；與 Fierz、Swinton 等無共同作者）。怎麼加深轉折：轉折一從『有些植物例外』推進到『同一條枝子上費氏只是其中一站』——費氏數是頂端某個時期的狀態，不是物種背的答案；轉折二多一個非生長素群的證據：換哪一型跟原基相對頂端的大小有關，是幾何在決定，不是植物在算。放在向日葵之後、機制之前當橋，不當又一個例外。去重：pool.json 無 Verbena／馬鞭草；wave74-life 只在 F89-NA009 提過（只讀摘要）。 原提案 F109-001（目標 F89-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；數字、單位、主詞都在原文；改掉三處：（1）作者的編輯點與轉折把 1% 模擬接成『換型跟原基相對大小有關，是幾何在決定』，與原文相反——實測次級換型看不出原基大小差別、連續縮小在模擬中無法讓費氏型換型、作者自稱原因是謎，只有初次換型（葉→苞片）有明顯大小變化；（2）『克羅埃西亞來的植株』改為長在當地的植株；（3）七種排列註明含輪生型。算 0.75 照作者（換型序列與表 3 範圍 0.5、維管束先變與初次換型原基大小 0.25），模擬不計。研究群：Europe PMC AUTH 查得 Gola、Jernstedt、Zagórska-Marek 2007 共同作者，故 Jakubska-Busse 等 2017（Gola）與本篇同屬弗羅茨瓦夫群，但題內未用，不影響封頂（本群 0.75）。另 Zagórska-Marek 與 Jönsson、Hamant 合著 Majda 2017（表皮細胞，非本題文獻），屬題外間接連結；本題封頂照第二十四輪做法只看題內各篇作者名單是否重疊，不併群，記錄備查。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一根花莖從 2:3 一路換到 4:5：費氏型只是其中一站，而且原因連研究者都還說不清。",
+        "visual": "馬鞭草花序橫切『雪花』四連圖（2:3、2:4、4:5…），旁邊一個圓（頂端）配越來越小的圓（原基），螺旋數跟著跳。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-83641d401b99327a",
+          "origin": "wave75-life-20261111",
+          "locator": "Developmental changes 第 1–2 段與表 2、表 3；頂端量測段；Vascular system 第 1 段；Computer modeling 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L75-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L75-002",
+      "question": "樹幹變粗七年之後，還看得到小苗時期的葉序嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.cherry_trunk_mri_juvenile_spiral",
+      "answer_target": "看得到。密西根州立大學把一棵 7 年生甜櫻桃 1.15 公尺長的老樹幹拿去做 MRI，休眠芽留下的維管束痕跡穿過 7 年的增粗木材仍在，找到 36 個節，全是苗木第一年排下的；這 36 個點排成櫻桃書上寫的 2/5 葉序（最顯眼的是 2 條對 3 條的斜列），平均夾角表 2 約 143°。",
+      "scope": "一棵樹、36 個節、方法論文；(3,5)(5,8) 斜列是由 Adler 定理從平均夾角推出，不是數到的；平均夾角原文前後不一（表 2 約 143°、圖 7 說明約 139°），不得拿來說『量到不是黃金角』；2/5 約 144° 是櫻桃的傳統值，不是新發現。不放入 F89-T1。",
+      "source_locator": "摘要 Results；Plant material 段；表 2；圖 7 說明；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "本題計 0；入池作獨立小核心（樹幹保存幼年葉序）。 原提案 F109-002（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；作者版本的賣點『數得出費氏、角度卻不是 137.5°，第一個在成樹上量到的反例』站不住：（1）『看得到 3 對 5、5 對 8』是用前人 Adler 定理從平均夾角推出的，作者自己也說標準誤可能排除 8 斜列；（2）平均夾角原文自相矛盾，取圖 7 的約 139° 時與 137.5° 只差約一個標準誤，不能當『不是黃金角』的量測；（3）2/5（約 144°）本就是櫻桃的傳統葉序分數，『葉序分數不等於黃金角』是教科書常識，原文也沒有拿它檢驗黃金角；（4）『實測角度會偏離 137.5°』池中 L74-047 已有（阿拉伯芥頂端 128–146° 的比例），不新增。可靠的部分只剩『樹幹 MRI 保存幼年 2/5 葉序』，與本題兩個轉折無關，本題計 0；入池時改問題、0.25 條。研究群：Europe PMC AUTH 查 Eithun、Larson、Lang G、Chitwood、Munch 與題內各篇無共同作者（Robertson 2025 的 Lang D 是另一人）；Chitwood 曾與 Strauss 2020 的 Smith RS 合著（Martinez 2016、Chitwood 2012），為題外間接連結，不併群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "樹幹裡藏著 8 年前的葉序：數字是費氏，角度卻不是黃金角。",
+        "visual": "樹幹 MRI 切片疊成圓柱、展開成格子，36 個亮點連成 2 條與 3 條斜線；角度計停在 143° 而不是 137.5°。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-32f9b4c99374fb9b",
+          "origin": "wave75-life-20261111",
+          "locator": "摘要 Results；Plant material 段；表 2；圖 7 說明；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L75-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L75-003",
+      "question": "螺旋排錯一次，後面會不會整串亂掉？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.inhibitory_field_error_self_correction",
+      "answer_target": "多半不會，錯一下就回來——至少在模型裡是這樣。里昂與 Inria 的研究者先在野外找：歐洲油菜、七葉樹、常春藤、蒜芥、一種風信子類（Muscari comosum）、煙樹，彼此不相近的植物上都輕易找到側枝先後對調的錯位（照片舉例，沒有統計比例）。再用經典的『舊器官抑制附近』模型分析：頂端周圍可以長新器官的低谷其實早就排好，彼此隔著整數倍的夾角；在模擬裡硬讓下一個器官長到第二低的谷，接下來那個器官馬上補回原本的位置，再下一個就回到常規，夾角只多出一個短短的 M 形、之後回到約 137 度，被打亂比較久的是器官冒出來的時間間隔。",
+      "scope": "『低谷早排好、錯一下就回來』是模型模擬，不是量測；多物種錯位只是照片舉例；『錯的是時間不是位置』的結論已在 L74-045 講過，本條只補模型裡的理由，不重講結論與 L74-045 的數字；阿拉伯芥 30% 共同冒出是引用 Besnard 2014，不講。",
+      "source_locator": "Results 第 1 節與圖 2 說明；第 2 節 Property 1–3 與強迫擾動段（圖 3G–H）",
+      "premise_status": "screened",
+      "notes": "算 0.5：多物種野外錯位 0.25（只有舉例）＋模型的『空位預先排好、錯誤自癒』0.25（模型，不升格）。里昂群：L74-045 1.0＋F109-003 0.5＋F109-004 0.5＝2.0，剛好封頂（Refahi、Vernoux 與 Landrein 2015 共同作者；Godin、Farcot 與 Azpeitia 2021 共同作者）。怎麼加深轉折：L74-045 只說『錯的是先後』，這條補上為什麼——在抑制場裡位置是周圍舊器官的空隙決定的，所以錯了會自己回正；這正是轉折二『沒有誰在算角度、是空位在決定』的直接證據，而不是又一種例外。與池中 SRC-0be4910b0c7e344f 同一頁。 原提案 F109-003（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；引文、物種、模型條件都對；『葡萄風信子』改成原文的 Muscari comosum（不是常見的葡萄風信子），刪掉與 L74-045 重複的結論句，『里昂群』照併群。算 0.5（野外多物種錯位 0.25、模型的低谷預排與自我回正 0.25），可接受但已是上限：兩半一半是無比例的舉例、一半是模型。研究群：Refahi、Vernoux 與 Landrein 2015（L74-045）共同作者；Godin、Farcot 與 Azpeitia 2021（F109-004）共同作者——三篇併為里昂群，L74-045 1.0＋本條 0.5＋F109-004 0.5＝2.0，剛好封頂、未放寬。池中 SRC-0be4910b0c7e344f 同一網址同一快取：不另立來源，改為該來源新增一筆 reading（見 source_fixes）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排錯隊的螺旋會自己歸隊：位置是空位決定的，不是記在誰的腦子裡。",
+        "visual": "頂端俯視：一圈抑制的高低地形，五個低谷；強迫一顆跳到第二低谷，下一顆補位，夾角曲線出現 M 字後回平。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0be4910b0c7e344f",
+          "origin": "wave75-life-20261111",
+          "locator": "Results 第 1 節與圖 2 說明；第 2 節 Property 1–3 與強迫擾動段（圖 3G–H）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L75-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L75-004",
+      "question": "寶塔花椰菜一層套一層的螺旋是怎麼來的？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.cauliflower_curd_floral_memory_meristem_size",
+      "answer_target": "是一大堆『開花失敗』疊出來的。花椰菜上每個小突起本來要長成花，卻沒長成，又變成新的花序、再冒出更小的突起，所以螺旋一層套一層：花椰菜最高到第 7 層以上，甘藍只有 3 到 4 層。法國、西班牙、義大利等團隊用長得像花椰菜的阿拉伯芥突變株，結合基因網絡與 3D 生長模型，推論這些分生組織曾短暫進入『開花狀態』、留下記憶，退回後才一層層長下去。他們再加一個會讓頂端越長越大的突變（clv3），阿拉伯芥的『花椰菜』就從圓球變尖，各個尺度都冒出像寶塔花椰菜的小圓錐；而真正的寶塔花椰菜，CLV3 基因的表現也比一般花椰菜低。",
+      "scope": "『開花狀態的記憶』是突變株實驗加模型的推論，片中說『研究者推論』；阿拉伯芥長出的是『像寶塔花椰菜』的形狀；頂端變大→間隔變短→螺旋變多、寶塔花椰菜出葉間隔會變，都是引用前人；n≥7 對 3–4 與 CLV3 表現出自補充圖 S5、S6（補充材料未讀，只依正文）；版本是米蘭大學典藏標示的接受稿（post-print），未與 Science 正式版逐字比對。本篇不談費氏計數，不得說『花椰菜在算費氏數』或『科學家種出寶塔花椰菜』。",
+      "source_locator": "摘要；主文第 1 段與圖 1 說明；第二節末段；第三節全段",
+      "premise_status": "screened",
+      "notes": "算 0.5：『開花失敗＋記憶』的機制與 clv3 改形、CLV3 表現較低合為同一研究的一條的一半；花椰菜 n≥7 對甘藍 3–4 併入，不另計；基因網絡細節不進片。里昂群（Godin、Farcot 與 Refahi 2016 共同作者），群內合計 2.0 已到頂。怎麼加深轉折：轉折二的結尾——螺旋數與形狀跟著頂端大小與長的節奏走（同 F109-001 馬鞭草的大小比例），改一個控制頂端大小的基因，螺旋的樣子就變；這是觀眾最熟的日常入口，用來收束『植物不算數，是幾何與生長在排』，不是另一個例外。版本只讀到送審稿，覆核若要求正式版比對，這條可降為 0.25 或改為後備。去重：pool.json 無 cauliflower／Romanesco／此 DOI；wave74-life 只在 F89-NA007 提過。 原提案 F109-004（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；版本問題：PDF 每頁頁首『Submitted Manuscript: Confidential』是 Science 投稿範本的固定頁首；典藏紀錄頁明寫此檔是 post-print、accepted manuscript，與第二十四輪 L74-042（愛丁堡典藏接受稿）同等處理，可計、不因版本降級，但寫明未與正式版比對、補充材料未讀。內容逐句對上；改『他們的結論是』為『推論』（記憶是模型抽象的 factor X）。算 0.5（作者同）：n≥7 對 3–4 與 clv3 改形、CLV3 表現是同一研究，記憶機制是推論不另計。注意：本篇回答的是『一層套一層』與『圓錐』，不回答費氏數或黃金角，在本題只能當轉折二後的日常延伸，不能當轉折二的證據。研究群：Godin、Farcot 與 Refahi 2016 共同作者，併入里昂群，群內 2.0 已滿；其他作者（Parcy、Prunet、Bradley、Kater、Madueño 等）經 AUTH 名單比對與題內其他篇無重疊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "寶塔花椰菜是一層層開花失敗疊成的；頂端長大一點，圓球就變成尖塔。",
+        "visual": "一般花椰菜與寶塔花椰菜並排，鏡頭一路放大到小突起上的螺旋；再並排阿拉伯芥 ap1 cal（圓）與 ap1 cal clv3（尖）。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-97753df3a5f99a74",
+          "origin": "wave75-life-20261111",
+          "locator": "摘要；主文第 1 段與圖 1 說明；第二節末段；第三節全段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L75-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L75-005",
+      "question": "「沒有東西」對猴子來說也是一個數嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.macaque_parietal_zero_neurons_empty_set_on_line",
+      "answer_target": "看起來是。日本東北大學讓兩隻日本獼猴用左右兩個轉盤一次加一、減一個白點，把螢幕上的點數調成和一開始看到的目標數一樣，目標數從 0 到 4，0 就是一片空白；點的大小、總周長、排成一直線都有對照，零的題目還拿掉注視點，免得猴子把那一點當成「一」。兩隻每個目標數都答得比瞎猜好，數越大越不準，零也落在同一條直線趨勢上；標準刺激與對照刺激的成功率是 72.0% 對 72.6%，沒有顯著差別，作者據此說猴子把空集合放進了數線。研究者在其中一隻猴子的頂葉記錄了 614 個細胞，其中 137 個對「零」的反應和對其他數不同，而且幾乎沒有一個在意注視點在不在（目標期 99 個裡 1 個、延遲期 76 個裡 1 個）。",
+      "scope": "神經記錄只有一隻猴子，行為只有兩隻；「放進數線」是作者從 72.0% 與 72.6% 沒有差別所做的推論，作者自己的說法是「非語言零概念的前身」，不說「猴子懂零」。不把 137 與 66/99、31/99 混算；不提 Nieder 群的猴子零研究。和 L74-057 並列時只說「蜜蜂那邊有不數也能重現的模型；猴子這邊在控制面積、周長、注視點之後，空白仍落在同一條趨勢上」，不說誰對誰錯。",
+      "source_locator": "Results 第 1、2 段；Methods〈Behavioral task and Stimuli〉",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一實驗的行為（含控制刺激 72.0% vs 72.6%）與神經（137/614、注視點 1/99、1/76）合為一條答案；V97 預估 0.5。獨立研究群（東北大學 Mushiake 實驗室，Europe PMC AUTH 查詢與各群主要作者 0 篇合著）。補 still_missing（1）。讀的是 stw24 快取同一份 XML 的 Results 全部六段與 Methods 兩節（上一輪只讀摘要）。去重：pool.json 無 zero／空集合／numerosity 相關核心；本 PMCID 只出現在 wave74-life.json 的 not_added。 原提案 F110-001（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；逐句對上：two monkeys、0–4、left/right device 加減一、standard／same circumference／linear 三種刺激、numerosity zero without the fixation point、better than chance for all target numerosities、linear decline r²=0.97、72.0% vs 72.6%（P = 0.21）、614 cells in the VIP of a monkey、137 zero neurons（99/185、76/101）、fixation 1/99 與 1/76，全部在 Results 第 1、2 段與 Methods。改兩處：137 個是「反應和其他數不同」（differential），不是單純「有反應」；把「放進數線」標成作者推論。算 0.5（V97 預估同），東北大學 Mushiake 群：Europe PMC AUTH 查詢 Mushiake H、Okuyama S 與已用各群主要作者無合著（Okuyama S＋Matsuzawa T 30 筆全是 1970–80 年代放射科同名作者，非同一人）。扣題：回答的是「零算不算一個數」，不是「會不會數」；它的價值是給 L74-057（蜜蜂的零可被不數的模型重現）一個方向相反、但不互相否定的對照，40 秒以內合適。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蜜蜂的「零」可以被不數的模型重現；但猴子在拿掉面積、周長和注視點這些捷徑後，空白仍排在 1、2、3 的同一條線上。",
+        "visual": "轉盤一格一格加減白點的動畫；最後一格是全黑的螢幕，旁邊一顆小神經元亮起來。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c9c8e2b85aed8d7d",
+          "origin": "wave75-life-20261111",
+          "locator": "Results 第 1、2 段；Methods〈Behavioral task and Stimuli〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L75-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L75-006",
+      "question": "長頸鹿看得出杯子裡的胡蘿蔔被加了幾塊、拿走幾塊嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.giraffe_combination_above_chance_dissociation_at_chance",
+      "answer_target": "加的看得出，拿走的看不出。巴塞隆納動物園四隻長頸鹿先看兩個黃杯裡各有幾塊胡蘿蔔、蓋上，再看實驗者把中間綠杯的 1 到 3 塊一塊一塊放進其中一杯，最後選一杯吃。加的題目平均答對 68%（±3%），四隻都高於瞎猜；從杯裡拿走的題目 57%（±3%）、先拿走再加的題目 64%（±5%），每一隻都在瞎猜水準。研究者也檢查一條簡單捷徑：加的時候選實驗者剛動過的那杯、拿走時避開它。在這條捷徑會選錯的題目上，只有兩隻（34/52、35/52）仍高於瞎猜，另兩隻都是 29/52。全程實驗者戴太陽眼鏡、低頭、保持中性表情以防聰明漢斯效應；作者在限制段自己寫，手動搬食物、舉杯子仍可能透過細微、無意的訊號影響選擇，建議以後改用自動化與盲測。",
+      "scope": "只有四隻；捷徑在模型中只是邊緣顯著（p = 0.055）。「選實驗者動過的杯」是作者分析的操作捷徑（作者還讓實驗者同時碰兩杯來減少這種吸引），不是聰明漢斯效應——不得說「墨鏡擋不住聰明漢斯」「長頸鹿在讀實驗者」「跟著實驗者的手選」；無意訊號只是作者自述的可能，沒有量測。不轉述文中引用的紅毛猩猩、黑猩猩、小雞等比較。",
+      "source_locator": "Results 兩節與 Table 2；Discussion 第 6、7 段與限制段；Methods〈Experimental procedure〉太陽眼鏡段",
+      "premise_status": "screened",
+      "notes": "算 0.5：一個實驗的主結果加 DMO 拆解；作者的「無意訊號」是限制自述，不另計。補 still_missing（2）「在數量作業裡直接面對實驗者提示的現代開放研究」：本篇沒有直接操弄實驗者訊號，但直接檢驗了『跟著實驗者的手選』這條由實驗者提供的捷徑，並在數量作業中明寫聰明漢斯防範與其不足，可取代已刪的 F94-004（狗的指示手勢、非數量作業）的位置。研究群：Amici 與維也納 Range、Virányi 只在 58 位作者的跨實驗室合著 PMC4034204 同列，視為獨立；即使覆核併入維也納群（L74-052 0.75），合計 1.25 仍低於 2.0。去重：pool.json 無長頸鹿、giraffe 核心，無此 PMCID。 原提案 F110-002（目標 F94-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；數字全部對上（68±3%、57±3%、64±5%；Table 2 的 No DMO：Nuru 34/52 p=0.037、Njano 35/52 p=0.018、Nakuru 與 Yalinga 29/52 p=0.489；DMO p=0.055；272×4＝1,088 次；sunglasses ‘to avoid the Clever Hans effect’；限制段 ‘subtle, unintentional signals’）。但作者的題目與答案把三段原文接成一個結論：方法段的防範措施＋DMO 捷徑分析＋限制段的自述可能 →「戴墨鏡也擋不乾淨聰明漢斯」。原文沒有任何量測支持這個結論：DMO 是『選被動過的那杯』的操作捷徑（stimulus enhancement 類），作者還特地讓實驗者同時碰兩杯來壓低它，不是問者不自覺的身體訊號；無意訊號只是限制段的一句可能。改寫成『長頸鹿會加不會減』的核心才收入池。對 F94-T1 計 0、不放進最終核心：（1）它被拿來補 still_missing（2）「在數量作業裡直接測實驗者無意提示」，但本篇沒有操弄或量測實驗者知不知道答案、看不看得到動物，不符合；作者自己在 still_missing（a）也承認沒直接量。（2）若改算 still_missing（3），（3）已由 F110-003 孔雀補上，把它改掛（3）是覆核為過線替作者換理由，不採。（3）去掉錯誤的漢斯框架後，它在片中只是第十二種動物，加重清單感。研究群：Amici F 與 L74-052 來源的 Range F、以及 Virányi Z 同列 MacLean 等 2014（PMC4034204，58 位作者）——依『有共同作者就算同群』併入維也納群；作者說併了也只 1.25 是對的，但本題計 0，維也納群仍 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一套杯子，加的會、拿走的不會；兩隻的成績大半可以用一條不必數的捷徑解釋。",
+        "visual": "長頸鹿低頭看三個杯子；實驗者一塊塊放進右杯；記分板分『加』『拿走』兩欄。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2cea2558dfff611",
+          "origin": "wave75-life-20261111",
+          "locator": "Results 兩節與 Table 2；Discussion 第 6、7 段與限制段；Methods〈Experimental procedure〉太陽眼鏡段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L75-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L75-007",
+      "question": "把點的大小、面積、密度都故意弄亂，孔雀還分得出哪邊多嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.peafowl_touchscreen_more_dots_survives_area_density_conflict",
+      "answer_target": "多半分得出，但點差很少時會被面積拉走。美國德州農工大學讓八隻藍孔雀在觸控螢幕上啄圓點比較多的那一格（1 到 8 個點），實驗者用攝影機在別處看，孔雀看不到人；四個實驗一共 81,167 次。點一樣大時平均答對 78.05%，差一個點 61.32%、差七個點 97.66%，越接近越難。故意讓點多的那格用小點、點少的那格用大點時，整體答對率掉到 58.90%，仍比瞎猜好，但差一個點時只有 41.09%、差兩個點 51.68%，都沒有高於瞎猜；把兩格的總面積調成一樣時，答對率 79.45%，和點一樣大的 80.49% 差不多。作者結論是表現主要跟著點數走，面積和密度也有影響。",
+      "scope": "作者自承：只有 8 隻、做完全部的只有 5 隻；實驗前受過大量訓練，可能是學來的辨別策略，不一定是自發的數感；只訓練「選多」。41.09% 只說「不到一半、沒有高於瞎猜」，原文沒說顯著低於機率。不和 L74-052 的狗比「誰掉進陷阱」：狗的題目是點數相同、只有點大小不同，孔雀的題目是點數不同、點大小反向，設計不同、不能並成同一個陷阱。不轉述討論引用的黑猩猩數字（Tomonaga 2008）；不說孔雀比烏鴉聰明；不說母孔雀數公孔雀眼斑。",
+      "source_locator": "Methods〈Apparatus〉末句；Results 第 1–2 段；Table 4、Table 6；Discussion 第 2 段與限制段",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一系列實驗的多個數字合為一條（點數辨別＋面積衝突／面積相等的對照）。補 still_missing（3）：研究群已確認為德州農工 Yorzinski 實驗室，七位作者與已用各群皆無重疊。對片子的作用：和 L74-052（狗在面積固定時照點大小選）並排，給出「同樣的面積陷阱，有的動物會掉、有的大多不會」的對照，讓『控制線索』那章不是單向的否定。去重：pool.json 無孔雀數量核心（「孔雀」只出現在孔雀蜘蛛超黑），無此 PMCID／DOI。 原提案 F110-003（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；Table 1（總 81,167 次、8 隻、5 隻做完）、Table 4（78.05、58.90、80.49、79.45、84.16、68.31）、Table 6（61.32、97.66；Exp 2 面積不一致差 1 為 41.09%、差 2 為 51.68%）、Methods〈Apparatus〉攝影機監看、限制段三項都對上。改正：作者只寫『差 1、2 個點時不高於機率』，漏了差 1 時其實只有 41.09%——方向是被大點拉走，這正是『面積陷阱也抓得到孔雀』的證據；作者 editorial 的『同一個陷阱，狗會掉、孔雀大多不會』把兩個設計不同的研究並成同一個例子，違反『不同研究不能混成同一個例子』，刪。Exp 2 的不一致條件原文是『點多的那格點小、點少的那格點大』，作者寫『總面積反而比較小』是從 9 與 36 像素半徑推得的，改回原文的說法。算 0.5；德州農工 Yorzinski 群：Yorzinski JL、Liao MR 與已用各群 AUTH 查詢皆 0 篇，獨立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "控制掉面積之後孔雀照樣分得出多少；但只差一個點、而且點少的那邊點比較大時，牠們也會被大小拉走。",
+        "visual": "左格 5 個小點、右格 4 個大點；孔雀猶豫後啄右格；再換兩格總面積相同，啄對。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-20cd3eaca0a4f2ba",
+          "origin": "wave75-life-20261111",
+          "locator": "Methods〈Apparatus〉末句；Results 第 1–2 段；Table 4、Table 6；Discussion 第 2 段與限制段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L75-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L75-008",
+      "question": "黑猩猩做數字題時，旁邊站幾個人有差嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.chimpanzee_numeral_task_audience_count_effect",
+      "answer_target": "有，而且方向看題目難度。京都大學靈長類研究所把六隻黑猩猩約六年（2009 年 7 月到 2016 年 1 月）的觸控螢幕紀錄拿出來，看當時旁邊有幾個人、是誰。題目都是依序點阿拉伯數字：最簡單是相鄰的數字，最難是點了第一個之後其他數字被蓋住、要靠記憶。單看熟人或陌生觀眾『在不在』看不出差別；但看人數時，最簡單的題目，負責操作的實驗者每多一位，模型估計表現降 6% 到 11%，熟人觀眾多一位降 1% 到 10%；中等的題目熟人越多反而略好；最難的題目是實驗者越多做得越好；陌生人多寡都沒有影響。研究者提出三種可能——獎賞變得更有價值、認知負荷、專注被分散——還沒有定論。",
+      "scope": "觀察資料、不是實驗操弄；無法設『完全沒有人』的對照（作業一定要有人操作）。作者當成觀眾效應，沒有說人給了答案提示——不得說『黑猩猩看人臉色作答』，也不得放在『問的人還在房間裡』這種接聰明漢斯的段落。百分比是模型估計（勝算比區間），不換算成題數；不說黑猩猩在乎面子。",
+      "source_locator": "Results〈Performance across task types〉、〈Model 1〉、〈Model 3〉第 2 段；Discussion 第 1 段；Limitations",
+      "premise_status": "screened",
+      "notes": "算 0.5：一份資料分析的主結果（人數與身分的方向相反效果）。補 still_missing（4）Matsuzawa 群另一篇開放全文：Muramatsu 為 L74-063 來源共同作者，Yamamoto 與 Matsuzawa 合著 3 篇，併入 Matsuzawa 群 0.5＋0.5＝1.0。對片子的作用：接在 L74-063（同一批黑猩猩學會排 1–19）後面，把「會不會數」拉回全片的主問題「人在場會不會改變答案」，同時讓 L74-063 從清單項變成鋪陳，不再是孤立的一格。去重：pool.json 無觀眾效應、audience effect 核心，無此 PMCID／DOI。 原提案 F110-004（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；數字對上：Model 1 各作業 p=0.112、0.917、0.338（『在不在』只含熟人與陌生觀眾、不含實驗者，作者答案沒寫清楚，已補）；Model 3 實驗者 6%–11%（OR 0.890–0.946）、熟人 1%–10%（OR 0.907–0.989）、作業 2 熟人正向（OR 1.011–1.052，作者漏）、作業 3 實驗者正向（OR 1.018–1.057）；陌生人無影響；限制段無法設無人對照。研究群：Muramatsu A 為 L74-063 來源共同作者，併入 Matsuzawa 群（作者正確）。算 0.25（作者 0.5）：它量的是數字作業的分數，但發現的是觀眾效應，不回答黑猩猩會不會數；它唯一能接上本片主線的方式（人在場影響答案＝漢斯）正是它自己的 scope 禁止的，作者在 turns 與章名『一百年後，問的人還在房間裡』仍把它往提示方向放，已刪。V97 把離題的 F94-004（狗的指示手勢）整條刪掉；本條在數量作業裡，故不刪，降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "房間裡站了誰，黑猩猩的數字題分數會變，但原因還沒人說得準。",
+        "visual": "黑猩猩在螢幕前點 1、2、3…；玻璃外的人數變多變少，角落分數條上下動。",
+        "seconds": [
+          30,
+          35
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-64aba1d0ac68de8d",
+          "origin": "wave75-life-20261111",
+          "locator": "Results〈Performance across task types〉、〈Model 1〉、〈Model 3〉第 2 段；Discussion 第 1 段；Limitations",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L75-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L75-009",
+      "question": "鵲鴨分辨多少的本事，跟牠住在多大的群有關嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.magpie_small_group_better_two_vs_five",
+      "answer_target": "有一點關係。西澳大學研究團隊在珀斯 11 群野生鵲鴨（每群 3 到 15 隻）中測了 42 隻，地上兩塊板子各放幾條起司，選哪邊就只能吃哪邊。2 對 3、2 對 4、2 對 5 時，選多的比例是 59%、67%、73%。群體大小本身沒影響，但在 2 對 5 這組，小群出身的鳥比大群出身的更常選多的那邊；2 對 3、2 對 4 沒有這個差別；公母一樣，做六十次也沒有越做越好。作者推測小群在和鄰群衝突時吃虧較大，所以更需要算清楚；也提出另一種可能：大群有很多眼睛幫忙警戒，可以花比較多時間覓食，不必那麼挑。",
+      "scope": "同族群、同一種起司作業的「選多、差越小越難」已在 L74-062，不重講；只補群體大小的交互作用與三個比例。成因是作者推測、兩種解釋並列；不說「小群的鳥比較聰明」（同族群其他認知作業是大群較好，作者自己指出相反）。",
+      "source_locator": "Methodology〈Study species and site〉第 2 段、〈Experimental design〉；Results 兩節；Discussion 第 3、4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一作業的新發現（群體大小×比例交互作用）；基本辨別已在 L74-062，不重算。補 still_missing（4）Ridley 群另一篇開放全文，Ridley 群 0.75＋0.5＝1.25。對片子的作用：和 L74-062 合成同一章（同一種鳥、同一個族群），把「野外的數量感有什麼用」講深一層，而不是再加一種動物。去重：pool.json 無此 PMCID／DOI；鵲鴨在池中只有 L74-062。 原提案 F110-005（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）照原稿收；對上：42 隻（20 公 22 母）、11 群、3–15 隻；每天 4 次、15 天共 60 次；2 對 3／4／5 選多 59%、67%、73%；群體大小單獨無效、與比例交互作用只在 2 對 5；性別、試次無效；兩種解釋並列（群間衝突、many-eyes）且作者指出與同族群其他認知作業相反。與 L74-062（Blackburn 等 2025，2023 年另一批 21 隻的測試）不是同一批資料；L74-062 已有『選多、差越小越難』，本條只算新的群體大小交互作用，0.5 合理。Hunter 是 L74-062 來源共同作者，Ridley 群 0.75＋0.5＝1.25，未達封頂。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "數量感不是每隻都一樣：同一種鳥，住在小群的那些，在差距最大的那題反而更會挑。",
+        "visual": "兩塊木板，一邊 2 條起司、一邊 5 條；畫面分成「小群」與「大群」兩隻鵲鴨，各自的命中率條。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-99f306556cab1677",
+          "origin": "wave75-life-20261111",
+          "locator": "Methodology〈Study species and site〉第 2 段、〈Experimental design〉；Results 兩節；Discussion 第 3、4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L75-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P75-001",
+      "question": "專家把喀聲打大聲、打多次的時候，聲音本身有沒有變？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.click_adjust_level_not_spectrum",
+      "answer_target": "沒變，只調音量和次數。Durham 大學等的兩個實驗裡，8 位盲人專家：目標放遠時多打幾聲、也打大聲一點；同一距離換成較小的目標時只多打幾聲，音量不變；目標偏到側後方時同樣打得多、打得大聲。但每一聲的長度、間隔、頻寬和頻譜重心在各種條件下都不變。換成百分比，他們平均能分出約 5% 的距離變化，而且沒有顯著的偏差。目標從正前方移到正後方時，回聲相對喀聲（到耳朵）約弱了 19 dB，回聲本身卻只弱了約 14 dB；作者的解釋是專家在這些角度把喀聲加大了約 7 dB。回聲本身比喀聲偏向高頻，目標越小越明顯。",
+      "scope": "兩篇各 8 位專家、實驗室；19／14／7 dB 都是原文的約略平均，不在畫面上做 19−7 的加減（三個數字相減並不等於 14）；『部分補償』是作者解讀；不用前人 JND 的比較；不用 Fig. 4 圖說『喀聲長於回聲開始時間』那句；不教怎麼彈舌。",
+      "source_locator": "F111-S001 RESULTS Psychophysical Performance、Clicking Behaviour；F111-S002 3. Results 第 2–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）。P74-029 讀完 S002、S003 Results 的那一半；Thaler 群 1.5→1.75。S004（PMC13020946）偏 45° 那句仍只讀摘要，但 Thaler 群本輪已到 2.0 封頂，再讀也不加條數。 原提案 F111-001（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；數字與條件都在原文。改正兩處：（a）作者寫『較遠、較小或較偏的目標時會多打幾聲、打大聲一點』，原文較小的目標只增加次數、強度不變（S001 第 39 行），改寫；（b）畫面『19 dB 的落差被 7 dB 墊高成 14 dB』暗示 19−7=14，算不起來（是 12），而且原文只說『可由此解釋』，改成並列三個約略值、標明是作者解釋。『估得不偏』改為原文的『偏差與 0 無顯著差』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "專家調的是音量和次數，不是換一種聲音。",
+        "visual": "同一個『喀』的波形疊三次：形狀一樣，只是一次比一次高、一次比一次密；旁邊兩條長條：回聲相對喀聲 −19 dB、回聲本身 −14 dB，下面標『喀聲加大約 7 dB（作者的解釋）』，不畫成等式。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b066f6a4ab3e0fa8",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S001 RESULTS Psychophysical Performance、Clicking Behaviour；F111-S002 3. Results 第 2–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b544ab12c3a39da5",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S001 RESULTS Psychophysical Performance、Clicking Behaviour；F111-S002 3. Results 第 2–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P75-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P75-002",
+      "question": "會回聲定位的盲人，視覺區都長出一張「聲音地圖」嗎？上 10 週課的人呢？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.v1_echo_map_expertise_not_blindness",
+      "answer_target": "不是每個人都有，而且在這個研究裡，預測它的是『是不是專家』。2019 年 Durham 大學比較 5 位每天用喀聲 20 年以上的盲人專家、5 位不會回聲定位的盲人和 5 位明眼人：專家初級視覺皮質裡的回聲位置圖彼此差很多，個案統計只有 3 位顯著比對照組更像視覺的排列，另有 2 位從圖上看不出明顯型態；統計上『是不是專家』是顯著的預測因子，『失明』本身不顯著；只有在專家之間，圖越像，回聲定位越好。2024 年上過 10 週課的 12 位盲人和 14 位明眼人，左側初級視覺皮質對回聲的反應平均由約 0 升到約 0.09（訊號變化百分比），但個別來看只有約六成的人是增加的，這個變化也和他們行為上進步多少看不出相關。",
+      "scope": "每組 5 人；所有專家都失明，所以只能說『失明』在統計上不是顯著因子，不能說『與失明無關』；r 只來自 5 位專家，不報數字；2024 年變化量小、與 P74-030 同一批人；不說『明眼人的視覺區被改造』『上課就長出視覺地圖』；不談任何訓練建議。",
+      "source_locator": "F111-S003 2. Results (a)、(c)；F111-S004 Results fMRI ROI analysis、ROI responses to no-echo and echo conditions",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：P74-031 的但書，同群兩篇合計 0.25。Thaler 群 1.75→2.0 封頂。 原提案 F111-002（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；數字相符。改正：（a）『跟失明本身無關』把不顯著寫成沒有關係，而且 5 位專家全是盲人、無法分開，改為『統計上失明不是顯著因子』；（b）5 位中 3 位的『顯著』來自個案統計，另 2 位『看不出型態』是作者看圖的描述，EE1 只有左右排列，畫面改成 2＋1＋2；（c）『約一半到三分之二』改『約六成』（7/12、8/14、9/14），PSC 單位寫明；（d）payoff 原寫『接手的是練出來的專家，不是看不見』，同樣過度，改寫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這張地圖只在部分練出來的專家身上清楚，而且因人而異。",
+        "visual": "五顆腦的後視圖並排：兩顆有清楚彩色條紋、一顆只分左右、兩顆空白；下方十週課的人，約六成小箭頭朝上。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fa3d05e37d2c8438",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S003 2. Results (a)、(c)；F111-S004 Results fMRI ROI analysis、ROI responses to no-echo and echo conditions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9a2247c47b368ea0",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S003 2. Results (a)、(c)；F111-S004 Results fMRI ROI analysis、ROI responses to no-echo and echo conditions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P75-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P75-003",
+      "question": "旁邊有牆，會幫你聽出前面的牆多遠，還是礙事？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.corridor_ranging_lateral_wall_masking",
+      "answer_target": "看距離：前牆近時幫忙，前牆遠時礙事。慕尼黑大學用真實走廊的聲學響應做成虛擬走廊，6 位練過的明眼人用自己的舌頭喀聲判斷離前牆多遠：站在走廊中線時，前牆 2 m 能分出約 30–45 cm，4 m 約 60–80 cm（0.75 m 約 20 cm）。貼近一側牆時，前牆 0.75 m 反而更準（平均約 16 cm），4 m 卻更差（約 80 cm）；作者的解釋是前牆遠超過側牆時，側牆的回聲變成遮蔽。允許轉頭時，4 m 貼牆的劣勢消失，但記錄顯示受試者（連那位盲人專家也一樣）是把頭轉離側牆，而不是左右來回掃。那位盲人專家沒經過這項作業的專門訓練，最好能分出約 10 cm，每種條件都比明眼人好，遠距離尤其明顯，而且側牆對他沒有幫助。",
+      "scope": "虛擬聲學空間、6＋1 人；「遮蔽」是作者解釋，而且是側牆回聲遮前牆回聲，不是自己的喀聲遮回聲；0.75 m 約 20 cm 已屬 P74-033，只當對照；與 P74-034 同群不同實驗，併講要分清；不說『靜止聽』（原文只說轉離、不來回掃）。",
+      "source_locator": "F111-S005 Results Experiment 1、Experiment 2；Table 1 說明",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：P74-033 讀完 Results 的那一半；Wiegrebe 群 0.75→1.0。 原提案 F111-003（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；數字相符。小改：『轉離側牆後靜止聽』的『靜止』原文沒有，刪；補上專家『不受近側牆幫助』與 0.75 m 20 cm 屬舊核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一面側牆，前牆近時是參考，前牆遠時是噪音。",
+        "visual": "走廊俯視圖，人站中線或貼牆；前牆在 0.75 m 與 4 m 兩個位置，旁邊標 16 cm、80 cm 的誤差條；頭像轉向離牆的一側。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-488196fa68dcda84",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S005 Results Experiment 1、Experiment 2；Table 1 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P75-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P75-004",
+      "question": "不發聲的牆，離耳朵越近，留在聲音裡的「痕跡」有多大？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.obstacle_coloration_magnitude_distance",
+      "answer_target": "很近時很大，2 公尺外就小很多。產總研與東京大學在低反射室裡，用假人頭量一塊 70 × 50 cm 的木板在不同距離時，背後喇叭的聲音到耳朵的變化：有板和沒板的頻譜差是一串梳子般的峰谷，頭轉 3° 時，1000 Hz 以下的峰谷差在 12.5–37.5 cm 約 20 dB，到 200 cm 只剩約 4 dB；左右兩耳之間的頻譜差也由 12.5 cm 的約 15.6 dB 降到 200 cm 的約 1.6 dB。兩耳的強度差在 50 cm 以外則幾乎不隨距離變。",
+      "scope": "環境聲（喇叭在背後），不是彈舌；量測訊號是掃頻聲、不是行為實驗的粉紅噪音；dB 是單一假人頭、單一木板的量測；原文方法與結果的距離清單對不上，只用兩端，不報 50、150 cm 等中間點；行為實驗（靜態估與動態走）已在 P74-039，本核心不再講；研究目的是行動訓練，片中完全不提訓練、輔具或建議。",
+      "source_locator": "F111-S006 2.5 Results；3.2.2 Result（Figure 7）；6. Limitations",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：S018 Results 新增的物理量測；Miura 群 0.5→0.75。 原提案 F111-004（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；改正三處：（a）作者寫『從背後放粉紅噪音，用假人頭量』，聲學量測用的是 swept-sine（TSP），粉紅噪音是行為實驗；（b）50 cm 約 14 dB、150 cm 約 7.6 dB 所在的距離清單與方法不符（結果多出 125 cm、寫成『10』），作者自己判『10 應為 100』是推測，只留兩端；（c）最後一句靜態／動態的比較已在 P74-039，而且原文方向有歧義（rd=25 時靜態反而較近 1.0），刪去。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "板子很近時，留在聲音裡的梳齒有 20 dB 深；退到 2 公尺只剩 4 dB。",
+        "visual": "頻譜曲線上的梳齒，木板從 12.5 cm 退到 2 m，齒從深變淺（只標兩端的數字）。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0dfae0cf3f8f634d",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S006 2.5 Results；3.2.2 Result（Figure 7）；6. Limitations",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P75-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P75-005",
+      "question": "反射板在動，比靜止更容易被聽出來嗎？耳邊的聲音差多少？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.moving_reflector_ear_level_change",
+      "answer_target": "在動時比較容易，尤其比起靜止在 1 公尺外。Gipsa-Lab 讓 11 位沒經驗的矇眼年輕人頭戴小喇叭放白噪音，前方一塊 50 cm 鋁圓盤固定在 20 cm 或 1 m，或以每秒 5 cm 的速度朝人或背人移動。量到耳邊的聲音：沒有圓盤 77 dB、圓盤在 1 m 80 dB、在 20 cm 83 dB。作者在討論裡寫：圓盤在動時答對的機率明顯高於靜止，與固定在 1 公尺比差最多，可能是聲學線索在變、或注意力較集中。",
+      "scope": "11 人、只熟悉一次；不是自己發聲；哪幾組有差是討論段對圖的描述；姿勢、平衡、復健一律不入稿（drop_if）。",
+      "source_locator": "F111-S007 Intervention 段末；Results 第 1 段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：補讀的 Results 沒有超出摘要的結果；耳邊 77／80／83 dB 是方法段的條件校正量測，比較結果只出自討論段對圖的描述，而且兩種條件問的是不同的題。Termoz 群維持 0.25（P74-041）。 原提案 F111-005（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；計數下修為 0、併入 P74-041：（a）作者新增的『動態優勢主要相對於 1 m 靜止』只出自 Discussion 對 Fig 3A 的描述，Results 文字本身只說條件有顯著影響，和摘要已用的一樣；（b）77／80／83 dB 是 Intervention 段的條件量測（方法與條件不算事實），只能當 P74-041 的畫面數字；（c）原答案『比靜止更容易被聽出來』把『答距離』和『答方向』兩種不同作業的正確率當同一件事比，改寫；（d）editorial『只差 3 dB，動起來就比較聽得出來』把兩段接成因果，刪。P74-041 仍是 V95 列的優先可刪核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "圓盤從 1 m 移到 20 cm，耳邊只多了約 3 dB。",
+        "visual": "圓盤在軌道上前後滑動，耳邊音量表在 80 與 83 之間跳動；不寫『所以聽得出來』。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-737683dfc3c0d9e4",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S007 Intervention 段末；Results 第 1 段；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P75-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "F8001",
       "question": "巧克力的固體沒被拿走，為什麼精煉後反而比較能流動？",
       "domain": "食品微結構與加工",
@@ -505597,6 +507165,711 @@
       ]
     },
     {
+      "id": "E75-001",
+      "question": "北磁極以前也像現在這樣跑嗎？七千年來它都在哪裡？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_pole_7kyr_wander_cals7k_model",
+      "answer_target": "從模型看，它一直在北極附近繞，而且平常跑得慢得多。Korte 與 Mandea 用考古與湖泊沉積物建的七千年地磁模型推算：北、南磁極從沒跑到北／南緯 73° 以下，各經度都到過，看不出偏好哪一邊；北磁極速度一般每年不到 10 公里，只有大約西元前 4500 年和 1300 年兩段比較快。作者自己提醒：七千年模型算出的磁極位置要謹慎看待，而且持續不到一百年的加速（他們認為現在這次可能就是）這種模型根本解析不到——所以不能拿這個模型說『現在的狂奔前所未見』，也不能說『以前沒這麼快過』。",
+      "scope": "磁極（傾角 90° 的點），不是地磁極；七千年位置與速度是模型推算，作者自己標不可靠；『兩段較快』不放 15–20 km/yr 的精確數字，或標『模型估計』；不與現代 36 或 50–60 km/yr 畫在同一把尺上。",
+      "source_locator": "F108-S002 3.2 節末段；5.2 節第 4–6 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：把 E74-062 原本引用的『7000 年亂繞、西元前 4500 和 1300 年』升為一手，另加『從未低於 73°』與作者對百年內加速解析不到的保留。gufm1 的近 400 年速度與 E74-059、E74-061 重疊，不計。GFZ 群（Korte 是 Brown 2018 共同作者）。E74-062 對應改成只留 Livermore 的十年預測。 原提案 F108-001（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；有一手原文，取代 E74-062 中引用前人的七千年軌跡；刪掉作者自己的比較句。算 0.5，歸 GFZ 群（Korte）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磁極本來就在北極附近繞圈，這次只是模型看得到的範圍裡跑得特別快。",
+        "visual": "北極俯視圖，七千年的細線在 73° 圈內繞來繞去，兩段標『較快』，邊上一行小字『模型推算』。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-77df5371f0a454af",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S002 3.2 節末段；5.2 節第 4–6 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ]
+    },
+    {
+      "id": "E75-002",
+      "question": "科學家能預測北磁極下一步往哪跑嗎？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.north_pole_forecast_limits_independent_poles",
+      "answer_target": "很難。2008 年 Korte 與 Mandea 推論：北磁極的加速和地核表面一塊反向磁通有關，如果它繼續往西伯利亞那團磁通的方向走，很可能會減速一陣子；但只要兩大團磁通的強弱明顯改變、加拿大那團重新占上風，北磁極就會掉頭，而且大概相當突然。他們的結論寫：目前對地球發電機的了解，還不足以預測地核磁場的變化，連續觀測不可少。他們也發現北、南磁極和偶極軸的移動彼此沒有顯著相關，南北兩個磁極各跑各的。",
+      "scope": "2008 年的推論，附『若維持方向』的條件；不得說『預言成真／失敗』；不與 E74-061、E74-063 的速度相減或接成因果；『掉頭靠磁通拔河』的機制已在 E74-061、E74-062，本條只講『預測不了』與『南北各跑各的』。",
+      "source_locator": "F108-S002 Abstract；3.1 節末段（無顯著相關）；6 Conclusions 第 1、3 段",
+      "premise_status": "screened",
+      "notes": "算 0.25：『可能減速但也可能突然掉頭、現有知識無法預測』與『南北磁極各跑各的』合為一句；『反向磁通斑』機制與 Livermore（E74-061）同類，不另計。GFZ 群合計 1.75，封頂 2.0 內。可用在第一轉折後段，補上『已減速』沒有單一原文時的誠實說法：連研究者自己都說預測不了。 原提案 F108-002（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；0.25 合理：機制與 E74-061／E74-062（Livermore 兩團磁通拔河、小重組就可能掉頭）同義，真正新增只有『現有知識不足以預測』與『南北磁極、偶極軸互不相關』一句。補上原文的條件句。GFZ 群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "連研究磁極的人都寫明：它下一步往哪跑，現在還預測不了。",
+        "visual": "磁極小點站在岔路口，一條箭頭往西伯利亞、一條虛線掉頭回加拿大，旁邊是 2008 年論文的一句話。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-77df5371f0a454af",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S002 Abstract；3.1 節末段（無顯著相關）；6 Conclusions 第 1、3 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ]
+    },
+    {
+      "id": "E75-003",
+      "question": "像南大西洋異常這樣的弱場區，以前出現過嗎？後來怎麼了？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.recurrent_holocene_field_anomalies_dipole_minima",
+      "answer_target": "出現過，而且不只一次。瑞典隆德大學 Nilsson 等人用考古與沉積物紀錄重建過去九千年的地磁場（同時估計資料年代、處理沉積物的平滑）：近四千年偶極矩大約每 650 年起伏一次，而偶極矩的低點往往伴隨像今天南大西洋異常那樣、東西半球不對稱的弱場區；例如西元前 1300 年和 700 年前後的兩個低點，太平洋半球都出現過弱場異常。那段時間偶極增強和減弱的平均速率（依三種模型假設，每年 4–16 nT），作者說和近代偶極衰減的速率相當。",
+      "scope": "九千年模型，南半球資料少、不確定度大；更早的約 1300 年週期作者說可能是資料不足造成，不入片；『與近代相當』是作者的比較，近代速率是引用值；不說這證明『不會翻轉』；不說是與 Brown 2018 無關的獨立研究（同一合著網、用 Brown 等的 GEOMAGIA 資料庫、致謝 Brown 協助解讀）。",
+      "source_locator": "F108-S001 Abstract；Variations in the DM 第 4–5 段；Recurrent Geomagnetic Field Anomalies 第 4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：反覆出現的弱場異常＋偶極低點的對應合一條；變化率數字併入，不另算。與 E74-066（Brown 2018，5–3 萬年前）、E74-069（Tarduno，南非 1000–1600 年）時段與方法都不同，是第三個獨立研究群。Nilsson 群（與各群無共同作者）。 原提案 F108-003（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；有原文，0.5 可。研究群改歸 GFZ 合著網（見 notes），不是作者寫的『第三個獨立研究群』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "像南大西洋異常的弱場區，九千年裡出現又消失過好幾次。",
+        "visual": "九千年時間軸上偶極矩曲線起伏，每個低谷上方冒出一塊地圖上的藍色弱場斑，之後又淡掉。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-09ee20bbc8c3cb4f",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S001 Abstract；Variations in the DM 第 4–5 段；Recurrent Geomagnetic Field Anomalies 第 4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ]
+    },
+    {
+      "id": "E75-004",
+      "question": "照過去的例子，南大西洋異常接下來會怎樣？",
+      "domain": "磁學",
+      "mechanism_key": "geomagnetism.saa_600bce_analog_forecast_with_caveat",
+      "answer_target": "有一個類比說它可能在幾百年內消失，但作者自己也指出不合的地方。Nilsson 等人提出，西元前 600 年前後那種強烈不對稱的場可能是今天的古代類比：照這個類比，南大西洋異常可能在接下來幾百年內消失，場在約 300 年內回到比較對稱的樣子，偶極也可能變強。但他們同時寫：現在的偶極矩還在下降、沒有放慢的跡象，這和類比不一致，顯示這個類比的侷限。",
+      "scope": "一律說『依類比推論』，不說『預測』『科學家算出 300 年後消失』；一定連同『偶極仍未放慢、與類比不符』同句講；不說『快要翻轉』也不說『不會翻轉』；不與 Laj & Kissel 的約 500 年或 Brown 的推論合成一個數字；不稱為獨立第三方。",
+      "source_locator": "F108-S001 Abstract 末句；Discussion〈Ancient Analogs of the Present Day〉全段",
+      "premise_status": "screened",
+      "notes": "算 0.5：類比預測與作者自己的保留合一條。是第二轉折缺的獨立第三方：與 Brown 2018（GFZ）同方向（異常會過去），但作者自己承認現況不符，正好讓片中兩派並列。Nilsson 群合計 1.0。 原提案 F108-004（目標 F99-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；有原文、兩句並陳，0.5 可；修正 300 年的主詞。歸 GFZ 合著網。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "過去的例子說它可能幾百年內就散掉，但作者也說：現在的偶極還沒有要停下來的樣子。",
+        "visual": "左邊西元前 600 年的弱場地圖，右邊 2020 年南大西洋異常，中間一個問號；下方一條還在往下的偶極曲線。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-09ee20bbc8c3cb4f",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S001 Abstract 末句；Discussion〈Ancient Analogs of the Present Day〉全段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ]
+    },
+    {
+      "id": "E75-005",
+      "question": "地磁翻轉時，南北對調那一下要多久？整個過程又多久？",
+      "domain": "地質",
+      "mechanism_key": "geomagnetism.chiba_section_flip_1kyr_instability_20kyr",
+      "answer_target": "日本茨城大學與國立極地研究所的 Haneda 等人分析千葉一段沉積快又連續的海底地層，得到和熔岩紀錄同樣的圖像：方向從反轉切到正常，在約 1.1±0.4 千年內完成，但前後方向與強度反覆偏離常態，至少約兩萬年；不穩在強度回升前約三千年結束，而回升後的場比翻轉前還強。",
+      "scope": "單一地點沉積物，1.1 千年依單一年代模型；不寫本篇的年代數字（避免與 E74-071 的 77.3 萬年並列）；不引前言的義大利『百年內』說法；『兩種獨立紀錄都說約兩萬年』只當佐證，不另計。",
+      "source_locator": "F108-S003 Abstract；3.4 節第 3 段；3.5 節末段；4 Conclusions 末兩段",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 E74-071（Singer，熔岩＋對齊）同一次翻轉、同結論（整個過程約兩萬年），但方法（連續沉積）與研究群獨立，新增的是『切換本身約一千年』與『翻完後場比翻前強』。Haneda 群，與各群無共同作者。這是 still_missing 第（5）項。 原提案 F108-005（目標 F99-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V116（2026-11-12）改字後收；下修 0.5→0.25：與 E74-071 同一次翻轉、同結論，新增只有『翻完更強』與較窄的切換時間。Haneda 群，查不到與 Singer 2019 作者的合著（Europe PMC AUTH 0；WebSearch 未見），單獨成群。點名（5）『翻轉持續時間的沉積物研究』，回答同一問題，可收。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真正翻過去那一下約一千年，前後的混亂卻拖了兩萬年，而且翻完後的場比翻前還強。",
+        "visual": "千葉的地層剖面，一條細紅線標『翻轉』，上下各有好幾道灰色『不穩』帶，旁邊一條強度曲線先跌後升到更高。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e1cb95fbbcd9fbc",
+          "origin": "wave75-earth-20261111",
+          "locator": "F108-S003 Abstract；3.4 節第 3 段；3.5 節末段；4 Conclusions 末兩段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ]
+    },
+    {
+      "id": "E75-006",
+      "question": "熱帶雨林的暴雨、甚至颱風等級的熱帶氣旋，溪裡流的總該是剛下的雨了吧？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.tropical_peak_vs_total_event_water",
+      "answer_target": "要看你問的是哪一刻。澳洲昆士蘭東北部濕熱帶兩條陡峭雨林小溪（約 1.6–1.7 平方公里），研究者用氧-18 把十場暴雨的溪水拆成『這場雨的水』和『雨前就在集水區裡的水』（以漲水前的溪水代表）。兩條溪都是洪峰那一刻『這場雨的水』比較重要：Thompson Creek 三場，洪峰那一刻約 25% 到 42%，但整場流過的水加起來只有約 5% 到 10% 是這場雨；Atika Creek 七場（其中五場的雨與三個熱帶氣旋有關，氣旋眼距集水區約 95–160 公里，其餘兩場是季風雨）事件之間差得更大，整場從約 3% 到 84% 都有。作者的結論是：整場流量一般以雨前就存在集水區的水為主（超過一半）。",
+      "scope": "兩個小集水區、十場事件、各一個雨季；二成分 δ18O 分離，雨水端元每場一個樣本，作者自己寫端元假設不一定成立、土壤水是未量到的重要來源。數字只用表 3、表 4 與 4.2、摘要結論的『整場一般 >50% 雨前水』。不用：3.3 正文與表 3 錯位的 AC2／AC3 數字、3.5 把 TC2／TC3 併組的寫法、4.4 那句相反的 event waters at least 50%、結論的 dominated during peak flows (9.9%–70.6%)，以及摘要與結論的『集水區越濕越明顯』——3.5 與表 3 顯示 Atika 雨季中事件水比例反而逐場上升（AC2 整場 84.1%），原文自相矛盾，片中不說，也不得接到 E74-046『看雨前濕度』成因果。表 4 的 TC1–TC3 是 Thompson Creek 事件編號，不是熱帶氣旋，片中不可說成『三個颱風』；Atika 的熱帶氣旋是間接影響（氣旋眼不經過集水區），不說『颱風直撲』。不與臺灣研究（E74-049，模型估計、不同方法）的兩成到八成相減或並列成矛盾；也不與 E74-045 Erlenbach 的 23% 平均互比（定義不同：本篇 Qtot 為單場合計）。不引 Babinda 舊數字（前人）。",
+      "source_locator": "摘要；2 方法末段；表 1；表 3；表 4；4.2 第 1 段；5 結論",
+      "premise_status": "screened",
+      "notes": "算 0.75：一篇、兩個集水區、一個結論（洪峰當下事件水比例高於整場；整場以雨前水為主，事件間差很大）。新增在『洪峰那一刻 vs 整場合計』兩種算法差很大，這是舊核心沒有的；熱帶、含熱帶氣旋外圍降雨，補 still_missing 第 (2) 項。研究群 J（JCU），Europe PMC AUTH 查 Munksgaard、Bird MI、Lim HS 與題目各群作者（Kirchner、von Freyberg、Barnard HR、Brooks PD、Lee JY、Soulsby C、Uhlenbrook、Morgenstern、Strasser、Vereecken）無水文合著（命中者皆為醫學同名）。不屬 A、B＋F、H。原文有三處正文與表或摘要不一致，已在來源 limitations 列出並只用表與摘要。 原提案 F112-001（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V120（2026-11-12）改字後收；數字、單位、事件編號與熱帶氣旋歸屬逐一核對無誤，作者排除的三處矛盾得當；但答案沿用了摘要的『集水區越濕越明顯』，與同篇 3.5 及表 3 的 Atika 季節趨勢相反，已刪，並補記兩處作者漏列的不一致與端元限制。研究群 J（JCU：Lim、Munksgaard、Bird）：Europe PMC AUTH 查 Munksgaard、Bird MI 與 McDonnell、Kirchner、Barnard、Morgenstern、Soulsby、Stewart MK 皆 0 筆，作者另查的 Lee JY、Uhlenbrook、Strasser、Vereecken 等亦無水文合著；本篇只『引用』McDonnell（Muñoz-Villers & McDonnell 2012 等），不是共同作者。新群，算 0.75（一篇兩集水區一個結論：洪峰 vs 整場、整場多為雨前水、事件間差很大）。池中無同答案：E74-045 是單一溫帶集水區 24 場平均，不區分洪峰與整場；pool.json 無 hyp.14722、Atika、Thompson Creek；mechanism_key 未被使用。符合 still_missing 第 (2) 項（不屬 A、B＋F、H 的熱帶暴雨同位素分離開放原研究）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一場雨，洪峰那一刻和整場合計，答案可以差好幾倍——問『溪水是不是剛下的雨』，要先問『哪一刻』。",
+        "visual": "兩條色條並排：上條『洪峰那一刻』新雨色約三到四成；下條『整場加總』新雨色只剩一成以下（Thompson Creek 表 4）；地圖標昆士蘭濕熱帶。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6c056027dbf19ff",
+          "origin": "wave75-earth-20261111",
+          "locator": "摘要；2 方法末段；表 1；表 3；表 4；4.2 第 1 段；5 結論",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ]
+    },
+    {
+      "id": "E75-007",
+      "question": "『訊號比水跑得快』只是那一片山坡的特例嗎？",
+      "domain": "地下水",
+      "mechanism_key": "hydrology.plot_celerity_velocity_ratio_preferential_flow",
+      "answer_target": "在另一處山坡也量得到，但差距看土壤。瑞士前阿爾卑斯 Alptal 的 Studibach，研究者在兩塊坡面試區灑水到接近飽和、流量穩定後，一邊在不同距離多加一股水、看出口流量多快有反應（訊號），一邊放鹽、螢光素、溴和氘標記水、看最先到的示蹤劑多快到（水本身）：草地上的地表逕流，訊號平均每小時約 64 公尺，最先到的示蹤劑平均每小時約 24 公尺；作者寫，兩塊試區的地表逕流訊號都是水速的 2 到 3 倍，草地的表土側流也是。可是森林空地的表土側流，兩者幾乎一樣（約每小時 34 對 30 公尺）——作者歸因於大孔隙等優勢流路徑，並在這塊空地看到好幾個動物挖出的孔洞。",
+      "scope": "兩塊試區、各一次人工灑水、接近飽和的穩定狀態；側向順坡流的『第一次到達』最大值，與 E74-051 的垂直濕潤鋒不是同一種量，數字不可互比、相除或相減。2–3 倍照摘要與 5.3.3，不自算其他倍數。空地地表逕流 celerity 不確定度很大（4 m 處 240±480 m/h），不用 150、240、105 m/h。結論段的 mm h−1 是單位誤植，用表 5 的 m h−1。不說『根』造成空地大孔隙。引前人的 αk 3–20、15、Scaini 1.02–1.06 不用。研究群屬 A（見 reason），計 0。",
+      "source_locator": "摘要；3.3.2；表 4；表 5；5.3.3；6 結論",
+      "premise_status": "screened",
+      "notes": "算 0.75（暫定）：一個實驗、一組對照（訊號 vs 水速 2–3 倍，加上空地表土側流幾乎相同的例外）；氘標記水最高 30%／8% 是同一實驗的細節，不另算。補 still_missing 第 (4) 項，讓轉折二不只靠 H. J. Andrews 一片山坡，也替轉折二加上『差距看土壤』的限制。研究群 K（蘇黎世大學）：作者名單與題目已用來源無重疊；但 van Meerveld 曾與 McDonnell、Kirchner、Rinderer 合著（Europe PMC REST 查得），從嚴解讀『非 McDonnell 合作網』則併入已封頂的群 A 或 B＋F、計 0，請覆核裁定。 原提案 F112-002（目標 F97-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V120（2026-11-12）改字後收；數字與單位屬實，答案改掉原文沒有的『根』並把『水本身最快』改為『最先到的示蹤劑』。研究群裁定：本篇三位作者不在題目已用來源的名單上，但通訊作者群的 van Meerveld 與群 A 的 F97-S001 四位作者中三位有直接合著——Kirchner（Europe PMC：Liu…van Meerveld、Kirchner 2025；Scandellari 等 2024 兩筆）、Rinderer（Europe PMC：Zuecco、Rinderer…van Meerveld 2019；本篇參考文獻另列 Rinderer、van Meerveld 等 2014、2016 與 van Meerveld、Fischer、Rinderer 等 2018，皆在同一個 Studibach）、von Freyberg 與 Kirchner 同列（本篇參考文獻 Stähli、Seibert、Kirchner、von Freyberg、van Meerveld 2021，Alptal 研究回顧）——並與 McDonnell 合著（Europe PMC：Lehmann…Tromp-van Meerveld、McDonnell 2007；參考文獻 Tromp-van Meerveld & McDonnell 2006a、b，Uchida、Tromp-van Meerveld、McDonnell）。依第二十四輪『與題目已用的各群有共同作者就算同群』與 still_missing (4)『非 McDonnell／Barnard／Brooks 合作網』，從嚴併入群 A（ETH／WSL＋IDAEA；連結最多，且 Studibach 與 Erlenbach 同屬 WSL 的 Alptal 研究流域，近飽和條件還引 Rinderer 2014 為據）；群 A 已封頂 2.0，本核心計 0。它仍可作 E74-051 的旁證（另一處山坡、另一種量法），但不滿足 still_missing (4) 要的『第二個獨立研究群』。池中無同答案（pool.json 無 Studibach、Leuteritz、hess-30-267；celerity 只有 E74-051 與無關的 O3060 洪波），mechanism_key 未被使用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "壓力比水跑得快在別的山坡也量得到，但不是永遠——土裡有大孔隙時，水本身也能幾乎一樣快。",
+        "visual": "兩塊試區俯視示意：草地上兩支箭頭『訊號 64』『水 24 m/h』長短不同；森林空地表土裡兩支箭頭『34』『30』幾乎一樣長，旁邊畫根孔與蚯蚓洞。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave75-earth-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fd9927e39e3e8a34",
+          "origin": "wave75-earth-20261111",
+          "locator": "摘要；3.3.2；表 4；表 5；5.3.3；6 結論",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+      ]
+    },
+    {
+      "id": "L75-001",
+      "question": "費氏數是植物天生的固定答案，還是同一條花序長到一半也會換？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.verbena_serial_pattern_transitions",
+      "answer_target": "會換。弗羅茨瓦夫大學的研究者用波蘭野生族群的種子建了一片馬鞭草田：營養期葉子兩兩對生，一開花，花序軸上的苞片改成螺旋，多半是費氏型（2 條對 3 條），少數是 Lucas 型（3 對 4）或雙費氏型；之後同一條花序還可能一換再換，例如 2:3→3:5→3:4→4:4→4:5，連同對生、三輪生、四輪生，整個族群共記到七種排列。12 株裡，花序一開始的螺旋是費氏型的比例每株從 63% 到 93%；而長在克羅埃西亞沃迪採附近的同種植株，所有花序都只停在費氏型。切開莖看，維管束的數目在頂端換型之前就先變了（費氏型 5 束、Lucas 型 7 束）。至於為什麼換：從葉變苞片那一次，原基相對頂端的大小確實從約 30% 掉到約 15%；但之後的換型，研究者量不出不同螺旋型的苞片大小差別，自己說原因仍是個謎。",
+      "scope": "『由遺傳控制』只是作者依族群與個體差異的推定；維管束先變是觀察到的順序，訊號角色作者說待研究，不得說『維管束決定葉序』；原基每步縮 1% 的模擬只讓同一型的螺旋數增加，連續縮小反而無法讓費氏型換成別型，片中不講成『原基變小造成換型』，也不得說『換型是幾何在決定』；頂端只量 10＋8 個。63%–93% 是每株花序第一個螺旋為費氏型的比例，不是苞片比例；七種排列含輪生型。克羅埃西亞植株是當地生長的、株數未寫。不得說『馬鞭草不排費氏』。",
+      "source_locator": "Developmental changes 第 1–2 段與表 2、表 3；頂端量測段；Vascular system 第 1 段；Computer modeling 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0.75：同一研究的換型序列與表 3 比例算 0.5，大小比例（30%／15%）與 1% 模擬合算 0.25；維管束先變是同一觀察系列的附帶，不另計。新群（弗羅茨瓦夫；與 Fierz、Swinton 等無共同作者）。怎麼加深轉折：轉折一從『有些植物例外』推進到『同一條枝子上費氏只是其中一站』——費氏數是頂端某個時期的狀態，不是物種背的答案；轉折二多一個非生長素群的證據：換哪一型跟原基相對頂端的大小有關，是幾何在決定，不是植物在算。放在向日葵之後、機制之前當橋，不當又一個例外。去重：pool.json 無 Verbena／馬鞭草；wave74-life 只在 F89-NA009 提過（只讀摘要）。 原提案 F109-001（目標 F89-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；數字、單位、主詞都在原文；改掉三處：（1）作者的編輯點與轉折把 1% 模擬接成『換型跟原基相對大小有關，是幾何在決定』，與原文相反——實測次級換型看不出原基大小差別、連續縮小在模擬中無法讓費氏型換型、作者自稱原因是謎，只有初次換型（葉→苞片）有明顯大小變化；（2）『克羅埃西亞來的植株』改為長在當地的植株；（3）七種排列註明含輪生型。算 0.75 照作者（換型序列與表 3 範圍 0.5、維管束先變與初次換型原基大小 0.25），模擬不計。研究群：Europe PMC AUTH 查得 Gola、Jernstedt、Zagórska-Marek 2007 共同作者，故 Jakubska-Busse 等 2017（Gola）與本篇同屬弗羅茨瓦夫群，但題內未用，不影響封頂（本群 0.75）。另 Zagórska-Marek 與 Jönsson、Hamant 合著 Majda 2017（表皮細胞，非本題文獻），屬題外間接連結；本題封頂照第二十四輪做法只看題內各篇作者名單是否重疊，不併群，記錄備查。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一根花莖從 2:3 一路換到 4:5：費氏型只是其中一站，而且原因連研究者都還說不清。",
+        "visual": "馬鞭草花序橫切『雪花』四連圖（2:3、2:4、4:5…），旁邊一個圓（頂端）配越來越小的圓（原基），螺旋數跟著跳。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-83641d401b99327a",
+          "origin": "wave75-life-20261111",
+          "locator": "Developmental changes 第 1–2 段與表 2、表 3；頂端量測段；Vascular system 第 1 段；Computer modeling 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ]
+    },
+    {
+      "id": "L75-002",
+      "question": "樹幹變粗七年之後，還看得到小苗時期的葉序嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.cherry_trunk_mri_juvenile_spiral",
+      "answer_target": "看得到。密西根州立大學把一棵 7 年生甜櫻桃 1.15 公尺長的老樹幹拿去做 MRI，休眠芽留下的維管束痕跡穿過 7 年的增粗木材仍在，找到 36 個節，全是苗木第一年排下的；這 36 個點排成櫻桃書上寫的 2/5 葉序（最顯眼的是 2 條對 3 條的斜列），平均夾角表 2 約 143°。",
+      "scope": "一棵樹、36 個節、方法論文；(3,5)(5,8) 斜列是由 Adler 定理從平均夾角推出，不是數到的；平均夾角原文前後不一（表 2 約 143°、圖 7 說明約 139°），不得拿來說『量到不是黃金角』；2/5 約 144° 是櫻桃的傳統值，不是新發現。不放入 F89-T1。",
+      "source_locator": "摘要 Results；Plant material 段；表 2；圖 7 說明；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "本題計 0；入池作獨立小核心（樹幹保存幼年葉序）。 原提案 F109-002（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；作者版本的賣點『數得出費氏、角度卻不是 137.5°，第一個在成樹上量到的反例』站不住：（1）『看得到 3 對 5、5 對 8』是用前人 Adler 定理從平均夾角推出的，作者自己也說標準誤可能排除 8 斜列；（2）平均夾角原文自相矛盾，取圖 7 的約 139° 時與 137.5° 只差約一個標準誤，不能當『不是黃金角』的量測；（3）2/5（約 144°）本就是櫻桃的傳統葉序分數，『葉序分數不等於黃金角』是教科書常識，原文也沒有拿它檢驗黃金角；（4）『實測角度會偏離 137.5°』池中 L74-047 已有（阿拉伯芥頂端 128–146° 的比例），不新增。可靠的部分只剩『樹幹 MRI 保存幼年 2/5 葉序』，與本題兩個轉折無關，本題計 0；入池時改問題、0.25 條。研究群：Europe PMC AUTH 查 Eithun、Larson、Lang G、Chitwood、Munch 與題內各篇無共同作者（Robertson 2025 的 Lang D 是另一人）；Chitwood 曾與 Strauss 2020 的 Smith RS 合著（Martinez 2016、Chitwood 2012），為題外間接連結，不併群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "樹幹裡藏著 8 年前的葉序：數字是費氏，角度卻不是黃金角。",
+        "visual": "樹幹 MRI 切片疊成圓柱、展開成格子，36 個亮點連成 2 條與 3 條斜線；角度計停在 143° 而不是 137.5°。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-32f9b4c99374fb9b",
+          "origin": "wave75-life-20261111",
+          "locator": "摘要 Results；Plant material 段；表 2；圖 7 說明；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ]
+    },
+    {
+      "id": "L75-003",
+      "question": "螺旋排錯一次，後面會不會整串亂掉？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.inhibitory_field_error_self_correction",
+      "answer_target": "多半不會，錯一下就回來——至少在模型裡是這樣。里昂與 Inria 的研究者先在野外找：歐洲油菜、七葉樹、常春藤、蒜芥、一種風信子類（Muscari comosum）、煙樹，彼此不相近的植物上都輕易找到側枝先後對調的錯位（照片舉例，沒有統計比例）。再用經典的『舊器官抑制附近』模型分析：頂端周圍可以長新器官的低谷其實早就排好，彼此隔著整數倍的夾角；在模擬裡硬讓下一個器官長到第二低的谷，接下來那個器官馬上補回原本的位置，再下一個就回到常規，夾角只多出一個短短的 M 形、之後回到約 137 度，被打亂比較久的是器官冒出來的時間間隔。",
+      "scope": "『低谷早排好、錯一下就回來』是模型模擬，不是量測；多物種錯位只是照片舉例；『錯的是時間不是位置』的結論已在 L74-045 講過，本條只補模型裡的理由，不重講結論與 L74-045 的數字；阿拉伯芥 30% 共同冒出是引用 Besnard 2014，不講。",
+      "source_locator": "Results 第 1 節與圖 2 說明；第 2 節 Property 1–3 與強迫擾動段（圖 3G–H）",
+      "premise_status": "screened",
+      "notes": "算 0.5：多物種野外錯位 0.25（只有舉例）＋模型的『空位預先排好、錯誤自癒』0.25（模型，不升格）。里昂群：L74-045 1.0＋F109-003 0.5＋F109-004 0.5＝2.0，剛好封頂（Refahi、Vernoux 與 Landrein 2015 共同作者；Godin、Farcot 與 Azpeitia 2021 共同作者）。怎麼加深轉折：L74-045 只說『錯的是先後』，這條補上為什麼——在抑制場裡位置是周圍舊器官的空隙決定的，所以錯了會自己回正；這正是轉折二『沒有誰在算角度、是空位在決定』的直接證據，而不是又一種例外。與池中 SRC-0be4910b0c7e344f 同一頁。 原提案 F109-003（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；引文、物種、模型條件都對；『葡萄風信子』改成原文的 Muscari comosum（不是常見的葡萄風信子），刪掉與 L74-045 重複的結論句，『里昂群』照併群。算 0.5（野外多物種錯位 0.25、模型的低谷預排與自我回正 0.25），可接受但已是上限：兩半一半是無比例的舉例、一半是模型。研究群：Refahi、Vernoux 與 Landrein 2015（L74-045）共同作者；Godin、Farcot 與 Azpeitia 2021（F109-004）共同作者——三篇併為里昂群，L74-045 1.0＋本條 0.5＋F109-004 0.5＝2.0，剛好封頂、未放寬。池中 SRC-0be4910b0c7e344f 同一網址同一快取：不另立來源，改為該來源新增一筆 reading（見 source_fixes）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "排錯隊的螺旋會自己歸隊：位置是空位決定的，不是記在誰的腦子裡。",
+        "visual": "頂端俯視：一圈抑制的高低地形，五個低谷；強迫一顆跳到第二低谷，下一顆補位，夾角曲線出現 M 字後回平。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0be4910b0c7e344f",
+          "origin": "wave75-life-20261111",
+          "locator": "Results 第 1 節與圖 2 說明；第 2 節 Property 1–3 與強迫擾動段（圖 3G–H）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ]
+    },
+    {
+      "id": "L75-004",
+      "question": "寶塔花椰菜一層套一層的螺旋是怎麼來的？",
+      "domain": "植物",
+      "mechanism_key": "plant.phyllotaxis.cauliflower_curd_floral_memory_meristem_size",
+      "answer_target": "是一大堆『開花失敗』疊出來的。花椰菜上每個小突起本來要長成花，卻沒長成，又變成新的花序、再冒出更小的突起，所以螺旋一層套一層：花椰菜最高到第 7 層以上，甘藍只有 3 到 4 層。法國、西班牙、義大利等團隊用長得像花椰菜的阿拉伯芥突變株，結合基因網絡與 3D 生長模型，推論這些分生組織曾短暫進入『開花狀態』、留下記憶，退回後才一層層長下去。他們再加一個會讓頂端越長越大的突變（clv3），阿拉伯芥的『花椰菜』就從圓球變尖，各個尺度都冒出像寶塔花椰菜的小圓錐；而真正的寶塔花椰菜，CLV3 基因的表現也比一般花椰菜低。",
+      "scope": "『開花狀態的記憶』是突變株實驗加模型的推論，片中說『研究者推論』；阿拉伯芥長出的是『像寶塔花椰菜』的形狀；頂端變大→間隔變短→螺旋變多、寶塔花椰菜出葉間隔會變，都是引用前人；n≥7 對 3–4 與 CLV3 表現出自補充圖 S5、S6（補充材料未讀，只依正文）；版本是米蘭大學典藏標示的接受稿（post-print），未與 Science 正式版逐字比對。本篇不談費氏計數，不得說『花椰菜在算費氏數』或『科學家種出寶塔花椰菜』。",
+      "source_locator": "摘要；主文第 1 段與圖 1 說明；第二節末段；第三節全段",
+      "premise_status": "screened",
+      "notes": "算 0.5：『開花失敗＋記憶』的機制與 clv3 改形、CLV3 表現較低合為同一研究的一條的一半；花椰菜 n≥7 對甘藍 3–4 併入，不另計；基因網絡細節不進片。里昂群（Godin、Farcot 與 Refahi 2016 共同作者），群內合計 2.0 已到頂。怎麼加深轉折：轉折二的結尾——螺旋數與形狀跟著頂端大小與長的節奏走（同 F109-001 馬鞭草的大小比例），改一個控制頂端大小的基因，螺旋的樣子就變；這是觀眾最熟的日常入口，用來收束『植物不算數，是幾何與生長在排』，不是另一個例外。版本只讀到送審稿，覆核若要求正式版比對，這條可降為 0.25 或改為後備。去重：pool.json 無 cauliflower／Romanesco／此 DOI；wave74-life 只在 F89-NA007 提過。 原提案 F109-004（目標 F89-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V117（2026-11-12）改字後收；版本問題：PDF 每頁頁首『Submitted Manuscript: Confidential』是 Science 投稿範本的固定頁首；典藏紀錄頁明寫此檔是 post-print、accepted manuscript，與第二十四輪 L74-042（愛丁堡典藏接受稿）同等處理，可計、不因版本降級，但寫明未與正式版比對、補充材料未讀。內容逐句對上；改『他們的結論是』為『推論』（記憶是模型抽象的 factor X）。算 0.5（作者同）：n≥7 對 3–4 與 clv3 改形、CLV3 表現是同一研究，記憶機制是推論不另計。注意：本篇回答的是『一層套一層』與『圓錐』，不回答費氏數或黃金角，在本題只能當轉折二後的日常延伸，不能當轉折二的證據。研究群：Godin、Farcot 與 Refahi 2016 共同作者，併入里昂群，群內 2.0 已滿；其他作者（Parcy、Prunet、Bradley、Kater、Madueño 等）經 AUTH 名單比對與題內其他篇無重疊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "寶塔花椰菜是一層層開花失敗疊成的；頂端長大一點，圓球就變成尖塔。",
+        "visual": "一般花椰菜與寶塔花椰菜並排，鏡頭一路放大到小突起上的螺旋；再並排阿拉伯芥 ap1 cal（圓）與 ap1 cal clv3（尖）。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-97753df3a5f99a74",
+          "origin": "wave75-life-20261111",
+          "locator": "摘要；主文第 1 段與圖 1 說明；第二節末段；第三節全段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ]
+    },
+    {
+      "id": "L75-005",
+      "question": "「沒有東西」對猴子來說也是一個數嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.macaque_parietal_zero_neurons_empty_set_on_line",
+      "answer_target": "看起來是。日本東北大學讓兩隻日本獼猴用左右兩個轉盤一次加一、減一個白點，把螢幕上的點數調成和一開始看到的目標數一樣，目標數從 0 到 4，0 就是一片空白；點的大小、總周長、排成一直線都有對照，零的題目還拿掉注視點，免得猴子把那一點當成「一」。兩隻每個目標數都答得比瞎猜好，數越大越不準，零也落在同一條直線趨勢上；標準刺激與對照刺激的成功率是 72.0% 對 72.6%，沒有顯著差別，作者據此說猴子把空集合放進了數線。研究者在其中一隻猴子的頂葉記錄了 614 個細胞，其中 137 個對「零」的反應和對其他數不同，而且幾乎沒有一個在意注視點在不在（目標期 99 個裡 1 個、延遲期 76 個裡 1 個）。",
+      "scope": "神經記錄只有一隻猴子，行為只有兩隻；「放進數線」是作者從 72.0% 與 72.6% 沒有差別所做的推論，作者自己的說法是「非語言零概念的前身」，不說「猴子懂零」。不把 137 與 66/99、31/99 混算；不提 Nieder 群的猴子零研究。和 L74-057 並列時只說「蜜蜂那邊有不數也能重現的模型；猴子這邊在控制面積、周長、注視點之後，空白仍落在同一條趨勢上」，不說誰對誰錯。",
+      "source_locator": "Results 第 1、2 段；Methods〈Behavioral task and Stimuli〉",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一實驗的行為（含控制刺激 72.0% vs 72.6%）與神經（137/614、注視點 1/99、1/76）合為一條答案；V97 預估 0.5。獨立研究群（東北大學 Mushiake 實驗室，Europe PMC AUTH 查詢與各群主要作者 0 篇合著）。補 still_missing（1）。讀的是 stw24 快取同一份 XML 的 Results 全部六段與 Methods 兩節（上一輪只讀摘要）。去重：pool.json 無 zero／空集合／numerosity 相關核心；本 PMCID 只出現在 wave74-life.json 的 not_added。 原提案 F110-001（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；逐句對上：two monkeys、0–4、left/right device 加減一、standard／same circumference／linear 三種刺激、numerosity zero without the fixation point、better than chance for all target numerosities、linear decline r²=0.97、72.0% vs 72.6%（P = 0.21）、614 cells in the VIP of a monkey、137 zero neurons（99/185、76/101）、fixation 1/99 與 1/76，全部在 Results 第 1、2 段與 Methods。改兩處：137 個是「反應和其他數不同」（differential），不是單純「有反應」；把「放進數線」標成作者推論。算 0.5（V97 預估同），東北大學 Mushiake 群：Europe PMC AUTH 查詢 Mushiake H、Okuyama S 與已用各群主要作者無合著（Okuyama S＋Matsuzawa T 30 筆全是 1970–80 年代放射科同名作者，非同一人）。扣題：回答的是「零算不算一個數」，不是「會不會數」；它的價值是給 L74-057（蜜蜂的零可被不數的模型重現）一個方向相反、但不互相否定的對照，40 秒以內合適。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "蜜蜂的「零」可以被不數的模型重現；但猴子在拿掉面積、周長和注視點這些捷徑後，空白仍排在 1、2、3 的同一條線上。",
+        "visual": "轉盤一格一格加減白點的動畫；最後一格是全黑的螢幕，旁邊一顆小神經元亮起來。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-c9c8e2b85aed8d7d",
+          "origin": "wave75-life-20261111",
+          "locator": "Results 第 1、2 段；Methods〈Behavioral task and Stimuli〉",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ]
+    },
+    {
+      "id": "L75-006",
+      "question": "長頸鹿看得出杯子裡的胡蘿蔔被加了幾塊、拿走幾塊嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.giraffe_combination_above_chance_dissociation_at_chance",
+      "answer_target": "加的看得出，拿走的看不出。巴塞隆納動物園四隻長頸鹿先看兩個黃杯裡各有幾塊胡蘿蔔、蓋上，再看實驗者把中間綠杯的 1 到 3 塊一塊一塊放進其中一杯，最後選一杯吃。加的題目平均答對 68%（±3%），四隻都高於瞎猜；從杯裡拿走的題目 57%（±3%）、先拿走再加的題目 64%（±5%），每一隻都在瞎猜水準。研究者也檢查一條簡單捷徑：加的時候選實驗者剛動過的那杯、拿走時避開它。在這條捷徑會選錯的題目上，只有兩隻（34/52、35/52）仍高於瞎猜，另兩隻都是 29/52。全程實驗者戴太陽眼鏡、低頭、保持中性表情以防聰明漢斯效應；作者在限制段自己寫，手動搬食物、舉杯子仍可能透過細微、無意的訊號影響選擇，建議以後改用自動化與盲測。",
+      "scope": "只有四隻；捷徑在模型中只是邊緣顯著（p = 0.055）。「選實驗者動過的杯」是作者分析的操作捷徑（作者還讓實驗者同時碰兩杯來減少這種吸引），不是聰明漢斯效應——不得說「墨鏡擋不住聰明漢斯」「長頸鹿在讀實驗者」「跟著實驗者的手選」；無意訊號只是作者自述的可能，沒有量測。不轉述文中引用的紅毛猩猩、黑猩猩、小雞等比較。",
+      "source_locator": "Results 兩節與 Table 2；Discussion 第 6、7 段與限制段；Methods〈Experimental procedure〉太陽眼鏡段",
+      "premise_status": "screened",
+      "notes": "算 0.5：一個實驗的主結果加 DMO 拆解；作者的「無意訊號」是限制自述，不另計。補 still_missing（2）「在數量作業裡直接面對實驗者提示的現代開放研究」：本篇沒有直接操弄實驗者訊號，但直接檢驗了『跟著實驗者的手選』這條由實驗者提供的捷徑，並在數量作業中明寫聰明漢斯防範與其不足，可取代已刪的 F94-004（狗的指示手勢、非數量作業）的位置。研究群：Amici 與維也納 Range、Virányi 只在 58 位作者的跨實驗室合著 PMC4034204 同列，視為獨立；即使覆核併入維也納群（L74-052 0.75），合計 1.25 仍低於 2.0。去重：pool.json 無長頸鹿、giraffe 核心，無此 PMCID。 原提案 F110-002（目標 F94-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；數字全部對上（68±3%、57±3%、64±5%；Table 2 的 No DMO：Nuru 34/52 p=0.037、Njano 35/52 p=0.018、Nakuru 與 Yalinga 29/52 p=0.489；DMO p=0.055；272×4＝1,088 次；sunglasses ‘to avoid the Clever Hans effect’；限制段 ‘subtle, unintentional signals’）。但作者的題目與答案把三段原文接成一個結論：方法段的防範措施＋DMO 捷徑分析＋限制段的自述可能 →「戴墨鏡也擋不乾淨聰明漢斯」。原文沒有任何量測支持這個結論：DMO 是『選被動過的那杯』的操作捷徑（stimulus enhancement 類），作者還特地讓實驗者同時碰兩杯來壓低它，不是問者不自覺的身體訊號；無意訊號只是限制段的一句可能。改寫成『長頸鹿會加不會減』的核心才收入池。對 F94-T1 計 0、不放進最終核心：（1）它被拿來補 still_missing（2）「在數量作業裡直接測實驗者無意提示」，但本篇沒有操弄或量測實驗者知不知道答案、看不看得到動物，不符合；作者自己在 still_missing（a）也承認沒直接量。（2）若改算 still_missing（3），（3）已由 F110-003 孔雀補上，把它改掛（3）是覆核為過線替作者換理由，不採。（3）去掉錯誤的漢斯框架後，它在片中只是第十二種動物，加重清單感。研究群：Amici F 與 L74-052 來源的 Range F、以及 Virányi Z 同列 MacLean 等 2014（PMC4034204，58 位作者）——依『有共同作者就算同群』併入維也納群；作者說併了也只 1.25 是對的，但本題計 0，維也納群仍 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一套杯子，加的會、拿走的不會；兩隻的成績大半可以用一條不必數的捷徑解釋。",
+        "visual": "長頸鹿低頭看三個杯子；實驗者一塊塊放進右杯；記分板分『加』『拿走』兩欄。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2cea2558dfff611",
+          "origin": "wave75-life-20261111",
+          "locator": "Results 兩節與 Table 2；Discussion 第 6、7 段與限制段；Methods〈Experimental procedure〉太陽眼鏡段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ]
+    },
+    {
+      "id": "L75-007",
+      "question": "把點的大小、面積、密度都故意弄亂，孔雀還分得出哪邊多嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.peafowl_touchscreen_more_dots_survives_area_density_conflict",
+      "answer_target": "多半分得出，但點差很少時會被面積拉走。美國德州農工大學讓八隻藍孔雀在觸控螢幕上啄圓點比較多的那一格（1 到 8 個點），實驗者用攝影機在別處看，孔雀看不到人；四個實驗一共 81,167 次。點一樣大時平均答對 78.05%，差一個點 61.32%、差七個點 97.66%，越接近越難。故意讓點多的那格用小點、點少的那格用大點時，整體答對率掉到 58.90%，仍比瞎猜好，但差一個點時只有 41.09%、差兩個點 51.68%，都沒有高於瞎猜；把兩格的總面積調成一樣時，答對率 79.45%，和點一樣大的 80.49% 差不多。作者結論是表現主要跟著點數走，面積和密度也有影響。",
+      "scope": "作者自承：只有 8 隻、做完全部的只有 5 隻；實驗前受過大量訓練，可能是學來的辨別策略，不一定是自發的數感；只訓練「選多」。41.09% 只說「不到一半、沒有高於瞎猜」，原文沒說顯著低於機率。不和 L74-052 的狗比「誰掉進陷阱」：狗的題目是點數相同、只有點大小不同，孔雀的題目是點數不同、點大小反向，設計不同、不能並成同一個陷阱。不轉述討論引用的黑猩猩數字（Tomonaga 2008）；不說孔雀比烏鴉聰明；不說母孔雀數公孔雀眼斑。",
+      "source_locator": "Methods〈Apparatus〉末句；Results 第 1–2 段；Table 4、Table 6；Discussion 第 2 段與限制段",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一系列實驗的多個數字合為一條（點數辨別＋面積衝突／面積相等的對照）。補 still_missing（3）：研究群已確認為德州農工 Yorzinski 實驗室，七位作者與已用各群皆無重疊。對片子的作用：和 L74-052（狗在面積固定時照點大小選）並排，給出「同樣的面積陷阱，有的動物會掉、有的大多不會」的對照，讓『控制線索』那章不是單向的否定。去重：pool.json 無孔雀數量核心（「孔雀」只出現在孔雀蜘蛛超黑），無此 PMCID／DOI。 原提案 F110-003（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；Table 1（總 81,167 次、8 隻、5 隻做完）、Table 4（78.05、58.90、80.49、79.45、84.16、68.31）、Table 6（61.32、97.66；Exp 2 面積不一致差 1 為 41.09%、差 2 為 51.68%）、Methods〈Apparatus〉攝影機監看、限制段三項都對上。改正：作者只寫『差 1、2 個點時不高於機率』，漏了差 1 時其實只有 41.09%——方向是被大點拉走，這正是『面積陷阱也抓得到孔雀』的證據；作者 editorial 的『同一個陷阱，狗會掉、孔雀大多不會』把兩個設計不同的研究並成同一個例子，違反『不同研究不能混成同一個例子』，刪。Exp 2 的不一致條件原文是『點多的那格點小、點少的那格點大』，作者寫『總面積反而比較小』是從 9 與 36 像素半徑推得的，改回原文的說法。算 0.5；德州農工 Yorzinski 群：Yorzinski JL、Liao MR 與已用各群 AUTH 查詢皆 0 篇，獨立。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "控制掉面積之後孔雀照樣分得出多少；但只差一個點、而且點少的那邊點比較大時，牠們也會被大小拉走。",
+        "visual": "左格 5 個小點、右格 4 個大點；孔雀猶豫後啄右格；再換兩格總面積相同，啄對。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-20cd3eaca0a4f2ba",
+          "origin": "wave75-life-20261111",
+          "locator": "Methods〈Apparatus〉末句；Results 第 1–2 段；Table 4、Table 6；Discussion 第 2 段與限制段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ]
+    },
+    {
+      "id": "L75-008",
+      "question": "黑猩猩做數字題時，旁邊站幾個人有差嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.chimpanzee_numeral_task_audience_count_effect",
+      "answer_target": "有，而且方向看題目難度。京都大學靈長類研究所把六隻黑猩猩約六年（2009 年 7 月到 2016 年 1 月）的觸控螢幕紀錄拿出來，看當時旁邊有幾個人、是誰。題目都是依序點阿拉伯數字：最簡單是相鄰的數字，最難是點了第一個之後其他數字被蓋住、要靠記憶。單看熟人或陌生觀眾『在不在』看不出差別；但看人數時，最簡單的題目，負責操作的實驗者每多一位，模型估計表現降 6% 到 11%，熟人觀眾多一位降 1% 到 10%；中等的題目熟人越多反而略好；最難的題目是實驗者越多做得越好；陌生人多寡都沒有影響。研究者提出三種可能——獎賞變得更有價值、認知負荷、專注被分散——還沒有定論。",
+      "scope": "觀察資料、不是實驗操弄；無法設『完全沒有人』的對照（作業一定要有人操作）。作者當成觀眾效應，沒有說人給了答案提示——不得說『黑猩猩看人臉色作答』，也不得放在『問的人還在房間裡』這種接聰明漢斯的段落。百分比是模型估計（勝算比區間），不換算成題數；不說黑猩猩在乎面子。",
+      "source_locator": "Results〈Performance across task types〉、〈Model 1〉、〈Model 3〉第 2 段；Discussion 第 1 段；Limitations",
+      "premise_status": "screened",
+      "notes": "算 0.5：一份資料分析的主結果（人數與身分的方向相反效果）。補 still_missing（4）Matsuzawa 群另一篇開放全文：Muramatsu 為 L74-063 來源共同作者，Yamamoto 與 Matsuzawa 合著 3 篇，併入 Matsuzawa 群 0.5＋0.5＝1.0。對片子的作用：接在 L74-063（同一批黑猩猩學會排 1–19）後面，把「會不會數」拉回全片的主問題「人在場會不會改變答案」，同時讓 L74-063 從清單項變成鋪陳，不再是孤立的一格。去重：pool.json 無觀眾效應、audience effect 核心，無此 PMCID／DOI。 原提案 F110-004（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）改字後收；數字對上：Model 1 各作業 p=0.112、0.917、0.338（『在不在』只含熟人與陌生觀眾、不含實驗者，作者答案沒寫清楚，已補）；Model 3 實驗者 6%–11%（OR 0.890–0.946）、熟人 1%–10%（OR 0.907–0.989）、作業 2 熟人正向（OR 1.011–1.052，作者漏）、作業 3 實驗者正向（OR 1.018–1.057）；陌生人無影響；限制段無法設無人對照。研究群：Muramatsu A 為 L74-063 來源共同作者，併入 Matsuzawa 群（作者正確）。算 0.25（作者 0.5）：它量的是數字作業的分數，但發現的是觀眾效應，不回答黑猩猩會不會數；它唯一能接上本片主線的方式（人在場影響答案＝漢斯）正是它自己的 scope 禁止的，作者在 turns 與章名『一百年後，問的人還在房間裡』仍把它往提示方向放，已刪。V97 把離題的 F94-004（狗的指示手勢）整條刪掉；本條在數量作業裡，故不刪，降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "房間裡站了誰，黑猩猩的數字題分數會變，但原因還沒人說得準。",
+        "visual": "黑猩猩在螢幕前點 1、2、3…；玻璃外的人數變多變少，角落分數條上下動。",
+        "seconds": [
+          30,
+          35
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-64aba1d0ac68de8d",
+          "origin": "wave75-life-20261111",
+          "locator": "Results〈Performance across task types〉、〈Model 1〉、〈Model 3〉第 2 段；Discussion 第 1 段；Limitations",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ]
+    },
+    {
+      "id": "L75-009",
+      "question": "鵲鴨分辨多少的本事，跟牠住在多大的群有關嗎？",
+      "domain": "行為與學習",
+      "mechanism_key": "animal_number.magpie_small_group_better_two_vs_five",
+      "answer_target": "有一點關係。西澳大學研究團隊在珀斯 11 群野生鵲鴨（每群 3 到 15 隻）中測了 42 隻，地上兩塊板子各放幾條起司，選哪邊就只能吃哪邊。2 對 3、2 對 4、2 對 5 時，選多的比例是 59%、67%、73%。群體大小本身沒影響，但在 2 對 5 這組，小群出身的鳥比大群出身的更常選多的那邊；2 對 3、2 對 4 沒有這個差別；公母一樣，做六十次也沒有越做越好。作者推測小群在和鄰群衝突時吃虧較大，所以更需要算清楚；也提出另一種可能：大群有很多眼睛幫忙警戒，可以花比較多時間覓食，不必那麼挑。",
+      "scope": "同族群、同一種起司作業的「選多、差越小越難」已在 L74-062，不重講；只補群體大小的交互作用與三個比例。成因是作者推測、兩種解釋並列；不說「小群的鳥比較聰明」（同族群其他認知作業是大群較好，作者自己指出相反）。",
+      "source_locator": "Methodology〈Study species and site〉第 2 段、〈Experimental design〉；Results 兩節；Discussion 第 3、4 段",
+      "premise_status": "screened",
+      "notes": "算 0.5：同一作業的新發現（群體大小×比例交互作用）；基本辨別已在 L74-062，不重算。補 still_missing（4）Ridley 群另一篇開放全文，Ridley 群 0.75＋0.5＝1.25。對片子的作用：和 L74-062 合成同一章（同一種鳥、同一個族群），把「野外的數量感有什麼用」講深一層，而不是再加一種動物。去重：pool.json 無此 PMCID／DOI；鵲鴨在池中只有 L74-062。 原提案 F110-005（目標 F94-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V118（2026-11-12）照原稿收；對上：42 隻（20 公 22 母）、11 群、3–15 隻；每天 4 次、15 天共 60 次；2 對 3／4／5 選多 59%、67%、73%；群體大小單獨無效、與比例交互作用只在 2 對 5；性別、試次無效；兩種解釋並列（群間衝突、many-eyes）且作者指出與同族群其他認知作業相反。與 L74-062（Blackburn 等 2025，2023 年另一批 21 隻的測試）不是同一批資料；L74-062 已有『選多、差越小越難』，本條只算新的群體大小交互作用，0.5 合理。Hunter 是 L74-062 來源共同作者，Ridley 群 0.75＋0.5＝1.25，未達封頂。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "數量感不是每隻都一樣：同一種鳥，住在小群的那些，在差距最大的那題反而更會挑。",
+        "visual": "兩塊木板，一邊 2 條起司、一邊 5 條；畫面分成「小群」與「大群」兩隻鵲鴨，各自的命中率條。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-99f306556cab1677",
+          "origin": "wave75-life-20261111",
+          "locator": "Methodology〈Study species and site〉第 2 段、〈Experimental design〉；Results 兩節；Discussion 第 3、4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+      ]
+    },
+    {
+      "id": "P75-001",
+      "question": "專家把喀聲打大聲、打多次的時候，聲音本身有沒有變？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.click_adjust_level_not_spectrum",
+      "answer_target": "沒變，只調音量和次數。Durham 大學等的兩個實驗裡，8 位盲人專家：目標放遠時多打幾聲、也打大聲一點；同一距離換成較小的目標時只多打幾聲，音量不變；目標偏到側後方時同樣打得多、打得大聲。但每一聲的長度、間隔、頻寬和頻譜重心在各種條件下都不變。換成百分比，他們平均能分出約 5% 的距離變化，而且沒有顯著的偏差。目標從正前方移到正後方時，回聲相對喀聲（到耳朵）約弱了 19 dB，回聲本身卻只弱了約 14 dB；作者的解釋是專家在這些角度把喀聲加大了約 7 dB。回聲本身比喀聲偏向高頻，目標越小越明顯。",
+      "scope": "兩篇各 8 位專家、實驗室；19／14／7 dB 都是原文的約略平均，不在畫面上做 19−7 的加減（三個數字相減並不等於 14）；『部分補償』是作者解讀；不用前人 JND 的比較；不用 Fig. 4 圖說『喀聲長於回聲開始時間』那句；不教怎麼彈舌。",
+      "source_locator": "F111-S001 RESULTS Psychophysical Performance、Clicking Behaviour；F111-S002 3. Results 第 2–4 段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）。P74-029 讀完 S002、S003 Results 的那一半；Thaler 群 1.5→1.75。S004（PMC13020946）偏 45° 那句仍只讀摘要，但 Thaler 群本輪已到 2.0 封頂，再讀也不加條數。 原提案 F111-001（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；數字與條件都在原文。改正兩處：（a）作者寫『較遠、較小或較偏的目標時會多打幾聲、打大聲一點』，原文較小的目標只增加次數、強度不變（S001 第 39 行），改寫；（b）畫面『19 dB 的落差被 7 dB 墊高成 14 dB』暗示 19−7=14，算不起來（是 12），而且原文只說『可由此解釋』，改成並列三個約略值、標明是作者解釋。『估得不偏』改為原文的『偏差與 0 無顯著差』。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "專家調的是音量和次數，不是換一種聲音。",
+        "visual": "同一個『喀』的波形疊三次：形狀一樣，只是一次比一次高、一次比一次密；旁邊兩條長條：回聲相對喀聲 −19 dB、回聲本身 −14 dB，下面標『喀聲加大約 7 dB（作者的解釋）』，不畫成等式。",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-b066f6a4ab3e0fa8",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S001 RESULTS Psychophysical Performance、Clicking Behaviour；F111-S002 3. Results 第 2–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b544ab12c3a39da5",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S001 RESULTS Psychophysical Performance、Clicking Behaviour；F111-S002 3. Results 第 2–4 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ]
+    },
+    {
+      "id": "P75-002",
+      "question": "會回聲定位的盲人，視覺區都長出一張「聲音地圖」嗎？上 10 週課的人呢？",
+      "domain": "知覺與記憶",
+      "mechanism_key": "echolocation_human.v1_echo_map_expertise_not_blindness",
+      "answer_target": "不是每個人都有，而且在這個研究裡，預測它的是『是不是專家』。2019 年 Durham 大學比較 5 位每天用喀聲 20 年以上的盲人專家、5 位不會回聲定位的盲人和 5 位明眼人：專家初級視覺皮質裡的回聲位置圖彼此差很多，個案統計只有 3 位顯著比對照組更像視覺的排列，另有 2 位從圖上看不出明顯型態；統計上『是不是專家』是顯著的預測因子，『失明』本身不顯著；只有在專家之間，圖越像，回聲定位越好。2024 年上過 10 週課的 12 位盲人和 14 位明眼人，左側初級視覺皮質對回聲的反應平均由約 0 升到約 0.09（訊號變化百分比），但個別來看只有約六成的人是增加的，這個變化也和他們行為上進步多少看不出相關。",
+      "scope": "每組 5 人；所有專家都失明，所以只能說『失明』在統計上不是顯著因子，不能說『與失明無關』；r 只來自 5 位專家，不報數字；2024 年變化量小、與 P74-030 同一批人；不說『明眼人的視覺區被改造』『上課就長出視覺地圖』；不談任何訓練建議。",
+      "source_locator": "F111-S003 2. Results (a)、(c)；F111-S004 Results fMRI ROI analysis、ROI responses to no-echo and echo conditions",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：P74-031 的但書，同群兩篇合計 0.25。Thaler 群 1.75→2.0 封頂。 原提案 F111-002（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；數字相符。改正：（a）『跟失明本身無關』把不顯著寫成沒有關係，而且 5 位專家全是盲人、無法分開，改為『統計上失明不是顯著因子』；（b）5 位中 3 位的『顯著』來自個案統計，另 2 位『看不出型態』是作者看圖的描述，EE1 只有左右排列，畫面改成 2＋1＋2；（c）『約一半到三分之二』改『約六成』（7/12、8/14、9/14），PSC 單位寫明；（d）payoff 原寫『接手的是練出來的專家，不是看不見』，同樣過度，改寫。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "這張地圖只在部分練出來的專家身上清楚，而且因人而異。",
+        "visual": "五顆腦的後視圖並排：兩顆有清楚彩色條紋、一顆只分左右、兩顆空白；下方十週課的人，約六成小箭頭朝上。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fa3d05e37d2c8438",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S003 2. Results (a)、(c)；F111-S004 Results fMRI ROI analysis、ROI responses to no-echo and echo conditions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9a2247c47b368ea0",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S003 2. Results (a)、(c)；F111-S004 Results fMRI ROI analysis、ROI responses to no-echo and echo conditions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ]
+    },
+    {
+      "id": "P75-003",
+      "question": "旁邊有牆，會幫你聽出前面的牆多遠，還是礙事？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.corridor_ranging_lateral_wall_masking",
+      "answer_target": "看距離：前牆近時幫忙，前牆遠時礙事。慕尼黑大學用真實走廊的聲學響應做成虛擬走廊，6 位練過的明眼人用自己的舌頭喀聲判斷離前牆多遠：站在走廊中線時，前牆 2 m 能分出約 30–45 cm，4 m 約 60–80 cm（0.75 m 約 20 cm）。貼近一側牆時，前牆 0.75 m 反而更準（平均約 16 cm），4 m 卻更差（約 80 cm）；作者的解釋是前牆遠超過側牆時，側牆的回聲變成遮蔽。允許轉頭時，4 m 貼牆的劣勢消失，但記錄顯示受試者（連那位盲人專家也一樣）是把頭轉離側牆，而不是左右來回掃。那位盲人專家沒經過這項作業的專門訓練，最好能分出約 10 cm，每種條件都比明眼人好，遠距離尤其明顯，而且側牆對他沒有幫助。",
+      "scope": "虛擬聲學空間、6＋1 人；「遮蔽」是作者解釋，而且是側牆回聲遮前牆回聲，不是自己的喀聲遮回聲；0.75 m 約 20 cm 已屬 P74-033，只當對照；與 P74-034 同群不同實驗，併講要分清；不說『靜止聽』（原文只說轉離、不來回掃）。",
+      "source_locator": "F111-S005 Results Experiment 1、Experiment 2；Table 1 說明",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：P74-033 讀完 Results 的那一半；Wiegrebe 群 0.75→1.0。 原提案 F111-003（目標 F92-T1，原角色 turn；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；數字相符。小改：『轉離側牆後靜止聽』的『靜止』原文沒有，刪；補上專家『不受近側牆幫助』與 0.75 m 20 cm 屬舊核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一面側牆，前牆近時是參考，前牆遠時是噪音。",
+        "visual": "走廊俯視圖，人站中線或貼牆；前牆在 0.75 m 與 4 m 兩個位置，旁邊標 16 cm、80 cm 的誤差條；頭像轉向離牆的一側。",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-488196fa68dcda84",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S005 Results Experiment 1、Experiment 2；Table 1 說明",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ]
+    },
+    {
+      "id": "P75-004",
+      "question": "不發聲的牆，離耳朵越近，留在聲音裡的「痕跡」有多大？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.obstacle_coloration_magnitude_distance",
+      "answer_target": "很近時很大，2 公尺外就小很多。產總研與東京大學在低反射室裡，用假人頭量一塊 70 × 50 cm 的木板在不同距離時，背後喇叭的聲音到耳朵的變化：有板和沒板的頻譜差是一串梳子般的峰谷，頭轉 3° 時，1000 Hz 以下的峰谷差在 12.5–37.5 cm 約 20 dB，到 200 cm 只剩約 4 dB；左右兩耳之間的頻譜差也由 12.5 cm 的約 15.6 dB 降到 200 cm 的約 1.6 dB。兩耳的強度差在 50 cm 以外則幾乎不隨距離變。",
+      "scope": "環境聲（喇叭在背後），不是彈舌；量測訊號是掃頻聲、不是行為實驗的粉紅噪音；dB 是單一假人頭、單一木板的量測；原文方法與結果的距離清單對不上，只用兩端，不報 50、150 cm 等中間點；行為實驗（靜態估與動態走）已在 P74-039，本核心不再講；研究目的是行動訓練，片中完全不提訓練、輔具或建議。",
+      "source_locator": "F111-S006 2.5 Results；3.2.2 Result（Figure 7）；6. Limitations",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：S018 Results 新增的物理量測；Miura 群 0.5→0.75。 原提案 F111-004（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；改正三處：（a）作者寫『從背後放粉紅噪音，用假人頭量』，聲學量測用的是 swept-sine（TSP），粉紅噪音是行為實驗；（b）50 cm 約 14 dB、150 cm 約 7.6 dB 所在的距離清單與方法不符（結果多出 125 cm、寫成『10』），作者自己判『10 應為 100』是推測，只留兩端；（c）最後一句靜態／動態的比較已在 P74-039，而且原文方向有歧義（rd=25 時靜態反而較近 1.0），刪去。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "板子很近時，留在聲音裡的梳齒有 20 dB 深；退到 2 公尺只剩 4 dB。",
+        "visual": "頻譜曲線上的梳齒，木板從 12.5 cm 退到 2 m，齒從深變淺（只標兩端的數字）。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-0dfae0cf3f8f634d",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S006 2.5 Results；3.2.2 Result（Figure 7）；6. Limitations",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ]
+    },
+    {
+      "id": "P75-005",
+      "question": "反射板在動，比靜止更容易被聽出來嗎？耳邊的聲音差多少？",
+      "domain": "聲音、樂器與聲學量測",
+      "mechanism_key": "echolocation_human.moving_reflector_ear_level_change",
+      "answer_target": "在動時比較容易，尤其比起靜止在 1 公尺外。Gipsa-Lab 讓 11 位沒經驗的矇眼年輕人頭戴小喇叭放白噪音，前方一塊 50 cm 鋁圓盤固定在 20 cm 或 1 m，或以每秒 5 cm 的速度朝人或背人移動。量到耳邊的聲音：沒有圓盤 77 dB、圓盤在 1 m 80 dB、在 20 cm 83 dB。作者在討論裡寫：圓盤在動時答對的機率明顯高於靜止，與固定在 1 公尺比差最多，可能是聲學線索在變、或注意力較集中。",
+      "scope": "11 人、只熟悉一次；不是自己發聲；哪幾組有差是討論段對圖的描述；姿勢、平衡、復健一律不入稿（drop_if）。",
+      "source_locator": "F111-S007 Intervention 段末；Results 第 1 段；Discussion 第 1 段",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：補讀的 Results 沒有超出摘要的結果；耳邊 77／80／83 dB 是方法段的條件校正量測，比較結果只出自討論段對圖的描述，而且兩種條件問的是不同的題。Termoz 群維持 0.25（P74-041）。 原提案 F111-005（目標 F92-T1，原角色 segment；依本池欄位記為 segment）。非作者覆核 V119（2026-11-12）改字後收；計數下修為 0、併入 P74-041：（a）作者新增的『動態優勢主要相對於 1 m 靜止』只出自 Discussion 對 Fig 3A 的描述，Results 文字本身只說條件有顯著影響，和摘要已用的一樣；（b）77／80／83 dB 是 Intervention 段的條件量測（方法與條件不算事實），只能當 P74-041 的畫面數字；（c）原答案『比靜止更容易被聽出來』把『答距離』和『答方向』兩種不同作業的正確率當同一件事比，改寫；（d）editorial『只差 3 dB，動起來就比較聽得出來』把兩段接成因果，刪。P74-041 仍是 V95 列的優先可刪核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "圓盤從 1 m 移到 20 cm，耳邊只多了約 3 dB。",
+        "visual": "圓盤在軌道上前後滑動，耳邊音量表在 80 與 83 之間跳動；不寫『所以聽得出來』。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave75-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-737683dfc3c0d9e4",
+          "origin": "wave75-physics-20261111",
+          "locator": "F111-S007 Intervention 段末；Results 第 1 段；Discussion 第 1 段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+      ]
+    },
+    {
       "id": "F8001",
       "question": "巧克力的固體沒被拿走，為什麼精煉後反而比較能流動？",
       "domain": "食品微結構與加工",
@@ -513859,6 +516132,27 @@
       "P74-065": "P74-065",
       "P74-066": "P74-066",
       "P74-067": "P74-067",
+      "E75-001": "E75-001",
+      "E75-002": "E75-002",
+      "E75-003": "E75-003",
+      "E75-004": "E75-004",
+      "E75-005": "E75-005",
+      "E75-006": "E75-006",
+      "E75-007": "E75-007",
+      "L75-001": "L75-001",
+      "L75-002": "L75-002",
+      "L75-003": "L75-003",
+      "L75-004": "L75-004",
+      "L75-005": "L75-005",
+      "L75-006": "L75-006",
+      "L75-007": "L75-007",
+      "L75-008": "L75-008",
+      "L75-009": "L75-009",
+      "P75-001": "P75-001",
+      "P75-002": "P75-002",
+      "P75-003": "P75-003",
+      "P75-004": "P75-004",
+      "P75-005": "P75-005",
       "F8001": "F8001",
       "F8002": "F8002",
       "F8003": "F8003",
@@ -545214,6 +547508,131 @@
         "a": "P74-064",
         "b": "N075",
         "reason": "同為「拍系外行星要先遮主星」的前提；本核心只算奈米碳管吸雜散光的新增部分。（V104 2026-11-12）"
+      },
+      {
+        "a": "E75-001",
+        "b": "E74-062",
+        "reason": "E74-062 只留 Livermore 的十年預測一句（V102 已算 0.25），七千年軌跡改由本條講，不重算。（V116 2026-11-12）"
+      },
+      {
+        "a": "E75-002",
+        "b": "E74-062",
+        "reason": "E74-062 已有『兩團磁通的平衡很微妙，小小重組就可能讓它掉頭』，本條不再重算掉頭機制。（V116 2026-11-12）"
+      },
+      {
+        "a": "E75-003",
+        "b": "E74-066",
+        "reason": "Brown 2018（4.9、4.6 萬年前類似 SAA 的凹洞未變成偏移）時段不同、結論同向；同一合著網。（V116 2026-11-12）"
+      },
+      {
+        "a": "E75-003",
+        "b": "E74-069",
+        "reason": "Tarduno 南非 1000–1600 年低場，時段、方法不同，不重疊。（V116 2026-11-12）"
+      },
+      {
+        "a": "E75-005",
+        "b": "E74-071",
+        "reason": "『整個過程約兩萬年』『切換本身很快（<4000 年）』已在 E74-071，不重算。（V116 2026-11-12）"
+      },
+      {
+        "a": "L75-001",
+        "b": "L74-040",
+        "reason": "同屬『同一來源長出多種螺旋』，但 L74-040 是不同毬果，本條是同一條花序依序換型，不重複；Fierz 與本群無共同作者。（V117 2026-11-12）"
+      },
+      {
+        "a": "L75-002",
+        "b": "L74-047",
+        "reason": "『實測夾角不是剛好 137.5°』已由 L74-047 的頂端量測涵蓋。（V117 2026-11-12）"
+      },
+      {
+        "a": "L75-003",
+        "b": "L74-045",
+        "reason": "同一結論（時間錯而非位置錯）；本條只算模型理由與野外舉例 0.5，L74-045 的數字不重算。（V117 2026-11-12）"
+      },
+      {
+        "a": "L75-005",
+        "b": "L74-057",
+        "reason": "同講「零放在最小端」，但對象（蜜蜂模型 vs 獼猴行為與神經）與答案不同，不重複。（V118 2026-11-12）"
+      },
+      {
+        "a": "L75-006",
+        "b": "L74-049",
+        "reason": "作者想用它接漢斯的『問的人在房間裡』，但兩者機制不同（漢斯是問者不自覺的動作；這裡是實驗者公開操作的那杯），不能接。（V118 2026-11-12）"
+      },
+      {
+        "a": "L75-007",
+        "b": "L74-052",
+        "reason": "同屬『點大小／面積線索』，但物種、設計、答案不同；不得並列比較。（V118 2026-11-12）"
+      },
+      {
+        "a": "L75-008",
+        "b": "L74-063",
+        "reason": "同一批黑猩猩、同一類數字排序作業；L74-063 講學不學得會，本條講觀眾效應，答案不同。（V118 2026-11-12）"
+      },
+      {
+        "a": "L75-009",
+        "b": "L74-062",
+        "reason": "同族群、同起司作業；基本辨別不重算，59/67/73 只當背景數字。（V118 2026-11-12）"
+      },
+      {
+        "a": "P75-001",
+        "b": "P74-029",
+        "reason": "同兩篇（S002、S003 摘要已用）；本核心只算 Results 新增的 5%／無偏差、喀聲形狀不變、19／14／7 dB 三點，合計 0.25。成題時與 P74-029 同章、緊接其後。（V119 2026-11-12）"
+      },
+      {
+        "a": "P75-002",
+        "b": "P74-031",
+        "reason": "同兩篇；P74-031 已有『2019 有地圖、越像越好』『2024 V1 反應增加』，本核心只算新增的但書三點，0.25。成題時緊接 P74-031，P74-031 的『越像的人回聲定位越好』要改成『在 5 位專家之間』。（V119 2026-11-12）"
+      },
+      {
+        "a": "P75-003",
+        "b": "P74-033",
+        "reason": "同篇；0.75 m 約 20 cm、轉頭在複雜情境有幫助已在 P74-033，本核心只算 2／4 m 門檻、側牆近幫遠礙、轉離不掃、專家 10 cm，0.25。（V119 2026-11-12）"
+      },
+      {
+        "a": "P75-003",
+        "b": "P74-034",
+        "reason": "同群（Wiegrebe）不同實驗；兩條的『遮蔽』都是牆反射遮另一面牆的反射。（V119 2026-11-12）"
+      },
+      {
+        "a": "P75-004",
+        "b": "P74-039",
+        "reason": "同篇；P74-039 有走路較準、轉頭角度與察覺門檻；本核心只算梳狀峰谷大小隨距離衰減，0.25。（V119 2026-11-12）"
+      },
+      {
+        "a": "P75-005",
+        "b": "P74-041",
+        "reason": "同篇、同一結果；只修 P74-041 的寫法，不加條數。（V119 2026-11-12）"
+      },
+      {
+        "a": "E75-006",
+        "b": "E74-045",
+        "reason": "同為二成分同位素分離的『暴雨多為雨前水』；本核心新增『洪峰那一刻 vs 整場合計』與熱帶場景，不重算 E74-045 的事實，兩者數字不互比。（V120 2026-11-12）"
+      },
+      {
+        "a": "E75-006",
+        "b": "E74-049",
+        "reason": "同為颱風／熱帶氣旋的事件水比例；方法（模型 vs 二成分）、定義不同，只能並列說『事件之間差很大』。（V120 2026-11-12）"
+      },
+      {
+        "a": "E75-006",
+        "b": "E74-046",
+        "reason": "本篇摘要的『越濕越以雨前水為主』與 3.5 自相矛盾，不得拿來呼應 E74-046。（V120 2026-11-12）"
+      },
+      {
+        "a": "E75-007",
+        "b": "E74-051",
+        "reason": "同一機制（celerity > velocity）；本核心是側向試區、E74-051 是垂直濕潤鋒，數字不互比。（V120 2026-11-12）"
+      },
+      {
+        "a": "E75-007",
+        "b": "E74-045",
+        "reason": "同一研究網（群 A）、同在 Alptal；封頂已滿。（V120 2026-11-12）"
+      },
+      {
+        "a": "E75-007",
+        "b": "O3060",
+        "reason": "河道洪波速度，不同問題，不重疊。（V120 2026-11-12）"
       }
     ],
     "excluded": [
@@ -545863,6 +548282,20 @@
         "questions": [
           "大象鼻子伸長時，是靠肌肉還是靠皮膚？",
           "大象鼻子的上面和下面，皮膚為什麼不一樣？"
+        ]
+      },
+      {
+        "id": "P74-033~P75-003",
+        "a": "P74-033",
+        "b": "P75-003",
+        "question_score": 0.108,
+        "answer_score": 0.281,
+        "key_score": 0.615,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "回聲能讓人知道自己離牆多遠嗎？準到什麼程度？",
+          "旁邊有牆，會幫你聽出前面的牆多遠，還是礙事？"
         ]
       },
       {
@@ -546591,6 +549024,20 @@
         "questions": [
           "海鴉蛋不是為了滾小圈，那尖蛋在斜斜的岩架上到底有什麼好處？",
           "梨形蛋表面積比較大，對胚胎有什麼好處嗎？"
+        ]
+      },
+      {
+        "id": "P74-041~P75-005",
+        "a": "P74-041",
+        "b": "P75-005",
+        "question_score": 0.049,
+        "answer_score": 0.186,
+        "key_score": 0.615,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "東西朝你移動過來，用回聲會比較容易察覺嗎？",
+          "反射板在動，比靜止更容易被聽出來嗎？耳邊的聲音差多少？"
         ]
       },
       {
@@ -547585,6 +550032,20 @@
         "questions": [
           "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
           "f 和 i 看起來黏成一個字，原本的兩個字母就消失了嗎？"
+        ]
+      },
+      {
+        "id": "E74-062~E75-002",
+        "a": "E74-062",
+        "b": "E75-002",
+        "question_score": 0,
+        "answer_score": 0.141,
+        "key_score": 0.615,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "磁北極會一直跑到西伯利亞去嗎？以前也這樣跑過嗎？",
+          "科學家能預測北磁極下一步往哪跑嗎？"
         ]
       },
       {
@@ -549531,6 +551992,20 @@
         "questions": [
           "細胞既然有完整說明書，為什麼不把所有基因一起開啟？",
           "基因已經抄成 RNA 之後，細胞還能改變最後的產量嗎？"
+        ]
+      },
+      {
+        "id": "P74-036~P75-003",
+        "a": "P74-036",
+        "b": "P75-003",
+        "question_score": 0.098,
+        "answer_score": 0.087,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用回聲分辨牆面是平的還是凹凸的，牆近一點比較容易嗎？",
+          "旁邊有牆，會幫你聽出前面的牆多遠，還是礙事？"
         ]
       },
       {
@@ -552558,6 +555033,20 @@
         ]
       },
       {
+        "id": "L74-040~L75-001",
+        "a": "L74-040",
+        "b": "L75-001",
+        "question_score": 0,
+        "answer_score": 0.054,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "松果的鱗片螺旋也有例外嗎？一棵樹會長出多少種？",
+          "費氏數是植物天生的固定答案，還是同一條花序長到一半也會換？"
+        ]
+      },
+      {
         "id": "M2031~M2056",
         "a": "M2031",
         "b": "M2056",
@@ -553678,6 +556167,20 @@
         ]
       },
       {
+        "id": "P74-044~P75-004",
+        "a": "P74-044",
+        "b": "P75-004",
+        "question_score": 0.043,
+        "answer_score": 0.029,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "沒學過回聲定位的盲人，用聲音繞過障礙會比矇眼的明眼人好嗎？",
+          "不發聲的牆，離耳朵越近，留在聲音裡的「痕跡」有多大？"
+        ]
+      },
+      {
         "id": "R41007~R41009",
         "a": "R41007",
         "b": "R41009",
@@ -554238,6 +556741,20 @@
         ]
       },
       {
+        "id": "L74-048~L75-002",
+        "a": "L74-048",
+        "b": "L75-002",
+        "question_score": 0,
+        "answer_score": 0.029,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "同一株植物的花，今年偏左、明年偏右，是誰決定的？",
+          "樹幹變粗七年之後，還看得到小苗時期的葉序嗎？"
+        ]
+      },
+      {
         "id": "R42001~R42003",
         "a": "R42001",
         "b": "R42003",
@@ -554291,6 +556808,20 @@
         "questions": [
           "明明要撞小顆的，DART怎麼先朝比較大的那顆飛？",
           "撞上去的太空船沒了，地球上怎麼知道小伴星繞一圈少了半個多鐘頭？"
+        ]
+      },
+      {
+        "id": "P74-045~P75-004",
+        "a": "P74-045",
+        "b": "P75-004",
+        "question_score": 0,
+        "answer_score": 0.026,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用回聲估距離，也會把遠的估近嗎？",
+          "不發聲的牆，離耳朵越近，留在聲音裡的「痕跡」有多大？"
         ]
       },
       {
@@ -556524,10 +559055,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-4632",
-    "target_count": 4632,
+    "revision": "2026-11-12-pool-4653",
+    "target_count": 4653,
     "reviewed_on": "2026-11-12",
-    "reason": "從4349續接；2026-11-12 第二十四輪素材審視：二十位作者（F82–F101）各在一個新領域先大範圍去重、確認至少三個研究群有開放全文，再從零研究一個新長題；提案經非作者覆核（V85–V104），二十題都留後備。另把第二十三輪覆核建議合併的後備題用池中既有核心重組三題（M1–M3），經非作者覆核：冷凍肉與冷藏蔬果合成一題可成題，其餘兩題後備。舊說明：從4321續接；2026-11-12 第二十三輪素材審視：二十位作者（F62–F81）只照第二十到二十二輪覆核點名的原文補讀二十題後備組題（其中六位找不到可讀原文、沒有提案）；提案經非作者覆核（V65–V84）；二十題都仍後備，沒有新長題。舊說明：2026-11-12 第二十輪素材審視：六位作者先在全池大範圍去重（各列 20–30 個候選），再從零研究十二個新長題——F36 天空偏振與夜光雲、F37 啄木鳥與象鼻、F38 摩擦起電與撕膠帶、F39 名琴與動物對拍、F40 發光菇與植物發熱、F41 海色與海中發光；138 個提案經非作者覆核（V39–V44），全部收（照收 33、改字後收 105）；十二題都留後備，沒有新長題。",
+    "reason": "從4632續接；2026-11-12 第二十五輪素材審視：八位作者（F105–F112）只照第二十四輪覆核點名的原文補讀八題後備題（三位找不到可讀原文、沒有提案）；提案經非作者覆核（V116–V120）；八題都仍後備，最接近的是費氏葉序（8.43 分，差 0.15 條）。舊說明：從4349續接；2026-11-12 第二十四輪素材審視：二十位作者（F82–F101）各在一個新領域先大範圍去重、確認至少三個研究群有開放全文，再從零研究一個新長題；提案經非作者覆核（V85–V104），二十題都留後備。另把第二十三輪覆核建議合併的後備題用池中既有核心重組三題（M1–M3），經非作者覆核：冷凍肉與冷藏蔬果合成一題可成題，其餘兩題後備。舊說明：從4321續接；2026-11-12 第二十三輪素材審視：二十位作者（F62–F81）只照第二十到二十二輪覆核點名的原文補讀二十題後備組題（其中六位找不到可讀原文、沒有提案）；提案經非作者覆核（V65–V84）；二十題都仍後備，沒有新長題。舊說明：2026-11-12 第二十輪素材審視：六位作者先在全池大範圍去重（各列 20–30 個候選），再從零研究十二個新長題——F36 天空偏振與夜光雲、F37 啄木鳥與象鼻、F38 摩擦起電與撕膠帶、F39 名琴與動物對拍、F40 發光菇與植物發熱、F41 海色與海中發光；138 個提案經非作者覆核（V39–V44），全部收（照收 33、改字後收 105）；十二題都留後備，沒有新長題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -561160,7 +563691,28 @@
       "E74-068",
       "E74-069",
       "E74-070",
-      "E74-071"
+      "E74-071",
+      "P75-001",
+      "P75-002",
+      "P75-003",
+      "P75-004",
+      "P75-005",
+      "L75-001",
+      "L75-002",
+      "L75-003",
+      "L75-004",
+      "L75-005",
+      "L75-006",
+      "L75-007",
+      "L75-008",
+      "L75-009",
+      "E75-001",
+      "E75-002",
+      "E75-003",
+      "E75-004",
+      "E75-005",
+      "E75-006",
+      "E75-007"
     ],
     "overflow": [
       {
@@ -595080,6 +597632,297 @@
       "reading_status": "full_text",
       "origin": "wave74-physics-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave74-physics.json"
+    },
+    {
+      "id": "E75-NA001",
+      "question": "現在的偶極傾角是七千年來最大的嗎？磁場算弱嗎？",
+      "existing_ids": [
+        "E74-067"
+      ],
+      "source_ids": [
+        "E75-S002"
+      ],
+      "reason": "Korte & Mandea 5.1 節寫偶極傾角目前比七千年模型中任何時候都大、偶極矩仍高於七千年平均；後半與 E74-067（Pavón：偶極矩仍在一萬兩千年平均附近）答案相同，前半是新的但會讓第二轉折再多一個數字，且 GFZ 群已 1.75。不收。 原提案 F108-NA001。",
+      "reentry_condition": "若覆核刪掉 F108-002，可改收這條的『傾角最大』半句，仍歸 GFZ 群。",
+      "reading_status": "全文讀過（5.1 節）",
+      "origin": "wave75-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+    },
+    {
+      "id": "E75-NA002",
+      "question": "Ross 在磁極上吊起的針真的不轉嗎？（原掃描核對）",
+      "existing_ids": [
+        "E74-057"
+      ],
+      "source_ids": [],
+      "reason": "Royal Society 原掃描循 DOI 遇 Cloudflare 驗證頁（403），依規定停止；E74-057 維持 AI-OCR、0.5 條。 原提案 F108-NA002。",
+      "reentry_condition": "Royal Society 頁不經驗證可讀時，用同一 DOI 重抓一次。",
+      "reading_status": "未讀到",
+      "origin": "wave75-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+    },
+    {
+      "id": "E75-NA003",
+      "question": "Brown 2018 正式版裡的 60%、10–20% 是否與稿本相同？",
+      "existing_ids": [
+        "E74-066"
+      ],
+      "source_ids": [],
+      "reason": "PNAS 循 DOI 遇 Cloudflare 驗證頁（403）；E74-066 維持 1.0、數字標『依作者接受稿』。 原提案 F108-NA003。",
+      "reentry_condition": "出現不經驗證的合法開放版本（不含 Europe PMC，覆核已指示不再試）。",
+      "reading_status": "未讀到",
+      "origin": "wave75-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+    },
+    {
+      "id": "E75-NA004",
+      "question": "春天融雪時，瑞典北方森林的溪水是剛融的雪嗎？（Laudon 等 2004，Krycklan）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "still_missing 第 (1) 項。本輪搜尋結果給的 HAL 原連結再試一次，仍回 HAL 機器人驗證頁，未取得全文；搜尋摘要提到的『約 75% 雨前水』只出自中繼資料／搜尋摘要，不算來源。 原提案 F112-NA001。",
+      "reentry_condition": "HAL 不再出驗證頁時，用搜尋結果原連結正常下載一次；或 AGU 出版社頁經公開連結可讀全文。",
+      "reading_status": "未讀（驗證頁）",
+      "origin": "wave75-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+    },
+    {
+      "id": "E75-NA005",
+      "question": "颱風時臺灣山溪的事件水比例（Water 12:1169 正式版全文）",
+      "existing_ids": [
+        "E74-049"
+      ],
+      "source_ids": [],
+      "reason": "still_missing 第 (3) 項。mdpi.com 搜尋結果原連結仍 403；同一次搜尋列出的臺大學術典藏頁只有縮圖、無全文。群 H 維持 E74-049 的 0.5（只讀正式版摘要），不加。 原提案 F112-NA002。",
+      "reentry_condition": "MDPI 不再 403 時用搜尋結果原連結再試一次；或機構典藏上傳 ORIGINAL 全文檔。",
+      "reading_status": "未讀全文（403；典藏無全文）",
+      "origin": "wave75-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+    },
+    {
+      "id": "E75-NA006",
+      "question": "Babinda 舊研究的新水 45%–80%、53%／47%",
+      "existing_ids": [],
+      "source_ids": [
+        "E75-S004"
+      ],
+      "reason": "出自 F112-S001 前言與 4.2 引 Bonell、Gilmour、Howard 等前人的數字，不是本篇結果，依規不計。 原提案 F112-NA003。",
+      "reentry_condition": "讀到 Bonell 等原研究的開放全文才可另行評估（不在本題 still_missing 內，本輪不找）。",
+      "reading_status": "只讀到二手引用",
+      "origin": "wave75-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+    },
+    {
+      "id": "E75-NA007",
+      "question": "盧森堡 Weierbach 坡面的 celerity–velocity（Scaini 等 2018，J. Hydrol.）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋時看到 Lancaster eprints 有作者接受稿，可作 still_missing 第 (4) 項的備案；但已有 F112-S002 正式版，依『只補一篇、不堆疊』未下載閱讀。其共同作者 Pfister 是否在 McDonnell 合作網也未查。 原提案 F112-NA004。",
+      "reentry_condition": "若覆核把 F112-S002 併入已封頂研究群，可改評這篇（先查作者合著關係）。",
+      "reading_status": "未讀",
+      "origin": "wave75-earth-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-earth.json"
+    },
+    {
+      "id": "K75-NA001",
+      "question": "歐洲家家戶戶的老麵，會不會依國家或地區養出不同的樣子？",
+      "existing_ids": [
+        "K74-012",
+        "K74-017",
+        "K74-025",
+        "K74-027"
+      ],
+      "source_ids": [
+        "K75-S001"
+      ],
+      "reason": "不收，兩個理由。（1）扣題不足：這篇只有做法、酸度、氣味與問卷，沒有任何菌相數據，能說的只有『各國用料不同，但整體做法與性狀不依國家分群、而依家用／烘焙坊分群』（結果〈Fermentation fingerprints〉第 3 段），講的是人怎麼養，不是菌從哪裡來；『最老一罐始於 1865 年』只是登記資料、未經查證；pH 差 0.73 與 K74-027 同屬郵寄偏差，且作者自己列了兩種可能原因。（2）研究群淨值為負：作者含 Meyer／Tan／Neugebauer／Bokulich（ETH，K74-027 0.5）、De Vuyst（VUB，K74-017 0.75）、Gobbetti（Bari／Bolzano，K74-025 1.0），一旦收入，三群依『共同作者即同群』併成一網，0.5＋0.75＋1.0＝2.25 先被封頂到 2.0，本篇再加多少都不計；全題由 9.75 降為 9.5 條。V98 只寫『ETH 群合計不超過 2.0』，漏了 De Vuyst 與 Gobbetti 兩位共同作者。 原提案 F107-NA001。",
+      "reentry_condition": "同一 HealthFerm 生物庫日後發表菌相與地點／做法的分析，而且題目願意刪掉 K74-027 等同網核心換位置時再評；屆時仍與 VUB、Bari 群同網，合計封頂 2.0。",
+      "reading_status": "全文已讀（方法只讀樣本處理與地理分析段，補充資料未讀）",
+      "origin": "wave75-food-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-food.json"
+    },
+    {
+      "id": "K75-NA002",
+      "question": "老麵裡的乳酸菌，真的可以在同一罐裡一待十幾年嗎？（Pham 等 2025 AEM，Gänzle 群）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文讀不到：still_missing 指定的 europepmc.org Free pdf 連結再試一次仍回 403 Cloudflare 驗證頁；同一次 search 回應列出的 Free doi 連結轉到 journals.asm.org 也回 403 驗證頁。依規定停止，摘要不算全文，不立核心。 原提案 F107-NA002。",
+      "reentry_condition": "日後同一 Europe PMC Free 連結或 DOI 頁不再出驗證頁、正常下載全文時再讀；約 0.75 條，新研究群。",
+      "reading_status": "只有上輪 search API 摘要（pool 中 SRC-dc5bb3b62090bb67）",
+      "origin": "wave75-food-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-food.json"
+    },
+    {
+      "id": "K75-NA003",
+      "question": "舊金山酸種的酸，最早是誰找到是哪一種菌造成的？（Kline & Sugihara 1971）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文讀不到：Europe PMC 列出的 Free pdf 連結（europepmc.org/articles/PMC377203?pdf=render）與 Free doi 連結（轉 journals.asm.org）各試一次，都回 403 驗證頁；REST fullTextXML 上輪回 500。 原提案 F107-NA003。",
+      "reentry_condition": "同一公開連結可正常下載時再讀；約 0.5 條，歷史開場。",
+      "reading_status": "未讀",
+      "origin": "wave75-food-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-food.json"
+    },
+    {
+      "id": "K75-NA004",
+      "question": "比利時傳統老麵的乳酸菌，會因產地和麵粉不同而不同嗎？（Scheirlinck 等 2007 AEM）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "全文讀不到：still_missing 指定的 DOI 頁（doi.org/10.1128/aem.00894-07 轉 journals.asm.org）回 403 驗證頁；Europe PMC Free pdf 連結試一次也回 403。另須注意：作者含 De Vuyst，若日後讀到，要與 K74-017（VUB）併群，合計 0.75＋0.5＝1.25，仍在封頂內。 原提案 F107-NA004。",
+      "reentry_condition": "同一公開連結可正常下載時再讀；約 0.5 條，轉折一的反方平衡；與 VUB 群併計。",
+      "reading_status": "未讀",
+      "origin": "wave75-food-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-food.json"
+    },
+    {
+      "id": "H75-NA001",
+      "question": "上坡時，人換跑的速度會不會剛好落在最省能的那一點？",
+      "existing_ids": [
+        "H74-025"
+      ],
+      "source_ids": [
+        "H75-S001"
+      ],
+      "reason": "bioRxiv 這次只拿到摘要頁，全文頁 429；只讀摘要不計條數。摘要內容（0°、5°、10° PTS 慢於 EOTS，15° 才收斂）上一輪已在 not_added 記過，沒有新增。可在寫稿時當 H74-025 的限制旁證（『固定坡度的另一研究在 15° 以下仍看到提早換跑』，註明只讀摘要、預印本），但不計分。 原提案 F106-NA001。",
+      "reentry_condition": "bioRxiv 全文頁（摘要頁上的 Full Text 連結）在另一輪正常可讀時，讀方法與結果表；新研究群 Kram，約 0.5 條（與 Kram 1997 同群合計封頂 2.0）。",
+      "reading_status": "abstract only（全文頁 429）",
+      "origin": "wave75-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-human.json"
+    },
+    {
+      "id": "H75-NA002",
+      "question": "重力變小時，人換跑的速度怎麼變？（Kram, Domingo & Ferris 1997；De Witt 等 2014）",
+      "existing_ids": [
+        "H74-027",
+        "H74-028"
+      ],
+      "source_ids": [],
+      "reason": "兩篇 DOI 轉址至 journals.biologists.com 仍回 403（Cloudflare 驗證頁），本輪唯一一次重試失敗，依規定跳過；沒有任何原文可讀，不提核心。 原提案 F106-NA002。",
+      "reentry_condition": "journals.biologists.com 不再要求驗證時，用同一 DOI 連結正常下載一次。Kram 1997 約 0.5–0.75（Kram 群），De Witt 2014 約 0.5（NASA 群）。",
+      "reading_status": "not read（403）",
+      "origin": "wave75-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-human.json"
+    },
+    {
+      "id": "L75-NA001",
+      "question": "渦鞭毛藻聞到橈足類訊號會不會同時調高發光與毒素？（Gonzalo-Valmala、Pourdanandeh、Lage、Selander 預印本）",
+      "existing_ids": [
+        "E70-036"
+      ],
+      "source_ids": [],
+      "reason": "Prevett 2019 的 WebSearch 結果裡出現 ecoevorxiv.org 的預印本 PDF（https://ecoevorxiv.org/repository/object/8725/download/16266，已存 ecoevorxiv_8725.bin／.txt，sha256 f3806e04033900d3／625c50ccb32618d4，只讀標題、作者、significance statement 與提到 Prevett、burglar alarm 的段落）。它不是 Prevett 2019 也不是 Huang 2024，不在 still_missing 點名之列；屬 Selander 群（同群封頂 1.25、現 0.75）；是未審查預印本；文中提到 Prevett 2019 的結果與 burglar alarm 都是引用前人，不能算本篇結果。依 BRIEF『點名以外的新來源覆核判不計』不提案。 原提案 F105-NA001。",
+      "reentry_condition": "若覆核另行點名此預印本（或其正式刊出版），可循同一公開連結重讀其 copepodamide 對發光的量測，仍受 Selander 群 1.25 封頂（最多 +0.5）。",
+      "reading_status": "partial_preprint_not_counted",
+      "origin": "wave75-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+    },
+    {
+      "id": "L75-NA002",
+      "question": "非 Swinton 群、量向日葵或其他菊科花盤螺旋數比例的開放原研究",
+      "existing_ids": [
+        "L74-037",
+        "L74-038",
+        "L74-039"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC REST 四組開放取用查詢（capitulum＋parastichy＋Fibonacci；sunflower＋parastichy；Asteraceae＋phyllotaxis＋Fibonacci＋frequency；flower head＋parastichy）與一次網頁搜尋，只找到已在題內的 Swinton 2016、Neumann 2026（雛菊舌狀花數，已是 L74-039）、Zhang 2021／Prusinkiewicz 2022（G2 已封頂）與 Swinton 2024 arXiv（同 Swinton 群）。Schoute、Weisse 的大樣本只見於引用，沒有開放全文。沒有可用的新群來源。 原提案 F109-NA001。",
+      "reentry_condition": "出現非 Swinton、非 Prusinkiewicz 網絡、量菊科花盤螺旋數比例且有開放全文的原研究。",
+      "reading_status": "未讀（無合格來源）；查詢紀錄 f109src/eupmc_search1.txt",
+      "origin": "wave75-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+    },
+    {
+      "id": "L75-NA003",
+      "question": "馬真的分得出兩桶蘋果哪桶多嗎？（Henselek 等 2012 Front Psychol）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "不在 still_missing 點名之內；全文 XML 已下載（stw25/f110src/PMC3499915.xml，Göttingen 德國靈長類中心 Fischer 群），但只用關鍵字掃過前言對聰明漢斯的一句引述，未逐段讀方法與結果，也沒有直接測實驗者提示。依 BRIEF「點名以外的新來源覆核判不計」，不立核心。 原提案 F110-NA001。",
+      "reentry_condition": "若覆核認定 F110-002 不符第（2）項，且同意以「馬的數量研究重測漢斯」為點名延伸，再逐段讀本篇方法與結果，約 0.5。",
+      "reading_status": "downloaded; keyword scan only（PMC3499915.txt）",
+      "origin": "wave75-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+    },
+    {
+      "id": "L75-NA004",
+      "question": "狗會因為主人偏好少的那盤，就放棄多的那盤嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 搜尋列出 Kis 等 2022 Animals（PMC8833464，布達佩斯 Topál 群）與 Prato-Previde 等 2008、Marshall-Pescini 等 2011（非開放）；這些是主人「刻意」示範偏好的社會影響作業，不是無意提示，與第（2）項所指不同；未讀全文。 原提案 F110-NA002。",
+      "reentry_condition": "無（主題是社會從眾，不是數數時的無意線索）。",
+      "reading_status": "search result only",
+      "origin": "wave75-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+    },
+    {
+      "id": "L75-NA005",
+      "question": "孔雀和黑猩猩，誰比較會比多少？",
+      "existing_ids": [],
+      "source_ids": [
+        "L75-S010"
+      ],
+      "reason": "F110-S003 討論段的黑猩猩 94%、93% 與韋伯分數 0.187 是引用 Tomonaga 2008（且屬京都靈長類研究所，與 Matsuzawa 群相連），不是本篇結果；不得轉述、不得與孔雀相減。 原提案 F110-NA003。",
+      "reentry_condition": "無。",
+      "reading_status": "read（全文）",
+      "origin": "wave75-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+    },
+    {
+      "id": "L75-NA006",
+      "question": "猴子腦裡「只認零」和「零到一連續」的兩種神經，哪一種比較會猜數？",
+      "existing_ids": [],
+      "source_ids": [
+        "L75-S008"
+      ],
+      "reason": "Okuyama 2015 Results 第 5–6 段的 exclusive／continuous 兩型與 neuron-dropping 結果細節太深，不改變觀眾結論，已在 F110-001 內以一句帶過或省略，不另立。 原提案 F110-NA004。",
+      "reentry_condition": "無。",
+      "reading_status": "read（Results 全部）",
+      "origin": "wave75-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+    },
+    {
+      "id": "L75-NA007",
+      "question": "烏龜分得出 9 和 10 個方塊嗎？（Lin 等 2021 Front Zool，台灣）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋結果中出現的台灣研究，題材有在地感，但不在 still_missing 點名之內，且會再增加一種動物、加重清單感；只讀到搜尋 API 的摘要。 原提案 F110-NA005。",
+      "reentry_condition": "若日後另開「動物數量」第二集或站主要在地素材，再逐段讀全文。",
+      "reading_status": "abstract only（Europe PMC 搜尋結果）",
+      "origin": "wave75-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-life.json"
+    },
+    {
+      "id": "P75-NA001",
+      "question": "自己發聲比聽別人放的聲音更能估房間大小嗎？（Flanagin 等 2017 J Neurosci）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "沒有可合法讀取的全文：Europe PMC 500、PMC reCAPTCHA、LMU 典藏連線重設、J Neurosci Cloudflare 403（見 blocked）。只見搜尋摘要與新聞稿，不計。也是 Wiegrebe 群（Schörnich、Wallmeier、Wiegrebe 共同作者）。 原提案 F111-NA001。",
+      "reentry_condition": "由一開始就以 Europe PMC REST 讀取（未先碰其他主機）的新工作階段取得全文時，Wiegrebe 群封頂內約 +0.5。",
+      "reading_status": "只見 WebSearch 摘要，未讀",
+      "origin": "wave75-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+    },
+    {
+      "id": "P75-NA002",
+      "question": "在虛擬空間裡，人能用回聲分出物體在左或右、靠哪些頻率？（Rowan 等 2013、2017）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "原連結再試一次仍 403（機器驗證），依規定跳過。 原提案 F111-NA002。",
+      "reentry_condition": "南安普敦典藏頁可正常讀取並附作者稿時，第十三個研究群約 0.5。",
+      "reading_status": "403，未讀",
+      "origin": "wave75-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
+    },
+    {
+      "id": "P75-NA003",
+      "question": "矇眼明眼人能不能在真實走廊裡用自己的回聲走直、轉彎？（Tonelli、Campus、Brayda 2018 Sci Rep，PMC6200730）",
+      "existing_ids": [
+        "P74-037"
+      ],
+      "source_ids": [],
+      "reason": "是真實場所的開放原研究，但作者 Tonelli、Brayda 與 P74-037 同屬 Gori／Brayda 群，不符合 still_missing（5）『不屬上述 12 群』；點名以外，不讀不計。 原提案 F111-NA003。",
+      "reentry_condition": "若覆核放寬為『同群也可把轉折一升級為真實場所』，Gori／Brayda 群封頂內可評估。",
+      "reading_status": "只見 Europe PMC 搜尋中繼資料，未讀全文",
+      "origin": "wave75-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave75-physics.json"
     },
     {
       "question": "乳酪孔洞為什麼會從微小乾草顆粒附近長出來？",
