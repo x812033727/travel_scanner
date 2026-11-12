@@ -189,3 +189,17 @@ python3 -I $B/art.py s5                                       # s4 驗收過之�
 離線試跑（不連網、不花錢）：`python3 -I $B/art.py <輪> --work <暫存資料夾> --placeholders --pick …`，選定的圖還沒畫就寫灰色替身；
 真的跑時 `art.py` 會擋下工作資料夾裡留著的替身（小於 50 KB 的檔）。2026-11-12 十二輪都試跑過、`images-check` 0 錯誤（警告只有「不是 16:9」，胸像與直式本來就不是）。
 每輪跑完照企劃的〈驗收〉挑圖，原圖照 `docs/videos/AI-DRAMA-DRIVE.md` 用 `todrive.sh` 傳到 `_共用/製作檔/`。
+
+### 進度與交接（2026-11-12 15:35 UTC）
+
+站主 2026-11-12「參考圖 你建議決定」：選圖由 Claude 決定，每張選定的理由寫在 `../assets/refs/README.md`〈First batch〉，`adopt.py` 轉 JPEG、補列與 `SHA256SUMS`。
+
+- **已跑完**：a1＋a2 合成一份 `a12`（22 張）、s1（11）、s2（12）。選定 19 張已進 `assets/refs/`。
+- **a12 的兩個錯**：Sienna 用了全身範本、沒有臉的參考（`art.py` 現在的 a2 是對的胸像，合併清單哪裡出錯沒查到）；Nora `hospital` 兩張都畫成淡藍 V 領刷手服，跟 Nurse Kim 撞色，
+  `cast.json` 與企劃改成「白底淡藍小菱格病人袍、圓領按扣、短袖」。Dr. Brandt 與副警長選定的那張有編出來的字。新的 **a4** 輪重畫前兩者、在後兩者上只改一處擦字（8 張）。
+- **工頭** 從 a1 移到 a3（a12 沒畫到）；a3 的 Sienna 全身讀 a4 選定的胸像（`drawn()` 依 a4、a2、a1、a12 的順序找）。
+- **排隊中**（`~/mokaair-work/.../art/chain2.sh`，session `ttv-art`）：s3 → p1 → p2 → a4 → s4 → p3，跑完自動 `h3.sh stop`。s4、p3 的 manifest 要在選完 s3、p1 之後寫進工作資料夾，`chain2.sh` 跑到時有檔才跑。
+  已選：`liv-day=a nur-day=b door-in-day=a room-night=a liv-gold-a=a`（工作資料夾 `picks.txt`）；還缺 `mroom-night`（s3）、`forever-no1`（p1）。
+- **之後**：a4 選定後跑 a3（Sienna 全身、工頭、Bev）與 s5；s6 是優先 3，可不跑。全部約 30 CU，在 35 CU 上限內。
+- **備份**：2026-11-12 15:33 工作資料夾整包傳到 `videobackup:AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/till-the-verdict`（268 個檔；12 個差異是當時正在寫的 p1 暫存檔）。每輪選完再傳一次，同一指令。
+- **session 中斷時**：Colab runtime 會一直燒點數，先 `bash $K/h3.sh stop --session ttv-art`；工作資料夾在雲端硬碟上，拿回來放回 `$W` 就能接著用 `art.py` 建下一輪。
