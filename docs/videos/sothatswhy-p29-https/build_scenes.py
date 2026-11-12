@@ -126,7 +126,7 @@ def obj(id, prompt, *lines, chapter=None):
 # ---------- 開場（系列片頭之後直接進場景，不做濃縮；答案都不先講）----------
 # The first picture is the problem itself: the password about to be typed on the café's network.
 obj("cafe-tablet", "Close-up of a child's two small hands holding " + TABLET + " on a sunny café table beside a mug of cocoa, a big bright window behind",
-    k("所長，我在咖啡店！", "急著報案的語氣"), k("我要用店裡的免費網路，登入遊戲。"),
+    k("所長，我在咖啡店！", "急著報案的語氣"), k("我要用平板連免費網路，登入遊戲。"),
     chapter="咖啡店裡，網址多一個 S")
 # Thumbnail shot (fixed before keyframes, explainer-series/README.md): the kid big and centred, the tablet in hand.
 kid("kid-cafe-q", K("holding a small tablet up in front of her chest with both hands and frowning at it in puzzlement, in the exact centre of the picture", where=CAFE),
@@ -144,7 +144,7 @@ kid("kid-main-q", K("looking down at a small tablet in her hands with a thinking
 
 # ---------- 第一章：密碼要經過好多人的手 ----------
 kid("kid-direct-guess", K("pointing out through the glass door at the busy sunny street outside with a confident grin", close=True, where="standing by the glass door of a cosy café with a tall potted plant,"),
-    k("不是直接飛到", "很有把握的錯猜"), k("遊戲公司那裡嗎？", "句尾上揚", "S:direct"), chapter="密碼要經過好多人的手")
+    k("差在路上？", "想了一下"), k("密碼不是直接飛到遊戲公司嗎？", "很有把握的錯猜", "S:direct"), chapter="密碼要經過好多人的手")
 obj("router-shelf", "Close-up of a small plain white wireless router with two short antennas and tiny green lights on a wooden café shelf beside a potted plant",
     c("不是喔。它先到咖啡店的無線網路機器，", "接住上一句", "P:direct"),
     c("再交給網路公司，一站轉一站，"),
@@ -161,7 +161,7 @@ kid("kid-open-note", K("holding up a small folded open letter and peeking inside
     k("信沒封起來的話……", "想像"),
     c("每個經手的人都能打開看，甚至改幾個字再傳下去。"))
 chief("chief-chrome-help", C("holding a small phone up beside her face with a serious honest smile"),
-      c("Chrome 的說明就這樣寫：沒有私密連線的網站，"),
+      c("Chrome 瀏覽器的說明就這樣寫：沒有私密連線的網站，"),
       c("別人可能看到、也可能改掉你傳的東西。", None, "P:see"))
 kid("kid-nice", K("crossing her arms with a doubtful pout", where=CLASS),
     k("可是我的同學", "不服氣"), k("人都很好啊！"))
@@ -238,7 +238,7 @@ chief("chief-root", C("holding both hands together in front of her chest with a 
 kid("kid-mistake-q", K("biting her lip with a worried frown, both hands holding a small tablet", where=CAFE),
     k("要是機構不小心，", "擔心"), k("發錯了證件呢？", "句尾上揚", "S:ct"))
 obj("glass-case", "Wide shot of a tall glass display cabinet in a bright school hallway, filled with neat rows of identical plain cream cards standing on glass shelves, sunlight through a window",
-    c("現在 Chrome 和 Safari 要求，"),
+    c("現在 Chrome、Safari 這些瀏覽器要求，"),
     c("憑證要登記在公開的帳本上。"),
     c("這些帳本只能加、不能刪，誰都能翻。"))
 chief("chief-ct", C("holding a small phone up and smiling at it as if it just buzzed", close=True),
@@ -325,7 +325,7 @@ kid("kid-nothing-q", K("hugging a small sealed envelope to her chest with a prou
 
 # ---------- 第四章：封條管不到的地方 ----------
 chief("chief-length", C("holding her thumb and finger apart as if measuring thickness, a careful smile", close=True),
-      c("還看得到一些。規格寫得很直接：它不隱藏資料的長度。", "接住上一句", "P:nothing"), chapter="封好的信，還被看到了什麼")
+      c("還看得到一些。還記得信封外面寫的長度嗎？", "接住上一句", "P:nothing"), chapter="封好的信，還被看到了什麼")
 obj("thick-thin", "Close-up of four small cream envelopes with red wax seals lying side by side on a sunny wooden desk, from one very thin to one very fat and puffy",
     c("信有多厚、多久寄一封，路上的人還是看得到。"),
     k("看厚度，", "不相信"), k("能看出什麼？", "句尾上揚", "S:thick"))
@@ -371,9 +371,9 @@ kid("kid-spot", K("pointing at a small tablet in her other hand with wide eyes a
 
 # ---------- 收尾 ----------
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
-      c("那你說，多一個 S，你的密碼在路上差了什麼？", "笑"), chapter="小問看清楚了")
+      c("沒錯，這種只能靠你自己看。", "點頭"), c("那多一個 S，你的密碼在路上差了什麼？", "笑"), chapter="小問看清楚了")
 kid("kid-got-it", K("holding a small sealed cream envelope up proudly with a big confident grin", where=CAFE),
-    k("原來如此！", "恍然大悟"), k("密碼變成封好的紙條，", "篤定"),
+    k("原來如此！", "恍然大悟"), k("就像剛剛那張封好的紙條，", "篤定"),
     k("同學照樣傳，卻讀不到，", "篤定"), k("也冒充不了那個網址！", None, "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好。我覺得最妙的是，這個封條你每天都在用，"),
