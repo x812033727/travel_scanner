@@ -30,13 +30,23 @@
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
 | Nora | `assets/refs/nora-portrait.jpg`，look `pregnant` | 31 歲，白皙、鼻上淡雀斑、灰綠眼睛；深栗色長髮披肩；五個月身孕、肚子明顯隆起；寬鬆奶油色粗麻花針織洋裝（高圓領、長袖、裙過膝）、灰色軟拖鞋；手腕乾淨（`cast.json` 的 `pregnant` 已沒有燙痕）；不戴首飾。原聲 |
-| Grant | `assets/refs/grant-portrait.jpg`（基本款） | 本集只有聲音（c14、c15、c17 電話，畫外）與電視廣告裡的樣子（c39）：沙金色側分短髮、細圓金屬框眼鏡（照定妝照）、淺石色訂製西裝、淡藍開領襯衫、透明玻璃袖扣；聲音 Gemini Algieba |
-| Cole | **待畫**（`cast.json` `cole`，還沒有定妝照；本集三鏡露臉說話，開拍前要先畫） | 30 歲黑人男性，極短髮、黑西裝、白襯衫、白手套、黑皮鞋，眼睛一直往下看；只在大門外出現。原聲 |
+| Grant | `assets/refs/grant-portrait.jpg`（基本款） | 本集只有聲音（c14、c15、c17 電話，畫外）與電視廣告裡的樣子（c39）：沙金色側分短髮、細圓金屬框眼鏡（照定妝照）、淺灰帶細格紋的西裝（照定妝照，不寫淺石色）、淡藍開領襯衫、透明玻璃袖扣；聲音 Gemini Algieba |
+| Cole | `assets/refs/cole-portrait.jpg` | 約 40 歲黑人男性（照定妝照），極短髮、黑西裝配黑色開領襯衫（照定妝照，不寫白襯衫）、白手套、黑皮鞋，眼睛一直往下看；只在大門外出現。原聲 |
 | Peg | `assets/refs/peg-portrait.jpg`（**基本款**，照定妝照） | 62 歲，灰色直短髮撥向一邊（照定妝照，不是燙髮）、輪廓分明的皺紋臉；**玳瑁框老花眼鏡戴在臉上**（整集不摘）；一條長的深棕色木珠項鍊；洗舊的燕麥色開襟衫、素色襯衫、深色長褲、平底鞋；左手無名指婚戒 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；左肩一只米色帆布袋（見道具）；**手上沒有帳本、沒有棒針**。原聲 |
-| （無名的手） | 道具 `elias-glove` | 夢裡接住玻璃鳥的手：**左手**、深棕色皮手套、掌心朝上、深色羊毛大衣袖口；只拍掌心，手背不入鏡，不連到任何角色 |
+| （無名的手） | 道具 `elias-glove`（不傳定妝照、不傳帶手的道具圖） | 夢裡接住玻璃鳥的手：**左手**、深棕色皮手套、掌心朝上、深色羊毛大衣袖口；只拍掌心，手背不入鏡，不連到任何角色 |
 
-場景：臥室 `glass-house-bedroom`（待畫；c04–c11 早晨、c43–c51 夜裡）、客廳與餐桌 `assets/refs/set-glass-house-living.jpg`（c12–c18 白天、c30–c34 白天、c38–c42 夜裡；c01–c03 夢裡那格玻璃也是這裡）、
-大門（玻璃屋大門內外，外景參考 `assets/refs/set-glass-house-ext.jpg`；c19–c24 白天毛毛雨、c35–c37 傍晚）、嬰兒房 `glass-house-nursery`（待畫；c25–c29）、電視廣告的白色攝影棚 `tv-ad-studio`（待畫，只在電視裡；c39）。
+**只拍手、肩或背影、不露臉的鏡不傳定妝照**（稽核定案 13，免得模型把臉轉進畫面）：c03、c06、c08、c10、c14、c15、c17、c22、c41、c47。
+
+場景（`assets/refs/`，稽核 `review/2026-11-12-ref-audit-e001-e020.md`〈定案〉4–7；「待畫」的照 `screen-test/redraw.py` 的 id）：
+- 臥室 `glass-house-bedroom`：早晨 c04–c10 用 `set-glass-house-bedroom-am.jpg`（往床頭看：床在畫面左，床頭櫃是掛在床頭牆上的浮板、在床的右邊，整面玻璃在畫面右）；c11 早晨在房門邊，兩張臥室圖都看不到門，**不傳場景圖**；
+  19:40 起要門、大衣或「玻璃在左」的鏡（c43–c45、c49–c51）用**反打 `bed-north-sconce`（待畫：從床頭往床尾與房門看，玻璃在左，半開的房門在右後，門內掛鉤掛駝色大衣，門外走廊夜燈）**；
+  01:30 只有走廊夜燈的 c46–c51 用 `bed-night`（待畫，改從反打做）。現有的 `set-glass-house-bedroom-bed-sconce.jpg` 是往床頭看、方向相反，本集不用。
+- 客廳與餐桌 `glass-house-living`：白天 c12–c18、c30–c34 用 `set-glass-house-living-liv-day.jpg`（從玄關往海看：低矮灰沙發在左前、背對鏡頭；長淺木餐桌在右後的玻璃角、兩側長凳；海那面玻璃下一排淺橡木矮櫃；四面玻璃、**沒有實牆**）；c01–c03 夢裡那格玻璃也是這張；
+  夜裡 c38–c42 用 `liv-tv`（待畫：同一個機位，沙發旁暖白落地燈、電視立在沙發正對面的矮櫃上）。舊的橫式 `set-glass-house-living.jpg`（晴天、配椅子）不用。
+- 大門 `glass-house-door`：從屋裡往外 c19–c23、c35–c36 用重畫的 `door-in-day`（待畫：門墊與台階在門外、門外沒有海，燈柱是細的現代黑桿、立在台階左邊的草地上；傍晚 c35–c36 的嵌燈寫在鏡上）；
+  從屋外往裡 c24、c37 用 `set-glass-house-door-out-gold.jpg`（門關著、夕陽光，燈柱在台階右邊的草地上；本集的光照鏡上寫的陰天毛毛雨與傍晚，門開著的那一格寫 `already standing open inward`）。舊的 `set-glass-house-ext.jpg` 不用。
+- 嬰兒房 `glass-house-nursery`：c25–c29 用重畫的 `nur-day`（待畫：平的白天花板，遠牆一整面黑細鋼框落地窗，從門口看嬰兒床在左、搖椅在右，素白平板門）。現有的 `set-glass-house-nursery-nur-day.jpg`（玻璃屋頂的溫室）不用。
+- 電視廣告的白色攝影棚 `tv-ad-studio`（待畫，只在電視裡；c39）。
 
 **本集道具**：下面的英文是 bible〈道具的樣子〉的句子，每一鏡的英文正文**一字不差**照抄（分鏡表裡也照抄在出現的每一鏡）；中文一律寫「藥」，不寫「藥片」。
 
@@ -83,8 +93,9 @@
 
 **場頭**：
 - **地點與場景圖**：c01–c03 是夢：客廳的一格落地玻璃（`set-glass-house-living.jpg` 的玻璃牆），畫面去飽和、無聲。c04–c11 臥室 `glass-house-bedroom`（待畫）：
-  矮床（白床單、一條灰色薄毯），床頭靠南面實牆、床尾朝北；**西面整面落地玻璃**，外面是灰海與毛毛雨；床頭櫃在床的西側（坐在床上的人的左手邊、在床與玻璃之間）：
-  一只玻璃水杯、一只白色小瓷碟上一顆藥、一盒白色面紙（無字）、Nora 的淡粉色手機背面朝上；房門在床尾東北角、關著，門內側掛鉤上掛著駝色大衣；灰色軟拖鞋在床邊地上。近景與插鏡都寫「同一間臥室」，背景是白牆、玻璃與灰海，不要飯店、不要醫院。
+  矮床（白床單、一條灰色薄毯），床頭靠南面實牆、床尾朝北；**西面整面落地玻璃**，外面是灰海與毛毛雨；床頭櫃是掛在床頭牆上的浮板，在床的西側（坐在床上的人的左手邊、在床與玻璃之間）：
+  一只玻璃水杯、一只白色小瓷碟上**只有**一顆藥（參考圖 `set-glass-house-bedroom-am.jpg` 的碟子上多一只白瓷茶杯，片段不要：碟子寫 `a small flat white saucer with only this on it:` 再接藥句）、一盒白色面紙（無字）、Nora 的淡粉色手機背面朝上；房門在床尾東北角、關著，門內側掛鉤上掛著駝色大衣；灰色軟拖鞋在床邊地上。近景與插鏡都寫「同一間臥室」，背景是白牆、玻璃與灰海，不要飯店、不要醫院。
+  參考圖：c04–c10 傳 `set-glass-house-bedroom-am.jpg`（從床尾往床頭看，床在畫面左、床頭櫃在床右邊、玻璃在畫面右，跟這場的鏡頭方向一樣）；c11 在房門邊，圖裡沒有門，**不傳場景圖**。
 - **時間與天氣**：第 1 天（3/17 週二）07:40，陰、毛毛雨，玻璃上掛著細雨珠；冷藍的陰天散光從西面玻璃透進來，房裡沒開燈；**太陽在屋後的東邊、被雲蓋住，光不是從海那面來的**：玻璃外的海是暗灰的，沒有日出、沒有金光。
 - **軸線**：玻璃牆在西；Nora 靠床頭坐時臉朝北、玻璃在她的左邊（她的近景裡玻璃在畫面右）。c09 她往左（往玻璃）探身，側臉對著玻璃；c11 她站在東北角的房門內側，面對門上的大衣（畫面左）。鏡頭不越到玻璃外面。
 - **在場的人**：只有 Nora。Grant 一早就出門了，不入鏡、不提。
@@ -99,30 +110,30 @@
 | c02 | 插鏡、特寫、固定；直式，鳥從畫面上緣掉到下緣；前景是虛焦的鋼框一角 | 畫面裡沒有人：裂了的那格玻璃在背景虛焦；一隻玻璃鳥（`a clear hand-blown glass bird about the size of a fist, one wing lower than the other`，只有一隻） | 玻璃鳥從畫面上緣翻一圈往下掉，經過裂紋前面；剪在它掉到畫面下三分之一。最後：鳥還在半空、往下緣落 | — | 約 2 秒 |
 | c03 | 插鏡、手部特寫、固定；**第一格就是張開的手掌** | 一隻戴手套的**左手**（`a man's dark brown leather glove on a left hand, a dark wool coat cuff`），**深棕色皮手套、掌心朝上**，從畫面下緣伸進來，深色羊毛大衣袖口；**只拍掌心與袖口，手背不入鏡**；玻璃鳥（`a clear hand-blown glass bird about the size of a fist, one wing lower than the other`）；背景是虛焦的灰海 | 玻璃鳥落進手套的掌心，手指輕輕合起來把它包住，手不晃；畫面上沒有臉、沒有嘴。最後：手套合著、鳥包在掌心裡 | — | 約 2 秒 |
 | c04 | 眼睛大特寫、固定；**第一格就是閉著的眼睛**；前景下緣是白枕頭的一角 | Nora 的眼睛與眉（灰綠、鼻上淡雀斑），側躺在白枕頭上，冷藍晨光從畫面右邊照過來；只拍眼與眉，嘴不入鏡 | 第一格眼睛閉著一秒，然後猛地睜開，眨兩下，瞳孔在光裡一縮；眉頭跟著往上一跳、又皺回來；`no smile at any moment, until the last frame`。最後：眼睛睜著、眉心皺著 | — | 約 2 秒 |
-| c05 | 全景、俯拍、慢推（2 秒內的轉場）；同一間臥室；直式，前景下緣是床頭櫃一角，畫面右是西面玻璃與灰海 | Nora（`pregnant`，奶油色針織洋裝），第一格側躺在床的西半邊、蓋著灰色薄毯；灰色軟拖鞋在床邊地上；前景床頭櫃上：玻璃水杯（`a clear drinking glass about the size of her fist, half full of clear water`）、白色小瓷碟上一顆藥（`a tiny white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`）、白色面紙盒、淡粉色手機（`a phone in a pale pink case, about the size of her palm`，背面朝上）；表情：眉頭還皺著、嘴唇微張、喘，`no smile at any moment, until the last frame` | Nora 兩手撐床、坐起來靠到床頭，兩手落到肚子上；嘴唇微張、只有喘氣，不說話。剪在她的背碰到床頭的一刻。最後：她靠床頭坐著、薄毯蓋到腰，床頭櫃上的東西都沒動 | — | 約 2 秒 |
-| c06 | 主觀插鏡、俯拍、固定；**第一格就是床頭櫃** | 同一間臥室的床頭櫃：玻璃水杯（`a clear drinking glass about the size of her fist, half full of clear water`，水是清的）、白色小瓷碟上一顆藥（`a tiny white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`）、白色面紙盒、淡粉色手機（`a phone in a pale pink case, about the size of her palm`，背面朝上）；Nora 的左手（奶油色針織長袖口）從畫面左下伸進來 | 左手越過手機，用拇指與食指捏起那顆藥，收出畫面；杯子沒人碰；畫面上沒有嘴。剪在手收到畫面邊的一半。最後：瓷碟空了，杯子、面紙盒、手機都留在床頭櫃上原位 | — | 約 2.5 秒 |
+| c05 | 全景、俯拍、慢推（2 秒內的轉場）；從床尾往床頭拍（同 `bedroom-am` 的方向）；同一間臥室；直式，矮床在畫面左，床頭櫃是掛在床頭牆上的浮板、在床的右邊（床與玻璃之間），畫面右是西面整面玻璃與灰海 | Nora（`pregnant`，奶油色針織洋裝），第一格側躺在床的西半邊（畫面右半、靠床頭櫃）、蓋著灰色薄毯；灰色軟拖鞋在床邊地上；畫面右的床頭櫃上：玻璃水杯（`a clear drinking glass about the size of her fist, half full of clear water`）、白色小瓷碟（`a small flat white saucer with only this on it:`）上一顆藥（`a tiny white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`）、白色面紙盒、淡粉色手機（`a phone in a pale pink case, about the size of her palm`，背面朝上）；表情：眉頭還皺著、嘴唇微張、喘，`no smile at any moment, until the last frame` | Nora 兩手撐床、坐起來靠到床頭，兩手落到肚子上；嘴唇微張、只有喘氣，不說話。剪在她的背碰到床頭的一刻。最後：她靠床頭坐著、薄毯蓋到腰，床頭櫃上的東西都沒動 | — | 約 2 秒 |
+| c06 | 主觀插鏡、俯拍、固定；**第一格就是床頭櫃** | 同一間臥室的床頭櫃：玻璃水杯（`a clear drinking glass about the size of her fist, half full of clear water`，水是清的）、白色小瓷碟（`a small flat white saucer with only this on it:`）上一顆藥（`a tiny white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`）、白色面紙盒、淡粉色手機（`a phone in a pale pink case, about the size of her palm`，背面朝上）；Nora 的左手（奶油色針織長袖口）從畫面左下伸進來 | 左手越過手機，用拇指與食指捏起那顆藥，收出畫面；杯子沒人碰；畫面上沒有嘴。剪在手收到畫面邊的一半。最後：瓷碟空了，杯子、面紙盒、手機都留在床頭櫃上原位 | — | 約 2.5 秒 |
 | c07 | 中近景、慢推（從胸上推到肩上）；直式，頭頂留一掌空間；同一間臥室；**前景下緣右是床頭櫃一角與那只玻璃水杯** | Nora（`pregnant`，奶油色針織洋裝、長髮披肩、肚子隆起）靠床頭坐，素顏；玻璃水杯（`a clear drinking glass about the size of her fist, half full of clear water`）**留在床頭櫃上、在畫面右下前景，水是清的，整鏡沒人拿、杯緣不碰嘴**；身後是白牆，畫面右是玻璃與灰海；表情：咬下去那一刻眉頭往中間皺起、眼睛眯一下，說話時眼睛往下看向那杯水、下巴往內收，`no smile at any moment, until the last frame` | Nora 用左手把整顆藥放進嘴裡、直接咬下去，咬到一半停住；臉轉成四分之三側臉朝畫面右下、看著床頭櫃上的水，嘴在說話（自言自語），說完嘴閉上、眼睛停在杯子上。最後：她靠床頭坐著、兩手落在肚子上，杯子在原位 | Nora（原聲，低聲、困惑）：My pill tastes sweet today.（今天的藥是甜的） | 約 4 秒（原聲，買 6 秒） |
 | c08 | 插鏡、手部特寫、固定；**第一格就是攤開的面紙**；同一間臥室 | Nora 的左手掌心攤著一張白面紙（奶油色針織袖口）；畫面上緣只露她的下巴與嘴的一角，臉不入鏡 | 她把嘴湊近面紙，把剩下的半顆藥輕輕吐在面紙中央；半顆藥（`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`）落在面紙上，邊緣是咬過的斷面；嘴只做吐出的動作、不說話。最後：半顆藥在面紙中央、面紙攤在她左手掌心 | — | 約 2.5 秒 |
 | c09 | 近景、側面、慢推（從胸上推到臉）；顏值鏡頭；直式，臉在畫面上三分之一，下緣是舉起的手；同一間臥室，畫面右是西面玻璃 | Nora（`pregnant`），靠床頭坐、身子往左邊的玻璃探過去，側臉對著畫面右的玻璃；長髮披肩；右手拇指與食指捏著半顆藥（`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`）舉到眼前；左手掌心攤著白面紙在下緣；玻璃外是灰海，玻璃上只有細雨珠；冷藍晨光照著側臉，身後是白牆；表情：眼睛眯起、盯著藥的斷面，眉心收緊，嘴唇微微分開，**`no smile at any moment, until the last frame`**（直式小樣這一鏡尾端笑了） | Nora 把半顆藥舉高對著光，慢慢轉一下手指看斷面；嘴閉著。剪在手指轉到一半。最後：半顆藥還捏在右手指尖、舉在臉前，眼睛還盯著它 | — | 約 3 秒 |
 | c10 | 插鏡、手部特寫、固定；**第一格就是面紙裡的半顆藥**；同一間臥室 | Nora 的兩手（奶油色針織袖口）：左手掌心攤著白面紙，半顆藥（`a tiny half of a white pill, smaller than a fingernail, plain white with one faint shallow line across it, no colour, no markings (a medicine pill, not a device)`）在中央；背景是虛焦的白床單 | 兩手把面紙對摺、再對摺，摺成一小塊方形，按平；然後兩手捏著它往上抬出畫面上緣（她起身，剪在起身的一半）；畫面上沒有嘴。最後：摺好的面紙在她右手、手正離開畫面 | — | 約 2 秒 |
-| c11 | 中近景、慢推；直式，前景左是門框，大衣從門頂掛鉤垂到畫面下緣；同一間臥室，身後是白牆 | Nora（`pregnant`、灰色軟拖鞋），站在東北角關著的房門內側；門內側掛鉤上的駝色大衣（`a camel wool coat with deep pockets`，長版、無腰帶、單排扣）在畫面左；第一格她的右手已經把摺好的面紙塞進大衣右邊口袋，左手護著肚子；表情：眉毛平而定、嘴唇在句子之間抿緊、輕輕點一下頭，`no smile at any moment, until the last frame` | 她的臉是四分之三側臉朝畫面左、眼睛看著大衣口袋，嘴在說話（對自己）；說完隔著大衣拍一下口袋，嘴閉上。最後：面紙在大衣右邊口袋裡，她的右手平貼在口袋上、左手護著肚子 | Nora（原聲，輕，對自己）：I'm keeping this for Dr. Brandt.（這個留給 Brandt 醫生看）（結尾） | 約 3.5 秒（原聲，買 6 秒） |
+| c11 | 中近景、慢推；直式，前景左是白色房門的門框，大衣從門內側的掛鉤垂到畫面下緣；同一間臥室，身後只有素白牆與門框（不傳臥室場景圖：兩張臥室圖都看不到門，傳了會把她放到床或玻璃前） | Nora（`pregnant`、灰色軟拖鞋），站在東北角關著的房門內側；門內側掛鉤上的駝色大衣（`a camel wool coat with deep pockets`，長版、無腰帶、單排扣）在畫面左；第一格她的右手已經把摺好的面紙塞進大衣右邊口袋，左手護著肚子；表情：眉毛平而定、嘴唇在句子之間抿緊、輕輕點一下頭，`no smile at any moment, until the last frame` | 她的臉是四分之三側臉朝畫面左、眼睛看著大衣口袋，嘴在說話（對自己）；說完隔著大衣拍一下口袋，嘴閉上。最後：面紙在大衣右邊口袋裡，她的右手平貼在口袋上、左手護著肚子 | Nora（原聲，輕，對自己）：I'm keeping this for Dr. Brandt.（這個留給 Brandt 醫生看）（結尾） | 約 3.5 秒（原聲，買 6 秒） |
 
 ### 第二場：餐桌，Grant 的電話（約 25.5 秒）
 
 **場頭**：
-- **地點與場景圖**：`assets/refs/set-glass-house-living.jpg`。淺橡木地板、長淺木餐桌在畫面右、低矮灰沙發在畫面左（沙發坐墊上放著那頂毛線帽），三面落地玻璃外是灰海；
-  直式取餐桌一角加一扇玻璃。桌上：一只白色馬克杯（無字）。近景都寫「同一間玻璃客廳」，背景是玻璃、灰海與淺木桌。
+- **地點與場景圖**：`assets/refs/set-glass-house-living-liv-day.jpg`（從玄關往海看）。淺橡木地板；低矮灰沙發在畫面左前、**背對鏡頭**（看不到坐墊；右扶手上放著那頂毛線帽）；長淺木餐桌在畫面右後的玻璃角，兩側是長凳；
+  海那面玻璃下一排淺橡木矮櫃；四面落地玻璃外是灰海，**沒有實牆**。桌上：一只白色馬克杯（無字）。近景都寫「同一間玻璃客廳」，背景是玻璃、灰海與淺木桌。
 - **時間與天氣**：第 1 天 08:10，陰、毛毛雨；冷藍天光，玻璃上的雨珠；屋裡沒開燈。
-- **軸線**：Nora 坐在餐桌北端，身子側向西面玻璃與海（右手邊是北面玻璃）；說電話的近景鏡頭都在她的北側、往南拍：**西面玻璃與海在畫面右**，她身後是往南延伸的長木餐桌與遠處的灰沙發（虛焦）；她說電話時臉朝畫面右（西面玻璃與海）、眼睛看畫面右外的海；手機在右手、貼右耳，背面朝鏡頭。
+- **軸線**：Nora 坐在餐桌北端那條長凳的盡頭，身子側向西面玻璃與海（右手邊是北面玻璃）；c12 照參考圖的機位（從玄關往西看，她在畫面右後、背四分之三朝鏡頭）；說電話的近景 c13–c18 鏡頭都在她的北側、往南拍（跟 c12 轉 90°，不越軸）：**西面玻璃與海在畫面右**，她身後是往南延伸的長木餐桌與遠處的灰沙發（虛焦）；她說電話時臉朝畫面右（西面玻璃與海）、眼睛看畫面右外的海；手機在右手、貼右耳，背面朝鏡頭。
 - **在場的人**：只有 Nora；**Grant 只有聲音（畫外，電話裡，Gemini）**，不入鏡。
-- **覆蓋**：c12 全景（前景沙發與毛線帽，交代她在桌邊）→ 說話的中近景 → 聽的反應 → 插鏡 → 低角度收尾。
+- **覆蓋**：c12 全景（前景沙發扶手與毛線帽，交代她在桌邊）→ 說話的中近景 → 聽的反應 → 插鏡 → 低角度收尾。
 - **這場要講完的事**：她說藥是甜的，Grant 笑說換了糖衣；他說她的手機一直斷、今天叫 Cole 來拿；今晚發表週忙、不用等他（結尾：她答應）。
 - **配樂**：同第一場那首鋼琴，壓低；Grant 的笑聲進來時加一層暖的弦樂墊，c18 抽掉。
 - **離開這場**：c18 她把手機蓋在桌上，切大門；時間跳到 14:00。
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c12 | 全景、慢推（2 秒內的轉場）；鏡頭在北面玻璃前、略高，往南拍；直式，**畫面右是西面整面玻璃與灰海、雨珠**，長木餐桌從下緣往畫面深處延伸，**畫面左後是低矮灰沙發的扶手與坐墊** | 畫面左後的沙發坐墊上：毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；畫面右前：Nora（`pregnant`，奶油色針織洋裝、灰色軟拖鞋）坐在餐桌北端、身子側向畫面右的西面玻璃，桌上一只白色馬克杯（無字）與淡粉色手機（`a phone in a pale pink case, about the size of her palm`）；表情：眉頭皺著、嘴唇抿著，`no smile at any moment, until the last frame` | Nora 從桌上拿起手機往右耳舉；剪在舉到一半。最後：手機在右手、快到耳邊，毛線帽留在沙發坐墊上 | — | 約 2 秒 |
+| c12 | 全景、慢推（2 秒內的轉場）；照 `liv-day` 的機位，從玄關往海（西）看；直式，**前景左是低矮灰沙發、背對鏡頭**，**畫面右後是長淺木餐桌與北、西兩面玻璃的轉角**，玻璃外是灰海、雨珠 | 前景左的沙發右扶手上：毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；畫面右後：Nora（`pregnant`，奶油色針織洋裝、灰色軟拖鞋）坐在長木餐桌北端那條長凳的盡頭，背四分之三朝鏡頭、面向玻璃外的灰海，桌上一只白色馬克杯（無字）與淡粉色手機（`a phone in a pale pink case, about the size of her palm`）；表情（只露側臉的邊）：眉頭皺著、嘴唇抿著，`no smile at any moment, until the last frame` | Nora 從桌上拿起手機往右耳（畫面右側）舉；剪在舉到一半。最後：手機在右手、快到耳邊，毛線帽留在沙發右扶手上 | — | 約 2 秒 |
 | c13 | 中近景、慢推（從腰上推到胸上）；鏡頭在她的北側、斜前方往南拍（跟 c14 同一邊）；直式，**畫面右邊緣是西面玻璃與灰海、雨珠**，上緣是虛焦的長木餐桌往南延伸；**前景下緣是餐桌一角與白色馬克杯** | Nora（`pregnant`），坐在餐桌北端、身子側向畫面右的西面玻璃，右手把淡粉色手機（`a phone in a pale pink case, about the size of her palm`）貼在右耳（背面朝鏡頭，螢幕看不到），左手護著肚子；身後是虛焦的長木餐桌與遠處的灰沙發；表情：眉頭往中間皺、眼睛不安地找著畫面右外的海、嘴唇在句子之間抿緊，`no smile at any moment, until the last frame` | Nora 身子往前靠到桌邊；臉是四分之三側臉朝畫面右、眼睛看畫面右外的海，不看鏡頭；嘴在說話。最後：她靠在桌邊、手機貼耳、左手在肚子上 | Nora（原聲，試探）：Grant, my pill tasted sweet this morning. Is that normal?（Grant，今天早上的藥是甜的，這正常嗎？）（→ 答在 c14） | 約 4.5 秒（原聲，買 6 秒） |
 | c14 | 直式過肩近景、慢推；從 Nora 右肩後拍：**前景是她的右肩、長髮、右耳與貼在耳上的手機背面，嘴不入鏡**；背景是虛焦的長木餐桌與遠處的灰沙發；同一間玻璃客廳 | Nora（`pregnant`），右手把手機（`a phone in a pale pink case, about the size of her palm`）貼在右耳、背面朝鏡頭；臉只露右頰的邊、眉尾與睫毛；表情：眉尾鬆下來、睫毛垂一下、肩膀隨一口長長的吐氣往下沉，`no smile at any moment, until the last frame`；眼睛看畫面右外的海 | Nora 聽著，肩膀往下一鬆；嘴不入鏡（聲音在電話裡）。最後：肩膀鬆下來、手機貼在右耳 | Grant（Gemini，電話，畫外；笑著、暖）：They changed the coating, babe. Totally normal.（他們換了糖衣，寶貝，很正常） | 約 3.5 秒 |
 | c15 | 插鏡、特寫、固定；**第一格就是貼在她右耳上的手機**；直式，手機在畫面中間，耳朵與長髮在上，下巴的邊在下緣、嘴不入鏡；鏡頭在她的北側往南拍 | Nora 的右手（奶油色針織袖口）把淡粉色手機（`a phone in a pale pink case, about the size of her palm`）貼在右耳，背面朝鏡頭；深栗色長髮蓋著耳後；背景是虛焦的西面玻璃與灰海（畫面右） | 她的手指收緊在手機上，拇指在淡粉色殼的邊上來回擦一下；畫面上沒有嘴。最後：手機還貼在右耳、手指握緊 | Grant（Gemini，電話，畫外）：Your phone keeps dropping my calls. Cole will pick it up today.（你的手機一直斷線，Cole 今天去拿） | 約 5 秒 |
@@ -133,7 +144,9 @@
 ### 第三場：大門，Cole 取手機（約 17 秒）
 
 **場頭**：
-- **地點與場景圖**：玻璃屋大門內側（外景參考 `assets/refs/set-glass-house-ext.jpg`，白天毛毛雨版）：一扇高的黑色鋼框玻璃大門，門外是門墊，下面兩級台階，一根黑色燈柱（白天不亮）。照 `glass-house-door` 的備註：**從門內往外拍（c19–c23）**，燈柱在最上一級台階的左端，碎石車道往畫面右下彎下去（Cole 往畫面右走下車道）；**從門外往內拍（c24）**左右相反，燈柱在最上一級的右端，車道在鏡頭後面的畫面左外（Nora 看畫面左外的車道）。
+- **地點與場景圖**：玻璃屋大門內側：一扇高的黑色鋼框玻璃大門，往屋裡開；從屋裡看鉸鏈在左、普通的黑色把手在門的右緣；門外是門墊，下面兩級寬石台階，一根細的現代黑色燈柱（白天不亮）**立在台階旁的草地上**（不在台階上）。
+  **從門內往外拍（c19–c23）**傳重畫的 `door-in-day`（待畫：門墊與台階在門外、門外沒有海）：燈柱在台階左邊的草地上，碎石車道往畫面右下彎下去（Cole 往畫面右走下車道）；
+  **從門外往內拍（c24）**傳 `set-glass-house-door-out-gold.jpg`，左右相反：燈柱在台階右邊的草地上，車道在鏡頭後面的畫面左外（Nora 看畫面左外的車道）；那張圖是夕陽、門關著，這鏡照寫陰天毛毛雨，門第一格寫 `already standing open inward`。
   門內是淺橡木地板的玄關，左邊接客廳。近景都寫「同一扇玻璃大門」，不要飯店大廳。
 - **時間與天氣**：第 1 天 14:00，陰、毛毛雨；門外灰白天光，門內冷藍。
 - **軸線**：Nora 在門內、看畫面右；Cole 在門外門墊上、臉朝畫面左（眼睛往下）。鏡頭在門內拍 Cole（透過開著的門）、在門外拍 Nora（她在門框裡），正反打不越軸。
@@ -145,8 +158,8 @@
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c19 | 直式過肩、慢推；從 Nora 右肩後拍（**她的右肩與長髮在畫框左下，背對鏡頭**），畫面右是高的黑色鋼框玻璃大門 | 共兩人。前景：Nora（`pregnant`）的右肩與後腦；畫面右：門外門墊上的 Cole（黑西裝、白襯衫、白手套、黑皮鞋，兩手交疊在身前，極短髮），身後是碎石車道與毛毛雨；Cole 的表情：眉毛平、眼睛往下看門檻、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 用左手把玻璃門往內拉開；剪在門轉到一半。Cole 不動；兩人嘴閉著。最後：門半開，Cole 站在門墊上 | — | 約 2 秒 |
-| c20 | 中近景、慢推；從門內往外拍，**前景兩側是門框**；直式，頭頂留門框 | Cole（黑西裝、白襯衫、白手套），站在門外門墊上，身後是碎石車道與毛毛雨；表情：眉毛平、眼睛往下看著畫面左外 Nora 的手、下巴不動，`no smile at any moment, until the last frame` | Cole 微微欠身；臉是四分之三側臉朝畫面左（門內的 Nora），眼睛往下、不看鏡頭；嘴在說話；說完站直、兩手交疊在身前，嘴閉上。最後：他站直、兩手交疊 | Cole（原聲，客氣、平）：Mrs. Whitlock. Mr. Whitlock sent me.（Whitlock 太太，Whitlock 先生叫我來的） | 約 3 秒（原聲，買 6 秒） |
+| c19 | 直式過肩、慢推；從 Nora 右肩後拍（**她的右肩與長髮在畫框左下，背對鏡頭**），只拍到腰以上、不拍地面；畫面右是高的黑色鋼框玻璃大門，鉸鏈在左、黑色把手在門的右緣 | 共兩人。前景：Nora（`pregnant`）的右肩與後腦；畫面右：就站在門檻外門墊上的 Cole（約 40 歲，黑西裝配黑色開領襯衫、白手套，兩手交疊在身前，極短髮），身後是碎石車道與毛毛雨；Cole 的表情：眉毛平、眼睛往下看門檻、嘴唇閉著，`no smile at any moment, until the last frame` | Nora 用左手拉門右緣的黑色把手，玻璃門往內朝她轉開；剪在門轉到一半。Cole 不動；兩人嘴閉著。最後：門半開，Cole 站在門檻外 | — | 約 2 秒 |
+| c20 | 中近景、慢推；從門內往外拍，**前景兩側是門框**；直式，頭頂留門框 | Cole（約 40 歲，黑西裝配黑色開領襯衫、白手套），站在門外門墊上，身後是碎石車道與毛毛雨；表情：眉毛平、眼睛往下看著畫面左外 Nora 的手、下巴不動，`no smile at any moment, until the last frame` | Cole 微微欠身；臉是四分之三側臉朝畫面左（門內的 Nora），眼睛往下、不看鏡頭；嘴在說話；說完站直、兩手交疊在身前，嘴閉上。最後：他站直、兩手交疊 | Cole（原聲，客氣、平）：Mrs. Whitlock. Mr. Whitlock sent me.（Whitlock 太太，Whitlock 先生叫我來的） | 約 3 秒（原聲，買 6 秒） |
 | c21 | 近景、慢推（從胸上推到肩上）；從門內往外拍，前景左是門框；同一扇玻璃大門 | Cole（同上）；身後是虛焦的碎石車道與雨；表情：眉毛微微抬起、眼睛低著看她的手、嘴唇說得很平，`no smile at any moment, until the last frame` | Cole 把右手（白手套）掌心朝上伸向畫面左；臉是四分之三側臉朝畫面左，嘴在說話。最後：右手停在半空、掌心朝上等著 | Cole（原聲，平）：Your phone's going in for repair, ma'am.（您的手機要送修，太太） | 約 3.5 秒（原聲，買 6 秒） |
 | c22 | 插鏡、手部特寫、固定；**第一格就是兩隻手之間的手機**；直式，她的手從上、他的手從下 | 淡粉色手機（`a phone in a pale pink case, about the size of her palm`，背面朝上）；Nora 的右手（奶油色針織袖口）從上緣、Cole 攤開的右手（白手套、黑西裝袖口）從下緣；背景是虛焦的門框與雨 | Nora 把手機放進白手套的掌心，她的手指在手機上多停半秒才放開；白手套合起來；畫面上沒有嘴。最後：手機握在 Cole 合起的右手白手套裡，她的手收出上緣 | — | 約 2.5 秒 |
 | c23 | 中近景、固定；從門內往外拍，前景兩側是門框 | Cole（同上），右手白手套握著淡粉色手機（`a phone in a pale pink case, about the size of her palm`）垂在身側；身後碎石車道與雨；表情：眼睛往下、眉毛平、說完嘴唇抿住，`no smile at any moment, until the last frame` | Cole 的臉是四分之三側臉朝畫面左、眼睛往下，嘴在說話；說完轉身往台階與車道走，嘴閉上；剪在轉身的一半。最後：他半轉身背向門，手機在右手 | Cole（原聲，低）：You'll have it back soon, ma'am.（很快就還您）（結尾） | 約 3.5 秒（原聲，買 6 秒） |
@@ -422,7 +435,7 @@
 | --- | --- | --- | --- |
 | Nora | `pregnant`：奶油色針織洋裝、灰色軟拖鞋、長髮披肩、五個月身孕 | c04–c51（c04 只有眼睛；插鏡只有手與袖口） | —（燙痕已從 `cast.json` 拿掉） |
 | Grant | 基本款（淺石色西裝；定妝照是細圓金屬框眼鏡），只在電視裡、臉不入鏡 | c39 | `cast.json` 寫 rimless glasses，跟定妝照不同 |
-| Cole | 基本款（黑西裝、白襯衫、白手套、黑皮鞋） | c19–c23 | 還沒有定妝照；本集露臉說話三鏡，要先畫 |
+| Cole | 基本款（約 40 歲，黑西裝配黑色開領襯衫、白手套、黑皮鞋，照 `cole-portrait.jpg`） | c19–c23 | `cast.json` 的 `cole` 寫 30 歲、沒寫襯衫；照定妝照改（稽核定案 10，主控改 `cast.json`） |
 | Peg | **基本款**（玳瑁框眼鏡戴在臉上、木珠長項鍊、燕麥色開襟衫、平底鞋）＋帆布袋道具句；左手婚戒照 `peg-ring`（一顆很小的舊鑽） | c25–c36 | 不用 `visit` look（它寫眼鏡掛在胸前）；`visit` 要改成眼鏡戴在臉上，或刪掉 |
 | （無名的手） | **左手**、深棕色皮手套、掌心朝上、深色羊毛大衣袖口，只拍掌心 | c03 | 照道具 `elias-glove`；不連到任何角色 |
 

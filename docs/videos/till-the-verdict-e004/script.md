@@ -19,7 +19,7 @@ Grant 送醫生到門口，背對她壓低聲音：「She's confused. Route ever
 
 ## 這集接在哪
 
-第一鏡 c01 是**第 3 集最後一鏡（c40）的同一刻、同一個鏡位**（bible〈接點表〉3→4）：七樓病房，06:30；Grant（`rain` 的淺石色西裝，領口與鏡片還濕）站在床邊，右手按在翻面蓋著的黑色手機上；
+第一鏡 c01 是**第 3 集最後一鏡（c40）的同一刻、同一個鏡位**（bible〈接點表〉3→4）：七樓病房，06:30；Grant（`rain` 的淺灰細格紋西裝，領口與鏡片還濕）站在床邊，右手按在翻面蓋著的黑色手機上；
 Nora（`hospital`）半坐在床上，白毯蓋腿、毛線帽在膝上，盯著那支手機；空塑膠水杯側倒在床頭櫃邊；椅面上是牛皮紙袋與深藍雨衣、椅背上是她的駝色大衣，黑傘靠在門框內側。已對過第 3 集 c40。
 全集在第 2 天 06:30 → 07:05，同一間病房，時間連續、不跳（bible〈時間線〉）；雨停、陰，百葉窗切進冷灰的晨光，集尾變成冷白。
 第 3 集的懸念「Who is S.? And what curtains?」本集**不回答**：Grant 把手機收走、拿出新手機轉開話題，這就是他的回應；S. 在第 6 集揭曉。
@@ -30,12 +30,13 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3 修過，沒有紅痕），look `hospital` | 淡藍素面病人服外罩奶油色開襟衫（長袖蓋到手腕，看不到點滴管）、長髮微亂、素顏、臉色蒼白、眼皮還腫；整集半坐在床上，下半身蓋著白色薄被與白毯，毛線帽在膝上的白毯上；**手腕沒有燙痕**；c30 起左手握拳（手心有分機，手心不入鏡）；本集沒有任何一鏡笑；原聲 |
-| Grant | `assets/refs/grant-portrait.jpg`（平臉，r3），look `rain` | 沙金色側分短髮、細圓金屬框眼鏡（`thin round metal-rim glasses`）；淺石色訂製西裝、淡藍開領襯衫、透明玻璃袖扣、深棕色皮鞋；第一場頭髮與領口還濕、鏡片上還有水點，第二場起半乾；白手帕摺好塞在西裝胸前口袋；黑手機 c01 起在西裝左胸內袋；整集站著（床右邊、床頭櫃與靠窗那張椅子之間），c25–c30 在門口；**只有 c15 可以笑**（閉著嘴、練過的那種，見〈欄位怎麼讀〉）；原聲 |
-| 值班醫生 | **待畫，必須先畫**（`cast.json` extras `on-call-doctor`） | 45 歲黑人男性、光頭、短的灰白鬍子、不戴眼鏡、白袍配淺灰手術服、黑色防滑工作鞋；左手拿夾板；c19 進門、c29 出門；不笑；原聲（`cast.json` 的 Gemini Orus 只當語氣參考，見〈配音〉） |
+| Nora | `assets/refs/nora-portrait.jpg`（r3 修過，沒有紅痕）；look `hospital` 的造型圖**重畫中**（白底淡藍菱形小花病人服，畫好前不傳舊圖），look `hospital` | 褪色的白色病人服、印淡藍色小菱形花、圓領按扣、短袖，外罩奶油色開襟衫（照 `cast.json` `hospital` 外貌句；開襟衫長袖蓋到手腕，看不到點滴管）、長髮微亂、素顏、臉色蒼白、眼皮還腫；整集半坐在床上，下半身蓋著白色薄被與白毯，毛線帽在膝上的白毯上；**手腕沒有燙痕**；c30 起左手握拳（手心有分機，手心不入鏡）；本集沒有任何一鏡笑；原聲 |
+| Grant | `assets/refs/grant-rain.jpg`（look `rain`；現有這張跟定妝照一樣是乾頭髮、乾鏡片，**重畫中**：濕頭髮、起霧的鏡片、濕領口，`screen-test/redraw.py`）；臉照 `assets/refs/grant-portrait.jpg`（平臉，r3） | 沙金色側分短髮、細圓金屬框眼鏡（`thin round metal-rim glasses`）；淺灰帶細格紋的訂製西裝（定案 10，取代「淺石色」）、淡藍開領襯衫、透明玻璃袖扣、深棕色皮鞋；第一場頭髮與領口還濕、鏡片上還有水點，第二場起半乾；白手帕摺好塞在西裝胸前口袋；黑手機 c01 起在西裝左胸內袋；整集站著（床右邊、床頭櫃與靠窗那張椅子之間），c25–c30 在門口；**只有 c15 可以笑**（閉著嘴、練過的那種，見〈欄位怎麼讀〉）；原聲 |
+| 值班醫生 | `assets/refs/on-call-doctor-portrait.jpg`（`cast.json` extras `on-call-doctor`；光頭、灰白短鬍、白袍配淺灰手術服，跟描述一致） | 45 歲黑人男性、光頭、短的灰白鬍子、不戴眼鏡、白袍配淺灰手術服、黑色防滑工作鞋；左手拿夾板；c19 進門、c29 出門；不笑；原聲（`cast.json` 的 Gemini Orus 只當語氣參考，見〈配音〉） |
 | 停號錄音 | 只有聲音 | Gemini Leda（`cast.json` extras `phone-recording`），電話濾波；c11 |
 
-場景：七樓病房 `hospital-room`（待畫，要**晨光版**，直式；c01–c25、c27–c40）；七樓走廊 `hallway`（待畫，白天版；只在 c26 從走廊往病房門裡拍）。
+場景：七樓病房 `hospital-room`（**待畫**：晨光版要從重畫中的 `room-night` 改光做，見 `screen-test/redraw.py` 與 `review/2026-11-12-ref-audit-e001-e020.md` 定案 2；現有的 `set-hospital-room-night.jpg` 格局不對、又是夜景，不傳；直式；c01–c40，c26 也傳它）；
+七樓走廊 `hallway` 本集**不傳圖**：c26 機位在走廊、背景是病房，走廊圖（現有的 `set-hallway.jpg` 與重畫中的 `hall`）都是順著走廊往盡頭看的長景，傳了會把長走廊畫到 Grant 身後。
 
 **本集道具**：下面的英文是 bible〈道具的樣子〉的句子，每一鏡的英文正文**一字不差**照抄；拿在手上的抄到描述為止，再接手的位置。
 
@@ -44,7 +45,7 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 | Grant 的手機 | `a black phone with no logo, about the size of his palm` | c01（之後在西裝左胸內袋，不再拿出來） |
 | 塑膠水杯（空、側倒） | `a clear plastic hospital cup about the size of her fist, empty`，接 `, lying on its side at the edge of the nightstand` | 拍到床頭櫃的每一鏡 |
 | 白薄毯（蓋著） | `a thin folded white cotton blanket, opened out over her legs` | 拍到她腿的每一鏡 |
-| 毛線帽 | `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm` | 整集在她膝上的白毯上 |
+| 毛線帽 | `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm` | 整集在她膝上的白毯上（`assets/refs/prop-knit-hat.jpg` 是兩隻手拿著針在織，本集帽子擱在膝上，**不傳這張圖**，只寫道具句；定案 12） |
 | 黑傘 | `a long black umbrella about as tall as a man's hip, closed, dripping, propped against the door frame` | 拍到門的每一鏡（c19、c25、c26、c29、c30） |
 | 牛皮紙袋 | `a plain brown paper shopping bag about the size of a hardcover book, flat bottom, folded top, no logo` | 椅面上；c02 拿出手機盒，c10 空盒放回去 |
 | 深藍雨衣 | `a navy raincoat folded in half` | 椅面上、紙袋旁 |

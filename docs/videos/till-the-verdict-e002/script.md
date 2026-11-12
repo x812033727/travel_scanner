@@ -19,22 +19,29 @@ Kim 說打過兩次，沒人接；長椅上的人又坐回去。她蜷在床上�
 ## 這集接在哪
 
 接第 1 集最後一鏡的同一刻（第 2 天 01:30）。第 2 天 01:30 → 04:10（bible〈時間線〉）；大雨、夜。
-第一鏡 c01 照 bible〈接點表〉1→2：臥室，Nora（`pregnant`，奶油色針織洋裝、灰色拖鞋）左手平貼西面冰冷的玻璃牆（在她左手邊、畫面左）、右手護著肚子，彎著腰往臥室門口挪；前景下緣是空的床頭櫃一角；走廊夜燈在畫面右後方；玻璃上只有她一個倒影在動。
+第一鏡 c01 照 bible〈接點表〉1→2：臥室，Nora（`pregnant`，奶油色針織洋裝、奶油色毛絨拖鞋）左手平貼西面冰冷的玻璃牆（在她左手邊、畫面左）、右手護著肚子，彎著腰往臥室門口挪；前景下緣是空的床頭櫃一角；走廊夜燈在畫面右後方；玻璃上只有她一個倒影在動。
 第 1 集最後一鏡她朝屋裡喊 Grant（懸念），本集 c01 屋裡沒有人回答、c02 她說出來：他不在家。
-最後一鏡 c43 照〈接點表〉2→3：七樓病房，04:10；Nora（`hospital`，淡藍病人服外罩奶油色開襟衫）在病床上蜷著、兩手抓著那頂沒織完的毛線帽貼在胸口，剛把 Nurse Kim 推開；Kim 退到床尾、右手停在半空；病房門開著，門外走廊盡頭那盞燈暗了一拍。第 3 集第一鏡是同一刻。
+最後一鏡 c43 照〈接點表〉2→3：七樓病房，04:10；Nora（`hospital`，白底淡藍菱形小花的病人服外罩奶油色開襟衫）在病床上蜷著、兩手抓著那頂沒織完的毛線帽貼在胸口，剛把 Nurse Kim 推開；Kim 退到床尾、右手停在半空；病房門開著，門外走廊盡頭那盞燈暗了一拍。第 3 集第一鏡是同一刻。
 
 ## 角色與參考圖
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`；c01–c10 look `pregnant`（c04–c10 加大衣道具句 `a camel wool coat with deep pockets, worn open`），c11–c24 **新 look `night-coat`（待開 `shot_looks`、待畫）**，c26–c43 look `hospital` | `pregnant`：奶油色針織洋裝、灰色軟拖鞋、長髮披肩、五個月身孕。`night-coat`：同一件洋裝外罩駝色羊毛長大衣（**敞開、不扣**，照 `cast.json` 的 look 字串）、灰色拖鞋；長髮被雨打濕貼在臉側（**c04–c10 還在屋裡、頭髮是乾的，所以用 `pregnant` 加大衣道具句，不用 `night-coat`**；c10 門口的雨打到臉，c11 起淋濕、用 `night-coat`）；**大衣與洋裝乾淨、看不出濕**；c08 起左手一直攥著毛線帽。`hospital`：淡藍素面病人服外罩奶油色開襟衫（長袖蓋到手腕，看不到點滴管）、長髮半乾微亂、素顏、臉色蒼白，下半身蓋著白色薄被。**手腕都沒有燙痕**；台詞是原聲 |
-| Elias | — | **只有戴深棕色皮手套的左手、深色羊毛大衣袖口與下擺**（c16、c18、c34、c42），c17 一片背光的右肩，c25 長椅上一個背光的剪影；不露臉、不露手背、不露疤；台詞全在畫外（c16、c18、c21、c23、c24），Gemini Charon |
-| Dr. Brandt | 待畫（`cast.json` `dr-brandt`） | 48 歲，銀金色短鮑伯頭、長方框眼鏡、白袍罩深藍刷手服、白色平底鞋；蹲在床邊；c27–c35 露臉，c37 只有背影；台詞是原聲 |
-| Nurse Kim | 待畫（`cast.json` `nurse-kim`） | 30 歲左右韓裔女性，淡藍護理服、短黑髮夾在耳後、圓臉、眼神溫柔、白色護理鞋；c37–c43（c39 只有袖子與肩）；台詞是原聲 |
+| Nora | c01–c04 `assets/refs/nora-portrait.jpg`（look `pregnant`；c04–c10 加大衣道具句 `a camel wool coat with deep pockets, worn open`）；c05–c24 `assets/refs/nora-night-coat.jpg`（全身、乾頭髮、敞開的駝色大衣、奶油色毛絨拖鞋：c05–c10 照圖是乾頭髮，c11 起正文加雨；**懷孕身形，第 6 集以後不能代用**）；c26–c43 look `hospital` **待畫**（重畫中：白底淡藍菱形小花病人服外罩奶油色開襟衫的胸像，`cast.json` look 字串已改），沒有圖以前只傳 `nora-portrait.jpg`。只有手的插鏡（c05、c08、c18、c21）與背影（c09）不傳定妝照 | `pregnant`：奶油色針織洋裝、奶油色毛絨拖鞋、長髮披肩、五個月身孕。`night-coat`：同一件洋裝外罩駝色羊毛長大衣（**敞開、不扣**，照 `cast.json` 的 look 字串）、奶油色毛絨拖鞋；長髮被雨打濕貼在臉側（**c04–c10 還在屋裡、頭髮是乾的，所以用 `pregnant` 加大衣道具句，不用 `night-coat`**；c10 門口的雨打到臉，c11 起淋濕、用 `night-coat`）；**大衣與洋裝乾淨、看不出濕**；c08 起左手一直攥著毛線帽。`hospital`：白底淡藍菱形小花的病人服（短袖、圓形按扣領）外罩奶油色開襟衫（長袖蓋到手腕，看不到點滴管）、長髮半乾微亂、素顏、臉色蒼白，下半身蓋著白色薄被。**手腕都沒有燙痕**；台詞是原聲 |
+| Elias | 不傳任何圖（只拍手、肩與剪影的鏡不傳定妝照；手套是道具句、不傳道具圖） | **只有戴深棕色皮手套的左手、深色羊毛大衣袖口與下擺**（c16、c18、c34、c42），c17 一片背光的右肩，c25 長椅上一個背光的剪影；不露臉、不露手背、不露疤；台詞全在畫外（c16、c18、c21、c23、c24），Gemini Charon |
+| Dr. Brandt | **待畫**（`cast.json` `dr-brandt`；`on-call-doctor-portrait.jpg` 是另一個人，不能代用）；c37 只有背影，不傳 | 48 歲，銀金色短鮑伯頭、長方框眼鏡、白袍罩深藍刷手服、白色平底鞋；蹲在床邊；c27–c35 露臉，c37 只有背影；台詞是原聲 |
+| Nurse Kim | `assets/refs/nurse-kim-portrait.jpg`（嘴角微揚，`redraw.py` 的 `nurse-kim-fix` 重畫嘴角放平中；選定以前每鏡照寫 `no smile at any moment, until the last frame`）；c39 只有袖子與肩，不傳 | 30 歲左右韓裔女性，淡藍護理服、黑髮中分、往後挽成低髻、圓臉、眼神溫柔、白色護理鞋；c37–c43（c39 只有袖子與肩）；台詞是原聲 |
 
-場景：臥室 `glass-house-bedroom`（待畫，夜；c01–c05）、玻璃屋走廊與客廳（夜；c06–c08）、玻璃屋大門內側（c09–c10）、玻璃屋大門與車道夜雨版（`set-glass-house-ext.jpg` 改夜雨，待畫；c11–c19）、
-救護車內（待畫，新增；c20–c24）、Merrow General 七樓走廊 `hallway`（待畫；c25、c34、c36、c42）、七樓病房 `hospital-room`（待畫；c26–c33、c35、c37–c41、c43）。
-道具：毛線帽 `knit-hat`、駝色羊毛大衣 `camel-coat`（口袋裡的面紙包著半顆藥，不特寫）、Elias 的手套 `elias-glove` 與黑色手機（背面朝鏡頭）、病房的塑膠水杯 `plastic-cup`、門邊黑色燈柱（場景的一部分）。
+場景（檔案在 `production/assets/refs/`，見那裡的 README）：
+- 臥室 c01–c05：反打 `bed-north-sconce`（`redraw.py` s7，待選：玻璃在左、半開的房門在右後、門內掛鉤掛著駝色大衣、門外走廊夜燈），深夜關壁燈版 `bed-night`（#3）從它改，**待畫**。現有的 `set-glass-house-bedroom-am.jpg`、`-bed-sconce.jpg` 是往床頭看、玻璃在右，**本集不用**。
+- 玻璃屋走廊 c06：沒有場景圖，只寫文字。
+- 客廳 c07–c08：格局照 `set-glass-house-living-liv-day.jpg`（沙發在左前、背對鏡頭，餐桌在右後）；深夜版 `liv-dark`（#11）**待畫**，沒有以前不傳白天那張的光。
+- 大門從屋裡看 c09：`door-in-night`（#13，從重畫的 `door-in-day` 改）**待畫**；現有 `door-in-day`、`door-in-gold` 門外有海與另一棟屋子，不傳。
+- 大門從屋外看 c10–c19：`set-glass-house-door-out-rain.jpg`（燈柱立在台階右邊的草地上；圖的屋裡亮著燈，正文寫屋裡是黑的）。
+- 救護車 c20、c22–c24：`set-ambulance.jpg`（圖是從打開的後門往裡看，正文寫後門關著、看不到窗；傳圖前先裁掉後門框與尾燈）。c21 只有手，不傳。
+- 七樓走廊 c25、c34、c36、c42：`hall`（`redraw.py` s8）**待選**；現有 `set-hallway.jpg` 有電梯框與有字的告示，不傳。
+- 七樓病房 c26–c33、c35、c37–c41、c43：`room-night`（`redraw.py` s8）**待選**（可調整病床有低的銀色床欄、床頭升起、素白床單、空點滴架靠左牆在床頭後、門在右牆床尾那端、淡灰牆）；現有 `set-hospital-room-night.jpg` 格局不對，不傳。
+道具：毛線帽 `knit-hat`（`prop-knit-hat.jpg` 是 Peg 的手，本集帽子都在 Nora 手裡，**不傳道具圖、只寫道具句**）、駝色羊毛大衣 `camel-coat`（口袋裡的面紙包著半顆藥，不特寫）、Elias 的手套 `elias-glove` 與黑色手機（背面朝鏡頭）、病房的塑膠水杯 `plastic-cup`、門邊黑色燈柱（場景的一部分）。
 
 ## 分鏡與台詞
 
@@ -60,7 +67,7 @@ Kim 說打過兩次，沒人接；長椅上的人又坐回去。她蜷在床上�
 **場頭**：
 - **地點與場景圖**：c01–c05 臥室 `glass-house-bedroom`（格局同第 1 集：床頭靠南牆、西面整面玻璃、床頭櫃在床的西側、房門在東北角，門內側掛鉤上掛著駝色大衣）；
   c06 走廊（白牆、低處一盞暖黃夜燈）；c07–c08 客廳（同第 1 集：灰沙發在左、長木餐桌在右、三面黑色玻璃）；c09–c10 大門（黑色鋼框玻璃大門）。近景都寫「同一棟玻璃屋」。
-- **時間與天氣**：第 2 天 01:30 → 01:35，夜、雨變大；屋裡沒開燈，**光只有走廊夜燈的暖黃**（臥室裡從畫面右後的門外照進來；客廳裡從畫面右斜照沙發扶手與餐桌邊緣），玻璃外是黑夜與往下流的雨痕，整場維持夜色；c09 門一開，雨與冷風灌進來；c10 門右邊燈柱的燈一閃一閃照到她臉上。
+- **時間與天氣**：第 2 天 01:30 → 01:35，夜、雨變大；屋裡沒開燈，**光只有走廊夜燈的暖黃**（臥室裡從畫面右後的門外照進來；客廳裡從畫面右外、餐桌那頭的走廊斜照沙發扶手與餐桌邊緣），玻璃外是黑夜與往下流的雨痕，整場維持夜色；c09 門一開，雨與冷風灌進來；c10 門右邊燈柱的暖白光穩穩照在她臉上（說話的臉光要穩），一閃一閃只在濕門框與雨絲上。
 - **軸線**：臥室裡她往北（畫面深處）挪向右後方的門，**玻璃牆在她的左手邊、在畫面左**；走廊與客廳她都從畫面右往左走，走廊的白牆在她身後、右手撐牆；大門在客廳的左（東）端（陸地那側；海在西）。
 - **在場的人**：只有 Nora。
 - **這場要講完的事**：沒有人回答，她知道 Grant 不在；穿上大衣、抓起毛線帽、拉開大門（結尾：「Hold on.」她對肚子裡的孩子說）。
@@ -69,23 +76,23 @@ Kim 說打過兩次，沒人接；長椅上的人又坐回去。她蜷在床上�
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c01 | 中景、慢推（接第 1 集最後一鏡的同一個鏡位）；鏡頭在床頭櫃後面，順著西面玻璃牆往北拍；直式：畫面左是玻璃牆，前景下緣是空的床頭櫃一角，中間是她，畫面右後是開著的房門與走廊夜燈 | 共一人。Nora（`pregnant`，奶油色針織洋裝、灰色拖鞋），**左手平貼畫面左冰冷的玻璃牆、右手護著肚子**，彎著腰；床頭櫃空著；玻璃上只有她一個倒影在動；光：門外走廊夜燈從畫面右後照進來一道暖黃，玻璃外是黑夜與雨痕；痛；衣服乾淨。表情：眉頭往中間擠、往上提，嘴唇微張，喘得又短又急，眼睛看著畫面右後的門口；`no smile at any moment, until the last frame` | 第一格是第 1 集最後一鏡的同一刻（bible〈接點表〉1→2）。Nora 停住腳步、頭轉向門口聽；屋裡沒有回答，只有雨打玻璃；貼著玻璃的手指慢慢收緊；剪在手指收緊的那一下；沒有說話。停在：彎腰站著、左手貼玻璃、頭朝門口 | — | 約 3 秒 |
+| c01 | 中景、慢推（接第 1 集最後一鏡的同一個鏡位）；鏡頭在床頭櫃後面，順著西面玻璃牆往北拍；直式：畫面左是玻璃牆，前景下緣是空的床頭櫃一角，中間是她，畫面右後是開著的房門與走廊夜燈 | 共一人。Nora（`pregnant`，奶油色針織洋裝、奶油色毛絨拖鞋），**左手平貼畫面左冰冷的玻璃牆、右手護著肚子**，彎著腰；床頭櫃空著；玻璃上只有她一個倒影在動；光：門外走廊夜燈從畫面右後照進來一道暖黃，玻璃外是黑夜與雨痕；痛；衣服乾淨。表情：眉頭往中間擠、往上提，嘴唇微張，喘得又短又急，眼睛看著畫面右後的門口；`no smile at any moment, until the last frame` | 第一格是第 1 集最後一鏡的同一刻（bible〈接點表〉1→2）。Nora 停住腳步、頭轉向門口聽；屋裡沒有回答，只有雨打玻璃；貼著玻璃的手指慢慢收緊；剪在手指收緊的那一下；沒有說話。停在：彎腰站著、左手貼玻璃、頭朝門口 | — | 約 3 秒 |
 | c02 | 近景、慢推（從胸上推到臉）；直式，臉在畫面上半，畫面左是玻璃 | Nora（`pregnant`），左側臉靠近畫面左冰冷的玻璃；**玻璃上只有她呼出的一小片白霧與外面的黑夜**（不寫倒影）；長髮散亂；身後只有黑暗的臥室；光：走廊夜燈從畫面右來，暖黃，照亮她半邊臉；痛。表情：眉頭往上擠、眼眶濕，下巴發抖，呼吸短而急；說完咬住下唇；`no smile at any moment, until the last frame` | Nora 把額頭從玻璃上移開、站直一點，眼睛看著畫面右外的房門；嘴在說話（低、喘，對自己說）；說完嘴閉上、咬住下唇，吸一口氣。停在：站直一半、看著畫面右外 | Nora（喘著，低聲，對自己說）：He's not home. Nobody's coming.（他不在家，沒有人會來）（原聲）← 因為 c01 | 約 3 秒（原聲，買 6 秒） |
-| c03 | 中景、固定；前景是房門的門框；直式，大衣從門頂垂到畫面下緣 | Nora（`pregnant`、灰色拖鞋），站在房門後，左手撐著門框；門內側掛鉤上的駝色羊毛長大衣（`a camel wool coat with deep pockets`）；光：走廊夜燈從門外照進來，暖黃，照亮大衣的一側與她的手；痛。表情：咬緊牙、眉頭往下壓，鼻子用力吐氣；`no smile at any moment, until the last frame` | Nora 右手抓住大衣領口往下一扯，大衣從掛鉤上滑下來、落進她的右手；剪在大衣離開掛鉤的那一下；嘴閉著、喘氣。停在：大衣抓在右手、下擺垂到她腳邊 | — | 約 2.5 秒 |
-| c04 | 中近景、固定；直式，頭上留空 | Nora（`pregnant`，頭髮是乾的，奶油色針織洋裝、灰色拖鞋），站在房門後；駝色羊毛大衣（`a camel wool coat with deep pockets, worn open`）；身後是白門與門外夜燈的暖黃；痛。表情：眼睛緊閉一下再睜開、看著畫面左外，眉頭打結，嘴張開喘、沒有說話；`no smile at any moment, until the last frame` | Nora 左手穿進左袖，痛得彎一下腰，再把右手穿進右袖、大衣披上肩；剪在右手穿到一半。停在：大衣穿上、敞著不扣 | — | 約 2.5 秒 |
+| c03 | 中景、固定；前景是房門的門框；直式，大衣從門頂垂到畫面下緣 | Nora（`pregnant`、奶油色毛絨拖鞋），站在房門後，左手撐著門框；門內側掛鉤上的駝色羊毛長大衣（`a camel wool coat with deep pockets`）；光：走廊夜燈從門外照進來，暖黃，照亮大衣的一側與她的手；痛。表情：咬緊牙、眉頭往下壓，鼻子用力吐氣；`no smile at any moment, until the last frame` | Nora 右手抓住大衣領口往下一扯，大衣從掛鉤上滑下來、落進她的右手；剪在大衣離開掛鉤的那一下；嘴閉著、喘氣。停在：大衣抓在右手、下擺垂到她腳邊 | — | 約 2.5 秒 |
+| c04 | 中近景、固定；直式，頭上留空 | Nora（`pregnant`，頭髮是乾的，奶油色針織洋裝、奶油色毛絨拖鞋），站在房門後；駝色羊毛大衣（`a camel wool coat with deep pockets, worn open`）；身後是白門與門外夜燈的暖黃；痛。表情：眼睛緊閉一下再睜開、看著畫面左外，眉頭打結，嘴張開喘、沒有說話；`no smile at any moment, until the last frame` | Nora 左手穿進左袖，痛得彎一下腰，再把右手穿進右袖、大衣披上肩；剪在右手穿到一半。停在：大衣穿上、敞著不扣 | — | 約 2.5 秒 |
 | c05 | 插鏡、特寫、固定；**第一格就是大衣右邊口袋與她的右手** | 駝色羊毛大衣（`a camel wool coat with deep pockets, worn open`）的右邊口袋（乾淨）；Nora（`pregnant`）的右手（奶油色針織袖口從大衣袖口露出一點）；背景是虛焦的白門與夜燈的暖黃；畫面上沒有臉 | 右手順著大衣往下、隔著右邊口袋按一下，摸到裡面那一小塊摺好的面紙，手指捏緊一下（面紙不拿出來）；剪在捏緊的那一下；畫面上沒有嘴。停在：手按在口袋上 | — | 約 2.5 秒 |
-| c06 | 中近景、跟拍（跟著她從畫面右往左）；前景右下是低處那盞夜燈；直式 | Nora（`pregnant`，頭髮乾的，奶油色針織洋裝、灰色拖鞋），身上的駝色羊毛大衣（`a camel wool coat with deep pockets, worn open`）；走廊白牆在她身後；光：低處一盞暖黃夜燈從下往上照著她的側臉，走廊其他地方是暗的；痛。表情：眉頭打結，眼睛盯著前方（畫面左）的地板，嘴唇抿緊，一口一口短促地吐氣；`no smile at any moment, until the last frame` | Nora 右手撐著身後的白牆、左手按著肚子，往畫面左挪一步；剪在第二步踩到一半；嘴閉著。停在：身體往左傾、右手還貼著牆 | — | 約 2.5 秒 |
-| c07 | 全景、慢推（轉場，推一點，仍是全景）；前景下緣是灰沙發的扶手；直式，上半是黑色玻璃牆 | 同一棟玻璃屋的客廳：灰沙發在前景左、長木餐桌在畫面右；光：走廊夜燈從畫面右斜照進來，照亮沙發扶手與餐桌邊緣，其他地方是暗的；三面玻璃外是黑夜與往下流的雨痕；Nora（`pregnant`、灰色拖鞋，駝色羊毛大衣 `a camel wool coat with deep pockets, worn open`）彎著腰的小小身影從畫面右往左走，低著頭、臉朝地板；不笑 | Nora 右手扶著餐桌邊緣往沙發走一步；剪在她的手離開桌邊；畫面上的人嘴閉著。停在：她走到沙發扶手後 | — | 約 2 秒 |
+| c06 | 中近景、跟拍（跟著她從畫面右往左）；前景右下是低處那盞夜燈；直式 | Nora（`pregnant`，頭髮乾的，奶油色針織洋裝、奶油色毛絨拖鞋），身上的駝色羊毛大衣（`a camel wool coat with deep pockets, worn open`）；走廊白牆在她身後；光：低處一盞暖黃夜燈從下往上照著她的側臉，走廊其他地方是暗的；痛。表情：眉頭打結，眼睛盯著前方（畫面左）的地板，嘴唇抿緊，一口一口短促地吐氣；`no smile at any moment, until the last frame` | Nora 右手撐著身後的白牆、左手按著肚子，往畫面左挪一步；剪在第二步踩到一半；嘴閉著。停在：身體往左傾、右手還貼著牆 | — | 約 2.5 秒 |
+| c07 | 全景、慢推（轉場，推一點，仍是全景）；前景下緣是灰沙發的扶手；直式，上半是黑色玻璃牆 | 同一棟玻璃屋的客廳：灰沙發在前景左、長木餐桌在畫面右；光：走廊夜燈從畫面右外、餐桌那頭的走廊口斜照進來（不是從玻璃外），照亮沙發扶手與餐桌邊緣，其他地方是暗的；四面玻璃外是黑夜與往下流的雨痕；Nora（`pregnant`、奶油色毛絨拖鞋，駝色羊毛大衣 `a camel wool coat with deep pockets, worn open`）彎著腰的小小身影從畫面右往左走，低著頭、臉朝地板；不笑 | Nora 右手扶著餐桌邊緣往沙發走一步；剪在她的手離開桌邊；畫面上的人嘴閉著。停在：她走到沙發扶手後 | — | 約 2 秒 |
 | c08 | 主觀插鏡、手部特寫、俯拍、固定；**第一格就是沙發坐墊上的毛線帽** | 灰沙發坐墊上那頂毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`），一截線尾；光：夜燈從畫面右斜照，坐墊一半在暗裡；Nora（`pregnant`）的左手（駝色羊毛大衣 `a camel wool coat with deep pockets, worn open` 的袖口）從畫面上緣伸下來；畫面上沒有臉 | 左手一把抓起帽子連同兩根棒針，攥進拳頭裡往上抽出畫面；剪在拳頭出畫一半；畫面上沒有嘴。停在：坐墊上只剩一個淺淺的凹痕 | — | 約 2.5 秒 |
-| c09 | 中景、跟拍（從她背後跟到大門）；直式，前景是她的背與肩，門框夾住畫面 | Nora（`pregnant`，頭髮乾的，奶油色針織洋裝、灰色拖鞋，駝色羊毛大衣 `a camel wool coat with deep pockets, worn open`），背對鏡頭，左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）貼在肚子上；面前是黑色鋼框玻璃大門，玻璃外是黑夜與斜打的雨；光：身後遠遠的夜燈暖黃照在她背上，門外燈柱的燈一閃一閃；背對鏡頭，看不到臉 | Nora 右手壓下門把、把大門往內拉開（跟第 1 集同一扇門，往屋裡開），雨和冷風一下灌進門口；剪在門拉開到一半；畫面上沒有嘴。停在：門往內開著，她跨進門框裡 | — | 約 2.5 秒 |
-| c10 | 中近景、慢推（從中景推到中近景）；從門外往內拍，她在門框裡；直式，門框夾住她，頭上留空 | Nora（`pregnant`，頭髮剛被雨打到、還沒濕透，奶油色針織洋裝、灰色拖鞋，駝色羊毛大衣 `a camel wool coat with deep pockets, worn open`），站在黑色鋼框玻璃大門的門框裡（門往屋裡開著），左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）貼在肚子上；雨被風吹進門口，打在她臉上與頭髮上；大衣與洋裝乾淨、看起來是乾的；身後是黑暗的客廳；光：門右邊燈柱的燈從畫面右一閃一閃照在她臉上，身後遠遠的夜燈描出她的輪廓；痛。表情：眉頭往上擠，眼睛垂著看肚子，下巴微微發抖，呼吸吐成一團團白霧；`no smile at any moment, until the last frame` | Nora 低頭看著肚子（她說話的對象），側臉，把攥著帽子的左手按緊；嘴在說話（很輕）；說完嘴閉上、咬緊牙，抬眼看畫面左下外的車道。停在：站在門框裡、眼睛看車道 | Nora（對肚子裡的孩子，很輕）：Okay. Okay, baby. Hold on.（好，寶寶，撐著）（原聲）（結尾） | 約 3 秒（原聲，買 6 秒） |
+| c09 | 中景、跟拍（從她背後跟到大門）；直式，前景是她的背與肩，門框夾住畫面 | Nora（`pregnant`，頭髮乾的，奶油色針織洋裝、奶油色毛絨拖鞋，駝色羊毛大衣 `a camel wool coat with deep pockets, worn open`），背對鏡頭，左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）貼在肚子上；面前是黑色鋼框玻璃大門，玻璃外是黑夜與斜打的雨；光：身後遠遠的夜燈暖黃照在她背上，門外燈柱的燈一閃一閃；背對鏡頭，看不到臉 | Nora 右手壓下門把、把大門往內拉開（跟第 1 集同一扇門，往屋裡開），雨和冷風一下灌進門口；剪在門拉開到一半；畫面上沒有嘴。停在：門往內開著，她跨進門框裡 | — | 約 2.5 秒 |
+| c10 | 中近景、慢推（從中景推到中近景）；從門外往內拍，她在門框裡；直式，門框夾住她，頭上留空 | Nora（`pregnant`，頭髮剛被雨打到、還沒濕透，奶油色針織洋裝、奶油色毛絨拖鞋，駝色羊毛大衣 `a camel wool coat with deep pockets, worn open`），站在黑色鋼框玻璃大門的門框裡（門已經往屋裡開著，`already standing open inward`），左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）貼在肚子上；雨被風吹進門口，打在她臉上與頭髮上；大衣與洋裝乾淨、看起來是乾的；身後是黑暗的客廳（屋裡沒有開燈）；光：門右邊燈柱的暖白光從畫面右穩穩照在她臉上（說話的臉光要穩），燈一閃只在濕門框與雨絲上閃，身後遠遠的夜燈描出她的輪廓；痛。表情：眉頭往上擠，眼睛垂著看肚子，下巴微微發抖，呼吸吐成一團團白霧；`no smile at any moment, until the last frame` | Nora 低頭看著肚子（她說話的對象），側臉，把攥著帽子的左手按緊；嘴在說話（很輕）；說完嘴閉上、咬緊牙，抬眼看畫面左下外的車道。停在：站在門框裡、眼睛看車道 | Nora（對肚子裡的孩子，很輕）：Okay. Okay, baby. Hold on.（好，寶寶，撐著）（原聲）（結尾） | 約 3 秒（原聲，買 6 秒） |
 
 ### 第二場：門口與車道，夜雨（約 26.5 秒）
 
 **場頭**：
-- **地點與場景圖**：玻璃屋大門外（`set-glass-house-ext.jpg` 改夜雨版，待畫）：黑色鋼框玻璃門、**從車道看，門右邊一根黑色燈柱（燈會閃）**、門前兩級濕的石台階（燈柱立在最上面那級的右端）、碎石車道從台階往畫面左下彎下去；屋裡是黑的。近景都寫「同一根黑色燈柱、同一道濕石台階、同一條碎石車道」。
+- **地點與場景圖**：玻璃屋大門外（`set-glass-house-ext.jpg` 改夜雨版，待畫）：黑色鋼框玻璃門、門墊下兩級濕的石台階、**從車道看，台階右邊草地上一根細的現代黑色燈柱（燈會閃；不在台階上）**、碎石車道從台階往畫面左下彎下去；屋裡是黑的。近景都寫「同一根黑色燈柱、同一道濕石台階、同一條碎石車道」。
 - **時間與天氣**：第 2 天 01:36–01:50，大雨、夜，整場維持夜色；燈柱的燈暖白、一閃一閃（亮、暗、亮）；c14 起一道冷白的車燈從車道下方照上來；c19 救護車的紅白燈掃過雨。
-- **軸線**：她出了門，**燈柱在她的左手邊**；近景的鏡頭在她右前方（車道那一側），燈柱在畫面右、貼著她的左肩，她臉朝畫面左下的車道。她左肩靠著燈柱、右手橫過身前抓住燈柱，左手攥著帽子護著肚子。**c13b 起她坐在最上面那級濕台階上**，左肩靠著燈柱、右手在肩膀高度抓著燈柱，燈柱一直在畫面右；臉比站著時低，車燈與車在她的畫面左、略低。
+- **軸線**：她出了門，**燈柱在她的左手邊**；近景的鏡頭在她右前方（車道那一側），燈柱在畫面右、貼著她的左肩，她臉朝畫面左下的車道。她左肩靠著燈柱、右手橫過身前抓住燈柱，左手攥著帽子護著肚子。**c13b 起她坐在最下面那級濕台階的右端**，左肩靠著燈柱、右手在肩膀高度抓著燈柱，燈柱一直在畫面右；臉比站著時低，車燈與車在她的畫面左、略低。
   車從畫面左下開上來，停在她面前的車道上；車燈從畫面左照過來。Elias 從車那邊（畫面左）走過來，在她面前蹲下（c17），戴手套的左手從畫面左伸進來。
 - **在場的人**：Nora；Elias **只有戴深棕色皮手套的左手與深色大衣袖口**（c16、c18）、c17 一片背光的右肩，聲音畫外；車只看到車燈與暗色的車頭輪廓（車牌不入鏡、素面車頭）；救護車只看到燈。
 - **這場要講完的事**：她抓著燈柱喊救命，撐不住、靠著燈柱滑坐到濕台階上（第 3 集她說「I was on the floor! Alone!」就是這裡）；一輛車停下，一隻戴手套的手撥 911，蓋住她的手（結尾：「Stay awake. Help is coming.」）。
@@ -94,21 +101,21 @@ Kim 說打過兩次，沒人接；長椅上的人又坐回去。她蜷在床上�
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c11 | 全景、低角度、慢推（轉場，推一點，仍是全景）；從車道往上拍；前景下緣是濕碎石；直式：上半是黑夜與雨，下半是車道 | 同一棟玻璃屋的大門外：黑色鋼框玻璃門、**門右邊一根黑色燈柱**（燈暖白、一閃一閃）；屋裡是黑的；雨斜斜打下來；Nora（`night-coat`、灰色拖鞋，左手攥著毛線帽 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）小小的身影從門口踉蹌出來、往燈柱走，彎著腰、低著頭；大衣乾淨；不笑 | Nora 踉蹌兩步走上門前最上面那級台階的燈柱邊；燈閃一下；剪在她伸手搆燈柱；畫面上的人嘴閉著。停在：她到了燈柱邊 | — | 約 2 秒 |
-| c12 | 低角度中景、慢推（從中景推到中近景）；直式：上緣是燈柱的燈頭，下緣是她的拖鞋與濕石台階 | Nora（`night-coat`，頭髮被雨打濕貼在臉側、灰色拖鞋），燈柱在她左手邊（畫面右）；左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）護著肚子；大衣與洋裝乾淨、看起來是乾的；光：燈頭一閃一閃的暖白從上面照下來，其他是黑夜與雨絲；痛。表情：眼睛緊閉、眉頭打結，嘴張開大口喘、沒有說話，雨水掛在睫毛上；`no smile at any moment, until the last frame` | Nora 左肩靠上燈柱，右手橫過身前一把抓住燈柱，整個人彎下腰；剪在腰彎到一半。停在：靠著燈柱彎腰、右手抓著燈柱 | — | 約 2.5 秒 |
-| c13 | 近景、慢推（從胸上推到臉）；顏值鏡頭；直式，臉在畫面上三分之一，上緣是閃爍的燈，頭上留空 | Nora（`night-coat`），雨水順著她的長髮往下流，臉色蒼白、睫毛上掛著雨；燈柱在畫面右、貼著她的左肩；大衣乾淨、看起來是乾的；身後只有黑夜與雨；光：燈柱的燈一閃一閃照在她臉上；怕。表情：先是眉頭往上擠、眼睛望著燈；喊的時候眼睛睜大、眉毛往上衝，嘴張大，下巴往下拉，脖子繃緊，胸口一起一伏；`no smile at any moment, until the last frame` | Nora 抬頭看閃爍的燈，再把臉轉向畫面左下外的車道（四分之三側臉），張嘴喊；喊完嘴閉上、喘。停在：臉朝畫面左下的車道 | Nora（朝車道喊，短喊）：Help! Somebody!（原聲）（→ 答在 c14） | 約 3 秒（原聲，買 6 秒） |
-| c13b | 中景、低角度、固定；直式，燈柱在畫面右、從上緣直到下緣，頭上留空讓她往下滑 | 同一根黑色燈柱、同一道門前的濕石台階。Nora（`night-coat`，頭髮濕貼在臉側、灰色拖鞋），左肩與左半邊身體靠著燈柱（畫面右），右手橫過身前抓著燈柱，左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）護著肚子；大衣與洋裝乾淨、看起來是乾的，坐下後也一樣；光：燈頭一閃一閃的暖白從上面照下來，其他是黑夜與雨；痛。表情：眼睛緊閉、眉頭擠成一團，嘴張開、倒抽一口氣，下巴發抖；`no smile at any moment, until the last frame` | Nora 的腿撐不住，左肩貼著燈柱一路往下滑，右手順著燈柱滑到肩膀的高度停住，坐到最上面那級濕台階上；剪在她坐下的那一下；沒有說話。停在：坐在最上面那級台階上，左肩靠著燈柱、膝蓋彎著、拖鞋踩在下一級台階，右手在肩膀高度抓著燈柱，左拳攥著帽子貼在肚子上 | — | 約 2.5 秒 |
-| c14 | 全景、固定（轉場）；直式：上半是黑夜與雨，下半是車道 | 碎石車道從畫面下緣彎上來；一道冷白的車燈從畫面左下轉進來、穿過雨幕；車只是暗色的輪廓（車頭朝上、車牌不入鏡、素面車頭，車身大半在畫面外）；燈柱下的 Nora（`night-coat`、灰色拖鞋，大衣乾淨）是畫面右上一個坐在台階上、靠著燈柱的小小身影 | 車燈切開雨，車子急煞停住，碎石濺起一點；剪在車頭停下的那一下；畫面上的人嘴閉著。停在：車燈照著燈柱下的她 | — | 約 2 秒 |
-| c15 | 近景、低角度、固定（鏡頭跟她坐著的臉一樣高）；直式，臉在畫面上半，頭上留空 | Nora（`night-coat`，頭髮濕），坐在最上面那級濕台階上，左肩靠著燈柱（畫面右），右手橫過身前在肩膀高度抓著燈柱，左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；大衣乾淨、看起來是乾的；光：冷白的車燈從畫面左照過來，把她蒼白的側臉洗成青白，雨絲在光裡發亮；身後是黑夜。表情：眼睛被光照得瞇成一條縫、眉頭死死皺緊，嘴張開喊，下巴發抖，呼吸急；`no smile at any moment, until the last frame` | Nora 把攥著帽子的左手舉到眼前擋光，朝畫面左、略低的車燈張嘴喊（四分之三側臉）；喊完嘴閉上、身子往燈柱縮。停在：坐在台階上、左拳擋在眼前、左肩靠著燈柱 | Nora（朝車燈喊，短喊）：Please! Over here!（原聲）（→ 答在 c16） | 約 3 秒（原聲，買 6 秒） |
+| c11 | 全景、低角度、慢推（轉場，推一點，仍是全景）；從車道往上拍；前景下緣是濕碎石；直式：上半是黑夜與雨，下半是車道 | 同一棟玻璃屋的大門外：黑色鋼框玻璃門、門前兩級濕石台階、**台階右邊草地上一根細的黑色燈柱**（燈暖白、一閃一閃）；屋裡是黑的、沒有開燈；雨斜斜打下來；Nora（`night-coat`、奶油色毛絨拖鞋，左手攥著毛線帽 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）小小的身影從門口踉蹌出來、往燈柱走，彎著腰、低著頭；大衣乾淨；不笑 | Nora 踉蹌走下門前的濕石台階，往台階右邊草地上的燈柱走；燈閃一下；剪在她伸手搆燈柱；畫面上的人嘴閉著。停在：她到了燈柱邊 | — | 約 2 秒 |
+| c12 | 低角度中景、慢推（從中景推到中近景）；直式：上緣是燈柱的燈頭，下緣是她的拖鞋與最下面那級濕石台階 | Nora（`night-coat`，頭髮被雨打濕貼在臉側、奶油色毛絨拖鞋），站在最下面那級台階的右端，燈柱在她左手邊（畫面右、台階旁的草地上）；左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）護著肚子；大衣與洋裝乾淨、看起來是乾的；光：燈頭一閃一閃的暖白從上面照下來，其他是黑夜與雨絲；痛。表情：眼睛緊閉、眉頭打結，嘴張開大口喘、沒有說話，雨水掛在睫毛上；`no smile at any moment, until the last frame` | Nora 左肩靠上燈柱，右手橫過身前一把抓住燈柱，整個人彎下腰；剪在腰彎到一半。停在：靠著燈柱彎腰、右手抓著燈柱 | — | 約 2.5 秒 |
+| c13 | 近景、慢推（從胸上推到臉）；顏值鏡頭；直式，臉在畫面上三分之一，上緣是閃爍的燈，頭上留空 | Nora（`night-coat`），雨水順著她的長髮往下流，臉色蒼白、睫毛上掛著雨；燈柱在畫面右、貼著她的左肩；大衣乾淨、看起來是乾的；身後只有黑夜與雨；光：燈柱的暖白光從畫面右上穩穩照在她臉上（說話的臉光要穩），燈頭在上緣一閃一閃，閃只在燈頭與雨絲上；怕。表情：先是眉頭往上擠、眼睛望著燈；喊的時候眼睛睜大、眉毛往上衝，嘴張大，下巴往下拉，脖子繃緊，胸口一起一伏；`no smile at any moment, until the last frame` | Nora 抬頭看閃爍的燈，再把臉轉向畫面左下外的車道（四分之三側臉），張嘴喊；喊完嘴閉上、喘。停在：臉朝畫面左下的車道 | Nora（朝車道喊，短喊）：Help! Somebody!（原聲）（→ 答在 c14） | 約 3 秒（原聲，買 6 秒） |
+| c13b | 中景、低角度、固定；直式，燈柱在畫面右、從上緣直到下緣，頭上留空讓她往下滑 | 同一根黑色燈柱（台階右邊的草地上）、同一道門前的濕石台階。Nora（`night-coat`，頭髮濕貼在臉側、奶油色毛絨拖鞋），左肩與左半邊身體靠著燈柱（畫面右），右手橫過身前抓著燈柱，左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）護著肚子；大衣與洋裝乾淨、看起來是乾的，坐下後也一樣；光：燈頭一閃一閃的暖白從上面照下來，其他是黑夜與雨；痛。表情：眼睛緊閉、眉頭擠成一團，嘴張開、倒抽一口氣，下巴發抖；`no smile at any moment, until the last frame` | Nora 的腿撐不住，左肩貼著燈柱一路往下滑，右手順著燈柱滑到肩膀的高度停住，坐到最下面那級濕台階的右端；剪在她坐下的那一下；沒有說話。停在：坐在最下面那級台階的右端，左肩靠著燈柱、膝蓋彎著、拖鞋踩在碎石上，右手在肩膀高度抓著燈柱，左拳攥著帽子貼在肚子上 | — | 約 2.5 秒 |
+| c14 | 全景、固定（轉場）；直式：上半是黑夜與雨，下半是車道 | 碎石車道從畫面下緣彎上來；一道冷白的車燈從畫面左下轉進來、穿過雨幕；車只是暗色的輪廓（車頭朝上、車牌不入鏡、素面車頭，車身大半在畫面外）；燈柱下的 Nora（`night-coat`、奶油色毛絨拖鞋，大衣乾淨）是畫面右上一個坐在台階上、靠著燈柱的小小身影 | 車燈切開雨，車子急煞停住，碎石濺起一點；剪在車頭停下的那一下；畫面上的人嘴閉著。停在：車燈照著燈柱下的她 | — | 約 2 秒 |
+| c15 | 近景、低角度、固定（鏡頭跟她坐著的臉一樣高）；直式，臉在畫面上半，頭上留空 | Nora（`night-coat`，頭髮濕），坐在最下面那級濕台階的右端，左肩靠著燈柱（畫面右），右手橫過身前在肩膀高度抓著燈柱，左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；大衣乾淨、看起來是乾的；光：冷白的車燈從畫面左照過來，把她蒼白的側臉洗成青白，雨絲在光裡發亮；身後是黑夜。表情：眼睛被光照得瞇成一條縫、眉頭死死皺緊，嘴張開喊，下巴發抖，呼吸急；`no smile at any moment, until the last frame` | Nora 把攥著帽子的左手舉到眼前擋光，朝畫面左、略低的車燈張嘴喊（四分之三側臉）；喊完嘴閉上、身子往燈柱縮。停在：坐在台階上、左拳擋在眼前、左肩靠著燈柱 | Nora（朝車燈喊，短喊）：Please! Over here!（原聲）（→ 答在 c16） | 約 3 秒（原聲，買 6 秒） |
 | c16 | 插鏡、手部特寫、固定；**第一格就是戴手套的左手與手機**；直式，手與手機在畫面中間，上下是雨 | 一隻戴手套的左手（`a man's dark brown leather glove on a left hand, a dark wool coat cuff`），袖口有雨珠，拿著一支黑色手機（`a black phone with no logo, about the size of his palm`），**手機背面朝鏡頭**；背景是虛焦的冷白車燈與雨；只有手與袖口，畫面上沒有臉 | 拇指在螢幕上快速按幾下，手機往畫面上緣舉（往耳邊）出畫；剪在手機出畫一半；畫面上沒有嘴。停在：畫面只剩雨與虛焦的車燈 | Elias（畫外，低、穩，對著電話）：Glass House, on the bluff. Pregnant woman. Hurry.（玻璃屋，在崖上。孕婦。快）（Gemini，畫外） | 約 4 秒 |
-| c17 | 直式過肩、中近景、慢推（推一點，前景的肩一直留在畫框左下）；從他的右肩後拍（肩在畫框左下、虛焦、背光），畫面右是燈柱下的她 | 共一人露臉。前景左下：一個男人深色羊毛大衣的右肩與背的一角（Elias，蹲在她面前；頭在畫面外，背光成黑的剪影）；畫面右：Nora（`night-coat`，頭髮濕），坐在最上面那級濕台階上，左肩靠著燈柱（畫面右緣），右手在肩膀高度抓著燈柱，左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）護著肚子；大衣乾淨、看起來是乾的；光：車燈從他身後（畫面左）照過來，照亮她的臉；雨。表情：眉頭往上擠，眼睛睜大、濕，往畫面左看著那個肩膀（他蹲下後跟她差不多高，她眼睛略往上），嘴唇張開呼出白霧、沒有說話，呼吸又快又淺；`no smile at any moment, until the last frame` | 那個肩膀往下沉（他在她面前蹲下）、擋住一半車燈；Nora 抬起臉看向他；剪在她抬頭到一半。停在：她坐著、看著畫面左的他 | — | 約 2.5 秒 |
+| c17 | 直式過肩、中近景、慢推（推一點，前景的肩一直留在畫框左下）；從他的右肩後拍（肩在畫框左下、虛焦、背光），畫面右是燈柱下的她 | 共一人露臉。前景左下：一個男人深色羊毛大衣的右肩與背的一角（Elias，蹲在她面前；頭在畫面外，背光成黑的剪影）；畫面右：Nora（`night-coat`，頭髮濕），坐在最下面那級濕台階的右端，左肩靠著燈柱（畫面右緣），右手在肩膀高度抓著燈柱，左手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）護著肚子；大衣乾淨、看起來是乾的；光：車燈從他身後（畫面左）照過來，照亮她的臉；雨。表情：眉頭往上擠，眼睛睜大、濕，往畫面左看著那個肩膀（他蹲下後跟她差不多高，她眼睛略往上），嘴唇張開呼出白霧、沒有說話，呼吸又快又淺；`no smile at any moment, until the last frame` | 那個肩膀往下沉（他在她面前蹲下）、擋住一半車燈；Nora 抬起臉看向他；剪在她抬頭到一半。停在：她坐著、看著畫面左的他 | — | 約 2.5 秒 |
 | c18 | 插鏡、手部特寫、慢推（從兩手推到大特寫，整鏡只有手）；**第一格就是燈柱上她的手** | Nora 的右手（駝色大衣袖口，乾淨）在她坐著的肩膀高度抓著濕黑的燈柱，燈柱在畫面右；那隻戴手套的左手（`a man's dark brown leather glove on a left hand, a dark wool coat cuff`）從畫面左邊伸進來；光：冷白車燈從畫面左；雨打在兩隻手上；畫面上沒有臉 | 戴手套的手蓋在她的手上、穩穩握住；她的手指在手套下抖一下，沒有鬆開燈柱；剪在手指抖的那一下；畫面上沒有嘴。停在：手套蓋著她的手 | Elias（畫外，低、近）：Stay awake. Help is coming.（別睡著，救護車在路上）（Gemini，畫外）（結尾） | 約 3 秒 |
-| c19 | 全景、固定（轉場）；直式：上半是雨夜，下半是玻璃屋的門面 | 只拍黑色鋼框玻璃大門左半邊與門面的玻璃（燈柱、台階與坐在那裡的她在畫面右外），畫面裡沒有人；燈柱的燈一閃一閃映在玻璃上；紅白兩色的救護車燈從畫面左下掃上來、一圈一圈反射在玻璃上（救護車本身不入鏡）；雨打在玻璃上 | 紅白燈一圈一圈掃過雨與玻璃門；剪在紅光掃到門中間；畫面上沒有嘴。停在：紅白光還在轉 | — | 約 2 秒 |
+| c19 | 全景、固定（轉場）；直式：上半是雨夜，下半是玻璃屋的門面 | 只拍黑色鋼框玻璃大門左半邊與門面的玻璃（燈柱、台階與坐在那裡的她在畫面右外），畫面裡沒有人；屋裡是黑的、沒有開燈；燈柱的燈一閃一閃映在玻璃上；紅白兩色的救護車燈從畫面左下掃上來、一圈一圈反射在玻璃上（救護車本身不入鏡）；雨打在玻璃上 | 紅白燈一圈一圈掃過雨與玻璃門；剪在紅光掃到門中間；畫面上沒有嘴。停在：紅白光還在轉 | — | 約 2 秒 |
 
 ### 第三場：救護車內（約 16 秒）
 
 **場頭**：
-- **地點與場景圖**：救護車內（待畫，新增）：**只拍她的臉、手與上半身**；頂上一盞冷白的燈；她躺在窄床上，頭下一個白枕頭；床邊一根銀色欄杆。不拍任何醫療器材、管線、螢幕，不拍處置；沒有救護員入鏡。近景都寫「同一輛救護車內」。
+- **地點與場景圖**：救護車內（待畫，新增）：**只拍她的臉、手與上半身**；頂上一盞冷白的燈；她躺在窄床上，頭下一個白枕頭；床邊一根銀色欄杆。不拍任何醫療器材、管線、螢幕，不拍處置；沒有救護員入鏡；**後門關著、看不到任何窗**（參考圖是從打開的後門往裡看，正文要寫 `the rear doors closed, no window in view`）。近景都寫「同一輛救護車內」。
 - **時間與天氣**：第 2 天約 01:52–02:30（玻璃屋到 Merrow General 車程約 40 分鐘，bible 4–10〈路程與花費〉），夜，整場維持夜色；車在動，**光只有頂上那盞冷白的燈**，隨車輕晃；窗外看不到。
 - **軸線**：她仰躺、頭在畫面上方；那個聲音從她的右邊（畫面左）來，她轉頭也是轉向畫面左；欄杆在畫面左下。
 - **在場的人**：Nora；Elias **只有聲音**（c21、c23、c24 畫外），救護車裡不露手、不露人。
@@ -118,18 +125,18 @@ Kim 說打過兩次，沒人接；長椅上的人又坐回去。她蜷在床上�
 
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
-| c20 | 中景、俯拍、慢搖（從胸前的帽子往上搖到臉）；前景左下是一截銀色欄杆；直式，臉在畫面上方 | 同一輛救護車內：Nora（`night-coat`，濕長髮散在白枕頭上，大衣乾淨、看起來是乾的），仰躺在窄床上，兩手把毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）攥在胸口；光：頭頂一盞冷白的燈，隨車輕晃；身後只有白枕頭與車頂的暗灰。表情：眼皮很重、一直往下垂，眉心微微皺著，嘴唇發白、微張，呼吸又淺又慢；`no smile at any moment, until the last frame` | 鏡頭往上搖到臉；Nora 的頭慢慢往畫面左歪；剪在頭歪到一半；嘴閉著。停在：頭歪向畫面左、眼睛半闔 | — | 約 2.5 秒 |
+| c20 | 中景、俯拍、慢搖（從胸前的帽子往上搖到臉）；前景左下是一截銀色欄杆；直式，臉在畫面上方 | 同一輛救護車內，後門關著、看不到窗：Nora（`night-coat`，濕長髮散在白枕頭上，大衣乾淨、看起來是乾的），仰躺在窄床上，兩手把毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）攥在胸口；光：頭頂一盞冷白的燈，隨車輕晃；身後只有白枕頭與車頂的暗灰。表情：眼皮很重、一直往下垂，眉心微微皺著，嘴唇發白、微張，呼吸又淺又慢；`no smile at any moment, until the last frame` | 鏡頭往上搖到臉；Nora 的頭慢慢往畫面左歪；剪在頭歪到一半；嘴閉著。停在：頭歪向畫面左、眼睛半闔 | — | 約 2.5 秒 |
 | c21 | 插鏡、特寫、俯拍、固定；**第一格就是她胸口的兩手與毛線帽** | Nora 的兩手（駝色大衣袖口，乾淨）攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`），帽子貼在她胸前的奶油色洋裝上；光：冷白頂燈；畫面上沒有臉 | 她的手指一點一點鬆開、帽子往下滑一點；聲音一來，手指又一把攥緊；剪在攥緊的那一下；畫面上沒有嘴。停在：兩手攥緊帽子 | Elias（畫外，低、穩，隔著車聲）：Stay awake. Stay with me.（別睡，跟著我）（Gemini，畫外） | 約 3 秒 |
-| c22 | 大特寫、固定；直式，臉填滿畫面 | Nora（`night-coat`）的臉：濕髮貼在額頭、嘴唇發白；光：頂燈的冷白；身後只有白枕頭。表情：眉頭中間往上提，眼睛半睜、濕，嘴唇吃力地動；說完嘴閉上、眼皮往下沉；`no smile at any moment, until the last frame` | Nora 把臉轉向畫面左（聲音那邊），四分之三側臉，眼睛看畫面左外；嘴在說話（很弱）；說完嘴閉上、嚥一下口水。停在：臉朝畫面左、眼睛半闔 | Nora（很弱，對畫面左外的那個聲音）：Call Grant. My husband. Grant.（打給 Grant，我先生）（原聲）（→ 答在 c23） | 約 3.5 秒（原聲，買 6 秒） |
+| c22 | 大特寫、固定；直式，臉填滿畫面 | Nora（`night-coat`）的臉：濕髮貼在額頭、嘴唇發白；光：頂燈的冷白，這一鏡穩穩照在臉上、不晃（說話的臉光要穩）；身後只有白枕頭。表情：眉頭中間往上提，眼睛半睜、濕，嘴唇吃力地動；說完嘴閉上、眼皮往下沉；`no smile at any moment, until the last frame` | Nora 把臉轉向畫面左（聲音那邊），四分之三側臉，眼睛看畫面左外；嘴在說話（很弱）；說完嘴閉上、嚥一下口水。停在：臉朝畫面左、眼睛半闔 | Nora（很弱，對畫面左外的那個聲音）：Call Grant. My husband. Grant.（打給 Grant，我先生）（原聲）（→ 答在 c23） | 約 3.5 秒（原聲，買 6 秒） |
 | c23 | 主觀、仰拍、固定；直式，頂燈在上緣、欄杆在下緣 | 她看到的：頂上冷白的燈在晃、虛焦成一團光；畫面左下緣一截銀色欄杆；車頂的暗灰；畫面裡只有燈與欄杆 | 頂燈隨著車晃一下，欄杆上的反光跟著滑過去；剪在反光滑到一半；畫面上沒有嘴。停在：燈還在輕晃 | Elias（畫外，低，隔著車聲）：They'll call him. Keep your eyes open.（會有人打給他，眼睛睜著）（Gemini，畫外） | 約 3.5 秒 |
 | c24 | 眼睛大特寫、固定；**第一格就是半闔的眼睛**；直式，眼睛與眉在畫面中間，嘴不入鏡 | Nora 的眼睛（灰綠，睫毛濕）與眉；光：冷白的光在臉上晃。表情：眼皮半闔、往下沉，眉心微皺；聽到聲音，眉毛往上一提、眼睛用力睜開，眨一下、盯住上方 | 眼皮慢慢再往下闔，聽到聲音又用力睜開、眨一下；剪在睜開之後；嘴不入鏡。停在：眼睛睜著、盯住上方 | Elias（畫外，更近）：Stay with me. Don't close your eyes.（跟著我，別閉上眼）（Gemini，畫外）（結尾） | 約 3.5 秒 |
 
 ### 第四場：七樓走廊與病房（約 55 秒）
 
 **場頭**：
-- **地點與場景圖**：c25、c34、c36、c42 Merrow General 七樓走廊 `hallway`（待畫）：長走廊、沒有窗、灰綠牆、一排關著的門（門上空白）、油地氈地板；**盡頭天花板一盞燈慢慢一明一暗**（`the ceiling light above the end wall pulses slowly: on for two beats, off for one`，同第 5 集，不寫快閃）；盡頭左邊一張長椅；護理站在走廊中段右邊（本場不入鏡）；牆上不寫字。
-  其他鏡是七樓病房 `hospital-room`（待畫）：單人房，**床頭靠左牆**、右邊一扇百葉窗（夜裡是黑的、葉片關著）；**床頭櫃在床的右邊**（上面一只塑膠水杯 `a clear plastic hospital cup about the size of her fist, half full of clear water`）；
-  床頭櫃再右邊、靠窗一張素面椅子，椅背搭著她的駝色大衣（`a camel wool coat with deep pockets`，乾淨、摺著）；**門在床尾右側、開著，看得到走廊**；點滴架在床頭左側，只當背景、不拍針頭與管子。近景都寫「同一間病房」，背景是灰綠牆、百葉窗、開著的門。
+- **地點與場景圖**：c25、c34、c36、c42 Merrow General 七樓走廊 `hallway`（待畫）：長走廊、沒有窗、灰綠牆、一排關著的門（門上空白）、油地氈地板；**盡頭天花板一盞燈慢慢一明一暗**（`the ceiling light above the end wall pulses slowly: on for two beats, off for one`，同第 5 集，不寫快閃）；盡頭是空白的淡灰牆、燈在它正上方，長椅靠左牆、在那盞燈下；護理站在走廊中段右邊（本場不入鏡）；電梯不入鏡；牆上與門邊都不寫字、沒有告示。
+  其他鏡是七樓病房 `hospital-room`（待畫）：單人房，淡灰牆；可調整的病床、低的銀色床欄、床頭升起、素白床單，**床頭靠左牆**、床往房間右邊伸、兩條長邊都空著；右牆一扇百葉窗（夜裡是黑的、葉片關著）；**床頭櫃在床的右邊**（上面一只塑膠水杯 `a clear plastic hospital cup about the size of her fist, half full of clear water`）；
+  床頭櫃再右邊、靠窗一張素面椅子，椅背搭著她的駝色大衣（`a camel wool coat with deep pockets`，乾淨、摺著）；**門在床尾右側、開著，看得到走廊**；空的點滴架靠左牆、在床頭後，什麼都沒掛，只當背景。近景都寫「同一間病房」，背景是淡灰牆、百葉窗、開著的門。
 - **時間與天氣**：c25 第 2 天 04:00；走廊白色日光燈，盡頭那盞慢慢一明一暗（亮兩拍、暗一拍）。病房 04:00–04:10，c34、c36、c42 的走廊插鏡也在 04:06–04:10；**病房只開床頭一盞暖白小燈**（整場維持夜色，百葉窗是黑的），門外走廊的白光斜斜照進來，盡頭那盞燈暗一拍，門口的光就跟著暗一下。
 - **軸線**：病房裡 Nora 在床上（頭在畫面左、床尾在右）；Dr. Brandt 蹲在床的右邊（床頭櫃那側）：Nora 看畫面右、Brandt 看畫面左；c28–c31 的過肩，照 `WRITING.md` 第八節、跟第 3 集 c11 同一套：Brandt 的鏡從 Nora 的右肩後拍（肩在畫框左下），Nora 的鏡從 Brandt 的左肩後拍（肩在畫框右下）；c27 也是 Nora 的右肩。
   c38 起 Kim 在床右邊，c39 被推開、c41 退到床尾右邊；門在畫面右後方。走廊插鏡都是盡頭長椅的同一個鏡位。
@@ -142,24 +149,24 @@ Kim 說打過兩次，沒人接；長椅上的人又坐回去。她蜷在床上�
 | 鏡 | 景別、運鏡 | 畫面裡有誰 | 動作 | 台詞 | 秒數 |
 | --- | --- | --- | --- | --- | --- |
 | c25 | 全景、低角度、慢推（轉場，推一點，仍是全景）；從地板高度往走廊盡頭拍；直式，天花板的燈管一路往上縮到畫面中間 | Merrow General 七樓走廊：長走廊、沒有窗、灰綠牆、兩邊一排關著的門（門上空白）、油地氈反光；光：一路白色日光燈，`the ceiling light above the end wall pulses slowly: on for two beats, off for one`；燈下左邊一張長椅，長椅上一個坐著的人只是一團背光的暗色剪影（側背對鏡頭、頭低著、臉埋在陰影裡，太遠看不清） | 盡頭的燈亮、暗、亮，地上的反光跟著跳；剪在燈暗下去的那一下；畫面上沒有嘴。停在：燈又亮 | — | 約 2 秒 |
-| c26 | 中景、慢推（從中景推到中近景）；前景下緣是白色薄被與床尾欄杆；直式，上緣是門外走廊的白光 | 同一間病房。Nora（`hospital`，淡藍病人服外罩奶油色開襟衫，長髮半乾微亂，素顏、臉色蒼白）半坐在病床上（床頭在畫面左），下半身蓋著白色薄被；兩手把毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）捧在被子上；身後是灰綠牆；畫面右後是開著的門與走廊；光：床頭一盞暖白小燈，門外走廊的白光斜斜照進來。表情（在等）：眉毛微微抬起、往中間擠，眼睛盯著帽子，嘴唇抿緊，呼吸淺而快；`no smile at any moment, until the last frame` | Nora 用指尖把帽子上一圈鬆掉的針腳撥正；門口的光暗一拍，她抬頭往畫面右後的門看；剪在抬頭到一半；嘴閉著。停在：兩手捧帽、眼睛看著門口 | — | 約 3 秒 |
+| c26 | 中景、慢推（從中景推到中近景）；前景下緣是白色薄被與床尾欄杆；直式，上緣是門外走廊的白光 | 同一間病房。Nora（`hospital`，白底淡藍菱形小花的病人服外罩奶油色開襟衫，長髮半乾微亂，素顏、臉色蒼白）半坐在病床上（床頭在畫面左），下半身蓋著白色薄被；兩手把毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）捧在被子上；身後是淡灰牆；畫面右後是開著的門與走廊；光：床頭一盞暖白小燈，門外走廊的白光斜斜照進來。表情（在等）：眉毛微微抬起、往中間擠，眼睛盯著帽子，嘴唇抿緊，呼吸淺而快；`no smile at any moment, until the last frame` | Nora 用指尖把帽子上一圈鬆掉的針腳撥正；門口的光暗一拍，她抬頭往畫面右後的門看；剪在抬頭到一半；嘴閉著。停在：兩手捧帽、眼睛看著門口 | — | 約 3 秒 |
 | c27 | 直式過肩、中景、固定；從 Nora 的右肩後拍（她的右肩與後腦在畫框左下、虛焦），畫面右後是開著的門 | 共兩人，一張臉。前景左下：Nora（`hospital`）的右肩與後腦，看不到臉；畫面右：Dr. Brandt（白袍罩深藍刷手服、銀金色短鮑伯頭、長方框眼鏡、白色平底鞋）從門口走進來，到床的右邊；畫面右下是床頭櫃與上面那只塑膠水杯（`a clear plastic hospital cup about the size of her fist, half full of clear water`），再右邊椅背上搭著駝色大衣（`a camel wool coat with deep pockets`）；光：門外走廊白光從她身後照進來，床頭小燈的暖白照著她的臉。Brandt 表情：眉頭往中間收，眼睛先垂著、走近時抬起來看 Nora，嘴唇抿成一條線，下巴繃緊，呼吸慢；`no smile at any moment, until the last frame` | Dr. Brandt 走到床邊，一手扶著床欄，慢慢蹲下來，讓眼睛跟 Nora 一樣高；剪在蹲到一半；兩人嘴閉著。停在：蹲在床右邊、手扶床欄，眼睛看著畫面左的 Nora | — | 約 3 秒 |
-| c28 | 近景、慢推（從胸上推到肩上）；從 Brandt 的左肩後拍（白袍的肩在畫框右下、虛焦）；直式，臉在上三分之一 | Nora（`hospital`），兩手捧著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；身後是灰綠牆與床頭；前景右下只有 Brandt 的肩；光：床頭小燈暖白。表情：眉毛抬起，眼睛睜大、在 Brandt 臉上找答案，嘴唇發抖，屏著一口氣；有盼望，但 `no smile at any moment, until the last frame` | Nora 身子往前傾一點，四分之三側臉朝畫面右的 Brandt；嘴在說話；說完嘴閉上、兩手把帽子抱近胸口。停在：往前傾、屏住氣 | Nora（輕，帶著希望，對 Brandt）：Dr. Brandt. Is he okay?（Brandt 醫生，他還好嗎？）（原聲）（→ 答在 c29） | 約 3.5 秒（原聲，買 6 秒） |
-| c29 | 近景、慢推（從胸上推到臉）；從 Nora 的右肩後拍（開襟衫的肩在畫框左下、虛焦）；直式，臉在上三分之一 | Dr. Brandt（白袍罩深藍刷手服、銀金色短鮑伯頭、長方框眼鏡），蹲在床邊，一手扶床欄；身後只有灰綠牆與門口的白光；光：床頭小燈暖白從畫面左照著她的臉。表情：眼眶發紅，眉頭中間往上提，開口前慢慢吸一口氣；說完嘴唇抿緊；`no smile at any moment, until the last frame` | Dr. Brandt 停一拍，四分之三側臉朝畫面左的 Nora、直視她的眼睛；嘴在說話；說完嘴閉上、輕輕搖一下頭。停在：蹲著、看著 Nora | Dr. Brandt（停一拍，平穩、溫和，對 Nora）：I'm so sorry, Nora.（Nora，我很抱歉）（原聲） | 約 3 秒（原聲，買 6 秒） |
-| c30 | 近景、固定；從 Brandt 的左肩後拍（肩在畫框右下、虛焦）；直式，臉在上三分之一 | Nora（`hospital`），兩手捧著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；身後灰綠牆與床頭；光：床頭小燈暖白。表情：短短一聲破掉的笑，眉毛往上提、眼睛濕，不是開心的笑（`a short broken laugh, brows drawn up, eyes wet, not a happy smile`）；笑聲一斷，嘴角往下拉、嘴唇抿緊 | Nora 四分之三側臉朝畫面右的 Brandt，笑出一聲、搖頭，愈搖愈快；嘴在說話；說完嘴閉上、手把帽子抓緊。停在：還在搖頭、嘴抿緊 | Nora（笑一聲，搖頭，對 Brandt）：No. No, he's fine.（不，不會，他好好的）（原聲） | 約 3.5 秒（原聲，買 6 秒） |
-| c31 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（肩在畫框左下、虛焦）；直式，臉在上三分之一 | Dr. Brandt，蹲在床邊；身後灰綠牆與門口的白光；光：床頭小燈暖白從畫面左照著她的臉。表情：眉頭打結、眼睛濕，穩穩看著 Nora，下巴繃緊；說完慢慢吐一口氣；`no smile at any moment, until the last frame` | Dr. Brandt 四分之三側臉朝畫面左，把扶床欄的手輕輕放到被子上、靠近 Nora 的手；嘴在說話；說完嘴閉上。停在：手放在被子上、看著 Nora | Dr. Brandt（很輕，對 Nora）：We couldn't save him. I'm so sorry.（我們沒能保住他，真的很抱歉）（原聲） | 約 3.5 秒（原聲，買 6 秒） |
-| c32 | 大特寫、慢推（推一點，整鏡都是大特寫）；直式，臉填滿畫面 | Nora（`hospital`）的臉；身後只有虛焦的灰綠牆；光：床頭小燈暖白。表情：下巴開始抖、嘴角往下拉，眉毛往上皺成一團，眼眶湧滿淚、一行掉下來，眼睛看著畫面右外的 Brandt，呼吸變得又短又急；`no smile at any moment, until the last frame` | Nora 的臉一點一點垮下來，眼淚掉下來；剪在淚滑到臉頰一半；嘴閉著、在抖。停在：嘴抿著發抖、喘 | — | 約 2.5 秒 |
-| c33 | 中近景、固定；直式，帽子在下緣、臉在上方，頭上留空讓她往前衝 | Nora（`hospital`），兩手把毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）緊緊攥在胸前；身後灰綠牆與床頭；衣服乾淨；光：床頭小燈暖白。表情（尖叫）：眉毛往上、往中間死死擠在一起，眼睛半瞇、淚一直流，嘴張到最大，下巴往下掉，脖子繃緊，胸口一起一伏；`no smile at any moment, until the last frame` | Nora 整個人往前一衝、肩膀拱起來，四分之三側臉朝畫面右的 Brandt 張嘴尖叫；喊完嘴閉上、哭得全身發抖。停在：往前拱著、在哭 | Nora（尖叫，短喊，對 Brandt）：Where's my baby?!（我的孩子呢？！）（原聲）（→ 答在 c35） | 約 3 秒（原聲，買 6 秒） |
+| c28 | 近景、慢推（從胸上推到肩上）；從 Brandt 的左肩後拍（白袍的肩在畫框右下、虛焦）；直式，臉在上三分之一 | Nora（`hospital`），兩手捧著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；身後是淡灰牆與床頭；前景右下只有 Brandt 的肩；光：床頭小燈暖白。表情：眉毛抬起，眼睛睜大、在 Brandt 臉上找答案，嘴唇發抖，屏著一口氣；有盼望，但 `no smile at any moment, until the last frame` | Nora 身子往前傾一點，四分之三側臉朝畫面右的 Brandt；嘴在說話；說完嘴閉上、兩手把帽子抱近胸口。停在：往前傾、屏住氣 | Nora（輕，帶著希望，對 Brandt）：Dr. Brandt. Is he okay?（Brandt 醫生，他還好嗎？）（原聲）（→ 答在 c29） | 約 3.5 秒（原聲，買 6 秒） |
+| c29 | 近景、慢推（從胸上推到臉）；從 Nora 的右肩後拍（開襟衫的肩在畫框左下、虛焦）；直式，臉在上三分之一 | Dr. Brandt（白袍罩深藍刷手服、銀金色短鮑伯頭、長方框眼鏡），蹲在床邊，一手扶床欄；身後只有淡灰牆與門口的白光；光：床頭小燈暖白從畫面左照著她的臉。表情：眼眶發紅，眉頭中間往上提，開口前慢慢吸一口氣；說完嘴唇抿緊；`no smile at any moment, until the last frame` | Dr. Brandt 停一拍，四分之三側臉朝畫面左的 Nora、直視她的眼睛；嘴在說話；說完嘴閉上、輕輕搖一下頭。停在：蹲著、看著 Nora | Dr. Brandt（停一拍，平穩、溫和，對 Nora）：I'm so sorry, Nora.（Nora，我很抱歉）（原聲） | 約 3 秒（原聲，買 6 秒） |
+| c30 | 近景、固定；從 Brandt 的左肩後拍（肩在畫框右下、虛焦）；直式，臉在上三分之一 | Nora（`hospital`），兩手捧著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；身後淡灰牆與床頭；光：床頭小燈暖白。表情：短短一聲破掉的笑，眉毛往上提、眼睛濕，不是開心的笑（`a short broken laugh, brows drawn up, eyes wet, not a happy smile`）；笑聲一斷，嘴角往下拉、嘴唇抿緊 | Nora 四分之三側臉朝畫面右的 Brandt，笑出一聲、搖頭，愈搖愈快；嘴在說話；說完嘴閉上、手把帽子抓緊。停在：還在搖頭、嘴抿緊 | Nora（笑一聲，搖頭，對 Brandt）：No. No, he's fine.（不，不會，他好好的）（原聲） | 約 3.5 秒（原聲，買 6 秒） |
+| c31 | 近景、慢推（從胸上推到肩上）；從 Nora 的右肩後拍（肩在畫框左下、虛焦）；直式，臉在上三分之一 | Dr. Brandt，蹲在床邊；身後淡灰牆與門口的白光；光：床頭小燈暖白從畫面左照著她的臉。表情：眉頭打結、眼睛濕，穩穩看著 Nora，下巴繃緊；說完慢慢吐一口氣；`no smile at any moment, until the last frame` | Dr. Brandt 四分之三側臉朝畫面左，把扶床欄的手輕輕放到被子上、靠近 Nora 的手；嘴在說話；說完嘴閉上。停在：手放在被子上、看著 Nora | Dr. Brandt（很輕，對 Nora）：We couldn't save him. I'm so sorry.（我們沒能保住他，真的很抱歉）（原聲） | 約 3.5 秒（原聲，買 6 秒） |
+| c32 | 大特寫、慢推（推一點，整鏡都是大特寫）；直式，臉填滿畫面 | Nora（`hospital`）的臉；身後只有虛焦的淡灰牆；光：床頭小燈暖白。表情：下巴開始抖、嘴角往下拉，眉毛往上皺成一團，眼眶湧滿淚、一行掉下來，眼睛看著畫面右外的 Brandt，呼吸變得又短又急；`no smile at any moment, until the last frame` | Nora 的臉一點一點垮下來，眼淚掉下來；剪在淚滑到臉頰一半；嘴閉著、在抖。停在：嘴抿著發抖、喘 | — | 約 2.5 秒 |
+| c33 | 中近景、固定；直式，帽子在下緣、臉在上方，頭上留空讓她往前衝 | Nora（`hospital`），兩手把毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）緊緊攥在胸前；身後淡灰牆與床頭；衣服乾淨；光：床頭小燈暖白。表情（尖叫）：眉毛往上、往中間死死擠在一起，眼睛半瞇、淚一直流，嘴張到最大，下巴往下掉，脖子繃緊，胸口一起一伏；`no smile at any moment, until the last frame` | Nora 整個人往前一衝、肩膀拱起來，四分之三側臉朝畫面右的 Brandt 張嘴尖叫；喊完嘴閉上、哭得全身發抖。停在：往前拱著、在哭 | Nora（尖叫，短喊，對 Brandt）：Where's my baby?!（我的孩子呢？！）（原聲）（→ 答在 c35） | 約 3 秒（原聲，買 6 秒） |
 | c34 | 插鏡、特寫、固定；**第一格就是長椅邊緣與戴手套的手**；直式，手在上半、地上的水在下半 | 同一條走廊盡頭的長椅：一隻戴手套的左手（`a man's dark brown leather glove on a left hand, a dark wool coat cuff`）撐在椅面邊緣；深色大衣下擺垂在椅邊、在滴水，地上一小灘水；光：頭頂 `the ceiling light above the end wall pulses slowly: on for two beats, off for one`，其他是白色日光燈；只有手、袖口與下擺，畫面上沒有臉 | c33 的尖叫從病房那頭傳過來（遠、帶走廊回音）；手撐著椅面一用力，手套與大衣下擺一起往上離開畫面（他站起來，← 因為 c33 的尖叫）；剪在下擺出畫一半；畫面上沒有嘴。停在：只剩濕的椅面與那灘水 | — | 約 2.5 秒 |
-| c35 | 近景、固定；直式 | Dr. Brandt，蹲在床邊；身後灰綠牆；光：床頭小燈暖白。表情：眼睛閉上、眉毛往上皺，肩膀隨著一口氣沉下去；`no smile at any moment, until the last frame` | Dr. Brandt 閉上眼、低下頭，一手按住自己的嘴（這就是回答）；嘴被手蓋住。停在：蹲著、手按著嘴、低著頭 | — | 約 2.5 秒 |
+| c35 | 近景、固定；直式 | Dr. Brandt，蹲在床邊；身後淡灰牆；光：床頭小燈暖白。表情：眼睛閉上、眉毛往上皺，肩膀隨著一口氣沉下去；`no smile at any moment, until the last frame` | Dr. Brandt 閉上眼、低下頭，一手按住自己的嘴（這就是回答）；嘴被手蓋住。停在：蹲著、手按著嘴、低著頭 | — | 約 2.5 秒 |
 | c36 | 插鏡、特寫、固定（跟 c34 同一個鏡位、同一張長椅、同一個框）；直式 | 同一張長椅的同一段：空的濕椅面、地上那灘水；光：頭頂 `the ceiling light above the end wall pulses slowly: on for two beats, off for one`；畫面裡只有椅面與水 | 一滴水從椅緣落進那灘水裡，燈暗一拍；剪在燈暗的那一拍；畫面上沒有嘴。停在：空的椅面 | — | 約 2 秒 |
-| c37 | 中景、固定；鏡頭在床尾邊、往開著的門拍；前景下緣是床尾的欄杆與白被；直式，門框在畫面中間 | 共兩人，一張臉。Dr. Brandt（白袍、深藍刷手服、銀金色短鮑伯頭、白色平底鞋）背對鏡頭，從門口走出去、進到走廊的白光裡；Nurse Kim（淡藍護理服、短黑髮夾在耳後、圓臉、白色護理鞋）從門外快步進來，跟 Brandt 擦肩，朝畫面左下（床頭的 Nora）走；門外走廊盡頭 `the ceiling light above the end wall pulses slowly: on for two beats, off for one`；光：走廊白光從門口照進來。Kim 表情：眉毛往上提、往中間擠，眼睛睜大、盯著畫面左下外的 Nora，嘴唇微張，呼吸急；`no smile at any moment, until the last frame`；Brandt 只有背影 | Kim 側身擦過 Brandt 的肩、快步走進來；Brandt 出了門框；剪在兩人擦肩的那一下；兩人都沒有說話。停在：Kim 在門內一步、Brandt 在門外 | — | 約 2.5 秒 |
-| c38 | 中景、固定；**第一格 Kim 已經在床右邊俯身、兩手剛環上 Nora 的肩**；兩人前後疊開：直式，前景下半是 Nora，Kim 在畫面右上 | 共兩人。前景下半：Nora（`hospital`），兩手抱著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`），臉埋向 Kim 的肩；畫面右上：Nurse Kim（淡藍護理服、短黑髮夾在耳後、圓臉）從床右邊俯身、兩手環住 Nora 的肩膀；畫面右下是床頭櫃與塑膠水杯（`a clear plastic hospital cup about the size of her fist, half full of clear water`）；身後是灰綠牆與開著的門；光：床頭小燈暖白、門口的白光。Kim 表情：眉毛往上提、眼眶紅，嘴輕輕說話，說完嘴唇抿緊；Nora 表情：眼睛緊閉、眉頭擠成一團，嘴閉著發抖，哭得一抽一抽；兩人都 `no smile at any moment, until the last frame` | Kim 把 Nora 往自己肩上帶、一手輕拍她的背，四分之三側臉朝畫面左下的 Nora；Kim 嘴在說話；說完嘴閉上、輕輕搖著她；Nora 嘴閉著、在她懷裡發抖。停在：Kim 抱著 Nora | Nurse Kim（很輕、很穩，對 Nora）：Shh, Nora. I've got you. Breathe.（噓，Nora，我在，深呼吸）（原聲）（→ 答在 c39） | 約 3.5 秒（原聲，買 6 秒） |
-| c39 | 近景、固定；直式，臉在上半、推出去的手在下緣，畫面右緣是 Kim 的袖子 | 共兩人，一張臉。Nora（`hospital`），右手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；畫面右緣：Kim 淡藍護理服的袖子與肩（Kim 的臉在畫面外）；身後灰綠牆與床頭；衣服乾淨；光：床頭小燈暖白。Nora 表情（怒、崩潰）：眉頭往下死壓，眼睛睜大、滿是淚，嘴張大喊、露出牙，下巴往前頂，胸口急喘；`no smile at any moment, until the last frame` | Nora 用左手和攥著帽子的右手一起往畫面右一推，Kim 淡藍的袖子被推出畫面右緣；Nora 朝畫面右張嘴喊；喊完嘴閉上、咬緊牙。停在：兩手還伸在前面、Kim 已出畫 | Nora（尖叫，短喊，對 Kim）：Don't touch me!（原聲） | 約 2.5 秒（原聲，買 6 秒） |
-| c40 | 近景、固定；直式，頭上留空 | Nora（`hospital`），縮向床頭，兩手把毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）抓回胸口；身後是床頭與灰綠牆；光：床頭小燈暖白。表情：眼睛睜大、濕，眉毛往上衝，嘴張開喊；喊完嘴唇抿緊、下巴發抖；`no smile at any moment, until the last frame` | Nora 往床頭一縮、膝蓋拱起來，四分之三側臉朝畫面右的 Kim 張嘴喊；喊完嘴閉上、把帽子抓緊。停在：側身縮在床頭、膝蓋拱著 | Nora（短喊，對 Kim）：Call Grant!（原聲）（→ 答在 c41） | 約 2.5 秒（原聲，買 6 秒） |
-| c41 | 近景、慢推（從胸上推到肩上）；前景左下是虛焦的白被一角；直式，臉在上三分之一 | Nurse Kim（淡藍護理服、短黑髮夾在耳後、圓臉），站在床尾右邊，右手還舉在半空；身後是開著的門與走廊白光；光：床頭小燈的暖白從畫面左照著她的臉。表情：眉毛往上提、眼睛濕，嘴輕輕在說；說完嘴唇抿緊、嚥一下口水；`no smile at any moment, until the last frame` | Kim 四分之三側臉朝畫面左（床頭的 Nora），舉著的右手停在半空、手指微微彎起；嘴在說話；說完嘴閉上。停在：站在床尾、右手停在半空 | Nurse Kim（輕，難過，對 Nora）：We called him, Nora. Twice. No answer.（我們打給他了，兩次，沒人接）（原聲）← 因為 c40 | 約 3.5 秒（原聲，買 6 秒） |
+| c37 | 中景、固定；鏡頭在床尾邊、往開著的門拍；前景下緣是床尾的欄杆與白被；直式，門框在畫面中間 | 共兩人，一張臉。Dr. Brandt（白袍、深藍刷手服、銀金色短鮑伯頭、白色平底鞋）背對鏡頭，從門口走出去、進到走廊的白光裡；Nurse Kim（淡藍護理服、黑髮中分、往後挽成低髻、圓臉、白色護理鞋）從門外快步進來，跟 Brandt 擦肩，朝畫面左下（床頭的 Nora）走；門外走廊盡頭 `the ceiling light above the end wall pulses slowly: on for two beats, off for one`；光：走廊白光從門口照進來。Kim 表情：眉毛往上提、往中間擠，眼睛睜大、盯著畫面左下外的 Nora，嘴唇微張，呼吸急；`no smile at any moment, until the last frame`；Brandt 只有背影 | Kim 側身擦過 Brandt 的肩、快步走進來；Brandt 出了門框；剪在兩人擦肩的那一下；兩人都沒有說話。停在：Kim 在門內一步、Brandt 在門外 | — | 約 2.5 秒 |
+| c38 | 中景、固定；**第一格 Kim 已經在床右邊俯身、兩手剛環上 Nora 的肩**；兩人前後疊開：直式，前景下半是 Nora，Kim 在畫面右上 | 共兩人。前景下半：Nora（`hospital`），兩手抱著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`），臉埋向 Kim 的肩；畫面右上：Nurse Kim（淡藍護理服、黑髮中分、往後挽成低髻、圓臉）從床右邊俯身、兩手環住 Nora 的肩膀；畫面右下是床頭櫃與塑膠水杯（`a clear plastic hospital cup about the size of her fist, half full of clear water`）；身後是淡灰牆與開著的門；光：床頭小燈暖白、門口的白光。Kim 表情：眉毛往上提、眼眶紅，嘴輕輕說話，說完嘴唇抿緊；Nora 表情：眼睛緊閉、眉頭擠成一團，嘴閉著發抖，哭得一抽一抽；兩人都 `no smile at any moment, until the last frame` | Kim 把 Nora 往自己肩上帶、一手輕拍她的背，四分之三側臉朝畫面左下的 Nora；Kim 嘴在說話；說完嘴閉上、輕輕搖著她；Nora 嘴閉著、在她懷裡發抖。停在：Kim 抱著 Nora | Nurse Kim（很輕、很穩，對 Nora）：Shh, Nora. I've got you. Breathe.（噓，Nora，我在，深呼吸）（原聲）（→ 答在 c39） | 約 3.5 秒（原聲，買 6 秒） |
+| c39 | 近景、固定；直式，臉在上半、推出去的手在下緣，畫面右緣是 Kim 的袖子 | 共兩人，一張臉。Nora（`hospital`），右手攥著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）；畫面右緣：Kim 淡藍護理服的袖子與肩（Kim 的臉在畫面外）；身後淡灰牆與床頭；衣服乾淨；光：床頭小燈暖白。Nora 表情（怒、崩潰）：眉頭往下死壓，眼睛睜大、滿是淚，嘴張大喊、露出牙，下巴往前頂，胸口急喘；`no smile at any moment, until the last frame` | Nora 用左手和攥著帽子的右手一起往畫面右一推，Kim 淡藍的袖子被推出畫面右緣；Nora 朝畫面右張嘴喊；喊完嘴閉上、咬緊牙。停在：兩手還伸在前面、Kim 已出畫 | Nora（尖叫，短喊，對 Kim）：Don't touch me!（原聲） | 約 2.5 秒（原聲，買 6 秒） |
+| c40 | 近景、固定；直式，頭上留空 | Nora（`hospital`），縮向床頭，兩手把毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）抓回胸口；身後是床頭與淡灰牆；光：床頭小燈暖白。表情：眼睛睜大、濕，眉毛往上衝，嘴張開喊；喊完嘴唇抿緊、下巴發抖；`no smile at any moment, until the last frame` | Nora 往床頭一縮、膝蓋拱起來，四分之三側臉朝畫面右的 Kim 張嘴喊；喊完嘴閉上、把帽子抓緊。停在：側身縮在床頭、膝蓋拱著 | Nora（短喊，對 Kim）：Call Grant!（原聲）（→ 答在 c41） | 約 2.5 秒（原聲，買 6 秒） |
+| c41 | 近景、慢推（從胸上推到肩上）；前景左下是虛焦的白被一角；直式，臉在上三分之一 | Nurse Kim（淡藍護理服、黑髮中分、往後挽成低髻、圓臉），站在床尾右邊，右手還舉在半空；身後是開著的門與走廊白光；光：床頭小燈的暖白從畫面左照著她的臉。表情：眉毛往上提、眼睛濕，嘴輕輕在說；說完嘴唇抿緊、嚥一下口水；`no smile at any moment, until the last frame` | Kim 四分之三側臉朝畫面左（床頭的 Nora），舉著的右手停在半空、手指微微彎起；嘴在說話；說完嘴閉上。停在：站在床尾、右手停在半空 | Nurse Kim（輕，難過，對 Nora）：We called him, Nora. Twice. No answer.（我們打給他了，兩次，沒人接）（原聲）← 因為 c40 | 約 3.5 秒（原聲，買 6 秒） |
 | c42 | 插鏡、特寫、固定（跟 c34、c36 同一個鏡位）；直式 | 同一張長椅的同一段：濕椅面、地上那灘水；光：頭頂 `the ceiling light above the end wall pulses slowly: on for two beats, off for one`；只有手、袖口與下擺，畫面上沒有臉 | 滴水的深色大衣下擺從畫面上緣落回來，戴手套的左手（`a man's dark brown leather glove on a left hand, a dark wool coat cuff`）又抓住椅面邊緣（他又坐下）；剪在手抓住椅緣的那一下；畫面上沒有嘴。停在：手撐在椅緣、下擺滴水 | — | 約 2.5 秒 |
-| c43 | 中景、固定；鏡頭在床邊、靠床頭的高度，斜往床尾與門口拍；兩人前後疊開：直式，前景下半是蜷著的 Nora（她的臉在前景，中近景的大小），中間是床尾的 Kim，上緣是開著的門與走廊盡頭那盞慢慢一明一暗的燈（`the ceiling light above the end wall pulses slowly: on for two beats, off for one`） | 共兩人。前景下半：Nora（`hospital`），在病床上朝床尾側身蜷著，兩手抓著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）貼在胸口；中間：Nurse Kim（白色護理鞋）站在床尾，右手停在半空；畫面右後：病房門開著，門外走廊盡頭那盞燈；光：床頭小燈暖白、門外走廊白光。Nora 表情：眉毛往上皺、眼睛濕紅，嘴哭著動；說完嘴唇壓進帽子裡；Kim 表情：眉毛往上提、眼睛濕、看著 Nora，嘴閉著、屏住氣；兩人都 `no smile at any moment, until the last frame` | Nora 把臉從帽子上抬起一半，四分之三側臉朝畫面右上的 Kim，哭著說；嘴在說話；說完嘴閉上、把臉埋回帽子，肩膀一抽一抽；Kim 嘴閉著，手停在半空沒動；門外盡頭的燈暗一拍；剪在燈暗的那一拍。停在：bible〈接點表〉2→3 那一刻 | Nora（哭著，對 Kim）：Where is he? Where's Grant?（他在哪？Grant 在哪？）（原聲）（懸念 → 下一集第一場）（結尾） | 約 4 秒（原聲，買 6 秒） |
+| c43 | 中景、固定；鏡頭在床邊、靠床頭的高度，斜往床尾與門口拍；兩人前後疊開：直式，前景下半是蜷著的 Nora（她的臉在前景，中近景的大小），中間是床尾的 Kim，上緣是開著的門與走廊盡頭那盞慢慢一明一暗的燈（`the ceiling light above the end wall pulses slowly: on for two beats, off for one`） | 共兩人。前景下半：Nora（`hospital`），在病床上朝床尾側身蜷著，兩手抓著毛線帽（`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`）貼在胸口；中間：Nurse Kim（白色護理鞋）站在床尾，右手停在半空；畫面右後：病房門開著，門外走廊盡頭那盞燈；光：床頭小燈暖白穩穩照著 Nora 的臉（說話的臉光要穩；暗一拍的只有門口與走廊的光）、門外走廊白光。Nora 表情：眉毛往上皺、眼睛濕紅，嘴哭著動；說完嘴唇壓進帽子裡；Kim 表情：眉毛往上提、眼睛濕、看著 Nora，嘴閉著、屏住氣；兩人都 `no smile at any moment, until the last frame` | Nora 把臉從帽子上抬起一半，四分之三側臉朝畫面右上的 Kim，哭著說；嘴在說話；說完嘴閉上、把臉埋回帽子，肩膀一抽一抽；Kim 嘴閉著，手停在半空沒動；門外盡頭的燈暗一拍；剪在燈暗的那一拍。停在：bible〈接點表〉2→3 那一刻 | Nora（哭著，對 Kim）：Where is he? Where's Grant?（他在哪？Grant 在哪？）（原聲）（懸念 → 下一集第一場）（結尾） | 約 4 秒（原聲，買 6 秒） |
 
 約 123.5 秒（2 分 3.5 秒）、44 鏡（玻璃屋 10、門口 10、救護車 5、醫院 19；c13b 是 2026-11-12 站主決定後插進來的，鏡號沿用不重排），是各鏡秒數加起來的估計，平均每鏡 2.8 秒；開場 10 秒四鏡（c01–c04）。細綱 `duration_s` 120 秒，bible 目標 40–44 鏡。
 
@@ -239,8 +246,21 @@ Kim 說打過兩次，沒人接；長椅上的人又坐回去。她蜷在床上�
 - **大衣與手套的固定句**：bible〈道具的樣子〉沒有，照 `cast.json` 的 `camel-coat`、`elias-glove`；穿在身上、還沒淋雨的鏡（c04–c10）句尾加 `, worn open`。
 - **長椅上的人**：c25 一個背光、側背對鏡頭的剪影；c34 因為尖叫站起來，c36 椅子空著，c42 Kim 說完「No answer」後又坐回去。
 - **Brandt 什麼時候起身**：在 c36 的走廊插鏡裡（畫面外），c37 只拍她走出門的背影。
-- **門前的石台階**：bible〈場景格局〉的門口沒寫台階；c13b 起寫成門前兩級濕石台階，燈柱立在最上面那級的右端。第 1 集若拍到大門外要一致。
+- **門前的石台階**：門墊下兩級濕石台階；燈柱立在台階右邊（從屋外看）的草地上，不在台階上（參考圖稽核〈定案〉6）；她從 c13b 起坐在最下面那級的右端。第 1 集若拍到大門外要一致。
 - **短喊的原聲**（見〈配音〉）：bible 要短喊不放原文，原聲沒有原文就不會喊出這幾個字，第一批草稿要先驗。
+
+### 2026-11-12 參考圖稽核後的修改
+
+照 `series-plans/top40-2025-2026/2025-15-xingde-xiangyu/western/review/2026-11-12-ref-audit-e001-e020.md`〈定案〉。**沒有改台詞、事件與秒數**；還沒拍，沒有要重抽的鏡。
+- **拖鞋**（定案 10）：本集「灰色拖鞋」全部改成奶油色毛絨拖鞋（`night-coat` 的圖就是這雙；c01–c10 是同一雙，免得 c10→c11 換圖時變色）。
+- **燈柱**（定案 6）：燈柱立在台階右邊的草地上、不在台階上；c11 她走下台階到燈柱邊，c12 站在最下面那級的右端，c13b 起坐在最下面那級的右端（c15、c17）；拖鞋踩在碎石上。第二場場頭、c19 加「屋裡是黑的」，c10 門寫 `already standing open inward`。
+- **說話的臉光要穩**（定案 11）：c10、c13 燈柱的閃只在門框、燈頭與雨絲上，臉上是穩定的暖白；c22 頂燈這一鏡不晃；c43 暗一拍的只有門口的光。
+- **客廳**（定案 5）：c07 的夜燈從畫面右外、餐桌那頭的走廊口來，不從玻璃外；四面玻璃。
+- **救護車**：後門關著、看不到窗（場頭、c20）。
+- **走廊**（定案 3）：場頭寫盡頭是空白牆、燈在它正上方、長椅在燈下，電梯不入鏡、沒有告示。
+- **病房**（定案 2）：場頭補可調整病床、銀色床欄、素白床單、空點滴架、淡灰牆；病房各鏡的「灰綠牆」改「淡灰牆」（灰綠只留給走廊）。
+- **人物**（定案 10、13）：Kim 黑髮中分、往後挽成低髻（角色表、c37、c38、c41）；Nora `hospital` 照 `cast.json` 改成白底淡藍菱形小花的病人服（〈這集接在哪〉、角色表、c26、造型清單）。
+- **〈角色與參考圖〉與〈五張清單〉2**：改指向 `assets/refs/` 的現有檔與 `redraw.py` 的重畫 id，待畫的寫明要什麼；只拍手、肩、背影的鏡不傳定妝照，毛線帽的道具圖是 Peg 的手、本集不傳。
 
 ### 配音
 
@@ -307,19 +327,23 @@ Kim 說打過兩次，沒人接；長椅上的人又坐回去。她蜷在床上�
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `pregnant`（奶油色針織洋裝、灰色拖鞋）；c04–c10 加駝色大衣的道具句 `a camel wool coat with deep pockets, worn open`，頭髮是乾的 | c01–c10 | 拿掉燙痕 |
-| Nora | **`night-coat`**：同一件洋裝外罩駝色羊毛長大衣（敞開不扣）、灰色拖鞋，頭髮被雨打濕，衣服乾淨（c13b 起坐在濕台階上也一樣乾淨）；左手攥著毛線帽 | c11–c24 | **要新開 look**（bible 已列；`cast.json` 已有 look 字串，參考圖待畫） |
-| Nora | `hospital`（淡藍病人服外罩奶油色開襟衫） | c26–c43 | 拿掉燙痕 |
+| Nora | `pregnant`（奶油色針織洋裝、奶油色毛絨拖鞋）；c04–c10 加駝色大衣的道具句 `a camel wool coat with deep pockets, worn open`，頭髮是乾的 | c01–c10 | 拿掉燙痕 |
+| Nora | **`night-coat`**：同一件洋裝外罩駝色羊毛長大衣（敞開不扣）、奶油色毛絨拖鞋，頭髮被雨打濕，衣服乾淨（c13b 起坐在濕台階上也一樣乾淨）；左手攥著毛線帽 | c11–c24 | **要新開 look**（bible 已列；`cast.json` 已有 look 字串，參考圖待畫） |
+| Nora | `hospital`（白底淡藍菱形小花的病人服外罩奶油色開襟衫） | c26–c43 | 拿掉燙痕 |
 | Elias | 只有戴深棕色皮手套的左手（`elias-glove`）與深色羊毛大衣袖口、下擺；一片背光的右肩；一個背光的剪影 | c16、c17、c18、c25、c34、c42 | 不用定妝照；不寫疤 |
 | Dr. Brandt | 基本款（白袍、深藍刷手服、長方框眼鏡、白色平底鞋） | c27–c37（c37 背影） | 還沒有定妝照 |
 | Nurse Kim | 基本款（淡藍護理服、白色護理鞋） | c37–c43 | 還沒有定妝照 |
 
 ### 2. 本集需要的參考圖
 
-- 定妝照：`nora-portrait.jpg`（有）；**Nora `night-coat` 待畫**（bible 先畫順序第一個）；**Dr. Brandt、Nurse Kim 待畫**（兩人都露臉說原聲，開拍前要有平靜、嘴閉著的定妝照）。
-- 場景：**臥室夜裡版**、**夜雨的玻璃屋門口與車道**（`set-glass-house-ext.jpg` 改夜雨，燈柱會閃）、**救護車內**（新增，只到上半身）、**七樓走廊 `hallway`**、**七樓病房 `hospital-room`**（`cast.json` 的提示詞已照 bible 改成床頭靠左牆、床頭櫃在床右、門在床尾右）都待畫；玻璃屋走廊與客廳的夜裡版沿用客廳參考圖改夜。
-- 道具：`knit-hat`（有）；`camel-coat`、`elias-glove`、`plastic-cup` 在 `cast.json` 有提示詞、還沒有參考圖；**Elias 的黑色手機**（背面）與**救護車的銀色欄杆**連提示詞都沒有。
-- 沒有參考圖的人：Elias 只拍手、袖口、下擺、背光的肩與剪影；c11、c14 燈柱下的她是小小的身影。
+（2026-11-12 參考圖稽核後；檔名都在 `production/assets/refs/`，詳見〈角色與參考圖〉。）
+
+- 定妝照：`nora-portrait.jpg`（有，c01–c04）、`nora-night-coat.jpg`（有，c05–c24）、`nurse-kim-portrait.jpg`（有，嘴角放平的 `nurse-kim-fix` 重畫中）；**Nora `hospital` 待畫**（白底淡藍菱形小花病人服＋奶油色開襟衫的胸像）；**Dr. Brandt 待畫**（露臉說原聲，開拍前要平靜、嘴閉著的定妝照）。
+- 場景，有：`set-glass-house-living-liv-day.jpg`（只當格局）、`set-glass-house-door-out-rain.jpg`、`set-ambulance.jpg`（裁掉後門框與尾燈）。
+- 場景，重畫待選（`redraw.py`）：`bed-north-sconce`（s7）、`hall`（s8）、`room-night`（s8）。
+- 場景，待畫：`bed-night`（#3，從 `bed-north-sconce` 改，關壁燈、只有門外夜燈；c01–c05）、`liv-dark`（#11；c07–c08）、`door-in-night`（#13，從重畫的 `door-in-day` 改；c09）。玻璃屋走廊（c06）沒有場景 id，只寫文字。
+- 道具：`prop-knit-hat.jpg` 有，但圖裡是 Peg 的手，本集不傳；`camel-coat`、`elias-glove`、`plastic-cup`、`elias-phone` 在 `cast.json` 有提示詞、沒有道具圖，只寫道具句（戴手套的手不傳道具圖）。救護車的銀色欄杆在 `set-ambulance.jpg` 裡。
+- 不傳圖的鏡：Elias 的手、肩與剪影（c16、c17、c18、c25、c34、c42），只有手的插鏡（c05、c08、c21）與背影（c09、c37 的 Brandt）不傳定妝照；c11、c14 燈柱下的她是小小的身影。
 
 ### 3. 長鏡清單
 

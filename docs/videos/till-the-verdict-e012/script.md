@@ -28,21 +28,23 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-portrait.jpg`（r3 修過），look `motel`（全身參考圖待畫） | 長髮挽成鬆的低髮髻（長度只到胸口，不寫 waist-length）、奶油色毛衣、藍色牛仔褲、棕褐色平底短靴；駝色大衣用道具句 `a camel wool coat with deep pockets, worn open`；第 3 天眼睛還有一點紅；第 6 天（c24 起）大衣肩上有雨點；c01–c13 左手握著摺起來的粉紅副本，c13 收進大衣左口袋；**手腕沒有燙痕、不戴戒指**；本集沒有任何一鏡笑；原聲 |
-| Peg | `assets/refs/peg-portrait.jpg`、`assets/refs/peg-coat.jpg`，look `coat` | 長的棕色鋪棉大衣、玳瑁框眼鏡**戴在臉上**（每一鏡）、深棕色木珠項鍊、深棕色平底鞋；帆布袋在左肩；**左手無名指**婚戒（道具句，拍到左手就寫）；第 3 天帳本在左手、c02 收進大衣右口袋；第 6 天大衣肩上有雨點、新毛線 `…, about as long as her forearm`；本集沒有任何一鏡笑；原聲 |
-| Grant | `assets/refs/grant-portrait.jpg`（平臉 r3），基本款 | 沙金色側分短髮、細的圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、透明玻璃袖扣、深棕色皮鞋；兩手空著；黑手機在西裝內袋（不拿出來）；**只有 c01、c03 第一格是練過的閉嘴微笑、不露齒**（"Mom?" 之前，bible〈全劇固定〉），之後不笑；說話句寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth；原聲 |
-| Bev | **待畫，必須先畫**（`cast.json` `bev` 基本款） | 圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上；站在櫃台後；本集沒有任何一鏡笑；**不跟 Peg 並排正臉**；原聲 |
-| Dr. Helen Brandt | **待畫，必須先畫**（`cast.json` `dr-brandt` 基本款） | 銀金色短鮑伯頭、長方框眼鏡、白袍罩深藍手術服；本集不戴手套；坐在書桌後；本集沒有任何一鏡笑；**不跟 Peg 同框**；原聲 |
-| Dale Hutchins | **待畫，必須先畫**（`cast.json` `dale` 基本款） | 粗黑框眼鏡、白色藥師袍、胸前口袋夾兩支筆；在玻璃隔板後；本集沒有任何一鏡笑；原聲 |
+| Nora | look `motel` 的**胸像與全身都待畫（第二批，必須先畫）**：長髮挽成鬆的低髮髻、奶油色毛衣、藍色牛仔褲、棕褐色平底短靴，雀斑在鼻樑上（不在額頭）。`assets/refs/nora-portrait.jpg`（r3）是長髮放下來、中分，**不能代用**（片段會照圖把頭髮放下來）；`nora-night-coat.jpg` 是孕肚、`nora-discharge.jpg` 是毛衣裙加拖鞋，也都不能代用 | 長髮挽成鬆的低髮髻（長度只到胸口，不寫 waist-length）、奶油色毛衣、藍色牛仔褲、棕褐色平底短靴；駝色大衣用道具句 `a camel wool coat with deep pockets, worn open`；第 3 天眼睛還有一點紅；第 6 天（c24 起）大衣肩上有雨點；c01–c13 左手握著摺起來的粉紅副本，c13 收進大衣左口袋；**手腕沒有燙痕、不戴戒指**；本集沒有任何一鏡笑；原聲 |
+| Peg | `assets/refs/peg-coat.jpg`（look `coat` 胸像，近景用）；`coat` **全身待畫（第二批）**：全身或拍到大衣下擺的鏡（c01、c09、c11、c22、c23、c36、c42）要看得出大衣的長度，畫好之前只傳胸像、衣長靠文字 | 長的棕色鋪棉大衣、玳瑁框眼鏡**戴在臉上**（每一鏡）、深棕色木珠項鍊、深棕色平底鞋；帆布袋在左肩；**左手無名指**婚戒（道具句，拍到左手就寫）；第 3 天帳本在左手、c02 收進大衣右口袋；第 6 天大衣肩上有雨點、新毛線 `…, about as long as her forearm`；本集沒有任何一鏡笑；原聲 |
+| Grant | `assets/refs/grant-portrait.jpg`（平臉 r3），基本款（左襟的深色小方塊列在第二批小修） | 沙金色側分短髮、細的圓金屬框眼鏡、淺灰細格紋西裝、淺藍開領襯衫、透明玻璃袖扣、深棕色皮鞋；兩手空著；黑手機在西裝內袋（不拿出來）；**只有 c01、c03 第一格是練過的閉嘴微笑、不露齒**（"Mom?" 之前，bible〈全劇固定〉），之後不笑；說話句寫臉與「聲音平穩、低」，不寫 warm、keynote、smooth；原聲 |
+| Bev | **待畫，必須先畫**（`screen-test/art.py` a3 的 `bev` 胸像；`cast.json` `bev` 基本款） | 圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上；站在櫃台後；本集沒有任何一鏡笑；**不跟 Peg 並排正臉**；原聲 |
+| Dr. Helen Brandt | **待畫，必須先畫**（`screen-test/art.py` a1 的 `dr-brandt` 胸像，選定後 a4 修掉白袍上的字；`cast.json` `dr-brandt` 基本款） | 銀金色短鮑伯頭、長方框眼鏡、白袍罩深藍手術服；本集不戴手套；坐在書桌後；本集沒有任何一鏡笑；**不跟 Peg 同框**；原聲 |
+| Dale Hutchins | **待畫（第二批），必須先畫**（`cast.json` `dale` 基本款） | 粗黑框眼鏡、白色藥師袍、胸前口袋夾兩支筆；在玻璃隔板後；本集沒有任何一鏡笑；原聲 |
 
-場景：Merrow General 一樓大廳 `hospital-lobby`（待畫；c01–c16）、Harborview Motor Inn 辦公室櫃台 `motel-front`（待畫，傍晚版；c17–c21）、婦產科候診區 `clinic-waiting`（待畫，週日空著、窗上雨痕；c22–c23）、婦產科診間 `exam-room`（待畫，白天、窗上雨痕；c24–c35）、門診藥局窗口 `pharmacy`（待畫，直式；c36–c42）。
-道具：監管紀錄（粉紅副本）、新手機、櫃台抽屜、薄荷糖碗、刷卡機、櫃台電話、Peg 的帆布袋、帳本、婚戒、新毛線、化驗報告、診間檯燈、申請表、領藥紀錄、駝色大衣。
+**只拍手或背影、不露臉的鏡不傳定妝照**（稽核定案 13）：c13、c15、c18、c19、c23、c25、c35、c37、c38 不傳任何人的定妝照；c17 不傳 Peg 的（她只有背影）。
+
+場景（都是第二批，**待畫**）：Merrow General 一樓大廳 `hospital-lobby`（企劃 #37 `lobby`；c01–c16）、Harborview Motor Inn 辦公室櫃台 `motel-front`（企劃 #40 `mfront-dusk`，從修掉招牌字的 `mfront-night` 改；窗外只有灰藍暮色與紅光，停車場、街與車不入畫；c17–c21）、婦產科候診區 `clinic-waiting`（企劃 #39 `wait-rain`，或 #36 `wait` 加文字寫雨痕；週日空著；c22–c23）、婦產科診間 `exam-room`（企劃 #38 `exam-rain`，白天、窗上雨痕、桌上黑色桌墊與檯燈；c24–c35）、門診藥局窗口 `pharmacy`（企劃 #41 的正面角度不用，改畫兩張：**側面**一張給 c36、c37、c42，玻璃隔板側成一條細直線，左邊是隔板後的白色層架與灰色小印表機，右邊是窗口檯面；**隔板後**一張給 c38、c40，白色層架、沒有標籤的盒子、灰色小印表機；c39、c41 從客人這邊反打，不傳場景圖，背景只寫虛焦的灰色候診椅）。
+道具：監管紀錄（粉紅副本）、新手機、櫃台抽屜、薄荷糖碗、刷卡機、櫃台電話、Peg 的帆布袋、帳本、婚戒、新毛線、化驗報告、診間檯燈、黑色桌墊、申請表、領藥紀錄、駝色大衣。
 
 ## 分鏡與台詞
 
 景別與運鏡寫中文給人讀；正文由製作端照 `minimax-h3-colab/references/motion-quality.md` 第二節改寫成英文，每一鏡的英文正文寫「vertical 9:16 frame」與光：
 大廳（c01–c16）寫 `overcast late morning, flat fluorescent ceiling light and grey daylight from the glass entrance behind the camera, the light stays unchanged`；
-櫃台（c17–c21）寫 `early evening, the window by the door a dim grey-blue dusk, a warm yellow desk lamp on the counter, a red neon glow from the sign out of frame on the window in a slow pulse: on for two beats, off for one, the light stays unchanged`；
+櫃台（c17–c21）寫 `early evening, the window by the door a dim grey-blue dusk, a warm yellow desk lamp on the counter, a red neon glow from the sign out of frame on the window in a slow pulse: on for two beats, off for one, the light stays unchanged`；c20 是 Bev 說話的鏡，說話的臉光要穩，改寫 `early evening, a warm yellow desk lamp on the counter lighting her face from below, steady, the red neon glow stays on the window out of frame and never reaches her face, the light stays unchanged`；
 候診區（c22–c23）寫 `overcast Sunday morning just after a rain shower, flat fluorescent ceiling light and soft grey daylight from one window with raindrops streaking the glass, the light stays unchanged`；
 診間（c24–c35）寫 `overcast morning just after a rain shower, flat grey daylight through the window on the left with rain streaks on the glass, a small black desk lamp casting hard white light on the desk, the daylight stays unchanged`；
 藥局（c36–c42）寫 `late morning, flat white fluorescent light over the pharmacy window, the light stays unchanged`。
@@ -76,10 +78,10 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 | --- | --- | --- | --- | --- | --- |
 | c01 | 中景、慢推（從中景推到中近景）；鏡頭在候診椅那排的走道上、低一點；直式前後疊開：前景右下緣是虛焦的灰色椅背，中間是正在站起來的 Peg，畫面左後是柱子與走向柱子的 Grant | 共兩人。Peg（`coat`：長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、木珠項鍊、深棕色平底鞋），`a plain beige canvas tote bag with no print, hanging from her left shoulder`；左手抓著 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`，`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；第一格她已經撐著椅子扶手起到一半；四分之三側臉朝畫面左後的 Grant，不看鏡頭；眉頭壓低、眼睛在鏡片後面發硬、嘴唇抿薄、下巴往前，`no smile at any moment, until the last frame`；身旁空椅上 `two plain white paper cups with lids, no logo`；畫面左後：Grant（基本款、深棕色皮鞋）兩手空著、朝柱子走，臉上練過的閉嘴微笑、不露齒，眼睛看著畫面左外的電梯；柱子後的 Nora 不入鏡 | Peg 從椅子上站起來（動作一，第一格已經起到一半），往前跨一步站到走道上（動作二）；剪在她站定；嘴閉著；最後：她站在走道上，看著 Grant 的方向 | — | 約 2 秒 |
 | c02 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；身後是灰色椅背與大廳深處（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上），站在走道上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`；左手還抓著帳本（下緣），`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；日光燈；四分之三側臉朝畫面左的 Grant、眼睛看著他，不看鏡頭；眉毛壓平、嘴唇在字之間抿緊、下巴抬起、聲音乾而大聲，`no smile at any moment, until the last frame` | Peg 看著 Grant，嘴在說話（乾、大聲，整個大廳聽得到）；說完把帳本塞進大衣右口袋，嘴閉上；最後：她兩手空著、看著 Grant | Peg（乾、大聲）：Grant. What are you doing here?（Grant。你來這裡幹嘛？）（原聲）（→ 答在 c03：他不答，反問一聲 Mom?） | 約 3.5 秒 |
-| c03 | 近景、固定；從 Peg 的左肩後拍（她的大衣肩與灰色短髮在畫框右下緣、虛焦）；直式，Grant 的臉在上三分之一；身後是包淺木的柱子與電梯門（虛焦） | Grant（基本款：沙金色側分短髮、細的圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫），兩手空著；日光燈；第一格他還朝畫面左走、臉上練過的閉嘴微笑、不露齒；聽見叫聲停步、轉身朝畫面右的 Peg：笑一下收掉，嘴角放平、眉毛挑起、眼睛眨一下，之後不笑；四分之三側臉朝畫面右的 Peg、眼睛看著她，不看鏡頭；聲音平穩、低；Peg 只有肩與後腦、不露臉 | Grant 停步轉身（動作一，轉到一半起），嘴在說話（平穩、低，一個字）（動作二）；說完眼睛往她身後空椅上的兩個紙杯瞄一下，嘴閉上；最後：他面向 Peg，嘴角平 | Grant（聲音平穩、低）：Mom?（媽？）（原聲）（→ 答在 c04） | 約 2.5 秒 |
-| c04 | 近景、固定；從 Grant 的右肩後拍（他的淺石色西裝肩在畫框左下緣、虛焦）；直式，Peg 的臉在上三分之一；身後是灰色候診椅（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`），站在走道上；日光燈；四分之三側臉朝畫面左的 Grant、眼睛看著他，不看鏡頭；眉毛一邊挑起、嘴唇噘一下、下巴抬著、聲音乾，`no smile at any moment, until the last frame`；Grant 只有肩、不露臉 | Peg 看著 Grant，嘴在說話（乾、理直氣壯）；說完右手食指點一下自己的眼鏡框，嘴閉上；最後：她的手放下，看著他 | Peg（乾、理直氣壯）：Eye appointment.（看眼睛）（原聲）← 因為 c03 | 約 2.5 秒 |
+| c03 | 近景、固定；從 Peg 的左肩後拍（她的大衣肩與灰色短髮在畫框右下緣、虛焦）；直式，Grant 的臉在上三分之一；身後是包淺木的柱子與電梯門（虛焦） | Grant（基本款：沙金色側分短髮、細的圓金屬框眼鏡、淺灰細格紋西裝、淺藍開領襯衫），兩手空著；日光燈；第一格他還朝畫面左走、臉上練過的閉嘴微笑、不露齒；聽見叫聲停步、轉身朝畫面右的 Peg：笑一下收掉，嘴角放平、眉毛挑起、眼睛眨一下，之後不笑；四分之三側臉朝畫面右的 Peg、眼睛看著她，不看鏡頭；聲音平穩、低；Peg 只有肩與後腦、不露臉 | Grant 停步轉身（動作一，轉到一半起），嘴在說話（平穩、低，一個字）（動作二）；說完眼睛往她身後空椅上的兩個紙杯瞄一下，嘴閉上；最後：他面向 Peg，嘴角平 | Grant（聲音平穩、低）：Mom?（媽？）（原聲）（→ 答在 c04） | 約 2.5 秒 |
+| c04 | 近景、固定；從 Grant 的右肩後拍（他的淺灰細格紋西裝肩在畫框左下緣、虛焦）；直式，Peg 的臉在上三分之一；身後是灰色候診椅（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`），站在走道上；日光燈；四分之三側臉朝畫面左的 Grant、眼睛看著他，不看鏡頭；眉毛一邊挑起、嘴唇噘一下、下巴抬著、聲音乾，`no smile at any moment, until the last frame`；Grant 只有肩、不露臉 | Peg 看著 Grant，嘴在說話（乾、理直氣壯）；說完右手食指點一下自己的眼鏡框，嘴閉上；最後：她的手放下，看著他 | Peg（乾、理直氣壯）：Eye appointment.（看眼睛）（原聲）← 因為 c03 | 約 2.5 秒 |
 | c05 | 近景、固定；鏡頭在柱子前、她右前方一點；直式，臉在上三分之一；身後只有包淺木的柱面 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），背貼在柱子右側；左手把 `a pale pink carbon-copy form about the size of her hand, folded so only its blank back shows` 壓在大衣前襟上；眼睛還有一點紅；第一格眼睛閉著一秒，然後睜開、往畫面右後斜看（聽見 Peg 的聲音），不看鏡頭；眉心往上提、嘴唇微張、一口憋住的氣慢慢吐出來，`no smile at any moment, until the last frame` | Nora 睜開眼、往右後斜看，憋著的那口氣慢慢吐出來；剪在吐氣到一半；嘴閉著（微張）；最後：她背貼著柱子，看著右後 | — | 約 2.5 秒 |
-| c06 | 近景、慢推（從胸上推到肩上）；從 Peg 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Grant 的臉在上三分之一；身後是柱子與電梯門（虛焦） | Grant（基本款：沙金色側分短髮、細的圓金屬框眼鏡、淺石色西裝），兩手空著；日光燈；四分之三側臉朝畫面右的 Peg、眼睛看著她，不看鏡頭；眉心提高、嘴角平、下巴微收，聲音平穩、低，`no smile at any moment, until the last frame`；Peg 只有肩、不露臉 | Grant 看著 Peg，嘴在說話（平穩、低）；說完頭微微偏一下，嘴閉上；最後：他等她回答 | Grant（聲音平穩、低）：Your eyes are fine.（妳眼睛好好的）（原聲） | 約 3 秒 |
+| c06 | 近景、慢推（從胸上推到肩上）；從 Peg 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Grant 的臉在上三分之一；身後是柱子與電梯門（虛焦） | Grant（基本款：沙金色側分短髮、細的圓金屬框眼鏡、淺灰細格紋西裝），兩手空著；日光燈；四分之三側臉朝畫面右的 Peg、眼睛看著她，不看鏡頭；眉心提高、嘴角平、下巴微收，聲音平穩、低，`no smile at any moment, until the last frame`；Peg 只有肩、不露臉 | Grant 看著 Peg，嘴在說話（平穩、低）；說完頭微微偏一下，嘴閉上；最後：他等她回答 | Grant（聲音平穩、低）：Your eyes are fine.（妳眼睛好好的）（原聲） | 約 3 秒 |
 | c07 | 近景、慢推（從胸上推到肩上）；從 Grant 的右肩後拍（他的西裝肩在畫框左下緣、虛焦）；直式，Peg 的臉在上三分之一 | Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`）；日光燈；四分之三側臉朝畫面左的 Grant、眼睛定在他臉上，不看鏡頭；眉毛壓低、眼睛在鏡片後面眯起、嘴唇在字之間抿薄、下巴往前一頂，`no smile at any moment, until the last frame`；Grant 只有肩、不露臉 | Peg 看著 Grant，嘴在說話（乾、一句比一句硬）；說完下巴朝畫面右後外的走道一揚，嘴閉上；最後：她的下巴指著他來的那條走道 | Peg（乾、一句比一句硬）：Then I see you fine. Go home.（那我看你也看得很清楚。回家去）（原聲） | 約 4 秒 |
 | c08 | 近景、固定；從 Peg 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Grant 的臉在上三分之一 | Grant（基本款），兩手空著；日光燈；四分之三側臉朝畫面右的 Peg；下巴的肌肉一動、眼睛在鏡片後面眯一下、嘴唇抿平、鼻子吸一口氣，`no smile at any moment, until the last frame`；Peg 只有肩、不露臉 | Grant 看著母親一拍，右手扣上西裝的一顆扣子；剪在扣子扣上；嘴閉著；最後：他扣好西裝，準備走 | — | 約 2.5 秒 |
 | c09 | 中景、固定；鏡頭在入口這邊、低一點，往大廳裡拍；直式：畫面左是柱子與電梯，畫面右是候診椅，畫面右後是通往門診的走道口 | 共兩人。Grant（基本款、深棕色皮鞋）背對鏡頭，從畫面左中經過 Peg 身邊、往畫面右後的走道走去，兩手空著；只露一點右側臉：眼睛看著畫面右後外的走道，嘴角平、下巴收著，`no smile at any moment, until the last frame`；Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`，深棕色平底鞋）站在畫面右的走道上，頭轉著跟著他走：眉頭壓低、嘴唇閉緊，`no smile at any moment, until the last frame`；柱子後的 Nora 不入鏡（他離柱子越走越遠） | Grant 背對鏡頭走向畫面右後的走道、走進走道口；Peg 的頭跟著轉；剪在 Grant 的背影走進走道一半；兩人都嘴閉著；最後：只剩 Peg 站在走道上，看著畫面右後外 | — | 約 3 秒 |
@@ -89,7 +91,7 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 | c13 | 插鏡、手部特寫、固定；**第一格就是她大衣左口袋的口**；直式；同一個大廳 | Nora 的左手（奶油色毛衣袖口、駝色大衣的口袋邊）把 `a pale pink carbon-copy form about the size of her hand, folded so only its blank back shows` 塞進大衣左口袋，再從同一個口袋拿出 `a new white phone with no logo, about the size of her palm`（側面朝鏡頭，螢幕朝她自己）；畫面裡沒有臉 | 她把副本塞進左口袋（動作一），拿出白色的新手機（動作二）；剪在手機拿出口袋；畫面上沒有嘴；最後：手機在她左手，側面朝鏡頭 | — | 約 2.5 秒 |
 | c14 | 近景、慢推（從胸上推到臉）；從 Peg 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Nora 的臉在上三分之一，下緣是她左手的手機（只見側面） | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），左手拿著 `a new white phone with no logo, about the size of her palm, its screen a soft white glow, seen from the side`；日光燈；第一格眼睛垂在手機上，然後抬起來、四分之三側臉朝畫面右的 Peg、看著她，不看鏡頭；眉頭慢慢壓下來、眼睛眯細、嘴唇在字之間抿緊、聲音很輕很清楚，`no smile at any moment, until the last frame`；Peg 只有肩、不露臉 | Nora 從手機抬眼看 Peg，嘴在說話（輕、清楚）；說完把手機放低到胸前，嘴閉上；最後：她看著 Peg，手機在胸前 | Nora（輕、清楚）：He gave me this phone.（是他給我的手機）（原聲）← 因為 c12（結尾） | 約 3.5 秒 |
 | c15 | 插鏡、手部特寫、固定；鏡頭在手機側邊、跟手機同高；**第一格就是手機的側邊與她的拇指**；直式 | `a new white phone with no logo, about the size of her palm, its screen a soft white glow, seen from the side` 在 Nora 的左手裡；她的拇指按在側鍵上；白光從側面照在她的指節上；後面是虛焦的大衣前襟；畫面裡沒有臉 | 她的拇指按住側鍵不放，側面的白光慢慢暗掉；剪在白光全暗；畫面上沒有嘴；最後：`a new white phone with no logo, about the size of her palm, its screen a soft white glow, seen from the side, going dark`，暗了 | — | 約 2.5 秒 |
-| c16 | 近景、固定；從 Nora 的右肩後拍（她的大衣肩在畫框左下緣、虛焦）；直式，Peg 的臉在上三分之一 | Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`）；日光燈；四分之三側臉朝畫面左下 Nora 手裡暗掉的手機，再抬到她臉上；嘴唇抿緊、下巴收著、鼻子吸一口氣，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Peg 的眼睛從手機移到 Nora 臉上，點一下頭；剪在點頭的一下；嘴閉著；最後：她看著 Nora | — | 約 2 秒 |
+| c16 | 近景、固定；從 Nora 的右肩後拍（她的大衣肩與低髮髻在畫框左下緣、虛焦）；直式，Peg 的臉在上三分之一 | Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`）；日光燈；四分之三側臉朝畫面左下 Nora 手裡暗掉的手機，再抬到她臉上；嘴唇抿緊、下巴收著、鼻子吸一口氣，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Peg 的眼睛從手機移到 Nora 臉上，點一下頭；剪在點頭的一下；嘴閉著；最後：她看著 Nora | — | 約 2 秒 |
 
 ### 第二場：汽車旅館櫃台，抽屜（約 13 秒）
 
@@ -107,13 +109,13 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 | c17 | 中景、慢推（從中景推到中近景）；鏡頭在門內、兩個女人身後，往櫃台拍；直式前後疊開：前景左是 Peg 的背，前景右是 Nora 的側身，中間櫃台後是 Bev 與掛鑰匙的木板 | 共三人，只有 Bev 與 Nora 露臉。前景左：Peg（`coat`、深棕色平底鞋）的背與後腦，`a plain beige canvas tote bag with no print, hanging from her left shoulder`，臉不入鏡；前景右：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，棕褐色平底短靴），右側臉：眉頭收著、眼睛垂在櫃台上、嘴唇抿緊；櫃台後：Bev（`bev`：圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上）：眉毛挑起、眼睛從 Nora 的手看到她臉上、嘴唇閉著；兩張露出的臉都 `no smile at any moment, until the last frame`；櫃台左端 `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands`，右端 `a small grey card reader on the desk, its screen turned away` 與 `an old beige corded desk phone`；暖黃檯燈；窗外灰藍的暮色、紅霓虹一明一暗 | Nora 把 `a new white phone with no logo, about the size of her palm`（暗著、側面朝鏡頭）放在櫃台上、推到 Bev 面前；剪在手機推到一半；三人都嘴閉著；最後：手機在 Bev 面前的櫃台上 | — | 約 2.5 秒 |
 | c18 | 插鏡、手部特寫、固定；鏡頭在櫃台後、Bev 那一側、低一點；**第一格就是櫃台下拉開的抽屜**；直式 | `a small wooden desk drawer with a brass keyhole`，拉開著；Bev 的右手（鮮豔碎花上衣的袖口）拿著 `a new white phone with no logo, about the size of her palm`（暗著）；暖黃檯燈從上面；畫面裡沒有臉 | Bev 把手機放進抽屜（動作一），推上抽屜（動作二）；剪在抽屜推到一半；畫面上沒有嘴；最後：抽屜關上、手機在裡面 | — | 約 2.5 秒 |
 | c19 | 插鏡、特寫、固定；**第一格就是抽屜上的黃銅鑰匙孔**；直式 | `a small wooden desk drawer with a brass keyhole`，關著；Bev 的右手拇指與食指捏著一把小黃銅鑰匙插在鑰匙孔裡；暖黃檯燈；畫面裡沒有臉 | 她把鑰匙轉一圈、「喀」一聲鎖上；剪在鎖上的那一下；畫面上沒有嘴；最後：鑰匙還插在孔裡、鎖著 | — | 約 2 秒 |
-| c20 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩與低髮髻在畫框右下緣、虛焦）；直式，Bev 的臉在上三分之一；身後是掛鑰匙的木板 | Bev（圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上），站在櫃台後；右手捏著那把小黃銅鑰匙；暖黃檯燈從下面照上她的臉；四分之三側臉朝畫面右下的 Nora、眼睛看著她，不看鏡頭；眉毛挑高、眼睛睜圓、嘴唇在字之間噘起、聲音壓低像在講秘密，`no smile at any moment, until the last frame`；Nora 只有肩與髮髻、不露臉 | Bev 看著 Nora，嘴在說話（壓低、像講秘密）；說完把鑰匙放進碎花上衣的胸前口袋、拍一下，嘴閉上；最後：她一手按著胸前的口袋，看著 Nora | Bev（壓低、像講秘密）：Safest drawer in Port Merrow.（全 Port Merrow 最保險的抽屜）（原聲）（結尾） | 約 3.5 秒 |
+| c20 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩與低髮髻在畫框右下緣、虛焦）；直式，Bev 的臉在上三分之一；身後是掛鑰匙的木板 | Bev（圓臉、紅潤的臉頰、捲的赤褐夾灰短髮、鮮豔碎花上衣、老花眼鏡掛在胸前的珠鍊上），站在櫃台後；右手捏著那把小黃銅鑰匙；暖黃檯燈從下面照上她的臉（穩定，紅霓虹只在畫外的窗上、不照到她臉上）；四分之三側臉朝畫面右下的 Nora、眼睛看著她，不看鏡頭；眉毛挑高、眼睛睜圓、嘴唇在字之間噘起、聲音壓低像在講秘密，`no smile at any moment, until the last frame`；Nora 只有肩與髮髻、不露臉 | Bev 看著 Nora，嘴在說話（壓低、像講秘密）；說完把鑰匙放進碎花上衣的胸前口袋、拍一下，嘴閉上；最後：她一手按著胸前的口袋，看著 Nora | Bev（壓低、像講秘密）：Safest drawer in Port Merrow.（全 Port Merrow 最保險的抽屜）（原聲）（結尾） | 約 3.5 秒 |
 | c21 | 近景、固定；鏡頭在櫃台這邊、她的右前方；直式，臉在上三分之一；身後是門邊的窗（灰藍的暮色、紅霓虹一明一暗，窗外的街不入鏡） | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），站在櫃台前；暖黃檯燈從畫面左照在她臉上；四分之三側臉朝畫面左下的抽屜、眼睛看著它，不看鏡頭；眉頭慢慢鬆開、下巴收緊、嘴唇閉著、長長吐一口氣，`no smile at any moment, until the last frame` | Nora 看著抽屜，兩手插回大衣口袋；剪在手插進口袋；嘴閉著；最後：她看著抽屜 | — | 約 2.5 秒 |
 
 ### 第三場：三天後，診間（約 40 秒）
 
 **場頭**：
-- **地點與場景圖**：c22–c23 婦產科候診區 `clinic-waiting`（待畫）：一排灰色軟椅貼著牆、一張矮桌，診間的淺木門在畫面左（關著），一扇窗在畫面右、玻璃上有雨痕；**週日，椅子全空**，只有 Peg 坐在離門最近那張。c24–c35 婦產科診間 `exam-room`（待畫；格局同第 11 集第一場）：淺色木書桌靠窗（窗在畫面左、玻璃上有雨痕），桌上 `a small black desk lamp casting hard white light`；門在畫面右。近景都寫「同一個候診區」「同一個診間」。
+- **地點與場景圖**：c22–c23 婦產科候診區 `clinic-waiting`（待畫）：一排灰色軟椅貼著牆、一張矮桌，診間的淺木門在畫面左（關著），一扇窗在畫面右、玻璃上有雨痕；**週日，椅子全空**，只有 Peg 坐在離門最近那張。c24–c35 婦產科診間 `exam-room`（待畫；格局同第 11 集第一場）：淺色木書桌靠窗（窗在畫面左、玻璃上有雨痕），桌上 `a small black desk lamp casting hard white light` 與 `a black desk mat`；門在畫面右。近景都寫「同一個候診區」「同一個診間」。
 - **時間與天氣**：第 6 天（3/22 週日）10:30–10:50，陣雨剛過、陰；窗上雨痕；Peg 與 Nora 的大衣肩上有雨點；診間窗的灰光從畫面左、桌燈冷白；整場維持白天的灰光。
 - **軸線**：候診區：門在畫面左，Peg 面向畫面右下的毛線。診間同第 11 集：**Brandt 在畫面左（書桌後、背後是窗），面向畫面右；Nora 在畫面右（書桌前），面向畫面左；門在 Nora 身後的畫面右**。Brandt 的鏡從 Nora 的左肩後（肩在畫框右下），Nora 的鏡從 Brandt 的右肩後（肩在畫框左下）。
 - **在場的人**：候診區只有 Peg；診間 Nora、Dr. Brandt。
@@ -125,17 +127,17 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 | --- | --- | --- | --- | --- | --- |
 | c22 | 中景、慢推（從中景推到中近景）；鏡頭在候診區畫面右的窗邊、往門那邊拍；直式前後疊開：前景右緣是有雨痕的窗框（虛焦），中間是一排全空的灰色軟椅，畫面左是關著的淺木門 | Peg（`coat`：長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、木珠項鍊、深棕色平底鞋；大衣肩上有雨點），一個人坐在離門最近的椅子上；`a plain beige canvas tote bag with no print, hanging from her left shoulder`；兩手拿著 `a long narrow strip of slate-blue knitting on two wooden knitting needles as long as her forearm, about as long as her forearm`，織好的那一條垂過她的膝蓋；左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；四分之三側臉朝畫面右下的毛線、不看鏡頭；眉頭收著、嘴唇抿緊、眼睛在鏡片後面盯著針，`no smile at any moment, until the last frame`；其他椅子全空 | Peg 把織好的那一條往下一拉、繼續織一針；剪在拉到一半；嘴閉著；最後：她低頭在織，前臂長的灰藍毛線垂在膝上 | — | 約 2.5 秒 |
 | c23 | 插鏡、手部特寫、固定；**第一格就是她兩手的棒針**；直式；同一個候診區 | `a long narrow strip of slate-blue knitting on two wooden knitting needles as long as her forearm, about as long as her forearm`，在 Peg 兩手裡，織好的那一條垂在她的大衣下擺上（大衣上有幾點雨痕）；左手 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；窗的灰光；畫面裡沒有臉 | 兩根棒針交叉、繞一圈線、挑過去一針；剪在挑過去的一下；畫面上沒有嘴；最後：棒針還在她手裡 | — | 約 2 秒 |
-| c24 | 中景、慢推（從中景推到中近景）；大鏡位：鏡頭在房間南側、往北拍；直式：畫面左是書桌後的 Brandt 與有雨痕的窗，畫面右是書桌前的 Nora，中間是書桌與檯燈 | 共兩人。畫面左：Dr. Brandt（`dr-brandt`：銀金色短鮑伯頭、長方框眼鏡、白袍罩深藍手術服，沒戴手套）坐在書桌後，右手按著 `a single white printed page, held so only its back shows`，眉頭收著、嘴唇閉緊；畫面右：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，大衣肩上有雨點，棕褐色平底短靴）坐在椅上，眉心往上提、眼睛盯著那張紙、呼吸淺；兩張臉都 `no smile at any moment, until the last frame`；桌上 `a small black desk lamp casting hard white light`；窗上雨痕；門在畫面右緣、關著 | Brandt 把那張紙滑過桌面、推向 Nora；剪在紙滑到桌子中間；兩人都嘴閉著；最後：紙在桌子中間，還在滑 | — | 約 2.5 秒 |
-| c25 | 插鏡、手部特寫、固定；鏡頭貼著桌面的高度；**第一格就是滑過淺木桌面的白紙背面**；直式 | `a single white printed page, held so only its back shows`，背面朝上滑過淺色木桌面；Nora 的右手（奶油色毛衣袖口）從畫面右伸進來，整個手掌平壓在紙上；桌燈冷白的光；畫面裡沒有臉 | 紙滑過來，她的手掌一下壓住它、指節用力到發白；剪在手掌壓住的那一下；畫面上沒有嘴；最後：她的右手平壓在紙背上 | — | 約 2 秒 |
-| c26 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦，肩上有雨點）；直式，Brandt 的臉在上三分之一；身後的窗只見灰光與雨痕 | Dr. Brandt（銀金色短鮑伯頭、長方框眼鏡、白袍）；桌燈冷白的光從下面；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；說之前停一拍；眉毛放平、嘴唇在字之間抿緊、下巴收著，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Brandt 停一拍，看著 Nora，嘴在說話（平、很準）；說完兩手在桌上交疊，嘴閉上；最後：她看著 Nora | Dr. Brandt（平、很準，說之前停一拍）：No active ingredient. It's sugar.（沒有任何藥效成分。是糖）（原聲） | 約 3.5 秒 |
+| c24 | 中景、慢推（從中景推到中近景）；大鏡位：鏡頭在房間南側、往北拍；直式：畫面左是書桌後的 Brandt 與有雨痕的窗，畫面右是書桌前的 Nora，中間是書桌與檯燈 | 共兩人。畫面左：Dr. Brandt（`dr-brandt`：銀金色短鮑伯頭、長方框眼鏡、白袍罩深藍手術服，沒戴手套）坐在書桌後，右手按著 `a single white printed page, held so only its back shows`，眉頭收著、嘴唇閉緊；畫面右：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，大衣肩上有雨點，棕褐色平底短靴）坐在椅上，眉心往上提、眼睛盯著那張紙、呼吸淺；兩張臉都 `no smile at any moment, until the last frame`；桌上 `a small black desk lamp casting hard white light` 與 `a black desk mat`；窗上雨痕；門在畫面右緣、關著 | Brandt 把那張紙滑過桌面、推向 Nora；剪在紙滑到桌子中間；兩人都嘴閉著；最後：紙在桌子中間，還在滑 | — | 約 2.5 秒 |
+| c25 | 插鏡、手部特寫、固定；鏡頭貼著桌面的高度；**第一格就是滑過黑色桌墊的白紙背面**；直式 | `a single white printed page, held so only its back shows`，背面朝上滑過書桌上的 `a black desk mat`；Nora 的右手（奶油色毛衣袖口）從畫面右伸進來，整個手掌平壓在紙上；桌燈冷白的光；畫面裡沒有臉 | 紙滑過來，她的手掌一下壓住它、指節用力到發白；剪在手掌壓住的那一下；畫面上沒有嘴；最後：她的右手平壓在紙背上 | — | 約 2 秒 |
+| c26 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩與低髮髻在畫框右下緣、虛焦，肩上有雨點）；直式，Brandt 的臉在上三分之一；身後的窗只見灰光與雨痕 | Dr. Brandt（銀金色短鮑伯頭、長方框眼鏡、白袍）；桌燈冷白的光從下面；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；說之前停一拍；眉毛放平、嘴唇在字之間抿緊、下巴收著，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Brandt 停一拍，看著 Nora，嘴在說話（平、很準）；說完兩手在桌上交疊，嘴閉上；最後：她看著 Nora | Dr. Brandt（平、很準，說之前停一拍）：No active ingredient. It's sugar.（沒有任何藥效成分。是糖）（原聲） | 約 3.5 秒 |
 | c27 | 近景、固定；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，Nora 的臉在上三分之一；身後是關著的淺木門 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`，大衣肩上有雨點），坐在椅上；窗的灰光從畫面左；四分之三側臉朝畫面左的 Brandt；第一格眼睛閉著一秒，然後睜開；眉心往上擠、嘴唇抿緊、鼻翼一張、長長吐一口氣，`no smile at any moment, until the last frame`；Brandt 只有肩、不露臉 | Nora 閉一下眼又睜開，吐出一口氣；剪在吐氣到一半；嘴閉著；最後：她看著 Brandt | — | 約 2.5 秒 |
-| c28 | 近景、固定；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍），兩手交疊在桌上；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉頭往中間收、嘴唇在字之間抿緊、下巴繃著、聲音放低，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Brandt 看著 Nora，嘴在說話（放低、一字一字）；說完往椅背靠回去，嘴閉上；最後：她靠著椅背、看著 Nora | Dr. Brandt（放低、一字一字）：He came for your records. The day you were here.（他來要過妳的病歷。就是妳來的那天）（原聲） | 約 5 秒 |
+| c28 | 近景、固定；從 Nora 的左肩後拍（她的大衣肩與低髮髻在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍），兩手交疊在桌上；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉頭往中間收、嘴唇在字之間抿緊、下巴繃著、聲音放低，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Brandt 看著 Nora，嘴在說話（放低、一字一字）；說完往椅背靠回去，嘴閉上；最後：她靠著椅背、看著 Nora | Dr. Brandt（放低、一字一字）：He came for your records. The day you were here.（他來要過妳的病歷。就是妳來的那天）（原聲） | 約 5 秒 |
 | c29 | 近景、固定；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，Nora 的臉在上三分之一 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`）；窗的灰光；四分之三側臉朝畫面左的 Brandt；頭一下抬起來、眉頭擰緊、眼睛睜大、嘴唇微張，`no smile at any moment, until the last frame` | Nora 的頭一下抬起來，壓在報告上的右手指節收緊；剪在頭抬起來；嘴閉著（微張）；最後：她盯著 Brandt | — | 約 2 秒 |
-| c30 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍），靠著椅背；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉毛壓平、下巴抬起、嘴唇在字之間抿緊、兩個字之間停一下，`no smile at any moment, until the last frame` | Brandt 嘴在說話（短、硬）；說完右手食指在桌上點一下，嘴閉上；最後：她的手指按在桌上 | Dr. Brandt（短、硬）：HIPAA. He gets nothing.（病歷隱私法。他什麼都拿不到）（原聲） | 約 3 秒 |
+| c30 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩與低髮髻在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍），靠著椅背；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉毛壓平、下巴抬起、嘴唇在字之間抿緊、兩個字之間停一下，`no smile at any moment, until the last frame` | Brandt 嘴在說話（短、硬）；說完右手食指在桌上點一下，嘴閉上；最後：她的手指按在桌上 | Dr. Brandt（短、硬）：HIPAA. He gets nothing.（病歷隱私法。他什麼都拿不到）（原聲） | 約 3 秒 |
 | c31 | 近景、慢推（從胸上推到臉）；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，Nora 的臉在上三分之一 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），右手還壓著報告（下緣）；窗的灰光；四分之三側臉朝畫面左的 Brandt、眼睛看著她，不看鏡頭；眉頭壓下來、眼睛眯細、下巴往前、聲音很輕很清楚，`no smile at any moment, until the last frame`；Brandt 只有肩、不露臉 | Nora 看著 Brandt，嘴在說話（輕、清楚）；說完身子往前傾一點，嘴閉上；最後：她傾著身等答案 | Nora（輕、清楚）：So who switched my pills?（那是誰換了我的藥？）（原聲）（→ 答在 c32、c34） | 約 3 秒 |
-| c32 | 近景、固定；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍）；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；停一拍；眉毛微微挑起、眼睛定住、嘴唇在字之間抿緊、句尾頭往畫面右外的門偏一下，`no smile at any moment, until the last frame` | Brandt 停一拍，嘴在說話（慢、很準）；說完頭往畫面右外的門（樓下藥局的方向）偏一下，嘴閉上；最後：她看著 Nora | Dr. Brandt（慢、很準）：The pharmacy logs who signs for every pickup.（藥局會記下每次是誰簽收的）（原聲）← 因為 c31 | 約 4 秒 |
+| c32 | 近景、固定；從 Nora 的左肩後拍（她的大衣肩與低髮髻在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍）；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；停一拍；眉毛微微挑起、眼睛定住、嘴唇在字之間抿緊、句尾頭往畫面右外的門偏一下，`no smile at any moment, until the last frame` | Brandt 停一拍，嘴在說話（慢、很準）；說完頭往畫面右外的門（樓下藥局的方向）偏一下，嘴閉上；最後：她看著 Nora | Dr. Brandt（慢、很準）：The pharmacy logs who signs for every pickup.（藥局會記下每次是誰簽收的）（原聲）← 因為 c31 | 約 4 秒 |
 | c33 | 近景、固定；從 Brandt 的右肩後拍（她的白袍肩在畫框左下緣、虛焦）；直式，Nora 的臉在上三分之一 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`）；窗的灰光；四分之三側臉朝畫面左的 Brandt，眼睛往畫面右後的門瞄一下又回來；眉毛一下挑起、眼睛睜大、嘴唇閉緊、吸一口氣，`no smile at any moment, until the last frame` | Nora 的眼睛往門一瞄又回到 Brandt，右手把報告往自己這邊拉；剪在拉到一半；嘴閉著；最後：報告在她面前 | — | 約 2.5 秒 |
-| c34 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍）；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉毛放平、眼神放軟一點、嘴唇在字之間抿緊、句尾點一下頭，`no smile at any moment, until the last frame` | Brandt 嘴在說話（輕、清楚）；說完點一下頭、兩手平放在桌上，嘴閉上；最後：她看著 Nora | Dr. Brandt（輕、清楚）：You can ask for your own.（妳可以申請妳自己的紀錄）（原聲）（結尾） | 約 3 秒 |
+| c34 | 近景、慢推（從胸上推到肩上）；從 Nora 的左肩後拍（她的大衣肩與低髮髻在畫框右下緣、虛焦）；直式，Brandt 的臉在上三分之一 | Dr. Brandt（長方框眼鏡、白袍）；桌燈冷白的光；四分之三側臉朝畫面右的 Nora、眼睛看著她，不看鏡頭；眉毛放平、眼神放軟一點、嘴唇在字之間抿緊、句尾點一下頭，`no smile at any moment, until the last frame` | Brandt 嘴在說話（輕、清楚）；說完點一下頭、兩手平放在桌上，嘴閉上；最後：她看著 Nora | Dr. Brandt（輕、清楚）：You can ask for your own.（妳可以申請妳自己的紀錄）（原聲）（結尾） | 約 3 秒 |
 | c35 | 插鏡、手部特寫、固定；**第一格就是她兩手拿著的紙背**；直式 | Nora 的兩手（奶油色毛衣袖口）拿著 `a single white printed page, held so only its back shows`；後面是駝色大衣敞開的前襟與左口袋；窗的灰光；畫面裡沒有臉 | 她把紙對摺一次（動作一），塞進大衣左口袋（動作二）；剪在紙塞進一半；畫面上沒有嘴；最後：報告在她大衣左口袋裡 | — | 約 2.5 秒 |
 
 ### 第四場：門診藥局窗口（約 19.5 秒）
@@ -156,7 +158,7 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 | c38 | 插鏡、特寫、固定；鏡頭在隔板後、Dale 那一側；**第一格就是印表機的出紙口**；直式 | 一台小的灰色印表機，`three loose white printed pages, held so only the backs or edges show, still warm from the printer` 正從出紙口一張一張吐出來（只見紙背與紙邊）；Dale 的右手（白色藥師袍袖口）伸進來；日光燈；畫面裡沒有臉 | Dale 的右手把剛印好的三頁從出紙口抽起來；剪在紙抽起一半；畫面上沒有嘴；最後：三頁在他右手裡，紙背朝鏡頭 | — | 約 2 秒 |
 | c39 | 近景、慢推（從胸上推到臉）；顏值鏡頭；鏡頭在窗口前、她的左前方，玻璃隔板的邊在畫框左緣（虛焦、只見金屬框）；直式，臉在上三分之一；身後是一樓大廳的灰色候診椅（遠、虛焦） | Nora（`motel`，`a camel wool coat with deep pockets, worn open`，大衣肩上有雨點），站在窗口前；長髮挽在低髮髻裡，幾縷落在耳邊；日光燈冷白的光從上面；兩手撐在窗口檯面上（下緣），指節用力到發白；四分之三側臉朝畫面左的 Dale（隔板後、畫外）、眼睛定在他手上的紙，不看鏡頭；眉頭收緊、眼睛不眨、嘴唇閉緊、下巴往前，`no smile at any moment, until the last frame`；她身後畫面右的 Peg 只有一點肩與帆布袋（虛焦、臉不入鏡） | Nora 撐在檯面上的兩手指節越壓越白；剪在她吸一口氣的那一下；嘴閉著；最後：她撐著檯面、盯著畫面左外 | — | 約 3 秒 |
 | c40 | 近景、固定；鏡頭在隔板後、Dale 那一側、他的右前方；直式，臉在上三分之一；身後是白色層架與沒有標籤的盒子（虛焦） | Dale（粗黑框眼鏡、白色藥師袍、胸前口袋兩支筆），站在隔板後；右手拿著 `three loose white printed pages, held so only the backs or edges show, still warm from the printer`，紙立著、正面朝他、鏡頭只見紙背與紙邊；左手食指在紙的另一面慢慢往下移（手指在紙後，紙背上只透出指尖的淡影）；日光燈；四分之三側臉朝畫面右下的紙、眼睛在紙上往下移，不看鏡頭（說話模板的 eyes on 換成本鏡寫的視線）；眉毛不動、嘴唇只在字之間動、聲音平板；說到最後一個字停住：眼睛一下定住、眉毛挑起、嘴唇閉上，然後抬眼看畫面右的 Nora，`no smile at any moment, until the last frame` | Dale 的手指在紙後往下移，嘴在說話（平板、照紀錄念）；說到 "by" 就停住、嘴閉上，然後抬眼看 Nora；最後：他的手指停在紙後，抬著眼 | Dale（平板、照紀錄念，在 by 停住）：Picked up every month. Signed by—（每個月都有人領。簽收的是——）（原聲）（結尾）（懸念 → 下一集第一場） | 約 4 秒 |
-| c41 | 近景、固定；鏡頭在窗口前、Nora 身後偏右；直式，Peg 的臉在上三分之一；前景左下緣是 Nora 的肩（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`，大衣肩上有雨點），站在 Nora 右後半步；日光燈；四分之三側臉朝畫面左的窗口（Dale）、眼睛在鏡片後面盯著他手上的紙，不看鏡頭；眉頭壓低、眼睛眯起、嘴唇抿薄、呼吸停住，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Peg 的左手抓緊左肩的帆布袋背帶；`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；剪在手抓緊；嘴閉著；最後：她盯著畫面左 | — | 約 2 秒 |
+| c41 | 近景、固定；鏡頭在窗口前、Nora 身後偏右；直式，Peg 的臉在上三分之一；前景左下緣是 Nora 的大衣肩與低髮髻（虛焦） | Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`，大衣肩上有雨點），站在 Nora 右後半步；日光燈；四分之三側臉朝畫面左的窗口（Dale）、眼睛在鏡片後面盯著他手上的紙，不看鏡頭；眉頭壓低、眼睛眯起、嘴唇抿薄、呼吸停住，`no smile at any moment, until the last frame`；Nora 只有肩、不露臉 | Peg 的左手抓緊左肩的帆布袋背帶；`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；剪在手抓緊；嘴閉著；最後：她盯著畫面左 | — | 約 2 秒 |
 | c42 | 中景、固定（接第 13 集之前的最後一刻）；同 c36 的鏡位：鏡頭在窗口側面、跟檯面同高；直式：玻璃隔板側著成一條細線，左邊 Dale，右邊 Nora 與她右後的 Peg | 共三人。畫面左：Dale（`dale`：粗黑框眼鏡、白色藥師袍）在隔板後，右手拿著 `three loose white printed pages, held so only the backs or edges show, still warm from the printer`（紙背朝鏡頭），左手食指停在紙的另一面，抬眼看畫面右的 Nora：眉毛挑起、嘴唇閉上；畫面右：Nora（`motel`，`a camel wool coat with deep pockets, worn open`，大衣肩上有雨點，頭髮在低髻裡，棕褐色平底短靴）兩手撐在窗口檯面上，看著畫面左的 Dale：眉頭收緊、眼睛不眨、嘴唇閉著；她右後半步：Peg（`coat`，玳瑁框眼鏡戴在臉上，`a plain beige canvas tote bag with no print, hanging from her left shoulder`）：眉頭壓低、嘴唇抿薄；三張臉都 `no smile at any moment, until the last frame`；隔板後的白色層架與印表機；日光燈 | 三人都不動；Dale 的手指停在紙後；剪在 Nora 吸進一口氣；三人都嘴閉著；最後：三個人停在這一刻 | — | 約 3.5 秒 |
 
 約 117 秒（1 分 57 秒）、42 鏡（第一場 16、第二場 5、第三場 14、第四場 7），是各鏡秒數加起來的估計；細綱 `duration_s` 120 秒，bible 目標 39–43 鏡。
@@ -206,6 +208,17 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 - **c02**：Peg 抓著帳本的左手補道具句 `a thin worn gold wedding band with one tiny old diamond, on her left ring finger`（bible〈帳〉：第 11–15 集拍到她的左手每一鏡都寫婚戒）。
 - 鏡數與秒數不變：42 鏡／117 秒。
 
+#### 2026-11-12 參考圖稽核後的修改
+
+依 `review/2026-11-12-ref-audit-e001-e020.md`〈定案〉改的。台詞一句都沒改，**沒有要重錄的**；本集的場景、Nora、Dale 的圖都在第二批，還沒抽。
+- **〈角色與參考圖〉與〈五張清單〉第 2 張**：指向 `assets/refs/` 現有的檔（`peg-coat.jpg`、`grant-portrait.jpg`），其餘標「待畫」並寫要什麼；`nora-portrait.jpg` 是長髮放下來，**不能代用** `motel`；藥局改畫側面與隔板後兩張（企劃 #41 的正面角度不用）。
+- **c03、c04、c06**：Grant 的西裝寫成淺灰細格紋（定案 10，`cast.json` 已改）。
+- **c16、c26、c28、c30、c32、c34、c41**：只露 Nora 肩的鏡補「低髮髻」，跟露臉的鏡接得上。
+- **c20**：Bev 說話，光改成穩定的檯燈、紅霓虹不照到臉（定案 11）；場的光句加 c20 的例外。
+- **c24、c25**：診間桌上補 `a black desk mat`（bible〈場景格局〉與企劃 #38 都有），報告滑過桌墊；c25 音效跟著改。
+- 只拍手或背影的鏡不傳定妝照（定案 13），列在〈角色與參考圖〉下。
+- 鏡數與秒數不變：42 鏡／117 秒。
+
 ### 配音
 
 - **本集沒有 Gemini 錄音**（bible〈全劇固定〉）。
@@ -234,7 +247,7 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
   | c18 | 木抽屜拉開、推上 |
   | c19 | **黃銅鑰匙「喀」一聲鎖上** |
   | c22–c23 | 窗外雨後的滴水聲、棒針碰撞的細響 |
-  | c25 | **紙滑過木桌面，手掌壓上去「啪」一聲** |
+  | c25 | **紙滑過桌墊，手掌壓上去「啪」一聲** |
   | c30 | 指尖點一下桌面 |
   | c35 | 紙對摺、塞進口袋 |
   | c37 | 筆尖在紙上、紙從開口推進去 |
@@ -258,19 +271,25 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `motel`（低髮髻、奶油色毛衣、藍色牛仔褲、棕褐色平底短靴）＋道具句 `a camel wool coat with deep pockets, worn open`；c24 起大衣肩上有雨點 | c05、c11、c14、c17、c21、c24、c27、c29、c31、c33、c36、c39、c42（c03、c06、c08、c12、c16、c20、c26、c28、c30、c32、c34、c41 只有肩；c13、c15、c25、c35、c37 只有手） | `motel` 已改（拿掉大衣與表情）；要畫全身參考圖 |
-| Peg | `coat`（長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、深棕色平底鞋）；帆布袋左肩；婚戒左手；第 6 天大衣肩上有雨點、新毛線（前臂長） | c01–c02、c04、c07、c09–c12、c16、c22、c36、c41–c42（c03、c06、c08 只有肩；c17 背影；c23 只有手） | 帆布袋、帳本、毛線、婚戒寫在每鏡 |
-| Grant | 基本款（淺石色西裝、淺藍開領襯衫、細的圓金屬框眼鏡、深棕色皮鞋）；兩手空著 | c01、c03、c06、c08–c09（c04、c07 只有肩） | 外貌句不帶笑；c01、c03 第一格練過的閉嘴微笑寫在鏡裡 |
+| Nora | `motel`（低髮髻、奶油色毛衣、藍色牛仔褲、棕褐色平底短靴）＋道具句 `a camel wool coat with deep pockets, worn open`；c24 起大衣肩上有雨點 | c05、c11、c14、c17、c21、c24、c27、c29、c31、c33、c36、c39、c42（c03、c06、c08、c12、c16、c20、c26、c28、c30、c32、c34、c41 只有肩；c13、c15、c25、c35、c37 只有手） | `motel` 已改（拿掉大衣與表情）；胸像與全身都待畫（第二批） |
+| Peg | `coat`（長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、深棕色平底鞋）；帆布袋左肩；婚戒左手；第 6 天大衣肩上有雨點、新毛線（前臂長） | c01–c02、c04、c07、c09–c12、c16、c22、c36、c41–c42（c03、c06、c08 只有肩；c17 背影；c23 只有手） | 帆布袋、帳本、毛線、婚戒寫在每鏡；`coat` 全身待畫（第二批） |
+| Grant | 基本款（淺灰細格紋西裝、淺藍開領襯衫、細的圓金屬框眼鏡、深棕色皮鞋）；兩手空著 | c01、c03、c06、c08–c09（c04、c07 只有肩） | 外貌句不帶笑；c01、c03 第一格練過的閉嘴微笑寫在鏡裡 |
 | Bev | 基本款（碎花上衣、老花眼鏡掛在胸前的珠鍊上） | c17、c20（c18–c19 只有手） | 外貌句已拿掉櫃台與薄荷糖 |
 | Dr. Brandt | 基本款（白袍罩深藍手術服、銀金色短鮑伯頭、長方框眼鏡），本集不戴手套 | c24、c26、c28、c30、c32、c34（c27、c29、c31、c33 只有肩） | 外貌句已拿掉表情 |
 | Dale | 基本款（粗黑框眼鏡、白色藥師袍、胸前兩支筆） | c36、c40、c42（c38 只有手） | 外貌句已拿掉 "meticulous" |
 
 ### 2. 本集需要的參考圖
 
-- 定妝照：`nora-portrait.jpg`（r3）、`peg-portrait.jpg`、`peg-coat.jpg`、`grant-portrait.jpg`（平臉 r3）都有。
-  **缺：Dr. Brandt、Dale、Bev 的定妝照（必須先畫，平靜、嘴閉著、不帶道具）；Nora `motel` 全身參考圖**。
-- 場景：**一樓大廳 `hospital-lobby`**、**汽車旅館櫃台 `motel-front`（傍晚版：窗外灰藍暮色、紅霓虹剛亮；櫃台右邊米色有線電話、櫃台下上鎖的木抽屜）**、**候診區 `clinic-waiting`（週日空著、窗上雨痕）**、**婦產科診間 `exam-room`（白天、窗上雨痕）**、**門診藥局窗口 `pharmacy`（直式、玻璃隔板、白色層架、灰色小印表機）**都待畫。
-- 道具：Peg 的新毛線（灰藍窄條，前臂長，**不要畫成嬰兒帽**）建議先畫；報告、領藥紀錄、申請表只拍紙背與紙邊，不必另畫；新手機、抽屜照道具句。
+- 定妝照（`production/assets/refs/`）：**有**：`peg-coat.jpg`（Peg `coat` 胸像）、`grant-portrait.jpg`（平臉 r3）。
+  **待畫，必須先畫**（平靜、嘴閉著、不帶道具）：Nora `motel` 胸像與全身（第二批；`nora-portrait.jpg` 是長髮放下來，`nora-night-coat.jpg` 是孕肚，`nora-discharge.jpg` 是毛衣裙加拖鞋，**都不能代用**）、Peg `coat` 全身（第二批）、Dale（第二批）、Dr. Brandt（`screen-test/art.py` a1 選圖，a4 修掉白袍上的字）、Bev（`art.py` a3）。
+  只拍手或背影、不露臉的鏡不傳定妝照（c13、c15、c18、c19、c23、c25、c35、c37、c38；c17 不傳 Peg 的）。
+- 場景（都是第二批，**待畫**）：
+  - **一樓大廳 `hospital-lobby`**（企劃 #37 `lobby`）：c01–c16。
+  - **汽車旅館櫃台 `motel-front` 傍晚版**（企劃 #40 `mfront-dusk`，從修掉招牌字的 `mfront-night` 改）：窗外只有灰藍暮色、紅霓虹剛亮，停車場、街與車不入畫（c21 的背景就是這扇窗）；櫃台右邊米色有線電話、櫃台下上鎖的木抽屜寫在鏡上。c17–c21。
+  - **候診區 `clinic-waiting`**（企劃 #39 `wait-rain`，或 #36 `wait` 加文字寫雨痕）：週日空著。c22–c23。
+  - **婦產科診間 `exam-room`**（企劃 #38 `exam-rain`）：白天、窗上雨痕，桌上黑色桌墊與檯燈。c24–c35。
+  - **門診藥局窗口 `pharmacy`**：企劃 #41 的正面角度跟分鏡不合，改畫**側面**（隔板側成一條細直線，左邊隔板後的白色層架與灰色小印表機，右邊窗口檯面）給 c36、c37、c42，**隔板後**（白色層架、沒有標籤的盒子、灰色小印表機）給 c38、c40；c39、c41 從客人這邊反打，不傳場景圖。
+- 道具（都**待畫**，`art-plan-props.md`）：駝色大衣 `camel-coat`（第二批重畫成配毛衣與牛仔褲；本集所有 Nora 的鏡）、帆布袋 `canvas-tote`（Peg 的鏡）、帳本 `ledger`（c01、c02）、婚戒 `peg-ring`（c01、c02、c22、c23、c41）、新毛線 `peg-knitting`（c22、c23；灰藍窄條，前臂長，**不要畫成嬰兒帽**）。報告、領藥紀錄、申請表只拍紙背與紙邊，不必另畫；新手機、抽屜、紙杯、薄荷糖碗、刷卡機、櫃台電話、檯燈、桌墊照道具句。
 - 沒有參考圖的人：無（本集露臉的人都要有定妝照）。
 
 ### 3. 長鏡清單
