@@ -466,7 +466,7 @@
   - **電視廣告攝影棚 `tv-ad-studio` 待畫**（c39：白色攝影棚、白色展示台、奶油白花瓶）。
 - 道具：bible〈道具的樣子〉的句子都有（`half-pill`、`knit-hat`、`glass-bird`、`forever-vase`、`nora-phone`、`camel-coat`、`soup-pot`、`elias-glove`、`drinking-glass`、`canvas-tote` 在 `cast.json`）。
   道具圖目前只有 `prop-knit-hat.jpg`（畫的是 Peg 的手拿著帽子，只傳給 Peg 拿帽子的 c30、c31；Nora 拿帽子或帽子放在沙發上的 c12、c32、c34、c38、c40、c42 不傳，定案 12）；
-  半顆藥的道具圖（帶指尖）只傳給半顆的 c08–c10，整顆的 c05–c07 不傳；c03 戴手套的手不傳任何帶手的道具圖。
+  半顆藥沒有道具圖（試了四次都畫成整顆，見 `art-plan-props.md`），c05–c10 都只寫藥的道具句；c03 戴手套的手不傳任何帶手的道具圖。
   沒有道具圖、只寫句子的：白色小瓷碟、白色面紙盒、白色馬克杯、黑色遙控器、黑框平面電視（都只在手上、插鏡或背景裡）。
 - 沒有參考圖的人：c03 的手只拍掌心與袖口。
 

@@ -212,3 +212,4 @@
 - **`canvas-tote`**：圖裡背在開襟衫上，穿 `coat` 的鏡不傳。
 - **`grant-phone`**：螢幕上沒有字；第 3 集的訊息是後製浮在手機旁的泡泡，不在螢幕上（`cast.json` 已改）。
 - **`fisk-watch`**：已加進 `cast.json`，句子是 `a plain silver wristwatch on his left wrist, its face turned toward him`。
+- **`half-pill` 沒有參考圖**（2026-11-12）：試了四次都畫成整顆、兩半連著或兩顆，前後是 p1、p3、p6、p7 剪半修圖。所以不傳道具圖，每鏡只寫道具句；藥的大小與「a medicine pill, not a device」已經寫在句子裡。
