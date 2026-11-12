@@ -11,7 +11,8 @@ completed_at:
 branch:
 depends_on: []
 scope:
-  - tools/video/review
+  - tools/video/package/cli.mjs
+  - tools/video/package/package.test.mjs
 ---
 
 # review-push: a changed thumbnail never reaches an approved publish review
@@ -40,3 +41,6 @@ scope:
 ## Notes
 
 Findings, decisions and dead ends, so the next agent does not repeat them.
+- 2026-11-12（claude-opus-5.5-p06-p18-handoff）：伺服器 `apps/api/app/video_reviews/admin_service.py` 的 `submit_review` 找到同 gate、同 `content_sha256`（＝`upload/metadata.json` 的 sha256，`sync.mjs` `publishSubmission`）且狀態不是 pending 的審核時直接回傳那一筆（approved 的 publish 只多掛備份檔），新上傳的縮圖不會換上去；退回（rejected）也一樣不會重開。
+  最小的修法是 `tools/video/package/cli.mjs` 在 metadata.json 加一個 `thumbnail_sha256`（thumbnail.jpg、thumbnails/<locale>.jpg、variants 的 sha256），縮圖一變雜湊就變，站上自然開一筆新的 pending；`qa/cli.mjs` 寫 disclosure 時會保留其他欄位。但 `package/cli.mjs` 在片長審查的雜湊綁定裡（`tools/video/long-form/review.mjs` REVIEW_FILES、`docs/videos/long-form/review.json`），要獨立審查代理出 DURATION_ONLY 增量收據，而 review.json／review.md 正在 2026-10-29-daily-brief-on-the-host-worker、2026-10-30-admin-video-delete-dropped 的 scope 裡，所以沒做。scope 已從 `tools/video/review` 改成 package 兩支檔；做這張票的人還要把 review.json 加進 scope。
+  繞法：`languages` 關卡會換八張語言縮圖（P06 2026-11-12 重送後 pending，雜湊等於新檔）；主縮圖 `publish/thumbnail.jpg` 只能另外交給站主。
