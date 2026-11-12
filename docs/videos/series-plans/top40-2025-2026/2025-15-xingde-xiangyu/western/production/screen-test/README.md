@@ -202,4 +202,6 @@ python3 -I $B/art.py s5                                       # s4 驗收過之�
   已選：`liv-day=a nur-day=b door-in-day=a room-night=a liv-gold-a=a`（工作資料夾 `picks.txt`）；還缺 `mroom-night`（s3）、`forever-no1`（p1）。
 - **之後**：a4 選定後跑 a3（Sienna 全身、工頭、Bev）與 s5；s6 是優先 3，可不跑。全部約 30 CU，在 35 CU 上限內。
 - **備份**：2026-11-12 15:33 工作資料夾整包傳到 `videobackup:AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/till-the-verdict`（268 個檔；12 個差異是當時正在寫的 p1 暫存檔）。每輪選完再傳一次，同一指令。
+- **2026-11-12 稽核後**：第 1–20 集分鏡逐鏡對照選定的圖（`../../review/2026-11-12-ref-audit-e001-e020.md`），格局錯的場景與幾處人物、道具由 `redraw.py`（s7、s8、a5、p4，34 張）重畫，排在 `chain2.sh` 的 s4 位置；
+  改光線的 s4 等新底圖選定後再建。站主同日「品質為主」：第一批因此約 36.7 CU，超過原本 35 CU 的上限，照做。
 - **session 中斷時**：Colab runtime 會一直燒點數，先 `bash $K/h3.sh stop --session ttv-art`；工作資料夾在雲端硬碟上，拿回來放回 `$W` 就能接著用 `art.py` 建下一輪。
