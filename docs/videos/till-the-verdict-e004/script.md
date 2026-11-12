@@ -124,7 +124,7 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 | --- | --- | --- | --- | --- | --- |
 | c18 | 插鏡、特寫、固定；**第一格就是床欄上的呼叫鈕**；直式，呼叫鈕在中間、床欄橫過畫面 | `a small grey plastic call-button remote on a cord, about the size of her palm, clipped to the bed rail`；Nora 的右手（奶油色開襟衫袖口）從畫面左伸進來；畫面裡沒有臉 | 她的右手拇指重重按下呼叫鈕，按住一拍再放開；按鈕上一點小小的燈亮起；剪在拇指放開的一半；畫面上沒有嘴；最後：小燈亮著，她的手還搭在床欄上 | — | 約 2 秒 |
 | c19 | 中景、固定（2 秒內的轉場）；鏡頭在床頭左邊點滴架旁、往床尾與門口拍；直式前後疊開：前景左下緣是 Nora 的左肩與頭髮（背對鏡頭、虛焦），中間右邊是站在床右邊的 Grant，上緣是開著的門 | 共三人。前景左下緣：Nora（`hospital`）的左肩與頭髮，不露臉；中間右：Grant（`rain`，深棕色皮鞋），站在床的右邊，臉轉向門口：眉心輕提、嘴角放平、下巴微收，`no smile at any moment, until the last frame`；上緣：值班醫生（白袍配淺灰手術服、黑色防滑工作鞋），從開著的門走進來，左手拿著 `a plain brown clipboard about the size of a hardcover book, papers facing away, a white ballpoint pen clipped to it`, in his left hand；眼睛看著畫面下方床上的 Nora（不看鏡頭）、眉毛微抬、嘴唇抿著，`no smile at any moment, until the last frame`；門框內側 `a long black umbrella about as tall as a man's hip, closed, dripping, propped against the door frame`；白毯上 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm` | 醫生跨過門口、往床尾走；Grant 站直、兩手垂下；剪在醫生走到床尾的一半；畫面上的人都嘴閉著；最後：醫生停在床尾右側、夾板在左手 | — | 約 2 秒 |
-| c20 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；前景右下緣是床欄 | Nora（`hospital`），半坐；四分之三側臉朝畫面右下床尾的醫生、眼睛看著他，不看鏡頭；眉頭壓低往中間收、眼睛直直的、下巴往前、聲音發緊，`no smile at any moment, until the last frame` | Nora 身子往床尾的方向坐直一點；嘴在說話（急）；說完下巴抬起來，嘴閉上；最後：她抬著下巴看著醫生 | Nora（急，壓著）：I asked for Dr. Brandt. Where is she?（我要找的是 Dr. Brandt。她在哪？）（原聲）（→ 答在 c21） | 約 3.5 秒 |
+| c20 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；前景右下緣是床欄 | Nora（`hospital`），半坐；四分之三側臉朝畫面右下床尾的醫生、眼睛看著他，不看鏡頭；眉頭壓低往中間收、眼睛直直的、下巴往前、聲音發緊，`no smile at any moment, until the last frame` | Nora 身子往床尾的方向坐直一點；嘴在說話（急）；說完下巴抬起來，嘴閉上；最後：她抬著下巴看著醫生 | Nora（急，壓著）：I want Dr. Brandt. Where is she?（我要 Dr. Brandt。她在哪？）（原聲）（→ 答在 c21） | 約 3.5 秒 |
 | c21 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；前景左下緣是床尾的欄杆與白毯 | 值班醫生（白袍配淺灰手術服），站在床尾右側；身後灰綠牆；四分之三側臉朝畫面左的 Nora、眼睛看著她，不看鏡頭；眉毛微抬、眼睛平穩不閃、嘴唇在句子之間抿薄、下巴微收（俐落、已經決定好），`no smile at any moment, until the last frame`；左手 `a plain brown clipboard about the size of a hardcover book, papers facing away, a white ballpoint pen clipped to it`, in his left hand | 醫生嘴在說話（客氣、快）（動作一）；說話時把夾板平放在床尾、她腳邊的白毯上（動作二）；說完手離開夾板，嘴閉上；最後：`a plain brown clipboard about the size of a hardcover book, papers facing away, a white ballpoint pen clipped to it`, lying flat on the blanket at the foot of the bed，紙朝下，一直留在畫面左下 | 值班醫生（客氣、快）：Dr. Brandt went off shift at six. She's back tomorrow.（Dr. Brandt 六點下班了。她明天回來）（原聲） | 約 4.5 秒 |
 | c22 | 近景、固定；直式，臉在上三分之一；身後灰綠牆 | 值班醫生，站在床尾右側；四分之三側臉朝畫面左的 Nora；眼睛往畫面右外的 Grant 瞄一下、再回到 Nora；眉毛微抬、嘴角平、下巴微收、鼻子輕輕吸一口氣，`no smile at any moment, until the last frame` | 醫生的眼睛往畫面右一瞄、再回到她；嘴在說話（客氣、平）；說完兩手在白袍前交握，嘴閉上；最後：他兩手交握、看著她 | 值班醫生（客氣，像在照會一件事）：Your husband mentioned you're upset.（你先生說過你情緒不太好）（原聲） | 約 3 秒 |
 | c23 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；前景右下緣是床欄 | Nora（`hospital`），半坐；四分之三側臉朝畫面右下的醫生；眉頭壓低、眼睛眯細、下巴繃緊、鼻孔一張（她聽懂了，換一條路），`no smile at any moment, until the last frame` | Nora 的眼睛往畫面右上的 Grant 一瞥、再回到醫生；嘴在說話（很穩）；說完嘴唇抿緊，嘴閉上；最後：她盯著醫生 | Nora（很穩，不讓步）：What's her extension?（她的分機是幾號？）（原聲）（→ 答在 c24） | 約 3 秒 |
@@ -132,11 +132,11 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 | c25 | 中景、固定；鏡頭在床頭左邊、往床尾與門口拍；直式：前景左下緣是床欄，中間是床尾與夾板，上半是門口 | 共兩人露臉。Grant（`rain`，深棕色皮鞋），從床的右邊走到床尾右側，右手輕輕搭上醫生的左手肘；值班醫生（白袍、黑色防滑工作鞋），站在床尾右側；兩人轉向畫面右後開著的門；Grant 練過的溫柔臉（英文照〈欄位怎麼讀〉），眼睛看著醫生；醫生眉毛微抬、嘴角平，`no smile at any moment, until the last frame`；床尾的白毯上 `a plain brown clipboard about the size of a hardcover book, papers facing away, a white ballpoint pen clipped to it`, lying flat on the blanket at the foot of the bed；門框內側 `a long black umbrella about as tall as a man's hip, closed, dripping, propped against the door frame` | Grant 走到醫生身邊（動作一），右手搭著他的手肘、把他往門口帶（動作二）；剪在兩人轉向門口的一半；兩人都嘴閉著；最後：兩人背對床、走向門口，夾板留在床尾的白毯上 | — | 約 2.5 秒 |
 | c26 | 近景、慢推（從胸上推到肩上）；**機位在門外的走廊**、往病房門裡拍；直式過肩：前景左緣是醫生的右肩（白袍，背對鏡頭、虛焦），Grant 在門口、臉在上三分之一；身後是虛焦的病房牆與百葉窗的光，床不入鏡 | Grant（`rain`），站在病房門口、背對病房；`a folded white cotton handkerchief about the size of his palm, tucked in his breast pocket`；門框內側 `a long black umbrella about as tall as a man's hip, closed, dripping, propped against the door frame` 在畫面右下；四分之三側臉朝畫面左的醫生、眼睛看著他，不看鏡頭；眉心提著（擔心的樣子）、眼睛定定的、下巴收緊、嘴唇在字之間抿薄、聲音壓到最低，`no smile at any moment, until the last frame`；醫生只有肩，不露臉 | Grant 頭往醫生那邊低一點，嘴在說話（壓低）；說完右手在醫生的手肘上捏一下，嘴閉上；最後：他還握著醫生的手肘 | Grant（壓低，像在交代一件公事）：She's confused. Route everything through me.（她糊塗了。什麼事都先找我）（原聲）（結尾） | 約 3.5 秒 |
 | c27 | 插鏡、特寫、固定；**第一格就是床尾白毯上的夾板**；直式，夾板在中間 | `a thin folded white cotton blanket, opened out over her legs`，床尾的白毯上 `a plain brown clipboard about the size of a hardcover book, papers facing away, a white ballpoint pen clipped to it`, lying flat on the blanket at the foot of the bed，紙朝下；Nora 的右手（奶油色開襟衫袖口）從畫面左伸進來；畫面裡沒有臉 | 她的右手把白色原子筆從夾子底下抽出來，收回畫面左；剪在筆剛離開夾子；畫面上沒有嘴；最後：`a plain white ballpoint pen as long as her hand` 在她右手裡、往畫面左出畫，夾板留在白毯上、夾子空了 | — | 約 2 秒 |
-| c28 | 近景、側面、慢推（從胸上推到臉）；顏值鏡頭；直式，臉在上三分之一、兩手在下緣；前景右下緣是虛焦的床欄 | Nora（`hospital`），半坐在床上，側臉朝畫面右；百葉窗的光切成一條，正好橫過她蒼白的側臉與垂下的睫毛；長髮垂在肩上；左手手心朝上、朝著她自己（手背朝鏡頭），右手拿著 `a plain white ballpoint pen as long as her hand`, in her right hand，筆尖在左手心上；**手心的字不入鏡，只拍筆尖在動**；睫毛垂著、眉毛定住、嘴唇抿緊、呼吸憋著，`no smile at any moment, until the last frame` | Nora 用筆尖在左手心上寫，一筆一筆；寫到一半眼睛往畫面右外的門口抬一下、再垂回手心；剪在眼睛垂回去；嘴閉著；最後：筆尖還停在手心上 | — | 約 3.5 秒 |
+| c28 | 近景、側面、慢推（從胸上推到臉）；顏值鏡頭；直式，臉在上三分之一、兩手在下緣；前景右下緣是虛焦的床欄 | Nora（`hospital`），半坐在床上，側臉朝畫面右；百葉窗的光切成一條，正好橫過她蒼白的側臉與垂下的睫毛；長髮垂在肩上；左手立起來、手心朝她自己的胸口、手背朝鏡頭，右手拿著 `a plain white ballpoint pen as long as her hand`, in her right hand，**筆尖藏在左手後面**、只看得到筆桿的尾端在動；**手心整鏡不入鏡**；睫毛垂著、眉毛定住、嘴唇抿緊、呼吸憋著，`no smile at any moment, until the last frame` | Nora 用筆在立起來的左手心上寫（筆尖藏在手後），筆桿的尾端一筆一筆地動；寫到一半眼睛往畫面右外的門口抬一下、再垂回手心；剪在眼睛垂回去；嘴閉著；最後：左手還立著、手背朝鏡頭，筆尖停在手心上（藏在手後） | — | 約 3.5 秒 |
 | c29 | 中景、固定；鏡頭在床頭左邊、往床尾與門口拍；直式：前景左下緣是床欄，中間是床尾，上半是門口 | 共兩人。值班醫生（白袍、黑色防滑工作鞋），從門口跨回床尾一步；四分之三側臉朝下看床尾，眉毛平、嘴唇抿著，`no smile at any moment, until the last frame`；Grant（`rain`，深棕色皮鞋）站在門口，背對鏡頭、只露後腦與肩；床尾白毯上 `a plain brown clipboard about the size of a hardcover book, papers facing away, a white ballpoint pen clipped to it`, lying flat on the blanket at the foot of the bed 這一鏡**不照抄整句**，寫 `a plain brown clipboard about the size of a hardcover book, papers facing away, its clip empty, lying flat on the blanket at the foot of the bed`（筆在 c27 已被她抽走）；門框內側 `a long black umbrella about as tall as a man's hip, closed, dripping, propped against the door frame` | 醫生左手從床尾拿起夾板、看都沒看就轉身走出門（往走廊右邊）；剪在他跨出門檻的一半；嘴閉著；最後：醫生半個身子在門外，Grant 還背對著站在門口 | — | 約 2 秒 |
 | c30 | 中近景、固定；直式過肩：從 Nora 的右肩後拍（肩與頭髮在畫框左下緣、虛焦），前景下緣是她放在白毯上的兩手，上半是門口的 Grant | 前景：Nora（`hospital`）的右肩、頭髮與兩手，不露臉；左手手心朝上、右手拿著 `a plain white ballpoint pen as long as her hand`, in her right hand；`a thin folded white cotton blanket, opened out over her legs`；後景：Grant（`rain`，深棕色皮鞋）站在開著的門口，門框內側 `a long black umbrella about as tall as a man's hip, closed, dripping, propped against the door frame`；他轉回身面向床：練過的溫柔臉（英文照〈欄位怎麼讀〉），眼睛看著畫面左下的她 | 前景：她的左手握成拳（動作一），右手把筆塞進白毯的邊底下（動作二）；後景：Grant 從門口轉過身來；剪在他轉到正面、她的拳頭剛握緊；畫面上的人都嘴閉著；最後：她的左手握著拳放在白毯上、筆不見了，Grant 站在門口看著她 | — | 約 2.5 秒 |
 
-### 第三場：病房，帳號與大衣（約 29 秒）
+### 第三場：病房，帳號與大衣（約 30 秒）
 
 **場頭**：
 - **地點與場景圖**：同一間病房（格局同第一場）；門開著、黑傘靠在門框內側；椅面上紙袋與雨衣、椅背上駝色大衣（c36 起在 Grant 左手）；床頭櫃上側倒的空杯；白毯底下塞著筆（不入鏡）。
@@ -151,8 +151,8 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 | --- | --- | --- | --- | --- | --- |
 | c31 | 中近景、慢推（從腰上推到胸上）；直式過肩：從 Grant 的左肩後拍（他的左肩與後腦在畫框右下緣、虛焦、不露臉），Nora 在畫面左、臉在上三分之一、手在下緣；手機從側邊拍，螢幕那一面不入鏡 | 共兩人，只有 Nora 露臉。前景右下緣：Grant（`rain`）的左肩與後腦，已經走回床的右邊、站著，不露臉；Nora（`hospital`），半坐；左手握拳放在白毯上（`a thin folded white cotton blanket, opened out over her legs`）；右手拿起 `a new white phone with no logo, about the size of her palm`，`its screen a soft white glow, seen from the side`，白光從下面照在她臉上；膝上 `a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm`；眉毛壓平、眼睛眯細盯著手機、嘴唇抿緊、呼吸放慢，`no smile at any moment, until the last frame` | Nora 右手把手機從白毯上拿起來，拇指在螢幕上點；左手的拳頭不動；剪在拇指點到一半；嘴閉著；最後：她低頭盯著手機 | — | 約 2.5 秒 |
 | c32 | 插鏡、特寫、固定；**鏡頭放低到白毯的高度、從側邊平拍**；**第一格就是她右手拿著的手機側邊**；直式 | Nora 的右手（奶油色開襟衫袖口）拿著 `a new white phone with no logo, about the size of her palm`，`its screen a soft white glow, seen from the side`；螢幕那一面整鏡不入鏡；白光照在她的手指與白毯上；畫面裡沒有臉 | 她的拇指點一下，手機平平地嗡一聲、在她手裡抖一下（動作一）；她再點一下，又嗡一聲、又抖一下（動作二）；剪在第二聲嗡的一半；畫面上沒有嘴；最後：拇指停在螢幕上 | — | 約 3 秒 |
-| c33 | 近景、固定；直式，臉在上三分之一；手機的白光從下緣照上來 | Nora（`hospital`），半坐；眼睛從手機抬到畫面右上的 Grant；眉頭往中間收緊、嘴唇微張、呼吸停住一拍，`no smile at any moment, until the last frame` | Nora 的眼睛從手機抬起來看著他；剪在眼睛抬到一半；嘴閉著；最後：她看著畫面右上 | — | 約 2 秒 |
-| c34 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；前景左下緣是床欄；身後百葉窗的冷白光條 | Grant（`rain`，頭髮與領口半乾），站在床的右邊；`a folded white cotton handkerchief about the size of his palm, tucked in his breast pocket`；四分之三側臉朝畫面左下的 Nora、眼睛看著她；練過的溫柔臉（英文照〈欄位怎麼讀〉），聲音溫和得像在解釋一件小事 | Grant 右手輕輕搭上床欄，嘴在說話（溫和、平順）；說完點一下頭，嘴閉上；最後：他的右手搭在床欄上、看著她 | Grant（溫和，像在幫她的忙）：I'm the account holder, babe. I changed it for you.（帳號是我的，寶貝。密碼我幫你改了）（原聲）← 因為 c32 | 約 4.5 秒 |
+| c33 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；手機在下緣、從側邊拍，螢幕那一面不入鏡，白光從下緣照上來；前景右下緣是床欄 | Nora（`hospital`），半坐；右手拿著 `a new white phone with no logo, about the size of her palm`，`its screen a soft white glow, seen from the side`；左手握拳在白毯上；第一格她已經抬眼，四分之三側臉朝畫面右上的 Grant、眼睛看著他，不看鏡頭；眉頭往中間收緊、眼睛睜大、嘴唇在字之間發緊、呼吸短，`no smile at any moment, until the last frame` | Nora 看著他，嘴在說話（困惑、發緊）（動作一）；說完右手把手機放低到白毯上方（動作二），嘴閉上；最後：手機低低拿在右手、她看著畫面右上 | Nora（困惑，發緊）：It won't take my password.（它不收我的密碼）（原聲）（→ 答在 c34） | 約 3 秒 |
+| c34 | 近景、慢推（從胸上推到肩上）；直式，臉在上三分之一；前景左下緣是床欄；身後百葉窗的冷白光條 | Grant（`rain`，頭髮與領口半乾），站在床的右邊；`a folded white cotton handkerchief about the size of his palm, tucked in his breast pocket`；四分之三側臉朝畫面左下的 Nora、眼睛看著她；練過的溫柔臉（英文照〈欄位怎麼讀〉），聲音溫和得像在解釋一件小事 | Grant 右手輕輕搭上床欄，嘴在說話（溫和、平順）；說完點一下頭，嘴閉上；最後：他的右手搭在床欄上、看著她 | Grant（溫和，像在幫她的忙）：I'm the account holder, babe. I changed it for you.（帳號是我的，寶貝。密碼我幫你改了）（原聲）← 因為 c33 | 約 4.5 秒 |
 | c35 | 近景、固定；直式，臉在上三分之一；前景下緣是白毯與她的右手 | Nora（`hospital`），半坐；右手 `a new white phone with no logo, about the size of her palm`；左手握拳在白毯上；四分之三側臉朝畫面右上的 Grant；下巴咬緊、鼻孔一張、眼睛定定盯著他、嘴唇壓成一條線，`no smile at any moment, until the last frame` | Nora 眼睛一直看著他，右手把手機翻過來、面朝下蓋在右手邊的白毯上；剪在手機剛蓋下去；嘴閉著；最後：新手機面朝下在她右手邊的白毯上，左手握拳 | — | 約 2 秒 |
 | c36 | 中近景、固定；直式，**頭上留出空間，轉身、直起身後整個頭仍在畫面裡**；身後百葉窗的光條與那張椅子 | Grant（`rain`，頭髮與領口半乾），站在靠窗那張椅子前；`a folded white cotton handkerchief about the size of his palm, tucked in his breast pocket`；左手提著 `a camel wool coat with deep pockets, held up by the collar in his left hand`；椅面上 `a plain brown paper shopping bag about the size of a hardcover book, flat bottom, folded top, no logo` 與 `a navy raincoat folded in half`；四分之三側臉朝畫面左下的 Nora；練過的溫柔臉（英文照〈欄位怎麼讀〉） | 第一格他已經轉身朝著椅子；Grant 左手抓住大衣領子、從椅背上提起來（動作一），轉回來對著她嘴在說話（動作二）；說完把大衣提在床邊的高度，嘴閉上；最後：大衣垂在他左手、跟床一樣高 | Grant（暖、體貼）：I'll take this home and wash it.（我拿回家洗）（原聲） | 約 4 秒 |
 | c37 | 中近景、慢推（從腰上推到胸上）；直式，臉在上三分之一、大衣在下半；前景左下緣是床欄 | Grant（`rain`），站在椅子前；左手 `a camel wool coat with deep pockets, held up by the collar in his left hand`；四分之三側臉朝畫面左下的 Nora；練過的溫柔臉（英文照〈欄位怎麼讀〉） | Grant 嘴在說話（暖）（動作一）；說話時右手伸進大衣右邊的口袋（動作二）；說完眼睛垂下看口袋，嘴閉上；最後：他的右手插在大衣右邊口袋裡、低頭看口袋 | Grant（暖，順口）：Bring you a clean one tomorrow.（明天給你帶一件乾淨的）（原聲）（結尾）（懸念 → 下一集第一場） | 約 3.5 秒 |
@@ -160,7 +160,7 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 | c39 | 近景、慢推（從胸上推到臉）；直式，臉在上三分之一；前景右下緣是虛焦的床欄 | Nora（`hospital`），半坐；眼睛盯著畫面右外他插在口袋裡的手；眉毛往上一跳、眼睛睜大不眨、嘴唇微張、呼吸停住，`no smile at any moment, until the last frame` | Nora 的左手拳頭在白毯上一下握緊；呼吸停住；剪在拳頭握緊的那一下；嘴閉著；最後：她盯著畫面右外的口袋 | — | 約 2.5 秒 |
 | c40 | 中景、固定；鏡頭在床尾、往床頭櫃與窗邊拍（同第 3 集 c10 的機位）；直式前後疊開：左邊是半坐的 Nora（側臉），中間是床頭櫃，右邊是站在椅子前的 Grant（腰以上），上緣是百葉窗；門不入鏡 | 共兩人。左邊：Nora（`hospital`），半坐在床上，`a thin folded white cotton blanket, opened out over her legs`，`a cream baby hat about the size of her palm, half-knitted, still on two wooden knitting needles as long as her forearm` 在膝上；左手握拳放在白毯上；`a new white phone with no logo, about the size of her palm` 面朝下在她右手邊的白毯上；側臉朝畫面右，眼睛盯著他插在口袋裡的手：眉毛提起、眼睛睜大、嘴唇微張、呼吸憋著；中間：床頭櫃上 `a clear plastic hospital cup about the size of her fist, empty, lying on its side at the edge of the nightstand`；右邊：Grant（`rain`，頭髮與領口半乾）站在床的右邊、靠窗那張椅子前，左手把 `a camel wool coat with deep pockets, held up by the collar in his left hand` 提在床邊的高度，右手插在大衣右邊口袋裡，低頭看口袋：眉頭微皺、眼皮垂著、嘴唇抿著；椅面上 `a plain brown paper shopping bag about the size of a hardcover book, flat bottom, folded top, no logo` 與 `a navy raincoat folded in half`；兩張臉都 `no smile at any moment, until the last frame` | 第一格他的右手已經停在口袋裡；Grant 低頭看著口袋，頭再低一點；Nora 的上身往前傾一點點，剪在她剛要動；兩人都嘴閉著；最後：他的手停在口袋裡、她盯著那隻手 | —（懸念 → 下一集第一場：她按住口袋） | 約 3 秒 |
 
-約 112 秒（1 分 52 秒）、40 鏡（第一場 17、第二場 13、第三場 10），是各鏡秒數加起來的估計；細綱 `duration_s` 110 秒，bible 目標 37–41 鏡。
+約 113 秒（1 分 53 秒）、40 鏡（第一場 17、第二場 13、第三場 10），是各鏡秒數加起來的估計；細綱 `duration_s` 110 秒，bible 目標 37–41 鏡。
 開場 10 秒四鏡（c01–c04；c04 從第 8 秒開始），「Got you a new one」c05 約第 10 秒；「You're exhausted」c15 約第 39 秒（mid hook）；集尾的手停在口袋 c38 約第 105 秒。
 
 ## 注意事項
@@ -181,7 +181,7 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
 - **c09 後半句「I'll call my old number.」**：bible 只寫「她撥自己的舊號碼」；不說出來，觀眾聽到停號錄音不知道她打給誰。跟「There's no one in here.」放在同一鏡（10 個字）。
-- **c20「I asked for Dr. Brandt. Where is she?」**：bible 只寫「她按呼叫鈕要 Dr. Brandt」；呼叫鈕不放對講的聲音（不多一個 Gemini 聲音），醫生進來後她當面問。
+- **c20「I want Dr. Brandt. Where is she?」**：bible 只寫「她按呼叫鈕要 Dr. Brandt」；呼叫鈕不放對講的聲音（不多一個 Gemini 聲音），醫生進來後她當面問。
 - **c21 醫生邊說邊把夾板平放在床尾**（紙朝下），c29 出門前從床尾拿回去、沒看就走；bible 只寫「在門口說話時放在床尾」。c29 的夾板筆已經被抽走，所以這一鏡不照抄整句，寫 `…, papers facing away, its clip empty`（照抄會把筆畫回去）。
 - **c01 Grant 把手機收進西裝左胸內袋**（第 3 集 c28 就是從左胸內袋拿出來的）；**c10 空盒放回椅面上的紙袋裡**（bible〈帳〉手機盒的寫法）。
 - **Grant 整集站著**（床右邊、床頭櫃與椅子之間），不坐床沿：c15 彎身塞毯子、c25 走到床尾、c36 轉身提大衣都從站著開始，不用寫坐→站。
@@ -190,14 +190,22 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 - **值班醫生的鞋**：黑色防滑工作鞋（中景的鏡要寫鞋）。
 - **`cast.json` extras `on-call-doctor` 的 voice 寫的是 Gemini Orus**，bible 與它的 note 寫原聲（model voice）：本集照 bible 用原聲，Orus 那段 style 只當原聲提示詞的語氣參考（`brisk, polite, already decided`），製作端不要另外合成。
 
+### 2026-11-12 審稿後的修改
+
+獨立審稿（`review/2026-11-12-e004-e007-storyboard.md`）後改的。本集**還沒有錄、沒有拍**，沒有要重錄或重抽的鏡。
+- **c33 改成原聲鏡**：她抬眼對 Grant 說「It won't take my password.」（→ 答在 c34），說完把手機放低、嘴閉上；觀眾才知道她登入的是什麼、c34「I'm the account holder」回應的是什麼。2 秒 → 3 秒；c34 改標「← 因為 c33」。
+- **c20 台詞**：「I asked for Dr. Brandt. Where is she?」→「I want Dr. Brandt. Where is she?」（觀眾沒看到她先前要求過）。
+- **c28**：左手立起來、手心朝她胸口、手背朝鏡頭，筆尖藏在手後，只看得到筆桿尾端在動（原本「手心朝上」與「手背朝鏡頭」矛盾，側拍會露出手心的字）。
+- 鏡數不變，秒數 112 → 113（第三場 29 → 30 秒）；原聲鏡 14 → 15 支（買 90 秒）。
+
 ### 配音
 
 - **Gemini 錄音只有一句**：c11 停號錄音「We're sorry. The number you have reached is not in service.」（Leda，`cast.json` extras `phone-recording`）。錄乾聲，剪接時壓成電話頻寬，前面放三聲往上的電子音（美國電話公司的停號音）；4.5 秒的畫面裝得下，不 spill。
-- **其他十四句都是原聲**（c03、c05、c09、c14、c15、c20、c21、c22、c23、c24、c26、c34、c36、c37）：用那一鏡草稿自己的音軌，英文；每鏡至少買 6 秒（合計 84 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。
-- 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：Nora 輕、穩、句尾往下，c14、c20 急而壓著；Grant 平順的「發表會」聲音，c26 壓到最低但不是耳語，c34 溫和得像在幫忙；值班醫生俐落、客氣、已經決定好了（`cast.json` 的 Orus style）。
-- **6 個字以內的句子**（c03、c05、c14、c15、c22、c23、c24、c26、c37）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上；草稿有多講的字就剪掉或重抽。
+- **其他十五句都是原聲**（c03、c05、c09、c14、c15、c20、c21、c22、c23、c24、c26、c33、c34、c36、c37）：用那一鏡草稿自己的音軌，英文；每鏡至少買 6 秒（合計 90 秒），剪接照台詞長度剪，**不放慢、不加空白尾巴**，片段不夠長就停在最後一格。
+- 原聲鏡的提示詞照 `cast.json` 的 voice style 寫語氣與口音（General American accent）：Nora 輕、穩、句尾往下，c14、c20 急而壓著，c33 困惑；Grant 平順的「發表會」聲音，c26 壓到最低但不是耳語，c34 溫和得像在幫忙；值班醫生俐落、客氣、已經決定好了（`cast.json` 的 Orus style）。
+- **6 個字以內的句子**（c03、c05、c14、c15、c22、c23、c24、c26、c33、c37）放進 6 秒片段，模型會把空檔講滿：句後寫了收尾動作與「嘴閉上」，剪在收尾動作上；草稿有多講的字就剪掉或重抽。
 - **c24「Four-one-one-six.」**：正文寫成字，一個數字一個數字念清楚；草稿念成「forty-one sixteen」就重抽。
-- **還沒驗**（bible〈全劇固定〉）：H3 說英文的口音、同一角色跨鏡的聲音是否一致（Grant 七鏡、Nora 四鏡、值班醫生四鏡），第一批草稿先聽；Grant 要跟第 3 集他的原聲對一下。不一致就回報站主再決定。
+- **還沒驗**（bible〈全劇固定〉）：H3 說英文的口音、同一角色跨鏡的聲音是否一致（Grant 七鏡、Nora 五鏡、值班醫生四鏡），第一批草稿先聽；Grant 要跟第 3 集他的原聲對一下。不一致就回報站主再決定。
 - 本集沒有心裡話。CC 軟字幕、不燒錄、不標說話人；c11 的錄音也上字幕。
 
 ### 音樂與音效
@@ -231,7 +239,7 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 
 ### 剪接
 
-- edit 表設 `punch: false`、`interpolate: false`；`slow_max`：原聲鏡（c03、c05、c09、c14、c15、c20、c21、c22、c23、c24、c26、c34、c36、c37）設 **1.0**，其他鏡 1.1。輸出 9:16 直式。
+- edit 表設 `punch: false`、`interpolate: false`；`slow_max`：原聲鏡（c03、c05、c09、c14、c15、c20、c21、c22、c23、c24、c26、c33、c34、c36、c37）設 **1.0**，其他鏡 1.1。輸出 9:16 直式。
 - 開頭不放集數、不放片名卡、不回顧；第一鏡 c01 直接接第 3 集最後一鏡的同一個鏡位與同一刻（第 3 集 c40 剪在他的手還按在手機上，本集從同一個姿勢起）。
 - 時間連續、不跳；光從冷灰慢慢變冷白，三場之間硬切，不溶。
 - c11 的錄音蓋在手機貼耳的插鏡上，前後兩鏡（c10、c12）都不露她的嘴在說話。
@@ -261,7 +269,7 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 
 ### 3. 長鏡清單
 
-本集沒有超過 6 秒的鏡。原聲鏡十四支每支買 6 秒（不是長鏡，剪到台詞長度）；c11 Gemini 錄音 4.5 秒照一般片段買。
+本集沒有超過 6 秒的鏡。原聲鏡十五支每支買 6 秒（不是長鏡，剪到台詞長度）；c11 Gemini 錄音 4.5 秒照一般片段買。
 
 ### 4. 音樂與音效
 
