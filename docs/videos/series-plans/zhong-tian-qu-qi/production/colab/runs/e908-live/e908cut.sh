@@ -9,6 +9,9 @@ miss=$(python3 -c "import json,os;p=json.load(open('$E/picks.json'));print(' '.j
 [ -z "$miss" ] || { echo "not staged: $miss -- run: python3 $P/live-action/stage.py 8"; exit 1; }
 cd $P/hailuo && VIDEO_WORKDIR=/root/mokaair-work/videos node assemble-v4.mjs $VJ $R/docs/videos/zhong-tian-qu-qi-e008-r2/overlays.json $P/hailuo/edit-dh-e908-live.json $E $E/cut/e908-live.mp4 > $E/cut/final.log 2>&1; tail -3 $E/cut/final.log
 [ -f $E/cut/e908-live.mp4 ] || exit 1
+# e908 cut review: assemble-v4's own loudnorm leaves TP about -1.4, loudnorm2 then cannot go linear (TP -2.2) and its
+# dynamic fallback put a click at 124.77 (true peak +2.5 dBFS); a sample-peak limiter at -4 dBFS first keeps it linear
+ffmpeg -v error -y -i $E/cut/e908-live.mp4 -map 0 -c copy -c:a aac -b:a 192k -af "alimiter=limit=0.63:attack=2:release=60:level=false,aresample=48000" $E/cut/e908-live.lim.mp4 && mv $E/cut/e908-live.lim.mp4 $E/cut/e908-live.mp4
 bash $Q/loudnorm2.sh $E/cut/e908-live.mp4
 echo "== cut-qa";   python3 $Q/cut-qa.py $E/cut --stem e908-live 2>&1 | tail -20
 echo "== cut-jumps"; python3 $Q/cut-jumps.py $E/cut 2>&1 | tail -12

@@ -275,7 +275,9 @@ for (const scene of video.scenes) {
   // pitch with formant=preserved keeps the timing, so the lips still match). Applied here, not in stage.py, so a re-stage
   // of the clips cannot undo it.
   const caf = voiced ? edit.clip_af?.[scene.id] : null;
-  const voice = !voiced ? [] : caf
+  const voice = !voiced ? [] : caf && !(Number(caf.from) > 0)
+    ? [`[0:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS,${caf.af},aresample=48000,aformat=channel_layouts=stereo[cv]`]
+    : caf
     ? [`[0:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS,asplit[cva][cvb]`,
       `[cva]atrim=end=${Number(caf.from).toFixed(3)},asetpts=PTS-STARTPTS[cv1]`,
       `[cvb]atrim=start=${Number(caf.from).toFixed(3)},asetpts=PTS-STARTPTS,${caf.af},aresample=48000,aformat=channel_layouts=stereo[cv2]`,
