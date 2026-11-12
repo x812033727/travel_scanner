@@ -1,0 +1,14 @@
+[Unit]
+Description=Copy the Mokaair nightly backup to Google Drive once a day
+
+[Timer]
+# 90 minutes after travel-scanner-backup.timer (20:17 UTC); a run not finished by then is
+# picked up the next day, because offsite.py uploads every complete run Drive does not have.
+OnCalendar=*-*-* 21:47:00 UTC
+RandomizedDelaySec=120
+AccuracySec=1min
+Persistent=true
+Unit=travel-scanner-offsite.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,248 @@
+{
+  "batch_id": "wave52-life-20261111",
+  "created_on": "2026-11-11",
+  "scope": "末端複製問題的預言與端粒酶的實驗史、光合作用『氧來自水』的挑戰與重驗：替長題 G27、G29 補教材以外的來源；四來源。",
+  "sources": [
+    {
+      "id": "L52-S001",
+      "url": "https://www.nobelprize.org/uploads/2018/06/advanced-medicineprize2009.pdf",
+      "canonical_url": "https://www.nobelprize.org/uploads/2018/06/advanced-medicineprize2009.pdf",
+      "title": "Advanced Information: Maintenance of chromosomes by telomeres and the enzyme telomerase",
+      "publisher": "Nobel Assembly at Karolinska Institutet（nobelprize.org）",
+      "version": "2009 年諾貝爾生理醫學獎科學背景 PDF（12 頁）",
+      "accessed_on": "2026-11-11",
+      "read_via": "nobelprize.org PDF 200，pdftotext 全文逐段讀",
+      "reading_scope": "摘要、Introduction、Setting the stage、Further developments、Significance（Cancer、Ageing、Hereditary disease）",
+      "locator": "Introduction 與 Fig.1；Further developments（EST1）；Cancer 段；Ageing 段",
+      "summary": "DNA 聚合酶需要現成引子，因此線性染色體末端無法完整複製；Watson 與 Olovnikov 各自指出新股會留下單股尾巴、染色體會隨時間變短，Olovnikov 並連到人類體細胞在培養中的有限分裂壽命；多數原核生物與病毒是環狀基因組而避開此問題。Szostak 與 Blackburn 把四膜蟲 rDNA 末端片段接到線性酵母質體兩端，使其在酵母中穩定（1982）；Greider 與 Blackburn 1985 在四膜蟲萃取液中測到加上 TTGGGG 重複的活性（端粒酶），並找到 RNA 中 CAACCCCAA 作模板。Szostak 的酵母 EST1（ever shorter telomeres）突變端粒逐代變短、染色體流失增加並延遲衰老。80–90% 癌症端粒酶活性升高；把端粒酶導入正常人類培養細胞可延長壽命，但生物體老化是多因素過程。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "諾貝爾委員會綜述，非原研究；1982/1985 原論文未讀。不得外推為抗老方法。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/nobel2009_adv.pdf",
+        "sha256_prefix": "bd3ccf2eef043e05",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L52-S002",
+      "url": "https://physicstoday.aip.org/obituaries/martin-david-kamen",
+      "canonical_url": "https://physicstoday.aip.org/obituaries/martin-david-kamen",
+      "title": "Martin David Kamen（obituary）",
+      "publisher": "Physics Today 56(5), 74 (2003)，AIP",
+      "version": "網頁全文",
+      "accessed_on": "2026-11-11",
+      "read_via": "curl 200，全文去標籤讀",
+      "reading_scope": "全文",
+      "locator": "『A 1941 paper he wrote with Ruben…』段",
+      "summary": "1941 年 Kamen 與 Ruben 等人以穩定同位素氧-18 發表的論文，推翻了光合作用放出的 O₂ 來自二氧化碳的普遍看法，證明 O₂ 來自水。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "訃聞一句話，無實驗細節；1941 JACS 原文（63:877–879）付費未讀。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/kamen_obit.html",
+        "sha256_prefix": "678d9132f234b752",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L52-S003",
+      "url": "https://doi.org/10.1007/s11120-024-01111-8",
+      "canonical_url": "https://doi.org/10.1007/s11120-024-01111-8",
+      "doi": "10.1007/s11120-024-01111-8",
+      "title": "Bicarbonate is a key regulator but not a substrate for O2 evolution in Photosystem II",
+      "publisher": "Vinyard、Govindjee；Photosynthesis Research 162: 93–99 (2024)",
+      "version": "期刊正式版（PMC11413114，CC BY 4.0）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST 全文 XML 200，全文逐段讀",
+      "reading_scope": "Introduction、熱力學段、結構段、結論",
+      "locator": "Introduction 第2段；『PSII electron donor side has not been shown to have any high affinity bicarbonate binding sites』段",
+      "summary": "1940 年代初研究（Ruben 等 1941；Vinogradov 與 Teis 1941）發現放出 O₂ 的同位素組成與水幾乎相同，結論氧來自水；作者承認系統可能有自發或生物促成的同位素混合（Metzner 1975 的討論）。Warburg 與 Krippahl 1958 發現光反應需要碳酸氫根，重新挑戰氧的來源。熱力學上 OEC（+1.1 V）可氧化碳酸氫根（+0.7 V）或水（+0.9 V）兩者，所以不能單靠能量判定；冷凍電鏡、同步輻射與 XFEL 高解析結構都未在 OEC 附近看到結合的碳酸氫根。研究者已有共識 O₂ 只來自水，碳酸氫根是重要調節者；但以碳酸氫根為受質的假說近年（2021–2024）又有人提出。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "觀點文章；作者一方立場明確；不能說爭議完全消失。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/PMC11413114.xml",
+        "sha256_prefix": "cef4f373b7959023",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    },
+    {
+      "id": "L52-S004",
+      "url": "https://doi.org/10.3389/fpls.2013.00473",
+      "canonical_url": "https://doi.org/10.3389/fpls.2013.00473",
+      "doi": "10.3389/fpls.2013.00473",
+      "title": "Studying the oxidation of water to molecular oxygen in photosynthetic and artificial systems by time-resolved membrane-inlet mass spectrometry",
+      "publisher": "Shevela、Messinger；Frontiers in Plant Science 4:473 (2013)",
+      "version": "期刊正式版（PMC3840314，CC BY）",
+      "accessed_on": "2026-11-11",
+      "read_via": "Europe PMC REST 全文 XML 200；讀碳酸氫根受質假說段與水交換段",
+      "reading_scope": "碳酸氫根是否為受質一節；H₂¹⁸O 交換段",
+      "locator": "『Metzner (1978) suggested…』段起至 Hillier et al. 2006 段",
+      "summary": "Metzner 1978 提出碳酸氫根才是 O₂ 的直接受質；此說長期被排除，因 ¹⁸O 水與碳酸氫根的同位素平衡太慢，無法解釋早期標記結果（Ruben 1941、Stemler 與 Radmer 1975 等）；但 PSII 附近發現碳酸酐酶活性後必須重驗，因標記可能經酶快速交換『逃』到濃度高好幾個數量級的水裡。時間解析膜入口質譜：Clausen 等 2005 在 H₂¹⁸O 標記、去除 CO₂/碳酸氫根下，閃光仍產生典型振盪的 ¹⁸O-O₂，且未見 CO₂ 釋出；Hillier 等 2006 以 ¹⁸O/¹³C 標記碳酸氫根檢驗；兩者都排除碳酸氫根是生理上重要的受質。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "綜述；Clausen 2005、Hillier 2006 原文未讀。",
+      "author_cache": {
+        "file": "scratchpad/f1cache/PMC3840314.xml",
+        "sha256_prefix": "823d016563c82a26",
+        "note": "作者快取在 2026-11-11 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "id": "L52-001",
+      "question": "科學家是怎麼在發現端粒以前，就猜到染色體每複製一次都會變短？",
+      "domain": "基因複製",
+      "mechanism_key": "end_replication_problem_watson_olovnikov_prediction_circular_genomes",
+      "answer_target": "DNA 聚合酶一定要有現成的引子才能開工，所以線性 DNA 最末端無法完整複製。James Watson 和 Alexei Olovnikov 各自指出這個矛盾：新合成的分子會留下單股尾巴，染色體會隨分裂越來越短；Olovnikov 還把它和人類體細胞在培養皿裡只能分裂有限次數連起來。多數細菌和病毒的基因組是環狀的，根本沒有末端，因此避開了這個難題。",
+      "scope": "限諾貝爾委員會綜述；不給具體分裂次數；不推到人類壽命。",
+      "source_ids": [
+        "L52-S001"
+      ],
+      "source_locator": "S001 Introduction 與 Fig.1。",
+      "premise_status": "screened",
+      "notes": "填 G27 第七章『把同一套修補法移到染色體邊界』的觀眾入口與開場鉤子（審稿要的教材外來源）。約 2 條新事實（預言與有限分裂；環狀基因組避開）。與 V3027 機制相同處不重算。 原提案 F1-016。非作者覆核 V4（2026-11-11）照原稿收；近鄰：部分重疊 V3027（末端複製問題），原文相符。末端複製問題本身已在 V3027，新增的是『在發現端粒之前就被預言』與『環狀基因組避開』，計約 1.5 條。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "問題在機器規則裡就算得出來：只會往一個方向、又要起點，末端注定缺一截。",
+        "visual": "線性 vs 環狀 DNA 對照；每輪複製末端少一截的疊影",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "id": "L52-002",
+      "question": "四膜蟲的染色體末端，怎麼讓酵母裡的人工線性質體不再亂重組、能長期保存？",
+      "domain": "基因複製",
+      "mechanism_key": "telomere_tetrahymena_ends_stabilize_yeast_linear_plasmid_telomerase_discovery",
+      "answer_target": "線性質體放進酵母，末端很容易和染色體重組，無法長期保存。Szostak 與 Blackburn 把單細胞纖毛蟲四膜蟲的 rDNA 末端片段接到線性酵母質體兩端，質體就能以線性形式穩定存在（1982），顯示末端結構跨物種保守。1985 年 Greider 與 Blackburn 在四膜蟲萃取液測到在 DNA 尾端加上 TTGGGG 重複的活性；後續研究確認它是帶 RNA 的酵素並命名為端粒酶，1989 年找到 RNA 裡的 CAACCCCAA 序列作為模板。Szostak 的酵母突變株 EST1（ever shorter telomeres）端粒一代代變短、染色體更易遺失，經過多代後才走向衰老（原文稱延遲出現的衰老表型）。",
+      "scope": "原論文未讀，依諾貝爾綜述；不混用原核與真核例子。",
+      "source_ids": [
+        "L52-S001"
+      ],
+      "source_locator": "S001 Setting the stage、Fig.2–4 圖說、Further developments。",
+      "premise_status": "screened",
+      "notes": "填 G27 第七章：把 V3028『端粒酶自帶模板』由課本結論變成可驗證的實驗故事。約 2–3 條新事實（跨物種末端保全；TTGGGG 加成與 CAACCCCAA；EST1 變短→衰老）。 原提案 F1-017。非作者覆核 V4（2026-11-11）照覆核意見改字後收；近鄰：部分重疊 V3028（端粒酶自帶 RNA 模板），故事本身有來源，能把課本結論變成實驗。但 EST1 的『提早衰老』和原文相反，年代也被合併到 1985，這兩處都必須改；",
+      "editorial": {
+        "role": "segment",
+        "payoff": "末端不是被動地被複製，而是由一個自帶模板的酵素主動補上。",
+        "visual": "質體兩端換上四膜蟲末端前後的命運對照；TTGGGG 一段段加上的示意",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "L52-003",
+      "question": "既然端粒變短會讓細胞停止分裂，補回端粒酶能讓人不老嗎？",
+      "domain": "基因複製",
+      "mechanism_key": "telomerase_cancer_80_90pct_and_ageing_caveats",
+      "answer_target": "諾貝爾委員會的整理指出：80–90% 的癌症端粒酶活性升高，沒有升高的腫瘤常用另一種延長端粒的方式，這和癌細胞能無限分裂一致；端粒太短會誘發衰老與細胞死亡，被認為是防止失控增生的保護機制。把端粒酶導入正常人類培養細胞可以延長其分裂壽命，但生物體老化受很多因素影響，端粒長度與組織維持的關係也不是絕對；遺傳性端粒酶缺陷（如先天性角化不良症）則會出現類似早衰的症狀。",
+      "scope": "明確不推薦任何抗老產品或療法；癌症疫苗等臨床資訊停在 2009 年，不更新、不引用。",
+      "source_ids": [
+        "L52-S001"
+      ],
+      "source_locator": "S001 Cancer、Ageing、Hereditary disease 段。",
+      "premise_status": "screened",
+      "notes": "填 G27 結尾的限制段（企劃要求『不得外推為抗老』），把限制本身變成轉折：同一機制在癌細胞是失控、在正常細胞是剎車。約 2 條新事實。 原提案 F1-018。非作者覆核 V4（2026-11-11）照原稿收；內容相符，明確擋住抗老外推。但它回答的是『醫學意義』這個不同的問題，只能當 G27 結尾 20–30 秒的限制，所以我只計 1 條事實（F1 計 2 條）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "末端變短是剎車；拿掉剎車不等於返老還童。",
+        "visual": "細胞分裂計數器在『有/無端粒酶』兩路的分岔；不出現產品或人像",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "L52-004",
+      "question": "1941 年的科學家怎麼知道，植物放出的氧氣來自水而不是二氧化碳？",
+      "domain": "植物光能",
+      "mechanism_key": "photosynthesis_oxygen18_tracer_1941_ruben_kamen",
+      "answer_target": "1941 年 Ruben、Kamen 等人用穩定同位素氧-18 標記，發表論文推翻了『光合作用放出的 O₂ 來自 CO₂』的普遍看法；同年 Vinogradov 與 Teis 的研究也被綜述列為同一結論的出處。後來的綜述這樣概括：放出的氧氣同位素組成和所用的水幾乎一樣，所以氧來自水。",
+      "scope": "1941 JACS 原文（63:877–879）付費未讀，實驗細節（藻種、濃度）不寫；只用綜述與訃聞轉述的結論。片中不得演成『我們做了同位素實驗』。",
+      "source_ids": [
+        "L52-S002",
+        "L52-S003"
+      ],
+      "source_locator": "S002 正文第5段；S003 Introduction 第2段。",
+      "premise_status": "screened",
+      "notes": "填 G29 第一、二章『氧原子從哪來』的科學史開場（審稿點名缺的來源，以可靠二手史料滿足；原文未讀列為限制）。約 2 條新事實。 原提案 F1-019。非作者覆核 V4（2026-11-11）照覆核意見改字後收；核心事實讀得到；國籍與『獨立』是來源沒有的補充，要刪。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "追得到原子的來路，才知道總反應式兩端怎麼配對。",
+        "visual": "兩瓶標色實驗示意：重氧在水 vs 重氧在 CO₂，放出氧的顏色跟著水走（明標歷史示意）",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    },
+    {
+      "id": "L52-005",
+      "question": "『氧來自水』後來被挑戰過嗎？碳酸氫根為什麼一度被懷疑才是真正的來源？",
+      "domain": "植物光能",
+      "mechanism_key": "photosynthesis_bicarbonate_substrate_challenge_isotope_mixing",
+      "answer_target": "1958 年 Warburg 與 Krippahl 發現光反應需要碳酸氫根，氧的來源因此被重新挑戰；1978 年 Metzner 更提出碳酸氫根才是 O₂ 的直接受質，水只是事後補充它。這個假說原本被排除，理由是 ¹⁸O 水和碳酸氫根交換同位素太慢，不可能解釋早期標記結果；但後來在光系統 II 附近發現碳酸酐酶活性，標記可能被酵素快速交換、『逃』進濃度高得多的水裡，舊實驗必須重驗。熱力學也幫不了忙：光系統 II 的放氧中心（約 +1.1 V）既能氧化水（+0.9 V），也能氧化碳酸氫根（+0.7 V）。",
+      "scope": "電位值依 S003；不寫具體 S 態機制。",
+      "source_ids": [
+        "L52-S003",
+        "L52-S004"
+      ],
+      "source_locator": "S003 Introduction、熱力學段；S004 碳酸氫根受質段。",
+      "premise_status": "screened",
+      "notes": "填 G29：在『氧從水來』之後加入真轉折（結論被挑戰、檢驗方法本身受質疑）。約 2–3 條新事實。 原提案 F1-020。非作者覆核 V4（2026-11-11）照原稿收；逐句相符。這是 G29 的真轉折：『氧來自水』曾被重新挑戰，而且挑戰的正是檢驗方法本身。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個漂亮的同位素結果，也可能被『標記偷偷交換』推翻，所以要重驗。",
+        "visual": "兩條可能路徑（水直接 vs 經碳酸氫根）與碳酸酐酶交換箭頭；電位階梯示意",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "L52-006",
+      "question": "現在的實驗怎麼重新確認氧氣只來自水？還有人不同意嗎？",
+      "domain": "植物光能",
+      "mechanism_key": "photosynthesis_trmims_flash_oxygen18_structures_no_bicarbonate_consensus",
+      "answer_target": "時間解析膜入口質譜讓研究者能在每一次閃光後看放出的氧：Clausen 等人（2005）在水標上 ¹⁸O、並把 CO₂ 與碳酸氫根去除後，閃光仍產生典型、隨閃光次數振盪的 ¹⁸O 氧氣，也沒看到 CO₂ 釋出；Hillier 等人（2006）直接用 ¹⁸O/¹³C 標記的碳酸氫根檢驗，兩者都排除碳酸氫根是生理上重要的受質。高解析的冷凍電鏡與 X 光結構也沒在放氧中心附近看到結合的碳酸氫根。研究社群的共識是氧只來自水、碳酸氫根是重要調節者；不過碳酸氫根受質說在 2021–2024 年又有人重提。",
+      "scope": "原研究（Clausen 2005、Hillier 2006）未讀，依兩篇綜述；不宣稱爭議完全終結。",
+      "source_ids": [
+        "L52-S003",
+        "L52-S004"
+      ],
+      "source_locator": "S004 碳酸氫根受質段（Clausen 2005、Hillier 2006）；S003 結構段與共識段。",
+      "premise_status": "screened",
+      "notes": "填 G29 開頭直覺箭頭的最終改正前一段，使『氧從水來』從課本宣告變成經過挑戰與重驗的結論。約 2 條新事實。 原提案 F1-021。非作者覆核 V4（2026-11-11）照原稿收；兩篇綜述都讀得到，F1 也沒宣稱讀過原研究。scope 不說爭議完全終結，正確。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "結論活下來，是因為更精細的方法再測了一次。",
+        "visual": "閃光序列與 ¹⁸O-O₂ 振盪曲線示意（標示意）；結構圖放氧中心周圍『沒有碳酸氫根』",
+        "seconds": [
+          50,
+          80
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "L52-NA001",
+      "question": "Ruben 等 1941 原始實驗的藻種、重氧濃度與數據",
+      "existing_ids": [
+        "L52-004"
+      ],
+      "source_ids": [
+        "L52-S002",
+        "L52-S003"
+      ],
+      "reason": "JACS 原文付費；eScholarship 相關 PDF 回 403；只以兩篇綜述與訃聞轉述結論。",
+      "reentry_condition": "合法取得 JACS 63:877 全文。",
+      "reading_status": "未讀原文。"
+    }
+  ]
+}

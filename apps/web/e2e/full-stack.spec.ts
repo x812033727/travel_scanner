@@ -49,6 +49,8 @@ test("manual insertion and single-stop cross-day move persist through the real A
     return response.json();
   }, trip.id);
   const nextLunch = trip.items.find((item: { day_date: string; system_role: string }) => item.day_date === "2026-11-12" && item.system_role === "lunch").id;
+  // The trip is 2026-11-11–12 in Asia/Tokyo; pin the browser clock (after sign-in) so "DAY 2" is never relabelled "今天" once that date arrives.
+  await page.clock.setFixedTime(new Date("2026-11-01T03:00:00Z"));
   await page.goto(`/zh-TW/trips/${trip.id}`);
   await page.getByRole("button", { name: "加入第一個地點", exact: true }).click();
   const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });

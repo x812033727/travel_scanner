@@ -24,11 +24,14 @@ install -d -m 0750 /etc/travel-scanner
 install -d -m 0750 /var/backups/travel-scanner
 install -d -m 0700 /var/backups/travel-scanner/nightly
 install -m 0644 "${SOURCE_ROOT}/ops/backup/backup.py" "${TARGET}/backup.py"
+install -m 0644 "${SOURCE_ROOT}/ops/backup/offsite.py" "${TARGET}/offsite.py"
 install -m 0644 "${SOURCE_ROOT}/ops/backup/manifest-paths.txt" "${TARGET}/manifest-paths.txt"
 install -m 0644 "${SOURCE_ROOT}/ops/backup/README.md" "${TARGET}/README.md"
 install -m 0755 "${SOURCE_ROOT}/ops/backup/status.sh" "${TARGET}/status.sh"
 install -m 0644 "${SOURCE_ROOT}/ops/backup/travel-scanner-backup.service" /etc/systemd/system/
 install -m 0644 "${SOURCE_ROOT}/ops/backup/travel-scanner-backup.timer" /etc/systemd/system/
+install -m 0644 "${SOURCE_ROOT}/ops/backup/travel-scanner-offsite.service" /etc/systemd/system/
+install -m 0644 "${SOURCE_ROOT}/ops/backup/travel-scanner-offsite.timer" /etc/systemd/system/
 if [[ ! -f "${ENV_FILE}" ]]; then
   install -m 0600 -o root -g root "${SOURCE_ROOT}/ops/backup/backup.env.example" "${ENV_FILE}"
 fi
@@ -54,4 +57,6 @@ Next:
   2. python3 ${TARGET}/backup.py run --dry-run
   3. python3 ${TARGET}/backup.py run          # one real run by hand, then check the directory
   4. systemctl enable --now travel-scanner-backup.timer
+  5. python3 ${TARGET}/offsite.py run --dry-run, then run, then
+     systemctl enable --now travel-scanner-offsite.timer
 MSG

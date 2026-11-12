@@ -23,6 +23,9 @@ export function buildProgram(catalog, root = ROOT, input = { plans, outside }) {
     if (!Object.hasOwn(TIERS, plan.tier) || !plan.topics.length || !plan.question || !plan.join || !plan.cut || !plan.risk || !plan.evidence || !plan.visual) throw new Error(`${plan.id}: missing editorial decision`);
     if (plan.production_ready !== false || plan.status !== 'EPISODE_PLAN_NOT_SCRIPT') throw new Error(`${plan.id}: plan cannot grant production approval`);
     if (plan.material && (!Object.hasOwn(MATERIAL_VERDICTS, plan.material.verdict) || !plan.material.reviewed_on || (plan.material.verdict !== 'ready' && !plan.material.missing) || (plan.material.verdict === 'merge' && !plan.material.merge_with?.length))) throw new Error(`${plan.id}: material review needs a verdict, its date, what is missing and, for a merge, what it merges with`);
+    for (const item of plan.pool_support ?? []) {
+      if (!/^[A-Z]+\d+(-\d+)?$/.test(item.id) || !item.use || !plan.chapters.some((chapter) => chapter.title === item.chapter)) throw new Error(`${plan.id}: pool support ${item.id} needs a pool core id, a use and one of the plan's chapter titles`);
+    }
     if (plan.chapters.length < 5 || plan.chapters.some((chapter) => !chapter.title || !chapter.new_information || !Number.isInteger(chapter.seconds) || chapter.seconds <= 0)) throw new Error(`${plan.id}: incomplete chapters`);
     const total = plan.chapters.reduce((sum, chapter) => sum + chapter.seconds, 0);
     if (total !== plan.target_body_seconds || total < 480 || plan.planning_range_seconds.length !== 2 || plan.planning_range_seconds[0] > total || plan.planning_range_seconds[1] < total) throw new Error(`${plan.id}: duration budget mismatch`);
@@ -84,6 +87,7 @@ export function episodeBrief(catalog, program, id, root = ROOT) {
     },
     needs: ['依各章補逐段 treatment、轉折與伏筆回收，再試讀刪除重複內容', '逐主張重新查核、獨立聽眾審稿與實際旁白計時', '核對既有影片／製作狀態，新增版本重新綁定來源與核准', '依實際片長報整集費用並完成媒體驗收'],
     source_materials: plan.topics.map((topic) => sourceMaterial(catalog, topic, root)),
+    pool_support: plan.pool_support ?? [],
     notes: '片長是正文估計，片頭片尾另計；不是已量測的成片。初篩題號會導向整個單集，不再輸出固定 13 分鐘的孤立小題。',
   };
 }
@@ -110,6 +114,10 @@ export function renderProgram(program) {
     for (const chapter of p.chapters) {
       lines.push(`| ${time(cursor)}–${time(cursor + chapter.seconds)} ${chapter.title} | ${chapter.seconds} 秒 | ${chapter.new_information} |`);
       cursor += chapter.seconds;
+    }
+    if (p.pool_support?.length) {
+      lines.push('', '**素材池支援（2026-11-11）：** 素材池裡已讀過來源的題目，只支援下列章節或補素材審視列的缺口，不另算素材、不加長片長（[素材池](../pool/README.md)）。', '', '| 章節 | 素材池題目 | 用在哪裡 |', '| --- | --- | --- |');
+      for (const item of p.pool_support) lines.push(`| ${item.chapter} | ${item.id} | ${item.use} |`);
     }
     lines.push('', `**畫面／驗證方式：** ${p.visual}`, '', `**無聊風險：** ${p.risk}`, '', `**刪減或撤題條件：** ${p.cut}`, '', `**待補／待重新查核的證據：** ${p.evidence}`);
   }

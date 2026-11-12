@@ -1,0 +1,472 @@
+{
+  "batch": "batches/wave23-20261111.json",
+  "reviewed_on": "2026-11-11",
+  "method": "四位沒有參與研究的覆核代理（R231：D1；R232：D2；R233：D3；R234：D4）逐題至少重開一個關鍵來源、用素材池搜尋與批次檔去重、對照系列不收清單與 8 分鐘門檻；修改直接寫進批次的題目欄位。",
+  "counts": {
+    "ADOPT_WITH_CHANGES": 21,
+    "ADOPT": 2,
+    "REJECT": 3
+  },
+  "verdicts": [
+    {
+      "id": "N2561",
+      "agent": "D1",
+      "reviewer": "R231",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D1-S002 https://zh.wikisource.org/wiki/六朝事迹編類_(四庫全書本)/卷下（墳陵門〈雙女墳〉）；另重開 D1-S007 https://scholar.kyobobook.co.kr/article/detail/4010026096589（書目頁）",
+      "reopen_result": "〈雙女墳〉條確實寫『雞林人崔致逺者』『唐乾符中』補溧水尉、在招賢館前見墳作詩；二女是『宣城郡開化縣馬陽鄉張氏二女』，父母把她們『匹于鹽商小竪』，怨恨而死，『天寳六年』合葬；當夜來謝，『宴語至曉』而別；墓在溧水縣南約一百一十里。原文是飲宴加談話到天亮，不只是『談話』。D1-S007 書目頁顯示刊於 2017 年 12 月《대동한문학》第 53 輯，摘要主張《太平通載》編者改寫原本〈雙女墳記〉、原作者可推定為崔致遠本人，與候選描述一致。",
+      "changed_fields": [
+        "question",
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：pool.json、各批（含 wave21、wave22 與其 not_added）、D2 以 崔致遠／雙女／殊異傳／太平通載 檢索皆無，CLI search 回傳 []；N685、F37 是人鬼戀改寫鏈，核心不同。前提成立：崔致遠自序證明他當過溧水縣尉，1160 年中國書的本子在姊妹出身、婚配對象、結局上都與朝鮮本不同，這是真正的轉折；第二個轉折（首尾是 15 世紀編者補的）屬單篇論文主張，scope 已限定只說『該文主張』。改動：『只跟他談到天亮』改成照原文的『宴語至曉』（宴飲談話），並把論文出處寫實。片長：傳說、兩條朝鮮紀錄、宋代本子與三點差異、補首尾說、小說起點之爭，約 14 個不重複事實加開場收尾，8.5–10 分鐘誠實，不必硬湊。scope 已處理『最早留存本子』與『最早寫成』的區別、共宿一句帶過、中國發掘不講。"
+    },
+    {
+      "id": "N2562",
+      "agent": "D1",
+      "reviewer": "R231",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D1-S013 https://sillok.history.go.kr/id/kia_10302006_007；D1-S014 https://sillok.history.go.kr/id/kia_10302006_008",
+      "reopen_result": "1472 年 2 月 6 日第 7 條確有『三聖堂 桓因天王南向』的神位排列、『爲神所厭之語則未聞』、『是雖怪誕、無稽之說』、『禮曹據此啓』與『從之』。第 8 條確有『起自棘城古戰場』、『松禾居七十二歲老人崔得浩』說病『去甲寅、乙卯年間始起』、『世宗下書，問惡疾所起之因』；世宗設的是『特設水陸於成佛庵，且遣別醫李馥救療』（水陸大會，不是候選寫的水陸齋）。厲祭一段寫的是正統 9 年（1444）已依受教加記難產、雷擊、墜落而死者共 15 位，各邑仍只祭 12 位，請補設——不是 1472 年才從 12 加到 15。",
+      "changed_fields": [
+        "answer_target",
+        "scope",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池以 黃海道／三聖／檀君／九月山／惡病 檢索，只有 N1161（安孝禮與空中聲音）、N1701（雉岳山）、N1441（十八子讖）與 wave15 not_added 的 1758 女巫，核心都不同；CLI search 回傳 []；wave21、wave22、D2 皆無。三條只讀到檢索摘要的實錄（1448、1485 九條、1492）拿掉後仍過門檻：直接開過的 1452、1471、1472（兩條，內含 1428、1434–35、1438 的回溯）、1485、1488 六條原條就撐起 54 年的時間線，轉折是真的——國王要求逐條查，地方官回報『未聞』，老人另指古戰場，禮曹明說無稽仍照辦，最後改歸瘴氣、派針灸醫。只是收尾不能用 1492 年『病減了』，結尾改停在 1488 年的派醫。另修兩處不準：水陸齋→成佛庵水陸大會並派醫李馥；厲祭 15 位是 1444 年已定、1472 年是請各邑補設。片長 8.5–10 分鐘可信。檀君屬現存信仰與南北韓民族敘事，scope 的照原文、不評價、不碰今日北韓已足夠。"
+    },
+    {
+      "id": "N2563",
+      "agent": "D1",
+      "reviewer": "R231",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D1-S022 https://zh.wikisource.org/wiki/三國遺事/卷第一；另重開 D1-S025 https://encykorea.aks.ac.kr/Article/E0015925",
+      "reopen_result": "《三國遺事》卷一確實在〈桃花女 鼻荊郎〉開頭寫第二十五舍輪王『御國四年。政亂荒婬。國人廢之。』，接著是桃花娘與鼻荊的故事，段末寫『鄉俗帖此詞以辟鬼』；工具不錄詩句本身，所以詩的第一句（候選題目裡的『死去的聖帝的兒子』）無法確認。D1-S025 百科只說當時人寫關於鼻荊的文字貼上辟雜鬼，沒有引詩，也沒有出現『聖帝』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池、各批、wave21／22、D2 都沒有鼻荊、桃花女；N1005 處容是同類（門上辟邪）但核心是處容長相的文字層累。前提的骨幹（遺事『國人廢之』對史記『王薨』、武烈王是眞智王之孫）都在重開或已開的原文裡。兩處改：一、題目引的詩句『死去的聖帝的兒子』沒有任何來源讀到，題目與 hook 改成不引詩，scope 要求製作前核刊本；二、武烈王不是『統一三國』的國王，hook 改稱太宗武烈王金春秋。單章 4.5–6 分鐘，只能以題案形式收（見 theme_suggestions）。"
+    },
+    {
+      "id": "N2564",
+      "agent": "D1",
+      "reviewer": "R231",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D1-S021 https://cbdata.dila.edu.tw/stable/search/kwic?q=婬火內發&work=T1509&juan=14&around=400；另以同一 API 查 q=捕魚師",
+      "reopen_result": "CBETA T1509 卷14 確有：王女留下『瓔珞直十萬兩金，遺之而去』，他醒後『婬火內發，自燒而死』，接著『以是證故，知女人之心不擇貴賤，唯欲是從』。以『捕魚師』查詢，上文寫王女名拘牟頭、捕魚師名『述婆伽』（大正藏用字，百科作術婆伽），他『遙見王女在高樓上』、『窓中見面』。候選的捕魚人、王女、瓔珞、燒死與結論句都成立。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池與各批無志鬼、心火繞塔、術婆伽；N485（牡丹畫）與 wave17 not_added 的知幾三事是女王的預知，核心不同；wave21／22、D2 無。轉折真實且有原典：新羅的女王留鐲、防火咒，對上論典裡的捕魚師與『女人之心不擇貴賤』。改動：『印度佛教論典』改成『漢譯佛教論典《大智度論》』（作者與成書地有爭議）；拿掉沒讀到的『勸修行人遠離女色』整體用意；補上原文的人名與高樓窗中初見；hook 的『罵的是』改成『說的是』（咒詞原文未讀）。單章 4.5–6 分鐘，以題案收。"
+    },
+    {
+      "id": "N2581",
+      "agent": "D2",
+      "reviewer": "R232",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D2-S002 https://blogs.loc.gov/law/2014/10/does-the-haitian-criminal-code-outlaw-making-zombies/（WebFetch 全文）；另重開 D2-S003 https://archive.org/download/magicislandbywbs00seab/magicislandbywbs00seab_djvu.txt（OCR 行 4326–4336、4761、4825–4840）與 D2-S004 https://www.gutenberg.org/cache/epub/6381/pg6381.txt（行 5578–5640）",
+      "reopen_result": "國會圖書館法律部落格寫明：1883 年版刑法典第 101 頁是第 246 條，講昏睡與昏睡後被埋葬的第二、三段是 1864 年 10 月 Geffrard 執政時加的；Seabrook 1929 年把它引成第 249 條；《White Zombie》（1932）的劇本、廣告與宣傳手冊都用『Article 249』，英國版宣傳手冊要戲院放大展示，譯文裡方括號的『zombie』是好萊塢加的，條文本身沒有這個字。Seabrook 原書確有『neither a ghost, nor yet a person who had been raised like Lazarus』『a soulless human corpse』，醫生從書架取下現行刑法典指給他看『Article 249』；他對親眼所見的判斷是『human beings, idiots, forced to toil in the fields』，出現在看完之後的段落，不是『當場』。Hearn 的 Adou 一段逐字吻合：zombi『fai désòde lanuitt』、不是回來的死者、moun-mò 留在墓地只在萬靈節晚上回家、十四呎高的女人與五呎高的狗都是 zombi。Rath 論文（D2-S001）本輪未重開，沿用研究代理的摘要；它說的是『今天被當成 zombi 第一次出現的文本』，不是『世界上第一本』。",
+      "changed_fields": [
+        "question",
+        "hook",
+        "answer_target"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內搜 zombie／zombi／殭屍皆無結果；G01、G04 是『靈異概念被一份文件定型』同類，F34、N2485（Vetāla 變成『吸血鬼』）是怪物名字在轉手中變義的近鄰，答案都不同。前提成立，三個重開的來源逐字吻合。要改的是『第一』的說法：Rath 只說『今天被當成』第一次出現的文本，題目原寫『世界上第一本』屬 wave22 已點名的過度宣稱；作者歸屬也只是 1829 年 Nodier 的說法，hook 不能直接說『一個逃犯寫了』；Seabrook 的『精神障礙者』判斷在原書是事後的段落，刪掉『當場』；補上 Hearn 的五呎狗與『條文沒有 zombie 字』。兩個轉折都是真轉折（屍體版本出自 1929 年遊記；作為證據的法條條號錯、字是電影加的），9.5–11.5 分鐘誠實。禁區：巫毒是現存宗教，scope 已寫只講文本；不提 Narcisse 與河豚毒素；Bela Lugosi 1956 年 8 月過世、不畫，正確；Seabrook 1945 年過世可畫成卡通。"
+    },
+    {
+      "id": "N2582",
+      "agent": "D2",
+      "reviewer": "R232",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D2-S008 https://www.taipeitimes.com/News/world/archives/2009/12/03/2003459994（WebFetch 兩次）；另重開 D2-S007 https://halshs.archives-ouvertes.fr/halshs-00374049v1/file/BellierHocquenghem_1991_halshs00374049.pdf（pdftotext，pp. 47–52）",
+      "reopen_result": "Taipei Times（Reuters）：秘魯組織犯罪最高調查官（報導點名）在週二（2009-12-01）被停職；他『上個月』對全國說抓到四名 pishtaco 嫌犯；警方原說集團殺了多達 60 人、把油賣給義大利化妝品商，記者會展示裝在空 Inca Kola 瓶裡的人油。Huánuco 警方說可能只有一名受害者、與古柯鹼交易有關，並認為嫌犯可能是把他的油裝瓶來恐嚇對手；嫌犯仍在押。警察總長說這影響警方形象。人類學家 Rivera 說『一個在秘魯文化裡流傳很久的傳說被拿來解釋一宗非常奇怪的罪案』；醫師公會的人說『如果人油一公升值 15,000 美元，我們就不會丟掉幾百公升』。報導沒有寫『不到兩週』（只寫上個月宣布、週二停職），我讀到的版本也沒有『每天』『愚蠢地』。Bellier & Hocquenghem：取油『加害者』的第一次提及在 Molina（1943 [1574]: 79）談 Taqui Oncoy 處；另說 ñak'aq 這個名字已見於 17 世紀初一份匿名文本；1783 年 Chancay 案（據 Tranchant 1982 與私人通信）的證詞是雇工問一個打聽人名與小路的外來者是不是 pishtaco，對方答『是，因為國王需要很多油脂』；作者寫『據我們所知，這是第一次用 pishtaco 這個詞來指一個被懷疑殺害同族的印第安人』——不是『pishtaco 一詞第一次出現』。亞馬遜 1979–80 年版本（橡皮艇、潛水艇、潤滑飛機火箭衛星的引擎、幾年後完全消失）吻合；同段還寫到恐懼引發『殺害西方人』，不能用。",
+      "changed_fields": [
+        "hook",
+        "answer_target",
+        "scope",
+        "editorial.visual",
+        "editorial.minutes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內搜 pishtaco、取油皆無結果；N1183、L32 是『謠言或媒體造怪物』同類，答案不同；wave22 not_added 的 Inkarrí 不同題。前提成立，兩個轉折是真轉折（同一個罪名從征服者被轉到一位酋長身上；20 世紀油拿去潤滑火箭；2009 年警方真的拿傳說當案情又撤回）。要改三處：（1）研究者原話是『第一次用 pishtaco 指被懷疑殺害同族的印第安人』，候選寫成『這個詞第一次出現』是過度宣稱；同頁還說 ñak'aq 已見於 17 世紀初的匿名文本，補進去才不會讓觀眾以為 1783 年以前沒有名字。（2）報導沒有『不到兩週』『每天』『愚蠢地』，改成報導寫得出來的 12 月 1 日停職與原話。（3）排除規則：2009 年是有真實受害者的近年命案（靈異守則第 3 條），原 hook 用『裝人油的 Inca Kola 瓶』開場，而當地警方認為瓶裡可能真是那位受害者的油——這是近年遺體細節，不能當鉤子、也不畫；改用 Molina 的柴草當鉤子，2009 年只當最後一個短轉折，不點名、不提受害者細節。活著的安地斯信仰：照『誰在什麼時候這樣說』講，不評價，scope 已補。片長收到 8.5–10 分鐘。"
+    },
+    {
+      "id": "N2583",
+      "agent": "D2",
+      "reviewer": "R232",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D2-S009 https://repositorio.uca.edu.ar/bitstream/123456789/10072/1/nombre-patagonia-historia-ficcion.pdf（pdftotext 全文，行 95–134、180–200、236–256、458–470、1935–1990）；另重開 D2-S010 https://www.gutenberg.org/cache/epub/42884/pg42884.txt（行 3423–3436、3573）",
+      "reopen_result": "González 寫：Lida 的論點結論正確，但她沒看過《Primaleón》原文，所以論證有缺口；他用 1512 年 Salamanca 初版、唯一存本在劍橋大學圖書館 F.151.b.88；López de Gómara（『有十三掌高……腳畸形地大，所以叫他們 patagones』）與 Oviedo『最先』提出大腳之說，是民間詞源。小說轉錄有『cara como de can』、耳朵垂到肩、牙齒外翻、『pies de manera de ciervo』、帶獅子打獵。Lida 說地名要到 18 世紀才有，González 指出 Pigafetta 草圖寫『Regione Patagonia』，地圖上到 18 世紀末才常用。Musters 身高一覽確有 Byron（1764）首領約七呎、Wallis（1766）最高六呎七吋、平均五呎十吋到六呎、D'Orbigny（1829）沒見過超過五呎十一吋——但同一張表也有 Falkner（1750）七呎多、FitzRoy 與 Darwin（1833）說比任何民族都高、Cunninghame（1867/8）有一人六呎十吋，所以不是『一路縮水』，而是『沒量的說巨人、量了的說很高但不是巨人』。Pigafetta 英譯：兩個月不見人、『we reached only to his waist』、臉塗紅眼周塗黃、穿獸皮；命名 Patagoni 在行 3573。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "editorial.payoff",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內『Patagon』只命中 W14、N2384、N1582、N2442，答案不同；N1424、N1825、N1745（好望角的名字誰取的）是同類地名題，答案不同。前提成立，關鍵句在重開的頁面上逐字吻合。要改的是轉折二：候選把 Musters 的表讀成『巨人一路縮水』，但同一張表 1833、1867 年仍說他們極高、有人六呎十吋——這正是 wave21 點名的『來源說得比實際多』；改成『沒量的說巨人，量了的說很高但不是巨人』，反而更有說服力。另補：Lida 1962 年過世，屬 1956 年後，不畫。單獨約 9–11 分鐘可成立（三個轉折），也適合跟 N2584 排成一集，見 theme_suggestions。"
+    },
+    {
+      "id": "N2584",
+      "agent": "D2",
+      "reviewer": "R232",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D2-S012 https://archive.org/download/legendaryislands00babcuoft/legendaryislands00babcuoft_djvu.txt（第四章開頭，OCR 行 2165–2300）",
+      "reopen_result": "Babcock 寫：『就我們所知』Brazil 島第一次出現在 1325 年熱那亞 Angellinus Dalorto 的海圖上，是愛爾蘭南部緯度大西洋上一塊頗大的圓形陸地；他傾向蓋爾語來源。另一條線：『可明確辨認的最早商品紀錄』是 1193 年 Ferrara 公國與鄰邦的商約，清單裡有『grana de Brasill』，同地五年後另一份文書又出現；Muratori 對這個詞感到困惑，Babcock 也說 grain 本來不指染木，看起來是顆粒狀的包裝貨；Marco Polo 寫蘇門答臘 Lambri 有大量 brazil，他把種子帶回威尼斯種，什麼都沒長出來。所以 1193 年的『grana de Brasill』是不是後來的染木，Babcock 本人也說不準。",
+      "changed_fields": [
+        "answer_target",
+        "editorial.visual",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內搜 Brasil／巴西只命中 N1264、N1443、N1743、N765 等，答案都不同；Hy-Brasil 島沒有單題。前提成立，Babcock 的 1325、1193、Marco Polo 三點逐字吻合。只有一個真轉折（字比國家早三百年，先在亞洲碰到），是 chapter 不是單集，候選自己也標成 chapter，正確。要改的是 1193 年那一條：Babcock 明說 grana 不是染木的說法、Muratori 也看不懂，候選的畫面『一袋紅色顆粒』等於替它下了結論，改成不暗示內容；旁白補一句『這是什麼貨連 Muratori 都看不懂』反而是好的懸念。兄弟關係成立：與 N2583 同屬『地名是帶來的，不是看到的』一個問題，兩章各給一層新理解（一個來自小說、一個來自商品），不是『另一個類似例子』。"
+    },
+    {
+      "id": "N2585",
+      "agent": "D2",
+      "reviewer": "R232",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D2-S014 https://kardecpedia.com/en/study-guide/895/the-spiritist-review-journal-of-psychological-studies-1861/5083/november/the-remains-of-the-middle-ages（WebFetch 兩次）；另重開 D2-S015 https://sociostudies.org/journal/articles/445709（WebFetch）",
+      "reopen_result": "KardecPedia 英譯的《Revue Spirite》1861 年 11 月號：Kardec 說『看來消息靈通的報紙』都懷疑過這件事；《Le Siècle》挖苦說『總之此刻不會是我們在西班牙轉桌子取樂』。主教拒絕退書，理由是『天主教會是普世的』、這些書違反天主教信仰；關稅照收。附的報告（寄給 Kardec，報告沒有署名）：『1861 年 10 月 9 日上午十點，在巴塞隆納的 esplanade，處決死刑犯的地方』燒了『三百本招魂論的書與小冊』，列《靈魂之書》《靈媒之書》《Revue Spirite》等；在場有穿祭衣、一手十字架一手火把的神職人員、公證人、海關高階官員，三名海關人員添火、一名代表書主；人群擠滿人行道與廣場，有人喊『打倒宗教裁判所』；之後有幾個人上前收集灰燼，一塊燒了一半的《靈魂之書》寄到 Kardec 手上。Kardec：『可以燒書，燒不了思想』，『別忘了 1861 年 10 月 9 日』。重要的是：『宗教裁判所最後一次 Auto de Fé』這句話不是 Kardec 本人說的，而是同期刊出、在巴黎招魂學會『自發』得到、署名聖道明的通靈訊息裡的話，那則訊息還說這把火是為了引起記者注意招魂論。我兩次讀取都沒有看到『神職人員離開時被噓』這一句。Horta 2016（同行評審，引 Barrera 1980）：『300 份在巴塞隆納海港海關沒收的法國招魂論出版品』在宗教、文官與軍方人員監督下燒掉；地點當年是波旁軍隊在加泰隆尼亞的主要要塞；1888 年大會有來自歐美的 70 個代表團；1899 年 10 月 9 日約 7,000 人聚在今天的 Ciutadella 公園、同一地點同一天紀念。",
+      "changed_fields": [
+        "answer_target",
+        "editorial.payoff",
+        "scope",
+        "risk"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內搜 Kardec、招魂、焚書、巴塞隆納只命中 G01、G03、N1761、N426、N427、N462、S41、N2022；wave21 的 N2382（1610 年 Logroño auto de fe）與 N707 是西班牙宗教裁判所同類，但答案不同。過不過得了『主要靠 Kardec 自己刊物』這一關：過得了，條件是分層——焚燒本身、數量、海關沒收、監督者、地點與後來的大會和紀念，都有 Horta 2016 這份同行評審研究（引 Barrera 1980）獨立支持；只出自 Kardec 的是場面細節，照『他刊出的報告說』講，這正是系列『講的是檔案』的寫法。重開後找到更好的轉折：『最後一次 auto de fe』在他的刊物裡出自一則署名聖道明的通靈訊息，不是 Kardec 或史家的判斷——這把『報紙不相信』那個偏弱的轉折補強成真轉折（紀錄是誰寫的），也讓三段式的『流傳說法』有出處。改掉：讀不到的『被噓』、『300 冊』（原文是書與小冊）、把『那片空地成了聚會場』收成 1899 年一次紀念。8.5–10 分鐘誠實。"
+    },
+    {
+      "id": "N2601",
+      "agent": "D3",
+      "reviewer": "R233",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S001 https://eah.anu.edu.au/sites/default/files/article-content/01/EAH01_05.pdf（自行下載 PDF 轉文字，pp. 101、110–113、118–122）",
+      "reopen_result": "頁面上確實寫了：Duyvendak 的英譯 1924 年登在 Acta Orientalia，《通報》在投稿時『以真偽可疑為由』拒登，刊出後卻在書目欄稱讚它（p. 110 與註 60）；萊頓用它當教材（註 61）；Lewisohn 1936 年在 Monumenta Serica 首先質疑，Duyvendak 1937 年在《通報》發表〈a mystification〉，1938 年在 Acta Orientalia 說它『not authentic but a very ingenious mystification』『the Diary is not a diary at all』；之後程明洲『virtually demolished』它（pp. 111–112）；兩位共產黨史家從英譯回譯、1951 年中國史學會四卷本《義和團》把它放在第一卷列寧之後第四篇、1961 年紀念文集與 1963 年前後台灣學者仍引用、1981 年鄭天挺說看細節與氣氛不可能是假的（pp. 112–113）。pp. 118–120 逐條：父親叫松齡不是廣順、松齡從未當內務府總管、最高只做到河南知縣（7A）、1864 年景善仍在翰林院、隔年任戶部主事、1850 年郎中與後來主事的自相矛盾、次子恩純與三子恩濱名字錯；註 89 孔廟 1863 年進士題名碑寫正白旗；p. 101 許景澄 1900 年 7 月 28 日被殺，日記把監斬者與日期都寫錯；p. 122『irrefutably a forgery…a careless and flimsy one』。",
+      "changed_fields": [
+        "answer_target",
+        "question"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內與 wave21/22 搜 Backhouse、景善、慈禧皆無；wave22 not_added 以『沒讀到全文』留下此題，本輪補了羅惠民全文與原書，符合重收條件。同類 N2444、N2521、N2443 核心不同（本題是用日記主人自己的履歷與題名碑比對）。前提與三個轉折都在重開的頁面上，片長 9–10.5 分鐘誠實。改動：題目『兩岸的史料集』——台灣那一例是 1963 年前後一本研究專書的附錄，不是史料集，改成『史料集與研究著作』；答案補上程明洲 1940 年的考證，否則『最後拆穿它的是履歷』會讓人以為之前沒有中國學者拆過；《通報》先拒登後稱讚的反差在原文裡，補進去。scope 的作畫規則與不講死因、不評義和團都對。"
+    },
+    {
+      "id": "N2602",
+      "agent": "D3",
+      "reviewer": "R233",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S005 https://archive.org/download/reportofcommitte02high/reportofcommitte02high_djvu.txt（OCR 全文，pp. 151–153）",
+      "reopen_result": "頁面上確實寫了（OCR 長 s 讀成 f，已對讀）：委員會把問題拆成兩個——以 Ossian 為名的古詩是否存在、Macpherson 出版的有多少是真的；第一題『can with confidence state its opinion, that such poetry did exist, that it was common, general, and in great abundance』；第二題它找到的詩『often the substance, and sometimes almost the literal expression』與他的譯文相同，『But the Committee has not been able to obtain any one poem the same in title and tenor with the poems published by him』；傾向認為他『supply chasms…by inserting passages which he did not find』、刪節、軟化、潤飾，程度『impossible…to determine』；並承認他比委員會早採集、當時會背的人『now no more』。附錄裡的信件日期從 1797 年 9 月到 1802 年，報告 1805 年出版——所以題目『調查兩年』不成立。",
+      "changed_fields": [
+        "question"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內與 wave21/22 搜 Ossian、Macpherson 無；wave22 not_added 是『沒有研究』，本輪有 1805 年報告、Johnson 原書、Boswell 與一篇學位論文，符合重收條件。核心『詩是真的、書不是』是灰色答案，與 N2444（整批 19 世紀新作）不同。三個轉折（Johnson、委員會、Thomson）都是會改變結論的轉折，片長 8.5–10 分鐘誠實。唯一要改的是題目裡的『調查兩年』：附錄信件從 1797 年寫到 1802 年、報告 1805 年才出版，沒有來源說是兩年。Thomson 的部分只有學位論文的轉述，scope 已限制，維持。"
+    },
+    {
+      "id": "N2603",
+      "agent": "D3",
+      "reviewer": "R233",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S009 https://archive.org/download/poemssupposedto00tyrwgoog/poemssupposedto00tyrwgoog_djvu.txt（OCR，Appendix pp. 327–333）",
+      "reopen_result": "頁面上確實寫了：『It is against all odds, that two men, living at the distance of two hundred years one from the other, should accidentally agree in coining the same words, and in affixing to them exactly the same meaning』；接著舉例『evidently founded upon misapprehensions of passages in Skinner』：Alyse 是把 Skinner 哥德體活字裡的 f 看成長 s、Bestoiker 是 Chatterton『in his hurry』看錯 Skinner 的條目、Blake 是把 Bare 的拉丁釋義 Nuda 搬到 Blake、Hancelled 是只看了英文兩個字沒讀拉丁文；Shap 一條說 Skinner 所用 1602 年版 Chaucer 把 me 印成 my，『probably a mistake of the Printer』；結論『proved…that this impostor lived since Skinner』、全為 Chatterton 所寫則留給讀者判斷。附錄沒有寫 Skinner 字典的年份。",
+      "changed_fields": [
+        "answer_target",
+        "question"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內與 wave21/22 搜 Chatterton、Rowley 無；wave22 not_added 是『沒有研究』，本輪有 Tyrwhitt 原刊附錄與 DNB，符合重收條件。前提成立，Walpole 轉冷與 Tyrwhitt 的字典比對是真轉折；第三個轉折（1782 年的捍衛者）只有書名，薄但誠實。改動：題目寫『1671 年的字典裡的印刷錯誤』與重開的原文不符——Tyrwhitt 的證據是 Chatterton 看錯 Skinner 的哥德體活字、抄進 Skinner 的誤解，唯一的『印刷錯誤』在 Skinner 用的 1602 年版 Chaucer，不在字典；1671 這個年份也不在任何本題來源裡（屬實但未查），所以改成『17 世紀字典』。引文照原文 against all odds 標出。"
+    },
+    {
+      "id": "N2604",
+      "agent": "D3",
+      "reviewer": "R233",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S013 https://archive.org/download/inquiryintoauthe00malo/inquiryintoauthe00malo_djvu.txt（OCR，pp. 23、25–26、83–89）；另重開 D3-S015 https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Ireland,_Samuel",
+      "reopen_result": "頁面上確實寫了：Malone 要從『1. the Orthography, 2. the Phraseology, 3. the Dates given or deducible, 4. the Hand-writing』證明沒有一份是真的；偽信寫『the lord Leycesterre』、收件『For Master William Shakspeare atte the Globe bye Thames』；Malone 說『the Globe theatre was not built at the time to which this Letter must be referred; and when it was built, it was not situated by Thames, but in Maiden-lane…at some distance from the river』，又以信中 Leycester 還活著推出必早於 1588 年 9 月。DNB：1794 年 12 月 16 日交出仿 1612 年真契據的抵押契、拼法『imitated from Chatterton’s Rowley Poems』、『M. H.』、1795 年 2 月展出、Boswell 2 月 20 日跪吻、2 月 25 日 Parr 等『and sixteen others』簽證明、Porson 拒簽、首演前夕 Malone 出《Inquiry》、1796 年 4 月 2 日（週六）首演、Kemble 本想排 4 月 1 日、Sheridan 先付 250 英鎊。",
+      "changed_fields": [
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內與 wave21/22 搜 Ireland、Vortigern 只見 N466（梅林預言，不同答案）；wave22 not_added 是『沒有研究』，本輪有 Malone 原刊、Ireland 自白與 DNB，符合重收條件。前提成立，Malone 的拼字與年代檢驗、首演爆笑、兒子認罪而父親不信是三個真轉折，片長 9–10.5 分鐘誠實。唯一改動：『Globe 也不在河邊』是 Malone 1796 年的主張，原稿寫成事實；改成『Malone 說』並在 scope 註明。"
+    },
+    {
+      "id": "N2605",
+      "agent": "D3",
+      "reviewer": "R233",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S017 https://archive.org/download/inquiryintogenui00hami/inquiryintogenui00hami_djvu.txt（OCR，pp. 11–16、26–29）",
+      "reopen_result": "頁面上確實寫了：Collier 的序言『In the spring of 1849 I happened to be in the shop of the late Mr. Rodd…when a package of books arrived from the country』，第二對開本『much cropped, the covers old and greasy…imperfect』，連同 Florio 一起『the Shakespeare for thirty shillings』；Collier 的宣誓書說他把書『exhibited…before the Shakespeare Society, and three times before the Society of Antiquaries』，之後成了 Devonshire 公爵的財產。Maskelyne 的報告：顯微鏡下『particles of plumbago in the hollows of the paper』；墨水『on, rather than in, the paper』、像水彩顏料、有光澤、遇水即溶，抗得住使含鐵墨水變色的化學劑，『perhaps of sepia, or of sepia mixed with a little Indian ink』；公爵同意後試驗，『a u in Richard II, p. 36』被一道鉛筆勾線穿過，洗去墨水後『the pencil still runs through the ink line in unbroken even continuity』。",
+      "changed_fields": [
+        "answer_target",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內搜 Collier 只見 N2421（Collier’s Weekly，不相關），wave21/22 也無。單獨確實只有一次檢驗、一個沒結論的結尾，作者標成章節是對的。兄弟題 N2604 真的接得上：兩題共用『莎士比亞沒留下手稿，於是有人替他補——怎麼證明補上的是假的？』一問，前一集用拼字與年代，這一章用哪一層在上面，合成約 14–17 分鐘的一集或兩部曲，不是硬湊。改動：原稿說 Collier『不讓人檢查』，跟重開的 Hamilton 書裡 Collier 自己的宣誓書（在兩個學會展示過）相反，只有展覽網頁一句話撐；改成照兩邊來源能說的講。"
+    },
+    {
+      "id": "N2606",
+      "agent": "D3",
+      "reviewer": "R233",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S020 https://history.hanover.edu/texts/vallapart2.html；另重開 D3-S019 https://history.hanover.edu/texts/vallaintro.html 與 D3-S021 https://www.newadvent.org/cathen/05118a.htm",
+      "reopen_result": "頁面上確實寫了：Valla 引文件『una cum omnibus satrapis nostris et universo senatu』並說『Quis umquam satrapes in consiliis Romanorum nominari audivit?』，又引同一部《Sylvester 傳》說元老院長期不肯信教；Byzantium 是『an humble little town』；『Who ever heard \"tiara\" [phrygium] used in Latin? You talk like a barbarian』。Coleman：至少『ten Popes of whom we know』引過；Valla 1440 年任 Alfonso 秘書，『It may well be considered as part of the campaign which that king was conducting against Pope Eugenius IV』（是 Coleman 的判斷）；Cusanus『some seven years earlier…covered part of the same ground even better』；Hutten 1517 年初印；揭穿後的反彈『as in Luther’s case』助長脫離羅馬。天主教百科：『without doubt a forgery, fabricated somewhere between the years 750 and 850』、稱『Cardinal Nicholas of Cusa』、Pecock 獨立得出、Leo IX 1054 年是第一位在正式文書引用的教宗、Valla 版列 Mainz 1518、此後仍偶有人辯護，直到 Baronius 承認是偽作後才普遍認定。",
+      "changed_fields": [
+        "answer_target",
+        "question",
+        "source_locator"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內搜獻土、Constantine 無（Valla 的命中是 Valladolid 等字串雜訊）；wave22 not_added 是『沒有研究、涉及現存宗教機構的權威、留給 S 軸評估』，本輪有原文、1922 年學術導論與天主教百科。排除規則檢查：不在 S、F/G 軸的不收清單；今天沒有兩群人在爭它的真偽——天主教會自己的百科與教會史家都承認是偽作，所以不屬『還在爭的事』；scope 把題目限在一份行政文書的語言與年代考證、不評信仰與教宗、Luther 只帶一句，守得住內容守則第 3 條。前提與三段檢驗都在重開的頁面上，片長 8.5–10 分鐘誠實。改動：Cusa 1433 年前後還不是樞機主教（天主教百科是用後來的頭銜稱他），題目改成『後來當上樞機主教』；Valla 與 Alfonso 對抗教宗的連結是 Coleman 的判斷，改成『Coleman 認為』；初印年兩個來源差一年，照實寫；補上 Baronius——由教會自己的史家收尾，正好讓旁白不必替任何一方下結論。"
+    },
+    {
+      "id": "N2607",
+      "agent": "D3",
+      "reviewer": "R233",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D3-S022 https://bmgn-lchr.nl/article/download/URN%3ANBN%3ANL%3AUI%3A10-1-107394/4879（PDF 轉文字，pp. 439–442）",
+      "reopen_result": "頁面上確實寫了（荷蘭文）：最早的事件是西元前 2193 年 Atlantis 沉沒、編年從前 558 年記到 1256 年；Jensma 指出 1256 年紙在西歐『nog maar erg zelden』，Prevenier 自己補充 Vlaanderen 最早用紙是 1270 年、Friesland 更晚；沒有手抄紙一定有的浮水印；紙染褐、稍烤，Jensma『met quasi zekerheid』認出是 1850 年後 Maastricht 的 Tielens en Schrammen 機器直紋紙；墨水沒有吸進紙裡；『runen』其實是塞進圓圈的羅馬大寫字母；『op de pagina’s 46 en 47 van het handschrift een expliciete handleiding met de sleutel』；Ottema 1872 年出版、1876 年再版仍相信；Beckering Vinckers 1876 年稱其為『wartaal』；語言是荷蘭語與新弗里斯蘭語的混合；Jensma 說它『openlijk zien dat het niet is wat het zegt te zijn』，硬證據仍沒有，稱為『een onopgelost dossier』。",
+      "changed_fields": [
+        "answer_target",
+        "question"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池內搜 Oera 只命中 Soerabaja 一類字串雜訊，wave21/22 也無；與 N2444（捷克手稿）同屬 19 世紀小民族的偽古史，但核心不同（本題是偽作自帶解碼表、作者至今未定）。前提與轉折都在重開的頁面上，片長 8.5–10 分鐘誠實。改動：題目把機器紙講成定論，原文是『幾乎可以確定』，改掉；1270 年 Flanders 的紙是 Prevenier 自己的補充，不是 Jensma 的研究，答案改標出處。不講兩人自殺與政治挪用的 scope 正確。"
+    },
+    {
+      "id": "N2608",
+      "agent": "D3",
+      "reviewer": "R233",
+      "verdict": "ADOPT",
+      "key_source_reopened": "D3-S024 https://archive.org/download/bib_fict_4102971/bib_fict_4102971_djvu.txt（OCR，pp. 1–2、9–13、21–24、26–27、判決段）",
+      "reopen_result": "頁面上確實寫了（OCR 把 1 讀成 4，已對讀）：1867 年 7 月 8 日科學院聽 Chasles 報告；8 月 12 日讀 Brewster 的抗議，反對 Pascal『dans le déclin de son âge』與『Newton dans sa douzième année』的通信，Newton 家族保存的文件裡『son nom même n’y figurait pas』；Grant 9 月 12 日的信比對 1662、1687、1726 三組數字，Pascal 的數字『identiquement les chiffres mêmes de Newton en 1726』；作者描述這些文件被逼出一處就找下一個『refuge』；11 月 11 日 Grant 指出『Galileo』1641 年的信提到 1655 年才發現的土星衛星、視力漸差，而 Galileo 1637 年底就全盲；11 月 18 日 Chasles 拿出『une vingtaine de lettres』證明他沒全盲、把望遠鏡送人；Chasles 1869 年說買了兩萬多件、約 150,000 法郎，專家清點『27,320 émanées de 660 personnages』，真品總值『509 fr. tout au plus』；有『Cleopatre royne à son très amé Jules Cesar』的信；判決『deux ans d’emprisonnement et 500 francs d’amende』。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池內與 wave21/22 搜 Chasles、Vrain、Pascal 無；與 N2523（Beringer 形石）、N2526（金冠）同屬學者被偽物牽著走，但核心是『每次被駁就補新信、補出新破綻』，不同。數字、日期、引文都在重開的掃描頁上，scope 已處理 27,320 與 27,345 的出入、撕圖書館舊紙的說法不講（Prevenier 有寫，但只是他的轉述，維持不講）。轉折一層一層升級（Newton 12 歲 → 數字一樣 → Galileo 盲 → 二十封新信 → 受審），片長 9–10.5 分鐘誠實。不需改動。"
+    },
+    {
+      "id": "N2621",
+      "agent": "D4",
+      "reviewer": "R234",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S005 https://www.andrew.cmu.edu/user/ujf/blog/Rumpenstunzchen.html；D4-S001 https://de.wikisource.org/wiki/Seite:Kinder_und_Hausm%C3%A4rchen_(Grimm)_1856_III_094.jpg；D4-S002 https://de.wikisource.org/wiki/Rumpelstilzchen_(1812)；另試 Ashliman 對照頁 sites.pitt.edu/~dash/grimm055.html（WebFetch 回 503，讀不到）",
+      "reopen_result": "D4-S005 是 Ulrich Flemming 2015 年在個人部落格的英譯，底本標明是 Insel-Bücherei 第 837 號（1964）《Grimms Märchen in ursprünglicher Gestalt. Nach der Ölenberger Handschrift von 1810》：女孩拿亞麻紡出的全是金線，坐在屋頂紡了三天；小人答應讓年輕王子路過娶她，條件是頭胎；生子後給三天；第三天『公主』（Prinzessin，不是王后）派忠心的女僕夜裡進森林，看見他騎著煮飯勺繞大火、喊出 Rumpenstünzchen；他說『這是魔鬼告訴你的』，騎勺飛出窗。D4-S001 這一頁的格林 1856 年註解確實寫『依據四則大體一致、細節互補的黑森故事』，其中一則是國王打獵回來偷聽到名字；『第五則』亞麻紡成金線、王后的女僕看見他騎勺繞火、被說破後騎勺飛出窗——與部落格譯文的手稿情節相合，所以單一部落格來源有格林自己的註解互證，可以用；第六則（婦人經過花園）在這一頁中斷，櫻桃、Flederflitz、名字清單、Fischart 與 L'Héritier 在下一頁，本輪沒重讀。D4-S002 1812 年本：國王把磨坊女兒關進三間一間比一間大的稻草房，第三間才說成功就娶她；王后猜 Conrad、Heinrich；國王說在森林小屋旁看見小人跳舞唱名；小人喊『魔鬼告訴你的』，氣沖沖跑掉、再也沒回來——『三間越來越大的稻草房』1812 年就有了，不是 1857 年的新東西。",
+      "changed_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：素材池、wave21/22、D1–D3 都沒有 Rumpelstiltskin；F01–F04 也是『格林各版改了什麼』，但核心答案各不同。三個轉折重開後都站得住：手稿是飛走、初版是跑掉、1819 才撕裂；格林註解自己攤開了拼接（四則一致的加兩則異說）。旗標的單一來源（部落格譯 1810 手稿）有格林 1856 註解第五則互證，可以用，但旁白要說明是『手稿』而不是『格林寫的初稿』。要改的是兩個細節：手稿裡是公主不是王后；稻草房越來越大 1812 年就有；以及『四、五則說法不一』不符註解原文（四則大體一致）。事實量約 15 條，8.5–10 分鐘誠實。"
+    },
+    {
+      "id": "N2622",
+      "agent": "D4",
+      "reviewer": "R234",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S007 https://www.deutsche-biographie.de/pnd119383268.html（NDB 26，Lauer 2016）",
+      "reopen_result": "條目寫：Dorothea Viehmann 1755 年 11 月 8 日生於 Rengershausen 附近的 Knallhütte，1815 年 11 月 17 日死於 Niederzwehren；父親 Johann Friedrich Isaak Pierson（1734–98）經營 Knallhütte 客棧；家譜欄 Isaak Pierson（約 1655–1741）標為『Ur-Gvv』，即父系的曾祖父，是來自梅斯的胡格諾派信仰難民，1686 年定居黑森，領導 Hofgeismar 附近 Schöneberg 的改革宗會眾；1777 年嫁給裁縫 Nikolaus Viehmann，1787 年搬到 Zwehren；經由卡塞爾法語教會第二牧師 Ramus 的女兒 Julia 與 Charlotte 認識格林；1813–1815 年提供約 40 篇故事與異文，收在 1815 年第二冊與 1819 年第二版，包括 Aschenputtel 與 Die Gänsemagd；Ludwig Emil Grimm 1814 年畫像，1819 年起的許多版本附其蝕刻；19 世紀把她塑造成『道地黑森的童話婦人』；Katzenstein 1892 年油畫〈格林兄弟在童話婦人家〉加深了樸素民間婦人的形象。與答案相符，唯『高祖』應為『曾祖』。",
+      "changed_fields": [
+        "answer_target",
+        "question"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池裡沒有格林提供者或 Viehmann 題；F01 等單篇版本差異核心不同。前提成立：序言的『農婦』與 NDB 的客棧之女、裁縫之妻、胡格諾後代並陳，是紀錄本身的反差；Hassenpflug 與佩羅的相似有 Rölleke（D4-S008）撐，『老瑪麗』之爭照 scope 只講仍有爭議。NDB 家譜寫 Ur-Gvv（曾祖父），候選誤寫成高祖，已改。三個轉折都是真轉折，8.5–10 分鐘可撐。可與 N2621 同排格林篇。"
+    },
+    {
+      "id": "N2623",
+      "agent": "D4",
+      "reviewer": "R234",
+      "verdict": "ADOPT",
+      "key_source_reopened": "D4-S012 https://projekt-gutenberg.org/authors/clemens-brentano/books/clemens-brentano-godwi/chapter/77",
+      "reopen_result": "第 77 章（第二冊『第三十六章』）裡，Violette 在池上划船時唱出這首敘事詩：Bacharach 的女巫 Lore Lay 美得讓許多男人毀滅；主教召她、被她的美打動，她求死，主教不肯定罪，下令送她進修道院；她要求先爬上岩石再看一眼萊茵與愛人的城堡，三名騎士把馬拴在下面跟上去；她看見河上一艘船、認定船上的人就是愛人，便投入萊茵，騎士們死在岩上、沒有神父也沒有墳；結尾是船夫唱這首歌、岩石傳回三重回聲。頁上另有一段散文註說 Lore Lay 是 Bacharach 附近、船夫呼喊聽回聲的岩石。與 answer_target 的情節完全相符：原版沒有梳頭、沒有唱歌害人，是她自己投河。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "不重複：池裡、wave21/22、D1–D3 都沒有羅蕾萊；N2143、N1024、L30 同屬『傳說比作品晚』但答案不同。重開的原詩支持最關鍵的轉折（原版 Lore Lay 不是害人的女妖）。Vogt 撤回、Schreiber 年份衝突都已在 scope 降級處理。事實量約 12 條加上原詩情節，8.5–9.5 分鐘偏緊但誠實；不要再加 Heine 生平撐片長。"
+    },
+    {
+      "id": "N2624",
+      "agent": "D4",
+      "reviewer": "R234",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S016 https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Pliny_the_Elder/10*.html（《博物志》卷 10 phoenix 段）",
+      "reopen_result": "Thayer 本的分段裡 phoenix 在第 2 章的 §3–5（頁面把 ostrich 放在前面）：§3 有『haud scio an fabulose』；§4 有 Manilius 說牠活 540 年（vivere annis DXL）、從骨頭與骨髓先生出『ceu vermiculum』（像小蟲）；§5 寫克勞狄烏斯任監察官那年被帶進羅馬、在 comitium 展示，『有官方紀錄為證，sed quem falsum esse nemo dubitaret（但沒有人懷疑它是假的）』。與候選相符。",
+      "changed_fields": [
+        "source_locator",
+        "scope",
+        "notes"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池裡只有 U16 鳳凰城，原來如此事務所也沒有 phoenix。前提重開成立，西元 47 年羅馬展出公認假貨是真的反常。要改的是時間線的最後一段：候選把『完整浴火重生』放在約 400 年的克勞狄安，但 Lactantius（約 300 年）已有日光點燃巢、灰中重生，本輪沒讀，所以 scope 收窄、notes 的轉折改寫，避免重犯 wave22『把讀到的最早當成最早』。8.5–10 分鐘誠實。"
+    },
+    {
+      "id": "N2625",
+      "agent": "D4",
+      "reviewer": "R234",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S022 https://www.gutenberg.org/cache/epub/43286/pg43286.txt（Evans 1906，第 1 章與附錄表）；另搜尋巴塞爾 1474 案的第二來源（archive.org 的 Basler Chroniken 第 4 冊全文 grep 無此事；其餘只有部落格）",
+      "reopen_result": "Evans 原文：『1474 年巴塞爾的官員以「違反自然的下蛋罪」判一隻公雞火刑』，刑場在城附近叫 Kohlenberg 的高地，像燒異端一樣隆重，大批市民與農民圍觀；Gross《Kurze Basler Chronik》說劊子手剖開公雞又找到三顆蛋，Evans 說這當然荒謬；瑞士 Prättigau 到 1730 年還有一例。附錄表把此案的出處列為 1813 年 11 月 1 日《Journal du Département du Nord》的〈Promenades pittoresques dans l'Evêché de Bâle〉、Mémoires 卷 8 頁 428 與 Johann Gross《Kleine Baseler Chronik》——也就是說 Evans 本人也是二手，最早出處是 17 世紀的 Gross 編年史與 1813 年的報紙，都不是 1474 年當時的紀錄。Lapeyronie 一段 Evans 寫『1710 年在科學院宣讀』、《Mémoires de l'Académie des Sciences》Paris 1710 pp. 553–60，農夫帶來比鴿蛋稍大的蛋、蛋黃痕跡像『盤著的小蛇』、解剖公雞器官正常、後來找到下蛋的母雞、輸卵管被水泡壓迫、母雞叫起來像『沙啞的公雞』——都相符。12 世紀希臘文韻文 Physiologus 說老公雞蛋孵出的動物『目光如 basilisk』，也在原文。",
+      "changed_fields": [
+        "hook",
+        "scope",
+        "premise_status"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池裡沒有 basilisk、cockatrice 或公雞蛋題。普林尼的小蛇（一手）→中世紀寓言集的公雞蛋→Lapeyronie 解剖拆穿（Evans 與 HSM 論文兩處互證）是完整的轉折鏈，不靠巴塞爾也撐得住 8.5 分鐘。旗標的巴塞爾 1474 年案：重開 Evans 確認寫法，但 Evans 自己引的是 17 世紀 Gross 編年史與 1813 年報紙，我另找第二來源只找到部落格，所以鉤子加上『據 1906 年的整理』，scope 規定製作前補讀，讀不到就降級、不當開場。"
+    },
+    {
+      "id": "N2626",
+      "agent": "D4",
+      "reviewer": "R234",
+      "verdict": "ADOPT_WITH_CHANGES",
+      "key_source_reopened": "D4-S035 https://archive.org/download/mothergoosesmelo00pridiala/mothergoosesmelo00pridiala_djvu.txt；D4-S037 https://www.editions-ellipses.fr/PDF/9782729829650_extrait.pdf；D4-S038 https://anecdota.princeton.edu/archives/500",
+      "reopen_result": "D4-S035（Prideaux 序）：Child 1886 年 2 月 25 日來信說 1719 年波士頓的《Songs for the Nursery, or Mother Goose's Melodies for Children》『據說在一座老古物圖書館被發現，後來找不到』；Whitmore 1889 年小冊、1892 年專書，調查找不到 1719 年版存在的任何證據；故事源於 1859 年過世的 Crowninshield 以為在美國古物學會圖書館見過，遇到 Fleet 的曾孫 Eliot，Eliot 1860 年 1 月 14 日發表在《Boston Transcript》；圖書館仔細找過，結論是它不曾存在；Carnan 1780 年 12 月 28 日在 Stationers' Hall 登記，Welsh 推測約 1765 年由 Newbery 初版；Welsh 與 Whitmore 認為序與註有 Goldsmith 的手筆；書名借自《Mother Goose's Tales》，即佩羅《Contes de ma Mère l'Oye》的翻譯；Samber 譯本 1729 年 3 月登廣告、沒有存本；Lang 指出 Loret《La Muse Historique》1650 年 6 月 11 日已有『conte de la Mere Oye』，比 1697 早近五十年——全部相符。D4-S037：1695 年抄本只有前五篇、題為《Contes de ma mère l'Oye》，1697 年印本改名，題名留在卷首插畫的牌子上（紡紗講故事的婦人與孩子）；獻詞署 Pierre Darmancour、印刷許可也給他；Pierre 生於 1678 年；1697 年他在鬥毆中用劍殺死鄰居青年 Guillaume Caulle，之後從軍，『一年後』戰死，『年僅 22 歲』；作者認為署兒子的名是商量過的策略，因 Boileau 等人嘲笑過佩羅的韻文童話。D4-S038（Schröder，2017，2021 增補）：1699 年 9 月 Pierre『21 歲 5 個月』取得提前成年的 lettres de bénéfice d'âge；正文說他在 1700 年 7 月 10 日以前過世，沒提殺人或從軍。所以兩源其實不衝突：生於 1678 年 4 月前後、1700 年過世正好是『年僅 22 歲』，D4-S037 的『一年後』應指從軍之後，不是 1697 年之後。",
+      "changed_fields": [
+        "question",
+        "scope"
+      ],
+      "duplicate_of": "",
+      "reason": "不重複：池裡只有 N1721 借用『鵝媽媽故事』一詞，F05、F06、F12、F13 是佩羅單篇的版本差異。前提重開全部成立，紙上追蹤本身就是故事（一本不存在的書→倫敦童謠書→無存本的英譯→署少年名字的法國書→比佩羅早的俗語），三個以上真轉折，9–10.5 分鐘誠實。旗標的 Darmancour：重開兩源後發現研究代理說的『衝突』其實不存在，但殺人仍是單一來源、離題且涉暴力，維持不講；只補 1700 年過世一事。題目裡的 Granary 墳墓無來源，刪掉。"
+    },
+    {
+      "id": "N2627",
+      "agent": "D4",
+      "reviewer": "R234",
+      "verdict": "REJECT",
+      "key_source_reopened": "D4-S026 https://www.nippon.com/ja/japan-topics/b02507/（香川雅信〈天狗〉）",
+      "reopen_result": "文章（香川雅信）確實寫：637（舒明 9）年 2 月大星由東向西流、聲如雷，僧旻說不是流星是天狗；《日本書紀》的天狗訓作『あまつきつね』；在中國天狗（流星、隕石）是戰亂的預兆；10 世紀起天狗像狐一樣『化かす』；《今昔物語集》說天狗的正體是『屎鵄』；因為會飛，被畫成鳥、特別是鳶；江戶時代鼻高天狗才成主流；狩野元信第一個畫鼻高天狗的說法『無法確認』；鼻高的面具藝能可能是原型；穿著像山伏。內容與 answer_target 相符（『原因不太清楚』一句頁上沒有逐字出現，只是沒有給原因）。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "內容站得住，但章節沒有可排的兄弟：研究代理指定的 N443（ろくろ首）是已入選的 episode_core，8–10 分鐘，加上本章 5–7 分鐘是 13–17 分鐘，超過 13 分鐘；要排成一集得把 N443 壓到 6–8 分鐘，而 N443 的核心是おつよ這位真實女孩被流言纏上、記錄者自己說『全是空話』，不是『招牌特徵何時長出來』，兩題的核心問題其實不同，壓短會砍掉 N443 的主體。N945（崇德院變天狗）也是已入選的單集，核心是『天狗是物語各本後加的』，同樣要壓短既有題。本批新章節之間：與 N2628（妲己）都從《史記》出發（天官書的天狗、殷本紀的妲己），表面上可以說『史記裡的一顆流星和一個寵妃怎麼變成妖怪』，但天狗的答案是日本的造型演變而且說不清原因，妲己的答案是中國把亡國罪名推給狐，核心問題不同，硬湊就是兩段並列。單獨 5–7 分鐘撐不到 8.5，不硬湊，所以不能單獨入選。資料可保留給日後的天狗主題。"
+    },
+    {
+      "id": "N2628",
+      "agent": "D4",
+      "reviewer": "R234",
+      "verdict": "REJECT",
+      "key_source_reopened": "D4-S030 https://zh.wikisource.org/wiki/全相平話/01；另開 https://zh.wikisource.org/wiki/全相平話（題頁）",
+      "reopen_result": "卷上原文確有：蘇護夜宿故恩州館驛，『夜至二更之後，半夜子時，忽有狂風起……只有一隻九尾金毛狐子，遂入大驛中』，『去女子鼻中吸了三魂七魄和氣，一身骨髓，盡皆吸了』，『吹氣一口，入卻去女子軀殼之中，遂換了女子之靈魂，變為妖媚之形』，天亮後父親見女兒『大驚』、隨後『大悅』（原文有缺字▉）。題頁只標『元』『不題撰人』『1323年』，沒寫刊行者或至治年間，所以 1323 年只是維基文庫的題頁標註，旁白宜講『元代刊本』。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "章節的兄弟不成立：N369（殺生石、二尾的玉藻前）本身是 8–10 分鐘的 episode_core，而且還在 reserve、needs_check（關鍵的『早期二尾』只有一個來源、ineligible），加上本章 4–6 分鐘會到 12–16 分鐘。要排成『九尾狐的履歷』，得把 N369 的 2022 年冰裂、硫化氫、芭蕉三段（偏科學、約 3 分鐘）刪掉，等於重做一個既有題，屬站主決定，而且要先等 N369 補到二尾的一手來源。本批其他章節與它的核心不同（見 N2627）。D1 的 not_added 有『韓國九尾狐原本不是女的』，未研究，日後若做成，可能與本章組成『九尾狐什麼時候變成女妖』。單獨 4–6 分鐘，不能入選；原文都讀得到，資料保留給 N369 重做時併入。"
+    },
+    {
+      "id": "N2629",
+      "agent": "D4",
+      "reviewer": "R234",
+      "verdict": "REJECT",
+      "key_source_reopened": "D4-S032 https://www.gutenberg.org/cache/epub/345/pg345.txt（Dracula 1897）",
+      "reopen_result": "Mina 的日記：參加完 Hawkins 先生的葬禮後，搭公車到 Hyde Park Corner，在 Row 坐了一會兒，再沿 Piccadilly 走；她在看 Guiliano's 外面坐在 victoria 馬車上、戴大帽子的漂亮女孩時，Jonathan 抓緊她，看見一個高瘦、鷹鉤鼻、黑鬍子、紅唇尖牙的男人也盯著那女孩。原文沒寫『正午』，但場景是白天的公園與街道。Van Helsing 說伯爵的力量『跟一切邪惡的東西一樣，在白天到來時停止』，只有正午或恰好日出、日落時才能變身。與候選相符。",
+      "changed_fields": [],
+      "duplicate_of": "",
+      "reason": "內容正確，但章節沒有能在 13 分鐘內排的兄弟：F34（1732 年報紙吸血鬼到 Lord Ruthven）是已入選的 episode_core 8–9 分鐘，N2485（Vetāla 到 Burton）是 8.5–10 分鐘，兩者都是完整單集；加上本章 4–6 分鐘會到 12–16 分鐘，要排成一集得把 F34 壓短（例如刪掉日內瓦湖那一章），屬站主決定。三題確實共用『吸血鬼的招牌是誰加上去的』，但那是播放清單，不是一集。本批其他章節（天狗、妲己）核心不同。另外研究代理自己也承認『德古拉白天會出門』有一部分觀眾知道，單獨 4–6 分鐘撐不到 8.5，不能單獨入選。"
+    }
+  ],
+  "theme_suggestions": [
+    {
+      "ids": [
+        "N2563",
+        "N2564"
+      ],
+      "shared_question": "新羅人貼在門上辟邪的字，寫的是誰？那個人的故事是從哪本書、哪裡來的？",
+      "why_it_flows": "兩題的起點是同一種東西：《三國遺事》與《殊異傳》逸文都說時人把一段寫給某人的文字貼在門上，一首辟鬼（鼻荊）、一首防火（志鬼）。每章都用『追出處』翻一次：鼻荊章追到他的鬼父親眞智王，正史只寫『王薨』、沒有廢位，而且他是武烈王的祖父；志鬼章追到《大智度論》的捕魚師述婆伽，主角、對象與經文結論都不同。兩章問的是同一個問題、各給一個不同類型的答案（野史對正史、外來故事在地化），合計約 10–12 分鐘，不必硬湊。N1005 處容（門上貼像辟疫神）是同一個問題的第三個例子，但它已是 8–10 分鐘單集，只建議在系列順序上相鄰，不併入。結構上順序建議先鼻荊後志鬼，收在『門上的字比故事本身活得更久』。"
+    },
+    {
+      "ids": [
+        "N2583",
+        "N2584"
+      ],
+      "shared_question": "南美兩個大地名，是看到什麼取的，還是從舊世界帶來的？",
+      "why_it_flows": "N2583（主章，約 9–11 分鐘）：課本說『大腳』，紀錄指向 1512 年騎士小說《Primaleón》的狗臉鹿腳怪物；N2584（第二章，約 5–7 分鐘）：課本說『盛產巴西木』，紀錄顯示 brasil 早在 1193 年的義大利商約、Marco Polo 的種子與 1325 年的幻島上就有，葡萄牙人先在亞洲碰到。兩章答案同型而各給一層新理解：一個名字來自一本書，一個來自一張商品清單，都不是『看到的』。合計約 15–17 分鐘，不必壓短 N2583。N2584 沒有 N2583 就不做。"
+    },
+    {
+      "ids": [
+        "N2581",
+        "N2485"
+      ],
+      "shared_question": "今天的怪物，是被哪一份翻譯或改寫定型的？",
+      "why_it_flows": "選配，屬站主決定：N2581 的 zombi 從 1697 年鬧劇裡的假鬼、19 世紀安地列斯的夜遊魂，到 1929 年美國遊記才變成幹活的屍體；N2485 的 Vetāla 從《故事海》裡附屍的精靈，到英譯本變成『vampire』。兩題都是單集，排成一集要各壓短，不建議硬併；列出只為排片時相鄰。"
+    },
+    {
+      "ids": [
+        "N2604",
+        "N2605"
+      ],
+      "shared_question": "莎士比亞沒有留下手稿，於是有人替他『找到』了——要怎麼證明找到的是假的？",
+      "why_it_flows": "同一個空白（沒有手稿）引出兩次偽稿；1796 年 Malone 用拼字與年代拆 Ireland，1859 年大英博物館用『鉛筆在墨水底下』拆 Perkins 對開本；N2605 只能當章，接在 N2604 之後剛好是第二種方法，不需補料。"
+    },
+    {
+      "ids": [
+        "N2602",
+        "N2603",
+        "N2604"
+      ],
+      "shared_question": "18 世紀英國的三個年輕人造出『古代作品』，學者各用什麼拆穿？",
+      "why_it_flows": "三案有真實接點：Ireland 的拼法模仿 Chatterton 的 Rowley 詩（DNB），Malone 同時寫了反 Rowley 與反 Ireland 的書；Ossian 是同一時代的開端。各自單集，可排成播放清單。"
+    },
+    {
+      "ids": [
+        "N2601",
+        "N2608"
+      ],
+      "shared_question": "一份偽文件為什麼能讓最有名的學者替它背書？",
+      "why_it_flows": "兩案都是權威（翻譯者 Duyvendak、數學家 Chasles）先背書、被拆穿；一個由撤回後仍被引用收尾，一個由不斷補信收尾，各自單集。"
+    },
+    {
+      "ids": [
+        "N2606",
+        "N2607"
+      ],
+      "shared_question": "從文件自己的字裡挑出它不可能出自那個年代的破綻",
+      "why_it_flows": "一份用羅馬人不會用的官名與還沒建的城露餡，一份用 1850 年後的機器紙與自帶的字母表露餡；可排成『文件考證』兩集，不必合併。"
+    },
+    {
+      "ids": [
+        "N2629",
+        "F34"
+      ],
+      "title": "吸血鬼什麼時候變成貴族、又什麼時候怕起太陽",
+      "shared_question": "吸血鬼的招牌（貴族、怕陽光）是誰加上去的",
+      "why_it_flows": "核心問題相同：F34 講 1732 年的村中死者如何在 1819 年變成貴族，N2629 講 1897 年還在白天逛街的伯爵如何在 1922 年的電影裡被日出消滅。但 F34 已入選、8–9 分鐘，合起來 12–15 分鐘，要排成一集得把 F34 壓到約 7 分鐘（刪日內瓦湖那章），屬站主決定；不壓短就不成立。N2485 也同題，但它是完整單集，只適合排進同一播放清單。"
+    },
+    {
+      "ids": [
+        "N2628",
+        "N369"
+      ],
+      "title": "九尾狐的履歷：妲己怎麼被寫成狐、玉藻前的尾巴怎麼變成九條",
+      "shared_question": "九尾狐什麼時候變成禍國的妖女",
+      "why_it_flows": "妲己一章（史記無狐→白居易拿美色比狐→元代平話狐狸借殼）正好接 N369 的『九尾是江戶與妲己故事合流後才定型』。但 N369 是 8–10 分鐘的 reserve 單集、needs_check，要先補到『早期二尾』的一手來源，再把冰裂、硫化氫、芭蕉三段刪掉，才能在 13 分鐘內放進本章；屬重做既有題，由站主決定。"
+    },
+    {
+      "ids": [
+        "N2621",
+        "N2622"
+      ],
+      "title": "格林童話的工作台",
+      "shared_question": "（播放清單，不是合集）格林童話是從哪裡、怎麼拼出來的",
+      "why_it_flows": "兩題都是完整單集，不合成一集；同一批 1810 手稿與格林自己的序和註解，一集講一個故事怎麼被拼接改寫，一集講『道地黑森』的講述者其實是誰，適合在格林篇連排。"
+    },
+    {
+      "ids": [
+        "N2624",
+        "N2625"
+      ],
+      "title": "怪物的招牌是後來長出來的",
+      "shared_question": "（播放清單，不是合集）一隻傳說動物最有名的特徵是什麼時候加上的",
+      "why_it_flows": "兩題都是完整單集：phoenix 的火、basilisk 的公雞蛋，都從普林尼的版本出發，再看後代加了什麼；連排即可，不需壓短。"
+    }
+  ]
+}
