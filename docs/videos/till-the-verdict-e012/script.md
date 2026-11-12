@@ -169,15 +169,15 @@ Peg 走到柱子邊，Nora 從柱子後面出來。「How'd he know you were her
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **開場**照 bible〈必修〉第 12 集：Peg 站起來 → Grant 停步「Mom?」→ Peg「Eye appointment.」→ 柱子後 Nora 的臉；Peg 的台詞寫在她自己的鏡上、Grant 的反應另一鏡。Peg 的第一句「Grant. What are you doing here?」（細綱 hook 原句）放在 c02，所以 Nora 的臉是第 5 鏡（第 10.5 秒）。
 - **c03**：Grant 練過的閉嘴微笑只到 "Mom?" 之前（bible〈全劇固定〉）；之後每一鏡寫不笑。
-- **c12**：「How'd he know you were here?」由 Peg 問（細綱給 Brandt，她不在大廳）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 2 條）。答案在 c14：新手機是 Grant 的家庭方案，第 3 天早上她用它打 Brandt 的分機（第 11 集 c07）。
-- **c15**：關機只拍側面的白光暗掉；**c18–c19** 18:30 Bev 鎖進抽屜（bible〈必修〉）。**c20** Bev 的「Safest drawer in Port Merrow.」是 bible 的選用台詞，收了。**依 bible 建議，待站主確認**（第 2 條）。
+- **c12**：「How'd he know you were here?」由 Peg 問（細綱給 Brandt，她不在大廳）。**站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 2 條）。答案在 c14：新手機是 Grant 的家庭方案，第 3 天早上她用它打 Brandt 的分機（第 11 集 c07）。
+- **c15**：關機只拍側面的白光暗掉；**c18–c19** 18:30 Bev 鎖進抽屜（bible〈必修〉）。**c20** Bev 的「Safest drawer in Port Merrow.」是 bible 的選用台詞，收了。**站主 2026-11-12 照建議定案**（第 2 條）。
 - **c22–c23**：跳三天用 Peg 的毛線變長（前臂長）、大衣肩上的雨點、窗上雨痕、空的週日候診區交代，不用字卡、不說星期幾。
 - **c25–c26**：報告只拍滑過桌面與 Nora 壓上去的手，"It's sugar." 由 Brandt 念、不疊字（細綱的 "report text added in post" 取消）。
-- **c32、c34**：「The pharmacy logs who signs for every pickup.」「You can ask for your own.」是 bible 補的台詞。**依 bible 建議，待站主確認**（第 2 條）。
+- **c32、c34**：「The pharmacy logs who signs for every pickup.」「You can ask for your own.」是 bible 補的台詞。**站主 2026-11-12 照建議定案**（第 2 條）。
 - **c36–c42**：Nora 填申請只拍筆在紙邊；Dale 不轉紙、停在 "Signed by—"、抬眼看她（細綱的「轉過來推給她」取消）；顏值鏡頭 c39 不寫 waist-length（bible〈必修〉）。
-- **Bev、Brandt、Dale 的定妝照**照 `cast.json` 拿掉道具與表情的外貌句畫。**依 bible 建議，待站主確認**（第 6 條）。
-- **Peg 的新毛線**（c22–c23 前臂長）當時鐘。**依 bible 建議，待站主確認**（第 7 條）。
-- **帳**：第 4–5 天吃 $24、第 6 天公車 $8、吃 $12、第 6 晚 $89，剩 $47（bible〈帳〉；細綱的 $159 不用）。本集不念數字。**依 bible 建議，待站主確認**（第 3 條）。
+- **Bev、Brandt、Dale 的定妝照**照 `cast.json` 拿掉道具與表情的外貌句畫。**站主 2026-11-12 照建議定案**（第 6 條）。
+- **Peg 的新毛線**（c22–c23 前臂長）當時鐘。**站主 2026-11-12 照建議定案**（第 7 條）。
+- **帳**：第 4–5 天吃 $24、第 6 天公車 $8、吃 $12、第 6 晚 $89，剩 $47（bible〈帳〉；細綱的 $159 不用）。本集不念數字。**站主 2026-11-12 照建議定案**（第 3 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
 - **c31 加了 Nora 一句**「Then who switched them?」（→ 答在 c32、c34）：Brandt 那兩句才有問有答，也把細綱 conflict 的「化驗證明藥是假的，卻證明不了是誰換的」說出口。6 個字以內有收尾動作。**台詞是新加的，請站主看一下**。

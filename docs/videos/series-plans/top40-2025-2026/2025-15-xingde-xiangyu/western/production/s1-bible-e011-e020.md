@@ -444,4 +444,8 @@ Bev、Sienna、Fisk 在第 4–10 集清單裡，若還沒畫，Bev 排在 3 之
 - **第 17–18 集**（寫稿者定）：Dana 那句 "He fights for you once— you're a bought witness." 整句在她自己的鏡上說完。Nora 在 Theo 平舉的平板背面寫字用右手（全劇只有 Sienna 是左撇子）。
   第 17 集補一鏡 Peg 在辦公室窗裡轉身朝門走（她衝出來的原因）。第 18 集 Grant 的白車從畫面左開來、迴轉不拍，停在黑車旁、退後半個車身；黑車開走後白車道具句改 `by the empty curb`。
   18→19：車頭朝畫面左，車燈照在濕路面上再反照到兩個女人身上；Grant 抓的是 Nora 的左手腕，巴掌打在他左頰；Peg 的合約最後在右手。
+- **第 11–13 集**（寫稿者定）：第 12 集補 Nora "Then who switched them?"（Brandt 講藥局紀錄的起因；站主同意的補台詞清單外新增的一句）。第 12 集 Peg 的 "Grant. What are you doing here?" 放在 c02，柱子後 Nora 的臉在第 10.5 秒。
+  軸線：診間 Brandt 在畫面左、Nora 在右、門在右；大廳 Grant 轉身後在左、Peg 在右，Nora 躲在柱子靠入口那面的右半邊；藥局交代位置的鏡從側面拍、玻璃隔板側成細線，臉一律在隔板同一側拍；第 13 集 Nora 跪在兩床之間、面向自己的床。
+  第 11 集 Peg 隔著關著的門說 "I'll be downstairs."（不跟 Brandt 同框）；Brandt 整場戴手套。Bev 鎖抽屜的小黃銅鑰匙收進她上衣口袋。第 13 集 Peg 的大衣攤在她床尾，第 14 集從這裡拿起。
+  帳：第 11 集剩 $180（第 10 集〈時間與帳〉原寫 $196，已改成照這份）。
 

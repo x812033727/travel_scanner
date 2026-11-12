@@ -149,7 +149,7 @@ Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂�
 | c34 | 中近景、慢推（從中景推到中近景）；從 Nora 這邊、隔著柱子的邊拍：**前景左是虛焦的淺木柱邊**（占畫面左三分之一），柱邊右邊是大廳深處；直式 | Grant（基本款：沙金色側分短髮、細的圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫），站在右後的走道口；右手把 `a bouquet of pale pink roses wrapped in plain brown paper, as long as his forearm` 遞向畫面右的助理，左手還拿著 `a flat white gift box tied with a pale ribbon, about the size of a hardcover book`；醫生助理（深藍手術服、深色馬尾，**背影**）兩手接住花；Grant 四分之三側臉朝畫面右的助理、眼睛看著她，不看鏡頭；眉心微微提起、嘴角平、句子之間是練過的閉嘴微笑、不露齒，聲音平穩、低 | Grant 把花遞給助理，嘴在說話（聲音平穩、低）；說完右手放開花束，嘴閉上；最後：花在助理手裡，他的右手空了 | Grant（聲音平穩、低）：My wife's not herself.（我太太最近不太對勁）（原聲） | 約 3 秒 |
 | c35 | 近景、固定；鏡頭在柱子前、她右前方一點；直式，臉在上三分之一；身後只有包淺木的柱面 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），背貼著柱子；左手把 `a folded pale pink carbon-copy form about the size of her hand, print not readable` 壓在大衣前襟上；日光燈；臉朝畫面左，眼睛往右後斜瞄（看畫面右後外的 Grant），不看鏡頭；眉心往上擠、嘴唇抿薄、下巴發抖、鼻翼一張，`no smile at any moment, until the last frame`；眼睛還紅 | Nora 的眼睛往右後一瞄、又收回來，壓著副本的左手按得更緊；剪在眼睛收回來；嘴閉著；最後：她背貼著柱子、屏著氣 | — | 約 2.5 秒 |
 | c36 | 中近景、固定；同 c34 的鏡位（前景左是虛焦的淺木柱邊）；直式 | Grant（基本款：沙金色側分短髮、細的圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫），左手把 `a flat white gift box tied with a pale ribbon, about the size of a hardcover book` 放到助理捧著花的手臂上；醫生助理（深藍手術服、深色馬尾，**背影**）抱著花與禮盒；Grant 四分之三側臉朝畫面右的助理，頭微微偏、眼睛看著她，不看鏡頭；眉毛提起、嘴角平、句子之間是練過的閉嘴微笑、不露齒，聲音平穩、低 | Grant 把禮盒放上助理的手臂，嘴在說話（聲音平穩、低，像在託付）；說完兩手空了、扣上西裝的一顆扣子，嘴閉上；最後：他兩手空著，助理抱著花與禮盒 | Grant（聲音平穩、低）：Whatever she says, don't take it seriously.（不管她說什麼，都別當真）（原聲）（結尾）（懸念 → 下一集第一場） | 約 4 秒 |
-| c37 | 中景、固定；同 c34 的鏡位、往右後一點；直式；前景左緣是虛焦的柱邊 | 醫生助理（深藍手術服、深色馬尾，**背影**，只見肩以下抱著 `a bouquet of pale pink roses wrapped in plain brown paper, as long as his forearm` 與 `a flat white gift box tied with a pale ribbon, about the size of a hardcover book` 的手臂）；她身後的 Grant 在畫面左後、虛焦（兩手空著，嘴閉著） | 助理抱著花與禮盒，轉身往畫面右的走道走開；剪在她走到走道口一半；畫面上沒有嘴；最後：她的背影走進畫面右的走道 | — | 約 2 秒 |
+| c37 | 中景、固定；同 c34 的鏡位、往右後一點；直式；前景左緣是虛焦的柱邊 | 醫生助理（深藍手術服、深色馬尾、白色平底鞋，**背影**，只見肩以下抱著 `a bouquet of pale pink roses wrapped in plain brown paper, as long as his forearm` 與 `a flat white gift box tied with a pale ribbon, about the size of a hardcover book` 的手臂）；她身後的 Grant 在畫面左後、虛焦（兩手空著，嘴閉著） | 助理抱著花與禮盒，轉身往畫面右的走道走開；剪在她走到走道口一半；畫面上沒有嘴；最後：她的背影走進畫面右的走道 | — | 約 2 秒 |
 | c38 | 中景、慢推（從中景推到中近景）；鏡頭在柱子右邊緣外、低一點，往大廳深處拍；直式；前景左下緣是虛焦的柱角 | Grant（基本款：沙金色側分短髮、細的圓金屬框眼鏡、淺石色西裝、淺藍開領襯衫、深棕色皮鞋），兩手空著；第一格他已經轉身，朝畫面左前（柱子與電梯）走來；眼睛看著畫面左外的電梯，不看鏡頭；練過的閉嘴微笑、不露齒、眉毛放鬆、下巴微抬；身後是淺色石地板與一排灰色候診椅（虛焦） | Grant 朝柱子走來，皮鞋一步一步落在石地板上；剪在第二步落下；嘴閉著；最後：他離柱子三步，還在走 | — | 約 2.5 秒 |
 | c39 | 近景、固定；鏡頭在候診椅那排的走道上、往 Peg 拍；直式，臉在上三分之一；身後是灰色椅背與大廳深處（虛焦） | Peg（`coat`：長的棕色鋪棉大衣、玳瑁框眼鏡戴在臉上、木珠項鍊），坐在第二排靠走道的椅子上；`a plain beige canvas tote bag with no print, hanging from her left shoulder`；膝上 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`，右手拿著那支鉛筆；身旁空椅上 `two plain white paper cups with lids, no logo`；左手按著帳本，`a thin worn gold wedding band with one tiny old diamond, on her left ring finger`；第一格她低頭看帳本，然後抬頭、四分之三側臉朝畫面左的大廳中間、眼睛定住，不看鏡頭；眉毛一下挑高、眼睛在鏡片後面睜大、嘴唇微張、呼吸停住，`no smile at any moment, until the last frame` | Peg 從帳本上抬起頭（動作一），手裡的鉛筆停在半空（動作二）；剪在鉛筆停住；嘴閉著；最後：她抬著頭、看著畫面左 | — | 約 2.5 秒 |
 | c40 | 近景、固定；同 c35 的鏡位；直式，臉在上三分之一；身後只有包淺木的柱面 | Nora（`motel`，`a camel wool coat with deep pockets, worn open`），背貼著柱子；左手把摺起來的粉紅副本壓在胸前；臉朝畫面左，眼睛往右後瞄；聽見皮鞋聲越來越近：眼睛睜大、眉心擠緊、嘴唇抿死、喉嚨吞一下，`no smile at any moment, until the last frame` | 皮鞋聲越來越近，Nora 的肩膀往柱子再貼緊一點、閉一下眼又睜開；剪在眼睛睜開；嘴閉著；最後：她貼著柱子、眼睛往右後瞄 | — | 約 2.5 秒 |
@@ -168,13 +168,13 @@ Brandt 看著 Nora：「You called my line at seven. Good.」Nora 的聲音裂�
 - **c21–c23**：細綱的 "evidence bag" 改成外送實驗室的防拆封袋；**c24–c28** 監管紀錄（審稿）；只用手套與鑷子，沒有醫療處置。
 - **c27**：簽監管紀錄是顏值鏡頭，只拍下巴抬起、眼睛與筆，簽名不入鏡（bible〈必修〉）。
 - **c32–c37**：助理只拍背影；Grant 交花的鏡從 Nora 這邊、隔著柱子邊緣拍；**c38、c41** 他朝柱子走來，眼睛看著畫面左外的電梯（bible〈必修〉）。
-- **c07**：「You called my line at seven. Good.」是 bible 補的台詞（收掉第 4 集手心的分機、埋下 Grant 怎麼知道）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 2 條）。
-- **c04**：Dale 說「And the imprint's one stroke shallow.」（細綱是 Brandt 一口氣說兩句）。**依 bible 建議，待站主確認**（第 2 條）。
-- **c29**：「Outside lab. Three days.」與 **c19** Peg「I'll be downstairs.」是 bible 補的台詞。**依 bible 建議，待站主確認**（第 2 條）。
-- **Dale 與 Brandt 的定妝照**：照 `cast.json` 拿掉道具與表情的外貌句畫（Brandt 拿掉 "a calm attentive face"、Dale 拿掉 "meticulous"）；細綱的無名藥師用 Dale。**依 bible 建議，待站主確認**（第 5、6 條）。
-- **Nora 的 `motel`** 外貌句不帶大衣與表情，大衣寫道具句 `worn open`。**依 bible 建議，待站主確認**（第 6 條）。
-- **Peg 的新毛線**（灰藍窄條，c14 手掌長）當時鐘。**依 bible 建議，待站主確認**（第 7 條）。
-- **帳**：Peg 預付第 3–5 晚 $267、公車 $8、吃 $12，剩 $180（bible〈帳〉；第 10 集〈時間與帳〉寫的「公車 $4 → $196」以 bible 為準）。本集不念數字。**依 bible 建議，待站主確認**（第 3 條）。
+- **c07**：「You called my line at seven. Good.」是 bible 補的台詞（收掉第 4 集手心的分機、埋下 Grant 怎麼知道）。**站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 2 條）。
+- **c04**：Dale 說「And the imprint's one stroke shallow.」（細綱是 Brandt 一口氣說兩句）。**站主 2026-11-12 照建議定案**（第 2 條）。
+- **c29**：「Outside lab. Three days.」與 **c19** Peg「I'll be downstairs.」是 bible 補的台詞。**站主 2026-11-12 照建議定案**（第 2 條）。
+- **Dale 與 Brandt 的定妝照**：照 `cast.json` 拿掉道具與表情的外貌句畫（Brandt 拿掉 "a calm attentive face"、Dale 拿掉 "meticulous"）；細綱的無名藥師用 Dale。**站主 2026-11-12 照建議定案**（第 5、6 條）。
+- **Nora 的 `motel`** 外貌句不帶大衣與表情，大衣寫道具句 `worn open`。**站主 2026-11-12 照建議定案**（第 6 條）。
+- **Peg 的新毛線**（灰藍窄條，c14 手掌長）當時鐘。**站主 2026-11-12 照建議定案**（第 7 條）。
+- **帳**：Peg 預付第 3–5 晚 $267、公車 $8、吃 $12，剩 $180（bible〈帳〉；第 10 集〈時間與帳〉寫的「公車 $4 → $196」以 bible 為準）。本集不念數字。**站主 2026-11-12 照建議定案**（第 3 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
 - **診間的軸線**：大鏡位從房間南側往北拍，Brandt 在畫面左（背後是窗）、Nora 在畫面右、門在 Nora 身後的畫面右；Brandt 的鏡從 Nora 的**左**肩後（肩在畫框右下）、Nora 的鏡從 Brandt 的**右**肩後（肩在畫框左下）。Dale 站在 Brandt 右後、靠鏡頭這邊。第 12 集同一間照這個軸線。
