@@ -212,7 +212,7 @@
 | 薄荷糖碗 | `a small glass bowl of red-and-white striped peppermints in clear wrappers, about as wide as two cupped hands` | 第 9 集櫃台左端；`cast.json` 已從 Bev 的外貌句拿掉。掉下來的那顆寫 `one peppermint in a clear wrapper`。 |
 | 房間鑰匙 | `an old brass room key on a green plastic diamond-shaped fob about the size of her palm, no readable number` | 第 9–10 集。 |
 | 夾鏈袋 | `a small clear zip-top plastic bag about the size of her palm` | 第 10 集，從 Peg 的帆布袋拿出。 |
-| 對街的黑車 | `a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible` | 第 10 集；就是 Elias，第 15 集前認不出來。 |
+| 對街的黑車 | `a black sedan parked across the street under a dim streetlight, headlights off, a still dark figure in the driver's seat, no face visible, number plate out of frame` | 第 10 集；就是 Elias，第 15 集前認不出來。 |
 | 檯燈 | `a small motel bedside lamp with a pale yellow shade, warm light` | 第 9–10 集，兩床之間的床頭櫃上。 |
 
 ## 人物與參考圖
@@ -250,7 +250,7 @@
 
 - **第 4 集**：值班醫生的台詞改 "Dr. Brandt went off shift at six." "She's back tomorrow."（見〈時間線〉）；空的聯絡人用 Nora 說 "There's no one in here." 交代、螢幕只從側面；舊號碼用停號錄音（電話裡的 Gemini）；密碼被拒只有平板的嗡聲兩次；細綱只說 Grant「已經跟七樓說過」，改成看得見的一場：他送醫生到門口、背對她壓低聲音 "She's confused. Route everything through me."；分機要有來源：她問 "What's her extension?"，醫生念 "Four-one-one-six."（正文寫成字），筆是她從醫生放在床尾的夾板上抽的；手心的字不入鏡；不換點滴、沒有護理師。
 - **第 5 集**：開場跟第 4 集同一刻；跳到正午用光、Grant 乾了的頭髮與基本款西裝、扶正的空杯交代；Peg 哭的十秒拆成約四鏡（走過門口、手掌貼牆、額頭抵牆肩膀抖、擤鼻子轉身），沒有台詞、哭出聲；"...Sure." 寫在 Peg 自己的鏡上，前一鏡她看兒子一眼；Grant 叫車在畫面上講電話（原聲，"Five o'clock. Merrow General."）；收據不可讀；車上 Grant 在右、Peg 在左，Cole 只拍手與後腦。
-- **第 6 集**：叫來的車是深灰色（不是 Grant 的白車、不是黑車）；簽名不入鏡、後製也不上，Fisk 念；報警是對派遣員講（"I'm locked out of my own house."，派遣員畫外），等副警長的跳時間用「她坐在最上面那級台階、醫院袋在腳邊、光更低更暖」交代；副警長只拍腰以上、沒有武器；扯窗簾只扯布：整片從掛鉤上撕脫、滑落成一堆，桿子留在上面，工人在旁邊的梯子上、不被砸到；人多的場一鏡最多三張有名字的臉。
+- **第 6 集**：叫來的車是深灰色（不是 Grant 的白車、不是黑車）；簽名不入鏡、後製也不上，Fisk 念；報警是對派遣員講（"They changed the locks on my house. I need a deputy."，派遣員畫外；2026-11-12 審稿後改，她當時已在屋裡），等副警長的跳時間用「她坐在最上面那級台階、醫院袋在腳邊、光更低更暖」交代；副警長只拍腰以上、沒有武器；扯窗簾只扯布：整片從掛鉤上撕脫、滑落成一堆，桿子留在上面，工人在旁邊的梯子上、不被砸到；人多的場一鏡最多三張有名字的臉。
 - **第 7 集**：Sienna 左手簽單的插鏡必拍，分鏡標「必須左手」；Sienna 說 "Grant's busy." 時，她身後的玻璃外坡底那輛白車開進來停下（第 8 集 "Busy?" 的根據）；"Ten minutes" 只念、不拍錶面（Fisk 看錶只拍手腕與他的眼睛）；嬰兒房工人不推她，布從她指間升上去；Fisk 查清單補兩句 "Not on the list." "Take it."，細綱說的「Grant 從不覺得它值錢」不說出口（法理比較硬）；她把醫院袋與草圖塞進行李箱，第 8 集手上才只有行李箱與玻璃磚。
 - **第 8 集**：細綱「樓上的窗」不成立（參考圖是平房），改成坡頂客廳亮著的玻璃牆；Peg 怎麼認出 Sienna：紅衣服加一句很低的 "...Sienna."（她在公司活動見過兒子的品牌總監）；補 Peg 開場的 "Why are we parked down here?" 與 Grant 的 "Lawyer's helping her pack."，交代她為什麼在車上等一個鐘頭；支票只拍背面；Peg 自己拖箱子，Cole 不下車；"I'm going with her." 在 Peg 自己的鏡上、看著 Nora 不看兒子。
 - **第 9 集**：細綱「浴室鏡子裡看見」改成從半開的浴室門縫看出去（鏡子會多一個 Peg），一鏡只拍 Peg 的背、帳本與手；兩個工人只有工頭露臉；Peg 與 Bev 不並排正臉；"Declined." 由 Bev 念、刷卡機背對鏡頭；Peg 付的是一晚，念 "Room, eighty-nine."；公車站補一組對話 "Why are you doing this?" "Bus is late."（Peg 不解釋，細綱 conflict 要的）；鈔票不入面額。
@@ -324,4 +324,7 @@
   - 第 9 集入住時先不付錢：Peg 不回 Bev、直接伸手拿鑰匙，Nora 20:40 才下樓付錢。公車站加一鏡 Peg 轉婚戒（鋪第 15 集）。Peg 把自己的碎花被給 Nora，自己床上只剩淺色薄毯，第 10 集躺下蓋的就是它。
   - 第 10 集房間軸線：Nora 的床在畫面左、Peg 的床在畫面右，紅霓虹從畫面左照進來。10→11 時床頭櫃上另有帳本與房間鑰匙。
   - 第 9–10 集夜裡是乾的，對街還沒有黑車：`cast.json` 的 `bus-stop`、`motel-front`、`motel-room`、`motel-window-view` 已改成乾的、不放黑車；黑車哪一集出現由那一集的分鏡寫進畫面。
+- **審稿後補定**（2026-11-12，`../review/2026-11-12-e004-e007-storyboard.md`、`../review/2026-11-12-e007-e010-storyboard.md`）：
+  第 7 集補 c06b 拍坡底白車；第 9 集 Bev 補 "Settle up before nine, ladies. Office closes then."（Nora 20:40 下樓付錢的原因）；
+  第 8–9 集 Peg 在 Nora 與鏡頭之間、半步後（畫面上在 Nora 右邊）；第 10 集關燈後的原聲：閃光一拍約一秒，暗拍時臉與嘴仍留一層淡紅光，看不清嘴再走 Gemini 備案。
 
