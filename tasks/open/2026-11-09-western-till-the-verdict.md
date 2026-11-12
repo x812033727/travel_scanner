@@ -32,6 +32,46 @@ scope:
   - docs/videos/till-the-verdict-e018
   - docs/videos/till-the-verdict-e019
   - docs/videos/till-the-verdict-e020
+  - docs/videos/till-the-verdict-e021
+  - docs/videos/till-the-verdict-e022
+  - docs/videos/till-the-verdict-e023
+  - docs/videos/till-the-verdict-e024
+  - docs/videos/till-the-verdict-e025
+  - docs/videos/till-the-verdict-e026
+  - docs/videos/till-the-verdict-e027
+  - docs/videos/till-the-verdict-e028
+  - docs/videos/till-the-verdict-e029
+  - docs/videos/till-the-verdict-e030
+  - docs/videos/till-the-verdict-e031
+  - docs/videos/till-the-verdict-e032
+  - docs/videos/till-the-verdict-e033
+  - docs/videos/till-the-verdict-e034
+  - docs/videos/till-the-verdict-e035
+  - docs/videos/till-the-verdict-e036
+  - docs/videos/till-the-verdict-e037
+  - docs/videos/till-the-verdict-e038
+  - docs/videos/till-the-verdict-e039
+  - docs/videos/till-the-verdict-e040
+  - docs/videos/till-the-verdict-e041
+  - docs/videos/till-the-verdict-e042
+  - docs/videos/till-the-verdict-e043
+  - docs/videos/till-the-verdict-e044
+  - docs/videos/till-the-verdict-e045
+  - docs/videos/till-the-verdict-e046
+  - docs/videos/till-the-verdict-e047
+  - docs/videos/till-the-verdict-e048
+  - docs/videos/till-the-verdict-e049
+  - docs/videos/till-the-verdict-e050
+  - docs/videos/till-the-verdict-e051
+  - docs/videos/till-the-verdict-e052
+  - docs/videos/till-the-verdict-e053
+  - docs/videos/till-the-verdict-e054
+  - docs/videos/till-the-verdict-e055
+  - docs/videos/till-the-verdict-e056
+  - docs/videos/till-the-verdict-e057
+  - docs/videos/till-the-verdict-e058
+  - docs/videos/till-the-verdict-e059
+  - docs/videos/till-the-verdict-e060
 ---
 
 # Western adaptation of Till the Verdict Do Us Part (2025-15)
@@ -69,6 +109,7 @@ scope:
 - [ ] 站主確認 `s1-bible-e004-e010.md`〈要站主決定的〉與審稿後主控先定的四件事。
 - [ ] 開拍前的定妝照與場景圖（兩份 bible〈人物與參考圖〉〈場景格局〉列的順序）。
 - [x] 原聲小樣（2026-11-12，約 2.5 CU，screen-test README〈原聲小樣〉）；Nora 跨鏡音色等站主聽。
+- [ ] 第 21–60 集（篇章 3–6）：四章系列設定並行寫、章界對齊、分鏡、審稿、改稿（站主 2026-11-12「持續擴充，可以用更多子代理」）。
 - [ ] 第 11–20 集（篇章 2）：系列設定 `production/s1-bible-e011-e020.md`（站主選 A：第 20 集同一個上午）、分鏡、審稿、改稿。
 
 ## How to verify
