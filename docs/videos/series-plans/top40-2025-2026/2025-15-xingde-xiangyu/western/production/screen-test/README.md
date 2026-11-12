@@ -83,3 +83,11 @@ bash $K/h3.sh stop --session ttv-st1 && bash $K/bootstrap.sh patch && bash $K/h3
 - **教訓**：`tablet` 這個字會被讀成平板，藥一律寫 pill 並寫大小；「不喝水」要寫成水杯在哪、水是什麼顏色。
 - **時間**（G4）：出圖 session 約 12 分鐘；片段 session 約 28 分鐘（草稿 3 支＋重跑 2 支、補細節 3 支、SeedVR2 每支 123–236 秒）。
 - **點數**：帳號 b 餘額 2,271.34 → 2,263.56（−7.8），其中有一段同帳號另一個 runtime 也在跑（16:34 時 `active_assignments` 2）；這次小樣本身約 5–6 CU，在 6 CU 上限內。
+
+## 備份（2026-11-12）
+
+照 `docs/videos/AI-DRAMA-DRIVE.md`，用 `docs/videos/ai-drama-drive/todrive.sh` 傳到站主的雲端硬碟（劇名資料夾 `婚約到他判刑那天為止（歐美版）`，試鏡與小樣跨集共用，放 `_共用`）：
+
+- `AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/till-the-verdict/`：工作資料夾全部（橫式試鏡的原圖 PNG、4 支草稿與 4 支補細節、直式臥室圖、直式三鏡三段的每一版、配音試聽原檔、manifest、進度檔、log），180 個檔，`todrive: 180 files, 0 differences`。
+- `AI劇/婚約到他判刑那天為止（歐美版）/_共用/製作檔/交給站主的檔案-20261110/`：交給站主看的拼圖、合成片、聲音 mp3，17 個檔，0 differences。
+- 2026-11-10 先用雲端硬碟連接器傳過一份聲音 `voices-mp3.zip` 到舊位置 `AI/備份/drama/till-the-verdict/screen-test-20261110/`（新規則出來之前），內容已包含在上面。
