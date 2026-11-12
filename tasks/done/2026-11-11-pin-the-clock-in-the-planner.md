@@ -51,15 +51,15 @@ reason, but not in these two places.
 
 ## Definition of done
 
-- [ ] The failing tests pass regardless of the real date: freeze the page clock before navigation
+- [x] The failing tests pass regardless of the real date: freeze the page clock before navigation
       (`await page.clock.setFixedTime(new Date("2026-11-11T04:00:00+09:00"))` or the 2026-11-01
       pin #2066 uses, whichever keeps the forecast "available") in `plannerReadabilityFixture`, the drag-handle test, the
       planner-calm specs and the stay-areas spec.
 
 ## Steps
 
-- [ ] Reproduce locally with the real date after 2026-11-11T15:00Z.
-- [ ] Add the clock pin; run the two specs on both projects.
+- [x] Reproduce locally with the real date after 2026-11-11T15:00Z.
+- [x] Add the clock pin; run the two specs on both projects.
 
 ## How to verify
 
