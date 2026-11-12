@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-12-pool-4299",
+  "revision": "2026-11-12-pool-4321",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 4689,
-    "canonical_questions": 4528,
-    "eligible_candidates": 4358,
-    "selected_candidates": 4299,
+    "raw_records": 4711,
+    "canonical_questions": 4550,
+    "eligible_candidates": 4380,
+    "selected_candidates": 4321,
     "alias_records": 161,
     "historical_records": 313,
-    "source_urls": 5561,
-    "current_research_source_urls": 2612,
-    "selected_source_urls": 3739,
-    "new_suggestions_not_added": 2608,
+    "source_urls": 5588,
+    "current_research_source_urls": 2639,
+    "selected_source_urls": 3760,
+    "new_suggestions_not_added": 2640,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "8e65b5851c98b9662adb21afa5661ff0c2b15ff3debbc36a21a4b8c3398624e6"
+      "sha256": "6ca7ad540ce9ac4c8f3ad2d1000b22993ad4e6fb110762932e170635ac7bfdf1"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -572,6 +572,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-12-4257.json.gz",
       "sha256": "adcaa4fa952ca253cfae6b871af1a14ade21c355cadef19b8ba62bdc3ff63157"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-4299.json",
+      "sha256": "4a9dd9d99f5d47d98fd9a85953c7121585401354bca226586c4171412a7dd56c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-12-4299.json.gz",
+      "sha256": "5bfd5cf90955913a7b747916f849450ec39444d40c3a0254701162c039793ea6"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -2322,6 +2330,22 @@
       "sha256": "dbf988b353ad0b48775a72286594442fc190dfaf82a5a374fb4532e75fdec681"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave72-food.json",
+      "sha256": "26f2e26e9b333b31ae442a4e48363f08f4157be6bbdf7bf5a0894a5cccc2e57c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave72-human.json",
+      "sha256": "3b1d3275b23e82eef739c88cd393833c4eefb7f477f8d1d32c71948d9b11a8ad"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave72-life.json",
+      "sha256": "5324009db47aa52de636281833e5146bf532e0dc41ae505bda15d82473ed2f27"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave72-physics.json",
+      "sha256": "d140be3dada679bbba7db61cc5c72b4c5368e01e33ab861d366cfd80539fa043"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave8-food.json",
       "sha256": "b5727df7527ec8d28e68c32e157a5c90d2ae079e31ac7afb6507bf794c74c389"
     },
@@ -2383,11 +2407,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "99ca15d2082a62f7de37ee5c145048275496c592338374c03dd9c24d1dabffae"
+      "sha256": "1b2db00efe03bf1ee40593b594beeb53b570bd69a6cdbd95768883dc48e5658b"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "e4e5dfb09c8d39d33cd6cbfe36a52b0785c326e1124bc8545150bc561e12ac6a"
+      "sha256": "a809f8c82ede026cc9beeba016f55baa1673567b8cd28fd3a1d03fe14872aa9f"
     }
   ],
   "sources": [
@@ -7109,6 +7133,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.tessei.co.jp/service/tokyo/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0ab858075ecd9e9d",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE%3A%22ice%20friction%20during%20speed%20skating%22&format=json&resultType=core",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/0021-9290(92)90099-M",
+          "title": "Ice friction during speed skating",
+          "publisher": "Journal of Biomechanics 25(6):565–571（1992）；de Koning、de Groot、van Ingen Schenau（阿姆斯特丹自由大學）；PMID 1517252",
+          "version": "只有 Europe PMC 書目與摘要（全文 Subscription required）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（文件記載 API），JSON 存檔",
+          "reading_scope": "只讀摘要",
+          "locator": "Europe PMC 摘要全段",
+          "summary": "摘要：特製冰刀在實際速滑中量冰摩擦，直道與彎道平均摩擦係數 0.0046 與 0.0059；最低值在冰面約 −7 °C；摩擦係數隨速度增加；作者認為冰表面類液體性質是合理解釋。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到摘要，不算全文、不計條；池中 P64-014 已經轉述（經 Lever 等）其 −6 到 −9 °C 最低點。 覆核 V57（2026-11-12）：不改。Europe PMC REST 重抓 sha256 前綴 0b6d480201d72b18 相同，isOpenAccess N，只讀摘要、不計。",
+          "author_cache": {
+            "file": "f54src/epmc_dekoning1992.json",
+            "sha256_prefix": "0b6d480201d72b18",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-physics-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE%3A%22ice%20friction%20during%20speed%20skating%22&format=json&resultType=core"
         }
       ]
     },
@@ -14318,6 +14368,32 @@
       ]
     },
     {
+      "id": "SRC-197fd5ce344a4504",
+      "url": "https://eprints.lib.hokudai.ac.jp/repo/huscap/all/18156/28_p243-259.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://hdl.handle.net/2115/18156",
+          "title": "テストスケートによるリンク氷の動摩擦係数の測定：スケートリンクの氷質調査 III（On the Measurement of Coefficient of Sliding Friction Between Test-Skates and Rink Ice）",
+          "publisher": "低温科學 物理篇 28:243–259（1970 年稿、1971-03-25 刊）；小林禎作（北海道大學低溫科學研究所）、北原武道、中尾正義（北大理學研究科）、進士康信（サンエス・スケート）；北海道大學機構典藏 HUSCAP",
+          "version": "期刊掃描 PDF（Acrobat Paper Capture OCR），機構典藏公開",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出的 HUSCAP PDF，curl 工具預設標頭下載；pdftotext 轉文字（日文 OCR，部分數字斷行）",
+          "reading_scope": "全文 18 頁逐段讀：I はしがき、II 装置、III 実験の概要（夢の海、瑞浪各 a 純氷、b エチレングリコール）、IV 動摩擦係数の測定（式 1–4、第 12–13 図說明）、V 実験結果と考察（第 14 図、第 2 表、第 15 図硬度）、VI むすび、補遺 1–3、英文 Summary。圖本身只讀圖說，曲線數值未自行讀圖。",
+          "locator": "第 2 表（p.253）；V 節首三段（−10 °C 滑度不到 −2 °C 一半；山峰瑞浪 −2 °C、夢の海 −0.5 °C 與水的生成和冰硬度的兼顧）；IV 節第 12 圖說明（速度直線下降＝不依速度的一定摩擦力）；V 節末段（測試速度 ≤1.4 m/s，比比賽約 10 m/s 小一個數量級）；III-1-b 與 V 節エチレングリコール段（−2 °C 以下逆轉）；英文 Summary。",
+          "summary": "1970 年 1 月在岐阜瑞浪人工冰場與長野夢の海天然湖冰，用彈射台把裝兩支真速滑冰刀（全長 44 cm、刃寬 1.2 mm）、總重約 52 kg 的測試架以每秒約 1.4 公尺射出，16 mm 攝影機拍每公尺一條的測線，由速度隨時間的變化算動摩擦係數；冰面溫度用熱敏電阻溫度計全程自記。速度沿直線下降，作者判斷是不依速度的一定摩擦力。第 2 表：−0.5、−2、−5、−10 °C 的動摩擦係數，夢の海 0.0031、0.0042、0.0066、0.0102，瑞浪 0.0078、0.0042、0.0066、0.0102；−2 °C 以下兩地幾乎相同，−10 °C 的滑度不到 −2 °C 的一半；滑度最高在瑞浪 −2 °C、夢の海 −0.5 °C。作者解釋為潤滑用的水越接近 0 °C 越容易生成、但冰在接近 0 °C 急速變軟、刀陷入冰中阻力增加，兩者兼顧；兩地山峰不同可能與冰的純度、晶粒與硬度有關。另在冰面塗薄薄一層乙二醇：約 −1.5 到 −2 °C 以下比未處理的冰滑得遠、越冷差距越大，較暖時反而滑得差；作者認為是一層防凍液膜在潤滑，暖時溶液層太厚。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "OCR 掃描、日文、部分數字斷行，已逐字對回上下文；第 2 表是由第 14 圖平滑曲線取的四個溫度點，−2 °C 以下兩地數值完全相同（原表如此）；一個冬季、兩座冰場、各 2–3 天、每地一條測試道；瑞浪道 11 公尺後有上坡，作者以補遺 1 修正；測試速度 ≤1.4 m/s，作者自己寫比比賽小一個數量級；作者研究目的是替 1972 札幌冬奧找最佳冰況，結論含冰場維護建議（使用乙二醇），本池不轉述。與池中 P68-004 的對馬勝年同屬北海道大學低溫科學研究所，但是不同實驗、不同裝置。 覆核 V57（2026-11-12）：limitations 加：『第 2 表由第 14 圖平滑曲線讀出；夢の海 −0.5 °C 的 0.0031 是由最長滑行距離 36 m 以式 (3) 算回的計算值（−2 °C 以上夢の海無法用影片分析，第 14 圖 × 號），不是直接量測；−2 °C 以下兩地數字相同是同一條曲線。』author_cache 補註：HUSCAP 每次下載重寫 trailer /ID，重抓 sha256 前綴為 673de47378267e9c，內容與 f4142f5f9cd53df6 相同（只差 trailer /ID）。",
+          "author_cache": {
+            "file": "f54src/huscap_28_p243-259.pdf（文字 f54src/k28raw.txt、huscap_28_p243-259.txt）",
+            "sha256_prefix": "f4142f5f9cd53df6",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-physics-20261111",
+          "original_url": "https://eprints.lib.hokudai.ac.jp/repo/huscap/all/18156/28_p243-259.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-198a3a0a58007655",
       "url": "https://www.britannica.com/science/Indian-time-zone",
       "readings": [
@@ -16367,6 +16443,32 @@
       ]
     },
     {
+      "id": "SRC-1e279b27d1b78513",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7577993/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-020-75055-z",
+          "title": "Jasmonic acid and ERF family genes are involved in chilling sensitivity and seed browning of pepper fruit after harvest",
+          "publisher": "Sci Rep 10:17949（2020）；Lee、Yi、Seo、Kang、Choi、Lee（首爾大學、韓國食品研究院）",
+          "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY 4.0）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+          "reading_scope": "Results 第一節（36 個基因型的種子褐變率）與第二節前段（代謝物）、Figure 1 說明；方法的植株與冷藏段；後段基因表現只略讀",
+          "locator": "Results: Seed browning rates of 36 pepper genotypes（含 Supplementary Table S1 的轉述數字）；Figure 1",
+          "summary": "36 個辣椒（Capsicum annuum）基因型在 2°C 存 3 週：種子褐變是主要冷害症狀，果皮凹斑與果萼變色可忽略。種子褐變率從 0%（不怕冷）到 60% 以上：怕冷的 C00562 為 63.86%，不怕冷的 UZB-GJG-1999-51 為 0.00%；Takanotsume 0.00%、Hungarian Wax 4.31%、Chili bangi 30.88%、Gyeonggiyangpyeong 41.01%。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有 2°C 一個溫度；種類包含辣椒與甜椒同種的不同栽培型，不能直接說成「甜椒」；後段基因與茉莉酸是機制推論。 覆核 V64（2026-11-12）：limitations 加：「各品系數字取自正文對補充表 S1 的轉述，補充表未讀；Takanotsume 也是 0%。」",
+          "author_cache": {
+            "file": "f61src/PMC7577993.txt（原始 PMC7577993.xml sha256 前 16 碼 aac94bceff908162）",
+            "sha256_prefix": "c20ef09c4453f48a",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7577993/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-1e3158ae7e025718",
       "url": "https://www.praxikon.com/en/avg/digital-omnibus/raad-mandaat-niet-bereikt",
       "readings": [
@@ -17700,6 +17802,32 @@
           },
           "origin": "wave70-physics-20261111",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9651867/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-20a84099f968b38e",
+      "url": "https://digitalcommons.unl.edu/nacwgproc/27/",
+      "readings": [
+        {
+          "canonical_url": "https://digitalcommons.unl.edu/nacwgproc/27/",
+          "title": "Head Stabilization in Whooping Cranes",
+          "publisher": "Proceedings of the Ninth North American Crane Workshop（North American Crane Working Group, 2005）p.251；Kinloch（Glenelg High School）、Cronin（UMBC）、Olsen（USGS Patuxent）；典藏於內布拉斯加大學林肯分校 DigitalCommons",
+          "version": "大學典藏紀錄頁（頁上載有完整摘要；註明 Reproduced by permission of the NACWG）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（Cronin Kinloch Olsen 2005 whooping crane）列出此典藏頁，curl 預設標頭存檔；頁上的 viewcontent.cgi PDF 連結 curl 回 403，未重送、未換客戶端",
+          "reading_scope": "只讀到典藏頁上的摘要全段（原件在研討會論文集只占 p.251 一頁，可能本身就是摘要型刊登，但 PDF 403 未能確認；照規定按『只讀到摘要』處理）",
+          "locator": "典藏頁 Abstract 全段：『Four whooping cranes (1 male and 3 females)…』『The speed of the birds in analyzed segments ranged from 0.30 m/s to 2.64 m/s, and the proportion of time the head was stabilized ranged from 79% to 0%, respectively. The speed at which the proportion reached 0% was 1.83 m/s.』『…they walk at a speed that permits them to keep their heads still and visual field immobile at least half the time.』",
+          "summary": "在帕圖森野生動物研究中心錄 4 隻美洲鶴（1 公 3 母）用獎勵食物引導走或跑，逐格以電腦簡化模型疊圖分析：分析片段的速度 0.30–2.64 m/s，頭穩住的時間比例對應從 79% 到 0%；比例降到 0% 的速度是 1.83 m/s；頭穩住的比例隨速度增加而下降；所有情況鳥都能順利啄到目標。作者結論：鶴邊走邊找食物時，走的速度讓頭與視野至少一半時間不動。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研討會摘要，非期刊全文、未見審查程序；只有 4 隻；79% 與 0% 是範圍兩端，沒有中間值或個體差異。與池中 L69-S003（Cronin、Kinloch、Olsen 2007）同一研究群、同批圈養鶴，應與 L69-S003、L69-005 的鶴資料合計同群上限。『越快停越短』與 L65-004（鴿子）同方向，只當跨物種呼應，不可把鶴的速度門檻套到鴿子。池中無同一頁（grep 無 nacwgproc、無 Kinloch 2005）。 覆核 V63（2026-11-12）：accessed／cache 註記：2026-11-12 覆核重抓典藏頁 200（sha256 e41afd40…，與作者 95e85c19… 只差 Cloudflare ray 一行）；viewcontent PDF 再試一次仍 403。limitations 的『應與 L69-S003、L69-005 合計同群上限』保留，並補『只讀到摘要，計 0』。",
+          "author_cache": {
+            "file": "f60src/unl_nacwg27.html（文字：f60src/unl_nacwg27.txt）",
+            "sha256_prefix": "95e85c199497c20c",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://digitalcommons.unl.edu/nacwgproc/27/"
         }
       ]
     },
@@ -19045,6 +19173,32 @@
       ]
     },
     {
+      "id": "SRC-23ca6855ef33fe7b",
+      "url": "https://doi.org/10.4236/ojapps.2019.97048",
+      "readings": [
+        {
+          "canonical_url": "https://www.scirp.org/journal/paperinformation?paperid=94002",
+          "title": "Evaluating Room Acoustics for Speech Intelligibility",
+          "publisher": "Scientific Research Publishing, Open Journal of Applied Sciences 9:601–612 (Kunchur, C. R., 2019)",
+          "version": "出版社 HTML 全文頁與頁上所列 PDF（content.scirp.org/pdf/ojapps_2019072915395440.pdf）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 給出 DOI 10.4236/ojapps.2019.97048 → curl 預設標頭 GET doi.org，伺服器自行轉址到 www.scirp.org/journal/paperinformation?paperid=94002（即前輪 403 的那一頁；本次 200，gzip 回應解壓後讀）；表格是圖片，再用頁上 href 的 PDF 連結 curl 下載，pdftotext -layout 讀表 3–6。",
+          "reading_scope": "HTML 全文（摘要、1–4 節）與 PDF 的表 3–6 全讀。",
+          "locator": "§2.3、§3.1 表 4（浴室 V 15.2 m³、S 37.0 m²、A 8.33 sabins、αavg 0.23；臥室 53.5 m³、0.54）、§3.2 表 5（RT60 浴室 0.52、門廳 0.62、臥室 0.35 s）、§3.3 表 6（音素辨識率平均 浴室 93.3%、臥室 82.7%、門廳 73.3%）與其後段落。",
+          "summary": "美國一位高中生作者用兩台筆電、REW 白噪音與 Audacity，在自家浴室、臥室、門廳量殘響時間、反射聲強度與總吸音。浴室容積最小（15.2 m³）、吸音最少（8.33 sabins，平均吸音係數 0.23，作者說因為有磁磚與鏡子），RT60 0.52 秒，介於臥室 0.35 秒與門廳 0.62 秒之間。三位受試者在 1.5 公尺外聽錄好的「ch」「j」隨機序列（每間 87 次），浴室辨識率最高（平均 93.3%，臥室 82.7%、門廳 73.3%），每位受試者都是浴室最高。作者解釋：浴室殘響短，但因為吸音少，反射聲強度高；只看 RT60 短不夠，否則臥室應該最好。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "作者是高中生（Dutch Fork High School），期刊為 SCIRP 開放期刊，同儕審查品質須保留；只有一間浴室、三位受試者、兩個音素，聽的是喇叭放的錄音，不是唱歌、也不是唱的人自己耳邊；RT60 用寬頻白噪音、單一斜率點對估算，沒有分頻帶、沒有早期反射或 STv。辨識率好是說話清楚度，不得說成浴室讓歌聲好聽或唱得準。不得與 P69-001（CENSREC-4 那一間 0.60 s）或 F59-S002（0.93 s）合成平均或比大小成同一個例子，只能各說『這一間』。 覆核 V62（2026-11-12）：summary 刪『自家』，改為『一間浴室、一間臥室、一個門廳（原文未說在同一間房子）』；limitations 補『RT60 是寬頻白噪音、一對點斜率估算；與 P69-001、F59-S002 量法不同，三間浴室秒數不得合成範圍』；read_via 補『PDF 連結為 DOI 轉址後頁面上的 href（content.scirp.org 與 scirp.net 各一）』。",
+          "author_cache": {
+            "file": "f59src/kunchur2019.pdf（另存 HTML 頁 f59src/scirp_doi.html，sha256 前 16 碼 883cca9bbba78ac5）",
+            "sha256_prefix": "10b752ce8042a693",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-physics-20261111",
+          "original_url": "https://doi.org/10.4236/ojapps.2019.97048"
+        }
+      ]
+    },
+    {
       "id": "SRC-23cc2554faafdbce",
       "url": "https://bioresources.cnr.ncsu.edu/resources/cellulosic-substrates-for-removal-of-pollutants-from-aqueous-systems-a-review-2-dyes/",
       "readings": [
@@ -19259,6 +19413,32 @@
           },
           "origin": "wave8-microbes-20261101",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC101988/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-24364e68df3351c6",
+      "url": "https://cambridge.org/core/services/aop-cambridge-core/content/view/S0022143000029233",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3189/S0022143000029233",
+          "title": "The kinetic friction on snow and ice",
+          "publisher": "Journal of Glaciology 19(81), 1977；Daisuke Kuroiwa（北海道大學低溫科學研究所）；Cambridge University Press 線上版",
+          "version": "出版社 PDF（Cambridge 免費閱讀，國際冰河學會版權；非 CC、非 OA）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出的 cambridge.org 連結，curl 工具預設標頭，伺服器自己轉到 www.cambridge.org 並直接回 PDF；pdftotext",
+          "reading_scope": "全文 12 頁：摘要、前言、滑雪板段略讀，〈Sliding friction between skate and ice〉一節、Concluding remarks、Discussion 逐句讀。",
+          "locator": "〈Sliding friction between skate and ice〉Table 1；Fig. 10 圖說與下一段（速度 1.5 到 0.5 m/s 間 μk 保持一定）；Concluding remarks 第二、三段；摘要最後一句。",
+          "summary": "黑岩大助的綜述，用英文轉述 Kobayashi 等 1970 的測試冰刀實驗（同 F54-S001）：兩支真速滑刀、53 kg、彈射 1.4 m/s，滑行距離在 −1 到 −2 °C 最大；速度從 1.5 降到 0.5 m/s 間 μk 保持一定；Table 1 與 F54-S001 第 2 表同值；乙二醇處理在低溫增加滑行距離，他歸因於液相水的潤滑。他以 Evans 等 1976 的摩擦熱理論解釋冷時變差（熱散失到刀與冰），接近 0 °C 變差歸因於接觸面積增加與空氣熱量經刀流入冰。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "綜述、轉述同一筆資料，不另計條，只當英文核對來源。摘要寫『人工冰最低 0.0078』與 Table 1 不符（0.0078 是人工冰 −0.5 °C 的值，最低是 −2 °C 的 0.0042），以原論文第 2 表為準。摘要的『−1 到 −2 °C』與原論文『夢の海 −0.5 °C、瑞浪 −2 °C』寫法不同，片中用原論文。測試架重量寫 53 kg（原論文英文摘要 52 kg、架底鉛塊 29 kg）。 覆核 V57（2026-11-12）：不改。重抓 sha256 前綴 aa3c84098d8addc3 相同；只作英文核對，不另計。",
+          "author_cache": {
+            "file": "f54src/cam_S0022143000029233.pdf（文字 f54src/kuroiwa1977.txt）",
+            "sha256_prefix": "aa3c84098d8addc3",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-physics-20261111",
+          "original_url": "https://cambridge.org/core/services/aop-cambridge-core/content/view/S0022143000029233"
         }
       ]
     },
@@ -22897,6 +23077,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://en.wikipedia.org/wiki/Yahoo"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2b07a8a5e3245321",
+      "url": "https://eprints.lancs.ac.uk/id/eprint/139428/1/Nests_and_eggs_final.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://eprints.lancs.ac.uk/id/eprint/139428",
+          "title": "Correlated evolution of nest and egg characteristics in birds（Nagy, Hauber, Hartley, Mainwaring；Animal Behaviour 158: 211–225, 2019）",
+          "publisher": "Lancaster University EPrints（作者接受稿；DC.rights 標 CC BY-NC-ND 4.0）",
+          "version": "Accepted manuscript（未排版，行號版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 列出典藏紀錄頁 https://eprints.lancs.ac.uk/id/eprint/139428 → 頁上 PDF 連結 → curl（工具預設標頭）→ pdftotext -layout",
+          "reading_scope": "摘要（行 23–37）、Methods 中蛋形定義與二分（行 165–175、215–225）、Results 中巢型與蛋形的轉移率段與路徑分析段（行 287–320）、Discussion〈Determinants of egg shape and volume〉與〈Nest design and egg characteristics〉兩節（行 372–427）。表 3、表 4 與補充表未逐格讀。",
+          "locator": "Abstract；Methods（egg shape = width/length，中位數 0.73 二分）；Results 行 287–291、303–320；Discussion 行 372–384、406–427",
+          "summary": "855 種、90 科鳥類的系統發生比較。蛋形只用寬／長比，按中位數 0.73 分成 elliptic 與 round 兩類。祖先狀態是開放巢中的 elliptic 或 round（兩者機率相近）；開放巢有高的 round→elliptic 轉移率，封閉巢中兩個方向都高；作者寫『也支持蛋形獨立於巢型演化、形狀之間頻繁轉換』。路徑分析：親鳥體重、窩卵數與巢址影響蛋形（雙向），蛋形不直接影響巢型；蛋的體積則直接影響巢型。討論承認與 Stoddard 2017、Birkhead 2018/2019、Hays & Hauber 2018 的發現衝突，呼籲更廣的系統發生研究。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "非 Birkhead、非 Stoddard 研究群（Mainwaring／Hartley 主導；Hauber 為共同作者，與 Hays & Hauber 2018 同一人，但該篇未計分）。只量伸長（寬／長），且二分，沒有任何尖度（不對稱）資料。討論段內部不一致：先說蛋『大概在封閉巢』變得越來越圓，接著又說『與 Duursma 等發現封閉巢的蛋比較不圓一致』，方向自相矛盾，片中不能用方向。只讀接受稿，正式版頁碼以典藏紀錄為準。池中無同一頁。 覆核 V59（2026-11-12）：summary 與 limitations 補：蛋形祖先重建 588 種、路徑分析 556 種（855 種是整個資料集）；方向矛盾出現在摘要（行 32–33）、結果（288–289）、討論（379–384）、結論（455–457）四處，且主切點表 3 判 independent、作者結論卻是『egg shape is determined by nest characteristics』；路徑分析影響蛋形的是 nest site，不是 nest design。",
+          "author_cache": {
+            "file": "nagy2019.pdf（文字版 nagy2019.txt sha256 前 16 碼 f4d6f19ce4b87f15）",
+            "sha256_prefix": "8cbe3356212ee56d",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://eprints.lancs.ac.uk/id/eprint/139428/1/Nests_and_eggs_final.pdf"
         }
       ]
     },
@@ -29324,6 +29530,32 @@
       ]
     },
     {
+      "id": "SRC-374ed151cc7234cb",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1016/j.cub.2009.07.053&format=json&resultType=core",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.cub.2009.07.053",
+          "title": "Walking straight into circles（Souman, Frissen, Sreenivasa, Ernst）",
+          "publisher": "Current Biology 19(18):1538–1542（2009）",
+          "version": "Europe PMC 書目紀錄的摘要（abstractText），不是全文",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（文件記載 API）以 DOI 查詢；fullTextUrlList 只列出 Subscription required 的出版社連結",
+          "reading_scope": "只讀到摘要",
+          "locator": "abstractText 全段",
+          "summary": "摘要：森林與撒哈拉數小時 GPS 軌跡，看不到太陽時反覆繞圈，太陽可見時有時偏離但不繞圈；蒙眼時常走成直徑小於 20 公尺的圈，但很少有固定方向；作者認為排除了生物力學不對稱的一般解釋，偏離來自感覺運動雜訊累積，沒有外部方向參考就無法重新校正『主觀正前方』。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只讀到摘要，不算全文、不計條數；人數、條件細節（幾人陰天、幾人蒙眼）都不在摘要裡，片中不得用。cell.com 全文本輪循 DOI→linkinghub meta refresh 原連結再試一次，仍 Cloudflare 403。 覆核 V61（2026-11-12）：limitations 補：linkinghub 的跳轉是頁面 <meta http-equiv=REFRESH> 給的相對網址（覆核視同頁面連結，&amp; 解碼為 &，未改參數），接著由伺服器 302 轉到 cell.com（url_effective 可見）後回 403 Cloudflare；這是 still_missing（1）允許的『原連結再試一次』，未換客戶端。",
+          "author_cache": {
+            "file": "f58src/souman_epmc_core.json",
+            "sha256_prefix": "d9e4f108aeda06be",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-human-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1016/j.cub.2009.07.053&format=json&resultType=core"
+        }
+      ]
+    },
+    {
       "id": "SRC-374feacf7dbe9871",
       "url": "https://merl.com/publications/docs/TR2006-087.pdf",
       "readings": [
@@ -34978,6 +35210,32 @@
       ]
     },
     {
+      "id": "SRC-42eaef96899b8aa1",
+      "url": "https://repository.naturalis.nl/pub/588035/VM13_Sipman.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://repository.naturalis.nl/pub/588035",
+          "title": "Predation by Gecarcoidea lalandii (Crustacea, Gecarcinidae) on dextral and sinistral Amphidromus inversus (Gastropoda, Pulmonata, Camaenidae)（Sipman；Vita Malacologica 13: 57–61, 2015）",
+          "publisher": "Vita Malacologica（荷蘭；Naturalis 生物多樣性中心機構典藏）",
+          "version": "出版版 PDF（典藏頁標 Free Full Text, Final Version）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出典藏頁 repository.naturalis.nl/pub/588035；curl 預設標頭 200，頁面上的 Free Full Text 連結即此 PDF（200 application/pdf）；pdftotext 轉文字",
+          "reading_scope": "全文（5 頁：摘要、前言、方法、結果、討論、參考文獻）",
+          "locator": "Abstract；Introduction（Kapas 島左旋約 65%、右旋約 35%；other asymmetrical crabs … advantage when opening a dextral snail shell，引 Ng & Tan 1985、Shigemiya 2003）；Results（地面殼：左旋 37 破 88 完、右旋 17 破 35 完，N=178，χ²=0.15886，p=0.6902；17 隻蟹中 9 隻左螯大、2 隻右螯大、6 隻看不出；4 隻公蟹共打破 5 個右旋、2 個左旋）；Discussion（A. inversus 不是偏好的獵物；破殼方式三種；no reason to assume … influence on the chiral proportions）；Acknowledgements（指導者 Menno Schilthuizen）",
+          "summary": "馬來西亞 Kapas 島上的 Amphidromus inversus 樹蝸牛左右旋並存（左旋約 65%）。作者想知道陸蟹 Gecarcoidea lalandii 會不會偏好吃某一旋向。在海岸林地面撿到的 178 個殼中，左旋 125 個（37 個破）、右旋 53 個（17 個破），兩型破殼比例沒有差別（p=0.69）。17 隻捕來的蟹各關五晚、各給三隻左旋三隻右旋的活蝸牛：目視 9 隻左螯較大、2 隻右螯較大、6 隻分不出；只有 4 隻公蟹吃了蝸牛，一共打破 5 個右旋、2 個左旋殼，破法有敲掉殼頂、剝殼側、整個壓碎三種。作者結論：這種蟹會吃這種蝸牛但不是偏好的獵物，目前沒有理由認為牠的捕食偏某一旋向、或影響當地左右比例；主要捕食者可能仍是鼠類。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "小型研究：實驗只有 7 個破殼事件，作者未對蟹實驗做統計檢定；螯的大小只靠目視；地面殼的破損無法分辨是鼠還是蟹造成。作者在 Naturalis 由 Schilthuizen 指導，研究地點與 L66-028（Schilthuizen 等 2007）同島，屬網絡 B（Davison／Schilthuizen）。只能說『這一種陸蟹』沒有偏好，不得推成『螃蟹都不挑』，也不得與 L68-005（化石箱蟹）的數字並列成同一比較。 覆核 V60（2026-11-12）：limitations 補：『Kapas 左旋約 65% 引自 Schilthuizen 等 2014；同島鼠類不挑旋向已在池中 SRC-379123d56fa0dba5（Schilthuizen 2007，L66-028），本篇只增加蟹實驗；吃了蝸牛的 4 隻公蟹螯向未報告。』",
+          "author_cache": {
+            "file": "f57src/sipman2015.pdf",
+            "sha256_prefix": "6c3466c49bd5aaf4",
+            "note": "文字 f57src/sipman2015.txt（41f086fe9c88f796）；典藏頁 f57src/naturalis588035.html（729e9ac8307884dd） 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://repository.naturalis.nl/pub/588035/VM13_Sipman.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-42fa1259a2f877a5",
       "url": "https://deutsch.ucsd.edu/pdf/Nature-1970_226_p286.pdf",
       "readings": [
@@ -35457,6 +35715,32 @@
       ]
     },
     {
+      "id": "SRC-4414ae04908be1d6",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4569182/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0136980",
+          "title": "Selfies of Imperial Cormorants (Phalacrocorax atriceps): What Is Happening Underwater?",
+          "publisher": "PLOS ONE 10(9):e0136980（2015）；Gómez-Laich、Yoda、Zavalaga、Quintana；CESIMAR-CONICET（阿根廷 Puerto Madryn）與名古屋大學",
+          "version": "期刊開放全文（PMC 收錄的出版社版）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST search（查詢 head-bobbing/head bobbing＋walking/swimming＋鳥類＋OPEN_ACCESS:y）列出 PMCID PMC4569182，再以官方文件記載的 REST fullTextXML 端點下載全文（curl 預設標頭）",
+          "reading_scope": "全文 XML：摘要、Methods（裝置與佩戴）、Results（Underwater behavior、habitat 兩段）、Discussion 中 head-bobbing 一段；Table 1 只讀欄位與總和，未逐列核對",
+          "locator": "Abstract；Results『Video images showed that birds did not necessarily keep their body horizontal…majority of the dives (76.3%)…』與 Fig 2A–C 圖說；Results 底質一段『During the bottom phase of dives to gravel and grasslike substrates…』；Discussion『While foraging along the seafloor, cormorants were frequently observed to move their head constantly forward and backward…』",
+          "summary": "33 隻繁殖中的雄性帝鸕鷀背上貼朝前（朝頭）的攝影機，12 隻拍到覓食，共 49 次潛水、8.1 小時。頭在影片中都看得到：76.3% 的潛水裡，牠們沿海底前進時頭不停地伸縮、一前一後；在碎石與草狀底質時身體微微朝下、頭一直前後動，在岩礁則身體水平、把頭頸伸進岩縫；7.3% 的潛水幾乎水平游、頭頸多半伸直。討論把這種動作稱為 head-bobbing，引用他文說停住期穩定影像、前衝期取得深度資訊，並說可能有助穩定水下視覺；同時指出許多潛水光線很暗，鸕鷀可能還用視覺以外的感官找獵物。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只是影片的行為描述：沒有量頭在空間中是否真的停住、停多久、頻率多少，『點頭』是作者的歸類；頭動的視覺功能是作者引他文推論，本文沒有實驗。帝鸕鷀不屬 Troje、Lentink、Necker、Fujita 任何研究群。Necker 綜述（L69-S002）把鵜鶘鸕鷀列為走路通常不點頭，那是陸上走路的清單，與本文的水下覓食不同情境，片中不得說成『推翻』該清單。池中無同一頁（grep pool.json 無 PMC4569182、無 cormorant）。 覆核 V63（2026-11-12）：limitations 加：『76.3% 原文未寫明分母，對照 Table 1、2 應是 38 次 U 形底棲潛水中的比例，不是 49 次全部潛水；討論裡點頭的視覺功能引自 [57] Gunji、Fujita、Higuchi 2013（小鸊鷉），屬 Fujita 共同作者研究；全文沒有談腳／划水與頭動的關係，鸕鷀水下靠腳推進，不能用來說點頭與腳無關。』",
+          "author_cache": {
+            "file": "f60src/PMC4569182.xml（文字：f60src/PMC4569182.txt）",
+            "sha256_prefix": "448791a939c8b1a7",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4569182/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-4425001b620ed215",
       "url": "https://www.smithsonianmag.com/arts-culture/the-accidental-history-of-the-symbol-18054936/",
       "readings": [
@@ -35713,6 +35997,33 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://openstax.org/books/biology-2e/pages/30-4-leaves"
+        }
+      ]
+    },
+    {
+      "id": "SRC-44d9462ac4a52e34",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2269389/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/j.1469-7793.1999.0931s.x",
+          "title": "Effects of galvanic vestibular stimulation during human walking",
+          "publisher": "The Journal of Physiology 517(3):931–939（1999）；Fitzpatrick、Wardman、Taylor（澳洲 Prince of Wales Medical Research Institute）",
+          "version": "PMC 收錄之出版社全文（The Physiological Society 提供）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出同期社論 pmc.ncbi.nlm.nih.gov/articles/PMC2269367（Day 1999〈Galvanic vestibular stimulation: new uses for an old tool〉）；該頁正文的連結 href=\"/articles/PMC2269389/\" 指向本文，curl 預設標頭取得 HTML，python 去標籤轉文字。Europe PMC 對本文記為非開放（isOpenAccess N），未用 REST。",
+          "reading_scope": "全文（摘要、前言、方法 Experiment 1 與 2、結果、討論、結論段）；圖只讀圖說，未看圖本身",
+          "locator": "Methods〈Experiment 1〉Task 與 Measurement 段；Results〈Experiment 1〉第 1–3 段（含 Fig. 2、Fig. 3 圖說）與第 4 段（向後走、頭轉向側邊）；Results〈Experiment 2〉最後一段（輪椅加刺激）；Discussion 第 1、3、4 段與最後一段",
+          "summary": "9 名健康成人（每個實驗 7 人）。實驗一：先看 4 公尺外地上的目標，閉眼照節拍器（每分鐘 52 或 104 步）走向它；起步同時在兩側乳突之間通 0.5 或 1 mA 的直流電（前庭電刺激），足跡用上方攝影機逐步數位化。沒有刺激時都走到目標，從未偏離目標超過 25 公分；有刺激時，每一位受試者的每一趟都偏向陽極那側，第一步不受影響，第 2–4 步轉向，第 3 步最大（慢步 26.3±17.0 度、快步 19.0±10.3 度），單步最多側移 44 公分；之後有人繼續朝新方向走、有人轉回目標。睜眼走時不受影響；頭（經頸或軀幹）轉向側邊時刺激不造成偏移；向後走時也偏向陽極。實驗二：受試者蒙眼戴耳罩坐輪椅被推過一段弧，到終點再指出起點：沒有刺激時方向平均無偏但單趟誤差可達 ±48 度；加刺激時，感覺到的起點分別偏右 17.3±22.8 度（陽極右）與偏左 12.2±23.3 度（陽極左），即感覺到的路徑轉向與走路時的偏轉相反。作者結論：前庭訊號被干擾時，沒有視覺就走不直；偏轉一部分可能是在補償被改變的『走過的路徑』知覺，但也可能來自垂直感、支撐面判斷改變或對腿肌的直接影響。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只有 4 公尺、約 8 步的短程，室內地毯；每實驗 7 人、其中 5 人兩個實驗都參加（含一位作者）；用的是外加電流，不是自然狀態，也不是長時間蒙眼行走；實驗二量的是輪椅上的知覺，不是走路軌跡；作者自己列了三種機制，未定論。與 H69-003（Tarnutzer 2022，躺姿）不同研究群、不同操弄。與池中來源無重複網址。研究用電刺激，片中不得暗示可自行嘗試。 覆核 V61（2026-11-12）：summary 的『向後走時也偏向陽極』補『（2 人）』，『頭轉向側邊時不造成偏移』補『（3 人）』，『睜眼走時不受影響』補『（每人一趟，有幾人覺得不穩）』；『有刺激時每一趟都偏向陽極』補『一開始』；輪椅結果寫成『事後指認的起點偏移』。locator 加 Discussion 第 2 段（前庭病人）標『片中不用』。 覆核 V61（2026-11-12）：read_via 保留，並註明：PMC2269367 出自 WebSearch（工具紀錄 #33）結果原樣網址（無結尾斜線）；頁內『PMC free article』連結 href=\"/articles/PMC2269389/\"，覆核在作者快取 pmc2269367.html 原始 HTML 中確認存在（與 DOI、PubMed 10358131 連結並列）。",
+          "author_cache": {
+            "file": "f58src/fitz1999.txt（原始 f58src/fitz1999_pmc.html）",
+            "sha256_prefix": "4bd4fab77721ad1d",
+            "html_sha256_prefix": "50c1fe08079b0d2a",
+            "note": "同時存了提供連結的社論頁 f58src/pmc2269367.html（33e3d2c8f89438cc）。 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-human-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2269389/"
         }
       ]
     },
@@ -36097,6 +36408,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://resources.telegeography.com/2026-submarine-cable-map"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4585f5a63661fd97",
+      "url": "https://edepot.wur.nl/444870",
+      "readings": [
+        {
+          "canonical_url": "https://edepot.wur.nl/444870",
+          "title": "Cold storage of tomato: the good, the bad, and the ugly（海報）",
+          "publisher": "Wageningen University & Research 機構典藏 edepot；Rosales López、Tikunov、Hanenberg、Verkerke、Bovy（WUR 植物育種與溫室園藝）",
+          "version": "機構典藏的海報 PDF（PDF 建立日期 2018-03-23；未標會議名稱）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果給出 edepot.wur.nl/444870，curl 預設標頭下載 PDF，pdftotext -layout 轉文字",
+          "reading_scope": "全文（單頁海報：Background、Methods、Results、Table 1、Figure 2、Conclusions）",
+          "locator": "Methods（T0、15°C 7 天、5°C 7 天＋20°C 24 h、消費者 n≈50）；Results 的 Fruit quality、Aroma profile、Consumer panel；Conclusions 最後一點",
+          "summary": "三個商業番茄品種（低風味 Merlice、中 Brioso、高 Axiany），紅熟果分別存 15°C 7 天或 5°C 7 天，再放 20°C 24 小時。5°C 組的糖度、酸度、硬度與未儲存果相近。脂質來源的香氣在 5°C 7 天組沒有顯著下降，受影響最大的是胺基酸與酚類來源的香氣。約 50 人的消費者評比：只有低風味的 Merlice 冷過後比新鮮與 15°C 的不受喜愛；Axiany 沒有差異；Brioso 是新鮮果比 15°C 儲存的受喜愛。作者結論：冷害造成的代謝變化，只在風味差的品種轉成消費者喜好的顯著差異。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "海報，未經同儕審查；各組果數與統計細節不全；與 F61-S001 同機構（瓦赫寧根）但不同研究群；消費者喜好只有圖、沒有表列數值。 覆核 V64（2026-11-12）：limitations 加：「海報 Background 首句為 12°C 保存建議、Conclusions 首點為冷藏較能維持酸度與硬度，兩句皆不得進片；喜好結果只有圖上字母，Brioso 冷藏組與新鮮組無顯著差。」",
+          "author_cache": {
+            "file": "f61src/wur_444870.txt（原始 wur_444870.pdf sha256 前 16 碼 6d7d689a1d322376）",
+            "sha256_prefix": "e21ec4d6c75f4793",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://edepot.wur.nl/444870"
         }
       ]
     },
@@ -37502,6 +37839,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/1455121/\\nhttps://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:1455121%20AND%20SRC:MED&resultType=core&format=json\\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC2647793/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4947a652bd3ed7bf",
+      "url": "https://cordis.europa.eu/article/id/31159-lost-you-will-walk-in-circles",
+      "readings": [
+        {
+          "canonical_url": "https://cordis.europa.eu/article/id/31159-lost-you-will-walk-in-circles",
+          "title": "Lost? You will walk in circles",
+          "publisher": "CORDIS（歐盟執委會研究成果服務），新聞，2009-08-21 更新",
+          "version": "線上新聞頁（2023-03-06 封存）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出此網址；curl 預設標頭",
+          "reading_scope": "新聞正文全段",
+          "summary": "轉述 Souman 2009：德國森林 6 人中 4 人在陰天走、都繞圈，其中 3 人沒發現自己走過原路；2 人在晴天幾乎走直；突尼西亞 2 人白天走略偏但不繞圈、1 人夜間滿月，月亮被雲遮時數次急轉回到起點；引述作者：沒有遠方的塔、山、太陽或月亮這類絕對參考就走不直；蒙眼時多數人繞圈，有時直徑不到 20 公尺。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "機構新聞稿性質的二手轉述，內容與池中 H65-001 的 mpg.de 新聞稿同源；只當入口，不當原文、不計條數。",
+          "author_cache": {
+            "file": "f58src/cordis_31159.html",
+            "sha256_prefix": "4a66aee993af334e",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "locator": "新聞正文全段",
+          "origin": "wave72-human-20261111",
+          "original_url": "https://cordis.europa.eu/article/id/31159-lost-you-will-walk-in-circles"
         }
       ]
     },
@@ -57764,6 +58127,32 @@
       ]
     },
     {
+      "id": "SRC-75777636ac3c8e1b",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4579789/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s11947-015-1504-1",
+          "title": "Chilling-Induced Changes in Aroma Volatile Profiles in Tomato",
+          "publisher": "Food Bioprocess Technol 8:1442–1454（2015）；Farneti、Woltering 等（瓦赫寧根大學園藝供應鏈組、奈梅亨大學）",
+          "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+          "reading_scope": "全文（摘要、材料與方法、結果與討論各節、結論）",
+          "locator": "Abstract；Fruit Sampling and Storage Treatments；VOC Changes During Storage Assessed by SPME/GC-MS（5 天幾乎完全恢復、10 與 15 天部分）；VOCs Derived from Lipid Metabolism（1-penten-3-one）；VOC Changes … PTR-MS and Chewing Device（5–6 h 達穩定、Henry 定律、乙醛乙醇近兩倍）；Conclusion",
+          "summary": "兩個紅熟番茄品種（Cappricia RZ 圓形、約 80 g；Amoroso RZ 雞尾酒型、約 30 g）分存 4°C 與 16°C 20 天，或 4°C 與 22°C 12 天，用 SPME/GC-MS 與「咀嚼裝置＋PTR-MS」量香氣。從 22°C 移到 4°C 後，香氣釋放跟著果溫下降，5–6 小時內兩者都到穩定的低值；回到 22°C 後又跟著果溫回升。作者解釋為酵素活性下降加上低溫揮發變少（Henry 定律，低溫溶解度較高）。4°C 存 5 天再回 16°C 幾乎完全恢復，10 與 15 天只部分恢復，冷藏越久恢復越少；冷過再回溫的果實香氣組成不同，被視為異味的甲醇、乙醛、乙醇、丙酮較多，Amoroso 冷藏 12 天後乙醛與乙醇約為一直放 22°C 的兩倍；Cappricia 冷過回溫後 1-penten-3-one（常被視為異味）較高。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "兩個品種、每點 3–5 顆果；沒有人類感官評審（咀嚼裝置只是模擬）；Henry 定律與酵素是作者解釋，非本研究分開量測。與 Klee 群（L66-S001）不同研究群。 覆核 V64（2026-11-12）：summary 末加：「摘要：回溫後多數香氣再上升，但通常回不到原水準；異味增加主要在 Amoroso，Cappricia 較穩定。」",
+          "author_cache": {
+            "file": "f61src/PMC4579789.txt（原始 PMC4579789.xml sha256 前 16 碼 18fc2ecbcbb93bcf）",
+            "sha256_prefix": "93e2ac664f92ca8c",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4579789/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-75843bf32d119983",
       "url": "https://doi.org/10.1126/science.1174601",
       "readings": [
@@ -57959,6 +58348,33 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204419000004/goog10-kq42018.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-75c61040a820de41",
+      "url": "https://www.jstage.jst.go.jp/article/springresrep/11/2/11_139/_pdf/-char/ja",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.18957/rr.11.2.139",
+          "title": "異なる方法で解凍した牛肉組織の X 線 CT 観察（X-ray CT Observation of Beef Tissue Thawed by Different Methods）",
+          "publisher": "今澤貴史、清井明、中村勇、田中政幸、平塚研吾（三菱電機株式会社）／SPring-8/SACLA 利用研究成果集 11(2):139–142，2023（公益財団法人 高輝度光科学研究センター，J-STAGE）；課題 2017B5430，光束線 BL16B2",
+          "version": "成果集正式排版 PDF（Received 2022-11-04、Accepted 2022-12-23、Published 2023-04-28）；文章頁標 CC BY 4.0",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（jstage 食肉 凍結速度 氷結晶 細胞内 細胞外…）結果列出 J-STAGE 文章頁；文章頁上的 PDF 連結以 curl 工具預設標頭下載（200、application/pdf），pdftotext 轉文字",
+          "reading_scope": "全文 4 頁（抄録、背景と研究目的、実験、結果および考察、まとめ、參考文獻；圖 1–4 只有圖說，沒有看圖像本身）",
+          "locator": "抄録；実験（牛モモ肉 15 mm 厚 150 g、約 −18 °C 冷凍庫 8 小時；約 −3–0、0、3 °C 冷藏 1.5／7／19 小時與微波 170 W 3 分；5 mm 小片、BL16B2、12.4 keV、像素 3.63 µm）；結果および考察（數百 µm 對比消失、數十至數百 µm 粒狀對比不隨解凍溫度時間變、線吸收係數 肉 3.74、水 3.50、冰 3.21、空氣 0.00435 cm⁻¹）；まとめ",
+          "summary": "三菱電機的研究者在 SPring-8 用放射光 X 光 CT 看解凍後的牛腿肉。肉塊在約 −18 °C 冷凍庫凍 8 小時，再用三種冷藏溫度各解凍 1.5、7、19 小時，或用微波解凍。他們原本假設冰晶融化、汁流走後，原本冰晶佔的位置會留下空洞（他們先前在冷凍狀態看到的冰晶在斷面上均勻分布、大小約數百 µm，引自自己的前作 [1]）。結果所有試樣都沒有看到和冷凍時冰晶分布對應的空洞：微波解凍那塊汁很多，卻沒有數百 µm 的對比或組織分離；冷藏解凍的試樣只有零星數十到數百 µm 的粒狀對比，大小和數量不隨解凍溫度或時間改變，依吸收係數判斷是空氣。作者也用肉與水的吸收係數相差約一成，排除了『空洞裡裝滿融水』的模型。結論是：牛肉解凍後，冰晶留下的空間被周圍組織壓扁，不會以空洞的形式留下。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "放射光設施的利用成果報告（4 頁），不是一般同儕審查期刊論文；作者是冰箱廠商（三菱電機），研究目的寫明是發展冷藏庫性能評價方法——與 K66-S009（LG 資助）同屬家電廠商，片中要說明；滴汁量只用目視、試樣下的保麗龍吸走汁，作者自己說無法定量比較；每個條件看起來只有一塊、5 mm 小片在室溫大氣下掃描、沒有統計；圖 3（中）、圖 4（左、中）是不完整重建，作者自己標為參考資料；『冷凍時冰晶數百 µm、均勻分布』是引自作者前作（上原等 2016，SPring-8/SACLA 利用研究成果集 4(2):320），本輪找不到該篇的公開連結，沒讀；只凍 8 小時、冷凍庫約 −18 °C，不代表急凍或長期冷凍；『被周圍組織壓扁』是作者從看不到空洞推出的解釋，不是直接看到壓扁的過程；本篇沒有看冰晶長在細胞內或外，不能補 K67-001 的位置比例。不得引用哪種解凍方式滴得多或少，不給任何解凍建議。 覆核 V58（2026-11-12）：limitations 補：冷藏解凍組仍看得到部分數十至數百 µm 的空氣小點；試樣解凍後切成 5 mm、無固定、室溫大氣下掃描；報告前提仍假設滴汁來自融化的冰。summary 刪『微波解凍那塊汁很多』一句。",
+          "author_cache": {
+            "file": "f55src/spring8_11_139.pdf（文字 f55src/spring8_11_139.txt；文章頁 f55src/spring8_page.html，sha256 前 16 碼 d00d52ffdc3f4314）",
+            "sha256_prefix": "8ba40359cd0d2db3",
+            "text_sha256_prefix": "3f8fd6560574d606",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-food-20261111",
+          "original_url": "https://www.jstage.jst.go.jp/article/springresrep/11/2/11_139/_pdf/-char/ja"
         }
       ]
     },
@@ -59480,6 +59896,58 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-chemistry-materials-20261101",
           "original_url": "https://openstax.org/books/organic-chemistry/pages/31-3-copolymers"
+        }
+      ]
+    },
+    {
+      "id": "SRC-78f0e47c16095547",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3373528/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3373528",
+          "title": "Eggs in the Freezer: Energetic Consequences of Nest Site and Nest Design in Arctic Breeding Shorebirds（Tulp, Schekkerman, de Leeuw；PLoS ONE 7(6): e38041, 2012）",
+          "publisher": "PLOS（Europe PMC REST）",
+          "version": "出版版全文 XML",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 列出 pmc.ncbi.nlm.nih.gov/articles/PMC3373528 → Europe PMC 公開 REST fullTextXML → curl",
+          "reading_scope": "只讀 Introduction 第 2 段（蛋的擺放方向一句）與以 point／orient 關鍵字找到的句子；其餘未讀。",
+          "locator": "Introduction 第 2 段",
+          "summary": "前言一句：鴴鷸類一般下尖蛋，蛋的尖端朝中心、朝下擺放，可減少巢所需空間並提高親鳥到蛋的傳熱效率。此句無引文、也不是本研究的量測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只是前言的背景敘述，沒有引用、沒有資料；本篇量的是巢址與巢材的熱損失，不是蛋形或擺放。不計分，只記入 not_added。",
+          "author_cache": {
+            "file": "PMC3373528.xml",
+            "sha256_prefix": "b4a856d26fa648ed",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3373528/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-78f14c54fa891fa6",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13341063/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1002/jsfa.70681",
+          "title": "Black flesh disorder in mango: a chilling injury symptom increased by early harvest and low storage temperature and reduced by 1-methylcyclopropene",
+          "publisher": "J Sci Food Agric 106:6508–6522（2026）；de Carvalho Pires、Brecht、de Freitas 等（巴西 Embrapa 半乾旱熱帶中心、佛羅里達大學）",
+          "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY 4.0）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+          "reading_scope": "摘要、前言、Materials and Methods 的 Experiment 1、Results 的 Experiment 1 與 Experiment 2 前段；其餘 1-MCP 生理段只略讀",
+          "locator": "Abstract；Plant material and experimental design、Experiment 1（每品種 600 顆、兩個成熟度、8／10／12.5°C）；Results: Experiment 1（Fig. 2 各數字）",
+          "summary": "三個芒果品種（Tommy Atkins、Kent、Palmer）各 600 顆，分早採（生理成熟、未開始後熟）與樹上較熟兩級，存 8、10、12.5°C 30 天再放 20°C 7 天，看果肉近種子處的「黑肉」。早採果：Tommy Atkins 8°C 70%、10°C 67%；Kent 80%、78%；Palmer 8°C 89%、10°C 33%。較熟採收的較低（Tommy Atkins 22%、11%；Kent 兩溫度都 33%；Palmer 22%、32%）。三個品種兩種成熟度在 12.5°C 都沒有出現黑肉。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "每格果數依方法推算為 100 顆，原文只給總數；黑肉是否為冷害是本研究提出並檢驗的假說；1-MCP 是處理方法，片中不用。 覆核 V64（2026-11-12）：limitations 加：「討論『12.5 °C may represent a safe threshold』與結論『storage at 12.5 °C completely prevents the disorder』是保存溫度建議，不得進片；Palmer 10°C 早採 33% 與較熟 32% 幾乎相同。」",
+          "author_cache": {
+            "file": "f61src/PMC13341063.txt（原始 PMC13341063.xml sha256 前 16 碼 01c348464402f1ab）",
+            "sha256_prefix": "a46c849756d6d1c8",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13341063/fullTextXML"
         }
       ]
     },
@@ -64985,6 +65453,32 @@
       ]
     },
     {
+      "id": "SRC-84dc1e682696369a",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2939203",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2939203",
+          "title": "Effects of reverberation on brainstem representation of speech in musicians and non-musicians",
+          "publisher": "Brain Research 1355:112–125 (2010)；Bidelman & Krishnan（PMC 作者手稿）",
+          "version": "PMC 作者手稿 HTML 全文",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果所列 PMC 網址，curl 預設標頭 GET 200，去標籤後讀。",
+          "reading_scope": "摘要、圖 1 與圖 6 圖說、§2 行為結果、§3 討論中 F0／F1 段、§5.1 受試者、§5.2 刺激、§5.5 行為量測全讀；腦幹 FFR 分析段只略讀。",
+          "locator": "§5.2（合成母音 /i/、F0 103–130 Hz、走廊實測脈衝響應三級 RT60 ≈ 0.7／0.8／0.9 s、殘響尾巴截掉並等響度）、§5.5（各 4 位音樂家與非音樂家、3AFC、基準 F0 115 Hz）、§2 行為結果（F0 DL：組別顯著 F1,6 = 154.49，殘響不顯著 F3,18 = 0.59、p = 0.631；F1 DL：殘響顯著 F3,18 = 15.16）、圖 6 圖說。",
+          "summary": "普渡大學讓 4 位音樂家與 4 位非音樂家用耳機聽合成母音 /i/，測他們聽得出多小的音高（F0）差、多小的母音音色（第一共振峰 F1）差；母音分別不加殘響，或與走廊實測的三種脈衝響應（RT60 約 0.7、0.8、0.9 秒）卷積。結果：音樂家聽音高的差異閾約小 4 倍，但兩組在三種殘響下聽音高差的能力都和沒有殘響時一樣（殘響效果不顯著，p = 0.631）；反之，殘響越重，兩組越難聽出母音音色的變化（F1 差異閾在中、重殘響顯著變大）。作者說殘響『不妨礙聽出聲音的音高』，被模糊的是高頻的音色細節。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "行為實驗只有 8 人（4＋4）；刺激是說話的合成母音（F0 約 115 Hz、250 毫秒），不是歌聲或旋律；殘響尾巴被截掉並等響度，跟在浴室裡聽人唱歌不同；走廊脈衝響應不是浴室。只能說『在這個實驗裡，加這種程度的殘響，聽的人聽出音高變化的能力沒變』，不得說成『浴室回音蓋不住走音』或『別人聽你唱歌一樣聽得出不準』。PMC 為作者手稿版，權利以 Elsevier 為準。與 Bottalico 研究群無關。 覆核 V62（2026-11-12）：summary 刪『被模糊的是高頻的音色細節』，改『F1（300 Hz）差異閾在中、重殘響比無殘響與輕殘響大（Tukey）』；補『三種殘響是同一條走廊離聲源 0.63、1.25、5 m 的脈衝響應』。",
+          "author_cache": {
+            "file": "f59src/pmc_PMC2939203.html",
+            "sha256_prefix": "0750021cf59055fc",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-physics-20261111",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2939203"
+        }
+      ]
+    },
+    {
       "id": "SRC-84e0d904ad239545",
       "url": "https://www.prnewswire.com/news-releases/buffets-llc-to-file-chapter-11-bankruptcy-300231906.html",
       "readings": [
@@ -69672,6 +70166,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.samsungcnt.com/eng/business/resort.do\\nhttps://www.sgsg.samsung.com/newpage/newpage.php?f_id=samsung_companies"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8e75af6f2854f75c",
+      "url": "https://esj.ne.jp/meeting/abst/59/P1-237A.html",
+      "readings": [
+        {
+          "canonical_url": "https://esj.ne.jp/meeting/abst/59/P1-237A.html",
+          "title": "Foraging behavior of the diving bird: Little grebes change their chasing behavior according to the prey",
+          "publisher": "日本生態學會第 59 回全國大會（2012 年 3 月，大津）講演要旨 P1-237A；Gunji（東京大學）、Fujita（沖繩縣立博物館）、Higuchi（東京大學）",
+          "version": "學會官方網站上的海報摘要",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（Gunji Fujita Higuchi 2013 head-bobbing diving little grebes）列出此頁，curl 預設標頭存檔",
+          "reading_scope": "海報摘要全文（一段）",
+          "locator": "摘要全段：『It was found that little grebes have two styles of dive; with or without head bobbing. A rapid-swimming prey triggered non-bobbing dives…』",
+          "summary": "在水族箱餵一隻小鸊鷉四種逃跑速度與方式不同的獵物，從側面做 2D 動作分析：潛水有點頭與不點頭兩種；游得快的獵物引發不點頭的潛水，兩種游得慢的獵物引發點頭的潛水；點頭由頭伸出與固定組成，獵物轉向越多，頭固定的時間越長。作者推測潛水鳥依辨認難度調整『看』的時間。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只是研討會海報摘要、只有 1 隻鳥、沒有數字；期刊版 Gunji 等 2013（J Comp Physiol A 199:703）為 Springer 付費，未讀。與 L65-S006（Fujita 野外研究）共同作者 Fujita 重疊。未採用，只列在 not_added。 覆核 V63（2026-11-12）：無改動（未採用，只在 not_added）。重抓 sha256 d12d5ade0c77ed49 與作者相同。",
+          "author_cache": {
+            "file": "f60src/esj59_P1-237A.html（文字：f60src/esj59_P1-237A.txt）",
+            "sha256_prefix": "d12d5ade0c77ed49",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://esj.ne.jp/meeting/abst/59/P1-237A.html"
         }
       ]
     },
@@ -74856,6 +75376,32 @@
       ]
     },
     {
+      "id": "SRC-99a9baee6c08e68a",
+      "url": "https://crisosto.ucdavis.edu/sites/g/files/dgvnsk6166/files/inline-files/091-05-Peach-Nect-Chilling-injury-in-peach-and-nectarine.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.postharvbio.2005.04.012",
+          "title": "Chilling injury in peach and nectarine（Review）",
+          "publisher": "Postharvest Biology and Technology 37:195–208（2005）；Susan Lurie（以色列 Volcani 中心）、Carlos H. Crisosto（加州大學戴維斯分校）；PDF 置於 Crisosto 實驗室網站",
+          "version": "作者實驗室網站上的期刊排版 PDF",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果給出 crisosto.ucdavis.edu 的 PDF 連結，curl 預設標頭下載，pdftotext -layout 轉文字",
+          "reading_scope": "第 1 節 Introduction 與第 2 節 Chilling injury (CI) symptoms（頁 196–198）；其餘章節未讀",
+          "locator": "頁 196 右欄（killing temperature zone 2.2–7.6°C，引 Harding & Haller 1934、Smith 1934、Crisosto et al. 1999a）；頁 197 第 2 節第一段（2–5°C 1–2 週、0°C 3 週以上；成熟後才出現、到消費者手上才被發現）；Fig. 1",
+          "summary": "Crisosto 合著的綜述：廣泛報告指出，易受害的桃與油桃存在 2.2 到 7.6°C 之間（作者稱「殺傷溫度區」）時，果肉褐變等冷害症狀比存在 0°C 或以下（冰點以上）出現得更快、更嚴重；存 2–5°C 時 1 到 2 週就出現肉眼症狀，0°C 則要 3 週以上。症狀主要在冷藏後的後熟期間出現，常到消費者手上才被發現；冷害受遺傳影響，表現為乾粉、綿、無汁、果肉或果核腔褐變、果肉流紅。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "綜述，不是原始實驗；殺傷區數字是作者綜合前人（含 Crisosto 1999a）的說法；綜述中的儲存溫度建議片中不用。L66-S005 前言轉述的 Crisosto & Valero 2008 本身仍未讀到。 覆核 V64（2026-11-12）：limitations 加：「頁 196『fruit maximum storage life can be achieved near or below 0 °C』是保存建議，不得進片。」",
+          "author_cache": {
+            "file": "f61src/lurie_crisosto_2005.txt（原始 lurie_crisosto_2005.pdf sha256 前 16 碼 a2496ad22541e4bf）",
+            "sha256_prefix": "8294aa34f0908010",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://crisosto.ucdavis.edu/sites/g/files/dgvnsk6166/files/inline-files/091-05-Peach-Nect-Chilling-injury-in-peach-and-nectarine.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-99b0371851000474",
       "url": "https://datacenter.uptimeinstitute.com/rs/711-RIA-145/images/2025.Annual.Survey.Report.pdf",
       "readings": [
@@ -78398,6 +78944,32 @@
       ]
     },
     {
+      "id": "SRC-a054bc46f346dcad",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12737150/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/plants14243848",
+          "title": "Fatty Acid Metabolism in Shading-Induced Tolerance of Star Ruby Grapefruit to Postharvest Chilling Injury",
+          "publisher": "Plants 14:3848（2025）；Lozano-Omeñaca、Rodrigo、Zacarías（西班牙 CSIC 農業化學與食品技術研究所 IATA）",
+          "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+          "reading_scope": "摘要、前言（膜相變假說段）、2.1–2.3 結果（含 Table 1 前段）、3. Discussion 前半",
+          "locator": "Introduction 第三段（膜由液態轉凝膠、離子滲漏的主流假說）；2.1 Chilling Injury of Covered and Non-Covered…（Fig. 1）；2.3 Fatty Acid Content（Table 1）；Discussion（UFA/SFA 與雙鍵指數不變、「apparent contradiction」、冷藏 8 週總脂肪酸與不飽和脂肪酸都增 48%）",
+          "summary": "葡萄柚 Star Ruby 在樹上套袋遮光的果皮累積茄紅素、變紅，冷藏 2°C 8 週冷害指數一直低於 1；沒套袋的黃色果第一週就出現冷害，8 週後幾乎 100% 嚴重受害。量果皮脂肪酸：採收時兩組主要都是亞油酸（44–48%）；怕冷的不套袋果亞油酸含量在採收時與整個冷藏期都較高；遮光讓總脂肪酸少 24%、不飽和少 25%、飽和少 20%，但不飽和對飽和的比例與雙鍵指數沒有改變；冷藏 8 週兩組總脂肪酸與不飽和脂肪酸都增加約 48%。作者稱「怕冷的果實不飽和程度反而較高」為表面矛盾，推測與田間已受冷、已啟動調適及脂質過氧化較多有關。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "只量脂肪酸組成與基因表現，沒有直接量膜相變溫度或離子滲漏；只有一個品種、兩種樹上處理；耐冷差異來自遮光與茄紅素，不是兩個物種的天生差異。 覆核 V64（2026-11-12）：summary 與 limitations 改：「怕冷組亞油酸與不飽和脂肪酸『含量』較高，但不飽和對飽和比例與雙鍵指數兩組相同；量的是外果皮總脂肪酸，不是膜脂。」",
+          "author_cache": {
+            "file": "f61src/PMC12737150.txt（原始 PMC12737150.xml sha256 前 16 碼 177231f1c2e3e3e9）",
+            "sha256_prefix": "dba05954186a1afa",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12737150/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-a05516c367a25e14",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6784597/fullTextXML",
       "readings": [
@@ -81597,6 +82169,33 @@
       ]
     },
     {
+      "id": "SRC-a8554272501aa613",
+      "url": "https://www.iastatedigitalpress.com/mmb/article/18932/galley/17137/view/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.22175/mmb.18932",
+          "title": "Impact of Frozen Versus Thawed Fabrication and Subsequent Refreezing on the Palatability and Thaw Loss of Beef Strip Loins",
+          "publisher": "Jade E. Edwards、Keayla M. Harr、Morgan L. Denzer、Morgan Pfeiffer、Gretchen G. Mafi、Ranjith Ramanathan（美國奧克拉荷馬州立大學）／Meat and Muscle Biology 9(1):18932，2025（American Meat Science Association；Iowa State University Digital Press）",
+          "version": "期刊正式排版 PDF；頁首標 CC BY 4.0 open access",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（consumer sensory panel fresh versus frozen beef steaks paired loins…）結果列出文章頁 www.iastatedigitalpress.com/mmb/article/id/18932/；文章頁上的 galley『view』連結以 curl 工具預設標頭下載（200、application/pdf；本次沒有機器驗證頁），pdftotext 轉文字",
+          "reading_scope": "全文 10 頁（摘要、前言、Materials and Methods 的 Packaging and storage、Thaw and cook loss、Consumer sensory panel、Statistical analysis；Results 的 Thaw and cook loss、WBSF、Consumer；Table 2、3、6；Discussion 前半；Acknowledgments、Conflict of interest）",
+          "locator": "Packaging and storage（成對腰脊 21 天熟成、−21 °C 凍 14 天；切成 2.54 cm 牛排、每塊真空包裝、分到 −12、−18、−21 °C 凍 180 天）；Statistical analysis（20 對左右腰脊為重複、以牛為區集）；Results—Thaw and cook loss 與 Table 2（Frozen storage temperature 列：牛排解凍損失 3.06／2.73／2.86%，P = 0.48；烹調損失 P = 0.95）；Table 6（消費者 n = 160，各項 P ≥ 0.27）；Discussion 第一段（作者說 −12 到 −21 °C 範圍可能不夠大）；Acknowledgments（Beef Checkoff）",
+          "summary": "奧克拉荷馬州立大學用 20 頭牛的左右成對腰脊，先熟成 21 天、在 −21 °C 凍 14 天，再把每條切成牛排、逐塊真空包裝，分別放進 −12、−18、−21 °C 冷凍 180 天。180 天後 4 °C 解凍 24 小時，牛排的解凍損失三組是 3.06%、2.73%、2.86%，沒有顯著差異（P = 0.48）；烹調損失也沒有差異（約 20.6–20.7%，P = 0.95）。160 位未受訓消費者評嫩度、多汁、風味、整體喜好，三個溫度之間都沒有差異；受訓評審也一樣。作者自己說，−12 到 −21 °C 的範圍可能不夠大，而且牛排是第二次凍、凍得比整條快，所以看不出差別。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "溫度只到 −21 °C，沒有 −40 °C 以下；作者自己說範圍可能不夠大；牛排是第二次冷凍（整條腰脊已在 −21 °C 凍過 14 天），不是一次冷凍；研究主題是『整條解凍後切』還是『冷凍中切』，那部分（兩次凍融、價值損失美元數）會變成加工或解凍建議，片中不用；研究由 National Cattlemen's Beef Association（Beef Checkoff 承包者）協調，屬牛肉產業經費，非冰箱廠商；本篇解凍損失的分母是包裝內冷凍牛排重，與 K66-011（LG 資助、含空氣包裝、−18 對 −60／−50 °C、6 個月）的定義和條件都不同，數字不可並排相減；與 K66-012 的『差異後來消失』、K66-011 南京雪花牛肉的『只有 −18 對 −60 顯著』只能並列成『研究不一致』，不說誰對。不得說成『冰箱冷凍庫溫度不重要』或推薦冷凍溫度、包裝、保存天數；不給解凍或食安建議。 覆核 V58（2026-11-12）：limitations 的『牛排是第二次冷凍』改為『凍著切的那一半牛排沒解凍過、直接移入三個溫度保存（只差保存溫度）；解凍後切的那一半才是第二次冷凍』；補『Table 2 註 b 的解凍損失公式與方法節不一致，以方法節為準』。",
+          "author_cache": {
+            "file": "f55src/mmb18932_galley17137.pdf（文字 f55src/mmb18932_galley17137.txt；文章頁 f55src/mmb18932_edwards.html，sha256 前 16 碼 aa14e564b1170d46）",
+            "sha256_prefix": "42cd3348dc9250a0",
+            "text_sha256_prefix": "cb4fa6ba1f0d518f",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-food-20261111",
+          "original_url": "https://www.iastatedigitalpress.com/mmb/article/18932/galley/17137/view/"
+        }
+      ]
+    },
+    {
       "id": "SRC-a85c644cda05bae1",
       "url": "https://arxiv.org/abs/1608.04631",
       "readings": [
@@ -84189,6 +84788,32 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ikyu.com/concierge/17985"
+        }
+      ]
+    },
+    {
+      "id": "SRC-abf434f0e5a5ebff",
+      "url": "https://speech.di.uoa.gr/sppages/spppdf/Kouroupetroglou%20et%20al%20-%20Optimal%20Acoustic%20Reverberation%20Evaluation%20of%20Byzantine%20Chants%20in%20Churches.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://speech.di.uoa.gr/sppages/spppdf/Kouroupetroglou%20et%20al%20-%20Optimal%20Acoustic%20Reverberation%20Evaluation%20of%20Byzantine%20Chants%20in%20Churches.pdf",
+          "title": "Optimal Acoustic Reverberation Evaluation of Byzantine Chants in Churches",
+          "publisher": "Proceedings of the 1st Int. Interdisciplinary Musicological Conference（Volos, 2014），收於 Karagounis & Kouroupetroglou (Eds.) The Psaltic Art as an Autonomous Science, 2015；雅典大學與佩特雷大學",
+          "version": "作者研究群網站的論文集 PDF（CC BY 3.0）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果所列網址原樣 curl 預設標頭 GET 200；pdftotext 轉文字（有一則 optional content 警告，正文完整）。",
+          "reading_scope": "全文讀（1–4 節、表 1；圖 4–7 只有圖說與正文數字，沒有讀圖上的數值）。",
+          "locator": "§2.3（MUSHRA 變形，0–100 分評『殘響適不適合』，可隨時聽無殘響原錄音；15 位有經驗聽者；2 段聖詠 × 3 種 RT × 8 個位置共 48 個樣本，耳機播放）、表 1（小、中、大教堂 34,000／96,720／232,596 m³，RT 2.5／4／6 s）、§3.2（平均 54.0、74.1、46.3 分；大教堂略偏好原音但不顯著）、§3.4（遠的位置評價不佳；唱者自聽位置 A1_02 也偏好殘響）。",
+          "summary": "希臘研究者把半消音室錄的拜占庭聖詠，用電腦模擬三種大小的教堂殘響（RT 2.5、4、6 秒）與不同聽位，請 15 位有經驗的聽者戴耳機評『這種殘響適不適合這段聖詠』，可隨時對照沒加殘響的原音。小、中教堂的版本都明顯比原音受歡迎，中型（4 秒）平均 74.1 分最高，小型（2.5 秒）54.0 分；最大的 6 秒教堂 46.3 分，略偏好原音但不顯著。站得遠的位置評價不佳；模擬唱者自己位置聽到的版本也偏好有殘響。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研討會論文；聖詠與教堂（2.5–6 秒、數萬立方公尺）跟浴室差很遠，評的是『殘響適不適合』而不是音準或歌聲好不好；殘響是模擬加上去的；聽者是有經驗的聽者，人數 15。文中『Chant01（合唱）60.66% 對 Chant 01（獨唱）55.59%』兩個名稱打字重複，片中不用合唱與獨唱比較。不得說成『加回音歌聲就變好聽』，只能說『在這個實驗裡，適量的殘響被評為更適合，太多則不』。與 Bottalico 研究群無關。 覆核 V62（2026-11-12）：summary『站得遠的位置』改『離聲源遠的聽位（A0_01、A0_04、A1_01、A1_04）』；補評分量尺定義（100＝殘響版較合適、0＝完全不合適）。",
+          "author_cache": {
+            "file": "f59src/kouroupetroglou.pdf",
+            "sha256_prefix": "c803efee4d62cda4",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-physics-20261111",
+          "original_url": "https://speech.di.uoa.gr/sppages/spppdf/Kouroupetroglou%20et%20al%20-%20Optimal%20Acoustic%20Reverberation%20Evaluation%20of%20Byzantine%20Chants%20in%20Churches.pdf"
         }
       ]
     },
@@ -91273,6 +91898,32 @@
       ]
     },
     {
+      "id": "SRC-bb007d209673cfb1",
+      "url": "https://people.maths.ox.ac.uk/moulton/Papers/Mollusk_Coiling-main.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.2109210118",
+          "title": "The physical basis of mollusk shell chiral coiling（Chirat、Goriely、Moulton；PNAS 118(48), 2021）",
+          "publisher": "PNAS（作者 Derek Moulton 於牛津大學數學研究所個人頁自存）",
+          "version": "作者自存稿 PDF（LaTeX 編譯日 2021-12-04，含行號、12 頁；頁首仍為 pnas.XXXXXXXXXX 佔位 DOI）；未與 PNAS 出版版逐字比對，SI 未讀",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch（query: ora.ox.ac.uk \"mollusk shell chiral coiling\" Goriely）結果列出此 PDF；curl 預設標頭 200 application/pdf；pdftotext 轉文字。期刊 DOI 由 Europe PMC 搜尋 API 取得（PMC8651239，REST 全文 500）",
+          "reading_scope": "摘要、Significance、§1 Background（A. How snails got their handedness；B. Ammonites took a weird turn，含 Didymoceras 左右比例段）、§3 討論中 Mariella 與『two components』段、§4 How snails coil their shell（帽貝、殼肌、A. Modeling gastropod form、Fig. 6、Fig. 7 圖說）全文讀過；§2 力學模型的數學推導與菊石 meandering 形態段只瀏覽，未逐式核對",
+          "locator": "Abstract；§1A（more than 90% … dextral；only six specimens of sinistral Cerion）；§1B 後段（about 1500 specimens of Didymoceras … D. stevensoni n=264 47/53、D. nebrascense n=882 49/51、D. cheyennense n=338 52/48；randomly determined and non-heritable）；討論段（Mariella … Albian 50/50、all Cenomanian species are sinistral；Mechanical forces … may equiprobably produce dextral or sinistral forms；cardiac … random handedness）；§4（limpets show a dextral cleavage pattern, a right expression of nodal … shell is cone-shaped and bilaterally symmetric；torsion … limpets also experience such a rotation；shell-muscle system is helically coiled around … the axial columella … three-quarters to two whorls back；horseshoe-shaped muscle scar；convergently evolved in … four other gastropod orders；this hypothesis remains to be tested experimentally）；§4A 與 Fig. 6（in every single case, the helicospiral shell is the energy minimizer）",
+          "summary": "里昂與牛津的研究者把軟體與硬殼在生長時的力學交互寫成數學模型。菊石身體左右對稱、約 99% 的屬是平面捲或直殼；少數異形菊石中段長成螺旋，而 Didymoceras 三個種約 1,500 個標本中右旋與左旋大約各半（47/53、49/51、52/48），其他幾科也有類似的約五五比，作者認為這種旋向是隨機決定、不遺傳的；Mariella 在阿爾布期的種左右各半，到森諾曼期的種全是左旋。作者主張力學可以把殼扭成螺旋、但左右機率相同，固定偏向一邊需要另一個機制。蝸牛方面：帽貝胚胎右旋卵裂、nodal 在右、身體解剖也是右手型，殼卻是左右對稱的圓錐；幼體那次 180° 的『扭轉』帽貝也有，所以不能直接拿來解釋螺旋殼。比較解剖顯示，螺旋殼的種，殼肌螺旋繞在殼軸（殼軸柱）上、附著在離殼口四分之三到兩圈的地方；帽貝的殼肌則是左右對稱的馬蹄形，而且在另外四個目裡獨立演化出的帽貝形殼都伴隨這種肌肉改變。作者據此假設不對稱的殼肌讓身體帶有內在扭轉，模型中只要身體有內在扭轉，在掃過的所有參數組合裡螺旋殼都是能量最低的形狀；作者明說這個假設尚未以實驗檢驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "數學模型與比較解剖推論，作者自承殼肌造成內在扭轉的假設未經實驗；菊石左右比例是作者整理他人標本研究（ref 34–38、69），不是自己數的；『超過 90% 的蝸牛右旋』與 Cerion 六個左旋標本是引前人（ref 15、16），不另計；作者稿未與出版版逐字比對。池中 L68-NA007 曾記此篇無開放版本，本輪由作者頁取得。與 B2128（內臟扭轉不等於殼的盤旋）部分重疊：帽貝也有扭轉那一句不另計。研究群（Chirat、Goriely、Moulton）不屬 Asami、Davison、Hoso、Gittenberger、Chiba、Dietl 任何網絡。 覆核 V60（2026-11-12）：limitations 補：『Didymoceras 約 1,500 個標本是引用另一項研究（ref 34），其他科與 Mariella 引 ref 35–38、69；菊石身體左右對稱原文是 probably。覆核 V60 依作者 Europe PMC search 回應所列 europepmc.org/articles/PMC8651239?pdf=render 試一次，403 Cloudflare，出版版仍未比對；SI 未讀。Chirat 全篇計數封頂 0.75。』read_via 補：作者先以 pdftotext -layout 轉出、後改無 -layout 覆寫，快取文字是後者。",
+          "author_cache": {
+            "file": "f57src/chirat2021_moulton.pdf",
+            "sha256_prefix": "01579870e6b71882",
+            "note": "pdftotext（無 -layout）文字另存 f57src/chirat2021_moulton.txt，sha256 前 16 碼 7f5a0dfe1dc02eb1 作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://people.maths.ox.ac.uk/moulton/Papers/Mollusk_Coiling-main.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-bb126d9ff623237a",
       "url": "https://doi.org/10.1038/ncomms15049",
       "readings": [
@@ -94567,6 +95218,32 @@
           "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8444456/fullTextXML",
           "origin": "wave14-perception-20261101",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8444456/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c1844ec3263df52f",
+      "url": "https://eprints.lib.hokudai.ac.jp/repo/huscap/all/18117/27_p267-287.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://hdl.handle.net/2115/18117",
+          "title": "スケートリンクの氷質調査 II（Studies on the Properties of Ice in Skating Rinks II）",
+          "publisher": "低温科學 物理篇 27:267–287（1970-03-31）；小林禎作、北原武道、河村俊行（北海道大學低溫科學研究所）；HUSCAP",
+          "version": "期刊掃描 PDF（OCR），機構典藏公開",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果列出的 HUSCAP PDF，curl 工具預設標頭下載；pdftotext 轉文字",
+          "reading_scope": "只讀 I はしがき 與『氷の表面温度と競技記録』一節（第 11 圖圖說與前後段，約 p.271–273）；冰芯、氣泡、無氣泡冰製作各節未讀。",
+          "locator": "I はしがき 第一段（第一年度結論：競技最適表面溫度 −2 到 −3 °C）；第 11 圖圖說與前後兩段（1968 軽井沢、1969 瑞浪全日本選手權：各項前 5 名換算 500 m 平均時間對日本紀錄之比，女子 1500 m 在 −1 到 −3 °C 最小 1.006，越冷比值越大）。",
+          "summary": "同一研究群在做彈射實驗前，先把 1968 年軽井沢與 1969 年瑞浪全日本速滑選手權各項前 5 名的成績（換算成 500 公尺）除以日本紀錄，和比賽時的冰面溫度對照：冰越冷比值越大（成績離紀錄越遠），作者兩年的結論都是 −2 °C 前後的冰最適合比賽。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "比賽成績的觀察性對照，天氣（霧、雨）、選手與項目都會影響，作者也寫該屆成績整體偏低；只作 F54-001 的背景一句，不單獨計條。只讀上述一節。 覆核 V57（2026-11-12）：summary 改為：『1968 年軽井沢的資料顯示 −2～−3 °C 的冰成績最好、比這更冷或更暖都較差；1969 年瑞浪全日本選手權（期間有霧和雨、整體成績偏低）氷温 −1～−3 °C 時女子 1500 m 的比值 1.006 最小，冰越冷比值越大。』author_cache 補註同 S001：重抓 sha256 前綴 b7cb48072f6de171，只差 trailer /ID。",
+          "author_cache": {
+            "file": "f54src/huscap_27_p267-287.pdf（文字 f54src/k27raw.txt）",
+            "sha256_prefix": "5e26f09fa9c2fe17",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-physics-20261111",
+          "original_url": "https://eprints.lib.hokudai.ac.jp/repo/huscap/all/18117/27_p267-287.pdf"
         }
       ]
     },
@@ -109424,6 +110101,32 @@
           "viewed_images": [],
           "origin": "wave28-museum-20261102",
           "original_url": "https://www.nationalgallery.org.uk/paintings/catalogues/plazzotta-and-henry-2022/saint-catherine-of-alexandria"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e059262c3db2017e",
+      "url": "https://dael.euracoustics.org/confs/fa2026/data/articles/000940.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://dael.euracoustics.org/confs/fa2026/data/articles/000940.pdf",
+          "title": "Exploring Practical Approaches to Sound Absorption Measurement: Validating a Repurposed Space as a Small-Scale Reverberation Room",
+          "publisher": "Forum Acusticum 2026（12th Convention of the European Acoustics Association, Graz）論文集；Bosonin, Gölles, Shtrepi, Stavric, Zotter",
+          "version": "會議論文 PDF（頁面浮水印 Preliminary document；首頁註明依摘要接受、全文未經審查）",
+          "accessed_on": "2026-11-12",
+          "read_via": "WebSearch 結果所列 PDF 網址，curl 預設標頭 GET 200；pdftotext 轉文字。",
+          "reading_scope": "全文讀（摘要、1–6 節、表 1、表 2），參考文獻只看前 10 筆。",
+          "locator": "§3（Schroeder 頻率定義與小房間的限制）、§4.1（浴室描述：V = 8.96 m³、高 2.75 m、地板與過半牆面貼磚）、§5 首段（空房 500–2000 Hz 平均 T30 = 0.93 s，fs = 643.6 Hz）。",
+          "summary": "格拉茲與都靈的研究者把一間沒改裝的小浴室當成小型殘響室來量吸音材料。這間浴室容積 8.96 立方公尺、高 2.75 公尺、形狀不規則，地板和一半以上的牆面貼磁磚，其餘牆與天花板是油漆粉刷；作者說選浴室是因為它『通常很會迴響』。空房在 500、1000、2000 赫茲頻帶的平均 T30 是 0.93 秒，由此算出 Schroeder 頻率 643.6 赫茲；作者說明在這個頻率以下，房間的聲音不再是均勻散開的擴散場，而是一個個分開的共振模態，Sabine 公式失效，量到的殘響時間不可靠；小房間的這個界線比標準殘響室高得多。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "研討會論文，全文未經審查（首頁聲明），且是吸音量測方法研究，不是唱歌或聽覺研究；只有一間浴室、一次空房量測給 fs；沒有量低頻模態的頻率或強度、沒有早期反射或 STv。『浴室低頻有共振』只能說到『這間浴室在約 640 赫茲以下不再是擴散場、而是分開的模態』，不得說量到哪個音特別響，也不得自己推算人聲音域落在哪裡。共同作者 Shtrepi 是池中 P63-S009（Shtrepi 等 2025，P63-011）的作者，覆核須判斷是否併入同一研究群封頂；本篇主導者與量測在格拉茲，題目與唱歌無關。不得與 F59-S001、P69-001 的秒數合成同一例子。 覆核 V62（2026-11-12）：summary『格拉茲的研究者』改『都靈理工（Bosonin、Shtrepi）與格拉茲（Gölles、Zotter、Stavric）的研究者，原文未寫浴室所在地』；limitations 刪『本篇主導者與量測在格拉茲』，改『第一作者與 Shtrepi 同屬都靈理工，方法沿用 Shtrepi & Prato 2020（文獻 [8]），併入 Shtrepi 群』；補『fs 由式（4）代 T30 與 V 算出，不是量到的模態；掃頻 200–8000 Hz』。",
+          "author_cache": {
+            "file": "f59src/fa2026_000940.pdf",
+            "sha256_prefix": "64dd5432eddef55a",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-physics-20261111",
+          "original_url": "https://dael.euracoustics.org/confs/fa2026/data/articles/000940.pdf"
         }
       ]
     },
@@ -124462,6 +125165,32 @@
           },
           "origin": "wave39-life-20261103",
           "original_url": "https://doi.org/10.1098/rsbl.2010.0226"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fe7ed657da1fdacd",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12026267/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3390/foods14081319",
+          "title": "Comparative Analysis of Chilling Injury in Banana Fruit During Storage: Physicochemical and Microstructural Changes, and Early Optical-Based Nondestructive Identification",
+          "publisher": "Foods 14:1319（2025）；Ma、Lan、Pan 等（南京農業大學食品科技學院）",
+          "version": "出版社開放取用版（PMC 收錄 JATS 全文，CC BY）",
+          "accessed_on": "2026-11-12",
+          "read_via": "Europe PMC REST（文件記載 API）search 取得 PMCID，再以 /webservices/rest/{PMCID}/fullTextXML 取 JATS 全文，python 去標籤轉文字",
+          "reading_scope": "摘要、前言、2.1–2.2 方法、3.1 與 3.2 結果討論；3.3 以後的高光譜分類只讀摘要層級",
+          "locator": "Abstract；2.1 Materials（7°C 對 13°C、85% RH、0–10 天）；2.2.1 CI index；3.1 Changes in Physicochemical Properties；3.2 Changes in Microstructural Properties（Fig. 3 SEM）",
+          "summary": "商業成熟（七到八成熟）的香蕉分存 7°C（冷害組）與 13°C（對照）0–10 天：13°C 組全程沒有冷害症狀；7°C 組冷害指數逐步上升、失重較多，果皮變暗不轉黃（L* 與 b* 下降）；7°C 組果肉軟化較慢、果肉含水下降，13°C 組果肉含水略升。電子顯微鏡下，13°C 果肉到第 10 天澱粉完全轉化，7°C 果肉仍有大量澱粉粒，並出現細胞溶解與細胞間空腔；果皮細胞膜破裂。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "limitations": "症狀數字只有圖、沒有表列數值，片中只講方向；每組冷害指數 12 根；只有一個 7°C 與一個 13°C，不是溫度梯度；高光譜辨識部分與本題無關。與 L66-S006（華中農大）不同研究群。",
+          "author_cache": {
+            "file": "f61src/PMC12026267.txt（原始 PMC12026267.xml sha256 前 16 碼 adab98e359c91b46）",
+            "sha256_prefix": "8544409d830925a2",
+            "note": "作者快取在 2026-11-12 工作階段的暫存目錄，未進 repo；只記雜湊前 16 碼。"
+          },
+          "origin": "wave72-life-20261111",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12026267/fullTextXML"
         }
       ]
     },
@@ -315055,6 +315784,948 @@
       "production_ready": false
     },
     {
+      "id": "K72-001",
+      "question": "冰晶化掉、汁流走以後，肉裡會留下一個個原本冰晶佔著的洞嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.thawed_beef_ice_voids_collapse_xray_ct",
+      "answer_target": "在三菱電機研究者用 SPring-8 放射光 X 光 CT 看的解凍牛腿肉裡，沒有看到和冷凍時冰晶分布對應的洞。肉塊在約 −18 °C 冷凍庫凍 8 小時，用幾種溫度和時間解凍後，切成約 5 mm 小塊、以每像素 3.63 µm 掃描。他們原本預期：前一份研究在冷凍肉裡看到的、均勻散布約數百 µm 的冰晶，融化流走後會留下同樣大小、同樣均勻的空洞。結果所有試樣都沒有這種分布；只在部分試樣看到零星幾十到幾百 µm 的小點，亮度和空氣一樣，大小、多寡也不隨解凍溫度和時間改變。作者也排除了『洞裡裝滿融水』，因為肉和水的 X 光吸收差約一成，掃得出來。他們的解釋是：冰晶留下的空間被周圍組織擠壓而消失。這是從『看不到』推出的解釋，不是拍到擠壓的過程。",
+      "scope": "一份 4 頁的放射光設施利用成果報告，作者是冰箱廠商、目的是發展冷藏庫性能評價方法；每個條件一塊、沒有統計；冷凍時冰晶的大小與分布引自作者前作（未讀），不是同一批試樣；試樣在解凍後切小、室溫大氣下掃描；『被擠壓消失』是推論；只凍 8 小時、約 −18 °C。本篇不談冰晶長在細胞內或外，也不否定冰晶刺破細胞——報告本身仍假設滴汁來自融化的冰。不提微波或任何解凍方式的滴汁多寡，不給解凍、冷藏或食安建議，不提產品。",
+      "source_locator": "F55-S001 抄録；背景と研究目的（前作冰晶數百 µm、均勻分布的假設）；実験（試樣、解凍條件、CT 條件）；結果および考察（無對應空洞、粒狀對比判為空氣、水填空洞模型被排除）；まとめ",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：不在 still_missing 點名範圍內（點名的是量化冰晶在細胞內外的位置），屬新增的旁支問題；單一報告、n≈1、無統計、關鍵對照引自未讀前作，比照 K67-001（定性、每組 2 塊）與 K68-001 的 0.25。可放在 K67-001 之後一句帶過『冰化了、洞也不見了』，但不撐第二轉折。 原提案 F55-001（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V58（2026-11-12）改字後收；數字與原文相符、網址合法、快取一致；但刪掉微波組的指涉、補上『部分試樣仍有空氣小點』『冷凍對照來自前作』『擠壓是推論』，角色由轉折降為段落，計數 0.5→0.25。看不到洞回答的是『肉會不會像海綿一樣留下孔』，不是『那灘水是不是冰晶刺破細胞流出來的』，不能改變第二轉折的結論。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "汁流走了，但冰晶的『洞』不見了——肉自己把空間擠閉。",
+        "visual": "同一個斷面先畫冷凍時均勻散布的白色冰晶，再淡出成解凍後的 CT 灰階斷面，只剩幾個小黑點（空氣），旁邊放一個空著的『預期中的洞』虛線框。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-75c61040a820de41",
+          "origin": "wave72-food-20261111",
+          "locator": "F55-S001 抄録；背景と研究目的（前作冰晶數百 µm、均勻分布的假設）；実験（試樣、解凍條件、CT 條件）；結果および考察（無對應空洞、粒狀對比判為空氣、水填空洞模型被排除）；まとめ",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K72-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "K72-002",
+      "question": "同一頭牛的牛排真空包好，放在 −12、−18、−21 °C 凍半年，解凍滴的水和吃起來會不一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.vacuum_steak_storage_temp_narrow_range_null",
+      "answer_target": "在奧克拉荷馬州立大學 2025 年這個實驗裡，三個溫度看不出差別。20 頭牛的左右成對腰脊先熟成、在 −21 °C 凍兩週，一條保持冷凍、一條先解凍，再切成牛排、逐塊真空包裝，分到 −12、−18、−21 °C 放 180 天。解凍後三組牛排的解凍損失約 2.7% 到 3.1%，統計上沒有差異；烹調損失、受訓評審和 160 位一般消費者的評分也都沒有差異。研究者自己說，−12 到 −21 °C 的範圍可能太窄；而且有一半的牛排是凍著切、沒解凍過就放進去，另一半是解凍後切、再凍成薄片，凍得很快。所以這個結果只說明『在這段窄範圍裡看不出差別』，不能推到 −40 °C 以下。",
+      "scope": "溫度只到 −21 °C；一半牛排在 −21 °C 已凍好、三組只差保存溫度，另一半是第二次冷凍；牛肉產業（Beef Checkoff）協調的研究；解凍損失定義與 K66-011、K66-012、K68-002 不同，不與任何其他研究的百分比並排、相減或比大小；溫度範圍與 K66-011（−18 對 −60／−50 °C）不重疊，不得說成兩篇『互相矛盾』，只說『差三到九度的窄範圍內沒看出差別』；不提凍著切與解凍後切哪個好、不提美元損失；不說『−12 °C 也可以』『冷凍庫溫度不重要』，不推薦冷凍溫度、包裝或保存天數，不給解凍或食安建議。",
+      "source_locator": "F55-S002 Packaging and storage；Thaw and cook loss；Statistical analysis；Results—Thaw and cook loss；Table 2（Frozen storage temperature 列）；Table 6；Discussion 第一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（照作者）：只部分回應 still_missing（3）——要的是 −18 °C 對 −40 °C 以下，本篇最低 −21 °C，一半牛排的冷凍本身也不在比較溫度下進行；同一實驗的解凍損失、烹調損失、受訓與消費者評分合計一條再折半。研究群（OSU Mafi／Ramanathan）未用過，非冰箱廠商。 原提案 F55-002（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V58（2026-11-12）改字後收；數字、單位、P 值都對；改正『全部是第二次冷凍』的說法、刪掉 3.06／2.73／2.86 的逐一數字（只留範圍，避免被拿去跟 K66-011 比大小），並禁止把它放成與 K66-011『不一致』的對立例子。計數 0.25 合理，不升。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "三台冷凍庫差了 9 度，半年後牛排滴的水和吃的人都分不出來——但研究者自己說這個溫差太小。",
+        "visual": "三個溫度計並排（−12、−18、−21），下面三盤牛排的滴汁小量杯幾乎一樣高；旁邊淡淡畫出更冷的 −40、−60 刻度，打上『本研究沒測』。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a8554272501aa613",
+          "origin": "wave72-food-20261111",
+          "locator": "F55-S002 Packaging and storage；Thaw and cook loss；Statistical analysis；Results—Thaw and cook loss；Table 2（Frozen storage temperature 列）；Table 6；Discussion 第一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "K72-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "H72-001",
+      "question": "用電流干擾內耳的訊號，閉眼走路的方向會跟著被帶歪嗎？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.galvanic_vestibular_stimulation_blindfolded_turn",
+      "answer_target": "會，而且幾步之內就看得到。1999 年澳洲雪梨的研究，讓健康成人（每個實驗 7 人）先看一眼 4 公尺外地上的目標，再閉眼照節拍器走過去。沒有任何刺激時，閉眼走這 4 公尺並不難：他們通常踩到或跨過目標，離目標從沒超過 25 公分。研究者在起步的同時，在兩耳後方通一道很弱的直流電（受試者只覺得皮膚有點刺），結果每個人、每一趟一開始都偏向接正極的那一側：第一步沒事，第二到第四步開始轉，第三步轉得最多——那一步的方向比前一步平均轉了約 26 度（走得慢）或 19 度（走得快），有人一步就往旁邊跨出 44 公分。幾步之後有人繼續朝新方向走，有人轉回目標。睜著眼睛走的那一趟，大家都走到了目標，只是有幾人覺得有點不穩。另一個實驗讓蒙眼的人坐輪椅被推一段弧線，同樣的電流讓他們事後指認的起點平均偏了十幾度，方向顯示他們以為自己往走路時偏轉的反方向轉了。作者推測，偏轉的一部分可能是大腦在『修正』這個以為發生的轉彎；但他們也說，垂直感或腳下支撐面的判斷被改變，同樣可能參與。",
+      "scope": "一個研究、4 公尺約 8 步、室內地毯、每實驗 7 人（共 9 人，含一位作者）；外加電流，是實驗室操弄，不是自然狀態，不說『平常走歪是內耳問題』，也不引用原文對前庭病人的討論；26°／19° 是第 3 步相對前一步的單步轉角，不是整段路線偏離；睜眼條件每人只一趟；輪椅實驗量的是事後指認起點（個別差異大，標準差約 23 度），不是軌跡，也不是『感覺轉了幾度』；機制作者未定論。不與 H69-003 或其他研究的角度、距離比較；不給任何嘗試、行動、野外求生或安全建議；不畫電極操作細節。",
+      "source_locator": "F58-S001 Methods〈Experiment 1〉；Results〈Experiment 1〉第 1–4 段、Fig. 2–3 圖說；Results〈Experiment 2〉最後一段；Discussion 第 1、4 段與最後一段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：still_missing（4）封頂 0.5。Fitzpatrick 群（雪梨）與 Tarnutzer 群（蘇黎世）不同；足跡為攝影機逐步數位化的真實落腳點。睜眼段與 H69-004 同方向、轉回目標與 H69-001 同方向，不另算；輪椅那半只當機制說明。 原提案 F58-001（目標 C11-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V61（2026-11-12）改字後收；數字、單位、人數都對得上原文；改正：補『一開始』、把『人人都走到目標』改回『通常踩到或跨過、不超過 25 公分』、睜眼條件補『每人一趟、有人覺得不穩』、輪椅實驗由『覺得自己轉了十幾度』改為『事後指認的起點偏了十幾度』、加入『沒有刺激時閉眼走 4 公尺並不難』以免觀眾以為短程也走不直、payoff 刪掉原文沒有的『自己還以為在走直』。scope 加寫不引用前庭病人段落與不給任何建議。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒摸到、沒推到，只在耳後通一點很弱的電，人在第二步就開始轉彎；有人落腳時才驚訝腳踩得太偏。",
+        "visual": "俯視示意：4 公尺地毯、目標圓圈；三組足跡（無刺激直達、正極在右往右彎、正極在左往左彎），標『示意，依原文圖 2 說明重畫，非原數據』；不畫電極與電源。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave72-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-44d9462ac4a52e34",
+          "origin": "wave72-human-20261111",
+          "locator": "F58-S001 Methods〈Experiment 1〉；Results〈Experiment 1〉第 1–4 段、Fig. 2–3 圖說；Results〈Experiment 2〉最後一段；Discussion 第 1、4 段與最後一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-human.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "H72-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-001",
+      "question": "會捲成螺旋的殼，一定會偏向往右轉嗎？",
+      "domain": "動物演化",
+      "mechanism_key": "paleo.heteromorph_ammonite_random_coil_handedness",
+      "answer_target": "不一定，滅絕的菊石就是反例。菊石屬於頭足類，研究者認為牠們的身體很可能是左右對稱的；約 99% 的屬，殼是平面捲或直的。少數『異形菊石』長到一半會扭成一段螺旋。里昂與牛津的研究者在論文裡引用了一項針對約 1,500 個 Didymoceras 標本的研究：三個種的右旋比左旋分別是 47 比 53、49 比 51、52 比 48，大約一半一半；其他幾科的異形菊石也有人報告過類似的五五比，所以他們認為這些菊石往哪邊轉是隨機的、不會遺傳。可是 Mariella 這一屬，較早的阿爾布期各種左右各半，較晚的森諾曼期各種卻全是左旋。研究者的解讀是：在他們的模型裡，力學扭轉往左往右耗的能量一樣，所以會捲不代表會選邊；要固定偏向一邊，得另外有一個機制，而 Mariella 的那個機制，他們說恐怕永遠無從得知。",
+      "scope": "菊石數字全是 Chirat 等引用他人的標本研究（Didymoceras 引 ref 34；其他科與 Mariella 引 ref 35–38、69），片中說『有研究統計』，不說成本篇自己數的；菊石身體左右對稱是『很可能』；『力學扭轉左右機率相同』是模型前提與推論；不說菊石沒有任何左右偏好、不說 Mariella 的左旋與蝸牛同一套基因有關、不說菊石是蝸牛的祖先。要接回蝸牛時，『蝸牛的旋向由母親的基因決定』只能引 L66-021，作旁白連接，不寫成 Chirat 對菊石的解讀。",
+      "source_locator": "F57-S001 §1B 後段（about 1500 specimens of Didymoceras … 47/53、49/51、52/48；randomly determined and non-heritable）；討論段（Mariella … Albian 50/50、Cenomanian all sinistral；Mechanical forces … equiprobably produce dextral or sinistral forms；two components process）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：池中沒有菊石旋向資料（grep 菊石／ammonite 只有 wave29、wave44 的拖痕與地質題），題材新；但三個種的比例、其他科、Mariella 全是本篇引用他人，屬二手轉述，照 L68-007 的先例下修；Chirat 全篇與 F57-002 合計封頂 0.75。 原提案 F57-001（目標 C13-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V60（2026-11-12）改字後收；數字相符，但把引用的研究寫成本篇整理、漏 probably，並把 §1A 的蝸牛母系遺傳與討論段的 Mariella 接成作者沒有說過的一條因果；改字並下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣是捲成螺旋的殼，菊石往左往右幾乎一半一半——會捲，不代表會選邊",
+        "visual": "一排 Didymoceras 化石左右鏡像並排，下方三條接近 50% 的比例條；接著 Mariella 從左右各半變成全部左旋的時間軸",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-bb007d209673cfb1",
+          "origin": "wave72-life-20261111",
+          "locator": "F57-S001 §1B 後段（about 1500 specimens of Didymoceras … 47/53、49/51、52/48；randomly determined and non-heritable）；討論段（Mariella … Albian 50/50、Cenomanian all sinistral；Mechanical forces … equiprobably produce dextral or sinistral forms；two components process）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-002",
+      "question": "帽貝的身體也是右旋型，殼為什麼卻是左右對稱的圓錐？",
+      "domain": "動物演化",
+      "mechanism_key": "snail.columellar_muscle_intrinsic_twist_helicospiral_model",
+      "answer_target": "研究者懷疑，關鍵在把身體拉進殼裡的那條肌肉。帽貝的胚胎是右旋卵裂、nodal 訊號在右邊，身體解剖也是右手型，可是不論胚胎殼還是長大的殼，都是左右對稱的圓錐；蝸牛幼體那次把內臟轉 180 度的『扭轉』帽貝也有，所以那次扭轉說明不了螺旋殼。比較解剖顯示：螺旋殼的螺類，殼肌是一條螺旋繞在殼中軸上、固定在離殼口四分之三到兩圈處的肌肉；帽貝的殼肌則是左右對稱的馬蹄形。帽貝形的殼在另外四個以螺旋殼為主的目裡各自演化出來，每一次都伴隨殼肌從單側螺旋變成對稱馬蹄形。里昂與牛津的研究者因此推測：不對稱的殼肌讓身體帶著一股內在的扭轉。在他們的數學模型裡，固定一組典型的捲曲參數，只要身體帶有這股扭轉，不論扭轉強弱、身體被壓縮或拉長、硬度比怎麼設，能量最低的都是螺旋殼。研究者明說，殼肌造成扭轉這一點還沒有實驗檢驗。",
+      "scope": "模型與比較解剖的推論，不是實驗結果；片中說『研究者推測』；殼肌比較解剖是本篇引前人（ref 81–84）；模型解釋的是為什麼捲成螺旋，不是往左或往右，不得說『殼肌決定殼往右轉』；Fig. 6 只限一組固定的捲曲參數，換別的參數、身體被拉長時平面捲殼也可能最省能量（SI 未讀）；帽貝 nodal 在右與 L68-003 重疊、扭轉不等於盤旋與 B2128 重疊，都不另計；作者稿未與出版版逐字比對。",
+      "source_locator": "F57-S001 §4 How snails coil their shell（limpets … dextral cleavage … right expression of nodal … bilaterally symmetric；torsion … limpets also experience such a rotation；shell-muscle system … columella … three-quarters to two whorls back；horseshoe-shaped muscle scar；four other gastropod orders；remains to be tested experimentally）；§4A 與 Fig. 6 圖說（in every single case, the helicospiral shell is the energy minimizer）；§4A 後段（planispiral … only in cases of a stretched body）",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：帽貝形殼多次趨同都伴隨殼肌改變、加上本篇自己的模型結果，是池中沒有的新事實；但假設未經實驗、比較解剖是引前人。與 F57-001 同篇，Chirat 全篇合計 0.75 封頂（第十八輪預估 0.75–1.0 的下緣，因作者稿未比對出版版、SI 未讀、菊石資料是二手）。 原提案 F57-002（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V60（2026-11-12）改字後收；引文逐字相符；補上 Fig. 6 是固定捲曲參數、殼肌假設的『推測』語氣，計數維持 0.5，但與 F57-001 合計封頂 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "帽貝的身體一樣是右旋型，殼卻是對稱的斗笠——差別可能在那條把身體拉進殼裡的肌肉",
+        "visual": "蝸牛殼剖面，紅色殼肌沿殼軸螺旋往上繞；旁邊帽貝殼內面，左右對稱的馬蹄形肌肉疤；最後是模型裡同一身體加上扭轉後長出螺旋殼的動畫",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-bb007d209673cfb1",
+          "origin": "wave72-life-20261111",
+          "locator": "F57-S001 §4 How snails coil their shell（limpets … dextral cleavage … right expression of nodal … bilaterally symmetric；torsion … limpets also experience such a rotation；shell-muscle system … columella … three-quarters to two whorls back；horseshoe-shaped muscle scar；four other gastropod orders；remains to be tested experimentally）；§4A 與 Fig. 6 圖說（in every single case, the helicospiral shell is the energy minimizer）；§4A 後段（planispiral … only in cases of a stretched body）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-003",
+      "question": "大螯長在一邊的螃蟹，吃蝸牛時一定會挑旋向嗎？",
+      "domain": "動物捕食",
+      "mechanism_key": "snail.land_crab_no_chiral_predation_bias_amphidromus",
+      "answer_target": "至少馬來西亞 Kapas 島上的這種陸蟹看不出來。那裡的 Amphidromus inversus 樹蝸牛左旋約占六成五。研究者把 17 隻夜行的 Gecarcoidea lalandii 陸蟹各關五晚，每隻只給三隻左旋、三隻右旋、大小相近的活蝸牛；目視有 9 隻左螯較大、2 隻右螯較大、6 隻分不出。結果只有 4 隻公蟹吃了，一共打破 5 個右旋、2 個左旋，破法有敲掉殼頂、剝開殼側、整個壓碎三種。她同時在海岸林地上撿了 178 個殼，左旋 125 個裡 37 個破、右旋 53 個裡 17 個破，兩型破殼比例沒有差別——但這些破殼分不出是鼠還是蟹咬的。研究者的結論是：這種蟹會吃這種蝸牛，但不是牠偏好的食物，目前沒有理由認為牠偏吃哪一旋向、或左右了當地的左右比例。",
+      "scope": "只限這一種陸蟹與這一個島；蟹實驗只有 7 個破殼事件、沒有統計檢定、螯的大小只靠目視、吃了蝸牛的 4 隻公蟹螯向未報告，不得把 5 比 2 講成『比較愛吃右旋』，也不得說『左螯大的蟹不挑』；地面殼破損分不出鼠或蟹；同島鼠類不挑旋向已在 L66-028，片中不重講；不得推成『螃蟹都不挑旋向』，不得與 L68-005 化石箱蟹的疤痕比例並列成同一比較。",
+      "source_locator": "F57-S002 Introduction（65% vs 35%；Ng & Tan 1985、Shigemiya 2003 的右大螯蟹）；Methods（17 隻、五晚、三左三右、大小相配）；Results（37/88、17/35，N=178，p=0.6902；9 左、2 右、6 不明；4 隻公蟹、5 右 2 左；三種破法）；Discussion 末段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者，但理由改）：同島鼠類不挑旋向已在 L66-028，『不是每個捕食者都幫左旋』的但書池中已有；新增的只有『螯不對稱的陸蟹在小實驗裡也看不出偏好』與地面殼的另一次計數，樣本極小。網絡 B（Schilthuizen 指導、同島）由 2.5 到 2.75，仍在第十八輪的 3.0 上限內。若片長吃緊，這條第一個刪，縮成 L68-005 後的一句但書。 原提案 F57-003（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V60（2026-11-12）改字後收；數字全對；把地面殼破損『分不出鼠或蟹』補進答案、刪掉原文沒有的『大螯長在左邊的陸蟹一樣隨便』，並註明與 L66-028 同島同結論的重疊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "螯長得不對稱的陸蟹，在小實驗裡也看不出挑哪一旋向——有左右的捕食者，不一定幫左旋",
+        "visual": "夜間海岸林，一隻紫黑色陸蟹舉著一大一小的螯；箱子裡三左三右的蝸牛，最後只有少數被打開",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-42eaef96899b8aa1",
+          "origin": "wave72-life-20261111",
+          "locator": "F57-S002 Introduction（65% vs 35%；Ng & Tan 1985、Shigemiya 2003 的右大螯蟹）；Methods（17 隻、五晚、三左三右、大小相配）；Results（37/88、17/35，N=178，p=0.6902；9 左、2 右、6 不明；4 隻公蟹、5 右 2 左；三種破法）；Discussion 末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-004",
+      "question": "鸕鷀潛到海底找東西時，頭也會一伸一縮嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.headbob_cormorant_underwater_seafloor_search",
+      "answer_target": "會，至少看起來是一伸一縮。阿根廷與日本的研究者把小攝影機貼在帝鸕鷀背上、鏡頭朝向頭部，拍到 12 隻鳥共 49 次潛水，其中 38 次潛到海底覓食。研究者寫，在大多數潛水（76.3%）裡，鳥沿著海底前進時不停地伸縮脖子、頭一前一後；在碎石或草狀的海底，牠們身體微微朝下、頭一直前後動；到了岩礁，則身體水平、把頭頸伸進岩縫找。研究者把這個動作稱為點頭，並引用另一項小鸊鷉研究，認為它可能幫助在水下看得穩；但他們沒有量頭是否真的停在水中，也說很多潛水是在很暗的地方，鸕鷀怎麼找到獵物還是個問題。",
+      "scope": "只說『沿海底前進時伸縮脖子、頭一前一後，作者稱為點頭』；76.3% 不得說成『49 次中的 76.3%』，只說『大多數潛水（76.3%）』；不得說量到停住期、頻率或頭在水中靜止；視覺功能是作者引 Gunji 等 2013（Fujita 共同作者）的推論，本文沒有實驗；鸕鷀在水下靠腳划水，本文沒談腳與頭的關係，不得說『跟腳無關』。不得說推翻 Necker 綜述的『鵜鶘鸕鷀通常不點頭』（那是陸上走路的清單）。不給任何捕捉或在鳥身上裝置的建議。",
+      "source_locator": "F60-S001 Abstract；Results（76.3% 一段、Fig 2A–C 圖說、底質一段）；Discussion head-bobbing 一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：一手但只是覓食生態研究裡的影片行為描述，沒有任何頭部運動量測，不是 still_missing（6）點名的『點頭量測』，鳥種也不在點名之列；它對結論的貢獻（離開地面也一伸一縮）與池中 L69-004 骨頂雞游泳點頭同方向、同一章；視覺功能的解讀借自 Fujita 共同作者的 Gunji 2013。因是獨立研究群（CONICET／名古屋大學）的開放原研究、新情境（水下海底），保留 0.25，不退回。 原提案 F60-001（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V63（2026-11-12）改字後收；數字與底質描述相符；改正 76.3% 被寫成 49 次潛水比例的暗示、補上視覺功能是引 Gunji/Fujita 研究、刪掉原文無據的『不是跟著腳』（鸕鷀靠腳划水）；只是描述沒有量測，且結論與 L69-004 同方向，計 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不只走路：鸕鷀潛到海底找食物時，頭也一伸一縮——研究者猜是為了在水下看穩，但還沒量過。",
+        "visual": "示意圖：鸕鷀身體微微朝下貼海底前進，脖子一伸一縮的箭頭；岩礁段改成水平、頭伸進岩縫。標『背上攝影機影片的描述，沒量停住』。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4414ae04908be1d6",
+          "origin": "wave72-life-20261111",
+          "locator": "F60-S001 Abstract；Results（76.3% 一段、Fig 2A–C 圖說、底質一段）；Discussion head-bobbing 一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-005",
+      "question": "鶴走得越快，頭能停住的時間會怎麼變？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_whooping_crane_speed_hold_fraction",
+      "answer_target": "越快停得越少。美國的研究者錄了 4 隻圈養的美洲鶴，用食物引牠們走或跑：分析的片段裡，速度從每秒 0.30 公尺到 2.64 公尺，頭能穩住的時間比例對應從 79% 降到 0%；這 4 隻鶴在每秒 1.83 公尺時就降到 0%。作者的結論是：鶴邊走邊找食物時，走的速度讓頭和視野至少一半時間不動。這份我們只讀到研討會論文集的摘要。",
+      "scope": "畫面標『研討會摘要』；只有 4 隻、只有範圍兩端與歸零點，不得補中間值或畫成曲線；1.83 m/s 只是這 4 隻鶴，不可套到鴿子或說成所有鶴的門檻；與 L65-004（鴿子越快停越短）只當跨物種呼應。與 L69-005 同一研究群（Cronin、Kinloch、Olsen），片中放在同一段，數字要註明出自本摘要而不是 L69-005 的 Cronin 2007 摘要。",
+      "source_locator": "F60-S002 典藏頁 Abstract 全段",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：只讀到摘要（PDF 403，重試一次仍 403），照『只讀到摘要不計』；且『越快停越短』在 L65-004 已有、Cronin 2005 的同一結論在 L69-005 已判 0。與 L69-S003 同群：Cronin／Kinloch／Olsen 群目前合計只有 L69-005 的 0.25（那 0.25 是 Necker 綜述作者的觀察，不是此群），本群有效計數 0。日後 Cronin 2005 Curr Biol 或本篇 PDF 可讀時，本群合計最多約 +0.5。 原提案 F60-002（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V63（2026-11-12）改字後收；內容與摘要逐字相符，可作同段補充，但只讀到摘要且結論與 L65-004 重複，照上輪規則改計 0；與 L69-S003 同群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不只鴿子：4 隻美洲鶴也是越快、頭能停的時間越少（摘要）。",
+        "visual": "橫軸速度、縱軸『頭穩住的時間比例』，只標 0.30 m/s–79%、1.83 m/s–0% 兩點與 2.64 m/s，不連曲線，標『研討會摘要，只給兩端』。",
+        "seconds": [
+          15,
+          20
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-20a84099f968b38e",
+          "origin": "wave72-life-20261111",
+          "locator": "F60-S002 典藏頁 Abstract 全段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-006",
+      "question": "番茄一放進冰箱，香氣是馬上就變少，還是要冰好幾天才會？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_volatile_emission_tracks_fruit_temperature_hours",
+      "answer_target": "馬上就變少，而且跟著果實的溫度走。瓦赫寧根大學的團隊用模擬咀嚼的裝置接上質譜儀，量兩個紅熟番茄品種咬碎時放出的香氣：從 22°C 移到 4°C 後，香氣釋放跟著果溫往下掉，稍微慢一點；5 到 6 小時內，果溫和香氣都降到穩定的低值。冷了 6 天再移回 22°C，香氣又跟著果溫回升，但作者在摘要寫明，大多數香氣通常回不到原來的水準（接 F61-002）。作者的解釋是：低溫讓做香氣的酵素變慢，香氣分子在冷的果肉裡也比較溶得住、不容易揮發出來（亨利定律）。所以冰的番茄香氣少，有一部分是當下被冷「壓住」；但這只是第一層，接著要講 L66-002 的基因變慢與 F61-002 的回不來。",
+      "scope": "兩個品種（約 80 g 圓番茄、約 30 g 雞尾酒番茄）、每點 3 顆；是儀器模擬咀嚼，不是真人試吃；酵素與亨利定律是作者解釋，本研究沒有分開量。不能說「回溫就完全恢復」或「冷藏完全不傷番茄」。",
+      "source_locator": "VOC Changes During Storage Assessed by PTR-MS and Chewing Device 第一、二段；Fig. 5",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：與 F61-002 同一研究，Farneti／Woltering 群合計 1.0。與 L66-002 的說法要並陳成兩層（當下的溫度效應＋數天的基因變慢），不寫成互相否定。 原提案 F61-001（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字與條件正確；補回摘要「generally not to the original levels」，刪掉「回溫就回來」；role 由 turn 改 segment（轉折一仍由 L66-001／002 撐，本條是轉折一的第一層）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰的當下，香氣幾小時內就跟著果溫掉；回溫會回升，但多半回不到原樣。",
+        "visual": "番茄剖面的溫度色塊從紅變藍，旁邊香氣粒子的箭頭同步變少；咀嚼裝置示意。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-75777636ac3c8e1b",
+          "origin": "wave72-life-20261111",
+          "locator": "VOC Changes During Storage Assessed by PTR-MS and Chewing Device 第一、二段；Fig. 5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-007",
+      "question": "番茄冰越久，回溫後還能恢復原本的香氣嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_cold_duration_limits_aroma_recovery_offflavor",
+      "answer_target": "冰越久，越回不來，組成也變了。同一個瓦赫寧根團隊把番茄放 4°C，每隔 5 天拿一批回 16°C：冷 5 天的，回溫後香氣幾乎完全恢復；冷 10 天、15 天的只恢復一部分。另一次實驗用咀嚼裝置量，冷過再回溫的番茄，常被歸為異味的甲醇、乙醛、乙醇、丙酮比較突出，冷藏越久，回溫後這些越多；其中雞尾酒番茄 Amoroso 冷 12 天後，乙醛和乙醇大約是一直放 22°C 的兩倍，圓番茄 Cappricia 在這方面比較穩定。Cappricia 冷過再回溫，常被當成異味的 1-戊烯-3-酮則明顯偏高。作者在摘要說，除了香氣總量，組成的改變可能也是冷藏番茄風味變差的部分原因。",
+      "scope": "兩個品種、兩次實驗（回 16°C 的天數實驗與 4°C 對 22°C 的咀嚼裝置實驗），數字不跨實驗混用；「異味」是文獻歸類，本研究沒有人試吃；兩倍只限 Amoroso 的乙醛與乙醇、冷 12 天。",
+      "source_locator": "VOC Changes During Storage Assessed by SPME/GC-MS 末段；VOCs Derived from Lipid Metabolism 末兩段；PTR-MS 段末（Figs. 6–8）；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 F61-001 同一研究（合計 1.0）。與 L66-002「回溫一天部分回升」方向一致，新增的是「冷藏天數與恢復程度」和異味兩點；不與 L66-001 的 65% 相減或合併。 原提案 F61-002（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；改正 payoff 的「兩週以上回不來」，補 Cappricia 異味較穩定、兩個實驗分開講。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰 5 天還救得回來，冰 10 天、15 天只回來一部分，還多了常被當成怪味的成分。",
+        "visual": "時間軸：5、10、15 天三個回溫點，香氣柱一次比一次矮；旁邊冒出「乙醛、乙醇」的小泡泡（標明只在雞尾酒番茄）。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-75777636ac3c8e1b",
+          "origin": "wave72-life-20261111",
+          "locator": "VOC Changes During Storage Assessed by SPME/GC-MS 末段；VOCs Derived from Lipid Metabolism 末兩段；PTR-MS 段末（Figs. 6–8）；Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-008",
+      "question": "冰過的番茄，一般人真的吃得出來嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_chill_consumer_liking_depends_on_cultivar",
+      "answer_target": "在這份海報裡，要看品種。瓦赫寧根大學另一個研究群挑了三個商業品種：風味評價低的 Merlice、中等的 Brioso、高的 Axiany，紅熟果放 5°C 7 天再放 20°C 一天，請約 50 位消費者和前一天採的番茄比。只有風味最淡的 Merlice，冰過的比新鮮的和放 15°C 的不受喜愛；Brioso 冰過的和新鮮的沒有顯著差別；Axiany 三組都沒有差別。三個品種冰過的糖度、酸度、硬度都和未儲存的相近。作者的結論是：冷藏造成的代謝變化，只在風味差的品種變成消費者喜好上的顯著差別。這是會議海報，沒有經過同儕審查。",
+      "scope": "機構典藏的海報，未經同儕審查；約 50 人、一次評比，喜好只有圖、沒有數值；只有 5°C 7 天一種條件。不能說「好番茄就可以冰」，不引用海報背景段的保存溫度。",
+      "source_locator": "Methods；Results: Fruit quality（Table 1）、Consumer panel（Figure 2）；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：未經審查的海報、喜好只見圖，只當 L66-001 試吃結果的補充，不能單獨撐一個轉折。與 F61-001／002 不同研究群（無共同作者），不併 Farneti 封頂；瓦赫寧根兩組合計 1.25。 原提案 F61-003（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字與條件正確；補 Brioso、標明海報身分；降為 0.25，role 由 turn 改 segment——一張未審海報不能當改變結論的轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣冰一週，風味濃的番茄這群消費者吃不出差別，風味淡的才被嫌（海報初步結果）。",
+        "visual": "三顆番茄排排站，旁邊三個評分條：淡的那顆分數掉、其他兩顆不動。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4585f5a63661fd97",
+          "origin": "wave72-life-20261111",
+          "locator": "Methods；Results: Fruit quality（Table 1）、Consumer panel（Figure 2）；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-009",
+      "question": "芒果放 12.5°C 和放 8°C，差那幾度有差嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.mango_black_flesh_storage_temperature_threshold",
+      "answer_target": "在這個研究裡差很多。巴西農業研究公司 Embrapa 與佛羅里達大學把三個芒果品種各 600 顆，分早採與較熟採，存 8°C、10°C、12.5°C 30 天，再放 20°C 7 天，切開看種子周圍果肉有沒有變褐變黑（「黑肉」）。早採的 Tommy Atkins 在 8°C 有 70%、10°C 有 67%，Kent 是 80% 和 78%，Palmer 是 89% 和 33%；較熟才採的多半較低，但 Palmer 在 10°C 早採與較熟幾乎一樣（33% 對 32%）。三個品種、兩種成熟度，在 12.5°C 都沒有出現黑肉。黑肉是長在果肉裡面的毛病，作者用溫度與成熟度的反應支持它是一種冷害。",
+      "scope": "一個產區、三個品種、商業出口的 30 天運儲；黑肉是否為冷害是本研究提出並檢驗的假說；不給任何儲存溫度建議、不引用「12.5°C 安全門檻」、不提 1-MCP。",
+      "source_locator": "Abstract；Experiment 1 方法；Results: Experiment 1（Fig. 2）",
+      "premise_status": "screened",
+      "notes": "作為獨立核心算 0.75（一個實驗的多組數字）；但不算進 C12-02：芒果商業運儲不是「番茄、桃子放冰箱」，加入會讓題目散成水果清單。可留給日後「冷藏與冷凍」長題或熱帶水果冷害題。 原提案 F61-004（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；改 payoff 與「較熟較低」的例外、刪無出處的「外表看不出來」、排除保存門檻句。收為獨立核心，但離題，不計入 C12-02。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣 30 天，8 和 10 度有一到九成的芒果果肉發黑，12.5 度一顆都沒有。",
+        "visual": "三排芒果剖面：8、10、12.5°C，前兩排種子周圍一片黑，第三排乾淨。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-78f14c54fa891fa6",
+          "origin": "wave72-life-20261111",
+          "locator": "Abstract；Experiment 1 方法；Results: Experiment 1（Fig. 2）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-010",
+      "question": "冰過的香蕉皮黑了、肉卻還硬，是因為冰得比較新鮮嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.banana_7c_vs_13c_starch_unconverted_membrane_damage",
+      "answer_target": "不是新鮮，是熟不了。南京農業大學把同一批七八成熟的香蕉分放 7°C 和 13°C 10 天：13°C 那組全程沒有冷害，果皮變亮變黃；7°C 那組冷害指數一路上升，果皮變暗、不轉黃，失重較多，果肉含水反而下降。7°C 的果肉軟化比較慢，電子顯微鏡下看得到原因之一：13°C 的果肉到第 10 天澱粉已完全轉化，7°C 的果肉還留著大量澱粉粒，細胞之間出現空洞，果皮細胞膜大片破裂。作者說，冷讓澱粉轉糖的代謝停住，慢軟看起來像好事，最後可能讓品質受損、熟得不均。",
+      "scope": "只有 7 與 13°C 兩點、10 天；數值只見於圖，片中只講方向；本研究沒量糖度；不給冷藏建議。",
+      "source_locator": "2.1 Materials；3.1 第一、四段；3.2 SEM 段（Fig. 3）",
+      "premise_status": "screened",
+      "notes": "作為獨立核心算 0.5；計入 C12-02 只算 0.25：round16 題案已有香蕉一章（LEG-S55 只用一句低溫傷害、L66-007），本條只補「7 對 13°C、熟不下去」的方向性結果，併入同一章不另開章。 原提案 F61-005（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；結果正確；修掉「品質一起壞掉」的斷言與無量測的「沒變成糖」。題內只算 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰過的香蕉「硬」不是新鮮，是澱粉卡住、熟不下去。",
+        "visual": "左右兩張電子顯微鏡圖：13°C 果肉澱粉已轉化、7°C 塞滿圓圓的澱粉粒；上方兩根香蕉一黃一暗。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fe7ed657da1fdacd",
+          "origin": "wave72-life-20261111",
+          "locator": "2.1 Materials；3.1 第一、四段；3.2 SEM 段（Fig. 3）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-011",
+      "question": "辣椒冰太久，壞在哪裡？",
+      "domain": "植物",
+      "mechanism_key": "plant.pepper_chilling_seed_browning_genotype_range",
+      "answer_target": "壞在看不到的裡面。首爾大學把 36 個辣椒（Capsicum annuum，同種也包括甜椒）基因型放 2°C 3 週，主要的冷害症狀是種子變褐，果皮凹斑和果萼變色可以忽略。種子褐變的比例從 0% 到 60% 以上：怕冷的 C00562 是 63.86%，不怕冷的 UZB-GJG-1999-51 和 Takanotsume 都是 0%，Hungarian Wax 4.31%、Chili bangi 30.88%。",
+      "scope": "只有 2°C 3 週一個條件；品系多為研究用材料；不能直接推到市售甜椒；完整數字在補充表，未讀。",
+      "source_locator": "Results: Seed browning rates of 36 pepper genotypes；Figure 1",
+      "premise_status": "screened",
+      "notes": "作為獨立核心算 0.5；不算進 C12-02：辣椒種子褐變與「番茄、桃子放冰箱為什麼不好吃」無關，round16 的 still_missing（4）雖點名蔬菜冷害，但加進來只會讓片子變成作物清單。 原提案 F61-006（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；補 Takanotsume 同為 0%、標明補充表未讀。收為獨立核心，不計入 C12-02。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "辣椒外皮好好的，切開種子一片褐；同樣 2°C，有的品系一顆都沒事。",
+        "visual": "兩個辣椒剖面並排：一個種子奶白、一個整排褐色。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-1e279b27d1b78513",
+          "origin": "wave72-life-20261111",
+          "locator": "Results: Seed browning rates of 36 pepper genotypes；Figure 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-012",
+      "question": "課本說冷害是「細胞膜冷到變硬」，耐冷的果實真的是靠膜裡不飽和脂肪酸比較多嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.grapefruit_chilling_sensitive_peel_more_unsaturated_fatty_acids",
+      "answer_target": "至少在這個葡萄柚例子裡看不出來。主流假說是：低溫讓細胞膜從流動的液態轉成凝膠態，膜變得會漏，引發冷害；膜脂的不飽和脂肪酸雙鍵多，比較能保持流動。西班牙 IATA 研究所用同一品種的葡萄柚對照：在樹上套袋遮光的果皮變紅、累積茄紅素，冷藏 2°C 8 週冷害指數一直低於 1；沒套袋的黃色果第一週就出現冷害，8 週後幾乎全部嚴重受害。量整個果皮的脂肪酸：兩組不飽和對飽和的比例、雙鍵指數都一樣；怕冷那組的亞油酸含量反而較高，但那是因為它的脂肪酸總量也較多。作者自己稱怕冷果「不飽和反而多」是表面的矛盾，推測怕冷果在採收前已啟動低溫反應，耐冷果靠的可能是茄紅素等抗氧化。這個研究沒有直接量膜的相變或滲漏。",
+      "scope": "只量外果皮總脂肪酸組成與基因表現，沒有量膜相變溫度或離子滲漏；一個品種、一個產區、樹上遮光處理，不是天生耐冷品種的比較；不能說成「課本錯了」或「套袋就不怕冷」，也不能推到番茄、桃子。",
+      "source_locator": "Introduction 第三段；2.1（Fig. 1）；2.3（Table 1）；Discussion 第二至四段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.75）：不是 still_missing（1）要的膜相變或離子滲漏直接量測；「不飽和較多」是含量不是比例，作者答案把比例相同與含量較高混成一個反證。可在機制章當一句「膜假說不是全部」的提醒，不當轉折。 原提案 F61-007（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確，但推論錯位：比例與雙鍵指數相同，「怕冷果不飽和反而多」只是含量；改寫答案與題目、降為 0.25，不能撐轉折三。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "耐冷與怕冷的葡萄柚，果皮脂肪酸的不飽和程度一樣，差別可能在茄紅素。",
+        "visual": "細胞膜示意：直鏈與彎鏈脂肪酸由流動變整齊；旁邊一紅一黃兩顆葡萄柚切開對照，兩個相同高度的「不飽和比例」柱。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a054bc46f346dcad",
+          "origin": "wave72-life-20261111",
+          "locator": "Introduction 第三段；2.1（Fig. 1）；2.3（Table 1）；Discussion 第二至四段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L72-013",
+      "question": "桃子的「殺傷區」是誰說的？差幾度、差幾週？",
+      "domain": "植物",
+      "mechanism_key": "plant.peach_killing_zone_onset_weeks_review",
+      "answer_target": "Crisosto 與以色列 Volcani 中心的 Lurie 在 2005 年的綜述裡整理：許多報告指出，易受害的桃與油桃存在 2.2 到 7.6°C 之間（他們稱「殺傷溫度區」）時，果肉褐變等冷害比存在 0°C 左右（冰點以上）出現得更快、更重；存 2–5°C 時 1 到 2 週就看得到症狀，0°C 則要 3 週以上。他們也寫，症狀主要在出冷庫後的後熟期間出現，問題常到消費者手上才被發現。這是綜述整理前人研究，不是新的實驗。",
+      "scope": "綜述，不是原始實驗；數字是作者綜合前人研究；只講現象，不引用綜述中「接近 0°C 儲存壽命最長」的建議，片中不給任何保存溫度。",
+      "source_locator": "頁 196 右欄；頁 197 第 2 節第一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：只新增「發病週數」；殺傷區已在 L66-006（前言轉述），「出庫才現形」已在 L66-005，不重算。仍未取得 Crisosto 1999 原始實驗。 原提案 F61-008（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；標明綜述、排除保存建議句。0.25 維持。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是越冷越快壞：在 2 到 7 度之間，桃子一兩週就出事，0 度要三週以上（綜述整理）。",
+        "visual": "溫度計刻度上 2.2–7.6°C 標成紅色區帶，旁邊兩個時鐘：1–2 週對 3 週以上。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-99a9baee6c08e68a",
+          "origin": "wave72-life-20261111",
+          "locator": "頁 196 右欄；頁 197 第 2 節第一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L72-013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P72-001",
+      "question": "拿真的速滑冰刀到真的冰場去量，最滑的冰溫在每片冰上都一樣嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_real_rink_test_skate_temperature_curve",
+      "answer_target": "不一樣。1970 年北海道大學低溫科學研究所把兩支真的速滑冰刀裝在架子上（總重約 52 公斤），用彈射台以每秒約 1.4 公尺射出，在岐阜瑞浪的人工冰場和長野夢の海的天然湖冰上反覆滑，冰面溫度全程記錄，再由速度變化算摩擦係數。在 −2 °C 以下，兩座冰場的資料落在同一條曲線上：越冷越不滑，−2 °C 時摩擦係數約 0.0042，−10 °C 時約 0.0102，研究者寫滑度掉到 −2 °C 時的一半以下。但比 −2 °C 更暖，兩片冰分道揚鑣：人工冰在 −2 °C 最滑，再暖就急速變差；天然湖冰在 −0.5 °C 滑得最遠（36 公尺），由這個距離算回的摩擦係數約 0.0031——這一點是用滑行距離推算的，不是直接量到。研究者推測兩地不同可能與冰的純度、晶粒和硬度有關，又因為 −2 °C 以下兩地沒差，認為不是冰面修整的問題。",
+      "scope": "只講這組彈射測試：兩座冰場、一個冬季、各 2–3 天、每秒 1.4 公尺以下（作者自己寫比比賽約每秒 10 公尺慢一個數量級）。『太冷不滑、接近 0 °C 變軟』的機制已在 P64-012／P64-014，本條只講『最滑溫度隨冰而變』，機制只用一句帶過並註明是研究者推測。夢の海 −0.5 °C 的 0.0031 一定要說是由滑行距離算回的；−2 °C 以下兩地相同的數字要說是同一條曲線讀出的。不說成冰場、比賽或任何冰溫建議；不與 P64-012（約 −7 °C）、P64-014（−7.7 °C、−6 到 −9 °C）、P68-004 合併、平均、排表或判誰對。刪掉『摩擦不隨速度變』（與 P64-009 同訊息、與 P68-001 的速度區間方向不同）；不轉述冬奧準備、冰場維護與乙二醇使用建議；選手權成績不用（若要一句背景，只能照 1968 年原文『比 −2～−3 °C 更冷或更暖成績都較差』，不給數字）。",
+      "source_locator": "F54-S001 第 2 表、IV 節第 12 圖說明、V 節首三段與末段、英文 Summary；F54-S002 I 節首段、第 11 圖前後；F54-S003 Table 1、Fig. 10 下一段（英文核對）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：只算新增的『同一實驗裡，兩片冰最滑溫度不同、−2 °C 以下同一曲線』；溫度機制在 P64-012／P64-014 不重算；速度不相關是作者由速度直線下降推得、與 P64-009 同訊息，計 0 並刪除。Kobayashi 群（F54-S001～S003）與 F54-002 合計 0.75，同群封頂 1.0 之內；黑岩 1977 不另計。 原提案 F54-001（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V57（2026-11-12）改字後收；第 2 表八個數字逐格對上原掃描，但作者把夢の海 −0.5 °C 的 0.0031 寫成量到的值（原文是由 36 公尺滑行距離算回的計算值），也沒說 −2 °C 以下兩地相同的數字是同一條平滑曲線讀出；『摩擦不隨速度變』與 P64-009 重複且和 P68-001 的速度區間方向不同，刪除。機制已在池中，只算新增的『最滑溫度隨冰而變』0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真冰刀在真冰場上量，也是太冷不滑、太暖也不滑；但最滑的那一度，換一片冰就不一樣。",
+        "visual": "彈射台把裝了兩支冰刀和攝影機的架子推上冰面，旁邊的溫度計曲線從清晨 −9 °C 爬到中午 0 °C，滑行距離跟著變長又變短。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-197fd5ce344a4504",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 第 2 表、IV 節第 12 圖說明、V 節首三段與末段、英文 Summary；F54-S002 I 節首段、第 11 圖前後；F54-S003 Table 1、Fig. 10 下一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c1844ec3263df52f",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 第 2 表、IV 節第 12 圖說明、V 節首三段與末段、英文 Summary；F54-S002 I 節首段、第 11 圖前後；F54-S003 Table 1、Fig. 10 下一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-24364e68df3351c6",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 第 2 表、IV 節第 12 圖說明、V 節首三段與末段、英文 Summary；F54-S002 I 節首段、第 11 圖前後；F54-S003 Table 1、Fig. 10 下一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P72-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P72-002",
+      "question": "在真的冰場上替冰面多塗一層液膜，冰刀會比較滑嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_test_skate_glycol_film_temperature_reversal",
+      "answer_target": "要看溫度，而且可能相反。同一組北海道大學的彈射測試，在夢の海的湖冰上塗了薄薄一層乙二醇（一種防凍液），和旁邊沒處理的冰道交替比較：冰溫在 0 °C 附近時，沒處理的冰能滑約 20 公尺，塗過的只剩約 10 公尺；冰溫降到約 −1.5 到 −2 °C 以下，關係倒過來，塗過的冰滑得比較遠，而且越冷差距越大——沒處理的冰越冷越滑不動，塗過的掉得沒那麼多。研究者的解釋是：塗過的冰面一直有一層防凍液的薄膜在潤滑；溫度越高，被溶液泡軟的冰層越厚，他們推測這就是接近 0 °C 時反而拖住冰刀的原因。",
+      "scope": "只講這組彈射測試、一座冰場、一天的定性結果與研究者的解釋（暖時變差的原因是推測）；20 m／10 m 是原文段落的約略值（落錘 20 kg 那一組），不與 F54-001 的距離或摩擦係數混算。不轉述『冰場使用乙二醇很有效』的維護建議，不出現品牌、用量、塗法，不延伸到路面、步道、車、鞋或任何冰溫與安全建議；不說成『證明冰滑靠水』，只說『多一層液膜冷時有幫助、接近 0 °C 反而拖慢』，與 P64-016（膜很黏）、P65-005／P65-004（模擬）並列，不判輸贏。",
+      "source_locator": "F54-S001 III-1-b 段（第 9 圖說明：−0 °C 純氷 20 m、E.G. 約 10 m，−2 °C 以下逆轉）、V 節乙二醇三段（最大值由 −0.5 移到 −1.5 °C、−1.5 °C 以下塗過的較滑、溶液層隨溫度變厚）、英文 Summary 末段；F54-S003 Concluding remarks 最後一段（英文核對）",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：同一論文的第二個操作，定性、一座冰場、一天，暖時機制是研究者推測。池中沒有任何『在真冰刀下人為加液膜』的核心（grep 乙二醇／glycol／ethylene 只命中濕顆粒與混凝土題）。與 F54-001 同群合計 0.75。 原提案 F54-002（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V57（2026-11-12）改字後收；數字與條件對上原文；作者寫『−2 °C 以下逆轉』只取了 III 節，V 節寫的是 −1.5 °C，改為『約 −1.5 到 −2 °C』；暖時變差的機制原文是『であろう』，補上『推測』；問題句原本預設『冰滑靠表面那層水』，改成中性問法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多一層液體不是越多越滑：冷的時候幫忙，接近 0 °C 反而把冰刀拖住。",
+        "visual": "兩條並排的測試道，一條冰面亮亮濕濕；溫度計從 0 °C 往下降，兩條滑行距離的線在 −2 °C 附近交叉。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-197fd5ce344a4504",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 III-1-b 段（第 9 圖說明：−0 °C 純氷 20 m、E.G. 約 10 m，−2 °C 以下逆轉）、V 節乙二醇三段（最大值由 −0.5 移到 −1.5 °C、−1.5 °C 以下塗過的較滑、溶液層隨溫度變厚）、英文 Summary 末段；F54-S003 Concluding remarks 最後一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-24364e68df3351c6",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 III-1-b 段（第 9 圖說明：−0 °C 純氷 20 m、E.G. 約 10 m，−2 °C 以下逆轉）、V 節乙二醇三段（最大值由 −0.5 移到 −1.5 °C、−1.5 °C 以下塗過的較滑、溶液層隨溫度變厚）、英文 Summary 末段；F54-S003 Concluding remarks 最後一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P72-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P72-003",
+      "question": "一間浴室、一間臥室、一個門廳，哪裡說話最聽得清楚？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.bathroom_short_decay_strong_reverberant_level",
+      "answer_target": "一位美國高中生用兩台筆電和免費軟體量了一間浴室、一間臥室和一個門廳。浴室最小（15.2 立方公尺），因為有磁磚和鏡子，總吸音只有 8.33 sabins（平均吸音係數 0.23）；臥室有厚地毯和床墊，吸音 55.6 sabins。殘響時間 RT60：臥室 0.35 秒、浴室 0.52 秒、門廳 0.62 秒，浴室在中間。再請三個人坐在 1.5 公尺外，聽錄好的『ch』『j』隨機序列（每間 87 次），浴室平均聽對 93.3%，臥室 82.7%，門廳 73.3%，三個人都是在浴室最好。作者的解釋是：浴室吸音少，反射回來的聲音很強，殘響又不算長；如果只看殘響越短越好，臥室應該最清楚。",
+      "scope": "一間浴室、一次量測、三位受試者、說話音素的辨識率（喇叭放錄音）；不是唱歌，不是唱的人自己耳邊。原文沒說三個房間在同一間房子。只說『這一間』，不與 P69-001（0.60 s）、F59-002（0.93 s）合成範圍、平均或比大小；三份用的量法不同。不說『浴室讓歌聲好聽』。",
+      "source_locator": "F59-S001 表 4、表 5、表 6 與 §3.3 段落",
+      "premise_status": "screened",
+      "notes": "算 0.5（與作者同；V38 點名第 3 項預估 0.5）。吸音／RT60 與聽辨合計，因高中生作者、SCIRP、一間浴室、三人、單點對 RT60，不給 0.75。 原提案 F59-001（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V62（2026-11-12）改字後收；數字逐一相符；刪原文沒有的『自家／同一間房子』，改掉與臥室比較不成立的『拖得不長』框架。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "浴室不是「回音很長」，是「回來的聲音很大、又很快收掉」",
+        "visual": "三間房的吸音與殘響對照條（浴室、臥室、門廳），各自標來源",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-23ca6855ef33fe7b",
+          "origin": "wave72-physics-20261111",
+          "locator": "F59-S001 表 4、表 5、表 6 與 §3.3 段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P72-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P72-004",
+      "question": "一間小浴室，在多低的音以下，聲音就不再均勻散開？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.small_bathroom_schroeder_frequency_isolated_modes",
+      "answer_target": "都靈理工與格拉茲的研究者想把一間沒改裝的小浴室當成『迷你殘響室』來量吸音材料，理由是浴室通常很會迴響。這間浴室 8.96 立方公尺、高 2.75 公尺，地板和一半以上的牆貼磁磚，空房在 500 到 2000 赫茲的平均殘響時間 T30 是 0.93 秒。用這兩個數字套公式，算出它的『Schroeder 頻率』約 644 赫茲。作者說明：在這個頻率以下，房間裡的聲音不再均勻散開，而是一個個分開的共振模態，常用的 Sabine 殘響公式就不準了。標準殘響室要幾百立方公尺；房間縮到幾立方公尺，代價就是這條界線升得高很多。",
+      "scope": "一間浴室、一次空房量測；644 赫茲是公式算出的界線，不是量到的共振頻率或放大量。未經審查的研討會論文。不說人聲落在哪裡、不說浴室放大你的低音；0.93 秒只說『這一間』，不與 F59-001（0.52 s）、P69-001（0.60 s）合成範圍。",
+      "source_locator": "F59-S002 §3 Schroeder 頻率段、§4.1、§5 首段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：只有一個量到的 T30，fs 是代公式的結果；全文未經審查；研究目的是吸音量測方法，與唱歌無關。Shtrepi 群（P63-011 0.5＋本條 0.25＝0.75）未碰封頂；不屬 Bottalico 群。P63-NA008 的 reentry 條件（小浴室模態或頻率響應量測）仍未滿足。 原提案 F59-002（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V62（2026-11-12）改字後收；數字相符；改正研究者所在地、把『為了壓低』改回原文『縮小的代價』、標明 fs 是計算值，計數降為 0.25。這間浴室 0.93 秒比 F59-001 的門廳還長，題目層級的『浴室回聲不長』因此不成立（見 non_author_reviews）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在小浴室裡，低一點的聲音不是「散開的回聲」，而是房間自己的共振",
+        "visual": "浴室平面示意與一條 643.6 Hz 分界線，上方擴散場、下方分開的模態",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e059262c3db2017e",
+          "origin": "wave72-physics-20261111",
+          "locator": "F59-S002 §3 Schroeder 頻率段、§4.1、§5 首段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P72-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P72-005",
+      "question": "有回音的時候，聽的人比較聽不出音高的變化嗎？",
+      "domain": "聲學",
+      "mechanism_key": "perception.reverb_spares_pitch_blurs_vowel_quality",
+      "answer_target": "在一個說話母音的實驗裡沒有。普渡大學讓 4 位音樂家、4 位非音樂家戴耳機聽電腦合成的『伊』，測最小聽得出的音高差；母音不加殘響，或加上同一條走廊、離聲源三種距離錄到的殘響（RT60 約 0.7、0.8、0.9 秒），而且把殘響尾巴截掉、音量調成一樣。音樂家聽得出的音高差約小 4 倍，但兩組在三種殘響下聽音高的能力都跟沒有殘響時一樣，統計上沒有差別。受影響的是另一件事：母音音色（第一共振峰）的變化，在中、重殘響時比沒有殘響和輕殘響時難聽出來。",
+      "scope": "8 位聽者、說話的合成母音、走廊的殘響且截掉尾巴；不是歌聲、不是浴室、不是評音準。不得推成『浴室回音蓋不住走音』或『別人聽你唱歌一樣聽得出不準』；不與 P63-009 的音分數字相比或相減。",
+      "source_locator": "F59-S003 §2 行為結果（F0 DL 與 F1 DL）、§5.2、§5.5、圖 6 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：還沒到 still_missing 第 2 項點名的『同一段歌聲加不同殘響，請聽者評音準或好聽度』，是非點名的近鄰來源；可用的只有『音高辨別不受影響』一句，音色那半與本題關係更遠。同一實驗兩個結果合計。 原提案 F59-003（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V62（2026-11-12）改字後收；統計值相符；刪不符原文的『高頻』、把『越重越難』改成原文的成對比較、補上走廊同一處三個距離與截尾條件；因不是歌聲也不是浴室，計數降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為回音能把走音蓋過去——至少在實驗裡，回音模糊的是音色，不是音高",
+        "visual": "兩條曲線：音高差異閾在四種殘響下持平，母音差異閾隨殘響上升",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-84dc1e682696369a",
+          "origin": "wave72-physics-20261111",
+          "locator": "F59-S003 §2 行為結果（F0 DL 與 F1 DL）、§5.2、§5.5、圖 6 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P72-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P72-006",
+      "question": "教堂裡的聖詠加了不同長度的回音，聽的人覺得哪一種最合適？",
+      "domain": "聲學",
+      "mechanism_key": "perception.listener_reverb_preference_chant_mid_rt",
+      "answer_target": "希臘研究者把半消音室錄的拜占庭聖詠，用電腦加上三種大小教堂的殘響（2.5、4、6 秒；3.4 萬到 23 萬立方公尺），請 15 位有經驗的聽者戴耳機評『這個殘響適不適合這段聖詠』，可以隨時對照沒加殘響的原音。小、中教堂的版本都明顯比原音合適，4 秒的中型教堂平均 74.1 分最高、2.5 秒 54.0 分；6 秒的最大教堂 46.3 分，略偏向原音但不顯著。離聲源遠的聽位評價也不佳。",
+      "scope": "教堂尺度的模擬殘響與聖詠；評的是殘響合不合適，不是好聽或音準；與浴室差兩個數量級。不得用在浴室題推出『別人聽起來比較好聽』。",
+      "source_locator": "F59-S004 §2.3、表 1、§3.2、§3.4",
+      "premise_status": "screened",
+      "notes": "入池為獨立核心算 0.25（作者 0.5）：教堂尺度、模擬殘響、評合適度。C9-01 不用（見 non_author_reviews 的 cuts），在本題計 0；與 P63-010、P69-002『中等殘響最受喜歡』同方向但角色不同（聽者 vs 唱者）。 原提案 F59-004（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V62（2026-11-12）改字後收；數字相符；改題把對象限定為教堂聖詠、把『離唱的人很遠』改為原文的『離聲源遠的聽位』；離題，自 C9-01 刪除，只入池。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聽的人也偏好「有一點回音」，但不是越多越好",
+        "visual": "三座教堂剖面與三個平均分數長條，旁邊一條原音基準線",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-abf434f0e5a5ebff",
+          "origin": "wave72-physics-20261111",
+          "locator": "F59-S004 §2.3、表 1、§3.2、§3.4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P72-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "F8001",
       "question": "巧克力的固體沒被拿走，為什麼精煉後反而比較能流動？",
       "domain": "食品微結構與加工",
@@ -470819,6 +472490,750 @@
       ]
     },
     {
+      "id": "K72-001",
+      "question": "冰晶化掉、汁流走以後，肉裡會留下一個個原本冰晶佔著的洞嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.thawed_beef_ice_voids_collapse_xray_ct",
+      "answer_target": "在三菱電機研究者用 SPring-8 放射光 X 光 CT 看的解凍牛腿肉裡，沒有看到和冷凍時冰晶分布對應的洞。肉塊在約 −18 °C 冷凍庫凍 8 小時，用幾種溫度和時間解凍後，切成約 5 mm 小塊、以每像素 3.63 µm 掃描。他們原本預期：前一份研究在冷凍肉裡看到的、均勻散布約數百 µm 的冰晶，融化流走後會留下同樣大小、同樣均勻的空洞。結果所有試樣都沒有這種分布；只在部分試樣看到零星幾十到幾百 µm 的小點，亮度和空氣一樣，大小、多寡也不隨解凍溫度和時間改變。作者也排除了『洞裡裝滿融水』，因為肉和水的 X 光吸收差約一成，掃得出來。他們的解釋是：冰晶留下的空間被周圍組織擠壓而消失。這是從『看不到』推出的解釋，不是拍到擠壓的過程。",
+      "scope": "一份 4 頁的放射光設施利用成果報告，作者是冰箱廠商、目的是發展冷藏庫性能評價方法；每個條件一塊、沒有統計；冷凍時冰晶的大小與分布引自作者前作（未讀），不是同一批試樣；試樣在解凍後切小、室溫大氣下掃描；『被擠壓消失』是推論；只凍 8 小時、約 −18 °C。本篇不談冰晶長在細胞內或外，也不否定冰晶刺破細胞——報告本身仍假設滴汁來自融化的冰。不提微波或任何解凍方式的滴汁多寡，不給解凍、冷藏或食安建議，不提產品。",
+      "source_locator": "F55-S001 抄録；背景と研究目的（前作冰晶數百 µm、均勻分布的假設）；実験（試樣、解凍條件、CT 條件）；結果および考察（無對應空洞、粒狀對比判為空氣、水填空洞模型被排除）；まとめ",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：不在 still_missing 點名範圍內（點名的是量化冰晶在細胞內外的位置），屬新增的旁支問題；單一報告、n≈1、無統計、關鍵對照引自未讀前作，比照 K67-001（定性、每組 2 塊）與 K68-001 的 0.25。可放在 K67-001 之後一句帶過『冰化了、洞也不見了』，但不撐第二轉折。 原提案 F55-001（目標 C12-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V58（2026-11-12）改字後收；數字與原文相符、網址合法、快取一致；但刪掉微波組的指涉、補上『部分試樣仍有空氣小點』『冷凍對照來自前作』『擠壓是推論』，角色由轉折降為段落，計數 0.5→0.25。看不到洞回答的是『肉會不會像海綿一樣留下孔』，不是『那灘水是不是冰晶刺破細胞流出來的』，不能改變第二轉折的結論。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "汁流走了，但冰晶的『洞』不見了——肉自己把空間擠閉。",
+        "visual": "同一個斷面先畫冷凍時均勻散布的白色冰晶，再淡出成解凍後的 CT 灰階斷面，只剩幾個小黑點（空氣），旁邊放一個空著的『預期中的洞』虛線框。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-75c61040a820de41",
+          "origin": "wave72-food-20261111",
+          "locator": "F55-S001 抄録；背景と研究目的（前作冰晶數百 µm、均勻分布的假設）；実験（試樣、解凍條件、CT 條件）；結果および考察（無對應空洞、粒狀對比判為空氣、水填空洞模型被排除）；まとめ",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-food.json"
+      ]
+    },
+    {
+      "id": "K72-002",
+      "question": "同一頭牛的牛排真空包好，放在 −12、−18、−21 °C 凍半年，解凍滴的水和吃起來會不一樣嗎？",
+      "domain": "食物加工與廚房",
+      "mechanism_key": "food.vacuum_steak_storage_temp_narrow_range_null",
+      "answer_target": "在奧克拉荷馬州立大學 2025 年這個實驗裡，三個溫度看不出差別。20 頭牛的左右成對腰脊先熟成、在 −21 °C 凍兩週，一條保持冷凍、一條先解凍，再切成牛排、逐塊真空包裝，分到 −12、−18、−21 °C 放 180 天。解凍後三組牛排的解凍損失約 2.7% 到 3.1%，統計上沒有差異；烹調損失、受訓評審和 160 位一般消費者的評分也都沒有差異。研究者自己說，−12 到 −21 °C 的範圍可能太窄；而且有一半的牛排是凍著切、沒解凍過就放進去，另一半是解凍後切、再凍成薄片，凍得很快。所以這個結果只說明『在這段窄範圍裡看不出差別』，不能推到 −40 °C 以下。",
+      "scope": "溫度只到 −21 °C；一半牛排在 −21 °C 已凍好、三組只差保存溫度，另一半是第二次冷凍；牛肉產業（Beef Checkoff）協調的研究；解凍損失定義與 K66-011、K66-012、K68-002 不同，不與任何其他研究的百分比並排、相減或比大小；溫度範圍與 K66-011（−18 對 −60／−50 °C）不重疊，不得說成兩篇『互相矛盾』，只說『差三到九度的窄範圍內沒看出差別』；不提凍著切與解凍後切哪個好、不提美元損失；不說『−12 °C 也可以』『冷凍庫溫度不重要』，不推薦冷凍溫度、包裝或保存天數，不給解凍或食安建議。",
+      "source_locator": "F55-S002 Packaging and storage；Thaw and cook loss；Statistical analysis；Results—Thaw and cook loss；Table 2（Frozen storage temperature 列）；Table 6；Discussion 第一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（照作者）：只部分回應 still_missing（3）——要的是 −18 °C 對 −40 °C 以下，本篇最低 −21 °C，一半牛排的冷凍本身也不在比較溫度下進行；同一實驗的解凍損失、烹調損失、受訓與消費者評分合計一條再折半。研究群（OSU Mafi／Ramanathan）未用過，非冰箱廠商。 原提案 F55-002（目標 C12-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V58（2026-11-12）改字後收；數字、單位、P 值都對；改正『全部是第二次冷凍』的說法、刪掉 3.06／2.73／2.86 的逐一數字（只留範圍，避免被拿去跟 K66-011 比大小），並禁止把它放成與 K66-011『不一致』的對立例子。計數 0.25 合理，不升。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "三台冷凍庫差了 9 度，半年後牛排滴的水和吃的人都分不出來——但研究者自己說這個溫差太小。",
+        "visual": "三個溫度計並排（−12、−18、−21），下面三盤牛排的滴汁小量杯幾乎一樣高；旁邊淡淡畫出更冷的 −40、−60 刻度，打上『本研究沒測』。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-food-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a8554272501aa613",
+          "origin": "wave72-food-20261111",
+          "locator": "F55-S002 Packaging and storage；Thaw and cook loss；Statistical analysis；Results—Thaw and cook loss；Table 2（Frozen storage temperature 列）；Table 6；Discussion 第一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-food.json"
+      ]
+    },
+    {
+      "id": "H72-001",
+      "question": "用電流干擾內耳的訊號，閉眼走路的方向會跟著被帶歪嗎？",
+      "domain": "身體感官與動作",
+      "mechanism_key": "locomotion.galvanic_vestibular_stimulation_blindfolded_turn",
+      "answer_target": "會，而且幾步之內就看得到。1999 年澳洲雪梨的研究，讓健康成人（每個實驗 7 人）先看一眼 4 公尺外地上的目標，再閉眼照節拍器走過去。沒有任何刺激時，閉眼走這 4 公尺並不難：他們通常踩到或跨過目標，離目標從沒超過 25 公分。研究者在起步的同時，在兩耳後方通一道很弱的直流電（受試者只覺得皮膚有點刺），結果每個人、每一趟一開始都偏向接正極的那一側：第一步沒事，第二到第四步開始轉，第三步轉得最多——那一步的方向比前一步平均轉了約 26 度（走得慢）或 19 度（走得快），有人一步就往旁邊跨出 44 公分。幾步之後有人繼續朝新方向走，有人轉回目標。睜著眼睛走的那一趟，大家都走到了目標，只是有幾人覺得有點不穩。另一個實驗讓蒙眼的人坐輪椅被推一段弧線，同樣的電流讓他們事後指認的起點平均偏了十幾度，方向顯示他們以為自己往走路時偏轉的反方向轉了。作者推測，偏轉的一部分可能是大腦在『修正』這個以為發生的轉彎；但他們也說，垂直感或腳下支撐面的判斷被改變，同樣可能參與。",
+      "scope": "一個研究、4 公尺約 8 步、室內地毯、每實驗 7 人（共 9 人，含一位作者）；外加電流，是實驗室操弄，不是自然狀態，不說『平常走歪是內耳問題』，也不引用原文對前庭病人的討論；26°／19° 是第 3 步相對前一步的單步轉角，不是整段路線偏離；睜眼條件每人只一趟；輪椅實驗量的是事後指認起點（個別差異大，標準差約 23 度），不是軌跡，也不是『感覺轉了幾度』；機制作者未定論。不與 H69-003 或其他研究的角度、距離比較；不給任何嘗試、行動、野外求生或安全建議；不畫電極操作細節。",
+      "source_locator": "F58-S001 Methods〈Experiment 1〉；Results〈Experiment 1〉第 1–4 段、Fig. 2–3 圖說；Results〈Experiment 2〉最後一段；Discussion 第 1、4 段與最後一段",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：still_missing（4）封頂 0.5。Fitzpatrick 群（雪梨）與 Tarnutzer 群（蘇黎世）不同；足跡為攝影機逐步數位化的真實落腳點。睜眼段與 H69-004 同方向、轉回目標與 H69-001 同方向，不另算；輪椅那半只當機制說明。 原提案 F58-001（目標 C11-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V61（2026-11-12）改字後收；數字、單位、人數都對得上原文；改正：補『一開始』、把『人人都走到目標』改回『通常踩到或跨過、不超過 25 公分』、睜眼條件補『每人一趟、有人覺得不穩』、輪椅實驗由『覺得自己轉了十幾度』改為『事後指認的起點偏了十幾度』、加入『沒有刺激時閉眼走 4 公尺並不難』以免觀眾以為短程也走不直、payoff 刪掉原文沒有的『自己還以為在走直』。scope 加寫不引用前庭病人段落與不給任何建議。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒摸到、沒推到，只在耳後通一點很弱的電，人在第二步就開始轉彎；有人落腳時才驚訝腳踩得太偏。",
+        "visual": "俯視示意：4 公尺地毯、目標圓圈；三組足跡（無刺激直達、正極在右往右彎、正極在左往左彎），標『示意，依原文圖 2 說明重畫，非原數據』；不畫電極與電源。",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave72-human-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-44d9462ac4a52e34",
+          "origin": "wave72-human-20261111",
+          "locator": "F58-S001 Methods〈Experiment 1〉；Results〈Experiment 1〉第 1–4 段、Fig. 2–3 圖說；Results〈Experiment 2〉最後一段；Discussion 第 1、4 段與最後一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-human.json"
+      ]
+    },
+    {
+      "id": "L72-001",
+      "question": "會捲成螺旋的殼，一定會偏向往右轉嗎？",
+      "domain": "動物演化",
+      "mechanism_key": "paleo.heteromorph_ammonite_random_coil_handedness",
+      "answer_target": "不一定，滅絕的菊石就是反例。菊石屬於頭足類，研究者認為牠們的身體很可能是左右對稱的；約 99% 的屬，殼是平面捲或直的。少數『異形菊石』長到一半會扭成一段螺旋。里昂與牛津的研究者在論文裡引用了一項針對約 1,500 個 Didymoceras 標本的研究：三個種的右旋比左旋分別是 47 比 53、49 比 51、52 比 48，大約一半一半；其他幾科的異形菊石也有人報告過類似的五五比，所以他們認為這些菊石往哪邊轉是隨機的、不會遺傳。可是 Mariella 這一屬，較早的阿爾布期各種左右各半，較晚的森諾曼期各種卻全是左旋。研究者的解讀是：在他們的模型裡，力學扭轉往左往右耗的能量一樣，所以會捲不代表會選邊；要固定偏向一邊，得另外有一個機制，而 Mariella 的那個機制，他們說恐怕永遠無從得知。",
+      "scope": "菊石數字全是 Chirat 等引用他人的標本研究（Didymoceras 引 ref 34；其他科與 Mariella 引 ref 35–38、69），片中說『有研究統計』，不說成本篇自己數的；菊石身體左右對稱是『很可能』；『力學扭轉左右機率相同』是模型前提與推論；不說菊石沒有任何左右偏好、不說 Mariella 的左旋與蝸牛同一套基因有關、不說菊石是蝸牛的祖先。要接回蝸牛時，『蝸牛的旋向由母親的基因決定』只能引 L66-021，作旁白連接，不寫成 Chirat 對菊石的解讀。",
+      "source_locator": "F57-S001 §1B 後段（about 1500 specimens of Didymoceras … 47/53、49/51、52/48；randomly determined and non-heritable）；討論段（Mariella … Albian 50/50、Cenomanian all sinistral；Mechanical forces … equiprobably produce dextral or sinistral forms；two components process）",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：池中沒有菊石旋向資料（grep 菊石／ammonite 只有 wave29、wave44 的拖痕與地質題），題材新；但三個種的比例、其他科、Mariella 全是本篇引用他人，屬二手轉述，照 L68-007 的先例下修；Chirat 全篇與 F57-002 合計封頂 0.75。 原提案 F57-001（目標 C13-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V60（2026-11-12）改字後收；數字相符，但把引用的研究寫成本篇整理、漏 probably，並把 §1A 的蝸牛母系遺傳與討論段的 Mariella 接成作者沒有說過的一條因果；改字並下修為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣是捲成螺旋的殼，菊石往左往右幾乎一半一半——會捲，不代表會選邊",
+        "visual": "一排 Didymoceras 化石左右鏡像並排，下方三條接近 50% 的比例條；接著 Mariella 從左右各半變成全部左旋的時間軸",
+        "seconds": [
+          45,
+          60
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-bb007d209673cfb1",
+          "origin": "wave72-life-20261111",
+          "locator": "F57-S001 §1B 後段（about 1500 specimens of Didymoceras … 47/53、49/51、52/48；randomly determined and non-heritable）；討論段（Mariella … Albian 50/50、Cenomanian all sinistral；Mechanical forces … equiprobably produce dextral or sinistral forms；two components process）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-002",
+      "question": "帽貝的身體也是右旋型，殼為什麼卻是左右對稱的圓錐？",
+      "domain": "動物演化",
+      "mechanism_key": "snail.columellar_muscle_intrinsic_twist_helicospiral_model",
+      "answer_target": "研究者懷疑，關鍵在把身體拉進殼裡的那條肌肉。帽貝的胚胎是右旋卵裂、nodal 訊號在右邊，身體解剖也是右手型，可是不論胚胎殼還是長大的殼，都是左右對稱的圓錐；蝸牛幼體那次把內臟轉 180 度的『扭轉』帽貝也有，所以那次扭轉說明不了螺旋殼。比較解剖顯示：螺旋殼的螺類，殼肌是一條螺旋繞在殼中軸上、固定在離殼口四分之三到兩圈處的肌肉；帽貝的殼肌則是左右對稱的馬蹄形。帽貝形的殼在另外四個以螺旋殼為主的目裡各自演化出來，每一次都伴隨殼肌從單側螺旋變成對稱馬蹄形。里昂與牛津的研究者因此推測：不對稱的殼肌讓身體帶著一股內在的扭轉。在他們的數學模型裡，固定一組典型的捲曲參數，只要身體帶有這股扭轉，不論扭轉強弱、身體被壓縮或拉長、硬度比怎麼設，能量最低的都是螺旋殼。研究者明說，殼肌造成扭轉這一點還沒有實驗檢驗。",
+      "scope": "模型與比較解剖的推論，不是實驗結果；片中說『研究者推測』；殼肌比較解剖是本篇引前人（ref 81–84）；模型解釋的是為什麼捲成螺旋，不是往左或往右，不得說『殼肌決定殼往右轉』；Fig. 6 只限一組固定的捲曲參數，換別的參數、身體被拉長時平面捲殼也可能最省能量（SI 未讀）；帽貝 nodal 在右與 L68-003 重疊、扭轉不等於盤旋與 B2128 重疊，都不另計；作者稿未與出版版逐字比對。",
+      "source_locator": "F57-S001 §4 How snails coil their shell（limpets … dextral cleavage … right expression of nodal … bilaterally symmetric；torsion … limpets also experience such a rotation；shell-muscle system … columella … three-quarters to two whorls back；horseshoe-shaped muscle scar；four other gastropod orders；remains to be tested experimentally）；§4A 與 Fig. 6 圖說（in every single case, the helicospiral shell is the energy minimizer）；§4A 後段（planispiral … only in cases of a stretched body）",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：帽貝形殼多次趨同都伴隨殼肌改變、加上本篇自己的模型結果，是池中沒有的新事實；但假設未經實驗、比較解剖是引前人。與 F57-001 同篇，Chirat 全篇合計 0.75 封頂（第十八輪預估 0.75–1.0 的下緣，因作者稿未比對出版版、SI 未讀、菊石資料是二手）。 原提案 F57-002（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V60（2026-11-12）改字後收；引文逐字相符；補上 Fig. 6 是固定捲曲參數、殼肌假設的『推測』語氣，計數維持 0.5，但與 F57-001 合計封頂 0.75。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "帽貝的身體一樣是右旋型，殼卻是對稱的斗笠——差別可能在那條把身體拉進殼裡的肌肉",
+        "visual": "蝸牛殼剖面，紅色殼肌沿殼軸螺旋往上繞；旁邊帽貝殼內面，左右對稱的馬蹄形肌肉疤；最後是模型裡同一身體加上扭轉後長出螺旋殼的動畫",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-bb007d209673cfb1",
+          "origin": "wave72-life-20261111",
+          "locator": "F57-S001 §4 How snails coil their shell（limpets … dextral cleavage … right expression of nodal … bilaterally symmetric；torsion … limpets also experience such a rotation；shell-muscle system … columella … three-quarters to two whorls back；horseshoe-shaped muscle scar；four other gastropod orders；remains to be tested experimentally）；§4A 與 Fig. 6 圖說（in every single case, the helicospiral shell is the energy minimizer）；§4A 後段（planispiral … only in cases of a stretched body）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-003",
+      "question": "大螯長在一邊的螃蟹，吃蝸牛時一定會挑旋向嗎？",
+      "domain": "動物捕食",
+      "mechanism_key": "snail.land_crab_no_chiral_predation_bias_amphidromus",
+      "answer_target": "至少馬來西亞 Kapas 島上的這種陸蟹看不出來。那裡的 Amphidromus inversus 樹蝸牛左旋約占六成五。研究者把 17 隻夜行的 Gecarcoidea lalandii 陸蟹各關五晚，每隻只給三隻左旋、三隻右旋、大小相近的活蝸牛；目視有 9 隻左螯較大、2 隻右螯較大、6 隻分不出。結果只有 4 隻公蟹吃了，一共打破 5 個右旋、2 個左旋，破法有敲掉殼頂、剝開殼側、整個壓碎三種。她同時在海岸林地上撿了 178 個殼，左旋 125 個裡 37 個破、右旋 53 個裡 17 個破，兩型破殼比例沒有差別——但這些破殼分不出是鼠還是蟹咬的。研究者的結論是：這種蟹會吃這種蝸牛，但不是牠偏好的食物，目前沒有理由認為牠偏吃哪一旋向、或左右了當地的左右比例。",
+      "scope": "只限這一種陸蟹與這一個島；蟹實驗只有 7 個破殼事件、沒有統計檢定、螯的大小只靠目視、吃了蝸牛的 4 隻公蟹螯向未報告，不得把 5 比 2 講成『比較愛吃右旋』，也不得說『左螯大的蟹不挑』；地面殼破損分不出鼠或蟹；同島鼠類不挑旋向已在 L66-028，片中不重講；不得推成『螃蟹都不挑旋向』，不得與 L68-005 化石箱蟹的疤痕比例並列成同一比較。",
+      "source_locator": "F57-S002 Introduction（65% vs 35%；Ng & Tan 1985、Shigemiya 2003 的右大螯蟹）；Methods（17 隻、五晚、三左三右、大小相配）；Results（37/88、17/35，N=178，p=0.6902；9 左、2 右、6 不明；4 隻公蟹、5 右 2 左；三種破法）；Discussion 末段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者，但理由改）：同島鼠類不挑旋向已在 L66-028，『不是每個捕食者都幫左旋』的但書池中已有；新增的只有『螯不對稱的陸蟹在小實驗裡也看不出偏好』與地面殼的另一次計數，樣本極小。網絡 B（Schilthuizen 指導、同島）由 2.5 到 2.75，仍在第十八輪的 3.0 上限內。若片長吃緊，這條第一個刪，縮成 L68-005 後的一句但書。 原提案 F57-003（目標 C13-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V60（2026-11-12）改字後收；數字全對；把地面殼破損『分不出鼠或蟹』補進答案、刪掉原文沒有的『大螯長在左邊的陸蟹一樣隨便』，並註明與 L66-028 同島同結論的重疊。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "螯長得不對稱的陸蟹，在小實驗裡也看不出挑哪一旋向——有左右的捕食者，不一定幫左旋",
+        "visual": "夜間海岸林，一隻紫黑色陸蟹舉著一大一小的螯；箱子裡三左三右的蝸牛，最後只有少數被打開",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-42eaef96899b8aa1",
+          "origin": "wave72-life-20261111",
+          "locator": "F57-S002 Introduction（65% vs 35%；Ng & Tan 1985、Shigemiya 2003 的右大螯蟹）；Methods（17 隻、五晚、三左三右、大小相配）；Results（37/88、17/35，N=178，p=0.6902；9 左、2 右、6 不明；4 隻公蟹、5 右 2 左；三種破法）；Discussion 末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-004",
+      "question": "鸕鷀潛到海底找東西時，頭也會一伸一縮嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "bird.headbob_cormorant_underwater_seafloor_search",
+      "answer_target": "會，至少看起來是一伸一縮。阿根廷與日本的研究者把小攝影機貼在帝鸕鷀背上、鏡頭朝向頭部，拍到 12 隻鳥共 49 次潛水，其中 38 次潛到海底覓食。研究者寫，在大多數潛水（76.3%）裡，鳥沿著海底前進時不停地伸縮脖子、頭一前一後；在碎石或草狀的海底，牠們身體微微朝下、頭一直前後動；到了岩礁，則身體水平、把頭頸伸進岩縫找。研究者把這個動作稱為點頭，並引用另一項小鸊鷉研究，認為它可能幫助在水下看得穩；但他們沒有量頭是否真的停在水中，也說很多潛水是在很暗的地方，鸕鷀怎麼找到獵物還是個問題。",
+      "scope": "只說『沿海底前進時伸縮脖子、頭一前一後，作者稱為點頭』；76.3% 不得說成『49 次中的 76.3%』，只說『大多數潛水（76.3%）』；不得說量到停住期、頻率或頭在水中靜止；視覺功能是作者引 Gunji 等 2013（Fujita 共同作者）的推論，本文沒有實驗；鸕鷀在水下靠腳划水，本文沒談腳與頭的關係，不得說『跟腳無關』。不得說推翻 Necker 綜述的『鵜鶘鸕鷀通常不點頭』（那是陸上走路的清單）。不給任何捕捉或在鳥身上裝置的建議。",
+      "source_locator": "F60-S001 Abstract；Results（76.3% 一段、Fig 2A–C 圖說、底質一段）；Discussion head-bobbing 一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：一手但只是覓食生態研究裡的影片行為描述，沒有任何頭部運動量測，不是 still_missing（6）點名的『點頭量測』，鳥種也不在點名之列；它對結論的貢獻（離開地面也一伸一縮）與池中 L69-004 骨頂雞游泳點頭同方向、同一章；視覺功能的解讀借自 Fujita 共同作者的 Gunji 2013。因是獨立研究群（CONICET／名古屋大學）的開放原研究、新情境（水下海底），保留 0.25，不退回。 原提案 F60-001（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V63（2026-11-12）改字後收；數字與底質描述相符；改正 76.3% 被寫成 49 次潛水比例的暗示、補上視覺功能是引 Gunji/Fujita 研究、刪掉原文無據的『不是跟著腳』（鸕鷀靠腳划水）；只是描述沒有量測，且結論與 L69-004 同方向，計 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不只走路：鸕鷀潛到海底找食物時，頭也一伸一縮——研究者猜是為了在水下看穩，但還沒量過。",
+        "visual": "示意圖：鸕鷀身體微微朝下貼海底前進，脖子一伸一縮的箭頭；岩礁段改成水平、頭伸進岩縫。標『背上攝影機影片的描述，沒量停住』。",
+        "seconds": [
+          20,
+          30
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4414ae04908be1d6",
+          "origin": "wave72-life-20261111",
+          "locator": "F60-S001 Abstract；Results（76.3% 一段、Fig 2A–C 圖說、底質一段）；Discussion head-bobbing 一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-005",
+      "question": "鶴走得越快，頭能停住的時間會怎麼變？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "bird.headbob_whooping_crane_speed_hold_fraction",
+      "answer_target": "越快停得越少。美國的研究者錄了 4 隻圈養的美洲鶴，用食物引牠們走或跑：分析的片段裡，速度從每秒 0.30 公尺到 2.64 公尺，頭能穩住的時間比例對應從 79% 降到 0%；這 4 隻鶴在每秒 1.83 公尺時就降到 0%。作者的結論是：鶴邊走邊找食物時，走的速度讓頭和視野至少一半時間不動。這份我們只讀到研討會論文集的摘要。",
+      "scope": "畫面標『研討會摘要』；只有 4 隻、只有範圍兩端與歸零點，不得補中間值或畫成曲線；1.83 m/s 只是這 4 隻鶴，不可套到鴿子或說成所有鶴的門檻；與 L65-004（鴿子越快停越短）只當跨物種呼應。與 L69-005 同一研究群（Cronin、Kinloch、Olsen），片中放在同一段，數字要註明出自本摘要而不是 L69-005 的 Cronin 2007 摘要。",
+      "source_locator": "F60-S002 典藏頁 Abstract 全段",
+      "premise_status": "screened",
+      "notes": "算 0（作者 0.25）：只讀到摘要（PDF 403，重試一次仍 403），照『只讀到摘要不計』；且『越快停越短』在 L65-004 已有、Cronin 2005 的同一結論在 L69-005 已判 0。與 L69-S003 同群：Cronin／Kinloch／Olsen 群目前合計只有 L69-005 的 0.25（那 0.25 是 Necker 綜述作者的觀察，不是此群），本群有效計數 0。日後 Cronin 2005 Curr Biol 或本篇 PDF 可讀時，本群合計最多約 +0.5。 原提案 F60-002（目標 C11-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V63（2026-11-12）改字後收；內容與摘要逐字相符，可作同段補充，但只讀到摘要且結論與 L65-004 重複，照上輪規則改計 0；與 L69-S003 同群。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不只鴿子：4 隻美洲鶴也是越快、頭能停的時間越少（摘要）。",
+        "visual": "橫軸速度、縱軸『頭穩住的時間比例』，只標 0.30 m/s–79%、1.83 m/s–0% 兩點與 2.64 m/s，不連曲線，標『研討會摘要，只給兩端』。",
+        "seconds": [
+          15,
+          20
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-20a84099f968b38e",
+          "origin": "wave72-life-20261111",
+          "locator": "F60-S002 典藏頁 Abstract 全段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-006",
+      "question": "番茄一放進冰箱，香氣是馬上就變少，還是要冰好幾天才會？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_volatile_emission_tracks_fruit_temperature_hours",
+      "answer_target": "馬上就變少，而且跟著果實的溫度走。瓦赫寧根大學的團隊用模擬咀嚼的裝置接上質譜儀，量兩個紅熟番茄品種咬碎時放出的香氣：從 22°C 移到 4°C 後，香氣釋放跟著果溫往下掉，稍微慢一點；5 到 6 小時內，果溫和香氣都降到穩定的低值。冷了 6 天再移回 22°C，香氣又跟著果溫回升，但作者在摘要寫明，大多數香氣通常回不到原來的水準（接 F61-002）。作者的解釋是：低溫讓做香氣的酵素變慢，香氣分子在冷的果肉裡也比較溶得住、不容易揮發出來（亨利定律）。所以冰的番茄香氣少，有一部分是當下被冷「壓住」；但這只是第一層，接著要講 L66-002 的基因變慢與 F61-002 的回不來。",
+      "scope": "兩個品種（約 80 g 圓番茄、約 30 g 雞尾酒番茄）、每點 3 顆；是儀器模擬咀嚼，不是真人試吃；酵素與亨利定律是作者解釋，本研究沒有分開量。不能說「回溫就完全恢復」或「冷藏完全不傷番茄」。",
+      "source_locator": "VOC Changes During Storage Assessed by PTR-MS and Chewing Device 第一、二段；Fig. 5",
+      "premise_status": "screened",
+      "notes": "算 0.5（同作者）：與 F61-002 同一研究，Farneti／Woltering 群合計 1.0。與 L66-002 的說法要並陳成兩層（當下的溫度效應＋數天的基因變慢），不寫成互相否定。 原提案 F61-001（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字與條件正確；補回摘要「generally not to the original levels」，刪掉「回溫就回來」；role 由 turn 改 segment（轉折一仍由 L66-001／002 撐，本條是轉折一的第一層）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰的當下，香氣幾小時內就跟著果溫掉；回溫會回升，但多半回不到原樣。",
+        "visual": "番茄剖面的溫度色塊從紅變藍，旁邊香氣粒子的箭頭同步變少；咀嚼裝置示意。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-75777636ac3c8e1b",
+          "origin": "wave72-life-20261111",
+          "locator": "VOC Changes During Storage Assessed by PTR-MS and Chewing Device 第一、二段；Fig. 5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-007",
+      "question": "番茄冰越久，回溫後還能恢復原本的香氣嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_cold_duration_limits_aroma_recovery_offflavor",
+      "answer_target": "冰越久，越回不來，組成也變了。同一個瓦赫寧根團隊把番茄放 4°C，每隔 5 天拿一批回 16°C：冷 5 天的，回溫後香氣幾乎完全恢復；冷 10 天、15 天的只恢復一部分。另一次實驗用咀嚼裝置量，冷過再回溫的番茄，常被歸為異味的甲醇、乙醛、乙醇、丙酮比較突出，冷藏越久，回溫後這些越多；其中雞尾酒番茄 Amoroso 冷 12 天後，乙醛和乙醇大約是一直放 22°C 的兩倍，圓番茄 Cappricia 在這方面比較穩定。Cappricia 冷過再回溫，常被當成異味的 1-戊烯-3-酮則明顯偏高。作者在摘要說，除了香氣總量，組成的改變可能也是冷藏番茄風味變差的部分原因。",
+      "scope": "兩個品種、兩次實驗（回 16°C 的天數實驗與 4°C 對 22°C 的咀嚼裝置實驗），數字不跨實驗混用；「異味」是文獻歸類，本研究沒有人試吃；兩倍只限 Amoroso 的乙醛與乙醇、冷 12 天。",
+      "source_locator": "VOC Changes During Storage Assessed by SPME/GC-MS 末段；VOCs Derived from Lipid Metabolism 末兩段；PTR-MS 段末（Figs. 6–8）；Conclusion",
+      "premise_status": "screened",
+      "notes": "算 0.5：與 F61-001 同一研究（合計 1.0）。與 L66-002「回溫一天部分回升」方向一致，新增的是「冷藏天數與恢復程度」和異味兩點；不與 L66-001 的 65% 相減或合併。 原提案 F61-002（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；改正 payoff 的「兩週以上回不來」，補 Cappricia 異味較穩定、兩個實驗分開講。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰 5 天還救得回來，冰 10 天、15 天只回來一部分，還多了常被當成怪味的成分。",
+        "visual": "時間軸：5、10、15 天三個回溫點，香氣柱一次比一次矮；旁邊冒出「乙醛、乙醇」的小泡泡（標明只在雞尾酒番茄）。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-75777636ac3c8e1b",
+          "origin": "wave72-life-20261111",
+          "locator": "VOC Changes During Storage Assessed by SPME/GC-MS 末段；VOCs Derived from Lipid Metabolism 末兩段；PTR-MS 段末（Figs. 6–8）；Conclusion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-008",
+      "question": "冰過的番茄，一般人真的吃得出來嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.tomato_chill_consumer_liking_depends_on_cultivar",
+      "answer_target": "在這份海報裡，要看品種。瓦赫寧根大學另一個研究群挑了三個商業品種：風味評價低的 Merlice、中等的 Brioso、高的 Axiany，紅熟果放 5°C 7 天再放 20°C 一天，請約 50 位消費者和前一天採的番茄比。只有風味最淡的 Merlice，冰過的比新鮮的和放 15°C 的不受喜愛；Brioso 冰過的和新鮮的沒有顯著差別；Axiany 三組都沒有差別。三個品種冰過的糖度、酸度、硬度都和未儲存的相近。作者的結論是：冷藏造成的代謝變化，只在風味差的品種變成消費者喜好上的顯著差別。這是會議海報，沒有經過同儕審查。",
+      "scope": "機構典藏的海報，未經同儕審查；約 50 人、一次評比，喜好只有圖、沒有數值；只有 5°C 7 天一種條件。不能說「好番茄就可以冰」，不引用海報背景段的保存溫度。",
+      "source_locator": "Methods；Results: Fruit quality（Table 1）、Consumer panel（Figure 2）；Conclusions",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：未經審查的海報、喜好只見圖，只當 L66-001 試吃結果的補充，不能單獨撐一個轉折。與 F61-001／002 不同研究群（無共同作者），不併 Farneti 封頂；瓦赫寧根兩組合計 1.25。 原提案 F61-003（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字與條件正確；補 Brioso、標明海報身分；降為 0.25，role 由 turn 改 segment——一張未審海報不能當改變結論的轉折。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣冰一週，風味濃的番茄這群消費者吃不出差別，風味淡的才被嫌（海報初步結果）。",
+        "visual": "三顆番茄排排站，旁邊三個評分條：淡的那顆分數掉、其他兩顆不動。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-4585f5a63661fd97",
+          "origin": "wave72-life-20261111",
+          "locator": "Methods；Results: Fruit quality（Table 1）、Consumer panel（Figure 2）；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-009",
+      "question": "芒果放 12.5°C 和放 8°C，差那幾度有差嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.mango_black_flesh_storage_temperature_threshold",
+      "answer_target": "在這個研究裡差很多。巴西農業研究公司 Embrapa 與佛羅里達大學把三個芒果品種各 600 顆，分早採與較熟採，存 8°C、10°C、12.5°C 30 天，再放 20°C 7 天，切開看種子周圍果肉有沒有變褐變黑（「黑肉」）。早採的 Tommy Atkins 在 8°C 有 70%、10°C 有 67%，Kent 是 80% 和 78%，Palmer 是 89% 和 33%；較熟才採的多半較低，但 Palmer 在 10°C 早採與較熟幾乎一樣（33% 對 32%）。三個品種、兩種成熟度，在 12.5°C 都沒有出現黑肉。黑肉是長在果肉裡面的毛病，作者用溫度與成熟度的反應支持它是一種冷害。",
+      "scope": "一個產區、三個品種、商業出口的 30 天運儲；黑肉是否為冷害是本研究提出並檢驗的假說；不給任何儲存溫度建議、不引用「12.5°C 安全門檻」、不提 1-MCP。",
+      "source_locator": "Abstract；Experiment 1 方法；Results: Experiment 1（Fig. 2）",
+      "premise_status": "screened",
+      "notes": "作為獨立核心算 0.75（一個實驗的多組數字）；但不算進 C12-02：芒果商業運儲不是「番茄、桃子放冰箱」，加入會讓題目散成水果清單。可留給日後「冷藏與冷凍」長題或熱帶水果冷害題。 原提案 F61-004（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；改 payoff 與「較熟較低」的例外、刪無出處的「外表看不出來」、排除保存門檻句。收為獨立核心，但離題，不計入 C12-02。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣 30 天，8 和 10 度有一到九成的芒果果肉發黑，12.5 度一顆都沒有。",
+        "visual": "三排芒果剖面：8、10、12.5°C，前兩排種子周圍一片黑，第三排乾淨。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-78f14c54fa891fa6",
+          "origin": "wave72-life-20261111",
+          "locator": "Abstract；Experiment 1 方法；Results: Experiment 1（Fig. 2）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-010",
+      "question": "冰過的香蕉皮黑了、肉卻還硬，是因為冰得比較新鮮嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.banana_7c_vs_13c_starch_unconverted_membrane_damage",
+      "answer_target": "不是新鮮，是熟不了。南京農業大學把同一批七八成熟的香蕉分放 7°C 和 13°C 10 天：13°C 那組全程沒有冷害，果皮變亮變黃；7°C 那組冷害指數一路上升，果皮變暗、不轉黃，失重較多，果肉含水反而下降。7°C 的果肉軟化比較慢，電子顯微鏡下看得到原因之一：13°C 的果肉到第 10 天澱粉已完全轉化，7°C 的果肉還留著大量澱粉粒，細胞之間出現空洞，果皮細胞膜大片破裂。作者說，冷讓澱粉轉糖的代謝停住，慢軟看起來像好事，最後可能讓品質受損、熟得不均。",
+      "scope": "只有 7 與 13°C 兩點、10 天；數值只見於圖，片中只講方向；本研究沒量糖度；不給冷藏建議。",
+      "source_locator": "2.1 Materials；3.1 第一、四段；3.2 SEM 段（Fig. 3）",
+      "premise_status": "screened",
+      "notes": "作為獨立核心算 0.5；計入 C12-02 只算 0.25：round16 題案已有香蕉一章（LEG-S55 只用一句低溫傷害、L66-007），本條只補「7 對 13°C、熟不下去」的方向性結果，併入同一章不另開章。 原提案 F61-005（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；結果正確；修掉「品質一起壞掉」的斷言與無量測的「沒變成糖」。題內只算 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "冰過的香蕉「硬」不是新鮮，是澱粉卡住、熟不下去。",
+        "visual": "左右兩張電子顯微鏡圖：13°C 果肉澱粉已轉化、7°C 塞滿圓圓的澱粉粒；上方兩根香蕉一黃一暗。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-fe7ed657da1fdacd",
+          "origin": "wave72-life-20261111",
+          "locator": "2.1 Materials；3.1 第一、四段；3.2 SEM 段（Fig. 3）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-011",
+      "question": "辣椒冰太久，壞在哪裡？",
+      "domain": "植物",
+      "mechanism_key": "plant.pepper_chilling_seed_browning_genotype_range",
+      "answer_target": "壞在看不到的裡面。首爾大學把 36 個辣椒（Capsicum annuum，同種也包括甜椒）基因型放 2°C 3 週，主要的冷害症狀是種子變褐，果皮凹斑和果萼變色可以忽略。種子褐變的比例從 0% 到 60% 以上：怕冷的 C00562 是 63.86%，不怕冷的 UZB-GJG-1999-51 和 Takanotsume 都是 0%，Hungarian Wax 4.31%、Chili bangi 30.88%。",
+      "scope": "只有 2°C 3 週一個條件；品系多為研究用材料；不能直接推到市售甜椒；完整數字在補充表，未讀。",
+      "source_locator": "Results: Seed browning rates of 36 pepper genotypes；Figure 1",
+      "premise_status": "screened",
+      "notes": "作為獨立核心算 0.5；不算進 C12-02：辣椒種子褐變與「番茄、桃子放冰箱為什麼不好吃」無關，round16 的 still_missing（4）雖點名蔬菜冷害，但加進來只會讓片子變成作物清單。 原提案 F61-006（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；補 Takanotsume 同為 0%、標明補充表未讀。收為獨立核心，不計入 C12-02。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "辣椒外皮好好的，切開種子一片褐；同樣 2°C，有的品系一顆都沒事。",
+        "visual": "兩個辣椒剖面並排：一個種子奶白、一個整排褐色。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-1e279b27d1b78513",
+          "origin": "wave72-life-20261111",
+          "locator": "Results: Seed browning rates of 36 pepper genotypes；Figure 1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-012",
+      "question": "課本說冷害是「細胞膜冷到變硬」，耐冷的果實真的是靠膜裡不飽和脂肪酸比較多嗎？",
+      "domain": "植物",
+      "mechanism_key": "plant.grapefruit_chilling_sensitive_peel_more_unsaturated_fatty_acids",
+      "answer_target": "至少在這個葡萄柚例子裡看不出來。主流假說是：低溫讓細胞膜從流動的液態轉成凝膠態，膜變得會漏，引發冷害；膜脂的不飽和脂肪酸雙鍵多，比較能保持流動。西班牙 IATA 研究所用同一品種的葡萄柚對照：在樹上套袋遮光的果皮變紅、累積茄紅素，冷藏 2°C 8 週冷害指數一直低於 1；沒套袋的黃色果第一週就出現冷害，8 週後幾乎全部嚴重受害。量整個果皮的脂肪酸：兩組不飽和對飽和的比例、雙鍵指數都一樣；怕冷那組的亞油酸含量反而較高，但那是因為它的脂肪酸總量也較多。作者自己稱怕冷果「不飽和反而多」是表面的矛盾，推測怕冷果在採收前已啟動低溫反應，耐冷果靠的可能是茄紅素等抗氧化。這個研究沒有直接量膜的相變或滲漏。",
+      "scope": "只量外果皮總脂肪酸組成與基因表現，沒有量膜相變溫度或離子滲漏；一個品種、一個產區、樹上遮光處理，不是天生耐冷品種的比較；不能說成「課本錯了」或「套袋就不怕冷」，也不能推到番茄、桃子。",
+      "source_locator": "Introduction 第三段；2.1（Fig. 1）；2.3（Table 1）；Discussion 第二至四段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.75）：不是 still_missing（1）要的膜相變或離子滲漏直接量測；「不飽和較多」是含量不是比例，作者答案把比例相同與含量較高混成一個反證。可在機制章當一句「膜假說不是全部」的提醒，不當轉折。 原提案 F61-007（目標 C12-02，原角色 turn；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確，但推論錯位：比例與雙鍵指數相同，「怕冷果不飽和反而多」只是含量；改寫答案與題目、降為 0.25，不能撐轉折三。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "耐冷與怕冷的葡萄柚，果皮脂肪酸的不飽和程度一樣，差別可能在茄紅素。",
+        "visual": "細胞膜示意：直鏈與彎鏈脂肪酸由流動變整齊；旁邊一紅一黃兩顆葡萄柚切開對照，兩個相同高度的「不飽和比例」柱。",
+        "seconds": [
+          30,
+          40
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-a054bc46f346dcad",
+          "origin": "wave72-life-20261111",
+          "locator": "Introduction 第三段；2.1（Fig. 1）；2.3（Table 1）；Discussion 第二至四段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "L72-013",
+      "question": "桃子的「殺傷區」是誰說的？差幾度、差幾週？",
+      "domain": "植物",
+      "mechanism_key": "plant.peach_killing_zone_onset_weeks_review",
+      "answer_target": "Crisosto 與以色列 Volcani 中心的 Lurie 在 2005 年的綜述裡整理：許多報告指出，易受害的桃與油桃存在 2.2 到 7.6°C 之間（他們稱「殺傷溫度區」）時，果肉褐變等冷害比存在 0°C 左右（冰點以上）出現得更快、更重；存 2–5°C 時 1 到 2 週就看得到症狀，0°C 則要 3 週以上。他們也寫，症狀主要在出冷庫後的後熟期間出現，問題常到消費者手上才被發現。這是綜述整理前人研究，不是新的實驗。",
+      "scope": "綜述，不是原始實驗；數字是作者綜合前人研究；只講現象，不引用綜述中「接近 0°C 儲存壽命最長」的建議，片中不給任何保存溫度。",
+      "source_locator": "頁 196 右欄；頁 197 第 2 節第一段",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：只新增「發病週數」；殺傷區已在 L66-006（前言轉述），「出庫才現形」已在 L66-005，不重算。仍未取得 Crisosto 1999 原始實驗。 原提案 F61-008（目標 C12-02，原角色 segment；依本池欄位記為 segment）。非作者覆核 V64（2026-11-12）改字後收；數字正確；標明綜述、排除保存建議句。0.25 維持。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是越冷越快壞：在 2 到 7 度之間，桃子一兩週就出事，0 度要三週以上（綜述整理）。",
+        "visual": "溫度計刻度上 2.2–7.6°C 標成紅色區帶，旁邊兩個時鐘：1–2 週對 3 週以上。",
+        "seconds": [
+          25,
+          35
+        ]
+      },
+      "origin": "wave72-life-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-99a9baee6c08e68a",
+          "origin": "wave72-life-20261111",
+          "locator": "頁 196 右欄；頁 197 第 2 節第一段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+      ]
+    },
+    {
+      "id": "P72-001",
+      "question": "拿真的速滑冰刀到真的冰場去量，最滑的冰溫在每片冰上都一樣嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_real_rink_test_skate_temperature_curve",
+      "answer_target": "不一樣。1970 年北海道大學低溫科學研究所把兩支真的速滑冰刀裝在架子上（總重約 52 公斤），用彈射台以每秒約 1.4 公尺射出，在岐阜瑞浪的人工冰場和長野夢の海的天然湖冰上反覆滑，冰面溫度全程記錄，再由速度變化算摩擦係數。在 −2 °C 以下，兩座冰場的資料落在同一條曲線上：越冷越不滑，−2 °C 時摩擦係數約 0.0042，−10 °C 時約 0.0102，研究者寫滑度掉到 −2 °C 時的一半以下。但比 −2 °C 更暖，兩片冰分道揚鑣：人工冰在 −2 °C 最滑，再暖就急速變差；天然湖冰在 −0.5 °C 滑得最遠（36 公尺），由這個距離算回的摩擦係數約 0.0031——這一點是用滑行距離推算的，不是直接量到。研究者推測兩地不同可能與冰的純度、晶粒和硬度有關，又因為 −2 °C 以下兩地沒差，認為不是冰面修整的問題。",
+      "scope": "只講這組彈射測試：兩座冰場、一個冬季、各 2–3 天、每秒 1.4 公尺以下（作者自己寫比比賽約每秒 10 公尺慢一個數量級）。『太冷不滑、接近 0 °C 變軟』的機制已在 P64-012／P64-014，本條只講『最滑溫度隨冰而變』，機制只用一句帶過並註明是研究者推測。夢の海 −0.5 °C 的 0.0031 一定要說是由滑行距離算回的；−2 °C 以下兩地相同的數字要說是同一條曲線讀出的。不說成冰場、比賽或任何冰溫建議；不與 P64-012（約 −7 °C）、P64-014（−7.7 °C、−6 到 −9 °C）、P68-004 合併、平均、排表或判誰對。刪掉『摩擦不隨速度變』（與 P64-009 同訊息、與 P68-001 的速度區間方向不同）；不轉述冬奧準備、冰場維護與乙二醇使用建議；選手權成績不用（若要一句背景，只能照 1968 年原文『比 −2～−3 °C 更冷或更暖成績都較差』，不給數字）。",
+      "source_locator": "F54-S001 第 2 表、IV 節第 12 圖說明、V 節首三段與末段、英文 Summary；F54-S002 I 節首段、第 11 圖前後；F54-S003 Table 1、Fig. 10 下一段（英文核對）",
+      "premise_status": "screened",
+      "notes": "算 0.5（作者 0.75）：只算新增的『同一實驗裡，兩片冰最滑溫度不同、−2 °C 以下同一曲線』；溫度機制在 P64-012／P64-014 不重算；速度不相關是作者由速度直線下降推得、與 P64-009 同訊息，計 0 並刪除。Kobayashi 群（F54-S001～S003）與 F54-002 合計 0.75，同群封頂 1.0 之內；黑岩 1977 不另計。 原提案 F54-001（目標 C10-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V57（2026-11-12）改字後收；第 2 表八個數字逐格對上原掃描，但作者把夢の海 −0.5 °C 的 0.0031 寫成量到的值（原文是由 36 公尺滑行距離算回的計算值），也沒說 −2 °C 以下兩地相同的數字是同一條平滑曲線讀出；『摩擦不隨速度變』與 P64-009 重複且和 P68-001 的速度區間方向不同，刪除。機制已在池中，只算新增的『最滑溫度隨冰而變』0.5。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "真冰刀在真冰場上量，也是太冷不滑、太暖也不滑；但最滑的那一度，換一片冰就不一樣。",
+        "visual": "彈射台把裝了兩支冰刀和攝影機的架子推上冰面，旁邊的溫度計曲線從清晨 −9 °C 爬到中午 0 °C，滑行距離跟著變長又變短。",
+        "seconds": [
+          45,
+          55
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-197fd5ce344a4504",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 第 2 表、IV 節第 12 圖說明、V 節首三段與末段、英文 Summary；F54-S002 I 節首段、第 11 圖前後；F54-S003 Table 1、Fig. 10 下一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-c1844ec3263df52f",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 第 2 表、IV 節第 12 圖說明、V 節首三段與末段、英文 Summary；F54-S002 I 節首段、第 11 圖前後；F54-S003 Table 1、Fig. 10 下一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-24364e68df3351c6",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 第 2 表、IV 節第 12 圖說明、V 節首三段與末段、英文 Summary；F54-S002 I 節首段、第 11 圖前後；F54-S003 Table 1、Fig. 10 下一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ]
+    },
+    {
+      "id": "P72-002",
+      "question": "在真的冰場上替冰面多塗一層液膜，冰刀會比較滑嗎？",
+      "domain": "生活力學",
+      "mechanism_key": "physics.ice_friction_test_skate_glycol_film_temperature_reversal",
+      "answer_target": "要看溫度，而且可能相反。同一組北海道大學的彈射測試，在夢の海的湖冰上塗了薄薄一層乙二醇（一種防凍液），和旁邊沒處理的冰道交替比較：冰溫在 0 °C 附近時，沒處理的冰能滑約 20 公尺，塗過的只剩約 10 公尺；冰溫降到約 −1.5 到 −2 °C 以下，關係倒過來，塗過的冰滑得比較遠，而且越冷差距越大——沒處理的冰越冷越滑不動，塗過的掉得沒那麼多。研究者的解釋是：塗過的冰面一直有一層防凍液的薄膜在潤滑；溫度越高，被溶液泡軟的冰層越厚，他們推測這就是接近 0 °C 時反而拖住冰刀的原因。",
+      "scope": "只講這組彈射測試、一座冰場、一天的定性結果與研究者的解釋（暖時變差的原因是推測）；20 m／10 m 是原文段落的約略值（落錘 20 kg 那一組），不與 F54-001 的距離或摩擦係數混算。不轉述『冰場使用乙二醇很有效』的維護建議，不出現品牌、用量、塗法，不延伸到路面、步道、車、鞋或任何冰溫與安全建議；不說成『證明冰滑靠水』，只說『多一層液膜冷時有幫助、接近 0 °C 反而拖慢』，與 P64-016（膜很黏）、P65-005／P65-004（模擬）並列，不判輸贏。",
+      "source_locator": "F54-S001 III-1-b 段（第 9 圖說明：−0 °C 純氷 20 m、E.G. 約 10 m，−2 °C 以下逆轉）、V 節乙二醇三段（最大值由 −0.5 移到 −1.5 °C、−1.5 °C 以下塗過的較滑、溶液層隨溫度變厚）、英文 Summary 末段；F54-S003 Concluding remarks 最後一段（英文核對）",
+      "premise_status": "screened",
+      "notes": "算 0.25（同作者）：同一論文的第二個操作，定性、一座冰場、一天，暖時機制是研究者推測。池中沒有任何『在真冰刀下人為加液膜』的核心（grep 乙二醇／glycol／ethylene 只命中濕顆粒與混凝土題）。與 F54-001 同群合計 0.75。 原提案 F54-002（目標 C10-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V57（2026-11-12）改字後收；數字與條件對上原文；作者寫『−2 °C 以下逆轉』只取了 III 節，V 節寫的是 −1.5 °C，改為『約 −1.5 到 −2 °C』；暖時變差的機制原文是『であろう』，補上『推測』；問題句原本預設『冰滑靠表面那層水』，改成中性問法。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "多一層液體不是越多越滑：冷的時候幫忙，接近 0 °C 反而把冰刀拖住。",
+        "visual": "兩條並排的測試道，一條冰面亮亮濕濕；溫度計從 0 °C 往下降，兩條滑行距離的線在 −2 °C 附近交叉。",
+        "seconds": [
+          35,
+          45
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-197fd5ce344a4504",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 III-1-b 段（第 9 圖說明：−0 °C 純氷 20 m、E.G. 約 10 m，−2 °C 以下逆轉）、V 節乙二醇三段（最大值由 −0.5 移到 −1.5 °C、−1.5 °C 以下塗過的較滑、溶液層隨溫度變厚）、英文 Summary 末段；F54-S003 Concluding remarks 最後一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-24364e68df3351c6",
+          "origin": "wave72-physics-20261111",
+          "locator": "F54-S001 III-1-b 段（第 9 圖說明：−0 °C 純氷 20 m、E.G. 約 10 m，−2 °C 以下逆轉）、V 節乙二醇三段（最大值由 −0.5 移到 −1.5 °C、−1.5 °C 以下塗過的較滑、溶液層隨溫度變厚）、英文 Summary 末段；F54-S003 Concluding remarks 最後一段（英文核對）",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ]
+    },
+    {
+      "id": "P72-003",
+      "question": "一間浴室、一間臥室、一個門廳，哪裡說話最聽得清楚？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.bathroom_short_decay_strong_reverberant_level",
+      "answer_target": "一位美國高中生用兩台筆電和免費軟體量了一間浴室、一間臥室和一個門廳。浴室最小（15.2 立方公尺），因為有磁磚和鏡子，總吸音只有 8.33 sabins（平均吸音係數 0.23）；臥室有厚地毯和床墊，吸音 55.6 sabins。殘響時間 RT60：臥室 0.35 秒、浴室 0.52 秒、門廳 0.62 秒，浴室在中間。再請三個人坐在 1.5 公尺外，聽錄好的『ch』『j』隨機序列（每間 87 次），浴室平均聽對 93.3%，臥室 82.7%，門廳 73.3%，三個人都是在浴室最好。作者的解釋是：浴室吸音少，反射回來的聲音很強，殘響又不算長；如果只看殘響越短越好，臥室應該最清楚。",
+      "scope": "一間浴室、一次量測、三位受試者、說話音素的辨識率（喇叭放錄音）；不是唱歌，不是唱的人自己耳邊。原文沒說三個房間在同一間房子。只說『這一間』，不與 P69-001（0.60 s）、F59-002（0.93 s）合成範圍、平均或比大小；三份用的量法不同。不說『浴室讓歌聲好聽』。",
+      "source_locator": "F59-S001 表 4、表 5、表 6 與 §3.3 段落",
+      "premise_status": "screened",
+      "notes": "算 0.5（與作者同；V38 點名第 3 項預估 0.5）。吸音／RT60 與聽辨合計，因高中生作者、SCIRP、一間浴室、三人、單點對 RT60，不給 0.75。 原提案 F59-001（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V62（2026-11-12）改字後收；數字逐一相符；刪原文沒有的『自家／同一間房子』，改掉與臥室比較不成立的『拖得不長』框架。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "浴室不是「回音很長」，是「回來的聲音很大、又很快收掉」",
+        "visual": "三間房的吸音與殘響對照條（浴室、臥室、門廳），各自標來源",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-23ca6855ef33fe7b",
+          "origin": "wave72-physics-20261111",
+          "locator": "F59-S001 表 4、表 5、表 6 與 §3.3 段落",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ]
+    },
+    {
+      "id": "P72-004",
+      "question": "一間小浴室，在多低的音以下，聲音就不再均勻散開？",
+      "domain": "聲學",
+      "mechanism_key": "acoustics.small_bathroom_schroeder_frequency_isolated_modes",
+      "answer_target": "都靈理工與格拉茲的研究者想把一間沒改裝的小浴室當成『迷你殘響室』來量吸音材料，理由是浴室通常很會迴響。這間浴室 8.96 立方公尺、高 2.75 公尺，地板和一半以上的牆貼磁磚，空房在 500 到 2000 赫茲的平均殘響時間 T30 是 0.93 秒。用這兩個數字套公式，算出它的『Schroeder 頻率』約 644 赫茲。作者說明：在這個頻率以下，房間裡的聲音不再均勻散開，而是一個個分開的共振模態，常用的 Sabine 殘響公式就不準了。標準殘響室要幾百立方公尺；房間縮到幾立方公尺，代價就是這條界線升得高很多。",
+      "scope": "一間浴室、一次空房量測；644 赫茲是公式算出的界線，不是量到的共振頻率或放大量。未經審查的研討會論文。不說人聲落在哪裡、不說浴室放大你的低音；0.93 秒只說『這一間』，不與 F59-001（0.52 s）、P69-001（0.60 s）合成範圍。",
+      "source_locator": "F59-S002 §3 Schroeder 頻率段、§4.1、§5 首段",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：只有一個量到的 T30，fs 是代公式的結果；全文未經審查；研究目的是吸音量測方法，與唱歌無關。Shtrepi 群（P63-011 0.5＋本條 0.25＝0.75）未碰封頂；不屬 Bottalico 群。P63-NA008 的 reentry 條件（小浴室模態或頻率響應量測）仍未滿足。 原提案 F59-002（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V62（2026-11-12）改字後收；數字相符；改正研究者所在地、把『為了壓低』改回原文『縮小的代價』、標明 fs 是計算值，計數降為 0.25。這間浴室 0.93 秒比 F59-001 的門廳還長，題目層級的『浴室回聲不長』因此不成立（見 non_author_reviews）。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "在小浴室裡，低一點的聲音不是「散開的回聲」，而是房間自己的共振",
+        "visual": "浴室平面示意與一條 643.6 Hz 分界線，上方擴散場、下方分開的模態",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-e059262c3db2017e",
+          "origin": "wave72-physics-20261111",
+          "locator": "F59-S002 §3 Schroeder 頻率段、§4.1、§5 首段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ]
+    },
+    {
+      "id": "P72-005",
+      "question": "有回音的時候，聽的人比較聽不出音高的變化嗎？",
+      "domain": "聲學",
+      "mechanism_key": "perception.reverb_spares_pitch_blurs_vowel_quality",
+      "answer_target": "在一個說話母音的實驗裡沒有。普渡大學讓 4 位音樂家、4 位非音樂家戴耳機聽電腦合成的『伊』，測最小聽得出的音高差；母音不加殘響，或加上同一條走廊、離聲源三種距離錄到的殘響（RT60 約 0.7、0.8、0.9 秒），而且把殘響尾巴截掉、音量調成一樣。音樂家聽得出的音高差約小 4 倍，但兩組在三種殘響下聽音高的能力都跟沒有殘響時一樣，統計上沒有差別。受影響的是另一件事：母音音色（第一共振峰）的變化，在中、重殘響時比沒有殘響和輕殘響時難聽出來。",
+      "scope": "8 位聽者、說話的合成母音、走廊的殘響且截掉尾巴；不是歌聲、不是浴室、不是評音準。不得推成『浴室回音蓋不住走音』或『別人聽你唱歌一樣聽得出不準』；不與 P63-009 的音分數字相比或相減。",
+      "source_locator": "F59-S003 §2 行為結果（F0 DL 與 F1 DL）、§5.2、§5.5、圖 6 圖說",
+      "premise_status": "screened",
+      "notes": "算 0.25（作者 0.5）：還沒到 still_missing 第 2 項點名的『同一段歌聲加不同殘響，請聽者評音準或好聽度』，是非點名的近鄰來源；可用的只有『音高辨別不受影響』一句，音色那半與本題關係更遠。同一實驗兩個結果合計。 原提案 F59-003（目標 C9-01，原角色 turn；依本池欄位記為 segment）。非作者覆核 V62（2026-11-12）改字後收；統計值相符；刪不符原文的『高頻』、把『越重越難』改成原文的成對比較、補上走廊同一處三個距離與截尾條件；因不是歌聲也不是浴室，計數降為 0.25。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "以為回音能把走音蓋過去——至少在實驗裡，回音模糊的是音色，不是音高",
+        "visual": "兩條曲線：音高差異閾在四種殘響下持平，母音差異閾隨殘響上升",
+        "seconds": [
+          50,
+          60
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-84dc1e682696369a",
+          "origin": "wave72-physics-20261111",
+          "locator": "F59-S003 §2 行為結果（F0 DL 與 F1 DL）、§5.2、§5.5、圖 6 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ]
+    },
+    {
+      "id": "P72-006",
+      "question": "教堂裡的聖詠加了不同長度的回音，聽的人覺得哪一種最合適？",
+      "domain": "聲學",
+      "mechanism_key": "perception.listener_reverb_preference_chant_mid_rt",
+      "answer_target": "希臘研究者把半消音室錄的拜占庭聖詠，用電腦加上三種大小教堂的殘響（2.5、4、6 秒；3.4 萬到 23 萬立方公尺），請 15 位有經驗的聽者戴耳機評『這個殘響適不適合這段聖詠』，可以隨時對照沒加殘響的原音。小、中教堂的版本都明顯比原音合適，4 秒的中型教堂平均 74.1 分最高、2.5 秒 54.0 分；6 秒的最大教堂 46.3 分，略偏向原音但不顯著。離聲源遠的聽位評價也不佳。",
+      "scope": "教堂尺度的模擬殘響與聖詠；評的是殘響合不合適，不是好聽或音準；與浴室差兩個數量級。不得用在浴室題推出『別人聽起來比較好聽』。",
+      "source_locator": "F59-S004 §2.3、表 1、§3.2、§3.4",
+      "premise_status": "screened",
+      "notes": "入池為獨立核心算 0.25（作者 0.5）：教堂尺度、模擬殘響、評合適度。C9-01 不用（見 non_author_reviews 的 cuts），在本題計 0；與 P63-010、P69-002『中等殘響最受喜歡』同方向但角色不同（聽者 vs 唱者）。 原提案 F59-004（目標 C9-01，原角色 segment；依本池欄位記為 segment）。非作者覆核 V62（2026-11-12）改字後收；數字相符；改題把對象限定為教堂聖詠、把『離唱的人很遠』改為原文的『離聲源遠的聽位』；離題，自 C9-01 刪除，只入池。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "聽的人也偏好「有一點回音」，但不是越多越好",
+        "visual": "三座教堂剖面與三個平均分數長條，旁邊一條原音基準線",
+        "seconds": [
+          40,
+          50
+        ]
+      },
+      "origin": "wave72-physics-20261111",
+      "source_refs": [
+        {
+          "source_id": "SRC-abf434f0e5a5ebff",
+          "origin": "wave72-physics-20261111",
+          "locator": "F59-S004 §2.3、表 1、§3.2、§3.4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+      ]
+    },
+    {
       "id": "F8001",
       "question": "巧克力的固體沒被拿走，為什麼精煉後反而比較能流動？",
       "domain": "食品微結構與加工",
@@ -478748,6 +481163,28 @@
       "P71-012": "P71-012",
       "P71-013": "P71-013",
       "P71-014": "P71-014",
+      "K72-001": "K72-001",
+      "K72-002": "K72-002",
+      "H72-001": "H72-001",
+      "L72-001": "L72-001",
+      "L72-002": "L72-002",
+      "L72-003": "L72-003",
+      "L72-004": "L72-004",
+      "L72-005": "L72-005",
+      "L72-006": "L72-006",
+      "L72-007": "L72-007",
+      "L72-008": "L72-008",
+      "L72-009": "L72-009",
+      "L72-010": "L72-010",
+      "L72-011": "L72-011",
+      "L72-012": "L72-012",
+      "L72-013": "L72-013",
+      "P72-001": "P72-001",
+      "P72-002": "P72-002",
+      "P72-003": "P72-003",
+      "P72-004": "P72-004",
+      "P72-005": "P72-005",
+      "P72-006": "P72-006",
       "F8001": "F8001",
       "F8002": "F8002",
       "F8003": "F8003",
@@ -509433,6 +511870,251 @@
         "a": "P71-014",
         "b": "P70-018",
         "reason": "同一蒙彼利埃作者 Ciccotti（V56 2026-11-12）"
+      },
+      {
+        "a": "P72-001",
+        "b": "P64-012",
+        "reason": "太冷不滑（Weber 鋼球、−100 °C 像乾摩擦）；機制相同，P72-001 不重算（V57 2026-11-12）"
+      },
+      {
+        "a": "P72-001",
+        "b": "P64-014",
+        "reason": "接近 0 °C 冰變軟、真冰刀段 −7.7 °C、de Koning −6 到 −9 °C 實測低點；P72-001 只加『同一實驗兩片冰低點不同』，低點各自帶裝置講、不並排（V57 2026-11-12）"
+      },
+      {
+        "a": "P72-001",
+        "b": "P64-009",
+        "reason": "Weber 速度改四個數量級摩擦不變；P72-001 的『速度不相關』同訊息，刪除（V57 2026-11-12）"
+      },
+      {
+        "a": "P72-001",
+        "b": "P68-001",
+        "reason": "Kietzig 每秒 4 毫米到 1.45 公尺摩擦隨速度變；與 P72-001 速度句方向不同，故刪速度句，不拼曲線（V57 2026-11-12）"
+      },
+      {
+        "a": "P72-001",
+        "b": "P68-004",
+        "reason": "對馬勝年同屬北大低溫研，但不同實驗、不同裝置；−7 °C 最低點不與本條並列（V57 2026-11-12）"
+      },
+      {
+        "a": "P72-001",
+        "b": "P64-018",
+        "reason": "Lever 真溜冰場紅外拍攝；不同測量，不衝突（V57 2026-11-12）"
+      },
+      {
+        "a": "P72-002",
+        "b": "P64-016",
+        "reason": "Canale 膜很黏；不同裝置，並列不合併（V57 2026-11-12）"
+      },
+      {
+        "a": "P72-002",
+        "b": "P64-017",
+        "reason": "疏水鍍層降摩擦（改的是滑塊表面）；本條改的是冰面，不同操作（V57 2026-11-12）"
+      },
+      {
+        "a": "P72-002",
+        "b": "P64-003",
+        "reason": "聚乙二醇拌玻璃珠（濕顆粒），不同問題（V57 2026-11-12）"
+      },
+      {
+        "a": "K72-001",
+        "b": "K67-001",
+        "reason": "冰晶長在細胞內外的切片，不同問題；K72-001 不能把它補成定量（V58 2026-11-12）"
+      },
+      {
+        "a": "K72-001",
+        "b": "K66-004",
+        "reason": "纖維破壞與解凍損失不對應，相鄰但不同答案（V58 2026-11-12）"
+      },
+      {
+        "a": "K72-001",
+        "b": "K67-003",
+        "reason": "第二轉折仍靠這條（蛋白質變性模型）（V58 2026-11-12）"
+      },
+      {
+        "a": "K72-001",
+        "b": "H55-006",
+        "reason": "冰淇淋 CT，不同食品不同問題（V58 2026-11-12）"
+      },
+      {
+        "a": "K72-002",
+        "b": "K66-011",
+        "reason": "冷凍庫溫度與解凍損失；溫度範圍不重疊、定義不同，不能並排相減（V58 2026-11-12）"
+      },
+      {
+        "a": "K72-002",
+        "b": "K66-012",
+        "reason": "火雞超低溫優勢後來消失；同章並列，不比大小（V58 2026-11-12）"
+      },
+      {
+        "a": "K72-002",
+        "b": "K68-002",
+        "reason": "V34 已移出本題；本篇不可借來補回（V58 2026-11-12）"
+      },
+      {
+        "a": "K72-002",
+        "b": "K68-001",
+        "reason": "同為 MMB 牛腰脊感官研究，但 Kim 群、比的是凍與不凍；不同問題（V58 2026-11-12）"
+      },
+      {
+        "a": "L72-001",
+        "b": "L66-021",
+        "reason": "蝸牛旋向由母體基因決定已在此核心；本核心只講菊石，連接句引 L66-021、不另計（V60 2026-11-12）"
+      },
+      {
+        "a": "L72-001",
+        "b": "B2128",
+        "reason": "內臟扭轉不等於殼盤旋，不同問題（V60 2026-11-12）"
+      },
+      {
+        "a": "L72-002",
+        "b": "L68-003",
+        "reason": "帽貝 nodal 與 Pitx 在右側，同一事實不另計（V60 2026-11-12）"
+      },
+      {
+        "a": "L72-002",
+        "b": "B2128",
+        "reason": "幼體扭轉不等於殼盤旋，帽貝也扭轉那句只作連接，不另計（V60 2026-11-12）"
+      },
+      {
+        "a": "L72-003",
+        "b": "L66-028",
+        "reason": "同島、同種蝸牛、同一研究網絡；L66-028 已有鼠類吃兩型比例一樣（約 0.275），本核心只算蟹實驗的增量（V60 2026-11-12）"
+      },
+      {
+        "a": "L72-003",
+        "b": "L68-005",
+        "reason": "化石箱蟹的疤痕比例，不同捕食者、不同研究群，不得並列（V60 2026-11-12）"
+      },
+      {
+        "a": "H72-001",
+        "b": "H69-003",
+        "reason": "同為『正前方被操弄』，不同研究群（Tarnutzer，躺姿、感測器推算）；不合成效果大小、不比角度。（V61 2026-11-12）"
+      },
+      {
+        "a": "H72-001",
+        "b": "H65-004",
+        "reason": "H65-004 只有『可能與前庭有關』的相關證據；H72-001 是操弄，但片中只能說『干擾前庭訊號會把方向帶歪』，不能倒推平常的偏向來自內耳。（V61 2026-11-12）"
+      },
+      {
+        "a": "H72-001",
+        "b": "H69-004",
+        "reason": "睜眼就不受影響與視覺主導同方向，不另算。（V61 2026-11-12）"
+      },
+      {
+        "a": "H72-001",
+        "b": "H69-001",
+        "reason": "部分人轉回目標與一路修正同方向，不另算。（V61 2026-11-12）"
+      },
+      {
+        "a": "P72-003",
+        "b": "P69-001",
+        "reason": "另一間浴室的單一 T60；不同研究、不同量法，不得合成範圍（V62 2026-11-12）"
+      },
+      {
+        "a": "P72-003",
+        "b": "P63-003",
+        "reason": "教材『小房間不會長殘響』，定義不重算（V62 2026-11-12）"
+      },
+      {
+        "a": "P72-003",
+        "b": "R22002",
+        "reason": "殘響與語音辨識，不同問題（V62 2026-11-12）"
+      },
+      {
+        "a": "P72-004",
+        "b": "P63-011",
+        "reason": "同 Shtrepi（都靈理工）研究群，題目不同；群內合計 0.75（V62 2026-11-12）"
+      },
+      {
+        "a": "P72-004",
+        "b": "B4020",
+        "reason": "直達場與殘響場，不同問題（V62 2026-11-12）"
+      },
+      {
+        "a": "P72-005",
+        "b": "P63-009",
+        "reason": "唱的人端的音準；本條是聽的人端的音高辨別，不同研究，不得相比（V62 2026-11-12）"
+      },
+      {
+        "a": "P72-005",
+        "b": "R22002",
+        "reason": "殘響與語音辨識，不同問題（V62 2026-11-12）"
+      },
+      {
+        "a": "P72-006",
+        "b": "P63-010",
+        "reason": "唱者端『中等殘響最受喜歡』，同方向不同角色（V62 2026-11-12）"
+      },
+      {
+        "a": "P72-006",
+        "b": "P69-002",
+        "reason": "歌手『有一些但不要太多』，同方向不同角色（V62 2026-11-12）"
+      },
+      {
+        "a": "L72-004",
+        "b": "L69-004",
+        "reason": "骨頂雞游泳點頭，同一結論（離開地面也點）；本核心換情境（水下海底）與鳥種，不同答案，合併在同一章。（V63 2026-11-12）"
+      },
+      {
+        "a": "L72-005",
+        "b": "L65-004",
+        "reason": "鴿子越快停住期越短，同方向；不同物種，只當呼應。（V63 2026-11-12）"
+      },
+      {
+        "a": "L72-005",
+        "b": "L69-005",
+        "reason": "同研究群（Cronin、Kinloch、Olsen）、同批 Patuxent 鶴；L69-005 的 0.25 只算 Necker 綜述作者觀察，Cronin 群計數維持 0。（V63 2026-11-12）"
+      },
+      {
+        "a": "L72-006",
+        "b": "L66-002",
+        "reason": "同題不同研究群（Klee 群，基因下調、回溫一天部分回升）；本條補的是小時尺度的果溫同步，不重算 L66-002 的回升。（V64 2026-11-12）"
+      },
+      {
+        "a": "L72-007",
+        "b": "L66-002",
+        "reason": "L66-002 是回溫一天部分回升（Klee 群）；本條新增冷藏天數與恢復程度、異味成分，不與 L66-001 的 65% 相減或合併。（V64 2026-11-12）"
+      },
+      {
+        "a": "L72-008",
+        "b": "L66-001",
+        "reason": "L66-001 是 Klee 群 76 人試吃、一個品種喜好下降；本條是另一機構的初步海報，方向是「看品種」，只能並陳。（V64 2026-11-12）"
+      },
+      {
+        "a": "L72-010",
+        "b": "L66-007",
+        "reason": "華中農大 7°C 兩小時；不同研究群、不同設計，不合併數字。（V64 2026-11-12）"
+      },
+      {
+        "a": "L72-010",
+        "b": "LEG-S55",
+        "reason": "一般知識層級的「放冰箱整片變黑是低溫傷害」；本條給對照實驗，不重算那一句。（V64 2026-11-12）"
+      },
+      {
+        "a": "L72-011",
+        "b": "L44-002",
+        "reason": "辣椒種子經鳥腸道，不同問題。（V64 2026-11-12）"
+      },
+      {
+        "a": "L72-011",
+        "b": "L66-004",
+        "reason": "同型態（同種作物耐冷差很多），但對象是番茄，不合併。（V64 2026-11-12）"
+      },
+      {
+        "a": "L72-012",
+        "b": "L72-009",
+        "reason": "芒果論文前言也轉述「不飽和對飽和比例下降使膜變硬」的主流機制；兩者都不是直接量測。（V64 2026-11-12）"
+      },
+      {
+        "a": "L72-013",
+        "b": "L66-006",
+        "reason": "殺傷區 2.2–7.6°C 已在其前言轉述；本條只加週數。（V64 2026-11-12）"
+      },
+      {
+        "a": "L72-013",
+        "b": "L66-005",
+        "reason": "「出冷庫才現形」同一現象，不重算。（V64 2026-11-12）"
       }
     ],
     "excluded": [
@@ -510026,6 +512708,20 @@
         "questions": [
           "網址自動跳到另一個網址，永久搬家和暫時繞路有什麼不同？",
           "同樣是重新導向，為什麼有些情況要特別保留原本的請求方法？"
+        ]
+      },
+      {
+        "id": "L65-004~L72-005",
+        "a": "L65-004",
+        "b": "L72-005",
+        "question_score": 0.267,
+        "answer_score": 0.091,
+        "key_score": 0.571,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "鴿子走得越快，點頭會怎麼變？走到多快就不點了？",
+          "鶴走得越快，頭能停住的時間會怎麼變？"
         ]
       },
       {
@@ -510869,6 +513565,20 @@
         ]
       },
       {
+        "id": "P72-001~P72-002",
+        "a": "P72-001",
+        "b": "P72-002",
+        "question_score": 0.174,
+        "answer_score": 0.155,
+        "key_score": 0.667,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "拿真的速滑冰刀到真的冰場去量，最滑的冰溫在每片冰上都一樣嗎？",
+          "在真的冰場上替冰面多塗一層液膜，冰刀會比較滑嗎？"
+        ]
+      },
+      {
         "id": "R41009~R41010",
         "a": "R41009",
         "b": "R41010",
@@ -511342,6 +514052,20 @@
         "questions": [
           "紅血球為什麼不是一顆圓滾滾的球？",
           "紅血球怎麼擠過比自己平常形狀還窄的通道？"
+        ]
+      },
+      {
+        "id": "P64-012~P72-001",
+        "a": "P64-012",
+        "b": "P72-001",
+        "question_score": 0,
+        "answer_score": 0.148,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰越冷越滑，還是越接近 0 °C 越滑？",
+          "拿真的速滑冰刀到真的冰場去量，最滑的冰溫在每片冰上都一樣嗎？"
         ]
       },
       {
@@ -513344,6 +516068,20 @@
         "questions": [
           "唱歌的人覺得一個房間「撐得住聲音」，靠的是耳朵聽到的，還是眼睛看到的？",
           "歌手喜不喜歡一個場地，看的是什麼？"
+        ]
+      },
+      {
+        "id": "P64-012~P72-002",
+        "a": "P64-012",
+        "b": "P72-002",
+        "question_score": 0,
+        "answer_score": 0.095,
+        "key_score": 0.533,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "冰越冷越滑，還是越接近 0 °C 越滑？",
+          "在真的冰場上替冰面多塗一層液膜，冰刀會比較滑嗎？"
         ]
       },
       {
@@ -519763,10 +522501,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-12-pool-4299",
-    "target_count": 4299,
+    "revision": "2026-11-12-pool-4321",
+    "target_count": 4321,
     "reviewed_on": "2026-11-12",
-    "reason": "從4257續接；2026-11-12 第二十一輪素材審視：站主說「原來如此要繼續擴充」「一直持續審下去」；十二位作者（F42–F53）只照第二十輪覆核在 still_missing 點名的原文補讀第二十輪留下的十二題後備長題；提案經非作者覆核（V45–V56）；十二題都仍後備，沒有新長題。舊說明：2026-11-12 第二十輪素材審視：六位作者先在全池大範圍去重（各列 20–30 個候選），再從零研究十二個新長題——F36 天空偏振與夜光雲、F37 啄木鳥與象鼻、F38 摩擦起電與撕膠帶、F39 名琴與動物對拍、F40 發光菇與植物發熱、F41 海色與海中發光；138 個提案經非作者覆核（V39–V44），全部收（照收 33、改字後收 105）；十二題都留後備，沒有新長題。",
+    "reason": "從4299續接；2026-11-12 第二十二輪素材審視：八位作者（F54–F61）只照第十六到十九輪覆核點名的原文補讀八題後備組題；提案經非作者覆核（V57–V64）；八題都仍後備，沒有新長題。舊說明：2026-11-12 第二十輪素材審視：六位作者先在全池大範圍去重（各列 20–30 個候選），再從零研究十二個新長題——F36 天空偏振與夜光雲、F37 啄木鳥與象鼻、F38 摩擦起電與撕膠帶、F39 名琴與動物對拍、F40 發光菇與植物發熱、F41 海色與海中發光；138 個提案經非作者覆核（V39–V44），全部收（照收 33、改字後收 105）；十二題都留後備，沒有新長題。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -524066,7 +526804,29 @@
       "E71-010",
       "E71-011",
       "E71-012",
-      "E71-013"
+      "E71-013",
+      "P72-001",
+      "P72-002",
+      "P72-003",
+      "P72-004",
+      "P72-005",
+      "P72-006",
+      "H72-001",
+      "L72-001",
+      "L72-002",
+      "L72-003",
+      "L72-004",
+      "L72-005",
+      "L72-006",
+      "L72-007",
+      "L72-008",
+      "L72-009",
+      "L72-010",
+      "L72-011",
+      "L72-012",
+      "L72-013",
+      "K72-001",
+      "K72-002"
     ],
     "overflow": [
       {
@@ -555080,6 +557840,425 @@
       "reading_status": "未讀（403）",
       "origin": "wave71-physics-20261111",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave71-physics.json"
+    },
+    {
+      "id": "K72-NA001",
+      "question": "Zhang & Ertbjerg 2019（Paper II）、Zhang 等 2021（Paper III）的原始數字能不能把 K67-003 由 0.5 升到 0.75？",
+      "existing_ids": [
+        "K67-003"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC REST 列出兩篇在 HELDA 的『Free pdf』連結，但 curl 只拿到 DSpace 前端殼頁、WebFetch 對 Paper II 回 Anubis 機器驗證；core.ac.uk 兩個 PDF 照規定各用原連結再試一次仍 Cloudflare 403。沒有拼 handle 或 API 網址。 原提案 F55-NA001。",
+      "reentry_condition": "HELDA 原連結能正常回 PDF，或出現出版社開放版時重讀。",
+      "reading_status": "讀不到（前端殼頁／機器驗證／403）",
+      "origin": "wave72-food-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-food.json"
+    },
+    {
+      "id": "K72-NA002",
+      "question": "一般消費者盲測：同一頭牛左右配對、冷凍數週以上、熟成天數相同的鮮肉對冷凍肉（非 Kim 研究群）",
+      "existing_ids": [
+        "K67-004",
+        "K68-001",
+        "K67-005"
+      ],
+      "source_ids": [],
+      "reason": "本輪找到的候選都不合格：Edwards 等 2025（F55-S002）的左右配對比的是解凍後切 vs 冷凍中切，兩邊都凍過；Dobbins 等 2024 MMB 18249（Texas Tech／Legako，左右配對、凍 6 個月）只有受訓評審，且主題是包裝色澤（讀了摘要與 print 頁文字，f55src/mmb18249_print.txt），受訓評審多汁下降與 K66-006 同方向；Dahunsi 等 2025 MMB 19030（Setyabrata，Kim 群出身）比的是冷凍庫種類，會變成產品建議（讀了第一頁摘要，f55src/mmb19030.txt）；Kim 等 2024 MMB 17604 是 Kim 群（只讀摘要）；Kantono 等 2021（PMC8161130）是脈衝電場處理，與題目無關（已刪快取）。 原提案 F55-NA002。",
+      "reentry_condition": "找到非 Kim 群、左右配對、只差在凍與不凍、凍數週以上的開放消費者盲測時重提。",
+      "reading_status": "只讀到摘要或部分；未提核心",
+      "origin": "wave72-food-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-food.json"
+    },
+    {
+      "id": "K72-NA003",
+      "question": "第三研究群以切片或冷凍電鏡『量化』肉類冰晶長在細胞內外的比例",
+      "existing_ids": [
+        "K67-001"
+      ],
+      "source_ids": [
+        "K72-S001"
+      ],
+      "reason": "Europe PMC 以 intracellular／extracellular ice、freeze substitution、micro-CT、cryo-SEM 搭配肉類關鍵字查開放子集，只得到綜述、魚蝦、細胞冷凍保存或肉類加工新技術，沒有量化細胞內外比例的肉類原研究；WebSearch 也沒有。唯一找到的影像研究 F55-S001 看的是解凍後空洞，不是冰晶位置，已另提 F55-001。Martino & Zaritzky 1986、ORBi Qian／Li 群沿前幾輪紀錄未重試。 原提案 F55-NA003。",
+      "reentry_condition": "出現開放全文、定量冰晶細胞內外比例的肉類原研究時。",
+      "reading_status": "搜尋未見合格全文",
+      "origin": "wave72-food-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-food.json"
+    },
+    {
+      "id": "K72-NA004",
+      "question": "真空包裝下 −18 °C 與 −40 °C 以下『長期』儲存比較（獨立、非冰箱廠商）",
+      "existing_ids": [
+        "K66-011",
+        "K66-012",
+        "K68-002"
+      ],
+      "source_ids": [
+        "K72-S002"
+      ],
+      "reason": "James 等 2025 IJR（澳洲盒裝牛羊肉 −12／−18／−24 °C、38 個月）期刊付費、MLA 報告 Cloudflare 403，且主題是保存期限；Choi 等 2018 羔羊深凍（PMC6238029）屬 Hong GP 群（已封頂）；其他 Europe PMC 結果是醃製、魚蝦或短期。只找到溫度範圍窄的 F55-S002，已提 F55-002 並註明只部分回應。 原提案 F55-NA004。",
+      "reentry_condition": "找到開放全文、真空包裝、含 −40 °C 以下組、儲存數月以上且非已用研究群的研究時。",
+      "reading_status": "讀不到（付費／403）或研究群已封頂",
+      "origin": "wave72-food-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-food.json"
+    },
+    {
+      "id": "H72-NA001",
+      "question": "迷路的人在森林與撒哈拉走好幾小時：看得到太陽能走直、陰天就繞圈？蒙眼繞的圈方向固定嗎？（Souman 等 2009 原文）",
+      "existing_ids": [
+        "H65-001"
+      ],
+      "source_ids": [
+        "H72-S002",
+        "H72-S003"
+      ],
+      "reason": "原文仍讀不到：doi→linkinghub meta refresh→cell.com 原連結本輪再試一次，仍 Cloudflare 403『Just a moment』；Europe PMC 書目只列 Subscription required；Bielefeld 典藏紀錄無檔（前輪已確認，本輪 WebSearch 兩次亦未出現其他公開全文）。只讀到 Europe PMC 摘要與 CORDIS 新聞轉述，依規不算全文、不計條數。 原提案 F58-NA001。",
+      "reentry_condition": "Souman 2009 全文出現在 PMC、機構典藏或可直接取得的出版社頁；屆時 H65-001 可由新聞稿升級，另約 +1.0（太陽有無、蒙眼圈方向不固定）。",
+      "reading_status": "摘要（Europe PMC abstractText）＋機構新聞轉述；全文未讀",
+      "origin": "wave72-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-human.json"
+    },
+    {
+      "id": "H72-NA002",
+      "question": "頸部肌肉振動會不會讓閉眼走向目標的路線偏掉？（Bove、Diverio、Pozzo、Schieppati 2001，J Appl Physiol）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 書目以 DOI 10.1152/jappl.2001.91.2.581 列出；照 DOI 取一次，journals.physiology.org 回 Cloudflare 403，不繞過。Pavia 典藏紀錄 iris.unipv.it/handle/11571/117449（WebSearch 結果）寫『no file associati』。只讀到摘要（約 4 公尺、振動中偏向振動對側），不算。 原提案 F58-NA002。",
+      "reentry_condition": "出版社頁或典藏有公開全文；可當『正前方被操弄』的第三個獨立操弄（約 0.25–0.5，與 F58-001 同類，需守同類封頂）。",
+      "reading_status": "只讀摘要",
+      "origin": "wave72-human-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-human.json"
+    },
+    {
+      "id": "L72-NA001",
+      "question": "換一個研究群、看 855 種鳥：巢有沒有屋頂，決定得了蛋的長短嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "非作者覆核 V59（2026-11-12）退回：不是 round18 still_missing 點名的原文（點名的是 Hays & Hauber、Chou 等、Shatkovska、Maclean、第二研究群斜面實驗；round17 曾點名的『獨立研究群的巢型與蛋尖度研究』也要求尖度），依規定嚴查：不回答本題主問的尖度；與 L66-016（Duursma，310 種，長寬比與圓頂巢）同一問題、同一指標，能新增的只剩『巢型與長短不是一對一』，而這一點原文自己在摘要、結果、討論、結論間方向不一，作者的結論又是相反的『巢決定蛋形』；提案還把 588 種寫成 855 種、用反方向的路徑結果回答問題。改寫成可用的版本只能是『有一篇研究的主分析看不出巢型與長短綁在一起，但作者自己的文字前後矛盾』，0 條、對轉折無貢獻，不入池。0.25 條不合理，改為 0。 原提案 F56-001。",
+      "reentry_condition": "覆核理由所列的缺口補上後重提。",
+      "reading_status": "已讀來源，核心退回",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA002",
+      "question": "鴴鷸類的四顆蛋為什麼尖端都朝中心、朝下？",
+      "existing_ids": [],
+      "source_ids": [
+        "L72-S002"
+      ],
+      "reason": "只在 Tulp 等 2012 PLoS ONE 前言讀到一句無引文的背景敘述（尖端朝中心朝下可省巢空間、提高傳熱），不是量測；still_missing（4）要的是直接量現生地面巢蛋擺放方向的原研究（如 Maclean 1974），原文找不到合法全文。不計。 原提案 F56-NA001。",
+      "reentry_condition": "讀到直接量蛋在巢中擺放方向與傳熱或孵化效率的原研究全文（Maclean 1974 或其他）。",
+      "reading_status": "只讀到他文前言一句",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA003",
+      "question": "3D 列印的蛋在斜坡上，哪一種形狀最不會滾走？（Hays & Hauber 2018）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "CUNY 論文 PDF 與 JEB 期刊版依原連結各再試一次，仍是 Cloudflare 403；未繞過。WebSearch 摘要稱錐度在傾角大於 2 度時抑制位移、伸長反而滾更遠，但只是搜尋摘要與新聞稿，不計。 原提案 F56-NA002。",
+      "reentry_condition": "CUNY Academic Works 或 JEB 可正常取得，或出現其他公開典藏連結。",
+      "reading_status": "只有摘要與新聞稿",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA004",
+      "question": "蛋太輕的鳥，是不是比較需要有牆的巢？（Chou、Tuanmu、Hung 2025）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "DOI 403、Europe PMC REST 500、europepmc.org 403；只讀到研究新聞稿，不計。 原提案 F56-NA003。",
+      "reentry_condition": "PMC12440621 全文可經公開連結取得。",
+      "reading_status": "只讀到研究新聞稿",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA005",
+      "question": "剪掉 Lsdia1 生出左旋蝸牛的原論文怎麼說？（Abe & Kuroda 2019 Development）",
+      "existing_ids": [
+        "L68-004"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC 搜尋 API 列出的 Free pdf（dev.biologists.org）回 Cloudflare 403，停；WebSearch 另列 cob.silverchair.com 同出版社 PDF，依規定不改抓同一資料庫的另一主機。L68-004 維持綜述層級，不升級。 原提案 F57-NA001。",
+      "reentry_condition": "PMC 或作者機構典藏出現此文的開放全文，或出版社頁面在無機器驗證時可直接取得。",
+      "reading_status": "未讀（403）",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA006",
+      "question": "日本 Euhadra 蝸牛的左右旋是哪個基因決定的？（Lewis 等 2026）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "照第十八輪的原 DOI 再試一次，bioRxiv 仍回 429；期刊版 Curr Biol 訂閱。屬網絡 B，即使讀到最多 +0.5。 原提案 F57-NA002。",
+      "reentry_condition": "bioRxiv 限流解除後用同一 DOI 正常下載一次，或 Europe PMC／PMC 出現開放全文。",
+      "reading_status": "只有摘要（第十八輪）",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA007",
+      "question": "左旋與右旋的門螺在雜交帶相遇，會不會混成一群？（Koch 等 2017 Mol Ecol）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 標為訂閱、無 PMC；WebSearch 只見書目與摘要頁（zendy、BVS、agris），沒有作者典藏或開放全文。WebSearch 摘要提到羅馬尼亞 Bucegi 山區右旋 Alopia livida 與左旋 A. straminicollis 的兩個雜交帶、多數個體基因組混合，但只來自搜尋摘要，不寫成核心、不計。 原提案 F57-NA003。",
+      "reentry_condition": "作者（Hausdorf 研究室，漢堡）機構典藏或開放版本出現。",
+      "reading_status": "只見書目與搜尋摘要",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA008",
+      "question": "Frost 1978（JEB 74:187）與 Davies & Green 1988（JEB 138:71）原文",
+      "existing_ids": [
+        "L65-003",
+        "L69-006"
+      ],
+      "source_ids": [],
+      "reason": "照規定只用原本的公開連結各再試一次：doi.org/10.1242/jeb.74.1.187 轉 journals.biologists.com 回 403；搜尋列出的 cob.silverchair.com/jeb/article-pdf/2639033/jexbio_138_1_71.pdf 回 403。未換客戶端、未改抓其他主機。 原提案 F60-NA001。",
+      "reentry_condition": "期刊頁可正常取得時重讀；L65-003 約 +0.5，L69-006 約 +0.5。",
+      "reading_status": "未讀到（403）",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA009",
+      "question": "Friedman 1975 Nature、Fujita 2002（J Zool，鴿子重心）、Green, Davies & Thorpe 1994（J Comp Physiol A，降落點頭）、Bangert 1960、Necker 等 2000 合法全文",
+      "existing_ids": [
+        "L65-003",
+        "L69-002",
+        "L69-003",
+        "L69-006"
+      ],
+      "source_ids": [],
+      "reason": "Friedman 上輪已確認付費預覽，未重試；Fujita 2002 搜尋只列 cambridge.org 付費頁；Green 1994 搜尋只列 Springer 與第三方轉存 elogim.com（不用）、另列 cob.silverchair.com/jeb/article-pdf/3412323/jexbio_180_1_85.pdf 試一次回 403；Necker 2000 搜尋找不到題名與期刊；Bangert 1960 無結果。 原提案 F60-NA002。",
+      "reentry_condition": "任一篇有合法開放全文時，對應核心由轉述升級，各約 +0.25。",
+      "reading_status": "未讀到（付費、403 或找不到）",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA010",
+      "question": "Cronin 等 2005 Current Biology（美洲鶴覓食點頭）合法全文",
+      "existing_ids": [
+        "L69-005"
+      ],
+      "source_ids": [
+        "L72-S006"
+      ],
+      "reason": "搜尋列出的 mdsoar.org/items/e2a24378-…/full 再試一次仍回 400；ScienceDirect／cell.com 上兩輪 403，未重試其他主機。改以同組同批鶴的研討會摘要（F60-S002）補成 F60-002，只計 0.25。 原提案 F60-NA003。",
+      "reentry_condition": "期刊全文可讀時，L69-005 與 F60-002 合計約 +0.25–0.5（同群上限內）。",
+      "reading_status": "未讀到（400）",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA011",
+      "question": "小鸊鷉追快的獵物不點頭、追慢的獵物才點頭？（Gunji、Fujita、Higuchi）",
+      "existing_ids": [
+        "L69-004"
+      ],
+      "source_ids": [
+        "L72-S007"
+      ],
+      "reason": "只讀到 2012 年學會海報摘要：只有 1 隻鳥、沒有數字；期刊版 2013 J Comp Physiol A 為 Springer 付費。內容很適合當『點頭為了看』的旁證，但證據太薄，不成核心。 原提案 F60-NA004。",
+      "reentry_condition": "期刊版合法全文可讀時，可成『水下點頭隨獵物難度變』一個核心，約 0.5（Fujita 共同作者，與 L65-008 的研究群要一併看上限）。",
+      "reading_status": "只讀到研討會摘要",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA012",
+      "question": "非 Troje 群的前衝期視覺實驗（still_missing（5））",
+      "existing_ids": [
+        "L69-001"
+      ],
+      "source_ids": [],
+      "reason": "Europe PMC 開放全文查詢（head-bobbing＋鳥類）與兩次網路搜尋都沒有找到 Troje 群以外、直接測前衝期看不看得見的實驗；Kano 等 2022（Sci Rep，Konstanz，PMC9646700）只在方法中因引用 Jiménez Ortega 2009 而不排除前衝期，本身沒有測；Bhagavatula 等 2011（虎皮鸚鵡降落）不是點頭。 原提案 F60-NA005。",
+      "reentry_condition": "找到非 Troje 群的前衝期辨形或動態偵測實驗原文時，約 +0.75。",
+      "reading_status": "未找到",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA013",
+      "question": "其他順手看過但不採用的來源",
+      "existing_ids": [
+        "L65-009",
+        "L65-010"
+      ],
+      "source_ids": [],
+      "reason": "Frontiers fvets.2025.1554240 就是池中 L65-S007（PMC12162510，鵝）；Frontiers conf.fnbeh.2012.27.00351 是 Troje 等的會議摘要（Troje 群已封頂）；Ros & Biewener 2017 就是池中 L65-S009；Notornis 18(3) Storer 1971 紐西蘭小鸊鷉只有一句『頭像骨頂雞一樣前後點』，不成核心；canadianfieldnaturalist.ca 的下載連結回 301，未跟隨（上輪已判為 Lisney & Troje，屬封頂群）。快取已刪。 原提案 F60-NA006。",
+      "reentry_condition": "無。",
+      "reading_status": "略讀或未讀",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA014",
+      "question": "冷害敏感與耐冷組織的粒線體在 10°C 附近出現轉折（Lyons & Raison 1970）原文",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Europe PMC 書目顯示非開放；WebSearch 給出 pmc.ncbi.nlm.nih.gov/articles/PMC396419（未確認即此文），curl 預設標頭取得 reCAPTCHA 驗證頁，依規定停止、不換客戶端。 原提案 F61-NA001。",
+      "reentry_condition": "有合法開放全文時，可為機制章加約 0.5（敏感與耐冷組織的實測對照）。",
+      "reading_status": "未讀（只見搜尋摘要）",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA015",
+      "question": "Crisosto、Mitchell、Ju 1999 HortScience 桃、油桃、李在 0 與 5°C 的冷害分類原文",
+      "existing_ids": [
+        "L66-006"
+      ],
+      "source_ids": [
+        "L72-S014"
+      ],
+      "reason": "搜尋結果只有 ACNP、IIF-IIR 書目與 postharvest.ucdavis.edu/node/5726；後者 curl 回 Cloudflare 403，未繞過。沒找到 journals.ashs.org 的公開連結。 原提案 F61-NA002。",
+      "reentry_condition": "取得合法全文後，可把殺傷區由綜述升為原始實驗，約 +0.25。",
+      "reading_status": "只見他站摘要轉述",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA016",
+      "question": "Maul 等 2000 J Food Sci 受訓評審：5°C 4 天番茄熟香與甜度評分下降",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "搜尋只得 AGRIS／ACNP 書目，未見開放全文連結；未嘗試其他網址。 原提案 F61-NA003。",
+      "reentry_condition": "有開放全文時可加約 0.5（受訓評審、非 Klee 群），但需與 F61-003 合計封頂。",
+      "reading_status": "未讀",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA017",
+      "question": "個別收縮膜包裝讓櫛瓜冷藏不凹斑（Megías 等 2015 PLoS One）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已讀摘要與結果中段（f61src/PMC4503597.txt，sha256 前 16 碼 ae39f1668b1022e0）；主旨是包裝處理方法，放進片中等同保存建議，違反本題 drop_if。 原提案 F61-NA004。",
+      "reentry_condition": "不再進本題；若另開「包裝科學」題可議。",
+      "reading_status": "摘要與部分結果",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA018",
+      "question": "辣椒 F2 群體的種子褐變與 JAR1、ERF11 表現相關（Lee 等 2022 Sci Rep，PMC8873250）",
+      "existing_ids": [],
+      "source_ids": [
+        "L72-S012"
+      ],
+      "reason": "與 F61-S005 同研究群、同一對親本，主要是基因相關係數，對觀眾結論沒有新改變。 原提案 F61-NA005。",
+      "reentry_condition": "無。",
+      "reading_status": "摘要與方法（f61src/PMC8873250.txt，sha256 前 16 碼 9cdf6f3a94072b5a）",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "L72-NA019",
+      "question": "番茄不同發育期耐冷的分子與生化差異（Camalle 等 2024 Mol Hortic，PMC11375913）",
+      "existing_ids": [
+        "L66-004"
+      ],
+      "source_ids": [],
+      "reason": "已下載（f61src/PMC11375913.txt，sha256 前 16 碼 18e42c6bd6055849）但未讀；作者群含 Volcani 的 Lers，與 L66-S003 同研究群，加入會超過同群封頂。 原提案 F61-NA006。",
+      "reentry_condition": "覆核放寬同群封頂時再讀其電解質滲漏量測。",
+      "reading_status": "未讀",
+      "origin": "wave72-life-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-life.json"
+    },
+    {
+      "id": "P72-NA001",
+      "question": "速滑選手實際滑的時候，直道和彎道的冰摩擦一樣嗎？摩擦會隨速度變大嗎？（de Koning 等 1992）",
+      "existing_ids": [
+        "P64-014"
+      ],
+      "source_ids": [
+        "P72-S004"
+      ],
+      "reason": "只讀到 Europe PMC 摘要（直道 0.0046、彎道 0.0059、最低約 −7 °C、隨速度增加），全文訂閱制，WebSearch 沒有作者稿或機構典藏版；照規定摘要不計。−6 到 −9 °C 最低點已由 P64-014 經 Lever 等轉述。 原提案 F54-NA001。",
+      "reentry_condition": "出現合法開放全文（作者稿、機構典藏）時，可把 P64-014 的 de Koning 由轉述升為原文並補直彎道與速度關係，約 0.5。",
+      "reading_status": "只讀摘要",
+      "origin": "wave72-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+    },
+    {
+      "id": "P72-NA002",
+      "question": "冰滑是摩擦熱融出來的嗎？Bowden 與 Hughes 1939 冰洞實驗原文（金屬比木頭雪板摩擦高）",
+      "existing_ids": [
+        "P64-008"
+      ],
+      "source_ids": [],
+      "reason": "doi.org/10.1098/rspa.1939.0104 → royalsocietypublishing.org 仍 Cloudflare 403（照規定只重試一次）；P64-008 維持專文轉述。 原提案 F54-NA002。",
+      "reentry_condition": "Royal Society 頁在不繞過的環境可讀時，P64-008 約 +0.25。",
+      "reading_status": "未讀",
+      "origin": "wave72-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+    },
+    {
+      "id": "P72-NA003",
+      "question": "Kietzig 2009 J Appl Phys／2010 UBC 博士論文：隔熱與熱導率對冰摩擦的影響原文",
+      "existing_ids": [
+        "P68-001"
+      ],
+      "source_ids": [],
+      "reason": "UBC Open Collections 紀錄頁仍是『unusual activity』封鎖頁（只重試一次）；J Appl Phys 2009 沒有合法開放全文。 原提案 F54-NA003。",
+      "reentry_condition": "UBC 典藏可讀時，P68-001 最多升到 0.75（同群上限內）。",
+      "reading_status": "未讀",
+      "origin": "wave72-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+    },
+    {
+      "id": "P72-NA004",
+      "question": "骷髏雪橇刃滑過後冰會再結晶、碎裂嗎？（Seymour-Pierce、Lishman、Sammonds 2017 Phil Trans A）",
+      "existing_ids": [
+        "P68-003",
+        "P64-018"
+      ],
+      "source_ids": [],
+      "reason": "作者稿兩個典藏位址：LSBU 憑證過期、UCL 403；Europe PMC 列出的 Unpaywall 主機無法解析。只看到 Europe PMC 摘要（冰在鋼刃下再結晶與微裂、冰阻占骷髏雪橇能量耗散 40–50% 為估算），不計。 原提案 F54-NA004。",
+      "reentry_condition": "LSBU 修好憑證後，可評估補『刃下冰再結晶＝曾經受熱』的非 Bonn 證據，與 P68-003 並列，約 0.25–0.5。",
+      "reading_status": "只讀摘要",
+      "origin": "wave72-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+    },
+    {
+      "id": "P72-NA005",
+      "question": "音不準的人是因為聽不出來嗎？（Pfordresher & Brown 2007）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "原連結（搜尋結果所列 acsu.buffalo.edu PDF）curl 再試一次仍 TLS 憑證驗證失敗，未關閉驗證、未換客戶端。Larrouy-Maestri 等 2015（PMC4550346，本輪順帶下載 f59src/pmc_PMC4550346.html，sha256 前 16 碼 becc9866982ce520）引言轉述 Pfordresher & Brown 的 1105 人調查（59% 自稱無法模仿簡單旋律、15% 實際有困難），是轉引，不計。 原提案 F59-NA001。",
+      "reentry_condition": "作者網站能正常以預設 TLS 驗證讀取，或出版社／機構典藏有公開全文時。",
+      "reading_status": "未讀（TLS 失敗）",
+      "origin": "wave72-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+    },
+    {
+      "id": "P72-NA006",
+      "question": "歌手在不同房間的調整：Luizard 等 2020 JASA EL 期刊版",
+      "existing_ids": [
+        "P69-005"
+      ],
+      "source_ids": [],
+      "reason": "doi.org/10.1121/10.0000715 再試一次仍轉 pubs.aip.org 回 403 機器驗證；搜尋另見 hal-02550579，但那是同群另一篇 ICVPB 2020，不是期刊版。P69-005 維持 0.5。 原提案 F59-NA002。",
+      "reentry_condition": "期刊版有合法公開全文時。",
+      "reading_status": "未讀（403）",
+      "origin": "wave72-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
+    },
+    {
+      "id": "P72-NA007",
+      "question": "合唱歌手偏好的自聽比例與早期反射（KTH QPSR 報告）",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪搜尋沒有出現 diva-portal 該紀錄的公開連結（只出現 KTH 另一篇博士論文的答辯公告頁與 Ternström 等的轉述），前輪的確切網址未留紀錄；不拼湊網址。合唱自聽題目也與浴室距離較遠。 原提案 F59-NA003。",
+      "reentry_condition": "搜尋或目錄頁給出 diva 全文連結且可正常讀取時。",
+      "reading_status": "未讀（無公開連結可重試）",
+      "origin": "wave72-physics-20261111",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave72-physics.json"
     },
     {
       "question": "乳酪孔洞為什麼會從微小乾草顆粒附近長出來？",
