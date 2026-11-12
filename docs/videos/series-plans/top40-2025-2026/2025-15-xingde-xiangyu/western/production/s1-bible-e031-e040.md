@@ -181,7 +181,7 @@
 
 **Peg 的帳本、鉛筆、眼鏡與袋子**
 
-- 帳本：第 34 集攤在她左膝；第 35 集在帆布袋裡；第 37 集在長椅上；第 39–40 集抱在胸前、睡著時也抱著。字從不入鏡，只念：第 34 集 "Twenty cups. Three days." "Sand's thirty-two bucks a bag."（選用：第 35 集 "Sand. Paid back."）。
+- 帳本：第 34 集攤在她左膝；第 35 集在帆布袋裡；第 37 集在長椅上；第 39–40 集抱在胸前、睡著時也抱著。字從不入鏡，只念：第 34 集 "Twenty cups. Two days." "Sand's thirty-two bucks a bag."（選用：第 35 集 "Sand. Paid back."）。
 - 鉛筆：插在帳本書脊；第 34 集掉在地上，第 35 集起又插回去（不拍撿）。
 - 眼鏡：玳瑁框，**每一鏡都戴在臉上**，包括第 40 集睡著。
 - 帆布袋：出門在左肩；在廠裡放在長椅上她身邊。收據（第 52 集的證物）一直在帳本封皮夾層；當票在書頁裡。
@@ -483,4 +483,12 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
   道具句：螺絲起子 `a plain wooden-handled screwdriver as long as her hand`；點火鈕 `a round red push button on a small black steel box on the side of the furnace, just above the valve`。第 37 集技師把扳手移到工具箱上方，Gus 從那裡拿走。
   **`remelt` 場景圖要多畫一版左牆還沒掛玻璃管的**（第 36 集掛管以前），或那段鏡頭背對左牆。十二格架由 Gus 與 Sparks 抬；黑板靠在工作台靠爐子那頭的左側；Hank 的電話不加濾波（他在自己店裡露臉）；第 38 集沒人叫 Fiona 的名字。
   寫稿者新加、站主 2026-11-12 照建議定案：第 36 集 c25 Sparks "That white car's been there all afternoon."；第 38 集 c10 Nora "You really don't look at names?"。
+
+## 審稿後補定（2026-11-12，`../review/2026-11-12-e031-e035-storyboard.md`）
+
+- 新場景版本 `remelt-cold-open`：帆布已扯下、三號爐冷且蒙灰，有練習爐、黃線、鋼板（已加進 `cast.json`）；第 32 集 c28 起到第 34 集都用這一版，不用蓋帆布的 `remelt-cold`。
+- 第 34 集 Theo 的名字第一次被叫之前沒鋪：c34 改成 "Charge me market rent. Clause two."。平板只從 Theo 左肩後或正側面拍，螢幕側成一條細邊。
+- 第 35 集 Elias 右手把筆推到估價單旁、指尖點一下簽名處（"Not until my lawyer reads it." 的起因）；估價單最後回到 Nora 手邊、對摺收進外套內袋；保付支票連同租約、筆一起推過去。
+- 說話的臉用穩定的光：Brandt `soft grey window light across her face from frame left`，檯燈只照桌面；Elias 背窗時 `face evenly lit by soft daylight off the table`。
+- 帳本那句是 "Twenty cups. Two days."（跟 decisions 一致）。
 
