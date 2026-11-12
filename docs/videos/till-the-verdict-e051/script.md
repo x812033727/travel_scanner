@@ -29,7 +29,7 @@
 
 | 角色 | 參考圖 | 本集的樣子 |
 | --- | --- | --- |
-| Nora | `assets/refs/nora-work.jpg`（r3 a）、`assets/refs/nora-portrait.jpg` | 整集 `work`（齊肩髮綁低馬尾、護目鏡推在頭頂、深色帆布圍裙、灰色亨利衫、深色工作褲、工作靴）；刻字時灰色亨利衫的袖子捲到手肘；**c18 起眼睛紅、臉頰有淚痕，到第一場結束每鏡再寫一次**；第二場起臉乾了、眼睛還有點紅；拍到左手就寫 `a plain narrow white-gold band with no stone, on her left ring finger`；手機 `a plain black phone in a clear case, no logo, about the size of her palm`（c06–c11）；本集沒有任何一鏡笑；原聲 |
+| Nora | `assets/refs/nora-work.jpg`（r3 a）、`assets/refs/nora-portrait.jpg` | 整集 `work`（齊肩髮綁低馬尾、護目鏡推在頭頂、深色帆布圍裙、灰色亨利衫、深色工作褲、工作靴）；刻字時灰色亨利衫的袖子捲到手肘；**c16 起眼睛紅、c17 起臉頰有淚痕，到第一場結束每鏡再寫一次**；第二場起臉乾了、眼睛還有點紅；拍到左手就寫 `a plain narrow white-gold band with no stone, on her left ring finger`；手機 `a plain black phone in a clear case, no logo, about the size of her palm`（c06–c11）；本集沒有任何一鏡笑；原聲 |
 | Peg | `assets/refs/peg-portrait.jpg`（`visit`） | 整集 `visit`（燕麥色開襟衫、玳瑁框眼鏡**每一鏡戴在臉上**、平底包鞋）；拍到左手就寫 `a faint pale band of skin on her left ring finger where a ring used to be`；帳本 `a small worn brown pocket ledger about the size of her palm, a pencil tucked in its spine`（c37 起句後接 `, the lining of its brown cover slit open along one edge`）；第三場帆布袋在她左肩；本集沒有任何一鏡笑（"Good at math, aren't you." 是冷面）；原聲 |
 | Sparks（Rocco） | **待畫，必須先畫**（第 31–40 集清單第 4 位） | 基本款（平頭、小銀耳釘、黑 T 恤、灰工作褲、棕褐色隔熱袖套、工作靴）；護目鏡 `clear wraparound safety glasses`：第一場在安全線裡戴在眼睛上，第二場推在額頭上；第一場手上是熱吹管；本集不笑；原聲 |
 | Dana Okafor | **待畫，必須先畫**（第 11–20 集清單） | 基本款（高髮髻、黑色合身西裝外套配白 T 恤）；週六上午在她自己的事務所 `dana-office`，坐在書桌後，右手拿 `a black phone with no logo, about the size of her palm` 貼右耳；不笑；原聲、後製加電話濾波（c08、c10） |
@@ -47,7 +47,7 @@ Dana 的事務所（c08、c10）寫 `Saturday morning, soft grey-white daylight 
 
 **欄位怎麼讀**：
 - 「畫面裡有誰」寫位置、服裝、道具、表情、狀態。**每張露臉的臉都寫表情，寫成臉怎麼動**：眉、眼、嘴角、下巴、呼吸至少兩處。本集**沒有任何一鏡可以笑**：每張露臉的臉都加 `no smile at any moment, until the last frame`，表情句不寫任何嘴角往上的字。
-- **眼淚**：c18 起到 c26，Nora 每一鏡再寫一次眼睛紅、臉頰濕；第二場臉乾了、眼睛還有點紅。
+- **眼淚**：c16 起到 c26，Nora 每一鏡再寫一次眼睛紅、臉頰濕；第二場臉乾了、眼睛還有點紅。
 - **戒指與手**：拍到 Nora 的左手就寫 `a plain narrow white-gold band with no stone, on her left ring finger`；拍到 Peg 的左手就寫 `a faint pale band of skin on her left ring finger where a ring used to be`。
 - **黃線**：拍到爐子的鏡都寫 `a worn yellow safety line painted across the concrete floor` 與每個人在線的哪一邊；Nora 永遠在線外。
 - **道具**：畫面裡有這個道具，英文正文就一字不差照抄反引號裡那句（bible〈道具的樣子〉）；拿在手上的抄到描述為止，再接手的位置。證物架與藍面板**不寫數目**。燈箱上的紙與收據一律從工作台邊、低角度側拍，從不俯拍。
@@ -224,7 +224,7 @@ Dana 的事務所（c08、c10）寫 `Saturday morning, soft grey-white daylight 
 
 | 角色 | 造型 | 從哪一鏡到哪一鏡 | 跟 `cast.json` 不同？ |
 | --- | --- | --- | --- |
-| Nora | `work`（齊肩髮綁低馬尾、護目鏡推在頭頂、深色帆布圍裙、灰色亨利衫）；刻字時袖子捲到手肘；c18–c26 眼睛紅、臉頰濕；左手無名指 Elias 的戒指 | c02–c03、c05–c07、c09、c11、c13、c16–c18、c21、c23、c25、c27、c33、c41（c01、c04、c12、c14–c15、c24、c26 只有手） | 已有（`nora-work.jpg`）；袖子捲起寫在鏡上 |
+| Nora | `work`（齊肩髮綁低馬尾、護目鏡推在頭頂、深色帆布圍裙、灰色亨利衫）；刻字時袖子捲到手肘；c16–c26 眼睛紅、臉頰濕；左手無名指 Elias 的戒指 | c02–c03、c05–c07、c09、c11、c13、c16–c18、c21、c23、c25、c27、c33、c41（c01、c04、c12、c14–c15、c24、c26 只有手） | 已有（`nora-work.jpg`）；袖子捲起寫在鏡上 |
 | Peg | `visit`（玳瑁框眼鏡戴在臉上）；左手無名指一圈淡色皮膚；第三場帆布袋在左肩 | c06（遠）、c20、c22、c27（頭頂）、c31、c34（遠）、c35、c39–c40、c42（c36–c38 只有手） | 已有 |
 | Sparks | 基本款；護目鏡第一場戴在眼睛上、第二場推在額頭、c34 掛在領口 | c06（遠）、c19、c27、c30、c32、c34（背影）（c28 只有手） | 要畫定妝照 |
 | Dana | 基本款，坐在事務所的書桌後 | c08、c10 | 要畫定妝照 |
