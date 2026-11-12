@@ -465,3 +465,11 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
 - **道具**：新增 `furnace-no3`、`furnace-tarp`、`safety-line`、`steel-plate`、`practice-furnace`、`hot-glob`、`crooked-cup`、`chalk-tally`、`gus-flashlight`、`claire-padlock`、`young-grant-card`、`nora-jacket`、`nora-own-phone`、`sparks-glasses`、`gus-apron`、`gus-gloves`、`gus-face-shield`、`sparks-helmet`、`sparks-motorbike`、`dust-respirator`、`pell-batch-sacks`、`beam-balance`、`cobalt-jar`、`measuring-spoon`、`steel-bucket`、`charging-shovel`、`casting-mould`、`annealer`、`blue-panel`、`moving-blanket`、`drawing-tube`、`sand-bins`、`wall-clock`、`blackboard`、`chalk-stub`、`long-bench`、`sparks-jacket`、`tracker-bead`、`evidence-rack`、`stepladder`、`gas-valve`、`gas-fitting`、`pipe-wrench`、`tech-toolbox`、`tripod-work-light`、`smoke`、`fire-extinguisher`、`cashiers-check`、`lease`、`burner-estimate`、`grant-coffee`、`lyle-photo`、`ferry-notice`、`chandelier-sketch`、`fiona-binder`、`fiona-badge`、`fiona-watch`、`entry-form`、`date-stamp`、`hank-receipt`、`hank-phone`、`sand-pallets`、`waiting-hat`、`gus-pickup`。
   改：`case-tracker` → 玻璃管那一句（銅環、沒有字、水平；珠子另立 `tracker-bead`，琥珀色）；`blowpipe` → 四章同一句；`nora-ring` 的 note。原稿的 `elias-heat-gloves` 用第 51–60 集的 `heat-gloves`。
 - `set-remelt.jpg` 只當色調參考（〈要站主決定的〉第 10 條）；`ferry-terminal` 改成第 57 集的夜版，第 38、40、56 集用 `ferry-lobby`。
+
+## 寫稿時補定的事（2026-11-12）
+
+- **第 34–35 集**（寫稿者定）：Gus 在爐邊戴長隔熱手套（第 33 集最後一鏡起）；Sparks 在爐邊也戴一副，道具句 `a pair of long grey heat-resistant gloves reaching to the elbow`（已加進 `cast.json`）。練習爐有一扇小鐵門；Nora 的手機放在圍裙前袋；
+  Peg 的帳本與鉛筆分開寫兩句（鉛筆在手上時帳本句只寫到 `about the size of her palm`）。第 35 集補一鏡從對街長焦拍她低頭走出當鋪（晴天的 `harbor-sidewalk`），就是 Lyle 那張照片的角度，c26 的照片從這鏡截一格。
+  當鋪老闆用一小塊黑絨布包走戒指；支票、筆與對摺的估價單放在 Nora 外套內袋；Peg 用左手食指推戒指。**Peg 站在 Nora 右邊**（第 15 集分鏡就是這樣；本 bible 若有寫左邊的地方以這條為準）。
+  寫稿者新加、待站主確認：第 34 集 c24 Dana 句前 "Prosecutor's office called."（Reyes 的名字沒人說過）；第 35 集 c09 "One month. It's enough."、c31 "Number Three's burner is shot. I can't cover it."。
+
