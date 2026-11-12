@@ -471,16 +471,16 @@ Dr. Brandt、Theo、Dana、當鋪老闆、Cole 在第 1–20 集的清單裡，�
 - **第 34–35 集**（寫稿者定）：Gus 在爐邊戴長隔熱手套（第 33 集最後一鏡起）；Sparks 在爐邊也戴一副，道具句 `a pair of long grey heat-resistant gloves reaching to the elbow`（已加進 `cast.json`）。練習爐有一扇小鐵門；Nora 的手機放在圍裙前袋；
   Peg 的帳本與鉛筆分開寫兩句（鉛筆在手上時帳本句只寫到 `about the size of her palm`）。第 35 集補一鏡從對街長焦拍她低頭走出當鋪（晴天的 `harbor-sidewalk`），就是 Lyle 那張照片的角度，c26 的照片從這鏡截一格。
   當鋪老闆用一小塊黑絨布包走戒指；支票、筆與對摺的估價單放在 Nora 外套內袋；Peg 用左手食指推戒指。**Peg 站在 Nora 右邊**（第 15 集分鏡就是這樣；本 bible 若有寫左邊的地方以這條為準）。
-  寫稿者新加、待站主確認：第 34 集 c24 Dana 句前 "Prosecutor's office called."（Reyes 的名字沒人說過）；第 35 集 c09 "One month. It's enough."、c31 "Number Three's burner is shot. I can't cover it."。
+  寫稿者新加、站主 2026-11-12 照建議定案：第 34 集 c24 Dana 句前 "Prosecutor's office called."（Reyes 的名字沒人說過）；第 35 集 c09 "One month. It's enough."、c31 "Number Three's burner is shot. I can't cover it."。
 - **第 39–40 集**（寫稿者定）：39→40 Nora 坐在**黃線外的右牆根**（不是黃線內的空砂桶旁）；Sparks 在第 39 集 23:50 就把歪杯子掃進鋼桶，第 40 集 c01 直接提起那個桶。
   Remelt 的黃線在倉庫門前留一條一人寬的通道（倉庫門在黃線靠爐子那側）。第 39 集照時間線放兩聲 "Thursday."，蒙太奇五鏡；Nora 整集穿 `work`，收據從掛在牆上的外套口袋拿；供應商電話三句用 Gemini（`supplier-phone`），那幾鏡 Nora 的嘴不入鏡。
   藍色鈷粉寫 "even dusting"（避免畫成瘀青，第一批草稿先看）。第 40 集台詞照 bible："Pell's batch. I still remember the recipe."（outline 原句是 "I still remember the Pell recipe."）。
-  寫稿者新加、待站主確認：Gus "Walter's blue. Cobalt, twelve grams."、Nora "Third charge! Now!"；選用句 "Keep your credit." 收進第 39 集。
+  寫稿者新加、站主 2026-11-12 照建議定案：Gus "Walter's blue. Cobalt, twelve grams."、Nora "Third charge! Now!"；選用句 "Keep your credit." 收進第 39 集。
 - **第 31–33 集**（寫稿者定）：吵架隔著車頂，鏡頭守在車頭那一側；Elias 用**右手**從西裝內袋拿手機（`cast.json` 的 `elias-phone` note 已改）。她推開的是從街上看的左扇鐵門；手電筒放在工作台靠爐子那一端。
   帆布一角綁一條舊繩 `a frayed rope tied to one corner of the tarp`，扯下後堆在爐腳，第 33 集起收進倉庫、不入鏡。第 33 集："Huh?" 的回答是 Nora 遞一根冷的吹管給 Sparks；長凳、滾料台、還熱著的杯子另有英文句；第一筆粉筆 `a single short white chalk stroke…`。
   Sparks 在線外拿冷吹管時不戴手套，在爐邊每一鏡都戴。鞋：Gus 舊的棕色工作靴、`nineteen` 的 Nora 工作靴、Brandt 白色軟底鞋、Sparks 黑色工作靴。回憶的廂型車 `a plain old white van with no lettering`。
 - **第 36–38 集**（寫稿者定）：**Peg 03:30 怎麼到 Remelt**：約 03:00 Elias 從 Ashford 家自己開車載 Peg 一個人下山，車停在 Rosa's 那個街角，他留在車裡；不拍、Peg 也不提。Nora、Gus、Sparks 回火後整夜沒走；Gus 打報修電話，技師約 01:00 到；大門整夜開著散煙。
   道具句：螺絲起子 `a plain wooden-handled screwdriver as long as her hand`；點火鈕 `a round red push button on a small black steel box on the side of the furnace, just above the valve`。第 37 集技師把扳手移到工具箱上方，Gus 從那裡拿走。
   **`remelt` 場景圖要多畫一版左牆還沒掛玻璃管的**（第 36 集掛管以前），或那段鏡頭背對左牆。十二格架由 Gus 與 Sparks 抬；黑板靠在工作台靠爐子那頭的左側；Hank 的電話不加濾波（他在自己店裡露臉）；第 38 集沒人叫 Fiona 的名字。
-  寫稿者新加、待站主確認：第 36 集 c25 Sparks "That white car's been there all afternoon."；第 38 集 c10 Nora "You really don't look at names?"。
+  寫稿者新加、站主 2026-11-12 照建議定案：第 36 集 c25 Sparks "That white car's been there all afternoon."；第 38 集 c10 Nora "You really don't look at names?"。
 

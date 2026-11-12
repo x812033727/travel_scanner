@@ -176,11 +176,11 @@
 - **c17–c23**：Peg 與 Bev 不並排正臉，用過肩（bible〈同框撞臉〉）。
 - **c35–c39**：「Declined.」由 Bev 念、刷卡機背對鏡頭（bible〈必修〉）。
 - **c41**：Peg 付的是一晚，念「Room, eighty-nine.」；鈔票不入面額（bible〈時間線〉挑了審稿這邊）。
-- **c12–c13**：補「Why are you doing this?」「Bus is late.」（Peg 不解釋，細綱 conflict 要的）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 2 條）。
-- **c34**：補 Nora 的「Put the week on this.」（她想付一週、卡被拒、Peg 只付今晚）。**依 bible 建議，待站主確認**（同上）。
-- **Nora 的衣服**：`discharge`。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 1 條）。
-- **Bev 加圓臉、工頭紅鬍子**的選角。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 4 條）。
-- **Peg 的婚戒**有一顆很小的舊鑽（c11、c24、c28–c29、c41）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 5 條）。
+- **c12–c13**：補「Why are you doing this?」「Bus is late.」（Peg 不解釋，細綱 conflict 要的）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 2 條）。
+- **c34**：補 Nora 的「Put the week on this.」（她想付一週、卡被拒、Peg 只付今晚）。**依 bible 建議，站主 2026-11-12 照建議定案**（同上）。
+- **Nora 的衣服**：`discharge`。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 1 條）。
+- **Bev 加圓臉、工頭紅鬍子**的選角。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 4 條）。
+- **Peg 的婚戒**有一顆很小的舊鑽（c11、c24、c28–c29、c41）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 5 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
 - **c02**：Grant 說「Mom, get in the car.」時左手往身後的車門一指；**c07** 他把手機舉回右耳（細綱「phone still at his ear」，接點表 8→9 是垂在右手，所以本集讓他舉回去）。

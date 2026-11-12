@@ -174,11 +174,11 @@ c35 寫 `early evening in a narrow alley, the alley in shade, a strip of bright 
 - **Sienna 的提詞卡在左手**：c18 插鏡必拍（m05，第 50 集回收）。
 - **No. 1 的瓶口**：c21 一鏡推到瓶口那一點歪，接 c22 她的眼睛（認出來）。
 - **Grant 的說話句**：四句台前獨白各一鏡，寫「聲音平穩、低、輕」，不寫 warm、keynote、smooth；細綱的 "voice soft" 照這樣寫；說話的鏡一律 `no smile`，練過的閉嘴微笑只放在不說話的 c25、c26、c40。
-- **Grant 的第一句** "Forever is for every woman who keeps a home."：bible 補的台詞（細綱只寫他把 Forever 說成獻給守著家的女人）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 5 條）。
+- **Grant 的第一句** "Forever is for every woman who keeps a home."：bible 補的台詞（細綱只寫他把 Forever 說成獻給守著家的女人）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 5 條）。
 - **追光**：燈控室在大廳右牆靠舞台那頭的高處，追光從她右前上方斜打到臉上（不是從觀眾席後面打到後腦）；c37 光掃到她身上是一鏡，c41 淚掉、抬下巴是顏值鏡頭一鏡（bible〈細綱必修〉）。
-- **c35 Peg 在後巷車上看手機**：**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 9 條：第 26 或 29 集補一鏡；本集放在 Grant 說 "She lost our baby this spring." 之後）。讓第 30 集 "I heard every word up there." 有根據。
-- **新角色的選角**：Crane、Lyle、Sienna、Theo 照 `cast.json` 畫定妝照；帶位員、主持人、攝影師、客人不露清楚的臉。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 7 條）。
-- **Nora 的 `gown` 外貌句**已拿掉 "no jewelry, composed and still"（`cast.json` 2026-11-12）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 11 條）。
+- **c35 Peg 在後巷車上看手機**：**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 9 條：第 26 或 29 集補一鏡；本集放在 Grant 說 "She lost our baby this spring." 之後）。讓第 30 集 "I heard every word up there." 有根據。
+- **新角色的選角**：Crane、Lyle、Sienna、Theo 照 `cast.json` 畫定妝照；帶位員、主持人、攝影師、客人不露清楚的臉。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 7 條）。
+- **Nora 的 `gown` 外貌句**已拿掉 "no jewelry, composed and still"（`cast.json` 2026-11-12）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 11 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
 - **c35 Peg 看的是什麼**：bible〈帳〉寫第 26–30 集她在車上看 **Lyle 的直播**，但 Lyle 的手機（`lyle-phone`）第 28 集起才舉起來，第 26 集他拿的是相機。本集只拍她盯著手機的臉（螢幕背對鏡頭），**不交代是誰的直播**；建議 bible 補一句「發表會一開場就有直播（Lyle 用相機拍照、另一支手機架著直播，第 28 集才舉起來），Peg 從 20:00 起在看」，第 30 集 "I heard every word up there." 才包得住第 26 集這三句。

@@ -167,16 +167,16 @@ c30–c44 寫 `night, the plant lit only by one portable work light on a short t
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
-- **天數**：細綱寫第 114–115 天；照 bible 整集在**第 115 天（7/9 週四）**（國慶連假挪天數）。星期與日期畫面與台詞都不說。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 9 條）。
-- **c08–c14 玻璃管沒有字**：細綱的 "six stages etched along it (labels added in post)" 取消，管上是六個素面銅環；六個階段由 Nora 在梯子上一口氣念一次（c10），珠子停住時再念 "Report."（c14）。**依 bible 建議，待站主確認**（第 3 條、第 6 條）。珠子是琥珀色（`cast.json` 原寫透明）。
-- **c23–c29 Cole 的車**：細綱寫黑色轎車；照 bible 改成 **Grant 的珍珠白轎車**加方向盤上的白手套（黑車是 Elias 的）。**依 bible 建議，待站主確認**（第 2 條）。
-- **c31 Gus 的 "Everybody at the door."**：細綱沒有，bible 補的（熱爐禁令下 Nora 不能在線內）。**依 bible 建議，待站主確認**（第 6 條）。
+- **天數**：細綱寫第 114–115 天；照 bible 整集在**第 115 天（7/9 週四）**（國慶連假挪天數）。星期與日期畫面與台詞都不說。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 9 條）。
+- **c08–c14 玻璃管沒有字**：細綱的 "six stages etched along it (labels added in post)" 取消，管上是六個素面銅環；六個階段由 Nora 在梯子上一口氣念一次（c10），珠子停住時再念 "Report."（c14）。**依 bible 建議，站主 2026-11-12 照建議定案**（第 3 條、第 6 條）。珠子是琥珀色（`cast.json` 原寫透明）。
+- **c23–c29 Cole 的車**：細綱寫黑色轎車；照 bible 改成 **Grant 的珍珠白轎車**加方向盤上的白手套（黑車是 Elias 的）。**依 bible 建議，站主 2026-11-12 照建議定案**（第 2 條）。
+- **c31 Gus 的 "Everybody at the door."**：細綱沒有，bible 補的（熱爐禁令下 Nora 不能在線內）。**依 bible 建議，站主 2026-11-12 照建議定案**（第 6 條）。
 - **c38 回火**：細綱的 flashback 照審稿改成 backfire，"It backfired. Line's shot."；火只在爐口一秒、所有人在大門口。
-- **Gus 的手不寫疤**（`cast.json` 外貌句已改成風吹日曬的手）。**依 bible 建議，待站主確認**（第 5 條）。
-- **三號爐的樣子**照 bible 重畫直式（深紅耐火磚圓頂、鏽鋼帶、沒有字），`set-remelt.jpg` 只當色調參考。**依 bible 建議，待站主確認**（第 10 條）。
+- **Gus 的手不寫疤**（`cast.json` 外貌句已改成風吹日曬的手）。**依 bible 建議，站主 2026-11-12 照建議定案**（第 5 條）。
+- **三號爐的樣子**照 bible 重畫直式（深紅耐火磚圓頂、鏽鋼帶、沒有字），`set-remelt.jpg` 只當色調參考。**依 bible 建議，站主 2026-11-12 照建議定案**（第 10 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
-- **c25 Sparks 補一句**："That white car's been there all afternoon."（bible 只有 Nora 那句）：觀眾才知道車停了「整個下午」，Nora 的 "That's Cole." 也才有問有答。**台詞是本集寫的，待站主確認**；不要的話 c25 改成 Sparks 只用拇指往窗外一比、嘴閉著，c28 拿掉「← 因為 c25」。
+- **c25 Sparks 補一句**："That white car's been there all afternoon."（bible 只有 Nora 那句）：觀眾才知道車停了「整個下午」，Nora 的 "That's Cole." 也才有問有答。**台詞是本集寫的，站主 2026-11-12 照建議定案**；不要的話 c25 改成 Sparks 只用拇指往窗外一比、嘴閉著，c28 拿掉「← 因為 c25」。
 - **第一場的站位**：Dana 在工作台左側（靠左牆）、Nora 在右側；Dana 讀完把租約與估價單收進卷宗、從大門走（把估價單交給 Ashford，不拍）。Nora 用自己的筆（第 35 集那支）簽估價單。
 - **`remelt` 場景句已經有玻璃管與架子**：第一場的鏡一律背對左牆；c08 左牆近景寫 `two plain steel brackets on the bare red brick wall, empty`。製作端用 `remelt` 參考圖拍 c01–c08 時，左牆靠大門那段要不在畫框裡，或另出一張「左牆光禿」的版本。
 - **掛管子的工具**：新道具句 `a plain wooden-handled screwdriver as long as her hand`（c09、c16，c23 放在工作台上）；兩個鋼架在她上梯子前已經鎖在磚上（不拍）。

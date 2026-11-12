@@ -165,20 +165,20 @@ c25–c29 寫 `afternoon in a bright white corner office, cool white daylight th
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **c01–c02 戒指誰推**：戒指在 Nora 的卡夾裡（第 15 集 Peg 推回給她）；Nora 自己放上玻璃、手指按著不鬆，Peg 的食指替她把最後一段推完，同時說那句（bible〈細綱自相矛盾〉第 35 集戒指誰推）。Peg 用的是**左手**食指（少了戒指、那圈淡色皮膚的那隻手）。
-- **c07 "Eleven-eight."**：老闆念出價錢，Sparks 的 "That's a month?" 才有得驚訝（bible〈細綱自相矛盾〉、〈帳〉）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 1 條：戒指 $11,800、房租 $11,000）。
+- **c07 "Eleven-eight."**：老闆念出價錢，Sparks 的 "That's a month?" 才有得驚訝（bible〈細綱自相矛盾〉、〈帳〉）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 1 條：戒指 $11,800、房租 $11,000）。
 - **銀行換保付支票不拍**；支票從她外套內袋拿出來、背面朝上放上桌（bible〈帳〉文件）。
 - **c19–c20 簽約**：最後一筆往外一挑只拍筆尖與紙邊；她的臉寫 `lips pressed together, corners level, chin lifted`，不笑（細綱的 "the first hint of certainty at her mouth" 寫成部位，bible〈全劇固定〉不笑）。
 - **c23 Elias 站著、右手簽**，左手在褲袋、不入鏡（bible〈細綱必修〉）。他用的是她推過來的那支筆，簽完連租約一起推回去（所以 c37 她套上的是同一支筆）。
 - **c26 Lyle 的照片**：全畫面插鏡，不拍手機（bible〈帳〉手機、〈道具的樣子〉）；圖說只由 Grant 念，不上字。
 - **c27 Grant 的笑**：第一格練過的閉嘴微笑，念完嘴角落下、下巴收緊（bible〈細綱必修〉兩個部位）。
-- **c33 "Repairs are the landlord's. It's in the lease."**：bible 補的台詞，在 "The furnace is mine. The fire's yours." 之前。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 6 條）。
+- **c33 "Repairs are the landlord's. It's in the lease."**：bible 補的台詞，在 "The furnace is mine. The fire's yours." 之前。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 6 條）。
 - **c38 懸念只停在她不簽**（bible〈細綱必修〉）。
 - **租約條款都不念**（全包、含設備與存料、修繕歸房東；bible〈帳〉租約）。
 - **Peg 的 "Sand. Paid back."**（bible 選用句）本集不用：還 Peg 砂錢 $128 在銀行（不拍），Peg 不在會議室。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
-- **c09 Nora "One month. It's enough."**：Sparks 的 "That's a month?" 是問句，要有人答（WRITING.md 第七節「問了就答」）；她答得平、篤定，也是這場的結尾。**台詞是本集寫的，待站主確認**；不要的話 c09 改成她不說話、只轉頭看 Sparks 一眼再轉回櫃台（嘴閉著、2.5 秒），c08 的「→ 答在」改標在 c09 的動作上。
-- **c31 Nora "Number Three's burner is shot. I can't cover it."**：bible 寫她把估價單放上桌（她付不起），但沒給她一句話；沒有這句，Elias 那句 "Repairs are the landlord's." 沒有起因。**台詞是本集寫的，待站主確認**。
+- **c09 Nora "One month. It's enough."**：Sparks 的 "That's a month?" 是問句，要有人答（WRITING.md 第七節「問了就答」）；她答得平、篤定，也是這場的結尾。**台詞是本集寫的，站主 2026-11-12 照建議定案**；不要的話 c09 改成她不說話、只轉頭看 Sparks 一眼再轉回櫃台（嘴閉著、2.5 秒），c08 的「→ 答在」改標在 c09 的動作上。
+- **c31 Nora "Number Three's burner is shot. I can't cover it."**：bible 寫她把估價單放上桌（她付不起），但沒給她一句話；沒有這句，Elias 那句 "Repairs are the landlord's." 沒有起因。**台詞是本集寫的，站主 2026-11-12 照建議定案**。
 - **c13 當鋪門外**：補一鏡從對街長焦拍她低頭走出當鋪（Lyle 拍照的那一刻，他本人不入鏡），c26 的照片才有畫面上的根據。用 `harbor-sidewalk` 的晴天版（`cast.json` 的句子寫 overcast light，本鏡寫晴天）。
 - **c10 戒指的去處**：老闆用一小塊黑絨布包住戒指、拉進櫃台後面（新道具句 `a small square of black velvet on the glass counter`）；之後歸當鋪，不再出現。
 - **c11 Peg 蓋住 Nora 的拳頭**：bible 寫「Peg 不看櫃子、只看 Nora 的手」，本集給她一個動作：左手蓋上 Nora 的右拳、握一下（不說話）。

@@ -173,17 +173,17 @@ c23、c24、c27 寫 `early evening in a wide courthouse hallway, low summer sun 
 - **c09 回憶**：兩秒，只拍一隻煤灰的**右手**抓住十九歲 Nora 圍裙的肩帶；那隻手的主人的臉、左手、那團玻璃落在哪都不入鏡（bible〈全劇固定〉疤、〈細綱必修〉）。`elias` 的 `soot` 外貌句寫的是左手的繃帶，這鏡不用。
 - **c10–c12**：Gus 什麼都不說：嘴閉著、眼睛移開、轉身關上練習爐的小鐵門（bible〈細綱必修〉）。
 - **c15 跳一天不用字卡**：細綱寫「三天後」，對齊後是隔天（第 113 天，bible〈時間線〉）；交代時間的是傍晚的光、Peg 第一次出現、架上一整排歪杯子與一片粉筆。
-- **c18 "Twenty cups. Two days."**：細綱是 "Three days."；第 33 集挪到第 112 天的結果。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 6、9 條）。
+- **c18 "Twenty cups. Two days."**：細綱是 "Three days."；第 33 集挪到第 112 天的結果。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 6、9 條）。
 - **c16–c20 二十個**：架上只寫一整排虛焦、粉筆一片虛焦，數字只有 Sparks 喊、Peg 念（bible〈帳〉砂與二十個歪杯子）。砂袋不入鏡。
 - **c22–c27 Dana 的電話**：拍成她自己在法院走廊的人，原聲、後製電話濾波，台詞只在她自己的鏡上；Nora 的鏡只放她自己的那句（bible〈全劇固定〉電話；`s1-decisions-e021-e060.md` 電話那一列）。
-- **c34 "Theo. Market rent. Clause two."**：bible 列的選用句 "Market rent. Clause two."，前面加他的名字（交代來的人是誰）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 6 條）。
+- **c34 "Theo. Market rent. Clause two."**：bible 列的選用句 "Market rent. Clause two."，前面加他的名字（交代來的人是誰）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 6 條）。
 - **c36–c41 平板**：轉向她的那一下鏡頭在平板背後（c36）；說話的鏡側拍、平板側成細邊（c37）；最後一鏡低機位只看到背殼（c41）（bible〈細綱必修〉）。
 - **c39–c40 掉的是鉛筆**：細綱寫 pen，bible 改成插在帳本書脊的那支鉛筆（bible〈細綱自相矛盾〉第 34 集 Peg 的筆）。
 - **錢**：細綱「手上只有 Peg 當戒指剩下的錢」不用；說出口的只有 "thirty-two bucks a bag" 與 "Eleven thousand a month."（bible〈帳〉、〈細綱自相矛盾〉）。
-- **Gus 的手**：外貌句寫風吹日曬的手、不寫疤。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 5 條）。
+- **Gus 的手**：外貌句寫風吹日曬的手、不寫疤。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 5 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
-- **c24 Dana 的第一句改成 "Prosecutor's office called. Reyes will review it."**：細綱只有 "Reyes will review it."。前面補 "Prosecutor's office called."，因為 Reyes 的名字在第 14 集沒有說出口，觀眾第一次聽到要先知道他是誰；Nora 下一句 "Same Reyes who said half a pill wasn't enough?" 再把他跟第 14 集連起來。**台詞是本集寫的，待站主確認**；不要的話 c24 只說 "Reyes will review it."、秒數改 3 秒。
+- **c24 Dana 的第一句改成 "Prosecutor's office called. Reyes will review it."**：細綱只有 "Reyes will review it."。前面補 "Prosecutor's office called."，因為 Reyes 的名字在第 14 集沒有說出口，觀眾第一次聽到要先知道他是誰；Nora 下一句 "Same Reyes who said half a pill wasn't enough?" 再把他跟第 14 集連起來。**台詞是本集寫的，站主 2026-11-12 照建議定案**；不要的話 c24 只說 "Reyes will review it."、秒數改 3 秒。
 - **c01 Gus 戴長隔熱手套**：接點表 33→34 只寫皮圍裙與面罩，bible〈細綱必修〉第 34 集寫「Gus 戴手套的手」，〈全劇固定〉在熱爐前三樣都寫。本集照三樣寫；**第 33 集最後一鏡請一起寫手套**（`long tan heat-resistant gloves reaching his elbows`）。
 - **c06 Sparks 的吹管**：玻璃掉了以後他把空吹管橫放在吹玻璃長凳的鋼扶軌上（道具句接 `, nothing at its tip`）。Sparks 沒有手套的道具句，熱爐前只寫護目鏡與外貌句裡的隔熱護套；**要不要給他一副手套請主控定**（第 40 集 bible 寫「他戴護目鏡與手套」）。
 - **c12 練習爐的小鐵門**：道具句沒寫門，bible〈細綱必修〉寫「轉身去關練習爐的門」；本集寫成爐口一扇小鐵門，關上後門縫一圈橘光。

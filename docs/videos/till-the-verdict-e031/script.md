@@ -162,13 +162,13 @@ c36–c41 寫 `early morning inside a cold, dim old brick glassworks, thin gold 
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
 - **吵架在車外、隔著車頂**（bible〈細綱自相矛盾〉）：細綱衝突欄寫「在車上爆發」；照鉤子寫：c02 她一下車就吼 "You stood there!"，"He shoved that paper…" 那一段在她認出 Pell's 之後、Elias 下車時隔著車頂吵完；回憶放在他說完 "You need a place." 之後。
-- **c09、c11**："Dana filed the forgery report with police this morning." 改成未來式兩句 "Dana's filing the forgery report this morning." "With the police. It goes to the prosecutor."（清晨五點半還沒報；GLOSSARY 程序第 3 條）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 6 條）。
+- **c09、c11**："Dana filed the forgery report with police this morning." 改成未來式兩句 "Dana's filing the forgery report this morning." "With the police. It goes to the prosecutor."（清晨五點半還沒報；GLOSSARY 程序第 3 條）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 6 條）。
 - **c13–c18**：Elias 那四句錢與地方的話一句一鏡、在他自己的鏡上（bible〈必修〉）；他整場不看她，c16 "You need to work again." 才第一次看她。
-- **招牌與店名不上後製字**（c03、c04、c28、c29、c34）："Pell's." "Mom's studio." 念出來，細綱的 "(text added in post)" 取消。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 3 條）。
-- **回憶**（c20–c22）：溫暖偏金的夏天下午、不用字卡與黑白；進出用同一扇門的對剪（c19 鏽門 → c20 十二年前的乾淨門 → c23 鏽門）；Grant 練過的閉嘴微笑、她十九歲不笑、名片只拍背面；年輕 Grant 的眼鏡照第 1–3 集〈補定〉寫細的圓金屬框（細綱的 rimless 不用）。`nineteen` 與 `young` 要畫定妝照：**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 8 條）。
+- **招牌與店名不上後製字**（c03、c04、c28、c29、c34）："Pell's." "Mom's studio." 念出來，細綱的 "(text added in post)" 取消。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 3 條）。
+- **回憶**（c20–c22）：溫暖偏金的夏天下午、不用字卡與黑白；進出用同一扇門的對剪（c19 鏽門 → c20 十二年前的乾淨門 → c23 鏽門）；Grant 練過的閉嘴微笑、她十九歲不笑、名片只拍背面；年輕 Grant 的眼鏡照第 1–3 集〈補定〉寫細的圓金屬框（細綱的 rimless 不用）。`nineteen` 與 `young` 要畫定妝照：**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 8 條）。
 - **搖鎖兩下就放手**（c30–c31），手不受傷（bible〈必修〉）。
-- **"Who's there?"**（c40）：照 bible〈細綱自相矛盾〉寫在 Gus 自己的鏡上（原聲），只見手電筒、右手、被漏光照到的下巴與嘴，不用 Gemini 畫外。Gus 外貌句照 `cast.json` 寫風吹日曬的手、不寫疤：**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 5 條）。
-- **三號爐**（c37、c41）：深紅耐火磚圓頂、鏽鋼帶、沒有字，直式重畫；`set-remelt.jpg` 只當色調參考。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 10 條）。
+- **"Who's there?"**（c40）：照 bible〈細綱自相矛盾〉寫在 Gus 自己的鏡上（原聲），只見手電筒、右手、被漏光照到的下巴與嘴，不用 Gemini 畫外。Gus 外貌句照 `cast.json` 寫風吹日曬的手、不寫疤：**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 5 條）。
+- **三號爐**（c37、c41）：深紅耐火磚圓頂、鏽鋼帶、沒有字，直式重畫；`set-remelt.jpg` 只當色調參考。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 10 條）。
 - **華麗鏡頭**（c34）：她在鐵門下，海風吹起齊肩髮，眼睛還紅（細綱 glamour_shot）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：

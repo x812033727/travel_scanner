@@ -204,7 +204,7 @@ Fisk 翻到協議最後一頁，念：「Signed, Nora Whitlock. The house, the a
 - **c39–c42**：簽名不入鏡、後製也不上（細綱的「her handwriting (added in post)」取消），協議只拍紙背，Fisk 把那一行念出來。
 - **人多的場**：一鏡最多三張有名字的臉；交代位置的鏡（c15、c30）用背影與虛焦；c44 Sienna 虛焦、看不清臉。
 
-**依 bible 建議，待站主確認**（bible〈要站主決定的〉）：
+**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉）：
 - 第 1 條：Nora 出院穿 `discharge`（進院時那件奶油色針織洋裝、灰色軟拖鞋，大衣敞開），全身參考圖要先畫。
 - 第 2 條：細綱沒有、bible 補的報警台詞；審稿後改成「They changed the locks on my house. I need a deputy.」（見下面〈2026-11-12 審稿後的修改〉）。
 - 第 3 條：簽名連後製也不上，只讓 Fisk 念。

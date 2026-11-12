@@ -136,9 +136,9 @@ c28–c29、c34、c36–c37 寫 `night, heavy charcoal-grey curtains drawn acros
 - **c06–c07**：吃東西不拍入口，用滿盤與空盤兩個插鏡交代。
 - **c13–c16**：信封只拍金色反光與手；Theo 只抽出**她的**座位卡（"Front row, center."），Elias 的座位卡第 26 集才在報到桌拿到。
 - **c21–c23**：請帖從紙邊平拍、翻到背面；念最後一行時鏡頭在請帖背後、空白的那面朝鏡頭；"Forever Number One." 與 "Shown for the first time." 分兩鏡，中間停住（bible〈必修〉）。台詞與說話句寫 "Number One"，不寫 "No. 1"。
-- **第二場的手機**：半夜響的是 **Peg 的手機**（Grant 的家庭方案），不是細綱寫的 Grant 給 Nora 的那支；Nora 這十集沒有手機，白手機鎖在 Bev 的抽屜。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 1 條、`s1-decisions-e021-e060.md` 第 3 章第 1 條）。
-- **電話那頭**：Sienna 拍成畫面上的人（玻璃屋客廳、窗簾拉滿、**左手**拿手機貼**左耳**），原聲、後製加電話濾波，台詞全部在她自己的鏡上；Grant 在她身後虛焦笑出聲；Nora 這邊只拍她聽、看手機、不說話。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 4 條；決定彙整第 3、5、6 章第 3-4、5-7、6-6 條）。
-- **補的台詞**：Peg "Hello?"、Sienna "Put Mrs. Ashford on."、Peg "Family plan. His idea."（bible 補的，細綱沒有）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 5 條）。
+- **第二場的手機**：半夜響的是 **Peg 的手機**（Grant 的家庭方案），不是細綱寫的 Grant 給 Nora 的那支；Nora 這十集沒有手機，白手機鎖在 Bev 的抽屜。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 1 條、`s1-decisions-e021-e060.md` 第 3 章第 1 條）。
+- **電話那頭**：Sienna 拍成畫面上的人（玻璃屋客廳、窗簾拉滿、**左手**拿手機貼**左耳**），原聲、後製加電話濾波，台詞全部在她自己的鏡上；Grant 在她身後虛焦笑出聲；Nora 這邊只拍她聽、看手機、不說話。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 4 條；決定彙整第 3、5、6 章第 3-4、5-7、6-6 條）。
+- **補的台詞**：Peg "Hello?"、Sienna "Put Mrs. Ashford on."、Peg "Family plan. His idea."（bible 補的，細綱沒有）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 5 條）。
 - **Nora 一鏡都不笑**；Sienna 的笑只在句前、說話時嘴角放平。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：

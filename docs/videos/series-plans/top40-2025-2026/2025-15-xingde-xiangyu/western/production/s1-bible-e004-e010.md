@@ -300,6 +300,8 @@
 
 ## 要站主決定的
 
+站主 2026-11-12：「照你建議」，這一節與審稿後主控先定的事全部照建議定案（寫稿者新加的台詞也照收）。
+
 1. **Nora 出院穿什麼**（第 6–10 集、包括第 8 集走下坡的顏值鏡）：建議穿她進院時那套（奶油色針織洋裝、灰色軟拖鞋，大衣敞開）：她真的是兩手空空被趕出門，`discharge` 已加進 `cast.json`。另一個做法是 Peg 第 5 集替她帶一套衣服，直接用 `motel`（低髮髻、牛仔褲）。
 2. **細綱沒有、這份補上的台詞**：第 4 集 "There's no one in here."、"What's her extension?" "Four-one-one-six."、Grant 在門口那句；第 5 集 Grant 叫車；第 6 集報警那句；第 7 集 "Not on the list." "Take it."；第 8 集 "Why are we parked down here?" "Lawyer's helping her pack." 與 Peg 的 "...Sienna."；第 9 集 "Why are you doing this?" "Bus is late." 與 "Put the week on this."；第 10 集 "It's sweet."。建議照收，都是為了補漏洞或讓動作看得懂。
 3. **簽名不上畫面**：細綱第 6 集寫「她的筆跡（後製）」。建議連後製也不上，只讓 Fisk 念出來，免得之後鑑定那幾集要對得上一個畫出來的簽名。

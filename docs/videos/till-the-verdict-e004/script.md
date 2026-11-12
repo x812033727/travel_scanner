@@ -171,11 +171,11 @@ Nora 半坐，左手握拳放在白毯上（手心有分機），新手機面朝
 - **c21**：值班醫生的台詞照 bible〈時間線〉與〈細綱必修〉改成「Dr. Brandt went off shift at six.」「She's back tomorrow.」（細綱「She's off till Monday.」不用）。
 - **c11**：舊號碼用停號錄音交代（Gemini Leda，電話裡），嘴不入鏡。
 - **c09**：空的聯絡人用 Nora 說「There's no one in here.」交代，螢幕只從側邊（c08）；c32 密碼被拒只有平板的嗡聲兩次。
-- **c23–c24**：分鏡給分機一個來源：她問「What's her extension?」，醫生念「Four-one-one-six.」（台詞寫成字）。**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 2 條：補上的台詞）。
-- **c25–c26**：細綱只說 Grant「已經跟七樓說過」，照 bible 改成看得見的一場：他送醫生到門口、背對她壓低聲音「She's confused. Route everything through me.」。**依 bible 建議，待站主確認**（同第 2 條）。
-- **c09「There's no one in here.」**：**依 bible 建議，待站主確認**（同第 2 條）。
+- **c23–c24**：分鏡給分機一個來源：她問「What's her extension?」，醫生念「Four-one-one-six.」（台詞寫成字）。**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 2 條：補上的台詞）。
+- **c25–c26**：細綱只說 Grant「已經跟七樓說過」，照 bible 改成看得見的一場：他送醫生到門口、背對她壓低聲音「She's confused. Route everything through me.」。**依 bible 建議，站主 2026-11-12 照建議定案**（同第 2 條）。
+- **c09「There's no one in here.」**：**依 bible 建議，站主 2026-11-12 照建議定案**（同第 2 條）。
 - **c27–c30**：筆是她從醫生放在床尾的夾板上抽的；手心朝她自己、手背朝鏡頭，只拍筆尖在動，寫完握拳，筆塞進白毯下。
-- **值班醫生**的選角（45 歲黑人男性、光頭、灰白短鬍子）：**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 4 條）。
+- **值班醫生**的選角（45 歲黑人男性、光頭、灰白短鬍子）：**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 4 條）。
 - **c15**：Grant 練過的閉嘴微笑是 bible〈全劇固定〉列出可以笑的鏡；其他每一鏡都寫不笑。
 - **沒有護理師、不換點滴**；點滴架只在 c19 的床頭左側當背景。
 

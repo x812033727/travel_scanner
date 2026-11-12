@@ -235,7 +235,7 @@ Grant 的白車 c06b 開進坡底（第 5 集「After one stop.」之後，18:30
 - **時間**：細綱寫 afternoon；照 bible 改成 18:25–18:42 的低斜金光，c26 顏值鏡頭的「afternoon light」寫成低斜的金光。
 - **c12**：Fisk 說「Personal items only.」之後，插一鏡她的右手隔著大衣按一下右口袋（bible〈帳〉半顆藥）。
 
-**依 bible 建議，待站主確認**（bible〈要站主決定的〉）：
+**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉）：
 - 第 1 條：Nora 穿 `discharge`（奶油色針織洋裝、灰色軟拖鞋，大衣敞開）。
 - 第 2 條：細綱沒有、bible 補的台詞——c29「Not on the list. Take it.」。
 - 第 3 條：簽名不上畫面（c02 只拍紙的側邊與筆尖）。

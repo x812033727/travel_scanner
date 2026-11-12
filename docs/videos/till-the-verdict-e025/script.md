@@ -147,19 +147,19 @@ c35–c38 寫 `evening, the gold light gone from the small window, only the low 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱不同、照 bible 寫的地方：
 - **c01–c07**：細綱的 hook（"Peg leans out of the kitchen"）是在回答第 24 集結尾的問題，改成第 24→25 集同一刻：Peg 跟著下樓，站在樓梯最下面一級說；之後才跳到第 105 天（bible〈時間線〉下方「第 24–25 集的順序」）。**顏色不給答案**（m12）：c06 她看回暗的書房與指間的灰布，沒有人說話。
 - **c08**：跳三天不用字卡，由廚房小窗的傍晚金光、Peg 換上圍裙在爐前、Nora 換回 `shoulder`、禮服盒在長桌上交代。
-- **c09–c10**：Theo 補 "Certified. For you."；信封只拍綠色掛號貼紙、沒有字（bible〈要站主決定的〉第 5 條，**依 bible 建議，待站主確認**）。
+- **c09–c10**：Theo 補 "Certified. For you."；信封只拍綠色掛號貼紙、沒有字（bible〈要站主決定的〉第 5 條，**依 bible 建議，站主 2026-11-12 照建議定案**）。
 - **c13–c14**：律師函只念兩段 "Disrupt the event." "Damage any exhibit."（第三章審稿），紙一律背面。
-- **c17–c19**：Peg "What's the second page?"、Nora "My signature. Their copy."：律師函的第二頁是財產協議簽名頁的影本，第 30 集她撕下來疊上轉讓書（bible〈要站主決定的〉第 3、5 條，**依 bible 建議，待站主確認**）。
-- **c20–c26**：Dana 用 **Peg 的手機**擴音（Nora 這十集沒有手機；bible〈要站主決定的〉第 1 條，**依 bible 建議，待站主確認**）；Dana 拍成畫面上的人、在她自己的事務所、原聲加後製電話濾波，台詞只在她自己的鏡上（bible〈要站主決定的〉第 4 條，**依 bible 建議，待站主確認**）。律師給明確的法律意見，只把去不去留給她（第三章審稿）。
+- **c17–c19**：Peg "What's the second page?"、Nora "My signature. Their copy."：律師函的第二頁是財產協議簽名頁的影本，第 30 集她撕下來疊上轉讓書（bible〈要站主決定的〉第 3、5 條，**依 bible 建議，站主 2026-11-12 照建議定案**）。
+- **c20–c26**：Dana 用 **Peg 的手機**擴音（Nora 這十集沒有手機；bible〈要站主決定的〉第 1 條，**依 bible 建議，站主 2026-11-12 照建議定案**）；Dana 拍成畫面上的人、在她自己的事務所、原聲加後製電話濾波，台詞只在她自己的鏡上（bible〈要站主決定的〉第 4 條，**依 bible 建議，站主 2026-11-12 照建議定案**）。律師給明確的法律意見，只把去不去留給她（第三章審稿）。
 - **c27–c29**：Elias 在樓梯：停在半途、右手搭欄杆、左手插口袋、看一眼，轉身上樓（背影）；不說話（第二條）。
-- **c31**：細綱 glamour 的 "the corner of her mouth moves, barely" 改成下唇往內一抿、一邊嘴角收緊，照寫 `no smile at any moment, until the last frame`（bible〈要站主決定的〉第 8 條，**依 bible 建議，待站主確認**）。
-- **c32、c34**：轉折說出口："They're not scared I'll come." "They're scared I'll touch it."（bible〈要站主決定的〉第 5 條，**依 bible 建議，待站主確認**）。
+- **c31**：細綱 glamour 的 "the corner of her mouth moves, barely" 改成下唇往內一抿、一邊嘴角收緊，照寫 `no smile at any moment, until the last frame`（bible〈要站主決定的〉第 8 條，**依 bible 建議，站主 2026-11-12 照建議定案**）。
+- **c32、c34**：轉折說出口："They're not scared I'll come." "They're scared I'll touch it."（bible〈要站主決定的〉第 5 條，**依 bible 建議，站主 2026-11-12 照建議定案**）。
 - **c35–c38**：三樣東西並排俯拍，只見信的紙背、請帖空白的一面與金邊、霧灰布料；她把信摺好壓到盒子底下、拿起禮服（bible〈必修〉〈接點表〉25→26）。
-- **帳**：本集不花錢、不念數字（bible〈帳〉；〈要站主決定的〉第 6 條，**依 bible 建議，待站主確認**）。
+- **帳**：本集不花錢、不念數字（bible〈帳〉；〈要站主決定的〉第 6 條，**依 bible 建議，站主 2026-11-12 照建議定案**）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible〈寫稿時補定的事〉）：
-- **c13 Nora 念信頭的 "Fisk."**：bible 只有 Theo 的 "Certified. For you."，觀眾不知道信是誰寄的；她讀到信頭先念出名字、停一拍再念第一段（Fisk 的名字第 6 集已經說過）。**台詞是本集寫的，待站主確認**；不要的話 c13 只念 "Disrupt the event."、秒數改 3.5。
-- **c21 Nora "Dana, can they keep me out?"**：bible 的 Dana 三句沒有問句，看起來像沒頭沒尾地給意見；補一句她對著手機問，c22 "Attending isn't a crime." 就是回答，也讓觀眾知道電話那頭是誰。**台詞是本集寫的，待站主確認**；不要的話 c21 改成她只往前傾看著手機、嘴閉著（2.5 秒），c22 拿掉「← 因為 c21」。
+- **c13 Nora 念信頭的 "Fisk."**：bible 只有 Theo 的 "Certified. For you."，觀眾不知道信是誰寄的；她讀到信頭先念出名字、停一拍再念第一段（Fisk 的名字第 6 集已經說過）。**台詞是本集寫的，站主 2026-11-12 照建議定案**；不要的話 c13 只念 "Disrupt the event."、秒數改 3.5。
+- **c21 Nora "Dana, can they keep me out?"**：bible 的 Dana 三句沒有問句，看起來像沒頭沒尾地給意見；補一句她對著手機問，c22 "Attending isn't a crime." 就是回答，也讓觀眾知道電話那頭是誰。**台詞是本集寫的，站主 2026-11-12 照建議定案**；不要的話 c21 改成她只往前傾看著手機、嘴閉著（2.5 秒），c22 拿掉「← 因為 c21」。
 - **爐上的鍋與木勺**（新道具句）：`a black cast-iron pot on the steel range, steam rising`、`a plain wooden spoon about as long as her forearm`（`cast.json` 沒有；第 21、22 集的 `peg-dinner` 是桌上那一鍋，不是爐上這一鍋）。
 - **Dana 的事務所是傍晚版**：`dana-office` 的場景句寫「窗外是暗的港口與幾點燈」，那是第 29 集 20:40；本集 18:40 的西雅圖是亮的傍晚，窗外寫成傍晚亮的港口（虛焦）。`dana-office` 要畫兩版，或場景句拿掉窗外的天色、天色寫在鏡上。卷宗寫 `three thick plain buff case files, stacked on the desk`（第 20 集 `stacked on the table` 的寫法）。Dana 的手機用 `cast.json` 的 `dana-phone` 句。
 - **新的放下寫法**：律師函攤平 `…, opened out flat on the dark walnut table, back up`、拿在手上讀 `…, unfolded in her two hands at chest height`、壓在盒下 `…, tucked under the gown box, one white edge showing`；信封 `…, lying on the dark walnut table`、`…, torn open along its short end`；俯拍的請帖用 `a heavy cream invitation card with a gold edge, about as long as her hand, held so only its blank side faces the camera, lying face down on the dark walnut table`（bible 的平放句是桌面高度平拍，俯拍會露出正面）；Peg 的手機掛斷後 `…, lying on the dark walnut table, its screen dark`；抱在胸前的禮服 `a long folded misty-grey gown, held in both her arms against her chest`。

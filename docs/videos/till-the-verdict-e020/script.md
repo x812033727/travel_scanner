@@ -212,8 +212,8 @@ c31–c47 寫 `daytime, one tall window of summer sunlight, warm wood walls, the
 - **c03 織完的灰藍圍巾**：Peg 的毛線當時間的鐘，第 20 集織完摺好。**站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 7 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
-- **c08 Fisk 的一句**："Decree and agreement. Sign both, Ms. Quinn."（bible 只寫 Fisk「一兩句，或只套筆蓋」）：讓 Nora 的 "I'll sign the divorce." 有問有答。**台詞是本集寫的，待站主確認**；不要的話 c08 改成他只把筆遞過去、嘴閉著，c10 拿掉「← 因為 c08」。
-- **c38 證婚法官的一句**："I now pronounce you husband and wife."（bible 只寫「法官宣布」）。**台詞是本集寫的，待站主確認**。
+- **c08 Fisk 的一句**："Decree and agreement. Sign both, Ms. Quinn."（bible 只寫 Fisk「一兩句，或只套筆蓋」）：讓 Nora 的 "I'll sign the divorce." 有問有答。**台詞是本集寫的，站主 2026-11-12 照建議定案**；不要的話 c08 改成他只把筆遞過去、嘴閉著，c10 拿掉「← 因為 c08」。
+- **c38 證婚法官的一句**："I now pronounce you husband and wife."（bible 只寫「法官宣布」）。**台詞是本集寫的，站主 2026-11-12 照建議定案**。
 - **c45 Grant 的 "That fast?"**：bible 第 20 集時間線沒有這句，照 `outline.json` 第 2 章篇章結尾放在小法庭門口，接 c46 Elias 那句（站主交辦要落的台詞）。
 - **法庭的座位**：Dana 坐外側、Nora 坐靠中間；Fisk 坐靠中間、Grant 坐外側；Bev 在 Peg 右邊、旁聽席走道在 Bev 右邊；c05 法官席還空著（法官從 c14 起已經坐在席上），所以法官與 Fisk 不同框。
 - **Dana 的卷宗在桌上**：bible 的句子是 `three thick plain buff case files held against her chest`（抱著）；本集她坐在律師席，改寫成 `three thick plain buff case files, stacked on the table`。請主控在 bible 補這個放下的寫法。

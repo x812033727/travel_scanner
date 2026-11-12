@@ -161,12 +161,12 @@ c32–c46 寫 `sunrise, white fog glowing gold beyond the open steel doors, warm
 ### 這版改了什麼（給製作端，2026-11-12 第一版）
 
 第一版，還沒有錄、沒有拍，沒有要重錄或重抽的鏡。跟細綱與總綱不同、照 bible 寫的地方：
-- **天數**：點爐照 bible 是**第 116 天（7/10 週五）**（細綱同）；星期與日期畫面與台詞都不說。第 33–38 集挪天數的事**依 bible 建議，待站主確認**（bible〈要站主決定的〉第 9 條）。
+- **天數**：點爐照 bible 是**第 116 天（7/10 週五）**（細綱同）；星期與日期畫面與台詞都不說。第 33–38 集挪天數的事**依 bible 建議，站主 2026-11-12 照建議定案**（bible〈要站主決定的〉第 9 條）。
 - **c01–c05 技師**：細綱寫 "a repair tech in an Ashford jacket"；照 bible 改成**素面深藍工作外套、沒有字**，身分靠他那句 "Landlord's crew. Lease says so."；換瓦斯管要執照，所以是房東派的值班技師，Gus 盯著、最後一圈自己轉。
 - **c24–c27 Gus 哭的位置**：細綱 "sobs out loud at the furnace mouth"；照 bible 改成 Gus 把爐門推到只剩一道縫、退兩步、**跪在黃線上**哭（開著的爐口前不能跪）。
 - **c23 顏值鏡頭**：細綱的 "color in her face for the first time" 照 bible 寫成部位：`colour high in her cheeks from the heat`、`lips pressed together, corners level, chin lifted`、`no smile at any moment, until the last frame`。
-- **c34–c35 黑板上的 "Remelt"**：細綱說後製上字；照 bible **只念、不拍字、後製也不上**，寫字的鏡從黑板側邊拍。**依 bible 建議，待站主確認**（第 3 條）。
-- **Gus 的手不寫疤**。**依 bible 建議，待站主確認**（第 5 條）。三號爐照 bible 重畫直式。**依 bible 建議，待站主確認**（第 10 條）。
+- **c34–c35 黑板上的 "Remelt"**：細綱說後製上字；照 bible **只念、不拍字、後製也不上**，寫字的鏡從黑板側邊拍。**依 bible 建議，站主 2026-11-12 照建議定案**（第 3 條）。
+- **Gus 的手不寫疤**。**依 bible 建議，站主 2026-11-12 照建議定案**（第 5 條）。三號爐照 bible 重畫直式。**依 bible 建議，站主 2026-11-12 照建議定案**（第 10 條）。
 
 這集稿子自己定、bible 沒寫的（請主控寫回 bible）：
 - **Peg 怎麼在 03:30 到 Remelt**（主控交辦要定）：**Elias 約 03:00 自己開黑車從 Ashford 家載 Peg 下山**（他從自己的人那裡知道管子今晚換好），車停在 Kiln Row 左邊 Rosa's 那個街角、他留在車裡；Peg 自己走進廠。**不拍、不說**：Peg 不提誰載她，Nora 以為是叫的車；c41–c45 他從街角走到門口、看完走回去（跟 bible〈帳〉「第 37 集他走路來、走路走，車停在街角」一致）。Peg 之後坐早班公車回 Ashford 家（第 38 集不在）。要不要讓 Nora 之後知道，留給第 41–60 集的 bible。
