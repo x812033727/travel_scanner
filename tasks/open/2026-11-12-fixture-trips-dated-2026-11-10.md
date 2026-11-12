@@ -11,6 +11,7 @@ completed_at:
 branch:
 depends_on: []
 scope:
+  - apps/api/tests/test_analytics_integration.py
   - apps/api/tests/test_trip_localization_integration.py
   - apps/api/tests/test_integration_postgres_redis.py
   - apps/api/tests/test_alerts_integration.py
@@ -35,11 +36,13 @@ Failing there:
 - `apps/api/tests/test_alerts_integration.py::test_an_alert_leads_back_to_the_trip_and_search_it_came_from`.
 - `apps/api/tests/test_trip_localization_integration.py::test_planned_stops_follow_the_request_locale_until_renamed`
   (`assert 422 == 201`, shard 2 of run 43139082528).
-- The remaining shards are not itemised yet; the 18 fixed dates under `apps/api/tests` are the
-  likely cause: `grep -rn "start_date.*2026-11-1[0-2]" apps/api/tests`.
+- `apps/api/tests/test_analytics_integration.py::test_a_server_event_joins_the_browser_session_it_came_from`
+  (422, shard 3). Shard 1 is green. That is every API failure on #2081's head `31334c6a`
+  (run 43140130778): 16 tests in four files.
 - `apps/web/e2e/travel-services.spec.ts`: "Klook direct hotel booking stays separate from
   destination discovery" (5 locales) and "unified hotel panel preserves context and honest
-  external pricing" (15), fixture trip 2026-11-11..13.
+  external pricing" (15), fixture trip 2026-11-11..13; the same 20 in both the desktop-chromium
+  and mobile-chromium projects (e2e shards 2 and 3), so 40 in all.
 
 Already handled elsewhere: `apps/web/components/trip-editor.test.tsx` (pinned clock, open PR
 #2060 and #2081) and `apps/api/tests/test_trip_creation.py` (relative dates, #2081). #2066 and
