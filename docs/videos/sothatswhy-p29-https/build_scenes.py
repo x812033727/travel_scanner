@@ -217,7 +217,7 @@ chief("chief-phishing", C("raising her eyebrows with a careful warning smile, on
       c("幾乎所有的釣魚網站都用 HTTPS。"))
 chief("chief-phish-def", C("pretending to cast a tiny fishing rod with one hand and a mischievous smile"),
       c("釣魚網站，就是假裝成別人、騙你打密碼的網站。"),
-      c("騙子替自己那個長得很像的網站名字，一樣領得到證件。"))
+      c("騙子替名字很像的假網站，一樣領得到證件。"))
 obj("tablet-lock", "Close-up of " + TABLET + " lying on a sunny café table",
     c("瀏覽器很早就在網址旁邊畫一個小鎖頭，代表連線有加密。"),
     k("我看到的，", "指著平板"), k("就是這個鎖頭！"))
