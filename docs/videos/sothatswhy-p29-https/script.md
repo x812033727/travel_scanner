@@ -68,7 +68,6 @@
 #### 11. kid-open-note
 
 【小問】（想像）信沒封起來的話……
-【所長】每個經手的人都能打開看，甚至改幾個字再傳下去。
 
 #### 12. chief-chrome-help
 
@@ -478,5 +477,5 @@
 
 【所長】（誠懇）想一起找生活裡的為什麼，就訂閱原來如此事務所。
 
-narrative 1b4d56431699267e
-speech 885bae4d1370bd36
+narrative cf69468f7dc7c9b4
+speech 04fb97405117211a

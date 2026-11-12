@@ -158,8 +158,7 @@ obj("classroom-pass", "Wide shot of a sunny classroom with rows of small wooden 
     c("中間要經過好幾個同學的手。"),
     c("咖啡店的機器、網路公司，就是這些同學。"))
 kid("kid-open-note", K("holding up a small folded open letter and peeking inside it with a sly grin", close=True, where=CLASS),
-    k("信沒封起來的話……", "想像"),
-    c("每個經手的人都能打開看，甚至改幾個字再傳下去。"))
+    k("信沒封起來的話……", "想像"))
 chief("chief-chrome-help", C("holding a small phone up beside her face with a serious honest smile"),
       c("Chrome 瀏覽器的說明就這樣寫：沒有私密連線的網站，"),
       c("別人可能看到、也可能改掉你傳的東西。", None, "P:see"))
