@@ -185,7 +185,7 @@ chief("chief-impostor", C("raising one hand with an honest careful smile", close
       c("要是傳到一半，有人假裝是遊戲公司收下，"),
       c("你封得再好，也是把信交給他。"), chapter="小問想確認，對面是不是遊戲公司")
 obj("street-ask", "Wide shot of a sunny crossroads with small shops and green trees, one tiny cartoon child on the pavement asking the way from a friendly cartoon postman who points down a side street",
-    c("而且出發前，平板要先問「這個網址在哪裡」，"),
+    c("而且出發前，平板先問查詢處「這個網址在哪裡」，"),
     c("那一問的回答，也可能被路上的人動手腳。"))
 kid("kid-who-q", K("holding a small tablet close and squinting at it with narrowed curious eyes", close=True, where=CAFE),
     k("那我怎麼知道，", "追問"), k("對面真的是遊戲公司？", "句尾上揚", "S:who"))
@@ -348,9 +348,9 @@ chief("chief-ech", C("holding up two small envelopes, one tucked inside the othe
       c("把收件人的名字，也放進裡面一層信封。", None, "P:ech"))
 obj("tall-building", "Wide shot of one tall plain cream apartment building with many identical windows on a sunny street, small green trees in front",
     c("可是它自己也寫，光這樣還不夠。"),
-    c("信最後送到哪一棟大樓，路上還是看得到；"))
+    c("信最後送到哪一台網站的機器，路上還是看得到；"))
 chief("chief-same-building", C("holding both hands up shaped like a little roof with a thoughtful smile", close=True),
-      c("不過很多網站常常住同一棟，"),
+      c("不過很多網站常常共用同一台，"),
       c("所以信封上的名字，才是最明白的線索。"))
 obj("street-ask-2", "Wide shot of a sunny crossroads with small shops and green trees, a friendly cartoon postman standing alone on the pavement pointing down a side street",
     c("還記得出發前，問「這個網址在哪裡」那一問嗎？"),
@@ -373,7 +373,7 @@ kid("kid-spot", K("pointing at a small tablet in her other hand with wide eyes a
 chief("chief-your-turn", C("leaning forward with an inviting grin, one hand open towards the viewer"),
       c("沒錯，這種只能靠你自己看。", "點頭"), c("那多一個 S，你的密碼在路上差了什麼？", "笑"), chapter="小問看清楚了")
 kid("kid-got-it", K("holding a small sealed cream envelope up proudly with a big confident grin", where=CAFE),
-    k("原來如此！", "恍然大悟"), k("就像剛剛那張封好的紙條，", "篤定"),
+    k("原來如此！", "恍然大悟"), k("就像剛剛那封封好的信，", "篤定"),
     k("同學照樣傳，卻讀不到，", "篤定"), k("也冒充不了那個網址！", None, "P:main"))
 chief("chief-opinion", C("smiling with her hands clasped, a thoughtful look", close=True),
       c("說得好。我覺得最妙的是，這個封條你每天都在用，"),
