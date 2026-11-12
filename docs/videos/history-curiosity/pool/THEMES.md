@@ -1,6 +1,6 @@
 # 從素材池排出的影片題案
 
-153 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。
+155 組編輯候選。每一組都是同一個核心問題的兄弟題，接起來比各自單做更完整；不是點閱率預測，也不是已核准的影片。
 
 **片長規則：** 長片 8–13 分鐘，看素材決定。章節秒數是正文預估，還沒試讀；每章要再拆成 30–45 秒一個新資訊或懸念。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。估不到 8 分鐘的轉 Shorts 或留在後備。
 
@@ -163,6 +163,8 @@
 | T157 | 古希臘人會預報地震嗎：Helike 的動物與 Anaximander 的井 | 12:00（範圍 11:30–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
 | T158 | 怕「漏雨」的老虎：韓國的柿餅與德干的勇敢陶匠 | 12:00（範圍 11:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
 | T159 | 拜倫的預兆是誰寫成應驗的：Newstead 的黑衣修士與算命師的 27／37 | 12:30（範圍 12:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
+| T160 | 會員圖書館裡的熟面孔：Leeds 的前館長與 Boston Athenaeum 的牧師 | 9:30（範圍 8:30–10:30；未試讀） | 2 | 已有可追溯來源 | 未審 |
+| T161 | 觀察是真的、推論錯了：大象沒有膝蓋與鴕鳥吃鐵 | 12:30（範圍 12:00–13:00；未試讀） | 2 | 已有可追溯來源 | 未審 |
 
 ## T01 海底那幾聲怪響，後來各是誰？
 
@@ -4288,6 +4290,58 @@
 **撤案條件：** N4343 取 8 分鐘、N5224 取 4.5 分鐘；不教任何占卜方法。
 
 **待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave46-20261112.json，覆核在 reviews/wave46-review-20261112.json）；寫企劃前仍要照系列流程逐主張查核。27／37 只讀到 Medwin 一個版本，拜倫書信沒核；Blessington 的書讀的是 1850 年版。
+
+## T160 會員圖書館裡的熟面孔：Leeds 的前館長與 Boston Athenaeum 的牧師
+
+**追問：** 老牌會員制圖書館裡「看見剛過世的熟人」，當事人自己當年怎麼說，後來的版本又改了什麼？
+
+**為什麼接成一集：** N5302 與 N5306 回答同一個問題（覆核 R472 建議）：兩位當事人都承認自己的說法有可疑處（Leeds 的館長 J. 可能聽過前任的長相，Hawthorne 承認口述加料、捨不得好故事），今天兩館的版本都把死亡與目擊的時間差改短。兩題各只有 4–5.5 分鐘，不單獨成集。
+
+| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |
+| --- | --- | --- | --- | --- |
+| 開場：書架間的熟面孔 | 45 | 兩間老牌會員制圖書館都流傳：有人在館裡看見剛過世的熟人。 | N5302、N5306 |  |
+| 1889 年：一篇全用縮寫的論文 | 120 | Myers 的論文館名、人名全用假縮寫，因為當事人答應館方不公開；當事人說「我對這件事沒有理論」。 | N5302 |  |
+| 轉折一：館長自己承認可能聽過描述 | 135 | 館長 J. 承認可能聽館員描述過前任的長相，只是不記得；1908 年《Strand》把館員「幾年前」看到的燈改寫成「1889 年」。 | N5302 |  |
+| Boston Athenaeum：Hawthorne 的稿子 | 105 | Hawthorne 寫在館裡一再看見已故的 Harris 牧師，稿子第一段就承認口頭講時「為了藝術效果」加了料。 | N5306 |  |
+| 轉折二：「是我自己弄錯了」 | 120 | 他當天就說是自己弄錯了，又承認也許是不想毀了這麼好的一個鬼故事；今天館方網站改成「幾天前就死了」。 | N5306 |  |
+| 收尾：被改短的時間差 | 45 | 兩個故事，當事人都留了保留，後來的版本把它們說滿了。留言問題：你聽過哪間圖書館的鬼故事？ | N5302、N5306 |  |
+
+**用到的題與來源：**
+
+- N5302（入選）Leeds 圖書館的館長 1884 年深夜拿著左輪追進盥洗室、看見前任館長 Sternberg 的鬼？目前讀到最早的文字是 1889 年心靈研究學會 Myers 的論文，館名、人名全用假縮寫，因為他答應過館方不公開；他自己說『我對這件事沒有理論』，也承認『我可能聽館員描述過他的樣子，只是不記得』；館方今天寫前任館長 1880 年初去世，2013 年的通俗版卻說『才死了幾個月』；而後來流傳的『燈自己又亮了』，在 1889 年的論文裡只是兩位館員某晚從樓梯下看見剛熄燈的房間亮了一下 — [archive.org](https://archive.org/download/proceedingsofsoc06soci/proceedingsofsoc06soci_djvu.txt)、[archive.org](https://archive.org/download/TheStrandMagazineVolume36/TheStrandMagazineVolume36_djvu.txt)、[www.theleedslibrary.org.uk](https://www.theleedslibrary.org.uk/wp-content/uploads/2026/02/The-Leeds-Library-Paranormal-Investigations-2026.pdf)
+- N5306（入選）Hawthorne 在波士頓 Athenaeum 圖書館閱覽室，天天看見已經死掉的 Harris 牧師坐在爐邊老位置讀報，所以 Athenaeum 鬧鬼？目前讀到的唯一出處是他身後才發表的一篇寫給一位英國女主人的稿子，開頭就說口頭講時『可能放了多一點自由……為了藝術效果加了些細節』；他當天就把第一次看見歸成『我自己弄錯了』，又承認自己從沒去碰一碰那個人影，『也許是不想毀了這麼好的一個鬼故事，它多半可以用很平常的方式解釋』 — [en.wikisource.org](https://en.wikisource.org/wiki/The_Ghost_of_Dr._Harris)、[archive.org](https://archive.org/download/passagesfromengl01hawt/passagesfromengl01hawt_djvu.txt)、[bostonathenaeum.org](https://bostonathenaeum.org/news/hawthornes-friendly-ghost/)
+
+**可能無聊的地方：** 前段用 1889 年 Myers 的論文與 1908 年《Strand》，後段用 Hawthorne 的稿子與 1855 年筆記。
+
+**撤案條件：** N5302 取 5 分鐘、N5306 取 4.5 分鐘；「筆記那場晚宴就是故事開頭那一晚」仍是推定，片中只能說「可能是」。
+
+**待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave47-20261112.json，覆核在 reviews/wave47-review-20261112.json）；寫企劃前仍要照系列流程逐主張查核。是誰把 Leeds 的縮寫還原成真名沒讀到；Harris 的卒年沒在可讀頁面確認，不入畫，只用空椅子表現；Hawthorne（1804–1864）可入畫。
+
+## T161 觀察是真的、推論錯了：大象沒有膝蓋與鴕鳥吃鐵
+
+**追問：** 古人對大象和鴕鳥的兩個離譜說法，是看錯了，還是看對了卻推錯了？
+
+**為什麼接成一集：** N5322 與 N5327 回答同一個問題（覆核 R473 建議）：兩題都出自 Browne《流行的謬誤》同一卷，用同一個拆法——先承認觀察是真的（象常靠樹或岩石睡、鴕鳥確實吞鐵），再指出推論那一步錯了（「沒關節」「消化了」）。N5327 只有 4–5 分鐘，不單獨成集。
+
+| 章 | 秒數 | 新增理解 | 用到的題 | 刪段條件 |
+| --- | --- | --- | --- | --- |
+| 開場：沒有膝蓋的大象、吃鐵的鳥 | 45 | 古書說大象沒有膝蓋、只能靠樹睡，鴕鳥能吃鐵。 | N5322、N5327 |  |
+| Aristotle 已經反駁 | 150 | Aristotle 寫大象不像有些人說的那樣站著睡；Diodorus 卻記了鋸樹獵象法，Caesar 把同一套說法安在另一種森林動物身上。 | N5322 |  |
+| 轉折一：真實的觀察被推成假生理學 | 165 | Loeb 編者註說象確實常靠著岩石或樹睡；1646 年 Browne 拿向教宗屈膝的大象來反駁「沒有膝蓋」。 | N5322 |  |
+| 「能啖鐵」的大鳥 | 120 | 《新唐書》記永徽元年吐火羅獻大鳥「能啖鐵」，歐洲畫法讓鴕鳥嘴叼馬蹄鐵。 | N5327 |  |
+| 轉折二：吞下不等於消化 | 135 | Aldrovandi 看到鐵原封不動排出來；Browne 說錯在把「吞下」推成「消化」。 | N5327 |  |
+| 收尾：看對了，推錯了 | 135 | 兩個離譜說法，起點都是真的觀察。留言問題：你聽過哪個「看到一半就下結論」的動物傳說？ | N5322、N5327 |  |
+
+**用到的題與來源：**
+
+- N5322（入選）『大象沒有膝蓋，只能靠著樹睡，獵人把樹鋸斷就能抓到牠』——這是中世紀的笑話嗎？Aristotle 已經寫『大象不像有些人慣常宣稱的那樣站著睡』；可是 Diodorus 仍把鋸樹獵象法寫進衣索比亞一帶的記述，Caesar《高盧戰記》則把同一套獵法安在 Hercynian 森林一種叫 alces 的獸身上；1646 年 Browne 還得舉出向教宗屈膝的大象來反駁——而 Loeb 編者說，象確實常靠著岩石或樹睡 — [penelope.uchicago.edu](https://penelope.uchicago.edu/pseudodoxia/pseudo31.html)、[penelope.uchicago.edu](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Caesar/Gallic_War/6C*.html)、[penelope.uchicago.edu](https://penelope.uchicago.edu/aristotle/histanimals2.html)
+- N5327（入選）鴕鳥能吃鐵？唐朝永徽元年吐火羅獻來的大鳥，《新唐書》寫牠『日三百里，能啖鐵』；英譯註者說更早的《魏書》寫牠『能食火』；歐洲的常見畫法讓鴕鳥嘴裡叼一個馬蹄鐵。Browne 說 Albertus Magnus 用實驗反駁過，Aldrovandi 在 Trento 親眼看到牠吞下鐵、又原封不動排出來；1646 年 Browne 說錯在把『吞下』當成『消化』——他在一隻火雞的砂囊裡找到七百顆石頭 — [zh.wikisource.org](https://zh.wikisource.org/wiki/%E6%96%B0%E5%94%90%E6%9B%B8/%E5%8D%B7221%E4%B8%8B)、[archive.org](https://archive.org/download/chaujukuahiswork00chauuoft/chaujukuahiswork00chauuoft_djvu.txt)、[zh.wikisource.org](https://zh.wikisource.org/zh-hant/%E8%AB%B8%E8%95%83%E5%BF%97/%E5%8D%B7%E4%B8%8A)
+
+**可能無聊的地方：** 前段從 Aristotle、Diodorus 到 Browne 追大象的膝蓋，後段從《新唐書》到 Aldrovandi 與 Browne 追鴕鳥吃鐵。
+
+**撤案條件：** N5322 取 8 分鐘、N5327 取 4.5 分鐘；不提任何狩獵或傷害動物的細節。
+
+**待補證據：** 題目已經過篩選研究與非作者覆核（batches/wave47-20261112.json，覆核在 reviews/wave47-review-20261112.json）；寫企劃前仍要照系列流程逐主張查核。Strabo、Topsell、Shakespeare 只經編者註轉讀；Albertus 的實驗只經 Browne 一句；人物卒年沒在可讀頁面確認，一律不入畫。
 
 ## 轉 Shorts（89）
 
