@@ -1,0 +1,1102 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e008-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "sunzhanggui",
+      "name": "孫掌櫃",
+      "appearance": "East Asian man of forty-five, tall and lean with a long narrow face and hollow cheeks, a thin grey-streaked beard and moustache, narrow smiling eyes that are always half closed, a green satin robe with a jade belt hook, both hands empty (no jade balls)",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的商行掌櫃，笑咪咪、慢條斯理、話裡藏刀"
+      }
+    },
+    {
+      "id": "zongbiaotou",
+      "name": "宗鏢頭",
+      "appearance": "East Asian man of forty-five, big and broad-backed, an ancient Chinese Song-dynasty escort's brown coarse hemp cross-collared short jacket with the sleeves rolled to the elbows, a brown cloth head-wrap, a wide leather belt with one grey cloth money pouch at the waist, cloth shoes; seen only from behind or from the shoulders down",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的鏢局鏢頭，男聲、粗、大嗓門、豪爽，說話短、一句一個重音"
+      }
+    },
+    {
+      "id": "menfang",
+      "name": "門房",
+      "appearance": "East Asian man of fifty, thin, an ancient Chinese Song-dynasty gatekeeper's grey-blue cross-collared long gown, cloth shoes, both hands tucked into his sleeves; seen only from behind or from the shoulders down",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的大戶人家門房，男聲、勢利、拖長音、狗仗人勢"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: a light tense pulse of low plucked strings in the late afternoon silk shop lane, dropping out for one beat on the system chime and turning light and quick when the escort walks past; a bright playful comedy of woodblock, pipa and dizi in the escort agency's compound, one rising accent as the money is counted; fast urgent drums matching the hoofbeats on the road at sunset; a low tense cue of drums and erhu at the manor gate and in the hall, one heavy hit as the IOU is torn; a low suspense cue of low cello and soft guqin by the outer wall at dusk, dropping to only the wind on the last system line; ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "五十兩不賣方子，太陽還沒落｜種田娶妻打天下 第8集（重製版）",
+    "description": "第四天申時，綢緞莊後巷。孫掌櫃開五十兩買肥皂方子，許硯把銀錠推回去：「方子賣一次就沒了，肥皂能賣一輩子。」手上十八兩，還差二兩，城裡能賣的都賣光了；唐小棠看到一個滿身汗的鏢師走過巷口，想到城外的鏢局。宗鏢頭洗了一次就整箱七十塊包下，二兩一錢，湊齊二十兩一錢。秦霜騎著借來的馬載兩人趕路，錢府門房關門說「申時已過」，許硯指著還沒落的太陽：字據寫的是日落。秦霜踹開大門，錢員外想賴，看到門外半條街的街坊，只好把字據摔出來，許硯當場撕掉，負債清零。出了錢府，側門木樁上掛著一頂繫紅繩的舊草帽，跟他落水那晚河邊的一樣；系統接著下隱藏任務：今夜洞房花燭，失敗扣除種田技能。《種田娶妻打天下》第 8 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "太陽還沒落",
+      "tag": "種田娶妻打天下",
+      "shot": "s22"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "後巷",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a01",
+          "speaker": "xuyan",
+          "text": "方子不賣。孫掌櫃，這銀子您收回去。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the lane behind the county silk shop in the late afternoon: the small plain wooden table on screen left, plain-dyed silk drying on bamboo poles, flagstones, the mouth of the lane deep behind, the low orange sun from there and long shadows toward the foreground: over-the-shoulder medium shot from behind Sun Zhanggui's left shoulder: his green satin shoulder and the tip of his grey-streaked beard in the right foreground, his face out of the frame; Xu Yan standing behind the small table on screen left, framed from the waist up with space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, beads of sweat on his forehead, a little white soap dust on his cuffs, his face three-quarter to screen right toward Sun Zhanggui, never the lens; calm and settled: brows level, eyes steady, lips firm between words; beside him in the middle of the frame, soft and out of focus, Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, half turned away, only her shoulder and her right hand resting on one small gold abacus no longer than her hand, plain with no marks or writing on the table showing; on the table one big silver yuanbao ingot shaped like a boat, as long as two palms side by side, plain silver-white with no marks or writing and one small wooden money box with a lid, as wide as a palm is long, plain wood with no marks or writing; each person appears only once, nobody else behind them",
+        "motion": "Xu Yan speaks a short Mandarin line, 「方子不賣。孫掌櫃，這銀子您收回去」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan sets two fingers of his right hand on the silver ingot, holds a beat, slides it across the tabletop to Sun Zhanggui and draws his hand back to rest on the table; Sun Zhanggui's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": [
+          "sunzhanggui",
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a02",
+          "speaker": "sunzhanggui",
+          "text": "五十兩不要？你還差人家二兩呢。",
+          "emotion": "慢條斯理"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium close-up, slow push in",
+        "prompt": "In the lane behind the county silk shop in the late afternoon, the low orange sun from the mouth of the lane: reverse over-the-shoulder medium close-up from behind Xu Yan's right shoulder: his blue-grey shoulder and topknot in the left foreground, his face out of the frame; Sun Zhanggui, a lean man in his forties with a long narrow face, hollow cheeks and a thin grey-streaked beard, in a Song-dynasty green satin cross-collared robe with a jade belt hook, standing on screen right across the small table, framed from the chest up with space above his head, his face three-quarter to screen left toward Xu Yan, never the lens; smooth and mocking: one corner of his mouth lifted in a thin false smile, eyes half-lidded, brows level; the silver ingot on the table at the bottom edge; each person appears only once, nobody else behind them; behind him only the drying silk of the same silk shop lane",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「五十兩不要？你還差人家二兩呢」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Sun Zhanggui strokes his grey-streaked beard once with his left hand, taps the silver ingot twice with his right forefinger without taking it, and his upper body tips a little forward over the table, his whole head staying in the frame; Xu Yan's lips stay closed, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": [
+          "sunzhanggui",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a03",
+          "speaker": "xitong",
+          "text": "叮。唐小棠，好感加三。",
+          "emotion": "冷淡，報數"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the lane behind the county silk shop in the late afternoon, the low orange sun from the mouth of the lane: close-up of Tang Xiaotang framed from the chest up with space above her head, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, standing at the table, half turned away from Sun Zhanggui off screen right; struck still: brows level, eyes wide and steady, lips closed; behind her only the brick wall of the same silk shop lane; the system voice speaks off screen",
+        "motion": "her right hand, below the frame on the abacus, stops; she slowly turns her head toward Xu Yan off screen left and her eyes settle on him, never on the lens; her lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a04",
+          "speaker": "xuyan",
+          "text": "方子賣一次就沒了，肥皂能賣一輩子。",
+          "emotion": "很穩"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, tracking",
+        "prompt": "In the lane behind the county silk shop in the late afternoon, the low orange sun from the mouth of the lane: medium close-up of Xu Yan standing behind the small table, framed from the waist up with clear space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, beads of sweat on his forehead, a little white soap dust on his cuffs, one flat square white bar of soap, palm-sized and one finger thick, flat like a small tile, plain with no marks or writing in his right hand, the edge of one green satin sleeve at the right edge of the frame, his face three-quarter to screen right toward Sun Zhanggui off screen right, never the lens; steady and sure: brows level, eyes on him, lips firm between words; behind him only the drying silk of the same silk shop lane",
+        "motion": "Xu Yan speaks a short Mandarin line, 「方子賣一次就沒了，肥皂能賣一輩子」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan lowers the bar of soap into the open crate at his feet below the frame, pulls the lid shut with a knock, and his eyes come back up to Sun Zhanggui, his whole head staying in the frame the whole time; no smile at any moment, not even at the end of the shot, until the last frame, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a05",
+          "speaker": "sunzhanggui",
+          "text": "志氣是好。只怕二兩還沒湊齊，太陽先落了。",
+          "emotion": "話裡藏刀"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the lane behind the county silk shop in the late afternoon: the small plain wooden table on screen left, plain-dyed silk drying on bamboo poles, flagstones, the mouth of the lane deep behind, the low orange sun from there and long shadows toward the foreground: medium shot past the corner of the small table and the wooden money box in the left foreground: Sun Zhanggui, a lean man in his forties with a long narrow face, hollow cheeks and a thin grey-streaked beard, in a Song-dynasty green satin cross-collared robe with a jade belt hook, framed from the waist up with space above his head, the silver ingot in his right hand, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; a thin false smile at one corner of his mouth, eyes cold and half-lidded; behind him the mouth of the lane in the low orange sun",
+        "motion": "Sun Zhanggui speaks a short Mandarin line, 「志氣是好。只怕二兩還沒湊齊，太陽先落了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Sun Zhanggui slips the silver ingot into his right green satin sleeve, turns and walks two steps toward the mouth of the lane, stops and looks back over his shoulder toward the table, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": [
+          "sunzhanggui"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a06",
+          "speaker": "tangxiaotang",
+          "text": "他說得對，城裡今天能賣的都賣光了。",
+          "emotion": "畫外，小聲"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle wide shot, slow push in",
+        "prompt": "In the lane behind the county silk shop in the late afternoon: one small plain wooden table on screen left with one small wooden money box on it, one plain wooden crate under it and one bamboo basket beside it, one empty wooden handcart at the table's right end, one red-painted back door in a whitewashed wall on screen right under a blank lintel board, bamboo poles hung with lengths of plain-dyed silk drying across the lane, flagstones, the mouth of the lane deep in the background, the low orange sun shining in from the mouth of the lane, long shadows stretching toward the foreground: low-angle wide shot from floor level past one corner of the wooden crate under the table in the foreground: Sun Zhanggui, a lean man in his forties with a long narrow face, hollow cheeks and a thin grey-streaked beard, in a Song-dynasty green satin cross-collared robe with a jade belt hook, seen from behind, small in the frame, walking away down the lane toward its mouth through the drying silk; nobody else in the lane; Tang Xiaotang speaks off screen",
+        "motion": "Sun Zhanggui's back walks out of the mouth of the lane, his sleeve brushing the hanging silk, and turns right out of sight; the lengths of silk keep swaying after him; no face is seen, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": [
+          "sunzhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a07",
+          "speaker": "tangxiaotang",
+          "text": "等等，城外有鏢局，鏢師天天一身臭汗！",
+          "emotion": "恍然，眼睛一亮，不笑開"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the lane behind the county silk shop in the late afternoon, the low orange sun from the mouth of the lane: over-the-shoulder medium shot from just behind Tang Xiaotang's right shoulder, looking down the lane: Tang Xiaotang appears only once: only the back of her head with its two looped buns and pink silk ribbons and her shoulders in the right foreground, her face turned away toward the mouth of the lane and never seen at any moment, her cheek, lips and mouth never visible; deep beyond her at the mouth of the lane, small and soft, one of the escort men from the agency outside the city walking past, in a Song-dynasty coarse hemp cross-collared short jacket dark with sweat and a cloth head-wrap, one rolled-up banner tied on his back, rolled tight with no writing showing; nobody else in the lane",
+        "motion": "the escort man walks from right to left across the mouth of the lane and out of sight; Tang Xiaotang's head turns slowly to follow him, then lifts sharply, her face still turned away toward the lane; her right hand rises into view at her shoulder and flicks three beads on the small gold abacus in it, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a08",
+          "speaker": "xuyan",
+          "text": "一身汗的人最懂肥皂的好。秦霜，箱子交給妳。",
+          "emotion": "下定決心"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the lane behind the county silk shop in the late afternoon: the small plain wooden table on screen left, plain-dyed silk drying on bamboo poles, flagstones, the mouth of the lane deep behind, the low orange sun from there and long shadows toward the foreground: over-the-shoulder medium shot from behind Tang Xiaotang's left shoulder: Tang Xiaotang appears only once, her shoulder and the back of her head with its two looped buns and pink silk ribbons in the right foreground, her face out of the frame; Xu Yan behind the small table on screen left, framed from the waist up with clear space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, beads of sweat on his forehead, a little white soap dust on his cuffs, his face three-quarter to screen right toward Qin Shuang off screen right, never the lens; decided: brows level, eyes bright and steady, lips firm between words; nobody else behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「一身汗的人最懂肥皂的好。秦霜，箱子交給妳」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan hauls one plain wooden crate of pale raw wood, a long box no wider than her shoulders, with its lid shut, no marks or writing up from under the table with both hands and thumps it down on the right end of the tabletop, his whole head staying in the frame the whole time, then turns his face to Qin Shuang off screen right; Tang Xiaotang's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s08b",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert close-up, high angle, slow push in",
+        "prompt": "In the lane behind the county silk shop in the late afternoon, the low orange sun from the mouth of the lane: high-angle insert close-up, the shot opens directly on the open wooden money box on the table from its very first frame: one small wooden money box with a lid, as wide as a palm is long, plain wood with no marks or writing with its lid open, small lumps of plain broken silver and a few strings of copper coins inside; two slender hands in peach-pink cuffs holding the mouth of one big grey cloth money bag tied with a drawstring open beside it; one man's hand in a blue-grey cuff waiting at the edge of the frame; only the hands, cuffs, money box, bag and coins are in the frame, no face; behind them only the flagstones of the same silk shop lane",
+        "motion": "the slender hands tip the silver and the strings of coins from the money box into the cloth bag, pull the drawstring tight, knot it and lay the heavy bag in the man's hand, which closes on it and draws it out of the frame; then the slender fingers slide one folded slip of pale yellow paper, folded shut, out of the bottom of the empty box and tuck it away into the peach-pink sleeve, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a09",
+          "speaker": "qinshuang",
+          "text": "鏢局在城東五里，扛著箱子跑，日落前到得了。",
+          "emotion": "乾脆"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking",
+        "prompt": "In the lane behind the county silk shop in the late afternoon: the small plain wooden table on screen left, plain-dyed silk drying on bamboo poles, flagstones, the mouth of the lane deep behind, the low orange sun from there and long shadows toward the foreground: wide shot past lengths of drying silk in the foreground, everyone small in the frame: Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, standing at the right end of the small table beside the wooden crate on it, her face in profile toward Xu Yan, never the lens; brisk: brows level, eyes steady, lips firm between words; behind the table Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, beads of sweat on his forehead, a little white soap dust on his cuffs, and Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, one small gold abacus no longer than her hand, plain with no marks or writing tied at her waist, lips closed; one bamboo basket full of flat square white bars of soap, each palm-sized and one finger thick, flat like a small tile, no rolls, no cylinders and no round buns beside the table and the empty handcart at its right end; at the red back door on screen right in the background one young servant girl of fifteen in a Song-dynasty pale green cotton cross-collared jacket, her hair in two small side buns; each person appears only once, nobody else behind them",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「鏢局在城東五里，扛著箱子跑，日落前到得了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang lifts the wooden crate off the table with both arms, swings it up onto her right shoulder and strides off toward the mouth of the lane, her head staying in the frame; Xu Yan and Tang Xiaotang follow her; in the background the servant girl lifts the basket of soap and the empty money box onto the handcart and pulls the cart in through the red back door; all other lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the low orange afternoon sun from the mouth of the lane stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s10",
+      "chapter": "鏢局",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a10",
+          "speaker": "tangxiaotang",
+          "text": "宗鏢頭在嗎？柳溪許家來賣肥皂，洗一次就知道！",
+          "emotion": "揚聲"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking",
+        "prompt": "In the packed-earth compound of an escort agency outside the city in the late afternoon: the stone well and washing trough on screen right, the compound gate at the back left, the low sun from the left: wide shot past the stand of furled banners in the left foreground, everyone small in the frame: on screen left Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, walking in through the compound gate, her face in profile toward the well on screen right, never the lens; bright and loud: brows lifted, eyes wide, mouth opening wide on each word; beside her Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, one plain wooden crate of pale raw wood, a long box no wider than her shoulders, with its lid shut, no marks or writing on her right shoulder held with both hands, no blade, no knife and no weapon of any kind anywhere in the frame; Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, beads of sweat on his forehead, a little white soap dust on his cuffs, behind them; on screen right at the well about five escort men in Song-dynasty coarse hemp cross-collared short jackets with the sleeves rolled up, cloth head-wraps and cloth shoes splashing water; in the right foreground the broad back of the escort chief, a big broad-backed man in a Song-dynasty brown coarse hemp cross-collared short jacket with the sleeves rolled to the elbows, a brown cloth head-wrap and a wide leather belt, his face out of the frame",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「宗鏢頭在嗎？柳溪許家來賣肥皂，洗一次就知道！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang lifts one corner of the crate's lid on Qin Shuang's shoulder, takes out one flat square white bar of soap and holds it high as she calls out; the escort men at the well look up; the escort chief in the foreground turns half round, only his back and the back of his head-wrap seen, and the low afternoon sun from the left stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "qinshuang",
+          "xuyan",
+          "zongbiaotou"
+        ],
+        "nospeak": [
+          "zongbiaotou"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a11",
+          "speaker": "zongbiaotou",
+          "text": "又是賣肥皂的？上個月那批洗完還是臭！",
+          "emotion": "大嗓門，不耐煩"
+        },
+        {
+          "id": "zq908a12",
+          "speaker": "tangxiaotang",
+          "text": "那是別人家的。這塊洗一次，不香不要錢。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the packed-earth compound of an escort agency outside the city in the late afternoon: the stone well and washing trough on screen right, the compound gate at the back left, the low sun from the left: over-the-shoulder medium shot from just behind Tang Xiaotang's left shoulder: Tang Xiaotang appears only once: only the back of her head with its two looped buns and pink silk ribbons and her shoulders in the left foreground, her face turned away toward the escort chief and never seen at any moment, her cheek, lips and mouth never visible; facing her on screen right, close, the escort chief, a big broad-backed man in a Song-dynasty brown coarse hemp cross-collared short jacket with the sleeves rolled to the elbows, a brown cloth head-wrap and a wide leather belt, framed so the top edge of the frame cuts him off at the chin: only his broad chest, belt and big hands are in the frame, his face never seen; one flat square white bar of soap, palm-sized and one finger thick, flat like a small tile, plain with no marks or writing in her right hand; far behind, soft and out of focus, the escort men at the well; nobody else",
+        "motion": "the escort chief's right hand waves her off with one big sweep; Tang Xiaotang steps in, presses the bar of soap firmly into his palm and closes his fingers over it, her head giving one small tilt, her face still turned away toward him, and the low afternoon sun from the left stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "zongbiaotou"
+        ],
+        "nospeak": [
+          "tangxiaotang",
+          "zongbiaotou"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a13",
+          "speaker": "zongbiaotou",
+          "text": "咦……真的起泡，還有一股皂角香。",
+          "emotion": "畫外，一愣，驚訝"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, high angle, slow push in",
+        "prompt": "In the compound of an escort agency in the late afternoon, the low sun from the left: high-angle insert close-up, the shot opens directly on two big rough hands in a long stone washing trough of clear water from its very first frame: brown coarse hemp sleeves rolled to the elbows, one flat square white bar of soap, palm-sized and one finger thick, flat like a small tile, plain with no marks or writing between the hands; at the top edge two escort men seen only from the shoulders to the chin in Song-dynasty coarse hemp cross-collared short jackets with the sleeves rolled up, cloth head-wraps and cloth shoes; only the hands, sleeves, trough, water and soap and those two shoulders are in the frame, no full face; behind them only the packed earth of the same escort agency; the escort chief speaks off screen",
+        "motion": "the big hands rub the soap and white lather swells up over both palms; the hands lift out of the water toward the top edge of the frame and stop there; the two escort men's chins push in closer to look, and the low afternoon sun from the left stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a14",
+          "speaker": "qinshuang",
+          "text": "這箱連你手上那塊，七十塊，夠你們走一趟鏢。",
+          "emotion": "平淡"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the packed-earth compound of an escort agency outside the city in the late afternoon: the stone well and washing trough on screen right, the compound gate at the back left, the low sun from the left: low-angle medium shot of Qin Shuang, framed from the knees up with clear space above her head, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, both her hands empty, no blade, no knife, no scabbard and no weapon of any kind anywhere in the frame, the wooden crate on her right shoulder, her face three-quarter to screen right toward the escort chief off screen right, never the lens; matter-of-fact: brows level, eyes steady, lips firm between words; two hands of escort men in Song-dynasty hemp sleeves reaching in from the right edge; behind her only the packed earth of the same escort agency",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「這箱連你手上那塊，七十塊，夠你們走一趟鏢」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang swings the crate down off her shoulder and sets it on the ground with a thud, crouches and throws its lid open on rows of flat square white bars of soap, each palm-sized and one finger thick, flat like a small tile, packed flat in layers, no rolls, no cylinders and no round buns, one gap in the top layer where one bar is missing, then rises again to her full height, her whole head staying in the frame, and turns to the escort chief off screen right; no smile at any moment, not even at the end of the shot, until the last frame, and the low afternoon sun from the left stays unchanged",
+        "characters": [
+          "qinshuang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a15",
+          "speaker": "zongbiaotou",
+          "text": "痛快！整箱我全包，大宗貨一塊算三分。",
+          "emotion": "豪爽"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the compound of an escort agency in the late afternoon, the low sun from the left: medium shot of the escort chief, a big broad-backed man in a Song-dynasty brown coarse hemp cross-collared short jacket with the sleeves rolled to the elbows, a brown cloth head-wrap and a wide leather belt, framed from the shoulders down so his face is never in the frame: his broad chest, wide leather belt and one small grey cloth money pouch the size of a fist tied at his waist; the open wooden crate of rows of flat square white bars of soap, each palm-sized and one finger thick, flat like a small tile, packed flat in layers, no rolls, no cylinders and no round buns before him at the bottom of the frame; one escort man's hand in a hemp sleeve reaching into the crate; behind him only the packed earth of the same escort agency",
+        "motion": "the escort chief's left hand slaps the escort man's hand away, his right palm smacks down flat on the crate's lid, then he unties the money pouch from his belt and tosses it out to screen left, and the low afternoon sun from the left stays unchanged",
+        "characters": [
+          "zongbiaotou"
+        ],
+        "nospeak": [
+          "zongbiaotou"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a16",
+          "speaker": "tangxiaotang",
+          "text": "七十塊，二兩一錢。加上十八兩，湊齊了！",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the compound of an escort agency in the late afternoon, the low sun from the left: medium close-up of Tang Xiaotang framed from the waist up with space above her head, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, one small gold abacus no longer than her hand, plain with no marks or writing tied at her waist, her face three-quarter to screen right toward the escort chief off screen right, never the lens; delighted: brows lifting, eyes shining, cheeks rising, mouth opening into a bright smile; behind her only the packed earth of the same escort agency",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「七十塊，二兩一錢。加上十八兩，湊齊了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang catches one small grey cloth money pouch the size of a fist in both hands and weighs it once, then her left fingertip flicks one bead on the abacus at her waist and she laughs, and the low afternoon sun from the left stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a17",
+          "speaker": "xuyan",
+          "text": "別高興太早。太陽偏西了，錢府還有十里。",
+          "emotion": "皺眉"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the packed-earth compound of an escort agency outside the city in the late afternoon: the stone well and washing trough on screen right, the compound gate at the back left, the low sun from the left: over-the-shoulder medium shot from behind Tang Xiaotang's right shoulder: Tang Xiaotang appears only once, her shoulder and the back of her head with its two looped buns and pink silk ribbons in the left foreground, her face out of the frame; Xu Yan on screen right, framed from the waist up with clear space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, beads of sweat on his forehead, a little white soap dust on his cuffs, his face three-quarter to screen left toward her, never the lens; worried: brows drawn together, eyes narrowed, lips firm between words; nobody else behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「別高興太早。太陽偏西了，錢府還有十里」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan takes the small money pouch from her hand and tucks it into the front of his robe beside the bulge of the big bag already there, then lifts his eyes to the low sun off screen left and his brows knit; Tang Xiaotang's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the low afternoon sun from the left stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a18",
+          "speaker": "zongbiaotou",
+          "text": "騎我的馬去！明天把馬牽回來就行。",
+          "emotion": "豪爽，背影"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In the packed-earth compound of an escort agency outside the city in the late afternoon: the stone well and washing trough on screen right, the compound gate at the back left, the low sun from the left: medium shot, framed from the waist up with space above the heads: on screen left Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, both her hands empty, no blade, no knife, no scabbard and no weapon of any kind anywhere in the frame, her face three-quarter to screen right toward the escort chief, never the lens; level and steady: brows level, eyes on him, lips closed; from screen right the escort chief, a big broad-backed man in a Song-dynasty brown coarse hemp cross-collared short jacket with the sleeves rolled to the elbows, a brown cloth head-wrap and a wide leather belt, seen only from behind, his face never seen, leading one chestnut-red horse with a saddle and reins; far behind, soft, two escort men at the well; nobody else",
+        "motion": "the escort chief leads the horse up to Qin Shuang and tosses the reins to her; Qin Shuang's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the low afternoon sun from the left stays unchanged",
+        "characters": [
+          "qinshuang",
+          "zongbiaotou"
+        ],
+        "nospeak": [
+          "zongbiaotou"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a19",
+          "speaker": "qinshuang",
+          "text": "上來，抓緊。掉下去我可不回頭撿。",
+          "emotion": "冷，乾脆"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In the packed-earth compound of an escort agency outside the city in the late afternoon: the stone well and washing trough on screen right, the compound gate at the back left, the low sun from the left: low-angle medium shot of Qin Shuang beside one chestnut-red horse with a saddle and reins, framed with clear space above her head, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, her hands holding only the reins, no blade, no knife, no scabbard and no weapon of any kind anywhere in the frame, her face three-quarter to screen left toward the two below her, never the lens; cool and dry: brows level, eyes narrowed, lips firm between words; at the bottom left edge only the shoulders and the backs of the heads of Xu Yan in his blue-grey robe and Tang Xiaotang with her two looped buns, their faces out of the frame; each person appears only once, nobody else behind them",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「上來，抓緊。掉下去我可不回頭撿」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang catches the reins in her right hand, sets her left foot in the stirrup and swings up into the saddle, sits square, and reaches her right hand back down to the two at the bottom left, her whole head staying in the frame; no smile at any moment, not even at the end of the shot, until the last frame, and the low afternoon sun from the left stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "chapter": "趕路",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a20",
+          "speaker": "tangxiaotang",
+          "text": "慢點！我的髮髻要散了，簪子也要掉了！",
+          "emotion": "被顛得尖叫"
+        },
+        {
+          "id": "zq908a21",
+          "speaker": "qinshuang",
+          "text": "慢了就趕不上日落，髮髻散了回家再梳。",
+          "emotion": "頭也不回"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking",
+        "prompt": "On a dirt road through open countryside just before sunset: golden rice fields on both sides, a far mountain ridge with the low red sun hanging just above it ahead on screen left, the light coming from ahead, dust glowing in the air: wide side shot past rice stalks whipping by in the foreground: one chestnut-red horse with a saddle and reins galloping toward screen left with three riders on it, everyone small in the frame: in front Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, her hands holding only the reins, no blade, no knife, no scabbard and no weapon of any kind anywhere in the frame, her face in profile ahead toward screen left, never the lens; cool: brows level, eyes narrowed ahead; in the middle Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, her two looped buns knocked a little askew and one pearl pin slanting, clutching her buns with her left hand, mouth wide open in a scream; behind her Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, the robe dusty from the road, sweat on his forehead, breathing hard, his left arm clutching the money bags at his chest and his right hand gripping the back edge of the saddle; each person appears only once, nobody else behind them",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「慢點！我的髮髻要散了，簪子也要掉了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang speaks a short Mandarin line, 「慢了就趕不上日落，髮髻散了回家再梳」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the horse gallops toward screen left kicking up dust; Tang Xiaotang bounces in the saddle, pressing her buns down with her left hand; Qin Shuang keeps her eyes ahead and does not turn; Xu Yan hangs on behind, and the red sun low ahead keeps sinking slowly",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a22",
+          "speaker": "xitong",
+          "text": "距日落，一刻鐘。",
+          "emotion": "冷，報時"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view tracking shot",
+        "prompt": "On a dirt road through open countryside just before sunset: golden rice fields on both sides, a far mountain ridge with the low red sun hanging just above it ahead on screen left, the light coming from ahead, dust glowing in the air: point-of-view shot from the back of the galloping horse, looking ahead past two Song-dynasty riders seen only from behind: in the near foreground the back of Tang Xiaotang's head with its two looped buns knocked askew and one pearl pin slanting, beyond her the back of Qin Shuang's high ponytail and her shoulders; their faces never seen; far ahead the red sun sinking toward the mountain ridge; the system voice speaks off screen",
+        "motion": "the horse's back bobs up and down; far ahead the red sun sinks a little lower toward the ridge; no face is seen, and the red sun low ahead keeps sinking slowly",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "chapter": "錢府",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a23",
+          "speaker": "menfang",
+          "text": "時辰到了，申時已過，老爺不見客！",
+          "emotion": "拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle wide shot, slow push in",
+        "prompt": "At the Qian manor gate at sunset: stone steps up to a vermilion double gate under a blank board with no writing, one stone lion on each side of the steps, the red setting sun half sunk behind a far ridge on screen left, red light from the left: low-angle wide shot past the stone back of one stone lion in the foreground: at the top of the steps the gatekeeper, an old servant in a Song-dynasty grey-blue cross-collared long gown and cloth shoes, the top edge of the frame cutting him off at the shoulders so his face is never seen, his hands tucked into his sleeves; two house servants in Song-dynasty black cross-collared short jackets, cloth head-wraps and cloth shoes pushing the two leaves of the vermilion gate shut; at the foot of the steps one chestnut-red horse with a saddle and reins, just pulled up, with three Song-dynasty riders on it, dark silhouettes seen from behind against the red light",
+        "motion": "the two servants push the gate until only a narrow crack is left; the gatekeeper steps forward into the crack and tucks his hands deeper into his sleeves; the three riders sit still on the horse, and the red sunset light from the left stays unchanged",
+        "characters": [
+          "menfang"
+        ],
+        "nospeak": [
+          "menfang"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a24",
+          "speaker": "xuyan",
+          "text": "太陽還沒落。字據寫的是日落，不是申時。",
+          "emotion": "喘，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, tracking",
+        "prompt": "At the Qian manor gate at sunset, red light from the left: medium close-up of Xu Yan on the stone steps, framed from the waist up with clear space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, the robe dusty from the road, sweat on his forehead, breathing hard, his face three-quarter to screen right toward the gatekeeper at the top of the steps off screen right, never the lens; urgent and dogged: brows drawn down, eyes fixed, mouth working between hard breaths; behind him at the foot of the steps, soft and out of focus, Qin Shuang helping Tang Xiaotang down from the horse and looping the reins round a stone lion; each person appears only once, nobody else behind them",
+        "motion": "Xu Yan speaks a short Mandarin line, 「太陽還沒落。字據寫的是日落，不是申時」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan comes up three steps in long strides, turns half round still breathing hard and flings his right arm out toward the sun off screen left, then turns his face back to the gatekeeper; behind him the two women's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the red sunset light from the left stays unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a25",
+          "speaker": "menfang",
+          "text": "我說過了就是過了，你們回吧！",
+          "emotion": "畫外，不耐煩"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder shot, slow tilt up",
+        "prompt": "At the Qian manor gate at sunset: stone steps up to a vermilion double gate under a blank board with no writing, one stone lion on each side of the steps, the red setting sun half sunk behind a far ridge on screen left, red light from the left: over-the-shoulder shot from behind Xu Yan: his blue-grey shoulder, the back of his topknot and his raised right arm in its dusty blue-grey sleeve in the foreground, his face out of the frame; along his arm, far away to the west, the mountain ridge with half a red sun still above it; nobody else; the gatekeeper speaks off screen",
+        "motion": "the view travels up along his raised arm to the far ridge, where half a red sun still hangs; a flock of birds crosses the sky; his face never turns, and the red sunset light from the left stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a26",
+          "speaker": "tangxiaotang",
+          "text": "這是抄本，原本在你家老爺手上，寫的是日落。",
+          "emotion": "甜，但寸步不讓"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle over-the-shoulder medium shot, slow push in",
+        "prompt": "At the Qian manor gate at sunset, red light from the left: low-angle over-the-shoulder medium shot from just behind and below Tang Xiaotang's left shoulder on the steps: Tang Xiaotang appears only once: only the back of her head with its two looped buns and pink silk ribbons knocked a little askew, one pearl pin slanting and her shoulders in the left foreground, her face turned away toward the gatekeeper and never seen at any moment, her cheek, lips and mouth never visible; in her raised right hand beside her head one unfolded slip of pale yellow paper held up toward the gatekeeper, its blank back toward the lens, soft and out of focus, nothing on it readable; above her at the top of the steps on screen right the gatekeeper, an old servant in a Song-dynasty grey-blue cross-collared long gown and cloth shoes, the top edge of the frame cutting him off at the shoulders, his face never seen, standing in the narrow crack of the vermilion gate; nobody else",
+        "motion": "Tang Xiaotang draws the folded slip out of her right sleeve, snaps it open and holds it up high toward the gatekeeper, her face still turned away up toward him; the gatekeeper's hands stay tucked in his sleeves, and the red sunset light from the left stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "menfang"
+        ],
+        "nospeak": [
+          "tangxiaotang",
+          "menfang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a27",
+          "speaker": "menfang",
+          "text": "抄本算什麼？門關了，就是關了！",
+          "emotion": "背影，拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "At the Qian manor gate at sunset, red light from the left: low-angle medium shot up the steps: the gatekeeper, an old servant in a Song-dynasty grey-blue cross-collared long gown and cloth shoes, seen only from behind, his face never seen, blocking the narrow crack of the vermilion gate; behind him Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, coming up the last step, framed with clear space above her head, her face three-quarter to screen right toward his back, never the lens; cold: brows low and level, eyes narrowed on him, lips closed; nobody else",
+        "motion": "the gatekeeper steps sideways to fill the crack; Qin Shuang stops on the top step right behind him, draws her old firewood machete (a long narrow iron blade with a slightly hooked tip, black-cloth-wrapped wooden handle) from the right side of her wide leather belt with her right hand and lets it hang blade-down at her side, the edge turned toward the ground; her lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the red sunset light from the left stays unchanged",
+        "characters": [
+          "qinshuang",
+          "menfang"
+        ],
+        "nospeak": [
+          "menfang"
+        ]
+      }
+    },
+    {
+      "id": "s25b",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a28",
+          "speaker": "qinshuang",
+          "text": "讓開。我不打人，我只開門。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "At the Qian manor gate at sunset, red light from the left: low-angle medium shot at the top of the steps, the whole action kept inside the frame: Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, framed from the knees up with clear space above her head, her old firewood machete (a long narrow iron blade with a slightly hooked tip, black-cloth-wrapped wooden handle) hanging blade-down in her right hand, the edge toward the ground, touching nobody; beside her the gatekeeper, an old servant in a Song-dynasty grey-blue cross-collared long gown and cloth shoes, seen only from behind, his face never seen; the vermilion double gate before them; nobody else",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「讓開。我不打人，我只開門」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; at normal speed Qin Shuang lifts her right foot and kicks the gate; both leaves fly inward and bang against the inner walls; the gatekeeper stumbles aside and sits down hard by the door frame; she plants her foot, looks down at him and turns her face to him; no smile at any moment, not even at the end of the shot, until the last frame, and the red sunset light from the left stays unchanged",
+        "characters": [
+          "qinshuang",
+          "menfang"
+        ],
+        "nospeak": [
+          "menfang"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a29",
+          "speaker": "qianyuanwai",
+          "text": "誰讓你們進來的？來人，給我轟出去！",
+          "emotion": "拍桌"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In the main hall of the Qian manor at sunset: one red-wood table on screen right with a carved armchair behind it and a plain folding screen with no writing and no paintings behind that, the doorway on screen left, one beam of red-gold sunset light slanting in across the floor from the doorway: wide shot past the door frame and the beam of sunset light in the foreground, everyone small in the frame: on screen left Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, the robe dusty from the road, sweat on his forehead, breathing hard, the money bags bulging in the front of his robe, striding in along the beam of light; on screen right behind the red-wood table Qian Yuanwai, a short portly man of fifty with a round face and a thin eight-shaped moustache, in his dark gold silk robe with roundel patterns, his hands of an ordinary skin tone, sitting, one small white porcelain teacup in his hand, his face three-quarter to screen left toward the door, never the lens; furious: brows slammed down, eyes bulging, mouth wide on each shout; in the doorway Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, her old firewood machete (a long narrow iron blade with a slightly hooked tip, black-cloth-wrapped wooden handle) hanging blade-down in her right hand, touching nobody, lips closed; each person appears only once, nobody else behind them; two house servants in Song-dynasty black cross-collared short jackets, cloth head-wraps and cloth shoes behind the folding screen",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「誰讓你們進來的？來人，給我轟出去！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan strides in; Qian Yuanwai puts down the teacup, plants both hands on the table and rises to his feet with space above his head, and slams his right palm on the table; the two servants rush out from behind the screen, see the blade in Qin Shuang's hand and stop dead; Xu Yan's lips stay closed, and the beam of red-gold sunset light stays unchanged",
+        "characters": [
+          "xuyan",
+          "qianyuanwai",
+          "qinshuang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a30",
+          "speaker": "xuyan",
+          "text": "二十兩一錢，一錢不少。錢員外，請點。",
+          "emotion": "不卑不亢"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the main hall of the Qian manor at sunset, a beam of red-gold sunset light from the doorway on screen left: over-the-shoulder medium shot from behind Qian Yuanwai's left shoulder: his dark gold silk shoulder with roundel patterns in the right foreground, his face out of the frame; Xu Yan standing at the red-wood table on screen left, framed from the waist up with clear space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, the robe dusty from the road, sweat on his forehead, his breathing steadied, his face three-quarter to screen right toward Qian Yuanwai, never the lens; firm and level: brows level, eyes steady on him, lips firm between words; each person appears only once, nobody else behind them",
+        "motion": "Xu Yan speaks a short Mandarin line, 「二十兩一錢，一錢不少。錢員外，請點」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan takes one big grey cloth money bag tied with a drawstring and one small grey cloth money pouch the size of a fist from the front of his robe and sets them on the table, loosens their mouths so lumps of broken silver and a few small silver ingots slide out, and pushes the heap across to Qian Yuanwai with both hands; Qian Yuanwai's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the beam of red-gold sunset light stays unchanged",
+        "characters": [
+          "qianyuanwai",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a31",
+          "speaker": "qianyuanwai",
+          "text": "過了申時，這筆不算數，地照收。",
+          "emotion": "死不認帳"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In the main hall of the Qian manor at sunset, a beam of red-gold sunset light from the doorway on screen left: reverse over-the-shoulder medium shot from behind Xu Yan's right shoulder: his blue-grey shoulder and topknot in the left foreground, his face out of the frame; Qian Yuanwai, a short portly man of fifty with a round face and a thin eight-shaped moustache, in his dark gold silk robe with roundel patterns, his hands of an ordinary skin tone, behind the red-wood table on screen right, framed from the waist up with space above his head, the heap of broken silver on the table before him, his face three-quarter to screen left toward Xu Yan, never the lens; a cold sneer: one corner of his mouth curled, eyes narrowed; each person appears only once, nobody else behind them; behind him only the plain folding screen",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「過了申時，這筆不算數，地照收」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qian Yuanwai picks up one lump of silver between two fingers and flicks it across the tabletop so it rolls away, then sits back in his armchair; Xu Yan's lips stay closed, and the beam of red-gold sunset light stays unchanged",
+        "characters": [
+          "qianyuanwai",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a32",
+          "speaker": "xuyan",
+          "text": "字據寫日落，太陽還在天上。欠債還錢，字據拿來。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the main hall of the Qian manor at sunset, a beam of red-gold sunset light from the doorway on screen left: medium close-up of Xu Yan at the table, framed from the waist up with clear space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, the robe dusty from the road, sweat on his forehead, his face three-quarter to screen right toward Qian Yuanwai off screen right, never the lens; hard and quiet: brows drawn down, eyes fixed on him, lips firm between words, jaw set; behind him only the doorway and the beam of sunset light of the same hall",
+        "motion": "Xu Yan speaks a short Mandarin line, 「字據寫日落，太陽還在天上。欠債還錢，字據拿來」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan plants both hands on the silver-strewn table, his back straight and his whole head staying in the frame, then lifts his right hand and holds it out palm up toward Qian Yuanwai off screen right; no smile at any moment, not even at the end of the shot, until the last frame, and the beam of red-gold sunset light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a33",
+          "speaker": "qinshuang",
+          "text": "門外半條街的人都看見了，太陽還沒落。",
+          "emotion": "冷"
+        },
+        {
+          "id": "zq908a34",
+          "speaker": "xitong",
+          "text": "叮。秦霜，好感加五。",
+          "emotion": "冷淡，報數"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view shot, slow push in",
+        "prompt": "In the main hall of the Qian manor at sunset: one red-wood table on screen right with a carved armchair behind it and a plain folding screen with no writing and no paintings behind that, the doorway on screen left, one beam of red-gold sunset light slanting in across the floor from the doorway: point-of-view shot from the table looking back at the doorway: in the doorway Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, framed from the knees up with clear space above her head, her old firewood machete (a long narrow iron blade with a slightly hooked tip, black-cloth-wrapped wooden handle) in her right hand, her face three-quarter to screen right toward Xu Yan at the table, never the lens; cold: brows level, eyes narrowed, lips firm between words; just inside the door behind her Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, her two looped buns knocked a little askew and one pearl pin slanting, one small gold abacus no longer than her hand, plain with no marks or writing in her hands, her face toward the table, lips closed; outside the door about six townsfolk in Song-dynasty coarse hemp cross-collared short jackets, cloth head-wraps and cloth shoes craning their heads in to look; far beyond them a sliver of the red sun above the ridge; each person appears only once, nobody else behind them; the system voice speaks off screen",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「門外半條街的人都看見了，太陽還沒落」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang steps aside to clear the doorway and rests the back of the machete on her right shoulder, the edge turned outward and away from everyone; when her line ends her lips close and stay closed, her eyes easing a little; the townsfolk crane in and glance at one another, their lips closed; Tang Xiaotang's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the beam of red-gold sunset light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a35",
+          "speaker": "xitong",
+          "text": "負債清零。",
+          "emotion": "冷，前面停一拍"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "In the main hall of the Qian manor at sunset, a beam of red-gold sunset light from the doorway on screen left: insert close-up, the shot opens directly on the red-wood tabletop from its very first frame: one fat hand in a dark gold silk cuff with roundel patterns, of an ordinary skin tone, holding one sheet of paper face down, its blank back up, only a faint red thumbprint showing through the paper, nothing readable; small lumps of plain broken silver scattered on the table; one man's hand in a dusty blue-grey cuff at the left edge; only the hands, cuffs, paper, silver and tabletop are in the frame, no face; behind them only the beam of sunset light of the same hall; the system voice speaks off screen",
+        "motion": "the fat hand pauses, then slaps the paper face down on the table; the blue-grey hand picks it up and tears it in two, then again, and the blank backs of the pieces drift down through the beam of light; last the blue-grey hand pushes one small lump of silver back out of the heap and draws it out of the frame, and the beam of red-gold sunset light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a36",
+          "speaker": "qianyuanwai",
+          "text": "許硯，你今天走得出去，明天走不出柳溪！",
+          "emotion": "咬牙"
+        },
+        {
+          "id": "zq908a37",
+          "speaker": "xuyan",
+          "text": "債清了，柳溪的路，我天天走給你看。",
+          "emotion": "畫外，平靜"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the main hall of the Qian manor at sunset, a beam of red-gold sunset light from the doorway on screen left: close-up of Qian Yuanwai, a short portly man of fifty with a round face and a thin eight-shaped moustache, in his dark gold silk robe with roundel patterns, his hands of an ordinary skin tone, framed from the chest up with space above his head, his face three-quarter to screen left toward Xu Yan off screen left, never the lens; red with fury: face flushed dark red, brows slammed down, eyes bulging, teeth clenched between words; behind him only the plain folding screen of the same hall",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「許硯，你今天走得出去，明天走不出柳溪！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qian Yuanwai pounds his fist down on the table below the frame and the silver jumps; when his line ends his lips stay pressed shut and he glares toward screen left, his chest heaving, and the beam of red-gold sunset light stays unchanged",
+        "characters": [
+          "qianyuanwai"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a38",
+          "speaker": "tangxiaotang",
+          "text": "走吧相公，今晚回家，我給你記一大功。",
+          "emotion": "輕快，可以笑"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking",
+        "prompt": "Along the whitewashed outer wall beside the Qian manor gate at dusk: the sky turning deep blue, a few blank paper lanterns just lit along the wall, plain with no writing, one small side door in the wall with one wooden post beside it: wide shot past one plain lit lantern with no writing in the foreground, everyone small in the frame: Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, her hands holding only the reins, no blade, no knife, no scabbard and no weapon of any kind anywhere in the frame, leading one chestnut-red horse with a saddle and reins in front; Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, her two looped buns knocked a little askew and one pearl pin slanting, walking beside Xu Yan, her face in profile toward him, never the lens; warm and pleased: eyes bright, cheeks lifting, a small smile between words; Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty, tired, walking a little behind, lips closed; each person appears only once, nobody else behind them",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「走吧相公，今晚回家，我給你記一大功」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; the three walk along the wall toward screen left; Tang Xiaotang pats Xu Yan's sleeve twice as she speaks; Xu Yan nods once, his lips closed, and the dusk light and the lantern glow stay unchanged",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a39",
+          "speaker": "xuyan",
+          "text": "這頂紅繩草帽……跟河邊那頂一樣。",
+          "emotion": "畫外，低聲"
+        }
+      ],
+      "data": {
+        "camera": "Insert close-up, slow push in",
+        "prompt": "Along the whitewashed outer wall beside the Qian manor gate at dusk, warm lantern light and a deep blue sky: insert close-up, the shot opens directly on the old straw hat from its very first frame: one old straw hat, wheat-coloured, one corner of its brim broken, one thin red cord tied round the brim, hanging on one wooden post beside the small side door in the whitewashed wall; nobody in the frame; behind it only the white wall in the dusk light; Xu Yan speaks off screen",
+        "motion": "the red cord stirs in the evening breeze and the straw hat turns slowly half round on its post, and the dusk light and the lantern glow stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a40",
+          "speaker": "qinshuang",
+          "text": "草帽滿街都是，你看它做什麼？",
+          "emotion": "淡淡"
+        },
+        {
+          "id": "zq908a41",
+          "speaker": "xuyan",
+          "text": "沒什麼。我落水那晚，河邊也掛著一頂。",
+          "emotion": "背對鏡頭，低聲"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "Along the whitewashed outer wall beside the Qian manor gate at dusk, warm lantern light and a deep blue sky: over-the-shoulder medium shot from behind Xu Yan's right shoulder: his blue-grey shoulder and topknot in the left foreground, his face out of the frame; Qin Shuang on screen right leading one chestnut-red horse with a saddle and reins, framed from the chest up with space above her head so her belt stays below the bottom edge of the frame, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, her hands holding only the reins, no blade, no knife, no scabbard and no weapon anywhere in the frame, her face three-quarter to screen left toward him, never the lens; puzzled and cool: one brow slightly raised, eyes steady on him, lips firm between words; each person appears only once, nobody else behind them; behind her only the white wall in the dusk light",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「草帽滿街都是，你看它做什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Qin Shuang stops and looks back, glances past him toward the straw hat on its post off screen left, then her eyes come back to him; after her line her lips close and stay closed while she watches him; Xu Yan stays turned away; no smile at any moment, not even at the end of the shot, until the last frame, and the dusk light and the lantern glow stay unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ],
+        "nospeak": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a42",
+          "speaker": "xitong",
+          "text": "叮。隱藏任務：洞房花燭。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "Along the whitewashed outer wall beside the Qian manor gate at dusk, warm lantern light and a deep blue sky: extreme close-up filling the whole frame edge to edge with only Xu Yan's two eyes and brows, no nose and no mouth in the frame, the shot opens directly on his eyes from its very first frame, natural dark brown irises with a tiny catchlight, his gaze slightly off to screen left and never into the lens; his eyes suddenly fixed and still; the system voice speaks off screen",
+        "motion": "his eyes, about to turn away, freeze and widen slightly; nothing else moves, and the dusk light and the lantern glow stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a43",
+          "speaker": "xitong",
+          "text": "今夜，任一妻好感加十。",
+          "emotion": "冷，宣布"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view medium shot, slow push in",
+        "prompt": "Along the whitewashed outer wall beside the Qian manor gate at dusk, warm lantern light and a deep blue sky: point-of-view medium shot of the two women in the lantern light, both framed from the waist up with space above their heads: Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, her two looped buns knocked a little askew and one pearl pin slanting; Qin Shuang, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, her hands holding only the reins, no blade, no knife, no scabbard and no weapon of any kind anywhere in the frame, holding the horse beside her; both faces three-quarter toward Xu Yan just off screen, never the lens; Tang Xiaotang curious: head tilted, brows lifted, eyes wide, lips closed; Qin Shuang wary: one brow raised, eyes narrowed, lips closed; each person appears only once, nobody else behind them; behind them only the white wall and the lit lanterns; the system voice speaks off screen",
+        "motion": "both turn their heads back toward Xu Yan off screen at the same moment; Tang Xiaotang tilts her head, Qin Shuang lifts one brow; all lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dusk light and the lantern glow stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a44",
+          "speaker": "xitong",
+          "text": "失敗，扣除種田技能。",
+          "emotion": "冷，宣布"
+        },
+        {
+          "id": "zq908a45",
+          "speaker": "xuyan",
+          "text": "種田也扣？我就剩這一樣本事了。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著，慌"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Along the whitewashed outer wall beside the Qian manor gate at dusk, warm lantern light and a deep blue sky: close-up of Xu Yan framed from the chest up with space above his head, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty, tired, his face three-quarter to screen left, never the lens; shaken: face gone pale, brows drawn up in the middle, eyes wide and fixed, lips pressed shut the whole shot; his right hand gripping the back edge of a saddle at the bottom edge of the frame; behind him only the white wall in the dusk light; the system voice speaks off screen",
+        "motion": "his hand jerks and then clamps hard on the saddle edge, his knuckles whitening; his head stays still; his lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dusk light and the lantern glow stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq908a46",
+          "speaker": "xitong",
+          "text": "所以才扣這一樣。宿主，天黑了。",
+          "emotion": "冷，嫌棄，句尾往下壓"
+        },
+        {
+          "id": "zq908a47",
+          "speaker": "xuyan",
+          "text": "好，回家。今晚總得進一扇門。",
+          "emotion": "內心獨白，嘴閉著，心裡話，嘴閉著，認命"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "Along the whitewashed outer wall beside the Qian manor gate at dusk: the sky turning deep blue, a few blank paper lanterns just lit along the wall, plain with no writing, one small side door in the wall with one wooden post beside it: medium shot by the wall in the lantern light, framed with clear space above the heads: on one chestnut-red horse with a saddle and reins, Qin Shuang in front, her dark brown cross-collared short jacket, wide leather belt, black trousers, leather boots and high ponytail, her hands holding only the reins, no blade, no knife, no scabbard and no weapon of any kind anywhere in the frame, and Tang Xiaotang in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, her two looped buns knocked a little askew and one pearl pin slanting behind her, both already mounted, faces in profile toward screen left, lips closed; beside the horse Xu Yan, his faded blue-grey scholar's robe with one small sewn cloth patch at one elbow and both shoulders whole, dusty, tired, his face three-quarter to screen left, never the lens; weary and resigned: brows drawn together, eyes lowered, lips closed; each person appears only once, nobody else behind them; the system voice speaks off screen",
+        "motion": "Xu Yan wipes the sweat from his temple with his sleeve and swings up onto the horse's back behind Tang Xiaotang, his whole head staying in the frame; Qin Shuang shakes the reins and the horse walks off toward screen left; all lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dusk light and the lantern glow stay unchanged",
+        "characters": [
+          "qinshuang",
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, slow push in",
+        "prompt": "At the yard gate in the bamboo fence of the Xu farmhouse at night: one blank paper lantern with no writing hanging by the gate, the dark house door behind it, the dirt village road leading off to screen left, cool blue moonlight: extreme wide shot past the Xu farmhouse's bamboo fence in the foreground at night, small in the frame: A-ling in her grey-white cotton dress, one plain wooden hairpin, no shackles, her sleeves pulled down over her wrists, sitting on the threshold of the yard gate under the plain lantern; nobody else",
+        "motion": "A-ling rises from the threshold, takes one step forward and looks toward the dark village road off screen left; her lips stay closed, and the cool blue night light and the lantern glow stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    }
+  ]
+}
