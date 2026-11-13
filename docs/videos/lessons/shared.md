@@ -7,6 +7,17 @@
 
 這份會自動同步到雲端硬碟 `AI劇/_共用規則/教訓/教訓.md`（docs/videos/rules-sync）。
 
+## 2026-11-12 · curio-s23-v2 · Claude（c14 重做）
+`keyframes import` 和改提示詞不能交錯：S23 兩次把整集關鍵影格弄丟，付了重畫的錢。
+- 改過提示詞、還沒跑過 `keyframes` 就 import，import 會發現 manifest 的 visual_hash 對不上 video.json，直接把 manifest 重建成只剩匯入的那一張。下一輪 `keyframes` 就從第一張開始整集重畫。
+- import 之後只要再改任何一張的提示詞，下一輪 `keyframes` 會把所有匯入的圖丟掉，因為匯入的圖沒有產生器的 key，對不上就不算數。
+- 下次怎麼做：改提示詞 → 跑 `keyframes` → 最後才 import → 再跑一次 `keyframes`，中間不改提示詞（匯入的圖會顯示 `kept (judge ?/10)`）。只要重畫幾張，用 `keyframes --shot <id,…>`，跑完立刻把所有匯入的圖再 import 一次。舊的 take 檔都還在 `keyframes/`，可以照放大檢查的結果重新匯回。
+
+## 2026-11-13 · curio-s25-v2 · Claude（c14 重做）
+MiniMax 回 `2067` 或 `Token Plan usage limit` 不代表要等站主：M Plan 每 5 小時自動重置一次。
+- `node tools/video/cli.mjs minimax-quota`（#2081）會列出 `general` 這一格的 `current_interval_remaining_percent` 和 `remains_time`（毫秒）。
+- 碰到額度用完，就等到 `remains_time` 結束再接著畫，不必停下來問人。兩種訊息都要認：`answered 2067`，以及 `rejected the key or balance (The Token Plan usage limit…)`，後者的結束碼是 4。
+
 ## 2026-11-10 · 全劇 · 站主
 備份改傳雲端硬碟，不再推 `transfer/*` 分支：分支會漏、會被覆蓋，同名分支被重推時舊版只剩封存副本（搬家時找出 20 條漏列的分支）。
 下次怎麼做：做完一段就用 `docs/videos/ai-drama-drive/todrive.sh` 傳到 `AI劇/<名稱>/<集數>/製作檔/`，看到 0 differences 才算完成。
