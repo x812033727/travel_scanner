@@ -1,0 +1,920 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e009-r2",
+  "format": "drama",
+  "target_minutes": [
+    3,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      },
+      "shot_looks": [
+        {
+          "id": "modern",
+          "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, short neat modern black hair, a dark modern business suit, a white shirt and a loosened dark tie, black leather shoes"
+        }
+      ]
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚；女聲，語速快、一口氣說完、句中不停頓；冷淡、毒舌、帶一點嫌棄，句尾輕輕往下壓，不拖長；像很懶得理宿主的客服"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "one cue per scene: first a light playful plucked-string and bamboo-flute comedy cue in the night corridor and Tang Xiaotang's candlelit room, dropping a beat on the affection chime and pausing under the system's dry remark; second a low tense suspense cue of sparse guqin and low strings at the empty room and A-ling's dark doorway with one sharp accent at s24, shifting from s32 to quiet warm strings that thin to a single soft string under A-ling's parting line in s37 and fade on s38; ancient Chinese period drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "洞房夜三扇門，她半夜塞出一床厚被｜種田娶妻打天下 第9集（重製版）",
+    "description": "第四天夜裡，許硯三人騎著鏢局的馬回到許家院子。小禾舉著燭台擋在走廊上，不准他再躲去睡柴房，三扇門自己選一扇。第一扇門裡唐小棠要他先把三本帳對完，許硯不碰算盤心算出二十兩一錢、還抓出一筆錯帳，唐小棠好感 +2，卻又搬出十本帳冊；許硯推說明天再對溜出門。第二扇門窗開人不在，他替秦霜關上窗。第三扇門一推開，阿令亮出短刃戒備；許硯看見她手腕舊痕卻不追問，退到門外走廊鋪地鋪守門，阿令收刃丟出一條厚棉被，好感 +10，隱藏任務完成。夜深時，阿令隔著門板輕聲說：明天，我可能得走。《種田娶妻打天下》第 9 集（重製版）。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "洞房夜三扇門",
+      "tag": "種田娶妻打天下",
+      "shot": "s24"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "選門與對帳",
+      "template": "shot",
+      "action_seconds": 5,
+      "lines": [],
+      "data": {
+        "camera": "Full shot, tracking",
+        "prompt": "In the dirt yard of the Xu farmhouse on a clear autumn night: a bamboo fence and open wooden gate on screen right with one plain blank paper lantern with no marks or writing glowing warm orange beside the gatepost, the dark eaves and open doorway of the main house on the back left with only darkness inside, a timber horse shed at the far back left, the night sky above pitch-black with no daylight anywhere, lit by cold blue moonlight and the warm gate lantern: full shot past the bamboo fence and one plain blank paper lantern with no marks or writing in the right foreground, everyone small in the frame: on screen right Xu Yan, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, walking in through the open gate leading one brown horse by its hemp reins, brows low and lips closed; in the middle Tang Xiaotang, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, lifting the hem of her skirt with one hand and walking briskly away toward the dark doorway on the back left, seen three-quarter from behind; in the back left a tall woman seen only from behind in a dark brown cross-collared short jacket, wide leather belt with an old chopping knife at her right hip, black trousers and a high ponytail, her face never seen; by the dark doorway on the back left A-ling, in her plain grey-white cotton dress with long sleeves and a single wooden hairpin, no shackles, standing still, brows level and lips closed",
+        "motion": "Xu Yan hands the reins forward to the tall woman seen from behind, who leads the brown horse away toward the timber horse shed at the back left; Tang Xiaotang steps briskly inside the dark doorway; A-ling glances once at Xu Yan, turns and steps into the dark doorway; all lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the cold blue moonlight and the warm orange lantern glow stay unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a01",
+          "speaker": "xiaohe",
+          "text": "哥，昨天成親你躲去睡柴房，今晚不准再躲。",
+          "emotion": "很認真"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In a narrow roofed wooden corridor of an ancient Song-dynasty rural dwelling on a pitch-dark autumn night: dark timber pillars on the left with black night beyond and no daylight anywhere, plain earthen plaster wall and three closed plain unpainted wooden doors with no marks or writing in a row on screen right, lit by faint cold blue moonlight and thin warm candlelight seeping from the door cracks: medium shot past a dark wooden corridor post in the left foreground, framed from the waist up with space above her head: little Xiaohe in her patched lilac cotton short jacket with red-string pigtails, one front tooth missing, a small woven straw rabbit tucked into her waist sash, holding one small plain brass saucer candlestick with a short handle and one lit white wax candle up in her right hand, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; earnest and stern: brows drawn together, big eyes wide and fixed on him, corners of her mouth firm",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥，昨天成親你躲去睡柴房，今晚不准再躲」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; little Xiaohe hurries two steps in from screen right, plants her feet in the middle of the corridor and stretches her left arm out wide to block the passage as she speaks; no smile at any moment, not even at the end of the shot, until the last frame, and the faint cold moonlight and warm candlelight along the door cracks stay unchanged",
+        "characters": [
+          "xiaohe"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a02",
+          "speaker": "xuyan",
+          "text": "我沒躲，柴房涼快。再說債剛還完，我累了。",
+          "emotion": "推託"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In a narrow roofed wooden corridor of an ancient Song-dynasty rural dwelling on a pitch-dark autumn night: dark timber pillars on the left with black night beyond and no daylight anywhere, plain earthen plaster wall and three closed plain unpainted wooden doors with no marks or writing in a row on screen right, lit by faint cold blue moonlight and thin warm candlelight seeping from the door cracks: over-the-shoulder medium shot framed with ample headroom above Xu Yan's head: in the lower right foreground the back of little Xiaohe's head with red-string pigtails, her face unseen; in the middle Xu Yan standing beside the dark firewood storeroom doorway on screen left, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing resting on the ground at his feet, his face three-quarter to screen right toward little Xiaohe, never the lens; sheepish and tired: brows slightly raised, heavy eyelids, a faint awkward dry curl at one corner of his mouth",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我沒躲，柴房涼快。再說債剛還完，我累了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan bends slightly to scoop the rolled ash-grey bedroll up under his left arm, his whole head staying inside the frame, steps half a pace back toward the dark storeroom doorway on screen left and hugs the bedroll closer; little Xiaohe's lips stay closed, and the faint cold moonlight and warm candlelight along the door cracks stay unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a03",
+          "speaker": "xiaohe",
+          "text": "三扇門都留著燈，你自己選一扇進去。",
+          "emotion": "瞪眼，不退讓"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a narrow roofed wooden corridor at night, plain dark earthen plaster wall behind, lit by warm flickering candlelight and faint cold blue moonlight, no daylight anywhere: medium close-up of little Xiaohe in her patched lilac cotton short jacket with red-string pigtails, one front tooth missing, a small woven straw rabbit tucked into her waist sash, framed from the chest up with space above her head, holding one small plain brass saucer candlestick with a short handle and one lit white wax candle in her right hand, her face three-quarter to screen left toward Xu Yan off screen left, the camera about 45 degrees off her eyeline, never the lens; stern and insistent: brows pulled down, eyes wide and glaring up at him, lips firm between words; behind her only the dark earthen plaster wall of the same corridor",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「三扇門都留著燈，你自己選一扇進去」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; little Xiaohe steps forward one pace, presses the brass candlestick firmly out at the lower left edge toward Xu Yan off screen left and rises onto her tiptoes glaring up at him; no smile at any moment, not even at the end of the shot, until the last frame, and the faint cold moonlight and warm candlelight along the door cracks stay unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a04",
+          "speaker": "xuyan",
+          "text": "一扇算帳，一扇沒聲，一扇在磨刀。",
+          "emotion": "畫外，低聲"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view medium shot, slow push in",
+        "prompt": "In a narrow roofed wooden corridor of an ancient Song-dynasty rural dwelling on a pitch-dark autumn night: dark timber pillars on the left with black night beyond and no daylight anywhere, plain earthen plaster wall and three closed plain unpainted wooden doors with no marks or writing in a row on screen right, lit by faint cold blue moonlight and thin warm candlelight seeping from the door cracks: the shot opens directly on this point-of-view medium shot down the dark roofed corridor from its very first frame: three closed plain unpainted wooden doors in a row along the right wall with no plaques, marks or writing, warm yellow candlelight seeping through the narrow cracks around each door, dark night beyond the corridor pillars on the left with no daylight anywhere, and at the bottom edge of the frame Xu Yan's right hand in a dusty blue-grey cotton cuff holding one small plain brass saucer candlestick with a short handle and one lit white wax candle, his face out of frame",
+        "motion": "Xu Yan's hand at the bottom edge holds the brass candlestick as the candle flame sways gently in the night air while warm candlelight glimmers along the cracks of the three closed wooden doors, and the faint cold moonlight and warm candlelight along the door cracks stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "nospeak": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a05",
+          "speaker": "xiaohe",
+          "text": "小棠嫂嫂那扇最亮，先去那裡準沒錯。",
+          "emotion": "催促，用力推"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, tracking",
+        "prompt": "In a narrow roofed wooden corridor of an ancient Song-dynasty rural dwelling on a pitch-dark autumn night: dark timber pillars on the left with black night beyond and no daylight anywhere, plain earthen plaster wall and three closed plain unpainted wooden doors with no marks or writing in a row on screen right, lit by faint cold blue moonlight and thin warm candlelight seeping from the door cracks: medium two-shot framed from the thighs up with space above their heads: in front on screen right Xu Yan, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing tucked under his left arm and one small plain brass saucer candlestick with a short handle and one lit white wax candle held in his right hand, his face in profile toward the first closed wooden door on screen right, brows raised in dismay, lips closed; behind him on screen left little Xiaohe in her patched lilac cotton short jacket with red-string pigtails, one front tooth missing, a small woven straw rabbit tucked into her waist sash, both small hands planted against the back of Xu Yan's waist, her face three-quarter to screen right toward his back, never the lens; determined: brows knit, eyes bright and serious",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「小棠嫂嫂那扇最亮，先去那裡準沒錯」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; little Xiaohe pushes Xu Yan forward with both hands on his waist toward the first wooden door on screen right, making Xu Yan stumble two steps ahead while holding the candlestick steady; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the faint cold moonlight and warm candlelight along the door cracks stay unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a06",
+          "speaker": "tangxiaotang",
+          "text": "來得正好，先把今天這三本帳對完再說。",
+          "emotion": "理所當然，認真"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, tracking",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night: a plain wooden door on screen left with dark night corridor beyond and no daylight anywhere, a wooden table on screen right with a bed and plain dark curtains behind it, blank plain white window paper with dark night outside, lit by warm yellow candlelight: full shot past the dark wooden doorframe in the left foreground: on screen right behind the wooden table Tang Xiaotang seated upright, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, on the tabletop three thin blue-cloth-bound account books stacked shut with plain blank blue covers and no marks or writing, each the size of an open hand, one rectangular dark-wood abacus about the length of a forearm with brown wooden beads, plain frame with no marks or writing, and one lit white wax candle in a small dish, her face three-quarter to screen left toward Xu Yan, never the lens; stern and businesslike: brows level and low, eyes cool and steady, corners of her mouth flat; on screen left Xu Yan stepping across the threshold from the dark night corridor beyond, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing under his left arm and one small plain brass saucer candlestick with a short handle and one lit white wax candle in his right hand, lips closed",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「來得正好，先把今天這三本帳對完再說」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan nudges the wooden door open with his shoulder and steps inside; Tang Xiaotang lifts her eyes to him and sets her left palm flat on top of the three closed blue account books as she speaks; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a07",
+          "speaker": "xuyan",
+          "text": "別人洞房喝交杯酒，我洞房對帳本？",
+          "emotion": "傻眼，無奈"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night: a plain wooden door on screen left with dark night corridor beyond and no daylight anywhere, a wooden table on screen right with a bed and plain dark curtains behind it, blank plain white window paper with dark night outside, lit by warm yellow candlelight: over-the-shoulder medium shot framed with ample headroom above Xu Yan's head: in the lower right foreground Tang Xiaotang's peach-pink shoulder and hair bun with pink ribbon, her face unseen; on screen left Xu Yan standing between the wooden door and the table, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing under his left arm and one small plain brass saucer candlestick with a short handle and one lit white wax candle in his right hand, his face three-quarter to screen right toward Tang Xiaotang, never the lens; dumbfounded: brows raised high, eyes wide, a faint wry twist at his mouth",
+        "motion": "Xu Yan speaks a short Mandarin line, 「別人洞房喝交杯酒，我洞房對帳本？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan sets the brass candlestick down on the corner of the wooden table, lowers the rolled bedroll onto the floor beside the shut door while his whole head stays inside the frame, glances down at the stack of account books and looks back at Tang Xiaotang; Tang Xiaotang's lips stay closed, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a08",
+          "speaker": "tangxiaotang",
+          "text": "交杯酒一壺二十文，帳錯一筆可是幾兩。",
+          "emotion": "理所當然"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night, dark night outside with no daylight anywhere, lit by warm yellow candlelight: medium close-up of Tang Xiaotang framed from the chest up with space above her head, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, seated behind the wooden table with one rectangular dark-wood abacus about the length of a forearm with brown wooden beads, plain frame with no marks or writing before her, her face three-quarter to screen left toward Xu Yan off screen left, the camera about 45 degrees off her eyeline, never the lens; cool and matter-of-fact: brows level, eyes steady and serious, corners of her mouth flat; behind her only the plain dark bed curtains in the same candlelit bedroom",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「交杯酒一壺二十文，帳錯一筆可是幾兩」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang slides the wooden abacus across the tabletop toward screen left with her right hand and lifts her chin slightly as she speaks; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a09",
+          "speaker": "xuyan",
+          "text": "後巷十二兩，客棧六兩，鏢局二兩一錢。",
+          "emotion": "畫外，邊翻邊念"
+        }
+      ],
+      "data": {
+        "camera": "Overhead close-up insert, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night, dark night outside with no daylight anywhere, lit by warm yellow candlelight: the shot opens directly on this overhead close-up insert on the warm candlelit wooden tabletop from its very first frame: Xu Yan's lean hands in dusty faded blue-grey cotton cuffs resting on one open account book with soft out-of-focus cream pages where no stroke or character can be read, and beside it on the left one rectangular dark-wood abacus about the length of a forearm with brown wooden beads, plain frame with no marks or writing untouched, his face out of frame",
+        "motion": "Xu Yan's left hand turns one soft blurred page of the open account book and his right forefinger traces steadily down three blurred columns from top to bottom without ever touching the wooden abacus beside it, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "nospeak": [
+          "xuyan"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a10",
+          "speaker": "xuyan",
+          "text": "今天總共二十兩一錢，還完債剩下一錢。",
+          "emotion": "平穩，累"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night, dark night outside with no daylight anywhere, lit by warm yellow candlelight: medium close-up of Xu Yan seated at the wooden table framed from the chest up with space above his head, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, his hands resting on one open account book with soft out-of-focus cream pages where no stroke or character can be read on the tabletop, his face three-quarter to screen right toward Tang Xiaotang off screen right, the camera about 45 degrees off his eyeline, never the lens; calm and tired: heavy eyelids, brows relaxed and level, lips steady between words; behind him only the closed plain wooden door and earthen plaster wall in the same candlelit bedroom",
+        "motion": "Xu Yan speaks a short Mandarin line, 「今天總共二十兩一錢，還完債剩下一錢」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan closes the blue-cloth-bound account book with a plain blank cover cleanly with his right hand and lifts his eyes to Tang Xiaotang off screen right as he speaks; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a11",
+          "speaker": "tangxiaotang",
+          "text": "你連算盤都沒碰，怎麼算得這麼快？",
+          "emotion": "愣住，驚訝"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night, dark night outside with no daylight anywhere, lit by warm yellow candlelight: medium close-up of Tang Xiaotang framed from the chest up with ample headroom above her head, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, her fingers resting on one rectangular dark-wood abacus about the length of a forearm with brown wooden beads, plain frame with no marks or writing on the table before her, her face three-quarter to screen left toward Xu Yan off screen left, the camera about 45 degrees off her eyeline, never the lens; startled and astonished: brows raised high, big eyes wide open in shock, lips slightly parted; behind her only the plain bed curtains in the same candlelit bedroom",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「你連算盤都沒碰，怎麼算得這麼快？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang's hand freezes on the wooden abacus, her eyes widen, and she leans slightly forward across the table with her whole head staying inside the frame before speaking; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a12",
+          "speaker": "xuyan",
+          "text": "心算。還有，第三頁這筆，三錢記成了三兩。",
+          "emotion": "輕描淡寫"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night: a plain wooden door on screen left with dark night corridor beyond and no daylight anywhere, a wooden table on screen right with a bed and plain dark curtains behind it, blank plain white window paper with dark night outside, lit by warm yellow candlelight: over-the-shoulder medium shot framed from the waist up with space above Xu Yan's head: in the right foreground Tang Xiaotang's peach-pink shoulder and hair bun, her face unseen; on screen left Xu Yan seated at the wooden table, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one open account book with soft out-of-focus cream pages where no stroke or character can be read before him on the tabletop, his face three-quarter to screen right toward Tang Xiaotang, never the lens; calm and matter-of-fact: brows level, eyes steady, expression composed",
+        "motion": "Xu Yan speaks a short Mandarin line, 「心算。還有，第三頁這筆，三錢記成了三兩」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan opens the account book to a soft out-of-focus cream page with no readable strokes, turns the open book round to face Tang Xiaotang, slides it across the tabletop and taps one blurred spot with his right forefinger; Tang Xiaotang's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Overhead close-up insert, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night, dark night outside with no daylight anywhere, lit by warm yellow candlelight: the shot opens directly on this overhead close-up insert on the candlelit wooden tabletop from its very first frame: Tang Xiaotang's slender right hand in a peach-pink silk brocade cuff poised over one rectangular dark-wood abacus about the length of a forearm with brown wooden beads, plain frame with no marks or writing, her face out of frame",
+        "motion": "Tang Xiaotang's slender fingers flick briskly across a row of brown wooden abacus beads, stop abruptly, and her right forefinger presses down still on one wooden bead, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ],
+        "nospeak": [
+          "tangxiaotang"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a13",
+          "speaker": "tangxiaotang",
+          "text": "真的錯了……我對了三遍都沒看出來。",
+          "emotion": "聲音軟下來"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night, dark night outside with no daylight anywhere, lit by warm yellow candlelight: medium close-up of Tang Xiaotang framed from the chest up with space above her head, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, her eyes lowered toward the table at first, her face three-quarter to screen left toward Xu Yan off screen left, the camera about 45 degrees off her eyeline, never the lens; softened and impressed: brows relaxed, eyes warm and clear; behind her only the plain bed curtains in the same candlelit bedroom",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「真的錯了……我對了三遍都沒看出來」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang slowly raises her eyes from the table to Xu Yan off screen left, the corners of her mouth curving up softly just a little as she speaks, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a14",
+          "speaker": "xitong",
+          "text": "叮。唐小棠，好感加二。",
+          "emotion": "提示音，平直"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night, dark night outside with no daylight anywhere, lit by warm yellow candlelight: medium close-up of Xu Yan seated at the table framed from the chest up with space above his head, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; awkward and self-conscious: brows slightly drawn, eyes shifting uneasily, lips pressed closed; behind him only the closed plain wooden door in the same candlelit bedroom; the system voice speaks off screen",
+        "motion": "Xu Yan shifts his eyes sideways away from Tang Xiaotang off screen right, raises his right hand to rub the bridge of his nose once and lowers his hand again; his lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a15",
+          "speaker": "tangxiaotang",
+          "text": "相公這麼會算，那這十本也天亮前對完。",
+          "emotion": "興奮"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, slow push in",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night: a plain wooden door on screen left with dark night corridor beyond and no daylight anywhere, a wooden table on screen right with a bed and plain dark curtains behind it, blank plain white window paper with dark night outside, lit by warm yellow candlelight: medium two-shot across the candlelit wooden table framed from the waist up with ample headroom above both heads: on screen right Tang Xiaotang, in her peach-pink cross-collared short jacket wrapped shut over a pleated skirt with a ribbon bow, leaning down slightly beside the table, her face three-quarter to screen left toward Xu Yan, never the lens, bright-eyed and eager; on screen left Xu Yan seated at the table, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one small plain brass saucer candlestick with a short handle and one lit white wax candle burning on the tabletop between them, his face in profile toward Tang Xiaotang, eyes widening in alarm, lips closed",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「相公這麼會算，那這十本也天亮前對完」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Tang Xiaotang lifts one heavy stack of ten thin blue-cloth-bound account books shut with plain blank blue covers and no marks or writing, stacked about a forearm high up from under the table with both hands, her whole head staying inside the frame, and sets the tall stack down with a thump in front of Xu Yan as she speaks; Xu Yan jerks his upper body backward in dismay, his lips staying closed, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a16",
+          "speaker": "xuyan",
+          "text": "我先去看看別人，帳本明天一定陪妳對。",
+          "emotion": "推託"
+        },
+        {
+          "id": "zq909a17",
+          "speaker": "tangxiaotang",
+          "text": "明天就明天。相公記得，你欠我十本。",
+          "emotion": "畫外，帶笑提醒"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In a warm candlelit rural Song-dynasty bridal bedroom at night: a plain wooden door on screen left with dark night corridor beyond and no daylight anywhere, a wooden table on screen right with a bed and plain dark curtains behind it, blank plain white window paper with dark night outside, lit by warm yellow candlelight: medium shot framed from the knees up with ample headroom above Xu Yan's head: on the right edge of the frame the corner of the wooden table with one small plain brass saucer candlestick with a short handle and one lit white wax candle left burning on it and one heavy stack of ten thin blue-cloth-bound account books shut with plain blank blue covers and no marks or writing, stacked about a forearm high; in the middle Xu Yan rising from his stool, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing lying by the shut wooden door on screen left, his face three-quarter to screen right toward Tang Xiaotang off screen right, never the lens; evasive and hurried: brows raised, eyes darting toward the door",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我先去看看別人，帳本明天一定陪妳對」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan rises leaving the brass candlestick on the table, bends to scoop the rolled bedroll up under his left arm while his whole head stays inside the frame, backs two steps to the wooden door on screen left with his right hand on the door plank as he speaks, then closes his lips and gives one quick nod toward screen right; no smile at any moment, not even at the end of the shot, until the last frame, and the warm yellow candlelight stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 10
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a18",
+          "speaker": "xitong",
+          "text": "明天一定？宿主今晚第二次推託了。",
+          "emotion": "冷，嫌棄"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a narrow roofed wooden corridor of an ancient Song-dynasty rural dwelling on a pitch-dark autumn night: dark timber pillars on the left with black night beyond and no daylight anywhere, plain earthen plaster wall and three closed plain unpainted wooden doors with no marks or writing in a row on screen right, lit by faint cold blue moonlight and thin warm candlelight seeping from the door cracks: medium close-up in the dark night corridor framed from the waist up with space above his head: Xu Yan standing just outside the first plain wooden door, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing tucked under his left arm and his right hand empty with no candlestick, his face three-quarter to screen right down the corridor, never the lens; weary and exasperated: heavy eyelids, brows drawn, lips closed; the system voice speaks off screen",
+        "motion": "Xu Yan pulls the wooden door shut behind him, leans his back against the door plank letting out a long breath, then rolls his eyes upward, rubs between his brows once with his right hand and steps off toward screen right down the dark corridor; his lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the faint cold moonlight and warm candlelight along the door cracks stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s20",
+      "chapter": "秦霜房與阿令房",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a19",
+          "speaker": "xuyan",
+          "text": "秦霜，睡了嗎？我進來了，有事妳就喊。",
+          "emotion": "小聲詢問"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In a narrow roofed wooden corridor of an ancient Song-dynasty rural dwelling on a pitch-dark autumn night: dark timber pillars on the left with black night beyond and no daylight anywhere, plain earthen plaster wall and three closed plain unpainted wooden doors with no marks or writing in a row on screen right, lit by faint cold blue moonlight and thin warm candlelight seeping from the door cracks: medium shot in the moonlit night corridor framed from the waist up with space above his head: Xu Yan standing before the second closed plain unpainted wooden door on screen right, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing tucked under his left arm and his right hand empty with no candlestick, his face in three-quarter profile toward the wooden door on screen right, never the lens; cautious and tired: brows slightly raised, eyes attentive",
+        "motion": "Xu Yan speaks a short Mandarin line, 「秦霜，睡了嗎？我進來了，有事妳就喊」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan raps twice lightly on the wooden door plank with his right knuckles, pauses a beat, then pushes the door open a narrow crack and peers inside as he speaks softly; no smile at any moment, not even at the end of the shot, until the last frame, and the faint cold moonlight and warm candlelight along the door cracks stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a20",
+          "speaker": "xuyan",
+          "text": "窗開著，柴刀也不在，大半夜去哪了？",
+          "emotion": "畫外，低聲疑惑"
+        }
+      ],
+      "data": {
+        "camera": "Point-of-view shot, slow push in",
+        "prompt": "In a quiet dark rural Song-dynasty bedroom late at night: an empty wooden bed with neatly folded bedding, an open wooden casement window with blank plain white window paper looking out onto pitch-dark night with no daylight anywhere, an empty wooden rack on the earthen plaster wall, and one flickering white candle on a small table, lit by cold blue moonlight through the window and faint wavering candlelight: the shot opens directly on this point-of-view shot through the narrow gap of the dark wooden door into the empty bedroom from its very first frame: at the left edge of the doorway gap Xu Yan's right hand in a dusty faded blue-grey cotton cuff resting lightly on the dark wooden door plank, his face out of frame; beyond the doorway nobody in the room; on the right an empty wooden bed with its quilt folded neat and square; at the back a wooden casement window standing wide open onto pitch-dark night with blank plain white window paper fluttering in the night breeze; cold blue moonlight falling on an empty wooden rack on the earthen plaster wall; on a small wooden table one white candle whose tiny flame leans sideways in the draft almost out",
+        "motion": "Xu Yan's right hand pushes the wooden door plank open another finger's breadth while the blank window paper flutters in the night breeze and the tilted candle flame flickers low, and the cold blue moonlight from the open window and the low wavering candlelight stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "nospeak": [
+          "xuyan"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a21",
+          "speaker": "xuyan",
+          "text": "人不在，我明天再問她。窗先替她關上。",
+          "emotion": "低聲自語"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "In a quiet dark rural Song-dynasty bedroom late at night: an empty wooden bed with neatly folded bedding, an open wooden casement window with blank plain white window paper looking out onto pitch-dark night with no daylight anywhere, an empty wooden rack on the earthen plaster wall, and one flickering white candle on a small table, lit by cold blue moonlight through the window and faint wavering candlelight: medium shot by the open wooden casement window framed from the waist up with space above his head: outside the open window only an empty earthen outer wall under cold blue moonlight and a black night sky with no daylight and nobody there; inside beside the window Xu Yan, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing tucked tight under his left arm, a small table in the foreground with one lit white candle leaning in the breeze, his face in profile toward the open window, never the lens; puzzled and quiet: brows drawn slightly together, eyes calm",
+        "motion": "Xu Yan speaks a short Mandarin line, 「人不在，我明天再問她。窗先替她關上」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan leans slightly to glance out the open dark window, reaches out with his right hand to pull the wooden window casements shut, and the candle flame on the table straightens upright as he speaks; no smile at any moment, not even at the end of the shot, until the last frame, and the cold blue moonlight and the candle flame steadying upright stay natural",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a22",
+          "speaker": "xuyan",
+          "text": "阿令，我進來了。我只是來鋪個地鋪。",
+          "emotion": "給自己壯膽"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium shot, slow push in",
+        "prompt": "In a narrow roofed wooden corridor of an ancient Song-dynasty rural dwelling on a pitch-dark autumn night: dark timber pillars on the left with black night beyond and no daylight anywhere, plain earthen plaster wall and three closed plain unpainted wooden doors with no marks or writing in a row on screen right, lit by faint cold blue moonlight and thin warm candlelight seeping from the door cracks: low-angle medium shot in the dark night corridor framed from the waist up with space above his head: Xu Yan standing before the third closed plain wooden door on screen right with a thin line of warm candlelight along its crack, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing under his left arm, his face three-quarter toward the third door on screen right, never the lens; braced and nervous: brows knit, jaw set",
+        "motion": "Xu Yan speaks a short Mandarin line, 「阿令，我進來了。我只是來鋪個地鋪」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan draws one deep breath to steady himself and pushes the third wooden door slowly open with his right palm as he speaks; no smile at any moment, not even at the end of the shot, until the last frame, and the faint cold moonlight and warm candlelight along the door cracks stay unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a23",
+          "speaker": "aling",
+          "text": "別動。碰我一下，你就沒命。",
+          "emotion": "冷，貼在身後警告"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In a very dim rural Song-dynasty bedroom late at night: a plain unpainted wooden door on screen left, a simple wooden bed on screen right and one small lit white candle on a low stand beside the bed, dark shadows in the corners and pitch-dark night outside with no daylight anywhere, lit only by that single warm candle flame: medium shot in the dim bedroom lit by a single candle, framed from the waist up with space above their heads: in the middle Xu Yan just stepping across the threshold from the left, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing in his arms, freezing stiff with wide eyes and closed lips; right behind his left shoulder beside the wooden door panel A-ling, in her plain grey-white cotton dress with long sleeves and a single wooden hairpin, no shackles, her face appearing over his left shoulder in three-quarter profile toward him, never the lens; icy and alert: brows sharp and low, cold phoenix eyes fixed on him, corners of her mouth flat",
+        "motion": "A-ling speaks a short Mandarin line, 「別動。碰我一下，你就沒命」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; as Xu Yan steps in, A-ling's right hand presses firm on his right shoulder while her left arm in its grey-white sleeve reaches forward from behind his left shoulder holding one short single-edged plain iron prop blade about one palm long with no marks or writing and a black-cloth-wrapped wooden handle, held in her left hand in a forward grip with the inward edge toward his collar and the blunt back outward steady beside the left side of his collar; Xu Yan freezes motionless with his lips closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the single candle in the dark room stays unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a24",
+          "speaker": "xuyan",
+          "text": "不碰！我手上只有鋪蓋，妳看。",
+          "emotion": "聲音發乾，急忙表明"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a very dim rural Song-dynasty bedroom late at night, dark earthen plaster wall in deep shadow behind, lit only by a single warm flickering candle flame, no daylight anywhere: medium close-up of Xu Yan framed from the chest up with space above his head, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, his face pale and tense in three-quarter profile toward Aling off screen left, never the lens: brows raised tight, eyes wide and steady, dry lips parting carefully; at the lower edge of the frame the plain short iron blade held steady by a grey-white left sleeve near his collar",
+        "motion": "Xu Yan speaks a short Mandarin line, 「不碰！我手上只有鋪蓋，妳看」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan slowly raises both open empty hands beside his shoulders while one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing slips from under his left arm and drops out of the bottom of the frame; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the single candle in the dark room stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up insert, slow push in",
+        "prompt": "In a very dim rural Song-dynasty bedroom late at night, dark earthen plaster wall in deep shadow behind, lit only by a single warm flickering candle flame, no daylight anywhere: the shot opens directly on this close-up insert in warm flickering candlelight from its very first frame: A-ling's slender left hand in a loose grey-white cotton cuff holding one short single-edged plain iron prop blade about one palm long with no marks or writing and a black-cloth-wrapped wooden handle, held in her left hand in a forward grip with the inward edge toward his collar and the blunt back outward steady near a dark blue-grey cloth collar, clearly showing one thin faint pale old healed mark across the inner side of her left wrist where the cuff slips back slightly, her face out of frame",
+        "motion": "the warm candle flame flickers across the plain iron blade while A-ling's slender left hand stays rock-steady, her fingers tightening once slightly around the black-wrapped wooden handle, and the dim warm light of the single candle in the dark room stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "nospeak": [
+          "aling"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a25",
+          "speaker": "xuyan",
+          "text": "妳手腕上那道傷，是怎麼來的？",
+          "emotion": "放輕聲音"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium shot, slow push in",
+        "prompt": "In a very dim rural Song-dynasty bedroom late at night: a plain unpainted wooden door on screen left, a simple wooden bed on screen right and one small lit white candle on a low stand beside the bed, dark shadows in the corners and pitch-dark night outside with no daylight anywhere, lit only by that single warm candle flame: over-the-shoulder medium shot framed from the chest up with space above Xu Yan's head: in the right foreground A-ling's grey-white right shoulder and dark hair pinned with a plain wooden hairpin, her face unseen; on screen left Xu Yan with his back against the closed plain wooden door and both hands still raised lightly at shoulder height, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, his face three-quarter to screen right toward A-ling, never the lens; softened and quiet: brows slightly drawn, eyes gentle and serious",
+        "motion": "Xu Yan speaks a short Mandarin line, 「妳手腕上那道傷，是怎麼來的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling's right hand pushes Xu Yan's shoulder lightly so his back rests against the wooden door plank while her left hand keeps the short blade steady; Xu Yan's gaze lowers calmly toward her left wrist and then lifts to her as he speaks softly; A-ling's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the single candle in the dark room stays unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a26",
+          "speaker": "aling",
+          "text": "翻牆刮的。那道牆很高，牆裡的人也狠。",
+          "emotion": "淡漠"
+        }
+      ],
+      "data": {
+        "camera": "Over-the-shoulder medium close-up, slow push in",
+        "prompt": "In a very dim rural Song-dynasty bedroom late at night: a plain unpainted wooden door on screen left, a simple wooden bed on screen right and one small lit white candle on a low stand beside the bed, dark shadows in the corners and pitch-dark night outside with no daylight anywhere, lit only by that single warm candle flame: over-the-shoulder medium close-up framed from the chest up with space above A-ling's head: in the left foreground Xu Yan's dark blue-grey shoulder, his face unseen; on screen right A-ling, in her plain grey-white cotton dress with long sleeves and a single wooden hairpin, no shackles, holding the short iron blade steady in her left hand with one thin faint pale old healed mark across the inner side of her left wrist just visible at her cuff, her face three-quarter to screen left toward Xu Yan, never the lens; guarded and flat: brows level, cold eyes guarded, corners of her mouth still",
+        "motion": "A-ling speaks a short Mandarin line, 「翻牆刮的。那道牆很高，牆裡的人也狠」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling reaches across with her right hand and tugs her grey-white left cotton cuff firmly down over her left wrist to cover the mark while her left hand stays steady, shifting her eyes away toward screen right as she speaks evenly; Xu Yan's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the single candle in the dark room stays unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a27",
+          "speaker": "xuyan",
+          "text": "好，我不問。妳睡床，我睡門口。",
+          "emotion": "平穩，不追問"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, tracking",
+        "prompt": "In a very dim rural Song-dynasty bedroom late at night, dark earthen plaster wall in deep shadow behind, lit only by a single warm flickering candle flame, no daylight anywhere: medium close-up framed from the waist up with ample headroom above Xu Yan's head: Xu Yan standing by the wooden door, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, at the right edge of the frame a grey-white left sleeve holding the short plain iron blade, Xu Yan's face three-quarter to screen right toward Aling off screen right, never the lens; calm and reassuring: brows relaxed, eyes steady and sincere",
+        "motion": "Xu Yan speaks a short Mandarin line, 「好，我不問。妳睡床，我睡門口」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan bends slowly with his whole head staying inside the frame to pick one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing up from the floor into both arms and straightens up calmly while the grey-white left sleeve at the right edge lowers slightly with his movement; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the single candle in the dark room stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a28",
+          "speaker": "aling",
+          "text": "門口？你不怕我半夜，一刀下去？",
+          "emotion": "皺眉，不信"
+        }
+      ],
+      "data": {
+        "camera": "Medium two-shot, slow push in",
+        "prompt": "In a very dim rural Song-dynasty bedroom late at night: a plain unpainted wooden door on screen left, a simple wooden bed on screen right and one small lit white candle on a low stand beside the bed, dark shadows in the corners and pitch-dark night outside with no daylight anywhere, lit only by that single warm candle flame: medium two-shot in the dim candlelit bedroom framed from the waist up with space above their heads: on screen right A-ling, in her plain grey-white cotton dress with long sleeves and a single wooden hairpin, no shackles, her left sleeve covering her wrist and her left hand still holding the short plain iron blade low in front of her, her face three-quarter to screen left toward Xu Yan, never the lens; wary and incredulous: brows drawn together in a frown, sharp eyes searching his face; on screen left Xu Yan holding one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing in his arms, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, in profile toward her, lips closed",
+        "motion": "A-ling speaks a short Mandarin line, 「門口？你不怕我半夜，一刀下去？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling steps half a pace backward toward the candlelit room on screen right, her left hand keeping the short blade unlowered and her brows knitting tighter as she speaks; Xu Yan stands steady with his lips closed; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the single candle in the dark room stays unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a29",
+          "speaker": "xuyan",
+          "text": "怕。所以我睡外面，誰要進來，先過我。",
+          "emotion": "坦白，篤定"
+        }
+      ],
+      "data": {
+        "camera": "Full shot, slow pull out",
+        "prompt": "Right outside the plain unpainted wooden doorway of a bedroom in the roofed wooden corridor late on a pitch-dark autumn night: wooden threshold and plain door planks, black night beyond the corridor pillars with no daylight anywhere, lit by cold blue moonlight outside and faint warm candlelight through the doorway: full shot past the wooden doorframe with ample headroom above both heads: just outside the threshold in the cold moonlit corridor on screen left Xu Yan, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, holding one rolled dark ash-grey coarse cotton bedroll tied with hemp cord, about as thick as his chest and as long as his torso, plain cloth with no marks or writing; just inside the dim warm candlelit doorway on screen right A-ling standing still, in her plain grey-white cotton dress with long sleeves and a single wooden hairpin, no shackles, holding the short plain iron blade at her left side, watching him with closed lips; dark night beyond the corridor with no daylight anywhere",
+        "motion": "Xu Yan speaks a short Mandarin line, 「怕。所以我睡外面，誰要進來，先過我」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person he is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; Xu Yan steps backward across the wooden threshold into the moonlit corridor, crouches with his whole head staying inside the frame to unroll and spread the ash-grey cotton bedroll flat along the corridor floor right outside the door, then looks up toward A-ling inside the doorway as he speaks; A-ling's lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the cold blue moonlight in the night corridor stays unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a30",
+          "speaker": "aling",
+          "text": "傻子。門外風大，被子拿厚的那條。",
+          "emotion": "極輕，放軟一點"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In a very dim rural Song-dynasty bedroom late at night, dark earthen plaster wall in deep shadow behind, lit only by a single warm flickering candle flame, no daylight anywhere: medium close-up of A-ling standing inside the dim candlelit bedroom framed from the waist up with space above her head, in her plain grey-white cotton dress with long sleeves and a single wooden hairpin, no shackles, her left sleeve covering her wrist and the short plain iron blade held in her left hand, her face three-quarter to screen left toward Xu Yan off screen left, never the lens; quietly moved beneath her calm exterior: brows softening slightly, eyes still and deep; behind her only the dark bedroom and one small candle flame",
+        "motion": "A-ling speaks a short Mandarin line, 「傻子。門外風大，被子拿厚的那條」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling slowly lowers her left arm straight down at her side with the tip of the short iron blade pointing down toward the floor, the corner of her mouth shifting by the faintest hair without breaking into a smile as she speaks very quietly, and the dim warm light of the single candle in the dark room stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a31",
+          "speaker": "xitong",
+          "text": "叮。阿令，好感加十。",
+          "emotion": "提示音，平直"
+        }
+      ],
+      "data": {
+        "camera": "Low-angle medium close-up, slow push in",
+        "prompt": "Right outside the plain unpainted wooden doorway of a bedroom in the roofed wooden corridor late on a pitch-dark autumn night: wooden threshold and plain door planks, black night beyond the corridor pillars with no daylight anywhere, lit by cold blue moonlight outside and faint warm candlelight through the doorway: low-angle medium close-up along the spread ash-grey bedroll on the moonlit corridor floor: Xu Yan lying on his back with his head toward screen right, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, the wooden threshold and open doorway crack at the upper edge of the frame, his face turned upward toward the dark eaves above, never the lens; surprised and quiet: eyes open, lips closed; the system voice speaks off screen",
+        "motion": "from inside the doorway at the upper edge a grey-white cotton sleeve tosses one thick dark-indigo coarse cotton quilt, plain with no pattern, marks or writing out so it lands softly over Xu Yan's chest; Xu Yan catches the thick dark-indigo quilt with both hands, pulls it up to his chin and lies still looking up at the dark eaves; his lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the cold blue moonlight in the night corridor stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a32",
+          "speaker": "xitong",
+          "text": "隱藏任務，完成。",
+          "emotion": "提示音，收束"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, slow push in",
+        "prompt": "Right outside the plain unpainted wooden doorway of a bedroom in the roofed wooden corridor late on a pitch-dark autumn night: wooden threshold and plain door planks, black night beyond the corridor pillars with no daylight anywhere, lit by cold blue moonlight outside and faint warm candlelight through the doorway: the shot opens directly on this extreme close-up of Xu Yan's eyes and brows from its very first frame, framed from the bridge of his nose to his forehead so his mouth is out of frame, lit softly from the side by cool night light, his irises a natural dark brown from the first frame to the last, the whites of his eyes clear, only a tiny pinprick catchlight reflected in each dark pupil, never looking into the lens; the system voice speaks off screen",
+        "motion": "Xu Yan's dark brown eyes blink once slowly and settle still in thought while his brows relax slightly, and the cold blue moonlight in the night corridor stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a33",
+          "speaker": "xuyan",
+          "text": "種田保住了。只是這洞房，睡的是門檻。",
+          "emotion": "內心獨白，嘴閉著，無奈苦笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Right outside the plain unpainted wooden doorway of a bedroom in the roofed wooden corridor late on a pitch-dark autumn night: wooden threshold and plain door planks, black night beyond the corridor pillars with no daylight anywhere, lit by cold blue moonlight outside and faint warm candlelight through the doorway: medium close-up on the moonlit corridor floor: Xu Yan lying under one thick dark-indigo coarse cotton quilt, plain with no pattern, marks or writing on the spread bedroll right outside the closed plain wooden door, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, his head resting on his folded arm toward screen right, never looking at the lens; relieved yet wry: tired heavy eyelids, a faint rueful twitch at one corner of his closed mouth",
+        "motion": "Xu Yan rolls onto his side with his back turned to the closed wooden door behind him, tucks the thick dark-indigo quilt around his shoulder and lets out a quiet breath through his nose while his lips stay closed the whole time, and the cold blue moonlight in the night corridor stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a34",
+          "speaker": "xitong",
+          "text": "睡哪不歸系統管。好感到了，就算數。",
+          "emotion": "冷，毒舌"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Right outside the plain unpainted wooden doorway of a bedroom in the roofed wooden corridor late on a pitch-dark autumn night: wooden threshold and plain door planks, black night beyond the corridor pillars with no daylight anywhere, lit by cold blue moonlight outside and faint warm candlelight through the doorway: medium close-up on the moonlit corridor floor: Xu Yan lying on his side under one thick dark-indigo coarse cotton quilt, plain with no pattern, marks or writing with his back to the closed wooden door, his faded blue-grey scholar's robe with both shoulders whole and dust on the hem, tired with slightly reddened eyes, his face in three-quarter profile away from the lens, brows twitching in mild annoyance, lips closed; the system voice speaks off screen",
+        "motion": "after a beat Xu Yan grips the edge of the thick dark-indigo quilt with both hands and pulls it right up over his head to cover his face; his lips stay closed; no smile at any moment, not even at the end of the shot, until the last frame, and the cold blue moonlight in the night corridor stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 6
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq909a35",
+          "speaker": "aling",
+          "text": "許硯，你聽著就好。明天，我可能得走。",
+          "emotion": "隔著門板，很輕很慢"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In a very dim rural Song-dynasty bedroom late at night, dark earthen plaster wall in deep shadow behind, lit only by a single warm flickering candle flame, no daylight anywhere: the shot opens directly on the inner planks of the closed plain unpainted wooden door and A-ling sitting on the floor inside the dim candlelit room with her back leaning against the door from its very first frame: A-ling near the left edge of the frame, in her plain grey-white cotton dress with long sleeves and a single wooden hairpin, no shackles, her left sleeve pulled down covering her wrist, the short plain iron blade resting flat across her lap, her face in clean profile facing the wooden door plank toward Xu Yan off screen left, never the lens; solemn and quiet: brows slightly drawn, long lashes low, lips serious",
+        "motion": "A-ling speaks a short Mandarin line, 「許硯，你聽著就好。明天，我可能得走」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, turned toward the person she is speaking to, face in profile or three-quarter profile, eyes on that person, never looking at the camera; A-ling slowly raises her right hand and presses her palm flat against the inner wooden door plank beside her shoulder as she speaks very quietly toward the door; no smile at any moment, not even at the end of the shot, until the last frame, and the dim warm light of the single candle in the dark room stays unchanged",
+        "characters": [
+          "aling"
+        ],
+        "buy_seconds": 8
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Right outside the plain unpainted wooden doorway of a bedroom in the roofed wooden corridor late on a pitch-dark autumn night: wooden threshold and plain door planks, black night beyond the corridor pillars with no daylight anywhere, lit by cold blue moonlight outside and faint warm candlelight through the doorway: medium close-up on the moonlit corridor floor right outside the closed plain unpainted wooden door: Xu Yan lying on the bedroll with one thick dark-indigo coarse cotton quilt, plain with no pattern, marks or writing pulled up covering his head at first, dark night corridor beyond with no daylight anywhere",
+        "motion": "Xu Yan lowers the thick dark-indigo quilt down below his chin revealing his face, opens his eyes wide, and turns his head slowly toward the closed wooden door plank beside him, staring at it in silent gravity with his lips closed; no smile at any moment, not even at the end of the shot, until the last frame, and the cold blue moonlight in the night corridor stays unchanged",
+        "characters": [
+          "xuyan"
+        ],
+        "buy_seconds": 6
+      }
+    }
+  ]
+}

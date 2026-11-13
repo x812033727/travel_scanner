@@ -1,0 +1,227 @@
+"""Builder for r2 live-action remake episodes (working number EP = 909 -> published slug zhong-tian-qu-qi-e009-r2).
+
+Usage: python3 build-r2.py r2.py
+"""
+import importlib
+import importlib.util
+import json
+import os
+import re
+import subprocess
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, "../../../../../../.."))
+P = f"{REPO}/docs/videos/series-plans/zhong-tian-qu-qi"
+H = f"{P}/production/hailuo"
+CAST = {c["id"]: c for c in json.load(open(f"{P}/production/cast.json", encoding="utf-8"))["characters"]}
+EN = {
+    "chengshanzhang": "Headmaster Cheng",
+    "fengxuezheng": "Examiner Feng",
+    "weixun": "Wei Xun",
+    "dutie": "Du Tie",
+    "chuzhifu": "Prefect Chu",
+    "dengyasi": "Sergeant Deng",
+    "lengtie": "Leng Tie",
+    "xudalang": "Xu Dalang",
+    "hanbo": "Elder Han",
+    "xuyan": "Xu Yan",
+    "aling": "A-ling",
+    "qinshuang": "Qin Shuang",
+    "tangxiaotang": "Tang Xiaotang",
+    "xiaohe": "little Xiaohe",
+    "erniu": "Wang Erniu",
+    "qianyuanwai": "Qian Yuanwai",
+    "laisan": "Lai San",
+    "yayi": "the yamen runner",
+    "tongpan": "the vice-prefect",
+    "zhifufuren": "the prefect's wife",
+    "xinchai": "the courier",
+    "zhanggui": "the innkeeper",
+    "zhaobutou": "Constable Zhao",
+    "mianshiguan": "the interviewer",
+}
+HER = {"aling", "qinshuang", "tangxiaotang", "xiaohe", "zhifufuren"}
+BASE = json.load(open(f"{REPO}/docs/videos/zhong-tian-qu-qi-e042/video.json", encoding="utf-8"))
+
+
+def shot_ids(shots):
+    out, n = [], 0
+    for s in shots:
+        if s.get("sid"):
+            out.append(s["sid"])
+        else:
+            n += 1
+            out.append(f"s{n:02d}")
+    return out
+
+
+def speak_clause(sid, texts):
+    t = [f"「{re.sub('。$', '', x)}」" for x in texts]
+    who = EN[sid][0].upper() + EN[sid][1:]
+    pro = "her" if sid in HER else "his"
+    gaze = (
+        f", turned toward the person {'she' if sid in HER else 'he'} is speaking to, face in profile or three-quarter profile, "
+        f"eyes on that person, never looking at the camera"
+    )
+    if len(t) == 1:
+        return f"{who} speaks a short Mandarin line, {t[0]}, {pro} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes{gaze}"
+    return f"{who} speaks {len(t)} short Mandarin lines, {' then '.join(t)}, {pro} lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes{gaze}"
+
+
+def main(name):
+    if name.endswith(".py"):
+        loader = importlib.util.spec_from_file_location("r2spec", os.path.abspath(name))
+        spec = importlib.util.module_from_spec(loader)
+        loader.loader.exec_module(spec)
+    else:
+        spec = importlib.import_module(name)
+    ep = spec.EP
+    pub_slug = getattr(spec, "SLUG", f"zhong-tian-qu-qi-e{ep:03d}")
+    out = f"{REPO}/docs/videos/{pub_slug}"
+    os.makedirs(out, exist_ok=True)
+    chars = []
+    for cid in spec.CHARACTERS:
+        if cid in CAST:
+            c = CAST[cid]
+            chars.append({k: c[k] for k in ("id", "name", "appearance", "voice", "shot_looks") if k in c})
+        else:
+            chars.append(spec.MINOR[cid])
+    names = {c["id"]: c["name"] for c in chars}
+    scenes = []
+    n = 0
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
+        lines = []
+        on = [c for c in s.get("chars", [])]
+        by = {}
+        for spk, text, emo, *flags in s.get("lines", []):
+            n += 1
+            inner = "inner" in flags
+            if inner:
+                emo = "內心獨白，嘴閉著，" + emo
+            off = spk != "xitong" and spk not in on
+            lines.append(
+                {
+                    "id": f"zq{ep}a{n:02d}",
+                    "speaker": spk,
+                    "text": text,
+                    "emotion": ("畫外，" + emo) if off and not inner and not emo.startswith("畫外") else emo,
+                }
+            )
+            if not off and not inner and spk != "xitong" and spk not in s.get("nospeak", []):
+                by.setdefault(spk, []).append(text)
+        motion = s["motion"]
+        talk = "; ".join(speak_clause(k, v) for k, v in by.items())
+        if talk:
+            motion = f"{talk}; {motion}"
+        if s.get("night"):
+            motion += f", and {spec.LIGHT[s['night']]}"
+        comp = re.sub(r"((?:close-up|shot)) of ([A-Z][\w'-]*(?: [A-Z][\w'-]*)?) on screen", r"\1, \2 on screen", s["comp"])
+        prompt = f"{spec.LOC[s['loc']]}: {comp}".replace("A-ling off screen", "Aling off screen")
+        motion = motion.replace("A-ling off screen", "Aling off screen")
+        offs = [k for (k, *_) in s.get("lines", []) if k != "xitong" and k not in on]
+        if offs and "off screen" not in prompt:
+            prompt += f"; {EN[offs[0]]} speaks off screen"
+        if any(k == "xitong" for (k, *_) in s.get("lines", [])) and "system voice" not in prompt:
+            prompt += "; the system voice speaks off screen"
+        if len(motion) > 350:
+            print("MOTION LONG", sid, len(motion), len(motion) - len(s["motion"]))
+        if len(prompt) > 1000:
+            print("PROMPT TOO LONG", sid, len(prompt))
+        scene = {"id": sid}
+        if s.get("chapter"):
+            scene["chapter"] = s["chapter"]
+        scene["template"] = "shot"
+        if not lines:
+            scene["action_seconds"] = s.get("act", 2)
+        scene["lines"] = lines
+        scene["data"] = {"camera": s["cam"], "prompt": prompt, "motion": motion, "characters": on}
+        if s.get("looks"):
+            scene["data"]["character_looks"] = s["looks"]
+        if s.get("nospeak"):
+            scene["data"]["nospeak"] = s["nospeak"]
+        buy = getattr(spec, "BUY", {}).get(sid)
+        if buy:
+            scene["data"]["buy_seconds"] = buy
+        scenes.append(scene)
+    doc = {k: BASE[k] for k in ["schema_version"]}
+    doc["slug"] = pub_slug
+    for k in ["format", "target_minutes", "voice", "look"]:
+        doc[k] = BASE[k]
+    doc["target_minutes"] = spec.TARGET_MINUTES
+    doc["characters"] = chars
+    doc["music"] = {"prompt": spec.MUSIC, "gain_db": -20, "duck_db": -10}
+    doc["subtitles"] = BASE["subtitles"]
+    yt = dict(BASE["youtube"])
+    yt["title"] = spec.TITLE
+    yt["description"] = spec.DESCRIPTION
+    doc["youtube"] = yt
+    doc["thumbnail"] = {"template": "thumb", "data": {"headline": spec.THUMB[0], "tag": "種田娶妻打天下", "shot": spec.THUMB[1]}}
+    doc["scenes"] = scenes
+    with open(f"{out}/video.json", "w", encoding="utf-8") as fh:
+        json.dump(doc, fh, ensure_ascii=False, indent=2)
+        fh.write("\n")
+    ov = {}
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
+        if s.get("panel"):
+            ov[sid] = [{"text": t, "kind": k} for (t, k) in s["panel"]]
+    with open(f"{out}/overlays.json", "w", encoding="utf-8") as fh:
+        json.dump(ov, fh, ensure_ascii=False, indent=2)
+        fh.write("\n")
+    r = subprocess.run(
+        ["node", f"{H}/gen-dh.mjs", f"{out}/video.json", f"{H}/local/empty-lock.json", str(ep), f"{H}/ff-dh-e{ep:03d}.json", f"{H}/clips-dh-e{ep:03d}.json"],
+        capture_output=True,
+        text=True,
+        cwd=REPO,
+    )
+    gen = r.stdout.strip() + r.stderr.strip()
+    print(gen)
+    ff = json.load(open(f"{H}/ff-dh-e{ep:03d}.json", encoding="utf-8"))
+    clips = json.load(open(f"{H}/clips-dh-e{ep:03d}.json", encoding="utf-8"))
+    secs = {}
+    for v in clips.values():
+        secs[v[2]] = secs.get(v[2], 0) + 1
+    setcount = {}
+    for j in ff:
+        st = [x for x in j["refs"] if x.startswith("dh-set-")]
+        key = st[0][:-4] if st else "NONE"
+        setcount[key] = setcount.get(key, 0) + 1
+    print("sets", setcount)
+    t = json.loads(subprocess.run(["node", f"{HERE}/tl.mjs", f"{out}/video.json"], capture_output=True, text=True).stdout)
+    total = t["total"]
+    rows = []
+    for sid, s in zip(shot_ids(spec.SHOTS), spec.SHOTS):
+        st, du = t["scenes"][sid]
+        if s.get("chapter"):
+            rows.append(f"| **{s['chapter']}** |||||||")
+        ls = []
+        for spk, text, emo, *_f in s.get("lines", []):
+            off = spk == "xitong" or spk not in s.get("chars", []) or spk in s.get("nospeak", [])
+            ls.append(f"{names[spk]}{'（畫外）' if off else ''}：{text}")
+        pan = "<br>".join(f"{tx}（{k}）" for (tx, k) in s.get("panel", [])) or "—"
+        tag = s.get("tag", "")
+        zh = (f"【{tag}】" if tag else "") + (s["zh"][len(tag) + 1 :] if tag and s["zh"].startswith(tag + "：") else s["zh"]) + ("（無台詞）" if not ls else "")
+        rows.append(f"| {sid} | {int(st // 60)}:{int(st % 60):02d} | {du:.1f} | 片段 | {s['cam']} | {zh} | {'<br>'.join(ls) or '—'} | {pan} |")
+    n6 = secs.get(6, 0)
+    n5 = secs.get(5, 0)
+    n8 = secs.get(8, 0)
+    n10 = secs.get(10, 0)
+    pts = int(re.search(r"total ≈ (\d+)", gen).group(1))
+    head = [
+        f"# 第 9 集〈{spec.EP_TITLE}〉分鏡表",
+        "",
+        "<!-- 給人讀的中文版；製作用的英文提示詞在 video.json，系統面板文字在 overlays.json。 -->",
+        "",
+        f"- {len(spec.SHOTS)} 個鏡頭、{len([s for s in spec.SHOTS if s.get('chapter')])} 段（{'／'.join(s['chapter'] for s in spec.SHOTS if s.get('chapter'))}），估計約 {round(total)} 秒（照 lint 估法；真人語速約 {round(total * 1.1)} 秒）；細綱 {spec.OUTLINE_SECONDS} 秒",
+        f"- 預算：片段 {len(clips)} 支（靜圖 0 張），在 Colab 用 H3 Ref2VA 做；`gen-dh.mjs` 算 {n10} 支 10 秒、{n8} 支 8 秒、{n6} 支 6 秒、{n5} 支 5 秒（海螺換算約 {pts:,} 點，僅對照；首格清單 {len(ff)} 張僅作參照圖清單）",
+    ]
+    head += spec.HEAD
+    table = ["", "| 鏡 | 開始 | 秒 | 種類 | 景別、運鏡 | 畫面 | 台詞 | 面板（overlays） |", "| --- | --- | --- | --- | --- | --- | --- | --- |"] + rows + [""]
+    with open(f"{out}/storyboard.md", "w", encoding="utf-8") as fh:
+        fh.write("\n".join(head + table + spec.FOOT) + "\n")
+    print("total", round(total, 1), "lines", n, "shots", len(spec.SHOTS))
+
+
+if __name__ == "__main__":
+    sys.path.insert(0, HERE)
+    main(sys.argv[1])
