@@ -1,13 +1,13 @@
 ---
 id: 2026-11-12-admin-colab-card-shows-lease-holder
 title: Admin Colab card shows which agent leases each account and lets the owner end a lease
-status: review
+status: done
 priority: P3
 area: web
 owner: claude-opus-5-5-colab-leases
 claimed_at: 2026-11-13T00:15:27Z
 created_at: 2026-11-12T23:49:32Z
-completed_at:
+completed_at: 2026-11-13T01:19:05Z
 branch: claude/zealous-ritchie-yipfth
 depends_on:
   - 2026-11-12-colab-account-leases-parallel-agents

@@ -1,13 +1,13 @@
 ---
 id: 2026-11-12-colab-account-leases-parallel-agents
 title: Each Colab account works on its own: a site-held lease per account so parallel agents never share one, and a per-account CLI home
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-colab-leases
 claimed_at: 2026-11-12T23:29:13Z
 created_at: 2026-11-12T23:29:00Z
-completed_at:
+completed_at: 2026-11-13T01:19:04Z
 branch: claude/zealous-ritchie-yipfth
 depends_on: []
 scope:
@@ -53,15 +53,14 @@ each other's `~/.config/colab-cli/token.json` (the CLI has no flag to move it).
 - [x] Tests: API (`test_ai_accounts_colab_leases.py`, fakeredis, including a six-way race), tools
       (two agents on one machine, h3.sh and the Python scripts run the CLI in the leased account's HOME).
 - [x] Skill: SKILL.md rule 1 and the flow, cloud-pairing.md §2b.
-- [ ] On the host after deploy: two cloud sessions each `accounts.py claim`, `list` shows both
-      holders, each runs `h3.sh usage` on its own account (owner's accounts; not done from this session).
+- [x] Merged in #2089 (2026-11-13). The host check below is left to the owner after deploy.
 
 ## Steps
 
 - [x] API: `admin_ai_accounts/colab_leases.py`, schemas, routes in `router.py`, `main.py`.
 - [x] Web BFF: `apps/web/app/api/video/colab-accounts/**`, `holder` on `colab-credentials`.
 - [x] Skill scripts and docs.
-- [ ] Deploy and the host check above.
+- [x] Merged; deploy and the host check are the owner's (see Notes).
 
 ## How to verify
 
@@ -82,3 +81,8 @@ npm run lint:web && npm run typecheck:web
   `git stash`), none in `minimax-h3-colab.test.mjs`.
 - Not done here: the admin card does not show who leases an account, and the owner cannot break
   a lease from the page (filed as 2026-11-12-admin-colab-card-shows-lease-holder).
+- Still unverified on production (needs the owner's Colab accounts): after deploy, two cloud
+  sessions each run `accounts.py claim`, `accounts.py list` shows both holders on different
+  slots, and each `h3.sh usage` reads its own account's balance. If that fails, file a new task.
+- The full-stack e2e date fix made here (`0ed1a8a2`) was superseded by the same fix on main in
+  #2090; the merge took main's version.
